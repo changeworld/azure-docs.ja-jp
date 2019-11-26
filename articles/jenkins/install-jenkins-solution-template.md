@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 6/7/2017
-ms.openlocfilehash: 6bc0d8a1e938f2b8a97cab486d4679bfc445f6fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 531199303f7b00083bcd7139ac00ac36bde5c583
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004083"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837513"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Azure Portal から Azure Linux VM に Jenkins サーバーを作成する
 
@@ -33,7 +33,7 @@ Jenkins は、Jenkins サーバーが 1 つ以上のエージェントに作業�
 
 ## <a name="connect-to-jenkins"></a>Jenkins に接続する
 
-Web ブラウザーで仮想マシンに移動します (例: http://jenkins2517454.eastus.cloudapp.azure.com/)。 セキュリティで保護されていない HTTP 経由では Jenkins コンソールにアクセスできません。そのためこのページには、ご使用のコンピューターから SSH トンネルを使って安全に Jenkins コンソールにアクセスする手順が掲載されています。
+Web ブラウザーで仮想マシンに移動します (例: `http://jenkins2517454.eastus.cloudapp.azure.com/`)。 セキュリティで保護されていない HTTP 経由では Jenkins コンソールにアクセスできません。そのためこのページには、ご使用のコンピューターから SSH トンネルを使って安全に Jenkins コンソールにアクセスする手順が掲載されています。
 
 ![Jenkins のロックを解除する](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 
@@ -63,19 +63,19 @@ Jenkins サーバーでコードをビルドする準備が整いました。
 
 ## <a name="create-your-first-job"></a>最初のジョブの作成
 
-Jenkins コンソールから **[Create new jobs]\(新しいジョブの作成\)** を選択して **mySampleApp** という名前を付け、**[Freestyle project]\(フリースタイル プロジェクト\)** を選択して **[OK]** を選択します。
+Jenkins コンソールから **[Create new jobs]\(新しいジョブの作成\)** を選択して **mySampleApp** という名前を付け、 **[Freestyle project]\(フリースタイル プロジェクト\)** を選択して **[OK]** を選択します。
 
 ![新しいジョブの作成](./media/install-jenkins-solution-template/jenkins-new-job.png) 
 
-**[ソース コード管理]** タブを選択して **[Git]** を有効にし、**[リポジトリの URL]** フィールドに次の URL を入力します。`https://github.com/spring-guides/gs-spring-boot.git`
+**[ソース コード管理]** タブを選択して **[Git]** を有効にし、 **[リポジトリの URL]** フィールドに次の URL を入力します。`https://github.com/spring-guides/gs-spring-boot.git`
 
 ![Git リポジトリの定義](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
 
-**[ビルド]** タブを選択し、**[ビルド ステップの追加]**、**[Invoke Gradle script]\(Gradle スクリプトの呼び出し\)** の順に選択します。 **[Use Gradle Wrapper]\(Gradle ラッパーの使用\)** を選択して、**[Wrapper location]\(ラッパーの場所\)** に「`complete`」、**[タスク]** に「`build`」と入力します。
+**[ビルド]** タブを選択し、 **[ビルド ステップの追加]** 、 **[Invoke Gradle script]\(Gradle スクリプトの呼び出し\)** の順に選択します。 **[Use Gradle Wrapper]\(Gradle ラッパーの使用\)** を選択して、 **[Wrapper location]\(ラッパーの場所\)** に「`complete`」、 **[タスク]** に「`build`」と入力します。
 
 ![Gradle ラッパーを使用したビルド](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-**[詳細]** を選択し、**[Root Build script]\(ルート ビルド スクリプト\)** フィールドに `complete` と入力します。 **[保存]** を選択します。
+**[詳細]** を選択し、 **[Root Build script]\(ルート ビルド スクリプト\)** フィールドに `complete` と入力します。 **[保存]** を選択します。
 
 ![Gradle ラッパー ビルド ステップの詳細設定](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 

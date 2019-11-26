@@ -1,6 +1,6 @@
 ---
-title: IoT Hub で Azure Security Center for IoT サービスを有効にする | Microsoft Docs
-description: IoT Hub で Azure Security Center for IoT サービスを有効にする方法について説明します。
+title: クイック スタート:IoT Hub で Azure Security Center for IoT サービスを有効にする
+description: このクイックスタートでは、IoT Hub で Azure Security Center for IoT サービスを有効にする方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 67361c402bdbc82d5df01709dc962b59671cb2aa
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 641ba4c8d3b0e54132c19a493e1e4bf17bb28e13
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991399"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904109"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>クイック スタート:IoT Hub で Azure Security Center for IoT サービスをオンボードする
 
@@ -81,5 +81,3 @@ Log Analytics のワークスペースの構成を変更するには、次の手
 
 > [!div class="nextstepaction"]
 > [ソリューションを構成する](quickstart-configure-your-solution.md)
-
-

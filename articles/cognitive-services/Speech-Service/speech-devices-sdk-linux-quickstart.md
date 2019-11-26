@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 5c881551648e8fc6078405e34fa3280723009b20
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18b96e9afbf2a83b917d6848b419fb76518035de
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490975"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090427"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>クイック スタート:Linux 上で Speech Devices SDK サンプル アプリを実行する
 
@@ -80,11 +80,34 @@ Eclipse を開始する前に、これらの依存関係がインストールさ
 
    ![パッケージ エクスプローラーのスクリーンショット](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
+1. pom.xml ファイルを開き、それを編集します。
+
+    ファイルの最後でタグ `</project>` を閉じる前に、次に示すように `repositories` および `dependencies` 要素を作成し、`version` が現在のバージョンに一致していることを確認します。
+    ```xml    
+    <repositories>
+         <repository>
+             <id>maven-cognitiveservices-speech</id>
+             <name>Microsoft Cognitive Services Speech Maven Repository</name>
+             <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+         </repository>
+    </repositories>
+ 
+    <dependencies>
+        <dependency>
+             <groupId>com.microsoft.cognitiveservices.speech</groupId>
+             <artifactId>client-sdk</artifactId>
+             <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+   ```
+
 1. **パッケージ エクスプローラー**で、自分のプロジェクトを右クリックします。 **[Properties]\(プロパティ\)** を選択してから、 **[Run/Debug Settings]\(実行/デバッグ設定\)**  >  **[New…]\(新規…\)** >  **[Java Application]\(Java アプリケーション\)** の順に選択します。 
 
 1. **[Edit Configuration]\(構成の編集\)** ウィンドウが表示されます。 **[Name]\(名前\)** フィールドに「**Main**」と入力し、 **[Search]\(検索\)** を使用して **Main クラス** を探して **[com.microsoft.cognitiveservices.speech.samples.FunctionsList]** を選択します。
 
    ![起動構成の編集のスクリーンショット](media/speech-devices-sdk/eclipse-edit-launch-configuration-linux.png)
+
+1. ターゲット アーキテクチャのオーディオ バイナリを **Linux-arm** または **Linux-x64** から Java プロジェクトの場所 ( **/home/wcaltest/JRE-Sample-Release** など) にコピーします。
 
 1. **[Edit Configuration]\(構成の編集\)** ウィンドウから、 **[Environment]\(環境\)** ページと **[New]\(新規\)** も選択します。 **[New Environment Variable]\(新しい環境変数\)** ウィンドウが表示されます。 **[Name]\(名前\)** フィールドに「**LD_LIBRARY_PATH**」を入力し、 **[value]\(値\)** フィールドに *.so ファイルが含まれているフォルダー (例: **/home/wcaltest/JRE-Sample-Release**) を入力します。
 
@@ -118,15 +141,14 @@ Eclipse を開始する前に、これらの依存関係がインストールさ
    > [!TIP]
    > [カスタム キーワードを作成する](speech-devices-sdk-create-kws.md)こともできます。
 
-    新しいキーワードを使用するには、`FunctionsList.java` で下記の 2 行を更新し、キーワード パッケージをお使いのアプリにコピーします。 たとえば、キーワード パッケージ `kws-machine.zip` からキーワード "Machine" を使用するには:
+    新しいキーワードを使用するには、`FunctionsList.java` 内の次の行を更新し、そのキーワードをアプリにコピーします。 たとえば、キーワード パッケージ `machine.zip` からキーワード "Machine" を使用するには:
 
-   * キーワード パッケージをプロジェクト フォルダー **target/classes** にコピーします。
+   * zip パッケージの `kws.table` ファイルをプロジェクト フォルダー **target/classes** にコピーします。
 
-   * 次に示すように、`FunctionsList.java` でキーワードとパッケージ名を更新します。
+   * `FunctionsList.java` のキーワード名を更新します。
 
      ```java
      private static final String Keyword = "Machine";
-     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Eclipse からサンプル アプリケーションを実行する

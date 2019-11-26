@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Linux VM 用の Azure 仮想ネットワークの作成と管理を行う | Microsoft Docs
+title: チュートリアル - Linux VM 用の Azure 仮想ネットワークの作成と管理を行う
 description: このチュートリアルでは、Azure CLI を使用して、Linux 仮想マシン用の Azure ディスクの作成と管理を行う方法について説明します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b2255e75843f4ddadd44e7780054de4fc45e6449
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: d6624b9d5d77a8552584049463b63738bbf17627
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300715"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034343"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して Linux 仮想マシン用の Azure 仮想ネットワークの作成と管理を行う
 

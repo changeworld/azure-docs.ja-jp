@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Android 上で Speech Devices SDK を実行する - Speech Service
+title: クイック スタート:Android 上で Speech Devices SDK を実行する
 titleSuffix: Azure Cognitive Services
 description: Android Speech Devices SDK を使用するための前提条件と手順です。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: acb041ce29d0340686a09764158063ad8d000c7c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3eb6ec28879a7c53feb270e33857cd67dc06b0b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491309"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111694"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>クイック スタート:Android 上で Speech Devices SDK サンプル アプリを実行する
 
@@ -29,46 +29,47 @@ ms.locfileid: "73491309"
 
 Speech Devices SDK の使用を開始する前に、次のことを行う必要があります。
 
-* [開発キット](get-speech-devices-sdk.md)に付属している手順に従って、デバイスの電源を入れます。
+- [開発キット](get-speech-devices-sdk.md)に付属している手順に従って、デバイスの電源を入れます。
 
-* [Speech Devices SDK](https://aka.ms/sdsdk-download) の最新バージョンをダウンロードし、.zip を作業ディレクトリに解凍します。
-   > [!NOTE]
-   > Android-Sample-Release.zip ファイルには、Android サンプル アプリが含まれており、このクイックスタートでは、アプリが C:\SDSDK\Android-Sample-Release に抽出されることを前提としています
+- [Speech Devices SDK](https://aka.ms/sdsdk-download) の最新バージョンをダウンロードし、.zip を作業ディレクトリに解凍します。
 
-* [Speech Services 用の Azure サブスクリプション キー](get-started.md)を取得します。
+  > [!NOTE]
+  > Android-Sample-Release.zip ファイルには、Android サンプル アプリが含まれており、このクイックスタートでは、アプリが C:\SDSDK\Android-Sample-Release に抽出されることを前提としています
 
-* 会話の文字起こしを使用する予定がある場合は、[円形マイク デバイス](get-speech-devices-sdk.md)を使用する 必要があります。この機能は現在、"centralus" および "eastasia" リージョンの "en-US" と "zh-CN" でのみ使用できます。 会話の文字起こしを使用するには、それらのいずれかのリージョンの Speech キーが必要です。
+- [Speech Services 用の Azure サブスクリプション キー](get-started.md)を取得します。
 
-* Speech Services を使用してユーザーの発話から意図 (またはアクション) を識別する場合は、[Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) サブスクリプションが必要です。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)」 を参照してください。
+- 会話の文字起こしを使用する予定がある場合は、[円形マイク デバイス](get-speech-devices-sdk.md)を使用する 必要があります。この機能は現在、"centralus" および "eastasia" リージョンの "en-US" と "zh-CN" でのみ使用できます。 会話の文字起こしを使用するには、それらのいずれかのリージョンの Speech キーが必要です。
 
-    [LUIS の単純なモデルを作成](https://docs.microsoft.com/azure/cognitive-services/luis/)またはサンプルの LUIS モデルである LUIS-example.json. を使用できます。 サンプルの LUIS モデルは、[Speech Devices SDK のウンロード サイト](https://aka.ms/sdsdk-luis)から入手できます。 モデルの JSON ファイルを [LUIS ポータル](https://www.luis.ai/home)にアップロードするには、 **[新しいアプリのインポート]** を選択し、その JSON ファイルを選択します。
+- Speech Services を使用してユーザーの発話から意図 (またはアクション) を識別する場合は、[Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) サブスクリプションが必要です。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)」 を参照してください。
 
-* [Android Studio](https://developer.android.com/studio/) と [Vysor](https://vysor.io/download/) を PC にインストールします。
+  [LUIS の単純なモデルを作成](https://docs.microsoft.com/azure/cognitive-services/luis/)またはサンプルの LUIS モデルである LUIS-example.json. を使用できます。 サンプルの LUIS モデルは、[Speech Devices SDK のウンロード サイト](https://aka.ms/sdsdk-luis)から入手できます。 モデルの JSON ファイルを [LUIS ポータル](https://www.luis.ai/home)にアップロードするには、 **[新しいアプリのインポート]** を選択し、その JSON ファイルを選択します。
+
+- [Android Studio](https://developer.android.com/studio/) と [Vysor](https://vysor.io/download/) を PC にインストールします。
 
 ## <a name="set-up-the-device"></a>デバイスを設定する
 
 1. コンピューターで Vysor を起動します。
 
-    ![Vysor](media/speech-devices-sdk/qsg-3.png)
+   ![Vysor](media/speech-devices-sdk/qsg-3.png)
 
 1. お使いのデバイスが **[Choose a device]** \(デバイスを選択する\) の下に表示されます。 デバイスの横にある **[View]\(ビュー\)** ボタンを選択します。
 
 1. フォルダー アイコンを選択した後、 **[Settings]\(設定\)**  >  **[WLAN]** の順に選択して、ワイヤレス ネットワークに接続します。
 
-    ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
+   ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
 
-    > [!NOTE]
-    > Wi-Fi システムへのデバイスの接続に関するポリシーが会社にある場合は、MAC アドレスを取得し、会社の Wi-Fi への接続方法を IT 部門に問い合わせる必要があります。
-    >
-    > 開発キットの MAC アドレスを検索するには、開発キットのデスクトップ上のファイル フォルダー アイコンを選択します。
-    >
-    >  ![Vysor ファイル フォルダー](media/speech-devices-sdk/qsg-10.png)
-    >
-    > **[設定]** を選択します。 "mac address" を検索し、 **[Mac アドレス]**  >  **[Advanced WLAN]** (高度な WLAN) の順に選択します。 ダイアログ ボックスの下部近くに表示される MAC アドレスを書き留めます。
-    >
-    > ![Vysor の MAC アドレス](media/speech-devices-sdk/qsg-11.png)
-    >
-    > 会社によっては、デバイスを Wi-Fi システムに接続しておくことができる時間が制限されている場合があります。 一定の日数が経過した後、Wi-Fi システムへの開発キットの登録を延長することが必要な場合があります。
+   > [!NOTE]
+   > Wi-Fi システムへのデバイスの接続に関するポリシーが会社にある場合は、MAC アドレスを取得し、会社の Wi-Fi への接続方法を IT 部門に問い合わせる必要があります。
+   >
+   > 開発キットの MAC アドレスを検索するには、開発キットのデスクトップ上のファイル フォルダー アイコンを選択します。
+   >
+   > ![Vysor ファイル フォルダー](media/speech-devices-sdk/qsg-10.png)
+   >
+   > **[設定]** を選択します。 "mac address" を検索し、 **[Mac アドレス]**  >  **[Advanced WLAN]** (高度な WLAN) の順に選択します。 ダイアログ ボックスの下部近くに表示される MAC アドレスを書き留めます。
+   >
+   > ![Vysor の MAC アドレス](media/speech-devices-sdk/qsg-11.png)
+   >
+   > 会社によっては、デバイスを Wi-Fi システムに接続しておくことができる時間が制限されている場合があります。 一定の日数が経過した後、Wi-Fi システムへの開発キットの登録を延長することが必要な場合があります。
 
 ## <a name="run-the-sample-application"></a>サンプル アプリケーションの実行
 
@@ -95,22 +96,22 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    会話の文字起こしを使用している場合は、conversation.java に Speech キーとリージョン情報も必要です。
+   会話の文字起こしを使用している場合は、conversation.java に Speech キーとリージョン情報も必要です。
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
-    ```
+   ```
 
 1. 既定のキーワードは "Computer" です。 用意されている別のキーワード ("Machine"、"Assistant" など) を試すこともできます。 これらの代替キーワード用のリソース ファイルは、Speech Devices SDK の keyword フォルダーにあります。 たとえば、C:\SDSDK\Android-Sample-Release\keyword\Computer には、キーワード "Computer" に使用されるファイルが含まれています。
 
    > [!TIP]
    > [カスタム キーワードを作成する](speech-devices-sdk-create-kws.md)こともできます。
 
-    新しいキーワードを使用するには、`MainActivity.java` で下記の 2 行を更新し、キーワード パッケージをお使いのアプリにコピーします。 たとえば、キーワード パッケージ kws-machine.zip からキーワード "Machine" を使用するには:
+   新しいキーワードを使用するには、`MainActivity.java` で下記の 2 行を更新し、キーワード パッケージをお使いのアプリにコピーします。 たとえば、キーワード パッケージ kws-machine.zip からキーワード "Machine" を使用するには:
 
-   * キーワード パッケージを、"C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" フォルダーにコピーします。
-   * 次に示すように、`MainActivity.java` でキーワードとパッケージ名を更新します。
+   - キーワード パッケージを、"C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\" フォルダーにコピーします。
+   - 次に示すように、`MainActivity.java` でキーワードとパッケージ名を更新します。
 
      ```java
      private static final String Keyword = "Machine";
@@ -126,20 +127,20 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
 
    次の表に、サポートされている値を示します。
 
-   |変数|意味|使用できる値|
-   |--------|-------|----------------|
-   |`DeviceGeometry`|物理的なマイクの構成|円形開発キットでは `Circular6+1` |
-   |||直線開発キットでは `Linear4`|
-   |`SelectedGeometry`|ソフトウェアのマイクの構成|すべてのマイクを使用する円形開発キットでは `Circular6+1`|
-   |||4 つのマイクを使用する円形開発キットでは `Circular3+1`|
-   |||すべてのマイクを使用する線形開発キットでは `Linear4`|
-   |||2 つのマイクを使用する線形開発キットでは `Linear2`|
+   | 変数 | 意味 | 使用できる値 |
+   | -------- | ------- | ---------------- |
+   | `DeviceGeometry` | 物理的なマイクの構成 | 円形開発キットでは `Circular6+1` |
+   |          |         | 直線開発キットでは `Linear4` |
+   | `SelectedGeometry` | ソフトウェアのマイクの構成 | すべてのマイクを使用する円形開発キットでは `Circular6+1` |
+   |          |         | 4 つのマイクを使用する円形開発キットでは `Circular3+1` |
+   |          |         | すべてのマイクを使用する線形開発キットでは `Linear4` |
+   |          |         | 2 つのマイクを使用する線形開発キットでは `Linear2` |
 
 1. アプリケーションをビルドするには、 **[実行]** メニューで **[アプリの実行]** を選択します。 **[Select Deployment Target]** \(配置ターゲットの選択\) ダイアログ ボックスが表示されます。
 
 1. デバイスを選択し、 **[OK]** を選択してアプリケーションをデバイスに配置します。
 
-    ![[Select Deployment Target]\(配置ターゲットの選択\) ダイアログ ボックス](media/speech-devices-sdk/qsg-7.png)
+   ![[Select Deployment Target]\(配置ターゲットの選択\) ダイアログ ボックス](media/speech-devices-sdk/qsg-7.png)
 
 1. Speech Devices SDK のサンプル アプリケーションが起動し、次のオプションが表示されます。
 
@@ -153,17 +154,16 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-   Speech Device に接続できない場合。 コマンド プロンプト ウィンドウで次のコマンドを入力します。 これにより、デバイスの一覧が返されます。
+Speech Device に接続できない場合。 コマンド プロンプト ウィンドウで次のコマンドを入力します。 これにより、デバイスの一覧が返されます。
 
-   ```powershell
-    adb devices
-   ```
+```powershell
+ adb devices
+```
 
-   > [!NOTE]
-   > このコマンドでは、Android Studio のインストールの一部である Android Debug Bridge `adb.exe` を使用します。 このツールは C:\Users\[user name]\AppData\Local\Android\Sdk\platform-tools にあります。 このディレクトリをパスに追加して、`adb` を呼び出しやすくすることができます。 それ以外の場合は、`adb` を呼び出すすべてのコマンドで adb.exe の完全なインストール パスを指定する必要があります。
-   >
-   > エラー `no devices/emulators found` が発生した場合は、USB ケーブルが接続されていること、および高品質のケーブルが使用されていることを確認してください。
-   >
+> [!NOTE]
+> このコマンドでは、Android Studio のインストールの一部である Android Debug Bridge `adb.exe` を使用します。 このツールは C:\Users\[user name]\AppData\Local\Android\Sdk\platform-tools にあります。 このディレクトリをパスに追加して、`adb` を呼び出しやすくすることができます。 それ以外の場合は、`adb` を呼び出すすべてのコマンドで adb.exe の完全なインストール パスを指定する必要があります。
+>
+> エラー `no devices/emulators found` が発生した場合は、USB ケーブルが接続されていること、および高品質のケーブルが使用されていることを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,9 +1,9 @@
 ---
-title: チュートリアル - Azure Active Directory ログを Azure イベント ハブにストリーム配信する | Microsoft Docs
+title: チュートリアル - ログを Azure イベント ハブにストリーム配信する | Microsoft Docs
 description: Azure Active Directory のログをイベント ハブにプッシュするよう Azure Diagnostics を設定する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 045f94b3-6f12-407a-8e9c-ed13ae7b43a3
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93dd7b13ca9e1a3f078994e76610c45447cfa41c
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264078"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007653"
 ---
 # <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>チュートリアル:Azure Active Directory ログを Azure イベント ハブにストリーム配信する
 

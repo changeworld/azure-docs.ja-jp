@@ -1,23 +1,23 @@
 ---
-title: C# を使用して TPM デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs
+title: クイック スタート:C# を使用して TPM デバイスを Azure Device Provisioning Service に登録する
 description: Azure クイックスタート - C# サービス SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録する このクイック スタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/16/2018
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: dcb9d2000ff9432f4360dab7f7df28b5b32482bf
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 70f9c9d2ec488854a1b386b872f10e4f54c45a1c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035790"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904749"
 ---
-# <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>C# サービス SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>クイック スタート:C# サービス SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
@@ -64,7 +64,7 @@ ms.locfileid: "71035790"
 
    この手順では、ダウンロードとインストールが行われ、[Azure IoT Provisioning Service クライアント SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) NuGet パッケージへの参照とその依存関係が追加されます。
 
-1. 次の `using` ステートメントを、`Program.cs` ファイルの先頭にある他の `using` ステートメントの後ろに追加します。
+1. 次の `using` ステートメントを、`Program.cs` の先頭にある他の `using` ステートメントの後ろに追加します。
   
    ```csharp
    using System.Threading.Tasks;

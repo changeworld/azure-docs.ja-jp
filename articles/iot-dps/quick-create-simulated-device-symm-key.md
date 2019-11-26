@@ -1,20 +1,20 @@
 ---
-title: 'クイック スタート: C で対称キーを使用してシミュレートされた TPM デバイスを Azure IoT Hub にプロビジョニングする | Microsoft Docs'
+title: クイック スタート:C を使用して、対称キーを使用してシミュレートされたデバイスを Azure IoT Hub にプロビジョニングする
 description: このクイック スタートでは、C デバイス SDK を使用して、Azure IoT Hub Device Provisioning Service に対称キーを使用するシミュレートされたデバイスを作成します
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 31e71e942d7bd3f7a9739eeb83bd3ed250bb2c61
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 8a5016587240dfcc0813b7f1e23cd574e82bb935
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65909020"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904857"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>クイック スタート:対称キーを使用してシミュレートされたデバイスをプロビジョニングする
 
@@ -34,7 +34,7 @@ ms.locfileid: "65909020"
 
 ## <a name="prerequisites"></a>前提条件
 
-* ['C++ によるデスクトップ開発'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードが有効になった [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 以降。
+* ["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードが有効になった [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 以降。
 * [Git](https://git-scm.com/download/) の最新バージョンがインストールされている。
 
 
@@ -124,7 +124,7 @@ ms.locfileid: "65909020"
 
 
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、 **[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel でプレイブックを実行する | Microsoft Docs
-description: この記事では、Azure Sentinel でプレイブックを実行する方法について説明します。
+title: チュートリアル:Azure Sentinel でプレイブックを実行する
+description: チュートリアル:この記事では、Azure Sentinel でプレイブックを実行する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7ab4c4ba4553e7e5f15e563c67c845758a53766f
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 7e26e901fdee8cac79cfb55aa0999487e87b8a78
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71229507"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113909"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>チュートリアル:Azure Sentinel で脅威への自動対応を設定する
 

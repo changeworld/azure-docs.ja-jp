@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 4c26431ee0d506dda547fb4027845baa15c9a134
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 773e55bd1908c04e1c73d998348d36b685524715
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997878"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075655"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -416,6 +416,24 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 データ エクスプローラーを開くには、ブラウザーで次の URL に移動します。 上記の応答メッセージにエミュレーター エンドポイントが表示されます。
 
     https://<emulator endpoint provided in response>/_explorer/index.html
+
+Linux docker コンテナーで実行されている .NET クライアント アプリケーションがあり、ホスト コンピューター上で Azure Cosmos Emulator を実行している場合、エミュレーターから Azure Cosmos アカウントに接続することはできません。 アプリがホスト コンピューター上で実行されていないため、エミュレーターのエンドポイントに一致する、Linux コンテナーに登録されている証明書を追加することはできません。 
+
+この回避策として、次の .Net コード サンプルに示すように `HttpClientHandler` インスタンスを渡すことによって、クライアント アプリケーションからサーバーの SSL 証明書の検証を無効にすることができます。 この回避策は、`Microsoft.Azure.DocumentDB` Nuget パッケージを使用している場合にのみ適用されます。これは `Microsoft.Azure.Cosmos` Nuget パッケージではサポートされていません。
+ 
+ ```csharp
+var httpHandler = new HttpClientHandler()
+{
+    ServerCertificateCustomValidationCallback = (req,cert,chain,errors) => true
+};
+ 
+using (DocumentClient client = new DocumentClient(new Uri(strEndpoint), strKey, httpHandler))
+{
+    RunDatabaseDemo(client).GetAwaiter().GetResult();
+}
+```
+
+SSL 証明書の検証を無効にするだけでなく、`/allownetworkaccess` オプションを使用してエミュレーターを起動し、エミュレーターのエンドポイントが `host.docker.internal` DNS ではなくホスト IP アドレスからアクセスできることが重要です。
 
 ## Mac または Linux 上での実行<a id="mac"></a>
 

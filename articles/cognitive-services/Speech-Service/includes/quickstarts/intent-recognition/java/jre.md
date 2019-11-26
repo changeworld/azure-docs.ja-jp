@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声、意図、エンティティを認識する (Java) - Speech Service
+title: クイック スタート:音声、意図、エンティティを認識する、Java - Speech Service
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,49 +11,50 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 441c938e9ab74eafecaf0f9188c0884696eccfae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2aa8311c9284d9aff3c50fcec30bc8ab9df6b11b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506117"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125531"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、必ず次のことを行ってください。
 
 > [!div class="checklist"]
+>
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [LUIS アプリケーションを作成し、エンドポイント キーを取得する](../../../../quickstarts/create-luis.md)
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [使用する開発環境をセットアップする](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=jre)
 
 ## <a name="open-your-project"></a>プロジェクトを開く
 
 プロジェクトを読み込んで `Main.java` を開きます。
 
-## <a name="start-with-some-boilerplate-code"></a>スケルトン コードを使用して開始する
+## <a name="start-with-some-boilerplate-code"></a>定型コードを使用して開始する
 
-このプロジェクトのスケルトンとして機能するコードを追加してみましょう。
+このプロジェクトのスケルトンとして機能する何らかのコードを追加してみましょう。
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-20,69-76)]
 
 ## <a name="create-a-speech-configuration"></a>Speech 構成を作成する
 
 `IntentRecognizer` オブジェクトを初期化するには、LUIS エンドポイント キーとリージョンを使用する構成を作成する必要があります。 main の try/catch ブロックにこのコードを挿入します
 
-このサンプルでは、`FromSubscription()` メソッドを使用して `SpeechConfig` をビルドします。 使用可能なメソッドの完全な一覧については、「[SpeechConfig クラス](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)」を参照してください。
+このサンプルでは、`FromSubscription()` メソッドを使用して `SpeechConfig` をビルドします。 使用可能なメソッドの完全な一覧については、[SpeechConfig クラス](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet)に関する記事を参照してください。
 
 > [!NOTE]
-> 音声意図判定認識にはエンドポイント キーのみが有効となるため、スターター キーやオーサリング キーではなく、LUIS エンドポイント キーを使用することが重要です。 正しいキーを取得する方法については、「[LUIS アプリケーションを作成し、エンドポイント キーを取得する](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md)」を参照してください。
+> 音声意図判定認識にはエンドポイント キーのみが有効となるため、スターター キーや オーサリング キーではなく、LUIS エンドポイント キーを使用することが重要です。 正しいキーを取得する方法については、[LUIS アプリケーションを作成し、エンドポイント キーを取得する](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md)方法に関する記事を参照してください。
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=27)]
 
-## <a name="initialize-a-intentrecognizer"></a>IntentRecognizer を初期化する
+## <a name="initialize-an-intentrecognizer"></a>IntentRecognizer を初期化する
 
-次に、`IntentRecognizer` を作成してみましょう。 Speech 構成のすぐ下にこのコードを挿入します。
+ここで、`IntentRecognizer` を作成しましょう。 Speech 構成のすぐ下にこのコードを挿入します。
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=30)]
 
-## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel と Intents を追加する
+## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel と意図を追加する
 
 次に、`LanguageUnderstandingModel` と意図認識エンジンを関連付け、認識させる意図を追加する必要があります。
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=33-36)]
@@ -66,7 +67,7 @@ ms.locfileid: "73506117"
 
 ## <a name="display-the-recognition-results-or-errors"></a>認識結果 (またはエラー) を表示する
 
-Speech サービスによって認識結果が返されたら、それを使用して何らかの操作を行います。 シンプルに保ち、結果をコンソールに出力します。
+音声サービスによって認識結果が返されたら、それを使用して何らかの操作を行います。 シンプルに保ち、結果をコンソールに出力します。
 
 `recognizeOnceAsync()` の呼び出しの下でコード [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=44-65)] を追加します。
 
@@ -76,7 +77,8 @@ Speech サービスによって認識結果が返されたら、それを使用�
 
 ## <a name="check-your-code"></a>コードを確認する
 
-この時点で、コードは次のようになります。(このバージョンにはいくつかのコメントを追加してあります) [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-76)]
+この時点で、コードは次のようになります。  
+(このバージョンにはいくつかのコメントを追加してあります) [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-76)]
 
 ## <a name="build-and-run-your-app"></a>アプリをビルドして実行する
 

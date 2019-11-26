@@ -1,19 +1,19 @@
 ---
 title: 検索結果のページングに関する C# チュートリアル
 titleSuffix: Azure Cognitive Search
-description: このチュートリアルは、"初めてのアプリを作成する - Azure Cognitive Search" プロジェクトに基づいて作成されており、2 種類のページングのいずれかを選択できます。 1 つ目のページングでは、ページ番号の範囲のボタンや、[最初]、[次へ]、[前へ]、および [最後] ボタンなどを使用します。 2 つ目のページング システムでは、垂直スクロール バーの下限に移動することによってトリガーされる無限スクロールを使用します。
+description: このチュートリアルでは、検索結果のページングについて説明します。 これは、最初、次、前、最後、および番号付きボタンでページングする既存のホテル プロジェクトに基づいて作成されています。 2 番目のページング システムでは、垂直スクロール バーをその下限に移動することによってトリガーされる無限スクロールを使用します。
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 935e6d43cf77d94b485d55eb4bc5eb517bf802a0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 04f8229a86fbd8fbd5404997926412e760e74973
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793996"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113769"
 ---
 # <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>C# のチュートリアル: 検索結果のページング - Azure Cognitive Search
 

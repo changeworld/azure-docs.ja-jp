@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center for IoT のカスタム アラートの作成 | Microsoft Docs
-description: Azure Security Center for IoT のカスタム デバイス アラートを作成して割り当てます。
+title: クイック スタート:Azure Security Center for IoT のカスタム アラートを作成する
+description: このクイックスタートでは、Azure Security Center for IoT のカスタム デバイス アラートを作成して割り当てます。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: ed10cbf89f878f8d27b43476d26ac93dd373ed66
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eca5d69efb04cf8210b0b2aa502bcee5cd4f5264
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597011"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904138"
 ---
 # <a name="quickstart-create-custom-alerts"></a>クイック スタート:カスタム アラートの作成
 
@@ -82,7 +82,7 @@ ms.locfileid: "68597011"
 次の表は、カスタマイズに使用できるアラートの概要を示します。
 
 
-| Severity | 名前 | データ ソース | 説明 | 推奨される修復方法|
+| 重大度 | 名前 | データ ソース | 説明 | 推奨される修復方法|
 |---|---|---|---|---|
 | 低      | カスタム アラート - AMQP プロトコルによるクラウドからデバイスへのメッセージの数が、許容範囲外である          | IoT Hub     | 特定の時間枠内におけるクラウドからデバイスへのメッセージ (AMQP プロトコル) の数が、現在の構成の許容範囲外です。||
 | 低      | カスタム アラート - AMQP プロトコルによる、拒否されたクラウドからデバイスへのメッセージの数が、許容範囲外である | IoT Hub     | 特定の時間枠内においてデバイスから拒否された、クラウドからデバイスへのメッセージ (AMQP プロトコル) の数が、現在の構成の許容範囲外です。||

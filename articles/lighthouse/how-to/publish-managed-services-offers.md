@@ -1,18 +1,14 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure の委任されたリソース管理に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
-ms.date: 10/17/2019
+ms.date: 11/15/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 4b2ce1253fd4421b36105fdbae68c6e89173a3c6
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 29f17e6227d3c50a4d9fe13f7525ac71f7550632
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615459"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131291"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -81,10 +77,10 @@ ms.locfileid: "73615459"
 
 **承認**ごとに、以下を指定する必要があります。 その後、必要なだけ **[New authorization]\(新しい承認\)** を選択して、ユーザーやロールの定義を追加できます。
 
-  - **Azure AD Object ID (Azure AD オブジェクト ID)** :実際の顧客のリソースに対する特定のアクセス許可を付与される (ロールの定義で表される) ユーザー、ユーザー グループ、またはアプリケーションの Azure AD 識別子です。
-  - **Azure AD Object Display Name (Azure AD オブジェクトの表示名)** :顧客がこの承認の目的を理解するのに役立つフレンドリ名。 この名前は、顧客がリソースを委任するときに表示されます。
-  - **ロール定義**: 一覧から、使用可能な Azure AD の組み込みロールのいずれかを選択します。 このロールにより、 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーに与えられる、実際の顧客のリソースに対するアクセス許可が決定されます。 これらのロールについて詳しくは、[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)に関する記事と、「[Azure の委任されたリソース管理でのロールのサポート](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)」をご覧ください
-  - **Assignable Roles (割り当て可能なロール)** :この承認の **[ロール定義]** で [ユーザー アクセス管理者] を選択した場合は、これは必須です。 その場合、割り当て可能なロールをここで 1 つ以上追加する必要があります。 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーは、これらの**割り当て可能なロール**を[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ために必要です。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可はこのユーザーに適用されないことに注意してください。 ここで 1 つ以上のロールを選択しない場合、送信の認定は成功しません。 (このユーザーの [ロール定義] に対して [ユーザーアクセス管理者] を選択しなかった場合、このフィールドは無効になります)。
+- **Azure AD Object ID (Azure AD オブジェクト ID)** :実際の顧客のリソースに対する特定のアクセス許可を付与される (ロールの定義で表される) ユーザー、ユーザー グループ、またはアプリケーションの Azure AD 識別子です。
+- **Azure AD Object Display Name (Azure AD オブジェクトの表示名)** :顧客がこの承認の目的を理解するのに役立つフレンドリ名。 この名前は、顧客がリソースを委任するときに表示されます。
+- **ロール定義**: 一覧から、使用可能な Azure AD の組み込みロールのいずれかを選択します。 このロールにより、 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーに与えられる、実際の顧客のリソースに対するアクセス許可が決定されます。 これらのロールについて詳しくは、[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)に関する記事と、「[Azure の委任されたリソース管理でのロールのサポート](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)」をご覧ください
+- **Assignable Roles (割り当て可能なロール)** :この承認の **[ロール定義]** で [ユーザー アクセス管理者] を選択した場合は、これは必須です。 その場合、割り当て可能なロールをここで 1 つ以上追加する必要があります。 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーは、これらの**割り当て可能なロール**を[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ために必要です。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可はこのユーザーに適用されないことに注意してください。 ここで 1 つ以上のロールを選択しない場合、送信の認定は成功しません。 (このユーザーの [ロール定義] に対して [ユーザーアクセス管理者] を選択しなかった場合、このフィールドは無効になります)。
 
 > [!TIP]
 > ほとんどの場合、一連の個々のユーザー アカウントではなく、Azure AD のユーザー グループまたはサービス プリンシパルにアクセス許可を割り当てます。 これにより、実際のアクセス要件が変更されたときに、プランを更新して再発行することなく、個々のユーザーのアクセス権を追加または削除できます。 その他の推奨事項については、「[Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー](../concepts/tenants-users-roles.md)」をご覧ください。
@@ -141,64 +137,19 @@ ms.locfileid: "73615459"
 
 すべてのセクションの指定が済んだら、Azure Marketplace にオファーを発行します。 **[発行]** ボタンを選択して、お客様のオファーを一般公開するプロセスを始めます。 このプロセスの詳細については、「[Azure Marketplace および AppSource のオファーを発行する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer)」を参照してください。
 
+いつでも[更新済みバージョンのオファー](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer)を公開できます。 たとえば、以前に公開されたオファーに新しいロールの定義を追加したい場合があります。 そうすると、オファーを既に追加している顧客には、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページに、更新が利用可能であることを知らせるアイコンが表示されます。 各顧客は、[変更を確認](view-manage-service-providers.md#update-service-provider-offers)して、新しいバージョンに更新するかどうかを決定できます。 
+
 ## <a name="the-customer-onboarding-process"></a>顧客オンボーディング プロセス
 
-顧客がオファーを追加すると、[1 つまたは複数の特定のサブスクリプションまたはリソース グループを委任](view-manage-service-providers.md#delegate-resources)できるようになります。これらは、Azure の委任されたリソース管理のためにオンボードされます。 顧客がオファーを承諾しても、まだリソースを委任していなければ、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページの **[プロバイダーのオファー]** セクションの上部に注意書きが表示されます。 顧客のテナント内のユーザーがこの委任を実行できない場合、そのユーザーには、サブスクリプションの所有者ロールがないと考えられます。 ユーザーは、サブスクリプションを委任できるユーザーを探すために、Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開いて、[所有者ロールを持つすべてのユーザーを確認](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions)できます。
+顧客がオファーを追加すると、[1 つまたは複数の特定のサブスクリプションまたはリソース グループを委任](view-manage-service-providers.md#delegate-resources)できるようになります。これらは、Azure の委任されたリソース管理のためにオンボードされます。 顧客がオファーを承諾しても、まだリソースを委任していなければ、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページの **[プロバイダーのオファー]** セクションの上部に注意書きが表示されます。
 
-サブスクリプション (またはサブスクリプション内のリソース グループ) をオンボードできるようにするには、**Microsoft.ManagedServices** リソースプロバイダーを手動で登録することで、オンボードのためにサブスクリプションを承認する必要があります。 共同作成者または所有者のロールを持つ、顧客のテナントのユーザーは、「[Azure リソースプロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」で概説されている手順に従って、この操作を行うことができます。
+> [!IMPORTANT]
+> 委任は、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みコール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions)することができます。
 
-その後、顧客は次のいずれかの方法で、サブスクリプションをオンボードする準備が完了していることを確認できます。
+顧客がサブスクリプション (またはサブスクリプション内の 1 つまたは複数のリソース グループ) を委任すると、そのサブスクリプションに **Microsoft. ManagedServices** リソースプロバイダーが登録され、テナント内のユーザーは、オファー内の承認に従って、委任されたリソースにアクセスできるようになります。
 
-### <a name="azure-portal"></a>Azure ポータル
-
-1. Azure portal で、サブスクリプションを選択します。
-1. **[リソース プロバイダー]** を選択します。
-1. **Microsoft.ManagedServices** が **[登録済み]** と表示されることを確認します。
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-これにより、次のような結果が返されます。
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-これにより、次のような結果が返されます。
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> 現在のところ、サブスクリプションで Azure Databricks が使用されている場合、そのサブスクリプション (またはサブスクリプション内のリソース グループ) は委任できません。 同様に、サブスクリプション (またはサブスクリプション内のリソース グループ) が既に委任されている場合、現在のところ、そのサブスクリプションで Databricks ワークスペースを作成することはできません。
 
 ## <a name="next-steps"></a>次の手順
 

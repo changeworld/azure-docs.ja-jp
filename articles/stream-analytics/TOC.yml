@@ -133,6 +133,9 @@
         - name: Event Hubs データの処理
           href: ../event-hubs/process-data-azure-stream-analytics.md
           maintainContext: true
+        - name: Azure SQL Database の処理
+          href: ../sql-database/sql-database-stream-analytics.md
+          maintainContext: true
         - name: 地理空間のシナリオ
           href: geospatial-scenarios.md
     - name: 監視

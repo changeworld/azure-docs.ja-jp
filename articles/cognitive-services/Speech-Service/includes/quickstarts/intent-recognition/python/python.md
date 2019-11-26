@@ -11,18 +11,19 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 8916cb0438f0005d3ff9f720cf1b5a5653eeac77
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4efa535118d075addf78b2e9be6a645c458d6bb4
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506165"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125533"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、必ず次のことを行ってください。
 
 > [!div class="checklist"]
+>
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [LUIS アプリケーションを作成し、エンドポイント キーを取得する](../../../../quickstarts/create-luis.md)
 > * [使用する開発環境をセットアップする](../../../../quickstarts/setup-platform.md)
@@ -39,7 +40,7 @@ Python エディターで Quickstart.py を開きます。
 
 ## <a name="create-a-speech-configuration"></a>Speech 構成を作成する
 
-`IntentRecognizer` オブジェクトを初期化するには、LUIS Endpoing のキーと リージョンを使用する構成を作成する必要があります。 このコードを次に挿入します。
+`IntentRecognizer` オブジェクトを初期化するには、LUIS エンドポイント キーとリージョンを使用する構成を作成する必要があります。 このコードを次に挿入します。
 
 このサンプルでは、LUIS キーとリージョンを使用して `SpeechConfig` オブジェクトを構築します。 使用可能なメソッドの完全な一覧については、[SpeechConfig クラス](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)に関する記事を参照してください。
 
@@ -48,9 +49,9 @@ Python エディターで Quickstart.py を開きます。
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 
-## <a name="initialize-a-intentrecognizer"></a>IntentRecognizer を初期化する
+## <a name="initialize-an-intentrecognizer"></a>IntentRecognizer を初期化する
 
-次に、`IntentRecognizer` を作成してみましょう。 Speech 構成のすぐ下にこのコードを挿入します。
+ここで、`IntentRecognizer` を作成しましょう。 Speech 構成のすぐ下にこのコードを挿入します。
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel と意図を追加する
@@ -60,7 +61,7 @@ Python エディターで Quickstart.py を開きます。
 
 ## <a name="recognize-an-intent"></a>意図を認識する
 
-`IntentRecognizer` オブジェクトから、`recognize_once()` メソッドを呼び出します。 このメソッドを利用すると、認識のために語句が 1 つ送信されることと、その語句が認識されたら、音声の認識を停止することが音声サービスで理解されます。
+`IntentRecognizer` オブジェクトから、`recognize_once()` メソッドを呼び出します。 認識の対象として 1 つの語句を送信しようとしていること、また、その語句が識別された後で、音声認識を停止しようとしていることが、このメソッドを通じて Speech サービスに伝えられます。
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>認識結果 (またはエラー) を表示する
@@ -71,7 +72,8 @@ Python エディターで Quickstart.py を開きます。
 
 ## <a name="check-your-code"></a>コードを確認する
 
-この時点で、コードは次のようになります。(このバージョンにはいくつかのコメントを追加してあります) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
+この時点で、コードは次のようになります。  
+(このバージョンにはいくつかのコメントを追加してあります) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
 
 ## <a name="build-and-run-your-app"></a>アプリをビルドして実行する
 

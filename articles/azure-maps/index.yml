@@ -45,6 +45,8 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-maps/tutorial-geofence">ジオフェンスの設定</a>
+          - html: <a href="/azure-maps/tutorial-iot-hub-maps">空間分析</a>
+          - html: <a href=/azure/azure-maps/tutorial-ev-routing">Azure Notebooks を使用した EV ルーティング (Python)</a>
   - title: リファレンス
     items:
       - type: list
@@ -52,6 +54,6 @@ sections:
         className: cardsW
         items:
           - title: JavaScript
-            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">マップ コントロール</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">マップ コントロール</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/">描画ツール モジュール</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-rest/">サービス モジュール</a></p>'
           - title: REST
             html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">データ サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">位置情報サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/mobility">モビリティ サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Render Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Route Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Search Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">空間サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">タイムゾーン サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Traffic Service</a></p>'

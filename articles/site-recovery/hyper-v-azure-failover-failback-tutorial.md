@@ -1,20 +1,19 @@
 ---
-title: ディザスター リカバリーの最中に Azure Site Recovery を使用して Hyper-V VM を Azure にフェールオーバーおよびフェールバックする | Microsoft Docs
+title: Azure Site Recovery で Hyper-V VM のフェールオーバーとフェールバックを設定する
 description: ディザスター リカバリーの最中に Azure Site Recovery サービスを使用して Hyper-V VM を Azure にフェールオーバーおよびフェールバックする方法を説明します。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/07/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4b9680b00905126d261562d7bec64bb931c1cda3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a8c197c2f0875bb31d091fb5839730ee1568b471
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845717"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082649"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック
 

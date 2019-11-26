@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 40969362e339770f18374ff22af5b3fe63908e65
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 248b66a928d373678d3058be488e226ee51bbcae
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845734"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092125"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Android アプリを作成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "68845734"
   - NDK サンプルを構築するには、Android Studio の NDK と CMake 3.6 以降の SDK Tools もインストールする必要があります。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。
   - コンピューターが Android デバイスと通信するには、追加のデバイス ドライバーが必要になることがあります。 追加情報と手順については、[こちら](https://developer.android.com/studio/run/device.html)を参照してください。
-- アプリでは、ARCore **1.8** をターゲットにする必要があります。
+- アプリは ARCore **1.11.0** をターゲットにする必要があります。
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -52,7 +52,7 @@ ms.locfileid: "68845734"
 
 [!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
 
-`arcore_c_api.h` を[ここ](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.8.0/libraries/include/arcore_c_api.h)からダウンロードし、`Android\NDK\libraries\include` に配置してください。
+`arcore_c_api.h` を[ここ](https://raw.githubusercontent.com/google-ar/arcore-android-sdk/v1.11.0/libraries/include/arcore_c_api.h)からダウンロードし、`Android\NDK\libraries\include` に配置してください。
 
 新しく複製されたリポジトリ内から、次のコマンドを実行して、サブモジュールを初期化します。
 

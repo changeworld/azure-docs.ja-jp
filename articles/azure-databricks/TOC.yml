@@ -226,7 +226,7 @@
       maintainContext: true
     - name: Data
       items:
-        - name: Databricks ファイル システム
+        - name: Databricks ファイル システム (DBFS)
           href: /azure/databricks/data/databricks-file-system
           maintainContext: true
         - name: データベースとテーブル
@@ -242,7 +242,7 @@
             - name: JDBC を使用した SQL データベース
               href: /azure/databricks/data/data-sources/sql-databases
               maintainContext: true
-            - name: Apache Spark コネクタを使用した Azure SQL Database
+            - name: Apache Spark コネクタを使用した SQL データベース
               href: /azure/databricks/data/data-sources/sql-databases-azure
               maintainContext: true
             - name: Azure BLOB ストレージ
@@ -254,7 +254,7 @@
             - name: Azure Data Lake Storage
               href: /azure/databricks/data/data-sources/azure/azure-datalake
               maintainContext: true
-            - name: Azure Data Lake Storage のパススルー
+            - name: Azure Data Lake Storage 資格情報のパススルー
               href: /azure/databricks/data/data-sources/azure/adls-passthrough
               maintainContext: true
             - name: Cosmos DB
@@ -275,7 +275,7 @@
             - name: ElasticSearch
               href: /azure/databricks/data/data-sources/elasticsearch
               maintainContext: true
-            - name: イメージ
+            - name: Image
               href: /azure/databricks/data/data-sources/image
               maintainContext: true
             - name: Hive のテーブル
@@ -632,7 +632,7 @@
             - name: コストベース オプティマイザー
               href: /azure/databricks/spark/latest/spark-sql/cbo
               maintainContext: true
-            - name: データ スキップ索引
+            - name: データ スキップ インデックス
               href: /azure/databricks/spark/latest/spark-sql/dataskipping-index
               maintainContext: true
             - name: DBIO を使用したクラウド ストレージへのトランザクション書き込み
@@ -641,7 +641,7 @@
             - name: 無効なレコードとファイルを処理する
               href: /azure/databricks/spark/latest/spark-sql/handling-bad-records
               maintainContext: true
-            - name: ハイ コンカレンシーのためのタスク プリエンプション
+            - name: ハイ コンカレンシーのためのタスク p
               href: /azure/databricks/spark/latest/spark-sql/preemption
               maintainContext: true
             - name: 対話型ワークフローで大規模なクエリを処理する
@@ -764,16 +764,16 @@
               href: /azure/databricks/applications/deep-learning/data-prep/ddl-data
               maintainContext: true
             - name: Petastorm を使用してデータを読み込む
-              href: /azure/databricks//applications/deep-learning/data-prep/petastorm
+              href: /azure/databricks/applications/deep-learning/data-prep/petastorm
               maintainContext: true
             - name: DataFrames と Datasets を TFRecord ファイルに保存する
-              href: /azure/databricks//applications/deep-learning/data-prep/dataset-to-tfrecords
+              href: /azure/databricks/applications/deep-learning/data-prep/dataset-to-tfrecords
               maintainContext: true
             - name: TensorFlow を使用して TFRecord ファイルからデータを読み込む
-              href: /azure/databricks//applications/deep-learning/data-prep/tfrecords-to-tensorflow
+              href: /azure/databricks/applications/deep-learning/data-prep/tfrecords-to-tensorflow
               maintainContext: true
             - name: TensorFlow を使用して TFRecord ファイルにデータを保存する
-              href: /azure/databricks//applications/deep-learning/data-prep/tensorflow-to-tfrecords
+              href: /azure/databricks/applications/deep-learning/data-prep/tensorflow-to-tfrecords
               maintainContext: true
         - name: 単一ノード トレーニング
           items:
@@ -1061,6 +1061,17 @@
         - name: ワークスペース ストレージを管理する
           href: /azure/databricks/administration-guide/workspace-storage/storage
           maintainContext: true
+        - name: クラスター構成を有効にする
+          items:
+            - name: クラスター構成の概要
+              href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: コンテナー サービスを有効にする
+              href: /azure/databricks/administration-guide/clusters/container-services
+              maintainContext: true
+            - name: Databricks Runtime for Genomics を有効にする
+              href: /azure/databricks/administration-guide/clusters/genomics-runtime
+              maintainContext: true
         - name: 仮想ネットワークの管理
           items:
             - name: Virtual Networks の概要
@@ -1084,7 +1095,7 @@
     - name: トラブルシューティング
       items:
         - name: 一般的な質問
-          href: /azure/databricks//azure/azure-databricks/frequently-asked-questions-databricks
+          href: /azure/azure-databricks/frequently-asked-questions-databricks
           maintainContext: true
         - name: 管理
           items:

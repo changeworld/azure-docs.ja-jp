@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 94cae186cee099618772f53d2b820e12f20cad64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7069a3c8b266938e974d1b7130a349e0c9b66b5c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562414"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111833"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>クイック スタート:Azure Spatial Anchors を使用して HoloLens アプリを C++/WinRT と DirectX で作成する
 
@@ -58,7 +58,7 @@ Visual Studio で `HoloLens\DirectX\SampleHoloLens.sln` を開きます。
 
 **[ソリューション構成]** を **[リリース]** に変更し、 **[ソリューション プラットフォーム]** を **[x86]** に変更し、デプロイ ターゲット オプションから **[デバイス]** を選択します。
 
-HoloLens 2 を使用している場合は、 **[x86]** ではなく **[ARM]** を **[ソリューション プラットフォーム]** として使用します。
+HoloLens 2 を使用している場合は、**x86** の代わりに **ARM64** を **[ソリューション プラットフォーム]** として使用します。
 
 ![Visual Studio の構成](./media/get-started-hololens/visual-studio-configuration.png)
 

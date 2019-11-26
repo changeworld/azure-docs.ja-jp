@@ -1,5 +1,5 @@
 ---
-title: 'プライベート接続でオンプレミスのネットワークを Azure に拡張する - ExpressRoute の概要: Azure | Microsoft Docs'
+title: Azure ExpressRoute の概要プライベート接続を介して接続する
 description: ExpressRoute の技術概要では、ExpressRoute 接続がプライベート接続を介してオンプレミスのネットワークを Azure に拡張するしくみについて説明します。
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: a068912857c16d2257d09e221477afc5d4a8d603
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: db728de120a50461257d8e85e708aa4c7f4d6190
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123327"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083406"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute の概要
 ExpressRoute を利用すると、接続プロバイダーが提供するプライベート接続を介して、オンプレミスのネットワークを Microsoft クラウドに拡張できます。 ExpressRoute では、Microsoft Azure、Office 365 などの Microsoft クラウド サービスへの接続を確立できます。

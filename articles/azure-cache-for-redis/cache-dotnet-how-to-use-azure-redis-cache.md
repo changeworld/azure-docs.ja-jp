@@ -1,26 +1,19 @@
 ---
-title: 'クイック スタート: .NET アプリで Azure Cache for Redis を使用する方法 | Microsoft Docs'
+title: 'クイックスタート: .NET アプリで Azure Cache for Redis を使用する方法'
 description: このクイック スタートでは、.NET アプリから Azure Cache for Redis にアクセスする方法について説明します
-services: cache,app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: c502f74c-44de-4087-8303-1b1f43da12d5
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5930ac3834c0b697a4c03ce5b110dfeac105436a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 2738805043b701d9e116d962f88225a6c6ae3e9b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324431"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122808"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-framework-application"></a>クイック スタート:.NET Framework アプリケーションで Azure Cache for Redis を使用する
 

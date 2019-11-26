@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center for IoT ソリューションを構成する | Microsoft Docs
-description: Azure Security Center for IoT を使用してエンド ツー エンドの IoT ソリューションを構成する方法について説明します。
+title: クイック スタート:Azure Security Center for IoT ソリューションを構成する
+description: このクイックスタートでは、Azure Security Center for IoT を使用してエンド ツー エンドの IoT ソリューションを構成する方法について説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2019
+ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: a546d153c6fe4f14ccc8c21308bd4a33385870c3
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e670df359cc33c9eaca089d0ed8f9614ef8c0468
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299700"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904146"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>クイック スタート:IoT ソリューションを構成する
 

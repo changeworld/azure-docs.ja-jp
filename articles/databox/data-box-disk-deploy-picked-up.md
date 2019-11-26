@@ -10,12 +10,12 @@ ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b67e7bf0b6b79d2ae29c2ba8ed7c337f152faebc
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128695"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092074"
 ---
 ::: zone target="chromeless"
 
@@ -137,11 +137,25 @@ ms.locfileid: "71128695"
     - **[概要] > [出荷ラベルをダウンロード]** に移動し、返送ラベルを取得します。
     - デバイスにラベルを貼り付けます。 ラベルが見えることを確認します。
 
-2. 集荷を依頼するには:
-    - **SingPost** ホットラインには、営業時間内 (月曜日から金曜日の午前 9 時から午後 5 時まで) に **6845 6485** まで電話をかけます。  
-    - "*Microsoft Azure の集荷*" であることとサポート リクエスト番号 (返送用配送先住所ラベルには追跡番号) を伝え、集荷を手配します。 
-    - 口頭で集荷スケジュールが確認されます。 
-    - 配送業者が集荷に来ない場合は、**SingPost** (**6845 6485**) に別の手配を依頼します。 
+2. 集荷を要求するには、次のテンプレートに追跡番号を記入して SingPost のカスタマー サービスにメールを送信してください (追跡番号は、納品パッケージに同梱されている返送用ラベルに記載されています)。
+
+    ```
+    To: kadcustcare@singpost.com
+    Subject: Microsoft Azure Pick-up - XZ00001234567 
+    Body: 
+     a. Requestor name
+     b. Requestor contact number
+     c. Requestor collection address
+     d. Preferred collection date
+    ```
+
+   > [!NOTE]
+   > 営業日に受信した予約の取り扱い:
+   > - 午後 3 時より前に受信した場合、集荷は翌営業日の午前 9 時から午後 1 時の間になります。
+   > - 午後 3 時より後に受信した場合、集荷は翌営業日の午後 2 時から午後 6 時の間になります。
+
+   問題が発生した場合は、Data Box Operations Asia (adbo@microsoft.com) にご連絡ください。 ジョブ名を件名ヘッダーに指定し、発生している問題についてお知らせください。
+
 3. 配送業者に渡します。 
 
 

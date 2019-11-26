@@ -1,5 +1,5 @@
 ---
-title: IoT Hub デバイス ストリームを介して Node.js でデバイス アプリと通信する (プレビュー) | Microsoft Docs
+title: Azure IoT Hub デバイス ストリームを使用して Node.js でデバイス アプリと通信する
 description: このクイックスタートでは、デバイス ストリームを介して IoT デバイスと通信する Node.js サービス側アプリケーションを実行します。
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 4acfe148e424d41308e310abd2a10e4e21133799
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 538e04d7ae4f6528c26762a8efac06d02b4f86bc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900840"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083728"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して Node.js でデバイス アプリケーションと通信する (プレビュー)
 

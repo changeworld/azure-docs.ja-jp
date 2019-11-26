@@ -1,23 +1,23 @@
 ---
-title: Node.js を使用して TPM デバイスを Azure Device Provisioning Service に登録する | Microsoft Docs
+title: クイック スタート:Node.js を使用して TPM デバイスを Azure Device Provisioning Service に登録する
 description: Azure クイック スタート - Node.js Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録します。 このクイック スタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 12/21/2017
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 202b308c3add7facdbb28dc634f70e5090dd2a9c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 02d5ec3b7ddd960e15b75fd3aa6691a187b5911a
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092081"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903481"
 ---
-# <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>Node.js Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-nodejs-service-sdk"></a>クイック スタート:Node.js Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
@@ -93,7 +93,7 @@ ms.locfileid: "55092081"
 
     ![コマンドの出力の登録プロパティ](./media/quick-enroll-device-tpm-node/output.png) 
 
-4. 個々の登録が作成されたことを確認します。 Azure Portal の Device Provisioning Service の概要ブレードで、**[登録を管理します]** を選択します。 **[個々の登録]** タブを選択し、新しい登録エントリ (*1 つ目*) をクリックして、エントリの保証キーと他のプロパティを確認します。
+4. 個々の登録が作成されたことを確認します。 Azure Portal の Device Provisioning Service の概要ブレードで、 **[登録を管理します]** を選択します。 **[個々の登録]** タブを選択し、新しい登録エントリ (*1 つ目*) をクリックして、エントリの保証キーと他のプロパティを確認します。
 
     ![ポータルの登録プロパティ](./media/quick-enroll-device-tpm-node/verify-enrollment-portal.png) 
  
@@ -104,7 +104,7 @@ Node.js Service のサンプルを調べる予定の場合は、このクイッ�
 
 1. マシンに表示されている Node.js サンプルの出力ウィンドウを閉じます。
 1. シミュレートされた TPM デバイスを作成した場合は、TPM シミュレーター ウィンドウを閉じます。
-2. Azure Portal で Device Provisioning サービスに移動し、**[登録を管理します]** をクリックし、**[個々の登録]** タブを選択します。このクイックスタートを使用して作成した登録エントリの*登録 ID* を選択し、ブレードの上部の **[削除]** ボタンをクリックします。 
+2. Azure Portal で Device Provisioning サービスに移動し、 **[登録を管理します]** をクリックし、 **[個々の登録]** タブを選択します。このクイックスタートを使用して作成した登録エントリの*登録 ID* を選択し、ブレードの上部の **[削除]** ボタンをクリックします。 
  
 ## <a name="next-steps"></a>次の手順
 このクイックスタートでは、TPM デバイスの個々の登録エントリをプログラムで作成し、TPM のシミュレートされたデバイスをマシンに作成し、Azure IoT Hub Device Provisioning Service を使って IoT ハブにプロビジョニングしました。 Device Provisioning に関する理解をさらに深めるには、Azure Portal における Device Provisioning Service の設定に関するチュートリアルに進んでください。 

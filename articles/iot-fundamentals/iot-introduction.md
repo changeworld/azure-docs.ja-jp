@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 2f46ebcabd98c7a8c3376157c72da9ec5ed424a4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce82a2cc4cc936d2e0a7a8b82cbc0ed7e5c6eb52
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935227"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048647"
 ---
 # <a name="what-is-azure-internet-of-things-iot"></a>Azure IoT (モノのインターネット) とは
 
@@ -105,7 +105,7 @@ IoT ソリューションの主な構成要素は、デバイスとバックエ�
 
 Azure には IoT に関連したサービスがいくつか存在するため、どのサービスを使えばよいかがわかりにくいことがあります。 一部のサービス (IoT Central、IoT ソリューション アクセラレータなど) には、短時間で独自のソリューションを作成し、使用を開始するのに役立つテンプレートが用意されています。 または、提供されている他のサービスを利用して、独自のソリューションを一から開発することもできます。つまり、どちらを選ぶかは、ご自分がどの程度のサポートを必要としているか、またどの程度の制御を行う必要があるかにかかっています。 以下に、提供されているサービスとその用途を一覧で示します。
 
-1. [**IoT Central**](../iot-central/core/overview-iot-central.md):IoT デバイスの接続、監視、管理を支援する SaaS ソリューションです。 まずご自分のデバイスの種類に合ったテンプレートを選び、そのデバイスのオペレーターが使用することになる基本的な IoT Central アプリケーションを作成してテストすることができます。 また、IoT Central アプリケーションを使って、デバイスを監視したり、新しいデバイスをプロビジョニングしたりすることもできます。 このサービスは、サービスの細かなカスタマイズを必要としないシンプルな IoT ソリューションに適しています。 
+1. [**IoT Central**](../iot-central/core/overview-iot-central.md):これは IoT ソリューションの作成を簡素化し、IoT の管理、運用、開発の負担とコストを削減するのに役立つ IoT アプリケーション プラットフォームです。 まずご自分のデバイスの種類に合ったテンプレートを選び、そのデバイスのオペレーターが使用することになる基本的な IoT Central アプリケーションを作成してテストすることができます。 また、IoT Central アプリケーションを使って、デバイスを監視したり、新しいデバイスをプロビジョニングしたりすることもできます。 このサービスは、サービスの細かなカスタマイズを必要としないシンプルな IoT ソリューションに適しています。
 
 2. [**IoT ソリューション アクセラレータ**](/azure/iot-suite):IoT ソリューションの開発期間を短縮する目的で使用できる一連の PaaS ソリューションを集めたものです。 まずは、用意されている IoT ソリューションを足掛かりとし、要件に応じて自在にソリューションをカスタマイズします。 バックエンドをカスタマイズするためには Java または .NET のスキルが必要です。また、視覚化をカスタマイズするためには JavaScript のスキルが必要です。 
 

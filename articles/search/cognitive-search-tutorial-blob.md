@@ -1,5 +1,5 @@
 ---
-title: REST チュートリアル:JSON BLOB からテキストと構造を抽出する AI エンリッチメント パイプラインを作成する
+title: チュートリアル:JSON BLOB からテキストと構造をすばやく抽出する
 titleSuffix: Azure Cognitive Search
 description: Postman と Azure Cognitive Search REST API を使用した、JSON BLOB のコンテンツに対するテキスト抽出と自然言語処理の例を、順を追って説明します。
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: cb05d85c32d7eaed002d3e3bacbe7fdbd17310eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5dffafba0f0dc0dc108bf2c82929c157018d8dbb
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790190"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113660"
 ---
-# <a name="tutorial-add-structure-to-unstructured-content-with-ai-enrichment"></a>チュートリアル:AI エンリッチメントを使用して "非構造化コンテンツ" に構造を追加する
+# <a name="tutorial-extract-text-and-structure-from-json-blobs-in-azure-using-rest-apis-azure-cognitive-search"></a>チュートリアル:REST Api (Azure Cognitive Search) を使用して Azure の JSON BLOB からテキストと構造を抽出する
 
-非構造化テキストまたは画像のコンテンツがある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)を使用すると、情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ新しいコンテンツを作成することができます。 パイプラインでは画像ファイル (JPG、PNG、TIFF) を処理できますが、このチュートリアルでは、ワードベースのコンテンツに焦点を当て、言語検出とテキスト分析を適用して、クエリ、ファセット、およびフィルターで利用できる新しいフィールドと情報を作成します。
+Azure Blob Storage に非構造化テキストまたは画像のコンテンツがある場合、[AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)を使用すると、情報を抽出し、フルテキスト検索やナレッジ マイニングのシナリオに役立つ新しいコンテンツを作成することができます。 パイプラインでは画像ファイル (JPG、PNG、TIFF) を処理できますが、このチュートリアルでは、ワードベースのコンテンツに焦点を当て、言語検出とテキスト分析を適用して、クエリ、ファセット、およびフィルターで利用できる新しいフィールドと情報を作成します。
 
 > [!div class="checklist"]
 > * まずは、Azure Blob Storage で、PDF、MD、DOCX、PPTX などのドキュメント全体 (非構造化テキスト) から始める。

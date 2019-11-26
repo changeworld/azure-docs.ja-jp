@@ -1,7 +1,7 @@
 ---
 title: Form Recognizer とは
 titleSuffix: Azure Cognitive Services
-description: Form Recognizer を使用してフォームとテーブルのデータを解析する方法を学習します。
+description: Azure Cognitive Services Form Recognizer を使用すると、フォーム ドキュメントからキーと値のペアやテーブル データを識別して抽出できます。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: b07201556f08bde4ef8c7a7904c6619a126d7765
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 86e0494ded84e9711b2283ae5fad77ff626cf792
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594543"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904479"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 

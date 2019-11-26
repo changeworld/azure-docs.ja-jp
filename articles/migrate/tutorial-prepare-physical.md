@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: df425f723aa6a5e261ed6dcd15abfe87b367ad68
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 176dfdabeee6299bba0eb17085be25ced3e97993
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747977"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091913"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>物理サーバーの評価および Azure への移行を準備する
 
@@ -99,25 +99,25 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
 
 ### <a name="verify-physical-server-settings"></a>物理サーバーの設定を確認する
 
-1. サーバー評価のため、[物理サーバーの要件](migrate-support-matrix-hyper-v.md#assessment-hyper-v-host-requirements)を確認します。
-2. 物理サーバー上で[必要なポート](migrate-support-matrix-hyper-v.md#assessment-port-requirements)が開かれていることを確認します。
+1. サーバー評価のため、[物理サーバーの要件](migrate-support-matrix-physical.md#assessment-physical-server-requirements)を確認します。
+2. 物理サーバー上で[必要なポート](migrate-support-matrix-physical.md#assessment-port-requirements)が開かれていることを確認します。
 
 
 ### <a name="verify-appliance-settings"></a>アプライアンスの設定の確認
 
 次のチュートリアルで Azure Migrate アプライアンスを設定して評価を開始する前に、アプライアンスのデプロイの準備を行います。
 
-1. アプライアンスの要件を[確認](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements)します。
-2. アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access)します。
+1. アプライアンスの要件を[確認](migrate-support-matrix-physical.md#assessment-appliance-requirements)します。
+2. アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-support-matrix-physical.md#assessment-appliance-url-access)します。
 3. 検出および評価中にアプライアンスによって収集されるデータを確認します。
-4. アプライアンスのポート アクセス要件に[注意](migrate-support-matrix-hyper-v.md#assessment-port-requirements)します。
+4. アプライアンスのポート アクセス要件に[注意](migrate-support-matrix-physical.md#assessment-port-requirements)します。
 
 
 ### <a name="set-up-an-account-for-physical-server-discovery"></a>物理サーバー検出用のアカウントを設定する
 
 Azure Migrate には、オンプレミスのサーバーを検出するためのアクセス許可が必要です。
 
-- **Windows:** 探索に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。ユーザー アカウントは、リモート デスクトップ ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー グループに追加する必要があります。
+- **Windows:** 探索に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。ユーザー アカウントは、リモート管理ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザーのグループに追加する必要があります。
 - **Linux:** 検出する Linux サーバーのルート アカウントが必要です。
 
 

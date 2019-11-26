@@ -1,7 +1,7 @@
 ---
-title: Azure Cognitive Services の Text Analytics REST API を使用した感情分析
+title: Text Analytics REST API を使用した感情分析の実行
 titleSuffix: Azure Cognitive Services
-description: Text Analytics REST API を使用したセンチメントの検出方法について説明します。
+description: この記事では、Azure Cognitive Services Text Analytics REST API でテキスト内のセンチメントを検出する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: d246b14a5bd6e60a7b6facae73c68d7449e2e097
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f7a62d1d2b695726421ba990d0f118eb3ae199da
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494437"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031460"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>例:Text Analytics でセンチメントを検出する
 
@@ -36,7 +36,7 @@ Text Analytics では、機械学習分類アルゴリズムを使用して、0 
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>感情分析 v3 のパブリック プレビュー
 
-[次のバージョンの感情分析](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c9)は、パブリック プレビューで使用できるようになりました。 API のテキストの分類とスコア付けの精度および詳細が大幅に改善されています。
+[次のバージョンの感情分析](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)は、パブリック プレビューで使用できるようになりました。 API のテキストの分類とスコア付けの精度および詳細が大幅に改善されています。
 
 > [!NOTE]
 > * 感情分析 v3 の要求の形式と[データ制限](../overview.md#data-limits)は、以前のバージョンと同じです。

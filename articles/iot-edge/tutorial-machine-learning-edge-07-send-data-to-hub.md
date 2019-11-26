@@ -1,19 +1,19 @@
 ---
-title: 透過的なゲートウェイを介してデバイス データを送信する - Azure IoT Edge での Machine Learning | Microsoft Docs
-description: 開発用コンピューターをシミュレートされた IoT Edge デバイスとして使用し、透過的なゲートウェイとして構成されたデバイスを経由することで、IoT ハブにデータを送信します。
+title: チュートリアル:透過的なゲートウェイ経由でデバイス データを送信する - Azure IoT Edge での Machine Learning
+description: チュートリアル:開発用コンピューターをシミュレートされた IoT Edge デバイスとして使用し、透過的なゲートウェイとして構成されたデバイスを経由することで、IoT ハブにデータを送信します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/13/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 224afe19e50e52c56c223ff1a52f9989943ce712
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1a1974a9d9e635bad4094e38c2c194ff49993611
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163112"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113953"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>チュートリアル:透過的なゲートウェイを介してデータを送信する
 

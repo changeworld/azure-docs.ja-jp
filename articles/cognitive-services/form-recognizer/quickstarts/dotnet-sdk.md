@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:.NET 用 Form Recognizer クライアント ライブラリ | Microsoft Docs
-description: .NET 用 Form Recognizer クライアント ライブラリの使用を開始します。
+description: .NET 用 Form Recognizer クライアント ライブラリの使用を開始して、構造化されたデータ出力をトレーニング、抽出、分析、取得します。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: 74bb062713eac44310edcc8d1cdaed605e964681
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 6d360939a0196d7e5dc651ecf9a01ef5cbd2f689
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264441"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904602"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>クイック スタート:.NET 用 Form Recognizer クライアント ライブラリ
 
@@ -43,7 +43,7 @@ ms.locfileid: "72264441"
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-試用版のサブスクリプションまたはリソースからキーを取得した後、`FORM_RECOGNIZER_KEY` という名前のキーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+試用版のサブスクリプションまたはリソースからキーを取得した後、キーとエンドポイントの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `FORM_RECOGNIZER_KEY` および `FORM_RECOGNIZER_ENDPOINT` という名前を付けます。
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
@@ -120,7 +120,6 @@ Form Recognizer SDK の主な機能は、次のクラスによって処理され
 
 メソッドを定義する前に、次の変数定義を **Program** クラスの先頭に追加します。 一部の変数は自分で設定する必要があります。 
 
-* サービスのエンドポイント値は、Azure portal の **[概要]** セクションで確認できます。 
 * トレーニング データの SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[Shared Access Signature の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
 * 分析するサンプル フォームが必要な場合は、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Test** フォルダーにあるいずれかのファイルを使用できます。 このガイドでは、PDF フォームのみを使用します。
 

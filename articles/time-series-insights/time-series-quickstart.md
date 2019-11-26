@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Azure Time Series Insights エクスプローラー | Microsoft Docs
-description: このクイック スタートでは、大量の IoT データを視覚化するために Web ブラウザーで Azure Time Series Insights エクスプローラーの使用を開始する方法を示します。 デモ環境で主な機能について説明します。
+title: クイック スタート:Azure Time Series Insights エクスプローラー- Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights エクスプローラーを使用する方法について説明します。 大量の IoT データを視覚化し、環境の主な機能を知ることができます。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 09/23/2019
-ms.openlocfilehash: 156e95c88bc3c66890ba9c8baf9b281330b60186
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990903"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006433"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>クイック スタート:Azure Time Series Insights の探索
 

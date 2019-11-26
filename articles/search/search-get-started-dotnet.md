@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:.NET SDK を使用して C# で検索インデックスを作成する
+title: クイック スタート:.NET を使用して C# で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
 description: C# と Azure Cognitive Search .NET SDK を使用して、インデックスの作成、データの読み込み、クエリの実行を行う方法について説明します。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: cb52ebc4cfdb6f62e9e68bf007cadc20cd565fad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 45d24286a511ff60db33e149627932b0768c543b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792823"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112029"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>クイック スタート:.NET SDK を使用して C# で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]

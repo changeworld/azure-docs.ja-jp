@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Windows 上で Speech Devices SDK を実行する - Speech Service
+title: クイック スタート:Windows 上で Speech Devices SDK を実行する
 titleSuffix: Azure Cognitive Services
 description: Windows Speech Devices SDK の使用を開始するための前提条件と手順です。
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: b1f23ffac26cb48493f013290654189162861a27
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e4da99d895ba7a6d9ce537ab513ce4cc248aff7a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468741"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111673"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>クイック スタート:Windows 上で Speech Devices SDK サンプル アプリを実行する
 
-このクイックスタートでは、Speech Devices SDK for Windows を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](conversation-transcription-service.md)デバイスとして使用する方法について説明します。 現在、[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) のみがサポートされています。
+このクイックスタートでは、Speech Devices SDK for Windows を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](conversation-transcription-service.md)デバイスとして使用する方法について説明します。 会話の文字起こしには [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) のみがサポートされています。 その他の音声の用途には、マイク配列ジオメトリを提供する直線的なマイク配列がサポートされています。
 
 アプリケーションは、Speech SDK パッケージと、64 ビット Windows 上の Eclipse Java IDE (v4) で構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
@@ -32,7 +32,7 @@ ms.locfileid: "73468741"
 このクイック スタートでは以下が必要です。
 
 * オペレーティング システム:64 ビット Windows
-* [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
+* [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) などのマイク配列
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) のみ。
 * [Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
@@ -65,6 +65,29 @@ ms.locfileid: "73468741"
 
    ![パッケージ エクスプローラーのスクリーンショット](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
+1. pom.xml ファイルを開き、それを編集します。
+
+    ファイルの最後でタグ `</project>` を閉じる前に、次に示すように `repositories` および `dependencies` 要素を作成し、`version` が現在のバージョンに一致していることを確認します。
+    ```xml    
+    <repositories>
+         <repository>
+             <id>maven-cognitiveservices-speech</id>
+             <name>Microsoft Cognitive Services Speech Maven Repository</name>
+             <url>https://csspeechstorage.blob.core.windows.net/maven/</url>
+         </repository>
+    </repositories>
+ 
+    <dependencies>
+        <dependency>
+             <groupId>com.microsoft.cognitiveservices.speech</groupId>
+             <artifactId>client-sdk</artifactId>
+             <version>1.7.0</version>
+        </dependency>
+    </dependencies>
+   ```
+
+1. **Windows-x64** の内容を Java プロジェクトの場所 (**C:\SDSDK\JRE-Sample-Release** など) にコピーします。
+
 1. `kws.table`、`participants.properties`、`Microsoft.CognitiveServices.Speech.extension.pma.dll` をプロジェクト フォルダー **target\classes** にコピーします。
 
 ## <a name="configure-the-sample-application"></a>サンプル アプリケーションを構成する
@@ -82,27 +105,25 @@ ms.locfileid: "73468741"
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    会話の文字起こしを使用している場合は、`Cts.java` に Speech キーとリージョン情報も必要です。
+   会話の文字起こしを使用している場合は、`Cts.java` に Speech キーとリージョン情報も必要です。
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
-    ```
+   ```
 
 1. 既定のキーワード (keyword) は "Computer" です。 用意されている別のキーワード ("Machine"、"Assistant" など) を試すこともできます。 これらの代替キーワード用のリソース ファイルは、Speech Devices SDK の keyword フォルダーにあります。 たとえば、`C:\SDSDK\JRE-Sample-Release\keyword\Computer` には、キーワード "Computer" で使用されるファイルが含まれています。
 
-   > [!TIP]
-   > [カスタム キーワードを作成する](speech-devices-sdk-create-kws.md)こともできます。
+    > [!TIP]
+    > [カスタム キーワードを作成する](speech-devices-sdk-create-kws.md)こともできます。
 
-    新しいキーワードを使用するには、`FunctionsList.java` で下記の 2 行を更新し、キーワード パッケージをお使いのアプリにコピーします。 たとえば、キーワード パッケージ `kws-machine.zip` からキーワード "Machine" を使用するには、次の操作を行います。
+    新しいキーワードを使用するには、`FunctionsList.java` 内の次の行を更新し、そのキーワードをアプリにコピーします。 たとえば、キーワード パッケージ `machine.zip` からキーワード "Machine" を使用するには:
 
-   * キーワード パッケージをプロジェクト フォルダー **target/classes** にコピーします。
-
-   * 次に示すように、`FunctionsList.java` でキーワードとパッケージ名を更新します。
+   * zip パッケージの `kws.table` ファイルをプロジェクト フォルダー **target/classes** にコピーします。
+   * `FunctionsList.java` のキーワード名を更新します。
 
      ```java
      private static final String Keyword = "Machine";
-     private static final String KeywordModel = "kws-machine.zip" // set your own keyword package name.
      ```
 
 ## <a name="run-the-sample-application-from-eclipse"></a>Eclipse からサンプル アプリケーションを実行する
@@ -121,23 +142,23 @@ ms.locfileid: "73468741"
 
 ## <a name="create-and-run-a-standalone-application"></a>スタンドアロン アプリケーションの作成と実行
 
-1. **パッケージ エクスプローラー**で、自分のプロジェクトを右クリックします。 **[Export]\(エクスポート\)** を選択します。 
+1. **パッケージ エクスプローラー**で、自分のプロジェクトを右クリックします。 **[Export]\(エクスポート\)** を選択します。
 
 1. **[Export]\(エクスポート\)** ウィンドウが表示されます。 **[Java]** を展開して、 **[Runnable JAR file]\(実行可能な JAR ファイル\)** を選択し、 **[Next]\(次へ\)** を選択します。
 
-   ![[Export]\(エクスポート\) ウィンドウのスクリーンショット](media/speech-devices-sdk/eclipse-export-windows.png) 
+   ![[Export]\(エクスポート\) ウィンドウのスクリーンショット](media/speech-devices-sdk/eclipse-export-windows.png)
 
 1. **[Runnable JAR File Export]\(実行可能な JAR ファイルのエクスポート\)** ウィンドウが表示されます。 アプリケーションの **[Export destination]\(エクスポート先\)** を選択してから、 **[Finish]\(完了\)** を選択します。
- 
+
    ![[Runnable JAR File Export]\(実行可能な JAR ファイルのエクスポート\) のスクリーンショット](media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
-1. `kws.table`、`participants.properties`、`unimic_runtime.dll`、`pma.dll`、`Microsoft.CognitiveServices.Speech.extension.pma.dll` のファイルはアプリケーションで必要なため、上記で選択したエクスポート先フォルダー内に配置してください。
+1. `kws.table`、`participants.properties`、`unimic_runtime.dll`、`pma.dll`、および `Microsoft.CognitiveServices.Speech.extension.pma.dll` はアプリケーションに必要なため、これらのファイルを上で選択したエクスポート先フォルダーに配置してください。
 
 1. スタンドアロン アプリケーションを実行するには
 
-     ```powershell
-     java -jar SpeechDemo.jar
-     ```
+   ```powershell
+   java -jar SpeechDemo.jar
+   ```
 
 ## <a name="next-steps"></a>次の手順
 

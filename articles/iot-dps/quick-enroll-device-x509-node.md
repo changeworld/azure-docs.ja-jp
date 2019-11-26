@@ -1,21 +1,21 @@
 ---
-title: このクイック スタートは、Node.js を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法を示します | Microsoft Docs
+title: クイック スタート:Node.js を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法
 description: このクイック スタートでは、グループ登録を使用します。 このクイック スタートでは、Node.js Service SDK を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: a861bc52734f5b2bc6e455965428328cd1415b76
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 3b2c27b8fc595dae39ed7374ec3647e6b4ba6f23
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500670"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903411"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-nodejs"></a>クイック スタート: Node.js を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -132,7 +132,7 @@ ms.locfileid: "59500670"
 
     ![コマンドの出力の登録プロパティ](./media/quick-enroll-device-x509-node/sample-output.png) 
 
-4. 登録グループが作成されていることを確認します。 Azure Portal の Device Provisioning Service の概要ブレードで、**[登録を管理します]** を選択します。 **[登録グループ]** タブを選択し、新しい登録エントリ (*1 つ目*) があることを確認します。
+4. 登録グループが作成されていることを確認します。 Azure Portal の Device Provisioning Service の概要ブレードで、 **[登録を管理します]** を選択します。 **[登録グループ]** タブを選択し、新しい登録エントリ (*1 つ目*) があることを確認します。
 
     ![ポータルの登録プロパティ](./media/quick-enroll-device-x509-node/verify-enrollment-portal.png) 
  
@@ -140,8 +140,8 @@ ms.locfileid: "59500670"
 Node.js Service のサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべての Azure リソースを削除してください。
  
 1. マシンに表示されている Node.js サンプルの出力ウィンドウを閉じます。
-2. Azure Portal で [デバイス プロビジョニング サービス] に移動し、**[登録を管理します]** をクリックし、**[登録グループ]** タブを選択します。このクイックスタートを使用して作成した登録エントリの*登録 ID* を選択し、ブレードの上部の **[削除]** ボタンをクリックします。  
-3. Azure Portal の Device Provisioning サービスから、**[証明書]** をクリックし、このクイックスタート用にアップロードした証明書をクリックし、**[証明書の詳細]** ウィンドウの上部にある **[削除]** ボタンをクリックします。  
+2. Azure Portal で [デバイス プロビジョニング サービス] に移動し、 **[登録を管理します]** をクリックし、 **[登録グループ]** タブを選択します。このクイックスタートを使用して作成した登録エントリの*登録 ID* を選択し、ブレードの上部の **[削除]** ボタンをクリックします。  
+3. Azure Portal の Device Provisioning サービスから、 **[証明書]** をクリックし、このクイックスタート用にアップロードした証明書をクリックし、 **[証明書の詳細]** ウィンドウの上部にある **[削除]** ボタンをクリックします。  
  
 ## <a name="next-steps"></a>次の手順
 このクイックスタートでは、Azure IoT Hub Device Provisioning Service を使用して X.509 中間またはルート CA 証明書のグループ登録を作成しました。 Device Provisioning に関する理解をさらに深めるには、Azure Portal における Device Provisioning Service の設定に関するチュートリアルに進んでください。 

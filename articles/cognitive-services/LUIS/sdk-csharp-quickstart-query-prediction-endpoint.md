@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:C# SDK による予測エンドポイントに対するクエリの実行 - LUIS
 titleSuffix: Azure Cognitive Services
-description: C# SDK を使用して、LUIS にユーザーの発話を送信して予測を受け取ります。
+description: この記事では、C# SDK を使用して Azure Cognitive Services LUIS アプリケーションにユーザーの発話を送信し、予測を受信する方法について説明します。
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: d7cf46add464a089f15a5bd15a20cea7d17eed37
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f4612f7b3f76cbbfc0deac98668770f92ff054bc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488685"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953425"
 ---
 # <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>クイック スタート:C# .NET SDK を使用した V2 予測エンドポイントに対するクエリの実行
 
@@ -77,7 +77,7 @@ using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 
 ## <a name="create-a-new-method-for-the-prediction"></a>予測用の新しいメソッドを作成する
 
-新しいメソッド `GetPrediction` を作成し、クエリ予測エンドポイントにクエリを送信します。 このメソッドにより、必要なすべてのオブジェクトが作成、構成された後、[`LuisResult`](https://docs.microsoft.com/en-us/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.luisresult?view=azure-python) の予測結果を含む `Task` が返されます。 
+新しいメソッド `GetPrediction` を作成し、クエリ予測エンドポイントにクエリを送信します。 このメソッドにより、必要なすべてのオブジェクトが作成、構成された後、[`LuisResult`](/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.runtime.models.luisresult) の予測結果を含む `Task` が返されます。 
 
 ```csharp
 static async  Task<LuisResult> GetPrediction() {

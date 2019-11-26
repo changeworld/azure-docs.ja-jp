@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - Ansible を使用して Azure で Linux 仮想マシンを管理する | Microsoft Docs
+title: クイックスタート - Ansible を使用して Azure で Linux 仮想マシンを管理する
 description: このクイック スタートでは、Ansible を使用して Azure で Linux 仮想マシンを管理する方法について説明します
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, プレイブック, Bash
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: gwallace
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: c4878902425a26086ad77647ea06568f2110ccfe
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: fb6c4c7c6f90aa4fb9ac566433c62690e51db20d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668634"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037042"
 ---
 # <a name="quickstart-manage-linux-virtual-machines-in-azure-using-ansible"></a>クイック スタート:Ansible を使用して Azure で Linux 仮想マシンを管理する
 

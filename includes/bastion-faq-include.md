@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4f49220da5d996615c9f8ef7cad2b6c6793866b7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4e479405a9606a8353785828d0c9c94ef8c32ed
+ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466253"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73850404"
 ---
 ### <a name="regions"></a>利用可能なリージョン
 
@@ -50,3 +50,8 @@ Windows では Microsoft Edge ブラウザーまたは Google Chrome をご使�
 ### <a name="session"></a>Bastion セッションの開始前に "セッションの有効期限が切れています" というエラー メッセージを受け取るのはなぜですか?
 
 セッションは Azure portal からのみ開始される必要があります。 もう一度 Azure portal にサインインして、自分のセッションを開始してください。 別のブラウザー セッションまたはタブから直接 URL に移動する場合に、このエラーが発生します。 これは、自分のセッションがより安全で、セッションが Azure portal からのみアクセスできることを確保するのに役立ちます。
+
+### <a name="keyboard"></a>Bastion リモート セッション中はどのようなキーボード レイアウトがサポートされますか?
+
+Azure Bastion は現在、VM 内で en-us-qwerty のキーボード レイアウトをサポートしています。  キーボード レイアウトのその他のロケールに対するサポートは進行中の作業です。
+

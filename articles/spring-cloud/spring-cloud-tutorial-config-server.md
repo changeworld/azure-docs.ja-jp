@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/18/2019
-ms.openlocfilehash: 6cf7b4a52ba3a7dbda5fa3fa558c4b68d09f4eb2
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 6742e1a5924fdcd1fe00f49ac790209a907d1bac
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646720"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132790"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-for-your-service"></a>チュートリアル:自分のサービス向けに Spring Cloud Config Server を設定する
 
@@ -95,7 +95,7 @@ Azure Spring Cloud では、Config Server ファイルを格納するために�
 | `password`      | `no`     | `Git` リポジトリ サーバーへのアクセスに使用されるパスワード。`Git` リポジトリ サーバーで `Http Basic Authentication` がサポートされている場合は__必須__。 |
 
 > [!NOTE]
-> GitHub など、一部の `Git` リポジトリ サーバーでは、`HTTP Basic Authentication` のパスワードとして "personal-token" または "access-token" がサポートされています。 ここでもそのようなトークンをパスワードとして使用でき、"personal-token" または "access-token" は期限切れになりません。 ただし、BitBucket や Azure DevOps などの Git リポジトリ サーバーでは、トークンの有効期限は 1 時間または 2 時間です。そのため、そのオプションは Azure Spring Cloud では使用できません。
+> 多くの `Git` リポジトリ サーバーで、`HTTP Basic Authentication` のパスワードではなく、トークンの使用がサポートされています。 GitHub などの一部のリポジトリでは、トークンを無期限に保持できます。 しかし、一部の Git リポジトリ サーバー (Azure DevOps を含む) では、強制的にトークンの有効期限を数時間に設定しています。 トークンの有効期限が切れるリポジトリでは、Azure Spring Cloud でトークンベースの認証を使用しないでください。
 
 ### <a name="git-repositories-with-pattern"></a>パターンを使用する Git リポジトリ
 
@@ -127,7 +127,9 @@ Azure Spring Cloud では、Config Server ファイルを格納するために�
 
 1. Azure Spring Cloud の **[概要]** ページに移動します。
 
-1. 左側のメニューにある **[設定]** 見出しの下の **[Config Server]** タブに移動します。
+1. 構成するサービスを選択します。
+
+1. サービス ページで、左側のメニューにある **[設定]** 見出しの下の **[Config Server]** タブを選択します。
 
 ![ウィンドウのスクリーンショット](media/spring-cloud-tutorial-config-server/portal-config-server.png)
 

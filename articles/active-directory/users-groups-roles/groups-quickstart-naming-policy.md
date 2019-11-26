@@ -1,25 +1,25 @@
 ---
-title: Office 365 グループの名前付けポリシーの追加に関するクイック スタート - Azure Active Directory | Microsoft Docs
+title: グループの名前付けポリシーのクイック スタート - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory で新しいユーザーを追加する方法または既存のユーザーを削除する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 04/24/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17ef24d753041934f68f3daee950aaa0bec46ba
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 84e419ac5c3d292b7e630d1ebb3d3b9f59ef7b8a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66734742"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026931"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>クイック スタート:Azure Active Directory におけるグループの名前付けポリシー
 

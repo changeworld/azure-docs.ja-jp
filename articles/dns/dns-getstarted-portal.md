@@ -1,18 +1,19 @@
 ---
-title: クイック スタート - Azure portal を使用して Azure DNS ゾーンおよびレコードを作成する
+title: クイック スタート:DNS ゾーンとレコードの作成 - Azure portal
+titleSuffix: Azure DNS
 description: このステップごとのクイック スタート ガイドでは、Azure portal を使用して Azure DNS ゾーンおよびレコードを作成する方法を学びます。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: feb46114b3cf1b04e6a181f84bcdc41c17f1c0ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: allensu
+ms.openlocfilehash: cb81b0ec2b5283ba242dd7c2dd549c330e230f0a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119073"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082916"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure DNS ゾーンおよびレコードを作成する
 
@@ -37,12 +38,12 @@ DNS ゾーンにはドメインの DNS エントリが含まれています。 A
 
 **DNS ゾーンを作成するには:**
 
-1. 左上で、**[リソースの作成]**、**[ネットワーク]**、**[DNS ゾーン]** の順に選択します。
+1. 左上で、 **[リソースの作成]** 、 **[ネットワーク]** 、 **[DNS ゾーン]** の順に選択します。
 
 1. **[DNS ゾーンの作成]** ページで、以下の値を入力または選択します。
 
    - **名前**: このクイック スタートのサンプルでは「*contoso.xyz*」と入力します。 DNS ゾーン名には、Azure DNS サーバーに既に構成されていない任意の値を指定できます。 実際の値は、ドメイン名レジストラーから購入したドメインになります。
-   - **[リソース グループ]**:**[新規作成]** を選択し、「*MyResourceGroup*」と入力して、**[OK]** を選択します。 Azure サブスクリプション内で一意となるリソース グループ名を使用してください。 
+   - **[リソース グループ]** : **[新規作成]** を選択し、「*MyResourceGroup*」と入力して、 **[OK]** を選択します。 Azure サブスクリプション内で一意となるリソース グループ名を使用してください。 
 
 1. **作成**を選択します。
 
@@ -65,7 +66,7 @@ DNS ゾーン内にドメインの DNS エントリまたはレコードを作�
    - **名前**: 「*www*」と入力します。 このレコード名は、特定の IP アドレスに解決するホスト名です。
    - **種類**: **[A]** を選択します。"A" レコードが最もよく使用されますが、他の種類のレコードもあります。たとえば、メール サーバーの場合は "MX"、IP v6 アドレスの場合は "AAAA" です。 
    - **TTL**: 「*1*」と入力します。 DNS 要求の *Time-to-live* は、DNS サーバーおよびクライアントが応答をキャッシュに入れておくことができる時間を指定します。
-   - **TTL の単位**:**[時間]** を選択します。 これは、**[TTL]** 値の既定の時間単位です。 
+   - **TTL の単位**: **[時間]** を選択します。 これは、 **[TTL]** 値の既定の時間単位です。 
    - **IP アドレス**: このクイック スタートの例では、「*10.10.10.10*」と入力します。 この値は、レコード名が解決される IP アドレスです。 実際の例では、Web サーバーのパブリック IP アドレスを入力します。
 
 このクイック スタートは簡単なテストを目的としているため、ドメイン名レジストラーで Azure DNS ネーム サーバーを構成する必要はありません。 実際の運用ドメインの場合は、Web サーバーまたはアプリに接続するために、インターネット上のだれかにホスト名を解決してもらう必要があります。 ドメイン名レジストラーにアクセスして、ネーム サーバー レコードを Azure DNS ネーム サーバーで置き換えてもらいます。 詳細については、「[チュートリアル: Azure DNS でドメインをホストする](dns-delegate-domain-azure-dns.md#delegate-the-domain)」を参照してください。
@@ -88,7 +89,7 @@ DNS ゾーン内にドメインの DNS エントリまたはレコードを作�
    nslookup www.contoso.xyz <name server name>
    ```
 
-   例: 
+   例:
 
    ```
    nslookup www.contoso.xyz ns1-08.azure-dns.com.
@@ -102,7 +103,7 @@ DNS ゾーン内にドメインの DNS エントリまたはレコードを作�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このクイック スタートで作成したリソースが必要なくなったら、**MyResourceGroup** リソース グループを削除することで削除できます。 **MyResourceGroup** リソース グループを開き、**[リソース グループの削除]** を選択します。
+このクイック スタートで作成したリソースが必要なくなったら、**MyResourceGroup** リソース グループを削除することで削除できます。 **MyResourceGroup** リソース グループを開き、 **[リソース グループの削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
