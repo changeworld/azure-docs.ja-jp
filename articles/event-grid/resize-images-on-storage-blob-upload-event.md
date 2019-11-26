@@ -94,6 +94,7 @@ Azure Functions には、一般的なストレージ アカウントが必要で
 
 ## <a name="create-a-function-app"></a>Function App を作成する  
 関数の実行環境をホストするには Function App が必要です。 Function App は、関数コードのサーバーレスの実行環境を提供します。 Function App の作成には、[az functionapp create](/cli/azure/functionapp) コマンドを使用します。 
+
 以下のコマンドには、実際に使用する一意の関数アプリ名を使用してください。 この関数アプリ名は、関数アプリの既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 
 
 1. 作成する関数アプリの名前を指定します。 
