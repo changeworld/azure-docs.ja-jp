@@ -71,7 +71,7 @@ ms.locfileid: "73686123"
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
     ```
 
-    詳細については、[メモリとコンカレンシーの制限]memory-concurrency-limits.md)と[リソース クラス](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)のドキュメントをご覧ください。
+    詳細については、[メモリとコンカレンシーの制限](memory-concurrency-limits.md) と [リソース クラス](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory)のドキュメントをご覧ください。
 
 
 ## <a name="sign-in-to-fivetran"></a>Fivetran にサインインする

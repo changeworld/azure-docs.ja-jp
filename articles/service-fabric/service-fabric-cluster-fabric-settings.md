@@ -666,7 +666,7 @@ ms.locfileid: "73615553"
 |CertificateHealthReportingInterval|TimeSpan、既定値は Common::TimeSpan::FromSeconds(3600 * 8)|静的|timespan を秒単位で指定します。 証明書の正常性レポートの間隔を指定します。既定値は 8 時間です。0 に設定すると、証明書の正常性レポートが無効になります |
 |ClientCertThumbprints|string、既定値は ""|動的|クラスターと対話するために、クライアントによって使用される証明書のサムプリント。クラスターはこれを使用して、受診接続を承認します。 コンマ区切りの名前リストです。 |
 |ClientClaimAuthEnabled|ブール値、既定値は FALSE|静的|クライアントで要求ベースの認証が有効になっているかどうかを示します。この設定を true にすると、ClientRoleEnabled が暗黙的に設定されます。 |
-|ClientClaims|string、既定値は ""|動的|ゲートウェイへの接続に対して、クライアントから期待される使用可能なすべての要求。 これは "OR" リストです:ClaimsEntry \|\| ClaimsEntry \|\| ClaimsEntry ...。各 ClaimsEntry は "AND" リストです:ClaimType=ClaimValue && ClaimType=ClaimValue && ClaimType=ClaimValue ...。 |
+|ClientClaims|string、既定値は ""|動的|ゲートウェイへの接続に対して、クライアントから期待される使用可能なすべての要求。 これは "OR" リストです:ClaimsEntry \|\| ClaimsEntry \|\| ClaimsEntry ...各 ClaimsEntry は "AND" リストです:ClaimType=ClaimValue && ClaimType=ClaimValue && ClaimType=ClaimValue ... |
 |ClientIdentities|string、既定値は ""|動的|FabricClient の Windows ID。Naming Gateway は、これを使用して受診接続を承認します。 これはコンマ区切りリストで、各エントリがドメイン アカウント名またはグループ名です。 便宜上、fabric.exe を実行するアカウントは自動的に許可されます。グループ ServiceFabricAllowedUsers と ServiceFabricAdministrators も同様です。 |
 |ClientRoleEnabled|ブール値、既定値は FALSE|静的|クライアント ロールが有効かどうかを示します。true の場合、クライアントには、クライアント自身の ID に基づいてロールが割り当てられます。 V2 の場合、これを有効にすると、AdminClientCommonNames/AdminClientIdentities にないクライアントが実行できるのは、読み取り専用の操作のみです。 |
 |ClusterCertThumbprints|string、既定値は ""|動的|クラスターへの参加が許可されている証明書のサムプリント。コンマ区切りの名前リスト。 |
