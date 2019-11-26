@@ -53,7 +53,7 @@
       href: signalr-concept-messages-and-connections.md
     - name: パフォーマンスに関する考慮事項
       href: signalr-concept-performance.md
-    - name: Authentication
+    - name: 認証
       href: signalr-concept-authenticate-oauth.md
     - name: イベント処理
       href: signalr-concept-event-grid-integration.md
@@ -61,6 +61,8 @@
   items:
     - name: スケール
       items:
+        - name: 単一インスタンス
+          href: signalr-howto-scale-signalr.md
         - name: 複数のインスタンス
           href: signalr-howto-scale-multi-instances.md
     - name: セキュリティ保護

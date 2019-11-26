@@ -175,6 +175,10 @@
   items:
     - name: 単一サーバー
       items:
+        - name: サーバーを管理する
+          items:
+            - name: Azure ポータル
+              href: howto-create-manage-server-portal.md
         - name: 認証
           items:
             - name: ユーザーの作成

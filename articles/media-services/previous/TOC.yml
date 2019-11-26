@@ -266,18 +266,6 @@
           href: media-services-dotnet-long-operations.md
         - name: フラグメント化 MP4 ライブ取り込みの仕様
           href: ../media-services-fmp4-live-ingest-overview.md
-        - name: 使用の開始
-          href: media-services-azure-media-clipper-getting-started.md
-        - name: 動画の読み込み
-          href: media-services-azure-media-clipper-load-assets.md
-        - name: キーボード ショートカットの構成
-          href: media-services-azure-media-clipper-keyboard-shortcuts.md
-        - name: ローカライズを構成する
-          href: media-services-azure-media-clipper-localization.md
-        - name: クリッピング ジョブの送信
-          href: media-services-azure-media-clipper-submit-job.md
-        - name: Azure ポータル
-          href: media-services-azure-media-clipper-portal.md
     - name: コンテンツの保護
       href: media-services-content-protection-overview.md
       items:

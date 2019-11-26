@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6bc306551d158d4b996002de0bb5ab991a0bcbd9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 669ebbf595629e8093c51d76b0816edeb5f80f93
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467247"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007602"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>チュートリアル:Azure Notebook で Personalizer を使用する
 
@@ -589,7 +589,7 @@ createChart(count,rewards)
 1. 評価名に必要なデータ、ループ評価の日付範囲を入力します。 この日付範囲には、評価の対象とする日のみを含める必要があります。 
     ![Azure portal で、Personalizer リソースの [評価] ページを開きます。 [評価の作成] を選択します。 評価名と日付範囲を入力します。](./media/tutorial-azure-notebook/create-offline-evaluation.png)
 
-    このオフライン評価を実行する目的は、このループで使用される特徴とアクションにより適切な学習ポリシーがあるかどうかを判断することです。 より適切な学習ポリシーを見つけるには、 **[Optimization policy]\(最適化ポリシー\)** が有効になっていることを確認します。
+    このオフライン評価を実行する目的は、このループで使用される特徴とアクションにより適切な学習ポリシーがあるかどうかを判断することです。 より適切な学習ポリシーを見つけるには、 **[最適化の検出]** が有効になっていることを確認します。
 
 1. **[OK]** を選択して、評価を開始します。 
 1. この **[評価]** ページに、新しい評価とその現在の状態が表示されます。 使用しているデータの量に応じて、この評価には時間がかかる場合があります。 数分後にこのページに戻ると、結果を確認できます。 
