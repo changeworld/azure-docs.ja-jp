@@ -45,7 +45,6 @@ ms.locfileid: "73718225"
 
 > [!div class="checklist"]
 > * 通常の Azure ストレージ アカウントの作成
-
 > * Azure Functions を使ってサーバーレス コードをデプロイします
 > * Event Grid で Blob Storage のイベント サブスクリプションを作成します
 
