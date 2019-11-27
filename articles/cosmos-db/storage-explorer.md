@@ -4,15 +4,15 @@ description: Azure Cosmos DB に接続し、Azure Storage Explorer を使用し�
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: 6c3c8aee51a4484013126a5959d3d275a88aa1cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242644"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882358"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Azure Storage Explorer を使ってデータを操作する
 
@@ -59,7 +59,7 @@ Azure Cosmos DB に接続する別の方法では、接続文字列を使用し�
 
     ![接続文字列で Cosmos DB に接続する](./media/storage-explorer/connect-to-db-by-connection-string.png)
 
-2. 現在は SQL API とテーブル API のみサポートします。 API を選択して **接続文字列**を貼り付け、**アカウント ラベル**を入力して **[次へ]** をクリックし、概要をチェックしたら、 **[接続]** をクリックして Azure Cosmos DB アカウントに接続します。 接続文字列の取得については、「[接続文字列を取得する](https://docs.microsoft.com/azure/cosmos-db/manage-account)」を参照してください。
+2. 現在は SQL API とテーブル API のみサポートします。 API を選択して **接続文字列**を貼り付け、**アカウント ラベル**を入力して **[次へ]** をクリックし、概要をチェックしたら、 **[接続]** をクリックして Azure Cosmos DB アカウントに接続します。 プライマリ接続文字列の取得については、「[接続文字列を取得する](manage-with-powershell.md#list-keys)」を参照してください。
 
     ![接続文字列](./media/storage-explorer/connection-string.png)
 
@@ -73,7 +73,7 @@ Azure Cosmos DB にエミュレーターで接続するには次の手順を使�
 
     ![エミュレーターで Cosmos DB に接続する](./media/storage-explorer/emulator-entry.png)
 
-3. 現在は SQL API のみサポートします。 **接続文字列**を貼り付け、**アカウント ラベル**を入力して **[次へ]** をクリックし、概要をチェックしたら、 **[接続]** をクリックして Azure Cosmos DB アカウントに接続します。 接続文字列の取得については、「[接続文字列を取得する](https://docs.microsoft.com/azure/cosmos-db/manage-account)」を参照してください。
+3. 現在は SQL API のみサポートします。 **接続文字列**を貼り付け、**アカウント ラベル**を入力して **[次へ]** をクリックし、概要をチェックしたら、 **[接続]** をクリックして Azure Cosmos DB アカウントに接続します。 プライマリ接続文字列の取得については、「[接続文字列を取得する](manage-with-powershell.md#list-keys)」を参照してください。
 
     ![エミュレーターで Cosmos DB に接続するためのダイアログ](./media/storage-explorer/emulator-dialog.png)
 

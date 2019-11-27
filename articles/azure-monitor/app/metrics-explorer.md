@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights を使用したメトリックの探索 | Microsoft Docs
 description: メトリック エクスプローラーでグラフを解釈する方法と、メトリック エクスプローラー ブレードをカスタマイズする方法です。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 1f471176-38f3-40b3-bc6d-3f47d0cbaaa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 01/22/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: 5c659ca2f40d47450227d16963499a6b27c9e313
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 01/22/2019
+ms.openlocfilehash: b0831ff500ba4cbe71dae6251fd960f6c96c0fe5
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60700889"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820790"
 ---
 # <a name="exploring-metrics-in-application-insights"></a>Application Insights を使用したメトリックの探索
 [Application Insights][start] のメトリックとは、アプリケーションからのテレメトリとして送信される測定値とイベントの数を表します。 メトリックは、パフォーマンスの問題を検出し、アプリケーションの利用に関する傾向を把握するのに役立ちます。 さまざまな標準メトリックが用意されているほか、独自にカスタムのメトリックとイベントを作成することもできます。
@@ -175,7 +170,7 @@ Application Insights ポータルでは、あらゆる場所でメトリック �
 
 ![メトリックス エクスプローラーで、[アラート ルール]、[アラートの追加] の順に選択します](./media/metrics-explorer/appinsights-413setMetricAlert.png)
 
-[アラートの詳細についてはこちらをご覧ください][alerts]。
+[アラートの詳細を確認する][alerts]
 
 
 ## <a name="continuous-export"></a>連続エクスポート

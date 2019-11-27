@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61efc9d9d12cb67ea9c22e44ba0060db0f224f73
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 5ad03e69df4ca03d58bba98b912ade354f90042e
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554310"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809202"
 ---
 # <a name="assign-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールを割り当てる
 
@@ -38,7 +38,7 @@ ms.locfileid: "72554310"
 
     Azure portal でまだ Privileged Identity Management を起動したことがない場合は、「[Privileged Identity Management の使用開始](pim-getting-started.md)」に移動してください。
 
-1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
+1. **[Azure AD ロール]** を選択します。
 
 1. **[ロール]** または **[メンバー]** をクリックします。
 
@@ -50,13 +50,13 @@ ms.locfileid: "72554310"
 
     ![Azure AD ロールを一覧している [ロールの選択] ウィンドウ](./media/pim-how-to-add-role-to-user/pim-select-a-role.png)
 
-1. **[メンバーの選択]** をクリックしてロールに割り当てるユーザーを選択し、 **[選択]** をクリックします。
+1. **[メンバーの選択]** を選択してロールに割り当てるユーザーを選択し、 **[選択]** を選択します。
 
     ![ユーザーを選択できる [メンバーの選択] ウィンドウ](./media/pim-how-to-add-role-to-user/pim-select-members.png)
 
-1. [管理されるメンバーの追加] で **[OK]** をクリックし、ロールにユーザーを追加します。
+1. [管理されるメンバーの追加] で **[OK]** を選択し、ロールにユーザーを追加します。
 
-1. ロールの一覧で、割り当てたロールをクリックしてメンバーの一覧を表示します。
+1. ロールの一覧で、割り当てたロールを選択してメンバーの一覧を表示します。
 
      ロールが割り当てられると、選択したユーザーが、ロールの**候補**としてメンバー リストに表示されます。
 
@@ -72,15 +72,15 @@ ms.locfileid: "72554310"
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. **[Azure AD roles]\(Azure AD ロール)** をクリックします。
+1. **[Azure AD ロール]** を選択します。
 
-1. **[メンバー]** をクリックします。
+1. **[メンバー]** を選択します。
 
     ![Azure AD ロール - ロールとアクティブ化の状態を示すメンバーの一覧](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
-1. 永続化する**候補**ロールをクリックします。
+1. 永続化する**候補**ロールを選択します。
 
-1. **[More]\(その他\)** をクリックして **[永続化]** をクリックします。
+1. **[その他]** を選択し、 **[永続化]** を選択します。
 
     ![[その他] メニュー オプションが開いたロールの対象になるユーザーを一覧するウィンドウ](./media/pim-how-to-add-role-to-user/pim-make-perm.png)
 
@@ -116,7 +116,9 @@ ms.locfileid: "72554310"
 
 ## <a name="authorization-error-when-assigning-roles"></a>ロールの割り当て時の承認エラー
 
-最近 Azure サブスクリプション用に Privileged Identity Management を有効にしており、ユーザーを Azure AD 管理者ロールの対象にしようとすると承認エラーが表示される場合は、MS-PIM サービス プリンシパルがまだ適切なアクセス許可を持っていないためである可能性があります。 ロールを割り当てるには、MS-PIM サービス プリンシパルに (Azure AD 管理ロールではなく) Azure リソース アクセスのための Azure ロールベースのアクセス制御の[ユーザー アクセス管理者ロール](../../role-based-access-control/built-in-roles.md#user-access-administrator)を割り当てる必要があります。 MS PIM にユーザー アクセス管理者ロールが割り当てられるまで待つ代わりに、それを手動で割り当てることができます。
+シナリオ: Azure リソースのアクティブな所有者またはユーザー アクセス管理者は、Privileged Identity Management 内部でリソースを表示することはできますが、資格のある割り当てを作成したり、リソース概要ページからロールの割り当ての一覧を表示したりするなどのアクションを実行することはできません。 これらのアクションを実行すると、承認エラーが発生します。
+
+ロールを割り当てるには、MS-PIM サービス プリンシパルに (Azure AD 管理ロールではなく) Azure リソース アクセスのための Azure ロールベースのアクセス制御の[ユーザー アクセス管理者ロール](../../role-based-access-control/built-in-roles.md#user-access-administrator)を割り当てる必要があります。 MS PIM にユーザー アクセス管理者ロールが割り当てられるまで待つ代わりに、それを手動で割り当てることができます。
 
 次の手順では、サブスクリプション用の MS-PIM サービス プリンシパルにユーザー アクセス管理者ロールを割り当てます。
 
@@ -147,7 +149,6 @@ ms.locfileid: "72554310"
    しばらくすると、MS PIM サービス プリンシパルに、サブスクリプション スコープでユーザー アクセス管理者ロールが割り当てられます。
 
    ![MS-PIM のユーザー アクセス管理者ロールの割り当てを示すアクセスの制御 (IAM) ブレード](./media/pim-how-to-add-role-to-user/ms-pim-user-access-administrator.png)
-
 
 ## <a name="next-steps"></a>次の手順
 

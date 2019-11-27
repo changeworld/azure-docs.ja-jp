@@ -1,5 +1,6 @@
 ---
-title: .NET 用 Microsoft Authentication Library でのクライアント アサーション | Azure
+title: .NET 用 Microsoft Authentication Library でのクライアント アサーション
+titleSuffix: Microsoft identity platform
 description: .NET 用の Microsoft Authentication Library (MSAL.NET) での機密クライアント アプリケーションに対する署名付きクライアント アサーションのサポートについて説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: jmprieur
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1ea75499334f3f6eb2f5d3c15526067fcef4eb8
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: fcf11ac8dc39dcb1d70b932dbe870687f5446a52
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442503"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802855"
 ---
 # <a name="confidential-client-assertions"></a>機密クライアント アサーション
 ID を証明するために、機密クライアント アプリケーションは Azure AD とシークレットを交換します。 次のようなシークレットがあります。

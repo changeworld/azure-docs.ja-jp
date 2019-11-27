@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65f3490e9cb62aa2d5c18b8fd564796dd6d3946c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: a312c39352f0d13b4354e7b0dfcd897bf4cc0992
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162417"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72808470"
 ---
 # <a name="combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録 (プレビュー)
 
@@ -35,6 +35,9 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 
 > [!IMPORTANT]
 > 元のプレビューと拡張された統合された登録エクスペリエンスの両方に対して有効になっているユーザーには、新しいエクスペリエンスが表示されます。 両方のエクスペリエンスが有効になっているユーザーには、新しい [マイ プロファイル] エクスペリエンスのみが表示されます。 新しい [My Profile] (マイ プロファイル) は統合された登録の外観と統一されており、ユーザーにシームレスなエクスペリエンスを提供します。 ユーザーは、[https://myprofile.microsoft.com](https://myprofile.microsoft.com) に移動することによって [My Profile] (マイ プロファイル) を表示できます。
+
+> [!NOTE] 
+> セキュリティ情報オプションにアクセスしようとすると、エラー メッセージが表示される場合があります。 例: "申し訳ございません。サインインできませんでした"。 この場合は、サードパーティの Cookie をブロックする構成またはグループ ポリシー オブジェクトが Web ブラウザーに設定されていないことを確認します。 
 
 [マイ プロファイル] ページは、そのページにアクセスしているコンピューターの言語設定に基づいてローカライズされます。 Microsoft は、ページへの以降のアクセスの試みが引き続き最後に使用された言語で描画されるように、利用された最新の言語をブラウザー キャッシュに格納します。 キャッシュをクリアすると、ページは再レンダリングされます。 強制的に特定の言語にする場合は、URL の末尾に `?lng=<language>` を追加することができます。`<language>` は、レンダリングする言語のコードです。
 

@@ -1,5 +1,6 @@
 ---
-title: Microsoft Authentication Library for .NET でのトークン キャッシュのシリアル化 | Azure
+title: Microsoft Authentication Library for .NET でのトークン キャッシュのシリアル化
+titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library for .NET (MSAL.NET) を使用したトークン キャッシュのシリアル化および顧客によるシリアル化について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e4a24e96b41955ca9e89f8307b693e7599b645
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 2cae1a755b9f79ce2fd5084653f7b3c177f29832
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709297"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802732"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET でのトークン キャッシュのシリアル化
 [トークンは、取得](msal-acquire-cache-tokens.md)後に Microsoft Authentication Library (MSAL) でキャッシュされます。  アプリケーション コードでは、別のメソッドでトークンを取得する前に、キャッシュからトークンを取得しようとする必要があります。  この記事では、MSAL.NET でのトークン キャッシュの既定のシリアル化とカスタムのシリアル化について説明します。

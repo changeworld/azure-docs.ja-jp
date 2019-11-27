@@ -1,23 +1,18 @@
 ---
 title: Azure Application Insights を使用して Node.js サービスを監視する | Microsoft Docs
 description: Application Insights を使用して Node.js サービスのパフォーマンスを監視して問題を診断します。
-services: application-insights
-documentationcenter: nodejs
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 2ec7f809-5e1a-41cf-9fcd-d0ed4bebd08c
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 03/14/2019
+author: mrbullwinkle
 ms.author: mbullwin
-ms.openlocfilehash: f2a30d5a040c2713f04173e83732cea5fa19af3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 03/14/2019
+ms.openlocfilehash: 81f63380c041ae743a2b38e6ba89558b83e7497a
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66255280"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820727"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -35,7 +30,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 
 ### <a name="prerequisites"></a>前提条件
 
-開始する前に、Azure サブスクリプションがあることを確認するか、[無償で新しい Azure サブスクリプションを取得][azure-free-offer]してください。 組織に Azure サブスクリプションが既にある場合は、管理者が[これらの手順][add-aad-user]に従って、あなたを追加できます。
+開始する前に、Azure サブスクリプションがあることを確認するか、[無償で新しい Azure サブスクリプションを取得][azure-free-offer]してください。 組織に Azure サブスクリプションが既にある場合は、管理者に[こちらの手順][add-aad-user]に従ってもらうことで、追加してもらうことができます。
 
 [azure-free-offer]: https://azure.microsoft.com/free/
 [add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
@@ -83,7 +78,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 
 SDK は、Node.js ランタイムおよび一般的なサードパーティ モジュールに関するテレメトリを自動的に収集します。 アプリケーションを使用して、そうしたデータを生成します。
 
-次に、[Azure Portal][portal] で、先ほど作成した Application Insights リソースに移動します。 **[概要のタイムライン]** に、いくつかの最初のデータ ポイントが現れます。 さらに詳しいデータを表示するには、グラフ内の別のコンポーネントを選択してください。
+次に、[Azure portal][portal] で、先ほど作成した Application Insights リソースに移動します。 **[概要のタイムライン]** に、いくつかの最初のデータ ポイントが現れます。 さらに詳しいデータを表示するには、グラフ内の別のコンポーネントを選択してください。
 
 対象のアプリに関して検出されたトポロジを表示するには、 **[アプリケーション マップ]** ボタンを選択します。 マップ内のコンポーネントを選択すると、詳しい情報が表示されます。
 
@@ -101,7 +96,7 @@ SDK では送信するデータをバッチ処理するため、ポータルに�
 * ポータルのリソース ビューで **[最新の情報に更新]** をクリックします。 グラフは定期的に自動で更新されますが、手動で更新を強制することで最新の情報が直ちに表示されます。
 * [必要な送信ポート](../../azure-monitor/app/ip-addresses.md)が開いていることを確認します。
 * [[検索]](../../azure-monitor/app/diagnostic-search.md) を使用して特定のイベントを探します。
-* [よくあるご質問][FAQ]を確認します。
+* [よく寄せられる質問][FAQ]を確認します。
 
 
 ## <a name="sdk-configuration"></a>SDK の構成

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: f67494b229a14b66b593950903184e54e4a8ab8c
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: d0968ddedb36ab7fb4ee515ef1d20a177d4d59fe
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013695"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820990"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする - CLI (プレビュー)
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、ここで[無�
 代わりに Azure CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.49 以降を使用する必要があります。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードについては、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
-Azure 仮想ネットワークの IPv6 機能を使用するには、次のように、Azure PowerShell を使用してサブスクリプションを構成する必要があります。
+Azure 仮想ネットワークの IPv6 機能を使用するには、次のように、Azure CLI を使用してサブスクリプションを構成する必要があります。
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
@@ -53,7 +53,7 @@ az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-デュアル スタック仮想ネットワークを作成する前に、[az group create](/cli/azure/group) でリソース グループを作成する必要があります。 次の例では、*myRGDualStack* という名前のリソース グループを場所 *eastus* に作成します。
+デュアル スタック仮想ネットワークを作成する前に、[az group create](/cli/azure/group) でリソース グループを作成する必要があります。 次の例では、*DsResourceGroup01* という名前のリソース グループを *eastus* という場所に作成します。
 
 ```azurecli
 az group create \
@@ -62,7 +62,7 @@ az group create \
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses-for-load-balancer"></a>ロード バランサーの IPv4 および IPv6 パブリック IP アドレスの作成
-インターネット上の IPv4 および IPv6 エンドポイントにアクセスするには、ロード バランサーの IPv4 および IPv6 パブリック IP アドレスが必要です。 パブリック IP アドレスは、[az network public-ip create](/cli/azure/network/public-ip) で作成します。 次の例では、*myRGDualStack* リソース グループ内に *dsPublicIP_v4* および *dsPublicIP_v6* という名前の IPv4 および IPv6 パブリック IP アドレスを作成します。
+インターネット上の IPv4 および IPv6 エンドポイントにアクセスするには、ロード バランサーの IPv4 および IPv6 パブリック IP アドレスが必要です。 パブリック IP アドレスは、[az network public-ip create](/cli/azure/network/public-ip) で作成します。 次の例では、*DsResourceGroup01* リソース グループ内に *dsPublicIP_v4* と *dsPublicIP_v6* という名前の IPv4 および IPv6 パブリック IP アドレスを作成します。
 
 ```azurecli
 # Create an IPV4 IP address
@@ -382,7 +382,7 @@ az vm create \
 必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```azurecli
- az group delete --name DsRG1
+ az group delete --name DsResourceGroup01
 ```
 
 ## <a name="next-steps"></a>次の手順

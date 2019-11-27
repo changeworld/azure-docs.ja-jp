@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 37ec8a611f94b869c8277c135f8e6dc5d2108392
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4001b3ed8d7a92d8a751486ab4fd3a097d032373
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442893"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809727"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Azure Front Door Service についてよく寄せられる質問
 
@@ -144,6 +144,8 @@ Azure Front Door Service は、アプリケーションのスケーラビリテ�
 
 ### <a name="what-tls-versions-are-supported-by-azure-front-door-service"></a>Azure Front Door Service ではどの TLS バージョンがサポートされますか?
 
+2019 年 9 月以降に作成されたすべての Front Door プロファイルでは、既定の最小値として TLS 1.2 が使用されます。
+
 Front Door では、TLS バージョン 1.0、1.1、1.2 がサポートされます。 TLS 1.3 はまだサポートされていません。
 
 ### <a name="what-certificates-are-supported-on-azure-front-door-service"></a>Azure Front Door Service ではどの証明書がサポートされますか?
@@ -185,7 +187,7 @@ Azure Front Door Service でサポートされている最新の暗号スイー�
 
 ### <a name="can-i-configure-ssl-policy-to-control-ssl-protocol-versions"></a>SSL プロトコルのバージョンを管理する SSL ポリシーを構成できますか?
 
-いいえ、現在 Front Door は特定の TLS バージョンを拒否することをサポートしておらず、最小限の TLS バージョンを設定することもできません。 
+[Azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion) を使用して、最小の TLS バージョンを Azure Front Door に構成できます。 現時点では、1.0 と 1.2 のどちらかを選択できます。
 
 ### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Front Door は特定の暗号スイートのみをサポートするように構成できますか?
 

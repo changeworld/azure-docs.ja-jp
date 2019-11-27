@@ -1,0 +1,83 @@
+---
+title: Azure Active Directory Identity Protection でリスク ポリシーを構成して有効にする方法
+description: Azure Active Directory Identity Protection でリスク ポリシーを構成して有効にします
+services: active-directory
+ms.service: active-directory
+ms.subservice: identity-protection
+ms.topic: conceptual
+ms.date: 10/18/2019
+ms.author: joflore
+author: MicrosoftGuyJFlo
+manager: daveba
+ms.reviewer: sahandle
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 79f919633f6b1912ef07b7ff636eb60fb3d5859f
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72886702"
+---
+# <a name="how-to-configure-and-enable-risk-policies"></a>方法:リスク ポリシーを構成して有効にする
+
+前の記事「[Identity Protection ポリシー](concept-identity-protection-policies.md)」で説明したように、ディレクトリで有効にできるリスク ポリシーは 2 つあります。 
+
+- サインインのリスク ポリシー
+- ユーザー リスクのポリシー
+
+![ユーザー リスク ポリシーとサインイン リスク ポリシーを有効にするためのセキュリティの [概要] ページ](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
+
+どちらのポリシーも、環境内のリスク検出に対する応答を自動化し、リスクが検出されたときにユーザーが自己修復できるようにします。 
+
+> [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
+
+## <a name="prerequisites"></a>前提条件 
+
+リスクが検出されたときにユーザーが自己修復を実行できるようにする場合は、パスワード リセットのセルフサービスと Azure Multi-Factor Authentication の両方にユーザーが登録されている必要があります。 最適なエクスペリエンスを実現するには、[統合されたセキュリティ情報の登録エクスペリエンス](../authentication/howto-registration-mfa-sspr-combined.md)を有効にすることをお勧めします。 ユーザーに自己修復を許可すると、管理者の介入を必要とせずに、生産的な状態に迅速に戻ることができます。 管理者は、事後にこれらのイベントを表示して調査することができます。 
+
+## <a name="choosing-acceptable-risk-levels"></a>許容されるリスク レベルの選択
+
+組織は、ユーザー エクスペリエンスとセキュリティ体制のバランスを考慮しつつ、受け入れることができるリスクのレベルを決定する必要があります。 
+
+Microsoft で推奨しているのは、ユーザー リスク ポリシーのしきい値を **[高]** に設定し、サインイン リスク ポリシーを **[中以上]** に設定することです。
+
+**高** しきい値を選択すると、ポリシーがトリガーされる回数が減り、ユーザーへの影響が最小限になります。 ただし、 **[低]** と **[中]** のリスク検出はポリシーから除外されるため、攻撃者が侵害された ID を悪用するのをブロックすることができない可能性があります。 **[低]** しきい値を選択すると、ユーザーによる割り込みの処理が増加しますが、セキュリティ体制は強化されます。
+
+## <a name="exclusions"></a>除外
+
+すべてのポリシーで、[緊急時の管理者アカウント](../users-groups-roles/directory-emergency-access.md)などのユーザーを除外できます。 組織は、アカウントの使用方法に基づいて、特定のポリシーから他のアカウントを除外する必要があると判断できます。 すべての除外を定期的に見直して、適用を続行するかどうかを確認する必要があります。
+
+## <a name="enable-policies"></a>ポリシーを有効にする
+
+ユーザー リスクとサインイン リスク ポリシーを有効にするには、次の手順を完了します。
+
+1. [Azure Portal](https://portal.azure.com) に移動します。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[Identity Protection]**  >  **[概要]** を参照します。
+1. **[ユーザー リスク ポリシーの構成]** を選択します。
+   1. **[割り当て]** で:
+      1. **[ユーザー]** - **[すべてのユーザー]** を選択します。ロールアウトを制限する場合は **[個人と グループの選択]** を選択します。
+         1. 必要に応じて、ポリシーからユーザーを除外できます。
+      1. **[条件]**  -  **[ユーザー リスク]** 。Microsoft で推奨しているのは、このオプションを **[高]** に設定することです。
+   1. **[コントロール]** で:
+      1. **[アクセス]** - Microsoft で推奨しているのは、 **[アクセスを許可]** と **[パスワードの変更を必須とする]** です。
+   1. **[ポリシーの適用]**  -  **[オン]**
+   1. **[保存]** - この操作を行うと、 **[概要]** ページに戻ります。
+1. **[サインイン リスク ポリシーの構成]** を選択します。
+   1. **[割り当て]** で:
+      1. **[ユーザー]** - **[すべてのユーザー]** を選択します。ロールアウトを制限する場合は **[個人と グループの選択]** を選択します。
+         1. 必要に応じて、ポリシーからユーザーを除外できます。
+      1. **[条件]**  -  **[サインイン リスク]** 。Microsoft で推奨しているのは、このオプションを **[中以上]** に設定することです。
+   1. **[コントロール]** で:
+      1. **[アクセス]** - Microsoft で推奨しているのは、 **[アクセスを許可]** と **[多要素認証が必要です]** を設定することです。
+   1. **[ポリシーの適用]**  -  **[オン]**
+   1. **[[Save]]**
+
+## <a name="next-steps"></a>次の手順
+
+- [Azure Multi-Factor Authentication 登録ポリシーを有効にする](howto-identity-protection-configure-mfa-policy.md)
+
+- [リスクとは](concept-identity-protection-risks.md)
+
+- [リスク検出を調査する](howto-identity-protection-investigate-risk.md)
+
+- [リスク検出をシミュレートする](howto-identity-protection-simulate-risk.md)

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bfb66789df3236c096ea00bcc83ddc435e87f047
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 4dffa7dcafe4aabe3e8dcb56d4f5084d0c6ef821
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097657"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819666"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
 
@@ -93,7 +93,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>ローカル キャッシュのサイズ設定を変更する
-ローカル キャッシュの既定のサイズは **300 MB**です。 これには、コンテンツ ストアからコピーされる /site フォルダーと /siteextensions フォルダーだけでなく、ローカルで作成されたログとデータのフォルダーが含まれます。 この上限を上げるには、アプリケーション設定 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用します。 サイズは、アプリごとに最大 **2 GB** (2000 MB) まで増やすことができます。
+ローカル キャッシュの既定のサイズは **1 GB**です。 これには、コンテンツ ストアからコピーされる /site フォルダーと /siteextensions フォルダーだけでなく、ローカルで作成されたログとデータのフォルダーが含まれます。 この上限を上げるには、アプリケーション設定 `WEBSITE_LOCAL_CACHE_SIZEINMB`を使用します。 サイズは、アプリごとに最大 **2 GB** (2000 MB) まで増やすことができます。
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>App Service のローカル キャッシュを使用する場合のベスト プラクティス
 ローカル キャッシュは、 [ステージング環境](../app-service/deploy-staging-slots.md) 機能と併用することをお勧めします。
@@ -105,6 +105,7 @@ Azure App Service のローカル キャッシュ機能では、コンテンツ�
 * 固定の設定には名前が含まれ、スロットに固定されます。 そのため、ステージング スロットが運用スロットにスワップされると、ローカル キャッシュのアプリケーション設定が継承されます。 新しくスワップされた運用スロットは、数分後にローカル キャッシュに対して実行され、スワップ後のスロット ウォームアップ時にウォームアップされます。 したがって、スロットのスワップが完了すると、運用スロットはローカル キャッシュに対して実行されるようになります。
 
 ## <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
+
 ### <a name="how-can-i-tell-if-local-cache-applies-to-my-app"></a>アプリにローカル キャッシュを適用できるかどうかは、どうやって判断できますか?
 アプリが高パフォーマンスで信頼性の高いコンテンツ ストアが必要としていて、実行時に重要なデータ書き込むためにコンテンツ ストアを使用せず、合計サイズが 2 GB 未満であれば、ローカル キャッシュを適用できます。 /site フォルダーと /siteextensions フォルダーの合計サイズを確認するには、サイト拡張機能の "Azure Web Apps Disk Usage" を使用します。
 

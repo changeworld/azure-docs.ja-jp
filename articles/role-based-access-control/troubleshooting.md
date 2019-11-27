@@ -15,12 +15,12 @@ ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 158222c256e3efc7ca87d7a3781ca68e1c4307b1
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: e8a5b8b5794687f9e3b1707fda4cbe381e277317
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750182"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72819777"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure リソースの RBAC のトラブルシューティング
 
@@ -29,7 +29,7 @@ ms.locfileid: "72750182"
 ## <a name="problems-with-rbac-role-assignments"></a>RBAC ロールの割り当てに関する問題
 
 - **[追加]**  >  **[ロール割り当ての追加]** オプションが無効になっているため、または "オブジェクト ID のクライアントは、アクションの実行を承認されていません" というアクセス許可エラーが発生するために、Azure portal の **[アクセス制御 (IAM)]** でロールの割り当てを追加できない場合は、ロールを割り当てようとしているスコープで `Microsoft.Authorization/roleAssignments/write` のアクセス許可を持っている[所有者](built-in-roles.md#owner)や[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)などのロールを割り当てられているユーザーで、現在サインインしていることを確認してください。
-- エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、代わりにロールをグループに割り当てて、ロールの割り当て数を減らしてみます。 Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。
+- エラー メッセージ "ロールの割り当てはこれ以上作成できません (コード: RoleAssignmentLimitExceeded)" が、ロールを割り当てようとすると発生する場合は、代わりにロールをグループに割り当てて、ロールの割り当て数を減らしてみます。 Azure では、サブスクリプションあたり最大 **2,000** 個のロールの割り当てをサポートしています。 このロール割り当ての制限は固定されており、増やすことはできません。
 
 ## <a name="problems-with-custom-roles"></a>カスタム ロールに関する問題
 

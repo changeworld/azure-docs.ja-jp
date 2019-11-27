@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: df856e0d76dbd5903964bc80aa01b97b7461128a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4f585778808b133fe5c731ab6a3189594cbfc0f9
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122694"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72804233"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して HTTP または HTTPS エンドポイントに発信呼び出しを送信する
 
@@ -45,7 +45,7 @@ ms.locfileid: "71122694"
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 ロジック アプリ デザイナーで空のロジック アプリを開きます。
 
-1. デザイナーの検索ボックスに、フィルターとして「http」と入力します。 **[トリガー]** の一覧から、 **[HTTP]** トリガーを選択します。
+1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「http」と入力します。 **[トリガー]** の一覧から、 **[HTTP]** トリガーを選択します。
 
    ![HTTP トリガーを選択する](./media/connectors-native-http/select-http-trigger.png)
 
@@ -53,9 +53,9 @@ ms.locfileid: "71122694"
 
 1. ターゲット エンドポイントへの呼び出しに含める [HTTP トリガー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)の値を指定します。 トリガーでターゲット エンドポイントを確認する頻度を設定します。
 
-   ![HTTP トリガー パラメーターを入力する](./media/connectors-native-http/http-trigger-parameters.png)
+   **[なし]** 以外の認証の種類を選択した場合、認証設定は、選択に基づいて変化します。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。
 
-   HTTP に使用できる認証の種類の詳細については、「[HTTP トリガーとアクションを認証する](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)」を参照してください。
+   ![HTTP トリガー パラメーターを入力する](./media/connectors-native-http/http-trigger-parameters.png)
 
 1. その他の使用可能なパラメーターを追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なパラメーターを選択します。
 
@@ -75,7 +75,7 @@ ms.locfileid: "71122694"
 
    ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 表示されるプラス記号 ( **+** ) を選択してから、 **[アクションの追加]** を選択します。
 
-1. デザイナーの検索ボックスに、フィルターとして「http」と入力します。 **[アクション]** の一覧で、 **[HTTP]** アクションを選択します。
+1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「http」と入力します。 **[アクション]** の一覧で、 **[HTTP]** アクションを選択します。
 
    ![HTTP アクションを選択する](./media/connectors-native-http/select-http-action.png)
 
@@ -83,9 +83,9 @@ ms.locfileid: "71122694"
 
 1. ターゲット エンドポイントへの呼び出しに含める [HTTP アクション パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)の値を指定します。
 
-   ![HTTP アクションのパラメーターを入力する](./media/connectors-native-http/http-action-parameters.png)
+   **[なし]** 以外の認証の種類を選択した場合、認証設定は、選択に基づいて変化します。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。
 
-   HTTP に使用できる認証の種類の詳細については、「[HTTP トリガーとアクションを認証する](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication)」を参照してください。
+   ![HTTP アクションのパラメーターを入力する](./media/connectors-native-http/http-action-parameters.png)
 
 1. その他の使用可能なパラメーターを追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なパラメーターを選択します。
 

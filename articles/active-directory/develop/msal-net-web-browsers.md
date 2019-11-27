@@ -1,5 +1,6 @@
 ---
-title: .NET 用 Microsoft Authentication Library での Web ブラウザー | Azure
+title: .NET 用 Microsoft Authentication Library での Web ブラウザー
+titleSuffix: Microsoft identity platform
 description: .NET 用 Microsoft 認証ライブラリ (MSAL.NET) で Xamarin Android を使用する場合の固有の考慮事項について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1285c5c61cee25e387ca5fb598f0e062088e549
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2446166aa8078040c06d7cb54ce01666d9931727
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532504"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802683"
 ---
 # <a name="using-web-browsers-in-msalnet"></a>MSAL.NET で Web ブラウザーを使用する
 対話型の認証には Web ブラウザー が必要です。 MSAL.NET では、Xamarin.iOS と Xamarin.Android での[システム Web ブラウザー](#system-web-browser-on-xamarinios-xamarinandroid)が既定でサポートされています。 ただし、[Xamarin.iOS](#choosing-between-embedded-web-browser-or-system-browser-on-xamarinios) および [Xamarin.Android](#detecting-the-presence-of-custom-tabs-on-xamarinandroid) のアプリでは、要件に応じて (UX、シングル サインオン (SSO) の必要性、セキュリティ)、[埋め込み Web ブラウザーを有効にすることもできます](#enable-embedded-webviews-on-ios-and-android)。 さらに、Android に Chrome または Chrome カスタム タブをサポートするブラウザーが存在するかどうかに基づいて、使用する Web ブラウザーを[動的に選択する](#detecting-the-presence-of-custom-tabs-on-xamarinandroid)こともできます。 MSAL.NET では、.NET Core デスクトップアプリケーションでシステム ブラウザーがサポートされるのみとなります。
@@ -48,7 +49,7 @@ MSAL.NET はマルチフレームワーク ライブラリであり、UI コン�
 
 ### <a name="at-a-glance"></a>概略
 
-| フレームワーク        | 埋め込み | システム | 既定値 |
+| フレームワーク        | 埋め込み | システム | Default |
 | ------------- |-------------| -----| ----- |
 | .NET Classic     | はい | はい^ | 埋め込み |
 | .NET Core     | いいえ | はい^ | システム |

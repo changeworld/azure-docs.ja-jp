@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: d3917f65d8be08d6355013393f6c6675ea6c7fc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26a951ffaf0253371ffe69c6df798120f0464082
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61131821"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72881895"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する 
-> [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
-> 
-> 
+
+> [!IMPORTANT]
+> 一部のメディア プロセッサの[提供終了計画](media-services-analytics-overview.md#retirement-plans)を確認します。
 
 ## <a name="overview"></a>概要
 Azure Media Services Analytics は、組織や企業がビデオ ファイルからアクションにつながる分析データを簡単に得られるようにする、(エンタープライズ向けの規模、コンプライアンス、セキュリティ、グローバルな展開で使用できる) 音声コンポーネントと視覚コンポーネントのコレクションです。 Azure Media Services Analytics の概要について、詳しくは[こちら](media-services-analytics-overview.md)のトピックを参照してください。 
@@ -136,7 +135,7 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 ![ビデオのモデレート](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
-### <a name="version"></a>バージョン 
+### <a name="version"></a>Version 
 "2.0" を使用しています。
 
 ### <a name="mode"></a>Mode

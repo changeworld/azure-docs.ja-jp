@@ -1,19 +1,19 @@
 ---
 title: 複数ステップ Web テストと Azure Application Insights を使用して Web アプリケーションを監視する |Microsoft Docs
-description: 複数ステップ Web テストと Azure Application Insights を使用して Web アプリケーションを監視します
+description: 複数手順の Web テストを設定して、Azure Application Insights で Web アプリケーションを監視します
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 07/25/2019
+ms.date: 10/23/2019
 ms.reviewer: sdash
-ms.openlocfilehash: f34695cb4a92fbed285ba8c56764606a124194a4
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 80a39151a3d40c9b9d7cb49c6ab41aab602c5991
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678238"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72817388"
 ---
 # <a name="multi-step-web-tests"></a>複数手順の Web テスト
 
@@ -34,38 +34,12 @@ ms.locfileid: "72678238"
 > [!NOTE]
 > 複数ステップ Web テストには、それらに関連付けられている追加のコストがあります。 詳細については、[価格の公式ガイド](https://azure.microsoft.com/pricing/details/application-insights/)をご覧ください。
 
-## <a name="record-a-multi-step-web-test"></a>複数ステップ Web テストを記録する
+## <a name="record-a-multi-step-web-test"></a>複数ステップ Web テストを記録する 
 
-複数手順のテストを作成するには、Visual Studio Enterprise を使用してシナリオを記録してから、その記録を Application Insights にアップロードします。 Application Insights では、設定された間隔でそのシナリオが再生され、応答が検証されます。
+> [!WARNING]
+> マルチステップ レコーダーの使用は推奨されなくなりました。 このレコーダーは、基本的な対話機能を備えた静的な HTML ページ用に開発されており、最新の web ページでは機能しません。
 
-> [!IMPORTANT]
-> * テストでは、コード化された機能またはループは使用できません。 テストは .webtest スクリプトに完全に含まれている必要があります。 ただし、標準的なプラグインは使用できます。
-> * 複数ステップ Web テストでは、英語文字のみがサポートされます。 他の言語で Visual Studio を使用している場合、Web テスト定義ファイルを更新して、英語以外の文字を翻訳/除外してください。
-
-Web セッションを記録するには、Visual Studio Enterprise を使用します。
-
-1. Web パフォーマンスとロード テストのプロジェクトを作成します。 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]**  >  **[Visual C#]**  >  **[テスト]**
-
-    ![Visual Studio の新しいプロジェクトの UI](./media/availability-multistep/vs-web-performance-and-load-test.png)
-
-2. `.webtest` ファイルを開き、記録を開始します。
-
-    ![Visual Studio のテスト記録の UI](./media/availability-multistep/open-web-test.png)
-
-3. 記録の一部としてシミュレートするテストのステップをクリックします。
-
-    ![ブラウザーの記録の UI](./media/availability-multistep/record.png)
-
-4. テストを編集します。
-
-    * 受信したテキストと応答コードを確認するための検証を追加します。
-    * 不必要なインタラクションをすべて削除します。 画像に依存している要求を削除したり、テストの成功に関係しないと思われる追跡サイトを追加したりできます。
-    
-    テスト スクリプトの編集のみを実行できることを忘れないでください。カスタム コードの追加や他の Web テストを呼び出すことができます。 テストにループを挿入しないでください。 標準的な Web テスト プラグインを使用することができます。
-
-5. Visual Studio でテストを実行して検証を行って、動作することを確認します。
-
-    Web テスト ランナーは、web ブラウザーを開き、記録したアクションを繰り返します。 すべてが期待どおりに動作することを確認します。
+Visual Studio Web テストの作成に関するガイダンスについては、[公式の Visual Studio 2019 ドキュメント](https://docs.microsoft.com/visualstudio/test/how-to-create-a-web-service-test?view=vs-2019)を参照してください。
 
 ## <a name="upload-the-web-test"></a>Web テストをアップロードする
 
@@ -96,7 +70,7 @@ Web セッションを記録するには、Visual Studio Enterprise を使用し
 |**クラシック** | 新しい可用性テストでクラシック アラートを使用することはもう推奨されていません。|
 |**アラートの場所のしきい値**|少なくとも 3/5 の場所にすることをお勧めします。 アラートの場所のしきい値とテストの場所の数の最適な関係は、**アラートの場所のしきい値** = **テストの場所の数** - 2 です。テストの場所は、少なくとも 5 か所にします。|
 
-## <a name="advanced-configuration"></a>詳細な構成
+## <a name="configuration"></a>構成
 
 ### <a name="plugging-time-and-random-numbers-into-your-test"></a>テストに対する時間とランダムな数の組み込み
 
