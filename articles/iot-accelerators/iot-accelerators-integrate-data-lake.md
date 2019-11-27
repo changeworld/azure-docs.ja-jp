@@ -1,5 +1,5 @@
 ---
-title: リモート監視ソリューションを Data Lake Store と統合する - Azure | Microsoft Docs
+title: リモート監視から Data Lake Store にデータをストリーミングする - Azure | Microsoft Docs
 description: Azure Stream Analytics ジョブを使用して Azure Data Lake Store をリモート監視ソリューションと統合する方法を説明します。
 author: philmea
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61449504"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889234"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>リモート監視ソリューションを Azure Data Lake Store と統合する
 
@@ -85,7 +85,7 @@ IoT Hub から Azure Data Lake Store にデータをストリーミングする 
 
 1. [新しい入力] タブで、**IoT Hub** の入力のエイリアスを入力します。
 
-1. [コンシューマー グループ]: ドロップダウンから、先ほど作成したコンシューマー グループを選択します。 ここでは、**streamanalyticsjob** を使用しています。
+1. [コンシューマー グループ]\: ドロップダウンから、先ほど作成したコンシューマー グループを選択します。 ここでは、**streamanalyticsjob** を使用しています。
 
     ![入力の選択](./media/iot-accelerators-integrate-data-lake/stream-analytics-new-input.png)
 

@@ -7,14 +7,14 @@ ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 10/01/2019
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 524b927ec0966199c51cdee93e920d7b847139ae
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 5b946e36c5da9f122adce1f8e3b99523a789a66f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495107"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901050"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Azure Logic Apps から Azure 関数を呼び出す
 
@@ -67,7 +67,7 @@ Azure の関数を作成せずにコード スニペットを実行するには�
 
       ![関数アプリ、[プラットフォーム機能]、[CORS] の順に選択する](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-   1. **[CORS]** でアスタリスク ( **`*`** ) ワイルドカード文字を追加しますが、リスト内の他のすべてのオリジンを削除し、 **[保存]** を選択します。
+   1. **[CORS]** でアスタリスク ( **`*`** ) ワイルドカード文字を追加しますが、リスト内の他のすべてのオリジンは削除して、 **[保存]** を選択します。
 
       !["CORS* にワイルドカード文字 "*" を設定します。](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
@@ -114,11 +114,11 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
    * ロジック アプリのワークフローの既存のステップ間で、矢印の上にマウスを移動して、プラス (+) 記号を選択し、 **[アクションの追加]** を選択します。
 
-1. 検索ボックスで、フィルターとして「azure functions」と入力します。 アクションの一覧から、次のアクションを選択します。 **[Azure 関数を選択する - Azure Functions]** アクションを選択します。
+1. 検索ボックスで、フィルターとして「azure functions」と入力します。 アクションの一覧から、次のような **[Azure 関数を選択する]** アクションを選択します。
 
    !["Azure functions" を探す](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. 関数アプリの一覧で、関数アプリを選択します。 アクションの一覧が開いたら、次のアクションを選択します。**Azure Functions - 新しい関数を作成する**
+1. 関数アプリの一覧で、関数アプリを選択します。 アクションの一覧が開いたら、次のアクションを選択します。**新しい関数を作成する**
 
    ![関数アプリを選択する](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -126,36 +126,36 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
    1. **[関数名]** ボックスで関数の名前を指定します。
 
-   1. **[コード]** ボックスで、自分のコードを関数テンプレートに追加します。関数の実行が終了した後でロジック アプリに返される応答とペイロードも含めます。
+   1. **[コード]** ボックスで、自分のコードを関数テンプレートに追加します。関数の実行が終了した後でロジック アプリに返される応答とペイロードも含めます。 完了したら **[作成]** を選択します。
 
-      ![関数を定義する](./media/logic-apps-azure-functions/function-definition.png)
+   例:
 
-      テンプレートのコードでは、 *`context` オブジェクト*は、以降のステップでロジック アプリが **Request Body** フィールド経由で送信するメッセージを参照します。 関数の内部から `context` オブジェクトのプロパティにアクセスするには、次の構文を使用します。
+   ![関数を定義する](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-      `context.body.<property-name>`
+   テンプレートのコードでは、 *`context` オブジェクト*は、以降のステップでロジック アプリが **Request Body** フィールド経由で送信するメッセージを参照します。 関数の内部から `context` オブジェクトのプロパティにアクセスするには、次の構文を使用します。
 
-      たとえば、`context` オブジェクト内の `content` プロパティを参照するには、次の構文を使用します。 
+   `context.body.<property-name>`
 
-      `context.body.content`
+   たとえば、`context` オブジェクト内の `content` プロパティを参照するには、次の構文を使用します。
 
-      また、テンプレート コードには、`input` 変数が含まれます。この変数は、お使いの関数が該当の値に対する操作を実行できるように、`data` パラメーターからの値を格納します。 また、JavaScript 関数の中で、`data` 変数は `context.body` のショートカットです。
+   `context.body.content`
 
-      > [!NOTE]
-      > この場合の `body` プロパティは `context` オブジェクトに適用され、アクションの出力からの **Body** トークンと同じではありません。お使いの関数にも渡すことができます。
+   また、テンプレート コードには、`input` 変数が含まれます。この変数は、お使いの関数が該当の値に対する操作を実行できるように、`data` パラメーターからの値を格納します。 また、JavaScript 関数の中で、`data` 変数は `context.body` のショートカットです。
 
-   1. 操作が完了したら、 **[作成]** を選択します。
+   > [!NOTE]
+   > この場合の `body` プロパティは `context` オブジェクトに適用され、アクションの出力からの **Body** トークンと同じではありません。お使いの関数にも渡すことができます。
 
 1. **[要求本文]** ボックスで、関数の入力を指定します。書式は JavaScript Object Notation (JSON) オブジェクトにする必要があります。
 
-   この入力は、ロジック アプリが関数に送信する*コンテキスト オブジェクト*またはメッセージです。 **[要求本文]** フィールドをクリックすると、動的コンテンツの一覧が表示され、前のステップからの出力のトークンを選択できます。 この例では、コンテキスト ペイロードが、電子メール トリガーからの **From** トークンの値を保持する `content` という名前のプロパティを含んでいることを示しています。
+   この入力は、ロジック アプリが関数に送信する*コンテキスト オブジェクト*またはメッセージです。 **[要求本文]** フィールドをクリックすると、動的コンテンツの一覧が表示され、前のステップからの出力のトークンを選択できます。 この例では、コンテキスト ペイロードが、メール トリガーからの **From** トークンの値を保持する `content` という名前のプロパティを含んでいることを示しています。
 
    ![[要求本文] の例 - コンテキスト オブジェクトのペイロード](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   ここで、コンテキスト オブジェクトは文字列としてキャストされないため、オブジェクトのコンテンツは JSON ペイロードに直接追加されます。 ただし、コンテキスト オブジェクトが文字列、JSON オブジェクト、または JSON 配列を渡す JSON トークンでない場合は、エラーが発生します。 そのため、この例で代わりに **Received Time** トークンを使用した場合は、二重引用符を追加することで、コンテキスト オブジェクトを文字列としてキャストできます。  
+   ここで、コンテキスト オブジェクトは文字列としてキャストされないため、オブジェクトのコンテンツは JSON ペイロードに直接追加されます。 ただし、コンテキスト オブジェクトが文字列、JSON オブジェクト、または JSON 配列を渡す JSON トークンでない場合は、エラーが発生します。 そのため、この例で代わりに **Received Time** トークンを使用した場合は、二重引用符を追加することで、コンテキスト オブジェクトを文字列としてキャストできます。
 
    ![オブジェクトを文字列としてキャストする](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 使用するメソッド、要求ヘッダー、クエリ パラメーターなどのその他の詳細を指定するには、 **[新しいパラメーターの追加]** の一覧を開き、目的のオプションを選択します。
+1. 使用するメソッド、要求ヘッダー、クエリ パラメーター、認証などのその他の詳細を指定するには、 **[新しいパラメーターの追加]** の一覧を開き、目的のオプションを選択します。 認証については、選択した関数によってオプションが異なります。 「[Azure 関数の認証を有効にする](#enable-authentication-functions)」を参照してください。
 
 <a name="add-function-logic-app"></a>
 
@@ -165,9 +165,9 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
-1. 関数を追加するステップの下で、 **[新しいステップ]** を選択し、 **[アクションの追加]** を選択します。
+1. 関数を追加するステップで、 **[新しいステップ]** を選択します。
 
-1. 検索ボックスで、フィルターとして「azure functions」と入力します。 アクションの一覧から、次のアクションを選択します。 **[Azure 関数を選択する - Azure Functions]** アクションを選択します。
+1. **[アクションを選択してください]** の下の検索ボックス内に、フィルターとして「azure functions」と入力します。 アクションの一覧から、 **[Azure 関数を選択する]** アクションを選択します。
 
    !["Azure functions" を探す](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -181,7 +181,7 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
 1. **[要求本文]** ボックスで、関数の入力を指定します。書式は JavaScript Object Notation (JSON) オブジェクトにする必要があります。
 
-   この入力は、ロジック アプリが関数に送信する*コンテキスト オブジェクト*またはメッセージです。 **[要求本文]** フィールドをクリックすると、動的コンテンツの一覧が表示され、前のステップからの出力のトークンを選択できます。 この例では、コンテキスト ペイロードが、電子メール トリガーからの **From** トークンの値を保持する `content` という名前のプロパティを含んでいることを示しています。
+   この入力は、ロジック アプリが関数に送信する*コンテキスト オブジェクト*またはメッセージです。 **[要求本文]** フィールドをクリックすると、動的コンテンツの一覧が表示され、前のステップからの出力のトークンを選択できます。 この例では、コンテキスト ペイロードが、メール トリガーからの **From** トークンの値を保持する `content` という名前のプロパティを含んでいることを示しています。
 
    ![[要求本文] の例 - コンテキスト オブジェクトのペイロード](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -189,13 +189,129 @@ Azure 関数を作成できたので、[ロジック アプリに関数を追加
 
    ![オブジェクトを文字列としてキャストする](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 使用するメソッド、要求ヘッダー、クエリ パラメーターなどのその他の詳細を指定するには、 **[新しいパラメーターの追加]** の一覧を開き、目的のオプションを選択します。
+1. 使用するメソッド、要求ヘッダー、クエリ パラメーター、認証などのその他の詳細を指定するには、 **[新しいパラメーターの追加]** の一覧を開き、目的のオプションを選択します。 認証については、選択した関数によってオプションが異なります。 「[Azure 関数の認証を有効にする](#enable-authentication-functions)」を参照してください。
 
 <a name="call-logic-app"></a>
 
 ## <a name="call-logic-apps-from-azure-functions"></a>Azure 関数からロジック アプリを呼び出す
 
 Azure 関数の内部からロジック アプリをトリガーする場合、ロジック アプリは、呼び出し可能なエンドポイントを提供するトリガーから始まる必要があります。 たとえば、**HTTP**、**Request**、**Azure Queues**、または **Event Grid** トリガーでロジック アプリを開始できます。 次に、関数の内部から、そのトリガーの URL に HTTP POST 要求を送信し、ロジック アプリで処理するペイロードを含めます。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。
+
+<a name="enable-authentication-functions"></a>
+
+## <a name="enable-authentication-for-azure-functions"></a>Azure 関数の認証を有効にする
+
+サインインしたり、資格情報やシークレットを指定したりする必要なく他の Azure Active Directory (Azure AD) テナント内のリソースへのアクセスを認証するために、ロジック アプリでは、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) (以前はマネージド サービス ID (MSI) と呼ばれていました) を使用することができます。 この ID は、ユーザーの代わりに Azure で管理されます。ユーザーがシークレットを提供したりローテーションしたりする必要がないため、資格情報の保護に役立ちます。 [Azure AD 認証用のマネージド ID がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の詳細をご覧ください。
+
+システム割り当てのマネージド ID を使用するようにロジック アプリを設定した場合、ロジック アプリの Azure 関数では、認証にもその同じ ID を使用できます。 ロジック アプリの Azure 関数の認証サポートについては、[送信呼び出しへの認証の追加](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)に関するページを参照してください。
+
+自分の関数でシステム割り当ての ID を設定し、使用するには、次の手順を行います。
+
+1. ロジック アプリでシステム割り当て ID を有効にし、ターゲット リソースに対するその ID のアクセスを設定します。 「[Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする](../logic-apps/create-managed-service-identity.md)」を参照してください。
+
+1. 次の手順で Azure 関数と関数アプリの認証を有効にします。
+
+   * [関数で匿名認証を設定する](#set-authentication-function-app)
+   * [関数アプリで Azure AD 認証を設定する](#set-azure-ad-authentication)
+
+<a name="set-authentication-function-app"></a>
+
+### <a name="set-up-anonymous-authentication-in-your-function"></a>関数で匿名認証を設定する
+
+Azure 関数でロジック アプリのシステム割り当て ID を使用するには、関数の認証レベルを匿名に設定しておきます。 設定していないと、ロジック アプリにより "BadRequest" エラーがスローされます。
+
+1. [Azure portal](https://portal.azure.com) で、自分の関数アプリを探して選択します。 以下の手順ではサンプル関数アプリとして "FabrikamFunctionApp" が使用されます。
+
+1. 関数アプリ ウィンドウで **[プラットフォーム機能]** を選択します。 **[開発ツール]** で **[高度なツール (Kudu)]** を選択します。
+
+   ![Kudu の高度なツールを開く](./media/logic-apps-azure-functions/open-advanced-tools-kudu.png)
+
+1. Kudu Web サイトのタイトル バーで、 **[デバッグ コンソール]** メニューから、 **[CMD]** を選択します。
+
+   ![デバッグ コンソール メニューから、[CMD] オプションを選択します。](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
+
+1. 次のページが表示されたら、フォルダーの一覧から **[site]**  >  **[wwwroot]**  >  *<自分の関数>* の順に選択します。 以下の手順ではサンプル関数として "FabrikamAzureFunction" が使用されます。
+
+   ![[site]、[wwwroot]、<自分の関数> の順に選択する](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
+
+1. 編集のために `function.json` ファイルを開きます。
+
+   !["function.json" ファイルの編集をクリックする](./media/logic-apps-azure-functions/edit-function-json-file.png)
+
+1. `bindings` オブジェクトで、`authLevel` プロパティが存在するかどうかを確認します。 プロパティが存在する場合、プロパティの値を `anonymous` に設定します。 存在しない場合、そのプロパティを追加し、値を設定します。
+
+   !["authLevel" プロパティを追加し、"anonymous" に設定する](./media/logic-apps-azure-functions/set-authentication-level-function-app.png)
+
+1. 完了したら、設定を保存し、次のセクションに進みます。
+
+<a name="set-azure-ad-authentication"></a>
+
+### <a name="set-up-azure-ad-authentication-for-your-function-app"></a>関数アプリで Azure AD 認証を設定する
+
+このタスクを開始する前に、後で使用するために、次の値を見つけてメモしておきます。
+
+* システム割り当て ID に対して生成され、ロジック アプリを表すオブジェクト ID
+
+  * このオブジェクト ID を生成するには、[ロジック アプリのシステム割り当て ID を有効にします](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app)。
+
+  * それ以外の方法では、ロジック アプリ デザイナーでロジック アプリを開くことでこのオブジェクト ID が見つかります。 ロジック アプリのメニューの **[設定]** で、 **[ID]**  >  **[システム割り当て済み]** の順に選択します。
+
+* Azure Active Directory (Azure AD) のテナントのディレクトリ ID
+
+  テナントのディレクトリ ID を取得するには、[`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) Powershell コマンドを実行します。 あるいは、Azure portal で次の手順を行います。
+
+  1. [Azure portal](https://portal.azure.com) で、お使いの関数アプリを探して選択します。
+
+  1. Azure AD テナントを検索して選択します。 この手順ではサンプル テナントとして "Fabrikam" を使用します。
+
+  1. テナントのメニューの **[管理]** の下で **[プロパティ]** を選択します。
+
+  1. たとえば、テナントのディレクトリ ID をコピーし、後で使用するためにその ID を保存します。
+
+     ![Azure AD テナントのディレクトリ ID を見つけてコピーする](./media/logic-apps-azure-functions/azure-active-directory-tenant-id.png)
+
+* アクセスするターゲット リソースのリソース ID
+
+  * これらのリソース ID を見つける方法については、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
+
+  > [!IMPORTANT]
+  > このリソース ID は、必要な末尾のスラッシュも含めて、Azure AD で求められる値と正確に一致させる必要があります。
+
+  このリソース ID は、後で、[システム割り当て ID を使用するように関数アクションを設定する](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)ときに、 **[対象]** プロパティで使用するものと同じ値でもあります。
+
+これで、関数アプリで Azure AD 認証を設定する準備ができました。
+
+1. [Azure portal](https://portal.azure.com) で、お使いの関数アプリを探して選択します。
+
+1. 関数アプリ ウィンドウで **[プラットフォーム機能]** を選択します。 **[ネットワーク]** で **[認証/承認]** を選択します。
+
+   ![認証と承認の設定を表示する](./media/logic-apps-azure-functions/view-authentication-authorization-settings.png)
+
+1. **[App Service 認証]** 設定を **[オン]** に変更します。 **[要求が認証されていない場合のアクション]** 一覧から、 **[Azure Active Directory でのログイン]** を選択します。 **[認証プロバイダー]** の下の **[Azure Active Directory]** をクリックします。
+
+   ![Azure AD による認証をオンにする](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
+
+1. **[Azure Active Directory の設定]** ウィンドウで、次の手順を行います。
+
+   1. **[管理モード]** を **[詳細]** に設定します。
+
+   1. **[クライアント ID]** プロパティに、ロジック アプリのシステム割り当て ID のオブジェクト ID を入力します。
+
+   1. **[発行者の URL]** プロパティに `https://sts.windows.net/` URL を入力し、Azure AD テナントのディレクトリ ID を追加します。
+
+      `https://sts.windows.net/<Azure-AD-tenant-directory-ID>`
+
+   1. **[許可されるトークン対象ユーザー]** プロパティに、アクセスするターゲット リソースのリソース ID を入力します。
+
+      このリソース ID は、後で、[システム割り当て ID を使用するように関数アクションを設定する](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)とき、 **[対象]** プロパティで使用するものと同じ値です。
+
+   この時点で、バージョンは次の例のようになります。
+
+   ![Azure Active Directory 認証設定](./media/logic-apps-azure-functions/azure-active-directory-authentication-settings.png)
+
+1. 終了したら、 **[OK]** を選択します。
+
+1. ロジック アプリ デザイナーに戻り、[こちら](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)の手順に従って、管理対象 ID でアクセスを認証します。
 
 ## <a name="next-steps"></a>次の手順
 

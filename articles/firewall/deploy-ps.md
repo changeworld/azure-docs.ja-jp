@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 494beb6ba2bf8a9409962b4418089cdad0e182e1
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 7f48012ca1f97c2e28380d95da37863c4bc17f63
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114780"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831836"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Azure Firewall のデプロイと構成を行う
 
@@ -39,7 +39,7 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 > * テスト ネットワーク環境を設定する
 > * ファイアウォールをデプロイする
 > * 既定のルートを作成する
-> * [www.google.com](www.google.com) へのアクセスを許可するようにアプリケーションを構成する
+> * www.google.com へのアクセスを許可するようにアプリケーションを構成する
 > * 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
 > * ファイアウォールをテストする
 
@@ -241,7 +241,7 @@ $NIC | Set-AzNetworkInterface
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   [www.google.com](www.google.com) の要求は成功し、[www.microsoft.com](www.microsoft.com) の要求は失敗します。 これは、ファイアウォール ルールが予想どおりに動作していることを示します。
+   `www.google.com` 要求は成功し、`www.microsoft.com` 要求は失敗します。 これは、ファイアウォール ルールが予想どおりに動作していることを示します。
 
 これで、ファイアウォール ルールが動作していることを確認できました。
 

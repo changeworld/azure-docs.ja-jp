@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ca091a1bbf56e2d2850a464d0109020b06483d0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 20bc148e392900aecb63ad393ec6e90cda65585a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576694"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839099"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,9 +57,9 @@ ms.locfileid: "73576694"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を試してください
 
-- Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境の構成方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
+- Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
 
 - Azure Kubernetes Service (AKS) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[イメージ分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
 
@@ -72,7 +72,7 @@ ms.locfileid: "73576694"
 
 有効にするには、次の手順を実行します。
 
-1. スコア付けファイルを開きます。 
+1. スコア付けファイルを開きます。
 
 1. ファイルの先頭に[次のコード](https://aka.ms/aml-monitoring-sdk)を追加します。
 
@@ -124,11 +124,11 @@ ms.locfileid: "73576694"
 
    ![サービスの編集](media/how-to-enable-data-collection/EditService.PNG)
 
-1. **[詳細設定]** で、 **[モデルのデータ コレクションを有効にする]** をオンにします。 
+1. **[詳細設定]** で、 **[モデルのデータ コレクションを有効にする]** をオンにします。
 
     [![データ収集をオンにする](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
-   このウィンドウでは、[AppInsights 診断を有効にする] をオンにしてサービスの正常性を追跡することもできます。  
+   このウィンドウでは、[AppInsights 診断を有効にする] をオンにしてサービスの正常性を追跡することもできます。
 
 1. **[更新]** をクリックして変更を適用します。
 
@@ -145,7 +145,7 @@ ms.locfileid: "73576694"
 
      [![編集オプション](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-  1. **[詳細設定]** で、 **[モデルのデータ コレクションを有効にする]** をオフにします。 
+  1. **[詳細設定]** で、 **[モデルのデータ コレクションを有効にする]** をオフにします。
 
      [![データ コレクションをオフにする](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
@@ -164,6 +164,7 @@ ms.locfileid: "73576694"
 好みの任意のツールを選択して、Azure Blob に収集されたデータを分析できます。
 
 BLOB のデータにすばやくアクセスするには:
+
 1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。
 
 1. ワークスペースを開きます。
@@ -188,9 +189,9 @@ BLOB のデータにすばやくアクセスするには:
     [![PBI の BLOB のセットアップ](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
-1. ストレージ アカウント名を追加し、ストレージ キーを入力します。 この情報は、BLOB の **[設定]** > [アクセス キー] で確認できます。 
+1. ストレージ アカウント名を追加し、ストレージ キーを入力します。 この情報は、BLOB の **[設定]** の [アクセス キー] で確認できます。
 
-1. コンテナー **modeldata** を選択し、 **[編集]** をクリックします。 
+1. コンテナー **modeldata** を選択し、 **[編集]** をクリックします。
 
     [![PBI ナビゲーター](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
@@ -198,7 +199,7 @@ BLOB のデータにすばやくアクセスするには:
 
 1. **名前**に基づいて関連するデータをフィルター処理します。 **予測**と**入力**を保存した場合、それぞれにクエリを作成する必要があります。
 
-1. **[コンテンツ]** 列の二重矢印をクリックして、ファイルを結合します。 
+1. **[コンテンツ]** 列の二重矢印をクリックして、ファイルを結合します。
 
     [![PBI コンテンツ](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
@@ -215,15 +216,15 @@ BLOB のデータにすばやくアクセスするには:
 
 ### <a name="analyzing-model-data-using-databricks"></a>Databricks を使用したモデル データの分析
 
-1. [Databricks ワークスペース](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を作成します。 
+1. [Databricks ワークスペース](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)を作成します。
 
-1. Databricks ワークスペースに移動します。 
+1. Databricks ワークスペースに移動します。
 
 1. Databricks ワークスペースで、 **[データのアップロード]** を選択します。
 
     [![DB のアップロード](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. 新しいテーブルを作成し、 **[他のデータ ソース]** > [Azure Blob Storage] > [Create Table in Notebook]\(ノートブックにテーブルを作成\) を選択します。
+1. 新しいテーブルを作成し、 **[他のデータ ソース]** 、[Azure Blob Storage]、[Create Table in Notebook]\(ノートブックにテーブルを作成\) の順に選択します。
 
     [![DB テーブル](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
@@ -236,7 +237,7 @@ BLOB のデータにすばやくアクセスするには:
  
     [![DBsetup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
-1. データを表示および分析するには、テンプレートの手順に従います。 
+1. データを表示および分析するには、テンプレートの手順に従います。
 
 ## <a name="example-notebook"></a>ノートブックの例
 

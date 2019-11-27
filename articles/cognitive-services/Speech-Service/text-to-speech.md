@@ -1,7 +1,7 @@
 ---
 title: テキスト読み上げ - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Speech Service のテキスト読み上げは、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できるようにする機能です。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。
+description: Speech Service のテキスト読み上げ機能を使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 事前設定の音声を選択するか、独自のカスタム音声を作成します。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: d3d4777d54e3ef6b20ab0ac0f0890da958411297
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468667"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075703"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
 Azure Speech Services のテキスト読み上げは、アプリケーション、ツール、またはデバイスがテキストを人間のような自然な合成音声に変換できるようにするサービスです。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。 詳細については、[サポートされる言語](language-support.md#text-to-speech)に関するページを参照してください。
 
 テキスト読み上げテクノロジを使用すると、コンテンツ作成者は、ユーザーとさまざまな方法で対話できます。 テキスト読み上げでは、ユーザーが音声を使ってコンテンツと対話できるため、アクセシビリティが向上します。 視覚障碍や学習障碍をお持ちの方も、車の運転中にナビゲーション情報が必要な方も、テキスト読み上げを使用することにより、これまでのエクスペリエンスを向上させることができます。 テキスト読み上げは、音声ボットや音声アシスタントにも役立つアドオンです。
-
 
 音声合成マークアップ言語 (SSML) (XML ベースのマークアップ言語) を活用することにより、テキスト読み上げサービスを使用する開発者は、入力テキストを合成音声に変換する方法を指定できます。 SSML では、ピッチ、読み方、読み上げ速度、音量などを調整できます。 詳細については、[SSML](#speech-synthesis-markup-language-ssml) に関する記事を参照してください。
 
@@ -54,10 +53,10 @@ Azure Speech Services のテキスト読み上げは、アプリケーション�
 
 テキスト読み上げサービスを使用している場合、句読点を含めて、文字が音声に変換されるごとに課金されます。 SSML ドキュメント自体は課金対象外ですが、テキストが音声に変換される方法を調整するために使用される省略可能な要素 (音素やピッチなど) は、課金対象の文字としてカウントされます。 課金対象の一覧を次に示します。
 
-* 要求の SSML 本文でテキスト読み上げサービスに渡されたテキスト
-* `<speak>` と `<voice>` タグを除く、SSML 形式の要求本文のテキスト フィールド内のすべてのアークアップ
-* 文字、句読点、スペース、タブ、マークアップ、すべての空白文字
-* Unicode で定義されているすべてのコード ポイント
+- 要求の SSML 本文でテキスト読み上げサービスに渡されたテキスト
+- `<speak>` と `<voice>` タグを除く、SSML 形式の要求本文のテキスト フィールド内のすべてのアークアップ
+- 文字、句読点、スペース、タブ、マークアップ、すべての空白文字
+- Unicode で定義されているすべてのコード ポイント
 
 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。
 
@@ -68,16 +67,16 @@ Azure Speech Services のテキスト読み上げは、アプリケーション�
 
 以下の表は、テキスト読み上げのコア機能を示しています。
 
-| ユース ケース | SDK | REST |
-|----------|-----|------|
-| テキストを音声に変換する。 | はい | はい |
-| 音声適応のためのデータセットをアップロードする。 | いいえ | はい\* |
-| 音声フォント モデルを作成および管理する。 | いいえ | はい\* |
-| デプロイする音声フォントを作成および管理する。 | いいえ | はい\* |
-| 音声フォント テストを作成および管理する。 | いいえ | はい\* |
-| サブスクリプションを管理する。 | いいえ | はい\* |
+| ユース ケース                                  | SDK | REST  |
+| ----------------------------------------- | --- | ----- |
+| テキストを音声に変換する。                   | はい | はい   |
+| 音声適応のためのデータセットをアップロードする。     | いいえ  | はい\* |
+| 音声フォント モデルを作成および管理する。      | いいえ  | はい\* |
+| デプロイする音声フォントを作成および管理する。 | いいえ  | はい\* |
+| 音声フォント テストを作成および管理する。       | いいえ  | はい\* |
+| サブスクリプションを管理する。                     | いいえ  | はい\* |
 
-\**これらのサービスは、cris.ai エンドポイントを使用して提供されます。[Swagger リファレンス](https://westus.cris.ai/swagger/ui/index)に関するページを参照してください。このようなカスタム音声トレーニングおよび管理の API では、要求を 5 秒間あたり 25 個に制限する調整が実装されます。一方、音声合成 API 自体では、最高値として 1 秒あたり 200 個の要求を許容する調整が実装されます。スロットリングが実行されると、その旨がメッセージ ヘッダーを介して通知されます。*
+\*_これらのサービスは、cris.ai エンドポイントを使用して提供されます。[Swagger リファレンス](https://westus.cris.ai/swagger/ui/index)に関するページを参照してください。このようなカスタム音声トレーニングおよび管理の API では、要求を 5 秒間あたり 25 個に制限する調整が実装されます。一方、音声合成 API 自体では、最高値として 1 秒あたり 200 個の要求を許容する調整が実装されます。スロットリングが実行されると、その旨がメッセージ ヘッダーを介して通知されます。_
 
 ## <a name="get-started-with-text-to-speech"></a>テキスト読み上げを使ってみる
 
@@ -86,8 +85,8 @@ Azure Speech Services のテキスト読み上げは、アプリケーション�
 ### <a name="sdk-quickstarts"></a>SDK のクイック スタート
 
 | クイック スタート (SDK) | プラットフォーム | API リファレンス |
-|------------|----------|---------------|
-| [C#、.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| ---------------- | -------- | ------------- |
+| [C#、.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
 | [C#、.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
 | [C#、UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
 | [C#、Unity](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows、Android | [Browse](https://aka.ms/csspeech/csharpref) |
@@ -104,7 +103,7 @@ Azure Speech Services のテキスト読み上げは、アプリケーション�
 ### <a name="rest-quickstarts"></a>REST クイック スタート
 
 | クイック スタート (REST) | プラットフォーム | API リファレンス |
-|------------|----------|---------------|
+| ----------------- | -------- | ------------- |
 | [C#、.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Node.JS](quickstart-nodejs-text-to-speech.md) | Window、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Python](quickstart-python-text-to-speech.md) | Window、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -113,18 +112,18 @@ Azure Speech Services のテキスト読み上げは、アプリケーション�
 
 テキスト読み上げのサンプル コードは、GitHub 上で入手できます。 これらのサンプルに含まれるテキスト読み上げ会話は、人気の高いプログラミング言語で作成されています。
 
-* [テキスト読み上げのサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-* [テキスト読み上げのサンプル (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+- [テキスト読み上げのサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [テキスト読み上げのサンプル (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [Speech SDK](speech-sdk-reference.md)
-* [Speech Devices SDK](speech-devices-sdk.md)
-* [REST API: 音声テキスト変換](rest-speech-to-text.md)
-* [REST API: テキスト読み上げ](rest-text-to-speech.md)
-* [REST API: 一括文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
+- [Speech SDK](speech-sdk-reference.md)
+- [Speech Devices SDK](speech-devices-sdk.md)
+- [REST API: 音声テキスト変換](rest-speech-to-text.md)
+- [REST API: テキスト読み上げ](rest-text-to-speech.md)
+- [REST API: 一括文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>次の手順
 
-* [無料の Speech Services サブスクリプションを取得する](get-started.md)
-* [カスタム音声フォントを作成する](how-to-customize-voice-font.md)
+- [無料の Speech Services サブスクリプションを取得する](get-started.md)
+- [カスタム音声フォントを作成する](how-to-customize-voice-font.md)

@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery を使用した VMware VM および物理サーバーの Azure へのディザスター リカバリーに関するサポート マトリックス | Microsoft Docs
+title: Azure Site Recovery における VMware/物理ディザスター リカバリーのサポート マトリックス
 description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする場合のサポートについてまとめています。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 2cda2c4e640c48d712ea5ebc8534cf5a4e35da7a
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 5c20c280fdc9097692f98c83dcb3d310e9914ecf
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620541"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133365"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -64,6 +64,9 @@ Port | コントロール チャネルのオーケストレーションに使用
 
 Site Recovery は、サポートされているマシンで実行されているすべてのワークロードのレプリケーションをサポートします。
 
+> [!Note]
+> 次の表は、コンピューターの BIOS ブート サポートを一覧にしたものです。 UEFI ベースのコンピューターのサポートについては、「[ストレージ](#storage)」セクションを参照してください。
+
 **コンポーネント** | **詳細**
 --- | ---
 マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
@@ -76,12 +79,12 @@ Windows Server 2008 SP2 以降 (64 ビット/32 ビット) |  移行について
 Windows 10、Windows 8.1、Windows 8 | サポートされています。
 Windows 7 SP1 64 ビット | [更新プログラム ロールアップ 36](https://support.microsoft.com/help/4503156) (モビリティ サービスのバージョン 9.22) 以降でサポートされています。 </br></br> モビリティ サービス エージェントのバージョン 9.30.x.x (2019 年 11 月初めにリリース予定) 以降では、Windows 7 SP1 コンピューターに[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。  SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件の詳細については、[こちら](https://aka.ms/SHA-2KB)を参照してください。
 Linux | 64 ビット システムのみがサポートされています。 32 ビット システムはサポートされていません。<br/><br/>すべての Linux サーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。 テスト フェールオーバー/フェールオーバー後に Azure でサーバーを起動するために必要です。 LIS コンポーネントがない場合、Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。 <br/><br/> Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。
-Linux Red Hat Enterprise | 5.2 から 5.11</b><br/> 6.1 から 6.10</b><br/> 7.0 から 7.7。 </br>バージョン 7.7 は[モビリティ エージェント 9.29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) からサポートされています<br/> <br/> Red Hat Enterprise Linux 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていません。 Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
+Linux Red Hat Enterprise | 6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、[8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) <br/> Red Hat Enterprise Linux 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていません。 Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
 Linux:CentOS | 5.2 から 5.11</b><br/> 6.1 から 6.10</b><br/> 7.0 から 7.6<br/> <br/> CentOS 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていません。 Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
 Ubuntu | Ubuntu 14.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS サーバー [(サポートされるカーネルのバージョンを確認してください)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(サポートされるカーネルのバージョンを確認してください)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4 [(サポートされるカーネルのバージョンを確認してください)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3 または SUSE Linux Enterprise Server 11 SP4<br/> レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、レプリケーションを無効にし、アップグレードの後に再び有効にします。
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、7.7<br/><br/> Red Hat と互換可能なカーネルまたは Unbreakable Enterprise カーネル リリース 3、4、5 (UEK3、UEK4、UEK5) を実行している 
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Red Hat と互換可能なカーネルまたは Unbreakable Enterprise カーネル リリース 3、4、5 (UEK3、UEK4、UEK5) を実行している 
 
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu カーネルのバージョン
@@ -93,6 +96,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 14.04 LTS | [9.26][9.26 UR]| 3.13.0-24-generic から 3.13.0-170-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-148-generic、<br/>4.15.0-1023-azure から 4.15.0-1045-azure |
 14.04 LTS | [9.25][9.25 UR]  | 3.13.0-24-generic から 3.13.0-169-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-146-generic、<br/>4.15.0-1023-azure から 4.15.0-1042-azure |
 |||
+16.04 LTS | [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.4.0-21-generic から 4.4.0-166-generic まで<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-66-generic まで<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1061-azure まで|
 16.04 LTS | [9.28][9.28 UR] | 4.4.0-21-generic から 4.4.0-159-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-58-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1055-azure|
 16.04 LTS | [9.27][9.27 UR] | 4.4.0-21-generic から 4.4.0-154-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-54-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1050-azure|
 16.04 LTS | [9.26][9.26 UR] | 4.4.0-21-generic から 4.4.0-148-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-50-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1045-azure|
@@ -100,6 +104,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 16.04 LTS | [9.24][9.24 UR] | 4.4.0-21-generic から 4.4.0-143-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic から 4.15.0-46-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure から 4.15.0-1040-azure|
 |||
 18.04 LTS | [9.29](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) | 4.15.0-20-generic から 4.15.0-62-generic </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-27-generic </br> 4.15.0-1009-azure から 4.15.0-1037-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1018-azure
+18.04 LTS | [9.30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.15.0-20-generic から 4.15.0-66-generic まで </br> 4.18.0-13-generic から 4.18.0-25-generic </br> 5.0.0-15-generic から 5.0.0-32-generic まで </br> 4.15.0-1009-azure から 4.15.0-1037-azure </br> 4.18.0-1006-azure から 4.18.0-1025-azure </br> 5.0.0-1012-azure から 5.0.0-1023-azure まで
 
 
 ### <a name="debian-kernel-versions"></a>Debian カーネルのバージョン
@@ -203,7 +208,7 @@ Docker ディスク構成 | いいえ
 ゲスト/サーバー マルチパス (MPIO) | いいえ
 ゲスト/サーバー GPT パーティション | \- 5 個のパーティションが[更新プログラム ロールアップ 37](https://support.microsoft.com/help/4508614/) (モビリティ サービスのバージョン 9.25) 以降でサポートされています。 以前は 4 個までサポートしていました。
 ReFS | Resilient File System は、モビリティ サービスのバージョン 9.23 以降でサポートされています。
-ゲスト/サーバー EFI/UEFI ブート | - バージョン 9.13 以降のモビリティ サービスを実行している場合、サポートされます。<br/> - Windows Server 2012 以降を実行している VMware VM または物理サーバーを Azure に移行する場合にサポートされます。<br/> - VM は移行の場合にのみレプリケートできます。 オンプレミスへのフェールバックはサポートされていません。<br/> - NTFS のみがサポートされます。 <br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。 <br/> - ディスクのセクター サイズは、物理セクターごとに 512 バイトとする必要があります。
+ゲスト/サーバー EFI/UEFI ブート | - Windows Server 2012 以降、SLES 12 SP4、モビリティ エージェント バージョン 9.30 以降を使用する RHEL 8.0 でサポートされています<br/> - セキュリティで保護された UEFI ブートの種類はサポートされていません。 
 
 ## <a name="replication-channels"></a>レプリケーション チャネル
 
@@ -224,6 +229,7 @@ geo 冗長ストレージ | はい
 ホット ストレージ| いいえ
 ブロック blob | いいえ
 保存時の暗号化 (SSE)| はい
+保存時の暗号化 (CMK)| いいえ
 Premium Storage | はい
 インポート/エクスポート サービス | いいえ
 VNet 用 Azure Storage ファイアウォール | はい。<br/> ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成されたもの。

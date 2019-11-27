@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4cbc4044b5d1270cecd1a271d2a1db02801650dd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815113"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012771"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -134,6 +134,21 @@ ms.locfileid: "73815113"
 1. ポータル上部にある検索ボックスにリソース グループの名前を入力します。 このクイック スタートで使用されているリソース グループが検索結果に表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。
 3. **[リソース グループ名を入力してください]** ボックスにリソース グループの名前を入力して **[削除]** を選択します。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+お使いのキー コンテナーを Visual Studio にログインしているものとは異なる Microsoft アカウントで実行している場合 (たとえば、キー コンテナーはご自分の職場アカウントで実行していて、Visual Studio はご自身のプライベート アカウントを使用している場合)、お使いの Program.cs ファイルで Visual Studio がキー コンテナーにアクセスできないというエラーが発生します。 この問題を解決するには、次の手順に従います。
+
+1. [Azure portal](https://portal.azure.com) に移動してお使いのキー コンテナーを開きます。
+
+1. **[アクセス ポリシー]** 、 **[アクセス ポリシーの追加]** の順に選択して、プリンシパルとしてログインしているアカウントを選択します。
+
+1. Visual Studio で、 **[ファイル]**  >  **[アカウント設定]** の順に選択します。
+**[すべてのアカウント]** セクションから **[アカウントの追加]** を選択します。 お使いのアクセス ポリシーのプリンシパルとして選択したアカウントでサインインします。
+
+1. **[ツール]**  >  **[オプション]** の順に選択し、 **[Azure Service Authentication]\(Azure サービス認証\)** を探します。 次に、Visual Studio に追加したアカウントを選択します。
+
+これで、お使いのアプリケーションをデバッグする場合、Visual Studio はお使いのキー コンテナーが配置されているアカウントに接続されます。
 
 ## <a name="how-your-aspnet-core-project-is-modified"></a>ASP.NET Core プロジェクトの変更
 

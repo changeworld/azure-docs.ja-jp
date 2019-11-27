@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory のセキュリティ デフォルト
-description: 組織を一般的な攻撃から保護するために役立つセキュリティ既定値のポリシー
+description: 組織を一般的な攻撃から保護するために設計されたセキュリティ デフォルトのポリシー
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -34,7 +34,7 @@ Microsoft では、誰もがセキュリティ既定値を利用できるよう�
 
 テナント内のすべてのユーザーは、Azure Multi-Factor Authentication サービスのフォームを使用して多要素認証 (MFA) に登録する必要があります。 ユーザーは 14 日以内に Microsoft Authenticator アプリを使用して Multi-Factor Authentication に登録する必要があります。 14 日が経過すると、ユーザーは Multi-Factor Authentication への登録が完了するまでサインインできなくなります。
 
-セキュリティ既定値を有効にした直後の 14 日以内に出勤またはサインインしないユーザーが存在しうる点は、Microsoft も認識しています。 ユーザー全員に Multi-Factor Authentication の登録のための十分な時間を与えられるように、14 日の期間はユーザーごとに固有です。 14 日の期間は、セキュリティ既定値が有効になった後、それぞれのユーザーの対話型サインインが最初に成功した時点から始まります。
+セキュリティ デフォルトを有効にした直後の 14 日以内に出勤またはログインしない場合があることは理解しています。 ユーザー全員に Multi-Factor Authentication の登録のための十分な時間を与えられるように、14 日の期間はユーザーごとに固有です。 14 日の期間は、セキュリティ既定値が有効になった後、それぞれのユーザーの対話型サインインが最初に成功した時点から始まります。
 
 ## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication の強制
 

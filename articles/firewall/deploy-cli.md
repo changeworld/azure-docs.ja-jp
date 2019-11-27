@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 08/29/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 94db17405457be91795d1588bee68a0deea68246
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: e97783d1a32916cad151f1d0858a8190d0005fd0
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114827"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831982"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-cli"></a>Azure CLI を使用して Azure Firewall をデプロイして構成する
 
@@ -39,7 +39,7 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 > * テスト ネットワーク環境を設定する
 > * ファイアウォールをデプロイする
 > * 既定のルートを作成する
-> * [www.google.com](www.google.com) へのアクセスを許可するようにアプリケーションを構成する
+> * www.google.com へのアクセスを許可するようにアプリケーションを構成する
 > * 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
 > * ファイアウォールをテストする
 
@@ -284,7 +284,7 @@ az network firewall network-rule create \
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   [www.google.com](www.google.com) の要求は成功し、[www.microsoft.com](www.microsoft.com) の要求は失敗します。 これは、ファイアウォール ルールが予想どおりに動作していることを示します。
+   `www.google.com` 要求は成功し、`www.microsoft.com` 要求は失敗します。 これは、ファイアウォール ルールが予想どおりに動作していることを示します。
 
 これで、ファイアウォール ルールが動作していることを確認できました。
 

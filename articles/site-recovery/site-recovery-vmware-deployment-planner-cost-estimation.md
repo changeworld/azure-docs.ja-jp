@@ -1,20 +1,20 @@
 ---
-title: Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する | Microsoft Docs
-description: この記事では、VMware の Azure へのディザスター リカバリーのために、Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する方法について説明します。
+title: Azure Site Recovery Deployment Planner のコスト見積もりを確認する
+description: この記事では、VMware のディザスター リカバリーのために、Azure Site Recovery Deployment Planner のコスト見積もりを確認する方法について説明します。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 7/29/2019
 ms.author: mayg
-ms.openlocfilehash: 1f825b67baf36c9a1a9187d555522f5a5955d1c7
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 27678fff1c0322f9755e7726026c73934810d5d6
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620073"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953339"
 ---
-# <a name="review-the-cost-estimation-report-in-the-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner のコスト見積もりレポートを確認する
+# <a name="review-cost-estimations-in-the-vmware-deployment-planner"></a>VMware Deployment Planner のコスト見積もりを確認する 
 
 Deployment Planner のレポートでは、コスト見積もりの概要が [[Recommendations]\(推奨事項\)](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) シートに、詳しいコスト分析が [Cost Estimation]\(コスト見積もり\) シートに表示されます。 コスト分析は、VM ごとに詳しく表示されます。 
 
@@ -55,7 +55,7 @@ Azure のコンピューティング、ストレージ、ネットワークな�
 **コンピューティング**:DR のニーズに応じて Azure で実行される IaaS VM のコストです。 DR ドリル (テスト フェールオーバー) 時に Azure Site Recovery によって作成される VM のほか、Azure 上で実行される VM が対象となります (SQL Server Always On 可用性グループやドメイン コントローラー/ドメイン ネーム サーバーなど)。
 
 **ストレージ**:DR のニーズに応じて消費される Azure Storage のコストです。 レプリケーションや DR ドリル時に使用されるストレージの消費が対象となります。
-[ネットワーク]: DR のニーズに対して発生する ExpressRoute とサイト間 VPN のコストです。 
+[ネットワーク]\: DR のニーズに対して発生する ExpressRoute とサイト間 VPN のコストです。 
 
 **[ASR license]\(ASR ライセンス\)** : すべての適合 VM に関する Azure Site Recovery のライセンス コストです。 Detailed cost analysis (詳細コスト分析) テーブルに VM を手動で入力した場合、その VM に関して生じる Azure Site Recovery のライセンス コストも対象となります。
 
@@ -150,7 +150,7 @@ eastus、eastus2、westus、centralus、northcentralus、southcentralus、northe
 ## <a name="supported-currencies"></a>サポートされる通貨
 Azure Site Recovery Deployment Planner は、次のいずれかの通貨でコスト レポートを生成できます。
 
-|通貨|EnableAdfsAuthentication||通貨|EnableAdfsAuthentication||通貨|EnableAdfsAuthentication|
+|Currency|名前||Currency|名前||Currency|名前|
 |---|---|---|---|---|---|---|---|
 |ARS|アルゼンチン ペソ ($)||AUD|オーストラリア ドル ($)||BRL|ブラジル レアル (R$)|
 |CAD|カナダ ドル ($)||CHF|スイス フラン (chf)||DKK|デンマーク クローネ (kr)|
