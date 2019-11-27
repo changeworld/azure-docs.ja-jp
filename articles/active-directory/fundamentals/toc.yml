@@ -31,6 +31,18 @@
       href: active-directory-data-storage-eu.md
     - name: Microsoft 365 Government の最新情報
       href: whats-new-microsoft-365-government.md
+    - name: Azure AD 操作のリファレンス
+      items:
+        - name: はじめに
+          href: active-directory-ops-guide-intro.md
+        - name: ID 管理とアクセス管理
+          href: active-directory-ops-guide-iam.md
+        - name: 認証管理
+          href: active-directory-ops-guide-auth.md
+        - name: Identity Governance
+          href: active-directory-ops-guide-govern.md
+        - name: Operations
+          href: active-directory-ops-guide-ops.md
 - name: ハウツー ガイド
   expanded: true
   items:

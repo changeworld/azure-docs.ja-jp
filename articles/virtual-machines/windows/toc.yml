@@ -151,7 +151,7 @@
         - name: コロケーション
           href: co-location.md
         - name: ネットワーク パフォーマンス
-          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: VM の種類とサイズ
       href: sizes.md
       items:
@@ -209,7 +209,7 @@
     - name: 専用ホスト
       href: dedicated-hosts.md
     - name: メンテナンスと更新
-      href: maintenance-and-updates.md
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Disk Storage
       items:
         - name: マネージド ディスクの概要
@@ -376,18 +376,32 @@
           href: download-template.md
         - name: Azure VM エージェント
           href: ../extensions/agent-windows.md
-        - name: Azure の計画メンテナンス
-          href: maintenance-notifications.md
         - name: 予測実行の軽減
           href: mitigate-se.md
-        - name: スケジュールされたイベント
-          href: scheduled-events.md
-        - name: スケジュール化されたイベントの監視
-          href: scheduled-event-service.md
         - name: メタデータの監視
           href: instance-metadata-service.md
         - name: 入れ子になった仮想化の有効化
           href: nested-virtualization.md
+    - name: プラットフォームのメンテナンス
+      items:
+        - name: メンテナンスの通知
+          items:
+            - name: 概要
+              href: maintenance-notifications.md
+            - name: CLI
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: ポータル
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: メンテナンス管理
+          items:
+            - name: CLI
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: スケジュールされたイベント
+          href: scheduled-events.md
+        - name: Windows のスケジュール化されたイベント サービス
+          href: scheduled-event-service.md
     - name: VM を監視する
       items:
         - name: VM に対する Azure Monitor

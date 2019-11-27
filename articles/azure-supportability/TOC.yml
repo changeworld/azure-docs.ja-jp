@@ -14,6 +14,8 @@
               href: per-vm-quota-requests.md
             - name: リージョンにおける合計 vCPU の上限の引き上げ
               href: regional-quota-requests.md
+            - name: 低優先度のクォータ制限の引き上げ
+              href: low-priority-quota.md
         - name: クラシック デプロイ モデル
           href: classic-deployment-model-quota-increase-requests.md
     - name: ネットワークの上限の引き上げ

@@ -59,6 +59,8 @@
       href: linux-recovery-cannot-start-file-system-errors.md
     - name: カーネルに関連するブートの問題のトラブルシューティング
       href: 'https://support.microsoft.com/help/4091524'
+    - name: LVM で構成された VM の回復とブートなし
+      href: chroot-logical-volume-manager.md
     - name: fstab エラーのトラブルシューティング
       href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: SSH のトラブルシューティングの詳細
