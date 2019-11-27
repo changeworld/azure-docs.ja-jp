@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 36c6c914c96048825c82a8d1f590a7e805373c08
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3b61e8680ef2484b1ad42837711adef171fdde25
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854613"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882633"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics のログ
 
@@ -179,7 +179,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 ## <a name="download-storage-logging-log-data"></a>ストレージ ログのログ データのダウンロード
 
- ログ データを表示して分析するには、対象のログ データを含む BLOB をローカル マシンにダウンロードする必要があります。 多くのストレージ閲覧ツールでは、ストレージ アカウントから BLOB をダウンロードできます。また、Azure Storage チームが提供するコマンドライン用の Azure Copy Tool (**AzCopy**) を使用して、ログ データをダウンロードすることもできます。  
+ ログ データを表示して分析するには、対象のログ データを含む BLOB をローカル マシンにダウンロードする必要があります。 多くのストレージ閲覧ツールを使用して、ストレージ アカウントから BLOB をダウンロードできます。また、Azure Storage チームが提供するコマンドライン用の Azure Copy Tool ([AzCopy](storage-use-azcopy-v10.md)) を使用して、ログ データをダウンロードすることもできます。  
 
  対象のログ データをダウンロードし、同じログ データを複数回ダウンロードしないためには、以下のようにします。  
 
@@ -187,20 +187,17 @@ queueClient.SetServiceProperties(serviceProperties);
 
 -   ダウンロードする必要がある BLOB を正確に識別するには、ログ データを含む BLOB のメタデータを使用して、BLOB がログ データを保持する期間を確認します。  
 
-> [!NOTE]
->  AzCopy は、Azure SDK に含まれているものですが、[https://aka.ms/AzCopy](https://aka.ms/AzCopy) から最新バージョンをいつでもダウンロードできます。 既定では、AzCopy は、フォルダー **C:\Program Files (x86)\Microsoft SDKs\Windows Azure\AzCopy** 内にインストールされます。コマンド プロンプトまたは PowerShell ウィンドウ内でこのツールを実行しようとするときは、事前にこのフォルダーをパスに追加する必要があります。  
+AzCopy の使用を開始するには、「[AzCopy を使ってみる](storage-use-azcopy-v10.md)」を参照してください。 
 
- 次の例は、2014 年 5 月 20 日の午前 09 時、午前 10 時、および午前 11 時から Queue サービスのログ データをダウンロードする方法を示しています。 AzCopy で **/S** パラメーターを指定すると、ログ ファイル名内の日時に基づいて、ローカル フォルダー構造が作成されます。 **/V** パラメーターを指定すると、詳細な出力が生成されます。 **/Y** パラメーターを指定すると、すべてのローカル ファイルが上書きされます。 **<yourstorageaccount\>** は、ストレージ アカウント名に置き換えます。 **<yourstoragekey\>** は、ストレージ アカウント キーに置き換えます。  
+次の例は、2014 年 5 月 20 日の午前 09 時、午前 10 時、および午前 11 時から Queue サービスのログ データをダウンロードする方法を示しています。
 
 ```
-AzCopy 'http://<yourstorageaccount>.blob.core.windows.net/$logs/queue'  'C:\Logs\Storage' '2014/05/20/09' '2014/05/20/10' '2014/05/20/11' /sourceKey:<yourstoragekey> /S /V /Y  
-```  
+azcopy copy 'https://mystorageaccount.blob.core.windows.net/$logs/queue' 'C:\Logs\Storage' --include-path '2014/05/20/09;2014/05/20/10;2014/05/20/11' --recursive
+```
 
- AzCopy には、便利なパラメーターもいくつか用意されています。これらのパラメーターを使用すると、ダウンロードしたファイルの最終変更日時の設定方法を制御したり、ローカル マシン上に既に存在しているファイルより古いファイルをダウンロードするのか、それとも新しいファイルをダウンロードするのかを制御したりできます。 AzCopy は、再起動可能モードで実行することもできます。 詳細については、**AzCopy/?** コマンドを実行して、ヘルプを表示してください。  
+特定のファイルをダウンロードする方法の詳細については、「[特定のファイルをダウンロードする](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#download-specific-files)」を参照してください。
 
- ログ データをプログラムでダウンロードする方法の例については、ブログ投稿「[Windows Azure Storage Logging:Using Logs to Track Storage Requests (Windows Azure Storage ログ: ログを使用してストレージ要求を追跡する)](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/08/03/windows-azure-storage-logging-using-logs-to-track-storage-requests.aspx)」を参照し、このページ上で "DumpLogs (ダンプログ)" という語を検索してください。  
-
- ログ データのダウンロードが完了すると、ファイル内のログ エントリを表示できます。 これらのログ ファイルは、区切り記号付きテキスト形式が使用されているため、Microsoft Message Analyzer などの多くのログ読み取りツールで解析できます (詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」を参照してください)。 ログ ファイルの内容を書式設定、フィルタリング、並べ替え、AD 検索するために、各種のツールがさまざまな機能を提供しています。 ストレージ ログのログ ファイルの形式および内容の詳細については、「[Storage Analytics Log Format (Storage Analytics のログ形式)](/rest/api/storageservices/storage-analytics-log-format)」および「[Storage Analytics Logged Operations and Status Message (Storage Analytics によって記録される操作および状態メッセージ)](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」を参照してください。
+ログ データのダウンロードが完了すると、ファイル内のログ エントリを表示できます。 これらのログ ファイルは、区切り記号付きテキスト形式が使用されているため、Microsoft Message Analyzer などの多くのログ読み取りツールで解析できます (詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)」を参照してください)。 ログ ファイルの内容を書式設定、フィルタリング、並べ替え、AD 検索するために、各種のツールがさまざまな機能を提供しています。 ストレージ ログのログ ファイルの形式および内容の詳細については、「[Storage Analytics Log Format (Storage Analytics のログ形式)](/rest/api/storageservices/storage-analytics-log-format)」および「[Storage Analytics Logged Operations and Status Message (Storage Analytics によって記録される操作および状態メッセージ)](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

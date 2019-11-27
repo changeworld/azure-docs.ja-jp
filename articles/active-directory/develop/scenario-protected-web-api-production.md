@@ -1,5 +1,6 @@
 ---
-title: 保護された Web API - 運用環境への移行 | Azure
+title: 保護された Web API - 運用環境への移行
+titleSuffix: Microsoft identity platform
 description: 保護された Web API を構築する方法 (運用環境への移行) について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e78cb712501b86f98d3459cac6280d0484f41a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deb5a04f23268edc112c38c993b190827fa65061
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65833109"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802502"
 ---
 # <a name="protected-web-api---move-to-production"></a>保護された Web API - 運用環境への移行
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: e79d9be6b893184bd615fbc569893e53a2c72861
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 9796b41d0df091bc6eb23ba525a79da278e00bbd
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555596"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72802312"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -184,9 +184,9 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 サブスクリプションに対して生成されたアラートをプログラムで照会したい場合があります。 たとえば、Azure portal の外部でカスタム ビューを作成したり、アラートを分析してパターンと傾向を特定したりする場合です。
 
-サブスクリプションに対して生成されたアラートを照会するには、[Alert Management REST API](https://aka.ms/alert-management-api) を使用するか、[アラート用の Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) を使用します。
+サブスクリプションに対して生成されたアラートを照会するには、[Alert Management REST API](https://aka.ms/alert-management-api) を使用するか、[アラート用の Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) を使用します。
 
-[アラート用の Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resources/resources) を使用すると、大規模なアラート インスタンスを照会できます。 これは、多くのサブスクリプションにわたって生成されたアラートを管理しなければならない場合にお勧めします。 
+[アラート用の Azure Resource Graph REST API](https://docs.microsoft.com/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) を使用すると、大規模なアラート インスタンスを照会できます。 これは、多くのサブスクリプションにわたって生成されたアラートを管理しなければならない場合にお勧めします。 
 
 次の API へのサンプル要求は、1 つのサブスクリプション内のアラートの数を返します。
 

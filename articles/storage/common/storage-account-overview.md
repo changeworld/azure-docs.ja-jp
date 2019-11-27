@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 67022c6bd9e237ce24d8e63285f7ebabadca87c6
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671308"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882589"
 ---
 # <a name="azure-storage-account-overview"></a>Azure ストレージ アカウントの概要
 
@@ -44,7 +44,7 @@ Azure ストレージ アカウントの作成方法については、「[スト
 
 ### <a name="general-purpose-v1-accounts"></a>汎用 v1 アカウント
 
-汎用 v1 アカウントでは、すべての Azure Storage サービスにアクセスできますが、最新の機能が利用できない場合があるほか、GB 単価もやや高いことがあります。 汎用 v1 ストレージ アカウントは、次の Azure Storage サービスをサポートします。
+汎用 v1 ストレージ アカウントでは、すべての Azure Storage サービスにアクセスできますが、最新の機能が利用できない場合があるほか、GB 単価もやや高いことがあります。 汎用 v1 ストレージ アカウントは、次の Azure Storage サービスをサポートします。
 
 - BLOB (すべての種類)
 - ファイル
@@ -60,17 +60,19 @@ Azure ストレージ アカウントの作成方法については、「[スト
 
 * [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) の 2014-02-14 より前のバージョンか、クライアント ライブラリの 4.x より前のバージョンを使用していて、アプリケーションをアップグレードできない。
 
-### <a name="block-blob-storage-accounts"></a>ブロック BLOB ストレージ アカウント
+### <a name="blockblobstorage-accounts"></a>BlockBlobStorage アカウント
 
-ブロック BLOB ストレージ アカウントとは、非構造化オブジェクト データをブロック BLOB として格納するための特化されたストレージ アカウントです。 このストレージ アカウント タイプはブロック BLOB と追加 BLOB をサポートしますが、ページ BLOB、テーブル、およびキューはサポートしません。
+BlockBlobStorage アカウントとは、非構造化オブジェクト データをブロック BLOB として格納し、Premium ブロック BLOB を作成するために使用される特化されたストレージ アカウントです。 この種類のストレージ アカウントはブロック BLOB と追加 BLOB をサポートしますが、ページ BLOB、テーブル、およびキューはサポートしません。
 
-汎用 v2 ストレージ アカウントおよび BLOB ストレージ アカウントと比べると、ブロック BLOB ストレージ アカウントは待ち時間が一貫して低く、高いトランザクション レートを実現します。
+汎用 v2 ストレージ アカウントおよび BlobStorage アカウントと比べると、BlockBlobStorage アカウントは待ち時間が一貫して低く、高いトランザクション レートが実現されます。
 
-ブロック BLOB ストレージ アカウントは、ホット アクセス層、クール アクセス層、またはアーカイブ アクセス層への階層化を現在サポートしていません。
+BlockBlobStorage アカウントでは、ホット アクセス層、クール アクセス層、またはアーカイブ アクセス層への階層化は、現在サポートされていません。
 
-### <a name="filestorage-storage-accounts"></a>FileStorage ストレージ アカウント
+### <a name="filestorage-accounts"></a>FileStorage アカウント
 
-FileStorage ストレージ アカウントは、Premium ファイル共有の格納と作成に特化したストレージ アカウントです。 FileStorage ストレージ アカウントは、IOPS バーストなど、固有のパフォーマンスに特化した特性を備えています。 これらの特性の詳細については、Files の計画に関するガイドの「[ファイル共有のパフォーマンス レベル](../files/storage-files-planning.md#file-share-performance-tiers)」セクションを参照してください。
+FileStorage ストレージ アカウントは、Premium ファイル共有の格納と作成に特化したストレージ アカウントです。 この種類のストレージ アカウントでは、ファイルはサポートされますが、ブロック BLOB、追加 BLOB、ページ BLOB、テーブル、およびキューはサポートされません。 
+
+FileStorage ストレージ アカウントでは、IOPS バーストなど、固有のパフォーマンスに特化した特性が提供されています。 これらの特性の詳細については、Files の計画に関するガイドの「[ファイル共有のパフォーマンス レベル](../files/storage-files-planning.md#file-share-performance-tiers)」セクションを参照してください。
 
 ## <a name="naming-storage-accounts"></a>ストレージ アカウントの名前付け
 
@@ -86,7 +88,7 @@ FileStorage ストレージ アカウントは、Premium ファイル共有の�
 * BLOB、ファイル、テーブル、キュー、および Azure 仮想マシン ディスクを格納するための Standard パフォーマンス レベル。
 * アンマネージド仮想マシン ディスクのみを格納するための Premium パフォーマンス レベル。
 
-ブロック BLOB ストレージ アカウントは、ブロック BLOB および追加 BLOB を格納するための Premium パフォーマンス レベルを提供します。
+BlockBlobStorage アカウントでは、ブロック BLOB と追加 BLOB を格納するための Premium パフォーマンス レベルが提供されます。
 
 FileStorage ストレージ アカウントは、Azure ファイル共有のための Premium パフォーマンス レベルを提供します。
 
@@ -186,5 +188,5 @@ Import/Export サービスは、Azure Blob Storage からディスク ドライ�
 ## <a name="next-steps"></a>次の手順
 
 * 汎用の Azure Storage アカウントの作成方法については、「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」をご覧ください。
-* ブロック BLOB ストレージ アカウントの作成方法の詳細については、「[ブロック BLOB ストレージ アカウントの作成](../blobs/storage-blob-create-account-block-blob.md)」を参照してください。
+* BlockBlobStorage アカウントの作成方法の詳細については、「[ブロック BLOB ストレージ アカウントの作成](../blobs/storage-blob-create-account-block-blob.md)」を参照してください。
 * 既存のストレージ アカウントの管理または削除については、[ Azure ストレージ アカウントの管理](storage-account-manage.md)に関する記事を参照してください。
