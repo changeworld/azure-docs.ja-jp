@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory のセキュリティ既定値
+title: Azure Active Directory のセキュリティ デフォルト
 description: 組織を一般的な攻撃から保護するために役立つセキュリティ既定値のポリシー
 services: active-directory
 ms.service: active-directory
@@ -18,7 +18,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/30/2019
 ms.locfileid: "73151224"
 ---
-# <a name="what-are-security-defaults"></a>セキュリティ既定値とは
+# <a name="what-are-security-defaults"></a>セキュリティ デフォルトとは
 
 ID 関連の一般的な攻撃がますます広まる中で、セキュリティの管理に困難をきたす場合があります。 このような攻撃として、パスワード スプレー、リプレイ、フィッシングなどがあります。
 
@@ -115,9 +115,9 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 - [レガシ認証をブロックする](howto-conditional-access-policy-block-legacy.md)
 - [すべてのユーザーに対して MFA を必須にする](howto-conditional-access-policy-all-users-mfa.md)
 
-## <a name="enabling-security-defaults"></a>セキュリティの既定値の有効化
+## <a name="enabling-security-defaults"></a>セキュリティ デフォルトの有効化
 
-ディレクトリでセキュリティの既定値を有効にするには、次のようにします。
+ディレクトリでセキュリティ デフォルトを有効にするには、次のようにします。
 
 1. セキュリティ管理者、条件付きアクセス管理者、またはグローバル管理者として、 [Azure portal](https://portal.azure.com)  にサインインします。
 1.  **[Azure Active Directory]**  > **[プロパティ]** の順に移動します。

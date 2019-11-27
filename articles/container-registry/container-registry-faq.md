@@ -253,7 +253,7 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 
 ## <a name="diagnostics-and-health-checks"></a>診断と正常性チェック
 
-- [`az acr check-health`](#check-health-with-az-acr-check-health) を使用した正常性チェック
+- [を使用した正常性チェック `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull が "net/http: 接続の待機中に要求が取り消されました (ヘッダーの待機中に Client.Timeout を超えました)" というエラーで失敗する](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [docker push は成功するが、docker pull が "権限がありません: 認証が必要です" というエラーで失敗する](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [docker デーモンのデバッグ ログを有効にして取得する](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
