@@ -1,6 +1,6 @@
 ---
-title: Azure AD エンタイトルメント管理 (プレビュー) での一般的なシナリオ - Azure Active Directory
-description: Azure Active Directory エンタイトルメント管理 (プレビュー) での一般的なシナリオの場合に従う必要がある、大まかな手順について説明します。
+title: Azure AD エンタイトルメント管理での一般的なシナリオ - Azure Active Directory
+description: Azure Active Directory エンタイトルメント管理での一般的なシナリオの場合に従う必要がある、大まかな手順について説明します。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,116 +12,146 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/23/2019
+ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81382ebecdff6c7b146386b3ae2b0768a7c834bf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 24d2dc82d0e81c9ac374d96387677774dc916b8c
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389064"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173488"
 ---
-# <a name="common-scenarios-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) での一般的なシナリオ
+# <a name="common-scenarios-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理での一般的なシナリオ
 
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) エンタイトルメント管理は、現在パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+組織のエンタイトルメント管理を構成するには、いくつかの方法があります。 ただし、開始したばかりであるなら、管理者、カタログ所有者、アクセス パッケージ マネージャー、承認者、要求元の一般的なシナリオを理解することをお勧めします。
 
-組織のエンタイトルメント管理を構成するには、いくつかの方法があります。 ただし、開始したばかりであるなら、管理者、承認者、および要求元の一般的なシナリオを理解することをお勧めします。
+## <a name="delegate"></a>委任
 
-## <a name="administrators"></a>管理者
+### <a name="administrator-delegate-management-of-resources"></a>管理者: リソースの管理を委任する
 
-### <a name="im-new-to-entitlement-management-and-i-want-help-with-getting-started"></a>エンタイトルメント管理は初めてであり、開始のために支援が必要
+1. [ビデオを視聴する: IT から部門マネージャーへの委任](https://www.microsoft.com/videoplayer/embed/RE3Lq00)
+1. [カタログ作成者ロールにユーザーを委任する](entitlement-management-delegate-catalog.md)
 
-> [!div class="mx-tableFixed"]
-> | 手順 | 例 |
-> | --- | --- |
-> | [チュートリアルに従って最初のアクセス パッケージを作成する](entitlement-management-access-package-first.md) | [![Azure portal アイコン](./media/entitlement-management-scenarios/azure-portal.png)](./media/entitlement-management-scenarios/azure-portal-expanded.png#lightbox) |
+### <a name="catalog-creator-delegate-management-of-resources"></a>カタログ作成者: リソースの管理を委任する
 
-### <a name="i-want-to-allow-users-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>自分のディレクトリ内のユーザーに、グループ、アプリケーション、または SharePoint サイトへのアクセスを要求することを許可します。
+- [新しいカタログを作成する](entitlement-management-catalog-create.md#create-a-catalog)
 
-> [!div class="mx-tableFixed"]
-> | 手順 | 例 |
-> | --- | --- |
-> | **1.** [カタログ内に新しいアクセス パッケージを作成する](entitlement-management-access-package-create.md#start-new-access-package) | ![アクセス パッケージを作成します。](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [リソースのロールをアクセス パッケージに追加する](entitlement-management-access-package-resources.md#add-resource-roles)<ul><li>グループ</li><li>[アプリケーション]</li><li>SharePoint サイト</li></ul> | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [ポリシーを追加する](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)<ul><li>ディレクトリ内のユーザーに対して</li><li>承認を要求する</li><li>ライフサイクル設定</li></ul> | ![ポリシーの追加](./media/entitlement-management-scenarios/policy.png) |
+### <a name="catalog-owner-delegate-management-of-resources"></a>カタログ所有者: リソースの管理を委任する
 
-### <a name="i-want-to-allow-users-from-my-business-partners-directory-including-users-not-yet-in-my-directory-to-request-access-to-groups-applications-or-sharepoint-sites"></a>ビジネス パートナー ディレクトリからのユーザー (自分のディレクトリ内にまだいないユーザーを含む) に、グループ、アプリケーション、または SharePoint サイトへのアクセスを要求することを許可します。
+1. [カタログに共同所有者を追加する](entitlement-management-catalog-create.md#add-additional-catalog-owners)
+1. [カタログにリソースを追加する](entitlement-management-catalog-create.md#add-resources-to-a-catalog)
 
-> [!div class="mx-tableFixed"]
-> | 手順 | 例 |
-> | --- | --- |
-> | **1.** [カタログ内に新しいアクセス パッケージを作成する](entitlement-management-access-package-create.md#start-new-access-package) | ![アクセス パッケージを作成します。](./media/entitlement-management-scenarios/access-package.png) |
-> | **2.** [リソースのロールをアクセス パッケージに追加する](entitlement-management-access-package-resources.md#add-resource-roles) | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **3.** [外部ユーザーのポリシーを追加する](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)<ul><li>ディレクトリ内にいないユーザーの場合</li><li>承認を要求する</li><li>ライフサイクル設定</li></ul> | ![外部ユーザーのポリシーを追加する](./media/entitlement-management-scenarios/policy-external.png) |
-> | **4.** [アクセス パッケージを要求するリンクをビジネス パートナーに送信する](entitlement-management-access-package-settings.md)<ul><li>ビジネス パートナーはユーザーとリンクを共有できる</li></ul> |  |
+### <a name="catalog-owner-delegate-management-of-access-packages"></a>カタログ所有者: アクセス パッケージの管理を委任する
 
-### <a name="i-want-to-change-the-groups-applications-or-sharepoint-sites-in-an-access-package"></a>アクセス パッケージ内のグループ、アプリケーション、または SharePoint サイトを変更できる
+1. [ビデオを視聴する: カタログ所有者からアクセス パッケージ マネージャーへの委任](https://www.microsoft.com/videoplayer/embed/RE3Lq08)
+1. [アクセス パッケージ マネージャー ロールにユーザーを委任する](entitlement-management-delegate-managers.md)
 
-> [!div class="mx-tableFixed"]
-> | 手順 | 例 |
-> | --- | --- |
-> | **1.** アクセス パッケージを開く | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [リソース ロールを追加または削除する](entitlement-management-access-package-resources.md#add-resource-roles) | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles-add.png) |
+## <a name="govern-access-for-users-in-your-organization"></a>組織内のユーザーのアクセスを統制する
 
-### <a name="i-want-to-view-who-has-an-assignment-to-groups-applications-or-sharepoint-sites"></a>グループ、アプリケーション、または SharePoint サイトへの割り当てを持っているユーザーを表示する
+### <a name="access-package-manager-allow-employees-in-your-organization-to-request-access-to-resources"></a>アクセス パッケージ マネージャー: リソースへのアクセス要求を組織内の従業員に許可する
 
-> [!div class="mx-tableFixed"]
-> | 手順 | 例 |
-> | --- | --- |
-> | **1.** アクセス パッケージを開く | ![リソース ロールを追加する](./media/entitlement-management-scenarios/resource-roles.png) |
-> | **2.** [割り当てを表示する](entitlement-management-access-package-assignments.md#view-who-has-an-assignment)<ul><li>アクセス パッケージへのアクセスを持つユーザーを表示する</li><li>どのユーザーのアクセスの有効期限が切れているかを表示する</li></ul> |  |
+1. [新しいアクセス パッケージを作成する](entitlement-management-access-package-create.md#start-new-access-package)
+1. [グループ、チーム、アプリケーション、SharePoint サイトをアクセス パッケージに追加する](entitlement-management-access-package-create.md#resource-roles)
+1. [ディレクトリ内のユーザーにアクセス要求を許可する要求ポリシーを追加する](entitlement-management-access-package-create.md#for-users-in-your-directory)
+1. [有効期限の設定を指定する](entitlement-management-access-package-create.md#lifecycle)
 
-### <a name="i-want-to-view-groups-applications-or-sharepoint-sites-a-user-has-access-to"></a>ユーザーがアクセスするグループ、アプリケーション、または SharePoint サイトを表示する
+### <a name="requestor-request-access-to-resources"></a>申請者:リソースへのアクセスを要求する
 
-> [!div class="mx-tableFixed"]
-> | 手順 | 例 |
-> | --- | --- |
-> | [ユーザー割り当てレポートを表示する](entitlement-management-reports.md)<ul><li>いつ要求されてだれが承認されたかを表示する</li></ul> |  |
+1. [マイ アクセス ポータルへのサインイン](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. アクセス パッケージの検索
+1. [アクセスの要求](entitlement-management-request-access.md#request-an-access-package)
 
-## <a name="approvers"></a>承認者
+### <a name="approver-approve-requests-to-resources"></a>承認者:リソースへの要求を承認する
 
-### <a name="i-want-to-approve-requests-to-access-groups-applications-or-sharepoint-sites"></a>グループ、アプリケーション、または SharePoint サイトにアクセスする要求を承認する
+1. [マイ アクセス ポータルで要求を開く](entitlement-management-request-approve.md#open-request)
+1. [アクセス要求を承認または拒否する](entitlement-management-request-approve.md#approve-or-deny-request)
 
-> [!div class="mx-tableFixed"]
-> | 手順 | 例 |
-> | --- | --- |
-> | **1.** [マイ アクセス ポータルで要求を開く](entitlement-management-request-approve.md#open-request) | [![マイ アクセス ポータル アイコン](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** [アクセス要求を承認する](entitlement-management-request-approve.md#approve-or-deny-request) | ![アクセスを承認する](./media/entitlement-management-scenarios/approve-access.png) |
+### <a name="requestor-view-the-resources-you-already-have-access-to"></a>申請者:既にアクセス権のあるリソースを表示する
 
-## <a name="requestors"></a>要求元
+1. [マイ アクセス ポータルへのサインイン](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. アクティブなアクセス パッケージの表示
 
-### <a name="i-want-to-view-the-groups-applications-or-sharepoint-sites-available-to-me-and-request-access"></a>利用できるグループ、アプリケーション、または SharePoint サイトを表示し、アクセスを要求する
+## <a name="govern-access-for-users-outside-your-organization"></a>組織外のユーザーのアクセスを統制する
 
-> [!div class="mx-tableFixed"]
-> | 手順 | 例 |
-> | --- | --- |
-> | **1.** [マイ アクセス ポータルへのサインイン](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![マイ アクセス ポータル アイコン](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** アクセス パッケージの検索 |  |
-> | **3.** [アクセスの要求](entitlement-management-request-access.md#request-an-access-package) | ![アクセスの要求](./media/entitlement-management-scenarios/request-access.png) |
+### <a name="administrator-collaborate-with-an-external-partner-organization"></a>管理者: 外部パートナー組織とコラボレーションする
 
-### <a name="im-an-external-user-and-i-want-to-request-access-to-groups-applications-or-sharepoint-sites-with-a-direct-link"></a>外部ユーザーであり、直接リンクでグループ、アプリケーション、または SharePoint サイトへのアクセスを要求する
+1. [外部ユーザーのアクセスのしくみを読む](entitlement-management-external-users.md#how-access-works-for-external-users)
+1. [外部ユーザーの設定を確認する](entitlement-management-external-users.md#settings-for-external-users)
+1. [外部組織に接続を追加する](entitlement-management-organization.md)
 
-> [!div class="mx-tableFixed"]
-> | 手順 | 例 |
-> | --- | --- |
-> | **1.** [受信したアクセス パッケージ リンクの検索](entitlement-management-access-package-settings.md) |  |
-> | **2.** [マイ アクセス ポータルへのサインイン](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![マイ アクセス ポータル アイコン](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **3.** [アクセスの要求](entitlement-management-request-access.md#request-an-access-package) | ![外部ユーザーのアクセスを要求する](./media/entitlement-management-scenarios/request-access-external.png) |
+### <a name="access-package-manager-collaborate-with-an-external-partner-organization"></a>アクセス パッケージ マネージャー: 外部パートナー組織とコラボレーションする
 
-### <a name="i-want-to-view-the-groups-applications-or-sharepoint-sites-i-already-have-access-to"></a>既にアクセスできるグループ、アプリケーション、または SharePoint サイトを表示する
+1. [新しいアクセス パッケージを作成する](entitlement-management-access-package-create.md#start-new-access-package)
+1. [グループ、チーム、アプリケーション、SharePoint サイトをアクセス パッケージに追加する](entitlement-management-access-package-resources.md#add-resource-roles)
+1. [ディレクトリ外のユーザーにアクセス要求を許可する要求ポリシーを追加する](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
+1. [有効期限の設定を指定する](entitlement-management-access-package-create.md#lifecycle)
+1. [アクセス パッケージを要求するためのリンクをコピーする](entitlement-management-access-package-settings.md)
+1. 外部パートナーの連絡先パートナーにそのユーザーと共有するためのリンクを送信する
 
-> [!div class="mx-tableFixed"]
-> | 手順 | 例 |
-> | --- | --- |
-> | **1.** [マイ アクセス ポータルへのサインイン](entitlement-management-request-access.md#sign-in-to-the-my-access-portal) | [![マイ アクセス ポータル アイコン](./media/entitlement-management-scenarios/my-access-portal.png)](./media/entitlement-management-scenarios/my-access-portal-expanded.png#lightbox) |
-> | **2.** アクティブなアクセス パッケージの表示 |  |
+### <a name="requestor-request-access-to-resources-as-an-external-user"></a>申請者:外部ユーザーとしてリソースへのアクセスを要求する
+
+1. 連絡先から受信したアクセス パッケージ リンクを検索する
+1. [マイ アクセス ポータルへのサインイン](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. [アクセスの要求](entitlement-management-request-access.md#request-an-access-package)
+
+### <a name="approver-approve-requests-to-resources"></a>承認者:リソースへの要求を承認する
+
+1. [マイ アクセス ポータルで要求を開く](entitlement-management-request-approve.md#open-request)
+1. [アクセス要求を承認または拒否する](entitlement-management-request-approve.md#approve-or-deny-request)
+
+### <a name="requestor-view-the-resources-your-already-have-access-to"></a>申請者:既にアクセス権のあるリソースを表示する
+
+1. [マイ アクセス ポータルへのサインイン](entitlement-management-request-access.md#sign-in-to-the-my-access-portal)
+1. アクティブなアクセス パッケージの表示
+
+## <a name="day-to-day-management"></a>日々の管理
+
+### <a name="access-package-manager-update-the-resources-for-a-project"></a>アクセス パッケージ マネージャー: プロジェクトのリソースを更新する
+
+1. [ビデオを視聴する: 日々の管理: 変化への対応](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. アクセス パッケージを開く
+1. [グループ、チーム、アプリケーション、SharePoint サイトを追加または削除する](entitlement-management-access-package-resources.md#add-resource-roles)
+
+### <a name="access-package-manager-update-the-duration-for-a-project"></a>アクセス パッケージ マネージャー: プロジェクトの期間を更新する
+
+1. [ビデオを視聴する: 日々の管理: 変化への対応](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. アクセス パッケージを開く
+1. [ライフサイクルの設定を開く](entitlement-management-access-package-lifecycle-policy.md#open-lifecycle-settings)
+1. [有効期限の設定を更新する](entitlement-management-access-package-lifecycle-policy.md#lifecycle)
+
+### <a name="access-package-manager-update-how-access-is-approved-for-a-project"></a>アクセス パッケージ マネージャー: プロジェクトのアクセスの承認方法を更新する
+
+1. [ビデオを視聴する: 日々の管理: 変化への対応](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. [要求と承認の設定の既存ポリシーを開く](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [承認設定を更新する](entitlement-management-access-package-request-policy.md#approval)
+
+### <a name="access-package-manager-update-the-people-for-a-project"></a>アクセス パッケージ マネージャー: プロジェクトの人員を更新する
+
+1. [ビデオを視聴する: 日々の管理: 変化への対応](https://www.microsoft.com/videoplayer/embed/RE3LD4Z)
+1. [アクセスが不要になったユーザーを削除する](entitlement-management-access-package-assignments.md)
+1. [要求と承認の設定の既存ポリシーを開く](entitlement-management-access-package-request-policy.md#open-an-existing-policy-of-request-and-approval-settings)
+1. [アクセスが必要なユーザーを追加する](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)
+
+### <a name="access-package-manager-directly-assign-specific-users-to-an-access-package"></a>アクセス パッケージ マネージャー: アクセス パッケージに特定のユーザーを直接割り当てる
+
+1. [異なるライフサイクル設定がユーザーに必要になった場合、アクセス パッケージに新しいポリシーを追加する](entitlement-management-access-package-request-policy.md#add-a-new-policy-of-request-and-approval-settings)
+1. [アクセス パッケージに特定のユーザーを直接割り当てる](entitlement-management-access-package-assignments.md#directly-assign-a-user)
+
+## <a name="assignments-and-reports"></a>割り当てとレポート
+
+### <a name="administrator-view-who-has-assignments-to-an-access-package"></a>管理者: アクセス パッケージに割り当てられているユーザーを表示する
+
+1. アクセス パッケージを開く
+1. [割り当てを表示する](entitlement-management-access-package-assignments.md#view-who-has-an-assignment)
+
+### <a name="administrator-view-resources-assigned-to-users"></a>管理者: ユーザーに割り当てられているリソースを表示する
+
+1. [ユーザーのアクセス パッケージを表示する](entitlement-management-reports.md#view-access-packages-for-a-user)
+1. [ユーザーのリソースの割り当てを表示する](entitlement-management-reports.md#view-resource-assignments-for-a-user)
 
 ## <a name="next-steps"></a>次の手順
 
-- [チュートリアル:最初のアクセス パッケージを作成する](entitlement-management-access-package-first.md)
 - [委任とロール](entitlement-management-delegate.md)
+- [要求プロセスとメール通知](entitlement-management-process.md)

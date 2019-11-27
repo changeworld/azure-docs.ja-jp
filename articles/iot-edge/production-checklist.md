@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d227a0b43a641ae8f5333a62d4c55f4bbb6c781c
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 610e0088fe97bdda1dce7f7391530c5128428b29
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529032"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73096973"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -102,6 +102,8 @@ IoT Edge ハブおよびエージェント モジュールでは、ローカル 
 #### <a name="dont-optimize-for-performance-on-constrained-devices"></a>制限付きデバイスのパフォーマンスを最適化しない
 
 IoT Edge ハブは既定でパフォーマンスが最適化されているため、大きなメモリ チャンクの割り当てが試行されます。 この構成によって、Raspberry Pi などのより小さなデバイスで安定性の問題が発生する場合があります。 リソースに制約があるデバイスをデプロイする場合は、IoT Edge ハブで **OptimizeForPerformance** 環境変数を **false** に設定することができます。 
+
+**OptimizeForPerformance** が **true** に設定されている場合、MQTT プロトコル ヘッドは PooledByteBufferAllocator を使用します。この場合、パフォーマンスは向上しますが、より多くのメモリが割り当てられます。 アロケーターは、32 ビット オペレーティング システムまたはメモリが不足しているデバイスでは適切に機能しません。 また、パフォーマンスを最適化する場合、RocksDb は、そのローカル ストレージ プロバイダーとしての役割に、より多くのメモリを割り当てます。 
 
 詳細については、「[リソースに制約があるデバイスでの安定性の問題](troubleshoot.md#stability-issues-on-resource-constrained-devices)」を参照してください。
 

@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/07/2019
+ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 8038f7c909cfeaf15039afa7335dd6b0460a2622
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 191161c8185f45712052000285013a6e61c9fa6a
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293466"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968890"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>ターゲット Azure VM のネットワーク構成をカスタマイズする
 
@@ -31,15 +31,12 @@ Azure VM のレプリケート中に、フェールオーバー VM に対して�
 - [パブリック IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - サブネットと NIC の両方の[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
 
- > [!IMPORTANT]
-  > 現時点では、これらの設定はフェールオーバー操作でのみサポートされており、テスト フェールオーバーではサポートされていません。
-
 ## <a name="prerequisites"></a>前提条件
 
 - 復旧側の構成を事前に計画していることを確認します。
 - 事前にネットワーク リソースを作成します。 これを入力として提供して、Azure Site Recovery サービスがこれらの設定を受け入れ、フェールオーバー VM にこれらの設定が確実に適用されるようにします。
 
-## <a name="customize-failover-networking-configurations"></a>フェールオーバー ネットワーク構成をカスタマイズする
+## <a name="customize-failover-and-test-failover-networking-configurations"></a>フェールオーバーおよびテスト フェールオーバーのネットワーク構成をカスタマイズする
 
 1. **[レプリケートされたアイテム]** に移動します。 
 2. 目的の Azure VM を選択します。
@@ -47,13 +44,16 @@ Azure VM のレプリケート中に、フェールオーバー VM に対して�
 
      ![フェールオーバー ネットワーク構成をカスタマイズする](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. 構成する NIC の近くにある **[編集]** を選択します。 開かれた次のブレードのターゲットで、あらかじめ作成してある、対応するリソースを選択します。
+4. テスト フェールオーバーの仮想ネットワークを選択します。 空白のままにして、テスト フェールオーバー時にいずれかを選択することもできます。
+5. 構成する NIC の近くにある **[編集]** を選択します。 開かれる次のブレードで、テスト フェールオーバーまたはフェールオーバーの場所にあらかじめ作成してある、対応するリソースを選択します。
 
     ![NIC 構成ファイルを編集する](media/azure-to-azure-customize-networking/nic-drilldown.png) 
 
-5. **[OK]** を選択します。
+6. **[OK]** を選択します。
 
 Site Recovery がこれらの設定を受け入れ、フェールオーバー時の VM が、対応する NIC を介して、選択したリソースに接続されるようになります。
+
+復旧計画を介してテスト フェールオーバーをトリガーすると、常に Azure 仮想ネットワークをたずねられます。 この仮想ネットワークは、テスト フェールオーバー設定が事前に構成されていないマシンのテスト フェールオーバーに使用されます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -72,9 +72,8 @@ Site Recovery がこれらの設定を受け入れ、フェールオーバー時
 - ターゲット VM が可用性ゾーンに配置されるように構成されている場合は、ロード バランサーがゾーン冗長であるか、いずれかの可用性ゾーンの一部であるかどうかを確認します (Basic SKU のロード バランサーではゾーンがサポートされていないため、この場合はドロップダウン リストに表示されません)。
 - 事前に作成済みのバックエンド プールとフロントエンド構成が確実に内部ロード バランサーにあるようにします。
 
-
 パブリック IP アドレス:
-    
+
 - パブリック IP とターゲット VM のサブスクリプションおよびリージョンは同じである必要があります。
 - ターゲット VM のパブリック IP SKU と内部ロード バランサーの SKU は同じである必要があります。
 

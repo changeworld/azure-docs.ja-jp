@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: bf89d419bcd97c276df35701bc4fd808f599094a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: eb8110c953787d1ebf7f01037808ee77db2eb8b4
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637697"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934156"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "68637697"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk Executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 SQL API Java SDK は、同期操作をサポートしています。 非同期サポートの場合は、[SQL API Async Java SDK](sql-api-sdk-async-java.md) を使用してください。 
@@ -42,6 +42,30 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 |**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name244244"></a><a name="2.4.4"/>2.4.4
+* パーティション キー範囲のキャッシュ更新を最適化しました。
+
+### <a name="a-name242242"></a><a name="2.4.2"/>2.4.2
+* コレクションのキャッシュ更新を最適化しました。
+
+### <a name="a-name241241"></a><a name="2.4.1"/>2.4.1
+* 要求の診断文字列から内部例外メッセージを取得できるようになりました。
+
+### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
+* PartitionKeyDefinition にバージョン API を導入しました。
+
+### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
+* 直接モード用に独立したタイムアウト サポートが追加されました。
+
+### <a name="a-name223223"></a><a name="2.2.3"/>2.2.3
+* サービスからの null エラー メッセージを使用して、ドキュメント クライアント例外を生成します。
+
+### <a name="a-name222222"></a><a name="2.2.2"/>2.2.2
+* ソケット接続が改良され、SoKeepAlive の既定値 true が追加されました。
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* 要求の診断文字列のサポートが追加されました。
 
 ### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
 * ハッシュ V2 の PartitionKey のバグが修正されました。

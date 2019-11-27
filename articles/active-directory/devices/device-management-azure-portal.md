@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f38b60b5fbf0166f25c423663d157cf8f13ee2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b1b44a7df499dc0b6ce4370bf74ece35c99a4493
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860890"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200227"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal を使用してデバイス ID を管理する
 
@@ -136,6 +136,7 @@ Intune 管理者の場合は、**Microsoft Intune** としてマークされて�
 
 - デバイスを有効/無効にするには、Azure AD のグローバル管理者またはクラウド デバイス管理者である必要があります。 
 - デバイスを無効にすると、デバイスは Azure AD で正常に認証されなくなり、それによってデバイスは、デバイス CA または WH4B 資格情報の使用によって保護されている Azure AD リソースにアクセスできなくなります。
+- デバイスを無効にすると、デバイス上のプライマリ更新トークン (PRT) とすべての更新トークン (RT) の両方が取り消されます。
 
 ### <a name="delete-an-azure-ad-device"></a>Azure AD デバイスを削除する
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 163259af3797b652c9605c171447f4a7d2576c87
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 961b54a4d7c9caee98497e5d2b8db86284084d15
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842717"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023870"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>PowerShell を使用した Azure Active Directory Domain Services の有効化
 
@@ -128,7 +128,13 @@ $Vnet= New-AzVirtualNetwork `
 
 ## <a name="create-an-azure-ad-ds-managed-domain"></a>Azure AD DS マネージド ドメインを作成する
 
-次に、Azure AD DS マネージド ドメインを作成しましょう。 Azure サブスクリプション ID を設定し、次にマネージド ドメインの名前 (*contoso.com* など) を指定します。 サブスクリプション ID は、[Get-AzSubscription][Get-AzSubscription] コマンドレットを使用して取得できます。
+次に、Azure AD DS マネージド ドメインを作成しましょう。 Azure サブスクリプション ID を設定し、次にマネージド ドメインの名前 (*contoso.com* など) を指定します。 お使いのサブスクリプション ID は、[Get-AzSubscription][Get-AzSubscription] コマンドレットを使用して取得できます。
+
+Availability Zones がサポートされているリージョンを選択すると、Azure AD DS リソースが、冗長性強化のために複数のゾーンに分散されます。
+
+Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。
+
+Azure AD DS を複数のゾーンに分散するために、ご自身で構成するものは何もありません。 Azure プラットフォームでは、ゾーンへのリソース分散が自動的に処理されます。 詳細情報および利用可能なリージョンについては、「[Azure の Availability Zones の概要][availability-zones]」を参照してください。
 
 ```powershell
 $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
@@ -142,13 +148,15 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Force -Verbose
 ```
 
-リソースが作成され、PowerShell プロンプトに制御が戻るまで数分かかります。 Azure AD DS のマネージド ドメインは引き続きバックグラウンドでプロビジョニングされ、デプロイが完了するまでには最大 1 時間かかることがあります。 Azure portal で、Azure AD DS マネージド ドメインの **[概要]** ページには、このデプロイ ステージ全体の現在の状態が表示されます。
+リソースが作成され、PowerShell プロンプトに制御が戻るまで数分かかります。 Azure AD DS マネージド ドメインは引き続きバックグラウンドでプロビジョニングされ、デプロイが完了するまでには最大 1 時間かかる場合があります。 Azure portal では、お使いの Azure AD DS マネージド ドメインの **[概要]** ページに、このデプロイ ステージ全体の現在の状態が表示されます。
 
 Azure AD DS マネージド ドメインがプロビジョニングを完了したことが Azure portal に示されたら、次のタスクを完了する必要があります。
 
 * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
     * DNS を構成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
-* [Azure AD Domain Services とのパスワード同期を有効](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
+* Availability Zones がサポートされているリージョンに Azure AD DS マネージド ドメインを作成した場合は、ネットワーク セキュリティ グループを作成して、Azure AD DS マネージド ドメインの仮想ネットワーク内のトラフィックを制限します。 これらのルールを配置する必要がある Azure Standard Load Balancer が作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。
+    * ネットワーク セキュリティ グループと必要な規則を作成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、ネットワーク セキュリティ グループを自動的に作成および構成するように求められます。
+* [Azure AD Domain Services とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="complete-powershell-script"></a>完全な PowerShell スクリプト
 
@@ -227,13 +235,15 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
   -Force -Verbose
 ```
 
-リソースが作成され、PowerShell プロンプトに制御が戻るまで数分かかります。 Azure AD DS のマネージド ドメインは引き続きバックグラウンドでプロビジョニングされ、デプロイが完了するまでには最大 1 時間かかることがあります。 Azure portal で、Azure AD DS マネージド ドメインの **[概要]** ページには、このデプロイ ステージ全体の現在の状態が表示されます。
+リソースが作成され、PowerShell プロンプトに制御が戻るまで数分かかります。 Azure AD DS マネージド ドメインは引き続きバックグラウンドでプロビジョニングされ、デプロイが完了するまでには最大 1 時間かかる場合があります。 Azure portal では、お使いの Azure AD DS マネージド ドメインの **[概要]** ページに、このデプロイ ステージ全体の現在の状態が表示されます。
 
 Azure AD DS マネージド ドメインがプロビジョニングを完了したことが Azure portal に示されたら、次のタスクを完了する必要があります。
 
 * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
     * DNS を構成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
-* [Azure AD Domain Services とのパスワード同期を有効](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)にして、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
+* Availability Zones がサポートされているリージョンに Azure AD DS マネージド ドメインを作成した場合は、ネットワーク セキュリティ グループを作成して、Azure AD DS マネージド ドメインの仮想ネットワーク内のトラフィックを制限します。 これらのルールを配置する必要がある Azure Standard Load Balancer が作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。
+    * ネットワーク セキュリティ グループと必要な規則を作成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、ネットワーク セキュリティ グループを自動的に作成および構成するように求められます。
+* [Azure AD Domain Services とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -258,3 +268,4 @@ Azure AD DS マネージド ドメインがプロビジョニングを完了し�
 [New-AzVirtualNetwork]: /powershell/module/Az.Network/New-AzVirtualNetwork
 [Get-AzSubscription]: /powershell/module/Az.Accounts/Get-AzSubscription
 [cloud-shell]: /azure/cloud-shell/cloud-shell-windows-users
+[availability-zones]: ../availability-zones/az-overview.md

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba53049d580f3f90499dc0471b9ac981f4a374f2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2abc5434f11bf00c6872775b1336694c04972e95
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562167"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200221"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>セキュリティで保護された Azure マネージド ワークステーションを理解する
 
@@ -91,7 +91,7 @@ ms.locfileid: "68562167"
 
 * **強化されたセキュリティ** – このエントリ レベルの保護されたソリューションは、ホーム ユーザー、小規模企業のユーザー、および一般的な開発者に適しています。
 
-   強化されたワークステーションは、低セキュリティのプロファイルのセキュリティを強化するポリシー ベースの方法です。 これにより、メールや Web の閲覧などの生産性向上ツールも使用しつつ、顧客データを使用する安全な手段が提供されます。 監査ポリシーと Intune を使用して、ユーザーの動作やプロファイルの使用について強化されたワークステーションを監視することができます。 Windows 10 (1809) スクリプトを使用して、強化されたワークステーションのプロファイルをデプロイします。これは [Advanced Threat Protection (ATP)](https://docs.microsoft.com/office365/securitycompliance/office-365-atp) を使用した高度なマルウェア保護を活用します。
+   強化されたワークステーションは、低セキュリティのプロファイルのセキュリティを強化するポリシー ベースの方法です。 これにより、メールや Web の閲覧などの生産性向上ツールも使用しつつ、顧客データを使用する安全な手段が提供されます。 監査ポリシーと Intune を使用して、ユーザーの動作やプロファイルの使用について強化されたワークステーションを監視することができます。 Windows 10 (1809) スクリプトを使用して、強化されたワークステーションのプロファイルをデプロイします。これは [Advanced Threat Protection (ATP)](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) を使用した高度なマルウェア保護を活用します。
 
 * **高セキュリティ** – ワークステーションの攻撃対象領域を減らすための最も効果的な手段は、ワークステーションの自己管理機能を削除することです。 ローカル管理者権限を削除することは、セキュリティを向上する 1 つの手段ですが、正しく実装されていない場合は生産性に影響を与える可能性があります。 高セキュリティのプロファイルは、強化されたセキュリティのプロファイルを基盤として、ローカル管理の削除という 1 つの重要な変更を加えています。このプロファイルは、ハイ プロファイル ユーザー (役員、給与支払いと機密データ ユーザー、サービスとプロセスの承認者) 向けに設計されています。
 

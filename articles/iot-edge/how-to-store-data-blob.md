@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7d504bae16b5b9b10debd916ef8888e90e79364e
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 55edc69e706fad8888146e9d97541a1c2bae821d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844177"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73163801"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する
 
@@ -140,8 +140,8 @@ sudo chmod -R 700 <blob-dir>
 **absie** 以外のユーザーとしてサービスを実行する必要がある場合は、配置マニフェストの createOptions の "User" プロパティでカスタム ユーザー ID を指定できます。 このような場合は、既定値またはルート グループ ID `0` を使用する必要があります。
 
 ```json
-“createOptions”: { 
-  “User”: “<custom user ID>:0” 
+"createOptions": { 
+  "User": "<custom user ID>:0" 
 } 
 ```
 ここで、コンテナー ユーザーにディレクトリへのアクセスを許可します。
@@ -260,6 +260,12 @@ IoT Edge 上の BLOB ストレージ モジュールでは Azure Storage SDK が
 サポート外:
 
 - URL からブロックの配置
+
+## <a name="event-grid-on-iot-edge-integration"></a>Event Grid on IoT Edge の統合
+> [!CAUTION]
+> Event Grid on IoT Edge との統合はプレビュー段階です。
+
+この Azure Blob Storage on IoT Edge モジュールを Event Grid on IoT Edge と統合できるようになりました。 この統合の詳細については、[モジュールのデプロイ、イベントの発行、イベント配信の確認に関するチュートリアル](../event-grid/edge/react-blob-storage-events-locally.md)を参照してください。
 
 ## <a name="release-notes"></a>リリース ノート
 

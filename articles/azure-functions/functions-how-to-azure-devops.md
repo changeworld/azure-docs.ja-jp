@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
-ms.openlocfilehash: 0fdad0caa2deef0d7d55b30a85632f72f4ff0ecc
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4fb01eac53151799a0def00d13f18619faf437f6
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594458"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72927536"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps を使用した継続的デリバリー
 
@@ -92,7 +92,7 @@ steps:
 
 #### <a name="python"></a>Python
 
-次のサンプルを使用して、Python アプリをビルドする YAML ファイルを作成できます。 Python は Linux Azure Functions でのみサポートされています。
+次のサンプルを使用して、Python アプリをビルドする YAML ファイルを作成できます。 Python は Linux Azure Functions でのみサポートされています。 Python 3.7 の YAML は、次の YAML で 3.6 となっている箇所をすべて 3.7 に置き換えることで作成できます。
 
 ```yaml
 pool:

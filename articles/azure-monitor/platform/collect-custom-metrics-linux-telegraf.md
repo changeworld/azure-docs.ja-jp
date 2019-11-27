@@ -1,5 +1,5 @@
 ---
-title: Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
+title: InfluxData Telegraf エージェントを使用して Linux VM のカスタム メトリックを収集する
 description: Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e8164a111b9ad5ebcc67c248586e2576046334b0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 05cc1dcb2a6fa4e7790fa57cd2136d21d94b8a0b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883239"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200525"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Linux VM のカスタム メトリックを InfluxData Telegraf エージェントを使用して収集する
 

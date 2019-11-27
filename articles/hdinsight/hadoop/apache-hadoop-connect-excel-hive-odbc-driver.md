@@ -1,5 +1,5 @@
 ---
-title: Hive ODBC ドライバーを使用して Excel を Apache Hadoop に接続する - Azure HDInsight
+title: ODBC ドライバーを使用した Excel と Apache Hadoop - Azure HDInsight
 description: Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。
 keywords: hadoop excel,hive excel,hive odbc
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 7451eaf56a2466bbb02fa879008b4a9787f6c2f5
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 37cb05c4bf3822c9dc21b1fa9cd0ea4a2ba6d933
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264627"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177330"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用して Excel を Azure HDInsight 上の Apache Hadoop に接続する
 
@@ -33,7 +33,7 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーのインストール
 
-ODBC ドライバーを使用するアプリケーションのバージョンと一致した [Microsoft Hive ODBC Driver](https://go.microsoft.com/fwlink/?LinkID=286698) のバージョンをダウンロードしてインストールします。  この記事では、Office Excel に対してこのドライバーを使用します。
+ODBC ドライバーを使用するアプリケーションのバージョンと一致した [Microsoft Hive ODBC Driver](https://www.microsoft.com/download/details.aspx?id=40886) のバージョンをダウンロードしてインストールします。  この記事では、Office Excel に対してこのドライバーを使用します。
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC データ ソースを作成する
 
@@ -41,7 +41,7 @@ ODBC ドライバーを使用するアプリケーションのバージョンと
 
 1. Windows で、[スタート]、[Windows 管理ツール]、[ODBC データ ソース (32 ビット)/(64 ビット)] の順に移動します。  これにより、 **[ODBC データ ソース アドミニストレーター]** ウィンドウが開きます。
 
-    ![OBDC データ ソース アドミニストレーター](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "ODBC データ ソース アドミニストレーターを使用して DSN を構成")
+    ![ODBC データ ソース アドミニストレーター](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-datasourceadmin1.png "ODBC データ ソース アドミニストレーターを使用して DSN を構成する")
 
 1. **[ユーザー DSN]** タブで、 **[追加]** を選択して **[データ ソースの新規作成]** ウィンドウを開きます。
 
@@ -67,7 +67,7 @@ ODBC ドライバーを使用するアプリケーションのバージョンと
    |  ブロック単位でフェッチされた行 |大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。 |
    |  既定の文字列の列の長さ、バイナリ列の長さ、10 進数の列の桁数 |データ型の長さおよび精度は、データが返される方法に影響する可能性があります。 精度が失われたり、切り捨てられたりするために間違った情報が返されます。 |
 
-    ![DSN の詳細構成オプション](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "DSN の詳細構成オプション")
+    ![DSN 詳細構成オプション](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "DSN 詳細構成オプション")
 
 1. **[テスト]** を選択して、データ ソースをテストします。 データ ソースが正しく構成された場合、テスト結果に "**成功!** " と表示されます。  
 

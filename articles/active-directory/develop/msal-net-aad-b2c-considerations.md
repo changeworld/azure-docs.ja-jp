@@ -1,5 +1,6 @@
 ---
-title: Azure AD B2C (.NET 用 Microsoft Authentication Library) | Azure
+title: Azure AD B2C (.NET 用 Microsoft Authentication Library)
+titleSuffix: Microsoft identity platform
 description: .NET 用 Microsoft 認証ライブラリ (MSAL.NET) で Azure AD B2C を使用する場合の固有の考慮事項について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/24/2019
-ms.author: twhitney
+ms.date: 10/29/2019
+ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7444ecfd7a59224d0f08390385c508e4ecc40ddd
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0996c5635223800a981497256654b7e418bf4163
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532717"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175604"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる
 
@@ -35,12 +36,13 @@ MSAL.NET を使用して、[Azure Active Directory B2C (Azure AD B2C)](https://a
 
 ## <a name="authority-for-a-azure-ad-b2c-tenant-and-policy"></a>Azure AD B2C のテナントとポリシーに対する機関
 
-使用する機関は `https://login.microsoftonline.com/tfp/{tenant}/{policyName}` です。
+使用する機関は `https://{azureADB2CHostname}/tfp/{tenant}/{policyName}` です。
 
-- `tenant` は、Azure AD B2C テナントの名前です。 
-- `policyName` は、適用するポリシーの名前です (たとえば、サインイン/サインアップの場合は "b2c_1_susi")。
+- `azureADB2CHostname` は、Azure AD B2C テナントの名前にホストを組み合わせたものです (例: `{your-tenant-name}.b2clogin.com`)。
+- `tenant` は、Azure AD B2C テナントのフル ネーム (例: `{your-tenant-name}.onmicrosoft.com`) またはテナントの GUID です。 
+- `policyName` は、適用するポリシーまたはユーザー フローの名前です (サインアップとサインイン用の "b2c_1_susi" など)。
 
-Azure AD B2C からの現在のガイダンスでは、機関として `b2clogin.com` を使用します。 たとえば、「 `$"https://{your-tenant-name}.b2clogin.com/tfp/{your-tenant-ID}/{policyname}"` 」のように入力します。 詳しくは、こちらの[ドキュメント](/azure/active-directory-b2c/b2clogin)をご覧ください。
+Azure AD B2C オーソリティの詳細については、[このドキュメント](/azure/active-directory-b2c/b2clogin)を参照してください。
 
 ## <a name="instantiating-the-application"></a>アプリケーションをインスタンス化する
 
@@ -49,12 +51,13 @@ Azure AD B2C からの現在のガイダンスでは、機関として `b2clogin
 ```csharp
 // Azure AD B2C Coordinates
 public static string Tenant = "fabrikamb2c.onmicrosoft.com";
+public static string AzureADB2CHostname = "fabrikamb2c.b2clogin.com";
 public static string ClientID = "90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6";
 public static string PolicySignUpSignIn = "b2c_1_susi";
 public static string PolicyEditProfile = "b2c_1_edit_profile";
 public static string PolicyResetPassword = "b2c_1_reset";
 
-public static string AuthorityBase = $"https://fabrikamb2c.b2clogin.com/tfp/{Tenant}/";
+public static string AuthorityBase = $"https://{AzureADB2CHostname}/tfp/{Tenant}/";
 public static string Authority = $"{AuthorityBase}{PolicySignUpSignIn}";
 public static string AuthorityEditProfile = $"{AuthorityBase}{PolicyEditProfile}";
 public static string AuthorityPasswordReset = $"{AuthorityBase}{PolicyResetPassword}";
@@ -70,14 +73,16 @@ application = PublicClientApplicationBuilder.Create(ClientID)
 
 ```csharp
 IEnumerable<IAccount> accounts = await application.GetAccountsAsync();
-AuthenticationResult ar = await application .AcquireToken(scopes, parentWindow)
+AuthenticationResult ar = await application .AcquireTokenInteractive(scopes)
                                             .WithAccount(GetAccountByPolicy(accounts, policy))
+                                            .WithParentActivityOrWindow(ParentActivityOrWindow)
                                             .ExecuteAsync();
 ```
 
 を以下に置き換えます。
 
 - `policy` は前の文字列の 1 つです (たとえば `PolicySignUpSignIn`)。
+- `ParentActivityOrWindow` は、Android (Activity) では必須となります。親 UI (Windows のウィンドウや iOS の UIViewController など) をサポートするその他のプラットフォームでは省略可能です。 詳細については、[UI ダイアログに関するこちらの説明](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow)を参照してください。
 - `GetAccountByPolicy(IEnumerable<IAccount>, string)` は特定のポリシーのアカウントを検索するメソッドです。 例:
 
   ```csharp
@@ -93,11 +98,11 @@ AuthenticationResult ar = await application .AcquireToken(scopes, parentWindow)
   }
   ```
 
-現在、ポリシーの適用は (たとえば、エンド ユーザーが自分のプロファイルを編集したり、パスワードをリセットしたりできるようにする)、`AcquireTokenInteractive` を呼び出すことによって行われます。 これら 2 つのポリシーの場合は、返されたトークン/認証結果を使用しません。
+現在、ポリシーまたはユーザー フローの適用は (たとえば、エンド ユーザーが自分のプロファイルを編集したり、パスワードをリセットしたりできるようにする)、`AcquireTokenInteractive` を呼び出すことによって行われます。 これら 2 つのポリシーの場合は、返されたトークンや認証結果を使用しません。
 
 ## <a name="special-case-of-editprofile-and-resetpassword-policies"></a>EditProfile ポリシーと ResetPassword ポリシーの特殊なケース
 
-エンド ユーザーがソーシャル ID でサインインし、自分のプロファイルを編集するエクスペリエンスを提供する場合は、Azure AD B2C EditProfile ポリシーを適用します。 そのためには、`AcquireTokenInteractive` を呼び出し、そのポリシーに対する特定の期間を指定して、アカウント選択ダイアログが表示されないように Prompt を `Prompt.NoPrompt` に設定します (ユーザーは既にサインインしているため)
+エンド ユーザーがソーシャル ID でサインインし、自分のプロファイルを編集するエクスペリエンスを提供する場合は、Azure AD B2C EditProfile ポリシーを適用します。 そのためには、`AcquireTokenInteractive` を呼び出し、そのポリシーに対する特定の期間を指定して、アカウント選択ダイアログが表示されないように Prompt を `Prompt.NoPrompt` に設定します (ユーザーは既にサインインしていて、アクティブな Cookie セッションがあるため)。
 
 ```csharp
 private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
@@ -123,8 +128,8 @@ ROPC フローについて詳しくは、こちらの[ドキュメント](v2-oau
 
 ユーザーにパスワードをたずねるアプリケーションは安全でないため、このフローは**推奨されません**。 この問題の詳細については、[この記事](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)を参照してください。 
 
-ユーザー名/パスワードを使用すると、いくつかのことを利用できなくなります。
-- 最新の ID のコア テナント: パスワードがフィッシングされて再生されます。 インターセプトできる共有シークレットのこの概念を使用しているためです。 これは、パスワードなしとは互換性がありません。
+ユーザー名とパスワードを使用すると、いくつかのことを放棄することになります。その例を次に示します。
+- 最新の ID の核となる概念: パスワードはフィッシングされて再生されます。 インターセプトできる共有シークレットのこの概念を使用しているためです。 これは、パスワードなしとは互換性がありません。
 - MFA を実行する必要のあるユーザーがサインインできない (対話式操作がないため)。
 - ユーザーがシングル サインオンできない。
 
@@ -148,13 +153,12 @@ ROPC ポリシーが含まれる機関を使用してください。
 
 ### <a name="limitations-of-the-ropc-flow"></a>ROPC フローの制限事項
  - ROPC フローは、**ローカル アカウントでのみ動作します** (メール アドレスまたはユーザー名を使用して Azure AD B2C に登録します)。 Azure AD B2C によってサポートされる ID プロバイダーのいずれかとフェデレーションした場合、このフローは機能しません (Facebook、Google など)。
- - 現在、MSAL から ROPC フローを実装すると、**Azure AD B2C から id_token が返されません**。 つまり、Account オブジェクトを作成できないため、キャッシュには Account およびユーザーが存在しません。 このシナリオでは、AcquireTokenSilent フローは機能しません。 ただし、ROPC では UI が表示されないため、ユーザー エクスペリエンスへの影響はありません。
 
 ## <a name="google-auth-and-embedded-webview"></a>Google 認証と埋め込み WebView
 
 ID プロバイダーとして Google を使用している Azure AD B2C 開発者の場合は、システム ブラウザーを使用することをお勧めします。Google では、[埋め込み WebView から認証を行う](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html)ことはできません。 現在、Google で信頼されている機関は `login.microsoftonline.com` です。 この機関を使用すると、埋め込み WebView で動作します。 しかし、`b2clogin.com` は Google で信頼された機関ではないため、ユーザーは認証を行うことができません。
 
-状況が変わったら、Wiki およびこの[問題](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688)に対する更新を提供します。
+状況が変わったら、この[問題](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/688)に対する更新を提供します。
 
 ## <a name="caching-with-azure-ad-b2c-in-msalnet"></a>MSAL.Net の Azure AD B2C でのキャッシュ 
 

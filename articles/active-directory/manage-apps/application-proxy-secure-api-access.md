@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 10/24/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: c2b99525e3d0a61c02dc502fcd0927ea65993e5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b741f42bb215df59903fed7ed84094b7d037ce65
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108606"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73063039"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したオンプレミス API へのアクセスのセキュリティ保護
 
@@ -57,7 +57,7 @@ Azure AD アプリケーション プロキシの認証と承認は Azure AD 上
    
 1. **[エンタープライズ アプリケーション - すべてのアプリケーション]** ページの上部で、 **[新しいアプリケーション]** を選択します。
    
-1. **[アプリケーションの追加]** ページの **[独自のアプリを追加する]** の下で、 **[オンプレミスのアプリケーション]** を選択します。 
+1. **[Azure AD ギャラリーの参照]** ページの **[オンプレミスのアプリケーション]** で、 **[オンプレミスのアプリケーションの追加]** を選択します。 **[独自のオンプレミスのアプリケーションの追加]** ページが表示されます。
    
 1. アプリケーション プロキシ コネクタがインストールされていない場合は、インストールするように求められます。 **[アプリケーション プロキシ コネクタのダウンロード]** を選択してコネクタをダウンロードしてインストールします。 
    

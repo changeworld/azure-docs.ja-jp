@@ -1,6 +1,6 @@
 ---
 title: Azure Blob Storage との間でのデータの移動 - Team Data Science Process
-description: Azure Blob Storage との間でデータを移動します
+description: Azure Storage Explorer、AzCopy、Python、および SSIS を使用して、Azure Blob Storage 間でデータを移動します。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b45f9950ef63bc29d23d78d20909f223cb30350
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: d885a7fad6e958507e7d9df34bd2b1fb222c6f86
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998156"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053674"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>Azure Blob Storage との間のデータの移動
 

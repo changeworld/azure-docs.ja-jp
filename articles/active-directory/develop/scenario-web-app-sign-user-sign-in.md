@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5c45005d6a54765458b463acb12c21a1f3b6d0c
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: d727b570361e721c49173138bb60ae89df710e81
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336759"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175232"
 ---
 # <a name="web-app-that-signs-in-users---sign-in-and-sign-out"></a>ユーザーをサインインさせる Web アプリ - サインインとサインアウト
 
@@ -227,7 +227,7 @@ Web アプリからのサインアウトでは、サインインしたアカウ�
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-アプリケーションの登録中に、**ログアウト後の URI** を登録します。 このチュートリアルでは、 **[認証]** ページの **[詳細設定]** セクションの **[ログアウト URL]** フィールドに `http://localhost:8080/msal4jsample/` と登録しました。
+アプリケーションの登録中に、**ログアウト後の URI** を登録します。 このチュートリアルでは、 **[認証]** ページの **[詳細設定]** セクションの **[ログアウト URL]** フィールドに `http://localhost:8080/msal4jsample/sign_out` と登録しました。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -423,7 +423,7 @@ public class AccountController : Controller
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-この Java のクイックスタートの場合は、サインアウト後のリダイレクト URI では index. html ページが表示されるだけです 
+この Java のクイックスタートの場合は、サインアウト後のリダイレクト URI では index. html ページが表示されるだけです
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 

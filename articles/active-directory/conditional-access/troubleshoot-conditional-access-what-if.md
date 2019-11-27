@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d463bc889385f8f157ebb9892acc7a4a8b2a2e
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 661afc08c76c6cde61b02a29a55b4a8bec932e21
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278628"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175818"
 ---
 # <a name="troubleshooting-conditional-access-using-the-what-if-tool"></a>What If ツールを使用した条件付きアクセスのトラブルシューティング
 
@@ -25,6 +25,9 @@ ms.locfileid: "68278628"
 What If ツールは、 **[Azure portal]**  >  **[Azure Active Directory]**  >  **[条件付きアクセス]**  >  **[What If]** にあります。
 
 ![既定の状態にある条件付きアクセスの What If ツール](./media/troubleshoot-conditional-access-what-if/conditional-access-what-if-tool.png)
+
+> [!NOTE]
+> What If ツールでは現在、レポート専用モードのポリシーは評価されません。
 
 ## <a name="gathering-information"></a>情報の収集
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2019
+ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41cc8114061ff7d23951baa3e6215d4332dff0ed
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 99c52f65bdec2b164cca86a6346d8865d210cf38
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258517"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176063"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory アクセス パネルのデプロイを計画する
 
@@ -226,6 +226,10 @@ SaaS アプリケーションをデプロイおよび構成する方法の詳細
 #### <a name="add-applications-to-the-my-apps-panel"></a>アプリケーションを [マイ アプリ] パネルに追加する
 
 Azure AD SSO に対応した任意のアプリケーションを [マイ アプリ] ランチャーに追加できます。 その他のアプリケーションは "リンク" SSO オプションを使用して追加されます。 既存の Web アプリケーションの URL にリンクするアプリケーション タイルを構成できます。 リンクされた SSO を使用すると、すべてのアプリケーションを Azure AD SSO に移行することなく、[マイ アプリ] ポータルにユーザーを誘導することができます。 ユーザーのエクスペリエンスを損なうことなく、Azure AD SSO が構成されたアプリケーションに段階的に移行できます。
+
+#### <a name="use-my-apps-workspaces-preview"></a>マイ アプリ ワークスペースを使用する (プレビュー)
+
+既定では、すべてのアプリケーションが 1 つのページにまとめて表示されます。 しかし、ワークスペースを使用して関連するアプリケーションをグループ化し、別々のタブで表示すれば、アプリケーションが見つけやすくなります。 たとえば、ワークスペースを使用して、特定の担当業務、タスク、プロジェクトなどに関連したアプリケーションの論理グループを作成することができます。 詳細については、[マイ アプリ ワークスペースを使用してユーザー アクセス パネルをカスタマイズする方法 (プレビュー)](access-panel-workspaces.md) に関するページを参照してください。 
 
 #### <a name="plan-whether-to-use-my-apps-or-an-existing-portal"></a>[マイ アプリ] と既存のポータルのどちらを使用するかを計画する
 

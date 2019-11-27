@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/22/2019
-ms.openlocfilehash: 89c4bce33b80e988a9da363a89854e921bee30b0
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/25/2019
+ms.openlocfilehash: 82e07edc615fd8c1ef0ebc84cf57035727bbcdf6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973654"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965257"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
@@ -43,10 +43,13 @@ Azure からアプリケーションが Azure Database for MariaDB サーバー�
 
 ![ポータルで [Azure サービスへのアクセスを許可] を構成する](./media/concepts-firewall-rules/allow-azure-services.png)
 
+### <a name="connecting-from-a-vnet"></a>VNet からの接続
+VNet から Azure Database for MariaDB サーバーに安全に接続するには、[VNet サービス エンドポイント](./concepts-data-access-security-vnet.md)の使用を検討してください。 
+
 ## <a name="programmatically-managing-firewall-rules"></a>ファイアウォール規則のプログラムによる管理
 ファイアウォール規則は、Azure Portal に加え、Azure CLI を使用してプログラムで管理することができます。 
 
-<!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
+「[Azure CLI を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理](./howto-manage-firewall-cli.md)」も参照してください。
 
 ## <a name="troubleshooting-firewall-issues"></a>ファイアウォールの問題のトラブルシューティング
 Microsoft Azure Database for MariaDB サーバー サービスに期待どおりにアクセスできない場合は、次の点を検討してください。
@@ -65,6 +68,5 @@ Microsoft Azure Database for MariaDB サーバー サービスに期待どおり
 
 ## <a name="next-steps"></a>次の手順
 - [Azure portal を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理](./howto-manage-firewall-portal.md)
-
-<!--
-- [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md) -->
+- [Azure CLI を使用した Azure Database for MariaDB ファイアウォール規則の作成と管理](./howto-manage-firewall-cli.md)
+- [Azure Database for MariaDB での VNet サービス エンドポイント](./concepts-data-access-security-vnet.md)

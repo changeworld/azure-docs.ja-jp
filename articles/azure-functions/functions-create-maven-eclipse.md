@@ -12,12 +12,12 @@ ms.devlang: java
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b2f5567e037c65d7650b3f95a2ee81b93ac987b7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 114d1298ec72dc0be23786664bf066fcbb7413f0
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085865"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900153"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Java と Eclipse を使用して初めての関数を作成する 
 
@@ -50,7 +50,7 @@ Azure Functions を実行およびデバッグするためのローカル環境�
     - [Archetype Artifact ID]\(Archetype アーティファクト ID\): azure-functions-archetype
     - バージョン:[中央のリポジトリ](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)から最新バージョンの **1.22** を使用します 
     ![Eclipse Maven の作成](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. **[OK]** をクリックしてから **[Next]\(次へ\)** をクリックし、次のスナップショットのように値を入力して (appName には **fabrikam-function-20170920120101928** 以外の値を使用してください)、最後に **[Finish]\(完了\)** をクリックします。
+1. **[OK]** をクリックし、 **[次へ]** をクリックします。  `resourceGroup`、`appName`、`appRegion` を含むすべてのフィールドに値を入力し (**fabrikam-function-20170920120101928** とは異なる appName を使用してください)、最後に **[完了]** をクリックします。
     ![Eclipse Maven の作成 2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
 Maven は、_artifactId_ という名前の新しいフォルダーに、プロジェクト ファイルを作成します。 プロジェクトで生成されるコードは、トリガーする HTTP 要求の本文をエコーする、[HTTP によってトリガーされる](/azure/azure-functions/functions-bindings-http-webhook)単純な関数です。

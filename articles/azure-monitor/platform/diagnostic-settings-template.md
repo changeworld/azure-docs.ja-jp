@@ -1,5 +1,5 @@
 ---
-title: Azure で Resource Manager テンプレートを使用して診断設定を作成する | Microsoft Docs
+title: Azure で Resource Manager テンプレートを使用して診断設定を作成する
 description: Azure プラットフォーム ログを Azure Monitor ログ、Azure ストレージ、または Azure Event Hubs に転送するための診断設定を、Resource Manager テンプレートを使用してを作成します。
 author: bwren
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 303682a9d7b3c3fe8ba6c8dd6fe2a44741bcafce
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0cb4cee732b1784de489d97769294c455cfd5efd
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597284"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200497"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Azure で Resource Manager テンプレートを使用して診断設定を作成する
 Azure の[プラットフォーム ログ](platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 この記事では、[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)を使用して、プラットフォーム ログを収集してさまざまな送信先に送信するための診断設定を構成する方法について詳しく説明します。 これにより、リソースの作成時にプラットフォーム ログの収集を自動的に開始することができます。

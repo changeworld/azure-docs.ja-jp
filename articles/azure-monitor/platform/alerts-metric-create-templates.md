@@ -1,19 +1,19 @@
 ---
 title: Resource Manager テンプレートでのメトリック アラートの作成
 description: Resource Manager テンプレートを使用してメトリック アラートを作成する方法を説明します｡
-author: snehithm
+author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 9/27/2018
-ms.author: snmuvva
+ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: b08c7d1b91f89aba4c9cb8a23bb5c688521cb37e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372766"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099752"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
@@ -27,8 +27,9 @@ ms.locfileid: "72372766"
 基本的な手順は次のとおりです。
 
 1. アラートの作成方法を記述した JSON ファイルとして以下のテンプレートの 1 つを利用します｡
-2. 対応するパラメーター ファイルを編集し､JSON として利用してアラートをカスタマイズします｡
-3. [任意のデプロイ方法](../../azure-resource-manager/resource-group-template-deploy.md)を使用してテンプレートをデプロイします｡
+2. 対応するパラメーター ファイルを編集し、JSON として利用してアラートをカスタマイズします。
+3. `metricName` パラメーターについては、「[Azure Monitor のサポートされるメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)」で使用可能なメトリックを確認してください。
+4. [任意のデプロイ方法](../../azure-resource-manager/resource-group-template-deploy.md)を使用してテンプレートをデプロイします｡
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>単純な静的しきい値メトリック アラートのテンプレート
 
@@ -2970,6 +2971,9 @@ az group deployment create \
     },
     "actionGroupId": {
       "type": "string"
+    },
+    "location": {
+      "type": "string"
     }
   },
   "variables": {
@@ -2981,7 +2985,7 @@ az group deployment create \
       "name": "[variables('pingTestName')]",
       "type": "Microsoft.Insights/webtests",
       "apiVersion": "2014-04-01",
-      "location": "West Central US",
+      "location": "[parameters('location')]",
       "tags": {
         "[concat('hidden-link:', resourceId('Microsoft.Insights/components', parameters('appName')))]": "Resource"
       },
@@ -3060,13 +3064,16 @@ az group deployment create \
     "contentVersion": "1.0.0.0",
     "parameters": {
         "appName": {
-            "value": "Replace with your Application Insights component name"
+            "value": "Replace with your Application Insights resource name"
         },
         "pingURL": {
             "value": "https://www.yoursite.com"
         },
         "actionGroupId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourceGroup-name/providers/microsoft.insights/actiongroups/replace-with-action-group-name"
+        },
+        "location": {
+            "value": "Replace with the location of your Application Insights resource"
         }
     }
 }

@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: jehollan
-ms.openlocfilehash: b581d7c9b5876813e36ebbf41be713b44dd97735
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8e07032f84ead4bb003176af84cb4c731819ffa4
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096089"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900064"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA を使用した Kubernetes での Azure Functions
 
@@ -51,6 +51,9 @@ func init --docker-only
 
 イメージをビルドして関数を Kubernetes にデプロイするには、次のコマンドを実行します。
 
+> [!NOTE]
+> Core Tools では、イメージのビルドと発行に Docker CLI が活用されます。 あらかじめ Docker がインストールされ、ご利用のアカウントに `docker login` で接続されていることを確認してください。
+
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
@@ -58,6 +61,10 @@ func kubernetes deploy --name <name-of-function-deployment> --registry <containe
 > `<name-of-function-deployment>` をお使いの関数アプリの名前に置き換えます。
 
 これにより、Kubernetes `Deployment` リソース、`ScaledObject` リソース、`local.settings.json` からインポートされる環境変数を含む `Secrets` が作成されます。
+
+### <a name="deploying-a-function-app-from-a-private-registry"></a>プライベート レジストリから関数アプリをデプロイする
+
+前述のフローは、プライベート レジストリにも使用できます。  コンテナー イメージをプライベート レジストリからプルする場合は、`func kubernetes deploy` を実行する際に `--pull-secret` フラグを指定して、プライベート レジストリの資格情報を保持する Kubernetes シークレットを参照します。
 
 ## <a name="removing-a-function-app-from-kubernetes"></a>Kubernetes からの関数アプリの削除
 

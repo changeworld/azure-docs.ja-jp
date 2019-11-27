@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 10/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ecec18945b53711094307162c4aeab2e0580bd5e
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: a1f08589ae28b3e19d2a4fdb3e3862e127a810cc
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063849"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73099715"
 ---
 # <a name="predicates-and-predicatevalidations"></a>述語および PredicateValidations
 
@@ -30,6 +30,8 @@ ms.locfileid: "71063849"
 ## <a name="predicates"></a>Predicates
 
 **Predicate**要素によって、要求タイプの値をチェックする基本的な検証が定義され、`true` または `false` が返されます。 検証は、指定された **Method** 要素と、そのメソッドに関連する **Parameter** 要素のセットを使用して行われます。 例えば、述語によって、文字列要求値の長さが、指定された最小および最大パラメーターの範囲内にあるかどうか、または文字列要求の値に文字セットが含まれているかどうかをチェックできます。 **UserHelpText** 要素により、チェックが失敗した場合にユーザーに表示されるエラー メッセージが指定されます。 **UserHelpText** 要素の値を、[言語のカスタマイズ](localization.md)を使用してローカライズできます。
+
+**Predicates** 要素は、[BuildingBlocks](buildingblocks.md) 要素内の **ClaimsSchema** 要素の直後に記述する必要があります。
 
 **Predicates** 要素には、次の要素が含まれています。
 
@@ -111,6 +113,8 @@ ms.locfileid: "71063849"
 ## <a name="predicatevalidations"></a>PredicateValidations
 
 述語によって、要求タイプに対してチェックを行う検証が定義されますが、**PredicateValidations** は要求タイプに適用できるユーザー入力検証を形式設定する述語セットをグループ化します。 各 **PredicateValidation** 要素には、**Predicate** をポイントする **PredicateReference** 要素のセットを含む **PredicateGroup** 要素のセットが含まれています。 検証に合格するには、要求の値が、**PredicateReference** 要素のセットを持つすべての **PredicateGroup** に基づき、すべての述語のすべてのテストに合格する必要があります。
+
+**PredicateValidations** 要素は、[BuildingBlocks](buildingblocks.md) 要素内の **Predicates** 要素の直後に表示する必要があります。
 
 ```XML
 <PredicateValidations>
@@ -194,7 +198,7 @@ ms.locfileid: "71063849"
 - **Lowercase**: `IncludesCharacters` メソッドを使用して、パスワードに小文字が含まれていることを検証します。
 - **Uppercase**: `IncludesCharacters` メソッドを使用して、パスワードに大文字が含まれていることを検証します。
 - **Number**: `IncludesCharacters` メソッドを使用して、パスワードに数字が含まれていることを検証します。
-- **Symbol**: `IncludesCharacters` メソッドを使用して、パスワードに次のいずれかの記号が含まれていることを検証します `@#$%^&*\-_+=[]{}|\:',?/~"();!`
+- **Symbol**: `IncludesCharacters` メソッドを使用して、パスワードにいずれかの記号文字が含まれていることを検証します。
 - **PIN**: `MatchesRegex` メソッドを使用して、パスワードに数字のみが含まれていることを検証します。
 - **AllowedAADCharacters**: `MatchesRegex` メソッドを使用して、パスワードのみの無効な文字が指定されたことを検証します。
 - **DisallowedWhitespace**: `MatchesRegex` メソッドを使用して、パスワードが空白文字で開始または終了していないことを検証します。
@@ -233,7 +237,7 @@ ms.locfileid: "71063849"
   <Predicate Id="Symbol" Method="IncludesCharacters">
     <UserHelpText>a symbol</UserHelpText>
     <Parameters>
-      <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\:',?/`~"();!</Parameter>
+      <Parameter Id="CharacterSet">@#$%^&amp;*\-_+=[]{}|\\:',.?/`~"();!</Parameter>
     </Parameters>
   </Predicate>
 

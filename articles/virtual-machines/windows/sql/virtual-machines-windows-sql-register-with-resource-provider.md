@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2f0fac5e1951f593ea769f73feb21a60afe9c02b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 433480b4a587b3a085c3b1c0ba4122ae98eb4508
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756160"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897714"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Azure 内の SQL Server 仮想マシンを SQL VM リソースプロバイダーに登録する
 
@@ -246,9 +246,9 @@ PowerShell を使用して、次のように SQL Server IaaS エージェント�
   ```
 ---
 
-## <a name="register-the-sql-vm-resource-provider-with-a-subscription"></a>SQL VM リソースプロバイダーをサブスクリプションに登録する 
+## <a name="register-subscription-with-rp"></a>リソースプロバイダーを使用してサブスクリプションを登録する
 
-お使いの SQL Server VM を SQL VM リソースプロバイダーに登録するには、そのリソースプロバイダーを自分のサブスクリプションに登録する必要があります。 これは Azure portal、Azure CLI、または PowerShell を使用して実行できます。
+お使いの SQL Server VM を SQL VM リソースプロバイダーに登録するには、まずそのリソースプロバイダーに自分のサブスクリプションを登録する必要があります。  これは Azure portal、Azure CLI、または PowerShell を使用して実行できます。
 
 ### <a name="azure-portal"></a>Azure ポータル
 

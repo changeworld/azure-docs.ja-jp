@@ -1,19 +1,19 @@
 ---
-title: HDInsight (Apache Hadoop) 上で Hive と連携する Apache Ambari ビューを使用する - Azure
+title: Azure HDInsight の Apache Hadoop で Apache Ambari Hive ビューを使用する
 description: Web ブラウザーから Hive ビューを使用して Hive クエリを送信する方法について説明します。 Hive ビューは、Linux ベースの HDInsight クラスターに付属する Ambari Web UI の要素です。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: da4d1ed7dec8b3b0bc61dd2959a868d03875039c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 10/24/2019
+ms.openlocfilehash: 6c199a0dd75b89d9c9368e799c97a28b73758d06
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077008"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73097100"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で Apache Ambari Hive ビューを使用する
 
@@ -30,9 +30,9 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
 
 1. [Azure portal](https://portal.azure.com/) でご自身のクラスターを選択します。  手順については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。 クラスターは新しいポータル ブレードで開きます。
 
-2. **クラスター ダッシュボード**で **[Ambari ビュー]** を選択します。 認証情報の入力を求められたら、クラスターの作成時に使用したクラスター ログイン (既定値は `admin`) アカウント名とパスワードを入力します。
+1. **クラスター ダッシュボード**で **[Ambari ビュー]** を選択します。 認証情報の入力を求められたら、クラスターの作成時に使用したクラスター ログイン (既定値は `admin`) アカウント名とパスワードを入力します。 または、ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/#/main/views` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 
-3. ビューの一覧で、__Hive ビュー__ を選択します。
+1. ビューの一覧で、__Hive ビュー__ を選択します。
 
     ![Apache Ambari の Apache Hive ビューの選択](./media/apache-hadoop-use-hive-ambari-view/select-apache-hive-view.png)
 
@@ -40,7 +40,7 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
 
     ![Hive ビューのクエリ ワークシートの画像](./media/apache-hadoop-use-hive-ambari-view/ambari-worksheet-view.png)
 
-4. __[Query]\(クエリ\)__ タブから、次の HiveQL ステートメントをワークシートに貼り付けます。
+1. __[Query]\(クエリ\)__ タブから、次の HiveQL ステートメントをワークシートに貼り付けます。
 
     ```hiveql
     DROP TABLE log4jLogs;
@@ -54,8 +54,8 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
         t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
-        WHERE t4 = '[ERROR]' 
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs
+        WHERE t4 = '[ERROR]'
         GROUP BY t4;
     ```
 
@@ -75,9 +75,9 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
    > [!IMPORTANT]  
    > __[Database]\(データベース\)__ では、 __[default]\(既定\)__ が選択されたままにしておきます。 このドキュメントの例では、HDInsight に含まれている既定のデータベースを使用します。
 
-5. クエリを開始するには、ワークシートの下にある **[実行]** を選択します。 ボタンがオレンジ色になり、テキストが **[Stop]\(停止\)** に変わります。
+1. クエリを開始するには、ワークシートの下にある **[実行]** を選択します。 ボタンがオレンジ色になり、テキストが **[Stop]\(停止\)** に変わります。
 
-6. クエリが完了すると、 **[Results]\(結果\)** タブに操作の結果が表示されます。 次のテキストは、クエリの結果を示します。
+1. クエリが完了すると、 **[Results]\(結果\)** タブに操作の結果が表示されます。 次のテキストは、クエリの結果を示します。
 
         loglevel       count
         [ERROR]        3
@@ -133,7 +133,7 @@ Hive ビューの上部にある **[UDF]** タブを使用して、UDF のセッ
 
 Hive ビューに UDF を追加すると、 **[Insert udfs]\(UDF の挿入\)** ボタンが**クエリ エディター**の下部に表示されます。 このエントリを選択すると、Hive ビューで定義した UDF のドロップダウン リストが表示されます。 UDF を選択すると、HiveQL ステートメントがクエリに追加され、UDF が有効になります。
 
-たとえば、次のプロパティを持つ UDF を定義したとします。
+たとえば、以下のプロパティで UDF を定義したとします。
 
 * リソース名: myudfs
 
@@ -143,7 +143,7 @@ Hive ビューに UDF を追加すると、 **[Insert udfs]\(UDF の挿入\)** �
 
 * UDF のクラス名: com.myudfs.Awesome
 
-**[Insert udfs]\(UDF の挿入\)** ボタンを使用すると、**myudfs** という名前のエントリと、そのリソースに定義されている UDF ごとにドロップダウン リストが表示されます。 この例では **myawesomeudf** です。 このエントリを選択すると、クエリの先頭に次の内容が追加されます。
+**[Insert udfs]\(UDF の挿入\)** ボタンを使用すると、**myudfs** という名前のエントリと、そのリソースに定義されている UDF ごとにドロップダウン リストが表示されます。 この場合は、**myawesomeudf** が表示されます。 このエントリを選択すると、クエリの先頭に次の内容が追加されます。
 
 ```hiveql
 add jar /myudfs.jar;

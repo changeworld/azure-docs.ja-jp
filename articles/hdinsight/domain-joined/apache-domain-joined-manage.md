@@ -1,5 +1,5 @@
 ---
-title: Enterprise セキュリティ パッケージで HDInsight クラスターを管理する - Azure
+title: Enterprise セキュリティ パッケージ クラスターを管理する - Azure HDInsight
 description: Enterprise セキュリティ パッケージを使用して Azure HDInsight クラスターを管理する方法について説明します。
 ms.service: hdinsight
 author: omidm1
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: b98c62908885bc13cd5f473967cc70709af693d2
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 35accc587fe197da751a8695e3ec0b21ea9fbbd4
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034115"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044914"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
 HDInsight Enterprise セキュリティ パッケージ (ESP) でのユーザーとロール、および ESP クラスターを管理する方法について説明します。
@@ -58,7 +58,7 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
 
 3. 入力した情報が正しい場合、 **[HDInsight]** ノードに [リンク済み] クラスターが表示されます。 これでリンクされたクラスターにアプリケーションを送信できるようになりました。
 
-   ![Azure 用エクスプローラーのリンクされたクラスター intellij](./media/apache-domain-joined-manage/linked-cluster-intellij.png "リンクされたクラスター intellij]")
+   ![Azure 用エクスプローラーのリンクされたクラスター intellij](./media/apache-domain-joined-manage/linked-cluster-intellij.png "リンクされたクラスター intellij")
 
 4. また、**Azure 用エクスプローラー**からクラスターのリンクを解除することもできます。
 

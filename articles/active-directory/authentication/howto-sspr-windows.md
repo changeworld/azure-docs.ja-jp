@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 10/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ab46bd29aef2fab26c744e1e4c199f6c9a9fff1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 519993be873e7864dab4de4f66919c56aebfc379
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68304209"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171865"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>方法:Windows のログイン画面からパスワードをリセットできるようにする
 
@@ -24,30 +24,10 @@ Windows 7、8、8.1、および 10 を実行中のコンピューターでは、
 
 ![SSPR リンクが示されている Windows 7 と 10 のログイン画面の例](./media/howto-sspr-windows/windows-reset-password.png)
 
-## <a name="general-prerequisites"></a>一般的な前提条件
-
-- 管理者は、Azure portal から Azure AD のパスワード リセットのセルフサービスを有効にする必要があります。
-- **ユーザーは、この機能を使用する前に SSPR に登録する必要があります**。
-- ネットワーク プロキシの要件
-   - Windows 10 デバイス 
-       - `passwordreset.microsoftonline.com` と `ajax.aspnetcdn.com` へのポート 443
-       - Windows 10 デバイスでは、コンピューターレベルのプロキシ構成のみがサポートされます
-   - Windows 7、8、および 8.1 デバイス
-       - `passwordreset.microsoftonline.com` へのポート 443
-
 ## <a name="general-limitations"></a>一般的な制限事項
 
 - リモート デスクトップまたは Hyper-V 拡張セッションからのパスワードのリセットは、現在サポートされていません。
-- アカウントのロック解除、モバイル アプリの通知、およびモバイル アプリのコードはサポートされていません。
 - この機能は、802.1x ネットワーク認証がデプロイされ、[ユーザー ログオンの直前に実行する] オプションが有効になっているネットワークでは動作しません。 802.1x ネットワーク認証がデプロイされているネットワークでこの機能を有効にするには、マシン認証を使用することをお勧めします。
-
-## <a name="windows-10-password-reset"></a>Windows 10 でのパスワードのリセット
-
-### <a name="windows-10-specific-prerequisites"></a>Windows 10 固有の前提条件
-
-- Windows 10 バージョン April 2018 Update (v1803) 以降を実行している必要があります。また、次のいずれかのデバイスを使用する必要があります。
-    - Azure AD 参加済み
-    - ハイブリッド Azure AD 参加済み
 - ハイブリッド Azure AD 参加済みコンピューターでは、新しいパスワードの使用とキャッシュされた資格情報の更新を行うために、ドメイン コントローラーへの ネットワーク接続経路が必要です。
 - イメージを使用する場合は、sysprep を実行する前に、CopyProfile 手順の実行に先立ってビルトイン Administrator に対する Web キャッシュがクリアされることを確認してください。 この手順の詳細については、[カスタムの既定のユーザー プロファイルを使用した場合のパフォーマンスの低下](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile)に関するサポート記事を参照してください。
 - Windows 10 デバイスでは、以下の設定によって、パスワードの使用とリセットを行う機能が干渉されることがわかっています。
@@ -61,7 +41,21 @@ Windows 7、8、8.1、および 10 を実行中のコンピューターでは、
 - 次の具体的な 3 つの設定を組み合わせると、この機能が動作しなくなる可能性があります。
     - 対話型ログオン:CTRL + ALT + DEL を必要としない = Disabled
     - DisableLockScreenAppNotifications = 1 または Enabled
-    - IsContentDeliveryPolicyEnforced = 1 または True 
+    - IsContentDeliveryPolicyEnforced = 1 または True
+
+## <a name="windows-10-password-reset"></a>Windows 10 でのパスワードのリセット
+
+### <a name="windows-10-prerequisites"></a>Windows 10 の前提条件
+
+- 管理者は、Azure portal から Azure AD のパスワード リセットのセルフサービスを有効にする必要があります。
+- **ユーザーは、この機能を使用する前に SSPR に登録する必要があります**。
+- ネットワーク プロキシの要件
+   - Windows 10 デバイス 
+       - `passwordreset.microsoftonline.com` と `ajax.aspnetcdn.com` へのポート 443
+       - Windows 10 デバイスでは、コンピューターレベルのプロキシ構成のみがサポートされます
+- Windows 10 バージョン April 2018 Update (v1803) 以降を実行している必要があります。また、次のいずれかのデバイスを使用する必要があります。
+    - Azure AD 参加済み
+    - ハイブリッド Azure AD 参加済み
 
 ### <a name="enable-for-windows-10-using-intune"></a>Intune を使用して Windows 10 で有効にする
 
@@ -95,7 +89,6 @@ Windows 7、8、8.1、および 10 を実行中のコンピューターでは、
    - `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
       - `"AllowPasswordReset"=dword:00000001`
 
-
 #### <a name="troubleshooting-windows-10-password-reset"></a>Windows 10 でのパスワードのリセットのトラブルシューティング
 
 Azure AD 監査ログには、パスワードのリセットが発生した IP アドレスと ClientType に関する情報が含まれます。
@@ -106,8 +99,13 @@ Azure AD 監査ログには、パスワードのリセットが発生した IP �
 
 ## <a name="windows-7-8-and-81-password-reset"></a>Windows 7、8、および 8.1 でのパスワードのリセット
 
-### <a name="windows-7-8-and-81-specific-prerequisites"></a>Windows 7、8、および 8.1 固有の前提条件
+### <a name="windows-7-8-and-81-prerequisites"></a>Windows 7、8、および 8.1 の前提条件
 
+- 管理者は、Azure portal から Azure AD のパスワード リセットのセルフサービスを有効にする必要があります。
+- **ユーザーは、この機能を使用する前に SSPR に登録する必要があります**。
+- ネットワーク プロキシの要件
+   - Windows 7、8、および 8.1 デバイス
+       - `passwordreset.microsoftonline.com` へのポート 443
 - パッチが適用された Windows 7 または Windows 8.1 オペレーティング システム。
 - [トランスポート層セキュリティ (TLS) レジストリ設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-12)にあるガイダンスを使用して有効にした TLS 1.2。
 - お使いのコンピューターで複数のサード パーティの資格情報プロバイダーが有効になっている場合は、ログオン画面に複数のユーザー プロファイルが表示されます。
@@ -152,7 +150,7 @@ Windows デバイスでのパスワードのリセットの構成が完了しま
 
 ユーザーがサインインを試みると、ログイン画面に **[パスワードのリセット]** または **[パスワードを忘れた場合]** リンクが表示されます。これらのリンクを選択することで、ログイン画面でパスワード リセットのセルフ サービス機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
 
-[職場または学校アカウントのパスワードをリセットする方法](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)に関するページで、この機能の使い方がユーザー向けに説明されています。
+[職場または学校アカウントのパスワードをリセットする方法](../user-help/active-directory-passwords-update-your-own-password.md)に関するページで、この機能の使い方がユーザー向けに説明されています。
 
 ## <a name="next-steps"></a>次の手順
 

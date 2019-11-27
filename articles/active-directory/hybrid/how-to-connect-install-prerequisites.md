@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2db8d5881b5847adca4fffb72c0a678e1ec550c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 3a1906b8ac281620381176a2a11dff3841069f69
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596320"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062671"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -221,7 +221,7 @@ Azure AD Connect によって Azure AD Connect のインストール先にイン
 | 300,000 ～ 600,000 |1.6 GHz |32 GB |450 GB |
 | 600,000 を超過 |1.6 GHz |32 GB |500 GB |
 
-AD FS または Web アプリケーション サーバーを実行するコンピューターの最小要件を次に示します。
+AD FS または Web アプリケーション プロキシ サーバーを実行するコンピューターの最小要件を次に示します。
 
 * CPU:デュアル コア 1.6 GHz 以上
 * メモリ:2 GB 以上

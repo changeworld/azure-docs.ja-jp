@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828611"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72896949"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 
@@ -130,15 +130,12 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 | ディスク サイズ |各 1 TB |
 | キャッシュ |読み取り |
 | アロケーション サイズ |64 KB NTFS アロケーション ユニット サイズ |
-| ファイルの瞬時初期化 |有効 |
-| メモリ内のページのロック |有効 |
-| 復旧 |シンプルな復元 (回復性なし) |
-| 列数の合計 |データ ディスクの数<sup>1</sup> |
-| TempDB の場所 |データ ディスクに格納<sup>2</sup> |
+| 復旧 | シンプルな復元 (回復性なし) |
+| 列数の合計 |データ ディスクの数 (最大 8)<sup>1</sup> |
+
 
 <sup>1</sup> 記憶域プールの作成後、その記憶域プールの列数を変更することはできません。
 
-<sup>2</sup> この設定は、ストレージ構成機能を使用して作成した最初のドライブにのみ適用されます。
 
 ## <a name="workload-optimization-settings"></a>ワークロード最適化の設定
 

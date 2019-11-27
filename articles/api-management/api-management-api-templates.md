@@ -11,19 +11,19 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 9d75dff413e7b6e61d38b95e08bf9c891b583014
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073820"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176875"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API Management の API テンプレート
 
 Azure API Management には、開発者ポータルの各ページの内容を、内容を構成するテンプレート セットを使用してカスタマイズする機能があります。 [DotLiquid](http://dotliquidmarkup.org/) 構文、好みのエディター ([DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)など)、および用意されているローカライズされた[文字列リソース](api-management-template-resources.md#strings)、[グリフ リソース](api-management-template-resources.md#glyphs)、および[ページ コントロール](api-management-page-controls.md)のセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。  
-  
+
 このセクションのテンプレートを使用して、開発者ポータルの API ページの内容をカスタマイズできます。  
   
 -   [API リスト](#APIList)  
@@ -41,12 +41,14 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ## <a name="APIList"></a> API リスト  
  **API リスト** テンプレートを使用すると、開発者ポータルで API リスト ページの本文をカスタマイズすることができます。  
   
- ![Developer Portal API List](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM Developer Portal Templates API List")  
+ ![開発者ポータルの API リスト](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM 開発者ポータル テンプレートの API リスト")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -87,7 +89,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`apis`|[API の概要](api-management-template-data-model-reference.md#APISummary)エンティティのコレクション。|現在のユーザーに表示される API。|  
   
@@ -114,7 +116,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 ## <a name="Product"></a> 操作  
  **操作**テンプレートを使用すると、開発者ポータルで操作ページの本文をカスタマイズすることができます。  
   
- ![Developer Portal Operation page](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM Developer Portal templates Operation page")  
+ ![開発者ポータルの操作ページ](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 開発者ポータル テンプレートの操作ページ")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -342,7 +344,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |`apiId`|string|現在の API の ID。|  
 |`apiName`|string|API の名前。|  
@@ -644,7 +646,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 ## <a name="CodeSamples"></a> コード サンプル  
  次のテンプレートを使用して、操作ページの個々のコード サンプルの本文をカスタマイズできます。  
   
- ![Developer Portal Templates Code samples](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM Developer Portal Templates Code samples")  
+ ![開発者ポータル テンプレートのコード サンプル](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM 開発者ポータル テンプレートのコード サンプル")  
   
 -   [Curl](#Curl)  
   

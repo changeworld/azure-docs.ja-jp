@@ -1,6 +1,6 @@
 ---
-title: Azure AD エンタイトルメント管理 (プレビュー) でアクセス パッケージの割り当てを表示、追加、および削除する - Azure Active Directory
-description: Azure Active Directory エンタイトルメント管理 (プレビュー) でアクセス パッケージの割り当てを追加および削除する方法を説明します。
+title: Azure AD エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、削除する - Azure Active Directory
+description: Azure Active Directory エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、削除する方法を説明します。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 694c8866a69d8488511be1670ba3d3013a4a3423
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 3f06da43e758c24da65664b34dd83f876a00e3a0
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392026"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174898"
 ---
-# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でアクセス パッケージの割り当てを表示、追加、および削除する
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) エンタイトルメント管理は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、および削除する
 
 Azure AD エンタイトルメント管理では、アクセス パッケージを割り当てたユーザー、そのポリシー、および状態を確認できます。 アクセス パッケージに適切なポリシーが設定されている場合は、ユーザーをアクセス パッケージに直接割り当てることもできます。 この記事では、アクセス パッケージの割り当てを表示、追加、および削除する方法について説明します。
 
@@ -72,9 +67,7 @@ Azure AD エンタイトルメント管理では、アクセス パッケージ�
 
 1. **[ユーザーの追加]** をクリックして、アクセス パッケージを割り当てるユーザーを選択します。
 
-1. **[ポリシーの選択]** の一覧で、[[None (administrator direct assignments only)]\(なし (管理者による直接割り当てのみ))](entitlement-management-access-package-request-policy.md#none-administrator-direct-assignments-only) の設定があるポリシーを選択します。
-
-    このアクセス パッケージにこの種類のポリシーがない場合は、 **[新しいポリシーの作成]** をクリックして作成することができます。
+1. ユーザーの今後の要求とライフサイクルを統制、追跡するためのポリシーを **[ポリシーの選択]** リストで選択します。 選択したユーザーに異なるポリシー設定を割り当てたい場合は、 **[新しいポリシーの作成]** をクリックして新しいポリシーを追加します。
 
 1. 選択したユーザーの割り当てを開始および終了する日付と時刻を設定します。 終了日が指定されていない場合は、ポリシーのライフサイクルの設定が使用されます。
 

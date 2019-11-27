@@ -1,5 +1,5 @@
 ---
-title: Apache Hadoop のデバッグ:ログの表示とエラー メッセージの解釈 - Azure HDInsight
+title: Apache Hadoop のデバッグ:Azure HDInsight のログとエラー メッセージ
 description: PowerShell を使用して HDInsight を管理しているときに表示されることがあるエラー メッセージと、回復するために使用できる手順について説明します。
 ms.reviewer: jasonh
 author: ashishthaps
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2e5cb1676670642121caec71a973374063fe4320
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059212"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044852"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Azure HDInsight の Apache Hadoop ログを分析する
 
@@ -98,16 +98,15 @@ Power Query は、[Microsoft Power Query for Excel](https://www.microsoft.com/en
     フィルターの作成の詳細については、「 [テーブル デザイナー用のフィルター文字列の作成](../../vs-azure-tools-table-designer-construct-filter-strings.md)」を参照してください。
 
 ## <a name="logs-written-to-azure-blob-storage"></a>Azure Blob Storage に書き込まれたログ
+
 Azure テーブルに書き込まれたログは、HDInsight クラスターで何が起こっているかを知るある程度の手がかりとなります。 ただし、これらのテーブルには、問題の発生時にその問題をさらに掘り下げるのに役立つ、タスク レベルのログがありません。 HDInsight クラスターは、この次のレベルの詳細を提供するために、Templeton を使用して送信されるジョブのタスク ログを Blob Storage アカウントに書き込むように構成されています。 実質的に、これは、Microsoft Azure PowerShell コマンドレットまたは .NET Job Submission API を使用して送信されるジョブを意味します。RDP/コマンドライン アクセスを介してクラスターに送信されるジョブではありません。 
 
 ログを表示するには、「[Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする](../hdinsight-hadoop-access-yarn-app-logs-linux.md)」を参照してください。
 
-
-アプリケーション ログの詳細については、[Apache Hadoop YARN におけるユーザー ログの管理とアクセスの簡略化](https://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/)に関するページを参照してください。
-
-
 ## <a name="view-cluster-health-and-job-logs"></a>クラスターの状態とジョブ ログの表示
+
 ### <a name="access-the-ambari-ui"></a>Ambari UI にアクセスする
+
 Azure Portal から、HDInsight クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、 **[ダッシュボード]** をクリックします。
 
 ![HDInsight クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
@@ -120,7 +119,7 @@ YARN UI では、次の操作を実行できます。
 
 * **クラスターの状態を取得します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[About]** をクリックします。 割り当て済みメモリの合計、使用済みコア、クラスター リソース マネージャーの状態、クラスター バージョンなど、クラスターの状態に関する詳細が表示されます。
   
-    ![YARN での HDInsight クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "YARN での HDInsight クラスター ダッシュボードの起動")
+    ![yarn での HDInsight クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "yarn での HDInsight クラスター ダッシュボードの起動")
 * **ノードの状態を取得します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[Nodes]** をクリックします。 ここにはクラスターの全ノード、各ノードの HTTP アドレス、各ノードに割り当てられているリソースなどが一覧表示されます。
 * **ジョブの状態を監視します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。 特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、 **[Applications]** の下にある該当リンクをクリックします。 さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
 

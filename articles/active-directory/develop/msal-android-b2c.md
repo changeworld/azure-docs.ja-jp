@@ -1,5 +1,6 @@
 ---
-title: Azure AD B2C (Android 用 Microsoft Authentication Library) | Azure
+title: Azure AD B2C (Android 用 Microsoft Authentication Library)
+titleSuffix: Microsoft identity platform
 description: Android 用 Microsoft Authentication Library (MSAL.Android) で Azure AD B2C を使用する場合の固有の考慮事項について説明します
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c55356b19c8150c76858efb4edc593406c1722a4
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8b5061f1ab341e5872dfa82c9f5c5b133ae40bdf
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678827"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803239"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Android 用 MSAL と B2C を一緒に使用する
 
@@ -58,7 +59,7 @@ Android 用 MSAL では、B2C ポリシー (ユーザー体験) は個々の機�
 }
 ```
 
-`redirect_uri` は、アプリ構成で登録する必要があります。さらに、[承認コード付与フロー](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)中にリダイレクトをサポートするために、`AndroidManifest.xml` に登録する必要があります。
+`redirect_uri` は、アプリ構成で登録する必要があります。さらに、[承認コード付与フロー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-oauth-code)中にリダイレクトをサポートするために、`AndroidManifest.xml` に登録する必要があります。
 
 ## <a name="initialize-ipublicclientapplication"></a>IPublicClientApplication を初期化する
 
@@ -157,7 +158,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>パスワード変更ポリシーを処理する
 
-ローカル アカウントのサインアップまたはサインイン ユーザー フローでは、"**パスワードを忘れた場合**" リンクが表示されます。 このリンクをクリックしても、パスワード リセット ユーザー フローは自動的にはトリガーされません。
+ローカル アカウントのサインアップまたはサインイン ユーザー フローでは、"**パスワードを忘れた場合**" のリンクをクリックするように促します。 このリンクをクリックしても、パスワード リセット ユーザー フローは自動的にはトリガーされません。
 
 代わりに、エラー コード `AADB2C90118` がご利用のアプリに返されます。 アプリケーションでは、パスワードをリセットする特定のユーザー フローを実行して、このエラー コードを処理する必要があります。
 
@@ -219,7 +220,7 @@ String id = account.getId();
 // Get the IdToken Claims
 //
 // For more information about B2C token claims, see reference documentation
-// https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-reference-tokens
+// https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens
 Map<String, ?> claims = account.getClaims();
 
 // Get the 'preferred_username' claim through a convenience function

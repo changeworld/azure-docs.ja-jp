@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 10/07/2019
+ms.date: 10/29/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 9c53aac47e965a6eba681008d6b6476142190ef8
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 1f6c65d6d8da275d6c52ac2802092dbb5e4e507d
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72023085"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73182238"
 ---
 ### <a name="what-is-expressroute-direct"></a>ExpressRoute Direct とは何ですか?
 
@@ -25,31 +25,7 @@ ExpressRoute Direct では、世界中に戦略的に分散されたピアリン
 
 ### <a name="what-locations-currently-support-expressroute-direct"></a>現在どの場所で ExpressRoute Direct がサポートされていますか? 
 
-使用可能なポートは動的であり、PowerShell を使用して容量を表示できます。 次の場所が含まれ、*可用性に基づいて変更される可能性があります*。
-
-* アムステルダム
-* アムステルダム 2
-* オークランド 
-* シカゴ
-* ダラス
-* ダブリン
-* 香港特別行政区
-* ロンドン
-* ロンドン 2
-* メルボルン
-* New York City
-* パース
-* サンアントニオ
-* シアトル
-* ソウル
-* シリコン バレー
-* シンガポール 2 
-* シドニー
-* 台北
-* 東京
-* トロント
-* ワシントン DC
-* ワシントン DC 2
+[場所のページ](../articles/expressroute/expressroute-locations-providers.md)で提供状況を確認してください。 
 
 ### <a name="what-is-the-sla-for-expressroute-direct"></a>ExpressRoute Direct の SLA は何ですか?
 

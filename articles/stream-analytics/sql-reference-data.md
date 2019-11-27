@@ -1,5 +1,5 @@
 ---
-title: SQL Database からの参照データを Azure Stream Analytics ジョブに使用する
+title: SQL Database 参照データを Azure Stream Analytics ジョブで使用する
 description: この記事では、Azure portal および Visual Studio で Azure Stream Analytics ジョブに対する参照データ入力として SQL Database を使用する方法について説明します。
 services: stream-analytics
 author: mamccrea
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: ae1954b99e268e8bc44c4ba29bbc79d7734fda6e
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 733ac7d1ff1d50e5fdcfa0dec2ad3fd3f30f6d86
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461731"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72926689"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>SQL Database からの参照データを Azure Stream Analytics ジョブに使用する
 

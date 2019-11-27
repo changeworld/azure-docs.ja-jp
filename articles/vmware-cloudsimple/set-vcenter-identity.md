@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d314cc55096f681d1bcf66d33c4c30a4060751e9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9d2986acc47087c267193eee43136e030abcc422
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972649"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990311"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Active Directory を使用するための vCenter ID ソースの設定
 
@@ -31,6 +31,10 @@ Active Directory ドメインとドメイン コントローラーは、次の�
 このガイドでは、オンプレミスで実行される、またはご利用のサブスクリプションで仮想マシンとして実行される Active Directory ドメインとドメイン コントローラーを設定するタスクについて説明します。  Azure AD を ID ソースとして使用する場合、ID ソースの設定の詳細な手順については、[CloudSimple プライベート クラウドで vCenter の ID プロバイダーとして Azure AD を使用する](azure-ad.md)方法に関する記事を参照してください。
 
 [ID ソースを追加](#add-an-identity-source-on-vcenter)する前に、一時的に [vCenter 特権をエスカレート](escalate-private-cloud-privileges.md)します。
+
+> [!CAUTION]
+> 新しいユーザーは、*Cloud-Owner-Group*、*Cloud-Global-Cluster-Admin-Group*、*Cloud-Global-Storage-Admin-Group*、*Cloud-Global-Network-Admin-Group*、または *Cloud-Global-VM-Admin-Group* にのみ追加する必要があります。  *Administrators* グループに追加されたユーザーは自動的に削除されます。  *Administrators* グループには、サービス アカウントのみを追加する必要があります。  
+
 
 ## <a name="identity-source-options"></a>ID ソースのオプション
 

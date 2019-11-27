@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.custom: ''
-ms.openlocfilehash: d1b6444b8512b1b55ac46370e805f8f662f5f555
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 121ea4b7e29510ef86b61350ed97ffca5d133d56
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070680"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199493"
 ---
 # <a name="deployment-best-practices"></a>デプロイのベスト プラクティス
 
@@ -69,7 +69,7 @@ JAR アプリケーションのデプロイには Kudu [zipdeploy/](deploy-zip.m
 
 Azure App Service のコンテンツは Azure Storage に保存され、コンテンツ共有として永続的な方法で表示されます。 ただし、アプリによっては、高可用で実行可能な高パフォーマンスの読み取り専用コンテンツ ストアのみが必要になる場合があります。 こうしたアプリは、[ローカル キャッシュ](overview-local-cache.md)を使うことでメリットが得られます。 WordPress などのコンテンツ管理サイトには、ローカル キャッシュはお勧めしません。
 
-ダウンタイムを防ぐために、必ず [デプロイ スロット] (deploy-staging-slots md) と共にローカル キャッシュを使用してください。 これらの機能を一緒に使用する方法については、[こちらのセクション](overview-local-cache.md#best-practices-for-using-app-service-local-cache)を参照してください。
+ダウンタイムを防ぐために、必ず[デプロイ スロット](deploy-staging-slots.md)と共にローカル キャッシュを使用してください。 これらの機能を一緒に使用する方法については、[こちらのセクション](overview-local-cache.md#best-practices-for-using-app-service-local-cache)を参照してください。
 
 ### <a name="high-cpu-or-memory"></a>CPU またはメモリの高い使用率
 

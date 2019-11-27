@@ -10,12 +10,12 @@ manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 9271a659e18ab969e801fd8974b05984e11e783c
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309395"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990608"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps でデータの操作を実行する
 
@@ -86,13 +86,13 @@ ms.locfileid: "71309395"
 
    この例では、Azure portal と、**繰り返し**トリガーおよび複数の**変数を初期化する**アクションを含むロジック アプリを使用します。 これらのアクションは、2 つの文字列変数と 1 つの整数変数を作成するように設定されています。 後でロジック アプリをテストするときは、トリガーの発生を待つことなく、手動でアプリを実行できます。
 
-   ![サンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
+   !["作成" アクション用のサンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-compose-action.png)
 
 1. 出力を作成するロジック アプリでは、次のいずれかの手順に従います。 
 
    * 最後のステップにアクションを追加するには、 **[新しいステップ]** を選択します。
 
-     ![アクションを追加する](./media/logic-apps-perform-data-operations/add-compose-action.png)
+     !["作成" アクションの "新しいステップ" を選択する](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
    * ステップとステップの間にアクションを追加するには、接続矢印の上にマウスを移動してプラス記号 **[+]** を表示させます。 プラス記号を選択し、 **[アクションの追加]** を選択します。
 
@@ -104,11 +104,11 @@ ms.locfileid: "71309395"
 
    この例では、 **[入力]** ボックスの内部をクリックすると、動的コンテンツの一覧が表示されるので、前に作成した変数を選択できます。
 
-   ![作成する入力を選択する](./media/logic-apps-perform-data-operations/configure-compose-action.png)
+   !["作成" アクションに使用する入力を選択する](./media/logic-apps-perform-data-operations/configure-compose-action.png)
 
    完成した**作成**アクションの例を次に示します。 
 
-   ![完成した "作成" アクション](./media/logic-apps-perform-data-operations/finished-compose-action.png)
+   !["作成" アクションの完成例](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
 1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
 
@@ -124,7 +124,7 @@ ms.locfileid: "71309395"
 
    この例では、**メールの送信**アクションを使用し、メールの本文と件名に **[出力]** フィールドが含まれます。
 
-   !["メールの送信" アクションの "出力" フィールド](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
+   !["作成" アクションの "出力" フィールド](./media/logic-apps-perform-data-operations/send-email-compose-action.png)
 
 1. ロジック アプリを手動で実行します。 デザイナーのツール バーで、 **[実行]** を選択します。
 
@@ -144,13 +144,13 @@ JavaScript Object Notation (JSON) オブジェクトからのプロパティと�
 
    この例では、Azure portal と、**繰り返し**トリガーおよび**変数を初期化する**アクションを含むロジック アプリを使用します。 このアクションは、JSON 形式のプロパティと値を含む配列が初期値である変数を作成するように設定されています。 後でロジック アプリをテストするときは、トリガーの発生を待つことなく、手動でアプリを実行できます。
 
-   ![サンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   !["CSV テーブルの作成" アクション用のサンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
 1. CSV テーブルを作成するロジック アプリでは、次のいずれかの手順に従います。 
 
    * 最後のステップにアクションを追加するには、 **[新しいステップ]** を選択します。
 
-     ![アクションを追加する](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     !["CSV テーブルの作成" アクションの "新しいステップ" を選択する](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * ステップとステップの間にアクションを追加するには、接続矢印の上にマウスを移動してプラス記号 **[+]** を表示させます。 プラス記号を選択し、 **[アクションの追加]** を選択します。
 
@@ -169,7 +169,7 @@ JavaScript Object Notation (JSON) オブジェクトからのプロパティと�
 
    完成した **CSV テーブルの作成**アクションの例を次に示します。 
 
-   ![完成した "CSV テーブルの作成" アクション](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
+   !["CSV テーブルの作成" アクションの完成例](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
 
 1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
 
@@ -209,17 +209,17 @@ Oranges,2
    * `item()?['Description']`
    * `item()?['Product_ID']`
 
-   ![プロパティを逆参照するための式](./media/logic-apps-perform-data-operations/csv-table-expression.png)
+   !["CSV テーブルの作成" の "説明" を逆参照する](./media/logic-apps-perform-data-operations/csv-table-expression.png)
 
 1. 必要な配列プロパティごとに、前の手順を繰り返します。 完了すると、アクションは次の例のようになります。
 
-   ![完成した式](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
+   !["CSV テーブルの作成" の "item()" 関数](./media/logic-apps-perform-data-operations/finished-csv-expression.png)
 
 1. 式をより記述的なバージョンに解決するには、コード ビューに切り替え、再びデザイナー ビューに戻って、折りたたまれているアクションを再度開きます。
 
    これにより、**CSV テーブルの作成**アクションは次の例のようになります。
 
-   ![解決された式を持つ「CSV テーブルの作成」アクション (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+   !["CSV テーブルの作成" - 解決された式 (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 #### <a name="work-in-code-view"></a>コード ビューでの操作
 
@@ -261,7 +261,7 @@ Oranges,2
 
    **CSV テーブルの作成**アクションは次の例のようになり、式は、より記述的なバージョンに解決されました。
 
-   ![解決された式を持つ「CSV テーブルの作成」アクション (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
+   !["CSV テーブルの作成" - 解決された式 (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-csv-expression.png)
 
 基になるワークフロー定義でのこのアクションについて詳しくは、「[テーブル アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)」をご覧ください。
 
@@ -275,7 +275,7 @@ Oranges,2
 
    この例では、Office 365 Outlook の**メールの送信**アクションを使用し、メールの本文に **[出力]** フィールドが含まれます。
 
-   !["メールの送信" アクションの "出力" フィールド](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
+   !["CSV テーブルの作成" アクションの "出力" フィールド](./media/logic-apps-perform-data-operations/send-email-create-csv-table-action.png)
 
 1. ロジック アプリを手動で実行します。 デザイナーのツール バーで、 **[実行]** を選択します。
 
@@ -295,13 +295,13 @@ JavaScript Object Notation (JSON) オブジェクトからのプロパティと�
 
    この例では、Azure portal と、**繰り返し**トリガーおよび**変数を初期化する**アクションを含むロジック アプリを使用します。 このアクションは、JSON 形式のプロパティと値を含む配列が初期値である変数を作成するように設定されています。 後でロジック アプリをテストするときは、トリガーの発生を待つことなく、手動でアプリを実行できます。
 
-   ![サンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
+   !["HTML テーブルの作成" 用のサンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-create-table-action.png)
 
 1. HTML テーブルを作成するロジック アプリでは、次のいずれかの手順に従います。
 
    * 最後のステップにアクションを追加するには、 **[新しいステップ]** を選択します。
 
-     ![アクションを追加する](./media/logic-apps-perform-data-operations/add-create-table-action.png)
+     !["HTML テーブルの作成" アクションの "新しいステップ" を選択する](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
    * ステップとステップの間にアクションを追加するには、接続矢印の上にマウスを移動してプラス記号 **[+]** を表示させます。 プラス記号を選択し、 **[アクションの追加]** を選択します。
 
@@ -320,7 +320,7 @@ JavaScript Object Notation (JSON) オブジェクトからのプロパティと�
 
    完成した **HTML テーブルの作成**アクションの例を次に示します。
 
-   ![完成した "HTML テーブルの作成" アクション](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
+   !["HTML テーブルの作成" の完成例](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
 
 1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
 
@@ -360,17 +360,17 @@ Oranges,2
    * `item()?['Description']`
    * `item()?['Product_ID']`
 
-   ![プロパティを逆参照するための式](./media/logic-apps-perform-data-operations/html-table-expression.png)
+   !["HTML テーブルの作成" アクションの逆参照プロパティ](./media/logic-apps-perform-data-operations/html-table-expression.png)
 
 1. 必要な配列プロパティごとに、前の手順を繰り返します。 完了すると、アクションは次の例のようになります。
 
-   ![完成した式](./media/logic-apps-perform-data-operations/finished-html-expression.png)
+   !["HTML テーブルの作成" の "item()" 関数](./media/logic-apps-perform-data-operations/finished-html-expression.png)
 
 1. 式をより記述的なバージョンに解決するには、コード ビューに切り替え、再びデザイナー ビューに戻って、折りたたまれているアクションを再度開きます。
 
    これにより、**HTML テーブルの作成**アクションは次の例のようになります。
 
-   ![解決された式を持つ「HTML テーブルの作成」アクション (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+   !["HTML テーブルの作成" - 解決された式 (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 #### <a name="work-in-code-view"></a>コード ビューでの操作
 
@@ -412,7 +412,7 @@ Oranges,2
 
    **HTML テーブルの作成**アクションは次の例のようになり、式は、より記述的なバージョンに解決されました。
 
-   ![解決された式を持つ「HTML テーブルの作成」アクション (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
+   !["HTML テーブルの作成" - 解決された式 (ヘッダーなし)](./media/logic-apps-perform-data-operations/resolved-html-expression.png)
 
 基になるワークフロー定義でのこのアクションについて詳しくは、「[テーブル アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#table-action)」をご覧ください。
 
@@ -426,8 +426,8 @@ Oranges,2
 
    この例では、Office 365 Outlook の**メールの送信**アクションを使用し、メールの本文に **[出力]** フィールドが含まれます。
 
-   !["メールの送信" アクションの "出力" フィールド](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
-   
+   !["HTML テーブルの作成" の "出力" フィールド](./media/logic-apps-perform-data-operations/send-email-create-html-table-action.png)
+
    > [!NOTE]
    > HTML テーブルの出力をメール アクションに含めるときは、メール アクションの詳細オプションで **[HTML です]** プロパティを **[はい]** に設定してください。 これにより、メール アクションは HTML テーブルを正しく書式設定します。
 
@@ -435,7 +435,7 @@ Oranges,2
 
    使用したメール コネクタをに基づいて、次のような結果が表示されます。
 
-   !["HTML テーブルの作成" アクションの結果を含むメール](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
+   !["HTML テーブルの作成" の結果を含むメール](./media/logic-apps-perform-data-operations/create-html-table-email-results.png)
 
 <a name="filter-array-action"></a>
 
@@ -457,13 +457,13 @@ Oranges,2
    > [!NOTE]
    > この例では単純な整数の配列を使用しますが、このアクションはオブジェクトのプロパティと値に基づいてフィルター処理できる JSON オブジェクトの配列の場合に特に便利です。
 
-   ![サンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
+   !["配列のフィルター処理" アクション用のサンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-filter-array-action.png)
 
 1. フィルター処理された配列を作成するロジック アプリでは、次のいずれかの手順に従います。 
 
    * 最後のステップにアクションを追加するには、 **[新しいステップ]** を選択します。
 
-     ![アクションを追加する](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
+     !["配列のフィルター処理" アクションの "新しいステップ" を選択する](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
    * ステップとステップの間にアクションを追加するには、接続矢印の上にマウスを移動してプラス記号 **[+]** を表示させます。 プラス記号を選択し、 **[アクションの追加]** を選択します。
 
@@ -480,8 +480,8 @@ Oranges,2
 1. 条件では、比較する配列項目を指定し、比較演算子を選択し、比較対象値を指定します。
 
    この例では、`item()` 関数を使用して配列の各項目にアクセスし、**配列のフィルター処理**アクションで値が 1 より大きい配列項目を検索します。
-   
-   ![完成した "配列のフィルター処理" アクション](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
+
+   !["配列のフィルター処理" アクションの完成例](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
 1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
 
@@ -499,7 +499,7 @@ Oranges,2
 
    この例では、Office 365 Outlook の**メールの送信**アクションを使用し、メールの本文には **actionBody('Filter_array')** 式の出力が含まれます。
 
-   !["メールの送信" アクションでのアクションの出力](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
+   !["配列のフィルター処理" アクションからのアクションの出力](./media/logic-apps-perform-data-operations/send-email-filter-array-action.png)
 
 1. ロジック アプリを手動で実行します。 デザイナーのツール バーで、 **[実行]** を選択します。
 
@@ -519,19 +519,19 @@ Oranges,2
 
    この例では、Azure portal と、**繰り返し**トリガーおよび**変数を初期化する**アクションを含むロジック アプリを使用します。 このアクションは、サンプルの整数を含む配列が初期値である変数を作成するように設定されています。 後でロジック アプリをテストするときは、トリガーの発生を待つことなく、手動でアプリを実行できます。
 
-   ![サンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
+   !["結合" アクション用のサンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-join-action.png)
 
 1. 配列から文字列を作成するロジック アプリでは、次のいずれかの手順に従います。
 
    * 最後のステップにアクションを追加するには、 **[新しいステップ]** を選択します。
 
-     ![アクションを追加する](./media/logic-apps-perform-data-operations/add-join-action.png)
+     !["結合" アクションの "新しいステップ" を選択する](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
    * ステップとステップの間にアクションを追加するには、接続矢印の上にマウスを移動してプラス記号 **[+]** を表示させます。 プラス記号を選択し、 **[アクションの追加]** を選択します。
 
 1. 検索ボックスに、フィルターとして「`join`」と入力します。 アクションの一覧から、次のアクションを選択します。**Join**
 
-   !["結合" アクションを選択する](./media/logic-apps-perform-data-operations/select-join-action.png)
+   !["結合" アクションを選択する](./media/logic-apps-perform-data-operations/select-join-operation-action.png)
 
 1. **[From]\(ソース\)** ボックスで、文字列として結合する項目を含む配列を指定します。
 
@@ -559,13 +559,13 @@ Oranges,2
 
    この例では、Office 365 Outlook の**メールの送信**アクションを使用し、メールの本文に **[出力]** フィールドが含まれます。
 
-   !["メールの送信" アクションの "出力" フィールド](./media/logic-apps-perform-data-operations/send-email-join-action.png)
+   !["結合" アクションの "出力" フィールド](./media/logic-apps-perform-data-operations/send-email-join-action.png)
 
 1. ロジック アプリを手動で実行します。 デザイナーのツール バーで、 **[実行]** を選択します。
 
    使用したメール コネクタをに基づいて、次のような結果が表示されます。
 
-   !["結合" アクションの結果を含むメール](./media/logic-apps-perform-data-operations/join-email-results.png)
+   !["結合" アクションの結果を含むメール](./media/logic-apps-perform-data-operations/join-send-email-results.png)
 
 <a name="parse-json-action"></a>
 
@@ -579,13 +579,13 @@ JavaScript Object Notation (JSON) のコンテンツのプロパティを参照�
 
    この例では、Azure portal と、**繰り返し**トリガーおよび**変数を初期化する**アクションを含むロジック アプリを使用します。 このアクションは、プロパティと値を含む JSON オブジェクトが初期値である変数を作成するように設定されています。 後でロジック アプリをテストするときは、トリガーの発生を待つことなく、手動でアプリを実行できます。
 
-   ![サンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
+   !["JSON の解析" アクション用のサンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-parse-json-action.png)
 
 1. JSON コンテンツを解析するロジック アプリでは、次のいずれかの手順に従います。
 
    * 最後のステップにアクションを追加するには、 **[新しいステップ]** を選択します。
 
-     ![アクションを追加する](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
+     !["JSON の解析" アクションの "新しいステップ" を選択する](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
    * ステップとステップの間にアクションを追加するには、接続矢印の上にマウスを移動してプラス記号 **[+]** を表示させます。 プラス記号を選択し、 **[アクションの追加]** を選択します。
 
@@ -631,13 +631,13 @@ JavaScript Object Notation (JSON) のコンテンツのプロパティを参照�
 
    完成したメール アクションを次に示します。
 
-   ![完成したメール アクション](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
+   ![メール アクションの完成例](./media/logic-apps-perform-data-operations/send-email-parse-json-action-2.png)
 
 1. ロジック アプリを手動で実行します。 デザイナーのツール バーで、 **[実行]** を選択します。 
 
    使用したメール コネクタをに基づいて、次のような結果が表示されます。
 
-   !["結合" アクションの結果を含むメール](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
+   !["JSON の解析" アクションの結果を含むメール](./media/logic-apps-perform-data-operations/parse-json-email-results.png)
 
 <a name="select-action"></a>
 
@@ -654,13 +654,13 @@ JavaScript Object Notation (JSON) のコンテンツのプロパティを参照�
 
    この例では、Azure portal と、**繰り返し**トリガーおよび**変数を初期化する**アクションを含むロジック アプリを使用します。 このアクションは、サンプルの整数を含む配列が初期値である変数を作成するように設定されています。 後でロジック アプリをテストするときは、トリガーの発生を待つことなく、手動でアプリを実行できます。
 
-   ![サンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
+   !["選択" アクション用のサンプル ロジック アプリの開始](./media/logic-apps-perform-data-operations/sample-starting-logic-app-select-action.png)
 
 1. 配列を作成するロジック アプリでは、次のいずれかの手順に従います。 
 
    * 最後のステップにアクションを追加するには、 **[新しいステップ]** を選択します。
 
-     ![アクションを追加する](./media/logic-apps-perform-data-operations/add-select-action.png)
+     !["選択" アクションの "新しいステップ" を選択する](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
    * ステップとステップの間にアクションを追加するには、接続矢印の上にマウスを移動してプラス記号 **[+]** を表示させます。 プラス記号を選択し、 **[アクションの追加]** を選択します。
 
@@ -678,11 +678,11 @@ JavaScript Object Notation (JSON) のコンテンツのプロパティを参照�
 
    この例では、各配列項目にアクセスする式で `item()` 関数を使用することにより、整数配列内の各値を割り当てるプロパティ名として "Product_ID" を指定します。 
 
-   ![作成する配列の JSON オブジェクトのプロパティと値を指定する](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
+   ![JSON オブジェクトのプロパティと値を指定して配列を作成する](./media/logic-apps-perform-data-operations/configure-select-action-2.png)
 
    完成したアクションを次に示します。
 
-   ![完成した選択アクション](./media/logic-apps-perform-data-operations/finished-select-action.png)
+   !["選択" アクションの完成例](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
 1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
 
@@ -700,7 +700,7 @@ JavaScript Object Notation (JSON) のコンテンツのプロパティを参照�
 
    この例では、Office 365 Outlook の**メールの送信**アクションを使用し、メールの本文には `@actionBody('Select')` 式の出力が含まれます。
 
-   !["メールの送信" アクションでのアクションの出力](./media/logic-apps-perform-data-operations/send-email-select-action.png)
+   !["選択" アクションからのアクションの出力](./media/logic-apps-perform-data-operations/send-email-select-action.png)
 
 1. ロジック アプリを手動で実行します。 デザイナーのツール バーで、 **[実行]** を選択します。
 

@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: aed716b01fe748be40ee22e3eba5742983c2a523
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: dfbe7e607395006f9bd7da0be0d5673353e2801f
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620932"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162594"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Stream Analytics 地理空間関数の概要
 
@@ -111,7 +111,7 @@ FROM input
 詳しくは、[CreatePolygon](https://docs.microsoft.com/stream-analytics-query/createpolygon) のリファレンスをご覧ください。
 
 
-## <a name="stdistance"></a>ST_DISTANCE
+## <a name="st_distance"></a>ST_DISTANCE
 `ST_DISTANCE` 関数は、2 つのポイント間の距離をメートル単位で返します。 
 
 次のクエリでは、`ST_DISTANCE` を使用して、自動車からガソリン スタンドまでの距離が 10 km 未満になったときにイベントを生成します。
@@ -124,7 +124,7 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 
 詳しくは、[ST_DISTANCE](https://docs.microsoft.com/stream-analytics-query/st-distance) のリファレンスをご覧ください。
 
-## <a name="stoverlaps"></a>ST_OVERLAPS
+## <a name="st_overlaps"></a>ST_OVERLAPS
 `ST_OVERLAPS` 関数は、2 つのポリゴンを比較します。 ポリゴンが重なっている場合、この関数は 1 を返します。 ポリゴンが重なっていない場合、この関数は 0 を返します。 
 
 次のクエリでは、`ST_OVERLAPS` を使用して、洪水の危険性がある地域にビルがある場合にイベントを生成します。
@@ -145,7 +145,7 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 
 詳しくは、[ST_OVERLAPS](https://docs.microsoft.com/stream-analytics-query/st-overlaps) のリファレンスをご覧ください。
 
-## <a name="stintersects"></a>ST_INTERSECTS
+## <a name="st_intersects"></a>ST_INTERSECTS
 `ST_INTERSECTS` 関数は、2 つの LineString を比較します。 LineString が交差する場合、この関数は 1 を返します。 LineString が交差しない場合、この関数は 0 を返します。
 
 次の例のクエリでは、`ST_INTERSECTS` を使用して、舗装道路が未舗装の道路と交差しているかどうかを判断します。
@@ -171,7 +171,7 @@ FROM input
 
 詳しくは、[ST_INTERSECTS](https://docs.microsoft.com/stream-analytics-query/st-intersects) のリファレンスをご覧ください。
 
-## <a name="stwithin"></a>ST_WITHIN
+## <a name="st_within"></a>ST_WITHIN
 `ST_WITHIN` 関数は、ポイントまたはポリゴンが特定のポリゴン内にあるかどうかを判断します。 ポイントまたはポリゴンが特定のポリゴンに含まれている場合、この関数は 1 を返します。 ポイントまたはポリゴンが宣言されたポリゴン内にない場合、この関数は 0 を返します。
 
 次の例のクエリでは、`ST_WITHIN` を使用して、配達先のポイントが指定された倉庫ポリゴン内にあるかどうかを判断します。

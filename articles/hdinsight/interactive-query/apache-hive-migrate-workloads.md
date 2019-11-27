@@ -7,12 +7,12 @@ ms.author: tacox
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0363f2d8da1ca1371fd55107c6487c3d96f6d00e
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1b270663a83461ecd777599fead9d717e93482c0
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091466"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72930883"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
@@ -67,7 +67,7 @@ metastore の移行と圧縮の手順が完了したら、実際のウェアハ�
 
 1. SSH を使用して、そのクラスター ヘッドノードに接続します。 手順については、「[SSH を使用して HDInsight に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 1. Hive ユーザーとして、`sudo su - hive` を実行することで、ログイン シェルを開きます。
-1. `ls /usr/hdp` を実行することで、Hortonworks Data Platform スタック バージョンを特定します。 これにより、次のコマンドで使用する必要があるバージョン文字列が表示されます。
+1. `ls /usr/hdp` を実行することで、データ プラットフォーム スタック バージョンを特定します。 これにより、次のコマンドで使用する必要があるバージョン文字列が表示されます。
 1. シェルから次のコマンドを実行します。 `${{STACK_VERSION}}` を、前の手順でのバージョン文字列に置き換えてください。
 
 ```bash

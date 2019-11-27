@@ -1,5 +1,5 @@
 ---
-title: Azure AD エンタイトルメント管理でカタログ作成者にアクセス ガバナンスを委任する (プレビュー) - Azure Active Directory
+title: Azure AD エンタイトルメント管理でカタログ作成者にアクセス ガバナンスを委任する - Azure Active Directory
 description: カタログ作成者とプロジェクト マネージャーが自分でアクセスを管理できるよう、IT 管理者からアクセス ガバナンスを委任する方法について説明します。
 services: active-directory
 documentationCenter: ''
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/07/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da6183599f2dacd1a98d8fe359edda741b903b50
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: f71007b886d3cc25a7cf9dc23d784144ed4e1fbd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170881"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174380"
 ---
-# <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理でカタログ作成者にアクセス ガバナンスを委任する (プレビュー)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) エンタイトルメント管理は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="delegate-access-governance-to-catalog-creators-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でカタログ作成者にアクセス ガバナンスを委任する
 
 自分のカタログを作成できるよう、管理者ではないユーザーに委任する目的で、Azure AD エンタイトルメント管理で定義されたカタログ作成者ロールにそのユーザーを追加できます。 個々のユーザーを追加することも、グループを追加することもできます。グループのメンバーはカタログを作成できるようになります。
 
@@ -44,13 +39,27 @@ ms.locfileid: "72170881"
 
 1. **[編集]** をクリックします。
 
-    ![カタログ作成者を追加するための設定](./media/entitlement-management-delegate/settings-delegate.png)
+    ![カタログ作成者を追加するための設定](./media/entitlement-management-delegate-catalog/settings-delegate.png)
 
 1. **[Delegate entitlement management]\(エンタイトルメント管理の委任\)** セクションで、 **[Add catalog creators]\(カタログ作成者の追加\)** をクリックし、このエンタイトルメント管理ロールを委任するユーザーまたはグループを選択します。
 
 1. **[選択]** をクリックします。
 
 1. **[Save]** をクリックします。
+
+## <a name="allow-delegated-roles-to-access-the-azure-portal"></a>委任されたロールに Azure portal へのアクセスを許可する
+
+委任されたロール (カタログ作成者、アクセス パッケージ マネージャーなど) がアクセス パッケージを管理するために Azure portal にアクセスできるようにするには、管理ポータルの設定を確認する必要があります。
+
+**事前に必要なロール:** グローバル管理者またはユーザー管理者
+
+1. Azure portal で **[Azure Active Directory]** をクリックし、 **[ユーザー]** をクリックします。
+
+1. 左側のメニューで **[ユーザー設定]** をクリックします。
+
+1. **[Azure AD 管理ポータルへのアクセスを制限する]** が **[いいえ]** に設定されていることを確認します。
+
+    ![Azure AD ユーザー設定 - 管理ポータル](./media/entitlement-management-delegate-catalog/user-settings.png)
 
 ## <a name="next-steps"></a>次の手順
 

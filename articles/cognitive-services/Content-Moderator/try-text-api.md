@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: bf3f08436fb4bac56907b342c991709947f4c24d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 467bf7fe26df2f826d6d44d42a9e30b98795232f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754198"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043926"
 ---
 # <a name="moderate-text-from-the-api-console"></a>API コンソールからテキストをモデレートする
 
@@ -61,9 +61,6 @@ Azure Content Moderator の [Text Moderation API](https://westus.dev.cognitive.m
 ### <a name="sample-text-to-scan"></a>スキャンするサンプル テキスト
 
 **[Request body]** (要求本文) ボックスに、いくらかのテキストを入力します。 次の例は、テキスト内の意図的なタイプミスを示しています。
-
-> [!NOTE]
-> 次のサンプル テキスト内にある無効な社会保障番号は、意図的なものです。 目的は、サンプルとなる入力と出力の形式を伝えることです。
 
 ```
 Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -176,4 +173,4 @@ JSON 応答に含まれるすべてのセクションの詳細説明について
 
 ## <a name="next-steps"></a>次の手順
 
-コード内で REST API を使用するか、アプリケーションと統合するための、[テキスト モデレートに関する .NET のクイック スタート](text-moderation-quickstart-dotnet.md)を利用して作業を開始します。
+コードで REST API を使用するか、[.NET SDK のクイックスタート](dotnet-sdk-quickstart.md)に従って、アプリケーションと統合します。

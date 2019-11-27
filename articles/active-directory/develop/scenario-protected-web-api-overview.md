@@ -1,5 +1,6 @@
 ---
-title: 保護された Web API - 概要 | Azure
+title: 保護された Web API - 概要
+titleSuffix: Microsoft identity platform
 description: 保護された Web API を構築する方法 (概要) について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02bd4b84cc7542714f6db45c12c4b5b13a7fb449
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 64418138f9eff61cc94a57be4dc5e2625e5fdebb
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852589"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803688"
 ---
 # <a name="scenario-protected-web-api"></a>シナリオ: 保護された Web API
 

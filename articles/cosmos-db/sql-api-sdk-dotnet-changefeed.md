@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: ea6de5f42910457efa5ca6c458d7af63faa38e18
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 2392eb1f02ede13aca88419c00ea33ae38cfd8ab
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637756"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73023884"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK:ダウンロードおよびリリース ノート
 
@@ -29,7 +29,7 @@ ms.locfileid: "68637756"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Bulk Executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Bulk executor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
@@ -42,6 +42,15 @@ ms.locfileid: "68637756"
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="v2-builds"></a>v2 のビルド
+
+### <a name="a-name228228"></a><a name="2.2.8"/>2.2.8
+* 安定性と診断能力の向上:
+  * 長時間かかっている変更フィード読み取りを検出する機能のサポートを追加しました。 `ChangeFeedProcessorOptions.ChangeFeedTimeout` プロパティによって指定されている値よりも長い時間がかかる場合、以下の手順が行われます。
+    * 問題のあるパーティションの変更フィードを読み取る操作は中止されます。
+    * 変更フィード プロセッサ インスタンスが問題のあるリースの所有権を破棄します。 破棄されたリースは、同じまたは異なる変更フィード プロセッサ インスタンスによって行われる次のリース取得手順中に取得されます。 このようにして、変更フィードの読み取りがやり直されます。
+    * 問題は、ヘルス モニターにレポートされます。 既定のヘルス モニターは、レポートされたすべての問題をトレース ログに送信します。
+  * 新しいパブリック プロパティ `ChangeFeedProcessorOptions.ChangeFeedTimeout` を追加しました。 このプロパティの既定値は 10 分です。
+  * 新しいパブリック列挙値 `Monitoring.MonitoredOperation.ReadChangeFeed` を追加しました。 `HealthMonitoringRecord.Operation` の値が `Monitoring.MonitoredOperation.ReadChangeFeed` に設定される場合は、正常性の問題が変更フィードの読み取りに関連していることを示しています。
 
 ### <a name="a-name227227"></a><a name="2.2.7"/>2.2.7
 * ネットワークの問題などにより、すべてのリースの取得にリースの有効期限の間隔よりも長くかかるシナリオの負荷分散戦略を向上しました。
@@ -170,6 +179,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.8](#2.2.8) |2019 年 10 月 28 日 |--- |
 | [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |
 | [2.2.6](#2.2.6) |2019 年 1 月 29 日 |--- |
 | [2.2.5](#2.2.5) |2018 年 12 月 13 日 |--- |

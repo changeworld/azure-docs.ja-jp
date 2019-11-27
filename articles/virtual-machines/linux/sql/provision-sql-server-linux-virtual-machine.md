@@ -4,19 +4,19 @@ description: このチュートリアルでは、Azure Portal で Linux SQL Serv
 services: virtual-machines-linux
 author: MashaMSFT
 manager: craigg
-ms.date: 12/5/2018
+ms.date: 10/22/2019
 ms.topic: conceptual
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: cd87477da15d5c18f94b66cac855672b4a2a3523
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 85d2396a05e7496b56bd83bd834150aa6d864c62
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091349"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72882680"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での Linux SQL Server 仮想マシンのプロビジョニング
 
@@ -49,23 +49,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![VM イメージをすべて表示する](./media/provision-sql-server-linux-virtual-machine/azure-compute-blade.png)
 
-1. 検索ボックスに「**SQL Server 2017**」と入力し、**Enter** キーを押して検索を開始します。
+1. 検索ボックスに「**SQL Server 2019**」と入力し、**Enter** キーを押して検索を開始します。
 
-1. **[オペレーティング システム]**  >  **[Redhat]** の順に選択して検索結果を限定します。 次に、 **[公開元]** で **[Microsoft]** を選択します。
+1. **[オペレーティング システム]**  >  **[Redhat]** の順に選択して検索結果を限定します。
 
-    ![SQL Server 2017 VM イメージの検索フィルター](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
+    ![SQL Server 2019 VM イメージの検索フィルター](./media/provision-sql-server-linux-virtual-machine/searchfilter.png)
 
-1. 検索結果から SQL Server 2017 Linux イメージを選択します。 このチュートリアルでは、**Free SQL Server License:SQL Server 2017 Developer on Red Hat Enterprise Linux 7.4** を使用します。
+1. 検索結果から SQL Server 2019 Linux イメージを選択します。 このチュートリアルでは **SQL Server 2019 on RHEL74** を使用します。
 
    > [!TIP]
    > Developer エディションでは、Enterprise エディションの機能を使用してテストまたは開発を行うことができますが、SQL Server のライセンス コストはかかりません。 料金は、Linux VM の実行コストに対してのみ支払います。
 
-1. **[デプロイ モデルの選択]** で、ワークロードのニーズに合ったデプロイ モデルを選択します。
+1. **作成** を選択します。 
 
-    > [!Note]
-    > 新しいワークロードには **Resource Manager** を使用してください。 既存の仮想ネットワークに接続するには、その仮想ネットワークにおけるワークロードのデプロイ方法を選択してください。 デプロイ モデルの詳細については、[Azure Resource Manager とクラシック デプロイ モデル](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)に関するページを参照してください。
-
-1. **作成** を選択します。
 
 ### <a name="set-up-your-linux-vm"></a>Linux VM の設定
 
@@ -91,9 +87,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    * **[ユーザー名]** : VM の管理者名を入力します。
    * **[SSH 公開キー]** : RSA 公開キーを入力します。
-   * **[パブリック受信ポート]** : **[選択したポートを許可する]** を選択し、 **[パブリック受信ポートを選択]** ボックスの一覧で **[SSH (22)]** ポートを選択します。 このクイック スタートでは、SQL Server に接続し、構成を完了するために、この手順が必要です。 リモートで SQL Server に接続する場合は、 **[MS SQL (1433)]** も選択して、インターネット経由での接続用にポート 1433 を開きます。
+   * **[パブリック受信ポート]** : **[選択したポートを許可する]** を選択し、 **[パブリック受信ポートを選択]** ボックスの一覧で **[SSH (22)]** ポートを選択します。 このクイック スタートでは、SQL Server に接続し、構成を完了するために、この手順が必要です。 SQL Server にリモートから接続したい場合は、仮想マシンの作成後に Microsoft SQL Server がインターネット上の接続に使用する既定のポート (1433) へのトラフィックを手動で許可する必要があります。
 
-   ![受信ポート](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
+     ![受信ポート](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
 1. 次の追加のタブで、設定を変更するか、既定の設定をそのまま使用します。
     * **ディスク**

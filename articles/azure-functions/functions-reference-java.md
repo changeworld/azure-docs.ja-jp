@@ -1,22 +1,19 @@
 ---
 title: Azure Functions 用 Java 開発者向けリファレンス | Microsoft Docs
 description: Java を使用して関数を開発する方法について説明します。
-services: functions
-documentationcenter: na
-author: rloutlaw
-manager: justhe
+author: ggailey777
+manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ, java
 ms.service: azure-functions
-ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: routlaw
-ms.openlocfilehash: e3ab825fbf5b5dba74b67eaa894a38c74ed0b62a
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.author: glenga
+ms.openlocfilehash: 97c721c504c460856796e296fefc33bf01f002f8
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299391"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176434"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -30,33 +27,44 @@ Azure Functions ランタイムは、[Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win
 
 [トリガーとバインド](functions-triggers-bindings.md)の概念は、Azure Functions の基盤です。 トリガーによって、コードの実行が開始します。 バインドでは、データを関数に渡し、関数からデータを返す方法が提供されます。カスタム データ アクセス コードを記述する必要はありません。
 
-## <a name="project-scaffolding"></a>プロジェクトのスキャフォールディング
+## <a name="create-java-functions"></a>Java の関数を作成する
 
-Java ベースの Azure Function プロジェクトをスキャフォールディングする最も簡単な方法は、`Apache Maven` アーキタイプを使用することです。 Visual Studio Code や Azure Toolkits for Eclipse、Azure Toolkits for IntelliJ には、プロジェクト生成ウィザードもあります。
+Java の関数を作成しやすくするために、Maven ベースのツールとアーキタイプが用意されています。事前に定義された Java テンプレートを使用することで、特定の関数トリガーを含むプロジェクトを簡単に作成できます。    
 
-Maven には現在、2 つの Azure Functions アーキタイプが存在します。
+### <a name="maven-based-tooling"></a>Maven ベースのツール
 
-### <a name="java-archetype"></a>Java アーキタイプ
+次の開発環境には、Java 関数プロジェクトの作成に対応した Azure Functions ツールが備わっています。 
 
-このアーキタイプは、次の groupId および artifactId の下で発行されます ([com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/))。
++ [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions)
++ [Eclipse](functions-create-maven-eclipse.md)
++ [IntelliJ](functions-create-maven-intellij.md)
 
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-archetype 
-```
+上記リンクの記事には、好みの IDE を使用して基本的な関数を作成する方法が紹介されています。 
 
-### <a name="kotlin-archetype-preview"></a>Kotlin アーキタイプ (プレビュー)
+### <a name="project-scaffolding"></a>プロジェクトのスキャフォールディング
 
-このアーキタイプは、次の groupId および artifactId の下で発行されます ([com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/))。
+ターミナルからのコマンド ライン開発を希望する場合、Java ベースの関数プロジェクトをスキャフォールディングする最も簡単な方法は、`Apache Maven` アーキタイプを使用することです。 Maven には現在、2 つの Functions アーキタイプが存在します。
 
-```
-mvn archetype:generate \
-    -DarchetypeGroupId=com.microsoft.azure \
-    -DarchetypeArtifactId=azure-functions-kotlin-archetype
-```
++ **Java アーキタイプ**: 次の groupId および artifactId の下で発行されます ([com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/))。
+
+    ```
+    mvn archetype:generate \
+        -DarchetypeGroupId=com.microsoft.azure \
+        -DarchetypeArtifactId=azure-functions-archetype 
+    ```
+
+    このアーキタイプの基本的な使い方については、[Java クイックスタート](functions-create-first-java-maven.md)を参照してください。 
+
++ **Kotlin アーキタイプ (プレビュー)** : 次の groupId および artifactId の下で発行されます ([com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/))。
+
+    ```
+    mvn archetype:generate \
+        -DarchetypeGroupId=com.microsoft.azure \
+        -DarchetypeArtifactId=azure-functions-kotlin-archetype
+    ```
 
 これらのアーキタイプのソース コードは、[Azure Maven アーキタイプ GitHub リポジトリ](https://github.com/microsoft/azure-maven-archetypes)でご覧いただけます。
+
 
 ## <a name="folder-structure"></a>フォルダー構造
 

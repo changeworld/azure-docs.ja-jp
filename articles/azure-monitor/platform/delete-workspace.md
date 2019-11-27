@@ -1,24 +1,18 @@
 ---
-title: Azure Log Analytics ワークスペースの削除と復元 | Microsoft Docs
+title: Azure Log Analytics ワークスペースの削除と復旧 | Microsoft Docs
 description: 個人用の月額プランで Log Analytics ワークスペースを作成した場合や、ワークスペース モデルを再構築する場合に、Log Analytics ワークスペースを削除する方法について説明します。
-services: log-analytics
-documentationcenter: log-analytics
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 10/11/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: fb6714a52a65ef5efe4725b99acb30cb67af20c3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 10/28/2019
+ms.openlocfilehash: 709d63b2c764049a698bc538d9ec451b4e75feaa
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299272"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044242"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics ワークスペースの削除と復元
 
@@ -60,12 +54,14 @@ Log Analytics ワークスペースを削除すると、論理的な削除操作
 
 論理的な削除操作の前にワークスペースが関連付けられていたサブスクリプションとリソース グループに対する共同作成者のアクセス許可を持っているユーザーは、論理的な削除の期間中であれば、データと構成、接続されているエージェントを含め、ワークスペースを回復させることができます。 論理的な削除の期間が過ぎると、ワークスペースは回復不能となり、完全な削除の対象に割り当てられます。 論理的な削除期間中は、削除されたワークスペースの名前が維持されるため、新しいワークスペースを作成しようとするときにその名前を使用することはできません。  
 
-ワークスペースは、ワークスペース作成方法 ([PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) または [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate)) を使用してワークスペースを再作成することで回復させることができます。ただし、そのためには、これらのプロパティに、次を含む削除されたワークスペースの情報が設定されている必要があります。
+以下のワークスペースの作成方法を使用して、ワークスペースを再作成することにより、復旧できます。使用するのは、[PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) または [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) です。ただし、以下のプロパティに、削除したワークスペースの詳細情報を設定する必要があります。
 
 * サブスクリプション ID
 * リソース グループ名
 * ワークスペース名
 * リージョン
+
+ワークスペースとそのすべてのデータは、復旧操作の後に戻されます。 ソリューションおよびリンクされたサービスは、ワークスペースが削除されたときに完全に削除されます。ワークスペースを以前に構成した状態に戻すには、これらを再構成する必要があります。 ワークスペースの復旧後、関連するソリューションが再インストールされ、そのスキーマがワークスペースに追加されるまで、一部のデータがクエリに使用できないことがあります。
 
 > [!NOTE]
 > * [Azure portal](https://portal.azure.com) ではワークスペースの回復はサポートされていません。 

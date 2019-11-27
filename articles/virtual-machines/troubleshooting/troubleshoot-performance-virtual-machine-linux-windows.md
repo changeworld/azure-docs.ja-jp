@@ -1,5 +1,5 @@
 ---
-title: Linux または Windows を実行する Azure 仮想マシンのパフォーマンスの一般的なトラブルシューティング
+title: Linux または Windows での Azure 仮想マシンのパフォーマンスのトラブルシューティング
 description: この記事では、仮想マシン (VM) の監視と観察によるパフォーマンスの一般的なトラブルシューティングについて説明し、発生する可能性のある問題を修復します。
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 3fdac123ee7bda9d91d96940aebd6bddf4ea00f8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790910"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965484"
 ---
-# <a name="generic-performance-troubleshooting-for-azure-virtual-machine-running-linux-or-windows"></a>Linux または Windows を実行する Azure 仮想マシンの汎用パフォーマンスのトラブルシューティング
+# <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Linux または Windows での Azure 仮想マシンのパフォーマンスのトラブルシューティング
 
 この記事では、仮想マシン (VM) の監視と観察によるパフォーマンスの一般的なトラブルシューティングについて説明し、発生する可能性のある問題を修復します。 監視だけでなく、Perfinsights を使用することもできます。これにより、ベスト プラクティスのレコメンデーションと IO/CPU/メモリに関する主要なボトルネックを含むレポートが提供されます。 Perfinsights は、[Windows](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfInsights) と [Linux](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/how-to-use-perfinsights-linux) の両方の Azure VM に用意されています。
 

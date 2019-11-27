@@ -5,14 +5,14 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/25/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b77fd082be43b8cbdedf7cbe5875a8931eb0474a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2a2b8b71e07e5dac74d73d3a81c150ac5d980ea2
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837898"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935348"
 ---
 # <a name="supported-postgresql-database-versions"></a>サポートされている PostgreSQL Database バージョン
 Microsoft では、Azure Database for PostgreSQL - Single Server での PostgreSQL エンジンの n-2 バージョンのサポートを予定しています。 バージョンは、Azure の現在のメジャー バージョン (n) とその前の 2 つのメジャー バージョン (-2) です。
@@ -20,16 +20,16 @@ Microsoft では、Azure Database for PostgreSQL - Single Server での PostgreS
 Azure Database for PostgreSQL では現在、次のメジャー バージョンがサポートされています。
 
 ## <a name="postgresql-version-11"></a>PostgreSQL バージョン 11
-現行のマイナー バージョンは 11.4 です。 このマイナー バージョンの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/static/release-11-4.html)を参照してください。
+現行のマイナー バージョンは 11.5 です。 このマイナー バージョンの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/11/static/release-11-5.html)を参照してください。
 
 ## <a name="postgresql-version-10"></a>PostgreSQL バージョン 10
-現行のマイナー バージョンは 10.9 です。 このマイナー バージョンの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/10/static/release-10-9.html)を参照してください。
+現行のマイナー バージョンは 10.10 です。 このマイナー バージョンの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/10/static/release-10-10.html)を参照してください。
 
 ## <a name="postgresql-version-96"></a>PostgreSQL バージョン 9.6
-現行のマイナー バージョンは 9.6.14 です。 このマイナー バージョンの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/9.6/static/release-9-6-14.html)を参照してください。
+現行のマイナー バージョンは 9.6.15 です。 このマイナー バージョンの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/9.6/static/release-9-6-15.html)を参照してください。
 
 ## <a name="postgresql-version-95"></a>PostgreSQL バージョン 9.5
-現行のマイナー バージョンは 9.5.18 です。 このマイナー バージョンの機能強化と修正については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/9.5/static/release-9-5-18.html)を参照してください。
+現行のマイナー バージョンは 9.5.19 です。 このマイナー バージョンの機能強化と修正については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/9.5/static/release-9-5-19.html)を参照してください。
 
 ## <a name="managing-upgrades"></a>アップグレードの管理
 Azure Database for PostgreSQL では、マイナー バージョンのアップグレードは自動管理されます。 

@@ -1,5 +1,6 @@
 ---
 title: Azure AD テナントのアプリに対する要求のカスタマイズ (パブリック プレビュー)
+titleSuffix: Microsoft identity platform
 description: このページでは、Azure Active Directory の要求のマッピングについて説明します。
 services: active-directory
 author: rwike77
@@ -11,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9350a30ac6258664b3a8405923467a8468a6758
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 53ef51d52e699612508a446acbc075f766565d63
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835457"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803516"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -323,7 +324,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | othermail | その他のメール |
 | User | country | Country |
 | User | city | City |
-| User | state | 状態 |
+| User | state | State |
 | User | jobtitle | 役職 |
 | User | employeeid | 従業員 ID |
 | User | facsimiletelephonenumber | ファックスの電話番号 |
@@ -465,7 +466,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Get-AzureADPolicy
       ```
 1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。
-   1. 組織のすべてのサービス プリンシパルを表示するには、Microsoft Graph にクエリを実行します。 または、Azure AD Graph Explorer で、Azure AD アカウントにサインインします。
+   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph にクエリ](/graph/traverse-the-graph)を実行します。 または、[Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)で、Azure AD アカウントにサインインします。
    2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。  
      
       ``` powershell
@@ -489,7 +490,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Get-AzureADPolicy
       ```
 1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。 
-   1. 組織のすべてのサービス プリンシパルを表示するには、Microsoft Graph にクエリを実行します。 または、Azure AD Graph Explorer で、Azure AD アカウントにサインインします。
+   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph にクエリ](/graph/traverse-the-graph)を実行します。 または、[Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)で、Azure AD アカウントにサインインします。
    2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。  
      
       ``` powershell
@@ -513,7 +514,7 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Get-AzureADPolicy
       ```
 1. サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの ObjectId も取得する必要があります。 
-   1. 組織のすべてのサービス プリンシパルを表示するには、Microsoft Graph にクエリを実行します。 または、Azure AD Graph Explorer で、Azure AD アカウントにサインインします。
+   1. 組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph にクエリ](/graph/traverse-the-graph)を実行します。 または、[Graph エクスプローラー](https://developer.microsoft.com/graph/graph-explorer)で、Azure AD アカウントにサインインします。
    2. サービス プリンシパルの ObjectId がある場合は、次のコマンドを実行します。 
      
       ``` powershell

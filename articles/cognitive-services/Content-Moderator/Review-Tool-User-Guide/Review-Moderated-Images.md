@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 53d06f84172da0c4717cabe79f4f5152e73e9555
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: b02324923e3f004395105b8e04165390cb950fe7
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754267"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044128"
 ---
 # <a name="create-human-reviews"></a>目視レビューを作成する
 
@@ -56,4 +56,4 @@ ms.locfileid: "72754267"
 
 ## <a name="next-steps"></a>次の手順
 
-このガイドでは、Content Moderator の[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)からレビューを設定して使用する方法について学習しました。 次は、[REST API ガイド](../try-review-api-review.md)または [.NET SDK ガイド](../moderation-reviews-quickstart-dotnet.md)を参照して、プログラムによってレビューを作成する方法について学習してください。
+このガイドでは、Content Moderator の[レビュー ツール](https://contentmoderator.cognitive.microsoft.com)からレビューを設定して使用する方法について学習しました。 次は、[REST API ガイド](../try-review-api-review.md)または [.NET SDK のクイックスタート](../dotnet-sdk-quickstart.md)を参照して、プログラムによってレビューを作成する方法について学習してください。

@@ -4,14 +4,14 @@ description: 新しいリソース グループまたはサブスクリプショ
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 10/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: 81096a4299ec190cb4299f1b8ea4f9c2533d37ad
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 05f7d022588eee0e5e97f10d6300da04c4be6270
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948040"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73161942"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 また、リソースを移動するときに考慮すべき特別な条件に関する情報も提供します。
@@ -30,7 +30,6 @@ ms.locfileid: "71948040"
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [Microsoft.AzureData](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
-> - [Microsoft.Backup](#microsoftbackup)
 > - [Microsoft.Batch](#microsoftbatch)
 > - [Microsoft.BatchAI](#microsoftbatchai)
 > - [Microsoft.BingMaps](#microsoftbingmaps)
@@ -54,6 +53,7 @@ ms.locfileid: "71948040"
 > - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
+> - [Microsoft.CustomProviders](#microsoftcustomproviders)
 > - [Microsoft.DataBox](#microsoftdatabox)
 > - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
 > - [Microsoft.Databricks](#microsoftdatabricks)
@@ -65,6 +65,7 @@ ms.locfileid: "71948040"
 > - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
 > - [Microsoft.DataLakeStore](#microsoftdatalakestore)
 > - [Microsoft.DataMigration](#microsoftdatamigration)
+> - [Microsoft.DataShare](#microsoftdatashare)
 > - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
 > - [Microsoft.DBforMySQL](#microsoftdbformysql)
 > - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
@@ -128,7 +129,6 @@ ms.locfileid: "71948040"
 > - [Microsoft.ServiceFabric](#microsoftservicefabric)
 > - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
 > - [Microsoft.SignalRService](#microsoftsignalrservice)
-> - [Microsoft.SiteRecovery](#microsoftsiterecovery)
 > - [Microsoft.Solutions](#microsoftsolutions)
 > - [Microsoft.Sql](#microsoftsql)
 > - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
@@ -245,13 +245,6 @@ ms.locfileid: "71948040"
 > | リソースの種類 | Resource group | サブスクリプション |
 > | ------------- | ----------- | ---------- |
 > | registrations | はい | はい |
-
-## <a name="microsoftbackup"></a>Microsoft.Backup
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | backupvault | いいえ | いいえ |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
@@ -463,6 +456,13 @@ ms.locfileid: "71948040"
 > | ------------- | ----------- | ---------- |
 > | hubs | はい | はい |
 
+## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | resourceproviders | はい | はい |
+
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
@@ -544,6 +544,13 @@ ms.locfileid: "71948040"
 > | services | いいえ | いいえ |
 > | services/projects | いいえ | いいえ |
 > | slots | いいえ | いいえ |
+
+## <a name="microsoftdatashare"></a>Microsoft.DataShare
+
+> [!div class="mx-tableFixed"]
+> | リソースの種類 | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | accounts | いいえ | いいえ |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
@@ -934,7 +941,6 @@ ms.locfileid: "71948040"
 > | publicipprefixes | はい | はい |
 > | routefilters | いいえ | いいえ |
 > | routetables | はい | はい |
-> | securegateways | はい | はい |
 > | serviceendpointpolicies | はい | はい |
 > | trafficmanagerprofiles | はい | はい |
 > | virtualhubs | いいえ | いいえ |
@@ -1124,16 +1130,6 @@ ms.locfileid: "71948040"
 > | ------------- | ----------- | ---------- |
 > | signalr | はい | はい |
 
-## <a name="microsoftsiterecovery"></a>Microsoft.SiteRecovery
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | Resource group | Subscription |
-> | ------------- | ----------- | ---------- |
-> | siterecoveryvault | いいえ | いいえ |
-
-> [!IMPORTANT]
-> [Recovery Services の移動のガイダンス](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)に関する記事をご覧ください。
-
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 
 > [!div class="mx-tableFixed"]
@@ -1287,9 +1283,9 @@ ms.locfileid: "71948040"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | dedicatedcloudnodes | はい | はい |
-> | dedicatedcloudservices | はい | はい |
-> | virtualmachines | はい | はい |
+> | dedicatedcloudnodes | いいえ | いいえ |
+> | dedicatedcloudservices | いいえ | いいえ |
+> | virtualmachines | いいえ | いいえ |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 

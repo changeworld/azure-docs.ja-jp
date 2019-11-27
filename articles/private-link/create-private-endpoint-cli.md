@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: kumud
-ms.openlocfilehash: 30394ba7b71d7dcb4233e5dca341dda47fd9ffa7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 477f7d4824d3165357228d200dca9e556a072744
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376311"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053518"
 ---
 # <a name="create-a-private-endpoint-using-azure-cli"></a>Azure CLI を使用してプライベート エンドポイントを作成する
 プライベート エンドポイントは、Azure の Private Link の基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 このクイック スタートでは、Azure CLI を使用して、仮想ネットワーク上の VM と、プライベート エンドポイントを含む SQL Database サーバーを作成する方法を説明します。 その後、VM にアクセスし、Private Link リソース (この例ではプライベート Azure SQL Database サーバー) に安全にアクセスできます。 
@@ -39,7 +39,7 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 ## <a name="disable-subnet-private-endpoint-policies"></a>サブネットのプライベート エンドポイント ポリシーを無効にする 
-Azure では仮想ネットワーク内のサブネットにリソースがデプロイされるため、プライベート エンドポイントのネットワーク ポリシーを無効にするようにサブネットを作成または更新する必要があります。 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) を使用して   *mySubnet* という名前のサブネット構成を更新します。
+Azure では仮想ネットワーク内のサブネットにリソースがデプロイされるため、プライベート エンドポイントのネットワーク ポリシーを無効にするようにサブネットを作成または更新する必要があります。 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) を使用して  *mySubnet*  という名前のサブネット構成を更新します。
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -49,7 +49,7 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>VM の作成 
-az vm create を使用して VM を作成します。 メッセージが表示されたら、VM のサインイン資格情報として使用するパスワードを入力します。 この例では、 *myVm* という名前の VM を作成します。 
+az vm create を使用して VM を作成します。 メッセージが表示されたら、VM のサインイン資格情報として使用するパスワードを入力します。 この例では、*myVm* という名前の VM を作成します。 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
@@ -148,7 +148,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 このセクションでは、プライベート エンドポイントを使用して VM から SQL Database サーバーに接続します。
 
- 1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
+ 1. *myVM* のリモート デスクトップで、PowerShell を開きます。
  2. nslookup myserver.database.windows.net を入力します。 次のようなメッセージを受け取ります。 
 
 ```
@@ -165,7 +165,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
  Password (パスワード):作成時に指定したパスワードを入力します。
  パスワードを保存する:[はい] を選択します。
  
- 5.  **[接続]** を選択します。
+ 5. **[接続]** を選択します。
  6. 左側のメニューで **[データベース]** を参照します。
  7. (省略可能) 情報を作成するか、*mydatabase* に対して情報のクエリを実行します。
  8. *myVm* へのリモート デスクトップ接続を閉じます。

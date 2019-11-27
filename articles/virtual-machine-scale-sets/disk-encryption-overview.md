@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 69197b9c0d2a60e1833d03a3f12802221a8307e2
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 0097d0e1d5ea7de092da14683d4bab3d673b2219
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529967"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73177783"
 ---
 # <a name="azure-disk-encryption-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure Disk Encryption
 
@@ -23,7 +23,7 @@ Azure Disk Encryption は、仮想マシンの OS とデータ ディスクの�
 - Windows スケール セット内の OS とデータ ボリューム。
 - Linux スケール セット内のデータ ボリューム。 OS ディスク暗号化は Linux スケール セットに対しては現在はサポートされません。
 
-仮想マシン スケール セットでの Azure Disk Encryption の基礎については、[Azure CLI を使用した仮想マシン スケール セットの暗号化](disk-encryption-cli.md)または [Azure CLI を使用した仮想マシン スケール セットの暗号化](disk-encryption-powershell.md)に関するチュートリアルを参照してください。
+仮想マシン スケール セットでの Azure Disk Encryption の基礎については、[Azure CLI を使用した仮想マシン スケール セットの暗号化](disk-encryption-cli.md)または [Azure PowerShell を使用した仮想マシン スケール セットの暗号化](disk-encryption-powershell.md)に関するチュートリアルを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

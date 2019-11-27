@@ -1,5 +1,6 @@
 ---
-title: Objective-C での MSAL に関する問題のトラブルシューティング | Microsoft ID プラットフォーム
+title: Objective-C での MSAL に関する問題のトラブルシューティング
+titleSuffix: Microsoft identity platform
 description: MSAL.Objective-C ライブラリでの SSL 証明書の使用に関するさまざまな問題の処理について学習します。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76892686beec8ea18d56166519353fb5a2495124
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: fc918502cd252b4e53af8bcbd209a8387ef4d8c2
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269341"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803672"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-ssl-issues"></a>方法:iOS と macOS 用の MSAL に関する SSL の問題のトラブルシューティング
 

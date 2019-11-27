@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
-ms.openlocfilehash: 983b66be6b51c9af5987e539ea1175a65c9269b3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861970"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968737"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>複数言語のコンテンツを自動的に識別および文字起こしする (プレビュー)
 
@@ -86,9 +86,8 @@ API を使用してビデオのインデックスを作成するとき、また�
 * プロジェクトの作成と編集は現在、複数言語ビデオでは利用できません。
 * 複数言語の検出を使用する場合、カスタム言語モデルは使用できません。
 * キーワードの追加はサポートされていません。
-* "トランスクリプトの更新" API はサポートされていません。
 * クローズ ドキャプション ファイルをエクスポートするときに、言語表示は示されません。
-
+* トランスクリプトの更新 API は、複数の言語ファイルをサポートしていません。
 
 ## <a name="next-steps"></a>次の手順
 

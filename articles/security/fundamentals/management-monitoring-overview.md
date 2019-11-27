@@ -13,29 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 9ed2d00d6f229d958e0df024c70381051840548c
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 7ad7a29a92d25556190b4cf44f4e48158a6f0952
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726994"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73162751"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure セキュリティの管理と監視の概要
 この記事では、Azure クラウド サービスと仮想マシンの管理と監視を支援するために Azure が提供するセキュリティ機能とサービスの概要を説明します。
-
-## <a name="shared-responsibility"></a>Shared responsibility
-
-Microsoft クラウド サービスのセキュリティは、パートナーシップに基づくものであり、お客様と Microsoft が共有する責任です。 Microsoft は、Azure プラットフォームおよびそのデータ センターの (入室に ID カードが必要なドア、フェンス、守衛などのセキュリティ保護の使用による) 物理的なセキュリティの責任を負います。 Azure のソフトウェア レイヤーには強力なレベルのクラウド セキュリティが備わっており、セキュリティ、プライバシー、コンプライアンスに関する顧客のニーズを満たすことができます。
-
-お客様は、自分のデータと ID を所有し、それらとオンプレミス リソースのセキュリティ、および自分が制御しているクラウド コンポーネントのセキュリティを保護する責任を持ちます。 Microsoft は、セキュリティ制御や、データとアプリケーションを保護するための機能をお客様に提供します。 お客様のセキュリティの責任の度合いは、クラウド サービスの種類に応じて決まります。
-
-次の表は、Microsoft とお客様の間の責任の分担をまとめたものです。
-
-![Shared responsibility](./media/management-monitoring-overview/shared-responsibility.png)
-
-セキュリティの管理について詳しくは、「[Azure のセキュリティ管理](management.md)」をご覧ください。
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
@@ -150,3 +138,7 @@ Security Center は、Azure リソースのセキュリティの最適化と監�
 
 * [インテリジェント セキュリティ グラフ](https://www.microsoft.com/security/intelligence)
 
+## <a name="next-steps"></a>次の手順
+[共同責任モデル](shared-responsibility.md)について学習します。また、Microsoft が処理するセキュリティ タスクとお客様が処理するタスクについても確認しましょう。
+
+セキュリティの管理について詳しくは、「[Azure のセキュリティ管理](management.md)」をご覧ください。

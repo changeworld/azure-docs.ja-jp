@@ -4,25 +4,25 @@ description: Azure の Analysis Services サーバーに接続してデータを
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 10/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a8059ac748f73ad8f9036f8e675e876e3a8716be
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295171"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73147316"
 ---
 # <a name="connecting-to-servers"></a>サーバーへの接続
 
-この記事では、SQL Server Management Studio (SSMS) や SQL Server Data Tools (SSDT) などの管理アプリケーションとデータ モデリングを使ってサーバーに接続する方法について説明します。 または、Microsoft Excel、Power BI Desktop などのクライアント レポート作成アプリケーションやカスタム アプリケーションを使用することもできます。 Azure Analysis Services への接続には HTTPS が使用されます。
+この記事では、データ モデリングと、SQL Server Management Studio (SSMS) や Visual Studio と Analysis Services プロジェクトなどの管理アプリケーション、または Microsoft Excel、Power BI Desktop などのクライアント レポート アプリケーション、またはカスタム アプリケーションを使用した、サーバーへの接続について説明します。 Azure Analysis Services への接続には HTTPS が使用されます。
 
 ## <a name="client-libraries"></a>クライアント ライブラリ
 
 [最新のクライアント ライブラリを入手する](analysis-services-data-providers.md)
 
-サーバーへの接続全般に言えることですが、Analysis Services サーバーに接続してデータをやり取りするためには、最新の AMO、ADOMD.NET、OLEDB クライアント ライブラリが必要となります。 SSMS、SSDT、Excel 2016 以降、および Power BI では、毎月のリリースにより最新のクライアント ライブラリがインストールまたは更新されます。 ただし、場合によっては、アプリケーションの最新バージョンがないこともあります。 たとえば、ポリシーによって更新が先延ばしされたり、Office 365 の更新プログラムが段階的提供チャネルで提供されたりするケースがそれに該当します。
+サーバーへの接続全般に言えることですが、Analysis Services サーバーに接続してデータをやり取りするためには、最新の AMO、ADOMD.NET、OLEDB クライアント ライブラリが必要となります。 SSMS、Visual Studio、Excel 2016 以降、および Power BI では、毎月のリリースにより最新のクライアント ライブラリがインストールまたは更新されます。 ただし、場合によっては、アプリケーションの最新バージョンがないこともあります。 たとえば、ポリシーによって更新が先延ばしされたり、Office 365 の更新プログラムが段階的提供チャネルで提供されたりするケースがそれに該当します。
 
 ## <a name="server-name"></a>サーバー名
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする
+title: Azure Backup で Recovery Services コンテナーに Azure VM をバックアップする
 description: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする方法について説明します
 service: backup
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1f8086580d60d13251052636d4d771855e9605a5
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 2ef8e7e77481c0df6e85545d16c3859949184d2f
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954950"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968534"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure VM をバックアップする
 
@@ -22,28 +22,26 @@ ms.locfileid: "68954950"
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
+>
 > * Azure VM を準備する。
 > * コンテナーを作成する。
 > * VM を検出し、バックアップ ポリシーを構成する。
 > * Azure VM のバックアップを有効にする。
 > * 初回バックアップを実行する。
 
-
 > [!NOTE]
 > この記事では、コンテナーの設定方法およびバックアップする VM の選択方法について説明します。 これは複数の VM をバックアップする場合に便利です。 また、VM の設定から直接 [1 つの Azure VM をバックアップする](backup-azure-vms-first-look-arm.md)こともできます。
 
 ## <a name="before-you-start"></a>開始する前に
 
-
-- Azure VM のバックアップ アーキテクチャを[確認する](backup-architecture.md#architecture-direct-backup-of-azure-vms)。
-- Azure VM のバックアップとバックアップ拡張機能の[詳細を確認](backup-azure-vms-introduction.md)する。
-- バックアップを構成する前に、[サポート マトリックスを確認](backup-support-matrix-iaas.md)する。
+* Azure VM のバックアップ アーキテクチャを[確認する](backup-architecture.md#architecture-direct-backup-of-azure-vms)。
+* Azure VM のバックアップとバックアップ拡張機能の[詳細を確認](backup-azure-vms-introduction.md)する。
+* バックアップを構成する前に、[サポート マトリックスを確認](backup-support-matrix-iaas.md)する。
 
 さらに、状況によっては、いくつか行う必要があることがあります。
 
-- **VM に VM エージェントをインストールする**: Azure Backup では、マシンで実行されている Azure VM エージェントに拡張機能をインストールすることで、Azure VM がバックアップされます。 VM が Azure Marketplace のイメージから作成されている場合は、エージェントがインストールされ、実行されます。 カスタム VM を作成する場合、またはオンプレミスのマシンを移行する場合は、[手動でのエージェントのインストール](#install-the-vm-agent)が必要な場合があります。
-- **発信アクセスを明示的に許可する**: 一般に、Azure VM が Azure Backup と通信するために、発信ネットワーク アクセスを明示的に許可する必要はありません。 ただし、一部の VM では、接続しようとすると、接続に関する問題が発生する場合があり、**ExtensionSnapshotFailedNoNetwork** エラーが表示されます。 これが発生した場合、Azure Backup の拡張機能でバックアップ トラフィックのために Azure パブリック IP アドレスと通信できるように、[明示的に発信アクセスを許可](#explicitly-allow-outbound-access)する必要があります。
-
+* **VM に VM エージェントをインストールする**: Azure Backup では、マシンで実行されている Azure VM エージェントに拡張機能をインストールすることで、Azure VM がバックアップされます。 VM が Azure Marketplace のイメージから作成されている場合は、エージェントがインストールされ、実行されます。 カスタム VM を作成する場合、またはオンプレミスのマシンを移行する場合は、[手動でのエージェントのインストール](#install-the-vm-agent)が必要な場合があります。
+* **発信アクセスを明示的に許可する**: 一般に、Azure VM が Azure Backup と通信するために、発信ネットワーク アクセスを明示的に許可する必要はありません。 ただし、一部の VM では、接続しようとすると、接続に関する問題が発生する場合があり、**ExtensionSnapshotFailedNoNetwork** エラーが表示されます。 これが発生した場合、Azure Backup の拡張機能でバックアップ トラフィックのために Azure パブリック IP アドレスと通信できるように、[明示的に発信アクセスを許可](#explicitly-allow-outbound-access)する必要があります。
 
 ## <a name="create-a-vault"></a>コンテナーの作成
 
@@ -59,15 +57,14 @@ ms.locfileid: "68954950"
      ![Create Recovery Services Vault step 2](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
 4. **[Recovery Services コンテナー]** に、コンテナーを識別するフレンドリ名を入力します。
-    - 名前は Azure サブスクリプションに対して一意である必要があります。
-    - 2 から 50 文字を含めることができます。
-    - 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
+    * 名前は Azure サブスクリプションに対して一意である必要があります。
+    * 2 から 50 文字を含めることができます。
+    * 名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。
 5. Azure サブスクリプションとリソース グループ、およびコンテナーを作成する必要のある geography 型のリージョンを選択します。 **[Create]** をクリックします。
-    - コンテナーが作成されるまで時間がかかることがあります。
-    - ポータルの右上の領域で、状態の通知を監視します。
+    * コンテナーが作成されるまで時間がかかることがあります。
+    * ポータルの右上の領域で、状態の通知を監視します。
 
-
- コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 コンテナーが表示されない場合は、 **[最新の情報に更新]** を選択します。
+コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 コンテナーが表示されない場合は、 **[最新の情報に更新]** を選択します。
 
 ![バックアップ コンテナーの一覧](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
@@ -75,13 +72,12 @@ ms.locfileid: "68954950"
 > Azure Backup サービスでは、スナップショットを格納するために別のリソース グループ (VM のリソース グループ以外) が作成されます。名前の形式は **AzureBackupRG_geography_number** です (例:AzureBackupRG_northeurope_1)。 このリソース グループ内のデータは、Azure Virtual Machine Backup ポリシーの *[Retain instant recovery snapshot]\(インスタント リカバリ スナップショットの保存\)* セクションに指定されている日数の期間保持されます。  このリソース グループにロックを適用すると、バックアップが失敗する可能性があります。<br>
 制限ポリシーによってリソース ポイント コレクションの作成がブロックされ、この場合もバックアップが失敗するため、このリソース グループも名前/タグの制限から除外する必要があります。
 
-
 ### <a name="modify-storage-replication"></a>ストレージ レプリケーションを変更する
 
 既定では、コンテナーには [geo 冗長ストレージ (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs) が使用されます。
 
-- コンテナーをプライマリ バックアップ メカニズムとする場合は、GRS を使用することをお勧めします。
-- コストを抑えるオプションとして[ローカル冗長ストレージ (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) を使用できます。
+* コンテナーをプライマリ バックアップ メカニズムとする場合は、GRS を使用することをお勧めします。
+* コストを抑えるオプションとして[ローカル冗長ストレージ (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) を使用できます。
 
 ストレージ レプリケーションの種類を変更にするには、次の手順に従います。
 
@@ -90,6 +86,7 @@ ms.locfileid: "68954950"
 3. ストレージのレプリケーションの種類を選択し、 **[保存]** をクリックします。
 
       ![新しいコンテナーのストレージ構成を設定する](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
+
 > [!NOTE]
    > コンテナーを設定してバックアップ項目を格納した後で、ストレージ レプリケーションの種類を変更することはできません。 これを行う場合は、コンテナーを再作成する必要があります。
 
@@ -101,22 +98,21 @@ ms.locfileid: "68954950"
 
    ![[バックアップ] ボタン](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-
 2. **[バックアップの目標]**  >  **[ワークロードはどこで実行されていますか?]** で **[Azure]** を選択します。 **[バックアップの対象]** で、 **[仮想マシン]**  >   **[OK]** を選択します。 これにより、VM 拡張機能がコンテナーに登録されます。
 
    ![[バックアップ] ウィンドウと [バックアップの目標] ウィンドウ](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
 3. **[バックアップ ポリシー]** で、コンテナーに関連付けるポリシーを選択します。
-    - 既定のポリシーでは、1 日に 1 回、VM がバックアップされます。 毎日のバックアップは 30 日間保持されます。 インスタント回復スナップショットは 2 日間保持されます。
-    - 既定のポリシーを使用する必要がない場合は、 **[新規作成]** を選択し、次の手順に従ってカスタム ポリシーを作成します。
+    * 既定のポリシーでは、1 日に 1 回、VM がバックアップされます。 毎日のバックアップは 30 日間保持されます。 インスタント回復スナップショットは 2 日間保持されます。
+    * 既定のポリシーを使用する必要がない場合は、 **[新規作成]** を選択し、次の手順に従ってカスタム ポリシーを作成します。
 
       ![既定のバックアップ ポリシー](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
 4. **[仮想マシンの選択]** で、ポリシーを使用してバックアップを作成したい VM を選択します。 次に、 **[OK]** をクリックします
 
-   - 選択した VM が検証されます。
-   - コンテナーと同じリージョンにある VM のみを選択できます。
-   - VM は、1 つのコンテナーでのみバックアップできます。
+   * 選択した VM が検証されます。
+   * コンテナーと同じリージョンにある VM のみを選択できます。
+   * VM は、1 つのコンテナーでのみバックアップできます。
 
      ![[仮想マシンの選択] ウィンドウ](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
@@ -126,12 +122,11 @@ ms.locfileid: "68954950"
 
 バックアップの有効化後:
 
-- バックアップ拡張機能は、VM が実行されているかどうかにかかわらず、Backup サービスによってインストールされます。
-- バックアップ スケジュールに従って初回バックアップが実行されます。
-- バックアップの実行時には、次の点に注意してください。
-    - 実行されている VM では、アプリケーション整合性復旧ポイントが取り込まれる可能性が最も高くなります。
-    - ただし、VM がオフになっている場合でも、VM はバックアップされます。 このような VM はオフライン VM と呼ばれます。 この場合、復旧ポイントは、クラッシュ整合性復旧ポイントになります。
-
+* バックアップ拡張機能は、VM が実行されているかどうかにかかわらず、Backup サービスによってインストールされます。
+* バックアップ スケジュールに従って初回バックアップが実行されます。
+* バックアップの実行時には、次の点に注意してください。
+  * 実行されている VM では、アプリケーション整合性復旧ポイントが取り込まれる可能性が最も高くなります。
+  * ただし、VM がオフになっている場合でも、VM はバックアップされます。 このような VM はオフライン VM と呼ばれます。 この場合、復旧ポイントは、クラッシュ整合性復旧ポイントになります。
 
 ### <a name="create-a-custom-policy"></a>カスタム ポリシーの作成
 
@@ -139,12 +134,12 @@ ms.locfileid: "68954950"
 
 1. **[ポリシー名]** で、わかりやすい名前を指定します。
 2. **[バックアップ スケジュール]** で、バックアップを作成するタイミングを指定します。 Azure VM について毎日または毎週のバックアップを作成できます。
-2. **[インスタント リストア]** で、インスタント リストアに備えてスナップショットをローカルで保持する期間を指定します。
-    - 復元の際は、バックアップされた VM ディスクが、ストレージからネットワーク経由で復旧ストレージの場所にコピーされます。 インスタント リストアを使用すれば、バックアップ ジョブ中に作成されローカルに格納されたスナップショットを活用できるので、バックアップ データがコンテナーに転送されるのを待たずに済みます。
-    - インスタント リストア用のスナップショットは、1 日から 5 日間、保持することができます。 既定値は 2 日間です。
-3. **[保有期間の範囲]** で、毎日または毎週のバックアップのポイントを保持する期間を指定します。
-4. **[毎月のバックアップ ポイントの保持期間]** で、毎日または毎週のバックアップの毎月のバックアップを保持するかどうかを指定します。
-5. **[OK]** をクリックしてポリシーを保存します。
+3. **[インスタント リストア]** で、インスタント リストアに備えてスナップショットをローカルで保持する期間を指定します。
+    * 復元の際は、バックアップされた VM ディスクが、ストレージからネットワーク経由で復旧ストレージの場所にコピーされます。 インスタント リストアを使用すれば、バックアップ ジョブ中に作成されローカルに格納されたスナップショットを活用できるので、バックアップ データがコンテナーに転送されるのを待たずに済みます。
+    * インスタント リストア用のスナップショットは、1 日から 5 日間、保持することができます。 既定値は 2 日間です。
+4. **[保有期間の範囲]** で、毎日または毎週のバックアップのポイントを保持する期間を指定します。
+5. **[毎月のバックアップ ポイントの保持期間]** で、毎日または毎週のバックアップの毎月のバックアップを保持するかどうかを指定します。
+6. **[OK]** をクリックしてポリシーを保存します。
 
     ![新しいバックアップ ポリシー](./media/backup-azure-arm-vms-prepare/new-policy.png)
 
@@ -185,12 +180,11 @@ ms.locfileid: "68954950"
 完了 | 失敗 | 警告で完了
 失敗 | 失敗 | 失敗
 
-
 この機能により、同じ VM に対して 2 つのバックアップを並列に実行できるようになりましたが、どちらのフェーズ (スナップショット、コンテナーへのデータ転送) でも実行できるのは 1 つのサブタスクだけです。 この分離機能により、進行中のバックアップ ジョブが翌日のバックアップになって失敗するシナリオは回避されます。 次の日のバックアップは、前の日のバックアップ ジョブが進行中の状態にある場合、**コンテナーへのデータ転送**がスキップされた状態でスナップショットを完了できます。
 コンテナーで作成された増分型の復旧ポイントは、コンテナーで作成された最後の復旧ポイントからのすべてのチャーンをキャプチャします。 ユーザーへのコストの影響はありません。
 
-
 ## <a name="optional-steps-install-agentallow-outbound"></a>オプションの手順 (エージェントをインストールする/送信を許可する)
+
 ### <a name="install-the-vm-agent"></a>VM エージェントのインストール
 
 Azure Backup では、マシンで実行されている Azure VM エージェントに拡張機能をインストールすることで、Azure VM がバックアップされます。 VM が Azure Marketplace のイメージから作成されている場合は、エージェントがインストールされ、実行されます。 カスタム VM を作成する場合、またはオンプレミスのマシンを移行する場合は、表に示すように、エージェントを手動でインストールする必要があります。
@@ -204,9 +198,8 @@ Azure Backup では、マシンで実行されている Azure VM エージェン
 
 VM で実行されているバックアップ拡張機能には、Azure パブリック IP アドレスへの発信アクセスが必要です。
 
-- 一般に、Azure VM が Azure Backup と通信するために、発信ネットワーク アクセスを明示的に許可する必要はありません。
-- VM の接続で問題が発生した場合、または接続しようとするとエラー **ExtensionSnapshotFailedNoNetwork** が表示された場合は、バックアップ拡張機能がバックアップ トラフィック用の Azure パブリック IP アドレスに通信できるように、明示的にアクセスを許可する必要があります。 アクセス方法を次の表にまとめて示します。
-
+* 一般に、Azure VM が Azure Backup と通信するために、発信ネットワーク アクセスを明示的に許可する必要はありません。
+* VM の接続で問題が発生した場合、または接続しようとするとエラー **ExtensionSnapshotFailedNoNetwork** が表示された場合は、バックアップ拡張機能がバックアップ トラフィック用の Azure パブリック IP アドレスに通信できるように、明示的にアクセスを許可する必要があります。 アクセス方法を次の表にまとめて示します。
 
 **オプション** | **アクション** | **詳細**
 --- | --- | ---
@@ -228,9 +221,9 @@ VM のアクセス権が NSG によって管理される場合は、バックア
 4. **[ソース ポート範囲]** で、任意のポートからの発信アクセスを許可するアスタリスク (*) を入力します。
 5. **[宛先]** で **[サービス タグ]** を選択します。 一覧から、**Storage.region** を選択します。 リージョンはコンテナーと、バックアップする VM が配置されている場所です。
 6. **[宛先ポート範囲]** でポートを選択します。
-    - アンマネージド ディスクと暗号化されていないストレージ アカウントを使用する VM: 80
-    - アンマネージド ディスクと暗号化されているストレージ アカウントを使用する VM: 443 (既定の設定)
-    - マネージド ディスクを使用する VM: 8443
+    * アンマネージド ディスクと暗号化されていないストレージ アカウントを使用する VM: 80
+    * アンマネージド ディスクと暗号化されているストレージ アカウントを使用する VM: 443 (既定の設定)
+    * マネージド ディスクを使用する VM: 8443
 7. **[プロトコル]** で、 **[TCP]** を選択します。
 8. **[優先度]** で、上位の拒否ルールより低い優先度値を指定します。
 
@@ -241,14 +234,13 @@ NSG ルールを複数の VM に適用して、発信アクセスを許可する
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
-
 ##### <a name="route-backup-traffic-through-a-proxy"></a>プロキシ経由のバックアップ トラフィックのルーティング
 
 プロキシ経由でバックアップ トラフィックをルーティングし、必要な Azure 範囲へのプロキシ アクセスを付与できます。 次を許可するように、プロキシ VM を構成します。
 
-- Azure VM は、パブリック インターネット宛てのすべての HTTP トラフィックをプロキシ VM 経由でルーティングする必要があります。
-- 該当する仮想ネットワーク内の VM からの受信トラフィックがプロキシによって許可される必要があります。
-- NSG **NSF ロックダウン**には、プロキシ VM からの発信インターネット トラフィックを許可するルールが必要です。
+* Azure VM は、パブリック インターネット宛てのすべての HTTP トラフィックをプロキシ VM 経由でルーティングする必要があります。
+* 該当する仮想ネットワーク内の VM からの受信トラフィックがプロキシによって許可される必要があります。
+* NSG **NSF ロックダウン**には、プロキシ VM からの発信インターネット トラフィックを許可するルールが必要です。
 
 ###### <a name="set-up-the-proxy"></a>プロキシを設定する
 
@@ -258,13 +250,14 @@ NSG ルールを複数の VM に適用して、発信アクセスを許可する
 2. **PsExec.exe -i -s cmd.exe** を実行して、システム アカウントでコマンド プロンプトを実行します。
 3. システム コンテキストでブラウザーを実行します。 例: **%PROGRAMFILES%\Internet Explorer\iexplore.exe** を使用します (Internet Explorer の場合)。  
 4. プロキシ設定を定義します。
-   - Linux マシンで:
-     - **/etc/environment** ファイルに次の行を追加します。
-       - **http_proxy=http:\//proxy IP address:proxy port**
-     - **/etc/waagent.conf** ファイルに次の行を追加します。
-         - **HttpProxy.Host=proxy IP address**
-         - **HttpProxy.Port=proxy port**
-   - Windows マシンのブラウザー設定で、プロキシを使用する必要があることを指定します。 ユーザー アカウントで現在、プロキシを使用している場合、次のスクリプトを使用してシステム アカウント レベルで設定を適用することができます。
+   * Linux マシンで:
+     * **/etc/environment** ファイルに次の行を追加します。
+       * **http_proxy=http:\//proxy IP address:proxy port**
+     * **/etc/waagent.conf** ファイルに次の行を追加します。
+         * **HttpProxy.Host=proxy IP address**
+         * **HttpProxy.Port=proxy port**
+   * Windows マシンのブラウザー設定で、プロキシを使用する必要があることを指定します。 ユーザー アカウントで現在、プロキシを使用している場合、次のスクリプトを使用してシステム アカウント レベルで設定を適用することができます。
+
        ```powershell
       $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
       Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
@@ -284,9 +277,9 @@ NSG ルールを複数の VM に適用して、発信アクセスを許可する
 3. **[規則の種類]** で、 **[カスタム]**  >  **[次へ]** の順に選択します。
 4. **[プログラム]** で、 **[すべてのプログラム]**  >  **[次へ]** を選択します。
 5. **[プロトコルおよびポート]** で、次を実行します。
-   - 種類を **[TCP]** に設定する。
-   - **[ローカル ポート]** を **[特定のポート]** に設定する。
-   - **[リモート ポート]** を **[すべてのポート]** に設定する。
+   * 種類を **[TCP]** に設定する。
+   * **[ローカル ポート]** を **[特定のポート]** に設定する。
+   * **[リモート ポート]** を **[すべてのポート]** に設定する。
 
 6. ウィザードを終了し、ルールの名前を指定します。
 
@@ -295,7 +288,7 @@ NSG ルールを複数の VM に適用して、発信アクセスを許可する
 NSG **NSF ロックダウン**で、10.0.0.5 の任意のポートから、ポート 80 (HTTP) または 443 (HTTPS) 上の任意のインターネット アドレスへのトラフィックを許可します。
 
 次の PowerShell スクリプトでは、トラフィックを許可する例を示します。
-すべてのパブリック インターネット アドレスへの送信を許可する代わりに、IP アドレス範囲を指定する (`-DestinationPortRange`) ことも、storage.region サービス タグを使用することもできます。   
+すべてのパブリック インターネット アドレスへの送信を許可する代わりに、IP アドレス範囲を指定する (`-DestinationPortRange`) ことも、storage.region サービス タグを使用することもできます。
 
 ```powershell
 Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
@@ -306,12 +299,10 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 
 Azure Backup へのネットワーク トラフィックの送信アクセスを許可するように Azure Firewall を設定することができます。
 
-- Azure Firewall のデプロイに関する[詳細情報を参照してください](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)。
-- FQDN タグについて[お読みください](https://docs.microsoft.com/azure/firewall/fqdn-tags)。
-
-
+* Azure Firewall のデプロイに関する[詳細情報を参照してください](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal)。
+* FQDN タグについて[お読みください](https://docs.microsoft.com/azure/firewall/fqdn-tags)。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure VM エージェント](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)または [Azure VM バックアップ](backup-azure-vms-troubleshoot.md)で発生する問題のトラブルシューティング。
-- Azure VM の[復元](backup-azure-arm-restore-vms.md)。
+* [Azure VM エージェント](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)または [Azure VM バックアップ](backup-azure-vms-troubleshoot.md)で発生する問題のトラブルシューティング。
+* Azure VM の[復元](backup-azure-arm-restore-vms.md)。

@@ -1,5 +1,6 @@
 ---
-title: 保護された Web API - アプリ コードの構成 | Azure Active Directory
+title: 保護された Web API を使用してスコープとアプリのロールを検証する
+titleSuffix: Microsoft identity platform
 description: 保護された Web API をビルドして、アプリケーションのコードを構成する方法について学習します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,14 +17,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b249b99faa62e73b9aa3247f71f88767fca96f01
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 4340d92bdfe871010021edcbefcde62ab8202462
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488848"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73149241"
 ---
-# <a name="protected-web-api-adding-authorization-to-your-api"></a>保護された Web API: API への承認の追加
+# <a name="protected-web-api-verify-scopes-and-app-roles"></a>保護された Web API: スコープとアプリのロールを検証する
 
 この記事では、Web API に承認を追加する方法について説明します。 この保護により、API を呼び出せるのは以下のものだけになります。
 

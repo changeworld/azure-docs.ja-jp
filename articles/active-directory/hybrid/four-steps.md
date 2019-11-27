@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08db59e26a66aca57d65458a302c3c1de2e34a7b
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d2cd080602ec879affb3ece978f14d5afc33ef9d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373495"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173091"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) のハイブリッド ID ソリューション
 
 ### <a name="make-apps-available-to-your-users-seamlessly"></a>ユーザーがアプリをシームレスに使用できるようにする
 
-Azure AD を使用すると、管理者は [Azure portal](https://portal.azure.com/) のエンタープライズ アプリケーション ギャラリーに[アプリケーションを追加](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal)できます。 エンタープライズ アプリケーション ギャラリーにアプリケーションを追加すると、Azure AD を ID プロバイダーとして使用するようにアプリケーションを構成することが容易になります。 また、条件付きアクセス ポリシーを使ってアプリケーションへのユーザー アクセスを管理したり、ユーザーがパスワードを繰り返し入力することなく、自動的にオンプレミスとクラウド ベースのアプリケーションにサインインするようにアプリケーションへのシングル サインオン (SSO) を構成したりすることもできます。
+Azure AD を使用すると、管理者は [Azure portal](https://portal.azure.com/) のエンタープライズ アプリケーション ギャラリーに[アプリケーションを追加](https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal)できます。 エンタープライズ アプリケーション ギャラリーにアプリケーションを追加すると、Azure AD を ID プロバイダーとして使用するようにアプリケーションを構成することが容易になります。 また、条件付きアクセス ポリシーを使ってアプリケーションへのユーザー アクセスを管理したり、ユーザーがパスワードを繰り返し入力することなく、自動的にオンプレミスとクラウドベースのアプリケーションにサインインするようにアプリケーションへのシングル サインオン (SSO) を構成したりすることもできます。
 
 アプリケーションが Azure AD ギャラリーに追加されると、ユーザーは自分に割り当てられたアプリを表示し、必要に応じて他のアプリを検索して要求することができます。 Azure AD には、ユーザーが自分のアプリにアクセスするための[いくつかの方法](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)が用意されています。
 

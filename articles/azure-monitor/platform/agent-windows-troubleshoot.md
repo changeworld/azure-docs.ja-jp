@@ -1,24 +1,18 @@
 ---
-title: Windows 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 | Microsoft Docs
+title: Windows 用 Log Analytics エージェントに関する問題のトラブルシューティング
 description: Azure Monitor の Windows 用 Log Analytics エージェントに関する最も一般的な問題の現象、原因、および解決策について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/12/2019
+ms.subservice: ''
+ms.topic: conceptual
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 96f020f24e27ff799f9bfbc08d899e8375b86094
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 06/12/2019
+ms.openlocfilehash: 7bf0c8429eaecd6cba83872cbea5876cc0c31221
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431828"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199015"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Windows 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 

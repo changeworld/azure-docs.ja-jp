@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d44b868f2ea92c2d7bb8d7139822112a8545045
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ec7730dc1143586eb4c5c05fd475b8412546b7a6
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787453"
+ms.locfileid: "72809260"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -62,6 +62,8 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 - ユーザーが、マイ アプリ ポータルからデバイスを無効にする。 
 - 管理者 (またはユーザー) が、Azure portal で、または PowerShell を使用して、デバイスを削除または無効化する
 - Hybrid Azure AD 参加済みのみ:管理者が同期スコープからデバイス OU を削除し、その結果デバイスが Azure AD から削除される
+- AAD Connect をバージョン 1.4.xx.x にアップグレードする。 「[Azure AD Connect 1.4.xx.x およびデバイスの消失について](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance)」を参照してください。
+
 
 これらのアクションを修正する方法については、以下を参照してください。
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD エンタイトルメント管理 (プレビュー) でアクセス パッケージのリソース ロールを変更する - Azure Active Directory
-description: Azure Active Directory エンタイトルメント管理 (プレビュー) で既存のアクセス パッケージのリソース ロールを変更する方法を説明します。
+title: Azure AD エンタイトルメント管理でアクセス パッケージのリソース ロールを変更する - Azure Active Directory
+description: Azure Active Directory エンタイトルメント管理で既存のアクセス パッケージのリソース ロールを変更する方法を説明します。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b719546ec598f2e99061597e99a3d4e875b12cf
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 102bbfbd1c02c93830f5c7fce89fe95d7fde54c5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429812"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174648"
 ---
-# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でアクセス パッケージのリソース ロールを変更する
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) エンタイトルメント管理は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのリソース ロールを変更する
 
 アクセス パッケージ マネージャーは、新規のリソースへのユーザーのアクセスのプロビジョニングや以前のリソースからのアクセスの削除について心配することなく、アクセス パッケージ内のリソースをいつでも変更できます。 この記事では、既存のアクセス パッケージのリソース ロールを変更する方法について説明します。
 

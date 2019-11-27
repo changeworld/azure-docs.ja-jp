@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 08/22/2019
-ms.openlocfilehash: 62758ef82b074e093e837b2095dd9f27ab31657b
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.date: 09/29/2019
+ms.openlocfilehash: aacd41debfa8810facc41896051767eb4ab6e3b6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678091"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052500"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -24,13 +24,14 @@ ms.locfileid: "72678091"
 * 診断と監視利用に役立つ追加のカスタム製品利用統計情報を送信するコードを記述できます。 (この拡張機能は Application Insights の優れた機能です。)手違いにより、このコードを記述し、個人データやその他の機密データが含まれてしまうことはあります。 アプリケーションがそのようなデータを利用する場合、記述するあらゆるコードに徹底したレビュー プロセスを適用してください。
 * アプリを開発し、テストするとき、SDK により送信される内容は簡単に調査できます。 データは IDE とブラウザーのデバッグ出力ウィンドウに表示されます。 
 * データは米国またはヨーロッパの [Microsoft Azure](https://azure.com) サーバーに保管されます。 (ただし、アプリは、場所を問わず実行できます)。Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。 あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。 Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。 これは、転送中および保存時に暗号化されます。
+*   収集されたデータを確認します。これには、ある状況では許可されても他の状況では許可されないデータが含まれている可能性があるためです。  典型的な例は、デバイス名です。 サーバーからのデバイス名はプライバシーに影響を与えず便利ですが、電話やノート PC のデバイス名はプライバシーに影響を与え、あまり役に立たない場合があります。 主にサーバーを対象にして開発された SDK は、既定でデバイス名を収集することがあります。これは、通常のイベントと例外の両方で、上書きしなければならない場合があります。
 
 この記事の残りの部分では、以上の答えについてもっと詳しく説明します。 設計は自己完結型であり、直近のチームに入っていない同僚にも見せることができます。
 
 ## <a name="what-is-application-insights"></a>Application Insights とは何か?
 [Azure Application Insights][start] は、ライブ アプリケーションのパフォーマンスと使いやすさの改善に役立つ、Microsoft が提供するサービスです。 テスト中と公開後またはデプロイ後の両方で、実行中のアプリケーションを常時監視します。 Application Insights が作成するグラフや表を見ると、たとえば、1 日の中でユーザー数が最も多い時間帯、アプリの反応性、アプリが依存している外部サービスのサービス性能などがわかります。 クラッシュ、エラー、パフォーマンス問題が発生した場合、製品利用統計情報データを詳しく調査し、原因を診断できます。 アプリの可用性やパフォーマンスに変化があった場合、サービスからメールが届きます。
 
-この機能を入手するには、アプリケーションに Application Insights SDK をインストールします。インストールすることでそのコードの一部になります。 アプリの実行中、SDK はその操作を監視し、製品利用統計情報を Application Insights サービスに送信します。 これは [Microsoft Azure](https://azure.com) がホストするクラウド サービスです。 (ただし、Application Insights は、Azure にホストされているアプリケーションだけでなく、あらゆるアプリケーションで動作します。)
+この機能を入手するには、アプリケーションに Application Insights SDK をインストールします。インストールすることでそのコードの一部になります。 アプリの実行中、SDK はその操作を監視し、製品利用統計情報を Application Insights サービスに送信します。 これは [Microsoft Azure](https://azure.com) がホストするクラウド サービスです。 ただし、Application Insights は、Azure にホストされているアプリケーションだけでなく、あらゆるアプリケーションで動作します。
 
 Application Insights サービスは製品利用統計情報を保存し、分析します。 分析を確認し、保存されている製品利用統計情報を検索するには、Azure アカウントにサインインし、アプリケーションの Application Insights リソースを開きます。 データへのアクセスをチームの他のメンバーや指定した Azure サブスクライバーと共有することもできます。
 
@@ -39,10 +40,9 @@ Application Insights サービスから、たとえば、データベースや�
 Application Insights SDK はさまざまなアプリケーション タイプに利用できます。独自の Java EE サーバー、ASP.NET サーバー、または Azure にホストされている Web サービス、Web クライアント (Web ページで実行されるコード)、デスクトップのアプリとサービス、デバイス アプリ (Windows Phone、iOS、Android) などです。 これらはすべて同じサービスに製品利用統計情報を送信します。
 
 ## <a name="what-data-does-it-collect"></a>どのようなデータが収集されますか。
-### <a name="how-is-the-data-is-collected"></a>データはどのような方法で収集されますか。
 データ ソースは 3 つあります。
 
-* SDK は[開発時](../../azure-monitor/app/asp-net.md)または[実行時](../../azure-monitor/app/monitor-performance-live-website-now.md)にアプリと統合します。 アプリケーションの種類が違えば SDK も違います。 [Web ページ用の SDK](../../azure-monitor/app/javascript.md) もあります。ページと共にエンドユーザーのブラウザーに読み込まれます。
+* SDK は[開発時](../../azure-monitor/app/asp-net.md)または[実行時](../../azure-monitor/app/monitor-performance-live-website-now.md)にアプリと統合します。 アプリケーションの種類が違えば SDK も違います。 [Web ページ用の SDK](../../azure-monitor/app/javascript.md) もあります。ページと共にエンド ユーザーのブラウザーに読み込まれます。
   
   * それぞれの SDK にはさまざまな [モジュール](../../azure-monitor/app/configuration-with-applicationinsights-config.md)があり、さまざまな手法でさまざまな種類の製品利用統計情報を収集します。
   * デプロイ時に SDK をインストールする場合、標準のモジュールに加え、その API を利用し、独自の製品利用統計情報を送信できます。 このカスタム製品利用統計情報にあらゆるデータを含め、送信できます。
@@ -52,11 +52,11 @@ Application Insights SDK はさまざまなアプリケーション タイプに
 ### <a name="what-kinds-of-data-are-collected"></a>どのような種類のデータが収集されますか。
 主なカテゴリは次のとおりです。
 
-* [Web サーバー製品利用統計情報](../../azure-monitor/app/asp-net.md) -HTTP 要求。  URI、要求の処理にかかる時間、応答コード、クライアント IP アドレス。 セッション ID。
+* [Web サーバー製品利用統計情報](../../azure-monitor/app/asp-net.md) -HTTP 要求。  URI、要求の処理にかかる時間、応答コード、クライアント IP アドレス。 `Session id`
 * [Web ページ](../../azure-monitor/app/javascript.md) - ページ、ユーザーとセッションの数。 ページの読み込み時間。 例外。 AJAX 呼び出し。
 * パフォーマンス カウンター - メモリ、CPU、IO、ネットワーク占有率。
 * クライアントとサーバーのコンテキスト - OS、ロケール、デバイスの種類、ブラウザー、画面の解像度。
-* [例外](../../azure-monitor/app/asp-net-exceptions.md) とクラッシュ - **スタック ダンプ**、ビルド ID、CPU タイプ。 
+* [例外](../../azure-monitor/app/asp-net-exceptions.md)とクラッシュ - **スタック ダンプ**、`build id`、CPU タイプ。 
 * [依存関係](../../azure-monitor/app/asp-net-dependencies.md) - REST、SQL、AJAX など、外部サービスの呼び出し。 URI または接続文字列、期間、成功、コマンド。
 * [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md) - テストとステップの期間、応答。
 * [トレース ログ](../../azure-monitor/app/asp-net-trace-logs.md)と[カスタム テレメトリ](../../azure-monitor/app/api-custom-events-metrics.md) - **コード化してログまたはテレメトリに入れるすべて**。
@@ -103,7 +103,7 @@ Microsoft は、お客様にサービスを提供する目的でのみデータ�
 ## <a name="how-secure-is-my-data"></a>データのセキュリティは保たれますか。
 Application Insights は Azure サービスのひとつです。 セキュリティ ポリシーについては、[Azure のセキュリティ、プライバシー、およびコンプライアンスに関するホワイト ペーパー](https://go.microsoft.com/fwlink/?linkid=392408)をご覧ください。
 
-データは、Microsoft Azure サーバーに保管されます。 Azure Portal のアカウントの場合、アカウントの制限は [Azure のセキュリティ、プライバシー、コンプライアンスの文書](https://go.microsoft.com/fwlink/?linkid=392408)に記載されています。
+データは、Microsoft Azure サーバーに保管されます。 Azure portal のアカウントの場合、アカウントの制限は [Azure のセキュリティ、プライバシー、コンプライアンスの文書](https://go.microsoft.com/fwlink/?linkid=392408)に記載されています。
 
 Microsoft のスタッフによるデータへのアクセスは制限されます。 Microsoft は、Application Insights の使用をサポートするために必要であれば、ユーザーからアクセス許可を得た上でデータにアクセスします。 
 
@@ -118,21 +118,21 @@ Web ページのコード内にインストルメンテーション キーがあ
 すべてのデータが、保存時とデータ センター間での移動時に暗号化されます。
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>アプリケーションから Application Insights サーバーに送信されるときにデータは暗号化されますか。
-はい。ポータルからほぼすべての SDK (Web サーバー、デバイス、HTTPS Web ページを含みます) への送信に https が使用されます。 唯一の例外は、プレーンな HTTP Web ページから送信されるデータです。
+はい。ほぼすべての SDK からポータル (Web サーバー、デバイス、HTTPS Web ページなど) への送信に https が使用されます。 唯一の例外は、プレーンな HTTP Web ページから送信されるデータです。
 
 ## <a name="does-the-sdk-create-temporary-local-storage"></a>SDK では一時的なローカル ストレージが作成されますか?
 
 はい。特定のテレメトリ チャネルは、エンドポイントに到達できない場合、データをローカルで保持します。 どのフレームワークおよびテレメトリ チャネルが影響を受けるかを以下で確認してください。
 
-ローカル ストレージを利用するテレメトリ チャネルは、アプリケーションを実行している特定のアカウントに制限される TEMP または APPDATA ディレクトリ内に一時ファイルを作成します。 これは、エンドポイントが一時的に使用できなくなったか、または調整制限に達した場合に発生する可能性があります。 この問題が解決されると、テレメトリ チャネルは、すべての新しいデータおよび保持されているデータの送信を再開します。
+ローカル ストレージを利用するテレメトリ チャネルは、TEMP または APPDATA ディレクトリ内に一時ファイルを作成します。これらは、アプリケーションを実行している特定のアカウントだけに制限されます。 これは、エンドポイントが一時的に使用できなくなったか、または調整制限に達した場合に発生する可能性があります。 この問題が解決されると、テレメトリ チャネルは、すべての新しいデータおよび保持されているデータの送信を再開します。
 
-この保持されているデータはローカルでは暗号化されません。 これが問題になる場合は、データを確認して、プライベート データのコレクションを制限します。 (詳細については、「[プライベート データをエクスポートして削除する方法](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)」を参照してください。)
+この保持されているデータはローカルでは暗号化されません。 これが問題になる場合は、データを確認して、プライベート データのコレクションを制限します。 詳細については、「[プライベート データをエクスポートして削除する方法](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data)」を参照してください。
 
 顧客がこのディレクトリを特定のセキュリティ要件で構成する必要がある場合は、フレームワークごとに構成できます。 アプリケーションを実行しているプロセスにこのディレクトリへの書き込みアクセス権があることを確認してください。ただし、意図しないユーザーによってテレメトリが読み取られることを防ぐために、このディレクトリが保護されていることも確認してください。
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp` はデータを保持するために使用されます。 この場所は config ディレクトリからは構成できす、このフォルダーにアクセスするためのアクセス許可は、必要な資格情報を持つ特定のユーザーに制限されています。 (ここにある[実装](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)を参照してください。)
+`C:\Users\username\AppData\Local\Temp` はデータを保持するために使用されます。 この場所は config ディレクトリからは構成できす、このフォルダーにアクセスするためのアクセス許可は、必要な資格情報を持つ特定のユーザーに制限されています。 詳細については、[実装](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72)に関するページを参照してください。
 
 ###  <a name="net"></a>.NET
 
@@ -167,7 +167,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
 ```
 
-(詳細については、[AspNetCore のカスタム構成](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration)に関するページを参照してください。 )
+詳細については、[AspNetCore のカスタム構成](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration)に関するページを参照してください。
 
 ### <a name="nodejs"></a>Node.js
 
@@ -183,7 +183,7 @@ Application Insight エンドポイントへのデータの転送時のセキュ
 
 [PCI Security Standards Council](https://www.pcisecuritystandards.org/) は、[2018 年 6 月 30 日を期限として](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf)、TLS/SSL の以前のバージョンを無効にし、より安全なプロトコルにアップグレードすることを求めています。 Azure がレガシー サポートを廃止した場合、アプリケーション/クライアントが TLS 1.2 以上で通信できないと Application Insight にデータを送信できなくなります。 アプリケーションの TLS のサポートをテストおよび検証する方法は、オペレーティング システム/プラットフォームのほか、アプリケーションで使用する言語/フレームワークによって異なります。
 
-アプリケーションで TLS 1.2 のみを使用するように明示的に設定することは、絶対に必要な場合を除いてお勧めしません。なぜなら、そうすることで、TLS 1.3 などのより新しいよくより安全なプロトコルを自動的に検出して利用できるようにするプラットフォーム レベルのセキュリティ機能が無効になる可能性があるためです。 アプリケーションのコードを徹底的に監査して、特定の TLS/SSL バージョンのハードコーディングを確認することをお勧めします。
+アプリケーションで TLS 1.2 のみを使用するように明示的に設定することは、必要な場合を除いてお勧めしません。そうすることで、TLS 1.3 などのより新しくより安全なプロトコルを自動的に検出して利用できるようにするプラットフォーム レベルのセキュリティ機能が無効になる可能性があるためです。 アプリケーションのコードを徹底的に監査して、特定の TLS/SSL バージョンのハードコーディングを確認することをお勧めします。
 
 ### <a name="platformlanguage-specific-guidance"></a>プラットフォーム/言語に固有のガイダンス
 
@@ -212,7 +212,7 @@ openssl version -a
 
 ### <a name="run-a-test-tls-12-transaction-on-linux"></a>Linux 上でテスト TLS 1.2 トランザクションを実行する
 
-Linux システムが TLS 1.2 で通信できるかどうかを確認する基本的な予備テストを実行するには、 ターミナルを開き、次のコマンドを実行します。
+Linux システムが TLS 1.2 で通信できるかどうかを確認する基本的な予備テストを実行するには、ターミナルを開いて、次のように実行してください。
 
 ```terminal
 openssl s_client -connect bing.com:443 -tls1_2
@@ -251,9 +251,9 @@ SDK はプラットフォームごとに異なり、インストールできる�
 | 収集されるデータのクラス | 含まれるデータ (網羅的なリストではありません) |
 | --- | --- |
 | **Properties** |**コードによって決まる任意のデータ** |
-| DeviceContext |Id、IP、ロケール、デバイス モデル、ネットワーク、ネットワークの種類、OEM の名前、画面解像度、ロール インスタンス、ロール名、デバイスの種類 |
+| DeviceContext |`Id`、IP、ロケール、デバイス モデル、ネットワーク、ネットワークの種類、OEM の名前、画面解像度、ロール インスタンス、ロール名、デバイスの種類 |
 | ClientContext |OS、ロケール、言語、ネットワーク、ウィンドウの解像度 |
-| Session |セッション ID |
+| Session |`session id` |
 | ServerContext |コンピューター名、ロケール、OS、デバイス、ユーザー セッション、ユーザー コンテキスト、操作 |
 | Inferred |IP アドレス、タイムスタンプ、OS、ブラウザーからの geo ロケーション |
 | メトリック |メトリックの名前と値 |
@@ -263,8 +263,8 @@ SDK はプラットフォームごとに異なり、インストールできる�
 | Ajax |Web ページからサーバーへの HTTP 呼び出し |
 | Requests |URL、期間、応答コード |
 | 依存関係 |種類 (SQL、HTTP、...)、接続文字列または URI、同期または非同期、期間、成功、SQL ステートメント (Status Monitor による) |
-| **Exceptions** |種類、 **メッセージ**、呼び出し履歴、ソース ファイルと行の番号、スレッド ID |
-| Crashes |プロセス ID、親プロセスの ID、クラッシュ スレッドの ID。アプリケーションの修正プログラム、ID、ビルド。例外の種類、アドレス、理由。難読化されたシンボルとレジスタ、バイナリの開始アドレスと終了アドレス、バイナリ名とパス、CPU の種類 |
+| **Exceptions** |種類、**メッセージ**、呼び出し履歴、ソース ファイル、行の番号、`thread id` |
+| Crashes |`Process id`、`parent process id`、`crash thread id`。アプリケーションの修正プログラム、`id`、ビルド。例外の種類、アドレス、理由。難読化されたシンボルとレジスタ、バイナリの開始アドレスと終了アドレス、バイナリ名とパス、CPU の種類 |
 | Trace |**メッセージ** と重大度レベル |
 | Perf counters |プロセッサ時間、使用可能なメモリ、要求レート、例外レート、プロセスのプライベート バイト、IO レート、要求の期間、要求のキューの長さ |
 | 可用性 |Web テストの応答コード、各テスト ステップの期間、テスト名、タイムスタンプ、成功、応答時間、テストの場所 |

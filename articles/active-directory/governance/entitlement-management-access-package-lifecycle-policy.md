@@ -1,6 +1,6 @@
 ---
-title: Azure AD エンタイトルメント管理 (プレビュー) でアクセス パッケージのライフサイクル設定を変更する - Azure Active Directory
-description: Azure Active Directory エンタイトルメント管理 (プレビュー) でアクセス パッケージのライフサイクル設定を変更する方法を説明します。
+title: Azure AD エンタイトルメント管理でアクセス パッケージのライフサイクル設定を変更する - Azure Active Directory
+description: Azure Active Directory エンタイトルメント管理でアクセス パッケージのライフサイクル設定を変更する方法を説明します。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d63a12443edf04db3570fa43fbd8f20619122e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 959d85f496a4a573a969bf736aba137d5b86154a
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72391974"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174739"
 ---
-# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でアクセス パッケージのライフサイクル設定を変更する
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) エンタイトルメント管理は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージのライフサイクル設定を変更する
 
 アクセス パッケージ管理者は、既存のポリシーを編集することで、アクセス パッケージのライフサイクル設定をいつでも変更できます。 ポリシーの有効期限を変更する場合、既に承認待ちまたは承認済みの状態になっている要求の有効期限は変更されません。
 

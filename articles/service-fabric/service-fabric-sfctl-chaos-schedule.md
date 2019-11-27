@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI- sfctl chaos schedule | Microsoft Docs
 description: Service Fabric CLI sfctl chaos schedule のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 1664978110b7c700906cbf4e6c80806ac70f1f05
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 443a8186ac6e57360105e59e30f84db997cd2251
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036529"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72897554"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 chaos のスケジュールを取得および設定します。
@@ -39,7 +40,7 @@ Chaos をいつどのようにして実行するかを定義する Chaos Schedul
 
 |引数|説明|
 | --- | --- |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -54,7 +55,7 @@ Chaos をいつどのようにして実行するかを定義する Chaos Schedul
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
 Chaos によって使用されるスケジュールを設定します。
 
-Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュールします。 指定された入力スケジュールのバージョンは、サーバー上の Chaos Schedule のバージョンと一致している必要があります。 指定されたバージョンがサーバー上のバージョンと一致しない場合、Chaos Schedule は更新されません。 指定されたバージョンがサーバー上のバージョンと一致する場合、Chaos Schedule は更新され、サーバー上の Chaos Schedule のバージョンは 1 だけインクリメントされて、2,147,483,647 を超えると 0 に戻ります。 この呼び出しが行われたときに Chaos が実行されていると、呼び出しは失敗します。
+Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュールします。 提供されたバージョンがサーバー上のバージョンと一致する場合、Chaos Schedule が更新されます。 Chaos Schedule を更新すると、サーバー上のバージョンが 1 つ増加します。 サーバー上のバージョンは、大きい番号に到達した後、0 に戻ります。 この呼び出しが行われたときに Chaos が実行されていると、呼び出しは失敗します。
 
 ### <a name="arguments"></a>引数
 
@@ -64,7 +65,7 @@ Chaos は、Chaos Schedule に基づいて実行を自動的にスケジュー�
 | --expiry-date-utc | Schedule を使用した Chaos のスケジュール設定を停止する日付と時刻。  既定値\: 9999-12-31T23\:59\:59.999Z。 |
 | --jobs | Chaos を実行する日時と Chaos の実行で使用するパラメーターを表す ChaosScheduleJobs の JSON でエンコードされたリスト。 |
 | --start-date-utc | Schedule を使用した Chaos のスケジュール設定を開始する日付と時刻。  既定値\: 1601-01-01T00\:00\:00.000Z。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 既定値\: 60。 |
 | --version | Schedule のバージョン番号。 |
 
 ### <a name="global-arguments"></a>グローバル引数

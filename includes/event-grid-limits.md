@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 3f94481e6a8550479788d92c744327e1dc3b58c4
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 890095718833c90a6764d0799d2081b393b1d0bd
+ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "66376936"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72887800"
 ---
 次の制限は、Azure Event Grid システムのトピックとカスタム トピックに適用されます。イベント ドメインには適用*されません*。
 
@@ -29,8 +29,9 @@ ms.locfileid: "66376936"
 
 | リソース | 制限 |
 | --- | --- |
-| イベント ドメインあたりのトピック数 | パブリック プレビュー時に 1,000 件 |
-| ドメイン内のトピックあたりのイベント サブスクリプション数 | パブリック プレビュー時に 50 件 |
-| ドメイン スコープ イベント サブスクリプション数 | パブリック プレビュー時に 50 件 |
-| イベント ドメインの発行率 (イングレス) | パブリック プレビュー時に 1 秒あたり 5,000 イベント |
+| イベント ドメインあたりのトピック数 | 100,000 |
+| ドメイン内のトピックあたりのイベント サブスクリプション数 | 500 |
+| ドメイン スコープ イベント サブスクリプション数 | 50 |
+| イベント ドメインの発行率 (イングレス) | 1 秒あたり 5,000 イベント |
 | 発行要求数 | 1 秒あたり 250 |
+| Azure サブスクリプションあたりのイベント ドメイン数 | 100 |

@@ -1,5 +1,5 @@
 ---
-title: Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
+title: Azure Backup を使用してハイブリッド バックアップを保護するセキュリティ機能
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します
 ms.reviewer: utraghuv
 author: dcurwin
@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: dacurwin
-ms.openlocfilehash: 2cd298323d8f455010978361078d474415e77dfa
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a72e43d068f9fc6cf06a4786d511bbc6c25e85d4
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954520"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968435"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Azure Backup を使用したハイブリッド バックアップを保護するためのセキュリティ機能
+
 マルウェア、ランサムウェア、侵入などのセキュリティ問題への懸念が高まっています。 これらのセキュリティ問題は、金銭とデータの両方の観点からコストがかかる可能性があります。 このような攻撃を防ぐために、Azure Backup にはハイブリッド バックアップを保護するセキュリティ機能が用意されています。 この記事では、Azure Recovery Services エージェントと Azure Backup Server を使用して、これらの機能を有効にして使用する方法について説明します。 次のような機能が該当します。
 
 - **防止**。 パスフレーズの変更など、重要な操作を実行するたびに、認証レイヤーが追加されます。 この検証により、有効な Azure 資格情報を持つユーザーのみがそのような操作を実行できるようになります。
@@ -34,6 +35,7 @@ ms.locfileid: "68954520"
 >
 
 ## <a name="enable-security-features"></a>セキュリティ機能の有効化
+
 Recovery Services コンテナーを作成している場合、すべてのセキュリティ機能を使用できます。 既存のコンテナーで作業している場合、次の手順に従ってセキュリティ機能を有効にします。
 
 1. Azure 資格情報を使用して、Azure Portal にサインインします。
@@ -58,6 +60,7 @@ Recovery Services コンテナーを作成している場合、すべてのセ�
     ![セキュリティ設定のスクリーンショット](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
 ## <a name="recover-deleted-backup-data"></a>削除されたバックアップ データの復旧
+
 Azure Backup では削除されたバックアップ データが 14 日間保持され、**バックアップの停止 (バックアップ データの削除操作を含む)** を実行した場合でも、すぐにはデータが削除されません。 14 日以内にこのデータを復元するには、使用しているものに応じて以下の手順を実行します。
 
 **Azure Recovery Services エージェント** ユーザーの場合:
@@ -76,13 +79,15 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
 2. このサーバーを使用できない場合、[[外部 DPM の追加]](backup-azure-alternate-dpm-server.md) をクリックして、別の Data Protection Manager サーバーを使用してこのデータを取得します。
 
 ## <a name="prevent-attacks"></a>攻撃の防止
+
 有効なユーザーのみが各種操作を実行できるようにするためのチェックが追加されました。 たとえば、認証レイヤーの追加や、回復を行うための最小リテンション期間の維持などが含まれています。
 
 ### <a name="authentication-to-perform-critical-operations"></a>重要な操作を実行するための認証
+
 重要な操作の認証レイヤー追加の一部として、**保護の停止 (データの削除を含む)** 操作や**パスフレーズの変更**操作の実行時にセキュリティ PIN の入力を求められます。
 
 > [!NOTE]
-> 
+>
 > 現時点では、セキュリティ PIN は DPM および MABS の**保護の停止 (データの削除を含む)** ではサポートされていません。
 
 この PIN を受け取るには次のようにします。
@@ -93,6 +98,7 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
     この PIN が有効なのは 5 分間のみであり、その期間が過ぎると別のものが自動生成されます。
 
 ### <a name="maintain-a-minimum-retention-range"></a>リテンション期間の最小範囲の維持
+
 有効な数の復旧ポイントを常に使用可能な状態にしておくために、次のチェック機能が追加されました。
 
 - 日単位のリテンション期間の場合、実行されるリテンション期間の最小値は **7** 日間です。
@@ -101,19 +107,22 @@ Azure Backup では削除されたバックアップ データが 14 日間保�
 - 年単位のリテンション期間の場合、実行されるリテンション期間の最小値は **1** 年です。
 
 ## <a name="notifications-for-critical-operations"></a>重要な操作の通知
+
 通常、重要な操作が実行されると、操作の詳細が含まれた電子メール通知がサブスクリプションの管理者に送信されます。 Azure Portal を使用して、これらの通知の電子メール受信者を追加構成できます。
 
 この記事で説明するセキュリティ機能には、対象を絞った攻撃を防ぐための防御機構が用意されています。 さらに重要なことは、攻撃が行われても、これらの機能を使用してデータを回復できるということです。
 
 ## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
+
 | Operation | エラーの詳細 | 解決策 |
 | --- | --- | --- |
 | ポリシーの変更 |バックアップ ポリシーを変更できませんでした。 エラー:サービスの内部エラー [0x29834] が発生したため、現在の操作を実行できませんでした。 しばらくしてから、操作をやり直してください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |**原因:**<br/>このエラーは、セキュリティ設定が有効になっており、リテンション範囲を上記の最小値を下回るように減らそうとしたものの、サポートされていないバージョンを使用していると発生します (サポート対象のバージョンはこの記事の最初のメモに記載されています)。 <br/>**推奨される操作:**<br/> このケースでは、指定した最小リテンション期間 (日次の場合は 7 日間、週次の場合は 4 週間、月次の場合は 3 か月、年次の場合は 1 年) を上回るようにリテンション期間を設定し、ポリシー関連の更新を進めます。 他にもお勧めの方法として、バックアップ エージェント、Azure Backup Server、または DPM UR を更新して、すべてのセキュリティ更新プログラムを適用する方法があります。 |
-| パスフレーズの変更 |入力されたセキュリティ PIN が正しくありません。 (ID: 100130) この操作を完了するには、正しいセキュリティ PIN を指定してください。 |**原因:**<br/> このエラーは、重大な操作 (パスフレーズの変更など) を実行している間に、無効または有効期限の切れたセキュリティ PIN を入力すると発生します。 <br/>**推奨される操作:**<br/> 操作を完了するには、有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure Portal にログインし、Recovery Services コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
-| パスフレーズの変更 |操作に失敗しました。 ID: 120002 |**原因:**<br/>このエラーは、セキュリティ設定が有効になっており、パスフレーズを変更しようとしたものの、サポートされていないバージョンを使用していると発生します (サポート対象のバージョンはこの記事の最初のメモに記載されています)。<br/>**推奨される操作:**<br/> パスフレーズを変更するには、まずバックアップ エージェントを 2.0.9052 以上、Azure Backup Server を update 1 以上、DPM を 2012 R2 UR12 または DPM 2016 UR2 (以下のリンクからダウンロード) に更新してから有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure Portal にログインし、Recovery Services 資格情報コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
+| パスフレーズの変更 |入力されたセキュリティ PIN が正しくありません。 (ID: 100130) この操作を完了するには、正しいセキュリティ PIN を指定してください。 |**原因:**<br/> このエラーは、重大な操作 (パスフレーズの変更など) を実行している間に、無効または有効期限の切れたセキュリティ PIN を入力すると発生します。 <br/>**推奨される操作:**<br/> 操作を完了するには、有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure portal にサインインし、Recovery Services コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
+| パスフレーズの変更 |操作に失敗しました。 ID: 120002 |**原因:**<br/>このエラーは、セキュリティ設定が有効になっており、パスフレーズを変更しようとしたものの、サポートされていないバージョンを使用していると発生します (サポート対象のバージョンはこの記事の最初のメモに記載されています)。<br/>**推奨される操作:**<br/> パスフレーズを変更するには、まずバックアップ エージェントを 2.0.9052 以上、Azure Backup Server を update 1 以上、DPM を 2012 R2 UR12 または DPM 2016 UR2 (以下のリンクからダウンロード) に更新してから有効なセキュリティ PIN を入力する必要があります。 PIN を取得するには、Azure portal にサインインし、Recovery Services コンテナーで [設定]、[プロパティ]、[セキュリティ PIN の生成] の順に移動します。 パスフレーズの変更にはこの PIN を使用します。 |
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Recovery Services コンテナーの使用を開始](backup-azure-vms-first-look-arm.md)して、これらの機能を有効にします。
-* [最新の Azure Recovery Services Agent をダウンロード](https://aka.ms/azurebackup_agent)して、Windows コンピューターを保護し、バックアップ データに対する攻撃を防ぎます。
-* [最新の Azure Backup Server をダウンロード](https://aka.ms/latest_azurebackupserver)して、ワークロードを保護し、攻撃からバックアップ データを保護します。
-* [System Center 2012 R2 Data Protection Manager の UR12 をダウンロード](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager)するか、[System Center 2016 Data Protection Manager の UR2 をダウンロード](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager)して、ワークロードを保護し、バックアップ データに対する攻撃を防ぎます。
+
+- [Azure Recovery Services コンテナーの使用を開始](backup-azure-vms-first-look-arm.md)して、これらの機能を有効にします。
+- [最新の Azure Recovery Services Agent をダウンロード](https://aka.ms/azurebackup_agent)して、Windows コンピューターを保護し、バックアップ データに対する攻撃を防ぎます。
+- [最新の Azure Backup Server をダウンロード](https://aka.ms/latest_azurebackupserver)して、ワークロードを保護し、攻撃からバックアップ データを保護します。
+- [System Center 2012 R2 Data Protection Manager の UR12 をダウンロード](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager)するか、[System Center 2016 Data Protection Manager の UR2 をダウンロード](https://support.microsoft.com/help/3209593/update-rollup-2-for-system-center-2016-data-protection-manager)して、ワークロードを保護し、バックアップ データに対する攻撃を防ぎます。

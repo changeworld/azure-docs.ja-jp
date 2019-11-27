@@ -1,5 +1,5 @@
 ---
-title: Azure Backup を使用した SAP HANA データベースのバックアップ中のエラーをトラブルシューティングする | Microsoft Docs
+title: SAP HANA データベースのバックアップ エラーのトラブルシューティング - Azure Backup
 description: Azure Backup を使用して SAP HANA データベースをバックアップするときに発生する可能性のある一般的なエラーをトラブルシューティングする方法について説明します。
 ms.reviewer: pullabhk
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 00e37030417da97d2c57b0fb5872422e7048a2bc
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954454"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968447"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure での SAP HANA データベースのバックアップをトラブルシューティングする
 
@@ -32,13 +32,13 @@ ms.locfileid: "68954454"
     - CATALOG READ: バックアップ カタログを読み取ります。
     - SAP_INTERNAL_HANA_SUPPORT いくつかのプライベート テーブルにアクセスします。
 2. すべての操作 (データベース クエリ、復元操作、バックアップの構成および実行) を処理するためのキーを HANA プラグインの Hdbuserstore に追加します。
-   
+
    キーの作成を確認するには、SIDADM 資格情報を使用して HANA コンピューター上で HDBSQL コマンドを実行します。
 
     ``` hdbsql
     hdbuserstore list
     ```
-    
+
     このコマンド出力には、AZUREWLBACKUPHANAUSER として示されるユーザーと共に {SID}{DBNAME} キーが表示されます。
 
 > [!NOTE]
@@ -68,6 +68,7 @@ SDC HANA インスタンス "H21" がバックアップされているとしま�
 ![SDC 復元の入力](media/backup-azure-sap-hana-database/hana-sdc-restore.png)
 
 以下の点に注意してください。
+
 - 既定では、復元されるデータベース名に、バックアップ項目名 h21 (sdc) が設定されます。
 - ターゲットを H11 として選択しても、復元されるデータベース名は自動的に変更されません。 **h11(sdc) となるように編集する必要があります**。 SDC の場合、復元されるデータベース名は、小文字のターゲット インスタンス ID の後に sdc をかっこで囲んで付けたものです。
 - SDC はデータベースを 1 つしか含むことができないため、復旧ポイント データによる既存のデータベース データのオーバーライドを許可するチェックボックスをオンにすることも必要です。

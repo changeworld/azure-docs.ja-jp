@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0926e6800dbcd81d2e542e27afe3afb1240cff22
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6baf7d21748b5b524745f26302e70612dab29a8d
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268409"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175439"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデスクトップ アプリ - コードの構成
 
@@ -28,13 +28,22 @@ ms.locfileid: "71268409"
 
 ## <a name="msal-libraries"></a>MSAL ライブラリ
 
-現在、複数のプラットフォーム上でデスクトップ アプリケーションをサポートしている唯一の MSAL ライブラリは、MSAL.NET です
+デスクトップ アプリケーションをサポートしている Microsoft ライブラリは次のとおりです。
 
-iOS および macOS 用の MSAL では、macOS 上でのみ実行されるデスクトップアプリケーションがサポートされています。 
+  MSAL ライブラリ | 説明
+  ------------ | ----------
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 複数のプラットフォーム (Linux、Windows、MacOS) でのデスクトップ アプリケーションの作成をサポートします。
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 複数のプラットフォームでのデスクトップ アプリケーションの作成をサポートします。 進行中の開発 - パブリック プレビュー中
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 複数のプラットフォームでのデスクトップ アプリケーションの作成をサポートします。 進行中の開発 - パブリック プレビュー中
+  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | macOS 上でのみ実行されるデスクトップアプリケーションがサポートされています。
 
-## <a name="public-client-application-with-msalnet"></a>MSAL.NET を使用したパブリック クライアント アプリケーション
+## <a name="public-client-application"></a>パブリック クライアント アプリケーション
 
-コードの観点から、デスクトップ アプリケーションは、パブリック クライアント アプリケーションであり、このため、MSAL.NET `IPublicClientApplication` を構築して操作します。 また、対話型認証を使用するかどうかにかかわらず、状況は少し異なります。
+コードの観点から、デスクトップ アプリケーションは、パブリック クライアント アプリケーションです。 対話型認証を使用するかどうかによって、構成は少し異なります。
+
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+
+MSAL.NET `IPublicClientApplication` を作成して操作する必要があります。
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
@@ -105,7 +114,7 @@ MSAL.NET デスクトップ アプリケーションを構成する方法の詳�
 - `PublicClientApplicationBuilder` で使用可能なすべての修飾子の一覧については、リファレンス ドキュメント [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods) を参照してください
 - `PublicClientApplicationOptions` に公開されているすべてのオプションの説明については、リファレンス ドキュメント内の [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) を参照してください
 
-## <a name="complete-example-with-configuration-options"></a>構成オプション付きの詳細な例
+### <a name="complete-example-with-configuration-options"></a>構成オプション付きの詳細な例
 
 以下の `appsettings.json` 構成ファイルが含まれている .NET Core コンソール アプリケーションを想像してください。
 
@@ -177,7 +186,30 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
 
 また、`.Build()` メソッドを呼び出す前に、前述のように `.WithXXX` メソッドを呼び出すことで構成を上書きできます。
 
-## <a name="public-client-application-with-msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL を使用したパブリック クライアント アプリケーション
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+MSAL Java dev サンプルでその構成に使用されているクラス: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
+
+```Java
+PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
+        .authority(TestData.AUTHORITY_COMMON)
+        .build();
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```Python
+config = json.load(open(sys.argv[1]))
+
+app = msal.PublicClientApplication(
+    config["client_id"], authority=config["authority"],
+    # token_cache=...  # Default cache is in memory only.
+                       # You can learn how to use SerializableTokenCache from
+                       # https://msal-python.rtfd.io/en/latest/#msal.SerializableTokenCache
+    )
+```
+
+# <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
 以下のコードでは、パブリック クライアント アプリケーションをインスタンス化して、職場および学校のアカウントまたは個人の Microsoft アカウントを使用して、Microsoft Azure のパブリック クラウドにユーザーをサインインさせます。
 
@@ -187,7 +219,7 @@ Objective-C:
 
 ```objc
 NSError *msalError = nil;
-    
+
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
 MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
 ```
@@ -210,12 +242,12 @@ MSALAADAuthority *aadAuthority =
                                                    audienceType:MSALAzureADMultipleOrgsAudience
                                                       rawTenant:nil
                                                           error:nil];
-                                                          
+
 MSALPublicClientApplicationConfig *config =
                 [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
                                                                 redirectUri:@"<your-redirect-uri-here>"
                                                                   authority:aadAuthority];
-                                                                  
+
 NSError *applicationError = nil;
 MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
@@ -225,10 +257,11 @@ Swift:
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
-        
+
 let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```
+---
 
 ## <a name="next-steps"></a>次の手順
 

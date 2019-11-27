@@ -1,6 +1,6 @@
 ---
 title: Visual Studio で Azure Stream Analytics ジョブを表示する
-description: この記事では、Visual Studio で Azure Stream Analytics ジョブを表示して管理する方法について説明します。
+description: Visual Studio を使用して、Azure Stream Analytics ジョブの表示、開始と停止、接続テスト、結果確認、およびエクスポートを行う方法を説明します。
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: ae532ed19c2273e43aa739e84d5a68cadb717b86
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d73955436e651dfdb9db9d602481213fcc2cf502
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173019"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893555"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Visual Studio を使用して Azure Stream Analytics ジョブを表示する
 
@@ -38,8 +38,6 @@ Visual Studio の Azure Stream Analytics ツールのインストール方法に
 
     ![Stream Analytics のサーバー エクスプローラーの一覧](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
-
-
 2. ジョブ ノードを展開し、 **[ジョブ ビュー]** ノードをダブルクリックしてジョブ ビューを開きます。
     
    ![展開されたジョブ ノード](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-job-view-01.png)
@@ -50,13 +48,11 @@ Azure Stream Analytics ジョブは、Visual Studio のジョブ ビューから
     
    ![Stream Analytics ジョブのコントロール](./media/stream-analytics-vs-tools/azure-stream-analytics-job-view-controls.png)
 
-
 ## <a name="check-job-results"></a>ジョブ結果の確認
 
 Visual Studio の Stream Analytics ツールは現在、Azure Data Lake Storage と BLOB ストレージの出力のプレビューをサポートしています。 結果を表示するには、**ジョブ ビュー**でジョブ ダイアグラムの出力ノードをダブルクリックして、適切な資格情報を入力するだけです。
 
    ![Stream Analytics ジョブの BLOB 出力](./media/stream-analytics-vs-tools/stream-analytics-blob-preview.png)
-
 
 ## <a name="export-jobs-to-a-project"></a>プロジェクトへのジョブのエクスポート
 

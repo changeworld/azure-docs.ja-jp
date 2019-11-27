@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出すモバイル アプリ - アプリのコード構成 | Microsoft ID プラットフォーム
+title: Web API を呼び出すモバイル アプリ - アプリのコード構成
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出すモバイル アプリを構築する方法 (アプリのコード構成) について説明します
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bebaa5d35876d562e567a8398cc7a9ce7e6f488
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 5f55e73fa1a73908d7e77bacc6af24ea1a40ba92
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413581"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803738"
 ---
 # <a name="mobile-app-that-calls-web-apis---app-registration"></a>Web API を呼び出すモバイル アプリ - アプリの登録
 

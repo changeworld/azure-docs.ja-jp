@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/06/2019
+ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 67a34b2b0a997a118cb2fe1b99de04bd58063307
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ddcf5a1df31b4b36e25b2522ada21deab19fe032
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999053"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73159877"
 ---
 # <a name="securing-paas-deployments"></a>PaaS デプロイをセキュリティで保護する
 
@@ -34,28 +34,14 @@ ms.locfileid: "70999053"
 「[セキュリティで保護されたアプリケーションを Azure 上で開発する](abstract-develop-secure-apps.md)」は、クラウド用のアプリケーションを開発する際に、ソフトウェア開発ライフサイクルの各段階で考慮する必要があるセキュリティの問題と制御に関する一般的なガイドです。
 
 ## <a name="cloud-security-advantages"></a>クラウド セキュリティの利点
-クラウド内に存在することには、セキュリティ上の利点があります。 オンプレミス環境では、組織は責任を果たしきれず、セキュリティに投資できるリソースが限られていることが多いため、攻撃者がすべての階層で脆弱性を悪用できる環境が生まれています。
+お客様と Microsoft との[責任の分担](shared-responsibility.md)を理解することが重要です。 オンプレミスでは、お客様はスタック全体を所有しますが、クラウドに移行すると、責任の一部は Microsoft に移譲されます。
 
-![クラウド時代のセキュリティ上の利点](./media/paas-deployments/advantages-of-cloud.png)
+[クラウド内に存在することには、セキュリティ上の利点](shared-responsibility.md#cloud security advantages)があります。 オンプレミス環境では、組織は責任を果たしきれず、セキュリティに投資できるリソースが限られていることが多いため、攻撃者がすべての階層で脆弱性を悪用できる環境が生まれています。
 
 組織は、プロバイダーの提供するクラウドベースのセキュリティ機能とクラウド インテリジェンスを利用して、脅威の検出と応答時間を向上させることができます。  クラウド プロバイダーに責任をシフトすることで、セキュリティの適用範囲を広げることができるため、これまでセキュリティに費やしてきたリソースと予算を、事業のその他の優先事項に割り当てることができます。
 
-## <a name="division-of-responsibility"></a>責任の分担
-お客様と Microsoft との責任の分担を理解することが重要です。 オンプレミスでは、お客様はスタック全体を所有しますが、クラウドに移行すると、責任の一部は Microsoft に移譲されます。 責任に関する次のマトリックスでは、お客様と Microsoft それぞれが責任を負う SaaS、PaaS、IaaSのデプロイにおけるスタックの領域を示しています。
-
-![責任領域](./media/paas-deployments/responsibility-zones.png)
-
-すべてのクラウド デプロイの種類において、データと ID はお客様が所有します。 お客様にはデータと ID、オンプレミス リソース、お客様が制御するクラウド コンポーネント (サービスの種類によって異なります) を保護する責任があります。
-
-デプロイの種類に関係なく、常にお客様が責任を持つ項目は次のとおりです。
-
-- Data
-- エンドポイント
-- Account
-- アクセス管理
-
 ## <a name="security-advantages-of-a-paas-cloud-service-model"></a>PaaS クラウド サービス モデルのセキュリティ上の利点
-責任に関する同じマトリックスを使用して、オンプレミスに対する Azure PaaS デプロイのセキュリティ上の利点を見ていきましょう。
+オンプレミスに対する Azure PaaS デプロイのセキュリティ上の利点を見ていきましょう。
 
 ![PaaS のセキュリティ上の利点](./media/paas-deployments/advantages-of-paas.png)
 
@@ -181,5 +167,3 @@ Azure を使用してクラウド ソリューションを設計、デプロイ�
 Azure のセキュリティとそれに関連する Microsoft サービスの一般情報については、以下のリソースを参照してください。
 * [Azure セキュリティ チーム ブログ](https://blogs.msdn.microsoft.com/azuresecurity/) – Azure のセキュリティに関する最新情報を提供しています。
 * [Microsoft セキュリティ レスポンス センター](https://technet.microsoft.com/library/dn440717.aspx) - このサイトでは、Azure に関する問題を含め、マイクロソフトのセキュリティの脆弱性を報告できます。メールの場合は、secure@microsoft.com 宛に報告してください。
-
-

@@ -1,5 +1,6 @@
 ---
-title: ブラウザーの既知の問題 (JavaScript 用 Microsoft Authentication Library) | Azure
+title: Safari ブラウザーに関する既知の問題 (MSAL for JavaScript)
+titleSuffix: Microsoft identity platform
 description: JavaScript 用 Microsoft Authentication Library (MSAL.js) を Safari ブラウザーで使用するときの既知の問題について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb89b1ef4dbbef234fba3152d7f85bbadfbdc64a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c48ae9bf7bb5d7f1055ebf0391557a1d117ab39d
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65874085"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934855"
 ---
 # <a name="known-issues-on-safari-browser-with-msaljs"></a>Safari ブラウザーと MSAL.js に関する既知の問題 
 

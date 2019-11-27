@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa42c63809472e1681a820031e48fe4f86fb584
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 189b8666adde0eedcb451655657a4a82dc5e4fec
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756473"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062525"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでカスタム ドメインを構成する
 
@@ -77,38 +77,40 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 カスタム ドメインを使用してアプリケーション プロキシ経由でアプリを公開するには:
 
-1. 新しいアプリの場合は、Azure Active Directory で、左側のナビゲーションの **[エンタープライズ アプリケーション]** を選択し、 **[新規アプリケーション]** を選択してから **[オンプレミスのアプリケーション]** を選択します。 
+1. 新しいアプリの場合、Azure Active Directory の左側のナビゲーションで **[エンタープライズ アプリケーション]** を選択します。 **[新しいアプリケーション]** を選択します。 **[オンプレミスのアプリケーション]** セクションで、 **[オンプレミスのアプリケーションの追加]** を選択します。 
    
    既に **[エンタープライズ アプリケーション]** にあるアプリの場合は、そのアプリを一覧から選択してから、左側のナビゲーションの **[アプリケーション プロキシ]** を選択します。 
 
-1. **[アプリケーション プロキシ]** ページで、 **[内部 URL]** フィールドにアプリの内部 URL を入力します。 
+2. 独自のオンプレミス アプリケーションを追加する場合は、[アプリケーション プロキシの設定] ページで、**名前**を入力します。
+
+3.  **[内部 URL]** フィールドに、アプリの内部 URL を入力します。
    
-1. **[External Url] (外部 URL)** フィールドで、一覧をドロップダウンし、使用するカスタム ドメインを選択します。
+4. **[External Url] (外部 URL)** フィールドで、一覧をドロップダウンし、使用するカスタム ドメインを選択します。
    
-1. **[保存]** を選択します。
+5. **[追加]** を選択します。
    
    ![カスタム ドメインを選択する](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-1. ドメインに既に証明書が存在する場合は、 **[証明書]** フィールドにその証明書の情報が表示されます。 それ以外の場合は、 **[証明書]** フィールドを選択します。 
+6. ドメインに既に証明書が存在する場合は、 **[証明書]** フィールドにその証明書の情報が表示されます。 それ以外の場合は、 **[証明書]** フィールドを選択します。 
    
    ![クリックし、証明書をアップロードします。](./media/application-proxy-configure-custom-domain/certificate.png)
    
-1. **[SSL 証明書]** ページで、PFX 証明書ファイルを参照して選択します。 証明書のパスワードを入力し、 **[証明書のアップロード]** を選択します。 証明書の詳細については、「[カスタム ドメインの証明書](#certificates-for-custom-domains)」のセクションを参照してください。
+7. **[SSL 証明書]** ページで、PFX 証明書ファイルを参照して選択します。 証明書のパスワードを入力し、 **[証明書のアップロード]** を選択します。 証明書の詳細については、「[カスタム ドメインの証明書](#certificates-for-custom-domains)」のセクションを参照してください。
    
    ![証明書のアップロード](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
    > [!TIP] 
    > カスタム ドメインの証明書は 1 回だけアップロードする必要があります。 その後、他のアプリのカスタム ドメインを使用すると、アップロードされた証明書が自動的に適用されます。
    
-1. 証明書を追加した場合は、 **[アプリケーション プロキシ]** ページで **[保存]** を選択します。 
+8. 証明書を追加した場合は、 **[アプリケーション プロキシ]** ページで **[保存]** を選択します。 
    
-1. **[アプリケーション プロキシ]** ページの情報バーで、DNS ゾーンに追加する必要のある CNAME エントリをメモします。 
+9. **[アプリケーション プロキシ]** ページの情報バーで、DNS ゾーンに追加する必要のある CNAME エントリをメモします。 
    
    ![CNAME DNS エントリを追加する](./media/application-proxy-configure-custom-domain/dns-info.png)
    
-1. [Azure portal を使用した DNS レコードとレコード セットの管理](../../dns/dns-operations-recordsets-portal.md)に関するページにある手順に従って、新しい外部 URL を *msappproxy.net* ドメインにリダイレクトする DNS レコードを追加します。
+10. [Azure portal を使用した DNS レコードとレコード セットの管理](../../dns/dns-operations-recordsets-portal.md)に関するページにある手順に従って、新しい外部 URL を *msappproxy.net* ドメインにリダイレクトする DNS レコードを追加します。
    
-1. DNS レコードが正しく構成されていることを確認するには、[nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) コマンドを使用して、外部 URL が到達可能であり、かつ *msapproxy.net* ドメインが別名として表示されることを確認します。
+11. DNS レコードが正しく構成されていることを確認するには、[nslookup](https://social.technet.microsoft.com/wiki/contents/articles/29184.nslookup-for-beginners.aspx) コマンドを使用して、外部 URL が到達可能であり、かつ *msapproxy.net* ドメインが別名として表示されることを確認します。
 
 これで、アプリケーションはカスタム ドメインを使用するように設定されました。 テストやリリースの前に、このアプリケーションに必ずユーザーを割り当ててください。 
 

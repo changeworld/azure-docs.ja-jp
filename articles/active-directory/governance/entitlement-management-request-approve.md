@@ -1,6 +1,6 @@
 ---
-title: Azure AD エンタイトルメント管理 (プレビュー) でアクセス要求を承認または拒否する - Azure Active Directory
-description: マイ アクセス ポータルを使用して、Azure Active Directory のエンタイトルメント管理 (プレビュー) でアクセス パッケージへの要求を承認または拒否する方法を学習します。
+title: Azure AD エンタイトルメント管理でアクセス要求を承認または拒否する - Azure Active Directory
+description: マイ アクセス ポータルを使用して、Azure Active Directory のエンタイトルメント管理でアクセス パッケージへの要求を承認または拒否する方法を学習します。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/18/2019
+ms.date: 10/27/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78243f02cbbe3d06b94ee52d6193865dbfa27121
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 3eb7960d58723d6fdd165841baea3416d5a84348
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488994"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73199774"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でアクセス要求を承認または拒否する
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) のエンタイトルメント管理は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス要求を承認または拒否する
 
 Azure AD のエンタイトルメント管理では、アクセス パッケージの承認を要求し、1 人または複数の承認者を選択するようにポリシーを構成することができます。 この記事では、指定された承認者がアクセス パッケージの要求をどのように承認または拒否できるかについて説明します。
 
@@ -40,7 +35,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. 要求を承認または拒否するよう求める、Microsoft Azure からのメールを検索します。 メールの例を以下に示します。
 
-    ![アクセス パッケージに対する要求を承認するよう求めるメール](./media/entitlement-management-shared/email-approve-request.png)
+    ![アクセス パッケージに対する要求を承認するよう求めるメール](./media/entitlement-management-shared/approver-request-email.png)
 
 1. **[Approve or deny request]\(要求を承認または拒否する\)** リンクをクリックして、アクセス要求を開きます。
 
@@ -70,7 +65,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. 必要に応じて、理由を入力します。
 
-    ![マイ アクセス ポータル - [アクセス要求]](./media/entitlement-management-shared/my-access-approve-request.png)
+    ![マイ アクセス ポータル - [アクセス要求]](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. **[送信]** をクリックして、決定を送信します。
 

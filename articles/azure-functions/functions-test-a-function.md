@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 9155df315a5afb9a0fa7722c955333a47a73085a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 250d470e2450820f57720e0e1a6d274291cf162c
+ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596855"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72809633"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -309,7 +309,8 @@ module.exports = {
     IsPastDue: false
 };
 ```
-このモジュールは、偽のタイマー インスタンスである `IsPastDue` プロパティを実装します。
+
+このモジュールは、偽のタイマー インスタンスである `IsPastDue` プロパティを実装します。 テスト ハーネスは結果をテストするために関数を直接呼び出すだけなので、ここでは NCRONTAB 式などのタイマー構成は必要ありません。
 
 次に、VS Code の Functions 拡張機能を使用して、[JavaScript HTTP 関数を新規作成](/azure/javascript/tutorial-vscode-serverless-node-01)して *HttpTrigger* という名前を付けます。 関数を作成した後、**index.test.js** という名前の同じフォルダーに新しいファイルを追加し、次のコードを追加します。
 

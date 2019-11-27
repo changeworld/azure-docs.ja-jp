@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight の Apache Spark 上で Azure Machine Learning ワークロードを実行する
+title: HDInsight の Apache Spark 上で Azure Machine Learning ワークロードを実行する
 description: Azure HDInsight の Apache Spark 上で 自動化された機械学習 (AutoML) を使用して Azure Machine Learning ワークロードを実行する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 14cb4f02bc18bda24f022f1ccf41a06776a5136b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814041"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241474"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight の Apache Spark 上で自動化された機械学習を使用して Azure Machine Learning ワークロードを実行する
 
@@ -76,5 +76,5 @@ dataflow_with_token = dprep.read_csv(
 ## <a name="next-steps"></a>次の手順
 
 * Automated Machine Learning を導入する理由の詳細については、「[Release models at pace using Microsoft’s automated machine learning! (Microsoft の 自動 Machine Learning を使用してモデルを効率的にリリースする)](https://azure.microsoft.com/blog/release-models-at-pace-using-microsoft-s-automl/)」を参照してください。
-* Azure ML Automated ML の機能の使用に関する詳細については、「[Azure Machine Learning service の新しい Automated Machine Learning 機能](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)」を参照してください。
+* Azure ML Automated ML の機能の使用に関する詳細については、[Azure Machine Learning の新しい自動機械学習機能](https://azure.microsoft.com/blog/new-automated-machine-learning-capabilities-in-azure-machine-learning-service/)に関するページを参照してください。
 * [Microsoft Research の AutoML プロジェクト](https://www.microsoft.com/research/project/automl/)

@@ -1,35 +1,28 @@
 ---
-title: Windows VM に近接通信配置グループを使用する | Microsoft Docs
+title: Windows VM に近接通信配置グループを使用する
 description: Azure の Windows 仮想マシンに近接通信配置グループを作成して使用する方法について説明します。
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: af75b3f98232d6507fc8b0fda179bebc75828086
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6d0c35737151b060dcffba8944f4a1361d36dc14
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088838"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171208"
 ---
-# <a name="preview-deploy-vms-to-proximity-placement-groups-using-powershell"></a>更新:PowerShell を使用し、近接通信配置グループに VM をデプロイする
+# <a name="deploy-vms-to-proximity-placement-groups-using-powershell"></a>PowerShell を使用し、近接通信配置グループに VM をデプロイする
 
 
-VM を可能な限り近くに置き、待ち時間を可能な限り短くするためには、[近接通信配置グループ](co-location.md#preview-proximity-placement-groups)内に VM をデプロイしてください。
+VM を可能な限り近くに置き、待ち時間を可能な限り短くするためには、[近接通信配置グループ](co-location.md#proximity-placement-groups)内に VM をデプロイしてください。
 
 近接通信配置グループは、Azure コンピューティング リソースが互いに物理的に近くに配置されるようにするために使用される論理的なグループ化です。 近接通信配置グループは、短い待ち時間が要件であるワークロードに役立ちます。
-
-> [!IMPORTANT]
-> 近接通信配置グループは現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
-> 近接通信配置グループは、プレビュー期間中、**東日本**、**オーストラリア東部**、**インド中部**では利用できません。
 
 
 ## <a name="create-a-proximity-placement-group"></a>近接通信配置グループの作成

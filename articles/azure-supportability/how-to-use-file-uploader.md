@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure の新しいサポート要求用ファイル アップロード ユーティリティのガイドライン | Microsoft Docs
-description: Microsoft Azure の新しいサポート要求用ファイル アップロード ユーティリティを使用する際のガイドラインについて説明します。
+title: Azure サポート リクエスト - ファイル アップロード ガイドライン
+description: Microsoft Azure サポート リクエストのファイル アップロード オプションを使用する際のガイドラインについて説明します
 author: genlin
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
@@ -8,22 +8,22 @@ ms.service: azure-supportability
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f01c70a2a077e28e8de5118332b780f27dc9ec93
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 8c22ce859aa58aeb8339b16265f6614bd7e723f8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248682"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72936072"
 ---
-# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure の新しいサポート要求用ファイル アップロード ユーティリティのガイドライン
-[サポート要求を作成](https://portal.azure.com/#create/Microsoft.Support)するときに、ファイル アップロード ユーティリティを使用すると、診断ファイル、またはインシデントに関連すると思われるその他のファイルを簡単にアップロードできます。  
+# <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure の新しいサポート リクエスト用ファイル アップロード ユーティリティのガイドライン
+[サポート リクエストを作成](https://portal.azure.com/#create/Microsoft.Support)するときに、ファイル アップロード オプションを使用すると、診断ファイル、またはインシデントに関連すると思われるその他のファイルを簡単にアップロードできます。  
 
 > [!NOTE]
 > プライバシーを保護するため、アップロードには個人情報を含めないでください。
 >
 >
 
-ファイル アップロード ユーティリティを使用する場合は、以下のガイドラインに従ってください。
+ファイル アップロード オプションを使用する場合は、以下のガイドラインに従ってください。
 
 * すべてのファイルには、.docx や .xlsx などのファイル名拡張子が必要です。 使用可能なファイル名拡張子の一覧については、表を参照してください。
 * ファイル名は、110 文字以内にする必要があります。

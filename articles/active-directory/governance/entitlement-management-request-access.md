@@ -1,6 +1,6 @@
 ---
-title: Azure AD のエンタイトルメント管理 (プレビュー) でアクセス パッケージへのアクセスを要求する - Azure Active Directory
-description: マイ アクセス ポータルを使用して、Azure Active Directory のエンタイトルメント管理 (プレビュー) でアクセス パッケージへのアクセスを要求する方法を学習します。
+title: Azure AD のエンタイトルメント管理でアクセス パッケージへのアクセスを要求する - Azure Active Directory
+description: マイ アクセス ポータルを使用して、Azure Active Directory のエンタイトルメント管理でアクセス パッケージへのアクセスを要求する方法を学習します。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86ab995327522ac5dead9b3f944e0760084aedce
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389085"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173706"
 ---
-# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD のエンタイトルメント管理 (プレビュー) でアクセス パッケージへのアクセスを要求する
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) のエンタイトルメント管理は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理でアクセス パッケージへのアクセスを要求する
 
 Azure AD のエンタイトルメント管理では、アクセス パッケージにより、そのアクセス パッケージの有効期間中のアクセスを自動的に管理するリソースとポリシーの 1 回限りのセットアップが可能になります。 
 
@@ -58,12 +53,13 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. リストでアクセス パッケージを見つけます。  必要に応じて、検索文字列を入力して、 **[名前]** 、 **[カタログ]** 、または **[リソース]** フィルターを選択すると検索できます。
 
-    ![マイ アクセス ポータル - リソース検索](./media/entitlement-management-request-access/elm-myaccess-resource-search.png)
+    ![マイ アクセス ポータル - リソース検索](./media/entitlement-management-request-access/my-access-resource-search.png)
+
 1. チェックマークをクリックして、アクセス パッケージを選択します。
 
-    ![マイ アクセス ポータル - [アクセス パッケージ]](./media/entitlement-management-shared/my-access-access-packages.png)
+1. **[アクセスの要求]** をクリックして、[アクセスの要求] ウィンドウを開きます。
 
-1. **[アクセス権の要求]** をクリックして、[アクセス権の要求] ウィンドウを開きます。
+    ![マイ アクセス ポータル - [アクセス パッケージ]](./media/entitlement-management-request-access/my-access-request-access-button.png)
 
 1. **[業務上の正当な理由]** ボックスが表示された場合は、アクセスを必要とする正当な理由を入力します。
 
@@ -78,6 +74,12 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 1. **[要求の履歴]** をクリックして、要求と状態のリストを表示します。
 
     アクセス パッケージに承認が必要な場合、要求はこの時点で承認待ち状態になります。
+
+### <a name="select-a-policy"></a>ポリシーの選択
+
+適用されるポリシーが複数あるアクセス パッケージへのアクセスを要求する場合は、ポリシーの選択を求められることがあります。 たとえば、アクセス パッケージ マネージャーは、社内の従業員の 2 つのグループ用に 2 つのポリシーを使用してアクセス パッケージを構成する場合があります。 最初のポリシーでは、60 日間アクセスを許可し、承認を要求する場合があります。 2 番目のポリシーでは、2 日間アクセスを許可し、承認を要求しない場合があります。 このシナリオが発生した場合は、使用するポリシーを選択する必要があります。
+
+![マイ アクセス ポータル - [アクセスの要求] - 複数のポリシー](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
 ## <a name="cancel-a-request"></a>要求を取り消す
 
@@ -94,12 +96,6 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
     ![マイ アクセス ポータル - [要求の取り消し]](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
 1. **[要求の履歴]** をクリックして、要求が取り消されたことを確認します。
-
-## <a name="select-a-policy"></a>ポリシーの選択
-
-適用されるポリシーが複数あるアクセス パッケージへのアクセスを要求する場合は、ポリシーの選択を求められることがあります。 たとえば、アクセス パッケージ マネージャーは、社内の従業員の 2 つのグループ用に 2 つのポリシーを使用してアクセス パッケージを構成する場合があります。 最初のポリシーでは、60 日間アクセスを許可し、承認を要求する場合があります。 2 番目のポリシーでは、2 日間アクセスを許可し、承認を要求しない場合があります。 このシナリオが発生した場合は、使用するポリシーを選択する必要があります。
-
-**前提となるロール:** 要求元
 
 ## <a name="next-steps"></a>次の手順
 

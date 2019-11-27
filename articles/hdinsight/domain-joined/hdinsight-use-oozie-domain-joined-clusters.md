@@ -1,5 +1,5 @@
 ---
-title: Enterprise セキュリティ パッケージを使用した Apache Oozie ワークフロー - Azure HDInsight
+title: Apache Oozie ワークフローとエンタープライズ セキュリティ - Azure HDInsight
 description: Azure HDInsight Enterprise セキュリティ パッケージを使用して Apache Oozie ワークフローをセキュリティで保護します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
 ms.service: hdinsight
 author: omidm1
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: 99f8c2b40445fe282800d096353bee1c7a934ebe
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 03826d1005253c408374ea4c78266eef97aab2aa
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918123"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044836"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する
 
@@ -61,9 +61,9 @@ Oozie ワークフローの定義は、Apache Hadoop プロセス定義言語 (h
    tar -xvf oozie-examples.tar.gz
    hdfs dfs -put examples /user/<DomainUser>/
    ```
-   `DomainUser` をドメイン ユーザー名に置き換えます。 
-   `DomainUserPath` をドメイン ユーザーのホーム ディレクトリのパスに置き換えます。 
-   `ClusterVersion` をクラスターの Hortonworks Data Platform (HDP) バージョンに置き換えます。
+   `DomainUser` をドメイン ユーザー名に置き換えます。
+   `DomainUserPath` をドメイン ユーザーのホーム ディレクトリのパスに置き換えます。
+   `ClusterVersion` を実際のクラスター データ プラットフォームのバージョンに置き換えます。
 
 2. 次のステートメントを使用して、新しいファイルを作成し、編集します。
    ```bash

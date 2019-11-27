@@ -1,5 +1,6 @@
 ---
-title: アプリ登録ポータルのヘルプ トピック | Microsoft Docs
+title: アプリ登録ポータルのヘルプ トピック
+titleSuffix: Microsoft identity platform
 description: Microsoft アプリ登録ポータルの各種機能の説明。
 services: active-directory
 documentationcenter: ''
@@ -18,12 +19,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49675d8b18020c73a27a41fedff47697e29d829e
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 61787e7a86a1c40ec04fb7a3d605158c85782d94
+ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988488"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72803398"
 ---
 # <a name="app-registration-reference"></a>アプリ登録のリファレンス
 このドキュメントでは、Azure portal の[アプリの登録](https://aka.ms/appregistrations)エクスペリエンスの各種機能のコンテキストと説明を提供します。

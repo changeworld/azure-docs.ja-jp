@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff5152a2d65ea3921f0fef7f3a020bcea80d1769
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: d004d1183c9f5c1aec2dae7ab2d638528f164cd9
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421257"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73062498"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>アプリケーション プロキシ を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン
 
@@ -41,7 +41,7 @@ SAML 認証でセキュリティ保護されているオンプレミスのアプ
 
 1. Azure portal 内で、 **[Azure Active Directory] > [エンタープライズ アプリケーション]** の順に選択し、 **[新規アプリケーション]** を選択します。
 
-2. **[独自のアプリを追加する]** で、 **[ギャラリー以外のアプリケーション]** を選択します。
+2. **[オンプレミスのアプリケーション]** セクションで、 **[オンプレミスのアプリケーションの追加]** を選択します。
 
 3. 新しいアプリケーションの表示名を入力し、 **[追加]** を選択します。
 

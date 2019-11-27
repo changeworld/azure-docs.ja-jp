@@ -8,26 +8,30 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: dacurwin
-ms.openlocfilehash: 89ad5cac462384e8c688ae9ca68c5ae309249a71
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ed88f069c110795c2c5561196c41d3d75640bd53
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68689281"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968460"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用して Exchange サーバーを Azure にバックアップする
+
 この記事では、Microsoft Exchange Server を Azure にバックアップするために Microsoft Azure Backup Server (MABS) を構成する方法を説明します。  
 
 ## <a name="prerequisites"></a>前提条件
+
 Azure Backup Server を[インストールして準備](backup-azure-microsoft-azure-backup.md)したことを確認してから、次の手順に進んでください。
 
 ## <a name="mabs-protection-agent"></a>MABS 保護エージェント
+
 Exchange サーバーに MABS 保護エージェントをインストールするには、次の手順に従います。
 
 1. ファイアウォールが正しく構成されていることを確認します。 「 [エージェントに対するファイアウォール例外の構成](https://technet.microsoft.com/library/Hh758204.aspx)」を参照してください。
 2. MABS 管理者コンソールで **[管理]、[エージェント]、[インストール]** の順にクリックし、Exchange サーバーにエージェントをインストールします。 詳細な手順については、「[MABS 保護エージェントのインストール](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396)」を参照してください。
 
 ## <a name="create-a-protection-group-for-the-exchange-server"></a>Exchange サーバーの保護グループを作成する
+
 1. MABS 管理者コンソールで **[保護]** をクリックし、次にツール リボンの **[新規]** をクリックして **[新しい保護グループの作成]** ウィザードを開きます。
 2. ウィザードの **[ようこそ]** 画面で **[次へ]** をクリックします。
 3. **[保護グループの種類の選択]** 画面で、 **[サーバー]** を選択し、 **[次へ]** をクリックします。
@@ -89,6 +93,7 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
 19. **[閉じる]** をクリックします。
 
 ## <a name="recover-the-exchange-database"></a>Exchange データベースを回復する
+
 1. Exchange データベースを回復するには、MABS 管理者コンソールで **[回復]** をクリックします。
 2. 回復する Exchange データベースを特定します。
 3. *[回復時刻]* ドロップダウン リストからオンライン回復ポイントを選択します。
@@ -105,4 +110,5 @@ Exchange サーバーに MABS 保護エージェントをインストールす�
     ![オンライン レプリケーションの選択](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
 ## <a name="next-steps"></a>次の手順
+
 * [Azure Backup FAQ](backup-azure-backup-faq.md)

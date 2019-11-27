@@ -1,5 +1,5 @@
 ---
-title: Azure AD エンタイトルメント管理でアクセス パッケージ管理者にアクセス ガバナンスを委任する (プレビュー) - Azure Active Directory
+title: Azure AD エンタイトルメント管理でアクセス パッケージ管理者にアクセス ガバナンスを委任する - Azure Active Directory
 description: アクセス パッケージ管理者とプロジェクト マネージャーが自分でアクセスを管理できるよう、IT 管理者からアクセス ガバナンスを委任する方法について説明します。
 services: active-directory
 documentationCenter: ''
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a2b6bfdb4904e11ffba3a9fe1097c7f5cfe9d6
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: efdc61b82a19cc5d370d6069e8c9dcd3ce5e8ae5
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170873"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174359"
 ---
-# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理でアクセス パッケージ管理者にアクセス ガバナンスを委任する (プレビュー)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) エンタイトルメント管理は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージ管理者にアクセス ガバナンスを委任する
 
 カタログ内のアクセス パッケージの作成と管理を委任するには、アクセス パッケージ管理者ロールにユーザーを追加します。 アクセス パッケージ管理者は、カタログ内のリソースに対するアクセスをユーザーが要求するニーズを理解しておく必要があります。 たとえば、あるプロジェクトにあるカタログが使用される場合、プロジェクト リーダーはそのカタログのアクセス パッケージ管理者になることがあります。  アクセス パッケージ管理者はカタログにリソースを追加できませんが、カタログ内のアクセス パッケージやポリシーを管理できます。  アクセス パッケージ管理者に委任すると、その管理者は次のことを担当します。
 

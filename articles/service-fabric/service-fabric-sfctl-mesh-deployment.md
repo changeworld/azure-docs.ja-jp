@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI- sfctl mesh deployment | Microsoft Docs
 description: Service Fabric CLI- sfctl mesh deployment のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: b3f506b46ef563f47fc7c67b759d3fcd08b7509d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: dbecf8e96c6cb5d0d6d873309d848304fe33eaaa
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035175"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901247"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 Service Fabric Mesh リソースを作成します。
@@ -36,8 +37,8 @@ Service Fabric Mesh リソースのデプロイを作成します。
 
 |引数|説明|
 | --- | --- |
-| --input-yaml-files [必須] | すべての yaml ファイルのコンマ区切りの相対/絶対ファイル パス、または yaml ファイルを含むディレクトリ (再帰的) の相対/絶対パス。 |
-| --parameters | yaml ファイルまたはオーバーライドする必要があるパラメーターを含む json オブジェクトに対する相対/絶対パス。 |
+| --input-yaml-files [必須] | すべての yaml ファイルのコンマ区切りの相対 (または絶対) ファイル パス、または yaml ファイルを含むディレクトリ (再帰的) の相対 (または絶対) パス。 |
+| --parameters | yaml ファイルまたはオーバーライドする必要があるパラメーターを含む json オブジェクトに対する相対 (または絶対) パス。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -52,25 +53,22 @@ Service Fabric Mesh リソースのデプロイを作成します。
 ### <a name="examples"></a>例
 
 yaml ファイルに記述されているパラメーターをオーバーライドすることで、すべてのリソースを統合してクラスターにデプロイします
-
-```
-sfctl mesh deployment create --input-yaml-files ./app.yaml,./network.yaml --parameters
-./param.yaml
+``` 
+sfctl mesh deployment create --input-yaml-files ./app.yaml,./network.yaml --parameters  
+./param.yaml    
 ```
 
 yaml ファイルに記述されているパラメーターをオーバーライドすることで、ディレクトリ内のすべてのリソースを統合してクラスターにデプロイします
 
-```
+``` 
 sfctl mesh deployment create --input-yaml-files ./resources --parameters ./param.yaml
 ```
 
 json オブジェクトとして直接渡されるパラメーターをオーバーライドすることで、ディレクトリ内のすべてのリソースを統合してクラスターにデプロイします
-
+``` 
+sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_param' :    
+{'value' : 'my_value'} }"   
 ```
-sfctl mesh deployment create --input-yaml-files ./resources --parameters "{ 'my_param' :
-{'value' : 'my_value'} }"
-```
-
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。
