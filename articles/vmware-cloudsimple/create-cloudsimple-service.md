@@ -8,19 +8,20 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 99194c42dbc6ef07301be517021bf0fb4b4e7c23
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8648f2c9cc0175050d4b7642f5235d47159ecfaf
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173506"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893939"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Azure VMware Solution by CloudSimple サービスの作成
 
 CloudSimple による Azure VMware ソリューションを開始するには、Azure portal で CloudSimple による Azure VMware ソリューション サービスを作成します。
 
-> [!IMPORTANT]
-> CloudSimple サービスを作成する前に、Azure サブスクリプションに Microsoft.VMwareCloudSimple リソース プロバイダーを登録する必要があります。 [Azure サブスクリプションで Microsoft.VMwareCloudSimple リソース プロバイダーを有効にする](enable-cloudsimple-service.md)方法の手順を実行します。
+## <a name="before-you-begin"></a>開始する前に
+
+ゲートウェイ サブネットに /28 CIDR ブロックを割り当てます。 CloudSimple サービスごとに、その作成先のリージョンに固有のゲートウェイ サブネットが必要となります。 ゲートウェイ サブネットは、エッジ ネットワーク サービスを作成するときに使用され、/28 CIDR ブロックを必要とします。 ゲートウェイ サブネットのアドレス空間は一意である必要があります。 CloudSimple 環境と通信するネットワークと重複しないようにしてください。 CloudSimple と通信するネットワークとしては、オンプレミスのネットワークや Azure Virtual Network があります。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

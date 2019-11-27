@@ -11,18 +11,21 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 3876c6f80e9f18059ab4abac67732cdbf2ca24fa
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: ffcff84c7778ec3d6395e1c7a706c0deb2a0dc90
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248292"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893433"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>マネージド ドメインに関するパスワードとアカウントのロックアウト ポリシー
 
 Azure Active Directory Domain Services (Azure AD DS) でユーザーのセキュリティを管理するには、アカウント ロックアウトの設定や、パスワードの最小文字数、パスワードの複雑さなどを制御する細かい設定が可能なパスワード ポリシーを定義します。 既定の細かいパスワード ポリシーは、Azure AD DS マネージド ドメイン内のすべてのユーザーに対して作成され、適用されます。 きめ細かく制御し、特定のビジネスまたはコンプライアンスのニーズに対応するために、追加のポリシーを作成し、特定のユーザー グループに適用することができます。
 
 この記事では、Active Directory 管理センターを使用して Azure AD DS に細かい設定が可能なパスワード ポリシーを作成し、構成する方法について説明します。
+
+> [!NOTE]
+> パスワード ポリシーは、Resource Manager デプロイ モデルを使用して作成された Azure AD DS マネージド ドメインに対してのみ使用できます。 クラシックを使用して作成された古いマネージド ドメインの場合は、[クラシック仮想ネットワーク モデルから Resource Manager に移行][migrate-from-classic]します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -34,6 +37,7 @@ Azure Active Directory Domain Services (Azure AD DS) でユーザーのセキュ
   * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
   * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
+  * Azure AD DS インスタンスは、Resource Manager デプロイ モデルを使用して作成されている必要があります。 必要であれば、[クラシック仮想ネットワーク モデルから Resource Manager に移行します][migrate-from-classic]。
 * Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
   * 必要に応じて、[管理 VM を作成する][tutorial-create-management-vm]チュートリアルを完了します。
 * Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
@@ -130,3 +134,4 @@ Azure でアプリケーションを構築して実行するときに、カス�
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
+[migrate-from-classic]: migrate-from-classic-vnet.md

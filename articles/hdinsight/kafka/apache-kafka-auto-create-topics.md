@@ -7,51 +7,49 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/18/2018
-ms.openlocfilehash: 393087f4d5c5e7a52fd2dd10d20362a045a0075b
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 10/25/2019
+ms.openlocfilehash: 7ec7d15806927306b12624962facbafddf2ce08b
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122665"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242361"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法
 
-既定では、HDInsight 上の [Apache Kafka](https://kafka.apache.org/) は自動的にトピックを作成しません。 [Apache Ambari](https://ambari.apache.org/) を使って、既存のクラスターでの自動トピック作成を有効にすることができます。 Azure Resource Manager テンプレートを使って新しい Kafka クラスターを作成するときに、自動トピック作成を有効にすることもできます。
+既定では、HDInsight 上の [Apache Kafka](https://kafka.apache.org/) では、自動的にトピックは作成されません。 [Apache Ambari](https://ambari.apache.org/) を使って、既存のクラスターでの自動トピック作成を有効にすることができます。 Azure Resource Manager テンプレートを使って新しい Kafka クラスターを作成するときに、自動トピック作成を有効にすることもできます。
 
 ## <a name="apache-ambari-web-ui"></a>Apache Ambari Web UI
 
 Ambari Web UI を使って既存のクラスターでトピックの自動作成を有効にするには、次の手順のようにします。
 
-1. [Azure portal](https://portal.azure.com) で Kafka クラスターを選びます。
+1. [Azure portal](https://portal.azure.com) 上で、ご自身の Kafka クラスターを選択します。
 
-2. __クラスターの概要__ で __[クラスター ダッシュボード]__ を選びます。
+1. **クラスター ダッシュボード**上で **[Ambari ホーム]** を選択します。
 
-    ![クラスター ダッシュボードが選ばれたポータルの画像](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
+    ![クラスター ダッシュボードが選ばれたポータルの画像](./media/apache-kafka-auto-create-topics/azure-portal-cluster-dashboard-ambari.png)
 
-3. 次に、 __[HDInsight クラスター ダッシュボード]__ を選択します。 認証を求められたら、クラスターのログイン (管理者) 資格情報を使用して認証を行います。
+    認証を求められたら、クラスターのログイン (管理者) 資格情報を使用して認証を行います。 または、`https://CLUSTERNAME.azurehdinsight.net/` から直接 Amabri に接続することもできます。その際、`CLUSTERNAME` はご自身の Kafka クラスターの名前になります。
 
-    ![HDInsight クラスター ダッシュボード エントリの画像](./media/apache-kafka-auto-create-topics/hdinsight-cluster-dashboard.png)
-
-3. ページの左側にある一覧で Kafka サービスを選びます。
+1. ページの左側にある一覧で Kafka サービスを選びます。
 
     ![Apache Ambari のサービス一覧タブ](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
-4. ページ中央の [Configs]\(構成\) を選択します。
+1. ページ中央の [Configs]\(構成\) を選択します。
 
     ![Apache Ambari のサービス構成タブ](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-5. [フィルター] フィールドに値「`auto.create`」を入力します。
+1. [フィルター] フィールドに値「`auto.create`」を入力します。
 
     ![Apache Ambari の検索フィルター フィールド](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
     プロパティの一覧にフィルターが適用されて `auto.create.topics.enable` 設定が表示されます。
 
-6. `auto.create.topics.enable` の値を `true` に変更して、[保存] を選びます。 メモを追加してから、もう一度 [保存] を選びます。
+1. `auto.create.topics.enable` の値を `true` に変更して、 **[保存]** を選択します。 ノートを追加して、もう一度 **[保存]** を選択します。
 
     ![auto.create.topics.enable エントリの画像](./media/apache-kafka-auto-create-topics/auto-create-topics-enable.png)
 
-7. Kafka サービスを選び、 __[Restart]\(再起動\)__ を選んで、 __[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選びます。 メッセージが表示されたら、 __[Confirm restart all]\(すべて再起動\)__ を選択します。
+1. Kafka サービスを選び、 __[Restart]\(再起動\)__ を選んで、 __[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選びます。 メッセージが表示されたら、 __[Confirm restart all]\(すべて再起動\)__ を選択します。
 
     ![Apache Ambari の影響を受けるものをすべて再起動](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 

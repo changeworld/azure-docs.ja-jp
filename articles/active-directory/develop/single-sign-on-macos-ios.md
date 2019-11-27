@@ -1,5 +1,6 @@
 ---
-title: macOS と iOS で SSO を構成する | Microsoft ID プラットフォーム
+title: macOS と iOS で SSO を構成する
+titleSuffix: Microsoft identity platform
 description: macOS と iOS でシングル サインオン (SSO) を構成する方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a407b57a380d059703383b02e37decb8761786f4
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: fd944af95f80cf456260beb072c703aab0d15ceb
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269349"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175278"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>方法:macOS と iOS で SSO を構成する
 

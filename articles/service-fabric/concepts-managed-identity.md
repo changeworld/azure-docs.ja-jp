@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: edce98e6babb676ee72f1d254b929e557332dd75
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e2f05ba28109a9b3c88d80eb218bf94014f0f082
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333134"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73243032"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Service Fabric アプリケーションのマネージド ID (プレビュー)
 
@@ -45,7 +45,7 @@ Azure リソースのマネージド ID のドキュメント セット全体で
 
 ## <a name="supported-scenarios-for-service-fabric-applications"></a>Service Fabric アプリケーションのサポート シナリオ
 
-Service Fabric のマネージド ID は、Azure にデプロイされた Service Fabric クラスターでのみ、また Azure リソースとしてデプロイされたアプリケーションに対してのみサポートされます。Azure リソースとしてデプロイされていないアプリケーションには ID を割り当てることができません。 概念的には、Azure Service Fabric クラスターでのマネージド ID のサポートは、次の 2 つのフェーズで構成されます。
+Service Fabric のマネージド ID は、Azure にデプロイされた Service Fabric クラスターでのみ、また Azure リソースとしてデプロイされたアプリケーションに対してのみサポートされます。Azure リソースとしてデプロイされていないアプリケーションには、ID を割り当てることができません。 概念的には、Azure Service Fabric クラスターでのマネージド ID のサポートは、次の 2 つのフェーズで構成されます。
 
 1. 1 つまたは複数のマネージド ID をアプリケーション リソースに割り当てます。アプリケーションには、1 つのシステム割り当て ID と、32 個までのユーザー割り当て ID のどちらかまたは両方をそれぞれ割り当てることができます。
 
@@ -77,4 +77,5 @@ Service Fabric のマネージド ID は、Azure にデプロイされた Servic
 * [システム割り当ての ID を持つ Azure Service Fabric アプリケーションをデプロイする](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [ユーザー割り当てのマネージド ID を持つアプリケーションのデプロイ方法](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [サービス コードから Service Fabric アプリケーションのマネージド ID を活用する](./how-to-managed-identity-service-fabric-app-code.md)
-* [Azure Service Fabric アプリケーションに他の Azure リソースへのアクセスを許可する](./how-to-grant-access-other-resources.md)
+* [Azure Service Fabric アプリケーションに他の Azure リソースへのアクセス権を付与する](./how-to-grant-access-other-resources.md)
+* [アプリケーション シークレットを KeyVaultReferences として宣言して使用する](./service-fabric-keyvault-references.md) 

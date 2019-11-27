@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a6e3d466321fcd8f32f46359c97f67400a8f86c6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828152"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893934"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドを作成する
 
@@ -31,6 +31,16 @@ ms.locfileid: "71828152"
 
 プライベート クラウドを作成すると、単一の vSphere クラスターと、そのクラスターで作成されるすべての管理 VM を使用できます。
 
+## <a name="before-you-begin"></a>開始する前に
+
+プライベート クラウドを作成する前に、ノードをプロビジョニングする必要があります。 ノードのプロビジョニングの詳細については、「[Azure VMware Solution by CloudSimple 用のノードをプロビジョニングする](create-nodes.md)」を参照してください。
+
+プライベート クラウドの vSphere/vSAN サブネットに対する CIDR 範囲を割り当てます。 プライベート クラウドは、vCenter サーバーによって管理される、分離された VMware スタック環境 (ESXi ホスト、vCenter、vSAN、および NSX) として作成されます。 管理コンポーネントは、vSphere/vSAN サブネットの CIDR に対して選択されたネットワーク内にデプロイされます。 ネットワーク CIDR の範囲は、デプロイの間に異なる複数のサブネットに分割されます。 vSphere/vSAN サブネットのアドレス空間は一意である必要があります。 CloudSimple 環境と通信するネットワークと重複しないようにしてください。 CloudSimple と通信するネットワークとしては、オンプレミスのネットワークや Azure Virtual Network があります。 vSphere/vSAN サブネットの詳細については、「VLAN とサブネットの概要」を参照してください。
+
+* vSphere/vSAN サブネットの CIDR 範囲の最小プレフィックス: /24
+* vSphere/vSAN サブネットの CIDR 範囲の最大プレフィックス: /21
+
+
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple ポータルにアクセスする
 
 [CloudSimple ポータル](access-cloudsimple-portal.md)にアクセスします。
@@ -46,7 +56,7 @@ ms.locfileid: "71828152"
 
 5. CloudSimple ポータルで、プライベート クラウドの名前を指定します。
 6. プライベート クラウドの**場所**を選択します。
-7. Azure で購入したものと一貫性のある**ノードの種類**を選択します。
+7. Azure 上にプロビジョンしたものと一貫性のある**ノードの種類**を選択します。
 8. **[ノード数]** を指定します。  プライベート クラウドを作成するには、少なくとも 3 つのノードが必要です。
 
     ![プライベート クラウドを作成する - 基本情報](media/create-private-cloud-basic-info.png)

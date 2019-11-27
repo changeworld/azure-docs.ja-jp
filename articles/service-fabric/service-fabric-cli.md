@@ -2,18 +2,18 @@
 title: Azure Service Fabric CLI の概要
 description: Azure Service Fabric CLI の使用方法について説明します。 クラスターに接続して、アプリケーションを管理する方法についても説明します。
 services: service-fabric
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: e0146504bd06a3c56de8113cc59c9eedd375d06f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803244"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901376"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -33,7 +33,8 @@ Service Fabric CLI は、Service Fabric SDK の最新のランタイム バー�
 
 | CLI のバージョン   | サポートされているランタイムのバージョン |
 |---------------|---------------------------|
-| 最新 (7 以前)  | 最新 (6.4 以前)            |
+| 最新 (8 まで)  | 最新 (6.5 まで)            |
+| 7.1.0         | 6.4.                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |

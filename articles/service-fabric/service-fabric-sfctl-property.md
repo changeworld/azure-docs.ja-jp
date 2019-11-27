@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI- sfctl property | Microsoft Docs
 description: Service Fabric CLI- sfctl property のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 34e6fc0d4e6e0817f9312a6565a2dd5dd99fdab9
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 368dad54c611e4532b46f11669bcf8e363b9a740
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035245"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901072"
 ---
 # <a name="sfctl-property"></a>sfctl property
 Service Fabric の名前でプロパティを格納およびクエリします。
@@ -43,7 +44,7 @@ Service Fabric の名前でプロパティを格納およびクエリします�
 | --- | --- |
 | --name-id       [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --property-name [必須] | 取得するプロパティの名前を指定します。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバーのタイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -66,7 +67,7 @@ Service Fabric の名前でプロパティを格納およびクエリします�
 | --- | --- |
 | --name-id       [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --property-name [必須] | 取得するプロパティの名前を指定します。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバーのタイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -90,7 +91,7 @@ Service Fabric 名には、カスタム情報を格納している 1 つまた�
 | --name-id [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
 | --include-values | 返されるプロパティの値を含めるかどうかを指定できます。 メタデータと共に値を返す場合は true、プロパティのメタデータのみを返す場合は false。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバーのタイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -114,8 +115,8 @@ Service Fabric プロパティを作成または更新します。
 | --name-id       [必須] | "fabric\:" URI スキームを除いた Service Fabric の名前。 |
 | --property-name [必須] | Service Fabric プロパティの名前。 |
 | --value         [必須] | Service Fabric プロパティの値を記述します。 これは、JSON 文字列です。 <br><br> JSON 文字列には、データの "Kind" とデータの "Value" の 2 つのフィールドがあります。 "Kind" の値は、JSON 文字列に出現する最初の項目でなければならず、指定できる値は "Binary"、"Int64"、"Double"、"String"、"Guid" です。 値は、特定の型にシリアル化可能である必要があります。 "Kind" と "Data" の値はどちらも、文字列として指定する必要があります。 |
-| --custom-id-type | プロパティのカスタム型 ID。このプロパティを使用して、ユーザーはプロパティの値の型にタグを付けることができます。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --custom-id-type | プロパティのカスタム型 ID。 このプロパティを使用して、ユーザーはプロパティの値の型にタグを付けることができます。 |
+| --timeout -t | 既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 

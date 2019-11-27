@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b75e9aa3c588f5046ec55c0d809ca74060ad9c2
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 39ec09c1ecb94a5ae189317d89cce4bc8f279b48
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509339"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175688"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>方法:条件付きアクセスを使用して信頼されていないネットワークからのアクセスに対して MFA を必須にする   
 
@@ -47,10 +47,10 @@ Azure AD 条件付きアクセスを使用すると、アクセス許可を付�
 
 このシナリオの課題は、*信頼されていないネットワークの場所からのアクセス*を、条件付きアクセスの条件に変換することです。 条件付きアクセス ポリシーでは、[場所の条件](location-condition.md)を構成して、ネットワークの場所に関連するシナリオに対応できます。 場所の条件を利用して、IP アドレスの範囲、国、およびリージョンの論理グループ化であるネームド ロケーションを選択できます。  
 
-通常、組織では、1 つまたは複数アドレスの範囲 (たとえば、199.30.16.0 ～ 199.30.16.24) を保持しています。
+通常、組織では、1 つまたは複数アドレスの範囲 (たとえば、199.30.16.0 から 199.30.16.15) を保持しています。
 ネームド ロケーションは、次の方法で構成できます。
 
-- この範囲 (199.30.16.0 ～ 24) を指定する 
+- この範囲 (199.30.16.0/28) を指定する 
 - **企業ネットワーク**など、わかりやすい名前を割り当てる 
 
 信頼されていないすべての場所が何かの定義を試みる代わりに、次のことを実行できます。

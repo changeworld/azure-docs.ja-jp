@@ -1,33 +1,28 @@
 ---
-title: Linux VM に対して近接通信配置グループのプレビューを使用する | Microsoft Docs
+title: Linux VM に近接通信配置グループを使用する
 description: Azure で Linux 仮想マシンに対して近接通信配置グループを作成して使用する方法について説明します。
 services: virtual-machines-linux
 author: cynthn
-manager: jeconnoc
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/01/2019
+ms.date: 10/30/2019
 ms.author: cynthn
-ms.openlocfilehash: a3009c9863d8322e3fe34bd99d64b93f0aa3d858
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 353a266b647c299515c15889c302ba4409aa511b
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385735"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73171057"
 ---
-# <a name="preview-deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>更新:Azure CLI を使用して近接通信配置グループに VM をデプロイする
+# <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Azure CLI を使用して近接通信配置グループに VM をデプロイする
 
-各 VM をできるだけ近くに配置して、可能性のある最も短い待ち時間を実現するには、それらを[近接通信配置グループ](co-location.md#preview-proximity-placement-groups)内にデプロイするようにしてください。
+各 VM をできるだけ近くに配置して、可能性のある最も短い待ち時間を実現するには、それらを[近接通信配置グループ](co-location.md#proximity-placement-groups)内にデプロイするようにしてください。
 
 近接通信配置グループは、Azure コンピューティング リソースが互いに物理的に近くに配置されるようにするために使用される論理的なグループ化です。 近接通信配置グループは、短い待ち時間が要件であるワークロードに役立ちます。
 
-> [!IMPORTANT]
-> 近接通信配置グループは現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
-> 近接通信配置グループは、プレビュー期間中、**東日本**、**オーストラリア東部**、**インド中部**の各リージョンでは使用できません。
 
 ## <a name="create-the-proximity-placement-group"></a>近接通信配置グループを作成する
 [`az ppg create`](/cli/azure/ppg#az-ppg-create) を使用して、近接通信配置グループを作成します。 
@@ -52,6 +47,7 @@ az ppg list -o table
 ## <a name="create-a-vm"></a>VM の作成
 
 [new az vm](/cli/azure/vm#az-vm-create) を使用して、近接通信配置グループ内に VM を作成します。
+
 ```azurecli-interactive
 az vm create \
    -n myVM \

@@ -1,23 +1,18 @@
 ---
-title: 'Azure Application Insights Agent API リファレンス: インストルメンテーション エンジンを有効にする |Microsoft Docs'
-description: Application Insights Agent API リファレンス。 Enable-InstrumentationEngine。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Azure Application Insights エージェント API リファレンス
+description: Application Insights エージェント API リファレンス。 Enable-InstrumentationEngine。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: 9958121c38b96dc9cfa4dda2812fa9ce2b18d785
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 04/23/2019
+ms.openlocfilehash: 796c2cc669e238499223d233cf4ddcf740af7c95
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388282"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899724"
 ---
 # <a name="application-insights-agent-api-enable-instrumentationengine"></a>Application Insights Agent API: Enable-InstrumentationEngine
 
@@ -79,7 +74,7 @@ Configuring registry for instrumentation engine...
 - Web ページ コードからの例外を参照してトレースの呼び出しを有効にするために、[Web クライアント テレメトリ](../../azure-monitor/app/javascript.md)を追加します。
 - トレースとログの呼び出しを挿入できるように、[Application Insights SDK をコードに追加](../../azure-monitor/app/asp-net.md)します。
  
- Application Insights Agent をさらに活用する:
- - Application Insights Agent の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行うには、このガイドを参照してください。
+ Application Insights エージェントをさらに活用する:
+ - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。
  - 設定が正しく記録されたことを確認するために[構成を取得](status-monitor-v2-api-get-config.md)します。
  - 監視を検査するために[状態を取得](status-monitor-v2-api-get-status.md)します。

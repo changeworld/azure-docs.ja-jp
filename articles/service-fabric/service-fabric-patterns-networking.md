@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: 90b2a1954d60f1e86ab61afb264483177f4aca3b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 638ee162b770f949eaf0a0fc34b745698364d019
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073950"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900091"
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric のネットワーク パターン
 Azure Service Fabric クラスターを Azure の他のネットワーク機能と統合できます。 この記事では、次の機能を使用するクラスターを作成する方法について説明します。
@@ -30,6 +30,8 @@ Azure Service Fabric クラスターを Azure の他のネットワーク機能�
 - [内部ロード バランサーと外部ロード バランサー](#internalexternallb)
 
 Service Fabric は標準の仮想マシン スケール セットで実行されます。 仮想マシン スケール セットで使用できる機能は、Service Fabric クラスターでも使用できます。 仮想マシン スケール セットと Service Fabric のAzure Resource Manager テンプレートのネットワーク セクションは同じです。 既存の仮想ネットワークにデプロイしたら、Azure ExpressRoute、Azure VPN Gateway、ネットワーク セキュリティ グループ、仮想ネットワーク ピアリングなどの他のネットワーク機能を簡単に組み込むことができます。
+
+### <a name="allowing-the-service-fabric-resource-provider-to-query-your-cluster"></a>Service Fabric リソース プロバイダーによるクラスターに対するクエリの許可
 
 Service Fabric には、他のネットワーク機能とは異なる点が 1 つあります。 [Azure Portal](https://portal.azure.com) がService Fabric リソース プロバイダーを内部で使用してクラスターを呼び出し、ノードとアプリケーションに関する情報を取得します。 Service Fabric リソース プロバイダーは、管理エンドポイントの受信 HTTP ゲートウェイ ポート (既定では 19080) にパブリックにアクセスできる必要があります。 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) では、管理エンドポイントを使用してクラスターを管理します。 また、Service Fabric リソース プロバイダーは、このポートを使用してクラスターに関する情報を照会し、Azure Portal に表示します。 
 
@@ -293,7 +295,7 @@ DnsSettings              : {
 <a id="internallb"></a>
 ## <a name="internal-only-load-balancer"></a>内部ロード バランサー
 
-このシナリオでは、既定の Service Fabric テンプレートの外部ロード バランサーを内部専用ロード バランサーに置き換えます。 Azure Portal と Service Fabric リソースプロバイダーへの影響については、前のセクションをご覧ください。
+このシナリオでは、既定の Service Fabric テンプレートの外部ロード バランサーを内部専用ロード バランサーに置き換えます。 Azure portal と Service Fabric リソース プロバイダーへの影響については、[この記事の前述の説明](#allowing-the-service-fabric-resource-provider-to-query-your-cluster)をご覧ください。
 
 1. `dnsName` パラメーターを削除します (不要です)。
 
@@ -391,7 +393,7 @@ DnsSettings              : {
 <a id="internalexternallb"></a>
 ## <a name="internal-and-external-load-balancer"></a>内部ロード バランサーと外部ロード バランサー
 
-このシナリオでは、既存の単一ノード タイプの外部ロード バランサーを使用し、同じノード タイプの内部ロード バランサーを追加します。 バックエンド アドレス プールに接続されたバックエンド ポートは、1 つのロード バランサーにのみ割り当てることができます。 アプリケーション ポートを配置するロード バランサーと、管理エンドポイント (ポート 19000 と 19080) を配置するロード バランサーを選択します。 管理エンドポイントを内部ロード バランサーに配置する場合は、前述の Service Fabric リソースプロバイダーの制限に注意してください。 ここで使用する例では、管理エンドポイントは引き続き外部ロード バランサーに配置しています。 また、アプリケーション ポート 80 を追加して内部ロード バランサーに配置します。
+このシナリオでは、既存の単一ノード タイプの外部ロード バランサーを使用し、同じノード タイプの内部ロード バランサーを追加します。 バックエンド アドレス プールに接続されたバックエンド ポートは、1 つのロード バランサーにのみ割り当てることができます。 アプリケーション ポートを配置するロード バランサーと、管理エンドポイント (ポート 19000 と 19080) を配置するロード バランサーを選択します。 管理エンドポイントを内部ロード バランサーに配置する場合は、[この記事で前述した](#allowing-the-service-fabric-resource-provider-to-query-your-cluster) Service Fabric リソース プロバイダーの制限に注意してください。 ここで使用する例では、管理エンドポイントは引き続き外部ロード バランサーに配置しています。 また、アプリケーション ポート 80 を追加して内部ロード バランサーに配置します。
 
 2 ノード タイプのクラスターでは、ノード タイプの 1 つを外部ロード バランサーに配置し、 もう 1 つのノード タイプを内部ロード バランサーに配置します。 2 ノード タイプのクラスターを使用するには、ポータルで作成された (2 つのロード バランサーを含む) 2 ノード タイプ テンプレートで、2 つ目のロード バランサーを内部ロード バランサーに切り替えます。 詳細については、「[内部ロード バランサー](#internallb)」をご覧ください。
 

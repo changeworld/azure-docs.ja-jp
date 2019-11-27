@@ -1,5 +1,5 @@
 ---
-title: Azure ストレージ コンテナーに多くのファイルが含まれている場合、Apache Spark の速度が低下する - HDInsight
+title: Azure HDInsight ストレージに多数のファイルが含まれている場合に Apache Spark の速度が低下する
 description: Azure ストレージ コンテナーに Azure HDInsight のファイルが多数含まれる場合、Apache Spark ジョブの実行速度が低下する
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/21/2019
-ms.openlocfilehash: 40c5d023647d3592e44588fbc24bf2743da34373
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 82280532fa91923bd08d8ff3164dc841282c392c
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088619"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241171"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>Azure ストレージ コンテナーに Azure HDInsight のファイルが多数含まれる場合、Apache Spark ジョブの実行速度が低下する
 

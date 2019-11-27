@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 39e6273382133493a77321deed2baec4718bc912
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b2a1b1426af3e72756a7a85a173ef4a2a5671b02
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383666"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900194"
 ---
 # <a name="aspnet-core-in-azure-service-fabric-reliable-services"></a>Azure Service Fabric Reliable Services での ASP.NET Core
 
@@ -339,6 +339,9 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 ```
 
 この構成では、`KestrelCommunicationListener` により、アプリケーション ポートの範囲から未使用のポートが自動的に選択されます。
+
+HTTPS では、ServiceManifest.xml へのポートの指定なしで HTTPS プロトコルでエンドポイントを構成し、エンドポイント名を KestrelCommunicationListener コンストラクターに渡します。
+
 
 ## <a name="service-fabric-configuration-provider"></a>Service Fabric 構成プロバイダー
 ASP.NET Core でのアプリの構成は、構成プロバイダーによって設定されるキーと値のペアに基づきます。 一般的な ASP.NET Core 構成のサポートの詳細については、「[ASP.NET Core の構成](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/)」を参照してください。

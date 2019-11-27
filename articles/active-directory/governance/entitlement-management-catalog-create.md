@@ -1,6 +1,6 @@
 ---
-title: Azure AD エンタイトルメント管理 (プレビュー) でリソースのカタログを作成および管理する - Azure Active Directory
-description: Azure Active Directory エンタイトルメント管理 (プレビュー) でリソースとアクセス パッケージの新しいコンテナーを作成する方法を説明します。
+title: Azure AD エンタイトルメント管理でリソースのカタログを作成して管理する - Azure Active Directory
+description: Azure Active Directory エンタイトルメント管理でリソースとアクセス パッケージの新しいコンテナーを作成する方法を説明します。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -16,19 +16,14 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85479abfd19110703d5ce9f59f545830e84feadb
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b66e3dee83ccf4a857fda9d5804848108c0cc251
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429568"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73174422"
 ---
-# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でリソースのカタログを作成および管理する
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) エンタイトルメント管理は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でリソースのカタログを作成して管理する
 
 ## <a name="create-a-catalog"></a>カタログを作成する
 

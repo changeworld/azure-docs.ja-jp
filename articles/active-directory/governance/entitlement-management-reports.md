@@ -1,6 +1,6 @@
 ---
-title: レポートを表示し、Azure AD エンタイトルメント管理 (プレビュー) - Azure Active Directory にログインします。
-description: ユーザーの割り当てレポートを表示する方法について説明し、Azure Active Directory のエンタイトルメント管理 (プレビュー) で監査ログに記録します。
+title: Azure AD エンタイトルメント管理でレポートとログを表示する - Azure Active Directory
+description: Azure Active Directory エンタイトルメント管理でユーザー割り当てレポートと監査ログを表示する方法について説明します。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,45 +12,70 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/19/2019
+ms.date: 10/28/2019
 ms.author: ajburnle
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2420fc25795ec74939649fb8a17ead7c8cfdd1df
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3302fc3b2513794cd66d1ebf6db2cbcdb0f713dd
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032448"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73173884"
 ---
-# <a name="view-reports-and-logs-in-azure-ad-entitlement-management-preview"></a>レポートを表示し、Azure AD エンタイトルメント管理 (プレビュー) にログインします。
+# <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でレポートとログを表示する
 
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) のエンタイトルメント管理は現在パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+Azure AD エンタイトルメント管理レポートと Azure AD 監査ログは、ユーザーがアクセス権を持っているリソースに関する追加情報を提供します。 管理者は、ユーザーのアクセス パッケージやリソースの割り当てを表示できるほか、監査目的で要求ログを表示したり、ユーザーの要求の状態を確認したりすることができます。 この記事では、エンタイトルメント管理レポートや Azure AD 監査ログを使用する方法について説明します。
 
-ユーザーの割り当てレポートと Azure Active Directory の監査ログでは、ご利用のディレクトリ内のユーザーに関する追加情報が提供されます。 管理者は、ユーザーがアクセス権を持っているリソースを表示し、監査目的で要求ログを表示したり、ユーザーの要求の状態を確認したりすることができます。 この記事では、ユーザーの割り当てレポートと Azure AD の監査ログを使用する方法について説明します。
-
-次のビデオを視聴して、Azure Active Directory でエンタイトルメント管理を使用して、ユーザーのアクセス権を管理する方法について学習します。
+次のビデオを視聴して、エンタイトルメント管理でユーザーがアクセス権を持っているリソースを表示する方法について学ぶことができます。
 
 >[!VIDEO https://www.youtube.com/embed/omtNJ7ySjS0]
 
-## <a name="view-resources-a-user-has-access-to"></a>ユーザーがアクセスするリソースの表示
+## <a name="view-access-packages-for-a-user"></a>ユーザーのアクセス パッケージを表示する
 
-1. **[Azure Active Directory]** をクリックしてから、 **[Identity Governance]** (IDのガバナンス) をクリックします。
+このレポートを使用すると、ユーザーが要求できるすべてのアクセス パッケージと、現在そのユーザーに割り当てられているアクセス パッケージを一覧表示できます。
 
-1. 左側のメニューで **[User assignments report]** (ユーザーの割り当てレポート) をクリックします。
+**事前に必要なロール:** グローバル管理者またはユーザー管理者
+
+1. **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
+
+1. 左側のメニューで **[レポート]** をクリックします。
+
+1. **[ユーザーのパッケージへのアクセス]** をクリックします。
 
 1. **[Select Users]** (ユーザーの選択) をクリックして、[Select Users] (ユーザーの選択) ペインを開きます。
 
-1. アクセスできるリソースを表示するリストでユーザーを見つけます。
+1. 一覧でユーザーを探し、 **[選択]** をクリックします。
 
-1. 該当のユーザーを選択し、 **[Select]** (選択) をクリックします。
+    **[要求できます]** タブには、ユーザーがアクセスできるアクセス パッケージの一覧が表示されます。 この一覧は、アクセス パッケージで定義されている[要求ポリシー](entitlement-management-access-package-request-policy.md#for-users-in-your-directory)によって決まります。 
 
-    ユーザーがアクセスできるリソースの一覧が表示されます。 これには、アクセスのパッケージ、ポリシー、および日付が含まれます。
+    ![ユーザーのアクセス パッケージ](./media/entitlement-management-reports/access-packages-report.png)
 
-    ![ユーザー割り当てのレポート](./media/entitlement-management-reports/user-assignments-report.png)
+1. アクセス パッケージに 1 つ以上のリソースのロールやポリシーがある場合、そのリソースのロールまたはポリシーのエントリーをクリックして選択内容の詳細を確認してください。
+
+1. **[割り当て済み]** タブをクリックすると、そのユーザーに現在割り当てられているアクセス パッケージの一覧が表示されます。 アクセス パッケージがユーザーに割り当てられていると、そのユーザーがそのアクセス パッケージ内のすべてのリソースのロールにアクセスできることを意味します。
+
+## <a name="view-resource-assignments-for-a-user"></a>ユーザーのリソースの割り当てを表示する
+
+このレポートでは、エンタイトルメント管理でユーザーに現在割り当てられているリソースを一覧表示できます。 このレポートは、エンタイトルメント管理で管理されているリソースを対象としています。 ユーザーは、エンタイトルメント管理の外部にあるディレクトリ内の他のリソースにアクセスできる可能性があります。
+
+**事前に必要なロール:** グローバル管理者またはユーザー管理者
+
+1. **[Azure Active Directory]** をクリックしてから **[Identity Governance]** をクリックします。
+
+1. 左側のメニューで **[レポート]** をクリックします。
+
+1. **[ユーザーのリソースの割り当て]** をクリックします。
+
+1. **[Select Users]** (ユーザーの選択) をクリックして、[Select Users] (ユーザーの選択) ペインを開きます。
+
+1. 一覧でユーザーを探し、 **[選択]** をクリックします。
+
+    ユーザーに現在割り当てられているリソースの一覧が表示されます。 また、この一覧には、アクセスの開始日と終了日と共に、リソースのロールの取得元のアクセス パッケージとポリシーも表示されます。
+    
+    ユーザーが 2 つ以上のパッケージ内の同じリソースにアクセスできる場合は、矢印をクリックして各パッケージやポリシーを確認できます。
+
+    ![ユーザーのリソースの割り当て](./media/entitlement-management-reports/resource-assignments-report.png)
 
 ## <a name="determine-the-status-of-a-users-request"></a>ユーザーの要求のステータスを確認します。
 

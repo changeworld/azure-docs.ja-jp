@@ -10,18 +10,21 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: e6b5c8c2f734a12fe246a82ce1aa1dc53893ab64
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 99a49aa4627dc23d5f7531ac961d63e3e75ccff9
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072373"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176615"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 
 多くの API では、[OAuth 2.0](https://oauth.net/2/) がサポートされています。OAuth 2.0 を使用すると、API をセキュリティで保護して、有効なユーザーのみにアクセスが許可されること、および有効なユーザーが許可されたリソースのみにアクセスできることを保証できます。 Azure API Management では、対話型の開発者コンソールでそのような API を使用できるようにするために、OAuth 2.0 に対応する API を使用するサービス インスタンスを構成できます。
+
+> [!IMPORTANT]
+> OAuth 2.0 認証は、新しい開発者ポータルの対話型コンソールではまだ使用できません。
 
 ## <a name="prerequisites"> </a>前提条件
 
@@ -92,11 +95,11 @@ ms.locfileid: "70072373"
 
     ![OAuth 2.0 の設定](./media/api-management-howto-oauth2/oauth-07.png)
 
-## <a name="step3"> </a>開発者ポータルで OAuth 2.0 ユーザー認証をテストする
+## <a name="step3"> </a>従来の開発者ポータル - OAuth 2.0 ユーザー認証をテストする
 
-OAuth 2.0 認証サーバーを構成して、そのサーバーを使用するように API を構成した後、開発者ポータルに移動して API を呼び出すことにより、そのサーバーをテストできます。  Azure API Management インスタンスの **[概要]** ページで、上部のメニューの **[開発者ポータル]** をクリックします。
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-![[開発者ポータル]][api-management-developer-portal-menu]
+OAuth 2.0 認証サーバーを構成して、そのサーバーを使用するように API を構成した後、開発者ポータルに移動して API を呼び出すことにより、そのサーバーをテストできます。 Azure API Management インスタンスの **[概要]** ページで、上部のメニューの **[Developer portal (legacy)]\(開発者ポータル (レガシ)\)** をクリックします。
 
 上部のメニューで **[API]** をクリックし、 **[Echo API]** を選択します。
 
@@ -128,7 +131,6 @@ OAuth 2.0 と API Management の詳細については、次のビデオとこの
 
 [api-management-oauth2-signin]: ./media/api-management-howto-oauth2/api-management-oauth2-signin.png
 [api-management-request-header-token]: ./media/api-management-howto-oauth2/api-management-request-header-token.png
-[api-management-developer-portal-menu]: ./media/api-management-howto-oauth2/api-management-developer-portal-menu.png
 [api-management-open-console]: ./media/api-management-howto-oauth2/api-management-open-console.png
 [api-management-apis-echo-api]: ./media/api-management-howto-oauth2/api-management-apis-echo-api.png
 

@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI- sfctl mesh secretvalue | Microsoft Docs
 description: Service Fabric CLI sfctl mesh secretvalue のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 5200c40afe62ce3a236a3a16b59b64deb8d24ced
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 96ce4efe00d89c136a0c11d445170b2f67be6fcd
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035928"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901192"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
 メッシュ secretvalue リソースを取得および削除します。
@@ -29,7 +30,7 @@ ms.locfileid: "69035928"
 | --- | --- |
 | delete | 名前付きシークレット リソースの指定された値を削除します。 |
 | list | 指定されたシークレット リソースのすべての値の名前を一覧表示します。 |
-| show | 指定されたバージョンのシークレット リソースの値を取得します。 |
+| show | シークレット リソースの指定された値を一覧表示します。 |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl mesh secretvalue delete
 名前付きシークレット リソースの指定された値を削除します。
@@ -75,7 +76,7 @@ ms.locfileid: "69035928"
 | --verbose | ログ記録の詳細度を上げます。 完全なデバッグ ログには --debug を使用します。 |
 
 ## <a name="sfctl-mesh-secretvalue-show"></a>sfctl mesh secretvalue show
-指定されたバージョンのシークレット リソースの値を取得します。
+シークレット リソースの指定された値を一覧表示します。
 
 ### <a name="arguments"></a>引数
 

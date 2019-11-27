@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c509e061c43c81f72682fb428529a8e72b34066a
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 05418cde7b31392c1a55f64945764e978daba1bf
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056318"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175396"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデーモン アプリ - 運用環境への移行
 
@@ -63,11 +63,10 @@ ms.locfileid: "71056318"
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-MSAL Python は現在、パブリック プレビュー段階です。
-詳しい情報については、[MSAL Python のリポジトリ内のサンプル](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample)をご覧ください。
+クイックスタート「[トークンを取得し、Python コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](./quickstart-v2-python-daemon.md)」をお試しください。
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-msal4j (MSAL.Java) は現在、パブリック プレビュー段階です。 詳しい情報については、[MSAL Java のリポジトリ内のサンプル](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples)に関するページをご覧ください。
+MSAL Java は現在、パブリック プレビュー段階にあります。 詳細については、[MSAL Java dev サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples)を参照してください。
 
 ---

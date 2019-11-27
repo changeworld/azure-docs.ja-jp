@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 8ddb5d0566c57dd1d507d543ac53c0975a83dd43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60a4669e20aa8aaf80ae174c88631f3dc572656d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723559"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242891"
 ---
 # <a name="configure-stateful-reliable-services"></a>ステートフル Reliable Services の構成
 Reliable Services の構成設定には 2 つのセットがあります。 1 つはクラスター内のすべての Reliable Services 用のグローバルな設定、もう 1 つは特定の Reliable Services に固有の設定です。
@@ -28,7 +28,7 @@ Reliable Services の構成設定には 2 つのセットがあります。 1 �
 Reliable Services のグローバル構成は、クラスターのクラスター マニフェストの KtlLogger セクションで指定されています。 この構成を使用すると、共有ログの場所とサイズに加えて、ロガーによって使用されるグローバル メモリ制限を構成できます。 クラスター マニフェストは、クラスター内のすべてのノードとサービスに適用される設定と構成を保持する単一の XML ファイルです。 通常、このファイルは ClusterManifest.xml という名前です。 Get-ServiceFabricClusterManifest PowerShell コマンドを使用して、クラスターのクラスター マニフェストを確認できます。
 
 ### <a name="configuration-names"></a>構成名
-| Name | 単位 | Default value | 解説 |
+| 名前 | 単位 | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | WriteBufferMemoryPoolMinimumInKB |キロバイト |8388608 |ロガー書き込みバッファー メモリ プールに対してカーネル モードで割り当てる最小 KB 数。 このメモリ プールは、ディスクに書き込む前の状態情報のキャッシュに使用されます。 |
 | WriteBufferMemoryPoolMaximumInKB |キロバイト |制限なし |ロガー書き込みバッファー メモリ プールを拡張できる最大サイズ。 |
@@ -109,7 +109,7 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>構成名
-| Name | 単位 | Default value | 解説 |
+| 名前 | 単位 | 既定値 | 解説 |
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Seconds |0.015 |操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。 この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。 |
 | ReplicatorEndpoint |該当なし |既定値なし - 必須パラメーター |プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。 これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。 サービス マニフェストでのエンドポイント リソース定義の詳細については、 [サービス マニフェストのリソース](service-fabric-service-manifest-resources.md) に関する記事を参照してください。 |
@@ -125,6 +125,7 @@ ReplicatorConfig
 | SharedLogPath |完全修飾パス名 |"" |このレプリカの共有ログ ファイルが作成される完全修飾パスを指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。 |
 | SlowApiMonitoringDuration |Seconds |300 |マネージド API 呼び出しの監視間隔を設定します。 たとえば、バックアップのコールバック関数を用意しておき、 一定時間が経過したときに、警告の状態レポートを Health Manager に送信します。 |
 | LogTruncationIntervalSeconds |Seconds |0 |各レプリカでログの切り捨てが開始される、構成可能な間隔です。 ログのサイズだけでなく時間に基づいてログが切り捨てられるようにする場合にも使用されます。 この設定により、リライアブル ディクショナリの削除済みエントリも強制的に消去されます。 そのため、この設定を使用すると、削除済みの項目を適切なタイミングで消去できます。 |
+| EnableStableReads |Boolean |False |安定した読み取りを有効にすると、セカンダリ レプリカは、クォーラムで確認された戻り値に限定されます。 |
 
 ### <a name="sample-configuration-via-code"></a>コードによるサンプル構成
 ```csharp

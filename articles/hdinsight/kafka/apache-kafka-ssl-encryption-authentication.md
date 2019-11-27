@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight の Apache Kafka 用に SSL 暗号化および認証を設定する
+title: Apache Kafka SSL 暗号化および認証 - Azure HDInsight
 description: Kafka ブローカー間や、Kafka クライアントと Kafka ブローカー間の通信用に SSL 暗号化を設定します。 クライアントの SSL 認証を設定します。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 19a817124afb9afcee25b5f2bff73b8a17e16519
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5dd698b28a01ed251492cf34e9da2dda4d0c2580
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72431282"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241985"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight の Apache Kafka 用に Secure Sockets Layer (SSL) 暗号化および認証を設定する
 
@@ -78,6 +78,12 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
     scp cert-file sshuser@HeadNode0_Name:~/ssl/wnX-cert-sign-request
     ```
 
+1. CA コンピューター上で、次のコマンドを実行して CA 証明書と CA キー ファイルを作成します。
+
+    ```bash
+    openssl req -new -newkey rsa:4096 -days 365 -x509 -subj "/CN=Kafka-Security-CA" -keyout ca-key -out ca-cert -nodes
+    ```
+
 1. CA のコンピューターに移動し、受け取ったすべての証明書署名要求に署名します。
 
     ```bash
@@ -128,30 +134,18 @@ Kafka SSL ブローカーのセットアップでは、4 つの HDInsight クラ
 
     ![Ambari での kafka ssl 構成プロパティの編集](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-ambari2.png)
 
-1. 以下のコマンドを実行して、完全修飾ドメイン名 (FQDN) ではなく IP アドレスが提供されるように、Kafka `server.properties` ファイルに構成プロパティを追加します。
+1. **[Advanced kafka-env]\(kafka-env の詳細\)** 下で、 **[kafka-env template]\(kafka-env テンプレート\)** プロパティの末尾に次の行を追加します。
 
-    ```bash
-    IP_ADDRESS=$(hostname -i)
-    echo advertised.listeners=$IP_ADDRESS
-    sed -i.bak -e '/advertised/{/advertised@/!d;}' /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092,SSL://$IP_ADDRESS:9093" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.keystore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.key.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    echo "ssl.truststore.password=MyServerPassword123" >> /usr/hdp/current/kafka-broker/conf/server.properties
-    ```
-
-1. 前の変更が正しく反映されていることを確認するには、必要に応じて、次の行が Kafka `server.properties` ファイルに含まれていることを確認できます。
-
-    ```bash
-    advertised.listeners=PLAINTEXT://10.0.0.11:9092,SSL://10.0.0.11:9093
+    ```config
+    # Needed to configure IP address advertising
     ssl.keystore.location=/home/sshuser/ssl/kafka.server.keystore.jks
     ssl.keystore.password=MyServerPassword123
     ssl.key.password=MyServerPassword123
     ssl.truststore.location=/home/sshuser/ssl/kafka.server.truststore.jks
     ssl.truststore.password=MyServerPassword123
     ```
+
+    ![Ambari 上で kafka-env テンプレート プロパティを編集する](./media/apache-kafka-ssl-encryption-authentication/editing-configuration-kafka-env.png)
 
 1. すべての Kafka ブローカーを再起動します。
 1. プロデューサーとコンシューマーのオプションを使用して管理者クライアントを起動し、プロデューサーとコンシューマーの両方がポート 9093 上で動作していることを確認します。

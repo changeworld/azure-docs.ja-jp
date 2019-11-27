@@ -5,22 +5,22 @@ keywords: App Service, Azure App Service, スケール, App Service プラン, �
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 10/24/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a5e69209c30eae816837ce8f00a065231a5fd821
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: e8bdc749ee354e75a6043dbd6dac3f93a606f79e
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067206"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899003"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Azure で App Service プランを管理する
 
@@ -33,23 +33,17 @@ ms.locfileid: "70067206"
 
 空の App Service プランを作成したり、またはアプリ作成の一部としてプランを作成したりすることができます。
 
-1. [Azure Portal](https://portal.azure.com) で **[新規]**  >  **[Web + モバイル]** の順に選択し、 **[Web アプリ]** またはその他の App Service アプリの種類を選択します。
-
-2. 新しいアプリ用に既存の App Service プランを選択するか、プランを作成します。
+1. [Azure portal](https://portal.azure.com) で、 **[新規]**  >  **[Web アプリ]** または別の種類の App Service アプリを選択します。
 
    ![Azure Portal でアプリを作成します。][createWebApp]
 
-   プランを作成するには:
+2. App Service プランを構成する前に、 **[インスタンスの詳細]** セクションを構成します。 **[発行]** や **[オペレーティング システム]** などの設定により、App Service プランの利用可能な価格レベルを変更できます。 App Service プランを作成する場所は、 **[リージョン]** によって決まります。
+   
+3. **[App Service プラン]** セクションで、既存のプランを選択するか、 **[新規作成]** を選択してプランを作成します。
 
-   a. **[[+] 新規作成]** を選択します。
+   ![Create an App Service plan.][createASP] 
 
-      ![Create an App Service plan.][createASP] 
-
-   b. **[App Service プラン]** に、プランの名前を入力します。
-
-   c. **[場所]** で、適切な場所を選択します。
-
-   d. **[価格レベル]** で、サービスの適切な価格レベルを選択します。 **[すべて表示]** を選択して、**Free** や **Shared** などの価格オプションをさらに表示します。 価格レベルを選択したら、 **[選択]** をクリックします。
+4. プランを作成するときに、新しいプランの価格レベルを選択できます。 **[SKU とサイズ]** で、 **[サイズの変更]** を選択して、価格レベルを変更します。 
 
 <a name="move"></a>
 
@@ -65,25 +59,20 @@ ms.locfileid: "70067206"
 
 1. [Azure Portal](https://portal.azure.com) で、移動するアプリを参照します。
 
-1. メニューで、 **[App Service プラン]** セクションを探します。
+2. 左側のメニューから、 **[App Service プランの変更]** を選択します。
 
-1. **[App Service プランの変更]** を選択して **[App Service プラン]** セレクターを開きます。
+3. **[App Service プラン]** ドロップダウンで、このアプリの移動先の既存プランを選択します。 ドロップダウンには、現在の App Service プランと同じリソース グループと地理的リージョン内にあるプランのみが表示されます。 そのようなプランが存在しない場合は、既定でプランを作成できます。 **[新規作成]** を選択することで、手動で新しいプランを作成することもできます。
 
+4. プランを作成する場合は、新しいプランの価格レベルを選択できます。 **[価格レベル]** で、既存のレベルを選択して変更します。 
+   
+   > [!IMPORTANT]
+   > 上位レベルのプランから下位レベルのプランにアプリを移動する (たとえば **D1** から **F1** に移動する) 場合、アプリで、ターゲット プランの特定の機能が失われる可能性があります。 たとえば、アプリで SSL 証明書を使っている場合は、次のようなエラー メッセージが表示されることがあります。
+   >
+   > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
+
+5. 終わったら、 **[OK]** を選択します。
+   
    ![App Service plan selector.][change] 
-
-1. **[App Service プラン]** セレクターで、このアプリの移動先の既存プランを選択します。   
-
-**[Select App Service plan] (App Service プランの選択)** ページには、現在のアプリの App Service プランと同じリソース グループおよび地理的リージョン内にあるプランのみが表示されます。
-
-各プランには価格レベルが割り当てられています。 たとえば、サイトを **Free** レベルから **Standard** レベルに移動すると、サイトに割り当てられたすべてのアプリで **Standard** レベルの機能とリソースを使うことができるようになります。 ただし、高いレベルのプランから低いレベルのプランにアプリを移動すると、特定の機能にアクセスできなくなります。 移動後のプランで利用できない機能をアプリが使っている場合、該当する機能を示すエラーが表示されます。 
-
-たとえば、アプリの 1 つが SSL 証明書を使っている場合、次のようなエラー メッセージが表示される可能性があります。
-
-`Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
-
-この場合は、移動先プランにアプリを移動する前に、次のどちらかの操作を行う必要があります。
-- 移動先プランの価格レベルを **Basic** 以上にスケールアップする。
-- アプリに対するすべての SSL 接続を削除する。
 
 ## <a name="move-an-app-to-a-different-region"></a>アプリを異なるリージョンに移動する
 

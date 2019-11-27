@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 8e6a1c3472c6b20b27cf181edbeeb96ab71eb58d
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984136"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242483"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files のネットワーク計画のガイドライン
 
@@ -99,7 +99,7 @@ Azure NetApp Files 用の委任サブネットでは、ユーザー定義ルー�
 
 互いのリソースへのアクセスを必要とする追加の VNet が同じリージョンにある場合、[VNet ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を使用して VNet を接続することで、Azure インフラストラクチャを介した安全な接続を実現できます。 
 
-上図の VNet 2 と VNet 3 について考えます。 VM 2 が VM 3 とボリューム 2 に接続する必要がある場合、または VM 3 が VM 2 またはボリューム 1 に接続する必要がある場合は、VNet 2 と VNet 3 の間で VNet ピアリングを有効にする必要があります。 
+上図の VNet 2 と VNet 3 について考えます。 VM 1 が VM 2 とボリューム 2 に接続する必要がある場合、または VM 2 が VM 1 またはボリューム 1 に接続する必要がある場合は、VNet 2 と VNet 3 の間で VNet ピアリングを有効にする必要があります。 
 
 さらに、同じリージョンで VNet 1 が VNet 2 とピアリングされており、VNet 2 が VNet 3 とピアリングされているシナリオを考えます。 VNet 1 のリソースは VNet 2 のリソースに接続できますが、VNet 1 と VNet 3 がピアリングされていない限り、VNet 3 のリソースには接続できません。 
 

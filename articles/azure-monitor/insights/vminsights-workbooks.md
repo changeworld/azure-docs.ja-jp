@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor ブックを使用した対話型レポートの作成 | Microsoft Docs
+title: Azure Monitor for VMs のブックを使用した対話型レポートの作成 | Microsoft Docs
 description: Azure Monitor for VMs 用の定義済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポートの作成を簡単にします。
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 47e2e5d80241ac093d136b45c853d94a9dd43cbe
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dff5027f2ff9ff244f0fa04177a04e446e98465b
+ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553738"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73200533"
 ---
-# <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Azure Monitor ブックを使用した対話型レポートの作成
+# <a name="create-interactive-reports-azure-monitor-for-vms-with-workbooks"></a>Azure Monitor for VMs のブックを使用した対話型レポートの作成
 
 ブックでは、テキスト、 [ログ クエリ](../log-query/query-language.md)、メトリック、パラメーターが、内容豊富な対話型レポートに組み合わされます。 ブックは、同じ Azure リソースにアクセスできる他のチーム メンバーが編集できます。
 

@@ -1,23 +1,18 @@
 ---
-title: Azure Application Insights エージェント API リファレンス:トレースの開始 | Microsoft Docs
+title: Azure Application Insights エージェント API リファレンス
 description: Application Insights エージェント API リファレンス。 トレースの開始。 Status Monitor と Application Insights SDK から ETW のログを収集します。
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: b1c5aa34c46a20631b328abfb061dc2477150c72
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 04/23/2019
+ms.openlocfilehash: c97315b3a215f10e5b8f9533bf09fa5ac30ee16f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389844"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899648"
 ---
 # <a name="application-insights-agent-api-start-applicationinsightsmonitoringtrace"></a>Application Insights エージェント API:Start-ApplicationInsightsMonitoringTrace
 

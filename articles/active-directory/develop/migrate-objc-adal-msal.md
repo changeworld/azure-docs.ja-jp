@@ -1,6 +1,7 @@
 ---
 let application: MSALPublicClientApplication!
-title: アプリを MSAL.ObjectiveC に移行する | Microsoft ID プラットフォーム
+title: MSAL.ObjectiveC へのアプリの移行
+titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library for ObjectiveC (iOS および macOS 用の MSAL) と Azure AD Authentication Library for ObjectiveC (ADAL.ObjC) の違いと、iOS および macOS 用の MSAL に移行する方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +19,12 @@ ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcceec31785b3d8ebc6d9566e7d2eba857d792ef
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 8ccf88bcffdf484772f5f3ad35316d2c74fb104e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71269377"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175632"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>アプリケーションを iOS および macOS 用の MSAL に移行する
 
@@ -72,7 +73,7 @@ MSAL でスコープを提供するには、次の 2 つの方法があります
 
 * アプリに必要なすべてのアクセス許可の一覧を提供する。 例: 
 
-    `@[@"https://graph.microsot.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
+    `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
     この場合、アプリによって `directory.read` と `directory.write` のアクセス許可が要求されます。 ユーザーは、これらのアクセス許可に同意するように求められます (このアプリに対して事前にこれらのアクセス許可に同意していない場合)。 アプリケーションでは、ユーザーがアプリケーションに対して既に同意している追加のアクセス許可も受け取ることができます。 ユーザーには、新しいアクセス許可、または付与されていないアクセス許可についてのみ、同意を求めるメッセージが表示されます。
 
@@ -136,7 +137,7 @@ MSAL では、いくつかのトークン取得呼び出しの変更が導入さ
 
 MSAL では、アプリで処理できるエラーと、ユーザーによる介入が必要なエラーがより明確になっています。 開発者が処理する必要があるエラーの数は限られています。
 
-* `MSALErrorInteractionRequired`:ユーザーは対話型の要求を行う必要があります。 これは、有効期限が切れた認証セッション、条件付きアクセス ポリシーが変更された、更新トークンが期限切れになった、または失効した、キャッシュ内に有効なトークンがないなど、さまざまな理由で発生する可能性があります。
+* `MSALErrorInteractionRequired`:ユーザーは対話型の要求を行う必要があります。 これは、有効期限が切れた認証セッション、条件付きアクセス ポリシーが変更された、更新トークンが期限切れになったまたは失効した、キャッシュ内に有効なトークンがないなど、さまざまな理由で発生する可能性があります。
 * `MSALErrorServerDeclinedScopes`:要求が完全に完了しなかったため、一部のスコープでアクセスが許可されませんでした。 これは、ユーザーが 1 つ以上のスコープに対する同意を拒否したことで発生する場合があります。
 
 [`MSALError` リスト](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)内の他のすべてのエラーの処理は、省略可能です。 これらのエラーの情報を使用して、ユーザー エクスペリエンスを向上させることができます。
@@ -322,10 +323,10 @@ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>)
 
 ### <a name="enable-token-caching"></a>トークンのキャッシュの有効化
 
-MSAL では既定でアプリのトークンが iOS または macOS のキーチェーンにキャッシュされます。 
+MSAL では、既定でアプリのトークンが iOS または macOS のキーチェーンにキャッシュされます。 
 
 トークンのキャッシュを有効化するには:
-1. アプリケーションが正しく署名されていることを確認する
+1. アプリケーションが正しく署名されていることを確認します。
 2. Xcode プロジェクトの設定 > **[機能] タブ** >  **[Enable Keychain Sharing]\(キーチェーン共有を有効にする\)** に移動します。
 3. [ **+** ] をクリックし、次の **[キーチェーン グループ]** エントリを入力します。3.a iOS の場合は `com.microsoft.adalcache` を入力し、3.b macOS の場合は `com.microsoft.identity.universalstorage` を入力します。
 

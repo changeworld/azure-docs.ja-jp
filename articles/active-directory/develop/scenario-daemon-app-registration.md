@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fddd95564e3683aaee067f0442573c41e93376dd
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: 8d0d88f72cca45280bd76ac7bb9d7a6e0a1d37fb
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71264389"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175453"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Web API を呼び出すデーモン アプリ - アプリの登録
 
@@ -36,7 +36,7 @@ ms.locfileid: "71264389"
 
 ## <a name="authentication---no-reply-uri-needed"></a>認証 - 応答 URI は不要
 
-機密クライアント アプリケーションでクライアントの資格情報フロー**のみ**使用する場合、応答 URL を登録する必要はありません。 アプリケーションの構成/構築でも必要ありません。 クライアント資格情報フローでは使用しません。
+機密クライアント アプリケーションでクライアントの資格情報フロー**のみ**使用する場合、応答 URI を登録する必要はありません。 アプリケーションの構成/構築でも必要ありません。 クライアント資格情報フローでは使用しません。
 
 ## <a name="api-permissions---app-permissions-and-admin-consent"></a>API のアクセス許可 - アプリのアクセス許可および管理者の同意
 
@@ -45,7 +45,7 @@ ms.locfileid: "71264389"
 ![アプリのアクセス許可と管理者の同意](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
 
 > [!NOTE]
-> 呼び出す Web API では、委任されたアクセス許可ではなく、**アプリケーションのアクセス許可 (アプリ ロール)** を定義する必要があります。 そのような API を公開する方法の詳細については、[保護された Web API: アプリの登録 - デーモン アプリで Web API が呼び出される場合](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)に関するページを参照してください。
+> 呼び出す Web API では、委任されたアクセス許可ではなく、**アプリケーションのアクセス許可 (アプリ ロール)** を定義する必要があります。 そのような API を公開する方法の詳細については、[保護された Web API: アプリの登録 - デーモン アプリで Web API が呼び出される場合](scenario-protected-web-api-app-registration.md#if-your-web-api-is-called-by-a-daemon-app)に関するページを参照してください。
 
 デーモン アプリケーションには、Web API を呼び出すアプリケーションに対するテナント管理者の事前同意が必要です。 この同意は、テナント管理者が **[ *組織* に管理者の同意を与えます]** を選択することによって、同じ「 **API のアクセス許可** 」ページで提供されます
 

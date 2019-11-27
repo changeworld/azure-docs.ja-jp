@@ -1,29 +1,24 @@
 ---
 title: Application Insights を使用したアプリケーションの状態と利用状況の監視
 description: Application Insights の使用を開始します。 オンプレミスの、または Microsoft Azure アプリケーションの使用状況、可用性、パフォーマンスを分析します。
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 40650472-e860-4c1b-a589-9956245df307
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/10/2018
 ms.reviewer: sdash
-ms.author: mbullwin
-ms.openlocfilehash: d7b8037f50fc4877fe233925f3e922648169f73b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ebf6fa6d3dac6c63dfaa349a77a08bc81d402ef8
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60373088"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899296"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
 
 
-アプリケーションが正常に実行されていること、および障害がすぐに検出されることを確認します。 [Application Insights][start] はパフォーマンスの問題や例外を通知し、問題の根本原因の検出と診断を支援します。
+アプリケーションが正常に実行されていること、および障害がすぐに検出されることを確認します。 [Application Insights][start] を使用すると、パフォーマンスの問題や例外が通知され、問題の根本原因の検出と診断が支援されます。
 
 Application Insights は、Java と ASP.NET の Web アプリケーションとサービス、WCF サービスの両方を監視できます。 それらは、オンプレミスで、仮想マシン上で、または Microsoft Azure Websites としてホストできます。 
 
@@ -110,7 +105,7 @@ HTTP 要求には、ページ、データ、画像に関するすべての GET �
 
 * [Web テスト][availability]を設定して、Web サイトが停止した場合や、間違って応答したり、応答速度が低下したりした場合にアラートを送信するようにします。 
 * 要求の数を他のメトリックと比較し、障害や応答速度の低下が負荷と関連しているかどうかを確認します。
-* コードに[トレース ステートメント][diagnostic]を挿入し、そのステートメントを検索することにより、問題を特定しやすくします。
+* コードに[トレース ステートメントを挿入し、そのステートメントを検索する][diagnostic]ことにより、問題を特定しやすくします。
 * 稼働中の Web アプリを [Live Metrics Stream][livestream] で監視します。
 * ご自分の .NET アプリケーションの状態を[スナップショット デバッガー][snapshot]を使用してキャプチャします。
 

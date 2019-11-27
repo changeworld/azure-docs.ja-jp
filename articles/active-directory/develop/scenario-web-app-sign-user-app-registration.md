@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ab7c3699abdd5c094b1b14cd53f76023fa8c1ac
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 641f71f6111930b54d0a2bd548f16d3cb0c07189
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309596"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175263"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>ユーザーをサインインさせる Web アプリ - アプリの登録
 
@@ -76,13 +76,22 @@ ms.locfileid: "71309596"
 
 4. **[アプリケーションの登録]** ページが表示されたら、アプリケーションのフレンドリ名を入力します ('java-webapp' など)。[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox、Outlook.com など)] を選択し、 *[アプリケーションの種類]* として [Web アプリ/API] を選択します。
 1. **[登録]** をクリックして、アプリケーションを登録します。
-1. 左側のメニューで **[認証]** をクリックし、 *[リダイレクト URI]* の下で [Web] を選択します。 2 つの異なるリダイレクト URI を入力する必要があります。1 つはサインイン ページ用で、もう 1 つはグラフ ユーザー ページ用です。 どちらの場合も、同じホストとポート番号を使用し、その後にサインイン ページの場合は "/msal4jsample/secure/aad"、ユーザー ページの場合は "msal4jsample/graph/users" を入力する必要があります。
- 既定では、このサンプルでは次のものが使用されます。 
+1. 左側のメニューで **[認証]** をクリックし、 *[リダイレクト URI]* の下で [Web] を選択します。 2 つの異なるリダイレクト URI を入力する必要があります。1 つはサインイン ページ用で、もう 1 つはグラフ ページ用です。 どちらの場合も、同じホストとポート番号を使用し、その後にサインイン ページの場合は "/msal4jsample/secure/aad"、ユーザー ページの場合は "msal4jsample/graph/me" を入力する必要があります。
+ 既定では、このサンプルでは次のものが使用されます。
 
-    - `http://localhost:8080/msal4jsample/secure/aad` 
-    - `http://localhost:8080/msal4jsample/graph/users`
+    - `http://localhost:8080/msal4jsample/secure/aad`
+    - `http://localhost:8080/msal4jsample/graph/me`
 
-**[保存]** をクリックします。
+    **[詳細設定]** セクションの **[ログアウト URL]** を「`http://localhost:8080/msal4jsample/sign_out`」に設定します。
+
+     **[保存]** をクリックします。
+
+1. メニューから **[証明書とシークレット]** を選択し、 **[クライアント シークレット]** セクションで **[新しいクライアント シークレット]** をクリックします。
+
+    - キーの説明を入力します。
+    - キーの有効期間として **[1 年]** を選択します。
+    - キーの値は、 **[追加]** を選択すると表示されます。
+    - 後のためにキーの値をコピーします。 このキー値は、再度表示することも、その他の方法で取得することもできないため、Azure portal から参照できるようになったらすぐに記録してください。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -94,8 +103,14 @@ ms.locfileid: "71309596"
 1. アプリの **[概要]** ページで、 **[アプリケーション (クライアント) ID]** の値を見つけ、後で使用するために記録します。 これは、このプロジェクトの Visual Studio 構成ファイルを構成するために必要になります。
 1. アプリの [概要] ページで、 **[認証]** セクションを選択します。
    - **[詳細設定]** セクションの **[ログアウト URL]** を「`http://localhost:5000/logout`」に設定します
-1. **[保存]** を選択します。
 
+  **[保存]** を選択します。
+1. 左側のメニューで **[証明書とシークレット]** を選択し、 **[クライアント シークレット]** セクションで **[新しいクライアント シークレット]** をクリックします。
+
+      - キーの説明を入力します。
+      - キーの有効期間として **[1 年]** を選択します。
+      - **[追加]** をクリックすると、キーの値が表示されます。
+      - キーの値をコピーします。 この情報は後で必要になります。
 ---
 
 ## <a name="register-an-app-using-powershell"></a>PowerShell を使用してアプリを登録する

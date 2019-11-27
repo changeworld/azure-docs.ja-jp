@@ -8,12 +8,12 @@ author: nikmd23
 ms.author: nimolnar
 ms.date: 09/17/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 0b51617966ad85037ad29f3e5005a17f66602e01
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5c07fac0590b833aa19909849271c59d65d42ad6
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677116"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73242444"
 ---
 # <a name="what-is-distributed-tracing"></a>分散トレースとは
 
@@ -40,6 +40,7 @@ Azure Monitor では、[アプリケーション マップ](https://docs.microso
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
 * [Node.JS](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
+* [Python (プレビュー)](opencensus-python.md)
 
 適切な Application Insights SDK がインストールおよび構成されると、トレース情報は、SDK 依存関係の自動コレクターによって一般的なフレームワーク、ライブラリ、テクノロジが自動収集されます。 サポートされるテクノロジの完全なリストは、「[依存関係の自動収集](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)」で利用できます。
 
@@ -49,7 +50,7 @@ Azure Monitor では、[アプリケーション マップ](https://docs.microso
 
 Application Insights SDK に加えて、Application Insights では [OpenCensus](https://opencensus.io/) からの分散トレースもサポートされます。 OpenCensus はオープン ソースで、ベンダーに捕らわれない単一の配布のライブラリであり、サービスにメトリック コレクションと分散トレースを提供します。 また、オープン ソース コミュニティを有効にして、Redis、Memcached、または MongoDB などの一般的なテクノロジで分散トレースを有効にすることもできます。 [Microsoft では、その他のいくつかの監視やクラウド パートナーを使って OpenCensus で共同作業を行うことができます](https://open.microsoft.com/2018/06/13/microsoft-joins-the-opencensus-project/)。
 
-OpenCensus を使用して分散トレース機能をアプリケーションに追加するには、まず [Application Insights のローカル フォワーダーをインストールして構成します](./../../azure-monitor/app/opencensus-local-forwarder.md)。 ここから、ローカル フォワーダーを使用して分散トレース データをルーティングするように、OpenCensus を構成します。 [Python](./../../azure-monitor/app/opencensus-python.md) と [Go](./../../azure-monitor/app/opencensus-go.md) の両方がサポートされます。
+[Python (プレビュー)](opencensus-python.md) 
 
 OpenCensus Web サイトには、[Python](https://opencensus.io/api/python/trace/usage.html) と [Go](https://godoc.org/go.opencensus.io) 向けの API リファレンス ドキュメント、および OpenCensus を使用するためのさまざまなガイドがあります。 
 

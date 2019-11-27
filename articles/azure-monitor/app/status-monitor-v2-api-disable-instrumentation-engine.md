@@ -1,23 +1,18 @@
 ---
-title: 'Azure Application Insights Agent API リファレンス: インストルメンテーション エンジンを無効にする |Microsoft Docs'
-description: Application Insights Agent API リファレンス。 Disable-InstrumentationEngine。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
-services: application-insights
-documentationcenter: .net
-author: TimothyMothra
-manager: alexklim
-ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+title: Azure Application Insights エージェント API リファレンス
+description: Application Insights エージェント API リファレンス。 Disable-InstrumentationEngine。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.date: 04/23/2019
+author: TimothyMothra
 ms.author: tilee
-ms.openlocfilehash: aaf493b5f2075ead62087824773f21643a1246e4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 04/23/2019
+ms.openlocfilehash: dd546107164632c821c1ee9a1629fe0a1ca071fc
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388304"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72899756"
 ---
 # <a name="application-insights-agent-api-disable-instrumentationengine"></a>Application Insights Agent API: Disable-InstrumentationEngine
 
@@ -57,5 +52,5 @@ Configuring registry for instrumentation engine...
 
 ## <a name="next-steps"></a>次の手順
 
- Application Insights Agent をさらに活用する:
- - Application Insights Agent の[トラブルシューティング](status-monitor-v2-troubleshoot.md)を行うには、このガイドを参照してください。
+ Application Insights エージェントをさらに活用する:
+ - Application Insights エージェントのトラブルシューティングを行う場合は、[こちらのガイド](status-monitor-v2-troubleshoot.md)を使用してください。

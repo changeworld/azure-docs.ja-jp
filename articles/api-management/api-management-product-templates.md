@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 637d4e7bc75537d99538048700673192534613dc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073378"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73176569"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API Management の製品テンプレート
 
@@ -33,12 +33,14 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 > [!NOTE]
 >  このドキュメントには既定のテンプレートのサンプルが含まれていますが、それらは継続的な改善に伴って変更される可能性があります。 開発者ポータルで目的の個々のテンプレートに移動することで、最新の既定のテンプレートを表示できます。 テンプレートの操作方法の詳細については、[テンプレートを使用して API Management 開発者ポータルをカスタマイズする方法](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)に関するページを参照してください。  
 
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
+
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
 ##  <a name="ProductList"></a> 製品リスト  
  **製品リスト** テンプレートを使用すると、開発者ポータルで製品リスト ページの本文をカスタマイズすることができます。  
   
- ![Products list](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
+ ![Product 一覧](./media/api-management-product-templates/APIM_ProductsListTemplatePage.png "APIM_ProductsListTemplatePage")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -77,7 +79,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |Paging|[Paging](api-management-template-data-model-reference.md#Paging) エンティティ。|製品コレクションのページング情報。|  
 |Filtering|[フィルター処理](api-management-template-data-model-reference.md#Filtering)エンティティ。|製品リスト ページのフィルター処理情報。|  
@@ -124,7 +126,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 ##  <a name="Product"></a> Product  
  **Product** テンプレートを使用すると、開発者ポータルで製品 ページの本文をカスタマイズすることができます。  
   
- ![Developer portal product page](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
+ ![開発者ポータルの製品ページ](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   
 ### <a name="default-template"></a>既定のテンプレート  
   
@@ -202,12 +204,12 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 ### <a name="data-model"></a>データ モデル  
   
-|プロパティ|Type|説明|  
+|プロパティ|種類|説明|  
 |--------------|----------|-----------------|  
 |Product|[成果物](api-management-template-data-model-reference.md#Product)|指定された製品。|  
 |IsDeveloperSubscribed|ブール値|現在のユーザーがこの製品をサブスクライブしているかどうか。|  
-|SubscriptionState|number|サブスクリプションの状態。 次の状態があります。<br /><br /> -   `0 - suspended` – サブスクリプションがブロックされています。サブスクライバーは製品の API を呼び出すことができません。<br />-   `1 - active` – サブスクリプションがアクティブです。<br />-   `2 - expired` – サブスクリプションの期限になり、サブスクリプションが非アクティブ化されました。<br />-   `3 - submitted` – サブスクリプション要求が開発者によって行われましたが、まだ承認または拒否されていません。<br />-   `4 - rejected` – サブスクリプション要求が管理者によって拒否されました。<br />-   `5 - cancelled` – サブスクリプションが開発者または管理者によってキャンセルされました。|  
-|Limits|array|このプロパティは非推奨です。使用しないでください。|  
+|SubscriptionState|number|サブスクリプションの状態。 次の状態があります。<br /><br /> -   `0 - suspended` – サブスクリプションがブロックされています。サブスクライバーは製品の API を呼び出すことができません。<br />-   `1 - active` – サブスクリプションがアクティブです。<br />-   `2 - expired` – サブスクリプションの期限になり、サブスクリプションが非アクティブ化されました。<br />-   `3 - submitted` – サブスクリプション要求が開発者によって行われましたが、まだ承認または拒否されていません。<br />-   `4 - rejected` – サブスクリプション要求が管理者によって拒否されました。<br />-   `5 - cancelled` – サブスクリプションが開発者または管理者によって取り消されました。|  
+|制限|array|このプロパティは非推奨です。使用しないでください。|  
 |DelegatedSubscriptionEnabled|ブール値|このサブスクリプションで[委任](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)が有効かどうか。|  
 |DelegatedSubscriptionUrl|string|委任が有効になっている場合、委任されたサブスクリプションの URL。|  
 |IsAgreed|ブール値|製品に条件がある場合、現在のユーザーがその条件に同意したかどうか。|  

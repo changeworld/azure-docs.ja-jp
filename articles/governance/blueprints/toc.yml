@@ -203,7 +203,7 @@
 - name: トラブルシューティング
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
-- name: 参照
+- name: リファレンス
   items:
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'

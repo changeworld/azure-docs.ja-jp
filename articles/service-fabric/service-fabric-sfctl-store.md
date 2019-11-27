@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI- sfctl store | Microsoft Docs
 description: Service Fabric CLI sfctl store のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: ccd9e8323f6e0de7b81c7600e7828e4858c51201
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: e8a085c4aa6df34441f22da5542231999930d89f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035859"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72900954"
 ---
 # <a name="sfctl-store"></a>sfctl store
 クラスター イメージ ストアで基本的なファイル レベルの操作を実行します。
@@ -41,7 +42,7 @@ ms.locfileid: "69035859"
 |引数|説明|
 | --- | --- |
 | --content-path [必須] | イメージ ストア内のファイルまたはフォルダーへのルートからの相対パス。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバーのタイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -62,7 +63,7 @@ ms.locfileid: "69035859"
 
 |引数|説明|
 | --- | --- |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバーのタイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -84,7 +85,7 @@ ms.locfileid: "69035859"
 |引数|説明|
 | --- | --- |
 | --content-path [必須] | イメージ ストア内のファイルまたはフォルダーへのルートからの相対パス。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバーのタイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 

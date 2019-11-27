@@ -6,13 +6,13 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: b0cb5f9fa0a0bc64b38225fba03568cf31021572
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.date: 10/30/2019
+ms.openlocfilehash: 89364a3ee948abbe5d233052878abe92bc7663a7
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181098"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241675"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -28,14 +28,13 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 > [!NOTE]  
 > HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory を使う方法です。 Data Factory について詳しくは、[Data Factory での Apache Pig と Apache Hive の使用][azure-data-factory-pig-hive]に関するページを参照してください。 Enterprise セキュリティ パッケージを使用したクラスターで Oozie を使用するには、「[Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)」を参照してください。
 
-
 ## <a name="prerequisites"></a>前提条件
 
 * **HDInsight 上の Hadoop クラスター**。 [Linux での HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
 * **SSH クライアント**。 「[SSH を使用して HDInsight (Apache Hadoop) に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
-* **Azure SQL Database**。  [Azure portal での Azure SQL データベースの作成](../sql-database/sql-database-get-started.md)に関するページを参照してください。  この記事では、`oozietest` という名前のデータベースを使用します。
+* **Azure SQL Database**。  [Azure portal での Azure SQL データベースの作成](../sql-database/sql-database-get-started.md)に関するページを参照してください。  この記事では、**oozietest** という名前のデータベースを使用します。
 
 * クラスターのプライマリ ストレージの [URI スキーム](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
@@ -64,10 +63,10 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 Oozie では、ジョブに必要なすべてのリソースを同じディレクトリに保存する必要があります。 この例では、`wasbs:///tutorials/useoozie` を使用します。 このディレクトリを作成するには、次の手順のようにします。
 
-1. 次のコードを編集して、`sshuser` をクラスターの SSH ユーザー名に置き換えます。また、`clustername` をクラスター名に置き換えます。  それから、[SSH を使用](hdinsight-hadoop-linux-use-ssh-unix.md)して HDInsight クラスターに接続するコードを入力します。  
+1. 次のコードを編集して、`sshuser` をクラスターの SSH ユーザー名に置き換えます。また、`CLUSTERNAME` をクラスター名に置き換えます。  それから、[SSH を使用](hdinsight-hadoop-linux-use-ssh-unix.md)して HDInsight クラスターに接続するコードを入力します。  
 
     ```bash
-    ssh sshuser@clustername-ssh.azurehdinsight.net
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
 2. ディレクトリを作成するには、次のコマンドを使用します。
@@ -79,10 +78,10 @@ Oozie では、ジョブに必要なすべてのリソースを同じディレ�
     > [!NOTE]  
     > `-p` パラメーターを指定すると、すべてのディレクトリがこのパスに作成されます。 `data` ディレクトリは、`useooziewf.hql` スクリプトが使うデータを保持するために使われます。
 
-3. 次のコードを編集して、`username` を SSH ユーザー名に置き換えます。  Oozie がユーザー アカウントを偽装できるようにするには、次のコマンドを使用します。
+3. 次のコードを編集して、`sshuser` を SSH ユーザー名に置き換えます。  Oozie がユーザー アカウントを偽装できるようにするには、次のコマンドを使用します。
 
     ```bash
-    sudo adduser username users
+    sudo adduser sshuser users
     ```
 
     > [!NOTE]  
@@ -103,7 +102,7 @@ hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozi
 
 ## <a name="define-the-hive-query"></a>Hive クエリの定義
 
-次の手順を使って、クエリを定義する Hive クエリ言語 (HiveQL) スクリプトを作成します。 後で示す Oozie ワークフローで、このクエリを使います。
+次の手順を使って、クエリを定義する Hive クエリ言語 (HiveQL) スクリプトを作成します。 このドキュメントで後述する Oozie ワークフローの中で、このクエリを使用します。
 
 1. SSH 接続から、次のコマンドを使用して、`useooziewf.hql` という名前のファイルを作成します。
 
@@ -111,7 +110,7 @@ hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozi
     nano useooziewf.hql
     ```
 
-3. GNU nano エディターが開いたら、ファイルの内容として次のクエリを使います。
+1. GNU nano エディターが開いたら、ファイルの内容として次のクエリを使います。
 
     ```hiveql
     DROP TABLE ${hiveTableName};
@@ -128,9 +127,9 @@ hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc*.jar /tutorials/useoozi
 
      ワークフロー定義ファイル (この記事では workflow.xml) は、実行時にこの HiveQL スクリプトにこれらの値を渡します。
 
-4. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。  
+1. ファイルを保存するには、**Ctrl+X** を選択し、**Y** キーを押してから、**Enter** キーを選択します。  
 
-5. 次のコマンドを使用して、`useooziewf.hql` を `wasbs:///tutorials/useoozie/useooziewf.hql` にコピーします。
+1. 次のコマンドを使用して、`useooziewf.hql` を `wasbs:///tutorials/useoozie/useooziewf.hql` にコピーします。
 
     ```bash
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
@@ -209,11 +208,11 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
    * `RunSqoopExport`:Sqoop を使って、作成されたデータを Hive スクリプトから SQL データベースにエクスポートします。 このアクションは、`RunHiveScript` アクションが正常に実行された場合にのみ実行されます。
 
-     このワークフローには、`${jobTracker}` などのいくつかのエントリがあります。 これらのエントリは、ジョブ定義で使う値に置き換えます。 ジョブ定義は後で作成します。
+     このワークフローには、`${jobTracker}` などのいくつかのエントリがあります。 これらのエントリは、ジョブ定義で使う値に置き換えます。 ジョブ定義は、このドキュメント内で後ほど作成します。
 
      また、Sqoop セクションの `<archive>mssql-jdbc-7.0.0.jre8.jar</archive>` エントリにも注意してください。 このエントリは、このアクションの実行時にこのアーカイブを Sqoop で使用できるようにすることを Oozie に指示します。
 
-3. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。  
+3. ファイルを保存するには、**Ctrl+X** を選択し、**Y** キーを押してから、**Enter** キーを選択します。  
 
 4. 次のコマンドを使用して、`workflow.xml` ファイルを `/tutorials/useoozie/workflow.xml` にコピーします。
 
@@ -376,7 +375,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
 4. nano エディターが開いたら、編集した XML をファイルの内容として貼り付けます。
 
-5. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。
+5. ファイルを保存するには、**Ctrl+X** を選択し、**Y** キーを押してから、**Enter** キーを選択します。
 
 ## <a name="submit-and-manage-the-job"></a>ジョブの送信と管理
 
@@ -412,7 +411,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
     oozie job -config job.xml -submit
     ```
 
-    このコマンドでは、`job.xml` からジョブ情報を読み込んで Oozie に送信しますが、ジョブは実行しません。
+    このコマンドでは、`job.xml` からジョブ情報を読み込んで Oozie に送信しますが、実行はしません。
 
     コマンドが完了すると、ジョブの ID が返されます (例: `0000005-150622124850154-oozie-oozi-W`)。 この ID はジョブの管理に使用されます。
 
@@ -449,7 +448,7 @@ Oozie ワークフローの定義は、XML プロセス定義言語である Had
 
     このコマンドの実行後に状態を確認すると、ジョブが実行中状態になり、ジョブのアクションに関する情報が返されます。  このジョブは完了までに数分かかります。
 
-6. 次のコードを編集して、`<serverName>` を Azure SQL サーバー名に置き換え、`<sqlLogin>` を Azure SQL サーバー ログインに置き換えます。  タスクが正常に完了したら、次のコマンドを使って、データが生成され、SQL データベース テーブルにエクスポートされたことを確認できます。  プロンプトでパスワードを入力します。
+6. 次のコードを編集して、`<serverName>` を Azure SQL サーバー名に置き換え、`<sqlLogin>` を Azure SQL サーバー ログインに置き換えます。  正常に "*タスクが完了したら*"、次のコマンドを使って、データが生成され、SQL データベース テーブルにエクスポートされたことを確認できます。  プロンプトでパスワードを入力します。
 
     ```bash
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <sqlLogin> -p 1433 -D oozietest
@@ -566,7 +565,7 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
     > * `${coordTimezone}`:コーディネーター ジョブでは、(通常は UTC を使用して表される) 夏時間なしの固定タイム ゾーンを使用します。 このタイム ゾーンを、"*Oozie 処理のタイムゾーン*" と呼びます。
     > * `${wfPath}`:workflow.xml のパス。
 
-2. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。
+2. ファイルを保存するには、**Ctrl+X** を選択し、**Y** キーを押してから、**Enter** キーを選択します。
 
 3. ファイルをこのジョブの作業ディレクトリにコピーするには、次のコマンドを使います。
 
@@ -621,7 +620,7 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
        これらの値によって、開始時刻が 2018 年 5 月 10 日 12:00 PM に、終了時刻が 2018 年 5 月 12 日 12:00 PM に設定されます。 このジョブの実行間隔は、毎日に設定されます。 頻度は分単位であるため、24 時間 x 60 分 = 1440 分になります。 最後に、タイムゾーンを UTC に設定しています。
 
-5. ファイルを保存するには、Ctrl + X キー、`Y` キー、**Enter** キーの順に押します。
+5. ファイルを保存するには、**Ctrl+X** を選択し、**Y** キーを押してから、**Enter** キーを選択します。
 
 6. ジョブを提出して開始するには、次のコマンドを使います。
 
@@ -650,7 +649,7 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
    1. Oozie Web UI でジョブを表示します。
 
-   2. 特定のアクションでエラーが発生した場合は、そのアクションを選択して、 **[Error Message]** フィールドにエラーの詳細が示されているかどうかを確認します。
+   2. 特定のアクションでエラーまたは障害が発生した場合は、そのアクションを選択して、 **[Error Message]** フィールドにエラーの詳細情報が示されているかどうかを確認します。
 
    3. 可能な場合は、アクションから URL を使って、アクションの詳細 (JobTracker ログなど) を表示します。
 
@@ -674,7 +673,7 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
 **原因**:現在のアクセス許可設定で、Oozie が指定されたユーザー アカウントを偽装することを許可していません。
 
-**解決方法**:Oozie は **users** グループのユーザーを偽装できます。 `groups USERNAME` を使用して、ユーザー アカウントがメンバーとして属するグループを確認します。 ユーザーが **users** グループのメンバーでない場合は、次のコマンドを使用して、ユーザーをこのグループに追加します。
+**解決方法**:Oozie は **users** グループのユーザーを偽装できます。 `groups USERNAME` を使用して、ユーザー アカウントがメンバーとして属するグループを確認します。 ユーザーが **users** グループのメンバーでない場合は、次のコマンドを使用して、ユーザーをグループに追加します。
 
     sudo adduser USERNAME users
 
@@ -712,41 +711,10 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 * [HDInsight で Apache Hadoop ジョブのデータをアップロードする][hdinsight-upload-data]
 * [HDInsight 上の Apache Hadoop で Apache Sqoop を使用する][hdinsight-use-sqoop]
 * [HDInsight 上の Apache Hadoop で Apache Hive を使用する][hdinsight-use-hive]
-* [HDInsight 上の Apache Hadoop で Apache Pig を使用する][hdinsight-use-pig]
-* [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
+* [HDInsight 用 Java MapReduce プログラムの開発](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-[hdinsight-cmdlets-download]: https://go.microsoft.com/fwlink/?LinkID=325563
 [azure-data-factory-pig-hive]: ../data-factory/transform-data.md
 [hdinsight-versions]:  hdinsight-component-versioning.md
-[hdinsight-storage]: hdinsight-use-blob-storage.md
-[hdinsight-get-started]: hdinsight-get-started.md
 [hdinsight-use-sqoop]:hadoop/apache-hadoop-use-sqoop-mac-linux.md
-[hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-mapreduce]:hadoop/hdinsight-use-mapreduce.md
 [hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
-[hdinsight-storage]: hdinsight-use-blob-storage.md
-[hdinsight-get-started-emulator]: hdinsight-get-started-emulator.md
-[hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
-
-[sqldatabase-get-started]: sql-database-get-started.md
-
-[azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
-
-[apache-hadoop]: https://hadoop.apache.org/
-[apache-oozie-400]: https://oozie.apache.org/docs/4.0.0/
-[apache-oozie-332]: https://oozie.apache.org/docs/3.3.2/
-
-[powershell-download]: https://azure.microsoft.com/downloads/
-[powershell-about-profiles]: https://go.microsoft.com/fwlink/?LinkID=113729
-[powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-start]: https://technet.microsoft.com/library/hh847889.aspx
-[powershell-script]: https://technet.microsoft.com/library/ee176961.aspx
-
-[cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
-
-[img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
-[img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
-
-[technetwiki-hive-error]: https://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx

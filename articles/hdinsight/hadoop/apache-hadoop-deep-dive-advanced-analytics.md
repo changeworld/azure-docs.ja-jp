@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 436825c6e5df2be524dc06ccdaf82f0156714679
+ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066979"
+ms.lasthandoff: 10/31/2019
+ms.locfileid: "73241657"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 
@@ -78,7 +78,7 @@ HDInsight には、次の高度な分析ワークフロー向けの、いくつ�
 
 ### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning と Apache Hive
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) は、モデルの予測分析ツールを提供するだけでなく、すぐに使用できる Web サービスとして予測モデルをデプロイするための、フル マネージド サービスを提供します。 また、Azure Machine Learning は、クラウドで予測分析の完全なソリューションを作成するためのツールを提供し、予測モデルを迅速に作成、テスト、運用化して管理します。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
+[Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/) は、モデルの予測分析ツールを提供するだけでなく、すぐに使える Web サービスとして予測モデルをデプロイするための、フル マネージド サービスを提供します。 また、Azure Machine Learning は、クラウドで予測分析の完全なソリューションを作成するためのツールを提供し、予測モデルを迅速に作成、テスト、運用化して管理します。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
 
 ### <a name="apache-spark-and-deep-learning"></a>Apache Spark とディープ ラーニング
 

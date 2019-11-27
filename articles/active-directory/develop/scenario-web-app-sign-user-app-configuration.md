@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f558ecf583c96f36b8bbee19c7c9cbb2ee57aa31
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f52fc70b54c27362575bef00c39a93d13e77cc2e
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596731"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175354"
 ---
 # <a name="web-app-that-signs-in-users---code-configuration"></a>ユーザーをサインインさせる Web アプリ - コードの構成
 
@@ -34,7 +34,7 @@ Web アプリ (および Web API) を保護するために使用されるライ�
 | プラットフォーム | ライブラリ | 説明 |
 |----------|---------|-------------|
 | ![.NET](media/sample-v2-code/logo_net.png) | [Identity Model Extensions for .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) | ASP.NET および ASP.NET Core によって直接使用される Microsoft Identity Extensions for .NET は、.NET Framework と .NET Core の両方で実行される DLL のセットを提案します。 ASP.NET/ASP.NET Core Web アプリから、**TokenValidationParameters** クラスを使用してトークン検証を制御できます (特に、一部の ISV シナリオで)。 |
-| ![Java](media/sample-v2-code/small_logo_java.png) | [msal4j](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | MSAL for Java - 現在、パブリック プレビュー段階です |
+| ![Java](media/sample-v2-code/small_logo_java.png) | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | MSAL for Java - 現在、パブリック プレビュー段階です |
 | ![Python](media/sample-v2-code/small_logo_python.png) | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | MSAL for Python - 現在、パブリック プレビュー段階です |
 
 目的のプラットフォームに対応するタブを選択してください。
@@ -53,7 +53,7 @@ Web アプリ (および Web API) を保護するために使用されるライ�
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-この記事のコード スニペットおよび以下は、[Microsoft Graph を呼び出す Java Web アプリケーション](https://github.com/Azure-Samples/ms-identity-java-webapp)の msal4j Web アプリ サンプルから抜粋されています
+この記事のコード スニペットおよび以下は、[Microsoft Graph を呼び出す Java Web アプリケーション](https://github.com/Azure-Samples/ms-identity-java-webapp)の MSAL Java Web アプリ サンプルから抜粋されています。
 
 完全な実装の詳細については、このサンプルをご覧ください。
 
@@ -137,7 +137,7 @@ ASP.NET Core には、アプリケーションの URL (`applicationUrl`) と SSL
 ```
 
 Azure portal では、アプリケーションの **[認証]** ページに登録する必要がある応答 URI は、これらの URL に一致する必要があります。つまり、上記の 2 つの構成ファイルでは、applicationUrl は `http://localhost:3110` ですが、`sslPort` が (44321) と指定されており、`appsettings.json` に定義されているように `CallbackPath` は `/signin-oidc` のため、それらは `https://localhost:44321/signin-oidc` になります。
-  
+
 同様に、サインアウト URI は `https://localhost:44321/signout-callback-oidc` に設定されます。
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
@@ -175,10 +175,10 @@ aad.clientId=Enter_the_Application_Id_here
 aad.authority=https://login.microsoftonline.com/Enter_the_Tenant_Info_Here/
 aad.secretKey=Enter_the_Client_Secret_Here
 aad.redirectUriSignin=http://localhost:8080/msal4jsample/secure/aad
-aad.redirectUriGraphUsers=http://localhost:8080/msal4jsample/graph/users
+aad.redirectUriGraph=http://localhost:8080/msal4jsample/graph/me
 ```
 
-Azure portal では、アプリケーションの **[認証]** ページで登録する必要がある応答 URI は、アプリケーションによって定義されている redirectUri (つまり `http://localhost:8080/msal4jsample/secure/aad` と `http://localhost:8080/msal4jsample/graph/users`) と一致している必要があります
+Azure portal では、アプリケーションの **[認証]** ページで登録する必要がある応答 URI は、アプリケーションによって定義されている redirectUri (つまり `http://localhost:8080/msal4jsample/secure/aad` と `http://localhost:8080/msal4jsample/graph/me`) と一致している必要があります
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -194,7 +194,8 @@ SESSION_TYPE = "filesystem"  # So token cache will be stored in server-side sess
 ```
 
 > [!NOTE]
-> このクイックスタートでは、わかりやすくするために、構成ファイルにクライアント シークレットを格納することをお勧めします。 運用アプリでは、KeyVault や、Flask のドキュメント https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables で説明されているような環境変数など、他の方法を使用してシークレットを格納できます
+> このクイックスタートでは、わかりやすくするために、構成ファイルにクライアント シークレットを格納することをお勧めします。
+> 運用アプリでは、KeyVault や、Flask のドキュメント https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables で説明されているような環境変数など、他の方法を使用してシークレットを格納できます
 >
 > ```python
 > CLIENT_SECRET = os.getenv("CLIENT_SECRET")
@@ -215,7 +216,7 @@ ASP.NET Core Web Apps (および Web API) では、コントローラーまた�
   > [!NOTE]
   > Visual Studio 内または `dotnet new mvc` を使用して、既定の ASP.NET Core Web プロジェクトから、プロジェクトを開始する場合、関連パッケージが自動的に読み込まれるため、メソッド `AddAzureAD` を既定で使用できます。
   > しかし、最初からプロジェクトをビルドし、下記のコードを使用しようとする場合は、NuGet パッケージ **"Microsoft.AspNetCore.Authentication.AzureAD.UI"** をプロジェクトに追加して、`AddAzureAD` メソッドを使用できるようにすることをお勧めします。
-  
+
 次のコードは、[Startup.cs#L33-L34](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/faa94fd49c2da46b22d6694c4f5c5895795af26d/1-WebApp-OIDC/1-1-MyOrg/Startup.cs#L33-L34) から入手できます
 
 ```CSharp
@@ -229,7 +230,7 @@ public class Startup
     ...
       // Sign-in users with the Microsoft identity platform
       services.AddMicrosoftIdentityPlatformAuthentication(Configuration);
-  
+
       services.AddMvc(options =>
       {
           var policy = new AuthorizationPolicyBuilder()
@@ -247,7 +248,7 @@ public class Startup
 - 構成ファイルを読み取るためのオプションが構成されます
 - 機関として Microsoft ID プラットフォーム (旧称 Azure AD v2.0) エンドポイントが使用されるように、OpenID Connect のオプションが構成されます
 - トークンの発行者が検証されます
-- 名前に対応する要求が、ID トークンの "preferred_username" 要求からマップされます 
+- 名前に対応する要求が、ID トークンの "preferred_username" 要求からマップされます
 
 `AddMicrosoftIdentityPlatformAuthentication` を呼び出すときに、構成に加えて以下を指定できます。
 
@@ -347,7 +348,7 @@ Java サンプルでは、Spring フレームワークが使用されていま�
 
 - ユーザーが認証されているかどうかが検証されます (`isAuthenticated()` メソッド)
 - ユーザーが認証されていない場合は、Azure AD 承認エンドポイントの URL が計算されて、ブラウザーはこの URI にリダイレクトされます
-- 認証コード フローを含む応答が到着すると、msal4j でトークンを取得できます。
+- 認証コード フローを含む応答が到着すると、MSAL Java でトークンを取得できます。
 - 最後にトークン エンドポイントからトークンを受け取ると (リダイレクト URI で)、ユーザーはサインインされます。
 
 詳細については、[AuthFilter.java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java) の`doFilter()` メソッドを参照してください

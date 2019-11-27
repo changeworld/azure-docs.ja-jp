@@ -4,7 +4,7 @@ description: Azure AD のセルフサービスのパスワード リセットの
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ecb2086f15159142ea55f96b2405b464c1f23a7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 003ceb19fafade4972ebb0cf4e60ceda34dc1928
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786814"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72893444"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービスのパスワードのリセットのトラブルシューティング
 
@@ -142,7 +142,7 @@ Azure Active Directory (Azure AD) セルフサービスのパスワードのリ�
 | 33001| ADUnKnownError| このイベントは、Active Directory から不明なエラーが返されたことを示します。 Azure AD Connect サーバーのイベント ログで、ADSync ソースからのイベントの詳細を確認します。|
 | 33002| ADUserNotFoundError| このイベントは、パスワードをリセットまたは変更しようとするユーザーがオンプレミスのディレクトリに見つからなかったことを示します。 このエラーは、ユーザーがクラウドではなくオンプレミスで削除された場合に発生する可能性があります。 また、このエラーは同期に問題がある場合にも発生することがあります。同期ログと、最近のいくつかの同期実行に関する詳細情報を確認します。|
 | 33003| ADMutliMatchError| パスワードのリセットまたは変更要求がクラウドから送信されると、Azure AD Connect のセットアップ プロセス中に指定されたクラウドのアンカーを使用して、その要求をオンプレミスの環境内のユーザーにリンクする方法を決定します。 このイベントは、オンプレミスのディレクトリ内に同じクラウドのアンカー属性を持つユーザーが 2 人見つかったことを示します。 同期ログと、最近のいくつかの同期実行に関する詳細情報を確認します。|
-| 33004| ADPermissionsError| このイベントは、Active Directory 管理エージェント (ADMA) のサービス アカウントが新しいパスワードを設定する対象のアカウントで適切なアクセス許可を持っていないことを示します。 ユーザーのフォレストの ADMA アカウントに、フォレスト内のすべてのオブジェクトに対するパスワードのリセットと変更のアクセス許可があることを確認します。 アクセス許可を設定する方法の詳細については、「Step 4: Set up the appropriate Active Directory permissions (手順 4: Active Directory の適切なアクセス許可を設定する)」をご覧ください。|
+| 33004| ADPermissionsError| このイベントは、Active Directory 管理エージェント (ADMA) のサービス アカウントが新しいパスワードを設定する対象のアカウントで適切なアクセス許可を持っていないことを示します。 ユーザーのフォレストの ADMA アカウントに、フォレスト内のすべてのオブジェクトに対するパスワードのリセットと変更のアクセス許可があることを確認します。 アクセス許可を設定する方法の詳細については、「Step 4: Set up the appropriate Active Directory permissions (手順 4: Active Directory の適切なアクセス許可を設定する)」をご覧ください。 このエラーは、ユーザーの属性 AdminCount が 1 に設定されている場合にも発生する可能性があります。|
 | 33005| ADUserAccountDisabled| このイベントは、オンプレミスで無効になっていたアカウントのパスワードをリセットまたは変更しようとしたことを示します。 アカウントを有効にして、操作をやり直してください。|
 | 33006| ADUserAccountLockedOut| このイベントは、オンプレミスでロックアウトされたアカウントのパスワードをリセットまたは変更しようとしたことを示します。 ロックアウトは、ユーザーが短時間に何回もパスワードを変更またはリセットしようとした場合に発生します。 アカウントのロックを解除して、操作をやり直してください。|
 | 33007| ADUserIncorrectPassword| このイベントは、ユーザーがパスワードの変更操作を行うときに、現在のパスワードを正しく指定しなかったことを示します。 現在の正しいパスワードを指定して、やり直してください。|
