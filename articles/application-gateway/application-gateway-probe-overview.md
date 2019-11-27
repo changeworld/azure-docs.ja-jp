@@ -1,19 +1,18 @@
 ---
 title: Azure Application Gateway の正常性監視の概要
-description: Azure Application Gateway の監視機能の概要
+description: Azure Application Gateway はバック エンド プールにあるすべてのリソースの正常性を監視して、異常とみなしたリソースをプールから自動的に削除します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
-ms.date: 8/6/2018
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: d0c425bcb9961fde9fb319991148c18c6a9ff57b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2938665aa0c0a3df66b6ddcfd1c8c5fbc4598319
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135219"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130688"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
@@ -82,7 +81,7 @@ Application Gateway のすべてのインスタンスは、互いに独立して
 
 | プローブのプロパティ | 説明 |
 | --- | --- |
-| Name |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
+| 名前 |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
 | Protocol |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
 | Host |プローブを送信するホスト名。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なります。 |
 | Path |プローブの相対パス。 パスは、先頭が '/' である必要があります。 |

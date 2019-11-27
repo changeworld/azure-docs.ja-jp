@@ -1,129 +1,126 @@
 ---
 title: Azure サポート要求を作成する方法 | Microsoft Docs
-description: Azure サポート要求を作成する方法
+description: サポートが必要なお客様は、Azure portal を使用して、セルフサービス ソリューションを見つけたり、サポート リクエストを作成および管理したりできます。
 services: Azure Supportability
 author: ganganarayanan
 manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 10/25/2016
-ms.author: gangan
-ms.openlocfilehash: 0195cc86875b075e00e9305d803b8d637905db78
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.date: 11/13/2019
+ms.author: kfollis
+ms.openlocfilehash: fbcf534b549a12887732ce5ae4db1e4d45692791
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72248712"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131064"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure サポート要求を作成する方法
-## <a name="summary"></a>まとめ
-Azure ユーザーは、Azure Portal ([https://portal.azure.com](https://portal.azure.com)) でサポート要求を作成し、管理できます。
+
+## <a name="overview"></a>概要
+
+Azure のお客様は、[Azure portal](https://portal.azure.com) でサポート要求を作成し、管理できます。
 
 > [!NOTE]
-> 商用の Azure portal は [https://portal.azure.com](https://portal.azure.com) です。ドイツ向けの Azure portal は [https://portal.microsoftazure.de](https://portal.microsoftazure.de)  です  
-> 米国政府機関向けの Azure portal は [https://portal.azure.us](https://portal.azure.us) です
-
+> Azure portal の URL は、組織がデプロイされている Azure クラウドに固有のものです。 
+>* 商用利用の Azure portal は次のとおりです。[https://portal.azure.com](https://portal.azure.com)
+>* ドイツの Azure portal は次のとおりです: [https://portal.microsoftazure.de](https://portal.microsoftazure.de)
+>* 米国政府機関向けの Azure portal は次のとおりです: [https://portal.azure.us](https://portal.azure.us)
+>
+>
 
 お客様からいただいたご意見とご要望に基づき、サポート要求のシステムを改善しました。大きな目標として次の 3 つに取り組んでいます。
 
-* **合理化**:クリックとブレードを減らし、サポート リクエストの送信プロセスを簡素化しました。
-* **統合**:Azure リソースの問題を解決するとき、コンテキストを切り替えなくてもそのリソースのサポート リクエストを簡単に送信できるようにします。
-* **効率性**: 問題を効率的に解決するためにサポート エンジニアが必要とする重要な情報を集めます。
+* **合理化**:サポートとトラブルシューティングを見つけやすくして、サポート リクエストの送信方法を簡略化します。
+* **統合**:Azure リソースに関する問題のトラブルシューティングを行う際に、コンテキストを切り替えずに、サポート リクエストを容易に開くことができます。
+* **効率性**: 問題を効率的に解決するために、お客様のサポート エージェントが必要とする重要な情報を集めます。
 
 ## <a name="getting-started"></a>使用の開始
-サポート要求は、上部にあるナビゲーション メニューから、あるいはリソース ブレードから直接、作成できます。
 
-**上部のナビゲーション バーから**
+Azure portal で **[ヘルプとサポート]** にアクセスできます。 それは、グローバル ヘッダーから、またはサービスのリソース メニューから使用できます。
 
-![ヘルプとサポート](./media/how-to-create-azure-support-request/HelpandSupport.png)
+### <a name="go-to-help--support-from-the-global-header"></a>グローバル ヘッダーから [ヘルプとサポート] にアクセスする
 
-[ヘルプとサポート] ページで [新しいサポート要求] を選択します。
+Azure portal 内の任意の場所からサポート リクエストを開始するには、次の操作を行います。
 
-![新しいサポート要求](./media/how-to-create-azure-support-request/NewSupportRequest.png)
+1. **[?]** を グローバル ヘッダーで選択します。 次に、 **[ヘルプとサポート]** を選択します。
 
-**リソース ブレードから**
+   ![ヘルプとサポート](./media/how-to-create-azure-support-request/helpandsupportnewlower.png)
 
-![コンテキストで](./media/how-to-create-azure-support-request/Incontext.png)
+2. **[+ 新しいサポート リクエスト]** を選択します。 画面の指示に従って、発生している問題に関する情報を Microsoft に提供します。 Microsoft は考えられる解決策をいくつか提案し、問題の詳細を収集し、サポート リクエストの送信と追跡を支援します。
 
-## <a name="basics"></a>基本
+   ![新しいサポート要求](./media/how-to-create-azure-support-request/newsupportrequest2lower.png)
+
+### <a name="go-to-help--support-from-a-resource-menu"></a>リソース メニューから [ヘルプとサポート] にアクセスする
+
+リソースのコンテキストでサポート リクエストを開始するには、現在は次の操作を行います。
+
+1. リソース メニューの **[サポート + トラブルシューティング]** セクションで、 **[新しいサポート リクエスト]** を選択します。
+
+   ![コンテキストで](./media/how-to-create-azure-support-request/incontext2lower.png)
+
+2. 画面の指示に従って、発生している問題に関する情報を Microsoft に提供します。 リソースからサポート リクエスト プロセスを開始すると、いくつかのオプションがあらかじめ自動的に選択されています。
+
+## <a name="create-a-support-request"></a>サポート要求の作成
+
+Microsoft は、発生している問題について情報を収集してその解決を支援するためのいくつかの手順について説明します。 各手順については、次のセクションで説明します。
+
+### <a name="basics"></a>基本
+
 サポート要求プロセスの最初の手順は、ユーザーが抱える問題とそのサポート プランに必要な基本情報を集めることです。
 
-例を見てみましょう。仮想マシンに技術的な問題が発生しました。ネットワークの接続に問題があるように思われます。
-ウィザードの最初の手順でサービス ("Windows を実行している仮想マシン") とリソース (仮想マシンの名前) を選択すると、この問題の支援プロセスが開始します。
+**[新しいサポート リクエスト]** の **[基本]** タブで、セレクターを使用して、Microsoft への問題の説明を開始します。 まず、問題の種類の一般的なカテゴリを特定し、関連するサブスクリプションを選択します。 サービス ("Windows を実行する仮想マシン" など) とリソース (ご利用の仮想マシンの名前) を選択することが、ヘルプを得るための次の手順となります。 ご自分の言葉で問題を簡潔に説明してから、 **[問題の種類を選択してください]** を選択して、より具体的になるようにします。
 
-![[基本] ブレード](./media/how-to-create-azure-support-request/Basics.png)
+![[基本] ブレード](./media/how-to-create-azure-support-request/basics2lower.png)
 
 > [!NOTE]
 > Azure は、サブスクリプション管理 (請求、割り当て調整、アカウント振り替えなど) に無制限のサポートを提供します。 技術的なサポートについては、サポート プランが必要になります。 [サポート プランについて詳しく見る](https://azure.microsoft.com/support/plans)。
 >
 >
 
-## <a name="problem"></a>問題点
-ウィザードの 2 番目の手順で、問題に関する追加情報を集めます。 この手順で正確な情報を提供することで、最も適したサポート エンジニアに問題を送り、可能な限り速やかに診断を開始できます。
+### <a name="solutions"></a>解決方法
 
-![[問題] ブレード](./media/how-to-create-azure-support-request/Problem01.png)
+Microsoft は基本的な情報を収集できたら、次にユーザーにソリューションを提示して、お客様に試してもらいます。 場合によっては、クイック診断を実行することもあります。 ソリューションは Azure エンジニアによって作成されたものであり、大抵の一般的な問題はこれで解決します。
 
-上記の仮想マシンの接続の例を続けると、このフォームに入力し、ネットワークの接続問題であることを指定します。問題が発生したおおよその時間など、細かな情報も入力できます。
+### <a name="details"></a>詳細
 
-![[問題] ブレード 2](./media/how-to-create-azure-support-request/Problem02.png)
+次に、Microsoft は問題に関する追加の詳細を収集します。 この手順で徹底的かつ詳細な情報が提供されれば、Microsoft はお客様のサポート リクエストを適切なエージェントに転送し、問題の診断を開始させることができます。
 
-## <a name="related-help"></a>関連ヘルプ
-問題の種類と選択したカテゴリに基づいて、問題の解決に役立つソリューションを提供します。
+問題が発生し始めた時期およびそれを再現するための手順をお知らくださることをお勧めします。 また、ログ ファイルや診断の出力などのファイルをアップロードすることもできます。
 
-![関連ヘルプ](./media/how-to-create-azure-support-request/RelatedHelp.png)
+発生している問題に関する情報をすべて Microsoft に提供したら、サポートを受ける方法を選択できるようになります。 **[詳細]** タブの **[サポート方法]** セクションで、影響の重大度を選択します。 ご自分の希望する連絡方法、連絡のための都合のよいタイミング、およびサポート言語を指定します。
 
-テキストによる問題の説明に基づいて、状況に応じたセルフヘルプ ソリューションも提供します。
+次に、 **[連絡先情報]** セクションに入力して、ご自分への連絡方法をお知らせください。
 
-![関連ヘルプ 2](./media/how-to-create-azure-support-request/RelatedHelp02.png)
+### <a name="review--create"></a>確認と作成
 
-推奨されたソリューションで問題を解決できない場合、このプロセスを続け、サポート要求を作成できます。
+各タブですべての必須情報を入力して、 **[確認および作成]** を選択します。 サポートに送信する詳細情報を確認します。 必要に応じて、任意のタブに戻り、変更を行います。 完了したサポート リクエストが適切であれば、 **[作成]** を選択します。
 
-![[問題] ブレード 3](./media/how-to-create-azure-support-request/Problem03.png)
-
-## <a name="contact-information"></a>連絡先情報
-ウィザードの最後の手順で、マイクロソフトがお客様に連絡するための連絡オプションと連絡先情報を確認します。
-
-![連絡先情報](./media/how-to-create-azure-support-request/ContactInformation.png)
-
-問題の重大度によっては、マイクロソフトからお客様への連絡は営業時間内にするか、24x7 の応答を希望されるか伺うことがあります。24x7 の応答の場合、営業時間内に限らずご連絡いたします。
-
-![連絡先情報 24x7](./media/how-to-create-azure-support-request/ContactInformation-2.png)
+サポート エージェントが、指定された方法を使用してお客様に連絡します。 初回の応答時間については、「[サポート内容と応答性](https://azure.microsoft.com/support/plans/response/)」を参照してください。
 
 ## <a name="all-support-requests"></a>すべてのサポート リクエスト
-サポート要求の作成後、 **[すべてのサポート リクエスト]** ページで詳細を確認できます。
 
-**上部のナビゲーション バーから**
+サポート リクエストの詳細と状態を表示するには、 **[ヘルプとサポート]**  >   **[すべてのサポート リクエスト]** の順に移動します。
 
-![ヘルプとサポート](./media/how-to-create-azure-support-request/HelpandSupport.png)
+![すべてのサポート リクエスト](./media/how-to-create-azure-support-request/allrequestslower.png)
 
-[ヘルプとサポート] ページの左側のメニューで、[すべてのサポート リクエスト] を選択します。
+このページでは、サブスクリプション、作成日 (UTC)、および状態によってサポート リクエストをフィルター処理することができます。 また、このページでサポート要求を並べ替えたり検索したりすることもできます。
 
-![すべてのサポート リクエストのリンク](./media/how-to-create-azure-support-request/AllSupportRequest-link.png)
+サポート リクエストを選択すると、重大度やサポート エージェントが応答するまでの予想時間など、詳細が表示されます。
 
-**[すべてのサポート リクエスト]** ページでは、すべてのサポート要求とその状態を確認することができます。
-
-![すべてのサポート リクエスト](./media/how-to-create-azure-support-request/AllSupportRequest.png)
-
-サポート要求のページでは、サブスクリプション、作成日時 (UTC)、および状態で案件をフィルター処理することができます。
-また、このページでサポート要求を並べ替えたり検索したりすることもできます。
-
-サポート要求を選択すると、重大度と、サポート エンジニアの応答に必要な予想時間を含む、詳細が表示されます。
-![VID](./media/how-to-create-azure-support-request/VID.png)
-
-要求の重大度を変更する場合、 **[事業影響度]** タイルをクリックします。 上記の例では、要求が現在、重大度 C に設定されています。
-
-タイルをクリックすると、重大度の一覧が表示されます。登録したサポート要求に割り当てることができます。
+リクエストの重大度を変更する場合は、 **[事業影響度]** を選択します。 割り当てることができる重大度の一覧が表示されます。
 
 > [!NOTE]
 > 最高重大度はサポート プランごとに異なります。 [サポート プランについて詳しく見る](https://azure.microsoft.com/support/plans)。
 >
 >
+Azure のセルフヘルプ サポート オプションの詳細については、次のビデオをご覧ください。
 
-![VID-2](./media/how-to-create-azure-support-request/VID-2.png)
+> [!VIDEO https://www.youtube.com/embed/gNhzR5FE9DY]
 
-## <a name="feedback"></a>フィードバック
-ご意見とご提案をお待ちしております。 あなたの [提案](https://feedback.azure.com/forums/266794-support-feedback)をお寄せください。 また、[Twitter](https://twitter.com/azuresupport) や [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure)でマイクロソフトの最新情報をご覧いただけます。
-
-## <a name="learn-more"></a>詳細情報
-[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq)
+## <a name="next-steps"></a>次の手順
+* [お客様からのフィードバックとご提案の送信](https://feedback.azure.com/forums/266794-support-feedback)
+* [Twitter](https://twitter.com/azuresupport) でのご協力
+* [MSDN フォーラムで同僚からのヘルプを得る](https://social.msdn.microsoft.com/Forums/azure)
+* [Azure サポートに関する FAQ で詳細を確認する](https://azure.microsoft.com/support/faq)

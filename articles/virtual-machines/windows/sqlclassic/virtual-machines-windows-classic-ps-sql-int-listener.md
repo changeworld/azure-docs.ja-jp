@@ -1,27 +1,28 @@
 ---
-title: Azure で AlwaysOn 可用性グループの ILB リスナーを構成する | Microsoft Docs
-description: このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、内部ロード バランサーを使用して Azure で AlwaysOn 可用性グループ リスナーを作成します。
+title: 可用性グループ (クラシック) の ILB リスナーの構成
+description: このチュートリアルでは、クラシック デプロイ モデルを使用して作成されたリソースを使用し、内部ロード バランサーを使用する Azure の SQL Server VM に対して Always On 可用性グループ リスナーを作成します。
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
-ms.assetid: 291288a0-740b-4cfa-af62-053218beba77
+ms.assetid: 291288a0-740b-4cfa-af62-053218beba77j
 ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: ca8adf4f9ce221533240e6c797f1fb01dacf6e8d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 29aaedeafb3995cc09e221d2e049dd538808904a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101904"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032668"
 ---
-# <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Azure で AlwaysOn 可用性グループの ILB リスナーを構成する
+# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Azure SQL Server VM の可用性グループの ILB リスナーの構成
 > [!div class="op_single_selector"]
 > * [内部リスナー](../classic/ps-sql-int-listener.md)
 > * [外部リスナー](../classic/ps-sql-ext-listener.md)

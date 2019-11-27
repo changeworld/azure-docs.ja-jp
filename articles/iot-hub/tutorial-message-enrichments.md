@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 77d900844705bb86ce4bcfeda31d6ee765cb8d45
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0dd6c410040eea9eb4039ab5da183cc0b6799493
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534996"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005765"
 ---
-# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>チュートリアル:Azure IoT Hub のメッセージ エンリッチメント (プレビュー) を使用する
+# <a name="tutorial-using-azure-iot-hub-message-enrichments"></a>チュートリアル:Azure IoT Hub のメッセージ エンリッチメントを使用する
 
 "*メッセージ エンリッチメント*" は、指定エンドポイントに送信される前のメッセージに対し、追加情報を含んだ "*スタンプ*" を適用する IoT Hub の機能です。 メッセージ エンリッチメントを使用する理由の 1 つは、ダウンストリームの処理を単純化するために用いることのできるデータを追加することです。 たとえば、デバイス ツイン タグを使用してデバイスのテレメトリ メッセージのエンリッチメントを行えば、この情報のために顧客側でデバイス ツイン API を呼び出す負担を軽減することができます。 詳細については、[メッセージ エンリッチメントの概要](iot-hub-message-enrichments-overview.md)に関するページを参照してください。
 
@@ -65,11 +65,11 @@ ms.locfileid: "69534996"
 
 IoT ハブ名やストレージ アカウント名など、いくつかのリソース名はグローバルに一意であることが必要です。 スクリプトを実行しやすいように、これらのリソース名の末尾には、ランダムな英数字の値 (*randomValue*) が追加されます。 randomValue はスクリプトの冒頭で 1 度生成され、スクリプト全体で必要に応じてリソース名に追加されます。 これをランダムにしたくない場合は、空の文字列または特定の値に設定できます。
 
-[Bash の Cloud Shell ウィンドウ](https://shell.azure.com)を開いてください (まだ開いていない場合)。 解凍したリポジトリ内のスクリプトを開き、Ctrl + A キーを使用して全選択し、Ctrl + C キーを使用してそれをコピーします。 または、以下の CLI スクリプトをコピーするか、Cloud Shell で直接開いてください。 Azure Cloud Shell ウィンドウのコマンド ラインを右クリックし、 **[貼り付け]** を選択してスクリプトを貼り付けます。 一度に 1 ステートメントずつスクリプトが実行されます。 スクリプトの実行が停止したら、**Enter** キーを押して最後のコマンドを確実に実行します。 以下のコード ブロックは、使用されているスクリプトとその実行内容を説明するコメントを示したものです。
+まだこれを行っていない場合は、[Cloud Shell ウィンドウ](https://shell.azure.com)を開き、これが確実に Bash に設定されているようにします。 解凍したリポジトリ内のスクリプトを開き、Ctrl + A キーを使用して全選択し、Ctrl + C キーを使用してそれをコピーします。 または、以下の CLI スクリプトをコピーするか、Cloud Shell で直接開いてください。 Cloud Shell ウィンドウのコマンド ラインを右クリックし、 **[貼り付け]** を選択してスクリプトを貼り付けます。 一度に 1 ステートメントずつスクリプトが実行されます。 スクリプトの実行が停止したら、**Enter** キーを押して最後のコマンドを確実に実行します。 以下のコード ブロックは、使用されているスクリプトとその実行内容を説明するコメントを示したものです。
 
 次に示したのは、このスクリプトによって作成されるリソースです。 **Enriched** と表示されているリソースは、エンリッチメントが適用されたメッセージ用であることを意味します。 **Original** と表示されているリソースは、エンリッチメントが適用されていないメッセージ用であることを意味します。
 
-| Name | 値 |
+| 名前 | 値 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | container name | original  |
@@ -168,10 +168,10 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ##### ROUTING FOR STORAGE #####
 
 # You're going to have two routes and two endpoints.
-# One points to container1 in the storage account
-#   and includes all messages.
-# The other points to container2 in the same storage account
-#   and only includes enriched messages.
+# One route points to the first container ("original") in the storage account
+#   and includes the original messages.
+# The other points to the second container ("enriched") in the same storage account
+#   and includes the enriched versions of the messages.
 
 endpointType="azurestoragecontainer"
 endpointName1="ContosoStorageEndpointOriginal"
@@ -190,7 +190,7 @@ storageConnectionString=$(az storage account show-connection-string \
 # Create the routing endpoints and routes.
 # Set the encoding format to either avro or json.
 
-# This is the endpoint for container 1, for endpoint messages that are not enriched.
+# This is the endpoint for the first container, for endpoint messages that are not enriched.
 az iot hub routing-endpoint create \
   --connection-string $storageConnectionString \
   --endpoint-name $endpointName1 \
@@ -202,7 +202,7 @@ az iot hub routing-endpoint create \
   --resource-group $resourceGroup \
   --encoding json
 
-# This is the endpoint for container 2, for endpoint messages that are enriched.
+# This is the endpoint for the second container, for endpoint messages that are enriched.
 az iot hub routing-endpoint create \
   --connection-string $storageConnectionString \
   --endpoint-name $endpointName2 \
@@ -225,7 +225,8 @@ az iot hub route create \
   --enabled \
   --condition $condition
 
-# This is the route for messages that are not enriched.
+# This is the route for messages that are enriched.
+# Create the route for the second storage endpoint.
 az iot hub route create \
   --name $routeName2 \
   --hub-name $iotHubName \
@@ -240,7 +241,7 @@ az iot hub route create \
 
 ### <a name="view-routing-and-configure-the-message-enrichments"></a>ルーティングを確認してメッセージ エンリッチメントを構成する
 
-1. **[リソース グループ]** を選択して IoT ハブに移動し、このチュートリアル用に設定されたリソース グループ (**ContosoResources_MsgEn**) を選択します。 一覧から IoT ハブを探して選択します。 IoT ハブの *[メッセージ ルーティング]* * を選択します。
+1. **[リソース グループ]** を選択して IoT ハブに移動し、このチュートリアル用に設定されたリソース グループ (**ContosoResources_MsgEn**) を選択します。 一覧から IoT ハブを探して選択します。 IoT ハブの **[メッセージ ルーティング]** を選択します。
 
    ![メッセージのルーティングを選択する](./media/tutorial-message-enrichments/select-iot-hub.png)
 
@@ -250,7 +251,7 @@ az iot hub route create \
 
 2. ContosoStorageEndpointEnriched エンドポイントのリストに次の値を追加します。
 
-   | Name | 値 | エンドポイント (ドロップダウン リスト) |
+   | Key | 値 | エンドポイント (ドロップダウン リスト) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -269,7 +270,7 @@ az iot hub route create \
 
 ## <a name="send-messages-to-the-iot-hub"></a>IoT ハブにメッセージを送信する
 
-エンドポイントに対するメッセージ エンリッチメントの構成が完了したら、シミュレートされたデバイスのアプリケーションを実行して、IoT ハブにメッセージを送信します。 ハブは、次の処理を遂行する設定と共に設定されています。
+エンドポイントに対するメッセージ エンリッチメントの構成が完了したら、シミュレートされたデバイスのアプリケーションを実行して、IoT ハブにメッセージを送信します。 ハブには、次の処理を実行する設定が設定されています。
 
 * ストレージ エンドポイント ContosoStorageEndpointOriginal にルーティングされたメッセージはエンリッチされず、ストレージ コンテナー `original` に格納されます。
 
@@ -277,16 +278,16 @@ az iot hub route create \
 
 シミュレートされたデバイスのアプリケーションは、解凍後のダウンロードに含まれているアプリケーションの 1 つです。 このアプリケーションは、[ルーティングのチュートリアル](tutorial-routing.md)で取り上げられている各種メッセージ ルーティング方法 (Azure Storage など) ごとにメッセージを送信します。
 
-ソリューション ファイル (IoT_SimulatedDevice.sln) をダブルクリックしてコードを Visual Studio で開いてから、Program.cs を開きます。 `{your hub name}` は、IoT ハブの名前で置き換えてください。 IoT ハブのホスト名の形式は、 **{自分のハブ名}.azure-devices.net** です。 このチュートリアルでのハブのホスト名は、**ContosoTestHubMsgEn.azure-devices.net** です。 次に、`{device key}` を、先ほどリソースを作成するためのスクリプトを実行するときに保存したデバイス キーに置き換えます。
+ソリューション ファイル (IoT_SimulatedDevice.sln) をダブルクリックしてコードを Visual Studio で開いてから、Program.cs を開きます。 マーカー `{your hub name}` を IoT ハブ名で置き換えます。 IoT ハブのホスト名の形式は、 **{自分のハブ名}.azure-devices.net** です。 このチュートリアルでのハブのホスト名は、**ContosoTestHubMsgEn.azure-devices.net** です。 次に、マーカー `{your device key}` を、リソースを作成するスクリプトを実行するときに先ほど保存したデバイス キーに置き換えます。
 
 デバイス キーがない場合は、ポータルから取得できます。 ログイン後、 **[リソース グループ]** に移動し、リソース グループを選択して、目的の IoT ハブを選択します。 テスト デバイスの **[IoT デバイス]** から該当するデバイスを選択してください。 **[プライマリ キー]** の横にあるコピー アイコンを選択して、クリップボードにコピーします。
 
    ```csharp
-        static string myDeviceId = "contoso-test-device";
-        static string iotHubUri = "ContosoTestHubMsgEn.azure-devices.net";
+        private readonly static string s_myDeviceId = "Contoso-Test-Device";
+        private readonly static string s_iotHubUri = "ContosoTestHubMsgEn.azure-devices.net";
         // This is the primary key for the device. This is in the portal.
         // Find your IoT hub in the portal > IoT devices > select your device > copy the key.
-        static string deviceKey = "{your device key here}";
+        private readonly static string s_deviceKey = "{your device key}";
    ```
 
 ## <a name="run-and-test"></a>実行してテストする
@@ -309,13 +310,13 @@ az iot hub route create \
 
 **enriched** というコンテナー内のメッセージには、メッセージ エンリッチメントが適用されています。 **original** コンテナー内のメッセージには、エンリッチメントが適用されていない生のメッセージが格納されます。 いずれかのコンテナーを最下部に到達するまでドリルダウンし、最新のメッセージ ファイルを開きます。次に、もう一方のコンテナーについても同じ操作を行い、そのコンテナー内のメッセージにはエンリッチメントが追加されていないことを確認します。
 
-エンリッチされたメッセージを見ると、次のように、"My IoT Hub" とハブ名のほか、場所と顧客 ID が表示されていることがわかります。
+エンリッチされたメッセージを見ると、次のように "my IoT Hub" とハブ名のほか、場所と顧客 ID があるはずです。
 
 ```json
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage","my IoT Hub":"contosotesthubmsgen3276","devicelocation":"$twin.tags.location","customerID":"6ce345b8-1e4a-411e-9398-d34587459a3a"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
 ```
 
-以下に示したのが unenriched のメッセージです。 ここでは "My IoT Hub"、"devicelocation"、および "customerID" が表示されていません。これは、このエンドポイントにはエンリッチメントが適用されていないためです。
+次はエンリッチされていないメッセージです。 このエンドポイントにはエンリッチメントが適用されていないため、エンリッチメントで追加される "my IoT Hub"、"devicelocation"、および "customerID" はありません。
 
 ```json
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}

@@ -1,18 +1,19 @@
 ---
-title: Azure PowerShell を使用して Application Gateway のカスタム ルールに Web アプリケーション ファイアウォール v2 を構成する
-description: Azure PowerShell を使用して WAF v2 のカスタム規則を構成する方法について説明します。
+title: PowerShell を使用して v2 のカスタム規則を構成する
+titleSuffix: Azure Web Application Firewall
+description: Azure PowerShell を使用して WAF v2 のカスタム規則を構成する方法について説明します。 ファイアウォールを通過する要求ごとに評価される独自の規則を作成できます。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 8c307ac5553c2c333425b6c14b9b4da4a6582f62
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1641b74e3b9e59253b2674b22dfd8cd1b6ca2c2c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511504"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133047"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Azure PowerShell を使用してカスタム ルールによって Application Gateway 上に Web アプリケーション ファイアウォール v2 を構成する
 

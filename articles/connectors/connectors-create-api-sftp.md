@@ -8,16 +8,19 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, klam, LADocs
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 5b80339e90947b7cc45b1edb5df00652a13291ac
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 20702f5bc0dfc513d1fba84b69595dec885613ac
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293469"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837101"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
+
+> [!IMPORTANT]
+> SFTP コネクタは非推奨となっているため、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用してください。 Logic App Designer では、SFTP トリガーおよびアクションを選択できなくなりました。
 
 [セキュア ファイル転送プロトコル (SFTP)](https://www.ssh.com/ssh/sftp/) サーバー上のファイルを監視、作成、送信、および受信するタスクを自動化するには、Azure Logic Apps と SFTP コネクタを使用して統合ワークフローを構築して自動化できます。 SFTP は、任意の信頼性の高いデータ ストリームを通して、ファイル アクセス、ファイル転送、およびファイル管理を提供するネットワーク プロトコルです。 次に、自動化できるタスクの例をいくつか示します。
 

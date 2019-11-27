@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 391cddbbd1b69fb7cb5422adbaea2f3378e273bf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f03e32eb17c7c02d8969ea6f79663a5c99196d7b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580154"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931927"
 ---
 # <a name="long-audio-api-preview"></a>Long Audio API (プレビュー)
 
@@ -25,6 +25,9 @@ Long Audio API のその他の利点は次のとおりです。
 
 * サービスによって返される合成音声は、再現性の高い音声出力を保証するニューラル音声を使用します。
 * リアルタイム応答はサポートされていないため、音声エンドポイントをデプロイする必要はありません。
+
+> [!NOTE]
+> 現在、Long Audio API では、[カスタム ニューラル音声](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices)のみをサポートしています。
 
 ## <a name="workflow"></a>ワークフロー
 

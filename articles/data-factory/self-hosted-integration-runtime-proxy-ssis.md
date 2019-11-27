@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/12/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 55abdab6a427547ee8bd498500deee94b8f67453
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684304"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954740"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する
 この記事では、セルフホステッド統合ランタイム (IR) をプロキシとして構成して、Azure Data Factory (ADF) の Azure SSIS 統合ランタイム (IR) で SQL Server Integration Services (SSIS) パッケージを実行する方法について説明します。  この機能を使用すると、[Azure-SSIS IR を仮想ネットワークに参加](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)させずに、オンプレミスのデータにアクセスすることができます。  これは、企業ネットワークが、Azure SSIS IR を挿入するには複雑すぎる構成/制限の厳しいポリシーを持っている場合に役立ちます。
@@ -87,10 +87,10 @@ Azure-SSIS IR で実行されている 2 番目のステージング タスク�
 
 ## <a name="current-limitations"></a>現時点での制限事項
 
-- 現在、OLEDB/フラット ファイルの接続マネージャーと OLEDB/フラット ファイルのソースのみがサポートされています。 
+- ODBC、OLEDB、フラット ファイルの接続マネージャーと ODBC、OLEDB、フラット ファイルのソースを使用するデータ フロー タスクのみが現在サポートされています。 
 - **アカウント キー**/**SAS URI**/**サービス プリンシパル**の認証を使って構成された Azure Blob Storage のリンクされたサービスのみが現在サポートされています。
 - Azure-SSIS IR がプロビジョニングされている同じ ADF にプロビジョニングされているセルフホステッド IR のみが現在サポートされています。
-- OLEDB/フラット ファイル ソースと接続マネージャーのプロパティ内での SSIS パラメーター/変数の使用はサポートされていません。
+- ODBC、OLEDB、フラット ファイルのソースと接続マネージャーのプロパティ内での SSIS パラメーターまたは変数の使用は現在サポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 セルフホステッド IR を Azure-SSIS IR のプロキシとして構成したら、ADF パイプラインの SSIS パッケージ実行アクティビティとしてパッケージをデプロイおよび実行してオンプレミスのデータにアクセスできます。[ADF パイプラインの SSIS パッケージ実行アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関する記事を参照してください。

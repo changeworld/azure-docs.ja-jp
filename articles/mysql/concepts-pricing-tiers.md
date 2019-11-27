@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: f53f260ebe80ce2e3d6d6349e3fa892fa3c021a3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/08/2019
+ms.openlocfilehash: 62c5c338f9783c65a3907a706618f653eea5cd0d
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972824"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904384"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL の価格レベル
 
@@ -22,7 +22,7 @@ Azure Database for MySQL サーバーは、次の 3 つの価格レベルのい�
 | コンピューティング世代 | Gen 4、Gen 5 | Gen 4、Gen 5 | Gen 5 |
 | 仮想コア | 1、2 | 2、4、8、16、32、64 |2、4、8、16、32 |
 | 仮想コアあたりのメモリ | 2 GB | 5 GB | 10 GB |
-| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
+| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB から 16 TB | 5 GB から 16 TB |
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | データベース バックアップのリテンション期間 | 7 ～ 35 日間 | 7 ～ 35 日間 | 7 ～ 35 日間 |
 
@@ -47,9 +47,15 @@ Azure Database for MySQL サーバーは、次の 3 つの価格レベルのい�
 |    | **Basic** | **汎用** | **メモリ最適化** |
 |:---|:----------|:--------------------|:---------------------|
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
-| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
+| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB から 16 TB | 5 GB から 16 TB |
 | ストレージの増分サイズ | 1 GB | 1 GB | 1 GB |
-| IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS |
+| IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
+
+> [!NOTE]
+> 次のリージョンでは、最大で 16 TB および 20,000 IOPS のストレージがサポートされています。米国東部、米国東部 2、米国中部、米国西部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部。
+>
+> その他のすべてのリージョンでは、最大 4 TB および最大 6000 IOPS のストレージがサポートされています。
+>
 
 サーバーの作成中および作成後にさらにストレージ容量を追加でき、システムではワークロードのストレージ使用量に基づいて自動的にストレージを拡張することができます。 
 
@@ -59,25 +65,6 @@ Azure Database for MySQL サーバーは、次の 3 つの価格レベルのい�
 Basic レベルでは、IOPS 保証は提供されません。 汎用およびメモリ最適化の価格レベルでは、IOPS は、プロビジョニング済みのストレージ サイズに合わせて 3 対 1 の比率でスケーリングされます。
 
 ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視すべき関連メトリックは、[容量の上限、ストレージの割合、ストレージの使用量、および IO の割合](concepts-monitoring.md)です。
-
-### <a name="large-storage-preview"></a>大容量のストレージ (プレビュー)
-
-汎用レベルおよびメモリ最適化レベルのストレージ制限の上限を引き上げています。 プレビューにオプトインされる新しく作成されたサーバーでは、最大 16 TB のストレージをプロビジョニングできます。 IOPS は、3:1 の比率で最大で 20,000 IOPS までスケーリングされます。 現在一般的に使用できるストレージと同様に、サーバーの作成後にさらにストレージ容量を追加でき、システムではワークロードのストレージ使用量に基づいて自動的にストレージを拡張できます。
-
-|              | **汎用** | **メモリ最適化** |
-|:-------------|:--------------------|:---------------------|
-| ストレージの種類 | Azure Premium Storage | Azure Premium Storage |
-| ストレージ サイズ | 32 GB ～ 16 TB| 32 GB ～ 16 TB |
-| ストレージの増分サイズ | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS| 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
-
-> [!IMPORTANT]
-> 大容量ストレージは、現在、次のリージョンでパブリック プレビュー中です。米国東部、米国東部 2、米国中部、米国西部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部。
->
-> 大容量ストレージのプレビューでは、現在、以下はサポートされていません。
->
-> * Geo 冗長バックアップ
-> * リージョン間のレプリケーション
 
 ### <a name="reaching-the-storage-limit"></a>容量の上限に到達
 

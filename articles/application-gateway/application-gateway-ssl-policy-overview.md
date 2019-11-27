@@ -1,25 +1,18 @@
 ---
-title: Azure Application Gateway の SSL ポリシーの概要 | Microsoft Docs
-description: Azure Application Gateway での SSL ポリシーの構成について説明します
+title: Azure Application Gateway の SSL ポリシーの概要
+description: Azure Application Gateway の SSL ポリシーを構成し、バックエンド サーバー ファームからの暗号化と暗号化の解除のオーバーヘッドを低減する方法について説明します。
 services: application gateway
-documentationcenter: na
 author: amsriva
-manager: ''
-editor: ''
-tags: azure resource manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure services
-ms.date: 08/03/2017
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 1710635f145136e564a2bad48d539f242c9bc228
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6b3d52f1f6bd0390ab6ccafa80b2979cb0e498fd
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359915"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130412"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Application Gateway の SSL ポリシーの概要
 

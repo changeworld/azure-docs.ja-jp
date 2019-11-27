@@ -1,7 +1,7 @@
 ---
 title: 不適切な表現のフィルター - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Translator Text API で不適切な表現のフィルターを使用します。
+description: Azure Cognitive Services Translator Text API で不適切な表現のフィルターを使用して、翻訳テキストの不適切な表現のレベルを判断します。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 114dea098db5c824a1235ba1635f547383bf6743
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: e7e2097e0d3daf360f1fa0f30bf3fd2c62c07163
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595193"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836220"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Translator Text API で不適切な表現のフィルターを追加する
 

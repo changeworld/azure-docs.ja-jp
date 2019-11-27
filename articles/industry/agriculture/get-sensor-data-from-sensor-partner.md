@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 380c67e5aeaba9be60e016f173e4da127e4e5f14
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 33fd2221d3f3a0562abf83f014a7b84df972eebc
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797384"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128848"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
@@ -60,7 +60,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
     ```azurepowershell-interactive 
 
-    PS> ./generateCredentials.ps1   
+    ./generateCredentials.ps1   
 
     ```
 7. 画面の指示に従って、値をキャプチャします (API エンドポイント、テナント ID、クライアント ID、クライアント シークレット、EventHub 接続文字列)。
@@ -86,7 +86,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 現在、FarmBeats では次のデバイスがサポートされています。
 
 - **ノード**: 1 つ以上のセンサーが接続されているデバイス。
-- **ゲートウェイ**: 1 つ以上のセンサーが接続されているデバイス。
+- **ゲートウェイ**: 1 つ以上のノードが接続されているデバイス。
 
 次の手順に従います。
 

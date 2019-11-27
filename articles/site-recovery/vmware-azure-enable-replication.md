@@ -1,17 +1,17 @@
 ---
-title: Azure Site Recovery による Azure へのディザスター リカバリーのために VMware VM のレプリケーションを有効にする | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して、ディザスター リカバリーのための Azure へのレプリケーションに対して VMware VM を有効にする方法について説明します。
+title: Azure Site Recovery を使用してディザスター リカバリーのために VMware VM を有効にする
+description: この記事では、Azure Site Recovery サービスを使用して、ディザスター リカバリーのために VMware VM のレプリケーションを有効にする方法について説明します
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.date: 06/28/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 3f4e4afb4d94a7b2e2a6b246a371cf6234577463
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 1cc1ee82b45ecab17e4bcfb3a909fc90b33a1545
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491728"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954450"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 

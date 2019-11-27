@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fa3e3c6d89657d328182da667c153f14f70bbd7e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: d0dd2ca35453859dcc16ef78ef4845a4198aad95
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514666"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066342"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -207,11 +207,16 @@ Standard ファイル共有は、すべてのリージョンで 5 TiB まで利�
 |-------|---------|
 |オーストラリア東部 |LRS     |
 |オーストラリア南東部|LRS |
+|カナダ中部  |LRS     |
+|カナダ東部     |LRS     |
 |インド中部  |LRS     |
+|米国中部*   |LRS     |
 |東アジア      |LRS     |
 |米国東部*        |LRS     |
+|米国東部 2*      |LRS     |
 |フランス中部 |LRS、ZRS|
 |フランス南部   |LRS     |
+|北ヨーロッパ   |LRS     |
 |インド南部    |LRS     |
 |東南アジア |LRS、ZRS|
 |米国中西部|LRS     |
@@ -219,13 +224,13 @@ Standard ファイル共有は、すべてのリージョンで 5 TiB まで利�
 |米国西部*        |LRS     |
 |米国西部 2      |LRS、ZRS|
 
-\* 新しいアカウントでサポートされていますが、すべての既存のアカウントのアップグレード プロセスが完了しているわけではありません。
+\* 新しいアカウントでサポートされていますが、すべての既存のアカウントのアップグレード プロセスが完了しているわけではありません。 [大きなファイル共有を有効にする](storage-files-how-to-create-large-file-share.md)ことで、既存のストレージ アカウントのアップグレード プロセスが完了したかどうかを確認することができます。
 
 この[アンケート](https://aka.ms/azurefilesatscalesurvey)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
 
 ### <a name="enable-and-create-larger-file-shares"></a>より大きなファイル共有を有効にして作成する
 
-大きなファイル共有の使用を開始するには、[大きなファイル共有の有効化](storage-files-how-to-create-large-file-share.md)に関する記事を参照してください。
+大きなファイル共有の使用を開始するには、[大きなファイル共有の有効にして作成する方法](storage-files-how-to-create-large-file-share.md)に関する記事を参照してください。
 
 ## <a name="data-growth-pattern"></a>データ増加パターン
 

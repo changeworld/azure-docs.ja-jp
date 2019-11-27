@@ -1,5 +1,5 @@
 ---
-title: 回線のピアリングを構成する - ExpressRoute:Azure | Microsoft Docs
+title: 'Azure ExpressRoute: ピアリングの構成'
 description: この記事では、ExpressRoute のプライベートおよび Microsoft ピアリングを作成してプロビジョニングする手順を説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: 08d8103c4b35148a87d347e31b11c7c8c968598b
-ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
+ms.openlocfilehash: 5fb728cccd77d0cefd10c124cb7215dc3b880fe3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622342"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083538"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute 回線のピアリングの作成と変更を行う
 
@@ -61,11 +60,11 @@ ExpressRoute 回線に Azure プライベートおよび Microsoft ピアリン�
 
    **回線 - プロバイダーの状態:未プロビジョニング**
 
-    [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png "プロバイダーの状態: 未プロビジョニング")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+    [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png "Provider status: Not provisioned")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
 
    **回線 - プロバイダーの状態:プロビジョニング済み**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png "プロバイダーの状態 = プロビジョニング済み")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png "Provider status = Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 2. 回路の Microsoft ピアリングを構成する 続行する前に、次の情報を確認してください。
 
    * プライマリ リンク用の /30 サブネット。 これは、自分が所有しており、RIR/IRR に登録されている有効なパブリック IPv4 プレフィックスである必要があります。 このサブネットから、ユーザーは 1 番目に使用可能な IP アドレスを自分のルーターに割り当て、Microsoft は 2 番目に使用可能な IP アドレスをそのルーターに割り当てます。
@@ -78,10 +77,16 @@ ExpressRoute 回線に Azure プライベートおよび Microsoft ピアリン�
    * **省略可能 -** MD5 を使用する場合には、パスワードを準備します。
 3. 次の例のように、構成するピアリングを選ぶことができます。 Microsoft ピアリング行を選択します。
 
-   [![Microsoft ピアリング行を選択する](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m.png "Microsoft ピアリング行を選択する")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m-lightbox.png#lightbox)
+   [![Microsoft ピアリング行の選択](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m.png "Microsoft ピアリング行の選択")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m-lightbox.png#lightbox)
 4. Microsoft ピアリングを構成します。 すべてのパラメーターを指定したら、構成を**保存**します。 次の図は構成例です。
 
    ![Microsoft ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
+
+> [!IMPORTANT]
+> Microsoft は、指定された 'アドバタイズされたパブリック プレフィックス' と 'ピア ASN' (または '顧客 ASN') がインターネット ルーティング レジストリでユーザーに割り当てられているかどうかを確認します。 別のエンティティからパブリック プレフィックスを取得している場合、およびルーティング レジストリに割り当てが記録されていない場合、自動検証は完了せず、手動検証が必要になります。 自動検証が失敗した場合は、"検証が必要です" というメッセージが表示されます。 
+>
+> '検証が必要です' というメッセージが表示された場合は、ルーティング レジストリにプレフィックスの所有者として一覧表示されているエンティティによって組織にパブリック プレフィックスが割り当てられていることを示すドキュメントを収集し、下に示すようにサポート チケットを開くことにより、これらのドキュメントを手動検証のために送信してください。 
+>
 
    回線が "検証が必要です" の状態になった場合、サポート チケットを開き、プレフィックスの所有権を示す証拠をサポート チームに示してください。 次の例のように、ポータルから直接サポート チケットを開くことができます。
 
@@ -120,11 +125,11 @@ Microsoft ピアリングの行を選択して、そのピアリングのプロ�
 
    **回線 - プロバイダーの状態:未プロビジョニング**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png "プロバイダーの状態 = 未プロビジョニング")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
+   [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png "Provider status = Not Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
 
    **回線 - プロバイダーの状態:プロビジョニング済み**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png "プロバイダーの状態 = プロビジョニング済み")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
+   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png "Provider Status = Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
 
 2. 回線用に Azure プライベート ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
 
@@ -136,7 +141,7 @@ Microsoft ピアリングの行を選択して、そのピアリングのプロ�
    * **省略可能 -** MD5 を使用する場合には、パスワードを準備します。
 3. 次の例で示すように、Azure プライベート ピアリング行を選択します。
 
-   [![プライベート ピアリング行を選択する](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p.png "プライベート ピアリング行を選択する")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p-lightbox.png#lightbox)
+   [![プライベート ピアリング行の選択](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p.png "プライベート ピアリング行の選択")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p-lightbox.png#lightbox)
 4. プライベート ピアリングを構成します。 すべてのパラメーターを指定したら、構成を**保存**します。
 
    ![プライベート ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/configuration-p.png)
@@ -148,7 +153,7 @@ Microsoft ピアリングの行を選択して、そのピアリングのプロ�
 
 ピアリングを選択して、Azure プライベート ピアリングのプロパティを表示することができます。
 
-[![プライベート ピアリングのプロパティを表示する](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "プライベート ピアリングのプロパティを表示する")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
+[![プライベート ピアリングのプロパティの表示](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "プライベート ピアリングのプロパティの表示")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
 
 ### <a name="updateprivate"></a>Azure プライベート ピアリングの構成を更新するには
 

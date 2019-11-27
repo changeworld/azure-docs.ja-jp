@@ -1,5 +1,5 @@
 ---
-title: 方法:Speech SDK を使用してクライアントでカスタム コマンドを実行する (プレビュー)
+title: Speech SDK を使用してクライアントでカスタム コマンドを実行する方法
 titleSuffix: Azure Cognitive Services
 description: この記事では、Speech SDK を使用して、クライアントでのカスタム コマンド アクティビティを処理します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: a986da74a668075457e28a9a37b6a11fd04a84e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506510"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110077"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>方法:Speech SDK を使用してクライアントでコマンドを実行する (プレビュー)
 
@@ -30,11 +30,11 @@ ms.locfileid: "73506510"
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - Speech Services 用の Azure サブスクリプション キー
-   - [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
+  - [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
 - 以前に作成したカスタム コマンド アプリ
-   - [クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
+  - [クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)
 - Speech SDK が有効なクライアント アプリケーション
-   - [クイック スタート:Speech SDK でカスタム コマンド アプリケーションに接続する (プレビュー)](./quickstart-custom-speech-commands-speech-sdk.md)
+  - [クイック スタート:Speech SDK でカスタム コマンド アプリケーションに接続する (プレビュー)](./quickstart-custom-speech-commands-speech-sdk.md)
 
 ## <a name="optional-get-started-fast"></a>省略可能:すぐに開始
 
@@ -45,14 +45,15 @@ ms.locfileid: "73506510"
 1. [Speech Studio](https://speech.microsoft.com/) から前に作成したカスタム コマンド アプリケーションを開きます
 1. **[Completion Rules]/(完了規則/)** セクションを調べて、ユーザーに応答する規則が事前に作成されていることを確認します
 1. ペイロードをクライアントに直接送信するには、アクティビティの送信アクションで新しい規則を作成します
+
    > [!div class="mx-imgBorder"]
    > ![アクティビティの送信の完了規則](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | Setting    | 推奨値                                  | 説明                                        |
-   | ---------- | ------------------------------------------------ | -------------------------------------------------- |
-   | 規則の名前  | UpdateDeviceState                                | 規則の目的を説明する名前          |
-   | 条件 | 必須のパラメーター - `OnOff` および `SubjectDevice` | 規則を実行できるタイミングを決定する条件    |
-   | Actions    | `SendActivity` (下記参照)                        | 規則条件が真のときに実行するアクション |
+   | Setting | 推奨値 | 説明 |
+   | ------- | --------------- | ----------- |
+   | 規則の名前 | UpdateDeviceState | 規則の目的を説明する名前 |
+   | 条件 | 必須のパラメーター - `OnOff` および `SubjectDevice` | 規則を実行できるタイミングを決定する条件 |
+   | Actions | `SendActivity` (下記参照) | 規則条件が真のときに実行するアクション |
 
    > [!div class="mx-imgBorder"]
    > ![アクティビティの送信のペイロード](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
@@ -139,6 +140,6 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. TV の表示状態が "オン" に変わるはずです
 
 ## <a name="next-steps"></a>次の手順
-> [!div class="nextstepaction"]
-> [方法:カスタム コマンド パラメーターに検証を追加する (プレビュー)](./how-to-custom-speech-commands-validations.md)
 
+> [!div class="nextstepaction"]
+> [方法: カスタム コマンド パラメーターに検証を追加する (プレビュー)](./how-to-custom-speech-commands-validations.md)

@@ -1,7 +1,7 @@
 ---
 title: OData コレクション演算子のリファレンス
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search のクエリでの OData コレクション演算子 (any および all) とラムダ式。
+description: Azure Cognitive Search クエリでフィルター式を作成する場合、フィルターがコレクションまたは複合コレクション フィールドにあるときは、ラムダ式で "any" 演算子と "all" 演算子を使用します。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fdb250a844b70cef4f6941debbb1fa7450874932
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793396"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113236"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>Azure Cognitive Search での OData コレクション演算子 - `any` と `all`
 

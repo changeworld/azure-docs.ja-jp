@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery を使用して VMware VM および物理サーバーの Azure へのディザスター リカバリーに使用されるプロセス サーバーを管理する | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して、VMware VM および物理サーバーを Azure にディザスター リカバリーするために設定されたプロセス サーバーを管理する方法について説明します。
+title: Azure Site Recovery で VMware VM または物理サーバーのディザスター リカバリー用のプロセス サーバーを管理する
+description: この記事では、Azure Site Recovery を使用して、VMware VM または物理サーバーのディザスター リカバリー用のプロセス サーバーを管理する方法について説明します。
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 2c27779719c73adf4d7fc1a61a0c77d03df71815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925601"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954346"
 ---
 # <a name="manage-process-servers"></a>プロセス サーバーの管理
 
@@ -67,7 +67,20 @@ ms.locfileid: "64925601"
 
 変更がポータルに反映されるまでには約 15 分かかります。 すぐに反映するには、[構成サーバーを更新します](vmware-azure-manage-configuration-server.md#refresh-configuration-server)。
 
+## <a name="register-a-master-target-server"></a>マスター ターゲット サーバーを登録する
 
+マスター ターゲット サーバーは、構成サーバーとスケールアウト プロセス サーバーにあります。 これは構成サーバーに登録されている必要があります。 この登録でエラーが発生した場合は、保護された項目の正常性に影響を与える可能性があります。 マスター ターゲット サーバーを構成サーバーに登録するには、登録が必要な特定の構成サーバーまたはスケールアウト プロセス サーバーにログインします。 **%PROGRAMDATA%\ASR\Agent** フォルダーに移動し、管理者コマンド プロンプトで以下を実行します。
+
+   ```
+   cmd
+   cdpcli.exe --registermt
+
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
 
 ## <a name="reregister-a-process-server"></a>プロセス サーバーを再登録する
 

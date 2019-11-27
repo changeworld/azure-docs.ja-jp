@@ -1,7 +1,7 @@
 ---
 title: Bing Video Search API を使用して動画を検索する
 titleSuffix: Azure Cognitive Services
-description: Bing Video Search API に検索クエリを送信する方法について説明します。
+description: Bing Video Search は、関連する動画を Web から検索して返すものであり、インテリジェントで的を絞った動画検索を Web 上で行うための機能をいくつか備えています。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: e3314efe0ea0367eb852fd17aadece17026ff4bb
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512423"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111441"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Search API で動画を検索する
 

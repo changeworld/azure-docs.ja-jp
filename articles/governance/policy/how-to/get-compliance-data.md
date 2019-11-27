@@ -1,17 +1,14 @@
 ---
 title: ポリシーのコンプライアンス データを取得する
-description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 コンプライアンスの詳細を取得する方法を説明します。
-author: DCtheGeek
-ms.author: dacoulte
+description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
 ms.date: 02/01/2019
 ms.topic: conceptual
-ms.service: azure-policy
-ms.openlocfilehash: bd65fcf6ebff931fbb408ca8337a37d355221dfe
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8cb95f0a9479da27ea6b9ef8ec6836f915aa4030
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480247"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132809"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 

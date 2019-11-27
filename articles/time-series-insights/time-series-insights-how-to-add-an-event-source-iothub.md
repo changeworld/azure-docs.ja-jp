@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights に IoT Hub イベント ソースを追加する方法 | Microsoft Docs
-description: この記事では、IoT Hub に接続されたイベント ソースを Time Series Insights 環境に追加する方法を説明します。
+title: IoT ハブのイベント ソースを追加する方法 ‐ Azure Time Series Insights | Microsoft Docs
+description: お使いの Time Series Insights 環境に IoT ハブのイベント ソースを追加する方法について学習します。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9dd79bacf2d21e0c7e7681e5217d5e874b2b30e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: e564bb6be22b3cee07fca2acd8a4d3ef91698111
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991194"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006887"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境に IoT Hub イベント ソースを追加する
 

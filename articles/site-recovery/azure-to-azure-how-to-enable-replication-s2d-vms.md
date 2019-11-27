@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery で記憶域スペース ダイレクト (S2d) VM のレプリケーションを構成する | Microsoft Docs
-description: この記事では、Site Recovery を使用して、1 つの Azure リージョンから別のリージョンへの、S2D を使用する VM のレプリケーションを構成する方法について説明します。
+title: Azure Site Recovery を使用して記憶域スペース ダイレクトを実行している Azure VM をレプリケートする
+description: この記事では、Azure Site Recovery を使用して、記憶域スペース ダイレクトを実行している Azure VM をレプリケートにする方法について説明します。
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: asgang
-ms.openlocfilehash: 6c639d4503b170660abed5767e3571c8a2bf24b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25ac7fa577aa33eda036c0f8544cc5ab03b12cd7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790335"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954458"
 ---
-# <a name="replicate-azure-virtual-machines-using-storage-spaces-direct-to-another-azure-region"></a>記憶域スペース ダイレクトを使用する Azure 仮想マシンを別の Azure リージョンにレプリケートする
+# <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>記憶域スペース ダイレクトを実行している Azure VM を別のリージョンにレプリケートする
 
 この記事では、記憶域スペース ダイレクトを実行している Azure VM のディザスター リカバリーを有効にする方法について説明します。
 

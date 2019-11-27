@@ -1,5 +1,5 @@
 ---
-title: スキルセットを使用する
+title: スキルセットの概念とワークフロー
 titleSuffix: Azure Cognitive Search
 description: スキルセットは、Azure コグニティブ検索で AI エンリッチメント パイプラインを作成する場所です。 スキルセットの作成に関する重要な概念と詳細について説明します。
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8a783581394de05fff9f0060e124e8dc59c96b60
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790166"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113649"
 ---
-# <a name="working-with-skillsets-in-azure-cognitive-search"></a>Azure コグニティブ検索でスキルセットを使用する
+# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Cognitive Search でのスキルセットの概念と構成
 
 この記事の対象者は、エンリッチメント パイプラインの動作をより深く理解する必要がある開発者であり、AI エンリッチメント プロセスの概念を理解していることが前提です。 この概念を初めて知った場合は、次の方法で開始します。
 + [Azure コグニティブ検索における AI エンリッチメント](cognitive-search-concept-intro.md)
@@ -32,7 +32,7 @@ ms.locfileid: "72790166"
 
 
 
-スキルセットは JSON で作成します。 [式言語](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)を使用して、ループや[分岐](https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-conditional)が含まれる複雑なスキルセットを構築できます。 式言語では、いくつかの修正が加えられた [JSON ポインター](https://tools.ietf.org/html/rfc6901) パス表記を使用して、強化ツリー内のノードを識別します。 ```"/"``` ではツリー内の下位レベルが走査され、```"*"``` はコンテキストでの for-each 演算子として機能します。 これらの概念については、例を参照してください。 いくつかの概念と機能を説明するために、[ホテル レビュー サンプル](knowledge-store-connect-powerbi.md)のスキルセットを見ていきます。 データのインポート ワークフローを行った後でスキルセットを表示するには、REST API クライアントを使用して[スキルセットを取得する](https://docs.microsoft.com/en-us/rest/api/searchservice/get-skillset)必要があります。
+スキルセットは JSON で作成します。 [式言語](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)を使用して、ループや[分岐](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)が含まれる複雑なスキルセットを構築できます。 式言語では、いくつかの修正が加えられた [JSON ポインター](https://tools.ietf.org/html/rfc6901) パス表記を使用して、強化ツリー内のノードを識別します。 ```"/"``` ではツリー内の下位レベルが走査され、```"*"``` はコンテキストでの for-each 演算子として機能します。 これらの概念については、例を参照してください。 いくつかの概念と機能を説明するために、[ホテル レビュー サンプル](knowledge-store-connect-powerbi.md)のスキルセットを見ていきます。 データのインポート ワークフローを行った後でスキルセットを表示するには、REST API クライアントを使用して[スキルセットを取得する](https://docs.microsoft.com/rest/api/searchservice/get-skillset)必要があります。
 
 ### <a name="enrichment-tree"></a>強化ツリー
 
@@ -50,7 +50,7 @@ ms.locfileid: "72790166"
  実行されたスキルによって、強化ツリーに新しいノードが追加されます。 これらの新しいノードは、ダウンストリームのスキル、ナレッジ ストアへの射影、またはインデックス フィールドへのマッピングに対する入力として使用できます。 強化は変更できません。作成されたノードを編集することはできません。 スキルセットや強化ツリーの複雑さが増しても、強化ツリー内のすべてのノードをインデックスやナレッジ ストアにする必要はありません。 強化のサブセットのみを選択して、インデックスまたはナレッジ ストアに保存することができます。
 
 強化のサブセットのみを選択して、インデックスまたはナレッジ ストアに保存することができます。
-このドキュメントの残りの部分では、[ホテル レビューの例](https://docs.microsoft.com/en-us/azure/search/knowledge-store-connect-powerbi)を使用しますが、他のすべてのデータ ソースからのドキュメントの強化に同じ概念が適用されます。
+このドキュメントの残りの部分では、[ホテル レビューの例](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi)を使用しますが、他のすべてのデータ ソースからのドキュメントの強化に同じ概念が適用されます。
 
 ### <a name="context"></a>Context
 各スキルにはコンテキストが必要です。 コンテキストによって次のことが決まります。

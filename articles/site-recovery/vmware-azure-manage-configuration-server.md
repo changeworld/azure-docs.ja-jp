@@ -1,20 +1,19 @@
 ---
-title: Azure Site Recovery での VMware と物理サーバー ディザスター リカバリーのために構成サーバーを管理する | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーするための既存の構成サーバーを管理する方法について説明します。
+title: Azure Site Recovery でのディザスター リカバリーのために構成サーバーを管理する
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 42e1e283736d8a1e3d4ece33c861185df2d72da7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791816"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954352"
 ---
-# <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>VMware VM のディザスター リカバリー用の構成サーバーを管理する
+# <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/物理サーバー ディザスター リカバリー用の構成サーバーを管理する
 
 Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを設定します。 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整し、データのレプリケーションを管理します。 この記事は、展開後に構成サーバーを管理するための一般的なタスクをまとめたものです。
 
@@ -158,13 +157,13 @@ Azure Site Recovery コンポーネントのサポート ステートメント�
     ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
 3. 更新プログラムのインストーラー ファイルを構成サーバーにダウンロードします。
 
-    ![アップデート](./media/vmware-azure-manage-configuration-server/update1.png)
+    ![更新](./media/vmware-azure-manage-configuration-server/update1.png)
 
 4. インストーラーをダブルクリックして実行します。
 5. インストーラーがマシン上で実行中の現在のバージョンを検出します。 **[はい]** をクリックしてアップグレードを開始します。
 6. アップグレードの完了時に、サーバー構成が検証されます。
 
-    ![アップデート](./media/vmware-azure-manage-configuration-server/update3.png)
+    ![更新](./media/vmware-azure-manage-configuration-server/update3.png)
 
 7. **[完了]** をクリックしてインストーラーを閉じます。
 8. その他の Site Recovery コンポーネントをアップグレードするには、[アップグレードのガイダンス](https://aka.ms/asr_vmware_upgrades)に関する記事を参照してください。

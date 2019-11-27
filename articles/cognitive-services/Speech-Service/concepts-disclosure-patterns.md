@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: fde4a73dd4a95028f23563fb6a8ae36c0142fd39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506618"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836992"
 ---
 # <a name="disclosure-design-patterns"></a>設計パターンを開示する
 合成音声エクスペリエンスの適切な[開示レベル](concepts-disclosure-guidelines.md#disclosure-assessment)が決定されたので、考えられる設計パターンについて検討するよい機会です。
@@ -247,11 +247,11 @@ Recommendations
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [わかりやすさに関するメモ](https://aka.ms/neural-tts-transparency-note)
+* [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)
 * [合成音声テクノロジの責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md)
 * [規制の概要](concepts-gating-overview.md)
 * [開示する方法](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>次の手順
 
-* [わかりやすさに関するメモ](https://aka.ms/neural-tts-transparency-note)
+* [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)

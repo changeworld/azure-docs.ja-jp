@@ -1,55 +1,48 @@
 ---
-title: アプリ登録管理のためのカスタム管理者ロールのアクセス許可 - Azure Active Directory | Microsoft Docs
+title: カスタム管理者ロールの使用可能なアクセス許可 - Azure AD |Microsoft Docs
 description: ID 管理を委任するためのカスタム管理者ロールのアクセス許可。
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99f31c5928273973a9089ae9ef1fd184cdb78bbb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: d6156857202c1cca94df6d70ec2059daf55178f1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033350"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025145"
 ---
 # <a name="application-registration-subtypes-and-permissions-in-azure-active-directory"></a>Azure Active Directory でのアプリケーション登録のサブタイプとアクセス許可
 
 この記事では、Azure Active Directory (Azure AD) のカスタム ロール定義に対して現在利用可能なアプリ登録アクセス許可について説明します。
 
-## <a name="single-tenant-v-multi-tenant-permissions"></a>シングルテナントと マルチテナントのアクセス許可
+## <a name="permissions-for-managing-single-directory-applications"></a>シングルディレクトリ アプリケーションを管理するためのアクセス許可
 
-カスタム ロールのアクセス許可は、シングルテナント アプリケーションとマルチテナント アプリケーションで異なります。 シングルテナント アプリケーションは、アプリケーションが登録されている Azure AD 組織内のユーザーのみが利用できます。 マルチテナント アプリケーションは、すべての Azure AD 組織で利用できます。 シングルテナント アプリケーションは、 **[Supported account types]\(サポートされているアカウントの種類\)** が "Accounts in this organizational directory only" (この組織のディレクトリ内のアカウントのみ) に設定されているものとして定義されます。 Graph API では、シングルテナント アプリケーションは signInAudience プロパティが "AzureADMyOrg" に設定されています。
+カスタム ロールのアクセス許可を選択する場合は、シングルディレクトリ アプリケーションのみを管理するためのアクセス権を付与するオプションがあります。 シングルディレクトリ アプリケーションは、アプリケーションが登録されている Azure AD 組織内のユーザーのみが利用できます。 シングルディレクトリ アプリケーションは、 **[サポートされているアカウントの種類]** が "Accounts in this organizational directory only" (この組織のディレクトリ内のアカウントのみ) に設定されているものとして定義されます。 Graph API では、シングルディレクトリ アプリケーションの signInAudience プロパティが "AzureADMyOrg" に設定されています。
 
-## <a name="application-registration-subtypes-and-permissions"></a>アプリケーション登録のサブタイプとアクセス許可
+シングルディレクトリ アプリケーションのみを管理するためのアクセス権を付与するには、サブタイプ **applications.myOrganization** で次のアクセス許可を使用します。 たとえば、microsoft.directory/applications.myOrganization/basic/update です。
 
 サブタイプ、アクセス許可、プロパティ セットという一般的な用語の意味については、[カスタム ロールの概要](roles-custom-overview.md)に関するページの説明を参照してください。 次の情報は、アプリケーションの登録に固有のものです。
-
-### <a name="subtypes"></a>サブタイプ
-
-アプリの登録のサブタイプは applications.myOrganization の 1 つしかありません。 たとえば、microsoft.directory/applications.myOrganization/basic/update です。 このサブタイプは、特定のアプリの登録の **[認証]** ページで設定され、Graph API または PowerShell を使用して signInAudience プロパティを "AzureADMyOrg" に設定することに対応します。 このサブタイプは、組織内のアカウントのみがアクセス可能とマークされているアプリの登録にアクセス許可を制限します (シングルテナント アプリケーション)。
-
-制限付きのアクセス許可を使用すれば、他の組織のアカウントがアクセスできるアプリケーションに読み取りまたは管理のアクセス許可を付与することなく、内部アプリケーションのみに読み取りまたは管理のアクセス許可を付与することができます。
-
-削除のアクセス許可だけでなく、すべての読み取りおよび更新アクセス許可の applications.myOrganization バージョンがあります。 現時点では、作成の applications.myOrganization バージョンはありません。 (microsoft.directory/applications/basic/update などの) 標準のアクセス許可は、すべてのアプリ登録の種類に対して読み取りまたは管理のアクセス許可を付与します。
-
-![シングルテナント アプリケーションまたはマルチテナント アプリケーションを宣言する](./media/roles-custom-available-permissions/supported-account-types.png)
-
-カスタム ロールのプレビューに対する以下のアクセス許可の詳細については、[Azure Active Directory で利用可能なカスタム ロールのアクセス許可](roles-custom-available-permissions.md)に関するページの一覧を参照してください。
 
 ### <a name="create-and-delete"></a>作成と削除
 
 アプリケーションの登録を作成する機能を許可するために使用できるアクセス許可は 2 つあり、それぞれ動作が異なります。
 
-- **microsoft.directory/applications/createAsOwner**: このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者として追加され、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になります。
-- **microsoft.directory/applicationPolicies/create**: このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者としては追加されず、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になりません。 担当者がディレクトリ レベルのクォータに達するまでアプリの登録を作成できないようにするものはないため、このアクセス許可は慎重に使用してください。 両方のアクセス許可が割り当てられている場合は、このアクセス許可が優先されます。
+#### <a name="microsoftdirectoryapplicationscreateasowner"></a>microsoft.directory/applications/createAsOwner
+
+このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者として追加され、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になります。
+
+#### <a name="microsoftdirectoryapplicationscreate"></a>microsoft.directory/applications/create
+
+このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者としては追加されず、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になりません。 担当者がディレクトリ レベルのクォータに達するまでアプリの登録を作成できないようにするものはないため、このアクセス許可は慎重に使用してください。 両方のアクセス許可が割り当てられている場合は、このアクセス許可が優先されます。
 
 両方のアクセス許可が割り当てられている場合、/create アクセス許可が優先されます。 /createAsOwner アクセス許可では作成者を最初の所有者として自動的に追加しませんが、Graph API または PowerShell コマンドレットを使用する場合は、アプリの登録の作成時に所有者を指定できます。
 
@@ -78,19 +71,11 @@ ms.locfileid: "69033350"
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesread"></a>microsoft.directory/applications/allProperties/read
 
-資格情報などの機微なプロパティを除き、シングルテナントおよびマルチテナントのアプリケーションのすべてのプロパティを読み取る権限。
+資格情報など、いかなる状況でも読み取ることができないプロパティを除き、シングルテナントおよびマルチテナントのアプリケーションのすべてのプロパティを読み取る権限。
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesread"></a>microsoft.directory/applications.myOrganization/allProperties/read
 
 microsoft.directory/applications/allProperties/read と同じアクセス許可を付与しますが、シングルテナント アプリケーションのみが対象となります。
-
-#### <a name="microsoftdirectoryapplicationsstandardread-grants-access-to-all-fields-on-the-application-registration-branding-page"></a>microsoft.directory/applications/standard/read:アプリケーション登録のブランド化ページのすべてのフィールドへのアクセスを許可します
-
-![このアクセス許可はアプリ登録のブランド化ページへのアクセスを許可します](./media/roles-custom-available-permissions/app-registration-branding.png)
-
-#### <a name="microsoftdirectoryapplicationsmyorganizationstandardread"></a>microsoft.directory/applications.myOrganization/standard/read
-
-microsoft.directory/applications/standard/read と同じアクセス許可を付与しますが、シングルテナント アプリケーションのみが対象となります。
 
 #### <a name="microsoftdirectoryapplicationsownersread"></a>microsoft.directory/applications/owners/read
 
@@ -98,46 +83,19 @@ microsoft.directory/applications/standard/read と同じアクセス許可を付
 
 ![このアクセス許可はアプリ登録の所有者ページへのアクセスを許可します](./media/roles-custom-available-permissions/app-registration-owners.png)
 
-アプリケーション エンティティの次のプロパティへのアクセスを許可します。
+#### <a name="microsoftdirectoryapplicationsstandardread"></a>microsoft.directory/applications/standard/read
 
-- AllowActAsForAllClients
-- AllowPassthroughUsers
-- AppAddress
-- AppBrandingElements
-- AppCategory
-- AppCreatedDateTime
-- AppData
-- AppId
-- AppInformationalUrl
-- ApplicationTag
-- AppLogoUrl
-- AppMetadata
-- AppOptions
-- BinaryExtensionAttribute
-- BooleanExtensionAttribute
-- CountriesBlockedForMinors
-- CreatedOnBehalfOf
-- DateTimeExtensionAttribute
-- DisplayName
-- ExtensionAttributeDefinition
-- IntegerExtensionAttribute
-- KnownClientApplications
-- LargeIntegerExtensionAttribute
-- LegalAgeGroupRule
-- LocalizedAppBrandingElements
-- MainLogo
-- MsaAppId
-- ResourceApplicationSet
-- ServiceDiscoveryEndpoint
-- StringExtensionAttribute
-- TrustedCertificateSubject
-- WebApi
-- WebApp
-- WwwHomepage
+標準アプリケーション登録プロパティの読み取りアクセスを許可します。 これには、アプリケーション登録ページ間のプロパティが含まれます。
 
-### <a name="update"></a>アップデート
+#### <a name="microsoftdirectoryapplicationsmyorganizationstandardread"></a>microsoft.directory/applications.myOrganization/standard/read
+
+microsoft.directory/applications/standard/read と同じアクセス許可を付与しますが、シングルテナント アプリケーションのみが対象となります。
+
+### <a name="update"></a>更新
 
 #### <a name="microsoftdirectoryapplicationsallpropertiesupdate"></a>microsoft.directory/applications/allProperties/update
+
+シングルディレクトリとマルチディレクトリのアプリケーションのすべてのプロパティを更新する権限。
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationallpropertiesupdate"></a>microsoft.directory/applications.myOrganization/allProperties/update
 
@@ -145,14 +103,9 @@ microsoft.directory/applications/allProperties/update と同じアクセス許�
 
 #### <a name="microsoftdirectoryapplicationsaudienceupdate"></a>microsoft.directory/applications/audience/update
 
-アプリケーション登録の認証ページのすべてのフィールドへのアクセスを許可します。
+シングルディレクトリとマルチディレクトリ上でサポートされているアカウントの種類 (signInAudience) のプロパティを更新する権限。
 
-![このアクセス許可はアプリ登録の認証ページへのアクセスを許可します](./media/roles-custom-available-permissions/supported-account-types.png)
-
-アプリケーション リソースの次のプロパティへのアクセスを許可します。
-
-- AvailableToOtherTenants
-- SignInAudience
+![このアクセス許可では、認証ページでアプリ登録がサポートされているアカウントの種類のプロパティへのアクセスが許可されます。](./media/roles-custom-available-permissions/supported-account-types.png)
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationaudienceupdate"></a>microsoft.directory/applications.myOrganization/audience/update
 
@@ -164,20 +117,6 @@ microsoft.directory/applications/audience/update と同じアクセス許可を�
 
 ![サポートされているアカウントの種類を除き、アプリ登録認証へのアクセスを許可する](./media/roles-custom-available-permissions/supported-account-types.png)
 
- アプリケーション リソースの次のプロパティへのアクセスを許可します。
-
-- AcceptMappedClaims
-- AccessTokenAcceptedVersion
-- AddIns
-- GroupMembershipClaims
-- IsDeviceOnlyAuthSupported
-- OAuth2LegacyUrlPathMatching
-- OauthOidcResponsePolicyBitmap
-- OptionalClaims
-- OrgRestrictions
-- PublicClient
-- UseCustomTokenSigningKey
-
 #### <a name="microsoftdirectoryapplicationsmyorganizationauthenticationupdate"></a>microsoft.directory/applications.myOrganization/authentication/update
 
 microsoft.directory/applications/authentication/update と同じアクセス許可を付与しますが、シングルテナント アプリケーションのみが対象となります。
@@ -187,42 +126,6 @@ microsoft.directory/applications/authentication/update と同じアクセス許�
 シングルテナントおよびマルチテナント アプリケーションの、名前、ロゴ、ホーム ページ URL、サービス使用条件 URL、プライバシーに関する声明の URL の各プロパティを更新する権限。 アプリケーション登録のブランド化ページのすべてのフィールドへのアクセスを許可します。
 
 ![このアクセス許可はアプリ登録のブランド化ページへのアクセスを許可します](./media/roles-custom-available-permissions/app-registration-branding.png)
-
-アプリケーション リソースの次のプロパティへのアクセスを許可します。
-
-- AllowActAsForAllClients
-- AllowPassthroughUsers
-- AppAddress
-- AppBrandingElements
-- AppCategory
-- AppData
-- AppId
-- AppInformationalUrl
-- ApplicationTag
-- AppLogoUrl
-- AppMetadata
-- AppOptions
-- BinaryExtensionAttribute
-- BooleanExtensionAttribute
-- CountriesBlockedForMinors
-- CreatedOnBehalfOf
-- DateTimeExtensionAttribute
-- DisplayName
-- ExtensionAttributeDefinition
-- IntegerExtensionAttribute
-- KnownClientApplications
-- LargeIntegerExtensionAttribute
-- LegalAgeGroupRule
-- LocalizedAppBrandingElements
-- MainLogo
-- MsaAppId
-- ResourceApplicationSet
-- ServiceDiscoveryEndpoint
-- StringExtensionAttribute
-- TrustedCertificateSubject
-- WebApi
-- WebApp
-- WwwHomepage
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationbasicupdate"></a>microsoft.directory/applications.myOrganization/basic/update
 
@@ -234,13 +137,6 @@ microsoft.directory/applications/basic/update と同じアクセス許可を付�
 
 ![このアクセス許可はアプリ登録の証明書およびシークレット ページへのアクセスを許可します](./media/roles-custom-available-permissions/app-registration-secrets.png)
 
-アプリケーション リソースの次のプロパティへのアクセスを許可します。
-- AsymmetricKey
-- EncryptedSecretKey
-- KeyDescription
-- SharedKeyReference
-- TokenEncryptionKeyId
-
 #### <a name="microsoftdirectoryapplicationsmyorganizationcredentialsupdate"></a>microsoft.directory/applications.myOrganization/credentials/update
 
 microsoft.directory/applications/credentials/update と同じアクセス許可を付与しますが、シングルディレクトリ アプリケーションのみが対象となります。
@@ -250,9 +146,6 @@ microsoft.directory/applications/credentials/update と同じアクセス許可�
 シングルテナントおよびマルチテナントの所有者プロパティを更新する権限。 アプリケーション登録の所有者ページのすべてのフィールドへのアクセスを許可します。
 
 ![このアクセス許可はアプリ登録の所有者ページへのアクセスを許可します](./media/roles-custom-available-permissions/app-registration-owners.png)
-
-アプリケーション リソースの次のプロパティへのアクセスを許可します。
-- 所有者
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationownersupdate"></a>microsoft.directory/applications.myOrganization/owners/update
 
@@ -265,14 +158,6 @@ microsoft.directory/applications/owners/update と同じアクセス許可を付
 ![このアクセス許可はアプリ登録の [API のアクセス許可] ページへのアクセスを許可します](./media/roles-custom-available-permissions/app-registration-api-permissions.png)
 
 ![このアクセス許可はアプリ登録の [API の公開] ページへのアクセスを許可します](./media/roles-custom-available-permissions/app-registration-expose-api.png)
-
-アプリケーション リソースの次のプロパティへのアクセスを許可します。
-
-- AppIdentifierUri
-- Entitlement
-- PreAuthorizedApplications
-- RecordConsentConditions
-- RequiredResourceAccess
 
 #### <a name="microsoftdirectoryapplicationsmyorganizationpermissionsupdate"></a>microsoft.directory/applications.myOrganization/permissions/update
 

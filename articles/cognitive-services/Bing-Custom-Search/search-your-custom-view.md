@@ -1,7 +1,7 @@
 ---
 title: カスタム ビューの検索 - Bing Custom Search
 titleSuffix: Azure Cognitive Services
-description: Web のカスタム ビューを検索する方法について説明します。
+description: カスタム検索エクスペリエンスは、構成した後に Bing Custom Search ポータル内からテストできます。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: 814f57d4011823da80e53cce41ffcb523fc0bf1b
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405011"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072739"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>ポータルから Bing Custom Search インスタンスを呼び出す
 
@@ -33,7 +33,7 @@ Bing Custom Search [ポータル](https://customsearch.ai)にサインインし�
 
 |パラメーター  |説明  |
 |---------|---------|
-|Query     | 検索する検索用語。 Web、Image、Video、および Autosuggest エンドポイントに対してのみ使用できます。 |
+|クエリ     | 検索する検索用語。 Web、Image、Video、および Autosuggest エンドポイントに対してのみ使用できます。 |
 |カスタム構成 ID | 選択された Custom Search インスタンスの構成 ID。 このフィールドは読み取り専用です。 |
 |Market     | 結果が引き出される市場。 Web、Image、Video、および Hosted UI エンドポイントに対してのみ使用できます。        |
 |サブスクリプション キー | テストに使用するサブスクリプション キー。 ドロップダウン リストからキーを選択するか、手動で入力できます。          |

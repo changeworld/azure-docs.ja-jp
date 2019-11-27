@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578399"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132609"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
 
@@ -151,7 +151,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 ```
 
 > [!IMPORTANT]
-> `latest` タグにより、`en-US` ロケールと `jessarus` 音声がプルされます。 追加のロケールについては、「[音声テキスト変換ロケール](#speech-to-text-locales)」を参照してください。
+> `latest` タグにより、`en-US` ロケールがプルされます。 追加のロケールについては、「[音声テキスト変換ロケール](#speech-to-text-locales)」を参照してください。
 
 #### <a name="speech-to-text-locales"></a>音声テキスト変換ロケール
 
@@ -167,7 +167,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 2.0.0-amd64-en-us-preview
 ```
 
-2\.0.0 バージョンの**音声変換**コンテナーでサポートされるすべてのロケールについては、[音声テキスト変換の言語サポート](language-support.md#speech-to-text)に関する表の「**コンテナー サポート**」列を参照してください。
+**音声テキスト変換**コンテナーのサポートされている全ロケールについては、「[音声テキスト変換イメージ タグ](../containers/container-image-tags.md#speech-to-text)」を参照してください。
 
 # <a name="custom-speech-to-texttabcstt"></a>[カスタム音声変換](#tab/cstt)
 
@@ -209,7 +209,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-1\.3.0 バージョンの**テキスト読み上げ**コンテナーでサポートされるすべてのロケールおよび対応する音声については、[標準音声の言語サポート](language-support.md#standard-voices)に関する表の「**コンテナー サポート**」列を参照してください。
+サポートされているロケールと**テキスト読み上げ**コンテナーの対応音声についてはすべて、「[テキスト読み上げイメージ タグ](../containers/container-image-tags.md#text-to-speech)」を参照してください。
 
 > [!IMPORTANT]
 > *標準 Text-to-speech* HTTP POST を構築するとき、[Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) メッセージには、`name` 属性を含む `voice` 要素が必要になります。 値はそれに対応するコンテナーのロケールと音声であり、["短い名前"](language-support.md#standard-voices) とも呼ばれています。 たとえば、`latest` タグには `en-US-JessaRUS` という音声名が与えられます。

@@ -11,29 +11,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: e4ff157f58a68c68f8610c6c473f5d69897650ad
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 592fd8901fc7f8a82a390f3c125c712ef5829a52
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338410"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083726"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services のレガシ コンポーネント
 
 Media Services のコンポーネントは、時間の経過と共に着実に改善され機能が強化されてきました。 その結果、いくつかのレガシ コンポーネントは廃止されています。 次の記事では、レガシ コンポーネントから最新のコンポーネントにアプリケーションを移行する手順を確認できます。
-
-## <a name="legacy-components-and-migration-guidance"></a>レガシ コンポーネントと移行のガイダンス
+ 
+## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>レガシ コンポーネントと移行のガイダンスの提供終了予定
 
 お知らせしているように *Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、 2019 年 11 月 30 日には廃止される予定です。
 
 * [Windows Azure Media Encoder から Media Encoder Standard に移行する](migrate-windows-azure-media-encoder.md)
 * [Azure Media Encoder から Media Encoder Standard に移行する](migrate-azure-media-encoder.md)
 
-また、*Azure Media Indexer v1* および "*Azure Media Indexer v2 プレビュー*" についても廃止を発表します。 [Azure Media Indexer v1](media-services-index-content.md) メディア プロセッサは、2020 年 10 月 1 日に廃止されます。 [Azure Media Indexer v2 プレビュー](media-services-process-content-with-indexer2.md) メディア プロセッサは、2019 年 1 月 1 日に廃止されます。  [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
-
-* [Azure Media Indexer v1 と Azure Media Indexer v2 から Azure Media Services Video Indexer に移行する](migrate-indexer-v1-v2.md)。
+また、以下の Media Analytics メディア プロセッサの提供終了もお知らせします。 
+ 
+|メディア プロセッサ名|提供終了日|その他のメモ|
+|---|---|
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 2020 年 1 月 1 日|このメディア プロセッサは、[Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) に置き換えられます。 詳細については、「[Media Indexer と Media Indexer 2 から Video Indexer に移行する](migrate-indexer-v1-v2.md)」をご覧ください。|
+|[Azure Media Indexer](media-services-index-content.md)|2020 年 10 月 1 日|このメディア プロセッサは、[Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) に置き換えられます。 詳細については、「[Media Indexer と Media Indexer 2 から Video Indexer に移行する](migrate-indexer-v1-v2.md)」をご覧ください
 
 ## <a name="next-steps"></a>次の手順
 

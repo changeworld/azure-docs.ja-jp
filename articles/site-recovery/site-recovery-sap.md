@@ -1,20 +1,18 @@
 ---
-title: Azure Site Recovery を使用して多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する | Microsoft Docs
+title: Azure Site Recovery を使用して SAP NetWeaver のディザスター リカバリーを設定する
 description: この記事では、Azure Site Recovery を使用して SAP NetWeaver アプリケーション デプロイのディザスター リカバリーを設定する方法について説明します。
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.workload: backup-recovery
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 0848738b71a605d8baf049847daa3ae2428a7abe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca3126c983d62cb28c543215b86ab9709a4736d8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65793670"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083785"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>多層 SAP NetWeaver アプリ デプロイのディザスター リカバリーを設定する
 

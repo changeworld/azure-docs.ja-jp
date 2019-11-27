@@ -1,7 +1,7 @@
 ---
 title: Web Search エンドポイント
 titleSuffix: Azure Cognitive Services
-description: Web Search API エンドポイントの概要。
+description: 検索の結果を取得するには、次のエンドポイントに `GET` 要求を送信します。 ヘッダーと URL パラメーターは、さらに仕様を定義します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
-ms.openlocfilehash: be622c5636c253c48bec4d67fba58319262c2603
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883557"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111345"
 ---
 # <a name="web-search-endpoint"></a>Web Search エンドポイント
 

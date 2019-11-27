@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25cd36b6b3e8a6974618189985152e55c2676999
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: bb90fafb48be1d3389597c6188b0200743f90c3e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874295"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065971"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のレポート
 
@@ -24,16 +24,16 @@ Azure Multi-Factor Authentication は、Azure Portal からアクセスでき、
 
 | レポート | Location | 説明 |
 |:--- |:--- |:--- |
-| ユーザーのブロックの履歴 | [Azure AD] > [MFA サーバー] > [ユーザーのブロック/ブロック解除] | ユーザーのブロックまたはブロック解除の要求履歴を表示します。 |
+| ユーザーのブロックの履歴 | [Azure AD] > [セキュリティ] > [MFA] > [ユーザーのブロック/ブロック解除] | ユーザーのブロックまたはブロック解除の要求履歴を表示します。 |
 | 利用状況と不正アクセス アラート | [Azure AD] > [サインイン数] | 全体的な利用状況、ユーザーの概要、およびユーザーの詳細に関する情報を提供します。また、指定した日付範囲の間に送信された不正アクセス アラートの履歴も提供します。 |
-| オンプレミス コンポーネントの利用状況 | [Azure AD] > [MFA サーバー] > [アクティビティ レポート] | NPS の拡張機能、AD FS、MFA サーバーを介した MFA の全体的な利用状況に関する情報を提供します。 |
-| ユーザーの認証バイパスの履歴 | [Azure AD] > [MFA サーバー] > [ワンタイム バイパス] | ユーザーの Multi-Factor Authentication バイパスの要求履歴を提供します。 |
-| サーバーの状態 | [Azure AD] > [MFA サーバー] > [サーバーの状態] | アカウントに関連付けられている Multi-Factor Authentication Server の状態を示します。 |
+| オンプレミス コンポーネントの利用状況 | [Azure AD] > [セキュリティ] > [MFA] > [アクティビティ レポート] | NPS の拡張機能、AD FS、MFA サーバーを介した MFA の全体的な利用状況に関する情報を提供します。 |
+| ユーザーの認証バイパスの履歴 | [Azure AD] > [セキュリティ] > [MFA] > [ワンタイム バイパス] | ユーザーの Multi-Factor Authentication バイパスの要求履歴を提供します。 |
+| サーバーの状態 | [Azure AD] > [セキュリティ] > [MFA] > [サーバーの状態] | アカウントに関連付けられている Multi-Factor Authentication Server の状態を示します。 |
 
 ## <a name="view-mfa-reports"></a>MFA レポートを表示する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側で **[Azure Active Directory]**  >  **[MFA サーバー]** を選択します。
+2. 左側で **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]** の順に選択します。
 3. 表示するレポートを選択します。
 
    ![Azure portal での MFA Server のサーバーの状態レポート](./media/howto-mfa-reporting/report.png)

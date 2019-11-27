@@ -1,21 +1,21 @@
 ---
-title: AI エンリッチメント パイプラインで Cognitive Services APIs を呼び出すための C# チュートリアル
+title: チュートリアル:.NET を使用して C# でスキルセットを作成する
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search エンリッチメント インデックス作成パイプラインにおけるデータ抽出、自然言語、画像の AI 処理の例を順に確認します。
+description: Azure Cognitive Search エンリッチメント インデックス作成パイプラインにおけるデータ抽出、自然言語、画像の AI 処理を示すコード例を順に確認します。
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7a8146f524a6e6f9abed2440c98a83aa3878f0c7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790222"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111736"
 ---
-# <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-indexing-pipeline"></a>C# のチュートリアル: Azure Cognitive Search のインデックス作成パイプラインで Cognitive Services APIs を呼び出す
+# <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>チュートリアル:C# および .NET SDK を使用して AI エンリッチメント パイプラインを作成する
 
 このチュートリアルでは、"*コグニティブ スキル*" を使用した Azure Cognitive Search でのデータ エンリッチメントのプログラミングのしくみを学習します。 複数のスキルが、Cognitive Services の自然言語処理 (NLP) と画像分析機能によって支えられています。 スキルセットを複合および構成することで、画像やスキャンされたドキュメント ファイルのテキストとテキスト表現を抽出できます。 また、言語、エンティティ、キーフレーズなども検出できます。 最終的に、AI で強化されたインデックス パイプラインによって作成された豊富なコンテンツが検索インデックスに追加されます。
 

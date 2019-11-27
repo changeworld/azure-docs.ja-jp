@@ -1,5 +1,5 @@
 ---
-title: IoT Hub C SDK を使用した Azure IoT Hub の制約のあるデバイス向けの開発 | Microsoft Docs
+title: IoT Hub C SDK を使用した Azure IoT Hub の制約のあるデバイス向けの開発
 description: 開発者ガイド - Azure IoT SDK を使用して制約のあるデバイス向けの開発を行う方法に関するガイダンス。
 author: robinsh
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: robinsh
-ms.openlocfilehash: d69fe6b845d3af04e42ee91daa9359dcb9a88fc5
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: a1918a99efcdcc5764140093ad422f7887ca3c88
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880959"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954690"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Azure IoT C SDK を使用した制約のあるデバイス向けの開発
 

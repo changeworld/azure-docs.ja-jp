@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: maxluk
 ms.author: maxluk
-ms.date: 06/28/2019
-ms.openlocfilehash: 272dbbbc335574456feebfb85e4c5eafd544f8d6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/08/2019
+ms.openlocfilehash: fc8159b3deba373948f513cb11540695362ecaf1
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574294"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954558"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,16 +41,18 @@ Azure Machine Learning の実験で TensorBoard を起動する方法は、実�
 
         * 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
 
-        * ノートブック サーバー上の samples フォルダーで、**how-to-use-azureml > training-with-deep-learning** の順にディレクトリを移動して、次の完成したノートブックと展開されたノートブックの 2 つを見つけます。
-        * export-run-history-to-run-history.ipynb
-        * tensorboard.ipynb
+        * ノートブック サーバー上の samples フォルダーで、次のディレクトリに移動して、完成したノートブックと展開されたノートブックの 2 つを見つけます。
+            * **how-to-use-azureml > training-with-deep-learning > export-run-history-to-tensorboard > export-run-history-to-tensorboard.ipynb**
+
+            * **how-to-use-azureml > track-and-monitor-experiments > tensorboard.ipynb**
 
     * 独自の Jupyter Notebook サーバー
-          * `tensorboard` extra を使用して [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) をインストールする
-          * [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md)します。  
-          * [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
+       * `tensorboard` extra を使用して [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) をインストールする
+        * [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md)します。  
+        * [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
   
 <a name="direct"></a>
+
 ## <a name="option-1-directly-view-run-history-in-tensorboard"></a>オプション 1:実行履歴を TensorBoard で直接表示する
 
 このオプションは、PyTorch、Chainer、TensorFlow の実験など、TensorBoard で使用可能なログ ファイルをネイティブに出力する実験に有効です。 対象の実験がこれに当てはまらない場合は、代わりに [`export_to_tensorboard()` メソッド](#export)を使用してください。

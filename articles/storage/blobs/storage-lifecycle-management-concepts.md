@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: e4d961603ab0ade1bb175161fffd7f085a1f644b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 41e1228d127ddbbf0749036fc6f0129da1208bc7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934080"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077119"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Azure Blob Storage のライフサイクルを管理する
 
@@ -56,7 +56,7 @@ ms.locfileid: "70934080"
 > [!NOTE]
 > ストレージ アカウントのファイアウォール ルールを有効にしている場合、ライフサイクル管理要求がブロックされることがあります。 信頼できる Microsoft サービスに例外を指定することで、このような要求のブロックを解除できます。 詳細については、[ファイアウォールおよび仮想ネットワークの構成](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)に関するページの「例外」セクションを参照してください。
 
-### <a name="azure-portal"></a>Azure ポータル
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
 Azure portal を通じてポリシーを追加するには、2つの方法があります。 
 
@@ -126,7 +126,7 @@ Azure portal を通じてポリシーを追加するには、2つの方法があ
 
 6. この JSON の例の詳細については、「[ポリシー](#policy)」セクションおよび「[ルール](#rules)」セクションを参照してください。
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
 
 次の PowerShell スクリプトを使用すると、お使いのストレージ アカウントにポリシーを追加できます。 `$rgname` 変数は、ご自身のリソース グループ名で初期化する必要があります。 `$accountName` 変数は、ご自身のストレージ アカウント名で初期化する必要があります。
 
@@ -156,7 +156,7 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
-## <a name="azure-resource-manager-template-with-lifecycle-management-policy"></a>ライフサイクル管理ポリシーを含む Azure Resource Manager テンプレート
+# <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
 
 Azure Resource Manager テンプレートを使用してライフサイクル管理を定義することができます。 ライフサイクル管理ポリシーを含む RA-GRS GPv2 ストレージ アカウントをデプロイするサンプル テンプレートを次に示します。
 
@@ -197,6 +197,8 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
   "outputs": {}
 }
 ```
+
+---
 
 ## <a name="policy"></a>ポリシー
 
@@ -345,6 +347,9 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 
 また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。 次のライフサイクル ポリシーは、取り込まれたデータをアーカイブするように構成されています。 この例では、コンテナー `archivecontainer` 内のストレージ アカウントのブロック BLOB をアーカイブ層に移行します。 この移行は、最終変更時刻の 0 日後に BLOB を処理することによって実現されます。
 
+> [!NOTE] 
+> より効率的な方法として、BLOB をアーカイブ層に直接アップロードすることをお勧めします。 [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) または [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) の x-ms-acess-tier ヘッダーを REST バージョン 2018-11-09 以降または最新の BLOB ストレージ クライアント ライブラリと使用できます。 
+
 ```json
 {
   "rules": [
@@ -427,9 +432,11 @@ Azure Resource Manager テンプレートを使用してライフサイクル管
 **新しいポリシーを作成しましたが、アクションがすぐに実行されないのはなぜですか。**  
 ライフサイクル ポリシーは、プラットフォームによって 1 日に 1 回実行されます。 ポリシーを構成した後、アクションによっては、初回実行時に最大 24 時間かかる場合があります。  
 
-**アーカイブ済み BLOB を手動でリハイドレートしました。これが一時的にアーカイブ層に戻されないようにするにはどうすればよいですか。**  
-あるアクセス層から別のアクセス層に BLOB が移動されても、その BLOB の最終変更時刻は変わりません。 アーカイブ済み BLOB を手動でホット層にリハイドレートすると、その BLOB は、ライフサイクル管理エンジンによりアーカイブ層に戻されます。 この BLOB に影響を与えるルールを一時的に無効にして、再びアーカイブされないようにします。 BLOB がホット層から離れないようにするには、その BLOB を他の場所にコピーします。 BLOB が安全にアーカイブ層に移動されたら、ルールを再度有効にします。 
+**既存のポリシーを更新した場合、アクションの実行にはどのくらいの時間がかかりますか。**  
+更新されたポリシーは、有効になるまで最大 24 時間かかります。 ポリシーが有効になると、アクションが実行されるまでに最大で 24 時間かかることがあります。 このため、ポリシーの実行には最大 48 時間かかる可能性があります。   
 
+**アーカイブ済み BLOB を手動でリハイドレートしました。これが一時的にアーカイブ層に戻されないようにするにはどうすればよいですか。**  
+あるアクセス層から別のアクセス層に BLOB が移動されても、その BLOB の最終変更時刻は変わりません。 アーカイブ済み BLOB を手動でホット層にリハイドレートすると、その BLOB は、ライフサイクル管理エンジンによりアーカイブ層に戻されます。 この BLOB に影響を与えるルールを一時的に無効にして、再びアーカイブされないようにします。 BLOB が安全にアーカイブ層に移動されたら、ルールを再度有効にします。 BLOB を別の場所にコピーして、ホット層またはクール層から永続的に離れないようにすることもできます。
 
 ## <a name="next-steps"></a>次の手順
 

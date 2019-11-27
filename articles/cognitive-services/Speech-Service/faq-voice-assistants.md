@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579663"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110345"
 ---
-# <a name="voice-assistants-frequently-asked-questions"></a>音声アシスタント:よく寄せられる質問
+# <a name="voice-assistants-frequently-asked-questions"></a>音声アシスタントについてよく寄せられる質問
 
 疑問点への回答がこのドキュメントで見つからない場合は、[その他のサポート オプション](support.md)を確認してください。
 
@@ -35,9 +35,9 @@ ms.locfileid: "73579663"
 
 **A:** カスタム コマンド (プレビュー) アプリケーションまたは基本的な Bot Framework ボットの作成から始めるのが最適な方法です。
 
-* [カスタム コマンド (プレビュー) アプリケーションを作成する](quickstart-custom-speech-commands-create-new.md)
-* [基本的な Bot Framework ボットを作成する](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [ボットを Direct Line Speech チャネルに接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [カスタム コマンド (プレビュー) アプリケーションを作成する](quickstart-custom-speech-commands-create-new.md)
+- [基本的な Bot Framework ボットを作成する](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [ボットを Direct Line Speech チャネルに接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>デバッグ
 
@@ -47,14 +47,13 @@ ms.locfileid: "73579663"
 
 最新バージョンの Direct Line Speech では、デバイスからボットとコンタクトを取るプロセスが簡素化されています。 チャンネル登録ページの上部にあるドロップダウンで、ご利用の Direct Line Speech チャネルの登録を音声リソースに関連付けてください。 関連付けが完了すると、サブスクリプションに関連付けたボットとコンタクトを取るように `DialogServiceConnector` を構成する `BotFrameworkConfig::FromSubscription` ファクトリ メソッドが v1.8 Speech SDK に追加されます。
 
-まだクライアント アプリケーションを v1.7 から v1.8 に移行している段階の場合、`DialogServiceConfig::FromBotSecret` は、そのチャンネル シークレット パラメーターについて、空ではない非 null 値 (以前使用していたシークレットなど) で引き続き動作します。 それよりも新しいチャンネル登録に関連付けられている Speech サブスクリプションをご利用の場合は、単に無視されます。 値は null 以外で、かつ空ではないことが "*必要*" です。デバイス上でこれらの点がチェックされた後で、サービス側の関連付けが有効となります。
-
+まだクライアント アプリケーションを v1.7 から v1.8 に移行している段階の場合、`DialogServiceConfig::FromBotSecret` は、そのチャンネル シークレット パラメーターについて、空ではない非 null 値 (以前使用していたシークレットなど) で引き続き動作します。 それよりも新しいチャンネル登録に関連付けられている Speech サブスクリプションをご利用の場合は、単に無視されます。 値は null 以外で、かつ空ではないことが "_必要_" です。デバイス上でこれらの点がチェックされた後で、サービス側の関連付けが有効となります。
 
 詳細なガイドについては、チャンネルの登録手順を示した[チュートリアル セクション](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel)を参照してください。
 
 **Q:接続時に 401 エラーが表示され、何も機能しません。音声サブスクリプション キーが有効であることはわかっています。どうなっているのでしょうか?**
 
-**A:** Azure portal でサブスクリプションを管理する場合、**Cognitive Services** リソース (Microsoft.CognitiveServicesAllInOne、"All Cognitive Services") "*ではなく*"、**Speech** リソース (Microsoft.CognitiveServicesSpeechServices、"Speech") を使用していることを確認してください。 また、[音声アシスタントについての Speech サービス リージョンのサポート](regions.md#voice-assistants)を確認してください。
+**A:** Azure portal でサブスクリプションを管理する場合、**Cognitive Services** リソース (Microsoft.CognitiveServicesAllInOne、"All Cognitive Services") "_ではなく_"、**Speech** リソース (Microsoft.CognitiveServicesSpeechServices、"Speech") を使用していることを確認してください。 また、[音声アシスタントについての Speech サービス リージョンのサポート](regions.md#voice-assistants)を確認してください。
 
 ![Direct Line Speech のサブスクリプションを修正する](media/voice-assistants/faq-supported-subscription.png "互換性のある Speech サブスクリプションの例")
 
@@ -62,8 +61,8 @@ ms.locfileid: "73579663"
 
 **A:** このエラーは、アシスタントと音声アシスタント サービスの間の通信の問題を示しています。
 
-* カスタム コマンド (プレビュー) の場合は、カスタム コマンド (プレビュー) アプリケーションが発行されていることを確認します
-* Direct Line Speech の場合、[Direct Line Speech チャネルにボットを接続し](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)、(関連する Web ソケット サポートと共に) [ストリーミング プロトコル サポートをボットに追加し](https://aka.ms/botframework/addstreamingprotocolsupport)ていることを確認してから、ボットがチャネルからの受信要求に応答していることを確認します。
+- カスタム コマンド (プレビュー) の場合は、カスタム コマンド (プレビュー) アプリケーションが発行されていることを確認します
+- Direct Line Speech の場合、[Direct Line Speech チャネルにボットを接続し](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)、(関連する Web ソケット サポートと共に) [ストリーミング プロトコル サポートをボットに追加し](https://aka.ms/botframework/addstreamingprotocolsupport)ていることを確認してから、ボットがチャネルからの受信要求に応答していることを確認します。
 
 **Q:このコードがまだ動作しないか、`DialogServiceConnector` を使用すると別のエラーが発生するか、あるいはこの両方が発生します。どうすればよいですか。**
 
@@ -71,5 +70,5 @@ ms.locfileid: "73579663"
 
 ## <a name="next-steps"></a>次の手順
 
-* [トラブルシューティング](troubleshooting.md)
-* [リリース ノート](releasenotes.md)
+- [トラブルシューティング](troubleshooting.md)
+- [リリース ノート](releasenotes.md)

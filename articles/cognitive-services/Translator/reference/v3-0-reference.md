@@ -1,21 +1,21 @@
 ---
 title: Translator Text API V3.0 リファレンス
 titleSuffix: Azure Cognitive Services
-description: Translator Text API V3.0 のリファレンス ドキュメント。
+description: Translator Text API V3.0 のリファレンス ドキュメント。 Translator Text API のバージョン 3 には、最新の JSON ベースの Web API が用意されています。
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 11/14/2019
 ms.author: swmachan
-ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72252974"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123039"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
@@ -165,3 +165,21 @@ Authorization: Bearer <Base64-access_token>
 | 500000| 予期しないエラーが発生しました。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
 | 503000| サービスが一時的に利用できません。 もう一度試してください。 エラーが解決しない場合は、エラーの発生日時と応答ヘッダーの要求識別子 X-RequestID、要求ヘッダーのクライアント識別子 X-ClientTraceID を添えてその旨をご報告ください。|
 
+## <a name="metrics"></a>メトリック 
+メトリックを使用すると、次のスクリーンショットに示すように、Azure portal の [メトリック] セクションで、トランスレーターの使用状況と可用性の情報を表示できます。 詳細については、[データとプラットフォームのメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)に関するページを参照してください。
+
+![トランスレーター メトリック](../media/translatormetrics.png)
+
+次の表に、使用可能なメトリックと、それらを翻訳の API 呼び出しの監視に使用する方法についての説明を示します。
+
+| メトリック | 説明 |
+|:----|:-----|
+| TotalCalls| API 呼び出しの合計数|
+| TotalTokenCalls| 認証トークンを使用した、トークン サービスを介した API 呼び出しの合計数。|
+| SuccessfulCalls| 成功した呼び出しの数。|
+| TotalErrors| エラー応答を含む呼び出しの数。|
+| BlockedCalls| レートまたはクォータの制限を超えた呼び出しの回数。|
+| ServerErrors| サーバー内部エラー (5XX) が発生した呼び出しの数。|
+| ClientErrors| クライアント側エラー (4XX) が発生した呼び出しの数。|
+| Latency| 要求を完了するまでの時間 (ミリ秒単位)。|
+| CharactersTranslated| 受信テキスト要求の合計文字数。|

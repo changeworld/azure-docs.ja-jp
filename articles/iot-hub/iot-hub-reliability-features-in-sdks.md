@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub device SDK を使用して、接続と信頼できるメッセージングを管理する方法
+title: デバイス SDK を使用して IoT Hub 接続と信頼できるメッセージングを管理する
 description: Azure IoT Hub device SDK を利用するとき、デバイスの接続とメッセージ処理を改善する方法について説明します。
 services: iot-hub
 author: robinsh
@@ -7,12 +7,12 @@ ms.author: robinsh
 ms.date: 07/07/2018
 ms.topic: article
 ms.service: iot-hub
-ms.openlocfilehash: b5fe47bf066568960f9819a780a1281bedd1902b
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 8774129b3a1d3c9a1095e7a7c478dd94086b5867
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000007"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954489"
 ---
 # <a name="manage-connectivity-and-reliable-messaging-by-using-azure-iot-hub-device-sdks"></a>Azure IoT Hub device SDK を使用して、接続と信頼できるメッセージングを管理する
 

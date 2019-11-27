@@ -1,7 +1,7 @@
 ---
 title: Bing Custom Search エクスペリエンスを構成する | Microsoft Docs
 titleSuffix: Azure Cognitive Services
-description: サイトおよび垂直検索サービスを作成する方法について説明します
+description: ポータルでは、Web のスライス (ドメイン、サブページ、Web ページ) を指定する検索インスタンスを作成できます。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 1827bfdbebaf1ffa17c7c631a94aa8fc6471d13b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854098"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072815"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Bing Custom Search エクスペリエンスを構成する
 

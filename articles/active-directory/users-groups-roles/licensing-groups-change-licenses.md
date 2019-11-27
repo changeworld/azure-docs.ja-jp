@@ -1,27 +1,27 @@
 ---
-title: ユーザーとグループのライセンス割り当てを変更する方法 - Azure Active Directory | Microsoft Docs
-description: グループ ライセンスを使用して異なるサービス ライセンス (Office 365 Enterprise E1 と E3) にグループ内のユーザーを移行するために推奨されるプロセスについて説明します
+title: ユーザーとグループのライセンス割り当てを変更する - Azure AD | Microsoft Docs
+description: Azure Active Directory のグループ ライセンスを使用してさまざまなサービス プランにグループ内のユーザーを移行する方法
 services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/27/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7212983470e71ff6d7c1c33de142767ecf38d1f
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: bf2f04e1728f94c89bddcc31c287cc017a79020f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034026"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025902"
 ---
 # <a name="change-license-assignments-for-a-user-or-group-in-azure-active-directory"></a>Azure Active Directory でのユーザーまたはグループのライセンス割り当ての変更
 

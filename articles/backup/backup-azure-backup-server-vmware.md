@@ -1,18 +1,18 @@
 ---
 title: Azure Backup Server を使用して VMware VM をバックアップする
-description: Azure Backup Server を使用して、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップします。
+description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: dacurwin
-ms.openlocfilehash: 3d8983835c587ffeec9dd2bc418f1c01afbeb571
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: df41907ee10b54ab3bfaeb548e085617f7d79084
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264507"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903225"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
@@ -66,7 +66,7 @@ ms.locfileid: "72264507"
    - ルート証明書ファイル.0 や .1 などの連番で始まる拡張子が付きます。
    - CRL ファイルには、.r0 や .r1 などの連番で始まる拡張子が付きます。 CRL ファイルは、証明書と関連付けられています。
 
-         ![Downloaded certificates](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
+    ![ダウンロードされた証明書](./media/backup-azure-backup-server-vmware/extracted-files-in-certs-folder.png)
 
 6. **certs** フォルダーで、ルート証明書ファイルを右クリックし、 **[名前の変更]** をクリックします。
 
@@ -82,7 +82,7 @@ ms.locfileid: "72264507"
 
 10. **[証明書ストア]** ページで、 **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** をクリックして、証明書ストアを選択します。
 
-         ![Certificate storage](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
+    ![証明書ストレージ](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
 11. **[証明書ストアの選択]** で、証明書のインポート先フォルダーとして **[信頼されたルート証明機関]** を選択し、 **[OK]** をクリックします。
 
@@ -100,11 +100,9 @@ ms.locfileid: "72264507"
 
 1. 以下のテキストをコピーして、.txt ファイルに貼り付けます。
 
-      ```text
-      Windows Registry Editor Version 5.00
-      [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
-      "IgnoreCertificateValidation"=dword:00000001
-      ```
+       ```text
+      Windows Registry Editor Version 5.00    [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]    "IgnoreCertificateValidation"=dword:00000001
+       ```
 
 2. そのファイルを **DisableSecureAuthentication.reg** という名前で Azure Backup Server マシンに保存します。
 
@@ -130,7 +128,7 @@ Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許
    - VirtualMachine の権限を選択するには、親子階層を複数のレベルにわたって移動する必要があります。
    - 親権限のすべての子権限を選択する必要はありません。
 
-             ![Parent child privilege hierarchy](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
+    ![権限の親子階層](./media/backup-azure-backup-server-vmware/cert-add-privilege-expand.png)
 
 ### <a name="role-permissions"></a>ロールのアクセス許可
 
@@ -165,7 +163,7 @@ VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 2. **[vCenter Users and Groups]\(vCenter のユーザーとグループ\)** パネルで **[ユーザー]** タブを選択し、ユーザーの追加アイコン (+ 記号) をクリックします。
 
-         ![vCenter Users and Groups panel](./media/backup-azure-backup-server-vmware/usersandgroups.png)
+    ![[vCenter Users and Groups]\(vCenter のユーザーとグループ\) パネル](./media/backup-azure-backup-server-vmware/usersandgroups.png)
 
 3. **[New User]\(新規ユーザー\)** ダイアログ ボックスで、ユーザー情報を追加して、 **[OK]** をクリックします。 この手順では、ユーザー名は BackupAdmin です。
 
@@ -221,7 +219,7 @@ Azure Backup Server に vCenter Server を追加します。
 
 2. **[運用サーバーの追加ウィザード]**  >  **[運用サーバーの種類を選択]** ページで、 **[VMware サーバー]** を選択し、 **[次へ]** をクリックします。
 
-         ![Production Server Addition Wizard](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
+    ![運用サーバーの追加ウィザード](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
 3. **[Select Computers]** > **[サーバー名/IP アドレス]** で、VMware サーバーの FQDN または IP アドレスを指定します。 すべての ESXi サーバーが同じ vCenter で管理されている場合は、その vCenter の名前を指定します。 それ以外の場合は、ESXi ホストを追加します。
 
@@ -266,7 +264,7 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
     - フォルダーを選択すると、そのフォルダー内の VM またはフォルダーもバックアップ対象に選択されます。 バックアップしたくないフォルダーや VM はオフにすることができます。
 1. VM またはフォルダーが既にバックアップされている場合、それを選択することはできません。 これにより、1 つの VM に足して重複する復旧ポイントが作成されないことが保証されます。
 
-         ![Select group members](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
+    ![グループ メンバーの選択](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
 1. **[データの保護方法の選択]** ページで、保護グループの名前と保護の設定を入力します。 Azure にバックアップするには、短期的な保護を **[ディスク]** に設定して、オンライン保護を有効にします。 その後、 **[次へ]** をクリックします。
 
@@ -290,14 +288,14 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
    - **自動的に拡張:** この設定を有効にした場合、保護グループ内のデータが最初に割り当てたサイズよりも大きくなると、Azure Backup Server はディスク サイズを 25% 増やそうとします。
    - **ストレージ プールの詳細:** 合計や残りのディスク サイズなど、ストレージ プールの状態が表示されます。
 
-         ![Review disk allocation](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
+    ![ディスクの割り当てを確認する](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
 1. **[レプリカの作成方法の選択]** ページで、初期バックアップの作成方法を指定し、 **[次へ]** をクリックします。
    - 既定値は、 **[自動 (ネットワーク経由)]** と **[今すぐ]** です。
    - 既定値を使用する場合は、ピーク時以外を指定することをお勧めします。 **[時間指定]** を選択し、日時を指定します。
    - データが大量にある場合や、ネットワークの状態が最適でない場合は、リムーバブル メディアを使用してオフラインでデータをレプリケートすることを検討してください。
 
-         ![Choose replica creation method](./media/backup-azure-backup-server-vmware/replica-creation.png)
+    ![レプリカ作成方法の選択](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
 1. **[整合性チェック オプション]** で、整合性チェックを自動化する方法とタイミングを選択します。 その後、 **[次へ]** をクリックします。
       - 整合性チェックは、レプリカ データが不整合になったときに実行することや、設定したスケジュールで実行することができます。
@@ -305,25 +303,25 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 
 1. **[オンライン保護するデータの指定]** ページで、バックアップする VM または VM フォルダーを選択します。 メンバーを個別に選択するか、 **[すべて選択]** をクリックしてすべてのメンバーを選択することができます。 その後、 **[次へ]** をクリックします。
 
-          ![Specify online protection data](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
+    ![オンライン保護データの指定](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. **[オンライン バックアップ スケジュールの指定]** ページで、ローカル ストレージから Azure にデータをバックアップする頻度を指定します。
 
     - スケジュールに従って、データのクラウド復旧ポイントが生成されます。 その後、 **[次へ]** をクリックします。
     - 復旧ポイントは生成されると、Azure の Recovery Services コンテナーに転送されます。
 
-          ![Specify online backup schedule](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
+    ![オンライン バックアップ スケジュールの指定](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
 1. **[オンライン保持ポリシーの指定]** ページで、Azure への毎日/毎週/毎月/毎年のバックアップから作成される復旧ポイントを保持する期間を指定します。 その後、 **[次へ]** をクリックします。
 
     - Azure にデータを保持できる期間に制限はありません。
     - 唯一の制限は、保護されたインスタンスあたりの復旧ポイントの数が 9999 までであることです。 この例では、保護するインスタンスは VMware サーバーです。
 
-          ![Specify online retention policy](./media/backup-azure-backup-server-vmware/retention-policy.png)
+    ![オンライン保持ポリシーの指定](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
 1. **[概要]** ページで設定を確認して、 **[グループの作成]** をクリックします。
 
-         ![Protection group member and setting summary](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
+    ![保護グループのメンバーと設定の概要](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
 ## <a name="vmware-vsphere-67"></a>VMware vSphere 6.7
 
@@ -335,25 +333,26 @@ vSphere 6.7 をバックアップするには、次の操作を行います。
 
 - 次のようにレジストリ キーを設定します。
 
-```text
- Windows Registry Editor Version 5.00
+       ```text
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
+        Windows Registry Editor Version 5.00
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
+        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
+       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-"SystemDefaultTlsVersions"=dword:00000001
-"SchUseStrongCrypto"=dword:00000001
-```
+       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
+
+       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+       "SystemDefaultTlsVersions"=dword:00000001
+       "SchUseStrongCrypto"=dword:00000001
+       ```
 
 ## <a name="next-steps"></a>次の手順
 

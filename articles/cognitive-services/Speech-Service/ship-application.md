@@ -1,7 +1,7 @@
 ---
 title: Speech SDK でアプリを開発する - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Speech SDK を使用してアプリを作成する方法について説明します。
+description: サポートされているプラットフォームで Speech SDK を使用するアプリケーションをデプロイする方法について説明します。
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: jhakulin
 ms.custom: seodec18
-ms.openlocfilehash: 166ae00085f07ef24d746b60947a31e7680a0f00
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0bcfd40510352abc9e64782255d3c8349b8ad87e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491009"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072416"
 ---
 # <a name="ship-an-application"></a>アプリケーションの出荷
 
@@ -39,15 +39,15 @@ Cognitive Services Speech SDK には、[Visual Studio 2019 の Microsoft Visual 
 
 必要な Speech SDK ファイルは、お使いのアプリケーションと同じディレクトリに展開できます。 この方法で、お使いのアプリケーションはライブラリに直接アクセスできます。 必ず、お使いのアプリケーションと一致する正しいバージョン (Win32/x64) を選択してください。
 
-| 名前 | Function
-|:-----|:----|
-| `Microsoft.CognitiveServices.Speech.core.dll` | Core SDK。ネイティブおよびマネージド展開に必要
-| `Microsoft.CognitiveServices.Speech.csharp.dll` | マネージド展開に必要
+| 名前 | Function |
+| :--- | :------- |
+| `Microsoft.CognitiveServices.Speech.core.dll`   | Core SDK。ネイティブおよびマネージド展開に必要 |
+| `Microsoft.CognitiveServices.Speech.csharp.dll` | マネージド展開に必要                      |
 
->[!NOTE]
+> [!NOTE]
 > リリース 1.3.0 以降、(以前のリリースで提供されていた) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ファイルは不要になりました。 この機能はコア SDK に統合されました。
 
->[!NOTE]
+> [!NOTE]
 > Windows フォーム アプリケーション (.NET Framework) の C# プロジェクトの場合は、ライブラリがプロジェクトのデプロイ設定に含まれていることを確認してください。 これは `Properties -> Publish Section` で確認できます。 `Application Files` ボタンをクリックし、一覧を下にスクロールして、対応するライブラリを見つけます。 値が `Included` に設定されていることを確認します。 プロジェクトが発行またはデプロイされると、Visual Studio にこのファイルが組み込まれます。
 
 ## <a name="linux"></a>Linux
@@ -56,9 +56,9 @@ Cognitive Services Speech SDK には、[Visual Studio 2019 の Microsoft Visual 
 ネイティブ アプリケーションについては、Speech SDK ライブラリ `libMicrosoft.CognitiveServices.Speech.core.so` を配布する必要があります。
 必ず、お使いのアプリケーションと一致するバージョン (x86、x64) を選択してください。 Linux バージョンによっては、次の依存関係を追加しなければならない場合もあります。
 
-* GNU C ライブラリの共有ライブラリ (POSIX Threads Programming ライブラリ `libpthreads` など)
-* OpenSSL ライブラリ (`libssl.so.1.0.0` または `libssl.so.1.0.2`)
-* ALSA アプリケーションの共有ライブラリ (`libasound.so.2`)
+- GNU C ライブラリの共有ライブラリ (POSIX Threads Programming ライブラリ `libpthreads` など)
+- OpenSSL ライブラリ (`libssl.so.1.0.0` または `libssl.so.1.0.2`)
+- ALSA アプリケーションの共有ライブラリ (`libasound.so.2`)
 
 Ubuntu では、GNU C ライブラリが既定でインストールされています。 残りの 3 つをインストールするには、次のコマンドを使用します。
 
@@ -76,5 +76,5 @@ sudo apt-get install libssl1.0.2 libasound2
 
 ## <a name="next-steps"></a>次の手順
 
-* [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [C# で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+- [C# で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

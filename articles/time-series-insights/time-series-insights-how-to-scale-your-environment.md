@@ -1,23 +1,22 @@
 ---
-title: Azure Time Series Insights 環境をスケーリングする方法 | Microsoft Docs
-description: この記事では、Azure Time Series Insights 環境をスケーリングする方法について説明します。 Azure Portal を使用して、価格 SKU 内の容量を追加または減算します。
+title: お使いの環境をスケーリングする方法 ‐ Azure Time Series Insights | Microsoft Docs
+description: Azure portal でお使いの Azure Time Series Insights 環境をスケーリングする方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: a899de22137decc1eb1578369a2751710c17abda
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332874"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006799"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights 環境をスケーリングする方法
 
@@ -27,21 +26,9 @@ Azure ポータルを使用して、容量を特定の価格 SKU 内で増減で
 
 ただし、価格レベル SKU の変更は許可されません。 たとえば、S1 価格の SKU の環境を S2 に変換したり、その逆方向に変換したりすることはできません。
 
-## <a name="s1-sku-ingress-rates-and-capacities"></a>S1 SKU の受信レートと容量
+## <a name="ga-limits"></a>GA の制限
 
-| S1 SKU の容量 | 受信レート | 最大ストレージ容量
-| --- | --- | --- |
-| 1 | 1 GB (100 万イベント) | 月あたり 30 GB (3,000 万イベント) |
-| 10 | 10 GB (1,000 万イベント) | 月あたり 300 GB (3 億イベント) |
-
-## <a name="s2-sku-ingress-rates-and-capacities"></a>S2 SKU の受信レートと容量
-
-| S2 SKU の容量 | 受信レート | 最大ストレージ容量
-| --- | --- | --- |
-| 1 | 10 GB (1,000 万イベント) | 月あたり 300 GB (3 億イベント) |
-| 10 | 100 GB (1 億イベント) | 月あたり 3 TB (30 億イベント) |
-
-容量は直線的にスケーリングされるので、容量が 2 の S1 SKU であれば、サポートされるイベント受信レートは 1 日あたり 2 GB (200 万)、1 か月あたり 60 GB (6,000 万イベント) となります。
+[!INCLUDE [Azure Time Series Insights GA limits](../../includes/time-series-insights-ga-limits.md)]
 
 ## <a name="change-the-capacity-of-your-environment"></a>環境の容量を変更する
 

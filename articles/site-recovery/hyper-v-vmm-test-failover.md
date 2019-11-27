@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用してセカンダリサイトに対して Hyper-V VM のディザスター リカバリー ドリルを実行する | Microsoft Docs
+title: Azure Site Recovery を使用し、セカンダリ サイトに Hyper-V ディザスター リカバリー ドリルを実行する
 description: Azure Site Recovery を使用して、セカンダリ オンプレミス データセンターに対して VMM クラウド内の Hyper-V VM の DR ドリルを実行する方法について説明します。
 author: rajani-janaki-ram
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: dc8deb16f7d124c5fb11568f25050eee99a245b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60865536"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132950"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>セカンダリサイトに対して Hyper-V VM の DR ドリルを実行する
 
@@ -139,7 +139,7 @@ VM がフェールオーバーできるかどうかのみを確認する場合�
 ネットワーク マッピング中に指定した運用復旧サイト ネットワークに対してテスト フェールオーバーを実行しないことをお勧めします。 ただし、フェールオーバーされた VM でエンド ツー エンドのネットワーク接続を実際に検証する必要がある場合は、次の点に注意してください。
 
 * テスト フェールオーバーを実行するときは、プライマリ VM がシャットダウンされていることを確認します。 そうしないと、同じ ID を持つ 2 つの仮想マシンが同じネットワークで同時に実行されることになります。 その場合、望ましくない結果になることがあります。
-* テスト フェールオーバー VM に加えた変更は、テスト フェールオーバー VM をクリーンアップすると失われます。 これらの変更は、プライマリ VM にはレプリケートされません。
+* テスト フェールオーバー VM に加えた変更は、テスト フェールオーバー仮想マシンをクリーンアップすると失われます。 これらの変更は、プライマリ VM にはレプリケートされません。
 * このようなテスト方法では、運用アプリケーションのダウンタイムにつながります。 DR ドリルの実行中はアプリケーションのユーザーにアプリケーションを使用しないように指示してください。  
 
 

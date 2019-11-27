@@ -1,21 +1,21 @@
 ---
 title: Text Analytics API でエンティティ認識を利用する
 titleSuffix: Azure Cognitive Services
-description: Text Analytics REST API を使用してエンティティを認識する方法について説明します。
+description: Text Analytics REST API を使用して、テキスト内のエンティティの ID を識別して明確にする方法について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/12/2019
 ms.author: aahi
-ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488654"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031425"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -33,7 +33,7 @@ Text Analytics の `entities` エンドポイントは、名前付きエンテ�
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>名前付きエンティティの認識 v3 パブリック プレビュー
 
-[次期バージョンの名前付きエンティティの認識](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console)がパブリック プレビューで使用できるようになりました。 エンティティ リンク設定と名前付きエンティティの認識の両方が更新されています。 
+[次期バージョンの名前付きエンティティの認識]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)がパブリック プレビューで使用できるようになりました。 エンティティ リンク設定と名前付きエンティティの認識の両方が更新されています。 
 
 :::row:::
     :::column span="":::

@@ -1,7 +1,7 @@
 ---
 title: Bing Visual Search API に検索クエリを送信する
 titleSuffix: Azure Cognitive Services
-description: Bing Visual Search API で使用される REST API のパラメーターについて説明します。
+description: この記事では、Bing Visual Search API に送信される要求のパラメーターと属性、および応答オブジェクトについて説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: e857401591d45048962e9f606973dbf59dfe99c8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 2a87bee4769111e01dc49e8fce14569233dfaef3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194317"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111620"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Bing Visual Search API に検索クエリを送信する
 
@@ -57,7 +57,7 @@ ms.locfileid: "70194317"
 
 `cropArea` フィールドは省略可能です。 トリミング領域では、関心領域の左上隅と右下隅を指定します。 0\.0 から 1.0 の範囲の値を指定します。 値は、全体の幅または高さに対する割合です。 たとえば、上の例では、画像の右半分を関心領域として指定しています。 このフィールドは、分析情報の要求を関心領域に制限する場合に含めます。
 
-`filters` オブジェクトに含まれるサイト フィルター (`site` フィールドを参照) を使うと、類似画像および類似製品の結果を特定のドメインに制限できます。 たとえば、画像が Surface Book のものである場合は、`site` を www.microsoft.com に設定できます。
+`filters` オブジェクトに含まれるサイト フィルター (`site` フィールドを参照) を使うと、類似画像および類似製品の結果を特定のドメインに制限できます。 たとえば、画像が Surface Book のものである場合は、`site` を `www.microsoft.com` に設定できます。
 
 画像のローカル コピーに関する分析情報を取得する場合は、バイナリ データとして画像をアップロードします。
 
@@ -73,7 +73,7 @@ Visual Search のエンドポイントは、https:\/\/api.cognitive.microsoft.co
 
 要求で指定する必要があるクエリ パラメーターを次に示します。 少なくとも、`mkt` クエリ パラメーターを含める必要があります。
 
-| 名前 | 値 | Type | 必須 |
+| 名前 | 値 | 種類 | 必須 |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | 結果の取得元を表す 2 文字の国番号です。<br /><br /> このパラメーターを設定する場合は、[Accept-Language](#acceptlanguage) ヘッダーも指定する必要があります。 Bing は、言語の一覧で見つかった最初のサポートされている言語を使用し、その言語と指定された国番号を組み合わせて、結果を返す市場を決定します。 言語一覧にサポートされている言語が含まれない場合、Bing は要求をサポートする最も近い言語と市場を検索します。 または、指定された市場ではなく、集計された市場または既定の市場を使って結果を取得する場合もあります。<br /><br /> このクエリ パラメーターと `Accept-Language` クエリ パラメーターは、複数の言語を指定する場合にのみ使う必要があります。それ以外の場合は、`mkt` および `setLang` クエリ パラメーターを使う必要があります。<br /><br /> このパラメーターと [mkt](#mkt) クエリ パラメーターは相互に排他的なので、両方指定することはできません。 | string | いいえ       |
 | <a name="mkt" />mkt   | 結果の取得元の市場。 <br /><br /> **注:** 常に市場を指定することをお勧めします (わかっている場合)。 市場を指定すると、Bing が要求をルーティングして最適な応答を返すのに役立ちます。<br /><br /> このパラメーターと [cc](#cc) クエリ パラメーターは相互に排他的なので、両方指定することはできません。 | string | はい      |

@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics でのストリーミング ユニットの理解と調整
+title: Azure Stream Analytics のストリーミング ユニット
 description: この記事では、Azure Stream Analytics のパフォーマンスに影響するストリーミング ユニットの設定とその他の要因について説明します。
 services: stream-analytics
 author: JSeb225
@@ -8,13 +8,13 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: 54296f0b4aed22457a5218154111a42ad01ec262
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.date: 10/28/2019
+ms.openlocfilehash: 25105847b7134b7119252a66ac7e8502771ce5db
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329337"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961273"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>ストリーミング ユニットの理解と調整
 
@@ -34,6 +34,7 @@ SU 使用率 (%) メトリックはワークロードのメモリ消費量を表
     ![Azure Portal での Stream Analytics ジョブの構成][img.stream.analytics.preview.portal.settings.scale]
     
 4. スライダーを使用してジョブの SU 数を設定します。 特定の SU 設定に限定されることに注意してください。 
+5. ジョブが実行されている場合でも、それに割り当てられている SU の数を変更することができます。 ジョブで[パーティション分割されていない出力](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output)を使用している場合、または[異なる PARTITION BY 値を使用する複数ステップのクエリ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values)がある場合は、これを行うことはできません。 ジョブの実行時にこの設定を変更するには、ジョブに少なくとも 6 つの SU が必要です。 ジョブを実行している場合、SU 値のセットからの選択に限られる可能性があります。 
 
 ## <a name="monitor-job-performance"></a>ジョブのパフォーマンスを監視する
 Azure Portal を使用して、ジョブのスループットを追跡できます。
@@ -98,7 +99,7 @@ Stream Analytics ジョブが使用するメモリ (ストリーミング ユニ
 削減手順の必要性をなくすには、イベント ハブ パーティションをグループ化キーでパーティション分割する必要があります。 詳細については、「[Event Hubs の概要](../event-hubs/event-hubs-what-is-event-hubs.md)」を参照してください。 
 
 ## <a name="temporal-joins"></a>一時的な結合
-一時的な結合によって消費されるメモリ (状態サイズ) は、イベント入力速度にウィグル領域サイズを乗算した、結合の一時的なウィグル領域におけるイベント数に比例します。 つまり、結合によって消費されたメモリは、平均イベント率に DateDiff 時間の範囲を掛けたものと比例しています。
+一時的な結合で消費されるメモリ (状態サイズ) は、イベント入力速度にウィグル領域サイズを乗算した、結合の一時的なウィグル領域におけるイベント数に比例します。 つまり、結合によって消費されたメモリは、平均イベント率に DateDiff 時間の範囲を掛けたものと比例しています。
 
 結合内の不一致のイベントの数は、クエリのメモリ使用率に影響します。 次のクエリは、クリックに結びつく広告のインプレッションを検索します。
 
@@ -110,7 +111,7 @@ Stream Analytics ジョブが使用するメモリ (ストリーミング ユニ
 
 この例では、多数の広告が表示されても、ほとんどのユーザーがクリックしていない可能性があり、時間枠内にすべてのイベントを保持する必要があります。 消費されるメモリは、時間枠のサイズおよびイベント レートに比例します。 
 
-これを修復するには、結合キー (この場合は id) でパーティション分割されたイベントをイベント ハブに送信し、次に示すように **PARTITION BY** を使用して各入力パーティションをシステムが個別に処理できるようにすることでクエリをスケールアウトします。
+これを修復するには、結合キー (この場合は ID) でパーティション分割されたイベントをイベント ハブに送信し、次に示すように **PARTITION BY** を使用して各入力パーティションをシステムが個別に処理できるようにすることでクエリをスケールアウトします。
 
    ```sql
    SELECT clicks.id

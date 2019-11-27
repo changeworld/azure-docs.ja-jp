@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 1eef7b6505c4800acbe8aa69cf6f17eecc503aed
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796020"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011480"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "73796020"
 
 > [!WARNING]
 > 新しい開発者ポータルは、現在 API Management サービスにロールアウト中です。
-> サービスが新しく作成したものである場合や、Developer レベルのサービスの場合は、最新バージョンが既に存在している必要があります。 そうではない場合、問題が発生する可能性があります (たとえば、発行機能を使用する場合)。 機能のロールアウトは、2019 年 11 月 11 日に完了します。
+> サービスが新しく作成したものである場合や、Developer レベルのサービスの場合は、最新バージョンが既に存在している必要があります。 そうではない場合、問題が発生する可能性があります (たとえば、発行機能を使用する場合)。 この機能のロールアウトは、2019 年 11 月 22 日の金曜日までに完了する予定です。
 >
 > 開発者ポータルの[プレビュー バージョンから一般公開バージョンへの移行方法について確認](#preview-to-ga)してください。
 

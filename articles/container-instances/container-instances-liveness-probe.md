@@ -8,25 +8,27 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: 28205d6db85d7a5051f283445d95dd2375e174c8
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7f9696e9803e9ab168c59b6c5e7413a4f754a6ae
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325866"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904442"
 ---
 # <a name="configure-liveness-probes"></a>liveness probe の構成
 
-コンテナー化されたアプリケーションは、実行に時間がかかり、分断状態になり、コンテナーを再起動して修復する必要が生じる場合があります。 Azure Container Instances では、構成を含む liveness probe がサポートされていて、重要な機能が動作しなくなった場合にお使いのコンテナーを再起動できます。
+コンテナー化されたアプリケーションは、実行に時間がかかり、分断状態になり、コンテナーを再起動して修復する必要が生じる場合があります。 Azure Container Instances では liveness probe がサポートされており、重要な機能が動作しなくなった場合、コンテナー グループ内のコンテナーを再起動するように構成できます。 liveness probe は [Kubernetes liveness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/) と同じように振る舞います。
 
 この記事では、liveness probe を含むコンテナー グループをデプロイする方法について説明し、シミュレーションした異常なコンテナーの自動再起動方法を示します。
+
+Azure Container Instances では [readiness probes](container-instances-readiness-probe.md) もサポートされます。これにより、コンテナーの準備ができたときにのみ、トラフィックが確実にコンテナーに到達するように構成できます。
 
 ## <a name="yaml-deployment"></a>YAML のデプロイ
 
 次のコードを使用して `liveness-probe.yaml` ファイルを作成します。 このファイルは、最終的に異常状態になる NGNIX コンテナーから構成されるコンテナー グループを定義します。
 
 ```yaml
-apiVersion: 2018-06-01
+apiVersion: 2018-10-01
 location: eastus
 name: livenesstest
 properties:
@@ -87,7 +89,7 @@ az container create --resource-group myResourceGroup --name livenesstest -f live
 
 ![Portal の異常なイベント][portal-unhealthy]
 
-Azure Portal でイベントを表示することによって、liveness コマンド失敗時に `Unhealthy` タイプのイベントがトリガーされます。 後続のイベントは `Killing` タイプで、再起動を開始できるようにコンテナーの削除を示します。 コンテナーの再起動カウントは、これが発生するたびに増分されます。
+Azure Portal でイベントを表示することによって、liveness コマンド失敗時に `Unhealthy` タイプのイベントがトリガーされます。 後続のイベントは `Killing` タイプで、再起動を開始できるようにコンテナーの削除を示します。 コンテナーの再起動カウントは、このイベントが発生するたびに増分されます。
 
 パブリック IP アドレスやノード固有のコンテンツなどのリソースが保持されるように再起動が適切に完了します。
 
@@ -97,7 +99,7 @@ liveness probe が継続的に失敗し、過剰な回数の再起動がトリ�
 
 ## <a name="liveness-probes-and-restart-policies"></a>Liveness probe および再起動のポリシー
 
-再起動ポリシーは、liveness probe によってトリガーされる再起動動作よりも優先されます。 たとえば、`restartPolicy = Never` *および* liveness probe を設定した場合、コンテナー グループは、liveness 検査失敗イベントでは再起動しません。 コンテナー グループはコンテナー グループの再起動ポリシーである `Never` に従います。
+再起動ポリシーは、liveness probe によってトリガーされる再起動動作よりも優先されます。 たとえば、`restartPolicy = Never` *および* liveness probe を設定した場合、コンテナー グループは、liveness の検査失敗に起因して再起動されることはありません。 コンテナー グループはコンテナー グループの再起動ポリシーである `Never` に従います。
 
 ## <a name="next-steps"></a>次の手順
 

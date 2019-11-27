@@ -1,7 +1,7 @@
 ---
 title: 動的ディクショナリ - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Translator Text API の動的ディクショナリ機能を使用する方法。
+description: この記事では、Azure Cognitive Services Translator Text API の動的ディクショナリ機能の使用方法について説明します。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: f586702350b38c6d546767f64a8e2f6115b59817
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 5f007660b98a22ff9ffad072991a39cf59518b6a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595293"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837354"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>動的ディクショナリを使用する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "68595293"
 
 **構文:**
 
-<mstrans:dictionary translation=”translation of phrase”>phrase</mstrans:dictionary>
+<mstrans:dictionary translation="translation of phrase">phrase</mstrans:dictionary>
 
 **要件:**
 

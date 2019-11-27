@@ -10,12 +10,12 @@ ms.topic: conceptual
 description: GitHub のアクションと Azure Dev Spaces を使用して、プル要求からの変更を Azure Kubernetes Service で直接確認およびテストします。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, GitHub アクション, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 590d49f4c189ff48f20369d18b17e0f6e4a46fa2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 09dc9440628ac5d808f90d086bd88e4f90765c28
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571584"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889729"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)
 
@@ -145,7 +145,7 @@ git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 git push origin bike-images
 ```
 
-プッシュが完了したら、GitHub で、フォークされたリポジトリに移動し、*bike-images* ブランチと比較される基本ブランチとして、フォークされたリポジトリの *dev* を使用してプル要求を作成します。
+プッシュが完了したら、GitHub でフォークされたリポジトリに移動し、*bike-images* ブランチと比較される基本ブランチとして、フォークされたリポジトリの *master* ブランチを使用してプル要求を作成します。
 
 プル要求が開かれたら、 *[アクション]* タブに移動します。新しいアクションが開始され、*Bikes* サービスを構築中であることを確認します。
 
@@ -158,7 +158,7 @@ git push origin bike-images
 
 コメントから URL を開いて *bikesharingweb* サービスに移動します。 ユーザーとして *Aurelia Briggs (顧客)* を選択してから、借りる自転車を選択します。 自転車のプレースホルダー画像が表示されなくなっていることを確認します。
 
-変更を *dev* 分岐にマージすると、別のアクションが実行され、親の開発空間でアプリケーション全体がリビルドされ、実行されます。 この例では、親空間は *dev* です。 このアクションは [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] 内で構成されています。
+変更をフォークの *master* ブランチにマージすると、別のアクションが実行され、親の開発空間でアプリケーション全体がリビルドされ、実行されます。 この例では、親空間は *dev* です。 このアクションは [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] 内で構成されています。
 
 ## <a name="clean-up-your-azure-resources"></a>Azure リソースをクリーンアップする
 

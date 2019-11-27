@@ -1,7 +1,7 @@
 ---
 title: 新機能 - Language Understanding (LUIS)
 titleSuffix: Azure Cognitive Services
-description: この記事には、Language Understanding についてのニュースが含まれています。
+description: この記事では、Azure Cognitive Services Language Understanding API に関するニュースが定期的に更新されています。
 author: diberry
 manager: nitinme
 ms.custom: experiment-luis-0519
@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 0788df1c05d70c01d4de7f7a6ba62a476252f75a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 62ce0ac36223098d013cc75b7f62fc2c68e358ed
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498916"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953377"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
@@ -31,11 +31,13 @@ ms.locfileid: "73498916"
     * .lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) 形式のアプリをインポートおよびエクスポートする機能。 これにより、有効な CI/CD プロセスが可能になります。 
 * 言語の増加
     * [アラビア語とヒンディー語](luis-language-support.md) (パブリック プレビュー)。
-* 事前構築済みモデル
+* 事前構築済みのモデル
     * [事前構築済みドメイン](luis-reference-prebuilt-domains.md)の一般提供 (GA)
     * 日本語の[事前構築済みエンティティ](luis-reference-prebuilt-entities.md#japanese-entity-support) - 年齢、通貨、数値、割合は、V3 ではサポートされていません。
     * イタリア語の[事前構築済みエンティティ](luis-reference-prebuilt-entities.md#italian-entity-support) - 年齢、通貨、ディメンション、数値、割合、解像度が V2 から変更されました。
-* [preview.luis.ai ポータル](https://preview.luis.ai)でのユーザー エクスペリエンスの強化 - 複雑なモデルの構築とデバッグを可能にするため、ラベル付けエクスペリエンスが改良されました。
+* [preview.luis.ai ポータル](https://preview.luis.ai)でのユーザー エクスペリエンスの強化 - 複雑なモデルの構築とデバッグを可能にするため、ラベル付けエクスペリエンスが改良されました。 プレビュー ポータルのチュートリアルをお試しください。
+    * [意図のみ](tutorial-intents-only.md)
+    * [分解可能な機械学習エンティティ](tutorial-machine-learned-entity.md) 
 * 高度な言語理解機能 - 少ない労力で[洗練された言語モデルを構築](luis-concept-entity-types.md)します。 
 * モデル レベルで機械学習機能を定義し、モデルを他のモデルへの信号として使用できるようにします。たとえば、エンティティを機能として、意図やその他のエンティティに使用します。
 * 新しい、拡張された[制限](luis-boundaries.md) - フレーズ リストおよびフレーズの合計の最大値、機能制限としての新しいモデル

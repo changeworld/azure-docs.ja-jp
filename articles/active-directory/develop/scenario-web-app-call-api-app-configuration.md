@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1131cba204b7b7af33cc0441ee455b6e333aba20
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 231ecdb6afae1fc36d11b2c12aa82c7e860bb708
+ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310078"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73175321"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出す Web アプリ - コードの構成
 
@@ -38,8 +38,8 @@ Web アプリの承認コード フローがサポートされているライブ
 | MSAL ライブラリ | 説明 |
 |--------------|-------------|
 | ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | サポートされるプラットフォームは、.NET Framework と .NET Core プラットフォームです (UWP、Xamarin.iOS、Xamarin.Android のプラットフォームはパブリック クライアント アプリケーションのビルドに使用されるため、これら以外) |
-| ![MSAL.Python](media/sample-v2-code/logo_python.png) <br/> MSAL.Python | 進行中の開発 - パブリック プレビュー中 |
-| ![MSAL.Java](media/sample-v2-code/logo_java.png) <br/> MSAL.Java | 進行中の開発 - パブリック プレビュー中 |
+| ![MSAL Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 進行中の開発 - パブリック プレビュー中 |
+| ![MSAL Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 進行中の開発 - パブリック プレビュー中 |
 
 目的のプラットフォームに対応するタブを選択してください。
 
@@ -70,8 +70,8 @@ ASP.NET の場合は、ミドルウェアの OIDC イベントをサブスクラ
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-この記事のコード スニペットおよび以下は、[Microsoft Graph を呼び出す Java Web アプリケーション](https://github.com/Azure-Samples/ms-identity-java-webapp)の msal4j Web アプリ サンプルから抜粋されています。
-このサンプルでは、現在、msal4j を使用して、承認コードの URL を生成し、Microsoft ID プラットフォームの承認エンドポイントへのナビゲーションを処理しています。 また、Sprint セキュリティを使用してユーザーのサインインを行うこともできます。 完全な実装の詳細については、このサンプルをご覧ください。
+この記事のコード スニペットと以下は、[Microsoft Graph を呼び出す Java Web アプリケーション](https://github.com/Azure-Samples/ms-identity-java-webapp)の MSAL Java Web アプリ サンプルから抜粋されています。
+このサンプルでは、現在、MSAL Java を使用して、承認コードの URL を生成し、Microsoft ID プラットフォームの承認エンドポイントへのナビゲーションを処理しています。 また、Sprint セキュリティを使用してユーザーのサインインを行うこともできます。 完全な実装の詳細については、このサンプルをご覧ください。
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
@@ -370,14 +370,14 @@ public partial class Startup
         }
       });
   }
-  
+
   private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification context)
   {
       // Upon successful sign in, get the access token & cache it using MSAL
       IConfidentialClientApplication clientApp = MsalAppBuilder.BuildConfidentialClientApplication(new ClaimsPrincipal(context.AuthenticationTicket.Identity));
       AuthenticationResult result = await clientApp.AcquireTokenByAuthorizationCode(new[] { "Mail.Read" }, context.Code).ExecuteAsync();
   }
-  
+
   private Task OnAuthenticationFailed(AuthenticationFailedNotification<OpenIdConnectMessage, OpenIdConnectAuthenticationOptions> notification)
   {
       notification.HandleResponse();
@@ -534,17 +534,17 @@ public static class MsalAppBuilder
             .WithRedirectUri(AuthenticationConfig.RedirectUri)
             .WithAuthority(new Uri(AuthenticationConfig.Authority))
             .Build();
-  
+
       // After the ConfidentialClientApplication is created, we overwrite its default UserTokenCache with our implementation
       MSALPerUserMemoryTokenCache userTokenCache = new MSALPerUserMemoryTokenCache(clientapp.UserTokenCache, currentUser ?? ClaimsPrincipal.Current);
-  
+
       return clientapp;
   }
 ```
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-msal4j では、トークン キャッシュをシリアル化および逆シリアル化するメソッドが提供されています。 Java のサンプルでは、セッションからのシリアル化が処理されています ([AuthHelper.java#L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122) の `getAuthResultBySilentFlow` メソッドを参照)
+MSAL Java では、トークン キャッシュをシリアル化および逆シリアル化するメソッドが提供されています。 Java のサンプルでは、セッションからのシリアル化が処理されています ([AuthHelper.java#L99-L122](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/d55ee4ac0ce2c43378f2c99fd6e6856d41bdf144/src/main/java/com/microsoft/azure/msalwebsample/AuthHelper.java#L99-L122) の `getAuthResultBySilentFlow` メソッドを参照)
 
 ```Java
 IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, HttpServletResponse httpResponse)
@@ -560,7 +560,7 @@ IAuthenticationResult getAuthResultBySilentFlow(HttpServletRequest httpRequest, 
   }
 
   SilentParameters parameters = SilentParameters.builder(
-          Collections.singleton("User.ReadBasic.All"),
+          Collections.singleton("User.Read"),
           result.account()).build();
 
   CompletableFuture<IAuthenticationResult> future = app.acquireTokenSilently(parameters);

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: f27b910910ca21aa36582506e6c7b2d1d39da88a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ce5d2965d0127eec01620c702d7d83bd0b39416
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472855"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885774"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング
 
@@ -122,6 +122,35 @@ az aks update \
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>無効なクラスター オートスケーラーを再度有効にする
 
 既存のクラスター上でクラスター オートスケーラーを再度有効にする場合は、[az aks update][az-aks-update] コマンドで *--enable-cluster-autoscaler*、 *--min-count*、および *--max-count* パラメーターを指定することで有効にできます。
+
+## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>クラスター オートスケーラーのログと状態を取得する
+
+オートスケーラーのイベントを診断し、デバッグする目的で、オートスケーラー アドオンからログと状態を取得できます。
+
+AKS では、ユーザーに代わってクラスター オートスケーラーが管理され、マネージド コントロール プレーンで実行されます。 マスター ノードのログは、結果として表示されるように構成する必要があります。
+
+クラスター オートスケーラーから Log Analytics にプッシュされるようにログを構成するには、次の手順を行います。
+
+1. Log Analytics にクラスターオートスケーラーのログをプッシュするように診断ログのルールを設定します。 [手順の詳細はこちらにあります](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs)。[ログ] のオプションを選択するときは、確実に `cluster-autoscaler` のボックスにチェックマークを入れます。
+1. Azure portal から、クラスターの [ログ] セクションをクリックします。
+1. Log Analytics に次のサンプル クエリを入力します。
+
+```
+AzureDiagnostics
+| where Category == "cluster-autoscaler"
+```
+
+取得できるログがあれば、次のようなログが返されるはずです。
+
+![Log Analytics のログ](media/autoscaler/autoscaler-logs.png)
+
+クラスター オートスケーラーにより、`cluster-autoscaler-status` という名前の configmap に正常性状態も書き込まれます。 これらのログを取得するには、次の `kubectl` コマンドを実行します。 クラスター オートスケーラーで構成されたノード プールごとに、正常性状態が報告されます。
+
+```
+kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
+```
+
+オートスケーラーからログに記録される内容については、[Kubernetes/オートスケーラー GitHub プロジェクト](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why)の FAQ をお読みください。
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>複数のノード プールを有効にしてクラスター オートスケーラーを使用する
 

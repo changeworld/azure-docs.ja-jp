@@ -1,19 +1,19 @@
 ---
 title: Linux ベースの HDInsight で Hadoop を使用するためのヒント - Azure
 description: ここには、Azure クラウドで稼動する使い慣れた Linux 環境で、Linux ベースの HDInsight (Hadoop) クラスターを使用するための実装上のヒントを記載します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: f50702688b9a261ed98c2eb3a5892d1bdbe8d11b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: daaf5763bde560250ddf70e70466fc9f4ed3e1c2
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308079"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834107"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -111,12 +111,11 @@ Azure Storage または Data Lake Storage を使用している場合、HDInsigh
 
 HDInsight では、データ ストレージ リソース (Azure Blob Storage と Azure Data Lake Storage) は、コンピューティング リソースから切り離されています。 したがって、必要なコンピューティング処理を実行するために HDInsight クラスターを作成し、作業完了時にそのクラスターを削除できます。一方で、お使いのデータ ファイルは、必要なだけクラウド ストレージに安全に保持し続けることができます。
 
-
 ### <a name="URI-and-scheme"></a>URI およびスキーム
 
 いくつかのコマンドでは、ファイルにアクセスするときに、URI の一部としてスキームを指定する必要があります。 たとえば、Storm-HDFS コンポーネントでは、スキームを指定する必要があります。 既定ではない記憶域 (記憶域クラスターに "追加の" ストレージとして追加した記憶域) を使用する場合は、URI の一部として常にスキームを使用する必要があります。
 
-__Azure Storage__ を使用する場合は、次のいずれかの URI スキームを使用します。
+[**Azure Storage**](./hdinsight-hadoop-use-blob-storage.md) を使用する場合は、次のいずれかの URI スキームを使用します。
 
 * `wasb:///`:暗号化されていない通信を使用して既定のストレージにアクセスします。
 
@@ -124,13 +123,13 @@ __Azure Storage__ を使用する場合は、次のいずれかの URI スキー
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`:既定以外のストレージ アカウントを使用して通信するときに使用します。 (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
 
-__Azure Data Lake Storage Gen2__ を使用する場合は、次の URI スキームを使用します。
+[**Azure Data Lake Storage Gen2**](./hdinsight-hadoop-use-data-lake-storage-gen2.md) を使用する場合は、次の URI スキームを使用します。
 
 * `abfs://`:暗号化された通信を使用して既定のストレージにアクセスします。
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`:既定以外のストレージ アカウントを使用して通信するときに使用します。 (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
 
-__Azure Data Lake Storage Gen1__ を使用する場合は、次のいずれかの URI スキームを使用します。
+[**Azure Data Lake Storage Gen1**](./hdinsight-hadoop-use-data-lake-store.md) を使用する場合は、次のいずれかの URI スキームを使用します。
 
 * `adl:///`:クラスターの既定の Data Lake Storage にアクセスします。
 

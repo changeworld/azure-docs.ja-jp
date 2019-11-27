@@ -1,5 +1,5 @@
 ---
-title: オーサリング キーとランタイム キー - LUIS
+title: LUIS でオーサリング キーとランタイム キーを使用する方法
 titleSuffix: Azure Cognitive Services
 description: LUIS では、モデルを作成するためのオーサリング キーと、予測エンドポイントにユーザーの発話を照会するためのランタイム キーの 2 つのキーが使用されます。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 973a8dd56437506d907159f212164ff147ba975c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b58aa97dbb97bade87a38456c58df8f93a29946f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487506"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901696"
 ---
 # <a name="authoring-and-runtime-keys"></a>オーサリング キーとランタイム キー
 

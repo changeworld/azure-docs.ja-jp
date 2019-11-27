@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して多層 IIS ベース Web アプリケーションのディザスター リカバリーを設定する | Microsoft Docs
+title: Azure Site Recovery を使用して IIS Web アプリ用のディザスター リカバリーを設定する
 description: Azure Site Recovery を使用して IIS Web ファームの仮想マシンをレプリケートする方法について説明します。
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 66b9342f1a67c4c9d35fda447a297cc64d048c1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480299"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954661"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションのディザスター リカバリーの設定
 

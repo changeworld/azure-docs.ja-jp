@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 789cc1d835024babb2482b2601503dbaf7247fc2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5b1e417ecd41f93d7919b67ebdd3faf32521d8a4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747429"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012923"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server のインストールとアップグレード
 
@@ -185,14 +185,14 @@ Azure Backup Server は、常にドメインに参加させる必要がありま
 
     SSRS 構成では次の値を使用します。
     * サービス アカウント:‘組み込みアカウントの使用’ はネットワーク サービスにする必要があります
-    * Web サービスの URL:‘仮想ディレクトリ’ は ReportServer_<SQLInstanceName> にする必要があります
-    * データベース: DatabaseName は ReportServer$<SQLInstanceName> にする必要があります
-    * Web ポータルの URL:‘仮想ディレクトリ’ は ReportServer_<SQLInstanceName> にする必要があります
+    * Web サービスの URL:[仮想ディレクトリ] は ReportServer_\<SQLInstanceName> にする必要があります
+    * データベース: DatabaseName は ReportServer$\<SQLInstanceName> にする必要があります
+    * Web ポータルの URL:[仮想ディレクトリ] は Reports_\<SQLInstanceName> にする必要があります
 
     SSRS の構成について詳しくは、[こちら](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017)をご覧ください。
 
     > [!NOTE]
-    > MABS のデータベースとして使用される SQL Server のライセンスは、[マイクロソフト オンライン サービス条件](https://www.microsoft.com/en-us/licensing/product-licensing/products)によって管理されます。 OST に従って、MABS にバンドルされている SQL Server は、MABS のデータベースとしてのみ使用できます。
+    > MABS のデータベースとして使用される SQL Server のライセンスは、[マイクロソフト オンライン サービス条件](https://www.microsoft.com/licensing/product-licensing/products)によって管理されます。 OST に従って、MABS にバンドルされている SQL Server は、MABS のデータベースとしてのみ使用できます。
 
 4. Microsoft Azure Backup サーバーのファイルをインストールする場所を指定し、 **[次へ]** をクリックします。
 
@@ -336,7 +336,7 @@ MABS をアップグレードするには、次の手順を使用します。
    >
    > SQL インスタンスのアップグレード中に終了しないでください。終了すると、SQL レポート インスタンスがアンインストールされるため、MABS を再アップグレードする試みが失敗します。
 
-   注意すべき重要な点を次に示します。
+
 
    > [!IMPORTANT]
    >

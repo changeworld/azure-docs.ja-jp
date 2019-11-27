@@ -1,7 +1,7 @@
 ---
 title: 言語サポート - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Microsoft Translator Text API でサポートされる自然言語の一覧。
+description: Translator Text API では、Neural Machine Translation (NMT) を利用したテキスト対テキストの翻訳で、以下の言語をサポートしています。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: cb0552612d95500e01edd91aff36406d4c2282bd
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 5e96ced1bd87a0ed8be19bf4e07f7b0d9b319aad
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909976"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837325"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 

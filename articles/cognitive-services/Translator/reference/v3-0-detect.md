@@ -1,7 +1,7 @@
 ---
 title: Translator Text API の Detect メソッド
 titleSuffix: Azure Cognitive Services
-description: Translator Text API の Detect メソッドを使用します。
+description: Azure Cognitive Services Translator Text API Detect メソッドを利用し、一節のテキストの言語を特定します。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: ba73b75e30639dd3f5cf5523124c926ea3442fa1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932019"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837294"
 ---
 # <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
 

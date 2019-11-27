@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c83ac8a42a91c9db06726e917ed142e20995b987
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 929672dceabc7d9b591f05ef3f4f716f2117e09c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797320"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128679"
 ---
 # <a name="manage-farms"></a>ファームの管理
 
@@ -58,7 +58,7 @@ Azure FarmBeats ではファームを管理することができます。 この
 **[Farms]\(ファーム\)** ページには、作成済みのファームの一覧が表示されます。
 
 1.  ファームを選択してそのファームを表示および編集します。
-2.  ファーム情報を編集するには、 **[Edit Farm]\(ファームの編集\)** を選択します。 **[Farm Details]\(ファームの詳細\)** ウィンドウでは、 **[Name]\(名前\)** 、 **[Crops]\(作物\)** 、 **[Address]\(住所\)** 、 **[Farm Boundary]\(ファームの境界\)** フィールドを編集できます。
+2.  ファーム情報を編集するには、 **[Edit Farm]\(ファームの編集\)** を選択します。 **[Farm Details]\(ファームの詳細\)** ウィンドウでは、 **[Name]\(名前\)** 、 **[Crops]\(作物\)** 、 **[Address]\(住所\)** の各フィールドを編集し、 **[Farm Boundary]\(ファームの境界\)** フィールドを定義できます。
 
     ![プロジェクト (Farm Beats)](./media/create-farms/edit-farm-1.png)
 

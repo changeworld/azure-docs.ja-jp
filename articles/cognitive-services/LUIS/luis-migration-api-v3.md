@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 7c2866441c7439008fad27ced9b9b1dddea848ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bb2255a9a68a499ff3e77c1fbd35081a2474cf1d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492832"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961933"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>V3 の予測エンドポイントの変更
 
@@ -73,7 +73,7 @@ Bot Framework の Version 4.7 がリリースされるまで、引き続き V2 A
 
 ## <a name="v2-api-deprecation"></a>V2 API の非推奨 
 
-V2 予測 API は、V3 プレビューの後、少なくとも 9 か月間は非推奨になることはありません (2020 年 6 月 8 日まで)。 
+V2 予測 API は、V3 プレビューの後、少なくとも 9 か月間は非推奨にはなりません (2020 年 6 月 8 日まで)。 
 
 ## <a name="endpoint-url-changes"></a>エンドポイント URL の変更 
 

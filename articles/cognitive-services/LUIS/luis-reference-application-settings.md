@@ -1,7 +1,7 @@
 ---
 title: アプリケーションの設定 - LUIS
 titleSuffix: Azure Cognitive Services
-description: Language Understanding アプリのアプリケーション設定について理解します。
+description: Azure Cognitive Services の言語を理解するアプリのアプリケーション設定は、アプリとポータルに格納されています。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6d516590b90efd937789fa0847b707d2521f6459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932591"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961786"
 ---
 # <a name="application-settings"></a>アプリケーションの設定
 
 これらのアプリケーション設定は、REST API を使用して [exported](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) アプリと [updated](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) に格納されます。 アプリのバージョン設定を変更すると、アプリのトレーニング状態がトレーニングなしにリセットされます。
 
-|Setting|Default value|メモ|
+|Setting|既定値|メモ|
 |--|--|--|
 |NormalizePunctuation|True|句読点を削除します。|
 |NormalizeDiacritics|True|分音文字を削除します。|
@@ -150,9 +150,9 @@ LUIS JSON アプリ ファイルに対して、句読点の発話の正規化を
 ] 
 ```
 
-次の発話は、分音記号が発話に与える影響を示しています。
+次の発話は、句読点が発話に与える影響を示しています。
 
-|分音記号を False に設定した場合|分音記号を True に設定した場合|
+|句読点が False に設定されている場合|句読点が True に設定されている場合|
 |--|--|
 |`Hmm..... I will take the cappuccino`|`Hmm I will take the cappuccino`|
 |||

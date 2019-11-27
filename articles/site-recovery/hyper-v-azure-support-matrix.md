@@ -5,29 +5,27 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9af85d8d9b181d619d8895542f142708626649d1
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: db334b873358fdab6671877dd66e7f49c334ac44
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620834"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133034"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、オンプレミス Hyper-V VM の Azure へのディザスター リカバリーを行う場合にサポートされるコンポーネントと設定の概要について説明します。
 
-> [!WARNING]
-> SCVMM 構成をアカウントに使用する ASR のサポートはまもなく非推奨になるため、次に進む前に[非推奨](scvmm-site-recovery-deprecation.md)の詳細をお読みになることをお勧めします。
 
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
 **シナリオ** | **詳細**
 --- | ---
-Hyper-V (Virtual Machine Manager あり) <br> **このシナリオは廃止過程にあります。** <br>| System Center Virtual Machine Manager ファブリックで管理されている Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。<br/><br/> Hyper-V ホストが Virtual Machine Manager で管理されている場合は、セカンダリ オンプレミス サイトへのディザスター リカバリーを実行することもできます。 このシナリオの詳細については、[こちらのチュートリアル](hyper-v-vmm-disaster-recovery.md)を参照してください。
+Hyper-V (Virtual Machine Manager あり) <br> <br>| System Center Virtual Machine Manager ファブリックで管理されている Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。<br/><br/> Hyper-V ホストが Virtual Machine Manager で管理されている場合は、セカンダリ オンプレミス サイトへのディザスター リカバリーを実行することもできます。 このシナリオの詳細については、[こちらのチュートリアル](hyper-v-vmm-disaster-recovery.md)を参照してください。
 Hyper-V (Virtual Machine Manager なし) | Virtual Machine Manager によって管理されていない Hyper-V ホスト上で実行されている VM の場合、Azure へのディザスター リカバリーを実行できます。<br/><br/> このシナリオは、Azure Portal または PowerShell を使用して展開できます。
 
 ## <a name="on-premises-servers"></a>オンプレミスのサーバー
@@ -96,7 +94,7 @@ Azure 仮想ネットワーク サービス エンドポイント<br/> (Azure St
 NFS | NA | NA
 SMB 3.0 | はい | はい
 SAN (ISCSI) | はい | はい
-マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM for CLARiiON | はい | はい
+マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | はい | はい
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM ゲスト ストレージ
 
@@ -105,7 +103,7 @@ SAN (ISCSI) | はい | はい
 VMDK | NA | NA
 VHD/VHDX | はい | はい
 Generation 2 VM | はい | はい
-EFI/UEFI| はい | はい
+EFI/UEFI<br></br>Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。 VM では、Windows Server 2012 以降のみが実行されている必要があります。 OS ディスクには最大 5 つのパーティションが必要であり、OS ディスクのサイズは 300 GB 未満にする必要があります。| はい | はい
 共有クラスター ディスク | いいえ | いいえ
 暗号化されたディスク | いいえ | いいえ
 NFS | NA | NA
@@ -132,6 +130,7 @@ geo 冗長ストレージ | はい | はい
 ホット ストレージ| いいえ | いいえ
 ブロック blob | いいえ | いいえ
 保存時の暗号化 (SSE)| はい | はい
+保存時の暗号化 (CMK)| いいえ | いいえ
 Premium Storage | はい | はい
 インポート/エクスポート サービス | いいえ | いいえ
 ファイアウォールが有効になっている Azure ストレージ アカウント | はい。 ターゲット ストレージとキャッシュの場合。 | はい。 ターゲット ストレージとキャッシュの場合。

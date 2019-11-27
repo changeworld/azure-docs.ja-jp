@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: dbfb6a1c4c53b1bd255560e688d3dc0cf3835a3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d286cbab33a1fb6a2d2a2cb70caed11b21af735
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469636"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904091"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure App Configuration の FAQ
 
@@ -42,9 +42,19 @@ App Configuration は Key Vault を補完するものであり、両者はほと
 
 App Configuration は強固なセキュリティを備えていますが、それでもアプリケーション シークレットの保管場所としては Key Vault が最も優れています。 Key Vault では、ハードウェアレベルの暗号化、粒度の細かいアクセス ポリシー、管理操作 (証明書のローテーションなど) が利用できます。
 
+キー コンテナーに格納されているシークレットを参照する App Configuration 値を作成できます。 詳細については、「[ASP.NET Core アプリで Key Vault 参照を使用する](./use-key-vault-references-dotnet-core.md)」を参照してください。
+
 ## <a name="does-app-configuration-encrypt-my-data"></a>App Configuration によってデータが暗号化されるのですか?
 
 はい。 App Configuration は、そこに格納されているすべてのキー値を暗号化し、ネットワーク通信を暗号化します。 キー名は、構成データを取得するためのインデックスとして使用され、暗号化されません。
+
+## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>App Configuration と Azure App Service 設定は何が違うのですか?
+
+Azure App Service では、App Service インスタンスごとにアプリ設定を定義できます。 これらの設定は、環境変数としてアプリケーション コードに渡されます。 必要に応じて、特定のデプロイ スロットに設定を関連付けることができます。 詳細については、「[アプリ設定の構成](/azure/app-service/configure-common#configure-app-settings)」を参照してください。
+
+対照的に、Azure App Configuration では、App Service. で実行されているアプリなど、複数のアプリ間で共有できる設定を定義できます。 これらの設定には、(.NET と Java の場合) 構成プロバイダーから、Azure SDK から、あるいは REST API 経由で直接、アプリケーション コードでアクセスできます。
+
+App Service と App Configuration の間で設定をインポート/エクスポートすることもできます。 これにより簡単に、既存の App Service 設定に基づいて新しい App Configuration ストアを設定したり、App Service 設定に依存する既定のアプリと構成を共有したりできます。
 
 ## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>App Configuration に格納されているキーや値に対するサイズ制限はありますか?
 

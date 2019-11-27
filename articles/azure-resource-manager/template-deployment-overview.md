@@ -1,19 +1,19 @@
 ---
-title: Azure Resource Manager のテンプレート
-description: リソースのデプロイに Azure Resource Manager テンプレートを使用する方法を説明します。
+title: Azure Resource Manager テンプレートの概要
+description: リソースのデプロイに Azure Resource Manager テンプレートを使用する利点について説明します。
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: tomfitz
-ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 956450e5a47e4d0e16de44b6bc72c6cb24d05889
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71300151"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074381"
 ---
-# <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
+# <a name="azure-resource-manager-templates-overview"></a>Azure Resource Manager テンプレートの概要
 
 クラウドに移行するとき、多くのチームでアジャイル開発方法が採用されてきました。 このようなチームでは反復が迅速に行われます。 ソリューションをクラウドに繰り返しデプロイし、インフラストラクチャが信頼できる状態であることを把握する必要があります。 インフラストラクチャが反復的なプロセスの一部になると、運用と開発の間の区切りはなくなります。 チームは、統合されたプロセスを通してインフラストラクチャとアプリケーション コードを管理する必要があります。
 
@@ -125,5 +125,6 @@ REQUEST BODY
 
 ## <a name="next-steps"></a>次の手順
 
+* テンプレートの作成手順について説明したチュートリアルについては、「[チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする](template-tutorial-create-first-template.md)」をご覧ください。
 * テンプレート ファイルのプロパティについては、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」をご覧ください。
 * テンプレートのエクスポートの詳細については、「[クイックスタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](./resource-manager-quickstart-create-templates-use-the-portal.md)」を参照してください。

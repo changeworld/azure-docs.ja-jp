@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 11/12/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21117e551642571d5b974e66d0769ed9906b9d50
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 85905e31b9375bac7f813782cbc224a6e770b7ce
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018209"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013121"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する
 
@@ -45,14 +45,18 @@ B2B コラボレーション ユーザーをディレクトリに追加するに
    > [!NOTE]
    > **[新しいゲスト ユーザー]** オプションは **[組織の関係]** ページでも使用できます。 **Azure Active Directory** で、 **[管理]** にある **[組織の関係]** を選択します。
 
-5. **[ユーザー名]** に外部ユーザーの電子メール アドレスを入力します。 必要に応じて、ようこそメッセージを含めます。 例:
-
-   ![UI 内の新しいゲスト ユーザーの場所を示す](./media/add-users-administrator/InviteGuest.png) 
+5. **[新しいユーザー]** ページで **[ユーザーの招待]** を選択し、ゲスト ユーザーの情報を追加します。 
 
     > [!NOTE]
     > グループのメール アドレスはサポートされていません。個人のメール アドレスを入力してください。 また、一部の電子メール プロバイダーでは、ユーザーはプラス記号 (+) と追加テキストを電子メール アドレスに付け加えて、受信ボックスのフィルター処理などに役立てることができます。 ただし、Azure AD では現在、電子メール アドレスのプラス記号はサポートされていません。 配信の問題を回避するために、プラス記号と、それに続く @ 記号より前の任意の文字を含めません。
 
-6. **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 
+   - **名前。** ゲスト ユーザーの氏名。
+   - **メール アドレス (必須)** 。 ゲスト ユーザーのメールアドレス。
+   - **個人用メッセージ (オプション)** 。ゲスト ユーザーへの個人用ウェルカム メッセージが含まれます。
+   - **グループ**: 1 つまたは複数の既存のグループにユーザーを追加するか、後で追加することができます。
+   - **ディレクトリ ロール**: ユーザーに Azure AD 管理アクセス許可が必要な場合は、Azure AD ロールに追加することができます。 
+
+7. **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 
  
 招待を送信すると、ユーザー アカウントがディレクトリにゲストとして自動的に追加されます。
 

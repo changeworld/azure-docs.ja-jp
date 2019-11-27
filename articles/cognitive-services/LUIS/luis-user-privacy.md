@@ -1,7 +1,7 @@
 ---
 title: データのエクスポートと削除 - LUIS
 titleSuffix: Azure Cognitive Services
-description: プライバシーとコンプライアンスを確保するために顧客データを削除します。
+description: お客様は、データの表示、エクスポート、削除を完全に制御できます。 プライバシーとコンプライアンスを確保するために顧客データを削除します。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: e234f88d6e735f33be253cacb373baef63c605c0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 061f019fe36e4d5495a41fc81e56d9673ad595fc
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559989"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953455"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Cognitive Services で Language Understanding (LUIS) 内の顧客データをエクスポートおよび削除する
 

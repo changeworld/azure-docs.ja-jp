@@ -1,5 +1,5 @@
 ---
-title: Azure CLI を使用して Linux VM にデータ ディスクを追加する | Microsoft Docs
+title: Azure CLI を使用して Linux VM にデータ ディスクを追加する
 description: Azure CLI を使用して Linux VM に永続データ ディスクを追加する方法について説明します
 services: virtual-machines-linux
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 06/13/2018
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 1c8d4d2b26b356c524523d73d53fd641eef5f3cb
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 5d7ec2cbbc5cc1bf8bdc87d7f82a965b3bc8c267
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67465830"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037100"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。

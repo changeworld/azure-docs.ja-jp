@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825681"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108594"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドの縮小
 
@@ -24,7 +24,8 @@ CloudSimple は、プライベート クラウドを動的に縮小する柔軟�
 プライベート クラウドを縮小するには、次の条件を満たす必要があります。  プライベート クラウドの作成時に作成された管理クラスター (最初のクラスター) は削除できません。
 
 * vSphere クラスターには 3 つのノードが必要です。  ノードが 3 つしかないクラスターは縮小できません。
-* 使用されているストレージの合計が、クラスターの縮小後の合計容量を超えないようにする必要があります。 
+* 使用されているストレージの合計が、クラスターの縮小後の合計容量を超えないようにする必要があります。
+* Distributed Resource Scheduler (DRS) ルールによって仮想マシンの vMotion が禁止されているかどうかを確認します。  ルールが存在する場合は、そのルールを無効にするか削除します。  DRS ルールには、アフィニティ ルールをホストする仮想マシンが含まれます。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -55,7 +56,8 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 プライベート クラウドの縮小が開始されます。  タスクの進行状況を監視できます。  vSAN で再同期する必要があるデータによっては、縮小プロセスに数時間かかることがあります。
 
 > [!NOTE]
-> データセンター内の最後または唯一のクラスターを削除してプライベート クラウドを縮小した場合、データセンターは削除されません。  
+> 1. データセンター内の最後または唯一のクラスターを削除してプライベート クラウドを縮小した場合、データセンターは削除されません。
+> 2. DRS ルール違反が発生した場合、ノードはクラスターから削除されず、ノードの削除がクラスター上の DRS ルールに違反することがタスクの説明に示されます。    
 
 
 ## <a name="next-steps"></a>次の手順

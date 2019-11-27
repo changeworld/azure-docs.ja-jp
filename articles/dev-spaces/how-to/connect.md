@@ -9,12 +9,12 @@ ms.date: 11/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces を使用して AKS クラスターに開発用コンピューターを接続する方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 0adaa4266978cf9c9ef42359c0cf4f81c5c5f056
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 15e46fba19d92e08a9c87a63f6f01ec6b0836910
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571769"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888921"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>開発用マシンを AKS クラスターに接続する (プレビュー)
 
@@ -96,7 +96,7 @@ Azure Dev Spaces 拡張機能を使用するには、 *[表示]* 、 *[コマン
 アプリケーションの TCP ポートを選択すると、Azure Dev Spaces により、AKS クラスターへの接続が確立されます。 Azure Dev Spaces によりエージェントが AKS クラスターに挿入され、AKS クラスターと開発用コンピューターの間でトラフィックがリダイレクトされます。 この接続の確立には数分かかることがあります。 Azure Dev Spaces からはまた、開発用コンピューターの*ホスト* ファイルを変更する目的で、管理者アクセスが要求されます。
 
 > [!IMPORTANT]
-> Azure Dev Spaces で AKS クラスターへの接続が確立されると、AKS クラスターの他のサービスは、開発用コンピューターでサービスを開始するまで、正しく機能しない可能性があります。 また、開発用コンピューターで利用できない依存関係がサービスに含まれているとき、場合によっては、アプリケーションを変更したり、[追加で構成](#additional-configuration)したりする必要があります。
+> Azure Dev Spaces で AKS クラスターへの接続が確立されても、接続モードに *[置換]* が選択された場合、AKS クラスターの他のサービスは、開発用コンピューターでサービスを開始するまで、正しく機能しない可能性があります。 代わりに *[複製]* 接続モードを選択することで、リダイレクト用に子 Dev Space を作成し、親 Space の混乱を回避できます。 また、開発用コンピューターで利用できない依存関係がサービスに含まれているとき、場合によっては、アプリケーションを変更したり、[追加で構成](#additional-configuration)したりする必要があります。
 
 AKS クラスターへの接続が確立されると、Azure Dev Spaces により、「*AZDS Connect - Bikes*」というタイトルのターミナル ウィンドウが開きます。 このターミナル ウィンドウには、AKS クラスターから構成されたあらゆる環境変数と DNS エントリが与えられます。 このターミナル ウィンドウで、あるいは Visual Studio Code デバッガーを使用することで実行するあらゆるコードが AKS クラスターに接続されます。
 

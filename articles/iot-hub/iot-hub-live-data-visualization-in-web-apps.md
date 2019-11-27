@@ -1,5 +1,5 @@
 ---
-title: Web アプリでの Azure IoT Hub からのセンサー データのリアルタイム データ視覚化 | Microsoft Docs
+title: Web アプリでの IoT ハブ データのリアルタイム データの視覚化
 description: Web アプリを使用して、センサーから収集されて IoT ハブ に送信された気温と湿度のデータを視覚化します。
 author: robinsh
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 22b15a95e529d4f09560e9b7e59d9f78f70651bc
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 073a766662b2ead4b816276fa7fda6dc5e6caca7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476010"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954648"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Web アプリで Azure IoT Hub からのリアルタイム センサー データを視覚化する
 

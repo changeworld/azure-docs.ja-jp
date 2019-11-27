@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub メッセージ エンリッチメントの概要
-description: Azure IoT Hub のメッセージ エンリッチメントの概要
+description: この記事では、指定されたエンドポイントにメッセージが送信される前に、追加の情報をメッセージにスタンプする機能を IoT Hub に付与する、メッセージ エンリッチメントについて説明します。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 83114023eb35221bfa53e3ce4de8a861948c7a3a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177991"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005839"
 ---
-# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント (プレビュー)
+# <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント
 
 "*メッセージ エンリッチメント*" は、指定エンドポイントに送信される前のメッセージに対し、追加情報を含んだ "*スタンプ*" を適用する IoT Hub の機能です。 メッセージ エンリッチメントを使用する理由の 1 つは、ダウンストリームの処理を単純化するために用いることのできるデータを追加することです。 たとえば、デバイス ツイン タグを使用してデバイスのテレメトリ メッセージのエンリッチメントを行えば、この情報のために顧客側でデバイス ツイン API を呼び出す負担を軽減することができます。
 
@@ -81,10 +81,6 @@ ms.locfileid: "72177991"
 ## <a name="pricing"></a>価格
 
 メッセージ エンリッチメントは、追加料金なしで利用できます。 現在は、IoT ハブにメッセージを送信したときに料金が発生します。 メッセージが複数のエンドポイントに向かう場合でも、そのメッセージに関して料金が課されるのは 1 回だけです。
-
-## <a name="availability"></a>可用性
-
-この機能はプレビューとして提供され、米国東部、米国西部、西ヨーロッパ、[Azure Government](/azure/azure-government/documentation-government-welcome)、[Azure China 21Vianet](/azure/china)、[Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/) を除くすべてのリージョンで利用できます。
 
 ## <a name="next-steps"></a>次の手順
 

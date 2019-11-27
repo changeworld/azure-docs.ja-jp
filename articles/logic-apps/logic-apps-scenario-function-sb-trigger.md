@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
-ms.date: 06/04/2019
-ms.openlocfilehash: 2ab6ace7c30c3dd385928b6b0ae8000485d5f495
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.date: 11/08/2019
+ms.openlocfilehash: c65a0464bbad6dbaca51dbc5bbc0d84adbd605d7
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680139"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904650"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Azure Functions と Azure Service Bus を使用してロジック アプリを呼び出すか、またはトリガーする
 
@@ -32,13 +32,13 @@ ms.locfileid: "72680139"
 
 ## <a name="create-logic-app"></a>ロジック アプリを作成する
 
-このシナリオでは、トリガーする各ロジック アプリを実行する関数が用意されています。 まず、HTTP 要求トリガーで開始されるロジック アプリを作成します。 関数は、キュー メッセージが受信されたときに、そのエンドポイントを呼び出します。  
+このシナリオでは、トリガーする各ロジック アプリを実行する関数が用意されています。 まず、HTTP 要求トリガーで開始されるロジック アプリを作成します。 関数は、キュー メッセージが受信されたときに、そのエンドポイントを呼び出します。
 
 1. [Azure portal](https://portal.azure.com) にサインインして、空のロジック アプリを作成します。
 
    ロジック アプリを初めて使用する場合は、[クイック スタート:初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
-1. 検索ボックスに「HTTP 要求」と入力します。 トリガーの一覧から、**HTTP 要求の受信時**
+1. 検索ボックスに「 `http request`」と入力します。 トリガーの一覧から、 **[HTTP 要求の受信時]** というトリガーを選択します。
 
    ![トリガーの選択](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "72680139"
 
 1. 該当する関数アプリ名の **[関数]** を展開します。 **[関数]** ウィンドウの **[新しい関数]** を選択します。
 
-   ![[関数] を展開し、[新しい関数] を選択する](./media/logic-apps-scenario-function-sb-trigger/create-new-function.png)
+   ![[関数] を展開し、[新しい関数] を選択する](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
 1. ランタイム スタックとして .NET を選択した新しい関数アプリを作成したか、または既存の関数アプリを使用しているかに基づいて、次のテンプレートを選択します。
 
@@ -118,7 +118,15 @@ ms.locfileid: "72680139"
 
 1. **[Azure Service Bus Queue trigger] (Azure Service Bus キューのトリガー)** ウィンドウで、トリガーの名前を指定し、キューの **Service Bus 接続** (これは Azure Service Bus SDK の `OnMessageReceive()` リスナーを使用します) を設定して **[作成]** を選択します。
 
-1. キュー メッセージをトリガーとして使用して、前に作成したロジック アプリのエンドポイントを呼び出す基本的な関数を作成します。 この例では、`application/json` メッセージのコンテンツの種類を使用していますが、必要に応じて種類を変更できます。 可能な場合は、HTTP クライアントのインスタンスを再利用します。 詳細については、「[Azure Functions での接続の管理](../azure-functions/manage-connections.md)」を参照してください。
+1. キュー メッセージをトリガーとして使用して、前に作成したロジック アプリのエンドポイントを呼び出す基本的な関数を作成します。 関数を記述する前に、次の考慮事項を確認してください。
+
+   * この例では、`application/json` メッセージのコンテンツの種類を使用していますが、必要に応じて種類を変更できます。
+   
+   * 関数が同時に実行される、ボリュームが大きくなる、あるいは負荷が高くなる可能性があるため、`using` ステートメントで [HTTPClient クラス](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient)をインスタンス化し、要求ごとに HTTPClient インスタンスを直接作成することは避けてください。 詳細については、「[HttpClientFactory を使用して回復力の高い HTTP 要求を実装する](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core)」を参照してください。
+   
+   * 可能な場合は、HTTP クライアントのインスタンスを再利用します。 詳細については、「[Azure Functions での接続の管理](../azure-functions/manage-connections.md)」を参照してください。
+
+   この例では、[非同期](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async)モードで [`Task.Run` メソッド](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run)が使用されています。 詳細については、[Async および Await を使用した非同期プログラミング](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)に関するページをご覧ください。
 
    ```CSharp
    using System;
@@ -126,17 +134,16 @@ ms.locfileid: "72680139"
    using System.Net.Http;
    using System.Text;
 
-   // Callback URL for previously created Request trigger
+   // Can also fetch from App Settings or environment variable
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/workflows/<remaining-callback-URL>";
 
-   // Reuse the instance of HTTP clients if possible
+   // Reuse the instance of HTTP clients if possible: https://docs.microsoft.com/azure/azure-functions/manage-connections
    private static HttpClient httpClient = new HttpClient();
 
-   public static void Run(string myQueueItem, ILogger log)
+   public static async Task Run(string myQueueItem, TraceWriter log) 
    {
-       log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-
-       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
+      log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+      var response = await httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")); 
    }
    ```
 
@@ -146,4 +153,4 @@ ms.locfileid: "72680139"
 
 ## <a name="next-steps"></a>次の手順
 
-[HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする](../logic-apps/logic-apps-http-endpoint.md)
+* [HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする](../logic-apps/logic-apps-http-endpoint.md)

@@ -1,25 +1,17 @@
 ---
-title: Premium Azure Cache for Redis 向けの仮想ネットワークのサポートの構成 | Microsoft Docs
+title: Premium Azure Cache for Redis の仮想ネットワークの構成
 description: Premium レベル Azure Cache for Redis インスタンスの Virtual Network のサポートを作成および管理する方法
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 8b1e43a0-a70e-41e6-8994-0ac246d8bf7f
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: ec21c26c705dab94b15c1f76be5e62207b9f206f
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: b2ddac9439183321691104d4eedccb0c971d19c9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815665"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129407"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Cache for Redis インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -104,7 +96,7 @@ Azure Cache for Redis が VNet でホストされている場合は、次の表�
 
 #### <a name="outbound-port-requirements"></a>送信ポートの要件
 
-送信ポートには 7 個の要件があります。
+送信ポートには 9 個の要件があります。
 
 - インターネットに対するすべてのアウトバウンド接続をクライアントのオンプレミス監査デバイス経由にすることができます。
 - 3 つのポートは、Azure Storage と Azure DNS を提供する Azure エンドポイントにトラフィックをルーティングします。
@@ -113,7 +105,8 @@ Azure Cache for Redis が VNet でホストされている場合は、次の表�
 | ポート | Direction | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
 | --- | --- | --- | --- | --- | --- |
 | 80、443 |送信 |TCP |Azure Storage/PKI (インターネット) に対する Redis の依存関係 | (Redis サブネット) |* |
-| 53 |送信 |TCP/UDP |DNS (インターネット/VNet) に対する Redis の依存関係 | (Redis サブネット) | 168.63.129.16 および 169.254.169.254 <sup>1</sup> およびサブネットのカスタム DNS サーバー <sup>3</sup> |
+| 443 | 送信 | TCP | Azure Key Vault に対する Redis の依存関係 | (Redis サブネット) | AzureKeyVault <sup>1</sup> |
+| 53 |送信 |TCP/UDP |DNS (インターネット/VNet) に対する Redis の依存関係 | (Redis サブネット) | 168.63.129.16 および 169.254.169.254 <sup>2</sup> およびサブネットのカスタム DNS サーバー <sup>3</sup> |
 | 8443 |送信 |TCP |Redis の内部通信 | (Redis サブネット) | (Redis サブネット) |
 | 10221-10231 |送信 |TCP |Redis の内部通信 | (Redis サブネット) | (Redis サブネット) |
 | 20226 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
@@ -121,7 +114,9 @@ Azure Cache for Redis が VNet でホストされている場合は、次の表�
 | 15000-15999 |送信 |TCP |Redis および geo レプリケーションの内部通信 | (Redis サブネット) |(Redis サブネット) (geo レプリカ ピア サブネット) |
 | 6379-6380 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
-<sup>1</sup> Microsoft が所有するこれらの IP アドレスは、Azure DNS を提供するホスト VM をアドレス指定するために使用されます。
+<sup>1</sup> Resource Manager ネットワーク セキュリティ グループにサービス タグ 'AzureKeyVault' を使用できます。
+
+<sup>2</sup> Microsoft が所有するこれらの IP アドレスは、Azure DNS を提供するホスト VM をアドレス指定するために使用されます。
 
 <sup>3</sup> カスタム DNS サーバーのないサブネット、またはカスタム DNS を無視する新しい redis キャッシュには必要ありません。
 
@@ -135,7 +130,7 @@ Azure Virtual Network 内のキャッシュ間で geo レプリケーション�
 
 | ポート | Direction | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 | (Redis サブネット) | (Redis サブネット)、Virtual Network、Azure Load Balancer <sup>2</sup> |
+| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 | (Redis サブネット) | (Redis サブネット)、Virtual Network、Azure Load Balancer <sup>1</sup> |
 | 8443 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 | 8500 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
 | 10221-10231 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット)、Azure Load Balancer |
@@ -144,7 +139,7 @@ Azure Virtual Network 内のキャッシュ間で geo レプリケーション�
 | 16001 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
 | 20226 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
-<sup>2</sup> NSG 規則を作成するために、サービス タグ 'AzureLoadBalancer' (Resource Manager) (または、クラシックの場合 'AZURE_LOADBALANCER') を使用できます。
+<sup>1</sup> NSG 規則を作成するために、サービス タグ 'AzureLoadBalancer' (Resource Manager) (または、クラシックの場合 'AZURE_LOADBALANCER') を使用できます。
 
 #### <a name="additional-vnet-network-connectivity-requirements"></a>その他の VNET ネットワーク接続の要件
 
@@ -158,7 +153,7 @@ Azure Cache for Redis のネットワーク接続要件には、仮想ネット�
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>VNET で自分のキャッシュの動作を確認するにはどうすればよいですか
 
 >[!IMPORTANT]
->VNET にホストされている Azure Cache for Redis インスタンスに接続している場合、キャッシュ クライアントは同じ VNET または VNET ピアリングが有効な VNET にある必要があります。 これには、テスト アプリケーションや診断 ping ツールが含まれます。 クライアント アプリケーションがどこでホストされているかに関係なく、クライアントのネットワーク トラフィックが Redis インスタンスに到達できるようネットワーク セキュリティ グループを構成する必要があります。
+>VNET にホストされている Azure Cache for Redis インスタンスに接続している場合、キャッシュ クライアントは同じ VNET にあるか、または同じ Azure リージョン内の VNET ピアリングが有効な VNET にある必要があります。 グローバル VNET ピアリングは現在サポートされていません。 これには、テスト アプリケーションや診断 ping ツールが含まれます。 クライアント アプリケーションがどこでホストされているかに関係なく、クライアントのネットワーク トラフィックが Redis インスタンスに到達できるようネットワーク セキュリティ グループを構成する必要があります。
 >
 >
 
@@ -254,4 +249,3 @@ Premium キャッシュ機能をさらに使用する方法を学習します。
 [redis-cache-vnet-ip]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-ip.png
 
 [redis-cache-vnet-info]: ./media/cache-how-to-premium-vnet/redis-cache-vnet-info.png
-

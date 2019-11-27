@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: fdf9b60e38ad37334fe6183bb1a9c60cce9f85e1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772270"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832067"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 
@@ -30,7 +30,7 @@ ms.locfileid: "70772270"
 
 ドメイン ネーム システムはドメインの階層構造です。 階層は、" **.** " という名前の "root" ドメインから始まります。  その下には "com"、"net"、"org"、"uk"、"jp" などのトップ レベル ドメインがあります。  さらに、これらの下には "org.uk" や "co.jp" などの第 2 レベル ドメインがあります。 DNS 階層のドメインはグローバルに分散していて、世界中の DNS ネーム サーバーでホストされています。
 
-"contoso.com" などのドメイン名は、ドメイン名レジストラーという組織から購入できます。  ドメイン名を購入すると、 www.contoso.com という名前で会社の Web サイトを表示するなど、その名前で DNS 階層を制御する権限が付与されます。 レジストラーが顧客に代わって自社のネーム サーバーでドメインをホストする場合もあれば、顧客が他のネーム サーバーを指定できる場合もあります。
+`contoso.com` などのドメイン名は、ドメイン名レジストラーという組織から購入できます。  ドメイン名を購入すると、`www.contoso.com` という名前で会社の Web サイトを表示するなど、その名前で DNS 階層を制御する権限が付与されます。 レジストラーが顧客に代わって自社のネーム サーバーでドメインをホストする場合もあれば、顧客が他のネーム サーバーを指定できる場合もあります。
 
 Azure DNS では世界各地に分散された高可用性ネーム サーバー インフラストラクチャを提供しており、お客様はこれを利用してドメインをホストできます。 Azure DNS でドメインをホストすることで、他の Azure サービスと同じ資格情報、API、ツール、課金情報、サポートを使用して DNS レコードを管理できます。
 

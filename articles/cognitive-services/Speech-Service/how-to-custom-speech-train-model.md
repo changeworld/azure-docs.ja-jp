@@ -1,7 +1,7 @@
 ---
-title: Custom Speech 用のモデルをトレーニングする - Speech Service
+title: Custom Speech 用のモデル
 titleSuffix: Azure Cognitive Services
-description: Microsoft のベースライン モデルと、作成する予定のカスタム モデルの両方の認識の正確性を向上するには、音声変換のトレーニングが必要です。 モデルは、"人間" とラベルが付いた文字起こしと関連するテキストを使用してトレーニングされます。 これらのデータセットと以前にアップロードされたオーディオ データは、音声変換モデルを改良してトレーニングし、単語、語句、略語、名前、およびその他の製品固有の用語を認識するために使用されます。
+description: 音声テキスト変換モデルをトレーニングすると、Microsoft のベースライン モデルまたはカスタム モデルの認識精度を向上できます。 モデルは、"人間" とラベルが付いた文字起こしと関連するテキストを使用してトレーニングされます。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,26 +10,27 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 21a0cd5e257f57a9371a30c6fe57afb88e174b53
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 7630659deeece7fbf8d0ca1fd00b539a8de83b0e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801473"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072492"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Custom Speech 用のモデルをトレーニングする
 
-Microsoft のベースライン モデルと、作成する予定のカスタム モデルの両方の認識の正確性を向上するには、音声変換のトレーニングが必要です。 モデルは、"人間" とラベルが付いた文字起こしと関連するテキストを使用してトレーニングされます。 これらのデータセットと以前にアップロードされたオーディオ データは、音声変換モデルを改良してトレーニングし、単語、語句、略語、名前、およびその他の製品固有の用語を認識するために使用されます。 提供するドメイン内データセット (ユーザーの発言内容と認識すると想定する内容に関連するデータ) が多いほど、モデルの精度が高くなり、結果として認識が改善されます。 無関係なデータをトレーニングに使用すると、モデルの正確性が低下したり、損なわれたり可能性があることに注意してください。
+音声テキスト変換モデルをトレーニングすると、Microsoft のベースライン モデル、または作成を計画しているカスタム モデルの認識精度を向上できます。 モデルは、"人間" とラベルが付いた文字起こしと関連するテキストを使用してトレーニングされます。 これらのデータセットと以前にアップロードされたオーディオ データは、音声変換モデルを改良してトレーニングし、単語、語句、略語、名前、およびその他の製品固有の用語を認識するために使用されます。 提供するドメイン内データセット (ユーザーの発言内容と認識すると想定する内容に関連するデータ) が多いほど、モデルの精度が高くなり、結果として認識が改善されます。 無関係なデータをトレーニングに使用すると、モデルの正確性が低下したり、損なわれたり可能性があることに注意してください。
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>トレーニングを使用して正確性の問題を解決する
 
 モデルで認識の問題が発生している場合は、追加のトレーニングに "人間" とラベルが付いた文字起こしと関連データを使用すると、正確性が向上します。 この表を使用して、問題の対処に使用するデータセットを決定します。
 
 | ユース ケース | データ型 |
-|----------|-----------|
-| 医療用語や IT 用語などの業界固有の語彙や文法に対する認識精度を向上させる | 関連テキスト (文/発話) |
+| -------- | --------- |
+| 医療用語や IT 用語などの業界固有の語彙や文法に対する認識精度を向上させる。 | 関連テキスト (文/発話) |
 | 製品名や頭字語など、発音が標準ではない単語または用語の表音および表示形式を定義する。 | 関連テキスト (発音) |
-| 読み上げのスタイル、アクセント、または特定の背景ノイズの認識精度を向上させる | "オーディオ + 人間" とラベルが付いたトランスクリプト |
+| 読み上げのスタイル、アクセント、または特定の背景ノイズの認識精度を向上させる。 | "オーディオ + 人間" とラベルが付いたトランスクリプト |
+
 > [!IMPORTANT]
 > データ セットをアップロードしていない場合は、[データの準備とテスト](how-to-custom-speech-test-data.md)に関する記事を参照してください。 このドキュメントでは、データをアップロードするための手順と、高品質のデータセットを作成するためのガイドラインについて説明します。
 
@@ -52,19 +53,18 @@ Microsoft のベースライン モデルと、作成する予定のカスタム
 
 これらのドキュメントを使用して、データを検査し、モデルの正確性を評価できます。
 
-* [データを検査する](how-to-custom-speech-inspect-data.md)
-* [データを評価する](how-to-custom-speech-evaluate-data.md)
-
+- [データを検査する](how-to-custom-speech-inspect-data.md)
+- [データを評価する](how-to-custom-speech-evaluate-data.md)
 
 正確性のテストを選択する場合、現実的なモデルのパフォーマンスを把握するために、モデルで使用したものとは異なる音響データセットを選択することが重要です。
 
 ## <a name="next-steps"></a>次の手順
 
-* [モデルをデプロイする](how-to-custom-speech-deploy-model.md)
+- [モデルをデプロイする](how-to-custom-speech-deploy-model.md)
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [データを準備してテストする](how-to-custom-speech-test-data.md)
-* [データを検査する](how-to-custom-speech-inspect-data.md)
-* [データを評価する](how-to-custom-speech-evaluate-data.md)
-* [モデルをトレーニングする](how-to-custom-speech-train-model.md)
+- [データを準備してテストする](how-to-custom-speech-test-data.md)
+- [データを検査する](how-to-custom-speech-inspect-data.md)
+- [データを評価する](how-to-custom-speech-evaluate-data.md)
+- [モデルをトレーニングする](how-to-custom-speech-train-model.md)

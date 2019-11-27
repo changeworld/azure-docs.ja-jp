@@ -1,7 +1,7 @@
 ---
 title: 文字数カウント - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Translator Text API の文字数のカウント方法。
+description: この記事では、コンテンツの取り込み方法が理解できるように、Azure Cognitive Services Translator Text API で文字数をカウントする方法について説明します。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: e3a16d9272e75f9a94f5381c1681c036d177e0f6
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb70b8624ac0d909511032622948f14f8764b153
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595994"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888153"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Translator Text API の文字数のカウント方法
 

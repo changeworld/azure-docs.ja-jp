@@ -1,18 +1,19 @@
 ---
-title: Azure Application Gateway のセッション アフィニティに関する問題のトラブルシューティング
+title: セッション アフィニティに関する問題のトラブルシューティング
+titleSuffix: Azure Application Gateway
 description: この記事では、Azure Application Gateway のセッション アフィニティに関する問題のトラブルシューティング方法について説明します
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 66f61b5d6fcb86ed93e4dbae802ae7a80613c83d
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 9f14521c15c3497bed4ffbeba44cb5d78ee4df7b
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66397851"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047983"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Azure Application Gateway のセッション アフィニティに関する問題をトラブルシューティングする
 

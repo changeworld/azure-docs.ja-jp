@@ -1,18 +1,18 @@
 ---
-title: Azure Application Gateway での無効なゲートウェイ (502) エラーのトラブルシューティング
-description: Application Gateway の 502 エラーに関するトラブルシューティングの方法を説明します
+title: 無効なゲートウェイによるエラーのトラブルシューティング - Azure Application Gateway
+description: Application Gateway のサーバー エラーをトラブルシューティングする方法について説明します502 - Web サーバーがゲートウェイまたはプロキシ サーバーとして動作しているときに、無効な応答を受信しました。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/25/2019
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 2a1c7e480e896da6852949c9d765d17290e4e9ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 17bed17b536f6e88fc821fd83e09a1d6ea218bc3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697159"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130471"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Application Gateway での無効なゲートウェイによるエラーのトラブルシューティング
 
@@ -108,7 +108,7 @@ DhcpOptions            : {
 
 | プローブのプロパティ | 説明 |
 | --- | --- |
-| Name |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
+| 名前 |プローブの名前。 この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
 | Protocol |プローブを送信するために使用するプロトコル。 プローブでは、バックエンドの HTTP 設定で定義されているプロトコルを使用します |
 | Host |プローブを送信するホスト名。 アプリケーション ゲートウェイでマルチサイトを構成する場合にのみ適用可能です。 これは VM ホスト名とは異なります。 |
 | Path |プローブの相対パス。 パスは、先頭が '/' である必要があります。 プローブは、\<protocol\>://\<host\>:\<port\>\<path\> に送信されます。 |

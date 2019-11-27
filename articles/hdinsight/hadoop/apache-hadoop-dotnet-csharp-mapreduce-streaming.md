@@ -6,37 +6,37 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 10/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5784fb4f4ab0f46d2db7e5e8cfe9deeafabb4e90
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1cdf029d296bd6ff11b6531cd47dc6a7fd3163c3
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066957"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930274"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する
 
 HDInsight で C# を使用して MapReduce ソリューションを作成する方法について説明します。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight コンポーネントのバージョン管理](../hdinsight-component-versioning.md)」を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、「[HDInsight の Apache Hadoop コンポーネント](../hdinsight-component-versioning.md)」をご覧ください。
 
 Apache Hadoop ストリーミングは、スクリプトまたは実行可能ファイルを使用して MapReduce ジョブを実行するためのユーティリティです。 この例では、.NET を使用してマッパーとレジューサのワード カウント ソリューションを実装します。
 
 ## <a name="net-on-hdinsight"></a>HDInsight の .NET
 
-__Linux ベースの HDInsight__ クラスターでは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](../hdinsight-component-versioning.md)」を参照してください。 
+*Linux ベースの HDInsight* クラスターでは、[Mono (https://mono-project.com)](https://mono-project.com) を使用して .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。 HDInsight に含まれる Mono のバージョンについて詳しくは、「[HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント](../hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions)」を参照してください。 
 
-.NET Framework のバージョンと Mono の互換性に関する詳細は、「[Mono の互換性](https://www.mono-project.com/docs/about-mono/compatibility/)」を参照してください。
+.NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](https://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
 
 ## <a name="how-hadoop-streaming-works"></a>Hadoop ストリーミングのしくみ
 
 このドキュメントでストリーミングに使用する基本的なプロセスは、次のとおりです。
 
-1. Hadoop は、STDIN のマッパー (この例では mapper.exe) にデータを渡します。
+1. Hadoop は、STDIN のマッパー (この例では *mapper.exe*) にデータを渡します。
 2. マッパーはデータを処理し、タブ区切りのキー/値ペアを STDOUT に出力します。
-3. 出力は Hadoop によって読み取られ、STDIN のレジューサ (この例では reducer.exe) に渡されます。
+3. 出力は Hadoop によって読み取られ、STDIN のレジューサ (この例では *reducer.exe*) に渡されます。
 4. レジューサは、タブ区切りのキー/値ペアを読み取り、データを処理した後、タブ区切りのキー/値ペアとして結果を STDOUT に出力します。
 5. 出力は Hadoop によって読み取られ、出力ディレクトリに書き込まれます。
 
@@ -44,17 +44,19 @@ __Linux ベースの HDInsight__ クラスターでは、[Mono (https://mono-pro
 
 ## <a name="prerequisites"></a>前提条件
 
-* .NET Framework 4.5 を対象にした C# コードの記述と構築に精通していること。 このドキュメントの手順では、Visual Studio 2017 を使用します。
+* 見ることができます。
+
+* .NET Framework 4.5 を対象にした C# コードの記述と構築に精通していること。
 
 * クラスターに .exe ファイルをアップロードする方法。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、クラスターのプライマリ ストレージにファイルをアップロードします。
 
-* Azure PowerShell または SSH クライアント。
+* Azure PowerShell または Secure Shell (SSH) クライアント。
 
 * HDInsight クラスターでの Hadoop。 クラスター作成の詳細については、「[HDInsight クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
 ## <a name="create-the-mapper"></a>マッパーの作成
 
-Visual Studio で、__マッパー__ と呼ばれる新しい  __コンソール アプリケーション__ を作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、"*マッパー*" と呼ばれる新しい .NET Framework コンソール アプリケーションを作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -87,11 +89,11 @@ namespace mapper
 }
 ```
 
-アプリケーションの作成後は、構築してプロジェクト ディレクトリに `/bin/Debug/mapper.exe` ファイルを生成します。
+アプリケーションを作成した後、それをビルドしてプロジェクト ディレクトリに */bin/Debug/mapper.exe* ファイルを生成します。
 
 ## <a name="create-the-reducer"></a>レジューサの作成
 
-Visual Studio で、__レジューサ__ と呼ばれる新しい __コンソール アプリケーション__ を作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、"*レジューサ*" と呼ばれる新しい .NET Framework コンソール アプリケーションを作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -140,84 +142,107 @@ namespace reducer
 }
 ```
 
-アプリケーションの作成後は、構築してプロジェクト ディレクトリに `/bin/Debug/reducer.exe` ファイルを生成します。
+アプリケーションを作成した後、それをビルドしてプロジェクト ディレクトリに */bin/Debug/reducer.exe* ファイルを生成します。
 
 ## <a name="upload-to-storage"></a>ストレージにアップロードする
 
-1. Visual Studio で、 **サーバー エクスプローラー**を開きます。
+次に、"*マッパー*" アプリケーションと "*レジューサ*" アプリケーションを HDInsight ストレージにアップロードする必要があります。
+
+1. Visual Studio で、 **[表示]**  >  **[サーバー エクスプローラー]** を選択します。
 
 2. **[Azure]** を展開して、 **[HDInsight]** を展開します。
 
-3. 入力を求められた場合は、Azure サブスクリプションの資格情報を入力し、 **[サインイン]** をクリックします。
+3. 入力を求められた場合は、Azure サブスクリプションの資格情報を入力し、 **[サインイン]** を選択します。
 
-4. このアプリケーションをデプロイする HDInsight クラスターを展開します。 エントリとテキスト __(既定のストレージ アカウント)__ が一覧表示されます。
+4. このアプリケーションをデプロイする HDInsight クラスターを展開します。 エントリとテキスト **(既定のストレージ アカウント)** が一覧表示されます。
 
-    ![クラスターのストレージ アカウントを表示するサーバー エクスプローラー](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
+   ![ストレージ アカウント、HDInsight クラスター、サーバー エクスプローラー、Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
 
-    * このエントリを展開できる場合は、クラスターの既定のストレージとして __Azure Storage アカウント__ を使用します。 クラスターの既定のストレージにファイルを表示するには、エントリを展開し、 __[(既定のコンテナー)]__ をダブルクリックします。
+   * **[(既定のストレージ アカウント)]** エントリを展開できる場合は、クラスターの既定のストレージとして **Azure ストレージ アカウント**を使用しています。 クラスターの既定のストレージのファイルを表示するには、エントリを展開し、 **[(既定のコンテナー)]** をダブルクリックします。
 
-    * このエントリを展開できない場合は、クラスターの既定のストレージとして __Azure Data Lake Storage__ を使用します。 クラスターの既定のストレージにファイルを表示するには、 __(既定のストレージ アカウント)__ エントリをダブルクリックします。
+   * **[(既定のストレージ アカウント)]** エントリを展開できない場合は、クラスターの既定のストレージとして **Azure Data Lake Storage** を使用しています。 クラスターの既定のストレージにファイルを表示するには、 **(既定のストレージ アカウント)** エントリをダブルクリックします。
 
-5. .exe file をアップロードするには、次のいずれかの手順に従ってください。
+5. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
 
-   * __Azure Storage アカウント__ を使用している場合は、アップロード アイコンをクリックし、**マッパー** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**mapper.exe** ファイルを選択し、 **[OK]** をクリックします。
+    * **Azure ストレージ アカウント**を使用している場合は、 **[BLOB のアップロード]** アイコンを選択します。 
 
-        ![マッパーの HDInsight アップロード アイコン](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
-    
-   * __Azure Data Lake Storage__ を使用している場合は、ファイルの一覧の空の領域を右クリックし、 __[アップロード]__ を選択します。 最後に、**mapper.exe** ファイルを選択し、 **[開く]** をクリックします。
+        ![マッパーの HDInsight アップロード アイコン、Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
 
-     __mapper.exe__ のアップロードが完了したら、 __reducer.exe__ ファイルのアップロード プロセスを繰り返します。
+        **[新しいファイルのアップロード]** ダイアログ ボックスの **[ファイル名]** で、 **[参照]** を選択します。 **[BLOB のアップロード]** ダイアログ ボックスで、"*マッパー*" プロジェクトの *bin\debug* フォルダーに移動し、*mapper.exe* ファイルを選択します。 最後に、 **[開く]** を選択し、 **[OK]** を選択してアップロードを完了します。 
+
+    * **Azure Data Lake Storage** の場合は、ファイルの一覧の空の領域を右クリックし、 **[アップロード]** を選択します。 最後に、*mapper.exe* ファイルを選択し、 **[開く]** を選択します。
+
+    *mapper.exe* のアップロードが完了したら、 *reducer.exe* ファイルのアップロード プロセスを繰り返します。
 
 ## <a name="run-a-job-using-an-ssh-session"></a>ジョブの実行: SSH セッションを使用
 
-1. SSH を使用して、HDInsight クラスターに接続します。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
+次の手順では、SSH セッションを使用して MapReduce ジョブを実行する方法について説明します。
+
+1. SSH を使用して、HDInsight クラスターに接続します。 (たとえば、コマンド `ssh sshuser@<clustername>-ssh.azurehdinsight.net` を実行します。) 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
 2. MapReduce ジョブを開始するには、次のいずれかのコマンドを使用します。
 
-   * 既定のストレージとして __Data Lake Storage Gen2__ を使用している場合:
+   * 既定のストレージが **Azure Storage** の場合:
 
-       ```bash
-       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-       ```
+        ```bash
+        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
+            -files wasb:///mapper.exe,wasb:///reducer.exe \
+            -mapper mapper.exe \
+            -reducer reducer.exe \
+            -input /example/data/gutenberg/davinci.txt \
+            -output /example/wordcountout
+        ```
 
-   * 既定のストレージとして __Data Lake Storage Gen1__ を使用している場合:
+    * 既定のストレージが **Data Lake Storage Gen1** の場合:
 
-       ```bash
-       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-       ```
-    
-   * 既定のストレージとして __Azure Storage__ を使用している場合:
+        ```bash
+        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
+            -files adl:///mapper.exe,adl:///reducer.exe \
+            -mapper mapper.exe \
+            -reducer reducer.exe \
+            -input /example/data/gutenberg/davinci.txt \
+            -output /example/wordcountout
+        ```
 
-       ```bash
-       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-       ```
+   * 既定のストレージが **Data Lake Storage Gen2** の場合:
 
-     次の一覧に、各パラメーターの動作を示します。
+        ```bash
+        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar \
+            -files abfs:///mapper.exe,abfs:///reducer.exe \
+            -mapper mapper.exe \
+            -reducer reducer.exe \
+            -input /example/data/gutenberg/davinci.txt \
+            -output /example/wordcountout
+        ```
 
-   * `hadoop-streaming.jar`:ストリーミング MapReduce 機能を含む jar ファイル。
-   * `-files`:このジョブに `mapper.exe` および `reducer.exe` ファイルを追加します。 各ファイルの前の `abfs:///`、`adl:///`、または `wasb:///` は、クラスターの既定の記憶域のルートへのパスです。
-   * `-mapper`:マッパーを実装するファイルを指定します。
-   * `-reducer`:レジューサを実装するファイルを指定します。
-   * `-input`:入力データ。
-   * `-output`:出力ディレクトリ。
+   次の一覧では、各パラメーターおよびオプションによって表されているものについて説明します。
+
+   * *hadoop-streaming.jar*:ストリーミング MapReduce 機能が含まれる jar ファイルを指定します。
+   * `-files`:このジョブに対する *mapper.exe* ファイルと *reducer.exe* ファイルを指定します。 各ファイルの前の `wasb:///`、`adl:///`、または `abfs:///` のプロトコル宣言は、クラスターの既定の記憶域のルートへのパスです。
+   * `-mapper`:マッパーが実装されているファイルを指定します。
+   * `-reducer`:レジューサが実装されているファイルを指定します。
+   * `-input`:入力データを指定します。
+   * `-output`:出力ディレクトリを指定します。
 
 3. MapReduce ジョブが完了したら、次のコマンドを使用して結果を表示します。
 
-    ```bash
-    hdfs dfs -text /example/wordcountout/part-00000
-    ```
+   ```bash
+   hdfs dfs -text /example/wordcountout/part-00000
+   ```
 
-    次のテキストは、このコマンドによって返されるデータの例です。
+   次のテキストは、このコマンドによって返されるデータの例です。
 
-        you     1128
-        young   38
-        younger 1
-        youngest        1
-        your    338
-        yours   4
-        yourself        34
-        yourselves      3
-        youth   17
+   ```output
+   you     1128
+   young   38
+   younger 1
+   youngest        1
+   your    338
+   yours   4
+   yourself        34
+   yourselves      3
+   youth   17
+   ```
 
 ## <a name="run-a-job-using-powershell"></a>ジョブの実行: PowerShell の使用
 
@@ -225,21 +250,23 @@ namespace reducer
 
 [!code-powershell[main](../../../powershell_scripts/hdinsight/use-csharp-mapreduce/use-csharp-mapreduce.ps1?range=5-87)]
 
-このスクリプトには、クラスター ログインのアカウント名とパスワードに加え、HDInsight のクラスター名が求められます。 ジョブが完了すると、出力が `output.txt` というファイルにダウンロードされます。 次のテキストは、`output.txt`ファイル内のデータの例です。
+このスクリプトには、クラスター ログインのアカウント名とパスワードに加え、HDInsight のクラスター名が求められます。 ジョブが完了すると、出力が *output.txt* というファイルにダウンロードされます。 次のテキストは、`output.txt`ファイル内のデータの例です。
 
-    you     1128
-    young   38
-    younger 1
-    youngest        1
-    your    338
-    yours   4
-    yourself        34
-    yourselves      3
-    youth   17
+```output
+you     1128
+young   38
+younger 1
+youngest        1
+your    338
+yours   4
+yourself        34
+yourselves      3
+youth   17
+```
 
 ## <a name="next-steps"></a>次の手順
 
-HDInsight での MapReduce の使用方法の詳細については、[HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)に関するページを参照してください。
+HDInsight での MapReduce の使用方法について詳しくは、「[HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)」をご覧ください。
 
 Hive および Pig での C# の使用については、[Apache Hive および Apache Pig での C# ユーザー定義関数の使用](apache-hadoop-hive-pig-udf-dotnet-csharp.md)に関するページを参照してください。
 

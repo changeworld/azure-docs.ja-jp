@@ -1,5 +1,5 @@
 ---
-title: 仮想ネットワークからの Azure コンテナー レジストリへのアクセスを制限する
+title: 仮想ネットワークで Azure Container Registry へのアクセスを制限する
 description: Azure コンテナー レジストリへは、Azure 仮想ネットワーク内のリソースから、またはパブリック IP アドレス範囲からのみアクセスできます。
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: danlep
-ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5ba5c180def9539c486fb8727a0a78b4f98fa185
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619887"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931330"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure 仮想ネットワークまたはファイアウォール規則を使用して Azure コンテナー レジストリへのアクセスを制限する
 
@@ -54,7 +54,7 @@ ms.locfileid: "68619887"
 
 ## <a name="about-network-rules-for-a-container-registry"></a>コンテナー レジストリのネットワーク規則について
 
-既定では、Azure コンテナー レジストリは、任意のネットワーク上のホストからのインターネット経由の接続を受け入れます。 仮想ネットワークを使用すると、AKS クラスターや Azure VM などの Azure リソースのみが、ネットワーク境界を越えずにレジストリに安全にアクセスできます。 特定のパブリック インターネット IP アドレスの範囲をホワイトリストに登録するネットワーク ファイアウォール規則を構成することもできます。 
+既定では、Azure コンテナー レジストリは、任意のネットワーク上のホストからのインターネット経由の接続を受け入れます。 仮想ネットワークを使用すると、AKS クラスターや Azure VM などの Azure リソースのみが、ネットワーク境界を越えずにレジストリに安全にアクセスできます。 特定のパブリック インターネット IP アドレスの範囲だけを許可するように、ネットワーク ファイアウォール規則を構成することもできます。 
 
 レジストリへのアクセスを制限するには、最初にレジストリの既定のアクションを変更して、すべてのネットワーク接続が拒否されるようにします。 次に、ネットワーク アクセス規則を追加します。 ネットワーク規則を介してアクセス権を付与されているクライアントは、引き続き[コンテナー レジストリに対して認証](https://docs.microsoft.com/azure/container-registry/container-registry-authentication)され、データへのアクセスを承認される必要があります。
 

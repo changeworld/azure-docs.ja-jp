@@ -10,22 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6324c00d9b85a13ef6e69185e3b380b20f761f3b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 137ab722df280d17fe5ccc5c07acfd323feb6531
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552973"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091206"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
 [Speech SDK](speech-sdk.md) の代替手段となる Speech Services では、REST API を使用して音声テキスト変換を実行できます。 アクセス可能な各エンドポイントは、リージョンに関連付けられています。 アプリケーションには、使用を検討しているエンドポイントのサブスクリプション キーが必要となります。
 
 Speech to Text REST API を使用する前に、次のことを理解してください。
-* REST API を使用した要求が保持できる録音されたオーディオは 10 秒までです。
+
+* REST API を使用して音声を直接送信する要求には、最大 60 秒の音声のみを含めることができます。
 * Speech to Text REST API から返すことができるのは最終的な結果だけです。 結果を部分的に得ることはできません。
 
-それを超える長さのオーディオをアプリケーションで送信する必要がある場合は、[Speech SDK](speech-sdk.md) または[バッチ文字起こし](batch-transcription.md)の使用を検討してください。
+それを超える長さの音声をアプリケーションで送信する必要がある場合は、[Speech SDK](speech-sdk.md) か、[バッチ文字起こし](batch-transcription.md)など、ファイルベースの REST API の使用を検討してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -33,7 +34,7 @@ Speech to Text REST API を使用する前に、次のことを理解してく�
 
 この REST API を使用した音声テキスト変換による文字起こしは、次のリージョンでサポートされます。 必ず、ご利用のサブスクリプションのリージョンと一致するエンドポイントを選択してください。
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)] 
 
 ## <a name="query-parameters"></a>クエリ パラメーター
 
@@ -56,7 +57,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 | `Content-type` | 指定したオーディオ データの形式とコーデックを記述します。 指定できる値は、`audio/wav; codecs=audio/pcm; samplerate=16000` と `audio/ogg; codecs=opus` です。 | 必須 |
 | `Transfer-Encoding` | オーディオを個別のファイルとしてではなくチャンク データとして送信することを指定します。 このヘッダーは、オーディオ データをチャンクにする場合にのみ使用してください。 | 省略可能 |
 | `Expect` | チャンク転送を使用する場合、`Expect: 100-continue` を送信します。 Speech Services は最初の要求を確認し、追加のデータを待ちます。| オーディオのチャンク データを送信する場合は必須となります。 |
-| `Accept` | 指定する場合は、`application/json` とする必要があります。 Speech Services からは、結果が JSON 形式で返されます。 指定しない場合、一部の Web 要求フレームワークでは互換性のない既定値が提供されるため、常に `Accept` を含めることをお勧めします。 | 省略可能ですが、指定することをお勧めします。 |
+| `Accept` | 指定する場合は、`application/json` とする必要があります。 Speech Services から、結果が JSON 形式で返されます。 一部の要求フレームワークでは、互換性のない既定値が提供されます。 常に `Accept` を含めることをお勧めします。 | 省略可能ですが、指定することをお勧めします。 |
 
 ## <a name="audio-formats"></a>オーディオの形式
 
@@ -72,7 +73,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 
 ## <a name="sample-request"></a>要求のサンプル
 
-これは一般的な HTTP 要求です。 以下のサンプルには、ホスト名と必須のヘッダーが含まれています。 サービスにはオーディオ データも必要であることに注意してください。このサンプルにオーディオ データは含まれていません。 前述のようにチャンクにすることをお勧めしますが、必須ではありません。
+以下のサンプルには、ホスト名と必須のヘッダーが含まれています。 サービスにはオーディオ データも必要であることに注意してください。このサンプルにオーディオ データは含まれていません。 前述のようにチャンクにすることをお勧めしますが、必須ではありません。
 
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -92,13 +93,13 @@ Expect: 100-continue
 |------------------|-------------|-----------------|
 | 100 | Continue | 最初の要求が受け付けられました。 残りのデータの送信を続行します。 (チャンク転送で使用されます。) |
 | 200 | OK | 要求は成功しました。応答本文は JSON オブジェクトです。 |
-| 400 | 正しくない要求 | 言語コードが提供されていないか、サポートされていない言語です。無効なオーディオファイルです。 |
+| 400 | 正しくない要求 | 言語コードが提供されていない、サポートされていない言語、無効な音声ファイルなどです。 |
 | 401 | 権限がありません | サブスクリプション キーまたは認証トークンが指定のリージョンで無効であるか、または無効なエンドポイントです。 |
-| 403 | 許可されていません | サブスクリプション キーまたは認証トークンがありません。 |
+| 403 | Forbidden | サブスクリプション キーまたは認証トークンがありません。 |
 
 ## <a name="chunked-transfer"></a>チャンク転送
 
-チャンク転送 (`Transfer-Encoding: chunked`) を使用すると、オーディオ ファイルの送信中に Speech Services がオーディオ ファイルの処理を開始できるようになるため、認識待ち時間の短縮に役立ちます。 REST API は部分的または中間的な結果を提供しません。 このオプションは、単に応答性を向上させるためのものです。
+チャンク転送 (`Transfer-Encoding: chunked`) は、認識の待ち時間を短縮するのに役立ちます。 これにより、Speech Services では、音声ファイルを転送中にファイルの処理を開始できます。 REST API は部分的または中間的な結果を提供しません。
 
 このコード サンプルは、オーディオをチャンクで送信する方法を示しています。 最初のチャンクだけに、オーディオ ファイルのヘッダーが含まれている必要があります。 `request` は、適切な REST エンドポイントに接続された HTTPWebRequest オブジェクトです。 `audioFile` はディスク上のオーディオ ファイルのパスです。
 
@@ -177,7 +178,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 
 ## <a name="sample-responses"></a>応答のサンプル
 
-これは、`simple` 認識の典型的な応答です。
+`simple` 認識の代表的な応答:
 
 ```json
 {
@@ -188,7 +189,7 @@ using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-これは、`detailed` 認識の典型的な応答です。
+`detailed` 認識の代表的な応答:
 
 ```json
 {

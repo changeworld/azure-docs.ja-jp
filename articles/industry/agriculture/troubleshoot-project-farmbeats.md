@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ab0d3aac6944e331223d91eb98b50b3308be12c3
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797216"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131979"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -251,7 +251,7 @@ Azure Storage Explorer を[インストールしてデプロイします]( https
 
 **意味**:Azure AD アプリの登録構成が正しく行われませんでした。  
 
-**是正措置**: IT 管理者 (テナント読み取りアクセス権を持つ方) に依頼し、[スクリプト](https://aka.ms/PPCreateAADappregistration) を使用して Azure AD アプリ登録の作成を生成してもらいます。 このスクリプトは、構成手順も自動的に処理します。    
+**是正措置**: IT 管理者 (テナント読み取りアクセス権を持つ方) に依頼し、[スクリプト](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) を使用して Azure AD アプリ登録を作成してもらいます。 このスクリプトは、構成手順も自動的に処理します。
 
 **エラー**: このテナントに新しい Active Directory アプリケーション "dummyname" を作成できませんでした。プロパティ識別子 URI と同じ値を持つ別のオブジェクトが既に存在します
 

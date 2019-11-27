@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/13/2019
 ms.author: apimpm
-ms.openlocfilehash: cc4426ee1bb13eaf66e664c261c51f8893fdf10b
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 4a188a8de4f1cbf9d5bc20f7e514e3f5a2c752dc
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129782"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074624"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -112,7 +112,7 @@ API Management サービスを Virtual Network にデプロイするときに発
 | * / 80, 443                  | 送信           | TCP                | VIRTUAL_NETWORK / Storage             | **Azure Storage への依存関係**                             | 外部 / 内部  |
 | * / 80, 443                  | 送信           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | Azure Active Directory (該当する場合)                   | 外部 / 内部  |
 | * / 1433                     | 送信           | TCP                | VIRTUAL_NETWORK / SQL                 | **Azure SQL エンドポイントへのアクセス**                           | 外部 / 内部  |
-| * / 5672                     | 送信           | TCP                | VIRTUAL_NETWORK / EventHub            | Event Hub へのログ ポリシーおよび監視エージェントの依存関係 | 外部 / 内部  |
+| * / 5671, 5672, 443          | 送信           | TCP                | VIRTUAL_NETWORK / EventHub            | Event Hub へのログ ポリシーおよび監視エージェントの依存関係 | 外部 / 内部  |
 | * / 445                      | 送信           | TCP                | VIRTUAL_NETWORK / Storage             | GIT のための Azure ファイル共有への依存関係                      | 外部 / 内部  |
 | * / 1886                     | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 正常性の状態を Resource Health に公開するために必要          | 外部 / 内部  |
 | * / 443                     | 送信           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | 診断ログとメトリックの公開                        | 外部 / 内部  |

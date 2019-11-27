@@ -1,5 +1,5 @@
 ---
-title: AI エンリッチメントのトラブルシューティングのヒント
+title: AI エンリッチメントの設計に関するヒント
 titleSuffix: Azure Cognitive Search
 description: Azure コグニティブ検索で AI エンリッチメント パイプラインをセットアップするためのヒントとトラブルシューティング。
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 485dd47e035f03a8e20ded4c8a424f1658f5246a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787712"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113833"
 ---
-# <a name="troubleshooting-tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure コグニティブ検索における AI エンリッチメントのトラブルシューティングのヒント
+# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Cognitive Search における AI エンリッチメントに関するヒント
 
 この記事では、Azure コグニティブ検索で AI エンリッチメント機能を使い始めてから利用を続けるためのヒントやコツの一覧を示します。 
 

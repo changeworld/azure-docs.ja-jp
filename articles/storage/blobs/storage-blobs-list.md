@@ -1,23 +1,25 @@
 ---
 title: .NET を使用して BLOB を一覧表示する - Azure Storage
-description: .NET クライアント ライブラリを使用して、Azure Storage アカウントのコンテナー内の BLOB を一覧表示する方法について説明します。
+description: .NET クライアント ライブラリを使用して、Azure Storage アカウントのコンテナー内の BLOB を一覧表示する方法について説明します。 サンプル コードは、ディクショナリまたはフォルダーで整理されているかのように BLOB をフラット リスト (階層) で一覧表示する方法を示しています。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bf9d2d59e993de3807a10a6c39f88b2063024bfc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4b6dc9d80cfe96e501e575d265b9fa383b1c4d2c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599801"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902017"
 ---
 # <a name="list-blobs-with-net"></a>.NET を使用して BLOB を一覧表示する
 
-BLOB をコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage/client)を使用して BLOB を一覧表示する方法について説明します。  
+BLOB をコードから一覧表示する際には、Azure Storage からの結果の取得方法を管理するためのオプションをいくつか指定できます。 各結果セットで返す結果の数を指定し、後続のセットを取得できます。 名前がその文字または文字列から始まる BLOB を返すようにプレフィックスを指定できます。 また、フラット リスト構造 (階層) で BLOB を一覧表示できます。 階層リストでは、フォルダーに整理されたかのように BLOB が返されます。 
+
+この記事では、[.NET 用の Azure Storage クライアント ライブラリ](/dotnet/api/overview/azure/storage/client)を使用して BLOB を一覧表示する方法について説明します。  
 
 ## <a name="understand-blob-listing-options"></a>BLOB の一覧表示オプションについて
 
@@ -53,7 +55,7 @@ BLOB をコードから一覧表示する際には、Azure Storage からの結�
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>フラットな一覧表示と階層的な一覧表示
 
-Azure Storage の BLOB は、(従来のファイル システムのような) 階層的なパラダイムではなく、フラットなパラダイムで組織化されます。 ただし、階層的なパラダイムを模倣するために、BLOB を*仮想ディレクトリ*に組織化することができます。 仮想ディレクトリは、区切り文字によって区切られた BLOB の名前の一部です。
+Azure Storage の BLOB は、(従来のファイル システムのような) 階層的なパラダイムではなく、フラットなパラダイムで組織化されます。 ただし、フォルダー構造を模倣するために、BLOB を*仮想ディレクトリ*に組織化することができます。 仮想ディレクトリは BLOB 名の一部を形成し、区切り文字によって示されます。
 
 BLOB を仮想ディレクトリに組織化するには、BLOB 名に区切り文字を使用します。 既定の区切り文字はスラッシュ (/) ですが、区切り文字として任意の文字を指定できます。
 

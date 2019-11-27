@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 4c16953d3c708516edbe0b3c13b091dc3181b187
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75d1f2b6facd438e329555d8595fe159565dbb74
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465061"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837363"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの datetimeV2 作成済みエンティティ
 
@@ -147,7 +147,7 @@ DatetimeV2 は、[Recognizers-text](https://github.com/Microsoft/Recognizers-Tex
 |--|--|
 |timex|[ISO 8601 標準](https://en.wikipedia.org/wiki/ISO_8601)に従う TIMEX 形式および TimeML 言語を使用した注釈のための TIMEX3 属性で表された時刻、日付、日付範囲。 この注釈については、[TIMEX のガイドライン](http://www.timeml.org/tempeval2/tempeval2-trial/guidelines/timex3guidelines-072009.pdf)のページをご覧ください。|
 |type|サブタイプ。`datetime`、`date`、`time`、`daterange`、`timerange`、`datetimerange`、`duration`、`set` のいずれかの項目を指定できます。|
-|value|**省略可能。** yyyy:MM:dd (date)、HH:mm:ss (time)、yyyy:MM:dd HH:mm:ss (datetime) の形式の datetime オブジェクト。 `type` が `duration` の場合、値は秒数 (期間) です <br/> `type` が `datetime`、`date`、`time`、または duration の場合にのみ使用されます。|
+|value|**省略可能。** yyyy-MM-dd  (date)、HH:mm:ss (time)、yyyy-MM-dd HH:mm:ss (datetime) 形式の datetime オブジェクト。 `type` が `duration` の場合、値は秒数 (期間) です <br/> `type` が `datetime`、`date`、`time`、または duration の場合にのみ使用されます。|
 
 ## <a name="valid-date-values"></a>有効な日付の値
 

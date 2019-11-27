@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 05/21/2019
-ms.openlocfilehash: d51acaff89c2a8589b6b524c112c11f9c4f18220
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/15/2019
+ms.openlocfilehash: ab3667d79827e9548338b5beda00c9992f100deb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821771"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132410"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
 
@@ -64,6 +64,7 @@ SQL データベースでメトリックおよび診断ログを有効にしま�
 | データベースの監視テレメトリ | 単一データベースとプールされたデータベースのサポート | インスタンス データベースのサポート |
 | :------------------- | ----- | ----- |
 | [基本メトリック](#basic-metrics):DTU/CPU の割合、DTU/CPU の上限、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。 | はい | いいえ |
+| [インスタンスとアプリの詳細](#advanced-metrics):tempdb システム データベース データとログ ファイルのサイズ、tempdb のログ ファイル使用率が含まれています。 | はい | いいえ |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics):CPU 使用率、クエリ実行時間統計など、クエリのランタイム統計に関する情報が含まれます。 | はい | はい |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics):CPU、LOG、LOCKING など、クエリ待機統計 (クエリが待機していたもの) に関する情報が含まれます。 | はい | はい |
 | [エラー](#errors-dataset):データベースには SQL エラーに関する情報が含まれます。 | はい | はい |
@@ -428,6 +429,16 @@ Azure SQL Analytics を使用している場合は、Azure SQL Analytics のナ�
 |**リソース**|**メトリック**|
 |---|---|
 |Azure SQL データベース|DTU の割合、使用中の DTU、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合、デッドロック |
+
+## <a name="advanced-metrics"></a>高度なメトリック
+
+高度なメトリックの詳細については、次の表を参照してください。
+
+|**メトリック**|**メトリックの表示名**|**説明**|
+|---|---|---|
+|tempdb_data_size| Tempdb データ ファイル サイズ (KB) |Tempdb データ ファイル サイズ (KB)。 データ ウェアハウスには適用されません。 このメトリックは、DTU ベースの購入モデルに対して、仮想コア購入モデルまたは 100 DTU 以上を使用しているデータベースで使用できます。 |
+|tempdb_log_size| Tempdb ログ ファイル サイズ (KB) |Tempdb ログ ファイル サイズ (KB)。 データ ウェアハウスには適用されません。 このメトリックは、DTU ベースの購入モデルに対して、仮想コア購入モデルまたは 100 DTU 以上を使用しているデータベースで使用できます。 |
+|tempdb_log_used_percent| Tempdb ログ使用率 |Tempdb ログ使用率。 データ ウェアハウスには適用されません。 このメトリックは、DTU ベースの購入モデルに対して、仮想コア購入モデルまたは 100 DTU 以上を使用しているデータベースで使用できます。 |
 
 ## <a name="basic-logs"></a>基本ログ
 

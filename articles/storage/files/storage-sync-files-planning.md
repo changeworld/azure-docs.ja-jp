@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3c70d2086fc5866b07c31966343397f8ccc809be
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826820"
+ms.locfileid: "73846747"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -169,7 +169,7 @@ Windows Server フェールオーバー クラスタリングは、Azure ファ�
 > Server 2019 については、データ重複除去とクラウドを使った階層化は、同じボリューム上では現在サポートされていません。これはバグによるもので、そのバグは今後の更新で修正される予定です。
 
 **Windows Server 2012 R2**  
-Azure File Sync については、データ重複除去とクラウドを使った階層化は、同じボリューム上ではサポートされていません。 ボリュームでデータ重複除去が有効になっている場合は、クラウドを使った階層化を無効にする必要があります。 
+Azure File Sync については、データ重複除去とクラウドを使った階層化は、Windows Server 2012 R2 の同じボリューム上ではサポートされていません。 ボリュームでデータ重複除去が有効になっている場合は、クラウドを使った階層化を無効にする必要があります。 
 
 **メモ**
 - Azure File Sync エージェントをインストールする前にデータ重複除去がインストールされている場合、同じボリューム上でのデータ重複除去およびクラウドを使った階層化をサポートするには再起動が必要です。

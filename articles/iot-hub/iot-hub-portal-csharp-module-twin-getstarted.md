@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub モジュール ID とモジュール ツイン (ポータルと .NET) の概要 | Microsoft Docs
+title: Azure IoT Hub のモジュール ID とモジュール ツイン (ポータルと .NET)
 description: モジュール ID を作成し、ポータルと .NET を使用してモジュール ツインを更新する方法について説明します。
 author: robinsh
 manager: philmea
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 395b1fd3301925db0607f775c6b7367979ba367b
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 289c269100eb6ab672bb8d60562c1fa77d8d091a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147431"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954621"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>ポータルと .NET デバイスを使用した Azure IoT Hub モジュール ID とモジュール ツインの概要
 

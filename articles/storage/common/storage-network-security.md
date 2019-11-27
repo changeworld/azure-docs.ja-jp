@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: a02e690e344678b512503f8c3beb57023a838ac0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c4ce0d4ecd64273bcb3226b4b543ba378aad538c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686660"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078954"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -358,14 +358,14 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 ## <a name="exceptions"></a>例外
 
-ネットワーク規則は、ほとんどのシナリオで、アプリケーションとデータとを接続する安全な環境の構築に役立ちます。 ただし、一部のアプリケーションでは、仮想ネットワークまたは IP アドレスの規則を使用して一意に分離できないサービスが使用されます。 しかし、アプリケーションが機能を完全に発揮するには、そのようなサービスにストレージへのアクセスが許可される必要があります。 このような場合、***[信頼された Microsoft サービスを許可]*** 設定を使用して、自分のデータ、ログ、分析へのアクセスを有効にできます。
+ネットワーク規則は、ほとんどのシナリオで、アプリケーションとデータとを接続する安全な環境の構築に役立ちます。 ただし、一部のアプリケーションは、仮想ネットワークまたは IP アドレスの規則を使用して一意に分離できない Azure サービスに依存しています。 しかし、アプリケーションが機能を完全に発揮するには、そのようなサービスにストレージへのアクセスが許可される必要があります。 このような場合、***[信頼された Microsoft サービスを許可]*** 設定を使用して、このようなサービスで、自分のデータ、ログ、分析にアクセスできるように設定できます。
 
 ### <a name="trusted-microsoft-services"></a>信頼できる Microsoft サービス
 
-一部の Microsoft サービスは、お客様のネットワーク規則の対象にできないネットワークで稼働しています。 他のアプリに対するネットワーク規則を維持しながら、このような信頼された Microsoft サービスの一部にストレージ アカウントへのアクセスを許可できます。 これらの信頼されたサービスでは、強力な認証を使用して、お客様のストレージ アカウントに安全に接続できます。 Microsoft サービスには、2 種類の信頼されたアクセスが用意されています。
+一部の Microsoft サービスは、お客様のネットワーク規則の対象にできないネットワークで稼働しています。 他のアプリに対するネットワーク規則を維持しながら、このような信頼された Microsoft サービスの一部にストレージ アカウントへのアクセスを許可できます。 これらの信頼されるサービスでは、強力な認証を使用して、お客様のストレージ アカウントに安全に接続します。 Microsoft サービスには、2 種類の信頼されるアクセスが用意されています。
 
 - 一部のサービスのリソースは、**お客様のサブスクリプションで登録されている場合に**、特定の操作 (ログの書き込みやバックアップなど) のために**同じサブスクリプション内の**ストレージ アカウントにアクセスできます。
-- 一部のサービスのリソースでは、そのリソース インスタンスに [**RBAC ロールを割り当てる**](storage-auth-aad.md#assign-rbac-roles-for-access-rights)ことで、ストレージ アカウントへのアクセスを明示的に許可できます。
+- 一部のサービスのリソースでは、そのシステム割り当てマネージド ID に **RBAC ロールを割り当てる**ことで、ストレージ アカウントへのアクセスを明示的に許可できます。
 
 
 **[信頼された Microsoft サービスを許可]** 設定を有効にすると、ストレージ アカウントと同じサブスクリプションに登録された次のサービスのリソースに対し、記載された一部の操作へのアクセスが許可されます。
@@ -383,15 +383,15 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 | Azure のネットワーク         | Microsoft.Network          | ネットワーク トラフィック ログの保存および分析 [詳細情報](/azure/network-watcher/network-watcher-packet-capture-overview)。 |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | ファイアウォールが有効なキャッシュ、ソース、またはターゲット ストレージ アカウントを使用している場合、Azure IaaS 仮想マシンのディザスター リカバリーのレプリケーションを有効にします。  [詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
-**[信頼された Microsoft サービスを許可]** の設定を有効にすると、以下に示すサービスの特定のインスタンスがストレージ アカウントにアクセスできます (そのリソース インスタンスの[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に RBAC ロールを明示的に割り当てている場合)。
+また、 **[信頼された Microsoft サービスを許可]** の設定を有効にすると、以下に示すサービスの特定のインスタンスからストレージ アカウントにアクセスできます (そのリソース インスタンスの[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [RBAC ロールを割り当てている](storage-auth-aad.md#assign-rbac-roles-for-access-rights)場合)。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた RBAC ロールに対応します。
 
 | Service                        | リソース プロバイダー名          | 目的                            |
 | :----------------------------- | :------------------------------ | :--------------------------------- |
 | Azure Data Factory             | Microsoft.DataFactory/factories | ADF ランタイムを使用してストレージ アカウントへのアクセスを許可します。 |
-| Azure Logic Apps               | Microsoft.Logic/workflows       | ロジック アプリがストレージ アカウントにアクセスできるようにします。 [詳細情報](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md)。 |
+| Azure Logic Apps               | Microsoft.Logic/workflows       | ロジック アプリがストレージ アカウントにアクセスできるようにします。 [詳細情報](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)。 |
 | Azure Machine Learning サービス | Microsoft.MachineLearningServices | 承認された Azure Machine Learning ワークスペースは、BLOB ストレージに実験の出力、モデル、およびログを書き込みます。 [詳細情報](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                   | PolyBase を使用した特定の SQL データベース インスタンスからのデータのインポートとエクスポートを許可します。 [詳細情報](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics       | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 現在、この機能はプレビュー段階にあります。 [詳細情報](/azure/stream-analytics/blob-output-managed-identity.md)。 |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics       | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 現在、この機能はプレビュー段階にあります。 [詳細情報](/azure/stream-analytics/blob-output-managed-identity)。 |
 
 
 ### <a name="storage-analytics-data-access"></a>ストレージ分析データ アクセス

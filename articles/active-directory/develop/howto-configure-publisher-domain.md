@@ -1,5 +1,6 @@
 ---
-title: アプリケーションの発行元ドメインを構成する | Azure
+title: アプリケーションの発行元ドメインを構成する
+titleSuffix: Microsoft identity platform
 description: ユーザーに情報の送信先を知らせるためにアプリケーションの発行元ドメインを構成する方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3558e589004e0488e5b96b0e39bd3f5ceea69658
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257929"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013053"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>方法:アプリケーションの発行元ドメインを構成する (プレビュー)
+# <a name="how-to-configure-an-applications-publisher-domain"></a>方法:アプリケーションの発行元ドメインを構成する
 
 アプリケーションの発行元ドメインは、ユーザーに情報の送信先を知らせるために[アプリケーションの同意プロンプト](application-consent-experience.md)でユーザーに表示されます。 2019 年 5 月 21 日の後に登録されたマルチテナント アプリケーションのうち、発行元ドメインのないアプリケーションは**未検証**として表示されます。 マルチテナント アプリケーションは、1 つの組織ディレクトリの外部にあるアカウントをサポートするアプリケーションです。たとえば、すべての Azure AD アカウントをサポートするか、またはすべての Azure AD アカウントと個人の Microsoft アカウントをサポートします。
 

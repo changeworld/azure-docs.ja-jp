@@ -1,6 +1,6 @@
 ---
-title: Azure Digital Twins で UDF をデバッグする方法 | Microsoft Docs
-description: Azure Digital Twins で UDF をデバッグする方法に関するガイドライン。
+title: UDF をデバッグする方法 ‐ Azure Digital Twins | Microsoft Docs
+description: Azure Digital Twins でユーザー定義関数をデバッグする推奨の方法について説明します。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 130250156f0fae3e6c40742278479b5d4612657b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949897"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005931"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins でユーザー定義関数をデバッグする方法
 
@@ -35,7 +35,7 @@ Azure Digital Twins は堅牢なログ記録、監視、分析をサポートし
 
 * Azure Digital Twins 固有のログ構成については、[監視とログを構成する方法](./how-to-configure-monitoring.md)に関する記事を参照してください。
 * Azure Monitor を使って実現できる強力なログ設定については、[Azure Monitor](../azure-monitor/overview.md) の概要を参照してください。
-* Azure Portal、Azure CLI、または PowerShell を使用して Azure Digital Twins での診断ログ設定を構成するには、「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/resource-logs-overview.md)」の記事を参照してください。
+* Azure portal、Azure CLI、または PowerShell を使用して Azure Digital Twins で診断ログの設定を構成する方法については、[お使いの Azure リソースからのログ データの収集と使用](../azure-monitor/platform/resource-logs-overview.md)に関する記事を参照してください。
 
 一度構成すると、すべてのログ カテゴリ、メトリックを選択し、強力な Azure Monitor ログ分析ワークスペースを使用してデバッグ作業を補助できるようになります。
 

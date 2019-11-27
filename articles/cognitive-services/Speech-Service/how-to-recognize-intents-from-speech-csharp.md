@@ -1,45 +1,46 @@
 ---
-title: チュートリアル:Speech SDK for C# を使用して音声から意図を認識する
+title: Speech SDK for C# を使用して音声の意図を認識する方法
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルでは、Speech SDK for C# を使用して音声から意図を認識する方法を学習します。
+description: このガイドでは、Speech SDK for C# を使用して、音声から意図を認識する方法を学習します。
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 7f42d5914a2ec7f479a8b3d1df1b8672f318036b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464627"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110165"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>チュートリアル:C# 用の Speech SDK を使用して音声の意図を認識する
+# <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Speech SDK for C# を使用して音声の意図を認識する方法
 
 Cognitive Services [Speech SDK](speech-sdk.md) は [Language Understanding サービス (LUIS)](https://www.luis.ai/home) と統合して**意図認識**機能を提供します。 意図は、航空機の予約や天気のチェック、あるいは電話を掛けるなどのユーザーが実行したい行動です。 ユーザーは、自然だと思われるどのような用語でも使用できます。 LUIS では機械学習を使用して、定義されている意図にユーザーの要求をマップします。
 
 > [!NOTE]
 > LUIS アプリケーションでは、認識する意図およびエンティティを定義します。 これは Speech サービスを使用する C# アプリケーションとは別のものです。 この記事では、「アプリ」は LUIS アプリを意味し、「アプリケーション」は C# のコードを意味します。
 
-このチュートリアルでは、Speech SDK を使用して、デバイスのマイクを通じたユーザーの発話から意図を引き出す C# コンソール アプリケーションを開発します。 学習内容は次のとおりです。
+このガイドでは、Speech SDK を使用して、デバイスのマイクを通したユーザーの発話から意図を引き出す C# コンソール アプリケーションを開発します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Speech SDK NuGet パッケージを参照する Visual Studio プロジェクトを作成する
-> * 音声構成を作成して意図認識エンジンを取得する
-> * LUIS アプリのモデルを取得して必要な意図を追加する
-> * 音声認識の言語を指定する
-> * ファイルから音声を認識する
-> * 非同期のイベント ドリブンの継続的な認識を使用する
+>
+> - Speech SDK NuGet パッケージを参照する Visual Studio プロジェクトを作成する
+> - 音声構成を作成して意図認識エンジンを取得する
+> - LUIS アプリのモデルを取得して必要な意図を追加する
+> - 音声認識の言語を指定する
+> - ファイルから音声を認識する
+> - 非同期のイベント ドリブンの継続的な認識を使用する
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に、次の項目を用意する必要があります。
+このガイドを開始する前に、次の項目を用意する必要があります。
 
-* LUIS アカウント。 [LUIS ポータル](https://www.luis.ai/home)から無料で取得できます。
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。
+- LUIS アカウント。 [LUIS ポータル](https://www.luis.ai/home)から無料で取得できます。
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (任意のエディション)。
 
 ## <a name="luis-and-speech"></a>LUIS および音声認識
 
@@ -47,15 +48,15 @@ LUIS は音声から意図を認識するために Speech Services と統合し�
 
 LUIS は、次の 3 種類のキーを使用します。
 
-|キーの種類|目的|
-|--------|-------|
-|Authoring|LUIS アプリをプログラムで作成および変更できる|
-|スターター|テキストのみを使用して LUIS アプリケーションをテストできる|
-|エンドポイント |特定の LUIS アプリへのアクセスを承認する|
+| キーの種類  | 目的                                               |
+| --------- | ----------------------------------------------------- |
+| Authoring | LUIS アプリをプログラムで作成および変更できる |
+| スターター   | テキストのみを使用して LUIS アプリケーションをテストできる   |
+| エンドポイント  | 特定の LUIS アプリへのアクセスを承認する            |
 
-このチュートリアルには、エンドポイント タイプのキーが必要です。 このチュートリアルでは、[事前構築済みホーム オートメーション アプリの使用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)に関するクイックスタートに従って作成できるホーム オートメーション LUIS アプリのサンプルを使用します。 独自の LUIS アプリを作成した場合は、代わりにそれを使用することができます。
+このガイドには、エンドポイント タイプのキーが必要です。 このガイドでは、[事前構築済みホーム オートメーション アプリの使用](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app)に関するクイックスタートに従って作成できるホーム オートメーション LUIS アプリのサンプルを使用します。 独自の LUIS アプリを作成した場合は、代わりにそれを使用することができます。
 
-LUIS アプリを作成すると、テキスト クエリを使用してアプリをテストできるようにスターター キーが自動的に生成されます。 このキーでは Speech Services との統合が有効にならないため、このチュートリアルでこれを使用することはできません。 Azure ダッシュボードで LUIS リソースを作成して LUIS アプリに割り当ててください。 このチュートリアルでは無料のサブスクリプション階層を使用することができます。
+LUIS アプリを作成すると、テキスト クエリを使用してアプリをテストできるようにスターター キーが自動的に生成されます。 このキーでは Speech Services との統合が有効にならないため、このガイドでこれを使用することはできません。 Azure ダッシュボードで LUIS リソースを作成して LUIS アプリに割り当ててください。 このガイドでは、無料のサブスクリプション階層を使用することができます。
 
 Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS ポータル](https://www.luis.ai/home)にログインし、 **[マイ アプリ]** ページで自分のアプリケーションを選択し、アプリの **[Manage]\(管理\)** ページに切り替えます。 最後に、サイド バーの **[Keys and endpoints]\(キーとエンドポイント\)** を選択します。
 
@@ -66,11 +67,11 @@ Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS �
 1. **[Resources and Keys]\(リソースとキー\)** セクションまでスクロールし、 **[Assign resource]\(リソースの割り当て\)** を選択します。
 1. **[Assign a key to your app]\(アプリへのキーの割り当て\)** ダイアログ ボックスに次の変更を加えます。
 
-   * **[Tenant]\(テナント\)** で **[Microsoft]** を選択します。
-   * **[Subscription Name]\(サブスクリプション名\)** には、使用したい LUIS リソースが含まれている Azure サブスクリプションを選択します。
-   * **[Key]\(キー\)** には、アプリで使用したい LUIS リソースを選択します。
+   - **[Tenant]\(テナント\)** で **[Microsoft]** を選択します。
+   - **[Subscription Name]\(サブスクリプション名\)** には、使用したい LUIS リソースが含まれている Azure サブスクリプションを選択します。
+   - **[Key]\(キー\)** には、アプリで使用したい LUIS リソースを選択します。
 
-   まもなく、ページの下部にあるテーブルに新しいサブスクリプションが表示されます。 
+   まもなく、ページの下部にあるテーブルに新しいサブスクリプションが表示されます。
 
 1. キーの横にあるアイコンを選択して、それをクリップボードにコピーします。 (どちらのキーを使用してもかまいません。)
 
@@ -112,13 +113,13 @@ Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS �
 
 1. このメソッド内のプレース ホルダーを、次のように LUIS サブスクリプション キー、リージョン、およびアプリ ID で置き換えます。
 
-   |プレースホルダー|置換後の文字列|
-   |-----------|------------|
-   |`YourLanguageUnderstandingSubscriptionKey`|LUIS エンドポイント キー。 前と同様に、この項目は Azure ダッシュボードから取得する必要があります ("スターター キー" は使用しません)。 [LUIS ポータル](https://www.luis.ai/home)の、アプリの**キーとエンドポイント**のページ ( **[Manage]\(管理\)** の下) で見つけることができます。|
-   |`YourLanguageUnderstandingServiceRegion`|LUIS サブスクリプションが存在するリージョンの短い識別子で、たとえば米国西部の場合は `westus` です。 [リージョン](regions.md)を参照してください。|
-   |`YourLanguageUnderstandingAppId`|LUIS アプリ ID。 [LUIS ポータル](https://www.luis.ai/home)のアプリの **[Settings]\(設定\)** ページで確認できます。|
+   | プレースホルダー | 置換後の文字列 |
+   | ----------- | ------------ |
+   | `YourLanguageUnderstandingSubscriptionKey` | LUIS エンドポイント キー。 前と同様に、この項目は Azure ダッシュボードから取得する必要があります ("スターター キー" は使用しません)。 [LUIS ポータル](https://www.luis.ai/home)の、アプリの**キーとエンドポイント**のページ ( **[Manage]\(管理\)** の下) で見つけることができます。 |
+   | `YourLanguageUnderstandingServiceRegion` | LUIS サブスクリプションが存在するリージョンの短い識別子で、たとえば米国西部の場合は `westus` です。 [リージョン](regions.md)を参照してください。 |
+   | `YourLanguageUnderstandingAppId` | LUIS アプリ ID。 [LUIS ポータル](https://www.luis.ai/home)のアプリの **[Settings]\(設定\)** ページで確認できます。 |
 
-これらの変更を行ってから、チュートリアル アプリケーションをビルド (**Ctrl + Shift + B**) および実行 (**F5**) できます。 入力を求められたら、PC のマイクに向かって "Turn off the lights (照明を消して)" と言ってみてください。 アプリケーションによって、結果がコンソール ウィンドウに表示されます。
+これらの変更を行ってから、アプリケーションをビルド (**Ctrl + Shift + B**) および実行 (**F5**) できます。 入力を求められたら、PC のマイクに向かって "Turn off the lights (照明を消して)" と言ってみてください。 アプリケーションによって、結果がコンソール ウィンドウに表示されます。
 
 次のセクションでには、コードの詳細について説明します。
 
@@ -137,10 +138,10 @@ Azure ダッシュ ボードで LUIS のリソースを作成した後、[LUIS �
 
 意図を追加するには、LUIS モデル (先ほど作成して `model` という名前を付けたもの)、意図名、および意図 ID の 3 つの引数を指定する必要があります。 ID と名前の違いは次のとおりです。
 
-|`AddIntent()`&nbsp;引数|目的|
-|--------|-------|
-|intentName|LUIS アプリ内で定義される意図の名前。 この値が LUIS の意図名と正確に一致する必要があります。|
-|intentID|Speech SDK によって認識された意図に割り当てられた ID。 この値には任意のものを使用できます。LUIS アプリで定義されている意図名に対応させる必要はありません。 同じコードによって複数の意図が処理される場合、それらに対して同じ ID を使用できます。|
+| `AddIntent()`&nbsp;引数 | 目的 |
+| --------------------------- | ------- |
+| `intentName` | LUIS アプリ内で定義される意図の名前。 この値が LUIS の意図名と正確に一致する必要があります。 |
+| `intentID` | Speech SDK によって認識された意図に割り当てられた ID。 この値には任意のものを使用できます。LUIS アプリで定義されている意図名に対応させる必要はありません。 同じコードによって複数の意図が処理される場合、それらに対して同じ ID を使用できます。 |
 
 ホーム オートメーション LUIS アプリには、2 つの意図があります。1 つはデバイスをオンにするための意図、もう 1 つはデバイスをオフにするための意図です。 以下の行はこれらの意図を認識エンジンに追加します。 `RecognizeIntentAsync()` メソッド内の 3 つの `AddIntent` 行をこのコードで置換します。
 
@@ -155,24 +156,24 @@ recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 
 認識エンジンを作成して意図を追加したら、認識を開始できます。 Speech SDK は、単発の認識および継続的な認識の両方をサポートしています。
 
-|認識モード|呼び出すメソッド|結果|
-|----------------|-----------------|---------|
-|単発|`RecognizeOnceAsync()`|1 回の発話後に認識された意図を返します (ある場合)。|
-|継続的|`StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()`|複数の発話を認識し、結果が得られた場合はイベント (例: `IntermediateResultReceived`) を出力します。|
+| 認識モード | 呼び出すメソッド | 結果 |
+| ---------------- | --------------- | ------ |
+| 単発 | `RecognizeOnceAsync()` | 1 回の発話後に認識された意図を返します (ある場合)。 |
+| 継続的 | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | 複数の発話を認識し、結果が得られた場合はイベント (例: `IntermediateResultReceived`) を出力します。 |
 
-チュートリアル アプリケーションでは単発モードが使用されるため、`RecognizeOnceAsync()` を呼び出して認識を開始します。 結果は、認識された意図に関する情報を含む `IntentRecognitionResult` オブジェクトです。 LUIS の JSON 応答は、次の式を使用して抽出します。
+このアプリケーションでは単発モードが使用されるため、`RecognizeOnceAsync()` を呼び出して認識を開始します。 結果は、認識された意図に関する情報を含む `IntentRecognitionResult` オブジェクトです。 LUIS の JSON 応答は、次の式を使用して抽出します。
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)
 ```
 
-チュートリアル アプリケーションは JSON の結果を解析しません。 JSON テキストをコンソール ウィンドウに表示するだけです。
+アプリケーションは JSON の結果を解析しません。 JSON テキストをコンソール ウィンドウに表示するだけです。
 
 ![単一の LUIS 認識の結果](media/sdk/luis-results.png)
 
 ## <a name="specify-recognition-language"></a>認識言語を指定する
 
-既定では、LUIS は意図を米国英語 (`en-us`) で認識します。 音声構成の `SpeechRecognitionLanguage` プロパティにロケール コードを割り当てることで、意図を他の言語で認識することができます。 たとえば、認識エンジンを作成する前にチュートリアル アプリケーションに `config.SpeechRecognitionLanguage = "de-de";` を追加すると、意図はドイツ語で認識されます。 詳細については、[サポートされている言語](language-support.md#speech-to-text)に関するページを参照してください。
+既定では、LUIS は意図を米国英語 (`en-us`) で認識します。 音声構成の `SpeechRecognitionLanguage` プロパティにロケール コードを割り当てることで、意図を他の言語で認識することができます。 たとえば、認識エンジンを作成する前にアプリケーションに `config.SpeechRecognitionLanguage = "de-de";` を追加すると、意図はドイツ語で認識されます。 詳細については、[サポートされている言語](language-support.md#speech-to-text)に関するページを参照してください。
 
 ## <a name="continuous-recognition-from-a-file"></a>ファイルからの継続的な認識
 
@@ -196,4 +197,4 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [音声を認識する方法](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [クイック スタート:マイクから音声を認識する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

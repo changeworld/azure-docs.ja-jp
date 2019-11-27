@@ -1,6 +1,6 @@
 ---
-title: Durable Functions のためのゼロ ダウンタイムのデプロイ
-description: ゼロ ダウンタイムのデプロイのために Durable Functions オーケストレーションを有効にする方法について説明します。
+title: Durable Functions のためのゼロダウンタイムのデプロイ
+description: ゼロダウンタイムのデプロイのために Durable Functions オーケストレーションを有効にする方法について説明します。
 services: functions
 author: tsushi
 manager: gwallace
@@ -8,29 +8,31 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b47604f2c8703ba587e98d68dc30552e5944f562
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: af19f8cdcc26d1459bc024f00b963f04bd8d763b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614499"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904043"
 ---
-# <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions のためのゼロ ダウンタイムのデプロイ
+# <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions のためのゼロダウンタイムのデプロイ
 
 Durable Functions の[信頼性の高い実行モデル](durable-functions-checkpointing-and-replay.md)には、オーケストレーションが決定論的であることが必要です。これにより、更新プログラムをデプロイするときに考慮する必要がある追加の課題が発生します。 アクティビティ関数のシグネチャまたはオーケストレーター ロジックに対する変更がデプロイに含まれている場合、実行中のオーケストレーション インスタンスが失敗します。 この状況は、数時間または数日間にわたる作業を表す可能性がある、長時間実行されているオーケストレーションのインスタンスの場合に特に問題があります。
 
-これらの問題が発生しないようにするには、実行中のすべてのオーケストレーション インスタンスが完了するまでデプロイを延ばすか、または実行中のすべてのオーケストレーション インスタンスで関数の既存のバージョンが使用されるようにする必要があります。 バージョン管理について詳しくは、[Durable Functions でのバージョン管理](durable-functions-versioning.md)に関するページを参照してください。
+このような障害は 2 とおりの方法で防止できます。 
+- 実行中のオーケストレーション インスタンスがすべて完了するまでデプロイを遅らせます。
+- 実行中のオーケストレーション インスタンスで既存バージョンの関数が使用されていることを確認します。 
 
 > [!NOTE]
-> この記事では、Durable Functions 1.x をターゲットにした関数アプリに関するガイダンスを提供します。 ただし、Durable Functions 2.x で導入された変更については、まだ反映されていません。 拡張機能のバージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> この記事では、Durable Functions 1.x をターゲットにした関数アプリに関するガイダンスを提供します。 ただし、Durable Functions 2.x で導入された変更については反映されていません。 拡張機能のバージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
-次の表では、Durable Functions のゼロ ダウンタイム デプロイを実現するための 3 つの主な戦略を比較します。 
+次の表では、Durable Functions のゼロダウンタイム デプロイを実現するための 3 つの主な戦略を比較します。 
 
 | 戦略 |  いつ使用するか | 長所 | 短所 |
 | -------- | ------------ | ---- | ---- |
-| **[バージョン管理](#versioning)** |  [破壊的変更](durable-functions-versioning.md)が頻繁に発生しないアプリケーション。 | 実装が簡単。 |  メモリ内の関数アプリのサイズと関数の数が増える。<br/>コードの重複。 |
-| **[スロットでの状態チェック](#status-check-with-slot)** | 24 時間以上続く長時間のオーケストレーションまたは頻繁に重複するオーケストレーションが存在しないシステム。 | シンプルなコード ベース。<br/>追加の関数アプリ管理が不要。 | 追加のストレージ アカウントまたはタスク ハブの管理が必要である。<br/>オーケストレーションが実行されていない時間帯が必要である。 |
-| **[アプリケーション ルーティング](#application-routing)** | 24 時間以上続くオーケストレーションや、頻繁に重複するオーケストレーションなどの、オーケストレーションが実行されていない期間がないシステム。 | 破壊的変更を伴うオーケストレーションが継続的に実行されている新しいバージョンのシステムを処理する。 | インテリジェントなアプリケーション ルーターが必要。<br/>サブスクリプションで許可されている関数アプリの最大数を超える可能性 (既定値は 100)。 |
+| [バージョン管理](#versioning) |  [破壊的変更](durable-functions-versioning.md)が頻繁に発生しないアプリケーション。 | 実装が簡単。 |  メモリ内の関数アプリのサイズと関数の数が増える。<br/>コードの重複。 |
+| [スロットでの状態チェック](#status-check-with-slot) | 24 時間以上続く長時間のオーケストレーションまたは頻繁に重複するオーケストレーションが存在しないシステム。 | シンプルなコード ベース。<br/>追加の関数アプリ管理が不要。 | 追加のストレージ アカウントまたはタスク ハブの管理が必要である。<br/>オーケストレーションが実行されていない時間帯が必要である。 |
+| [アプリケーション ルーティング](#application-routing) | 24 時間以上続くオーケストレーションや、頻繁に重複するオーケストレーションの期間など、オーケストレーションが実行されていない期間がないシステム。 | 破壊的変更を伴うオーケストレーションが継続的に実行されている新しいバージョンのシステムを処理する。 | インテリジェントなアプリケーション ルーターが必要。<br/>サブスクリプションで許可されている関数アプリの最大数を超える可能性。 既定値は 100 です。 |
 
 ## <a name="versioning"></a>バージョン管理
 
@@ -49,23 +51,23 @@ Durable Functions の[信頼性の高い実行モデル](durable-functions-check
 
 ### <a name="function-app-configuration"></a>関数アプリの構成
 
-次の手順のようにして、このシナリオを設定できます。
+次の手順でこのシナリオを設定します。
 
 1. ステージングと運用のために、関数アプリに[デプロイ スロットを追加します](../functions-deployment-slots.md#add-a-slot)。
 
-1. スロットごとに、共有ストレージ アカウントの接続文字列に [AzureWebJobsStorage アプリケーション設定](../functions-app-settings.md#azurewebjobsstorage)を設定します。 これは、Azure Functions ランタイムによって使用されます。 このアカウントは Azure Functions ランタイムによって使用され、このアカウントで関数のキーを管理します。
+1. スロットごとに、共有ストレージ アカウントの接続文字列に [AzureWebJobsStorage アプリケーション設定](../functions-app-settings.md#azurewebjobsstorage)を設定します。 このストレージ アカウント接続文字列は Azure Functions ランタイムで使用されます。 このアカウントは Azure Functions ランタイムによって使用され、このアカウントで関数のキーを管理します。
 
-1. スロットごとに、新しいアプリ設定を作成し (例: DurableManagementStorage)、その値を異なるストレージ アカウントの接続文字列に設定します。 これらのストレージ アカウントは、[信頼性の高い実行](durable-functions-checkpointing-and-replay.md)のために Durable Functions 拡張機能によって使用されます。 スロットごとに個別のストレージ アカウントを使用します。 この設定をデプロイ スロットの設定としてマークしないでください。
+1. スロットごとに、新しいアプリ設定を作成します (例: `DurableManagementStorage`)。 その値を異なるストレージ アカウントの接続文字列に設定します。 これらのストレージ アカウントは、[信頼性の高い実行](durable-functions-checkpointing-and-replay.md)のために Durable Functions 拡張機能によって使用されます。 スロットごとに個別のストレージ アカウントを使用します。 この設定をデプロイ スロットの設定としてマークしないでください。
 
-1. 関数アプリの [host.json ファイルの durableTask セクション](durable-functions-bindings.md#hostjson-settings)で、ステップ 3 で作成したアプリ設定の名前として azureStorageConnectionStringName を指定します。
+1. 関数アプリの [host.json ファイルの durableTask セクション](durable-functions-bindings.md#hostjson-settings)で、ステップ 3 で作成したアプリ設定の名前として `azureStorageConnectionStringName` を指定します。
 
 次の図では、デプロイ スロットとストレージ アカウントの説明した構成を示します。 このような事前にデプロイされている可能性のあるシナリオでは、バージョン 2 の関数アプリが運用スロットで実行されている間、バージョン 1 はステージング スロットに残っています。
 
-![デプロイ スロット](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
+![デプロイ スロットとストレージ アカウント](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
 ### <a name="hostjson-examples"></a>host.json の例
 
-次の JSON フラグメントは、host.json ファイルでの接続文字列の設定の例です。
+次の JSON フラグメントは、*host.json* ファイルでの接続文字列の設定の例です。
 
 #### <a name="functions-20"></a>Functions 2.0
 
@@ -121,7 +123,7 @@ Azure Pipelines では、デプロイ開始前に、関数アプリで実行中�
 
 ここで、新しいバージョンの関数アプリを、ステージング スロットにデプロイする必要があります。
 
-![デプロイ スロット](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
+![ステージング スロット](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
 
 最後に、スロットをスワップします。 
 
@@ -135,11 +137,11 @@ Azure Pipelines では、デプロイ開始前に、関数アプリで実行中�
 
 この戦略は最も複雑です。 しかし、オーケストレーションの実行と実行の間に時間がない関数アプリに使用できます。
 
-この戦略では、Durable Functions の外側に*アプリケーション ルーター*を作成する必要があります。 このルーターは Durable Functions で実装でき、次の役割があります。
+この戦略では、Durable Functions の外側に*アプリケーション ルーター*を作成する必要があります。 このルーターは Durable Functions で実装できます。 ルーターは次の役割を担います。
 
-* 関数アプリのデプロイ。
-* Durable Functions のバージョンの管理。 
-* オーケストレーション要求の関数アプリへのルーティング。
+* 関数アプリをデプロイします。
+* Durable Functions のバージョンを管理します。 
+* オーケストレーション要求を関数アプリにルーティングします。
 
 初めてオーケストレーション要求を受信したとき、ルーターでは次のタスクが実行されます。
 
@@ -151,9 +153,9 @@ Azure Pipelines では、デプロイ開始前に、関数アプリで実行中�
 
 ![アプリケーションのルーティング (初回)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-ルーターでは、要求と共に送信された `version` に基づいて、デプロイとオーケストレーション要求が適切な関数アプリに転送され、パッチ バージョンは無視されます。
+ルーターでは、要求と共に送信されたバージョンに基づいて、デプロイとオーケストレーション要求が適切な関数アプリに転送されます。 パッチ バージョンは無視されます。
 
-破壊的変更が "*含まれない*" アプリの新しいバージョンをデプロイするときは、パッチ バージョンをインクリメントできます。 ルーターでは、既存の関数アプリに対してデプロイが行われ、コードの古いバージョンと新しいバージョンに対する要求は、同じ関数アプリにルーティングされます。
+破壊的変更が含まれないアプリの新しいバージョンをデプロイするときは、パッチ バージョンをインクリメントできます。 ルーターでは、既存の関数アプリに対してデプロイが行われ、コードの古いバージョンと新しいバージョンに対する要求は、同じ関数アプリにルーティングされます。
 
 ![アプリケーションのルーティング (破壊的変更なし)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
 
@@ -161,11 +163,11 @@ Azure Pipelines では、デプロイ開始前に、関数アプリで実行中�
 
 ![アプリケーションのルーティング (破壊的変更あり)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
 
-ルーターでは、1.0.1 バージョンでのオーケストレーションの状態が監視され、すべてのオーケストレーションが完了した後でアプリが削除されます。  
+ルーターでは、1.0.1 バージョンでのオーケストレーションの状態が監視され、すべてのオーケストレーションが完了した後でアプリが削除されます。 
 
 ### <a name="tracking-store-settings"></a>追跡ストアの設定
 
-各関数アプリでは、個別のスケジュール キュー (可能な場合は異なるストレージ アカウントの) を使用する必要があります。 ただし、アプリケーションのすべてのバージョンですべてのオーケストレーション インスタンスのクエリを実行したい場合は、関数アプリ間でインスタンス テーブルと履歴テーブルを共有できます。 [host.json settings](durable-functions-bindings.md#host-json) ファイルで `trackingStoreConnectionStringName` と `trackingStoreNamePrefix` を構成し、すべてのテーブルで同じ値が使用されるようにすることで、テーブルを共有できます。
+各関数アプリでは、個別のスケジュール キュー (可能な場合は異なるストレージ アカウントの) を使用する必要があります。 アプリケーションのすべてのバージョンですべてのオーケストレーション インスタンスのクエリを実行したい場合は、関数アプリ間でインスタンス テーブルと履歴テーブルを共有できます。 [host.json settings](durable-functions-bindings.md#host-json) ファイルで `trackingStoreConnectionStringName` と `trackingStoreNamePrefix` の設定を構成し、すべてのテーブルで同じ値が使用されるようにすることで、テーブルを共有できます。
 
 詳細については、「[Azure における Durable Functions でのインスタンスの管理](durable-functions-instance-management.md)」を参照してください。
 

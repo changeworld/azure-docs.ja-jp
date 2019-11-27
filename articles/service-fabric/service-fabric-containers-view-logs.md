@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: atsenthi
-ms.openlocfilehash: 3fa40d794d02da08d29b6cac652edf493977f8e1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: fd1787318e8573183293ddd832a11cf8cfe09cf2
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599734"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832620"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Service Fabric コンテナー サービスのログを表示する
 Azure Service Fabric はコンテナー オーケストレーターであり、[Linux コンテナーと Windows コンテナー](service-fabric-containers-overview.md)の両方をサポートします。  この記事では、問題を診断してトラブルシューティングできるように、実行中のコンテナー サービスまたはデッド コンテナー (クラッシュしたコンテナー) のコンテナー ログを表示する方法について説明します。
 
 ## <a name="access-the-logs-of-a-running-container"></a>実行中のコンテナーのログにアクセスする
-コンテナー ログには、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) を使用してアクセスできます。  Web ブラウザーで、[http://mycluster.region.cloudapp.azure.com:19080/Explorer](http://mycluster.region.cloudapp.azure.com:19080/Explorer) に移動することによってクラスターの管理エンドポイントから Service Fabric Explorer を開きます。  
+コンテナー ログには、[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) を使用してアクセスできます。  Web ブラウザーで、`http://mycluster.region.cloudapp.azure.com:19080/Explorer` に移動することによってクラスターの管理エンドポイントから Service Fabric Explorer を開きます。  
 
 コンテナー ログは、コンテナー サービス インスタンスが実行しているクラスター ノードにあります。 例として、[Linux Voting サンプル アプリケーション](service-fabric-quickstart-containers-linux.md)の Web フロントエンド コンテナーのログを取得します。 ツリー ビューで、 **[クラスター]** > **[アプリケーション]** > **[VotingType]** > **[fabric:/Voting/azurevotefront]** の順に展開します。  次に、パーティション (この例では d1aa737e-f22a-e347-be16-eec90be24bc1) を展開し、コンテナーがクラスター ノード *_lnxvm_0* 上で実行していることを確認します。
 

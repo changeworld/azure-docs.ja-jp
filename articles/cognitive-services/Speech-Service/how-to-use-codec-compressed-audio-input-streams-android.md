@@ -1,5 +1,5 @@
 ---
-title: Android で Speech SDK を使用してコーデック圧縮オーディオをストリーミングする - Speech Service
+title: Android で Speech SDK を使用してコーデック圧縮オーディオをストリーミングする
 titleSuffix: Azure Cognitive Services
 description: Android で Speech SDK を使用して圧縮オーディオを Azure Speech Services にストリーミングする方法について学習します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464379"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109903"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Android で Speech SDK を使用してコーデック圧縮オーディオ入力を使用する
+# <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>方法:Android で Speech SDK を使用してコーデック圧縮オーディオ入力を使用する
 
 Speech SDK の**圧縮オーディオ入力ストリーム** API では、PullStream または PushStream を使用して、圧縮オーディオを Speech サービスにストリーミングできます。
 
@@ -25,7 +25,7 @@ Speech SDK の**圧縮オーディオ入力ストリーム** API では、PullSt
 > 現在、圧縮入力オーディオのストリーミングは、[Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9) では C++、C#、Java](how-to-use-codec-compressed-audio-input-streams.md) でサポートされています。 また、Android では Java、[iOS プラットフォームでは Objective-C](how-to-use-codec-compressed-audio-input-streams-ios.md) でもサポートされています。
 > Speech SDK バージョン 1.7.0 以降が必要です。
 
-wav/PCM については、メインライン音声のドキュメントを参照してください。  wav/PCM 以外では、次のコーデック圧縮入力形式がサポートされています。
+wav/PCM については、メインライン音声のドキュメントを参照してください。 wav/PCM 以外では、次のコーデック圧縮入力形式がサポートされています。
 
 - MP3
 - OPUS/OGG
@@ -35,7 +35,7 @@ wav/PCM については、メインライン音声のドキュメントを参照
 
 ## <a name="prerequisites-to-using-codec-compressed-audio-input-on-android"></a>Android でコーデック圧縮オーディオ入力を使用するための前提条件
 
-コーデック圧縮オーディオは、[GStreamer](https://gstreamer.freedesktop.org) を使用して実装されます。 ライセンスの理由から、SDK では Gstreamer バイナリはコンパイルされません。 Android では、事前構築済みのバイナリを使用する必要があります。 事前構築済みのライブラリをダウンロードするには、「[Android 開発用のインストール](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)」を参照してください。 
+コーデック圧縮オーディオは、[GStreamer](https://gstreamer.freedesktop.org) を使用して実装されます。 ライセンスの理由から、SDK では Gstreamer バイナリはコンパイルされません。 Android では、事前構築済みのバイナリを使用する必要があります。 事前構築済みのライブラリをダウンロードするには、「[Installing for Android Development](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)」 (Android 開発用のインストール) を参照してください。
 
 `libgstreamer_android.so` は必須です。 GStreamer プラグインが `libgstreamer_android.so` でリンクされていることを確認してください。
 
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>次の手順
 
 - [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
-* [Java で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+- [Java で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

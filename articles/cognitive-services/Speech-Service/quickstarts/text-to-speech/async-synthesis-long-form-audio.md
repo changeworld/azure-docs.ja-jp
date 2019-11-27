@@ -10,16 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 2c1e6ef84a472ccec5116b12e18ad80c92b68960
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681878"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930575"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>クイック スタート:Python の長い形式の音声の非同期合成 (プレビュー)
 
 このクイックスタートでは、Long Audio API を使用し、テキストを音声に非同期で変換し、サービスにより提供される URI からオーディオ出力を取得します。 この REST API は、10,000 文字または 50 段落を超えるテキスト ファイルを合成音声に変換する必要があるコンテンツ プロバイダーに最適です。 詳細については、「[Long Audio API](../../long-audio-api.md)」を参照してください。
+
+> [!NOTE]
+> 長い形式のオーディオの非同期合成は、[カスタム ニューラル音声](../../how-to-custom-voice.md#custom-neural-voices)でのみ使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 

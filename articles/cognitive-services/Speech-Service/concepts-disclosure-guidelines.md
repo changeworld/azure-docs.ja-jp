@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: angle
-ms.openlocfilehash: d3b3f90be7dda28db9a27aa96282acee61e6c8fc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506626"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837380"
 ---
 # <a name="disclosure-design-guidelines"></a>開示設計のガイドライン
 音声エクスペリエンスが合成であることを明示することにより、顧客との信頼関係を築いて維持する方法を説明します。
@@ -76,7 +76,7 @@ ms.locfileid: "73506626"
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [透明性に関するメモ](https://aka.ms/neural-tts-transparency-note)
+* [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)
 * [合成音声テクノロジの責任あるデプロイのためのガイドライン](concepts-guidelines-responsible-deployment-synthetic.md)
 * [規制の概要](concepts-gating-overview.md)
 

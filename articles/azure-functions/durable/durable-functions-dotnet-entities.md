@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a59e5443c80c9372f646edfdae2261157a41acc9
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d854f41ffc883b40f9159a7dacdde0fb3bb7240f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614888"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904059"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET での持続エンティティに関する開発者ガイド
 
@@ -117,7 +117,7 @@ public class Counter
 
 ## <a name="accessing-entities-directly"></a>エンティティへの直接アクセス
 
-クラスベースのエンティティには、エンティティの明示的な文字列名とその操作を使用して直接アクセスできます。 次に例をいくつか示します。基になる概念 (シグナルや呼び出しなど) の詳細については、「[エンティティへのアクセス](durable-functions-entities.md#accessing-entities)」の説明を参照してください。 
+クラスベースのエンティティには、エンティティの明示的な文字列名とその操作を使用して直接アクセスできます。 次に例をいくつか示します。基になる概念 (シグナルや呼び出しなど) の詳細については、「[エンティティへのアクセス](durable-functions-entities.md#access-entities)」の説明を参照してください。 
 
 > [!NOTE]
 > 可能な場合は、より多くの型チェックが提供されるので、[インターフェイスを介してエンティティにアクセスする](#accessing-entities-through-interfaces)ことをお勧めします。

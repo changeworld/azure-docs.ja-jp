@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c76fd151bf70bfff6eed3b45a673f94777e59467
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 788ffd9e7036996f6ac1bc7fcbc33137aca40ee2
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797300"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132029"
 ---
 # <a name="imagery-partner-integration"></a>画像パートナーの統合
 
@@ -42,7 +42,7 @@ API には、Swagger の技術ドキュメントが用意されています。 A
 
 ## <a name="authentication"></a>認証
 
-FarmBeats では、Microsoft Azure の [Active Directory]((https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)) を活用しています。 Azure App Service には、認証と承認のサポートが組み込まれています。 
+FarmBeats では、Microsoft Azure の [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) を活用しています。 Azure App Service によって、組み込みの認証と承認がサポートされます。 
 
 詳細については、[Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) に関するページを参照してください。   
 
@@ -97,7 +97,7 @@ REST API 要求を行うには、HTTP メソッド (GET、POST、PUT)、API サ�
 
 以下の要求例では、デバイスの一覧を取得します。
 
-```
+```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Content-Type: application/json" -H
 "Authorization: Bearer <Access-Token>”
@@ -108,7 +108,7 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 以下の要求例では、デバイスを作成します (これには、要求本文と共に入力 JSON が含まれています)。
 
 
-```json
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  
 "accept: application/json" -H  
 "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d
@@ -326,9 +326,10 @@ FarmBeats で型とファイル ソースが使用可能な場合は、ExtendedT
   ]
 }
 ```
+
 これは 1 回限りの設定となり、この新しい SceneType のスコープは、FarmBeats プロジェクトがデプロイされているサブスクリプションに限定されます。
 
-例:SceneSource "SlantRange" を追加するには、キー "SceneSource" を使用して、/ExtendedType の ID に対して PUT を実行します。入力ぺイロードは次のとおりです。
+例:SceneSource:"SlantRange" を追加するには、キー "SceneSource" を使用して、/ExtendedType の ID に対して PUT を実行します。入力ぺイロードは次のとおりです。
 
 ```json
 {

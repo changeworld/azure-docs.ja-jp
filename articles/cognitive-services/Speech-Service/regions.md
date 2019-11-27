@@ -1,7 +1,7 @@
 ---
 title: リージョン - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Speech Service のリージョンに関するリファレンスです。
+description: 音声テキスト変換、テキスト読み上げ、音声翻訳など、Speech Service の利用可能なリージョンとエンドポイントの一覧。
 services: cognitive-services
 author: mahilleb-msft
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 469dab093ed7a62171d232695af3258cc874b5f3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 478a62eaddcf3b9b831812a0930ff10c1adce99d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481305"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072457"
 ---
 # <a name="speech-service-supported-regions"></a>Speech Service がサポートされているリージョン
 
@@ -32,45 +32,45 @@ Speech Service を使用すると、アプリケーションで音声をテキ�
 
 Speech SDK は、以下のリージョンで**音声認識**、**テキスト読み上げ**、**翻訳**に利用できます。
 
-  リージョン | Speech SDK パラメーター | 音声カスタマイズ ポータル
- ------|-------|--------
- 米国西部 | `westus` | https://westus.cris.ai
- 米国西部 2 | `westus2` | https://westus2.cris.ai
- East US | `eastus` | https://eastus.cris.ai
- 米国東部 2 | `eastus2` | https://eastus2.cris.ai
- 米国中部 | `centralus` | https://centralus.cris.ai
- 米国中北部 | `northcentralus` | https://northcentralus.cris.ai
- 米国中南部 | `southcentralus` | https://southcentralus.cris.ai
- インド中部 | `centralindia` | https://centralindia.cris.ai
- 東アジア | `eastasia` | https://eastasia.cris.ai
- 東南アジア | `southeastasia` | https://southeastasia.cris.ai
- 東日本 | `japaneast` | https://japaneast.cris.ai
- 韓国中部 | `koreacentral` | https://koreacentral.cris.ai
- オーストラリア東部 | `australiaeast` | https://australiaeast.cris.ai
- カナダ中部 | `canadacentral` | https://canadacentral.cris.ai
- 北ヨーロッパ | `northeurope` | https://northeurope.cris.ai
- 西ヨーロッパ | `westeurope` | https://westeurope.cris.ai
- 英国南部 | `uksouth` | https://uksouth.cris.ai
- フランス中部 | `francecentral` | https://francecentral.cris.ai
+| リージョン           | Speech SDK パラメーター | 音声カスタマイズ ポータル    |
+| ---------------- | -------------------- | ------------------------------ |
+| 米国西部          | `westus`             | https://westus.cris.ai         |
+| 米国西部 2        | `westus2`            | https://westus2.cris.ai        |
+| East US          | `eastus`             | https://eastus.cris.ai         |
+| 米国東部 2        | `eastus2`            | https://eastus2.cris.ai        |
+| 米国中部       | `centralus`          | https://centralus.cris.ai      |
+| 米国中北部 | `northcentralus`     | https://northcentralus.cris.ai |
+| 米国中南部 | `southcentralus`     | https://southcentralus.cris.ai |
+| インド中部    | `centralindia`       | https://centralindia.cris.ai   |
+| 東アジア        | `eastasia`           | https://eastasia.cris.ai       |
+| 東南アジア   | `southeastasia`      | https://southeastasia.cris.ai  |
+| 東日本       | `japaneast`          | https://japaneast.cris.ai      |
+| 韓国中部    | `koreacentral`       | https://koreacentral.cris.ai   |
+| オーストラリア東部   | `australiaeast`      | https://australiaeast.cris.ai  |
+| カナダ中部   | `canadacentral`      | https://canadacentral.cris.ai  |
+| 北ヨーロッパ     | `northeurope`        | https://northeurope.cris.ai    |
+| 西ヨーロッパ      | `westeurope`         | https://westeurope.cris.ai     |
+| 英国南部         | `uksouth`            | https://uksouth.cris.ai        |
+| フランス中部   | `francecentral`      | https://francecentral.cris.ai  |
 
 ### <a name="intent-recognition"></a>意図認識
 
 Speech SDK を介して**意図認識**を使用できるリージョンは以下の通りです。
 
- グローバル リージョン | リージョン | Speech SDK パラメーター
- ------|-------|--------
- アジア | 東アジア | `eastasia`
- アジア | 東南アジア | `southeastasia`
- オーストラリア | オーストラリア東部 | `australiaeast`
- ヨーロッパ | 北ヨーロッパ | `northeurope`
- ヨーロッパ | 西ヨーロッパ | `westeurope`
- 北米 | East US | `eastus`
- 北米 | 米国東部 2 | `eastus2`
- 北米 | 米国中南部 | `southcentralus`
- 北米 | 米国中西部 | `westcentralus`
- 北米 | 米国西部 | `westus`
- 北米 | 米国西部 2 | `westus2`
- 南アメリカ | ブラジル南部 | `brazilsouth`
+| グローバル リージョン | リージョン           | Speech SDK パラメーター |
+| ------------- | ---------------- | -------------------- |
+| アジア          | 東アジア        | `eastasia`           |
+| アジア          | 東南アジア   | `southeastasia`      |
+| オーストラリア     | オーストラリア東部   | `australiaeast`      |
+| ヨーロッパ        | 北ヨーロッパ     | `northeurope`        |
+| ヨーロッパ        | 西ヨーロッパ      | `westeurope`         |
+| 北米 | East US          | `eastus`             |
+| 北米 | 米国東部 2        | `eastus2`            |
+| 北米 | 米国中南部 | `southcentralus`     |
+| 北米 | 米国中西部  | `westcentralus`      |
+| 北米 | 米国西部          | `westus`             |
+| 北米 | 米国西部 2        | `westus2`            |
+| 南アメリカ | ブラジル南部     | `brazilsouth`        |
 
 これは、[Language Understanding サービス (LUIS)](/azure/cognitive-services/luis/luis-reference-regions) でサポートされている公開リージョンのサブセットです。
 
@@ -78,15 +78,15 @@ Speech SDK を介して**意図認識**を使用できるリージョンは以�
 
 [Speech SDK](speech-sdk.md) は、以下のリージョンで**音声アシスタント**機能をサポートしています。
 
-リージョン | Speech SDK パラメーター
--------|---------------------
-米国西部 | `westus`
-米国西部 2 | `westus2`
-East US | `eastus`
-米国東部 2 | `eastus2`
-西ヨーロッパ | `westeurope`
-北ヨーロッパ | `northeurope`
-東南アジア | `southeastasia`
+| リージョン         | Speech SDK パラメーター |
+| -------------- | -------------------- |
+| 米国西部        | `westus`             |
+| 米国西部 2      | `westus2`            |
+| East US        | `eastus`             |
+| 米国東部 2      | `eastus2`            |
+| 西ヨーロッパ    | `westeurope`         |
+| 北ヨーロッパ   | `northeurope`        |
+| 東南アジア | `southeastasia`      |
 
 ## <a name="rest-apis"></a>REST API
 

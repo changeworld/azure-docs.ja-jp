@@ -1,19 +1,19 @@
 ---
 title: Azure サービス正常性通知とは
 description: サービス正常性通知を使用すると、Microsoft Azure によって発行されるサービスの正常性に関するメッセージを表示できます。
-author: dkamstra
+author: stephbaron
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 4/12/2018
-ms.author: dukek
+ms.author: stbaron
 ms.subservice: logs
-ms.openlocfilehash: 87efa7442b0c67f2ee5f83b6b3e8ac8530ce5285
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b41c2cdc54ab5eecdc4503cbd98e69932c901a3d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081804"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007083"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure Portal を使用したサービス正常性通知の表示
 
@@ -22,7 +22,6 @@ ms.locfileid: "67081804"
 サービス正常性通知には、複数のクラスがあります。  
 
 - **操作が必要:** Azure でアカウントにおける不審な状況が見つかった場合、ユーザーと連携してこれに対応します。 必要なアクションの詳細や、Azure のエンジニアリング チームやサポートに問い合わせる方法が記載された通知が、Azure から送信されます。  
-- **支援復旧:** イベントが発生し、引き続きその影響があることをエンジニアが確認している状態です。 Azure エンジニアリング チームが、サービスの復旧のためにユーザーと直接やり取りをする必要があります。  
 - **インシデント:** サービスに影響するイベントが現在、サブスクリプションの 1 つ以上のリソースに影響を与えています。  
 - **メンテナンス:** サブスクリプションの 1 つ以上のリソースに影響を与える可能性のある計画済みメンテナンス アクティビティです。  
 - **情報:** リソースの使用状況を改善するのに役立つ可能性のある最適化に関する情報です。 
@@ -60,19 +59,18 @@ Properties.communicationId | このイベントが関連付けられている通
 ### <a name="details-on-service-health-level-information"></a>サービス正常性レベルの詳細情報
 
 **操作が必要** (properties.incidentType == ActionRequired)
-- Informational - 既存のサービスへの影響を防ぐために管理者の操作が必要です
+- 情報: 既存のサービスに影響がないよう管理者が操作を実行する必要があります。
     
 **メンテナンス** (properties.incidentType == Maintenance)
-- Warning - 緊急のメンテナンス
-- Informational - 標準的な計画済みメンテナンス
+- 警告: 緊急のメンテナンス
+- 情報: 通常の計画メンテナンス
 
 **情報** (properties.incidentType == Information)
-- Informational - 既存のサービスへの影響を防ぐために管理者の操作が必要になる場合があります
+- 情報: 既存のサービスに影響がないよう、管理者の操作が必要な場合があります。
 
 **セキュリティ** (properties.incidentType == Security)
-- Error - 複数の領域にまたがり多様なサービスを利用する際に発生する問題で、範囲は多岐にわたり多くのお客様に影響します。
-- Warning - 特定のサービス、あるいは特定の領域を利用した際に発生する問題で、そうしたサービスを利用される一部のお客様に影響します。
-- Informational - 管理操作あるいは待機時間に影響し、サービスの可用性には影響しない問題です。
+- 警告: 既存のサービスに影響を与えるセキュリティ警告です。管理者の操作が必要な場合があります。
+- 情報: 既存のサービスに影響を与えるセキュリティ警告。
 
 **サービスに関する問題** (properties.incidentType == Incident)
 - Error - 複数の領域にまたがり多様なサービスを利用する際に発生する問題で、範囲は多岐にわたり多くのお客様に影響します。

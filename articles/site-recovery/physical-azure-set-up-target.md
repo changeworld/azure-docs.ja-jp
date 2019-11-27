@@ -1,5 +1,5 @@
 ---
-title: オンプレミスの物理サーバーの Azure へのディザスター リカバリーのためのターゲット環境を設定する | Microsoft Docs
+title: Azure Site Recovery で物理サーバーのターゲット環境を設定する
 description: この記事では、Azure Site Recovery を使用した物理サーバーのディザスター リカバリーのためのターゲット Azure 環境を設定する方法について説明します。
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 41220ccdca945610d7d8ca87af0857114e2cef85
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 685f04b27cd315b04ef5c45e155e825eebe2747b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60949083"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953898"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>ターゲットを準備する (VMware から Azure)
 
@@ -21,7 +21,7 @@ ms.locfileid: "60949083"
 ## <a name="prerequisites"></a>前提条件
 
 この記事は以下を前提としています。
-- 物理サーバーを保護するための Recovery Services コンテナーを作成してあること。 Recovery Services コンテナーは [Azure Portal](https://portal.azure.com "Azure Portal") から作成できます。
+- 物理サーバーを保護するための Recovery Services コンテナーを作成してあること。 Recovery Services コンテナーは [Azure portal](https://portal.azure.com "Azure ポータル") から作成できます。
 - 物理サーバーを Azure にレプリケートできるように[オンプレミス環境をセットアップ](physical-azure-disaster-recovery.md)してあること。
 
 ## <a name="prepare-target"></a>ターゲットを準備する

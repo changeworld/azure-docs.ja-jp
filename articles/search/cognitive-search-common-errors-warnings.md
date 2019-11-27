@@ -1,5 +1,5 @@
 ---
-title: 一般的なエラーと警告
+title: インデクサーのエラーと警告
 titleSuffix: Azure Cognitive Search
 description: この記事では、Azure Cognitive Search で AI の強化中に発生する可能性のある一般的なエラーと警告に関する情報と解決策を提供します。
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bbaec55666b877e1d9343d8b80ea44a189c0c5b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0230fbb2cb94001f7965cf1756a8a0d1061978da
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806124"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133221"
 ---
-# <a name="common-errors-and-warnings-of-the-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Azure Cognitive Search の AI 強化パイプラインに関する一般的なエラーと警告
+# <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
-この記事では、Azure Cognitive Search で AI の強化中に発生する可能性のある一般的なエラーと警告に関する情報と解決策を提供します。
+この記事では、Azure Cognitive Search でインデックス作成中と AI の強化中に発生する可能性のある一般的なエラーと警告に関する情報と解決策を提供します。
 
 ## <a name="errors"></a>Errors
 エラー数が ['maxFailedItems'](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures) を超えると、インデックス作成は停止します。 
@@ -229,6 +229,9 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 詳細については、「[増分の進行状況とカスタム クエリ](search-howto-index-cosmosdb.md#IncrementalProgress)」を参照してください。
 
+### <a name="some-data-was-lost-during-projection-row-x-in-table-y-has-string-property-z-which-was-too-long"></a>一部のデータがプロジェクション中に失われました。 テーブル "Y" の行 "X" に含まれる文字列プロパティ "Z" が長すぎました。
+[Table Storage サービス](https://azure.microsoft.com/services/storage/tables) には、[エンティティ プロパティ](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model#property-types) のサイズに制限があります。 文字列の長さは 32,000 文字以下になります。 文字列プロパティが 32,000 文字を超える行がプロジェクションされるとき、最初の 32,000 文字だけが保持されます。 この問題を回避するには、文字列プロパティが 32,000 文字を超える行のプロジェクションを回避します。
+
 ### <a name="truncated-extracted-text-to-x-characters"></a>抽出されたテキストが X 文字に切り詰められました
 インデクサーには、1 つのドキュメントから抽出できるテキストの量の制限があります。 この制限は、価格レベルによって異なります。Free レベルの場合は 32,000 文字、Basic レベルの場合は 64,000 文字、Standard レベル、Standard S2 レベル、および Standard S3 レベルの場合は 400 万文字です。 切り詰められたテキストには、インデックスが付けられません。 この警告を回避するには、大量のテキストを含むドキュメントを複数の小さなドキュメントに分割してみてください。 
 
@@ -237,4 +240,5 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 ### <a name="could-not-map-output-field-x-to-search-index"></a>出力フィールド "X" を検索インデックスにマップできませんでした
 存在しないデータや null のデータを参照する出力フィールド マッピングがあると、ドキュメントごとに警告が発生し、結果は空のインデックス フィールドになります。 この問題を回避するには、出力フィールド マッピングのソース パスに誤りがないことを再確認するか、[条件付きスキル](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)を使用して既定値を設定します。
 
-インデクサーはスキル セットでスキルを実行できましたが、Web API 要求からの応答には、実行中に警告が発生したことが示されています。 警告を確認して、データがどのように影響を受けているか、およびアクションが必要かどうかを理解します。
+### <a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>データ変更検出ポリシーは、キー列 "X" を使用するように構成されています。
+[データ変更検出ポリシー](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies)には、変更検出に使用する列に関する特定の要件が与えられます。 そのような要件の 1 つは、ソース項目が変更されるたびにこの列が更新されるということです。 もう 1 つの要件は、この列の新しい値が前の値より大きくなるということです。 キー列ではこの要件が満たされません。更新のたびに変わるわけではないためです。 この問題を回避するには、変更検出ポリシーに別の列を選択します。

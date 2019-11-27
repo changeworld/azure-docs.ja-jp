@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
-ms.openlocfilehash: 6c2a8fa57bf6e3a552da57588bdbe752ef0d22e2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5f2d23b3fe33691d37dc00b2d4e79036293252d9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608595"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132875"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Machine Learning 用の Azure Event Grid イベント スキーマ
 
@@ -180,7 +180,7 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 | -------- | ---- | ----------- |
 | ServiceName | string | デプロイされたサービスの名前。 |
 | ServiceComputeType | string | デプロイされたサービスのコンピューティングの種類 (ACI、AKS など)。 |
-| ModelIds | string | モデル ID の一般的な区切りリスト。 サービスにデプロイされているモデルの ID。 |
+  | ModelIds | string | モデル ID のコンマ区切りリスト。 サービスにデプロイされているモデルの ID。 |
 | ServiceTags | object | デプロイされたサービスのタグ。 |
 | ServiceProperties | object | デプロイされたサービスのプロパティ。 |
 
@@ -214,4 +214,4 @@ Azure Machine Learning から出力されるイベントの種類は次のとお
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、「[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)」を参照してください。
 * Azure Machine Learning での Azure Event Grid の使用方法の概要については、「[Azure Machine Learning イベントを使用する](/azure/machine-learning/service/concept-event-grid-integration)」を参照してください。
-* Azure Machine Learning で Azure Event Grid を使用する例については、[イベント ドリブン Machine Learning ワークフローの作成](/azure/machine-learning/service/event-schema-machine-learning)に関する記事を参照してください。
+* Azure Machine Learning で Azure Event Grid を使用する例については、[イベント ドリブン Machine Learning ワークフローの作成](/azure/machine-learning/service/how-to-use-event-grid)に関する記事を参照してください。

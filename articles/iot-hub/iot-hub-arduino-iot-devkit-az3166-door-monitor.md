@@ -1,22 +1,21 @@
 ---
-title: ドアが開いたときに SendGrid サービスと Azure Functions を使用して電子メールを受信する | Microsoft Docs
+title: Azure Functions を使用してドアが開いたときに電子メールを送信する
 description: 磁気センサーを監視してドアが開いたことを検出し、Azure Functions を使用して電子メール通知を送信します。
 author: liydu
-manager: jeffya
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 6cbf3f906b511d9d76319f57f5508a2c584213cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484065"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954750"
 ---
-# <a name="door-monitor"></a>ドア モニター          
+# <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>ドア モニター -- Azure Functions と SendGrid を使用して、ドアが開いたときに電子メールを送信する           
 
 MXChip IoT DevKit には、磁気センサーが組み込まれています。 このプロジェクトでは、近くの強力な磁場の有無を検出します。ここでは、小型の永久磁石から発生する磁場を検出します。
 

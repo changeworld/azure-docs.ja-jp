@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3d5a61b93175559bce92a17e27602a4f79d88ad
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 4a055e039e8d7629f3ff1c20c6ce9e4f1533b6b9
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603975"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931027"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow ディープ ラーニング モデルを構築する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -183,10 +183,17 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="register-or-download-a-model"></a>モデルを登録またはダウンロードする
 
-モデルのトレーニングが終わったら、それをワークスペースに登録できます。 モデルの登録を使用すると、モデルをワークスペースに格納し、バージョン管理して、[モデルの管理とデプロイ](concept-model-management-and-deployment.md)を簡単にすることができます。
+モデルのトレーニングが終わったら、それをワークスペースに登録できます。 モデルの登録を使用すると、モデルをワークスペースに格納し、バージョン管理して、[モデルの管理とデプロイ](concept-model-management-and-deployment.md)を簡単にすることができます。 パラメーター `model_framework`、`model_framework_version`、および `resource_configuration` を指定することにより、コードなしのモデル デプロイを使用できるようになります。 これにより、登録されているモデルから Web サービスとしてモデルを直接デプロイでき、`ResourceConfiguration` オブジェクトでは Web サービスのコンピューティング リソースが定義されます。
 
 ```Python
-model = run.register_model(model_name='tf-dnn-mnist', model_path='outputs/model')
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = run.register_model(model_name='tf-dnn-mnist', 
+                           model_path='outputs/model',
+                           model_framework=Model.Framework.TENSORFLOW,
+                           model_framework_version='1.13.0',
+                           resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
 
 実行オブジェクトを使用してモデルのローカル コピーをダウンロードすることもできます。 トレーニング スクリプトの `mnist-tf.py` では、TensorFlow セーバー オブジェクトによってモデルがローカル フォルダー (コンピューティング先に対するローカル) に永続化されます。 実行オブジェクトを使用してコピーをダウンロードすることができます。
@@ -292,13 +299,24 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ```
 
+## <a name="deployment"></a>Deployment
+
+トレーニングに使用したエスティメーターに関係なく、Azure Machine Learning の他の登録済みモデルとまったく同じ方法で、先ほど登録したモデルをデプロイできます。 デプロイ方法にはモデルの登録に関するセクションが含まれていますが、既にモデルを登録してあるので、デプロイに対する[コンピューティング ターゲットの作成](how-to-deploy-and-where.md#choose-a-compute-target)に直接進んでかまいません。
+
+### <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
+
+従来のデプロイ ルートの代わりに、コードなしのデプロイ機能 (プレビュー) を Tensorflow に使用することもできます。 前に示したように、`model_framework`、`model_framework_version`、`resource_configuration` パラメーターを使用してモデルを登録することにより、`deploy()` 静的関数を使用するだけで、モデルをデプロイできます。
+
+```python
+service = Model.deploy(ws, "tensorflow-web-service", [model])
+```
+
+完全な[方法](how-to-deploy-and-where.md)では、Azure Machine Learning へのデプロイについて詳しく説明されています。
+
 ## <a name="next-steps"></a>次の手順
 
-この記事では、TensorFlow モデルのトレーニングと登録を行いました。 モデルを GPU 対応クラスターにデプロイする方法については、GPU モデル デプロイの記事に進んでください。
+この記事では、TensorFlow モデルをトレーニングして登録し、デプロイのオプションについて学習しました。 Azure Machine Learning の詳細については、以下の他の記事をご覧ください。
 
-> [!div class="nextstepaction"]
-> [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)
 * [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
-* [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)
 * [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

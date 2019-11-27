@@ -1,7 +1,7 @@
 ---
 title: オフライン評価方法の使用 - Personalizer
 titleSuffix: Azure Cognitive Services
-description: Personalizer サービスを使用するこの C# のクイック スタートではフィードバック ループを作成します。
+description: この記事では、オフライン評価を使用してご利用のアプリの有用性を測定し、学習ループを分析する方法について説明します。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f382c07dea75cb534632061c986dd8044c4aafa9
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515575"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953089"
 ---
 # <a name="offline-evaluation"></a>オフライン評価
 

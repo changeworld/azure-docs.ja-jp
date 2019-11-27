@@ -1,19 +1,19 @@
 ---
-title: Azure Application Gateway で SSL ポリシーを構成する - PowerShell
+title: PowerShell を使用して SSL ポリシーを構成する
+titleSuffix: Azure Application Gateway
 description: この記事では、Azure Application Gateway で SSL ポリシーを構成する方法を説明します
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/3/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 5c881a42cdd6fd76c591cf12b341fd777d18baea
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 105b0b3e40e6e9433ee456914cd5babc1d17d036
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018261"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075227"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する
 

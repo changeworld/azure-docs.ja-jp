@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 11/11/2019
 ms.author: dapine
-ms.openlocfilehash: 958acd042acba2a8c6c38ad1e6bac614db509da8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 2b6118930626ce753060addcf64c568c7c086efb
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604440"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091227"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナーのサポート
 
@@ -29,7 +29,6 @@ Azure Cognitive Services でのコンテナーのサポートを使用すると�
 > * [Language Understanding (LUIS)][lu-containers]
 > * [Speech Service API][sp-containers]
 > * [Text Analytics][ta-containers]
-> * [Translator Text][tt-containers]
 
 > [!VIDEO https://www.youtube.com/embed/hdfbn4Q8jbo]
 
@@ -39,10 +38,12 @@ Cognitive Services リソースは [Microsoft Azure](https://azure.microsoft.com
 
 ## <a name="features-and-benefits"></a>機能とメリット
 
+- **イミュータブル インフラストラクチャ**:DevOps チームを有効にすると、一貫性と信頼性のある既知のシステム パラメーターのセットを活用しながら、変更に適応できます。 コンテナーには、予測可能なエコシステム内でピボットして構成の誤差を回避できる柔軟性があります。
 - **データの制御**:これらの Cognitive Services がお客様のデータをどこで処理するかをお客様が選択できるようにします。 これは、クラウドにデータを送信することはできないが、Cognitive Services テクノロジにアクセスする必要があるお客様にとって重要です。 ハイブリッド環境でデータ、管理、ID、セキュリティの整合性をサポートします。
 - **モデルの更新の制御**:お客様は、ソリューションにデプロイされているモデルのバージョン管理と更新を柔軟に行うことができます。
 - **移植可能なアーキテクチャ**:Azure、オンプレミス、エッジにデプロイできる移植可能なアプリケーション アーキテクチャを作成できます。 コンテナーは、[Azure Kubernetes Service](../aks/index.yml)、[Azure Container Instances](../container-instances/index.yml)、または [Azure Stack](/azure-stack/operator) にデプロイされた [Kubernetes](https://kubernetes.io/) クラスターに直接デプロイできます。 詳しくは、「[Kubernetes を Azure Stack にデプロイする](/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)」をご覧ください。
-- **高スループット/低待ち時間**:お客様は、アプリケーションのロジックとデータに物理的に近い場所で Cognitive Services を実行できるようにすることで、高いスループットと低待ち時間の要件に合わせてスケーリングできます。 コンテナーでは、1 秒あたりのトランザクション数 (TPS) は制限されません。必要なハードウェア リソースを提供した場合は、コンテナーのスケールアップとスケールアウトの両方を行って需要を処理することができます。 
+- **高スループット/低待ち時間**:お客様は、アプリケーションのロジックとデータに物理的に近い場所で Cognitive Services を実行できるようにすることで、高いスループットと低待ち時間の要件に合わせてスケーリングできます。 コンテナーでは、1 秒あたりのトランザクション数 (TPS) は制限されません。必要なハードウェア リソースを提供した場合は、コンテナーのスケールアップとスケールアウトの両方を行って需要を処理することができます。
+- **スケーラビリティ**:コンテナー化とコンテナー オーケストレーション ソフトウェア (Kubernetes など) がますます普及し、スケーラビリティは、技術進歩の最前線にあります。 スケーラブルなクラスター基盤の上に構築されたアプリケーション開発は、高可用性に対応します。
 
 ## <a name="containers-in-azure-cognitive-services"></a>Azure Cognitive Services でのコンテナー
 
@@ -62,7 +63,6 @@ Azure Cognitive Services のコンテナーでは次の Docker コンテナー �
 |[Text Analytics][ta-containers] |F0、S|**キー フレーズ抽出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |主なポイントを識別するキー フレーズを抽出します。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、この API は話題の中心として "食べ物" と "すばらしいスタッフ" を返します。 |
 |[Text Analytics][ta-containers]|F0、S|**言語検出** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) |最大 120 の言語に対して、入力テキストが書かれている言語を検出し、要求で送信されたドキュメントごとに 1 つの言語コードを報告します。 言語コードは、評価値の強度を示すスコアと組みになります。 |
 |[Text Analytics][ta-containers]|F0、S|**感情分析** ([イメージ](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) |肯定的または否定的な感情の手がかりを探して未加工のテキストを分析します。 この API はドキュメントごとに 0 から 1 までの感情スコアを返します。1 が最も肯定的となります。 分析モデルは、広範囲にわたるテキスト本文と Microsoft の自然言語技術を利用して事前トレーニングされています。 [一部の言語](./text-analytics/language-support.md)については、この API はユーザーが指定したあらゆる未加工テキストを分析し、評価し、呼び出し元のアプリケーションに結果を直接返すことができます。 |
-|[Translator Text][tt-containers]| **該当なし** | **Translator Text** | Translator Text はクラウドベースの機械翻訳サービスです。これを使用すると、単純な REST API 呼び出しによってほぼリアルタイムでテキストを翻訳することができます。<br>[アクセスの要求](https://aka.ms/translatorcontainerform) |
 
 <!--
 |[Personalizer](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalizer** ([image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Azure Personalizer is a cloud-based API service that allows you to choose the best experience to show to your users, learning from their real-time behavior.|
@@ -86,7 +86,6 @@ Azure Cognitive Services コンテナーはお使いの Azure サブスクリプ
 > * [Form Recognizer](form-recognizer/form-recognizer-container-howto.md#request-access-to-the-container-registry)
 > * [読み取り](computer-vision/computer-vision-how-to-install-containers.md)
 > * [Speech-to-text と Text-to-speech](Speech-Service/speech-container-howto.md#request-access-to-the-container-registry)
-> * [Translator Text](translator/how-to-install-containers.md#request-access-to-the-container-registry)
 
 [!INCLUDE [Container repositories and images](containers/includes/cognitive-services-container-images.md)]
 
@@ -121,7 +120,6 @@ Azure Cognitive Services のコンテナーによって提供される機能を�
 * [Language Understanding (LUIS) コンテナー][lu-containers]
 * [Speech Service API コンテナー][sp-containers]
 * [Text Analytics コンテナー][ta-containers]
-* [Translator Text コンテナー][tt-containers]
 
 <!--* [Personalizer containers](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 -->
@@ -137,4 +135,3 @@ Azure Cognitive Services のコンテナーによって提供される機能を�
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts
 [sp-containers-ctts]: speech-service/speech-container-howto.md?tabs=ctts
 [ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
-[tt-containers]: translator/how-to-install-containers.md

@@ -1,7 +1,7 @@
 ---
 title: V3 への移行 - Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Translator Text API を V2 から V3 に移行する方法について説明します。
+description: この記事では、Azure Cognitive Services Translator Text API を V2 から V3 に移行する手順について説明します。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 9ce9dc330ec1b0c32ce045437fadb5d8c191529e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595249"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837308"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API を V2 から V3 に移行する
 

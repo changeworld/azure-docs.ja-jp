@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 0ff9e055ecc0c4f58e4b3df0494debbe3f4cd8a4
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 5ae64371bd114a898ddca874e23b499bc4a2b8a3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797284"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128783"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
 
@@ -50,16 +50,17 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
     ![プロジェクト (Farm Beats)](./media/for-tutorials/power-shell-two-1.png)
 
-5. ファイルがアップロードされたディレクトリに移動します (既定では、ホーム ディレクトリ /home/username/ にアップロードされます)。
+5. ファイルがアップロードされたディレクトリに移動します。
+
+   >[!NOTE]
+   > 既定では、ファイルはホーム ディレクトリ /home/username/ にアップロードされます。
 6. 次のコマンドを使用して、スクリプトを実行します。  
 
     ```azurepowershell-interactive
-    PS> ./generateCredentials.ps1
+    ./generateCredentials.ps1
     ```
 
 7. 画面の指示に従って、手順を完了します。
-
-    FarmBeats または Azure サブスクリプションにアクセスできない場合は、FarmBeats 管理者にお問い合わせください。
 
 ## <a name="create-devicesensor-metadata"></a>デバイスまたはセンサーのメタデータを作成する
 
@@ -73,7 +74,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 - /**Sensor** - センサーは、値を記録する物理的なセンサーに対応します。 センサーは通常、デバイス ID を持つデバイスに接続されます。  
 
 
-|        デバイス モード   |  検索候補   |
+|        デバイス モデル   |  検索候補   |
 | ------- | -------             |
 |     Type (Node、Gateway)        |          1 つ星      |
 |          Manufacturer            |         2 つ星     |
@@ -129,7 +130,9 @@ FarmBeats データ ハブではベアラー認証を使用します。これに
 
 呼び出し元は、上記の資格情報を使用してアクセス トークンを要求できます。トークンは、次のように、後続の API 要求のヘッダー セクションで送信する必要があります。
 
-headers = *{"Authorization":"Bearer " + access_token, …}*
+```
+headers = *{"Authorization": "Bearer " + access_token, …}*
+```
 
 **HTTP 要求ヘッダー**:
 
@@ -163,8 +166,10 @@ FarmBeats データ ハブへの API 呼び出しを行うときに指定する�
     "additionalProp3": {}
   }
 }
+```
 
 Device
+
 ```json
 {
   "deviceModelId": "string",
@@ -240,17 +245,15 @@ SensorModel
     "additionalProp3": {}
   }
 }
-
 ```
 以下の要求例では、デバイスを作成します (これには、要求本文と共にペイロードとして入力 JSON が含まれています)。  
 
-```
+```bash
 curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "
-{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
 \"reportingInterval\": 900,  \"name\": \"Device123\",  
-\"description\": \"Test Device 123\",}"*
+\"description\": \"Test Device 123\"}" *
 ```
 
 > [!NOTE]
@@ -269,30 +272,28 @@ FarmBeats でデバイスとセンサーを作成したので、関連付けら�
 EventHub クライアントとして接続を確立したら、メッセージを JSON としてイベント ハブに送信できます。  
 センサーの履歴データの形式を、Azure FarmBeats が理解できる正規形式に変換します。 正規のメッセージ形式は次のとおりです。  
 
-
- ```
-  {   
-      “deviceid”: “<id of the Device created>”,   
-      "timestamp": "<timestamp in ISO 8601 format>",     
-      "version" : "1",   
-      "sensors":
-      [     
-      {        
-          "id": "<id of the sensor created>”       
-          "sensordata": [         
-          {            
-              "timestamp": "< timestamp in ISO 8601 format >",           
-              "<sensor measure name (as defined in the Sensor Model)>": value          
-    },          
-    {            
-    "timestamp": "<timestamp in ISO 8601 format>",           
-     "<sensor measure name (as defined in the Sensor Model)>": value          
-    }        
-    ]      
-    }  
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+        }
+      ]
     }
+ ]
+}
 ```
-
 
 対応するデバイスとセンサーを追加した後、前のセクションで説明したように、テレメトリ メッセージでデバイス ID とセンサー ID を取得します。
 

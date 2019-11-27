@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 11/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166206"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929703"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub の正常性を監視し、問題をすばやく診断する
 
@@ -343,7 +343,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 ここで、IoT Hub のクロックがデバイスのクロックと同期していない可能性があり、経過時間を計算すると誤解を招く場合があるので、`durationMs` は計算されません。 `properties` セクションのタイムスタンプを使用するロジックを記述して、device-to-cloud 待機時間のスパイクをキャプチャすることをお勧めします。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | 整数 | device-to-cloud メッセージのサイズ (バイト単位) |
 | **deviceId** | ASCII の 7 ビットの英数字の文字列 | デバイスの ID |
@@ -377,7 +377,7 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 `properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | string | true または false。IoT Hub でメッセージのルーティングが有効になっているかどうかを示します |
 | **parentSpanId** | string | 親メッセージの [span-id](https://w3c.github.io/trace-context/#parent-id)。この場合は、D2C のメッセージ トレースです |
@@ -409,11 +409,59 @@ IoT Hub では、有効なトレース プロパティを含むメッセージ�
 
 `properties` セクションでは、このログにはメッセージのイングレスに関する追加情報が含まれています
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **endpointName** | string | ルーティング エンドポイントの名前 |
 | **endpointType** | string | ルーティング エンドポイントの種類 |
 | **parentSpanId** | string | 親メッセージの [span-id](https://w3c.github.io/trace-context/#parent-id)。この場合は、IoT Hub のイングレス メッセージ トレースです |
+
+#### <a name="configurations"></a>構成
+
+IoT Hub 構成ログでは、自動デバイス管理機能セットのイベントとエラーが追跡されます。
+
+```json
+{
+    "records":
+    [
+         {
+             "time": "2019-09-24T17:21:52Z",
+             "resourceId": "Resource Id",
+             "operationName": "ReadManyConfigurations",
+             "category": "Configurations",
+             "resultType": "",
+             "resultDescription": "",
+             "level": "Information",
+             "durationMs": "17",
+             "properties": "{\"configurationId\":\"\",\"sdkVersion\":\"2018-06-30\",\"messageSize\":\"0\",\"statusCode\":null}",
+             "location": "southcentralus"
+         }
+    ]
+}
+```
+
+### <a name="device-streams-preview"></a>デバイス ストリーム (プレビュー)
+
+デバイス ストリーム カテゴリでは、個々のデバイスに送信される要求 - 応答のインタラクションが追跡されます。
+
+```json
+{
+    "records":
+    [
+         {
+             "time": "2019-09-19T11:12:04Z",
+             "resourceId": "Resource Id",
+             "operationName": "invoke",
+             "category": "DeviceStreams",
+             "resultType": "",
+             "resultDescription": "",    
+             "level": "Information",
+             "durationMs": "74",
+             "properties": "{\"deviceId\":\"myDevice\",\"moduleId\":\"myModule\",\"sdkVersion\":\"2019-05-01-preview\",\"requestSize\":\"3\",\"responseSize\":\"5\",\"statusCode\":null,\"requestName\":\"myRequest\",\"direction\":\"c2d\"}",
+             "location": "Central US"
+         }
+    ]
+}
+```
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Azure Event Hubs からのログの読み取り
 

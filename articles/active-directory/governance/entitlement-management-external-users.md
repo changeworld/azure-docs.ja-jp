@@ -1,5 +1,5 @@
 ---
-title: Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する (プレビュー) - Azure Active Directory
+title: Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する - Azure Active Directory
 description: Azure Active Directory のエンタイトルメント管理で外部ユーザーのアクセスを管理するために指定できる設定について説明します。
 services: active-directory
 documentationCenter: ''
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcf4a0272e21a1fba3cf9adbd9158492e4318578
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452909"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832702"
 ---
-# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する (プレビュー)
-
-> [!IMPORTANT]
-> Azure Active Directory (Azure AD) エンタイトルメント管理は現在、パブリック プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する
 
 Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)](../b2b/what-is-b2b.md) を利用して、別のディレクトリにいる組織外のユーザーとの共同作業が行われます。 Azure AD B2B では、外部ユーザーはユーザー自身のホーム ディレクトリで認証を行いますが、こちらのディレクトリにユーザーの表現が存在します。 こちらのディレクトリ内のその表現により、ユーザーにこちらのリソースへのアクセスを割り当てることができます。
 
@@ -50,11 +45,13 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 
 ![外部ユーザーのライフサイクルを示す図](./media/entitlement-management-external-users/external-users-lifecycle.png)
 
+1. コラボレーション対象の Azure AD ディレクトリまたはドメインに対して、[接続された組織を追加します](entitlement-management-organization.md)。
+
 1. [[自分のディレクトリ内以外のユーザーの場合]](entitlement-management-access-package-create.md#for-users-not-in-your-directory) ポリシーが含まれるディレクトリに、アクセス パッケージを作成します。
 
 1. 外部組織の連絡先に[マイ アクセス ポータルのリンク](entitlement-management-access-package-settings.md)を送信し、アクセス パッケージを要求するためにユーザーと共有できるようにします。
 
-1. 外部ユーザー (この例では**要求者 A**) は、マイ アクセス ポータルのリンクを使用して、アクセス パッケージへの[アクセスを要求](entitlement-management-request-access.md)します。
+1. 外部ユーザー (この例では**要求者 A**) は、マイ アクセス ポータルのリンクを使用して、アクセス パッケージへの[アクセスを要求](entitlement-management-request-access.md)します。 ユーザーのサインイン方法は、接続された組織で定義されているディレクトリまたはドメインの認証の種類によって異なります。
 
 1. 承認者が[要求を承認します](entitlement-management-request-approve.md) (または、要求が自動承認されます)。
 
@@ -71,6 +68,52 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 1. ポリシーの設定によっては、時間が経過すると、外部ユーザーに対するアクセス パッケージの割り当てが期限切れになり、外部ユーザーのアクセスが削除されます。
 
 1. 外部ユーザーの設定のライフサイクルによっては、外部ユーザーにアクセス パッケージの割り当てがなくなった場合、外部ユーザーはサインインをブロックされ、ゲスト ユーザー アカウントはディレクトリから削除されます。
+
+## <a name="settings-for-external-users"></a>外部ユーザーの設定
+
+組織外のユーザーがアクセス パッケージを要求し、それらのアクセス パッケージ内のリソースに確実にアクセスできるようにするには、適切に構成されていることを確認しなければならない設定がいくつかあります。
+
+### <a name="enable-catalog-for-external-users"></a>外部ユーザーに対してカタログを有効にする
+
+- 既定では、[新しいカタログ](entitlement-management-catalog-create.md)を作成すると、外部ユーザーがカタログ内のアクセス パッケージを要求できるようになります。 **[外部ユーザーに有効]** が **[はい]** に設定されていることを確認してください。
+
+    ![カタログの設定を編集する](./media/entitlement-management-shared/catalog-edit.png)
+
+### <a name="configure-your-azure-ad-b2b-external-collaboration-settings"></a>Azure AD B2B の外部コラボレーション設定を構成する
+
+- ゲストが他のゲストをディレクトリに招待できるようにすることは、エンタイトルメント管理の外部でゲストの招待が発生する可能性があることを意味します。 **[ゲストは招待ができる]** を **[いいえ]** に設定して、適切に管理された招待のみを許可することをお勧めします。
+- B2B 許可リストを使用している場合は、エンタイトルメント管理を使用してパートナーにするドメインがリストに追加されていることを確認する必要があります。 または、B2B 拒否リストを使用している場合は、パートナーにするドメインがリストに追加されていないことを確認する必要があります。
+- **すべてのユーザー** (すべての接続されている組織とすべての新しい外部ユーザーを含む) のエンタイトルメント管理ポリシーを作成した場合は、使用している B2B 許可または拒否リストの設定が優先されます。 したがって、このポリシーに含めるドメインを、許可リストを使用している場合は許可リストに含め、拒否リストを使用している場合は拒否リストから除外するようにしてください。
+- **すべてのユーザー** (すべての接続されている組織とすべての新しい外部ユーザーを含む) のエンタイトルメント管理ポリシーを作成する場合は、まず、ディレクトリに対してメールのワンタイム パスコード認証を有効にする必要があります。 詳細については、「[電子メール ワンタイム パスコード認証 (プレビュー)](../b2b/one-time-passcode.md#opting-in-to-the-preview)」を参照してください。
+- Azure AD B2B の外部コラボレーション設定の詳細については、「[B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する](../b2b/delegate-invitations.md)」を参照してください。
+
+    ![Azure AD の外部コラボレーション設定](./media/entitlement-management-external-users/collaboration-settings.png)
+
+### <a name="review-your-conditional-access-policies"></a>条件付きアクセス ポリシーを確認する
+
+- 新しいゲスト ユーザーが満たすことができない条件付きアクセス ポリシーから、ゲストを除外するようにしてください。これにより、これらのユーザーはディレクトリにサインインできなくなります。 たとえば、ゲストに登録済みのデバイスがなく、既知の場所にも登録されておらず、多要素認証 (MFA) に再登録したくない場合、条件付きアクセス ポリシーにこれらの要件を追加すると、ゲストのエンタイトルメント管理の使用がブロックされます。 詳細については、「[Azure Active Directory 条件付きアクセスの条件の概要](../conditional-access/conditions.md)」をご覧ください。
+
+    ![Azure AD 条件付きアクセス ポリシーの除外設定](./media/entitlement-management-external-users/conditional-access-exclude.png)
+
+### <a name="review-your-sharepoint-online-external-sharing-settings"></a>SharePoint Online の外部共有設定を確認する
+
+- 外部ユーザーのアクセス パッケージに SharePoint Online サイトを含めるには、組織レベルの外部共有設定が **[すべてのユーザー]** (ユーザーがサインインを必要としない)、または **[新規および既存のゲスト]** (ゲストがサインインするか、確認コードを入力する必要がある) に設定されていることを確認してください。 詳細については、「[外部共有を有効または無効にする](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)」を参照してください。
+
+- エンタイトルメント管理の外部で外部共有を制限するには、外部共有設定を **[既存のゲスト]** に設定します。 その後は、エンタイトルメント管理を通じて招待された新しいユーザーのみが、これらのサイトにアクセスできるようになります。 詳細については、「[外部共有を有効または無効にする](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)」を参照してください。
+
+- サイトレベルの設定で、ゲスト アクセスが有効になっていることを確認します (前述と同じオプションを選択します)。 詳細については、「[サイトの外部共有を有効または無効にする](https://docs.microsoft.com/sharepoint/change-external-sharing-site)」を参照してください。
+
+### <a name="review-your-office-365-group-sharing-settings"></a>Office 365 グループの共有設定を確認する
+
+- 外部ユーザーのアクセス パッケージに Office 365 グループを含めるには、 **[ユーザーが組織に新しいゲストを追加できるようにします]** が **[オン]** に設定されていることを確認して、ゲスト アクセスを許可します。 詳細については、「[Office 365 グループへのゲスト アクセスの管理](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-guest-access-to-office-365-groups)」を参照してください。
+
+- Office 365 グループに関連付けられている SharePoint Online サイトとリソースに外部ユーザーがアクセスできるようにするには、SharePoint Online の外部共有がオンになっていることを確認してください。 詳細については、「[外部共有を有効または無効にする](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)」を参照してください。
+
+- PowerShell のディレクトリ レベルで Office 365 グループのゲスト ポリシーを設定する方法については、「[例:ディレクトリ レベルでグループのゲスト ポリシーを構成する](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level)」を参照してください。
+
+### <a name="review-your-teams-sharing-settings"></a>Teams の共有設定を確認する
+
+- 外部ユーザーのアクセス パッケージに Teams を含めるには、 **[Teams へのゲスト アクセスを許可する]** が **[オン]** に設定されていることを確認してください。 詳細については、[Microsoft Teams 管理センターでのゲスト アクセスの構成](/microsoftteams/set-up-guests#configure-guest-access-in-the-teams-admin-center)に関する記事を参照してください。
 
 ## <a name="manage-the-lifecycle-of-external-users"></a>外部ユーザーのライフサイクルを管理する
 
@@ -90,29 +133,20 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 
 1. 外部ユーザーがアクセス パッケージへの最後の割り当てを失ったときに、そのユーザーによるこのディレクトリへのサインインをブロックする場合は、 **[外部ユーザーによるこのディレクトリへのサインインをブロックする]** を **[はい]** に設定します。
 
-1. 外部ユーザーがアクセス パッケージへの最後の割り当てを失ったときに、ディレクトリ内のゲスト ユーザー アカウントを削除する場合は、 **[外部ユーザーを削除]** を **[はい]** に設定します。
+    > [!NOTE]
+    > ユーザーがこのディレクトリへのサインインをブロックされている場合、このユーザーはアクセス パッケージを再要求したり、このディレクトリで追加のアクセスを要求したりすることができなくなります。 その後、これらのユーザーが他のアクセス パッケージへのアクセスを要求する必要がある場合は、サインインをブロックするように構成しないでください。
+
+1. 外部ユーザーがアクセス パッケージへの最後の割り当てを失ったときに、このディレクトリ内のゲスト ユーザー アカウントを削除する場合は、 **[外部ユーザーを削除]** を **[はい]** に設定します。
 
     > [!NOTE]
-    > エンタイトルメント管理では、エンタイトルメント管理によって招待されたアカウントのみが削除されます。 また、ユーザーがディレクトリ内のアクセス パッケージの割り当てではないリソースに追加されていた場合でも、そのユーザーはサインインをブロックされ、ディレクトリから削除されることに注意してください。 アクセス パッケージの割り当てを受け取る前に、ゲストがディレクトリ内に存在していた場合は、そのまま残ります。 ただし、ゲストがアクセス パッケージの割り当てによって招待され、招待された後で OneDrive for Business または SharePoint Online サイトにも割り当てられた場合でも、そのゲストは削除されます。
+    > エンタイトルメント管理では、エンタイトルメント管理によって招待されたアカウントのみが削除されます。 また、ユーザーがこのディレクトリ内のアクセス パッケージの割り当てではないリソースに追加されていた場合でも、そのユーザーはサインインをブロックされ、このディレクトリから削除されることに注意してください。 アクセス パッケージの割り当てを受け取る前に、ゲストがこのディレクトリ内に存在していた場合は、そのまま残ります。 ただし、ゲストがアクセス パッケージの割り当てによって招待され、招待された後で OneDrive for Business または SharePoint Online サイトにも割り当てられた場合でも、そのゲストは削除されます。
 
-1. ディレクトリのゲスト ユーザー アカウントを削除する場合は、削除するまでの日数を設定できます。 アクセス パッケージへの最後の割り当てが失われた直後にゲスト ユーザー アカウントを削除する場合は、 **[Number of days before removing external user from this directory]\(このディレクトリから外部ユーザーを削除するまでの日数\)** を **0** に設定します。
+1. このディレクトリ内のゲスト ユーザー アカウントを削除する場合は、削除するまでの日数を設定できます。 アクセス パッケージへの最後の割り当てが失われた直後にゲスト ユーザー アカウントを削除する場合は、 **[Number of days before removing external user from this directory]\(このディレクトリから外部ユーザーを削除するまでの日数\)** を **0** に設定します。
 
 1. **[Save]** をクリックします。
 
-## <a name="enable-a-catalog-for-external-users"></a>外部ユーザーに対するカタログを有効にする
-
-[新しいカタログ](entitlement-management-catalog-create.md)を作成するときは、外部ディレクトリのユーザーがカタログのアクセス パッケージを要求できるようにする設定があります。 外部ユーザーにカタログ内のアクセス パッケージを要求する権限を与えない場合は、 **[外部ユーザーに有効]** を **[いいえ]** に設定します。
-
-**事前に必要なロール:** 全体管理者、ユーザー管理者、またはカタログ所有者
-
-![新しいカタログ ペイン](./media/entitlement-management-shared/new-catalog.png)
-
-この設定は、カタログを作成した後で変更することもできます。
-
-![カタログの設定を編集する](./media/entitlement-management-shared/catalog-edit.png)
-
 ## <a name="next-steps"></a>次の手順
 
-- [自分のディレクトリ内以外のユーザーの場合](entitlement-management-access-package-create.md#for-users-not-in-your-directory)
-- [リソースのカタログを作成および管理する](entitlement-management-catalog-create.md)
-- [委任とロール](entitlement-management-delegate.md)
+- [接続されている組織の追加](entitlement-management-organization.md)
+- [自分のディレクトリ内以外のユーザーの場合](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
+- [トラブルシューティング](entitlement-management-troubleshoot.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure VM 上の SQL Server データベースを Azure Backup でバックアップすることについての FAQ
+title: Azure VM 上の SQL Server データベースをバックアップすることについての FAQ - Azure Backup
 description: Azure Backup を使用した Azure VM 上での SQL Server データベースのバックアップに関する一般的な質問への回答を見つけてください。
 ms.reviewer: vijayts
 author: dcurwin
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: 27f416d4ed16de0277952f82c3f7dbac607890d6
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d9272aa4a46a5835558be8c695b62ec0770e3827
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72750223"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074061"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 
@@ -74,7 +74,7 @@ No. 成功したバックアップ ジョブではアラートは生成されま
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>スケジュールされたバックアップ ジョブを [バックアップ ジョブ] メニューで確認できますか?
 
-**[バックアップ ジョブ]** メニューには、アドホック バックアップ ジョブしか表示されません。 スケジュールされたジョブの場合は、[Azure Monitor を使用した監視](backup-azure-monitoring-use-azuremonitor.md)を使用してください。
+**[バックアップ ジョブ]** メニューには、オンデマンドのバックアップ ジョブのみが表示されます。 スケジュールされたジョブの場合は、[Azure Monitor を使用した監視](backup-azure-monitoring-use-azuremonitor.md)を使用してください。
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>今後作成されるデータベースはバックアップに自動的に追加されますか?
 

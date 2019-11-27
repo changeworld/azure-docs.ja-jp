@@ -1,7 +1,7 @@
 ---
 title: Translator Text API の Dictionary Lookup メソッド
 titleSuffix: Azure Cognitive Services
-description: Translator Text API の Dictionary Lookup メソッドを使用します。
+description: Dictionary Lookup メソッドからは、単語や少数の慣用句に対して代替の翻訳が提供されます。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: 0bbdba343888bc91521245d0c9a0e4eaa87c5538
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bd725d41f75bdfb1048b5bee7e8224679dbece4c
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932002"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837265"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: 辞書検索
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54b158528a67dfe77f33f41f3bb4b4570eb4c508
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802204"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120323"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -199,6 +199,12 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 > [!NOTE]
 > G Suite へのユーザー プロビジョニングを自動化するための別の実行可能なオプションは、[Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en) の使用です。このオプションは、オンプレミスの Active Directory ID を G Suite にプロビジョニングします。
+
+## <a name="common-issues"></a>一般的な問題
+* G Suite では、プロビジョニングされたすべてのユーザーが確認済みドメインに属している必要があります。 プロビジョニングするユーザーに、G Suite の確認済みドメインの UPN が付いていることを確認します。 未確認ドメインのユーザーがプロビジョニングの対象となっている場合、"GoogleAppsInvalidDomain" などのエラーが[プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)に表示されます。 [スコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を使用すると、このようなエラーを回避し、未確認ドメインのユーザーが対象外になるようにすることができます。
+    * ターゲットの属性: userPrincipalName
+    * 演算子:REGEX MATCH または NOT REGEX MATCH
+    * 値: .*@domain.com
 
 ## <a name="additional-resources"></a>その他のリソース
 

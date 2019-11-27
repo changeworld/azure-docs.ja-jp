@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/04/2017
-ms.openlocfilehash: 28881403e4938376cc1912227bdff51aa5f069cf
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 61bd5898c494018a2bacbd894d4dc2aac97f53b4
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817376"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928414"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業
 ## <a name="get-an-email-when-"></a>電子メールの受信
@@ -72,7 +72,7 @@ ms.locfileid: "72817376"
 [Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>PowerShell を使用した Application Insights の管理
-* [新しいリソースの作成に関するページ](../../azure-monitor/app/powershell-script-create-resource.md)
+* [新しいリソースの作成に関するページ](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [新しいアラートの作成に関するページ](../../azure-monitor/app/alerts.md#automation)
 
 ## <a name="separate-telemetry-from-different-versions"></a>異なるバージョンのテレメトリを分離する
@@ -98,7 +98,7 @@ ms.locfileid: "72817376"
 <a name="search-specific-users"></a>
 
 ### <a name="filter-out-anonymous-or-authenticated-users"></a>匿名ユーザーまたは認証済みユーザーのフィルター処理
-ユーザーがサインインしたら、[認証されたユーザー ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) を設定できます。(自動的には設定されません。)
+ユーザーがサインインしたら、[認証されたユーザー ID](../../azure-monitor/app/api-custom-events-metrics.md#authenticated-users) を設定できます。 (自動的には設定されません。)
 
 次に以下のことを行えます。
 

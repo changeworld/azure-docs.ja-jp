@@ -1,7 +1,7 @@
 ---
 title: Bing Web Search API の応答の構造と答えの種類
 titleSuffix: Azure Cognitive Services
-description: Bing Web Search API で使用される回答の種類と応答について説明します。
+description: Bing Web Search に検索要求を送信すると、応答本文で `SearchResponse` オブジェクトが返されます。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f19454868ad7be21777d725f61e09a84f6c7a313
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95ebfaef863a1fa05e8a5d3b46fca9659c61f6b7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854725"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110617"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
 

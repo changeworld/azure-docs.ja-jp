@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a993c71e362a61b6861e001dfb5d6eca24873293
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934014"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903288"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために[クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)を読むことをお勧めします。 先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
 
-Azure Service Fabrics SDK の証明書の既定の読み込み動作では、プライマリとセカンダリの構成定義に関係なく、有効期限が最も先の日付になっている定義済みの証明書がデプロイされて使用されます。 従来の動作に戻すことは推奨されませんが、高度な操作として行うことはできます。このためには、Fabric.Code 構成で "UseSecondaryIfNewer" 設定パラメーター値を false に設定する必要があります。
+Azure Service Fabrics SDK の証明書の既定の読み込み動作では、プライマリとセカンダリの構成定義に関係なく、有効期限が最も先の日付になっている定義済みの証明書がデプロイされて使用されます。 従来の動作に戻すことは推奨されませんが、高度な操作として行うことはできます。このためには、`Fabric.Code` 構成で "UseSecondaryIfNewer" 設定パラメーター値を false に設定する必要があります。
 
 Service Fabric では、クラスターの作成中に証明書セキュリティを構成するときに、クライアントの証明書に加えて 2 つのクラスター証明書 (プライマリとセカンダリ) を指定できます。 作成時にそれらを設定する方法について詳しくは、[ポータルからクラスターを作成する](service-fabric-cluster-creation-via-portal.md)方法に関する記事か、[Azure Resource Manager を使用して Azure クラスターを作成する](service-fabric-cluster-creation-via-arm.md)方法に関する記事をご覧ください。 作成時にクラスター証明書を 1 つだけ指定した場合は、それがプライマリ証明書として使用されます。 クラスターの作成後に、新しい証明書をセカンダリ証明書として追加できます。
 
@@ -40,7 +40,7 @@ Service Fabric では、クラスターの作成中に証明書セキュリテ�
 Azure Portal では、セカンダリのクラスター証明書を追加できません。Azure PowerShell を使用してください。 このプロセスはこのドキュメントの後半で説明されています。
 
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>ポータルを使用してクラスター証明書を削除する
-セキュリティ保護されたクラスターでは、常に、有効な証明書 (失効も期限切れもしていない) が 1 つ以上必要です。 有効期限が最も先の日付でデプロイされている証明書が使用中になります。その証明書を削除するとクラスターの機能が停止するため、期限切れの証明書または有効期限が最も近い未使用の証明書のみを削除してください。
+セキュリティ保護されたクラスターでは、常に、有効な証明書 (失効も期限切れもしていない) が 1 つ以上必要です。 有効期限が最も先の日付でデプロイされている証明書が使用中になります。その証明書を削除するとクラスターの機能が停止するため、期限切れの証明書または有効期限が最も近い未使用の証明書のみを確実に削除します。
 
 未使用のクラスター セキュリティ証明書を削除するには、[セキュリティ] セクションに移動して、未使用の証明書のコンテキスト メニューから [削除] オプションを選択します。
 
@@ -287,6 +287,10 @@ Get-ServiceFabricClusterHealth
 ### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>ポータルを使用して管理または読み取り専用のクライアント証明書を削除する
 
 クラスターのセキュリティ保護にセカンダリ証明書が使用されないようにするには、[セキュリティ] セクションに移動して指定の証明書のコンテキスト メニューから [削除] オプションを選択します。
+
+## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>アプリケーション証明書を仮想マシン スケール セットに追加する
+
+アプリケーションに使用する証明書をクラスターに追加する方法については、[こちらの PowerShell サンプル スクリプト](scripts/service-fabric-powershell-add-application-certificate.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 クラスター管理の詳細については、次の記事を参照してください。

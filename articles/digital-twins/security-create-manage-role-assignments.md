@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949825"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013978"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure Digital Twins 内でのロールの割り当ての作成と管理
 
@@ -60,7 +60,7 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 
 Azure Digital Twins では、ロールの割り当てに対して *CREATE*、*READ*、*DELETE* の操作が完全にサポートされます。 *UPDATE* 操作は、ロールの割り当ての追加、ロールの割り当ての削除、またはロールの割り当てによってアクセス権が付与される[空間インテリジェンス グラフ](./concepts-objectmodel-spatialgraph.md) ノードの変更によって処理されます。
 
-[![ロールの割り当てのエンドポイント](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
+[![ロールの割り当てのエンドポイント](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
 
 提供される Swagger リファレンス ドキュメントには、すべての使用可能な API エンドポイント、要求の操作、および定義に関する詳細情報が含まれています。
 
@@ -112,7 +112,7 @@ YOUR_MANAGEMENT_API_URL/roleassignments
 
 ### <a name="retrieve-all-roles"></a>すべてのロールの取得
 
-[![システム ロール](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
+[![システム ロール](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
 
 すべての利用可能なロール (ロールの定義) を一覧表示するには、認証済みの HTTP GET 要求を実行します。
 

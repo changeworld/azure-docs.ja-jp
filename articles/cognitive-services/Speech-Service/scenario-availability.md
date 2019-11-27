@@ -1,7 +1,7 @@
 ---
 title: シナリオの可用性 - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Speech Service のリージョンに関するリファレンスです。
+description: Speech SDK には、さまざまなプログラミング言語と環境にわたる多数のシナリオがあります。 まだ、すべてのシナリオがすべてのプログラミング言語またはすべての環境で利用できるわけではありません。 各シナリオの利用可否は以下のとおりです。
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 6ec31df7cef8391728eae7845f64f55bb1c6466a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02632e5bc84c7406ce3a42eb4be71cf6aaf75c15
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491352"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075758"
 ---
 # <a name="scenario-availability"></a>シナリオの利用可否
 
-Speech service SDK には、さまざまなプログラミング言語と環境にわたる多数のシナリオがあります。  まだ、すべてのシナリオがすべてのプログラミング言語またはすべての環境で利用できるわけではありません。  各シナリオの利用可否は以下のとおりです。
+Speech SDK には、さまざまなプログラミング言語と環境にわたる多数のシナリオがあります。 まだ、すべてのシナリオがすべてのプログラミング言語またはすべての環境で利用できるわけではありません。 各シナリオの利用可否は以下のとおりです。
 
 - **音声認識 (SR)、フレーズ リスト、意図、翻訳、オンプレミス コンテナー**
   - 矢印のリンク <img src="media/index/link.jpg" height="15" width="15"></img> が[こちら](https://aka.ms/csspeech)のクイック スタートの表に表示されているすべてのプログラミング言語/環境。

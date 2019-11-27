@@ -1,7 +1,7 @@
 ---
 title: Bing Local Business Search API v7 リファレンス
 titleSuffix: Azure Cognitive Services
-description: Bing Local Business Search API のプログラミング要素について説明します。
+description: この記事では、応答オブジェクトと、検索結果に影響するクエリ パラメーターおよびヘッダーに関する技術的な詳細について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: c9ebaeb66bc46132160c77c09f93fc2921dc8961
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: db764a73aa1bb18ef2fc0f8f6e5ffe8fd60d388c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906346"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075696"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing Local Business Search API v7 リファレンス
 
@@ -71,7 +71,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 要求には次のクエリ パラメーターを含めることができます。 必須のパラメーターについては、必須の列を参照してください。 クエリ パラメーターは URL エンコードする必要があります。  
   
   
-|名前|値|Type|必須|  
+|名前|値|種類|必須|  
 |----------|-----------|----------|--------------|
 |<a name="count" />count|`offset` パラメーターで指定されたインデックスから始まる、返す結果の数。|string|いいえ|   
 |<a name="localCategories" />localCategories|ビジネス カテゴリ別に検索を定義するオプションの一覧。  [地元企業のカテゴリ検索](local-categories.md)についてのページを参照してください|string|いいえ|  
@@ -95,7 +95,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="error"></a>Error  
 発生したエラーを定義します。  
   
-|要素|説明|Type|  
+|要素|説明|種類|  
 |-------------|-----------------|----------|  
 |<a name="error-code" />code|エラーのカテゴリを特定するエラー コード。 考えられるコードの一覧については、「[エラー コード](#error-codes)」を参照してください。|string|  
 |<a name="error-message" />message|エラーの説明。|string|  
@@ -108,7 +108,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="errorresponse"></a>ErrorResponse  
 要求が失敗したときの応答に含まれている最上位レベルのオブジェクト。  
   
-|名前|値|Type|  
+|名前|値|種類|  
 |----------|-----------|----------|  
 |_type|種類のヒント。|string|  
 |<a name="errors" />errors|要求が失敗した理由を示すエラーの一覧。|[エラー](#error)[]|  
@@ -118,7 +118,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="license"></a>License  
 テキストまたは写真の使用が許可されるライセンスを定義します。  
   
-|名前|値|Type|  
+|名前|値|種類|  
 |----------|-----------|----------|  
 |名前|ライセンスの名前。|string|  
 |url|ライセンスに関する詳しい情報を取得できる Web サイトへの URL。<br /><br /> 名前と URL を使用してハイパーリンクを作成します。|string|  
@@ -127,7 +127,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="link"></a>Link  
 ハイパーリンクのコンポーネントを定義します。  
   
-|名前|値|Type|  
+|名前|値|種類|  
 |----------|-----------|----------|  
 |_type|種類のヒント。|string|  
 |text|表示テキスト。|string|  
@@ -141,7 +141,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 公開元は、名前、Web サイト、またはその両方を提供する場合があることに注意してください。  
   
-|名前|値|Type|  
+|名前|値|種類|  
 |----------|-----------|----------|  
 |名前|公開元の名前。|string|  
 |url|公開元の Web サイトへの URL。<br /><br /> 公開元が Web サイトを提供しない場合があることに注意してください。|string|  
@@ -151,7 +151,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="place"></a>場所  
 レストランやホテルなどの地元企業に関する情報を定義します。  
   
-|名前|値|Type|  
+|名前|値|種類|  
 |----------|-----------|----------|  
 |_type|種類のヒントは、次のいずれかに設定される可能性があります。<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>レストラン</ul><li>|string|  
 |address|エンティティがある場所の住所。|PostalAddress|  
@@ -165,7 +165,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 ### <a name="querycontext"></a>QueryContext  
 Bing によって要求に使用されたクエリ コンテキストを定義します。  
   
-|要素|説明|Type|  
+|要素|説明|種類|  
 |-------------|-----------------|----------|  
 |adultIntent|指定されたクエリに成人の意図が含まれているかどうかを示すブール値。 クエリに成人の意図が含まれている場合には値が **true** になり、含まれていない場合には **false** になります。|Boolean|  
 |alterationOverrideQuery|Bing による元の文字列の使用を強制するために使用するクエリ文字列。 たとえば、クエリ文字列が *saling downwind* である場合、上書きクエリ文字列は *+saling downwind* になります。 必ず、結果が *%2Bsaling+downwind* となるクエリ文字列をエンコードしてください。<br /><br /> このフィールドは、元のクエリ文字列にスペル ミスがある場合にのみ含まれます。|string|  
@@ -175,21 +175,21 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
 
 ### <a name="identifiable"></a>Identifiable
 
-|名前|値|Type|  
+|名前|値|種類|  
 |-------------|-----------------|----------|
 |id|リソース識別子|string|
  
 ### <a name="rankinggroup"></a>RankingGroup
 検索結果グループ (メインラインなど) を定義します。
 
-|名前|値|Type|  
+|名前|値|種類|  
 |-------------|-----------------|----------|
 |items|グループで表示される検索結果の一覧。|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 表示される検索結果項目を定義します。
 
-|名前|値|Type|  
+|名前|値|種類|  
 |-------------|-----------------|----------|
 |resultIndex|表示される回答内の項目のゼロベース インデックス。 このフィールドが項目に含まれていない場合、回答のすべての項目が表示されます。 たとえば、News 回答ではすべてのニュース記事が表示されます。|整数|
 |answerType|表示される項目が含まれている回答。 たとえば、News などです。<br /><br />種類を使用して SearchResponse オブジェクト内の回答を探します。 種類は SearchResponse フィールドの名前です。<br /><br /> ただし、このオブジェクトに value フィールドが含まれている場合にのみ回答の種類を使用し、そうでない場合は無視します。|string|
@@ -210,7 +210,7 @@ Bing によって要求に使用されたクエリ コンテキストを定義�
   
 サービスによってサービス拒否攻撃が疑われている場合、要求は成功する (HTTP 状態コードは 200 OK) ものの、応答の本文は空になることに注意してください。  
   
-|名前|値|Type|  
+|名前|値|種類|  
 |----------|-----------|----------|  
 |_type|種類のヒント。これは SearchResponse に設定されます。|string|  
 |places|検索クエリに関連するエンティティの一覧。|JSON オブジェクト|  

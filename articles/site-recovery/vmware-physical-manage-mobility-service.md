@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して VMware VM と物理サーバーをディザスター リカバリーするためにサーバーでモビリティ エージェントを管理する | Microsoft Docs
+title: Azure Site Recovery を使用して VMware または物理サーバーのモビリティ エージェントを管理する
 description: Azure Site Recovery を使用して VMware VM と物理サーバーを Azure にディザスター リカバリーするために、モビリティ サービス エージェントを管理します。
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972130"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953642"
 ---
-# <a name="manage-mobility-agent-on-protected-machines"></a>保護されたマシン上のモビリティ エージェントを管理する
+# <a name="manage-the-mobility-agent"></a>モビリティ エージェントを管理する 
 
 Azure への VMware VM と物理サーバーのディザスター リカバリーに Azure Site Recovery を使うときは、ご自身のサーバーでモビリティ エージェントを設定します。 モビリティ エージェントは、保護されたマシン、構成サーバー/スケールアウト プロセス サーバーの間の通信を調整し、データのレプリケーションを管理します。 この記事は、デプロイ後にモビリティ エージェントを管理するための一般的なタスクをまとめたものです。
 

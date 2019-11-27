@@ -1,24 +1,24 @@
 ---
-title: サインイン認証中のユーザー名の参照 - Azure Active Directory | Microsoft Docs
-description: サインイン中にユーザー名の参照が画面のメッセージに反映されるしくみ
+title: サインイン中のユーザー名の参照 - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory でサインイン中にユーザー名の参照が画面のメッセージに反映されるしくみ
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db627359b75aa0ea19e30a8d22bcacaa3409cb4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418155"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024247"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory サインイン ページのホーム領域検出
 

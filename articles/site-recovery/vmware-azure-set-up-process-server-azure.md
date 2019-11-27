@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery を使用した VMware VM および物理サーバーのフェールバックのために Azure でプロセス サーバーを設定する | Microsoft Docs
+title: Azure Site Recovery でプロセス サーバーの VMware/物理フェールバックを設定する
 description: この記事では、Azure VM を VMware にフェールバックするために Azure でプロセス サーバーを設定する方法について説明します。
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 10/21/2019
 ms.author: ramamill
-ms.openlocfilehash: 037f0ff64b114ce9341702564147825099695aa0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62110032"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083951"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>フェールバックのために Azure でプロセス サーバーを設定する
 
@@ -37,7 +37,7 @@ ms.locfileid: "62110032"
 
 4. **[サーバー名]** 、 **[ユーザー名]** 、および **[パスワード]** で、プロセス サーバーの名前と、サーバー上で管理者のアクセス許可が割り当てられる資格情報を指定します。
 5. サーバー VM ディスクに使用されるストレージ アカウント、プロセス サーバー VM が配置されるサブネット、および VM の起動時に割り当てられるサーバー IP アドレスを指定します。
-6. **[OK]** ボタンをクリックして、プロセス サーバー VM のデプロイを開始します。
+6. **[OK]** ボタンをクリックして、プロセス サーバー VM のデプロイを開始します。 プロセス サーバーは Standard_A8_v2 SKU にデプロイされます。 この VM SKU がサブスクリプションで使用可能であることを確認してください。
 
 >
 

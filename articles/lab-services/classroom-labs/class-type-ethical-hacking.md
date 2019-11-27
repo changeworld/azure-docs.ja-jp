@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b600edc4c360a2b2990be34e44bb8fbd1c8f721
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330667"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133185"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>エシカル ハッキング クラスを教えるためのラボを設定する 
 この記事では、エシカル ハッキングのフォレンジクス面に焦点を当てたクラスを設定する方法について説明します。 侵入テストは、悪意のある攻撃者が利用する可能性のある脆弱性を実証するためにシステムまたはネットワークへの侵入を試みる訓練で、エシカル ハッキング コミュニティで使用します。 
 
-エシカル ハッキング クラスの学生は、脆弱性に対する防御のための最新の手法を学習できます。 各学生は、2 つの入れ子になった仮想マシンを持つ Windows Server ホスト仮想マシンを用意し、一方の仮想マシンは **Metasploitable** イメージ、もう一方のマシンは [Kali Linux](https://www.kali.org/) イメージを使用します。 Metasploitable 仮想マシンは悪用目的に使用し、Kali 仮想マシンでは、フォレンジック タスクの実行に必要なツールを利用できます。
+エシカル ハッキング クラスの学生は、脆弱性に対する防御のための最新の手法を学習できます。 各学生は、2 つの入れ子になった仮想マシンを持つ Windows Server ホスト仮想マシンを用意し、一方の仮想マシンは [Metasploitable3](https://github.com/rapid7/metasploitable3) イメージ、もう一方のマシンは [Kali Linux](https://www.kali.org/) イメージを使用します。 Metasploitable 仮想マシンは悪用目的に使用し、Kali 仮想マシンでは、フォレンジック タスクの実行に必要なツールを利用できます。
 
 この記事は 2 つの主要なセクションから成ります。 最初のセクションでは、クラスルーム ラボを作成する方法について説明します。 2 番目のセクションでは、入れ子になった仮想化を有効にし、必要なツールとイメージを使用して、テンプレート マシンを作成する方法について説明します。 ここでは、Metasploitable イメージと Kali Linux イメージを使用するマシンで、Hyper-V を有効にして、イメージをホストします。
 
@@ -43,6 +43,8 @@ ms.locfileid: "72330667"
 1. 入れ子になった仮想化用のマシンを設定します。 Hyper-V などのすべての適切な Windows 機能を有効にして、相互と通信インターネット接続ができるように Hyper-V イメージのネットワークを設定します。
 2. [Kali](https://www.kali.org/) Linux イメージを設定します。 Kali は、侵入テストとセキュリティ監査用のツールが含まれる Linux ディストリビューションです。
 3. Metasploitable イメージを設定します。 この例では、[Metasploitable3](https://github.com/rapid7/metasploitable3) イメージを使用します。 このイメージは、故意にセキュリティの脆弱性があるように作成されています。
+
+上述のタスクを自動化するスクリプトは[ラボ サービス倫理的ハッキング スクリプト](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/EthicalHacking)で入手できます。
 
 ### <a name="prepare-template-machine-for-nested-virtualization"></a>入れ子になった仮想化用のテンプレート マシンを準備する
 [こちらの記事](how-to-enable-nested-virtualization-template-vm.md)の手順に従って、入れ子になった仮想化用のテンプレート仮想マシンを準備します。 

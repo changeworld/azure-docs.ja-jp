@@ -1,28 +1,28 @@
 ---
-title: PIM で Azure リソース ロールのアクセス レビューを作成する - Azure Active Directory | Microsoft Docs
+title: PIM で Azure リソース ロールのアクセス レビューを作成する - Azure AD | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure リソース ロールに対するアクセス レビューを作成する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/29/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba674c143cd8d85b9764c8ade776b52dd1d3598d
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: ae70b8386b1dc3ebd570d2651cded3eda75dfc53
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804144"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847085"
 ---
-# <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールのアクセス レビューを作成する
+# <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールのアクセス レビューを作成する
 
 従業員の特権 Azure リソース ロールへのアクセスは、時間の経過に伴って変化します。 古くなったロールの割り当てに関連するリスクを軽減するために、アクセスを定期的に確認する必要があります。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、特権 Azure リソース ロールのアクセス レビューを作成できます。 自動的に実行される定期的なアクセス レビューを構成することもできます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "70804144"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>アクセス レビューを開く
 
@@ -38,17 +38,15 @@ ms.locfileid: "70804144"
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. 左側のメニューで、 **[Azure リソース]** をクリックします。
+1. 左側のメニューで、 **[Azure リソース]** を選択します。
 
-1. サブスクリプションや管理グループなど、管理するリソースをクリックします。
+1. サブスクリプションや管理グループなど、管理するリソースを選択します。
 
-1. [管理] の下の **[アクセス レビュー]** をクリックします。
+1. [管理] の下の **[アクセス レビュー]** を選択します。
 
     ![すべてのレビューの状態を示す [Azure リソース] - [アクセス レビュー] 一覧](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
-
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
-
 
 ## <a name="start-the-access-review"></a>アクセス レビューを開始する
 

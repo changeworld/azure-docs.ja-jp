@@ -1,19 +1,20 @@
 ---
-title: 複数の Web サイトをホストするアプリケーション ゲートウェイの作成 - Azure PowerShell
+title: PowerShell を使用して複数の Web サイトをホストする
+titleSuffix: Azure Application Gateway
 description: Azure PowerShell を使用して、複数の Web サイトをホストするアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 7/31/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: db2582cada453d95faa91eeeec8dd20b9a82ae6c
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 3bc69f8bd946fa50ba272c287047aae7981af4e3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688219"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074460"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Azure PowerShell を使用して、複数の Web サイトをホストするアプリケーション ゲートウェイを作成する
 

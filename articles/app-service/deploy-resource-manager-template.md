@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 196aeb69a1948a44afb8170fa5f48d42b978854d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2af3ec61537dc28ab652b669ff46500db19ab307
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070455"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130594"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Web アプリのデプロイに関するガイダンス
 
@@ -46,7 +46,7 @@ Web アプリの依存関係を定義するには、Web アプリ内のリソー
 **レベル 3**
 * ソース管理 - Web アプリに依存。
 * MSDeploy サイト拡張機能 - Web アプリに依存。
-* サーバー ファームを対象とする Application Insights インスタンス - Web アプリに依存。
+* Web アプリをターゲットとする Azure Application Insights インスタンス - Web アプリに依存。
 
 **レベル 4**
 * App Service 証明書 - ソース管理または MSDeploy に依存 (いずれかが存在する場合)。 存在しない場合は Web アプリに依存。

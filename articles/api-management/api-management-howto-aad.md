@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6116ece6035b326440108c1f2b2effd1b6bb9258
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5d2b43599c1e1f95f505d7987675e5fd40810fa4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072545"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012955"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -98,7 +98,17 @@ Azure AD インスタンス内のユーザーのアクセスを有効にした�
  
 これで、構成された Azure AD インスタンスのユーザーが開発者ポータルにサインインできるようになります。 これらのユーザーは、可視性があるすべてのグループを表示し、サブスクライブすることができます。
 
-## <a name="a-idlog_in_to_dev_portalsign-in-to-the-developer-portal-by-using-an-azure-ad-account"></a><a id="log_in_to_dev_portal"/>Azure AD アカウントを使用して開発者ポータルにサインインする
+## <a name="a-idlog_in_to_dev_portal-developer-portal---add-azure-ad-account-authentication"></a><a id="log_in_to_dev_portal"/> 開発者ポータル - Azure AD アカウント認証の追加
+
+開発者ポータルでは、**OAuth ボタン** ウィジェットで AAD を使用してサインインできます。 このウィジェットは、既定の開発者ポータル コンテンツのサインイン ページに既に含まれています。
+
+![AAD ボタン ウィジェット](./media/api-management-howto-aad/portal-oauth-widget.png)
+
+新しいユーザーが AAD を使用してサインインするたびに新しいアカウントが自動的に作成されますが、サインアップ ページに同じウィジェットを追加することを検討できます。
+
+## <a name="legacy-developer-portal---how-to-sign-in-with-azure-ad"></a>従来の開発者ポータル - Azure AD を使用してサインインする方法
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 前のセクションで構成した Azure AD アカウントを使用して開発者ポータルにサインインするには、次の操作を行います。
 

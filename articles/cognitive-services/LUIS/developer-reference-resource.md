@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: b2b32d6ccca69f330cfe15faa1446aa91fdb687a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d59646a87727409d759cc1903046fb3cdeade2e0
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465730"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847389"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Language Understanding の開発者向けリソース
 
@@ -41,8 +41,10 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 作成と予測の両方のエンドポイント API は、REST API から入手できます。
 
-* 作成の[リファレンス ドキュメント](https://go.microsoft.com/fwlink/?linkid=2092087)
-* 予測ランタイムの[リファレンス ドキュメント](https://go.microsoft.com/fwlink/?linkid=2092356)
+|種類|Version|
+|--|--|
+|Authoring|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[プレビュー V3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
+|予測|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
 
 ### <a name="language-based-sdks"></a>言語ベースの SDK
 

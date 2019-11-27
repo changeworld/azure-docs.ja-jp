@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: c069b620e129177be5d374f5b23b5e54befd8ca2
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 11/07/2019
+ms.openlocfilehash: e5abc9e75e11424b5d0dc4c260b412d0e414ad83
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105423"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837932"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -45,8 +45,8 @@ HDInsight クラスターのログ管理戦略作成の最初のステップで�
 この最上位レベルの情報のほとんどは、Azure Portal を使って取得できます。  代わりに、[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使用して HDInsight クラスターに関する情報を取得することもできます。
 
 ```azurecli
-    az hdinsight list --resource-group <ResourceGroup>
-    az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
+az hdinsight list --resource-group <ResourceGroup>
+az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
 また、PowerShell を使ってこの情報を表示できます。  詳細については、「[Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-powershell.md)」を参照してください。
@@ -112,18 +112,18 @@ HDInsight によって生成されるコア ログ ファイルに加えて、YA
 YARN は、ワーカー ノード上のすべてのコンテナーのログを集計して、ワーカー ノードごとに 1 つの集計ログ ファイルとして保存します。 そのログは、アプリケーションの完了後に既定のファイル システムに保存されます。 アプリケーションは数百または数千のコンテナーを使用することがありますが、1 つのワーカー ノードで実行されるすべてのコンテナーのログは常に 1 つのファイルに集計されます。 アプリケーションで使われるワーカー ノードごとに 1 つのログ ファイルが存在します。 ログの集計は、HDInsight クラスター バージョン 3.0 以降では既定で有効になります。 集計されたログは、クラスターの既定のストレージに配置されます。
 
 ```
-    /app-logs/<user>/logs/<applicationId>
+/app-logs/<user>/logs/<applicationId>
 ```
 
-集計されたログは、コンテナーによってインデックスが作成される TFile バイナリ形式で書かれているので、直接読み取ることはできません。 YARN ResourceManager Logs または CLI ツールを使用して、対象のアプリケーションまたはコンテナーのログをプレーン テキストとして表示します。
+集計されたログは、コンテナーによってインデックスが作成されるバイナリ形式の TFile で書かれているため、直接読み取ることはできません。 YARN ResourceManager Logs または CLI ツールを使用して、対象のアプリケーションまたはコンテナーのログをプレーン テキストとして表示します。
 
 #### <a name="yarn-cli-tools"></a>YARN CLI ツール
 
 YARN CLI ツールを使用するには、まず SSH を使用して HDInsight クラスターに接続する必要があります。 これらのコマンドを実行するときは、`<applicationId>`、`<user-who-started-the-application>`、`<containerId>`、`<worker-node-address>` の各情報を指定します。 次のいずれかのコマンドを使って、これらのログをプレーンテキストとして表示できます。
 
 ```bash
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
+yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 ```
 
 #### <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
@@ -134,7 +134,7 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 2. 左側のサービスの一覧で、[YARN] を選びます。
 3. [クイック リンク] ボックスの一覧で、クラスター ヘッド ノードのいずれかを選び、 **[ResourceManager logs]\(ResourceManager ログ\)** を選びます。 YARN のログへのリンクの一覧が表示されます。
 
-## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>ステップ 4: ログ ボリュームのストレージ サイズとコストを予測する
+## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>手順 4:ログ ボリュームのストレージ サイズとコストを予測する
 
 ここまでの手順を完了すると、HDInsight クラスターが生成するログ ファイルの種類とボリュームがわかっています。
 
@@ -146,7 +146,7 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 削除できるログ ファイルを決定した後は、さまざまな Hadoop サービスのログ パラメーターを調整して、指定期間後にログ ファイルを自動的に削除できます。
 
-一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure Portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure Portal で **[アクティビティ ログ]** リンクを選んで、ARM ログのアーカイブをセットアップします。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、 **[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。
+一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure portal で **[アクティビティ ログ]** リンクを選んで、Resource Manager ログのアーカイブを設定します。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、 **[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。
 
 ![Azure portal の [アクティビティ ログのエクスポート] (プレビュー)](./media/hdinsight-log-management/hdi-export-log-files.png)
 

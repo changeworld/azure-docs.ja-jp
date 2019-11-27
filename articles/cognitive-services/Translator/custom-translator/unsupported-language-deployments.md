@@ -1,7 +1,7 @@
 ---
 title: サポートされていない言語の配置 - カスタム翻訳ツール
 titleSuffix: Azure Cognitive Services
-description: サポートされていない言語の組み合わせを カスタム翻訳ツールで配置する方法。
+description: この記事では、Azure Cognitive Services Custom Translator で未サポートの言語ペアをデプロイする方法について説明します。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/24/2019
 ms.author: swmachan
-ms.openlocfilehash: 284a7e98c088edb73a2c770a4c14bb0a479a6621
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3c5c74fc853b5a2425a58e1704aad43350cba212
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436062"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837446"
 ---
 # <a name="unsupported-language-deployments"></a>サポートされていない言語の展開
 

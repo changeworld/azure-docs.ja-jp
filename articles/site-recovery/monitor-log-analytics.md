@@ -1,18 +1,18 @@
 ---
-title: Azure Monitor ログ (Log Analytics) を使用して Azure Site Recovery を監視する | Microsoft Docs
+title: Azure Monitor ログを使用した Azure Site Recovery の監視
 description: Azure Monitor ログ (Log Analytics) を使用して Azure Site Recovery を監視する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/13/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331931"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133422"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Site Recovery の監視
 
@@ -28,7 +28,7 @@ Site Recovery では、Azure Monitor ログを次の目的に使用できます�
 Site Recovery での Azure Monitor ログの使用は、**Azure から Azure への**レプリケーションと **VMware VM (または物理サーバー) から Azure への**レプリケーションでサポートされます。
 
 > [!NOTE]
-> チャーン データのログとアップロード率のログは、Azure VM がセカンダリ Azure リージョンにレプリケートする場合にのみ使用できます。
+> チャーン データ ログを取得し、VMware と物理マシンのレート ログをアップロードするには、プロセス サーバーに Microsoft 監視エージェントをインストールする必要があります。 このエージェントからワークスペースに、複製を行うコンピューターのログが送信されます。 この機能は、モビリティ エージェントのバージョン 9.30 以降でのみ利用できます。
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -54,6 +54,24 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
     ![ワークスペースを選択](./media/monitoring-log-analytics/select-workspace.png)
 
 以後、選択したワークスペース内のテーブル (**AzureDiagnostics**) に Site Recovery のログが取り込まれます。
+
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>チャーンを送信し、レート ログをアップロードするように、プロセス サーバーで Microsoft 監視エージェントを構成する
+
+オンプレミスで、VMware/物理マシンのデータ チャーン レート情報とソース データ アップロード レート情報を取得できます。 これを有効にするには、Microsoft 監視エージェントをプロセス サーバーにインストールする必要があります。
+
+1. [Log Analytics] ワークスペースに移動し、 **[詳細設定]** をクリックします。
+2. **[接続されたソース]** ページをクリックし、 **[Windows サーバー]** を選択します。
+3. Windows エージェント (64 ビット) をプロセスサーバーにダウンロードします。 
+4. [ワークスペース ID とキーを取得する](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+5. [TLS 1.2 を使用するようにエージェントを構成する](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. 取得したワークスペース ID とキーを指定し、[エージェントのインストールを完了します](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
+7. インストールが完了したら、Log Analytics ワークスペースに移動し、 **[詳細設定]** をクリックします。 **[データ]** ページに移動し、 **[Windows パフォーマンス カウンター]** をクリックします。 
+8. **+** をクリックすると、次の 2 つのカウンターが 300 秒のサンプル間隔で追加されます。
+
+        ASRAnalytics(*)\SourceVmChurnRate 
+        ASRAnalytics(*)\SourceVmThrpRate 
+
+チャーンおよびアップロード レート データがワークスペースに送信されます。
 
 
 ## <a name="query-the-logs---examples"></a>ログのクエリを実行する - 例
@@ -174,12 +192,9 @@ AzureDiagnostics  
 ```
 ![マシンの RPO を照会する](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-for-a-vm"></a>VM のデータの変更量 (変更頻度) を照会する
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Azure VM のデータ変更率 (チャーン) とアップロード率を照会する
 
-> [!NOTE] 
-> チャーン情報が得られるのは、セカンダリ Azure リージョンにレプリケートされた Azure VM だけです。
-
-このクエリは、特定の Azure VM (ContosoVM123) について、データの変更量 (1 秒あたりの書き込みバイト数) とデータのアップロード速度を追跡する傾向グラフをプロットします。 
+このクエリによって、特定の Azure VM (ContosoVM123) の傾向グラフが描画されます。そのグラフは、データ変更率 (秒あたりの書き込みバイト数) とデータ アップロード率を表わします。 
 
 ```
 AzureDiagnostics   
@@ -193,6 +208,23 @@ Category contains "Upload", "UploadRate", "none") 
 | render timechart  
 ```
 ![データの変更量を照会する](./media/monitoring-log-analytics/example3.png)
+
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>VMware または物理マシンのデータ変更率 (チャーン) とアップロード率を照会する
+
+> [!Note]
+> これらのログをフェッチするようにプロセス サーバーで監視エージェントを設定します。 監視エージェントの構成手順は[こちら](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs)を参照してください。
+
+このクエリによって、複製アイテム **win-9r7sfh9qlru** の特定のディスク **disk0** の傾向グラフが描画されます。そのグラフは、データ変更率 (秒あたりの書き込みバイト数) とデータ アップロード率を表わします。 Recovery Services コンテナーの複製アイテムの **[ディスク]** ブレードにディスクの名前があります。 クエリに使用されるインスタンス名は、この例のように、コンピューターの DNS 名の末尾に _ とディスク名を付けたものになります。
+
+```
+Perf
+| where ObjectName == "ASRAnalytics"
+| where InstanceName contains "win-9r7sfh9qlru_disk0"
+| where TimeGenerated >= ago(4h) 
+| project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
+| render timechart
+```
+プロセス サーバーによってこのデータが 5 分おきに Log Analytics ワークスペースにプッシュされます。 これらのデータ ポイントは、5 分間に計算された平均を表わします。
 
 ### <a name="query-disaster-recovery-summary-azure-to-azure"></a>ディザスター リカバリーのサマリーを照会する (Azure から Azure)
 

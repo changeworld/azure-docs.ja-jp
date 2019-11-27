@@ -1,7 +1,7 @@
 ---
 title: Bing Autosuggest API で検索語句の候補を表示する
 titleSuffix: Azure Cognitive Services
-description: Bing Autosuggest API の使用方法を説明します。
+description: この記事では、Bing Autosuggest API を使用した検索語句の提案の概念と、クエリの長さが関連性に与える影響について説明します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: cee4f68b734f0c2bec9fd629986ba7f6559f207e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 060dbd29ee4ddb78e8ae9b2ed4e7814da3c4eebf
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882440"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072887"
 ---
 # <a name="suggesting-query-terms"></a>検索語句の提案
 

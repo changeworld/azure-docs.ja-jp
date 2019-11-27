@@ -1,5 +1,5 @@
 ---
-title: 強化パイプラインのカスタム Web API スキル
+title: スキルセット内のカスタム Web API スキル
 titleSuffix: Azure Cognitive Search
 description: Web API を呼び出すことによって、Azure コグニティブ検索スキルセットの機能を拡張します。 カスタム Web API スキルを使用してカスタム コードを統合します。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: defe6711049e191ada1a2f6e46d6643debdca86e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466737"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113802"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure コグニティブ検索の強化パイプラインのカスタム Web API スキル
 

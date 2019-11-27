@@ -1,7 +1,7 @@
 ---
 title: Translator Text API の BreakSentence メソッド
 titleSuffix: Azure Cognitive Services
-description: Translator Text API の BreakSentence メソッドを使用します。
+description: Translator Text API の BreakSentence メソッドでは、文章内で文の境界の位置が識別されます。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 184677589b3aa777ec556215455f8018e0d71f3f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934054"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835881"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 

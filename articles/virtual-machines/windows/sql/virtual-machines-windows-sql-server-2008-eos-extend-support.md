@@ -1,6 +1,6 @@
 ---
-title: Azure での SQL Server 2008 および SQL Server 2008 R2 のサポート延長
-description: Azure への SQL Server インスタンスの移行、またはオンプレミスでインスタンスを保持する延長サポートの購入によって、SQL Server 2008 および SQL Server 2008 R2 のサポートを延長する方法について説明します。
+title: SQL Server 2008 と 2008 R2 のサポート延長
+description: Azure に SQL Server インスタンスを移行するか、オンプレミスでインスタンスを保持する延長サポートを購入すると、SQL Server 2008 および SQL Server 2008 R2 のサポートが延長されます。
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 93e0032cd283eda034519ca29a0e1cf501b5cde6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100468"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132779"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure での SQL Server 2008 および SQL Server 2008 R2 のサポート延長
 
@@ -63,7 +64,7 @@ SQL Server には、回復を保証するために、アプリ整合性のある
 
 Azure VM 上の EOS SQL Server のディザスター リカバリー ソリューションは次のとおりです。
 
-- **SQL Server のバックアップ**:Azure Backup を使用して、ランサムウェアや偶発的な削除や破損から EOS SQL サーバーを保護できます。 このソリューションは、現在、EOS SQL Server に対するプレビュー段階であり、Windows 2008 R2 SP1 上で実行される SQL Server 2008 と 2008 R2 がサポートされます。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2)を参照してください。
+- **SQL Server のバックアップ**:Azure Backup を使用して、ランサムウェアや偶発的な削除や破損から EOS SQL サーバーを保護できます。 このソリューションは、現在、EOS SQL Server に対するプレビュー段階であり、Windows 2008 R2 SP1 上で実行される SQL Server 2008 と 2008 R2 がサポートされます。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support)を参照してください。
 - **ログ配布**:継続的な復元によって別のゾーンまたは Azure リージョンにログ配布のレプリカを作成して、RTO を短縮することができます。 ログ配布は、お客様が手動で構成する必要があります。
 - **Azure Site Recovery**:Azure Site Recovery のレプリケーションによって、ゾーンとリージョン間で VM をレプリケートできます。 SQL Server には、障害の発生時に回復を保証するために、アプリ整合性スナップショットが必要です。 Azure Site Recovery は、EOS SQL Server のディザスター リカバリーで最小 1 時間の RPO と、2 時間 (+ SQL Server の復旧時間) の RTO を実現します。
 

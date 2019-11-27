@@ -175,7 +175,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 ![UI を使用してデータセットを作成する](media/how-to-create-register-datasets/create-dataset-ui.gif)
 
 Studio でデータセットを作成するには、次の手順を実行します。
-1. https://ml.azure.com でサインインします。
+1. [https://ml.azure.com](https://ml.azure.com ) でサインインします。
 1. 左側のウィンドウの **[アセット]** セクションで **[データセット]** を選択します。 
 1. **[データセットの作成]** を選択して、データセットのソースを選択します。 このソースには、ローカル ファイル、データストア、またはパブリック URL を指定できます。
 1. データセットの種類として **[表形式]** または **[ファイル]** を選択します。

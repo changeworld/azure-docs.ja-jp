@@ -1,5 +1,5 @@
 ---
-title: 言語アナライザーをインデックスの文字列フィールドに追加する
+title: 言語アナライザーを文字列フィールドに追加する
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search での英語以外のクエリおよびインデックスのための多言語字句テキスト解析について説明します。
 manager: nitinme
@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f5833da5b15c893499b0d786972eff61c7391137
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ebdbcdda4efd7fdf9eb0e3e04cfa4d1987e03716
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790135"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111817"
 ---
-# <a name="add-language-analyzers-to-an-azure-cognitive-search-index"></a>Azure Cognitive Search のインデックスに言語アナライザーを追加する
+# <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドに言語アナライザーを追加する
 
 "*言語アナライザー*" は、[テキスト アナライザー](search-analyzers.md)の固有の種類であり、対象言語の言語規則を使用して字句解析を実行します。 すべての検索可能フィールドには、**analyzer** プロパティがあります。 インデックスに翻訳された文字列が含まれる場合 (英語と中国語のテキストが別のフィールドになっている場合など)、各フィールドで言語アナライザーを指定して、これらのアナライザーの豊富な言語機能にアクセスできます。  
 
@@ -63,7 +63,7 @@ Azure Cognitive Search では、Lucene によって提供される 35 個のア�
 |--------------|-----------------------------|--------------------------|  
 |アラビア語|ar.microsoft|ar.lucene|  
 |アルメニア語||hy.lucene|  
-|バングラ語|bn.microsoft||  
+|ベンガル語|bn.microsoft||  
 |バスク語||eu.lucene|  
 |ブルガリア語|bg.microsoft|bg.lucene|  
 |カタルニア語|ca.microsoft|ca.lucene|  

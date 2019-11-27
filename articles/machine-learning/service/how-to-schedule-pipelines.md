@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 10/15/2019
-ms.openlocfilehash: 31c3cd944651b9ba4ca4fcaa275e5b0ccedd947c
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/06/2019
+ms.openlocfilehash: ded95800c482d43fcaf27993869f1e71eee68f47
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559405"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831819"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Azure Machine Learning SDK for Python を使用して機械学習パイプラインのスケジュールを設定する
 
@@ -94,9 +94,9 @@ reactive_schedule = Schedule.create(ws, name="MyReactiveSchedule", description="
 
 ## <a name="view-your-scheduled-pipelines"></a>スケジュールされたパイプラインを表示する
 
-Web ブラウザーで、Machine Learning service ワークスペースに移動します。 ナビゲーション パネルの **[アセット]** セクションで、 **[パイプライン]** を選択します。 このリンクを使用すると、ワークスペースで発行されたパイプラインの一覧が表示されます。
+Web ブラウザーで Azure Machine Learning に移動します。 ナビゲーション パネルの **[エンドポイント]** セクションで、 **[Pipeline endpoints]/(パイプラインのエンドポイント/)** を選択します。 これにより、ワークスペースで発行されたパイプラインの一覧が表示されます。
 
-![ワークスペースの [パイプライン] ページ](media/how-to-schedule-a-pipeline/pipelines-list.png)
+![AML の [パイプライン] ページ](media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
 このページでは、ワークスペース内のすべてのパイプラインに関する概要情報 (名前、説明、状態など) を確認できます。 パイプラインをクリックすると、詳細を詳しく見ることができます。 結果のページには、パイプラインの詳細が表示され、個々の実行について確認することもできます。
 

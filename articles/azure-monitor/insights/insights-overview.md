@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/22/2019
-ms.openlocfilehash: 81d82ce79130513a2827090a98bfef192c9d7829
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d1b53267daa2d47baf9976727bbaf3fa56172432
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795724"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832092"
 ---
 # <a name="overview-of-insights-in-azure-monitor"></a>Azure Monitor の Insights の概要
 Insights は、特定のアプリケーションやサービスを監視するためのカスタマイズされたエクスペリエンスを提供します。 [Azure Monitor データ プラットフォーム](../platform/data-platform.md)にデータを格納し、Azure Monitor のその他の機能を分析やアラートに使用しますが、追加のデータを収集したり、Azure portal で独自のユーザー エクスペリエンスを提供したりできます。 Azure portal で、Azure Monitor メニューの **[Insights]** セクションから分析情報にアクセスします。
@@ -47,8 +47,8 @@ Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および
 
 ![VM に対する Azure Monitor](media/insights-overview/vm-insights.png)
 
-## <a name="azure-monitor-for-network-preview"></a>Azure Monitor for Network (プレビュー)
-Azure Monitor for Network には、すべてのネットワーク リソースの正常性とメトリックの包括的ビューが用意されています。 高度な検索機能を使用すると、Web サイト名を検索するだけで、Web サイトをホストしているリソースを特定するなどのシナリオが可能になり、リソースの依存関係を特定できます。
+## <a name="azure-monitor-for-networks-preview"></a>Azure Monitor for Networks (プレビュー)
+[Azure Monitor for Networks](network-insights-overview.md) には、すべてのネットワーク リソースの正常性とメトリックの包括的ビューが用意されています。 高度な検索機能を使用すると、Web サイト名を検索するだけで、Web サイトをホストしているリソースを特定するなどのシナリオが可能になり、リソースの依存関係を特定できます。
 
 ![Azure Monitor for Networks](media/insights-overview/network-insights.png)
 

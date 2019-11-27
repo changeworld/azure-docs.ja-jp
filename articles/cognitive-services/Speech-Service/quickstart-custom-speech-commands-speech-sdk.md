@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Speech SDK でカスタム コマンド アプリケーションに接続する (プレビュー)
+title: クイック スタート:Speech SDK を使用したカスタム コマンド アプリへの接続 - Speech Service
 titleSuffix: Azure Cognitive Services
 description: この記事では、カスタム コマンドを使用して Speech SDK クライアント アプリケーションを作成します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5f395d37e0133a081a6fcb2e03821a97e4012316
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506682"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111158"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>クイック スタート:Speech SDK でカスタム コマンド アプリケーションに接続する (プレビュー)
 
@@ -46,7 +46,7 @@ ms.locfileid: "73506682"
 
 1. [以前に作成したカスタム コマンド アプリケーション](./quickstart-custom-speech-commands-create-new.md)を開き、 **[Publish]\(発行\)** を選択します
 
-   > [!div class="mx-imgBorder"]
+   > [!div class="mx-imgBorder"] 
    > ![アプリケーションの発行](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. 後で使用するために、発行通知からアプリ ID をコピーします
@@ -320,7 +320,7 @@ ms.locfileid: "73506682"
 
    ```csharp
    //
-   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities, 
+   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities,
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
@@ -377,7 +377,7 @@ ms.locfileid: "73506682"
 1. `MainPage` クラスの `ListenButton_ButtonClicked` メソッドの本体に次のコード スニペットを追加します
 
    ```csharp
-   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and 
+   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
    // registered the event handlers.
    if (connector == null)
    {
@@ -415,7 +415,7 @@ ms.locfileid: "73506682"
 1. **[Talk]\(会話\)** を選択し、デバイスのマイクに向かって英語のフレーズや文章を話します。 音声が Direct Line Speech チャネルに送信されてテキストに変換され、ウィンドウに表示されます。
 
 ## <a name="next-steps"></a>次の手順
-> [!div class="nextstepaction"]
-> [方法:Speech SDK を使用し、クライアントでコマンドを実行する (プレビュー)](./how-to-custom-speech-commands-fulfill-sdk.md)
-> [方法: カスタム コマンド パラメーターに検証を追加する (プレビュー)](./how-to-custom-speech-commands-validations.md)
 
+> [!div class="nextstepaction"]
+> [方法: Speech SDK を使用してクライアントでコマンドを実行する (プレビュー)](./how-to-custom-speech-commands-fulfill-sdk.md)
+> [ 方法: カスタム コマンド パラメーターに検証を追加する (プレビュー)](./how-to-custom-speech-commands-validations.md)

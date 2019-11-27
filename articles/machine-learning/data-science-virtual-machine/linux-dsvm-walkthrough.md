@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485385"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929539"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure での Linux Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -58,8 +58,8 @@ Linux DSVM を使用する前に、以下の前提条件を満たしている必
 
 このデータセットには、各メールに関する何種類かの統計情報が含まれています。
 
-* **word\_freq\_*WORD*** という列は、メール内の全単語のうち *WORD* と一致する単語の割合を示しています。 たとえば、**word\_freq\_make** が **1** の場合、メール内の全単語の 1% が *make* です。
-* **char\_freq\_*CHAR*** という列は、メール内の全文字のうち *CHAR* と一致する文字の割合を示しています。
+* **word\_freq\__WORD_** のような列は、メール内の全単語のうち *WORD* と一致する単語の割合を示しています。 たとえば、**word\_freq\_make** が **1** の場合、メール内の全単語の 1% が *make* です。
+* **char\_freq\__CHAR_** のような列は、メール内の全文字のうち *CHAR* と一致する文字の割合を示しています。
 * **capital\_run\_length\_longest** は、連続する大文字の最大の長さを示しています。
 * **capital\_run\_length\_average** は、連続する大文字の平均の長さを示しています。
 * **capital\_run\_length\_total** は、連続する大文字すべての合計の長さを示しています。

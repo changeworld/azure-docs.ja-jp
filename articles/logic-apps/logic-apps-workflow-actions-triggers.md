@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: 9bee329953a1f39720b054ed90e1d56c6743862e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7b4267f672ab5ad902c0f96dd7ba7e377316e4f5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679870"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839772"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Azure Logic Apps でのトリガーとアクションの種類のスキーマ リファレンス ガイド
 
@@ -273,19 +273,21 @@ ms.locfileid: "72679870"
 
 ### <a name="http-trigger"></a>HTTP トリガー
 
-このトリガーは、指定された繰り返しスケジュールに基づいて、指定されたエンドポイントをチェックまたはポーリングします。 エンドポイントの応答によって、ワークフローが実行されるかどうかが決定します。
+このトリガーからは、指定の繰り返しスケジュールに基づき、指定の HTTP または HTTPS エンドポイントに要求が送信されます。 その後、トリガーにより応答が確認され、ワークフローの実行状況が判断されます。
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<endpoint-URL>",
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
       "headers": { "<header-content>" },
+      "queries": "<query-parameters>",
       "body": "<body-content>",
-      "authentication": { "<authentication-method>" },
-      "retryPolicy": { "<retry-behavior>" },
-      "queries": "<query-parameters>"
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      }
    },
    "recurrence": {
       "frequency": "<time-unit>",
@@ -303,27 +305,27 @@ ms.locfileid: "72679870"
 
 *必須*
 
-| 値 | 種類 | 説明 | 
-|-------|------|-------------| 
-| <*method-type*> | string | 指定されたエンドポイントのポーリングに使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE" | 
-| <*endpoint-URL*> | string | ポーリング対象エンドポイントの HTTP または HTTPS の URL <p>文字列の最大サイズ: 2 KB | 
-| <*time-unit*> | string | トリガーの起動間隔を表す時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
-| <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
-|||| 
+| プロパティ | 値 | 種類 | 説明 |
+|----------|-------|------|-------------|
+| `method` | <*method-type*> | string | 外向き要求を送信するために使用するメソッド:"GET"、"PUT"、"POST"、"PATCH"、または "DELETE" |
+| `uri` | <*HTTP-or-HTTPS-endpoint-URL*> | string | 外向き要求を送信する HTTP または HTTPS エンドポイント URL。 文字列の最大サイズ: 2 KB <p>Azure のサービスまたはリソースの場合、この URI 構文には、アクセスするリソース ID とパスが含まれます。 |
+| `frequency` | <*time-unit*> | string | トリガーの起動間隔を表す時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" |
+| `interval` | <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 |
+|||||
 
 *省略可能*
 
-| 値 | 種類 | 説明 | 
-|-------|------|-------------| 
-| <*header-content*> | JSON オブジェクト | 要求で送信するヘッダー <p>要求の言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*body-content*> | string | ペイロードとして要求で送信するメッセージの内容 | 
-| <*authentication-method*> | JSON オブジェクト | 要求で使用する認証の方法。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 Scheduler 以外に、`authority` プロパティがサポートされています。 指定しない場合の既定値は `https://login.windows.net` ですが、`https://login.windows\-ppe.net` など、別の値を使用できます。 |
-| <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 |  
- <*query-parameters*> | JSON オブジェクト | 要求に含める任意のクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を要求に追加します。 | 
-| <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまで同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
-| <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
-| <*operation-option*> | string | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 | 
-|||| 
+| プロパティ | 値 | 種類 | 説明 |
+|----------|-------|------|-------------|
+| `headers` | <*header-content*> | JSON オブジェクト | 要求に含める必要があるすべてのヘッダー <p>言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*query-parameters*> | JSON オブジェクト | 要求で使用する必要があるすべてのクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を要求に追加します。 |
+| `body` | <*body-content*> | JSON オブジェクト | ペイロードとして要求で送信するメッセージの内容 |
+| `authentication` | <*authentication-type-and-property-values*> | JSON オブジェクト | 送信要求の認証のために要求で使用される認証モデル。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。 Scheduler 以外に、`authority` プロパティがサポートされています。 指定しない場合の既定値は `https://management.azure.com/` ですが、別の値を使用できます。 |
+| `retryPolicy` > `type` | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 |
+| `runs` | <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまで同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 |
+| `maximumWaitingRuns` | <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 |
+| `operationOptions` | <*operation-option*> | string | `operationOptions` プロパティを設定して既定のビヘイビアーを変更できます。 詳細については、「[操作のオプション](#operation-options)」を参照してください。 |
+|||||
 
 *Outputs*
 
@@ -374,7 +376,7 @@ ms.locfileid: "72679870"
          "uri": "<endpoint-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": { "<retry-behavior>" }
          },
       },
@@ -383,7 +385,7 @@ ms.locfileid: "72679870"
          "url": "<endpoint-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" }
+         "authentication": { "<authentication-type>" }
       }
    },
    "runTimeConfiguration": {
@@ -413,7 +415,7 @@ ms.locfileid: "72679870"
 | <*method-type*> | string | 取り消し要求に使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
 | <*endpoint-unsubscribe-URL*> | string | 取り消し要求の送信先であるエンドポイント URL | 
 | <*body-content*> | string | サブスクリプションまたは取り消しの要求で送信するメッセージの内容 | 
-| <*authentication-method*> | JSON オブジェクト | 要求で使用する認証の方法。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
+| <*authentication-type*> | JSON オブジェクト | 送信要求の認証のために要求で使用される認証モデル。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。 |
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
 | <*max-runs*> | 整数 | 既定では、ワークフロー インスタンスは[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまですべて同時に、または並行して実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」を参照してください。 | 
 | <*max-runs-queue*> | 整数 | ワークフローで既に最大数のインスタンスが実行されている場合 (最大数は `runtimeConfiguration.concurrency.runs` プロパティに基づいて変更可能)、新たな実行は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでこのキューに入れられます。 既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | 
@@ -688,7 +690,9 @@ ms.locfileid: "72679870"
 
 > [!NOTE]
 > 同期応答パターンでは **SplitOn** を使用できません。 **SplitOn** を使用して、応答アクションを含むワークフローは、非同期で実行して、すぐに `202 ACCEPTED` 応答を送信します。
-
+>
+> トリガー コンカレンシーが有効になっていると、[SplitOn 上限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)が大幅に下がります。 項目数がこの上限を超えると、SplitOn 機能は無効になります。
+ 
 トリガーの Swagger ファイルに、配列であるペイロードが記述されている場合、**SplitOn** プロパティが自動的にトリガーに追加されます。 それ以外の場合は、バッチ解除する配列を含む応答ペイロード内にこのプロパティを追加します。 
 
 *例*
@@ -950,7 +954,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
          "uri": "<api-subscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "retryPolicy": "<retry-behavior>",
          "queries": { "<query-parameters>" },
          "<other-action-specific-input-properties>"
@@ -960,7 +964,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
          "uri": "<api-unsubscribe-URL>",
          "headers": { "<header-content>" },
          "body": "<body-content>",
-         "authentication": { "<authentication-method>" },
+         "authentication": { "<authentication-type>" },
          "<other-action-specific-properties>"
       },
    },
@@ -986,7 +990,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 | <*api-unsubscribe-URL*> | string | API からの登録解除に使用する URI | 
 | <*header-content*> | JSON オブジェクト | 要求で送信するヘッダー <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | JSON オブジェクト | 要求で送信するメッセージの内容 | 
-| <*authentication-method*> | JSON オブジェクト | 要求で使用する認証の方法。 詳細については、「[Scheduler 送信認証](../scheduler/scheduler-outbound-authentication.md)」を参照してください。 |
+| <*authentication-type*> | JSON オブジェクト | 送信要求の認証のために要求で使用される認証モデル。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。 |
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
 | <*query-parameters*> | JSON オブジェクト | API 呼び出しに含める任意のクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 | 
 | <*other-action-specific-input-properties*> | JSON オブジェクト | この特定のアクションに適用するその他の入力プロパティ | 
@@ -1105,9 +1109,9 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *例 2*
 
-このアクションは、Office 365 Outlook アカウントに新しい電子メールが届くとトリガーされるロジック アプリでコードを実行します。 このロジック アプリでは、受信した電子メールの内容と承認要求を転送する、承認メールの送信アクションも使用します。 
+このアクションは、Office 365 Outlook アカウントに新しい電子メールが届くとトリガーされるロジック アプリでコードを実行します。 このロジック アプリでは、受信した電子メールの内容と承認要求を転送する、承認メールの送信アクションも使用します。
 
-このコードは、トリガーの `Body` プロパティから電子メール アドレスを抽出し、それらの電子メール アドレスと承認アクションの `SelectedOption` プロパティ値を返します。 このアクションは、承認メールの送信アクションを依存関係として `explicitDependencies` > `actions` 属性に明示的に含めます。
+このコードは、トリガーの `Body` プロパティから電子メール アドレスを抽出し、そのアドレスと承認アクションの `SelectedOption` プロパティ値を返します。 このアクションは、承認メールの送信アクションを依存関係として `explicitDependencies` > `actions` 属性に明示的に含めます。
 
 ```json
 "Execute_JavaScript_Code": {
@@ -1206,14 +1210,21 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 ### <a name="http-action"></a>HTTP アクション
 
-指定されたエンドポイントに要求を送信し、応答を調べて、ワークフローを実行する必要があるかどうかを判断するアクションです。 
+指定の HTTP または HTTPS エンドポイントに要求を送信し、応答を調べてワークフローの実行状況を判断するアクションです。
 
 ```json
 "HTTP": {
    "type": "Http",
    "inputs": {
       "method": "<method-type>",
-      "uri": "<HTTP-or-HTTPS-endpoint-URL>"
+      "uri": "<HTTP-or-HTTPS-endpoint-URL>",
+      "headers": { "<header-content>" },
+      "queries": { "<query-parameters>" },
+      "body": "<body-content>",
+      "authentication": { "<authentication-type-and-property-values>" },
+      "retryPolicy": {
+         "type": "<retry-behavior>"
+      },
    },
    "runAfter": {}
 }
@@ -1221,23 +1232,24 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| 値 | 種類 | 説明 | 
-|-------|------|-------------| 
-| <*method-type*> | string | 要求を送信するために使用するメソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
-| <*HTTP-or-HTTPS-endpoint-URL*> | string | 呼び出す対象である HTTP または HTTPS エンドポイント。 文字列の最大サイズ: 2 KB | 
-|||| 
+| プロパティ | 値 | 種類 | 説明 |
+|----------|-------|------|-------------|
+| `method` | <*method-type*> | string | 外向き要求を送信するために使用するメソッド:"GET"、"PUT"、"POST"、"PATCH"、または "DELETE" |
+| `uri` | <*HTTP-or-HTTPS-endpoint-URL*> | string | 外向き要求を送信する HTTP または HTTPS エンドポイント URL。 文字列の最大サイズ: 2 KB <p>Azure のサービスまたはリソースの場合、この URI 構文には、アクセスするリソース ID とパスが含まれます。 |
+|||||
 
 *省略可能*
 
-| 値 | 種類 | 説明 | 
-|-------|------|-------------| 
-| <*header-content*> | JSON オブジェクト | 要求で送信するヘッダー <p>言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
-| <*body-content*> | JSON オブジェクト | 要求で送信するメッセージの内容 | 
-| <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
-| <*query-parameters*> | JSON オブジェクト | 要求に含める任意のクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 | 
-| <*other-action-specific-input-properties*> | JSON オブジェクト | この特定のアクションに適用するその他の入力プロパティ | 
-| <*other-action-specific-properties*> | JSON オブジェクト | この特定のアクションに適用するその他のプロパティ | 
-|||| 
+| プロパティ | 値 | 種類 | 説明 |
+|----------|-------|------|-------------|
+| `headers` | <*header-content*> | JSON オブジェクト | 要求に含める必要があるすべてのヘッダー <p>言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
+| `queries` | <*query-parameters*> | JSON オブジェクト | 要求で使用する必要があるすべてのクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 |
+| `body` | <*body-content*> | JSON オブジェクト | ペイロードとして要求で送信するメッセージの内容 |
+| `authentication` | <*authentication-type-and-property-values*> | JSON オブジェクト | 送信要求の認証のために要求で使用される認証モデル。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。 Scheduler 以外に、`authority` プロパティがサポートされています。 指定しない場合の既定値は `https://management.azure.com/` ですが、別の値を使用できます。 |
+| `retryPolicy` > `type` | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 |
+| <*other-action-specific-input-properties*> | <*input-property*> | JSON オブジェクト | この特定のアクションに適用するその他の入力プロパティ |
+| <*other-action-specific-properties*> | <*property-value*> | JSON オブジェクト | この特定のアクションに適用するその他のプロパティ |
+|||||
 
 *例*
 
@@ -2404,7 +2416,9 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 既定では、ロジック アプリ インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは (同時に並行して) 実行されます。 そのため、先行するワークフロー インスタンスの実行が終了する前に、各トリガー インスタンスが起動します。 この制限を使用して、バックエンド システムが受信する要求の数を制限できます。 
 
-既定の制限を変更するには、コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 このプロパティは、並行して実行できるワークフロー インスタンスの最大数を制御します。 コンカレンシー制御を使用する場合の考慮事項のいくつかを次に示します。
+既定の制限を変更するには、コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 このプロパティは、並行して実行できるワークフロー インスタンスの最大数を制御します。 コンカレンシー制御を有効にする場合の考慮事項のいくつかを次に示します。
+
+* コンカレンシーが有効になっていると、[配列のバッチ解除](#split-on-debatch)のために [SplitOn 上限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)が大幅に下がります。 項目数がこの上限を超えると、SplitOn 機能は無効になります。
 
 * コンカレンシーが有効になっている間は、実行時間の長いロジック アプリ インスタンスによって、新しいロジック アプリ インスタンスが待機状態になることがあります。 この状態により、Azure Logic Apps で新しいインスタンスが作成されなくなります。この状態は、同時実行の数が、指定された同時実行の最大数よりも少ない場合でも発生します。
 
@@ -2665,134 +2679,11 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 }
 ```
 
-<a name="connector-authentication"></a>
+<a name="authenticate-triggers-actions"></a>
 
-## <a name="authenticate-http-triggers-and-actions"></a>HTTP トリガーとアクションを認証する
+## <a name="authenticate-triggers-and-actions"></a>トリガーとアクションを認証する
 
-HTTP エンドポイントはさまざまな認証をサポートしています。 次の HTTP トリガーとアクションに対して認証を設定できます。
-
-* [HTTP](../connectors/connectors-native-http.md)
-* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
-* [HTTP Webhook](../connectors/connectors-native-webhook.md)
-
-設定できる認証の種類は次のとおりです。
-
-* [基本認証](#basic-authentication)
-* [クライアント証明書認証](#client-certificate-authentication)
-* [Azure Active Directory (Azure AD) OAuth 認証](#azure-active-directory-oauth-authentication)
-
-> [!IMPORTANT]
-> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
-
-<a name="basic-authentication"></a>
-
-### <a name="basic-authentication"></a>基本認証
-
-Azure Active Directory を使用する[基本認証](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md)では、トリガーまたはアクションの定義に、`authentication` JSON オブジェクトを含めることができます。このオブジェクトには、以下の表で指定されたプロパティがあります。 実行時にパラメーター値にアクセスする場合は、[ワークフロー定義言語](https://aka.ms/logicappsdocs)で提供される `@parameters('parameterName')` 式を使用できます。 
-
-| プロパティ | 必須 | 値 | 説明 | 
-|----------|----------|-------|-------------| 
-| **type** | はい | "Basic" | 使用する認証の種類。ここでは "Basic" です | 
-| **username** | はい | "@parameters('userNameParam')" | ターゲット サービス エンドポイントへのアクセスを認証するためのユーザー名 |
-| **password** | はい | "@parameters('passwordParam')" | ターゲット サービス エンドポイントへのアクセスを認証するためのパスワード |
-||||| 
-
-この HTTP アクション定義の例では、`authentication` セクションで `Basic` 認証が指定されます。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "Basic",
-         "username": "@parameters('userNameParam')",
-         "password": "@parameters('passwordParam')"
-      }
-  },
-  "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
-
-<a name="client-certificate-authentication"></a>
-
-### <a name="client-certificate-authentication"></a>クライアント証明書認証
-
-Azure Active Directory を使用する[証明書ベース認証](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md)では、トリガーまたはアクションの定義に `authentication` JSON オブジェクトを含めることができます。このオブジェクトには、以下の表で指定されたプロパティがあります。 実行時にパラメーター値にアクセスする場合は、[ワークフロー定義言語](https://aka.ms/logicappsdocs)で提供される `@parameters('parameterName')` 式を使用できます。 使用できるクライアント証明書の数の制限については、[Azure Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。
-
-| プロパティ | 必須 | 値 | 説明 |
-|----------|----------|-------|-------------|
-| **type** | はい | "ClientCertificate" | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類。 自己署名証明書はサポートされていますが、SSL 用の自己署名証明書はサポートされていません。 |
-| **pfx** | はい | "@parameters('pfxParam') | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
-| **password** | はい | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワード |
-||||| 
-
-この HTTP アクション定義の例では、`authentication` セクションで `ClientCertificate` 認証が指定されます。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ClientCertificate",
-         "pfx": "@parameters('pfxParam')",
-         "password": "@parameters('passwordParam')"
-      }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
-
-<a name="azure-active-directory-oauth-authentication"></a>
-
-### <a name="azure-active-directory-ad-oauth-authentication"></a>Azure Active Directory (AD) OAuth 認証
-
-[Azure AD OAuth 認証](../active-directory/develop/authentication-scenarios.md)では、トリガーまたはアクションの定義に `authentication` JSON オブジェクトを含めることができます。このオブジェクトには、以下の表で指定されたプロパティがあります。 実行時にパラメーター値にアクセスする場合は、[ワークフロー定義言語](https://aka.ms/logicappsdocs)で提供される `@parameters('parameterName')` 式を使用できます。
-
-| プロパティ | 必須 | 値 | 説明 |
-|----------|----------|-------|-------------|
-| **type** | はい | `ActiveDirectoryOAuth` | 使用する認証の種類 (Azure AD OAuth の場合は "ActiveDirectoryOAuth") |
-| **authority** | いいえ | <*URL-for-authority-token-issuer*> | 認証トークンを提供する機関の URL |
-| **tenant** | はい | <*tenant-ID*> | Azure AD テナントのテナント ID |
-| **audience** | はい | <*resource-to-authorize*> | 承認で使用するリソース (`https://management.core.windows.net/` など) |
-| **clientId** | はい | <*client-ID*> | 承認を要求しているアプリのクライアント ID |
-| **credentialType** | はい | "Certificate" または "Secret" | クライアントが承認を要求するために使用する資格情報の種類。 このプロパティと値は基の定義には出現しませんが、その資格情報の種類に必要なパラメーターが決まります。 |
-| **pfx** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('pfxParam') | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
-| **password** | はい (ただし資格情報の種類が "Certificate" の場合のみ) | "@parameters('passwordParam')" | PFX ファイルにアクセスするためのパスワード |
-| **secret** | はい (ただし資格情報の種類が "Secret" の場合のみ) | "@parameters('secretParam')" | 承認を要求しているクライアント シークレット |
-|||||
-
-この HTTP アクション定義の例では、`authentication` セクションで `ActiveDirectoryOAuth` 認証と "Secret" 資格情報の種類が指定されます。 パラメーターの使用とセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
-
-```json
-"HTTP": {
-   "type": "Http",
-   "inputs": {
-      "method": "GET",
-      "uri": "https://www.microsoft.com",
-      "authentication": {
-         "type": "ActiveDirectoryOAuth",
-         "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-         "audience": "https://management.core.windows.net/",
-         "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-         "secret": "@parameters('secretParam')"
-     }
-   },
-   "runAfter": {}
-}
-```
-
-> [!IMPORTANT]
-> ロジック アプリ ワークフロー定義で処理される機密情報を保護していることを確認します。 セキュリティで保護されたパラメーターを使用し、必要に応じてデータをエンコードします。 パラメーターのセキュリティ保護の詳細については、[ロジック アプリのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters)に関するページを参照してください。
+HTTP および HTTPS エンドポイントでは、さまざまな種類の認証がサポートされています。 これらのエンドポイントにアクセスする送信呼び出しまたは送信要求を行うために使用するトリガーまたはアクションに基づいて、さまざまな認証の種類から選択できます。 詳しくは、「[送信呼び出しに認証を追加する](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

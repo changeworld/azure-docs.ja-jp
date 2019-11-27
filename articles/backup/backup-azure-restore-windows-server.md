@@ -1,6 +1,6 @@
 ---
-title: Azure のデータを Windows サーバーまたは Windows コンピューターに復元する
-description: Azure に格納されているデータを Windows サーバーまたは Windows コンピューターに復元する方法について説明します。
+title: Azure のデータを Windows サーバーに復元する - Azure Backup
+description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを使用して、Azure に格納されているデータを Windows サーバーまたは Windows コンピューターに復元する方法について説明します。
 ms.reviewer: saurse
 author: dcurwin
 manager: carmonm
@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.author: dacurwin
-ms.openlocfilehash: 4c0686fc72bfcafdfee650822aece15b8f3fb766
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 4d9ab47d83caadda9046481c15dfb6af18aee146
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210326"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012189"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用してファイルを Windows に復元する
 
@@ -25,7 +25,7 @@ ms.locfileid: "70210326"
 書き込み可能な復旧ポイントのスナップショットを回復ボリュームとしてマウントするには、インスタント リストア機能を使用します。 その後、回復ボリュームを調べてファイルをローカル コンピューターにコピーすることによって、ファイルを選択的に復元できます。
 
 > [!NOTE]
-> インスタント リストアを使用してデータを復元する場合は、[2017 年 1 月の Azure Backup 更新プログラム](https://support.microsoft.com/en-us/help/3216528?preview)が必要です。 また、バックアップ データは、サポート記事に記載されているロケール内のコンテナーで保護されている必要があります。 インスタント リストアをサポートするロケールの最新リストについては、[2017 年 1 月の Azure Backup 更新プログラム](https://support.microsoft.com/en-us/help/3216528?preview)をご覧ください。
+> インスタント リストアを使用してデータを復元する場合は、[2017 年 1 月の Azure Backup 更新プログラム](https://support.microsoft.com/help/3216528?preview)が必要です。 また、バックアップ データは、サポート記事に記載されているロケール内のコンテナーで保護されている必要があります。 インスタント リストアをサポートするロケールの最新リストについては、[2017 年 1 月の Azure Backup 更新プログラム](https://support.microsoft.com/help/3216528?preview)をご覧ください。
 >
 
 Azure Portal の Recovery Services コンテナーでインスタント リストアを使います。 Backup コンテナーにデータを格納した場合は、Recovery Services コンテナーに変換されています。 インスタント リストアを使用する場合は、MARS 更新プログラムをダウンロードして、インスタント リストアを説明する手順に従います。
@@ -53,7 +53,7 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
     ![データの回復ウィザードの [回復モードの選択] ページのスクリーンショット](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
    > 個別のファイルとフォルダーを復元するオプションには、.NET Framework 4.5.2 以降が必要です。 **[個別のファイルとフォルダー]** オプションが表示されない場合は、.NET Framework をバージョン 4.5.2 以降にアップグレードして再試行する必要があります。
-
+ 
    > [!TIP]
    > **[個別のファイルとフォルダー]** オプションを使用すると、復旧ポイントのデータにすばやくアクセスできます。 これは、合計サイズが 80 GB を超えない個別のファイルの復旧に適しており、復旧中に最大 6 MB/秒の転送またはコピー速度を提供します。 **[ボリューム]** オプションでは、指定されたボリューム内のすべてのバックアップ済みデータを復旧します。 このオプションは、より高速な転送速度 (最大 60 MB/秒) を提供します。これは、大きなサイズのデータやボリューム全体の復旧に最適です。
 
@@ -71,11 +71,9 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 
     ![データの回復ウィザードの [ファイルの参照と回復] ページのスクリーンショット](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
-
 8. Windows エクスプローラーで、復元するファイルとフォルダーをコピーし、それをサーバーまたはコンピューターの任意のローカルの場所に貼り付けます。 回復ボリュームから直接ファイルを開くか、またはストリーミングして、正しいバージョンを回復していることを確認できます。
 
     ![[コピー] が強調表示された Windows エクスプローラーのスクリーンショット](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
-
 
 9. 完了したら、 **[ファイルの参照と回復]** ページで **[マウント解除]** を選択します。 その後、 **[はい]** を選択して、ボリュームをマウント解除することを確認します。
 
@@ -85,16 +83,15 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
     > **[マウント解除]** を選択しない場合、回復ボリュームは、マウントされた時刻から 6 時間マウントされたままになります。 ただし、ファイルのコピーが進行中の場合は、マウント時間が最大 24 時間まで延長されます。 ボリュームのマウント中は、バックアップ操作が実行されません。 ボリュームがマウントされている間に実行されるようにスケジュールされたバックアップ操作はすべて、回復ボリュームがマウント解除された後に実行されます。
     >
 
-
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>インスタント リストアを使用してデータを別のコンピューターに復元する
-サーバー全体が失われた場合でも、Azure Backup から別のコンピューターにデータを回復できます。 次の手順はそのワークフローを示しています。
 
+サーバー全体が失われた場合でも、Azure Backup から別のコンピューターにデータを回復できます。 次の手順はそのワークフローを示しています。
 
 これらの手順には、次の用語が含まれています。
 
 * *ソース コンピューター* – バックアップが取得され、現在は使用できない元のコンピューター。
 * *ターゲット コンピューター* – データの回復先となるコンピューター。
-* *サンプルのコンテナー* – ソース コンピューターとターゲット コンピューターが登録されている Recovery Services コンテナー。 <br/>
+* *サンプルのコンテナー* – ソース コンピューターとターゲット コンピューターが登録されている Recovery Services コンテナー。
 
 > [!NOTE]
 > バックアップを、以前のバージョンのオペレーティング システムを実行しているターゲット コンピューターに復元することはできません。 たとえば、Windows 7 コンピューターから取得されたバックアップは Windows 7 (以降の) コンピューターで復元できます。 Windows 8 コンピューターから取得されたバックアップは、Windows 7 コンピューターに復元できません。
@@ -116,7 +113,6 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 5. サンプルのコンテナーに対応するコンテナー資格情報ファイルを指定し、 **[次へ]** を選択します。
 
     コンテナー資格情報ファイルが無効である (または期限が切れている) 場合は、Azure Portal でサンプルのコンテナーから新しいコンテナー資格情報ファイルをダウンロードします。 有効なコンテナー資格情報を指定すると、対応するバックアップ コンテナーの名前が表示されます。
-
 
 6. **[バックアップ サーバーの選択]** ページで、表示されているコンピューターの一覧からソース コンピューターを選択し、パスフレーズを指定します。 次に、 **[次へ]** を選択します。
 
@@ -151,4 +147,5 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
     >
 
 ## <a name="next-steps"></a>次の手順
+
 ファイルとフォルダーを回復したので、 [バックアップを管理](backup-azure-manage-windows-server.md)できます。

@@ -1,7 +1,7 @@
 ---
 title: Speech Devices SDK について - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Speech Devices SDK を使ってみましょう。 Speech Service は、さまざまなデバイスやオーディオ ソースと連携します。 適合するハードウェアやソフトウェアで音声アプリケーションを次のレベルに引き上げることができます。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。
+description: Speech Devices SDK を使ってみましょう。 Speech Service は、さまざまなデバイスやオーディオ ソースと連携します。 Speech Devices SDK は、専用マイク配列開発キットとの組み合わせで事前に調整されたライブラリです。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 243072477c7d249d7066a7a448061c51a0bd2f34
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 31d1a60cc6c1316dcfccb4f9ba2571708fddd991
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468724"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072378"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Speech Devices SDK について
 
@@ -23,9 +23,9 @@ ms.locfileid: "73468724"
 
 Speech Devices SDK は、次の場合に役立ちます。
 
-* 新しい音声シナリオをすばやくテストする。
-* クラウドベースの Speech Services をより簡単にお使いのデバイスに統合する。
-* 顧客向けに優れたユーザー エクスペリエンスを作成する。
+- 新しい音声シナリオをすばやくテストする。
+- クラウドベースの Speech Services をより簡単にお使いのデバイスに統合する。
+- 顧客向けに優れたユーザー エクスペリエンスを作成する。
 
 Speech Devices SDK は、[Speech SDK](speech-sdk.md) を利用しています。 Speech SDK を使って、Microsoft の先進の音声処理アルゴリズムによって処理された音声をデバイスのマイク配列から [Speech Services](overview.md) に送信します。 マルチチャンネル オーディオを使用して、ノイズの抑制、エコー キャンセレーション、ビームフォーミング、残響除去によってより正確な遠距離[音声認識](speech-to-text.md)が実現されます。
 
@@ -53,6 +53,5 @@ Linux の場合、サンプル アプリケーションは、クロスプラッ�
 
 > [!div class="nextstepaction"]
 > [Speech Device を選択する](get-speech-devices-sdk.md)
->
 > [!div class="nextstepaction"]
-> [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
+> [Speech Service のサブスクリプション キーを無料で取得する](get-started.md)

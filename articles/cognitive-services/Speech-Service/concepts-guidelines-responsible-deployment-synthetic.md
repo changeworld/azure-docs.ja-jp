@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: fe8730b0d97ae3783282cdd401fd5889ed08ad9a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506562"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836776"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>合成音声テクノロジの責任あるデプロイのためのガイドライン
 ここでは、合成音声テクノロジを使用するための Microsoft の一般的な設計ガイドラインを示します。 これらは、合成音声の責任ある開発を導くために、Microsoft がボイス タレント、消費者、および発話障害のある人々と共に行った研究で開発されました。
@@ -39,7 +39,7 @@ ms.locfileid: "73506562"
 合成音声を作成するために声優などのボイス タレントを起用する場合、次のガイドラインが適用されます。
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>ボイス タレントから有意な同意を得る
-ボイス タレントは、自分の音声フォント (その使用方法と場所) を管理し、それが使用されるたびに報酬を受け取ることを期待しています。 したがって、システム所有者は、ボイス タレントから書面による明示的な許可を得て、使用ケース、使用期間、報酬などについて明確な契約仕様書を持つ必要があります。 一部のボイス タレントは、このテクノロジが悪用される可能性があることを認識しておらず、システム所有者からこのテクノロジの機能について教育を受ける必要があります。 ボイス タレントと同意の詳細については、Microsoft の[透明性に関するメモ](https://aka.ms/neural-tts-transparency-note)を参照してください。
+ボイス タレントは、自分の音声フォント (その使用方法と場所) を管理し、それが使用されるたびに報酬を受け取ることを期待しています。 したがって、システム所有者は、ボイス タレントから書面による明示的な許可を得て、使用ケース、使用期間、報酬などについて明確な契約仕様書を持つ必要があります。 一部のボイス タレントは、このテクノロジが悪用される可能性があることを認識しておらず、システム所有者からこのテクノロジの機能について教育を受ける必要があります。 ボイス タレントと同意の詳細については、「[ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)」を参照してください。
 
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>発話障害のある個人についての考慮事項
@@ -57,13 +57,13 @@ ms.locfileid: "73506562"
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [透明性に関するメモ](https://aka.ms/neural-tts-transparency-note)
+* [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)
 * [規制の概要](concepts-gating-overview.md)
 * [開示する方法](concepts-disclosure-guidelines.md)
 * [設計パターンを開示する](concepts-disclosure-patterns.md)
 
 ## <a name="next-steps"></a>次の手順
 
-* [透明性に関するメモ](https://aka.ms/neural-tts-transparency-note)
+* [ボイス タレント向けの開示](https://aka.ms/disclosure-voice-talent)
 * [開示する方法](concepts-disclosure-guidelines.md)
 * [設計パターンを開示する](concepts-disclosure-patterns.md)

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 93ced443a73d5499d8b305770c3c866c26d540f0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 40dca0797d75597f4728423eb9d6d071a15d81b9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086461"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129263"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions バインド拡張機能を登録する
 
@@ -37,34 +37,17 @@ Azure Functions バージョン 2.x では、[バインド](./functions-triggers
 
 ## <a name="extension-bundles"></a>ローカル開発用の拡張機能バンドル
 
-拡張機能バンドルは、バージョン 2.x ランタイム用のローカル開発テクノロジであり、互換性のある一連の Functions バインディング拡張機能を関数アプリ プロジェクトに追加できます。 これらの拡張機能パッケージは、Azure にデプロイするときにデプロイ パッケージに含まれます。 バンドルによって、Microsoft が公開しているすべてのバインディングを *host.json* ファイルの設定を介して利用できるようになります。 バンドルで定義されている拡張機能パッケージは相互に互換性があるため、パッケージ間の競合を回避できます。 ローカルで開発する場合は、必ず最新バージョンの [Azure Functions Core Tools](functions-run-local.md#v2) を使用します。
+拡張機能バンドルは、互換性のある一連の関数バインド拡張機能を関数アプリに追加できるデプロイ テクノロジです。 アプリをビルドするときに、定義済みの一連の拡張機能が追加されます。 バンドルで定義されている拡張機能パッケージは相互に互換性があるため、パッケージ間の競合を回避できます。 拡張機能バンドルは、アプリの host.json ファイルで有効にします。  
 
-Azure Functions Core Tools または Visual Studio Code を使用するすべてのローカル開発には、拡張機能バンドルを使用します。
+バージョン 2.x およびそれ以降のバージョンの Functions ランタイムで拡張機能バンドルを使用できます。 ローカルで開発する場合は、必ず最新バージョンの [Azure Functions Core Tools](functions-run-local.md#v2) を使用します。
 
-拡張機能バンドルを使用しない場合は、バインディング拡張機能をインストールする前に、.NET Core 2.x SDK をローカル コンピューターにインストールする必要があります。 バンドルによって、ローカル開発のこの要件が取り除かれます。 
+Azure Functions Core Tools、Visual Studio Code を使用するすべてのローカル開発に、およびリモートでビルドする場合に、拡張機能バンドルを使用します。
+
+拡張機能バンドルを使用しない場合は、バインディング拡張機能をインストールする前に、.NET Core 2.x SDK をローカル コンピューターにインストールする必要があります。 拡張機能バンドルによって、ローカル開発のこの要件が取り除かれます。 
 
 拡張機能のバンドルを使用するには、*host.json* ファイルを更新して、`extensionBundle` の次のエントリを含めます。
-
-```json
-{
-    "version": "2.0",
-    "extensionBundle": {
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[1.*, 2.0.0)"
-    }
-}
-```
-
-`extensionBundle` では次のプロパティを使用できます。
-
-| プロパティ | 説明 |
-| -------- | ----------- |
-| **`id`** | Microsoft Azure Functions 拡張機能バンドルの名前空間。 |
-| **`version`** | インストールするバンドルのバージョン。 Functions ランタイムは常に、バージョン範囲 (間隔) で定義された最大許容バージョンを選択します。 上記のバージョン値には、1.0.0 から 2.0.0 未満までのすべてのバンドル バージョンを指定できます。 詳細については、[バージョン範囲を指定する間隔の表記](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards)に関する説明を参照してください。 |
-
-バンドルのバージョンは、バンドル内のパッケージの変更に応じて増加します。 メジャー バージョンの変更は、バンドル内のパッケージがメジャー バージョンによって増加するときに発生します。通常、これは、Functions ランタイムのメジャー バージョンの変更と一致しています。  
-
-既定のバンドルによってインストールされる最新の拡張機能のセットは、この [extensions.json ファイル](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)に列挙されています。
+ 
+[!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
 
 <a name="local-csharp"></a>
 
@@ -85,7 +68,7 @@ Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_V
 ## <a name="vs-code"></a>Visual Studio Code を使用する C# クラス ライブラリ
 
 > [!NOTE]
-> Functions で互換性のある一連のバインディング拡張機能パッケージが自動的にインストールされるようにするには、[拡張機能バンドル](#extension-bundles)を使用することをお勧めします。
+> Functions で互換性のある一連のバインディング拡張機能パッケージが自動的にインストールされるようにするには、[拡張機能バンドル](#extension-bundles)を使用することをお勧めします。 
 
 **Visual Studio Code** では、コマンド プロンプトから .NET Core CLI の [dotnet add package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) コマンドを使用して C# クラス ライブラリ プロジェクトのパッケージをインストールします。 次の例は、バインディングの追加方法を示しています。
 
@@ -95,7 +78,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --vers
 
 .NET Core CLI は、Azure Functions 2.x 開発のみに使用できます。
 
-`<BINDING_TYPE_NAME>` を対象のバインディングのリファレンス記事に示されているパッケージの名前に置き換えます。 対象のバインディングのリファレンス記事は、[サポートされるバインディングの一覧](./functions-triggers-bindings.md#supported-bindings)で見つけることができます。
+`<BINDING_TYPE_NAME>` は、必要なバインドが含まれているパッケージの名前に置き換えます。 対象のバインディングのリファレンス記事は、[サポートされるバインディングの一覧](./functions-triggers-bindings.md#supported-bindings)で見つけることができます。
 
 例の中の `<TARGET_VERSION>` を `3.0.0-beta5` などの特定のバージョンのパッケージに置き換えます。 有効なバージョンは、[NuGet.org](https://nuget.org) の個々のパッケージ ページに記載されています。Functions ランタイム 1.x または 2.x に対応する主要なバージョンは、バインデイングのリファレンス記事に示されています。
 

@@ -1,19 +1,18 @@
 ---
-title: 顧客データ要求機能
-description: 顧客データ要求機能の概要
+title: Azure IoT Hub デバイスの顧客データ要求
+description: Azure IoT Hub で管理されるデバイスのほとんどは個人用でありませんが、一部は個人用です。 この記事では、管理者がデバイスから個人データをエクスポートしたり、削除したりする方法について説明します。
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 1519637eddf909040131a1efac5738fc7cc8e565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29b3ed46ffe7f2236fc63d65ed49385b29b1a08a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845802"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889483"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
@@ -41,7 +40,7 @@ REST API を使ってデバイスの削除操作を実行することもでき�
 
 ## <a name="exporting-customer-data"></a>顧客データのエクスポート
 
-テナント管理者は、Azure portal の Azure IoT Hub 拡張機能の IoT デバイス ブレード内でコピーと貼り付けを利用して、デバイスに関連付けられているデータをエクスポートできます。
+テナント管理者は、Azure portal の Azure IoT Hub 拡張機能の IoT デバイス ウィンドウ内でコピーと貼り付けを利用して、デバイスに関連付けられているデータをエクスポートできます。
 
 REST API を使ってデバイスのエクスポート操作を実行することもできます。 詳しくは、[サービス - デバイスの取得](/rest/api/iothub/service/getdevice)に関する記事をご覧ください。
 

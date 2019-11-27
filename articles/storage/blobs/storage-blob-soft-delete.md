@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: ece49ff749a3b51e2fd4982f2df2726c57c6bf3d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 6f6aa90553f3a69d2d287c7d59e166884a1a8f66
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785201"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113734"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Storage Blob の論理的な削除
 
@@ -150,7 +150,7 @@ Copy a snapshot over the base blob:
 
 次の手順では、論理的な削除の基本的な使用方法について説明します。
 
-### <a name="azure-portal"></a>Azure ポータル
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
 論理的な削除を有効にするには、 **[Blob service]** の **[論理的な削除]** オプションに移動します。 **[有効]** をクリックして、論理的に削除されたデータを保持する日数を入力します。
 
@@ -180,7 +180,7 @@ BLOB のスナップショットの削除を取り消した後は、 **[レベ�
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershelltabazure-powershell"></a>[Powershell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -217,7 +217,7 @@ $Blobs.ICloudBlob.Undelete()
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-### <a name="azure-cli"></a>Azure CLI 
+# <a name="clitabazure-cli"></a>[CLI](#tab/azure-CLI)
 
 論理的な削除を有効にするには、BLOB クライアントのサービスのプロパティを更新します。
 
@@ -231,7 +231,7 @@ az storage blob service-properties delete-policy update --days-retained 7  --acc
 az storage blob service-properties delete-policy show --account-name mystorageaccount 
 ```
 
-### <a name="python-client-library"></a>Python クライアント ライブラリ
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 論理的な削除を有効にするには、BLOB クライアントのサービスのプロパティを更新します。
 
@@ -249,7 +249,7 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-### <a name="net-client-library"></a>.NET クライアント ライブラリ
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 論理的な削除を有効にするには、BLOB クライアントのサービスのプロパティを更新します。
 
@@ -291,9 +291,11 @@ CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)ve
 blockBlob.StartCopy(copySource);
 ```
 
-## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>論理的な削除を使用するための特殊な考慮事項は何かありますか?
+---
 
-アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合は、論理的な削除を有効にすることをお勧めします。 頻繁に上書きされるデータに対して論理的な削除を有効にすると、ストレージ容量の料金が増えたり、BLOB を一覧表示するときの待ち時間が長くなったりすることがあります。 論理的な削除が無効な別のストレージ アカウントに頻繁に上書きされるデータを格納することで、この追加コストを軽減できます。 
+## <a name="special-considerations"></a>特別な考慮事項
+
+アプリケーションまたは別のストレージ アカウントのユーザーによってデータが誤って変更または削除される可能性がある場合は、論理的な削除を有効にすることをお勧めします。 頻繁に上書きされるデータに対して論理的な削除を有効にすると、ストレージ容量の料金が増えたり、BLOB を一覧表示するときの待ち時間が長くなったりすることがあります。 論理的な削除が無効な別のストレージ アカウントに頻繁に上書きされるデータを格納することで、この追加のコストと待機時間を軽減できます。 
 
 ## <a name="faq"></a>FAQ
 
@@ -344,6 +346,8 @@ blockBlob.StartCopy(copySource);
 ### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>論理的な削除は、仮想マシンのディスクに対して使用できますか?  
 
 論理的な削除は、内部のページ BLOB である Premium と Standard のアンマネージド ディスクの両方で使用できます。 論理的な削除は、**Delete Blob**、**Put Blob**、**Put Block List**、**Put Block**、**Copy Blob** 操作によって削除されたデータの復旧にのみ役立ちます。 **Put Page** を呼び出すことで上書きされたデータは復旧できません。
+
+Azure 仮想マシンからアンマネージド ディスクへの書き込みには、**Put Page** の呼び出しが使用されます。そのため、Azure VM からアンマネージド ディスクへの書き込みを、論理的な削除を使用して元に戻すことはできません。
 
 ### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>論理的な削除を使うには、既存のアプリケーションを変更する必要がありますか?
 

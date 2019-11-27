@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ec1842d534dcb1e9ddef149d3ae879677b29e715
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b90e5ccf38e95d33c4b5b6f3b8da0e91a4facb5a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263026"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023734"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する
 Azure の[プラットフォーム ログ](resource-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 この記事では、プラットフォーム ログを収集してさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -42,7 +42,8 @@ Azure の[プラットフォーム ログ](resource-logs-overview.md)では、Az
 | [Azure Storage アカウント](resource-logs-collect-storage.md) | Azure ストレージ アカウントにログをアーカイブすると、監査、スタティック分析、またはバックアップに役立ちます。 |
 
 
-
+> [!IMPORTANT]
+> Azure Data Lake Storage Gen2 アカウントは、Azure portal では有効なオプションとして表示されていますが、診断設定の送信先としては現在サポートされていません。
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Azure portal で診断設定を作成する
 Azure portal では、Azure Monitor メニューから、またはリソースのメニューから診断設定を構成できます。
@@ -92,7 +93,7 @@ Azure portal では、Azure Monitor メニューから、またはリソース�
 
 
 ## <a name="create-diagnostic-settings-using-powershell"></a>PowerShell を使用して診断設定を作成する
-[Azure PowerShell](powershell-quickstart-samples.md) を使用して診断設定を作成するには、[Set-AzDiagnosticSetting](https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azdiagnosticsetting) コマンドレットを使用します。 パラメーターの説明については、このコマンドレットのドキュメントを参照してください。
+[Azure PowerShell](powershell-quickstart-samples.md) を使用して診断設定を作成するには、[Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting) コマンドレットを使用します。 パラメーターの説明については、このコマンドレットのドキュメントを参照してください。
 
 3 つの送信先すべてを使用して診断設定を作成するための PowerShell コマンドレットの例を次に示します。
 

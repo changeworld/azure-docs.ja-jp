@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 11/01/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: cc9b11ba5fe0cd015d0879f28b9e85fb46b11955
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178578"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904448"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
@@ -51,15 +51,17 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 
 Azure Container Instances では、グループにインスタンスの[リソース要求][resource-requests]を追加することで、CPU、メモリ、必要に応じて [GPU][gpus] (プレビュー) などのリソースをコンテナー グループに割り当てます。 たとえば、CPU リソースを例に挙げると、それぞれが 1 CPU を要求する 2 つのインスタンスを持つ 1 つのコンテナー グループを作成すると、コンテナー グループに 2 CPU が割り当てられます。
 
-コンテナー グループに利用できる最大リソースは、デプロイに使用した [Azure リージョン][region-availability]によって異なります。
+### <a name="resource-usage-by-instances"></a>インスタンス別のリソース使用量
 
-### <a name="container-resource-requests-and-limits"></a>コンテナー リソースの要求と制限
+各コンテナー インスタンスには、そのリソース要求で指定されたリソースが割り当てられます。 ただし、あるグループに属するコンテナー インスタンス別のリソース使用量は、そのオプションの[リソース上限][resource-limits]プロパティの設定に依存します。
 
-* 既定では、グループ内のコンテナー インスタンスで、グループの要求されたリソースを共有します。 それぞれが 1 CPU を要求する 2 つのインスタンスを含むグループでは、全体としてグループで 2 CPU にアクセスできます。 各インスタンスでは最大 2 CPU まで使用することができ、インスタンスは実行中に CPU リソースを取得するために競合する可能性があります。
+* リソース上限を指定しない場合、インスタンスの最大リソース使用量はそのリソース要求と同じになります。
 
-* グループ内の 1 インスタンスによるリソース使用率を制限するには、必要に応じてインスタンスに[リソース制限][resource-limits]を設定します。 1 CPU を要求するインスタンスが 2 つあるグループでは、コンテナーのどちらかがもう一方よりも多く CPU を実行することを要求する可能性があります。
+* インスタンスにリソース上限を指定する場合、そのワークロードに対してインスタンスのリソース使用量を調整できます。リソース要求に比例させる形で使用量を増減します。 設定できるリソース上限の最大値は、グループに割り当てられているリソース合計になります。
+    
+    たとえば、あるグループに属する 2 つのインスタンスが 1 つの CPU を要求するとき、あるコンテナーで実行されるワークロードが他のコンテナーのそれと比べ、多くの CPU 実行を要求することがあります。
 
-  このシナリオでは、1 つのインスタンスに対してリソース制限を 0.5 CPU に設定し、2 つ目のインスタンスに 2 CPU の制限を設定することができます。 この構成では、1 つ目のコンテナーのリソース使用率を 0.5 CPU に制限し、利用可能な場合は、2 つ目のコンテナーが最大 2 CPU をすべて使用することを許可します。
+    このシナリオでは、1 つのインスタンスに対してリソース制限を 0.5 CPU に設定し、2 つ目のインスタンスに 2 CPU の制限を設定することができます。 この構成では、1 つ目のコンテナーのリソース使用率を 0.5 CPU に制限し、利用可能な場合は、2 つ目のコンテナーが最大 2 CPU をすべて使用することを許可します。
 
 詳細については、コンテナー グループ REST API の [ResourceRequirements][resource-requirements] プロパティを参照してください。
 

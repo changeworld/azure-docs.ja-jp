@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
-ms.openlocfilehash: bcf741e82e247a5b79a478ef1015a70cccb4d274
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c4d029de782ae408b83c265322a865db7b166c1e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899907"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928298"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>開発、テスト、および運用のテレメトリの分離
 
@@ -51,7 +51,7 @@ ASP.NET サービスの global.aspx.cs など、初期化メソッドでキー�
 この例では、さまざまなリソースの ikeys が Web 構成ファイルのさまざまなバージョンに配置されます。 リリース スクリプトの一部として行うことができる Web 構成ファイルのスワップは、ターゲット リソースをスワップします。
 
 ### <a name="web-pages"></a>Web ページ
-iKey は、アプリの Web ページや、 [クイック スタート ブレードから取得したスクリプト](../../azure-monitor/app/javascript.md)内でも使用されます。 スクリプトにそのままコーディングするのではなく、サーバーの状態からこれを生成します。 たとえば、ASP.NET アプリで以下の操作を行います。
+iKey は、アプリの Web ページや、[クイックスタート ブレードから取得したスクリプト](../../azure-monitor/app/javascript.md)内でも使用されます。 スクリプトにそのままコーディングするのではなく、サーバーの状態からこれを生成します。 たとえば、ASP.NET アプリで以下の操作を行います。
 
 *Razor の JavaScript*
 
@@ -81,7 +81,7 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
 
 リソースの作成には数秒かかります。 完了したら、アラートが表示されます。
 
-([PowerShell スクリプト](../../azure-monitor/app/powershell-script-create-resource.md) を作成して、リソースを自動で作成できます。)
+([PowerShell スクリプト](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) を作成して、リソースを自動で作成できます。)
 
 ### <a name="getting-the-instrumentation-key"></a>インストルメンテーション キーの取得
 インストルメンテーション キーは作成したリソースを識別します。 
@@ -134,7 +134,7 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
     MSBuild がバージョン番号を生成できるようにするには、AssemblyReference.cs で `1.0.*` のようなバージョンを設定します。
 
 ## <a name="version-and-release-tracking"></a>バージョンおよびリリースの追跡
-アプリケーションのバージョンを追跡するには、Microsoft Build Engine プロセスによって `buildinfo.config` が生成されたことを確認してください。 .csproj ファイルに、次のコードを追加します。  
+アプリケーションのバージョンを追跡するには、Microsoft Build Engine プロセスによって `buildinfo.config` が生成されたことを確認してください。 `.csproj` ファイルに以下を追加します。  
 
 ```XML
 
@@ -145,7 +145,7 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
 
 ビルド情報がある場合、Application Insights Web モジュールは、 **アプリケーションのバージョン** をプロパティとしてテレメトリのすべての項目に自動的に追加します。 これにより、[診断の検索](../../azure-monitor/app/diagnostic-search.md)を実行するとき、または[メトリックを調べる](../../azure-monitor/app/metrics-explorer.md)ときに、バージョンによってフィルター処理できます。
 
-ただし、Visual Studio での開発者向けのビルドではなく、Microsoft Build Engine でのみビルド バージョン番号が生成されることに注意してください。
+ただし、Visual Studio の開発者向けのビルドではなく、Microsoft Build Engine でのみビルド バージョン番号が生成されることに注意してください。
 
 ### <a name="release-annotations"></a>リリース注釈
 Azure DevOps を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](../../azure-monitor/app/annotations.md)できます。 このマーカーは、次の図のように表示されます。

@@ -7,13 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 68ce0dca3bc7c5d408bd6e8f267d238ac812a84d
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470077"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130573"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -290,10 +289,6 @@ Application Gateway は、認証証明書を 100 件までサポートしてい�
 
 はい。 WAF は Standard SKU に含まれる機能をすべてサポートしています。
 
-### <a name="which-crs-versions-does-application-gateway-support"></a>Application Gateway がサポートしている CRS のバージョンは何ですか?
-
-Application Gateway は CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) と CRS [3.0](application-gateway-crs-rulegroups-rules.md#owasp30) をサポートします。
-
 ### <a name="how-do-i-monitor-waf"></a>WAF を監視するにはどうすればよいですか?
 
 WAF の監視には、診断ログを使用します。 詳細については、[Application Gateway の診断ログとメトリック](application-gateway-diagnostics.md)に関するページを参照してください。
@@ -308,7 +303,7 @@ No. 検出モードでは、WAF 規則をトリガーするトラフィックを
 
 ### <a name="what-rules-are-currently-available-for-waf"></a>WAF で現在利用できるのはどのような規則ですか?
 
-WAF が現在サポートしているのは CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) と [3.0](application-gateway-crs-rulegroups-rules.md#owasp30) です。 これらの規則は、Open Web Application Security Project (OWASP) が特定した 10 の脆弱性のほとんどに対するベースライン セキュリティを提供するものです。 
+WAF で現在サポートされているのは、CRS [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229)、[3.0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30)、および [3.1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31) です。 これらの規則は、Open Web Application Security Project (OWASP) が特定した 10 の脆弱性のほとんどに対するベースライン セキュリティを提供するものです。 
 
 * SQL インジェクションからの保護
 * クロスサイト スクリプティングに対する保護

@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: c6a6af6d32e0664e66696523f53ac81cd921609e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a61b7e058e485121d87c5d3bb1050b4289e4ceed
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814870"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931064"
 ---
 # <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Azure Machine Learning を使用して Keras 分類モデルをトレーニングして登録する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -189,6 +189,9 @@ DNN モデルのトレーニングが終わったら、それをワークスペ�
 ```Python
 model = run.register_model(model_name='keras-dnn-mnist', model_path='outputs/model')
 ```
+
+> [!TIP]
+> トレーニングに使用したエスティメーターに関係なく、Azure Machine Learning の他の登録済みモデルとまったく同じ方法で、先ほど登録したモデルがデプロイされます。 デプロイ方法にはモデルの登録に関するセクションが含まれていますが、既にモデルを登録してあるので、デプロイに対する[コンピューティング ターゲットの作成](how-to-deploy-and-where.md#choose-a-compute-target)に直接進んでかまいません。
 
 モデルのローカル コピーをダウンロードすることもできます。 これは、追加のモデル検証作業をローカルで実行するのに役立つ場合があります。 トレーニング スクリプト `mnist-keras.py` では、TensorFlow セーバー オブジェクトにより、モデルがローカル フォルダー (コンピューティング先に対してローカル) に永続化されます。 実行オブジェクトを使用して、データストアからコピーをダウンロードできます。
 

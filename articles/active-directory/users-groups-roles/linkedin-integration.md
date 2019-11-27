@@ -1,24 +1,24 @@
 ---
-title: LinkedIn アカウント接続に対する管理者の同意 - Azure Active Directory | Microsoft Docs
+title: LinkedIn アカウント接続に対する管理者の同意 - Azure AD | Microsoft Docs
 description: Azure Active Directory で Microsoft アプリの LinkedIn 統合アカウント接続を有効または無効にする方法について説明します
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ca46d6df9c32f23d3051d1205c3c6b39e69f5a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164712"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025413"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Azure Active Directory で LinkedIn アカウント接続を統合します。
 
@@ -67,7 +67,7 @@ ms.locfileid: "67164712"
 ### <a name="get-the-current-list-of-selected-users"></a>選択したユーザーの現在の一覧を取得する
 
 1. 管理者アカウントで Microsoft 365 にサインインします。
-1. https://linkedinselectedusermigration.azurewebsites.net/ にアクセスします。 LinkedIn アカウント接続に選択されているユーザーの一覧が表示されます。
+1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](https://linkedinselectedusermigration.azurewebsites.net/ ) にアクセスします。 LinkedIn アカウント接続に選択されているユーザーの一覧が表示されます。
 1. リストを CSV ファイルにエクスポートします。
 
 ### <a name="move-the-currently-selected-individual-users-to-a-group"></a>現在選択されている個々のユーザーのグループへの移行
@@ -96,7 +96,7 @@ ms.locfileid: "67164712"
 1. 次の設定を使用してグループ ポリシー オブジェクトを作成します。 **[ユーザーの構成]**  >  **[管理用テンプレート]**  >  **[Microsoft Office 2016]**  >  **[その他]**  >  **[LinkedIn の機能を Office アプリケーションで表示]** 。
 1. **[有効]** または **[無効]** を選択します。
   
-   状態 | 効果
+   State | 効果
    ------ | ------
    **有効** | Office 2016 オプションで **Office アプリケーションでの LinkedIn の表示機能** 設定が有効になります。 組織内のユーザーは、各自の Office 2016 アプリケーションで LinkedIn の機能を使用できます。
    **Disabled** | Office 2016 オプションで **Office アプリケーションでの LinkedIn の表示機能** 設定が無効になり、エンドユーザーはこの設定を変更できません。 組織内のユーザーがその Office 2016 アプリケーションで LinkedIn の機能を使用することはできません。

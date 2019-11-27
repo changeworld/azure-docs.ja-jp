@@ -1,7 +1,7 @@
 ---
 title: Translator Text API の Transliterate メソッド
 titleSuffix: Azure Cognitive Services
-description: Translator Text API の Transliterate メソッドを使用します。
+description: Translator Text API Transliterate メソッドを利用し、ある言語のテキストをあるスクリプトから別のスクリプトに変換します。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 58c9399b3701e2d8f0737b48c00336159e9688a8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e6bb1541b2b668796b352bebc68d59b4ade143e3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931997"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837272"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
 

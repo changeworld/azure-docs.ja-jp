@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 11/07/2019
 ms.author: radeltch
-ms.openlocfilehash: 3764ae9ff3a20de6d31f0438b73597933080e372
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 910ffc1a94b78fec259dcf30a3c7284716809355
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791731"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832581"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性
 
@@ -96,7 +96,7 @@ SAP Netweaver セントラル サービスの高可用性 (HA) を実現する�
 
 ![SAP NetWeaver の高可用性の概要](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
-SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データベースでは、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure 上で仮想 IP アドレスを使用するには、[ロード バランサー](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)が必要です。 (A)SCS および ERS ロード バランサーの構成を次に示します。
+SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データベースでは、仮想ホスト名と仮想 IP アドレスが使用されます。 Azure 上で仮想 IP アドレスを使用するには、[ロード バランサー](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)が必要です。 [Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal) の使用をお勧めします。 (A)SCS および ERS ロード バランサーの構成を次に示します。
 
 > [!IMPORTANT]
 > Azure VM での SUSE Linux をゲスト オペレーティング システムとした SAP ASCS/ERS のマルチ SID クラスタリングは**サポートされていません**。 マルチ SID クラスタリングとは、1 つの Pacemaker クラスター内での異なる SID を持つ複数の SAP ASCS/ERS インスタンスのインストールを指します。
@@ -111,13 +111,15 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データ�
 * プローブ ポート
   * ポート 620<strong>&lt;nr&gt;</strong>
 * 負荷分散規則
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 36<strong>&lt;nr&gt;</strong> TCP
-  * 39<strong>&lt;nr&gt;</strong> TCP
-  * 81<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * Standard Load Balancer を使用する場合は、 **[HA ポート]** を選択します
+  * Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 36<strong>&lt;nr&gt;</strong> TCP
+    * 39<strong>&lt;nr&gt;</strong> TCP
+    * 81<strong>&lt;nr&gt;</strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -128,11 +130,13 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データ�
 * プローブ ポート
   * ポート 621<strong>&lt;nr&gt;</strong>
 * 負荷分散規則
-  * 32<strong>&lt;nr&gt;</strong> TCP
-  * 33<strong>&lt;nr&gt;</strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
+  * Standard Load Balancer を使用する場合は、 **[HA ポート]** を選択します
+  * Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
+    * 32<strong>&lt;nr&gt;</strong> TCP
+    * 33<strong>&lt;nr&gt;</strong> TCP
+    * 5<strong>&lt;nr&gt;</strong>13 TCP
+    * 5<strong>&lt;nr&gt;</strong>14 TCP
+    * 5<strong>&lt;nr&gt;</strong>16 TCP
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Azure NetApp Files インフラストラクチャの設定 
 
@@ -207,7 +211,42 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
 
 最初に Azure NetApp Files ボリュームを作成する必要があります。 VM をデプロイします。 その後、ロード バランサーを作成し、バックエンド プール内の仮想マシンを使用します。
 
-1. ロード バランサー (内部) を作成します  
+1. ロード バランサー (内部、標準) を作成します。  
+   1. フロントエンド IP アドレスを作成します
+      1. ASCS の IP アドレス 10.1.1.20
+         1. ロード バランサーを開き、[フロントエンド IP プール] を選択して [追加] をクリックします
+         1. 新規のフロントエンド IP プールの名前を入力します (例: **frontend.QAS.ASCS**)
+         1. [割り当て] を [静的] に設定し、IP アドレスを入力します (例: **10.1.1.20**)
+         1. [OK] をクリックします
+      1. ASCS ERS の IP アドレス 10.1.1.21
+         * 上記の "a" 以下の手順を繰り返して、ERS の IP アドレスを作成します (例: **10.1.1.21** および **frontend.QAS.ERS**)
+   1. バックエンド プールを作成します
+      1. ASCS のバックエンド プールの作成
+         1. ロード バランサーを開き、[バックエンド プール] を選択して [追加] をクリックします
+         1. 新規のバックエンド プールの名前を入力します (例: **backend.QAS**)
+         1. [仮想マシンの追加] をクリックします。
+         1. 仮想マシンを選択します。
+         1. (A)SCS クラスターの仮想マシンとその IP アドレスを選択します。
+         1. [追加] をクリックします。
+   1. 正常性プローブを作成します
+      1. ASCS のポート 620**00**
+         1. ロード バランサーを開き、[正常性プローブ] を選択して [追加] をクリックします
+         1. 新しい正常性プローブの名前を入力します (例: **health.QAS.ASCS**)
+         1. プロトコルに TCP、ポートに 620**00** を選択し、[間隔] は 5、[異常] のしきい値は 2 のままにしておきます
+         1. [OK] をクリックします
+      1. ASCS ERS のポート 621**01**
+            * 上記の "c" 以下の手順を繰り返して、ERS の正常性プローブを作成します (例: 621**01** および **health.QAS.ERS**)
+   1. 負荷分散規則
+      1. ASCS のバックエンド プールの作成
+         1. ロード バランサーを開き、負荷分散規則 を選択して [追加] をクリックします
+         1. 新しいロード バランサー規則の名前を入力します (例: **lb.QAS.ASCS**)
+         1. 前に作成した ASCS 用のフロントエンド IP アドレス、バックエンド プール、および正常性プローブを選択します (例: **frontend.QAS.ASCS**、**backend.QAS**、**health.QAS.ASCS**)
+         1. **[HA ポート]** を選択します
+         1. アイドル タイムアウトを 30 分に増やします
+         1. **Floating IP を有効にします**
+         1. [OK] をクリックします
+         * 上記の手順を繰り返して、ERS の負荷分散規則を作成します (例: **lb.QAS.ERS**)
+1. または、シナリオに基本的なロード バランサー (内部) が必要な場合は、次の手順に従ってください。  
    1. フロントエンド IP アドレスを作成します
       1. ASCS の IP アドレス 10.1.1.20
          1. ロード バランサーを開き、[フロントエンド IP プール] を選択して [追加] をクリックします
@@ -246,8 +285,11 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
       1. ASCS ERS の追加のポート
          * ASCS ERS のポート 33**01**、5**01**13、5**01**14、5**01**16 と TCP に対して上記の "d" 以下の手順を繰り返します
 
+> [!Note]
+> パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP 高可用性シナリオで Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)」を参照してください。  
+
 > [!IMPORTANT]
-> Azure Load Balancer の背後に配置された Azure VM 上では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
+> Azure Load Balancer の背後に配置された Azure VM では TCP タイムスタンプを有効にしないでください。 TCP タイムスタンプを有効にすると正常性プローブが失敗することになります。 パラメーター **net.ipv4.tcp_timestamps** は **0** に設定します。 詳しくは、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
 
 ### <a name="create-pacemaker-cluster"></a>Pacemaker クラスターの作成
 

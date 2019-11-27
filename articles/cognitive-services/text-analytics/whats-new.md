@@ -1,7 +1,7 @@
 ---
 title: Text Analytics API の新機能
-titlesuffix: Text Analytics - Azure Cognitive Services
-description: Text Analytics サービスで行われた新しい開発について説明します
+titleSuffix: Text Analytics - Azure Cognitive Services
+description: この記事では、Azure Cognitive Services Text Analytics の新しいリリースや機能に関する情報を提供します。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 44ef6fb118be4d1110a693faded6c57bc8b4e2fd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 15beb8d3e326f04f1ae61c26f00e9428d95f6bc4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499950"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031372"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
@@ -29,22 +29,22 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
     * 電話番号
     * IP アドレス
 
-* 個人情報エンティティ型の認識に対する新しいエンドポイント (英語のみ)
-* エンティティの認識とエンティティのリンクに対する個別のエンドポイント。
+* 個人情報エンティティ型の認識に対する[新しいエンドポイント](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) (英語のみ)
+* [エンティティの認識]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)と[エンティティのリンク]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)に対する個別のエンドポイント。
 
-エンティティのリンクでは、英語とスペイン語がサポートされています。 NER の言語サポートは、エンティティ型によって異なります。 詳細については、次のリンクを参照してください。 
+エンティティのリンクでは、英語とスペイン語がサポートされています。 NER の言語サポートは、エンティティ型によって異なります。 
 
 > [!div class="nextstepaction"]
 > [名前付きエンティティの認識 v3 に関する詳細](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview)
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>感情分析 v3 のパブリック プレビュー - 2019 年 10 月
 
-現在、感情分析の次期バージョンはパブリック プレビューで利用できます。API のテキスト分類とスコア付けの精度と詳細が向上しました。 また、次の機能も提供されます。
+現在、[感情分析の次期バージョン](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)はパブリック プレビューで利用できます。API のテキスト分類とスコア付けの精度と詳細度が向上しました。 また、次の機能も提供されます。
 
 * テキスト内のさまざまなセンチメントに対する自動ラベル付け。
 * ドキュメントおよび文レベルでの感情分析と出力。 
 
-英語 (`en`)、日本語 (`ja`)、簡体中国語 (`zh-Hans`)、繁体中国語 (`zh-Hant`)、フランス語 (`fr`)、イタリア語 (`it`)、スペイン語 (`es`)、オランダ語 (`nl`)、ポルトガル語 (`pt`)、ドイツ語 (`de`) がサポートされており、次のリージョンで利用できます: `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe`、`West US 2`。
+英語 (`en`)、日本語 (`ja`)、簡体中国語 (`zh-Hans`)、繁体中国語 (`zh-Hant`)、フランス語 (`fr`)、イタリア語 (`it`)、スペイン語 (`es`)、オランダ語 (`nl`)、ポルトガル語 (`pt`)、ドイツ語 (`de`) がサポートされており、次のリージョンで利用できます: `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe`、`West US 2`。 
 
 > [!div class="nextstepaction"]
 > [感情分析 v3 の詳細情報](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)
