@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: b96cfe9813eef9caf1f1f21e43470a23c7032cb1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2b5bcd0d3bba914b81e305c88a512645c1a1c258
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072124"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108519"
 ---
 # <a name="import-an-openapi-specification"></a>OpenAPI 仕様のインポート
 
@@ -43,6 +43,7 @@ ms.locfileid: "70072124"
 
 1. **[API Management]** で **[API]** を選びます。
 2. **[Add a new API]\(新しい API の追加\)** の一覧から **[OpenAPI の仕様]** を選択します。
+
     ![OpenAPI の仕様](./media/import-api-from-oas/oas-api.png)
 3. 適切な設定を入力します。 作成時に API のすべての値を設定できます。 また、 **[設定]** タブに移動することで、一部の値を後で設定することもできます。 <br/> **Tab** キーを押すと、一部 (またはすべて) のフィールドに、指定したバックエンド サービスの情報が入力されます。
 
@@ -63,40 +64,18 @@ ms.locfileid: "70072124"
 > [!NOTE]
 > API インポートの制限事項については、[別の記事](api-management-api-import-restrictions.md)で説明されています。
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
+## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portal での新しい API のテスト
+
+![API のテスト マップ](./media/api-management-get-started/01-import-first-api-01.png)
 
 Azure Portal には、API の操作を表示およびテストするための便利な環境が用意されており、操作を直接呼び出すことができます。
 
-![API のテスト](./media/api-management-get-started/01-import-first-api-01.png)
-
-1. 前の手順で作成した API を選びます。
+1. 前の手順 ( **[API]** タブ) で作成した API を選びます。
 2. **[テスト]** タブをクリックします。
-3. **[GetSpeakers]** をクリックします。
-
-    ページにはクエリ パラメーターのフィールドが表示されますが、この例では何もありません。 ページには、ヘッダーのフィールドも表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 APIM インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。
+3. **[GetSpeakers]** をクリックします。 このページには、クエリ パラメーターのフィールド (この例では何も表示されません) とヘッダーが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 キーが自動的に入力されます。
 4. **[送信]** をクリックします。
 
-    バックエンドは "**200 OK**" といくつかのデータで応答します。
-
-## <a name="call-operation"> </a>開発者ポータルからの操作の呼び出し
-
-操作を**開発者ポータル**から呼び出して API をテストすることもできます。
-
-1. "バックエンド API のインポートと公開" の手順で作成した API を選びます。
-2. **[開発者ポータル]** をクリックします。
-
-    ![開発者ポータルでのテスト](./media/api-management-get-started/developer-portal.png)
-
-    "開発者ポータル" サイトが開きます。
-3. **[API]** を選択します。
-4. **[Demo Conference API]\(デモ会議 API)** を選択します。
-5. **[GetSpeakers]** をクリックします。
-
-    ページにはクエリ パラメーターのフィールドが表示されますが、この例では何もありません。 ページには、ヘッダーのフィールドも表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 APIM インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。
-6. **[テスト]** をクリックします。
-7. **[送信]** をクリックします。
-
-    操作を呼び出すと、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
+    バックエンドは **200 OK** といくつかのデータで応答します。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

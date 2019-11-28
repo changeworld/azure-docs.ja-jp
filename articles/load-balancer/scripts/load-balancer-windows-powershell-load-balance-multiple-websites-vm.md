@@ -1,5 +1,5 @@
 ---
-title: PowerShell の例 - Azure PowerShell を使用して複数の Web サイトを負荷分散する | Microsoft Docs
+title: 複数の Web サイトの負荷分散 - Azure PowerShell - Azure Load Balancer
 description: この Azure PowerShell スクリプトの例では、同じ仮想マシンに複数の Web サイトを負荷分散する方法を示します
 services: load-balancer
 documentationcenter: load-balancer
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: allensu
-ms.openlocfilehash: 098d300efc0b151d07b087959750a209c392872f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 82bd8a82418bad44786f009c75d742fcc0fc66e7
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273612"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048902"
 ---
 # <a name="azure-powershell-script-example-load-balance-multiple-websites"></a>Azure PowerShell スクリプトの例: 複数の Web サイトの負荷分散
 

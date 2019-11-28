@@ -1,18 +1,18 @@
 ---
-title: チュートリアル - URL パスベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure portal
+title: チュートリアル:ポータルを使用した URL パスベースのルーティング規則 - Azure Application Gateway
 description: このチュートリアルでは、Azure portal を使用して、アプリケーション ゲートウェイと仮想マシン スケール セットの URL パスベースのルーティング規則を作成する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 2cb21eb98e698ab44d73ada195fdcb7d7aac8839
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: bc810ac7901d83f03d3f3ac2199561225326d261
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844642"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048132"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -131,7 +131,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 2. 開いた **[バックエンド プールの追加]** ウィンドウで、次の値を入力して空のバックエンド プールを作成します。
 
-    - **[名前]** :バックエンド プールの名前として「*myBackendPool*」と入力します。
+    - **Name**:バックエンド プールの名前として「*myBackendPool*」と入力します。
 3. **[バックエンド ターゲット]** 、 **[ターゲットの種類]** の下のドロップダウン リストで **[仮想マシン]** を選択します。
 
 5. **[ターゲット]** で、 **myVM1** のネットワーク インターフェイスを選択します。

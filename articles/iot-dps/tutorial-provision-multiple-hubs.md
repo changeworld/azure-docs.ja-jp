@@ -1,22 +1,22 @@
 ---
-title: Azure IoT Hub Device Provisioning Service を使用して負荷分散された IoT ハブにデバイスをプロビジョニングする | Microsoft Docs
-description: Azure portal での負荷分散された IoT ハブへの Device Provisioning Service による自動デバイス プロビジョニング
+title: チュートリアル:Azure IoT Hub Device Provisioning Service を使用して、負荷分散された IoT ハブにデバイスをプロビジョニングする
+description: チュートリアル:Azure portal での負荷分散された IoT ハブへの Device Provisioning Service による自動デバイス プロビジョニング
 author: sethmanheim
 ms.author: sethm
-ms.date: 09/05/2017
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 8ed1b128fc2663cfc09c40f001bd0b14663a728e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6cd5dcb1fd96ac0fda75bf89dcf7259695cf971d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486022"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112786"
 ---
-# <a name="provision-devices-across-load-balanced-iot-hubs"></a>負荷分散された IoT ハブへのデバイスのプロビジョニング
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>チュートリアル:負荷分散された IoT ハブへのデバイスのプロビジョニング
 
 このチュートリアルでは、Device Provisioning Service を使用して、負荷分散された複数の IoT ハブにデバイスをプロビジョニングする方法について説明します。 このチュートリアルでは、以下の内容を学習します。
 

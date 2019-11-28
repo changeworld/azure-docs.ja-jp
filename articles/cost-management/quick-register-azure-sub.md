@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 05/20/2019
 ms.topic: quickstart
 ms.custom: seodec18
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
-ms.openlocfilehash: 6d5282a326af37e5653f21795438ba8965ae7fcc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d53ea540aaa155de4c9963b5e8dc288852ff6280
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967201"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229973"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>個別の Azure サブスクリプションを登録し、コスト データを確認する
 
@@ -31,14 +31,14 @@ Azure サブスクリプションを使用して Cloudyn に登録します｡ �
 2. **[概要]** の **[Cloudyn]** をクリックします｡  
     ![Azure portal に表示される [Cloudyn] ページ](./media/quick-register-azure-sub/cost-mgt-billing-service.png)
 3. **[コスト管理]** ページで **[Go to Cloudyn]** をクリックし、新しいウィンドウで [Cloudyn registration (Cloudyn 登録)] ページを開きます。
-4. [Cloudyn ポータル試用版の登録] ページで、会社名を入力し、**[Azure Individual Subscription Owner]\(Azure サブスクリプションの個人所有者\)** を選択し、**[次へ]** をクリックします。 お使いのアカウント名とテナント ID が、自動的にフォームに追加されます。  
+4. [Cloudyn ポータル試用版の登録] ページで、会社名を入力し、 **[Azure Individual Subscription Owner]\(Azure サブスクリプションの個人所有者\)** を選択し、 **[次へ]** をクリックします。 お使いのアカウント名とテナント ID が、自動的にフォームに追加されます。  
     ![登録情報を入力する試用版登録ページ](./media/quick-register-azure-sub/trial-reg-ind.png)
 5. お使いのサブスクリプションに関連付けられた **[Offer ID - Name]\(オファー ID - 名前\)** を選択します。 お使いのレート ID とサブスクリプションの対応が不明な場合は、Azure の請求書を確認して**オファー ID** を調べることができます。
 6. 使用条件に同意し、情報を検証して **[次へ]** をクリックします。
-7. **[Gather additional data]\(追加データを収集する\)** ページで、**[次へ]** をクリックし、Cloudyn を承認して Azure リソース データを収集します。 収集されたデータには、お客様のサブスクリプションの使用状況、パフォーマンス、請求、サブスクリプションからのタグ データなどが含まれています。  
+7. **[Gather additional data]\(追加データを収集する\)** ページで、 **[次へ]** をクリックし、Cloudyn を承認して Azure リソース データを収集します。 収集されたデータには、お客様のサブスクリプションの使用状況、パフォーマンス、請求、サブスクリプションからのタグ データなどが含まれています。  
     ![Cloudyn を承認する追加データ収集ページ](./media/quick-register-azure-sub/gather-additional.png)
 8. お使いのブラウザーで、Cloudyn のサインイン ページに移動します。 Azure サブスクリプションの資格情報でサインインします。
-9. **[Go to Cloudyn]\(Cloudyn に移動\)** をクリックして、Cloudyn ポータルを開くと、**[Accounts Management]\(アカウント管理\)** ページに、Azure サブスクリプション アカウント情報が表示されます。  
+9. **[Go to Cloudyn]\(Cloudyn に移動\)** をクリックして、Cloudyn ポータルを開くと、 **[Accounts Management]\(アカウント管理\)** ページに、Azure サブスクリプション アカウント情報が表示されます。  
     ![Azure サブスクリプション情報を表示している [アカウントの管理] ページ](./media/quick-register-azure-sub/accounts-mgt.png)
 
 Azure サブスクリプションの登録に関するチュートリアル ビデオを見るには、[Cloudyn で使用するディレクトリ GUID とレート ID の検索](https://youtu.be/PaRjnyaNGMI)を参照してください。

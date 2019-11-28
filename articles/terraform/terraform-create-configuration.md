@@ -1,17 +1,14 @@
 ---
 title: クイックスタート - Azure 用の Terraform 構成の作成
 description: Azure Cosmos DB と Azure Container Instances をデプロイして、Azure 上の Terraform の使用を開始します。
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: quickstart
 ms.date: 10/26/2019
-ms.openlocfilehash: 07c1839afcc29c7089540c587a3a32eae14944ef
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 47eec1f238d3fdff99b75953bc6d7e92137cca2d
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969639"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159318"
 ---
 # <a name="quickstart-create-a-terraform-configuration-for-azure"></a>クイック スタート:Azure 用の Terraform 構成の作成
 

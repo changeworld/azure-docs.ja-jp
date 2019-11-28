@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:内部ロード バランサーの作成 - Azure portal
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: このチュートリアルでは、Azure portal を使用して、内部 Basic ロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 09a73b5d97e46797dd880f64383fdf03fd591f3d
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1b9d943f540a0132abc6a70eba888aa5f8f46093
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273492"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225220"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>チュートリアル:Azure portal の Basic ロードバランサーを使用して内部トラフィックの負荷を分散する
 
@@ -95,7 +95,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
     | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
-    | Type          | **[内部]** を選択します。                                        |
+    | 種類          | **[内部]** を選択します。                                        |
     | SKU           | **[Basic]** を選択します。                          |
     | 仮想ネットワーク           | *[MyVNet]* を選択します。                          |    
     | IP アドレスの割り当て              | **[静的]** を選択します。   |

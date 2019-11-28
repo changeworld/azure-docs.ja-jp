@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9cb5d3ae02cb0d4a6e293207a736dced56ed8538
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: be6eb6f13d7abf80537d155472a4072f7d08c06c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747462"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091599"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 
@@ -107,7 +107,7 @@ Azure ファイル共有を削除するときは、削除されるバックア�
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>進行中の復元ジョブをキャンセルした場合、どうなりますか。
 
-進行中の復元ジョブがキャンセルされると、復元プロセスが停止され、すべてのファイルがキャンセル前に復元されます。ロールバックすることなく、構成された変換先 (元の場所または別の場所) は保持されます。
+進行中の復元ジョブがキャンセルされると、復元プロセスが停止され、すべてのファイルがキャンセル前に復元されます。ロールバックされずに、構成された変換先 (元の場所または別の場所) は保持されます。
 
 ## <a name="manage-backup"></a>バックアップの管理
 
@@ -127,9 +127,9 @@ Azure ファイル共有のバックアップでは、最大 180 日のリテン
 
 新しいポリシーをファイル共有に適用すると、新しいポリシーのスケジュールと保持期間が適用されます。 リテンション期間が延長された場合、既にある復旧ポイントは、新しいポリシーに従って保存するようにマーキングされます。 リテンション期間が短縮された場合、次回のクリーンアップ ジョブで排除対象としてマーキングされて、その後削除されます。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
-この情報は、Azure Files のバックアップだけを対象としています。Azure Backup のその他の領域の詳細については、以下の Backup に関する他の FAQ のいくつかを参照してください。
+Azure Backup のその他の領域の詳細については、これらの Backup に関する他の FAQ を参照してください。
 
 - [Recovery Services コンテナーの FAQ](backup-azure-backup-faq.md)
 - [Azure VM バックアップの FAQ](backup-azure-vm-backup-faq.md)

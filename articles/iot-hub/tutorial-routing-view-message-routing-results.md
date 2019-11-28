@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub のメッセージ ルーティングの結果を表示する (.NET) | Microsoft Docs
-description: Azure IoT Hub のメッセージ ルーティングの結果を表示する
+description: このチュートリアルのパート 1 を使用してすべてのリソースを設定した後、Azure Stream Analytics にメッセージをルーティングする機能を追加して、PowerBI で結果を表示します。
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: f34799bbf2142ba07c29915deae5b5dbe590c9fc
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: bfee4e64070e5f37eaa3d63280409f00c0ed8672
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330524"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890387"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>チュートリアル:パート 2 - ルーティングされたメッセージを表示する
 
@@ -26,7 +26,7 @@ ms.locfileid: "67330524"
 
 以下に示すのは、メッセージ ルーティングの規則です。これらはこのチュートリアルのパート 1 で設定したものです。このパート 2 では、これらが機能することを確認します。
 
-|value |結果|
+|値 |結果|
 |------|------|
 |level="storage" |Azure Storage に書き込みます。|
 |level="critical" |Service Bus キューに書き込みます。 ロジック アプリがキューからメッセージを取得し、Office 365 を使ってメールでメッセージを送信します。|
@@ -52,9 +52,11 @@ Service Bus キューは、critical と指定されているメッセージを�
 
    ![[ロジック アプリの作成] 画面](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
-   **作成** を選択します。
+   **作成** を選択します。 アプリがデプロイされるまで、数分かかる場合があります。
 
-2. ロジック アプリに移動します。 ロジック アプリに最も簡単に移動するには、 **[リソース グループ]** を選択し、お使いのリソース グループ (このチュートリアルでは **ContosoResources** を使っています) を選び、リソースの一覧からロジック アプリを選びます。 [Logic Apps デザイナー] ページが表示されます (ページ全体を見るには右にスクロールする必要がある場合があります)。 [Logic Apps デザイナー] ページで、下にスクロールして **[空のロジック アプリ +]** タイルを選択します。 既定のタブは [おすすめ] です。 このウィンドウに何も表示されない場合は、 **[すべて]** を選択すると、利用できるすべてのコネクタとトリガーが表示されます。
+2. ロジック アプリに移動します。 ロジック アプリに最も簡単に移動するには、 **[リソース グループ]** を選択し、お使いのリソース グループ (このチュートリアルでは **ContosoResources** を使っています) を選び、リソースの一覧からロジック アプリを選びます。 
+
+    [Logic Apps デザイナー] ページが表示されます (ページ全体を見るには右にスクロールする必要がある場合があります)。 [Logic Apps デザイナー] ページで、下にスクロールして **[空のロジック アプリ +]** タイルを選択します。 既定のタブは [おすすめ] です。 このウィンドウに何も表示されない場合は、 **[すべて]** を選択すると、利用できるすべてのコネクタとトリガーが表示されます。
 
 3. コネクタの一覧から **[Service Bus]** を選択します。
 
@@ -76,7 +78,7 @@ Service Bus キューは、critical と指定されているメッセージを�
 
    ![キューのオプション](./media/tutorial-routing-view-message-routing-results/logic-app-queue-options.png)
 
-7. 次に、キューでメッセージを受け取ったときにメールを送信するアクションを設定します。 Logic Apps デザイナーで **[+ 新しいステップ]** を選択してステップを追加し、 **[すべて]** を選択して、利用できるオプションをすべて表示します。 **[アクションの選択]** ウィンドウで、 **[Office 365 Outlook]** を探して選択します。 トリガー画面で、 **[メールの送信 / Office 365 Outlook]** を選びます。  
+7. 次に、キューでメッセージを受け取ったときにメールを送信するアクションを設定します。 Logic Apps デザイナーで **[+ 新しいステップ]** を選択してステップを追加し、 **[すべて]** を選択して、利用できるオプションをすべて表示します。 **[アクションの選択]** ウィンドウで、 **[Office 365 Outlook]** を探して選択します。 [アクション] 画面で、 **[メールの送信 / Office 365 Outlook]** を選択します。  
 
    ![Office365 のオプション](./media/tutorial-routing-view-message-routing-results/logic-app-select-outlook.png)
 
@@ -108,13 +110,15 @@ Power BI の視覚エフェクトにデータを表示するには、最初に�
 
    ![Stream Analytics ジョブの作成](./media/tutorial-routing-view-message-routing-results/stream-analytics-create-job.png)
 
-3. **[作成]** を選択してジョブを作成します。 ジョブに戻るには、 **[リソース グループ]** を選択します。 このチュートリアルでは、**ContosoResources** を使います。 リソース グループを選択し、リソースの一覧で Stream Analytics ジョブを選択します。
+3. **[作成]** を選択してジョブを作成します。 デプロイに数分かかることがあります。
+
+    ジョブに戻るには、 **[リソース グループ]** を選択します。 このチュートリアルでは、**ContosoResources** を使います。 リソース グループを選択し、リソースの一覧で Stream Analytics ジョブを選択します。
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの入力の追加
 
-4. **[ジョブ トポロジ]** で、 **[入力]** を選択します。
+1. **[ジョブ トポロジ]** で、 **[入力]** を選択します。
 
-5. **[入力]** ウィンドウで、 **[ストリーム入力の追加]** を選択して [IoT Hub] を選びます。 表示される画面で、次のフィールドを入力します。
+2. **[入力]** ウィンドウで、 **[ストリーム入力の追加]** を選択して [IoT Hub] を選びます。 表示される画面で、次のフィールドを入力します。
 
    **入力のエイリアス**:このチュートリアルでは、**contosoinputs** を使います。
 
@@ -122,19 +126,19 @@ Power BI の視覚エフェクトにデータを表示するには、最初に�
 
    **サブスクリプション**:このチュートリアルに使用している Azure サブスクリプションを選択します。
 
-   **IoT Hub**:IoT ハブを選びます。 このチュートリアルでは、**ContosoTestHub** を使います。
+   **IoT Hub**:IoT ハブを選択します。 このチュートリアルでは、**ContosoTestHub** を使います。
 
    **エンドポイント**: **[メッセージング]** を選びます。 ([操作の監視] を選ぶと、チュートリアルで送信しているデータではなく、IoT ハブに関する利用統計情報が取得されます)。 
 
    **共有アクセス ポリシー名**: **[サービス]** を選択します。 [共有アクセス ポリシー キー] はポータルによって自動的に設定されます。
 
-   **コンシューマー グループ**:このチュートリアルの手順 1. で設定したコンシューマー グループを選択します。 このチュートリアルでは、**contosoconsumers** を使います。
+   **コンシューマー グループ**:このチュートリアルのパート 1 で設定したコンシューマー グループを選択します。 このチュートリアルでは、**contosoconsumers** を使います。
    
    その他のフィールドについては、既定値を指定できます。 
 
    ![Stream Analytics ジョブの入力の設定](./media/tutorial-routing-view-message-routing-results/stream-analytics-job-inputs.png)
 
-6. **[保存]** を選択します。
+3. **[保存]** を選択します。
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Stream Analytics ジョブへの出力の追加
 
@@ -178,20 +182,20 @@ Power BI レポートを設定するにはデータが必要なので、デバ�
 
 ## <a name="run-simulated-device-app"></a>シミュレートされたデバイス アプリを実行する
 
-このチュートリアルのパート 1 では、IoT デバイスの使用をシミュレートするデバイスを設定しました。 このセクションでは、このチュートリアルのパート 1 でアプリとリソースをまだダウンロードしていないと仮定して、device-to-cloud メッセージを IoT ハブに送信するデバイスをシミュレートする .NET コンソール アプリをダウンロードします。
+このチュートリアルのパート 1 では、IoT デバイスの使用をシミュレートするデバイスを設定しました。 このセクションでは、パート 1 でアプリとリソースをまだダウンロードしていないと仮定して、device-to-cloud メッセージを IoT ハブに送信するデバイスをシミュレートする .NET コンソール アプリをダウンロードします。
 
 このアプリケーションは、異なるメッセージ ルーティング方法ごとにメッセージを送信します。 ダウンロード内のフォルダーには、Azure Resource Manager テンプレートとパラメーター ファイル一式のほか、Azure CLI と PowerShell のスクリプトも含まれています。
 
-このチュートリアルの手順 1. でリポジトリからファイルをダウンロードしなかった場合は、ここで [IoT デバイス シミュレーション](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)からダウンロードしてください。 このリンクを選択すると、いくつかのアプリケーションを含むリポジトリがダウンロードされます。探しているソリューションは、iot-hub/Tutorials/Routing/IoT_SimulatedDevice.sln です。 
+このチュートリアルのパート 1 でリポジトリからファイルをダウンロードしなかった場合は、ここで [IoT デバイス シミュレーション](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)からダウンロードしてください。 このリンクを選択すると、いくつかのアプリケーションを含むリポジトリがダウンロードされます。探しているソリューションは、iot-hub/Tutorials/Routing/IoT_SimulatedDevice.sln です。 
 
-ソリューション ファイル (IoT_SimulatedDevice.sln) をダブルクリックしてコードを Visual Studio で開いてから、Program.cs を開きます。 `{iot hub hostname}` を、IoT ハブのホスト名で置き換えます。 IoT ハブのホスト名の形式は、 **{iot-hub-name}.azure-devices.net** です。 このチュートリアルでのハブのホスト名は、**ContosoTestHub.azure-devices.net** です。 次に、`{device key}` を、シミュレートされたデバイスを設定するときに保存したデバイス キーに置き換えます。 
+ソリューション ファイル (IoT_SimulatedDevice.sln) をダブルクリックしてコードを Visual Studio で開いてから、Program.cs を開きます。 `{your hub name}` を、IoT ハブのホスト名で置き換えます。 IoT ハブのホスト名の形式は、 **{iot-hub-name}.azure-devices.net** です。 このチュートリアルでのハブのホスト名は、**ContosoTestHub.azure-devices.net** です。 次に、`{your device key}` を、シミュレートされたデバイスを設定するときに保存したデバイス キーに置き換えます。 
 
    ```csharp
-        static string myDeviceId = "contoso-test-device";
-        static string iotHubUri = "ContosoTestHub.azure-devices.net";
+        static string s_myDeviceId = "Contoso-Test-Device";
+        static string s_iotHubUri = "ContosoTestHub.azure-devices.net";
         // This is the primary key for the device. This is in the portal. 
         // Find your IoT hub in the portal > IoT devices > select your device > copy the key. 
-        static string deviceKey = "{your device key here}";
+        static string s_deviceKey = "{your device key}";
    ```
 
 ## <a name="run-and-test"></a>実行してテストする
@@ -212,7 +216,9 @@ Power BI レポートを設定するにはデータが必要なので、デバ�
    * Service Bus キューからメッセージを取得するロジック アプリは、正常に動作しています。
    * Outlook へのロジック アプリ コネクタは、正常に動作しています。 
 
-2. [Azure portal](https://portal.azure.com) で **[リソース グループ]** を選択し、自分のリソース グループを選びます。 このチュートリアルでは、**ContosoResources** を使います。 ストレージ アカウントを選び、 **[BLOB]** を選択して、コンテナーを選びます。 このチュートリアルでは、**contosoresults** を使います。 フォルダーが表示され、ファイルが表示されるまでディレクトリをドリルダウンできます。 ファイルの 1 つを開くと、ストレージ アカウントにルーティングされたエントリが含まれています。 
+2. [Azure portal](https://portal.azure.com) で **[リソース グループ]** を選択し、自分のリソース グループを選びます。 このチュートリアルでは、**ContosoResources** を使います。 
+
+    ストレージ アカウントを選び、 **[コンテナー]** を選択して、コンテナーを選びます。 このチュートリアルでは、**contosoresults** を使います。 フォルダーが表示され、ファイルが表示されるまでディレクトリをドリルダウンできます。 ファイルの 1 つを開くと、ストレージ アカウントにルーティングされたエントリが含まれています。 
 
    ![結果として得られたストレージ内のファイル](./media/tutorial-routing-view-message-routing-results/results-in-storage.png)
 
@@ -250,11 +256,11 @@ Power BI レポートを設定するにはデータが必要なので、デバ�
 
    折れ線グラフが作成されます。 x 軸は日付と時刻 (UTC タイム ゾーン) を示し、 y 軸はセンサーから取得した温度を示します。
 
-6. 時間の経過に伴う湿度の変化を示す、別の折れ線グラフを作成します。 2 番目のグラフを設定するには、上記と同じ手順を行ったうえで、**EventEnqueuedUtcTime** を x 軸、**humidity** を y 軸に設定します。
+6. 時間の経過に伴う湿度の変化を示す、別の折れ線グラフを作成します。 2 番目のグラフを設定するには、最初のグラフと同じプロセスに従い、**EventEnqueuedUtcTime** を x 軸 ( **[軸]** )、**humidity** を y 軸 ( **[値]** ) に設定します。
 
    ![2 つのグラフを含む最終的な Power BI レポート](./media/tutorial-routing-view-message-routing-results/power-bi-report.png)
 
-7. **[保存]** を選択してレポートを保存します。
+7. **[保存]** を選択してレポートを保存します。プロンプトが表示されたら、レポートの名前を入力します。
 
 両方のグラフにデータを表示できます。 この結果から次のことがわかります。
 
@@ -266,7 +272,7 @@ Power BI ウィンドウの上部にある [最新の情報に更新] ボタン�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 
-このチュートリアルの両パートを通じて作成したリソースをすべて削除するには、リソース グループを削除します。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 この例では、IoT ハブ、Service Bus の名前空間とキュー、ロジック アプリ、ストレージ アカウント、およびリソース グループ自体が削除されます。 
+このチュートリアルの両パートを通じて作成した Azure リソースをすべて削除するには、リソース グループを削除します。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 この例では、IoT ハブ、Service Bus の名前空間とキュー、ロジック アプリ、ストレージ アカウント、およびリソース グループ自体が削除されます。 また、Power BI リソースを削除することや、チュートリアル中に送信された電子メールをクリアすることもできます。
 
 ### <a name="clean-up-resources-in-the-power-bi-visualization"></a>Power BI の視覚エフェクトのリソースをクリーンアップする
 
@@ -287,6 +293,10 @@ az group delete --name $resourceGroup
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
 ```
+
+### <a name="clean-up-test-emails"></a>テスト電子メールのクリーンアップ
+
+デバイス アプリケーションの実行中にロジック アプリから生成された、受信トレイ内の多数の電子メールを削除することもできます。
 
 ## <a name="next-steps"></a>次の手順
 

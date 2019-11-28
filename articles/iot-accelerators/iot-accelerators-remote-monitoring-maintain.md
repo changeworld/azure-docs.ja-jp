@@ -1,5 +1,5 @@
 ---
-title: リモート監視ソリューションでアラートを使用し、デバイスの問題を修正するチュートリアル - Azure | Microsoft Docs
+title: リモート監視ソリューションでのアラートの使用 - Azure | Microsoft Docs
 description: このチュートリアルでは、アラートを使用して、リモート監視ソリューション アクセラレータに接続されているデバイスの問題を特定し、修正する方法を示します。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 1cd1eb9a0bd4b8457ea82303a747acb2553ab707
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 853fa2b80e04dd8d9225d023db8030fed044ed7f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451724"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890923"
 ---
 # <a name="tutorial-troubleshoot-and-fix-device-issues"></a>チュートリアル:デバイスの問題のトラブルシューティングと修正
 
@@ -50,7 +50,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [![アラートの詳細](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancealarmdetail-expanded.png#lightbox)
 
-アラートを確認するには、**発生したアラート**をすべて選択し、**[Acknowledge]\(確認\)** を選択します。 このアクションにより、他のオペレーターは、アラートが確認済みであり、対応中であることを知ることができます。
+アラートを確認するには、**発生したアラート**をすべて選択し、 **[Acknowledge]\(確認\)** を選択します。 このアクションにより、他のオペレーターは、アラートが確認済みであり、対応中であることを知ることができます。
 
 [![アラートを確認する](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-expanded.png#lightbox)
 
@@ -64,15 +64,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **プロトタイプ** デバイスの問題を解決するには、デバイスで **DecreaseTemperature** メソッドを呼び出す必要があります。
 
-デバイスに対処するには、アラートが発生したデバイスの一覧でデバイスを選択して、**[ジョブ]** を選択します。 **プロトタイプ** デバイス モデルでは、次の 6 つのメソッドがサポートされています。
+デバイスに対処するには、アラートが発生したデバイスの一覧でデバイスを選択して、 **[ジョブ]** を選択します。 **プロトタイプ** デバイス モデルでは、次の 6 つのメソッドがサポートされています。
 
 [![デバイスでサポートされているメソッドを表示する](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancemethods-expanded.png#lightbox)
 
-**DecreaseTemperature** を選択して、ジョブの名前を **DecreaseTemperature** に設定します。 次に、**[適用]** をクリックします。
+**DecreaseTemperature** を選択して、ジョブの名前を **DecreaseTemperature** に設定します。 次に、 **[適用]** をクリックします。
 
 [![温度を低下させるジョブを作成する](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
 
-ジョブの状態を追跡するには、**[View job status]\(ジョブの状態の表示\)** をクリックします。 **[ジョブ]** ビューを使用して、ソリューション内のすべてのジョブとメソッドの呼び出しを追跡します。
+ジョブの状態を追跡するには、 **[View job status]\(ジョブの状態の表示\)** をクリックします。 **[ジョブ]** ビューを使用して、ソリューション内のすべてのジョブとメソッドの呼び出しを追跡します。
 
 [![温度を低下させるジョブを監視する](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-expanded.png#lightbox)
 

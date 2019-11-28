@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/14/2019
 ms.topic: overview
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 6615c6d8912195dbecda727bbdb31dcf04898ea2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 90d2646aa554a20a823d29cde06537d05415b603
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792812"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230036"
 ---
 # <a name="what-is-azure-cost-management"></a>Azure Cost Management とは
 

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 03998d214c1fb977741976eca7b878d0c6b577aa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160393"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074080"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>チュートリアル:MyWorkDrive と Azure Active Directory の統合
 
@@ -100,9 +100,17 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
 ### <a name="configure-myworkdrive-sso"></a>MyWorkDrive の SSO を構成する
 
-1. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として MyWorkDrive にサインインします。
+1. MyWorkDrive 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
 
-2. MyWorkDrive サーバー上の管理パネルで、 **[ENTERPRISE]\(エンタープライズ\)** をクリックし、次の手順を実行します。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[Setup MyWorkDrive]\(MyWorkDrive のセットアップ\)** をクリックすると、MyWorkDrive アプリケーションに移動します。 そこから、管理者の資格情報を入力して MyWorkDrive にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 4 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. MyWorkDrive を手動で設定する場合、別の Web ブラウザー ウィンドウで、セキュリティ管理者として MyWorkDrive にサインインします。
+
+1. MyWorkDrive サーバー上の管理パネルで、 **[ENTERPRISE]\(エンタープライズ\)** をクリックし、次の手順を実行します。
 
     ![管理](./media/myworkdrive-tutorial/tutorial_myworkdrive_admin.png)
 

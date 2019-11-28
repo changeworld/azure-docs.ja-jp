@@ -1,10 +1,10 @@
 ---
-title: Azure PowerShell のサンプル | Microsoft Docs
+title: Azure PowerShell のサンプル - ネットワーク
 description: Azure PowerShell のサンプル
 services: virtual-network
 documentationcenter: virtual-network
-author: georgewallace
-manager: timlt
+author: KumudD
+manager: mtillman
 editor: tysonn
 tags: ''
 ms.assetid: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/24/2017
 ms.author: gwallace
-ms.openlocfilehash: 38ee43b805f39e1a702033a53eb7bbc13c43aab6
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: fb4b63d8329f0a175252b819653e192c746489b6
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875489"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092034"
 ---
 # <a name="azure-powershell-samples-for-networking"></a>ネットワークに関する Azure PowerShell のサンプル
 

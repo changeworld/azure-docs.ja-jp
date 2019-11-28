@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 6af6a6b334d29c6ff813a9b2ff35153aed239b1b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ade3b63116337ae7b4678b459b1a0c388092f409
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967144"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229861"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -102,7 +102,7 @@ Cloudyn は、予約インスタンスとハイブリッド特典に関して、
 
 ## <a name="assess-azure-ri-cost-effectiveness"></a>Azure RI の費用対効果を評価する
 
-Cloudyn ポータルで **[Optimizer]\(オプティマイザー\)** > **[RI 比較]\(RI 比較\)** に移動し、**[Reserved Instance Purchase Impact]\(予約インスタンス購入の影響\)** を選択します。
+Cloudyn ポータルで **[Optimizer]\(オプティマイザー\)**  >  **[RI 比較]\(RI 比較\)** に移動し、 **[Reserved Instance Purchase Impact]\(予約インスタンス購入の影響\)** を選択します。
 
 Reserved Instance Purchase Impact (予約インスタンス購入の影響) レポートで、VM サイズ (インスタンスの種類)、場所 (リージョン)、予約期間、数量、予想される実行時間を選択します。 これで、購入によるコスト削減効果の有無について評価を行うことができます。
 
@@ -125,11 +125,11 @@ Reserved Instance Purchase Impact (予約インスタンス購入の影響) レ�
 
 Actual Cost Analysis (実績コスト分析) レポートと Analysis Over Time (時系列分析) レポートには、予約にあたって支払った全額が、購入月を起点として表示されます。 これにより、特定の期間における実際の支出を確認することができます。
 
-Cloudyn ポータルで **[コスト]** > **[コスト分析]** の順に移動し、**[Actual Cost Analysis]\(実績コスト分析\)** または **[Actual Cost Over Time]\(時系列実績コスト\)** を選択します。 次に、フィルターを設定します。 たとえば、Azure/VM サービスだけをフィルターで抽出し、リソースの種類や価格モデルでグループ化することができます。 次の図を参照してください。
+Cloudyn ポータルで **[コスト]**  >  **[コスト分析]** の順に移動し、 **[Actual Cost Analysis]\(実績コスト分析\)** または **[Actual Cost Over Time]\(時系列実績コスト\)** を選択します。 次に、フィルターを設定します。 たとえば、Azure/VM サービスだけをフィルターで抽出し、リソースの種類や価格モデルでグループ化することができます。 次の図を参照してください。
 
 ![予約インスタンスの実績コストの例](./media/tutorial-optimize-reserved-instances/azure05.png)
 
-次の図に示したように、サービス (この例では **Azure/VM**) でフィルタリングしたり、**[価格モデル]** や **[リソースの種類]** でグループ化したりすることができます。
+次の図に示したように、サービス (この例では **Azure/VM**) でフィルタリングしたり、 **[価格モデル]** や **[リソースの種類]** でグループ化したりすることができます。
 
 ![価格モデルやリソースの種類でグループ化された実績コスト レポートのグループとフィルターの例](./media/tutorial-optimize-reserved-instances/azure06.png)
 
@@ -143,7 +143,7 @@ Cloudyn ポータルで **[コスト]** > **[コスト分析]** の順に移動�
 
 Actual Cost (実績コスト) レポートを見ると、11 月 16 日にコストの急増が見られます。これは、RI の購入に費やされた 747 ドルに対応するものです。 償却コスト レポート (次の図を参照) を見ると、11 月 16 日に、その日の端数分のコストが発生しています。 11 月 17 日からは、償却後の RI コスト 2.05 ドル (= 747/365) が確認できます。 ちなみに、購入済みの予約が未使用になっていることから、別の VM サイズに切り替えることで最適化できることがわかります。
 
-このレポートを表示するには、**[コスト]** > **[コスト分析]** に移動し、**[Amortized Cost Analysis]\(償却コスト分析\)** または **[Amortized Cost Over Time]\(時系列償却コスト\)** を選択します。
+このレポートを表示するには、 **[コスト]**  >  **[コスト分析]** に移動し、 **[Amortized Cost Analysis]\(償却コスト分析\)** または **[Amortized Cost Over Time]\(時系列償却コスト\)** を選択します。
 
 ![償却された予約インスタンス コストを示すレポートの例](./media/tutorial-optimize-reserved-instances/azure07.png)
 
@@ -156,13 +156,13 @@ Actual Cost (実績コスト) レポートを見ると、11 月 16 日にコス�
 - 購入すべき内容に関して、使用履歴に基づいて提案される推奨情報を確認する
 - 未使用の予約に変更を加える
 
-"_EC2 RI Buying Recommendations (EC2 RI 購入の推奨情報)_" レポートおよび "_EC2 Currently Unused Reservations (EC2 の現在未使用の予約)_" レポートを利用すると、占有インスタンス使用量とコストを改善することができます。
+"_EC2 RI Buying Recommendations (EC2 RI 購入の推奨情報)_ " レポートおよび "_EC2 Currently Unused Reservations (EC2 の現在未使用の予約)_ " レポートを利用すると、占有インスタンス使用量とコストを改善することができます。
 
 ## <a name="buy-recommended-ris"></a>推奨される RI を購入する
 
 Cloudyn では、オンデマンド インスタンスの使用量が比較され、予約インスタンスを使用した場合の効果と対比されます。 コスト削減効果が見込めると判断された場合、EC2 Buying Recommendations (EC2 購入推奨情報) レポートに推奨情報が表示されます。
 
-ポータルの上部にあるレポート メニューで、**[オプティマイザー]** > **[Pricing Optimization]\(価格の最適化\)** > **[EC2 RI Buying Recommendations]\(EC2 RI 購入の推奨情報\)** の順にクリックします。
+ポータルの上部にあるレポート メニューで、 **[オプティマイザー]**  >  **[Pricing Optimization]\(価格の最適化\)**  >  **[EC2 RI Buying Recommendations]\(EC2 RI 購入の推奨情報\)** の順にクリックします。
 
 次の図は、レポートから提示された購入の推奨情報を示しています。
 
@@ -170,7 +170,7 @@ Cloudyn では、オンデマンド インスタンスの使用量が比較さ�
 
 この例では、Cloudyn\_A アカウントに関して、予約インスタンスの購入推奨情報が 32 件表示されています。 購入の推奨情報にすべて従った場合、年間 137,770 ドルのコスト削減効果を見込むことができます。 Cloudyn から提示される購入の推奨情報は、実行中のワークロードの使用量が今後も変わらないことを前提としています。
 
-それぞれの購入が推奨される理由について詳細な情報を確認するには、**[Justifications]\(理由\)** の正符号 ( **+** ) をクリックします。 次に示したのは、一覧に表示される最初の推奨情報の例です。
+それぞれの購入が推奨される理由について詳細な情報を確認するには、 **[Justifications]\(理由\)** の正符号 ( **+** ) をクリックします。 次に示したのは、一覧に表示される最初の推奨情報の例です。
 
 ![購入理由詳細を示す例](./media/tutorial-optimize-reserved-instances/aws02.png)
 
@@ -182,7 +182,7 @@ Cloudyn では、オンデマンド インスタンスの使用量が比較さ�
 
 コスト削減効果が現れるのは、その時点からになります。
 
-提示された購入の推奨情報の正確性は、**[Instances over Time]\(時系列インスタンス数\)** を見て確認できます。 この例では、過去 30 日間、平均で 6 つのインスタンスがワークロードに使用されていることを確認できます。
+提示された購入の推奨情報の正確性は、 **[Instances over Time]\(時系列インスタンス数\)** を見て確認できます。 この例では、過去 30 日間、平均で 6 つのインスタンスがワークロードに使用されていることを確認できます。
 
 ![時系列のインスタンス使用履歴を示す例](./media/tutorial-optimize-reserved-instances/aws04.png)
 
@@ -192,7 +192,7 @@ Cloudyn では、オンデマンド インスタンスの使用量が比較さ�
 
 AWS は、特定の可用性ゾーンおよびリージョンを対象に予約インスタンスを販売しています。 特定の可用性ゾーンを対象とした予約インスタンスを購入した場合、ゾーン間で予約を移動することはできません。 ただし、リージョンの予約インスタンスについては、**EC2 Currently Unused Reservations (EC2 の現在未使用の予約)** レポートを使用してゾーン間で簡単に移動することができます。 または、範囲をリージョンに変更する方法もあります。その場合、該当するインスタンスがすべての可用性ゾーンにわたって適用されます。
 
-ポータル上部のレポート メニューで、**[Optimizer]\(オプティマイザー\)** > **[Inefficiencies]\(非効率\)** > **[EC2 Currently Unused Reservations]\(EC2 の現在未使用の予約\)** をクリックします。
+ポータル上部のレポート メニューで、 **[Optimizer]\(オプティマイザー\)**  >  **[Inefficiencies]\(非効率\)**  >  **[EC2 Currently Unused Reservations]\(EC2 の現在未使用の予約\)** をクリックします。
 
 次の図は、未使用の予約インスタンスを含んだレポートを示しています。
 
@@ -204,13 +204,13 @@ AWS は、特定の可用性ゾーンおよびリージョンを対象に予約�
 
 この例では、未使用の予約が、さまざまな可用性ゾーンに合計 77 個存在します。 1 つ目の予約には、未使用のインスタンスが 51 個あります。 この一覧の下の方を見てみると、**us-east-1c** 可用性ゾーンの **m3.2xlarge** タイプのインスタンスを使って行うことができる予約インスタンスの変更案が表示されています。
 
-一覧の 1 つ目の予約について **[変更]** をクリックすると、**[Modify RI]\(RI の変更\)** ページが開いて、予約についてのデータが表示されます。
+一覧の 1 つ目の予約について **[変更]** をクリックすると、 **[Modify RI]\(RI の変更\)** ページが開いて、予約についてのデータが表示されます。
 
 ![変更可能予約を示す例](./media/tutorial-optimize-reserved-instances/unused-ri03.png)
 
 変更可能な予約インスタンスが一覧表示されます。 次の例に示す図では、変更可能な未使用の予約は 51 個ですが、2 つの予約で 54 個必要です。 未使用の予約をすべて使い切るように変更した場合、4 つのインスタンスは引き続きオンデマンドで実行されます。 この例では、未使用の予約を 2 分割し、1 つ目の予約で 30 個、2 つ目の予約で 21 個使用するようにします。
 
-1 つ目の予約のエントリに表示されている正符号をクリックして、**[Reservation quantity]\(予約数量\)** を「**30**」に設定します。 2 つ目のエントリについては、予約数量を「**21**」に設定し、**[適用]** をクリックします。
+1 つ目の予約のエントリに表示されている正符号をクリックして、 **[Reservation quantity]\(予約数量\)** を「**30**」に設定します。 2 つ目のエントリについては、予約数量を「**21**」に設定し、 **[適用]** をクリックします。
 
 ![予約数量変更を示す例](./media/tutorial-optimize-reserved-instances/unused-ri04.png)
 

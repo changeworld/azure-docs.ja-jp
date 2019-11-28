@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efe6946a3de2a95f15e017dbd65e2ec84cc2f2f3
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: ad7afc2a4936737cf1cb3fd08bc69289b9cfc90a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964082"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379802"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>クイック スタート:ユニバーサル Windows プラットフォーム (UWP) アプリケーションから Microsoft Graph API を呼び出す
 
@@ -125,7 +125,7 @@ using Microsoft.Identity.Client;
 
 ```csharp
 public static IPublicClientApplication PublicClientApp;
-PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
+PublicClientApp = PublicClientApplicationBuilder.Create(ClientId)
                                                     .Build();
 ```
 

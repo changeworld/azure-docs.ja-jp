@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 01bf33c3ed50311b031e015b24566f5819ac0857
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1a719b878f3e5fbade3adf453ac7d0604ea85077
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123826"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384077"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>クイック スタート:Maven プラグインを使用して Azure Spring Cloud アプリを起動する
 
@@ -38,16 +38,7 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 1. [Git をインストールします](https://git-scm.com/)。
 2. [JDK 8 をインストールします](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。
 3. [Maven 3.0 以上をインストールします](https://maven.apache.org/download.cgi)。
-4. [Azure CLI バージョン 2.0.67 以上をインストールします](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
-5. [無料の Azure サブスクリプションにサインアップします](https://azure.microsoft.com/free/)。
-
-## <a name="install-the-azure-cli-extension"></a>Azure CLI 拡張機能をインストールする
-
-次のコマンドを使用して、Azure CLI 用の Azure Spring Cloud 拡張機能をインストールします。
-
-```Azure CLI
-az extension add --name spring-cloud
-```
+4. [無料の Azure サブスクリプションにサインアップします](https://azure.microsoft.com/free/)。
 
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Azure portal でサービス インスタンスをプロビジョニングする
 

@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: b5fa1557999ae851bccafbf8ee7c41f0b3614614
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 724a38cb516e5689f817e9ddeaa867b17274971b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715917"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932039"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>チュートリアル:デザイナー (プレビュー) で機械学習モデルをデプロイする
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -22,10 +22,10 @@ ms.locfileid: "73715917"
 [チュートリアルのパート 1](tutorial-designer-automobile-price-train-score.md) で作成した予測モデルを、他のユーザーが使用できるようデプロイしてみましょう。 パート 1 では、モデルをトレーニングしました。 ここでは、ユーザー入力に基づいて新しい予測を生成しましょう。 チュートリアルのこのパートでは、次のことを行います。
 
 > [!div class="checklist"]
-> * リアルタイム推論パイプラインを作成する
-> * 推論クラスターを作成する
-> * リアルタイム エンドポイントをデプロイする
-> * リアルタイム エンドポイントをテストする
+> * リアルタイム推論パイプラインを作成する。
+> * 推論クラスターを作成する。
+> * リアルタイム エンドポイントをデプロイする。
+> * リアルタイム エンドポイントをテストする。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,13 +33,13 @@ ms.locfileid: "73715917"
 
 ## <a name="create-a-real-time-inference-pipeline"></a>リアルタイム推論パイプラインを作成する
 
-パイプラインをデプロイするためにはまず、トレーニング パイプラインをリアルタイム推論パイプラインに変換する必要があります。 このプロセスにより、トレーニング モジュールが削除され、推論要求のための入力と出力が追加されます。
+パイプラインをデプロイするためには、まずトレーニング パイプラインをリアルタイム推論パイプラインに変換する必要があります。 このプロセスにより、トレーニング モジュールが削除され、推論要求のための入力と出力が追加されます。
 
 ### <a name="create-a-real-time-inference-pipeline"></a>リアルタイム推論パイプラインを作成する
 
 1. パイプライン キャンバス上で **[Create inference pipeline]\(推論パイプラインの作成\)**  >  **[Real-time inference pipeline]\(リアルタイム推論パイプライン\)** の順に選択します。
 
-    これでパイプラインは次のようになっているはずです。  
+    これでパイプラインは次のようになっているはずです。 
 
    ![デプロイ準備が完了したパイプラインの予測される構成を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
 
@@ -50,8 +50,8 @@ ms.locfileid: "73715917"
     * 保存したトレーニング済みのモデルが再びパイプラインに追加されます。
     * **[Web Service Input]\(Web サービスの入力\)** モジュールと **[Web Service Output]\(Web サービスの出力\)** モジュールが追加されます。 ユーザー データがモデルに入力される位置と、データが返される位置が、これらのモジュールによって示されます。
 
-    > [!Note]
-    > **トレーニング パイプライン**は、パイプライン キャンバスの上部にある新しいタブに保存されます。 また、デザイナーでは発行済みのパイプラインとして検出される可能性があります。
+    > [!NOTE]
+    > *トレーニング パイプライン*は、パイプライン キャンバスの上部にある新しいタブに保存されます。 また、デザイナーでは発行済みのパイプラインとして検出される可能性があります。
     >
 
 1. **[Run]\(実行\)** を選択し、パート 1 で使用したものと同じコンピューティング先と実験を使用します。
@@ -64,23 +64,23 @@ ms.locfileid: "73715917"
 
 ## <a name="create-an-inferencing-cluster"></a>推論クラスターを作成する
 
-表示されたダイアログで、既存の Azure Kubernetes Service (AKS) クラスターを選択して自分のモデルをデプロイできます。 既存の AKS クラスターがない場合は、次の手順を使用して作成してください。
+表示されたダイアログ ボックスで、既存の Azure Kubernetes Service (AKS) クラスターを選択して自分のモデルをデプロイできます。 既存の AKS クラスターがない場合は、次の手順を使用して作成してください。
 
 1. 表示されたダイアログ ボックスの **[Compute]\(コンピューティング\)** を選択して **[Compute]\(コンピューティング\)** ページに移動します。
 
 1. ナビゲーション リボンで、 **[Inference Clusters]\(推論クラスター\)**  >  **[+ New]\(+ 新規\)** の順に選択します。
 
-    ![推論クラスターの新規作成ウィンドウに移動する方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
+    ![推論クラスターの新規作成ペインに移動する方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
 
 1. 推論クラスター ウィンドウで、新しい Kubernetes サービスを構成します。
 
-1. **[Compute name]\(コンピューティング名\)** に「aks-compute」と入力します。
+1. **[Compute name]\(コンピューティング名\)** に「*aks-compute*」と入力します。
     
-1. 近くにある利用可能な**リージョン**を選択します。
+1. **[Region]\(リージョン\)** に、使用できる近くのリージョンを選択します。
 
 1. **作成** を選択します。
 
-    > [!Note]
+    > [!NOTE]
     > 新しい AKS サービスの作成には約 15 分かかります。 プロビジョニングの状態は、 **[Inference Clusters]\(推論クラスター\)** ページで確認できます。
     >
 
@@ -98,7 +98,7 @@ AKS サービスのプロビジョニングが完了したら、リアルタイ�
 
     ![新しいリアルタイム エンドポイントの設定方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
 
-    デプロイが完了するとキャンバスの上に成功通知が表示されます。完了までに数分かかる場合があります。
+    デプロイが完了すると、キャンバスの上に成功通知が表示されます。 これには数分かかる可能性があります。
 
 ## <a name="test-the-real-time-endpoint"></a>リアルタイム エンドポイントをテストする
 

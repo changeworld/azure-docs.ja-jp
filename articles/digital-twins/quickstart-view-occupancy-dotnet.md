@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:空き部屋を探す - Azure Digital Twins
+title: クイック スタート:空き部屋を探す - Azure Digital Twins | Microsoft Docs
 description: このクイック スタートでは、2 つの .NET Core サンプル アプリケーションを実行して、Azure Digital Twins の空間にシミュレートされたモーションと二酸化炭素のテレメトリを送信します。 目標は、クラウドで計算処理した後に、管理 API から空気の良い空き部屋を探すことです。
 ms.author: alinast
 author: alinamstanciu
@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 11/12/2019
-ms.openlocfilehash: 44ef646328f5f55d16dfa2d6906b78866292ebd9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: b150167ca6a808e0da337be4a609a21cd974598a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123200"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383135"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>クイック スタート: Azure Digital Twins を使用して空き部屋を探す
 

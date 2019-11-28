@@ -1,21 +1,16 @@
 ---
 title: C# を使用して Azure で最初の永続関数を作成する
 description: Visual Studio を使用して Azure 永続関数を作成して発行します。
-services: functions
-documentationcenter: na
 author: jeffhollan
-manager: jeconnoc
-keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 563412fbc5e8d9af3c399b1f75696053549143c4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 6b3ead9eefd6f0d4c504cc7711ea4e03facf8edc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615011"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231510"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>C\# で最初の Durable Functions を作成する
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery サービスを使用して Azure IaaS VM を別の Azure リージョンに移動する | Microsoft Docs
+title: Azure Site Recovery を使用して Azure VM を別のリージョンに移動する
 description: Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS VM を移動します。
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: ec78e4c260c2ca5e0469f9373f60d8bca29ada7f
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375712"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092183"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移動する
+# <a name="move-azure-vms-to-another-azure-region"></a>Azure VM を別の Azure リージョンに移動する
 
 信頼性、可用性、管理、またはガバナンスを向上するために、Azure サービスとしてのインフラストラクチャ (IaaS) 仮想マシンをあるリージョンから別のリージョンに移動する場合があります。 このチュートリアルでは、Azure Site Recovery を使用して、VM を別のリージョンに移動する方法を説明します。 学習内容は次のとおりです。
 

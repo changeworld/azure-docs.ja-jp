@@ -1,20 +1,19 @@
 ---
-title: Azure Site Recovery を使用して オンプレミスのコンピューターの Azure へのディザスター リカバリー訓練を実行する | Microsoft Docs
-description: Azure Site Recovery を使用した オンプレミスから Azure へのディザスター リカバリー訓練の実行について説明します
+title: Azure Site Recovery を使用して Azure へのディザスター リカバリー訓練を実行する
+description: Azure Site Recovery を使用して オンプレミスから Azure へのディザスター リカバリー訓練を実行する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 14ef3bf8420acf03f5c8329c6c78834dbc16ae40
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5bd9f5316f8b8799633de8c0c84c61424c0e4f4a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814283"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954434"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 

@@ -7,19 +7,16 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715515"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158655"
 ---
 # <a name="assess-servers-using-imported-data"></a>インポートされたデータを使用してサーバーを評価する
 
-> [!NOTE]
-> Azure Migrate ポータルでこの機能がまだ表示されていない場合は、しばらくお待ちください。 来週あたりに表示されるようになる予定です。
-
-この記事では、オンプレミス サーバーを評価するために、[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) を使用し、CSV を使用してサーバーのメタデータをインポートする方法について説明します。 この評価方法では、評価を作成するために Azure Migrate アプライアンスを設定する必要はありません。 これは、次の場合に便利です。 
+この記事では、オンプレミス サーバーを評価するために、[Azure Migrate:Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) を使用し、CSV を使用してサーバーのメタデータをインポートする方法について説明します。 この評価方法では、評価を作成するために Azure Migrate アプライアンスを設定する必要はありません。 これは、次の場合に便利です。
 
 - アプライアンスを展開する前に、クイック初期評価を作成する必要があります。
 - Azure Migrate アプライアンスを組織内に展開することはできません。
@@ -49,7 +46,7 @@ ms.locfileid: "73715515"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。
 
 
-## <a name="set-azure-permissions-for-azure-migrate"></a>Azure Migrate の Azure アクセス許可を設定する 
+## <a name="set-azure-permissions-for-azure-migrate"></a>Azure Migrate の Azure アクセス許可を設定する
 
 ご自分の Azure アカウントには、Azure Migrate プロジェクトを作成するためのアクセス許可が必要です。
 
@@ -116,7 +113,7 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 
 **フィールド名** | **必須** | **詳細**
 --- | --- | ---
-**サーバー名** | はい | FQDN を指定することをお勧めします。 
+**サーバー名** | はい | FQDN を指定することをお勧めします。
 **IP アドレス** | いいえ | サーバー アドレス。
 **コア数** | はい | サーバーに割り当てられているプロセッサ コアの数。
 **メモリ** | はい | サーバーに割り当てられている合計 RAM (MB)。
@@ -144,7 +141,7 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 **Virtual Machine Manager ID** | いいえ | これは VMWare vCenter の **InstanceUUid** です。 Hyper-V には必要ありません。
 **MAC アドレス**| いいえ | サーバーの MAC アドレス。
 **BIOS ID** | いいえ | サーバーの BIOS ID。
-**Custom server ID (カスタム サーバー ID)**| いいえ | オンプレミスの一意のローカル サーバー ID。 <br/> インポートされたサーバーをローカル ID で追跡する場合に便利です。 
+**Custom server ID (カスタム サーバー ID)**| いいえ | オンプレミスの一意のローカル サーバー ID。 <br/> インポートされたサーバーをローカル ID で追跡する場合に便利です。
 **Application 1 name (アプリケーション 1 の名前)** | いいえ | サーバーで実行されているワークロードの名前。<br/> テンプレートに[列を追加](#add-multiple-applications)することで、さらにアプリの詳細を追加できます。 最大 5 つのアプリケーションを追加できます。
 **Application 1 type (アプリケーション 1 の種類)** | いいえ | サーバーで実行されているワークロードの種類
 **Application 1 version (アプリケーション 1 のバージョン)** | いいえ | サーバーで実行されているワークロードのバージョン。
@@ -162,7 +159,7 @@ CSV テンプレートをダウンロードし、サーバー情報を追加し�
 
 ### <a name="add-multiple-disks"></a>複数のディスクを追加する
 
-このテンプレートには、最初のディスクの既定フィールドが用意されています。  同様の列を最大 8 個のディスクに追加できます。 
+このテンプレートには、最初のディスクの既定フィールドが用意されています。  同様の列を最大 8 個のディスクに追加できます。
 
 たとえば、2 番目のディスクのすべてのフィールドを指定するには、次の列を追加します。
 
@@ -192,10 +189,10 @@ CSV テンプレートに情報を追加したら、Azure Migrate にサーバ�
 
 1. [Azure Migrate] > **[マシンの検出]** で、入力したテンプレートを参照します。
 2. **[インポート]** をクリックします。
-3. インポートの状態が表示されます。 
+3. インポートの状態が表示されます。
     - 状態に警告が表示される場合は、それらを修正するか、対処せずに続行することができます。
     - 警告の提案に従ってサーバー情報を修正すると、評価の精度が向上します。
-    - 警告が表示された場合に表示して修正するには、 **[Download warning details .CSV]\(警告の詳細の .CSV のダウンロード\)** をクリックします。 これにより、警告が追加された CSV がダウンロードされます。 警告を確認し、必要に応じて問題を修正することができます。 
+    - 警告が表示された場合に表示して修正するには、 **[Download warning details .CSV]\(警告の詳細の .CSV のダウンロード\)** をクリックします。 これにより、警告が追加された CSV がダウンロードされます。 警告を確認し、必要に応じて問題を修正することができます。
     状態にエラーが表示される場合 (インポートの状態が **[失敗]** の場合)、インポートを続行する前にこれらを修正する必要があります。 これを行うには、エラーの詳細が追加されている CSV をダウンロードします。 必要に応じて、エラーを確認して対処します。 次に、変更したファイルを再度アップロードします。
 4. インポートの状態が **[完了]** の場合は、サーバーの情報がインポートされます。
 
@@ -205,7 +202,7 @@ CSV テンプレートに情報を追加したら、Azure Migrate にサーバ�
 
 ## <a name="updating-server-information"></a>サーバー情報の更新
 
-サーバー情報を更新するには、サーバーのデータを同じ **[サーバー名]** を使用してもう一度アップロードします。 **[サーバー名]** フィールドを変更することはできません。 
+サーバー情報を更新するには、サーバーのデータを同じ **[サーバー名]** を使用してもう一度アップロードします。 **[サーバー名]** フィールドを変更することはできません。
 
 サーバーの削除は現在サポートされていません。
 
@@ -300,21 +297,21 @@ Azure Migrate: Server Assessment を使用して作成できる評価には、�
 
 名前 | 名前
 --- | ---
-**A - H** | 
+**A - H** |
 Apple Mac OS X 10 | Asianux 3<br/>Asianux 4<br/>Asianux 5
-CentOS<br/>CentOS 4/5 | CoreOS Linux 
-Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD 
-**I - R** | 
+CentOS<br/>CentOS 4/5 | CoreOS Linux
+Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD
+**I - R** |
 IBM OS/2 | MS-DOS |
-Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11 
-Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | 
-**S-T** | 
+Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11
+Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora |
+**S-T** |
 SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7 | Serenity Systems eComStation 1<br/>Serenity Systems eComStation 2
 Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
-**U-Z** | 
+**U-Z** |
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
 Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server Threshold<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
-    
+
 
 ## <a name="next-steps"></a>次の手順
 

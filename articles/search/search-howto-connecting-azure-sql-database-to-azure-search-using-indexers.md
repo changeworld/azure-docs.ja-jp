@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database に接続し、インデクサーを使用してコンテンツのインデックスを作成する
+title: Azure SQL データを検索する
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search でのフルテキスト検索用のインデクサーを使用して Azure SQL Database からデータをインポートします。 この記事では、接続、インデクサーの構成、およびデータの取り込みについて説明します。
 manager: nitinme
@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 012f555f3837086946eb4581dadc74011a3acc09
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792205"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113307"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-azure-cognitive-search-indexers"></a>Azure SQL Database に接続し、Azure Cognitive Search インデクサーを使用してコンテンツのインデックスを作成する
+# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Azure SQL Database に接続し、Azure Cognitive Search インデクサーを使用してコンテンツのインデックスを作成する
 
 [Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Cognitive Search インデックスにデータを入力する必要があります。 データが Azure SQL データベースに存在する場合は、**Azure SQL Database 用 Azure Cognitive Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これは、記述するコードと対処するインフラストラクチャが減ることを意味します。
 

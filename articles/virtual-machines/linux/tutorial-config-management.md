@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Linux 仮想マシンの構成を Azure で管理する | Microsoft Docs
+title: チュートリアル - Linux 仮想マシンの構成を Azure で管理する
 description: このチュートリアルでは、Linux 仮想マシン上の変更を特定したりパッケージの更新プログラムを管理したりする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: bc5029e0ea2d743fffe258af8e66728269d0933e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 5dd35ed2f4533d19cc3a59788d6422416dce13f5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374340"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034551"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Linux 仮想マシンを更新する
 

@@ -1,23 +1,21 @@
 ---
-title: Terraform を使用して Azure 仮想マシン スケール セットを作成する
-description: 仮想ネットワークとアタッチされたマネージド ディスクを含む Azure 仮想マシン スケール セットの構成とバージョン管理を行うための Terraform の使用に関するチュートリアル
-services: terraform
-ms.service: azure
-keywords: terraform, devops, 仮想マシン, Azure, スケール セット, ネットワーク, ストレージ, モジュール
+title: チュートリアル - Terraform を使用して Azure 仮想マシン スケール セットを作成する
+description: Terraform を使用して Azure 仮想マシン スケール セットを構成し、バージョンを管理する方法について説明します。
+ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: a6bc0879d07cadc6c5b0b1a21b11b3075ec69719
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 11/07/2019
+ms.openlocfilehash: e2b7d816a02eaf47ef50bfd2d814f7b26a813446
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169877"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838401"
 ---
-# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Terraform を使用して Azure 仮想マシン スケール セットを作成する
+# <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>チュートリアル:Terraform を使用して Azure 仮想マシン スケール セットを作成する
 
-[Azure 仮想マシン スケール セット](/azure/virtual-machine-scale-sets)では、負荷分散された同一の仮想マシンのグループを作成および管理できます。この場合、需要や定義したスケジュールに応じて仮想マシン インスタンスの数を自動的に増減できます。
+[Azure 仮想マシン スケール セット](/azure/virtual-machine-scale-sets)を使用すると、同一の VM を構成できます。 VM インスタンスの数は、需要またはスケジュールに基づいて調整できます。 詳細については、「[Azure Portal で仮想マシン スケール セットを自動的にスケーリングする](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-portal)」を参照してください。
 
 このチュートリアルでは、[Azure Cloud Shell](/azure/cloud-shell/overview) を使用して次のタスクを実行する方法について説明します。
 
@@ -37,7 +35,7 @@ ms.locfileid: "71169877"
 
 - **Terraform のインストール**:[Terraform および Azure へのアクセスの構成](/azure/virtual-machines/linux/terraform-install-configure)に関する記事の指示に従ってください
 
-- **SSH キー ペアの作成**:SSH キー ペアをまだ持っていない場合は、[Azure 内に Linux VM 用の SSH 公開/秘密キーの組を作成して使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)に関する記事の手順に従います。
+- **SSH キー ペアの作成**:詳細については、「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](/azure/virtual-machines/linux/mac-create-ssh-keys)」を参照してください。
 
 ## <a name="create-the-directory-structure"></a>ディレクトリ構造を作成する
 
@@ -73,10 +71,8 @@ Azure Cloud Shell 内で、次の手順を実行します。
 1. `variables.tf` という名前でファイルを作成します。
 
     ```bash
-    vi variables.tf
+    code variables.tf
     ```
-
-1. I キーを選択し、挿入モードに入ります。
 
 1. 以下のコードをエディターに貼り付けます。
 
@@ -100,13 +96,7 @@ Azure Cloud Shell 内で、次の手順を実行します。
    }
    ```
 
-1. Esc キーを押して、挿入モードを終了します。
-
-1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
-
-    ```bash
-    :wq
-    ```
+1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
 ## <a name="create-the-output-definitions-file"></a>出力定義ファイルを作成する
 このセクションでは、デプロイ後の出力を記述するファイルを作成します。
@@ -116,27 +106,19 @@ Azure Cloud Shell 内で、次の手順を実行します。
 1. `output.tf` という名前でファイルを作成します。
 
     ```bash
-    vi output.tf
+    code output.tf
     ```
-
-1. I キーを選択し、挿入モードに入ります。
 
 1. 次のコードをエディターに貼り付けて、仮想マシンの完全修飾ドメイン名 (FQDN) が表示されるようにします。
    :
 
    ```hcl
     output "vmss_public_ip" {
-        value = "${azurerm_public_ip.vmss.fqdn}"
+        value = azurerm_public_ip.vmss.fqdn
     }
    ```
 
-1. Esc キーを押して、挿入モードを終了します。
-
-1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
-
-    ```bash
-    :wq
-    ```
+1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
 ## <a name="define-the-network-infrastructure-in-a-template"></a>テンプレートでネットワーク インフラストラクチャを定義する
 このセクションでは、新しい Azure リソース グループに次のネットワーク インフラストラクチャを作成します。
@@ -150,18 +132,16 @@ Azure Cloud Shell 内で、次の手順を実行します。
 1. 仮想マシン スケール セット インフラストラクチャを記述する `vmss.tf` という名前のファイルを作成します。
 
     ```bash
-    vi vmss.tf
+    code vmss.tf
     ```
-
-1. I キーを選択し、挿入モードに入ります。
 
 1. 次のコードをファイルの末尾に貼り付けて、仮想マシンの完全修飾ドメイン名 (FQDN) が表示されるようにします。
 
    ```hcl
    resource "azurerm_resource_group" "vmss" {
-    name     = "${var.resource_group_name}"
-    location = "${var.location}"
-    tags     = "${var.tags}"
+    name     = var.resource_group_name
+    location = var.location
+    tags     = var.tags
    }
 
    resource "random_string" "fqdn" {
@@ -174,35 +154,29 @@ Azure Cloud Shell 内で、次の手順を実行します。
    resource "azurerm_virtual_network" "vmss" {
     name                = "vmss-vnet"
     address_space       = ["10.0.0.0/16"]
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
-    tags                = "${var.tags}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
+    tags                = var.tags
    }
 
    resource "azurerm_subnet" "vmss" {
     name                 = "vmss-subnet"
-    resource_group_name  = "${azurerm_resource_group.vmss.name}"
-    virtual_network_name = "${azurerm_virtual_network.vmss.name}"
+    resource_group_name  = azurerm_resource_group.vmss.name
+    virtual_network_name = azurerm_virtual_network.vmss.name
     address_prefix       = "10.0.2.0/24"
    }
 
    resource "azurerm_public_ip" "vmss" {
     name                         = "vmss-public-ip"
-    location                     = "${var.location}"
-    resource_group_name          = "${azurerm_resource_group.vmss.name}"
+    location                     = var.location
+    resource_group_name          = azurerm_resource_group.vmss.name
     allocation_method = "Static"
-    domain_name_label            = "${random_string.fqdn.result}"
-    tags                         = "${var.tags}"
+    domain_name_label            = random_string.fqdn.result
+    tags                         = var.tags
    }
    ```
 
-1. Esc キーを押して、挿入モードを終了します。
-
-1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
-
-   ```bash
-   :wq
-   ```
+1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
 ## <a name="provision-the-network-infrastructure"></a>ネットワーク インフラストラクチャをプロビジョニングする
 構成ファイル (.tf) を作成したディレクトリから Azure Cloud Shell を使用して、次の手順を実行します。
@@ -219,9 +193,9 @@ Azure Cloud Shell 内で、次の手順を実行します。
    terraform apply
    ```
 
-   **location** 変数は `variables.tf` で定義されていますが設定されていないため、Terraform により "location" の値を求められます。 "米国西部" などの任意の有効な場所を入力でき、続いて Enter キーを押します (スペースを含む値はかっこで囲みます)。
+   `location` 変数は `variables.tf` で定義されていますが設定されていないため、Terraform により `location` の値の入力を求められます。 "米国西部" などの任意の有効な場所を入力でき、続いて Enter キーを押します (スペースを含む値はかっこで囲みます)。
 
-1. Terraform は、`output.tf` ファイルでの定義に従って出力します。 次のスクリーンショットに示すように、FQDN の形式は &lt;id>.&lt;location>.cloudapp.azure.com のようになります。 id 値は計算された値で、location は Terraform の実行時に指定した値です。
+1. Terraform は、`output.tf` ファイルでの定義に従って出力します。 次のスクリーンショットに示すように、FQDN の形式は `<ID>.<location>.cloudapp.azure.com` になります。 ID は計算された値であり、location は Terraform の実行時に指定した値です。
 
    ![仮想マシン スケール セットのパブリック IP アドレスの完全修飾ドメイン名](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
 
@@ -245,7 +219,7 @@ Cloud Shell で、次の手順を実行します。
 1. `vmss.tf` 構成ファイルを開きます。
 
    ```bash
-   vi vmss.tf
+   code vmss.tf
    ```
 
 1. ファイルの末尾に移動し、A キーを選択して追加モードに入ります。
@@ -255,46 +229,46 @@ Cloud Shell で、次の手順を実行します。
    ```hcl
    resource "azurerm_lb" "vmss" {
     name                = "vmss-lb"
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
 
     frontend_ip_configuration {
       name                 = "PublicIPAddress"
-      public_ip_address_id = "${azurerm_public_ip.vmss.id}"
+      public_ip_address_id = azurerm_public_ip.vmss.id
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
 
    resource "azurerm_lb_backend_address_pool" "bpepool" {
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
-    loadbalancer_id     = "${azurerm_lb.vmss.id}"
+    resource_group_name = azurerm_resource_group.vmss.name
+    loadbalancer_id     = azurerm_lb.vmss.id
     name                = "BackEndAddressPool"
    }
 
    resource "azurerm_lb_probe" "vmss" {
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
-    loadbalancer_id     = "${azurerm_lb.vmss.id}"
+    resource_group_name = azurerm_resource_group.vmss.name
+    loadbalancer_id     = azurerm_lb.vmss.id
     name                = "ssh-running-probe"
-    port                = "${var.application_port}"
+    port                = var.application_port
    }
 
    resource "azurerm_lb_rule" "lbnatrule" {
-      resource_group_name            = "${azurerm_resource_group.vmss.name}"
-      loadbalancer_id                = "${azurerm_lb.vmss.id}"
+      resource_group_name            = azurerm_resource_group.vmss.name
+      loadbalancer_id                = azurerm_lb.vmss.id
       name                           = "http"
       protocol                       = "Tcp"
-      frontend_port                  = "${var.application_port}"
-      backend_port                   = "${var.application_port}"
-      backend_address_pool_id        = "${azurerm_lb_backend_address_pool.bpepool.id}"
+      frontend_port                  = var.application_port
+      backend_port                   = var.application_port
+      backend_address_pool_id        = azurerm_lb_backend_address_pool.bpepool.id
       frontend_ip_configuration_name = "PublicIPAddress"
-      probe_id                       = "${azurerm_lb_probe.vmss.id}"
+      probe_id                       = azurerm_lb_probe.vmss.id
    }
 
    resource "azurerm_virtual_machine_scale_set" "vmss" {
     name                = "vmscaleset"
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
     upgrade_policy_mode = "Manual"
 
     sku {
@@ -326,9 +300,9 @@ Cloud Shell で、次の手順を実行します。
 
     os_profile {
       computer_name_prefix = "vmlab"
-      admin_username       = "${var.admin_user}"
-      admin_password       = "${var.admin_password}"
-      custom_data          = "${file("web.conf")}"
+      admin_username       = var.admin_user
+      admin_password       = var.admin_password
+      custom_data          = file("web.conf")
     }
 
     os_profile_linux_config {
@@ -341,17 +315,15 @@ Cloud Shell で、次の手順を実行します。
 
       ip_configuration {
         name                                   = "IPConfiguration"
-        subnet_id                              = "${azurerm_subnet.vmss.id}"
-        load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+        subnet_id                              = azurerm_subnet.vmss.id
+        load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]
         primary = true
       }
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
    ```
-
-1. Esc キーを押して、挿入モードを終了します。
 
 1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
 
@@ -362,10 +334,8 @@ Cloud Shell で、次の手順を実行します。
 1. スケール セットの一部である仮想マシンの cloud-init 構成として機能する `web.conf` という名前のファイルを作成します。
 
     ```bash
-    vi web.conf
+    code web.conf
     ```
-
-1. I キーを選択し、挿入モードに入ります。
 
 1. 以下のコードをエディターに貼り付けます。
 
@@ -374,8 +344,6 @@ Cloud Shell で、次の手順を実行します。
    packages:
     - nginx
    ```
-
-1. Esc キーを押して、挿入モードを終了します。
 
 1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
 
@@ -386,7 +354,7 @@ Cloud Shell で、次の手順を実行します。
 1. `variables.tf` 構成ファイルを開きます。
 
     ```bash
-    vi variables.tf
+    code variables.tf
     ```
 
 1. ファイルの末尾に移動し、A キーを選択して追加モードに入ります。
@@ -409,13 +377,7 @@ Cloud Shell で、次の手順を実行します。
     }
     ```
 
-1. Esc キーを押して、挿入モードを終了します。
-
-1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
-
-     ```bash
-     :wq
-     ```
+1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
 1. Terraform プランを作成して、仮想マシン スケール セットのデプロイを視覚化します (選択したパスワードと、リソースの場所を指定する必要があります)。
 
@@ -451,7 +413,7 @@ SSH "*ジャンプボックス*" は、ネットワーク上の他のサーバ�
 1. `vmss.tf` 構成ファイルを開きます。
 
    ```bash
-   vi vmss.tf
+   code vmss.tf
    ```
 
 1. ファイルの末尾に移動し、A キーを選択して追加モードに入ります。
@@ -461,33 +423,33 @@ SSH "*ジャンプボックス*" は、ネットワーク上の他のサーバ�
    ```hcl
    resource "azurerm_public_ip" "jumpbox" {
     name                         = "jumpbox-public-ip"
-    location                     = "${var.location}"
-    resource_group_name          = "${azurerm_resource_group.vmss.name}"
+    location                     = var.location
+    resource_group_name          = azurerm_resource_group.vmss.name
     allocation_method = "Static"
     domain_name_label            = "${random_string.fqdn.result}-ssh"
-    tags                         = "${var.tags}"
+    tags                         = var.tags}
    }
 
    resource "azurerm_network_interface" "jumpbox" {
     name                = "jumpbox-nic"
-    location            = "${var.location}"
-    resource_group_name = "${azurerm_resource_group.vmss.name}"
+    location            = var.location
+    resource_group_name = azurerm_resource_group.vmss.name
 
     ip_configuration {
       name                          = "IPConfiguration"
-      subnet_id                     = "${azurerm_subnet.vmss.id}"
+      subnet_id                     = azurerm_subnet.vmss.id
       private_ip_address_allocation = "dynamic"
-      public_ip_address_id          = "${azurerm_public_ip.jumpbox.id}"
+      public_ip_address_id          = azurerm_public_ip.jumpbox.id
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
 
    resource "azurerm_virtual_machine" "jumpbox" {
     name                  = "jumpbox"
-    location              = "${var.location}"
-    resource_group_name   = "${azurerm_resource_group.vmss.name}"
-    network_interface_ids = ["${azurerm_network_interface.jumpbox.id}"]
+    location              = var.location
+    resource_group_name   = azurerm_resource_group.vmss.name
+    network_interface_ids = [azurerm_network_interface.jumpbox.id]
     vm_size               = "Standard_DS1_v2"
 
     storage_image_reference {
@@ -506,22 +468,22 @@ SSH "*ジャンプボックス*" は、ネットワーク上の他のサーバ�
 
     os_profile {
       computer_name  = "jumpbox"
-      admin_username = "${var.admin_user}"
-      admin_password = "${var.admin_password}"
+      admin_username = var.admin_user
+      admin_password = var.admin_password
     }
 
     os_profile_linux_config {
       disable_password_authentication = false
     }
 
-    tags = "${var.tags}"
+    tags = var.tags
    }
    ```
 
 1. `output.tf` 構成ファイルを開きます。
 
    ```bash
-   vi output.tf
+   code output.tf
    ```
 
 1. ファイルの末尾に移動し、A キーを選択して追加モードに入ります。
@@ -530,17 +492,11 @@ SSH "*ジャンプボックス*" は、ネットワーク上の他のサーバ�
 
    ```hcl
    output "jumpbox_public_ip" {
-      value = "${azurerm_public_ip.jumpbox.fqdn}"
+      value = azurerm_public_ip.jumpbox.fqdn
    }
    ```
 
-1. Esc キーを押して、挿入モードを終了します。
-
-1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
-
-    ```bash
-    :wq
-    ```
+1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
 1. ジャンプボックスをデプロイします。
 
@@ -566,9 +522,6 @@ terraform destroy
 この削除プロセスが完了するまでに数分かかることがあります。
 
 ## <a name="next-steps"></a>次の手順
-この記事では、Terraform を使用して Azure 仮想マシン スケール セットを作成する方法について説明しました。 Azure 上の Terraform の詳細については、次のリソースもご覧ください。
 
-[Microsoft.com での Terraform Hub](https://docs.microsoft.com/azure/terraform/)
-[Terraform Azure プロバイダー ドキュメント](https://aka.ms/terraform)
-[Terraform Azure プロバイダー ソース](https://aka.ms/tfgit)
-[Terraform Azure モジュール](https://aka.ms/tfmodules)
+> [!div class="nextstepaction"] 
+> [Azure での Terraform の使用について詳細を参照](/azure/terraform)

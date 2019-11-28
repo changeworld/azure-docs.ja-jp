@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f76ec20da73c778d024feea9df113de9e4aa0fe9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a72236843c13e139f33a669b54f108e91679c8c6
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573082"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326577"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>チュートリアル: ポータルからサンプル モデルを追加する
 
@@ -73,6 +73,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルでは、基本的なサンプル モデルをサーバーに追加する方法を学習しました。 モデル データベースが追加されたので、SQL Server Management Studio からこのデータベースに接続し、ユーザー ロールを追加できます。 さらに学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: サーバー管理者とユーザー ロールを構成する](analysis-services-database-users.md)
+> [チュートリアル: サーバー管理者とユーザー ロールを構成する](tutorials/analysis-services-tutorial-roles.md)
 
 

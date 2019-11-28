@@ -8,14 +8,14 @@ ms.author: banders
 ms.date: 05/20/2019
 ms.topic: quickstart
 ms.custom: seodec18
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
-ms.openlocfilehash: 95d1292374e1ec408c107245cde4cd1e12270f50
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f35541d01b9463112caf48bd8249469f97158c9f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967215"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229952"
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Azure エンタープライズ契約を登録してコスト データを表示する
 
@@ -33,16 +33,16 @@ Azure Cost Management には Cloudyn と同様の機能があります。 Azure 
 2. **[概要]** の **[Cloudyn]** をクリックします｡  
     ![Azure portal に表示される [Cloudyn] ページ](./media/quick-register-ea/cost-mgt-billing-service.png)
 3. **[Cloudyn]** ページで **[Cloudyn に移動]** をクリックします。新しいウィンドウで Cloudyn 登録ページが開きます。
-4. Cloudyn ポータルの試用登録ページで、会社名を入力し、**[Azure Enterprise Enrollment Administrator]\(Azure エンタープライズ登録管理者\)** を選択します。  
+4. Cloudyn ポータルの試用登録ページで、会社名を入力し、 **[Azure Enterprise Enrollment Administrator]\(Azure エンタープライズ登録管理者\)** を選択します。  
 5. エンタープライズ登録の API キーを入力します。 キーが手元にない場合は、[[エンタープライズ ポータル]](https://ea.azure.com) リンクをクリックし、次の手順を実行します。  
     ![[課金] タブで、API キーを貼り付けます](./media/quick-register-ea/trial-reg.png)
-   1. Azure Enterprise Web サイトにサインインし、**[レポート]** をクリックします。**[API アクセス キー]** をクリックし、主キーをコピーします。  
+   1. Azure Enterprise Web サイトにサインインし、 **[レポート]** をクリックします。 **[API アクセス キー]** をクリックし、主キーをコピーします。  
     ![EA ポータルでの EA API キーの例](./media/quick-register-ea/ea-key.png)
    3. 登録ページに戻って、API キーを貼り付けます。
 6. 使用条件に同意し、キーを検証します。 **[次へ]** をクリックし、Cloudyn で Azure リソース データを収集することを承認します。 収集されたデータには、お客様のサブスクリプションの使用状況、パフォーマンス、請求、サブスクリプションからのタグ データなどが含まれています。  
     ![成功した EA API キーの検証の例](./media/quick-register-ea/ea-key-validated.png)
-7. **[Invite other stakeholders]\(その他の関係者を招待\)** の下に電子メール アドレスを入力することで、ユーザーを追加できます。 完了したら、**[次へ]** をクリックします。 Azure の登録のサイズによっては、すべての課金データが Cloudyn に追加されるまでに最大 24 時間かかることがあります。
-8. **[Cloudyn に移動]** をクリックして、Cloudyn ポータルを開くと、**[Cloud Accounts Management]\(クラウド アカウント管理\)** ページに、登録した EA アカウント情報が表示されます。
+7. **[Invite other stakeholders]\(その他の関係者を招待\)** の下に電子メール アドレスを入力することで、ユーザーを追加できます。 完了したら、 **[次へ]** をクリックします。 Azure の登録のサイズによっては、すべての課金データが Cloudyn に追加されるまでに最大 24 時間かかることがあります。
+8. **[Cloudyn に移動]** をクリックして、Cloudyn ポータルを開くと、 **[Cloud Accounts Management]\(クラウド アカウント管理\)** ページに、登録した EA アカウント情報が表示されます。
 
 エンタープライズ契約の登録に関するチュートリアル ビデオを見るには、「[Cloudyn で使用する EA 登録 ID と API キーを見つける方法](https://youtu.be/u_phLs_udig)」を参照してください。
 

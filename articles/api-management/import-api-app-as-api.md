@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 484621668b582953d49c366336a49970d82c3fbf
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073262"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108490"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API アプリを API としてインポートする
 
@@ -58,7 +58,7 @@ ms.locfileid: "70073262"
     * **無制限**   
 7. **作成** を選択します。
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
+## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portal での新しい API のテスト
 
 Azure Portal には、API の操作を表示およびテストするための便利な環境が用意されており、操作を直接呼び出すことができます。  
 
@@ -70,21 +70,6 @@ Azure Portal には、API の操作を表示およびテストするための便
 1. **[送信]** をクリックします。
 
     バックエンドは **200 OK** といくつかのデータで応答します。
-
-## <a name="call-operation"></a>開発者ポータルから操作を呼び出す
-
-操作を**開発者ポータル**から呼び出して API をテストすることもできます。 
-
-1. "バックエンド API のインポートと公開" の手順で作成した API を選びます。
-2. **[開発者ポータル]** をクリックします。
-
-    "開発者ポータル" サイトが開きます。
-3. 作成した **API** を選びます。
-4. テストする操作をクリックします。
-5. **[テスト]** をクリックします。
-6. **[送信]** をクリックします。
-    
-    操作を呼び出すと、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

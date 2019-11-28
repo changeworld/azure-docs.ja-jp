@@ -3,17 +3,13 @@ title: クイックスタート - Azure 用の Ansible ソリューション テ
 description: このクイック スタートでは、Azure と連携するように構成されたツールと共に、Azure 上でホストされた CentOS 仮想マシンに Ansible ソリューション テンプレートをデプロイする方法について説明します。
 keywords: Ansible, Azure, DevOps, ソリューション テンプレート, 仮想マシン, Azure リソースのマネージド ID, CentOS, Red Hat
 ms.topic: quickstart
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 6aa721ee6cf6680518a28d050c22d8649f0f531f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ebd01411ff27b0e95be21ef147098a90b6f62742
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833164"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156333"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>クイック スタート:Azure 用の Ansible ソリューション テンプレートを CentOS にデプロイする
 

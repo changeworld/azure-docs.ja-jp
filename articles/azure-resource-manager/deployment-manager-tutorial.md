@@ -1,19 +1,16 @@
 ---
 title: Resource Manager テンプレートで Azure Deployment Manager を使用する | Microsoft Docs
 description: Resource Manager テンプレートで Azure Deployment Manager を使用して、Azure リソースを配備します。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3f10093b1d3087e87279258d04d86fc3d47ba313
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: db130da9943007e647adf77411b456914af9886f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285875"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307031"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (パブリック プレビュー)
 
@@ -56,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [Azure Resource Manager テンプレート](./resource-group-overview.md)を開発した経験がある。
 * Azure PowerShell。 詳細については、[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページを参照してください。
-* Deployment Manager コマンドレット。 これらのプレリリース版のコマンドレットをインストールするには、最新バージョンの PowerShellGet が必要です。 最新バージョンを入手するには、「[PowerShellGet のインストール](/powershell/gallery/installing-psget)」を参照してください。 PowerShellGet をインストールし終えたら、PowerShell ウィンドウを閉じます。 管理者特権の PowerShell ウィンドウを新たに開き、次のコマンドを使用します。
+* Deployment Manager コマンドレット。 これらのプレリリース版のコマンドレットをインストールするには、最新バージョンの PowerShellGet が必要です。 最新バージョンを入手するには、「[PowerShellGet のインストール](/powershell/scripting/gallery/installing-psget)」を参照してください。 PowerShellGet をインストールし終えたら、PowerShell ウィンドウを閉じます。 管理者特権の PowerShell ウィンドウを新たに開き、次のコマンドを使用します。
 
     ```powershell
     Install-Module -Name Az.DeploymentManager
@@ -189,9 +186,6 @@ Azure portal からコンテナーを開き、**binaries** と **templates** の
 
 ユーザー割り当てマネージド ID を作成し、サブスクリプション用にアクセス制御を構成する必要があります。
 
-> [!IMPORTANT]
-> ユーザー割り当てマネージド ID は、[ロールアウト](#create-the-rollout-template)と同じ場所になければなりません。 現在、ロールアウトを含む Deployment Manager のリソースは、米国中部または米国東部 2 のいずれかでのみ作成できます。 ただし、これが該当するのは Deployment Manager のリソース (サービス トポロジ、サービス、サービス ユニット、ロールアウト、ステップなど) だけです。 ターゲット リソースは、サポートされている任意の Azure リージョンにデプロイできます。 たとえば、このチュートリアルでは Deployment Manager のリソースを米国中部にデプロイしていますが、サービスのデプロイ先は米国東部と米国西部です。 この制限は将来解除される予定です。
-
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. [ユーザー割り当てマネージド ID](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) を作成します。
 3. ポータルから、左側のメニューで **[サブスクリプション]** を選択したら、お使いのサブスクリプションを選択します。
@@ -214,7 +208,7 @@ Azure portal からコンテナーを開き、**binaries** と **templates** の
 テンプレートには、次のパラメーターが収納されています。
 
 * **projectName**: この名前は、Deployment Manager リソース用の名前を作成するために使用されます。 たとえば、サービス トポロジの名前は、"jdoe" を使用して、**jdoe**ServiceTopology とします。  リソース名は、このテンプレートの変数セクションで定義されます。
-* **azureResourcelocation**:チュートリアルを簡略化するため、特に指定しない限り、すべてのリソースはこの場所を共有します。 現在、Deployment Manager のリソースは、**米国中部**または**米国東部 2** のいずれかでのみ作成できます。
+* **azureResourcelocation**:チュートリアルを簡略化するため、特に指定しない限り、すべてのリソースはこの場所を共有します。
 * **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されている BLOB コンテナーへのSAS URI です。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
 * **templateArtifactRoot**:テンプレートとパラメーターが格納されている BLOB コンテナーからのオフセット パスです。 既定値は **templates/1.0.0.0** です。 「[成果物の準備](#prepare-the-artifacts)」で説明されているフォルダー構造を変更しない限り、この値を変更しないでください。 このチュートリアルでは、相対パスを使用します。  フルパスは、**artifactSourceSASLocation**、**templateArtifactRoot**、**templateArtifactSourceRelativePath** (または **parametersArtifactSourceRelativePath**) を連結することで構成されます。
 * **targetSubscriptionID**:Deployment Manager のリソースが配備され、請求される予定のサブスクリプションID です。 このチュートリアルでは、サブスクリプション ID を使用します。
@@ -269,7 +263,7 @@ Azure portal からコンテナーを開き、**binaries** と **templates** の
 ![Azure Deployment Manager チュートリアルのロールアウト テンプレート パラメーター](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
 * **projectName**: この名前は、Deployment Manager リソース用の名前を作成するために使用されます。 たとえば、ロールアウト名は、"jdoe" を使用して、**jdoe**Rollout とします。  その名前は、テンプレートの変数セクションで定義されます。
-* **azureResourcelocation**:チュートリアルを簡略化するため、特に指定しない限り、すべての Deployment Manager リソースはこの場所を共有します。 現在、Deployment Manager のリソースは、**米国中部**または**米国東部 2** のいずれかでのみ作成できます。
+* **azureResourcelocation**:チュートリアルを簡略化するため、特に指定しない限り、すべての Deployment Manager リソースはこの場所を共有します。
 * **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されているルート ディレクトリ (BLOB コンテナー) への SAS URI です。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
 * **binaryArtifactRoot**:既定値は **binaries/1.0.0.0** です。 「[成果物の準備](#prepare-the-artifacts)」で説明されているフォルダー構造を変更しない限り、この値を変更しないでください。 このチュートリアルでは、相対パスを使用します。  フルパスは、CreateWebApplicationParameters.json で指定されている **artifactSourceSASLocation**、**binaryArtifactRoot**、**deployPackageUri** を連結することで構成されます。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
 * **managedIdentityID**:配備操作を実行するユーザー割り当てマネージド ID です。 「[ユーザー割り当てマネージド ID の作成](#create-the-user-assigned-managed-identity)」を参照してください。
@@ -311,7 +305,7 @@ Azure portal からコンテナーを開き、**binaries** と **templates** の
 2. 次のパラメーター値を記入します。
 
     * **projectName**: 4-5 文字の文字列を入力します。 この名前は、固有の azure リソース名を作成するために使用されます。
-    * **azureResourceLocation**:現在、Deployment Manager のリソースは、**米国中部**または**米国東部 2** のいずれかでのみ作成できます。
+    * **azureResourceLocation**:Azure の場所を指定します。
     * **artifactSourceSASLocation**:配備用にサービス ユニットのテンプレートとパラメーターのファイルが格納されているルート ディレクトリ (BLOB コンテナー) への SAS URI を入力します。  「[成果物の準備](#prepare-the-artifacts)」を参照してください。
     * **binaryArtifactRoot**:成果物のフォルダー構造を変更しない限り、このチュートリアルでは **binaries/1.0.0.0** を使用してください。
     * **managedIdentityID**:ユーザー割り当てマネージド ID を入力します。 「[ユーザー割り当てマネージド ID の作成](#create-the-user-assigned-managed-identity)」を参照してください。 の構文は次のとおりです。

@@ -1,5 +1,5 @@
 ---
-title: インデックス作成時のデータ抽出、自然言語、画像処理に関する組み込みのスキル。
+title: インデックス作成中の組み込みのテキストとイメージの処理
 titleSuffix: Azure Cognitive Search
 description: データ抽出、自然言語、画像処理に関するコグニティブ スキルは、Azure Cognitive Search パイプラインの生コンテンツにセマンティクスと構造を追加します。
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2f03752c5fda366fc16b681d71ba68486527a30f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f419b19b576ebf6f7f853b41128908487f047df6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466799"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113368"
 ---
-# <a name="built-in-cognitive-skills-for-content-enrichment-azure-cognitive-search"></a>コンテンツ エンリッチメントの組み込みのコグニティブ スキル (Azure Cognitive Search)
+# <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>インデックス作成中のテキストとイメージの処理用の組み込みのコグニティブ スキル (Azure Cognitive Search)
 
-この記事では、Azure Cognitive Search で提供されるコグニティブ スキルについて説明します。 *コグニティブ スキル*は、何らかの方法でコンテンツを変換する操作です。 多くの場合、これはデータの抽出や構造の推論を行うコンポーネントであるため、入力データの解釈を強化することになります。 ほとんどの場合、出力はテキスト ベースです。 *スキルセット*は、エンリッチメント パイプラインを定義するスキルのコレクションです。 
+この記事では、Azure Cognitive Search で提供される、コンテンツと構造を抽出するスキルセットに含めることのできるコグニティブ スキルについて説明します。 *コグニティブ スキル*は、なんらかの方法でコンテンツを変換するモジュールまたは操作です。 多くの場合、これはデータの抽出や構造の推論を行うコンポーネントであるため、入力データの解釈を強化することになります。 ほとんどの場合、出力はテキスト ベースです。 *スキルセット*は、エンリッチメント パイプラインを定義するスキルのコレクションです。 
 
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure コグニティブ検索のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。

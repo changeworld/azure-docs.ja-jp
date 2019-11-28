@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: cd0fc90988048f98be46370d2c7836d9506cc44a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6d1c2eff9bc9ffe8a0fb2166d39c16360c0a79cc
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475278"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538917"
 ---
 # <a name="tutorial-authenticate-users-in-a-native-desktop-client-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してネイティブ デスクトップ クライアントでユーザーを認証する
 
@@ -43,7 +43,7 @@ ms.locfileid: "73475278"
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 
-このチュートリアルでは、GitHub からダウンロードできるサンプルを構成します。 サンプルの WPF デスクトップ アプリケーションでは、Azure AD B2C でのサインアップとサインインのデモが行われ、保護された Web API を呼び出すことができます。 [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip)するか、[リポジトリを参照](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)するか、GitHub からサンプルを複製します。
+このチュートリアルでは、GitHub からダウンロードできるサンプルを構成します。 サンプルの WPF デスクトップ アプリケーションでは、Azure AD B2C でのサインアップとサインインのデモが行われ、保護された Web API を呼び出すことができます。 [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/msalv3.zip)するか、[リポジトリを参照](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)するか、GitHub からサンプルを複製します。
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git

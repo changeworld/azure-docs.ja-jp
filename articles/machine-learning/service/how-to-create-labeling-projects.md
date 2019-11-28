@@ -7,18 +7,18 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 76f995901814c90ff9fd78585c98d56b3478e8b4
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: ca3486610d6cf71ba315e407b58a2a2551ad6ee1
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612764"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837475"
 ---
 # <a name="get-labels-for-data"></a>データのラベルを取得する
 
 大量のデータにラベルを付けることは、多くの場合、機械学習プロジェクトでは困難でした。 画像の分類やオブジェクトの検出など、Computer Vision コンポーネントを使用する ML プロジェクトでは、通常、何千ものイメージとそれに対応するラベルが必要です。 
  
-Azure Machine Learning Studio を使用すると、ラベル付けプロジェクトの作成、管理、監視を一元的に行うことができます。 ラベル付けプロジェクトは、データ、ラベル、チーム メンバーの間の調整に役立ち、ラベル付けタスクをより効率的に管理できるようになります。 現在サポートされているタスクは、複数ラベルまたは多クラスでの画像分類と、境界ボックスを使用したオブジェクト識別です。
+Azure Machine Learning を使用すると、ラベル付けプロジェクトの作成、管理、監視を一元的に行うことができます。 ラベル付けプロジェクトは、データ、ラベル、チーム メンバーの間の調整に役立ち、ラベル付けタスクをより効率的に管理できるようになります。 現在サポートされているタスクは、複数ラベルまたは多クラスでの画像分類と、境界ボックスを使用したオブジェクト識別です。
 
 Azure を使うと、進行状況を追跡し、未完了のラベル付けタスクのキューを維持することができます。 ラベラーは、Azure アカウントがなくても参加できます。 Microsoft アカウント (MSA) または [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) での認証が済むと、時間が許す範囲で、どれだけ多くても、または少なくても、ラベル付けを行うことができます。 キーボード ショートカットを使って、ラベルを割り当てたり、変更したりできます。 
 
@@ -43,7 +43,7 @@ Azure を使うと、進行状況を追跡し、未完了のラベル付けタ�
 
 ## <a name="create-a-labeling-project"></a>ラベル付けプロジェクトを作成する
 
-ラベル付けプロジェクトは、[Azure Machine Learning Studio](https://ml.azure.com/) から管理します。 **[Labeling projects]\(ラベル付けプロジェクト\)** ページでは、プロジェクト、チーム、ユーザーを管理できます。 プロジェクトには 1 つまたは複数のチームが割り当てられ、チームには 1 人以上のユーザーが割り当てられます。 
+ラベル付けプロジェクトは、[Azure Machine Learning](https://ml.azure.com/) から管理します。 **[Labeling projects]\(ラベル付けプロジェクト\)** ページでは、プロジェクト、チーム、ユーザーを管理できます。 プロジェクトには 1 つまたは複数のチームが割り当てられ、チームには 1 人以上のユーザーが割り当てられます。 
 
 データが Azure Blob Storage に既に格納されている場合は、ラベル付けプロジェクトを作成する前に、それをデータストアとして使用できるようにする必要があります。 詳しくは、「[データストアの作成と登録](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data#create-and-register-datastores)」をご覧ください。 
 
@@ -149,7 +149,7 @@ Azure Blob Storage に既に格納されているデータからデータセッ�
 
 いつでも、機械学習の実験用にラベル データをエクスポートできます。 画像のラベルは、[COCO 形式](http://cocodataset.org/#format-data)または Azure ML データセットとしてエクスポートできます。 ラベル付けプロジェクトの **[Project details]\(プロジェクトの詳細\)** ページに **[Export]\(エクスポート\)** ボタンがあります。
 
-COCO ファイルは、**export/coco** 内のフォルダーの、Azure ML ワークスペースの既定の BLOB ストアに作成されます。 エクスポートされた Azure ML データセットには、Studio の **[Datasets]\(データセット\)** セクションでアクセスできます。 データセットの詳細ページには、Python からラベルにアクセスするためのサンプル コードも用意されています。
+COCO ファイルは、**export/coco** 内のフォルダーの、Azure ML ワークスペースの既定の BLOB ストアに作成されます。 エクスポートされた Azure ML データセットには、Azure Machine Learning の **[Datasets]\(データセット\)** セクションでアクセスできます。 データセットの詳細ページには、Python からラベルにアクセスするためのサンプル コードも用意されています。
 
 ![エクスポートされたデータセット](media/how-to-create-labeling-projects/exported-dataset.png)
 

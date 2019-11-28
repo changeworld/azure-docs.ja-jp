@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: apimpm
-ms.openlocfilehash: 6a1ae2966e8d5535a5fd9aeffb5ddc3a788f85ee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bae762b4603b2f5f80447a16671fed4e37e62b95
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072115"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108541"
 ---
 # <a name="import-and-publish-your-first-api"></a>最初の API のインポートと発行 
 
@@ -75,7 +75,7 @@ ms.locfileid: "70072115"
 > [!TIP]
 > 独自の API 定義のインポートで問題が発生している場合は、[既知の問題と制約事項の一覧](api-management-api-import-restrictions.md)を参照してください。
 
-## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
+## <a name="test-the-new-api-in-the-azure-portal"></a>Azure portal での新しい API のテスト
 
 ![API のテスト マップ](./media/api-management-get-started/01-import-first-api-01.png)
 
@@ -88,23 +88,6 @@ Azure Portal には、API の操作を表示およびテストするための便
 
     バックエンドは **200 OK** といくつかのデータで応答します。
 
-## <a name="call-operation"></a>開発者ポータルから操作を呼び出す
-
-操作を**開発者ポータル**から呼び出して API をテストすることもできます。
-
-1. **開発者ポータル**に移動します。
-
-    ![[開発者ポータル]](./media/api-management-get-started/developer-portal.png)
-
-2. **[APIS]** を選択し、 **[Demo Conference API]\(デモ会議 API\)** 、 **[GetSpeakers]** の順にクリックします。
-
-    このページには、クエリ パラメーターのフィールド (この例では何も表示されません) とヘッダーが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 APIM インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。
-
-3. **[テスト]** をクリックします。
-4. **[送信]** をクリックします。
-
-    操作が呼び出された後、開発者ポータルに応答が表示されます。  
-
 ## <a name="next-steps"> </a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
@@ -112,7 +95,6 @@ Azure Portal には、API の操作を表示およびテストするための便
 > [!div class="checklist"]
 > * 最初の API のインポート
 > * Azure Portal での API のテスト
-> * 開発者ポータルでの API のテスト
 
 次のチュートリアルに進みます。
 

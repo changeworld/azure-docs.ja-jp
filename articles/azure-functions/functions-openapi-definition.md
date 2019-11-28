@@ -1,21 +1,16 @@
 ---
 title: Azure API Management を使用してサーバーレス API の OpenAPI 定義を作成する
 description: 他のアプリやサービスが Azure で関数を呼び出せるようにする OpenAPI 定義を作成します。
-keywords: OpenAPI, Swagger, クラウド アプリ, クラウド サービス,
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 05/08/2019
-ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 54a4c6eba094231e8e73cdef87b911dfba20f657
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 659c05b3d31f5673e95cb27f10eaa8bd872e4be6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533545"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226816"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Azure API Management を使用してサーバーレス API の OpenAPI 定義を作成する
 

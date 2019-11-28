@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14565c7e499b04b9c41184111d6ddcc88fffac80
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: eb415d7434130c6ea2e7c9e2e11daccc657ddbf8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883005"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207658"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル:フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -54,7 +54,7 @@ Azure AD に自分のデバイスを取り込んで、クラウドとオンプ�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルは、次の記事を理解していることを前提としています。
+このチュートリアルは、次の記事を理解していることを前提とします。
 
 - [デバイス ID とは](overview.md)
 - [ハイブリッド Azure AD 参加の実装を計画する方法](hybrid-azuread-join-plan.md)

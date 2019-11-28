@@ -1,20 +1,16 @@
 ---
 title: Azure CLI での初めての関数の作成
 description: Azure CLI と Azure Functions Core Tools を使用して、サーバーレス実行のための最初の Azure 関数を作成する方法について説明します。
-author: ggailey777
-ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 11/13/2018
 ms.topic: quickstart
-ms.service: azure-functions
 ms.custom: mvc
-manager: gwallace
-ms.openlocfilehash: 1d0c6edf250e49fe966388253617181ed2b3dff1
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 147ad4bd20ee1c7ae8f1529e1b3bc0e4f3e7dbb0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329654"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230853"
 ---
 # <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>クイック スタート:Azure CLI を使用してコマンド ラインから初めての関数を作成する
 

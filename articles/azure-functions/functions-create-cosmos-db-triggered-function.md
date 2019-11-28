@@ -1,22 +1,16 @@
 ---
-title: Azure Cosmos DB によってトリガーされる関数の作成 | Microsoft Docs
+title: Azure Cosmos DB によってトリガーされる関数を作成する
 description: Azure Functions を使用して、データが Azure Cosmos DB のデータベースに追加されるときに呼び出されるサーバーレスの関数を作成します。
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 10/02/2018
-ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 9cd09349ae37d11e4d01bc308162512ebfa03dfc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e321fcdf4b5871cf4a55e7018229569a337e8305
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086349"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230925"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -71,7 +65,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
     | ------------ | ---------------- | ------------------------------------------ |
     | **Name** | Default | テンプレートに示されている既定の関数名を使用します。|
     | **Azure Cosmos DB アカウント接続** | 新しい設定 | **[新規]** を選択し、使用する**サブスクリプション**、前の手順で作成した**データベース アカウント**、 **[選択]** の順に選択します。 これにより、アカウント接続のアプリケーション設定が作成されます。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
-    | **[コレクション名]** | 項目 | 監視するコレクションの名前。 |
+    | **[コレクション名]** | アイテム | 監視するコレクションの名前。 |
     | **[Create lease collection if it doesn't exist]\(リース コレクションが存在しない場合は作成する\)** | オン | コレクションはまだ存在していないため、作成します。 |
     | **データベース名** | タスク | 監視するコレクションのデータベース名。 |
 
@@ -104,7 +98,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
     | Setting|推奨値|説明 |
     | ---|---|--- |
     | **[データベース ID]** | タスク |新しいデータベースの名前。 これは、関数バインドで定義された名前と一致する必要があります。 |
-    | **[コレクション ID]** | 項目 | 新しいコレクションの名前。 これは、関数バインドで定義された名前と一致する必要があります。  |
+    | **[コレクション ID]** | アイテム | 新しいコレクションの名前。 これは、関数バインドで定義された名前と一致する必要があります。  |
     | **[ストレージ容量]** | 固定 (10 GB)|既定値を使用します。 この値は、データベースの記憶域容量です。 |
     | **スループット** |400 RU| 既定値を使用します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。 |
     | **[[パーティション キー]](../cosmos-db/partition-data.md)** | /category|各パーティションに均等にデータを分散するパーティション キー。 効率の良いコレクションを作成するためには、正しいパーティション キーを選択することが大切です。 | 

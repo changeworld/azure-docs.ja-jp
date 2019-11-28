@@ -3,17 +3,13 @@ title: チュートリアル - Ansible を使用して Azure Virtual Network ピ
 description: Ansible を使用して、仮想ネットワーク ピアリングによって仮想ネットワークを接続する方法について説明します。
 keywords: ansible, azure, devops, bash, プレイブック, ネットワーキング, ピアリング
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 180bdff48a2ace4dfee1d1cb10eb75a33d360f4c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 78699a005d721b46a88a26452f5db68438793d34
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241232"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155737"
 ---
 # <a name="tutorial-configure-azure-virtual-network-peering-using-ansible"></a>チュートリアル:Ansible を使用して Azure Virtual Network ピアリングを構成する
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure の Linux 仮想マシンの監視 | Microsoft Docs
+title: チュートリアル - Azure の Linux 仮想マシンの監視
 description: このチュートリアルでは、Linux 仮想マシンのパフォーマンスと、そこで検出された実行中のアプリケーション コンポーネントを監視する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 9c6458eea2b1352e7d13ea6691eac4498182ecd3
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 4d338708b143c88f8f416185e351531e74963bba
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "71679409"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111992"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure の Linux 仮想マシンを監視する
 
@@ -133,7 +133,7 @@ Azure Monitor for VMs を使用した Azure VM の監視を有効にするには
 
 3. **[Insights (プレビュー)]** ページで、 **[今すぐ試す]** を選択します。
 
-    ![VM に対して Azure Monitor for VMs を有効にする](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal-01.png)
+    ![VM に対して Azure Monitor for VMs を有効にする](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
 4. **[Azure Monitor Insights Onboarding]\(Azure Monitor Insights の配布準備\)** ページで、同じサブスクリプションに既存の Log Analytics ワークスペースがある場合は、ドロップダウン リストでそれを選択します。  
 

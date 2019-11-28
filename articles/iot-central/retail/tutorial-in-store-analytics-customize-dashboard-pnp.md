@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Central でオペレーター ダッシュボードをカスタマイズする | Microsoft Docs
+title: チュートリアル:Azure IoT Central でオペレーター ダッシュボードをカスタマイズする
 description: このチュートリアルでは、IoT Central アプリケーションでオペレーター ダッシュボードをカスタマイズし、デバイスを管理する方法について説明します。
 services: iot-central
 ms.service: iot-central
@@ -10,13 +10,13 @@ ms.custom:
 - iot-p0-scenario
 ms.author: timlt
 author: timlt
-ms.date: 10/03/2019
-ms.openlocfilehash: cb43facfc6b838a6e29a1b08e50648abf0f04911
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.date: 11/12/2019
+ms.openlocfilehash: 0dcabada522bf8189d163936551ea94cb4dd2657
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615296"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112919"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でのオペレーター ダッシュボードのカスタマイズと、デバイスの管理
 

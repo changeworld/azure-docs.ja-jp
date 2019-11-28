@@ -1,5 +1,5 @@
 ---
-title: リモート監視ソリューションでデバイスの問題を検出するチュートリアル - Azure | Microsoft Docs
+title: リモート監視ソリューションを使用してデバイスの問題を検出する - Azure | Microsoft Docs
 description: このチュートリアルでは、ルールとアクションを使用して、リモート監視ソリューションでしきい値に基づくデバイスの問題を自動的に検出する方法を示します。
 author: dominicbetts
 manager: timlt
@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 91ee5087e5f41cda3648c2ecadcfcf16fd32a249
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598683"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888889"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>チュートリアル:監視ソリューションに接続されているデバイスの問題の検出する
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-rule"></a>規則を作成する
 
-冷却装置の圧力が 150 PSI を超えるときに警告を生成する新しいルールを作成するには、**[新しいルール]** をクリックします。 次の値を使用してルールを作成します。
+冷却装置の圧力が 150 PSI を超えるときに警告を生成する新しいルールを作成するには、 **[新しいルール]** をクリックします。 次の値を使用してルールを作成します。
 
 | Setting          | 値                                 |
 | ---------------- | ------------------------------------- |
@@ -64,15 +64,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [![警告ルールを作成する](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_v2-expanded.png#lightbox)
 
-新しいルールを保存するには、**[適用]** をクリックします。
+新しいルールを保存するには、 **[適用]** をクリックします。
 
-**[ルール]** ページまたは、**[ダッシュボード]** ページでルールがトリガーされた時間を確認できます。
+**[ルール]** ページまたは、 **[ダッシュボード]** ページでルールがトリガーされた時間を確認できます。
 
 [![警告ルールがトリガーされた時間](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
 ## <a name="create-an-advanced-rule"></a>高度なルールを作成する
 
-直近の 5 分間にわたって冷却装置の平均湿度が 80% を超え、温度が華氏 75 度を超えたときに重大なアラートを生成する、複数の条件を持つルールを作成するには、**[新しいルール]** をクリックします。 次の値を使用してルールを作成します。
+直近の 5 分間にわたって冷却装置の平均湿度が 80% を超え、温度が華氏 75 度を超えたときに重大なアラートを生成する、複数の条件を持つルールを作成するには、 **[新しいルール]** をクリックします。 次の値を使用してルールを作成します。
 
 | Setting          | 値                                 |
 | ---------------- | ------------------------------------- |
@@ -98,21 +98,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [![複数の条件を持つルールを作成する: パート 2](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
 
-新しいルールを保存するには、**[適用]** をクリックします。
+新しいルールを保存するには、 **[適用]** をクリックします。
 
-**[ルール]** ページまたは、**[ダッシュボード]** ページでルールがトリガーされた時間を確認できます。
+**[ルール]** ページまたは、 **[ダッシュボード]** ページでルールがトリガーされた時間を確認できます。
 
 [![複数の条件を持つルールがトリガーされた時間](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
 
 ## <a name="edit-an-existing-rule"></a>既存のルールを編集する
 
-既存のルールを変更するには、ルールの一覧から対象のルールを選択し、**[編集]** をクリックします。
+既存のルールを変更するには、ルールの一覧から対象のルールを選択し、 **[編集]** をクリックします。
 
 [![ルールを編集する](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsedit_v2-expanded.png#lightbox)
 
 ## <a name="disable-a-rule"></a>ルールを無効にする
 
-一時的にルールをオフに切り替えるには、ルールの一覧で無効にできます。 無効にするルールを選択し、**[無効にする]** を選択します。 一覧のルールの **[ステータス]** が、ルールが無効化されたことを示す状態に変わります。 同じ手順を使用して、以前無効にしたルールを再度有効にすることができます。
+一時的にルールをオフに切り替えるには、ルールの一覧で無効にできます。 無効にするルールを選択し、 **[無効にする]** を選択します。 一覧のルールの **[ステータス]** が、ルールが無効化されたことを示す状態に変わります。 同じ手順を使用して、以前無効にしたルールを再度有効にすることができます。
 
 [![ルールを無効にする](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-expanded.png#lightbox)
 
@@ -120,7 +120,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="delete-a-rule"></a>規則を削除する
 
-ルールを完全に削除するには、ルールの一覧から削除します。 削除するルールを選択し、**[削除]** を選択します。
+ルールを完全に削除するには、ルールの一覧から削除します。 削除するルールを選択し、 **[削除]** を選択します。
 
 [![ルールの削除](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
 

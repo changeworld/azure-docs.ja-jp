@@ -1,22 +1,22 @@
 ---
-title: Azure Maps を使用してジオフェンスを作成する | Microsoft Docs
-description: Azure Maps を使用してジオフェンスを設定します。
+title: チュートリアル:Azure Maps を使用してジオフェンスを作成する
+description: チュートリアル:Azure Maps を使用してジオフェンスを設定します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/14/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 176cde77810a1c75cc18c351969a128fa78348af
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694921"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107101"
 ---
-# <a name="set-up-a-geofence-by-using-azure-maps"></a>Azure Maps を使用してジオフェンスを設定する
+# <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
 このチュートリアルでは、Azure Maps を使用してジオフェンスを設定する基本的な手順について説明します。 建設現場の管理者は、危険を伴うおそれのある機材が、指定された建設領域から出ないよう監視します。このチュートリアルでは、そうした管理者を支援するシナリオについて取り上げます。 建設現場には高価な機材が存在し、規制も伴います。 そのような機材は通常、建設現場内に留め、許可なく持ち出されることのないようにする必要があります。
 

@@ -1,18 +1,14 @@
 ---
 title: Azure Kubernetes Service での Jenkins 用の Azure Dev Spaces プラグインの使用
 description: 継続的インテグレーション パイプラインで Azure Dev Spaces プラグインを使用する方法について説明します。
-author: tomarchermsft
-ms.author: tarcher
-ms.service: jenkins
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 10/23/2019
-ms.openlocfilehash: 7bc2bb63f1382d1c7fd7e436dd5ddfa278262526
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 9dba0307db8ebbf07422fd770ea336b2abc031bd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881880"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209666"
 ---
 # <a name="tutorial-using-the-azure-dev-spaces-plug-in-for-jenkins-with-azure-kubernetes-service"></a>チュートリアル:Azure Kubernetes Service での Jenkins 用の Azure Dev Spaces プラグインの使用 
 
@@ -131,7 +127,7 @@ Azure Dev Spaces の使用、および Azure Dev Spaces を使用したマルチ
     Dev Spaces CLI の `azds prep` コマンドにより、既定の設定で Docker と Kubernetes のアセットが生成されます。 これらのファイルはプロジェクトの有効期間中、保持されます。また、これらはカスタマイズできます。
 
     * `./Dockerfile` と `./Dockerfile.develop` では、アプリのコンテナー イメージのほか、ソース コードがコンテナー内でどのようにビルドされ、実行されるかを記述しています。
-    * `./charts/webfrontend` の下の [Helm チャート](https://helm.sh/docs/developing_charts/)は、Kubernetes にコンテナーを展開する方法を記述しています。
+    * `./charts/webfrontend` の下の [Helm チャート](https://helm.sh/docs/topics/charts/)は、Kubernetes にコンテナーを展開する方法を記述しています。
     * `./azds.yaml` は、Azure Dev Spaces の構成ファイルです。
 
     詳細については、「[Azure Dev Spaces のしくみと構成方法](https://docs.microsoft.com/azure/dev-spaces/how-dev-spaces-works)」を参照してください。

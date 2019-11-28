@@ -12,12 +12,12 @@ ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 9a17b96da376843c07a4324856bf8943aa385cac
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 951f03f581906e45946ef75742421ba27d405267
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212467"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406972"
 ---
 # <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Azure portal で通知ハブのプッシュ通知を設定する
 
@@ -47,7 +47,7 @@ Apple Push Notification Service (APNS) を設定するには、次の手順に�
    * **[キー ID]** 、 **[バンドル ID]** 、 **[チーム ID]** 、 **[トークン]** に値を入力します。
    * **[サンドボックス]** モードを選択します。 または、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合は、 **[Production]\(運用\)** モードを選択します。
 
-     ![Azure portal における APNS トークン構成のスクリーンショット](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
+     ![Azure portal における APNS トークン構成のスクリーンショット](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
 
 詳細については、[Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する](notification-hubs-ios-apple-push-notification-apns-get-started.md)方法に関するページを参照してください。
 

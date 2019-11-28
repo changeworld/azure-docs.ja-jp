@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 28a804a57a4113b22efd5274ad00b3a216b700aa
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 96a9940826570bd687fdef5726bdc103139f9902
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747036"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074654"
 ---
 # <a name="back-up-a-sql-server-database-in-an-azure-vm"></a>Azure VM での SQL Server データベースのバックアップ
 
@@ -23,7 +23,7 @@ ms.locfileid: "73747036"
 > * コンテナーの作成と構成。
 > * データベースの検出とバックアップの設定。
 > * データベースに対する自動保護の設定。
-> * アドホック バックアップの実行。
+> * オンデマンド バックアップの実行。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -215,7 +215,7 @@ VM 上で稼働しているデータベースを検出します。
 
 14. バックアップ ポリシーに対する編集が完了したら、 **[OK]** を選択します。
 
-## <a name="run-an-ad-hoc-backup"></a>アドホック バックアップの実行
+## <a name="run-an-on-demand-backup"></a>オンデマンド バックアップを実行する
 
 1. Recovery Services コンテナーで、[バックアップ アイテム] を選択します。
 2. [SQL in Azure VM]\(Azure VM 内の SQL\) をクリックします。
@@ -233,7 +233,7 @@ VM 上で稼働しているデータベースを検出します。
 > * コンテナーの作成と構成。
 > * データベースの検出とバックアップの設定。
 > * データベースに対する自動保護の設定。
-> * アドホック バックアップの実行。
+> * オンデマンド バックアップの実行。
 
 ディスクから Azure 仮想マシンを復元するには、次のチュートリアルに進みます。
 

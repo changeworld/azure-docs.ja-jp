@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ffe85b6e005d2dc8fe077a5a08d8b0f11c73589
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929638"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228346"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>チュートリアル:デザイナーを使用して自動車の価格を予測する (プレビュー)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **[デザイナー]** を選択します。
 
-    ![デザイナーへのアクセス方法を示すビジュアル ワークスペースのスクリーンショット](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
+    ![デザイナーへのアクセス方法を示すビジュアル ワークスペースのスクリーンショット](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
 
 1. **[Easy-to-use prebuilt modules]\(あらかじめ構築された使いやすいモジュール\)** を選択します。
 
@@ -69,7 +69,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **Automobile price data (Raw)** データセットを選択し、キャンバスにドラッグします。
 
-   ![データをキャンバスにドラッグする](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
+   ![データをキャンバスにドラッグする](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
 
 ### <a name="visualize-the-data"></a>データの視覚化
 
@@ -81,7 +81,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. グラフ アイコンを選択してデータを視覚化します。
 
-    ![データの視覚化](./media/ui-tutorial-automobile-price-train-score/visualize-data.png)
+    ![データの視覚化](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
 
 1. データ ウィンドウで別の列を選択して、それぞれの情報を表示します。
 
@@ -105,7 +105,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
     > 1 つのモジュールの出力ポートを別のモジュールの入力ポートに接続するときに、パイプラインを通じてデータのフローを作成することになります。
     >
 
-    ![モジュールの接続](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
+    ![モジュールの接続](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
 
 1. **Select Columns in Dataset (データセットの列を選択する)** モジュールを選択します。
 
@@ -119,7 +119,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. 右下の **[保存]** を選択して列セレクターを閉じます。
 
-    ![列を除外する](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![列を除外する](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
         
     "**normalized-losses**" 列が除外されたことを示すプロパティ ウィンドウ。
 
@@ -144,7 +144,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     これでパイプラインは次のようになっているはずです。
     
-    ![Select-column](./media/ui-tutorial-automobile-price-train-score/pipeline-clean.png)
+    ![Select-column](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
 
 ## <a name="train-a-machine-learning-model"></a>機械学習モデルのトレーニング
 
@@ -188,7 +188,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
 1. **[Split Data]\(データの分割\)** モジュールのトレーニング データ出力 (左側のポート) を **[Train Model]\(モデルのトレーニング\)** モジュールの右側の入力に接続します。
 
-    ![Train Model (モデルのトレーニング) モジュールの正しい構成を示すスクリーンショット。 Linear Regression (線形回帰) モジュールが、Train Model (モデルのトレーニング) モジュールの左側のポートに接続され、Split Data (データの分割) モジュールが、Train Model (モデルのトレーニング) モジュールの右側のポートに接続されています。](./media/ui-tutorial-automobile-price-train-score/pipeline-train-model.png)
+    ![Train Model (モデルのトレーニング) モジュールの正しい構成を示すスクリーンショット。 Linear Regression (線形回帰) モジュールが、Train Model (モデルのトレーニング) モジュールの左側のポートに接続され、Split Data (データの分割) モジュールが、Train Model (モデルのトレーニング) モジュールの右側のポートに接続されています。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
 1. **Train Model** (モデルのトレーニング) モジュールを選択します。
 
@@ -200,7 +200,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     パイプラインは次のようになっているはずです。
 
-    ![[Train Model]\(モデルのトレーニング\) モジュールを追加した後のパイプラインの正しい構成を示すスクリーンショット。](./media/ui-tutorial-automobile-price-train-score/pipeline-train-graph.png)
+    ![[Train Model]\(モデルのトレーニング\) モジュールを追加した後のパイプラインの正しい構成を示すスクリーンショット。](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
 ## <a name="evaluate-a-machine-learning-model"></a>機械学習モデルを評価する
 
@@ -216,7 +216,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     最終的なパイプラインは次のようになっているはずです。
 
-    ![パイプラインの正しい構成を示すスクリーンショット。](./media/ui-tutorial-automobile-price-train-score/pipeline-final-graph.png)
+    ![パイプラインの正しい構成を示すスクリーンショット。](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
 ### <a name="run-the-pipeline"></a>パイプラインを実行する
 
@@ -232,7 +232,7 @@ Azure Machine Learning ワークスペース (Enterprise Edition) がある場�
 
     ここでは、予測された価格と、データのテストによる実際の価格を確認できます。
 
-    ![Scored Label (スコア付けラベル) 列が強調表示された状態の出力の視覚化のスクリーンショット](./media/ui-tutorial-automobile-price-train-score/score-result.png)
+    ![Scored Label (スコア付けラベル) 列が強調表示された状態の出力の視覚化のスクリーンショット](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
 1. **[Evaluate Model]\(モデルの評価\)** モジュールを選択して、その出力を表示します。
 

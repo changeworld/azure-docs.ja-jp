@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 7e9215d7250628ed9177e097d127a1554a1f0ea0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0c4a95669eea1b98baea5f9a866598e000c0923c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073350"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107847"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 
@@ -142,7 +142,7 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 
 ![Function App から追加する](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-in-azure-portal"></a> Azure Portal での新しい API Management API のテスト
+## <a name="test-in-azure-portal"></a> Azure portal での新しい API のテスト
 
 操作は Azure portal から直接呼び出すことができます。 Azure portal は API の操作を表示およびテストするのに便利です。  
 
@@ -157,26 +157,6 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 4. **[送信]** を選択します。
 
     バックエンドは **200 OK** といくつかのデータで応答します。
-
-## <a name="test-in-developer-portal"></a> 開発者ポータルから操作を呼び出す
-
-操作を開発者ポータルから呼び出して API をテストすることもできます。 
-
-1. 「バックエンド API のインポートと公開」で作成した API を選択します。
-
-2. **[開発者ポータル]** を選択します。
-
-    開発者ポータルのサイトが開きます。
-
-3. 作成した **API** を選びます。
-
-4. テストする操作を選択します。
-
-5. **[Try it]\(試してみる\)** を選択します。
-
-6. **[送信]** を選択します。
-    
-    操作を呼び出すと、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 

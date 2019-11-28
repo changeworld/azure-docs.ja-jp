@@ -1,28 +1,27 @@
 ---
-title: Azure Storage を Terraform バックエンドとして使用する
+title: チュートリアル - Terraform 状態を Azure Storage に格納する
 description: Terraform 状態を Azure Storage に格納する方法の紹介。
-services: terraform
+ms.service: terraform
 author: tomarchermsft
-ms.service: azure
-ms.topic: article
-ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: e9b447f4f4dc9d0ee090da9729e483cc17ac7c15
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.topic: tutorial
+ms.date: 11/07/2019
+ms.openlocfilehash: 374936c39221d79d59fc8a54dc2bc4a49800240d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169933"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078560"
 ---
-# <a name="store-terraform-state-in-azure-storage"></a>Terraform 状態を Azure Storage に格納する
+# <a name="tutorial-store-terraform-state-in-azure-storage"></a>チュートリアル:Terraform 状態を Azure Storage に格納する
 
-Terraform 状態は、Terraform 構成を使用してデプロイされたリソースを調整するために使用されます。 Terraform では、状態を使用して、追加、更新、または削除する Azure リソースが認識されます。 既定では、*Terraform apply* を実行すると、Terraform 状態がローカルに格納されます。 この構成は、次のようないくつかの理由で理想的ではありません。
+Terraform 状態は、Terraform 構成を使用してデプロイされたリソースを調整するために使用されます。 Terraform では、状態によって、追加、更新、または削除する Azure リソースが認識されます。 既定では、`terraform apply` コマンドを実行すると、Terraform 状態がローカルに格納されます。 この構成は、次の理由で最適ではありません。
 
-- ローカルの状態は、チーム環境または共同作業環境ではあまり実用的でない
-- Terraform 状態に機密情報が含まれる可能性がある
-- 状態をローカルに格納すると、不注意で削除される可能性が高くなる
+- ローカルの状態は、チーム環境または共同作業環境ではあまり実用的でない。
+- Terraform 状態に機密情報が含まれる可能性がある。
+- 状態をローカルに格納すると、不注意で削除される可能性が高くなる。
 
-Terraform には、状態バックエンドの概念が含まれています。状態バックエンドは、Terraform 状態のリモート ストレージです。 状態バックエンドを使用すると、状態ファイルは Azure Storage などのデータ ストアに格納されます。 このドキュメントでは、Azure Storage を Terraform の状態バックエンドとして構成して使用する方法について詳しく説明します。
+Terraform は、リモート ストレージへの状態の永続化をサポートしています。 そのようなサポート対象のバックエンドの 1 つとして Azure Storage があります。 このドキュメントでは、この目的のために Azure Storage を構成して使用する方法について説明します。
 
 ## <a name="configure-storage-account"></a>ストレージ アカウントの構成
 
@@ -54,16 +53,16 @@ echo "access_key: $ACCOUNT_KEY"
 
 ストレージ アカウント名、コンテナー名、ストレージ アクセス キーをメモしておきます。 これらの値は、リモート状態を構成するときに必要です。
 
-## <a name="configure-state-backend"></a>状態バックエンドの構成
+## <a name="configure-state-back-end"></a>状態バックエンドの構成
 
-Terraform の状態バックエンドは、*Terraform init* の実行時に構成されます。 状態バックエンドを構成するには、次のデータが必要です。
+Terraform 状態バックエンドは、`terraform init` コマンドを実行すると構成されます。 状態バックエンドを構成するには、次のデータが必要です。
 
-- storage_account_name - Azure ストレージ アカウントの名前。
-- container_name - BLOB コンテナーの名前。
-- key - 作成される状態ストア ファイルの名前。
-- access_key - ストレージ アクセス キー。
+- **storage_account_name**:Azure ストレージ アカウントの名前。
+- **container_name**:BLOB コンテナーの名前。
+- **key**:作成する状態ストア ファイルの名前。
+- **access_key**:ストレージ アクセス キー。
 
-これらの値は Terraform 構成ファイルまたはコマンド ラインでそれぞれ指定できますが、`access_key` には環境変数を使用することをお勧めします。 環境変数を使用することで、キーがディスクに書き込まれるのを防ぐことができます。
+これらの各値は、Terraform 構成ファイルまたはコマンド ラインで指定できます。 `access_key` 値には環境変数を使用することをお勧めします。 環境変数を使用することで、キーがディスクに書き込まれるのを防ぐことができます。
 
 `ARM_ACCESS_KEY` という名前の環境変数を作成し、その値に Azure ストレージ アクセス キーを指定します。
 
@@ -71,15 +70,19 @@ Terraform の状態バックエンドは、*Terraform init* の実行時に構�
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
-Azure ストレージ アカウントのアクセス キーをさらに保護するには、これを Azure Key Vault に格納します。 環境変数は、次のようなコマンドを使用して設定できます。 Azure Key Vault の詳細については、[Azure Key Vault のドキュメント][azure-key-vault]を参照してください。
+Azure ストレージ アカウントのアクセス キーをさらに保護するには、これを Azure Key Vault に格納します。 環境変数は、次のようなコマンドを使用して設定できます。 Azure Key Vault の詳細については、[Azure Key Vault のドキュメント](../key-vault/quick-create-cli.md)を参照してください。
 
 ```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
 ```
 
-バックエンドが使用されるよう Terraform を構成するには、Terraform 構成に *backend* 構成を含め、その種類を *azurerm* に設定します。 *storage_account_name*、*container_name*、*key* の値を構成ブロックに追加します。
+Terraform でバックエンドを使用するように構成するには、次の手順を実行する必要があります。
+- `azurerm` 型の `backend` 構成ブロックを含めます。
+- 構成ブロックに `storage_account_name` 値を追加します。
+- 構成ブロックに `container_name` 値を追加します。
+- 構成ブロックに `key` 値を追加します。
 
-次の例では、Terraform バックエンドを構成し、Azure リソース グループを作成します。 値は、実際の環境の値に置き換えてください。
+次の例では、Terraform バックエンドを構成し、Azure リソース グループを作成します。
 
 ```hcl
 terraform {
@@ -96,11 +99,18 @@ resource "azurerm_resource_group" "state-demo-secure" {
 }
 ```
 
-次に、*Terraform init* を使用して構成を初期化したうえで、*Terraform apply* を使用して構成を実行します。 完了すると、Azure Storage Blob で状態ファイルを見つけることができます。
+次の手順を実行して、構成を初期化します。
+
+1. `terraform init` コマンドを実行します。
+1. `terraform apply` コマンドを実行します。
+
+これで、Azure Storage BLOB で状態ファイルを見つけることができます。
 
 ## <a name="state-locking"></a>状態のロック
 
-Azure Storage Blob を状態ストレージに使用すると、BLOB は、状態の書き込みを伴うすべての操作の前に自動的にロックされます。 この構成によって、破損を引き起こす可能性がある、複数による同時実行の状態操作が防止されます。 詳細については、Terraform ドキュメントの「[状態のロック][terraform-state-lock]」を参照してください。
+Azure Storage BLOB は、状態を書き込む操作の前に自動的にロックされます。 このパターンによって、破損を引き起こす可能性がある、同時状態操作が防止されます。 
+
+詳細については、Terraform ドキュメントの「[状態のロック](https://www.terraform.io/docs/state/locking.html)」を参照してください。
 
 Azure portal または他の Azure 管理ツールを使用して BLOB を調べると、ロックを確認できます。
 
@@ -108,19 +118,11 @@ Azure portal または他の Azure 管理ツールを使用して BLOB を調べ
 
 ## <a name="encryption-at-rest"></a>保存時の暗号化
 
-既定では、Azure BLOB の格納データは、ストレージ インフラストラクチャに永続化される前に暗号化されます。 Terraform で必要になると、状態はバックエンドから取得され、開発システム上のメモリに格納されます。 この構成では、状態は Azure Storage 内で保護され、お客様のローカル ディスクには書き込まれません。
+Azure BLOB の格納データは、永続化される前に暗号化されます。 必要に応じて、Terraform はバックエンドから状態を取得し、ローカル メモリに格納します。 このパターンを使用すると、状態はローカル ディスクに書き込まれません。
 
-Azure Storage 暗号化の詳細については、[保存データに対する Azure Storage Service Encryption][azure-storage-encryption] に関するページをご覧ください。
+Azure Storage 暗号化の詳細については、[保存データに対する Azure Storage Service Encryption](../storage/common/storage-service-encryption.md) に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-Terraform バックエンドの構成の詳細については、[Terraform バックエンドのドキュメント][terraform-backend]を参照してください。
-
-<!-- LINKS - internal -->
-[azure-key-vault]: ../key-vault/quick-create-cli.md
-[azure-storage-encryption]: ../storage/common/storage-service-encryption.md
-
-<!-- LINKS - external -->
-[terraform-azurerm]: https://www.terraform.io/docs/backends/types/azurerm.html
-[terraform-backend]: https://www.terraform.io/docs/backends/
-[terraform-state-lock]: https://www.terraform.io/docs/state/locking.html
+> [!div class="nextstepaction"] 
+> [Azure での Terraform の使用について詳細を参照](/azure/terraform)

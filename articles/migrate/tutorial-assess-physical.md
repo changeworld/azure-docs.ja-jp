@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 7574e80101784961448ff3c3b5a49d9e2c2f9807
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720234"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123495"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Azure Migrate を使用した物理サーバーの評価: Server Assessment
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - このシリーズの最初のチュートリアルを[完了](tutorial-prepare-physical.md)します。 そうしないと、このチュートリアルの手順はうまくいきません。
 - 最初のチュートリアルでは、以下のことを行ったはずです。
     - Azure Migrate の [Azure アクセス許可を設定](tutorial-prepare-physical.md#prepare-azure)する。
-    - 評価のために[物理サーバーを準備する](tutorial-prepare-physical.md#prepare-azure)。 アプライアンスの要件を確認する必要があります。 また、物理サーバーの検出用にアカウントが設定されている必要があります。 必要なポートが使用可能であり、Azure にアクセスするための URL がわかっている必要があります。
+    - 評価のために[物理サーバーを準備する](tutorial-prepare-physical.md#prepare-for-physical-server-assessment)。 アプライアンスの要件を確認する必要があります。 また、物理サーバーの検出用にアカウントが設定されている必要があります。 必要なポートが使用可能であり、Azure にアクセスするための URL がわかっている必要があります。
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate プロジェクトを設定する
@@ -104,9 +104,10 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 圧縮されたファイルをデプロイする前に、それが安全であることを確認します。
 
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
-2. 次のコマンドを実行して、VHD のハッシュを生成します
+2. 次のコマンドを実行して、圧縮されたファイルのハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - 使用例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
+
 3.  アプライアンス バージョン 1.19.05.10 の場合は、生成されたハッシュがこれらの設定と一致する必要があります。
 
   **アルゴリズム** | **ハッシュ値**
@@ -114,6 +115,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
   SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する
+
 インストーラー スクリプトでは以下が実行されます。
 
 - エージェントと、物理サーバーの検出と評価のための Web アプリケーションをインストールする。
@@ -121,20 +123,24 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 - IIS 書き込み可能モジュールをダウンロードしてインストールする。 [詳細情報](https://www.microsoft.com/download/details.aspx?id=7435)。
 - Azure Migrate の永続的な設定の詳細でレジストリ キー (HKLM) を更新する。
 - パスに次のファイルを作成する。
-    - **構成ファイル**: %Programdata%\Microsoft Azure\Config
-    - **ログ ファイル**: %Programdata%\Microsoft Azure\Logs
+    - **構成ファイル**: %ProgramData%\Microsoft Azure\Config
+    - **ログ ファイル**: %ProgramData%\Microsoft Azure\Logs
 
 次のようにスクリプトを実行します。
 
 1. アプライアンスをホストするサーバー上のフォルダーに ZIP ファイルを抽出します。
 2. 管理 (昇格された) 特権を使用して上記のサーバーで PowerShell を起動します。
 3. PowerShell ディレクトリを、ダウンロードした ZIP ファイルの内容が抽出されたフォルダーに変更します。
-4. 次のコマンドを実行してスクリプトを実行します。
+4. 次のコマンドを実行して、**AzureMigrateInstaller.ps1** という名前のスクリプトを実行します。
     ```
-    PS C:\Users\Administrators\Desktop> AzureMigrateInstaller-physical.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-スクリプトが正常に終了すると、アプライアンス Web アプリケーションが起動します。
+スクリプトが正常に終了すると、アプライアンス Web アプリケーションが起動します。 
 
+問題が発生した場合は、トラブルシューティングのために、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log のスクリプト ログにアクセスできます。
+
+> [!NOTE]
+> 既存の Azure Migrate アプライアンスで Azure Migrate インストーラー スクリプトを実行しないでください。
 
 ### <a name="verify-appliance-access-to-azure"></a>アプライアンスによる Azure へのアクセスを確認する
 
@@ -182,7 +188,7 @@ Windows および Linux サーバーごとに 1 セットの資格情報を追�
     - サーバーを削除するには、 **[削除]** を選択します。
 4. 検証後、 **[保存して検出を開始]** をクリックして、検出プロセスを開始します。
 
-これで検出が開始されます。 検出されたサーバーのメタデータが Azure portal に表示されるまでに約 15 分かかります。 
+これで検出が開始されます。 検出されたサーバーのメタデータが Azure portal に表示されるまでにサーバーあたり約 1.5 分かかります。 
 
 ### <a name="verify-servers-in-the-portal"></a>ポータルでサーバーを確認する
 

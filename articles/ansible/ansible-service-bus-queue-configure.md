@@ -3,17 +3,13 @@ title: チュートリアル - Ansible を使用して Azure Service Bus のキ�
 description: Ansible を使用して、Azure Service Bus キューを作成する方法について説明します
 keywords: ansible、azure、devops、bash、プレイブック、サービス バス、キュー
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: a48796c2177a8b5b818553bf8aa0ff36f712d4e0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9903419a52be61cd7ec74214858bce81df7e727e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241397"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155808"
 ---
 # <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>チュートリアル:Ansible を使用して Azure Service Bus のキューを構成する
 

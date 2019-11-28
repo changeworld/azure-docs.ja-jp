@@ -1,5 +1,5 @@
 ---
-title: インデックスの増分作成の概要 (プレビュー)
+title: 増分インデックス作成 (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: スキル、スキルセット、インデクサー、データ ソースへのあらゆる更新に対処するために、最終的な整合性をデータに確保するよう AI エンリッチメント パイプラインを構成します。 現在、この機能はパブリック プレビュー段階にあります。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715423"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113588"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Azure Cognitive Search におけるインデックスの増分作成とは
 

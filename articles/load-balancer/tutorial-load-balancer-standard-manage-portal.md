@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:VM へのインターネット トラフィックの負荷分散 - Azure portal
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: このチュートリアルでは、Azure Portal を使用して Standard Load Balancer を作成して管理する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: a0887a66b6cb886419f86d93973b991151141e0a
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 4d4703ccb4ee96eb69a780f91eae1eb6da9e1578
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327219"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225179"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してインターネット トラフィックを VM に負荷分散する
 
