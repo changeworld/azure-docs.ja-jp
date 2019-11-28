@@ -1,20 +1,21 @@
 ---
-title: Azure Application Gateway での Web アプリケーション ファイアウォール規則のカスタマイズ - PowerShell
+title: PowerShell を使用してルールをカスタマイズする
+titleSuffix: Azure Web Application Firewall
 description: この記事では、PowerShell を使用して Application Gateway での Web アプリケーション ファイアウォール規則をカスタマイズする方法について説明します。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 2930204cd322f3a8ba25eb6f3455a51f1d3d2ee9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 55eea15da8c3a10b0421ff1576082d6b42fc7c56
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511552"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048506"
 ---
-# <a name="customize-web-application-firewall-rules-through-powershell"></a>PowerShell を使用した Web アプリケーション ファイアウォール規則のカスタマイズ
+# <a name="customize-web-application-firewall-rules-using-powershell"></a>PowerShell を使用した Web アプリケーション ファイアウォール規則のカスタマイズ
 
 Azure Application Gateway Web アプリケーション ファイアウォール (WAF) では、Web アプリケーションの保護が提供されます。 こうした保護は、Open Web Application Security Project (OWASP) コア ルール セット (CRS) によって提供されます。 ルールによっては誤検出を発生させて、実際のトラフィックを妨げることがあります。 このため、Application Gateway には、ルール グループとルールをカスタマイズする機能が用意されています。 特定の規則グループおよび規則の詳細については、[Web アプリケーション ファイアウォールの CRS 規則グループと規則の一覧](application-gateway-crs-rulegroups-rules.md)に関するページを参照してください。
 

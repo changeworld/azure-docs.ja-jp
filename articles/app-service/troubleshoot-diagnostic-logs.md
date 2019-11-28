@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470113"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958042"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -26,7 +26,7 @@ Azure では、組み込みの診断機能により、 [App Service アプリ](o
 この記事では、[Azure portal](https://portal.azure.com) と Azure CLI を使用して診断ログを操作します。 Visual Studio で診断ログを使用する方法の詳細については、「 [Visual Studio での Azure のトラブルシューティング](troubleshoot-dotnet-visual-studio.md)」を参照してください。
 
 > [!NOTE]
-> この記事のログ記録の手順に加えて、Azure Monitoring による新しい統合ログ機能があります。 この機能については、[[ログ] ページと [診断設定 (プレビュー)] ページ](https://aka.ms/appsvcblog-azmon)で確認できます。 
+> この記事のログ記録の手順に加えて、Azure Monitoring による新しい統合ログ機能があります。 この機能の詳細については、「[Azure Monitor にログを送信する (プレビュー)](#send-logs-to-azure-monitor-preview)」のセクションを参照してください。 
 >
 >
 
@@ -178,7 +178,28 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 | **Web サーバー ログ** | */LogFiles/http/RawLogs/* | [W3C 拡張ログ ファイル形式](/windows/desktop/Http/w3c-logging)を使用して書式設定されたテキスト ファイルが含まれます。 この情報は、テキスト エディターまたは [Log Parser](https://go.microsoft.com/fwlink/?LinkId=246619) などのユーティリティを使用して読むことができます。<br/>App Service では、`s-ip`、`s-computername`、または `cs-version` フィールドはサポートされていません。 |
 | **デプロイ ログ** | */LogFiles/Git/* および */deployments/* | 内部デプロイ プロセスによって生成されたログだけでなく、Git デプロイのログも含まれます。 |
 
+## <a name="send-logs-to-azure-monitor-preview"></a>Azure Monitor にログを送信する (プレビュー)
+
+新しい [Azure Monitor の統合](https://aka.ms/appsvcblog-azmon)を使用すると、ストレージ アカウント、Event Hubs、および Log Analytics にログを送信するために[診断設定 (プレビュー) を作成](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting)できます。 
+
+> [!div class="mx-imgBorder"]
+> ![診断設定 (プレビュー)](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
+
+### <a name="supported-log-types"></a>サポートされるログの種類
+
+次の表は、サポートされるログの種類と説明を示しています。 
+
+| ログのタイプ | Windows のサポート | Linux サポート | 説明 |
+|-|-|-|
+| AppServiceConsoleLogs | TBA | はい | 標準出力と標準エラー |
+| AppServiceHTTPLogs | はい | はい | Web サーバー ログ |
+| AppServiceEnvironmentPlatformLogs | はい | はい | App Service Environment: スケーリング、構成変更、および状態ログ|
+| AppServiceAuditLogs | はい | はい | FTP および Kudu 経由のログイン アクティビティ |
+| AppServiceFileAuditLogs | TBA | TBA | FTP および Kudu 経由のファイル変更 |
+| AppServiceAppLogs | TBA | Java SE および Tomcat | アプリケーション ログ |
+
 ## <a name="nextsteps"></a> 次のステップ
+* [Azure Monitor でログにクエリを実行する](../azure-monitor/log-query/log-query-overview.md)
 * [Azure App Service を監視する方法](web-sites-monitor.md)
 * [Visual Studio での Azure App Service のトラブルシューティング](troubleshoot-dotnet-visual-studio.md)
 * [HDInsight でのアプリ ログの分析](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

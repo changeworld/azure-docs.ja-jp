@@ -1,18 +1,18 @@
 ---
-title: Azure IoT Hub デバイス ストリーム (プレビュー) | Microsoft Docs
-description: IoT Hub デバイス ストリームの概要
+title: Azure IoT Hub デバイス ストリーム | Microsoft Docs
+description: さまざまな cloud-to-device 通信シナリオのセキュリティで保護された双方向 TCP トンネルを支援する、Azure IoT Hub デバイス ストリームの概要について説明します。
 author: robinsh
 services: iot-hub
 ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: 86f8c6e527f58a7c4cfca6233165f0ab05426409
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672572"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890471"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub デバイス ストリーム (プレビュー)
 
@@ -140,7 +140,7 @@ IoT Hub のデバイス ストリーム アクティビティのために Azure 
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-パブリック プレビュー中は、米国中部および米国中部 EUAP リージョンで IoT Hub デバイス ストリームを利用できます。 これらのリージョンのいずれかでハブを作成するようにしてください。
+パブリック プレビュー中は、米国中部、米国中部 EUAP、北ヨーロッパ、東南アジア リージョンで IoT Hub デバイス ストリームを利用できます。 これらのリージョンのいずれかでハブを作成するようにしてください。
 
 ## <a name="sdk-availability"></a>SDK の可用性
 

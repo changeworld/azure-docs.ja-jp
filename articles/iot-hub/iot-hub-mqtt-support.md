@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: robinsh
-ms.openlocfilehash: 59bf62f73d8ba9732cd89209d2b239fd15a6d844
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 183b85ad8a61c76942981ebb764512b8a090b0a8
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754470"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890442"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -116,6 +116,38 @@ MQTT プロトコルをサポートする[デバイス SDK](https://github.com/A
 MQTT の接続パケットおよび切断パケットの場合、IoT Hub は **操作の監視** チャネルでイベントを発行します。 このイベントには、接続の問題をトラブルシューティングするために役立つ追加情報があります。
 
 デバイス アプリは、**CONNECT** パケットに **Will** メッセージを指定できます。 また、デバイス アプリは、`devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を **Will** トピック名として使用することで、テレメトリ メッセージとして転送される **Will** メッセージ を定義する必要があります。 この場合、ネットワーク接続が閉じているが、**DISCONNECT** パケットがデバイスからまだ受信されていなければ、IoT Hub は、**CONNECT** パケットで提供される **Will** メッセージをテレメトリ チャネルに送信します。 テレメトリ チャネルは、既定の**イベント** エンドポイントにすることも、IoT Hub ルーティングで定義されるカスタム エンドポイントにすることもできます。 メッセージには **iothub-MessageType** プロパティが含まれており、その値には **Will** が割り当てられています。
+
+### <a name="an-example-of-c-code-using-mqtt-without-azure-iot-c-sdk"></a>Azure IoT C SDK を使用せずに MQTT を使用した C コードの例
+この[リポジトリ](https://github.com/Azure-Samples/IoTMQTTSample)では、Azure IoT C SDK を使用せずに、IoT ハブでテレメトリ メッセージを送信し、イベントを受信する方法を示す C/C++ のデモ プロジェクトをいくつか紹介します。 
+
+これらのサンプルでは、Eclipse Mosquitto ライブラリを使用して、IoT ハブ に実装されている MQTT ブローカーにメッセージを送信します。
+
+このリポジトリには、次のものが含まれます。
+
+**Windows の場合:**
+
+•   TelemetryMQTTWin32: Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。
+
+•   SubscribeMQTTWin32: Windows マシン上の特定の IoT ハブのイベントをサブスクライブするためのコードが含まれています。
+
+•   DeviceTwinMQTTWin32: Windows マシン上の Azure IoT ハブにあるデバイスのデバイス ツイン イベントに対してクエリを実行し、サブスクライブするためのコードが含まれています。
+
+•   PnPMQTTWin32: IoT プラグ アンド プレイのプレビュー版のデバイス機能を使用して、Windows マシンでビルドされ実行されている Azure IoT ハブにテレメトリ メッセージを送信するためのコードが含まれています。 IoT プラグ アンド プレイの詳細については、[こちら](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)を参照してください。
+
+**Linux の場合:**
+
+•   MQTTLinux: Linux で実行されるコードとビルド スクリプトが含まれています (現時点までで WSL、Ubuntu、Raspbian でテスト済み)。
+
+•   LinuxConsoleVS2019: WSL (Windows Linux サブ システム) をターゲットとする VS2019 プロジェクトの同じコードが含まれています。 このプロジェクトを使用すると、Linux で実行されているコードを Visual Studio からステップ バイ ステップでデバッグできます。
+
+**mosquito_pub の場合:**
+
+•   このフォルダーには、Mosquitto.org によって提供される mosquitto_pub ユーティリティ ツールで使用される 2 つのサンプル コマンドが含まれています。
+
+Mosquitto_sendmessage: デバイスとして機能する Azure IoT ハブに単純なテキスト メッセージを送信します。
+
+Mosquitto_subscribe: Azure IoT ハブで発生しているイベントを表示します。
+
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>MQTT プロトコルの直接使用 (モジュールとして)
 

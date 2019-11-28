@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 75568cf3c88c02968b3e3e95971f81cf1b9285d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9b873b5a68979b8225c44c32e0b9494408e35ac1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496353"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927176"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -129,7 +129,11 @@ Image Store Viewer は、Native Image Store を使用している場合に提供
 ![Service Fabric Explorer のクラスター マップ][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>バックアップと復元
-Service Fabric Explorer には、[バックアップと復元](./service-fabric-reliable-services-backup-restore.md)とのインターフェイスを提供する機能が用意されています。 次の操作を実行できます。
+Service Fabric Explorer には、[バックアップと復元](./service-fabric-reliable-services-backup-restore.md)とのインターフェイスを提供する機能が用意されています。 SFX でバックアップと復元の機能を表示するには、詳細設定モードを有効にする必要があります。
+
+![詳細設定モードの有効化][0]
+ 
+次の操作を実行できます。
 
 * バックアップ ポリシーを作成、編集、削除します。
 * アプリケーション、サービス、またはパーティションのバックアップを有効または無効にします。
@@ -151,3 +155,4 @@ Service Fabric Explorer には、[バックアップと復元](./service-fabric-
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/sfx-create-app-instance.png
 [sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png
 [sfx-imagestore]: ./media/service-fabric-visualizing-your-cluster/sfx-image-store.png
+[0]: ./media/service-fabric-backuprestoreservice/advanced-mode.png

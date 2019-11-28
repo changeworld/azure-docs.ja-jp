@@ -1,5 +1,5 @@
 ---
-title: Azure Traffic Manager を使用してサブネットのトラフィックのルーティング方法を構成する
+title: サブネットのトラフィック ルーティングを構成する - Azure Traffic Manager
 description: この記事では、特定のサブネットからのトラフィックをルーティングするように Traffic Manager を構成する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: allensu
-ms.openlocfilehash: 1a7bc38a91dc7621a3b09d7901c70eecb21101d6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3751a14e8c317d6a4f23c1aa051b7e13305acf5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060966"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014607"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
 
@@ -52,10 +52,10 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     |Setting|値|
     |---|---|
-    |Name|myIISVMEastUS|
+    |名前|myIISVMEastUS|
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |リソース グループ| **[新規]** を選択し、「*myResourceGroupTM1*」と入力します。|
+    |Resource group| **[新規]** を選択し、「*myResourceGroupTM1*」と入力します。|
     |Location| **[米国東部]** を選択します。|
     |||
 
@@ -75,7 +75,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     |Setting|値|
     |---|---|
-    |リソース グループ | **[新規]** を選択し、「*myResourceGroupTM2*」と入力します。|
+    |Resource group | **[新規]** を選択し、「*myResourceGroupTM2*」と入力します。|
     |Location|西ヨーロッパ|
     |VM 名 | myIISVMWEurope|
     |仮想ネットワーク | **[仮想ネットワーク]** を選択し、 **[仮想ネットワークの作成]** で **[名前]** に「*myVNet2*」と入力し、サブネットとして「*mySubnet*」と入力します。|
@@ -138,10 +138,10 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
     |Setting|値|
     |---|---|
-    |Name|myVMEastUS|
+    |名前|myVMEastUS|
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |リソース グループ| **[既存]** を選択し、 *[myResourceGroupTM1]* を選択します。|
+    |Resource group| **[既存]** を選択し、 *[myResourceGroupTM1]* を選択します。|
     |||
 
 4. **[サイズの選択]** で、VM サイズを選択します。
@@ -161,7 +161,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
     |Setting|値|
     |---|---|
     |VM 名 | *myVMWEurope*|
-    |リソース グループ | **[既存]** を選択し、「*myResourceGroupTM2*」と入力します。|
+    |Resource group | **[既存]** を選択し、「*myResourceGroupTM2*」と入力します。|
     |仮想ネットワーク | **[仮想ネットワーク]** を選択し、 **[仮想ネットワークの作成]** で **[名前]** に「*myVNet4*」と入力し、サブネットとして「*mySubnet4*」と入力します。|
     |||
 
@@ -175,10 +175,10 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
-    | Name                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
+    | 名前                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
     | ルーティング方法          | **[サブネット]** ルーティング方式を選択します。                                       |
-    | サブスクリプション            | サブスクリプションを選択します。                          |
-    | リソース グループ          | **[既存]** を選択し、「*myResourceGroupTM1*」と入力します。 |
+    | Subscription            | サブスクリプションを選択します。                          |
+    | Resource group          | **[既存]** を選択し、「*myResourceGroupTM1*」と入力します。 |
     | |                              |
     |
 
@@ -194,8 +194,8 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure エンドポイント                                   |
-    | Name           | myTestWebSiteEndpoint                                        |
+    | 種類                    | Azure エンドポイント                                   |
+    | 名前           | myTestWebSiteEndpoint                                        |
     | ターゲット リソースの種類           | パブリック IP アドレス                          |
     | ターゲット リソース          | **パブリック IP アドレスを選択**して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
     |  サブネット ルーティングの設定    |   *myVMEastUS* テスト VM の IP アドレスを追加します。 この VM から送信されたすべてのユーザー クエリは、*myTestWebSiteEndpoint* に転送されます。    |

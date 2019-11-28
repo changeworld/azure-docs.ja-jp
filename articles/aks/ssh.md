@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: e0b7154e3c4d6a6f493aac93ffcbcc424a67c300
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d855e7a65b7e1ad24dcfc4fe6a6d5e02f9004bb0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932310"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089553"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
@@ -37,14 +37,16 @@ SSH アクセス用の仮想マシン スケール セットを構成するに�
 [az aks show][az-aks-show] コマンドを使用して AKS クラスターのリソース グループ名を取得した後、[az vmss list][az-vmss-list] コマンドを使用してスケール セットの名前を取得します。
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
 上の例では、*myResourceGroup* 内の *myAKSCluster* のクラスター リソース グループの名前に *CLUSTER_RESOURCE_GROUP* を割り当てています。 次に、例では、*CLUSTER_RESOURCE_GROUP* を使用してスケール セット名を表示し、それを *SCALE_SET_NAME* に割り当てています。  
 
-> [!NOTE]
-> 現時点では、SSH キーは Azure CLI を使用して Linux ノードにのみ追加できます。 SSH を使用して Windows Server ノードに接続する場合は、AKS クラスターの作成時に指定した SSH キーを使用し、SSH 公開キーを追加するための次の一連のコマンドをスキップします。 このセクションの最後のコマンドに示すように、トラブルシューティングを行うノードの IP アドレスが必要です。 または、SSH を使用する代わりに、[リモート デスクトップ プロトコル (RDP) 接続を使用して、Windows Server ノードに接続する][aks-windows-rdp]ことができます。
+> [!IMPORTANT]
+> 現時点では、仮想マシン スケールセットに基づく AKS クラスターについては、Azure CLI を使用して SSH キーを更新する必要があります。
+> 
+> 現在、Linux ノードについては、Azure CLI を使用した場合にのみ SSH キーを追加できます。 SSH を使用して Windows Server ノードに接続する場合は、AKS クラスターの作成時に指定した SSH キーを使用し、SSH 公開キーを追加するための次の一連のコマンドをスキップします。 このセクションの最後のコマンドに示すように、トラブルシューティングを行うノードの IP アドレスが必要です。 または、SSH を使用する代わりに、[リモート デスクトップ プロトコル (RDP) 接続を使用して、Windows Server ノードに接続する][aks-windows-rdp]ことができます。
 
 SSH キーを仮想マシン スケール セット内のノードに追加するには、[az vmss extension set][az-vmss-extension-set] コマンドと [az vmss update-instances][az-vmss-update-instances] コマンドを使用します。
 
@@ -94,7 +96,7 @@ SSH アクセス用の仮想マシン可用性セット ベースの AKS クラ�
 [az aks show][az-aks-show] コマンドを使用して AKS クラスターのリソース グループ名を取得した後、[az vmss list][az-vm-list] コマンドを使用して、クラスターの Linux ノードの仮想マシンの名前を表示します。
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 

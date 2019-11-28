@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: e3b4249aa9fbc31f8a6ca4a33ef8167bd076adec
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 595a96d07cc1804d3ee0830618a70557b768a3b5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608475"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067102"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>予約容量を使用して Azure Database for MySQL 計算リソースを前払いする
 
@@ -32,7 +32,7 @@ Azure Database for MySQL の予約容量は、[Azure portal](https://portal.azur
 
 予約のサイズは、既存のまたはすぐにデプロイされる予定のサーバー (特定のリージョン内で同じパフォーマンス階層とハードウェア世代を使用するもの) で使用される計算量の合計に基づいて決める必要があります。</br>
 
-たとえば、1 つの汎用の Gen5 - 32 仮想コア MySQL データベースと、2 つのメモリ最適化済みの Gen5 - 16 仮想コア MySQL データベースを実行しているとします。 さらに、来月には汎用の Gen5 - 32 仮想コア エラスティック プールを 1 つとメモリ最適化済みの Gen5 - 16 仮想コア データベース サーバーを 1 つ追加する予定だとします。 少なくとも 1 年間はこれらのリソースが必要になることがわかっているとします。 この場合、単一データベースの汎用 - Gen5 用に 64 (2x32) 仮想コア 1 年予約分と、単一データベース メモリ最適化済み - Gen5 用に 48 (2x16 + 16) 仮想コア 1 年予約分を購入する必要があります。
+たとえば、1 つの汎用の Gen5 - 32 仮想コア MySQL データベースと、2 つのメモリ最適化済みの Gen5 - 16 仮想コア MySQL データベースを実行しているとします。 さらに、来月中に汎用の Gen5 - 32 仮想コア データベース サーバーを 1 つと、メモリ最適化済みの Gen5 - 16 仮想コア データベース サーバーを 1 つデプロイする予定だとします。 少なくとも 1 年間はこれらのリソースが必要になることがわかっているとします。 この場合、単一データベースの汎用 - Gen5 用に 64 (2x32) 仮想コア 1 年予約分と、単一データベース メモリ最適化済み - Gen5 用に 48 (2x16 + 16) 仮想コア 1 年予約分を購入する必要があります。
 
 
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>Azure Database for MySQL の予約容量を購入する

@@ -1,5 +1,5 @@
 ---
-title: Azure のテナント間でギャラリー イメージを共有する |Microsoft Docs
+title: Azure のテナント間でギャラリー イメージを共有する
 description: 共有イメージ ギャラリーを使用して、Azure テナント間で VM イメージを共有する方法について説明します。
 services: virtual-machines-windows
 author: cynthn
@@ -10,14 +10,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/15/2019
 ms.author: cynthn
-ms.openlocfilehash: b921aabd8d71654d089c5f16aba27c286a1e91ec
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 9b7e7066f186017b7cc4408cd4f7edcc7e5f0dcd
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305039"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065514"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure テナント間でギャラリー VM イメージを共有する
+
+共有イメージ ギャラリーでは、RBAC を使用してイメージを共有できます。 RBAC を使用すると、テナント内でイメージを共有できます。また、テナントの外部にいる個人と共有することもできます。 この単純な共有オプションの詳細については、「[ギャラリーを共有する](/azure/virtual-machines/windows/shared-images-portal#share-the-gallery)」を参照してください。
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
@@ -26,7 +28,6 @@ ms.locfileid: "68305039"
 > ポータルを使用して、別の Azure テナント内のイメージから VM をデプロイすることはできません。 テナント間で共有されているイメージから VM を作成するには、[Azure CLI](../linux/share-images-across-tenants.md) または PowerShell を使用する必要があります。
 
 ## <a name="create-a-vm-using-powershell"></a>PowerShell を使用した VM の作成
-
 
 アプリケーション ID、シークレット、およびテナント ID を使用して両方のテナントにログインします。 
 

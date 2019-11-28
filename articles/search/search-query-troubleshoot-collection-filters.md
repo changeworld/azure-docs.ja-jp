@@ -1,7 +1,7 @@
 ---
 title: OData コレクション フィルターのトラブルシューティング
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search クエリでの OData コレクション フィルター エラーのトラブルシューティング。
+description: Azure Cognitive Search のクエリでの OData コレクション フィルターのエラーを解決するためのアプローチについて説明します。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0af2525a15618c6bfd9022b4388c547209ee957b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793186"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113076"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Azure Cognitive Search での OData コレクション フィルターのトラブルシューティング
 

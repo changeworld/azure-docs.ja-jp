@@ -8,87 +8,93 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 10/25/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6bce05b99c14fb464cd1a17587d9cf254909d87
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f2f61792235d13ef801cffb3a69c32df54f058a9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473402"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073546"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
-Azure サブスクリプションには、Azure Active Directory (Azure AD) との間に信頼関係があります。つまり、サブスクリプションは Azure AD を信頼することでユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じ Azure AD ディレクトリを信頼することはできますが、1 つのサブスクリプションが信頼できるディレクトリは 1 つに限られます。
+Azure サブスクリプションには、Azure Active Directory (Azure AD) との信頼関係があります。 サブスクリプションでは、Azure AD を信頼して、ユーザー、サービス、デバイスの認証が行われます。
 
-サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられた他のすべてのリソースへのアクセスもできなくなります。 ただし、Azure AD ディレクトリは Azure に残るため、別の Azure サブスクリプションを使用してディレクトリの関連付けおよび管理を行うことができます。
+複数のサブスクリプションが同じ Azure AD ディレクトリを信頼できます。 各サブスクリプションが信頼できるディレクトリは 1 つに限られます。
 
-すべてのユーザーに、認証のための *ホーム* ディレクトリが 1 つあります。 ただし、ユーザーは、他のディレクトリのゲストになることもできます。 Azure AD では、各ユーザーのホーム ディレクトリとゲスト ディレクトリの両方を確認できます。
+サブスクリプションの有効期限が切れた場合、サブスクリプションに関連付けられた他のすべてのリソースへのアクセスもできなくなります。 ただし、その Azure AD ディレクトリは Azure に残ります。 別の Azure サブスクリプションを使用して、そのディレクトリの関連付けおよび管理を行うことができます。
+
+すべてのユーザーに、認証のための *ホーム* ディレクトリが 1 つあります。 ユーザーは、他のディレクトリのゲストになることもできます。 Azure AD では、各ユーザーのホーム ディレクトリとゲスト ディレクトリの両方を確認できます。
 
 > [!Important]
-> サブスクリプションを別のディレクトリに関連付けると、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 従来のサブスクリプション管理者 (サービス管理者と共同管理者) もアクセスできなくなります。 
+> サブスクリプションを別のディレクトリに関連付けると、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) を使用してロールが割り当てられているユーザーはアクセスできなくなります。 サービス管理者や共同管理者などの従来のサブスクリプション管理者もアクセスできなくなります。
 >
 > そのサブスクリプションが別のディレクトリに関連付けられている場合は、ポリシー割り当てもサブスクリプションから削除されます。
-> 
-> また、Azure Kubernetes Service (AKS) クラスターを別のサブスクリプションに移したり、クラスターを所有するサブスクリプションを新しいテナントに移したりすると、ロールの割り当てやサービス プリンシパルの権限が失われるため、クラスターの機能が失われることになります。 AKS の詳細については、「[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/)」を参照してください。
+>
+> Azure Kubernetes Service (AKS) クラスターを別のサブスクリプションに移したり、クラスターを所有するサブスクリプションを新しいテナントに移したりすると、ロールの割り当てやサービス プリンシパルの権限が失われるため、クラスターの機能が失われることになります。 AKS の詳細については、「[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/)」を参照してください。
+
 
 ## <a name="before-you-begin"></a>開始する前に
 
-サブスクリプションの関連付けまたは追加を行う前に、次のタスクを実行する必要があります。
+サブスクリプションの関連付けまたは追加を行う前に、次のタスクを実行してください。
 
-1. 次の変更と影響の一覧を確認してください。
+- 次の変更と影響の一覧を確認してください。
 
-    - RBAC を使用してロールが割り当てられているユーザーはアクセスできなくなる
-    - サービス管理者と共同管理者はアクセスできなくなる
-    - キー コンテナーがある場合はアクセスできなくなり、関連付けを行った後にそれらの修正が必要になる
-    - Virtual Machines や Logic Apps などのリソースのマネージド ID を持っている場合は、関連付け後にそれらを再度有効にするか再作成する必要がある
-    - 登録されている Azure Stack がある場合は、関連付けを行った後に再登録が必要になる
+  - RBAC を使用してロールが割り当てられているユーザーはアクセスできなくなる
+  - サービス管理者と共同管理者はアクセスできなくなる
+  - キー コンテナーがある場合はアクセスできなくなり、関連付けを行った後にそれらの修正が必要になる
+  - 仮想マシンやロジック アプリなどのリソースのマネージド ID を持っている場合は、関連付け後にそれらを再度有効にするか再作成する必要がある
+  - 登録されている Azure Stack がある場合は、関連付けを行った後に再登録が必要になる
 
-1. 次のようなアカウントを使用してサインインします。
-    - サブスクリプションの[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールが割り当てられているアカウント。 所有者ロールの割り当て方法について詳しくは、「[RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」をご覧ください。
-    - サブスクリプションに関連付けられた現在のディレクトリと、今後サブスクリプションを関連付ける新しいディレクトリの両方に存在する。 別のディレクトリへのアクセスの取得の詳細については、[Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](../b2b/add-users-administrator.md)に関する記事を参照してください。
+- 次のようなアカウントを使用してサインインします。
 
-1. Azure クラウド サービス プロバイダー (CSP) サブスクリプション (MS-AZR-0145P、MS-AZR-0146P、MS-AZR-159P)、Microsoft 内部サブスクリプション (MS-AZR-0015P)、Microsoft Imagine サブスクリプション (MS-AZR-0144P) を使用していないことを確認します。
-    
-## <a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>既存のサブスクリプションを Azure AD ディレクトリに関連付けるには
+  - サブスクリプションの[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールが割り当てられているアカウント。 所有者ロールの割り当て方法について詳しくは、「[RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」をご覧ください。
+  - 現在のディレクトリと新しいディレクトリの両方に存在する。 現在のディレクトリはサブスクリプションに関連付けられています。 新しいディレクトリをそのサブスクリプションに関連付けます。 別のディレクトリへのアクセスを取得する方法について詳しくは、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../b2b/add-users-administrator.md)」を参照してください。
+
+- Azure クラウド サービス プロバイダー (CSP) サブスクリプション (MS-AZR-0145P、MS-AZR-0146P、MS-AZR-159P)、Microsoft 内部サブスクリプション (MS-AZR-0015P)、Microsoft Imagine サブスクリプション (MS-AZR-0144P) を使用していないことを確認します。
+
+## サブスクリプションをディレクトリに関連付ける<a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>
+
+既存のサブスクリプションを Azure AD ディレクトリに関連付けるには、次の手順に従います。
 
 1. Azure portal にサインインし、[[サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)で使用するサブスクリプションを選択します。
 
-2. **[ディレクトリの変更]** を選択します。
+1. **[ディレクトリの変更]** を選択します。
 
-    ![[ディレクトリの変更] オプションが強調表示された [サブスクリプション] ページ](media/active-directory-how-subscriptions-associated-directory/change-directory-button.png)
+    ![[ディレクトリの変更] オプションが強調表示された [サブスクリプション] ページ](media/active-directory-how-subscriptions-associated-directory/change-directory-in-azure-subscriptions.png)
 
-3. 表示されたすべての警告を確認してから、 **[変更]** を選択します。
+1. 表示されたすべての警告を確認してから、 **[変更]** を選択します。
 
     ![ディレクトリの変更先が表示された [ディレクトリの変更] ページ](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
     サブスクリプションのディレクトリが変更され、成功メッセージが表示されます。
 
     ![ディレクトリ変更の成功メッセージ](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
-4. **ディレクトリ スイッチャー**を使用して、新しいディレクトリに移動します。 すべてが適切に表示されるまでに数時間かかる場合があります。 時間がかかりすぎると思われる場合は、移動したサブスクリプションの **[グローバルなサブスクリプション フィルター]** をチェックして、隠れている可能性がないか確認してください。 一度 Azure portal からサインアウトしてから再びサインインしないと、新しいディレクトリが表示されない場合があります。 
 
-    ![サンプル情報が含まれたディレクトリ スイッチャーのページ](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+**[ディレクトリの切り替え]** を使用して、新しいディレクトリに移動します。 すべてが適切に表示されるまでに数時間かかる場合があります。 時間がかかりすぎていると思われる場合は、 **[グローバルなサブスクリプション フィルター]** を確認します。 移動したサブスクリプションが非表示になっていないことを確認します。 一度 Azure portal からサインアウトしてから再びサインインしないと、新しいディレクトリが表示されない場合があります。
+
+![サンプル情報が含まれたディレクトリ スイッチャーのページ](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
 サブスクリプションのディレクトリの変更はサービス レベルの操作であるため、サブスクリプションの課金所有権には影響しません。 アカウント管理者は、引き続き[アカウント センター](https://account.azure.com/subscriptions)からサービス管理者を変更することができます。 元のディレクトリを削除するには、新しいアカウント管理者にサブスクリプションの課金所有権を譲渡する必要があります。課金所有権を別のアカウントに譲渡するには、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../billing/billing-subscription-transfer.md)」を参照してください。
 
-## <a name="post-association-steps"></a>関連付けの後の手順
-サブスクリプションを別のディレクトリに関連付けた後、操作を再開するために実行しなければならない追加手順がある場合があります。
+## <a name="post-association-steps"></a>関連付け後の手順
 
-1. キー コンテナーがある場合は、キー コンテナーのテナント ID を変更する必要があります。 詳細については、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../../key-vault/key-vault-subscription-move-fix.md)」を参照してください。
+サブスクリプションを別のディレクトリに関連付けた後、次のタスクを実行しないと操作が再開されない場合があります。
 
-2. リソースにシステム割り当てマネージド ID を使用していた場合は、これらを再度有効にする必要があります。 ユーザー割り当てマネージド ID を使用していた場合は、これらを再作成する必要があります。 マネージド ID を再度有効にするか再作成した後、それらの ID に割り当てられているアクセス許可を再確立する必要があります。 詳細については、「[What is managed identities for Azure resources? (Azure リソースのマネージド ID とは)](../managed-identities-azure-resources/overview.md)」を参照してください。
+- キー コンテナーがある場合は、キー コンテナーのテナント ID を変更する必要があります。 詳細については、「[サブスクリプション移行後のキー コンテナー テナント ID の変更](../../key-vault/key-vault-subscription-move-fix.md)」を参照してください。
 
-3. このサブスクリプションを使用して Azure Stack を登録した場合は、再登録する必要があります。 詳細については、「[Azure サブスクリプションを使用した Azure Stack の登録](/azure-stack/operator/azure-stack-registration)」を参照してください。
+- リソースにシステム割り当てマネージド ID を使用していた場合は、それらの ID を再度有効にする必要があります。 ユーザー割り当てマネージド ID を使用していた場合は、それらの ID を再作成する必要があります。 マネージド ID を再度有効にするか再作成した後、それらの ID に割り当てられているアクセス許可を再確立する必要があります。 詳細については、「[Azure リソースのマネージド ID とは](../managed-identities-azure-resources/overview.md)」を参照してください。
 
-
+- このサブスクリプションを使用して Azure Stack を登録した場合は、再登録する必要があります。 詳細については、「[Azure サブスクリプションを使用した Azure Stack の登録](/azure-stack/operator/azure-stack-registration)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-- 新しい Azure AD のテナントを作成するには、[Azure Active Directory へのアクセスによる新しいテナントの作成](active-directory-access-create-new-tenant.md)に関する記事を参照してください
+- 新しい Azure AD テナントを作成するには、「[クイックスタート:Azure Active Directory で新しいテナントを作成する](active-directory-access-create-new-tenant.md)」を参照してください。
 
-- Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+- Microsoft Azure がリソース アクセスを制御する仕組みについて詳しくは、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md)」を参照してください。
 
-- Azure AD でのロールの割り当て方法の詳細については、[Azure Active Directory を使用したユーザーへのディレクトリ ロールの割り当て方法](active-directory-users-assign-role-azure-portal.md)に関する記事を参照してください
+- Azure AD でロールを割り当てる方法について詳しくは、「[Azure Active Directory を使ってユーザーに管理者と管理者以外のロールを割り当てる](active-directory-users-assign-role-azure-portal.md)」を参照してください。

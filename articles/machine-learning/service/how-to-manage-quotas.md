@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 11/04/2019
-ms.openlocfilehash: 2206afc45c7ea35c41f51839b66dca33982939ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d44fb94978c450808c8a1c0852d4c771a100857e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489798"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961713"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Azure リソースのクォータの管理と要求
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,7 +92,7 @@ Azure Machine Learning パイプラインには、パイプラインのステッ
 クォータ制限の詳細および最新のリストについては、[こちら](https://docs.microsoft.com/azure/azure-subscription-service-limits#container-instances-limits)の Azure 全体のクォータの記事を確認してください。
 
 ### <a name="storage"></a>Storage
-リージョンあたりおよび特定のサブスクリプションでもストレージ アカウントの数に制限があります。 既定の制限は 200 で、Standard Storage アカウントと Premium Storage アカウントの両方が含まれます。 指定したリージョンで 200 個を超えるストレージ アカウントが必要な場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)からリクエストを送信してください。 Azure Storage チームがビジネス ケースを確認します。承認された場合、指定したリージョンに対して最大 250 個のストレージ アカウントが与えられます。
+リージョンあたりおよび特定のサブスクリプションでもストレージ アカウントの数に制限があります。 既定の制限は 250 で、Standard Storage アカウントと Premium Storage アカウントの両方が含まれます。 指定したリージョンで 250 個を超えるストレージ アカウントが必要な場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)からリクエストを送信してください。 Azure Storage チームがビジネス ケースを確認します。承認された場合、指定したリージョンに対して最大 250 個のストレージ アカウントが与えられます。
 
 
 ## <a name="workspace-level-quota"></a>ワークスペース レベル クォータ

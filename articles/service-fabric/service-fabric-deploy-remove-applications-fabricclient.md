@@ -1,5 +1,5 @@
 ---
-title: Azure Service Fabric アプリケーションのデプロイ | Microsoft Docs
+title: FabricClient を使用した Azure Service Fabric のデプロイ
 description: FabricClient API を使用して Service Fabric にアプリケーションをデプロイおよび削除します。
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: atsenthi
-ms.openlocfilehash: c04306b417c8e68f2e93c0e5e064f5873b00ddd5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cdb5ae4efbd4119422101eb8a05ce71e7b58d51f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599631"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013294"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>FabricClient を使用してアプリケーションのデプロイと削除を実行する
 > [!div class="op_single_selector"]

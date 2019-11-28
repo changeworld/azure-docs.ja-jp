@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 9e8dbbd40259c7a71f252d0d6e93dd6f135973de
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 3ee7879475801660b5200dddca88a0a81b2b6b9b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513543"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034142"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
 
@@ -24,6 +24,13 @@ ms.locfileid: "72513543"
 ```azcopy
 azcopy jobs resume [jobID] [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>関連する概念に関する記事
+
+- [AzCopy を使ってみる](storage-use-azcopy-v10.md)
+- [AzCopy と BLOB ストレージでデータを転送する](storage-use-azcopy-blobs.md)
+- [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
+- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>オプション
 

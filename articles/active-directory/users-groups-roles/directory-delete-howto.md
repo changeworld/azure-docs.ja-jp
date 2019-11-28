@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7993810343f6bd925afd54cc38a8302420d6aec
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439370"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961812"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Azure Active Directory でディレクトリを削除する
 
@@ -108,7 +108,7 @@ Microsoft Power BI、Rights Management サービス、Microsoft Power Apps、Dyn
 
 現在使用可能なセルフサービス サインアップ製品およびサービスの詳細については、「[利用可能なセルフサービス プログラム](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs)」を参照してください。
 
-試用版の Office 365 サブスクリプション (有償のパートナー/CSP、Enterprise Agreement、ボリューム ライセンスは含まれません) の有効期限が切れたときに起こることについては、次の表を参照してください。 Office 365 のデータ保持とサブスクリプションのライフサイクルの詳細については、「 [一般法人向け Office 365 のサブスクリプションが終了したとき、データとアクセスはどうなりますか?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)」を参照してください。
+試用版の Office 365 サブスクリプション (有償のパートナー/CSP、Enterprise Agreement、ボリューム ライセンスは含まれません) の有効期限が切れたときに起こることについては、次の表を参照してください。 Office 365 のデータ保有とサブスクリプションのライフ サイクルの詳細については、「[一般法人向け Office 365 のサブスクリプションが終了したとき、データとアクセスはどうなりますか?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide)」を参照してください。
 
 製品の状態 | Data | データへのアクセス
 ------------- | ---- | --------------
@@ -119,13 +119,13 @@ Deleted | 削除されたデータ | ユーザーはセルフサービス サイ
 
 Microsoft Power BI や Azure Rights Management サービスなどのセルフサービス サインアップ製品は、 **[削除]** 状態にすると、Azure AD ポータル内ですぐに削除できます。
 
-1. 組織のグローバル管理者であるアカウントを使用して、 [Azure AD 管理センター](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) にサインインします。 既定の初期ドメイン contoso.onmicrosoft.com を持つ "Contoso" ディレクトリを削除する場合は、admin@contoso.onmicrosoft.com などの UPN を使用してサインオンします。
+1. 組織のグローバル管理者アカウントで、[Azure AD 管理センター](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)にサインインします。 既定の初期ドメイン contoso.onmicrosoft.com を持つ "Contoso" ディレクトリを削除する場合は、admin@contoso.onmicrosoft.com などの UPN を使用してサインオンします。
 
-2. **[ライセンス]** を選択し、 **[Self-service sign-up products]\(セルフサービス サインアップ製品\)** を選択します。 シートベースのサブスクリプションから、すべてのセルフサービス サインアップ製品を個別に確認できます。 完全に削除する製品を選択します。 Microsoft Power BI での例を次に示します。
+2. **[ライセンス]** を選択し、 **[Self-service sign-up products]\(セルフサービス サインアップ製品\)** を選択します。 シートベースのサブスクリプションから、すべてのセルフサービス サインアップ製品を個別に確認できます。 完全に削除する製品を選択します。 Microsoft Power BI での例を次に示します。
 
     ![ユーザー名が間違って入力されたか、ユーザー名が見つかりません](./media/directory-delete-howto/licenses-page.png)
 
-3.  **[削除]** を選択して製品を削除し、データがすぐに完全に削除されることを示す条項に同意します。  この削除操作により、すべてのユーザーが削除され、組織から製品へのアクセス権も削除されます。 [はい] をクリックして削除を進めます。  
+3. **[削除]** を選択して製品を削除し、データがすぐに完全に削除されることを示す条項に同意します。 この削除操作により、すべてのユーザーが削除され、組織から製品へのアクセス権も削除されます。 [はい] をクリックして削除を進めます。  
 
     ![ユーザー名が間違って入力されたか、ユーザー名が見つかりません](./media/directory-delete-howto/delete-product.png)
 

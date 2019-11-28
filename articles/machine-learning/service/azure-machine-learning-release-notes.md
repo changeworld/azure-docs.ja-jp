@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 08/19/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 587856be6ca1064e5d2487ba6740b51a8c645fee
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: cf9a57b58740d1a759e00f10f6f327d605e91148
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716641"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123646"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -23,7 +23,54 @@ ms.locfileid: "73716641"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
+## <a name="2019-11-11"></a>2019-11-11
 
+### <a name="azure-machine-learning-sdk-for-python-v1074"></a>Azure Machine Learning SDK for Python v1.0.74
+ 
+  + **プレビュー機能**
+    + **azureml-contrib-dataset**
+      + azureml-contrib-dataset をインポートすると、`._Labeled` の代わりに `Dataset.Labeled.from_json_lines` を呼び出して、ラベル付きのデータセットを作成できます。
+      + ダウンロード オプションを使用してラベル付きのデータセットで `to_pandas_dataframe` を呼び出すと、既存のファイルを上書きするかどうかを指定できるようになりました。
+      + timeseries、label、または image 列が削除される `keep_columns` または `drop_columns` を呼び出すと、データセットの対応する機能も削除されます。
+      + `dataset.to_torchvision()` を呼び出すときの PyTorch ローダーの問題が修正されました。
+
++ **バグの修正と機能強化**
+  + **azure-cli-ml**
+    + プレビュー CLI にモデルのプロファイルが追加されました。
+    + AzureML CLI が失敗する原因となる Azure Storage の破壊的変更を修正します。
+    + AKS タイプの MLC に Load Balancer タイプが追加されました
+  + **azureml-automl-core**
+    + 欠損値と複数のグレインを含む、時系列の最大期間の検出に関する問題を修正しました。
+    + クロス検証分割の生成時のエラーに関する問題を修正しました。
+    + このセクションをマークダウン形式のメッセージと置き換え、リリース ノートに表示されようにします。- 予測データセットの短いグレインが処理しやすくなりました。
+    + ログ記録時に一部のユーザー情報がマスキングされる問題を修正しました。 -予測実行中のエラーのログ記録が改善されました。
+    + as a conda 依存関係としてのpsutil を自動生成された yml デプロイ ファイルに追加します。
+  + **azureml-contrib-mir**
+    + AzureML CLI が失敗する原因となる Azure Storage の破壊的変更を修正します。
+  + **azureml-core**
+    + Azure Functions に配置されたモデルによって 500 番台が生成される原因となったバグを修正しました。
+    + スナップショットに amlignore ファイルが適用されない問題を修正しました。
+    + 新しい API amlcompute.get_active_runs が追加されました。この API は、指定された amlcompute で実行するまたは実行キューに入れるジェネレーターを返します。
+    + AKS タイプの MLC に Load Balancer タイプが追加されました。
+    + run.py の download_files と artifacts_client の download_artifacts_from_prefix に append_prefix ブール パラメーターを追加しました。 このフラグは、元のファイル パスを選択的にフラット化するために使用されます。ファイル名またはフォルダー名のみが output_directory に追加されます
+    + データセットの使用状況に関する `run_config.yml` の逆シリアル化の問題を修正しました。
+    + timeseries 列が削除される `keep_columns` または `drop_columns` を呼び出すと、データセットの対応する機能も削除されます。
+  + **azureml-interpret**
+    + interpret-community バージョンを 0.1.0.3 に更新しました
+  + **azureml-train-automl**
+    + automl_step が検証の問題を出力しない可能性がある問題を修正しました。
+    + モデルの環境にローカルで依存関係がない場合でも成功するように register_model を修正しました。
+    + 一部のリモート実行で docker が有効になっていない問題を修正しました。
+    + ローカル実行が早期に失敗する原因となっている例外のログ記録を追加します。
+  + **azureml-train-core**
+    + 自動化されたハイパーパラメーターのチューニングの最適な子実行の計算で resume_from の実行を検討します。
+  + **azureml-pipeline-core**
+    + パイプラインの引数の構築時のパラメーターの処理を修正しました。
+    + パイプラインの説明とステップの種類の yaml パラメーターを追加しました。
+    + パイプラインステップの新しい yaml 形式と、古い形式の非推奨警告を追加しました。
+    
+    
+  
 ## <a name="2019-11-04"></a>2019-11-04
 
 ### <a name="web-experience"></a>Web エクスペリエンス 
@@ -181,7 +228,7 @@ SDK の主な機能は次のとおりです。
     + `automl` の依存関係として psutil を追加し、amlcompute に conda 依存関係として psutil を含めました。
     + いくつかの系列で線形代数エラーを引き起こしていた予測データにおけるヒューリスティックの遅延とウィンドウのサイズが元に戻る問題を修正しました
       + 予測実行にヒューリスティックによって決定されたパラメーターの印刷出力を追加しました。
-  + **[azureml-contrib-datadrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
+  + **azureml-contrib-datadrift**
     + データセット レベルの誤差が最初のセクションに含まれていない場合、出力メトリックの作成に保護を追加しました。
   + **azureml-contrib-interpret**
     + azureml-contrib-explain-model パッケージの名前が azureml-contrib-interpret に変更されました
@@ -233,16 +280,16 @@ SDK の主な機能は次のとおりです。
         experiment2 = Experiment(workspace, "Active Experiment")
         experiment1.reactivate(new_name="Previous Active Experiment")
         ```
-        実験の静的メソッド [list()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly--) は、名前フィルターと ViewType フィルターを受け取ることができます。 ViewType 値は、"ACTIVE_ONLY"、"ARCHIVED_ONLY"、"ALL" です。 例: 
+        実験の静的メソッド [list()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly---tags-none-) は、名前フィルターと ViewType フィルターを受け取ることができます。 ViewType 値は、"ACTIVE_ONLY"、"ARCHIVED_ONLY"、"ALL" です。 例: 
         
         ```py
         archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY")
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
     + モデル デプロイおよびサービス更新向けの環境の使用をサポートします。
-  + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
-    + [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector) クラスの show 属性では、省略可能な引数 'with_details' がサポートされなくなりました。 show 属性では、特徴列のデータ誤差の係数とデータ誤差の影響のみが表示されます。
-    + DataDriftDetector 関数 [get_output](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector#get-output-start-time--end-time--run-id-none--daily-latest-only-true-) の動作が変更されます。
+  + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-datadrift)**
+    + [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) クラスの show 属性では、省略可能な引数 'with_details' がサポートされなくなりました。 show 属性では、特徴列のデータ誤差の係数とデータ誤差の影響のみが表示されます。
+    + DataDriftDetector 関数 [get_output]https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#get-output-start-time-none--end-time-none--run-id-none-) の動作が変更されます。
       + 入力パラメーター start_time、end_time は必須ではなく省略可能です。
       + 同じ呼び出しで特定の run_id を使用している入力固有の start_time および/または end_time は相互に排他的であるため、値エラーの例外が発生します。 
       + 入力固有の start_time または end_time では、スケジュールされた実行の結果のみが返されます。 
@@ -862,7 +909,7 @@ SDK の主な機能は次のとおりです。
 + **プレビュー機能**
     + azureml-mlflow パッケージによる [MLflow](https://mlflow.org) 1.0.0 の追跡との統合 ([ノートブックの例](https://aka.ms/azureml-mlflow-examples))。
     + 実行として Jupyter Notebook を送信します。 [API リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
-    + azureml-contrib-datadrift パッケージによる [Data Drift Detector](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py) のパブリック プレビュー ([ノートブックの例](https://aka.ms/azureml-datadrift-example))。 データの誤差は、モデルの精度が時間の経過と共に低下する主な理由の 1 つです。 これは運用環境のモデルに提供されるデータが、モデルがトレーニングされたデータと異なる場合に発生します。 AML Data Drift Detector は、お客様がデータの誤差を監視し、誤差が検出されるたびにアラートを送信するのに役立ちます。 
+    + azureml-contrib-datadrift パッケージによる [Data Drift Detector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) のパブリック プレビュー ([ノートブックの例](https://aka.ms/azureml-datadrift-example))。 データの誤差は、モデルの精度が時間の経過と共に低下する主な理由の 1 つです。 これは運用環境のモデルに提供されるデータが、モデルがトレーニングされたデータと異なる場合に発生します。 AML Data Drift Detector は、お客様がデータの誤差を監視し、誤差が検出されるたびにアラートを送信するのに役立ちます。 
 
 + **重大な変更**
 

@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins 用に Postman を構成する方法 | Microsoft Docs
-description: Azure Digital Twins 用に Postman を構成する方法。
+title: Postman を構成する方法 - Azure Digital Twins | Microsoft Docs
+description: Azure Digital Twins API をテストするために Postman を構成して使用する方法について説明します。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 14e6a52f86586eaae019d9658c2f813a15fc3474
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/13/2019
+ms.openlocfilehash: 6a001d6b501a22b4b07599792a64af735c5d4d9b
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949209"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090504"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Azure Digital Twins 用に Postman を構成する方法
 
@@ -56,16 +56,17 @@ OAuth 2.0 の暗黙的な許可フローを使用するように Azure Active Di
 
 1. 組織の設定によっては、この API への管理者アクセスを許可するために追加の手順を実行する必要があります。 詳細については、管理者にお問い合わせください。 管理者アクセスが承認されると、 **[API アクセス許可]** ウィンドウの **[管理者の同意が必要]** 列に API の次のような内容が表示されます。
 
-    [![API のアクセス許可を追加する](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [![管理者の同意の承認](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
+1. 2 番目の **[リダイレクト URI]** を `https://www.getpostman.com/oauth2/callback` に構成します。
 
-1. **[マニフェスト]** を選択して、アプリのアプリケーション マニフェストを開きます。 *oauth2AllowImplicitFlow* を `true` に設定します。
+    [![Postman のリダイレクト URI を追加する](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
-    [![Azure Active Directory の暗黙のフロー](media/how-to-configure-postman/implicit-flow.png)](media/how-to-configure-postman/implicit-flow.png#lightbox)
+1. [アプリが**パブリック クライアント**として登録されている](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration)ことを確認するには、アプリ登録のための **[認証]** ウィンドウを開き、そのウィンドウ内を下へスクロールします。 **[既定のクライアントの種類]** セクションで、 **[アプリケーションは、パブリック クライアントとして扱います]** に対して **[はい]** を選択し、 **[保存]** をクリックします。
 
-1. **[応答 URL]** を `https://www.getpostman.com/oauth2/callback` に構成します。
+    Manifest.json 内の **oauth2AllowImplicitFlow** 設定を有効にするには、 **[アクセス トークン]** をオンにします。
 
-    [![Azure Active Directory の応答 URL](media/how-to-configure-postman/reply-url.png)](media/how-to-configure-postman/reply-url.png#lightbox)
+    [![パブリック クライアントの構成設定](../../includes/media/digital-twins-permissions/aad-public-client.png)](../../includes/media/digital-twins-permissions/aad-public-client.png#lightbox)
 
 1. Azure Active Directory アプリの**アプリケーション ID** をコピーして保管します。 これは後述する手順で使用されます。
 
@@ -106,10 +107,6 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
     [![Postman クライアントの例](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
 
 1. **[Request Token]\(要求トークン\)** を選択します。
-
-    >[!TIP]
-    >「OAuth 2 couldn’t be completed」(OAuth 2 を完了できませんでした) というエラー メッセージを受け取った場合は、次の操作を試してください。
-    > * Postman を閉じて再起動し、もう一度実行する。
   
 1. 下へスクロールし、 **[Use Token]\(トークンの使用\)** を選択します。
 
@@ -123,7 +120,7 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
 
 1. テキストではないデータをシリアル化し、ファイルを生成します。 JSON データは JSON ファイルとして保存されます。
 1. **[Body]\(本文\)** タブで、`form-data` を選択します。 
-1. **キー**名を割り当て、`file` を選択することによって、各ファイルを追加します。
+1. **キー**名を割り当て、`File` を選択することによって、各ファイルを追加します。
 1. 次に、 **[ファイルの選択]** ボタンで各ファイルを選択します。
 
    [![Postman クライアントの例](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
@@ -133,7 +130,7 @@ Postman をセットアップし、Azure Active Directory トークンを取得�
    > * これらのヘッダーをパートごとに指定する必要がありません。
    > * 要求全体に `multipart/mixed` か別の適切な **Content-Type** を選択する必要がありません。
 
-1. 最後に、 **[送信]** を選択し、マルチパート HTTP POST 要求を送信します。
+1. 最後に、 **[送信]** を選択し、マルチパート HTTP POST 要求を送信します。 `200` または `201` の状態コードは成功した要求を示します。 また、適切な応答メッセージも表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,5 +1,5 @@
 ---
-title: SQL Server 可用性グループ - Azure 仮想マシン - 前提条件 | Microsoft Docs
+title: チュートリアル:可用性グループの前提条件
 description: このチュートリアルでは、Azure VM で SQL Server Always On 可用性グループを作成するための前提条件の構成方法について説明します。
 services: virtual-machines
 documentationCenter: na
@@ -9,20 +9,20 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 62232283fb0b2f499601615702fef3292bb88317
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 17b1f58a950f2e0589986e9f1da1295671599341
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100732"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037473"
 ---
-# <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Azure 仮想マシンで Always On 可用性グループを作成するための前提条件を満たす
+# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Azure 仮想マシンで SQL Server の Always On 可用性グループを作成するための前提条件
 
 このチュートリアルでは、[Azure 仮想マシン (VM) で SQL Server Always On 可用性グループ](virtual-machines-windows-portal-sql-availability-group-tutorial.md)を作成するための前提条件を満たす方法を説明します。 前提条件を満たすと、1 つのリソース グループ内に 1 つのドメイン コントローラー、2 つの SQL Server VM、および 1 つの監視サーバーがあることになります。
 

@@ -1,6 +1,6 @@
 ---
-title: 'クイック スタート: Azure portal を使用してパブリック Basic Load Balancer を作成する'
-titlesuffix: Azure Load Balancer
+title: クイック スタート:パブリック Basic ロード バランサーを作成する - Azure portal
+titleSuffix: Azure Load Balancer
 description: このクイックスタートでは、Azure Portal を使用してパブリック Basic Load Balancer を作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 9819111c8264493648233f40252db4fb4410aaf1
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 3cbb4271909cf739dc3ce13712e388f2fc8e20a5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274096"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048698"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Basic Load Balancer を作成する
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*MyResourceGroupLB*」と入力します。|
     | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
-    | Type          | **[パブリック]** を選択します。                                        |
+    | 種類          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Basic]** を選択します。                          |
     | パブリック IP アドレス | **[新規作成]** を選択します。 |
     | パブリック IP アドレス名              | *MyPublicIP*   |

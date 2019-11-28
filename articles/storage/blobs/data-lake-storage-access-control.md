@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991909"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037240"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
@@ -90,7 +90,7 @@ SAS トークンには、トークンの一部として許可されるアクセ�
 | **実行 (X)** | Data Lake Storage Gen2 のコンテキストでは、何も意味しない | ディレクトリの子項目をスキャンするために必要です。 |
 
 > [!NOTE]
-> (RBAC は使用せず) ACL のみを使用してアクセス許可を付与するときに、ファイルにサービス プリンシパルの読み取りまたは書き込みアクセスを付与するには、コンテナーおよびそのファイルにつながるフォルダー階層の各フォルダーにそのサービス プリンシパルの**実行**のアクセス許可を付与する必要があります。
+> ACL のみを使用して (RBAC なしで) アクセス許可を付与する場合、ファイルにセキュリティ プリンシパルの読み取りまたは書き込みアクセス権を付与するには、コンテナーとそのファイルまでつながるフォルダー階層内の各フォルダーにセキュリティ プリンシパルの**実行**のアクセス許可を付与する必要があります。
 
 #### <a name="short-forms-for-permissions"></a>アクセス許可の短い形式
 
@@ -269,7 +269,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>ACL のサポートを有効にする必要はありますか
 
-いいえ。 階層型名前空間 (HNS) 機能がオンになっている限り、ストレージ アカウントの ACL によるアクセス制御は有効です。
+No. 階層型名前空間 (HNS) 機能がオンになっている限り、ストレージ アカウントの ACL によるアクセス制御は有効です。
 
 HNS がオフになっている場合、Azure RBAC の承認規則が引き続き適用されます。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 52f86f85ec303d23a78fd942276bfe46d0f12832
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c2d69d21eb46d502a45c9df1dfaaa947d26ef7c4
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030417"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108804"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>オンプレミスのワークステーションからのプライベート クラウドの vCenter にアクセスするための名前解決用に DNS を構成する
 
@@ -46,11 +46,11 @@ DNS の構成には、次のどちらかのオプションを使用します。
 たとえば、既定の BIND サーバー構成の場合、DNS サーバー上の /etc/named.conf ファイルを編集し、次のゾーン情報を追加します。
 
 ```
-zone “cloudsimple.io”
+zone "az.cloudsimple.io"
 {
     type stub;
     masters { IP address of DNS servers; };
-    file “slaves/cloudsimple.io.db”;
+    file "slaves/cloudsimple.io.db";
 };
 ```
 
@@ -80,14 +80,14 @@ zone “cloudsimple.io”
 
 条件付きフォワーダーは、すべての DNS 名前解決要求を指定されたサーバーに転送します。 このセットアップでは、*.cloudsimple.io への要求は、プライベート クラウド上に位置する DNS サーバーに転送されます。 次の例は、さまざまな種類の DNS サーバー上でフォワーダーを設定する方法を示しています。
 
-### <a name="create-a-conditional-forwarded-on-a-bind-dns-server"></a>BIND DNS サーバー上に条件付きフォワーダーを作成する
+### <a name="create-a-conditional-forwarder-on-a-bind-dns-server"></a>BIND DNS サーバー上に条件付きフォワーダーを作成する
 
 構成する具体的なファイルおよびパラメーターは、個々の DNS セットアップによって異なる場合があります。
 
 たとえば、既定の BIND サーバー構成の場合、DNS サーバー上の /etc/named.conf ファイルを編集し、次の条件付き転送情報を追加します。
 
 ```
-zone “cloudsimple.io” {
+zone "az.cloudsimple.io" {
     type forward;
     forwarders { IP address of DNS servers; };
 };

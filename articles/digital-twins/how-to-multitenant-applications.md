@@ -1,5 +1,5 @@
 ---
-title: Azure Digital Twins でマルチテナント アプリケーションを有効にする | Microsoft Docs
+title: マルチテナント アプリケーションを有効にする - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins のマルチテナント Azure Active Directory アプリケーションを構成する方法。
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 070b04b27982b84f101ee4d6f85f4e5b82760092
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 6394d519b93b55358ef9d528f89978d5a3cf3007
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958777"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005913"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Azure Digital Twins でマルチテナント アプリケーションを有効にする
 

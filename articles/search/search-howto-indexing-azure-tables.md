@@ -1,5 +1,5 @@
 ---
-title: フルテキスト検索用に Azure Table Storage のコンテンツのインデックスを作成する
+title: Azure Table storage のコンテンツを検索する
 titleSuffix: Azure Cognitive Search
 description: Azure Table Storage に格納されているデータのインデックスを Azure Cognitive Search インデクサーで作成する方法について説明します。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ae99145178fba8e204267546dc1cedf42df412eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793752"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112999"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Azure Cognitive Search を使用して Azure Table Storage からテーブルにインデックスを作成する方法
 
@@ -25,7 +25,7 @@ ms.locfileid: "72793752"
 次のリソースを使用して、Azure Table Storage のインデクサーを設定できます。
 
 * [Azure Portal](https://ms.portal.azure.com)
-* Azure Cognitive Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
+* Azure コグニティブ検索 [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.NET SDK](https://aka.ms/search-sdk)
 
 ここでは、REST API を使用したフローについて説明します。 

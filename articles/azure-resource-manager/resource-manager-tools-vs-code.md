@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
-ms.openlocfilehash: 8d2b818846eeae44ffe05b4546a333510c638621
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4c0fd0968ce52e50a9171eecb3dfaebd1e2a4c46
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196873"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075006"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Visual Studio Code を使って Azure Resource Manager テンプレートを作成する
 
@@ -121,5 +121,5 @@ Resource Manager テンプレート拡張機能では、関数名、パラメー
 
 ## <a name="next-steps"></a>次の手順
 
-- Resource Manager と Resource Manager テンプレートの詳細については、「[Azure Resource Manager の概要](./resource-group-overview.md)」を参照してください。
-- Visual Studio Code を使用してクイックスタートを実行するには、「[クイック スタート:Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)」を参照してください。
+- Azure Resource Manager テンプレートの作成の詳細については、「[チュートリアル: 初めての Azure Resource Manager テンプレートを作成およびデプロイする](template-tutorial-create-first-template.md)」を参照してください。
+- Visual Studio Code を使用してクイックスタートを実行するには、「[クイック スタート: Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)」を参照してください。

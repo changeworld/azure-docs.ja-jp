@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 95f2dbdbb34ff349d14be430b4e5a4fa84df0f5a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 78693dceaac119279b1c1d06a6c3a18cc4fdb485
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581486"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033939"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -57,7 +57,7 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 | **Azure Blob Storage ライフサイクル管理ポリシー** | すべてのアクセス層がサポートされています。 アーカイブ アクセス層は、現在プレビュー段階です。 BLOB スナップショットの削除は、まだサポートされていません。 |
 | **Azure Content Delivery Network (CDN)** | まだサポートされていません|
 | **Azure Search** |サポート (プレビュー)|
-| **Azure Storage Explorer** | バージョン固有のサポート <br><br>バージョン `1.6.0` 以降のみを使用します。 <br>バージョン `1.6.0` は[無料のダウンロード](https://azure.microsoft.com/features/storage-explorer/)として提供されています。|
+| **Azure Storage Explorer** | バージョン固有のサポート <br><br>バージョン `1.6.0` から `1.10.0` のみを使用してください。 <br> バージョン `1.10.0` は[無料のダウンロード](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes)として提供されています。 バージョン `1.11.0` はまだサポートされていません。|
 | **BLOB コンテナーの ACL** |まだサポートされていません|
 | **Blobfuse** |まだサポートされていません|
 | **カスタム ドメイン** |まだサポートされていません|

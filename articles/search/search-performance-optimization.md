@@ -1,5 +1,5 @@
 ---
-title: パフォーマンスの最適化のためのデプロイ戦略とベスト プラクティス
+title: デプロイとパフォーマンスの最適化
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search のパフォーマンスを調整し、最適なスケールを構成するための技術とベスト プラクティスについて学習します。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 15557a437732ee15c3c6dada7b2d9fe1d397dc5a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4ff6779843546bd41423c140ef40de6a7e24b026
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793421"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113252"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-cognitive-search"></a>Azure Cognitive Search でのパフォーマンスの最適化のためのデプロイ戦略とベスト プラクティス
 

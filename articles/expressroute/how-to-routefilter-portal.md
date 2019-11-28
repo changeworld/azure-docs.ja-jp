@@ -1,5 +1,5 @@
 ---
-title: Microsoft ピアリングにルート フィルターを構成する:Azure ExpressRoute - ポータル | Microsoft Docs
+title: ExpressRoute:ルート フィルター - Microsoft ピアリング:Azure portal
 description: この記事では、Azure portal を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します。
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/01/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: c49b1fa1e2e8421146f5d5012de983c14934c23c
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0b8e06ad5688374e5ab4aaa72d8485e6da797afe
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122939"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037440"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft ピアリングにルート フィルターを構成する:Azure ポータル
 > [!div class="op_single_selector"]

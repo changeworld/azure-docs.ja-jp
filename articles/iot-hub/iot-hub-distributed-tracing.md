@@ -1,6 +1,6 @@
 ---
 title: 分散トレース (プレビュー) を使用して IoT メッセージに関連付け ID を追加する
-description: ''
+description: 分散トレース機能を使用して、ソリューションで使用される Azure サービス全体の IoT メッセージをトレースする方法について説明します。
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: e4403c245a3cae671f83260ae313ed400b0f7721
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259350"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953150"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -28,7 +28,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
 - デバイスから IoT Hub およびルーティング エンドポイントまでのメッセージ フローと待ち時間を測定および把握できます。
 - ご使用の IoT ソリューション内の Azure 以外のサービスに対して分散トレースをどのように実装するか、検討を開始できます。
 
-この記事では、分散トレースが組み込まれた [C 用 Azure IoT device SDK](./iot-hub-device-sdk-c-intro.md) を使用します。 分散トレースのサポートは、他の SDK では現在進行中です。
+この記事では、分散トレースが組み込まれた [C 用 Azure IoT device SDK](iot-hub-device-sdk-c-intro.md) を使用します。 分散トレースのサポートは、他の SDK では現在進行中です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ IoT Hub に対して分散トレースを有効にすると、次のことを実
   - **東南アジア**
   - **米国西部 2**
 
-- この記事は、読者が IoT Hub へのテレメトリ メッセージの送信について理解していることを前提としています。 [テレメトリ C の送信のクイックスタート](./quickstart-send-telemetry-c.md)に関するページを完了していることを確認してください。
+- この記事は、読者が IoT Hub へのテレメトリ メッセージの送信について理解していることを前提としています。 [テレメトリ C の送信のクイックスタート](quickstart-send-telemetry-c.md)に関するページを完了していることを確認してください。
 
 - IoT Hub にデバイスを登録し (各クイックスタートで使用可能な手順)、接続文字列をメモします。
 

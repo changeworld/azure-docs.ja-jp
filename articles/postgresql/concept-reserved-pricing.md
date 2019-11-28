@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 5a95350b8ac846f6db5288d1328d049f3e1c1aa8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 753d962cbefd38ec991fb9e63805760fe07a8f2d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608603"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123877"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>予約容量を使用して Azure Database for PostgreSQL 計算リソースを前払いする
 
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL では計算リソースを前払いすること�
 特定の Azure Database for PostgreSQL サーバーに予約を割り当てる必要はありません。 既に実行している Azure Database for PostgreSQL または新しくデプロイされたものには、予約価格の特典が自動的に適用されます。 予約を購入すると、計算コストを 1 年間分前払いすることになります。 予約を購入するとすぐに、予約の属性に一致する Azure Database for PostgreSQL のコンピューティング料金は従量課金制で課金されなくなります。 予約には、PostgreSQL データベース サーバーに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が Azure Database for PostgreSQL に適用されます。 予約は自動更新されません。 価格の詳細については、[Azure Database for PostgreSQL の予約容量オファー](https://azure.microsoft.com/pricing/details/postgresql/)に関するページを参照してください。 </br>
 
 > [!IMPORTANT]
-> 予約容量の価格は、Azure Database for PostgreSQL の [Single Server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) デプロイでのみ使用でき、[Hyperscale Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus-preview) デプロイでは使用できません。
+> 予約容量の価格は、Azure Database for PostgreSQL の [Single Server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) デプロイでのみ使用でき、[Hyperscale Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) デプロイでは使用できません。
 
 Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal.azure.com/) で購入できます。 予約容量を購入するには:
 
@@ -35,7 +35,7 @@ Azure Database for PostgreSQL の予約容量は、[Azure portal](https://portal
 
 予約のサイズは、既存のまたはすぐにデプロイされる予定のサーバー (特定のリージョン内で同じパフォーマンス階層とハードウェア世代を使用するもの) で使用される計算量の合計に基づいて決める必要があります。</br>
 
-たとえば、1 つの汎用の Gen5 - 32 仮想コア PostgreSQL データベースと、2 つのメモリ最適化済みの Gen5 - 16 仮想コア PostgreSQL データベースを実行しているとします。 さらに、来月には汎用の Gen5 - 32 仮想コア エラスティック プールを 1 つとメモリ最適化済みの Gen5 - 16 仮想コア データベース サーバーを 1 つ追加する予定だとします。 少なくとも 1 年間はこれらのリソースが必要になることがわかっているとします。 この場合、単一データベースの汎用 - Gen5 用に 64 (2x32) 仮想コア 1 年予約分と、単一データベース メモリ最適化済み - Gen5 用に 48 (2x16 + 16) 仮想コア 1 年予約分を購入する必要があります。
+たとえば、1 つの汎用の Gen5 - 32 仮想コア PostgreSQL データベースと、2 つのメモリ最適化済みの Gen5 - 16 仮想コア PostgreSQL データベースを実行しているとします。 さらに、来月には汎用の Gen5 - 32 仮想コア データベース サーバーを 1 つとメモリ最適化済みの Gen5 - 16 仮想コア データベース サーバーを 1 つデプロイする予定だとします。 少なくとも 1 年間はこれらのリソースが必要になることがわかっているとします。 この場合、単一データベースの汎用 - Gen5 用に 64 (2x32) 仮想コア 1 年予約分と、単一データベース メモリ最適化済み - Gen5 用に 48 (2x16 + 16) 仮想コア 1 年予約分を購入する必要があります。
 
 
 ## <a name="buy-azure-database-for-postgresql-reserved-capacity"></a>Azure Database for PostgreSQL の予約容量を購入する

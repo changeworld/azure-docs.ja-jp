@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 4680804017a9b08248bb41ff999c6ba6371e99c8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675908"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122926"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>マッピング データ フローの結合変換
 
@@ -36,7 +36,7 @@ ms.locfileid: "73675908"
 
 ### <a name="full-outer"></a>完全外部結合
 
-完全外部結合では、両側のすべての列と行が出力されます。一致するものがない列の値は NULL に設定されます。
+完全外部結合では、両方の側のすべての列と行が、一致しない列には NULL 値を使用して出力されます。
 
 ### <a name="cross-join"></a>クロス結合
 

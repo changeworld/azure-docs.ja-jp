@@ -1,5 +1,5 @@
 ---
-title: Azure Maps Android SDK で機能情報を表示する方法 | Microsoft Docs
+title: Azure Maps Android SDK で機能情報を表示する | Microsoft Docs
 description: Azure Maps Android SDK で機能情報を表示する方法について説明します。
 author: rbrundritt
 ms.author: richbrun
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: dc72bb43752323576bed6e7991f33c4096ccabd4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 0dcabb0e5141a92394f2be38cbe7e71fa6e03d58
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976269"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928532"
 ---
 # <a name="display-feature-information"></a>機能情報を表示する
 
@@ -76,7 +76,7 @@ map.events.add((OnFeatureClick) (features) -> {
 
 ## <a name="next-steps"></a>次の手順
 
-マップにさらにデータを追加します。
+マップにさらにデータを追加するには:
 
 > [!div class="nextstepaction"]
 > [シンボル レイヤーを追加する](how-to-add-symbol-to-android-map.md)

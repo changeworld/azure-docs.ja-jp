@@ -1,5 +1,5 @@
 ---
-title: 404 状態コードを返す Azure CDN エンドポイントのトラブルシューティング | Microsoft Docs
+title: Azure CDN エンドポイントのトラブルシューティング - 404 状態コード
 description: Azure CDN エンドポイントでの 404 応答コードのトラブルシューティングを行います。
 services: cdn
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b665c2f72f50b2d72fd625b49c4212785ab3301d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: c332c6712cdf057491e3039854aa1a29bd54196f
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593270"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083130"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404 状態コードを返す Azure CDN エンドポイントのトラブルシューティング
 この記事により、404 HTTP 応答状態コードを返す Content Delivery Network (CDN) エンドポイントに関する問題のトラブルシューティングを行うことができます。

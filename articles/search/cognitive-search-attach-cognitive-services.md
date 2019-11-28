@@ -1,5 +1,5 @@
 ---
-title: コグニティブ サービスのリソースをスキルセットにアタッチする
+title: Cognitive Services をスキルセットにアタッチする
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search で Cognitive Search オールインワン サブスクリプションを AI エンリッチメント パイプラインにアタッチする手順。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 11ca5f71cb0d08a4bebf72407035a9557c794f9f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d65b9b60ce93656c9acdc76c77291114468d345a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72788025"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113933"
 ---
 # <a name="attach-a-cognitive-services-resource-to-a-skillset-in-azure-cognitive-search"></a>Azure Cognitive Search で Cognitive Services リソースをスキルセットにアタッチする 
 

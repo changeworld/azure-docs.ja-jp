@@ -1,7 +1,7 @@
 ---
-title: Azure Search .NET SDK バージョン 10 へのアップグレード
+title: Azure Cognitive Search .NET SDK バージョン 10 へのアップグレード
 titleSuffix: Azure Cognitive Search
-description: 以前のバージョンから Azure Search .NET SDK バージョン 10 にコードを移行します。 新機能と必要なコード変更について説明します。
+description: 以前のバージョンから Azure Cognitive Search .NET SDK バージョン 10 にコードを移行します。 新機能と必要なコード変更について説明します。
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,30 +9,30 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a8550a7f9c6a684a172da6f384039c6050797f6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ad912eb0b26354d40a654a1c8782dfcb960235e5
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793055"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847520"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-10"></a>Azure Search .NET SDK バージョン 10 へのアップグレード
+# <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Azure Cognitive Search .NET SDK バージョン 10 へのアップグレード
 
 バージョン 9.0 以前の [Azure Search .NET SDK](https://aka.ms/search-sdk) を使用している場合、この記事を参考にして、バージョン 10 を使用するようにアプリケーションをアップグレードできます。
 
-例を含む SDK の一般的なチュートリアルについては、「 [.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
+バージョン10では Azure Search の名前が Azure Cognitive Search に変更されますが、名前空間とパッケージ名は変更されません。 以前のバージョンの SDK (9.0 以前) では、変更前の名前が引き続き使用されます。 例を含む SDK の使用方法の詳細については、「[.NET アプリケーションから Azure Cognitive Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
 
 バージョン 10 では、いくつかの機能とバグ修正が追加され、REST API バージョンの最新リリース `2019-05-06` と同じ機能レベルになっています。 変更によって既存のコードが機能しなくなる場合は、[問題を解決するために必要な手順](#UpgradeSteps)を説明します。
 
 > [!NOTE]
 > 8\.0-preview 以前のバージョンを使用している場合は、まずバージョン 9 にアップグレードしてから、バージョン 10 にアップグレードする必要があります。 手順については、[Azure Search .NET SDK バージョン 9 へのアップグレード](search-dotnet-sdk-migration-version-9.md)に関するページを参照してください。
 >
-> Azure Search サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートします。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
+> 検索サービスのインスタンスは、最新のバージョンを含む複数の REST API バージョンをサポートします。 バージョンが最新ではなくなった場合でも、そのバージョンを引き続き使用できますが、最新バージョンを使用するようにコードを移行することをお勧めします。 REST API を使用している場合は、api-version パラメーターを使用して、すべての要求に API バージョンを指定する必要があります。 .NET SDK を使用している場合は、使用している SDK のバージョンによって REST API の対応するバージョンが決まります。 サービスが新しいバージョンの API をサポートするようにアップグレードされた場合でも、使用中の古い SDK のコードを変更なしで引き続き実行できます。
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-10"></a>バージョン 10 の新機能
-Azure Search .NET SDK のバージョン 10 は、これらの更新が含まれている Azure Search REST API の最新の一般提供バージョン (`2019-05-06`) を対象としています。
+Azure Cognitive Search .NET SDK のバージョン 10 は、これらの更新が含まれている REST API の最新の一般提供バージョン (`2019-05-06`) を対象としています。
 
 * 2 つの新しいスキルの導入 - [条件付きスキル](cognitive-search-skill-conditional.md)と[テキスト翻訳スキル](cognitive-search-skill-text-translation.md)。
 * 入れ子になったコンテキストからの統合に対応するために、[Shaper スキル](cognitive-search-skill-shaper.md)の入力が再構築されました。 詳細については、こちらの [JSON 定義の例](https://docs.microsoft.com/azure/search/cognitive-search-skill-shaper#scenario-3-input-consolidation-from-nested-contexts)を参照してください。
@@ -62,7 +62,7 @@ Azure Search .NET SDK のバージョン 10 は、これらの更新が含まれ
 バージョン 10 には、アプリケーションのリビルドだけでなく、コードの変更が必要な可能性のある破壊的変更がいくつか含まれています。
 
 > [!NOTE]
-> 以下の変更の一覧はすべてを網羅しているわけではありません。 変更によっては、ビルド エラーが発生しない可能性がありますが、以前のバージョンの Azure Search .NET SDK アセンブリに依存するアセンブリとのバイナリの互換性が失われるために技術的に重大になります。 推奨事項と共に、このカテゴリに分類される重要な変更も一覧表示されます。 バージョン 10 にアップグレードするときに、バイナリ互換性の問題を回避するために、アプリケーションを再構築してください。
+> 以下の変更の一覧はすべてを網羅しているわけではありません。 変更によっては、ビルド エラーが発生しない可能性がありますが、以前のバージョンの Azure Cognitive Search .NET SDK アセンブリに依存するアセンブリとのバイナリの互換性が失われるために技術的に重大になります。 推奨事項と共に、このカテゴリに分類される重要な変更も一覧表示されます。 バージョン 10 にアップグレードするときに、バイナリ互換性の問題を回避するために、アプリケーションを再構築してください。
 
 ### <a name="custom-web-api-skill-definition"></a>カスタム Web API スキルの定義
 

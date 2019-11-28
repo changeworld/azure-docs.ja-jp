@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: dacurwin
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2b951c6660143b1bd2f6502a5441aec3ba8d71e1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8f162b9dc84b863c54d92313307ef4abca76ebb
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792847"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074230"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -209,7 +209,7 @@ Azure Monitor では、Log Analytics ワークスペースで独自のアラー�
 コンテナーの診断データは少し遅れて Log Analytics ワークスペースに送られます。 すべてのイベントは、Recovery Services コンテナーからプッシュされてから "*20 分から 30 分*" 後に Log Analytics ワークスペースに到着します。 ここでは、その遅れの詳細について説明します。
 
 - すべてのソリューションについて、バックアップ サービスの組み込みアラートは、作成されるとすぐにプッシュされます。 そのため、通常は 20 分から 30 分後に Log Analytics ワークスペースに表示されます。
-- すべてのソリューションについて、アドホック バックアップ ジョブと復元ジョブは、"*終了*" するとすぐにプッシュされます。
+- すべてのソリューションについて、オンデマンド バックアップ ジョブと復元ジョブは、"*終了*" するとすぐにプッシュされます。
 - すべてのソリューション (SQL バックアップ以外) について、スケジュール済みバックアップ ジョブは、"*終了*" するとすぐにプッシュされます。
 - SQL バックアップでは、15 分ごとにログ バックアップを行うことができるため、完了したすべてのスケジュール済みバックアップ ジョブの情報は、ログも含めて 6 時間ごとにバッチ処理されてプッシュされます。
 - すべてのソリューションにわたって、バックアップ項目、ポリシー、復旧ポイント、ストレージなどのその他の情報は、少なくとも "*1 日 1 回*" プッシュされます。

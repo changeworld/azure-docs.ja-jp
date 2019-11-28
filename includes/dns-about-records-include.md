@@ -4,18 +4,18 @@ ms.service: dns
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
-ms.openlocfilehash: f7fa018225d82e2db4a3c51b333aea6fcb9a1514
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 261ae22348cd82b129727261c619727917e19c96
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181805"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832045"
 ---
 ### <a name="record-names"></a>レコード名
 
-Azure DNS では、相対名を使用してレコードを指定します。 "*完全修飾*" ドメイン名 (FQDN) にはゾーン名が含まれますが、"*相対*" 名には含まれません。 たとえば、"contoso.com" ゾーン内の相対レコード名 "www" によって、完全修飾レコード名 "www.contoso.com" が示されます。
+Azure DNS では、相対名を使用してレコードを指定します。 "*完全修飾*" ドメイン名 (FQDN) にはゾーン名が含まれますが、"*相対*" 名には含まれません。 たとえば、`contoso.com` ゾーン内の相対レコード名 `www` によって、完全修飾レコード名 `www.contoso.com` が示されます。
 
-DNS ゾーンのルート ("*頂点*") にある DNS レコードを *apex* (頂点) レコードと言います。 たとえば、DNS ゾーン "contoso.com" であれば、apex レコードの完全修飾名も "contoso.com" です (これを*ネイキッド* ドメインと呼ぶことがあります)。  慣例により、apex レコードを表すには相対名として '\@' を使用します。
+DNS ゾーンのルート ("*頂点*") にある DNS レコードを *apex* (頂点) レコードと言います。 たとえば、DNS ゾーン `contoso.com` であれば、apex レコードの完全修飾名も `contoso.com` です (これを "*ネイキッド*" ドメインと呼ぶことがあります)。  慣例により、apex レコードを表すには相対名として '\@' を使用します。
 
 ### <a name="record-types"></a>レコードの種類
 

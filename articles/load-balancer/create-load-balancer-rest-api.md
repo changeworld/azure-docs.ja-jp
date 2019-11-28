@@ -1,7 +1,7 @@
 ---
-title: REST API を使用して Azure Load Balancer を作成する
-titlesuffix: Azure Load Balancer
-description: REST API を使用して Azure Load Balancer を作成する方法を説明します。
+title: REST API を使用してロード バランサーを作成する
+titleSuffix: Azure Load Balancer
+description: この記事では、REST API を使用して Azure Load Balancer を作成する方法を説明します。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: ae8fb4494d27d0c145963c9b32757bdb802e0cc7
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b8acf1faff17f657999769216f71cfb5fa6e3181
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275555"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077085"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>REST API を使用して基本の Azure Load Balancer を作成する
 
@@ -33,7 +33,7 @@ Azure Load Balancer は、ロード バランサ―のフロントエンドに�
   ```
 ### <a name="uri-parameters"></a>URI パラメーター
 
-|名前  |場所  |必須 |Type |説明 |
+|名前  |場所  |必須 |種類 |説明 |
 |---------|---------|---------|---------|--------|
 |subscriptionId   |  path       |  True       |   string      |  Microsoft Azure サブスクリプションを一意に識別するサブスクリプションの資格情報。 サブスクリプション ID は、全ての修理依頼についてURI の一部を生じさせます。      |
 |resourceGroupName     |     path    | True        |  string       |   リソース グループの名前。     |

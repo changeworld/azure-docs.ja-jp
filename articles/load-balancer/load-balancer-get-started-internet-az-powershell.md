@@ -1,6 +1,6 @@
 ---
-title: ゾーン冗長フロントエンドを使用して Load Balancer を作成する - Azure PowerShell
-titlesuffix: Azure Load Balancer
+title: ゾーン冗長フロントエンドを使用してロード バランサーを作成する - Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: PowerShell でゾーン冗長パブリック IP アドレス フロントエンドを使用してパブリック Standard Load Balancer を作成する方法について説明します
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 3ce14a0d9d5b9d5ef7ca7be34faad3fa60795ab9
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4f7cf5c7600a057a913be28ff4b2a44b241e6be5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275084"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049186"
 ---
 #  <a name="create-a-standard-load-balancer-with-zone-redundant-frontend-using-azure-powershell"></a>Azure PowerShell でゾーン冗長フロントエンドを使用して Standard Load Balancer を作成する
 

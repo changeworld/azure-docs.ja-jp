@@ -1,18 +1,19 @@
 ---
-title: Web アプリケーション ファイアウォールで Web トラフィックを制限する - Azure PowerShell
+title: PowerShell を使用して Web トラフィックを制限する
+titleSuffix: Azure Web Application Firewall
 description: Azure PowerShell を使用して、アプリケーション ゲートウェイ上の Web アプリケーション ファイアウォールで Web トラフィックを制限する方法について説明します。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/21/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.topic: overview
-ms.openlocfilehash: b96065b6551f604cfd817a00e6a39cec37c71377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.topic: conceptual
+ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495521"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046288"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールを有効にする
 

@@ -10,12 +10,12 @@ author: ronychatterjee
 ms.author: achatter
 ms.reviewer: davidph
 ms.date: 11/07/2019
-ms.openlocfilehash: 976c849f9cb48e1c197f70d10e911216a6a7425c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bdb602598f3d8b4aaed5d6061542d540a82ebc75
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822846"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114598"
 ---
 # <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>SQL Database Edge プレビューでの ONNX を使用した機械学習と AI
 
@@ -27,31 +27,26 @@ Azure SQL Database Edge で機械学習モデルを推論するには、まず�
 
 ## <a name="get-onnx-models"></a>ONNX モデルを取得する
 
-ONNX 形式のモデルを取得するには、いくつかの方法があります。
+ONNX 形式でモデルを取得するには:
 
-- [ONNX Model Zoo](https://github.com/onnx/models): ダウンロードしてすぐに使用できる、さまざまな種類のタスク用の、事前トレーニング済みの多くの ONNX モデルが含まれています。
+- **モデル構築サービス**:[Azure Machine Learning の自動機械学習機能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)や [Azure Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) などのサービスが、トレーニング済みモデルの、ONNX 形式での直接のエクスポートをサポートしています。
 
-- [ML トレーニング フレームワークからのネイティブ エクスポート](https://onnx.ai/supported-tools): いくつかのトレーニング フレームワークでは、ONNX へのネイティブ エクスポート機能がサポートされています。これにより、ご利用のトレーニング済みモデルを特定のバージョンの ONNX 形式 ([PyTorch](https://pytorch.org/docs/stable/onnx.html)、Chainer、Caffe2 など) で保存できます。 さらに、モデル構築サービス ([Azure Machine Learning の自動機械学習機能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)、[Azure Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) など) で ONNX エクスポートが提供されています。
+- [**既存モデルの変換やエクスポート**](https://github.com/onnx/tutorials#converting-to-onnx-format):いくつかのトレーニング フレームワーク ([PyTorch](https://pytorch.org/docs/stable/onnx.html)、Chainer、Caffe2 など) では、ONNX へのネイティブ エクスポート機能がサポートされています。これにより、ご利用のトレーニング済みモデルを特定のバージョンの ONNX 形式 で保存できます。 ネイティブ エクスポートをサポートしていないフレームワークの場合は、スタンドアロンの ONNX コンバーターのインストール可能パッケージがあるため、それらによって、トレーニング済みモデルを、さまざまな機械学習フレームワークから ONNX 形式に変換できます。
 
-- [既存のモデルの変換](https://github.com/onnx/tutorials#converting-to-onnx-format): ネイティブ エクスポートをサポートしていないフレームワークの場合は、モデルを ONNX 形式に変換するためのスタンドアロンのパッケージがあります。 例とチュートリアルについては、「[ONNX 形式への変換](https://github.com/onnx/tutorials#converting-to-onnx-format)」を参照してください。 
-
-### <a name="supported-frameworks"></a>サポートされているフレームワーク
-
-ONNX コンバーターを使用すると、さまざまな機械学習フレームワークでトレーニングされたモデルを ONNX 形式に変換できます。 一般的なコンバーターは次のとおりです。 
-
-* [PyTorch](http://pytorch.org/docs/master/onnx.html)
-* [Tensorflow](https://github.com/onnx/tensorflow-onnx)
-* [Keras](https://github.com/onnx/keras-onnx)
-* [Scikit-learn](https://github.com/onnx/sklearn-onnx)
-* [CoreML](https://github.com/onnx/onnxmltools)
-
-サポートされているフレームワークの完全な一覧については、「[ONNX 形式への変換](https://github.com/onnx/tutorials#converting-to-onnx-format)」を参照してください。
+     **サポートされているフレームワーク**
+   * [PyTorch](http://pytorch.org/docs/master/onnx.html)
+   * [Tensorflow](https://github.com/onnx/tensorflow-onnx)
+   * [Keras](https://github.com/onnx/keras-onnx)
+   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+   * [CoreML](https://github.com/onnx/onnxmltools)
+    
+    サポートされているフレームワークと例の完全な一覧については、「[ONNX 形式への変換](https://github.com/onnx/tutorials#converting-to-onnx-format)」を参照してください。
 
 ## <a name="limitations"></a>制限事項
 
 現時点では、すべての ONNX モデルが Azure SQL Database Edge でサポートされているわけではありません。 サポートは、**数値データ型**を持つモデルに限定されています。
 
-- [int および bigint](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql5)
+- [int および bigint](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
 - [real および float](https://docs.microsoft.com/sql/t-sql/data-types/float-and-real-transact-sql)。
   
 他の数値型を、サポートされている型に変換するには、[CAST と CONVERT](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql) を使用します。

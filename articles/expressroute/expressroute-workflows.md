@@ -1,5 +1,5 @@
 ---
-title: 回線構成のワークフロー - ExpressRoute:Azure| Microsoft Docs
+title: 'Azure ExpressRoute: 回線構成のワークフロー'
 description: このページでは、ExpressRoute の回線とピアリングを構成するためのワークフローについて説明します。
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 1e0f4d356bb6addf735bf148a80e6be3ca550c8f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: ae6c2b7257ee6a8184f3a5bb002f24cb75a86d67
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123375"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083325"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
 このページでは、サービス プロビジョニングと上位のルーティング構成ワークフローについて段階的に説明します。

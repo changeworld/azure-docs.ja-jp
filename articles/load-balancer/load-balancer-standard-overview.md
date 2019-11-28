@@ -1,7 +1,7 @@
 ---
 title: Azure Standard Load Balancer とは
 titlesuffix: Azure Load Balancer
-description: Azure Standard Load Balancer の機能の概要
+description: このラーニング パスを使用して、Azure Standard Load Balancer の機能の概要を確認します。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2019
 ms.author: allensu
-ms.openlocfilehash: 8eb8134452685add53b9dc339437ac262ecc8a9f
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c14cf572410d02892aa8a2b3e9f0f42fce46d411
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274394"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068780"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure Standard Load Balancer の概要
 

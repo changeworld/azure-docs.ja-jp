@@ -1,6 +1,6 @@
 ---
 title: Azure Traffic Manager の設定を検証する
-description: この記事は、Traffic Manager の設定を検証するのに役立ちます。
+description: この記事では、Traffic Manager 設定を確認し、トラフィック ルーティング方法をテストする方法について説明します。
 services: traffic-manager
 author: asudbring
 ms.service: traffic-manager
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: allensu
-ms.openlocfilehash: 19ef08a40d0a84aecb070e71bbb8c9b6a88ae059
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ad74e5c51d5939218ebb546993d416b3df1cd04b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67070939"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023527"
 ---
 # <a name="verify-traffic-manager-settings"></a>Traffic Manager の設定の検証
 

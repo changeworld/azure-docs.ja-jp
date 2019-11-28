@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a79c95d627bbdec3a91a1d048a48ff061b308ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1dc66ae0f69c19524b32b55c654f7c8fd2d32762
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489356"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123213"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Machine Learning の Azure Kubernetes Service および Azure Container Instances デプロイのトラブルシューティング
 
@@ -42,11 +42,21 @@ Azure Machine Learning にモデルをデプロイすると、システムによ
 
 このプロセスの詳細は[モデル管理](concept-model-management-and-deployment.md)の概要にあります。
 
+## <a name="prerequisites"></a>前提条件
+
+* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+* [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
+* ローカルでデバッグするには、ローカル システム上に機能する Docker のインストールが必要です。
+
+    Docker のインストールを確認するには、ターミナルまたはコマンド プロンプトからコマンド `docker run hello-world` を使用します。 Docker のインストール、または Docker のエラーのトラブルシューティングについては、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
+
 ## <a name="before-you-begin"></a>開始する前に
 
 問題に直面したら、最初に行うべきことは、(前述の) デプロイ タスクを個々の手順に分割し、問題を隔離することです。
 
-デプロイを複数のタスクに分割すると、[Webservice.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) API または [Webservice.deploy_from_model()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) API を使用している場合に役立ちます。どちらの関数も、前述の手順を単一のアクションとして実行するためです。 一般的にこれらの API は便利ですが、以下の API 呼び出しで置き換えることで、トラブルシューティング時に手順を分割することが役立ちます。
+デプロイを複数のタスクに分割すると、[Webservice.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-) API または [Webservice.deploy_from_model()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-) API を使用している場合に役立ちます。どちらの関数も、前述の手順を単一のアクションとして実行するためです。 一般的にこれらの API は便利ですが、以下の API 呼び出しで置き換えることで、トラブルシューティング時に手順を分割することが役立ちます。
 
 1. モデルを登録します。 サンプル コードは次のようになります。
 
@@ -154,15 +164,12 @@ b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server 
 
 ## <a name="debug-locally"></a>ローカル デバッグ
 
-モデルを ACI または AKS にデプロイする際に問題が発生した場合は、ローカルとしてデプロイしてみてください。 ローカルを使用すると、問題のトラブルシューティングが簡単になります。 モデルを含む Docker イメージがダウンロードされ、ローカル システムで起動されます。
-
-> [!IMPORTANT]
-> ローカル デプロイでは、ローカル システムで動作する Docker インストールが必要です。 ローカルをデプロイする前に、Docker を実行しておく必要があります。 Docker のインストールと使用については、[https://www.docker.com/](https://www.docker.com/) を参照してください。
+モデルを ACI または AKS にデプロイする際に問題が発生した場合は、ローカル Web サービスとしてデプロイしてみてください。 ローカル Web サービスを使用すると、問題のトラブルシューティングが簡単になります。 モデルを含む Docker イメージがダウンロードされ、ローカル システムで起動されます。
 
 > [!WARNING]
-> ローカル デプロイは、運用シナリオではサポートされていません。
+> ローカル Web サービスのデプロイは、運用シナリオではサポートされていません。
 
-ローカルにデプロイするには、`LocalWebservice.deploy_configuration()` を使用してデプロイ構成を作成するようにコードを変更します。 次に、`Model.deploy()` を使用して、サービスをデプロイします。 次の例では、モデル (`model` 変数に含まれる) をローカルとしてデプロイします。
+ローカルにデプロイするには、`LocalWebservice.deploy_configuration()` を使用してデプロイ構成を作成するようにコードを変更します。 次に、`Model.deploy()` を使用して、サービスをデプロイします。 次の例では、モデル (`model` 変数に含まれる) をローカル Web サービスとしてデプロイします。
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -173,14 +180,14 @@ inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
                                    conda_file="myenv.yml")
 
-# Create a local deployment, using port 8890 for the  endpoint
+# Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
 service = Model.deploy(
     ws, "mymodel", [model], inference_config, deployment_config)
 # Wait for the deployment to complete
 service.wait_for_deployment(True)
-# Display the port that the  is available on
+# Display the port that the web service is available on
 print(service.port)
 ```
 
@@ -290,7 +297,7 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
     > [!IMPORTANT]
     > この変更によって、レプリカの作成時間は*短縮*されません。 その代わり、より低い使用率しきい値で作成されます。 サービスの使用率が 70% になるまで待機するのでなく値を 30% に変更すると、使用率が 30% になった段階でレプリカが作成されます。
     
-    現在の最大数のレプリカが既に使用されていて、状態コード 503 が引き続き表示されている場合は、`autoscale_max_replicas` の値を大きくして、レプリカの最大個数を増やします。
+    現在の最大数のレプリカが Web サービスによって既に使用されていて、状態コード 503 が引き続き発生する場合は、`autoscale_max_replicas` の値を大きくして、レプリカの最大個数を増やします。
 
 * レプリカの最小個数を変更します。 レプリカの最小個数を増やすと、着信トラフィックの急増に対処するためのプールが大きくなります。
 
@@ -325,8 +332,8 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 
 > [!IMPORTANT]
 > このデバッグ方法は、`Model.deploy()` と `LocalWebservice.deploy_configuration` を使用してローカルでモデルをデプロイしている場合は機能しません。 代わりに、[ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) クラスを使用してイメージを作成する必要があります。 
->
-> ローカル デプロイでは、ローカル システムで動作する Docker インストールが必要です。 ローカルをデプロイする前に、Docker を実行しておく必要があります。 Docker のインストールと使用については、[https://www.docker.com/](https://www.docker.com/) を参照してください。
+
+ローカル Web サービスのデプロイでは、ローカル システムで動作する Docker インストールが必要です。 Docker の使用の詳細については、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
 
 ### <a name="configure-development-environment"></a>開発環境の設定
 

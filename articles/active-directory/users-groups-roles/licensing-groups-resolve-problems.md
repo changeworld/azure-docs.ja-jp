@@ -1,26 +1,26 @@
 ---
-title: グループに対するライセンスの割り当てに関する問題を解決する - Azure Active Directory | Microsoft Docs
+title: グループのライセンス割り当てに関する問題を解決する - Azure Active Directory | Microsoft Docs
 description: Azure Active Directory でグループベースのライセンスを使用している場合にライセンス割り当ての問題を特定して解決する方法
 services: active-directory
 keywords: Azure AD のライセンス
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 09/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815739"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025697"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -29,11 +29,6 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 グループベースのライセンスを使用せずにライセンスを個別のユーザーに直接割り当てると、割り当て処理が失敗することがあります。 たとえば、ユーザー システムに対して PowerShell コマンドレット `Set-MsolUserLicense` を実行した場合、このコマンドレットは、ビジネス ロジックに関連するたくさんの理由によってエラーになる可能性があります。 たとえば、ライセンス数の不足や、同時に割り当てることができない 2 つのサービス プランの競合などが発生することがあります。 問題は即座に報告されます。
 
 グループベースのライセンスを使用している場合も同じエラーが発生する可能性がありますが、この場合のエラーは、Azure AD サービスがライセンスを割り当てているときにバック グラウンドで発生します。 このため、エラーを即座に伝達することはできません。 その代わりに、エラーはユーザー オブジェクトに記録され、管理ポータル経由で報告されます。 ユーザーへのライセンス付与という元の操作が無効になることはありませんが、後で調査して解決できるようにエラー状態にあることが記録されます。
-
-## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>監査ログの LicenseAssignmentAttributeConcurrencyException
-
-**問題**:ライセンス割り当ての LicenseAssignmentAttributeConcurrencyException がユーザーの監査ログに記録されています。
-グループベースのライセンスで、ユーザーに対する同じライセンスの同時ライセンス割り当てを処理しようとすると、この例外がユーザーに記録されます。 これは通常、同じライセンスが割り当てられた複数のグループにユーザーが属している場合に発生します。 AZure AD はユーザー ライセンスの処理を再試行し、問題を解決します。 この問題を解決するためにお客様の対処は必要ありません。
 
 ## <a name="find-license-assignment-errors"></a>ライセンスの割り当てエラーを見つける
 
@@ -121,6 +116,11 @@ Exchange Online を使用する場合は、テナント内の一部のユーザ�
 **問題**:ユーザーまたはグループのライセンス割り当てを更新している間に、一部のユーザーの Azure AD Mail および ProxyAddresses の属性が変更されたことがわかる場合があります。
 
 ユーザーのライセンス割り当てを更新すると、プロキシ アドレスの計算が開始され、それによってユーザーの属性が変更されることがあります。 変更の正確な理由を理解し、問題を解決するには、[Azure AD で proxyAddresses 属性がどのように設定されるか](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)についての、この記事を参照してください。
+
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>監査ログの LicenseAssignmentAttributeConcurrencyException
+
+**問題**:ライセンス割り当ての LicenseAssignmentAttributeConcurrencyException がユーザーの監査ログに記録されています。
+グループベースのライセンスで、ユーザーに対する同じライセンスの同時ライセンス割り当てを処理しようとすると、この例外がユーザーに記録されます。 これは通常、同じライセンスが割り当てられた複数のグループにユーザーが属している場合に発生します。 AZure AD はユーザー ライセンスの処理を再試行し、問題を解決します。 この問題を解決するためにお客様の対処は必要ありません。
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>1 つのグループに割り当てられた複数の製品ライセンス
 

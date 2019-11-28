@@ -1,5 +1,5 @@
 ---
-title: Windows 用の Azure Disk Encryption | Microsoft Docs
+title: Windows 用の Azure Disk Encryption
 description: 仮想マシン拡張機能を使用して、Azure Disk Encryption を Windows 仮想マシンにデプロイします。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 00891122015bb3e6adb500b6f6c30fa031161b92
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8435663dcf92e2617ea2fe9218649e94243272d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598009"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073205"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Windows 用 Azure Disk Encryption (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -36,11 +36,11 @@ Azure Disk Encryption は、BitLocker を利用して、Windows を実行して�
 
 ## <a name="extension-schemata"></a>拡張機能のスキーマ
 
-Azure Disk Encryption には 2 つのスキーマがあります。より新しい v1.1 は Azure Active Directory (AAD) のプロパティを使用しない推奨されるスキーマで、より古い v0.1 は AAD のプロパティを必要とします。 使用する拡張機能に対応するスキーマのバージョンを使う必要があります。スキーマ v1.1 は AzureDiskEncryption 拡張機能バージョン 1.1 用で、スキーマ v0.1 は AzureDiskEncryption 拡張機能バージョン 0.1 用です。
+Windows AzureDiskEncryption 拡張機能には 2 つのスキーマがあります。v2.2 は、Azure Active Directory (AAD) のプロパティを使用しない、推奨される新しいスキーマで、v1.1 は、AAD のプロパティを必要とする、前のスキーマです。 使用する拡張機能に対応するスキーマのバージョンを使う必要があります。スキーマ v2.2 は AzureDiskEncryption 拡張機能バージョン 2.2 用で、スキーマ v1.1 は AzureDiskEncryption 拡張機能バージョン 1.1 用です。
 
-### <a name="schema-v11-no-aad-recommended"></a>スキーマ v1.1:AAD なし (推奨)
+### <a name="schema-v22-no-aad-recommended"></a>スキーマ v2.2:AAD なし (推奨)
 
-V1.1 スキーマは推奨されており、Azure Active Directory のプロパティを必要としません。
+v2.2 スキーマはすべての新しい VM で推奨されており、Azure Active Directory のプロパティを必要としません。
 
 ```json
 {
@@ -67,9 +67,9 @@ V1.1 スキーマは推奨されており、Azure Active Directory のプロパ�
 ```
 
 
-### <a name="schema-v01-with-aad"></a>スキーマ v0.1: AAD を含む 
+### <a name="schema-v11-with-aad"></a>スキーマ v1.1: AAD を使用 
 
-0\.1 スキーマでは、`aadClientID` と、`aadClientSecret` または `AADClientCertificate` のいずれかを必要とします。
+1\.1 スキーマでは、`aadClientID` と、`aadClientSecret` または `AADClientCertificate` のいずれかを必要とします。新しい VM には推奨されません。
 
 `aadClientSecret`コマンドを使用します。
 
@@ -139,10 +139,10 @@ V1.1 スキーマは推奨されており、Azure Active Directory のプロパ�
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0.1、1.1 | int |
-| (0.1 スキーマ) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| (0.1 スキーマ) AADClientSecret | password | string |
-| (0.1 スキーマ) AADClientCertificate | thumbprint | string |
+| typeHandlerVersion | 1.1、2.2 | string |
+| (1.1 スキーマ) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
+| (1.1 スキーマ) AADClientSecret | password | string |
+| (1.1 スキーマ) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 辞書 |
 | EncryptionOperation | EnableEncryption、EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | string |

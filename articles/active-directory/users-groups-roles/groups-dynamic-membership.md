@@ -1,25 +1,25 @@
 ---
-title: 動的で自動的なグループ メンバーシップ ルール - Azure Active Directory | Microsoft Docs
+title: 動的グループ メンバーシップのルール - Azure AD | Microsoft Docs
 description: グループを自動的に設定するメンバーシップ ルールと、ルール参照を作成する方法。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a6cfad04d9b0dd3537d60f2651ed341d96bd0210
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241166"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027124"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -357,7 +357,10 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 
 ## <a name="rules-for-devices"></a>デバイスのルール
 
-グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 グループ メンバーとしてユーザーとデバイスの両方を含めることはできません。 **organizationalUnit** 属性は表示されなくなったため、使用できません。 この文字列は、特定の場合に Intune によって設定されますが、Azure AD では認識されないため、この属性に基づいてデバイスがグループに追加されることはありません。
+グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 グループ メンバーとしてユーザーとデバイスの両方を含めることはできません。 
+
+> [!NOTE]
+> **organizationalUnit** 属性は表示されなくなったため、使用できません。 この文字列は、特定の場合に Intune によって設定されますが、Azure AD では認識されないため、この属性に基づいてデバイスがグループに追加されることはありません。
 
 > [!NOTE]
 > systemlabels は、Intune では設定できない読み取り専用の属性です。
@@ -380,7 +383,8 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM (モバイル デバイスの場合)<br>PC (Intune PC エージェントによって管理されるコンピューターの場合) | (device.managementType -eq "MDM")
  deviceId | 有効な Azure AD デバイス ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- objectId | 有効な Azure AD オブジェクト ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ objectId | 有効な Azure AD オブジェクト ID |  (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ devicePhysicalIds | すべてのオートパイロット デバイス、OrderID、PurchaseOrderID など、オートパイロットによって使用される任意の文字列値  | (device.devicePhysicalIDs -any _ -contains "[ZTDId]") (device.devicePhysicalIds -any _ -eq "[OrderID]:179887111881") (device.devicePhysicalIds -any _ -eq "[PurchaseOrderId]:76222342342")
  systemLabels | Modern Workplace デバイスをタグ付けするための Intune デバイス プロパティに一致する任意の文字列 | (device.systemLabels - "M365Managed" を含む)
 
 > [!Note]  

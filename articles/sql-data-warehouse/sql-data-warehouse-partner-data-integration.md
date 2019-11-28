@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e368894d7036d071285ebc7ba85056676d8d670d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2d0f92f7bf5b015a30e431354edb0c29f5e103f6
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692647"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046430"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL Data Warehouse データ統合パートナー
 データ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事では、Azure SQL Data Warehouse をサポートする公式のデータ統合ソリューションを提供している Microsoft パートナー企業について説明します。
@@ -29,11 +29,11 @@ ms.locfileid: "73692647"
 | ![Attunity][2] |**Attunity (CloudBeam)**<br>Attunity CloudBeam では、SQL Data Warehouse にデータを読み込むための、自動化されたソリューションを提供します。 SQL Server、Oracle、DB2、Sybase、MySQL などの多数のソースからの、データのバッチ読み込みと増分レプリケーションを簡素化します。 |[製品ページ][attunity_cloudbeam_website]<br>[Azure Marketplace][attunity_marketplace]<br> |
 | ![Denodo][3] |**Denodo**<br>Denodo では、組織のさまざまなデータ ソースにわたるデータへのリアルタイムのアクセスを提供します。 データの仮想化を利用して、レプリケーションを伴わずに多数のソースにわたるデータをブリッジします。 企業内に存在する構造化および非構造化データ、ビッグ データ、クラウド ソースに対して、バッチおよびリアル タイムの両方で広範なアクセスを提供します。|[製品ページ][denodo_website]<br>[Azure Marketplace][denodo_marketplace]<br> |
 | ![Fivetran][8] |**Fivetran**<br>Fivetran では、さまざまなソースからのデータを一元管理できます。 一般的なすべてのデータ ソースに対する組み込みのコネクターの一覧を蓄積して、メンテナンス不要、構成データ不要のパイプライン製品であることが特長です。 データ ソースとターゲット データ ウェアハウスに対して認証した後、セットアップに 5 分かかります。|[製品ページ][fivetran_website]<br> |
-| ![Informatica][4] |**1.Informatica Cloud Services for Azure**<br> Informatica Cloud は、セルフ サービスのデータ移行、統合、および管理機能においてクラス最高のソリューションを提供します。 顧客は迅速かつ確実にペタバイト単位のデータをさまざまなソースから Azure にインポートおよびエクスポートできます。 Informatica Cloud Services for Azure は、Azure SQL Data Warehouse、SQL Database、Blob Storage、Data Lake Store、および Azure Cosmos DB へのネイティブな高ボリューム、高パフォーマンスな接続を実現します。 <br><br> **2.Informatica PowerCenter** PowerCenter は、手作業でのコーディングよりも迅速に企業にデータを配信するために、データ統合プロジェクトを直ちに開始して高速化するメタデータ駆動型のデータ統合プラットフォームです。 データ統合への投資の基盤を担います |**Informatica Cloud services for Azure**<br>[製品ページ][informatica_Cloud_Services_website]<br>[Azure Marketplace][informatica_Cloud_Services_marketplace]<br><br> **Informatica PowerCenter**<br>[製品ページ][informatica_PowerCenter_website]<br> [Azure Marketplace][informatica_PowerCenter_byol]<br>|
+| ![Informatica][4] |**1.Informatica Cloud Services for Azure**<br> Informatica Cloud は、セルフ サービスのデータ移行、統合、および管理機能においてクラス最高のソリューションを提供します。 顧客は迅速かつ確実にペタバイト単位のデータをさまざまな種類のソースから Azure にインポートおよびエクスポートできます。 Informatica Cloud Services for Azure は、Azure SQL Data Warehouse、SQL Database、Blob Storage、Data Lake Store、および Azure Cosmos DB へのネイティブな高ボリューム、高パフォーマンスな接続を実現します。 <br><br> **2.Informatica PowerCenter** PowerCenter は、手作業でのコーディングよりも迅速に企業にデータを配信するために、データ統合プロジェクトを直ちに開始して高速化するメタデータ駆動型のデータ統合プラットフォームです。 データ統合への投資の基盤を担います |**Informatica Cloud services for Azure**<br>[製品ページ][informatica_Cloud_Services_website]<br>[Azure Marketplace][informatica_Cloud_Services_marketplace]<br><br> **Informatica PowerCenter**<br>[製品ページ][informatica_PowerCenter_website]<br> [Azure Marketplace][informatica_PowerCenter_byol]<br>|
 | ![Information Builders][5] |**Information Builders (Omni-Gen データ管理)**<br>Information Builder の Omni-Gen データ管理プラットフォームでは、データ統合、データ品質、およびマスター データ管理のソリューションを提供しています。 形式、場所、ボリューム、または待機時間に関係なく、すべてのデータのアクセス、移動、および混合を簡単に行えるようにします。|[製品ページ][omnifocus_website]<br> [Azure Marketplace][omnigen_marketplace] |
-| ![Qubole][9] |**Qubole**<br>Qubole は、ユーザーによる ETL、分析、および AI/ML ワークロードの実行を可能にするクラウド ネイティブのプラットフォームを提供します。 Apache Spark、TensorFlow、Presto、Airflow、Hadoop、Hive など、さまざまなオープン ソース エンジンをサポートしています。 SQL クエリ ツールをはじめ、ノートブック、そして優れたオープン ソース エンジンを活用したダッシュボードまで、エンドユーザーにとって使いやすいデータ処理用ツールを提供しています。|[製品ページ][qubole_website]<br> [Azure Marketplace][qubole_marketplace] |
+| ![Qubole][9] |**Qubole**<br>Qubole は、ユーザーによる ETL、分析、および AI/ML ワークロードの実行を可能にするクラウド ネイティブのプラットフォームを提供します。 Apache Spark、TensorFlow、Presto、Airflow、Hadoop、Hive など、さまざまな種類のオープン ソース エンジンをサポートしています。 SQL クエリ ツールをはじめ、ノートブック、そして優れたオープン ソース エンジンを活用したダッシュボードまで、エンドユーザーにとって使いやすいデータ処理用ツールを提供しています。|[製品ページ][qubole_website]<br> [Azure Marketplace][qubole_marketplace] |
 | ![Segment][10] |**セグメント**<br>Segment は、さまざまなソースに由来する顧客データを有意義に活用できるデータ管理と分析のソリューションです。 より優れた意思決定、製品、およびエクスペリエンスを作り出すために、200 を超えるツールにデータを接続できます。 Segment では、組み込みのデータ コネクターを使用して、複数のデータ ソースを変換してユーザーのウェアハウスに読み込みます。|[製品ページ][segment_website]<br> |
-| ![Skyvia][11] |**Skyvia (データ統合)**<br>Skyvia のデータ統合は、データのインポートを自動化するウィザードを提供します。 このウィザードは、さまざまなソース (CRM、アプリケーション データベース、CSV ファイルなど) 間でのデータ移行を可能にします。 |[製品ページ][segment_website]<br> |
+| ![Skyvia][11] |**Skyvia (データ統合)**<br>Skyvia のデータ統合は、データのインポートを自動化するウィザードを提供します。 このウィザードは、さまざまな種類のソース (CRM、アプリケーション データベース、CSV ファイルなど) 間でのデータ移行を可能にします。 |[製品ページ][segment_website]<br> |
 | ![SnapLogic][6] |**SnapLogic**<br>SnapLogic プラットフォームを利用すると、顧客は Microsoft Azure SQL Data Warehouse に出入りするデータをすばやく転送できます。 数百ものアプリケーション、サービス、および IoT シナリオを 1 つのソリューションに統合する機能を提供しています。|[製品ページ][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
 | ![StreamSets][15] |**StreamSets**<br>StreamSets は、DataOps 用のデータ統合プラットフォームを提供します。 これは、データを Azure SQL Data Warehouse に統合する、設計、デプロイ、運用の完全なライフサイクルを操作できるようにします。 ストリーミング、バッチ、または変更されたデータ キャプチャ データ配信方法を使用して、ウェアハウス間でデータの迅速な取り込みと統合ができるだけでなく、エンドツーエンドのデータ フローの可視性および回復性を提供するスマート データ パイプラインを使用して継続的な操作を確保することもできます。|[製品ページ][streamsets_website]|
 | ![Talend][12] |**Talend Cloud**<br>Talend Cloud は、クラウドまたはオンプレミスにわたって、データの接続、アクセス、および変換を行うためのエンタープライズ データ統合プラットフォームです。 幅広い接続、組み込みのデータ品質、最新のビッグ データとクラウド技術に対するネイティブ サポートを提供する integration Platform-as-a-Service (iPaaS) のオファリングです。 |[製品ページ][talend_website]<br> [Azure Marketplace][talend_marketplace] |
@@ -95,7 +95,7 @@ ms.locfileid: "73692647"
 [alteryx_marketplace]:https://azure.microsoft.com/marketplace/partners/alteryx/alteryx-designer/
 [attunity_marketplace]:https://azure.microsoft.com/marketplace/partners/attunity-cloudbeam/cloudbeam-dw-byol/ 
 [denodo_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/denodo.denodo-platform-7_0
-[informatica_Cloud_Services_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/informatica.ics-byol
+[informatica_Cloud_Services_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/informatica.iics-winter
 [informatica_PowerCenter_byol]:https://azuremarketplace.microsoft.com/marketplace/apps/informatica.powercenter/
 [snaplogic_marketplace]:https://azure.microsoft.com/marketplace/partners/snaplogic/snaplogic-elastic-integration-windows/ 
 [omnigen_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm

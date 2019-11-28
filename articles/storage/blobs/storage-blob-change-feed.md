@@ -8,19 +8,16 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 07123fd5701e9041ff377ea5309cf1291e737ca6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f48c8712a2f4fbd69db7de5247e3293ad57ae1e6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693812"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112826"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob Storage の変更フィードのサポート (プレビュー)
 
 変更フィードの目的は、ストレージ アカウント内の BLOB と BLOB メタデータに対して行われるすべての変更のトランザクション ログを提供することです。 変更フィードでは、これらの変更の**順序指定済み**、**保証済み**、**永続**、**不変**、**読み取り専用**ログが提供されます。 クライアント アプリケーションでは、ストリーミングまたはバッチ モードで、いつでもこれらのログを読み取ることができます。 変更フィードを使用すると、低コストで、BLOB ストレージ アカウントで発生する変更イベントを処理する効率的でスケーラブルなソリューションを構築できます。
-
-> [!NOTE]
-> 変更フィードはパブリック プレビュー段階にあり、**westcentralus** と **westus2** リージョンで利用できます。 この記事の[条件](#conditions)に関するセクションを参照してください。 プレビューに登録する場合は、この記事の[サブスクリプションの登録](#register)に関するセクションを参照してください。
 
 変更フィードは、Standard [BLOB の料金](https://azure.microsoft.com/pricing/details/storage/blobs/)コストで、ストレージ アカウントの特別なコンテナーに [BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) として格納されます。 これらのファイルの保有期間は、要件に基づいて制御できます (現在のリリースの[条件](#conditions)を参照)。 変更イベントは、[Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 形式仕様のレコードとして変更フィードに追加されます。これは、インライン スキーマを使用して豊富なデータ構造を提供するコンパクトで高速なバイナリ形式です。 この形式は Hadoop エコシステム、Stream Analytics、Azure Data Factory で幅広く使用されています。
 
@@ -39,11 +36,24 @@ ms.locfileid: "73693812"
   - 作成されたオブジェクトまたは変更されたオブジェクトに基づいて、変更イベントまたはスケジュールの実行に対応する、接続されたアプリケーション パイプラインを構築する。
 
 > [!NOTE]
-> [Blob Storage イベント](storage-blob-event-overview.md)では、Azure Functions またはアプリケーションで BLOB に対して行われた変更に対応できるようにする、リアルタイムのワンタイム イベントが提供されます。 変更フィードでは、変更の永続的な順序付けされたログ モデルが提供されます。 変更フィードの変更は、変更後数分以内に順に変更フィードで使用可能となります。 アプリケーションでこれよりはるかに高速にイベントに対応する必要がある場合は、代わりに [Blob Storage イベント](storage-blob-event-overview.md)を使用することを検討してください。 Blob Storage イベントを使用すると、Azure Functions またはアプリケーションで個々のイベントにリアルタイムで対応できるようになります。
+> [Blob Storage イベント](storage-blob-event-overview.md)では、Azure Functions またはアプリケーションで BLOB に対して行われた変更に対応できるようにする、リアルタイムのワンタイム イベントが提供されます。 変更フィードでは、変更の永続的な順序付けされたログ モデルが提供されます。 変更フィードの変更は、変更後わずか数分以内に変更フィードで使用可能となります。 アプリケーションでこれよりはるかに高速にイベントに対応する必要がある場合は、代わりに [Blob Storage イベント](storage-blob-event-overview.md)を使用することを検討してください。 Blob Storage イベントを使用すると、Azure Functions またはアプリケーションで個々のイベントにリアルタイムで対応できるようになります。
 
-## <a name="enabling-and-disabling-the-change-feed"></a>変更フィードの有効化と無効化
+## <a name="enable-and-disable-the-change-feed"></a>変更フィードを有効または無効にする
 
-変更のキャプチャを開始するには、変更フィードを有効にする必要があります。 変更のキャプチャを停止するには、変更フィードを無効にします。 ポータルまたは Powershell で Azure Resource Manager テンプレートを使用して、変更を有効または無効にすることができます。
+変更のキャプチャを開始するには、ストレージ アカウントで変更フィードを有効にする必要があります。 変更のキャプチャを停止するには、変更フィードを無効にします。 ポータルまたは Powershell で Azure Resource Manager テンプレートを使用して、変更を有効または無効にすることができます。
+
+変更フィードを有効にする際に注意する点をいくつか以下に示します。
+
+- **$blobchangefeed** コンテナーに格納される各ストレージ アカウントには、BLOB サービスの変更フィードが 1 つだけあります。
+
+- 変更は Blob service レベルでのみキャプチャされます。
+
+- 変更フィードでは、アカウントで発生したすべての使用可能なイベントの*すべて*の変更をキャプチャします。 クライアント アプリケーションでは、必要に応じて、イベントの種類をフィルターで除外できます (現在のリリースの[条件](#conditions)を参照)。
+
+- GPv2 と BLOB ストレージ アカウントだけが、変更フィードを有効にできます。 GPv1 ストレージ アカウント、Premium BlockBlobStorage アカウント、および階層型名前空間が有効なアカウントは現在サポートされていません。
+
+> [!IMPORTANT]
+> 変更フィードはパブリック プレビュー段階にあり、**westcentralus** と **westus2** リージョンで利用できます。 この記事の[条件](#conditions)に関するセクションを参照してください。 プレビューに登録する場合は、この記事の[サブスクリプションの登録](#register)に関するセクションを参照してください。 ストレージ アカウントで変更フィードを有効にする前に、サブスクリプションを登録する必要があります。
 
 ### <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
@@ -55,27 +65,28 @@ Azure portal を使用してテンプレートをデプロイするには:
 
 3. **[テンプレートのデプロイ]** 、 **[作成]** 、 **[エディターで独自のテンプレートを作成する]** の順に選択します。
 
-5. テンプレート エディターで、次の json を貼り付けます。 `<accountName>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
+4. テンプレート エディターで、次の json を貼り付けます。 `<accountName>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
 
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [{
-        "type": "Microsoft.Storage/storageAccounts/blobServices",
-        "apiVersion": "2019-04-01",
-        "name": "<accountName>/default",
-        "properties": {
-            "changeFeed": {
-            "enabled": true
-            }
-        } 
-     }]
-}
-```
-4. **[保存]** ボタンを選択し、アカウントのリソース グループを指定してから、 **[購入]** ボタンを選んで変更フィードを有効にします。
+   ```json
+   {
+       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+       "contentVersion": "1.0.0.0",
+       "parameters": {},
+       "variables": {},
+       "resources": [{
+           "type": "Microsoft.Storage/storageAccounts/blobServices",
+           "apiVersion": "2019-04-01",
+           "name": "<accountName>/default",
+           "properties": {
+               "changeFeed": {
+                   "enabled": true
+               }
+           } 
+        }]
+   }
+   ```
+    
+5. **[保存]** ボタンを選択し、アカウントのリソース グループを指定してから **[購入]** ボタンを選択して、テンプレートをデプロイし、変更フィードを有効にします。
 
 ### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -84,7 +95,7 @@ PowerShell を使用してテンプレートをデプロイするには:
 1. 最新の PowershellGet をインストールします。
 
    ```powershell
-   install-Module PowerShellGet –Repository PSGallery –Force
+   Install-Module PowerShellGet –Repository PSGallery –Force
    ```
 
 2. Powershell コンソールを閉じてから、再度開きます。
@@ -109,36 +120,15 @@ PowerShell を使用してテンプレートをデプロイするには:
 
 ---
 
-変更フィードを有効にする際に注意する点をいくつか以下に示します。
-
-- 各ストレージ アカウントには、Blob service の変更フィードが 1 つだけあります。 
-
-- 変更は Blob service レベルでのみキャプチャされます。
-
-- 変更フィードでは、アカウントで発生したすべての使用可能なイベントの*すべて*の変更をキャプチャします。 クライアント アプリケーションでは、必要に応じて、イベントの種類をフィルターで除外できます (現在のリリースの[条件](#conditions)を参照)。
-
-- 階層型名前空間があるアカウントはサポートされていません。
-
-## <a name="consuming-the-change-feed"></a>変更フィードの使用
-
-変更フィードによって、いくつかのメタデータとログ ファイルが生成されます。 これらのファイルは、ストレージ アカウントの **$blobchangefeed** コンテナーにあります。 
-
->[!NOTE]
-> 現在のリリースでは、 **$blobchangefeed** コンテナーは Storage Explorer や Azure portal に表示されません。 
-
-クライアント アプリケーションでは、SDK に付属している BLOB 変更フィード プロセッサ ライブラリを使って、変更フィードを使用できます。 
-
-[Azure Blob Storage での変更フィード ログの処理](storage-blob-change-feed-how-to.md)に関するページを参照してください。
-
-## <a name="understanding-change-feed-organization"></a>変更フィードの構成について
+## <a name="understand-change-feed-organization"></a>変更フィードの構成について理解する
 
 <a id="segment-index"></a>
 
 ### <a name="segments"></a>セグメント
 
-変更フィードは、**時間単位**の*セグメント*に構成される変更のログです (「[仕様](#specifications)」を参照)。 これにより、クライアント アプリケーションは、ログ全体を検索することなく、特定の期間内に行われた変更を使用できるようになります。
+変更フィードは、**1 時間単位**の*セグメント*にまとめられる変更のログですが、数分ごとに追加と更新が行われます。 これらのセグメントが作成されるのは、その時間内に発生する BLOB 変更イベントがあるときだけです。 これにより、クライアント アプリケーションは、ログ全体を検索することなく、特定の期間内に行われた変更を使用できるようになります。 詳細については、「[仕様](#specifications)」を参照してください。
 
-変更フィードの利用可能な時間単位のセグメントは、そのセグメントの変更フィード ファイルへのパスを指定するマニフェスト ファイルに記述されています。 `$blobchangefeed/idx/segments/` 仮想ディレクトリのリストには、これらのセグメントが時間順に表示されます。 セグメントのパスは、セグメントで表される時間単位の時間範囲の開始を示します (「[仕様](#specifications)」を参照)。 このリストを使用して、関心のあるログのセグメントをフィルターで除外することができます。
+変更フィードの利用可能な時間単位のセグメントは、そのセグメントの変更フィード ファイルへのパスを指定するマニフェスト ファイルに記述されています。 `$blobchangefeed/idx/segments/` 仮想ディレクトリのリストには、これらのセグメントが時間順に表示されます。 セグメントのパスは、セグメントで表される時間単位の時間範囲の開始を示します このリストを使用して、関心のあるログのセグメントをフィルターで除外することができます。
 
 ```text
 Name                                                                    Blob Type    Blob Tier      Length  Content Type    
@@ -150,7 +140,7 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 ```
 
 > [!NOTE]
-> 変更フィードを有効にすると、`$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` が自動的に作成されます。 このファイルは無視してかまいません。 これは常に空です。 
+> 変更フィードを有効にすると、`$blobchangefeed/idx/segments/1601/01/01/0000/meta.json` が自動的に作成されます。 このファイルは無視してかまいません。 これは常に、空の初期化ファイルです。 
 
 セグメント マニフェスト ファイル (`meta.json`) では、`chunkFilePaths` プロパティにそのセグメントの変更フィード ファイルのパスが表示されます。 以下は、セグメント マニフェスト ファイルの例です。
 
@@ -220,12 +210,23 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
          }
   }
 }
-
 ```
+
 各プロパティの説明については、「[Azure Event Grid の Blob Storage 用のイベント スキーマ](https://docs.microsoft.com/azure/event-grid/event-schema-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#event-properties)」を参照してください。
 
 > [!NOTE]
 > セグメントの変更フィード ファイルは、セグメントの作成後すぐには表示されません。 遅延の長さは、変更後数分以内である、変更フィードの公開待機時間の通常の間隔内です。
+
+## <a name="consume-the-change-feed"></a>変更フィードを使用する
+
+変更フィードによって、いくつかのメタデータとログ ファイルが生成されます。 これらのファイルは、ストレージ アカウントの **$blobchangefeed** コンテナーにあります。 
+
+> [!NOTE]
+> 現在のリリースでは、 **$blobchangefeed** コンテナーは Azure Storage Explorer や Azure portal に表示されません。 現在は、ListContainers API を呼び出すときに $blobchangefeed コンテナーを参照することはできませんが、コンテナーで直接 ListBlobs API を呼び出して BLOB を参照することができます。
+
+クライアント アプリケーションでは、変更フィード プロセッサ SDK に付属している BLOB 変更フィード プロセッサ ライブラリを使って、変更フィードを使用できます。 
+
+[Azure Blob Storage での変更フィード ログの処理](storage-blob-change-feed-how-to.md)に関するページを参照してください。
 
 <a id="specifications"></a>
 
@@ -239,9 +240,9 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 - 変更イベント レコードは、[Apache Avro 1.8.2](https://avro.apache.org/docs/1.8.2/spec.html) 形式仕様を使用して、ログ ファイルにシリアル化されます。
 
-- `eventType` の値が `Control` である変更イベント レコードは内部システム レコードであり、アカウント内のオブジェクトに対する変更は反映されません。 これらは無視してください。
+- `eventType` の値が `Control` である変更イベント レコードは内部システム レコードであり、アカウント内のオブジェクトに対する変更は反映されません。 それらのレコードは無視してかまいません。
 
-- `storageDiagnonstics` プロパティ バッグの値は内部でのみ使用され、アプリケーションで使用するように設計されていません。 アプリケーションに、そのデータに対する契約上の依存関係があってはなりません。
+- `storageDiagnonstics` プロパティ バッグの値は内部でのみ使用され、アプリケーションで使用するように設計されていません。 アプリケーションに、そのデータに対する契約上の依存関係があってはなりません。 それらのプロパティは無視してかまいません。
 
 - セグメントで表される時間は、15 分の範囲の**概数**です。 したがって、指定された時間内にすべてのレコードを確実に使用するには、連続した前と次の 1 時間のセグメントを使います。
 
@@ -275,10 +276,11 @@ $blobchangefeed/idx/segments/2019/02/23/0110/meta.json                  BlockBlo
 
 PowerShell コンソールで、これらのコマンドを実行します。
 
-   ```powershell
-   Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
-   Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
-   ```
+```powershell
+Register-AzProviderFeature -FeatureName Changefeed -ProviderNamespace Microsoft.Storage
+Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
+```
+   
 ### <a name="register-by-using-azure-cli"></a>Azure CLI を使用して登録する
 
 Azure Cloud Shell で、これらのコマンドを実行します。
@@ -293,14 +295,23 @@ az provider register --namespace 'Microsoft.Storage'
 ## <a name="conditions-and-known-issues-preview"></a>条件と既知の問題 (プレビュー)
 
 このセクションでは、変更フィードの現在のパブリック プレビューにおける既知の問題と条件について説明します。
-
-- 変更フィードでは、作成、更新、削除、およびコピー操作のみをキャプチャします。
+- プレビューでは、westcentralus または westus2 リージョンでストレージ アカウントの変更フィードを有効にする前に、まず[サブスクリプションを登録する](#register)必要があります。 
+- 変更フィードでは、作成、更新、削除、およびコピー操作のみをキャプチャします。 現在プレビューでは、メタデータの更新はキャプチャされていません。
 - 1 つの変更の変更イベント レコードは、変更フィードに複数回表示される場合があります。
 - 時間ベースの保持ポリシーを設定することによって、変更フィード ログ ファイルの有効期間を管理することはまだできません。
 - ログ ファイルの `url` プロパティは常に空です。
 - segments.json ファイルの `LastConsumable` プロパティでは、変更フィードで終了する最初のセグメントがリストされません。 この問題は、最初のセグメントが終了した後でのみ発生します。 最初の 1 時間後の後続のすべてのセグメントは、`LastConsumable` プロパティで正確にキャプチャされます。
 
+## <a name="faq"></a>FAQ
+
+### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>変更フィードと Storage Analytics のログ記録の違いは何ですか。
+変更フィードは、成功した BLOB の作成、変更、および削除イベントのみが変更フィード ログに記録されるため、アプリケーション開発に向けて最適化されています。 Analytics のログ記録には、読み取りや一覧表示の操作を含め、成功した要求と失敗した要求のすべてが、すべての操作にわたって記録されます。 変更フィードを活用すれば、トランザクションの多いアカウントでのログ ノイズのフィルター処理について心配する必要がないので、BLOB の変更イベントだけに集中できます。
+
+### <a name="should-i-use-change-feed-or-storage-events"></a>変更フィードまたはストレージ イベントを使用する必要がありますか。
+変更フィードと [BLOB ストレージ イベント](storage-blob-event-overview.md)は性質が似ているため、両方の機能を活用できます。主な違いは、イベント レコードの待機時間、順序付け、およびストレージです。 変更フィードでは、BLOB の変更操作の順序を保証しながら、数分ごとに一括してレコードを変更フィード ログに書き込みます。 ストレージ イベントはリアルタイムでプッシュされ、順序付けされない可能性があります。 変更フィード イベントはストレージ アカウント内に永続的に格納されます。一方、ストレージ イベントは一時的なもので、明示的に格納しない限り、イベント ハンドラーによって使用されます。
+
 ## <a name="next-steps"></a>次の手順
 
 - .NET クライアント アプリケーションを使用して変更フィードを読み取る方法の例を確認します。 [Azure Blob Storage での変更フィード ログの処理](storage-blob-change-feed-how-to.md)に関するページを参照してください。
 - リアルタイムでイベントに対応する方法について学習します。 「[Blob Storage イベントへの対応](storage-blob-event-overview.md)」を参照してください
+- 成功した操作と失敗した操作の両方について、すべての要求に関する詳細なログ情報を詳しく確認します。 「[Azure Storage Analytics のログ](../common/storage-analytics-logging.md)」を参照してください

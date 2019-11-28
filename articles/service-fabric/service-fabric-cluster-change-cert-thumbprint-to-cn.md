@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2019
 ms.author: atsenthi
-ms.openlocfilehash: 25aaad02cf8c90c67e87d49553a02cacf033281f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a9e2a2c20a8de4bed3876f431566b293cbfa4ef5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819472"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109664"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>証明書の拇印から共通名へとクラスターを変更する
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  デプロイされたクラスターで使用するのを、証明書の拇印から証明書共通名に切り替えることで、証明書の管理が大幅に単純化します。 この記事では、実行中の Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するように更新する方法について説明します。
@@ -189,7 +189,7 @@ Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
         ...
     ```
 
-詳細については、「[証明書の拇印から共通名へとクラスターを変更する](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn)」を参照してください。
+詳細については、「[拇印ではなく証明書共通名を使用する Service Fabric クラスターをデプロイする](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn)」を参照してください。
 
 ## <a name="deploy-the-updated-template"></a>更新したテンプレートをデプロイする
 変更を加えた後、更新したテンプレートを再度デプロイします。

@@ -1,5 +1,5 @@
 ---
-title: リモート監視ソリューションをローカルにデプロイする (Visual Studio Code) - Azure | Microsoft Docs
+title: リモート監視ソリューションをローカルにデプロイする - Visual Studio Code - Azure | Microsoft Docs
 description: この攻略ガイドでは、リモート監視ソリューション アクセラレータをテストおよび開発のために Visual Studio Code を使用してローカル コンピューターにデプロイする方法を示します。
 author: avneet723
 manager: hegate
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: ed3301eb0e723e05e2a642ffea2f1609032553b4
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730164"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890957"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする - Visual Studio Code
 

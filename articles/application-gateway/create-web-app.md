@@ -1,20 +1,21 @@
 ---
-title: Azure Application Gateway を使用した Web アプリの保護 - PowerShell
+title: PowerShell を使用して App Service を構成する
+titleSuffix: Azure Application Gateway
 description: この記事では、既存または新しいアプリケーション ゲートウェイで Web アプリをバックエンド ホストとして構成する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: dcf21fe111ab742074ab4fe580a021338e1f7c43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122219"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089507"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>Application Gateway を使用した App Service の構成
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>PowerShell を使用して Application Gateway で App Service を構成する
 
 Application Gateway では、App Service アプリまたはその他のマルチテナント サービスをバックエンド プール メンバーとして使用できます。 この記事では、Application Gateway を使用して App Service アプリを構成する方法について説明します。 最初の例では、既存のアプリケーション ゲートウェイを構成して、Web アプリをバックエンド プール メンバーとして使用する方法について示します。 2 番目の例では、新しいアプリケーション ゲートウェイを作成して、Web アプリをバックエンド プール メンバーとして使用する方法について示します。
 

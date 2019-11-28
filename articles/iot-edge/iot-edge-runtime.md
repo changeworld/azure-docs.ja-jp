@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 94e33c855327e70f486746bcd781491823324dec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4bdf496995e8b466f1346bfe16365b251c6853c3
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490429"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076052"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
@@ -98,6 +98,9 @@ IoT Edge エージェントは、Azure IoT Edge ランタイムを構成する�
    * `on-failure` - モジュールがクラッシュした場合に IoT Edge エージェントがモジュールを再起動します。 モジュールがクリーンにシャット ダウンした場合、IoT Edge エージェントはモジュールを再起動しません。
    * `on-unhealthy` - モジュールがクラッシュしたか、異常と判断された場合は、IoT Edge エージェントがモジュールを再起動します。
    * `always` - モジュールがクラッシュした場合、異常と判断された場合、または方法を問わずシャットダウンされた場合、IoT Edge エージェントがモジュールを再起動します。 
+* **imagePullPolicy** - IoT Edge エージェントがモジュールの最新のイメージを自動的にプルするかどうかを指定します。 値を指定しない場合、既定値は *onCreate* になります。 指定できる値は、次のとおりです。 
+   * `on-create` - 新しい配置マニフェストに基づいてモジュールを更新したりモジュールを開始したりすると、IoT Edge エージェントはコンテナー レジストリからモジュールイメージをプルしようとします。
+   * `never` - IoT Edge エージェントは、コンテナー レジストリからモジュール イメージのプルを試行しません。 モジュール イメージがデバイスにキャッシュされ、モジュール イメージの更新が手動で行われるか、サードパーティのソリューションによって管理されることが予想されます。 
 
 IoT Edge エージェントは、ランタイム応答を IoT ハブに送信します。 考えられる応答の一覧を以下に示します。
   * 200 - OK

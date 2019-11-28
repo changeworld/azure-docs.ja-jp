@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins パブリック プレビュー サービスの制限 | Microsoft Docs
-description: Azure Digital Twins パブリック プレビュー サービスの制限について説明します。
+title: パブリック プレビューのサービスの制限 - Azure Digital Twins | Microsoft Docs
+description: Azure Digital Twins パブリック プレビューのサービスの制限について説明します。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/03/2019
-ms.openlocfilehash: 88a66506b5102a4efaeefe1c7033b337dff9889a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 10/22/2019
+ms.openlocfilehash: 3cea4fe65e49bfa2d49822d443103ae6cc6ce69f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949239"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014167"
 ---
 # <a name="public-preview-service-limits"></a>パブリック プレビューのサービスの制限
 
@@ -70,7 +70,8 @@ Azure Digital Twins Management API に対する要求のレート制限は次の
 
 以下の制限では、デバイスが Azure Digital Twins インスタンスに送信できる全メッセージの合計数が制限されます。
 
-- 1 秒あたり 100 件のメッセージ
+- 全デバイスで 1 秒あたり 100 件のメッセージ
+-   デバイスごとに 1 秒あたり 25 件のメッセージ
 
 ## <a name="next-steps"></a>次の手順
 

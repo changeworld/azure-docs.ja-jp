@@ -1,5 +1,5 @@
 ---
-title: Azure Time Series Insights プレビューのユース ケース | Microsoft Docs
+title: プレビューのユース ケース - Azure Time Series Insights | Microsoft Docs
 description: Azure Time Series Insights プレビューのユース ケースについて説明します。
 author: deepakpalled
 ms.author: dpalled
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: b2c1aec7f5b653824ab999da2706549e54d47e3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 175fbf598ae2224d1e1ee0e9c9a3f9ba446965c3
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492057"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014668"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース
 

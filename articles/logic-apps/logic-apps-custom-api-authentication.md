@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66167249"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039123"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps からのカスタム API の呼び出しのセキュリティ保護
 
@@ -100,11 +100,13 @@ API の呼び出しをセキュリティで保護するために、Azure Portal 
 
 1. `Add-AzAccount`
 
-2. `$SecurePassword = Read-Host -AsSecureString` (パスワードを入力し、Enter キーを押します)
+1. `$SecurePassword = Read-Host -AsSecureString`
 
-3. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
+1. パスワードを入力し、Enter キーを押します。
 
-4. **テナント ID** (Azure AD テナントの GUID)、**アプリケーション ID**、使用したパスワードを必ずコピーします。
+1. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
+
+1. **テナント ID** (Azure AD テナントの GUID)、**アプリケーション ID**、使用したパスワードを必ずコピーします。
 
 詳細については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)」を参照してください。
 
@@ -161,19 +163,21 @@ Web アプリまたは API アプリが既にデプロイされている場合�
 クライアント ID とテナント ID を取得したら、ID を Web アプリまたは API アプリのサブ リソースとしてデプロイ テンプレートに追加します。
 
 ``` json
-"resources": [ {
-    "apiVersion": "2015-08-01",
-    "name": "web",
-    "type": "config",
-    "dependsOn": ["[concat('Microsoft.Web/sites/','parameters('webAppName'))]"],
-    "properties": {
-        "siteAuthEnabled": true,
-        "siteAuthSettings": {
-            "clientId": "{client-ID}",
-            "issuer": "https://sts.windows.net/{tenant-ID}/",
-        }
-    }
-} ]
+"resources": [ 
+   {
+      "apiVersion": "2015-08-01",
+      "name": "web",
+      "type": "config",
+      "dependsOn": ["[concat('Microsoft.Web/sites/','parameters('webAppName'))]"],
+      "properties": {
+         "siteAuthEnabled": true,
+         "siteAuthSettings": {
+            "clientId": "<client-ID>",
+            "issuer": "https://sts.windows.net/<tenant-ID>/"
+         }
+      }
+   } 
+]
 ```
 
 Azure Active Directory 認証と共に、空の Web アプリやロジック アプリを自動デプロイするには、[ここで完全なテンプレートを表示する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json)か、ここで **[Azure に配置する]** をクリックします。
@@ -184,12 +188,20 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 先ほどのテンプレートではこの承認セクションが既に設定されていますが、ロジック アプリを直接作成する場合、承認セクション全体を追加する必要があります。
 
-コード ビューでロジック アプリ定義を開き、**HTTP** アクション セクションに移動し、 **[認証]** セクションを見つけ、次の行を追加します。
+コード ビューでロジック アプリ定義を開き、**HTTP** アクション定義に移動し、 **[認証]** セクションを見つけ、次のプロパティを追加します。
 
-`{"tenant": "{tenant-ID}", "audience": "{client-ID-from-Part-2-web-app-or-API app}", "clientId": "{client-ID-from-Part-1-logic-app}", "secret": "{key-from-Part-1-logic-app}", "type": "ActiveDirectoryOAuth" }`
+```json
+{
+   "tenant": "<tenant-ID>",
+   "audience": "<client-ID-from-Part-2-web-app-or-API app>", 
+   "clientId": "<client-ID-from-Part-1-logic-app>",
+   "secret": "<key-from-Part-1-logic-app>", 
+   "type": "ActiveDirectoryOAuth"
+}
+```
 
-| 要素 | 必須 | 説明 | 
-| ------- | -------- | ----------- | 
+| プロパティ | 必須 | 説明 | 
+| -------- | -------- | ----------- | 
 | tenant | はい | Azure AD テナントの GUID | 
 | audience | はい | アクセスするターゲット リソースの GUID。Web アプリまたは API アプリのアプリケーション ID からのクライアント ID です | 
 | clientId | はい | アクセスを要求するクライアントの GUID。ロジック アプリのアプリケーション ID からのクライアント ID です | 
@@ -202,10 +214,9 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 ``` json
 {
    "actions": {
-      "some-action": {
-         "conditions": [],
+      "HTTP": {
          "inputs": {
-            "method": "post",
+            "method": "POST",
             "uri": "https://your-api-azurewebsites.net/api/your-method",
             "authentication": {
                "tenant": "tenant-ID",
@@ -214,7 +225,7 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
                "secret": "key-from-azure-ad-app-for-logic-app",
                "type": "ActiveDirectoryOAuth"
             }
-         },
+         }
       }
    }
 }
@@ -230,16 +241,22 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 ロジック アプリから Web アプリまたは API アプリに入ってくる要求を検証するために、クライアント証明書を利用できます。 コードの設定方法については、「[Web アプリの TLS 相互認証を構成する方法](../app-service/app-service-web-configure-tls-mutual-auth.md)」を参照してください。
 
-**[承認]** セクションで、次の行を追加します。 
+**[承認]** セクションで、次のプロパティを追加します。
 
-`{"type": "clientcertificate", "password": "password", "pfx": "long-pfx-key"}`
+```json
+{
+   "type": "ClientCertificate",
+   "password": "<password>",
+   "pfx": "<long-pfx-key>"
+} 
+```
 
-| 要素 | 必須 | 説明 | 
-| ------- | -------- | ----------- | 
-| type | はい | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 | 
-| password | はい | クライアント証明書 (PFX ファイル) にアクセスするためのパスワード | 
-| pfx | はい | Base64 でエンコードされた、クライアント証明書のコンテンツ (PFX ファイル) | 
-|||| 
+| プロパティ | 必須 | 説明 |
+| -------- | -------- | ----------- |
+| `type` | はい | 認証の種類。 SSL クライアント証明書の場合、値として `ClientCertificate` を指定する必要があります。 |
+| `password` | いいえ | クライアント証明書 (PFX ファイル) にアクセスするためのパスワード |
+| `pfx` | はい | Base64 でエンコードされた、クライアント証明書のコンテンツ (PFX ファイル) |
+||||
 
 <a name="basic"></a>
 
@@ -247,12 +264,18 @@ Azure Active Directory 認証と共に、空の Web アプリやロジック ア
 
 ロジック アプリから Web アプリまたは API アプリに入ってくる要求を検証するために、ユーザー名やパスワードなど、基本認証を利用できます。 基本認証は一般的なパターンなので、この認証は Web アプリまたは API アプリの作成にどの言語が使われていても使用できます。
 
-**[承認]** セクションで、次の行を追加します。
+**[承認]** セクションで、次のプロパティを追加します。
 
-`{"type": "basic", "username": "username", "password": "password"}`
+```json
+{
+   "type": "Basic",
+   "username": "<username>",
+   "password": "<password>"
+}
+```
 
-| 要素 | 必須 | 説明 | 
-| ------- | -------- | ----------- | 
+| プロパティ | 必須 | description | 
+| -------- | -------- | ----------- | 
 | type | はい | 使用する認証の種類。 基本認証の場合、値 `Basic` を使用する必要があります。 | 
 | username | はい | 認証に使用するユーザー名 | 
 | password | はい | 認証に使用するパスワード | 

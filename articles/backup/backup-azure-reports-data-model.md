@@ -8,23 +8,27 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: dacurwin
-ms.openlocfilehash: 96adca2da28517c28ba3583f5d15f07311d2792a
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f3db0e6a78eada52f2b5936f5194138d97ebcca6
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954505"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074890"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Azure Backup レポートのデータ モデル
-この記事では、Azure Backup レポートの作成に使用する Power BI データ モデルについて説明します。 このデータ モデルを使用すると、関連するフィールドに基づく既存のレポートをフィルター処理し、さらに重要なことに、モデルのテーブルとフィールドを使用して独自のレポートを作成できます。 
+
+この記事では、Azure Backup レポートの作成に使用する Power BI データ モデルについて説明します。 このデータ モデルを使用すると、関連するフィールドに基づく既存のレポートをフィルター処理し、さらに重要なことに、モデルのテーブルとフィールドを使用して独自のレポートを作成できます。
 
 ## <a name="creating-new-reports-in-power-bi"></a>Power BI で新しいレポートを作成する
+
 Power BI には、[データ モデルを使用してレポートを作成できる](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)カスタマイズ機能が備わっています。
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup データ モデルを使用する
+
 レポートを作成したり、既存のレポートをカスタマイズしたりするには、データ モデルの一部として提供される次のフィールドを使用できます。
 
 ### <a name="alert"></a>アラート:
+
 次の表は、さまざまなアラートに関連するフィールドの基本フィールドと集計を示しています。
 
 | フィールド | データ型 | 説明 |
@@ -42,6 +46,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | EntityState |Text |アラート オブジェクトの現在の状態。 たとえば、アクティブ、削除済み |
 
 ### <a name="backup-item"></a>バックアップ項目
+
 次の表は、さまざまなバックアップ項目に関連するフィールドの基本フィールドと集計を示しています。
 
 | フィールド | データ型 | 説明 |
@@ -60,6 +65,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | ProtectionState |Text |バックアップ項目の現在の保護状態。 例: 保護、ProtectionStopped |
 
 ### <a name="calendar"></a>Calendar
+
 次の表は、カレンダーに関連するフィールドを示しています。
 
 | フィールド | データ型 | 説明 |
@@ -77,6 +83,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | YearDate |Date |データをフィルター処理するために選択した、年が終わる日付 |
 
 ### <a name="job"></a>ジョブ
+
 次の表は、さまざまなジョブに関連するフィールドの基本フィールドと集計を示しています。
 
 | フィールド | データ型 | 説明 |
@@ -97,6 +104,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | JobUniqueId |Text |ジョブを識別する一意の ID |
 
 ### <a name="policy"></a>ポリシー
+
 次の表は、さまざまなポリシーに関連するフィールドの基本フィールドと集計を示しています。
 
 | フィールド | データ型 | 説明 |
@@ -131,6 +139,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | YearlyRetentionWeeksOfTheMonth |Text |毎年のリテンション期間が構成されたときの月の週 例: 最初、最後など |
 
 ### <a name="protected-server"></a>保護されるサーバー
+
 次の表は、さまざまな保護されるサーバーに関連するフィールドの基本フィールドと集計を示しています。
 
 | フィールド | データ型 | 説明 |
@@ -150,6 +159,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | RegisteredContainerId |Text |バックアップ用に登録されたコンテナーの ID |
 
 ### <a name="storage"></a>Storage
+
 次の表は、さまざまなストレージに関連するフィールドの基本フィールドと集計を示しています。
 
 | フィールド | データ型 | 説明 |
@@ -161,6 +171,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | LastUpdatedDate |Date |選択した行が最後に更新された日付 |
 
 ### <a name="time"></a>Time
+
 次の表は、時刻に関連するフィールドを示しています。
 
 | フィールド | データ型 | 説明 |
@@ -173,6 +184,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | TimeKey |Text |時刻を表すキー値 |
 
 ### <a name="vault"></a>コンテナー
+
 次の表は、さまざまなコンテナーに関連するフィールドの基本フィールドと集計を示しています。
 
 | フィールド | データ型 | 説明 |
@@ -187,6 +199,7 @@ Power BI には、[データ モデルを使用してレポートを作成でき
 | VaultTags |Text |コンテナーに関連付けられるタグ |
 
 ## <a name="next-steps"></a>次の手順
+
 Azure Backup のレポートを作成するためのデータ モデルを確認した時点で、Power BI レポートの作成および表示に関する詳細について、次の記事を参照してください。
 
 * [Power BI でレポートを作成する](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)

@@ -1,5 +1,5 @@
 ---
-title: Azure Blob インデクサーから JSON BLOB のインデックスを作成する
+title: JSON BLOB による検索
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search Blob インデクサーを使用してテキスト コンテンツのために Azure JSON BLOB をクロールします。 インデクサーにより、選択したデータ ソース (Azure Blob Storage など) のデータ インジェストが自動化されます。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f8ddec95b92121c8dad4a39cf0c7b3f1798ec8ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 18f3ed9cb2ef0f700e33e8b643b5e7d167d656a5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789514"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112732"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 
@@ -65,17 +65,11 @@ Azure Cognitive Search と Azure Cosmos DB の両方で (可能であれば同�
 
    ![BLOB データ ソースの定義](media/search-howto-index-json/import-wizard-json-data-source.png)
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 - ウィザードの [認知検索を追加します] ページをスキップする
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 - ウィザードの [コンテンツのエンリッチ] ページをスキップする
 
-JSON ドキュメントをインポートするときは、コグニティブ スキルを追加する必要はありません。 特別に [AI エンリッチメントを追加する](cognitive-search-concept-intro.md)必要がない場合は、この手順を省略してください。
+コグニティブ スキル (またはエンリッチメント) の追加は、インポート要件ではありません。 特別に [AI エンリッチメントを追加する](cognitive-search-concept-intro.md)必要がない場合は、この手順を省略してください。
 
-このステップをスキップするには、先に次のページに移動します。
-
-   ![コグニティブ検索用の次のページ ボタン](media/search-get-started-portal/next-button-add-cog-search.png)
-
-そのページから、インデックスのカスタマイズに進むことができます。
-
-   ![コグニティブ スキル手順のスキップ](media/search-get-started-portal/skip-cog-skill-step.png)
+手順をスキップするには、ページの下部にある [次へ] と [スキップ] の青いボタンをクリックします。
 
 ### <a name="5---set-index-attributes"></a>5 - インデックスの属性を設定する
 

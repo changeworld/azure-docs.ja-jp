@@ -1,6 +1,6 @@
 ---
-title: Azure Digital Twins の一般的なクエリのパターン |Microsoft Docs
-description: Azure Digital Twins Management API にクエリを実行する一般的なパターンについて説明します。
+title: 一般的なクエリのパターン - Azure Digital Twins | Microsoft Docs
+description: Azure Digital Twins 管理 API に対するいくつかの一般的な API クエリ実行パターンについて説明します。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/27/2019
-ms.openlocfilehash: ef9e7a41f1de05e4d21a9ad7b45ed2b99885b6b8
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: c821524b344c8b741047ba415127cffe59a74ca2
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044451"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005909"
 ---
 # <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>一般的なタスクについて Azure Digital Twins API をクエリする方法
 

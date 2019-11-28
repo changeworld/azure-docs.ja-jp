@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の Azure Resource Manager テンプレート
 description: Azure Resource Manager テンプレートを使用して、Azure Cosmos DB を作成および構成します。
-author: markjbrown
+author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: ecdfe89e899e0d416784ae32a0d66b335c09e2b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/08/2019
+ms.author: thvankra
+ms.openlocfilehash: 7b08ca98f25b079d831033b9393effd4ee4b65e3
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582809"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961855"
 ---
 # <a name="azure-resource-manager-templates-for-azure-cosmos-db"></a>Azure Cosmos DB の Azure Resource Manager テンプレート
 
@@ -29,33 +29,26 @@ ms.locfileid: "73582809"
 |**テンプレート**|**説明**|
 |---| ---|
 |[Azure Cosmos アカウント、データベース、コレクションを作成する](manage-mongodb-with-resource-manager.md#create-resource) | このテンプレートは、マルチマスターを有効にした 2 つのリージョンで MongoDB 用 Azure Cosmos DB の API を使用してアカウントを作成します。 Azure Cosmos アカウントには、データベース レベルのスループットを共有する 2 つのコンテナーがあります。 |
-|[データベースのスループット (RU/秒) を更新する](manage-mongodb-with-resource-manager.md#database-ru-update) | このテンプレートは、MongoDB API アカウント内のデータベースのスループットを更新します。 |
-|[コレクションのスループット (RU/秒) を更新する](manage-mongodb-with-resource-manager.md#collection-ru-update) | このテンプレートは、MongoDB API アカウント内のコンテナーのスループットを更新します。 |
 
 ## <a name="cassandra-api"></a>Cassandra API
 
 |**テンプレート**|**説明**|
 |---| ---|
 |[Azure Cosmos アカウント、キースペース、テーブルを作成する](manage-cassandra-with-resource-manager.md#create-resource) | このテンプレートは、マルチマスターを有効にした 2 つのリージョンで Cassandra API アカウントを作成します。 Azure Cosmos アカウントには、データベース レベルのスループットを共有する 2 つのテーブルがあります。 |
-|[キースペースのスループット (RU/秒) を更新する](manage-cassandra-with-resource-manager.md#keyspace-ru-update) | このテンプレートは、Cassandra API アカウント内のキースペースのスループットを更新します。 |
-|[テーブルのスループット (RU/秒) を更新する](manage-cassandra-with-resource-manager.md#table-ru-update) | このテンプレートは、Cassandra API アカウント内のテーブルのスループットを更新します。 |
 
 ## <a name="gremlin-api"></a>Gremlin API
 
 |**テンプレート**|**説明**|
 |---| ---|
 |[Azure Cosmos アカウント、データベース、グラフを作成する](manage-gremlin-with-resource-manager.md#create-resource) | このテンプレートは、マルチマスターを有効にした 2 つのリージョンで Gremlin API アカウントを作成します。 Azure Cosmos アカウントには、データベース レベルのスループットを共有する 2 つのグラフがあります。 |
-|[データベースのスループット (RU/秒) を更新する](manage-gremlin-with-resource-manager.md#database-ru-update) | このテンプレートは、Gremlin API アカウント内のデータベースのスループットを更新します。 |
-|[グラフのスループット (RU/秒) を更新する](manage-gremlin-with-resource-manager.md#graph-ru-update) | このテンプレートは、Gremlin API アカウント内のグラフのスループットを更新します。 |
 
 ## <a name="table-api"></a>テーブル API
 
 |**テンプレート**|**説明**|
 |---| ---|
 |[Azure Cosmos アカウント、テーブルを作成する](manage-table-with-resource-manager.md#create-resource) | このテンプレートは、マルチマスターを有効にした 2 つのリージョンで Table API アカウントを作成します。 Azure Cosmos アカウントには 1 つのテーブルが作成されます。 |
-|[テーブルのスループット (RU/秒) を更新する](manage-table-with-resource-manager.md#table-ru-update) | このテンプレートは、Table API アカウント内のテーブルのスループットを更新します。 |
 
 > [!TIP]
 > Table API を使用する際に共有スループットを有効にするには、Azure portal でアカウント レベルのスループットを有効にします。
 
-リファレンス ドキュメントについては、[Azure Cosmos DB 用 ARM リファレンス](/azure/templates/microsoft.documentdb/allversions)のページを参照してください。
+リファレンス ドキュメントについては、[Azure Cosmos DB 用 Azure Resource Manager リファレンス](/azure/templates/microsoft.documentdb/allversions)のページを参照してください。

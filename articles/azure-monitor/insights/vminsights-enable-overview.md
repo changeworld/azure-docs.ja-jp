@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 09/24/2019
-ms.openlocfilehash: 9d132faf0b4d1de232e2b7e6e5ab6730978e27a8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/14/2019
+ms.openlocfilehash: 40282fdb192037d63bff8b0037f09b8b27cf3b1e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555227"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109183"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs の有効化 (プレビュー) の概要
 
@@ -37,19 +37,23 @@ Azure Monitor for VMs を設定する方法は、次のとおりです。
 Azure Monitor for VMs は、次のリージョンで Log Analytics ワークスペースをサポートします。
 
 - 米国中西部
-- 米国西部 2<sup>1</sup>
+- 米国西部
+- 米国西部 2
+- 米国中南部
 - East US
-- 米国東部 2<sup>1</sup>
+- 米国東部 2
+- 米国中部
+- 米国中北部
 - カナダ中部
 - 英国南部
-- 北ヨーロッパ<sup>1</sup>
+- 北ヨーロッパ
 - 西ヨーロッパ
+- 東アジア
 - 東南アジア
-- 東日本<sup>1</sup>
-- オーストラリア東部<sup>1</sup>
-- オーストラリア南東部<sup>1</sup>
-
-<sup>1</sup> このリージョンでは、Azure Monitor for VMs の正常性の機能はサポートされていません。
+- インド中部
+- 東日本
+- オーストラリア東部
+- オーストラリア南東部
 
 >[!NOTE]
 >任意のリージョンから Azure VM をデプロイすることができます。 これらの VM は、Log Analytics ワークスペースでサポートされているリージョンに限定されません。
@@ -77,29 +81,25 @@ Azure Policy、Azure PowerShell、または Azure Resource Manager テンプレ�
 
 次の表は、Azure Monitor for VMs でサポートされている Windows および Linux オペレーティング システムの一覧です。 メジャーおよびマイナーの Linux OS リリースとサポートされているカーネルのバージョンの詳細な一覧は、このセクションの後の方にあります。
 
-|OS バージョン |パフォーマンス |マップ |Health |
-|-----------|------------|-----|-------|
-|Windows Server 2019 | X | X | X |
-|Windows Server 2016 1803 | X | X | X |
-|Windows Server 2016 | X | X | X |
-|Windows Server 2012 R2 | X | X | X |
-|Windows Server 2012 | X | X | |
-|Windows Server 2008 R2 | X | X|  |
-|Windows 10 1803 | X | X | |
-|Windows 8.1 | X | X | |
-|Windows 8 | X | X | |
-|Windows 7 SP1 | X | X | |
-|Red Hat Enterprise Linux (RHEL) 6、7| X | X| X |
-|Ubuntu 18.04、16.04 | X | X | X |
-|CentOS Linux 7、6 | X | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X | X |
-|Debian 9.4、8 | X<sup>1</sup> | | X |
+|OS バージョン |パフォーマンス |マップ |
+|-----------|------------|-----|
+|Windows Server 2019 | X | X |
+|Windows Server 2016 1803 | X | X |
+|Windows Server 2016 | X | X |
+|Windows Server 2012 R2 | X | X |
+|Windows Server 2012 | X | X |
+|Windows Server 2008 R2 | X | X|
+|Windows 10 1803 | X | X |
+|Windows 8.1 | X | X |
+|Windows 8 | X | X |
+|Windows 7 SP1 | X | X |
+|Red Hat Enterprise Linux (RHEL) 6、7| X | X| 
+|Ubuntu 18.04、16.04 | X | X |
+|CentOS Linux 7、6 | X | X |
+|SUSE Linux Enterprise Server (SLES) 12 | X | X |
+|Debian 9.4、8 | X<sup>1</sup> | |
 
 <sup>1</sup> Azure Monitor for VMs のパフォーマンス機能は、Azure Monitor からのみ使用できます。 Azure VM の左側のウィンドウから直接使用することはできません。
-
->[!NOTE]
->Azure Monitor for VMs の正常性機能では、Azure VM の[入れ子になった仮想化](../../virtual-machines/windows/nested-virtualization.md)はサポートされていません。
->
 
 >[!NOTE]
 >Linux オペレーティング システムでは、次のようになっています。
@@ -157,12 +157,12 @@ Azure Policy、Azure PowerShell、または Azure Resource Manager テンプレ�
 
 Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent からデータが取得されます。 Dependency Agent は、Log Analytics への接続に関して Log Analytics エージェントに依存しています。 そのため、お使いのシステムに Log Analytics エージェントをインストールし、Dependency Agent を使用して構成する必要があります。
 
-単一の Azure VM に対して Azure Monitor for VMs を有効にするか、または大規模なデプロイ方法を使用するかにかかわらず、Azure VM Dependency Agent 拡張機能を使用し、エクスペリエンスの一部としてエージェントをインストールします。
+単一の Azure VM に対して Azure Monitor for VMs を有効にするか、または大規模なデプロイ方法を使用するかにかかわらず、[Windows](../../virtual-machines/extensions/agent-dependency-windows.md) または [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) 用 Azure VM Dependency Agent 拡張機能を使用し、エクスペリエンスの一部としてエージェントをインストールします。
 
 >[!NOTE]
 >このセクションで説明する次の情報は、[Service Map ソリューション](service-map.md)にも適用できます。  
 
-ハイブリッド環境では、手動で Dependency Agent をダウンロードしてインストールできます。 VM が Azure の外部でホストされている場合は、自動化されたデプロイ方法を使用してください。
+ハイブリッド環境では、手動または自動化された方法で Dependency Agent をダウンロードしてインストールできます。
 
 次の表では、ハイブリッド環境でマップ機能がサポートしている接続先ソースについて説明します。
 
@@ -199,6 +199,9 @@ Log Analytics ワークスペースへのアクセスを制御する方法の詳
 ## <a name="performance-counters-enabled"></a>パフォーマンス カウンターの有効化 
 
 Azure Monitor for VMs では、使用されているパフォーマンス カウンターが収集されるように Log Analytics ワークスペースが構成されます。 次の表は、60 秒ごとに収集されるオブジェクトとカウンターの一覧です。
+
+>[!NOTE]
+>次の Azure Monitor for VMs によって有効にされたパフォーマンス カウンターのリストでは、ワークスペースに報告する VM から収集する必要がある追加のカウンターを有効にすることもできます。 また、これらのカウンターを無効にすると、パフォーマンス機能に含まれるパフォーマンス グラフのセットで VM からのリソース使用率が表示されなくなります。
 
 ### <a name="windows-performance-counters"></a>Windows パフォーマンス カウンター
 
@@ -257,4 +260,4 @@ VM の監視が有効になったので、Azure Monitor for VMs での分析に�
 
 ## <a name="next-steps"></a>次の手順
 
-正常性機能の使用方法については、[Azure Monitor for VMs の正常性の表示](vminsights-health.md)に関する記事をご覧ください。 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。
+パフォーマンスの監視機能の使用方法については、[Azure Monitor for VMs のパフォーマンスの表示](vminsights-performance.md)に関する記事をご覧ください。 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。

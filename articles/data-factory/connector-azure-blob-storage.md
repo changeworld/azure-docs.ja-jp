@@ -1,27 +1,27 @@
 ---
-title: Data Factory を使用して Azure Blob Storage との間で双方向にデータをコピーする
-description: Data Factory を使用して、サポートされるソース データ ストアから Azure Blob Storage にデータをコピーしたり、Blob Storage からサポートされるシンク ストアにコピーしたりする方法を説明します。
+title: Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
+description: BLOB ストレージとの間でデータをコピーする方法、および Data Factory を使用して BLOB ストレージのデータを変換する方法について説明します。
 author: linda33wj
 manager: craigg
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 7d17d1ee60f2049dccfb8bc711f3b76bb51689b6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 45fb61ee624ae5ab159f097c233907be7ec35c98
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681357"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075638"
 ---
-# <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
+# <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-azure-blob-connector.md)
 > * [現在のバージョン](connector-azure-blob-storage.md)
 
-この記事では、Azure Blob Storage との間でデータを双方向にコピーする方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure BLOB ストレージをコピー先またはコピー元としてデータをコピーする方法、および Data Flow を使用して Azure BLOB ストレージのデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "73681357"
 - [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
 - [アクティビティを削除する](delete-activity.md)
 
-具体的には、この Blob Storage コネクタは、以下をサポートします。
+コピー アクティビティの場合、この Blob Storage コネクタは、以下をサポートします。
 
 - 汎用 Azure Storage アカウントとホット/クール Blob Storage との間での BLOB のコピー。 
 - アカウント キー、サービスの Shared Access Signature、サービス プリンシパル、または Azure リソースのマネージド ID のいずれかの認証を使用した BLOB のコピー。

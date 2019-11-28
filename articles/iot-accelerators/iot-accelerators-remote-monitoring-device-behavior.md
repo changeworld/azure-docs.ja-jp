@@ -1,5 +1,5 @@
 ---
-title: リモート監視ソリューションでのシミュレートされたデバイスの動作 - Azure | Microsoft Docs
+title: リモート監視ソリューションでのシミュレートされたデバイス - Azure | Microsoft Docs
 description: この記事では、JavaScript を使用して、リモート監視ソリューションでのシミュレートされたデバイスの動作を定義する方法について説明します。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 04d2ad2f0e86ee977600af86a2ffd1e9d7680375
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65823416"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890861"
 ---
 # <a name="implement-the-device-model-behavior"></a>デバイス モデルの動作の実装
 

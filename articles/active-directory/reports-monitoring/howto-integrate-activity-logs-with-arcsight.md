@@ -1,9 +1,9 @@
 ---
-title: Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する方法 | Microsoft Docs
+title: Azure Monitor を使用してログを ArcSight と統合する | Microsoft Docs
 description: Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: b37bef0d-982e-4e28-86b2-6c61ca524ae1
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/19/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d202cb0cc2d073326a5bcc8fb0d540c232afa98
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 2fbd658d610fba27bdaed2af4bc27ed40a138fac
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240901"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008026"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する
 
@@ -59,4 +59,4 @@ ms.locfileid: "72240901"
 
 ## <a name="next-steps"></a>次の手順
 
-[ArcSight SmartConnector for Azure Monitor Event Hub の構成ガイド](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[ArcSight SmartConnector for Azure Monitor Event Hub の構成ガイド](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)

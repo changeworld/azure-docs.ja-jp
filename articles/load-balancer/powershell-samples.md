@@ -1,7 +1,6 @@
 ---
-title: Azure PowerShell のサンプル
-titlesuffix: Azure Load Balancer
-description: Azure PowerShell のサンプル
+title: Azure PowerShell のサンプル - Azure Load Balancer
+description: これらのサンプルでは、Azure Load Balancer を使用して、HA のために、VM 上の複数の Web サイトおよび複数の VM に、トラフィックを負荷分散します。
 services: virtual-network
 documentationcenter: load-balancer
 author: asudbring
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/10/2018
 ms.author: allensu
-ms.openlocfilehash: cf984efdeb8c65f4f9d639e331c2dc07e2910479
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4311c1dca2ad299ac8b064769db5eb928e6a4513
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274075"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048709"
 ---
 # <a name="azure-powershell-samples-for-load-balancer"></a>Load Balancer に関する Azure PowerShell のサンプル
 

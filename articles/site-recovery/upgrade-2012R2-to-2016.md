@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して構成された Windows Server 2012 R2 ホストと SCVMM を Windows Server 2016 にアップグレードする
+title: Windows Server/System Center VMM 2012 R2 を Windows Server 2016-Azure Site Recovery にアップグレードする
 description: Azure Site Recovery サービスを使用して Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
-ms.openlocfilehash: b67290f72f762331a6d699fb79aef0c0d7f9fb65
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61275525"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954415"
 ---
-# <a name="upgrade-windows-server-2012-r2-hosts-scvmm-2012-r2-configured-with-azure-site-recovery-to-windows-server-2016--scvmm-2016"></a>Azure Site Recovery を使用して構成された Windows Server 2012 R2 ホスト、SCVMM 2012 R2 を Windows Server 2016 と SCVMM 2016 にアップグレードする
+# <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>Windows Server Server/System Center 2012 R2 VMM を Windows Server/VMM 2016 にアップグレードする 
 
 この記事では、Azure Site Recovery を使用して構成された Windows Server 2012 R2 ホストと SCVMM 2012 R2 を Windows Server 2016 と SCVMM 2016 にアップグレードする方法について説明します
 

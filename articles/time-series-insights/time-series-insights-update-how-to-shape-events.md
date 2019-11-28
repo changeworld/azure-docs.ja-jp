@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights プレビューでのイベントの調整 | Microsoft Docs
-description: Azure Time Series Insights プレビューでのイベントの調整方法を理解します。
+title: イベントの調整 - Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights プレビューでのイベントの調整方法を説明します。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b9dd10a4017d821794af037e502c784b10cd62f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: bd1b59ac2037669be021dfad3bf5032b794bef4a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585272"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006269"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのイベントの調整
 

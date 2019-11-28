@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 60ef89308eceeb8ae74caba7230f1dc9c6940f47
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 72abfef1f86fe47eb7817241a674741f56817f24
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469062"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082722"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -177,12 +177,19 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
-| **`--csx`** | C# スクリプト (.csx) プロジェクトを初期化します。 後続のコマンドで、`--csx` を指定する必要があります。 |
+| **`--csharp`**<br/> **`--dotnet`** | [C# クラス ライブラリ (.cs) プロジェクト](functions-dotnet-class-library.md)を初期化します。 |
+| **`--csx`** | [C# スクリプト (.csx) プロジェクト](functions-reference-csharp.md)を初期化します。 後続のコマンドで、`--csx` を指定する必要があります。 |
 | **`--docker`** | 選択した `--worker-runtime` に基づく基本イメージを使用して、コンテナーの Dockerfile を作成します。 カスタム Linux コンテナーに発行する場合は、このオプションを使用します。 |
+| **`--docker-only`** |  既存のプロジェクトに Dockerfile を追加します。 local.settings.json で設定されていないか指定されていない場合、worker ランタイムのプロンプトを表示します。 既存のプロジェクトをカスタム Linux コンテナーに発行する場合は、このオプションを使用します。 |
 | **`--force`** | プロジェクトに既存のファイルがある場合でも、プロジェクトを初期化します。 この設定は、同じ名前の既存のファイルを上書きします。 プロジェクト フォルダー内の他のファイルには影響ありません。 |
-| **`--no-source-control -n`** | バージョン 1.x での Git リポジトリの既定の作成を禁止します。 バージョン 2.x では、Git リポジトリは既定では作成されません。 |
+| **`--java`**  | [Java プロジェクト](functions-reference-java.md)を初期化します。 |
+| **`--javascript`**<br/>**`--node`**  | [JavaScript プロジェクト](functions-reference-node.md)を初期化します。 |
+| **`--no-source-control`**<br/>**`-n`** | バージョン 1.x での Git リポジトリの既定の作成を禁止します。 バージョン 2.x では、Git リポジトリは既定では作成されません。 |
+| **`--powershell`**  | [PowerShell プロジェクト](functions-reference-powershell.md)を初期化します。 |
+| **`--python`**  | [Python プロジェクト](functions-reference-python.md)を初期化します。 |
 | **`--source-control`** | Git リポジトリを作成するかどうかを制御します。 既定では、リポジトリは作成されません。 `true` を指定すると、リポジトリが作成されます。 |
-| **`--worker-runtime`** | プロジェクトの言語ランタイムを設定します。 サポートされる値は、`dotnet`、`node` (JavaScript)、`java`、`python` です。 設定しないと、初期化中にランタイムの選択を求められます。 |
+| **`--typescript`**  | [TypeScript プロジェクト](functions-reference-node.md#typescript)を初期化します。 |
+| **`--worker-runtime`** | プロジェクトの言語ランタイムを設定します。 サポートされる値は、`csharp`、`dotnet`、`java`、`javascript`、`node` (JavaScript)、`powershell`、`python`、`typescript` です。 設定しないと、初期化中にランタイムの選択を求められます。 |
 
 > [!IMPORTANT]
 > 既定では、Core Tools のバージョン 2.x では、.NET ランタイムの関数アプリ プロジェクトは [C# クラス プロジェクト](functions-dotnet-class-library.md) (.csproj) として作成されます。 Visual Studio または Visual Studio Code で使用できるこれらの C# プロジェクトは、テスト中および Azure への発行時にコンパイルされます。 バージョン 1.x およびポータルで作成される同じ C# スクリプト (.csx) ファイルを代わりに作成および使用したい場合は、関数を作成して展開するときに、`--csx` パラメーターを指定する必要があります。
@@ -465,11 +472,11 @@ func azure functionapp publish <FunctionAppName>
 | **`--list-included-files`** | 発行されるファイルの一覧を表示します。これは、.funcignore ファイルに基づきます。 |
 | **`--nozip`** | 既定の `Run-From-Package` モードをオフにします。 |
 | **`--build-native-deps`** | Python 関数アプリを発行するときに、.wheels フォルダーの生成をスキップします。 |
-| **`--build [-b]`** | Linux 関数アプリにデプロイするときにビルド アクションを実行します。 (許可: remote、local) |
+| **`--build`**<br/>**`-b`** | Linux 関数アプリにデプロイするときにビルド アクションを実行します。 `remote` および `local` を受け入れます。 |
 | **`--additional-packages`** | ネイティブの依存関係を構築するときにインストールするパッケージの一覧。 (例: `python3-dev libevent-dev`)。 |
 | **`--force`** | 特定のシナリオで発行前の検証を無視します。 |
 | **`--csx`** | C# スクリプト (.csx) プロジェクトを発行します。 |
-| **`--no-build`** | dotnet 関数のビルドをスキップします。 |
+| **`--no-build`** | .NET クラス ライブラリ関数をビルドしません。 |
 | **`--dotnet-cli-params`** | コンパイル済み C# (.csproj) 関数を発行するとき、Core Tools は "dotnet build --output bin/publish" を呼び出します。 これに渡されるすべてのパラメーターは、コマンド ラインに追加されます。 |
 
 ### <a name="deployment-custom-container"></a>デプロイ (カスタム コンテナー)

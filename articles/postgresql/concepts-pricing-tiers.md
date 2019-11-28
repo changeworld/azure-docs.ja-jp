@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: f65bc0a9969ac713c2fb9f8629b97fbe522e9fe0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.date: 11/08/2019
+ms.openlocfilehash: 4f8bbf22d1081948cf6effd5fdbd8b6a6b7d5332
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624840"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903292"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の価格レベル
 
@@ -22,13 +22,13 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 | コンピューティング世代 | Gen 4、Gen 5 | Gen 4、Gen 5 | Gen 5 |
 | 仮想コア | 1、2 | 2、4、8、16、32、64 |2、4、8、16、32 |
 | 仮想コアあたりのメモリ | 2 GB | 5 GB | 10 GB |
-| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
+| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB から 16 TB | 5 GB から 16 TB |
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
 | データベース バックアップのリテンション期間 | 7 ～ 35 日間 | 7 ～ 35 日間 | 7 ～ 35 日間 |
 
 価格レベルを選択する場合は、まず次の表を参考にしてください。
 
-| 価格レベル | 対象のワークロード |
+| Pricing tier | 対象のワークロード |
 |:-------------|:-----------------|
 | Basic | 低負荷なコンピューティングと I/O パフォーマンスを必要とするワークロード。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションに使用するサーバーがこれに該当します。 |
 | 汎用 | 負荷分散されたコンピューティングとメモリ、およびスケーラブルな I/O スループットを必要とする大部分のビジネス ワークロード。 たとえば、Web アプリやモバイル アプリ、その他のエンタープライズ アプリケーションをホストするためのサーバーが挙げられます。|
@@ -47,9 +47,15 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 |    | **Basic** | **汎用** | **メモリ最適化** |
 |:---|:----------|:--------------------|:---------------------|
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
-| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 4 TB | 5 GB ～ 4 TB |
+| ストレージ サイズ | 5 GB ～ 1 TB | 5 GB から 16 TB | 5 GB から 16 TB |
 | ストレージの増分サイズ | 1 GB | 1 GB | 1 GB |
-| IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 6000 IOPS |
+| IOPS | 変数 |3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
+
+> [!NOTE]
+> 次のリージョンでは、最大で 16 TB および 20,000 IOPS のストレージがサポートされています。米国東部、米国東部 2、米国中部、米国西部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部。
+>
+> その他のすべてのリージョンでは、最大で 4 TB および 6000 IOPS のストレージがサポートされています。
+>
 
 サーバーの作成中および作成後にさらにストレージ容量を追加でき、システムではワークロードのストレージ使用量に基づいて自動的にストレージを拡張することができます。 
 
@@ -59,26 +65,6 @@ Azure Database for PostgreSQL サーバーは、次の 3 つの価格レベル�
 Basic レベルでは、IOPS 保証は提供されません。 汎用およびメモリ最適化の価格レベルでは、IOPS は、プロビジョニング済みのストレージ サイズに合わせて 3 対 1 の比率でスケーリングされます。
 
 ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視すべき関連メトリックは、[容量の上限、ストレージの割合、ストレージの使用量、および IO の割合](concepts-monitoring.md)です。
-
-### <a name="large-storage-preview"></a>大容量のストレージ (プレビュー)
-
-汎用レベルおよびメモリ最適化レベルのストレージ制限の上限を引き上げています。 プレビューにオプトインされる新しく作成されたサーバーでは、最大 16 TB のストレージをプロビジョニングできます。 IOPS は、3:1 の比率で最大で 20,000 IOPS までスケーリングされます。 現在一般的に使用できるストレージと同様に、サーバーの作成後にさらにストレージ容量を追加でき、システムではワークロードのストレージ使用量に基づいて自動的にストレージを拡張できます。
-
-|              | **汎用** | **メモリ最適化** |
-|:-------------|:--------------------|:---------------------|
-| ストレージの種類 | Azure Premium Storage | Azure Premium Storage |
-| ストレージ サイズ | 32 GB ～ 16 TB| 32 GB ～ 16 TB |
-| ストレージの増分サイズ | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS | 3 IOPS/GB<br/>最小 100 IOPS<br/>最大 20,000 IOPS |
-
-> [!IMPORTANT]
-> 大容量ストレージは、現在、次のリージョンでパブリック プレビュー中です。米国東部、米国東部 2、米国中部、米国西部、北ヨーロッパ、西ヨーロッパ、英国南部、英国西部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部、オーストラリア東部、オーストラリア東南部。
->
-> 大容量ストレージのプレビューでは、現在、以下はサポートされていません。
->
-> * 仮想ネットワーク サービス エンドポイント経由の受信接続
-> * Geo 冗長バックアップ
-> * 読み取りレプリカ
 
 ### <a name="reaching-the-storage-limit"></a>容量の上限に到達
 

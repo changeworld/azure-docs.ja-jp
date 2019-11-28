@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける | Microsoft Docs
+title: Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 description: この記事では、Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントの順序付けと記録を行って、最新の接続状態を管理する方法について説明します
 services: iot-hub
 ms.service: iot-hub
@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: a020221d841682d1e18d2b728a732ec4dfc35ef3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67988283"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954251"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -220,7 +220,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
    **データベース ID**:ToDoList
 
-   **コレクション ID**:項目
+   **コレクション ID**:アイテム
 
    **Sproc ID**:LatestDeviceConnectionState
 

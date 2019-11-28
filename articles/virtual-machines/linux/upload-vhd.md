@@ -1,5 +1,5 @@
 ---
-title: Azure CLI を使用したカスタム Linux VM のアップロードまたはコピー | Microsoft Docs
+title: Azure CLI を使用してカスタム Linux VM をアップロードまたはコピーする
 description: Resource Manager デプロイ モデルと Azure CLI を使用して、カスタマイズされた仮想マシンをアップロードまたはコピーする
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 6cc01266bb6e7f122868257e8a5b9e88e78dddea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 95486208f52b2faa2fbb3db5bf1ef968c330dab6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553486"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034298"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクから Linux VM を作成する
 

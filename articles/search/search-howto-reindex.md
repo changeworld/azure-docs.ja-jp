@@ -1,5 +1,5 @@
 ---
-title: Azure Cognitive Search インデックスを再構築する
+title: 検索インデックスの再構築
 titleSuffix: Azure Cognitive Search
 description: 完全に再構築された、または一部増分インデックスに新しい要素を追加、既存の要素またはドキュメントを更新、または古いドキュメントを削除して、Azure Cognitive Search インデックスを更新します。
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1301ee2494aa24720905b9e3e68edce04fb17e72
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b14c153f52e0427e289afeccdfd22d6510e4ace1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466444"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112971"
 ---
-# <a name="how-to-rebuild-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスを再構築する方法
+# <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Azure Cognitive Search のインデックスを再構築する方法
 
 この記事では、Azure Cognitive Search インデックスを再構築する方法、再構築が必要な状況、および実行中のクエリ要求に対する再構築の影響を軽減するためのレコメンデーションについて説明します。
 

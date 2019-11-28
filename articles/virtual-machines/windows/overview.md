@@ -1,5 +1,5 @@
 ---
-title: Windows 仮想マシンの概要 - Azure | Microsoft Docs
+title: Windows Virtual Machines の概要 - Azure
 description: Azure における Windows 仮想マシンの作成と管理について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 47ad2346f4574b10d12c46c1f72394225e014854
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe62f67071b77c464d5b3b8649d16db597d9ab21
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102562"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033033"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure における Windows 仮想マシンの概要
 
@@ -48,7 +48,7 @@ Azure でアプリケーション インフラストラクチャを構築する�
 * VM で必要な関連リソース
 
 ### <a name="naming"></a>名前を付ける
-仮想マシンには[名前](/azure/architecture/best-practices/naming-conventions)が割り当てられ、コンピューター名がオペレーティング システムの一部として構成されます。 VM の名前は最大で 15 文字です。
+仮想マシンには[名前](/azure/architecture/best-practices/resource-naming)が割り当てられ、コンピューター名がオペレーティング システムの一部として構成されます。 VM の名前は最大で 15 文字です。
 
 Azure を使用してオペレーティング システム ディスクを作成する場合、コンピューター名と仮想マシン名は同じになります。 以前構成されたオペレーティング システムが含まれる[独自のイメージをアップロードして使用](upload-generalized-managed.md)し、それを基に仮想マシンを作成する場合は、別の名前にすることができます。 独自のイメージ ファイルをアップロードするときは、オペレーティング システムのコンピューター名と仮想マシン名を同じにすることをお勧めします。
 
@@ -100,7 +100,7 @@ VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwi
 ### <a name="related-resources"></a>関連リソース
 次の表のリソースは VM によって使用されるため、VM の作成時に存在するか、作成する必要があります。
 
-| Resource | 必須 | 説明 |
+| リソース | 必須 | 説明 |
 | --- | --- | --- |
 | [[リソース グループ]](../../azure-resource-manager/resource-group-overview.md) |はい |VM は、リソース グループに含まれる必要があります。 |
 | [ストレージ アカウント](../../storage/common/storage-create-storage-account.md) |はい |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |

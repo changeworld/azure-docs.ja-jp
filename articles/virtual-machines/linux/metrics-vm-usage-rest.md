@@ -1,5 +1,5 @@
 ---
-title: REST API を使用して Azure 仮想マシンの使用状況データを取得する | Microsoft Docs
+title: REST API を使用して Azure 仮想マシンの使用状況データを取得する
 description: Azure REST API を使用して、仮想マシンの使用率メトリックを収集します。
 services: virtual-machines
 author: rloutlaw
@@ -10,12 +10,12 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 53e93d20f4a8c4877374d8242521ca97d481e15d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 523b81e53f2b0622b237993dbd88fb9492079c86
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667457"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035807"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>REST API を使用して仮想マシンの使用状況のメトリックを取得する
 
@@ -42,7 +42,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="uri-parameters"></a>URI パラメーター
 
-| Name | 説明 |
+| 名前 | 説明 |
 | :--- | :---------- |
 | subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
 | resourceGroupName | リソースに関連付けられている Azure リソース グループの名前。 この値は、Azure Resource Manager API、CLI、またはポータルから取得できます。 |

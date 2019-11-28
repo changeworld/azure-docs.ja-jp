@@ -1,18 +1,17 @@
 ---
-title: Azure Site Recovery を使用した VMware VM から Azure へのディザスター リカバリーの概要 | Microsoft Docs
+title: Azure Site Recovery を使用した VMware のディザスター リカバリー
 description: この記事では、Azure Site Recovery サービスを使用した VMware VM から Azure へのディザスター リカバリーの概要について説明します。
-author: raynew
+author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 9/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: dca8174caabf4799c338d780a78ba58f1af5a2f1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814318"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954386"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>VMware VM から Azure へのディザスター リカバリーの概要
 

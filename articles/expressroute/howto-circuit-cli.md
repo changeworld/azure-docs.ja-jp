@@ -1,19 +1,18 @@
 ---
-title: ExpressRoute 回線の作成と変更:Azure CLI | Microsoft Docs
+title: ExpressRoute 回線の作成と変更:Azure CLI
 description: この記事では、CLI を使った ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法を示します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.reviewer: anzaman
-ms.openlocfilehash: e42190814b9365c7db054eb2b5f1842581b64009
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 75729811b63e8de3047e45e9b90f5fa3ec657901
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657068"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083232"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線の作成と変更
 
@@ -119,7 +118,7 @@ az network express-route list-service-providers
 
 応答をチェックして、ご利用の接続プロバイダーがリストにあるかどうかを確認します。 以下の項目は、回線を作成する際に必要になるため、書き留めておいてください。
 
-* Name
+* 名前
 * PeeringLocations
 * BandwidthsOffered
 
@@ -142,8 +141,8 @@ az group create -n ExpressRouteResourceGroup -l "West US"
 
 必ず、適切な SKU レベルと SKU ファミリを指定してください。
 
-* SKU レベルによって、ExpressRoute の Standard と Premium のどちらのアドオンが有効になるかが決まります。 標準 SKU を取得する場合は [Standard] を、Premium アドオンの場合は [Premium] を指定できます。
-* SKU ファミリによって、課金の種類が決まります。 従量制課金データ プランの場合は "Metereddata"、無制限データ プランの場合は "Unlimiteddata" を指定できます。 課金の種類は "Metereddata" から "Unlimiteddata" に変更できますが、"Unlimiteddata" から "Metereddata" に変更することはできません。
+* SKU 層 によって、ExpressRoute 回線が [Local](expressroute-faqs.md#expressroute-local)、Standard、[Premium](expressroute-faqs.md#expressroute-premium) のどれであるかが決まります。 "*Local*"、"*Standard*" または "*Premium*" を指定できます。
+* SKU ファミリによって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類は *Metereddata* から *Unlimiteddata* に変更できますが、*Unlimiteddata* から *Metereddata* に変更することはできません。 "*Local*" 回線は "*Unlimiteddata*" のみです。
 
 
 ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 以下に、新しいサービス キーの要求の例を示します。

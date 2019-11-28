@@ -1,5 +1,5 @@
 ---
-title: Azure CDN from Verizon Premium ルール エンジンの条件式 | Microsoft Docs
+title: Azure CDN - Verizon Premium ルール エンジンの条件式
 description: Azure CDN from Verizon Premium ルール エンジンの一致条件と機能に関するリファレンス ドキュメント。
 services: cdn
 author: mdgattuso
@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: f790e37ae876c0640d55ebfb51abb43c6a705f04
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: d28bda28894477845c2a050666b3b4dd332b7d50
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593216"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082970"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Azure CDN from Verizon Premium ルール エンジンの条件式
 

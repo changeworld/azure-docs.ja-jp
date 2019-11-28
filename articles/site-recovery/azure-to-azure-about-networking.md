@@ -1,21 +1,21 @@
 ---
-title: Azure Site Recovery を使用した Azure から Azure へのディザスター リカバリーのネットワークについて | Microsoft Docs
+title: Azure Site Recovery を使用した Azure VM のディザスター リカバリーのネットワークについて
 description: Azure Site Recovery を使用した Azure VM のレプリケーション用のネットワークの概要について示します。
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 3/29/2019
+ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: 9c65d6055807ee2735f1915e8ca289dc0754535b
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736394"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954206"
 ---
-# <a name="about-networking-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションのネットワークについて
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>Azure VM ディザスター リカバリーのネットワークについて
 
 
 
@@ -48,7 +48,7 @@ ms.locfileid: "70736394"
 
 **URL** | **詳細**  
 --- | ---
-*.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 お使いの VM のすべてのキャッシュ ストレージ アカウントを把握している場合、*.blob.core.windows.net の代わりに、特定のストレージ アカウントの URL (例: cache1.blob.core.windows.net および cache2.blob.core.windows.net) をホワイトリストに登録できます。
+*.blob.core.windows.net | VM からソース リージョンのキャッシュ ストレージ アカウントにデータを書き込むことができるようにするために必要です。 お使いの VM のすべてのキャッシュ ストレージ アカウントを把握している場合、*.blob.core.windows.net の代わりに、特定のストレージ アカウントの URL (例: cache1.blob.core.windows.net および cache2.blob.core.windows.net) へのアクセスを許可することができます。
 login.microsoftonline.com | Site Recovery サービス URL に対する承認と認証に必要です。
 *.hypervrecoverymanager.windowsazure.com | VM から Site Recovery サービス通信を実行できるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する 'Site Recovery IP' を使用できます。
 *.servicebus.windows.net | VM から Site Recovery の監視および診断データを書き込むことができるようにするために必要です。 ファイアウォール プロキシによって IP がサポートされている場合は、該当する 'Site Recovery Monitoring IP' を使用できます。
@@ -62,7 +62,7 @@ IP ベースのファイアウォール プロキシ、または NSG ルール�
     - VM からキャッシュ ストレージ アカウントにデータを書き込むことができるように、これらのアドレスを許可します。
 - AAD に対応するすべての IP アドレスへのアクセスを許可するには、[Azure Active Directory (AAD) サービス タグ](../virtual-network/security-overview.md#service-tags) ベースの NSG ルールを作成します。
     - 今後、新しいアドレスが Azure Active Directory (AAD) に追加された場合は、新しい NSG ルールを作成する必要があります。
-- Site Recovery サービス エンドポイント IP アドレス - [XML ファイル](https://aka.ms/site-recovery-public-ips)で入手できます。ターゲットの場所によって異なります。
+- Site Recovery サービス エンドポイント IP アドレス - [XML ファイル](https://aka.ms/site-recovery-public-ips)で入手できます。ターゲットの場所によって異なります。 
 - 必要な NSG ルールをテスト NSG に作成し、問題がないことを確認してから、運用環境の NSG にルールを作成することをお勧めします。
 
 
@@ -117,6 +117,8 @@ Site Recovery IP アドレスの範囲は次のとおりです。
    ドイツ中西部 | 51.116.156.176 | 51.116.154.192
    スイス西部 | 51.107.231.223| 51.107.154.128
    スイス北部 | 51.107.68.31| 51.107.58.128
+   ノルウェー東部 | 51.120.100.64| 51.120.98.128
+   ノルウェー西部 | 51.120.220.65| 51.120.218.160
 
 ## <a name="example-nsg-configuration"></a>NSG 構成の例
 
@@ -154,6 +156,7 @@ Site Recovery IP アドレスの範囲は次のとおりです。
    **Location** | **Site Recovery IP アドレス** |  **Site Recovery 監視 IP アドレス**
     --- | --- | ---
    East US | 13.82.88.226 | 104.45.147.24
+
 
 ## <a name="network-virtual-appliance-configuration"></a>ネットワーク仮想アプライアンスの構成
 

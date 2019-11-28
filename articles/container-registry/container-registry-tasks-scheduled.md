@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry タスクをスケジュールする
-description: 定義したスケジュールで Azure Container Registry タスクが実行されるようにタイマーを設定します。
+description: 1 つ以上のタイマー トリガーを設定して、定義したスケジュールに基づき、Azure Container Registry タスクを実行する方法を説明します。
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,16 +8,16 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509066"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931463"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>定義したスケジュールで ACR タスクを実行する
 
-この記事では、スケジュールに従って [ACR タスク](container-registry-tasks-overview.md)を実行する方法を示します。 1 つ以上の "*タイマー トリガー*" を設定することによってタスクをスケジュールします。
+この記事では、スケジュールに従って [ACR タスク](container-registry-tasks-overview.md)を実行する方法を説明します。 1 つ以上の "*タイマー トリガー*" を設定することによってタスクをスケジュールします。
 
 タスクのスケジュールは、次のようなシナリオで役に立ちます。
 
@@ -174,7 +174,7 @@ Cron 式で使われるタイム ゾーンは、協定世界時 (UTC) です。 
 
 各フィールドは、次の種類の値のいずれかを持つことができます。
 
-|Type  |例  |トリガーのタイミング  |
+|種類  |例  |トリガーのタイミング  |
 |---------|---------|---------|
 |特定の値 |<nobr>`"5 * * * *"`</nobr>|毎時、正時から 5 分後|
 |すべての値 (`*`)|<nobr>`"* 5 * * *"`</nobr>|5:00 UTC からの 1 時間の毎分 (1 日に 60 回 )|

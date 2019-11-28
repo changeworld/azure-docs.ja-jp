@@ -1,21 +1,17 @@
 ---
-title: フェールオーバーと修正プログラムの適用 - Azure Cache for Redis | Microsoft Docs
+title: フェールオーバーと修正プログラムの適用- Azure Cache for Redis
 description: Azure Cache for Redis のフェールオーバー、修正プログラムの適用、および更新プロセスについて学習します。
-services: cache
 author: asasine
-ms.assetid: 928b9b9c-d64f-4252-884f-af7ba8309af6
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: adsasine
-ms.openlocfilehash: 22c48441795e8aff9aba6540f15130452bcec2f7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6ff33bd594181aabc4fd7d55ce33f780a0d06086
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819170"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122194"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Azure Cache for Redis のフェールオーバーと修正プログラムの適用
 

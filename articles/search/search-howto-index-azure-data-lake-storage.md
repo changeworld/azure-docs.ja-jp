@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Storage Gen2 のドキュメントのインデックス作成 (プレビュー)
+title: Azure Data Lake Storage Gen2 (プレビュー) の検索
 titleSuffix: Azure Cognitive Search
 description: Azure Data Lake Storage Gen2 でコンテンツとメタデータのインデックスを作成する方法について説明します。 現在、この機能はパブリック プレビュー段階にあります。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 390f45ce874e4e64d3a7b9a6c3944983e0ba9028
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719926"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112290"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のドキュメントのインデックス作成
 

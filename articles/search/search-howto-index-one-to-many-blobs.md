@@ -1,7 +1,7 @@
 ---
-title: フルテキスト検索のために Azure Blob インデクサーから 1 つの BLOB を多くの検索インデックス ドキュメントにインデックスを付ける
+title: 複数のドキュメントを含むインデックス BLOB
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search Blob インデクサーを使用してテキスト コンテンツのために Azure BLOB をクロールします。 各 BLOB は、1 つまたは複数の Search インデックス ドキュメントを中断させる場合があります。
+description: Azure BLOB をクロールしてテキスト コンテンツを探すために、Azure Cognitive Search Blob インデクサーを使用します。この場合、各 BLOB から 1 つ以上の検索インデックス ドキュメントが生成される場合があります。
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818536"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112270"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>BLOB のインデックス作成して複数の検索ドキュメントを生成する
 既定では、BLOB インデクサーで BLOB のコンテンツが単一の検索ドキュメントとして扱われます。 特定の **parsingMode** 値では、個々の BLOB で複数の検索ドキュメントが生成される可能性のあるシナリオがサポートされます。 インデクサーで BLOB から複数の検索ドキュメントを抽出できるようにする、さまざまな種類の **parsingMode** を以下に示します。

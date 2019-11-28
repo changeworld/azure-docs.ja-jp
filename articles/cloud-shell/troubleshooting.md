@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 91dc87cd6bda93663fb4b4eae3d498ae56ba4b3e
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 5af73e166f3caa4997851ae4b17d8377550bf40a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169590"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961546"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
@@ -86,6 +86,12 @@ Azure Cloud Shell に関する問題のトラブルシューティングを行�
 ## <a name="general-limitations"></a>一般的な制限事項
 
 Azure Cloud Shell には、次の既知の制限があります。
+
+### <a name="quota-limitations"></a>クォータ制限
+
+Azure Cloud Shell には、リージョンごとにテナントあたり 20 人という同時実行ユーザー数の制限があります。 制限よりも多くの同時セッションを開こうとすると、"Tenant User Over Quota"\(テナントユーザーがクォータを超えています\) というエラーが表示されます。 この数よりも多くのセッションを開く正当な必要性がある場合 (トレーニング セッションの場合など)、予定される使用よりも前にサポートに問い合わせて、クォータの引き上げを要求します。
+
+Cloud Shell は無料のサービスとして提供されており、汎用的なコンピューティング プラットフォームとしてではなく、Azure 環境の構成に使用するように設計されています。 使用を過剰に自動化すると、Azure のサービス利用規約に違反していると見なされ、Cloud Shell のアクセスがブロックされる可能性があります。
 
 ### <a name="system-state-and-persistence"></a>システム状態と永続化
 
@@ -160,7 +166,7 @@ Azure Cloud Shell は、ユーザーの個人データを慎重に取り扱い�
 ### <a name="export"></a>エクスポート
 選択されたシェル、フォント サイズ、フォントの種類など、Cloud Shell によって保存されるユーザー設定を**エクスポート**するには、次のコマンドを実行します。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. Bash または PowerShell で次のコマンドを実行します。
 
 Bash:
@@ -183,7 +189,7 @@ PowerShell:
 >[!Note]
 > ユーザー設定を削除しても、実際の Azure Files 共有は削除されません。 Azure Files に移動して、そのアクションを完了します。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
 2. Bash または PowerShell で次のコマンドを実行します。
 
 Bash:

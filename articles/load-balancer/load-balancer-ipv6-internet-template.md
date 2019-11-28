@@ -1,7 +1,7 @@
 ---
 title: IPv6 でインターネットに接続するロード バランサーのデプロイ - Azure テンプレート
-titlesuffix: Azure Load Balancer
-description: Azure Load Balancer と負荷分散された VM に IPv6 サポートをデプロイする方法について説明します。
+titleSuffix: Azure Load Balancer
+description: Azure テンプレートを使用して、Azure Load Balancer と負荷分散された VM に IPv6 サポートをデプロイする方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 4286879dc53cc835532c7a8243eaf88813545265
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: f92011a6955398ef85e44fae1ce8f782cc9cc12c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274996"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075999"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>テンプレートを使用して IPv6 でインターネットに接続するロード バランサー ソリューションをデプロイする
 
@@ -29,6 +29,8 @@ ms.locfileid: "68274996"
 > * [テンプレート](load-balancer-ipv6-internet-template.md)
 
 
+>[!注:IPv6 のベスト プラクティスの変更] この記事で説明するのは、Basic Load Balancer で IPv4 と IPv6 の両方の接続性を提供する初歩的な IPv6 機能です。  [Azure VNET の IPv6](../virtual-network/ipv6-overview.md) によって、より包括的な IPv6 接続性が利用できるようになりました。これは IPv6 接続性をお客様の仮想ネットワークと統合するものであり、IPv6 ネットワーク セキュリティ グループの規則、IPv6 ユーザー定義のルーティング、IPv6 の Basic と Standard の負荷分散などの主要な機能を備えています。  Azure での IPv6 アプリケーションにおけるベスト プラクティスとして、Azure VNET の IPv6 をお勧めします。 
+>[Azure VNET (テンプレート) の IPv6 のデプロイ](../virtual-network/ipv6-configure-standard-load-balancer-template-json.md)に関するページを参照してください
 
 Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 

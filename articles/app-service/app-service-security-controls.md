@@ -9,12 +9,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 65b1c7f4649ff90c1305d4007428ea02bb003369
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a1889def8d177c312618f12b3fa0480cc4b849b3
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886208"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046860"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Azure App Service のセキュリティ コントロール
 
@@ -26,7 +26,7 @@ ms.locfileid: "70886208"
 
 | セキュリティ コントロール | はい/いいえ | メモ | ドキュメント
 |---|---|--|
-| サービス エンドポイントのサポート| はい | 現在、App Service のプレビューで利用可能です。| [Azure App Service のアクセス制限](app-service-ip-restrictions.md)
+| サービス エンドポイントのサポート| はい | App Service に使用できます。| [Azure App Service のアクセス制限](app-service-ip-restrictions.md)
 | VNet インジェクションのサポート| はい | App Service Environment は、お客様の仮想ネットワークに挿入される 1 人のお客様専用の App Service のプライベート実装です。 | [App Service Environment の概要](environment/intro.md)
 | ネットワークの分離とファイアウォールのサポート| はい | App Service のパブリック マルチテナント バリエーションでは、お客様は、許可されたインバウンド トラフィックをロック ダウンするようにネットワーク ACL (IP 制限) を構成することができます。  App Service Environment は仮想ネットワークに直接デプロイされるため、NSG で保護することができます。 | [Azure App Service のアクセス制限](app-service-ip-restrictions.md)
 | 強制トンネリングのサポート| はい | App Service Environment は、強制トンネルが構成された、お客様の仮想ネットワークにデプロイすることができます。 | [強制トンネリングを使用した App Service Environment の構成](environment/forced-tunnel-support.md)
@@ -36,7 +36,7 @@ ms.locfileid: "70886208"
 | セキュリティ コントロール | はい/いいえ | メモ | ドキュメント
 |---|---|--|
 | Azure 監視サポート (Log analytics や App Insights など)| はい | App Service は、Application Insights をサポートする言語用の Application Insights と統合されます (完全な .NET Framework、.NET Core、Java および Node.JS)。  「[Azure App Service のパフォーマンスの監視](../azure-monitor/app/azure-web-apps.md)」を参照してください。 App Service では、アプリケーション メトリックを Azure Monitor に送信することもできます。 | [Azure App Service のアプリの監視](web-sites-monitor.md)
-| コントロールと管理プレーンのログ記録と監査| はい | App Service オブジェクトで実行されるすべての管理操作は、[Azure Resource Manager](../azure-resource-manager/index.yml) 経由で実行されます。 これらの操作の履歴ログは、ポータルと CLI の両方で利用できます。 | [Azure Resource Manager リソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md#microsoftweb)、[az monitor activity-log](/cli/azure/monitor/activity-log)
+| コントロールと管理プレーンのログ記録と監査| はい | App Service オブジェクトで実行されるすべての管理操作は、[Azure Resource Manager](../azure-resource-manager/index.yml) 経由で実行されます。 これらの操作の履歴ログは、ポータルと CLI の両方で利用できます。 | [Azure Resource Manager のリソース プロバイダー操作](../role-based-access-control/resource-provider-operations.md#microsoftweb)、[az monitor activity-log](/cli/azure/monitor/activity-log)
 | データ プレーンのログ記録と監査 | いいえ | App Service のデータ プレーンは、ユーザーのデプロイされたWeb サイトのコンテンツを含む、リモート ファイル共有です。  リモート ファイル共有の監査はありません。 |
 
 ## <a name="identity"></a>ID
@@ -64,4 +64,4 @@ ms.locfileid: "70886208"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について説明します。
+- [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について学習します。

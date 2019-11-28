@@ -1,19 +1,19 @@
 ---
 title: 'C# のチュートリアル: 複数のデータ ソースのインデックスを作成する'
 titleSuffix: Azure Cognitive Search
-description: 複数のデータ ソースから 1 つの Azure Cognitive Search インデックスにデータをインポートする方法を学習します。
+description: インデクサーを使用して、複数のデータ ソースから 1 つの Azure Cognitive Search インデックスにデータをインポートする方法について説明します。 このチュートリアルとサンプル コードは C# で記述されています。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 69b18cdd4d0bb8e3d13bbacd5d21764004308786
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: fbe3b9ada556f26bd559f040bf2ba5b22367abd0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795637"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112212"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C# のチュートリアル: 複数のデータ ソースのデータを 1 つの Azure Cognitive Search インデックスに結合する
 

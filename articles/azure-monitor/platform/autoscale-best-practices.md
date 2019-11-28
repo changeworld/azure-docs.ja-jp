@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 3700fb90318da3787830f9b6c202436c0e45e2fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 604cf0564039a542ec117612bcbf74601388c0f7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61063398"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007617"
 ---
 # <a name="best-practices-for-autoscale"></a>自動スケールのベスト プラクティス
 Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)にのみ適用されます。
@@ -48,8 +48,8 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
 
 スケールアウトとスケールインの条件に同じまたは非常に近いしきい値を指定した次の例のような自動スケール設定は *お勧めできません* 。
 
-* スレッド数が 600 以下のときにインスタンスを 1 つ増やす
-* スレッド数が 600 以上のときにインスタンスを 1 つ減らす
+* スレッド数が 600 以上のときにインスタンスを 1 つ増やす
+* スレッド数が 600 以下のときにインスタンスを 1 つ減らす
 
 混乱を招くと思われる動作につながる可能性のある例を見てみましょう。 次の例を考えます。
 

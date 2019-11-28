@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa6a2fd853673493c93dbe65f889468c8e0c8617
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519330"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082932"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>データ フローのシンク変換
 
@@ -28,7 +28,7 @@ ms.locfileid: "73519330"
 ## <a name="output"></a>Output 
 Azure BLOB ストレージまたは Data Lake Storage のシンクの種類の場合、変換されたデータをフォルダーに出力します。 Spark は、シンク変換で使用されるパーティション分割スキームに基づいて、パーティション分割された出力データ ファイルを生成します。 
 
-このパーティション分割スキームは、 **[最適化]** タブから設定できます。Data Factory で 1 つのファイルに出力をマージさせる場合は、 **[単一パーティション]** を選択します。
+このパーティション分割スキームは、 **[最適化]** タブから設定できます。Data Factory で 1 つのファイルに出力をマージさせる場合は、 **[単一パーティション]** を選択します。 パーティション分割されたフォルダーを保持または作成する場合は、**キー パーティション分割**を使用し、パーティション分割されたフォルダー構造に使用するキーを設定します。
 
 ![[最適化] タブのオプション](media/data-flow/opt001.png "シンク オプション")
 

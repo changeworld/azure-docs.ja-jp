@@ -1,18 +1,18 @@
 ---
-title: Azure Application Gateway での Web アプリケーション ファイアウォール規則のカスタマイズ - Azure CLI
+title: CLI を使用してルールをカスタマイズする - Azure Web アプリケーション ファイアウォール
 description: この記事では、Azure CLI を使用して Application Gateway 上で Web アプリケーション ファイアウォール規則をカスタマイズする方法について説明します。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/23/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: 58cc339e8f849a71fb01973e99dba936f6b53a8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e8aaa9458619bc937c5bb11c450f3197b92f451
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511548"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048528"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-cli"></a>Azure CLI を使用して Web アプリケーション ファイアウォール規則をカスタマイズする
 

@@ -1,6 +1,6 @@
 ---
-title: C# を使用して Azure Time Series Insights 環境の参照データを管理する | Microsoft Docs
-description: この記事では、C# .NET 言語で記述されたカスタム アプリケーションを作成して、Azure Time Series Insights 環境の参照データを管理する方法について説明します。
+title: C# を使用して GA 環境の参照データを管理する - Azure Time Series Insights | Microsoft Docs
+description: C# で記述されたカスタム アプリケーションを作成することによって GA 環境の参照データを管理する方法について説明します。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4eb8a22ee56203fe84df6ee1cff779e3f3bdf491
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a32bf00d21311a1a8041a901f70b9b400a49ab76
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990039"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012566"
 ---
 # <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>C# を使用して Azure Time Series Insights 環境の GA 参照データを管理する
 

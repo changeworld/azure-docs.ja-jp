@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/23/2016
-ms.openlocfilehash: 1e02e227180bb0082dd87ab8f5d2fe64e19b60f2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 550ac9ff3b425e682fdda16501613aa41a80d765
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677804"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847246"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Application Insights SDK におけるテレメトリのフィルター処理および前処理
 
@@ -25,11 +25,11 @@ Application Insights SDK のプラグインを作成および構成して、Appl
 
 開始する前に次の操作を実行してください。
 
-* アプリケーションに適した SDK をインストールします。[ASP.NET](asp-net.md)、[ASP.NET Core](asp-net-core.md)、[Non HTTP/Worker for .NET/.NET Core](worker-service.md)、または [Java](../../azure-monitor/app/java-get-started.md)。
+* アプリケーションに適した SDK をインストールします。[ASP.NET](asp-net.md)、[ASP.NET Core](asp-net-core.md)、[Non HTTP/Worker for .NET/.NET Core](worker-service.md)、[Java](../../azure-monitor/app/java-get-started.md)、または [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
-## <a name="filtering-itelemetryprocessor"></a>フィルター:ITelemetryProcessor
+## <a name="filtering"></a>Filtering
 
 この手法では、テレメトリ ストリームに含める内容またはテレメトリ ストリームから除外する内容を直接制御できます。 フィルター処理を使用すると、Application Insights への送信対象からテレメトリ項目を除外することができます。 フィルター処理はサンプリングと組み合わせて使用することも別々に使用することもできます。
 
@@ -198,7 +198,30 @@ public void Process(ITelemetry item)
 
 <a name="add-properties"></a>
 
-## <a name="add-properties-itelemetryinitializer"></a>プロパティの追加:ITelemetryInitializer
+### <a name="javascript-web-applications"></a>JavaScript Web アプリケーション
+
+**ITelemetryInitializer を使用したフィルター処理**
+
+1. テレメトリ初期化子のコールバック関数を作成します。 コールバック関数は、パラメーターとして `ITelemetryItem` を受け取ります。これは、処理されるイベントを指します。 このコールバックから `false` が返されると、テレメトリ項目がフィルターで除外されます。  
+
+   ```JS
+   var filteringFunction = (envelope) => {
+     if (envelope.data.someField === 'tobefilteredout') {
+        return false;
+     }
+  
+     return true;
+   };
+   ```
+
+2. 次のテレメトリ初期化子のコールバックを追加します。
+
+   ```JS
+   appInsights.addTelemetryInitializer(filteringFunction);
+   ```
+
+## <a name="addmodify-properties-itelemetryinitializer"></a>プロパティの追加/変更:ITelemetryInitializer
+
 
 テレメトリを追加情報でエンリッチしたり、標準のテレメトリ モジュールによって設定されたテレメトリのプロパティをオーバーライドしたりするには、テレメトリ初期化子を使用します。
 

@@ -1,5 +1,5 @@
 ---
-title: Azure CLI を使用して Linux VM に MongoDB をインストールする | Microsoft Docs
+title: Azure CLI を使用して Linux VM に MongoDB をインストールする
 description: Azure CLI を使用して Linux 仮想マシンに MongoDB をインストールして構成する方法について説明する
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d75b00acac75b3b9680f862952e5c224336ca57a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 7f5fdd625eb49bfcac0bd58bca7a8415ac877517
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671383"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036006"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Linux VM に MongoDB をインストールして構成する方法
 

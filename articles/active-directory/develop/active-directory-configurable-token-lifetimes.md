@@ -19,12 +19,12 @@ ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23cdf7887d6d0812a9e991580e2095b603a4b4df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 021d0c19ecc4bf63861bf95d99b6ba6b8e910220
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473945"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046551"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (プレビュー)
 
@@ -53,11 +53,11 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 
 ### <a name="saml-tokens"></a>SAML トークン
 
-SAML トークンは、Web ベースの SAAS アプリケーションの多くで使用され、Azure Active Directory の SAML2 プロトコル エンドポイントを使用して取得されます。  また、WS-Federation を使用するアプリケーションでも使用されます。    トークンの既定の有効期間は 1 時間です。 "以後" およびアプリケーションの観点から見た場合、トークンの有効期間は、トークンの <conditions …> 要素の NotOnOrAfter 値によって指定されています。  トークンの有効期間が過ぎたら、クライアントは新しい認証要求を開始する必要があります。これは、多くの場合、シングル サインオン (SSO) セッション トークンの結果として、対話型サインインを行わずに実施されます。
+SAML トークンは、Web ベースの SAAS アプリケーションの多くで使用され、Azure Active Directory の SAML2 プロトコル エンドポイントを使用して取得されます。 また、WS-Federation を使用するアプリケーションでも使用されます。 トークンの既定の有効期間は 1 時間です。 アプリケーションの観点からは、トークンの有効期間は、そのトークン内の `<conditions …>` 要素の NotOnOrAfter 値によって指定されます。 トークンの有効期間が終了したら、クライアントは新しい認証要求を開始する必要があります。これは多くの場合、シングル サインオン (SSO) セッション トークンの結果として、対話型サインインなしで満たされます。
 
-NotOnOrAfter の値を変更するには、TokenLifetimePolicy の AccessTokenLifetime パラメーターを使用します。  この値は、ポリシーで構成されている有効期間に設定され (構成されている場合)、クロック スキュー係数が 5 分になります。
+NotOnOrAfter の値は、`TokenLifetimePolicy` 内の `AccessTokenLifetime` パラメーターを使用して変更できます。 この値は、ポリシーで構成されている有効期間に設定され (構成されている場合)、クロック スキュー係数が 5 分になります。
 
-<SubjectConfirmationData> 要素で指定されているサブジェクト確認 NotOnOrAfter は、トークンの有効期間の構成には影響されないことに注意してください。 
+`<SubjectConfirmationData>` 要素で指定されているサブジェクト確認 NotOnOrAfter は、トークンの有効期間の構成には影響されないことに注意してください。 
 
 ### <a name="refresh-tokens"></a>更新トークン
 

@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 611b3e608d9b0de9423c861ec70e9fc2e7ad67d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b7ae388488de32bb106ae29f975302953cfcb2e9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720757"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123027"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 
-Azure Cost Management は、Microsoft 顧客契約に顧客をオンボードしたパートナーがネイティブで利用できます。 この記事では、パートナーが [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/) の機能を使用する方法について説明します。 また、パートナーが顧客のために Cost Management アクセスを有効にする方法についても説明します。 顧客は、CSP パートナーによって有効化された場合、Cost Management の機能を使用できます。
+Azure Cost Management は、お客様を Microsoft 顧客契約にオンボードし、[Azure プランを購入](/partner-center/purchase-azure-plan)しているパートナーがネイティブに使用できます。 この記事では、パートナーが [Azure Cost Management](index.yml) 機能を使用して、Azure プランのサブスクリプションのコストを表示する方法について説明します。 また、パートナーが顧客のために Cost Management アクセスを有効にする方法についても説明します。 顧客は、CSP パートナーによって有効化された場合、Cost Management の機能を使用できます。
 
 CSP パートナーは、次の目的に Cost Management を使用します。
 
@@ -147,25 +147,81 @@ RBAC スコープの予約インスタンスの償却ビューおよび実際の
 
 ## <a name="analyze-costs-in-cost-analysis"></a>コスト分析でコストを分析する
 
-パートナーは顧客間コスト分析で、特定の顧客または請求書についてコストを調査および分析できます。
+パートナーは顧客間コスト分析で、特定の顧客または請求書についてコストを調査および分析できます。 [コスト分析](quick-acm-cost-analysis.md)ビューでは、[ビューを保存](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)したり、[CSV および PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis) のファイルにデータをエクスポートしたりすることもできます。
 
-使用状況の詳細ファイルと Cost Management API には、次のフィールドがあります。 コスト分析でフィルターとグループ化の機能を使用して、複数のフィールドでコストを分析できます。 フィールドの完全な一覧を表示するには、「[Cost Management のデータ フィールド](understand-cost-mgt-data.md#cost-management-data-fields)」を参照してください。
+コスト分析でフィルターとグループ化の機能を使用して、複数のフィールドでコストを分析できます。 次のセクションでは、パートナー固有のフィールドを示します。
 
-| フィールド名 | 説明 |
-| --- | --- |
-| CustomerTenantID | 顧客のサブスクリプションの Azure Active Directory テナントの識別子。 |
-| CustomerName | 顧客のサブスクリプションの Azure Active Directory テナントの名前。 |
-| CustomerTenantDomainName | 顧客のサブスクリプションの Azure Active Directory テナントのドメイン名。 |
-| PartnerTenantID | パートナーの Azure Active Directory テナントの識別子。 |
-| PartnerName | パートナーの Azure Active Directory テナントの名前。 |
-| ResellerMPNID | サブスクリプションに関連付けられているリセラーの MPNID。 |
-| costinUSD | 税引き前の、予測される ExtendedCost またはブレンド コスト (米国ドル単位)。 |
-| paygCostInBillingCurrency | 価格が小売価格の場合のコストを表示します。 請求通貨で従量課金制の料金を表示します。 RBAC スコープでのみ使用できます。 |
-| paygCostInUSD | 価格が小売価格の場合のコストを表示します。 従量課金制の料金を米国ドルで表示します。 RBAC スコープでのみ使用できます。 |
-| partnerEarnedCreditRate | パートナー管理者リンク アクセスに基づいたパートナー獲得クレジット (PEC) がある場合に適用される割引率。 |
-| partnerEarnedCreditApplied | パートナー獲得クレジットが適用されているかどうかを示します。 |
+## <a name="data-fields"></a>データ フィールド
 
-[コスト分析](quick-acm-cost-analysis.md)ビューでは、[ビューを保存](quick-acm-cost-analysis.md#saving-and-sharing-customized-views)したり、[CSV および PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis) のファイルにデータをエクスポートしたりすることもできます。
+使用状況の詳細ファイルと Cost Management API には、次のデータ フィールドがあります。 可能な場合は、パートナー センターの同等の情報が示されています。 次の太字のフィールドについては、パートナーはコスト分析でフィルターとグループ化の機能を使用して、複数のフィールドでコストを分析できます。 太字のフィールドは、パートナーがサポートしている Microsoft 顧客契約にのみ適用されます。
+
+| **フィールド名** | **説明** | **パートナー センターの同等の情報** |
+| --- | --- | --- |
+| invoiceld | 特定の取引の請求書に表示される請求書 ID。 | トランザクションが表示される請求書番号。 |
+| previousInvoiceID | 返金 (負のコスト) がある、元の請求書への参照。 返金がある場合にのみ設定されます。 | 該当なし |
+| billingAccountName | パートナーを表す課金アカウントの名前。 Microsoft 顧客契約にオンボードした顧客と、SaaS、Azure Marketplace、予約などのエンタイトルメント購入を行った CSP 顧客のすべてのコストを計上します。 | 該当なし |
+| billingAccountID | パートナーを表す課金アカウントの ID。 | MCAPI パートナー コマース ルート ID。 要求で使用されますが、応答には含まれません。|
+| billingProfileID | Microsoft 顧客契約にオンボードした顧客と、SaaS、Azure Marketplace、予約などのエンタイトルメント購入を行った CSP 顧客の全請求書のコストを 1 つの請求通貨でグループ化するための請求プロファイルの ID。 | MCAPI パートナー課金グループ ID。 要求で使用されますが、応答には含まれません。 |
+| billingProfileName | Microsoft 顧客契約にオンボードした顧客と、SaaS、Azure Marketplace、予約などのエンタイトルメント購入を行った CSP 顧客の全請求書のコストを 1 つの請求通貨でグループ化するための請求プロファイルの名前。 | 該当なし |
+| invoiceSectionName | 請求書で課金されているプロジェクトの名前。 パートナーによってオンボードされた Microsoft 顧客契約には適用されません。 | 該当なし |
+| invoiceSectionID | 請求書で課金されているプロジェクトの識別子。 パートナーによってオンボードされた Microsoft 顧客契約には適用されません。 | 該当なし |
+| **CustomerTenantID** | 顧客のサブスクリプションの Azure Active Directory テナントの識別子。 | 顧客の組織の ID - 顧客の Azure Active Directory TenantID。 |
+| **CustomerName** | 顧客のサブスクリプションの Azure Active Directory テナントの名前。 | パートナー センターに表示される顧客の組織名。 システムの情報を使って請求書を調整するために重要です。 |
+| **CustomerTenantDomainName** | 顧客のサブスクリプションの Azure Active Directory テナントのドメイン名。 | 顧客の Azure Active Directory テナント ドメイン。 |
+| **PartnerTenantID** | パートナーの Azure Active Directory テナントの識別子。 | パートナー ID と呼ばれるパートナーの Azure Active Directory テナント ID (GUID 形式)。 |
+| **PartnerName** | パートナーの Azure Active Directory テナントの名前。 | パートナー名。 |
+| **ResellerMPNID** | サブスクリプションに関連付けられているリセラーの MPNID。 | サブスクリプションのレコードにあるリセラーの MPN ID。 現在のアクティビティでは使用できません。 |
+| costCenter | サブスクリプションに関連付けられているコスト センター。 | 該当なし |
+| billingPeriodStartDate | 請求書に示されている請求期間の開始日。 | 該当なし |
+| billingPeriodEndDate | 請求書に示されている請求期間の終了日。 | 該当なし |
+| servicePeriodStartDate | 料金についてサービス使用量の評価が行われた評価期間の開始日。 Azure サービスの料金は、評価期間に対して決定されます。 | パートナー センターの ChargeStartDate。 請求サイクルの開始日。ただし、前の請求サイクルからの以前に請求されていない潜在的な使用状況データの日付を提示する場合を除く。 この時間は常に、1 日の開始時刻である 0:00 です。 |
+| servicePeriodEndDate | 料金についてサービス使用量の評価が行われた期間の終了日。 Azure サービスの料金は、評価期間に基づいて決定されます。 | 該当なし |
+| date | Azure の消費データについては、評価された使用日が表示されます。 予約済みインスタンスについては、購入日が表示されます。 定期的な料金と、Marketplace やサポートなどの 1 回限りの料金については、購入日が表示されます。 | 該当なし |
+| productID | 消費または購入によって料金が発生した製品の識別子。 これは、パートナー センターに示されている、productID と SKuID の連結キーです。 | 製品の ID。 |
+| product | 請求書に示されている、消費または購入によって料金が発生した製品の名前。 | カタログ内の製品名。 |
+| serviceFamily | 購入または課金された製品のサービス ファミリが表示されます。 たとえば、Storage や Compute など。 | 該当なし |
+| productOrderID | サブスクリプションが属している資産または Azure プラン名の識別子。 たとえば、Azure Plan など。 | 該当なし |
+| productOrderName | サブスクリプションが属している Azure プランの名前。 たとえば、Azure Plan など。 | 該当なし|
+| consumedService | 従来の EA 使用量の詳細で使用される消費済みサービス (レガシ分類)。 | パートナー センターに表示されるサービス。 たとえば、Microsoft.Storage、Microsoft.Compute、microsoft.operationalinsights など。 |
+| meterID | 測定された使用量の測定の ID。 | 使用されたメーターの ID。 |
+| meterName | 測定された使用量の測定の名前を識別します。 | 使用されたメーターの名前。 |
+| meterCategory | 使用量の最上位レベルのサービスを識別します。 | 使用状況の最上位レベルのサービス。 |
+| meterSubCategory | 料金に影響する可能性のある Azure サービスの種類またはサブカテゴリを定義します。 | 料金に影響を与える可能性のある Azure サービスの種類。|
+| meterRegion | データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。 | サービスのデータ センターのリージョンの場所 (該当し、かつ設定されている場合)。 |
+| サブスクリプション ID | Microsoft が生成する、Azure サブスクリプションの一意の識別子。 | 該当なし |
+| subscriptionName | Azure サブスクリプションの名前。 | 該当なし |
+| 期間 | プランの有効期間を表示します。 たとえば、予約インスタンスには、予約インスタンスの年間期間の 12 か月が表示されます。 1 回限りの購入または定期的な購入の場合、期間には、SaaS、Azure Marketplace、サポートについて 1 か月が表示されます。 Azure の消費には適用されません。 | 該当なし |
+| publisherType (firstParty、thirdPartyReseller、thirdPartyAgency) | 発行元をファースト パーティ、サード パーティ リセラー、またはサード パーティ機関として識別する発行元の種類。 | 該当なし |
+| partNumber | 未使用の予約インスタンスと Azure Marketplace サービスの部品番号。 | 該当なし |
+| publisherName | Microsoft またはサードパーティの発行元を含む、サービスの発行元の名前。 | 製品の発行元の名前。|
+| reservationId | 予約インスタンス購入の識別子。 | 該当なし |
+| reservationName | 予約インスタンスの名前。 | 該当なし |
+| reservationOrderId | 予約インスタンスの OrderID。 | 該当なし |
+| frequency | 予約インスタンスの支払い頻度。 | 該当なし |
+| resourceGroup | ライフサイクル リソース管理に使用される Azure リソース グループの名前。 | リソース グループの名前。 |
+| instanceID (または) ResourceID | リソース インスタンスの識別子。 | 完全なリソース プロパティを含む ResourceURI として表示されます。 |
+| resourceLocation | リソースの場所の名前。 | リソースの場所。 |
+| Location | リソースの正規化された場所。 | 該当なし |
+| effectivePrice | 価格設定通貨でのサービスの実効単価。 製品、サービス ファミリ、測定、オファーに対して一意です。 課金アカウントの価格シートの価格で使用されます。 階層化された価格または含まれている数量がある場合は、使用量のブレンド価格が表示されます。 | 調整が行われた後の単価。 |
+| Quantity | 購入または消費された測定量。 請求期間中に使用された測定の量。 | ユニットの数。 調整中に、これが課金システム内の情報に一致していることを確認してください。 |
+| unitOfMeasure | サービスが課金される単位を特定します。 たとえば、GB や時間数など。 | サービスが課金される単位を特定します。 たとえば、GB、時間数、10,000 秒など。 |
+| pricingCurrency | 単価を定義する通貨。 | 価格表の通貨。|
+| billingCurrency | 請求されるコストを定義する通貨。 | 顧客の地理的リージョンの通貨。 |
+| chargeType | 購入や返金など、Azure Cost Management でコストが表す料金の種類を定義します。 | 料金または調整の種類。 現在のアクティビティでは使用できません。 |
+| costinBillingCurrency | 請求通貨での税引き前の ExtendedCost またはブレンド コスト。 | 該当なし |
+| costinPricingCurrency | 価格に関連する価格通貨での税引き前の ExtendedCost またはブレンド コスト。 | 該当なし |
+| **costinUSD** | 税引き前の、予測される ExtendedCost またはブレンド コスト (米国ドル)。 | 該当なし |
+| **paygCostInBillingCurrency** | 価格が小売価格の場合のコストを表示します。 従量課金制の料金を請求通貨で表示します。 RBAC スコープでのみ使用できます。 | 該当なし |
+| **paygCostInUSD** | 価格が小売価格の場合のコストを表示します。 従量課金制の料金を米国ドルで表示します。 RBAC スコープでのみ使用できます。 | 該当なし |
+| exchangeRate | 価格通貨から請求通貨への換算に使用される為替レート。 | パートナー センターでは PCToBCExchangeRate と呼ばれます。 価格通貨から請求通貨への為替レート。|
+| exchangeRateDate | 価格通貨から請求通貨に変換するために使用される為替レートの日付。 | パートナー センターでは PCToBCExchangeRateDat と呼ばれます。 価格通貨から請求通貨への為替レートの日付。|
+| isAzureCreditEligible | コストが Azure クレジットでの支払い対象かどうかを示します。 | 該当なし |
+| serviceInfo1 | これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです。 | Azure サービスの内部メタデータ。 |
+| serviceInfo2 | これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです。 | サービス情報。 たとえば、仮想マシンのイメージの種類や ExpressRoute の ISP 名です。|
+| additionalInfo | サービス固有のメタデータ。 たとえば、仮想マシンのイメージの種類です。 | 他の列で説明されていない任意の追加情報。 サービス固有のメタデータ。 たとえば、仮想マシンのイメージの種類です。|
+| tags | ユーザーが測定に割り当てるタグです。 タグは、課金記録のグループ化に使用できます。 たとえば、タグを使用して、メーターを使用する部門ごとにコストを配分することができます。 | 顧客によって追加されたタグ。|
+| **partnerEarnedCreditRate** | パートナー管理者リンク アクセスに基づいたパートナー獲得クレジット (PEC) がある場合に適用される割引率。 | パートナー獲得クレジット (PEC) の割合。 たとえば、0% または 15%。 |
+| **partnerEarnedCreditApplied** | パートナー獲得クレジットが適用されているかどうかを示します。 | 該当なし |
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>パートナー獲得クレジット (PEC) リソースのコストを表示する
 

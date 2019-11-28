@@ -1,5 +1,5 @@
 ---
-title: Windows 用の Azure VM 拡張機能とその機能 | Microsoft Docs
+title: Windows 用の Azure VM 拡張機能とその機能
 description: Azure 仮想マシンに使用できる拡張機能について、提供または改善される内容ごとにまとめて説明します。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d73a2dcd0aab3b972a3e0a9237e53d05d4a9a53
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 79c6658d2b3758eed94f273bf0b3685bbd146278
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750019"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073077"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -54,18 +54,18 @@ Azure VM エージェントは、Azure VM と Azure ファブリック コント
 
 #### <a name="supported-agent-versions"></a>サポートされているエージェントのバージョン
 
-最適なエクスペリエンスを提供するために、エージェントの最小バージョンが用意されています。 詳細については、 [こちらの記事](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)を参照してください。
+最適なエクスペリエンスを提供するために、エージェントの最小バージョンが用意されています。 詳細については、 [こちらの記事](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)を参照してください。
 
 #### <a name="supported-oses"></a>サポート対象の OS
 
-Windows ゲスト エージェントは複数の OS で実行されますが、拡張機能フレームワークでは拡張を行う OS に対して制限があります。 詳細については、 [こちらの記事](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+Windows ゲスト エージェントは複数の OS で実行されますが、拡張機能フレームワークでは拡張を行う OS に対して制限があります。 詳細については、 [こちらの記事](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 )を参照してください。
 
 一部の拡張機能は、すべての OS ではサポートされず、"*エラー コード 51、'OS がサポートされていません'* " が出力される場合があります。 サポートの可否については、個々の拡張機能のドキュメントを確認してください。
 
 #### <a name="network-access"></a>ネットワーク アクセス
 
-拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [サポートされている](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)バージョンのエージェントを使用する場合は、エージェントを使用してエージェント通信用の Azure ファブリック コントローラーに通信をリダイレクトできるので、VM リージョン内の Azure Storage へのアクセスを許可する必要はありません (プライベート IP [168.63.129.16](https://docs.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16) での特権チャネル経由の HostGAPlugin 機能)。 サポートされていないバージョンのエージェントを使用する場合は、VM からそのリージョン内の Azure Storage への送信アクセスを許可する必要があります。
+拡張機能パッケージは、Azure Storage 拡張機能リポジトリからダウンロードされ、拡張機能ステータスのアップロードが Azure Storage に転記されます。 [サポートされている](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)バージョンのエージェントを使用する場合は、エージェントを使用してエージェント通信用の Azure ファブリック コントローラーに通信をリダイレクトできるので、VM リージョン内の Azure Storage へのアクセスを許可する必要はありません (プライベート IP [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16) での特権チャネル経由の HostGAPlugin 機能)。 サポートされていないバージョンのエージェントを使用する場合は、VM からそのリージョン内の Azure Storage への送信アクセスを許可する必要があります。
 
 > [!IMPORTANT]
 > ゲスト ファイアウォールまたはプロキシを使用して *168.63.129.16* へのアクセスをブロックした場合、上記とは関係なく、拡張機能はエラーになります。 ポート 80、443、32526 が必要です。

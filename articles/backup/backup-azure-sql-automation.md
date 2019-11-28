@@ -1,5 +1,5 @@
 ---
-title: PowerShell を使用して Azure VM 内の SQL Database をバックアップおよび復元する - Azure Backup
+title: PowerShell 経由の Azure VM バックアップと復元での SQL DB - Azure Backup
 description: Azure Backup と PowerShell を使用して Azure VM 内の SQL Database をバックアップおよび復元します。
 ms.reviewer: pullabhk
 author: dcurwin
@@ -10,20 +10,21 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 242eaf06b9cd0b3783a626ab13eb0cb92300652f
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 2622fc9b7b7bc5caedc560af64a5d6b2971b814f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249069"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090948"
 ---
-# <a name="back-up-and-restore-sql-databases-in-azure--vms-with-powershell"></a>PowerShell を使用して Azure VM 内の SQL Database をバックアップおよび復元する
+# <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM で SQL データベースをバックアップおよび復元する
 
 この記事では、[Azure Backup](backup-overview.md) Recovery Services コンテナーを使用して Azure VM 内の SQL DB をバックアップおよび復元するために Azure PowerShell を使用する方法を説明します。
 
 このチュートリアルでは、次の方法について説明します。
 
 > [!div class="checklist"]
+>
 > * PowerShell を設定し、Azure Recovery Services プロバイダーを登録します。
 > * Recovery Services コンテナーを作成する。
 > * Azure VM 内の SQL DB のバックアップを構成します。
@@ -270,10 +271,10 @@ Enable-AzRecoveryServicesBackupAutoProtection -InputItem $SQLInstance -BackupMan
 
 Azure Backup は、Azure VM 上で実行されている SQL Server データベースを次のように復元できます。
 
-1. トランザクション ログ バックアップを使用して、特定の日付または時刻 (秒) に復元します。 Azure Backup は、選択された時刻に基づいて復元するために必要な、適切な完全または差分バックアップおよび一連のログ バックアップを自動的に判定します。
-2. 特定の復旧ポイントに復元するには、特定の完全または差分バックアップを復元します。
+* トランザクション ログ バックアップを使用して、特定の日付または時刻 (秒) に復元します。 Azure Backup は、選択された時刻に基づいて復元するために必要な、適切な完全または差分バックアップおよび一連のログ バックアップを自動的に判定します。
+* 特定の復旧ポイントに復元するには、特定の完全または差分バックアップを復元します。
 
-SQL DB を復元する前に[前提条件](restore-sql-database-azure-vm.md#prerequisites)を確認してください。
+SQL DB を復元する前に、[ここ](restore-sql-database-azure-vm.md#prerequisites)に示されている前提条件を確認してください。
 
 最初に、[Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem?view=azps-1.5.0) PS コマンドレットを使用して、該当するバックアップ済みの SQL DB をフェッチします。
 
@@ -335,9 +336,9 @@ SQLDataBase;MSSQLSERVER;azu... 3/18/2019 8:09:35 PM           3/19/2019 12:08:32
 
 SQL DB の復元では、次の復元シナリオがサポートされます。
 
-1. バックアップ対象の SQL DB を別の復旧ポイントのデータでオーバーライドする - OriginalWorkloadRestore
-2. 同じ SQL インスタンス内の新規 DB として SQL DB を復旧する - AlternateWorkloadRestore
-3. 別の SQL VM 内の別の SQL インスタンスの新規 DB として SQL DB を復旧する - AlternateWorkloadRestore
+* バックアップ対象の SQL DB を別の復旧ポイントのデータでオーバーライドする - OriginalWorkloadRestore
+* 同じ SQL インスタンス内の新規 DB として SQL DB を復旧する - AlternateWorkloadRestore
+* 別の SQL VM 内の別の SQL インスタンスの新規 DB として SQL DB を復旧する - AlternateWorkloadRestore
 
 関連する復旧ポイント (個別の復旧ポイントまたは特定の時点) をフェッチしたら、[Get-AzRecoveryServicesBackupWorkloadRecoveryConfig](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupWorkloadRecoveryConfig?view=azps-1.5.0) PS コマンドレットを使用し、必要な復旧プランに従って復旧構成オブジェクトをフェッチします。
 
@@ -459,7 +460,7 @@ $endDate = (Get-Date).AddDays(60).ToUniversalTime()
 Backup-AzRecoveryServicesBackupItem -Item $bkpItem -BackupType Full -EnableCompression -VaultId $targetVault.ID -ExpiryDateTimeUTC $endDate
 ````
 
-このアドホック バックアップ コマンドによってジョブが返されて追跡できます。
+オンデマンド バックアップ コマンドは、追跡対象のジョブを返します。
 
 ````powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -540,13 +541,13 @@ $SQLContainer = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppC
 
 Azure Backup はユーザーがトリガーしたジョブしか SQL バックアップで追跡できないことに注意してください。 スケジュールされたバックアップ (ログ バックアップを含む) はポータル/powershell には表示されません。 ただし、スケジュールされたジョブが失敗した場合は、[バックアップ アラート](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault)が生成されてポータルに表示されます。 スケジュールされたすべてのジョブとその他の関連情報を追跡するには、[Azure Monitor を使用](backup-azure-monitoring-use-azuremonitor.md)します。
 
-ユーザーは、バックアップなど非同期ジョブの[出力](#on-demand-backup)に返される JobID を使用して、アドホック操作やユーザーがトリガーした操作を追跡できます。 [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS コマンドレットを使用して、ジョブとその詳細を追跡します。
+ユーザーは、バックアップなどの非同期ジョブの[出力](#on-demand-backup)で返される JobID を使用して、オンデマンド操作やユーザーがトリガーした操作を追跡できます。 [Get-AzRecoveryServicesBackupJobDetail](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJobDetail) PS コマンドレットを使用して、ジョブとその詳細を追跡します。
 
 ````powershell
  Get-AzRecoveryServicesBackupJobDetails -JobId 2516bb1a-d3ef-4841-97a3-9ba455fb0637 -VaultId $targetVault.ID
 ````
 
-アドホック ジョブとその状態の一覧を Azure Backup サービスから取得するには、[Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS コマンドレットを使用します。 次の例は、進行中のすべての SQL ジョブを返します。
+Azure Backup サービスからオンデマンド ジョブとその状態の一覧を取得するには、[Get-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupJob?view=azps-1.5.0) PS コマンドレットを使用します。 次の例は、進行中のすべての SQL ジョブを返します。
 
 ```powershell
 Get-AzRecoveryServicesBackupJob -Status InProgress -BackupManagementType AzureWorkload
@@ -560,13 +561,13 @@ SQL Always On 可用性グループでは、必ず可用性グループ (AG) の
 
 たとえば、SQL AG に sql-server-0 と sql-server-1 という 2 つのノードと、1 つの SQL AG DB があるとします。 両方のノードが登録された後で、ユーザーが[保護可能な項目を一覧表示](#fetching-sql-dbs)すると、次のコンポーネントが表示されます。
 
-1. SQL AG オブジェクト - 保護可能な項目の種類: SQLAvailabilityGroup
-2. SQL AG DB - 保護可能な項目の種類: SQLDatabase
-3. sql-server-0 - 保護可能な項目の種類: SQLInstance
-4. sql-server-1 - 保護可能な項目の種類: SQLInstance
-5. sql-server-0 内のすべての既定 SQL DB (master、model、msdb) - 保護可能な項目の種類: SQLDatabase
-6. sql-server-1 内のすべての既定 SQL DB (master、model、msdb) - 保護可能な項目の種類: SQLDatabase
+* SQL AG オブジェクト - 保護可能な項目の種類: SQLAvailabilityGroup
+* SQL AG DB - 保護可能な項目の種類: SQLDatabase
+* sql-server-0 - 保護可能な項目の種類: SQLInstance
+* sql-server-1 - 保護可能な項目の種類: SQLInstance
+* sql-server-0 内のすべての既定 SQL DB (master、model、msdb) - 保護可能な項目の種類: SQLDatabase
+* sql-server-1 内のすべての既定 SQL DB (master、model、msdb) - 保護可能な項目の種類: SQLDatabase
 
 sql-server-0 と sql-server-1 は、[バックアップ コンテナーが一覧表示される](https://docs.microsoft.com/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupContainer?view=azps-1.5.0)ときは "AzureVMAppContainer" としても一覧表示されます。
 
-該当する SQL データベースをフェッチして[バックアップを有効化](#configuring-backup)してください。[アドホック バックアップ](#on-demand-backup)と[復元の PS コマンドレット](#restore-sql-dbs)は同じです。
+該当する SQL データベースを単にフェッチして[バックアップを有効に](#configuring-backup)してください。[オンデマンド バックアップ](#on-demand-backup)と[復元の PS コマンドレット](#restore-sql-dbs)は同じです。

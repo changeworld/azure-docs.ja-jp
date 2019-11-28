@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery における Hyper-V から Azure へのディザスター リカバリー アーキテクチャ
+title: Azure Site Recovery における Hyper-V ディザスター リカバリー アーキテクチャ
 description: この記事では、(VMM を使用せずに) Azure Site Recovery サービスを使用してオンプレミスの Hyper-V VM から Azure へのディザスター リカバリーをデプロイするときに使用されるコンポーネントとアーキテクチャの概要を説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 4035746772b44d7267d6a9cd90c7bdc02c804a8a
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147071"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082661"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -37,7 +37,6 @@ Hyper-V ホストは、必要に応じて System Center Virtual Machine Manager 
 **Hyper-V から Azure へのアーキテクチャ (VMM なし)**
 
 ![アーキテクチャ](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
-
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>アーキテクチャのコンポーネント - Hyper-V (VMM あり)

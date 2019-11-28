@@ -1,6 +1,6 @@
 ---
 title: Apache Hadoop コンポーネントおよびバージョン - Azure HDInsight
-description: HDInsight での Apache Hadoop コンポーネントおよびバージョンと、このクラウド ディストリビューションの Hortonworks Data Platform で使用できるサービス レベルについて説明します。
+description: Azure HDInsight 内の Apache Hadoop コンポーネントおよびバージョンについて説明します。
 keywords: hadoop バージョン,hadoop エコシステム コンポーネント,hadoop コンポーネント,hadoop バージョンの確認方法
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/07/2019
-ms.openlocfilehash: 8bcb6caa418f7bd5c5241d06dbda69ccba360f2c
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.date: 11/13/2019
+ms.openlocfilehash: a5632f4b7ca264f6fdeb88dc7f7cf843c73ddf54
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70984465"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123405"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは
 
@@ -22,7 +22,7 @@ Microsoft Azure HDInsight の[Apache Hadoop](https://hadoop.apache.org/) エコ�
 
 ## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>HDInsight の各バージョンで使用できる Apache Hadoop コンポーネント
 
-Azure HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。 各バージョンを選択すると、特定のバージョンの HDP ディストリビューションと、そのディストリビューションに含まれるコンポーネントが作成されます。 2017 年 4 月 4 日現在、Azure HDInsight で使用される既定のクラスター バージョンは、HDP 2.6 を基盤とした 3.6 です。
+Azure HDInsight は、いつでもデプロイできる Hadoop クラスター バージョンを複数サポートしています。 2017 年 4 月 4 日現在、Azure HDInsight で使用される既定のクラスター バージョンは 3.6 です。
 
 HDInsight クラスター バージョンに対応するコンポーネントのバージョンを、次の表にまとめます。 
 
@@ -64,16 +64,16 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 ## <a name="supported-hdinsight-versions"></a>サポートされる HDInsight のバージョン
 
-次の表は、HDInsight のバージョンの一覧を示しています。 各 HDInsight バージョンに対応する HDP バージョンを製品のリリース日とともにまとめています。 サポート有効期限と提供終了日も記載されます (これらが既知の場合)。
+次の表は、HDInsight のバージョンの一覧を示しています。 サポート有効期限と提供終了日も記載されます (これらが既知の場合)。
 
 ### <a name="available-versions"></a>使用可能なバージョン
 
 次の表は、Azure portal と、PowerShell や .NET SDK などの他のデプロイ方法で使用可能な HDInsight のバージョンをまとめたものです。
 
-| HDInsight のバージョン | HDP のバージョン | VM の OS | リリース日 | サポート有効期限 | 提供終了日 | 高可用性 |  Azure Portal での可用性 | 
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |はい |はい |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 2020 年 6 月 30 日 |2020 年 12 月 31 日 |はい |はい |
+| HDInsight のバージョン | VM の OS | リリース日 | サポート有効期限 | 提供終了日 | 高可用性 |  Azure portal での可用性 | 
+| --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |はい |はい |
+| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 2020 年 6 月 30 日 |2020 年 12 月 31 日 |はい |はい |
 
 
 > [!NOTE]  

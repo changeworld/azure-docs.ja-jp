@@ -4,26 +4,30 @@ description: Azure Resource Manager で完全デプロイ モードと増分デ�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 11/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 762b0e74e8da20d1b48703385853765d5cc643af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258960"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953242"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager のデプロイ モード
 
-リソースをデプロイするときには、デプロイが増分更新と完全更新のどちらであるかを指定する必要があります。  これら 2 つのモードの主な違いは、テンプレートにないリソース グループの既存のリソースを Resource Manager が処理する方法にあります。 既定のモードは増分です。
+リソースをデプロイするときには、デプロイが増分更新と完全更新のどちらであるかを指定する必要があります。  これら 2 つのモードの違いは、テンプレートにないリソース グループの既存のリソースを Resource Manager が処理する方法にあります。 既定のモードは増分です。
 
 いずれのモードでも、Resource Manager はテンプレートで指定されたすべてのリソースの作成を試みます。 リソースが既にリソース グループ内に存在しており、その設定が変更されていない場合、そのリソースに対しては何の操作も行われません。 リソースのプロパティ値を変更した場合、リソースはそれらの新しい値で更新されます。 既存のリソースの場所または種類を更新しようとすると、デプロイがエラーで失敗します。 その代わり、必要な場所または種類で新しいリソースをデプロイできます。
 
 ## <a name="complete-mode"></a>完全モード
 
-完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを**削除します**。 テンプレートに指定されているが、[条件](conditional-resource-deployment.md)が false と評価されるためにデプロイされないリソースは、削除されません。
+完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを**削除します**。
+
+[condition](conditional-resource-deployment.md) が false と評価されるためにデプロイされないリソースがテンプレートに含まれている場合、テンプレートをデプロイするために使用する REST API のバージョンによって結果が異なります。 2019-05-10 より前のバージョンを使用する場合、リソースは**削除されません**。 2019-05-10 以降では、リソースは**削除されます**。 最新バージョンの Azure PowerShell および Azure CLI では、リソースは削除されます。
 
 [コピー ループ](resource-group-create-multiple.md)では完全モードを使用するように注意してください。 コピー ループを解決した後でテンプレートに指定されていないリソースはすべて削除されます。
+
+[テンプレート内の複数のリソース グループ](resource-manager-cross-resource-group-deployment.md)にデプロイする場合、デプロイ操作で指定されたリソース グループ内のリソースは削除対象となります。 セカンダリ リソース グループ内のリソースは削除されません。
 
 完全モードでは、リソースの種類に応じて削除の動作が多少異なります。 親リソースは、完全モードでデプロイされたテンプレートに含まれていない場合、自動的に削除されます。 一部の子リソースは、テンプレートに含まれていなければ、自動的には削除されません。 ただし、親リソースが削除されると、これらの子リソースも削除されます。 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure MQTT クライアント ライブラリを使用して MQTT サーバーにメッセージを送信する | Microsoft Docs
-description: クライアントとして DevKit を使用して、MQTT サーバーにメッセージを送信します
+title: Azure MQTT クライアント ライブラリを使用して MQTT サーバーにメッセージを送信する
+description: MQTT クライアント ライブラリを使用して MQTT ブローカーにメッセージを送信する方法について説明します。 MXChip Iot DevKit を MQTT クライアントとして構成する方法についても学習します。
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 6afe0a2fe366b83af45682245776c803c99483d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 14feb02fbac800cd37da882a1872beb8269d9938
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484033"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954237"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>MQTT サーバーにメッセージを送信する
 

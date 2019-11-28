@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8cc02831fa00a3974da1b74b07daf581f50dd22
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: eb562caf2dfc83841762748f37d1a7ee325de10b
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569627"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882627"
 ---
 # <a name="protected-web-api-code-configuration"></a>保護された Web API:コード構成
 
@@ -158,6 +158,10 @@ JwtBearer ミドルウェアは、Web アプリの OpenID Connect ミドルウ�
 | `ValidateTokenReplay` | トークンが再生されていないことを保証します (一部の 1 回限りの使用のプロトコルの特殊なケース)。 |
 
 検証コントロールはすべて `TokenValidationParameters` クラスのプロパティと関連付けられ、ASP.NET/ASP.NET Core 構成から初期化されます。 ほとんどの場合、パラメーターを変更する必要はありません。 単一テナントではないアプリの場合、1 つの例外があります (つまり、任意の組織から、または個人用 Microsoft アカウントからのユーザーを受け入れる Web アプリ)。この場合、発行者を確認する必要があります。
+
+## <a name="token-validation-in-azure-functions"></a>Azure Functions でのトークンの検証
+
+Azure Functions では、受信アクセス トークンを検証することもできます。 Azure Functions でのトークンの検証の例は、[Dotnet](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)、[NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)、[Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) で見つかります。
 
 ## <a name="next-steps"></a>次の手順
 

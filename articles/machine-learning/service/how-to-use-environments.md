@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: f733e29fc5fbce764fef9a713747d6793d2ebd43
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b9b58c9b5f32d6ca714ac3ac940b91643fa8020c
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489312"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123555"
 ---
-# <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Azure Machine Learning を使用してトレーニングとデプロイのための再利用可能な環境を作成および管理します。
+# <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Azure Machine Learning を使用してトレーニングとデプロイのための環境を再利用します。
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 この記事では、Azure Machine Learning の[環境](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py)を作成および管理し、プロジェクトのソフトウェア依存関係の変化を追跡して再現できるようにする方法について説明します。
@@ -333,7 +333,7 @@ run = experiment.submit(sk_est)
 
 モデルを Web サービスとしてデプロイするときに環境を使用できます。 これにより、トレーニング計算と推論計算の両方でまったく同じライブラリを使用してモデルをトレーニング、テスト、デプロイできる、再現可能で連続的なワークフローが実現します。
 
-Web サービスをデプロイするには、環境、推論計算、スコアリング スクリプト、および登録済みモデルをデプロイ オブジェクトに結合して、[deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-) を実行します。 [Web サービスのデプロイ](how-to-deploy-and-where.md)の詳細を確認してください。
+Web サービスをデプロイするには、環境、推論計算、スコアリング スクリプト、および登録済みモデルをデプロイ オブジェクトに結合して、[deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) を実行します。 [Web サービスのデプロイ](how-to-deploy-and-where.md)の詳細を確認してください。
 
 この例では、トレーニング実行を完了して、そのモデルを Azure コンテナー インスタンス (ACI) にデプロイすると仮定します。 Web サービスをビルドすると、モデルとスコアリング ファイルがイメージにマウントされ、Azure Machine Learning 推論スタックがイメージに追加されます。
 

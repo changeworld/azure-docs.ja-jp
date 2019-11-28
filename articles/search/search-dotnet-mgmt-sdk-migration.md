@@ -1,22 +1,22 @@
 ---
-title: Azure Search .NET Management SDK バージョン 2 へのアップグレード - Azure Search
+title: Azure Search .NET Management SDK バージョン 2 へのアップグレード
+titleSuffix: Azure Cognitive Search
 description: 以前のバージョンから Azure Search .NET Management SDK バージョン 2 にアップグレードします。 新機能と必要なコード変更について説明します。
-author: brjohnstmsft
 manager: nitinme
+author: brjohnstmsft
 ms.author: brjohnst
-services: search
-ms.service: search
+ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 2a59cff7f5313b0ac5a060d698950a4c82160f67
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.date: 11/04/2019
+ms.openlocfilehash: b18e9688141ee64eb7dfcb82ce58db198e324b5b
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182255"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847528"
 ---
-# <a name="upgrading-to-the-azure-search-net-management-sdk-version"></a>Azure Search .NET Management SDK バージョンへのアップグレード 
+# <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>Azure Search .NET Management SDK のバージョンのアップグレード
 
 > [!Important]
 > このコンテンツはまだ準備中の段階です。 Azure Search Management .NET SDK のバージョン 3.0 が NuGet 上で提供されています。 新しいバージョンへのアップグレード方法が含まれるように、この移行ガイドを更新しています。 
@@ -46,7 +46,5 @@ NuGet が新しいパッケージとその依存関係をダウンロードし�
 
 すべてのビルド エラーを修正した後、必要に応じて新しい機能を利用するようにアプリケーションを変更できます。 SDK の新機能の詳細については、「[バージョン 2 の新機能](#WhatsNew)」をご覧ください。
 
-## <a name="conclusion"></a>まとめ
-SDK についてのご意見をお待ちしております。 問題が発生した場合は、 [Azure Search の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch)でご質問ください。 バグを発見した場合は、 [Azure .NET SDK の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/issues)で問題を報告できます。 問題のタイトルの前に、必ず "[Azure Search]" を付けてください。
-
-Azure Search をお使いいただきありがとうございます。
+## <a name="next-steps"></a>次の手順
+SDK についてのご意見をお待ちしております。 問題が発生した場合は、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cognitive-search?tab=Newest) に質問を投稿してください。 バグを発見した場合は、 [Azure .NET SDK の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/issues)で問題を報告できます。 問題のタイトルに、必ず "[search]" とラベルを付けてください。

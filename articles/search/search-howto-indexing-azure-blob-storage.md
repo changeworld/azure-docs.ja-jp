@@ -1,5 +1,5 @@
 ---
-title: フルテキスト検索用に Azure BLOB ストレージ コンテンツのインデックスを作成する
+title: Azure Blob Storage のコンテンツを検索する
 titleSuffix: Azure Cognitive Search
 description: Azure コグニティブ検索で Azure Blob Storage のインデックスを作成し、ドキュメントからテキストを抽出する方法について学習します。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b093525fcabc31074b398444a2fceffd0f6d3493
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4f662df6692e03cf3eb948b0d8e2ae51002e815d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791790"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113011"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure コグニティブ検索で作成する方法
 

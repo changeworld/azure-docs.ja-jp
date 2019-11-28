@@ -1,5 +1,5 @@
 ---
-title: Azure Traffic Manager を使用して複数値のトラフィックのルーティング方法を構成する
+title: 複数値のトラフィックのルーティングを構成する - Azure Traffic Manager
 description: この記事では、トラフィックを A/AAAA エンドポイントにルーティングするように Traffic Manager を構成する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: allensu
-ms.openlocfilehash: 5db8e2932a43a2d6c6cb8a99c4f32b37a4a5a3f8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3e5e6cb55b86df8a48f96771fb2436afa8acaa18
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050892"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040364"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Traffic Manager での複数値ルーティング方法の構成
 
@@ -43,10 +43,10 @@ Traffic Manager プロファイル用のリソース グループを作成しま
     
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
-    | Name                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
+    | 名前                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
     | ルーティング方法          | **[複数値]** ルーティング方式を選択します。                                       |
-    | サブスクリプション            | サブスクリプションを選択します。                          |
-    | リソース グループ          | *myResourceGroupTM1* を選択します。 |
+    | Subscription            | サブスクリプションを選択します。                          |
+    | Resource group          | *myResourceGroupTM1* を選択します。 |
     | Location                | これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。                              |
    |        |           | 
   
@@ -62,8 +62,8 @@ Traffic Manager プロファイル用のリソース グループを作成しま
 
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
-    | Type                    | 外部エンドポイント                                   |
-    | Name           | myEndpoint1                                        |
+    | 種類                    | 外部エンドポイント                                   |
+    | 名前           | myEndpoint1                                        |
     | 完全修飾ドメイン名 (FQDN) または IP           | この Traffic Manager プロファイルに追加するエンドポイントのパブリック IP アドレスを入力します                         |
     |        |           |
 

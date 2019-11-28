@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 2177ba8b3864e8d453a097b391a18ebbbb5baa11
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c9dfc4ed6fce186fea9474222875a072edb32f59
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499922"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084723"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps におけるアクセスとデータのセキュリティ保護
 
@@ -36,7 +36,7 @@ Azure Logic Apps におけるアクセスを制御し、データを保護する
 
 * [Shared Access Signature の生成](#sas)
 * [受信 IP アドレスの制限](#restrict-inbound-ip-addresses)
-* [Azure Active Directory、OAuth、またはその他のセキュリティの追加](#add-authentication)
+* [Azure Active Directory OAuth、またはその他のセキュリティの追加](#add-authentication)
 
 <a name="sas"></a>
 
@@ -163,9 +163,9 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 <a name="add-authentication"></a>
 
-### <a name="add-azure-active-directory-oauth-or-other-security"></a>Azure Active Directory、OAuth、またはその他のセキュリティの追加
+### <a name="add-azure-active-directory-oauth-or-other-security"></a>Azure Active Directory OAuth、またはその他のセキュリティの追加
 
-ロジック アプリにさらに承認プロトコルを追加するには、[Azure API Management](../api-management/api-management-key-concepts.md) サービスの使用を検討してください。 このサービスでは、ロジック アプリを API として公開でき、あらゆるエンドポイント向けの監視、セキュリティ、ポリシー、ドキュメントが豊富に提供されています。 API Management では、ロジック アプリ用にパブリック エンドポイントまたはプライベート エンドポイントを公開できます。 その後、そのエンドポイントへのアクセスを承認するために、Azure Active Directory、OAuth、証明書、またはその他のセキュリティ標準を使用できます。 API Management で要求が受け取られると、サービスによって要求がお客様のロジック アプリに送信されます。さらに、必要な変換または制限もその過程で行われます。 API Management のみがロジック アプリをトリガーできるようにするには、ロジック アプリの受信 IP 範囲の設定を使用できます。
+ロジック アプリにさらに承認プロトコルを追加するには、[Azure API Management](../api-management/api-management-key-concepts.md) サービスの使用を検討してください。 このサービスでは、ロジック アプリを API として公開でき、あらゆるエンドポイント向けの監視、セキュリティ、ポリシー、ドキュメントが豊富に提供されています。 API Management では、ロジック アプリ用にパブリック エンドポイントまたはプライベート エンドポイントを公開できます。 このエンドポイントへのアクセスを承認するために、[Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)、[クライアント証明書](#client-certificate-authentication)、またはその他のセキュリティ標準を使用できます。 API Management で要求が受け取られると、サービスによって要求がお客様のロジック アプリに送信されます。さらに、必要な変換または制限もその過程で行われます。 API Management のみがロジック アプリをトリガーできるようにするには、ロジック アプリの受信 IP 範囲の設定を使用できます。
 
 <a name="secure-operations"></a>
 
@@ -361,7 +361,7 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 デプロイ先が複数の異なる環境にまたがる場合、環境に応じて変わる値は、ワークフロー定義内でパラメーター化することを検討してください。 そのようにすると、[Azure Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)を使用してロジック アプリをデプロイすることでデータのハードコーディングを避け、セキュリティで保護されたパラメーターを定義することで機密データを保護し、[パラメーター ファイル](../azure-resource-manager/resource-manager-parameter-files.md)を使用することで[テンプレートのパラメーター](../azure-resource-manager/template-parameters.md)で個別の入力としてそのデータを渡すことができます。
 
-たとえば、[Azure Active Directory](#azure-active-directory-oauth-authentication) で HTTP アクションの認証を行う場合、認証に使用されるクライアント ID とクライアント シークレットを受け入れるパラメーターを定義し、セキュリティで保護することができます。 ロジック アプリでこれらのパラメーターを定義するには、ロジック アプリのワークフロー定義内の `parameters` セクションと、デプロイ用の Resource Manager テンプレートを使用します。 ロジック アプリの編集時や実行履歴の確認時に表示させたくないパラメーター値を非表示にするには、`securestring` または `secureobject` 型を使用してパラメーターを定義し、必要に応じてエンコードを使用します。 この型のパラメーターはリソース定義と一緒に返されず、デプロイ後にリソースを表示するときにもアクセスできません。 それらのパラメーターの値に実行時にアクセスするには、ワークフロー定義内で `@parameters('<parameter-name>')` 式を使用します。 この式は実行時にのみ評価され、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で記述されます。
+たとえば、[Azure Active Directory OAuth](#azure-active-directory-oauth-authentication) で HTTP アクションの認証を行う場合、認証に使用されるクライアント ID とクライアント シークレットを受け入れるパラメーターを定義し、セキュリティで保護することができます。 ロジック アプリでこれらのパラメーターを定義するには、ロジック アプリのワークフロー定義内の `parameters` セクションと、デプロイ用の Resource Manager テンプレートを使用します。 ロジック アプリの編集時や実行履歴の確認時に表示させたくないパラメーター値を非表示にするには、`securestring` または `secureobject` 型を使用してパラメーターを定義し、必要に応じてエンコードを使用します。 この型のパラメーターはリソース定義と一緒に返されず、デプロイ後にリソースを表示するときにもアクセスできません。 それらのパラメーターの値に実行時にアクセスするには、ワークフロー定義内で `@parameters('<parameter-name>')` 式を使用します。 この式は実行時にのみ評価され、[ワークフロー定義言語](../logic-apps/logic-apps-workflow-definition-language.md)で記述されます。
 
 > [!NOTE]
 > 要求のヘッダーまたは本文でパラメーターを使用した場合、ロジック アプリの実行履歴や送信 HTTP 要求を表示したときに、そのパラメーターが表示されることがあります。 コンテンツ アクセス ポリシーも適切に設定するようにしてください。 [難読化](#obfuscate)を使用して、実行履歴の入力と出力を表示されないようにすることもできます。 Authorization ヘッダーは入力や出力では表示されません。 そのため、ここでシークレットが使用された場合はそのシークレットを取得できません。
@@ -573,7 +573,17 @@ Shared Access Signature (SAS) と共に、ロジック アプリを呼び出す�
 
 * 送信要求に認証を追加します。
 
-  HTTP、HTTP + Swagger、Webhook など、送信呼び出しを行う HTTP ベースのトリガーまたはアクションを使用するときは、ロジック アプリによって送信される要求に認証を追加できます。 たとえば、基本認証、クライアント証明書認証、[Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md) 認証、またはマネージド ID を使用できます。 詳しくは、後の「[送信呼び出しに認証を追加する](#add-authentication-outbound)」をご覧ください。
+  HTTP、HTTP + Swagger、Webhook など、送信呼び出しを行う HTTP ベースのトリガーまたはアクションを使用するときは、ロジック アプリによって送信される要求に認証を追加できます。 たとえば、次の認証の種類を使用できます。
+
+  * [基本認証](#basic-authentication)
+
+  * [クライアント証明書認証](#client-certificate-authentication)
+
+  * [Active Directory OAuth 認証](#azure-active-directory-oauth-authentication)
+
+  * [マネージド ID の認証](#managed-identity-authentication)
+  
+  詳しくは、後の「[送信呼び出しに認証を追加する](#add-authentication-outbound)」をご覧ください。
 
 * ロジック アプリの IP アドレスからのアクセスを制限する。
 
@@ -649,8 +659,8 @@ HTTP および HTTPS エンドポイントでは、さまざまな種類の認�
 | プロパティ (デザイナー) | プロパティ (JSON) | 必須 | 値 | 説明 |
 |---------------------|-----------------|----------|-------|-------------|
 | **認証** | `type` | はい | **クライアント証明書** <br>or <br>`ClientCertificate` | Secure Sockets Layer (SSL) クライアント証明書に使用する認証の種類。 自己署名証明書はサポートされていますが、SSL 用の自己署名証明書はサポートされていません。 |
-| **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ |
-| **パスワード** | `password`| はい | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード |
+| **Pfx** | `pfx` | はい | <*encoded-pfx-file-content*> | Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ <p><p>PFX ファイルを Base64 でエンコードされた形式に変換するには、次の手順に従って PowerShell を使用します。 <p>1.証明書の内容を変数に保存します。 <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2.`ToBase64String()` 関数を使用して証明書の内容を変換し、その内容をテキスト ファイルに保存します。 <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
+| **パスワード** | `password`| 説明を参照してください | <*password-for-pfx-file*> | PFX ファイルにアクセスするためのパスワード。 <p><p>**メモ**:このプロパティ値は、ロジック アプリ デザイナーで作業するときに必要ですが、コードビューで作業するときは必要*ありません*。 |
 |||||
 
 たとえば、[デプロイを自動化するための Azure Resource Manager テンプレート](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)で、[セキュリティ保護されたパラメーター](#secure-action-parameters)を使用して機密情報を処理および保護する場合は、式を使用して実行時にこれらのパラメーター値にアクセスできます。 次の例の HTTP アクション定義では、認証の `type` として `ClientCertificate` が指定され、パラメーター値を取得するために [parameters() 関数](../logic-apps/workflow-definition-language-functions-reference.md#parameters)が使用されています。

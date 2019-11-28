@@ -9,29 +9,28 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: f7e5f698a822cd68d8319102e1b8bddbbfa8ad70
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c710e2b7c4376fc1725032c86cd02d9a6c8cafac
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821338"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090347"
 ---
 # <a name="monitor-and-improve-performance"></a>パフォーマンスの監視と向上
 
 Azure SQL Database は、データベース内の潜在的な問題を識別し、インテリジェントなチューニング アクションと推奨事項を提供することによって、ワークロードのパフォーマンスの向上に役立つアクションを提案します。
 
-データベースのパフォーマンスを確認するには、[概要] ページの **[パフォーマンス]** タイルを使用するか、[サポート + トラブルシューティング] セクションに移動します。
+## <a name="performance-tuning-options"></a>パフォーマンス チューニング オプション
 
-   ![ビュー パフォーマンス](./media/sql-database-performance/entries.png)
+Azure SQL Database で使用可能なパフォーマンス チューニング オプションは、データベースのナビゲーション メニューの [インテリジェント パフォーマンス] から使用できます。
 
-[サポート + トラブルシューティング] セクションでは、次のページを使用できます。
-
-
-1. [[パフォーマンスの概要]](#performance-overview): データベースのパフォーマンスを監視します。 
-2. [[パフォーマンスの推奨事項]](#performance-recommendations): ワークロードのパフォーマンスの向上に役立つパフォーマンスの推奨事項が表示されます。
-3. [[Query Performance Insight]](#query-performance-insight): リソースの消費量が上位のクエリを見つけることができます。
-4. [[自動チューニング]](#automatic-tuning): Azure SQL Database はデータベースを自動的に最適化できます。
+| パフォーマンス チューニング オプション | 単一データベースとプールされたデータベースのサポート | インスタンス データベースのサポート |
+| :----------------------------- | ----- | ----- |
+| **[[パフォーマンスの概要]](#performance-overview)** - データベースのすべてのパフォーマンス アクティビティを監視します。 | はい | いいえ | 
+| **[[パフォーマンスの推奨事項]](#performance-recommendations)** - ワークロードのパフォーマンスの向上に役立つパフォーマンスの推奨事項が表示されます。 | はい | いいえ | 
+| **[[Query Performance Insight]](#query-performance-insight)** - データベースで負荷の高い上位のクエリのパフォーマンスを表示します。 | はい | いいえ | 
+| **[[自動チューニング]](#automatic-tuning)** - Azure SQL Database を使用してデータベース パフォーマンスを自動的に最適化します。 | はい | いいえ | 
 
 ## <a name="performance-overview"></a>パフォーマンスの概要
 
@@ -58,10 +57,6 @@ Azure SQL Database は、データベース内の潜在的な問題を識別し�
 
 パフォーマンスに関する推奨事項を確認および適用する方法については、「[Find and apply performance recommendations (パフォーマンスに関する推奨事項の確認および適用)](sql-database-advisor-portal.md)」を参照してください。
 
-## <a name="automatic-tuning"></a>自動チューニング
-
-Azure SQL データベースでは、[パフォーマンスの推奨事項](sql-database-advisor.md)を適用することにより、データベース パフォーマンスを自動的にチューニングできます。 詳細については、「[Automatic tuning (自動チューニング)](sql-database-automatic-tuning.md)」を参照してください。 これを有効にするには、[自動チューニングを有効にする方法](sql-database-automatic-tuning-enable.md)に関するページを参照してください。
-
 ## <a name="query-performance-insight"></a>Query Performance Insight
 
 [Query Performance Insight](sql-database-query-performance.md) を使用すると、短時間でデータベース パフォーマンスのトラブルシューティングを行うことができます。以下の情報が提供されます。
@@ -74,8 +69,11 @@ Azure SQL データベースでは、[パフォーマンスの推奨事項](sql-
 
 このページの詳細については、 **[Query Performance Insight の使用方法](sql-database-query-performance.md)** に関する記事を参照してください。
 
+## <a name="automatic-tuning"></a>自動チューニング
+
+Azure SQL データベースでは、[パフォーマンスの推奨事項](sql-database-advisor.md)を適用することにより、データベース パフォーマンスを自動的にチューニングできます。 詳細については、「[Automatic tuning (自動チューニング)](sql-database-automatic-tuning.md)」を参照してください。 これを有効にするには、[自動チューニングを有効にする方法](sql-database-automatic-tuning-enable.md)に関するページを参照してください。
+
 ## <a name="additional-resources"></a>その他のリソース
 
 * [データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)
 * [エラスティック プールの使用に適した状況](sql-database-elastic-pool-guidance.md)
-

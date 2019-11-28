@@ -1,6 +1,6 @@
 ---
-title: Azure CLI を使用してゾーン フロントエンドで Standard Load Balancer を作成する
-titlesuffix: Azure Load Balancer
+title: ゾーンのパブリック IP アドレス フロントエンドを使用した Standard Load Balancer - Azure CLI
+titleSuffix: Azure Load Balancer
 description: Azure CLI でゾーンのパブリック IP アドレス フロントエンドを使用してパブリック Standard Load Balancer を作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 7da41456a4f4bb88d402d27b42b31f6d4adfa7f6
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b9c3a88df6801566bc927cfc18fda0adfa05a5ae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274308"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076030"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Azure CLI を使用してゾーン フロントエンドで Standard Load Balancer を作成する
+#  <a name="create-a-standard-load-balancer-with-zonal-public-ip-address-frontend-using-azure-cli"></a>ゾーンのパブリック IP アドレス フロントエンドを使用した Standard Load Balancer を Azure CLI を使用して作成する
 
 この記事では、パブリック IP 標準アドレスを使用してゾーン フロントエンドでパブリック [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) を作成する手順について説明します。 このシナリオでは、フロントエンド インスタンスとバックエンド インスタンスに特定のゾーンを指定して、特定のゾーンに合わせてデータ パスとリソースを調整することができます。
 

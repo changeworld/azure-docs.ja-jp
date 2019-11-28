@@ -1,18 +1,18 @@
 ---
 title: Azure IoT device SDK プラットフォームのサポート | Microsoft Docs
-description: 概念 - Azure IoT device SDK でサポートされているプラットフォームの一覧
+description: C、.NET (C#)、Java、Node.js、Python のオープンソース デバイス SDK が GitHub で入手可能であり、デバイスを Azure IoT Hub や Device Provisioning Service (DPS) に接続するのに利用できます。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: ac5817675d3cfc97a8732ee2e10ec7b9246b12a5
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d39fd95f8704650db16c1dc1553efaba2f727052
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693330"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889424"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT device SDK プラットフォームのサポート
 
@@ -50,7 +50,7 @@ Microsoft では、GitHub で次の言語のオープンソース SDK を公開�
 | iOS 12.2            | OpenSSL またはネイティブ OSX        | OSX 10.13.4 でエミュレートされる XCode                                                               |
 | Windows 10 ファミリ   | SChannel                     |                                                                                             |
 | Mbed OS 5.4         | Mbed TLS 2                   | [MXChip IoT 開発キット](https://microsoft.github.io/azure-iot-developer-kit/)                  |
-| Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/en-us/services/azure-sphere/get-started/) |
+| Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
 
 ### <a name="python-sdk"></a>Python SDK
 
@@ -115,11 +115,11 @@ Microsoft では数多くのパートナーと連携して、Azure IoT のテス
 
 * Azure IoT の認定デバイスを確認するには、[Microsoft Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)を参照してください。
 
-* Microsoft の信頼できるパートナーの詳細、または Microsoft の信頼できるパートナーになる方法については、「[Microsoft Azure のモノのインターネットの信頼できる認定パートナー](https://azure.microsoft.com/en-us/marketplace/certified-iot-partners/)」を参照してください。
+* Microsoft の信頼できるパートナーの詳細、または Microsoft の信頼できるパートナーになる方法については、「[Microsoft Azure のモノのインターネットの信頼できる認定パートナー](https://azure.microsoft.com/marketplace/certified-iot-partners/)」を参照してください。
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>SDK を使用せずに IoT Hub に接続する
 
-IoT Hub デバイス SDK を使用できない場合は、HTTPS の要求と応答を送受信できる任意のアプリケーションから、[IoT Hub REST API](https://docs.microsoft.com/en-us/rest/api/iothub/) を使用して IoT Hub に直接接続できます。
+IoT Hub デバイス SDK を使用できない場合は、HTTPS の要求と応答を送受信できる任意のアプリケーションから、[IoT Hub REST API](https://docs.microsoft.com/rest/api/iothub/) を使用して IoT Hub に直接接続できます。
 
 ## <a name="support-and-other-resources"></a>サポートとその他のリソース
 

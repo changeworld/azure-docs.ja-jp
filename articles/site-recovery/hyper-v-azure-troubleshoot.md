@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用した Hyper-V から Azure へのディザスター リカバリーのトラブルシューティング | Microsoft Docs
+title: Azure Site Recovery を使用した Hyper-V のディザスター リカバリーのトラブルシューティング
 description: Azure Site Recovery を使用した Hyper-V から Azure へのレプリケーションに関するディザスター リカバリーの問題をトラブルシューティングする方法について説明します。
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: rajanaki
-ms.openlocfilehash: 2cf43f8a235b112cfcf1fc6c9dba626a5a0c9b7e
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 0a3e5c922009353e4ba9ccab12cf70ea2b5992da
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828394"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961474"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V から Azure へのレプリケーションおよびフェールオーバーをトラブルシューティングする
 

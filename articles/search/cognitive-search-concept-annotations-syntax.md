@@ -1,5 +1,5 @@
 ---
-title: AI エンリッチメント パイプラインでの入力と出力の参照
+title: スキルセットで入力と出力を参照する
 titleSuffix: Azure Cognitive Search
 description: Azure コグニティブ検索の AI エンリッチメント パイプラインでの注釈の構文と、スキルセットの入力と出力で注釈を参照する方法について説明します。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fe81ccb5324d75212763e20ac2514ade9ce50496
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787773"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113873"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Azure コグニティブ検索スキルセットで注釈を参照する方法
 

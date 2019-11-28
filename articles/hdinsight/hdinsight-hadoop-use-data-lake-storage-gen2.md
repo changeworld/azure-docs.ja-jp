@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: d8e23188aa07b1b271c3adc7c5550b18c0c60977
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/04/2019
+ms.openlocfilehash: 89b86124d6da0d0d659ed0673585eadbf1008aa3
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827684"
+ms.locfileid: "73847296"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する
 
@@ -34,7 +34,7 @@ Data Lake Storage Gen2 を使用したクラスター作成オプションの詳
 
 ### <a name="create-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID を作成する
 
-ユーザー割り当てマネージド ID をまだお持ちでない場合には、作成します。 
+ユーザー割り当てマネージド ID をまだお持ちでない場合には、作成します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 左上の **[リソースの作成]** をクリックします。
@@ -49,7 +49,7 @@ Azure HDInsight でマネージド ID がどのように機能するかに関す
 
 ### <a name="create-a-data-lake-storage-gen2-account"></a>Data Lake Storage Gen2 アカウントを作成する
 
-Azure Data Lake Storage Gen2 ストレージ アカウントを作成します。 
+Azure Data Lake Storage Gen2 ストレージ アカウントを作成します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 左上の **[リソースの作成]** をクリックします。
@@ -57,7 +57,7 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
 1. **Create** をクリックしてください。
 1. **[ストレージ アカウントの作成]** 画面で次を実行します。
     1. 正しいサブスクリプションとリソース グループを選択します。
-    1. ご自分の Data Lake Storage Gen2 アカウントの名前を入力します。 ストレージ アカウントの命名規則の詳細については、「[Azure リソースの名前付け規則](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#storage)」を参照してください。
+    1. ご自分の Data Lake Storage Gen2 アカウントの名前を入力します。 ストレージ アカウントの命名規則の詳細については、「[Azure リソースの名前付け規則](/azure/architecture/best-practices/resource-naming#storage)」を参照してください。
     1. **[詳細]** タブをクリックします。
     1. **[Data Lake Storage Gen2]** の下の **[階層構造の名前空間]** の横の **[有効]** をクリックします。
     1. **[Review + create]\(レビュー + 作成\)** をクリックします。
@@ -73,28 +73,28 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
 
 1. [Azure portal](https://portal.azure.com) で、ストレージ アカウントに移動します。
 1. ストレージ アカウントを選択し、 **[アクセス制御 (IAM)]** を選択して、そのアカウントのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
-    
+
     ![ストレージのアクセス制御設定を示すスクリーンショット](./media/hdinsight-hadoop-use-data-lake-storage-gen2/portal-access-control.png)
-    
+
 1. **[+ ロールの割り当ての追加]** ボタンを選択して新しいロールを追加します。
 1. **[ロールの割り当ての追加]** ウィンドウで、 **[ストレージ BLOB データ所有者]** ロールを選択します。 次に、マネージド ID とストレージ アカウントを持つサブスクリプションを選択します。 次に、以前作成したユーザー割り当てマネージド ID を検索して見つけます。 最後に、マネージド ID を選択すると、その ID が **[選択したメンバー]** の下に一覧表示されます。
-    
+
     ![RBAC ロールの割り当て方法を示すスクリーンショット](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
-    
+
 1. **[保存]** を選択します。 選択したユーザー割り当て ID が、選択されたロールの下に表示されるようになります。
 1. この初期セットアップを完了すると、ポータルを通じてクラスターを作成できます。 クラスターは、ストレージ アカウントと同じ Azure リージョンに存在する必要があります。 クラスターの作成メニューの **[ストレージ]** セクションで、次のオプションを選択します。
-        
+
     * **[プライマリ ストレージの種類]** で、 **[Azure Data Lake Storage Gen2]** を選択します。
     * **[ストレージ アカウントの選択]** から、新しく作成した Data Lake Storage Gen2 ストレージ アカウントを探して選択します。
-        
+
         ![Azure HDInsight で Data Lake Storage Gen2 を使用するためのストレージ設定](./media/hdinsight-hadoop-use-data-lake-storage-gen2/primary-storage-type-adls-gen2.png)
-    
+
     * **[ID]** から、正しいサブスクリプションと新しく作成されたユーザー割り当てマネージド ID を選択します。
 
         ![HDInsight で Data Lake Storage Gen2 を使用するための ID 設定](./media/hdinsight-hadoop-use-data-lake-storage-gen2/managed-identity-cluster-creation.png)
 
 > [!Note]
-> セカンダリ Data Lake Storage Gen2 アカウントを追加するには、ストレージ アカウント レベルで、追加する新しい Data Lake Storage Gen2 ストレージ アカウントに以前に作成したマネージド ID を割り当てます。セカンダリ Data Lake Storage Gen2 アカウントを HDInsight 上の「追加のストレージ アカウント」 ブレードを使用して追加することはサポートされませんのでご注意ください。 
+> セカンダリ Data Lake Storage Gen2 アカウントを追加するには、ストレージ アカウント レベルで、追加する新しい Data Lake Storage Gen2 ストレージ アカウントに以前に作成したマネージド ID を割り当てます。セカンダリ Data Lake Storage Gen2 アカウントを HDInsight 上の「追加のストレージ アカウント」 ブレードを使用して追加することはサポートされませんのでご注意ください。
 
 ## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>Data Lake Storage Gen2 を使用して Azure CLI からクラスターを作成する
 
@@ -113,10 +113,10 @@ Azure Data Lake Storage Gen2 ストレージ アカウントを作成します�
 
 1. Azure アカウントにログインします。
 1. 作成操作が実行されるアクティブなサブスクリプションを設定します。
-1. 新しいデプロイ アクティビティ用の新しいリソース グループを作成します。 
+1. 新しいデプロイ アクティビティ用の新しいリソース グループを作成します。
 1. ユーザー割り当てマネージド ID を作成します。
 1. Data Lake Storage Gen2 の機能を使用するために、Azure CLI に拡張機能を追加します。
-1. `--hierarchical-namespace true` フラグを使用して、新しい Data Lake Storage Gen2 アカウントを作成します。 
+1. `--hierarchical-namespace true` フラグを使用して、新しい Data Lake Storage Gen2 アカウントを作成します。
 
 ```azurecli
 az login
@@ -171,7 +171,87 @@ Azure サービスには、システム割り当てとユーザー割り当て�
 
 データをクエリするためのアクセス許可をユーザーに設定するには、ACL で割り当て済みのプリンシパルとして Azure AD セキュリティ グループを使用します。 個々のユーザーまたはサービス プリンシパルにファイルのアクセス許可を直接割り当てないでください。 Azure AD セキュリティ グループを使用してアクセス許可のフローを制御すると、ACL をディレクトリ構造全体に再適用することなく、ユーザーまたはサービス プリンシパルを追加および削除できます。 適切な Azure AD セキュリティ グループからユーザーまたはサービス プリンシパルを追加または削除するだけです。 ACL は継承されないため、ACL を再適用するには、すべてのファイルとサブディレクトリで ACL を更新する必要があります。
 
+## <a name="access-files-from-the-cluster"></a>クラスターからファイルにアクセスする
+
+複数の方法で、HDInsight クラスターから Data Lake Storage Gen2 のファイルにアクセスできます。
+
+* **完全修飾名の使用**。 この方法により、アクセスするファイルへの完全パスを指定します。
+
+    ```
+    abfs://<containername>@<accountname>.dfs.core.windows.net/<file.path>/
+    ```
+
+* **短縮されたパスの使用**。 この方法により、クラスター ルートへのパスを次に置き換えます。
+
+    ```
+    abfs:///<file.path>/
+    ```
+
+* **相対パスの使用**。 この方法により、アクセスするファイルへの相対パスのみを指定します。
+
+    ```
+    /<file.path>/
+    ```
+
+### <a name="data-access-examples"></a>データ アクセスの例
+
+例は、クラスターのヘッド ノードへの [ssh 接続](./hdinsight-hadoop-linux-use-ssh-unix.md)に基づいています。 この例では、3 つの URI スキームがすべて使用されています。 `CONTAINERNAME` と `STORAGEACCOUNT` を関連する値に置き換えます。
+
+#### <a name="a-few-hdfs-commands"></a>いくつかの hdfs コマンド
+
+1. ローカル ストレージで単純なファイルを作成します。
+
+    ```bash
+    touch testFile.txt
+    ```
+
+1. クラスター ストレージにディレクトリを作成します。
+
+    ```bash
+    hdfs dfs -mkdir abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
+    hdfs dfs -mkdir abfs:///sampledata2/
+    hdfs dfs -mkdir /sampledata3/
+    ```
+
+1. ローカル ストレージからクラスター ストレージにデータをコピーします。
+
+    ```bash
+    hdfs dfs -copyFromLocal testFile.txt  abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
+    hdfs dfs -copyFromLocal testFile.txt  abfs:///sampledata2/
+    hdfs dfs -copyFromLocal testFile.txt  /sampledata3/
+    ```
+
+1. クラスター ストレージのディレクトリの内容を一覧表示します。
+
+    ```bash
+    hdfs dfs -ls abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/sampledata1/
+    hdfs dfs -ls abfs:///sampledata2/
+    hdfs dfs -ls /sampledata3/
+    ```
+
+#### <a name="creating-a-hive-table"></a>Hive テーブルの作成
+
+3 つのファイルの場所は説明目的で提示されています。 実際の実行では、`LOCATION` エントリを 1 つだけ使用します。
+
+```hql
+DROP TABLE myTable;
+CREATE EXTERNAL TABLE myTable (
+    t1 string,
+    t2 string,
+    t3 string,
+    t4 string,
+    t5 string,
+    t6 string,
+    t7 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+STORED AS TEXTFILE
+LOCATION 'abfs://CONTAINERNAME@STORAGEACCOUNT.dfs.core.windows.net/example/data/';
+LOCATION 'abfs:///example/data/';
+LOCATION '/example/data/';
+```
+
 ## <a name="next-steps"></a>次の手順
 
 * [Azure HDInsight と Data Lake Storage Gen2 プレビューとの統合 - ACL とセキュリティ更新プログラム](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Azure Data Lake Storage Gen2 の概要](../storage/blobs/data-lake-storage-introduction.md)
+* [チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

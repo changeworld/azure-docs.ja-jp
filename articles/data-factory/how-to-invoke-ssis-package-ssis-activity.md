@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/14/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b8ed0a04d2d13556f38873ef5f346d49ba4d1845
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673744"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122976"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する
 この記事では、SSIS パッケージの実行アクティビティを使用して、SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 
@@ -57,7 +57,7 @@ Azure-SSIS 統合ランタイム (IR) がない場合は、[「チュートリ�
 
     キー コンテナーのリンクされたサービスを作成または編集するときに、既存のキー コンテナーを選択または編集したり、新しいキー コンテナーを作成したりできます。 まだ行っていない場合は、キー コンテナーへのアクセスを、Data Factory のマネージド ID に許可します。 `<Key vault linked service name>/<secret name>/<secret version>` の形式でシークレットを直接入力することもできます。 パッケージで 32 ビット ランタイムを実行する必要がある場合は、 **[32 ビット ランタイム]** チェック ボックスをオンにします。
 
-   **[パッケージの場所]** では、 **[SSISDB]** 、 **[ファイル システム (パッケージ)]** 、または **[ファイル システム (プロジェクト)]** を選択します。 パッケージの場所として **[SSISDB]** を選択する場合 (Azure-SSIS IR が Azure SQL Database サーバーまたはマネージド インスタンスによってホストされている SSIS カタログ (SSISDB) を使用してプロビジョニングされている場合は自動的に選択されます)、SSISDB にデプロイされている実行対象パッケージを指定します。 
+   **[パッケージの場所]** では、 **[SSISDB]** 、 **[ファイル システム (パッケージ)]** 、 **[ファイル システム (プロジェクト)]** 、または **[Embedded package]\(埋め込みパッケージ\)** を選択します。 パッケージの場所として **[SSISDB]** を選択する場合 (Azure-SSIS IR が Azure SQL Database サーバーまたはマネージド インスタンスによってホストされている SSIS カタログ (SSISDB) を使用してプロビジョニングされている場合は自動的に選択されます)、SSISDB にデプロイされている実行対象パッケージを指定します。 
 
     Azure-SSIS IR の実行中に **[Manual entries]\(手動入力\)** チェック ボックスがオフの場合は、既存のフォルダー、プロジェクト、/パッケージ、または環境を SSISDB から参照します。 **[最新の情報に更新]** を選択して、SSISDB から新しく追加したフォルダー、プロジェクト、パッケージ、または環境を取り込み、それらを参照して選択できるようにします。 パッケージを実行するための環境を参照または選択するには、プロジェクトを事前に構成して、SSISDB の同じフォルダーからの参照としてこれらの環境を追加する必要があります。 詳細については、[SSIS 環境の作成とマップ](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)に関するページを参照してください。
 
@@ -82,6 +82,10 @@ Azure-SSIS 統合ランタイム (IR) がない場合は、[「チュートリ�
    次に、プロジェクト、パッケージ、または構成ファイルにアクセスするための資格情報を指定します。 以前にパッケージ実行の資格情報値を入力した場合は (前述を参照)、 **[Same as package execution credentials]\(パッケージ実行の資格情報と同じ\)** チェック ボックスをオンにして再利用できます。 それ以外の場合は、 **[ドメイン]** 、 **[ユーザー名]** 、 **[パスワード]** ボックスに、パッケージ アクセス資格情報の値を入力します。 たとえば、プロジェクト、パッケージ、または構成を Azure Files に保存する場合、ドメインは `Azure`、ユーザー名は `<storage account name>`、パスワードは `<storage account key>` です。 
 
    または、お使いのキー コンテナーに格納されているシークレットを値として使用することもできます。 これらの資格情報は、パッケージ実行タスク (いずれも固有のパスまたは同じプロジェクト、パッケージに指定されたものを含む構成) でパッケージおよび子パッケージへのアクセスに使用されます。 
+
+   パッケージの場所として **[Embedded package]\(埋め込みパッケージ\)** を選択した場合は、パッケージをドラッグ アンド ドロップして実行するか、ファイル フォルダーから指定されたボックスに**アップロード**します。 パッケージは自動的に圧縮され、アクティビティ ペイロードに埋め込まれます。 埋め込みが完了すると、パッケージは後で編集用に**ダウンロード**できます。 また、埋め込みパッケージを複数のアクティビティで使用できるパイプライン パラメーターに割り当てることによって**パラメーター化する**ことで、パイプライン ペイロードのサイズを最適化することもできます。 埋め込みパッケージがすべて暗号化されておらず、その内部でパッケージ実行タスクの使用が検出された場合は、 **[パッケージ実行タスク]** チェックボックスが自動的に選択され、ファイルシステム参照を含む関連する子パッケージが自動的に追加され、それらも埋め込まれます。 パッケージ実行タスクの使用を検出できない場合は、 **[パッケージ実行タスク]** チェックボックスを手動で選択し、ファイルシステム参照を含む関連する子パッケージを 1 つずつ追加して、それらも埋め込むようにする必要があります。 子パッケージが SQL Server 参照を使用する場合は、SQL Server が Azure-SSIS IR によってアクセス可能であることを確認してください。  子パッケージのためのプロジェクト参照の使用は現在サポートされていません。
+   
+   ![[設定] タブでプロパティを設定する - 手動](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
    
    SQL Server Data Tools を使用してパッケージを作成するときに **EncryptAllWithPassword** または **EncryptSensitiveWithPassword** 保護レベルを使用した場合は、 **[暗号化用パスワード]** ボックスにパスワードの値を入力します。 または、キー コンテナーに格納されているシークレットを値として使用することもできます (前述を参照)。 **EncryptSensitiveWithUserKey** 保護レベルを使用した場合は、構成ファイルか、 **[SSIS パラメータ]** 、 **[接続マネージャー]** 、または **[プロパティのオーバーライド]** タブに、機密性の高い値を再入力します (後述を参照)。 
 
@@ -281,7 +285,7 @@ Azure-SSIS 統合ランタイム (IR) がない場合は、[「チュートリ�
    }
    ```
 
-   ファイル システム、ファイル共有、または Azure Files に格納されているパッケージを実行するには、次のようにパッケージまたはログの場所のプロパティの値を入力します。
+   ファイル システム、ファイル共有、または Azure Files に格納されているパッケージを実行するには、次のようにパッケージおよびログの場所のプロパティの値を入力します。
 
    ```json
    {
@@ -353,6 +357,31 @@ Azure-SSIS 統合ランタイム (IR) がない場合は、[「チュートリ�
                                    "value": "MyAccountKey"
                                }
                            }
+                       }
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   埋め込みパッケージを実行するには、パッケージの場所プロパティの値を次のように入力します。
+
+   ```json
+   {
+       {
+           {
+               {
+                   "packageLocation": {
+                       "type": "InlinePackage",
+                       "typeProperties": {
+                           "packagePassword": {
+                               "type": "SecureString",
+                               "value": "MyEncryptionPassword"
+                           },
+                           "packageName": "MyPackage.dtsx",
+                           "packageContent":"My compressed/uncompressed package content",
+                           "packageLastModifiedDate": "YYYY-MM-DDTHH:MM:SSZ UTC-/+HH:MM"
                        }
                    }
                }

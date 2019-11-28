@@ -1,5 +1,5 @@
 ---
-title: Azure Backup を使用した Azure VM 上で SQL Server データベースを管理および監視する
+title: Azure VM で SQL Server DB を管理および監視する - Azure Backup
 description: この記事では、Azure VM 上で実行されている SQL Server データベースを管理し、監視する方法について説明します。
 author: dcurwin
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 1aba8777a5b0f5851922e292004a74d74065eabf
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934825"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090527"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -31,7 +31,6 @@ Azure Backup では、 **[バックアップ ジョブ]** ポータルに、手�
 >
 
 監視シナリオの詳細については、[Arure portal における監視](backup-azure-monitoring-built-in-monitor.md)に関するページと [Azure Monitor を利用した監視](backup-azure-monitoring-use-azuremonitor.md)に関するページにお進みください。  
-
 
 ## <a name="view-backup-alerts"></a>バックアップ アラートを表示する
 
@@ -57,14 +56,14 @@ Azure Backup では、 **[バックアップ ジョブ]** ポータルに、手�
 
 複数の方法で SQL Server データベースのバックアップを停止できます。
 
-* 今後のバックアップ ジョブすべてを停止し、すべての復旧ポイントを削除する。
-* 今後のバックアップ ジョブすべてを停止し、復旧ポイントはそのままにする。
+- 今後のバックアップ ジョブすべてを停止し、すべての復旧ポイントを削除する。
+- 今後のバックアップ ジョブすべてを停止し、復旧ポイントはそのままにする。
 
 復旧ポイントをそのままにする場合、以下の項目を念頭に置いてください。
 
-* 復旧ポイントはすべて永久に変更されず、削除はすべて保護の停止で停止し、データを保持します
-* インスタンスの保護とストレージの使用に対して課金されます。 詳細については、「[Azure Backup の価格](https://azure.microsoft.com/pricing/details/backup/)」をご覧ください。
-* バックアップを停止しないでデータ ソースを削除すると、新しいバックアップは失敗します。
+- 復旧ポイントはすべて永久に変更されず、削除はすべて保護の停止で停止し、データを保持します
+- インスタンスの保護とストレージの使用に対して課金されます。 詳細については、「[Azure Backup の価格](https://azure.microsoft.com/pricing/details/backup/)」をご覧ください。
+- バックアップを停止しないでデータ ソースを削除すると、新しいバックアップは失敗します。
 
 データベースの保護を停止するには、次の手順を実行します。
 
@@ -82,22 +81,20 @@ Azure Backup では、 **[バックアップ ジョブ]** ポータルに、手�
 
     ![[バックアップの停止] を選択する](./media/backup-azure-sql-database/stop-db-button.png)
 
-
 5. **[バックアップの停止]** メニューで、データを保持するか削除するかを選択します。 必要に応じて、理由とコメントを入力します。
 
     ![[バックアップの停止] メニューでデータを削除または保持する](./media/backup-azure-sql-database/stop-backup-button.png)
 
 6. **[バックアップの停止]** を選択する
 
-
 > [!NOTE]
 >
 >データ削除オプションの詳細については、以下の FAQ を参照してください。
->* [自動保護されたインスタンスからデータベースを削除した場合、バックアップはどうなりますか?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
->* [自動保護されたデータベースのバックアップ操作の停止を実行した場合、その動作はどうなりますか?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>
+>- [自動保護されたインスタンスからデータベースを削除した場合、バックアップはどうなりますか?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>- [自動保護されたデータベースのバックアップ操作の停止を実行した場合、その動作はどうなりますか?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
-
 
 ## <a name="resume-protection-for-a-sql-database"></a>SQL Database での保護の再開
 
@@ -115,12 +112,13 @@ SQL Database の保護を再開するには:
 
 異なる種類のオンデマンド バックアップを実行できます。
 
-* 完全バックアップ
-* コピーのみの完全バックアップ
-* 差分バックアップ
-* ログ バックアップ
+- 完全バックアップ
+- コピーのみの完全バックアップ
+- 差分バックアップ
+- ログ バックアップ
 
-コピーのみの完全バックアップのリテンション期間を指定する必要がありますが、アドホック完全バックアップのリテンション範囲は、自動的に現在の時間から 45 日間に設定されます。 <br/>
+コピーのみの完全バックアップの保有期間を指定する必要がありますが、オンデマンド完全バックアップの保有期間の範囲は、自動的に現在の時刻から 45 日間に設定されます。
+
 詳細については、[SQL Server バックアップの種類](backup-architecture.md#sql-server-backup-types)に関するページをご覧ください。
 
 ## <a name="unregister-a-sql-server-instance"></a>SQL Server インスタンスを登録解除する
@@ -141,8 +139,8 @@ SQL Database の保護を再開するには:
 
    ![[削除] を選択する](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
-
 ## <a name="modify-policy"></a>ポリシーを変更する
+
 バックアップの頻度や保有期間の範囲を変更するためにポリシーを変更します。
 
 > [!NOTE]
@@ -154,22 +152,21 @@ SQL Database の保護を再開するには:
 
   ![バックアップ ポリシーの変更](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
-ポリシーの変更は、関連付けられているすべてのバックアップ項目に影響し、対応する**保護の構成**ジョブをトリガーします。 
+ポリシーの変更は、関連付けられているすべてのバックアップ項目に影響し、対応する**保護の構成**ジョブをトリガーします。
 
-#### <a name="inconsistent-policy"></a>不整合なポリシー 
+### <a name="inconsistent-policy"></a>不整合なポリシー
 
 場合によっては、ポリシーの変更操作によって、一部のバックアップ項目に**不整合な**ポリシーのバージョンができてしまうことがあります。 これは、ポリシーの変更操作がトリガーされた後に、対応する**保護の構成**ジョブがバックアップ項目に対して失敗した場合に発生します。 バックアップ項目のビューには、次のように表示されます。
- 
+
   ![不整合なポリシー](./media/backup-azure-sql-database/inconsistent-policy.png)
 
 次のように、1 回のクリックで、影響を受けるすべての項目のポリシー バージョンを修正できます。
 
   ![不整合なポリシーの修正](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
- 
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM で拡張を再登録する
 
-VM のワークロード拡張が何らかの理由で影響を受けることがあります。 そのような場合、VM 上でトリガーされるすべての操作が失敗するようになります。 そこで、場合によっては、VM で拡張を再登録する必要があります。 **再登録**操作によって、操作を続行させるために、VM にワークロード バックアップ拡張が再インストールされます。  <br>
+VM のワークロード拡張が何らかの理由で影響を受けることがあります。 そのような場合、VM 上でトリガーされるすべての操作が失敗するようになります。 そこで、場合によっては、VM で拡張を再登録する必要があります。 **再登録**操作によって、操作を続行させるために、VM にワークロード バックアップ拡張が再インストールされます。
 
 このオプションは慎重に使用する必要があります。正常な拡張の VM 上でこの操作がトリガーされると、拡張が再起動します。 その結果、進行中のジョブがすべて失敗することがあります。 再登録操作をトリガーする前に、[こちらの兆候](backup-sql-server-azure-troubleshoot.md#re-registration-failures)がないか確認してください。
 

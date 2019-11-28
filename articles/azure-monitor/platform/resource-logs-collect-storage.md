@@ -8,18 +8,23 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 8a1802f0f24ba5ccad3ec1c45f3baa29dfe6909f
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 306f6cb0b50b7befcbf51e6164a5da887d35616e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263038"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74030889"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure リソース ログをストレージ アカウントにアーカイブする
 Azure の[リソース ログ](resource-logs-overview.md)からは、Azure リソースの内部操作で頻繁に見られるデータが豊富に提供されます。 この記事では、アーカイブ対象のデータを保持するための、Azure ストレージ アカウントへのリソース ログの収集について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 [Azure ストレージ アカウント](../../storage/common/storage-quickstart-create-account.md)をまだお持ちでない場合は、作成する必要があります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセス権を持っている限り、ストレージ アカウントはログを送信するリソースと同じサブスクリプションに属している必要はありません。
+
+
+> [!IMPORTANT]
+> Azure Data Lake Storage Gen2 アカウントは、Azure portal では有効なオプションとして表示されていますが、診断設定の送信先としては現在サポートされていません。
+
 
 監視データへのアクセスをさらに制御するために他の非監視データが格納されている、既存のストレージ アカウントは使用しないでください。 [アクティビティ ログ](activity-logs-overview.md)もストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、同じアカウントを使用することができます。
 

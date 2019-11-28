@@ -1,17 +1,14 @@
 ---
 title: ブループリント デプロイのステージ
 description: デプロイ中、Azure ブループリント サービスが通過する手順について説明します。
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 03/14/2019
+ms.date: 11/13/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 4645edde5163f1c8bca787416f5465e5a8f2d355
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b329613e4e4954a1ea1452017a6e6c8b7343f2d3
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978539"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048612"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>ブループリント デプロイのステージ
 
@@ -28,7 +25,7 @@ ms.locfileid: "71978539"
 
 ## <a name="blueprints-granted-owner-rights"></a>Blueprints に所有者権限が与えられる
 
-Azure Blueprints サービス プリンシパルに、割り当てられたサブスクリプションの所有者権限が付与されます。 付与されたロールによって、Blueprints では[システム割り当て](../../../active-directory/managed-identities-azure-resources/overview.md)のマネージド ID を作成し、後で取り消すことができます。
+[システム割り当てマネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) マネージド ID が使用されるとき、Azure Blueprints サービス プリンシパルには、割り当てられた 1 つまたは複数のサブスクリプションに対する所有者権限が付与されます。 付与されたロールにより、Blueprints は**システム割り当て**マネージド ID を作成し、その後取り消すことができます。 **ユーザー割り当て**マネージド ID を使用している場合、Azure Blueprints サービス プリンシパルはサブスクリプションに対する所有者権限を取得せず、またその必要もありません。
 
 割り当てがポータル経由で行われる場合、権限は自動的に付与されます。 ただし、割り当てが REST API 経由で行われる場合、権限付与は個別の API 呼び出しによって行う必要があります。 Azure Blueprint AppId は `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ですが、サービス プリンシパルはテナントによって異なります。 [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) と REST エンドポイント [servicePrincipals](/graph/api/resources/serviceprincipal) を使用し、サービス プリンシパルを取得します。 次に、Azure Blueprints に "_所有者_" ロールを[ポータル](../../../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../../../role-based-access-control/role-assignments-cli.md)、[Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md)、[REST API](../../../role-based-access-control/role-assignments-rest.md)、または [Resource Manager テンプレート](../../../role-based-access-control/role-assignments-template.md)経由で付与します。
 
@@ -38,7 +35,7 @@ Blueprints サービスによって直接、リソースがデプロイされる
 
 ユーザー、グループ、サービス プリンシパルによってブループリントがサブスクリプションに割り当てられます。 割り当てオブジェクトは、ブループリントが割り当てられたサブスクリプション レベルで存在します。 デプロイによるリソースの作成は、エンティティのデプロイというコンテキストでは行われません。
 
-ブループリント割り当てを作成するとき、[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) の種類が選択されます。 初期値は**システム割り当て**のマネージド ID です。 **ユーザー割り当て**のマネージド ID を選択できます。 **ユーザー割り当て**マネージド ID を使用するとき、ブループリント割り当ての作成前にアクセス許可を定義し、付与する必要があります。
+ブループリント割り当てを作成するとき、[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) の種類が選択されます。 初期値は**システム割り当て**のマネージド ID です。 **ユーザー割り当て**のマネージド ID を選択できます。 **ユーザー割り当て**マネージド ID を使用するとき、ブループリント割り当ての作成前にアクセス許可を定義し、付与する必要があります。 [所有者](../../../role-based-access-control/built-in-roles.md#owner)および[ブループリント オペレーター](../../../role-based-access-control/built-in-roles.md#blueprint-operator)組み込みロールはどちらも、**ユーザー割り当て**マネージド ID を使用する、割り当てを作成するために必要な `blueprintAssignment/write` アクセス許可を持っています。
 
 ## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>省略可能 - Blueprints によって、システム割り当てのマネージド ID が作成されます
 

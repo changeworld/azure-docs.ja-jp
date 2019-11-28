@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: b451597d2d91117e11b1becd8b4ab96f981dade8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931314"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832014"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -31,7 +31,7 @@ ms.locfileid: "72931314"
 ### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM による監視に使用するノードにはどのようなプラットフォーム要件がありますか。
 NPM の様々な機能に対するプラットフォーム要件を、以下に示します。
 
-- NPM のパフォーマンス モニターとサービス接続モニターの機能は、Windows Server および Windows デスクトップ/クライアント オペレーティング システムの両方をサポートします。 サポートされている Windows Server OS のバージョンは 2008 SP1 以降です。 サポートされている Windows デスクトップ/クライアントのバージョンは、Windows 10、Windows 8.1、Windows 8、および Windows 7 です。 
+- NPM のパフォーマンス モニターとサービス接続モニターの機能は、Windows Server および Windows デスクトップ/クライアント オペレーティング システムの両方をサポートします。 サポートされている Windows Server OS のバージョンは 2008 SP1 以降です。 サポートされている Windows デスクトップ/クライアント バージョンは、Windows 10、Windows 8.1、Windows 8、および Windows 7 です。 
 - NPM の ExpressRoute モニター機能は Windows Server (2008 SP1 またはそれ以降) オペレーティング システムのみをサポートします。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>NPM 内の監視ノードとして Linux マシンを使用できますか。
@@ -48,7 +48,7 @@ ExpressRoute モニター機能では、Azure ノードは直接エージェン�
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>TCP と ICMP のどちらのプロトコルを監視用に選択する必要がありますか。
 Windows Server ベースのノードを使用してネットワークを監視する場合は、正確さに優れている TCP を監視プロトコルとして使用することをお勧めします。 
 
-Windows デスクトップ/クライアント オペレーティング システム ベースのノードには、ICMP を使用することをお勧めします。 このプラットフォームでは、ネットワーク トポロジを検出するために NPM によって使用される RAW ソケット経由での TCP データの送信は許可されていません。
+Windows デスクトップ/クライアント オペレーティング システム ベースのノードには、ICMP を使用することをお勧めします。 このプラットフォームでは、NPM がネットワーク トポロジの検出に使用する RAW ソケット経由での TCP データの送信は許可されていません。
 
 各プロトコルの相対的な利点の詳細を[ここ](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)から取得できます。
 
@@ -98,6 +98,42 @@ NPM は確率論的メカニズムを使用して、各ネットワーク パス
 ### <a name="how-can-i-create-alerts-in-npm"></a>NPM でアラートを作成する方法はありますか。
 詳しい手順については、[ドキュメントのアラート セクション](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts)を参照してください。
 
+### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>アラート用の既定の Log Analytics クエリはどのようなものですか。
+パフォーマンス モニター クエリ
+
+    NetworkMonitoring 
+     | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
+    
+サービス接続モニター クエリ
+
+    NetworkMonitoring                 
+     | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
+    
+ExpressRoute モニター クエリ: 回線クエリ
+
+    NetworkMonitoring
+    | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+
+プライベート ピアリング
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+
+Microsoft ピアリング
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+
+一般的なクエリ   
+
+    NetworkMonitoring
+    | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
+
 ### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>NPM はルーターとサーバーを個別のデバイスとして監視できますか。
 NPM は、ソース IP と宛先 IP の間の基になるネットワーク ホップ (スイッチ、ルーター、サーバーなど) の IP およびホスト名のみを識別します。 また、識別されたこれらのホップ間の待機時間を識別します。 これらの基になるホップを個別に監視しません。
 
@@ -110,17 +146,23 @@ NPM は、ソース IP と宛先 IP の間の基になるネットワーク ホ�
 ### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>ExpressRoute についての着信および発信の帯域幅の情報を入手できますか。
 プライマリ帯域幅とセカンダリ帯域幅の両方についての着信および発信の値を取得できます。
 
-ピアリング レベル情報については、以下に示すクエリをログ検索で使用します
+MS ピアリング レベル情報については、ログ検索で次に示すクエリを使用します。
 
     NetworkMonitoring 
-    | where SubType == "ExpressRoutePeeringUtilization"
-    | project CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | where SubType == "ERMSPeeringUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+    
+プライベート ピアリング レベル情報については、ログ検索で次に示すクエリを使用します。
+
+    NetworkMonitoring 
+     | where SubType == "ERVNetConnectionUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
   
-回線レベル情報については、以下に示すクエリを使用します 
+回線レベル情報については、ログ検索で次に示すクエリを使用します。
 
     NetworkMonitoring 
-    | where SubType == "ExpressRouteCircuitUtilization"
-    | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | where SubType == "ERCircuitTotalUtilization"
+        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>NPM のパフォーマンス モニターではどのリージョンがサポートされていますか。
 NPM は、[サポートされるリージョン](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)のいずれかでホストされているワークスペースから、世界のあらゆる地域でのネットワーク間の接続を監視できます
@@ -142,8 +184,8 @@ NPM は、traceroute の修正バージョンを使用して、ソース エー�
 * ネットワーク デバイスが ICMP_TTL_EXCEEDED トラフィックを許可していない。
 * ネットワーク デバイスからの ICMP_TTL_EXCEEDED 応答がファイアウォールによってブロックされている。
 
-### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>異常なテストに関するアラートが表示されますが、NPM の損失と待機時間のグラフに高い値が表示されません。 何が異常であるかをどのように確認すればよいですか?
-NPM は、ソースと宛先の間のエンドツーエンドの待機時間が、それらの間の任意のパスのしきい値を超えた場合にアラートを生成します。 ネットワークによっては、同じソースと宛先を接続する複数のパスが存在する場合があります。 いずれかのパスに異常があると、NPM はアラートを生成します。 グラフに表示される損失と待機時間は、すべてのパスの平均値であるため、1 つのパスの正確な値を示すとは限りません。 しきい値を超えた場所を把握するには、アラートの "サブタイプ" 列を確認します。 パスによって問題が発生した場合は、サブタイプ値が NetworkPath (パフォーマンス モニター テストの場合)、EndpointPath (サービス接続モニター テストの場合)、および ExpressRoutePath (ExpressRotue モニター テストの場合) になります。 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>異常なテストに関するアラートが表示されますが、NPM の損失と待機時間のグラフに高い値が表示されません。 何が異常であるかを確認するにはどうすればよいですか。
+NPM は、ソースと宛先の間のエンド ツー エンドの待機時間が、それらの間のいずれかのパスのしきい値を超えた場合にアラートを生成します。 一部のネットワークには、同じソースと宛先を接続している複数のパスがあります。 いずれかのパスに異常があると、NPM はアラートを生成します。 グラフに表示される損失と待機時間は、すべてのパスの平均値であるため、1 つのパスの正確な値を示すとは限りません。 しきい値を超えた場所を把握するには、アラートの "サブタイプ" 列を確認します。 この問題がパスによって発生している場合、サブタイプ値は NetworkPath (パフォーマンス モニター テストの場合)、EndpointPath (サービス接続モニター テストの場合)、および ExpressRoutePath (ExpressRoute モニター テストの場合) になります。 
 
 パスが異常であることを検索するサンプル クエリ:
 
@@ -153,7 +195,7 @@ NPM は、ソースと宛先の間のエンドツーエンドの待機時間が�
     | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
 
 ### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>テストに異常が表示されるのに、トポロジには表示されないのはなぜですか 
-NPM は、エンドツーエンドの損失、待ち時間、およびトポロジをさまざまな間隔で監視します。 損失と待ち時間は 5 秒に 1 回測定され、3 分ごとに集計されます (Performance Monitor と Express Route Monitor の場合)。一方、トポロジは、10 分に 1 回 traceroute を使用して計算されます。 たとえば、3 時 44 分から 4 時 04 分の間では、トポロジは 3 回更新されます (3 時 44 分、3 時 54 分、4 時 04 分) が、損失と待ち時間は約 7 回更新されます (3 時 44 分、3 時 47 分、3 時 50 分、3 時 53 分、3 時 56 分、3 時 59 分、4 時 02 分)。 3 時 54 分に生成されるトポロジは、3 時 56 分、3 時 59 分、および 4 時 02 分に計算される損失と待ち時間に対してレンダリングされます。 たとえば、3 時 59 分に ER 回線の異常を示すアラートを受け取ったとします。 あなたは、NPM にログオンし、トポロジの時刻を 3 時 59 分に設定します。 NPM には、3 時 54 分に生成されたトポロジがレンダリングされます。 ネットワークの最後の既知のトポロジを理解するには、TimeProcessed (損失と待ち時間が計算された時刻) フィールドと TracerouteCompletedTime (トポロジが計算された時刻) を比較します。 
+NPM は、エンドツーエンドの損失、待ち時間、およびトポロジをさまざまな間隔で監視します。 損失と待ち時間は 5 秒に 1 回測定され、3 分ごとに集計されます (Performance Monitor と Express Route Monitor の場合)。一方、トポロジは、10 分に 1 回 traceroute を使用して計算されます。 たとえば、3 時 44 分から 4 時 04 分までに、トポロジは 3 回 (3 時 44 分、3 時 54 分、4 時 04 分) 更新される可能性がありますが、損失と待ち時間は約 7 回 (3 時 44 分、3 時 47 分、3 時 50 分、3 時 53 分、3 時 56 分、3 時 59 分、4 時 02 分) 更新されます。 3 時 54 分に生成されるトポロジは、3 時 56 分、3 時 59 分、および 4 時 02 分に計算される損失と待ち時間に対してレンダリングされます。 たとえば、3 時 59 分に ER 回線の異常を示すアラートを受け取ったとします。 あなたは、NPM にログオンし、トポロジの時刻を 3 時 59 分に設定します。 NPM には、3 時 54 分に生成されたトポロジがレンダリングされます。 ネットワークの最後の既知のトポロジを理解するには、TimeProcessed (損失と待ち時間が計算された時刻) フィールドと TracerouteCompletedTime (トポロジが計算された時刻) を比較します。 
 
 ### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>NetworkMonitoring テーブルの E2EMedianLatency フィールドと AvgHopLatencyList フィールドの違いは何ですか
 E2EMedianLatency は、tcp ping テストの結果を集計した後 3 分ごとに更新される待ち時間です。AvgHopLatencyList は、traceroute に基づいて 10 分ごとに更新されます。 E2EMedianLatency が計算された正確な時刻を知るには、TimeProcessed フィールドを使用します。 traceroute が完了して AvgHopLatencyList を更新した正確な時刻を知るには、TracerouteCompletedTime フィールドを使用します

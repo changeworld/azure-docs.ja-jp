@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 5c501e6c2bc1a30273682352a68565ccc897ff50
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 005e93837d1d420526f6fb33e79d25a94da6fab7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699202"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838542"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
@@ -37,7 +37,7 @@ ms.locfileid: "68699202"
 | openSUSE | 13.2+ | 42.3 以降 |
 | SUSE Linux Enterprise Server | 12 | 12 SP3+ |
 
-- CIFS ユーティリティ (cfs-utils) がクライアントにインストールされていません。
+- CIFS ユーティリティ (cifs-utils) がクライアントにインストールされていません。
 - SMB/CIFS の最小バージョン 2.1 がクライアントにインストールされていません。
 - SMB 3.0 暗号化がクライアントでサポートされていません。 上記の表では、暗号化を使用してオンプレミスや複数のリージョンにまたがるマウントをサポートする Linux ディストリビューションの一覧を示しています。 他のディストリビューションの場合は、カーネル 4.11 以降のバージョンが必要です。
 - サポートされていない TCP ポート 445 経由でストレージ アカウントに接続しようとしています。
@@ -60,7 +60,7 @@ ms.locfileid: "68699202"
 
 通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じデータセンターから行われていない場合、セキュリティ上の理由により、Azure ファイル共有への接続がブロックされます。 ストレージ アカウントで [[安全な転送が必須]](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が有効になっている場合は、同じデータセンター内の暗号化されていない接続もブロックされる可能性があります。 ユーザーのクライアント OS が SMB 暗号化をサポートしている場合に限り、暗号化された通信チャネルを利用できます。
 
-詳しくは、[「Linux で cifs-utils パッケージを使用してAzure ファイル共有をマウントするための前提条件」](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package)をご覧ください。 
+詳しくは、[「Linux で cifs-utils パッケージを使用してAzure ファイル共有をマウントするための前提条件」](storage-how-to-use-files-linux.md#prerequisites)をご覧ください。 
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
@@ -126,7 +126,7 @@ Linux では、次のようなエラー メッセージが表示されます。
 
 ### <a name="solution"></a>解決策
 
-Linux 用の SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 この機能は、[対応するマウント機能で推奨される最低限のバージョン (SMB バージョン 2.1 と SMB バージョン 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) で示される Linux ディストリビューションに含まれています。 他のディストリビューションの場合は、カーネル 4.11 以降のバージョンが必要です。
+Linux 用の SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 Linux ディストリビューションによっては、4.11 カーネルから以前のバージョンの Linux カーネルへの移植変更が加えられている場合があります。 使用している Linux のバージョンが暗号化を使用した SMB 3.0 をサポートしているかどうかを判断するには、「[Linux で Azure Files を使用する](storage-how-to-use-files-linux.md)」を参照してください。 
 
 Linux SMB クライアントが暗号化をサポートしていない場合は、ファイル共有と同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure Files をマウントします。 ストレージ アカウントで [[安全な転送が必須]]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が無効になっていることを確認します。 
 
@@ -281,7 +281,7 @@ Linux カーネルの再接続に関するこの問題は、以下の変更の�
 - [CIFS:再接続中にメモリが破損する可能性がある問題の修正](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS:再接続中にミューテックスのダブル ロックが発生する可能性がある問題の修正 (カーネル v4.9 以降)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-ただし、これらの変更が既にすべての Linux ディストリビューションに移植されているとは限りません。 この修正プログラムやその他の再接続修正プログラムは、「[Linux で Azure Files を使用する](storage-how-to-use-files-linux.md)」記事の「[該当のマウント機能で推奨される最低限のバージョン (SMB バージョン 2.1 と SMB バージョン 3.0)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30)」セクションに記載されています。 この修正プログラムを取得するには、これらの推奨されるカーネルのバージョンのいずれかにアップグレードします。
+ただし、これらの変更が既にすべての Linux ディストリビューションに移植されているとは限りません。 一般的な Linux ディストリビューションを使用している場合は、「[Linux で Azure Files 使用する](storage-how-to-use-files-linux.md)」で、必要なカーネル変更が加えられているディストリビューションのバージョンを確認できます。
 
 ### <a name="workaround"></a>対処法
 

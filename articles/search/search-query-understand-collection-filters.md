@@ -1,13 +1,13 @@
 ---
-title: OData コレクション フィルターの概要 - Azure Search
-description: Azure Search のクエリで OData コレクション フィルターがどのように働くのかを説明します。
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
+title: OData コレクション フィルターの概要
+titleSuffix: Azure Cognitive Search
+description: Azure Cognitive Search のクエリで OData コレクション フィルターが動作するしくみについて説明します。これには、コレクションに固有の制限や動作が含まれます。
+manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
-manager: nitinme
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,30 +19,30 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5c3a0205f5a9ac5115e78f1bc11f70b2c50a9714
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647426"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113069"
 ---
-# <a name="understanding-odata-collection-filters-in-azure-search"></a>Azure Search での OData コレクション フィルターの概要
+# <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Azure Cognitive Search での OData コレクション フィルターの概要
 
-Azure Search でコレクションのフィールドの[フィルター処理を行う](query-odata-filter-orderby-syntax.md)には、[`any` および `all` 演算子](search-query-odata-collection-operators.md)を**ラムダ式**と共に使用できます。 ラムダ式は**範囲変数**を参照するブール式です。 `any` および `all` 演算子はほとんどのプログラミング言語の `for` ループに似ており、範囲変数がループ変数、ラムダ式がループ本体の役割を果たします。 範囲変数は、ループの反復処理の間、コレクションの "現在" の値になります。
+Azure Cognitive Search でコレクションのフィールドの[フィルター処理を行う](query-odata-filter-orderby-syntax.md)には、[`any` および `all` 演算子](search-query-odata-collection-operators.md)を**ラムダ式**と共に使用します。 ラムダ式は**範囲変数**を参照するブール式です。 `any` および `all` 演算子はほとんどのプログラミング言語の `for` ループに似ており、範囲変数がループ変数、ラムダ式がループ本体の役割を果たします。 範囲変数は、ループの反復処理の間、コレクションの "現在" の値になります。
 
-少なくとも、概念的にはそのように動作します。 実際には、Azure Search でのフィルターの実装は、`for` ループの動作方法とまったく異なります。 この違いがユーザーには認識されないのが理想ですが、特定の状況ではそうなりません。 最終的な結果として、ラムダ式を作成するときに従う必要がある規則があります。
+少なくとも、概念的にはそのように動作します。 実際には、Azure Cognitive Search は、`for` ループの動作とはまったく異なる方法でフィルターを実装します。 この違いがユーザーには認識されないのが理想ですが、特定の状況ではそうなりません。 最終的な結果として、ラムダ式を作成するときに従う必要がある規則があります。
 
-この記事では、Azure Search でのこれらのフィルターの実行方法を調べることにより、コレクション フィルターの規則が存在する理由について説明します。 複雑なラムダ式で高度なフィルターを作成する場合、この記事はフィルターで可能性のあることとその理由を理解するのに役立ちます。
+この記事では、Azure Cognitive Search がフィルターを実行する方法を調査することによって、コレクション フィルターの規則が存在する理由について説明します。 複雑なラムダ式で高度なフィルターを作成する場合、この記事はフィルターで可能性のあることとその理由を理解するのに役立ちます。
 
-コレクション フィルターの規則と例については、「[Azure Search での OData コレクション フィルターのトラブルシューティング](search-query-troubleshoot-collection-filters.md)」をご覧ください。
+コレクション フィルターの規則がどのようなものであるか (例を含む) については、「[Azure Cognitive Search での OData コレクション フィルターのトラブルシューティング](search-query-troubleshoot-collection-filters.md)」を参照してください。
 
 ## <a name="why-collection-filters-are-limited"></a>コレクション フィルターに制限がある理由
 
 コレクションのすべての種類に対してフィルターのすべての機能がサポートされていないことについては、3 つの基になる理由があります。
 
 1. 特定のデータ型では、特定の演算子のみがサポートされています。 たとえば、`lt` や `gt` などを使ってブール値 `true` と `false` を比較しても意味がありません。
-1. Azure Search では、`Collection(Edm.ComplexType)` 型のフィールドに対する**相関検索**はサポートされていません。
-1. Azure Search では、逆インデックスを使って、コレクションを含むすべてのデータ型に対するフィルター処理が実行されます。
+1. Azure Cognitive Search は、型 `Collection(Edm.ComplexType)` のフィールドに対する**相関検索**をサポートしていません。
+1. Azure Cognitive Search は、逆インデックスを使用して、すべての種類のデータ (コレクションを含む) に対するフィルターを実行します。
 
 最初の理由は、単に、OData 言語と EDM 型システムの定義方法の結果によるものです。 後の 2 つについては、この記事の残りの部分で詳しく説明します。
 
@@ -106,11 +106,11 @@ Azure Search でコレクションのフィールドの[フィルター処理を
 したがって、基本的に "部屋の `Type` が 'Deluxe Room' と等しく、**その同じ部屋**の `BaseRate` が 100 未満であるドキュメントと一致する" ことを示す上記のフィルターとは異なり、検索クエリでは "`Rooms/Type` に語句 'deluxe' が含まれ、`Rooms/Description` に語句 'city view' が含まれるドキュメントと一致する" ことが示されます。 後者の場合、フィールドを相関できる個別の部屋の概念はありません。
 
 > [!NOTE]
-> Azure Search への相関検索の追加のサポートを希望する場合は、[こちらの User Voice 項目](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections)に投票してください。
+> 相関検索に対するサポートが Azure Cognitive Search に追加されることを希望する場合は、[このユーザーの声の項目](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections)に投票してください。
 
 ## <a name="inverted-indexes-and-collections"></a>逆インデックスとコレクション
 
-複雑なコレクションに対するラムダ式での制限は、`Collection(Edm.Int32)` や `Collection(Edm.GeographyPoint)` などの単純なコレクションに対する制限よりはるかに少ないことにお気付きかもしれません。 これは、Azure Search では、複雑なコレクションはサブドキュメントの実際のコレクションとしてを格納されるのに対し、単純なコレクションはコレクションとして格納されないためです。
+複雑なコレクションに対するラムダ式での制限は、`Collection(Edm.Int32)` や `Collection(Edm.GeographyPoint)` などの単純なコレクションに対する制限よりはるかに少ないことにお気付きかもしれません。 これは、Azure Cognitive Search が複雑なコレクションをサブドキュメントの実際のコレクションとして格納するのに対して、単純なコレクションはまったくコレクションとして格納されないためです。
 
 たとえば、オンライン小売店用のインデックスでの `seasons` のようなフィルター可能な文字列コレクション フィールドについて考えます。 このインデックスには、次のようなドキュメントがアップロードされる可能性があります。
 
@@ -145,7 +145,7 @@ Azure Search でコレクションのフィールドの[フィルター処理を
 | fall | 1、2 |
 | winter | 2、3 |
 
-このデータ構造は、次のような 1 つの質問に対して非常に高速に回答するように設計されています: 特定の語句はどのドキュメントに含まれているか。 この質問に答える処理は、コレクションのループというより、単純な等値チェックに近いものです。 実際、文字列コレクションの場合、ラムダ式内の `any` に対する比較演算子として Azure Search では `eq` しか許可されないのはこのためです。
+このデータ構造は、次のような 1 つの質問に対して非常に高速に回答するように設計されています: 特定の語句はどのドキュメントに含まれているか。 この質問に答える処理は、コレクションのループというより、単純な等値チェックに近いものです。 実際、文字列コレクションの場合に、Azure Cognitive Search が `any` に対するラムダ式の内部の比較演算子として `eq` のみを許可するのはこのためです。
 
 このような等価性を踏まえて、次に、`or` を使用して同じ範囲変数でどのように複数の等価性チェックを組み合わせることができるかを見てみましょう。 それは、代数と[量指定子の分配則](https://en.wikipedia.org/wiki/Existential_quantification#Negation)に従って動作します。 次の式
 
@@ -174,7 +174,7 @@ Azure Search でコレクションのフィールドの[フィルター処理を
 >
 > `all` には逆の規則が適用されます。
 
-`lt`、`gt`、`le`、`ge` の各演算子がサポートされるデータ型のコレクションをフィルター処理するときは、さまざまな式が許可されます (`Collection(Edm.Int32)` など)。 具体的には、基になる比較式が `and` を使って**範囲比較**に結合されている限り、`any` において`and` だけでなく `or` を使うことができ、それがさらに `or` を使って結合されます。 ブール式のこの構造は[選言標準形 (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form) と呼ばれ、"ORs of ANDs" としても知られています。 逆に、これらのデータ型に対する `all` のラムダ式は、[連言標準形 (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form) ("ANDs of ORs" としても知られます) になっている必要があります。 Azure Search では、文字列の高速語句検索と同様に逆インデックスを使って効率的に実行できるため、そのような範囲比較が許可されます。
+`lt`、`gt`、`le`、`ge` の各演算子がサポートされるデータ型のコレクションをフィルター処理するときは、さまざまな式が許可されます (`Collection(Edm.Int32)` など)。 具体的には、基になる比較式が `and` を使って**範囲比較**に結合されている限り、`any` において`and` だけでなく `or` を使うことができ、それがさらに `or` を使って結合されます。 ブール式のこの構造は[選言標準形 (DNF)](https://en.wikipedia.org/wiki/Disjunctive_normal_form) と呼ばれ、"ORs of ANDs" としても知られています。 逆に、これらのデータ型に対する `all` のラムダ式は、[連言標準形 (CNF)](https://en.wikipedia.org/wiki/Conjunctive_normal_form) ("ANDs of ORs" としても知られます) になっている必要があります。 Azure Cognitive Search は、文字列に対する高速な用語参照と同様に逆インデックスを使用して効率的に実行できるため、このような範囲の比較を許可します。
 
 まとめると、ラムダ式で許可されることの経験則は次のようになります。
 
@@ -188,8 +188,8 @@ Azure Search でコレクションのフィールドの[フィルター処理を
 
 ## <a name="next-steps"></a>次の手順  
 
-- [Azure Search での OData コレクション フィルターのトラブルシューティング](search-query-troubleshoot-collection-filters.md)
-- [Azure Search のフィルター](search-filters.md)
-- [Azure Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
-- [Azure Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
-- [ドキュメントの検索 &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure Cognitive Search での OData コレクション フィルターのトラブルシューティング](search-query-troubleshoot-collection-filters.md)
+- [Azure Cognitive Search のフィルター](search-filters.md)
+- [Azure Cognitive Search の OData 式言語の概要](query-odata-filter-orderby-syntax.md)
+- [Azure Cognitive Search の OData 式構文リファレンス](search-query-odata-syntax-reference.md)
+- [ドキュメントの検索 &#40;Azure Cognitive Search REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

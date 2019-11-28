@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub モジュール ID とモジュール ツイン (Node.js) の概要 | Microsoft Docs
+title: Azure IoT Hub モジュール ID とモジュール ツイン (Node.js) の開始
 description: モジュール ID を作成し、IoT SDK for Node.js を使用して .NET のモジュール ツインを更新する方法を説明します。
 author: wesmc7777
 manager: philmea
@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 0fc676fd32c585324bac0024655765ebd628385a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: bf80925a2dc5c6d06ba14fe1c0d72a2fc1f88d51
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72165908"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953862"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT Hub モジュール ID とモジュール ツイン (Node.js) の概要
 

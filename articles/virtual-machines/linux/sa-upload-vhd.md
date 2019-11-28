@@ -1,5 +1,5 @@
 ---
-title: Azure CLI を使用したカスタム Linux ディスクのアップロード | Microsoft Docs
+title: Azure CLI を使用したカスタム Linux ディスクのアップロード
 description: Resource Manager デプロイ モデルと Azure CLI を使用して、仮想ハード ディスク (VHD) を作成し、Azure にアップロードする
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 9614614782179f9160aebdc4deca88f067778060
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ef2db7f13ea5192634855b69a0d355e0f1e11ecb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708363"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035079"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する
 

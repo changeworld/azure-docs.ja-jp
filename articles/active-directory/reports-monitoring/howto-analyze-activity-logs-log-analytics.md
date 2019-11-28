@@ -1,9 +1,9 @@
 ---
-title: Azure Monitor ログを使用して Azure Active Directory アクティビティ ログを分析する | Microsoft Docs
+title: Azure Monitor ログを使用してアクティビティ ログを分析する | Microsoft Docs
 description: Azure Monitor ログを使用して Azure Active Directory アクティビティ ログを分析する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 4535ae65-8591-41ba-9a7d-b7f00c574426
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
-ms.reviewer: markvi
+ms.author: markvi
+ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1670c93f83ecd6f5bd557d24ec754998a225db0c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 2d6212692465270182db541889bed5f03a08a345
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255624"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008284"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>Azure Monitor ログを使用して Azure AD アクティビティ ログを分析する
 
@@ -38,7 +38,7 @@ ms.locfileid: "72255624"
 
 * Azure サブスクリプションの Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)を確認してください。
 * 最初に、[Azure AD アクティビティ ログを Log Analytics ワークスペースにルーティングする](howto-integrate-activity-logs-with-log-analytics.md)手順を完了する。
-*  Log Analytics ワークスペースへの[アクセス](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)
+*  Log Analytics ワークスペースへの[アクセス](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-workspace-permissions)
 * Azure Active Directory の次のロール (Azure Active Directory ポータルで Log Analytics にアクセスする場合)
     - セキュリティ管理者
     - セキュリティ閲覧者

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 11/14/2019
 ms.author: helohr
-ms.openlocfilehash: cf344d6c551ecd3d301d79c29efe9e7adb7f8d83
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c482291e665656bf16f28cd114a9cb8141ae77c3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646883"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084027"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -133,6 +133,16 @@ Nerdio により、Azure リソースのプロビジョニングが簡素化さ�
 - [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3p0Mh)
 - [パートナーの Web サイトにアクセスする。](https://getnerdio.com/windows-virtual-desktop/)
 
+## <a name="numecent"></a>Numecent
+
+![Numecent ロゴ](./media/partners/numecent.png)
+
+Numecent は Windows Virtual Desktop の付加価値サービス プロバイダーであり、Windows Virtual Desktop 環境における複雑な Windows アプリや互換性のない Windows アプリの迅速なオンボードと移行によって、総運用コストを大幅に削減します。 また、Numecent は、ユーザーが行う必要がある構成の量を最小限に抑え、アプリケーションの更新を減らし、複雑なプロセスを簡略化します。 Numecent Cloudpaging は他のアプリケーション配信ツールよりも多くのアプリケーションをシームレスにサポートしているため、さまざまなアプリケーションのセットを使用する環境で時間と IT ワークロードを削減できます。 
+
+Windows Virtual Desktop で Cloudpaging を使用すると、デプロイからアプリケーションのアップグレード、測定、および削除までのソフトウェア資産のライフサイクルを完了することで、さらにコストが削減されます。 Cloudpaging は、必要に応じてリアルタイムで Windows Virtual Desktop のデプロイにアプリを動的にプロビジョニングすることで、イメージの管理を簡略化します。 Cloudpaging を使用すると、Windows 10 の定期的な更新プログラムによる管理や操作を行わなくてもアプリケーションを実行できます。 また、Cloudpaging により、これらのアプリケーションのより効率的なデプロイと使用を可能にすることで、コストの高いアプリケーションのライセンス コストが削減されます。 
+
+- [パートナーの Web サイトにアクセスする。](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/)
+
 ## <a name="policypak"></a>PolicyPak
 
 ![PolicyPak ロゴ](./media/partners/policypak.png)
@@ -147,21 +157,22 @@ PolicyPak の主なユース ケースは、ローカル管理者権限の削除
 
 ![PrinterLogic ロゴ](./media/partners/printerlogic.png)
 
-Windows Virtual Desktop の付加価値サービス プロバイダー プラットフォームである PrinterLogic は、IT プロフェッショナルが、すべてのプリント サーバーを排除し、可用性の高いサーバーレス印刷インフラストラクチャを提供できるようにします。 PrinterLogic は、プリンター オブジェクトの一元管理と、任意のプリンターまたはエンドポイント OS へのデプロイを容易に行えるようにすることで、Windows Virtual Desktop と Azure の価値を高めます。   
+Windows Virtual Desktop の付加価値サービス プロバイダー プラットフォームである PrinterLogic は、IT プロフェッショナルが、すべてのプリント サーバーを排除し、可用性の高いサーバーレス印刷インフラストラクチャを提供できるようにします。 PrinterLogic は、プリンター オブジェクトの一元管理と、任意のプリンターまたはエンドポイント OS へのデプロイを容易に行えるようにすることで、Windows Virtual Desktop と Azure の価値を高めます。 
 
-SaaS として、または独自のプライベート クラウドで Web スタックとして利用できる PrinterLogic プラットフォームにより、仮想セッションで必要とする適切なプリンターが、ユーザー ID、デバイス名、または場所に基づいて確実に確保されます。 この機能は、印刷の追跡とレポート作成、モバイル印刷、安全なバッジ リリース印刷など、一連のエンタープライズ印刷管理機能によって補完されます。 
+SaaS として、または独自のプライベート クラウドで Web スタックとして利用できる PrinterLogic プラットフォームにより、仮想セッションで必要とする適切なプリンターが、ユーザー ID、デバイス名、または場所に基づいて確実に確保されます。 この機能は、印刷の追跡とレポート作成、モバイル印刷、安全なバッジ リリース印刷など、一連のエンタープライズ印刷管理機能によって補完されます。 
 
 - [パートナーの Web サイトにアクセスする。](https://www.printerlogic.com)
 
-## <a name="numecent"></a>Numecent
+## <a name="printix"></a>Printix
 
-![Numecent ロゴ](./media/partners/numecent.png)
+![Printix ロゴ](./media/partners/printix.png)
 
-Numecent は Windows Virtual Desktop の付加価値サービス プロバイダーであり、Windows Virtual Desktop 環境における複雑な Windows アプリや互換性のない Windows アプリの迅速なオンボードと移行によって、総運用コストを大幅に削減します。 また、Numecent は、ユーザーが行う必要がある構成の量を最小限に抑え、アプリケーションの更新を減らし、複雑なプロセスを簡略化します。 Numecent Cloudpaging は他のアプリケーション配信ツールよりも多くのアプリケーションをシームレスにサポートしているため、さまざまなアプリケーションのセットを使用する環境で時間と IT ワークロードを削減できます。 
+Printix は、オフィスの印刷リソースへのユーザー接続を自動化する Windows Virtual Desktop の付加価値サービス プロバイダーです。 お客様の Azure への移行における欠落した部分として、Printix は、場所には関係なく、すべてのユーザーの印刷ワークフローのサポートと最適化に関連したインフラストラクチャおよび IT タスクを削除するために使用できる最もコスト効率の高いサービスです。
 
-Windows Virtual Desktop で Cloudpaging を使用すると、デプロイからアプリケーションのアップグレード、測定、および削除までのソフトウェア資産のライフサイクルを完了することで、さらにコストが削減されます。 Cloudpaging は、必要に応じてリアルタイムで Windows Virtual Desktop のデプロイにアプリを動的にプロビジョニングすることで、イメージの管理を簡略化します。 Cloudpaging を使用すると、Windows 10 の定期的な更新プログラムによる管理や操作を行わなくてもアプリケーションを実行できます。 また、Cloudpaging により、これらのアプリケーションのより効率的なデプロイと使用を可能にすることで、コストの高いアプリケーションのライセンス コストが削減されます。 
+印刷は、ほぼすべてのオフィスおよび小規模なビジネス環境での基本的なタスクです。 Windows Virtual Desktop を最大限に活用し、優れたユーザー エクスペリエンスを提供するには、ユーザーが最小限の労力と最大の信頼性でプリンターに確実に接続できるようにすることが不可欠です。 Printix を使用すると、シングル サインオン (SSO)、サイレント構成、定期更新、および印刷環境の継続的な監視によって Windows Virtual Desktop を最大限に活用できます。
 
-- [パートナーの Web サイトにアクセスする。](https://www.numecent.com/partners/cloudpaging-for-windows-applications-windows-virtual-desktop/)
+- [共同ソリューションの概要を参照する](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
+- [パートナーの Web サイトにアクセスする](https://www.printix.net/printix-for-windows-virtual-desktop)
 
 ## <a name="rdpsoft"></a>RDPSoft
 

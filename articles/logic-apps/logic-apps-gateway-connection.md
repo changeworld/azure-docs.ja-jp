@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 20cdcfdd3795a7614c054ed96b82cc99fc2c5894
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796248"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068904"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
@@ -27,9 +27,9 @@ ms.locfileid: "73796248"
 
 他のサービスでゲートウェイを使用する方法については、次の記事を参照してください。
 
-* [Microsoft Power BI オンプレミス データ ゲートウェイ](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Power Automate オンプレミス データ ゲートウェイ](https://flow.microsoft.com/documentation/gateway-manage/)
-* [Microsoft Power Apps オンプレミス データ ゲートウェイ](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Microsoft Power Automate オンプレミス データ ゲートウェイ](/power-automate/gateway-reference)
+* [Microsoft Power BI オンプレミス データ ゲートウェイ](/power-bi/service-gateway-onprem)
+* [Microsoft Power Apps オンプレミス データ ゲートウェイ](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services オンプレミス データ ゲートウェイ](../analysis-services/analysis-services-gateway.md)
 
 <a name="supported-connections"></a>

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 3781ac1be547f6733417c4f0cae9f3e8681ea9e8
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 800acb622a54ae922300d4c1b188f7ec19f5a95f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969229"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074249"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する
 
@@ -167,7 +167,7 @@ VM のバックアップ データを削除する方法は 2 つあります。
 
 ### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>プライマリ データ ソースが存在しなくなったバックアップ項目
 
-* Azure Backup 用に構成された Azure VM が保護を停止せずに削除または移動された場合、スケジュールされたバックアップ ジョブとオンデマンド (アドホック) バックアップ ジョブの両方が、エラー UserErrorVmNotFoundV2 で失敗します。 バックアップの事前チェックは、失敗したアドホック バックアップ ジョブについてのみクリティカルと表示されます (スケジュールされたジョブが失敗した場合は表示されません)。
+* Azure Backup 用に構成された Azure VM が保護を停止せずに削除または移動された場合、スケジュールされたバックアップ ジョブとオンデマンド (アドホック) バックアップ ジョブの両方が、エラー UserErrorVmNotFoundV2 で失敗します。 バックアップの事前チェックは、失敗したオンデマンド バックアップ ジョブについてのみクリティカルと表示されます (スケジュールされたジョブが失敗した場合は表示されません)。
 * ユーザーによって設定されたバックアップおよびアイテム保持ポリシーに準拠しているシステムでは、これらのバックアップ項目はアクティブなままになります。 これらの Azure VM のバックアップ データは、アイテム保持ポリシーに従って保持されます。 期限切れの復旧ポイント (最後の復旧ポイントを除く) は、バックアップ ポリシーで設定されている保持期間の範囲に従ってクリーニングされます。
 * 最後の復旧ポイントは無期限に保持され、ユーザーは該当するバックアップ価格に従って課金されるので、削除リソースのバックアップ項目/データが不要になった場合は、追加コストを回避するため、プライマリ データ ソースが存在しなくなったバックアップ項目を削除することをお勧めします。
 

@@ -1,5 +1,5 @@
 ---
-title: Windows VHD の Azure へのアップロードの準備 | Microsoft Docs
+title: Windows VHD の Azure へのアップロードの準備
 description: Azure にアップロードする Windows VHD または VHDX の準備方法について説明します
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 555b250f211cf22e766e64960b3359692f73c843
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 4b6fea63cd56ddee7eaeaed50a74a01cc8549f0a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285718"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032935"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 

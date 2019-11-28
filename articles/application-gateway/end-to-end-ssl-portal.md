@@ -1,19 +1,20 @@
 ---
-title: クイック スタート - Azure Application Gateway を使用してエンド ツー エンド SSL 暗号化を構成する - Azure portal | Microsoft Docs
+title: ポータルを使用してエンド ツー エンドの SSL 暗号化を構成する
+titleSuffix: Azure Application Gateway
 description: Azure portal を使用して、エンド ツー エンド SSL 暗号化によりアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: ba31b5ebf83edcd08060a2acc3b5639a521e2729
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a878b966266bdd326db35d266bc14b2f81161e92
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243660"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075136"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>ポータルで Application Gateway を使用してエンド ツー エンド SSL を構成する
 

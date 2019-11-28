@@ -1,5 +1,5 @@
 ---
-title: 汎用の Node.js クライアント アプリケーションを Azure IoT Central に接続する | Microsoft Docs
+title: 汎用の Node.js クライアント アプリを Azure IoT Central に接続する | Microsoft Docs
 description: デバイス開発者として、汎用の Node.js デバイスを Azure IoT Central アプリケーションに接続する方法。
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 76ab6a229de14af1e3808326c62a7bdbbd188e81
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1ddb947e9bcbdde655b5c83cffb67e8fc13d9d0e
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72941848"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048679"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>汎用のクライアント アプリケーションを Azure IoT Central アプリケーションに接続する (Node.js)
 
@@ -31,6 +31,8 @@ ms.locfileid: "72941848"
 ## <a name="create-a-device-template"></a>デバイス テンプレートを作成する
 
 Azure IoT Central アプリケーションでは、次の測定値、デバイスのプロパティ、設定、およびコマンドが定義されたデバイス テンプレートが必要です。
+
+有効なプロパティ名について詳しくは、「[タグやプロパティの形式](../../iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format)」をご覧ください。
 
 ### <a name="telemetry-measurements"></a>テレメトリ測定
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 1fda05ffcac8952ee5a12c23383aad1a04d36b97
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 2716d8515abc52ccadd321414eb7d34df2064709
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601309"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123010"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
@@ -22,7 +22,8 @@ ms.locfileid: "73601309"
 
 追加のサポートが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) で利用可能な **[ヘルプとサポート]** オプションをご覧ください。
 
-## <a name="naming-conventions"></a>名前付け規則
+## <a name="issues-during-container-group-deployment"></a>コンテナー グループのデプロイ時に発生する問題
+### <a name="naming-conventions"></a>名前付け規則
 
 コンテナーの仕様を定義するときに、特定のパラメーターは名前付けの制限に準拠している必要があります。 下記は、コンテナーグループの特性のための、特定の要件を持つテーブルです。 Azure の名前付け規則の詳細については、Azure Architecture Center 内の[名前付け規則][azure-name-restrictions]を参照してください。
 
@@ -35,7 +36,7 @@ ms.locfileid: "73601309"
 | 環境変数 | 1 ～ 63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の英数字とアンダースコア (_) |`<name>` |`MY_VARIABLE` |
 | ボリューム名 | 5-63 |大文字と小文字は区別されない |最初と最後の文字を除く任意の場所の小文字のアルファベット、数字、およびハイフン。 2つの連続するハイフンを含めることはできません。 |`<name>` |`batch-output-volume` |
 
-## <a name="os-version-of-image-not-supported"></a>イメージの OS バージョンがサポートされていない
+### <a name="os-version-of-image-not-supported"></a>イメージの OS バージョンがサポートされていない
 
 Azure Container Instances でサポートされていないイメージを指定した場合は、`OsVersionNotSupported` エラーが返されます。 エラーは次のようになり、`{0}` はデプロイしようとしたイメージの名前です。
 
@@ -50,7 +51,7 @@ Azure Container Instances でサポートされていないイメージを指定
 
 このエラーは、半期チャネル (SAC) リリース 1709 または 1803 に基づく Windows イメージ (サポートされていない) をデプロイするときに最も多く発生します。 Azure Container Instances でサポートされている Windows イメージについては、[よく寄せられる質問](container-instances-faq.md#what-windows-base-os-images-are-supported)を参照してください。
 
-## <a name="unable-to-pull-image"></a>イメージをプルできない
+### <a name="unable-to-pull-image"></a>イメージをプルできない
 
 Azure Container Instances は、最初にイメージをプルできなかった場合に、一定期間再試行します。 イメージのプル操作の失敗が続く場合、ACI は最終的に展開に失敗し、`Failed to pull image` エラーが表示されることがあります。
 
@@ -86,8 +87,21 @@ Azure Container Instances は、最初にイメージをプルできなかった
   }
 ],
 ```
+### <a name="resource-not-available-error"></a>リソース使用不可エラー
 
-## <a name="container-continually-exits-and-restarts-no-long-running-process"></a>コンテナーが絶えず終了して再起動する (長時間実行されるプロセスがない)
+Azure ではリージョンによってリソースの読み込みに変化があるため、コンテナー インスタンスをデプロイしようとすると、以下のエラーが表示される場合があります。
+
+`The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
+
+このエラーは、デプロイを試行しているリージョンで高負荷になっているため、コンテナーに指定されたリソースが、その時点では割り当てできないことを示しています。 以下に示す 1 つ以上の軽減策の手順を使用して、問題を解決してください。
+
+* コンテナーのデプロイ設定が、[Azure Container Instances のリージョンでの利用可否](container-instances-region-availability.md)に関する記事で定義されているパラメーター内に収まっていることを確認する
+* コンテナーに低い CPU およびメモリ設定を指定する。
+* 別の Azure リージョンにデプロイする
+* 後でデプロイする
+
+## <a name="issues-during-container-group-runtime"></a>コンテナー グループの実行時に発生する問題
+### <a name="container-continually-exits-and-restarts-no-long-running-process"></a>コンテナーが絶えず終了して再起動する (長時間実行されるプロセスがない)
 
 コンテナー グループは[再起動ポリシー](container-instances-restart-policy.md)が既定で **Always** に設定されるため、コンテナー グループ内のコンテナーは実行完了後に必ず再起動します。 タスクベースのコンテナーを実行する場合は、これを **OnFailure** または **Never** に変更することが必要になることがあります。 **OnFailure** を指定してもそのまま再起動された場合、お使いのコンテナーで実行されるアプリケーションまたはスクリプトに問題が生じている可能性があります。
 
@@ -147,16 +161,17 @@ Container Instances API と Azure portal には `restartCount` プロパティ�
 > [!NOTE]
 > Linux ディストリビューションのほとんどのコンテナー イメージは、既定のコマンドとして、bash などのシェルを設定します。 独自のシェルは実行時間の長いサービスではないため、既定の **[常時]** 再起動ポリシーを利用して構成された場合、これらのコンテナーはすぐに終了し、再起動ループ状態に陥ります。
 
-## <a name="container-takes-a-long-time-to-start"></a>コンテナーの起動に時間がかかる
+### <a name="container-takes-a-long-time-to-start"></a>コンテナーの起動に時間がかかる
 
-Azure Container Instances のコンテナーの起動時間に関係する 2 つの主な要素を、次に示します。
+Azure Container Instances のコンテナーの起動時間に関係する 3 つの主な要素を、次に示します。
 
 * [イメージ サイズ](#image-size)
 * [イメージの場所](#image-location)
+* [キャッシュされたイメージ](#cached-images)
 
 Windows イメージには、[追加の考慮事項](#cached-images)があります。
 
-### <a name="image-size"></a>イメージ サイズ
+#### <a name="image-size"></a>イメージ サイズ
 
 コンテナーが起動するまで時間がかかるが、最終的に起動する場合は、コンテナー イメージのサイズを調べることから始めてください。 Azure Container Instances は、要求に応じてコンテナー イメージをプルするため、起動時間はそのサイズと直接的に関係しています。
 
@@ -170,39 +185,26 @@ mcr.microsoft.com/azuredocs/aci-helloworld    latest    7367f3256b41    15 month
 
 イメージのサイズを小さくしておくための鍵は、最終イメージに実行時に不要なものが含まれないようにすることです。 これを行う 1 つの方法は、[マルチステージ ビルド][docker-multi-stage-builds]を使用することです。 マルチステージ ビルドを使用すると、最終イメージにはアプリケーションに必要な成果物のみが含まれ、ビルド時に必要であった余分なコンテンツは含まれないようにすることを簡単に実行できます。
 
-### <a name="image-location"></a>イメージの場所
+#### <a name="image-location"></a>イメージの場所
 
 コンテナーの起動時に発生するイメージ プルの影響を軽減する別の方法は、コンテナー インスタンスをデプロイする予定のリージョンと同じリージョン内の [Azure Container Registry](/azure/container-registry/) で、コンテナー イメージをホストすることです。 これにより、コンテナー イメージを伝送する必要があるネットワーク パスが短縮され、ダウンロード時間が大幅に短くなります。
 
-### <a name="cached-images"></a>キャッシュ イメージ
+#### <a name="cached-images"></a>キャッシュ イメージ
 
 Azure Container Instances では、キャッシュ メカニズムを使用して、`nanoserver:1809`、`servercore:ltsc2019`、`servercore:1809` など、一般的な [Windows ベースのイメージ](container-instances-faq.md#what-windows-base-os-images-are-supported)に基づいて構築されたイメージに対するコンテナーの起動時間を高速化します。 `ubuntu:1604` や `alpine:3.6` など、よく使用される Linux イメージもキャッシュされます。 キャッシュされたイメージとタグの最新の一覧については、[List Cached Images][list-cached-images] API を使用してください。
 
 > [!NOTE]
 > Azure Container Instances での Windows Server 2019 ベースのイメージの使用は、プレビュー段階です。
 
-### <a name="windows-containers-slow-network-readiness"></a>Windows コンテナーの低速のネットワークの準備
+#### <a name="windows-containers-slow-network-readiness"></a>Windows コンテナーの低速のネットワークの準備
 
 接続の初期作成時に、最大で 30 秒間 (まれではありますがさらに長くなることもあります)、Windows コンテナーに受信または送信の接続ができない場合があります。 コンテナー アプリケーションにインターネット接続が必要な場合は、遅延を加えてロジックを再試行し、30 秒間でインターネット接続を確立できるようにします。 初期セットアップ後に、コンテナーのネットワークが適切に再開する必要があります。
 
-## <a name="resource-not-available-error"></a>リソース使用不可エラー
-
-Azure ではリージョンによってリソースの読み込みに変化があるため、コンテナー インスタンスをデプロイしようとすると、以下のエラーが表示される場合があります。
-
-`The requested resource with 'x' CPU and 'y.z' GB memory is not available in the location 'example region' at this moment. Please retry with a different resource request or in another location.`
-
-このエラーは、デプロイを試行しているリージョンで高負荷になっているため、コンテナーに指定されたリソースが、その時点では割り当てできないことを示しています。 以下に示す 1 つ以上の軽減策の手順を使用して、問題を解決してください。
-
-* コンテナーのデプロイ設定が、[Azure Container Instances のリージョンでの利用可否](container-instances-region-availability.md)に関する記事で定義されているパラメーター内に収まっていることを確認する
-* コンテナーに低い CPU およびメモリ設定を指定する。
-* 別の Azure リージョンにデプロイする
-* 後でデプロイする
-
-## <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>基になる Docker API に接続できないか、特権コンテナーを実行できない
+### <a name="cannot-connect-to-underlying-docker-api-or-run-privileged-containers"></a>基になる Docker API に接続できないか、特権コンテナーを実行できない
 
 Azure Container Instances は、コンテナー グループをホストする、基になるインフラストラクチャへの直接アクセスを公開しません。 これには、コンテナーのホストで実行されている Docker API へのアクセスと、実行中の特権コンテナーへのアクセスが含まれます。 Docker の相互作用が必要な場合は、[REST リファレンス ドキュメント](https://aka.ms/aci/rest)を参照して、ACI API でサポートされるものをご確認ください。 不足しているものがある場合は、[ACI フィードバック フォーラム](https://aka.ms/aci/feedback)に要求を送信します。
 
-## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>ポートが一致しないため、コンテナー グループの IP アドレスにアクセスできない
+### <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>ポートが一致しないため、コンテナー グループの IP アドレスにアクセスできない
 
 Azure Container Instances では、通常の Docker 構成のようなポート マッピングはまだサポートされていません。 コンテナー グループの IP アドレスにアクセスできるはずの場合にアクセスできない場合は、`ports` プロパティを使用してコンテナー グループで公開しているのと同じポートをリッスンするようにコンテナー イメージを構成してください。
 
@@ -230,7 +232,7 @@ Azure Container Instances では、通常の Docker 構成のようなポート 
 コンテナーのデバッグを支援するために、[コンテナーのログとイベントを取得する](container-instances-get-logs.md)方法を学習します。
 
 <!-- LINKS - External -->
-[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming
+[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore

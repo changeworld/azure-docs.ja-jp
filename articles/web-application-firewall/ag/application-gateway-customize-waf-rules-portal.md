@@ -1,18 +1,18 @@
 ---
-title: Azure Application Gateway での Web アプリケーション ファイアウォール規則のカスタマイズ - Azure portal
+title: ポータルを使用してルールをカスタマイズする - Azure Web アプリケーション ファイアウォール
 description: この記事では、Azure portal を使用して Application Gateway での Web アプリケーション ファイアウォール規則をカスタマイズする方法について説明します。
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/24/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: ab2722ed4a4aa4fe95be15cd536bfd5d959f9139
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511544"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048374"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Azure portal を使用した Web アプリケーション ファイアウォール規則のカスタマイズ
 

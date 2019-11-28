@@ -1,18 +1,19 @@
 ---
-title: Azure Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォールのログを調べる
+title: Azure Log Analytics を使用して WAF ログを調べる
+titleSuffix: Azure Application Gateway
 description: この記事では、Azure Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォールのログを調べる方法を見ていただきます
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 7/10/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: aa867e33ef0faa96b6a66a9075a3a5b8b0b0bca4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9fe4462a71852e5f66268f798f6f0418f2dd39c4
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67711996"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048089"
 ---
 # <a name="use-log-analytics-to-examine-application-gateway-web-application-firewall-logs"></a>Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォールのログを調べる
 

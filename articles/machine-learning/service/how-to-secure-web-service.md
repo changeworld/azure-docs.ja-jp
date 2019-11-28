@@ -1,5 +1,5 @@
 ---
-title: SSL を使用してセキュリティで保護する
+title: SSL を使用して Web サービスをセキュリティで保護する
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning でデプロイされた Web サービスをセキュリティで保護するために HTTPS を有効にする方法について説明します。
 services: machine-learning
@@ -11,39 +11,39 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1455ec17898e82ed0f39fea66c44d2e9b4f57280
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f6a6f50a86dc58299a1c1b5994dd1d19cc915e6c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489556"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076892"
 ---
-# <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>SSL を使用して Azure Machine Learning で保護する
+# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>SSL を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Machine Learning でデプロイされたものセキュリティで保護する方法について説明します。
+この記事では、Azure Machine Learning でデプロイされた Web サービスをセキュリティで保護する方法について説明します。
 
-[HTTPS](https://en.wikipedia.org/wiki/HTTPS) を使用してアクセスを制限し、クライアントが送信するデータをセキュリティで保護します。 HTTPS は、クライアントとの間の通信を暗号化することで双方の間の通信をセキュリティで保護する場合に役立ちます。 暗号化は[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) を使用します。 TLS は、現在も、TLS の前身である *Secure Sockets Layer* (SSL) と呼ばれることがあります。
+[HTTPS](https://en.wikipedia.org/wiki/HTTPS) を使用して、Web サービスへのアクセスを制限し、クライアントが送信するデータをセキュリティで保護します。 HTTPS は、クライアントと Web サービスの間の通信を暗号化することで双方の間の通信をセキュリティで保護する場合に役立ちます。 暗号化は[トランスポート層セキュリティ (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security) を使用します。 TLS は、現在も、TLS の前身である *Secure Sockets Layer* (SSL) と呼ばれることがあります。
 
 > [!TIP]
-> Azure Machine Learning SDK では、セキュリティで保護された通信に関連するプロパティに "SSL" の用語を使用します。 つまり、*TLS* は使用されません。 SSL は、より一般的に認識されている用語に過ぎません。
+> Azure Machine Learning SDK では、セキュリティで保護された通信に関連するプロパティに "SSL" の用語を使用します。 つまり、Web サービスでは *TLS* を使用しません。 SSL は、より一般的に認識されている用語に過ぎません。
 
 TLS と SSL の両方とも、"*デジタル証明書*" に依存しています。デジタル証明書は、暗号化の実行と ID の検証に役立ちます。 デジタル証明書のしくみの詳細については、ウィキペディアの「[public key infrastructure (公開キー基盤)](https://en.wikipedia.org/wiki/Public_key_infrastructure)」のトピックを参照してください。
 
 > [!WARNING]
-> HTTPS を使用しない場合は、そのサービスとの間で送受信されるデータがインターネット上の他のユーザーに表示される場合があります。
+> Web サービスで HTTPS を使用しない場合は、そのサービスとの間で送受信されるデータがインターネット上の他のユーザーに表示される場合があります。
 >
 > HTTPS により、接続先のサーバーの信頼性をクライアントから確認することもできます。 この機能は、[中間者攻撃](https://en.wikipedia.org/wiki/Man-in-the-middle_attack)からクライアントを保護します。
 
-これは、セキュリティ保護の一般的なプロセスです。
+これは、Web サービスをセキュリティで保護する一般的なプロセスです。
 
 1. ドメイン名を取得します。
 
 2. デジタル証明書を取得します。
 
-3. SSL を有効にしてデプロイまたは更新します。
+3. SSL が有効な Web サービスをデプロイするか更新します。
 
-4. DNS を更新します。
+4. その Web サービスを指すように DNS を更新します。
 
 > [!IMPORTANT]
 > Azure Kubernetes Service (AKS) にデプロイする場合は、独自の証明書を購入するか、Microsoft によって提供される証明書を使用することができます。 Microsoft 提供の証明書を使用する場合は、ドメイン名または SSL 証明書を取得する必要はありません。 詳細については、この記事の「[SSL を有効にしてデプロイする](#enable)」セクションを参照してください。
@@ -52,7 +52,7 @@ TLS と SSL の両方とも、"*デジタル証明書*" に依存しています
 
 ## <a name="get-a-domain-name"></a>ドメイン名を取得する
 
-ドメイン名をまだ所有していない場合は、*ドメイン名レジストラー* から購入します。 プロセスと価格は、レジストラーによって異なります。 レジストラーは、ドメイン名を管理するためのツールを提供します。 これらのツールを使用して、完全修飾ドメイン名 (FQDN) (www\.contoso.com など) を IP アドレスにマップします。
+ドメイン名をまだ所有していない場合は、*ドメイン名レジストラー* から購入します。 プロセスと価格は、レジストラーによって異なります。 レジストラーは、ドメイン名を管理するためのツールを提供します。 これらのツールを使用して、完全修飾ドメイン名 (FQDN) (www\.contoso.com など) を、Web サービスをホストする IP アドレスにマップします。
 
 ## <a name="get-an-ssl-certificate"></a>SSL 証明書を取得する
 
@@ -61,7 +61,7 @@ SSL 証明書 (デジタル証明書) を取得する方法はたくさんあり
 * **証明書**。 証明書は、完全な証明書チェーンを含み、"PEM でエンコード" されている必要があります。
 * **キー**。 キーも、PEM でエンコードされている必要があります。
 
-証明書を要求するときは、使用する予定のアドレスの FQDN を指定する必要があります (www\.contoso.com など)。 ID を検証するときに、証明書に記載されているアドレスとクライアントによって使用されるアドレスが比較されます。 これらのアドレスが一致しない場合、クライアントにはエラー メッセージが返されます。
+証明書を要求するときは、Web サービスで使用する予定のアドレスの FQDN を指定する必要があります (www\.contoso.com など)。 Web サービスの ID を検証するときに、証明書に記載されているアドレスとクライアントによって使用されるアドレスが比較されます。 これらのアドレスが一致しない場合、クライアントにはエラー メッセージが返されます。
 
 > [!TIP]
 > 証明機関が、証明書とキーを PEM でエンコードされたファイルとして提供できない場合は、 [OpenSSL](https://www.openssl.org/) などのユーティリティを使用して、フォーマットを変更できます。
@@ -76,7 +76,7 @@ SSL が有効なサービスをデプロイ (または再デプロイ) するに
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>AKS およびフィールド プログラマブル ゲート アレイ (FPGA) にデプロイする
 
   > [!NOTE]
-  > このセクションの情報は、デザイナー用にセキュリティで保護されたものをデプロイするときにも適用されます。 Python SDK に慣れていない場合は、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) に関するページを参照してください。
+  > このセクションの情報は、デザイナー用のセキュリティで保護された Web サービスをデプロイするときにも適用されます。 Python SDK に慣れていない場合は、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) に関するページを参照してください。
 
 AKS にデプロイする場合、新しい AKS クラスターを作成するか、既存のクラスターを接続することができます。 クラスターの作成または接続について詳しくは、「[Azure Kubernetes Service クラスターにモデルをデプロイする](how-to-deploy-azure-kubernetes-service.md)」をご覧ください。
   
@@ -85,7 +85,7 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
 
 **enable_ssl** メソッドは、Microsoft によって提供される証明書でも、購入する証明書を使用することもできます。
 
-  * Microsoft 提供の証明書を使用する場合、*leaf_domain_label* パラメーターを使用する必要があります。 このパラメーターは、サービスの DNS 名を生成します。 たとえば、"myservice" の値は、"myservice\<six-random-characters>.\<azureregion>.cloudapp.azure.com" のドメイン名を作成します。ここで、\<azureregion> は、サービスを格納する領域です。 必要に応じて、*overwrite_existing_domain* パラメーターを使用して既存の *leaf_domain_label* を上書きできます。
+  * Microsoft 提供の証明書を使用する場合、*leaf_domain_label* パラメーターを使用する必要があります。 このパラメーターは、サービスの DNS 名を生成します。 たとえば、"contoso" の値は、"contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com" のドメイン名を作成します。ここで、\<azureregion> は、サービスを格納する領域です。 必要に応じて、*overwrite_existing_domain* パラメーターを使用して既存の *leaf_domain_label* を上書きできます。
 
     SSL が有効なサービスをデプロイ (または再デプロイ) するには、*ssl_enabled* パラメーターを "True" に設定します (該当する場合は必ず)。 *ssl_certificate* パラメーターを *certificate* ファイルの値に設定します。 *ssl_key* を *key* ファイルの値に設定します。
 
@@ -98,11 +98,19 @@ AKS にデプロイする場合、新しい AKS クラスターを作成する�
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
     provisioning_config = AksCompute.provisioning_configuration()
-    provisioning_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
-    attach_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
   * *購入した証明書*を使用する場合、*ssl_cert_pem_file*、*ssl_key_pem_file*、および *ssl_cname* のパラメーターを使用します。 次の例では、 *.pem* ファイルを使用して、購入した SSL 証明書を使用する構成を作成する方法を示します。
@@ -137,7 +145,7 @@ aci_config = AciWebservice.deploy_configuration(
 
 ## <a name="update-your-dns"></a>DNS を更新する
 
-次に、DNS を更新する必要があります。
+次に、Web サービスを指すように DNS を更新する必要があります。
 
 + **Container Instances の場合:**
 
@@ -152,7 +160,7 @@ aci_config = AciWebservice.deploy_configuration(
 
   左ウィンドウの **[設定]** タブの下の **[構成]** タブで、AKS クラスターのパブリック IP アドレスの DNS を更新します。 (次の図を参照してください)。パブリック IP アドレスは、AKS エージェント ノードとその他のネットワーク リソースを含むリソース グループの下に作成されるリソースの種類です。
 
-  [![Azure Machine Learning: SSL によるセキュリティ保護](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: SSL を使用して Web サービスをセキュリティで保護する](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>SSL 証明書を更新する
 
@@ -249,5 +257,5 @@ aks_target.update(update_config)
 
 ## <a name="next-steps"></a>次の手順
 以下の項目について説明します。
-+ [デプロイされた機械学習モデルを使用する](how-to-consume-web-service.md)
++ [Web サービスとしてデプロイされた機械学習モデルを使用する](how-to-consume-web-service.md)
 + [Azure Virtual Network 内で実験と推論を安全に実行する](how-to-enable-virtual-network.md)

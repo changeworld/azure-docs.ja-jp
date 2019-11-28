@@ -1,5 +1,5 @@
 ---
-title: Azure クイックスタート テンプレートを使用して Azure VM で SQL Server の Always On 可用性グループを構成する
+title: 可用性グループを構成する (Azure クイックスタート テンプレート)
 description: Azure クイックスタート テンプレートを使用して、Windows フェールオーバー クラスターを作成し、SQL Server VM をそのクラスターに参加させ、リスナーを作成し、Azure で内部ロード バランサーを構成します。
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,14 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2b44b51da11bc1c51fcbc60992a9b5b870daf02e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: edf810dfc975eebaf261eac7b89106c9e29c759c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100577"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022380"
 ---
-# <a name="use-azure-quickstart-templates-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure クイックスタート テンプレートを使用して Azure VM で SQL Server の Always On 可用性グループを構成する
+# <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-an-azure-vm"></a>Azure クイックスタート テンプレートを使用して Azure VM で SQL Server の可用性グループを構成する
 この記事では、Azure クイックスタート テンプレートを使用して、Azure での SQL Server 仮想マシン用の Always On 可用性グループ構成のデプロイを部分的に自動化する方法について説明します。 このプロセスでは、2 つの Azure クイックスタート テンプレートが使用されます。 
 
    | Template | 説明 |

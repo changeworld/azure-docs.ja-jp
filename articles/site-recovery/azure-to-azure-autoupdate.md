@@ -1,19 +1,19 @@
 ---
-title: Azure から Azure へのディザスター リカバリーのモビリティ サービスの自動更新 | Microsoft Docs
+title: Azure Site Recovery のモビリティ サービスの自動更新
 description: Azure Site Recovery を使用した Azure VM のレプリケーションに使用されるモビリティ サービスの自動更新の概要。
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 92a46f7be116d0664b438c9039e311f802c873e5
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: 9479ccce534f9c9d48a0aa08d4ea887bc4f30acb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708074"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078861"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -31,7 +31,7 @@ Site Recovery を使用して更新を管理する場合、コンテナーと同
 Runbook の既定のスケジュールは、レプリケートされる VM の地域のタイム ゾーンで毎日午前 12 時に繰り返し実行されます。 Runbook のスケジュールは、Automation アカウントを介して変更することもできます。
 
 > [!NOTE]
-> 更新プログラム ロールアップ 35 以降では、更新に使用するために既存の Automation アカウントを選択できます。 この更新より前は、既定で Site Recovery によってこのアカウントが作成されました。 このオプションは、VM に対してレプリケーションを有効にするときに使用できます。 この設定を変更すると、同じコンテナーで保護されていすべての Azure VM に適用されます。
+> 更新プログラム ロールアップ 35 以降では、更新に使用するために既存の Automation アカウントを選択できます。 この更新より前は、既定で Site Recovery によってこのアカウントが作成されました。 このオプションは、VM に対してレプリケーションを有効にしている場合にのみ選択できます。 レプリケートする側の VM には利用できません。 選択した設定は、同じコンテナーで保護されているすべての Azure VM に適用されます。
  
 > 自動更新を有効にしても、Azure VM を再起動する必要はないため、実行中のレプリケーションに影響しません。
 
@@ -66,7 +66,8 @@ Site Recovery による更新の管理は、次の方法で行えます。
 > [!Note]
 > どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて使用する場合は、既定で新しい Automation アカウントが作成されます。 あるいは、この設定をカスタマイズして、既存の Automation アカウントを選択できます。 それ以降は、同じコンテナー内でレプリケーションを有効にすると、以前に作成されたアカウントが使用されます。 現在、ドロップダウンには、コンテナーと同じリソース グループ内にある Automation アカウントのみが表示されます。  
 
-カスタムの Automation アカウントを使用する場合は、次のスクリプトを使用します。
+> [!IMPORTANT]
+> 次のスクリプトは、Automation アカウントのコンテキストで実行する必要があります。カスタムの Automation アカウントを使用する場合は、次のスクリプトを使用します。
 
 ```azurepowershell
 param(

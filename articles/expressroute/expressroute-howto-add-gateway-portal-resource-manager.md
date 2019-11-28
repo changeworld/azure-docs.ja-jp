@@ -1,6 +1,6 @@
 ---
-title: 'ExpressRoute 向け Azure VNet へのゲートウェイの追加: ポータル | Microsoft Docs'
-description: この記事では、ExpressRoute の作成済みの Resource Manager VNet に仮想ネットワーク ゲートウェイを追加する方法を説明します。
+title: 'Azure ExpressRoute: VNet へのゲートウェイの追加: ポータル'
+description: この記事では、Azure portal を使用して、ExpressRoute の作成済みの Resource Manager VNet に仮想ネットワーク ゲートウェイを追加する方法を説明します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 68376751a3c673b2d89d028312f992aec40d4dee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 87b656f0ef999b3b15a89476f5cba4c4fcfc2b1e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366022"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037392"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Azure Portal を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -53,20 +53,20 @@ ms.locfileid: "60366022"
 2. VNet のブレードの **[設定]** セクションで、 **[サブネット]** をクリックして [サブネット] ブレードを展開します。
 3. **[サブネット]** ブレードで **[+ゲートウェイ サブネット]** をクリックして、 **[サブネットの追加]** ブレードを開きます。 
    
-    ![ゲートウェイ サブネットの追加](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "ゲートウェイ サブネットの追加")
+    ![ゲートウェイ サブネットを追加する](./media/expressroute-howto-add-gateway-portal-resource-manager/addgwsubnet.png "ゲートウェイ サブネットを追加します")
 
 
 4. サブネットの **[名前]** には、"GatewaySubnet" という値が自動的に入力されます。 この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。 自動入力される **[アドレス範囲]** の値は、実際の構成要件に合わせて調整してください。 /27 以上 (/26 や /25 など) のゲートウェイ サブネットを作成することをお勧めします。 次に、 **[OK]** をクリックして値を保存し、ゲートウェイ サブネットを作成します。
 
-    ![サブネットの追加](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "サブネットの追加")
+    ![サブネットの追加](./media/expressroute-howto-add-gateway-portal-resource-manager/addsubnetgw.png "Adding the subnet")
 
 ## <a name="create-the-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成する
 
 1. ポータルで、左側の **[+]** をクリックし、検索ボックスに「Virtual Network ゲートウェイ」と入力します。 検索結果で "**仮想ネットワーク ゲートウェイ**" を探してその項目をクリックします。 **[Virtual Network ゲートウェイ]** ブレードで、下部にある **[作成]** をクリックします。 **[仮想ネットワーク ゲートウェイの作成]** ブレードが開きます。
 2. **[Virtual Network ゲートウェイの作成]** ブレードで、Virtual Network ゲートウェイの値を入力します。
 
-    ![[Virtual Network ゲートウェイの作成] ブレードのフィールド](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "[Virtual Network ゲートウェイの作成] ブレードのフィールド")
-3. **[名前]** : ゲートウェイに名前を付けます。 これは、ゲートウェイ サブネットの名前付けと同じではありません。 作成するゲートウェイ オブジェクトの名前です。
+    ![[仮想ネットワーク ゲートウェイの作成] のブレード フィールド](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "Create virtual network gateway blade fields")
+3. **Name**:ゲートウェイに名前を付けます。 これは、ゲートウェイ サブネットの名前付けと同じではありません。 作成するゲートウェイ オブジェクトの名前です。
 4. **[ゲートウェイの種類]** : **[ExpressRoute]** を選択します。
 5. **[SKU]** : ゲートウェイの SKU をドロップダウンから選択します。
 6. **[場所]** : 仮想ネットワークの場所を指すように、 **[場所]** フィールドを調整します。 対象の仮想ネットワークが存在するリージョンをこの場所が指していない場合、仮想ネットワークは [仮想ネットワークの選択] ボックスの一覧に表示されません。

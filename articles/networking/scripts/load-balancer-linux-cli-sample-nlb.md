@@ -1,12 +1,10 @@
 ---
-title: Azure CLI スクリプト サンプル - 高可用性の VM への負荷分散トラフィック | Microsoft Docs
-description: Azure CLI スクリプト サンプル - 高可用性の VM への負荷分散トラフィック
+title: HA のために VM へのトラフィックを負荷分散する - Azure CLI - Azure Load Balancer
+description: このサンプルでは、高可用性を実現するために、VM へのトラフィックの負荷分散を開始します。
 services: load-balancer
 documentationcenter: load-balancer
-author: KumudD
-manager: timlt
-editor: tysonn
-tags: ''
+author: asudbring
+manager: KumudD
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: azurecli
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 07/07/2017
-ms.author: kumud
-ms.openlocfilehash: 916e9e1f7287757f19e93ecf7b8cc38f556e2dc8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 8712cd1cff9e3a6623b67e1b39a19df7c6d0172e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60564648"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067060"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>高可用性の VM への負荷分散トラフィック
 

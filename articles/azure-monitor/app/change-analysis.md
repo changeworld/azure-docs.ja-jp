@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: dc572d29b4e6d95525959becad0ed8069735e33c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ed297a1005f67a14db1da15aba2c47c98e83df9c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606044"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884982"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
@@ -31,11 +31,15 @@ ms.locfileid: "73606044"
 
 ![どのように変更分析で変更データが取得され、クライアント ツールに提供されるかを示すアーキテクチャ図](./media/change-analysis/overview.png)
 
-現在、変更分析は App Service Web アプリの**問題の診断と解決**エクスペリエンスに統合されています。 Web アプリで変更の検出と変更の表示を有効にするには、この記事で後述する「*Web アプリ機能の変更分析*」セクションを参照してください。
+現在、変更分析は App Service Web アプリの**問題の診断と解決**エクスペリエンスに統合されているほか、Azure portal のスタンドアロンのブレードで確認できます。
+[変更分析] ブレードにアクセスする方法と、Web アプリ ポータル内で使用する方法については、それぞれこの記事で後述する「*Azure のすべてのリソースに対する変更内容を表示する*」セクションと「*Web アプリ機能の変更分析*」を参照してください。
 
-### <a name="azure-resource-manager-deployment-changes"></a>Azure Resource Manager デプロイの変更
+### <a name="azure-resource-manager-tracked-properties-changes"></a>Azure Resource Manager の追跡プロパティの変更
 
-変更分析では、[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) が使用され、アプリケーションをホストしている Azure リソースが時間と共にどのように変更されたかを示す履歴の記録が提供されます。 変更分析では、たとえば、IP 構成ルール、マネージド ID、SSL 設定の変更を検出できます。 そのため、Web アプリにタグが追加された場合、変更分析にはその変更が反映されます。 この情報は、`Microsoft.ChangeAnalysis` リソース プロバイダーが Azure サブスクリプションで有効な限り、利用できます。
+変更分析では、[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) が使用され、アプリケーションをホストしている Azure リソースが時間と共にどのように変更されたかを示す履歴の記録が提供されます。 マネージド ID、プラットフォーム OS のアップグレード、ホスト名などの追跡設定を検出できます。
+
+### <a name="azure-resource-manager-proxied-setting-changes"></a>Azure Resource Manager のプロキシ設定の変更
+IP 構成ルール、SSL 設定、拡張機能のバージョンなどの設定は、まだ ARG では使用できないため、変更分析ではそれらの変更について確実にクエリを実行して計算し、アプリ内で何が変わったかについての詳細を提供します。 これらの情報は Azure Resource Graph ではまだ利用できませんが、まもなく利用できるようになります。
 
 ### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Web アプリのデプロイと構成の変更 (ゲスト内の変更)
 
@@ -50,6 +54,10 @@ ms.locfileid: "73606044"
 - Web Apps
 - Azure Storage
 - Azure SQL
+
+### <a name="enablement"></a>有効化
+Azure Resource Manager の追跡プロパティとプロキシ設定の変更データが利用できるようになるには、"Microsoft.ChangeAnalysis" リソース プロバイダーがサブスクリプションに登録されている必要があります。 Web アプリの問題の診断と解決に入る、または [変更分析] スタンドアロン ブレードを起動すると、このリソース プロバイダーが自動的に登録されます。 サブスクリプションに対するパフォーマンスとコストの実装はありません。
+Web アプリのゲスト内の変更については、Web アプリ内でコード ファイルをスキャンするには別個の有効化が必要です。 詳細については、この記事の後半の「*問題の診断と解決ツールで変更分析を有効にする*」を参照してください。
 
 ## <a name="viewing-changes-for-all-resources-in-azure"></a>Azure のすべてのリソースに対する変更内容を表示する
 Azure Monitor では、変更分析のためのスタンドアロン ブレードがあり、すべての変更内容が分析情報およびアプリケーション依存リソースと一緒に表示されます。
@@ -70,7 +78,7 @@ Azure portal の検索バーで変更分析を検索し、ブレードを起動�
 - Azure ネットワーク リソース
 - ゲスト内のファイル追跡と環境変数の変更内容に関する Web アプリ
 
-フィードバックについては、ブレードにあるフィードバックの送信用のボタンを使用するか、changeanalysisteam@microsoft.com まで電子メールを送信してください。 
+フィードバックについては、ブレードにあるフィードバックの送信用のボタンを使用するか、changeanalysisteam@microsoft.com まで電子メールを送信してください。
 
 ![変更分析ブレードのフィードバック ボタンのスクリーンショット](./media/change-analysis/change-analysis-feedback.png)
 
@@ -94,12 +102,12 @@ Azure Monitor では、変更分析はセルフサービスの**問題の診断�
 
    ![[アプリケーションのクラッシュ] オプションのスクリーンショット](./media/change-analysis/enable-changeanalysis.png)
 
-1. **変更分析**を有効にして **[保存]** を選択します。
+1. **変更分析**を有効にして **[保存]** を選択します。 ツールでは、すべての Web アプリが [App Service プラン] の下に表示されます。 プラン レベルのスイッチを使用して、プランの下にあるすべての Web アプリの変更分析をオンにできます。
 
     !["変更分析を有効にする" ユーザー インターフェイスのスクリーンショット](./media/change-analysis/change-analysis-on.png)
 
 
-1. 変更分析にアクセスするには、 **[問題の診断と解決]**  >  **[Availability and Performance]\(可用性とパフォーマンス\)**  >  **[アプリケーションのクラッシュ]** の順に選択します。 変更の種類を時系列でまとめたグラフと、その変更の詳細が表示されます。
+1. 変更分析にアクセスするには、 **[問題の診断と解決]**  >  **[Availability and Performance]\(可用性とパフォーマンス\)**  >  **[アプリケーションのクラッシュ]** の順に選択します。 変更の種類を時系列でまとめたグラフと、その変更の詳細が表示されます。 既定では、当面の問題を解決できるように、過去 24 時間の変更が表示されます。
 
      ![変更の差分ビューのスクリーンショット](./media/change-analysis/change-view.png)
 

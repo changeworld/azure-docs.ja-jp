@@ -1,29 +1,29 @@
 ---
-title: PIM で Azure AD ロールの監査履歴を表示する - Azure Active Directory | Microsoft Docs
+title: PIM での Azure AD ロールの監査レポートの表示 - Azure AD | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールの監査履歴を表示する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 06/10/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3547ff218e9a15151e4abe2ceff53292d3f01ac0
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 7c4a157d8d5bcd281ca9fee488e58c455034e898
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804327"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022062"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールの監査履歴を表示する
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PIM) の監査履歴を使用すると、すべての特権ロールでの過去 30 日間のすべてのロールの割り当てとアクティブ化を確認できます。 管理者、エンド ユーザー、同期アクティビティを含むディレクトリのアクティビティの完全な監査履歴を確認するには、[Azure Active Directory のセキュリティおよびアクティビティ レポート](../reports-monitoring/overview-reports.md)を使用できます。
+Privileged Identity Management (PIM) の監査履歴を使用すると、すべての特権ロールでの過去 30 日間におけるすべてのロール割り当てとアクティブ化を確認できます。 管理者、エンド ユーザー、同期アクティビティを含む Azure Active Directory (Azure AD) 組織内のアクティビティの完全な監査履歴を確認するには、[Azure Active Directory のセキュリティおよびアクティビティ レポート](../reports-monitoring/overview-reports.md)を使用できます。
 
 ## <a name="view-audit-history"></a>監査履歴を表示する
 
@@ -63,7 +63,7 @@ Azure AD ロールの監査履歴を表示するには、次の手順に従い�
 
 1. **[時間の範囲]** で、時間の範囲を選択します。
 
-1. **[ロール]** で、表示するロールをオンにして追加します。
+1. **[Roles]\(ロール\)** で、表示するロールを示すチェック ボックスをオンにします。
 
     ![グラフ パラメーター ウィンドウを更新する](media/pim-how-to-use-audit-log/update-chart-parameters.png)
 
@@ -71,4 +71,4 @@ Azure AD ロールの監査履歴を表示するには、次の手順に従い�
 
 ## <a name="next-steps"></a>次の手順
 
-- [PIM で Azure リソース ロールのアクティビティおよび監査履歴を表示する](azure-pim-resource-rbac.md)
+- [Privileged Identity Management で Azure リソース ロールのアクティビティおよび監査履歴を表示する](azure-pim-resource-rbac.md)

@@ -1,20 +1,20 @@
 ---
-title: Azure Time Series Insights クエリで JSON を調整するためのベスト プラクティス | Microsoft Docs
-description: Azure Time Series Insights クエリの効率を改善する方法について説明します。
+title: JSON を調整するためのベスト プラクティス - Azure Time Series Insights クエリ | Microsoft Docs
+description: JSON を調整して Azure Time Series Insights クエリの効率を改善する方法について説明します。
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 10/09/2019
-ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 4916397d05ad9d5fcae7624bf558eb7dc5be940f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 386d10c8e4bd7d5f46d2081d5a26371fb37ff30f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274405"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006996"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>クエリのパフォーマンスを最大化するための JSON の調整 
 
@@ -35,6 +35,9 @@ Time Series Insights にイベントを送信する方法を検討します。 �
 1. 以下の Time Series Insights の最大プロパティ制限を超えないことを確認する。
    - S1 環境で 600 プロパティ (列)
    - S2 環境で 800 プロパティ (列)
+
+> [!TIP]
+> Azure Time Series Insights プレビューの[制限と計画](time-series-insights-update-plan.md)をご確認ください。
 
 次のガイダンスは最適なクエリ パフォーマンスの確保に役立ちます。
 
@@ -195,7 +198,7 @@ Azure クラウドに送信されるときに JSON にシリアル化される [
 
 ## <a name="next-steps"></a>次の手順
 
-- [IoT Hub デバイス メッセージをクラウド](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)に送信する方法の詳細を参照してください。
+- [IoT Hub デバイス メッセージをクラウド](../iot-hub/iot-hub-devguide-messages-construct.md)に送信する方法の詳細を参照してください。
 
 - Time Series Insights データ アクセス REST API のクエリ構文の詳細については、[Azure Time Series Insights のクエリの構文](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax)に関する記事を参照してください。
 

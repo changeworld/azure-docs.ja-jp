@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe7ba0f6daec0b85ec73611ba4e48d72f16146e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45351cc29b2b7028863aff06ab5a511674604d6f
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510992"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048955"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Zscaler インターネット アクセスを Azure Sentinel に接続する
 
@@ -36,7 +36,7 @@ ms.locfileid: "73510992"
 
  ![Azure での CEF](./media/connect-cef/cef-syslog-azure.png)
 
-また、別のクラウドで VM を使用しているか、オンプレミスのマシンを使用している場合は、この設定が存在します。 
+あるいは、別のクラウドの VM かオンプレミスのマシンを使用する場合は、以下の設定が存在することになります。 
 
  ![オンプレミスの CEF](./media/connect-cef/cef-syslog-onprem.png)
 
@@ -74,15 +74,15 @@ ms.locfileid: "73510992"
    - Syslog RFC 3164
    - Syslog RFC 5424
  
-お使いのコンピューターが次の要件を満たすことを確認してください。 
+マシンが次の要件も満たしていることを確認します。 
 - アクセス許可
-    - お使いのコンピューターに対する高度な権限 (sudo) が必要です。 
+    - マシンに対する管理者特権のアクセス許可 (sudo) が必要です。 
 - ソフトウェア要件
-    - お使いのコンピューターで Python が実行されていることを確認します
+    - マシンで Python が実行されていることを確認します
 ## <a name="step-1-deploy-the-agent"></a>手順 1: エージェントをデプロイする
 
 このステップでは、Azure Sentinel とセキュリティ ソリューションの間のプロキシとして機能する Linux マシンを選択する必要があります。 プロキシ マシンで次のスクリプトを実行する必要があります。
-- Log Analytics エージェントをインストールし、必要に応じて、TCP 経由でポート 514 の Syslog メッセージをリッスンし、Azure Sentinel ワークスペースに CEF メッセージを送信するように構成します。
+- Log Analytics エージェントをインストールし、必要に応じて、ポート 514 で TCP 経由で Syslog メッセージをリッスンし、Azure Sentinel ワークスペースに CEF メッセージを送信するように構成します。
 - ポート 25226 を使用して、CEF メッセージを Log Analytics エージェントに転送するように Syslog デーモンを構成します。
 - データを収集しそれを Log Analytics に安全に送信するように Syslog エージェントを設定します。ここで、データが解析および改良されます。
  
@@ -92,7 +92,7 @@ ms.locfileid: "73510992"
 1. **[Install and configure the Syslog agent]\(Syslog エージェントのインストールと構成\)** で、マシンの種類として Azure、他のクラウド、またはオンプレミスを選択します。 
    > [!NOTE]
    > 次の手順のスクリプトでは Log Analytics エージェントをインストールし、コンピューターを Azure Sentinel ワークスペースに接続するため、このコンピューターが他のワークスペースに接続されていないことを確認してください。
-1. お使いのコンピューターに対する高度な権限 (sudo) が必要です。 コマンド `python –version` を使用して、コンピューターに Python がインストールされていることを確認します。
+1. マシンに対する管理者特権のアクセス許可 (sudo) が必要です。 コマンド `python –version` を使用して、コンピューターに Python がインストールされていることを確認します。
 
 1. プロキシ マシンで次のスクリプトを実行します。
    `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
@@ -106,7 +106,7 @@ ms.locfileid: "73510992"
     - ポート = 514
     - 形式 = CEF
     - IP アドレス - CEF メッセージを、この目的専用の仮想マシンの IP アドレスに送信していることを確認します。
- 詳細については、[Zscaler Azure Sentinel 統合ガイド](https://aka.ms/ZscalerCEFInstructions)を参照してください。
+ 詳細については、[Zscaler and Azure Sentinel Deployment Guide (Zscaler および Azure Sentinel デプロイ ガイド)](https://aka.ms/ZscalerCEFInstructions) を参照してください。
  
    > [!NOTE]
    > このソリューションは、Syslog RFC 3164 または RFC 5424 をサポートしています。
@@ -119,8 +119,8 @@ ms.locfileid: "73510992"
 1. Log Analytics を開いて、CommonSecurityLog スキーマを使用してログを受信していることを確認します。<br> ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。 
 
 1. スクリプトを実行する前に、セキュリティ ソリューションからメッセージを送信して、構成した Syslog プロキシ マシンに転送されていることを確認することをお勧めします。 
-1. お使いのコンピューターに対する高度な権限 (sudo) が必要です。 コマンド `python –version` を使用して、コンピューターに Python がインストールされていることを確認します。
-1. 次のスクリプトを実行して、エージェント、Azure Sentinel、およびセキュリティ ソリューション間の接続を確認します。 デーモンの転送が適切に構成されていること、正しいポートでリッスンしていること、およびデーモンと Log Analytics エージェント間の通信がブロックされていないことを確認します。 また、このスクリプトは、モック メッセージ「TestCommonEventFormat」を送信して、エンドツーエンドの接続を確認します。 <br>
+1. マシンに対する管理者特権のアクセス許可 (sudo) が必要です。 コマンド `python –version` を使用して、コンピューターに Python がインストールされていることを確認します。
+1. 次のスクリプトを実行して、エージェント、Azure Sentinel、セキュリティ ソリューションの間の接続を確認します。 これにより、デーモンの転送が正しく構成されていること、正しいポートでリッスンしていること、デーモンと Log Analytics エージェントの間の通信がブロックされていないことが確認されます。 また、このスクリプトは、モック メッセージ「TestCommonEventFormat」を送信して、エンドツーエンドの接続を確認します。 <br>
  `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
 

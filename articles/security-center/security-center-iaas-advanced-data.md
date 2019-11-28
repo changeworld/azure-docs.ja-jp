@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 93e52b393db288f5b19afde4a31e08d0bb91b471
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571572"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907078"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Azure Virtual Machines の SQL Server 向け Advanced Data Security (プレビュー)
 Azure Virtual Machines の SQL サーバー向け Advanced Data Security は、高度な SQL セキュリティ機能のための統合パッケージです。 このプレビュー機能には、データベースの潜在的な脆弱性を識別し、軽減する機能や、データベースに対する脅威を示す異常な行動を検出する機能が含まれています。 
@@ -54,7 +54,7 @@ Azure VM の SQL 向け Advanced Data Security (パブリック プレビュー)
     選択したワークスペースまたは選択したサブスクリプションの既定のワークスペースに接続されているすべての SQL Server で、SQL Server の Advanced Data Security が有効になります。
 
     >[!NOTE]
-    > このソリューションは、SQL Server の最初の再起動後にアクティブになります。 
+    > このソリューションは、SQL Server の最初の再起動後に完全にアクティブになります。 
 
 新しいワークスペースを作成するには、[Log Analytics ワークスペースの作成](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)に関する記事の手順に従います。
 
@@ -72,7 +72,7 @@ Security Center アラートの生成時にメール通知を受け取る受信�
 1. [設定] メニューから、 **[メール通知]** をクリックします。 
 1. **[メール アドレス]** テキスト ボックスに、通知を受け取るメール アドレスを入力します。 メール アドレスをコンマ (,) で区切ることで複数のメール アドレスを入力できます。  たとえば、「admin1@mycompany.com,admin2@mycompany.com,admin3@mycompany.com」のようにします。
 
-      ![電子メールの設定](./media/security-center-advanced-iaas-data/email-settings.png)
+    ![電子メールの設定](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. **[メール通知]** 設定で、次のオプションを設定します。
   
@@ -88,29 +88,27 @@ Security Center アラートの生成時にメール通知を受け取る受信�
 
 脆弱性評価ダッシュボードには、すべてのデータベースを対象とする評価結果の概要が表示されます。 SQL Server バージョンによるデータベースのディストリビューション、失格となったデータベースと合格となったデータベースの比較概要、リスク ディストリビューションによるチェック不合格の全体的まとめを確認できます。
 
-脆弱性評価の結果とレポートは、Log Analytics から直接表示できます。
+脆弱性評価の結果は、Security Center から直接表示することができます。
 
-1. Advanced Data Security ソリューションで Log Analytics ワークスペースに移動します。
-1. **[ソリューション]** に移動し、 **[SQL の脆弱性評価]** ソリューションを選択します。
-1. **[概要]** ウィンドウで、 **[概要の表示]** をクリックし、 **[SQL Vulnerability Assessment Report]\(SQL の脆弱性評価レポート\)** を選択します。
+1. Security Center のサイドバーから、[リソース セキュリティの検疫] の **[データとストレージ]** を選択します。
 
-    ![SQL 評価レポート](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
+1. レコメンデーションとして、 **[VM 内の SQL データベースの脆弱性を修復する必要があります (プレビュー)]** を選択します。 詳細については、「[Security Center の推奨事項](security-center-recommendations.md)」を参照してください。 
 
-    レポート ダッシュボードが読み込まれます。 時間枠が少なくとも **[過去 7 日間]** に設定されていることを確認してください。これは、脆弱性評価はデータベースで、7 日間に 1 回という固定のスケジュールで実行されるためです。
+    [![**VM 内の SQL データベースの脆弱性を修復する必要があります (プレビュー)** レコメンデーション](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
-    ![過去 7 日間を設定します](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
+    このレコメンデーションの詳細ビューが表示されます。
 
-1. 詳細を見るには、いずれかのダッシュボード要素をクリックします。 例:
+    [![**VM 内の SQL データベースの脆弱性を修復する必要があります (プレビュー)** レコメンデーションの詳細ビュー](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
-   1. **[Failed checks summary]\(失敗したチェックのまとめ\)** セクションの脆弱性チェックをクリックすると、Log Analytics テーブルと、すべてのデータベースに対して行ったこのチェックの結果が表示されます。 結果が含まれるものが最初に表示されます。
+1. ドリルダウンして詳細を表示するには:
 
-   1. 次に、クリックして、該当するデータベースの脆弱性の説明と影響、状態、関連リスク、実際の結果を含む、各脆弱性の詳細を表示します。 このチェックのために実行された実際のクエリとこの脆弱性を解決するための修復情報も確認できます。
+    * スキャンされたリソース (データベース) の概要と、テスト済みのセキュリティ チェックの一覧を表示するには、目的のサーバーをクリックします。
+    [![SQL サーバーごとにグループ化された脆弱性](media/security-center-advanced-iaas-data/single-server-view.png)](media/security-center-advanced-iaas-data/single-server-view.png#lightbox)
 
-    ![ワークスペースを選択](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
+    * 特定の SQL データベースごとにグループ化された脆弱性の概要を表示するには、目的のデータベースをクリックします。
+    [![SQL サーバーごとにグループ化された脆弱性](media/security-center-advanced-iaas-data/single-database-view.png)](media/security-center-advanced-iaas-data/single-database-view.png#lightbox)
 
-    ![ワークスペースを選択](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
-
-1. 脆弱性評価の結果データに Log Analytics クエリを実行し、ニーズに基づいてデータを詳細に分析できます。
+    各ビューでは、セキュリティ チェックが**重要度**順に表示されます。 特定のセキュリティ チェックをクリックすると詳細ウィンドウが表示され、**説明**、**修復方法**、およびその他の関連情報 (**影響**や**ベンチマーク**など) が表示されます。
 
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Azure VM の SQL サーバー向け Advanced Threat Protection のアラート
 普段は見られない、潜在的に有害な SQL Server へのアクセスが試行されると、あるいは SQL Server の悪用が試行されると、アラートが生成されます。 これらのイベントにより、次のアラートがトリガーされる場合があります。

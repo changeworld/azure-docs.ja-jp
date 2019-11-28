@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.openlocfilehash: 46164cfc0c2baff919808a831a67180b65a23ff7
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.date: 11/07/2019
+ms.openlocfilehash: 225ee7028b9610a4974f9bee05da667d78d3355e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337648"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903733"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Jupyter Notebook をコンピューターにインストールして HDInsight の Apache Spark に接続する
 
@@ -30,9 +30,9 @@ HDInsight クラスターの Jupyter Notebook で使用できるカスタム カ
 
 ## <a name="prerequisites"></a>前提条件
 
-ここに記載したのは、Jupyter のインストールに関する前提条件ではありません。 Jupyter Notebook のインストール後にノートブックを HDInsight クラスターに接続するための前提条件です。
+* HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。 これは Jupyter Notebook のインストール後にノートブックを HDInsight クラスターに接続するための前提条件です。
 
-* HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
+* HDInsight の Spark での Jupyter Notebook の使用方法を熟知していること。
 
 ## <a name="install-jupyter-notebook-on-your-computer"></a>Jupyter Notebook をコンピューターにインストールする
 
@@ -46,7 +46,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
     |クラスターのバージョン | インストール コマンド |
     |---|---|
-    |v3.6 および v3.5 |`pip install sparkmagic==0.12.7`|
+    |v3.6 および v3.5 |`pip install sparkmagic==0.13.1`|
     |v3.4|`pip install sparkmagic==0.2.3`|
 
 1. 次のコマンドを実行して、`ipywidgets` が適切にインストールされていることを確認します。
@@ -116,6 +116,10 @@ Jupyter Notebook をインストールする前に Python をインストール�
         "url": "https://{CLUSTERDNSNAME}.azurehdinsight.net/livy"
       },
 
+      "custom_headers" : {
+        "X-Requested-By": "livy"
+      },
+
       "heartbeat_refresh_seconds": 5,
       "livy_server_heartbeat_timeout_seconds": 60,
       "heartbeat_retry_seconds": 1
@@ -146,7 +150,7 @@ Jupyter Notebook をインストールする前に Python をインストール�
 
     a. 新しい Notebook を作成します。 右隅から **[新規]** を選択します。 既定のカーネル **Python 2** または **Python 3** と、インストールしたカーネルが表示されるはずです。 実際の値は、インストールの選択に応じて異なる場合があります。  **PySpark** を選択します。
 
-    ![Jupyter Notebook で利用できるカーネル](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter Notebook のカーネル")
+    ![Jupyter Notebook で使用可能なカーネル](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jupyter Notebook のカーネル")
 
     > [!IMPORTANT]  
     > **[新規]** を選択したら、エラーがないかシェルを確認します。  エラー `TypeError: __init__() got an unexpected keyword argument 'io_loop'` が表示される場合は、Tornado の特定のバージョンで既知の問題が発生している可能性があります。  その場合はカーネルを停止し、次のコマンドを使用して Tornado のインストールをダウン グレードします:`pip install tornado==4.5.3`。

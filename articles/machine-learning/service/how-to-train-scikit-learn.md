@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea466486509c4b5dadc48ef830c9f05ec42ab5b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6d71ea59b7094134cc70b9eeea6da89feacb3a14
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814854"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931053"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して Scikit-learn モデルを大規模に構築する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -177,20 +177,47 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-次のコードでワークスペースにモデルを登録します。
+次のコードでワークスペースにモデルを登録します。 パラメーター `model_framework`、`model_framework_version`、および `resource_configuration` を指定することによって、コードなしのモデル デプロイが使用可能になります。 これにより、登録済みのモデルからモデルを Web サービスとして直接デプロイできるようになり、`ResourceConfiguration` オブジェクトによって Web サービスのコンピューティング リソースが定義されます。
 
 ```Python
-model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = run.register_model(model_name='sklearn-iris', 
+                           model_path='model.joblib',
+                           model_framework=Model.Framework.SCIKITLEARN,
+                           model_framework_version='0.19.1',
+                           resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5))
 ```
+
+## <a name="deployment"></a>Deployment
+
+今登録したモデルは、どのエスティメーターをトレーニングに使用したかには関係なく、Azure Machine Learning の他のすべての登録済みのモデルとまったく同じ方法でデプロイできます。 デプロイ方法にはモデルの登録に関するセクションが含まれていますが、登録済みのモデルが既にあるため、デプロイのために[コンピューティング先の作成](how-to-deploy-and-where.md#choose-a-compute-target)に直接スキップできます。
+
+### <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
+
+従来のデプロイ ルートの代わりに、scikit-learn にコードなしのデプロイ機能 (プレビュー) を使用することもできます。 コードなしのモデル デプロイは、すべての組み込みの scikit-learn モデルの種類に対してサポートされています。 `model_framework`、`model_framework_version`、および `resource_configuration` パラメーターを使用して前に示したようにモデルを登録することにより、単純に `deploy()` 静的関数を使用してモデルをデプロイできます。
+
+```python
+web_service = Model.deploy(ws, "scikit-learn-service", [model])
+```
+
+注:事前に構築された scikit-learn 推論コンテナーには、次の依存関係が含まれています。
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
+```
+
+完全な[方法](how-to-deploy-and-where.md)では、Azure Machine Learning を使用したデプロイがさらに詳細に説明されています。
+
 
 ## <a name="next-steps"></a>次の手順
 
+この記事では、scikit-learn モデルをトレーニングして登録した後、デプロイ オプションについて学習しました。 Azure Machine Learning の詳細については、次の他の記事を参照してください。
 
-この記事では、Azure Machine Learning で Keras モデルをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
-
-> [!div class="nextstepaction"]
-> [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)
 * [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
-* [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)
 * [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

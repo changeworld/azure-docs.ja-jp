@@ -1,21 +1,19 @@
 ---
-title: Azure Functions の継続的なデプロイ | Microsoft Docs
+title: Azure Functions の継続的なデプロイ
 description: Azure App Service の継続的なデプロイ機能を使用して、関数を発行します。
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/25/2016
+ms.date: 09/25/2019
 ms.author: glenga
-ms.openlocfilehash: fb3cd885c0a16b3dc3a79150043b25cb271040bd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dae75153cffbf2f0e836e1a28b78a9f05f54e6e0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097097"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091176"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions の継続的なデプロイ
 
@@ -34,6 +32,9 @@ Azure の関数のデプロイの単位は関数アプリです。 関数アプ�
 継続的なデプロイを成功させるには、ディレクトリ構造が、Azure Functions が期待する基本フォルダー構造との互換性を備えている必要があります。
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
+
+>[!NOTE]  
+> 継続的なデプロイは、従量課金プランで実行されている Linux アプリではまだサポートされていません。 
 
 ## <a name="credentials"></a>継続的なデプロイを設定する
 

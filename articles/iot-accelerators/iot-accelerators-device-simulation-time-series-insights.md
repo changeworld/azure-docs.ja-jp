@@ -1,5 +1,5 @@
 ---
-title: Time Series Insights を使用してデバイス シミュレーション テレメトリを視覚化する - Azure | Microsoft Docs
+title: Time Series Insights を使用してシミュレートされたテレメトリを視覚化する - Azure | Microsoft Docs
 description: Time Series Insights 環境を構成して、デバイス シミュレーション ソリューション アクセラレータによって生成されたテレメトリを調査および分析する方法について説明します。
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 5d20adc11e0d679e12fd060e719593a50180db8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65834805"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889340"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Time Series Insights を使用して、デバイス シミュレーション ソリューション アクセラレータから送信されたテレメトリを視覚化する
 
@@ -66,8 +66,8 @@ Time Series Insights にテレメトリをストリーム配信するには、�
     | Setting | 値 |
     | ------- | ----- |
     | 環境名 | 次のスクリーンショットでは、**Contoso-TSI** という名前を使用しています。 この手順を完了したら、独自の一意の名前を選択してください。 |
-    | サブスクリプション | ドロップダウンから Azure サブスクリプションを選択します。 |
-    | リソース グループ | **contoso-simulation**。 使用しているソリューション アクセラレータの名前を使用します。 |
+    | Subscription | ドロップダウンから Azure サブスクリプションを選択します。 |
+    | Resource group | **contoso-simulation**。 使用しているソリューション アクセラレータの名前を使用します。 |
     | Location | この記事では、 **[米国東部]** を使用します。 環境は、デバイス シミュレーション アクセラレータと同じリージョンに作成します。 |
     | Sku |**S1** |
     | 容量 | **1** |

@@ -1,7 +1,7 @@
 ---
 title: IPv6 のパブリック ロード バランサーを作成する - Azure CLI
-titlesuffix: Azure Load Balancer
-description: Azure CLI を使用して IPv6 のパブリック ロード バランサーを作成する方法について説明します。
+titleSuffix: Azure Load Balancer
+description: このラーニング パスでは、Azure CLI を使用して IPv6 のパブリック ロードバランサーの作成を開始します。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 0ee85a92753845e0e67fff22da894a048acb1b14
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: f7c0eb9bd258d2efbdb4df78f2cf86861f77a975
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274956"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076009"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLI を使用して IPv6 のパブリック ロード バランサーを作成する
 
+>[注:IPv6 のベスト プラクティスの変更] この記事では、Basic Load Balancer が IPv4 と IPv6 の両方の接続を提供できるようにするための IPv6 機能の概要について説明します。  IPv6 接続を仮想ネットワークと統合し、IPv6 ネットワーク セキュリティ グループの規則、IPv6 ユーザー定義のルーティング、IPv6 の Basic と Standard の負荷分散などの主要な機能を備えた [Azure VNET の IPv6](../virtual-network/ipv6-overview.md) で、より包括的な IPv6 接続を利用できるようになりました。  Azure VNET の IPv6 は、Azure での IPv6 アプリケーションに推奨されるベスト プラクティスです。 
+>[Azure VNET の IPv6 の CLI デプロイ](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md)に関するページを参照してください
 
 Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、ロード バランサーは、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
@@ -296,8 +298,4 @@ VM を作成するには、ストレージ アカウントが必要です。 負
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
 
-## <a name="next-steps"></a>次の手順
 
-[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-cli.md)  
-[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)  
-[ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)

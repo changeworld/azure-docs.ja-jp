@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB データ ソースのインデックス作成
+title: Azure Cosmos DB データを検索する
 titleSuffix: Azure Cognitive Search
 description: Azure Cosmos DB のデータ ソースをクロールし、Azure Cognitive Search のフルテキスト検索可能なインデックスにデータを取り込みます。 インデクサーにより、選択したデータ ソース (Azure Cosmos DB など) のデータ インジェストが自動化されます。
 author: mgottein
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 41da5b59c7d9429a068ecd483aa96edb1141b727
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7e4d51701fd8614831585aac03f2c8a909b2b847
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719951"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112736"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB データのインデックスを作成する方法 
 
@@ -78,17 +78,11 @@ Azure Cognitive Search サービス ページのコマンド バーから[ウィ
 
    ![Cosmos DB データ ソースの定義](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB データ ソースの定義")
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4 - ウィザードの [認知検索を追加します] ページをスキップする
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>4 - ウィザードの [コンテンツのエンリッチ] ページをスキップする
 
-ドキュメントをインポートするときは、コグニティブ スキルを追加する必要はありません。 特別に [AI エンリッチメントを追加する](cognitive-search-concept-intro.md)必要がない場合は、この手順を省略してください。
+コグニティブ スキル (またはエンリッチメント) の追加は、インポート要件ではありません。 特別に [AI エンリッチメントを追加する](cognitive-search-concept-intro.md)必要がない場合は、この手順を省略してください。
 
-このステップをスキップするには、先に次のページに移動します。
-
-   ![スキルを追加する [次のページ] ボタン](media/search-get-started-portal/next-button-add-cog-search.png)
-
-そのページから、インデックスのカスタマイズに進むことができます。
-
-   ![コグニティブ スキル手順のスキップ](media/search-get-started-portal/skip-cog-skill-step.png)
+手順をスキップするには、ページの下部にある [次へ] と [スキップ] の青いボタンをクリックします。
 
 ### <a name="5---set-index-attributes"></a>5 - インデックスの属性を設定する
 

@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute 回線の作成と変更 - ポータル: Azure | Microsoft Docs'
+title: ExpressRoute:回線の作成と変更:Azure ポータル
 description: ExpressRoute 回線を作成、プロビジョニング、確認、更新、削除、プロビジョニング解除します。
 services: expressroute
 author: cherylmc
@@ -7,14 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc
-ms.reviewer: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 42fe0a91261453251d56f1c556083e93f5c76bec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846581"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083563"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
 
@@ -86,19 +84,19 @@ ms.locfileid: "67846581"
 新しい ExpressRoute 回線を作成する場合、この回線は次の状態になります。
 
 プロバイダーの状態: 未プロビジョニング<BR>
-回線の状態: Enabled
+回線の状態: 有効
 
 ![プロビジョニング プロセスの開始](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 回線は、接続プロバイダーが有効にしている間、次の状態に変化します。
 
 プロバイダーの状態: プロビジョニング<BR>
-回線の状態: Enabled
+回線の状態: 有効
 
 ExpressRoute 回線をユーザーが使用できるように、次の状態にする必要があります。
 
 プロバイダーの状態: プロビジョニング済み<BR>
-回線の状態: Enabled
+回線の状態: 有効
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5.回線キーのステータスと状態を定期的に確認する
 

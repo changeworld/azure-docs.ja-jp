@@ -5,16 +5,18 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 598248a0efb3322a9c22a5e38e4986f5ba5142ab
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 6ee4391369744f966ce273697e5ba9e7f0590edd
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797468"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890991"
 ---
 # <a name="get-drone-imagery-from-drone-partners"></a>ドローン パートナーからドローンの画像を取得する
 
-この記事では、ドローン画像パートナーから Azure FarmBeats データ ハブにオルソモザイク データを取り込む方法について説明します。 現在は、次の画像パートナーがサポートされています。  
+この記事では、ドローン画像パートナーから Azure FarmBeats データ ハブにオルソモザイク データを取り込む方法について説明します。 オルソモザイクとは、ドローンによって収集されたデータから幾何学的に修正され合成される、航空写真のイラスト/画像です。
+
+現在は、次の画像パートナーがサポートされています。
 
   ![プロジェクト (Farm Beats)](./media/get-drone-imagery-from-drone-partner/drone-partner-1.png)
 
@@ -53,7 +55,7 @@ FarmBeats との統合を有効にするには、デバイス プロバイダー
 
     ```azurepowershell-interactive 
 
-    PS> ./generateCredentials.ps1   
+    ./generateCredentials.ps1   
 
     ```
 

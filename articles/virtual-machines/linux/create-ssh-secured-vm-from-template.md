@@ -1,5 +1,5 @@
 ---
-title: Azure でテンプレートから Linux VM を作成する | Microsoft Docs
+title: Azure でテンプレートから Linux VM を作成する
 description: Azure CLI を使用して Resource Manager テンプレートから Linux VM を作成する方法
 services: virtual-machines-linux
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f12bfaa09b74bf2d9004044dbedb8d7bb15965c
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 3e32e9f17b5c48e18453724eb683ba2e86dd0cdb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671587"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036497"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Linux 仮想マシンを作成する方法
 

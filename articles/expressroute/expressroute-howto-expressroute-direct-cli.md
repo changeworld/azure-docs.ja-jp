@@ -1,5 +1,5 @@
 ---
-title: ExpressRoute Direct の構成 - Azure CLI | Microsoft Docs
+title: 'Azure ExpressRoute: ExpressRoute Direct を構成する: CLI'
 description: この記事は、Azure CLI を使用して ExpressRoute Direct を構成するのに役立ちます
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: a879344fddd6d12ae8a50e109dcaf4a4bb2c1b68
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6a17570a62728d5b4f9c99e3c4c939b5c77cb3df
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161551"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080208"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Traffic Manager の地理的ルーティングの種類で使用される国/リージョン階層 | Microsoft Docs
+title: 地理的ルーティングで使用される国/リージョン階層 - Azure Traffic Manager
 description: この記事では、Azure Traffic Manager の地理的ルーティングの種類で使用される国/リージョンの階層を一覧表示します。
 services: traffic-manager
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: allensu
-ms.openlocfilehash: d16529e966fb2e16d1012f4aa0aafcff204a3093
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 13f4101c17d78a59e8cde724863d237ba888e6a4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071176"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037203"
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>地理的トラフィック ルーティング方法で Azure Traffic Manager によって使用される国/リージョン階層
 

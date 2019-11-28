@@ -1,25 +1,25 @@
 ---
-title: 動的グループの作成と状態チェックを行う - Azure Active Directory | Microsoft Docs
+title: 動的グループの作成と状態チェックを行う - Azure AD | Microsoft Docs
 description: Azure portal でグループ メンバーシップ ルールの作成と状態チェックを行う方法。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343acce228c38e38152fc2ea9d8fe0a59d8254d4
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193935"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027243"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>動的グループの作成と状態チェックを行う
 
@@ -28,9 +28,9 @@ Azure Active Directory (Azure AD) では、ユーザーまたはデバイスの�
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure portal のルール ビルダー
 
-Azure AD には、重要なルールをすばやく作成したり更新したりできるルール ビルダーが用意されています。 ルール ビルダーでは、最大で 5 つの式の作成がサポートされます。 ルール ビルダーを使用すると、いくつかの単純な式を使ってルールを簡単に作成できますが、ルール ビルダーを使用してすべてのルールを再現することはできません。 作成したいルールがルール ビルダーでサポートされていない場合は、テキスト ボックスを使用できます。
+Azure AD には、重要なルールをすばやく作成したり更新したりできるルール ビルダーが用意されています。 ルール ビルダーでは、最大で 5 つの式の作成がサポートされます。 ルール ビルダーを使用すると、いくつかの単純な式を使ってルールを簡単に作成できますが、すべてのルールの再現に使用することはできません。 作成したいルールがルール ビルダーでサポートされていない場合は、テキスト ボックスを使用できます。
 
-以下に、テキスト ボックスを使用して作成することをお勧めする高度なルールまたは構文の例をいくつか示します。
+以下に、テキスト ボックスを使用して構築することをお勧めする高度なルールまたは構文の例をいくつか示します。
 
 - 5 つを超える式を持つルール
 - 直接の部下のルール

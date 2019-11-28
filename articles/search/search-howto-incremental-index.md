@@ -1,5 +1,5 @@
 ---
-title: 変更の追跡に基づいてエンリッチされたコンテンツの増分インデックス (プレビュー) を設定する
+title: 増分インデックス作成を追加する (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: 変更の追跡を有効にし、認知スキルセットの制御された処理のためにエンリッチされたコンテンツの状態を保持します。 現在、この機能はパブリック プレビュー段階にあります。
 author: vkurpad
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 74631ee3167c65e59fbd05f53fe5327d1b532dba
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 09defe9648208e2300594169add990d4bcbd7a39
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719946"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112577"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Azure Cognitive Search でエンリッチされたドキュメントの増分インデックス作成を設定する方法
 

@@ -1,35 +1,35 @@
 ---
-title: PIM で Azure AD ロールのアクセス レビューを作成する - Azure Active Directory | Microsoft Docs
+title: PIM で Azure AD ロールのアクセス レビューを作成する - Azure AD | Microsoft Docs
 description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールに対するアクセス レビューを作成する方法を説明します。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/27/2019
+ms.date: 10/22/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2069f0161ea2600a62ab123206d0ebe3c00642c3
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 2f7e9ef503a9a3469ecbc835be8d9229fbd0167f
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804374"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847103"
 ---
-# <a name="create-an-access-review-of-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールのアクセス レビューを作成する
+# <a name="create-an-access-review-of-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールのアクセス レビューを作成する
 
-従業員の特権 Azure AD ロールへのアクセスは、時間の経過に伴って変化します。 古くなったロールの割り当てに関連するリスクを軽減するために、アクセスを定期的に確認する必要があります。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、特権 Azure AD ロールのアクセス レビューを作成できます。 自動的に実行される定期的なアクセス レビューを構成することもできます。
+古くなったロールの割り当てに関連するリスクを軽減するために、アクセスを定期的に確認する必要があります。 Azure AD Privileged Identity Management (PIM) を使用して、特権 Azure AD ロールのアクセス レビューを作成できます。 自動的に実行される定期的なアクセス レビューを構成することもできます。
 
 この記事では、特権 Azure AD ロールに対して 1 つ以上のアクセス レビューを作成する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>アクセス レビューを開く
 
@@ -37,19 +37,17 @@ ms.locfileid: "70804374"
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
-1. 左側のメニューで **[Azure AD ロール]** をクリックしてから、 **[アクセス レビュー]** をクリックします。
+1. 左側のメニューで **[Azure AD ロール]** を選択してから、 **[アクセス レビュー]** を選択します。
 
-1. [管理] の下の **[アクセス レビュー]** をクリックします。
+1. [管理] の下の **[アクセス レビュー]** を選択します。
 
     ![Azure AD ロール - すべてのレビューの状態を示す [アクセス レビュー] 一覧](./media/pim-how-to-start-security-review/access-reviews.png)
 
-
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
-
 
 ## <a name="start-the-access-review"></a>アクセス レビューを開始する
 
-アクセス レビューの設定を指定したら、 **[開始]** をクリックします。 アクセス レビューはステータスと共にリストに表示されます。
+アクセス レビューの設定を指定したら、 **[開始]** を選択します。 アクセス レビューはステータスと共にリストに表示されます。
 
 ![開始されたレビューの状態を示す [アクセス レビュー] 一覧](./media/pim-how-to-start-security-review/access-reviews-list.png)
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/06/2019
+ms.date: 11/12/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8c3c0574389fc9808af3cd70c928ede82d375076
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c4de8b0d78d66709d13526c69f9d33b16dbad1dc
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720715"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010234"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -90,7 +90,9 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ## <a name="trigger-an-action-group"></a>アクション グループをトリガーする
 
-サブスクリプション スコープまたはリソース グループ スコープの予算を作成または編集するときに、アクション グループを呼び出すように予算を構成できます。 予算しきい値に達すると、アクション グループはさまざまなアクションを実行できます。 アクション グループの詳細については、「[Azure portal でのアクション グループの作成および管理](../azure-monitor/platform/action-groups.md)」をご覧ください。 アクション グループで予算ベースの自動化を使用する方法の詳細については、「[Azure Budgets でのコストの管理](../billing/billing-cost-management-budget-scenario.md)」をご覧ください。
+サブスクリプション スコープまたはリソース グループ スコープの予算を作成または編集するときに、アクション グループを呼び出すように予算を構成できます。 予算しきい値に達すると、アクション グループはさまざまなアクションを実行できます。 アクション グループは現在、サブスクリプションとリソース グループのスコープに対してのみサポートされています。 アクション グループの詳細については、「[Azure portal でのアクション グループの作成および管理](../azure-monitor/platform/action-groups.md)」をご覧ください。 アクション グループで予算ベースの自動化を使用する方法の詳細については、「[Azure Budgets でのコストの管理](../billing/billing-cost-management-budget-scenario.md)」をご覧ください。
+
+
 
 アクション グループを作成または更新するには、予算の作成または編集時に **[アクション グループの管理]** をクリックします。
 

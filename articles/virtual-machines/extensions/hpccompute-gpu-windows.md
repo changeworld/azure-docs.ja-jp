@@ -1,5 +1,5 @@
 ---
-title: NVIDIA GPU ドライバー拡張機能 - Azure Windows VM | Microsoft Docs
+title: NVIDIA GPU ドライバー拡張機能 - Azure Windows VM
 description: Windows を実行中の N シリーズのコンピューティング VM に NVIDIA GPU ドライバーをインストールするための Microsoft Azure 拡張機能です。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: 13a7189d9758fd6d1e7daac38e948e1b482a019b
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686772"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073017"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Windows 用の NVIDIA GPU ドライバー拡張機能
 

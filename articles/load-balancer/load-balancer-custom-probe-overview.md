@@ -1,11 +1,11 @@
 ---
-title: お客様のサービスをスケーリングして高可用性を実現するために Azure Load Balancer 正常性プローブを使用する
-titlesuffix: Azure Load Balancer
-description: 正常性プローブを使用して Load Balancer の背後にあるインスタンスを監視する方法について説明します
+title: ご使用のサービスをスケーリングして HA を実現する正常性プローブ
+titleSuffix: Azure Load Balancer
+description: この記事では、正常性プローブを使用して Azure Load Balancer の背後にあるインスタンスを監視する方法について説明します
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 78e085aae97114e6848b736c40b16c755256d0cd
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571113"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077074"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ
 
@@ -160,7 +160,7 @@ Cloud Services を使用し、w3wp.exe を使う Web ロールがある場合は
 
 ゲスト エージェント プローブは、VM 内のゲスト エージェントのチェックです。 その後リッスンし、インスタンスが準備完了状態になっている場合にのみ、HTTP 200 OK で応答します (他の状態はビジー、リサイクル中、停止中です)。
 
-詳しくは、[正常性プローブのサービス定義ファイル (csdef) の構成](https://msdn.microsoft.com/library/azure/ee758710.aspx)に関するページまたは[クラウド サービス用のパブリック ロード バランサーの作成の開始](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services)に関するページをご覧ください。
+詳しくは、[正常性プローブのサービス定義ファイル (csdef) の構成](https://msdn.microsoft.com/library/azure/ee758710.aspx)に関するページまたは[クラウド サービス用のパブリック ロード バランサーの作成の開始](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-internet-classic-cloud#check-load-balancer-health-status-for-cloud-services)に関するページをご覧ください。
 
 ゲスト エージェントが HTTP 200 OK で応答できない場合、Load Balancer はそのインスタンスを応答不能としてマークします。 そして、そのインスタンスへのフローの送信を停止します。 Load Balancer はインスタンスのチェックを続けます。 
 

@@ -7,17 +7,17 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/10/2019
-ms.openlocfilehash: 890cd7080447649396855bfbe051dca4470a4564
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/04/2019
+ms.openlocfilehash: 309af904f0dbfc0664c4341803cb6a4dc8a2c8a4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65546297"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839284"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する
 
-> [!Note] 
+> [!Note]
 > パフォーマンスを改善し、新機能を利用するには、[Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md) を使用して新しい HDInsight クラスターをデプロイします。
 
 HDInsight クラスターでデータを分析するには、[Azure Storage](../storage/common/storage-introduction.md)、[Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)、または [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md) のいずれかにデータを格納できます。 いずれのストレージ オプションでも、計算に使用される HDInsight クラスターを安全に削除できます。このとき、ユーザー データは失われません。
@@ -31,7 +31,7 @@ HDInsight クラスターでデータを分析するには、[Azure Storage](../
 
 ## <a name="availability-for-hdinsight-clusters"></a>HDInsight クラスターの可用性
 
-Apache Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス時に、Azure Storage 内の BLOB コンテナーを既定のファイル システムとして指定できます。また、HDInsight 3.5 以降のバージョンでは、Azure Storage と Azure Data Lake Storage Gen1 のいずれかを既定のファイル システムとして選択できます (いくつか例外があります)。 
+Apache Hadoop は、既定のファイル システムの概念をサポートしています。 既定のファイル システムは、既定のスキームとオーソリティを意味します。 これは相対パスの解決に使用することもできます。 HDInsight クラスターの作成プロセス時に、Azure Storage 内の BLOB コンテナーを既定のファイル システムとして指定できます。また、HDInsight 3.5 以降のバージョンでは、Azure Storage と Azure Data Lake Storage Gen1 のいずれかを既定のファイル システムとして選択できます (いくつか例外があります)。
 
 HDInsight クラスターでは、2 つの方法で Data Lake Storage Gen1 を使用できます。
 
@@ -42,7 +42,7 @@ HDInsight クラスターでは、2 つの方法で Data Lake Storage Gen1 を�
 
 | HDInsight クラスターの種類 | 既定のストレージとしての Data Lake Storage Gen1 | 追加のストレージとしての Data Lake Storage Gen1| メモ |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight バージョン 4.0 | いいえ | いいえ |ADLS Gen1 は、HDInsight 4.0 ではサポートされていません。 |
+| HDInsight バージョン 4.0 | いいえ | いいえ |ADLS Gen1 は、HDInsight 4.0 ではサポートされていません |
 | HDInsight Version 3.6 | はい | はい | HBase は例外|
 | HDInsight Version 3.5 | はい | はい | HBase は例外|
 | HDInsight Version 3.4 | いいえ | はい | |
@@ -53,7 +53,7 @@ HDInsight クラスターでは、2 つの方法で Data Lake Storage Gen1 を�
 > [!WARNING]  
 > HDInsight HBase は、Azure Data Lake Storage Gen1 ではサポートされていません。
 
-Data Lake Storage Gen1 を追加のストレージ アカウントとして使っても、クラスターから Azure ストレージに対する読み取り/書き込みのパフォーマンスや機能には影響しません。
+Data Lake Storage Gen1 を追加のストレージ アカウントとして使っても、クラスターから Azure ストレージに対する読み取りまたは書き込みのパフォーマンスや機能には影響しません。
 
 ## <a name="use-data-lake-storage-gen1-as-default-storage"></a>既定のストレージとして Data Lake Storage Gen1 を使用する
 
@@ -66,9 +66,9 @@ Data Lake Storage Gen1 を既定のストレージとして HDInsight がデプ�
 
 既定のストレージとして Data Lake Storage Gen1 を使うには、サービス プリンシパルに次のパスへのアクセスを許可する必要があります。
 
-- Data Lake Storage Gen1 アカウントのルート。  例: adl://mydatalakestore/。
-- すべてのクラスター フォルダー用のフォルダー。  例: adl://mydatalakestore/clusters。
-- クラスター用のフォルダー。  例: adl://mydatalakestore/clusters/cluster1storage。
+* Data Lake Storage Gen1 アカウントのルート。  例: adl://mydatalakestore/。
+* すべてのクラスター フォルダー用のフォルダー。  例: adl://mydatalakestore/clusters。
+* クラスター用のフォルダー。  例: adl://mydatalakestore/clusters/cluster1storage。
 
 サービス プリンシパルの作成とアクセスの許可の詳細については、「Data Lake Storage のアクセスを構成する」を参照してください。
 
@@ -120,7 +120,6 @@ URL に **cluster_root_path** がないことに注意してください。 こ�
 
 サービス プリンシパルの作成とアクセスの許可の詳細については、「Data Lake Storage のアクセスを構成する」を参照してください。
 
-
 ## <a name="use-more-than-one-data-lake-storage-accounts"></a>複数の Data Lake Storage アカウントを使用する
 
 Data Lake Storage アカウントを追加ストレージとして使い、複数の Data Lake Storage アカウントを追加するには、1 つ以上の Data Lake Storage アカウント内のデータに HDInsight クラスターのアクセス許可を付与します。 「Data Lake Storage のアクセスを構成する」を参照してください。
@@ -131,7 +130,6 @@ HDInsight クラスターから Data Lake Storage へのアクセスを構成す
 
 > [!NOTE]  
 > Azure Data Lake Storage Gen1 を HDInsight クラスターの追加のストレージとして使用する場合は、この記事で説明されているように、クラスターを作成するときにそうすることを強くお勧めします。 Azure Data Lake Storage Gen1 を既存の HDInsight クラスターに追加のストレージとして追加することは、サポートされていないシナリオです。
->
 
 ## <a name="access-files-from-the-cluster"></a>クラスターからファイルにアクセスする
 
@@ -139,19 +137,82 @@ HDInsight クラスターから Data Lake Storage へのアクセスを構成す
 
 * **完全修飾名の使用**。 この方法により、アクセスするファイルへの完全パスを指定します。
 
-        adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/<file_path>
+    ```
+    adl://<data_lake_account>.azuredatalakestore.net/<cluster_root_path>/<file_path>
+    ```
 
-* **短縮されたパスの使用**。 この方法により、クラスター ルートへのパスを adl:/// に置き換えます。 上記の例では `adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/` を `adl:///` に置き換えることができます。
+* **短縮されたパスの使用**。 この方法により、クラスター ルートへのパスを次に置き換えます。
 
-        adl:///<file path>
+    ```
+    adl:///<file path>
+    ```
 
-* **相対パスの使用**。 この方法により、アクセスするファイルへの相対パスのみを指定します。 たとえば、そのファイルへの完全パスが次のとおりだとします。
+* **相対パスの使用**。 この方法により、アクセスするファイルへの相対パスのみを指定します。
 
-        adl://mydatalakestore.azuredatalakestore.net/<cluster_root_path>/example/data/sample.log
+    ```
+    /<file.path>/
+    ```
 
-    この sample.log ファイルには、次の相対パスを使用してアクセスできます。
+### <a name="data-access-examples"></a>データ アクセスの例
 
-        /example/data/sample.log
+例は、クラスターのヘッド ノードへの [ssh 接続](./hdinsight-hadoop-linux-use-ssh-unix.md)に基づいています。 この例では、3 つの URI スキームがすべて使用されています。 `DATALAKEACCOUNT` と `CLUSTERNAME` を関連する値に置き換えます。
+
+#### <a name="a-few-hdfs-commands"></a>いくつかの hdfs コマンド
+
+1. ローカル ストレージで単純なファイルを作成します。
+
+    ```bash
+    touch testFile.txt
+    ```
+
+1. クラスター ストレージにディレクトリを作成します。
+
+    ```bash
+    hdfs dfs -mkdir adl://DATALAKEACCOUNT.azuredatalakestore.net/clusters/CLUSTERNAME/sampledata1/
+    hdfs dfs -mkdir adl:///sampledata2/
+    hdfs dfs -mkdir /sampledata3/
+    ```
+
+1. ローカル ストレージからクラスター ストレージにデータをコピーします。
+
+    ```bash
+    hdfs dfs -copyFromLocal testFile.txt adl://DATALAKEACCOUNT.azuredatalakestore.net/clusters/CLUSTERNAME/sampledata1/
+    hdfs dfs -copyFromLocal testFile.txt adl:///sampledata2/
+    hdfs dfs -copyFromLocal testFile.txt /sampledata3/
+    ```
+
+1. クラスター ストレージのディレクトリの内容を一覧表示します。
+
+    ```bash
+    hdfs dfs -ls adl://DATALAKEACCOUNT.azuredatalakestore.net/clusters/CLUSTERNAME/sampledata1/
+    hdfs dfs -ls adl:///sampledata2/
+    hdfs dfs -ls /sampledata3/
+    ```
+
+#### <a name="creating-a-hive-table"></a>Hive テーブルの作成
+
+3 つのファイルの場所は説明目的で提示されています。 実際の実行では、`LOCATION` エントリを 1 つだけ使用します。
+
+```hql
+DROP TABLE myTable;
+CREATE EXTERNAL TABLE myTable (
+    t1 string,
+    t2 string,
+    t3 string,
+    t4 string,
+    t5 string,
+    t6 string,
+    t7 string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
+STORED AS TEXTFILE
+LOCATION 'adl://DATALAKEACCOUNT.azuredatalakestore.net/clusters/CLUSTERNAME/example/data/';
+LOCATION 'adl:///example/data/';
+LOCATION '/example/data/';
+```
+
+## <a name="identify-storage-path-from-abmari"></a>Abmari からストレージ パスを特定する
+
+構成済みの既定のストアへの完全なパスを特定するには、 **[HDFS]**  >  **[Configs]\(構成\)** の順に移動し、フィルター入力ボックスに `fs.defaultFS` と入力します。
 
 ## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>Data Lake Storage Gen1 にアクセスできる HDInsight クラスターを作成する
 
@@ -237,29 +298,15 @@ Invoke-AzResourceAction `
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 この記事では、HDInsight で HDFS と互換性のある Azure Data Lake Storage Gen1 を使う方法について説明しました。 これにより、収集したデータを長期にわたって格納できるスケーラブルなソリューションを構築できます。さらに HDInsight を使用すると、格納されている構造化データと非構造化データから有益な情報を得ることができます。
 
 詳細については、次を参照してください。
 
-* [Azure HDInsight の概要][hdinsight-get-started]
-* [クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+* [Azure HDInsight の概要](hadoop/apache-hadoop-linux-tutorial-get-started.md)
+* [クイック スタート:HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Azure PowerShell を使用して、Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
-* [HDInsight へのデータのアップロード][hdinsight-upload-data]
-* [HDInsight での Apache Hive の使用][hdinsight-use-hive]
-* [HDInsight での Apache Pig の使用][hdinsight-use-pig]
-* [Azure Storage の Shared Access Signature を使用した HDInsight でのデータへのアクセスの制限][hdinsight-use-sas]
-
-[hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
-[powershell-install]: /powershell/azureps-cmdlets-docs
-[hdinsight-creation]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-use-hive]:hadoop/hdinsight-use-hive.md
-[hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
-
-[blob-storage-restAPI]: https://msdn.microsoft.com/library/windowsazure/dd135733.aspx
-[azure-storage-create]:../storage/common/storage-create-storage-account.md
-
-[img-hdi-powershell-blobcommands]: ./media/hdinsight-hadoop-use-blob-storage/HDI.PowerShell.BlobCommands.png
-[img-hdi-quick-create]: ./media/hdinsight-hadoop-use-blob-storage/HDI.QuickCreateCluster.png
-[img-hdi-custom-create-storage-account]: ./media/hdinsight-hadoop-use-blob-storage/HDI.CustomCreateStorageAccount.png  
+* [HDInsight へのデータのアップロード](hdinsight-upload-data.md)
+* [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
+* [Azure Storage の Shared Access Signature を使用した HDInsight でのデータへのアクセスの制限](hdinsight-storage-sharedaccesssignature-permissions.md)
+* [チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)

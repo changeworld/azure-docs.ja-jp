@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 1a479b4928631f27d5453d462a59fe7fed09a88c
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 1f312e8a5034d238e4802e9323bc1b5ac5cdae21
+ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302763"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906241"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
@@ -43,7 +43,7 @@ Azure NetApp Files では、NFS ボリューム (NFSv3 と NFSv4.1) および SM
   UNIX モード ビット (読み取り、書き込み、実行) のサポートは、NFSv3 と NFSv4.1 で利用できます。 NFS ボリュームをマウントするには、NFS クライアントでのルート レベルのアクセス権が必要です。
 
 * NFSv4.1 に対するローカル ユーザー/グループと LDAP のサポート  
-  現在、NFSv4.1 ではボリュームに対するルート アクセスのみがサポートされています。 
+  現在、NFSv4.1 ではボリュームに対するルート アクセスのみがサポートされています。 「[Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する](azure-netapp-files-configure-nfsv41-domain.md)」を参照してください。 
 
 ## <a name="best-practice"></a>ベスト プラクティス
 
@@ -115,6 +115,7 @@ Azure NetApp Files では、NFS ボリューム (NFSv3 と NFSv4.1) および SM
 
 ## <a name="next-steps"></a>次の手順  
 
+* [Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する](azure-netapp-files-configure-nfsv41-domain.md)
 * [Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [NFS ボリュームのエクスポート ポリシーを構成する](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)

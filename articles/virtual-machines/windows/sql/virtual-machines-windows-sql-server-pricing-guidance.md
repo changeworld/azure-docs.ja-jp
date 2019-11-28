@@ -1,10 +1,9 @@
 ---
-title: Azure Virtual Machines における SQL Server の効率的なコスト管理 | Microsoft Docs
+title: 料金ガイダンスおよびとコストの管理
 description: 適切な SQL Server 仮想マシンの料金モデルを選択するためのベスト プラクティスについて説明します。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -15,14 +14,15 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028629"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038877"
 ---
-# <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM の料金ガイダンス
+# <a name="pricing-guidance-for-azure-sql-server-vms"></a>Azure SQL Server VM の価格ガイダンス
 
 この記事では、Azure における [SQL Server 仮想マシン](virtual-machines-windows-sql-server-iaas-overview.md)の料金ガイダンスを説明します。 コストに影響するいくつかのオプションがあるため、コストとビジネス要件が釣り合うように適切なイメージを選択することが重要です。
 

@@ -1,5 +1,5 @@
 ---
-title: ExpressRoute 回線に使用する Network Performance Monitor の構成 - Azure | Microsoft Docs
+title: 'Azure ExpressRoute: 回線に NPM を構成する'
 description: Azure ExpressRoute 回線に対してクラウドベースのネットワーク監視 (NPM) を構成します。 ここでは、ExpressRoute プライベート ピアリングと Microsoft ピアリング経由での監視について説明します。
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 180075f13be2cc2507a78e3d10a67a49a0c0cb12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60840174"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076602"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute に使用する Network Performance Monitor の構成
 

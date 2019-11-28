@@ -1,5 +1,5 @@
 ---
-title: 第 2 世代 VM に対する Azure のサポート | Microsoft Docs
+title: 第 2 世代 VM に対する Azure のサポート
 description: 第 2 世代 VM に対する Azure のサポートの概要
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: 63cf3301a08ce4073998c5d281f155a6b3eefe4d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d6fcbcb7f5d1b6bb25840ad1bddc5327b068c15d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491934"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075477"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -59,7 +59,9 @@ ms.locfileid: "73491934"
 * Windows Server 2012 Datacenter
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04+
+* Ubuntu Server 16.04、18.04、19.04、19.10
+* RHEL 8.0
+
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM の比較
 
@@ -90,7 +92,7 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 | 2 TB より大きい OS ディスク                    | :x:                | :heavy_check_mark: |
 | カスタム ディスク/イメージ/スワップ OS         | :heavy_check_mark: | :heavy_check_mark: |
 | 仮想マシン スケール セットのサポート | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Site Recovery               | :heavy_check_mark: | :x:                |
+| Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | バックアップ/復元                    | :heavy_check_mark: | :heavy_check_mark: |
 | 共有イメージ ギャラリー              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Disk Encryption             | :heavy_check_mark: | :x:                |

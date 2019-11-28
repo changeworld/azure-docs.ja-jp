@@ -1,6 +1,6 @@
 ---
-title: 「ここからアクセスすることはできません」というエラーのトラブルシューティング - Azure Active Directory | Microsoft Docs
-description: 「ここからアクセスすることはできません」というエラー メッセージを受け取る場合の考えられる理由についてトラブルシューティングします。
+title: "\"ここからアクセスすることはできません\" というエラーに対する修正 - Azure AD"
+description: "\"ここからアクセスすることはできません\" というエラー メッセージを受け取る理由に対して可能性のある修正を探します。"
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -14,14 +14,15 @@ ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d6385343ed26e5043e1491529fd2454caff4d04
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473805"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028570"
 ---
-# <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>「ここからアクセスすることはできません」というエラー メッセージを受け取る場合の考えられる理由
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>"ここからアクセスすることはできません" というエラー メッセージに対して可能性のある修正方法
+
 組織内部の Web アプリやサービスにアクセスするとき、「**ここからアクセスすることはできません**」というエラー メッセージが出力されることがあります。 このメッセージは、デバイスが組織のリソースにアクセスできないようにするポリシーが組織で設定されていることを意味します。 最終的にはヘルプデスクに連絡してこの問題を解決してもらうことになりますが、まず最初に試すことができるいくつかの操作を以下に示します。
 
 ## <a name="make-sure-youre-using-a-supported-browser"></a>サポートされているブラウザーを使用しているかどうかを確認する

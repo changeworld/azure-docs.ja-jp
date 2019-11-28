@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: fe733b686f2b56beee26a6c33c4d6264d621e627
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511364"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931316"
 ---
 # <a name="deploy-a-trusted-security-partner-preview"></a>信頼されたセキュリティ パートナー (プレビュー) のデプロイ
 
@@ -83,12 +83,11 @@ VPN ゲートウェイのデプロイには 30 分以上かかることがあり
 
    > [!NOTE]
    > より詳細に制御するには、アクセスをリソース グループのみに制限します。
-3. 次のリンク先の指示に従います。
+3. 「[ZScaler:Microsoft Azure Virtual WAN との統合を構成する](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)」の手順に従って、以下を実行します。
 
    - パートナー ポータルにサインインし、資格情報を追加して、信頼されたパートナーがセキュリティ保護付きハブにアクセスできるようにします。
-   - Azure AD 認証資格情報が検証されたら、次の手順に従ってパートナー ポータルで仮想ハブを同期し、仮想ハブへのトンネルを設定します。
-
-   [ZScaler:Microsoft Azure Virtual WAN との統合を構成する](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration)
+   - パートナー ポータルで仮想ハブを同期し、仮想ハブへのトンネルを設定します。 Azure AD の認証資格情報が検証されると、それを実行することができます。
+   
 4. Azure の Azure Virtual WAN ポータルで、トンネル作成の状態を確認できます。 トンネルが Azure とパートナー ポータルの両方で **[connected]\(接続済み\)** と表示されたら、次の手順に進み、ルートを設定してパートナーにインターネット トラフィックを送信するブランチと VNet を選択します。
 
 ## <a name="configure-route-settings"></a>ルート設定の構成

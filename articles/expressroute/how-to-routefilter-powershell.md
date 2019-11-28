@@ -1,5 +1,5 @@
 ---
-title: Microsoft ピアリングにルート フィルターを構成する - ExpressRoute:PowerShell:Azure | Microsoft Docs
+title: ExpressRoute:ルート フィルター - Microsoft ピアリング:Azure PowerShell
 description: この記事では、PowerShell を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します。
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 7a830b01bb66f807972b642ad46d54d124d16d8d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: cade33e77eb0d3ddd818a6ce3dbd7c6cf72811d4
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748119"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037403"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Microsoft ピアリングにルート フィルターを構成する:PowerShell
 > [!div class="op_single_selector"]

@@ -1,5 +1,5 @@
 ---
-title: REST チュートリアル:JSON BLOB の半構造化データのインデックス作成
+title: チュートリアル:JSON BLOB の半構造化データのインデックス作成
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search REST API と Postman を使用して、半構造化 Azure JSON BLOB のインデックスを作成し、検索する方法について説明します。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 569289a2d750f96423bd03ac82cb9e33f893ee15
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d8d3204c8a5ace17ae47a17d4c4ffec2ec7977f2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794289"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112257"
 ---
 # <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-cognitive-search"></a>REST チュートリアル:Azure Cognitive Search での半構造化されたデータ (JSON BLOB) のインデックス作成と検索
 

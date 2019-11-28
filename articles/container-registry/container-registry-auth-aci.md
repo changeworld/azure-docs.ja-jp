@@ -1,5 +1,5 @@
 ---
-title: Azure Container Instances から Azure Container Registry の認証を受ける
+title: Azure Container Instances から Azure Container Registry へのアクセス
 description: Azure Active Directory サービス プリンシパルを使用して、Azure Container Instances からプライベート コンテナー レジストリ内のイメージへのアクセスを許可する方法を説明します。
 services: container-registry
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: danlep
-ms.openlocfilehash: b11f88cbb29016032cbf536a2c970573eda82152
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 53cdca72587dafd39abd3f13ad488dcb460bf622
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72262866"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931665"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>Azure Container Instances から Azure Container Registry の認証を受ける
 

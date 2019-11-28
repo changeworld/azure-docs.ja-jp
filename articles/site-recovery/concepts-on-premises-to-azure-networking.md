@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用したオンプレミスから Azure へのフェールオーバー後の Azure VM への接続
+title: Azure Site Recovery を使用した AzureVM オンプレミス フェールオーバーへの接続
 description: Azure Site Recovery を使用してオンプレミスから Azure へのフェールオーバー後に Azure VM に接続する方法について説明します
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333040"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084261"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>オンプレミスからフェールオーバー後に Azure VM に接続する 
 

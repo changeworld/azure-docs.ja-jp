@@ -1,10 +1,9 @@
 ---
-title: Azure Load Balancer の複数フロントエンド
-titlesuffix: Azure Load Balancer
-description: Azure Load Balancer の複数フロントエンドの概要
+title: 複数のフロントエンド - Azure Load Balancer
+description: このラーニングパスでは、Azure Load Balancer の複数のフロントエンドの概要をまず確認します。
 services: load-balancer
 documentationcenter: na
-author: chkuhtz
+author: asudbring
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
@@ -12,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
-ms.author: chkuhtz
-ms.openlocfilehash: b109e87a8fcbef0bfca356c83716509ebc6cecd4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: allensu
+ms.openlocfilehash: 58309133a46e32f409a0414be71791de73db9bed
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884211"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075950"
 ---
-# <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数フロントエンド
+# <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数のフロントエンド
 
 Azure Load Balancer は、複数のポート、複数の IP アドレス、またはその両方のサービスの負荷を分散できます。 パブリックおよび内部ロード バランサーの定義を使用して、一連の VM のフローの負荷を分散できます。
 

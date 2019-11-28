@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して Azure への VMware ディザスター リカバリーのレプリケーション ポリシーを構成および管理する | Microsoft Docs
+title: Azure Site Recovery を使用して VMware ディザスター リカバリーのレプリケーション ポリシーを設定する | Microsoft Docs
 description: Azure Site Recovery を使用して Azure への VMware ディザスター リカバリーのレプリケーション設定を構成する方法について説明します。
 author: sujayt
 manager: rochakm
@@ -7,14 +7,15 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 019f9f2019619053f87a7923d656513a419d4675
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231445"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954324"
 ---
-# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーのレプリケーション ポリシーの構成と管理
+# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>VMware ディザスター リカバリーのレプリケーション ポリシーの構成と管理
+
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して VMware VM を Azure に レプリケートする場合の、レプリケーション ポリシーの構成方法について説明します。
 
 ## <a name="create-a-policy"></a>ポリシーの作成

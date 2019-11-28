@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: e75e6bc78740ffb8aba0faa0ef95f4b13a8c56ef
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 99b7de8c0e24fdbd12742b26394e61c956638525
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684413"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038275"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>ADF でオンプレミスの SSIS ワークロードを SSIS に移行する
 
@@ -48,7 +48,7 @@ Data Migration Assistant (DMA) は、この目的のために自由にダウン�
   - MSDB。SSIS パッケージの格納に使用される SQL Server 内のシステム データベースです。
   - マネージド ファイル システム。SSIS パッケージの格納に使用される SQL Server インストール パス内の特定のフォルダーです。
 
-現在、DMA は、**DMA バージョン v4.5** 以降、**ファイル システム** ストレージの種類に格納されているパッケージのバッチ評価をサポートしています。
+現在、DMA は、**DMA バージョン v5.0** 以降、**ファイル システム**、**パッケージ ストア**、および **SSIS カタログ**に格納されているパッケージのバッチ評価をサポートしています。
 
 [DMA](https://docs.microsoft.com/sql/dma/dma-overview) を取得し、[それを使用してパッケージの評価を実行します](https://docs.microsoft.com/sql/dma/dma-assess-ssis)。
 

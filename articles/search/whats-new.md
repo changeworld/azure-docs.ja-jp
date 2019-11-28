@@ -1,5 +1,5 @@
 ---
-title: サービスの新機能
+title: 新機能のお知らせ
 titleSuffix: Azure Cognitive Search
 description: Azure Cognitive Search への Azure Search のサービス名の変更を含む、新機能や拡張機能についてのお知らせです。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3a2967ab40da8594b2d6372d5da816a6c76c9109
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 26f6c651b78099eff80b6af57d2047cc8696f4c2
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721719"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112200"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 

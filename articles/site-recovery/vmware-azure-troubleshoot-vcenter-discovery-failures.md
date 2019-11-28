@@ -1,20 +1,20 @@
 ---
-title: Azure Site Recovery を使用した VMware VM の Azure へのディザスター リカバリー時のオンプレミスへのフェールバックのトラブルシューティング | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して VMware VM を Azure にディザスター リカバリーするときのフェールバックと再保護の問題をトラブルシューティングする方法について説明します。
-author: rayne-wiselman
-manager: carmonm
+title: Azure Site Recovery で VMware vCenter の検出エラーをトラブルシューティングする
+description: この記事では、Azure Site Recovery で VMware vCenter の検出エラーをトラブルシューティングする方法について説明します。
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: raynew
-ms.openlocfilehash: c27e72333618f73b67eec9b5c0c3a70239a1c0b3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/29/2019
+ms.author: mayg
+ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970852"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091253"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>vCenter の検出エラーのトラブルシューティング
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server の検出エラーをトラブルシューティングする
 
 この記事は、VMware vCenter の検出のエラーが原因で発生する問題を解決する上で役立ちます。
 

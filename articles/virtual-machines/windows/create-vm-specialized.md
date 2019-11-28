@@ -1,8 +1,7 @@
 ---
-title: Azure で特殊化された VHD から Windows VM を作成する | Microsoft Docs
+title: Azure で特殊化された VHD から Windows VM を作成する
 description: Resource Manager デプロイ モデルを使用して、特殊化されたマネージド ディスクを OS ディスクとして接続して新しい Windows VM を作成します。
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
 manager: gwallace
 editor: ''
@@ -12,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 6adeae69a4ef9e6f2d77588f8071498fd25beb3e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390603"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033851"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
@@ -63,100 +62,15 @@ VHD をそのまま使用して新しい VM を作成します。
   * IP アドレスと DNS 設定を DHCP から取得するように VM が構成されていることを確認します。 これにより、サーバーが起動時に仮想ネットワーク内の IP アドレスを確実に取得します。 
 
 
-### <a name="get-the-storage-account"></a>ストレージ アカウントを取得する
-アップロードした VHD を格納するには、Azure にストレージ アカウントが必要です。 既存のストレージ アカウントを選択することも、新しいストレージ アカウントを作成することもできます。 
+### <a name="upload-the-vhd"></a>VHD をアップロードする
 
-使用できるストレージ アカウントを表示します。
-
-```powershell
-Get-AzStorageAccount
-```
-
-既存のストレージ アカウントを使用する場合は、「[VHD のアップロード](#upload-the-vhd-to-your-storage-account)」セクションに進みます。
-
-ストレージ アカウントを作成します。
-
-1. ストレージ アカウントを作成するリソース グループ名が必要です。 Get-AzResourceGroup を使用すると、サブスクリプションに含まれるすべてのリソース グループが表示されます。
-   
-    ```powershell
-    Get-AzResourceGroup
-    ```
-
-    *myResourceGroup* というリソース グループを*米国西部*リージョンに作成します。
-
-    ```powershell
-    New-AzResourceGroup `
-       -Name myResourceGroup `
-       -Location "West US"
-    ```
-
-2. [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) コマンドレットを使用して、この新しいリソース グループに *mystorageaccount* というストレージ アカウントを作成します。
-   
-    ```powershell
-    New-AzStorageAccount `
-       -ResourceGroupName myResourceGroup `
-       -Name mystorageaccount `
-       -Location "West US" `
-       -SkuName "Standard_LRS" `
-       -Kind "Storage"
-    ```
-
-### <a name="upload-the-vhd-to-your-storage-account"></a>ストレージ アカウントに VHD をアップロードする 
-[Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd) コマンドレットを使用して、ストレージ アカウント内のコンテナーに VHD をアップロードします。 この例は、*myVHD.vhd* ファイルを "C:\Users\Public\Documents\Virtual hard disks\" から *myResourceGroup* リソース グループの *mystorageaccount* というストレージ アカウントにアップロードします。 ファイルは *mycontainer* というコンテナーに格納され、新しいファイル名は *myUploadedVHD.vhd* になります。
-
-```powershell
-$resourceGroupName = "myResourceGroup"
-$urlOfUploadedVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzVhd -ResourceGroupName $resourceGroupName `
-   -Destination $urlOfUploadedVhd `
-   -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
-```
-
-
-コマンドが成功した場合、次のような応答を取得します。
-
-```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
-MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
-Creating new page blob of size 53687091712...
-Elapsed time for upload: 01:12:49
-
-LocalFilePath           DestinationUri
--------------           --------------
-C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
-```
-
-このコマンドは、ネットワーク接続や VHD ファイルのサイズによっては、完了に時間がかかることがあります。
-
-### <a name="create-a-managed-disk-from-the-vhd"></a>VHD からマネージド ディスクを作成する
-
-[New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) を使用してストレージ アカウント内の既存の特殊化された VHD からマネージド ディスクを作成します。 この例では、ディスク名に *myOSDisk1* を使用して、ディスクを *Standard_LRS* ストレージに配置し、ソース VHD の URI として *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* を使用します。
-
-新しい VM の新しいリソース グループを作成します。
-
-```powershell
-$destinationResourceGroup = 'myDestinationResourceGroup'
-New-AzResourceGroup -Location $location `
-   -Name $destinationResourceGroup
-```
-
-アップロードした VHD から新しい OS ディスクを作成します。 
-
-```powershell
-$sourceUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
-$osDiskName = 'myOsDisk'
-$osDisk = New-AzDisk -DiskName $osDiskName -Disk `
-    (New-AzDiskConfig -AccountType Standard_LRS  `
-    -Location $location -CreateOption Import `
-    -SourceUri $sourceUri) `
-    -ResourceGroupName $destinationResourceGroup
-```
+VHD をマネージド ディスクに直接アップロードできるようになりました。 手順については、「[Azure PowerShell を使用して Azure に VHD をアップロードする](disks-upload-vhd-to-managed-disk-powershell.md)」を参照してください。
 
 ## <a name="option-3-copy-an-existing-azure-vm"></a>オプション 3: 既存の Azure VM をコピーする
 
 VM のスナップショットを取得してマネージド ディスクを使用する VM のコピーを作成し、そのスナップショットを使用して新しいマネージド ディスクおよび新しい VM を作成できます。
 
+既存の VM を別のリージョンにコピーする場合は、azcopy を使用して、[ディスクのコピーを別のリージョンに作成する](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)ことができます。 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>OS ディスクのスナップショットを取得する
 

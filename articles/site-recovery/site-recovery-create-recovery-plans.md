@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery を使用してディザスター リカバリーのための復旧計画を作成してカスタマイズする
+title: Azure Site Recovery での復旧計画の作成/カスタマイズ
 description: Azure Site Recovery サービスを使用してディザスター リカバリーのための復旧計画を作成してカスタマイズする方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 2ca44ffd26e1b87dd201ed6f274791eadfeb0737
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9bb5a1a3aa0c2a4681ddecb5e20df41d481755ec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814408"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084519"
 ---
 # <a name="create-and-customize-recovery-plans"></a>復旧計画を作成してカスタマイズする
 

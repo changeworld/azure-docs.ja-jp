@@ -2,19 +2,19 @@
 title: Azure HDInsight を使用した Storm のトラブルシューティング
 description: Azure HDInsight での Apache Storm の使用についてよく寄せられる質問とその回答を示します。
 keywords: Azure HDInsight, Storm, FAQ, トラブルシューティング ガイド, よくある質問
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 08/15/2019
+ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f307d6245b107fdbd3c6d6baafa5a162988235da
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: e2cc9dd81a0bbefa5cf37facb6067bda07117eaf
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800014"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903716"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Storm のトラブルシューティング
 
@@ -167,6 +167,16 @@ Nimbus Log4J 構成は、`/usr/hdp/\<HDP version>/storm/log4j2/cluster.xml` か�
 
 例: `/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
+
+---
+
+## <a name="not-a-leader-exception"></a>Not a leader 例外
+
+トポロジを送信するとき、ユーザーに次のようなエラー メッセージが表示されることがあります: `Topology submission exception, cause not a leader, the current leader is NimbusInfo`。
+
+解決するには、ユーザーはノードを再起動または再起動するためにチケットの申請が必要になる場合があります。 詳細については、[https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html) を参照してください。
+
+---
 
 ## <a name="next-steps"></a>次の手順
 

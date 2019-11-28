@@ -1,5 +1,5 @@
 ---
-title: 2 段階認証またはセキュリティ情報を使ったサインイン - Azure Active Directory | Microsoft Docs
+title: ID 認証情報を使用してサインインする - Azure AD
 description: セキュリティ情報での各種本人確認方法を使ったサインイン方法について説明します。
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 07/18/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b20ea1131ceda0527ed35d1a1082d05f25da6bac
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1c79e82680ae81137ee4164e88e62235f934565a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382308"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028524"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>2 段階認証またはセキュリティ情報を使ったサインイン方法
 

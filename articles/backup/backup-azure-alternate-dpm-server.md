@@ -8,24 +8,26 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0a6d1fd73d99cf15137e937dbfe2336d49a63d90
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5742aaebe0a1314b229a2a0d33b1de51d5b6d4f4
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955058"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091139"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Azure Backup Server からデータを回復する
+
 Azure Backup Server を使用して、Recovery Services コンテナーにバックアップしたデータを回復することができます。 そのためのプロセスは、Azure Backup Server 管理コンソールに統合されており、他の Azure Backup コンポーネントの回復ワークフローに似ています。
 
 > [!NOTE]
-> この記事は、[最新の Azure Backup エージェント](https://aka.ms/azurebackup_agent)と組み合わされた [System Center Data Protection Manager 2012 R2 UR7 以降](https://support.microsoft.com/en-us/kb/3065246)に適用されます。
+> この記事は、[最新の Azure Backup エージェント](https://aka.ms/azurebackup_agent)と組み合わされた [System Center Data Protection Manager 2012 R2 UR7 以降](https://support.microsoft.com/kb/3065246)に適用されます。
 >
 >
 
 Azure Backup Server からデータを回復するには:
 
-1. Azure Backup Server 管理コンソールの **[回復]** タブで、画面の左上にある **[外部 DPM の追加]** をクリックします。   
+1. Azure Backup Server 管理コンソールの **[回復]** タブで、画面の左上にある **[外部 DPM の追加]** をクリックします。
+
     ![外部 DPM の追加](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 2. データを回復する **Azure Backup Server** に関連付けられているコンテナーから新しい**コンテナー資格情報**をダウンロードし、Recovery Services コンテナーに登録されている Azure Backup Server の一覧から Azure Backup Server を選択し、データを回復する Azure Backup Server に関連付けられている**暗号化パスフレーズ**を指定します。
 
@@ -80,6 +82,7 @@ Azure Backup Server からデータを回復するには:
     ![外部 DPM の消去](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
 ## <a name="troubleshooting-error-messages"></a>エラー メッセージのトラブルシューティング
+
 | No. | エラー メッセージ | トラブルシューティングの手順 |
 |:---:|:--- |:--- |
 | 1. |このサーバーは資格情報コンテナーが指定するコンテナーに登録されていません。 |**原因:** 選択したコンテナー資格情報ファイルが回復対象の Azure Backup Server に関連付けられている Recovery Services コンテナーに属さないとき、このエラーが表示されます。 <br> **解決策:** Azure Backup Server が登録されている Recovery Services コンテナーからコンテナー資格情報ファイルをダウンロードします。 |
@@ -91,5 +94,5 @@ Azure Backup Server からデータを回復するには:
 
 その他のよく寄せられる質問をお読みください。
 
-- Azure VM バックアップについて[よく寄せられる質問](backup-azure-vm-backup-faq.md)
-- Azure Backup エージェントについて[よく寄せられる質問](backup-azure-file-folder-backup-faq.md)
+* Azure VM バックアップについて[よく寄せられる質問](backup-azure-vm-backup-faq.md)
+* Azure Backup エージェントについて[よく寄せられる質問](backup-azure-file-folder-backup-faq.md)

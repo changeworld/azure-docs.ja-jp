@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851790"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073625"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の検証を制御する
 
@@ -33,7 +33,7 @@ Windows の現在のデバイスでハイブリッド Azure AD 参加の制御�
 1. サービス接続ポイント (SCP) エントリが存在する場合に、Active Directory (AD) からそれをクリアします
 1. グループ ポリシー オブジェクト (GPO) を使用して、ドメインに参加しているコンピューターで SCP のクライアント側レジストリ設定を構成します
 1. AD FS を使用している場合、GPO を使用して、AD FS サーバーで SCP のクライアント側レジストリ設定を構成する必要もあります  
-
+1. また、デバイスの同期を有効にするために、Azure AD Connect で[同期オプションをカスタマイズ](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect)する必要がある場合もあります。 
 
 
 ### <a name="clear-the-scp-from-ad"></a>AD から SCP をクリアする
@@ -82,7 +82,7 @@ AD で SCP オブジェクトを変更するには、Active Directory サービ�
 AD FS を使用している場合は、まず、上記の手順を使用して、ただし GPO を AD FS サーバーにリンクして、クライアント側の SCP を構成する必要があります。 SCP オブジェクトで、デバイス オブジェクトの権限のソースを定義します。 オンプレミスまたは Azure AD を指定できます。 これが AD FS 用に構成されている場合、デバイス オブジェクトのソースは Azure AD として確立されます。
 
 > [!NOTE]
-> AD FS サーバー上でクライアント側の SCP を構成できなかった場合、デバイス ID のソースはオンプレミスと見なされ、指定された期間の後に、AD FS ではオンプレミスのディレクトリからデバイス オブジェクトの削除が開始されます。
+> AD FS サーバー上でクライアント側の SCP を構成できなかった場合、デバイス ID のソースはオンプレミスと見なされます。 ADFS は、ADFS デバイスの登録の属性 "MaximumInactiveDays" で定義された期間が経過した後、オンプレミスのディレクトリからデバイス オブジェクトの削除を開始します。 ADFS デバイスの登録オブジェクトは、[Get-AdfsDeviceRegistration コマンドレット](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)を使用して見つけることができます。
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>ダウンレベルの Windows デバイスでハイブリッド Azure AD 参加の制御された検証
 

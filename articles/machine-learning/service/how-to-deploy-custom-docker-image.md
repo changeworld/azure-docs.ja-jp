@@ -1,5 +1,5 @@
 ---
-title: カスタム Docker ベース イメージを使用してモデルをデプロイする
+title: カスタム Docker イメージを使用してモデルをデプロイする
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning モデルをデプロイするときにカスタム Docker ベース イメージを使用する方法について説明します。 Azure Machine Learning には既定のベース イメージが用意されていますが、独自のベース イメージを使用することもできます。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 3f822e0089772f06245d80c1323cf1f5dfe10361
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b34ef305a6f1cf41c7b7bdcf415e1a91653ad878
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496937"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932113"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>カスタム Docker ベース イメージを使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

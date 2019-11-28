@@ -1,5 +1,5 @@
 ---
-title: ExpressRoute 用の VNet に仮想ネットワーク ゲートウェイを追加する:PowerShell:Azure | Microsoft Docs
+title: 'Azure ExpressRoute: VNet へのゲートウェイの追加:PowerShell'
 description: この記事では、ExpressRoute の作成済みの Resource Manager VNet に VNet ゲートウェイを追加する方法を説明します。
 services: expressroute
 author: charwen
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/21/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: bbb091addd078a08a075d2754256ed016d8dd086
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6e6d79afa1126acb26cb8856c39ba486cce31a5e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748336"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037425"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
