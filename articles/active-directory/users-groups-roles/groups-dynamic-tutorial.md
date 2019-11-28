@@ -1,26 +1,25 @@
 ---
-title: 動的グループ メンバーシップによるユーザーの追加と削除 - チュートリアル - Azure Active Directory
+title: 動的グループへのユーザーの追加 - チュートリアル - Azure AD |Microsoft Docs
 description: このチュートリアルでは、ユーザー メンバーシップの規則を含んだグループを使って、ユーザーを自動的に追加したり削除したりします。
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1429841ca1376d67c7372f36bd35694afd4cd7ce
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102624"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027108"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>チュートリアル:グループ メンバーを自動的に追加/削除する
 

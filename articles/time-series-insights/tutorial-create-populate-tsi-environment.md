@@ -1,20 +1,20 @@
 ---
-title: チュートリアル:Azure Time Series Insights 環境の作成 | Microsoft Docs
-description: シミュレートされたデバイスからのデータが入力される Time Series Insights 環境を作成する方法について学習するためのチュートリアル。
+title: チュートリアル:環境の作成 - Azure Time Series Insights | Microsoft Docs
+description: シミュレートされたデバイスからのデータが入力された Time Series Insights 環境を作成する方法について説明します。
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
+ms.author: dpalled
+manager: cshankar
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/16/2019
-ms.author: dpalled
-manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 518847db727c9d8c527d272f9122ef9850ca9135
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fad850da6a7fccb6b97b86532a8d246049942a8b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553081"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014655"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル:Azure Time Series Insights 環境を作成する
 
@@ -104,7 +104,7 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
    **レベル** | 必要なスループットを選択します。 **[S1]** を選択します。
    **Capacity** | 容量は、選択した SKU に関連するイングレス レートとストレージ容量に適用される乗数です。 この容量は、作成後に変更できます。 容量には **1** を選択します。
 
-   終了したら、 **[次へ: イベント ソース]** を選択して次のステップに進みます。
+   終了したら、 **[次へ:イベント ソース]** を選択して次の手順に進みます。
 
    [![Time Series Insights 環境リソースを作成する](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
 

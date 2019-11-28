@@ -1,22 +1,22 @@
 ---
-title: チュートリアル - 初めての Azure Resource Manager テンプレートを作成およびデプロイする
-description: Azure Resource Manager テンプレートを初めて作成する際の手順について説明します。 テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
+title: チュートリアル - Azure Resource Manager テンプレートの作成とデプロイ
+description: 初めての Azure Resource Manager テンプレートを作成します。 このチュートリアルでは、テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
 manager: carmonmills
 ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e84c3bfa5a5f43ec652f12d70718ab63bd7a19e5
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 463f9a54648a9e6950f839bd856ccf42bc66dca0
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029539"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074368"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする
 
-このチュートリアルでは、Resource Manager テンプレートについて取り上げます。 スターター テンプレートを作成して Azure にデプロイする方法を紹介します。 テンプレートの構造のほか、テンプレートを扱う際に必要なツールについても説明します。 このチュートリアルの所要時間は約 **12 分**ですが、実際の時間は、インストールする必要のあるツールの数によって変化します。
+このチュートリアルでは、Azure Resource Manager テンプレートについて取り上げます。 スターター テンプレートを作成して Azure にデプロイする方法を紹介します。 テンプレートの構造のほか、テンプレートを扱う際に必要なツールについても説明します。 このチュートリアルの所要時間は約 **12 分**ですが、実際の時間は、インストールする必要のあるツールの数によって変化します。
 
 これは、シリーズの最初のチュートリアルです。 シリーズを進めながら、最初のテンプレートに少しずつ変更を加えていき、最終的には Resource Manager テンプレートの核となるすべての要素に触れられるようになっています。 それらの要素は、はるかに複雑なテンプレートの構成要素となります。 シリーズの最後には、独自のテンプレートを作成したり、テンプレートを使ってデプロイを自動化したりする自信が持てるようになればさいわいです。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ffa072f593a06a38e6e3d121fb76806e41bf568e
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 28705ea8a552f4d2e6653857c69ebb8d5f87b962
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605550"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907115"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>物理または仮想サーバーを Azure に移行する 
 
@@ -123,7 +123,7 @@ Azure Migrate Server Migration を使用して移行する前に、Azure のア�
 > [!NOTE]
 > Azure Migrate Server Migration を使用したエージェントベースの移行は、Azure Site Recovery サービスの機能に基づいています。 一部の要件は、Site Recovery のドキュメントにリンクされている場合があります。
 
-1. VMware サーバーの要件を[確認](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements)します。
+1. サーバーの要件を[確認](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements)します。
 2. 移行のための VM サポート要件を[確認](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements)します。
 3. VM 設定を確認します。 Azure にレプリケートするオンプレミスの VM は、「[Azure VM の要件](migrate-support-matrix-vmware.md#azure-vm-requirements)」に準拠している必要があります。
 
@@ -265,7 +265,7 @@ Azure Migrate プロジェクトを設定し、それに Azure Migrate Server Mi
 
     ![VM をレプリケートする](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
-2. **[レプリケート]** > **[ソースの設定]**  >  **[マシンは仮想化されていますか?]** で、 **[はい (VMware vSphere の場合)]** を選択します。
+2. **[レプリケート]** で、 **[ソースの設定]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** を選択します。
 3. **[オンプレミスのアプライアンス]** で、自分が設定した Azure Migrate アプライアンスの名前を選択します。
 4. **[vCenter Server]** で、VM を管理している vCenter サーバー、または VM がホストされている vSphere サーバーの名前を指定します。
 5. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。

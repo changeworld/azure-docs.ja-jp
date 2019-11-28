@@ -3,17 +3,13 @@ title: Azure での Ansible の使用
 description: Ansible を使用してクラウド プロビジョニング、構成管理、およびアプリケーションのデプロイを自動化する方法の概要。
 keywords: Ansible, Azure, DevOps, 概要, クラウド プロビジョニング, 構成管理, アプリケーションのデプロイ, Ansible モジュール, Ansible プレイブック
 ms.topic: overview
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: b6b9656edc43f38a4cb005be53c33bb98781679c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: eab2a44257c6769106124c4c9ab6711ba3be531e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241507"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155780"
 ---
 # <a name="using-ansible-with-azure"></a>Azure での Ansible の使用
 

@@ -13,12 +13,12 @@ ms.date: 10/25/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 12b8d6dff571c074d1f1422f75e33a8b12761bd9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 48c8390eff52466d11f781447c448d04ba567f31
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572148"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907128"
 ---
 # <a name="add-an-ssl-certificate-in-azure-app-service"></a>Azure App Service で SSL 証明書を追加する
 
@@ -68,6 +68,10 @@ SSL バインドでカスタム ドメインをセキュリティで保護する
 - ワイルドカード証明書はサポートされません。
 - ネイキッド ドメインはサポートされていません。
 - エクスポートはできません。
+
+> [!NOTE]
+> 無料の証明書は DigiCert によって発行されます。 一部のトップレベル ドメインでは、[CAA ドメイン レコード](https://wikipedia.org/wiki/DNS_Certification_Authority_Authorization)を `0 issue digicert.com` の値を使用して作成することによって、DigiCert を証明書の発行者として明示的に許可する必要があります。
+> 
 
 無料の App Service マネージド証明書を作成するには、次の手順を実行します。
 
@@ -344,7 +348,7 @@ az keyvault secret download \
     --encoding base64
 ```
 
-ダウンロードされた *appservicecertificate* ファイルは、パブリック証明書とプライベート証明書の両方を含む生の PKCS12 ファイルです。 プロンプトが表示されるときは常に、インポート用のパスワードと PEM パスフレーズが両方とも空の文字列です。
+ダウンロードされた *appservicecertificate* ファイルは、パブリック証明書とプライベート証明書の両方を含む生の PKCS12 ファイルです。 各プロンプトで、インポート パスワードと PEM パスフレーズに空の文字列を使用します。
 
 ### <a name="delete-certificate"></a>証明書の削除 
 

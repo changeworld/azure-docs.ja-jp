@@ -1,19 +1,15 @@
 ---
 title: Azure VM エージェントを使用した Jenkins デプロイのスケーリング。
 description: Azure 仮想マシンと Jenkins Azure VM エージェント プラグインを使用して、Jenkins パイプラインの容量をさらに追加します。
-ms.service: jenkins
 keywords: Jenkins, Azure, 開発,仮想マシン, エージェント
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 5cfece551f99a0925099b6ef936703e72f078985
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2e811d628c017316a5bc50a8ddc22ee24d6f744e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074667"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158540"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>要求を満たすために、Azure VM エージェントを使用して Jenkins デプロイをスケーリングします。
 
@@ -43,17 +39,17 @@ ms.locfileid: "54074667"
 > [!TIP]
 > [ソリューション テンプレート](install-jenkins-solution-template.md)を使用して Jenkins を Azure にデプロイした場合、Azure VM エージェント プラグインは既にインストールされています。
 
-1. Jenkins ダッシュボードで、**[Manage Jenkins]\(Jenkins の管理\)**、**[Manage Plugins]\(プラグインの管理\)** の順に選択します。
-1. **[Available]\(利用可能\)** タブを選択し、**[Azure VM Agents]\(Azure VM エージェント\)** を探します。 エントリの横にあるチェックボックスでプラグインを選択し、ダッシュボードの下部にある **[Install without restart]\(再起動せずにインストール\)** を選択します。
+1. Jenkins ダッシュボードで、 **[Manage Jenkins]\(Jenkins の管理\)** 、 **[Manage Plugins]\(プラグインの管理\)** の順に選択します。
+1. **[Available]\(利用可能\)** タブを選択し、 **[Azure VM Agents]\(Azure VM エージェント\)** を探します。 エントリの横にあるチェックボックスでプラグインを選択し、ダッシュボードの下部にある **[Install without restart]\(再起動せずにインストール\)** を選択します。
 
 ## <a name="configure-the-azure-vm-agents-plugin"></a>Azure VM エージェント プラグインを構成する
 
-1. Jenkins ダッシュボードから、**[Manage Jenkins]\(Jenkins の管理\)**、**[Configure System]\(システムの構成\)** の順に選択します。
-1. ページの下部までスクロールし、**[クラウド]** セクションで **[Add new cloud]\(新しいクラウドの追加\)** ボックスを見つけて、**[Microsoft Azure VM Agents]\(Microsoft Azure VM エージェント\)** を選びます。
+1. Jenkins ダッシュボードから、 **[Manage Jenkins]\(Jenkins の管理\)** 、 **[Configure System]\(システムの構成\)** の順に選択します。
+1. ページの下部までスクロールし、 **[クラウド]** セクションで **[Add new cloud]\(新しいクラウドの追加\)** ボックスを見つけて、 **[Microsoft Azure VM Agents]\(Microsoft Azure VM エージェント\)** を選びます。
 1. **[Azure Credentials]\(Azure 資格情報\)** セクションの **[Add]\(追加\)** ボックスから、既存のサービス プリンシパルを選択します。 一覧に何も表示されない場合は、次の手順を実施して Azure アカウントの[サービス プリンシパルを作成](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager)し、Jenkins の構成に追加します。   
 
-    a. **[追加]** の横の **[Azure Credentials]\(Azure 資格情報\)** を選択し、**[Jenkins]** を選びます。   
-    b. **[Add Credentials]\(資格情報の追加\)** ダイアログで、**[Kind]\(種類\)** ボックスの一覧から **[Microsoft Azure Service Principal]\(Microsoft Azure サービス プリンシパル\)** を選択します。   
+    a. **[追加]** の横の **[Azure Credentials]\(Azure 資格情報\)** を選択し、 **[Jenkins]** を選びます。   
+    b. **[Add Credentials]\(資格情報の追加\)** ダイアログで、 **[Kind]\(種類\)** ボックスの一覧から **[Microsoft Azure Service Principal]\(Microsoft Azure サービス プリンシパル\)** を選択します。   
     c. Azure CLI または [Cloud Shell](/azure/cloud-shell/overview) から Active Directory サービス プリンシパルを作成します。
     
     ```azurecli-interactive
@@ -95,7 +91,7 @@ ms.locfileid: "54074667"
 
     
 
-1. **[リソース グループ名]** セクションで、**[新規作成]** を選択した状態で `myJenkinsAgentGroup` を入力します。
+1. **[リソース グループ名]** セクションで、 **[新規作成]** を選択した状態で `myJenkinsAgentGroup` を入力します。
 1. **[Verify configuration]\(構成の検証\)** を選択して、プロファイル設定をテストするために Azure に接続します。
 1. **[適用]** を選択してプラグインの構成を更新します。
 
@@ -114,29 +110,29 @@ Azure VM エージェントの定義に使用するテンプレートを構成�
 
 ## <a name="configure-agent-operating-system-and-tools"></a>オペレーティング システムとツールを構成する
 
-プラグイン構成の **[Image Configuration]\(イメージ構成\)** セクションで、**[Ubuntu 16.04 LTS]** を選択します。 **[Install Git (Latest)]\(Git (最新版) をインストールする\)**、**[Install Maven (V3.5.0)]\(Maven (V3.5.0) をインストールする\)**、および **[Docker をインストールする]** の横にあるチェックをオンにして、新しく作成されたエージェントにこれらのツールをインストールします。
+プラグイン構成の **[Image Configuration]\(イメージ構成\)** セクションで、 **[Ubuntu 16.04 LTS]** を選択します。 **[Install Git (Latest)]\(Git (最新版) をインストールする\)** 、 **[Install Maven (V3.5.0)]\(Maven (V3.5.0) をインストールする\)** 、および **[Docker をインストールする]** の横にあるチェックをオンにして、新しく作成されたエージェントにこれらのツールをインストールします。
 
 ![VM の OS とツールを構成する](./media/jenkins-azure-vm-agents/jenkins-os-config.png)
 
-**[管理者資格情報]** の横にある **[追加]** を選択してから、**[Jenkins]** を選択します。 エージェントのサインインに使用されるユーザー名とパスワードを入力して、Azure VM の管理者アカウントに求められる[ユーザー名とパスワードのポリシー](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)を満たしていることを確認します。
+**[管理者資格情報]** の横にある **[追加]** を選択してから、 **[Jenkins]** を選択します。 エージェントのサインインに使用されるユーザー名とパスワードを入力して、Azure VM の管理者アカウントに求められる[ユーザー名とパスワードのポリシー](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)を満たしていることを確認します。
 
-**[Verify Template]\(テンプレートの検証\)** を選択し、**[保存]** を選択して変更内容を保存したら、Jenkins のダッシュ ボードに戻ります。
+**[Verify Template]\(テンプレートの検証\)** を選択し、 **[保存]** を選択して変更内容を保存したら、Jenkins のダッシュ ボードに戻ります。
 
 ## <a name="create-a-job-in-jenkins"></a>Jenkins でジョブを作成する
 
 1. Jenkins ダッシュボードで、 **[New Item]** をクリックします。 
-1. 名前に `demoproject1` を入力し、**[Freestyle project]\(フリースタイル プロジェクト\)** 選択してから **[OK]** を選択します。
-1. **[全般]** タブで、**[Restrict where project can be run]\(プロジェクトを実行できる場所を制限する\)** をオンにして、**[ラベル式]** に `ubuntu` と入力します。 前の手順で作成したクラウドの構成によってラベルが提供されていることを確認するメッセージが表示されます。 
+1. 名前に `demoproject1` を入力し、 **[Freestyle project]\(フリースタイル プロジェクト\)** 選択してから **[OK]** を選択します。
+1. **[全般]** タブで、 **[Restrict where project can be run]\(プロジェクトを実行できる場所を制限する\)** をオンにして、 **[ラベル式]** に `ubuntu` と入力します。 前の手順で作成したクラウドの構成によってラベルが提供されていることを確認するメッセージが表示されます。 
    ![ジョブを設定する](./media/jenkins-azure-vm-agents/job-config.png)
-1. **[ソース コード管理]** タブで **[Git]** を選択し、**[リポジトリの URL]** フィールドに `https://github.com/spring-projects/spring-petclinic.git` のURL を追加します。
+1. **[ソース コード管理]** タブで **[Git]** を選択し、 **[リポジトリの URL]** フィールドに `https://github.com/spring-projects/spring-petclinic.git` のURL を追加します。
 1. **[ビルド]** タブで **[Add build step]\(ビルド ステップの追加\)** を選択し、**Maven の最上位のターゲットを呼び出し**ます。 **[Goals]\(目標\)** フィールドに `package` を入力します。
 1. **[保存]** を選択してジョブ定義を保存します。
 
 ## <a name="build-the-new-job-on-an-azure-vm-agent"></a>Azure VM エージェントで新しいジョブを作成する
 
 1. Jenkins ダッシュボードに戻ります。
-1. 前の手順で作成したジョブを選択し、**[Build now]\(今すぐ作成\)** をクリックします。 新しいビルドがキューに追加されますが、Azure サブスクリプションにエージェント VM が作成されるまでは開始されません。
-1. ビルドが完了したら、**[Console output\(コンソール出力\)]** に移動します。 ビルドが Azure エージェントでリモートに実行されたことがわかります。
+1. 前の手順で作成したジョブを選択し、 **[Build now]\(今すぐ作成\)** をクリックします。 新しいビルドがキューに追加されますが、Azure サブスクリプションにエージェント VM が作成されるまでは開始されません。
+1. ビルドが完了したら、 **[Console output\(コンソール出力\)]** に移動します。 ビルドが Azure エージェントでリモートに実行されたことがわかります。
 
 ![コンソール出力](./media/jenkins-azure-vm-agents/console-output.png)
 

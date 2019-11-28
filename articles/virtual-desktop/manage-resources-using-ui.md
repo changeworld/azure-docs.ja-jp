@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: 175c5173091bee85a5c9fc4a50e9df5d3f73da13
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300903"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904905"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>チュートリアル:管理ツールをデプロイする
 
@@ -103,9 +103,14 @@ GitHub の Azure Resource Manager テンプレートが完成すると、Azure p
 1. テンプレート内で指定した名前の Azure App Services リソース (たとえば、Apr3UX) を選択し、それに関連付けられている URL (たとえば、<https://rdmimgmtweb-210520190304.azurewebsites.net>) に移動します。
 2. ご自分の Windows Virtual Desktop 資格情報を使用してサインインします。
 3. テナント グループを選択するよう求められたら、ドロップダウン リストから **[Default Tenant Group]\(既定のテナント グループ\)** を選択します。
+4. [Default Tenant Group]\(既定のテナント グループ\) を選択すると、ウィンドウの右側にメニューが表示されます。 このメニューで、テナント グループの名前を探して選択します。
 
 > [!NOTE]
 > カスタムのテナント グループがある場合は、ドロップダウン リストから選択せずに、手動でその名前を入力します。
+
+## <a name="report-issues"></a>レポートに関する問題
+
+管理ツールまたはその他の Windows Virtual Desktop ツールで問題が発生した場合は、「[リモート デスクトップ サービスの ARM テンプレート](https://github.com/Azure/RDS-Templates/blob/master/README.md)」の指示に従って、GitHub で報告してください。
 
 ## <a name="next-steps"></a>次の手順
 

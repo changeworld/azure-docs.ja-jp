@@ -1,12 +1,10 @@
 ---
-title: CLI の例 - ゾーン内の Load Balancer VM - Azure portal | Microsoft Docs
+title: ゾーン内での VM の負荷分散 - Azure CLI
 description: この Azure CLI スクリプトの例では、特定の可用性ゾーンで VM へのトラフィックを負荷分散する方法を示します
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
-manager: jeconnoc
-editor: tysonn
-tags: ''
+manager: kumudD
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.assetid: ''
 ms.service: load-balancer
@@ -16,14 +14,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: 29671283a1ef2906e03685a59d62ccc13c1307fe
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: c99e232243e95d3aa0a85e09c2534973114e28ea
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273729"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068760"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-for-high-availability"></a>Azure CLI スクリプトの例: 高可用性の VM への負荷分散トラフィック
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLI スクリプトの例: 特定の可用性ゾーン内での VM へのトラフィックの負荷分散
 
 この Azure CLI スクリプトの例では、特定の可用性ゾーンで高可用性と負荷分散が設定された構成で、構成済みの複数の Ubuntu 仮想マシンを実行するために必要なものをすべて作成します。 このスクリプトを実行すると、リージョン内の 1 つの可用性ゾーンに、Azure Standard Load Balancer 経由でアクセス可能な仮想マシンが 3 つ作成されます。 
 

@@ -1,23 +1,23 @@
 ---
 title: オートコンプリートと検索候補に関する C# チュートリアル
 titleSuffix: Azure Cognitive Search
-description: このチュートリアルは、"検索結果のページング - Azure Cognitive Search" プロジェクトを基に作成されており、オートコンプリートと検索候補を追加するものです。 目標は、さらに優れたユーザー エクスペリエンスを実現することです。 検索候補のドロップダウン リストとインライン オートコンプリートを組み合わせる方法について説明します。
+description: このチュートリアルでは、ドロップダウン リストを使用してユーザーからの検索用語の入力を収集する方法として、オートコンプリートと検索候補を示します。 これは既存のホテル プロジェクト上に構築されます。
 manager: nitinme
 author: PeterTurcan
 ms.author: v-pettur
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 959ae749f9ab8a025ec9c78d75640e2108868372
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b542476ac1c9b6d4368d97eb4db76518eb2dba03
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786501"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114566"
 ---
 # <a name="c-tutorial-add-autocompletion-and-suggestions---azure-cognitive-search"></a>C# のチュートリアル: オートコンプリートと検索候補を追加する - Azure Cognitive Search
 
-ユーザーが検索ボックスへの入力を開始したときのオートコンプリート (先行入力と検索候補の提示) を実装する方法について説明します。 このチュートリアルでは、先行入力の結果と検索候補の結果を個別に示したうえで、さらに優れたユーザー エクスペリエンスを実現するために、それらを組み合わせる方法を示します。 ユーザーは、2 つまたは 3 つのキーを入力するだけで、使用可能なすべての結果を検索することができます。 このチュートリアルは、「[C# チュートリアル: 検索結果のページング- Azure Cognitive Search](tutorial-csharp-paging.md)」チュートリアルで作成したページング プロジェクトを基にしています。
+ユーザーが検索ボックスへの入力を開始したときのオートコンプリート (先行入力と検索候補の提示) を実装する方法について説明します。 このチュートリアルでは、先行入力の結果と検索候補の結果を個別に示したうえで、さらに優れたユーザー エクスペリエンスを実現するために、それらを組み合わせる方法を示します。 ユーザーは、2 つまたは 3 つのキーを入力するだけで、使用可能なすべての結果を検索することができます。 このチュートリアルは、「[C# チュートリアル: 検索結果のページング - Azure Cognitive Search](tutorial-csharp-paging.md)」チュートリアルで作成した無限スクロール プロジェクトを基にしています。
 
 このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]

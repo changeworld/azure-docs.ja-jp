@@ -1,5 +1,5 @@
 ---
-title: Azure CLI サンプル - Azure Monitor を実行する Azure VM を作成する | Microsoft Docs
+title: Azure CLI サンプル - Azure Monitor を実行する Azure VM を作成する
 description: Azure CLI のサンプル - Windows Server 2016 VM と Azure Monitor を実行する Azure VM を作成します。
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: e5bee7a2b9d203909ccd11c4485ecc850688f4ff
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 77c5996a11b5223778bf0efbe33250f0db9f74f3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708227"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039904"
 ---
 # <a name="monitor-a-vm-with-azure-monitor-logs"></a>Azure Monitor ログを使用して VM を監視する
 

@@ -1,19 +1,15 @@
 ---
 title: Azure Blockchain Tokens とは
 description: Azure Blockchain Tokens は、トークンの発行と管理を行うためのサービスとしてのプラットフォーム (PaaS) です。
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
 ms.date: 11/04/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: brendal
-ms.openlocfilehash: cd41d52e06a5c1833dca9669881cbe48f362d81d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c1c18298ba82775c9b10bb79c420704bd462e2b4
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579752"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326082"
 ---
 # <a name="what-is-azure-blockchain-tokens"></a>Azure Blockchain Tokens とは何ですか?
 

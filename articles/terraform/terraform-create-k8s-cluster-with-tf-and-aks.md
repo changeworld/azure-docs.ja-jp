@@ -1,25 +1,23 @@
 ---
-title: Azure Kubernetes Service (AKS) および Terraform を使用して Kubernetes クラスターを作成する
+title: チュートリアル - Terraform を使用して Azure Kubernetes Service (AKS) で Kubernetes クラスターを作成する
 description: Azure Kubernetes Service と Terraform を使用して Kubernetes クラスターを作成する方法を示すチュートリアル
-services: terraform
-ms.service: azure
-keywords: terraform, devops, 仮想マシン, azure, kubernetes
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: d7e6b5c5b9b36e093986aa96a6ad9b401175deb2
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 11/07/2019
+ms.openlocfilehash: 1bfeef729bdb3f07fe2cc64cee4fd4f27c49ef67
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173500"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73833603"
 ---
-# <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes Service および Terraform を使用して Kubernetes クラスターを作成する
-[Azure Kubernetes Service (AKS)](/azure/aks/) を使用すると、ホストされている Kubernetes 環境を管理できます。これによって、コンテナー オーケストレーションの知識がなくてもコンテナー化されたアプリケーションを迅速かつ簡単にデプロイおよび管理できるようになります。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。
+# <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>チュートリアル:Terraform を使用して Azure Kubernetes Service で Kubernetes クラスターを作成する
 
-このチュートリアルでは、[Terraform](https://terraform.io) と AKS を使用して [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) クラスターを作成する際に次のタスクを実行する方法を学びます。
+[Azure Kubernetes Service (AKS)](/azure/aks/) では、ホストされている Kubernetes 環境を管理します。 AKS では、コンテナー オーケストレーションの専門知識がなくても、コンテナー化されたアプリケーションをデプロイして管理できます。 また、AKS を使用すると、アプリをオフラインにすることなく、多くの一般的なメンテナンス操作を実行できます。 これらの操作には、必要に応じたリソースのプロビジョニング、アップグレード、スケーリングなどが含まれます。
+
+このチュートリアルでは、次のタスクを実施する方法について説明します。
 
 > [!div class="checklist"]
 > * HCL (HashiCorp 言語) を使用した Kubernetes クラスターの定義
@@ -35,6 +33,7 @@ ms.locfileid: "71173500"
 - **Azure サービス プリンシパル**:「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」の「**サービス プリンシパルを作成する**」セクションの指示に従ってください。 appId、displayName、password、および tenant の値を書き留めます。
 
 ## <a name="create-the-directory-structure"></a>ディレクトリ構造を作成する
+
 最初の手順では、演習のために、Terraform 構成ファイルを保持するディレクトリを作成します。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
@@ -62,15 +61,14 @@ ms.locfileid: "71173500"
     ```
 
 ## <a name="declare-the-azure-provider"></a>Azure プロバイダーを宣言する
+
 Azure プロバイダーを宣言する Terraform 構成ファイルを作成します。
 
 1. Cloud Shell で、`main.tf` という名前のファイルを作成します。
 
     ```bash
-    vi main.tf
+    code main.tf
     ```
-
-1. I キーを選択し、挿入モードに入ります。
 
 1. 以下のコードをエディターに貼り付けます。
 
@@ -84,31 +82,24 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
     }
     ```
 
-1. **Esc** キーを押して、挿入モードを終了します。
-
-1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
-
-    ```bash
-    :wq
-    ```
+1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
 ## <a name="define-a-kubernetes-cluster"></a>Kubernetes クラスターを定義する
+
 Kubernetes クラスターのリソースを宣言する Terraform 構成ファイルを作成します。
 
 1. Cloud Shell で、`k8s.tf` という名前のファイルを作成します。
 
     ```bash
-    vi k8s.tf
+    code k8s.tf
     ```
-
-1. I キーを選択し、挿入モードに入ります。
 
 1. 以下のコードをエディターに貼り付けます。
 
     ```hcl
     resource "azurerm_resource_group" "k8s" {
-        name     = "${var.resource_group_name}"
-        location = "${var.location}"
+        name     = var.resource_group_name
+        location = var.location
     }
     
     resource "random_id" "log_analytics_workspace_name_suffix" {
@@ -118,17 +109,17 @@ Kubernetes クラスターのリソースを宣言する Terraform 構成ファ�
     resource "azurerm_log_analytics_workspace" "test" {
         # The WorkSpace name has to be unique across the whole of azure, not just the current subscription/tenant.
         name                = "${var.log_analytics_workspace_name}-${random_id.log_analytics_workspace_name_suffix.dec}"
-        location            = "${var.log_analytics_workspace_location}"
-        resource_group_name = "${azurerm_resource_group.k8s.name}"
-        sku                 = "${var.log_analytics_workspace_sku}"
+        location            = var.log_analytics_workspace_location
+        resource_group_name = azurerm_resource_group.k8s.name
+        sku                 = var.log_analytics_workspace_sku
     }
 
     resource "azurerm_log_analytics_solution" "test" {
         solution_name         = "ContainerInsights"
-        location              = "${azurerm_log_analytics_workspace.test.location}"
-        resource_group_name   = "${azurerm_resource_group.k8s.name}"
-        workspace_resource_id = "${azurerm_log_analytics_workspace.test.id}"
-        workspace_name        = "${azurerm_log_analytics_workspace.test.name}"
+        location              = azurerm_log_analytics_workspace.test.location
+        resource_group_name   = azurerm_resource_group.k8s.name
+        workspace_resource_id = azurerm_log_analytics_workspace.test.id
+        workspace_name        = azurerm_log_analytics_workspace.test.name
 
         plan {
             publisher = "Microsoft"
@@ -137,36 +128,36 @@ Kubernetes クラスターのリソースを宣言する Terraform 構成ファ�
     }
 
     resource "azurerm_kubernetes_cluster" "k8s" {
-        name                = "${var.cluster_name}"
-        location            = "${azurerm_resource_group.k8s.location}"
-        resource_group_name = "${azurerm_resource_group.k8s.name}"
-        dns_prefix          = "${var.dns_prefix}"
+        name                = var.cluster_name
+        location            = azurerm_resource_group.k8s.location
+        resource_group_name = azurerm_resource_group.k8s.name
+        dns_prefix          = var.dns_prefix
 
         linux_profile {
             admin_username = "ubuntu"
 
             ssh_key {
-                key_data = "${file("${var.ssh_public_key}")}"
+                key_data = file(var.ssh_public_key)
             }
         }
 
         agent_pool_profile {
             name            = "agentpool"
-            count           = "${var.agent_count}"
+            count           = var.agent_count
             vm_size         = "Standard_DS1_v2"
             os_type         = "Linux"
             os_disk_size_gb = 30
         }
 
         service_principal {
-            client_id     = "${var.client_id}"
-            client_secret = "${var.client_secret}"
+            client_id     = var.client_id
+            client_secret = var.client_secret
         }
 
         addon_profile {
             oms_agent {
             enabled                    = true
-            log_analytics_workspace_id = "${azurerm_log_analytics_workspace.test.id}"
+            log_analytics_workspace_id = azurerm_log_analytics_workspace.test.id
             }
         }
 
@@ -176,29 +167,21 @@ Kubernetes クラスターのリソースを宣言する Terraform 構成ファ�
     }
     ```
 
-    上記のコードでは、クラスターの name、location、resource_group_name が設定されます。 さらに、クラスターにアクセスするために使用される完全修飾ドメイン名 (FQDN) のフォームの一部である dns_prefix 値も設定されます。
+    上記のコードでは、クラスター名前、場所、およびリソース グループ名が設定されます。 完全修飾ドメイン名 (FQDN) のプレフィックスも設定されます。 FQDN は、クラスターへのアクセスに使用されます。
 
-    **linux_profile** レコードを使用すると、SSH を使用してワーカー ノードにサインインできる設定を構成できます。
+    `linux_profile` レコードを使用すると、SSH を使用してワーカー ノードにサインインできる設定を構成できます。
 
-    AKS では、ワーカー ノードのみについて課金されます。 **agent_pool_profile** レコードは、これらのワーカー ノードの詳細を構成します。 **agent_pool_profile レコード**には、作成するワーカー ノードの数とワーカー ノードの種類が含まれます。 将来、クラスターをスケールアップまたはスケールダウンする必要がある場合は、このレコードの **count** 値を変更します。
+    AKS では、ワーカー ノードのみについて課金されます。 `agent_pool_profile` レコードでは、これらのワーカー ノードの詳細を構成します。 `agent_pool_profile record` には、作成するワーカー ノードの数とワーカー ノードの種類が含まれます。 将来、クラスターをスケールアップまたはスケールダウンする必要がある場合は、このレコードの `count` 値を変更します。
 
-1. **Esc** キーを押して、挿入モードを終了します。
-
-1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
-
-    ```bash
-    :wq
-    ```
+1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
 ## <a name="declare-the-variables"></a>変数を宣言する
 
 1. Cloud Shell で、`variables.tf` という名前のファイルを作成します。
 
     ```bash
-    vi variables.tf
+    code variables.tf
     ```
-
-1. I キーを選択し、挿入モードに入ります。
 
 1. 以下のコードをエディターに貼り付けます。
 
@@ -245,73 +228,65 @@ Kubernetes クラスターのリソースを宣言する Terraform 構成ファ�
    }
     ```
 
-1. **Esc** キーを押して、挿入モードを終了します。
-
-1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
-
-    ```bash
-    :wq
-    ```
+1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
 ## <a name="create-a-terraform-output-file"></a>Terraform 出力ファイルを作成する
+
 [Terraform 出力](https://www.terraform.io/docs/configuration/outputs.html)によって、Terraform がプランを適用するときユーザーに対して強調表示される値を定義できます。これは、`terraform output` コマンドを使用してクエリできます。 このセクションでは、[kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) を使用したクラスターへのアクセスを許可する出力ファイルを作成します。
 
 1. Cloud Shell で、`output.tf` という名前のファイルを作成します。
 
     ```bash
-    vi output.tf
+    code output.tf
     ```
-
-1. I キーを選択し、挿入モードに入ります。
 
 1. 以下のコードをエディターに貼り付けます。
 
     ```hcl
     output "client_key" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_key}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.client_key
     }
 
     output "client_certificate" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_certificate}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.client_certificate
     }
 
     output "cluster_ca_certificate" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.cluster_ca_certificate
     }
 
     output "cluster_username" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.username}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.username
     }
 
     output "cluster_password" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.password}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.password
     }
 
     output "kube_config" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config_raw}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config_raw
     }
 
     output "host" {
-        value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.host}"
+        value = azurerm_kubernetes_cluster.k8s.kube_config.0.host
     }
     ```
 
-1. **Esc** キーを押して、挿入モードを終了します。
-
-1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
-
-    ```bash
-    :wq
-    ```
+1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
 ## <a name="set-up-azure-storage-to-store-terraform-state"></a>Terraform 状態を保存する Azure Storage をセットアップする
-Terraform は `terraform.tfstate` ファイルを介して状態をローカルで追跡します。 このパターンは 1 名の環境に適しています。 ただし、より実用的な複数名の環境では、[Azure Storage](/azure/storage/) を利用してサーバー上で状態を追跡する必要があります。 このセクションでは、必要なストレージ アカウント情報 (アカウント名とアカウント キー) を取得して、Terraform 状態の情報が格納されるストレージ コンテナーを作成します。
+
+Terraform は `terraform.tfstate` ファイルを介して状態をローカルで追跡します。 このパターンは 1 名の環境に適しています。 マルチユーザー環境では、状態の追跡に [Azure ストレージ](/azure/storage/)が使用されます。
+
+このセクションでは、次のタスクを実行する方法を説明します。
+- ストレージ アカウント情報 (アカウント名とアカウント キー) を取得します
+- Terraform 状態の情報を格納するストレージ コンテナーを作成します。
 
 1. Azure Portal の左側のメニューで **[すべてのサービス]** を選択します。
 
 1. **[ストレージ アカウント]** を選択します。
 
-1. **[ストレージ アカウント]** タブで、Terraform が状態を格納するストレージ アカウントの名前を選択します。 たとえば、最初に Cloud Shell を開いたときに作成したストレージ アカウントを使用できます。  通常、Cloud Shell によって作成されたストレージ アカウント名は、`cs` の後に数字と文字のランダムな文字列が続きます。 **選択したストレージ アカウントの名前を覚えておいてください。後で必要になります。**
+1. **[ストレージ アカウント]** タブで、Terraform が状態を格納するストレージ アカウントの名前を選択します。 たとえば、最初に Cloud Shell を開いたときに作成したストレージ アカウントを使用できます。  通常、Cloud Shell によって作成されたストレージ アカウント名は、`cs` の後に数字と文字のランダムな文字列が続きます。 選択したストレージ アカウントをメモしておきます。 この値は後で必要になります。
 
 1. [ストレージ アカウント] タブで **[アクセス キー]** を選択します。
 
@@ -321,16 +296,17 @@ Terraform は `terraform.tfstate` ファイルを介して状態をローカル�
 
     ![ストレージ アカウントのアクセス キー](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 
-1. Cloud Shell で、Azure ストレージ アカウントにコンテナーを作成します (&lt;YourAzureStorageAccountName> および &lt;YourAzureStorageAccountAccessKey> プレースホルダーをご使用の Azure ストレージ アカウントの適切な値で置き換えます)。
+1. Cloud Shell で、Azure ストレージ アカウントでコンテナーを作成します。 プレースホルダーをご使用の環境の適切な値に置き換えます。
 
     ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 
 ## <a name="create-the-kubernetes-cluster"></a>Kubernetes クラスターを作成する
+
 このセクションでは、`terraform init` コマンドを使用して、前のセクションで作成した構成ファイルに定義されているリソースを作成する方法を学びます。
 
-1. Cloud Shell で、Terraform を初期化します (&lt;YourAzureStorageAccountName> および &lt;YourAzureStorageAccountAccessKey> プレースホルダーをご使用の Azure ストレージ アカウントの適切な値で置き換えます)。
+1. Cloud Shell で、Terraform を初期化します。 プレースホルダーをご使用の環境の適切な値に置き換えます。
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
@@ -340,11 +316,11 @@ Terraform は `terraform.tfstate` ファイルを介して状態をローカル�
 
     !["terraform init" の結果例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
-1. サービス プリンシパルの資格情報をエクスポートします。 &lt;your-client-id> および &lt;your-client-secret> プレースホルダーは、それぞれ、サービス プリンシパルに関連付けられている **appId** および **password** の値に置き換えます。
+1. サービス プリンシパルの資格情報をエクスポートします。 プレースホルダーをご使用のサービス プリンシパルの適切な値に置き換えます。
 
     ```bash
-    export TF_VAR_client_id=<your-client-id>
-    export TF_VAR_client_secret=<your-client-secret>
+    export TF_VAR_client_id=<service-principal-appid>
+    export TF_VAR_client_secret=<service-principal-password>
     ```
 
 1. `terraform plan` コマンドを実行して、インフラストラクチャ要素を定義する Terraform プランを作成します。 
@@ -367,12 +343,13 @@ Terraform は `terraform.tfstate` ファイルを介して状態をローカル�
 
     !["terraform apply" の結果例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. Azure portal で、左側のメニューの **[すべてのサービス]** を選択すると、新しい Kubernetes クラスターに対して作成されたリソースが表示されます。
+1. Azure portal で、左側のメニューの **[すべてのリソース]** を選択すると、新しい Kubernetes クラスターに対して作成されたリソースが表示されます。
 
-    ![Cloud Shell のプロンプト](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
+    ![Azure portal の [すべてのリソース]](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 
 ## <a name="recover-from-a-cloud-shell-timeout"></a>Cloud Shell タイムアウトから復旧する
-Cloud Shell セッションがタイムアウトした場合は、次の手順に従って復旧できます。
+
+Cloud Shell セッションがタイムアウトした場合は、次の手順を実行して復旧できます。
 
 1. Cloud Shell セッションを開始します。
 
@@ -389,6 +366,7 @@ Cloud Shell セッションがタイムアウトした場合は、次の手順�
     ```
     
 ## <a name="test-the-kubernetes-cluster"></a>Kubernetes クラスターをテストする
+
 Kubernetes ツールを使用して、新しく作成したクラスターを確認できます。
 
 1. Terraform 状態から Kubernetes 構成を取得し、kubectl が読み取れるファイルに格納します。
@@ -414,12 +392,10 @@ Kubernetes ツールを使用して、新しく作成したクラスターを確
     ![kubectl ツールを使用すると Kubernetes クラスターの正常性を確認できる](./media/terraform-create-k8s-cluster-with-tf-and-aks/kubectl-get-nodes.png)
 
 ## <a name="monitor-health-and-logs"></a>正常性の監視とログ
-AKS クラスターが作成されたとき、クラスター ノードとポッドの両方の正常性メトリックを取得するための監視が有効になりました。 これらの正常性メトリックは、Azure portal で利用できます。 コンテナーの正常性の監視の詳細については、[Azure Kubernetes Service の正常性の監視](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)に関するページを参照してください。
+
+AKS クラスターが作成されたとき、クラスター ノードとポッドの両方の正常性メトリックを取得するための監視が有効になりました。 これらの正常性メトリックは、Azure portal で利用できます。 コンテナーの正常性の監視の詳細については、[Azure Kubernetes Service の正常性の監視](/azure/azure-monitor/insights/container-insights-overview)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
-この記事では、Terraform と AKS を使用して Kubernetes クラスターを作成する方法を学習しました。 Azure 上の Terraform の詳細については、次のリソースもご覧ください。 
 
- [Microsoft.com の Terraform ハブ](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure プロバイダーのドキュメント](https://aka.ms/terraform)  
- [Terraform Azure プロバイダーのソース](https://aka.ms/tfgit)  
- [Terraform Azure モジュール](https://aka.ms/tfmodules)
+> [!div class="nextstepaction"] 
+> [Azure での Terraform の使用について詳細を参照](/azure/terraform)

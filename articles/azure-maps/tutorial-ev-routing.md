@@ -1,22 +1,22 @@
 ---
-title: Azure Notebooks を使用して電気自動車のルートを案内する (Python) | Microsoft Docs
-description: Azure Maps のルート案内 API シリーズと Azure Notebooks を使用して、電気自動車のルートを案内します。
+title: チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
+description: チュートリアル:Azure Maps のルート案内 API シリーズと Azure Notebooks を使用して、電気自動車のルートを案内します。
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/01/2019
+ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9cc7fc1ba8c7f55700505ea8fca0dea4f836e333
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243301"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109612"
 ---
-# <a name="route-electric-vehicles-by-using-azure-notebooks-python"></a>Azure Notebooks を使用して電気自動車のルートを案内する (Python)
+# <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
 
 Azure Maps は、Azure にネイティブに統合された地理空間サービス API シリーズのポートフォリオです。 これらの API シリーズを使用すると、開発者、企業、ISV は、場所を認識するアプリと、IoT、モビリティ、物流、資産追跡のソリューションを作成できます。 
 
@@ -41,7 +41,7 @@ Azure Maps REST API シリーズを Python や R などの言語で呼び出し�
 
 S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成するには、「[Azure Maps アカウントを管理する](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)」の手順に従います。 
 
-アカウントのプライマリ サブスクリプション キーを取得するには、「[Azure Maps を使用して近くの目的地を検索する](./tutorial-search-location.md#getkey)」の手順に従います。
+アカウントのプライマリ サブスクリプション キーを取得するには、「[アカウントを作成し、キーを取得する](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key)」の手順に従います。
 
 ## <a name="create-an-azure-notebook"></a>Azure ノートブックを作成する
 
@@ -281,7 +281,7 @@ display(Image(poiRangeMap))
 
 到達可能範囲内にある充電スタンド候補をすべて特定した後は、最も短い時間で到達できるスタンドを調べる必要があります。 
 
-次のスクリプトで呼び出している Azure Maps の [Matrix Routing API](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview) では、指定した自動車の位置に対し、各充電スタンドまでの走行時間と距離が返されます。 次のセルのスクリプトでは、応答が解析されて、時間的に最も近くにある到達可能な充電スタンドの場所が特定されます。
+次のスクリプトで呼び出している Azure Maps の [Matrix Routing API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix) では、指定した自動車の位置に対し、各充電スタンドまでの走行時間と距離が返されます。 次のセルのスクリプトでは、応答が解析されて、時間的に最も近くにある到達可能な充電スタンドの場所が特定されます。
 
 最も近くにあり最短時間で到達可能な充電スタンドを探すには、次のセルのスクリプトを実行します。
 
@@ -395,7 +395,7 @@ display(Image(staticMapImage))
 * [Post Search Inside Geometry](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
 * [Data Upload](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)
 * [レンダリング - Get Map Image](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [Post Route Matrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)
+* [Post Route Matrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Get Route Directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
 Azure Maps REST API シリーズの完全な一覧については、[Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference) に関する記事を参照してください。

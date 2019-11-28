@@ -3,7 +3,7 @@ title: Azure VM 上の Service Fabric クラスターのインフラストラク
 description: このチュートリアルでは、Service Fabric クラスターを実行するための Azure VM インフラストラクチャを設定する方法を学習します。
 services: service-fabric
 documentationcenter: .net
-author: v-vasuke
+author: jpconnock
 manager: jpconnock
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/22/2019
-ms.author: v-vasuke
+ms.author: jeconnoc
 ms.custom: mvc
-ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b24b4d95827dbd398c0eba43dcbad9fbfeb51469
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177729"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166282"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>チュートリアル:Service Fabric クラスターをホストする Azure VM インフラストラクチャを作成する
 
@@ -90,12 +90,18 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
  
 4. RDP ファイルを開きます。求められたら、VM の設定時に指定したユーザー名とパスワードを入力します。
 
-5. インスタンスに接続したら、リモート レジストリが実行されていたことを検証し、必要なポートを開く必要があります。
+5. インスタンスに接続したら、リモート レジストリが実行されていたことを検証し、SMB を有効にして、SMB およびリモート レジストリに必要なポートを開く必要があります。
+
+   これは、SMB を有効にするための PowerShell コマンドです。
+
+   ```powershell
+   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+   ```
 
 6. ファイアウォールでポートを開くための PowerShell コマンドは、次のとおりです。
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
    ```
 
 7. 自分の他のインスタンスでこのプロセスを繰り返し、そのたびにプライベート IP アドレスをメモします。
@@ -111,6 +117,15 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
    ```
 
    `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` のような出力が 4 回繰り返された場合、インスタンス間の接続は機能しています。
+
+3. 次に、以下のコマンドを使用して、SMB 共有が機能することを検証します。
+
+   ```
+   net use * \\172.31.20.163\c$
+   ```
+
+   出力として、`Drive Z: is now connected to \\172.31.20.163\c$.` が返されるはずです。
+
 
    これで、お客様のインスタンスは Service Fabric 用に正しく準備されました。
 

@@ -1,33 +1,32 @@
 ---
-title: Terraform と HCL を使用して VM クラスターを作成する
-description: Azure で Terraform と HashiCorp Configuration Language (HCL) を使ってロード バランサーを備えた Linux 仮想マシン クラスターを作成する方法について説明します
-services: terraform
-ms.service: azure
-keywords: Terraform、DevOps、仮想マシン、ネットワーク、モジュール
+title: チュートリアル - Terraform と HCL を使用した Azure VM クラスターの作成
+description: Azure で Terraform と HCL を使用してロード バランサ―を備えた Linux 仮想マシン クラスターを作成する
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 10/26/2019
+ms.openlocfilehash: 7fee1518c36407f4e6607cc9204f9615b024f56f
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173468"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837721"
 ---
-# <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Terraform と HCL を使用して VM クラスターを作成する
+# <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>チュートリアル:Terraform と HCL を使用した Azure VM クラスターの作成
 
-このチュートリアルでは、[HashiCorp Configuration Language](https://www.terraform.io/docs/configuration/syntax.html) (HCL) を使って小規模のコンピューティング クラスターを作成する方法について説明します。 この構成では、ロード バランサーと、[可用性セット](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)に Linux VM を 2 つ、およびすべての必要なネットワーク リソースを作成します。
+このチュートリアルでは、[HCL](https://www.terraform.io/docs/configuration/syntax.html) を使用して小規模なコンピューティング クラスターを作成する方法について説明します。 
 
-このチュートリアルでは、次のことを行いました。
+次のタスクを実行する方法について説明します。
 
 > [!div class="checklist"]
-> * Azure 認証をセットアップする
-> * Terraform 構成ファイルを作成する
-> * Terraform を初期化する
-> * Terraform 実行プランを作成する
-> * Terraform 実行プランを適用する
+> * Azure 認証をセットアップします。
+> * Terraform 構成ファイルを作成します。
+> * Terraform 構成ファイルを使用して、ロード バランサーを作成します。
+> * Terraform 構成ファイルを使用して、可用性セットに 2 つの Linux VM をデプロイします。
+> * Terraform を初期化します。
+> * Terraform 実行プランを作成します。
+> * Terraform 実行プランを適用して、Azure リソースを作成します。
 
 ## <a name="1-set-up-azure-authentication"></a>1.Azure 認証をセットアップする
 
@@ -53,10 +52,10 @@ ms.locfileid: "71173468"
    variable client_secret {}
   
    provider "azurerm" {
-      subscription_id = "${var.subscription_id}"
-      tenant_id = "${var.tenant_id}"
-      client_id = "${var.client_id}"
-      client_secret = "${var.client_secret}"
+      subscription_id = var.subscription_id
+      tenant_id = var.tenant_id
+      client_id = var.client_id
+      client_secret = var.client_secret
    }
    ```
 
@@ -88,60 +87,60 @@ ms.locfileid: "71173468"
    resource "azurerm_virtual_network" "test" {
     name                = "acctvn"
     address_space       = ["10.0.0.0/16"]
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
    }
 
    resource "azurerm_subnet" "test" {
     name                 = "acctsub"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
-    virtual_network_name = "${azurerm_virtual_network.test.name}"
+    resource_group_name  = azurerm_resource_group.test.name
+    virtual_network_name = azurerm_virtual_network.test.name
     address_prefix       = "10.0.2.0/24"
    }
 
    resource "azurerm_public_ip" "test" {
     name                         = "publicIPForLB"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     allocation_method            = "Static"
    }
 
    resource "azurerm_lb" "test" {
     name                = "loadBalancer"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     frontend_ip_configuration {
       name                 = "publicIPAddress"
-      public_ip_address_id = "${azurerm_public_ip.test.id}"
+      public_ip_address_id = azurerm_public_ip.test.id
     }
    }
 
    resource "azurerm_lb_backend_address_pool" "test" {
-    resource_group_name = "${azurerm_resource_group.test.name}"
-    loadbalancer_id     = "${azurerm_lb.test.id}"
+    resource_group_name = azurerm_resource_group.test.name
+    loadbalancer_id     = azurerm_lb.test.id
     name                = "BackEndAddressPool"
    }
 
    resource "azurerm_network_interface" "test" {
     count               = 2
     name                = "acctni${count.index}"
-    location            = "${azurerm_resource_group.test.location}"
-    resource_group_name = "${azurerm_resource_group.test.name}"
+    location            = azurerm_resource_group.test.location
+    resource_group_name = azurerm_resource_group.test.name
 
     ip_configuration {
       name                          = "testConfiguration"
-      subnet_id                     = "${azurerm_subnet.test.id}"
+      subnet_id                     = azurerm_subnet.test.id
       private_ip_address_allocation = "dynamic"
-      load_balancer_backend_address_pools_ids = ["${azurerm_lb_backend_address_pool.test.id}"]
+      load_balancer_backend_address_pools_ids = [azurerm_lb_backend_address_pool.test.id]
     }
    }
 
    resource "azurerm_managed_disk" "test" {
     count                = 2
     name                 = "datadisk_existing_${count.index}"
-    location             = "${azurerm_resource_group.test.location}"
-    resource_group_name  = "${azurerm_resource_group.test.name}"
+    location             = azurerm_resource_group.test.location
+    resource_group_name  = azurerm_resource_group.test.name
     storage_account_type = "Standard_LRS"
     create_option        = "Empty"
     disk_size_gb         = "1023"
@@ -149,8 +148,8 @@ ms.locfileid: "71173468"
 
    resource "azurerm_availability_set" "avset" {
     name                         = "avset"
-    location                     = "${azurerm_resource_group.test.location}"
-    resource_group_name          = "${azurerm_resource_group.test.name}"
+    location                     = azurerm_resource_group.test.location
+    resource_group_name          = azurerm_resource_group.test.name
     platform_fault_domain_count  = 2
     platform_update_domain_count = 2
     managed                      = true
@@ -159,10 +158,10 @@ ms.locfileid: "71173468"
    resource "azurerm_virtual_machine" "test" {
     count                 = 2
     name                  = "acctvm${count.index}"
-    location              = "${azurerm_resource_group.test.location}"
-    availability_set_id   = "${azurerm_availability_set.avset.id}"
-    resource_group_name   = "${azurerm_resource_group.test.name}"
-    network_interface_ids = ["${element(azurerm_network_interface.test.*.id, count.index)}"]
+    location              = azurerm_resource_group.test.location
+    availability_set_id   = azurerm_availability_set.avset.id
+    resource_group_name   = azurerm_resource_group.test.name
+    network_interface_ids = [element(azurerm_network_interface.test.*.id, count.index)]
     vm_size               = "Standard_DS1_v2"
 
     # Uncomment this line to delete the OS disk automatically when deleting the VM
@@ -195,11 +194,11 @@ ms.locfileid: "71173468"
     }
 
     storage_data_disk {
-      name            = "${element(azurerm_managed_disk.test.*.name, count.index)}"
-      managed_disk_id = "${element(azurerm_managed_disk.test.*.id, count.index)}"
+      name            = element(azurerm_managed_disk.test.*.name, count.index)
+      managed_disk_id = element(azurerm_managed_disk.test.*.id, count.index)
       create_option   = "Attach"
       lun             = 1
-      disk_size_gb    = "${element(azurerm_managed_disk.test.*.disk_size_gb, count.index)}"
+      disk_size_gb    = element(azurerm_managed_disk.test.*.disk_size_gb, count.index)
     }
 
     os_profile {
@@ -237,11 +236,14 @@ Terraform を初期化するには、次のコマンドを実行します。
 
 実行プランを作成するには、[terraform plan コマンド](https://www.terraform.io/docs/commands/plan.html)を使います。 実行プランを生成するため、Terraform は現在のディレクトリにあるすべての `.tf` ファイルを集約します。 
 
-コラボレーション環境で作業していて、実行プランを作成してから適用するまでの間に構成が変更される可能性がある場合は、[terraform plan コマンドの -out パラメーター](https://www.terraform.io/docs/commands/plan.html#out-path)を使って、実行プランをファイルに保存する必要があります。 そうではなく、1 人の環境で作業している場合は、`-out` パラメーターを省略できます。
+[-out パラメーター](https://www.terraform.io/docs/commands/plan.html#out-path)により、実行プランが出力ファイルに保存されます。 この機能は、マルチ開発環境でよく見られるコンカレンシーの問題に対処します。 出力ファイルによって解決されるそうした問題の 1 つに、次のようなシナリオがあります。
 
-Terraform 変数ファイルの名前が `terraform.tfvars` ではなく、`*.auto.tfvars` のパターンにも従っていない場合は、`terraform plan` コマンドを実行するときに、[terraform plan コマンドの -var-file パラメーター](https://www.terraform.io/docs/commands/plan.html#var-file-foo)を使って、ファイル名を指定する必要があります。
+1. Dev 1 が構成ファイルを作成します。
+1. Dev 2 が構成ファイルを変更します。
+1. Dev 1 が構成ファイルを適用 (実行) します。
+1. Dev 1 は、Dev 2 が構成を変更したことを知らないため、予期しない結果になります。
 
-`terraform plan` コマンドを処理するとき、Terraform は、更新を実行して、構成ファイルで指定されている目的の状態を実現するために必要なアクションを決定します。
+Dev 1 が出力ファイルを指定すると、Dev 2 が Dev 1 に影響を及ぼさなくなります。 
 
 実行プランを保存する必要がない場合は、次のコマンドを実行します。
 
@@ -249,11 +251,25 @@ Terraform 変数ファイルの名前が `terraform.tfvars` ではなく、`*.au
   terraform plan
   ```
 
-実行プランを保存する必要がある場合は、次のコマンドを実行します (&lt;path> プレースホルダーを、実際の出力パスに置き換えます)。
+実行プランを保存する必要がある場合は、次のコマンドを実行します。 プレースホルダーをご使用の環境の適切な値に置き換えます。
 
   ```bash
   terraform plan -out=<path>
   ```
+
+もう 1 つの便利なパラメーターは、[-var-file](https://www.terraform.io/docs/commands/plan.html#var-file-foo) です。
+
+既定では、Terraform は次のように変数ファイルを見つけようとしました。
+- `terraform.tfvars` という名前のファイル
+- `*.auto.tfvars` のパターンを使用した名前のファイル
+
+ただし、変数ファイルは、上記の 2 つの規則のいずれにも従う必要はありません。 その場合は、`-var-file` パラメーターを使用して、変数ファイル名を指定します。 この点について次の例で説明します。
+
+```hcl
+terraform plan -var-file <my-variables-file.tf>
+```
+
+Terraform は、構成ファイルに指定された状態を実現するために必要なアクションを決定します。
 
 ![Terraform 実行プランの作成](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
@@ -267,7 +283,7 @@ Terraform 変数ファイルの名前が `terraform.tfvars` ではなく、`*.au
   terraform apply
   ```
 
-以前に保存した実行プランを適用する場合は、次のコマンドを実行します (&lt;path> プレースホルダーを、実行プランを保存したパスに置き換えます)。
+以前に保存した実行プランを適用する場合は、次のコマンドを実行します。 プレースホルダーをご使用の環境の適切な値に置き換えます。
 
   ```bash
   terraform apply <path>
@@ -277,5 +293,5 @@ Terraform 変数ファイルの名前が `terraform.tfvars` ではなく、`*.au
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Terraform モジュール](https://registry.terraform.io/modules/Azure)の一覧を参照する
-- [Terraform を使用して仮想マシン スケール セット](terraform-create-vm-scaleset-network-disks-hcl.md)を作成する
+> [!div class="nextstepaction"] 
+> [Terraform を使用して Azure 仮想マシン スケール セットを作成する](terraform-create-vm-scaleset-network-disks-hcl.md)

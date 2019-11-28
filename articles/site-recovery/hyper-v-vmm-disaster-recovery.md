@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery を使用してオンプレミスのサイト間に Hyper-V VM のディザスター リカバリーを設定する
+title: Azure Site Recovery を使用したセカンダリ サイトへの Hyper-V ディザスター リカバリーの設定
 description: Azure Site Recovery を使用してオンプレミス サイト間に Hyper-V VM のディザスター リカバリーを設定する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a2eb8bf10454ee01953ddd37025f0c0048d00a0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813748"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132991"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>セカンダリのオンプレミスのサイトに対して Hyper-V VM のディザスター リカバリーを設定する
 
@@ -28,6 +28,7 @@ ms.locfileid: "70813748"
 > * ネットワーク マッピングを設定する 
 > * レプリケーション ポリシーを作成する
 > * VM のレプリケーションを有効にする
+
 
 ## <a name="prerequisites"></a>前提条件
 

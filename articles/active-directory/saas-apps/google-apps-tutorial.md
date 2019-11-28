@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e4449ac3519757bb9670d2d7fec53cb5f3ce152
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 66d8e13a4e042146ef2b99728e41e14f1dcb3435
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948291"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885370"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-g-suite"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と G Suite の統合
 
@@ -250,7 +250,9 @@ G Suite に対する Azure AD SSO を構成してテストするには、次の�
 
 ### <a name="create-g-suite-test-user"></a>G Suite テスト ユーザーの作成
 
-このセクションの目的は、G Suite ソフトウェアで B.Simon というユーザーを作成することです。 G Suite では、自動プロビジョニングがサポートされており、これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 G Suite ソフトウェアにユーザーがまだ存在しない場合は、G Suite ソフトウェアにアクセスしようとしたときに新しいユーザーが作成されます。
+このセクションの目的は、B.Simon という[ユーザーを G Suite で作成する](https://support.google.com/a/answer/33310?hl=en)ことです。 G Suite で手動で作成されたユーザーは、自分の Office 365 のログイン資格情報を使用してサインインできるようになります。
+
+G Suite では、自動ユーザー プロビジョニングもサポートされています。 自動ユーザープロビジョニングを構成するには、まず、[G Suite を構成し、自動ユーザー プロビジョニングに対応させる](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-provisioning-tutorial)必要があります。
 
 > [!NOTE]
 > シングル サインオンをテストする前に Azure AD でのプロビジョニングが有効にされていない場合は、既に G Suite にユーザーが存在していることを確認してください。

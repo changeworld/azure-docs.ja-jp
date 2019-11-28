@@ -1,20 +1,20 @@
 ---
-title: Azure IoT Central でデバイスを監視する | Microsoft Docs
-description: オペレーターとして Azure IoT Central アプリケーションを使用して、デバイスを監視します。
+title: チュートリアル:Azure IoT Central でデバイスを監視する
+description: チュートリアル:オペレーターとして Azure IoT Central アプリケーションを使用して、デバイスを監視します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/09/2019
+ms.date: 11/13/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 78f0c8cf9efd8b264da3c1d80c8baeb9f03016cc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: db3a9a6ba51394a0473f64a2ccede97e5283bba1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72938637"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106575"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>チュートリアル:Azure IoT Central を使用してデバイスを監視する
 

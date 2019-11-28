@@ -1,19 +1,15 @@
 ---
 title: カスタム イメージを使用して Linux 上で Azure Functions を作成する
 description: カスタム Linux イメージで実行する Azure Functions を作成する方法について説明します。
-author: ggailey777
-ms.author: glenga
 ms.date: 09/27/2019
 ms.topic: tutorial
-ms.service: azure-functions
 ms.custom: mvc
-manager: gwallace
-ms.openlocfilehash: b8d82868788d831d4db68a35c032d3f81b545417
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7bf079f84978539735f3bbf5bb13b18130871fb1
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082827"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484382"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>カスタム イメージを使用して Linux で関数を作成する
 
@@ -36,7 +32,6 @@ Azure Functions を使用して、独自のカスタム コンテナー内の Li
 > * 継続的デプロイを有効にします。
 > * コンテナーへの SSH 接続を有効にします。
 > * Queue storage の出力バインドを追加します。 
-> * Application Insights の監視を追加します。
 
 次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。 
 

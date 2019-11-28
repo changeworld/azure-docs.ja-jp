@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 10/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b038eca3d4e6beb6b1d226a4a7b1e20bfe3bb55a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: fa22b46dabcc5c8b2db5997ffc9b2f2480846d6f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121425"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074633"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lessonly"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Lesson.ly の統合
 
@@ -65,10 +65,10 @@ Azure AD への Lesson.ly の統合を構成するには、ギャラリーから
 Lesson.ly で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Lesson.ly の SSO の構成](#configure-lessonly-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Lesson.ly のテスト ユーザーの作成](#create-lessonly-test-user)** - Lesson.ly で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+    * **[Lesson.ly のテスト ユーザーの作成](#create-lessonly-test-user)** - Lesson.ly で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -92,6 +92,19 @@ Lesson.ly で Azure AD SSO を構成してテストするには、次の構成�
 
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Lessonly.com クライアント サポート チーム](mailto:support@lessonly.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+
+1. Lesson.ly アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+
+    ![image](common/default-attributes.png)
+
+1. その他に、Lesson.ly アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+
+    | 名前 | ソース属性|
+    | ---------------  | ----------------|
+    | urn:oid:2.5.4.42 | User.givenname |
+    | urn:oid:2.5.4.4  | User.surname |
+    | urn:oid:0.9.2342.19200300.100.1.3 | User.mail |
+    | urn:oid:1.3.6.1.4.1.5923.1.1.1.10 | user.objectid |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -137,7 +150,7 @@ Lesson.ly で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="create-lessonly-test-user"></a>Lesson.ly のテスト ユーザーの作成
 
-このセクションの目的は、Lessonly.com で Britta Simon というユーザーを作成することです。 Lessonly.com では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
+このセクションの目的は、Lessonly.com で B.Simon というユーザーを作成することです。 Lessonly.com では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。
 
 このセクションでは、ユーザー側で必要な操作はありません。 存在しない Lessonly.com ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。
 

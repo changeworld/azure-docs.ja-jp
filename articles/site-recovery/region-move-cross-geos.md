@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery サービスを使用して Azure Government とパブリック リージョンの間で Azure IaaS VM を移動する | Microsoft Docs
-description: Azure Site Recovery を使用して、Azure Government とパブリック リージョンの間で Azure IaaS VM を移動します。
-services: site-recovery
+title: Azure Site Recovery を使用して Government とパブリック リージョンの間で Azure VM を移動する
+description: Azure Site Recovery を使用して、Azure Government とパブリック リージョンの間で Azure VM を移動します。
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376123"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961409"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure Government とパブリック リージョンの間で Azure VM を移動する 
 

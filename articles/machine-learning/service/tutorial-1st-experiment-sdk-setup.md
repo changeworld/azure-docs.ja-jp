@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: 59844c5989abb03bbe5134c83c9653290c17d0a9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b2434102e0355d5c26c501588c360f74eb98404d
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582493"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049134"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>チュートリアル:Python SDK で初めての ML 実験を作成する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -81,7 +81,7 @@ Azure Machine Learning Studio で、次の実験の設定を完了し、ステ�
 
 1. 上部のバーで、ノートブックの実行に使用する Notebook VM を選択します。 これらの VM には、Azure Machine Learning を実行するために必要なすべてのものがあらかじめ構成されています。 対象のワークスペースの任意のユーザーが作成した VM を選択できます。 
 
-1. VM が見つからない場合は、 **[+ コンピューティングの追加]** を選択して VM を作成します。
+1. VM が見つからない場合は、 **[+ VM の追加]** を選択して VM を作成します。 
 
     1. VM を作成するときは名前を指定します。  名前は 2 文字から 16 文字にする必要があります。 有効な文字は、英字、数字、および - 文字です。また、名前は、Azure サブスクリプション全体で一意である必要があります。
 

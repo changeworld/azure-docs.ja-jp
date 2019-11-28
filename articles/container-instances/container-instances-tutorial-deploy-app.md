@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e14a3ba50d75161afa3325b3b7bcbfe96ea24cc3
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f2890948dd15fa972104e4ef11001e83a2abd4f8
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325623"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73846592"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>チュートリアル:Azure Container Instances にコンテナー アプリケーションをデプロイする
 
@@ -37,7 +37,9 @@ ms.locfileid: "68325623"
 
 ### <a name="get-registry-credentials"></a>レジストリ資格情報を取得する
 
-[2 つ目のチュートリアル](container-instances-tutorial-prepare-acr.md)で作成したようなプライベート コンテナー レジストリでホストされるイメージをデプロイする場合は、レジストリにアクセスするための資格情報を指定する必要があります。 「[Azure Container Instances から Azure Container Registry の認証を受ける](../container-registry/container-registry-auth-aci.md)」に示したように、レジストリへの "*プル*" アクセス許可を持った Azure Active Directory のサービス プリンシパルを作成して構成することが、多くのシナリオにおいてベスト プラクティスとなります。 必要なアクセス許可でサービス プリンシパルを作成するサンプル スクリプトについては、そちらの記事を参照してください。 サービス プリンシパルの ID とパスワードを書き留めておいてください。 これらの資格情報は、コンテナーをデプロイするときに使用します。
+[2 つ目のチュートリアル](container-instances-tutorial-prepare-acr.md)で作成したようなプライベート Azure コンテナー レジストリでホストされるイメージをデプロイする場合は、レジストリにアクセスするための資格情報を指定する必要があります。 
+
+レジストリへの "*プル*" アクセス許可を持った Azure Active Directory のサービス プリンシパルを作成して構成することが、多くのシナリオにおいてベスト プラクティスとなります。 必要なアクセス許可を持つサービス プリンシパルを作成するためのサンプル スクリプトについては、「[Azure Container Instances から Azure Container Registry の認証を受ける](../container-registry/container-registry-auth-aci.md)」を参照してください。 "*サービス プリンシパル ID*" と "*サービス プリンシパル パスワード*" を書き留めておいてください。 これらの資格情報は、コンテナーをデプロイするときにレジストリにアクセスするために使用します。
 
 また、コンテナー レジストリ ログイン サーバーの完全な名前が必要となります (`<acrName>` は実際のレジストリ名に置き換えてください)。
 

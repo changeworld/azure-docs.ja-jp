@@ -1,17 +1,14 @@
 ---
 title: チュートリアル - Terraform を使用して Azure でオンプレミスの仮想ネットワークを作成する
 description: ローカル リソースを格納するオンプレミス VNet を Azure で実装する方法を示すチュートリアル
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: df96b9340e9961387fd727eba898fe4db6a18821
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 361f9919fdd406a1fef6bbf2b7512dbc20266a54
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969386"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159210"
 ---
 # <a name="tutorial-create-on-premises-virtual-network-in-azure-using-terraform"></a>チュートリアル:Terraform を使用して Azure でオンプレミスの仮想ネットワークを作成する
 

@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 3ae3c3f66ce7301023217a91cd8c79783f3ef833
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2952f7f24e92b952daafa682eee9d4605537a37b
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509846"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839521"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>CLI を使用した Internet Analyzer テストの作成 (プレビュー)
 
@@ -79,7 +79,7 @@ Internet Analyzer CLI では、次の種類のリソースが公開されます�
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    上のコマンドでは、www.contoso.com と www.microsoft.com ではカスタム パスの下で 1 ピクセルの画像 ([trans.gif](https://fpc.msedge.net/apc/trans.gif)) がホストされていることを想定しています。 オブジェクト パスが明示的に指定されていない場合、Internet Analyzer では既定でオブジェクト パスとして `/apc/trans.gif` が使用されます。事前構成済みのエンドポイントで 1 ピクセル画像がホストされている場所です。 スキーマ (https/http) を指定する必要がないことにもご注目ください。Internet Analyzer では HTTPS エンドポイントのみサポートされるため、HTTPS が想定されます。
+    上のコマンドでは、`www.contoso.com` と `www.microsoft.com` ではカスタム パスの下で 1 ピクセルの画像 ([trans.gif](https://fpc.msedge.net/apc/trans.gif)) がホストされていることを想定しています。 オブジェクト パスが明示的に指定されていない場合、Internet Analyzer では既定でオブジェクト パスとして `/apc/trans.gif` が使用されます。事前構成済みのエンドポイントで 1 ピクセル画像がホストされている場所です。 スキーマ (https/http) を指定する必要がないことにもご注目ください。Internet Analyzer では HTTPS エンドポイントのみサポートされるため、HTTPS が想定されます。
 
 11. 新しいテストが Internet Analyzer プロファイルの下に表示されるはずです。
     ```azurecli-interactive
@@ -133,4 +133,4 @@ Internet Analyzer CLI では、次の種類のリソースが公開されます�
 ## <a name="next-steps"></a>次の手順
 
 * [Internet Analyzer の FAQ](internet-analyzer-faq.md) を読む
-* [Internet Analyzer Client](internet-analyzer-embed-client.md) を組み込む方法と[カスタム エンドポイント](internet-analyzer-custom-endpoint.md)を作成する方法を学習する 
+* [Internet Analyzer クライアント](internet-analyzer-embed-client.md)の埋め込みと[カスタム エンドポイント](internet-analyzer-custom-endpoint.md)の作成の詳細を確認する。 

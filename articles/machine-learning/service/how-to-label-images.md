@@ -7,16 +7,16 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: af12361ed11d0a16e5a5d0cfe5989bb3918ce154
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9cbebb905ba39dabaf905be2fa741702bd1a0088
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585588"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838951"
 ---
 # <a name="how-to-tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける方法
 
-プロジェクト管理者が Azure Machine Learning Studio でラベル付けプロジェクトを作成したら、ラベル付けツールを使用して Machine Learning プロジェクトのデータをすぐに準備できます。 
+プロジェクト管理者が Azure Machine Learning でラベル付けプロジェクトを作成したら、ラベル付けツールを使用して Machine Learning プロジェクトのデータをすぐに準備できます。 
 
 > [!div class="checklist"]
 > * ラベル付けプロジェクトにアクセスする方法

@@ -1,5 +1,5 @@
 ---
-title: ドキュメント抽出のコグニティブ検索スキル (プレビュー)
+title: ドキュメント抽出の認知技術 (プレビュー)
 titleSuffix: Azure Cognitive Search
 description: エンリッチメント パイプライン内のファイルからコンテンツを抽出します。 このスキルは現在、パブリック プレビューの段階です。
 manager: nitinme
@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a79b0476fccbd2e2b9d3cf47ecfdc99c17c2862d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720123"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113344"
 ---
 # <a name="document-extraction-cognitive-skill"></a>ドキュメント抽出の認知技術
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure PowerShell で Azure 仮想マシンを管理する | Microsoft Docs
+title: チュートリアル - Azure PowerShell で Azure 仮想マシンを管理する
 description: このチュートリアルでは、Azure PowerShell を使用して、RBAC、ポリシー、ロック、およびタグを適用することによって Azure 仮想マシンを管理する方法について説明します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 3a0821885361fa4781c75b0ed4caa71f9fda37a1
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9f806c6790c953d86cf7fe99daf40c17a43d2d35
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749130"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067942"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した Windows 仮想マシンの管理方法の説明
 

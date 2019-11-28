@@ -1,26 +1,23 @@
 ---
-title: Terraform と Azure プロバイダーのデプロイ スロットの使用
+title: チュートリアル - Terraform を使用して Azure デプロイ スロットでインフラストラクチャをプロビジョニングする
 description: Terraform と Azure プロバイダーのデプロイ スロットの使用に関するチュートリアル
-services: terraform
-ms.service: azure
-keywords: terraform, devops, 仮想マシン, Azure, デプロイ スロット
+ms.service: terraform
 author: tomarchermsft
-manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 09/20/2019
-ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.date: 11/07/2019
+ms.openlocfilehash: 0bfd10325f1a62e74f0d3573f052d114069491a3
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169828"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838060"
 ---
-# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Terraform を使用し、Azure デプロイ スロットでインフラストラクチャをプロビジョニングする
+# <a name="tutorial-provision-infrastructure-with-azure-deployment-slots-using-terraform"></a>チュートリアル:Terraform を使用して Azure デプロイ スロットでインフラストラクチャをプロビジョニングする
 
 [Azure デプロイ スロット](/azure/app-service/deploy-staging-slots)を使用し、アプリの異なるバージョン間をスワップできます。 この機能によって、デプロイ分断の影響が最小限に抑えられます。 
 
-この記事では、GitHub と Azure を使用して 2 つのアプリをデプロイする方法を説明しながら、デプロイ スロットの使用例を紹介します。 1 つのアプリが運用スロットでホストされています。 2 番目のアプリはステージング スロットでホストされています。 ("production" と "staging" という名前は任意であり、シナリオを表す任意の名前を付けることができます)。デプロイ スロットを構成すると、必要に応じて Terraform を使用して 2 つのスロット間をスワップできます。
+この記事では、GitHub と Azure を使用して 2 つのアプリをデプロイする方法を説明しながら、デプロイ スロットの使用例を紹介します。 1 つのアプリが運用スロットでホストされています。 2 番目のアプリはステージング スロットでホストされています。 ("運用" と "ステージング" という名前は任意です。 これらは、実際のシナリオに適したものにすることができます。)デプロイ スロットを構成したら、必要に応じて Terraform を使用して 2 つのスロット間をスワップします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,13 +61,11 @@ ms.locfileid: "71169828"
     cd deploy
     ```
 
-1. [vi エディター](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html)を使用して、`deploy.tf` という名前のファイルを作成します。 このファイルには、[Terraform 構成](https://www.terraform.io/docs/configuration/index.html)が含まれます。
+1. Cloud Shell で、`deploy.tf` という名前のファイルを作成します。
 
     ```bash
-    vi deploy.tf
+    code deploy.tf
     ```
-
-1. I キーを選択し、挿入モードに入ります。
 
 1. 以下のコードをエディターに貼り付けます。
 
@@ -85,8 +80,8 @@ ms.locfileid: "71169828"
 
     resource "azurerm_app_service_plan" "slotDemo" {
         name                = "slotAppServicePlan"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
         sku {
             tier = "Standard"
             size = "S1"
@@ -95,27 +90,21 @@ ms.locfileid: "71169828"
 
     resource "azurerm_app_service" "slotDemo" {
         name                = "slotAppService"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
     }
 
     resource "azurerm_app_service_slot" "slotDemo" {
         name                = "slotAppServiceSlotOne"
-        location            = "${azurerm_resource_group.slotDemo.location}"
-        resource_group_name = "${azurerm_resource_group.slotDemo.name}"
-        app_service_plan_id = "${azurerm_app_service_plan.slotDemo.id}"
-        app_service_name    = "${azurerm_app_service.slotDemo.name}"
+        location            = azurerm_resource_group.slotDemo.location
+        resource_group_name = azurerm_resource_group.slotDemo.name
+        app_service_plan_id = azurerm_app_service_plan.slotDemo.id
+        app_service_name    = azurerm_app_service.slotDemo.name
     }
     ```
 
-1. Esc キーを選択して挿入モードを終了します。
-
-1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
-
-    ```bash
-    :wq
-    ```
+1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
 1. これでファイルが作成されたので、その内容を確認してください。
 
@@ -207,7 +196,7 @@ Terraform によって作成されたすべてのリソースが表示されま�
 
 1. **[デプロイ オプション]** タブで **[OK]** を選択します。
 
-この時点で、production スロットのデプロイが完了しました。 staging スロットをデプロイするには、次の変更のみを加えて、このセクションの前の手順をすべて実行します。
+この時点で、 運用スロットのデプロイが完了しました。 ステージング スロットをデプロイするには、次の変更を加えて前の手順を実行します。
 
 - 手順 3 で、**slotAppServiceSlotOne** リソースを選択します。
 
@@ -219,8 +208,6 @@ Terraform によって作成されたすべてのリソースが表示されま�
 
 前のセクションでは、GitHub の異なるブランチからデプロイするように **slotAppService** と **slotAppServiceSlotOne** の 2 つのスロットを設定しました。 Web アプリケーションをプレビューして、正常にデプロイされたことを確認しましょう。
 
-次の手順を 2 回実行します。 手順 3 では 1 回目に **slotAppService** を選択し、2 回目に **slotAppServiceSlotOne** を選択します。
-
 1. Azure Portal のメイン メニューで、 **[リソース グループ]** を選択します。
 
 1. **[slotDemoResourceGroup]** を選択します。
@@ -231,18 +218,15 @@ Terraform によって作成されたすべてのリソースが表示されま�
 
     ![[概要] タブで [URL] を選択してアプリをレンダリングする](./media/terraform-slot-walkthru/resource-url.png)
 
-> [!NOTE]
-> Azure が GitHub からサイトを構築し、デプロイするには、数分かかることがあります。
->
->
+1. 選択したアプリに応じて、次の結果が表示されます。
+    - **slotAppService** Web アプリ - ページ タイトルが **Slot Demo App 1** という青色のページです。 
+    - **slotAppServiceSlotOne** Web アプリ - ページ タイトルが **Slot Demo App 2** という緑色のページです。
 
-**slotAppService** Web アプリの場合、ページ タイトルが **Slot Demo App 1** という青色のページが表示されます。 **slotAppServiceSlotOne** Web アプリの場合、ページ タイトルが **Slot Demo App 2** という緑色のページが表示されます。
-
-![アプリをプレビューしてアプリが正しくデプロイされたことをテストする](./media/terraform-slot-walkthru/app-preview.png)
+    ![アプリをプレビューしてアプリが正しくデプロイされたことをテストする](./media/terraform-slot-walkthru/app-preview.png)
 
 ## <a name="swap-the-two-deployment-slots"></a>2 つのデプロイ スロットをスワップする
 
-2 つのデプロイ スロットをスワップするには、次の手順を実行します。
+2 つのデプロイ スロットのスワップをテストするには、次の手順を実行します。
  
 1. **slotAppService** (ページが青色のアプリケーション) を実行しているブラウザー タブに切り替えます。 
 
@@ -256,13 +240,11 @@ Terraform によって作成されたすべてのリソースが表示されま�
     cd clouddrive/swap
     ```
 
-1. vi エディターを使用し、`swap.tf` という名前のファイルを作成します。
+1. Cloud Shell で、`swap.tf` という名前のファイルを作成します。
 
     ```bash
-    vi swap.tf
+    code swap.tf
     ```
-
-1. I キーを選択し、挿入モードに入ります。
 
 1. 以下のコードをエディターに貼り付けます。
 
@@ -278,13 +260,7 @@ Terraform によって作成されたすべてのリソースが表示されま�
     }
     ```
 
-1. Esc キーを選択して挿入モードを終了します。
-
-1. ファイルを保存し、次のコマンドを入力して vi エディターを終了します。
-
-    ```bash
-    :wq
-    ```
+1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
 1. Terraform を初期化します。
 
@@ -304,7 +280,7 @@ Terraform によって作成されたすべてのリソースが表示されま�
     terraform apply
     ```
 
-1. Terraform がスロットのスワップを完了したら、**slotAppService** Web アプリをレンダリングしているブラウザーに戻り、ページを更新します。 
+1. Terraform がスロットをスワップしたら、ブラウザーに戻ります。 ページを更新します。 
 
 **slotAppServiceSlotOne** ステージング スロットの Web アプリは、production スロットとスワップされ、緑色にレンダリングされます。 
 
@@ -317,3 +293,8 @@ terraform apply
 ```
 
 アプリがスワップされると、元の構成が表示されます。
+
+## <a name="next-steps"></a>次の手順
+
+> [!div class="nextstepaction"] 
+> [Azure での Terraform の使用について詳細を参照](/azure/terraform)

@@ -1,19 +1,15 @@
 ---
-title: Azure Backup 用 Azure Resource Manager テンプレート
+title: Azure Resource Manager のテンプレート
 description: Recovery Services コンテナーと Azure Backup 機能で使用するための Azure Resource Manager テンプレート
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: sample
 ms.date: 01/31/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 11f92e619f03f2e324125a6246d758ca99b5ce84
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c05f345c6c5df5d0350c75e52381c24b0609501
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074748"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172181"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Azure Backup 用 Azure Resource Manager テンプレート
 

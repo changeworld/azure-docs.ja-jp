@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery の最新情報
-description: Azure Site Recovery で導入された新機能の概要を紹介します
+description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 5e3d226b0f15148c5ac4a9da84462f4a3277e112
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: af1b531ac1b38921a99284aad2108e4027d97f4c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383558"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091709"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -20,11 +20,60 @@ ms.locfileid: "72383558"
 
 [Azure 更新プログラム](https://azure.microsoft.com/updates/?product=site-recovery) チャネルで Site Recovery の更新通知をフォローし、サブスクライブすることができます。
 
+
+
+## <a name="supported-updates"></a>サポートされる更新プログラム
+
+Site Recovery コンポーネントでは、N-4 バージョン (N は最新リリース バージョン) がサポートされています。 これらの概要を次の表に示します。
+
+**Update** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
+--- | --- | --- | --- | --- | ---
+[ロールアップ 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
+[ロールアップ 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
+[ロールアップ 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
+[ロールアップ 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
+[ロールアップ 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
+        
+
+更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
+
+
+## <a name="updates-november-2019"></a>更新プログラム (2019 年 11 月)
+
+### <a name="update-rollup-42"></a>更新プログラム ロールアップ 42
+
+[更新プログラム ロールアップ 42](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**Update** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
+
+
+## <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+
+Azure VM ディザスター リカバリーの新機能をまとめて表に示します。
+
+**機能** | **詳細**
+--- | ---
+**UEFI** | Site Recovery では、UEFI ベースのブート アーキテクチャを使用した Azure VM のディザスター リカバリーがサポートされるようになりました。
+**Linux** | Site Recovery では、Azure Disk Encryption (ADE) を使用して Linux を実行する Azure VM がサポートされるようになりました。
+**第 2 世代** | すべての第 2 世代 Azure VM でディザスター リカバリーがサポートされるようになりました。
+**リージョン** | ノルウェー geo 内の Azure VM に対してディザスター リカバリーを有効にできるようになりました。
+
+### <a name="vmware-to-azure-disaster-recovery"></a>VMware から Azure へのディザスター リカバリー
+
+VMware から Azure へのディザスター リカバリーの新機能をまとめて表に示します。
+
+**機能** | **詳細**
+--- | ---
+**UEFI** | Site Recovery では、UEFI ベースのブート アーキテクチャを使用した VMware VM のディザスター リカバリーがサポートされるようになりました。<br/><br/> サポートされるオペレーティング システムには、Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、SLES 12 SP4、RHEL 8 が含まれます。
+
 ## <a name="update-to-servicing-stack-updatesha-2"></a>サービス スタック更新プログラム/SHA-2の更新
 
 Azure VM からセカンダリ リージョンへのディザスター リカバリー、またはオンプレミスの VMware VM や物理サーバーから Azure へのディザスター リカバリーの場合は、次の点に注意してください。
 
-- バージョン 9.30.x.x (2019 年 11 月以降で予期されるリリース) のモビリティ サービス拡張機能 (Azure VM の場合) およびモビリティ サービス エージェント (VMware/物理マシンの場合) 以降、一部のコンピューター オペレーティング システムではサービス スタック更新プログラムと SHA-2 が実行されている必要があります。 詳細については、次の表を参照してください。
+- バージョン 9.30.5407.1 のモビリティ サービス拡張機能 (Azure VM の場合) およびモビリティ サービス エージェント (VMware/物理マシンの場合) 以降、一部のコンピューター オペレーティング システムではサービス スタック更新プログラムと SHA-2 が実行されている必要があります。 詳細については、次の表を参照してください。
 - リンクされた KB に従って、更新プログラムと SHA-2 をインストールします。 SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。
 - SHA-2 のアップグレードと要件についての詳細は、[こちら](https://aka.ms/SHA-2KB)でご確認ください。
 
@@ -35,27 +84,43 @@ Azure VM からセカンダリ リージョンへのディザスター リカバ
 **Windows 7 SP1** | [サービス スタック更新プログラム](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)| [サービス スタック更新プログラム](https://support.microsoft.com/help/4490628)<br/> [SHA-2](https://support.microsoft.com/help/4474419)
 
 
-## <a name="supported-updates"></a>サポートされる更新プログラム
 
-Site Recovery コンポーネントでは、N-4 バージョン (N は最新リリース バージョン) がサポートされています。 これらの概要を次の表に示します。
+## <a name="updates-october-2019"></a>更新プログラム (2019 年 10 月)
 
-**Update** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
---- | --- | --- | --- | --- | ---
-[ロールアップ 40](https://support.microsoft.com/help/4517283/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
-[ロールアップ 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
-[ロールアップ 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
-[ロールアップ 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
-[ロールアップ 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
-        
+### <a name="update-rollup-41"></a>更新プログラム ロールアップ 41
 
-更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
+[更新プログラム ロールアップ 41](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**Update** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+
+Azure VM ディザスター リカバリーの新機能をまとめて表に示します。
+
+**機能** | **詳細**
+--- | ---
+**テスト フェールオーバーの設定** | テスト フェールオーバーを設定するときに、テスト フェールオーバー VM とネットワークの設定を構成できるようになりました。これには、IP アドレス、NSG、内部負荷分散、および各マシン NIC のパブリック IP アドレスが含まれます。 これらの設定は省略可能であり、現在の動作は変更されません。 これらの設定を構成しない場合は、テスト フェールオーバー時に Azure VNet を選択できます。 [詳細情報](https://azure.microsoft.com/blog/customize-networking-for-dr-drills-azure-site-recovery/)。
+**復旧計画** | 復旧計画は、フェールオーバーの信頼性を確保するために、100 VM に制限されるようになりました。
+
+### <a name="vmware-to-azure-disaster-recovery"></a>VMware から Azure へのディザスター リカバリー
+
+VMware から Azure へのディザスター リカバリーの新機能をまとめて表に示します。
+
+**機能** | **詳細**
+--- | ---
+**復旧計画** | 復旧計画は、フェールオーバーの信頼性を確保するために、100 VM に制限されるようになりました。
 
 
 ## <a name="updates-september-2019"></a>更新プログラム (2019 年 9 月)
 
 ### <a name="update-rollup-40"></a>更新プログラム ロールアップ 40
 
-[更新プログラム ロールアップ 40](h https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) では、以下の更新が提供されます。
+[更新プログラム ロールアップ 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) では、以下の更新が提供されます。
 
 **Update** | **詳細**
 --- | ---

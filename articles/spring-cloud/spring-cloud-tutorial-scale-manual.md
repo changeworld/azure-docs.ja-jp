@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/06/2019
-ms.openlocfilehash: 31b2322bdf7b7c03ae8974d57ee1b44c2f6137b9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: cce7562c74577f6fd545bcaed3ee3e0968fd40b4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607523"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132889"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>チュートリアル:Azure Spring Cloud でアプリケーションをスケーリングする
 
@@ -31,13 +31,15 @@ ms.locfileid: "73607523"
 
 1. Azure Spring Cloud の **[概要]** ページに移動します。
 
+1. サービスが含まれるリソース グループを選択します。
+
 1. 左側のメニューにある **[設定]** 見出しの下の **[アプリ]** タブに移動します。
 
 1. スケーリングするアプリケーションを選択します。 この例では、"account-service" という名前のアプリケーションをスケーリングします。 アプリケーションの **[概要]** ページが表示されます。
 
-1. 左側のメニューにある **[設定]** 見出しの下の **[スケール]** タブに移動します。 前述のスケーリング属性ごとの行があるフォームが表示されます。
+1. 左側のメニューにある **[設定]** 見出しの下の **[スケール]** タブに移動します。 次のセクションに示されているスケーリング属性のオプションが表示されます。
 
-## <a name="scale-your-application"></a>アプリケーションをスケーリングする
+## <a name="scale-your-application"></a>アプリケーションのスケーリング
 
 スケーリング属性を変更できます。 次の点に注意してください。
 
@@ -45,9 +47,11 @@ ms.locfileid: "73607523"
 
 * **メモリ (GB)** : 許可されるメモリの最大量は、アプリケーション インスタンスごとに 8 GB です。  アプリケーションのメモリの総量は、ここで設定した値にアプリケーション インスタンスの数を掛けた値になります。
 
-* **インスタンス数**:Standard レベルでは、最大 20 個のインスタンスをスケールアウトできます。 この値は、マイクロサービス アプリケーションの個別の実行インスタンスの数を変更します。
+* **App instance count (アプリ インスタンス数)** :Standard レベルでは、最大 20 個のインスタンスをスケールアウトできます。 この値は、マイクロサービス アプリケーションの個別の実行インスタンスの数を変更します。
 
 スケーリング設定を適用するには、必ず **[保存]** ボタンをクリックしてください。
+
+![Azure portal のスケール サービス](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
 数秒後、行った変更が **[概要]** ページに表示され、詳細は **[アプリケーション インスタンス]** タブで確認できるようになります。スケーリングには、コードの変更や再デプロイは不要です。
 

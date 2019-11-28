@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/30/2019
+ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3f3d7eb0fe544316aec1ce1ece45b2c7c1d9085
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: f0399f084e663ab891d59384af263a7faac2f42e
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694712"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73943810"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -45,6 +45,12 @@ Azure Active Directory (Azure AD) のアプリケーション プロキシ サ�
 アプリケーション プロキシを使用するには、Windows Server 2012 R2 以降を実行している Windows サーバーが必要です。 アプリケーション プロキシ コネクタをサーバーにインストールしてください。 このコネクタ サーバーは、Azure 内のアプリケーション プロキシ サービスと、公開予定のオンプレミス アプリケーションに接続する必要があります。
 
 運用環境を高可用性にするため、複数の Windows サーバーを使用することをお勧めします。 このチュートリアルでは、1 つの Windows サーバーで十分です。
+
+> [!IMPORTANT]
+> コネクタを Windows Server 2019 にインストールする場合は、HTTP2 の制限があります。 このバージョンでコネクタを使用するための回避策は、次のレジストリ キーを追加し、サーバーを再起動することです。 これはマシンのレジストリ全体のキーであることに注意してください。 
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+    ```
 
 #### <a name="recommendations-for-the-connector-server"></a>コネクタ サーバーの推奨事項
 
@@ -142,7 +148,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 1. 左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択し、 **[管理]** セクションの **[アプリケーション プロキシ]** を選択します。 コネクタとコネクタ グループはすべてこのページに表示されます。
 1. 詳細を確認するコネクタを表示します。 コネクタは既定で展開されているはずです。 表示したいコネクタが展開されていない場合、そのコネクタを展開して詳細を表示します。 アクティブな緑色のラベルは、コネクタがサービスに接続できることを示します。 ただし、ラベルが緑色であっても、ネットワークの問題のためにコネクタがメッセージを受信できない可能性があります。
 
-    ![Azure AD アプリケーション プロキシ コネクタ](./media/application-proxy-connectors/app-proxy-connectors.png)
+    ![Azure AD アプリケーション プロキシ コネクタ](./media/application-proxy-add-on-premises-application/app-proxy-connectors.png)
 
 コネクタのインストールの詳細については、[アプリケーション プロキシ コネクタのインストール時の問題](application-proxy-connector-installation-problem.md)に関するページを参照してください。
 
@@ -155,7 +161,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
    - **Microsoft AAD アプリケーション プロキシ コネクタ**により、接続が有効になります。
    - **Microsoft AAD アプリケーション プロキシ コネクタ アップデーター**は自動更新サービスです。 アップデーターはコネクタの新しいバージョンをチェックし、必要に応じてコネクタを更新します。
 
-     ![App Proxy Connector services - screenshot](./media/application-proxy-enable/app_proxy_services.png)
+     ![App Proxy Connector services - screenshot](./media/application-proxy-add-on-premises-application/app_proxy_services.png)
 
 1. サービスの状態が **[実行中]** でない場合は、各サービスを右クリックして選択し、 **[開始]** を選択します。
 
@@ -164,10 +170,10 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 環境を準備してコネクタをインストールしたので、Azure AD にオンプレミス アプリケーションを追加する準備ができました。  
 
 1. [Azure Portal](https://portal.azure.com/) に管理者としてサインインします。
-1. 左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
-1. **[エンタープライズ アプリケーション]** を選択し、 **[新しいアプリケーション]** を選択します。
-1. **[オンプレミスのアプリケーション]** を選択します。  
-1. **[独自のオンプレミスのアプリケーションの追加]** セクションで、自分のアプリケーションについて次の情報を指定します。
+2. 左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
+3. **[エンタープライズ アプリケーション]** を選択し、 **[新しいアプリケーション]** を選択します。
+4. **[オンプレミスのアプリケーション]** セクションで、 **[オンプレミスのアプリケーションの追加]** を選択します。
+5. **[独自のオンプレミスのアプリケーションの追加]** セクションで、自分のアプリケーションについて次の情報を指定します。
 
     | フィールド | 説明 |
     | :---- | :---------- |
@@ -177,7 +183,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
     | **事前認証** | ユーザーにアプリケーションへのアクセス権を付与する前にアプリケーション プロキシがユーザーを認証する方法。<br><br>**Azure Active Directory** - アプリケーション プロキシによってユーザーが Azure AD のサインイン ページにリダイレクトされます。これにより、ディレクトリとアプリケーションに対するユーザーのアクセス許可が認証されます。 このオプションは、条件付きアクセスや Multi-Factor Authentication など、Azure AD のセキュリティ機能を活用できるように、既定のままにしておくことをお勧めします。 Microsoft Cloud Application Security を使用してアプリケーションを監視するには、**Azure Active Directory** が必要です。<br><br>**パススルー** - アプリケーションにアクセスするための Azure AD に対するユーザーの認証は必要ありません。 ただし、バックエンドで認証要件を設定できます。 |
     | **コネクタ グループ** | コネクタは、アプリケーションへのリモート アクセスを処理します。コネクタ グループを使用して、コネクタとアプリをリージョン、ネットワーク、または目的別に整理できます。 まだコネクタ グループを作成していない場合、アプリは **[既定]** グループに割り当てられます。<br><br>アプリケーションで接続に Websocket を使用する場合は、グループ内のすべてのコネクタがバージョン 1.5.612.0 以降である必要があります。|
 
-1. 必要に応じて、**追加設定**を構成します。 ほとんどのアプリケーションでは、これらの設定は既定の状態のままにしてください。 
+6. 必要に応じて、**追加設定**を構成します。 ほとんどのアプリケーションでは、これらの設定は既定の状態のままにしてください。 
 
     | フィールド | 説明 |
     | :---- | :---------- |
@@ -188,7 +194,7 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
     | **ヘッダーの URL を変換する** | 認証要求でアプリケーションの元のホスト ヘッダーが必要でない場合を除き、この値は **[はい]** のままにします。 |
     | **Translate URLs in Application Body (アプリケーションの本文内の URL を変換する)** | 他のオンプレミス アプリケーションへのハードコーディングされた HTML リンクがあり、カスタム ドメインを使用しない場合を除き、この値は **[いいえ]** のままにします。 詳細については、[Azure AD アプリケーション プロキシを使用したリンクの変換](application-proxy-configure-hard-coded-link-translation.md)に関する記事を参照してください。<br><br>このアプリケーションを Microsoft Cloud App Security (MCAS) を使用して監視する予定の場合は、この値を **[はい]** に設定します。 詳細については、「[Microsoft Cloud App Security と Azure Active Directory を使用してリアルタイムでのアプリケーション アクセスの監視を構成する](application-proxy-integrate-with-microsoft-cloud-application-security.md)」を参照してください。 |
 
-1. **[追加]** を選択します。
+7. **[追加]** を選択します。
 
 ## <a name="test-the-application"></a>アプリケーションをテストする
 
@@ -201,11 +207,11 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 テスト ユーザーを追加するには:
 
 1. **[エンタープライズ アプリケーション]** を選択し、テストしたいアプリケーションを選択します。
-1. **[はじめに]** を選択し、次に **[テスト用のユーザーを割り当てる]** を選択します。
-1. **[ユーザーとグループ]** で、 **[ユーザーの追加]** を選択します。
-1. **[割り当ての追加]** で、 **[ユーザーとグループ]** を選択します。 **[ユーザーとグループ]** セクションが表示されます。
-1. 追加したいアカウントを選択します。
-1. **[選択]** を選択し、 **[割り当て]** を選択します。
+2. **[はじめに]** を選択し、次に **[テスト用のユーザーを割り当てる]** を選択します。
+3. **[ユーザーとグループ]** で、 **[ユーザーの追加]** を選択します。
+4. **[割り当ての追加]** で、 **[ユーザーとグループ]** を選択します。 **[ユーザーとグループ]** セクションが表示されます。
+5. 追加したいアカウントを選択します。
+6. **[選択]** を選択し、 **[割り当て]** を選択します。
 
 ### <a name="test-the-sign-on"></a>サインオンをテストする
 
