@@ -1,14 +1,14 @@
 ---
-title: IRS 1075 ブループリント サンプル - 概要
+title: IRS 1075 ブループリント サンプルの概要
 description: IRS 1075 ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の IRS 1075 コントロールを評価するのに役立ちます。
 ms.date: 11/19/2019
 ms.topic: sample
-ms.openlocfilehash: 1d2fdac47c590e663a51c11f54a3a135a7a0ed3d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 1edd4b843c6cc8c486961cd2337f7b44e3b190e7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267373"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546786"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>IRS 1075 ブループリント サンプルの概要
 

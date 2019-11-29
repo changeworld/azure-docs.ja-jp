@@ -4,34 +4,116 @@ description: Azure Resource Manager テンプレートで、リソースに関�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 10/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7e13e2bed4e881d12737d8e0df0ff0ba2bb2bca9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: dc39c727526f55039a5e18a8fd2aeeb4f25234a6
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827475"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965626"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
 リソース マネージャーには、リソース値を取得する次の関数が用意されています。
 
+* [extensionResourceId](#extensionresourceid)
 * [list*](#list)
 * [providers](#providers)
 * [reference](#reference)
 * [resourceGroup](#resourcegroup)
 * [resourceId](#resourceid)
-* [サブスクリプション](#subscription)
+* [subscription](#subscription)
+* [subscriptionResourceId](#subscriptionresourceid)
+* [tenantResourceId](#tenantresourceid)
 
 パラメーター、変数、現在のデプロイから値を取得する方法については、「 [デプロイの値関数](resource-group-template-functions-deployment.md)」を参照してください。
+
+## <a name="extensionresourceid"></a>extensionResourceId
+
+```json
+extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
+```
+
+[拡張リソース](extension-resource-types.md)のリソース ID を返します。これは、その機能に追加する別のリソースに適用されるリソースの種類です。
+
+### <a name="parameters"></a>parameters
+
+| パラメーター | 必須 | 種類 | 説明 |
+|:--- |:--- |:--- |:--- |
+| resourceId |はい |string |拡張リソースが適用されるリソースのリソース ID。 |
+| resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
+| resourceName1 |はい |string |リソースの名前。 |
+| resourceName2 |いいえ |string |次のリソース名セグメント (必要な場合)。 |
+
+さらに他のセグメントがリソースの種類に含まれる場合は、続けてリソース名をパラメーターとして追加します。
+
+### <a name="return-value"></a>戻り値
+
+この関数から返されるリソース ID の基本形式は次のとおりです。
+
+```json
+{scope}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+スコープ セグメントは、拡張されるリソースによって変わります。
+
+拡張リソースが**リソース**に適用される場合、リソース ID は次の形式で返されます。
+
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseResourceProviderNamespace}/{baseResourceType}/{baseResourceName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+拡張リソースが**リソース グループ**に適用される場合、形式は次のようになります。
+
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+拡張リソースが**サブスクリプション**に適用される場合、形式は次のようになります。
+
+```json
+/subscriptions/{subscriptionId}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+拡張リソースが**管理グループ**に適用される場合、形式は次のようになります。
+
+```json
+/providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
+```
+
+### <a name="extensionresourceid-example"></a>extensionResourceId の例
+
+次の例では、リソース グループ ロックのリソース ID が返されます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "lockName":{
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "lockResourceId": {
+            "type": "string",
+            "value": "[extensionResourceId(resourceGroup().Id , 'Microsoft.Authorization/locks', parameters('lockName'))]"
+        }
+    }
+}
+```
 
 <a id="listkeys" />
 <a id="list" />
 
 ## <a name="list"></a>list*
 
-`list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)`
+```json
+list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
+```
 
 この関数の構文はリスト操作の名前によって異なります。 実装ごとに、リスト操作をサポートするリソースの種類の値が返されます。 操作名は `list` で始める必要があります。 一般的に使用されるものに `listKeys` と `listSecrets` があります。 
 
@@ -262,7 +344,9 @@ SAS トークンを取得するには、有効期限のオブジェクトを渡�
 
 ## <a name="providers"></a>providers
 
-`providers(providerNamespace, [resourceType])`
+```json
+providers(providerNamespace, [resourceType])
+```
 
 リソース プロバイダーとサポートされているそのリソースの種類に関する情報を返します。 リソースの種類を指定しない場合、関数はリソース プロバイダーでサポートされているすべての種類を返します。
 
@@ -337,7 +421,9 @@ SAS トークンを取得するには、有効期限のオブジェクトを渡�
 
 ## <a name="reference"></a>reference
 
-`reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
+```json
+reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
+```
 
 リソースのランタイム状態を表すオブジェクトを返します。
 
@@ -558,7 +644,9 @@ reference 関数は、リソース定義のプロパティと、テンプレー�
 
 ## <a name="resourcegroup"></a>resourceGroup
 
-`resourceGroup()`
+```json
+resourceGroup()
+```
 
 現在のリソース グループを表すオブジェクトを返します。 
 
@@ -637,7 +725,9 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 ## <a name="resourceid"></a>resourceId
 
-`resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)`
+```json
+resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
+```
 
 リソースの一意の識別子を返します。 リソース名があいまいであるか、同じテンプレート内でプロビジョニングされていないときに、この関数を使用します。 
 
@@ -655,10 +745,23 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 ### <a name="return-value"></a>戻り値
 
-識別子は、次の形式で返されます。
+リソース ID は次の形式で返されます。
 
-**/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}**
+```json
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
 
+[サブスクリプションレベルのデプロイ](deploy-to-subscription.md)で使用する場合、リソース ID は次の形式で返されます。
+
+```json
+/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+ID を他の形式で取得するには、以下を参照してください。
+
+* [extensionResourceId](#extensionresourceid)
+* [subscriptionResourceId](#subscriptionresourceid)
+* [tenantResourceId](#tenantresourceid)
 
 ### <a name="remarks"></a>解説
 
@@ -686,14 +789,6 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
-```
-
-`resourceId()` 関数を[サブスクリプション レベルのデプロイ](deploy-to-subscription.md)で使用した場合、そのレベルでデプロイされたリソースの ID のみを取得できます。 たとえば、ポリシー定義またはロール定義の ID は取得できますが、ストレージ アカウントの ID は取得できません。 リソース グループへのデプロイの場合は、その逆になります。 サブスクリプション レベルでデプロイされたリソースのリソース ID を取得することはできません。
-
-サブスクリプション スコープでデプロイするときにサブスクリプション レベルのリソースのリソース ID を取得するには、次のようにします。
-
-```json
-"[resourceId('Microsoft.Authorization/policyDefinitions', 'locationpolicy')]"
 ```
 
 代替のリソース グループで、ストレージ アカウントや仮想ネットワークを使用するときには、多くの場合にこの関数を使用する必要があります。 次の例は、外部のリソース グループのリソースを簡単に使用する方法を示しています。
@@ -781,7 +876,9 @@ resourceGroup 関数を使用して、リソース グループからリソー�
 
 ## <a name="subscription"></a>subscription
 
-`subscription()`
+```json
+subscription()
+```
 
 現在のデプロイのサブスクリプションの詳細を返します。 
 
@@ -815,6 +912,120 @@ resourceGroup 関数を使用して、リソース グループからリソー�
     }
 }
 ```
+
+## <a name="subscriptionresourceid"></a>subscriptionResourceId
+
+```json
+subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)
+```
+
+サブスクリプション レベルでデプロイされたリソースの一意の識別子を返します。
+
+### <a name="parameters"></a>parameters
+
+| パラメーター | 必須 | 種類 | 説明 |
+|:--- |:--- |:--- |:--- |
+| subscriptionId |いいえ |文字列 (GUID 形式) |既定値は、現在のサブスクリプションです。 別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。 |
+| resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
+| resourceName1 |はい |string |リソースの名前。 |
+| resourceName2 |いいえ |string |次のリソース名セグメント (必要な場合)。 |
+
+さらに他のセグメントがリソースの種類に含まれる場合は、続けてリソース名をパラメーターとして追加します。
+
+### <a name="return-value"></a>戻り値
+
+識別子は、次の形式で返されます。
+
+```json
+/subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+### <a name="remarks"></a>解説
+
+この関数を使用すると、リソース グループではなく、[サブスクリプションにデプロイ](deploy-to-subscription.md)されているリソースのリソース ID を取得できます。 返される ID は、リソース グループ値が含まれていないという点で、[resourceId](#resourceid) 関数から返される値とは異なります。
+
+### <a name="subscriptionresourceid-example"></a>subscriptionResourceID の例
+
+次のテンプレートでは、組み込みのロールが割り当てられます。 リソース グループまたはサブスクリプションにデプロイできます。 また、subscriptionResourceId 関数を使って、組み込みロールのリソース ID を取得することができます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "principalId": {
+            "type": "string",
+            "metadata": {
+                "description": "The principal to assign the role to"
+            }
+        },
+        "builtInRoleType": {
+            "type": "string",
+            "allowedValues": [
+                "Owner",
+                "Contributor",
+                "Reader"
+            ],
+            "metadata": {
+                "description": "Built-in role to assign"
+            }
+        },
+        "roleNameGuid": {
+            "type": "string",
+            "defaultValue": "[newGuid()]",
+            "metadata": {
+                "description": "A new GUID used to identify the role assignment"
+            }
+        }
+    },
+    "variables": {
+        "Owner": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', '8e3af657-a8ff-443c-a75c-2fe8c4bcb635')]",
+        "Contributor": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'b24988ac-6180-42a0-ab88-20f7382dd24c')]",
+        "Reader": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Authorization/roleAssignments",
+            "apiVersion": "2018-09-01-preview",
+            "name": "[parameters('roleNameGuid')]",
+            "properties": {
+                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+                "principalId": "[parameters('principalId')]"
+            }
+        }
+    ]
+}
+```
+
+## <a name="tenantresourceid"></a>tenantResourceId
+
+```json
+tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
+```
+
+テナント レベルでデプロイされたリソースの一意の識別子を返します。
+
+### <a name="parameters"></a>parameters
+
+| パラメーター | 必須 | 種類 | 説明 |
+|:--- |:--- |:--- |:--- |
+| resourceType |はい |string |リソース プロバイダーの名前空間を含むリソースの種類。 |
+| resourceName1 |はい |string |リソースの名前。 |
+| resourceName2 |いいえ |string |次のリソース名セグメント (必要な場合)。 |
+
+さらに他のセグメントがリソースの種類に含まれる場合は、続けてリソース名をパラメーターとして追加します。
+
+### <a name="return-value"></a>戻り値
+
+識別子は、次の形式で返されます。
+
+```json
+/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
+```
+
+### <a name="remarks"></a>解説
+
+テナントにデプロイされているリソースのリソース ID を取得するには、この関数を使用します。 返される ID は、リソース グループまたはサブスクリプションの値を含まないという点で、他のリソース ID 関数から返される値とは異なります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,15 +1,16 @@
 ---
 ms.topic: include
 ms.service: time-series-insights
-author: kingdomofends
-ms.author: adgera
+author: deepakpalled
+ms.author: dpalled
+manager: cshankar
 ms.date: 10/09/2019
-ms.openlocfilehash: 61842a8f410d972c21614f625f7d4f36476cb239
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 038d25a01c02799f48b8430fb6ac3facc1cd3bd6
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72259100"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990858"
 ---
 ## <a name="business-disaster-recovery"></a>ビジネスのディザスター リカバリー
 
@@ -23,8 +24,8 @@ Azure を通じて提供される (および、すべての Time Series Insights
 
 - **フェールオーバー**:Azure では [geo レプリケーションと負荷分散](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)が提供されます。
 - **データ復元**と**ストレージ復旧**: Azure では、[データを保持および復旧するためのいくつかのオプション](https://docs.microsoft.com/azure/architecture/resiliency/recovery-data-corruption)が提供されます。
-- **Site Recovery**:Azure は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) を通じたサイトの復旧機能を提供します。
-- **Azure Backup**:[Azure Backup ](https://docs.microsoft.com/azure/backup/backup-architecture) は、Azure VM のオンプレミス バックアップとクラウド内バックアップの両方をサポートしています。
+- **Azure Site Recovery**:Azure は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/) を通じたサイトの復旧機能を提供します。
+- **Azure Backup**:[Azure Backup](https://docs.microsoft.com/azure/backup/backup-architecture) は、Azure VM のオンプレミス バックアップとクラウド内バックアップの両方をサポートしています。
 
 デバイスやユーザーにグローバルで複数のリージョンにわたる高可用性を提供するには、必ず関連する Azure 機能を有効にしてください。
 
@@ -35,8 +36,8 @@ Azure を通じて提供される (および、すべての Time Series Insights
 
 次のような一部の Azure IoT サービスにも、組み込みのビジネス ディザスター リカバリー機能が含まれています。
 
-- リージョン内冗長性が含まれている [IoT Hub の高可用性ディザスター リカバリー](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr)
-- [Event Hubs ポリシー](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
+- [Azure IoT Hub の高可用ディザスター リカバリー](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr) (リージョン内の冗長性が含まれます)
+- [Azure Event Hubs ポリシー](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr)
 - [Azure Storage の冗長性](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 Time Series Insights を他のサービスと統合すると、ディザスター リカバリーの可能性が向上します。 たとえば、イベント ハブに送信されたテレメトリが、バックアップ Azure Blob Storage データベースに保持される場合があります。

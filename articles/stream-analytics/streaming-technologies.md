@@ -1,5 +1,5 @@
 ---
-title: Azure でリアルタイム分析とストリーミング処理技術を選択する
+title: Azure でリアルタイムおよびストリーム処理ソリューションを選択する
 description: Azure でアプリケーションを構築する目的で、正しいリアルタイム分析とストリーミング処理技術を選択する方法について説明します。
 author: zhongc
 ms.author: zhongc
@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f46a35d971c008b61d4899e30101ea562d3cefea
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 3bde2964c40553d02a56f57f9c459cc6afa3f660
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483401"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72924912"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Azure でリアルタイム分析とストリーミング処理技術を選択する
 

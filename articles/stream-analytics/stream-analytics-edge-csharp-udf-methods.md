@@ -1,6 +1,6 @@
 ---
-title: Azure Stream Analytics Edge ジョブの .NET Standard 関数の開発 (プレビュー)
-description: Stream Analytics Edge ジョブの C# ユーザー定義関数を記述する方法について説明します。
+title: Azure Stream Analytics ジョブ用の .NET Standard 関数を開発する (プレビュー)
+description: Stream Analytics ジョブ用の C# ユーザー定義関数を記述する方法について説明します。
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,18 +8,28 @@ manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 40035b946d0f2b09929f8c7f1ac27231546e6746
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0bc59ac3e55466f8ac06a3a8fa9cf08fecbb5ce3
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692913"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024950"
 ---
-# <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Azure Stream Analytics Edge ジョブの .NET Standard ユーザー定義関数の開発 (プレビュー)
+# <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Azure Stream Analytics ジョブ用の .NET Standard ユーザー定義関数を開発する (プレビュー)
 
-Azure Stream Analytics では、イベント データのストリームを介して変換や計算を実行するための SQL に似たクエリ言語が提供されます。 多くの組み込み関数がありますが、柔軟性を高める必要がある複雑なシナリオもあります。 .NET Standard ユーザー定義関数 (UDF) では、任意の .NET 標準言語 (C#、F# など) で記述された独自の関数を呼び出して、Stream Analytics クエリ言語を拡張できます。 UDF を使用すると、複雑な数学計算の実行や、ML.NET を使用したカスタム ML モデルのインポートが可能になります。また、欠損データにカスタム欠損値補完ロジックを使用することもできます。 Stream Analytics Edge ジョブの UDF 機能は現在プレビュー段階にあります。運用環境のワークロードでは使用しないでください。
+Azure Stream Analytics では、イベント データのストリームを介して変換や計算を実行するための SQL に似たクエリ言語が提供されます。 多くの組み込み関数がありますが、柔軟性を高める必要がある複雑なシナリオもあります。 .NET Standard ユーザー定義関数 (UDF) では、任意の .NET 標準言語 (C#、F# など) で記述された独自の関数を呼び出して、Stream Analytics クエリ言語を拡張できます。 UDF を使用すると、複雑な数学計算の実行や、ML.NET を使用したカスタム ML モデルのインポートが可能になります。また、欠損データにカスタム欠損値補完ロジックを使用することもできます。 Stream Analytics ジョブの UDF 機能は現在プレビュー段階にあります。運用環境のワークロードでは使用しないでください。
+
+クラウド ジョブ用の .NET ユーザー定義関数は、以下で利用できます。
+* 米国中西部 (使用可能)
+* 北ヨーロッパ (使用可能)
+* 米国東部 (使用可能)
+* 米国西部 (まもなくロールアウト)
+* 米国東部 2 (まもなくロールアウト)
+* 西ヨーロッパ (まもなくロールアウト)
+
+別のリージョンでこの機能を使用することに関心がある場合は、[アクセスを要求する](https://aka.ms/ccodereqregion)ことができます。
 
 ## <a name="overview"></a>概要
 Azure Stream Analytics 用 Visual Studio Tools を使用すると、UDF の記述、ローカルでのジョブのテスト (オフラインでも可能)、Azure への Stream Analytics ジョブの発行が容易になります。 Azure に発行されたら、IoT Hub を使用してジョブを IoT デバイスに展開できます。
@@ -65,7 +75,7 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
 
 ### <a name="example"></a>例
 
-この例では、**UDFTest** は C# クラス ライブラリ プロジェクトです。**ASAEdgeUDFDemo** は Azure Stream Analytics Edge プロジェクトであり、**UDFTest** を参照します。
+この例で、**UDFTest** は C# クラス ライブラリ プロジェクトです。**ASAUDFDemo** は Azure Stream Analytics プロジェクトであり、**UDFTest** を参照します。
 
 ![Visual Studio の Azure Stream Analytics IoT Edge プロジェクト](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png)
 
@@ -73,7 +83,7 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
     
    ![Visual Studio で Azure Stream Analytics IoT Edge プロジェクトをビルドする](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png)
 
-2. ASA Edge プロジェクトに C# プロジェクトへの参照を追加します。 [参照] ノードを右クリックし、[参照の追加] を選択します。
+2. ASA プロジェクトに C# プロジェクトへの参照を追加します。 [参照] ノードを右クリックし、[参照の追加] を選択します。
 
    ![Visual Studio で C# プロジェクトへの参照を追加する](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png)
 
@@ -97,7 +107,7 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
 
    ![Visual Studio での C# 関数の構成](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png)
 
-8. C# 関数の構成で、 **[Load from ASA Project Reference]\(ASA プロジェクト参照から読み込む\)** を選択し、ドロップダウン リストから関連するアセンブリ、クラス、メソッドの名前を選択します。 Stream Analytics Edge クエリでメソッド、型、関数を参照するには、クラスを *public* として定義し、オブジェクトを *static public* として定義する必要があります。
+8. C# 関数の構成で、 **[Load from ASA Project Reference]\(ASA プロジェクト参照から読み込む\)** を選択し、ドロップダウン リストから関連するアセンブリ、クラス、メソッドの名前を選択します。 Stream Analytics クエリでメソッド、型、関数を参照するには、クラスを *public* として定義し、オブジェクトを *static public* として定義する必要があります。
 
    ![Stream Analytics の C# 関数の構成](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png)
 
@@ -105,26 +115,25 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
 
 任意の IDE で .NET Standard UDF を作成し、Azure Stream Analytics クエリから呼び出すことができます。 まず、コードをコンパイルし、すべての DLL をパッケージ化します。 パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用します。 その後、Azure ストレージ アカウントのコンテナーのルートに `UserCustomCode.zip` をアップロードします。
 
-アセンブリの zip パッケージが Azure ストレージ アカウントにアップロードされたら、Azure Stream Analytics クエリで関数を使用できます。 必要なのは、Stream Analytics Edge ジョブ構成にストレージ情報を含めることだけです。 Visual Studio Tools ではパッケージをダウンロードしないため、このオプションを使用して関数をローカルでテストすることはできません。 パッケージ パスはサービスに直接解析されます。 
+アセンブリの zip パッケージが Azure ストレージ アカウントにアップロードされたら、Azure Stream Analytics クエリで関数を使用できます。 必要なのは、Stream Analytics ジョブ構成にストレージ情報を含めることだけです。 Visual Studio Tools ではパッケージをダウンロードしないため、このオプションを使用して関数をローカルでテストすることはできません。 パッケージ パスはサービスに直接解析されます。 
 
 ジョブ構成ファイル (`JobConfig.json`) でアセンブリ パスを構成するには、次の操作を行います。
 
 **[User-Defined Code Configuration]\(ユーザー定義コードの構成\)** セクションを展開し、構成に次の推奨値を入力します。
 
- |**設定**  |**推奨値**  |
- |---------|---------|
- |アセンブリ ソース  | クラウドの既存のアセンブリ パッケージ。    |
- |Resource  |  現在のアカウントからデータを選択します   |
- |サブスクリプション  |  サブスクリプションを選択します。   |
- |ストレージ アカウント  |  ストレージ アカウントを選択します。   |
- |コンテナー  |  ストレージ アカウントに作成したコンテナーを選択します。   |
-
-![Visual Studio での Azure Stream Analytics Edge ジョブの構成](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
+   |**設定**|**推奨値**|
+   |-------|---------------|
+   |グローバル ストレージ設定のリソース|現在のアカウントからデータ ソースを選択します|
+   |グローバル ストレージ設定のサブスクリプション| <お客様のサブスクリプション>|
+   |グローバル ストレージ設定のストレージ アカウント| <お客様のストレージ アカウント>|
+   |カスタム コード ストレージ設定のリソース|現在のアカウントからデータ ソースを選択します|
+   |カスタム コード ストレージ設定のストレージ アカウント|<お客様のストレージ アカウント>|
+   |カスタム コード ストレージ設定のコンテナー|<お客様のストレージ コンテナー>|
+   |カスタム コード アセンブリ ソース|クラウドの既存のアセンブリ パッケージ|
+   |カスタム コード アセンブリ ソース|UserCustomCode.zip|
 
 ## <a name="limitations"></a>制限事項
 現在、UDF プレビューには次の制限があります。
-
-* .NET Standard 言語は、IoT Edge の Azure Stream Analytics でのみ使用できます。 クラウド ジョブの場合、JavaScript ユーザー定義関数を記述できます。 詳細については、[Azure Stream Analytics の JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) に関するチュートリアルをご覧ください。
 
 * .NET Standard UDF は Visual Studio でのみ作成でき、Azure に発行できます。 Azure portal の **[関数]** には、.NET Standard UDF の読み取り専用バージョンが表示されます。 .NET Standard 関数の作成は、Azure portal ではサポートされていません。
 
@@ -134,6 +143,6 @@ UDF パッケージの形式では、パス `/UserCustomCode/CLR/*` を使用し
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル:Azure Stream Analytics Edge ジョブの C# ユーザー定義関数を記述する (プレビュー)](stream-analytics-edge-csharp-udf.md)
+* [チュートリアル:Azure Stream Analytics ジョブの C# ユーザー定義関数を記述する (プレビュー)](stream-analytics-edge-csharp-udf.md)
 * [チュートリアル:Azure Stream Analytics の JavaScript ユーザー定義関数](stream-analytics-javascript-user-defined-functions.md)
 * [Visual Studio を使用して Azure Stream Analytics ジョブを表示する](stream-analytics-vs-tools.md)

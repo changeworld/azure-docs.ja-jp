@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/30/2019
+ms.date: 10/24/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 9306e44655bd172343f20ac4fda2b2c56afcfb88
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 603de4d9bed936ecb91f130b0e30f6d1383a9092
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164484"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72935804"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>チュートリアル: 推奨事項に従ってコストを最適化する
 
@@ -29,10 +29,10 @@ Azure Cost Management は Azure Advisor と連携して、コストの最適化�
 > * アクションを検証して仮想マシンが確実にサイズ変更されたことを確認する
 
 ## <a name="prerequisites"></a>前提条件
-推奨事項は、各種のスコープと Azure アカウント ([Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様を含む) を対象に公開されています。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
+さまざまなスコープと Azure アカウントの種類に関する推奨事項があります。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
-- サブスクリプション
-- リソース グループ
+- Subscription
+- Resource group
 
 14 日間以上のアクティビティがあるアクティブな仮想マシンが必要です。
 
@@ -63,7 +63,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサイ�
 
 ## <a name="act-on-a-recommendation"></a>推奨事項に従う
 
-Azure Advisor は、仮想マシンの使用状況を 14 日間にわたって監視して、使用率が低い仮想マシンを識別します。 CPU 使用率が 5% 以下で、ネットワークの使用率が 7 MB 以下である日が 4 日以上ある仮想マシンは、使用率が低い仮想マシンと見なされます。
+Azure Advisor は、仮想マシンの使用状況を 7 日間にわたって監視して、使用率が低い仮想マシンを識別します。 CPU 使用率が 5% 以下で、ネットワークの使用率が 7 MB 以下である日が 4 日以上ある仮想マシンは、使用率が低い仮想マシンと見なされます。
 
 5% 以下の CPU 使用率設定が既定値ですが、この設定は調整できます。 設定の調整について詳しくは、[使用率の低い仮想マシンの推奨事項について平均 CPU 使用率ルールを構成する](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation)方法についての記事をご覧ください。
 
@@ -79,14 +79,14 @@ VM の詳細で、仮想マシンの使用率を確認して、適切なサイ�
 
 現在の仮想マシンのサイズをメモします。 仮想マシンのサイズを変更する必要があることを確認したら、仮想マシンの詳細を閉じて仮想マシンの一覧を表示します。
 
-シャットダウンまたはサイズを変更する候補の一覧から **[仮想マシンのサイズ変更]** を選択します。
+シャットダウンまたはサイズを変更する候補の一覧で、**[ *&lt;FromVirtualMachineSKU&gt;* to *&lt;ToVirtualMachineSKU&gt;*]\(<FromVirtualMachineSKU> から <ToVirtualMachineSKU> へのサイズ変更\)** を選択します。
 ![仮想マシンのサイズを変更するオプションを伴う推奨事項の例](./media/tutorial-acm-opt-recommendations/resize-vm.png)
 
-次に、使用できるサイズ変更オプションの一覧が表示されます。 実際にシナリオに対応するベスト プラクティスと費用対効果を実現するものを選択します。 次の例で、選択されているオプションは **DS14\_V2** から **DS13\_V2** へのサイズ変更です。 この推奨事項に従うと、551.30 ドル/月または 6,615.60 ドル/年を節約できます。
+次に、使用できるサイズ変更オプションの一覧が表示されます。 実際にシナリオに対応するベスト プラクティスと費用対効果を実現するものを選択します。 次の例では、選択したオプションが **Standard_D8s_v3** から **Standard_D2s_v3** にサイズ変更されます。
 
 ![サイズを選択できる使用可能な VM サイズの一覧の例](./media/tutorial-acm-opt-recommendations/choose-size.png)
 
-適切なサイズを選択したら、 **[選択]** をクリックしてサイズ変更アクションを開始します。
+適切なサイズを選択したら、 **[サイズ変更]** を選択してサイズ変更アクションを開始します。
 
 サイズ変更には、アクティブに実行されている仮想マシンを再起動する必要があります。 仮想マシンが運用環境内にある場合は、営業時間後にサイズ変更操作を実行することをお勧めします。 再起動のスケジュールを設定すると、一時的な使用不能による中断を減らすことができます。
 

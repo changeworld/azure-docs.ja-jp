@@ -1,6 +1,6 @@
 ---
 title: SQL Server 仮想マシンに保存されたデータを探索する - Team Data Science Process
-description: Azure の SQL Server 仮想マシンに保存されたデータを探索し、特徴を生成します。
+description: Azure の SQL Server 仮想マシンで Python または SQL を使用してデータを探索および処理し、特徴を生成します。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e407b26091ad559ab458f76d94e2460660ecd14f
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 877c639c35378b173b6ec9c8697725e3b3c09290
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036609"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053611"
 ---
 # <a name="heading"></a>Azure の SQL Server 仮想マシンでデータを処理する
 このドキュメントでは、Azure の SQL Server VM に保存されたデータを探索し、データの特徴を生成する方法について説明します。 これは、SQL を使用してデータを処理するか、Python などのプログラミング言語を使用して実行できます。

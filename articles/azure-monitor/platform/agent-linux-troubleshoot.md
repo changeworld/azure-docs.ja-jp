@@ -1,24 +1,18 @@
 ---
 title: Azure Log Analytics Linux エージェントのトラブルシューティング | Microsoft Docs
 description: Azure Monitor の Linux 用 Log Analytics エージェントに関する最も一般的な問題の現象、原因、および解決策について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 11/13/2018
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 732c93688dbc73cb5a4ce21e4669744be61c5925
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.date: 11/13/2018
+ms.openlocfilehash: 5b828f62d5a8c7c518f3d28e92f52aac3b77f65c
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299563"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932811"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -192,7 +186,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 ## <a name="issue-you-see-omiagent-using-100-cpu"></a>問題: omiagent が 100% の CPU を使用している
 
 ### <a name="probable-causes"></a>考えられる原因
-nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) の回帰によって、重大なパフォーマンス上の問題が発生しました。これは、Redhat/Centos 7.x のディストリビューションで多く発生しています。 この問題の詳細については、[libcurl でのパフォーマンス低下のバグ (1667121)](https://bugzilla.redhat.com/show_bug.cgi?id=1667121)に関するドキュメントを確認してください。
+nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) の回帰によって、重大なパフォーマンス上の問題が発生しました。これは、Redhat/Centos 7.x のディストリビューションで多く発生しています。 この問題の詳細については、次のドキュメントを参照してください。バグ [1667121 の libcurl のパフォーマンス低下](https://bugzilla.redhat.com/show_bug.cgi?id=1667121)に関するページを参照してください。
 
 パフォーマンスに関連したバグは常に発生するわけではなく、再現するのは非常に困難です。 omiagent でそのような問題が発生する場合は、スクリプト omiHighCPUDiagnostics.sh を使用してください。これは、特定のしきい値を超えると、omiagent のスタック トレースを収集します。
 

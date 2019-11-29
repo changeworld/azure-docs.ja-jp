@@ -322,6 +322,8 @@
       href: reference-connect-version-history.md
     - name: Azure AD Connect Health のバージョン履歴
       href: reference-connect-health-version-history.md
+    - name: Azure AD パススルー認証エージェントのバージョン履歴
+      href: reference-connect-pta-version-history.md
     - name: コネクタのバージョンの
       href: reference-connect-sync-connector-version-history.md
     - name: アカウントとアクセス許可

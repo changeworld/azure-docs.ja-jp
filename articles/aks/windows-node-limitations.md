@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: a0fe65428a3329d4843ec913e934fb7a91b13759
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 2cec24e5ea50360531e247b37369802f3ef4e336
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000217"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72990296"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
@@ -89,6 +89,10 @@ Azure Dev Spaces は現在、Linux ベースのノード プールに対して�
 ## <a name="can-my-windows-server-containers-use-gmsa"></a>Windows Server コンテナーで gMSA を使用できますか?
 
 グループの管理されたサービス アカウント (gMSA) のサポートは、現在 AKS では使用できません。
+
+## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Windows ノードとコンテナーを含むコンテナーには Azure Monitor を使用できますか?
+
+はい。ただし、Azure Monitor を使って Windows コンテナーからログ (stdout) を収集することはできません。 Windows コンテナーからの stdout ログのライブ ストリームにアタッチすることはできます。
 
 ## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>サポートされていない機能が必要な場合はどうすればよいですか?
 

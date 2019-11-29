@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6e74830a3a62ea54c5d8e7f9815fe2ba6eed6d58
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 370717e09e788faa56662c4c88e2e7c0de21eef7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166505"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933151"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure BLOB ファイルシステム ドライバー (ABFS):Hadoop 専用の Azure Storage ドライバー
 
@@ -50,15 +50,18 @@ Hadoop アプリケーションが Data Lake Storage Gen2 対応アカウント�
 
 - **Azure Active Directory OAuth ベアラー トークン:** Azure AD ベアラー トークンは、エンド ユーザーの ID または構成されているサービス プリンシパルのいずれかを使用してドライバーによって取得および更新されます。 この認証モデルを使用すると、すべてのアクセスは、指定したトークンに関連付けられた ID を使用して呼び出しごとに承認され、割り当てられた POSIX アクセス制御リスト (ACL) に対して評価されます。
 
+   > [!NOTE] 
+   > Azure Data Lake Storage Gen2 は、Azure AD v1.0 エンドポイントのみをサポートします。
+
 ### <a name="configuration"></a>構成
 
 ABFS ドライバーのすべての構成は <code>core-site.xml</code> 構成ファイルに格納されます。 [Ambari](https://ambari.apache.org/) を備えた Hadoop ディストリビューションでは、構成は Web ポータルまたは Ambari REST API を使用して管理することもできます。
 
-サポートされるすべての構成エントリの詳細は、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html)で指定されています。
+サポートされるすべての構成エントリの詳細は、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)で指定されています。
 
 ### <a name="hadoop-documentation"></a>Hadoop ドキュメント
 
-ABFS ドライバーについては、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/r3.2.0/hadoop-azure/abfs.html)に完全に記載されています
+ABFS ドライバーについては、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)に完全に記載されています
 
 ## <a name="next-steps"></a>次の手順
 

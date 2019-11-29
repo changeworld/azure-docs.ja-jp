@@ -1,18 +1,18 @@
 ---
 title: HDInsight 4.0 の概要 - Azure
 description: HDInsight 3.6 と HDInsight 4.0 の機能、制限事項、アップグレードの推奨事項を比較します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: 74cd6a6919db1c01535fb984d1e8e0d0ad2d5ade
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 10/22/2019
+ms.openlocfilehash: 0463e3297bbb2fda50adfeefaa89f0a7a3ef8b0a
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879336"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901524"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 の概要
 
@@ -40,7 +40,7 @@ Hive は、データ ウェアハウスでのクエリ処理を高速化する�
 
 HDI 4.0 に含まれる Apache Hive 3 では、Hive ウェアハウス内に存在するトランザクション テーブルに対して、原子性、一貫性、分離性、持続性 (ACID) への対応が要求されます。 ACID に準拠しているテーブルおよびテーブルのデータは、Hive によってアクセスされて管理されます。 作成、取得、更新、削除 (CRUD) テーブル内のデータは Optimized Row Column (ORC) ファイル形式である必要がありますが、挿入のみのテーブルはすべてのファイル形式をサポートします。
 
-* ACID v2 では、ストレージ形式と実行エンジンの両方でパフォーマンスが向上しています 
+* ACID v2 では、ストレージ形式と実行エンジンの両方でパフォーマンスが向上しています
 
 * データの更新を完全にサポートできるよう、ACID は既定で有効になります。
 
@@ -71,7 +71,6 @@ HDInsight 4.0 上の Apache Spark では、次のシナリオがサポートさ�
 
 詳しくは、[Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html) に関するページをご覧ください。
 
-
 ### <a name="apache-oozie"></a>Apache Oozie
 
 HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されています。
@@ -91,8 +90,8 @@ HDI 4.0 に含まれる Apache Oozie 4.3.1 では以下の点が変更されて�
 ## <a name="limitations"></a>制限事項
 
 * HDInsight 4.0 では、Apache Hive 用 MapReduce はサポートされていません。 代わりに Apache Tez を使用してください。 詳しくは、[Apache Tez](https://tez.apache.org/) に関するページをご覧ください。
-* HDInsight 4.0 では、Apache Storm はサポートされていません。 
-* HDInsight 4.0 では、Hive ビューは使用できなくなります。 
+* HDInsight 4.0 では Apache Storm がサポートされていません。
+* HDInsight 4.0 では、Hive ビューは使用できなくなります。
 * Apache Zeppelin のシェル インタープリターは、Spark および対話型クエリ クラスターではサポートされていません。
 * Spark-LLAP クラスターでは LLAP を "*無効にする*" ことはできません。 LLAP をオフにすることだけができます。
 * Azure Data Lake Storage Gen2 では、Jupyter Notebook を Spark クラスターに保存できません。

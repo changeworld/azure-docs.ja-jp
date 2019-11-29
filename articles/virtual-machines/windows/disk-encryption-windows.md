@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 948712b684d1cd1b072862b7253d745f89b0cc56
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b4795eeb24d1d0ac373a700a6b60b8facec0e37d
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72245928"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064006"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM での Azure Disk Encryption シナリオ
 
@@ -26,15 +26,12 @@ Azure Disk Encryption では、BitLocker 外部キー保護機能を使用して
 - [グループ ポリシーの要件](disk-encryption-overview.md#group-policy-requirements)
 - [暗号化キーのストレージ要件](disk-encryption-overview.md#encryption-key-storage-requirements)
 
-
-
 >[!IMPORTANT]
 > - これまで Azure AD で Azure Disk Encryption を使用して VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 詳細については、「[Azure AD での Azure Disk Encryption (以前のリリース)](disk-encryption-overview-aad.md)」を参照してください。 
 >
 > - ディスクを暗号化する前に[スナップショットを取得](snapshot-copy-managed-disk.md)するか、バックアップを作成する (またはその両方を行う) 必要があります。 バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。 マネージド ディスクを含む VM では、暗号化する前にバックアップが必要になります。 バックアップを作成したら、[Set-AzVMDiskEncryptionExtension cmdlet](/powershell/module/az.compute/set-azvmdiskencryptionextension) コマンドレットで -skipVmBackup パラメーターを指定して、マネージド ディスクを暗号化できます。 暗号化された VM のバックアップと復元方法の詳細については、「[暗号化された Azure VM をバックアップおよび復元する](../../backup/backup-azure-vms-encryption.md)」を参照してください。 
 >
 > - 暗号化を有効または無効にすると、VM が再起動する場合があります。
-
 
 ## <a name="install-tools-and-connect-to-azure"></a>ツールをインストールし、Azure に接続する
 
@@ -244,7 +241,8 @@ Azure PowerShell、Azure CLI、または Resource Manager テンプレートを�
 Azure Disk Encryption は、次のシナリオ、機能、およびテクノロジには対応していません。
 
 - Basic レベルの VM または従来の VM の作成方法を使用して作成された VM を暗号化する。
-- ソフトウェア ベースの RAID システムを使用して構成されている Windows VM を暗号化する。
+- ソフトウェア ベースの RAID システムを使用して構成されている VM を暗号化する。
+- 記憶域スペース ダイレクト (S2D) で構成された VM、または Windows 記憶域スペースで構成された 2016 より前のバージョンの Windows Server を暗号化する。
 - オンプレミスのキー管理システムとの統合。
 - Azure Files (共有ファイル システム)。
 - ネットワーク ファイル システム (NFS)。

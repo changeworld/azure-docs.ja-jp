@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: a44f1e93302b90b88ef63030fab17433855af4ff
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f1ba54547b947e18d2d42520c0fb51a0855fb37c
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143270"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901617"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise マルチセッションに関する FAQ
 
@@ -28,7 +28,7 @@ Windows 10 Enterprise マルチセッション (旧称 Windows 10 Enterprise for
  
 ## <a name="why-does-my-application-report-windows-10-enterprise-multi-session-as-a-server-operating-system"></a>アプリケーションで Windows 10 Enterprise マルチセッションがサーバー オペレーティング システムとして報告されるのはなぜですか?
 
-Windows 10 Enterprise マルチセッションは、Windows 10 Enterprise の仮想エディションです。 違いの 1 つは、このオペレーティング システム (OS) では [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) の値が Windows Server と同じ 2 として報告されることです。 このプロパティにより、OS で、既存の RDSH 管理ツール、RDSH マルチセッション対応アプリケーション、および RDSH 環境の主に低レベルのシステム パフォーマンスの最適化に対する互換性が維持されます。 一部のアプリケーション インストーラーでは、ProductType がクライアントに設定されていることを検出するかどうかによって、Windows 10 マルチセッションへのインストールをブロックすることができます。 アプリがインストールされない場合は、アプリケーション ベンダーに更新バージョンを問い合わせてください。 
+Windows 10 Enterprise マルチセッションは、Windows 10 Enterprise の仮想エディションです。 違いの 1 つは、このオペレーティング システム (OS) では [ProductType](https://docs.microsoft.com/windows/desktop/cimwin32prov/win32-operatingsystem) の値が Windows Server と同じ 3 として報告されることです。 このプロパティにより、OS で、既存の RDSH 管理ツール、RDSH マルチセッション対応アプリケーション、および RDSH 環境の主に低レベルのシステム パフォーマンスの最適化に対する互換性が維持されます。 一部のアプリケーション インストーラーでは、ProductType がクライアントに設定されていることを検出するかどうかによって、Windows 10 マルチセッションへのインストールをブロックすることができます。 アプリがインストールされない場合は、アプリケーション ベンダーに更新バージョンを問い合わせてください。 
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Windows 10 Enterprise マルチセッションをオンプレミスで実行できますか?
 

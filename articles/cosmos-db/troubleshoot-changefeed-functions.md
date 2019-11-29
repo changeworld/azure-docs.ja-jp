@@ -7,12 +7,12 @@ ms.date: 07/17/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 17fa443c3b0113d80a020f2a43c7099cf5a832d2
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e3ff86770ec0337c9a4a11b30c6d88e8365bfa24
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68772897"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73064098"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーを使用するときの問題の診断とトラブルシューティングを行う
 
@@ -60,7 +60,7 @@ Azure Function が次のエラー メッセージで失敗する: "Either the so
 
 Azure portal を使用していて、トリガーを使用する Azure 関数を調べているときに画面の **[実行]** ボタンを選択しようとすると、この問題が発生します。 トリガーを開始するために [実行] を選択する必要はなく、Azure 関数をデプロイすると自動的に開始されます。 Azure portal で Azure 関数のログ ストリームを確認したい場合は、単に監視対象のコンテナーに移動して新しい項目をいくつか挿入すると、トリガーの実行が自動的に表示されます。
 
-### <a name="my-changes-take-too-long-be-received"></a>変更の受信に時間がかかりすぎる
+### <a name="my-changes-take-too-long-to-be-received"></a>変更の受信に時間がかかりすぎる
 
 このシナリオには可能性のある原因が複数あり、それらのすべてを確認する必要があります。
 
@@ -78,7 +78,7 @@ Azure 関数では、多くの場合、受け取った変更の処理が行わ�
 
 一部の変更が宛先で失われる場合、変更を受け取った後の Azure 関数での実行の間に何らかのエラーが発生していることを意味している可能性があります。
 
-このシナリオでの最善の対応策は、コードに `try/catch blocks` を追加し、変更を処理している可能性があるループ内で、項目の特定のサブセットに対する障害を検出して、それらを適切に処理することです (さらに分析するために別のストレージに送信するか、再試行します)。 
+このシナリオでの最善の対応策は、コードに `try/catch` ブロックを追加し、変更を処理している可能性があるループ内で、項目の特定のサブセットに対する障害を検出して、それらを適切に処理することです (さらに分析するために別のストレージに送信するか、再試行します)。 
 
 > [!NOTE]
 > 既定の Cosmos DB 用 Azure Functions トリガーでは、コードの実行中にハンドルされない例外が発生した場合、変更のバッチの再試行は行われません。 つまり、宛先に変更が到達しなかった理由は、それらを処理していないためです。
@@ -103,6 +103,10 @@ Azure 関数では、多くの場合、受け取った変更の処理が行わ�
 このエラーは、Azure Functions プロジェクト (または任意の参照されているプロジェクト) に、[Azure Functions Cosmos DB 拡張機能](./troubleshoot-changefeed-functions.md#dependencies)で提供されているバージョンとは異なるバージョンの Azure Cosmos DB SDK への手動による NuGet の参照が含まれている場合に発生します。
 
 この状況を回避するには、追加された手動による NuGet の参照を削除し、Azure Cosmos DB SDK の参照で Azure Functions Cosmos DB 拡張機能パッケージを介して解決されるようにします。
+
+### <a name="changing-azure-functions-polling-interval-for-the-detecting-changes"></a>変更を検出するための Azure 関数のポーリング間隔を変更する
+
+前の「[変更の受信に時間がかかりすぎる](./troubleshoot-changefeed-functions.md#my-changes-take-too-long-to-be-received)」で説明したように、Azure 関数は、(高い RU 消費を避けるため) 新しい変更を確認する前に、構成可能な時間 (既定では 5 秒) だけスリープ状態になります。 このスリープ時間は、トリガーの[構成](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration)の `FeedPollDelay/feedPollDelay` の設定を使用して構成できます (値はミリ秒単位)。
 
 ## <a name="next-steps"></a>次の手順
 

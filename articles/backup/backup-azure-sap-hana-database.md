@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 50fbd0a2169fb120424d76e786a6269243eeb3e1
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 8d99ff6f2d8a21a501631a3a062be6b05130c05b
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72273954"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72931813"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA データベースを Azure にバックアップする
 
@@ -53,6 +53,9 @@ ms.locfileid: "72273954"
     sudo zypper update
     sudo zypper install unixODBC
     ```
+
+    > [!NOTE]
+    > リポジトリを更新しない場合は、unixODBC のバージョンが 2.3.4 以降であることを確認してください。 uniXODBC のバージョンを確認するには、root として ```odbcinst -j``` を実行します。
 
 2. [以下](#set-up-network-connectivity)の手順の説明に従って、Azure に到達できるように、VM からインターネットへの接続を許可します。
 

@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/25/2019
+ms.date: 10/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 65a049070806fd702497d50236e9d541de2e8b1a
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: dff222788480eea882614ad29478df1dce359199
+ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71842296"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73101287"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -114,6 +114,7 @@ ms.locfileid: "71842296"
 | [Managed Applications 閲覧者](#managed-applications-reader) | マネージド アプリおよび要求 JIT アクセスでリソースを読み取ることができます。 |
 | [Managed Identity Contributor](#managed-identity-contributor) | ユーザー割り当て ID の作成、読み取り、更新、削除を行います |
 | [Managed Identity Operator](#managed-identity-operator) | ユーザー割り当て ID の読み取りと割り当てを行います |
+| [マネージド サービスの登録割り当て削除ロール](#managed-services-registration-assignment-delete-role) | マネージド サービスの登録割り当て削除ロールを使用すると、テナント管理ユーザーは、テナントに割り当てられている登録割り当てを削除できます。 |
 | [管理グループ共同作成者](#management-group-contributor) | 管理グループ共同作成者ロール |
 | [管理グループ閲覧者](#management-group-reader) | 管理グループ閲覧者ロール |
 | [Monitoring Contributor](#monitoring-contributor) | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
@@ -279,7 +280,7 @@ ms.locfileid: "71842296"
 > | **説明** | ACR 検査データ閲覧者 |
 > | **Id** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **アクション** |  |
-> | Microsoft.ContainerRegistry/registries/quarantineRead/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
+> | Microsoft.ContainerRegistry/registries/quarantine/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -294,8 +295,8 @@ ms.locfileid: "71842296"
 > | **説明** | ACR 検査データ作成者 |
 > | **Id** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | **アクション** |  |
-> | Microsoft.ContainerRegistry/registries/quarantineRead/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
-> | Microsoft.ContainerRegistry/registries/quarantineWrite/write | 検疫済みイメージの検疫状態を書き込むか変更します |
+> | Microsoft.ContainerRegistry/registries/quarantine/read | コンテナー レジストリから検疫済みのイメージをプルまたは取得します |
+> | Microsoft.ContainerRegistry/registries/quarantine/write | 検疫済みイメージの検疫状態を書き込むか変更します |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -1838,6 +1839,7 @@ ms.locfileid: "71842296"
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | ストレージ アカウントのアクセス キーを一覧表示します。 |
 > | Microsoft.ClassicStorage/storageAccounts/read | 特定のアカウントのストレージ アカウントを返します。 |
 > | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/metricAlerts/* |  |
 > | Microsoft.Insights/diagnosticSettings/* | 分析サーバーの診断の設定の作成、更新、または読み取りを行います |
 > | Microsoft.Insights/logdefinitions/* | このアクセス許可は、ポータルを使用してアクティビティ ログにアクセスする必要があるユーザーに必要です。 アクティビティ ログのログのカテゴリを一覧表示します。 |
 > | Microsoft.Insights/metricDefinitions/* | メトリック定義 (リソースの使用可能なメトリックの種類の一覧) を読み取ります。 |
@@ -1870,6 +1872,7 @@ ms.locfileid: "71842296"
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Insights/alertRules/*/read | Insights のアラート ルールを読み取ります |
+> | Microsoft.Insights/metricAlerts/*/read |  |
 > | Microsoft.Insights/diagnosticSettings/*/read | Logic Apps の診断設定を取得します |
 > | Microsoft.Insights/metricDefinitions/*/read | Logic Apps の利用可能なメトリックを取得します。 |
 > | Microsoft.Logic/*/read | Logic Apps リソースを読み取ります。 |
@@ -1961,6 +1964,23 @@ ms.locfileid: "71842296"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="managed-services-registration-assignment-delete-role"></a>マネージド サービスの登録割り当て削除ロール
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | マネージド サービスの登録割り当て削除ロールを使用すると、テナント管理ユーザーは、テナントに割り当てられている登録割り当てを削除できます。 |
+> | **Id** | 91c1777a-f3dc-4fae-b103-61d183457e46 |
+> | **アクション** |  |
+> | Microsoft.ManagedServices/registrationAssignments/read | マネージド サービスの登録割り当ての一覧を取得します。 |
+> | Microsoft.ManagedServices/registrationAssignments/delete | マネージド サービスの登録割り当てを削除します。 |
+> | Microsoft.ManagedServices/operationStatuses/read | リソースの操作の状態を読み取ります。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |

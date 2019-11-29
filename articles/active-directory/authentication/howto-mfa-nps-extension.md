@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 879404b264e9ea6c544c6edf509001b38997bb0c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d8606ad9afb6642fa29cc3cae523c31e129c7ebd
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874343"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73061481"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -119,7 +119,7 @@ NPS 用にサーバーを指定したので、VPN ソリューションからの
 NPS 拡張機能のデプロイで使用できる認証方法に影響する 2 つの要素があります。
 
 1. RADIUS クライアント (VPN、Netscaler サーバーなど) と NPS サーバー間で使用されるパスワードの暗号化アルゴリズム。
-   - **PAP** は、クラウドでの Azure MFA のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コード) をサポートします。
+   - **PAP** を使うと、クラウドでの Azure MFA のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、OATH ハードウェア トークン、モバイル アプリの確認コード) がサポートされます。
    - **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。
 
       > [!NOTE]
@@ -221,7 +221,7 @@ NPS 拡張機能を使用して RADIUS クライアントに対して MFA を有
 
 MFA に登録されていないユーザーがいる場合は、そのユーザーが認証しようとしたときの動作を決める必要があります。 レジストリ パス *HKLM\Software\Microsoft\AzureMFA* にあるレジストリ設定 *REQUIRE_USER_MATCH* を使用して、この機能の動作を制御します。 この設定の構成オプションは 1 つだけです。
 
-| キー | 値 | 既定値 |
+| Key | 値 | Default |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE または FALSE | 未設定 (TRUE に相当) |
 

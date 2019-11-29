@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI- sfctl compose| Microsoft Docs
 description: Service Fabric CLI sfctl compose のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: dab844246d99b0ab80e1e86219c2064c79e74e4f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: 561616fca7401f5251c4fbac67173260a665b602
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035121"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901669"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Docker Compose アプリケーションを作成、削除、および管理します。
@@ -46,7 +47,7 @@ Service Fabric Compose のデプロイを作成します。
 | --file-path       [必須] | ターゲット Docker Compose ファイルへのパス。 |
 | --encrypted-pass | コンテナー レジストリ パスワードの入力を求めるのではなく、既に暗号化されているパスフレーズを使用します。 |
 | --has-pass | コンテナー レジストリへのパスワードを要求します。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 既定値\: 60。 |
 | --user | コンテナー レジストリに接続するユーザー名。 |
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -70,7 +71,7 @@ Service Fabric クラスターで作成されたまたは作成中の Compose �
 | --- | --- |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
 | --max-results | ページング クエリの一部として返される結果の最大数。 このパラメーターは、返される結果の数に上限を定義します。 返された結果が、構成で定義したメッセージの最大サイズの制限に収まらない場合は、指定した最大結果数よりも少なくなる場合があります。 このパラメーターがゼロまたは指定されていない場合、ページング クエリには、応答メッセージに収まるできるだけ多くの結果が含まれます。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -92,7 +93,7 @@ Service Fabric クラスターで作成されたまたは作成中の Compose �
 |引数|説明|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -114,7 +115,7 @@ Service Fabric クラスターで作成された、または作成中の、パ�
 |引数|説明|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -147,7 +148,7 @@ Service Fabric クラスターで、Compose デプロイのアップグレード
 | --health-check-wait | アップグレード ドメインの完了後、正常性チェック プロセスを開始するまでの、待機時間の長さ。 |
 | --replica-set-check | アップグレード ドメインの処理をブロックし、予期しない問題が発生したときに可用性の損失を防ぐための最長時間。 <br><br> このタイムアウトが期限切れになると、可用性の損失問題に関係なく、アップグレード ドメインの処理が続行されます。 タイムアウトは、各アップグレード ドメインの開始時にリセットされます。 有効な値は 0 から 42949672925 の範囲です (0 と 42949672925 を含みます)。 |
 | --svc-type-health-map | さまざまなサービスの種類の正常性を評価するために使用される正常性ポリシーを記述するオブジェクトの JSON でエンコードされた一覧。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 既定値\: 60。 |
 | --unhealthy-app | エラーを報告する前の異常なアプリケーションの最大許容パーセンテージ。 <br><br> たとえば、アプリケーションの 10% の異常を許容するには、この値を 10 にします。 パーセンテージは、異常な可能性のあるアプリケーションの最大許容パーセンテージを表します。この値を超えるとクラスターはエラーの状態と見なされます。 許容パーセンテージ内であっても、1 つ以上の異常なアプリケーションがある場合は、正常性は Warning として評価されます。 これは、異常なアプリケーションの数をクラスター内のアプリケーション インスタンスの総数で割ることによって計算されます。 |
 | --upgrade-domain-timeout | 各ドメインがアップグレードを完了する必要がある時間。この時間を超えると、FailureAction が実行されます。 <br><br> 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 |
 | --upgrade-kind | 既定値\: Rolling。 |
@@ -176,7 +177,7 @@ Service Fabric Compose のデプロイのアップグレードをロールバッ
 |引数|説明|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -198,7 +199,7 @@ Compose デプロイ アップグレードの状態、およびアプリケー�
 |引数|説明|
 | --- | --- |
 | --deployment-name [必須] | デプロイの ID。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 

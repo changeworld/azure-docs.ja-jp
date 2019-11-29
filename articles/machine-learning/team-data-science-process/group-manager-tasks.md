@@ -1,6 +1,6 @@
 ---
 title: Team Data Science Process のグループ マネージャーのタスク
-description: データ サイエンス チーム プロジェクトのグループ マネージャーのタスクの詳細な手順を説明します。
+description: データ サイエンス チーム プロジェクトでグループ マネージャーが行うタスクの詳細な手順を説明します。
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/24/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f95bb30f547e863fc7a796e69fffe1e2334e489c
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: a3d23950f5cbfaac00b03b25e3c19078c76ad0a5
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326811"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053306"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Team Data Science Process のグループ マネージャーのタスク
 
@@ -167,8 +167,8 @@ TDSP チーム リポジトリをインポートするには:
 
 - DSVM を作成する場合は、Azure サブスクリプション。
 - コンピューターにインストールされた Git。 DSVM を使用している場合、Git は事前にインストールされています。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。
-- DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細および手順については、[Data Science Virtual Machine のドキュメント](/azure/machine-learning/data-science-virtual-machine/)を参照してください。
-- Windows DSVM の場合は、コンピューターにインストールされた [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows)。 *README.md* ファイルで、下へスクロールして「**ダウンロードとインストール**」セクションを表示し、**最新のインストーラー**を選択します。 インストーラーのページから *.exe* インストーラーをダウンロードして実行します。 
+- DSVM を使用する場合は、Azure で作成して構成された Windows または Linux の DSVM。 詳細と手順については、[Data Science Virtual Machine ドキュメント](/azure/machine-learning/data-science-virtual-machine/)を参照してください。
+- Windows DSVM の場合、[Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) をコンピューターにインストールしておきます。 *README.md* ファイルを下にスクロールして **[Download and Install]** セクションを見つけ、**最新のインストーラー**を選択します。 インストーラー ページから *.exe* インストーラーをダウンロードして実行します。 
 - Linux DSVM の場合は、DSVM で設定されて Azure DevOps に追加された SSH 公開キー。 詳細および手順については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
 
 最初に、リポジトリをローカル コンピューターにコピーまたは "*複製*" します。 
@@ -177,7 +177,7 @@ TDSP チーム リポジトリをインポートするには:
    
 1. リポジトリのページで、右上にある **[複製]** を選択します。
    
-1. **[リポジトリの複製]** ダイアログで、HTTP 接続として **[HTTPS]** を選択するか、SSH 接続として **[SSH]** を選択し、 **[コマンド ライン]** の下にあるクローン URL をクリップボードにコピーします。
+1. **[Clone repository]\(リポジトリのクローン\)** ダイアログで、HTTP 接続には **[HTTP]** を選択し、SSH 接続には **[SSH]** を選択し、 **[コマンド ライン]** の下にあるクローン URL をクリップボードにコピーします。
    
    ![リポジトリを複製する](./media/group-manager-tasks/clone.png)
    

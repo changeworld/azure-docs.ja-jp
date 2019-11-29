@@ -72,8 +72,14 @@
       items:
         - name: 自動ユーザー プロビジョニングのデプロイを計画する
           href: plan-auto-user-provisioning.md
+        - name: SCIM 対応アプリに対する自動プロビジョニング
+          href: use-scim-to-provision-users-and-groups.md
         - name: 手動プロビジョニングと自動プロビジョニングの比較
           href: application-provisioning-config-how-to.md
+    - name: クラウド HR のプロビジョニング
+      items:
+        - name: クラウド HR のユーザー プロビジョニングのデプロイを計画する
+          href: plan-cloud-hr-provision.md
     - name: オンプレミス アプリ用のアプリケーション プロキシ
       items:
         - name: アプリケーション プロキシ

@@ -276,6 +276,8 @@
               href: storage-blob-containers-list.md
             - name: プロパティとメタデータの管理 (.NET)
               href: storage-blob-container-properties-metadata.md
+            - name: 不変ポリシーの設定と管理
+              href: storage-blob-immutability-policies-manage.md
         - name: BLOB を作成および管理する
           items:
             - name: BLOB を一覧表示する (.NET)

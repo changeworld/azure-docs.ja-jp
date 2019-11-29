@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0c617cbd17d9b9620c957eec45aadd962db34831
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 5e0904cc2fd9866a9f8354eac9815945043eca5c
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194133"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72987587"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter の CloudSimple プライベート クラウド アクセス許可モデル
 
@@ -42,6 +42,9 @@ CloudSimple は、プライベート クラウド環境への完全な管理ア�
 
 プライベート クラウドを管理するためのアクセス許可を個々のユーザーに付与するには、ユーザー アカウントを作成して適切なグループに追加します。
 
+> [!CAUTION]
+> 新しいユーザーは、*Cloud-Owner-Group*、*Cloud-Global-Cluster-Admin-Group*、*Cloud-Global-Storage-Admin-Group*、*Cloud-Global-Network-Admin-Group*、または *Cloud-Global-VM-Admin-Group* にのみ追加する必要があります。  *Administrators* グループに追加されたユーザーは自動的に削除されます。  *Administrators* グループには、サービス アカウントのみを追加する必要があります。
+
 ## <a name="list-of-vcenter-privileges-for-default-roles"></a>既定のロールの vCenter 特権の一覧
 
 ### <a name="cloud-owner-role"></a>Cloud-Owner-Role
@@ -52,7 +55,7 @@ CloudSimple は、プライベート クラウド環境への完全な管理ア�
 | **アクセス許可** | アクセス許可の変更 |
 | **コンテンツ ライブラリ** | ライブラリ項目の追加 <br> ローカル ライブラリの作成 <br> サブスクライブ済みライブラリの作成 <br> ライブラリ項目の削除 <br> ローカル ライブラリの削除 <br> サブスクライブ済みライブラリの削除 <br> ファイルをダウンロードする <br> ライブラリ項目の強制削除 <br> サブスクライブ済みライブラリの強制削除 <br> ストレージのインポート <br> サブスクリプション情報のプローブ <br> ストレージの読み取り <br> ライブラリ項目の同期 <br> サブスクライブ済みライブラリの同期 <br> イントロスペクションの入力 <br> 構成設定の更新 <br> ファイルの更新 <br> ライブラリの更新 <br> ライブラリ項目の更新 <br> ローカル ライブラリの更新 <br> サブスクライブ済みライブラリの更新 <br> 構成設定の表示 |
 | **暗号化操作** | ディスクの追加 <br> 複製 <br> 復号化 <br> 直接アクセス <br> 暗号化 <br> 新しく暗号化 <br> KMS の管理 <br> 暗号化ポリシーの管理 <br> キーの管理 <br> 移行 <br> 再暗号化 <br> VM の登録 <br> ホストの登録 |
-| **dvPort グループ** | Create <br> 削除 <br> [変更] <br> ポリシー操作 <br> スコープ操作 |
+| **dvPort グループ** | 作成 <br> 削除 <br> [変更] <br> ポリシー操作 <br> スコープ操作 |
 | **データストア** | 領域の割り当て <br> データストアを参照する <br> データストアの構成 <br> 低レベルのファイル操作 <br> データストアの移動 <br> データストアの削除 <br> ファイルの削除 <br> データストアの名前変更 <br> 仮想マシン ファイルの更新 <br> 仮想マシン メタデータの更新 |
 | **ESX エージェント マネージャー** | Config <br> [変更] <br> 表示 |
 | **拡張機能** | 拡張機能の登録 <br> 拡張機能の登録解除 <br> 拡張機能の更新 |
@@ -74,7 +77,7 @@ CloudSimple は、プライベート クラウド環境への完全な管理ア�
 | **ストレージ ビュー** | サービスの構成 <br> 表示 |
 | **タスク** | タスクを作成する <br> タスクの更新 |
 | **転送サービス**| 管理 <br> 監視 |
-| **vApp** | 仮想マシンの追加 <br> リソース プールの割り当て <br> vApp の割り当て <br> 複製 <br> Create <br> 削除 <br> エクスポート <br> [インポート] <br> Move <br> 電源オフ <br> 電源投入 <br> 名前の変更 <br> 中断 <br> Unregister <br> OVF 環境の表示 <br> vApp アプリケーション構成 <br> vApp インスタンス構成 <br> vApp managedBy 構成 <br> vApp リソース構成 |
+| **vApp** | 仮想マシンの追加 <br> リソース プールの割り当て <br> vApp の割り当て <br> 複製 <br> 作成 <br> 削除 <br> エクスポート <br> [インポート] <br> Move <br> 電源オフ <br> 電源投入 <br> 名前の変更 <br> 中断 <br> Unregister <br> OVF 環境の表示 <br> vApp アプリケーション構成 <br> vApp インスタンス構成 <br> vApp managedBy 構成 <br> vApp リソース構成 |
 | **VRMPolicy** | VRMPolicy のクエリ <br> VRMPolicy の更新 |
 | **仮想マシン > 構成** | 既存のディスクの追加 <br> 新しいディスクの追加 <br> デバイスの追加または削除 <br> 詳細 <br> CPU 数の変更 <br> リソースの変更 <br> managedBy の構成 <br> ディスク変更追跡 <br> ディスク リース <br> 接続設定の表示 <br> 仮想ディスクの拡張 <br> ホスト USB デバイス <br> メモリ <br> デバイスの設定の変更 <br> フォールト トレランス互換性のクエリ <br> 所有者のないファイルのクエリ <br> RAW デバイス <br> パスから再読み込み <br> ディスクの削除 <br> 名前の変更 <br> ゲスト情報のリセット <br> 注釈の設定 <br> 設定 <br> スワップファイル配置 <br> フォークの親の切り替え <br> 仮想マシンのロック解除 <br> 仮想マシン互換性の更新 |
 | **仮想マシン > ゲスト操作** | ゲスト操作エイリアスの変更 <br> ゲスト操作エイリアスのクエリ <br> ゲスト操作の変更 <br> ゲスト操作プログラム実行 <br> ゲスト操作クエリ |
@@ -96,7 +99,7 @@ CloudSimple は、プライベート クラウド環境への完全な管理ア�
 | **vSphere のタグ付け** | vSphere タグの割り当てまたは割り当て解除 <br> vSphere タグの作成 <br> vSphere タグ カテゴリの作成 <br> vSphere タグの削除 <br> vSphere タグ カテゴリの削除 <br> vSphere タグの編集 <br> vSphere タグ カテゴリの編集 <br> カテゴリの UsedBy フィールドの変更 <br> タグの UsedBy フィールドの変更 |
 | **ネットワーク** | ネットワークの割り当て |
 | **リソース** | Apply recommendation <br> リソース プールへの vApp の割り当て <br> リソース プールへの仮想マシンの割り当て <br> リソース プールの作成 <br> 電源がオフの仮想マシンの移行 <br> 電源がオンの仮想マシンの移行 <br> リソース プールの変更 <br> リソース プールの移動 <br> vMotion のクエリ <br> リソース プールの削除 <br> リソース プールの名前変更 |
-| **vApp** | 仮想マシンの追加 <br> リソース プールの割り当て <br> vApp の割り当て <br> 複製 <br> Create <br> 削除 <br> エクスポート <br> [インポート] <br> Move <br> 電源オフ <br> 電源投入 <br> 名前の変更 <br> 中断 <br> Unregister <br> OVF 環境の表示 <br> vApp アプリケーション構成 <br> vApp インスタンス構成 <br> vApp managedBy 構成 <br> vApp リソース構成 |
+| **vApp** | 仮想マシンの追加 <br> リソース プールの割り当て <br> vApp の割り当て <br> 複製 <br> 作成 <br> 削除 <br> エクスポート <br> [インポート] <br> Move <br> 電源オフ <br> 電源投入 <br> 名前の変更 <br> 中断 <br> Unregister <br> OVF 環境の表示 <br> vApp アプリケーション構成 <br> vApp インスタンス構成 <br> vApp managedBy 構成 <br> vApp リソース構成 |
 | **VRMPolicy** | VRMPolicy のクエリ <br> VRMPolicy の更新 |
 | **仮想マシン > 構成** | 既存のディスクの追加 <br> 新しいディスクの追加 <br> デバイスの追加または削除 <br> 詳細 <br> CPU 数の変更 <br> リソースの変更 <br> managedBy の構成 <br> ディスク変更追跡 <br> ディスク リース <br> 接続設定の表示 <br> 仮想ディスクの拡張 <br> ホスト USB デバイス <br> メモリ <br> デバイスの設定の変更 <br> フォールト トレランス互換性のクエリ <br> 所有者のないファイルのクエリ <br> RAW デバイス <br> パスから再読み込み <br> ディスクの削除 <br> 名前の変更 <br> ゲスト情報のリセット <br> 注釈の設定 <br> 設定 <br> スワップファイル配置 <br> フォークの親の切り替え <br> 仮想マシンのロック解除 <br> 仮想マシン互換性の更新 |
 | **仮想マシン > ゲスト操作** | ゲスト操作エイリアスの変更 <br> ゲスト操作エイリアスのクエリ <br> ゲスト操作の変更 <br> ゲスト操作プログラム実行 <br> ゲスト操作クエリ |
@@ -122,7 +125,7 @@ CloudSimple は、プライベート クラウド環境への完全な管理ア�
 
 | **カテゴリ** | **特権** |
 |----------|-----------|
-| **dvPort グループ** | Create <br> 削除 <br> [変更] <br> ポリシー操作 <br> スコープ操作 |
+| **dvPort グループ** | 作成 <br> 削除 <br> [変更] <br> ポリシー操作 <br> スコープ操作 |
 | **ネットワーク** | ネットワークの割り当て <br> 構成 <br> ネットワークの移動 <br> Remove |
 | **仮想マシン > 構成** | デバイスの設定の変更 |
 

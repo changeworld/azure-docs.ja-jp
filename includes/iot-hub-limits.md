@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b8d4c2691af8429e7b3a6c1916d12f1af609e744
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2d9549c88ace63997ff6d17568b6ba5131e8a15f
+ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391695"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73083741"
 ---
 次の表には、各サービス レベル (S1、S2、S3、F1) に関連付けられている制限がリストされています。 各レベルのそれぞれの *ユニット* のコストについては、「 [Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
@@ -27,7 +27,7 @@ ms.locfileid: "72391695"
 
 | リソース | 制限 |
 | --- | --- |
-| Azure サブスクリプションごとの最大有料 IoT Hub |50 |
+| Azure サブスクリプションごとの最大有料 IoT Hub |100 |
 | Azure サブスクリプションごとの最大無料 IoT Hub |1 |
 | デバイス ID の最大文字数 | 128 |
 | 1 回の呼び出しで返される<br/> デバイス ID の最大数 |1,000 |
@@ -53,7 +53,7 @@ ms.locfileid: "72391695"
 | デバイス ストリームの最大データ転送量 | 1 日あたり 300 MB (S1、S2、S3、および F1 の場合のみ) |
 
 > [!NOTE]
-> Azure サブスクリプションで 50 個を超える有料 IoT Hub が必要な場合は、Microsoft サポートにお問い合わせください。
+> Azure サブスクリプションで 100 個を超える有料 IoT Hub が必要な場合は、Microsoft サポートにお問い合わせください。
 
 > [!NOTE]
 > 現在、1 つの IoT ハブに登録できるデバイスとモジュールの合計数は、1,000,000 に制限されています。 この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。

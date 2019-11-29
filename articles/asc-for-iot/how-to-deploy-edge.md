@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: 128265cd3e69cd27bab6538c9eb376410439824d
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: e85738c344189486726b4e7b7f5a76ab03c0ffa9
+ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176671"
+ms.lasthandoff: 10/28/2019
+ms.locfileid: "72991444"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge デバイスにセキュリティ モジュールをデプロイする
 
@@ -107,7 +107,7 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
 1. **[Save]** をクリックします。
 1. タブの一番下までスクロールし、 **[Edge ランタイムの詳細設定を構成する]** を選択します。 
    
-1. **[Edge ハブ]** の下の **[イメージ]** を **mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2** に変更します。
+1. **[Edge ハブ]** の下の **[イメージ]** を **mcr.microsoft.com/azureiotedge-hub:1.0.8.3** に変更します。
 
 1. **[作成オプション]** が次のように設定されていることを確認します。 
          
@@ -168,9 +168,9 @@ Azure Security Center for IoT 用の IoT Edge デプロイを作成するには�
    
    | Name | イメージ |
    | --- | --- |
-   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.0 |
-   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.9-rc2 |
-   | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
+   | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.1 |
+   | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
+   | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0.1 |
    
    最低限必要なコンテナーが存在しない場合は、IoT Edge のデプロイ マニフェストが推奨設定と一致しているかどうかを確認してください。 詳細については、[IoT Edge モジュールのデプロイ](#deployment-using-azure-portal)に関する記事を参照してください。
 

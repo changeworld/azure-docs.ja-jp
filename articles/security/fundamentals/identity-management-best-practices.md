@@ -4,7 +4,7 @@ description: この記事では、Azure の組み込み機能を利用した ID 
 services: security
 documentationcenter: na
 author: barclayn
-manager: barbkess
+manager: RKarlin
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
 ms.service: security
@@ -13,16 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2019
+ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 093c5878cd2f7df63502a7aff686824af3c88078
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 52ef3a9b1df058d5d2e954b424094f9dbaeba15b
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195072"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053336"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
+
 この記事では、Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスについて説明します。 このベスト プラクティスは、[Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
 それぞれのベスト プラクティスについて、次の点を説明します。
@@ -33,7 +34,11 @@ ms.locfileid: "70195072"
 * そのベスト プラクティスに代わる対処法
 * そのベスト プラクティスを実践する方法
 
-この Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスの記事は、この記事の執筆時点における共通認識と、Azure プラットフォームの機能および機能セットに基づいています。 共通認識とテクノロジは時間が経つにつれて変化するため、そのような変化に対応するために、この記事は定期的に更新されます。
+この Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスの記事は、この記事の執筆時点における共通認識と、Azure プラットフォームの機能および機能セットに基づいています。
+
+この記事の目的は、いくつかの主要な機能とサービスについて説明されている「[ID インフラストラクチャをセキュリティ保護する 5 つのステップ](steps-secure-identity.md)」チェックリストのガイドに従ってデプロイした後の、より堅牢なセキュリティ体制への一般的なロードマップを提供することです。
+
+共通認識とテクノロジは時間が経つにつれて変化するため、そのような変化に対応するために、この記事は定期的に更新されます。
 
 この記事では、Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスの次のような点について説明します。
 
@@ -42,6 +47,7 @@ ms.locfileid: "70195072"
 * 接続済みテナントを管理する
 * シングル サインオンの有効化
 * 条件付きアクセスをオンにする
+* 日常的なセキュリティ強化を計画する
 * パスワード管理を有効にする
 * ユーザーに多要素認証を適用する
 * ロールベースのアクセス制御を使用する
@@ -56,6 +62,9 @@ ms.locfileid: "70195072"
 [Azure Active Directory (Azure AD)](../../active-directory/fundamentals/active-directory-whatis.md) は ID とアクセスを管理するための Azure ソリューションです。 Azure AD は、マイクロソフトが提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 これには、主要なディレクトリ サービス、アプリケーション アクセスの管理、および ID 保護の機能が 1 つのソリューションとして統合されています。
 
 以降のセクションでは、Azure AD を使用した ID とアクセスのセキュリティに対するベスト プラクティスを示します。
+
+**ベスト プラクティス**: ユーザー ID とサービス ID に関するセキュリティの制御と検出を一元化します。
+**詳細**: Azure AD を使用して、制御と ID を併置します。
 
 ## <a name="centralize-identity-management"></a>ID 管理を一元化する
 
@@ -122,6 +131,15 @@ SSO を確立するためにユーザーやアプリケーションに共通の 
 **ベスト プラクティス**: レガシ認証プロトコルをブロックします。
 **詳細**: 攻撃者は、毎日古いプロトコルの弱点を悪用しています (特にパスワード スプレー攻撃)。 条件付きアクセスを構成して、レガシ プロトコルをブロックします。 ビデオ「[Azure AD: Do’s and Don’ts (べしとべからず)](https://www.youtube.com/watch?v=wGk0J4z90GI)」で詳細をご覧ください。
 
+## <a name="plan-for-routine-security-improvements"></a>日常的なセキュリティ強化を計画する
+
+セキュリティは常に進化しているので、成長を定期的に確認し、環境の新しいセキュリティ保護方法を見つける手段を、クラウドおよび ID 管理フレームワークに組み込むことが重要です。
+
+ID セキュリティ スコアは、セキュリティ対策を客観的に測定し、今後のセキュリティ強化の計画に役立つ数値スコアを提供する、Microsoft によって公開されているセキュリティ コントロールのセットです。 また、スコアを他の業界のものと比較したり、自社の過去の傾向と比較することもできます。
+
+**ベスト プラクティス**: 業界のベスト プラクティスに基づいて、日常的なセキュリティのレビューと改善を計画します。
+**詳細**: ID セキュリティ スコア機能を使用して、過去の改善をランキングします。
+
 ## <a name="enable-password-management"></a>パスワード管理を有効にする
 
 複数のテナントがある場合、またはユーザーが[自分のパスワードをリセット](../../active-directory/user-help/active-directory-passwords-update-your-own-password.md)できるようにする場合は、適切なセキュリティ ポリシーを使用して不適切な使用を防止することが重要です。
@@ -143,22 +161,30 @@ SSO を確立するためにユーザーやアプリケーションに共通の 
 
 2 段階認証を有効にするオプションと利点を次に示します。
 
-**オプション 1**:[ユーザーの状態を変更することで Multi-Factor Authentication を有効にします](../../active-directory/authentication/howto-mfa-userstates.md)。   
+**オプション 1**:Azure AD セキュリティの既定値を使用して、すべてのユーザーとログイン方法に対して MFA を有効にします。**利点**: このオプションを使用すると、環境内のすべてのユーザーに対して、次のような厳しいポリシーで MFA を簡単かつ迅速に適用できます。
+
+* 管理者アカウントと管理ログオン メカニズムにチャレンジします
+* すべてのユーザーに Microsoft Authenticator 経由の MFA チャレンジを要求します
+* レガシ認証プロトコルを制限します。
+
+この方法はすべてのライセンス レベルで使用できますが、既存の条件付きアクセス ポリシーと併用することはできません。 詳細については Azure AD セキュリティの既定値を参照してください
+
+**オプション 2**:[ユーザーの状態を変更することで Multi-Factor Authentication を有効にします](../../active-directory/authentication/howto-mfa-userstates.md)。   
 **利点**:2 段階認証を要求するための従来の方法です。 これは、[クラウド内の Azure Multi-Factor Authentication と Azure Multi-Factor Authentication Server](/azure/active-directory/authentication/concept-mfa-whichversion) の両方に対応します。 この方法を使用すると、ユーザーはサインインするたびに 2 段階認証を実行するよう求められ、条件付きアクセス ポリシーがオーバーライドされます。
 
 Multi-factor Authentication を有効にする必要がある場合を判断するには、「[所属する組織に適しているのはどちらのバージョンの Azure MFA であるかを確認しましょう](/azure/active-directory/authentication/concept-mfa-whichversion)」をご覧ください。
 
-**オプション 2**:[条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします](/azure/active-directory/authentication/howto-mfa-getstarted)。
+**オプション 3**:[条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします](/azure/active-directory/authentication/howto-mfa-getstarted)。
 **利点**:このオプションでは、[条件付きアクセス](/azure/active-directory/active-directory-conditional-access-azure-portal)を使用して特定の条件下で 2 段階認証を要求できます。 特定の条件としては、異なる場所、信頼されていないデバイス、または危険と見なされるアプリケーションからのユーザーのサインインを指定できます。 2 段階認証を要求する特定の条件を定義すると、要求のメッセージがユーザーに繰り返し表示されないようにすることができます。このようなメッセージは、不快なユーザー エクスペリエンスとなり得ます。
 
 これは、ユーザーの 2 段階認証を有効にするうえで最も柔軟性の高い手段です。 条件付きアクセス ポリシーを有効にする方法は、クラウド内の Azure Multi-Factor Authentication に対してのみ機能します。これは Azure AD の Premium 機能です。 この方法の詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](/azure/active-directory/authentication/howto-mfa-getstarted)」を参照してください。
 
-**オプション 3**:[Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa) のユーザーおよびサインインのリスクを評価し、条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします。   
+**オプション 4**: [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa) のユーザーおよびサインインのリスクを評価し、条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします。   
 **利点**:このオプションの利点は次のとおりです。
 
-- 組織の ID に影響する潜在的な脆弱性を検出します。
-- 組織の ID に関連する検出された疑わしいアクションに対する自動応答を構成します。
-- 疑わしいインシデントを調査し、適切なアクションを実行して解決します。
+* 組織の ID に影響する潜在的な脆弱性を検出します。
+* 組織の ID に関連する検出された疑わしいアクションに対する自動応答を構成します。
+* 疑わしいインシデントを調査し、適切なアクションを実行して解決します。
 
 この方法では、Azure AD Identity Protection のリスク評価を使用して、すべてのクラウド アプリケーションのユーザーおよびサインインのリスクに基づいて 2 段階認証が要求されるかどうかを判断します。 この方法では、Azure Active Directory P2 ライセンスが必要です。 この方法の詳細については、「[Azure Active Directory Identity Protection](/azure/active-directory/identity-protection/overview)」を参照してください。
 
@@ -168,6 +194,7 @@ Multi-factor Authentication を有効にする必要がある場合を判断す�
 2 段階認証などの新しい ID 保護レイヤーを追加しない組織は、資格情報盗用攻撃を受けやすくなります。 資格情報盗用攻撃はデータの侵害につながる可能性があります。
 
 ## <a name="use-role-based-access-control"></a>ロールベースのアクセス制御を使用する
+
 クラウド リソースに対するアクセスの管理は、クラウドを使用しているすべての組織にとって重要なことです。 [ロールベースのアクセス制御 (RBAC)](/azure/role-based-access-control/overview) は、Azure のリソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、そのユーザーがアクセスできる領域を管理するのに役立ちます。
 
 Azure での特定の機能に対して責任を負うグループまたは個人のロールを指定すると、セキュリティ リスクをもたらすヒューマン エラーやオートメーション エラーにつながる可能性のある混乱を避けるのに役立ちます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。
@@ -185,8 +212,8 @@ Azure での特定の機能に対して責任を負うグループまたは個�
 **ベスト プラクティス**: セキュリティ チームには Azure のリソースを把握するための Azure の責任のアクセス権を付与し、リスクを評価して修復できるようにします。
 **詳細**: セキュリティ チームには、RBAC の[セキュリティ閲覧者](/azure/role-based-access-control/built-in-roles#security-reader)ロールを付与します。 責任の範囲に応じて、ルート管理グループまたはセグメント管理グループを使用できます。
 
-- すべてのエンタープライズ リソースを担当するチームに対しては**ルート管理グループ**
-- スコープが限られたチームには**セグメント管理グループ** (一般に、規制または他の組織的な境界のため)
+* すべてのエンタープライズ リソースを担当するチームに対しては**ルート管理グループ**
+* スコープが限られたチームには**セグメント管理グループ** (一般に、規制または他の組織的な境界のため)
 
 **ベスト プラクティス**: 直接的な運用責任を持つセキュリティ チームには、適切なアクセス許可を付与します。
 **詳細**: RBAC の組み込みロールで、適切なロールの割り当てを確認します。 組み込みロールが組織の特定のニーズを満たさない場合は、[Azure リソースに対するカスタム ロール](/azure/role-based-access-control/custom-roles)を作成することができます。 組み込みロールと同様、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。
@@ -218,18 +245,18 @@ RBAC などの機能を使用したデータ アクセス制御を適用しな�
 **ベスト プラクティス**: 高度な特権ロールに属するアカウントを識別および分類します。   
 **詳細**: Azure AD Privileged Identity Management を有効にした後、グローバル管理者、特権ロール管理者、およびその他の高度な特権ロールに属するユーザーを表示します。 これらのロールで不要になったアカウントを削除し、管理者ロールに割り当てられている残りのアカウントを分類します。
 
-- 管理ユーザーに個別に割り当てられ、管理以外の目的 (たとえば、個人用電子メール) に使用できる
-- 管理ユーザーに個別に割り当てられ、管理目的にのみ指定されている
-- 複数のユーザー間で共有される
-- 非常時のアクセス シナリオ用
-- 自動スクリプト用
-- 外部ユーザー用
+* 管理ユーザーに個別に割り当てられ、管理以外の目的 (たとえば、個人用電子メール) に使用できる
+* 管理ユーザーに個別に割り当てられ、管理目的にのみ指定されている
+* 複数のユーザー間で共有される
+* 非常時のアクセス シナリオ用
+* 自動スクリプト用
+* 外部ユーザー用
 
 **ベスト プラクティス**: "Just-In-Time" (JIT) アクセスを実装して、権限が公開される時間をさらに短縮し、特権アカウントの使用の可視性を向上します。   
 **詳細**: Azure AD Privileged Identity Management では、次のことが可能です。
 
-- ユーザーが自分の権限の JIT のみを利用するよう制限します。
-- 権限が自動的に取り消される、短縮された期間のロールを割り当てます。
+* ユーザーが自分の権限の JIT のみを利用するよう制限します。
+* 権限が自動的に取り消される、短縮された期間のロールを割り当てます。
 
 **ベスト プラクティス**: 少なくとも 2 つの緊急アクセス用アカウントを定義します。   
 **詳細**: 緊急アクセス用アカウントは、組織において既存の Azure Active Directory 環境での特権アクセスを制限するのに役立ちます。 このようなアカウントは高い特権を持っており、特定のユーザーには割り当てられません。 緊急アクセス用アカウントは、通常の管理者アカウントを使うことができないシナリオに制限されます。 組織では、緊急用アカウントの使用を必要な時間だけに制限する必要があります。

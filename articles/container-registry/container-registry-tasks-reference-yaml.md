@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/12/2019
+ms.date: 10/23/2019
 ms.author: danlep
-ms.openlocfilehash: 27c38f51104dfb170c59860c96a8e3a86973bb1e
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6e55b65d58fe6545d8212b4233f2f45261d18ee5
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638919"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73043885"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
 
@@ -80,7 +80,7 @@ az configure --defaults acr=myregistry
 
 タスク プロパティは通常、`acr-task.yaml` ファイルの上部に表示されます。これらは、タスク ステップの完全な実行を通じて適用されるグローバル プロパティです。 これらのグローバル プロパティの一部は、個々のステップ内でオーバーライドできます。
 
-| プロパティ | Type | 省略可能 | 説明 | オーバーライドのサポート | Default value |
+| プロパティ | 種類 | 省略可能 | 説明 | オーバーライドのサポート | 既定値 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | string | はい | ACR タスク サービスによって解析される `acr-task.yaml` ファイルのバージョン。 ACR タスクは、下位互換性の維持に努めていますが、この値により ACR タスクが定義されたバージョン内で互換性を維持することが可能になります。 指定しない場合は、既定値の最新バージョンになります。 | いいえ | なし |
 | `stepTimeout` | int (秒) | はい | ステップが実行できる最大秒数。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `timeout` プロパティが設定されます。 `timeout` プロパティがステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | 600 (10 分) |
@@ -93,7 +93,7 @@ az configure --defaults acr=myregistry
 
 シークレット オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 省略可能 | 説明 | Default value |
+| プロパティ | 種類 | 省略可能 | 説明 | 既定値 |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | string | いいえ | シークレットの識別子。 | なし |
 | `keyvault` | string | はい | Azure Key Vault のシークレット URL。 | なし |
@@ -103,7 +103,7 @@ az configure --defaults acr=myregistry
 
 ネットワーク オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 省略可能 | 説明 | Default value |
+| プロパティ | 種類 | 省略可能 | 説明 | 既定値 |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | string | いいえ | ネットワークの名前。 | なし |
 | `driver` | string | はい | ネットワークを管理するドライバー。 | なし |
@@ -128,7 +128,7 @@ ACR タスクでは、次の 3 種類のステップがサポートされてい�
 ### <a name="syntax-build"></a>構文: build
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - [build]: -t [imageName]:[tag] -f [Dockerfile] [context]
     [property]: [value]
@@ -183,9 +183,9 @@ az acr run -f build-hello-world.yaml https://github.com/AzureCR/acr-tasks-sample
 #### <a name="build-image---context-in-subdirectory"></a>イメージのビルド - サブディレクトリのコンテキスト
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world -f hello-world.dockerfile ./subDirectory
+  - build: -t $Registry/hello-world -f hello-world.dockerfile ./subDirectory
 ```
 
 ## <a name="push"></a>push
@@ -197,21 +197,21 @@ steps:
 `push` ステップの種類は、イメージのコレクションをサポートしています。 YAML コレクション構文では、インラインと入れ子になった形式をサポートしています。 1 つのイメージのプッシュは通常、インライン構文を使用して表されます。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   # Inline YAML collection syntax
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 わかりやすくするため、複数のイメージをプッシュするときに、入れ子になった構文を使用します。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   # Nested YAML collection syntax
   - push:
-    - {{.Run.Registry}}/hello-world:{{.Run.ID}}
-    - {{.Run.Registry}}/hello-world:latest
+    - $Registry/hello-world:$ID
+    - $Registry/hello-world:latest
 ```
 
 ### <a name="properties-push"></a>プロパティ: push
@@ -254,7 +254,7 @@ az acr run -f build-run-hello-world.yaml https://github.com/Azure-Samples/acr-ta
 ### <a name="syntax-cmd"></a>構文: cmd
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - [cmd]: [containerImage]:[tag (optional)] [cmdParameters to the image]
 ```
@@ -330,40 +330,38 @@ az acr run -f bash-echo-3.yaml https://github.com/Azure-Samples/acr-tasks.git
 `cmd` ステップの種類は、標準の `docker run` 形式を使用してイメージを参照します。 レジストリで始まらないイメージは、docker.io から始まると見なされます。 前の例は、次のように表すこともできます。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - cmd: docker.io/bash:3.0 echo hello world
 ```
 
 標準の `docker run` イメージの参照規約を使用することで、`cmd` で任意のプライベート レジストリまたはパブリック Docker Hub からのイメージを実行できます。 ACR タスクが実行されているのと同じレジストリ内のイメージを参照している場合は、レジストリ資格情報を指定する必要はありません。
 
-* Azure Container Registry からのイメージを実行する
-
-    `[myregistry]` を実際のレジストリの名前に置き換えます。
+* Azure コンテナー レジストリからイメージを実行します。 次の例では、`myregistry` という名前のレジストリと、カスタム イメージ `myimage:mytag` があるものとします。
 
     ```yml
-    version: v1.0.0
+    version: v1.1.0
     steps:
-        - cmd: [myregistry].azurecr.io/bash:3.0 echo hello world
+        - cmd: myregistry.azurecr.io/myimage:mytag
     ```
 
-* Run 変数でレジストリの参照を汎用化する
+* Run 変数またはエイリアスでレジストリの参照を汎用化する
 
-    `acr-task.yaml` ファイル内のレジストリ名をハードコーディングする代わりに、[Run 変数](#run-variables)を使用して移植性を高めることができます。 `Run.Registry` 変数は実行時に、タスクが実行されているレジストリの名前に展開されます。
+    `acr-task.yaml` ファイルにレジストリ名をハードコーディングする代わりに、[Run 変数](#run-variables)または[エイリアス](#aliases)を使用して移植性を高めることができます。 `Run.Registry` 変数または `$Registry` エイリアスは、実行時に、タスクが実行されているレジストリの名前に展開されます。
 
-    前のタスクを任意の Azure Container Registry で動作するように汎用化するには、イメージ名で [Run.Registry](#runregistry) 変数を参照します。
+    たとえば、前のタスクを任意の Azure コンテナー レジストリで動作するように汎用化するには、イメージ名で $Registry 変数を参照します。
 
     ```yml
-    version: v1.0.0
+    version: v1.1.0
     steps:
-      - cmd: {{.Run.Registry}}/bash:3.0 echo hello world
+      - cmd: $Registry/myimage:mytag
     ```
 
 ## <a name="task-step-properties"></a>タスク ステップ プロパティ
 
 各ステップの種類は、その種類に適した複数のプロパティをサポートしています。 次の表では、利用可能なすべてのステップのプロパティを定義します。 すべてのステップの種類が、すべてのプロパティをサポートしているわけではありません。 各ステップの種類でこれらのプロパティが利用可能かどうかを確認するには、「[cmd](#cmd)」、「[build](#build)」、「[push](#push)」 のステップの種類の参照セクションを参照してください。
 
-| プロパティ | Type | 省略可能 | 説明 | Default value |
+| プロパティ | 種類 | 省略可能 | 説明 | 既定値 |
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | はい | 実行時にコンテナーをデタッチする必要があるかどうか。 | `false` |
 | `disableWorkingDirectoryOverride` | bool | はい | `workingDirectory` オーバーライド機能を無効にするかどうか。 これを `workingDirectory` と組み合わせて使用して、コンテナーの作業ディレクトリを完全に制御します。 | `false` |
@@ -451,21 +449,28 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 ACR タスクには、タスク ステップを実行するときに使用できる変数の既定のセットが含まれています。 これらの変数は、`{{.Run.VariableName}}` の形式を使用してアクセスできます。`VariableName` は次のいずれかです。
 
 * `Run.ID`
+* `Run.SharedVolume`
 * `Run.Registry`
+* `Run.RegistryName`
 * `Run.Date`
+* `Run.OS`
+* `Run.Architecture`
 * `Run.Commit`
 * `Run.Branch`
+* `Run.TaskName`
+
+通常、変数名を見ればそれがどういうものかわかります。 以下では、よく使用される変数について詳しく説明します。 YAML バージョン `v1.1.0` では、ほとんどの Run 変数の代わりに、省略された定義済みの[タスク エイリアス](#aliases)を使用できます。 たとえば、`{{.Run.Registry}}` の代わりに、`$Registry` エイリアスを使用します。
 
 ### <a name="runid"></a>Run.ID
 
-各 Run、`az acr run` の使用、または `az acr task create` を通じて作成されたタスクのトリガー ベースの実行は、一意の ID を持ちます。 ID は、現在実行中の Run を表します。
+`az acr run` による各 Run、または `az acr task create` により作成されたタスクのトリガー ベースの実行には、一意の ID があります。 ID は、現在実行中の Run を表します。
 
 通常、イメージに一意にタグ付けするために使用されます。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-    - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+    - build: -t $Registry/hello-world:$ID .
 ```
 
 ### <a name="runregistry"></a>Run.Registry
@@ -473,9 +478,21 @@ steps:
 レジストリの完全修飾サーバー名。 通常、タスクが実行されているレジストリをまとめて参照するために使用されます。
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+  - build: -t $Registry/hello-world:$ID .
+```
+
+### <a name="runregistryname"></a>Run.RegistryName
+
+コンテナー レジストリの名前。 通常、完全修飾サーバー名を必要としないタスク ステップで使用されます。たとえば、レジストリで Azure CLI コマンドを実行する `cmd` の手順などです。
+
+```yml
+version 1.1.0
+steps:
+# List repositories in registry
+- cmd: az login --identity
+- cmd: az acr repository list --name $RegistryName
 ```
 
 ### <a name="rundate"></a>Run.Date
@@ -490,11 +507,88 @@ GitHub リポジトリへのコミットによってトリガーされるタス�
 
 GitHub リポジトリへのコミットによってトリガーされるタスクの場合、ブランチ名。
 
+## <a name="aliases"></a>エイリアス
+
+`v1.1.0` の時点で、ACR タスクでは、タスク ステップを実行するときに使用できるエイリアスがサポートされています。 エイリアスは、概念的には、bash や他のコマンド シェルでサポートされているエイリアス (コマンド ショートカット) と似ています。 
+
+エイリアスを使用すると、1 つの単語を入力することで、任意のコマンドまたはコマンドのグループ (オプションやファイル名を含む) を起動できます。
+
+ACR タスクでは、いくつかの定義済みエイリアスと、ユーザーが作成するカスタム エイリアスがサポートされています。
+
+### <a name="predefined-aliases"></a>定義済みのエイリアス
+
+次のタスク エイリアスは、[Run 変数](#run-variables)の代わりに使用できます。
+
+| エイリアス | Run 変数 |
+| ----- | ------------ |
+| `ID` | `Run.ID` |
+| `SharedVolume` | `Run.SharedVolume` |
+| `Registry` | `Run.Registry` |
+| `RegistryName` | `Run.RegistryName` |
+| `Date` | `Run.Date` |
+| `OS` | `Run.OS` |
+| `Architecture` | `Run.Architecture` |
+| `Commit` | `Run.Commit` |
+| `Branch` | `Run.Branch` |
+
+次の例のように、タスク ステップでは、エイリアスの前に `$` ディレクティブを付けます。
+
+```yaml
+version: v1.1.0
+steps:
+  - build: -t $Registry/hello-world:$ID -f hello-world.dockerfile .
+```
+
+### <a name="image-aliases"></a>イメージ エイリアス
+
+次の各エイリアスでは、Microsoft Container Registry (MCR) 内の安定したイメージが指し示されています。 タスク ファイルの `cmd` セクションでは、ディレクティブを使用せずに参照できます。
+
+| エイリアス | Image |
+| ----- | ----- |
+| `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
+| `az` | `mcr.microsoft.com/acr/azure-cli:d0725bc` |
+| `bash` | `mcr.microsoft.com/acr/bash:d0725bc` |
+| `curl` | `mcr.microsoft.com/acr/curl:d0725bc` |
+
+次のタスクの例では、複数のエイリアスを使用して、実行レジストリのリポジトリ `samples/hello-world` 内にある 7 日以上経過したイメージ タグを[消去](container-registry-auto-purge.md)しています。
+
+```yaml
+version: v1.1.0
+steps:
+  - cmd: acr tag list --registry $RegistryName --repository samples/hello-world
+  - cmd: acr purge --registry $RegistryName --filter samples/hello-world:.* --ago 7d
+```
+
+### <a name="custom-alias"></a>カスタム エイリアス
+
+次の例で示すように、YAML ファイルでカスタム エイリアスを定義して使用します。 エイリアスでは、英数字のみを使用できます。 エイリアスを展開する既定のディレクティブは `$` 文字です。
+
+```yml
+version: v1.1.0
+alias:
+  values:
+    repo: myrepo
+steps:
+  - build: -t $Registry/$repo/hello-world:$ID -f Dockerfile .
+```
+
+カスタム エイリアスの定義では、リモートまたはローカルの YAML ファイルにリンクできます。 次の例では、Azure Blob Storage 内の YAML ファイルにリンクしています。
+
+```yml
+version: v1.1.0
+alias:
+  src:  # link to local or remote custom alias files
+    - 'https://link/to/blob/remoteAliases.yml?readSasToken'
+[...]
+```
+
 ## <a name="next-steps"></a>次の手順
 
 複数ステップのタスクの概要については、「[Run multi-step build, test, and patch tasks in ACR Tasks](container-registry-tasks-multi-step.md)」 (ACR タスクで複数ステップのビルド、テスト、修正プログラムの適用タスクを実行する) を参照してください。
 
 シングル ステップのビルドについては、[ACR タスクの概要](container-registry-tasks-overview.md)に関するページを参照してください。
+
+
 
 <!-- IMAGES -->
 

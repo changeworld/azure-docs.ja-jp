@@ -2,18 +2,18 @@
 title: JDBC ドライバーを使用して Apache Hive のクエリを実行する - Azure HDInsight
 description: Java アプリケーションから JDBC ドライバーを使用して、Apache Hive のクエリを HDInsight 上の Hadoop に送信する方法について説明します。 プログラムを使用して、SQuirrel SQL クライアントから接続します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 06/03/2019
-ms.author: hrasheed
-ms.openlocfilehash: cd8a6c7e7f5ddf781fcd63f3969eedd8f45424bc
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.date: 10/24/2019
+ms.openlocfilehash: 2250e41bffc26bd9ae59dfc652a06d08016d227a
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058614"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73053810"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight 上で JDBC ドライバーを使用して Apache Hive のクエリを実行する
 
@@ -71,10 +71,12 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 5. [Add Driver\(ドライバーの追加\)] ダイアログで、次の情報を追加します。
 
-    * **Name**:Hive
-    * **Example URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Extra Class Path (追加クラス パス)** : **[追加]** ボタンを使って、以前にダウンロードしたすべての jar ファイルを追加します
-    * **Class Name**: org.apache.hive.jdbc.HiveDriver
+    |プロパティ | 値 |
+    |---|---|
+    |名前|Hive|
+    |Example URL (URL の例)|jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2|
+    |Extra Class Path (追加クラス パス)|**[追加]** ボタンを使って、以前にダウンロードしたすべての jar ファイルを追加します。|
+    |Class Name (クラス名)|org.apache.hive.jdbc.HiveDriver|
 
    ![パラメーターを含むドライバーの追加ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-add-driver.png)
 
@@ -84,21 +86,17 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
     ![SQuirreL SQL の新しいエイリアスの追加ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-new-aliases.png)
 
-7. **[Add Alias]** ダイアログに次の値を使用します。
+7. **[Add Alias]\(エイリアスの追加\)** ダイアログでは次の値を使用します。
 
-    * **Name**:HDInsight の Hive
+    |プロパティ |値 |
+    |---|---|
+    |名前|HDInsight の Hive|
+    |ドライバー|ドロップダウンを使用して、**Hive** ドライバーを選択します。|
+    |URL|jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2 **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。|
+    |ユーザー名|HDInsight クラスターのクラスター ログイン アカウント名。 既定値は **admin** です。|
+    |パスワード|クラスター ログイン アカウントのパスワード。|
 
-    * **Driver**:ドロップダウンを使用して、 **[Hive]** ドライバーを選択します
-
-    * **URL**: `jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-
-        **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。
-
-    * **User Name**:HDInsight クラスターのクラスター ログイン アカウント名。 既定では、 `admin`です。
-
-    * **Password**:クラスター ログイン アカウントのパスワード。
-
-   ![パラメーターを含むエイリアスの追加ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
+    ![パラメーターを含むエイリアスの追加ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/hdinsight-addalias-dialog.png)
 
     > [!IMPORTANT]
     > **[Test]** ボタンを使用して、接続が機能することを確認します。 **[Connect to: Hive on HDInsight] (接続先: HDInsight 上の Hive)** ダイアログが表示されたら、 **[接続]** を選択してテストを実行します。 テストが成功した場合、 **[Connection successful\(接続成功\)]** ダイアログが表示されます。 エラーが発生した場合は、「[トラブルシューティング](#troubleshooting)」を参照してください。
@@ -137,9 +135,9 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **解決策**:このエラーを解決するには、次の手順を使用します。
 
-1. SQuirreL を終了し、SQuirreL がインストールされているシステム上のディレクトリに移動します。 SquirreL ディレクトリ内の `lib` ディレクトリにある既存の commons-codec jar を、HDInsight クラスターからダウンロードしたファイルに置き換えます。
+1. SQuirreL を終了し、SQuirreL がインストールされているシステム上のディレクトリに移動します (`C:\Program Files\squirrel-sql-4.0.0\lib` など)。 SquirreL ディレクトリ内の `lib` ディレクトリにある既存の commons-codec jar を、HDInsight クラスターからダウンロードしたファイルに置き換えます。
 
-2. SQuirreL を再起動します。 これで、HDInsight の Hive に接続するときにエラーが発生しなくなります。
+1. SQuirreL を再起動します。 これで、HDInsight の Hive に接続するときにエラーが発生しなくなります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 6bff2210e77f7af98c1289b08159a89f42f2a3bd
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827605"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052511"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: よく寄せられる質問
 
@@ -239,6 +239,13 @@ Clamscan は、HDInsight クラスターで実行され、Azure セキュリテ�
 
 Cron ジョブを設定して実行する方法の詳細については、「[Cron ジョブを設定する方法](https://askubuntu.com/questions/2368/how-do-i-set-up-a-cron-job)」を参照してください。
 
+### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Spark ESP クラスターで LLAP を使用できるのはなぜですか。
+ESP Spark クラスターでは、パフォーマンスではなくセキュリティ上の理由で (つまり Apache Ranger)、LLAP が有効になっています。 LLAP のリソース使用量に対応するには、比較的大きいノード VM を使用する必要があります (たとえば、D13V2 以上)。 
+
+### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>ESP クラスターの作成後に新しい AAD グループを追加する方法はありますか。
+これを実現する方法は 2 つあります。1 - クラスターを再作成して、新しいグループを追加することができます。 AAD-DS で範囲指定された同期を使用している場合は、グループ B が範囲指定された同期に含まれることを確認してください。
+2 - ESP クラスターの作成に使用された前のグループの入れ子になったサブグループとして、グループを追加します。 たとえば、グループ `A` で ESP クラスターを作成した場合、後でグループ `A` の入れ子になったサブグループとしてグループ `B` を追加できます。約 1 時間後に、クラスターで自動的に同期されて使用できるようになります。 
+
 ## <a name="storage"></a>Storage
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>既存の HDInsight クラスターに追加のストレージ アカウントとして Azure Data Lake Storage Gen2 を追加することはできますか。
@@ -380,3 +387,7 @@ Azure HDInsight でのストリーム処理の統合機能の詳細について�
 ### <a name="is-there-a-way-to-dynamically-terminate-the-head-node-of-the-cluster-when-the-cluster-is-idle-for-a-specific-period"></a>クラスターが一定期間アイドル状態になったときに、クラスターのヘッド ノードを動的に終了する方法はありますか。
 
 HDInsight クラスターでこれを行うことはできません。 これらのシナリオには Azure Data Factory を使用できます。
+
+### <a name="what-compliance-offerings-does-hdinsight-offer"></a>HDInsight ではどのようなコンプライアンス認証が提供されていますか。
+
+コンプライアンス情報については、[Microsoft セキュリティ センター](https://www.microsoft.com/trust-center)と「[Microsoft Azure コンプライアンスの概要](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」を参照してください。

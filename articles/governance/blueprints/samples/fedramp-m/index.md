@@ -1,14 +1,14 @@
 ---
-title: FedRAMP (中) ブループリント サンプル - 概要
+title: FedRAMP (中) ブループリント サンプルの概要
 description: FedRAMP (中) ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の FedRAMP (中) コントロールを評価するのに役立ちます。
 ms.date: 10/31/2019
 ms.topic: sample
-ms.openlocfilehash: 8103756a40a4eb52b6e5fc778f29c0cd4e1011a7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4a94d4ad29fdc79be508deb4bed76a91e8e76168
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032378"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544441"
 ---
 # <a name="overview-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP (中) ブループリント サンプルの概要
 

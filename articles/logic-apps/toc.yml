@@ -103,6 +103,20 @@
               href: logic-apps-custom-api-host-deploy-call.md
         - name: エラーをトラブルシューティングする
           href: logic-apps-diagnosing-failures.md
+    - name: Azure 仮想ネットワークにアクセスする
+      items:
+        - name: 統合サービス環境を使用して仮想ネットワークに接続する
+          href: connect-virtual-network-vnet-isolated-environment.md
+        - name: 複数の統合サービス環境のアクセスを設定する
+          href: connect-virtual-network-vnet-set-up-single-ip-address.md
+        - name: 成果物を統合サービス環境に追加する
+          href: add-artifacts-integration-service-environment-ise.md
+    - name: オンプレミスのデータへのアクセス
+      items:
+        - name: データ ゲートウェイをインストールする
+          href: logic-apps-gateway-install.md
+        - name: オンプレミス データに接続する
+          href: logic-apps-gateway-connection.md
     - name: B2B シナリオの開発
       items:
         - name: 統合アカウントを作成する
@@ -159,16 +173,6 @@
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: ディザスター リカバリー プランの構築
           href: logic-apps-enterprise-integration-b2b-business-continuity.md
-    - name: 分離環境の仮想ネットワークに接続する
-      href: connect-virtual-network-vnet-isolated-environment.md
-    - name: 成果物を統合サービス環境に追加する
-      href: add-artifacts-integration-service-environment-ise.md
-    - name: オンプレミスのデータへのアクセス
-      items:
-        - name: データ ゲートウェイをインストールする
-          href: logic-apps-gateway-install.md
-        - name: オンプレミス データに接続する
-          href: logic-apps-gateway-connection.md
     - name: コネクタ - 詳細のトピック
       items:
         - name: AS2

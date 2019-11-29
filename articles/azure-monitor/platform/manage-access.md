@@ -1,24 +1,18 @@
 ---
 title: Azure Monitor で Log Analytics ワークスペースを管理する | Microsoft Docs
-description: リソース、ワークスペース、またはテーブル レベルのアクセス許可を使用して、Log Analytics ワークスペースに格納されているデータへのアクセスを Azure Monitor で管理できます。 この記事では、これらを完了する方法について説明します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: d0e5162d-584b-428c-8e8b-4dcaa746e783
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+description: リソース、ワークスペース、またはテーブル レベルのアクセス許可を使用して、Log Analytics ワークスペースに格納されているデータへのアクセスを Azure Monitor で管理できます。 この記事では、完了する方法について説明します。
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.author: magoedte
-ms.openlocfilehash: 010f7bb2f19eed757da3f62011b69e1f09ddadf0
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+author: bwren
+ms.author: bwren
+ms.date: 10/22/2019
+ms.openlocfilehash: 890e2fb06b9194bba49b94eae4b8ea3f0bfed1d7
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329402"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72932177"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -148,7 +142,7 @@ Log Analytics 閲覧者ロールには、次の Azure アクションが含ま�
 
 "*Log Analytics 共同作成者*" ロールのメンバーは、以下の操作を行うことができます。
 
-* Log Analytics 閲覧者が読み取れるすべての監視データを読み取る
+* "*Log Analytics Reader ロール*" のすべての特権を含め、ユーザーがすべての監視データを読み取ることができるようにする
 * Automation アカウントを作成および構成する
 * 管理ソリューションを追加および削除する
 
@@ -187,7 +181,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 * リソース グループ - リソース グループ内のすべてのワークスペースへのアクセス
 * リソース - 指定されたワークスペースのみへのアクセス
 
-正確なアクセス制御を行うために、割り当てをリソース レベル (ワークスペース) で実行する必要があります。  必要な特定のアクセス許可を持つロールを作成するには、[カスタム ロール](../../role-based-access-control/custom-roles.md)を使用します。
+正確なアクセス制御を行うために、割り当てをリソース レベル (ワークスペース) で実行することをお勧めします。 必要な特定のアクセス許可を持つロールを作成するには、[カスタム ロール](../../role-based-access-control/custom-roles.md)を使用します。
 
 ### <a name="resource-permissions"></a>リソースのアクセス許可
 
@@ -259,20 +253,24 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 
 ```
 "Actions":  [
-              "Microsoft.OperationalInsights/workspaces/query/Heartbeat/read",
-              "Microsoft.OperationalInsights/workspaces/query/AzureActivity/read"
+    "Microsoft.OperationalInsights/workspaces/read",
+    "Microsoft.OperationalInsights/workspaces/query/read",
+    "Microsoft.OperationalInsights/workspaces/query/Heartbeat/read",
+    "Microsoft.OperationalInsights/workspaces/query/AzureActivity/read"
   ],
 ```
 
 _SecurityBaseline_ のみのアクセス権を持ち、他のテーブルのアクセス権は持たないロールを作成するには、次の操作を使用してカスタム ロールを作成します。
 
 ```
-    "Actions":  [
-        "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
-    ],
-    "NotActions":  [
-        "Microsoft.OperationalInsights/workspaces/query/*/read"
-    ],
+"Actions":  [
+    "Microsoft.OperationalInsights/workspaces/read",
+    "Microsoft.OperationalInsights/workspaces/query/read",
+    "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
+],
+"NotActions":  [
+    "Microsoft.OperationalInsights/workspaces/query/*/read"
+],
 ```
 
 ### <a name="custom-logs"></a>カスタム ログ
@@ -282,9 +280,11 @@ _SecurityBaseline_ のみのアクセス権を持ち、他のテーブルのア�
  現時点では、個々のカスタム ログに対するアクセスを付与または拒否することはできませんが、すべてのカスタム ログに対するアクセスを付与または拒否することはできます。 すべてのカスタム ログへのアクセス権を持つロールを作成するには、次の操作を使用してカスタム ロールを作成します。
 
 ```
-    "Actions":  [
-        "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
-    ],
+"Actions":  [
+    "Microsoft.OperationalInsights/workspaces/read",
+    "Microsoft.OperationalInsights/workspaces/query/read",
+    "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
+],
 ```
 
 ### <a name="considerations"></a>考慮事項
@@ -293,7 +293,7 @@ _SecurityBaseline_ のみのアクセス権を持ち、他のテーブルのア�
 * テーブルごとのアクセス権がユーザーに付与されるが、その他のアクセス許可は付与されない場合、ユーザーは API からログ データにアクセスできますが、Azure portal からはアクセスできません。 Azure portal からアクセス権を提供するには、基本ロールとして Log Analytics 閲覧者を使用します。
 * サブスクリプションの管理者は、他のすべてのアクセス許可設定に関係なくすべてのデータ型に対するアクセス権を持ちます。
 * ワークスペース所有者は、テーブルとごのアクセス制御では他のすべてのユーザーと同様に扱われます。
-* 割当て数を減らすために、ロールは個々のユーザーではなくセキュリティ グループに割り当てる必要があります。 こうすると、既存のグループ管理ツールを使用して、アクセス権の構成と確認する際に役立ちます。
+* 割当て数を減らすには、ロールは個々のユーザーではなくセキュリティ グループに割り当てることをお勧めします。 こうすると、既存のグループ管理ツールを使用して、アクセス権の構成と確認する際に役立ちます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,14 +9,15 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: gregman
-ms.openlocfilehash: 9e3f7e3b23cba3fab87ee35aa2a15b6305d9ece4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b32bbfa5e849c1a0490bba5d09d1838268033b26
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054178"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964657"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Windows Server 仮想マシンで Azure IoT Edge を実行する
+
 Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デバイスに変えることができます。 このランタイムは、Raspberry Pi のような小型デバイスにも、産業用サーバーのような大型デバイスにもデプロイすることができます。 IoT Edge ランタイムを使用してデバイスを構成すると、クラウドからデバイスへのビジネス ロジックのデプロイを開始できます。
 
 IoT Edge ランタイムの動作とランタイムに含まれるコンポーネントについては、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
@@ -24,6 +25,7 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
 この記事では、[Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace オファーを使用して Windows Server 2019 仮想マシンで Azure IoT Edge ランタイムを実行する手順を紹介します。 他のバージョンで使用する場合は、Windows に [Azure IoT Edge ランタイムをインストール](how-to-install-iot-edge-windows.md)する手順に従ってください。
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Azure Marketplace からデプロイする
+
 1.  [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace オファーに移動するか、[Azure Marketplace](https://azuremarketplace.microsoft.com/) で “Windows Server” を検索します。
 2.  **[今すぐ入手する]** を選択します。 
 3.  **ソフトウェア プラン**で、「Windows Server 2019 Datacenter Server Core with Containers」を検索し、次のダイアログで **[続行]** を選択します。
@@ -32,7 +34,7 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
     *   VM を初めて試す場合は、パスワードを使用し、パブリック受信ポート メニューで RDP と SSH を有効にするのが最も簡単です。 
     *   リソース消費の激しいワークロードがある場合は、CPU やメモリを追加して、仮想マシンのサイズをアップグレードしてください。
 5.  仮想マシンがデプロイされたら、IoT Hub に接続するように構成します。
-    1.  IoT Hub で作成された IoT Edge デバイスから、デバイス接続文字列をコピーします (このプロセスに詳しくない場合は、[Azure portal から新しい Azure IoT Edge デバイスを登録する](how-to-register-device-portal.md)方法のハウツー ガイドをご覧ください)
+    1.  IoT Hub で作成された IoT Edge デバイスからデバイス接続文字列をコピーします。 手順については、「[Azure portal で接続文字列を取得する](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal)」を参照してください。
     1.  Azure portal から新しく作成された仮想マシン リソースを選択し、 **[実行コマンド]** オプションを開きます
     1.  **[RunPowerShellScript]** オプションを選択します
     1.  使用するデバイスの接続文字列を使用して、下記のスクリプトをコマンド ウィンドウにコピーします。 
@@ -40,51 +42,53 @@ IoT Edge ランタイムの動作とランタイムに含まれるコンポー�
         . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
         Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'
         ```
-    1.  **[Run]\(実行\)** を選択してスクリプトを実行し、 Edge ランタイムをインストールして接続文字列を設定します。
+    1.  **[Run]\(実行\)** を選択してスクリプトを実行し、IoT Edge ランタイムをインストールして接続文字列を設定します。
     1.  1、2 分すると、Edge ランタイムがインストールされ、正常にプロビジョニングされたことを示すメッセージが表示されます。
 
-
 ## <a name="deploy-from-the-azure-portal"></a>Azure portal からデプロイする
+
 1. Azure portal で "Windows Server" を検索し、**Windows Server 2019 Datacenter** を選択して VM の作成ワークフローを開始します。 
 2. **ソフトウェア プランの選択**で、"Windows Server 2019 Datacenter Server Core with Containers" を選択してから、 **[作成]** を選択します。
 3. 上記の説明の「Azure Marketplace からデプロイする」にある手順 5 を実行します。
 
 ## <a name="deploy-from-azure-cli"></a>Azure CLI からデプロイする
+
 1. デスクトップで Azure CLI を使用している場合は、まずログインします。
 
    ```azurecli-interactive
    az login
    ```
-    
+
 1. 複数のサブスクリプションがある場合は、次のようにして、使用するサブスクリプションを選択します。
    1. サブスクリプションを一覧表示します。
-    
+
       ```azurecli-interactive
       az account list --output table
       ```
-    
+
    1. 使用するサブスクリプションの SubscriptionID フィールドをコピーします
    1. コピーした ID を使用して、次のコマンドを実行します。
-    
+
       ```azurecli-interactive 
       az account set -s {SubscriptionId}
       ```
-    
+
 1. 新しいリソース グループを作成します (または、次の手順で既存のリソース グループを指定します)。
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
    ```
-    
+
 1. 新しい仮想マシンを作成します。
 
    ```azurecli-interactive
    az vm create -g IoTEdgeResources -n EdgeVM --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter-Core-with-Containers:latest  --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
    ```
+
    * このコマンドはパスワードを求めるプロンプトを表示しますが、オプション `--admin-password` を追加 することで、スクリプトにより簡単にこれを設定できます
    * Windows Server Core イメージは、リモート デスクトップでのみコマンド ラインをサポートするため、完全なデスクトップ エクスペリエンスが必要な場合は、イメージとして `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` を指定します
 
-1. デバイス接続文字列を設定します (このプロセスに詳しくない場合は、[Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する](how-to-register-device-cli.md)方法のハウツー ガイドをご覧ください)。
+1. デバイス接続文字列を設定します (このプロセスに詳しくない場合は、「[Azure CLI を使用して接続文字列を取得する](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli)」の手順に従ってください)。
 
    ```azurecli-interactive
    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunPowerShellScript --script ". {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'"

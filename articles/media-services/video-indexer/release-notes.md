@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 10/27/2019
 ms.author: juliako
-ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
+ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672659"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72968727"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -27,6 +27,12 @@ ms.locfileid: "71672659"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="october-2019"></a>2019 年 10 月
+ 
+* ギャラリーでアニメーション化された文字を検索する
+
+    アニメーション化された文字のインデックスを作成すると、アカウントのビデオ ギャラリーで検索できるようになりました。 詳細については、[アニメーション化された文字の認識](animated-characters-recognition.md)に関する記事を参照してください。
 
 ## <a name="september-2019"></a>2019 年 9 月
  

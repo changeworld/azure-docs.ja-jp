@@ -14,21 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/28/2019
 ms.author: atsenthi
-ms.openlocfilehash: 6c195357c4a037534307571a53589b2ae861d88b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 77814d04daca0ebb649ffa2e8ff46becddec4f0f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67486023"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901506"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>クライアント認証用に Azure Active Directory をセットアップする
 
-Azure で実行されているクラスターの場合、Azure Active Directory (Azure AD) を使用して管理エンドポイントへのアクセスをセキュリティで保護することをお勧めします。  この記事では、Service Fabric クラスターのクライアントを認証するための Azure AD の設定方法について説明します。この操作は、[クラスターを作成する](service-fabric-cluster-creation-via-arm.md)前に行う必要があります。  Azure AD は組織 (テナントと呼ばれます) を有効にしてアプリケーションに対するユーザー アクセスを管理します。 アプリケーションは、Web ベースのサインイン UI を持つアプリケーションと、ネイティブ クライアントのエクスペリエンスを持つアプリケーションに分けられます。 
+Azure で実行されているクラスターの場合、Azure Active Directory (Azure AD) を使用して管理エンドポイントへのアクセスをセキュリティで保護することをお勧めします。 この記事では、Service Fabric クラスターのクライアントを認証するために Azure AD を設定する方法について説明します。
 
-Service Fabric クラスターでは、Web ベースの [Service Fabric Explorer][service-fabric-visualizing-your-cluster] や [Visual Studio][service-fabric-manage-application-in-visual-studio] など、いくつかのエントリ ポイントから管理機能にアクセスできます。 このため、クラスターへのアクセスを制御するには、2 つの Azure AD アプリケーション (Web アプリケーションとネイティブ アプリケーション) を作成します。  アプリケーションを作成した後は、ユーザーを読み取り専用ロールおよび管理者ロールに割り当てます。
+この記事の "アプリケーション" という用語は、Service Fabric アプリケーションではなく、[Azure Active Directory アプリケーション](../active-directory/develop/developer-glossary.md#client-application)を指すために使用されます。また、必要に応じて区別されます。 Azure AD は組織 (テナントと呼ばれます) を有効にしてアプリケーションに対するユーザー アクセスを管理します。
+
+Service Fabric クラスターでは、Web ベースの [Service Fabric Explorer][service-fabric-visualizing-your-cluster] や [Visual Studio][service-fabric-manage-application-in-visual-studio] など、いくつかのエントリ ポイントから管理機能にアクセスできます。 このため、クラスターへのアクセスを制御するには、2 つの Azure AD アプリケーション (Web アプリケーションとネイティブ アプリケーション) を作成します。 アプリケーションを作成した後は、ユーザーを読み取り専用ロールおよび管理者ロールに割り当てます。
 
 > [!NOTE]
-> クラスターを作成する前に、次の手順を完了する必要があります。 スクリプトはクラスター名とエンドポイントを想定しているため、値は作成済みのものではなく、計画する必要があります。
+> Linux 上では、クラスターを作成する前に次の手順を完了する必要があります。 Windows では、[既存のクラスターの Azure AD 認証を構成する](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md)こともできます。
 
 ## <a name="prerequisites"></a>前提条件
 この記事では、既にテナントを作成していることを前提としています。 まだ作成していない場合は、まず、[Azure Active Directory テナントを取得する方法][active-directory-howto-tenant]に関するページをお読みください。
@@ -57,7 +59,7 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 
 *ClusterName* は、スクリプトによって作成される Azure AD アプリケーションのプレフィックスとして使用されます。 実際のクラスター名と完全に一致している必要はありません。 これは、一緒に使用される Service Fabric クラスターに対して、Azure AD のアーティファクトのマッピングを容易にするためだけに使用します。
 
-*WebApplicationReplyUrl* は、サインインの完了後に Azure AD によってユーザーに返される既定のエンドポイントです。 このエンドポイントをクラスターの Service Fabric Explorer エンドポイントして設定します。既定値は次のとおりです。
+*WebApplicationReplyUrl* は、サインインの完了後に Azure AD によってユーザーに返される既定のエンドポイントです。 このエンドポイントをクラスターの Service Fabric Explorer エンドポイントとして設定します。 既存のクラスターを表す Azure AD アプリケーションを作成する場合は、この URL が既存のクラスターのエンドポイントと一致することを確認します。 新しいクラスター用のアプリケーションを作成する場合は、クラスターに使用するエンドポイントを計画し、既存のクラスターのエンドポイントを使用しないようにします。 既定では、Service Fabric Explorer エンドポイントは次のとおりです。
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
@@ -66,7 +68,7 @@ Azure AD テナント用の管理特権を持っているアカウントにサ�
    * *ClusterName*\_Cluster
    * *ClusterName*\_Client
 
-[クラスターを作成](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access)するとき、スクリプトによって、Azure Resource Manager テンプレートが必要とする JSON が出力されます。このため、PowerShell ウィンドウは開いたままにしてください。
+[AAD 対応のクラスター](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access)を作成するとき、スクリプトによって、Azure Resource Manager テンプレートが必要とする JSON が出力されます。このため、PowerShell ウィンドウは開いたままにしてください。
 
 ```json
 "azureActiveDirectory": {
@@ -125,7 +127,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalIn
 はい。 ただし、Service Fabric Explorer の URL をクラスター (Web) アプリケーションに追加することを忘れないでください。 そうしないと、Service Fabric Explorer は動作しません。
 
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Azure AD が有効になっているときもサーバーの証明書が必要なのはどうしてですか?
-FabricClient と FabricGateway では、相互認証が実行されます。 Azure AD 認証中、Azure AD 統合がクライアント ID をサーバーに提供し、サーバー証明書を使用してサーバー ID の確認が行われます。 Service Fabric の証明書の詳細については、「[X.509 証明書と Service Fabric][x509-certificates-and-service-fabric]」を参照してください。
+FabricClient と FabricGateway では、相互認証が実行されます。 Azure AD の認証中に、Azure AD 統合からサーバーにクライアント ID が提供されます。また、サーバー証明書は、クライアントによってサーバーの ID を検証するために使用されます。 Service Fabric の証明書の詳細については、「[X.509 証明書と Service Fabric][x509-certificates-and-service-fabric]」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Active Directory アプリケーションを設定し、ユーザーのロールを設定したら、[クラスターを構成してデプロイ](service-fabric-cluster-creation-via-arm.md)します。

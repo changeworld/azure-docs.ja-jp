@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 10/24/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
+ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844304"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73024783"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 グループの有効期限ポリシーの構成
 
@@ -28,16 +28,33 @@ ms.locfileid: "70844304"
 
 グループに有効期限を設定した場合:
 
-- 有効期限が近づくと、グループの更新を促す通知がグループの所有者に送られます
+- ユーザー アクティビティがあるグループは、有効期限が近づくと自動的に更新されます。
+- グループが自動更新されない場合、グループの所有者には、グループを更新するように通知されます。
 - 更新されないグループはすべて削除されます
 - 削除された Office 365 グループは、30 日以内であればグループの所有者または管理者が復元できます
 
-現在、1 つのテナントの Office 365 グループで構成できる有効期限ポリシーは 1 つのみです。
+現在、Azure AD 組織内のすべての Office 365 グループに対して構成できる有効期限ポリシーは 1 つのみです。
 
 > [!NOTE]
 > Office 365 グループの有効期限ポリシーを構成および使用するには、有効期限ポリシーを適用するすべてのグループのメンバーの Azure AD Premium ライセンスを所有している必要がありますが、必ずしも割り当てる必要はありません。
 
 Azure AD PowerShell コマンドレットをダウンロードしてインストールする方法については、[Azure Active Directory PowerShell for Graph 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) に関するページを参照してください。
+
+## <a name="activity-based-automatic-renewal"></a>アクティビティベースの自動更新
+
+Azure AD インテリジェンスを使うと、最近使用されたかどうかに基づいてグループは自動的に更新されるようになります。 この機能は、Outlook、SharePoint、Teams、Yammer などの Office 365 サービス全体のグループに含まれるユーザー アクティビティに基づいているため、グループ所有者による手動操作は不要になります。 たとえば、所有者またはグループ メンバーが、SharePoint でドキュメントをアップロードする、Teams チャンネルにアクセスする、Outlook でグループにメールを送信するなどの操作を行うと、グループは自動的に更新され、所有者には更新通知が送信されません。
+
+### <a name="activities-that-automatically-renew-group-expiration"></a>グループの有効期限を自動的に更新するアクティビティ
+
+次のユーザー操作により、グループの自動更新が行われます。
+
+- SharePoint:ファイルの表示、編集、ダウンロード、移動、共有、またはアップロード
+- Outlook:グループへの参加、グループ領域からのグループ メッセージの読み取り/書き込み、メッセージへの "いいね!" の追加 (Outlook Web Access)
+- Teams:チーム チャネルへのアクセス
+
+### <a name="auditing-and-reporting"></a>監査とレポート
+
+管理者は、Azure AD のアクティビティ監査ログから自動的に更新されたグループの一覧を取得できます。
 
 ## <a name="roles-and-permissions"></a>ロールとアクセス許可
 
@@ -60,16 +77,16 @@ User | 所有する Office 365 グループを更新できます<br>所有する
 
 3. **[有効期限]** ページで、次のことができます。
 
-  - グループの有効期間を日数で設定する。 プリセット値かカスタム値 (31 日以上である必要があります) のいずれかを選択する。
-  - グループに所有者がいない場合に、更新と有効期限の通知を送信する電子メール アドレスを指定する。
-  - どの Office 365 グループを有効期限切れにするかを選択する。 有効期限は次のように設定できます。
-    - **[すべて]** の Office 365 グループ
-    - **[選択済み]** の Office 365 グループの一覧
-    - **[なし]** : すべてのグループの有効期限を制限しない場合
-  - **[保存]** を選択して完了し、設定を保存する。
+    - グループの有効期間を日数で設定する。 プリセット値かカスタム値 (31 日以上である必要があります) のいずれかを選択する。
+    - グループに所有者がいない場合に、更新と有効期限の通知を送信する電子メール アドレスを指定する。
+    - どの Office 365 グループを有効期限切れにするかを選択する。 有効期限は次のように設定できます。
+      - **[すべて]** の Office 365 グループ
+      - **[選択済み]** の Office 365 グループの一覧
+      - **[なし]** : すべてのグループの有効期限を制限しない場合
+    - **[保存]** を選択して完了し、設定を保存する。
 
 > [!NOTE]
-> 有効期限を初めて設定する場合、有効期限の間隔よりも古いグループは、所有者が更新しない限り、有効期限まで残り 30 日に設定されます。 最初の更新に関する通知電子メールは 1 日以内に送信されます。
+> 有効期限を初めて設定すると、有効期限の間隔よりも古いグループは、グループが自動的に更新されるか所有者が更新しない限り、有効期限まで 35 日間に設定されます。
 >
 > 動的なグループを削除し復元する場合、そのグループは新しいグループとみなされ、規則に従って再度追加されます。 このプロセスには最大で 24 時間かかります。
 >
@@ -77,7 +94,7 @@ User | 所有する Office 365 グループを更新できます<br>所有する
 
 ## <a name="email-notifications"></a>電子メール通知
 
-次のような電子メール通知が、グループの有効期限の 30 日前、15 日前、1 日前に Office 365 グループの所有者に送信されます。 メールの言語は、グループ所有者の優先言語または Azure AD の言語設定によって決まります。 グループの所有者が優先言語を定義している場合、または複数の所有者が同じ優先言語を持っている場合は、その言語が使用されます。 それ以外のすべての場合は、Azure AD の言語設定が使用されます。
+グループが自動的に更新されない場合、このようなメール通知は、グループの有効期限の 30 日前、15 日前、および 1 日前に Office 365 グループ所有者に送信されます。 メールの言語は、グループ所有者の優先言語または Azure AD の言語設定によって決まります。 グループの所有者が優先言語を定義している場合、または複数の所有者が同じ優先言語を持っている場合は、その言語が使用されます。 それ以外のすべての場合は、Azure AD の言語設定が使用されます。
 
 ![有効期限に関する電子メール通知](./media/groups-lifecycle/expiration-notification.png)
 
@@ -92,18 +109,22 @@ User | 所有する Office 365 グループを更新できます<br>所有する
 復元するグループにドキュメント、SharePoint サイト、または他の永続的なオブジェクトが含まれている場合は、グループとその内容を完全に復元するまでに最大 24 時間かかることがあります。
 
 ## <a name="how-to-retrieve-office-365-group-expiration-date"></a>Office 365 グループの有効期限を取得する方法
+
 Office 365 グループの有効期限は、ユーザーが有効期限や最終更新日などのグループの詳細を表示できるアクセス パネルに加え、Microsoft Graph REST API ベータ版からも取得できます。 Microsoft Graph ベータ版では、グループ プロパティとして expirationDateTime が有効になりました。 これは GET 要求で取得できます。 詳細については、[こちらの例](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example)を参照してください。
 
 > [!NOTE]
 > アクセス パネルでグループのメンバーシップを管理するには、Azure Active Directory の [Groups General Setting]\(グループの全般設定\) で [Restrict access to Groups in Access Panel]\(アクセス パネルのグループへのアクセスを制限する\) を [いいえ] に設定する必要があります。
 
 ## <a name="how-office-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Office 365 グループの有効期限と訴訟ホールドのメールボックスの連携
-グループの有効期限が切れてグループが削除されると、削除の 30 日後に、グループのアプリ (Planner、サイト、チームなど) のデータが完全に削除されます。ただし、訴訟ホールドにあるグループ メールボックスは保持され、完全に削除されることはありません。 管理者は、Exchange コマンドレットを使用してメールボックスを復元し、データをフェッチできます。 
+
+グループの有効期限が切れてグループが削除されると、削除の 30 日後に、グループのアプリ (Planner、サイト、チームなど) のデータが完全に削除されます。ただし、訴訟ホールドにあるグループ メールボックスは保持され、完全に削除されることはありません。 管理者は、Exchange コマンドレットを使用してメールボックスを復元し、データをフェッチできます。
 
 ## <a name="how-office-365-group-expiration-works-with-retention-policy"></a>Office 365 グループの有効期限とアイテム保持ポリシーの連携
+
 アイテム保持ポリシーは、セキュリティ/コンプライアンス センターを使用して構成されます。 Office 365 グループに対してアイテム保持ポリシーを設定した場合は、グループの有効期限が切れてグループが削除されると、グループ メールボックス内のグループのメッセージ交換とグループ サイト内のファイルは、アイテム保持ポリシーで定義されている特定の日数の間、保持コンテナーに保持されます。 有効期限が過ぎた後、ユーザーにはグループやその内容が表示されませんが、E-Discovery を使用してサイトとメールボックスのデータを復旧できます。
 
 ## <a name="powershell-examples"></a>PowerShell の例
+
 PowerShell コマンドレットを使用して、Azure AD 組織の Office 365 グループの有効期限の設定を構成する方法の例を次に示します。
 
 1. PowerShell v2.0 モジュールをインストールし、PowerShell プロンプトでサインインします。
@@ -145,7 +166,7 @@ PowerShell コマンドレットを使用して、Azure AD 組織の Office 365 
    Add-AzureADMSLifecyclePolicyGroup -Id "26fcc232-d1c3-4375-b68d-15c296f1f077" -groupId "cffd97bd-6b91-4c4e-b553-6918a320211c"
    ```
   
-1. 既存のポリシーを削除する Remove-AzureADMSGroupLifecyclePolicy:このコマンドレットにより、Office 365 グループの有効期限の設定が削除されます。ただし、ポリシー ID が必要です。 これで、Office 365 グループの有効期限が無効になります。
+1. 既存のポリシーを削除する Remove-AzureADMSGroupLifecyclePolicy:このコマンドレットにより、Office 365 グループの有効期限の設定が削除されます。ただし、ポリシー ID が必要です。 このコマンドレットを使うと、Office 365 グループの有効期限は無効になります。
   
    ```powershell
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"

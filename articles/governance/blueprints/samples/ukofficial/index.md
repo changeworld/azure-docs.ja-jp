@@ -1,14 +1,14 @@
 ---
-title: UK OFFICIAL および UK NHS のブループリント サンプル - 概要
+title: UK OFFICIAL および UK NHS ブループリント サンプルの概要
 description: UK OFFICIAL および UK NHS のブループリント サンプルの概要とアーキテクチャ。 このブループリント サンプルは、お客様が特定のコントロールを評価するのに役立ちます。
 ms.date: 06/26/2019
 ms.topic: sample
-ms.openlocfilehash: c058a4a9647ce6abc373a6fe2ee8d110f2541ea3
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e6ba277c879f8569e32ec963aaa15a2e14fe78c0
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406626"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546380"
 ---
 # <a name="overview-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルの概要
 

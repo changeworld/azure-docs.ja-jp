@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: c1b507398a2edd839b610a7c52892e23a88481a0
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ae3f866ff5e4266983117e93f2aab5982065947e
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72516618"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72964385"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Windows に Azure IoT Edge ランタイムをインストールする
 
@@ -76,9 +76,9 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 
 1. 新しい IoT Edge デバイスを登録していない場合は登録し、**デバイス接続文字列**を取得します。 このセクションの後半で使用するため、接続文字列をコピーします。 この手順は次のツールで完了できます。
 
-   * [Azure Portal](how-to-register-device-portal.md)
-   * [Azure CLI](how-to-register-device-cli.md)
-   * [Visual Studio Code](how-to-register-device-vscode.md)
+   * [Azure Portal](how-to-register-device.md#register-in-the-azure-portal)
+   * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
+   * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
 2. PowerShell を管理者として実行します。
 
@@ -123,7 +123,7 @@ IoT Edge ランタイムをデバイスに初めてインストールすると�
 
 この 2 番目のオプションでは、IoT Hub Device Provisioning Service を使用してデバイスをプロビジョニングします。 使用する[構成証明メカニズム](../iot-dps/concepts-security.md#attestation-mechanism)に固有にその他の情報と共に、Device Provisioning Service インスタンスからの**スコープ ID** を指定します。
 
-* [Windows 上でシミュレートされた TPM Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-simulated-device-windows.md)
+* [Windows 上で、仮想 TPM を使用するシミュレートされた IoT Edge デバイスを作成し、プロビジョニングする](how-to-auto-provision-simulated-device-windows.md)
 * [対称キーの構成証明を使用して IoT Edge デバイスを作成およびプロビジョニングする](how-to-auto-provision-symmetric-keys.md)
 
 デバイスを自動でインストールおよびプロビジョニングするとき、追加のパラメーターを使用して、インストールを次のように変更できます。

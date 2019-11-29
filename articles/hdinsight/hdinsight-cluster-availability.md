@@ -1,20 +1,20 @@
 ---
-title: Ambari と Azure Monitor ログを使用してクラスターの可用性を監視する方法
+title: '監視: Apache Ambari と Azure Monitor のログ - Azure HDInsight'
 description: Ambari と Azure Monitor ログを使用してクラスターのヘルスと可用性を監視する方法について説明します。
 keywords: 監視、ambari、監視する、ログ分析、アラート、可用性、ヘルス
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-author: tylerfox
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: tyfox
-ms.openlocfilehash: 153c28dc8a06968dc9dd3cfda021496672a094d5
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: eeaef8851035bbb8d2f39bcf9f366118545fcf0f
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076547"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044479"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Ambari と Azure Monitor ログを使用してクラスターの可用性を監視する方法
 

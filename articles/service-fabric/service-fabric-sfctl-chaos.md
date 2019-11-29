@@ -3,22 +3,23 @@ title: Azure Service Fabric CLI- sfctl chaos | Microsoft Docs
 description: Service Fabric CLI sfctl chaos のコマンドについて説明します。
 services: service-fabric
 documentationcenter: na
-author: Christina-Kang
+author: jeffj6123
 manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
+ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 27178b2f26086bf693dc9cda342c66f7d47a34d7
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 9/17/2019
+ms.author: jejarry
+ms.openlocfilehash: f48ef260ab05f98da99c3ae317d0c350d018119f
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035092"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72901758"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 chaos テスト サービスの開始、停止、レポートを実行します。
@@ -46,10 +47,10 @@ Chaos イベントの次のセグメントを取得するには、ContinuationTo
 |引数|説明|
 | --- | --- |
 | --continuation-token | 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらない場合は、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。 |
-| --end-time-utc | Chaos レポートが生成される時間範囲の終了時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
+| --end-time-utc | Chaos レポートが生成される時間範囲の終了時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
 | --max-results | ページング クエリの一部として返される結果の最大数。 このパラメーターは、返される結果の数に上限を定義します。 返された結果が、構成で定義したメッセージの最大サイズの制限に収まらない場合は、指定した最大結果数よりも少なくなる場合があります。 このパラメーターがゼロまたは指定されていない場合、ページング クエリには、応答メッセージに収まるできるだけ多くの結果が含まれます。 |
-| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -70,7 +71,7 @@ Chaos が実行中かどうかを示す Chaos の状態、Chaos の実行に使�
 
 |引数|説明|
 | --- | --- |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -85,7 +86,7 @@ Chaos が実行中かどうかを示す Chaos の状態、Chaos の実行に使�
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 クラスターで Chaos を開始します。
 
-クラスターで Chaos がまだ実行されていない場合、渡された Chaos パラメーターで Chaos を開始します。 Chaos が既に実行しているときにこの呼び出しを行った場合は、呼び出しはエラー コード FABRIC_E_CHAOS_ALREADY_RUNNING で失敗します。
+クラスターで Chaos がまだ実行されていない場合、渡された Chaos パラメーターで Chaos を開始します。 Chaos が既に実行しているときにこの呼び出しを行った場合は、呼び出しはエラー コード FABRIC_E_CHAOS_ALREADY_RUNNING で失敗します。 詳細については、「[Service Fabric クラスターでの制御された混乱の誘発](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)」の記事を参照してください。
 
 ### <a name="arguments"></a>引数
 
@@ -100,7 +101,7 @@ Chaos が実行中かどうかを示す Chaos の状態、Chaos の実行に使�
 | --max-percent-unhealthy-apps | Chaos 中にクラスターの正常性を評価するときに、エラーを報告する前の異常なアプリケーションの最大許容パーセンテージ。 <br><br> エラーを報告する前の異常なアプリケーションの最大許容パーセンテージ。 たとえば、アプリケーションの 10% の異常を許容するには、この値を 10 にします。 パーセンテージは、異常な可能性のあるアプリケーションの最大許容パーセンテージを表します。この値を超えるとクラスターはエラーの状態と見なされます。 許容パーセンテージ内であっても、1 つ以上の異常なアプリケーションがある場合は、正常性は Warning として評価されます。 これは、異常なアプリケーションの数をクラスター内のアプリケーション インスタンスの総数で割ることによって計算されます。ApplicationTypeHealthPolicyMap に含まれているアプリケーションの種類のアプリケーションは除外されます。 切り上げ計算が実行され、少数のアプリケーションに対する 1 つのエラーは許容されます。 既定のパーセンテージは 0 です。 |
 | --max-percent-unhealthy-nodes | Chaos 中にクラスターの正常性を評価するときに、エラーを報告する前の異常なノードの最大許容パーセンテージ。 <br><br> エラーを報告する前の異常なノードの最大許容パーセンテージ。 たとえば、ノードの 10% の異常を許容するには、この値を 10 にします。 パーセンテージは、異常な可能性のあるノードの最大許容パーセンテージを表します。この値を超えるとクラスターはエラーの状態と見なされます。 許容パーセンテージ内であっても、1 つ以上の異常なノードがある場合は、正常性は Warning として評価されます。 パーセンテージは、異常なノードの数をクラスター内のノードの総数で割ることによって計算されます。 切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。 既定のパーセンテージは 0 です。 大規模なクラスターでは、ダウンしているか修復を必要とするノードがいくつか必ず存在するため、それが許容されるようにこのパーセンテージを構成する必要があります。 |
 | --time-to-run | 自動停止するまでに Chaos が実行される合計時間 (秒)。 最大許容値は、4,294,967,295 (System.UInt32.MaxValue) です。  既定値\: 4294967295。 |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 既定値\: 60。 |
 | --wait-time-between-faults | 1 つのイテレーション内で連続する障害の間の時間 (秒単位)。  既定値\: 20。 <br><br> 値が大きいほど、障害間のオーバーラップは少なくなり、クラスターの状態遷移のシーケンスは単純になります。 1 ～ 5 の値で始めて、注意しながら値を増やすことをお勧めします。 |
 | --wait-time-between-iterations | Chaos の 2 つの連続するイテレーション間の時間区切り (秒単位)。 値が大きいほど、障害挿入率は低くなります。  既定値\: 30。 |
 | --warning-as-error | 警告がエラーと同じ重大度で処理されることを示します。 |
@@ -124,7 +125,7 @@ Chaos が新しい障害を実行するのを停止します。 転送中の障�
 
 |引数|説明|
 | --- | --- |
-| --timeout -t | サーバー タイムアウト (秒)。  既定値\: 60。 |
+| --timeout -t | 操作を実行するためのサーバー タイムアウト (秒単位)。 このタイムアウトは、要求した操作が完了するまでクライアントが待機できる期間を指定します。 このパラメーターの既定値は 60 秒です。  既定値\: 60。 |
 
 ### <a name="global-arguments"></a>グローバル引数
 

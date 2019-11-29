@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight でのクラスターの作成からの InvalidNetworkConfigurationErrorCode
+title: InvalidNetworkConfigurationErrorCode エラー - Azure HDInsight
 description: Azure HDInsight で InvalidNetworkConfigurationErrorCode を使用したクラスターの作成が失敗するさまざまな理由
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: a6b207086325018deb63383a0775af8dfe195ac4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5b8d031af9dbe6019d71e2a1caa3d3f25d4024ea
+ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091714"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73044462"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Azure HDInsight で InvalidNetworkConfigurationErrorCode を使用したクラスターの作成が失敗する
 

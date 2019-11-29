@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics での、設定可能なしきい値に基づいたルールの処理
+title: Azure Stream Analytics での構成可能なしきい値ベースのルール
 description: この記事では、Azure Stream Analytics で、参照データを使用して、設定可能なしきい値ベースのルールを含むアラート ソリューションを実現する方法について説明します。
 services: stream-analytics
 author: zhongc
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: ce2cf6ebdfd74549114e94e4c7356e387576d3c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8fd21f411093e22b2b1dc5afd6da9cb26db6ff8
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761728"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72934258"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Azure Stream Analytics での、設定可能なしきい値に基づいたルールの処理
 この記事では、Azure Stream Analytics で、参照データを使用して、設定可能なしきい値に基づいたルールを含むアラート ソリューションを実現する方法について説明します。
