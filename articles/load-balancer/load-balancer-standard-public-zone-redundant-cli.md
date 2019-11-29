@@ -1,6 +1,6 @@
 ---
 title: Azure CLI を使用してゾーン冗長 VM の負荷を分散する
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: ゾーン冗長フロントエンドを使用したパブリック Standard Load Balancer を Azure CLI で作成する方法について説明します
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: allensu
-ms.openlocfilehash: 6a22ac9a2727c537d98e692e67076637fe8cc457
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: af327f751a0af67b6d17330dbaeb717df8660bfd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274328"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225269"
 ---
 #  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Azure CLI を使用してすべての可用性ゾーン間で VM の負荷を分散する
 

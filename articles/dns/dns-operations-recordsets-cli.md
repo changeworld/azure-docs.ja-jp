@@ -3,7 +3,7 @@ title: Azure CLI を使用した Azure DNS の DNS レコードの管理 | Micro
 description: Azure DNS でドメインをホストする際に Azure DNS の DNS レコード セットとレコードを管理します。
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: jeconnoc
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
-ms.author: victorh
-ms.openlocfilehash: 4864a46b91b4e243ce6a2ae3d9d36df28fe74d8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: a0316710f78afc8810f5f65e108638b08fae3da2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293356"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211630"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS の DNS レコードおよびレコードセットを管理する
 

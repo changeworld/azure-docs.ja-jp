@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry のベスト プラクティス
+title: レジストリのベスト プラクティス
 description: ベスト プラクティスに従って Azure Container Registry を効果的に使う方法を説明します。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: danlep
-ms.openlocfilehash: a1ab010300d3f7bec3aeb5969a9a09fa9ee9a6a5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4b0512674358d4db2e29596408ebbf44af4ea2a9
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309765"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455321"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry のベスト プラクティス
 
@@ -51,11 +46,11 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 特定のホスト タイプ (Azure Container Instances など) を試験的に使用することもあるかと思いますが、作業後はコンテナー インスタンスを削除するのが普通です。 しかし、Azure Container Registry にプッシュした一連のイメージを保存しておきたいこともあるでしょう。 レジストリを専用のリソース グループに置いておけば、コンテナー インスタンス リソース グループを削除するときに、レジストリ内の一連のイメージを不注意で削除するリスクを極力抑えることができます。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 Azure Container Registry に対して認証を行うときのシナリオは、個人の認証とサービス ("ヘッドレス") 認証の 2 つに大別されます。 次の表は、それらのシナリオの概要とそれぞれに推奨される認証方法をまとめたものです。
 
-| Type | サンプル シナリオ | 推奨される方法 |
+| 種類 | サンプル シナリオ | 推奨される方法 |
 |---|---|---|
 | 個人 ID | 開発者が、その開発マシンにイメージをプルしたり、開発マシンからイメージをプッシュしたりする。 | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | ヘッドレス/サービス ID | ユーザーの直接介入を伴わないビルドとデプロイのパイプライン。 | [サービス プリンシパル](container-registry-authentication.md#service-principal) |

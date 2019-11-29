@@ -4,16 +4,16 @@ description: コストを節約するために Azure SQL Data Warehouse に予�
 services: billing
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: 9016c054b9a92b09836f10286eb0da18e4dc701a
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: 2520b9142c377bd84ac0d9c09b56ba17b6e42522
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71701822"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226237"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse への予約割引の適用方法
 

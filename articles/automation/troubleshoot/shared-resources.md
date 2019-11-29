@@ -8,12 +8,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b9b1be699190f6dc6f4771411c22f376d51637ec
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a2836f40b55a71e080288fce7e48275747962c16
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477446"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231529"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>共有リソースのエラーをトラブルシューティングする
 
@@ -29,7 +29,7 @@ Azure Automation でモジュールのインポートまたは更新を行うと
 
 #### <a name="cause"></a>原因
 
-PowerShell モジュールのインポートは、複雑な複数手順のプロセスです。 このプロセスでは、モジュールが正しくインポートされない可能性があります。 この問題が発生すると、インポートしているモジュールが一時的な状態で停止することがあります。 このプロセスの詳細については、[PowerShell モジュールのインポート]( /powershell/developer/module/importing-a-powershell-module#the-importing-process)に関する記事を参照してください。
+PowerShell モジュールのインポートは、複雑な複数手順のプロセスです。 このプロセスでは、モジュールが正しくインポートされない可能性があります。 この問題が発生すると、インポートしているモジュールが一時的な状態で停止することがあります。 このプロセスの詳細については、[PowerShell モジュールのインポート](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process)に関する記事を参照してください。
 
 #### <a name="resolution"></a>解決策
 

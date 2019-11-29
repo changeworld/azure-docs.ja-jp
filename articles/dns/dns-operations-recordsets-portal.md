@@ -2,17 +2,17 @@
 title: Azure DNS で DNS レコード セットとレコードを管理する
 description: Azure DNS には、ドメインをホストしている場合に、DNS レコード セットとレコードを管理する機能が用意されています。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 10/6/2018
-ms.author: victorh
-ms.openlocfilehash: 891adfacde6e46b1d8fe8e2f6b5fb39c90ce27a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 6d0b917c72b1ebb6f1156df269908fb9af3657ed
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61296380"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211795"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure ポータルを使用した DNS レコードとレコード セットの管理
 

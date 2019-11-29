@@ -2,17 +2,17 @@
 title: Azure のプライベート エンドポイントのネットワーク ポリシーを無効にする
 description: プライベート エンドポイントのネットワーク ポリシーを無効にする方法について学習します。
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 3eec2d208e97cc33c318e4a45ae85074fbc2583c
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.author: allensu
+ms.openlocfilehash: ef9dafd97b3d9889714a321ad00d98a87c3665d6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101611"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224805"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>プライベート エンドポイントのネットワーク ポリシーを無効にする
 

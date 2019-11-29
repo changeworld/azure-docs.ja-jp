@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: a7c19486fe6787c4548a77dcdd93a92a92c97d8c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: f384a6a870d891bbaf6fa20a896b0251e62b8d4f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931110"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224977"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な Chainer モデルをトレーニングし、登録する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
     - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
-    - サンプル スクリプト ファイル [chainer_mnist.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py) をダウンロードします。
+    - サンプル スクリプト ファイル [chainer_mnist.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer) をダウンロードします。
      - GitHub サンプル ページにも、完全な [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)があります。 このノートブックには、インテリジェント ハイパーパラメーター チューニング、モデル デプロイ、ノートブック ウィジェットを取り上げた拡張セクションがあります。
 
 ## <a name="set-up-the-experiment"></a>実験を設定する

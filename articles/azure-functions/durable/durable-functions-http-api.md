@@ -1,20 +1,16 @@
 ---
 title: Durable Functions の HTTP API - Azure Functions
 description: Azure Functions の Durable Functions 拡張機能で HTTP API を実装する方法を説明します。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ad2b1b9236f88f99542f8705372af664cc299ee0
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 0390211e6fc42bd7183a770cac409b880310d317
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614820"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231402"
 ---
 # <a name="http-api-reference"></a>HTTP API リファレンス
 

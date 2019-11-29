@@ -1,21 +1,15 @@
 ---
 title: Azure portal を使用して Durable Functions を作成する
 description: ポータル開発用に Azure Functions の Durable Functions 拡張機能をインストールする方法を説明します。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 238969b320608c08491c3d3e85870d57f41c1589
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: eaa241eff6e1c359045a0ea3d8871fde6c60a059
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614981"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231480"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal を使用して Durable Functions を作成する
 

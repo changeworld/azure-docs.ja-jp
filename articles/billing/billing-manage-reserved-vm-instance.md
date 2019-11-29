@@ -1,7 +1,7 @@
 ---
 title: Azure の予約を管理する
 description: Azure の予約を管理する方法について説明します。
-ms.service: billing
+ms.service: cost-management-billing
 author: bandersmsft
 manager: yashesvi
 ms.devlang: na
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/06/2019
 ms.author: banders
-ms.openlocfilehash: b161fc7cd4faa75dd87613c297c12f1edd862510
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f1a23f7217ccae843f2394fdea4c04b5842e6fd0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68840010"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226208"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure リソースに対する予約を管理する
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8d7db428d7f71383abf5425d7cc1ddbbab3b7a52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e3d0f4ba178ef2cf44b9c5c3dd5b8c212f1c133
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037875"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186172"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -63,7 +63,7 @@ Media Services では、[ダイナミック パッケージ](dynamic-packaging-o
 
 Media Services によるクラウド エンコードを使用する場合は、オンプレミス ライブ エンコーダーを、(RTMP または Fragmented MP4 入力プロトコルを使用して) ライブ イベントへの投稿フィードとしてシングル ビットレート ビデオ (最大合計 32 Mbps) を送信するように構成します。 ライブ イベントは、配信を向上させるためにさまざまな解像度で受信シングル ビットレート ストリームを[マルチ ビットレート ビデオ ストリーム](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)にコード変換し、そのストリームを、MPEG-DASH、Apple HTTP ライブ ストリーミング プロトコル (HLS)、Microsoft Smooth Streaming などの業界標準プロトコルを介して再生デバイスに配信できるようにします。 
 
-### <a name="live-transcription"></a>ライブ文字起こし
+### <a name="live-transcription-preview"></a>ライブ文字起こし (プレビュー)
 
 ライブ文字起こしは、パススルーまたはライブ エンコードのいずれかであるライブ イベントで使用できる機能です。 詳細については、[ライブ文字起こし](live-transcription.md)に関するページを参照してください。 この機能が有効になっている場合、このサービスでは Cognitive Services の[音声テキスト変換](../../cognitive-services/speech-service/speech-to-text.md)機能を使用して、受信したオーディオの音声を文字起こししてテキストにします。 その後、このテキストは、MPEG-DASH および HLS プロトコルのビデオとオーディオで配信できるようになります。
 

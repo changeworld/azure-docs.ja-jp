@@ -2,13 +2,13 @@
 title: Cloud Solution Provider プログラムの考慮事項
 description: CSP パートナーにとって、Azure の委任されたリソース管理は、粒度の細かいアクセス許可を実現することによってセキュリティと制御を強化する効果があります。
 ms.date: 10/23/2019
-ms.topic: overview
-ms.openlocfilehash: 3ea32418cdf6808ad311d343d28ba2778740dbe4
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: 7e1e371d8c31c45828ee0565545cb40145b40e92
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132513"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463967"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse と Cloud Solution Provider プログラム
 

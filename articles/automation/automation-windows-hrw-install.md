@@ -4,17 +4,17 @@ description: この記事では、お使いのローカル データ センタ�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 05/21/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a8f6d46b8db6761204e39f14bbb51a493445ad26
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cd599fcfe403d64483e6b4db869b93b26f5db754
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477915"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480805"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -140,9 +140,9 @@ Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 
 Runbook は、Azure Automation 環境にインストールされているモジュールで定義されているアクティビティとコマンドレットをすべて使用できます。 これらのモジュールはオンプレミス コンピューターに自動的に配置されないため、手動でインストールする必要があります。 Azure モジュールは例外です。既定でインストールされ、すべての Azure サービスのコマンドレットと Azure Automation のアクティビティにアクセスできます。
 
-Hybrid Runbook Worker 機能の主な目的はローカル リソースを管理することであるため、ほとんどの場合、これらのリソースをサポートするモジュールをインストールする必要があります。 Windows PowerShell モジュールのインストールについては、「[モジュールのインストール](/powershell/developer/windows-powershell)」を参照してください。 
+Hybrid Runbook Worker 機能の主な目的はローカル リソースを管理することであるため、ほとんどの場合、これらのリソースをサポートするモジュールをインストールする必要があります。 Windows PowerShell モジュールのインストールについては、「[モジュールのインストール](/powershell/scripting/developer/windows-powershell)」を参照してください。 
 
-インストールされるモジュールは **PSModulePath** 環境変数によって参照されている場所に置き、ハイブリッド worker が自動的にインポートできるようにする必要があります。 詳細については、「[Modifying the PSModulePath Installation Path](/powershell/developer/windows-powershell)」(PSModulePath インストール パスの変更) を参照してください。
+インストールされるモジュールは **PSModulePath** 環境変数によって参照されている場所に置き、ハイブリッド worker が自動的にインポートできるようにする必要があります。 詳細については、「[Modifying the PSModulePath Installation Path](/powershell/scripting/developer/windows-powershell)」(PSModulePath インストール パスの変更) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: defe6711049e191ada1a2f6e46d6643debdca86e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113802"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484112"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure コグニティブ検索の強化パイプラインのカスタム Web API スキル
 
@@ -205,4 +205,4 @@ Web API が利用できないか、HTTP エラーが返された場合は、HTTP
 
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)
 + [AI 強化パイプラインにカスタム スキルを追加する](cognitive-search-custom-skill-interface.md)
-+ 例:AI 強化のカスタム スキルを作成する(cognitive-search-create-custom-skill-example.md)
++ [例:AI エンリッチメント用のカスタム スキルを作成する](cognitive-search-create-custom-skill-example.md)

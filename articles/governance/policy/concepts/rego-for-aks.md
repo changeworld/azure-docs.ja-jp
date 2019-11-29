@@ -3,12 +3,12 @@ title: Azure Kubernetes Service に対する Azure Policy について学習す�
 description: Azure Policy が Rego および Open Policy Agent を使用して、Azure Kubernetes Service 上でクラスターを管理する方法について説明します。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dbac1ee762066fb59cd57c04839666026a2bd89b
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959794"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279393"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Azure Kubernetes Service に対する Azure Policy の理解
 
@@ -257,6 +257,6 @@ Kubernetes の Azure Policy アドオンを使うと、制限されたクラス�
 - [ポリシー定義の構造](definition-structure.md)を確認します。
 - 「[Policy の効果について](effects.md)」を確認します。
 - [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)方法を学習します。
+- [コンプライアンス データを取得する](../how-to/get-compliance-data.md)方法を学習します。
 - [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

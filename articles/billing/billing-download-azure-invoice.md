@@ -5,19 +5,19 @@ keywords: 請求書,請求書のダウンロード,Azure の請求書,Azure の�
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 80ec40a7411a370460d663084f9f7034b28e1a2e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7d52a589ee7fcb8891f5ea839b2baeb5e4b30733
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375750"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224022"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の表示とダウンロード
 
@@ -32,7 +32,7 @@ Microsoft 顧客契約 (MCA) を結んでいる場合、請求書を取得する
 - Reader
 - 請求書マネージャー
 
-Microsoft Partner Agreement (MPA) を結んでいる場合、Azure の請求書を表示してダウンロードするためには、取引先組織の全体管理者または管理者エージェントであることが必要です。 [課金アカウントの種類を確認](#check-your-billing-account-type)して、必要なアクセス許可を把握してください。 
+Microsoft Partner Agreement (MPA) を結んでいる場合、Azure の請求書を表示してダウンロードするためには、取引先組織の全体管理者または管理者エージェントであることが必要です。 [課金アカウントの種類を確認](#check-your-billing-account-type)して、必要なアクセス許可を把握してください。
 
 <!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](billing-understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
@@ -46,7 +46,7 @@ Microsoft Partner Agreement (MPA) を結んでいる場合、Azure の請求書�
 
 - 請求書を表示するアクセス許可がない。 MCA または MPA を結んでいる場合、課金プロファイルの所有者、共同作成者、閲覧者、または請求書管理者である必要があります。 その他のサブスクリプションでは、アカウント管理者でない場合は古い請求書が表示されないことがあります。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
 
-- ご利用のサブスクリプションで無料試用版を使用している場合や月単位のクレジット額がある場合、請求書が表示されるのは、毎月のクレジット額を超えたときのみ。 Microsoft 顧客契約または Microsoft Partner Agreement を交わしている場合は、常に請求書が表示されます。 
+- ご利用のサブスクリプションで無料試用版を使用している場合や月単位のクレジット額がある場合、請求書が表示されるのは、毎月のクレジット額を超えたときのみ。 Microsoft 顧客契約または Microsoft Partner Agreement を交わしている場合は、常に請求書が表示されます。
 
 ## <a name="download-invoices-in-the-azure-portal"></a>Azure portal で請求書をダウンロードする
 

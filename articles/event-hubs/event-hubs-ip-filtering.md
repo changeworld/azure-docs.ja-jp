@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: f96c25dbb85ed92141636487f10d861a8c5e5f28
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2350586501fae84726aa2aa2438ea676b90c1dbb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468425"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279683"
 ---
 # <a name="use-firewall-rules"></a>ファイアウォール ルールを使用する
 
@@ -46,7 +46,6 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 > IP フィルター処理 (ファイアウォール) が実装されているときは信頼できる Microsoft サービスはサポートされませんが、近日中に使用できるようになります。
 >
 > IP フィルター処理では動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
-> - Azure Monitor
 > - Azure Stream Analytics
 > - Azure Event Grid との統合
 > - Azure IoT Hub ルート

@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d830b8e27bb6f66a533b8106cbec53eeca4ca139
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 85c13a7175bca015ab24c8b09500b47e3ea846ed
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970715"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231650"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>構成を複合リソースに変換する
 
@@ -31,7 +31,7 @@ ms.locfileid: "69970715"
 - ファイアウォール設定を管理する
 - パスワード設定を管理する
 
-この作業を他のユーザーと共有することに関心がある場合は、構成を[複合リソース](/powershell/dsc/resources/authoringresourcecomposite)としてパッケージ化することが最良の選択肢です。
+この作業を他のユーザーと共有することに関心がある場合は、構成を[複合リソース](/powershell/scripting/dsc/resources/authoringresourcecomposite)としてパッケージ化することが最良の選択肢です。
 複合リソースを初めて作成するのは非常に困難な場合があります。
 
 > [!NOTE]
@@ -49,7 +49,7 @@ CompositeResource は、構成から新しいモジュールを作成するプ�
 
 モジュールを生成したら、バージョンをインクリメントし、変更を加えるたびにリリース ノートを追加して、独自の [PowerShellGet リポジトリ](https://kevinmarquette.github.io/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)に公開することができます。
 
-構成 (または複数の構成) を含む複合リソース モジュールを作成したら、それらを Azure の [Composable Authoring Experience](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation) で使用するか、[DSC 構成スクリプト](/azure/automation/compose-configurationwithcompositeresources)に追加して MOF ファイルを生成し、[MOF ファイルを Azure Automation にアップロードする](/powershell/dsc/configurations/configurations)ことができます。
+構成 (または複数の構成) を含む複合リソース モジュールを作成したら、それらを Azure の [Composable Authoring Experience](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation) で使用するか、[DSC 構成スクリプト](/azure/automation/compose-configurationwithcompositeresources)に追加して MOF ファイルを生成し、[MOF ファイルを Azure Automation にアップロードする](/powershell/scripting/dsc/configurations/configurations)ことができます。
 次に、[オンプレミス](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)または [Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) のいずれかからサーバーを登録して、構成をプルします。
 プロジェクトの最新のアップデートでは、PowerShell ギャラリーから構成をインポートするプロセスを自動化する、Azure Automation 用の [Runbook](https://www.powershellgallery.com/packages?q=DscGallerySamples) も公開されています。
 
@@ -57,6 +57,6 @@ DSC の複合リソースの作成の自動化を試すには、[PowerShell ギ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Windows PowerShell Desired State Configuration の概要](/powershell/dsc/overview/overview)
-- [DSC リソース](/powershell/dsc/resources/resources)
-- [ローカル構成マネージャーの構成](/powershell/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)
+- [DSC リソース](/powershell/scripting/dsc/resources/resources)
+- [ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)

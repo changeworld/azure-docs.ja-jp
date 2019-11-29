@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/22/2019
 ms.author: juliako
 ms.reviewer: adsolank
-ms.openlocfilehash: d03c3a15d9bccf93b73d36302f986dffd95c6428
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 60458365fd9ed3a9a72f5c2da82431fb55792a50
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309243"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464070"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成
 
@@ -46,7 +46,6 @@ ms.locfileid: "71309243"
 ### <a name="output-files"></a>出力ファイル
 インデックス作成ジョブでは、クローズド キャプション ファイルを次の形式で生成できます。  
 
-* **SAMI**
 * **TTML**
 * **WebVTT**
 

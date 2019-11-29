@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: mlearned
-ms.openlocfilehash: 045fcb3286c89097459a4a8405d22ee70e44c205
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 999e106240a8a1d95c35d098062d474a0b57228d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018833"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231752"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure Files を含む永続ボリュームを動的に作成して使用する
 
@@ -64,43 +64,6 @@ parameters:
 
 ```console
 kubectl apply -f azure-file-sc.yaml
-```
-
-## <a name="create-a-cluster-role-and-binding"></a>クラスターのロールとバインディングの作成
-
-AKS クラスターでは、実行できるアクションを制限するために、Kubernetes のロールベース アクセス制御 (RBAC) が使用されます。 付与するアクセス許可を*ロール*によって定義し、それらを*バインド*によって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、[RBAC 承認の使用][kubernetes-rbac]に関するページを参照してください。
-
-Azure プラットフォームで必要なストレージ リソースを作成できるようにするには、*ClusterRole* と *ClusterRoleBinding* を作成します。 `azure-pvc-roles.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。
-
-```yaml
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: system:azure-cloud-provider
-rules:
-- apiGroups: ['']
-  resources: ['secrets']
-  verbs:     ['get','create']
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: system:azure-cloud-provider
-roleRef:
-  kind: ClusterRole
-  apiGroup: rbac.authorization.k8s.io
-  name: system:azure-cloud-provider
-subjects:
-- kind: ServiceAccount
-  name: persistent-volume-binder
-  namespace: kube-system
-```
-
-[kubectl apply][kubectl-apply] コマンドを使用してアクセス許可を割り当てます。
-
-```console
-kubectl apply -f azure-pvc-roles.yaml
 ```
 
 ## <a name="create-a-persistent-volume-claim"></a>永続ボリューム要求の作成

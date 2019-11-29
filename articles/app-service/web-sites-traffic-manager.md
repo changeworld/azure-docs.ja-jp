@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: bb63b25ee9257a402a9887bc8ed8aa83370f3ea0
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2cd53c3c0b3e9acbb8a5a88c7696e8b3089c50c9
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066406"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483372"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Azure Traffic Manager による Azure App Service トラフィックの制御
 > [!NOTE]
@@ -34,7 +34,7 @@ Azure Traffic Manager を使用すると、Web クライアントからの要求
 ## <a name="routing-methods"></a>ルーティング方法
 Azure Traffic Manager は 4 つのルーティング方法を使用します。 Azure App Service に関連する、これらの方法については、次の一覧で説明します。
 
-* **[優先順位](../traffic-manager/traffic-manager-routing-methods.md#priority):** すべてのトラフィックにプライマリ アプリケーションを使用し、プライマリまたはバックアップ アプリケーションが使用できなくなった場合に備えてバックアップを用意します。
+* **[優先順位](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method):** すべてのトラフィックにプライマリ アプリケーションを使用し、プライマリまたはバックアップ アプリケーションが使用できなくなった場合に備えてバックアップを用意します。
 * **[重み付け](../traffic-manager/traffic-manager-routing-methods.md#weighted):** 一連のアプリに、均等にまたは定義した重みに従ってトラフィックを分散させます。
 * **[パフォーマンス](../traffic-manager/traffic-manager-routing-methods.md#performance):** 異なる地理的位置にアプリケーションがある場合は、最短のネットワーク待機時間という観点から "最も近い" アプリケーションを使用します。
 * **[地域](../traffic-manager/traffic-manager-routing-methods.md#geographic):** ユーザーの DNS クエリが送信された地理的位置に基づいて、ユーザーを特定のアプリケーションにルーティングします。 
@@ -57,5 +57,4 @@ Azure トラフィック マネージャーを Azure で使用する場合は、
 ## <a name="next-steps"></a>次の手順
 Azure トラフィック マネージャーの概念と技術的概要については、「 [Traffic Manager Overview (トラフィック マネージャーの概要)](../traffic-manager/traffic-manager-overview.md)」を参照してください。
 
-App Service での Traffic Manager の使用の詳細については、ブログ記事「[Using Azure Traffic Manager with Azure Web Sites (Azure Web サイトでの Azure Traffic Manager の使用)](https://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx)」および「[Azure Traffic Manager can now integrate with Azure Web Sites (Azure Traffic Manager と Azure Web サイトの統合が可能になりました)](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/)」を参照してください。
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 03/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d1ef652747dccdcb0e04ac8032dd47e2ebaa6bf2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 86eebf33f870780871e4c873936e491772c73b63
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886905"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231623"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 
@@ -50,7 +50,7 @@ PowerShell ギャラリーから直接インポートできるのは、Azure por
 
 ### <a name="adding-a-powershell-runbook-to-the-gallery"></a>ギャラリーへの PowerShell Runbook の追加
 
-他のユーザーにも役に立つと思われる Runbook を PowerShell ギャラリーに追加してください。 PowerShell ギャラリーでは、PowerShell モジュールと PowerShell スクリプトを受け付けています。 Runbook を追加するには、[PowerShell ギャラリーにアップロード](/powershell/gallery/how-to/publishing-packages/publishing-a-package)します。
+他のユーザーにも役に立つと思われる Runbook を PowerShell ギャラリーに追加してください。 PowerShell ギャラリーでは、PowerShell モジュールと PowerShell スクリプトを受け付けています。 Runbook を追加するには、[PowerShell ギャラリーにアップロード](/powershell/scripting/gallery/how-to/publishing-packages/publishing-a-package)します。
 
 > [!NOTE]
 > PowerShell ギャラリーではグラフィカル Runbook はサポートされていません。

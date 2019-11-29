@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 1323e46d734d047f68652d0b21902e03182e6b62
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 4c02632c44d095a6d1d1c583a1ab201acad63bf9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130251"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229010"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 
@@ -23,7 +23,7 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 
 ## <a name="set-up-your-environment"></a>環境をセットアップする
 
-1. [R Tools for Visual Studio](https://docs.microsoft.com/visualstudio/rtvs/installation) をインストールします。
+1. [R Tools for Visual Studio](/visualstudio/rtvs/installing-r-tools-for-visual-studio) をインストールします。
 
     ![Visual Studio 2017 での RTVS のインストール](./media/r-server-submit-jobs-r-tools-vs/install-r-tools-for-vs.png)
 

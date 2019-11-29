@@ -1,17 +1,17 @@
 ---
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.date: 04/03/2019
 ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fcc6c10419b46d31fde20001fefccb32b7a421ce
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181760"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276943"
 ---
 ## <a name="putting-everything-together"></a>すべてをまとめる
 

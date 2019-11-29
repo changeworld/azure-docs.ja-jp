@@ -2,17 +2,17 @@
 title: ドメイン名のための DNS ゾーンとレコードを作成する - Azure CLI - Azure DNS
 description: この Azure CLI スクリプトの例では、ドメイン名のための DNS ゾーンとレコードを作成する方法を示しています
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: sample
 ms.date: 09/20/2019
-ms.author: victorh
-ms.openlocfilehash: 8ae4e8c515b658ac3f0bb4eb0d88706814993355
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: allensu
+ms.openlocfilehash: 8f5dde0a35f31d2c33ab2857659efc88339c2ead
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037149"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210398"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Azure CLI スクリプトの例: DNS ゾーンとレコードの作成
 

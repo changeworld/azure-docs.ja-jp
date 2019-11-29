@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 685b6bda09026e64154590afd66bdfbec43b8b1e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 224744bd49add514be165f4955739651fcbf6b61
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243527"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231674"
 ---
 # <a name="configuration-based-on-stig"></a>STIG に基づく構成
 
@@ -43,6 +43,6 @@ PowerSTIG を試すには、[PowerShell ギャラリー](http://www.powershellga
 
 ## <a name="next-steps"></a>次の手順
 
-- [Windows PowerShell Desired State Configuration の概要](/powershell/dsc/overview/overview)
-- [DSC リソース](/powershell/dsc/resources/resources)
-- [ローカル構成マネージャーの構成](/powershell/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)
+- [DSC リソース](/powershell/scripting/dsc/resources/resources)
+- [ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaconfig)

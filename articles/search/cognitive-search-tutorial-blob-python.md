@@ -3,18 +3,18 @@ title: チュートリアル:REST API を使用して Python でスキルセッ�
 titleSuffix: Azure Cognitive Search
 description: Jupyter Python ノートブックを使用した Azure Cognitive Search でのデータ抽出、自然言語、画像の AI 処理の例を順に確認します。 抽出されたデータにはインデックスが付けられ、クエリで簡単にアクセスできるようになります。
 manager: nitinme
-author: LisaLeib
-ms.author: v-lilei
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e404998c8f49852248a754e7134f439dcdf5b04
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d7b4755bb2e69c4a852901b71d917c6baa5d63ae
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113683"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406429"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>チュートリアル:REST および Python を使用して AI エンリッチメント パイプラインを作成する
 

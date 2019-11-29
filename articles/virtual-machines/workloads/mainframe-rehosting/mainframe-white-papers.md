@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 29665639e90f729f5506a0a12241bb04fd88e69c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd91b4331a6093d1cf208893d5d88746707b473b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859326"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224741"
 ---
 # <a name="azure-white-papers-about-mainframe-topics"></a>メインフレームのトピックに関する Azure のホワイトペーパー
 
@@ -43,10 +43,10 @@ Microsoft Azure でメインフレームのワークロードを実行するに�
 
 このホワイト ペーパーでは、Astadia の 25 年以上にわたるメインフレーム プラットフォームの最新化に関する専門知識が反映されています。 最新化の取り組みの利点と課題について説明しています。 このガイドでは、IBM メインフレームおよび IBM メインフレームから Azure への参照アーキテクチャの概要について説明します。 Astadia の成功手法についても説明します。
 
-### <a name="deploying-mainframe-applications-to-microsoft-azurehttpswwwmicrofocuscommediawhite-paperdeployingmainframeapplicationstomicrosoftazurewppdf"></a>[メインフレーム アプリケーションを Microsoft Azure にデプロイする](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
+### <a name="deploying-mainframe-applications-to-microsoft-azurehttpswwwmicrofocuscommediawhite-paperdeploying_mainframe_applications_to_microsoft_azure_wppdf"></a>[メインフレーム アプリケーションを Microsoft Azure にデプロイする](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
 
 Micro Focus のソリューションによって、独自のメインフレーム ハードウェアおよびソフトウェアの制約から解放されます。 このガイドでは、Micro Focus が IBM メインフレームで実行されている COBOL および PL/I アプリケーションを代わりにクラウドにデプロイする方法について説明します。
 
-### <a name="breathe-new-life-into-mainframeshttpswwwinfosyscommodernizationpagesbreathe-new-life-mainframesaspx"></a>[メインフレームに新たな命を吹き込む](https://www.infosys.com/modernization/Pages/breathe-new-life-mainframes.aspx)
+### <a name="breathe-new-life-into-mainframeshttpswwwinfosyscomservicesmodernizationbreathe-new-life-mainframeshtml"></a>[メインフレームに新たな命を吹き込む](https://www.infosys.com/services/modernization/breathe-new-life-mainframes.html)
 
  メインフレームは、ビジネスを維持させるには次第に困難になっています。 Infosys と Microsoft によるこのホワイトペーパーでは、メインフレームの移行を成功させるための優れた戦略について強調しています。 ユース ケースと例でオプションを説明しています。

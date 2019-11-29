@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 00f579017ce4dd79e913565ee27698398b5feb38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8b0db4a1e55b53165e40e176834d66b62926e24b
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823597"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421563"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベース間のデータ移動
 
@@ -104,14 +104,15 @@ Split-Merge ツールは、Azure Web サービスとして実行されます。 
     // Create the schema annotations
     SchemaInfo schemaInfo = new SchemaInfo();
 
-    // Reference tables
+    // reference tables
     schemaInfo.Add(new ReferenceTableInfo("dbo", "region"));
     schemaInfo.Add(new ReferenceTableInfo("dbo", "nation"));
 
-    // Sharded tables
+    // sharded tables
     schemaInfo.Add(new ShardedTableInfo("dbo", "customer", "C_CUSTKEY"));
     schemaInfo.Add(new ShardedTableInfo("dbo", "orders", "O_CUSTKEY"));
-    // Publish
+
+    // publish
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
@@ -216,21 +217,26 @@ Split-Merge サービスは、監視と診断を行うために Azure SDK 2.5 �
 ## <a name="deploy-diagnostics"></a>診断のデプロイ
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
 NuGet パッケージで提供される Web ロール用と worker ロール用の診断構成を使用して、監視と診断を有効にするには、Azure PowerShell を使用して次のコマンドを実行します。
 
 ```powershell
-    $storage_name = "<YourAzureStorageAccount>"
-    $key = "<YourAzureStorageAccountKey"
-    $storageContext = New-AzStorageContext -StorageAccountName $storage_name -StorageAccountKey $key  
-    $config_path = "<YourFilePath>\SplitMergeWebContent.diagnostics.xml"
-    $service_name = "<YourCloudServiceName>"
-    Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWeb"
-    $config_path = "<YourFilePath>\SplitMergeWorkerContent.diagnostics.xml"
-    $service_name = "<YourCloudServiceName>"
-    Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker"
+$storageName = "<azureStorageAccount>"
+$key = "<azureStorageAccountKey"
+$storageContext = New-AzStorageContext -StorageAccountName $storageName -StorageAccountKey $key
+$configPath = "<filePath>\SplitMergeWebContent.diagnostics.xml"
+$serviceName = "<cloudServiceName>"
+
+Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
+    -DiagnosticsConfigurationPath $configPath -ServiceName $serviceName `
+    -Slot Production -Role "SplitMergeWeb"
+
+Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext `
+    -DiagnosticsConfigurationPath $configPath -ServiceName $serviceName `
+    -Slot Production -Role "SplitMergeWorker"
 ```
 
 診断設定を構成してデプロイする方法の詳細については、次の記事で説明されています:[Azure Cloud Services と Virtual Machines の診断機能の有効化に関する記事](../cloud-services/cloud-services-dotnet-diagnostics.md)

@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 93dfe784d45cd9cd93d22c5e8c3275c563f7f88b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1546ded1977e1e26792189e1d992d106d3d77ef2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572132"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271278"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Azure App Service のコード内から SSL 証明書を使用する
 
@@ -141,6 +141,8 @@ Node.js、PHP、Python、Java、Ruby で SSL 証明書をファイルから読�
 > ```azurecli-interactive
 > az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 > ```
+>
+> コードで証明書を使用するこの方法では、App Service の SSL 機能を利用します。そのため、お客様のアプリは **Basic** レベル以上でなければなりません。
 
 次の C# サンプルでは、アプリ内で相対パスからパブリック証明書を読み込みます。
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3d9c6c9b73f8887d4fdb85da277b2e27d8f5221c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6d3cca9d8954d9ac158d88b393c46672da3faa19
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243564"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231717"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration での DSC 構成のコンパイル
 
@@ -263,7 +263,7 @@ Windows PowerShell でコンパイルする場合には、構成コンテンツ�
 
 ### <a name="compiling-a-configuration-in-windows-powershell"></a>Windows PowerShell での構成のコンパイル
 
-Windows PowerShell に DSC 構成をコンパイルする手順は、PowerShell DSC のドキュメント、「[構成の作成、コンパイル、適用](/powershell/dsc/configurations/write-compile-apply-configuration#compile-the-configuration)」に記述されています。
+Windows PowerShell に DSC 構成をコンパイルする手順は、PowerShell DSC のドキュメント、「[構成の作成、コンパイル、適用](/powershell/scripting/dsc/configurations/write-compile-apply-configuration#compile-the-configuration)」に記述されています。
 これは、開発者のワークステーションから、または [Azure DevOps](https://dev.azure.com) などのビルド サービスから実行できます。
 
 その後、構成のコンパイルによって生成された MOF ファイルは、Azure State Configuration サービスに直接インポートできます。

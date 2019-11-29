@@ -2,13 +2,13 @@
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
 ms.date: 11/7/2019
-ms.topic: overview
-ms.openlocfilehash: 0d04a7a77a3f92cffb185ff829f0d678dac2a9ff
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: 2db1cfd7cc8145ff3020bf232021b4f1a63b2ddd
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131921"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464038"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 

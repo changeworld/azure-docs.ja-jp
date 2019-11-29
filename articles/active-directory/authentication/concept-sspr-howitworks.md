@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fcac058a510b8b7fed5b3967bbbf439dd4c0f71
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e88669b5453069d9f6bb64e803adc65baf8afc6b
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786736"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420712"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフ サービスによるパスワードのリセット
 
@@ -220,5 +220,5 @@ Azure AD のセルフサービス パスワード リセットでは、Active Di
 * [不具合が発生していると思われるSSPR のトラブルシューティング方法](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
-[Authentication]: ./media/concept-sspr-howitworks/sspr-authentication-methods.png "Azure AD の使用できる認証方法と必要な数量"
-[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-writeback-running.png "オンプレミスの統合のパスワード ライトバックの構成とトラブルシューティングに関する情報"
+[Authentication]: ./media/concept-sspr-howitworks/manage-authentication-methods-for-password-reset.png "Azure AD の使用できる認証方法と必要な数量"
+[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-on-premises-integration-writeback.png "オンプレミスの統合のパスワード ライトバックの構成とトラブルシューティングに関する情報"

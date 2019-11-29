@@ -3,12 +3,12 @@ title: ポリシー割り当て構造の詳細
 description: ポリシーの定義とパラメーターを評価のためにリソースに関連付けるために Azure Policy によって使用されるポリシー割り当ての定義について説明します。
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 500e40b8d3a5943c7f64f5b190223cb1dc7b4c92
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9301004fe05afa77f3e73c6ec97335a17c237ce9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960037"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279478"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy の割り当ての構造
 
@@ -93,6 +93,6 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 
 - [ポリシー定義の構造](./definition-structure.md)についてさらに学習します。
 - [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)方法を学習します。
+- [コンプライアンス データを取得する](../how-to/get-compliance-data.md)方法を学習します。
 - [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

@@ -5,23 +5,23 @@ author: bandersmsft
 manager: amberb
 tags: billing
 ms.assetid: 3051d6b0-179f-4e3a-bda4-3fee7135eac5
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0c681a3374529c4f973c7cd247ad8d387682b564
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 7ddd5d2aa4352dda6a9fe0ec27d2ea607dbb9f74
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719710"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223872"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure サブスクリプションの取り消し
 
-サブスクリプションが不要になった場合は、Azure portal で Azure サブスクリプションを取り消すことができます。 
+サブスクリプションが不要になった場合は、Azure portal で Azure サブスクリプションを取り消すことができます。
 
 サブスクリプションを取り消す前に、次の操作を行ってください。
 * データをバックアップする。 たとえば、Azure Storage や SQL にデータを格納している場合は、コピーをダウンロードします。 仮想マシンを使用している場合は、そのイメージをローカルに保存します。

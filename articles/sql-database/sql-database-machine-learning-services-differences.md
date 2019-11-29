@@ -11,22 +11,19 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 03/01/2019
-ms.openlocfilehash: 1397f5d81ddf63740d733111b965a0517a2b917f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/20/2019
+ms.openlocfilehash: 533e2b9e50a92cce1419da521d8cebc4955e4df6
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827464"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462116"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>SQL Server の Machine Learning Services と Azure SQL Database の Machine Learning Services (プレビュー) の主な違い
 
 Azure SQL Database Machine Learning Services と R の機能 (プレビュー) は、[SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) と似ています。 主な違いをいくつか以下に示します。
 
-> [!IMPORTANT]
-> Azure SQL Database の Machine Learning Services は、現在パブリック プレビュー期間です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+[!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
 ## <a name="language-support"></a>言語のサポート
 

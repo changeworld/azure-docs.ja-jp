@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: REST API を使用して Azure VM をバックアップする'
+title: REST API を使用して Azure VM をバックアップする
 description: この記事では、REST API を使用して Azure VM Backup のバックアップ操作を構成、開始、および管理する方法について説明します。
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure VM のバックアップ; Azure VM の復元;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 6f64f45aca6948665c088279002d3d8054ef8d80
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4f73958a46e408f85d1f23371552aad0d5540184
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929163"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554907"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>REST API を通して Azure Backup を使用して Azure VM をバックアップする
 
@@ -168,7 +162,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Azure VM の保護の有効化
 
-適切な VM の "キャッシュ" と "識別" が行われたら、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細について知るには、[Policy API の list](https://docs.microsoft.com/rest/api/backup/backuppolicies/list) を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](backup-azure-arm-userestapi-createorupdatepolicy.md)を参照してください。 下の例では "DefaultPolicy" が選択されています。
+適切な VM の "キャッシュ" と "識別" が行われたら、保護するポリシーを選択します。 コンテナー内にある既存のポリシーの詳細について知るには、[Policy API の list](https://docs.microsoft.com/rest/api/backup/backuppolicies/list) を参照してください。 次に、ポリシー名を参照して、[適切なポリシー](/rest/api/backup/protectionpolicies/get)を選択します。 ポリシーを作成するには、[ポリシーの作成に関するチュートリアル](backup-azure-arm-userestapi-createorupdatepolicy.md)を参照してください。 下の例では "DefaultPolicy" が選択されています。
 
 保護を有効にすることは、"保護された項目" を作成する非同期の *PUT* 操作です。
 

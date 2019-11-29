@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65501685"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483541"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Azure DNS と Traffic Manager を使用したディザスター リカバリー
 
@@ -61,7 +61,7 @@ DNS は多くの場合、データ センターの外部で使用できるグロ
 - **DNS の A レコード** - A レコードは、ドメインから IPv4 アドレスへの対応を示すポインターです。 
 - **CNAME または正規名** - このレコード タイプは別の DNS レコードを指すために使用します。 CNAME は IP アドレスに応答せず、IP アドレスを含むレコードへのポインターに応答します。 
 - **重み付けルーティング** – サービス エンドポイントに重み付けを関連付け、割り当てられた重み付けに基づいてトラフィックを分散させることができます。 このルーティング方式は、 Traffic Manager で使用可能な 4 つのトラフィック ルーティング メカニズムのうちの 1 つです。 詳細については、「[重み付けルーティング方式](../traffic-manager/traffic-manager-routing-methods.md#weighted)」を参照してください。
-- **優先順位によるルーティング** – 優先順位によるルーティングはエンドポイントの正常性チェックに基づいています。 既定では、Azure Traffic Manager は優先順位が最高のエンドポイントにすべてのトラフィックを送信し、障害や災害が発生すると、Traffic Manager はセカンダリ エンドポイントにトラフィックをルーティングします。 詳細については、「[優先順位によるルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#priority)」を参照してください。
+- **優先順位によるルーティング** – 優先順位によるルーティングはエンドポイントの正常性チェックに基づいています。 既定では、Azure Traffic Manager は優先順位が最高のエンドポイントにすべてのトラフィックを送信し、障害や災害が発生すると、Traffic Manager はセカンダリ エンドポイントにトラフィックをルーティングします。 詳細については、「[優先順位によるルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)」を参照してください。
 
 ## <a name="manual-failover-using-azure-dns"></a>Azure DNS を使用した手動フェールオーバー
 ディザスター リカバリー用の Azure DNS 手動フェールオーバー ソリューションでは、標準的な DNS メカニズムを使用して、バックアップ サイトにフェールオーバーします。 Azure DNS を使用した手動オプションは、コールド スタンバイまたはパイロット ライトの方法を組み合わせて使用した場合に最適に機能します。 

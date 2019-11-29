@@ -3,12 +3,12 @@ title: 準拠していないリソースを修復する
 description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
 ms.date: 09/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53ca21e4b8a1f3e7973706acd10601593efc3448
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8f1d263286a7504e7a8234ebd944bbbee69c5303
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959499"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267355"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
@@ -187,5 +187,5 @@ Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptio
 - 「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を確認します。
 - 「[Policy の効果について](../concepts/effects.md)」を確認します。
 - [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](getting-compliance-data.md)方法を学習します。
+- [コンプライアンス データを取得する](get-compliance-data.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

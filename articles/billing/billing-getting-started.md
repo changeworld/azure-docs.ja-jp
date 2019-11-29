@@ -4,19 +4,19 @@ description: Azure の課金内容が予想外の金額となるのを防ぐ方�
 author: bandersmsft
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 6f7a29adfbd145be11f9f6c91e8e66dd229fed62
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e5cdd7181e680dbc7406118afeb4aeb837d3aaf2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375644"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223907"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -68,11 +68,11 @@ Azure portal でサービスを追加している間は、1 か月あたりの�
 
 ### <a name="track-costs-with-budgets-and-cost-alerts"></a>予算とコストのアラートを使用してコストを追跡する
 
-[予算](../cost-management/tutorial-acm-create-budgets.md)を作成して、コストを管理し、異常な支出や浪費について、関係者に自動的に通知する[アラート](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)を作成できます。 
+[予算](../cost-management/tutorial-acm-create-budgets.md)を作成して、コストを管理し、異常な支出や浪費について、関係者に自動的に通知する[アラート](../cost-management/cost-mgt-alerts-monitor-usage-spending.md)を作成できます。
 
 ### <a name="costs"></a> コスト分析を使用してコストを調査および分析する
 
-Azure サービスを実行状態に移した後は、定期的にコストをチェックして Azure の利用状況を追跡してください。 コスト分析を使用することで、Azure の利用に関するコストの発生源を把握することができます。 
+Azure サービスを実行状態に移した後は、定期的にコストをチェックして Azure の利用状況を追跡してください。 コスト分析を使用することで、Azure の利用に関するコストの発生源を把握することができます。
 
 1. [Azure portal で [コストの管理と請求] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade)に移動します。
 
@@ -166,7 +166,7 @@ Microsoft 顧客契約 (MCA) の課金アカウント経由で Azure にアク�
 
 控除を要求するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。 複数のアカウントをお持ちの場合は、Azure のダウンタイムの影響を受けたアカウントを必ず使用してください。 
+1. [Azure Portal](https://portal.azure.com/) にサインインします。 複数のアカウントをお持ちの場合は、Azure のダウンタイムの影響を受けたアカウントを必ず使用してください。
 2. 新しいサポート リクエストを作成します。
 3. **[問題の種類]** で **[課金]** を選択します。
 4. **[問題の種類]** で **[払戻要求]** を選択します。

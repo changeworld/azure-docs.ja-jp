@@ -5,17 +5,17 @@ author: amberbhargava
 manager: amberb
 editor: banders
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 77dd8a5e54697a37a2039238ecdedb3e2a2fa326
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d70460f5a492c9699a6110d5ba164283934c584b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375477"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226143"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>請求書にセクションを作成してコストを整理する
 

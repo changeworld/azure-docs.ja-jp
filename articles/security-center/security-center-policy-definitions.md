@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center 内で監視される Azure ポリシーの定義 | Microsoft Docs
-description: Azure Security Center 内で監視される Azure ポリシーの定義。
+description: この記事では、Azure Security Center で監視できる Azure ポリシーの定義の一覧を示します。
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 8/22/2019
 ms.author: memildin
-ms.openlocfilehash: 892b33f52788bd37d430f221f14ba4c98f764cfb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 07d45f7cafa09ef6c5341acd5ffd0914cc56e4fd
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201667"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559258"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Security Center により監視される Azure セキュリティ ポリシー
 この記事では、Azure Security Center で監視できる Azure ポリシーの定義の一覧を示します。 セキュリティ ポリシーの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。

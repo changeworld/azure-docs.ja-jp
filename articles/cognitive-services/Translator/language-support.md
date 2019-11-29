@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 5e96ced1bd87a0ed8be19bf4e07f7b0d9b319aad
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 25ab298a8b72b3734e41daf66ef5063b8e43a96e
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837325"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286618"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
@@ -81,6 +81,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |マダガスカル語|  `mg`    |統計のみ|  統計|
 |マレー語| `ms`    |統計のみ   |統計|
 |マルタ語|   `mt`    |統計のみ|  統計|
+|マオリ語| `mi`  |ニューラルのみ| ニューラル|
 |ノルウェー語| `nb`    |ニューラルが利用可能|  ニューラル|
 |ペルシャ語|   `fa`    |ニューラルが利用可能|  ニューラル|
 |ポーランド語|    `pl`    |ニューラルが利用可能|  ニューラル|
@@ -237,6 +238,7 @@ Languages メソッドを使用して、Translator Text API v3.0 でサポート
 | ラトビア語      | `lv`          |
 | リトアニア語      | `lt`          |
 |マダガスカル語|  `mg`    |
+|マオリ語| `mi`  |
 | ノルウェー語      | `nb`          |
 | ペルシャ語      | `fa`          |
 | ポーランド語      | `pl`          |

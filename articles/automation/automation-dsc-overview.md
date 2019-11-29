@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b0b5e02009ddbb72bb062d341e7d233acfb0ceb3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5ed18f8a8bbd8bd323dec54ca3f700c7ce168dde
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429407"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231627"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要
 
@@ -66,7 +66,7 @@ DSC Linux 拡張機能では、「[サポートされている Linux ディス�
 
 ### <a name="dsc-requirements"></a>DSC 要件
 
-Azure で実行されているすべての Windows ノードに対して、[WMF 5.1](https://docs.microsoft.com/powershell/wmf/setup/install-configure) がオンボード中にインストールされます。  Windows Server 2012 および Windows 7 を実行しているノードでは、[WinRM が有効になります](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency)。
+Azure で実行されているすべての Windows ノードに対して、[WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) がオンボード中にインストールされます。  Windows Server 2012 および Windows 7 を実行しているノードでは、[WinRM が有効になります](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency)。
 
 Azure で実行しているすべての Linux ノードで、オンボード中に [Linux 用の PowerShell DSC](https://github.com/Microsoft/PowerShell-DSC-for-Linux) がインストールされます。
 
@@ -80,7 +80,7 @@ Azure で実行しているすべての Linux ノードで、オンボード中�
 * エージェント サービス: https://\<workspaceId\>.agentsvc.azure-automation.net
 
 これにより、マネージド ノードが Azure Automation と通信するためのネットワーク接続が提供されます。
-ノード間で通信する DSC リソース ([WaitFor * リソース](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource)など) を使用している場合、ノード間のトラフィックを許可する必要もあります。
+ノード間で通信する DSC リソース ([WaitFor * リソース](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource)など) を使用している場合、ノード間のトラフィックを許可する必要もあります。
 これらのネットワーク要件を理解するには、各 DSC リソースのドキュメントを参照してください。
 
 #### <a name="proxy-support"></a>プロキシのサポート

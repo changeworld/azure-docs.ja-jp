@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 71b4a8abc641a3ab11d6b17bbc8de3b42b61c34c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 71339565eed9f41f8f32da852a727c82df482662
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820553"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483947"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する
 
@@ -185,7 +185,7 @@ Azure AD では検証できないルーティング不可能なドメインの�
 |条件付きアクセスのオプション|[Azure AD の条件付きアクセス、Azure AD Premium を使用](../../active-directory/conditional-access/overview.md)|[Azure AD の条件付きアクセス、Azure AD Premium を使用](../../active-directory/conditional-access/overview.md)|[Azure AD の条件付きアクセス、Azure AD Premium を使用](../../active-directory/conditional-access/overview.md)<br><br>[AD FS の要求規則](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
 |サポートされる従来のプロトコルのブロック|[はい](../../active-directory/conditional-access/conditions.md)|[はい](../../active-directory/conditional-access/conditions.md)|[はい](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |サインイン ページのロゴ、イメージ、説明のカスタマイズ可能性|[Azure AD Premium を使用して可能](../../active-directory/fundamentals/customize-branding.md)|[Azure AD Premium を使用して可能](../../active-directory/fundamentals/customize-branding.md)|[はい](../../active-directory/hybrid/how-to-connect-fed-management.md)|
-|サポートされる高度なシナリオ|[Smart Password Lockout](../../active-directory/authentication/concept-sspr-howitworks.md)<br><br>[漏洩した資格情報レポート、Azure AD Premium P2 を使用](../../active-directory/reports-monitoring/concept-risk-events.md)|[Smart Password Lockout](../../active-directory/authentication/howto-password-smart-lockout.md)|複数サイトの低待機時間の認証システム<br><br>[AD FS エクストラネットのロックアウト](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[サード パーティの ID システムとの統合](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
+|サポートされる高度なシナリオ|[Smart Password Lockout](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[漏洩した資格情報レポート、Azure AD Premium P2 を使用](../../active-directory/reports-monitoring/concept-risk-events.md)|[Smart Password Lockout](../../active-directory/authentication/howto-password-smart-lockout.md)|複数サイトの低待機時間の認証システム<br><br>[AD FS エクストラネットのロックアウト](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[サード パーティの ID システムとの統合](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
 > [!NOTE]
 > Azure AD の条件付きアクセスでのカスタム コントロールは、現時点ではデバイスの登録をサポートしていません。

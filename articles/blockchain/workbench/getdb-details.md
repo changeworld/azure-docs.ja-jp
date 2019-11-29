@@ -1,23 +1,17 @@
 ---
-title: Azure Blockchain Workbench Preview データベースに関する詳細の取得
+title: Azure Blockchain Workbench データベースに関する詳細の取得
 description: Azure Blockchain Workbench Preview データベースおよびデータベース サーバーに関する情報の取得方法を説明しています。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 09/05/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: f4a4eaab9a03aeed27e29eb645b6e22a028b243b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 2b3190a9d042be8ead1ff3d5ef48d4a2a19e8963
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845074"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324687"
 ---
-# <a name="get-information-about-your-azure-blockchain-workbench-preview-database"></a>Azure Blockchain Workbench Preview データベースに関する情報の取得
+# <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Azure Blockchain Workbench データベースに関する情報の取得
 
 Azure Blockchain Workbench Preview データベースに関する情報の取得方法を説明しています。
 

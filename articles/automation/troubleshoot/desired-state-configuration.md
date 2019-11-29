@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ab9a39cfba082ea4c4d1cc6c29764619011d8cb8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887714"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231547"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする
 
@@ -32,7 +32,7 @@ Azure State Configuration で構成をコンパイルまたはデプロイする
    - **構文エラー**
    - **論理エラー**
 
-2. **ノードで DSC のログを表示する:** 構成のコンパイルは正常に行われても、ノードに適用されるときに失敗する場合は、ログで詳細情報を確認できます。 DSC ログを探す場所については、「[DSC イベント ログの場所](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)」を参照してください。
+2. **ノードで DSC のログを表示する:** 構成のコンパイルは正常に行われても、ノードに適用されるときに失敗する場合は、ログで詳細情報を確認できます。 DSC ログを探す場所については、「[DSC イベント ログの場所](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs)」を参照してください。
 
    また、[xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) は、DSC ログから詳細な情報を解析するのに役立ちます。 サポートに問い合わせる場合、ご自分の問題の診断にこれらのログが求められます。
 
@@ -40,7 +40,7 @@ Azure State Configuration で構成をコンパイルまたはデプロイする
 
    ご利用の Azure マシンに **xDscDiagnostics** をインストールするには、[az vm run-command](/cli/azure/vm/run-command) または [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) を使用できます。 また、「[実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する](../../virtual-machines/windows/run-command.md)」の手順に従って、ポータルから **[実行コマンド]** オプションを使うこともできます。
 
-   **xDscDiagnostics** の使い方については、「[xDscDiagnostics を使用した DSC ログの分析](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)」と [xDscDiagnostics のコマンドレット](https://github.com/PowerShell/xDscDiagnostics#cmdlets)に関するページをご覧ください。
+   **xDscDiagnostics** の使い方については、「[xDscDiagnostics を使用した DSC ログの分析](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)」と [xDscDiagnostics のコマンドレット](https://github.com/PowerShell/xDscDiagnostics#cmdlets)に関するページをご覧ください。
 3. **ノードと Automation ワークスペースに必要なモジュールがあることを確認する:** Desired State Configuration は、ノードにインストールされているモジュールに依存します。  Azure Automation State Configuration を使うときは、「[モジュールをインポートする](../shared-resources/modules.md#import-modules)」の手順に従って、必要なモジュールを Automation アカウントにインポートします。 構成が特定のバージョンのモジュールに依存することもあります。  詳細については、[モジュールのトラブルシューティング](shared-resources.md#modules)に関するページを参照してください。
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) の使用時に発生する一般的なエラー

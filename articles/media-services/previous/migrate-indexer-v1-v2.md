@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: d38b11b8fc4351c6b074ccfdf47df06a71e0a0a4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 791287d693903007d09c2e82025bfe195f9f15d1
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823966"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464042"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Media Indexer と Media Indexer 2 から Video Indexer に移行する
 
@@ -73,8 +73,6 @@ Video Indexer、Azure Media Services v3 AudioAnalyzerPreset、および Cognitiv
 
 既知の相違点をいくつか次に示します。 
 
-* SAMI 形式の字幕ファイルはサポートされなくなります。 これは、一般に使用されなくなった古い字幕形式です。 TTML、WebVTT、SRT に置き換えられています。  
-* オーディオ インデックス BLOB (AIB) ファイルはサポートされなくなります。 この機能は、Indexer 1 テクノロジに固有のものであり、提供されなくなりました。  
 * Cognitive Services Speech Services では、キーワード抽出はサポートされません。 ただし、Video Indexer と Media Services v3 AudioAnalyzerPreset はどちらも、JSON ファイル形式のより堅牢なキーワード セットを提供します。 
 
 ## <a name="need-help"></a>お困りの際は、

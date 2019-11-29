@@ -9,12 +9,12 @@ author: ecfan
 ms.author: estfan
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 960733b7423ad1e22bd05a75d9b994cd85b1d30c
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: de184b189c00cce64932a3ab17d41ed84e197a7e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680367"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534083"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
@@ -40,7 +40,7 @@ ms.locfileid: "72680367"
 
 ## <a name="create-integration-account"></a>統合アカウントを作成する
 
-このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure PowerShell](https://docs.microsoft.com//powershell/module/azurerm.logicapp/New-AzureRmIntegrationAccount)、または [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-create) のいずれかを使用できます。
+このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure PowerShell](/powershell/module/Az.LogicApp/New-AzIntegrationAccount)、または [Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-create) のいずれかを使用できます。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -255,7 +255,7 @@ ms.locfileid: "72680367"
 
 ## <a name="delete-integration-account"></a>統合アカウントの削除
 
-このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-delete)、または [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp/Remove-AzureRmIntegrationAccount) のいずれかを使用できます。
+このタスクでは、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](https://docs.microsoft.com/cli/azure/resource?view=azure-cli-latest#az-resource-delete)、または [Azure PowerShell](/powershell/module/az.logicapp/remove-azintegrationaccount) のいずれかを使用できます。
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 

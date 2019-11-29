@@ -3,12 +3,12 @@ title: コンプライアンス違反の原因の特定
 description: リソースのコンプライアンス違反には多くの理由が考えられます。 コンプライアンス違反の原因を確認する方法について説明します。
 ms.date: 04/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6f113080ab84fe7d159766e6543ff61b28f4ead2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 839e6c61c4a44ba7c7581290408bb997b53b8f96
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959613"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279409"
 ---
 # <a name="determine-causes-of-non-compliance"></a>コンプライアンス違反の原因の特定
 
@@ -216,6 +216,6 @@ Audit that an application is installed inside Windows VMs                 NonCom
 - 「[Azure Policy の定義の構造](../concepts/definition-structure.md)」を確認します。
 - 「[Policy の効果について](../concepts/effects.md)」を確認します。
 - [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](getting-compliance-data.md)方法を学習します。
+- [コンプライアンス データを取得する](get-compliance-data.md)方法を学習します。
 - [準拠していないリソースを修復する](remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

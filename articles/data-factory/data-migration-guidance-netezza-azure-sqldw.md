@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: c5b36a04501b417af4e4527968a082da8a061804
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 762e7d4a7356c11171355b5325e77569e9acb1e2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675802"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555103"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Azure Data Factory を使用してオンプレミスの Netezza サーバーから Azure にデータを移行する 
 
@@ -190,7 +190,7 @@ Azure Data Factory のコピー アクティビティによって報告された
 
 詳細については、次の記事とガイドを参照してください。
 
-- [Azure Data Factory を使用してオンプレミスのリレーショナル データ ウェアハウス データベースから Azure にデータを移行する](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
+- [Azure Data Factory を使用してオンプレミスのリレーショナル データ ウェアハウス データベースから Azure にデータを移行する](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
 - [Netezza コネクタ](https://docs.microsoft.com/azure/data-factory/connector-netezza)
 - [ODBC コネクタ](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure BLOB ストレージ コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)

@@ -6,14 +6,14 @@ author: bandersmsft
 ms.author: banders
 ms.date: 11/06/2019
 ms.topic: conceptual
-ms.service: billing
+ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 8a49221a4b45161e562569535b9aac596a41fb98
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 35c12118cb906b312114ee7e99e299714e397914
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888423"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223984"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 契約と修正
 
@@ -221,7 +221,7 @@ Azure Compute Pre-Purchase プラン (CPP、旧称 Azure Compute Promo) は、�
 1. **[アカウント]** タブをクリックします。
 1. **[+ アカウントの追加]** をクリックします。 既存のアカウントに関連付けられている Microsoft アカウントあるいは職場または学校アカウントを入力します。
 1. 既存のアカウントに関連付けられている Microsoft アカウントあるいは職場または学校アカウントを確認します。
-1. レポートでこのアカウントとして識別するために使用する名前を指定します。
+1. レポートでこのアカウントを識別するために使用する名前を指定します。
 1. **[追加]** をクリックします。
 1. **[+ アカウントの追加]** オプションをもう一度選択してアカウントを追加するか、 **[管理者]** ボタンを選択してホーム ページに戻ります。  
 1. [アカウント] ページをクリックして表示すると、新しく追加されたアカウントが "保留中" の状態で表示されます。 アカウント所有者が EA Portal に初めてログオンした後、"アクティブ" 状態に変わります。

@@ -4,19 +4,19 @@ description: Azure での Microsoft Partner Agreement の請求書を読み取�
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: 07466cefe2820e2f7f2604f86b9f44ccd4f6fce5
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 28eb65438507dc77233236e59d356df5a2806144
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512532"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226068"
 ---
 # <a name="terms-in-your-microsoft-partner-agreement-invoice"></a>Microsoft Partner Agreement の請求書の用語
 

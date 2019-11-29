@@ -1,20 +1,16 @@
 ---
 title: .NET での持続エンティティに関する開発者ガイド - Azure Functions
 description: Azure Functions の Durable Functions 拡張機能を使用して .NET で持続エンティティを操作する方法。
-services: functions
 author: sebastianburckhardt
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d854f41ffc883b40f9159a7dacdde0fb3bb7240f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 74b013c9953974371957cc4d88439d20770d78a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904059"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231423"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>.NET での持続エンティティに関する開発者ガイド
 

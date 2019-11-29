@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82f02f0ac11c80161f709b3b493306bc8aafc8bd
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 492dd182c782b0f6375c2f857cfa4921b065c546
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435453"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231589"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
@@ -82,7 +82,7 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 
 ## <a name="add-a-connection-type-to-your-module"></a>接続の種類をモジュールに追加する
 
-省略可能なファイルをモジュールに追加することにより、Automation アカウントで使用するカスタムの[接続の種類](../automation-connections.md)を提供できます。 このファイルは、Automation アカウント内のモジュールのコマンドレットで使用する Azure Automation の接続の種類を指定するメタデータ ファイルです。 これを実現するには、まず PowerShell モジュールを作成する方法を知る必要があります。 モジュールの作成の詳細については、[PowerShell スクリプト モジュールを記述する方法](/powershell/developer/module/how-to-write-a-powershell-script-module)に関するページを参照してください。
+省略可能なファイルをモジュールに追加することにより、Automation アカウントで使用するカスタムの[接続の種類](../automation-connections.md)を提供できます。 このファイルは、Automation アカウント内のモジュールのコマンドレットで使用する Azure Automation の接続の種類を指定するメタデータ ファイルです。 これを実現するには、まず PowerShell モジュールを作成する方法を知る必要があります。 モジュールの作成の詳細については、[PowerShell スクリプト モジュールを記述する方法](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module)に関するページを参照してください。
 
 ![Azure portal でカスタム接続を使用する](../media/modules/connection-create-new.png)
 
