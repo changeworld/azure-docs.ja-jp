@@ -1,20 +1,16 @@
 ---
 title: Azure Functions のバインド式とパターン
 description: 一般的なパターンに基づいてさまざまな Azure Functions バインド式を作成する方法について学習します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: db6f4f938b1555091dc51e310d4d31f96f93200c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f00637ff2c8cf39b683056b041fe0e991276a065
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097356"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227224"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions のバインド式のパターン
 

@@ -1,6 +1,6 @@
 ---
 title: ブロック BLOB ストレージ アカウントを作成する - Azure Storage |Microsoft Docs
-description: Premium のパフォーマンス特性を持つ Azure ブロック BLOB ストレージ アカウントを作成する方法について説明します。
+description: Premium のパフォーマンス特性を持つ Azure BlockBlobStorage アカウントを作成する方法について説明します。
 author: tamram
 services: storage
 ms.service: storage
@@ -8,22 +8,84 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9d8fb8f5f470dc47088efb30b7f823a0b8c624c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98a9295363461864d3abbb11bbc22b8bd8d6fdfa
+ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65141012"
+ms.lasthandoff: 10/25/2019
+ms.locfileid: "72933182"
 ---
-# <a name="create-a-block-blob-storage-account"></a>ブロック BLOB ストレージ アカウントの作成
+# <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage アカウントを作成する
 
-ブロック BLOB ストレージ アカウントの種類では、Premium のパフォーマンス特性を持つブロック BLOB を作成できます。 この種類のストレージ アカウントは、トランザクション レートが高い、または非常に高速なアクセス時間を必要とするワークロードに最適化されています。 この記事では、Azure portal、Azure CLI、または Azure PowerShell を使用して、ブロック BLOB ストレージ カウントを作成する方法について説明します。
+BlockBlobStorage アカウントの種類を使用すると、Premium のパフォーマンス特性を持つブロック BLOB を作成できます。 この種類のストレージ アカウントは、トランザクション レートが高い、または非常に高速なアクセス時間を必要とするワークロードに最適化されています。 この記事では、Azure portal、Azure CLI、または Azure PowerShell を使用して、BlockBlobStorage カウントを作成する方法について説明します。
 
-ブロック BLOB ストレージ アカウントの詳細については、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」を参照してください。
+BlockBlobStorage アカウントの詳細については、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」を参照してください。
 
-## <a name="create-account-in-the-azure-portal"></a>Azure portal でアカウントを作成する
+## <a name="prerequisites"></a>前提条件
 
-Azure potal でブロック BLOB ストレージ アカウントを作成するには、次の手順に従います。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+
+なし。
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+このハウツー記事には、Azure PowerShell モジュール Az バージョン 1.2.0 以降が必要です。 現在のバージョンを調べるには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+次の 2 つの方法のいずれかで Azure にサインインし、Azure CLI コマンドを実行できます。
+
+- Azure portal 内から、Azure Cloud Shell で CLI コマンドを実行できます。
+- CLI をインストールして、CLI コマンドをローカルで実行できます。
+
+### <a name="use-azure-cloud-shell"></a>Azure Cloud Shell を使用する
+
+Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI は、アカウントで使用できるように事前にインストールおよび構成されています。 Azure portal の右上のセクションのメニューで **[Cloud Shell]** ボタンをクリックします。
+
+[![Cloud Shell](../common/media/storage-quickstart-create-account/cloud-shell-menu.png)](https://portal.azure.com)
+
+このボタンによって対話型のシェルが起動されます。このハウツー記事で説明する手順は、これを使って実行できます。
+
+[![ポータルに Cloud Shell のウィンドウが表示されるスクリーンショット](../common/media/storage-quickstart-create-account/cloud-shell.png)](https://portal.azure.com)
+
+### <a name="install-the-cli-locally"></a>CLI をローカルにインストールする
+
+Azure CLI はローカルにインストールして使用することもできます。 このハウツー記事では、Azure CLI バージョン 2.0.46 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
+
+---
+
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
+
+# <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+
+[Azure Portal](https://portal.azure.com) にサインインします。
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+`Connect-AzAccount` コマンドで Azure サブスクリプションにサインインし、画面上の指示に従って認証を行います。
+
+```powershell
+Connect-AzAccount
+```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure Cloud Shell を起動するには、[Azure portal](https://portal.azure.com) にサインインします。
+
+CLI のローカル インストールにログインするには、[az login](/cli/azure/reference-index#az-login) コマンドを実行します。
+
+```cli
+az login
+```
+
+---
+
+## <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage アカウントを作成する
+
+## <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
+Azure portal で BlockBlobStorage アカウントを作成するには、次の手順に従います。
 
 1. Azure portal で、 **[すべてのサービス]** > **[ストレージ]** カテゴリ > **[ストレージ アカウント]** の順に選択します。
 
@@ -55,7 +117,7 @@ Azure potal でブロック BLOB ストレージ アカウントを作成する�
 
 1. **作成** を選択します。
 
-## <a name="create-account-using-azure-powershell"></a>Azure PowerShell を使用してアカウントを作成する
+## <a name="azure-powershelltabazure-powershell"></a>[Azure Powershell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -81,7 +143,7 @@ Azure potal でブロック BLOB ストレージ アカウントを作成する�
    New-AzResourceGroup -Name $resourceGroup -Location $location
    ```
 
-1. ブロック BLOB ストレージ アカウントを作成します。 引用符内の値を置き換えて、次のコマンドを実行します。
+1. BlockBlobStorage アカウントを作成します。 引用符内の値を置き換えて、次のコマンドを実行します。
 
    ```powershell
    $resourcegroup = "resource_group_name"
@@ -91,7 +153,7 @@ Azure potal でブロック BLOB ストレージ アカウントを作成する�
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
 
-## <a name="create-account-using-azure-cli"></a>Azure CLI を使用してアカウントを作成する
+## <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Azure CLI を使用して、ブロック BLOB アカウントを作成するには、最初に Azure CLI v. 2.0.46 以降のバージョンをインストールする必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -109,7 +171,7 @@ Azure CLI を使用して、ブロック BLOB アカウントを作成するに�
     --location "<location>"
    ```
 
-1. ブロック BLOB ストレージ アカウントを作成します。 角かっこ内の値 (角かっこを含む) を置き換えて、次のコマンドを実行します。
+1. BlockBlobStorage アカウントを作成します。 角かっこ内の値 (角かっこを含む) を置き換えて、次のコマンドを実行します。
 
    ```azurecli
    az storage account create \
@@ -119,6 +181,8 @@ Azure CLI を使用して、ブロック BLOB アカウントを作成するに�
     --kind "BlockBlobStorage" \
     --sku "Premium_LRS"
    ```
+
+---
 
 ## <a name="next-steps"></a>次の手順
 

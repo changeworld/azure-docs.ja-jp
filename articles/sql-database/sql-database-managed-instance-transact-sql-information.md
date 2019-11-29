@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823314"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186443"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>マネージド インスタンスの T-SQL の相違点、制限、既知の問題
 
@@ -565,16 +565,6 @@ SQL Server/Managed Instance では、[ユーザーは空でないファイルを
 
 **対処法**: サービス レベルの作成または更新操作の優先順位が高い場合は、復元プロセスが完了するか、復元プロセスがキャンセルされるまで待機します。
 
-### <a name="missing-validations-in-restore-process"></a>復元プロセスで検証が不足しています
-
-**日付:** 2019 年 9 月
-
-`RESTORE` ステートメントおよび組み込みのポイントインタイム リストアでは、復元されたデータベースに対していくつかの必要なチェックが実行されません。
-- **DBCC CHECKDB** - `RESTORE` ステートメントでは、復元されたデータベースで `DBCC CHECKDB` は実行されません。 元のデータベースが破損している場合、またはバックアップ ファイルが Azure BLOB ストレージにコピーされている間に破損している場合は、自動バックアップは行われず、Azure サポートがお客様にご連絡します。 
-- 組み込みのポイントインタイム リストア プロセスでは、Business Critical インスタンスからの自動バックアップに[インメモリ OLTP オブジェクト](sql-database-in-memory.md#in-memory-oltp)が含まれているかどうかは確認されません。 
-
-**対処法**: バックアップを取得する前にソース データベースで `DBCC CHECKDB` を実行していること、およびマネージド インスタンスで復元される可能性のある破損を回避するために、バックアップで `WITH CHECKSUM` オプションを使用していることを確認します。 General Purpose レベルで復元する場合は、ソース データベースに[インメモリ OLTP オブジェクト](sql-database-in-memory.md#in-memory-oltp)が含まれていないことを確認してください。
-
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある
 
 **日付:** 2019 年 9 月
@@ -582,14 +572,6 @@ SQL Server/Managed Instance では、[ユーザーは空でないファイルを
 ユーザー ワークロードに割り当てられているリソースを制限することを可能にする [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 機能では、フェールオーバー後またはサービス レベルの変更 (たとえば、仮想コアやインスタンスの最大ストレージ サイズを変更します) をユーザーが開始した後、一部のユーザー ワークロードが間違って分類されることがあります。
 
 **対処法**: [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) を使用している場合、`ALTER RESOURCE GOVERNOR RECONFIGURE` を定期的に、または、インスタンスの開始時に SQL タスクを実行する SQL エージェント ジョブの一環として実行します。
-
-### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>セキュリティで保護された接続 (SSL) を使用して外部メール サーバーに対する認証ができない
-
-**日付:** 2019 年 8 月
-
-[セキュリティで保護された接続 (SSL) を使用して構成されている](/sql/relational-databases/database-mail/configure-database-mail)データベース メールは、Azure の外部にある一部のメール サーバーでは認証できません。 これはセキュリティ構成の問題であり、まもなく解決される予定です。
-
-**対処法:** この問題が解決されるまで、セキュリティで保護された接続 (SSL) をデータベース メールの構成から一時的に削除してください。 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>サービス レベルのアップグレード後は、複数データベースにまたがる Service Broker のダイアログを再初期化する必要があります。
 

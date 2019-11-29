@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall サービス タグの概要
-description: この記事は、Azure Firewall サービス タグの概要です。
+description: サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 6/27/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: d0ac36e415c056dffc9c75d00968ff74c2156e63
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ec9fb3c9b27d21ac65888379f59d51ecc8042eb0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450164"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168694"
 ---
 # <a name="azure-firewall-service-tags"></a>Azure Firewall サービス タグ
 

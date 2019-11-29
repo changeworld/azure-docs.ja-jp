@@ -1,23 +1,14 @@
 ---
 title: Azure Notebooks 用のサンプル Jupyter ノートブック
 description: サンプルは、無料の Azure Notebooks クラウド サービスで実行される Jupyter ノートブックを体験するための優れた方法です。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 07e95905-0f1b-49ce-a0f9-820f61952278
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2019
-ms.author: kraigb
-ms.openlocfilehash: 715db36921427dc0ac5dcdad24c2c026b1ea1326
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cd615777adb28af6528afd2b95bc853372e799e8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496695"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277661"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>サンプル ノートブックを検索して使用する
 

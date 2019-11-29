@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 5697ae4c8864e0b9c4cbfc9e1e1048e1c3d60f77
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837212"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286606"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -25,8 +25,7 @@ ms.locfileid: "73837212"
 
 Text Analytics はステートレスであるため、管理するデータ資産がないことを忘れないでください。 テキストがアップロードされ、受信されると分析され、結果は呼び出し元のアプリケーションにすぐに返されます。
 
-> [!Tip]
-> API の動作を確認するための 1 回限りの呼び出しの場合は、任意の [API ドキュメント ページ](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)で利用可能な組み込み **API テスト コンソール**から POST 要求を送信できます。 セットアップは必要なく、唯一の要件は要求にアクセス キーと JSON ドキュメントを貼り付けることのみです。 
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

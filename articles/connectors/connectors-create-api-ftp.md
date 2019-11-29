@@ -11,12 +11,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: conceptual
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: a73fad3097be73e01a7a2a6652129cd7c9db9555
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: ac6ae1a3b00a4e7568bd7967105f202fbf2e4f9b
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050968"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547486"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して FTP ファイルを作成、監視、および管理する
 
@@ -143,7 +143,7 @@ FTP トリガーは、FTP ファイル システムをポーリングし、前�
 
    ![選択された [ファイル コンテンツ] プロパティ](./media/connectors-create-api-ftp/ftp-action-selected-file-content-property.png)
 
-1. ロジック アプリを保存し、 ワークフローをテストするには、ロジック アプリが現在監視しているファイルを FTP フォルダーに追加します。
+1. ロジック アプリを保存します。 ワークフローをテストするには、ロジック アプリが現在監視しているファイルを FTP フォルダーに追加します。
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 

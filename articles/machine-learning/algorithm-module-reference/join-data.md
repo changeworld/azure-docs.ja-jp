@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
-ms.date: 06/01/2019
-ms.openlocfilehash: 587490284b2886764c137a01e0eb4b3c9c755d41
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: b07bde671be73af2a351353d9794907972a022e7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495097"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232620"
 ---
 # <a name="join-data"></a>データの結合
 

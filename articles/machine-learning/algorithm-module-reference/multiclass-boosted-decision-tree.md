@@ -8,14 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 08/22/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: b53e504e98cab34fdc50ee8715ec162c910dd40d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 7f39d393b96b1515e4815abdc28ac4079f271c1b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465986"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232603"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>多クラスのブースト デシジョン ツリー
 

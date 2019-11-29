@@ -1,19 +1,15 @@
 ---
-title: Visual Studio を使用する Azure Functions の開発 | Microsoft Docs
+title: Visual Studio を使用する Azure Functions の開発
 description: Azure Functions Tools for Visual Studio 2019 を使用して、Azure Functions を開発およびテストする方法を説明します。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: glenga
-ms.openlocfilehash: ebc900735dfbb25206c4b22e3d20da62d85c61df
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 04074579b3eb34175a6d29897bbd38b95ae3a596
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773155"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230652"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 

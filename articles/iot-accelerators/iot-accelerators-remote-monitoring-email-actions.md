@@ -1,19 +1,19 @@
 ---
 title: リモート監視内の電子メール アクション - Azure | Microsoft Docs
 description: この攻略ガイドでは、新規または既存の電子ルールにメール アクションを追加する方法について説明します。
-author: asdonald
+author: dominicbetts
 manager: hegate
-ms.author: asdonald
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: fbb5f92258ff31dd7077bb1ade7fa7e5644c8bac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65466920"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168368"
 ---
 # <a name="add-an-email-action"></a>電子メール アクションを作成する
 

@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3036e5882e236dbbb9cf4f9aae17617822422a82
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: c1b4791f2ec80eba25a00e22cb4298b4c97da4de
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742105"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151086"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI 要素
+
 Windows と Linux のパスワードと SSH 公開キーの検証が組み込まれているコントロールのグループです。
 
 ## <a name="ui-sample"></a>UI サンプル
@@ -38,6 +39,7 @@ Linux で SSH パブリック キーが選択されている場合、ユーザ�
 ![Microsoft.Compute.CredentialsCombo Linux キー](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>スキーマ
+
 Windows の場合、次のスキーマを使います。
 
 ```json
@@ -95,14 +97,8 @@ Windows の場合、次のスキーマを使います。
 }
 ```
 
-## <a name="remarks"></a>解説
-- `osPlatform` は指定する必要があり、**Windows** と **Linux** のいずれかを使用できます。
-- `constraints.required` が **true** に設定されている場合、パスワードまたは SSH 公開キーのテキスト ボックスには、正常に検証を完了できる値を指定する必要があります。 既定値は **true** です。
-- `options.hideConfirmation` が **true** に設定されている場合、ユーザーのパスワードを確認するための 2 つ目のテキスト ボックスは表示されません。 既定値は **false** です。
-- `options.hidePassword` が **true** に設定されている場合、パスワード認証を使用するオプションは表示されません。 これは `osPlatform` が **Linux** であるときのみ使用できます。 既定値は **false** です。
-- `customPasswordRegex` プロパティを使用して、許可されたパスワードに対する追加の制約を実装できます。 `customValidationMessage` 内の文字列は、パスワードのカスタム検証が失敗したときに表示されます。 これらのプロパティの既定値は両方とも **null** です。
-
 ## <a name="sample-output"></a>サンプル出力
+
 `osPlatform` が **Windows**、または `osPlatform` が **Linux** で、ユーザーが SSH 公開キーではなくパスワードを指定した場合、コントロールは次のような出力を返します。
 
 ```json
@@ -121,6 +117,15 @@ Windows の場合、次のスキーマを使います。
 }
 ```
 
+## <a name="remarks"></a>解説
+
+- `osPlatform` は指定する必要があり、**Windows** と **Linux** のいずれかを使用できます。
+- `constraints.required` が **true** に設定されている場合、パスワードまたは SSH 公開キーのテキスト ボックスには、正常に検証を完了できる値を指定する必要があります。 既定値は **true** です。
+- `options.hideConfirmation` が **true** に設定されている場合、ユーザーのパスワードを確認するための 2 つ目のテキスト ボックスは表示されません。 既定値は **false** です。
+- `options.hidePassword` が **true** に設定されている場合、パスワード認証を使用するオプションは表示されません。 これは `osPlatform` が **Linux** であるときのみ使用できます。 既定値は **false** です。
+- `customPasswordRegex` プロパティを使用して、許可されたパスワードに対する追加の制約を実装できます。 `customValidationMessage` 内の文字列は、パスワードのカスタム検証が失敗したときに表示されます。 これらのプロパティの既定値は両方とも **null** です。
+
 ## <a name="next-steps"></a>次の手順
+
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

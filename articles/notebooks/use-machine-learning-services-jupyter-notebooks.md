@@ -1,23 +1,14 @@
 ---
 title: Azure Notebooks 内で Azure Machine Learning を使用する
 description: Azure Notebooks で使用できる Azure Machine Learning 用のサンプル ノートブックの概要。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 0dc4fc31-ae1c-422c-ac34-7b025e6651b4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 6eac5d77404c85d5481ded7e58b0cd9fab0de083
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e3c4fbdf35bf7ea1f4dddbceb9d7235c67ed13a4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496634"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277457"
 ---
 # <a name="use-azure-machine-learning-in-a-notebook"></a>ノートブック内で Azure Machine Learning を使用する
 

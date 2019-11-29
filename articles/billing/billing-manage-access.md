@@ -8,7 +8,7 @@ manager: amberb
 editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 035d2e567b6aad23801ff043652ea143e3f6105b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c1f9ef78431b6b293972d4adbc0f64dc49d5c4b7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709619"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223841"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Asure の課金情報へのアクセスの管理
 
 Azure portal では自分のアカウントの課金情報へのアクセス権を他のユーザーに付与できます。 課金ロールの種類と課金情報へのアクセス権を付与するための手順は、請求先アカウントの種類によって異なります。 請求先アカウントの種類を確認するには、「[請求先アカウントの種類を確認する](#check-the-type-of-your-billing-account)」を参照してください。
 
-この記事は、Microsoft オンライン サービス プログラム アカウントを使用するお客様に適用されます。 エンタープライズ契約 (EA) の Azure のお客様で、エンタープライズ管理者の場合は、Enterprise Portal で部門管理者とアカウント所有者にアクセス許可を付与できます。 詳細については、「[Understand Azure Enterprise Agreement administrative roles in Azure](billing-understand-ea-roles.md)」(Azure の Azure Enterprise Agreement 管理者ロールを理解する) を参照してください。 Microsoft 顧客契約のお客様の場合、「[Azure での Microsoft 顧客契約の管理ロールを理解する](billing-understand-mca-roles.md)」を参照してください。 
+この記事は、Microsoft オンライン サービス プログラム アカウントを使用するお客様に適用されます。 エンタープライズ契約 (EA) の Azure のお客様で、エンタープライズ管理者の場合は、Enterprise Portal で部門管理者とアカウント所有者にアクセス許可を付与できます。 詳細については、「[Understand Azure Enterprise Agreement administrative roles in Azure](billing-understand-ea-roles.md)」(Azure の Azure Enterprise Agreement 管理者ロールを理解する) を参照してください。 Microsoft 顧客契約のお客様の場合、「[Azure での Microsoft 顧客契約の管理ロールを理解する](billing-understand-mca-roles.md)」を参照してください。
 
 ## <a name="account-administrators-for-microsoft-online-service-program-accounts"></a>Microsoft オンライン サービス プログラム アカウントのアカウント管理者
 
@@ -60,9 +60,9 @@ Azure portal では自分のアカウントの課金情報へのアクセス権�
 1. **[コストの管理と請求]** で検索します。
 
     ![Azure portal の検索を表示するスクリーンショット](./media/billing-manage-access/billing-search-cost-management-billing.png)
- 
+
 1. 左側のウィンドウで、 **[サブスクリプション]** を選択します。 アクセス権によっては、課金スコープを選択してから、 **[サブスクリプション]** を選択する必要があります。
- 
+
     ![サブスクリプションの選択を示すスクリーンショット](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. **[請求書]** 、 **[請求書へのアクセス]** の順に選択します。
@@ -88,7 +88,7 @@ Azure portal では自分のアカウントの課金情報へのアクセス権�
     ![Azure portal の検索を表示するスクリーンショット](./media/billing-manage-access/billing-search-cost-management-billing.png)
 
 1. 左側のウィンドウで、 **[サブスクリプション]** を選択します。 アクセス権によっては、課金スコープを選択してから、 **[サブスクリプション]** を選択する必要があります。
- 
+
     ![サブスクリプションの選択を示すスクリーンショット](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. **[アクセス制御 (IAM)]** を選択します。

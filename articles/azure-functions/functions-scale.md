@@ -1,21 +1,16 @@
 ---
-title: Azure Functions のスケールとホスティング | Microsoft Docs
+title: Azure Functions のスケールとホスティング
 description: Azure Functions の従量課金プランと Premium プランの選択方法について説明します。
-author: ggailey777
-manager: gwallace
-keywords: Azure Functions, 関数, 従量課金プラン, Premium プラン, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ebb2fcf0f626a82bcb5e6439183ba98c39c58588
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576059"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322887"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -32,9 +27,6 @@ Azure で関数アプリを作成するときは、アプリのホスティン�
 Premium プランには、Premium コンピューティング インスタンス、無期限にインスタンスをウォーム状態に保つ機能、VNet 接続などの追加機能があります。
 
 App Service プランでは、お客様が管理している専用のインフラストラクチャを利用できます。 関数アプリはイベントに基づいてスケールされません。つまり、ゼロにスケールダウンされることは決してありません ([[常時接続]](#always-on) を有効にする必要があります)。
-
-> [!NOTE]
-> 関数アプリ リソースのプラン プロパティを変更することにより、従量課金プランと Premium プランを切り替えることができます。
 
 ## <a name="hosting-plan-support"></a>ホスティング プランのサポート
 

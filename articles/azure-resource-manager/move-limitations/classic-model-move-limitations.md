@@ -1,17 +1,14 @@
 ---
 title: Azure クラシック デプロイ リソースの移動
 description: Azure Resource Manager を使用して、クラシック デプロイのリソースを新しいリソース グループまたはサブスクリプションに移動します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: 783fcdca7637f3f67cf146bb827760cb4cdd7cbe
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b97496e4abfdf248b9f5010417e9284c643a74ad
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533486"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150840"
 ---
 # <a name="move-guidance-for-classic-deployment-model-resources"></a>クラシック デプロイ モデル リソースの移動に関するガイダンス
 

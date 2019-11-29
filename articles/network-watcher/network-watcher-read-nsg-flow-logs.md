@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: kumud
-ms.openlocfilehash: edc4cc32cd358bd37fdab46e323c59ec207b2d5a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: cdfcf6b379feb5cc71c173275601ce9c55d57d12
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293485"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539257"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG フロー ログの読み取り
 
@@ -85,7 +85,7 @@ function Get-NSGFlowLogBlockList  {
     )
     process {
         # Stores the block list in a variable from the block blob.
-        $blockList = $CloudBlockBlob.DownloadBlockList()
+        $blockList = $CloudBlockBlob.DownloadBlockListAsync()
 
         # Return the Block List
         $blockList
@@ -142,7 +142,7 @@ function Get-NSGFlowLogReadBlock  {
         $downloadArray = New-Object -TypeName byte[] -ArgumentList $maxvalue
 
         # Download the data into the ByteArray, starting with the current index, for the number of bytes in the current block. Index is increased by 3 when reading to remove preceding comma.
-        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length-1)) | Out-Null
+        $CloudBlockBlob.DownloadRangeToByteArray($downloadArray,0,$index, $($blockList[$i].Length)) | Out-Null
 
         # Increment the index by adding the current block length to the previous index
         $index = $index + $blockList[$i].Length

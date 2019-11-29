@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: e522ede7da669f6e684fc9a07adcc506a69e77e9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597109"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267902"
 ---
 # <a name="monitor-data-flows"></a>データ フローの監視
 

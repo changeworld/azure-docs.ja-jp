@@ -1,22 +1,17 @@
 ---
 title: Azure Functions における Azure Event Hubs のバインド
 description: Azure Functions で Azure Event Hubs のバインドを使用する方法について説明します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: cshoe
-ms.openlocfilehash: bc75ad08716a001ae0cfd934dbc8d5da668dc1c3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2e76853a7b1bf2e6dfda84ffa1454074c266d2c1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086656"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227272"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions における Azure Event Hubs のバインド
 

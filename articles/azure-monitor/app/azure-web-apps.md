@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/04/2019
-ms.openlocfilehash: 1937cce03412db55dafc2025c6a59b037deee3d1
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: e4fc00d3889d10dddb9ec147a19f06a7211f53be
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677656"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230297"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -323,9 +323,6 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 > [!NOTE]
 > Java および Node.js アプリケーションは、手動の SDK ベースのインストルメンテーションを介してのみ Azure App Services でサポートされるため、以下の手順はこのようなシナリオには適用されません。
-
-> [!NOTE]
-> ASP.NET Core 3.0 アプリケーションはサポートされていません。 ASP.NET Core 3.0 アプリのコードを使用して[手動の手順](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)に関する記事に従ってください。
 
 1. `ApplicationInsightsAgent` を介してアプリケーションが監視されていることを確認します。
     * `ApplicationInsightsAgent_EXTENSION_VERSION` アプリ設定が "2 以下" の値に設定されていることを確認します。

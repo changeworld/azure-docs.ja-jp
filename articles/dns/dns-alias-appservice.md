@@ -2,17 +2,17 @@
 title: ゾーンの頂点で負荷分散された Azure Web アプリをホストする
 description: Azure DNS エイリアス レコードを使用して、ゾーンの頂点で負荷分散された Web アプリをホストします
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 08/10/2019
-ms.author: victorh
-ms.openlocfilehash: 4f9a42f3d054becfed0b0a6acbf92cdf1e421c16
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: allensu
+ms.openlocfilehash: a673a74f8f6f919e7ebb7fc3b065ee0742ab3a10
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946945"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212368"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>ゾーンの頂点で負荷分散された Azure Web アプリをホストする
 
@@ -87,7 +87,7 @@ Traffic Manager プロファイルの作成方法の詳細については、[Web
 3. **[追加]** を選択します。
 4. 次の表を使用して、エンドポイントを構成します。
 
-   |Type  |名前  |ターゲット  |Location  |カスタム ヘッダーの設定|
+   |種類  |名前  |ターゲット  |Location  |カスタム ヘッダーの設定|
    |---------|---------|---------|---------|---------|
    |外部エンドポイント     |End-01|App-01 について記録した IP アドレス|East US|host:\<App-01 について記録した URL\><br>例: **host:app-01.azurewebsites.net**|
    |外部エンドポイント     |End-02|App-02 について記録した IP アドレス|米国中部|host:\<App-02 について記録した URL\><br>例: **host:app-02.azurewebsites.net**
@@ -104,7 +104,7 @@ Web アプリにカスタム ホスト名を追加すると、ドメインを検
 2. **[レコード セット]** を選択します。
 3. 次の表を使用して、レコード セットを追加します。 値には、前に記録した実際の Web アプリ URL を使用します。
 
-   |名前  |Type  |値|
+   |名前  |種類  |値|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -132,7 +132,7 @@ Web アプリにカスタム ホスト名を追加すると、ドメインを検
 2. **[レコード セット]** を選択します。
 3. 次の表を使用して、レコード セットを追加します。
 
-   |名前  |Type  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
+   |名前  |種類  |エイリアス レコード セット  |エイリアスの種類  |Azure リソース|
    |---------|---------|---------|---------|-----|
    |@     |A|はい|Azure リソース|Traffic Manager - お使いのプロファイル|
 

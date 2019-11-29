@@ -1,19 +1,19 @@
 ---
-title: Azure Spatial Anchors でのログ記録と診断 | Microsoft Docs
+title: ログ記録と診断
 description: Azure Spatial Anchors でログ記録と診断を生成して取得する方法に関する、詳細な説明。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b66dc7d6ec9d11fe645587fe791824009231b7c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4359db1deda2295a66bcb97cf374d0fe9bc3ef7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964750"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270127"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Azure Spatial Anchors でのログ記録と診断
 
@@ -50,7 +50,7 @@ Spatial Anchors API では、ログ記録メカニズムをサブスクライブ
 
 Spatial Anchors にはログ記録操作の標準モードに加え、診断モードも存在します。 診断モードでは、環境のイメージがキャプチャされ、ディスクにログ記録されます。 このモードを使用すると、アンカーの予測検索の失敗など、特定の種類の問題をデバッグすることができます。 診断ログは、特定の問題を再現するためにのみ、有効にしてください。 終了後は、無効にします。 アプリの通常実行時には、診断を有効にしないでください。
 
-Microsoft サポートの利用中に、Microsoft の担当者が詳しい調査のため診断バンドルの提出を依頼することがあります。 この場合、診断を有効にして問題を再現し、診断バンドルを送信することができます。 
+Microsoft サポートの利用中に、Microsoft の担当者が詳しい調査のため診断バンドルの提出を依頼することがあります。 この場合、診断を有効にして問題を再現し、診断バンドルを送信することができます。
 
 Microsoft の担当者が事前に認識していない状態で診断ログを Microsoft に提出しても、返答は得られません。
 
@@ -88,7 +88,7 @@ private void ConfigureSession()
 
 ### <a name="submit-the-diagnostics-bundle"></a>診断バンドルの提出
 
-次のコード スニペットは、診断バンドルを Microsoft に提出する方法を示しています。 このバンドルには、診断を有効にした後にセッションでキャプチャされた環境のイメージが含まれます。 
+次のコード スニペットは、診断バンドルを Microsoft に提出する方法を示しています。 このバンドルには、診断を有効にした後にセッションでキャプチャされた環境のイメージが含まれます。
 
 ```csharp
 // method to handle the diagnostics bundle submission

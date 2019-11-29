@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 288ea7e887a170c8560b0126fa53c9132da35db6
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f3a8426856e1345306acff69946beb4860d5f905
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332667"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151521"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 要素
+
 1 つまたは複数の仮想マシン インスタンスのサイズを選択するコントロールです。
 
 ## <a name="ui-sample"></a>UI サンプル
@@ -34,6 +35,7 @@ ms.locfileid: "72332667"
 ![拡大された Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
 
 ## <a name="schema"></a>スキーマ
+
 ```json
 {
   "name": "element1",
@@ -65,7 +67,14 @@ ms.locfileid: "72332667"
 }
 ```
 
+## <a name="sample-output"></a>サンプル出力
+
+```json
+"Standard_D1"
+```
+
 ## <a name="remarks"></a>解説
+
 - `recommendedSizes` には、少なくとも 1 つのサイズが必要です。 最初の推奨サイズが既定値として使用されます。 使用可能なサイズの一覧は、推奨される状態で並べ替えられていません。 その列を選択すると、推奨される状態で並べ替えることができます。
 - 推奨されたサイズが選択した場所で使用できない場合、そのサイズは自動的にスキップされます。 代わりに、次の推奨サイズが使用されます。
 - `constraints.allowedSizes` と `constraints.excludedSizes` は両方ともオプションとして使用できますが、同時に使用することはできません。 使用可能なサイズの一覧は、[サブスクリプションの使用可能な仮想マシン サイズを一覧表示する操作](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region)を呼び出すことで決定できます。 `constraints.allowedSizes` で指定されていないサイズはすべて非表示となり、`constraints.excludedSizes` で指定されていないサイズはすべて表示されます。
@@ -75,11 +84,7 @@ ms.locfileid: "72332667"
 - `numAvailabilityZonesRequired` には、1、2、または 3 を指定できます。
 - 既定では、`hideDiskTypeFilter` は **false** です。 ディスク の種類のフィルターを使用すると、ディスクの種類をすべて表示することも、SSD のみを表示することもできます。
 
-## <a name="sample-output"></a>サンプル出力
-```json
-"Standard_D1"
-```
-
 ## <a name="next-steps"></a>次の手順
+
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

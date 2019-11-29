@@ -1,18 +1,14 @@
 ---
 title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.author: dacurwin
-ms.openlocfilehash: 5adcf252fed4ac94ae4261886b24eb087424bdbe
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 2c33c71e579cc6fa5d01ba086fb1a9a4fc9c142c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533148"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172067"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 

@@ -6,17 +6,16 @@ ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 05/06/2019
-ms.openlocfilehash: 85fb00ad221ae982e4d3ddc9d2d5d20dd4f2793d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/25/2019
+ms.openlocfilehash: c1706f72f894baa7d07c49880a82dc96ef03d7cf
+ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65069094"
+ms.lasthandoff: 10/27/2019
+ms.locfileid: "72965801"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - Single Server のサーバーをバックアップおよび復元する方法
 
-## <a name="backup-happens-automatically"></a>自動バックアップ
 Azure Database for PostgreSQL サーバーは、復元機能が有効になるように、バックアップが定期的に行われます。 この機能を使用して、新しいサーバー上で、サーバーとそのすべてのデータベースを過去の特定の時点に復元できます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -72,7 +71,7 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 | Setting | 推奨値 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
-| name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
+| 名前 | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2018-03-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、`2018-03-13T05:59:00-08:00` など自身のローカル タイム ゾーンを使用できます。 また、`2018-03-13T13:59:00Z` など UTC Zulu 形式も使用できます。 |
 | source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |
 
@@ -80,9 +79,9 @@ az postgres server restore --resource-group myresourcegroup --name mydemoserver-
 
 復元されたサーバーの場所と価格レベルの値は、元のサーバーと同じです。 
 
-復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。
+復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。 新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
-復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則はありません。 この新しいサーバー用のファイアウォール規則を個別に設定する必要があります。
+復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
 
 ## <a name="geo-restore"></a>geo リストア
 地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for PostgreSQL を使用できる任意のリージョンに作成できます。  
@@ -112,19 +111,18 @@ az postgres server georestore --resource-group newresourcegroup --name mydemoser
 | Setting | 推奨値 | 説明  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | 新しいサーバーが属するリソース グループの名前。|
-|name | mydemoserver-georestored | 新しいサーバーの名前。 |
+|名前 | mydemoserver-georestored | 新しいサーバーの名前。 |
 |source-server | mydemoserver | 地理冗長バックアップが使われる既存のサーバーの名前。 |
 |location | eastus | 新しいサーバーの場所。 |
 |sku-name| GP_Gen4_8 | このパラメーターは、新しいサーバーの価格レベル、コンピューティングの世代、および仮想コアの数を設定します。 GP_Gen4_8 は、8 つの仮想コアを備えた汎用 Gen 4 サーバーに対応します。|
 
+geo リストアで新しいサーバーを作成すると、新しいサーバーは元のサーバーと同じストレージ サイズおよび価格レベルを継承します。 作成時にこれらの値を変更することはできません。 新しいサーバーを作成した後、ストレージ サイズをスケールアップすることはできます。
 
->[!Important]
->geo リストアで新しいサーバーを作成すると、新しいサーバーは元のサーバーと同じストレージ サイズおよび価格レベルを継承します。 作成時にこれらの値を変更することはできません。 新しいサーバーを作成した後、ストレージ サイズをスケールアップすることはできます。
+復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。 新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
-復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。
-
-復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則はありません。 この新しいサーバー用のファイアウォール規則を個別に設定する必要があります。
+復元中に作成される新しいサーバーには、元のサーバーに存在するファイアウォール規則または VNet サービス エンドポイントはありません。 この新しいサーバー用に、これらの規則を個別に設定する必要があります。
 
 ## <a name="next-steps"></a>次の手順
-- サービスの[バックアップ](concepts-backup.md)の詳細を確認します。
-- [ビジネス継続性](concepts-business-continuity.md)オプションについて確認します。
+- サービスの[バックアップ](concepts-backup.md)の詳細について確認します
+- [レプリカ](concepts-read-replicas.md)について確認します
+- [ビジネス継続性](concepts-business-continuity.md)オプションについて確認します

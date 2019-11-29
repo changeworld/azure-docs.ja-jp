@@ -1,18 +1,14 @@
 ---
 title: Azure Durable Functions の単体テスト
 description: Durable Functions の単体テストを行う方法について説明します。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.author: glenga
-ms.openlocfilehash: 95c6afcb2f7e864da4b9b43235326a17bed785fa
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 86733f8b5b80799bad3e52c643ed27465dfc7641
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614527"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231223"
 ---
 # <a name="durable-functions-unit-testing"></a>Durable Functions の単体テスト
 

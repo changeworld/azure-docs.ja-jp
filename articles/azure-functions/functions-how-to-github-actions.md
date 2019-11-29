@@ -2,17 +2,15 @@
 title: GitHub Actions を使用した Azure Functions のコードの更新
 description: GitHub Actions を使用し、GitHub に Azure Functions プロジェクトをビルドおよびデプロイするワークフローを定義する方法について説明します。
 author: ahmedelnably
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 681d7a5eab3306a4067ea49bcf8a038e8627f60e
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 18ba99077592a7d03e19fda86bc61e5839b82b5e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091376"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226922"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
 

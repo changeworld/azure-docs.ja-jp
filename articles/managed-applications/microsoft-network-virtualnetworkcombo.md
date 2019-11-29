@@ -13,17 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: b0437338b403ff19761173d08be3938d07f13f55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d325230f603be4ccfe4fe42f1b58c6ad892fdb2c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708350"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151484"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI 要素
+
 新規または既存の仮想ネットワークを選択するコントロールのグループです。
 
 ## <a name="ui-sample"></a>UI サンプル
+
 新しい仮想ネットワークを選択すると、各サブネットの名前とアドレスのプレフィックスをカスタマイズすることができます。 サブネットの構成は省略可能です。
 
 ![Microsoft.Network.VirtualNetworkCombo new](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
@@ -33,6 +35,7 @@ ms.locfileid: "64708350"
 ![Microsoft.Network.VirtualNetworkCombo existing](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>スキーマ
+
 ```json
 {
   "name": "element1",
@@ -85,16 +88,6 @@ ms.locfileid: "64708350"
 }
 ```
 
-## <a name="remarks"></a>解説
-- `defaultValue.addressPrefixSize` を指定した場合、このサイズの最初の重複しないアドレスのプレフィックスが、ユーザーのサブスクリプションにある既存の仮想ネットワークに基づいて自動的に決定されます。
-- `defaultValue.name` と `defaultValue.addressPrefixSize` の既定値は **null** です。
-- `constraints.minAddressPrefixSize` を指定する必要があります。 アドレス空間が指定した値よりも小さい既存の仮想ネットワークは選択できません。
-- `subnets` を指定する必要があるほか、サブネットごとに `constraints.minAddressPrefixSize` を指定する必要があります。
-- 新しい仮想ネットワークを作成するときは、その仮想ネットワークのアドレス プレフィックスと各 `addressPrefixSize` に基づいて、各サブネットのアドレス プレフィックスが自動的に計算されます。
-- 既存の仮想ネットワークを使用するときは、各 `constraints.minAddressPrefixSize` よりも小さいサブネットは選択できません。 さらに、`minAddressCount` を指定した場合、少なくともその個数の使用可能なアドレスが含まれないサブネットは選択できません。 既定値は **0** です。 使用可能なアドレスを連続させるには、`requireContiguousAddresses` に **true** を設定します。 既定値は **true** です。
-- 既存の仮想ネットワークでのサブネットの作成はサポートされていません。
-- `options.hideExisting` が **true** である場合、ユーザーは既存の仮想ネットワークを選択できません。 既定値は **false** です。
-
 ## <a name="sample-output"></a>サンプル出力
 
 ```json
@@ -118,6 +111,18 @@ ms.locfileid: "64708350"
 }
 ```
 
+## <a name="remarks"></a>解説
+
+- `defaultValue.addressPrefixSize` を指定した場合、このサイズの最初の重複しないアドレスのプレフィックスが、ユーザーのサブスクリプションにある既存の仮想ネットワークに基づいて自動的に決定されます。
+- `defaultValue.name` と `defaultValue.addressPrefixSize` の既定値は **null** です。
+- `constraints.minAddressPrefixSize` を指定する必要があります。 アドレス空間が指定した値よりも小さい既存の仮想ネットワークは選択できません。
+- `subnets` を指定する必要があるほか、サブネットごとに `constraints.minAddressPrefixSize` を指定する必要があります。
+- 新しい仮想ネットワークを作成するときは、その仮想ネットワークのアドレス プレフィックスと各 `addressPrefixSize` に基づいて、各サブネットのアドレス プレフィックスが自動的に計算されます。
+- 既存の仮想ネットワークを使用するときは、各 `constraints.minAddressPrefixSize` よりも小さいサブネットは選択できません。 さらに、`minAddressCount` を指定した場合、少なくともその個数の使用可能なアドレスが含まれないサブネットは選択できません。 既定値は **0** です。 使用可能なアドレスを連続させるには、`requireContiguousAddresses` に **true** を設定します。 既定値は **true** です。
+- 既存の仮想ネットワークでのサブネットの作成はサポートされていません。
+- `options.hideExisting` が **true** である場合、ユーザーは既存の仮想ネットワークを選択できません。 既定値は **false** です。
+
 ## <a name="next-steps"></a>次の手順
+
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

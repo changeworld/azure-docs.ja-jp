@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall と Azure Standard Load Balancer を統合する
-description: Azure Firewall と Azure Standard Load Balancer を統合する方法について説明します
+description: Azure Firewall と Azure Standard Load Balancer (パブリックまたは内部) を仮想ネットワークに統合できます。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 4/1/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 7ee92a7508918635849caafab4632bbba81ee628
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 91f34d06532b2d7f56d293df40939212a4f3d68c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193777"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167078"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Azure Firewall と Azure Standard Load Balancer を統合する
 

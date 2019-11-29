@@ -3,12 +3,12 @@ title: PowerShell を使用した割り当ての管理方法
 description: 公式の Azure Blueprints PowerShell モジュールである Az.Blueprint でブループリント割り当てを管理する方法について説明します。
 ms.date: 09/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 98c2173568f65d029b00ca6c8b25d2195094a5e3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 00824ceed2e86683a86b172e529ba88704dbb050
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961622"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210317"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>PowerShell を使用した割り当ての管理方法
 
@@ -23,7 +23,7 @@ Azure PowerShell でブループリント割り当てを管理できるように
 Azure Blueprints モジュールには、次のソフトウェアが必要です。
 
 - Azure PowerShell 1.5.0 以降。 インストールされていない場合は、こちらの[手順](/powershell/azure/install-az-ps)に従ってください。
-- PowerShellGet 2.0.1 以上。 インストールされていない場合、または更新されていない場合は、こちらの[手順](/powershell/gallery/installing-psget)に従ってください。
+- PowerShellGet 2.0.1 以上。 インストールされていない場合、または更新されていない場合は、こちらの[手順](/powershell/scripting/gallery/installing-psget)に従ってください。
 
 ### <a name="install-the-module"></a>モジュールのインストール
 

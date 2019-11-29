@@ -3,12 +3,12 @@ title: コードとしてのポリシー ワークフローの設計
 description: Azure Policy 定義をコードとしてデプロイし、リソースを自動的に検証するようにワークフローを設計する方法について説明します。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 935616145ee32bea8c3b514c495690ce4105cb80
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0914ba6510c9d2ef87d3f83417f97340d42c8bce
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072068"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267275"
 ---
 # <a name="design-policy-as-code-workflows"></a>コードとしてのポリシー ワークフローの設計
 
@@ -128,6 +128,6 @@ ms.locfileid: "74072068"
 - [ポリシー定義の構造](./definition-structure.md)についてさらに学習します。
 - [ポリシー割り当ての構造](./assignment-structure.md)についてさらに学習します。
 - [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)方法を学習します。
+- [コンプライアンス データを取得する](../how-to/get-compliance-data.md)方法を学習します。
 - [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

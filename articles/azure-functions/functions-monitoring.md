@@ -1,20 +1,15 @@
 ---
 title: Azure Functions を監視する
 description: Azure Application Insights を Azure Functions とともに使用して、関数の実行を監視する方法を説明します。
-author: ggailey777
-manager: gwallace
-keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.author: glenga
-ms.openlocfilehash: dc333ef542da1330672ad1dc8ad731969eef6742
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 5f7f6c130226080cba635f89280f655498e5db27
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374566"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226896"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 

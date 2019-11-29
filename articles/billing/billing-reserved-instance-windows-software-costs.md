@@ -4,19 +4,19 @@ description: Azure Reserved VM Instance のコストに含まれないソフト�
 author: yashar
 manager: yashar
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/14/2019
 ms.author: banders
-ms.openlocfilehash: 82a3dfa9534d58d425b15a433a69a224235e027f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: f81cc533276ed78bd0c52e3be0cd425294ced241
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111539"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223599"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure Reserved VM Instances に含まれないソフトウェアのコスト
 

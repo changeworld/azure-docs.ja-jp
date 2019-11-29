@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: e3051a72a115e711a99ecd68756967e2cef0cc04
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: c39df1e6af292d3774c6cba62663454bd2d8ad28
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130058"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383409"
 ---
 ### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>言語検出コンテナーを AKS クラスターにデプロイする
 
@@ -66,6 +66,13 @@ ms.locfileid: "71130058"
             image: mcr.microsoft.com/azure-cognitive-services/language
             ports:
             - containerPort: 5000
+            resources:
+              requests:
+                memory: 2Gi
+                cpu: 1
+              limits:
+                memory: 4Gi
+                cpu: 1
             env:
             - name: EULA
               value: "accept"
@@ -91,7 +98,7 @@ ms.locfileid: "71130058"
 1. ターゲットとして *language.yaml* ファイルを指定して Kubernetes `apply` コマンドを実行します。
 
     ```console
-    kuberctl apply -f language.yaml
+    kubectl apply -f language.yaml
     ```
 
     コマンドによってデプロイ構成が正常に適用された後、次の出力のようなメッセージが表示されます。

@@ -5,19 +5,19 @@ author: v-miegge
 manager: adpick
 editor: v-jesits
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: banders
-ms.openlocfilehash: 79e65932699242de2f161e6858189cf0bf562903
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 3455bda92a34c5f8f3b616a0e0c3111f0a68e786
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718665"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225866"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Azure へのサインアップ時にカードが拒否される問題のトラブルシューティング
 

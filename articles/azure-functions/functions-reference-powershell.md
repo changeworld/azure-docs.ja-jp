@@ -2,24 +2,18 @@
 title: Azure Functions の PowerShell 開発者向けリファレンス
 description: PowerShell を使用して関数を開発する方法について説明します。
 author: eamonoreilly
-manager: gwallace
-ms.service: azure-functions
-ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: glenga
-ms.openlocfilehash: 0d398e9848559e70883c07498057d1807651a867
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 26e52e8aa498c37bd4cef95fb2b54b2fe9322f90
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515672"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226673"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
 この記事では、PowerShell を使用して Azure Functions を作成する方法について詳しく説明します。
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
 PowerShell Azure 関数 (関数) は、トリガーされた時点で実行される PowerShell スクリプトとして表されます。 それぞれの関数スクリプトには、関連する `function.json` ファイルが存在し、関数の動作 (トリガー方法や入力および出力パラメーターなど) が定義されています。 詳細については、[トリガーとバインディングに関する記事](functions-triggers-bindings.md)を参照してください。 
 

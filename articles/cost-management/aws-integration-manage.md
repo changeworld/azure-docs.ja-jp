@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 04/26/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 772f6cdde575a9ac669c73ecca039914357ffe2f
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 04f607d7f592112013bcc6cf4cbd61d42a8116a8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338890"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230160"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure での AWS のコストと使用状況の管理
 

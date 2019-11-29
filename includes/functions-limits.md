@@ -1,22 +1,22 @@
 ---
 author: ggailey777
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: ad87964216db72cfef447a18d4cd05b8a976491b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: eb61bf5734d0aea1534735b23a2b95b52000f5ad
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476915"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322904"
 ---
 | リソース | [従量課金プラン](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium プラン](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service プラン](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | スケールアウト | イベント ドリブン | イベント ドリブン | [手動/自動スケール](../articles/app-service/manage-scale-up.md) | 
-| 最大インスタンス数 | 200 | 20 | 10 - 20 |
+| 最大インスタンス数 | 200 | 100 | 10 - 20 |
 |既定の[タイムアウトまでの時間](../articles/azure-functions/functions-scale.md#timeout) (分) |5 | 30 |30<sup>2</sup> |
-|最大の[タイムアウトまでの時間](../articles/azure-functions/functions-scale.md#timeout) (分) |10 | unbounded | 無制限<sup>3</sup> |
+|最大の[タイムアウトまでの時間](../articles/azure-functions/functions-scale.md#timeout) (分) |10 | 60 | 無制限<sup>3</sup> |
 | 最大送信接続数 (インスタンスあたり) | アクティブ 600 (合計 1200) | unbounded | unbounded |
 | 最大要求サイズ (MB)<sup>4</sup> | 100 | 100 | 100 |
 | クエリ文字列の最大長<sup>4</sup> | 4096 | 4096 | 4096 |

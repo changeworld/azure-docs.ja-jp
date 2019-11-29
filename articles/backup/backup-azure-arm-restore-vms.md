@@ -1,20 +1,15 @@
 ---
-title: 'Azure Backup: Azure portal を使用して VM を復元する'
+title: Azure portal を使用して VM を復元する
 description: Azure Portal を使用して復旧ポイントから Azure 仮想マシンを復元します
 ms.reviewer: geg
-author: dcurwin
-manager: carmonm
-keywords: バックアップの復元, 復元する方法, 回復ポイント
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: dacurwin
-ms.openlocfilehash: 16017f00282729361a0489214c941e824042060e
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 8b84c7f89c88b54e90a8e1af1236bf205e12cfe6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044162"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173471"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 

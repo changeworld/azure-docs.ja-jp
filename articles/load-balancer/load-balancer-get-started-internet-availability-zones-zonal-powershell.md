@@ -1,6 +1,6 @@
 ---
 title: ゾーンのフロントエンドを使用してロード バランサーを作成する - Azure PowerShell
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Azure PowerShell を使用してゾーン フロントエンドで Standard Load Balancer を作成する方法について説明します
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: a2c637ddbf5b7f5883016afe4a6d58ad9752cfc5
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1d05b130a98ce816d070bc3ad16e25b867d7dc8a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275129"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215116"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Azure PowerShell を使用してゾーン フロントエンドで Standard Load Balancer を作成する
 

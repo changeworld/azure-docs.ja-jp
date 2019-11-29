@@ -3,7 +3,7 @@ title: Azure DNS での DNS ゾーンの管理 - Azure Portal | Microsoft Docs
 description: Azure Portal を使って DNS ゾーンを管理できます。 この記事では、Azure DNS で DNS ゾーンを更新、削除、および作成する方法について説明します
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: timlt
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
-ms.author: victorh
-ms.openlocfilehash: d0a20de8738e8c7b2719a9de85d5fd16aa5778cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 5d4cc57c4cb5db7f04d604c8ccbc408df1a3e707
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60926321"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211908"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Azure Portal で DNS ゾーンを管理する方法
 
@@ -31,7 +31,7 @@ ms.locfileid: "60926321"
 
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
-1. Azure portal にサインインします
+1. Azure portal にサインインする
 2. [ハブ] メニューで、 **[リソースの作成] > [ネットワーキング] > [DNS ゾーン]** に移動して **[DNS ゾーンの作成]** ブレードを開きます。
 
     ![[DNS ゾーン]](./media/dns-operations-dnszones-portal/openzone650.png)
@@ -44,7 +44,7 @@ ms.locfileid: "60926321"
    |**Name**|contoso.com|DNS ゾーンの名前です。|
    |**サブスクリプション**|<該当するサブスクリプション>|DNS ゾーンを作成するサブスクリプションを選択します。|
    |**リソース グループ**|**[新規作成]** : contosoDNSRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。 リソース グループについて詳しくは、[Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) の概要に関する記事をご覧ください。|
-   |**場所**|米国西部||
+   |**Location**|米国西部||
 
 > [!NOTE]
 > リソース グループの設定はリソース グループの場所を指定するものであり、DNS ゾーンには影響しません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。

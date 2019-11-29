@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 10/17/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 1f02cf3abaae7d67ba3d204dc9419d9fbfa4a86d
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 91a71f914cff25dcdf4a85f3baafcfd9bc96b104
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597093"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218872"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
