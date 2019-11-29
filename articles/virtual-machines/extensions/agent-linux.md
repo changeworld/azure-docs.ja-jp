@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM エージェントの概要 | Microsoft Docs
+title: Azure Linux VM エージェントの概要
 description: Azure ファブリック コントローラーと仮想マシンとの相互動作を管理するために、Linux エージェント (waagent) をインストールして構成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8bc28c7454296f32dda09894ad3dca2f4fae99b
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 5f22fbd77069488e7aaf490f93f42cde747444a8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169165"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073862"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Azure Linux エージェントの理解と使用
 

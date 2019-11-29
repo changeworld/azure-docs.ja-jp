@@ -1,19 +1,18 @@
 ---
 title: Azure IoT Hub メッセージ ルーティングでのクエリ | Microsoft Docs
-description: 開発者ガイド - Azure IoT Hub でのメッセージ ルーティングのクエリ構文。
+description: メッセージに高度なクエリを適用して重要なデータを取得するために使用できる IoT Hub メッセージ ルーティング クエリ言語について説明します。
 author: ash2017
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 7f6439d79e5d46621b92b1c24ba5caf87889f443
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 859b15954f64f8b481f6b86c04fc28b542599f02
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877072"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890496"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
@@ -51,7 +50,7 @@ IoT ハブでは、各種プロトコルにおける相互運用性を確保す�
 
 システム プロパティは、メッセージのコンテンツとソースを特定するのに役立ちます。 
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | contentType | string | ユーザーはメッセージのコンテンツの種類を指定します。 メッセージ本文に基づいてクエリを実行するには、この値を application/json に設定する必要があります。 |
 | contentEncoding | string | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |

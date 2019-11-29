@@ -1,7 +1,6 @@
 ---
-title: Azure Load Balancer の IPv6 の概要
-titlesuffix: Azure Load Balancer
-description: Azure Load Balancer と負荷分散された VM に対する IPv6 サポートについて説明します。
+title: IPv6 の概要 - Azure Load Balancer
+description: このラーニング パスでは、Azure Load Balancer と負荷分散された VM に対する IPv6 のサポートを開始します。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b4c1fcd6a719f341dcebfd9f4efc4423241ca3dd
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 07dd3ee507f31099e32f18143d2beedf76e83c36
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147339"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077020"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 

@@ -1,5 +1,5 @@
 ---
-title: 増分スナップショットを使用した非管理 Azure Linux VM ディスクのバックアップと復元 | Microsoft Docs
+title: 増分スナップショットを使用した非管理 Azure Linux VM ディスクのバックアップと復元
 description: 増分スナップショットを使用して Azure Linux 仮想マシン ディスクのバックアップと復元を行うカスタム ソリューションを作成します。
 services: virtual-machines-linux
 documentationcenter: na
@@ -14,11 +14,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: aungoo
 ms.subservice: disks
-ms.openlocfilehash: 569c65af1b52ed4b6a792cac7f3fcd94b9338448
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 67e17aba2f2068ebcff50e37489d4528fb52d89a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083116"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036085"
 ---
+# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>増分スナップショットを使用した Azure 非管理 VM ディスクのバックアップ
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

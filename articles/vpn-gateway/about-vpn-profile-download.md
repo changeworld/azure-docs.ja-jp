@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4e3276e6cde254daf2299f33d8b5ed9f54985327
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 340ff6d9b112f4ff04950499b2708d8882fa6120
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511768"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960626"
 ---
 # <a name="about-p2s-vpn-client-profiles"></a>P2S VPN クライアント プロファイルについて
 
@@ -34,7 +34,7 @@ zip ファイルを解凍します。 このファイルには、次のフォル
 
 * AzureVPN
 * ジェネリック
-* OpenVPN
+* OpenVPN (ゲートウェイで OpenVPN および Azure AD の認証設定を有効にした場合。 「[テナントの作成](openvpn-azure-ad-tenant.md)」を参照してください)。
 
 ## <a name="3-retrieve-information"></a>手順 3.情報を取得する
 

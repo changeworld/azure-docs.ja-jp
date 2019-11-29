@@ -1,7 +1,7 @@
 ---
 title: OData 論理演算子のリファレンス
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search のクエリでの OData 論理演算子 (and、or、not)。
+description: Azure Cognitive Search のクエリで OData 論理演算子 AND、OR、および NOT を使用する構文およびリファレンス ドキュメント。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 4e016047d66e49f17c08d4b92a1c865f4b63e39b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2d3952f7d2adc26892cbebcd962f2ea25b86de7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793317"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113189"
 ---
 # <a name="odata-logical-operators-in-azure-cognitive-search---and-or-not"></a>Azure Cognitive Search での OData 論理演算子 - `and`、`or`、`not`
 

@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell での SQL Server 仮想マシンの作成 (クラシック) | Microsoft Docs
+title: クラシック SQL Server VM の作成 (PowerShell)
 description: SQL Server 仮想マシン ギャラリー のイメージを使用して Azure VM を作成するための手順と PowerShell スクリプトを提供します。 このトピックでは、クラシック デプロイメント モードを使用します。
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,12 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 08/07/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a4c7c29736cdd80ef7ebe413a377aba630d61858
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 8757b634b76867a2d5ccce3dcfdc9d66ef25c25e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101866"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032732"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (クラシック)
 

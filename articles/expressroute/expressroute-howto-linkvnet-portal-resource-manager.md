@@ -1,5 +1,5 @@
 ---
-title: 仮想ネットワークを回線にリンクする - ExpressRoute:Azure portal | Microsoft Docs
+title: ExpressRoute:VNet を回線にリンクする:Azure ポータル
 description: Azure ExpressRoute 回線に VNet を接続する 手順を説明します。
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088909"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022189"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ ms.locfileid: "71088909"
    [![ExpressRoute 回線のスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "回線の表示")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
 2. ExpressRoute 回線に仮想ネットワーク ゲートウェイをリンクする接続のプロビジョニングを開始できるようになりました。 **[接続]**  >  **[追加]** をクリックして **[接続の追加]** ページを開き、値を構成します。
 
-   [![接続の追加のスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "接続の追加のスクリーンショット")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
+   [![接続追加のスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "接続追加のスクリーンショット")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. 接続が正常に構成されると、接続オブジェクトにより、接続の情報が表示されます。
 
    ![接続オブジェクトのスクリーンショット](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)

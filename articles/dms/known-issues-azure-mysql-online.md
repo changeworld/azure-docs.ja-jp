@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/06/2019
-ms.openlocfilehash: fc5565ab9e3be21b96ce5aa5a938cf22ec3caeb0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 11/08/2019
+ms.openlocfilehash: 39c1928f1d38276418b2e1a3e766c4b9d8a0d8d2
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848482"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902791"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Azure DB for MySQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -83,7 +83,7 @@ MySQL から Azure Database for MySQL へのオンライン移行に関する既
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **対処法**: 32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。 
+    **対処法**: 32 KB を超える LOB 列がある場合は、[Ask Azure Database Migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) でエンジニアリング チームに相談してください。
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>AWS RDS MySQL からオンラインで移行するときの制限事項
 
@@ -112,7 +112,7 @@ AWS RDS MySQL から Azure Database for MySQL へのオンライン移行を実�
 
 - **エラー:** ターゲット データベース {database} が空です。 スキーマを移行してください。
 
-  **制限事項**:このエラーは、ターゲットの Azure Database for MySQL データベースに必要なスキーマがない場合に発生します。 データをターゲットに移行できるようにするには、スキーマの移行が必要です。
+  **制限事項**:このエラーは、ターゲットとなる Azure Database for MySQL データベースに必要なスキーマがない場合に発生します。 データをターゲットに移行できるようにするには、スキーマの移行が必要です。
 
   **対処法**: ソース データベースからターゲット データベースに[スキーマを移行](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#migrate-the-sample-schema)してください。
 
@@ -130,4 +130,10 @@ AWS RDS MySQL から Azure Database for MySQL へのオンライン移行を実�
     CREATE INDEX partial_name ON customer (name(10));
     ```
 
-- DMS では、1 回の移行アクティビティで移行できるデータベースは最大で 4 個です。
+- Azure Database Migration Service では、1 回の移行アクティビティで移行できるデータベースは最大で 4 個です。
+
+- **エラー:** 行サイズが大きすぎます (> 8126)。 一部の列をテキストまたは BLOB に変更すると役立つ場合があります。 現在の行形式では、0 バイトの BLOB プレフィックスがインラインで格納されます。
+
+  **制限事項**:このエラーは、InnoDB ストレージ エンジンを使用して Azure Database for MySQL に移行しているときに、テーブルの行サイズが大きすぎる (> 8126 バイト) 場合に発生します。
+
+  **対処法**: 行のサイズが 8126 バイトを超えるテーブルのスキーマを更新します。 データが切り捨てられるため、厳格モードを変更することはお勧めしません。 page_size の変更はサポートされていません。

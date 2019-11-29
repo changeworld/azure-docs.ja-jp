@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: e0e649045e3efe488804fd37c030fe01991ad232
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 01d8560ee2752f21eb52c00f4c337d1dca59b8fb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803620"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082693"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -87,10 +87,10 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 ## <a name="folder-structure"></a>フォルダー構造
 
-Python 関数プロジェクトのフォルダー構造は、次の例のようになります。
+Python 関数プロジェクトの推奨フォルダー構造は、次の例のようになります。
 
 ```
- FunctionApp
+ __app__
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
@@ -103,23 +103,31 @@ Python 関数プロジェクトのフォルダー構造は、次の例のよう�
  | | - mySecondHelperFunction.py
  | - host.json
  | - requirements.txt
+ tests
 ```
+メイン プロジェクト フォルダー (\_\_app\_\_) には、次のファイルを含めることができます。
 
-関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイルとバインディング構成ファイル (function.json) があります。 
+* *local.settings.json*:ローカルで実行するときに、アプリの設定と接続文字列を格納するために使用されます。 このファイルは Azure に公開されません。 詳細については、「[local.settings.file](functions-run-local.md#local-settings-file)」に関するページを参照してください。
+* *requirements.txt*:Azure に公開するときにシステムによってインストールされるパッケージの一覧が含まれます。
+* *host.json*:関数アプリ内のすべての関数に影響するグローバル構成オプションが含まれます。 このファイルは Azure に公開されます。 ローカルで実行する場合は、すべてのオプションがサポートされるわけではありません。 詳細については、「[host.json](functions-host-json.md)」に関するページを参照してください。
+* *funcignore*:(省略可能) Azure に発行しないファイルを宣言します。
+* *gitignore*:(省略可能) git リポジトリから除外されるファイル (local.settings.json など) を宣言します。
 
-共有コードは、別のフォルダーに保存する必要があります。 SharedCode フォルダー内のモジュールを参照するには、次の構文を使用します。
+各関数には、独自のコード ファイルとバインディング構成ファイル (function.json) があります。 
 
-```
+共有コードは、\_\_app\_\_ 内の別のフォルダーに保存する必要があります。 SharedCode フォルダー内のモジュールを参照するには、次の構文を使用します。
+
+```python
 from __app__.SharedCode import myFirstHelperFunction
 ```
 
 関数に対してローカルになるモジュールを参照するには、次のような相対インポート構文を使用できます。
 
-```
+```python
 from . import example
 ```
 
-関数プロジェクトを Azure 内のご利用の関数アプリにデプロイする場合は、フォルダー自体ではなく、パッケージに *FunctionApp* フォルダーの内容全体を含める必要があります。
+Azure の関数アプリにプロジェクトをデプロイする場合は、*FunctionApp* フォルダーの内容全体をパッケージに含める必要がありますが、フォルダー自体は含めないでください。 テストは、プロジェクト フォルダーとは別のフォルダー (この例では `tests`) に保存することをお勧めします。 これにより、アプリでテスト コードをデプロイすることを防ぐことができます。 詳細については、「[単体テスト](#unit-testing)」を参照してください。
 
 ## <a name="triggers-and-inputs"></a>トリガーと入力
 
@@ -378,11 +386,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 ローカル開発の場合、アプリケーション設定は [local.settings.json ファイルに保持されます](functions-run-local.md#local-settings-file)。  
 
-## <a name="python-version-and-package-management"></a>Python のバージョンとパッケージの管理
+## <a name="python-version"></a>Python バージョン 
 
-現在、Azure Functions では、Python 3.6.x (公式な CPython 配布) のみがサポートされています。
+現時点では、Azure Functions は Python 3.6.x と 3.7.x (公式の CPython ディストリビューション) の両方をサポートしています。 ローカルで実行する場合、ランタイムは使用可能な Python バージョンを使用します。 Azure で関数アプリを作成するときに特定の Python バージョンを要求するには、[`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) コマンドの `--runtime-version` オプションを使用します。  
 
-Azure Functions Core Tools または Visual Studio Code を使用してローカルで開発を行う場合は、必要なパッケージの名前とバージョンを `requirements.txt` ファイルに追加し、`pip` を使用してそれらをインストールしてください。
+## <a name="package-management"></a>パッケージの管理
+
+Azure Functions Core Tools または Visual Studio Code を使用してローカルで開発を行う場合は、必要なパッケージの名前とバージョンを `requirements.txt` ファイルに追加し、`pip` を使用してそれらをインストールしてください。 
 
 たとえば、次の要件のファイルと pip コマンドを使用すれば、PyPI から `requests` パッケージをインストールすることができます。
 
@@ -396,35 +406,67 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Azure への発行
 
-発行の準備ができたら、依存関係がすべて、プロジェクト ディレクトリのルートにある *requirements.txt* ファイル内にリストされていることを確認します。 Azure Functions では、これらの依存関係を[リモート ビルド](functions-deployment-technologies.md#remote-build)できます。
+発行する準備ができたら、一般公開されているすべての依存関係が、プロジェクト ディレクトリのルートにある requirements.txt ファイルに一覧表示されていることを確認します。 
 
-発行から除外されたプロジェクト ファイルとフォルダー (仮想環境フォルダーなど) は、.funcignore ファイルに一覧表示されます。 
+発行から除外されたプロジェクト ファイルとフォルダー (仮想環境フォルダーなど) は、.funcignore ファイルに一覧表示されます。
 
-既定では、[Azure Functions Core Tools](functions-run-local.md#v2) と [VS Code 用の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)の両方で、リモート ビルドが実行されます。 たとえば、次のコマンドを使用します。
+Python プロジェクトを Azure に発行するために、次の 3 つのビルド アクションがサポートされています。
+
++ リモート ビルド:依存関係は、requirements.txt ファイルの内容に基づいてリモートで取得されます。 [リモート ビルド](functions-deployment-technologies.md#remote-build) は推奨されるビルド方法です。 リモートは、Azure ツールの既定のビルド オプションでもあります。 
++ ローカル ビルド:依存関係は、requirements.txt ファイルの内容に基づいてローカルで取得されます。 
++ カスタムの依存関係:プロジェクトがツールで公開されていないパッケージを使用しています。 (Docker が必要です。)
+
+継続的デリバリー (CD) システムを使って依存関係のビルドと発行を行うには、[Azure パイプラインを使用](functions-how-to-azure-devops.md)します。
+
+### <a name="remote-build"></a>リモート ビルド
+
+次の [func azure functionapp publish](functions-run-local.md#publish) コマンドを使用して Python プロジェクトを Azure に発行すると、既定では Azure Functions Core Tools によってリモート ビルドが要求されます。 
 
 ```bash
-func azure functionapp publish <app name>
+func azure functionapp publish <APP_NAME>
 ```
 
-ご自身のアプリを Azure ではなくローカルでビルドするには、[Azure Functions Core Tools](functions-run-local.md#v2) (func) を使用することにより、ご利用のローカル マシン上に [Docker をインストール](https://docs.docker.com/install/)し、次のコマンドを実行して発行します。 `<app name>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。 
+`<APP_NAME>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。
 
-```bash
-func azure functionapp publish <app name> --build-native-deps
+[Visual Studio Code の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)も、既定ではリモート ビルドを要求します。 
+
+### <a name="local-build"></a>ローカル ビルド
+
+次の [func azure functionapp publish](functions-run-local.md#publish) コマンドを使用してローカル ビルドとして発行することで、リモート ビルドを実行しないようにすることができます。 
+
+```command
+func azure functionapp publish <APP_NAME> --build local
 ```
 
-Core Tools では、ご利用のローカル マシン上で [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) イメージをコンテナーとして実行するためにバックグラウンドで Docker が使用されます。 この環境を使用する場合、必要なモジュールがソース配布からビルドおよびインストールされてから、Azure への最終的なデプロイに備えてそれらがパッケージ化されます。
+`<APP_NAME>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。 
 
-継続的デリバリー (CD) システムを使って依存関係のビルドと発行を行うには、[Azure パイプラインを使用](functions-how-to-azure-devops.md)します。 
+`--build local` オプションを使用すると、プロジェクトの依存関係が requirements.txt ファイルから読み取られ、これらの依存パッケージがローカルにダウンロードされ、インストールされます。 プロジェクト ファイルと依存関係は、ローカル コンピューターから Azure にデプロイされます。 これにより、大きいサイズのデプロイ パッケージが Azure にアップロードされます。 何らかの理由で、コア ツールが requirements.txt ファイルの依存関係を取得できない場合は、発行に際して [custom dependencies]\(カスタムの依存関係\) オプションを使用する必要があります。 
+
+### <a name="custom-dependencies"></a>カスタムの依存関係
+
+ツールで公開されていないパッケージをプロジェクトに使用している場合は、それを \_\_app\_\_/.python_packages ディレクトリに配置することで、アプリで使用可能にすることができます。 発行する前に次のコマンドを実行して、依存関係をローカルでインストールします。
+
+```command
+pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
+```
+
+カスタムの依存関係を使用する場合は、既に依存関係がインストールされているため、`--no-build` 公開オプションを使用する必要があります。  
+
+```command
+func azure functionapp publish <APP_NAME> --no-build
+```
+
+`<APP_NAME>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。
 
 ## <a name="unit-testing"></a>単体テスト
 
-Python で記述された関数は、標準的なテスト フレームワークを使用して、他の Python コードのようにテストできます。 ほとんどのバインドでは、`azure.functions` パッケージから適切なクラスのインスタンスを作成することにより、モック入力オブジェクトを作成できます。 [`azure.functions`](https://pypi.org/project/azure-functions/) パッケージはすぐには使用できないため、上記の「[Python のバージョンとパッケージの管理](#python-version-and-package-management)」セクションの説明に従って、`requirements.txt` ファイルを介してインストールするようにしてください。
+Python で記述された関数は、標準的なテスト フレームワークを使用して、他の Python コードのようにテストできます。 ほとんどのバインドでは、`azure.functions` パッケージから適切なクラスのインスタンスを作成することにより、モック入力オブジェクトを作成できます。 [`azure.functions`](https://pypi.org/project/azure-functions/) パッケージはすぐには利用できないため、上記の「[パッケージ管理](#package-management)」セクションの説明に従って、`requirements.txt` ファイルを使用してインストールしてください。 
 
 たとえば、次に示すのは、HTTP によってトリガーされる関数のモック テストです。
 
 ```json
 {
-  "scriptFile": "httpfunc.py",
+  "scriptFile": "__init__.py",
   "entryPoint": "my_function",
   "bindings": [
     {
@@ -447,7 +489,7 @@ Python で記述された関数は、標準的なテスト フレームワーク
 ```
 
 ```python
-# myapp/httpfunc.py
+# __app__/HttpTrigger/__init__.py
 import azure.functions as func
 import logging
 
@@ -473,12 +515,11 @@ def my_function(req: func.HttpRequest) -> func.HttpResponse:
 ```
 
 ```python
-# myapp/test_httpfunc.py
+# tests/test_httptrigger.py
 import unittest
 
 import azure.functions as func
-from httpfunc import my_function
-
+from __app__.HttpTrigger import my_function
 
 class TestFunction(unittest.TestCase):
     def test_my_function(self):
@@ -501,22 +542,36 @@ class TestFunction(unittest.TestCase):
 
 キューによってトリガーされる関数の別の例を次に示します。
 
-```python
-# myapp/__init__.py
-import azure.functions as func
+```json
+{
+  "scriptFile": "__init__.py",
+  "entryPoint": "my_function",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "python-queue-items",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
+```
 
+```python
+# __app__/QueueTrigger/__init__.py
+import azure.functions as func
 
 def my_function(msg: func.QueueMessage) -> str:
     return f'msg body: {msg.get_body().decode()}'
 ```
 
 ```python
-# myapp/test_func.py
+# tests/test_queuetrigger.py
 import unittest
 
 import azure.functions as func
-from . import my_function
-
+from __app__.QueueTrigger import my_function
 
 class TestFunction(unittest.TestCase):
     def test_my_function(self):
@@ -554,6 +609,8 @@ from os import listdir
    fp.write(b'Hello world!')              
    filesDirListInTemp = listdir(tempFilePath)     
 ```   
+
+テストは、プロジェクト フォルダーとは別のフォルダーに保存することをお勧めします。 これにより、アプリでテスト コードをデプロイすることを防ぐことができます。 
 
 ## <a name="known-issues-and-faq"></a>既知の問題とよくあるご質問
 

@@ -4,15 +4,15 @@ description: Azure Analysis Services の表形式 1200 以上のデータ モデ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572958"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120021"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -35,7 +35,7 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 <a name="tab1400a">1</a> - 1400 以上の表形式モデルのみ。   
 <a name="azsqlmanaged">2</a> - Azure SQL Database Managed Instance がサポートされています。 マネージド インスタンスはプライベート IP アドレスを使用して Azure VNet 内で実行されるため、インスタンスでパブリックエンド ポイントを有効にする必要があります。 有効になっていない場合は、オンプレミス データ ゲートウェイが必要です。    
 <a name="databricks">3</a> - Spark コネクタを使用する Azure Databricks は現在サポートされていません。   
-<a name="gen2">4</a> - ADLS Gen2 は現在サポートされていません。
+<a name="gen2">4</a> - ADLS Gen2 コネクタは現在サポートされていませんが、ADLS Gen2 データ ソースでは Blob Storage コネクタを使用できます。
 
 
 **プロバイダー**   
@@ -43,14 +43,14 @@ Azure データ ソースに接続するメモリ内モデルおよび DirectQue
 
 ## <a name="other-data-sources"></a>他のデータ ソース
 
-Azure AS サーバーからオンプレミスのデータ ソースに接続するには、オンプレミスのゲートウェイが必要です。 ゲートウェイを使うときは、64 ビットのプロバイダーが必要です。
+Azure Analysis Services サーバーからオンプレミスのデータ ソースに接続するには、オンプレミスのゲートウェイが必要です。 ゲートウェイを使うときは、64 ビットのプロバイダーが必要です。
 
 ### <a name="in-memory-and-directquery"></a>メモリ内と DirectQuery
 
 |データ ソース | メモリ内のプロバイダー | DirectQuery プロバイダー |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework SQL Server 用データ プロバイダー | SQL Server 用の .NET Framework データ プロバイダー |
-| SQL Server Data Warehouse |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework SQL Server 用データ プロバイダー | SQL Server 用の .NET Framework データ プロバイダー |
+| SQL Server |Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (推奨)、SQL Server Native Client 11.0、.NET Framework Data Provider for SQL Server | SQL Server 用の .NET Framework データ プロバイダー |
+| SQL Server Data Warehouse |Microsoft OLE DB Driver for SQL Server MSOLEDBSQL (推奨)、SQL Server Native Client 11.0、.NET Framework Data Provider for SQL Server | SQL Server 用の .NET Framework データ プロバイダー |
 | Oracle | OLE DB Provider for Oracle、Oracle Data Provider for .NET |Oracle Data Provider for .NET |
 | Teradata |OLE DB Provider for Teradata、Teradata Data Provider for .NET |Teradata Data Provider for .NET |
 | | | |

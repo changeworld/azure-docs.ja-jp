@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry の geo レプリケーション
-description: geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。
+description: geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。これにより、レジストリからマルチマスター リージョン レプリカを持つ複数のリージョンにサービスを提供できるようになります。
 services: container-registry
 author: stevelas
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: cddd55d3dfc2609b7a32a276e106e152f0868b32
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208003"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931651"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -121,7 +121,7 @@ geo レプリケーションは、Azure Container Registry の [Premium SKU](con
  
 geo レプリカ レジストリにイメージをプッシュする Docker クライアントでは、イメージ層とそのマニフェストの一部が 1 つのレプリカ リージョンにプッシュされないことがあります。 これは、Azure Traffic Manager ではネットワークで一番近いレプリカ レジストリに要求がルーティングされることが原因で発生することがあります。 レジストリに*近くの*レプリケーション リージョンが 2 つある場合、イメージ層とマニフェストはその 2 つのサイトに分配されることがあり、マニフェストの有効性が検証されると、プッシュ操作に失敗します。 この問題は、レジストリの DNS 名が一部の Linux ホストで解決される方法に起因して発生します。 クライアント側 DNS キャッシュが提供される Windows 上ではこの問題は起こりません。
  
-この問題が発生する場合、Linux ホスト上で、`dnsmasq` など、クライアント側 DNS キャッシュを適用することが 1 つの解決策です。 これでレジストリ名の解決に一貫性が与えられます。 Azure で Linux VM を使用してレジストリにプッシュしている場合、「[Azure での Linux 仮想マシンの DNS 名前解決のオプション](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/azure-dns)」を参照してください。
+この問題が発生する場合、Linux ホスト上で、`dnsmasq` など、クライアント側 DNS キャッシュを適用することが 1 つの解決策です。 これでレジストリ名の解決に一貫性が与えられます。 Azure で Linux VM を使用してレジストリにプッシュしている場合、「[Azure での Linux 仮想マシンの DNS 名前解決のオプション](../virtual-machines/linux/azure-dns.md)」を参照してください。
 
 イメージをプッシュするとき、DNS 解決を最も近くのレプリカに求めることで最適化するには、プッシュ操作のソースと同じ Azure リージョンか、Azure 外での作業となる場合、最も近くのリージョンで geo レプリカ レジストリを構成します。
 

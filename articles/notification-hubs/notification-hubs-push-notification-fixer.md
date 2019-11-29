@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: c9754c1d7fee5af13de6176dbf8a1ca6e57a71eb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213160"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076855"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Azure Notification Hubs での欠落した通知の診断
 
@@ -33,7 +33,7 @@ Azure Notification Hubs に関してよく寄せられる質問の 1 つに、�
 
 一般的な送信通知フローでは、メッセージは*アプリケーション バックエンド*から Notification Hubs に送信されます。 Notification Hubs は、すべての登録を処理します。 この処理では、構成済みのタグとタグ式を考慮してターゲットが決定されます。 ターゲットは、プッシュ通知を受け取る必要がある登録です。 これらの登録は、サポートされている次のプラットフォームのいずれかにわたる可能性があります: Android、Baidu (中国の Android デバイス)、Fire OS (Amazon) iOS、Windows、Windows Phone。
 
-ターゲットが確立されると、Notification Hubs は、デバイス プラットフォームの*プッシュ通知サービス*に通知をプッシュします。 例としては、Apple の Apple Push Notification Service (APNs) や、Google の Firebase Cloud Messaging (FCM) があります。 Notification Hubs のプッシュ通知は、複数の登録バッチに分割されます。 Azure portal の **[Configure Notification Hub]\(通知ハブを構成する\)** で設定された資格情報に基づいて、それぞれのプッシュ通知サービスを認証します。 その後、プッシュ通知サービスが各*クライアント デバイス*に通知を転送します。
+ターゲットが確立されると、Notification Hubs は、デバイス プラットフォームの*プッシュ通知サービス*に通知をプッシュします。 例としては、iOS および macOS の Apple Push Notification Service (APNs) や、Android デバイスの Firebase Cloud Messaging (FCM) があります。 Notification Hubs のプッシュ通知は、複数の登録バッチに分割されます。 Azure portal の **[Configure Notification Hub]\(通知ハブを構成する\)** で設定された資格情報に基づいて、それぞれのプッシュ通知サービスを認証します。 その後、プッシュ通知サービスが各*クライアント デバイス*に通知を転送します。
 
 通知の配信の最終段階は、プラットフォーム プッシュ通知サービスとデバイスの間です。 通知の配信は、プッシュ通知プロセスの 4 つ (クライアント、アプリケーション バックエンド、Notification Hubs、プラットフォームのプッシュ通知サービス) のいずれの段階でも、エラーとなる可能性があります。 Notification Hubs のアーキテクチャの詳細については、[Notification Hubs の概要]に関する記事をご覧ください。
 

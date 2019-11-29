@@ -1,24 +1,18 @@
 ---
 title: Log Analytics ゲートウェイを使ってコンピューターを接続する | Microsoft Docs
 description: デバイスと Operations Manager で監視されたコンピューターがインターネットにアクセスできないときに、Log Analytics ゲートウェイを使ってそれらを接続して Azure Automation および Log Analytics サービスにデータを送信します。
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/12/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1d735a3740b473806835f2e80f40cea02b48387e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 10/30/2019
+ms.openlocfilehash: 7574f5c17c1b4598336b8db3108946164dc203f2
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955109"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847276"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
 
@@ -28,18 +22,18 @@ ms.locfileid: "68955109"
 
 この記事では、直接接続されたコンピューターまたは Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに、Azure Monitor ゲートウェイを使用して Azure Automation および Log Analytics との通信を構成する方法について説明します。 
 
-Log Analytics ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシです。 このゲートウェイから、インターネットに直接接続できないコンピューターに代わって Azure Monitor の Azure Automation および Log Analytics ワークスペースにデータが送信されます。 このような状況では、エージェントからのデータはキャッシュされず、通信が復元されるまで、エージェントでデータのキャッシュが処理されます。
+Log Analytics ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシです。 このゲートウェイから、インターネットに直接接続できないコンピューターに代わって Azure Monitor の Azure Automation および Log Analytics ワークスペースにデータが送信されます。 
 
 Log Analytics ゲートウェイでは、以下をサポートしています。
 
-* Azure Automation Hybrid Runbook Worker を使用して構成されている、背後にある 4 つまでの同じ Log Analytics ワークスペースのエージェントのレポート。  
+* Log Analytics の背後にある各エージェントに対して構成されている同じ Log Analytics ワークスペースにレポートします。これは、Azure Automation Hybrid Runbook Worker を使用して構成されています。  
 * Microsoft Monitoring Agent が Azure Monitor 内の Log Analytics ワークスペースに直接接続されている Windows コンピューター。
 * Log Analytics エージェント for Linux が Azure Monitor 内の Log Analytics ワークスペースに直接接続されている Linux コンピューター。  
 * System Center Operations Manager 2012 SP1 with UR7、Operations Manager 2012 R2 with UR3、Operations Manager 2016 以降の管理グループは Log Analytics に統合されました。  
 
 一部の IT セキュリティ ポリシーでは、ネットワーク コンピューターのインターネット接続が許可されません。 このような未接続のコンピューターには、販売時点管理 (POS) デバイスや IT サービスをサポートするサーバーなどがあります。 これらのデバイスを Azure Automation または Log Analytics ワークスペースに接続して管理および監視できるようにするには、Log Analytics ゲートウェイと直接通信するようにデバイスを構成します。 Log Analytics ゲートウェイでは、それらの代わりに構成情報を受信してデータを転送できます。 これに対して、コンピューターに Log Analytics ワークスペースと直接接続している Log Analytics エージェントを構成した場合には、コンピューターが Log Analytics ゲートウェイと通信します。  
 
-Log Analytics ゲートウェイはエージェントからのデータをサービスに直接転送します。 転送されるデータを分析することはありません。
+Log Analytics ゲートウェイはエージェントからのデータをサービスに直接転送します。 転送中のデータは分析されず、ゲートウェイはサービスとの接続が失われてもデータをキャッシュしません。 ゲートウェイがサービスと通信できなくなったとき、エージェントは引き続き実行され、監視対象コンピューターのディスクにある収集したデータのキューを実行します。 接続が回復したとき、エージェントは収集したキャッシュ データを Azure Monitor に送信します。
 
 Log Analytics と Operations Manager 管理グループが統合している場合には、管理サーバーが Log Analytics ゲートウェイに接続して構成情報を受信し、収集されたデータを有効にしているソリューションに応じて送信するという構成が可能です。  Operations Manager エージェントは、一部のデータを管理サーバーに送信します。 たとえば、Operations Manager アラート、構成評価データ、インスタンス スペース データ、および容量データをエージェントが送信できます。 その他の大容量データ (インターネット インフォメーション サービス (IIS) のログ、パフォーマンス データ、セキュリティ イベントなど) は Log Analytics ゲートウェイに直接送信されます。 
 
@@ -173,7 +167,7 @@ or
 サイレント モードでゲートウェイをインストールし、特定のプロキシ アドレスとポート番号で構成するには、次のように入力します。
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 LicenseAccepted=1 
 ```
 
 /qn コマンド ライン オプションを使用するとセットアップが非表示になり、/qb ではサイレント インストール中にセットアップが表示されます。  
@@ -181,7 +175,7 @@ Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200”
 プロキシで認証する資格情報を指定する必要がある場合は、次のように入力します。
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 HASAUTH=1 USERNAME="<username>" PASSWORD="<password>" LicenseAccepted=1 
 ```
 
 インストール後、次の PowerShell コマンドレットを使用して、設定が受け入れられたことを確認できます (ユーザー名とパスワードを除く)。
@@ -300,50 +294,11 @@ Log Analytics ゲートウェイ サーバーを使用するように特定の�
 
 ### <a name="configure-for-automation-hybrid-runbook-workers"></a>Automation Hybrid Runbook Worker 用に構成する
 
-環境に Automation Hybrid Runbook Worker がある場合は、次の手順で、それらをサポートするように OMS ゲートウェイを構成するための手動で一時的な回避策を設定します。
+環境に Automation Hybrid Runbook Worker がある場合は、これらの手順に従って、ワーカーをサポートするようにゲートウェイを構成します。
 
-このセクションの手順を実行するには、Automation アカウントが存在する Azure リージョンがわかっている必要があります。 場所を調べるには、以下の手順を実行します。
+各地域の URL を確認するには、Azure Automation ドキュメントの[ネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関するセクションを参照してください。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
-1. Azure Automation サービスを選びます。
-1. 適切な Azure Automation アカウントを選びます。
-1. **[場所]** でリージョンを確認します。
-
-   ![Azure portal 内の Automation アカウントの場所のスクリーンショット](./media/gateway/location.png)
-
-次の表を使って、各場所の URL を確認します。
-
-**ジョブ実行時データ サービスの URL**
-
-| **Location** | **URL** |
-| --- | --- |
-| 米国中北部 |ncus-jobruntimedata-prod-su1.azure-automation.net |
-| 西ヨーロッパ |we-jobruntimedata-prod-su1.azure-automation.net |
-| 米国中南部 |scus-jobruntimedata-prod-su1.azure-automation.net |
-| 米国東部 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
-| カナダ中部 |cc-jobruntimedata-prod-su1.azure-automation.net |
-| 北ヨーロッパ |ne-jobruntimedata-prod-su1.azure-automation.net |
-| 東南アジア |sea-jobruntimedata-prod-su1.azure-automation.net |
-| インド中部 |cid-jobruntimedata-prod-su1.azure-automation.net |
-| 日本 |jpe-jobruntimedata-prod-su1.azure-automation.net |
-| オーストラリア |ase-jobruntimedata-prod-su1.azure-automation.net |
-
-**Agent のサービス URL**
-
-| **Location** | **URL** |
-| --- | --- |
-| 米国中北部 |ncus-agentservice-prod-1.azure-automation.net |
-| 西ヨーロッパ |we-agentservice-prod-1.azure-automation.net |
-| 米国中南部 |scus-agentservice-prod-1.azure-automation.net |
-| 米国東部 2 |eus2-agentservice-prod-1.azure-automation.net |
-| カナダ中部 |cc-agentservice-prod-1.azure-automation.net |
-| 北ヨーロッパ |ne-agentservice-prod-1.azure-automation.net |
-| 東南アジア |sea-agentservice-prod-1.azure-automation.net |
-| インド中部 |cid-agentservice-prod-1.azure-automation.net |
-| 日本 |jpe-agentservice-prod-1.azure-automation.net |
-| オーストラリア |ase-agentservice-prod-1.azure-automation.net |
-
-コンピューターが Hybrid Runbook Worker として自動的に登録される場合は、Update Management ソリューションを使用してパッチを管理します。 次の手順に従います。
+Update Management ソリューションが 1 つまたは複数の VM で有効化されている場合など、コンピューターが Hybrid Runbook Worker として自動的に登録されている場合は、次のステップに従います。
 
 1. Log Analytics ゲートウェイの許可ホスト一覧に、ジョブ ランタイム データ サービスの URL を追加します。 次に例を示します。`Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. 次の PowerShell コマンドレットを使って、Log Analytics ゲートウェイ サービスを再起動します。`Restart-Service OMSGatewayService`
@@ -369,7 +324,7 @@ Log Analytics ゲートウェイ サーバーを使用するように特定の�
 
 | **コマンドレット** | **パラメーター** | **説明** | **例** |
 | --- | --- | --- | --- |  
-| `Get-OMSGatewayConfig` |キー |サービスの構成を取得します |`Get-OMSGatewayConfig` |  
+| `Get-OMSGatewayConfig` |Key |サービスの構成を取得します |`Get-OMSGatewayConfig` |  
 | `Set-OMSGatewayConfig` |キー (必須) <br> 値 |サービスの構成を変更します |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |リレー (アップストリーム) プロキシのアドレスを取得します |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |Address<br> ユーザー名<br> パスワード |リレー (アップストリーム) プロキシのアドレス (および資格情報) を設定します |1.リレー プロキシと資格情報を設定します。<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2.認証を必要としないリレー プロキシを設定します。`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 手順 3.リレー プロキシ設定をクリアします。<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  

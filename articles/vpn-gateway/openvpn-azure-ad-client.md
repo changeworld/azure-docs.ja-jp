@@ -1,26 +1,34 @@
 ---
-title: VPN クライアントを P2S VPN 接続用に構成する:Azure AD 認証 | Microsoft Docs
+title: OpenVPN プロトコル P2S 接続用に VPN クライアントを構成する:Azure AD 認証 | Microsoft Docs
 description: P2S VPN を使用して VNet に接続する場合には、Azure AD 認証を使用できます
 services: vpn-gateway
-author: cherylmc
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.author: cherylmc
-ms.openlocfilehash: 704dcd6335766a6058de4e520b8dcbca0d304c9d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/07/2019
+ms.author: alzam
+ms.openlocfilehash: 714cabc204c9ec9a0c3bbc93be287957c91d1936
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721473"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932331"
 ---
-# <a name="configure-a-vpn-client-for-p2s-vpn-connections-azure-ad-authentication-preview"></a>VPN クライアントを P2S VPN 接続用に構成する:Azure AD 認証 (プレビュー)
+# <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>P2S OpenVPN プロトコル接続用に VPN クライアントを構成する:Azure AD 認証 (プレビュー)
 
 この記事では、VPN クライアントからポイント対サイト VPN と Azure Active Directory 認証を使用して仮想ネットワークに接続する際の構成について説明します。 Azure AD を使用して接続と認証を行うには、まず Azure AD テナントを構成する必要があります。 詳細については、「[Azure AD テナントの構成](openvpn-azure-ad-tenant.md)」を参照してください。
 
+> [!NOTE]
+> Azure AD 認証は、OpenVPN® プロトコル接続でのみサポートされています。
+>
+
 ## <a name="profile"></a>クライアント プロファイルの操作
 
-接続するには、VNet への接続を必要とするすべてのコンピューターで Azure VPN クライアントを[ダウンロード](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)したうえで、それぞれに VPN クライアント プロファイルを構成する必要があります。 1 つのコンピューターでクライアント プロファイルを作成した後、それをエクスポートして、別のコンピューターにインポートすることもできます。
+接続するには、VNet への接続を必要とするすべてのコンピューターで Azure VPN Client (プレビュー) をダウンロードしたうえで、それぞれに VPN クライアント プロファイルを構成する必要があります。 1 つのコンピューターでクライアント プロファイルを作成した後、それをエクスポートして、別のコンピューターにインポートすることもできます。
+
+### <a name="to-download-the-azure-vpn-client"></a>Azure VPN Client をダウンロードするには
+
+この[リンク](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)を使用して、Azure VPN Client (プレビュー) をダウンロードします。
 
 ### <a name="cert"></a>証明書ベースのクライアント プロファイルを作成するには
 

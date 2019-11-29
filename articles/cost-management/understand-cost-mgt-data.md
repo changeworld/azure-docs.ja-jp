@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/06/2019
+ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 681ccc768b1fa3d5a968847d11987fbd83898b59
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: bf3c2224361cd2890a0b8b4686506eac6858d9cb
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721360"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122992"
 ---
 # <a name="understand-cost-management-data"></a>Cost Management のデータを理解する
 
@@ -61,6 +61,7 @@ _<sup>**4**</sup>クレジットベースの前払い制サブスクリプショ
 | Category  | **プラン名** | **クォータ ID** | **プラン番号** |
 | --- | --- | --- | --- |
 | **Azure Germany** | [Azure Germany 従量課金制](https://azure.microsoft.com/offers/ms-azr-de-0003p) | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
+| **Azure Government** | Azure Government 従量課金制 | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **クラウド ソリューション プロバイダー (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **クラウド ソリューション プロバイダー (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **クラウド ソリューション プロバイダー (CSP)** | Azure Germany in CSP (Microsoft Cloud Germany 用)   | CSP_2015-05-01 | MS-AZR-DE-0145P |
@@ -126,79 +127,6 @@ Enterprise Agreement (EA) サブスクリプション – 請求月が 3 月 31 
 ### <a name="rerated-data"></a>データの再評価
 
 [Cost Management API](index.yml)、Power BI、Azure portal のどの方法でデータを取得する場合でも、請求書がクローズされるまでは、現在の請求期間の料金が再評価され、その結果変更される可能性があります。
-
-## <a name="cost-management-data-fields"></a>Cost Management のデータ フィールド
-
-使用状況の詳細ファイルと Cost Management API には、次のデータ フィールドがあります。 次の太字のフィールドについては、パートナーはコスト分析でフィルターとグループ化の機能を使用して、複数のフィールドでコストを分析できます。 太字のフィールドは、パートナーがサポートしている Microsoft 顧客契約にのみ適用されます。
-
-| **フィールド名** | **説明** |
-| --- | --- |
-| invoiceld | 特定の取引の請求書に表示される請求書 ID。 |
-| previousInvoiceID | 返金 (負のコスト) がある、元の請求書への参照。 返金がある場合にのみ設定されます。 |
-| billingAccountName | パートナーを表す課金アカウントの名前。 Microsoft 顧客契約にオンボードした顧客と、SaaS、Azure Marketplace、予約などのエンタイトルメント購入を行った CSP 顧客のすべてのコストを計上します。 |
-| billingAccountID | パートナーを表す課金アカウントの ID。 |
-| billingProfileID | Microsoft 顧客契約にオンボードした顧客と、SaaS、Azure Marketplace、予約などのエンタイトルメント購入を行った CSP 顧客の全請求書のコストを 1 つの請求通貨でグループ化するための請求プロファイルの ID。 |
-| billingProfileName | Microsoft 顧客契約にオンボードした顧客と、SaaS、Azure Marketplace、予約などのエンタイトルメント購入を行った CSP 顧客の全請求書のコストを 1 つの請求通貨でグループ化するための請求プロファイルの名前。 |
-| invoiceSectionName | 請求書で課金されているプロジェクトの名前。 パートナーによってオンボードされた Microsoft 顧客契約には適用されません。 |
-| invoiceSectionID | 請求書で課金されているプロジェクトの識別子。 パートナーによってオンボードされた Microsoft 顧客契約には適用されません。 |
-| **CustomerTenantID** | 顧客のサブスクリプションの Azure Active Directory テナントの識別子。 |
-| **CustomerName** | 顧客のサブスクリプションの Azure Active Directory テナントの名前。 |
-| **CustomerTenantDomainName** | 顧客のサブスクリプションの Azure Active Directory テナントのドメイン名。 |
-| **PartnerTenantID** | パートナーの Azure Active Directory テナントの識別子。 |
-| **PartnerName** | パートナーの Azure Active Directory テナントの名前。 |
-| **ResellerMPNID** | サブスクリプションに関連付けられているリセラーの MPNID。 |
-| costCenter | サブスクリプションに関連付けられているコスト センター。 |
-| billingPeriodStartDate | 請求書に示されている請求期間の開始日。 |
-| billingPeriodEndDate | 請求書に示されている請求期間の終了日。 |
-| servicePeriodStartDate | 料金についてサービス使用量の評価が行われた評価期間の開始日。 Azure サービスの料金は、評価期間に対して決定されます。 |
-| servicePeriodEndDate | 料金についてサービス使用量の評価が行われた期間の終了日。 Azure サービスの料金は、評価期間に基づいて決定されます。 |
-| date | Azure の消費データについては、評価された使用日が表示されます。 予約済みインスタンスについては、購入日が表示されます。 定期的な料金と、Marketplace やサポートなどの 1 回限りの料金については、購入日が表示されます。 |
-| productID | 消費または購入によって料金が発生した製品の識別子。 これは、パートナー センターに示されている、productID と SKuID の連結キーです。 |
-| product | 請求書に示されている、消費または購入によって料金が発生した製品の名前。 |
-| serviceFamily | 購入または課金された製品のサービス ファミリが表示されます。 たとえば、Storage や Compute など。 |
-| productOrderID | サブスクリプションが属している資産または Azure プラン名の識別子。 たとえば、Azure Plan など。 |
-| productOrderName | サブスクリプションが属している Azure プランの名前。 たとえば、Azure Plan など。 |
-| consumedService | 従来の EA 使用量の詳細で使用される消費済みサービス (レガシ分類)。 |
-| meterID | 測定された使用量の測定の ID。 |
-| meterName | 測定された使用量の測定の名前を識別します。 |
-| meterCategory | 使用量の最上位レベルのサービスを識別します。 |
-| meterSubCategory | 料金に影響する可能性のある Azure サービスの種類またはサブカテゴリを定義します。 |
-| meterRegion | データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。 |
-| サブスクリプション ID | Microsoft が生成する、Azure サブスクリプションの一意の識別子。 |
-| subscriptionName | Azure サブスクリプションの名前。 |
-| 期間 | プランの有効期間を表示します。 たとえば、予約インスタンスには、予約インスタンスの年間期間の 12 か月が表示されます。 1 回限りの購入または定期的な購入の場合、期間には、SaaS、Azure Marketplace、サポートについて 1 か月が表示されます。 Azure の消費には適用されません。 |
-| publisherType (firstParty、thirdPartyReseller、thirdPartyAgency) | 発行元をファースト パーティ、サード パーティ リセラー、またはサード パーティ機関として識別する発行元の種類。 |
-| partNumber | 未使用の予約インスタンスと Azure Marketplace サービスの部品番号。 |
-| publisherName | Microsoft またはサードパーティの発行元を含む、サービスの発行元の名前。 |
-| reservationId | 予約インスタンス購入の識別子。 |
-| reservationName | 予約インスタンスの名前。 |
-| reservationOrderId | 予約インスタンスの OrderID。 |
-| frequency | 予約インスタンスの支払い頻度。 |
-| resourceGroup | ライフサイクル リソース管理に使用される Azure リソース グループの名前。 |
-| instanceID (または) ResourceID | リソース インスタンスの識別子。 |
-| resourceLocation | リソースの場所の名前。 |
-| Location | リソースの正規化された場所。 |
-| effectivePrice | 価格設定通貨でのサービスの実効単価。 製品、サービス ファミリ、測定、オファーに対して一意です。 課金アカウントの価格シートの価格で使用されます。 階層化された価格または含まれている数量がある場合は、使用量のブレンド価格が表示されます。 |
-| Quantity | 購入または消費された測定量。 請求期間中に使用された測定の量。 |
-| unitOfMeasure | サービスが課金される単位を特定します。 たとえば、GB や時間数など。 |
-| pricingCurrency | 単価を定義する通貨。 |
-| billingCurrency | 請求コストを定義する通貨 |
-| chargeType | 購入や返金など、Azure Cost Management でコストが表す料金の種類を定義します。 |
-| costinBillingCurrency | 請求通貨での税引き前の ExtendedCost またはブレンド コスト。 |
-| costinPricingCurrency | 価格に関連する価格通貨での税引き前の ExtendedCost またはブレンド コスト。 |
-| **costinUSD** | 税引き前の、予測される ExtendedCost またはブレンド コスト (米国ドル)。 |
-| **paygCostInBillingCurrency** | 価格が小売価格の場合のコストを表示します。 従量課金制の料金を請求通貨で表示します。 RBAC スコープでのみ使用できます。 |
-| **paygCostInUSD** | 価格が小売価格の場合のコストを表示します。 従量課金制の料金を米国ドルで表示します。 RBAC スコープでのみ使用できます。 |
-| exchangeRate | 価格通貨から請求通貨への換算に使用される為替レート。 |
-| exchangeRateDate | 価格通貨から請求通貨への換算に使用される為替レートの日付。 |
-| isAzureCreditEligible | コストが Azure クレジットでの支払い対象かどうかを示します。 |
-| serviceInfo1 | これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです。 |
-| serviceInfo2 | これは、サービス固有の省略可能なメタデータをキャプチャする、以前から使用されているフィールドです。 |
-| additionalInfo | サービス固有のメタデータ。 たとえば、仮想マシンのイメージの種類です。 |
-| tags | ユーザーが測定に割り当てるタグです。 タグは、課金記録のグループ化に使用できます。 たとえば、タグを使用して、メーターを使用する部門ごとにコストを配分することができます。 |
-| **partnerEarnedCreditRate** | パートナー管理者リンク アクセスに基づいたパートナー獲得クレジット (PEC) がある場合に適用される割引率。 |
-| **partnerEarnedCreditApplied** | パートナー獲得クレジットが適用されているかどうかを示します。 |
-
 
 ## <a name="usage-data-update-frequency-varies"></a>使用状況データの更新頻度は一定ではない
 

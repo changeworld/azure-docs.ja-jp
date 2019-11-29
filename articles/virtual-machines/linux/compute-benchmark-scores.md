@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM のコンピューティング ベンチマーク スコア | Microsoft Docs
+title: Azure Linux VM のコンピューティング ベンチマーク スコア
 description: Linux を実行する Azure VM の CoreMark コンピューティング ベンチマーク スコアを比較します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: d91535c6f0daeac58a3005d94e19cbba3e781ebf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083851"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036691"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM のコンピューティング ベンチマーク スコア
 次の CoreMark ベンチマーク スコアは、Ubuntu を実行している、Azure の 高パフォーマンス VM ラインアップについてのコンピューティング パフォーマンスを示します。 コンピューティング ベンチマーク スコアは [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にも利用できます。

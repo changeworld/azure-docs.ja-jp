@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: ee8a711a867f8abdc831b0d1d9d0b504b1104955
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: a7e9e36f75d0b0638fadbf92e713a924e816807d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71310122"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012394"
 ---
-# <a name="creating-an-incremental-snapshot-preview-for-managed-disks"></a>マネージド ディスクの増分スナップショット (プレビュー) の作成
-
 増分スナップショット (プレビュー) は、マネージド ディスクの特定の時点のバックアップであり、取得時に、最後のスナップショット以降のすべての変更のみで構成されます。 増分スナップショットをダウンロードまたは使用しようとすると、完全な VHD が使用されます。 マネージド ディスク スナップショットに対するこの新しい機能により、必要に応じて個別のスナップショットごとにディスク全体を保存する必要がなくなるため、コスト効率が向上する可能性があります。 通常のスナップショットと同じように、増分スナップショットを使用して、完全なマネージド ディスクを作成したり、通常のスナップショットを作成したりできます。
 
 増分スナップショットと通常のスナップショットには、いくつかの違いがあります。 増分スナップショットでは、ディスクのストレージの種類に関係なく、常に Standard HDD ストレージが使用されますが、通常のスナップショットでは Premium SSD を使用できます。 VM のデプロイをスケールアップするために Premium Storage で通常のスナップショットを使用している場合は、[Shared Image Gallery](../articles/virtual-machines/linux/shared-image-galleries.md) の Standard Storage でカスタム イメージを使用することをお勧めします。 これは、より低コストでさらに大規模なスケールを実現するのに役立ちます。 さらに、増分スナップショットは、[ゾーン冗長ストレージ](../articles/storage/common/storage-redundancy-zrs.md) (ZRS) を使用すると、信頼性が向上する可能性があります。 選択したリージョンで ZRS が使用可能な場合、増分スナップショットは ZRS を自動的に使用します。 そのリージョンで ZRS が使用できない場合、スナップショットは既定で[ローカル冗長ストレージ](../articles/storage/common/storage-redundancy-lrs.md) (LRS) に設定されます。 この動作をオーバーライドして手動で選択することもできますが、これはお勧めしません。
@@ -27,7 +25,7 @@ ms.locfileid: "71310122"
 
 ## <a name="restrictions"></a>制限
 
-- 増分スナップショットは現在、米国中西部でのみ利用できます。
+- 増分スナップショットは現在、米国中西部と北ヨーロッパでのみ利用できます。
 - 増分スナップショットは、現時点ではディスクのサイズを変更した後に作成することはできません。
 - 増分スナップショットは、現時点ではサブスクリプション間で移動できません。
 - 現時点では、任意の時点で特定のスナップショット ファミリの最大 5 つのスナップショットの SAS URI のみを生成することができます。
@@ -45,7 +43,7 @@ Install-Module -Name Az -AllowClobber -Scope CurrentUser
 
 インストールが完了したら、`az login` を使用して PowerShell セッションにログインします。
 
-Azure PowerShell を利用して増分スナップショットを作成するには、構成を [New-AzSnapShotConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) と `-Incremental` パラメーターで設定し、`-Snapshot` パラメーターを介してそれを [New-AzSnapshot](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) に変数として渡します。
+Azure PowerShell を利用して増分スナップショットを作成するには、構成を [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) と `-Incremental` パラメーターで設定し、`-Snapshot` パラメーターを介してそれを [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) に変数として渡します。
 
 `<yourDiskNameHere>`、`<yourResourceGroupNameHere>`、および `<yourDesiredSnapShotNameHere>` を実際の値に置き換えて、次のスクリプトを使用して増分スナップショットを作成できます。
 

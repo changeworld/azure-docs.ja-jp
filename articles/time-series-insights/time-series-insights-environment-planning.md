@@ -1,23 +1,22 @@
 ---
-title: Azure Time Series Insights 環境の規模を計画する | Microsoft Docs
-description: この記事では、Azure Time Series Insights 環境を計画する場合に、ベスト プラクティスに従う方法について説明します。 取り上げる分野には、ストレージ容量、データ保有期間、イングレス容量、監視、および事業継続とディザスター リカバリー (BCDR) が含まれます。
+title: GA の環境を計画する - Azure Time Series Insights | Microsoft Docs
+description: GA 環境を計画する際のベスト プラクティスについて説明します。
 services: time-series-insights
 ms.service: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 659a6357736817f4a590b97e585230ec8c2b7dae
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2dd3b79e931464e83264433a923e9078b2f62525
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332913"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006957"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Azure Time Series Insights GA 環境の計画
 
@@ -76,16 +75,13 @@ Azure portal 内の環境の構成ページ上で、リテンション期間を�
 
 ## <a name="ingress-capacity"></a>イングレス容量
 
-Time Series Insights 環境を計画するときに注目すべき 2 つ目の分野は、*イングレス容量*です。 イングレス容量とは、分単位の割り当てから派生したものです。
+[!INCLUDE [Azure Time Series Insights GA limits](../../includes/time-series-insights-ga-limits.md)]
+
+### <a name="environment-planning"></a>環境の計画
+
+Time Series Insights 環境を計画する場合に注目すべき 2 つ目の分野は、イングレス容量です。 イングレス容量とは、分単位の割り当てから派生したものです。
 
 調整の観点から、パケット サイズが 32 KB のイングレス データ パケットは、それぞれ 1 KB のサイズの 32 個のイベントとして扱われます。 イベントの最大許容サイズは、32 KB です。 32 KB を超えるデータ パケットは切り捨てられます。
-
-次の表に、各 Time Series Insights SKU に対する単位ごとのイングレス容量をまとめます。
-
-|SKU  |1 か月あたりのイベント数  |1 か月あたりのイベント サイズ  |1 分あたりのイベント数  |1 分あたりのイベント サイズ  |
-|---------|---------|---------|---------|---------|
-|S1     |   30,000,000     |  30 GB     |  720    |  720 KB   |
-|S2     |   300,000,000    |   300 GB   | 7,200   | 7,200 KB  |
 
 1 つの環境で、S1 SKU または S2 SKU の容量を 10 ユニットまで増やすことができます。 S1 環境から S2 に移行することはできません。 S2 環境から S1 に移行することはできません。
 
@@ -95,7 +91,7 @@ Time Series Insights 環境を計画するときに注目すべき 2 つ目の�
 
 たとえば、単一の S1 SKU を用意して 1 分あたり 720 イベントのレートでデータをイングレスすると、データ レートのスパイクが 1440 イベント以下のレートで 1 時間未満であれば、環境内で顕著な待機時間は発生しません。 ただし、1 分あたり 1440 イベントを超える状態が 1 時間以上続いた場合、環境内では、視覚化されクエリに使用できるデータに待機時間が発生する傾向があります。
 
-プッシュすることが予想されるデータの量が事前にわからない場合があります。 この場合、Azure portal サブスクリプションで [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) と [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) のデータ テレメトリを確認できます。 テレメトリは、環境をプロビジョニングする方法を決定する際に役立ちます。 Azure portal にあるそれぞれのイベント ソースの **[メトリック]** ウィンドウを使用して、テレメトリを表示します。 イベント ソースのメトリックを理解すると、Time Series Insights 環境をより効果的に計画し、プロビジョニングできます。
+プッシュすることが予想されるデータの量が事前にわからない場合があります。 この場合、Azure portal サブスクリプションで [Azure IoT Hub](../iot-hub/iot-hub-metrics.md) と [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) のデータ テレメトリを確認できます。 テレメトリは、環境をプロビジョニングする方法を決定する際に役立ちます。 Azure portal にあるそれぞれのイベント ソースの **[メトリック]** ウィンドウを使用して、テレメトリを表示します。 イベント ソースのメトリックを理解すると、Time Series Insights 環境をより効果的に計画し、プロビジョニングできます。
 
 ### <a name="calculate-ingress-requirements"></a>イングレス要件の計算
 
@@ -114,7 +110,7 @@ Time Series Insights 環境を計画するときに注目すべき 2 つ目の�
 Time Series insights へイベントを送信する方法によって、プロビジョニングしている環境のサイズが確実にサポートされることが重要です。 (その逆として、Time Series Insights が読み取るイベント数と各イベントのサイズに対して、環境のサイズをマップできます。)また、データにクエリを実行する際に、必要に応じてスライスとフィルターに使用する属性を検討することも重要です。
 
 > [!TIP]
-> [イベントの送信](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events)に関するページで、JSON の整形のドキュメントを参照してください。
+> [イベントの送信](time-series-insights-send-events.md)に関するページで、JSON の整形のドキュメントを参照してください。
 
 ## <a name="ensure-that-you-have-reference-data"></a>参照データの確認
 
@@ -123,7 +119,7 @@ Time Series insights へイベントを送信する方法によって、プロ�
 > [!NOTE]
 > 参照データは、遡及的に結合されることはありません。 構成されてアップロードされた後は、現在および将来のイングレス データのみが対応付けられ、参照データセットに結合されます。 大量の履歴データを Time Series Insights に送信することを計画している場合、Time Series Insights 内で最初に参照データのアップロードや作成を行わないと、作業をやり直す必要が生じることがあります (ちなみに、楽しいことではありません)。  
 
-Time Series Insights での参照データの作成、アップロード、管理方法について詳しくは、[参照データセットのドキュメント](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set)をご覧ください。
+Time Series Insights での参照データの作成、アップロード、管理方法について詳しくは、[参照データセットのドキュメント](time-series-insights-add-reference-data-set.md)をご覧ください。
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: リモート監視ソリューションを (IntelliJ IDE 経由で) ローカルにデプロイする - Azure | Microsoft Docs
+title: リモート監視ソリューションをローカルにデプロイする - IntelliJ ID - Azure | Microsoft Docs
 description: この攻略ガイドでは、テストおよび開発のために IntelliJ を使用してリモート監視ソリューション アクセラレータをローカル コンピューターにデプロイする方法を示します。
 author: v-krghan
 manager: dominicbetts
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 779ee1e057d74b11c5e0ba58dc2fd32b803f1e0e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70743308"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888809"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - IntelliJ
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 IntelliJ でマイクロサービスを実行する方法を学習できます。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、IoT Hub、Azure Cosmos DB、Azure Stream Analytics、Azure Time Series Insights です。
+この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 IntelliJ でマイクロサービスを実行する方法を学習できます。 ローカルのマイクロサービス デプロイでは、次のクラウド サービスを使用します。IoT Hub、Azure Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights です。
 
 リモート監視ソリューション アクセラレータをローカル コンピューター上の Docker で実行する場合、[リモート監視ソリューション アクセラレータをローカルでデプロイする - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md) に関するページを参照してください。
 

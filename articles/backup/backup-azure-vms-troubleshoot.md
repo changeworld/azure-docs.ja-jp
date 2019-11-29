@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 78de85cede228f4b1c6ff01388fd7a08f78aa74f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0be9973aed1aaf5074c3b61d6249b95e8fd45a64
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747192"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090899"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -50,7 +50,7 @@ Azure 仮想マシンでのバックアップ エラーに関する一般的な�
 
 これは、バックアップ サービスがタイムアウト期間内にデータをコンテナーに転送するときの一時的なストレージ エラーまたはストレージ アカウント IOPS の不足のために発生することがあります。 これらの[ベスト プラクティス](backup-azure-vms-introduction.md#best-practices)を使用して VM バックアップを構成し、バックアップ操作を再試行します。
 
-## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState - VM がバックアップできる状態にありません
+## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState - VM はバックアップが可能な状態にありません
 
 エラー コード:UserErrorVmNotInDesirableState <br/>
 エラー メッセージ:VM はバックアップできる状態ではありません。<br/>
@@ -161,7 +161,7 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
   * /etc/azure/vmbackup.conf で **isanysnapshotfailed** の値が false に設定されていることを確認します。
   * Azure Site Recovery をバックアップ操作と競合しないように別の時間にスケジュールします。
 
-## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - VM リソースの不足のためにスナップショット操作に失敗しました。
+## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - VM リソースの不足のためにスナップショット操作に失敗しました
 
 エラー コード:ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
 エラー メッセージ:VM リソースの不足のためにスナップショット操作に失敗しました。

@@ -1,6 +1,6 @@
 ---
-title: Azure Time Series Insights プレビューのデータ ストレージおよびイングレス | Microsoft Docs
-description: Azure Time Series Insights プレビューのデータ ストレージおよびイングレスについて理解します。
+title: プレビューのデータ ストレージおよびイングレス - Azure Time Series Insights | Microsoft Docs
+description: Azure Time Series Insights プレビューのデータ ストレージおよびイングレスについて説明します。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d0cdd78aaa2b58743e16a2e7cfe213a9daed85ff
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 62ee248c06d2b26b935f72b3bb73cf708f949c72
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605893"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014704"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 

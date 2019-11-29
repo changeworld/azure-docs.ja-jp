@@ -1,5 +1,5 @@
 ---
-title: 高速ネットワークを使った Azure 仮想マシンの作成 | Microsoft Docs
+title: 高速ネットワークを使用する Azure VM を作成する - Azure PowerShell
 description: 高速ネットワークを使った Linux 仮想マシンの作成方法について説明します。
 services: virtual-network
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: f8f4f55f2c2aa4a0f9cce08e10c9f12f81a54dba
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678009"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083693"
 ---
-# <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Windows 仮想マシンの作成
+# <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>Azure PowerShell を使用して高速ネットワークを備えた Windows 仮想マシンを作成する
 
 このチュートリアルでは、高速ネットワークを使った Windows 仮想マシン (VM) の作成方法について説明します。 高速ネットワークを使って Linux VM を作成する場合は、「[高速ネットワークを使った Linux 仮想マシンの作成](create-vm-accelerated-networking-cli.md)」をご覧ください。 高速ネットワークによって、VM との間でシングル ルート I/O 仮想化 (SR-IOV) が可能になり、ネットワークのパフォーマンスが大幅に向上します。 この高パフォーマンスのパスによってデータパスからホストがバイパスされ、サポートされる VM タイプの最も要件の厳しいネットワーク ワークロードで使用した場合でも、待ち時間、ジッター、CPU 使用率が軽減されます。 次の図は、2 台の VM 間の通信を、高速ネットワークを使う場合と使わない場合とで比較したものです。
 

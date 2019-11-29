@@ -1,5 +1,5 @@
 ---
-title: デプロイされた Web サービスを使用するクライアントを作成する
+title: Web サービスとしてデプロイされるモデル用のクライアントを作成する
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning モデルでモデルがデプロイされたときに生成された Web サービスを使用する方法について説明します。 REST API を公開する Web サービス。 任意のプログラミング言語を使用して、この API 用のクライアントを作成します。
 services: machine-learning
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387ba970aed68a5f4e682f932a362d3b04b35b8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 608f343166b528cacf3b1479d993466f6df7cb7e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671467"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932155"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

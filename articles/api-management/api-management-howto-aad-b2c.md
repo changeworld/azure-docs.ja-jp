@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 4260f4640f488e67d6bb3101ff2cf7d269e2bf3e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 55a9cbcfdb9766c6adc6d10f975fa4d074ec3aaf
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073655"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74011668"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure API Management で Azure Active Directory B2C を使用して開発者アカウントを承認する方法
 
@@ -85,7 +85,17 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
     変更が保存されると、開発者は新しいアカウントを作成し、Azure Active Directory B2C を使用して開発者ポータルにサインインできるようになります。
 
-## <a name="sign-up-for-a-developer-account-by-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して開発者アカウントにサインアップする
+## <a name="developer-portal---add-azure-ad-b2c-account-authentication"></a>開発者ポータル - Azure AD B2C アカウント認証の追加
+
+開発者ポータルでは、**OAuth ボタン** ウィジェットで AAD B2C を使用してサインインできます。 このウィジェットは、既定の開発者ポータル コンテンツのサインイン ページに既に含まれています。
+
+![AAD ボタン ウィジェット](./media/api-management-howto-aad/portal-oauth-widget.png)
+
+新しいユーザーが AAD B2C を使用してサインインするたびに新しいアカウントが自動的に作成されますが、サインアップ ページに同じウィジェットを追加することを検討できます。
+
+## <a name="legacy-developer-portal---how-to-sign-up-with-azure-ad-b2c"></a>従来の開発者ポータル - Azure AD B2C を使用してサインアップする方法
+
+[!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 1. Azure Active Directory B2C を使用して開発者アカウントにサインアップするには、新しいブラウザー ウィンドウを開き、開発者ポータルに移動します。 **[サインアップ]** ボタンをクリックします。
 
@@ -136,7 +146,6 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 [api-management-complete-registration]: ./media/api-management-howto-aad/api-management-complete-registration.PNG
 [api-management-registration-complete]: ./media/api-management-howto-aad/api-management-registration-complete.png
 
-[api-management-management-console]: ./media/api-management-howto-aad/api-management-management-console.png
 [api-management-security-external-identities]: ./media/api-management-howto-aad/api-management-b2c-security-tab.png
 [api-management-security-aad-new]: ./media/api-management-howto-aad/api-management-security-aad-new.png
 [api-management-new-aad-application-menu]: ./media/api-management-howto-aad/api-management-new-aad-application-menu.png

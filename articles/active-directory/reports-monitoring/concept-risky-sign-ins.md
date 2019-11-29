@@ -1,8 +1,8 @@
 ---
-title: Azure Active Directory ポータルのリスクの高いサインイン レポート | Microsoft Docs
+title: ポータルのリスクの高いサインイン レポート | Microsoft Docs
 description: Azure Active Directory ポータルのリスクの高いサインイン レポートについて説明します。
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: chadam
+ms.date: 10/28/2019
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72493400ba20ef3c838a636b66afdf26aa00ff62
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3f19744e6c860ae315b681f5eb090cba23b153af
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127432"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008350"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクの高いサインイン レポート
 

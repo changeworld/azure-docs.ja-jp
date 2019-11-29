@@ -1,5 +1,5 @@
 ---
-title: Azure へのオンプレミスのディザスター リカバリーのために Azure Site Recovery でネットワーク インターフェイスを管理する | Microsoft Docs
+title: Azure Site Recovery を使用してオンプレミスのディザスター リカバリーのネットワーク アダプターを管理する
 description: Azure Site Recovery を使用して、Azure へのオンプレミスのディザスター リカバリーのためにネットワーク インターフェイスを管理する方法について説明します
 author: mayurigupta13
 manager: rochakm
@@ -7,14 +7,15 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 5d5dd7bc3f6b60c2f9d7c2179f2bd356ca101dc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471776"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954600"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>オンプレミスのディザスター リカバリーから Azure への仮想マシンのネットワーク インターフェイスを管理する
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Azure へのオンプレミスのディザスター リカバリーの VM のネットワーク インターフェイスを管理する
+
 Azure 内の仮想マシン (VM) には少なくとも 1 つのネットワーク インターフェイスがアタッチされている必要があります。 VM のサイズが対応できるだけの数のネットワーク インターフェイスをアタッチすることができます。
 
 既定では、Azure 仮想マシンにアタッチされた最初のネットワーク インターフェイスがプライマリ ネットワーク インターフェイスとして定義されます。 仮想マシン内の他のネットワーク インターフェイスはすべて、セカンダリ ネットワーク インターフェイスになります。 また既定では、仮想マシンからのすべての送信トラフィックは、プライマリ ネットワーク インターフェイスのプライマリ IP 構成に割り当てられた IP アドレスで送信されます。

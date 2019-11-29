@@ -1,10 +1,10 @@
 ---
 title: 複数の IP 構成での負荷分散 - Azure CLI
-titlesuffix: Azure Load Balancer
-description: プライマリ IP 構成とセカンダリ IP 構成の間の負荷分散。
+titleSuffix: Azure Load Balancer
+description: この記事では、Azure CLI を使用した、プライマリとセカンダリの IP 構成の間の負荷分散について説明します。
 services: load-balancer
 documentationcenter: na
-author: anavinahar
+author: asudbring
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -12,13 +12,13 @@ ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: anavin
-ms.openlocfilehash: bbd21ffeffeaf036909b5ab89f1a07909a03c3f0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.author: allensu
+ms.openlocfilehash: 6ac9e362314cc45e6adbdcf1390f70cbe6b05de8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621707"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075964"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>PowerShell を使用した複数の IP 構成での負荷分散
 

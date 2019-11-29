@@ -1,20 +1,18 @@
 ---
-title: ExpressRoute 回線を作成および変更する - PowerShell:Azure | Microsoft Docs
+title: 'Azure ExpressRoute: 回線の変更:PowerShell'
 description: ExpressRoute 回線を作成、プロビジョニング、確認、更新、削除、プロビジョニング解除します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.reviewer: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: 9d0df2d9eda861a06e2952ff1623fb4ad5160e81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3ce1096129d7fb45901d80b0173035dcca47c3ee
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748328"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080374"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
@@ -75,8 +73,8 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 必ず、適切な SKU レベルと SKU ファミリを指定してください。
 
-* SKU レベルによって、ExpressRoute の Standard と Premium のどちらのアドオンが有効になるかが決まります。 標準 SKU を取得する場合は *[Standard]* を、プレミアム アドオンの場合は *[Premium]* を指定できます。
-* SKU ファミリによって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類は *Metereddata* から *Unlimiteddata* に変更できますが、*Unlimiteddata* から *Metereddata* に変更することはできません。
+* SKU 層 によって、ExpressRoute 回線が [Local](expressroute-faqs.md#expressroute-local)、Standard、[Premium](expressroute-faqs.md#expressroute-premium) のどれであるかが決まります。 "*Local*"、"*Standard*" または "*Premium*" を指定できます。
+* SKU ファミリによって、課金の種類が決まります。 従量制課金データ プランの場合は *Metereddata*、無制限データ プランの場合は *Unlimiteddata* を指定できます。 課金の種類は *Metereddata* から *Unlimiteddata* に変更できますが、*Unlimiteddata* から *Metereddata* に変更することはできません。 "*Local*" 回線は常に "*Unlimiteddata*" です。
 
 > [!IMPORTANT]
 > ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行します。

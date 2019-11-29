@@ -2,19 +2,18 @@
 title: Apache Storm Java トポロジの例 - Azure HDInsight
 description: ワード カウント トポロジの例を作成して、Java で Apache Storm トポロジを作成する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-keywords: apache storm,apache storm の例,storm java,storm トポロジの例
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 41ed51fc0cec9843525275613cca211d2e1bf409
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018607"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083291"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Java での Apache Storm トポロジの作成
 
@@ -32,6 +31,7 @@ ms.locfileid: "71018607"
 * Apache に従って適切に[インストール](https://maven.apache.org/install.html)された [Apache Maven](https://maven.apache.org/download.cgi)。  Maven は Java プロジェクトのプロジェクト ビルド システムです。
 
 ## <a name="test-environment"></a>テスト環境
+
 この記事で使用された環境は、Windows 10 を実行しているコンピューターです。  コマンドはコマンド プロンプトで実行され、さまざまなファイルがメモ帳で編集されています。
 
 コマンド プロンプトで以下のコマンドを入力して、作業環境を作成を作成します。
@@ -171,7 +171,7 @@ Maven プラグインでは、プロジェクトのビルド ステージをカ�
 * **Exec Maven プラグイン**
 
     Java で実行した Apache Storm トポロジの場合、[Exec Maven プラグイン](https://www.mojohaus.org/exec-maven-plugin/)が便利です。Exec Maven プラグインを使用すると、開発環境でトポロジをローカルに実行することが簡単にできます。 `pom.xml` ファイルの `<plugins>` セクションに次の内容を追加して Exec Maven プラグインを追加します。
-    
+
     ```xml
     <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -179,9 +179,9 @@ Maven プラグインでは、プロジェクトのビルド ステージをカ�
         <version>1.6.0</version>
         <executions>
             <execution>
-            <goals>
-                <goal>exec</goal>
-            </goals>
+                <goals>
+                    <goal>exec</goal>
+                </goals>
             </execution>
         </executions>
         <configuration>
@@ -190,7 +190,7 @@ Maven プラグインでは、プロジェクトのビルド ステージをカ�
             <includePluginDependencies>false</includePluginDependencies>
             <classpathScope>compile</classpathScope>
             <mainClass>${storm.topology}</mainClass>
-            <cleanupDaemonThreads>false</cleanupDaemonThreads> 
+            <cleanupDaemonThreads>false</cleanupDaemonThreads>
         </configuration>
     </plugin>
     ```
@@ -198,35 +198,35 @@ Maven プラグインでは、プロジェクトのビルド ステージをカ�
 * **Apache Maven Compiler プラグイン**
 
     別の役立つプラグインとして [Apache Maven Compiler プラグイン](https://maven.apache.org/plugins/maven-compiler-plugin/)があり、コンパイル オプションを変更するために使用します。 Maven によってアプリケーションのソースとターゲットに使用される Java バージョンを変更します。
-    
+
   * HDInsight __3.4 以前__ の場合は、ソースとターゲットの Java バージョンを __1.7__ に設定します。
-    
+
   * HDInsight __3.5__ の場合は、ソースとターゲットの Java バージョンを __1.8__ に設定します。
-    
-    `pom.xml` ファイルの `<plugins>` セクションに次のテキストを追加して、Apache Maven Compiler プラグインを追加します。 この例では 1.8 を指定しているので、ターゲット HDInsight のバージョンは 3.5 になります。
-    
-    ```xml
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-compiler-plugin</artifactId>
-      <version>3.3</version>
-      <configuration>
-      <source>1.8</source>
-      <target>1.8</target>
-      </configuration>
-    </plugin>
-    ```
+
+  `pom.xml` ファイルの `<plugins>` セクションに次のテキストを追加して、Apache Maven Compiler プラグインを追加します。 この例では 1.8 を指定しているので、ターゲット HDInsight のバージョンは 3.5 になります。
+
+  ```xml
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.8.1</version>
+    <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+    </configuration>
+  </plugin>
+  ```
 
 ### <a name="configure-resources"></a>Configure resources
 
-resources セクションには、トポロジ内のコンポーネントに必要な構成ファイルなどの非コード リソースを格納することができます。 この例では、`pom.xml` ファイルの `<resources>` セクションに次のテキストを追加します。
+resources セクションには、トポロジ内のコンポーネントに必要な構成ファイルなどの非コード リソースを格納することができます。 この例では、`pom.xml` ファイルの `<resources>` セクションに次のテキストを追加します。 ファイルを保存して閉じます。
 
 ```xml
 <resource>
     <directory>${basedir}/resources</directory>
     <filtering>false</filtering>
     <includes>
-        <include>log4j2.xml</include>
+            <include>log4j2.xml</include>
     </includes>
 </resource>
 ```
@@ -245,7 +245,7 @@ Java ベースの Apache Storm トポロジは、作成か依存関係として�
 
 ### <a name="create-the-spout"></a>スパウトを作成する
 
-外部データソースの設定に必要な要件を軽減するため、次のスパウトは単純にランダムにセンテンスを出力します。 これは、 [Storm-Starter のサンプル](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)で提供されているスパウトを変更したバージョンです。  このトポロジでは 1 つのスパウトのみを使用していますが、場合によっては異なるソースからトポロジにデータを供給するため複数のスパウトを使用することもあります。
+外部データソースの設定に必要な要件を軽減するため、次のスパウトは単純にランダムにセンテンスを出力します。 これは、[Storm-Starter のサンプル](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)で提供されているスパウトを変更したバージョンです。  このトポロジでは 1 つのスパウトのみを使用していますが、場合によっては異なるソースからトポロジにデータを供給するため複数のスパウトを使用することもあります。
 
 以下のコマンドを入力して、新しいファイル `RandomSentenceSpout.java` を作成して開きます。
 
@@ -323,7 +323,6 @@ public class RandomSentenceSpout extends BaseRichSpout {
 > * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java):Twitter から読み取りを行うスパウトの例。
 > * [Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka):Kafka から読み取りを行うスパウトの例。
 
-
 ### <a name="create-the-bolts"></a>ボルトを作成する
 
 ボルトは、データの処理を扱います。 ボルトは、たとえば、計算、永続化、外部コンポーネントとの対話など、あらゆる操作が可能です。 このトポロジでは、次の 2 つのボルトを使用します。
@@ -331,7 +330,6 @@ public class RandomSentenceSpout extends BaseRichSpout {
 * **SplitSentence**:**RandomSentenceSpout** から出力されたセンテンスを個別の単語に分割します。
 
 * **WordCount**:各単語が発生した回数をカウントします。
-
 
 #### <a name="splitsentence"></a>SplitSentence
 
@@ -572,19 +570,19 @@ notepad resources\log4j2.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
-<Appenders>
-    <Console name="STDOUT" target="SYSTEM_OUT">
-        <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
-    </Console>
-</Appenders>
-<Loggers>
-    <Logger name="com.microsoft.example" level="trace" additivity="false">
-        <AppenderRef ref="STDOUT"/>
-    </Logger>
-    <Root level="error">
-        <Appender-Ref ref="STDOUT"/>
-    </Root>
-</Loggers>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.microsoft.example" level="trace" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Root level="error">
+            <Appender-Ref ref="STDOUT"/>
+        </Root>
+    </Loggers>
 </Configuration>
 ```
 
@@ -636,7 +634,7 @@ Flux の詳細については、「[Flux フレームワーク (https://storm.ap
     DEL src\main\java\com\microsoft\example\WordCountTopology.java
     ```
 
-2. 以下のコマンドを入力して、新しいファイル `topology.yaml` を作成して開きます。
+1. 以下のコマンドを入力して、新しいファイル `topology.yaml` を作成して開きます。
 
     ```cmd
     notepad resources\topology.yaml
@@ -648,46 +646,46 @@ Flux の詳細については、「[Flux フレームワーク (https://storm.ap
     name: "wordcount"       # friendly name for the topology
 
     config:                 # Topology configuration
-      topology.workers: 1     # Hint for the number of workers to create
-
+           topology.workers: 1     # Hint for the number of workers to create
+  
     spouts:                 # Spout definitions
     - id: "sentence-spout"
-      className: "com.microsoft.example.RandomSentenceSpout"
-      parallelism: 1      # parallelism hint
+           className: "com.microsoft.example.RandomSentenceSpout"
+           parallelism: 1      # parallelism hint
 
     bolts:                  # Bolt definitions
     - id: "splitter-bolt"
-      className: "com.microsoft.example.SplitSentence"
-      parallelism: 1
-        
+           className: "com.microsoft.example.SplitSentence"
+           parallelism: 1
+
     - id: "counter-bolt"
-      className: "com.microsoft.example.WordCount"
-      constructorArgs:
-        - 10
-      parallelism: 1
+           className: "com.microsoft.example.WordCount"
+           constructorArgs:
+             - 10
+           parallelism: 1
 
     streams:                # Stream definitions
     - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
-      from: "sentence-spout"       # The stream emitter
-      to: "splitter-bolt"          # The stream consumer
-      grouping:                    # Grouping type
-        type: SHUFFLE
-    
+           from: "sentence-spout"       # The stream emitter
+           to: "splitter-bolt"          # The stream consumer
+           grouping:                    # Grouping type
+             type: SHUFFLE
+
     - name: "Splitter -> Counter"
-      from: "splitter-bolt"
-      to: "counter-bolt"
-      grouping:
-        type: FIELDS
-        args: ["word"]           # field(s) to group on
+           from: "splitter-bolt"
+           to: "counter-bolt"
+           grouping:
+             type: FIELDS
+             args: ["word"]           # field(s) to group on
     ```
 
-3. 以下のコマンドを入力して `pom.xml` を作成し、以下に示されている変更を加えます。
+1. 以下のコマンドを入力して `pom.xml` を作成し、以下に示されている変更を加えます。
 
     ```cmd
     notepad pom.xml
     ```
 
-   * `<dependencies>` セクションに次の新しい依存関係を追加します。
+   1. `<dependencies>` セクションに次の新しい依存関係を追加します。
 
         ```xml
         <!-- Add a dependency on the Flux framework -->
@@ -698,7 +696,7 @@ Flux の詳細については、「[Flux フレームワーク (https://storm.ap
         </dependency>
         ```
 
-   * `<plugins>` セクションに次のプラグインを追加します。 このプラグインによって、プロジェクトのパッケージ (jar ファイル) が作成されます。また、このパッケージを作成するときに Flux 固有の変換がいくつか適用されます。
+   1. `<plugins>` セクションに次のプラグインを追加します。 このプラグインによって、プロジェクトのパッケージ (jar ファイル) が作成されます。また、このパッケージを作成するときに Flux 固有の変換がいくつか適用されます。
 
         ```xml
         <!-- build an uber jar -->
@@ -739,9 +737,9 @@ Flux の詳細については、「[Flux フレームワーク (https://storm.ap
         </plugin>
         ```
 
-   * **exec-maven-plugin** の `<configuration>` セクションで、`<mainClass>` の値を `${storm.topology}` から `org.apache.storm.flux.Flux` に変更します。 この設定により、開発中にトポロジのローカルでの実行を Flux で処理できるようになります。
+   1. Exec Maven プラグイン セクションで、`<configuration>` > `<mainClass>` に移動し、`${storm.topology}` を `org.apache.storm.flux.Flux` に変更します。 この設定により、開発中にトポロジのローカルでの実行を Flux で処理できるようになります。
 
-   * `<resources>` セクションの `<includes>` に以下を追加します。 これで XML に、プロジェクトの一部としてトポロジを定義する YAML ファイルがインクルードされます。
+   1. `<resources>` セクションの `<includes>` に以下を追加します。 これで XML に、プロジェクトの一部としてトポロジを定義する YAML ファイルがインクルードされます。
 
         ```xml
         <include>topology.yaml</include>
@@ -769,34 +767,36 @@ Flux の詳細については、「[Flux フレームワーク (https://storm.ap
 
     実行中、スタートアップ情報が表示されます。 次のテキストは出力例を示しています。
 
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 112 for word seven
-        17:33:27 [Thread-16-count] INFO  com.microsoft.example.WordCount - Emitting a count of 195 for word the
-        17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
-        17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
+    ```
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 112 for word seven
+    17:33:27 [Thread-16-count] INFO  com.microsoft.example.WordCount - Emitting a count of 195 for word the
+    17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
+    17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
+    ```
 
     ログに記録された情報のバッチの間隔が 10 秒遅延します。
 
 2. プロジェクトから新しいトポロジ yaml を作成します。
- 
-    a. 以下のコマンドを入力して、`topology.xml` を作成します。
+
+    1. 以下のコマンドを入力して、`topology.xml` を作成します。
 
     ```cmd
     notepad resources\topology.yaml
     ```
 
-    b. 次のセクションを見つけて、値 `10` を `5` に変更します。 この変更により、単語のカウントの出力バッチの間隔が 10 秒から 5 秒に変更されます。  
+    1. 次のセクションを見つけて、値 `10` を `5` に変更します。 この変更により、単語のカウントの出力バッチの間隔が 10 秒から 5 秒に変更されます。  
 
     ```yaml
     - id: "counter-bolt"
-      className: "com.microsoft.example.WordCount"
-      constructorArgs:
-        - 5
-      parallelism: 1  
-    ```  
+           className: "com.microsoft.example.WordCount"
+           constructorArgs:
+             - 5
+           parallelism: 1  
+    ```
 
-    c. `newtopology.yaml` という名前を付けてファイルを保存します。
+    1. `newtopology.yaml` という名前を付けてファイルを保存します。
 
 3. トポロジを実行するには、次のコマンドを入力します。
 
@@ -810,7 +810,7 @@ Flux の詳細については、「[Flux フレームワーク (https://storm.ap
     storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local resources/newtopology.yaml
     ```
 
-     このコマンドでは、トポロジの定義として `newtopology.yaml` を使用します。 `compile` パラメーターを含めなかったため、前の手順でビルドしたプロジェクトのバージョンが使用されます。
+    このコマンドでは、トポロジの定義として `newtopology.yaml` を使用します。 `compile` パラメーターを含めなかったため、前の手順でビルドしたプロジェクトのバージョンが使用されます。
 
     トポロジが開始されると、バッチが出力される時間間隔が変更され、`newtopology.yaml` の値が反映されていることがわかります。 このように、トポロジを再コンパイルしなくても YAML ファイルから構成を変更できることがわかります。
 

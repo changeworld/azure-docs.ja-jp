@@ -5,21 +5,22 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e7de815b7254fb071b3094f9ae636b712b38684b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 1e819c94732e1cbc2de39e6400f8305b7df5aca1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797232"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927650"
 ---
 # <a name="sensor-partner-integration"></a>センサー パートナーの統合
-この記事では、Azure FarmBeats **Translator** コンポーネントに関する情報を提供します。
+
+この記事では、Azure FarmBeats **Translator** コンポーネントについて説明します。これを使うと、センサー パートナーとの統合が可能になります。
 
 このコンポーネントを使用すると、パートナーは API を活用して FarmBeats と統合されたセンサーを開発し、FarmBeats データ ハブにお客様のデバイス データとテレメトリを送信できます。 データは FarmBeats Accelerator を使用して視覚化されます。 データは、データ融合や、機械言語/人工知能モデルの構築に使用できます。
 
 ## <a name="link-farmbeats-account"></a>FarmBeats アカウントのリンク
 
-お客様がデバイス/センサーを購入してデプロイすると、デバイス パートナーの SaaS ポータル (サービスとしてのソフトウェア) でデバイス データとテレメトリにアクセスできるようになります。 デバイス パートナーは、アカウントを Azure 上の FarmBeats インスタンスとリンクできるようにしておく必要があります。 次の資格情報は、お客様/SI による入力が必要です。
+お客様がデバイス/センサーを購入してデプロイすると、デバイス パートナーの SaaS ポータル (サービスとしてのソフトウェア) でデバイス データとテレメトリにアクセスできるようになります。 デバイス パートナーは、アカウントを Azure 上の FarmBeats インスタンスとリンクできるようにしておく必要があります。 顧客/システム インテグレーターによる入力には、次の資格情報が必要です。
 
    - 表示名 (ユーザーがこの統合の名前を定義するためのオプション フィールド)
    - API エンドポイント
@@ -41,14 +42,11 @@ ms.locfileid: "73797232"
 
 ## <a name="edit-farmbeats-integration"></a>FarmBeats 統合の編集
 
-お客様は、FarmBeats 統合を編集できます。 編集が行われる主なシナリオとして、有効期限が切れによるクライアント シークレットまたは接続文字列の変更があげられます。この場合、お客様は次のフィールドのみ編集できます。
+クライアント シークレットまたは接続文字列が変更された場合、顧客は FarmBeats 統合設定を編集できます。 この場合、顧客は次のフィールドのみを編集できます。
 
    - 表示名 (該当する場合)
    - クライアント シークレット (クリア テキストではなく、“2x8***********” 形式または表示/非表示機能を使って表示されます)
    - 接続文字列 (クリア テキストではなく、“2x8***********” 形式または表示/非表示機能を使って表示されます)
-
-   > [!NOTE]
-   > 編集を行っても、メタデータ オブジェクトの作成が中断されることはありません。
 
 ## <a name="view-last-telemetry-sent"></a>最後に送信されたテレメトリの表示
 
@@ -124,16 +122,16 @@ REST (Representational State Transfer) API 要求を行うには、HTTP (GET、P
 
 必要に応じて、GET 呼び出しにクエリ パラメーターを追加して、応答のデータのフィルター処理、サイズ制限、並べ替えを行うことができます。
 
-次の要求例では、デバイスの一覧を取得します。
+以下の要求例では、デバイスの一覧を取得します。
 
-```
-curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>”
+```bash
+curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>"
 ```
 大部分の GET、POST、PUT 呼び出しには、JSON 要求本文が必要です。
 
 次の要求例ではデバイスを作成します (このサンプルには、入力 json と要求本文が含まれています)。
 
-```
+```bash
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
@@ -192,7 +190,7 @@ ParentDeviceId | このデバイスが接続されている親デバイスの ID
   description  | わかりやすい説明を入力します
   properties  | 製造元から提供されるその他のプロパティ
 
- 各オブジェクトとそのプロパティの詳細については、[swagger](httpa://aka.ms/FarmBeatsDatahubSwagger) を参照してください。
+ 各オブジェクトとそのプロパティの詳細については、[swagger](https://aka.ms/FarmBeatsDatahubSwagger) を参照してください。
 
  > [!NOTE]
  > API からは、作成されたインスタンスごとに一意の ID が返されます。 デバイスの管理とメタデータの同期のため、Translator はこの ID を保持する必要があります。
@@ -243,35 +241,34 @@ write_client.stop()
 
 正規のメッセージ形式は次のとおりです。
 
-```
+```json
 {
-“deviceid”: “<id of the Device created>”,
- "timestamp": "<timestamp in ISO 8601 format>",
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
 "version" : "1",
 "sensors": [
     {
-      "id": "<id of the sensor created>”
+      "id": "<id of the sensor created>",
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": value
+          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
         }
       ]
     }
+ ]
 }
-
 ```
-
 deviceid、sensordata のように、テレメトリ json 内のすべてのキー名は小文字にする必要があります。
 
 テレメトリ メッセージの例:
 
 
-```
+```json
 {
   "deviceid": "7f9b4b92-ba45-4a1d-a6ae-c6eda3a5bd12",
   "timestamp": "2019-06-22T06:55:02.7279559Z",

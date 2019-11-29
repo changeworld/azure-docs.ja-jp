@@ -1,5 +1,5 @@
 ---
-title: 回線のピアリングを構成する - ExpressRoute:PowerShell:Azure | Microsoft Docs
+title: 'Azure ExpressRoute: ピアリングの構成:PowerShell'
 description: この記事では、ExpressRoute 回線のプライベート、パブリックおよび Microsoft ピアリングを作成し、プロビジョニングする手順について説明します。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
 services: expressroute
 author: jaredr80
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 813263442bc82254d0cb5ea9e9f7e8a265de5b4a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9e03abc25ec5224006f41946e6514836e2b6d534
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748200"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080143"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線のピアリングの作成と変更
 

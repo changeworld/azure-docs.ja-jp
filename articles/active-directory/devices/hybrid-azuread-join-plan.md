@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1024b529bd099c70b870fe8b059d4982f04e40
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c016ce349acdfff6145286d9fc07e08db4ed9516
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389558"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73882812"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -75,7 +75,7 @@ Windows デスクトップ オペレーティング システムを実行して�
 
 ID データを複数の Azure AD テナントに同期する単一 AD フォレストで構成されている環境の場合、ハイブリッド Azure AD 参加は現在サポートされていません。
 
-仮想デスクトップ インフラストラクチャ (VDI) を使用している場合、ハイブリッド Azure AD 参加は現在サポートされていません。
+環境で仮想デスクトップ インフラストラクチャ (VDI) を使用する場合は、「[デバイス ID とデスクトップ仮想化](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)」を参照してください。
 
 Hybrid Azure AD 参加は、FIPS に準拠している TPM 2.0 でサポートされており、TPM 1.2 ではサポートされていません。 FIPS に準拠している TPM 1.2 がデバイスにある場合は、Hybrid Azure AD 参加を進める前に、それらを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは、TPM の製造元に依存するため、Microsoft では用意していません。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 WIndows 10 1903 リリース以降、TPM 1.2 はハイブリッド Azure AD 結合では使用されず、それらの TPM を含むデバイスは TPM を持っていないものと見なされます。
 
@@ -124,7 +124,7 @@ Hybrid Azure AD 参加は、UPN がルーティング可能かどうかに応じ
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** と **adfs/services/trust/13/windowstransport** はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとして公開することはできません。 WS-Trust WIndows エンドポイントを無効にする方法の詳細については、[プロキシの WS-Trust Windows エンドポイントを無効にする方法](https://docs.microsoft.com/en-us/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)に関するセクションを参照してください。 どのエンドポイントが有効になっているかは、AD FS 管理コンソールの **[サービス]**  >  **[エンドポイント]** で確認できます。
+> **adfs/services/trust/2005/windowstransport** と **adfs/services/trust/13/windowstransport** はどちらも、イントラネットに接続するエンドポイントとしてのみ有効にする必要があります。Web アプリケーション プロキシを介してエクストラネットに接続するエンドポイントとして公開することはできません。 WS-Trust WIndows エンドポイントを無効にする方法の詳細については、[プロキシの WS-Trust Windows エンドポイントを無効にする方法](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)に関するセクションを参照してください。 どのエンドポイントが有効になっているかは、AD FS 管理コンソールの **[サービス]**  >  **[エンドポイント]** で確認できます。
 
 > [!NOTE]
 > Azure AD は、マネージド ドメインでのスマートカードや証明書をサポートしていません。

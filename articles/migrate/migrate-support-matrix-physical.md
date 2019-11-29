@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 902e89305aa24e8cbb6d2dd84d6a61c710d11637
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 55ada93e6a77dd7e31640988bad95034f77c90dd
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715376"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091891"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>物理サーバーの評価と移行のサポート マトリックス
 
@@ -28,7 +28,7 @@ ms.locfileid: "73715376"
 
 **Deployment** | **詳細***
 --- | ---
-**オンプレミスの物理サーバーを評価する** | 最初の評価を[設定](tutorial-prepare-physical.md)します。
+**オンプレミスの物理サーバーを評価する** | 最初の評価を[設定](tutorial-prepare-physical.md)します。<br/><br/> 評価を[実行](tutorial-assess-physical.md)する。
 **物理サーバーを Azure に移行する** | Azure への移行を[試します](tutorial-migrate-physical-virtual-machines.md)。
 
 
@@ -37,7 +37,7 @@ ms.locfileid: "73715376"
 **サポート** | **詳細**
 --- | ---
 **Azure のアクセス許可** | Azure Migrate プロジェクトを作成するには、サブスクリプションに共同作成者または所有者アクセス許可が必要です。
-**物理サーバー** | 1 つのプロジェクトで最大 250 個の物理サーバーを評価します。 1 つの Azure サブスクリプションに複数のプロジェクトを含めることができます。 評価の上限に達するまでは、1 つのプロジェクトに物理サーバー、VMware VM、Hyper-V VM を含めることができます。
+**物理サーバー** | 1 つのプロジェクトで最大 35,000 個の物理サーバーを評価します。 1 つの Azure サブスクリプションに複数のプロジェクトを含めることができます。 評価の上限に達するまでは、1 つのプロジェクトに物理サーバー、VMware VM、Hyper-V VM を含めることができます。
 **地理的な場所** | Azure Migrate プロジェクトは、いくつかの地域で作成できます。 プロジェクトを作成できるのは特定の地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
 
   **地理的な場所** | **メタデータ ストレージの場所**
@@ -66,7 +66,7 @@ ms.locfileid: "73715376"
 | :-------------------       | :------------------- |
 | **物理サーバーの展開**       | 物理サーバーは、スタンドアロンにすることも、クラスターにデプロイすることもできます。 |
 | **アクセス許可**           | **Windows:** 探索に含めるすべての Windows サーバー上にローカル ユーザー アカウントを設定します。ユーザー アカウントは、これらのグループ (リモート デスクトップ ユーザー、パフォーマンス モニター ユーザー、パフォーマンス ログ ユーザー) に追加する必要があります。 <br/> **Linux:** 検出する Linux サーバーのルート アカウントが必要です。 |
-| **オペレーティング システム** | Azure でサポートされているすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システム。 |
+| **オペレーティング システム** | 次を除くすべての [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) および [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) オペレーティング システムがサポートされています。<br/> Windows Server 2003 <br/> SUSE Linux|
 
 
 ## <a name="assessment-appliance-requirements"></a>評価 - アプライアンスの要件
@@ -75,9 +75,9 @@ Azure Migrate では、評価のために軽量アプライアンスを実行し
 
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
-| **アプライアンスのデプロイ**   |  アプライアンスを物理サーバーまたは VM のいずれかにデプロイします。<br/>  ホスト マシンは、Windows Server 2012 R2 以降が実行されている必要があります。<br/> ホストには、アプライアンス VM に 16 GB の RAM、8 つの vCPU、約 80 GB のストレージ スペース、1 つの外部スイッチを割り当てることができる十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
+| **アプライアンスのデプロイ**   |  アプライアンスを物理サーバーまたは仮想マシンのいずれかにデプロイします。<br/>  ホスト マシンは、Windows Server 2012 R2 以降が実行されている必要があります。<br/> ホストには、アプライアンス VM に 16 GB の RAM、8 つの vCPU、約 80 GB のストレージ スペース、1 つの外部スイッチを割り当てることができる十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
 | **Azure Migrate プロジェクト**  |  単一のプロジェクトにアプライアンスを関連付けることができます。<br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> プロジェクト内で最大 35,000 個のマシンを評価できます。
-| **検出**              | 1 つのアプライアンスで最大 200 個のサーバーを検出できます。
+| **検出**              | 1 つのアプライアンスで最大 250 個のサーバーを検出できます。
 | **評価グループ**       | 1 つのグループに最大 35,000 個のマシンを追加できます。
 | **評価**             | 1 回の評価で最大 35,000 個のマシンを評価できます。
 

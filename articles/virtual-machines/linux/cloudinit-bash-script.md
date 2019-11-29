@@ -1,5 +1,5 @@
 ---
-title: cloud-init を使用して Azure 上の Linux VM で Bash スクリプトを実行する | Microsoft Docs
+title: cloud-init を使用して Azure 上の Linux VM で Bash スクリプトを実行する
 description: Azure CLI による作成時に Linux VM で cloud-init を使用して Bash スクリプトを実行する方法
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 7a7d771023fabf8746ecb771e71a563daa5cb130
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 0e18b740b9b656236bd1958dd191bc9b02283d67
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668302"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036791"
 ---
 # <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>cloud-init を使用して Azure 上の Linux VM で Bash スクリプトを実行する
 この記事では、Azure でのプロビジョニング時に、[cloud-init](https://cloudinit.readthedocs.io) を使用して、Linux 仮想マシン (VM) または仮想マシン スケール セット (VMSS) 上で既存の Bash スクリプトを実行する方法を示します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。 cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください

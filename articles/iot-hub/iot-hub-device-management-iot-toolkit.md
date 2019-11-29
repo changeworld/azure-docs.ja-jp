@@ -1,5 +1,5 @@
 ---
-title: Visual Studio Code 用 Azure IoT Tools を使用した Azure IoT デバイスの管理 | Microsoft Docs
+title: Azure IoT Tools for VSCode を使用した Azure IoT デバイスの管理
 description: Azure IoT Hub デバイスの管理に、ダイレクト メソッドやツインの必要なプロパティの管理オプションなどの機能がある Visual Studio Code 用 Azure IoT ツールを使用します。
 author: formulahendry
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: f5697e0b51e8349de62e71be1471beb76aa48765
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 03997bb6999af9ebaad36cc95f7834e3b9ed4569
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838730"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953209"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Tools を使用する
 

@@ -6,14 +6,14 @@ author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 05/06/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 9a564bf7f633903c58a5719327216baee2df6550
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 4d64d556c96d29556ee36179623ff8cc24532b48
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026156"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74085256"
 ---
 共有イメージ ギャラリーは、マネージド イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -33,9 +33,10 @@ ms.locfileid: "72026156"
 
 | リソース | 説明|
 |----------|------------|
-| **マネージド イメージ** | 単独で使用することも、イメージ ギャラリーに**イメージ バージョン**を作成するために使用することもできる基本的なイメージ。 マネージド イメージは、一般化された VM から作成されます。 マネージド イメージは、複数の VM を作成する際に使用できる特別な種類の VHD で、共有イメージ バージョンを作成する際にも使用できるようになりました。 |
+| **マネージド イメージ** | 単独で使用することも、イメージ ギャラリーに**イメージ バージョン**を作成するために使用することもできる基本的なイメージ。 マネージド イメージは、[一般化された](#generalized-and-specialized-images) VM から作成されます。 マネージド イメージは、複数の VM を作成する際に使用できる特別な種類の VHD で、共有イメージ バージョンを作成する際にも使用できるようになりました。 |
+| **スナップショット** | **イメージ バージョン**の作成に使用できる VHD のコピー。 [特殊化された](#generalized-and-specialized-images) VM (一般化されていない VM) からスナップショットを取得し、単独でまたはデータ ディスクのスナップショットと一緒に使用して、特殊化されたイメージ バージョンを作成できます。
 | **イメージ ギャラリー** | Azure Marketplace などの **イメージ ギャラリー**は、イメージを管理して共有するためのリポジトリです。ただし、アクセス権の所有者を制御します。 |
-| **イメージ定義** | イメージはギャラリー内で定義され、組織内で使用するためにイメージと要件に関する情報を伝達します。 イメージが Windows か Linux か、最小限と最大限のメモリ要件、リリース ノートなどの情報を含めることができます。 これは、イメージの種類の定義です。 |
+| **イメージ定義** | イメージはギャラリー内で定義され、組織内で使用するためにイメージと要件に関する情報を伝達します。 イメージが一般化されているか特殊化されているか、オペレーティング システム、最小および最大メモリ要件、リリース ノートなどの情報を含めることができます。 これは、イメージの種類の定義です。 |
 | **イメージ バージョン** | **イメージ バージョン**は、ギャラリーを利用している場合に、VM の作成に使用します。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 マネージド イメージのように、**イメージ バージョン**を使用して VM を作成する場合、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。 |
 
 <br>
@@ -58,7 +59,7 @@ ms.locfileid: "72026156"
 
 以下は、リソースをより簡単に追跡できるようにイメージ定義で設定できる他のパラメーターです。
 
-* オペレーティング システムの状態 - OS の状態を一般または特殊に設定できますが、現在サポートされているのは一般だけです。 Sysprep (Windows の場合) または `waagent -deprovision` (Linux の場合) を使って一般化された VM から、イメージを作成する必要があります。
+* オペレーティング システムの状態 - OS の状態を[一般化または特殊化](#generalized-and-specialized-images)に設定できます。
 * オペレーティング システム - Windows または Linux にすることができます。
 * 説明 - そのイメージ定義が存在する理由についての詳細な情報を提供するために使います。 たとえば、アプリケーションがプレインストールされているフロントエンド サーバー用のイメージ定義などです。
 * Eula - イメージ定義に固有のエンド ユーザー ライセンス契約を示すために使うことができます。
@@ -68,21 +69,43 @@ ms.locfileid: "72026156"
 * vCPU とメモリの最小値と最大値の推奨 - イメージに vCPU とメモリの推奨値がある場合は、その情報をイメージ定義に添付できます。
 * 許可されないディスクの種類 - VM に対するストレージ ニーズに関する情報を提供することができます。 たとえば、イメージが Standard HDD ディスクに適さない場合は、禁止リストにそれを追加します。
 
+## <a name="generalized-and-specialized-images"></a>一般化されたイメージと特殊化されたイメージ
+
+共有イメージ ギャラリーでは、2 つのオペレーティング システムの状態がサポートされています。 通常は、イメージを作成するために使用される VM は、イメージの取得前に一般化されている必要があります。 一般化は、マシンとユーザーに固有の情報を VM から削除するプロセスです。 Windows の場合、Sysprep も使用されます。 Linux の場合は、[waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` または `-deprovision+user` パラメーターを使用できます。
+
+特殊化された VM は、マシン固有の情報やアカウントを削除するプロセスを済ませていません。 さらに、特殊化されたイメージから作成された VM には、`osProfile` が関連付けられていません。 これは、特殊化されたイメージにはいくつかの制限があることを意味します。
+
+- VM へのログインに使用できるアカウントは、その VM から作成された特殊化されたイメージを使用して作成された任意の VM で使用することもできます。
+- VM には、イメージが取得された VM の **コンピューター名**が割り当てられます。 競合を回避するには、コンピューター名を変更する必要があります。
+- `osProfile` は、`secrets` を使用して、何らかの秘匿性の高い情報を VM に渡す方法です。 これにより、`osProfile` で `secrets` を使用する KeyVault、WinRM、およびその他の機能を使用すると、問題が発生する可能性があります。 場合によっては、マネージド サービス ID (MSI) を使用して、これらの制限を回避できます。
+
+> [!IMPORTANT]
+> 特殊化されたイメージは、現在パブリック プレビュー段階です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>
+> **プレビューに関する既知の制限事項**: VM は、ポータルまたは API を使用して、特殊化されたイメージからのみ作成できます。 プレビューでは、CLI または PowerShell はサポートされていません。
+
+
 ## <a name="regional-support"></a>リージョン サポート
 
 ソース リージョンを次の表に示します。 すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションがホワイトリストに登録されている必要があります。 ホワイトリストへの登録を申請するには、 https://azure.microsoft.com/global-infrastructure/australia/contact/ にアクセスしてください。
 
-| ソース リージョン |
-|---------------------|-----------------|------------------|-----------------|
-| オーストラリア中部   | 米国中部 EUAP | 韓国中部    | 米国中西部 |
-| オーストラリア中部 2 | 東アジア       | 韓国南部      | 西ヨーロッパ     |
-| オーストラリア東部      | East US         | 米国中北部 | インド西部      |
-| オーストラリア南東部 | 米国東部 2       | 北ヨーロッパ     | 米国西部         |
-| ブラジル南部        | 米国東部 2 EUAP  | 米国中南部 | 米国西部 2       |
-| カナダ中部      | フランス中部  | インド南部      | 中国 (東部)      |
-| カナダ東部         | フランス南部    | 東南アジア   | 中国東部 2    |
-| インド中部       | 東日本      | 英国南部         | 中国 (北部)     |
-| 米国中部          | 西日本      | 英国西部          | 中国北部 2   |
+
+| ソース リージョン        |                   |                    |                    |
+| --------------------- | ----------------- | ------------------ | ------------------ |
+| オーストラリア中部     | 中国 (東部)        | インド南部        | 西ヨーロッパ        |
+| オーストラリア中部 2   | 中国東部 2      | 東南アジア     | 英国南部           |
+| オーストラリア東部        | 中国 (北部)       | 東日本         | 英国西部            |
+| オーストラリア南東部   | 中国北部 2     | 西日本         | US DoD Central     |
+| ブラジル南部          | 東アジア         | 韓国中部      | US DoD East        |
+| カナダ中部        | East US           | 韓国南部        | 米国政府アリゾナ     |
+| カナダ東部           | 米国東部 2         | 米国中北部   | 米国政府テキサス       |
+| インド中部         | 米国東部 2 EUAP    | 北ヨーロッパ       | 米国政府バージニア州    |
+| 米国中部            | フランス中部    | 米国中南部   | インド西部         |
+| 米国中部 EUAP       | フランス南部      | 米国中西部    | 米国西部            |
+|                       |                   |                    | 米国西部 2          |
+
+
 
 ## <a name="limits"></a>制限 
 
@@ -163,7 +186,7 @@ ms.locfileid: "72026156"
 
 - [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
+- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
 - [Go](https://docs.microsoft.com/azure/go/)
 
@@ -217,15 +240,16 @@ ms.locfileid: "72026156"
 
  シナリオ 1:マネージド イメージがある場合は、イメージ定義を作成して、その定義からイメージ バージョンを作成できる。
 
- シナリオ 2:汎用のアンマネージド イメージがある場合、そこからマネージド イメージを作成して、イメージ定義を作成し、その定義からイメージ バージョンを作成できる。 
+ シナリオ 2:アンマネージド イメージがある場合、そこからマネージド イメージを作成した後、イメージ定義とイメージ バージョンを作成できる。 
 
- シナリオ 3:ローカル ファイル システムに VHD がある場合、VHD をアップロードして、マネージド イメージを作成する必要がある。その後、イメージ定義と、定義からのイメージ バージョンを作成できる。
-- VHD が Windows VM 対応の場合は、[汎用 VHD のアップロード](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)に関するページを参照してください。
+ シナリオ 3:ローカル ファイル システムに VHD がある場合、VHD をマネージド イメージにアップロードする必要がある。その後、イメージ定義とイメージ バージョンを作成できる。
+
+- VHD が Windows VM 対応の場合は、[VHD のアップロード](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)に関するページを参照してください。
 - VHD が Linux VM 対応の場合は、「[VHD をアップロードする](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)」の手順を参照してください。
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>特殊なディスクからイメージ バージョンを作成できますか?
 
-いいえ、特殊なディスクは現在、イメージとしてサポートしていません。 特殊なディスクがある場合、新しい VM にそのディスクをアタッチして、[VHD から VM を作成する](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk)必要があります。 VM が実行されたら、[Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) または [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) からマネージド イメージを作成する手順を実行する必要があります。 汎用のマネージド イメージができたら、共有イメージの説明とイメージ バージョンを作成するプロセスを開始できます。
+はい。イメージとしての特殊なディスクのサポートはプレビュー段階です。 特殊化されたイメージからの VM の作成は、ポータル ([Windows](../articles/virtual-machines/linux/shared-images-portal.md) または [Linux](../articles/virtual-machines/linux/shared-images-portal.md)) と API を使用してのみ実行できます。 プレビューでは、PowerShell はサポートされていません。
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Shared Image Gallery リソースが作成された後に、それを別のサブスクリプションに移動することはできますか?
 
@@ -235,7 +259,7 @@ ms.locfileid: "72026156"
 
 いいえ、クラウド間でイメージのバージョンをレプリケートすることはできません。
 
-### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>サブスクリプション間で自分のイメージ バージョンをレプリケートできますか? 
+### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>サブスクリプション間で自分のイメージ バージョンをレプリケートできますか?
 
 いいえ、1 つのサブスクリプション内にあるリージョン全体にイメージ バージョンをレプリケートして、RBAC 経由で他のサブスクリプションでこれを使用できます。
 

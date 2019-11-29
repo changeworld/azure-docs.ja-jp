@@ -4,17 +4,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 09c4420647043fccc408631fec75854667923721
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181199"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74085257"
 ---
 Microsoft Azure クラウド サービスに関する問題を診断するためには、仮想マシン上で問題の発生に伴って生成されるクラウド サービスのログ ファイルを収集する必要があります。 AzureLogCollector 拡張機能をオンデマンドで使用し、クラウド サービスの VM (Web ロールと worker ロールの両方) からログを一度に収集して、Azure ストレージ アカウントにその収集したファイルを転送することができます。このとき、リモートから VM にログオンする必要は一切ありません。
 
 > [!NOTE]
-> ログに記録される主な情報の説明については、 http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.asp を参照してください。
+> ログに記録される主な情報の説明については、 https://blogs.msdn.microsoft.com/kwill/2013/08/09/windows-azure-paas-compute-diagnostics-data/ を参照してください。
 > 
 > 
 
@@ -31,7 +31,7 @@ Microsoft Azure クラウド サービスに関する問題を診断するため
 
 いずれの収集モードも、次の構造体を使用してデータ収集フォルダーを追加指定できます。
 
-* **[名前]** :収集の名前。収集されたファイルを含む zip ファイル内のサブフォルダーの名前として使用されます。
+* **Name**:収集の名前。収集されたファイルを含む zip ファイル内のサブフォルダーの名前として使用されます。
 * **[場所]** :収集されるファイルがある仮想マシン上のフォルダーのパス。
 * **SearchPattern**:収集対象ファイルの名前のパターン。 既定値は "\*" です
 * **Recursive**: 収集されたファイルを、指定された場所で再帰的に配置するかどうか。

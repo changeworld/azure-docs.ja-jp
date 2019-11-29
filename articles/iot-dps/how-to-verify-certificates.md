@@ -1,19 +1,18 @@
 ---
-title: Azure IoT Hub Device Provisioning Service で X.509 CA 証明書の所有証明を行う方法 | Microsoft Docs
-description: デバイス プロビジョニング サービスで X.509 CA 証明書を確認する方法
+title: Azure IoT Hub Device Provisioning Service で X.509 CA 証明書の所有証明を行う方法
+description: Azure IoT Hub Device Provisioning Service で X.509 CA 証明書の所有証明を行う方法
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: afa4b3861e9fb7f91fd9f5d540353c5fad23efe0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e762a1ab307bdc5ca9369c3f2e424cf6fd35f163
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "54913616"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890625"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>デバイス プロビジョニング サービスで X.509 CA 証明書の所有証明を行う方法
 
@@ -66,7 +65,7 @@ Microsoft では、署名された検証証明書の作成に役立つツール�
 
 1. 結果の検証証明書としての署名を、ポータルのプロビジョニング サービスにアップロードします。 Azure Portal の **[証明書の詳細]** で、 **[.pem または .cer の検証証明書ファイル]** フィールドの隣の _[エクスプローラー]_ アイコンを使って、署名された検証証明書をシステムからアップロードします。
 
-2. 証明書が正常にアップロードされたら、 **[確認]** をクリックします。 **[証明書エクスプローラー]** の一覧で、証明書の **[状態]** が ** _[確認済み]_ ** に変わります。 自動的に更新されない場合は、 **[更新]** をクリックしてください。
+2. 証明書が正常にアップロードされたら、 **[確認]** をクリックします。 **[証明書エクスプローラー]** の一覧で、証明書の **[状態]** が **_確認済み_** に変わります。 自動的に更新されない場合は、 **[更新]** をクリックしてください。
 
    ![証明書のアップロードの確認](./media/how-to-verify-certificates/upload-cert-verification.png)  
 

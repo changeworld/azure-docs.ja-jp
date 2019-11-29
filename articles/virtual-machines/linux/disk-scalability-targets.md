@@ -1,5 +1,5 @@
 ---
-title: Linux 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標 - Microsoft Azure | Microsoft Docs
+title: Linux 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標 - Microsoft Azure
 description: Linux を実行している VM に接続された仮想マシン ディスクのスケーラビリティおよびパフォーマンスの目標について説明します。
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 5c1bdecdfc755db530be71a09b18542ade4519c5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8bc355c4658ae3f410fb8852008752cf4497751d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695895"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036335"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Linux 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標
 

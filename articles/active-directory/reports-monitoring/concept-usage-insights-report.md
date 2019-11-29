@@ -1,9 +1,9 @@
 ---
-title: Azure Active Directory ポータルの使用状況と分析情報のレポート | Microsoft Docs
+title: 使用状況と分析情報のレポート | Microsoft Docs
 description: Azure Active Directory ポータルの使用状況と分析情報のレポートの概要
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 3fba300d-18fc-4355-9924-d8662f563a1f
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0c6723c28bf6ab8af112763a6485bc89b46409c6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: b3db86137207ae726c7befc393f62590fd1456d7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989856"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008263"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの使用状況と分析情報のレポート
 

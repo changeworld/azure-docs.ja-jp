@@ -1,12 +1,12 @@
 ---
-title: 管理アクセスをセキュリティで保護するためのベスト プラクティス - Azure Active Directory | Microsoft Docs
+title: 安全な管理アクセスのベスト プラクティス - Azure AD | Microsoft Docs
 description: 組織の管理アクセスと管理者アカウントがセキュリティで保護されるようにします。 システム設計者および Azure AD、Azure、Microsoft Online Services を構成する IT 担当者向けです。
 services: active-directory
 keywords: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.author: curtand
-ms.date: 03/18/2019
+ms.date: 11/13/2019
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3346c873f88654f75628863a01fda76449ce2d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259406"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028451"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 

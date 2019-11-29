@@ -1,5 +1,5 @@
 ---
-title: 高速ネットワークを使った Azure 仮想マシンの作成 | Microsoft Docs
+title: Azure CLI で、高速ネットワークを使用する Azure VM を作成する
 description: 高速ネットワークを有効にした Linux 仮想マシンを作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 1e5513b28c1ae64fc8c87bb7a949596feab4623e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29014674cee4d6498ca7b56582313265da886122
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873416"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083668"
 ---
-# <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Linux 仮想マシンの作成
+# <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLI で、高速ネットワークを使用する Linux 仮想マシンを作成する
 
 このチュートリアルでは、高速ネットワークを有効にして Linux 仮想マシン (VM) を作成する方法について説明します。 高速ネットワークを使って Windows VM を作成する場合は、「[Accelerated Networking を使った Windows VM を作成する](create-vm-accelerated-networking-powershell.md)」をご覧ください。 高速ネットワークによって、VM との間でシングル ルート I/O 仮想化 (SR-IOV) が可能になり、ネットワークのパフォーマンスが大幅に向上します。 この高パフォーマンスのパスによってデータパスからホストがバイパスされ、サポートされる VM タイプの最も要件の厳しいネットワーク ワークロードで使用した場合でも、待ち時間、ジッター、CPU 使用率が軽減されます。 次の図は、2 台の VM 間の通信を、高速ネットワークを使う場合と使わない場合とで比較したものです。
 
@@ -230,7 +230,7 @@ VM の高速ネットワークが有効になりました。
 アプリケーションを合成 NIC 経由で実行すると、該当のアプリケーションを宛先とする**すべての**パケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に引き続き実行されます。 合成 NIC にバインドされているアプリケーションは、**高速ネットワーク**を利用するすべてのアプリケーションにとって**必須**の要件です。
 
 ## <a name="enable-accelerated-networking-on-existing-vms"></a>既存の VM 上で高速ネットワークを有効にする
-高速ネットワークを有効にしないで VM を作成した場合は、既存の VM に対してこの機能を有効にすることができです。  VM は、上記で説明した次の前提条件を満たすことによって、高速ネットワークをサポートしている必要があります。
+高速ネットワークを有効にしないで VM を作成した場合は、既存の VM に対してこの機能を有効にすることができます。  VM は、上記で説明した次の前提条件を満たすことによって、高速ネットワークをサポートしている必要があります。
 
 * VM は高速ネットワークがサポートされるサイズである必要があります
 * VM はサポートされる Azure ギャラリー イメージ (および Linux のカーネル バージョン) である必要があります

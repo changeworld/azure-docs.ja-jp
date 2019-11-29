@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: f782c5abe611086baae5d2ad71bc38516039a231
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 3470e27f64a672db0165b0132996db91a1447c08
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796055"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033976"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage のマルチプロトコル アクセス
 
@@ -49,6 +49,7 @@ Data Lake Storage でマルチプロトコル アクセスを使用すると、D
 |---|---|
 |[クール アクセス層](storage-blob-storage-tiers.md)|一般公開|
 |BLOB SDK |一般公開|
+|BLOB REST API|一般公開|
 |[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |一般公開|
 |[CLI](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |一般公開|
 |[診断ログ](../common/storage-analytics-logging.md)| プレビュー|

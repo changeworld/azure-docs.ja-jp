@@ -1,5 +1,5 @@
 ---
-title: 仮想マシン用 Azure 専用ホストの概要 | Microsoft Docs
+title: 仮想マシン用 Azure 専用ホストの概要
 description: Azure 専用ホストを使用して仮想マシンをデプロイする方法の詳細について説明します。
 services: virtual-machines-windows
 author: cynthn
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 011bfeb337f3c04b2d9041abedac50affe1f86b0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: cfcc8aeb3d1cc1f199b19abc16cc54db416a307e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977256"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033373"
 ---
 # <a name="preview-azure-dedicated-hosts"></a>プレビュー:Azure 専用ホスト
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 07ec5b76756b462e03e9349edd2daff96933588c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747367"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091645"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -66,17 +66,13 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
     アクセスが制限されたコンピューターでスクリプトを実行する場合は、以下にアクセスできることを確認します。
 
     - download.microsoft.com
-    - リカバリ サービスの URL (geo 名はリカバリ サービス コンテナーが存在するリージョンを表します)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (Azure のパブリック地域用)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (Azure China 21Vianet 用)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (Azure US Government 用)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (Azure Germany 用)
+    - リカバリ サービスの URL (geo 名はリカバリ サービス コンテナーが存在するリージョンを表します)       - <https://pod01-rec2.geo-name.backup.windowsazure.com> (Azure パブリック geo 用)       - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (Azure 中国 21Vianet 用)       - <https://pod01-rec2.geo-name.backup.windowsazure.us> (Azure US 政府機関用)       - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Azure ドイツ用)
     - 送信ポート 3260
 
 > [!Note]
 >
-> - ダウンロードしたスクリプト ファイル名には、URL に **geo-name** が含まれます。 例:ダウンロードしたスクリプト名は、\'VMname\'\_\'geoname\'_\'GUID\' (例: ContosoVM_wcus_12345678) で始まります。<br><br>
-> - この URL は "https:\//pod01-rec2.wcus.backup.windowsazure.com" となります。
+> - ダウンロードしたスクリプト ファイル名には、URL に **geo-name** が含まれます。 例:ダウンロードしたスクリプト名は、\'VMname\'\_\'geoname\'_\'GUID\' で始まります (例: ContosoVM_wcus_12345678)
+> - URL は <https://pod01-rec2.wcus.backup.windowsazure.com>" になります
 
    Linux の場合、スクリプトによって復旧ポイントに接続するには "open-iscsi" および "lshw" コンポーネントが必要です。 スクリプトを実行するコンピューターに目的のコンポーネントが存在しない場合は、コンポーネントをインストールするためのアクセス許可をスクリプトから求められます。 同意して、必要なコンポーネントをインストールします。
 
@@ -141,21 +137,21 @@ Linux では、論理ボリューム マネージャー (LVM) やソフトウェ
 
 ```bash
 #!/bin/bash
-$ pvs <volume name as shown above in the script output>
+pvs <volume name as shown above in the script output>
 ```
 
 ボリューム グループのすべての論理ボリューム、名前、パスを表示するには、次のコマンドを使用します。
 
 ```bash
 #!/bin/bash
-$ lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
 このコマンドは、論理ボリュームを任意のパスにマウントします。
 
 ```bash
 #!/bin/bash
-$ mount <LV path> </mountpath>
+mount <LV path> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>RAID アレイの場合
@@ -164,7 +160,7 @@ $ mount <LV path> </mountpath>
 
 ```bash
 #!/bin/bash
-$ mdadm –detail –scan
+mdadm –detail –scan
 ```
 
  関連する RAID ディスクは `/dev/mdm/<RAID array name in the protected VM>` と表示されます。
@@ -173,7 +169,7 @@ RAID ディスクに物理ボリュームがある場合は、mount コマンド
 
 ```bash
 #!/bin/bash
-$ mount [RAID Disk Path] [/mountpath]
+mount [RAID Disk Path] [/mountpath]
 ```
 
 RAID ディスクに別の LVM が構成されている場合は、前に説明した手順を LVM パーティションにも使用します。ただし、RAID ディスク名の代わりに、ボリューム名を使用します。
@@ -186,6 +182,7 @@ RAID ディスクに別の LVM が構成されている場合は、前に説明�
 
 |サーバー OS | 互換性のあるクライアント OS  |
 | --------------- | ---- |
+| Windows Server 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |

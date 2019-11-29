@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 611213f6cf0f51a8b6c6f7f89a795b2daa94a38a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 044e5c5df8e0af67e4717b864de1e31fc2520408
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693195"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953295"
 ---
-# <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>VMware の Azure へのディザスター リカバリーのために Azure Site Recovery Deployment Planner を実行する
+# <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>VMware ディザスター リカバリーのために Deployment Planner を実行する
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
 
 

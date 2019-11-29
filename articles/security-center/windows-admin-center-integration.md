@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 48bf2cc3feb9ea3983200a2ef778669b5cfe36fa
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 842c7c81e3bf9615eb56d50ee2d6fce794845b6e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521369"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960691"
 ---
-# <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Security Center と Windows Admin Center の統合
+# <a name="integrate-azure-security-center-with-windows-admin-center-preview"></a>Azure Security Center と Windows Admin Center (プレビュー) の統合
 
 Windows Admin Center は、Windows サーバーの管理ツールです。 システム管理者は、この 1 つの場所から、最もよく使う管理ツールの大部分にアクセスできます。 Windows Admin Center 内で、オンプレミス サーバーを Azure Security Center に直接オンボードできます。 その後、Windows Admin Center のエクスペリエンス内で直接、セキュリティに関する推奨事項とアラートの概要を確認できます。
 

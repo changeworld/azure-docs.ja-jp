@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4752112acf136d9ffb19a0b7383bc3aff5de5e0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b9cef4753b6fd324b38d7254139fe288463a0c0c
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448100"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123899"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の制限
 次のセクションでは、データベース サービス容量と機能の制限について説明します。 リソース (コンピューティング、メモリ、ストレージ) 層の詳細については、[価格レベル](concepts-pricing-tiers.md)の記事を参照してください。
@@ -21,21 +21,21 @@ ms.locfileid: "67448100"
 ## <a name="maximum-connections"></a>最大接続数
 価格レベルと仮想コアごとの最大接続数は次のとおりです。 
 
-|**価格レベル**| **仮想コア数**| **最大接続数** |
-|---|---|---|
-|Basic| 1| 50 |
-|Basic| 2| 100 |
-|汎用| 2| 150|
-|汎用| 4| 250|
-|汎用| 8| 480|
-|汎用| 16| 950|
-|汎用| 32| 1500|
-|汎用| 64| 1900|
-|メモリ最適化| 2| 300|
-|メモリ最適化| 4| 500|
-|メモリ最適化| 8| 960|
-|メモリ最適化| 16| 1900|
-|メモリ最適化| 32| 1987|
+|**Pricing Tier**| **仮想コア数**| **最大接続数** | **最大ユーザー接続** |
+|---|---|---|---|
+|Basic| 1| 55 | 50|
+|Basic| 2| 105 | 100|
+|汎用| 2| 150| 145|
+|汎用| 4| 250| 245|
+|汎用| 8| 480| 475|
+|汎用| 16| 950| 945|
+|汎用| 32| 1500| 1495|
+|汎用| 64| 1900| 1895|
+|メモリ最適化| 2| 300| 295|
+|メモリ最適化| 4| 500| 495|
+|メモリ最適化| 8| 960| 955|
+|メモリ最適化| 16| 1900| 1895|
+|メモリ最適化| 32| 1987| 1982|
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
 > FATAL:  sorry, too many clients already

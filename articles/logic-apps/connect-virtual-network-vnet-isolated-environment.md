@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 4c4eb5a6cb7527bcb3eb21beebb8063b0bd021d3
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 883778360bd2315e1424f9f207cbfd994ec1a373
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680467"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73901190"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -94,10 +94,11 @@ Azure 仮想ネットワークで ISE を使用した場合、一般的な設定
 | 接続管理 | 送信 | 443 | VirtualNetwork  | AppService | |
 | 診断ログとメトリックの発行 | 送信 | 443 | VirtualNetwork  | AzureMonitor | |
 | Azure Traffic Manager からの通信 | 受信 | 443 | AzureTrafficManager | VirtualNetwork | |
-| Logic Apps デザイナー - 動的プロパティ | 受信 | 454 | インターネット | VirtualNetwork | 要求は、Logic Apps の[リージョン内のアクセス エンドポイント受信 IP アドレス](../logic-apps/logic-apps-limits-and-config.md#inbound)から送信されます。 |
+| Logic Apps デザイナー - 動的プロパティ | 受信 | 454 | 許可する IP アドレスについては、[メモ] 列を参照してください | VirtualNetwork | 要求は、そのリージョンの[受信](../logic-apps/logic-apps-limits-and-config.md#inbound) IP アドレスに対して Logic Apps アクセス エンドポイントから送信されます。 |
+| ネットワーク正常性チェック | 受信 | 454 | 許可する IP アドレスについては、[メモ] 列を参照してください | VirtualNetwork | 要求は、そのリージョンの[受信](../logic-apps/logic-apps-limits-and-config.md#inbound)と[送信](../logic-apps/logic-apps-limits-and-config.md#outbound)の両方の IP アドレスに対して Logic Apps アクセス エンドポイントから送信されます。 |
 | App Service の管理の依存関係 | 受信 | 454、455 | AppServiceManagement | VirtualNetwork | |
 | コネクタのデプロイ | 受信 | 454 | AzureConnectors | VirtualNetwork | コネクタのデプロイと更新に必要。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
-| コネクタ ポリシーのデプロイ | 受信 | 3443 | AppService | VirtualNetwork | コネクタのデプロイと更新に必要。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
+| コネクタ ポリシーのデプロイ | 受信 | 3443 | インターネット | VirtualNetwork | コネクタのデプロイと更新に必要。 このポートを閉じたりブロックしたりすると、ISE のデプロイが失敗し、コネクタの更新や修正ができなくなります。 |
 | Azure SQL 依存関係 | 送信 | 1433 | VirtualNetwork | SQL | |
 | Azure Resource Health | 送信 | 1886 | VirtualNetwork | AzureMonitor | 正常性の状態を Resource Health に公開するために必要 |
 | API Management - 管理エンドポイント | 受信 | 3443 | APIManagement | VirtualNetwork | |

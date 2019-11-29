@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning ワークスペースでのロールの管理
+title: ワークスペースでロールを管理する
 titleSuffix: Azure Machine Learning
 description: ロールベースのアクセス制御 (RBAC) を使用して、Azure Machine Learning ワークスペースにアクセスする方法について説明します。
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 07191245c08e26fe884ba237a9e3ef1a080aa069
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b5f42ac015ff492b67aa73c799ec1d952b468ed0
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671491"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932173"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 [!INCLUDE [aml-applies-to-enterprise-sku](../../../includes/aml-applies-to-enterprise-sku.md)]

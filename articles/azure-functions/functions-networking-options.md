@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 34759077bd7223d17fea70d32bda63fd1b2595eb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4e55932d47389e09b135d571d0e000b9795e6edc
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668137"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884966"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -116,6 +116,12 @@ Azure Functions の仮想ネットワーク統合では、App Service Web アプ
 関数アプリを作成するときは、BLOB、Queue、および Table Storage をサポートする汎用の Azure Storage アカウントを作成またはリンクする必要があります。 現在、このアカウントに対して仮想ネットワークの制限を使用することはできません。 関数アプリに使用しているストレージ アカウントに仮想ネットワーク サービス エンドポイントを構成すると、アプリが中断されます。
 
 [ストレージ アカウントの要件の詳細を確認する](./functions-create-function-app-portal.md#storage-account-requirements)。
+
+### <a name="using-key-vault-references"></a>Key Vault 参照の使用 
+
+Key Vault 参照を使用すると、コードを変更せず、Azure Functions アプリケーションの Azure Key Vault のシークレットを使用することができます。 Azure Key Vault は、アクセス ポリシーと監査履歴を完全制御する、一元化されたシークレット管理を提供するサービスです。
+
+現在、Key Vault がサービス エンドポイントで保護されている場合、[Key Vault 参照](../app-service/app-service-key-vault-references.md)は機能しません。 仮想ネットワーク統合を使用して Key Vault に接続するには、アプリケーション コードで Key Vault を呼び出す必要があります。
 
 ## <a name="virtual-network-triggers-non-http"></a>仮想ネットワーク トリガー (非 HTTP)
 

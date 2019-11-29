@@ -1,5 +1,5 @@
 ---
-title: Azure 書き込みアクセラレータ | Microsoft Docs
+title: Azure 書き込みアクセラレータ
 description: 書き込みアクセラレータを有効にして使用する方法に関するドキュメント
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,11 +16,12 @@ ms.date: 2/20/2019
 ms.author: raiye
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 4b69686149ad80cba492b6f446a19459e58eab76
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ddc5075409c2b940830ec32e4433262556c38002
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103178"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038623"
 ---
+# <a name="enable-write-accelerator"></a>書き込みアクセラレータを有効にする
 [!INCLUDE [how-to-enable-write-accelerator](../../../includes/virtual-machines-common-how-to-enable-write-accelerator.md)]

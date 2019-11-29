@@ -1,5 +1,5 @@
 ---
-title: Cloud Explorer for Visual Studio を使用した Azure IoT デバイス管理 | Microsoft Docs
+title: Visual Studio Cloud Explorer を使用した Azure IoT デバイス管理
 description: Azure IoT Hub デバイス管理用の Cloud Explorer for Visual Studio を使用します。このツールでは、ダイレクト メソッドとデバイス ツインの必要なプロパティを管理するためのオプションを使用できます。
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: e05ba421a4535e6e424e65a1f2271d19f9d9abf4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048706"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953180"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイス管理に Cloud Explorer for Visual Studio を使用する
 

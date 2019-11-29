@@ -1,6 +1,6 @@
 ---
-title: Azure での Linux VM の分離性 | Microsoft Docs
-description: Azure での VM の分離機能について学習します。
+title: Azure での Linux VM の分離
+description: Azure における VM の分離機能について学習します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: ayshakeen
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: ayshak
-ms.openlocfilehash: 1448e982458e022535307484e2a056c145b75616
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 320c07b4168825100eec93f43f1282518ba38c4a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123905"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035959"
 ---
-# <a name="virtual-machine-isolation-in-azure"></a>Azure での仮想マシンの分離性
+# <a name="virtual-machine-isolation-in-azure"></a>Azure における仮想マシンの分離性
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: C# コードを使用して Azure Time Series Insights GA 環境からデータを照会する | Microsoft Docs
-description: この記事では、C# .NET 言語で記述されたカスタム アプリをコーディングして、Azure Time Series Insights 環境からデータを照会する方法について説明します。
+title: C# コードを使用して GA 環境からデータを照会する - Azure Time Series Insights | Microsoft Docs
+description: C# で記述されたカスタム アプリを使用して Azure Time Series Insights 環境からデータを照会する方法を学びます。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 23e4ad5667019b5bc38f9ba11d14632d4d55d5b7
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 5946a1484a62b041772f388b0629d131afe37b92
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989974"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012547"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>C# を使用して Azure Time Series Insights GA 環境からデータを照会する
 

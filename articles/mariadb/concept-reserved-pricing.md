@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: e7aa951634dffcafc20f198f85c15f5ac954fe58
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 61736d4f7e6b17c6037837bfdfe6d9cb8a00c5f6
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608439"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076863"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>予約容量を使用して Azure Database for MariaDB 計算リソースに前払いする
 
@@ -32,7 +32,7 @@ Azure Database for MariaDB の予約容量は、[Azure portal](https://portal.az
 
 予約のサイズは、既存のまたはすぐにデプロイされる予定のデータベース インスタンス (特定のリージョン内で同じパフォーマンス階層とハードウェア世代を使用するもの) で使用される計算量の合計に基づいて決める必要があります。</br>
 
-たとえば、1 つの汎用の Gen5 - 32 仮想コア MariaDB データベースと、2 つのメモリ最適化済みの Gen5 - 16 仮想コア MariaDB データベースを実行しているとします。 さらに、来月には汎用の Gen5 - 32 仮想コア エラスティック プールを 1 つとメモリ最適化済みの Gen5 - 16 仮想コア データベース サーバーを 1 つ追加する予定だとします。 少なくとも 1 年間はこれらのリソースが必要になることがわかっているとします。 この場合、単一データベースの汎用 - Gen5 用に 64 (2x32) 個の仮想コア 1 年予約分と、単一データベース メモリ最適化済み - Gen5 用に 48 (2x16 + 16) 個の仮想コア 1 年予約分を購入する必要があります。
+たとえば、1 つの汎用の Gen5 - 32 仮想コア MariaDB データベースと、2 つのメモリ最適化済みの Gen5 - 16 仮想コア MariaDB データベースを実行しているとします。 さらに、来月中に汎用の Gen5 - 32 仮想コア データベース サーバーを 1 つと、メモリ最適化済みの Gen5 - 16 仮想コア データベース サーバーを 1 つデプロイする予定だとします。 少なくとも 1 年間はこれらのリソースが必要になることがわかっているとします。 この場合、単一データベースの汎用 - Gen5 用に 64 (2x32) 個の仮想コア 1 年予約分と、単一データベース メモリ最適化済み - Gen5 用に 48 (2x16 + 16) 個の仮想コア 1 年予約分を購入する必要があります。
 
 
 ## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>Azure Database for MariaDB の予約容量を購入する

@@ -1,5 +1,5 @@
 ---
-title: Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
+title: 接続済みサービスを使用して Azure Active Directory を追加する | Azure
 description: Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用してアプリに Azure Active Directory を追加する
 author: ghogen
 manager: jillfra
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c02821a41faa976f8f35984ecf48f425239e6fd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 36827401060e330d57b6afac3db0abbde0c27dc2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881182"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73941945"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Visual Studio の接続済みサービスを利用して Azure Active Directory を追加する
 

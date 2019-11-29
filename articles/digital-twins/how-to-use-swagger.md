@@ -1,5 +1,5 @@
 ---
-title: Azure Digital Twins Swagger リファレンスの使用方法について | Microsoft Docs
+title: リファレンス Swagger ドキュメントの使用方法 - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins Swagger リファレンス ドキュメントの使用方法について
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 06cbdf6fbba89b6666e6fe3162fd591e93dffecd
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: ccea63e8edee739ce6743d7638b4e5300ad07f8f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958869"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009881"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger リファレンス ドキュメント
 
@@ -95,7 +95,7 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
 > [!NOTE]
 > * Azure Digital Twins リソースを作成したユーザー プリンシパルにはスペース管理者ロールが割り当てられ、他のユーザーに対して追加のロール割り当てを作成できます。 このようなユーザーとそのロールには、API の呼び出しを許可することができます。
 
-1. [こちらのクイック スタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)の手順に従うか、[Azure Digital Twins アプリを Azure Active Directory レガシに登録](./how-to-use-legacy-aad.md)して、Azure AD アプリケーションを作成し、構成します。 または、既存のアプリの登録を再利用することもできます。
+1. [こちらのクイックスタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)の手順を実行して、Azure AD アプリケーションを作成し、構成します。 または、既存のアプリの登録を再利用することもできます。
 
 1. 次の応答 URL をアプリの登録に追加します。
 

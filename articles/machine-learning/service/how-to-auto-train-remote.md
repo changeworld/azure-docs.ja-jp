@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4276a713e62f96cc5340fc7be0e8391939d32342
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5104e6e037341c41a032f80287c6d56d17361d4c
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497321"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932192"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
@@ -151,24 +151,6 @@ automl_config = AutoMLConfig(task='classification',
                              )
 ```
 
-### <a name="enable-model-explanations"></a>モデル説明を有効にする
-
-`AutoMLConfig` コンストラクターに、省略可能な `model_explainability` パラメーターを設定します。 また、モデル説明機能を使用するために、`X_valid` パラメーターとして検証データフレーム オブジェクトを渡す必要があります。
-
-```python
-automl_config = AutoMLConfig(task='classification',
-                             debug_log='automl_errors.log',
-                             path=project_folder,
-                             compute_target=compute_target,
-                             run_configuration=run_config,
-                             X = X,
-                             y = y,
-                             **automl_settings,
-                             model_explainability=True,
-                             X_valid=X_test
-                             )
-```
-
 ## <a name="submit-training-experiment"></a>トレーニング実験を送信する
 
 次に、自動的にハイパー パラメーターのアルゴリズムを選択し、モデルをトレーニングするように構成を送信します
@@ -237,59 +219,13 @@ remote_run.get_portal_url()
 
 ご利用のワークスペースで同じ情報にアクセスすることができます。  これらの結果の詳細については、「[自動機械学習の結果について](how-to-understand-automated-ml.md)」を参照してください。
 
-### <a name="view-logs"></a>ログを表示する。
-
-`/tmp/azureml_run/{iterationid}/azureml-logs` にある DSVM 上のログを見つけます。
-
-## <a name="explain"></a> 最適なモデル説明
-
-モデル説明データを取得すると、モデルに関する詳細情報を表示して、バックエンドで実行されている機能に対して透明性を高めることができます。 この例では、最適なモデルに対してのみモデル説明を実行します。 パイプライン内のすべてのモデルに対して実行する場合は、実行時間が大幅に長くなります。 モデル説明情報には次が含まれます。
-
-* shap_values:shap lib によって生成される説明情報。
-* expected_values:X_train データのセットに適用されるモデルの予期される値。
-* overall_summary:降順で並べ替えられるモデル レベル機能の重要度の値。
-* overall_imp:overall_summary と同じ順序で並べ替えられる機能名。
-* per_class_summary:降順で並べ替えられるクラス レベル機能の重要度の値。 分類の場合にのみ使用できます。
-* per_class_imp:per_class_summary と同じ順序で並べ替えられる機能名。 分類の場合にのみ使用できます。
-
-次のコードを使用すると、イテレーションから最適なパイプラインを選択できます。 `get_output` メソッドは、最適な実行と、最後の fit の呼び出しで適合したモデルを返します。
-
-```python
-best_run, fitted_model = remote_run.get_output()
-```
-
-`retrieve_model_explanation` 関数をインポートし、最適なモデル上で実行します。
-
-```python
-from azureml.train.automl.automlexplainer import retrieve_model_explanation
-
-shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-    retrieve_model_explanation(best_run)
-```
-
-確認する `best_run` 説明変数の結果を印刷します。
-
-```python
-print(overall_summary)
-print(overall_imp)
-print(per_class_summary)
-print(per_class_imp)
-```
-
-`best_run` 説明概要変数を印刷すると、次の出力が得られます。
-
-![モデル説明コンソール出力](./media/how-to-auto-train-remote/expl-print.png)
-
-また、ウィジェット UI を介して、または [Azure Machine Learning studio](https://ml.azure.com) のワークスペース内で、特徴の重要度を視覚化することもできます。 
-
-![モデル説明 UI](./media/how-to-auto-train-remote/model-exp.png)
-
 ## <a name="example"></a>例
 
-[how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) ノートブックは、この記事の概念を示しています。
+次の[ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb)は、この記事の概念を示しています。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>次の手順
 
-[自動トレーニングの設定を構成する方法](how-to-configure-auto-train.md)について説明します。
+* [自動トレーニングの設定を構成する方法](how-to-configure-auto-train.md)について説明します。
+* 自動 ML 実験でモデルの解釈機能を有効にする[方法](how-to-machine-learning-interpretability-automl.md)を確認します。

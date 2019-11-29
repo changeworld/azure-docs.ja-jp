@@ -1,7 +1,7 @@
 ---
 title: OData の filter リファレンス
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search のクエリでのフィルター構文に関する OData 言語リファレンス。
+description: Azure Cognitive Search クエリでフィルター式を作成するために使用される OData 言語リファレンスと完全な構文。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793371"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113208"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>Azure Cognitive Search での OData $filter 構文
 

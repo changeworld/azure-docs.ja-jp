@@ -1,21 +1,18 @@
 ---
-title: URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure CLI | Microsoft Docs
+title: CLI を使用した URL パスベースのルーティング規則 - Azure Application Gateway
 description: Azure CLI を使用して、アプリケーション ゲートウェイと仮想マシン スケール セットの URL パス ベースのルーティング規則を作成する方法について説明します。
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: 061156a455664a5a3f0b4c4497d24f4e8ff6eea7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7198e68530a51e6c2002b3beb08f14615a5c70fb
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135726"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012324"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Azure CLI を使用して URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 

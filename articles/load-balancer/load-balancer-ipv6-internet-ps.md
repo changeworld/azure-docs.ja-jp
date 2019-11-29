@@ -1,6 +1,6 @@
 ---
-title: IPv6 を使用してインターネットに接続するロード バランサーを作成する - PowerShell
-titlesuffix: Azure Load Balancer
+title: IPv6 を使用してインターネットに接続するロード バランサーを作成する - Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 12f9b8d3031d3b64e2f39f07763f7a75164aad25
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: fb697003da8c0604b2ce1e8956fcd434014b5b82
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274978"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077052"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーの作成を開始する
 
@@ -28,6 +28,8 @@ ms.locfileid: "68274978"
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [テンプレート](load-balancer-ipv6-internet-template.md)
 
+>[!注: IPv6 のベスト プラクティスの変更] この記事では、Basic Load Balancer が IPv4 と IPv6 の両方の接続を提供できるようにするための IPv6 機能の概要について説明します。  IPv6 接続を仮想ネットワークと統合し、IPv6 ネットワーク セキュリティ グループの規則、IPv6 ユーザー定義のルーティング、IPv6 の Basic と Standard の負荷分散などの主要な機能を備えた [Azure VNET の IPv6](../virtual-network/ipv6-overview.md) で、より包括的な IPv6 接続を利用できるようになりました。  Azure VNET の IPv6 は、Azure での IPv6 アプリケーションに推奨されるベスト プラクティスです。 
+>[Azure VNET Powershell の IPv6 のデプロイ](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)に関するページを参照してください 
 
 Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
@@ -230,10 +232,4 @@ VM の作成に関する詳細については、「 [リソース マネージ�
     New-AzVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>次の手順
 
-[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
-
-[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
-
-[ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)

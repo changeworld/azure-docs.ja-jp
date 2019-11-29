@@ -1,6 +1,6 @@
 ---
-title: Azure Digital Twins でのエグレスとエンドポイント | Microsoft Docs
-description: Azure Digital Twins を使用してエンドポイントを作成する方法のガイドラインです。
+title: エグレスとエンドポイント - Azure Digital Twins | Microsoft Docs
+description: Azure Digital Twins でエグレス イベント エンドポイントを作成する方法を説明します。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 33e8a6a281fbc6620a4608c7b0821b196043423e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822266"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010054"
 ---
-# <a name="egress-and-endpoints"></a>エグレスとエンドポイント
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure Digital Twins でのエグレスとエンドポイント
 
 Azure Digital Twins の*エンドポイント*は、ユーザーの Azure サブスクリプション内のメッセージ ブローカーまたはイベント ブローカーを表します。 イベントとメッセージは、Azure Event Hubs、Azure Event Grid、および Azure Service Bus のトピックに送信できます。
 

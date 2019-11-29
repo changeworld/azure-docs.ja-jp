@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: df2f22f91cbed17035485d25369965d3284dbaf7
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 9d7dc724130286298af6e1d4b0babc551f3f2658
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622401"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123623"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -233,7 +233,7 @@ model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_model/1/sklea
 モデルを登録する場合は名前を指定します。 この名前は、モデルがローカルにデプロイされるか、またはサービスのデプロイ時に配置されるときの場所に対応します。
 
 > [!IMPORTANT]
-> 自動機械学習を使用してモデルをトレーニングした場合、モデル名として `model_id` 値が使用されます。 自動機械学習でトレーニングされたモデルを登録してデプロイする例については、GitHub の「[Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-with-deployment)」を参照してください。
+> 自動機械学習を使用してモデルをトレーニングした場合、モデル名として `model_id` 値が使用されます。 自動機械学習でトレーニングされたモデルを登録してデプロイする例については、GitHub の「[Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features)」を参照してください。
 
 下の例では (`sklearn_mnist` という名前で登録された) `sklearn_mnist_model.pkl` という名前の単一のファイルのパスが返されます。
 
@@ -375,8 +375,8 @@ def run(data):
 
 他の例については、次のスクリプトをご覧ください。
 
-* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
-* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
+* [PyTorch](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/pytorch)
+* [TensorFlow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow)
 * [Keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
 * [ONNX](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
 
@@ -572,7 +572,7 @@ CLI からプロファイリングを使用する方法については、「[az 
 詳細については、次のドキュメントをご覧ください。
 
 * [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
-* [profile()](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
+* [profile()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-)
 * [推論構成ファイル スキーマ](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>ターゲットにデプロイする
@@ -584,7 +584,7 @@ CLI からプロファイリングを使用する方法については、「[az 
 モデルをローカルにデプロイするには、お使いのローカル コンピューターに Docker がインストールされている必要があります。
 
 #### <a name="using-the-sdk"></a>SDK を使用する
-
+zzs
 ```python
 from azureml.core.webservice import LocalWebservice, Webservice
 
@@ -594,7 +594,7 @@ service.wait_for_deployment(show_output = True)
 print(service.state)
 ```
 
-詳細については、[LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py)、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-)、および [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) のドキュメントを参照してください。
+詳細については、[LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py)、[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)、および [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) のドキュメントを参照してください。
 
 #### <a name="using-the-cli"></a>CLI の使用
 
@@ -858,6 +858,78 @@ CLI:
 az ml model download --model-id mymodel:1 --target-dir model_folder
 ```
 
+## <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
+
+コードなしのモデル デプロイは現在プレビュー段階で、次の機械学習フレームワークをサポートしています。
+
+### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 形式
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='flowers',                        # Name of the registered model in your workspace.
+                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
+                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
+                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
+                       description='Flowers model')
+
+service_name = 'tensorflow-flower-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="onnx-models"></a>ONNX モデル
+
+ONNX モデルの登録とデプロイは、任意の ONNX 推論グラフでサポートされています。 前処理および後処理のステップは、現在サポートされていません。
+
+MNIST ONNX モデルを登録してデプロイする方法の例を次に示します。
+
+```python
+from azureml.core import Model
+
+model = Model.register(workspace=ws,
+                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
+                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
+                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
+                       model_framework_version='1.3',              # Version of ONNX used to create the model.
+                       description='Onnx MNIST model')
+
+service_name = 'onnx-mnist-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+### <a name="scikit-learn-models"></a>Scikit-learn モデル
+
+コードなしのモデル デプロイは、全種類の組み込み Scikit-learn モデルでサポートされています。
+
+追加コードなしの sklearn モデルの登録とデプロイの例を次に示します。
+
+```python
+from azureml.core import Model
+from azureml.core.resource_configuration import ResourceConfiguration
+
+model = Model.register(workspace=ws,
+                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
+                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
+                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
+                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
+                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
+                       description='Ridge regression model to predict diabetes progression.',
+                       tags={'area': 'diabetes', 'type': 'regression'})
+                       
+service_name = 'my-sklearn-service'
+service = Model.deploy(ws, service_name, [model])
+```
+
+注:事前構築済みの sklearn 推論コンテナーには次の依存関係が含まれています。
+
+```yaml
+    - azureml-defaults
+    - inference-schema[numpy-support]
+    - scikit-learn
+    - numpy
+```
+
 ## <a name="package-models"></a>モデルのパッケージ化
 
 場合によっては、モデルをデプロイせずに Docker イメージを作成することが必要になることがあります (たとえば、[Azure App Service にデプロイする](how-to-deploy-app-service.md)予定がある場合)。 または、イメージをダウンロードして、ローカルの Docker インストールで実行することが必要な場合もあります。 さらに、イメージのビルドに使用するファイルをダウンロードし、それらを検査および変更して、手動でビルドすることが必要な場合もあります。
@@ -997,78 +1069,6 @@ docker kill mycontainer
 登録済みのモデルを削除するには、`model.delete()` を使用します。
 
 詳細については、[WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) と [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--) のドキュメントを参照してください。
-
-## <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
-
-コードなしのモデル デプロイは現在プレビュー段階で、次の機械学習フレームワークをサポートしています。
-
-### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 形式
-
-```python
-from azureml.core import Model
-
-model = Model.register(workspace=ws,
-                       model_name='flowers',                        # Name of the registered model in your workspace.
-                       model_path='./flowers_model',                # Local Tensorflow SavedModel folder to upload and register as a model.
-                       model_framework=Model.Framework.TENSORFLOW,  # Framework used to create the model.
-                       model_framework_version='1.14.0',            # Version of Tensorflow used to create the model.
-                       description='Flowers model')
-
-service_name = 'tensorflow-flower-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-### <a name="onnx-models"></a>ONNX モデル
-
-ONNX モデルの登録とデプロイは、任意の ONNX 推論グラフでサポートされています。 前処理および後処理のステップは、現在サポートされていません。
-
-MNIST ONNX モデルを登録してデプロイする方法の例を次に示します。
-
-```python
-from azureml.core import Model
-
-model = Model.register(workspace=ws,
-                       model_name='mnist-sample',                  # Name of the registered model in your workspace.
-                       model_path='mnist-model.onnx',              # Local ONNX model to upload and register as a model.
-                       model_framework=Model.Framework.ONNX ,      # Framework used to create the model.
-                       model_framework_version='1.3',              # Version of ONNX used to create the model.
-                       description='Onnx MNIST model')
-
-service_name = 'onnx-mnist-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-### <a name="scikit-learn-models"></a>Scikit-learn モデル
-
-コードなしのモデル デプロイは、全種類の組み込み Scikit-learn モデルでサポートされています。
-
-追加コードなしの sklearn モデルの登録とデプロイの例を次に示します。
-
-```python
-from azureml.core import Model
-from azureml.core.resource_configuration import ResourceConfiguration
-
-model = Model.register(workspace=ws,
-                       model_name='my-sklearn-model',                # Name of the registered model in your workspace.
-                       model_path='./sklearn_regression_model.pkl',  # Local file to upload and register as a model.
-                       model_framework=Model.Framework.SCIKITLEARN,  # Framework used to create the model.
-                       model_framework_version='0.19.1',             # Version of scikit-learn used to create the model.
-                       resource_configuration=ResourceConfiguration(cpu=1, memory_in_gb=0.5),
-                       description='Ridge regression model to predict diabetes progression.',
-                       tags={'area': 'diabetes', 'type': 'regression'})
-                       
-service_name = 'my-sklearn-service'
-service = Model.deploy(ws, service_name, [model])
-```
-
-注:事前構築済みの sklearn 推論コンテナーには次の依存関係が含まれています。
-
-```yaml
-    - azureml-defaults
-    - inference-schema[numpy-support]
-    - scikit-learn
-    - numpy
-```
 
 ## <a name="next-steps"></a>次の手順
 

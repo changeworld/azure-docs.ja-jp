@@ -1,5 +1,5 @@
 ---
-title: Azure Linux VM のサイズ - Storage | Microsoft Docs
+title: Azure Windows VM のサイズ - ストレージ
 description: Azure の Windows 仮想マシンで使用できるさまざまなストレージ最適化済みのサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: jonbeck
-ms.openlocfilehash: fdb21f2c96f66da140cdefa9a0b7b54dd2dc66ec
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6b351da38a5edd359baf5d9fe6587f3114651b55
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102257"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073922"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>ストレージ最適化済み仮想マシンのサイズ
 

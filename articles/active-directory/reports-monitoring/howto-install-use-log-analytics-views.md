@@ -1,9 +1,9 @@
 ---
-title: Azure Active Directory のログ分析ビューをインストールして使用する方法 | Microsoft Docs
+title: ログ分析ビューをインストールして使用する方法 | Microsoft Docs
 description: Azure Active Directory のログ分析ビューをインストールして使用する方法について説明します
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 2290de3c-2858-4da0-b4ca-a00107702e26
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/18/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cb1241387144b691b76ec330a5f90b762ebc11f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989783"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014421"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Azure Active Directory 用のログ分析ビューのインストールと使用
 

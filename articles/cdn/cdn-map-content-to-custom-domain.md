@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 81db1a7dc01b3d60ee6384f2026ed5ce692ff140
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 22283833ebb414372de16cbe4ce7d3986cd400a9
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666068"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837410"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>チュートリアル:カスタム ドメインを Azure CDN エンドポイントに追加する
 このチュートリアルでは、カスタム ドメインを Azure Content Delivery Network (CDN) エンドポイントに追加する方法について説明します。 CDN エンドポイントを使用してコンテンツを配信するときに独自のドメイン名を CDN URL に表示するには、カスタム ドメインが必要です。 見てわかるドメイン名を使用することは、顧客にとって便利であり、ブランド化の目的にも役立ちます。 
@@ -66,7 +66,7 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
 
 3. カスタム ドメインの CNAME レコード エントリを作成し、次の表に示すようにフィールドを入力します (フィールド名は異なる場合があります)。
 
-    | source                    | Type  | 宛先                     |
+    | source                    | 種類  | Destination                     |
     |---------------------------|-------|---------------------------------|
     | cdnverify.www.contoso.com | CNAME | cdnverify.contoso.azureedge.net |
 
@@ -145,7 +145,7 @@ cdnverify サブドメインを含む CNAME レコードを作成するには:
  
 1. エンドポイントにキャッシュされているパブリック コンテンツがあることを確認します。 たとえば、CDN エンドポイントがストレージ アカウントに関連付けられている場合、Azure CDN はパブリック コンテナーにコンテンツをキャッシュします。 カスタム ドメインをテストするには、コンテナーでパブリック アクセスが許可され、少なくとも 1 つのファイルが格納されていることを確認します。
 
-2. ブラウザーで、カスタム ドメインを使用してファイルのアドレスに移動します。 たとえば、カスタム ドメインが www.contoso.com の場合、キャッシュされたファイルの URL は http:\//www.contoso.com/my-public-container/my-file.jpg のようになります。 *&lt;エンドポイントのホスト名&gt;* .azureedge.net で直接 CDN エンドポイントにアクセスしたときと同じ結果が表示されることを確認します。
+2. ブラウザーで、カスタム ドメインを使用してファイルのアドレスに移動します。 たとえば、カスタム ドメインが `www.contoso.com` である場合、キャッシュされたファイルの URL は `http://www.contoso.com/my-public-container/my-file.jpg` のようになります。 *&lt;エンドポイントのホスト名&gt;* .azureedge.net で直接 CDN エンドポイントにアクセスしたときと同じ結果が表示されることを確認します。
 
 
 ## <a name="map-the-permanent-custom-domain"></a>永続的なカスタム ドメインをマップする
@@ -160,7 +160,7 @@ cdnverify サブドメインがエンドポイントに正常にマップされ�
 
 3. カスタム ドメインの CNAME レコード エントリを作成し、次の表に示すようにフィールドを入力します (フィールド名は異なる場合があります)。
 
-    | source          | Type  | 宛先           |
+    | source          | 種類  | Destination           |
     |-----------------|-------|-----------------------|
     | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

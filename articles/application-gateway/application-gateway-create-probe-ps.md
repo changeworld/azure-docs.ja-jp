@@ -1,26 +1,19 @@
 ---
-title: カスタム プローブを作成する - Azure Application Gateway - PowerShell | Microsoft Docs
+title: PowerShell を使用したカスタム プローブを作成する
+titleSuffix: Azure Application Gateway
 description: リソース マネージャーで PowerShell を使用して、Application Gateway のカスタム プローブを作成する方法の説明
 services: application-gateway
-documentationcenter: na
 author: vhorne
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 68feb660-7fa4-4f69-a7e4-bdd7bdc474db
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/26/2017
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: acd70bacd23755cd764bc782a297d80db3622424
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fef24f4065ca6fc749f35a07143487e049ee6ea
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66135243"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075276"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Azure リソース マネージャーで PowerShell を使用して Azure Application Gateway のカスタム プローブを作成する
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Traffic Manager を使用してサブネットのトラフィックのルーティング方法を構成する
+title: 'チュートリアル: サブネットのトラフィック ルーティングを構成する - Azure Traffic Manager'
 description: この記事では、ユーザーのサブネットから特定のエンドポイントにトラフィックをルーティングするように Traffic Manager を構成する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: allensu
-ms.openlocfilehash: da2d4816f3f7a99ac2d213d72d7e801cf630e165
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: c2fbb4a85347c8ee68376069474add865cc06c43
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304947"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048822"
 ---
-# <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
+# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
 
 この記事では、サブネット トラフィックのルーティング方法を構成する方法について説明します。 **サブネット** トラフィックのルーティング方法を使用すると、一連の IP アドレス範囲を特定のエンドポイントにマップできます。Traffic Manager で要求が受信されると、要求の送信元 IP アドレスが検査されて、それに関連付けられているエンドポイントが返されます。
 
@@ -154,10 +154,10 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
-    | Name                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
+    | 名前                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
     | ルーティング方法          | **[サブネット]** ルーティング方式を選択します。                                       |
-    | サブスクリプション            | サブスクリプションを選択します。                          |
-    | リソース グループ          | **[既存]** を選択し、「*myResourceGroupTM1*」と入力します。 |
+    | Subscription            | サブスクリプションを選択します。                          |
+    | Resource group          | **[既存]** を選択し、「*myResourceGroupTM1*」と入力します。 |
     | |                              |
     |
 
@@ -173,8 +173,8 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure エンドポイント                                   |
-    | Name           | myInternalWebSiteEndpoint                                        |
+    | 種類                    | Azure エンドポイント                                   |
+    | 名前           | myInternalWebSiteEndpoint                                        |
     | ターゲット リソースの種類           | パブリック IP アドレス                          |
     | ターゲット リソース          | **パブリック IP アドレスを選択**して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
     |  サブネット ルーティングの設定    |   *myVMEastUS* テスト VM の IP アドレスを追加します。 この VM から送信されたすべてのユーザー クエリは、*myInternalWebSiteEndpoint* に転送されます。    |

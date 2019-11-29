@@ -1,21 +1,21 @@
 ---
 title: Azure Resource Manager テンプレートを使用して Azure Cosmos DB を作成および管理する
 description: Azure Resource Manager テンプレートを使用して SQL (コア) 用 Azure Cosmos DB API を作成および構成する
-author: markjbrown
+author: TheovanKraay
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: 5babcadee02da0ba3e112f75e8b4d1aed5f3339f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 11/12/2019
+ms.author: thvankra
+ms.openlocfilehash: 0cb6e80bafca3bb0bfc339552facae5bd16aced4
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721076"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73960546"
 ---
 # <a name="manage-azure-cosmos-db-sql-core-api-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Azure Cosmos DB SQL (コア) API リソースを管理する
 
-この記事では、Azure Resource Manager テンプレートを使用して Azure Cosmos DB のアカウント、データベース、コンテナーの管理を自動化するさまざまな操作を実行する方法について説明します。 この記事に含まれているのは、SQL API アカウントの例のみです。他の種類の API アカウントでの例については、[Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md)、[Table](manage-table-with-resource-manager.md) 用の Azure Cosmos DB の API での Resource Manager テンプレートの使用に関する記事を参照してください。
+この記事では、Azure Resource Manager テンプレートを使用して Azure Cosmos DB のアカウント、データベース、コンテナーの管理を自動化するさまざまな操作の実行方法について説明します。 この記事に含まれているのは、SQL API アカウントの例のみです。他の種類の API アカウントでの例については、[Cassandra](manage-cassandra-with-resource-manager.md)、[Gremlin](manage-gremlin-with-resource-manager.md)、[MongoDB](manage-mongodb-with-resource-manager.md)、[Table](manage-table-with-resource-manager.md) 用の Azure Cosmos DB の API での Azure Resource Manager テンプレートの使用に関する記事を参照してください。
 
 MongoDB、Gremlin、Cassandra、Table API で Cosmos DB のアカウント、データベース、コンテナーを作成し、管理する方法。
 
@@ -26,7 +26,7 @@ Azure Resource Manager テンプレートを使用して Azure Cosmos DB リソ�
 > [!NOTE]
 >
 > - Azure Cosmos アカウントの場所の追加または削除と他のプロパティの変更を同時に行うことはできません。 これらは別の操作として行う必要があります。
-> - アカウント名は小文字とし、44 文字未満にする必要があります。
+> - アカウント名は小文字で、かつ 44 文字以下にする必要があります。
 > - RU/秒を更新するには、スループットのプロパティ値が更新されたテンプレートを再送信します。
 
 [!code-json[create-cosmosdb-sql](~/quickstart-templates/101-cosmosdb-sql/azuredeploy.json)]
@@ -36,7 +36,7 @@ Azure Resource Manager テンプレートを使用して Azure Cosmos DB リソ�
 
 ### <a name="deploy-via-powershell"></a>PowerShell 経由でのデプロイ
 
-PowerShell を使用して Resource Manager テンプレートをデプロイするには、スクリプトの **[コピー]** を実行し、 **[試してみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
+PowerShell を使用して Azure Resource Manager テンプレートをデプロイするには、スクリプトの **[コピー]** を実行し、 **[試してみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
 
 ```azurepowershell-interactive
 
@@ -74,7 +74,7 @@ Azure Cloud Shell からではなく、PowerShell のローカルでインスト
 
 ### <a name="deploy-via-azure-cli"></a>Azure CLI によるデプロイ
 
-Azure CLI を使用して Resource Manager テンプレートをデプロイするには、 **[試してみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
+Azure CLI を使用して Azure Resource Manager テンプレートをデプロイするには、 **[試してみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName
@@ -145,7 +145,7 @@ Azure Cloud Shell からではなく、PowerShell のローカルでインスト
 
 ### <a name="deploy-stored-procedure-template-via-azure-cli"></a>Azure CLI を使用してストアド プロシージャ テンプレートをデプロイする
 
-Azure CLI を使用して Resource Manager テンプレートをデプロイするには、 **[試してみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
+Azure CLI を使用して Azure Resource Manager テンプレートをデプロイするには、 **[試してみる]** を選択して、Azure Cloud Shell を開きます。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
 
 ```azurecli-interactive
 read -p 'Enter the Resource Group name: ' resourceGroupName

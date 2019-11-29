@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2e91a888d0dc98a4f94b956e15336d75291f733e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 92e9747865f1a0910c8bae4001cc597ae9ea3da6
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795912"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73957980"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>AKS クラスター用の Application Gateway 上の LetsEncrypt.org に証明書を使用する
 
@@ -130,8 +130,12 @@ ms.locfileid: "73795912"
     数秒後に、自動的に発行された **ステージング** `Lets Encrypt` 証明書を使用して、Application Gateway HTTPS URL を介して `guestbook` サービスにアクセスできるようになります。
     ブラウザーから、無効な証明機関について警告される場合があります。 ステージング証明書は `CN=Fake LE Intermediate X1` から発行されます。 これは、システムが想定どおりに機能し、運用環境の証明書を準備できたことを示します。
 
-4. 運用環境の証明書。ステージング証明書が正常に設定されたら、運用 ACME サーバーに切り替えることができます。
+4. 運用証明書
+
+    ステージング証明書が正常に設定されたら、運用 ACME サーバーに切り替えることができます。
     1. イングレス リソースのステージング注釈を `certmanager.k8s.io/cluster-issuer: letsencrypt-prod` に置き換えます。
     1. 前の手順で作成した既存のステージング `ClusterIssuer` を削除し、新しいものを作成するには、上の ClusterIssuer YAML の ACME サーバーを `https://acme-v02.api.letsencrypt.org/directory` に置き換えます
 
-5. 証明書の有効期限が切れるか、`Lets Encrypt` の証明書の有効期限が切れる前に更新すると、`cert-manager` によって、Kubernetes シークレット ストア内の証明書は自動的に更新されます。 その時点で、Application Gateway Ingress Controller により、Application Gateway の構成に使用されているイングレス リソースの参照には更新されたシークレットが適用されます。
+5. 証明書の有効期限と更新
+
+    `Lets Encrypt` の証明書の有効期限が切れる前に更新すると、`cert-manager` によって、Kubernetes シークレット ストア内の証明書が自動的に更新されます。 その時点で、Application Gateway Ingress Controller により、Application Gateway の構成に使用されているイングレス リソースの参照には更新されたシークレットが適用されます。

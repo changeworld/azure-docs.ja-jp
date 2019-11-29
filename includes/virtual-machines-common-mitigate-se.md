@@ -5,17 +5,17 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/08/2019
+ms.date: 11/12/2019
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: b13b809b04f6cf878d68311b756ed2ca826f9697
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6668d9753d0b93ab907d37cdeff8315f488cff7a
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935305"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73935877"
 ---
-**ドキュメントの最終更新日**:2019 年 8 月 9 日午前 10:00 (PST)。
+**ドキュメントの最終更新日**:2019 年 11 月 12 日午前 10:00 (PST)。
 
 投機的実行のサイドチャネル攻撃として知られる[新たな CPU 脆弱性クラス](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)を開示したところ、よりわかりやすい説明を求めて、お客様からさまざまな質問が寄せられています。  
 
@@ -28,17 +28,12 @@ Azure にさまざまな角度から組み込まれているセキュリティ�
 > [!NOTE] 
 > このドキュメントが初めて公開されて以来、この脆弱性クラスについて同様の記事がいくつか開示されてきました。 Microsoft は今後もお客様の保護とガイダンスの提供に積極的に投資していく予定です。 引き続き解決策を公開していくために、このページは随時更新されます。 
 > 
-> 2019 年 5 月 14 日、[Intel](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html) は Microarchitectural Data Sampling (MDS) と呼ばれる、新たな投機的実行サイド チャネルの脆弱性を公開しました。MDS については、Microsoft のセキュリティ ガイダンス [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013) を参照してください。これには、複数の CVE が割り当てられています。 
-> - CVE-2019-11091 - Microarchitectural Data Sampling Uncacheable Memory (MDSUM)
-> - CVE-2018-12126 - Microarchitectural Store Buffer Data Sampling (MSBDS) 
-> - CVE-2018-12127 - Microarchitectural Load Port Data Sampling (MLPDS)
-> - CVE-2018-12130 - Microarchitectural Fill Buffer Data Sampling (MFBDS)
->
-> この脆弱性が影響を及ぼすのは Intel® Core® プロセッサと Intel® Xeon® プロセッサです。  Microsoft Azure はオペレーティング システムの更新プログラムをリリースしており、この脆弱性からお客様を保護するために、Intel から公開された新しいマイクロコードをすべてのフリートでデプロイしています。   Azure は Intel と緊密に連携し、プラットフォーム上での正式なリリース前に新しいマイクロコードのテストと検証を行っています。 
+> 2019 年 11 月 12 日、[Intel](https://software.intel.com/security-software-guidance/insights/deep-dive-intel-transactional-synchronization-extensions-intel-tsx-asynchronous-abort) は、[CVE-2019-11135](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-11135) が割り当てられた Intel® Transactional Synchronization Extensions (Intel® TSX) Transaction Asynchronous Abort (TAA) の脆弱性に関する技術勧告を公開しました。 この脆弱性が影響を及ぼすのは Intel® Core® プロセッサと Intel® Xeon® プロセッサです。  Microsoft Azure はオペレーティング システムの更新プログラムをリリースしており、この脆弱性からお客様を保護するために、Intel から公開された新しいマイクロコードをすべてのフリートでデプロイしています。   Azure は Intel と緊密に連携し、プラットフォーム上での正式なリリース前に新しいマイクロコードのテストと検証を行っています。 
 >
 > **VM 内で信頼されていないコードを実行しているお客様**は、すべての投機的実行サイド チャネルの脆弱性に関する追加のガイダンス (Microsoft アドバイザリ ADV [180002](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)、[180018](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/adv180018)、および [190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)) を参照し、この脆弱性から保護するための対策を講じる必要があります。
 >
 > それ以外のお客様は、多層防御の観点から脆弱性を評価し、選択した構成のセキュリティとパフォーマンスに関する関連事項を考慮する必要があります。
+> 
 
 
 
@@ -103,6 +98,7 @@ Windows OS support for kernel VA shadow is enabled: True
 Windows OS support for speculative store bypass disable is enabled system-wide: False
 Windows OS support for L1 terminal fault mitigation is enabled: True
 Windows OS support for MDS mitigation is enabled: True
+Windows OS support for TAA mitigation is enabled: True
 ```
 
 出力に `MDS mitigation is enabled: False` と示されている場合、使用可能な軽減策のオプションについて [Azure サポートに問い合わせてください](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)。
@@ -180,6 +176,9 @@ NUMA node(s):          1
 - CVE-2018-12126 - Microarchitectural Store Buffer Data Sampling (MSBDS)
 - CVE-2018-12127 - Microarchitectural Load Port Data Sampling (MLPDS)
 - CVE-2018-12130 - Microarchitectural Fill Buffer Data Sampling (MFBDS)
+
+Transactional Synchronization Extensions (Intel® TSX) Transaction Asynchronous Abort:  
+- [CVE-2019-11135](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-11135) – TSX Transaction Asynchronous Abort (TAA)
 
 
 

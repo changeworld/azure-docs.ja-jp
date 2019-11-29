@@ -1,5 +1,5 @@
 ---
-title: Azure で Windows VM をセキュリティで保護し、ポリシーを使用する | Microsoft Docs
+title: Azure で Windows VM をセキュリティで保護し、ポリシーを使用する
 description: Azure での Windows と仮想マシンのセキュリティとポリシーについて説明します。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: da89d2181909688c465160d88274614f7e325aaf
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4ae87a7a7a62d2cbf9b712fdd99b9a275aaf4f22
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709214"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073304"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する
 

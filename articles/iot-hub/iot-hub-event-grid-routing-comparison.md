@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 067293f76ac4894ca73f4e74cb01db65ae8d1fba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 877467b65d346c871dd93f4b3f96b2c1664fa4b9
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876913"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906790"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>IoT Hub のメッセージ ルーティングと Event Grid の比較
 
@@ -23,7 +23,7 @@ Azure IoT Hub には、接続されたデバイスからデータをストリー
 
 **[IoT Hub メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)** :この IoT Hub の機能を使用して、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックなどのサービス エンドポイントに、device-to-cloud メッセージをルーティングすることができます。 また、ルーティングでは、エンドポイントにルーティングする前にデータをフィルター処理するクエリ機能も提供されています。 デバイスのテレメトリ データに加えて、アクションのトリガーに使用できる[非テレメトリ イベント](iot-hub-devguide-messages-d2c.md#non-telemetry-events)も送信できます。 
 
-**IoT Hub の Event Grid との統合**:Azure Event Grid は、パブリッシュ - サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 IoT Hub と Event Grid は、[Azure サービスと Azure 以外のサービスに IoT Hub イベントを統合する](iot-hub-event-grid.md)ために、ほぼリアルタイムで連携します。 IoT Hub では、一般公開されている[デバイス イベント](iot-hub-event-grid.md#event-types)を発行し、パブリック プレビュー段階である利用統計情報も発行するようになりました。
+**IoT Hub の Event Grid との統合**:Azure Event Grid は、パブリッシュ - サブスクライブ モデルを使用する、フル マネージドのイベント ルーティング サービスです。 IoT Hub と Event Grid は、[Azure サービスと Azure 以外のサービスに IoT Hub イベントを統合する](iot-hub-event-grid.md)ために、ほぼリアルタイムで連携します。 IoT Hub は、[デバイス イベント](iot-hub-event-grid.md#event-types) とテレメトリ イベントの両方を発行します。
 
 ## <a name="differences"></a>相違点
 

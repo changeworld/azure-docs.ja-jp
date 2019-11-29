@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 35d3451327a0ce7bcaf567f93c48d532842b4f25
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285919"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091797"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure データ エクスプローラーでのデータ インジェスト
 
@@ -117,11 +117,9 @@ Event Hub や IoT Hub などのメッセージング サービスに基づく既
 
 ## <a name="supported-data-formats"></a>サポートされるデータ形式
 
-クエリからの取り込み以外のすべてのインジェスト方法では、Azure Data Explorer が解析できるようにデータを書式設定します。 以下のデータ形式がサポートされます。
-
-* TXT、CSV、TSV、TSVE、PSV、SCSV、SOH
-* JSON (行区切り、複数行)、Avro
-* ZIP、GZIP 
+クエリからの取り込み以外のすべてのインジェスト方法では、Azure Data Explorer が解析できるようにデータを書式設定します。 
+* 以下のデータ形式がサポートされます。TXT、CSV、TSV、TSVE、PSV、SCSV、SOH、JSON (行区切り、複数行)、Avro、および Parquet。 
+* ZIP および GZIP 圧縮をサポートします。
 
 > [!NOTE]
 > データが取り込まれるときに、対象のテーブル列に基づいてデータ型が推論されます。 レコードが不完全な場合、またはフィールドを必要なデータ型として解析できない場合は、対応するテーブル列に null 値が設定されます。

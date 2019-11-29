@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry のコンテンツの形式
-description: Azure Container Registry 内でサポートされているコンテンツの形式について説明します。
+description: Docker と互換性のあるコンテナー イメージ、Helm チャート、OCI イメージ、OCI 成果物など、Azure Container Registry でサポートされているコンテンツ形式について説明します。
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: danlep
-ms.openlocfilehash: d49aab89c9568f168808c40508b4fe7d3175e902
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 38639f22457d923643e8de09cfbbb2fd7f4d2985
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164535"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007477"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry 内でサポートされているコンテンツの形式
 
@@ -29,7 +29,7 @@ Azure Container Registry 内のプライベート リポジトリを使用して
 
 ## <a name="oci-images"></a>OCI イメージ
 
-Azure Container Registry では、[Open Container Initiative (OCI) イメージ形式の仕様](https://github.com/opencontainers/image-spec/blob/master/spec.md)に準拠するイメージをサポートしています。 パッケージ形式には、[Singularity Image Format (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/) が含まれています。
+Azure Container Registry では、[Open Container Initiative (OCI) イメージ形式の仕様](https://github.com/opencontainers/image-spec/blob/master/spec.md)に準拠するイメージをサポートしています。 パッケージ形式には、[Singularity Image Format (SIF)](https://github.com/sylabs/sif) が含まれています。
 
 ## <a name="oci-artifacts"></a>OCI 成果物
 

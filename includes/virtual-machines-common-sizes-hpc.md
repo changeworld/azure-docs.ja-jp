@@ -8,24 +8,38 @@ ms.topic: include
 ms.date: 04/26/2019
 ms.author: azcspmt;jonbeck;cynthn;amverma
 ms.custom: include file
-ms.openlocfilehash: c0383fd2ca348cd69f07ed61a7935e4fec7999b9
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 489ac7fa37c10a27de971151f0be35c647d2186f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538030"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74116710"
 ---
-Azure H シリーズ仮想マシン (VM) は、実環境のさまざまな HPC ワークロードに対するリーダー クラスのパフォーマンス、MPI スケーラビリティ、およびコスト効率を提供するように設計されています。
+Azure HPC 最適化済み仮想マシン (VM) は、実環境のさまざまなアプリケーションに対して、リーダー クラスのパフォーマンス、MPI スケーラビリティ、およびコスト効率を提供するように設計されています。
+ 
+## <a name="infiniband-networking-for-large-scale-hpc"></a>大規模 HPC 向けの InfiniBand ネットワーク
+HBv2 VM は 200 Gb/秒の Mellanox HDR InfiniBand を、HB VM と HC VM は、どちらも 100 Gb/秒 の Mellanox EDR InfiniBand を備えています。 これらの VM の種類は、最適化された一貫性のある RDMA パフォーマンスを確保するために、ノンブロッキング ファット ツリー構造で接続されています。
 
-HB シリーズ VM は、流体力学、陽解法有限要素解析、気象モデリングなどの、メモリ帯域幅に基づいたアプリケーション向けに最適化されています。 HB VM は 60 個の AMD EPYC 7551 プロセッサ コア、CPU コアあたり 4 GB の RAM を搭載し、ハイパースレッディングはありません。 AMD EPYC プラットフォームは、260 GB/秒を超えるメモリ帯域幅を提供します。
+HBv2 VM では、アダプティブ ルーティングと動的接続トランスポート (DCT、標準 RC トランスポートと UD トランスポートに加えて) をサポートしています。 これらの機能により、アプリケーションのパフォーマンス、スケーラビリティ、および整合性が向上するため、それらを使用することを強くお勧めします。  
 
-HC シリーズ VM は、陰解法有限要素解析、分子力学、計算化学などの、高密度計算に基づいたアプリケーション向けに最適化されています。 HC VM は 44 個の Intel Xeon Platinum 8168 プロセッサ コア、CPU コアあたり 8 GB の RAM を搭載し、ハイパースレッディングはありません。 Intel Xeon Platinum プラットフォームは、Intel Math Kernel Library などの Intel の豊富なソフトウェア ツールのエコシステムをサポートしています。
+HBv2、HB、HC の各 VM では、標準 Mellanox/OFED ドライバーがサポートされます。 そのため、すべての RDMA の動詞と MPI の型がサポートされます。 これらの VM の種類では、アプリケーションのパフォーマンスを向上させるために、MPI コレクティブのハードウェアベースのオフロードもサポートされています。
+ 
+初代の H シリーズ VM は、56 Gb/秒 の Mellanox FDR InfiniBand を備えています。 H シリーズの InfiniBand インターフェイスを活用するには、お客様は、Azure Marketplace のこの VM の種類向けに正式にサポートされている固有のイメージを使用してデプロイする必要があります。 
 
-HB VM と HC VM はどちらも、一貫した RDMA パフォーマンスを得るために、非ブロッキングのファット ツリー構成内に 100 Gb/秒の Mellanox EDR InfiniBand を搭載しています。 HB および HC VM は、MPI のすべての種類やバージョンのほか RDMA 動詞もサポートされるように、標準の Mellanox/OFED ドライバーをサポートしています。
 
-H シリーズ VM は、高い CPU 周波数またはコアあたり大容量メモリの要件に基づいたアプリケーション向けに最適化されています。 H シリーズ VM は 8 または 16 個の Intel Xeon E5 2667 v3 プロセッサ コア、CPU コアあたり 7 または 14 GB の RAM を搭載し、ハイパースレッディングはありません。 H シリーズは、一貫した RDMA パフォーマンスを得るために、非ブロッキングのファット ツリー構成内に 56 Gb/秒の Mellanox FDR InfiniBand を搭載しています。 H シリーズ VM は、Intel MPI 5.x と MS-MPI をサポートしています。
+## <a name="hbv2-series"></a>HBv2 シリーズ
+HBv2 シリーズ VM は、流体力学、有限要素解析、貯留層シミュレーションなどの、メモリ帯域幅に基づいたアプリケーション向けに最適化されています。 HBv2 VM は 120 個の AMD EPYC 7742 プロセッサ コア、CPU コアあたり 4 GB の RAM を備え、同時マルチスレッドはありません。 各 HBv2 VM では、最大 340 GB/秒のメモリ帯域幅が提供され、最大 4 テラフロップの FP64 コンピューティングが提供されます。 
+
+Premium Storage: サポートされています
+
+| Size | vCPU | プロセッサ | メモリ (GB) | メモリ帯域幅 GB/秒 | ベース CPU 周波数 (GHz) | 全コア周波数 (GHz、ピーク) | シングルコア周波数 (GHz、ピーク) | RDMA パフォーマンス (GB/秒) | MPI のサポート | 一時ストレージ (GB) | 最大データ ディスク数 | 最大イーサネット NIC |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_HB120rs | 120 | AMD EPYC 7742 | 480 | 350 | 2.45 | 2.45 | 3.4 | 200 | All | 480 + 960 | 8 | 1 |
+
+<br>
 
 ## <a name="hb-series"></a>HB シリーズ
+HB シリーズ VM は、流体力学、陽解法有限要素解析、気象モデリングなどの、メモリ帯域幅に基づいたアプリケーション向けに最適化されています。 HBv2 VM は 60 個の AMD EPYC 7551 プロセッサ コア、CPU コアあたり 4 GB の RAM を備え、同時マルチスレッドはありません。 HB VM では、最大 260 GB/秒のメモリ帯域幅が提供されます。  
 
 ACU: 199-216
 
@@ -40,6 +54,7 @@ Premium Storage Caching: サポートされています
 <br>
 
 ## <a name="hc-series"></a>HC シリーズ
+HC シリーズ VM は、陰解法有限要素解析、分子力学、計算化学などの、高密度計算に基づいたアプリケーション向けに最適化されています。 HC VM は 44 個の Intel Xeon Platinum 8168 プロセッサ コア、CPU コアあたり 8 GB の RAM を搭載し、ハイパースレッディングはありません。 Intel Xeon Platinum プラットフォームでは、Intel Math Kernel Library などの Intel の豊富なソフトウェア ツールのエコシステムがサポートされています。 
 
 ACU: 297-315
 
@@ -56,6 +71,7 @@ Premium Storage Caching: サポートされています
 <br>
 
 ## <a name="h-series"></a>H シリーズ
+H シリーズ VM は、高い CPU 周波数またはコアあたり大容量メモリの要件に基づいたアプリケーション向けに最適化されています。 H シリーズ VM は、8 個または 16 個の Intel Xeon E5 2667 v3 プロセッサ コア、CPU コアあたり最大 14 GB の RAM を備え、ハイパースレッディングはありません。 H シリーズ VM では、最大 80 GB/秒のメモリ帯域幅が提供されます。
 
 ACU: 290-300
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする
-description: Data Factory を使用して、サポートされるソース ストアのデータを Azure SQL Data Warehouse にコピーしたり、Azure SQL Data Warehouse のデータをサポートされるシンク ストアにコピーしたりできます。
+title: Azure Data Factory を使用して Azure SQL Data Warehouse のデータをコピーおよび変換する
+description: Azure SQL Data Warehouse との間でデータをコピーする方法、および Data Factory を使用して Azure SQL Data Warehouse のデータを変換する方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -10,21 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: b64bfd046a42a630e7913c45213053e84377a037
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4d08a388e98283ff7bf05e938d7b8c48b7065074
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681147"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076763"
 ---
-# <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする 
+# <a name="copy-and-transform-data-in-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse のデータをコピーおよび変換する 
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
 > * [バージョン 1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [現在のバージョン](connector-azure-sql-data-warehouse.md)
 
-この記事では、Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
+この記事では、Azure Data Factory のコピー アクティビティを使用して、Azure SQL Data Warehouse との間でデータをコピーし、Data Flow を使用して Azure Data Lake Storage Gen2 でデータを変換する方法について説明します。 Azure Data Factory については、[入門記事で](introduction.md)をご覧ください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -35,7 +35,7 @@ ms.locfileid: "73681147"
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 - [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
 
-具体的には、この Azure SQL Data Warehouse コネクタは以下の機能をサポートします。
+コピー アクティビティについて、この Azure SQL Data Warehouse コネクタはこれらの機能をサポートします。
 
 - SQL 認証を使って、およびサービス プリンシパルまたは Azure リソースのマネージド ID で Azure Active Directory (Azure AD) アプリケーション トークン認証を使って、データをコピーする。
 - ソースとして、SQL クエリまたはストアド プロシージャを使用してデータを取得する。
@@ -227,9 +227,9 @@ Azure SQL Data Warehouse のリンクされたサービスでは、次のプロ�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Azure SQL Data Warehouse データセットでサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-Azure SQL Data Warehouse をコピー元またはコピー先にしたデータ コピーについては、次のプロパティがサポートされています。
+Azure SQL Data Warehouse データセットでは、次のプロパティがサポートされます。
 
 | プロパティ  | 説明                                                  | 必須                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |

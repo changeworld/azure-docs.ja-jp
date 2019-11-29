@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: e6423f2ce3659fd3dd738dcc8a990261bc7bf60c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f83c68dd2f2ddbb73974a2ea4e91e746308945c6
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60334337"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73958111"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Azure でのカスタム メトリックによる自動スケールの概要
 この記事では、Azure Portal でカスタム メトリックを使用してリソースをスケールする方法について説明します。
@@ -35,7 +35,7 @@ Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](http
   ![カスタム メトリックによるスケール][6]
 - 上記の手順と同様に、カスタム メトリックがしきい値を下回る場合にスケールインし、スケール カウントを 1 ずつ小さくするスケール ルールを追加します。
   ![CPU に基づくスケール][7]
-- インスタンスの制限を設定します。 たとえば、カスタム メトリックの変動に応じて 2～5 個のインスタンスの間でスケールする場合は、[最小] を「2」、[最大] を「5」、[既定] を「2」に設定します。
+- インスタンスの限界を設定します。 たとえば、カスタム メトリックの変動に応じて 2～5 個のインスタンスの間でスケールする場合は、[最小] を「2」、[最大] を「5」、[既定] を「2」に設定します。
   > 注:リソース メトリックの読み取りで問題が発生し、現在の容量が既定の容量を下回る場合は、リソースの可用性を確保するために、自動スケールによって既定値にスケールアウトされます。 現在の容量が既に既定の容量を上回る場合、自動スケールではスケールインされません。
 - [保存] をクリックします。
 

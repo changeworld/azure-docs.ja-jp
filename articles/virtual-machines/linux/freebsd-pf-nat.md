@@ -1,5 +1,5 @@
 ---
-title: FreeBSD のパケット フィルターを使用してAzure 内にファイアウォールを作成する | Microsoft Docs
+title: FreeBSD のパケット フィルターを使用して Azure 内にファイアウォールを作成する
 description: FreeBSD の PF を使用して NAT ファイアウォールを Azure にデプロイする方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 8f06762fd84767ac4c6dfce67d547a1f311afcba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5daceeb2c8f2497288c7891dbe3fb3e0771b2ed5
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083239"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036097"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>FreeBSD のパケット フィルターを使用してAzure 内にセキュア ファイアウォールを作成する方法
 この記事では、一般的な Web サーバー シナリオで、Azure Resource Manager テンプレートを通して FreeBSD の パケット フィルターを使用することで、NAT ファイアウォールをデプロイする方法について説明します。

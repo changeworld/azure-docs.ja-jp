@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612115"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008570"
 ---
-# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
-
 この記事では、Azure Managed Disks と Azure Premium SSD ディスクについてよく寄せられるいくつかの質問に回答します。
 
 ## <a name="managed-disks"></a>Managed Disks
@@ -350,18 +348,6 @@ No. ただし、暗号化されたマネージド ディスクまたはスナッ
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Premium ディスク: マネージドとアンマネージド
 
-**適用可能な Premium SSD ディスク サイズに対してバースト機能をサポートしているリージョンを教えてください。**
-
-バースト機能は、現在、Azure 米国中西部でサポートされています。
-
-**4/8/16 GiB のマネージド ディスク サイズ (P1/P2/P3、E1/E2/E3) はどのリージョンでサポートされていますか?**
-
-これらの新しいディスク サイズは、現在 Azure 米国中西部でサポートされています。
-
-**アンマネージド ディスクまたはページ BLOB では、P1/P2/P3 ディスク サイズはサポートされていますか?**
-
-いいえ、Premium SSD マネージド ディスクでのみサポートされています。 
-
 **VM が使用するサイズ シリーズが Premium SSD ディスク (DSv2 など) をサポートしている場合、Premium データ ディスクと Standard データ ディスクの両方をアタッチできますか?** 
 
 はい。
@@ -391,6 +377,22 @@ DS シリーズの場合、制限はキャッシュとローカル SSD の合計
 Premium ディスクと Standard ディスクのどちらの場合も、Azure ディスクで TRIM を使用することに不都合な点はありません。
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>新しいディスク サイズ: マネージドとアンマネージド
+
+**適用可能な Premium SSD ディスク サイズに対してバースト機能をサポートしているリージョンを教えてください。**
+
+バースト機能は、現在、Azure 米国中西部でサポートされています。
+
+**4/8/16 GiB のマネージド ディスク サイズ (P1/P2/P3、E1/E2/E3) はどのリージョンでサポートされていますか?**
+
+これらの新しいディスク サイズは、現在 Azure 米国中西部でサポートされています。
+
+**アンマネージド ディスクまたはページ BLOB では、P1/P2/P3 ディスク サイズはサポートされていますか?**
+
+いいえ、Premium SSD マネージド ディスクでのみサポートされています。 
+
+**アンマネージド ディスクまたはページ BLOB では、Are E1/E2/E3 ディスク サイズはサポートされていますか?**
+
+いいえ、アンマネージド ディスクまたはページ BLOB には、どのサイズの Standard SSD マネージド ディスクも使用できません。
 
 **オペレーティング システムとデータ ディスクでサポートされている最大マネージド ディスク サイズはどれくらいですか?**
 
