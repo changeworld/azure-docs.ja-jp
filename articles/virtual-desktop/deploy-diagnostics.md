@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332831"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167438"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>診断ツールをデプロイする
 
@@ -108,7 +108,7 @@ PowerShell スクリプトを実行するには:
 3. **[設定]** セクションで **[詳細設定]** を選択します。
 4. その後、 **[データ]**  >  **[Windows パフォーマンス カウンター]** の順に移動し、次のカウンターを追加します。
 
-    -   LogicalDisk(\*)\%Free Space
+    -   LogicalDisk(\*)\\%Free Space
     -   LogicalDisk(C:)\\Avg.ディスク キューの長さ
     -   Memory(\*)\\Available Mbytes
     -   Processor Information(\*)\\Processor Time
@@ -142,7 +142,7 @@ Log Analytics ワークスペースに事前構成済みの Windows パフォー
 3. その後、 **[データ]**  >  **[Windows パフォーマンス カウンター]** に移動します。
 4. 次のカウンターが事前に構成されていることを確認します。
 
-   - LogicalDisk(\*)\%Free Space:ディスク上の使用可能な合計領域のうちの空き領域の量をパーセントで表示します。
+   - LogicalDisk(\*)\\%Free Space:ディスク上の使用可能な合計領域のうちの空き領域の量をパーセントで表示します。
    - LogicalDisk(C:)\\Avg.Disk Queue Length:C ドライブのディスク転送要求の長さ。 この値は、多くても 2 を超えることはできません。
    - Memory(\*)\\Available Mbytes:システムで使用可能なメモリ (メガバイト単位)。
    - Processor Information(\*)\\Processor Time: プロセッサが非アイドル スレッドを実行するために費やした経過時間のパーセンテージ。
@@ -234,7 +234,7 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 
 ### <a name="windows-performance-counter-thresholds"></a>Windows パフォーマンス カウンターのしきい値
 
-- LogicalDisk(\*)\|%Free Space:
+- LogicalDisk(\*)\\%Free Space:
 
     - 論理ディスク上の使用可能な合計領域のうち、空いている割合を表示します。
     - しきい値: 20% 未満が異常とマークされます。

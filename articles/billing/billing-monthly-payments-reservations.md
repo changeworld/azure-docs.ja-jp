@@ -4,16 +4,16 @@ description: 前払いまたは月払いで Azure の予約を購入する方法
 services: billing
 author: bandersmsft
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: banders
-ms.openlocfilehash: b1cc034b4d397f170b57e873cb9a5d74c91f83f4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9bab6521d95579aa5b8fd1bd679e19537d88b706
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73746451"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223719"
 ---
 # <a name="purchase-reservations-with-monthly-payments"></a>月払いで予約を購入する
 

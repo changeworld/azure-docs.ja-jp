@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: db3a9a6ba51394a0473f64a2ccede97e5283bba1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a07a822e863c5ff5d695a20c02bd8d295721efda
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106575"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480250"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>チュートリアル:Azure IoT Central を使用してデバイスを監視する
 

@@ -3,21 +3,21 @@ title: Azure で負荷分散サービスを使用する | Microsoft Docs
 description: このチュートリアルでは、Azure の負荷分散ポートフォリオであるTraffic Manager、Application Gateway、Load Balancer を使用したシナリオの作成方法を説明します。
 services: traffic-manager
 documentationcenter: ''
-author: liumichelle
-manager: dkays
+author: asudbring
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: limichel
-ms.openlocfilehash: 906e1840f35ab14997c727551b893a0219eb78d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 4a7f8fd45b1e496ba3f0208d523ac569a24e9e7c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60330523"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227785"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure で負荷分散サービスを使用する
 
@@ -68,7 +68,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 1. Azure Portal で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Traffic Manager プロファイル]**  >  **[作成]** の順にクリックします。
 2. 次の基本情報を入力します。
 
-   * **[名前]** :Traffic Manager プロファイルに DNS プレフィックス名を指定します。
+   * **Name**:Traffic Manager プロファイルに DNS プレフィックス名を指定します。
    * **ルーティング方法**:トラフィック ルーティング方法のポリシーを選択します。 この方法の詳細については、「[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)」をご覧ください。
    * **サブスクリプション**:プロファイルが含まれるサブスクリプションを選択します。
    * **[リソース グループ]** :プロファイルが含まれるリソース グループを選択します。 新しいリソース グループまたは既存の リソース グループを選択できます。
@@ -83,7 +83,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 1. Azure Portal の左側のウィンドウで、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Application Gateway]** の順にクリックします。
 2. Application Gateway に関する次の基本情報を入力します。
 
-   * **[名前]** :アプリケーション ゲートウェイの名前。
+   * **Name**:アプリケーション ゲートウェイの名前。
    * **SKU サイズ**:Application Gateway のサイズ。S、M、L のオプションを使用できます。
    * **インスタンス数**:インスタンスの数。2 ～ 10 の値。
    * **[リソース グループ]** :Application Gateway を保持するリソース グループ。 既存のリソース グループまたは新しいリソース グループを使用できます。
@@ -114,14 +114,14 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
    基本設定:
 
-   + **[名前]** :ポータルでアクセス可能な規則のフレンドリ名です。
+   + **Name**:ポータルでアクセス可能な規則のフレンドリ名です。
    + **リスナー**: 規則で使用するリスナーです。
    + **既定のバックエンド プール**:既定の規則で使用するバック エンド プールです。
    + **既定の HTTP 設定**:既定の規則で使用する HTTP 設定です。
 
    パス ベースの規則:
 
-   + **[名前]** :パスベースの規則のフレンドリ名です。
+   + **Name**:パスベースの規則のフレンドリ名です。
    + **パス**:トラフィックの転送に使用するパスの規則です。
    + **バックエンド プール**:この規則で使用するバックエンド プールです。
    + **HTTP 設定**:この規則で使用する HTTP 設定です。
@@ -143,7 +143,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 3. 次の情報を入力してエンドポイントを作成します。
 
    * **[タイプ]** :負荷分散するエンドポイントの種類を選択します。 このシナリオでは、 **[Azure エンドポイント]** を選択します。以前構成した Application Gateway のインスタンスに接続するためです。
-   * **[名前]** :エンドポイントの名前を入力します。
+   * **Name**:エンドポイントの名前を入力します。
    * **ターゲット リソースの種類**: **[パブリック IP アドレス]** を選択し、 **[ターゲット リソース]** で、前に構成した Application Gateway のパブリック IP を選択します。
 
    ![Traffic Manager の [エンドポイントの追加]](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)

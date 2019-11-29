@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 11/12/2019
 ms.author: swmachan
-ms.openlocfilehash: b4daa04a4dbf87006147fb0d44d7b128a6d8ecf4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835780"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184803"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -33,6 +33,8 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 クエリ文字列に渡される要求パラメーターを次に示します。
 
+### <a name="required-parameters"></a>必須のパラメーター
+
 <table width="100%">
   <th width="20%">Query parameter (クエリ パラメーター)</th>
   <th>説明</th>
@@ -41,13 +43,20 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
     <td>"<em>必須のパラメーター</em>"。<br/>クライアントによって要求される API のバージョン。 値は <code>3.0</code> とする必要があります。</td>
   </tr>
   <tr>
-    <td>from</td>
-    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストの言語を指定します。 <code>translation</code> スコープを使用して<a href="./v3-0-languages.md">サポートされている言語</a>を検索することにより、翻訳することができるソース言語を確認します。 <code>from</code> パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。 <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">動的ディクショナリ</a>機能を使用する場合は、自動検出ではなく、<code>from</code> パラメーターを使用する必要があります。</td>
-  </tr>
-  <tr>
     <td>to</td>
     <td>"<em>必須のパラメーター</em>"。<br/>出力テキストの言語を指定します。 ターゲット言語は、<code>translation</code> スコープに含まれている<a href="./v3-0-languages.md">サポートされている言語</a>のいずれかとする必要があります。 たとえば、ドイツ語に翻訳するには <code>to=de</code> を使用します。<br/>クエリ文字列内でパラメーターを繰り返すことにより、同時に複数の言語に翻訳することができます。 たとえば、ドイツ語とイタリア語に翻訳するには、<code>to=de&to=it</code> を使用します。</td>
   </tr>
+</table>
+
+### <a name="optional-parameters"></a>省略可能なパラメーター
+
+<table width="100%">
+  <th width="20%">Query parameter (クエリ パラメーター)</th>
+  <th>説明</th>
+  <tr>
+    <td>from</td>
+    <td>"<em>省略可能なパラメーター</em>"。<br/>入力テキストの言語を指定します。 <code>translation</code> スコープを使用して<a href="./v3-0-languages.md">サポートされている言語</a>を検索することにより、翻訳することができるソース言語を確認します。 <code>from</code> パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。 <br/><br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">動的ディクショナリ</a>機能を使用する場合は、自動検出ではなく、<code>from</code> パラメーターを使用する必要があります。</td>
+  </tr>  
   <tr>
     <td>textType</td>
     <td><em>省略可能なパラメーター</em>。<br/>翻訳するテキストがプレーン テキストか、それとも HTML テキストかを定義します。 HTML の場合は、適切な形式の完全な要素である必要があります。 指定できる値は <code>plain</code> (既定値) または <code>html</code> です。</td>

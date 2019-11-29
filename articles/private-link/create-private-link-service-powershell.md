@@ -2,17 +2,17 @@
 title: Azure PowerShell を使用して Azure プライベート リンク サービスを作成する | Microsoft Docs
 description: Azure PowerShell を使用して Azure プライベート リンク サービスを作成する方法について説明します。
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: d8d40ed83d7f8234092ca6354642a76aaa83bc12
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.author: allensu
+ms.openlocfilehash: c5910649127c4b2e78cfc12065a8f12a41f7309a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173068"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229387"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Azure PowerShell を使用してプライベート リンク サービスを作成する
 この記事では、Azure PowerShell を使用して Azure でプライベート リンク サービスを作成する方法について説明します。

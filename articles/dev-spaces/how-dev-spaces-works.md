@@ -1,20 +1,16 @@
 ---
 title: Azure Dev Spaces のしくみと構成方法
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 03/04/2019
 ms.topic: conceptual
 description: Azure Dev Spaces の使用を開始するためのプロセスおよび azds.yaml 構成ファイルでのそれらの構成方法について説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 83034dd3c99cc030ed770995bf00a6ad9fb57bdc
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9efae0e9d6bc53e08dce604fa79aa29e158ecabd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670817"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280148"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure Dev Spaces のしくみと構成方法
 
@@ -247,7 +243,7 @@ Azure Dev Spaces では、いずれかのプロジェクトのソース コー�
 
 *devhostagent* による先行手順の実行方法は `azds.yaml` 構成ファイルで構成されます。 この構成の詳細については後述します。
 
-プロジェクト ファイル (Dockerfile、csproj ファイル、Helm チャートの一部など) に対する更新を行うには、アプリケーションのコンテナーをリビルドおよび再デプロイする必要があります。 これらのいずれかのファイルが開発スペースに同期されると、コントローラーによって [helm upgrade](https://helm.sh/docs/helm/#helm-upgrade) コマンドが実行され、アプリケーションのコンテナーがリビルドおよび再デプロイされます。
+プロジェクト ファイル (Dockerfile、csproj ファイル、Helm チャートの一部など) に対する更新を行うには、アプリケーションのコンテナーをリビルドおよび再デプロイする必要があります。 これらのいずれかのファイルが開発スペースに同期されると、コントローラーによって [helm upgrade](https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure) コマンドが実行され、アプリケーションのコンテナーがリビルドおよび再デプロイされます。
 
 ### <a name="file-synchronization"></a>ファイルの同期
 

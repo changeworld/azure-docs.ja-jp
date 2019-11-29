@@ -4,27 +4,25 @@ description: エージェントレス方式でマシンの依存関係を使用�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720253"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158441"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>エージェントレスの依存関係の視覚化を評価用に設定する
-
-> [!NOTE]
-> Azure Migrate ポータルでこの機能がまだ表示されていない場合は、しばらくお待ちください。 来週あたりに表示されるようになる予定です。
 
 この記事では、エージェントレスの依存関係マッピングを Azure Migrate:Server Assessment を使用して作成する方法について説明します。 現在、この機能は、Azure Migrate アプライアンスを使用して検出された VMware マシンに、プレビューとして利用できます。 
 
 > [!IMPORTANT]
 > Azure Migrate アプライアンスを使用して検出された Azure VMware VM のエージェントレスの依存関係の視覚化は現在プレビュー段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-## <a name="about-dependency-mapping"></a>依存関係マッピングの概要 
+## <a name="about-dependency-mapping"></a>依存関係マッピングの概要
 
 依存関係マッピングは、評価および移行するマシン間の依存関係を視覚化するのに役立ちます。 一般的に依存関係マッピングは、より高い信頼度でマシンを評価したい場合に使用します。
 
@@ -46,7 +44,7 @@ ms.locfileid: "73720253"
 ## <a name="current-limitations"></a>現時点での制限事項
 
 - 現在、エージェントレスの依存関係の視覚化は、VMware VM でのみ使用できます。
-- 現在、依存関係の分析ビューでは、グループに対してサーバーを追加または削除することができません。 
+- 現在、依存関係の分析ビューでは、グループに対してサーバーを追加または削除することができません。
 - サーバー グループの依存関係マップは現在使用できません。
 - 現在、依存関係データを表形式でダウンロードすることはできません。
 
@@ -60,12 +58,12 @@ ms.locfileid: "73720253"
 
 
 ### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
- 
+
 エージェントレスの依存関係の視覚化でサポートされるオペレーティング システムは次のとおりです。
 
 **Type** | **サポートされているオペレーティング システム**
---- | --- 
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64 ビット) 
+--- | ---
+**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64 ビット)
 **Linux** | Red Hat Enterprise Linux 7、6、5 <br/> Ubuntu Linux 14.04、16.04 <br/> Debian 7、8 <br/> Oracle Linux 6、7 <br/> CentOS 5、6、7  
 
 
@@ -84,7 +82,7 @@ ms.locfileid: "73720253"
 
 1. アプライアンス管理アプリを開きます。 **[Provide vCenter details]\(vCenter の詳細\)** パネルに移動します。
 2. **[Discover application and dependencies on VMs]\(VM のアプリケーションと依存関係の検出\)** セクションで、 **[資格情報の追加]** をクリックします。
-3. **[オペレーティング システム]** を選択します。 
+3. **[オペレーティング システム]** を選択します。
 4. アカウントのフレンドリ名を指定します。
 5. **[ユーザー名]** と **[パスワード]** を指定します
 6. **[Save]** をクリックします。
@@ -113,8 +111,8 @@ ms.locfileid: "73720253"
 2. 依存関係マップを表示するマシンを検索します。
 3. **[依存関係]** 列の **[依存関係の表示]** をクリックします。
 4. **[Time duration]\(期間\)** ドロップダウンを使用して、マップを表示する期間を変更します。
-5. **[クライアント]** グループを展開して、選択したマシンと依存関係があるマシンの一覧を表示します。 
-6. **[ポート]** グループを展開して、選択したマシンからの依存関係があるマシンの一覧を表示します。 
+5. **[クライアント]** グループを展開して、選択したマシンと依存関係があるマシンの一覧を表示します。
+6. **[ポート]** グループを展開して、選択したマシンからの依存関係があるマシンの一覧を表示します。
 7. 依存関係があるマシンのいずれかのマップ ビューに移動するには、マシン名をクリックし、 **[サーバー マップを読み込む]** をクリックします。
 
     ![サーバーのポート グループを展開してサーバー マップを読み込む](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)

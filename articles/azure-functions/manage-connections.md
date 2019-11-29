@@ -1,19 +1,14 @@
 ---
 title: Azure Functions での接続の管理
 description: 静的接続クライアントを使用して、Azure Functions のパフォーマンスの問題を回避する方法について説明します。
-services: functions
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
-ms.author: glenga
-ms.openlocfilehash: 26702ae63dcb7aadb96b5bf77f96a44f7d6776f5
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114322"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226499"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 

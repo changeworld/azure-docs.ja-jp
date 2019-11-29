@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 8a9ae2364b51c0c201f2efffb3a7433594f76c49
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3b053b7876494a3b2e6f392850c0323b56b1c3ec
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899640"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230266"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights Agent (旧称 Status Monitor v2): 詳しい手順
 
@@ -77,7 +77,7 @@ SerializationVersion           1.1.0.1
 
 > [!NOTE] 
 > PowerShell ギャラリーは、Windows 10、Windows Server 2016、および PowerShell 6 でサポートされています。
-> 以前のバージョンについては、「[PowerShellGet のインストール](https://docs.microsoft.com/powershell/gallery/installing-psget)」を参照してください。
+> 以前のバージョンについては、「[PowerShellGet のインストール](/powershell/scripting/gallery/installing-psget)」を参照してください。
 
 
 1. 管理者として昇格された実行ポリシーで PowerShell を実行します。
@@ -118,7 +118,7 @@ SerializationVersion           1.1.0.1
 
 4. PowerShellGet の最新バージョンをインストールします。
     - 説明:このモジュールには、PowerShell ギャラリーから他のモジュールを取得するために使用されるツールが含まれます。 バージョン 1.0.0.1 は、Windows 10 と Windows Server に付属しています。 バージョン 1.6.0 以降が必要です。 インストールされているバージョンを確認するには、コマンド `Get-Command -Module PowerShellGet` を実行します。
-    - リファレンス: 「[PowerShellGet のインストール](https://docs.microsoft.com/powershell/gallery/installing-psget)」。
+    - リファレンス: 「[PowerShellGet のインストール](/powershell/scripting/gallery/installing-psget)」。
     - コマンド: `Install-Module -Name PowerShellGet`。
     - 省略可能なパラメーター:
         - `-Proxy` 要求用のプロキシ サーバーを指定します。
@@ -162,7 +162,7 @@ SerializationVersion           1.1.0.1
 
 ### <a name="option-1-install-into-a-powershell-modules-directory"></a>オプション 1:PowerShell モジュールのディレクトリにインストールする
 手動でダウンロードした PowerShell モジュールを PowerShell ディレクトリにインストールし、PowerShell セッションで検出されるようにします。
-詳細については、「[PowerShell モジュールをインストールする](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module)」を参照してください。
+詳細については、「[PowerShell モジュールをインストールする](/powershell/scripting/developer/module/installing-a-powershell-module)」を参照してください。
 
 
 #### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Expand-Archive (v1.0.1.0) を使用して zip ファイルとして nupkg を解凍する
@@ -193,7 +193,7 @@ SerializationVersion           1.1.0.1
 
 ### <a name="option-2-unzip-and-import-nupkg-manually"></a>オプション 2:手動で nupkg を解凍してインポートする
 手動でダウンロードした PowerShell モジュールを PowerShell ディレクトリにインストールし、PowerShell セッションで検出されるようにします。
-詳細については、「[PowerShell モジュールをインストールする](https://docs.microsoft.com/powershell/developer/module/installing-a-powershell-module)」を参照してください。
+詳細については、「[PowerShell モジュールをインストールする](/powershell/scripting/developer/module/installing-a-powershell-module)」を参照してください。
 
 他のディレクトリにモジュールをインストールする場合は、[Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-6) を使ってモジュールを手動でインポートします。
 

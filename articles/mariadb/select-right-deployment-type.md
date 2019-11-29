@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 819b8551650f2e0b484021638ab5554cb557a750
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 11/15/2019
+ms.openlocfilehash: 59064c71d19f81a5edc322bc4c8158773a104b5d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330031"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151987"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Azure で適切な MariaDB サーバーオプションを選択する
 
@@ -38,7 +38,7 @@ Azure では、MariaDB サーバーのワークロードをホスト型仮想マ
 | MariaDB の修正プログラムの適用     | 自動  | お客様が管理 |
 | 高可用性 | 高可用性 (HA) モデルは、ノード レベルの中断が発生した場合の組み込みのフェールオーバー メカニズムに基づいています。 このような場合、このサービスは自動的に新しいインスタンスを作成し、このインスタンスにストレージを接続します。 | お客様が高可用性の設計、実装、テスト、保守を行います。 機能には、Always On フェールオーバー クラスタリング、Always On グループ レプリケーション、ログ配布、またはトランザクション レプリケーションが含まれることがあります。|
 | ゾーン冗長性 | 以下は現在サポートされていません | Azure VM は、さまざまな可用性ゾーンで実行するように設定できます。 オンプレミス ソリューションの場合、お客様は独自のセカンダリ データ センターを作成、管理、および保守する必要があります。|
-| ハイブリッド シナリオ | [データイン レプリケーション](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication)を使用すると、外部の MariaDB サーバーから Azure Database for MariaDB サービスにデータを同期できます。 外部サーバーとして、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスを使用できます。<br/><br/> [読み取りレプリカ](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas)機能を使用すると、Azure Database for MariaDB マスター サーバーから、最大 5 台の読み取り専用レプリカ サーバーにデータをレプリケートできます。 レプリカは、同じ Azure リージョン内に存在するか、複数のリージョンにまたがっています。 読み取り専用レプリカは、binlog レプリケーション テクノロジを使用して非同期的に更新されます。<br/><br/>リージョン間読み取りレプリケーションは、現在パブリック プレビュー段階です。| お客様が管理
+| ハイブリッド シナリオ | [データイン レプリケーション](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication)を使用すると、外部の MariaDB サーバーから Azure Database for MariaDB サービスにデータを同期できます。 外部サーバーとして、オンプレミス、仮想マシン、または他のクラウド プロバイダーによってホストされるデータベース サービスを使用できます。<br/><br/> [読み取りレプリカ](https://docs.microsoft.com/azure/mariadb/concepts-read-replicas)機能を使用すると、Azure Database for MariaDB マスター サーバーから、最大 5 台の読み取り専用レプリカ サーバーにデータをレプリケートできます。 レプリカは、同じ Azure リージョン内に存在するか、複数のリージョンにまたがっています。 読み取り専用レプリカは、binlog レプリケーション テクノロジを使用して非同期的に更新されます。<br/><br/>リージョン間読み取りレプリケーションは、現在パブリック プレビュー段階です。| お客様が管理
 | バックアップと復元 | [サーバーのバックアップ](https://docs.microsoft.com/azure/MariaDB/concepts-backup#backups)を自動的に作成し、ローカル冗長または geo 冗長のいずれかであるユーザー構成ストレージに保存します。 このサービスでは、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップが作成されます。 | お客様が管理 |
 | データベース操作の監視 | お客様は、データベース操作に[アラートを設定](https://docs.microsoft.com/azure/MariaDB/concepts-monitoring)し、しきい値に達したときに対応できます。 | お客様が管理 |
 | 高度な脅威保護 | [Advanced Threat Protection](https://docs.microsoft.com/azure/MariaDB/howto-database-threat-protection-portal) を提供します。 この保護により、データベースにアクセスしたりデータベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティが検出されます。<br/><br/>Advanced Threat Protection は現在パブリック プレビュー段階です。| お客様は自身でこの保護を構築する必要があります。

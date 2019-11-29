@@ -1,20 +1,16 @@
 ---
 title: Azure Functions のトリガーとバインドの例
 description: Azure 関数のバインドを構成する方法について学習します
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: d1959792823e04cf34d65ab775ae8c51e741e293
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8685c0fe02ad6c68918736e857c2015e2bfb4595
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097467"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227243"
 ---
 # <a name="azure-functions-trigger-and-binding-example"></a>Azure Functions のトリガーとバインドの例
 

@@ -6,14 +6,14 @@ author: bandersmsft
 ms.author: banders
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: billing
+ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 1ab6a3c0a4497ce49534f2708e13d7479130ba15
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6e76ba2c776bcb6a05dd9f5ae2e143c19d47495c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887164"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226291"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 

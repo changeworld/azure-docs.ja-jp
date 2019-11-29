@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 5b8d97005d8f404a296ddb45e92b65e4aa811aa3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486777"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280822"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>意図とエンティティの予測精度を示す予測スコア
 
@@ -68,7 +68,7 @@ ms.locfileid: "73486777"
 
 ## <a name="e-exponent-notation"></a>E (指数) 表記
 
-予測スコアでは、`9.910309E-07` など、0 から 1 の範囲を超えているように "*見える*" 指数表記が使用される場合があります。 このスコアは、非常に**小さな**数を表します。
+予測スコアでは、`9.910309E-07` など、0 から 1 の範囲を超えているように "_見える_" 指数表記が使用される場合があります。 このスコアは、非常に**小さな**数を表します。
 
 |E 表記スコア |実際のスコア|
 |--|--|

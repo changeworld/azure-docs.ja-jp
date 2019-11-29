@@ -1,27 +1,18 @@
 ---
 title: Azure Functions における SignalR Service のバインド
 description: Azure Functions で SignalR Service のバインドを使用する方法を説明します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-editor: ''
-tags: ''
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 82bbd728bfd51595f0b6eacf344bc95ea5db1ea8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4c7d5d4d8777fee445585b43b58ceb261176b7f4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086158"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231021"
 ---
-# <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド
+# <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR Service のバインド
 
 この記事では、Azure Functions で SignalR Service のバインドを使用して、[Azure SignalR Service](https://azure.microsoft.com/services/signalr-service/) に接続されたクライアントに対して認証を行い、リアルタイム メッセージを送信する方法を説明します。 Azure Functions は、SignalR Service の入力および出力バインドをサポートしています。
 

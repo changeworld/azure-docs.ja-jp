@@ -3,7 +3,7 @@ title: Azure DNS での逆引き DNS 参照ゾーンのホスト | Microsoft Doc
 description: Azure DNS を使って IP アドレス範囲の逆引き DNS 参照ゾーンをホストする方法について説明します
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: jeconnoc
 ms.service: dns
 ms.devlang: na
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: cb2f04c692d4b5f385a89ba6a3071c20ef1bdf21
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: aeefb523b401effe4dedb21a8284f296948bbef9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143633"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211259"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Azure DNS での逆引き DNS 参照ゾーンのホスト
 

@@ -1,20 +1,16 @@
 ---
-title: Azure Functions のベスト プラクティス | Microsoft Docs
+title: Azure Functions のベスト プラクティス
 description: Azure Functions のベスト プラクティスとパターンについて説明します。
-author: ggailey777
-manager: gwallace
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2017
-ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87071b8e1102067110baae70c424aa74a5e0702c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: fa85f636233a067713d127938d674b359bd03696
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73570825"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227383"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 

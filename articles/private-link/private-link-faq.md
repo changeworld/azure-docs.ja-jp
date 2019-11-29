@@ -2,17 +2,17 @@
 title: Azure Private Link のよく寄せられる質問 (FAQ)
 description: Azure Private Link について学習します。
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 32e570e098c9a3f95dfc5393348cccb1ebe1fb60
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.author: allensu
+ms.openlocfilehash: 53cb9b91d62c65cefb33451c716e677599306e9c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104581"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229334"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private Link のよく寄せられる質問 (FAQ)
 
@@ -38,7 +38,7 @@ ms.locfileid: "71104581"
 はい。 同じ VNet またはサブネット内に複数のプライベート エンドポイントを作成できます。 それらは異なるサービスに接続できます。  
  
 ### <a name="do-i-require-a-dedicated-subnet-for-private-endpoints"></a>プライベート エンドポイント専用のサブネットが必要ですか。 
-いいえ。 プライベート エンドポイント専用のサブネットは必要ありません。 対象のサービスがデプロイされている VNet 内にある任意のサブネットのプライベート エンドポイント IP を選択できます。  
+No. プライベート エンドポイント専用のサブネットは必要ありません。 対象のサービスがデプロイされている VNet 内にある任意のサブネットのプライベート エンドポイント IP を選択できます。  
  
 ### <a name="can-private-endpoint-connect-to-private-link-service-across-azure-active-directory-tenants"></a>プライベート エンドポイントは、Azure Active Directory テナントをまたいで Private Link サービスに接続できますか。 
 はい。 プライベート エンドポイントは、AD テナントをまたいで Private Link サービスまたは Azure PaaS に接続できます。  
@@ -68,13 +68,13 @@ Private Link サービスは、次のいくつかの方法でスケーリング�
 - **[すべて]** - すべてのユーザーがサービスを見つけることができます。 
  
 ### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Basic Load Balancer で Private Link サービスを作成することはできますか。 
-いいえ。 Basic Load Balancer では Private Link サービスはサポートされていません。
+No. Basic Load Balancer では Private Link サービスはサポートされていません。
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Private Link サービスには専用サブネットが必要ですか。 
-いいえ。 Private Link サービスに専用サブネットは必要ありません。 対象のサービスがデプロイされている VNet 内の任意のサブネットを選択できます。   
+No. Private Link サービスに専用サブネットは必要ありません。 対象のサービスがデプロイされている VNet 内の任意のサブネットを選択できます。   
 
 ### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>当社は Azure Private Link を使用しているサービス プロバイダーです。 当社のすべての顧客が一意の IP 空間を持ち、当社の IP 空間と重複しないようにする必要がありますか。 
-いいえ。 その機能は Azure Private Link によって提供されます。 したがって、顧客のアドレス空間と重複しないアドレス空間を持つ必要はありません。 
+No. その機能は Azure Private Link によって提供されます。 したがって、顧客のアドレス空間と重複しないアドレス空間を持つ必要はありません。 
 
 ##  <a name="next-steps"></a>次の手順
 

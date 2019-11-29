@@ -2,18 +2,18 @@
 title: Azure Load Balancer のセキュリティ コントロール
 description: Load Balancer を評価するためのセキュリティ コントロールのチェックリスト
 services: load-balancer
-author: msmbaldwin
-manager: barbkess
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: e0be6635a0916183e1dfe776bef4c547578383dc
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.author: allensu
+ms.openlocfilehash: 6043e574697489b6566641c352bc21a2b6d87f51
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886321"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214897"
 ---
 # <a name="security-controls-for-azure-load-balancer"></a>Azure Load Balancer のセキュリティ コントロール
 
@@ -49,7 +49,7 @@ ms.locfileid: "70886321"
 
 | セキュリティ コントロール | はい/いいえ | メモ |
 |---|---|--|
-| 保存時のサーバー側の暗号化:Microsoft のマネージド キー | 該当なし | |
+| 保存時のサーバー側の暗号化: Microsoft のマネージド キー | 該当なし | |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| 該当なし | |
 | 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | 該当なし | |
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |
@@ -63,4 +63,4 @@ ms.locfileid: "70886321"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について説明します。
+- [Azure サービス全体の組み込みセキュリティ コントロール](../security/fundamentals/security-controls.md)について学習します。

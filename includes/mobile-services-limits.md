@@ -1,15 +1,15 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 5e58429b6a3e2f7c7c39c13dc65af48b064f9771
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2a9e9d79328a7bf5c3ff85ea5a8e8a594d68c4cf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67181564"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224333"
 ---
 | レベル | 無料 | Basic | Standard |
 | --- | --- | --- | --- |

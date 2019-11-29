@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: seodec18
-ms.openlocfilehash: ad0566f0b93593140d217767f8d97f410dfcbb3b
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 9d7d0e049d3c35aab56145beb94c8e41e56c5785
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259234"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219094"
 ---
 # <a name="manage-azure-budgets-with-cloudyn"></a>Cloudyn で Azure の予算を管理する
 

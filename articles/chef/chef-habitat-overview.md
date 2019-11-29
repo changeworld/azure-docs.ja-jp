@@ -2,18 +2,14 @@
 title: Habitat を使用してアプリケーションを Azure にデプロイする
 description: Azure 仮想マシンとコンテナーにアプリケーションを一貫した方法でデプロイする方法を説明します
 keywords: azure、chef、devops、仮想マシン、概要、自動化、habitat
-ms.service: virtual-machines-linux
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 2bdcd4c504822a2e60156b0ac565465e0cf23a85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: de444836c04d1d37a19a006ce4eafdcae867ca5a
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388813"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158061"
 ---
 # <a name="use-habitat-to-deploy-your-application-to-azure"></a>Habitat を使用してアプリケーションを Azure にデプロイする
 [Habitat](https://www.habitat.sh/) はアプリケーション パッケージ化およびランタイム システムであり、アプリケーションとその自動化をデプロイの単位としてバンドルします。 これにより、アプリケーションのための究極の移植性が作成され、書き換えや再パッケージ化を行う必要なしに、コンテナー、仮想マシン、ベア メタル、または PaaS にアプリケーションをデプロイできます。

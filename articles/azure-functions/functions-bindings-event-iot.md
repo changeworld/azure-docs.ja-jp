@@ -1,21 +1,16 @@
 ---
 title: Azure Functions の Azure IoT Hub バインド
 description: Azure Functions で Azure IoT Hub のバインドを使用する方法について説明します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: d8b749a294da379e99e61072ff7a3415c508d2ac
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 93a8dc600e8fadb16df8e82fbe02a1b186191d12
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097644"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227250"
 ---
 # <a name="azure-iot-hub-bindings-for-azure-functions"></a>Azure Functions の Azure IoT Hub バインド
 

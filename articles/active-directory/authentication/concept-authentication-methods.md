@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18eba93661d9c418a230ced8f9970047a869a7e3
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 4a7110ad3e6c9c66179c90c02c1572ee83cb9f15
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808417"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420763"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
@@ -158,7 +158,7 @@ Microsoft Authenticator アプリまたは他のサードパーティ アプリ�
 
 OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。 秘密鍵は Base32 でエンコードする必要があります。
 
-![OATH トークンの MFA サーバー OATH トークン ブレードへのアップロード](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+![OATH トークンの MFA サーバー OATH トークン ブレードへのアップロード](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
 OATH ハードウェア トークンはパブリック プレビュー段階でサポートされています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 

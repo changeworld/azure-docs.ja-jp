@@ -2,17 +2,17 @@
 title: クイックスタート - Azure PowerShell を使用して Azure プライベート DNS ゾーンを作成する
 description: この記事では、Azure DNS でプライベート DNS ゾーンとレコードを作成してテストします。 これは、Azure PowerShell を使用して最初のプライベート DNS ゾーンとレコードを作成して管理するためのステップバイステップ ガイドです。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 10/05/2019
-ms.author: victorh
-ms.openlocfilehash: 39c57c6afcf4f51bdda5830359bffcb13c3b5d8e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: allensu
+ms.openlocfilehash: 5532eb9897de2f746b194fb6bd496548e989b994
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163405"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210815"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure プライベート DNS ゾーンを作成する
 

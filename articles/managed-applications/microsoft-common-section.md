@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: a48c89785e0a448609026aab53364f6cf704e948
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: fd2c1105078b918043791fd0f18395409bb32f7c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331648"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151719"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft.Common.Section UI 要素
+
 見出しの下の 1 つまたは複数の要素をグループ化するコントロールです。
 
 ## <a name="ui-sample"></a>UI サンプル
+
 ![Microsoft.Common.Section](./media/managed-application-elements/microsoft.common.section.png)
 
 ## <a name="schema"></a>スキーマ
+
 ```json
 {
   "name": "section1",
@@ -49,6 +52,7 @@ ms.locfileid: "72331648"
 ```
 
 ## <a name="remarks"></a>解説
+
 - `elements` には少なくとも 1 つの要素を含める必要があります。ここには `Microsoft.Common.Section` 以外のすべての種類の要素を含めることができます。
 - この要素は `toolTip` プロパティをサポートしていません。
 
@@ -62,5 +66,6 @@ steps('configuration').section1.text1
 `Microsoft.Common.Section` という種類の要素には、それ自体の出力値はありません。
 
 ## <a name="next-steps"></a>次の手順
+
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

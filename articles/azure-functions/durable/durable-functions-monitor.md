@@ -1,20 +1,15 @@
 ---
 title: Durable Functions のモニター - Azure
 description: Azure Functions の Durable Functions 拡張機能を使って状態モニターを実装する方法を説明します。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5cb4602ac0431e09208953122f13b30124ab77f5
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 9c8edf5e8fb32160280a1ce9bff827c2e3fa14f8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614747"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232851"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 

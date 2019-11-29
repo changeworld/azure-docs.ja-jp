@@ -1,18 +1,14 @@
 ---
-title: Azure Backup を使用して VM の設定から Azure VM をバックアップする
+title: VM の設定から Azure VM をバックアップする
 description: この記事では、Azure Backup サービスを使用して単一の Azure VM または複数の Azure VM をバックアップする方法について説明します。
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.author: dacurwin
-ms.openlocfilehash: 232c027ef60a031df53f2439586a0ae459ab67d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 02cdab727adc29be99f52b262cb94de4fc4fe8f8
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747240"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172508"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM の設定から Azure VM をバックアップする
 

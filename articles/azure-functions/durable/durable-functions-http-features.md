@@ -2,18 +2,15 @@
 title: Durable Functions の HTTP 機能 - Azure Functions
 description: Azure Functions 用の Durable Functions 拡張機能の統合 HTTP 機能について説明します。
 author: cgillum
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: e9b2967905bc927432d1ca4606bc2b2ba2ac4108
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 3fcb777969f7d29b0e8698156dbdd0724f16f0b5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177358"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232869"
 ---
 # <a name="http-features"></a>HTTP 機能
 

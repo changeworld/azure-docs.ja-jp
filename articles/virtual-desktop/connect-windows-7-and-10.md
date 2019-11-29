@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 11/13/2019
 ms.locfileid: "74006280"
 ---
-# <a name="connect-with-the-windows-desktop-client"></a>Windows デスクトップ クライアントに接続する
+# <a name="connect-with-the-windows-desktop-client"></a>Windows デスクトップ クライアントを使用して接続する
 
 > 適用対象:Windows 7 および Windows 10
 

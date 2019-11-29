@@ -1,21 +1,16 @@
 ---
 title: Azure Functions における Mobile Apps のバインド
 description: Azure Functions で Azure Mobile Apps のバインドを使用する方法について説明します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 37192a25bff794ac019fd29b47e0e8ad161790c9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 474cdc52d34d3f5e00dee69b7cc9861042cbcc04
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097319"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231129"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions における Mobile Apps のバインド 
 

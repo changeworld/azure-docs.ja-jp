@@ -2,14 +2,14 @@
 author: paulbouwer
 ms.service: container-service
 ms.topic: include
-ms.date: 10/09/2019
+ms.date: 11/15/2019
 ms.author: pabouwer
-ms.openlocfilehash: 06479b4396ab26c280cc6246d774bc30b5ea1c76
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: d812baa15380b7824deaed081d2857fbc6e0b1b6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529831"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170798"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Istio istioctl クライアント バイナリをダウンロードしてインストールする
 
@@ -17,7 +17,7 @@ MacOS の bash ベース シェルの場合、次のように `curl` を使用�
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
-ISTIO_VERSION=1.3.2
+ISTIO_VERSION=1.4.0
 
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-osx.tar.gz" | tar xz
 ```

@@ -1,19 +1,14 @@
 ---
-title: Azure Resource Manager のセキュリティ コントロール
+title: セキュリティ コントロール
 description: Azure Resource Manager サービスを評価するための組み込みセキュリティ コントロールのチェックリスト。
-services: azure-resource-manager
-author: msmbaldwin
-manager: rkarlin
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 78f3f41ca2f0aa45d295fd9846cf3aa96cccea72
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b2916a87c5cef01605054569285362fcf1c649c8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390458"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147573"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>Azure Resource Manager のセキュリティ コントロール
 

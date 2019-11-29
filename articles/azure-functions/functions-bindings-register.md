@@ -1,20 +1,16 @@
 ---
 title: Azure Functions バインド拡張機能を登録する
 description: 環境に基づく Azure Functions バインド拡張機能の登録について説明します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 40dca0797d75597f4728423eb9d6d071a15d81b9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 599becae0225bea623c383ead49cd9abcea6fff2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129263"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231107"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions バインド拡張機能を登録する
 

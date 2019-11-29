@@ -6,14 +6,14 @@ author: bandersmsft
 ms.author: banders
 ms.date: 11/07/2019
 ms.topic: conceptual
-ms.service: billing
+ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 6bd70a58552a0217cff82cad10b11783aec64347
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 2e9611995a233f9890aebb90fc3b8deaeed8efc2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888415"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226324"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ登録の請求書
 

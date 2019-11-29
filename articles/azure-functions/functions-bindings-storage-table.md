@@ -1,21 +1,16 @@
 ---
 title: Azure Functions における Azure Table Storage のバインド
 description: Azure Functions で Azure Table のバインドを使用する方法について説明します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 464c1a8ab27f6615fdffd8efa6ab20d75e10a7c1
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 77f95cf02b5216f1946283143b828f915b351abc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71171188"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230993"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 

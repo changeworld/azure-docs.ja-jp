@@ -3,7 +3,7 @@ title: DNS ゾーンとレコードの概要 - Azure DNS | Microsoft Docs
 description: Microsoft Azure DNS での DNS ゾーンとレコードのホスティングに対するサポートの概要
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: jeconnoc
 editor: ''
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
-ms.author: victorh
-ms.openlocfilehash: fdf9b60e38ad37334fe6183bb1a9c60cce9f85e1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.author: allensu
+ms.openlocfilehash: e80de4a3102f9fec8ad06c0facd110b51558d338
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832067"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210995"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 

@@ -1,18 +1,14 @@
 ---
 title: Azure VM バックアップについて
 description: この記事では、Azure Backup サービスを使用して Azure 仮想マシンをバックアップする方法と、ベスト プラクティスに従う方法について説明します。
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: dacurwin
-ms.openlocfilehash: e22c4c24e83be0f89b306eed0eb1d80bdd9387e1
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f1c89b9ac7aeb51f43ef84267b20f83b408fd56c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747206"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172486"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM バックアップの概要
 

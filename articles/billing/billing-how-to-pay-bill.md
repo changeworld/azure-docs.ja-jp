@@ -2,25 +2,22 @@
 title: Microsoft Azure の請求書の支払い | Microsoft Docs
 description: Azure portal での請求書の支払い方法について説明します。
 keywords: 請求, 支払い期限を過ぎている, 残高, 今支払う,
-services: billing
-documentationcenter: ''
 author: jureid
 manager: jureid
-editor: ''
 tags: billing, past due, pay now, bill, invoice, pay
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 4df0939137a529dd35f8f61ff90ee6da43ec5d61
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 68c9838fc374bd3bd8a4d25f3d6f1c4bdace8e95
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709664"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226186"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Microsoft Azure の請求書の支払い方法
 
@@ -50,7 +47,7 @@ Azure portal で請求書の支払いを行うには、課金プロファイル�
 1. 新しいブレードで **[支払い方法の選択]** をクリックして、既存のクレジット カードを選択するか、新しいカードを追加します。<!-- screenshot of select payment method link -->
 1. 支払い方法を選択したら、 **[今支払う]** をクリックします。
 
-請求書ブレードで請求書の状態が支払済みに更新されます。 
+請求書ブレードで請求書の状態が支払済みに更新されます。
 
 <!-- pay now from invoice blade -->
 

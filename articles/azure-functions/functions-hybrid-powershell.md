@@ -2,17 +2,15 @@
 title: PowerShell 関数を使用してリモートのオンプレミス リソースを管理する
 description: PowerShell 関数アプリをオンプレミス リソースに接続するように Azure Relay のハイブリッド接続を構成し、それを使用してリモートからオンプレミス リソースを管理する方法について説明します。
 author: eamono
-manager: gailey777
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 9/5/2019
 ms.author: eamono
-ms.openlocfilehash: 2a3cf79883d79eb82c361731eb6a632c2df3c9be
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299423"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226933"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Azure Functions の PowerShell と App Service ハイブリッド接続を使用してハイブリッド環境を管理する
 

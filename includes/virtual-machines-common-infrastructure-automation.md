@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 1a18812c6447266d34f2c8aa1ccff8984f68570a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f7dcf342a1b9b2107138044dfc207d6dbcb42e9e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008821"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260791"
 ---
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
 
@@ -69,7 +69,7 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 
 以下の項目について説明します。
 
-- [基本的な DSC 構成を作成する](https://msdn.microsoft.com/powershell/dsc/quickstarts/website-quickstart)。
+- [基本的な DSC 構成を作成する](/powershell/scripting/dsc/quickstarts/website-quickstart)。
 - [DSC プル サーバーを構成する](/powershell/scripting/dsc/pull-server/pullserver)。
 - [Linux 用の DSC を使用する](/powershell/scripting/dsc/getting-started/lnxgettingstarted)。
 

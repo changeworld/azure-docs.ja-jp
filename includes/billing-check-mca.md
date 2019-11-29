@@ -1,15 +1,15 @@
 ---
 author: amberbhargava
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 8767340ffc749381a932c51f926376be66f8b4e5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f94503c42e689151591a76e7604df0fa223b106d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850412"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223039"
 ---
 契約の種類を確認して、Microsoft 顧客契約の請求先アカウントへのアクセスがあるかどうかを判断します。
  

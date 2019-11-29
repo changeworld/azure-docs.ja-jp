@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: f96c78e636b873a0238f6e34d9b80d1036e5ba4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9cb075791e57889279ecbd3505792bddbecbb139
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969105"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229909"
 ---
 # <a name="cloudyn-walk-through-training-videos"></a>Cloudyn のチュートリアル トレーニング ビデオ
 

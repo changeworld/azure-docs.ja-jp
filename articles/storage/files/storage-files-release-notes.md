@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/8/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 01408e3592af58f05db32e4722e4a85cd2acd0ef
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 8328170d73d75e8e2eb1a84881375ce21c72a61b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747787"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227829"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -243,7 +243,7 @@ Windows Server で Azure File Sync エージェントをインストールして
   - 既定では、どちらのイベント チャネルもそれぞれ最大 1 MB まで格納できます。イベント チャネルのサイズを増やすことによって、報告されるファイルの量を増やすことができます。
 - FIPS モードのサポート
   - Azure File Sync では、Azure File Sync エージェントがインストールされているサーバーで、FIPS モードを有効にできるようになりました。
-    - サーバーで FIPS モードを有効にする前に、サーバーに Azure File Sync エージェントと [PackageManagement モジュール](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2)をインストールします。 サーバーで既に FIPS が有効になって場合は、[PackageManagement モジュール](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2)をサーバーに[手動でダウンロード](https://docs.microsoft.com/powershell/gallery/how-to/working-with-packages/manual-download)します。
+    - サーバーで FIPS モードを有効にする前に、サーバーに Azure File Sync エージェントと [PackageManagement モジュール](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2)をインストールします。 サーバーで既に FIPS が有効になって場合は、[PackageManagement モジュール](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2)をサーバーに[手動でダウンロード](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)します。
 - クラウドを使った階層化と同期に関して、さまざまな点で信頼性が向上しています
 
 ### <a name="evaluation-tool"></a>評価ツール

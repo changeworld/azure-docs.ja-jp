@@ -1,20 +1,16 @@
 ---
 title: Durable Functions でのバージョン管理 - Azure
 description: Azure Functions の Durable Functions 拡張機能にバージョン管理を実装する方法を説明します。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 4b4e82acbd3037c70b87731c0661605041090435
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 87cbb94dbab241630dc7585bdf4314d858d5b4da
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614520"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232759"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのバージョン管理
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577968"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195930"
 ---
 # <a name="about-voice-assistants"></a>音声アシスタントについて
 
@@ -39,7 +39,8 @@ Azure Speech Services を使用した音声アシスタントにより、開発�
 アシスタントで扱う処理がまだ決まっていない場合には、既定の最適な選択肢として [Direct Line Speech](direct-line-speech.md) をお勧めします。 [仮想アシスタント ソリューションとエンタープライズ テンプレート](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview)や [QnA Maker サービス](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview)を使用して、一般的なパターンを作成したり既存のナレッジ ソースを使用したりするなど、豊富なツール群と作成支援機能が統合されています。
 
 [カスタム コマンド (プレビュー)](custom-commands.md) は、作成とホスティングに関して、自然言語によるコマンド アンド コントロールのシナリオに特化した効率的なエクスペリエンスが特徴です。
-   ![アシスタント ソリューションの比較](media/voice-assistants/assistant-solution-comparison.png "Compアシスタント ソリューションの比較")
+
+   ![アシスタント ソリューションの比較](media/voice-assistants/assistant-solution-comparison.png "アシスタント ソリューションの比較")
 
 ## <a name="core-features"></a>コア機能
 

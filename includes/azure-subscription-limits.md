@@ -3,17 +3,17 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: billing
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: e8fe694cc757f5bcb9cf470f17306e8aa0028744
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5b2ab103c2384b53f384c45945b387585fdbb4b4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67181535"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224406"
 ---
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |

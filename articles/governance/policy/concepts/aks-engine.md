@@ -3,12 +3,12 @@ title: AKS エンジン用 Azure Policy の概要
 description: Azure Policy に Gatekeeper v3 の CustomResourceDefinitions と Open Policy Agent と AKS エンジンを使用してクラスターを管理する方法について説明します。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 904575680b62233ad5ec7422abbf66cf57dc4e11
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072059"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267250"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>AKS エンジン用 Azure Policy の概要
 
@@ -282,6 +282,6 @@ Kubernetes の Azure Policy アドオンを使うと、制限されたクラス�
 - [ポリシー定義の構造](definition-structure.md)を確認します。
 - 「[Policy の効果について](effects.md)」を確認します。
 - [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)方法を学習します。
+- [コンプライアンス データを取得する](../how-to/get-compliance-data.md)方法を学習します。
 - [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

@@ -1,20 +1,14 @@
 ---
-title: Azure Functions の zip プッシュ デプロイ | Microsoft Docs
+title: Azure Functions の zip プッシュ デプロイ
 description: Kudu デプロイ サービスの .zip ファイル デプロイ機能を使用して、Azure Functions を発行します。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.author: glenga
-ms.openlocfilehash: c411ff6b3a7152adaaf29045f4c3b3a3deb22d09
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 88455e85607c608757067cea9d54b60e30cacb50
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087588"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233060"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions の zip デプロイ
 

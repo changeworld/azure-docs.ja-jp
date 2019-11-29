@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 8/21/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 07e2067571c7bc7403ee8a1d1a0600c451e1581f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 1679862b1660d3c8b2505c6e0c54f203f5d4665d
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051175"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383538"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Azure コンテナー インスタンス リソースを作成する
 

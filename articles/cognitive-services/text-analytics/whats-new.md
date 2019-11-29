@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 15beb8d3e326f04f1ae61c26f00e9428d95f6bc4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6ef23c03f01cd8e83d4327f358eaf12209659ce8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031372"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286453"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
@@ -29,8 +29,8 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
     * 電話番号
     * IP アドレス
 
-* 個人情報エンティティ型の認識に対する[新しいエンドポイント](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) (英語のみ)
-* [エンティティの認識]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)と[エンティティのリンク]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)に対する個別のエンドポイント。
+* 個人情報エンティティ型の認識に対する[新しいエンドポイント](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) (英語のみ)
+* [エンティティの認識](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)と[エンティティのリンク](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)に対する個別のエンドポイント。
 
 エンティティのリンクでは、英語とスペイン語がサポートされています。 NER の言語サポートは、エンティティ型によって異なります。 
 
@@ -39,7 +39,7 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>感情分析 v3 のパブリック プレビュー - 2019 年 10 月
 
-現在、[感情分析の次期バージョン](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)はパブリック プレビューで利用できます。API のテキスト分類とスコア付けの精度と詳細度が向上しました。 また、次の機能も提供されます。
+現在、[感情分析の次期バージョン](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)はパブリック プレビューで利用できます。API のテキスト分類とスコア付けの精度と詳細度が向上しました。 また、次の機能も提供されます。
 
 * テキスト内のさまざまなセンチメントに対する自動ラベル付け。
 * ドキュメントおよび文レベルでの感情分析と出力。 

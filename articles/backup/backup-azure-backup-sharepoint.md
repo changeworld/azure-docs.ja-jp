@@ -1,19 +1,15 @@
 ---
-title: Azure への SharePoint ファームの DPM/Azure Backup サーバー保護
+title: DPM を使用した SharePoint ファームの Azure へのバックアップ
 description: この記事では、Azure への SharePoint ファームの DPM/Azure Backup サーバー保護の概要について説明します
 ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: dacurwin
-ms.openlocfilehash: 830dc313ea321f74c495f46c7c2d4ea5f9d4e5b5
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 1750270b3383e815b9255273923b50d2879fdba6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968556"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173336"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>DPM を使用した SharePoint ファームの Azure へのバックアップ
 

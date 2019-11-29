@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: c6d4ef50645902aecd57ceb9fc48b7d99bf22d53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1f96b42e58bcb09cfc2836c993626a889669fc0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104868"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151461"
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft.Storage.StorageAccountSelector UI 要素
+
 新規または既存のストレージ アカウントを選択するコントロールです。
 
 ## <a name="ui-sample"></a>UI サンプル
@@ -56,12 +57,6 @@ ms.locfileid: "62104868"
 }
 ```
 
-## <a name="remarks"></a>解説
-- 指定した場合、`defaultValue.name` は一意であることが自動的に検証されます。 ストレージ アカウント名が一意でない場合、ユーザーは別の名前を指定するか、既存のストレージ アカウントを選択する必要があります。
-- `defaultValue.type` の既定値は **Premium_LRS** です。
-- `constraints.allowedTypes` で指定されていない型はすべて非表示となり、`constraints.excludedTypes` で指定されていない型はすべて表示されます。 `constraints.allowedTypes` と `constraints.excludedTypes` は両方ともオプションとして使用できますが、同時に使用することはできません。
-- `options.hideExisting` が **true** である場合、既存のストレージ アカウントは選択できません。 既定値は **false** です。
-
 ## <a name="sample-output"></a>サンプル出力
 
 ```json
@@ -72,6 +67,13 @@ ms.locfileid: "62104868"
   "newOrExisting": "new"
 }
 ```
+
+## <a name="remarks"></a>解説
+
+- 指定した場合、`defaultValue.name` は一意であることが自動的に検証されます。 ストレージ アカウント名が一意でない場合、ユーザーは別の名前を指定するか、既存のストレージ アカウントを選択する必要があります。
+- `defaultValue.type` の既定値は **Premium_LRS** です。
+- `constraints.allowedTypes` で指定されていない型はすべて非表示となり、`constraints.excludedTypes` で指定されていない型はすべて表示されます。 `constraints.allowedTypes` と `constraints.excludedTypes` は両方ともオプションとして使用できますが、同時に使用することはできません。
+- `options.hideExisting` が **true** である場合、既存のストレージ アカウントは選択できません。 既定値は **false** です。
 
 ## <a name="next-steps"></a>次の手順
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。

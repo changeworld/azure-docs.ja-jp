@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: bebfad57da41d257749acd3842a75ace114ed643
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a018a03c026f1ee5e0233f3782a7b26a8ae3c4f5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492761"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221627"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Azure オーサリング リソースに移行するための手順
 
 Azure オーサリング リソースを使用するには、Language Understanding (LUIS) ポータルから、所有しているすべてのアプリを移行します。
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

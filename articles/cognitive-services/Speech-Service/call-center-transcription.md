@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a2025eb611a394cf4b67c05a4019ccf03bcadf9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2a8bea01d67c1820dc4f5c0a4922872541449a9e
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075863"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538170"
 ---
 # <a name="speech-service-for-telephony-data"></a>電話データのための Speech サービス
 
@@ -95,7 +95,6 @@ Speech サービスがコール センターで利用される場合、機能的
 - Speech サービスは、音声テキスト変換の文字起こしに使用されます。 バッチ文字起こし API を使用するには、Speech サービスの標準サブスクリプション (S0) が必要です。 Free サブスクリプション (F0) は機能しません。
 - [Azure Storage](https://azure.microsoft.com/services/storage/) は、電話データと、バッチ文字起こし API によって返されたトランスクリプトの保存に使用されます。 このストレージ アカウントでは通知を利用する必要があります。特に、新しいファイルが追加されたときに通知する必要があります。 通知は文字起こしプロセスのトリガーに利用されます。
 - [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) は、録音ごとに Shared Access Signature (SAS) URI を作成し、HTTP POST 要求をトリガーして文字起こしを開始するために使用されます。 また、Azure Functions は、バッチ文字起こし API で文字起こしを回収し、削除するための要求の作成に使用されます。
-- [Webhook](webhooks.md) は、文字起こしが完了したとき、通知を取得するために使用されます。
 
 Microsoft 社内では以上のテクノロジを利用し、バッチ モードの Microsoft カスタマー コールを支援しています。
 ![バッチ アーキテクチャ](media/scenarios/call-center-batch-pipeline.png)

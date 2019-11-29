@@ -2,17 +2,17 @@
 title: Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する
 description: プライベート エンドポイントを使用して、Azure 内でストレージ アカウントに非公開で接続する方法について説明します。
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 8a72f70fbc1ab6052587beb1d949dd73b1ad3559
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.author: allensu
+ms.openlocfilehash: cfe0caaf199821358f8a66ac65ae75c38336c725
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376149"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228086"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する
 Azure プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 仮想マシン (VM) などの Azure リソースとプライベート リンク リソースとの非公開での通信が可能になります。

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 238b76040559148c48aa67b99e856a5987b71a7e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 51b0d02443df872a7fae13116ea77b13d05055fa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123159"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225464"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
 
@@ -26,6 +26,7 @@ LUIS アプリと [Bing Spell Check API V7](https://azure.microsoft.com/services
 
 
 ## <a name="create-first-key-for-bing-spell-check-v7"></a>最初の Bing Spell Check V7 キーの作成
+
 [最初の Bing Spell Check API v7 キー](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)は無料です。 
 
 ![無料のキーの作成](./media/luis-tutorial-bing-spellcheck/free-key.png)
@@ -61,9 +62,10 @@ LUIS アプリと [Bing Spell Check API V7](https://azure.microsoft.com/services
 
 10. 最初のキーをコピーします。 必要なのは 2 つのキーのうち 1 つだけです。 
 
-## <a name="using-the-key-in-luis-test-panel"></a>LUIS テスト パネルでのキーの使用
-LUIS では 2 つの場所でキーを使用します。 1 つ目は[テスト パネル](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)です。 キーは LUIS には保存されず、セッションごとに変わります。 テスト パネルで Bing Spell Check API v7 サービスを発話に適用するには、そのたびにキーを設定する必要があります。 キーの設定については、テスト パネルの[説明](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel)に従ってください。
-
+<!--
+## Using the key in LUIS test panel
+There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
+-->
 ## <a name="adding-the-key-to-the-endpoint-url"></a>エンドポイント URL へのキーの追加
 エンドポイント クエリでは、スペルの修正を適用するクエリごとに、キーがクエリ文字列パラメーターに渡される必要があります。 LUIS を呼び出すチャットボットを使用することも、LUIS エンドポイント API を直接呼び出すこともできます。 エンドポイントがどのように呼び出されたかに関係なく、すべての呼び出しに、スペルの修正が適切に動作するうえで必要な情報が含まれていなければなりません。
 

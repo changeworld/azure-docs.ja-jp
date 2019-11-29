@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: f1c571e421dccad366abf403de350b07113e04ba
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: bd93773e4d3c5e06bca752612dac6c563a2f5da1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130038"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383488"
 ---
 ### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>感情分析コンテナーを AKS クラスターにデプロイする
 
@@ -66,6 +66,13 @@ ms.locfileid: "71130038"
             image: mcr.microsoft.com/azure-cognitive-services/sentiment
             ports:
             - containerPort: 5000
+            resources:
+              requests:
+                memory: 2Gi
+                cpu: 1
+              limits:
+                memory: 4Gi
+                cpu: 1
             env:
             - name: EULA
               value: "accept"
@@ -91,7 +98,7 @@ ms.locfileid: "71130038"
 1. ターゲットとして *sentiment.yaml* ファイルを指定して Kubernetes `apply` コマンドを実行します。
 
     ```console
-    kuberctl apply -f sentiment.yaml
+    kubectl apply -f sentiment.yaml
     ```
 
     コマンドによってデプロイ構成が正常に適用された後、次の出力のようなメッセージが表示されます。

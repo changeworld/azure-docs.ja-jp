@@ -1,22 +1,17 @@
 ---
 title: Azure Functions における Azure Queue Storage のバインド
 description: Azure Functions で Azure Queue Storage トリガーと出力バインドを使用する方法について説明します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: c7f143f5d026b2fa6fa34c75d3616b05c3e97092
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 3c27ff06237336d37ad1b5bed1b90aaa6b076f0b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72294296"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231010"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 

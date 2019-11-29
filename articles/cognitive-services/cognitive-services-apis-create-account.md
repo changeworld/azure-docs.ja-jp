@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: 14157ed22ea40a2157f696e91c59af9b58110bf2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: dd4444bf42bcc8dda95f8fa37b42a365538efa85
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819943"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482881"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Azure portal を使用して Cognitive Services リソースを作成する
 
@@ -64,7 +64,7 @@ ms.locfileid: "72819943"
     |--|--|
     | **Name** | Cognitive Sservices リソースのわかりやすい名前。 例: *MyCognitiveServicesResource*。 |
     | **サブスクリプション** | 使用できる Azure サブスクリプションのいずれかを選択します。 |
-    | **Location** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 Azure Cognitive Services を呼び出すときに必要になることがあるので、Azure の場所は記憶しておいてください。 |
+    | **Location** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
     | **[価格レベル]** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
     | **リソース グループ** | Cognitive Services リソースを含むことになる Azure リソース グループ。 新しいグループを作成することも、既存のグループに追加することもできます。 |
 
@@ -78,7 +78,7 @@ ms.locfileid: "72819943"
     |--|--|
     | **Name** | Cognitive Sservices リソースのわかりやすい名前。 例: *TextAnalyticsResource*。 |
     | **サブスクリプション** | 使用できる Azure サブスクリプションのいずれかを選択します。 |
-    | **Location** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 Azure Cognitive Services を呼び出すときに必要になることがあるので、Azure の場所は記憶しておいてください。 |
+    | **Location** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
     | **[価格レベル]** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
     | **リソース グループ** | Cognitive Services リソースを含むことになる Azure リソース グループ。 新しいグループを作成することも、既存のグループに追加することもできます。 |
 
@@ -87,6 +87,7 @@ ms.locfileid: "72819943"
     **Create** をクリックしてください。
 
     ***
+
 
 ## <a name="get-the-keys-for-your-resource"></a>リソースのキーを取得する
 

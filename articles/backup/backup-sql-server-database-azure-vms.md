@@ -1,19 +1,15 @@
 ---
-title: Azure VM での SQL Server データベースのバックアップ | Microsoft Docs
+title: Azure VM での SQL Server データベースのバックアップ
 description: この記事では、Azure Backup を使用して Azure 仮想マシン上の SQL Server データベースをバックアップする方法について説明します。
 ms.reviewer: vijayts
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.author: dacurwin
-ms.openlocfilehash: a6752ffcf434b81c3013a2bd43c784bc92a8c1fe
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3d6875d8c466400da79e1b749d11914b3bf77d86
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747178"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172102"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Azure VM での SQL Server データベースのバックアップ
 

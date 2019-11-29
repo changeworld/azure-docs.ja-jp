@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 35812ec4585e3189282c5acf0aa09d309c33c7ed
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7ae8fbd404c9c2b650e4eed30c219e8ffafe55f7
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051561"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383521"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Text Analytics コンテナーを Azure Container Instances にデプロイする
 

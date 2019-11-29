@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 11/04/2019
+ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a31498ec5459604d89fa72a6f2a003dbc1189eed
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 51990e02eada52263006627be803c4073b9361ac
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685373"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555400"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL Data Warehouse のワークロード グループの分離 (プレビュー)
 
@@ -88,5 +88,5 @@ REQUEST_MIN_RESOURCE_GRANT_PERCENT を超える値に REQUEST_MAX_RESOURCE_GRANT
 ## <a name="next-steps"></a>次の手順
 
 - [クイック スタート: ワークロードの分離を構成する](quickstart-configure-workload-isolation-tsql.md)
-- [ワークロード グループを作成する](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [ワークロード グループを作成する](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
 - [リソース クラスからワークロード グループへの変換](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md)

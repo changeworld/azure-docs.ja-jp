@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: laobri
 ms.author: copeters
 author: lostmygithubaccount
-ms.date: 10/15/2019
+ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 20bc148e392900aecb63ad393ec6e90cda65585a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 18b92fe090895c3aa08c3c931dfa8bd12db0f2d3
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839099"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406451"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

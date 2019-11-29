@@ -3,19 +3,19 @@ title: Microsoft Partner Agreement の課金アカウントの概要 - Azure CSP
 description: Microsoft Partner Agreement の課金アカウントについて理解する (CSP)
 author: bandersmsft
 manager: amberbhargava
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 6bb0f3ea1b4e3bf17ed3bf26b838da8f2a694673
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c27f47c68dc5320d7e21434aebba829fe29be2c2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898542"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74222647"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Microsoft Partner Agreement の課金アカウントの概要
 

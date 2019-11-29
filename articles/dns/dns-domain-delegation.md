@@ -2,17 +2,17 @@
 title: Azure DNS の委任の概要
 description: ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.date: 2/19/2019
-ms.author: victorh
+ms.author: allensu
 ms.topic: conceptual
-ms.openlocfilehash: 70c1c1ab0dd5d1998054cf0c68325022803dff06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d8a87e199736bf51fcdc051c17c2fded3402b79
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60563162"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212099"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Azure DNS による DNS ゾーンの委任
 

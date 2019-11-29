@@ -1,21 +1,16 @@
 ---
 title: Azure Functions における Azure Blob Storage のバインド
 description: Azure Functions で Azure Blob Storage のトリガーとバインディングを使用する方法について説明します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: b565a48b56162d19a07f0f54bfe780b7dda04b96
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b2782ce39bbc2ca86c63b178535fc6b67b9dadfe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177392"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231039"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 

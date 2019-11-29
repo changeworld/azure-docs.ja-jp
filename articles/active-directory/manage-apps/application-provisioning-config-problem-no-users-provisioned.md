@@ -1,5 +1,5 @@
 ---
-title: Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない | Microsoft Docs
+title: Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない
 description: Azure AD でユーザー プロビジョニングのために構成した Azure AD ギャラリー アプリケーションにユーザーが表示されない場合に発生する一般的な問題をトラブルシューティングする方法
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0562027bb599b596b640e0c1a669447e3fed9680
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1683f645e1ed81a8a415214fbb83ee80572be3ee
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034163"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275839"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない
 アプリケーションで自動プロビジョニングが構成された後 (アプリに接続するために Azure AD に提供されたアプリの資格情報が有効であることの確認を含む)、そのアプリに対してユーザーまたはグループ、あるいはその両方がプロビジョニングされます。 プロビジョニングは、次のものによって決定されます。

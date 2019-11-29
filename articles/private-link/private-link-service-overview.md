@@ -2,17 +2,17 @@
 title: Azure Private Link サービスとは
 description: Azure Private Link サービスについて学習します。
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: cad8e3e4f32a8773fe914362b637d39765a23c21
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.author: allensu
+ms.openlocfilehash: 8ac93e7ed1638137e70086ac22fa9bb97606830e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672530"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228056"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 

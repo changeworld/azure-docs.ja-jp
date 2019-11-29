@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall のログとメトリックの概要
-description: この記事では、Azure Firewall の診断ログとメトリックの概要を示します。
+description: Azure Firewall を監視するには、ファイアウォール ログを使用できます。 また、アクティビティ ログを使用して、Azure Firewall リソースに対する操作を監査することもできます。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: fea00358fc21cf6f57673e14ebd0feafe532b620
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876556"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166989"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall のログとメトリック
 

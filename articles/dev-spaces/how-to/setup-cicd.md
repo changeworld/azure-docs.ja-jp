@@ -1,8 +1,6 @@
 ---
 title: Azure Dev Spaces と共に CI/CD を使用する
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
@@ -10,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 7058806e58dbc2d9a196062c129688e6a96c5f31
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264461"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280020"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces と共に CI/CD を使用する
 

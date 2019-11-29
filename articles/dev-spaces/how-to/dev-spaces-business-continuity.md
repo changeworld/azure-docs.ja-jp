@@ -1,8 +1,6 @@
 ---
-title: Azure Dev Spaces での事業継続とディザスター リカバリー
-titleSuffix: Azure Dev Spaces
+title: 事業継続とディザスター リカバリー
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
@@ -10,12 +8,12 @@ ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 2da92b4fcd98024ada8d852d65e08fe8c70e3884
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c7594059a5627c3967aba52144ed3dc99cb510e3
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704053"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327286"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Azure Dev Spaces での事業継続とディザスター リカバリー
 

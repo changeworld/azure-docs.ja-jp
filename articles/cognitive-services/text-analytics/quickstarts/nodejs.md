@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 2b98949ca93be5ec0324561a053df730705af152
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: fe07290eaa68965e2ebe1f9220fc963c915f48f1
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671874"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284955"
 ---
 # <a name="quickstart-use-nodejs-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Node.js を使用して Text Analytics Cognitive Service を呼び出す  
 <a name="HOLTop"></a>
 
 この記事では、 [Text Analytics API シリーズ](//go.microsoft.com/fwlink/?LinkID=759711) を Node.JS で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
 
-API の技術ドキュメントについては、[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)に関するページを参照してください。
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -150,7 +150,7 @@ get_language(documents);
 ```
 <a name="SentimentAnalysis"></a>
 
-## <a name="analyze-sentiment"></a>センチメントを分析する
+## <a name="analyze-sentiment"></a>感情を分析する
 
 Sentiment Analysis API では、[Sentiment メソッド](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 センチメント分析を使用すると、肯定的または否定的な感情の手掛かりを探して未加工のテキストを分析することで、ブランドまたはトピックに対して顧客がどう思っているのかを突き止めることができます。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
 

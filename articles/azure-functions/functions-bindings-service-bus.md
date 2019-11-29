@@ -1,22 +1,17 @@
 ---
 title: Azure Functions における Azure Service Bus のバインド
 description: Azure Functions で Azure Service Bus トリガーとバインドを使用する方法を説明します。
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: cf78712515ab91c66161d04dac0df601c5dcb625
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d27058ed0ff3044d98d8428b3065b02e2c24c451
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082780"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231059"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 

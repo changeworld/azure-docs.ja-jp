@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: REST API を使用して Recovery Services コンテナーを作成する'
+title: REST API を使用して Recovery Services コンテナーを作成する
 description: この記事では、REST API を使用して Azure VM Backup のバックアップ操作と復元操作を管理する方法について説明します。
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure VM のバックアップ; Azure VM の復元;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: dacurwin
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 7c9d165f623367d1c888b90f76e96ce8fa2e8f89
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747570"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173415"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>REST API を使用して Azure Recovery Services コンテナーを作成する
 

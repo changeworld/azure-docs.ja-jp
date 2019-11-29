@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: b44bcf7edeaad07fbe0b3093ba3c7100cb0c24c4
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 72e5018dc1212e57dc190c05cc54158d37ca7fe1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432068"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231495"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>目的の状態にサーバーを構成して誤差を管理する
 
@@ -136,14 +136,14 @@ Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 
 ## <a name="working-with-partial-configurations"></a>部分構成の操作
 
-Azure Automation State Configuration では [部分構成](/powershell/dsc/pull-server/partialconfigs) の使用をサポートします。
+Azure Automation State Configuration では [部分構成](/powershell/scripting/dsc/pull-server/partialconfigs) の使用をサポートします。
 このシナリオでは、DSC は複数の構成を別々に管理するように構成されており、各構成は Azure Automation から取得されます。
 ただし、ノードに割り当てることができる構成はAutomation アカウントあたり 1 つだけです。
 つまり、1 つのノードに 2 つの構成を使用している場合、2 つの Automation アカウントが必要になります。
 
-プル サービスから部分構成を登録する方法の詳細については、[部分構成](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)に関するドキュメントを参照してください。
+プル サービスから部分構成を登録する方法の詳細については、[部分構成](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode)に関するドキュメントを参照してください。
 
-構成をコードとして使用し、チームが連携してサーバーを共同で管理する方法の詳細については、「[Understanding DSC's role in a CI/CD Pipeline (CI/CD パイプラインの DSC のロールを理解する)](/powershell/dsc/overview/authoringadvanced)」を参照してください。
+構成をコードとして使用し、チームが連携してサーバーを共同で管理する方法の詳細については、「[Understanding DSC's role in a CI/CD Pipeline (CI/CD パイプラインの DSC のロールを理解する)](/powershell/scripting/dsc/overview/authoringadvanced)」を参照してください。
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>管理対象ノードの準拠状態を確認する
 

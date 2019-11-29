@@ -2,17 +2,17 @@
 title: 'Azure Private Link サービスのソース IP アドレスのネットワーク ポリシーを無効にする '
 description: Azure Private Link のネットワーク ポリシーを無効にする方法について学習します
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 53df209d080cf91be9c558b43edaa618c0748fc5
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.author: allensu
+ms.openlocfilehash: 22dbb12de0793db8aac12f610ff94380542d426a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101548"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228103"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>Private Link サービスのソース IP のネットワーク ポリシーを無効にする
 

@@ -8,13 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: kgremban
-ms.custom: seodec18
-ms.openlocfilehash: 325b69eb7b9b069db0ba49b4578541ee801c3444
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 649c7f620b83464d1bb56cf4b8191b0747105f01
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476171"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457226"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>IoT Edge デバイス ゲートウェイ経由で Modbus TCP デバイスに接続する
 

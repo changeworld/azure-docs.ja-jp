@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 6a9363472e1d5770232ca9a0b151fb309d9c4c75
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: d3b65174f3d161e0b8780a890f297d9d1c812b44
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377445"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383455"
 ---
 ## <a name="create-a-cognitive-services-text-analytics-resource"></a>Cognitive Services Text Analytics リソースを作成する
 

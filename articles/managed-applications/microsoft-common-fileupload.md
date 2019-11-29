@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b7f73dcfe3e0e2827083feba906e2efcd0265305
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 03eff6afb22ea3306bf7f8191f4eca3ccad39938
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331712"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151568"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 要素
+
 アップロードするファイルを 1 つまたは複数指定できるコントロールです。
 
 ## <a name="ui-sample"></a>UI サンプル
+
 ![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
 
 ## <a name="schema"></a>スキーマ
+
 ```json
 {
   "name": "element1",
@@ -47,16 +50,8 @@ ms.locfileid: "72331712"
 }
 ```
 
-## <a name="remarks"></a>解説
-- `constraints.accept` は、ブラウザーのファイル ダイアログに表示されるファイルの種類を指定します。 [HTML5 の仕様](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept)を参照して、使用できる値を確認します。 既定値は **null** です。
-- `options.multiple` が **true** に設定されている場合、ユーザーはブラウザーのファイル ダイアログ内の複数のファイルを選択できます。 既定値は **false** です。
-- この要素は、`options.uploadMode` の値に基づいた 2 つのモードでのファイルのアップロードをサポートしています。 **file** を指定すると、出力にファイルの内容が BLOB として含まれます。 **url** を指定すると、ファイルは一時的な場所にアップロードされ、出力には BLOB の URL が含まれます。 一時的な BLOB は 24 時間後に消去されます。 既定値は **file** です。
-- アップロードされたファイルは保護されます。 出力 URL には、デプロイ中にファイルにアクセスするための [SAS トークン](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)が含まれています。
-- `options.openMode` の値はファイルの読み取り方法を決定します。 ファイルがプレーン テキストである場合は **text** を指定し、そうでない場合は **binary** を指定します。 既定値は **text** です。
-- `options.uploadMode` が **file** に設定され、`options.openMode` が **binary** に設定されている場合、出力は Base64 でエンコードされます。
-- `options.encoding` はファイルを読み取る際に使用するエンコード方法を指定します。 既定値は **UTF-8** であり、これは `options.openMode` が **text** に設定されている場合にのみ使用されます。
-
 ## <a name="sample-output"></a>サンプル出力
+
 options.multiple が false で options.uploadMode が file である場合、出力にはファイルの内容が JSON 文字列として含まれます。
 
 ```json
@@ -91,7 +86,17 @@ options.multiple が true で options.uploadMode が url である場合、出�
 
 CreateUiDefinition をテストする際、一部のブラウザー (Google Chrome など) では、Microsoft.Common.FileUpload 要素によって生成された URL がブラウザー コンソールで切り詰められます。 完全な URL をコピーするには、個々のリンクを右クリックしなければならない場合があります。
 
+## <a name="remarks"></a>解説
+
+- `constraints.accept` は、ブラウザーのファイル ダイアログに表示されるファイルの種類を指定します。 [HTML5 の仕様](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept)を参照して、使用できる値を確認します。 既定値は **null** です。
+- `options.multiple` が **true** に設定されている場合、ユーザーはブラウザーのファイル ダイアログ内の複数のファイルを選択できます。 既定値は **false** です。
+- この要素は、`options.uploadMode` の値に基づいた 2 つのモードでのファイルのアップロードをサポートしています。 **file** を指定すると、出力にファイルの内容が BLOB として含まれます。 **url** を指定すると、ファイルは一時的な場所にアップロードされ、出力には BLOB の URL が含まれます。 一時的な BLOB は 24 時間後に消去されます。 既定値は **file** です。
+- アップロードされたファイルは保護されます。 出力 URL には、デプロイ中にファイルにアクセスするための [SAS トークン](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)が含まれています。
+- `options.openMode` の値はファイルの読み取り方法を決定します。 ファイルがプレーン テキストである場合は **text** を指定し、そうでない場合は **binary** を指定します。 既定値は **text** です。
+- `options.uploadMode` が **file** に設定され、`options.openMode` が **binary** に設定されている場合、出力は Base64 でエンコードされます。
+- `options.encoding` はファイルを読み取る際に使用するエンコード方法を指定します。 既定値は **UTF-8** であり、これは `options.openMode` が **text** に設定されている場合にのみ使用されます。
 
 ## <a name="next-steps"></a>次の手順
+
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

@@ -1,18 +1,14 @@
 ---
-title: Azure Backup の機能についての共通の質問への回答
+title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.author: dacurwin
-ms.openlocfilehash: efd2959547e13872bfa73a0a8e4b9fda62ea5728
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f95a4e7e9084c304838b01bdfaceee261d8151cf
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074318"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173225"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -96,6 +92,8 @@ Windows Storage Server 2012 R2 64 ビット | Standard、Workgroup、Essential |
 Windows Storage Server 2012 64 ビット | Standard、Workgroup | 最新の Service Pack/更新プログラムが適用されていること。
 Windows Server 2008 R2 SP1 64 ビット | Standard、Enterprise、Datacenter、Foundation | 最新の更新プログラムが適用されていること。
 Windows Server 2008 64 ビット | Standard、Enterprise、Datacenter | 最新の更新プログラムが適用されていること。
+
+Azure Backup は 32 ビットのオペレーティング システムをサポートしていません。
 
 Azure VM Linux のバックアップについては、Azure Backup は [Azure で承認されている一連のディストリビューション](../virtual-machines/linux/endorsed-distros.md)をサポートしています。ただし、Core OS Linux と 32 ビットオペレーティング システムは除きます。 他の個人所有の Linux ディストリビューションは、VM 上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。
 

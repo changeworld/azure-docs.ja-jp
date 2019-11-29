@@ -2,13 +2,13 @@
 title: 修復できるポリシーをデプロイする
 description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
 ms.date: 10/11/2019
-ms.topic: overview
-ms.openlocfilehash: 662daeb305856fb36bfb84f98e80bedf48b22756
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: 4522c9ebad741f5ec0cb7e56e68467312ef8f037
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132475"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463881"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>委任されたサブスクリプション内で修復が可能なポリシーをデプロイする
 

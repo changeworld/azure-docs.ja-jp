@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 10/16/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
-ms.openlocfilehash: cc133a75506dcbe552d380e2a6de219a47aca3d8
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 01087f3e40e278490abb87d0ab3b7b6ab5052b6b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599881"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219493"
 ---
 # <a name="common-cost-analysis-uses"></a>一般的なコスト分析の使用
 

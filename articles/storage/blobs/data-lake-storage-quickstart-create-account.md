@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 675d1889fc74474a1d732cb5d4e9f46c638ce200
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 57350bd00a33c36b5aef3a0ccd3034b4db3d2c55
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467924"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227950"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
 
@@ -95,7 +95,7 @@ Azure Portal を使用してリソース グループを削除するには:
 
 ## <a name="create-an-account-using-powershell"></a>PowerShell を使用してアカウントを作成する
 
-最初に、[PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget) モジュールの最新バージョンをインストールします。
+最初に、[PowerShellGet](/powershell/scripting/gallery/installing-psget) モジュールの最新バージョンをインストールします。
 
 次に、PowerShell モジュールをアップグレードして、お使いの Azure サブスクリプションにサインインし、リソース グループを作成してから、ストレージ アカウントを作成します。
 

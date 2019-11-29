@@ -1,17 +1,14 @@
 ---
-title: テナントをまたいだ認証 - Azure Resource Manager
+title: テナントをまたいだ認証
 description: Azure Resource Manager がテナントをまたいだ認証要求を処理する方法について説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.author: tomfitz
-ms.openlocfilehash: b85ed32ac333402caeca4901e4d91bbe4d1d112c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1dccfc522179cd88e69bc5a58307b343aaef8f9e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300354"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149983"
 ---
 # <a name="authenticate-requests-across-tenants"></a>テナントをまたいだ認証要求
 

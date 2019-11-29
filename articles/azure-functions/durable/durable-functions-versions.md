@@ -2,17 +2,15 @@
 title: Durable Functions のバージョンの概要 - Azure Functions
 description: Durable Functions のバージョンについて説明します。
 author: cgillum
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5d6c8bcf610bfc8900e0f2a5237228208cd633ca
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 93c35eb4f69cc4f9b16f669d96c2df53f50bcf84
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614547"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231188"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions のバージョンの概要
 

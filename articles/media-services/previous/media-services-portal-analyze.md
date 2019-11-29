@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 26a951ffaf0253371ffe69c6df798120f0464082
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881895"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462619"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する 
 
@@ -54,15 +54,11 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 
 ### <a name="captions"></a>字幕
 コンテンツから生成される字幕形式を選択できます。 インデックス作成ジョブでは、クローズド キャプション ファイルを次の形式で生成できます。  
-
-* **SAMI**
+ 
 * **TTML**
 * **WebVTT**
 
 これらの形式のクローズド キャプション (CC) ファイルを使用して、聴覚障がいを持つユーザーがオーディオ ファイルとビデオ ファイルにアクセスできるようにします。
-
-### <a name="aib-file"></a>AIB ファイル
-カスタム SQL Server IFilter と併用するオーディオ インデックス BLOB ファイルを生成する場合にこのオプションを選択します。 詳細については、 [このブログ](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) をご覧ください。
 
 ### <a name="keywords"></a>キーワード
 キーワード XML ファイルを生成する場合にこのオプションを選択します。 キーワード XML ファイルには音声コンテンツから抽出されるキーワードと、頻度とオフセットの情報が含まれます。

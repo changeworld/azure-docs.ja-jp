@@ -1,19 +1,14 @@
 ---
-title: Azure Backup で Recovery Services コンテナーに Azure VM をバックアップする
+title: Recovery Services コンテナーに Azure VM をバックアップする
 description: Azure Backup を使用して Recovery Services コンテナーに Azure VM をバックアップする方法について説明します
-service: backup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 2ef8e7e77481c0df6e85545d16c3859949184d2f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968534"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173341"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Recovery Services コンテナーに Azure VM をバックアップする
 
@@ -34,7 +29,7 @@ ms.locfileid: "72968534"
 
 ## <a name="before-you-start"></a>開始する前に
 
-* Azure VM のバックアップ アーキテクチャを[確認する](backup-architecture.md#architecture-direct-backup-of-azure-vms)。
+* Azure VM のバックアップ アーキテクチャを[確認する](backup-architecture.md#architecture-built-in-azure-vm-backup)。
 * Azure VM のバックアップとバックアップ拡張機能の[詳細を確認](backup-azure-vms-introduction.md)する。
 * バックアップを構成する前に、[サポート マトリックスを確認](backup-support-matrix-iaas.md)する。
 

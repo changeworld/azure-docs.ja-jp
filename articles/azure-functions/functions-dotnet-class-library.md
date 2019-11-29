@@ -1,22 +1,14 @@
 ---
 title: Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 description: C# を使用して Azure Functions を開発する方法について説明します。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
-ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
-ms.author: glenga
-ms.openlocfilehash: c3c13b7e28ef7c17fd45682d828f318de5326542
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 20bbf31bc92e49106a94e7a85d3b1541aaa2a34b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293872"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230601"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 

@@ -4,19 +4,19 @@ description: 請求書の料金を読み取り、理解する方法について�
 author: jureid
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2019
 ms.author: banders
-ms.openlocfilehash: 579a052f8bde780ac33de85c5a08d9b3e79d3096
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9994ef6da379d0063930912a4d198b81623ddbe8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515772"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223709"
 ---
 # <a name="understand-charges-on-your-microsoft-partner-agreement-invoice"></a>Microsoft Partner Agreement の請求書の料金を理解する
 

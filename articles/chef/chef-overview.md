@@ -1,19 +1,15 @@
 ---
 title: Azure で Chef を使用する
 description: Chef を使用した Azure インフラストラクチャの構成およびテストの概要
-ms.service: virtual-machines-linux
 keywords: azure、chef、devops、仮想マシン、概要、自動化
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 5c4e20177c1b334a34f7ce9328dfaa7bd8c66d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ad8b79b42c9d8d7942f391223c052f63579b11b
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656576"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158015"
 ---
 # <a name="using-chef-with-azure"></a>Azure で Chef を使用する
 [Chef](https://www.chef.io) は、Azure 上の仮想マシン インフラストラクチャをコードに変換する強力な自動化プラットフォームです。 Chef は、インフラストラクチャがそのサイズに関係なく、ネットワーク経由で構成、デプロイ、および管理される方法を自動化します。

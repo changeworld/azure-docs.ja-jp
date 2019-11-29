@@ -4,19 +4,19 @@ description: この記事では、一部の Azure 購入で多要素認証が必
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: 629a14a08b523016981300181dc4cad4549c798f
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: db6b78986ae8abfe2c8ae3296d07c327cc041726
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174520"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223685"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Azure のお客様向けのオープン バンキング (PSD2) と強力なカスタマー認証 (SCA)
 

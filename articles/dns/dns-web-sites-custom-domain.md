@@ -2,17 +2,17 @@
 title: チュートリアル - Web アプリのカスタム Azure DNS レコードの作成
 description: このチュートリアルでは、Azure DNS を使用して Web アプリのカスタム ドメイン DNS レコードを作成します。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 9d7a277db7550c1850ec0c9d555553064ab19f7c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: allensu
+ms.openlocfilehash: e0a0129f45e5e7612b6ecd79475a49822b42ba19
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730269"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211218"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>チュートリアル:カスタム ドメインにおける Web アプリの DNS レコードの作成 
 

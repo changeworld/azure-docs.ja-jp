@@ -5,22 +5,20 @@ services: billing
 documentationcenter: ''
 author: bandersmsft
 manager: dougeby
-editor: ''
 tags: billing
-ms.assetid: 204b15b2-6667-4b6c-8ea4-f32c06f287fd
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 54c4426fb8bdb1476b33defb5351b3fb0e6a0663
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 6a2cb3df5bf8a67c7b79a24fd8328267bf6c4dd0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718846"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224062"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>請求およびコスト管理の自動化シナリオ
 
@@ -63,14 +61,14 @@ ms.locfileid: "71718846"
 
 ## <a name="api-summaries"></a>API の概要
 
-### <a name="consumption"></a>消費
+### <a name="consumption"></a>従量課金
 Web Direct および Enterprise のお客様は、特に明記されていない限り、以下のすべての API を使用できます。
 
 -   [Budgets API](https://docs.microsoft.com/rest/api/consumption/budgets) (*Enterprise のお客様のみ*):リソース、リソース グループ、または課金測定のコストまたは使用予算を作成します。 予算を作成した場合は、定義されている予算しきい値を超えたときに通知するアラートを構成できます。 また、予算額に達したときに実行するアクションも構成できます。
 
 -   [Marketplace Charges API](https://docs.microsoft.com/rest/api/consumption/marketplaces):すべての Azure Marketplace リソース (Azure パートナーのオファリング) の料金と使用状況のデータが取得されます。 このデータを使用すると、すべての Marketplace リソースのコストを合算したり、特定のリソースのコスト/使用状況を調査したりすることができます。
 
--   [Price Sheet API](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*Enterprise のお客様のみ*):すべての測定のカスタム価格が取得されます。 企業は、このデータを使用状況の詳細とマーケットプレースの使用状況情報の情報と共に使用して、使用状況およびマーケットプレース データを使用してコストの計算を行うことができます。 
+-   [Price Sheet API](https://docs.microsoft.com/rest/api/consumption/pricesheet) (*Enterprise のお客様のみ*):すべての測定のカスタム価格が取得されます。 企業は、このデータを使用状況の詳細とマーケットプレースの使用状況情報の情報と共に使用して、使用状況およびマーケットプレース データを使用してコストの計算を行うことができます。
 
 -   [Reservation Recommendations API](https://docs.microsoft.com/rest/api/consumption/reservationrecommendations):予約 VM インスタンスの購入に関する推奨事項が取得されます。 推奨事項は、予想されるコスト削減や購入金額を分析するのに役立ちます。 詳細については、「[APIs for Azure reservation automation](billing-reservation-apis.md)」(Azure の予約自動化の API) を参照してください。
 
@@ -80,14 +78,14 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 
 -   [Usage Details API](https://docs.microsoft.com/rest/api/consumption/usagedetails):Microsoft からすべての Azure リソースの料金と使用状況の情報が取得されます。 情報は、現在 1 日あたり測定あたり 1 回発行される使用状況詳細レコード形式で提供されます。 その情報を使用すると、すべてのリソースのコストを合算したり、特定のリソースのコスト/使用状況を調査したりすることができます。
 
--   [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)):Web Direct のお客様の場合、測定レートが取得されます。 その後、返された情報をリソース使用状況情報と共に使用して、予想される請求書を手動で計算することができます。 
+-   [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)):Web Direct のお客様の場合、測定レートが取得されます。 その後、返された情報をリソース使用状況情報と共に使用して、予想される請求書を手動で計算することができます。
 
 -   [Unrated Usage API](/previous-versions/azure/reference/mt219003(v=azure.100)):Azure による測定/課金の前に、生の使用状況情報が取得されます。
 
 ### <a name="billing"></a>課金
 -   [Billing Periods API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods):分析する請求期間を、その期間の請求書 ID と共に決定します。 Invoices API で請求書 ID を使用できます。
 
--   [Invoices API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices):ある請求期間に対する PDF 形式の請求書のダウンロード URL が取得されます。
+-   [Invoices API](/rest/api/billing/2019-10-01-preview/invoices):ある請求期間に対する PDF 形式の請求書のダウンロード URL が取得されます。
 
 ### <a name="enterprise-consumption"></a>Enterprise consumption
 以下の API は Enterprise 専用です。
@@ -107,11 +105,11 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Enterprise Reporting API と Consumption API の違いは何ですか? それぞれはいつ使用すればよいですか?
-これらの API には同様の機能セットがあり、同じ領域の課金とコスト管理に関する問題に対応できます。 ただし、対象ユーザーが異なります。 
+これらの API には同様の機能セットがあり、同じ領域の課金とコスト管理に関する問題に対応できます。 ただし、対象ユーザーが異なります。
 
 - Enterprise Reporting API は、交渉された年額コミットメントとカスタムの価格設定にアクセス可能な Enterprise Agreement を Microsoft と締結したお客様のみが利用できます。 使用するには、[Enterprise Portal](https://ea.azure.com) で取得できるキーが必要です。 この API の説明については、「[企業ユーザー向けの Reporting API の概要](billing-enterprise-api.md)」を参照してください。
 
-- Consumption API は、いくつかの例外はありますが、すべてのユーザーが利用できます。 詳細については、「[Azure Consumption API の概要](billing-consumption-api-overview.md)」と [Azure Consumption API リファレンス](https://docs.microsoft.com/rest/api/consumption/)のページを参照してください。 用意されている API を最新の開発シナリオに対するソリューションとして使用することをお勧めします。 
+- Consumption API は、いくつかの例外はありますが、すべてのユーザーが利用できます。 詳細については、「[Azure Consumption API の概要](billing-consumption-api-overview.md)」と [Azure Consumption API リファレンス](https://docs.microsoft.com/rest/api/consumption/)のページを参照してください。 用意されている API を最新の開発シナリオに対するソリューションとして使用することをお勧めします。
 
 ### <a name="whats-the-difference-between-the-usage-details-api-and-the-usage-api"></a>Usage Details API と Usage API の違いは何ですか?
 これらの API は、根本的に異なるデータを提供します。
@@ -126,7 +124,7 @@ Web Direct および Enterprise のお客様は、特に明記されていない
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Invoice API と Usage Details API の違いは何ですか?
 これらの API は、同じデータの異なるビューを提供します。
 
-- [Invoice API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) は、Web Direct のお客様専用です。 各測定の種類の集計料金に基づいた請求の毎月のまとめが提供されます。 
+- [Invoice API](/rest/api/billing/2019-10-01-preview/invoices) は、Web Direct のお客様専用です。 各測定の種類の集計料金に基づいた請求の毎月のまとめが提供されます。
 
 - [Usage Details API](https://docs.microsoft.com/rest/api/consumption/usagedetails) では、毎日の使用状況/コスト レコードの詳細が提供されます。 Enterprise と Web Direct 両方のお客様が使用できます。
 

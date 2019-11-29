@@ -6,19 +6,19 @@ documentationcenter: na
 author: lleonard-msft
 manager: ''
 editor: ''
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 334fb0f4df318b1984c1b6653845af564506230b
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: eb444f090c1b2047e3d71c1b2ec52699a61bd880
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719627"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225930"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>REST API を使用して Azure リソースの使用状況を確認する
 

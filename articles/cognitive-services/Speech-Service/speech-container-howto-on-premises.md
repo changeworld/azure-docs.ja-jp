@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: b413bc6d29f1b08949b50570cb5baa2eb758d779
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 42585ae09435e67b7cdea0b437681e2ce044ecd3
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491025"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383652"
 ---
 # <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Kubernetes と Helm と共に Speech Service コンテナーを使用する
 
@@ -77,7 +77,7 @@ secret "mcr" created
 シークレットが作成されたことを確認するには、`secrets` フラグを指定して [`kubectl get`][kubectl-get] を実行します。
 
 ```console
-kuberctl get secrets
+kubectl get secrets
 ```
 
 `kubectl get secrets` を実行すると、構成されているすべてのシークレットが表示されます。
@@ -275,13 +275,13 @@ Azure Kubernetes Service (AKS) での Helm を使用したアプリケーショ�
 [azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
-[helm-install]: https://helm.sh/docs/using_helm/#installing-helm
-[helm-install-cmd]: https://helm.sh/docs/helm/#helm-install
+[helm-install]: https://helm.sh/docs/intro/install/
+[helm-install-cmd]: https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
 [tiller-install]: https://helm.sh/docs/install/#installing-tiller
-[helm-charts]: https://helm.sh/docs/developing_charts
+[helm-charts]: https://helm.sh/docs/topics/charts/
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[helm-test]: https://helm.sh/docs/helm/#helm-test
+[helm-test]: https://v2.helm.sh/docs/helm/#helm-test
 [ms-helm-hub]: https://hub.helm.sh/charts/microsoft
 [ms-helm-hub-speech-chart]: https://hub.helm.sh/charts/microsoft/cognitive-services-speech-onpremise
 

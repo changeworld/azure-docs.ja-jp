@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: e0dedb13bf7365e011eb3403fb7ec110a4290ec9
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 9fbde84c499ba5b086ce812de63602c626b416b0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012895"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74179325"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>内部ロード バランサー (ILB) を使用した Application Gateway の作成
 
@@ -259,8 +259,6 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 ## <a name="next-steps"></a>次の手順
 
 SSL オフロードを構成する場合は、「 [クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する](application-gateway-ssl.md)」を参照してください。
-
-ILB と共に使用するようにアプリケーション ゲートウェイを構成する場合は、「 [内部ロード バランサー (ILB) を使用したアプリケーション ゲートウェイの作成](application-gateway-ilb.md)」を参照してください。
 
 負荷分散のオプション全般の詳細については、次を参照してください。
 

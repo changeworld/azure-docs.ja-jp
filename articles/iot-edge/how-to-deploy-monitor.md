@@ -9,13 +9,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 83e2490821f59adeb37958c6c31403121a40274e
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 286bab7b7fdbe42190c32dabb42c59d6fc094b2a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540903"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457363"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Azure Portal を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -192,7 +191,7 @@ Azure Marketplace または Azure portal のいずれかから、IoT Edge モジ
    * ターゲット条件
    * メトリック - 定義したメトリックを変更または削除するか、新しいメトリックを追加することができます。
    * ラベル
-   * 優先順位
+   * Priority
 1. **[保存]** を選択します。
 1. 「[デプロイの監視](#monitor-a-deployment)」に記載された手順に従って、変更が適用されることを確認します。 
 

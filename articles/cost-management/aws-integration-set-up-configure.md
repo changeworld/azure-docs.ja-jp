@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 08/15/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: deb13b833707849bcbce8bcae7b05aeb5e0bce3b
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 66dbe45ff1a8ee773fdf7fcb0aa7cfe8e6ad6437
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338876"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219691"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS のコストと使用状況レポートの統合を設定して構成する
 

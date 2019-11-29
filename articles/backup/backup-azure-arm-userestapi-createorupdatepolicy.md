@@ -1,25 +1,19 @@
 ---
-title: 'Azure Backup: REST API を使用してバックアップ ポリシーを作成する'
+title: REST API を使用してバックアップ ポリシーを作成する
 description: この記事では、REST API を使用してバックアップ ポリシー (スケジュールとリテンション期間) を作成および管理する方法について説明します。
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Azure VM のバックアップ; Azure VM の復元;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 7d44f99a9f2a5bfb3d3a04fe5355f7b1dc13c404
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747597"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554884"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>REST API を使用して Azure Recovery Services バックアップ ポリシーを作成する
 
-Azure Recovery Services コンテナー用のバックアップ ポリシーを作成する手順の概要については、[ポリシー REST API に関するドキュメント](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate)をご覧ください。 このドキュメントを Azure VM のバックアップに対するポリシーを作成するためのリファレンスとして使用しましょう。
+Azure Recovery Services コンテナー用のバックアップ ポリシーを作成する手順の概要については、[ポリシー REST API に関するドキュメント](/rest/api/backup/protectionpolicies/createorupdate)をご覧ください。 このドキュメントを Azure VM のバックアップに対するポリシーを作成するためのリファレンスとして使用しましょう。
 
 ## <a name="backup-policy-essentials"></a>バックアップ ポリシーの基礎
 
@@ -52,10 +46,10 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名前  |必須  |種類  |説明  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource のプロパティ        |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource のプロパティ        |
 |tags     |         | Object        |  リソース タグ       |
 
-要求本文での定義の完全な一覧については、[バックアップ ポリシー REST API に関するドキュメント](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate)をご覧ください。
+要求本文での定義の完全な一覧については、[バックアップ ポリシー REST API に関するドキュメント](/rest/api/backup/protectionpolicies/createorupdate)をご覧ください。
 
 ### <a name="example-request-body"></a>要求本文の例
 
@@ -160,7 +154,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 |名前  |Type  |説明  |
 |---------|---------|---------|
-|200 OK     |    [ProtectionPolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
+|200 OK     |    [ProtectionPolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 Accepted     |         |     承認済み    |
 
 ### <a name="example-responses"></a>応答の例

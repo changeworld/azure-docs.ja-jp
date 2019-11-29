@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/07/2019
+ms.date: 11/19/2019
 ms.author: erhopf
-ms.openlocfilehash: ec26ce7c867925b2df3bebde3c60724c1efa5ab1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 51c3d67a04805c8cc411af812755f3c4e0213dee
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961207"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260788"
 ---
 **ターゲット環境を選択する**
 
@@ -23,7 +23,7 @@ ms.locfileid: "73961207"
 
 [!INCLUDE [linux](./linux.md)]
 
-# <a name="macostabmacos"></a>[macOS](#tab/MacOS)
+# <a name="macostabmacos"></a>[macOS](#tab/macOS)
 
 [!INCLUDE [macos](./macos.md)]
 

@@ -2,17 +2,17 @@
 title: Azure PowerShell を使用して Azure プライベート エンドポイントを作成する | Microsoft Docs
 description: Azure Private Link について学習する
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 91670d51328b3adb67ba8b2ed05d3b86f9bc0010
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.author: allensu
+ms.openlocfilehash: 83f1cbc3f8da61370c90744be3f0a7b230e016c3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053924"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229398"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Azure PowerShell を使用してプライベート エンドポイントを作成する
 プライベート エンドポイントは、Azure の Private Link の基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 

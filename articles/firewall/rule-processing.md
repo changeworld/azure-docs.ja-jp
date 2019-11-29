@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall ルール処理ロジック
-description: Azure Firewall ルール処理ロジックの詳細
+description: Azure Firewall には、NAT ルール、ネットワーク ルール、およびアプリケーション ルールがあります。 これらのルールは、ルールの種類に応じて処理されます。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/27/2018
+ms.date: 11/19/2018
 ms.author: victorh
-ms.openlocfilehash: 12d86793c0d75413559aad77c558c4adb7ac91af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0fc11221e0ff79d6e17b93282403792fc135c2a4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681584"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166779"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Azure Firewall ルール処理ロジック
 Azure Firewall には、NAT ルール、ネットワーク ルール、およびアプリケーション ルールがあります。 これらのルールは、ルールの種類に応じて処理されます。

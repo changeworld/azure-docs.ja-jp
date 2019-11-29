@@ -1,23 +1,14 @@
 ---
 title: Azure 上の Jupyter Notebook からデータ リソースにアクセスする
 description: Jupyter Notebook からファイル、REST API、データベース、さまざまな Azure Storage リソースにアクセスする方法です。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: ee867303-a5e5-4686-b2da-8a0108247d18
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: e1284072db8ca8aa7a49bd3c4d52f54e5d09420a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 23acdf99f6cb69f100e484e236580f3b2b43ba94
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970252"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277693"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>ノートブックでクラウド データにアクセスする
 

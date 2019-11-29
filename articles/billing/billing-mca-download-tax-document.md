@@ -4,7 +4,7 @@ description: 課金プロファイルに対する税金受領書を表示して�
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: c8c39a832f54cd5075b57507ead14cbcdff2bb53
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 082346299aba4b2e29700c02e6dfbaad1b6cdd03
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375515"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226099"
 ---
 # <a name="view-and-download-tax-documents-for-your-azure-invoice"></a>Azure の請求書の税務書類を表示してダウンロードする
 

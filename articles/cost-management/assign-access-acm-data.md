@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 10/14/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: ebc56d27b7adc8f1fea9eafabe1b211f3f0ad560
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e3140ee990127db6815828314103a09dff7cf26e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375129"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219845"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 

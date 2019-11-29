@@ -8,14 +8,14 @@ manager: vitavor
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: e1d0beb6ced0d582166d556c1ae2fc17b375dddf
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: ebbdd89d3ef41d4fb40197cbd83038b5cbc02073
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695358"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230143"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure 仮想マシン用の拡張メトリックを追加する
 

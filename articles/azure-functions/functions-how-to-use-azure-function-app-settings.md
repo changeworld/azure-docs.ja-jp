@@ -1,20 +1,16 @@
 ---
 title: Azure での関数アプリの設定の構成
 description: Azure Function App の設定を構成する方法について説明します。
-author: ggailey777
-manager: gwallace
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 7ad7f6156bbd8ea86e3e71bda4b23dac9722a0ef
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170731"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230573"
 ---
 # <a name="manage-your-function-app"></a>お使いの関数アプリの管理 
 

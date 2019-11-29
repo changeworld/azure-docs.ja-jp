@@ -1,20 +1,15 @@
 ---
 title: Durable Functions でのカスタムオーケストレーションの状態 - Azure
 description: Durable Functions 用のカスタム オーケストレーションの状態を構成し使用する方法を説明します。
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d3b3ee1fabf59ae3b87185c4c9eb2f85aa8acd91
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 22242a40a29a1a014a7ab88ed705c7ca3e5ba288
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614917"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232967"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions でのカスタムオーケストレーションの状態 (Azure Functions)
 
