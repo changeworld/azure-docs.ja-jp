@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: d308623a323fecd39efa90639da71fb981936fe5
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 6cf6cfb005155b85278935af6f266dfebcbb44c6
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930575"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554960"
 ---
 # <a name="quickstart-asynchronous-synthesis-for-long-form-audio-in-python-preview"></a>クイック スタート:Python の長い形式の音声の非同期合成 (プレビュー)
 
@@ -30,7 +30,7 @@ ms.locfileid: "73930575"
 
 * Python 2.7.x または 3.x。
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター。
-* Azure サブスクリプションと Speech サービスのサブスクリプション キー。 [Azure アカウントを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account)し、[Speech リソースを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)してキーを取得します。 Speech リソースを作成する際は、価格レベルが **S0** に設定されていること、また場所が[サポート対象リージョン](../../regions.md#standard-and-neural-voices)に設定されていることを確認してください。
+* Azure サブスクリプションと Speech サービスのサブスクリプション キー。 [Azure アカウントを作成](../../get-started.md#try-the-speech-service-using-a-new-azure-account)し、[Speech リソースを作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)してキーを取得します。 Speech リソースを作成する際は、価格レベルが **S0** に設定されていること、また場所が[サポート対象リージョン](../../regions.md#standard-and-neural-voices)に設定されていることを確認してください。
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 

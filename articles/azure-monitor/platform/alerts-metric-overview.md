@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
-author: snehithm
-ms.author: snmuvva
-ms.date: 9/18/2018
+author: rboucher
+ms.author: robb
+ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 4dd95d32bad76a610b88a4362e7887efdfaf6af0
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b92b4233b6ecd8743f98f7f0dd13e07ad4c76c81
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972060"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484255"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -143,41 +143,6 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 サポートされているリソースの種類の完全な一覧については、こちらの[記事](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)をご覧ください。
 
-現在クラシック メトリック アラートを使用していて、使用しているすべてのリソースの種類がメトリック アラートでサポートされるかどうかを確認する場合のために、次の表に、クラシック メトリック アラートでサポートされているリソースの種類と、これらが現在のメトリック アラートでサポートされているかどうかを示します。
-
-|クラシック メトリック アラートでサポートされているリソースの種類 | メトリック アラートでサポートされている |
-|-------------------------------------------------|----------------------------|
-| Microsoft.ApiManagement/service | はい |
-| Microsoft.Batch/batchAccounts| はい|
-|Microsoft.Cache/redis| はい |
-|Microsoft.ClassicCompute/virtualMachines | いいえ |
-|Microsoft.ClassicCompute/domainNames/slots/roles | いいえ|
-|Microsoft.CognitiveServices/accounts | いいえ |
-|Microsoft.Compute/virtualMachines | はい|
-|Microsoft.Compute/virtualMachineScaleSets| はい|
-|Microsoft.ClassicStorage/storageAccounts| いいえ |
-|Microsoft.DataFactory/datafactories | はい|
-|Microsoft.DBforMySQL/servers| はい|
-|Microsoft.DBforPostgreSQL/servers| はい|
-|Microsoft.Devices/IotHubs | いいえ|
-|Microsoft.DocumentDB/databaseAccounts| はい|
-|Microsoft.EventHub/namespaces | はい|
-|Microsoft.Logic/workflows | はい|
-|Microsoft.Network/loadBalancers |はい|
-|Microsoft.Network/publicIPAddresses| はい|
-|Microsoft.Network/applicationGateways| はい|
-|Microsoft.Network/expressRouteCircuits| はい|
-|Microsoft.Network/trafficManagerProfiles | はい|
-|Microsoft.Search/searchServices | はい|
-|Microsoft.ServiceBus/namespaces| はい |
-|Microsoft.Storage/storageAccounts | はい|
-|Microsoft.StreamAnalytics/streamingjobs| はい|
-|Microsoft.TimeSeriesInsights/environments | はい|
-|Microsoft. Web/serverfarms | はい |
-|Microsoft. Web/sites (関数を除く) | はい|
-|Microsoft. Web/hostingEnvironments/multiRolePools | いいえ|
-|Microsoft. Web/hostingEnvironments/workerPools| いいえ |
-|Microsoft.SQL/Servers | いいえ |
 
 ## <a name="next-steps"></a>次の手順
 

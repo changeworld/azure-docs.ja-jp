@@ -1,5 +1,5 @@
 ---
-title: Authentication
+title: 認証
 titleSuffix: Azure Cognitive Services
 description: Azure Cognitive Services リソースへの要求を認証する方法には、サブスクリプション キー、ベアラー トークン、またはマルチサービス サブスクリプションの 3 つがあります。 この記事では、それぞれの方法と、要求を実行する方法について学習します。
 services: cognitive-services
@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276791"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423931"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Azure Cognitive Services に対する要求の認証
 
@@ -119,7 +119,7 @@ Azure Cognitive Services の中には、認証トークンを受け入れるも�
 * Speech Services: Text to Speech REST API
 
 >[!NOTE]
-> QnA Maker でも Authorization ヘッダーが使用されますが、エンドポイント キーが必要です。 詳細については、[QnA Maker でナレッジ ベースから回答を取得する](./qnamaker/quickstarts/get-answer-from-kb-using-curl.md)方法に関するページを参照してください。
+> QnA Maker でも Authorization ヘッダーが使用されますが、エンドポイント キーが必要です。 詳細については、[QnA Maker でナレッジ ベースから回答を取得する](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md)方法に関するページを参照してください。
 
 >[!WARNING]
 > 認証トークンをサポートするサービスは時間の経過と共に変わる可能性があります。この認証方法を使用する前には、サービスの API リファレンスを確認してください。

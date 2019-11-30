@@ -1,20 +1,17 @@
 ---
 title: Azure Functions 診断の概要
 description: Azure Functions 診断を使用して関数アプリに関する問題をトラブルシューティングする方法について説明します。
-keywords: 関数、診断、サポート、サーバーレス、トラブルシューティング、セルフヘルプ
 author: yunjchoi
-manager: gwallace
-ms.service: azure-functions
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 96bfc133ef390f34712151733277ae6f9e9a8d70
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 71edb9a32254eeee123b874305dd25b699e05cc1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73722413"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227023"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Azure Functions 診断の概要
 

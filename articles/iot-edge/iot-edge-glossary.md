@@ -8,13 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: menchi
-ms.custom: seodec18
-ms.openlocfilehash: f32af89f43f88840207dfc5ff2e49e4a21ea3b16
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1db6f077a1482f25d8e342834bbd6958dbb971cc
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445071"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456631"
 ---
 # <a name="glossary-of-terms-for-azure-iot-edge"></a>Azure IoT Edge の用語集
 この記事では、IoT Edge の記事で使用される一般的な用語の一部を示します。

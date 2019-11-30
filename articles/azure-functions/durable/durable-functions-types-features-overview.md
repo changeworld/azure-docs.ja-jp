@@ -1,20 +1,16 @@
 ---
 title: Azure Functions の Durable Functions 拡張機能の関数の種類
 description: Azure Functions の Durable Functions オーケストレーションでの関数間の情報交換をサポートする、関数とロールの種類について説明します。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 555b4d95358978e84e14e8a2e8b3d1c9cb2efc18
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 7a485f31ed7e112745cf3b45bbfe348e6a2e0fd3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614600"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232766"
 ---
 # <a name="durable-functions-types-and-features-azure-functions"></a>Durable Functions の種類と機能 (Azure Functions)
 

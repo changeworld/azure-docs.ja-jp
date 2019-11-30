@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 300f1783c1c514a6cc49d700c2741be85e69c3e8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6a7a0d5bdd07221be823f8b94bd581db6d966fa8
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822978"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306406"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Microsoft Commercial Marketplace の FAQ
 
@@ -165,7 +165,7 @@ Enterprise Agreement (EA) インダイレクト カスタマーは、Azure Marke
 
 **従業員の Azure Marketplace へのアクセスや購入特権を制御できますか?**
 
-はい。Enterprise Agreement (EA) のお客様の場合、登録管理者は登録に関するすべてのアカウントの購入特権を無効にした後、購入を行うための十分に長い期間それを再び有効にすることができます。 さらに、すべてのお客様は Azure Policy を使用して、自分の Azure サブスクリプションのデプロイ オプション (Azure Marketplace リソースの管理を含む) を制限できます。
+はい。Enterprise Agreement (EA) のお客様の場合、登録管理者は登録に関するすべてのアカウントの購入特権を無効にした後、購入を行うための十分に長い期間それを再び有効にすることができます。
 
 **商業マーケットプレースでの購入では、どのような支払い方法がサポートされていますか?**
 

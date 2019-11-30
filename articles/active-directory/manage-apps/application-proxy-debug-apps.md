@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 06b8edcb0f912bfd35137e197253b20b9459448f
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057741"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382069"
 ---
 # <a name="debug-application-proxy-application-issues"></a>アプリケーション プロキシ アプリケーションの問題をデバッグする 
 
@@ -48,7 +48,7 @@ ms.locfileid: "71057741"
 |5 | 問題が解決しない場合は、コネクタのデバッグに移動する | プロキシとコネクタ間またはコネクタとバックエンド間に接続の問題がある可能性があります。 「[アプリケーション プロキシ コネクタのデバッグ](application-proxy-debug-connectors.md)」のトラブルシューティング記事に移動します。 |
 |6 | すべてのリソースを発行し、ブラウザーの開発者ツールを確認し、リンクを修正する | 発行するパスに、アプリケーションに必要なすべての画像、スクリプト、スタイル シートが含まれていることを確認します。 詳細については、「[オンプレミス アプリを Azure AD に追加する](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)」を参照してください。 <br></br>ブラウザーの開発者ツール (Internet Explorer または Microsoft Edge の F12 ツール) を使用して、[アプリケーション ページが正しく表示されない](application-proxy-page-appearance-broken-problem.md)の説明に従って、発行に関する問題を確認します。 <br></br>[ページ上のリンクが機能しない](application-proxy-page-links-broken-problem.md)で、壊れたリンクを解決するためのオプションを確認します。 |
 |7 | ネットワーク待ち時間を確認する | ページの読み込みが遅い場合、[待機時間を削減するための考慮事項](application-proxy-network-topology.md#considerations-for-reducing-latency)でネットワーク待機時間を最小限に抑える方法について学習します。 | 
-|8 | その他のトラブルシューティング ヘルプを確認する | 問題が解決しない場合は、[アプリケーション プロキシのトラブルシューティング ドキュメント](application-proxy-page-appearance-broken-problem.md)でその他のトラブルシューティングの記事を検索します。 |
+|8 | その他のトラブルシューティング ヘルプを確認する | 問題が解決しない場合は、[アプリケーション プロキシのトラブルシューティング ドキュメント](application-proxy-troubleshoot.md)でその他のトラブルシューティングの記事を検索します。 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 3aae74a4fed499674f015ed0adb59016877583f3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9fcc65768db3029461a5823034336bc883379292
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607384"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227682"
 ---
 # <a name="remote-desktop-client-connections"></a>リモート デスクトップ クライアントの接続
 
@@ -119,7 +119,7 @@ Windows 7 および Windows 10 用のリモート デスクトップ クライ�
 6. 前のコマンドレットの出力から **ActivityId** を使って、次のコマンドを実行します。
 
     ```PowerShell
-    (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
+    (Get-RdsDiagnosticActivities -TenantName <TenantName> -ActivityId <ActivityId> -Detailed).Errors
     ```
 
 7. コマンドによって次に示すような出力が生成されます。 **ErrorCodeSymbolic** と **ErrorMessage** を使って、根本原因のトラブルシューティングを行います。

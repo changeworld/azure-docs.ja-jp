@@ -9,16 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 5f51c1166364a3470a1cc943e66d429c32cdc49b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 4a583f77aac036028fd75d3c05af805031f08ebd
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839481"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480550"
 ---
 # <a name="clustering-point-data"></a>ポイント データのクラスタリング
 
 多数のデータ ポイントをマップ上に視覚化すると、ポイントが互いに重なり合い、マップの見た目がごちゃごちゃして、見づらく使いづらいものになります。 ポイント データのクラスタリングは、このユーザー エクスペリエンスを向上させるために使用できます。 ポイント データのクラスタリングは、互いに近いポイント データを結合し、単一のクラスター化されたデータ ポイントとしてマップ上に表現するプロセスです。 ユーザーがマップにズーム インすると、クラスターは個々のデータ ポイントに分解します。
+
+<br/>
+
+<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
 ## <a name="enabling-clustering-on-a-data-source"></a>データ ソースでのクラスタリングの有効化
 
@@ -44,7 +48,7 @@ var datasource = new atlas.source.DataSource(null, {
 
 `DataSource` クラスには、クラスタリングに関連する以下のメソッドもあります。
 
-| Method | 戻り値の型 | 説明 |
+| 方法 | 戻り値の型 | 説明 |
 |--------|-------------|-------------|
 | getClusterChildren(clusterId: number) | Promise&lt;Array&lt;Feature&lt;Geometry, any&gt; \| Shape&gt;&gt; | 次のズーム レベルで指定されたクラスターの子を取得します。 これらの子はシェイプとサブクラスターの組み合わせの場合があります。 サブクラスターは ClusteredProperties と一致するプロパティを持つフィーチャーになります。 |
 | getClusterExpansionZoom(clusterId: number) | Promise&lt;number&gt; | クラスターが拡大し始めるか、または分解するズーム レベルを計算します。 |
@@ -84,7 +88,7 @@ Azure Maps による<a href='https://codepen.io/azuremaps/pen/VRJrgO/'>クラス
 
 クラスター化されたデータ ポイントを含むレイヤーでマウス イベントが発生すると、クラスター化されたデータ ポイントが GeoJSON ポイント フィーチャー オブジェクトとしてイベントに返されます。 このポイント フィーチャーには次のプロパティがあります。
 
-| プロパティ名 | Type | 説明 |
+| プロパティ名 | 種類 | 説明 |
 |---------------|------|-------------|
 | cluster | ブール値 | フィーチャーがクラスターを表すかどうかを示します。 |
 | cluster_id | string | DataSource の `getClusterExpansionZoom`、`getClusterChildren`、および `getClusterLeaves` メソッドで使用できるクラスターの一意な ID。 |

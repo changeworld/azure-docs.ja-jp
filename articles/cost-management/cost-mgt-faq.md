@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: troubleshooting
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 02a03adb128c140343032075ec334cbd6d88729b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: faa7181ebc7b886fbe06e4ac01c704016d4b0c51
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002024"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230095"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn に関してよく寄せられる質問
 
@@ -154,7 +154,7 @@ Azure Resource Manager アクセスを追加し、データが収集されると
 
 ## <a name="is-cloudyn-agent-based"></a>Cloudyn エージェントがベースになっていますか
 
-いいえ。 エージェントは使用されていません。 VM の Azure 仮想マシンのメトリック データは、Microsoft Insights API から収集されます。 Azure VM からメトリック データを収集する場合は、診断設定を有効にする必要があります。
+No. エージェントは使用されていません。 VM の Azure 仮想マシンのメトリック データは、Microsoft Insights API から収集されます。 Azure VM からメトリック データを収集する場合は、診断設定を有効にする必要があります。
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn レポートでは、レポートあたり複数の AD テナントが表示されますか
 

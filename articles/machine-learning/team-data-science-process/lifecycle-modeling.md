@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c22c75b4fe900ecb96d016251c09e9ad6ec31f7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d72d39a2a59e06954c36473083af2d2b4689a7b6
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306226"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538220"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクルのモデリング ステージ
 
@@ -72,7 +72,7 @@ Microsoft では、複数のアルゴリズムとパラメーター スイープ
 ## <a name="artifacts"></a>アーティファクト
 このステージで生成されるアーティファクトには、以下のものが含まれます。
 
-   * [特徴セット](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets):モデリング用に作成された特徴は、**データ定義**レポートの **[特徴セット]** セクションに記載されます。 これには、特徴を生成するコードへのポインターと、特徴の生成方法についての説明が含まれます。
+   * [特徴セット](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md):モデリング用に作成された特徴は、**データ定義**レポートの **[特徴セット]** セクションに記載されます。 これには、特徴を生成するコードへのポインターと、特徴の生成方法についての説明が含まれます。
    * [モデル レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md):試行した各モデルについて、各実験の詳細を提供する標準のテンプレート ベースのレポートが生成されます。
    * **チェックポイント判定**:モデルのパフォーマンスが、実稼働システムにデプロイするのに十分かどうかを評価します。 主な考慮事項の一部を以下に示します。
      * テスト データから判断して、質問に対するモデルの回答に十分な確実性があるか。 

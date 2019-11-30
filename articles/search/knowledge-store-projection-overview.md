@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bb6af4be232810c1f5d135e459238e2e4f2cd5d8
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e7ed7eef961e357b8c1e4e59790f9f150c286c61
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720047"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326605"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアでのプロジェクションの操作
 
@@ -114,9 +114,11 @@ Azure Cognitive Search では、インデックス作成の一環として組み
 
 この例で示すように、キー フレーズとエンティティは異なるテーブルにモデル化されており、各行の親 (MainTable) への参照が含まれます。
 
-次の図は、[ナレッジ ストアの使用を開始する方法](knowledge-store-howto.md)に関するページの Case-law 演習を参考にしています。 ケースに複数の意見があり、各意見がその中に含まれるエンティティを識別することで強化されるシナリオでは、ここに示すようにプロジェクションをモデル化できます。
+<!---
+The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
 
-![テーブル内のエンティティとリレーションシップ](media/knowledge-store-projection-overview/TableRelationships.png "テーブル プロジェクションのリレーションシップのモデル化")
+![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
+--->
 
 ## <a name="object-projections"></a>オブジェクト プロジェクション
 

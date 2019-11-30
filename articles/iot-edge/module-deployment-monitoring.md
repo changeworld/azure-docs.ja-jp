@@ -8,13 +8,12 @@ ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 376ee74732daf526b31129fa8c93cbaa32350eae
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb45f2b929c08ce77c83af450726a00dd6af458e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318208"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456738"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>1 台のデバイスまたは多数のデバイスを対象とした IoT Edge 自動デプロイについて
 
@@ -51,8 +50,8 @@ IoT Edge の自動デプロイでは、実行する IoT Edge モジュール イ
 
 各モジュールの構成メタデータには、次のものが含まれます。 
 
-* バージョン 
-* Type 
+* Version 
+* 種類 
 * 状態 (実行中または停止など) 
 * 再起動ポリシー 
 * イメージおよびコンテナー レジストリ
@@ -83,7 +82,7 @@ IoT Edge の自動デプロイでは、実行する IoT Edge モジュール イ
 * 単一引用符は、ターゲット条件の値を表します。 そのため、デバイス名に単一引用符が含まれる場合は、別の単一引用符でエスケープする必要があります。 たとえば、`operator'sDevice` というデバイスをターゲットとするには、`deviceId='operator''sDevice'` と書き込みます。
 * ターゲット条件の値 `-:.+%_#*?!(),=@;$` には、数字、文字、および 次の文字を使用することができます。
 
-### <a name="priority"></a>優先順位
+### <a name="priority"></a>Priority
 
 優先順位では、デプロイをターゲット デバイスに適用する際、他のデプロイとの関係を考慮するかどうかを定義します。 デプロイ優先順位は正の整数で指定され、数が大きいほど優先順位が高いことを示します。 IoT Edge デバイスが複数のデプロイのターゲットになっている場合は、優先順位の最も高いデプロイが適用されます。  優先順位の低いデプロイは適用されず、マージもされません。  デバイスが複数のデプロイのターゲットになっていて、それらの優先順位が同じである場合は、直近に作成されたデプロイが適用されます (作成日時のタイムスタンプによって決定されます)。
 
