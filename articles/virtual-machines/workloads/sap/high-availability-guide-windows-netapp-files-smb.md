@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: radeltch
-ms.openlocfilehash: 5de28055a1b573b3326b717614f481b0e1158f1a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d7c2bfbe3f277bbaf652191977434ea5fe4dbffd
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064691"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555295"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files (SMB) を使用した Windows 上の Azure VM における SAP NetWeaver の高可用性
 
@@ -78,8 +78,8 @@ ms.locfileid: "74064691"
 * SAP Note [662452](https://launchpad.support.sap.com/#/notes/662452) には、データ アクセス中のファイル システムのパフォーマンスやエラーの低さに対処するための推奨事項 (8.3 名前の生成を非アクティブ化) があります。
 * [Windows フェールオーバー クラスターへの SAP NetWeaver 高可用性のインストールおよび Azure 上での SAP ASCS/SCS インスタンスのファイル共有](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-file-share) 
 * [SAP NetWeaver のための Azure Virtual Machines 高可用性のアーキテクチャとシナリオ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
-* [ASCS クラスター構成にプローブ ポートを追加する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-file-share#create-a-new-sap-service-and-sap-instance-resources)
-* [フェールオーバー クラスターへの (A)SCS インスタンスのインストール](https:\www.sap.com\documents\2017\07\f453332f-c97c-0010-82c7-eda71af511fa.html) 
+* [ASCS クラスター構成にプローブ ポートを追加する](sap-high-availability-installation-wsfc-file-share.md)
+* [フェールオーバー クラスターへの (A)SCS インスタンスのインストール](https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html)
 * [Azure NetApp Files の SMB ボリュームを作成する](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb#requirements-for-active-directory-connections)
 * [Azure NetApp Files を使用した Microsoft Azure 上の NetApp SAP アプリケーション][anf-sap-applications-azure]
 

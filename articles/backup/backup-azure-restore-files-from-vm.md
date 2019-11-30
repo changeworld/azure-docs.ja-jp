@@ -1,20 +1,14 @@
 ---
-title: 'Azure Backup: Azure VM バックアップからファイルとフォルダーを回復する'
+title: Azure VM バックアップからファイルとフォルダーを回復する
 description: この記事では、Azure 仮想マシンの復旧ポイントからファイルとフォルダーを回復する方法について説明します。
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: アイテム レベルの回復; Azure VM のバックアップからのファイルの回復; Azure VM からのファイルの復元
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: dacurwin
-ms.openlocfilehash: 07ec5b76756b462e03e9349edd2daff96933588c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091645"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172857"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 

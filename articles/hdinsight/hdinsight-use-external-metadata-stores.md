@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/29/2019
-ms.openlocfilehash: 18e03b6828922b3444d9461bef394b5c6682c238
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 14b36a391778649e96694f1cb1d3a1b4e7ee89ba
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930310"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327362"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Azure HDInsight での外部メタデータ ストアの使用
 
@@ -74,10 +74,6 @@ HDInsight クラスターが接続された Azure SQL Database にアクセス�
 クラスターの作成中に、以前に作成した Azure SQL Database をクラスターとしてポイントするか、クラスターの作成後に SQL Database を構成できます。 このオプションは、Azure Portal からの新しい Hadoop、Spark、または対話型 Hive クラスターの作成中に **[ストレージ] > [メタストアの設定]** で指定されます。
 
 ![Azure Portal の HDInsight Hive メタデータ ストア](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
-
-Azure Portal または Ambari 構成 ([Hive] > [詳細設定]) から、他のクラスターをカスタム metastore に追加することもできます。
-
-![Ambari の HDInsight Hive メタデータ ストア](./media/hdinsight-use-external-metadata-stores/metadata-store-ambari.png)
 
 ## <a name="hive-metastore-best-practices"></a>Hive metastore のベスト プラクティス
 

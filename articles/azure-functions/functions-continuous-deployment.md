@@ -1,19 +1,15 @@
 ---
 title: Azure Functions の継続的なデプロイ
 description: Azure App Service の継続的なデプロイ機能を使用して、関数を発行します。
-author: ggailey777
-manager: gwallace
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.author: glenga
-ms.openlocfilehash: dae75153cffbf2f0e836e1a28b78a9f05f54e6e0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091176"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230897"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Azure Functions の継続的なデプロイ
 

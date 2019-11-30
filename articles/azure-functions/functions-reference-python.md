@@ -1,24 +1,14 @@
 ---
 title: Azure Functions の Python 開発者向けリファレンス
 description: Python を使用して関数を開発する方法について説明します
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: cfowler
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーレス アーキテクチャ, Python
-ms.service: azure-functions
-ms.devlang: python
 ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 04/16/2018
-ms.author: glenga
-ms.openlocfilehash: 01d8560ee2752f21eb52c00f4c337d1dca59b8fb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7c8ce87fdf396bc488a7deaf576eea28f989e0e4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082693"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226646"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 

@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 11/15/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b7ae388488de32bb106ae29f975302953cfcb2e9
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: ecef301d2745cf7c86f61f0ffa9106c7bfd10623
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123027"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219224"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>パートナー向け Azure Cost Management の利用を開始する
 

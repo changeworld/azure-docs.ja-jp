@@ -1,6 +1,6 @@
 ---
 title: 内部 Basic Load Balancer を作成する - Azure CLI
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: この記事では、Azure CLI を使用して内部ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
-ms.openlocfilehash: 8492ce820a31183b0b3078b1fb366c25a39b7639
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8726991682ca8c2eabd628f1539ff940bf94e03d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076061"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215332"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Azure CLI を使用して VM の負荷を分散する内部ロード バランサーを作成する
 

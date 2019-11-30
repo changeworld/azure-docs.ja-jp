@@ -1,6 +1,6 @@
 ---
 title: Linux VM の DHCPv6 の構成
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: この記事では、Linux VM の DHCPv6 の構成方法について説明します。
 services: load-balancer
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: 1eea6d71b06bac47dcc4fdca9302ee937e0fd54d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077030"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225320"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Linux VM の DHCPv6 の構成
 

@@ -1,19 +1,16 @@
 ---
-title: Azure Container Registry の geo レプリケーション
+title: レジストリの geo レプリケーション
 description: geo レプリケートされた Azure コンテナー レジストリの作成と管理の概要について説明します。これにより、レジストリからマルチマスター リージョン レプリカを持つ複数のリージョンにサービスを提供できるようになります。
-services: container-registry
 author: stevelas
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: cddd55d3dfc2609b7a32a276e106e152f0868b32
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: d238de30e458261a11c941c03ac127c732ca8d3d
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931651"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456448"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 

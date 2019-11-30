@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6d71ea59b7094134cc70b9eeea6da89feacb3a14
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: a85d33a804c8aaf3081439806bf69dab5263dcf2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931053"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224838"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して Scikit-learn モデルを大規模に構築する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ scikit-learn の機械学習モデルを一からトレーニングする場合�
     - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
     - データセットとサンプル スクリプト ファイルをダウンロードする 
         - [アイリス データセット](https://archive.ics.uci.edu/ml/datasets/iris)
-        - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn)
+        - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
     - このガイドの完成した [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)は、GitHub サンプル ページにもあります。 ノートブックには、インテリジェントなハイパーパラメーターのチューニングをカバーし、プライマリ メトリックによる最適なモデルを取得する、拡張セクションが含まれています。
 
 ## <a name="set-up-the-experiment"></a>実験を設定する

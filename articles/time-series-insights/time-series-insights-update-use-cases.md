@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 11/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 175fbf598ae2224d1e1ee0e9c9a3f9ba446965c3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 92d738542076b755a26e8cff2e7fb1aa0384cb22
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014668"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227733"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース
 
@@ -52,15 +52,15 @@ Time Series Insights は、直感的で使い方は簡単です。 コードを�
 
 Time Series Insights に格納されたデータと対話する方法は主に 3 つあります。
 
-- 1 つ目の最も簡単な開始方法は、Time Series Insights プレビュー エクスプローラーを使用することです。 それを使用することで、1 か所ですべての IoT データをすばやく可視化できます。 データの異常の特定に役立つヒートマップなどのツールを備えています。 パースペクティブ ビューも提供されています。 それを使用して、単一のダッシュボードで 1 つまたは複数の Time Series Insights 環境からの最大 4 つのビューを比較できます。 ダッシュボードでは、すべての場所の時系列データを表示できます。 [Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)の詳細を確認してください。 Time Series Insights 環境を計画するには、[Time Series Insights の計画](./time-series-insights-update-plan.md)に関するページを参照してください。
+* 1 つ目の最も簡単な開始方法は、Time Series Insights プレビュー エクスプローラーを使用することです。 それを使用することで、1 か所ですべての IoT データをすばやく可視化できます。 データの異常の特定に役立つヒートマップなどのツールを備えています。 パースペクティブ ビューも提供されています。 それを使用して、単一のダッシュボードで 1 つまたは複数の Time Series Insights 環境からの最大 4 つのビューを比較できます。 ダッシュボードでは、すべての場所の時系列データを表示できます。 [Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)の詳細を確認してください。 Time Series Insights 環境を計画するには、[Time Series Insights の計画](./time-series-insights-update-plan.md)に関するページを参照してください。
 
-- 2 つ目の開始方法は、JavaScript SDK を使用して、Web アプリケーションに強力なチャートやグラフをすばやく埋め込むことです。 数行のコードで、強力なクエリを作成できます。 それらを使用して、折れ線グラフ、円グラフ、棒グラフ、ヒートマップ、データ グリッドなどのデータを入力します。 SDK を使用することで、これらのすべての要素がすぐに使用できる状態で存在します。 さらに、SDK は、Time Series Insights クエリ API を抽象化します。 それらを使用して、SQL に似た述語を作成して、ダッシュボードに表示するデータをクエリできます。 プレゼンテーション レイヤーのハイブリッド ソリューションに対して、Time Series Insights は、パラメーター化 URL を提供します。 それらは、データを深く探索するための Time Series Insights プレビュー エクスプローラーとのシームレスな接続ポイントを提供します。
+* 2 つ目の開始方法は、JavaScript SDK を使用して、Web アプリケーションに強力なチャートやグラフをすばやく埋め込むことです。 数行のコードで、強力なクエリを作成できます。 それらを使用して、折れ線グラフ、円グラフ、棒グラフ、ヒートマップ、データ グリッドなどのデータを入力します。 SDK を使用することで、これらのすべての要素がすぐに使用できる状態で存在します。 さらに、SDK は、Time Series Insights クエリ API を抽象化します。 それらを使用して、SQL に似た述語を作成して、ダッシュボードに表示するデータをクエリできます。 プレゼンテーション レイヤーのハイブリッド ソリューションに対して、Time Series Insights は、パラメーター化 URL を提供します。 それらは、データを深く探索するための Time Series Insights プレビュー エクスプローラーとのシームレスな接続ポイントを提供します。
 
-    * JavaScript SDK の詳細については、[Time Series Insights JS クライアント ライブラリ](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)と [Time Series Insights クライアント](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。
+  * JavaScript SDK の詳細については、[Time Series Insights JS クライアント ライブラリ](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)と [Time Series Insights クライアント](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。
 
-    * URL と新しい UI の共有の詳細について、[Azure Time Series Insights プレビューのエクスプローラーでのデータ視覚化](time-series-insights-update-explorer.md)に関するページを確認してください。
+  * URL と新しい UI の共有の詳細について、[Azure Time Series Insights プレビューのエクスプローラーでのデータ視覚化](time-series-insights-update-explorer.md)に関するページを確認してください。
 
-- 3 つ目の開始方法は、Time Series Insights に格納されているデータをクエリするために強力な API を使用することです。 Time Series Insights には、`from`、`to`、`first`、`last` などのテンポラル演算子があります。 `average`、`min`、`max`、`split by`、`order by`、`DateHistogram` などの集計および変換があります。 さらに `has`、`in`、`and`、`or`、`greater than`、`REGEX` などのフィルター演算子もあります。 これらすべての演算子により、ダウンストリーム アプリケーションではデータ内の興味のある傾向やパターンをすばやく見つけることができます。 それらを使用して、異常を検出するための独自の視覚化を設定します。
+* 3 つ目の開始方法は、Time Series Insights に格納されているデータをクエリするために強力な API を使用することです。 Time Series Insights には、`from`、`to`、`first`、`last` などのテンポラル演算子があります。 `average`、`min`、`max`、`split by`、`order by`、`DateHistogram` などの集計および変換があります。 さらに `has`、`in`、`and`、`or`、`greater than`、`REGEX` などのフィルター演算子もあります。 これらすべての演算子により、ダウンストリーム アプリケーションではデータ内の興味のある傾向やパターンをすばやく見つけることができます。 それらを使用して、異常を検出するための独自の視覚化を設定します。
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>運用分析とプロセス効率の向上
 
@@ -76,9 +76,9 @@ Time Series Insights を使用すると、大規模に機器の正常性、使�
 
 次のように、ソリューション アーキテクチャを実現できます。
 
-- クラス最高のセキュリティ、スループット、待機時間で IoT Hub または Event Hubs 経由でデータを取り込みます。
-- データの処理と計算を実行します。 Stream Analytics、Logic Apps、および Azure Functions などのサービスから取り込まれたデータをフィルターします。 使用するサービスは、特定のデータ処理ニーズによって異なります。
-- 処理パイプラインから計算されたシグナルは、保存と分析のため、Time Series Insights にプッシュされます。
+* クラス最高のセキュリティ、スループット、待機時間で IoT Hub または Event Hubs 経由でデータを取り込みます。
+* データの処理と計算を実行します。 Stream Analytics、Logic Apps、および Azure Functions などのサービスから取り込まれたデータをフィルターします。 使用するサービスは、特定のデータ処理ニーズによって異なります。
+* 処理パイプラインから計算されたシグナルは、保存と分析のため、Time Series Insights にプッシュされます。
 
 Time Series Insights は、履歴データに対してほぼリアルタイムのデータ探索と資産ベースの洞察を提供します。 Time Series Insights を Azure HDInsight に接続することで、ビジネス ニーズに応じて、MapReduce および Hive ジョブを、Time Series Insights に格納されたデータに対して実行できます。 Time Series Insights に格納されたデータは、Time Series Insights のパブリック サーフェス クエリ API を介して、Power BI およびその他のカスタマー アプリケーションから使用できます。 このデータは、さまざまなビジネスおよびオペレーション インテリジェンス シナリオで使用できます。
 
@@ -92,14 +92,14 @@ Machine Learning や Azure Databricks などの高度な分析サービスと統
 
 Time Series Insights では、2 つの簡単なコスト効率の高い方法で IoT データと高度な分析のギャップを埋めます。
 
-- まず、Time Series Insights は、IoT Hub を使用して数百万のデバイスから生のテレメトリ データを収集します。 コンテキスト情報によってデータを強化し、parquet 形式にデータを変換します。 この形式では、Machine Learning、Azure Databricks、およびサード パーティ アプリケーションなどの他の高度な分析サービスと簡単に統合できます。
+* まず、Time Series Insights は、IoT Hub を使用して数百万のデバイスから生のテレメトリ データを収集します。 コンテキスト情報によってデータを強化し、parquet 形式にデータを変換します。 この形式では、Machine Learning、Azure Databricks、およびサード パーティ アプリケーションなどの他の高度な分析サービスと簡単に統合できます。
 
     Time Series Insights は、組織全体のすべてのデータの信頼できるソースとして使用できます。 使用するダウンストリーム分析ワークロード用の中央リポジトリを作成します。 Time Series Insights は、ほぼリアルタイムのストレージ サービスであるため、高度な分析モデルが、受信する IoT テレメトリ データから継続的に学習できます。 そのため、モデルはより正確な予測ができます。
 
-- 2 つ目に、機械学習と予測モデルの出力を Time Series Insights に取り込めば、その結果を視覚化して格納できます。 この手順により、組織はモデルを最適化し、調整できます。 Time Series Insights により、トレーニング済みモデルの出力と同じ平面上にストリーミング テレメトリ データを簡単に視覚化できます。 このように、データ サイエンス チームが異常を特定し、パターンを識別するために役立ちます。 
+* 2 つ目に、機械学習と予測モデルの出力を Time Series Insights に取り込めば、その結果を視覚化して格納できます。 この手順により、組織はモデルを最適化し、調整できます。 Time Series Insights により、トレーニング済みモデルの出力と同じ平面上にストリーミング テレメトリ データを簡単に視覚化できます。 このように、データ サイエンス チームが異常を特定し、パターンを識別するために役立ちます。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)の詳細を確認してください。
-- 環境を計画するには、[Time Series Insights プレビューの計画](./time-series-insights-update-plan.md)に関するページを参照してください。
-- [Time Series Insights クライアント](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。
+* [Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)の詳細を確認してください。
+* 環境を計画するには、[Time Series Insights プレビューの計画](./time-series-insights-update-plan.md)に関するページを参照してください。
+* [Time Series Insights クライアント](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。

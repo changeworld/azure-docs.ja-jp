@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: 33e8a6a281fbc6620a4608c7b0821b196043423e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/22/2019
+ms.openlocfilehash: 95dbed72aeca639041d259e9c92c2a3b73ef63fe
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010054"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456916"
 ---
 # <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure Digital Twins でのエグレスとエンドポイント
 

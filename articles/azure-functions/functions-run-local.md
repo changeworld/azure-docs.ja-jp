@@ -1,20 +1,16 @@
 ---
-title: Azure Functions Core Tools の操作 | Microsoft Docs
+title: Azure Functions Core Tools の操作
 description: Azure 関数を Azure Functions で実行する前に、ローカル コンピューターのコマンド プロンプトまたはターミナルでコーディングしてテストする方法について説明します。
-author: ggailey777
-manager: gwallace
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 72abfef1f86fe47eb7817241a674741f56817f24
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8604df894367ccc25d7e9ffae4453a6b3080b7d8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082722"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226698"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
