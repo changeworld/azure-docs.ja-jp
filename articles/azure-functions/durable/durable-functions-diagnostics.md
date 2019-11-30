@@ -1,20 +1,16 @@
 ---
 title: Durable Functions における診断 - Azure
 description: Azure Functions の Durable Functions 拡張機能に関する問題を診断する方法について説明します。
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 333ddbc15e3ff62b1cd46383c4e3be75fb3dbb88
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614936"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231469"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
@@ -309,7 +305,7 @@ Done!
 ```
 
 > [!NOTE]
-> 前述の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext`の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> 前述の C# の例は Durable Functions 2.x 用です。 Durable Functions 1.x の場合、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 ## <a name="custom-status"></a>カスタム状態
 
