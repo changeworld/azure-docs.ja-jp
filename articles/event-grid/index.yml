@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 09/06/2019
-  ms.openlocfilehash: 3eddc555eeae064e4d82220728f35f14dc17d1ee
-  ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+  ms.openlocfilehash: bd834bdebad486f1f5975bbbc93809a06a69ebf8
+  ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/27/2019
-  ms.locfileid: "74561852"
+  ms.lasthandoff: 12/01/2019
+  ms.locfileid: "74666190"
 landingContent:
 - title: Event Grid について
   linkLists:
