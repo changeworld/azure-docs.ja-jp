@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: b02e819255db0cdf8b9d241f2ec0d41df7494162
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 7237bb7e0538ba1a9b6333ccb6589efe657a247d
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844352"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423952"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
@@ -132,7 +132,7 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>エラー ID 78144 - 過去 "XXX" 分間に、VM 使用可能なアプリ整合性復旧ポイントはありません
 
-モビリティ エージェントのバージョン [9.23](vmware-physical-mobility-service-overview.md##from-923-version-onwards) および [9.27](site-recovery-whats-new.md#update-rollup-39) では、VSS インストール エラーの動作を処理するための機能強化が行われています。 VSS の障害についてのトラブルシューティングの最適なガイダンスを得るには、確実に最新バージョンを使用します。
+モビリティ エージェントのバージョン [9.23](vmware-physical-mobility-service-overview.md#from-923-version-onwards) および [9.27](site-recovery-whats-new.md#update-rollup-39) では、VSS インストール エラーの動作を処理するための機能強化が行われています。 VSS の障害についてのトラブルシューティングの最適なガイダンスを得るには、確実に最新バージョンを使用します。
 
 最も一般的な問題の一部を次に示します
 

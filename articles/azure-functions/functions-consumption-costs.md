@@ -1,18 +1,14 @@
 ---
 title: Azure Functions での従量課金プランのコストの見積もり
 description: Azure の従量課金プランで関数アプリを実行するときに発生する可能性があるコストをより正確に見積もる方法について説明します。
-author: ggailey777
-ms.author: glenga
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.service: azure-functions
-manager: gwallace
-ms.openlocfilehash: 0ff41eb511ad4513fc9bf5a2ded7ef47b08d12ab
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9d81c99f3602e3d7ed5508884b0b313ef2f2fcaf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243302"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230854"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり
 
