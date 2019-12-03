@@ -9,14 +9,14 @@ ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e2074cec65ea4c1df803999c6a995f73ea4227ee
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: f4420824192ff3fd967cb6676cbe1de81ce7ad4c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796688"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953918"
 ---
 # <a name="use-secrets-in-training-runs"></a>トレーニングの実行でシークレットを使用する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

@@ -4,14 +4,14 @@ description: リソースの種類に応じて Azure Resource Manager テンプ�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 10/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: de1b5080e72f79626ca0c749efe4122721f14922
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 34e6ee348a6e15e1178f5e7cb65edfb946c1280c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528591"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953267"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完全モード デプロイでの Azure リソースの削除
 
@@ -20,6 +20,8 @@ ms.locfileid: "72528591"
 **はい**とマークされたリソースの種類は、完全モードでデプロイされるテンプレート内にない場合、削除されます。
 
 **いいえ**とマークされたリソースの種類は、テンプレート内になくても自動的に削除されることはありませんが、親リソースが削除された場合は削除されます。 動作の詳細については、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」をご覧ください。
+
+[テンプレート内の複数のリソース グループ](resource-manager-cross-resource-group-deployment.md)にデプロイする場合、デプロイ操作で指定されたリソース グループ内のリソースは削除対象となります。 セカンダリ リソース グループ内のリソースは削除されません。
 
 リソース プロバイダーの名前空間に移動します。
 > [!div class="op_single_selector"]
@@ -61,7 +63,6 @@ ms.locfileid: "72528591"
 > - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
 > - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
 > - [Microsoft.ContainerService](#microsoftcontainerservice)
-> - [Microsoft.ContentModerator](#microsoftcontentmoderator)
 > - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
 > - [Microsoft.CostManagement](#microsoftcostmanagement)
 > - [Microsoft.CustomerLockbox](#microsoftcustomerlockbox)
@@ -277,6 +278,7 @@ ms.locfileid: "72528591"
 > | dataAliases | いいえ |
 > | denyAssignments | いいえ |
 > | elevateAccess | いいえ |
+> | findOrphanRoleAssignments | いいえ |
 > | locks | いいえ |
 > | permissions | いいえ |
 > | policyAssignments | いいえ |
@@ -394,6 +396,7 @@ ms.locfileid: "72528591"
 > | billingAccounts/createBillingRoleAssignment | いいえ |
 > | billingAccounts/createInvoiceSectionOperations | いいえ |
 > | billingAccounts/customers | いいえ |
+> | billingAccounts/customers/billingPermissions | いいえ |
 > | billingAccounts/customers/billingSubscriptions | いいえ |
 > | billingAccounts/customers/initiateTransfer | いいえ |
 > | billingAccounts/customers/policies | いいえ |
@@ -451,6 +454,7 @@ ms.locfileid: "72528591"
 > | リソースの種類 | 完全モードの削除 |
 > | ------------- | ----------- |
 > | blockchainMembers | はい |
+> | cordaMembers | はい |
 > | watchers | はい |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
@@ -641,6 +645,8 @@ ms.locfileid: "72528591"
 > | proximityPlacementGroups | はい |
 > | restorePointCollections | はい |
 > | restorePointCollections/restorePoints | いいえ |
+> | sharedVMExtensions | はい |
+> | sharedVMExtensions/versions | いいえ |
 > | sharedVMImages | はい |
 > | sharedVMImages/versions | いいえ |
 > | スナップショット | はい |
@@ -700,6 +706,7 @@ ms.locfileid: "72528591"
 > | registries/buildTasks | はい |
 > | registries/buildTasks/steps | いいえ |
 > | registries/eventGridFilters | いいえ |
+> | registries/generateCredentials | いいえ |
 > | registries/getBuildSourceUploadUrl | いいえ |
 > | registries/GetCredentials | いいえ |
 > | registries/importImage | いいえ |
@@ -710,7 +717,9 @@ ms.locfileid: "72528591"
 > | registries/runs | いいえ |
 > | registries/runs/cancel | いいえ |
 > | registries/scheduleRun | いいえ |
+> | registries/scopeMaps | いいえ |
 > | registries/tasks | はい |
+> | registries/tokens | いいえ |
 > | registries/updatePolicies | いいえ |
 > | registries/webhooks | はい |
 > | registries/webhooks/getCallbackConfig | いいえ |
@@ -724,14 +733,6 @@ ms.locfileid: "72528591"
 > | containerServices | はい |
 > | managedClusters | はい |
 > | openShiftManagedClusters | はい |
-
-## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
-
-> [!div class="mx-tableFixed"]
-> | リソースの種類 | 完全モードの削除 |
-> | ------------- | ----------- |
-> | applications | はい |
-> | updateCommunicationPreference | いいえ |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 
@@ -821,8 +822,6 @@ ms.locfileid: "72528591"
 > | datacatalogs/datasources/scans | いいえ |
 > | datacatalogs/datasources/scans/datasets | いいえ |
 > | datacatalogs/datasources/scans/triggers | いいえ |
-> | datacatalogs/scantargets | いいえ |
-> | datacatalogs/scantargets/datasets | いいえ |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 
@@ -887,6 +886,9 @@ ms.locfileid: "72528591"
 > | ------------- | ----------- |
 > | servers | はい |
 > | servers/advisors | いいえ |
+> | servers/privateEndpointConnectionProxies | いいえ |
+> | servers/privateEndpointConnections | いいえ |
+> | servers/privateLinkResources | いいえ |
 > | servers/queryTexts | いいえ |
 > | servers/recoverableServers | いいえ |
 > | servers/topQueryStatistics | いいえ |
@@ -900,6 +902,9 @@ ms.locfileid: "72528591"
 > | ------------- | ----------- |
 > | servers | はい |
 > | servers/advisors | いいえ |
+> | servers/privateEndpointConnectionProxies | いいえ |
+> | servers/privateEndpointConnections | いいえ |
+> | servers/privateLinkResources | いいえ |
 > | servers/queryTexts | いいえ |
 > | servers/recoverableServers | いいえ |
 > | servers/topQueryStatistics | いいえ |
@@ -914,6 +919,7 @@ ms.locfileid: "72528591"
 > | serverGroups | はい |
 > | servers | はい |
 > | servers/advisors | いいえ |
+> | servers/keys | いいえ |
 > | servers/privateEndpointConnectionProxies | いいえ |
 > | servers/privateEndpointConnections | いいえ |
 > | servers/privateLinkResources | いいえ |
@@ -943,6 +949,7 @@ ms.locfileid: "72528591"
 > | ------------- | ----------- |
 > | applicationgroups | はい |
 > | applicationgroups/applications | いいえ |
+> | applicationgroups/desktops | いいえ |
 > | applicationgroups/startmenuitems | いいえ |
 > | hostpools | はい |
 > | hostpools/sessionhosts | いいえ |
@@ -1088,6 +1095,7 @@ ms.locfileid: "72528591"
 > | リソースの種類 | 完全モードの削除 |
 > | ------------- | ----------- |
 > | autoManagedVmConfigurationProfiles | はい |
+> | configurationProfileAssignments | いいえ |
 > | guestConfigurationAssignments | いいえ |
 > | software | いいえ |
 > | softwareUpdateProfile | いいえ |
@@ -1129,6 +1137,7 @@ ms.locfileid: "72528591"
 > | リソースの種類 | 完全モードの削除 |
 > | ------------- | ----------- |
 > | machines | はい |
+> | machines/extensions | はい |
 
 ## <a name="microsofthybriddata"></a>Microsoft.HybridData
 
@@ -1235,6 +1244,7 @@ ms.locfileid: "72528591"
 > | ------------- | ----------- |
 > | workspaces | はい |
 > | workspaces/computes | いいえ |
+> | workspaces/eventGridFilters | いいえ |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
@@ -1322,6 +1332,7 @@ ms.locfileid: "72528591"
 > | mediaservices/liveEvents | はい |
 > | mediaservices/liveEvents/liveOutputs | いいえ |
 > | mediaservices/liveOutputOperations | いいえ |
+> | mediaservices/mediaGraphs | いいえ |
 > | mediaservices/streamingEndpointOperations | いいえ |
 > | mediaservices/streamingEndpoints | はい |
 > | mediaservices/streamingLocators | いいえ |
@@ -1439,7 +1450,6 @@ ms.locfileid: "72528591"
 > | publicIPPrefixes | はい |
 > | routeFilters | はい |
 > | routeTables | はい |
-> | secureGateways | はい |
 > | serviceEndpointPolicies | はい |
 > | trafficManagerGeographicHierarchies | いいえ |
 > | trafficmanagerprofiles | はい |
@@ -1520,6 +1530,7 @@ ms.locfileid: "72528591"
 > | リソースの種類 | 完全モードの削除 |
 > | ------------- | ----------- |
 > | policyEvents | いいえ |
+> | policyMetadata | いいえ |
 > | policyStates | いいえ |
 > | policyTrackedResources | いいえ |
 > | remediations | いいえ |
@@ -1610,6 +1621,8 @@ ms.locfileid: "72528591"
 > | ------------- | ----------- |
 > | deployments | いいえ |
 > | deployments/operations | いいえ |
+> | deploymentScripts | はい |
+> | deploymentScripts/logs | いいえ |
 > | links | いいえ |
 > | notifyResourceJobs | いいえ |
 > | providers | いいえ |
@@ -1659,6 +1672,7 @@ ms.locfileid: "72528591"
 > | applicationWhitelistings | いいえ |
 > | assessmentMetadata | いいえ |
 > | assessments | いいえ |
+> | automations | はい |
 > | AutoProvisioningSettings | いいえ |
 > | Compliances | いいえ |
 > | dataCollectionAgents | いいえ |

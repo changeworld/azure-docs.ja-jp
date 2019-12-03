@@ -7,18 +7,21 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 278e9ff68fa20a0a99a6447bb4cf7ac7fddbfb7b
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249107"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120970"
 ---
 # <a name="networking-limit-increase"></a>ネットワークの上限の引き上げ
 
 ネットワークの現在の使用量とクォータは、Azure portal の **[Usages + Quota]\(使用量とクォータ\)** ブレードで確認できます。 使用量 [CLI](https://docs.microsoft.com//cli/azure/network?view=azure-cli-latest#az-network-list-usages)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.13.0)、または[ネットワーク使用量 API](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/listusage) を使用してネットワークの使用量と制限を確認することもできます。
 
 引き上げは、ポータルの **[ヘルプとサポート]** ブレードまたは **[Usages + Quota]\(使用量とクォータ\)** ブレードから要求できます。
+
+> [!Note]
+> パブリック IP プレフィックスの既定のサイズを変更するには、ドロップダウン リストから [Min Public IP InterNetwork Prefix Length]\(最小パブリック IP InterNetwork プレフィックス長\) を選択します。
 
 ## <a name="request-networking-quota-increase-at-subscription-level-using-the-help--support-blade"></a>**[ヘルプとサポート]** ブレードを使用してサブスクリプション レベルでネットワーク クォータの引き上げを要求する
 

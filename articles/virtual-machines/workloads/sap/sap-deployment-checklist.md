@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71672952"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891414"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -160,7 +160,7 @@ ms.locfileid: "71672952"
    1.  [ネットワーク セキュリティグループと ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) の規則が想定どおりに動作することを確認し、保護されたリソースをシールドします。
    1.  暗号化する必要のあるすべてのリソースが暗号化されていることを確認します。 証明書をバックアップして保存し、それらの証明書にアクセスして、暗号化されたエンティティを復元するプロセスを定義し、実装します。
    1.  OS のサポートの観点から可能な場合は、OS ディスクに対して [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) を使用します。
-   1.  使用している暗号化のレイヤーが多すぎないことを確認してください。 場合によっては、Azure Disk Encryption と、DBMS Transparent Data Encryption のメソッドの 1 つを一緒に使用することに意味があります。
+   1.  使用している暗号化のレイヤーが多すぎないことを確認してください。 場合によっては、同じサーバー上の異なるディスクまたはコンポーネントを保護するために、Azure Disk Encryption と、DBMS Transparent Data Encryption のメソッドの 1 つを一緒に使用することに意味があります。  たとえば、SAP DBMS サーバーでは、オペレーティング システムのブート ディスク (OS で ADE がサポートされている場合)、および DBMS のデータ永続化ファイルによって使用されていないデータ ディスクで Azure Disk Encryption (ADE) を有効にできます。  たとえば、DBMS TDE 暗号化キーを保持しているディスクで ADE を使用します。
 1. パフォーマンス テスト。 SAP で、SAP のトレースと測定値に基づいて次の比較を行います。
    - 該当する場合は、上位 10 個のオンライン レポートを現在の実装と比較します。
    - 該当する場合は、上位 10 個のバッチ ジョブを現在の実装と比較します。

@@ -7,14 +7,17 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 02/06/2019
-ms.openlocfilehash: 98e256dbdc6993ee1aeb8e2ac26809ef849edb91
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: b11671f20a7e3e6053f90a884777b31196232a38
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932889"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048302"
 ---
 # <a name="collect-azure-activity-logs-into-azure-monitor-across-azure-active-directory-tenants"></a>Azure Active Directory テナントにまたがる Azure Monitor に Azure Activity ログを収集する
+
+> [!NOTE]
+> リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](activity-log-collect.md)」を参照してください。
 
 この記事では、Logic Apps 用の Azure Log Analytics データ コレクター コネクタを使用して、Azure アクティビティ ログを Azure Monitor の Log Analytics ワークスペースに収集する方法について説明します。 異なる Azure Active Directory テナントのワークスペースにログを送信する必要があるときには、この記事の手順を使用します。 たとえば、マネージド サービス プロバイダーとしては、顧客のサブスクリプションからアクティビティ ログを収集して、自身のサブスクリプションの内の Log Analytics ワークスペースに格納する必要があります。
 

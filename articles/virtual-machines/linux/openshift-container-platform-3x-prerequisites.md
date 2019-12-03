@@ -1,5 +1,5 @@
 ---
-title: Azure に OpenShift Container Platform 3.11 をデプロイする前提条件 | Microsoft Docs
+title: Azure での OpenShift Container Platform 3.11 の前提条件
 description: Azure に OpenShift Container Platform 3.11 をデプロイする前提条件 | Microsoft Docs。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 591cc7a4b84f75536446abbcbe32a69a122ddf5a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392074"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035469"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Azure に OpenShift Container Platform 3.11 をデプロイする一般的な前提条件 | Microsoft Docs
 
@@ -113,14 +113,16 @@ az group create -l eastus -n openshiftrg
 サービス プリンシパルの作成:
 
 ```azurecli
-scope=`az group show --name openshiftrg --query id`
-az ad sp create-for-rbac --name openshiftsp \
-      --role Contributor --password {Strong Password} \
-      --scopes $scope \
+az group show --name openshiftrg --query id
 ```
-Windows を使用している場合は、```az group show --name openshiftrg --query id``` を実行し、$scope の代わりに出力を使用します。
+コマンドの出力を保存し、次のコマンドで $scope の代わりに使用します
 
-コマンドから返された appId プロパティを書き留めます。
+```azurecli
+az ad sp create-for-rbac --name openshiftsp \
+      --role Contributor --scopes $scope \
+```
+
+コマンドから返された appId プロパティとパスワードを書き留めます。
 ```json
 {
   "appId": "11111111-abcd-1234-efgh-111111111111",
@@ -131,7 +133,7 @@ Windows を使用している場合は、```az group show --name openshiftrg --q
 }
 ```
  > [!WARNING] 
- > 必ず安全なパスワードを作成してください。 [Azure AD のパスワードの規則と制限](/azure/active-directory/active-directory-passwords-policy)に関するガイダンスに従ってください。
+ > このパスワードは再度取得できないため、セキュリティで保護されたパスワードを必ず書き留めておいてください。
 
 サービス プリンシパルについて詳しくは、「[Azure CLI で Azure サービス プリンシパルを作成する](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」をご覧ください。
 

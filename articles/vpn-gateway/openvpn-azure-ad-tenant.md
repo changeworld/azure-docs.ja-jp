@@ -2,21 +2,25 @@
 title: P2S VPN 接続用の Azure Active Directory テナントを作成する:Azure AD 認証 | Microsoft Docs
 description: P2S VPN を使用して VNet に接続する場合には、Azure AD 認証を使用できます
 services: vpn-gateway
-author: cherylmc
+author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/08/2019
-ms.author: cherylmc
-ms.openlocfilehash: 9d3ab7e56c136d110f58b95d10c0e4bda5839fd0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/13/2019
+ms.author: alzam
+ms.openlocfilehash: a7f17890c8422c9a9be7620f5ff1441390c60257
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511688"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075316"
 ---
-# <a name="create-an-azure-active-directory-tenant-for-p2s-open-vpn-connections-that-use-azure-ad-authentication"></a>Azure AD 認証を使用する P2S Open VPN 接続用の Azure Active Directory テナントを作成する
+# <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>P2S OpenVPN プロトコル接続用の Azure Active Directory テナントを作成する
 
 VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証を使用できます。 ただし、Open VPN プロトコルを使用する場合は、Azure Active Directory 認証を使用することもできます。 この記事では、P2S Open VPN 認証用の Azure AD テナントを設定する方法について説明します。
+
+> [!NOTE]
+> Azure AD 認証は、OpenVPN®プロトコル接続でのみサポートされています。
+>
 
 ## <a name="tenant"></a>1.Azure AD テナントを作成する
 
@@ -90,13 +94,14 @@ VNet に接続する際には、証明書ベースの認証か、 RADIUS 認証�
 
     ```azurepowershell-interactive
     $gw = Get-AzVirtualNetworkGateway -Name <name of VPN gateway> -ResourceGroupName <Resource group>
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientRootCertificates @()
     Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -AadTenantUri "https://login.microsoftonline.com/<your Directory ID>" -AadAudienceId "41b23e61-6c1e-4545-b367-cd054e0ed4b4" -AadIssuerUri "https://sts.windows.net/<your Directory ID>/"
     ```
 
 9. 次のコマンドを実行してプロファイルを作成し、ダウンロードします。 -ResourcGroupName と -Name の値は実際の値に変更してください。
 
     ```azurepowershell-interactive
-    $profile = New-AzVpnClientConfiguration -ResourceGroupName AADAuth -Name AADauthGW -AuthenticationMethod "EapTls"
+    $profile = New-AzVpnClientConfiguration -Name <name of VPN gateway> -ResourceGroupName <Resource group> -AuthenticationMethod "EapTls"
     $PROFILE.VpnProfileSASUrl
     ```
 

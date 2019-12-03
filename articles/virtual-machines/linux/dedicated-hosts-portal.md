@@ -1,5 +1,5 @@
 ---
-title: Azure portal を使用して Azure 専用ホストをデプロイする | Microsoft Docs
+title: Azure portal を使用して Azure 専用ホストにデプロイする
 description: Azure portal を使用して専用ホストに VM をデプロイします。
 services: virtual-machines-linux
 author: cynthn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 03d8b5353a2dc9840c8231978243e7f94a5bff56
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 296c43c7c1345c67cc5b83749272e56c122ee535
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700167"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036420"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>更新:ポータルを使用して専用ホストに VM をデプロイする
+# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>プレビュー:ポータルを使用して専用ホストに VM をデプロイする
 
 この記事では、仮想マシン (VM) をホストするための Azure [専用ホスト](dedicated-hosts.md)を作成する方法について説明します。 
 

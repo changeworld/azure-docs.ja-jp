@@ -1,5 +1,6 @@
 ---
-title: カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する
+title: カスタム ルート CA を使用して自己署名証明書を生成する
+titleSuffix: Azure Application Gateway
 description: カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する方法について説明します
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 659c4cb3a6f0d50176875b76eeb2784c711eafd1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: fb3d2e70d9485c63d6de156abe9d192afa818814
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967142"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075087"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>カスタム ルート CA を使用して Azure Application Gateway の自己署名証明書を生成する
 
@@ -87,7 +88,7 @@ OpenSSL を使用してルート CA 証明書を作成します。
 CSR は、証明書を要求するときに CA に与えられる公開キーです。 CA は、この特定の要求に対して証明書を発行します。
 
 > [!NOTE]
-> サーバー証明書の CN (共通名) は、発行者のドメインと別のものである必要があります。 たとえば、この例では、発行者の CN は www.contoso.com 、サーバー証明書の CN は www.fabrikam.com です
+> サーバー証明書の CN (共通名) は、発行者のドメインと別のものである必要があります。 たとえば、この例では、発行者の CN は `www.contoso.com` で、サーバー証明書の CN は `www.fabrikam.com` です。
 
 
 1. 次のコマンドを使用して CSR を生成します。

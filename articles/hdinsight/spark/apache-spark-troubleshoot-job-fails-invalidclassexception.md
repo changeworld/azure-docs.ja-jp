@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight で、Apache Spark ジョブが InvalidClassException で失敗する
+title: Apache Spark からの InvalidClassException エラー - Azure HDInsight
 description: Azure HDInsight で、Apache Spark ジョブが InvalidClassException で失敗し、クラスバージョンが一致しない
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: c32b6a5ed7e8c052096f6125a5246fc9685302d4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 124d5586180258589c5db17454b8fbf1e465fc24
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088682"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106489"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Azure HDInsight で、Apache Spark ジョブが InvalidClassException で失敗し、クラスバージョンが一致しない
 
@@ -34,7 +34,10 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 
 ## <a name="cause"></a>原因
 
-このエラーは、`spark.yarn.jars` 構成に jar をさらに追加することにより発生することがあります。これは、別のバージョンの `commons-lang3` パッケージを含み、クラスの不一致を招く「シェーデッド」jar になります。 既定では、Spark 2.1/2/3 はバージョン 3.5 の `commons-lang3` を使用します。
+このエラーは、`spark.yarn.jars` 構成にさらに jar (具体的には、別のバージョンの `commons-lang3` パッケージを含み、クラスの不一致を招くシェーディングされた jar) を追加することにより発生することがあります。 既定では、Spark 2.1/2/3 はバージョン 3.5 の `commons-lang3` を使用します。
+
+> [!TIP]
+> ライブラリのシェーディングとは、その内容を独自の jar に配置し、パッケージを変更することです。 これは、ライブラリのパッケージ化とは異なり、再パッケージせずに独自の jar にライブラリを配置します。
 
 ## <a name="resolution"></a>解決策
 

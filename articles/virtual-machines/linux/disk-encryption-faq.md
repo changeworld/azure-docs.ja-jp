@@ -1,5 +1,5 @@
 ---
-title: FAQ - Linux VM の Azure Disk Encryption | Microsoft Docs
+title: FAQ - Linux VM に対する Azure Disk Encryption
 description: この記事では、Linux IaaS VM の Microsoft Azure Disk Encryption についてよく寄せられる質問への回答を示します。
 author: msmbaldwin
 ms.service: security
@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: f8d31c8df4d073ccd744e792d1316ce02e4bf387
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 77b092920bff75c806ec78a933d23df546bf636a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71830000"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036362"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VM のための Azure Disk Encryption に関してよくあるご質問
 

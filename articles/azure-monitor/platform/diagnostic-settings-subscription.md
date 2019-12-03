@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 10/31/2019
-ms.openlocfilehash: 9f8783dc6d3c14b086364639b60273dbae626cee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6104a8b01cc9fca5ff8de973e7fc2af77cda8515
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586992"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048206"
 ---
 # <a name="collect-azure-activity-log-with-diagnostic-settings-preview"></a>診断設定を使用して Azure アクティビティ ログを収集する (プレビュー)
 [Azure アクティビティ ログ](activity-logs-overview.md)は、Azure で発生したサブスクリプションレベルのイベントの分析情報を提供する[プラットフォーム ログ](platform-logs-overview.md)です。 ここまで、アクティビティ ログ エントリを[イベント ハブまたはストレージ アカウント](activity-log-export.md)に送信するためのログ プロファイルを作成し、コネクタを使用してこれらを [Log Analytics ワークスペース](activity-log-collect.md)に収集しました。
@@ -22,6 +22,8 @@ ms.locfileid: "73586992"
 - すべてのプラットフォーム ログを収集するための一貫した方法。
 - 複数のサブスクリプションとテナントにわたってアクティビティ ログを収集する。
 - コレクションをフィルター処理して特定のカテゴリのログのみを収集する。
+- すべてのアクティビティ ログ カテゴリを収集する。 一部のカテゴリは、前の方法を使用して収集されません。
+- ログ インジェストの待機時間が短縮される。 前の方法では約 15 分の待機時間がありましたが、診断設定では約 1 分しか追加されません。
 
 ## <a name="considerations"></a>考慮事項
 診断設定を使用したアクティビティ ログの収集について、この機能を有効にする前に次の詳細を考慮してください。

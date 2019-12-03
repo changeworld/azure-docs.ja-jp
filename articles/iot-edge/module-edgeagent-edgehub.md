@@ -8,13 +8,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: caee247dfb1f7068e935be9c293a28870cfb98ce
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1ab45a6bde9ead69a7ea23dd095de84b8ff01334
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069327"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456693"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge エージェントと IoT Edge ハブのモジュール ツインのプロパティ
 

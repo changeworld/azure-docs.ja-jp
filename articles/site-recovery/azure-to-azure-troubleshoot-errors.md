@@ -1,19 +1,18 @@
 ---
-title: Azure 間レプリケーションのエラーに関する Azure Site Recovery トラブルシューティング | Microsoft Docs
+title: Azure Site Recovery での Azure VM レプリケーションのトラブルシューティング
 description: ディザスター リカバリーのために Azure 仮想マシンをレプリケートするときに発生するエラーに関するトラブルシューティング
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: asgang
-ms.openlocfilehash: baf7a21d04e8f9bcf86c67abde302a558dfba01c
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: b3c459c0eaac98a1cb704b4346153f77ec974188
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910394"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084919"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Azure 間の VM レプリケーションに関するエラーのトラブルシューティング
 

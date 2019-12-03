@@ -1,7 +1,7 @@
 ---
 title: OData の search.score 関数リファレンス
 titleSuffix: Azure Cognitive Search
-description: Azure Cognitive Search のクエリにおける OData の search.score 関数。
+description: Azure Cognitive Search クエリで search.score 関数を使用するための構文とリファレンスのドキュメント。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 500ac4f3a44d54e367ddc4ee5efc9514d603cab6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2439d4f03184f8dbb85b229b3908dff95013b4bc
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793270"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113143"
 ---
 # <a name="odata-searchscore-function-in-azure-cognitive-search"></a>Azure Cognitive Search における OData の `search.score` 関数
 

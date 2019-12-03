@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell で共有 VM イメージを作成する | Microsoft Docs
+title: Azure PowerShell で共有 VM イメージを作成する
 description: Azure PowerShell を使用して Azure に共有仮想マシン イメージを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 01e6d9dff0ea2c2b60d8e2ab42e39e36d998be83
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: db877c96167fc011c1a8bd52cc1d0b63260007c9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390576"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066253"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Azure PowerShell を使用して共有イメージ ギャラリーを作成する 
 

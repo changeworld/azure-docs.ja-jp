@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 068d320c85a1e10027c92b92c1b3c205a999bed7
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 4a89eb36c9aa7369d6145304b572b4245cef3483
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553835"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109330"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Azure Policy を使用して Azure Monitor for VMs (プレビュー) を有効にする
 
@@ -30,7 +30,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 当初、Azure Monitor for VMs のポリシー定義を管理およびデプロイするための Azure Policy によるエクスペリエンスは Azure Policy からのみ実行されました。 ポリシー対象範囲の管理の機能を使用すると、前に説明したポリシー定義を含む **[Azure Monitor for VMs の有効化]** イニシアチブを大規模に検出、管理、および有効化することがより単純かつ簡単になります。 この新機能には、Azure Monitor for VMs の **[Get started]\(開始する\)** タブからアクセスできます。 **[ポリシー対象範囲の管理]** を選択して、 **[Azure Monitor for VMs Policy Coverage]\(Azure Monitor for VMs のポリシー対象範囲\)** ページを開きます。
 
-![Azure Monitor for VMs の [Get Started] (開始する) タブ](./media/vminsights-enable-at-scale-policy/get-started-page-01.png)
+![Azure Monitor for VMs の [Get Started] (開始する) タブ](./media/vminsights-enable-at-scale-policy/get-started-page.png)
 
 ここで、管理グループとサブスクリプションにわたるイニシアチブの対象範囲の確認および管理を行うことができます。 管理グループおよびサブスクリプションそれぞれに存在する VM の数と、それらのコンプライアンスの状態を把握することができます。
 
@@ -93,7 +93,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 |名前 |説明 |種類 |
 |-----|------------|-----|
-|\[プレビュー\]:仮想マシン スケール セットに対して Azure Monitor を有効にする |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) 内の仮想マシン スケール セットに対して Azure Monitor を有効にします。 Log Analytics ワークスペースをパラメーターとして受け取ります。 注:スケール セットのアップグレード ポリシーが [手動] に設定されている場合は、そのセット内のすべての VM でアップグレードを呼び出して、それらの VM に拡張機能を適用します。 CLI では、これは az vmss update-instances です。 |イニシアティブ |
+|\[プレビュー\]:仮想マシン スケール セットに対して Azure Monitor を有効にする |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) 内の仮想マシン スケール セットに対して Azure Monitor を有効にします。 Log Analytics ワークスペースをパラメーターとして受け取ります。 注:スケール セットのアップグレード ポリシーが [手動] に設定されている場合は、そのセット内のすべての VM でアップグレードを呼び出して、それらの VM に拡張機能を適用します。 CLI では、これは `az vmss update-instances` です。 |イニシアティブ |
 |\[プレビュー\]:仮想マシン スケール セットにおける依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 |ポリシー |
 |\[プレビュー\]:仮想マシン スケール セットにおける Log Analytics エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 |ポリシー |
 |\[プレビュー\]:Linux 仮想マシン スケール セット用の依存関係エージェントのデプロイ |VM イメージ (OS) が一覧で定義されており、Linux 仮想マシン スケール セット用の依存関係エージェントがインストールされていない場合は、このエージェントをデプロイします。 |ポリシー |
@@ -170,7 +170,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 次の例は Azure VM の場合ですが、仮想マシン スケール セットにも適用されます。 コンプライアンスの結果をレビューする方法については、[非準拠の結果の特定](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources)に関する記事をご覧ください。 **[Azure Monitor for VMs Policy Coverage]\(Azure Monitor for VMs のポリシー対象範囲\)** ページで、表から管理グループまたはサブスクリプションのいずれかを選択します。 省略記号 (...) を選択して、 **[コンプライアンスの表示]** を選択します。   
 
-![Azure VM のポリシーへの準拠](./media/vminsights-enable-at-scale-policy/policy-view-compliance-01.png)
+![Azure VM のポリシーへの準拠](./media/vminsights-enable-at-scale-policy/policy-view-compliance.png)
 
 以下のシナリオでは、イニシアチブに含まれるポリシーの結果に基づいて、VM が非準拠として報告されます。
 

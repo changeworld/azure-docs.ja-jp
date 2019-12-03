@@ -18,7 +18,7 @@ ms.locfileid: "73499092"
 ## <a name="create-an-computer-vision-resource"></a>Computer Vision リソースを作成する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. [ **[Computer Vision** リソースの作成]](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision) をクリックします。
+1. [[**Computer Vision** リソースの作成]](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision) をクリックします。
 1. すべての必須設定を入力します。
 
     |Setting|値|

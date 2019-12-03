@@ -8,14 +8,18 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 68bf455bbdfb6d2d45c5eccc60c3ad8ce40d3247
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 33302d7252c56badfed1dc7adea6a4f7cbf961b6
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515788"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048249"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする
+
+> [!NOTE]
+> リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](activity-log-collect.md)」を参照してください。
+
 [Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 Azure portal でアクティビティ ログを表示したり、これを Azure Monitor によって収集された他のデータで分析できる Log Analytics ワークスペースにコピーしたりするだけでなく、ログ プロファイルを作成してアクティビティ ログを Azure ストレージ アカウントにアーカイブしたり、これをイベント ハブにストリーミングしたりすることができます。
 
 ## <a name="archive-activity-log"></a>アクティビティ ログをアーカイブする

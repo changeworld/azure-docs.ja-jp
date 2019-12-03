@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 058506110a8ac4b11f272406a854f72062a1c90d
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: e7998ea0753ba7ab5d97142c34dc9e333f8b4f5d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514706"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034076"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -35,6 +35,13 @@ Azure Storage アカウントへの権限を持つには、ストレージ ア�
 ```azcopy
 azcopy login [flags]
 ```
+
+## <a name="related-conceptual-articles"></a>関連する概念に関する記事
+
+- [AzCopy を使ってみる](storage-use-azcopy-v10.md)
+- [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
+- [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
+- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
 ## <a name="examples"></a>例
 

@@ -1,5 +1,5 @@
 ---
-title: 第 2 世代 VM に対する Azure のサポート | Microsoft Docs
+title: 第 2 世代 VM に対する Azure のサポート
 description: 第 2 世代 VM に対する Azure のサポートの概要
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: 6d90075f866cb65e5428a1641ebd4cf77dd2a887
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7747d1b5e2b18ddf02403ad21fe875c498e43820
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479583"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036044"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -59,7 +59,8 @@ ms.locfileid: "73479583"
 * Windows Server 2012 Datacenter
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04+
+* Ubuntu Server 16.04、18.04、19.04、19.10 
+* RHEL 8.0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM の比較
 

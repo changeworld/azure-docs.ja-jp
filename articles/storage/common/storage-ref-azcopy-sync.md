@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8b4ab0e44f2432056c9c94061c59c99c89a6407d
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 9bfe88c34c78d18f2f5aefb8ae6946b9786030ad
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72513418"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023511"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -35,6 +35,13 @@ sync コマンドは、いくつかの点で copy コマンドと異なります
 2. 仮想ディレクトリ間で同期する際に仮想ディレクトリの 1 つと同じ名前の BLOB がある場合は、パスの末尾にスラッシュ (例を参照) を追加します。
 3. 'DeleteDestination' フラグが true または prompt に設定されている場合、sync を実行するとソースに存在しないファイルと BLOB を削除します。
 
+## <a name="related-conceptual-articles"></a>関連する概念に関する記事
+
+- [AzCopy を使ってみる](storage-use-azcopy-v10.md)
+- [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
+- [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
+- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
+
 ### <a name="advanced"></a>詳細
 
 ファイル拡張子を指定しない場合、AzCopy は、ファイルの拡張子またはコンテンツ (拡張子が指定されていない場合) に基づいて、ローカル ディスクからアップロードするときにファイルのコンテンツの種類を自動的に検出します。
@@ -48,7 +55,7 @@ sync コマンドは、いくつかの点で copy コマンドと異なります
 Windows では、MIME の種類はレジストリから抽出されます。
 
 ```azcopy
-azcopy sync [flags]
+azcopy sync <source> <destination> [flags]
 ```
 
 ## <a name="examples"></a>例

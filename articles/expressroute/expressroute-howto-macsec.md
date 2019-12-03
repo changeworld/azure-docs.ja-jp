@@ -1,5 +1,5 @@
 ---
-title: MACsec の構成 - ExpressRoute:Azure | Microsoft Docs
+title: 'Azure ExpressRoute: MACsec を構成する'
 description: この記事では、お使いのエッジ ルーターと Microsoft のエッジ ルーターの間の接続をセキュリティで保護するように MACsec を構成する際に役立ちます。
 services: expressroute
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 081c448ff09148668dbe5e244e80421a47d77152
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748274"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083543"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>ExpressRoute Direct ポートで MACsec を構成する
 

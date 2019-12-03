@@ -1,21 +1,18 @@
 ---
-title: Azure のネットワーク間接続 | Microsoft Docs
+title: Azure ネットワーク間接続
 description: このページでは、Azure ネットワーク機能に基づいたネットワーク間接続とソリューションのアプリケーション シナリオについて説明します。
-documentationcenter: na
-services: networking
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 3bc189cf269084fdb26f141a36755c96554cad7b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e503dc2b4ae8773ebfedc7a9b73bc5ea93dd9d5a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866001"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076751"
 ---
 # <a name="cross-network-connectivity"></a>ネットワーク間接続
 
@@ -117,7 +114,7 @@ ExpressRoute Global Reach は、異なる ExpressRoute 回線に接続されて�
 
 ## <a name="next-steps"></a>次の手順
 
-VNet と VNet ピアリングについてさらにご質問がある場合、「[仮想ネットワークに関する FAQ][VNet-FAQ]」をご覧ください。 ExpressRoute と仮想ネットワーク接続についてさらにご質問がある場合は、「[ExpressRoute の FAQ][ER-FAQ]」をご覧ください。
+VNet と VNet ピアリングについてさらにご質問がある場合、「[仮想ネットワークに関する FAQ][VNet-FAQ]」をご覧ください。 ExpressRoute と仮想ネットワーク接続についてさらにご質問がある場合は、「[ExpressRoute の FAQ][ER-FAQ]」を参照してください。
 
 Global Reach は国や地域ごとに国や地域でロールアウトされています。 Global Reach が必要な国や地域で使用可能かどうかを確認するには、「[ExpressRoute Global Reach][Global Reach]」を参照してください。
 

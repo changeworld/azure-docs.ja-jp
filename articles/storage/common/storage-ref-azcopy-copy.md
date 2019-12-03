@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7f08c175972826a8b226d7e80f563ac71ba23db
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 0c1b09fbc425a80fe1f8d075c5a83455167073c3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514765"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74029996"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -33,6 +33,13 @@ ms.locfileid: "72514765"
   - AWS S3 (アクセス キー) <-> Azure ブロック BLOB (SAS または OAuth 認証)
 
 詳細については、例を参照してください。
+
+## <a name="related-conceptual-articles"></a>関連する概念に関する記事
+
+- [AzCopy を使ってみる](storage-use-azcopy-v10.md)
+- [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
+- [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
+- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
 ## <a name="advanced"></a>詳細
 
@@ -166,13 +173,13 @@ SAS トークンを使用して、すべての BLOB コンテナー、ディレ�
 
 **--block-blob-tier** string              この BLOB 層を使用してブロック BLOB を Azure Storage にアップロードします。 (既定値は "None")
 
-**--block-size-mb** float                  Azure Storage にアップロードするとき、および Azure Storage からダウンロードするときに、このブロック サイズ (MiB で指定) を使用します。 既定値は、ファイル サイズに基づいて自動的に計算されます。 小数を使用できます (例: 0.25)。
+**--block-size-mb** float                  Azure Storage にアップロードするとき、および Azure Storage からダウンロードするときに、このブロック サイズ (MiB で指定) を使用します。 既定値は、ファイル サイズに基づいて自動的に計算されます。 小数を使用できます (例:0.25)。
 
 **--cache-control** string                 cache-control ヘッダーを設定します。 ダウンロード時に返されます。
 
 **--check-length**                         転送後にコピー先のファイルの長さを確認します。 コピー元とコピー先の間に不一致がある場合は、転送に失敗のマークが付けられます。 (既定値は true)
 
-**--check-md5** string                     ダウンロード時に MD5 ハッシュをどのくらい厳密に検証する必要があるかを指定します。 ダウンロード時にのみ使用できます。 使用できるオプションは NoCheck、LogOnly、FailIfDifferent、FailIfDifferentOrMissing です。 (既定値は "FailIfDifferent") (既定値は "FailIfDifferent")
+**--check-md5** string                     ダウンロード時に MD5 ハッシュをどのくらい厳密に検証する必要があるかを指定します。 ダウンロード時にのみ使用できます。 使用できるオプションは NoCheck、LogOnly、FailIfDifferent、FailIfDifferentOrMissing です。 (既定値は "FailIfDifferent")
 
 **--content-disposition** string           content-disposition ヘッダーを設定します。 ダウンロード時に返されます。
 
@@ -204,15 +211,15 @@ SAS トークンを使用して、すべての BLOB コンテナー、ディレ�
 
 **--include-pattern** string               コピーするときにこれらのファイルのみを含めます。 このオプションでは、ワイルドカード文字 (*) がサポートされます。 ";" を使用してファイルを区切ります。
 
-**--log-level** string                     ログ ファイルのログの詳細度を定義します。使用できるレベルは次のとおりです。INFO (すべての要求/応答)、WARNING (遅い応答)、ERROR (失敗した要求のみ)、NONE (出力ログなし)。 (既定値 は"INFO")。 (既定値は "INFO")
+**--log-level** string                     ログ ファイルのログの詳細度を定義します。使用できるレベルは次のとおりです。INFO (すべての要求/応答)、WARNING (遅い応答)、ERROR (失敗した要求のみ)、NONE (出力ログなし)。 (既定値は "INFO")
 
 **--metadata** string                      これらのキーと値のペアをメタデータとして Azure Storage にアップロードします。
 
 **--no-guess-mime-type**                   AzCopy がファイルの拡張子または内容に基づいてコンテンツ タイプを検出しないようにします。
 
-**--overwrite** string                     このフラグが true に設定されている場合は、コピー先の競合するファイルおよび BLOB を上書きします。 (既定値 は"true") 指定できる値は、"true"、"false"、および "prompt" です。 (既定値は "true")
+**--overwrite** string                     このフラグが true に設定されている場合は、コピー先の競合するファイルおよび BLOB を上書きします。 指定できる値は、"true"、"false"、および "prompt" です。 (既定値は "true")
 
-**--page-blob-tier** string                この BLOB 層を使用して Azure Storage にページ BLOB をアップロードします。 (既定値は "None")。 (既定値は "None")
+**--page-blob-tier** string                この BLOB 層を使用して Azure Storage にページ BLOB をアップロードします。 (既定値は "None")
 
 **--preserve-last-modified-time**          コピー先がファイル システムの場合にのみ使用できます。
 
@@ -222,9 +229,9 @@ SAS トークンを使用して、すべての BLOB コンテナー、ディレ�
 
 **--s2s-detect-source-changed**           列挙後にソースが変更されたかどうかを確認します。
 
-**--s2s-handle-invalid-metadata** string   無効なメタデータ キーの処理方法を指定します。 使用できるオプションは ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid です。 (既定値は "ExcludeIfInvalid")。 (既定値は "ExcludeIfInvalid")
+**--s2s-handle-invalid-metadata** string   無効なメタデータ キーの処理方法を指定します。 使用できるオプションは ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid です。 (既定値は "ExcludeIfInvalid")
 
-**--s2s-preserve-access-tier**             サービス間のコピー中にアクセス層を保持します。 「[Azure Blob storage: ホット、クール、およびアーカイブ アクセス層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)」を参照して、コピー先ストレージ アカウントでアクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier = false を使用してアクセス層のコピーをバイパスしてください。 (既定値は true)。  (既定値は true)
+**--s2s-preserve-access-tier**             サービス間のコピー中にアクセス層を保持します。 「[Azure Blob storage: ホット、クール、およびアーカイブ アクセス層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)」を参照して、コピー先ストレージ アカウントでアクセス層の設定がサポートされていることを確認してください。 アクセス層の設定がサポートされていない場合は、s2sPreserveAccessTier = false を使用してアクセス層のコピーをバイパスしてください。 (既定値は true)
 
 **--s2s-preserve-properties**              サービス間のコピー中にすべてのプロパティを保持します。 AWS S3 と Azure File の非単一ファイル ソースの場合、リスト操作はオブジェクトとファイルの完全なプロパティを返しません。 完全なプロパティを保持するために、AzCopy では、オブジェクトまたはファイルごとに 1 つの追加の要求を送信する必要があります。 (既定値は true)
 

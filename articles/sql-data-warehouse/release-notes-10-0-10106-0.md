@@ -5,18 +5,18 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 09/18/2019
+ms.date: 11/12/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 967263bde459739482100524e5f85bed96cee6f9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 468a61c83948033905b3727add528520611b8bd4
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824296"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092237"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 
@@ -26,11 +26,25 @@ ms.locfileid: "73824296"
 
 新機能はすべてのリージョンにロールアウトされるので、機能の可用性については、ご使用のインスタンスにデプロイされているバージョン、および最新の Azure SQL DW のリリース ノートを確認してください。 お使いの Azure SQL DW のバージョンを確認するには、SQL Server Management Studio (SSMS) を介してデータ ウェアハウスに接続して `SELECT @@VERSION;` を実行すると、Azure SQL DW の現在のバージョンが返されます。
 
-出力例:
+サンプル出力:
 
-![SQL Data Warehouse のバージョン](./media/release-notes/sql_data_warehouse_version.png)
+![SQL Data Warehouse のバージョン](./media/release-notes/t47-1-version.png)
 
-示された日付を使用して、お使いの Azure SQL DW に適用されているリリースを確認してください。
+示されたバージョンを使用して、お使いの Azure SQL DW に適用されているリリースを確認してください。
+
+## <a name="october-2019"></a>2019 年 10 月
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+|**Copy (プレビュー)**|データ インジェストのためのシンプルで柔軟な COPY ステートメントのパブリック プレビューが発表されました。 高い特権を持つユーザーを必要とせずに、1 つのステートメントを使用するだけで、非常に柔軟かつシームレスにデータを取り込めるようになりました。 詳細については、[COPY コマンドのドキュメント](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)を参照してください。|
+|**ワークロードの分離 (プレビュー)**|データ ウェアハウスを民主化するお客様をサポートするために、インテリジェントなワークロード管理のための新機能が発表されました。 新しい[ワークロードの分離](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation)機能では、データ ウェアハウスのリソースへの柔軟性と制御を提供しながら、異種ワークロードの実行を管理できるようにします。 これにより、実行の予測可能性が向上し、定義済みの SLA を満たすための機能が強化されます。 </br>ワークロードの分離に加えて、[ワークロード分類](/azure/sql-data-warehouse/sql-data-warehouse-workload-classification)で追加のオプションを使用できるようになりました。  ログイン分類を超えて、[Create Workload Classifier](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) 構文により、クエリ ラベル、セッション コンテキスト、および時刻に基づいて要求を分類する機能が提供されます。|
+|**PREDICT (プレビュー)**|データ ウェアハウス内の機械学習モデルをスコア付けすることで、大規模で複雑なデータ移動を回避できるようになりました。 T-SQL PREDICT 関数は、オープン モデル フレームワークに基づき、データと機械学習モデルを入力として受け取り、予測を生成します。
+|**SSDT CI/CD (GA)**|SQL Data Warehouse の[最も要望の多い機能](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247--in-preview-database-project-from-visual-studio-t)である、SQL Server Data Tools (SSDT) データベース プロジェクトが一般提供されることが発表されました。 このリリースには、Visual Studio 2019 での SSDT のサポートと、Azure DevOps とのネイティブ プラットフォーム統合が含まれており、エンタープライズ レベルのデプロイ用に組み込みの継続的インテグレーションとデプロイ (CI/CD) 機能が用意されています。 |
+|**具体化されたビュー (GA)**|具体化されたビューでは、ビュー定義クエリから返されるデータを保持し、基になるテーブルのデータが変更されると自動的に更新されます。 これによって、複雑なクエリ (一般に結合と集計を含むクエリ) のパフォーマンスが向上すると共に、メンテナンス操作が簡単になります。 詳細については、「[具体化されたビューを使用したパフォーマンス チューニング](/azure/sql-data-warehouse/performance-tuning-materialized-views)」を参照してください。  具体化されたビューのスクリプトを作成するために、[SQL Server Management Studio 18.4 以降](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15)をインストールします。|
+|**動的データ マスク (GA)**|動的データ マスク (DDM) は、定義されたマスキング規則に基づいて、クエリ結果内で機密データを即座に難読化することにより、データ ウェアハウス内の機密データへの未承認アクセスを防止します。 詳細情報については、[SQL Database の動的データ マスク](/azure/sql-database/sql-database-dynamic-data-masking-get-started)に関する記事をご覧ください。|
+|**Read Committed スナップショット分離 (GA)**|ALTER DATABSE を使用して、ユーザー データベースのスナップショット分離を有効または無効にすることができます。 現在のワークロードへの影響を回避するには、データベースのメンテナンス期間中にこのオプションを設定するか、データベースへの他のアクティブな接続がなくなるまで待機します。 詳細については、[ALTER DATABASE SET オプション](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)に関するページを参照してください。|
+|**順序指定クラスター化列ストア インデックス (GA)**|列ストアは、大量のデータの格納および効率的なクエリを実現する鍵となります。 順序指定クラスター化列ストア インデックスは、効率的なセグメントの除外を有効にすることにより、クエリの実行をさらに最適化します。   詳細については、「[順序指定クラスター化列ストア インデックスを使用したパフォーマンスのチューニング](/azure/sql-data-warehouse/performance-tuning-ordered-cci)」を参照してください。|
+|**結果セットのキャッシュ (GA)**|結果セットのキャッシュが有効にされている場合、Azure SQL Data Warehouse では、繰り返し使用するためにクエリ結果がユーザー データベースに自動的にキャッシュされます。 これにより、以降のクエリ実行で永続キャッシュから直接結果を取得できるため、再計算は必要ありません。 結果セットのキャッシュにより、クエリのパフォーマンスが向上し、コンピューティング リソースの使用量が減少します。 さらに、キャッシュされた結果セットを使用するクエリはコンカレンシー スロットをまったく使用しないため、既存のコンカレンシー制限にはカウントされません。 セキュリティのため、キャッシュされた結果にアクセスできるのは、そのユーザーがキャッシュされた結果を作成したユーザーと同じデータ アクセス許可を持っている場合のみです。 詳細については、「[結果セットのキャッシュを使用したパフォーマンスのチューニング](/azure/sql-data-warehouse/performance-tuning-result-set-caching)」を参照してください。 バージョン 10.0.10783.0 以上に適用されます。|
 
 ## <a name="september-2019"></a>2019 年 9 月
 

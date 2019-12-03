@@ -62,7 +62,7 @@ ms.locfileid: "73504333"
    1. ターミナル (ドロップダウン メニューから、 **[ターミナル]**  >  **[新しいターミナル]** ) を開きます
    1. ターミナルが開いたら、コマンド `python -m pip install azure-cognitiveservices-speech` を入力します
 
-これで、Python で Speech SDK へのコーディングを開始する準備ができました。下記の「[次の手順](#next-steps)」に進むことができます。 Visual Studio Code を初めて使用する場合は、詳細な [Visual Studio Code](https://code.visualstudio.com/docs) に関するドキュメントを参照してください。 Visual Studio Code および Python の詳細については、[Visual Studio Code Python のチュートリアル](https://code.visualstudio.com/docs/python/python-tutorial)に関するページをご覧ください。
+これで、Python で Speech SDK へのコーディングを開始する準備ができました。下記の「[次の手順](#next-steps)」に進むことができます。 Visual Studio Code を初めて使用する場合は、詳細な [Visual Studio Code のドキュメント](https://code.visualstudio.com/docs) を参照してください。 Visual Studio Code および Python の詳細については、[Visual Studio Code Python のチュートリアル](https://code.visualstudio.com/docs/python/python-tutorial)に関するページをご覧ください。
 
 ## <a name="install-the-speech-sdk-using-the-command-line"></a>コマンド ラインを使用して Speech SDK をインストールする
 

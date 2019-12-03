@@ -1,5 +1,5 @@
 ---
-title: インデックスの文字列フィールドにカスタム アナライザーを追加する
+title: 文字列フィールドにカスタム アナライザーを追加する
 titleSuffix: Azure Cognitive Search
 description: Azure コグニティブ検索のフルテキスト検索クエリで使用されるテキスト トークナイザーと文字フィルターを構成します。
 manager: nitinme
@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: bed011d62fa227697562f552ecb649c4b1fc00c9
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9bf0fb1a33a98031a78155a3956ac6d6abe33029
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790153"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113635"
 ---
-# <a name="add-custom-analyzers-to-an-azure-cognitive-search-index"></a>Azure コグニティブ検索のインデックスにカスタム アナライザーを追加する
+# <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドにカスタム アナライザーを追加する
 
 *カスタム アナライザー*は特定の種類の[テキスト アナライザー](search-analyzers.md)であり、既存のトークナイザーとオプションのフィルターのユーザー定義の組み合わせで構成されます。 新しい方法でトークナイザーとフィルターを組み合わせることにより、特定の結果を実現するために、検索エンジンでテキスト処理をカスタマイズできます。 たとえば、"*文字フィルター*" でカスタム アナライザーを作成し、テキスト入力をトークン化する前に HTML マークアップを削除できます。
 

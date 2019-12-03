@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620436"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012905"
 ---
 # <a name="access-and-customize-developer-portal"></a>開発者ポータルへのアクセスとそのカスタマイズ
 
@@ -38,7 +38,7 @@ ms.locfileid: "73620436"
 
 > [!WARNING]
 > 開発者ポータルは、現在 API Management サービスにロールアウト中です。
-> サービスが新しく作成したものである場合や、Developer レベルのサービスの場合は、最新バージョンが既に存在している必要があります。 そうではない場合、問題が発生する可能性があります (たとえば、発行機能を使用する場合)。 機能のロールアウトは、2019 年 11 月 11 日に完了します。 
+> サービスが新しく作成したものである場合や、Developer レベルのサービスの場合は、最新バージョンが既に存在している必要があります。 そうではない場合、問題が発生する可能性があります (たとえば、発行機能を使用する場合)。 機能のロールアウトは、2019 年 11 月 22 日の金曜日までに完了する予定です。 
 
 ## <a name="prerequisites"></a>前提条件
 

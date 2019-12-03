@@ -1,5 +1,5 @@
 ---
-title: Azure VM で SQL Server のエディションのインプレース アップグレードを実行する | Microsoft Docs
+title: SQL Server のエディションのインプレース アップグレード
 description: Azure で SQL Server VM のエディションを変更する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 06/26/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eec2e588b1c2b03e9880dad0848b8213bf5fa449
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 1db45097b0416b680571cb47ec1d9b52f9275c43
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100509"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022216"
 ---
 # <a name="perform-an-in-place-upgrade-of-a-sql-server-edition-on-an-azure-vm"></a>Azure VM で SQL Server のエディションのインプレース アップグレードを実行する
 

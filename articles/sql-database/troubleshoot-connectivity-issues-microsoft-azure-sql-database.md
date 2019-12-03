@@ -1,69 +1,92 @@
 ---
-title: 接続の問題のトラブルシューティング
-description: Azure SQL Database の接続に関する問題をトラブルシューティングする方法について説明します。
+title: Azure SQL Database の接続と使用に関する問題
+description: Azure SQL Database の接続の問題をトラブルシューティングし、SQL Database 固有のその他の問題を解決する手順について説明します
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
-ms.custom: seo-lt-2019
+ms.custom: seo-lt-2019, OKR 11/2019
 author: v-miegge
 ms.author: ramakoni
-ms.reviewer: ''
-ms.date: 09/27/2019
-ms.openlocfilehash: 20988296b5eac7152c53abd6d238043288feacc8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.reviewer: carlrab
+ms.date: 11/14/2019
+ms.openlocfilehash: 0bd018d90f4ca2c64df56d27eebdc6c9160309ac
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807272"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082414"
 ---
-# <a name="troubleshooting-connectivity-issues-with-microsoft-azure-sql-database"></a>Microsoft Azure SQL Database の接続に関する問題のトラブルシューティング
+# <a name="troubleshooting-connectivity-issues-and-other-errors-with-microsoft-azure-sql-database"></a>Microsoft Azure SQL Database の接続に関する問題とその他のエラーのトラブルシューティング
 
-Azure SQL Database への接続に失敗すると、エラー メッセージが表示されます。 これらの接続の問題は、SQL Azure Database の再構成、ファイアウォールの設定、接続タイムアウト、または間違ったログイン情報によって発生する場合があります。 また、一部の Azure SQL Database リソースの上限に達した場合、Azure SQL Database に接続できません。
+Azure SQL Database への接続に失敗すると、エラー メッセージが表示されます。 これらの接続の問題は、Azure SQL Database の再構成、ファイアウォールの設定、接続タイムアウト、または間違ったログイン情報によって発生する場合があります。 また、一部の Azure SQL Database リソースの上限に達した場合、Azure SQL Database に接続できません。
 
-## <a name="error-40613-database--x--on-server--y--is-not-currently-available"></a>エラー 40613: サーバー < y > のデータベース < x > は現在使用できません
+## <a name="transient-fault-error-messages"></a>一時的な障害のエラー メッセージ
 
-**詳細なエラー**
+Azure インフラストラクチャには、SQL Database サービス内で負荷の大きいワークロードが生じた場合に、サーバーを動的に再構成する機能があります。  この動的な動作によって、クライアント プログラムが SQL Database への接続を失うことがあります。 この種のエラーは、 *「一時的な障害」* と呼ばれます。 クライアント プログラムに再試行ロジックを含めて、一時障害に自動的に修復する時間を与えた後、接続の再確立を試行できるようにすることをお勧めします。  最初に再試行する前に、5 秒間待つことをお勧めします。 5 秒未満で再試行すると、クラウド サービスに過度の負荷がかかるおそれがあります。 再試行するたびに、待ち時間を比例して、最大 60 秒まで長くする必要があります。
+
+再試行ロジックのコード例については、以下のページを参照してください。
+
+* [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
+* [SQL Database における接続エラーと一時的なエラーを修正するための措置](sql-database-connectivity-issues.md)
+
+> [!TIP]
+> 以下のセクションで説明されている問題を解決するには、「[一般的な接続に関する問題を修正するための手順](#steps-to-fix-common-connection-issues)」セクションの手順を (示されている順に) 試してください。
+
+### <a name="error-40613-database--x--on-server--y--is-not-currently-available"></a>エラー 40613: サーバー < y > のデータベース < x > は現在使用できません
 
 ``40613: Database <DBname> on server < server name > is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of '< Tracing ID >'.``
 
 この問題を解決するには:
 
-1. 既知の障害について、[Microsoft Azure サービスのダッシュボード](https://status.azure.com/status)を確認してください。 
+1. 既知の障害について、[Microsoft Azure サービスのダッシュボード](https://status.azure.com/status)を確認してください。
 2. 既知の障害がない場合は、[Microsoft Azure のサポート Web サイト](https://azure.microsoft.com/support/options)に移動して、サポート ケースを開きます。
 
 詳細については、["サーバーのデータベースが現在利用できない" エラーのトラブルシューティング](sql-database-troubleshoot-common-connection-issues.md#troubleshoot-transient-errors)に関するページを参照してください。
 
-## <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server"></a>SQL Server への接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました
+### <a name="a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-database-server"></a>SQL Database サーバーへの接続を確立しているときにネットワーク関連またはインスタンス固有のエラーが発生しました
 
 この問題は、アプリケーションでサーバーに接続できない場合に発生します。
 
 この問題を解決するには、「[一般的な接続に関する問題を修正するための手順](#steps-to-fix-common-connection-issues)」セクションの手順を (示されている順に) 試してください。
 
-## <a name="the-server-was-not-found-or-was-not-accessible-errors-26-40-10053"></a>サーバーが見つからなかったか、サーバーにアクセスできませんでした (エラー 26、40、10053)
+### <a name="the-serverinstance-was-not-found-or-was-not-accessible-errors-26-40-10053"></a>サーバー/インスタンスが見つからなかったか、アクセスできませんでした (エラー 26、40、10053)
 
-### <a name="error-26-error-locating-serverinstance-specified"></a>エラー 26:指定されたサーバーまたはインスタンスの位置を特定しているときにエラーが発生しました
-
-**詳細なエラー**
+#### <a name="error-26-error-locating-server-specified"></a>エラー 26:指定されたサーバーの位置を特定しているときにエラーが発生しました
 
 ``System.Data.SqlClient.SqlException: A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.(provider: SQL Network Interfaces, error: 26 – Error Locating Server/Instance Specified)``
 
-### <a name="error-40-could-not-open-a-connection-to-sql-server"></a>エラー 40:SQL Server への接続を開けませんでした
-
-**詳細なエラー**
+#### <a name="error-40-could-not-open-a-connection-to-the-server"></a>エラー 40:サーバーへの接続を開けませんでした
 
 ``A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)``
 
-### <a name="error-10053-a-transport-level-error-has-occurred-when-receiving-results-from-the-server"></a>エラー 10053:サーバーから結果を受信しているときに、トランスポート レベルのエラーが発生しました
-
-**詳細なエラー**
+#### <a name="error-10053-a-transport-level-error-has-occurred-when-receiving-results-from-the-server"></a>エラー 10053:サーバーから結果を受信しているときに、トランスポート レベルのエラーが発生しました
 
 ``10053: A transport-level error has occurred when receiving results from the server. (Provider: TCP Provider, error: 0 - An established connection was aborted by the software in your host machine)``
 
-これらのエラーは、アプリケーションでサーバーに接続できないために発生します。
+#### <a name="cannot-connect-to-a-secondary-database"></a>セカンダリ データベースに接続できません
 
-この問題を解決するには、「[一般的な接続に関する問題を修正するための手順](#steps-to-fix-common-connection-issues)」セクションの手順を (示されている順に) 試してください。
+プライマリ データベースのアクティブ トランザクション中に、データベースが再構成プロセス中で新しいページを適用しているため、セカンダリ データベースへの接続試行が失敗しました。
 
-## <a name="cannot-connect-to-servername-due-to-firewall-issues"></a>ファイアウォールの問題のため <servername> に接続できません
+#### <a name="adonet-and-blocking-period"></a>ADO.NET とブロック期間
+
+ADO.NET を使用するクライアントの *ブロック期間* については、「 [SQL Server の接続プール (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
+
+### <a name="list-of-transient-fault-error-codes"></a>一時的な障害のエラー コードの一覧
+
+次のエラーは一時的なもので、アプリケーション ロジックで再試行を行う必要があります。
+
+| エラー コード | 重大度 | 説明 |
+| ---:| ---:|:--- |
+| 4060 |16 |ログインで要求されたデータベース "%.&#x2a;ls" を開くことができません。 ログインに失敗しました。 詳細については、[エラー 4000 から 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) を参照してください。|
+| 40197 |17 |要求の処理中にサービスでエラーが発生しました。 もう一度実行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 発生したエラーやフェールオーバーの種類に関する追加情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>SQL Database サーバーに再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 詳細については、「[一時エラー](sql-database-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
+| 40501 |20 |サービスは現在ビジー状態です。 10 秒後に要求を再試行してください。 インシデント ID: %ls。 コード: %d。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md)|
+| 40613 |17 |サーバー '%.&#x2a;ls' のデータベース '%.&#x2a;ls' は現在使用できません。 後で接続を再試行してください。 問題が解決しない場合は、'%.&#x2a;ls' のセッション トレース ID を控えてカスタマー サポートに問い合わせてください。<br/><br/> このエラーは、データベースに対して専用管理者接続 (DAC) が既に確立されている場合に発生する可能性があります。 詳細については、「[一時エラー](sql-database-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
+| 49918 |16 |要求を処理できません。 要求を処理するリソースが十分ではありません。<br/><br/>サービスは現在ビジー状態です。 後で要求を再試行してください。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) |
+| 49919 |16 |要求を処理、作成、更新できません。 サブスクリプション "%ld" に対して進行中の作成または更新操作が多すぎます。<br/><br/>サービスが、サブスクリプションまたはサーバーに対する複数の作成または更新要求の処理でビジ―状態です。 現在、要求はリソースの最適化のためにブロックされています。 クエリ [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) を実行して保留中の操作を確認します。 保留中の作成要求または更新要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) |
+| 49920 |16 |要求を処理できません。 サブスクリプション "%ld" に対して進行中の操作が多すぎます。<br/><br/>サービスが、このサブスクリプションに対する複数の要求の処理でビジー状態です。 現在、要求はリソースの最適化のためにブロックされています。 クエリ [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) を実行して操作の状態を確認します。 保留中の要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) |
+| 4221 |16 |'HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING' を長時間待機しているため、read-secondary へのログインに失敗しました。 レプリカのリサイクル時に実行中だったトランザクションに行のバージョンがないため、レプリカはログインに使用できません。 この問題を解決するには、プライマリ レプリカのアクティブ トランザクションをロール バックするか、コミットします。 プライマリ上の長い書き込みトランザクションを避けることでこの状態が発生することを最小限に抑えられます。 |
+
+## <a name="cannot-connect-to-server-due-to-firewall-issues"></a>ファイアウォールの問題のため、サーバーに接続できません
 
 ### <a name="error-40615-cannot-connect-to--servername-"></a>エラー 40615: < servername > に接続できません
 
@@ -79,8 +102,6 @@ Azure SQL Database への接続に失敗すると、エラー メッセージが
 
 ### <a name="login-failed-for-user--user-name-"></a>ユーザー '< User name >' はログインできませんでした
 
-**詳細なエラー**
-
 ``Login failed for user '<User name>'.This session has been assigned a tracing ID of '<Tracing ID>'. Provide this tracing ID to customer support when you need assistance. (Microsoft SQL Server, Error: 18456)``
 
 この問題を解決するには、サービス管理者に連絡し、有効な SQL Server のユーザー名とパスワードを提供するよう依頼してください。
@@ -90,45 +111,45 @@ Azure SQL Database への接続に失敗すると、エラー メッセージが
 1. SQL Server Management Studio (SSMS) を使用して、サーバーにログインします。
 2. 次の SQL クエリを使用して、ログイン名が無効になっているかどうかを確認します。
 
-   ```
+   ```sql
    SELECT name, is_disabled FROM sys.sql_logins
    ```
 
-3. 対応する名前が無効になっている場合は、次のステートメントを使用して有効にします。 
+3. 対応する名前が無効になっている場合は、次のステートメントを使用して有効にします。
 
-   ```
+   ```sql
    Alter login <User name> enable
    ```
 
 4. SQL ログイン ユーザー名が存在しない場合は、これらの手順に従って作成します。
 
-   1. SSMS で、 **[セキュリティ]** をダブルクリックして展開します。 
-   2. **[ログイン]** を右クリックし、 **[新しいログイン]** を選択します。 
+   1. SSMS で、 **[セキュリティ]** をダブルクリックして展開します。
+   2. **[ログイン]** を右クリックし、 **[新しいログイン]** を選択します。
    3. プレースホルダーを含む生成されたスクリプトでは、次の SQL クエリを編集して実行します。
- 
-   ```
+
+   ```sql
    CREATE LOGIN <SQL_login_name, sysname, login_name>
    WITH PASSWORD = ‘<password, sysname, Change_Password>’
    GO
-   ```       
-5. **[データベース]** をダブルクリックします。 
-6. ユーザーにアクセス許可を付与するデータベースを選択します。
-7. **[セキュリティ]** をダブルクリックします。 
-8. **[ユーザー]** を右クリックし、 **[新しいユーザー]** を選択します。 
-9. プレースホルダーを含む生成されたスクリプトでは、次の SQL クエリを編集して実行します。 
-
    ```
-   CREATE USER <user_name, sysname, user_name>          
+
+5. **[データベース]** をダブルクリックします。
+6. ユーザーにアクセス許可を付与するデータベースを選択します。
+7. **[セキュリティ]** をダブルクリックします。
+8. **[ユーザー]** を右クリックし、 **[新しいユーザー]** を選択します。
+9. プレースホルダーを含む生成されたスクリプトでは、次の SQL クエリを編集して実行します。
+
+   ```sql
+   CREATE USER <user_name, sysname, user_name>
    FOR LOGIN <login_name, sysname, login_name>
    WITH DEFAULT_SCHEMA = <default_schema, sysname, dbo>
    GO
-   
    -- Add user to the database owner role
 
    EXEC sp_addrolemember N’db_owner’, N’<user_name, sysname, user_name>’
    GO
    ```
-   
+
    > [!NOTE]
    > `sp_addrolemember` を使用して、特定のユーザーを特定のデータベース ロールにマップすることもできます。
 
@@ -138,25 +159,17 @@ Azure SQL Database への接続に失敗すると、エラー メッセージが
 
 ### <a name="systemdatasqlclientsqlexception-0x80131904-connection-timeout-expired"></a>System.Data.SqlClient.SqlException (0x80131904):接続がタイムアウトしました
 
-**詳細なエラー**
-
 ``System.Data.SqlClient.SqlException (0x80131904): Connection Timeout Expired. The timeout period elapsed while attempting to consume the pre-login handshake acknowledgement. This could be because the pre-login handshake failed or the server was unable to respond back in time. The duration spent while attempting to connect to this server was - [Pre-Login] initialization=3; handshake=29995;``
 
 ### <a name="systemdatasqlclientsqlexception-0x80131904-timeout-expired"></a>System.Data.SqlClient.SqlException (0x80131904):タイムアウトに達しました
-
-**詳細なエラー**
 
 ``System.Data.SqlClient.SqlException (0x80131904): Timeout expired. The timeout period elapsed prior to completion of the operation or the server is not responding.``
 
 ### <a name="systemdataentitycoreentityexception-the-underlying-provider-failed-on-open"></a>System.Data.Entity.Core.EntityException:基になるプロバイダーがオープンで失敗しました
 
-**詳細なエラー**
-
 ``System.Data.Entity.Core.EntityException: The underlying provider failed on Open. -> System.Data.SqlClient.SqlException: Timeout expired. The timeout period elapsed prior to completion of the operation or the server is not responding. -> System.ComponentModel.Win32Exception: The wait operation timed out``
 
 ### <a name="cannot-connect-to--server-name-"></a>< server name > に接続できません
-
-**詳細なエラー**
 
 ``Cannot connect to <server name>.ADDITIONAL INFORMATION:Connection Timeout Expired. The timeout period elapsed during the post-login phase. The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections. The duration spent while attempting to connect to this server was - [Pre-Login] initialization=231; handshake=983; [Login] initialization=0; authentication=0; [Post-Login] complete=13000; (Microsoft SQL Server, Error: -2) For help, click: http://go.microsoft.com/fwlink?ProdName=Microsoft%20SQL%20Server&EvtSrc=MSSQLServer&EvtID=-2&LinkId=20476 The wait operation timed out``
 
@@ -174,11 +187,9 @@ Azure SQL Database への接続に失敗すると、エラー メッセージが
 
 ベスト プラクティスとして、再試行ロジックが実施されていることを確認します。 再試行ロジックの詳細については、[SQL Database への一時的な障害および接続エラーのトラブルシューティング](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues)に関する記事を参照してください。
 
-## <a name="connection-terminated-because-of-a-system-defined-limit"></a>システム定義の制限のため、接続が切断されました
+## <a name="resource-governance-errors"></a>リソース ガバナンス エラー
 
 ### <a name="error-10928-resource-id-d"></a>エラー 10928: リソース ID: %d
-
-**詳細なエラー**
 
 ``10928: Resource ID: %d. The %s limit for the database is %d and has been reached. See http://go.microsoft.com/fwlink/?LinkId=267637 for assistance. The Resource ID value in error message indicates the resource for which limit has been reached. For sessions, Resource ID = 2.``
 
@@ -189,36 +200,28 @@ Azure SQL Database への接続に失敗すると、エラー メッセージが
   > [!NOTE]
   > これは、問題が解決されない可能性のある最小限のアプローチです。
 
-  1. 次の SQL クエリを実行して、[sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ビューを確認し、ブロックしている要求がないかどうかを調べます。
+1. 次の SQL クエリを実行して、[sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ビューを確認し、ブロックしている要求がないかどうかを調べます。
 
-             ```
-             SELECT * FROM dm_exec_requests
-             ```
+   ```sql
+   SELECT * FROM dm_exec_requests
+   ```
 
-  2. ヘッド ブロッカーの**入力バッファー**を特定します。
-  3. ヘッド ブロッカー クエリを調整します。
+2. ヘッド ブロッカーの**入力バッファー**を特定します。
+3. ヘッド ブロッカー クエリを調整します。
 
-    詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
+   詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
 
-* ブロックしているクエリや実行時間の長いクエリに対応しているにもかかわらず、データベースが常に制限に達する場合は、新しいプレビュー エディションのいずれか ([Standard エディションや Premium エディションなど](https://azure.microsoft.com/pricing/details/sql-database/)) にアップグレードすることを検討してください。
-
-SQL Database 価格オプションの詳細については、「[Azure SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/single/)」を参照してください。
+ブロックしているクエリや実行時間の長いクエリに対応しているにもかかわらず、データベースが常に制限に達する場合は、より多くのリソースを含むエディション ([エディション](https://azure.microsoft.com/pricing/details/sql-database/)) にアップグレードすることを検討してください。
 
 動的管理ビューの詳細については、「[システム動的管理ビュー](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)」をご覧ください。
 
-このエラー メッセージの詳細については、「[Azure SQL Database サーバーの SQL Database リソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server)」を参照してください。
+データベースの制限の詳細については、[Azure SQL Database サーバーの SQL Database リソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server)に関するページを参照してください。
 
 ### <a name="error-10929-resource-id-1"></a>エラー 10929:リソース ID:1
 
-**詳細なエラー**
-
 ``10929: Resource ID: 1. The %s minimum guarantee is %d, maximum limit is %d and the current usage for the database is %d. However, the server is currently too busy to support requests greater than %d for this database. See http://go.microsoft.com/fwlink/?LinkId=267637 for assistance. Otherwise, please try again later.``
 
-このエラーの詳細については、「[SQL Database クライアント プログラムのエラー メッセージ](https://docs.microsoft.com/azure/sql-database/sql-database-develop-error-messages)」を参照してください。
-
 ### <a name="error-40501-the-service-is-currently-busy"></a>エラー 40501:サービスは現在ビジー状態です
-
-**詳細なエラー**
 
 ``40501: The service is currently busy. Retry the request after 10 seconds. Incident ID: %ls. Code: %d.``
 
@@ -227,8 +230,6 @@ SQL Database 価格オプションの詳細については、「[Azure SQL Datab
 リソース制限の詳細については、[Database サーバーのリソース制限](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits-database-server)に関する記事を参照してください。
 
 ### <a name="error-40544-the-database-has-reached-its-size-quota"></a>エラー 40544:データベースのサイズ クォータに達しました
-
-**詳細なエラー**
 
 ``40544: The database has reached its size quota. Partition or delete data, drop indexes, or consult the documentation for possible resolutions. Incident ID: <ID>. Code: <code>.``
 
@@ -241,7 +242,7 @@ SQL Database 価格オプションの詳細については、「[Azure SQL Datab
    > [!NOTE]
    > 最も多くの領域を消費しているため、クリーンアップの候補となるテーブルを特定するには、次の SQL クエリを実行します。
 
-   ```
+   ```sql
    SELECT o.name,
     a.SUM(p.row_count) AS 'Row Count',
     b.SUM(p.reserved_page_count) * 8.0 / 1024 AS 'Table Size (MB)'
@@ -251,27 +252,26 @@ SQL Database 価格オプションの詳細については、「[Azure SQL Datab
    ORDER BY [Table Size (MB)] DESC
    ```
 
-2. 現在のサイズが、使用しているエディションでサポートされている最大サイズを超えていない場合は、ALTER DATABASE を使用して MAXSIZE の設定を増やすことができます。 
+2. 現在のサイズが、使用しているエディションでサポートされている最大サイズを超えていない場合は、ALTER DATABASE を使用して MAXSIZE の設定を増やすことができます。
 3. データベースが、使用しているエディションでサポートされている最大サイズを既に超えている場合は、次の 1 つまたは複数の手順を試してください。
-   - 通常のデータベース クリーンアップ アクティビティを実行します。 たとえば、truncate/delete を使用して不要なデータをクリーンアップしたり、SQL Server Integration Services (SSIS) または一括コピー プログラム (bcp) ユーティリティを使用してデータを移動したりします。
-   - データをパーティション分割するか、データを削除するか、インデックスを削除してください。その他の解決方法についてはドキュメントを参照してください。
 
-   - データベースのスケーリングについては、[単一データベースのリソースのスケーリング](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-scale)に関する記事と、[エラスティック プールのリソースのスケーリング](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool-scale)に関する記事を参照してください。
+   * 通常のデータベース クリーンアップ アクティビティを実行します。 たとえば、truncate/delete を使用して不要なデータをクリーンアップしたり、SQL Server Integration Services (SSIS) または一括コピー プログラム (bcp) ユーティリティを使用してデータを移動したりします。
+   * データをパーティション分割するか、データを削除するか、インデックスを削除してください。その他の解決方法についてはドキュメントを参照してください。
+   * データベースのスケーリングについては、[単一データベースのリソースのスケーリング](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-scale)に関する記事と、[エラスティック プールのリソースのスケーリング](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool-scale)に関する記事を参照してください。
 
 ### <a name="error-40549-session-is-terminated-because-you-have-a-long-running-transaction"></a>エラー 40549:トランザクションが長時間実行されているため、セッションを終了しました
 
-**詳細なエラー**
-
 ``40549: Session is terminated because you have a long-running transaction. Try shortening your transaction.``
 
-このエラー メッセージが繰り返し表示される場合は、これらの手順に従って問題を解決してみてください。 
+このエラー メッセージが繰り返し表示される場合は、これらの手順に従って問題を解決してみてください。
 
 1. sys.dm_exec_requests ビューを確認し、開いているセッションで total_elapsed_time 列の値が大きいものがないか調べます。 次の SQL スクリプトを実行して、この確認を行います。
 
-   ```
+   ```sql
    SELECT * FROM dm_exec_requests
    ```
-2. 長時間実行されているクエリの入力バッファーを特定します。 
+
+2. 長時間実行されているクエリの入力バッファーを特定します。
 3. クエリを調整します。
 
 また、クエリのバッチ処理も検討してください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](https://docs.microsoft.com/azure/sql-database/sql-database-use-batching-to-improve-performance)」を参照してください。
@@ -280,25 +280,22 @@ SQL Database 価格オプションの詳細については、「[Azure SQL Datab
 
 ### <a name="error-40551-the-session-has-been-terminated-because-of-excessive-tempdb-usage"></a>エラー 40551:TEMPDB の使用量が多すぎるため、セッションを終了しました
 
-**詳細なエラー**
-
 ``40551: The session has been terminated because of excessive TEMPDB usage. Try modifying your query to reduce the temporary table space usage.``
 
 この問題を回避するには、次の手順に従ってください。
 
-1. クエリを変更して、一時テーブル領域の使用量を減らします。 
-2. 不要になった一時オブジェクトを削除します。 
+1. クエリを変更して、一時テーブル領域の使用量を減らします。
+2. 不要になった一時オブジェクトを削除します。
 3. テーブルを切り捨てるか、使用されていないテーブルを削除します。
 
 ### <a name="error-40552-the-session-has-been-terminated-because-of-excessive-transaction-log-space-usage"></a>エラー 40552:トランザクション ログの使用領域が多すぎるため、セッションを終了しました
-
-**詳細なエラー**
 
 ``40552: The session has been terminated because of excessive transaction log space usage. Try modifying fewer rows in a single transaction.``
 
 この問題を解決するには、次の方法を試してください。
 
-* この問題は、挿入、更新、または削除の各操作が原因で発生する可能性があります。 バッチ処理を実装したり、複数の小さなトランザクションに分割したりして、すぐに操作される行の数を減らしてみてください。
+* この問題は、挿入、更新、または削除の各操作が原因で発生する可能性があります。
+バッチ処理を実装したり、複数の小さなトランザクションに分割したりして、すぐに操作される行の数を減らしてみてください。
 * この問題は、インデックスの再構築操作によって発生する可能性があります。 この問題を回避するには、テーブルで影響を受ける行の数 * (更新されるフィールドの平均サイズ (バイト単位) + 80) < 2 ギガバイト (GB) であることを確認します。
 
   > [!NOTE]
@@ -306,22 +303,59 @@ SQL Database 価格オプションの詳細については、「[Azure SQL Datab
 
 ### <a name="error-40553-the-session-has-been-terminated-because-of-excessive-memory-usage"></a>エラー 40553:メモリの使用量が多すぎるため、セッションを終了しました
 
-**詳細なエラー**
-
 ``40553 : The session has been terminated because of excessive memory usage. Try modifying your query to process fewer rows.``
 
 この問題を回避するには、クエリを最適化してみてください。
 
 詳細なトラブルシューティング手順については、「[クラウドでクエリが正常に実行されているか](https://blogs.msdn.com/b/sqlblog/archive/2013/11/01/is-my-query-running-fine-in-the-cloud.aspx)」を参照してください。
 
+### <a name="table-of-additional-resource-governance-error-messages"></a>その他のリソース ガバナンス エラー メッセージの表
 
-### <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>このログインで要求されたデータベース "master" を開けません。 ログインに失敗しました。
+| エラー コード | 重大度 | 説明 |
+| ---:| ---:|:--- |
+| 10928 |20 |リソース ID: %d。 データベースの %s 制限の %d に達しました。 詳細については、「[単一データベースとプールされたデータベースに関する SQL Database のリソース制限](sql-database-resource-limits-database-server.md)」を参照してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) |
+| 10929 |20 |リソース ID: %d。 %s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) <br/>それ以外の場合は、後でもう一度やり直してください。 |
+| 40544 |20 |データベースのサイズ クォータに達しました。 データをパーティション分割するか、データを削除するか、インデックスを削除してください。その他の解決方法についてはドキュメントを参照してください。 データベースのスケーリングについては、[単一データベースのリソースのスケーリング](sql-database-single-database-scale.md)に関する記事と、[エラスティック プールのリソースのスケーリング](sql-database-elastic-pool-scale.md)に関する記事を参照してください。|
+| 40549 |16 |トランザクションが長時間実行されているため、セッションを終了しました。 トランザクションを短くしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](sql-database-use-batching-to-improve-performance.md)」を参照してください。|
+| 40550 |16 |取得したロックの数が多すぎるため、セッションを終了しました。 1 つのトランザクションで読み取る行または変更する行の数を減らしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](sql-database-use-batching-to-improve-performance.md)」を参照してください。|
+| 40551 |16 |`TEMPDB` の使用領域が多すぎるため、セッションを終了しました。 クエリを変更して一時テーブルの使用領域を減らしてください。<br/><br/>一時オブジェクトを使用している場合は、セッションで不要となった一時オブジェクトを削除して `TEMPDB` データベースの領域を節約してください。 SQL Database での tempdb の使用については、「[SQL Database の Tempdb データベース](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)」を参照してください。|
+| 40552 |16 |トランザクション ログの使用領域が多すぎるため、セッションを終了しました。 1 回のトランザクションで変更する行を減らしてください。 バッチ処理については、「[バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法](sql-database-use-batching-to-improve-performance.md)」を参照してください。<br/><br/>`bcp.exe` ユーティリティまたは `System.Data.SqlClient.SqlBulkCopy` クラスを使用して一括挿入を実行する場合は、1 回のトランザクションでサーバーにコピーされる行数を `-b batchsize` オプションまたは `BatchSize` オプションで制限してください。 `ALTER INDEX` ステートメントでインデックスを再構築する場合は、`REBUILD WITH ONLINE = ON` オプションの使用を検討してください。 仮想コア購入モデルでのトランザクション ログ サイズについては、次を参照してください。 <br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md)|
+| 40553 |16 |メモリの使用量が多すぎるため、セッションを終了しました。 クエリを変更して、処理する行を減らしてください。<br/><br/>Transact-SQL コード内の `ORDER BY` 操作と `GROUP BY` 操作の数を減らすことで、クエリのメモリ要件を抑えられます。 データベースのスケーリングについては、[単一データベースのリソースのスケーリング](sql-database-single-database-scale.md)に関する記事と、[エラスティック プールのリソースのスケーリング](sql-database-elastic-pool-scale.md)に関する記事を参照してください。|
+
+## <a name="elastic-pool-errors"></a>エラスティック プールのエラー
+
+次のエラーは、エラスティック プールの作成と使用に関連しています。
+
+| エラー コード | 重大度 | 説明 | 是正措置 |
+|:--- |:--- |:--- |:--- |
+| 1132 | 17 |エラスティック プールが、その記憶域の上限に達しました。 エラスティック プールの記憶域の使用率が (%d) MB を超えることはできません。 エラスティック プールの記憶域が上限に達したときに、データベースにデータを書き込もうとしています。 リソース制限については以下を参照してください。 <br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md) <br/> |可能であれば、エラスティック プールの DTU を増やすかストレージを追加して、その記憶域の上限を上げることを検討するか、エラスティック プール内の個々のデータベースで使用される記憶域を減らすか、あるいはエラスティック プールからデータベースを削除してください。 エラスティック プールのスケーリングについては、[エラスティック プールのリソースのスケーリング](sql-database-elastic-pool-scale.md)に関する記事を参照してください。|
+| 10929 | 16 |%s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 リソース制限については、以下を参照してください。 <br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md) <br/> それ以外の場合は、後でもう一度やり直してください。 データベースあたりの DTU/仮想コア最小値、データベースあたりの DTU/仮想コア最大値。 エラスティック プール内のすべてのデータベース間での同時実行ワーカー (要求) の合計数が、プールの制限を超えようとしました。 |可能であれば、エラスティック プールの DTU または仮想コアを増やしてワーカーの上限を上げることを検討するか、エラスティック プールからデータベースを削除してください。 |
+| 40844 | 16 |サーバー '%ls' のデータベース '%ls' は、エラスティック プールの '%ls' エディションのデータベースであり、連続コピー リレーションシップを持つことはできません。  |該当なし |
+| 40857 | 16 |サーバー '%ls ' のエラスティック プールが見つかりませんでした。エラスティック プール名は ' %ls ' です。 指定されたエラスティック プールが、指定されたサーバー内にありません。 | 有効なエラスティック プール名を指定してください。 |
+| 40858 | 16 |エラスティック プール '%ls' は サーバー '%ls' に既に存在します。 指定されたエラスティック プールは、指定された SQL Database サーバー内に既に存在します。 | 新しいエラスティック プール名を指定してください。 |
+| 40859 | 16 |エラスティック プールでは、サービス階層 '%ls' はサポートされていません。 指定されたサービス階層は、エラスティック プールのプロビジョニングにはサポートされていません。 |正しいエディションを指定するか、既定のサービス階層を使用する場合はサービス階層を空のままにしてください。 |
+| 40860 | 16 |エラスティック プール '%ls' とサービス目標 '%ls' の組み合わせが正しくありません。 エラスティック プールとサービス レベルは、リソース タイプが 'ElasticPool' に指定されている場合にのみ同時に指定できます。 |エラスティック プールとサービス レベルの適切な組み合わせを指定してください。 |
+| 40861 | 16 |データベース エディション '%.*ls' は、エラスティック プールのサービス層 '%.ls' と同じにする必要があります*。 データベースのエディションがサービス階層と異なります。 |エラスティック プールのサービス階層と異なるデータベース エディションを指定しないでください。  データベースのエディションを指定する必要がないことにご注意ください。 |
+| 40862 | 16 |エラスティック プールのサービス目標が指定されている場合は、エラスティック プール名を指定する必要があります。 エラスティック プールのサービス目標は、エラスティック プールを一意に識別することはできません。 |エラスティック プールのサービス目標を使用する場合は、エラスティック プール名を指定してください。 |
+| 40864 | 16 |エラスティック プールの DTU は、サービス階層 '%.*ls' に対して (%d) DTU 以上である必要があります。 最小値を下回るエラスティック プールの DTU を設定しようとしています。 |エラスティック プールの DTU を最小値以上に設定し直してください。 |
+| 40865 | 16 |エラスティック プールの DTU は、サービス階層 '%.*ls' に対して (%d) DTU を超えることはできません。 エラスティック プールの DTU を最大値を超える値に設定しようとしています。 |エラスティック プールの DTU を最大値を超えないように設定し直してください。 |
+| 40867 | 16 |データベースあたりの DTU の最大値は、サービス階層 '%.*ls' (%d) 以上である必要があります。 サポートされている制限を下回るデータベースあたりの DTU 最大値を設定しようとしています。 | 目的の設定をサポートするエラスティック プールのサービス階層を使用することをご検討ください。 |
+| 40868 | 16 |データベースあたりの DTU の最大値は、サービス階層 '%.*ls' に対して (%d) を超えることはできません。 サポートされている制限を超えるデータベースあたりの DTU 最大値を設定しようとしています。 | 目的の設定をサポートするエラスティック プールのサービス階層を使用することをご検討ください。 |
+| 40870 | 16 |データベースあたりの DTU 最小値は、サービス階層 '%.*ls' に対して (%d) を超えることはできません。 サポートされている制限を超えるデータベースあたりの DTU 最小値を設定しようとしています。 | 目的の設定をサポートするエラスティック プールのサービス階層を使用することをご検討ください。 |
+| 40873 | 16 |データベース数 (%d) と データベースあたりの DTU の最小値 (%d) は、エラスティック プールの DTU (%d) を超えることはできません。 エラスティック プールの DTU を超えるエラスティック プール内のデータベースあたりの DTU 最小値を指定しようとしています。 | エラスティック プールの DTU を増やすか、データベースあたりの DTU 最小値を減らす、またはエラスティック プール内のデータベース数を減らすことをご検討ください。 |
+| 40877 | 16 |データベースが含まれていない場合を除いて、エラスティック プールを削除できません。 エラスティック プールに、1 つ以上のデータベースが含まれているため、削除できません。 |エラスティック プールからデータベースを削除して、エラスティック プールを削除してください。 |
+| 40881 | 16 |エラスティック プール '%.*ls' のデータベース数が上限に達しました。  エラスティック プールのデータベース数上限は、(%d) DTU を含むエラスティック プールの場合、(%d) を超えることはできません。 エラスティック プールのデータベース数が上限に達したときに、データベースを作成またはエラスティック プールにデータベースを追加しようとしています。 | 可能であれば、エラスティック プールの DTU を増やして、データベースの上限を上げることを検討するか、エラスティック プールからデータベースを削除してください。 |
+| 40889 | 16 |エラスティック プール '%.*ls' の DTU または記憶域の上限を下げることはできません。下げると、データベースに十分な記憶域スペースを提供できなくなるためです。 記憶域の使用率を下回るエラスティック プールの記憶域の上限を下げようとしています。 | エラスティック プール内の個々のデータベースの記憶域使用率を減らすことを検討するか、その DTU または記憶域の上限を下げるためにプールからデータベースを削除してください。 |
+| 40891 | 16 |データベースあたりの DTU 最小値 (%d) は、データベースあたりの DTU 最大値 (%d) を超えることはできません。 データベースあたりの DTU 最大値を超えるデータベースあたりの DTU 最小値を設定しようとしています。 |データベースあたりの DTU の最小値がデータベースあたりの DTU 最大値を超えていないことをご確認ください。 |
+| TBD | 16 |エラスティック プール内の個々のデータベースの記憶域サイズは、サービス階層のエラスティック プール '%.*ls' で許可されている最大サイズを超えることはできません。 データベースの最大サイズが、エラスティック プールのサービス階層によって許可されている最大サイズを超えています。 |データベースの最大サイズを、エラスティック プールのサービス階層によって許可されている最大サイズの制限内に設定してください。 |
+
+## <a name="cannot-open-database-master-requested-by-the-login-the-login-failed"></a>このログインで要求されたデータベース "master" を開けません。 ログインに失敗しました
 
 この問題は、アカウントに master データベースにアクセスするアクセス許可がないために発生します。 しかし、既定では、SQL Server Management Studio (SSMS) で master データベースへの接続が試行されます。
 
 この問題を解決するには、次の手順に従ってください。
 
-1. SSMS のログイン画面で **[オプション]** を選択してから、 **[接続プロパティ]** を選択します。 
+1. SSMS のログイン画面で **[オプション]** を選択してから、 **[接続プロパティ]** を選択します。
 2. **[データベースに接続]** フィールドで、既定のログイン データベースとしてユーザーの既定のデータベース名を入力し、 **[接続]** を選択します。
 
    ![接続のプロパティ](media/troubleshoot-connectivity-issues-microsoft-azure-sql-database/cannot-open-database-master.png)
@@ -344,6 +378,7 @@ ClientConnectionId:<Client connection ID>
   at AzureConnectionTest.Program.Main(String[] args)
   ClientConnectionId:<Client ID>
 ```
+
 パフォーマンスの微調整に関する詳細なガイダンスについては、以下のリソースを参照してください。
 
 * [Azure SQL のインデックスと統計情報を管理する方法](https://techcommunity.microsoft.com/t5/Azure-Database-Support-Blog/How-to-maintain-Azure-SQL-Indexes-and-Statistics/ba-p/368787)
@@ -351,13 +386,12 @@ ClientConnectionId:<Client connection ID>
 * [動的管理ビューを使用して Azure SQL Database のパフォーマンスを監視する](https://docs.microsoft.com/azure/sql-database/sql-database-monitoring-with-dmvs)
 * [Azure SQL Database のクエリ ストアの動作](https://docs.microsoft.com/azure/sql-database/sql-database-operate-query-store)
 
-
 ## <a name="steps-to-fix-common-connection-issues"></a>一般的な接続に関する問題を修正するための手順
 
-1. アプリケーション サーバーで TCP/IP がクライアント プロトコルとして有効になっていることを確認します。 詳細については、「[クライアント プロトコルの構成](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-client-protocols)」を参照してください。 SQL Server ツールがインストールされていないアプリケーション サーバーでは、**cliconfg.exe** (SQL Server クライアント ネットワーク ユーティリティ) を実行して、TCP/IP が有効になっていることを確認します。 
+1. アプリケーション サーバーで TCP/IP がクライアント プロトコルとして有効になっていることを確認します。 詳細については、「[クライアント プロトコルの構成](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-client-protocols)」を参照してください。 SQL Server ツールがインストールされていないアプリケーション サーバーでは、**cliconfg.exe** (SQL Server クライアント ネットワーク ユーティリティ) を実行して、TCP/IP が有効になっていることを確認します。
 2. アプリケーションの接続文字列を調べ、正しく構成されていることを確認します。 たとえば、接続文字列で正しいポート (1433) と完全修飾サーバー名が指定されていることを確認します。
 「[SQL Server の接続情報を取得する](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms#get-sql-server-connection-information)」を参照してください。
-3. 接続タイムアウトの値を増やしてみます。 30 秒以上の接続タイムアウトを使用することをお勧めします。 
+3. 接続タイムアウトの値を増やしてみます。 30 秒以上の接続タイムアウトを使用することをお勧めします。
 4. [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms)、UDL ファイル、ping、または telnet を使用して、アプリケーション サーバーと Azure SQL データベース間の接続をテストします。 詳細については、[SQL Server の接続問題のトラブルシューティング](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)と[接続問題の診断](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues#diagnostics)に関する記事を参照してください。
 
    > [!NOTE]
@@ -365,11 +399,11 @@ ClientConnectionId:<Client connection ID>
 
 5. ベスト プラクティスとして、再試行ロジックが実施されていることを確認します。 再試行ロジックの詳細については、[SQL Database に関する一時的な障害と接続エラーのトラブルシューティング](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-issues)についての記事を参照してください。
 
-これらの手順で問題が解決しない場合は、さらにデータを収集してから、サポートに連絡してみてください。 アプリケーションがクラウド サービスの場合は、ログ記録を有効にします。 この手順により、エラーの UTC タイムスタンプが返されます。 さらに、SQL Azure によりトレース ID が返されます。 [Microsoft カスタマー サポート サービス](https://azure.microsoft.com/support/options/)はこの情報を使用できます。 
+これらの手順で問題が解決しない場合は、さらにデータを収集してから、サポートに連絡してみてください。 アプリケーションがクラウド サービスの場合は、ログ記録を有効にします。 この手順により、エラーの UTC タイムスタンプが返されます。 さらに、SQL Azure によりトレース ID が返されます。 [Microsoft カスタマー サポート サービス](https://azure.microsoft.com/support/options/)はこの情報を使用できます。
 
 ログ記録を有効にする方法の詳細については、「[Azure App Service でのアプリの診断ログの有効化](https://azure.microsoft.com/documentation/articles/web-sites-enable-diagnostic-log/)」を参照してください。
 
-**関連ドキュメント**
+## <a name="next-steps"></a>次の手順
 
-* [Azure SQL の接続アーキテクチャ](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)<br>
+* [Azure SQL の接続アーキテクチャ](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)
 * [Azure SQL Database および Data Warehouse のネットワーク アクセスの制御](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)

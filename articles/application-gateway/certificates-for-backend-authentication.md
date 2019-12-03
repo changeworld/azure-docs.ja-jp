@@ -1,18 +1,19 @@
 ---
-title: Azure Application Gateway でバックエンドをホワイトリスト登録するために必要な証明書
-description: この記事では、SSL 証明書を、Azure Application Gateway でバックエンド インスタンスをホワイトリスト登録するために必要な認証証明書と信頼されたルート証明書に変換する方法を説明します。
+title: バックエンド サーバーを許可するために必要な証明書
+titleSuffix: Azure Application Gateway
+description: この記事では、SSL 証明書を、Azure Application Gateway でバックエンド インスタンスを許可するために必要な認証証明書と信頼されたルート証明書に変換する方法について説明します。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: ae1ac3df3da4e5c25e5538f0e8cc4cd12f9186c6
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 48944c513bd075e3859503fdadc4001261dc8c4a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774785"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048168"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Azure Application Gateway でバックエンドを許可する証明書を作成する
 

@@ -1,18 +1,19 @@
 ---
-title: App Service を使用した Azure Application Gateway のトラブルシューティング - App Service URL へのリダイレクト
+title: App Service URL へのリダイレクトのトラブルシューティング
+titleSuffix: Azure Application Gateway
 description: この記事では、Azure Application Gateway を Azure App Service と共に使用した場合のリダイレクトの問題のトラブルシューティング方法について説明します。
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 4b233117bc0f967368aeac7baec8c4875aa16826
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d43efd6dbd344f666c23b1ad4414ceb29992e996
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051426"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074495"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Application Gateway での App Service に関する問題のトラブルシューティング
 
@@ -76,7 +77,7 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-前の例では、応答ヘッダーにリダイレクトの状態コード 301 があることがわかります。 location ヘッダーには、元のホスト名 www.contoso.com ではなく、App Service のホスト名があります。
+前の例では、応答ヘッダーにリダイレクトの状態コード 301 があることがわかります。 location ヘッダーには、元のホスト名 `www.contoso.com` ではなく、App Service のホスト名があります。
 
 ## <a name="solution-rewrite-the-location-header"></a>解決方法:location ヘッダーを書き換える
 
@@ -87,7 +88,7 @@ location ヘッダーのホスト名をアプリケーション ゲートウェ�
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>代替ソリューション:カスタム ドメイン名の使用
 
-v1 SKU を使用する場合、location ヘッダーを書き換えることはできません。 この機能は v2 SKU でのみ利用できます。 リダイレクトの問題を解決するには、ホストのオーバーライドの代わりに、Application Gateway で受信されるのと同じホスト名を App Service  に渡します。
+v1 SKU を使用する場合、location ヘッダーを書き換えることはできません。 この機能は v2 SKU でのみ利用できます。 リダイレクトの問題を解決するには、ホストのオーバーライドの代わりに、Application Gateway で受信されるのと同じホスト名を App Service に渡します。
 
 (リダイレクトがある場合) App Service は、Application Gateway を指し、自ホストではない、元の同じホスト ヘッダーに対してリダイレクトを行うようになります。
 
@@ -97,9 +98,9 @@ v1 SKU を使用する場合、location ヘッダーを書き換えることは�
 
     ![App Service のカスタムドメインの一覧](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- App Service では、ホスト名 www.contoso.com を受け取る準備ができています。 Application Gateway の FQDN を再び指すように DNS の CNAME を変更します。たとえば、appgw.eastus.cloudapp.azure.com にします。
+- App Service では、ホスト名 `www.contoso.com` を受け取る準備ができています。 DNS の CNAME エントリを変更して Application Gateway の FQDN (例えば `appgw.eastus.cloudapp.azure.com`) を指すようにします。
 
-- DNS クエリの実行時、ドメイン www.contoso.com が Application Gateway の FQDN に解決されることを確認します。
+- DNS クエリの実行時、ドメイン `www.contoso.com` が Application Gateway の FQDN に解決されることを確認します。
 
 - **[Pick Hostname from Backend HTTP Settings]\(バックエンド HTTP 設定からホスト名を選択する\)** を無効にするようにカスタム プローブを設定します。 Azure portal で、プローブ設定でこのチェック ボックスをオフにします。 PowerShell では、**Set-AzApplicationGatewayProbeConfig** コマンドで **-PickHostNameFromBackendHttpSettings** スイッチを使用しないでください。 プローブのホスト名フィールドに、App Service の FQDN、example.azurewebsites.net を入力します。 Application Gateway から送信されたプローブ要求のホスト ヘッダーにこの FQDN が含まれます。
 
@@ -110,7 +111,7 @@ v1 SKU を使用する場合、location ヘッダーを書き換えることは�
 
 - カスタム プローブを元どおりバックエンドの HTTP 設定に関連付け、バックエンドが正常であることを確認します。
 
-- Application Gateway からは同じホスト名 (www.contoso.com) が App Service に転送されるようになったはずです。 リダイレクトは同じホスト名で行われます。 次の要求と応答のヘッダー例を参照してください。
+- Application Gateway からは同じホスト名 (`www.contoso.com`) が App Service に転送されるようになったはずです。 リダイレクトは同じホスト名で行われます。 次の要求と応答のヘッダー例を参照してください。
 
 既存の構成に対し、PowerShell を使用して前述の手順を実装するには、下のサンプル PowerShell スクリプトを使用します。 Probe と HTTP Settings の構成に **-PickHostname** スイッチを使用していないことに注目してください。
 

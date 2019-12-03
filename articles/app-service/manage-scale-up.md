@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d2c3b09277963781b90f65705e03f936f81b14ee
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 91a6681c2ef4a6d0ac01889e6e92e752975e90a5
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232365"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089453"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Azure App Service でアプリをスケールアップする
 
@@ -26,7 +26,7 @@ ms.locfileid: "70232365"
 
 * [スケールアップ](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling):CPU、メモリ、ディスク領域を増やしたり、専用の仮想マシン (VM)、カスタム ドメインと証明書、ステージング スロット、自動スケールのような拡張機能を追加したりします。 スケールアップするには、アプリが属している App Service プランの価格レベルを変更します。
 * [スケールアウト](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling):アプリを実行する VM インスタンスの数を増やします。
-  価格レベルに応じて、20 個までのインスタンスにスケールアウトすることができます。 [Isolated](environment/intro.md) レベルの **App Service Environment** では、スケールアウト カウントが 100 インスタンスに増えます。 スケールアウトの詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)」を参照してください。 あらかじめ定義されている規則とスケジュールに基づいて、インスタンス数を自動的に変更する自動スケールの使い方が説明されています。
+  価格レベルに応じて、30 個までのインスタンスにスケールアウトすることができます。 [Isolated](environment/intro.md) レベルの **App Service Environment** では、スケールアウト カウントが 100 インスタンスに増えます。 スケールアウトの詳細については、「[手動または自動によるインスタンス数のスケール変更](../monitoring-and-diagnostics/insights-how-to-scale.md)」を参照してください。 あらかじめ定義されている規則とスケジュールに基づいて、インスタンス数を自動的に変更する自動スケールの使い方が説明されています。
 
 スケール設定は適用に数秒を要するのみで、 [App Service プラン](../app-service/overview-hosting-plans.md)に含まれるすべてのアプリに反映されます。
 コードを変更したりアプリケーションを再デプロイしたりする必要はありません。

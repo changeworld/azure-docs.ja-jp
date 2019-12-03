@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: dacurwin
-ms.openlocfilehash: 71a2b73ab3570539a566f708ea8b1a41963d4e81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5901cbe1e30eb1ce2334a7b935a3629c66c24b8a
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747305"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091584"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 
@@ -45,7 +45,7 @@ ms.locfileid: "73747305"
 - Microsoft では、システム状態の回復を使用して別のハードウェアに回復することはお勧めしません。
 - 現在、システム状態のバックアップでは "オンプレミス" の Windows サーバーはサポートされていますが、この機能は Azure VM には使用できません。
 
-## <a name="pre-requisite"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 Azure Backup でシステム状態のバックアップをトラブルシューティングする前に、以下の前提条件の確認を実行してください。  
 
