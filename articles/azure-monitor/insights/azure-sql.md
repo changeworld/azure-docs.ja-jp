@@ -6,14 +6,14 @@ ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.date: 12/17/2018
+ms.date: 11/12/2019
 ms.reviewer: carlrab
-ms.openlocfilehash: 75e8cffea08c7db4526c647a32ed92be2d1779f1
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b092c547edf37b31e6099227d8cc0e69048bad7a
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899122"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961967"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -39,6 +39,21 @@ Azure SQL Analytics は、Azure SQL データベース (単一、プール、お
 | [Windows エージェント](../platform/agent-windows.md) | いいえ | このソリューションでは、直接の Windows エージェントは使用されません。 |
 | [Linux エージェント](../learn/quick-collect-linux-computer.md) | いいえ | このソリューションでは、直接の Linux エージェントは使用されません。 |
 | [System Center Operations Manager 管理グループ](../platform/om-agents.md) | いいえ | Operations Manager エージェントから Azure Monitor への直接の接続は、このソリューションでは使用されません。 |
+
+## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics のオプション
+
+次の表に、Azure SQL Analytics ダッシュボードの 2 つのバージョンでサポートされているオプションの概要を示します。1 つは Azure SQL データベースとエラスティック プール用で、もう 1 つは Managed Instance 用です。
+
+| Azure SQL Analytics のオプション | 説明 | SQL Database とエラスティック プールのサポート | Managed Instance のサポート |
+| --- | ------- | ----- | ----- |
+| 種類別のリソース | 監視対象のすべてのリソースをカウントするパースペクティブです。 | はい | はい |
+| 洞察 | パフォーマンスに対する Intelligent Insights の階層型のドリルダウンを提供します。 | はい | はい |
+| Errors | データベースで発生した SQL エラーの階層型のドリルダウンを提供します | はい | はい |
+| Timeouts | データベースで発生した SQL タイムアウトの階層型のドリルダウンを提供します | はい | いいえ |
+| ブロッキング | データベースで発生した SQL ブロッキングの階層型のドリルダウンを提供します | はい | いいえ |
+| データベース待機 | データベース レベルで発生した SQL 待機統計の階層型のドリルダウンを提供します 合計待機時間と待機の種類ごとの待機時間の概要が含まれます。 |はい | はい |
+| クエリ実行時間 | クエリの実行時間、CPU 使用率、データ IO 使用率、ログ IO 使用率などのクエリ実行の統計の階層型のドリルダウンを提供します。 | はい | はい |
+| クエリ待機 | 待機カテゴリ別に、クエリ待機統計の階層型のドリルダウンを提供します | はい | はい |
 
 ## <a name="configuration"></a>構成
 [Solutions Gallery からの Azure Monitor ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して、Azure SQL Analytics (プレビュー) ソリューションを Log Analytics ワークスペースに追加します。
@@ -94,21 +109,6 @@ Azure Monitor に一部のメトリックまたはログがストリーミング
 Managed Instance のビューを選択すると、Managed Instance の使用率、それに含まれるデータベース、インスタンス全体で実行されたクエリに関するテレメトリの詳細が表示されます。
 
 ![Azure SQL Analytics のタイムアウト](./media/azure-sql/azure-sql-sol-metrics-mi.png)
-
-### <a name="perspectives"></a>パースペクティブ
-
-次の表に、2 つのバージョンのダッシュボードでサポートされるパースペクティブの概要を示します。1 つは Azure SQL データベースとエラスティック プール用で、もう 1 つが Managed Instance 用です。
-
-| パースペクティブ | 説明 | SQL Database とエラスティック プールのサポート | Managed Instance のサポート |
-| --- | ------- | ----- | ----- |
-| 種類別のリソース | 監視対象のすべてのリソースをカウントするパースペクティブです。 | はい | はい |
-| 洞察 | パフォーマンスに対する Intelligent Insights の階層型のドリルダウンを提供します。 | はい | はい |
-| Errors | データベースで発生した SQL エラーの階層型のドリルダウンを提供します | はい | はい |
-| Timeouts | データベースで発生した SQL タイムアウトの階層型のドリルダウンを提供します | はい | いいえ |
-| ブロッキング | データベースで発生した SQL ブロッキングの階層型のドリルダウンを提供します | はい | いいえ |
-| データベース待機 | データベース レベルで発生した SQL 待機統計の階層型のドリルダウンを提供します 合計待機時間と待機の種類ごとの待機時間の概要が含まれます。 |はい | はい |
-| クエリ実行時間 | クエリの実行時間、CPU 使用率、データ IO 使用率、ログ IO 使用率などのクエリ実行の統計の階層型のドリルダウンを提供します。 | はい | はい |
-| クエリ待機 | 待機カテゴリ別に、クエリ待機統計の階層型のドリルダウンを提供します | はい | はい |
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights レポート
 

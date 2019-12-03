@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 901542e2a69d2c7880825d76c1d69d3795713ed2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: fb36387764efbdaa1ad3d164ba419bee49770871
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231177"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048997"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -38,7 +38,7 @@ ms.locfileid: "70231177"
 *  v3 は、Azure Resource Manager 上に構築された管理と操作の両方の機能を公開する統一された API サーフェスに基づいています。 Azure Resource Manager テンプレートを使って、変換、ストリーミング エンドポイント、ライブ イベントなどを作成して展開できます。
 * [OpenAPI の仕様 (以前は Swagger と呼ばれていた)](https://aka.ms/ams-v3-rest-sdk) に関するドキュメント。
     ファイル ベースのエンコードを含むすべてのサービス コンポーネントのスキーマを公開します。
-* [.NET](https://aka.ms/ams-v3-dotnet-ref)、.Net Core、[Node.js](https://aka.ms/ams-v3-nodejs-ref)、[Python](https://aka.ms/ams-v3-python-ref)、[Java](https://aka.ms/ams-v3-java-ref)、[Go](https://aka.ms/ams-v3-go-ref)、およびRuby で利用できる SDK。
+* [.NET](https://aka.ms/ams-v3-dotnet-ref)、.Net Core、[Node.js](/javascript/api/overview/azure/mediaservices/management)、[Python](https://aka.ms/ams-v3-python-ref)、[Java](https://aka.ms/ams-v3-java-ref)、[Go](https://aka.ms/ams-v3-go-ref)、およびRuby で利用できる SDK。
 * 単純なスクリプト サポートのための [Azure CLI](https://aka.ms/ams-v3-cli-ref) 統合。
 
 ### <a name="new-features"></a>新機能
@@ -73,7 +73,8 @@ ms.locfileid: "70231177"
     * ライブ イベントによって Channel が置き換えられました。<br/>ライブ イベントの課金はライブ チャンネルの測定に基づいています。 詳細については、[価格](live-event-states-billing.md)と[課金](https://azure.microsoft.com/pricing/details/media-services/)に関するセクションを参照してください。
     * ライブ出力によって Program が置き換えられました。
 * ライブ出力は作成すると開始され、削除されると停止します。 v2 API ではプログラムの動作方法が異なり、作成後に起動される必要がありました。
-*  ジョブに関する情報を取得するには、ジョブが作成された Transform の名前を知っている必要があります。 
+* ジョブに関する情報を取得するには、ジョブが作成された Transform の名前を知っている必要があります。 
+* v2 では、XML の[入力](../previous/media-services-input-metadata-schema.md)と[出力](../previous/media-services-output-metadata-schema.md)のメタデータ ファイルは、エンコード ジョブの結果として生成されます。 v3 では、メタデータの形式が XML から JSON に変更されました。 
 
 > [!NOTE]
 > [Media Services v3 リソース](media-services-apis-overview.md#naming-conventions)に適用される名前付け規則をご確認ください。 [BLOB の名前付け](assets-concept.md#naming-blobs)についてもご確認ください。

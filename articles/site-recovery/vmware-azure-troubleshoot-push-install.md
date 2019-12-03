@@ -1,20 +1,20 @@
 ---
-title: ディザスター リカバリーのためのレプリケーションを有効にする際のモビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング | Microsoft Docs
-description: ディザスター リカバリーのためのレプリケーションを有効にする際のモビリティ サービスのインストールに関するエラーのトラブルシューティング
+title: Azure Site Recovery でのモビリティ サービスのプッシュ インストールに関するトラブルシューティング
+description: Azure Site Recovery を使用したディザスター リカバリーのためにレプリケーションを有効にする際のモビリティ サービスのインストールに関するエラーのトラブルシューティング。
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 09/11/2019
-ms.openlocfilehash: 4aa18379962c289f5094795988a247f4c7e35df2
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 3646499ad2104566cb82f3f26c6b55d05f84dc7d
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910650"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953775"
 ---
-# <a name="troubleshoot-mobility-service-push-installation-issues"></a>モビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング
+# <a name="troubleshoot-mobility-service-push-installation"></a>モビリティ サービスのプッシュ インストールに関するトラブルシューティング 
 
 モビリティ サービスのインストールは、レプリケーションを有効にする際の重要な手順です。 前提条件を満たしていて、サポート対象の構成を使用していれば、この手順は成功します。 モビリティ サービスのインストール時に直面する最も一般的な問題の原因は次のとおりです。
 

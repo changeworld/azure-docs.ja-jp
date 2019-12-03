@@ -4,20 +4,20 @@ description: 宣言型 JSON 構文を使用した Azure Resource Manager テン�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 11/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: e5ef3dcd7c2eec08237d5eb31fb95a0e450d9ac9
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 8fe665ed9a9c580f5ce7d7bf43e71b9672a2bc5b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286723"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075028"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 
 この記事では、Azure Resource Manager テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。
 
-この記事は、Resource Manager テンプレートにある程度慣れているユーザー向けです。 テンプレートの構造に関する詳細情報を提供します。 テンプレートの作成の概要を知りたい場合は、「[Azure Resource Manager テンプレート](template-deployment-overview.md)」をご覧ください。
+この記事は、Resource Manager テンプレートにある程度慣れているユーザー向けです。 テンプレートの構造に関する詳細情報を提供します。 テンプレートの作成手順について説明したチュートリアルについては、「[チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする](template-tutorial-create-first-template.md)」をご覧ください。
 
 ## <a name="template-format"></a>テンプレートの形式
 
@@ -286,6 +286,31 @@ resources セクションでは、デプロイまたは更新されるリソー�
 
 テンプレートにコメントとメタデータを追加するためのオプションがいくつかあります。
 
+### <a name="comments"></a>説明
+
+インライン コメントの場合、`//` または `/* ... */` を使用できますが、この構文はすべてのツールでは機能しません。 ポータルのテンプレート エディターを使用して、インライン コメントのあるテンプレートの作業を行うことはできません。 このスタイルのコメントを追加する場合は、ご使用のツールでインライン JSON コメントがサポートされていることを確認してください。
+
+> [!NOTE]
+> Azure CLI を使用してコメントが含まれるテンプレートをデプロイするには、`--handle-extended-json-format` スイッチを使用する必要があります。
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[parameters('location')]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  "dependsOn": [ /* storage account and network interface must be deployed first */
+    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
+```
+
+Visual Studio Code では、[Azure Resource Manager ツール拡張機能](./resource-manager-tools-vs-code.md#install-resource-manager-tools-extension)により、Resource Manager テンプレートが自動的に検出され、それに応じて言語モードが変更されます。 VS Code の右下隅に **[Azure Resource Manager テンプレート]** が表示されている場合は、インライン コメントを使用できます。 インライン コメントは無効としてマークされなくなります。
+
+![Visual Studio Code での Azure Resource Manager テンプレート モード](./media/resource-group-authoring-templates/resource-manager-template-editor-mode.png)
+
+### <a name="metadata"></a>Metadata
+
 `metadata` オブジェクトは、テンプレート内のほとんどどこにでも追加できます。 このオブジェクトは、Resource Manager では無視されますが、お使いの JSON エディターによっては、プロパティが無効であると警告される場合があります。 オブジェクトで、必要なプロパティを定義します。
 
 ```json
@@ -354,31 +379,6 @@ resources セクションでは、デプロイまたは更新されるリソー�
 ```
 
 メタデータ オブジェクトをユーザー定義関数に追加することはできません。
-
-インライン コメントの場合、`//` または `/* ... */` を使用できますが、この構文はすべてのツールでは機能しません。 ポータルのテンプレート エディターを使用して、インライン コメントのあるテンプレートの作業を行うことはできません。 このスタイルのコメントを追加する場合は、ご使用のツールでインライン JSON コメントがサポートされていることを確認してください。
-
-> [!NOTE]
-> Azure CLI を使用してコメントが含まれるテンプレートをデプロイするには、`--handle-extended-json-format` スイッチを使用する必要があります。
-
-```json
-{
-  "type": "Microsoft.Compute/virtualMachines",
-  "name": "[variables('vmName')]", // to customize name, change it in variables
-  "location": "[parameters('location')]", //defaults to resource group location
-  "apiVersion": "2018-10-01",
-  "dependsOn": [ /* storage account and network interface must be deployed first */
-    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
-  ],
-```
-
-VS Code では、コメントを使用した JSON に言語モードを設定できます。 インライン コメントは無効としてマークされなくなります。 モードを変更するには:
-
-1. 言語モードの選択を開きます (Ctrl + K M)
-
-1. **[JSON with Comments]\(コメントを使用した JSON\)** を選択します。
-
-   ![言語モードの選択](./media/resource-group-authoring-templates/select-json-comments.png)
 
 ## <a name="multi-line-strings"></a>複数行の文字列
 

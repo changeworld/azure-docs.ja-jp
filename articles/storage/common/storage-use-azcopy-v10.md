@@ -4,15 +4,15 @@ description: AzCopy は、ストレージ アカウント間のデータ コピ�
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f4523b2aa580d0fd237c15e23b06b44593cbf055
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: af24a6b6d165ba60a0d88a4ddf74a4f18836e813
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274648"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111761"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -58,6 +58,8 @@ AzCopy ディレクトリをご自分のパスに追加しないことを選択�
 特定のコマンドの情報を知るには、単にコマンドの名前を含めてください (例: `azcopy list -h`)。
 
 ![インライン ヘルプ](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
+各コマンドとコマンド パラメーターの詳細なリファレンス ドキュメントについては、「[azcopy](storage-ref-azcopy.md)」を参照してください
 
 > [!NOTE] 
 > ご自分の Azure Storage アカウントの所有者であっても、データへのアクセス許可が自動的に割り当てられるわけではありません。 AzCopy を使用して意味のある動作を行う前に、ストレージ サービスに認証資格情報を提供する方法を決定する必要があります。 
@@ -295,16 +297,17 @@ ID を認証し、SAS トークンを取得したら、ファイルの転送を�
 
 拡張子が `.cmd` のバッチ ファイルでは、SAS トークンに出現する `%` 文字をエスケープする必要があります。 これを行うには、SAS トークン文字列の既存の `%` 文字の横に `%` の文字を追加します。
 
-## <a name="use-azcopy-in-storage-explorer"></a>Storage Explorer で AzCopy を使用する
+### <a name="run-scripts-by-using-jenkins"></a>Jenkins を使用してスクリプトを実行する
 
-AzCopy のパフォーマンス上の利点を活用するとき、ファイルの操作に、コマンド ラインではなく Storage Explorer を使用する場合は、ストレージ エクスプローラーで AzCopy を有効にします。
+[Jenkins](https://jenkins.io/) を使用してスクリプトを実行する場合は、必ずスクリプトの先頭に次のコマンドを配置してください。
 
-Storage Explorer で、 **[プレビュー]** -> の **[Use AzCopy for Improved Blob Upload and Download]\(向上した Blob アップロードおよびダウンロードに AzCopy を使用する\)** に移動します。
+```
+/usr/bin/keyctl new_session
+```
 
-![Azure Storage Explorer で転送エンジンとして AzCopy を有効にする](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
+## <a name="use-azcopy-in-azure-storage-explorer"></a>Azure Storage Explorer で AzCopy を使用する
 
-> [!NOTE]
-> ストレージ アカウントで階層型名前空間を有効にしてある場合、この設定を有効にする必要はありません。 ストレージ エクスプローラーでは、階層型名前空間が与えられているストレージ アカウントで AzCopy が自動的に使用されるためです。  
+[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) は、AzCopy を使用してすべてのデータ転送操作を実行します。 AzCopy のパフォーマンス上の利点を活用する場合は、[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用できますが、ファイルの操作にはコマンド ラインではなくグラフィカル ユーザー インターフェイスを使用することをお勧めします。
 
 Storage Explorer では、ご自分のアカウント キーを使用して、操作を実行します。そのため、Storage Explorer にサインインした後は、追加の承認資格情報を提供する必要はありません。
 

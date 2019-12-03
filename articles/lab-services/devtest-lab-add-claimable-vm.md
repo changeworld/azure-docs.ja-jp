@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: fdffa3862f45b99c2c3f2ed41934e09247808ca7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ad10a1763b4882aa3bb6aec7447f57ebaf07369
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311836"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123705"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Azure DevTest Labs でのクレーム可能 VM の作成と管理
 要求可能な VM をラボに追加する方法は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.md)、[数式](devtest-lab-manage-formulas.md)、[Marketplace イメージ](devtest-lab-configure-marketplace-images.md)のいずれか) から[標準の VM を追加](devtest-lab-add-vm.md)する方法と似ています。 このチュートリアルでは、Azure Portal を使用して DevTest Labs でクレーム可能 VM をラボに追加する方法を説明し、ユーザーが VM を要求および解放する際に従うプロセスを示します。
@@ -72,7 +72,7 @@ ms.locfileid: "60311836"
   ![任意の claimable VM を要求する。](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
-ユーザーが VM を要求すると、その VM は、"マイ仮想マシン" の一覧に挿入され、他のユーザーが要求できなくなります。
+ユーザーが VM を要求すると、DevTest Labs はそのマシンを起動して、ラボ ユーザーの [自分の仮想マシン] の一覧に移動します。 これは、ラボ ユーザーがこのマシンの所有者特権を持つようになったことを意味します。 この手順に必要な時間は、起動時間や、要求イベント中に実行されるその他のカスタム アクションによって異なる場合があります。 要求されたマシンは、要求可能なプールで利用できなくなります。  
 
 ## <a name="unclaim-a-vm"></a>VM の解放
 
@@ -86,7 +86,7 @@ ms.locfileid: "60311836"
 
   ![VM の管理ウィンドウで VM を解放する。](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
 
-ユーザーは、VM を解放すると、その特定のラボ VM に対するアクセス許可がなくなります。
+ユーザーは VM を解放すると、その特定のラボ VM に対する所有者アクセス許可を失い、その VM はプールに戻された状態で他のラボ ユーザーが要求できるようになります。 
 
 ### <a name="transferring-the-data-disk"></a>データ ディスクの譲渡
 クレーム可能 VM にデータ ディスクが接続されていて、ユーザーがその VM を解放した場合、そのデータ ディスクは VM で保持されたままになります。 その後、別のユーザーがその VM を要求するときに、その新しいユーザーは VM に加えてデータ ディスクも要求します。

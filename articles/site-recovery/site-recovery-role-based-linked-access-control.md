@@ -1,21 +1,21 @@
 ---
-title: ロールベースのアクセス制御 (RBAC) を使用した Azure Site Recovery のアクセス管理 | Microsoft Docs
+title: Azure Site Recovery での Azure のロールベースのアクセス制御の管理
 description: この記事では、ロールベースのアクセス制御 (RBAC) を適用して、Azure Site Recovery のアクセスを管理する方法について説明します。
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 33fc2cd19152fb6cbbffb106aa058948d39555f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471436"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083774"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) を使用して Site Recovery のアクセスを管理する
 
-Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用すると、チーム内で責任を分離して、特定のジョブを実行する必要に応じてユーザーに特定のアクセス許可のみを付与できます。
+Azure のロールベースのアクセス制御 (RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 RBAC を使用すると、チーム内で責任を分離して、特定のジョブを実行する必要に応じてユーザーに特定のアクセス許可のみを付与できます。
 
 Azure Site Recovery には、Site Recovery の管理操作を制御するための組み込みロールが 3 つ用意されています。 [Azure RBAC の組み込みのロール](../role-based-access-control/built-in-roles.md)について説明します。
 
@@ -37,6 +37,9 @@ Azure Site Recovery を使用して新しい仮想マシンを Azure にレプ�
 
 > [!IMPORTANT]
 >リソースのデプロイに使用されるデプロイメント モデル (Resource Manager/ Classic) ごとに関連するアクセス許可が追加されていることを確認します。
+
+> [!NOTE]
+> Azure VM のレプリケーションを有効にして、Site Recovery で更新プログラムを管理できるようにする場合は、レプリケーションを有効にしながら、新しい Automation アカウントを作成することもできます。その場合、 コンテナーと同じサブスクリプションに Automation アカウントを作成するためのアクセス許可も必要です。
 
 | **リソースの種類** | **デプロイメント モデル** | **アクセス許可** |
 | --- | --- | --- |

@@ -1,19 +1,19 @@
 ---
-title: Category 階層でファセット ナビゲーションを実装する方法
+title: ファセット ナビゲーション カテゴリ階層を追加する
 titleSuffix: Azure Cognitive Search
-description: Microsoft Azure のホスト型クラウド検索サービスである Azure Cognitive Search を統合するアプリケーションにファセット ナビゲーションを追加します。
+description: Azure Cognitive Search と統合する検索アプリケーションに、自律型のフィルター処理用のファセット ナビゲーションを追加します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d10a049f7a4c7da7a75054acd442269adc74b948
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496520"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112086"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Azure Cognitive Search へのファセット ナビゲーションの実装方法
 

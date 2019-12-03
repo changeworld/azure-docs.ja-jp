@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: 5968a675c3f0f9a2c6426ed73d06e2d116a8ff3b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 004f15a1af11e3ed27f792e245888671b94fbb1a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827385"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074926"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
@@ -38,8 +38,6 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 - [ADE](../security/azure-security-disk-encryption-overview.md)、[Key Vault](../key-vault/key-vault-overview.md)、[KEK](https://blogs.msdn.microsoft.com/cclayton/2017/01/03/creating-a-key-encrypting-key-kek/) に関する詳細を参照してください。
 - Azure VM ディスクの暗号化については、[よくあるご質問](../security/azure-security-disk-encryption-faq.md)に関するページを参照してください。
 
-
-
 ### <a name="limitations"></a>制限事項
 
 - 同じサブスクリプションとリージョン内で暗号化された VM をバックアップして復元することができます。
@@ -47,9 +45,6 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 - Recovery Services のバックアップ コンテナーとして、同じサブスクリプションとリージョン内で暗号化された VM をバックアップして復元することができます。
 - 暗号化された VM は、ファイル/フォルダー レベルでは復旧できません。 ファイルとフォルダーを復元するには、VM 全体を復旧する必要があります。
 - VM を復元する場合、暗号化された VM に[既存の VM を置き換える](backup-azure-arm-restore-vms.md#restore-options)オプションを使用することはできません。 このオプションは、暗号化されていないマネージド ディスクに対してのみサポートされています。
-
-
-
 
 ## <a name="before-you-start"></a>開始する前に
 
@@ -64,8 +59,6 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 - **VM に VM エージェントをインストールする**: Azure Backup では、マシンで実行されている Azure VM エージェントに拡張機能をインストールすることで、Azure VM がバックアップされます。 VM が Azure Marketplace のイメージから作成されている場合は、エージェントがインストールされ、実行されます。 カスタム VM を作成する場合、またはオンプレミスのマシンを移行する場合は、[手動でのエージェントのインストール](backup-azure-arm-vms-prepare.md#install-the-vm-agent)が必要な場合があります。
 - **発信アクセスを明示的に許可する**: 一般に、Azure VM が Azure Backup と通信するために、発信ネットワーク アクセスを明示的に許可する必要はありません。 ただし、一部の VM では、接続しようとすると、接続に関する問題が発生する場合があり、**ExtensionSnapshotFailedNoNetwork** エラーが表示されます。 これが発生した場合、Azure Backup の拡張機能でバックアップ トラフィックのために Azure パブリック IP アドレスと通信できるように、[明示的に発信アクセスを許可](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access)する必要があります。
-
-
 
 ## <a name="configure-a-backup-policy"></a>バックアップ ポリシーを構成する
 
@@ -87,7 +80,6 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 6. 既定のポリシーを使用する必要がない場合は、 **[新規作成]** を選択して、[カスタム ポリシーを作成します](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。
 
-
 7. 選択したポリシーを使用してバックアップする暗号化された VM を選び、 **[OK]** を選択します。
 
       ![暗号化された VM の選択](./media/backup-azure-vms-encryption/selected-encrypted-vms.png)
@@ -104,7 +96,6 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 9. **[バックアップの有効化]** をクリックして、コンテナーにバックアップ ポリシーをデプロイし、選択した VM に対してバックアップを有効にします。
 
-
 ## <a name="trigger-a-backup-job"></a>バックアップ ジョブをトリガーする
 
 初回バックアップはスケジュールに従って実行されますが、次のようにすぐに実行することもできます。
@@ -115,7 +106,6 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 4. **[今すぐバックアップ]** をクリックします。
 5. **[今すぐバックアップ]** で、カレンダー コントロールを使用して復旧ポイントを保持する最終日を選択します。 次に、 **[OK]** をクリックします
 6. ポータルの通知を監視します。 コンテナー ダッシュボードの **[バックアップ ジョブ]**  >  **[進行中]** でジョブの進行状況を監視できます。 VM のサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
-
 
 ## <a name="provide-permissions"></a>アクセス許可を付与する
 
@@ -140,11 +130,11 @@ Azure VM では、キーとシークレット、および関連付けられた V
 
     ![Azure Backup の選択](./media/backup-azure-vms-encryption/select-backup-template.png)
 
-6. Click **OK**. **[Backup Management Service]\(バックアップ管理サービス\)** が、 **[アクセス ポリシー]** に追加されます。
+7. Click **OK**. **[Backup Management Service]\(バックアップ管理サービス\)** が、 **[アクセス ポリシー]** に追加されます。
 
     ![アクセス ポリシー](./media/backup-azure-vms-encryption/backup-service-access-policy.png)
 
-7. **[保存]** をクリックして、Azure Backup にアクセス許可を提供します。
+8. **[保存]** をクリックして、Azure Backup にアクセス許可を提供します。
 
 ## <a name="restore-an-encrypted-vm"></a>暗号化された VM を復元する
 
@@ -154,7 +144,7 @@ Azure VM では、キーとシークレット、および関連付けられた V
 2. 次のいずれかの手順を行います。
     - 復元操作の間に生成されるテンプレートを使用して VM の設定をカスタマイズし、VM のデプロイをトリガーします。 [詳細情報](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)。
     - PowerShell を使用して、復元されたディスクから新しい VM を作成します。 [詳細情報](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)。
-    - Linux VM の場合は、データ ディスクが開かれてマウントされるように、ADE 拡張機能をリセットします。 
+    - Linux VM の場合は、データ ディスクが開かれてマウントされるように、ADE 拡張機能をリセットします。
 
 ## <a name="next-steps"></a>次の手順
 

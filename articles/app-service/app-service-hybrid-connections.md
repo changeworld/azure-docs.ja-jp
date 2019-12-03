@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 72874e7b96e2ec8909a325b5ae598b900ebe8079
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: fasttrack-edit
+ms.openlocfilehash: ff2dac5d27cfffb92922038c1d1c67cd5118557a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791889"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082393"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Services からのハイブリッド接続 #
 
@@ -220,6 +220,12 @@ HCM はそれぞれ、複数のハイブリッド接続をサポートできま�
 
     armclient login
     armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
+
+## <a name="secure-your-hybrid-connections"></a>ハイブリッド接続をセキュリティで保護する ##
+
+基になる Azure Service Bus Relay に対する十分なアクセス許可を持つユーザーは、既存のハイブリッド接続を他の App Service Web Apps に追加できます。 これは、他のユーザーが同じハイブリッド接続を再利用できないようにする必要がある場合 (たとえば、ターゲット リソースが、未承認のアクセスを防ぐための追加のセキュリティ対策が取られていないサービスである場合)、Azure Service Bus Relay へのアクセスをロックダウンする必要があることを意味します。
+
+Relay への `Reader` アクセス権を持つユーザーは、Azure portal で自分の Web アプリにハイブリッド接続を追加しようとしているときに、その接続を "_確認_" することはできますが、リレー接続の確立に使用される接続文字列を取得するためのアクセス許可がないため、"_追加_" することはできませ ん。 ハイブリッド接続を正常に追加するには、`listKeys` アクセス許可 (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`) が必要です。 Relay に対するこのアクセス許可を含む `Contributor` ロールまたはその他のロールにより、ユーザーはハイブリッド接続を使用し、独自の Web Apps にそれを追加することが許可されます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング ##
 

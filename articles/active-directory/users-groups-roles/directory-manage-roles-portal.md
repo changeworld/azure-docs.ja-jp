@@ -1,24 +1,24 @@
 ---
-title: 管理者ロールのアクセス許可の表示と割り当てを行う - Azure Active Directory | Microsoft Docs
+title: 管理者ロールのアクセス許可の表示と割り当てを行う - Azure AD | Microsoft Docs
 description: ポータルで、Azure AD 管理者ロールのメンバーを表示して管理できるようになりました。 ロールの割り当てを頻繁に管理するユーザーの場合。
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20842c8c644a351b59322569661abf82bb524449
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ac62a4f318690a1e8156d619c82e9b936973159
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472593"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027896"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Azure Active Directory で管理者ロールを表示して割り当てる
 

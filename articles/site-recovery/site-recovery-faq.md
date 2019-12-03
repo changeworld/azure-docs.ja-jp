@@ -1,27 +1,26 @@
 ---
-title: Azure Site Recovery:よく寄せられる質問 | Microsoft Docs
-description: この記事では、Azure Site Recovery に関してよく寄せられる質問について説明します。
-services: site-recovery
+title: Azure Site Recovery サービスに関する一般的な質問
+description: この記事では、Azure Site Recovery に関してよく寄せられる一般的な質問について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: a9c7aa2be945e4fbaa65bdd2a145d576422c5539
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491770"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078534"
 ---
-# <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
-この記事では、Azure Site Recovery に関してよく寄せられる質問をまとめています。</br>
-ASR シナリオごとに固有のクエリについては、シナリオ固有のよく寄せられる質問を参照してください。<br>
+# <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
-- [Azure への Azure VM のディザスター リカバリー](azure-to-azure-common-questions.md)
-- [Azure への VMware VM のディザスター リカバリー](vmware-azure-common-questions.md)
-- [Azure への Hyper-V VM のディザスター リカバリー](hyper-v-azure-common-questions.md)
+この記事では、Azure Site Recovery に関してよく寄せられる質問をまとめています。 特定のシナリオについては、次の記事をご覧ください
+
+- [Azure への Azure VM のディザスター リカバリーに関する質問](azure-to-azure-common-questions.md)
+- [Azure への VMware VM のディザスター リカバリーに関する質問](vmware-azure-common-questions.md)
+- [Azure への Hyper-V VM のディザスター リカバリーに関する質問](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>全般
 
@@ -38,7 +37,7 @@ Site Recovery は、リージョン間の Azure VM のレプリケーション�
 はい。Site Recovery は、専用および共有のインフラストラクチャ モデルの両方をサポートしています。
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>サービス プロバイダーの場合、テナントの ID は Site Recovery サービスと共有されますか。
-いいえ。 テナント ID は匿名のままです。 テナントは Site Recovery ポータルにアクセスする必要はありません。 ポータルを操作するのは、サービス プロバイダーの管理者だけです。
+No. テナント ID は匿名のままです。 テナントは Site Recovery ポータルにアクセスする必要はありません。 ポータルを操作するのは、サービス プロバイダーの管理者だけです。
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>テナントのアプリケーション データは Azure に送信されますか。
 サービス プロバイダーが所有するサイト間でレプリケートするときに、アプリケーション データが Azure に送信されることはありません。 データは転送中に暗号化され、サービス プロバイダーのサイト間で直接レプリケートされます。
@@ -46,7 +45,7 @@ Site Recovery は、リージョン間の Azure VM のレプリケーション�
 Azure にレプリケートする場合、アプリケーション データは Site Recovery サービスではなく、Azure ストレージに送信されます。 データは、転送中に暗号化され、暗号化された状態のまま Azure に残ります。
 
 ### <a name="will-my-tenants-receive-a-bill-for-any-azure-services"></a>テナントに Azure サービスの請求書が届きますか。
-いいえ。 Azure の請求関係は、サービス プロバイダーとの直接的な関係です。 サービス プロバイダーは、そのテナントに対して固有の請求書を生成する必要があります。
+No. Azure の請求関係は、サービス プロバイダーとの直接的な関係です。 サービス プロバイダーは、そのテナントに対して固有の請求書を生成する必要があります。
 
 ### <a name="if-im-replicating-to-azure-do-we-need-to-run-virtual-machines-in-azure-at-all-times"></a>Azure にレプリケートする場合、仮想マシンを Azure で常時実行する必要がありますか。
 いいえ、データはご使用のサブスクリプション内の Azure Storage にレプリケートされます。 テスト フェールオーバー (障害復旧訓練) または実際のフェールオーバーを実行すると、Site Recovery により、サブスクリプションで仮想マシンが自動的に作成されます。
@@ -171,7 +170,7 @@ Microsoft のパートナーである Riverbed は、Azure Site Recovery の使�
 LRS または GRS ストレージが必要です。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、GRS をお勧めします。 アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。 Azure Portal に Site Recovery をデプロイする場合、VMware VM、Hyper-V VM、および物理サーバーのレプリケーションで Premium Storage がサポートされます。 マネージド ディスクでは、LRS のみをサポートしています。
 
 ### <a name="how-often-can-i-replicate-data"></a>どのくらいの頻度でデータをレプリケートできますか。
-* **Hyper-V:** Hyper-V VM では 5 分、または 30 秒ごとにレプリケートできます (Premium Storage を除く)。
+* **Hyper-V:** Hyper-V VM は 30 秒 (Premium Storage を除く)、5 分、または 15 分ごとにレプリケートできます。
 * **Azure VM、VMware VM、物理サーバー:** レプリケーションの頻度はここでは関係ありません。 レプリケーションは継続的です。
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>既存の復旧サイトから第 3 のサイトにレプリケーションを拡張することができますか。

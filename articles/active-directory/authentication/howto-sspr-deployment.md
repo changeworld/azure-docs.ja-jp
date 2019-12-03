@@ -11,14 +11,17 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b648d6f914b5e3004ea3b62019bbec33e5a4871d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743241"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081532"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Azure AD のパスワード リセットのセルフサービスをデプロイする
+
+> [!NOTE]
+> このガイドでは、パスワード リセットのセルフサービスとそのデプロイ方法について説明します。 アカウントを回復するために、パスワード リセットのセルフサービスのツールを探している場合は、[https://aka.ms/sspr](https://aka.ms/sspr) にアクセスしてください。 
 
 Azure Active Directory の機能であるパスワード リセットのセルフサービス (SSPR) を使用すると、従業員は自分のパスワードをリセットすることができ、IT スタッフに連絡する必要はありません。 サービスを使用する前に、従業員はパスワード リセットのセルフサービスに登録するか、登録してもらう必要があります。 登録時に、従業員は組織で有効になっている 1 つまたは複数の認証方法を選択します。
 

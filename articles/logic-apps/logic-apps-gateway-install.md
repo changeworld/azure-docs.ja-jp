@@ -9,20 +9,20 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: a8deb7933bb19745bbe4c3b3a209c19c9cc712bd
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ef46fce8609119777ef73cbe189d7a8ace662c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796308"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076935"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
 [Azure Logic Apps からオンプレミスのデータ ソースに接続する](../logic-apps/logic-apps-gateway-connection.md)には、ローカル コンピューターに[オンプレミス データ ゲートウェイ](https://aka.ms/on-premises-data-gateway-installer)をダウンロードしてインストールします。 このゲートウェイは、オンプレミスのデータ ソースとロジック アプリ間でのデータ転送と暗号化を高速で行うブリッジとして機能します。 同じゲートウェイ インストールを、Power BI、Power Automate、Power Apps、Azure Analysis Services など、他のクラウド サービスで使用できます。 これらのサービスでゲートウェイを使用する方法については、次の記事を参照してください。
 
-* [Microsoft Power BI オンプレミス データ ゲートウェイ](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Microsoft Power Apps オンプレミス データ ゲートウェイ](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Power Automate オンプレミス データ ゲートウェイ](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Microsoft Power Automate オンプレミス データ ゲートウェイ](/power-automate/gateway-reference)
+* [Microsoft Power BI オンプレミス データ ゲートウェイ](/power-bi/service-gateway-onprem)
+* [Microsoft Power Apps オンプレミス データ ゲートウェイ](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services オンプレミス データ ゲートウェイ](../analysis-services/analysis-services-gateway.md)
 
 この記事では、Azure Logic Apps からオンプレミスのデータ ソースにアクセスできるように、オンプレミス データ ゲートウェイをダウンロード、インストール、設定する方法について説明します。 [データ ゲートウェイのしくみ](#gateway-cloud-service)についても、このトピックで後ほど詳しく説明します。 ゲートウェイの詳細については、「[オンプレミス データ ゲートウェイとは](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)」を参照してください。

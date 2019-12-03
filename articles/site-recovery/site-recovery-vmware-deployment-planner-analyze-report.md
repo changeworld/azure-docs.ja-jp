@@ -1,20 +1,20 @@
 ---
-title: VMware から Azure へのディザスター リカバリーについての Azure Site Recovery Deployment Planner レポートを分析する | Microsoft Docs
-description: この記事では、Azure への VMware ディザスター リカバリーについて、Azure Site Recovery Deployment Planner によって生成されるレポートを分析する方法を説明します。
+title: Azure Site Recovery を使用した VMware ディザスター リカバリーについての Deployment Planner レポートを分析する
+description: この記事では、Azure Site Recovery を使用した Azure への VMware ディザスター リカバリーについて Recovery Deployment Planner によって生成されるレポートを分析する方法を説明します。
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 4240e17320cc62dc1a0e74db2f40a452a63f2982
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690726"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961373"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーについての Azure Site Recovery Deployment Planner レポートを分析する
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーについての Deployment Planner レポートを分析する
 
 生成された Microsoft Excel レポートには、次のシートが含まれています。
 ## <a name="on-premises-summary"></a>On-Premises summary (オンプレミス サマリー)
@@ -232,8 +232,6 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 * レプリケーション元の IOPS が、ストレージでサポートされている IOPS の上限 (VM あたり 80,000 IOPS) を超えている。
 
 * 平均データ変更頻度が、Site Recovery でサポートされているデータ変更頻度の上限 (ディスクの平均 I/O サイズで 20 MB/秒) を超えている。
-
-* 平均データ変更頻度が、Site Recovery でサポートされているデータ変更頻度の上限 (VM の平均 I/O サイズで 25 MB/秒 (全ディスクの合計の変更頻度)) を超えている。
 
 * VM 上の全ディスクにおけるデータ変更頻度のピークが、Site Recovery でサポートされるデータ変更頻度のピークの上限 (VM あたり 54 MB/秒) を超えている。
 

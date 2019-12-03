@@ -1,5 +1,5 @@
 ---
-title: B シリーズ Azure Windows VM のサイズ | Microsoft Docs
+title: B シリーズの Azure Windows VM のサイズ
 description: 負荷の急増に対応できる B シリーズの Azure VM のサイズについて説明します。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
 ms.author: ayshak
-ms.openlocfilehash: 1757b513d7b5451cd22b82bedef7c4ec48906edf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f5493cbfa0b325f7cd731fb1d3774fd1eb4a574f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103263"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039261"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 

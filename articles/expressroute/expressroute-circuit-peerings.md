@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute 回線とピアリング | Microsoft Docs
+title: 'Azure ExpressRoute: 回線とピアリング'
 description: このページでは、ExpressRoute 回線とルーティング ドメイン/ピアリングの概要を示します。
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: 864b834fcc6810b52f067d8e67b4a48febd0f787
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f6673e114c249cb86c648155b889e925554e9458
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123489"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083630"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 回線とピアリング
 

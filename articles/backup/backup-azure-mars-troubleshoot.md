@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: dacurwin
-ms.openlocfilehash: a59ac45d157f8674374c894a280e51392038524b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: abd4e91b8fd3332191b58acf38daed06d03801be
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747416"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012834"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントをトラブルシューティングする
 
@@ -119,11 +119,13 @@ Microsoft Azure Recovery Services (MARS) のトラブルシューティングを
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- `LocalMachine` の PowerShell 実行ポリシーが restricted に設定されている場合は、バックアップ タスクをトリガーする PowerShell コマンドレットが失敗することがあります。 次のコマンドを管理者特権モードで実行して、実行ポリシーを確認します。次に、実行ポリシーを `Unrestricted` または `RemoteSigned` に設定します。
+- `LocalMachine` の PowerShell 実行ポリシーが `restricted` に設定されている場合は、バックアップ タスクをトリガーする PowerShell コマンドレットが失敗することがあります。 次のコマンドを管理者特権モードで実行して、実行ポリシーを確認します。次に、実行ポリシーを `Unrestricted` または `RemoteSigned` に設定します。
 
-  `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
+ ```PowerShell
+ Get-ExecutionPolicy -List
 
-  `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
+Set-ExecutionPolicy Unrestricted
+```
 
 - PowerShell モジュール MSonlineBackup ファイルに不足や破損がないことを確認します。 見つからないファイルや破損したファイルがある場合は、次の手順を実行します。
 
@@ -167,7 +169,7 @@ Azure Backup が、数分たっても回復ボリュームに正常にマウン�
 
 キャッシュ フォルダー (スクラッチ フォルダーとも呼ばれます) が正しく構成されていないか、前提条件を満たしていないか、アクセスが制限されている場合、バックアップ操作が失敗することがあります。
 
-### <a name="pre-requisites"></a>前提条件
+### <a name="prerequisites"></a>前提条件
 
 MARS エージェントの操作を成功させるには、キャッシュ フォルダーが以下の要件に従う必要があります。
 
@@ -215,13 +217,13 @@ Microsoft Azure Recovery Services Agent was unable to access the scratch locatio
 
 エラー メッセージ | 推奨される操作 |
 -- | --
-Backup failed due to insufficient storage in volume  where the scratch folder is located (スクラッチ フォルダーがあるボリュームの記憶域不足のためバックアップに失敗しました) | この問題を解決するには、次の手順を確認し、操作を再試行してください。<br/>- [MARS エージェントが最新であることを確認します](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [バックアップ スクラッチ領域に影響を及ぼすストレージの問題を確認および解決します](#pre-requisites)
+Backup failed due to insufficient storage in volume  where the scratch folder is located (スクラッチ フォルダーがあるボリュームの記憶域不足のためバックアップに失敗しました) | この問題を解決するには、次の手順を確認し、操作を再試行してください。<br/>- [MARS エージェントが最新であることを確認します](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [バックアップ スクラッチ領域に影響を及ぼすストレージの問題を確認および解決します](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 エラー メッセージ | 推奨される操作 |
 -- | --
-ファイル内の変更を見つけることができない。 これにはさまざまな理由が考えられます。 操作をやり直してください | この問題を解決するには、次の手順を確認し、操作を再試行してください。<br/> - [MARS エージェントが最新であることを確認します](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [バックアップ スクラッチ領域に影響を及ぼすストレージの問題を確認および解決します](#pre-requisites)
+ファイル内の変更を見つけることができない。 これにはさまざまな理由が考えられます。 操作をやり直してください | この問題を解決するには、次の手順を確認し、操作を再試行してください。<br/> - [MARS エージェントが最新であることを確認します](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [バックアップ スクラッチ領域に影響を及ぼすストレージの問題を確認および解決します](#prerequisites)
 
 ## <a name="next-steps"></a>次の手順
 

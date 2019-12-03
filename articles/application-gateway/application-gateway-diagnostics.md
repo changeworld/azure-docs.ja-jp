@@ -1,22 +1,23 @@
 ---
-title: Azure Application Gateway のアクセス ログ、パフォーマンス ログ、バックエンドの正常性、メトリックの監視
+title: バックエンドの正常性と診断ログ
+titleSuffix: Azure Application Gateway
 description: Azure Application Gateway のアクセス ログとパフォーマンス ログを有効にし、管理する方法について説明します
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 448e5bf798f5b1c3006888f846722e54fec46ef8
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718733"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075295"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
-Azure Application Gateway を使用すると、次の方法でリソースを監視できます。
+Azure Application Gateway リソースは次の方法で監視できます。
 
 * [バックエンドの正常性](#back-end-health):Application Gateway は、Azure portal と PowerShell を介して、バックエンド プール内のサーバーの正常性を監視する機能を提供します。 バックエンド プールの正常性は、パフォーマンスの診断ログでも確認できます。
 
@@ -33,7 +34,7 @@ Application Gateway は、ポータル、PowerShell、およびコマンド ラ�
 バックエンドの正常性レポートには、バックエンドのインスタンスへの Application Gateway の正常性プローブの出力が反映されます。 プローブが正常に完了し、バックエンドがトラフィックを受信できる場合は、正常と見なされます。 それ以外の場合は異常と見なされます。
 
 > [!IMPORTANT]
-> Application Gateway サブネット上にネットワーク セキュリティ グループ (NSG) がある場合は、Application Gateway サブネットで 65503 ～ 65534 のポート範囲をインバウンド トラフィック用に開いてください。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに対する変更を開始することはできません。
+> Application Gateway サブネット上にネットワーク セキュリティ グループ (NSG) がある場合、Application Gateway サブネットで、v1 SKU の場合は 65503 から 65534、v2 SKU の場合は 65200 から 65535 のポート範囲をインバウンド トラフィック用に開いてください。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに対する変更を開始することはできません。
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>ポータルを介したバックエンドの正常性の表示

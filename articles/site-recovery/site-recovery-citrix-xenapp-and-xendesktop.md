@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用して多層 Citrix XenDesktop および XenApp デプロイのディザスター リカバリーを設定する | Microsoft Docs
+title: Azure Site Recovery を使用して Citrix XenDesktop と XenApp のディザスター リカバリーを設定する
 description: この記事では、Azure Site Recovery を使用して、Citrix XenDesktop および XenApp デプロイのディザスター リカバリーを設定する方法について説明します。
 author: ponatara
 manager: abhemraj
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
-ms.openlocfilehash: 68f12bb7335da0a996aeadd752f59db0aa360a8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038236"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084550"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>多層 XenApp および Citrix XenDesktop デプロイのディザスター リカバリーを設定する
 

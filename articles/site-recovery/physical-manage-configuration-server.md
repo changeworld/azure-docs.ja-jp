@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用したオンプレミスの物理サーバーの Azure へのディザスター リカバリーのために構成サーバーを管理する | Microsoft Docs
+title: Azure Site Recovery で物理サーバーの構成サーバーを管理する
 description: この記事では、物理サーバーの Azure へのディザスター リカバリーのために Azure Site Recovery 構成サーバーを管理する方法について説明します。
 services: site-recovery
 author: mayurigupta13
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: f87210cd14570687eebae88896830bb3ee00b74e
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73243000"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084613"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 

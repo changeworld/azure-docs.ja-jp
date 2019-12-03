@@ -11,16 +11,16 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 85f705022a0ff5970d30c61206d4f2631254b7ce
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693091"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077105"
 ---
 # <a name="column-level-security"></a>列レベルのセキュリティ
 列レベルのセキュリティ (CLS) では、ユーザーの実行コンテキストまたはグループ メンバーシップに基づいて、データベース テーブルの列へのアクセスを制御できます。
-
+以下のビデオの更新 - このビデオが投稿された後に、[行レベルのセキュリティ](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017)も SQL Data Warehouse で使用可能になりました。 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
 CLS により、アプリケーションでのセキュリティの設計とコーディングが簡略化されます。 CLS を使用すると、機密データを保護するために、列のアクセスに対して制限を実装できます。 たとえば、特定のユーザーが、所属する部門に関連するテーブルの一定の列にのみアクセスできるようにします。 アクセス制限のロジックは、別のアプリケーション層のデータから離れた場所ではなく、データベース層に配置されています。 任意の階層からデータ アクセスが試行されるたびに、データベースによってアクセス制限が適用されます。 この制限により、セキュリティ システム全体の外部からのアクセスが減り、そのシステムの信頼性と堅牢性が向上します。 さらに、CLS は、列を除外してユーザーにアクセス制限を課すためのビューの導入も不要にします。

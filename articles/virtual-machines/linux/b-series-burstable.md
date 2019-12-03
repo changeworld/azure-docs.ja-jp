@@ -1,5 +1,5 @@
 ---
-title: B シリーズ Azure Linux VM のサイズ | Microsoft Docs
+title: B シリーズの Azure Linux VM のサイズ
 description: 負荷の急増に対応できる B シリーズの Azure VM のサイズについて説明します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/25/2019
 ms.author: ayshak
-ms.openlocfilehash: 01da424872cdfde6c7e035cadd2b948117fb996c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b9e55d64636b6ee8bf2cff72d44c73e73bf877c1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084000"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036990"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 

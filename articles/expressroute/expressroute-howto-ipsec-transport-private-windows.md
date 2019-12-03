@@ -1,5 +1,5 @@
 ---
-title: Windows ホスト用の IPsec トランスポート モードを構成する - プライベート ピアリング:ExpressRoute:Azure | Microsoft Docs
+title: Azure ExpressRoute プライベート ピアリング:IPsec トランスポート モードを構成する - Windows ホスト
 description: GPO と OU を使用して、ExpressRoute プライベート ピアリング経由で Azure Windows VM とオンプレミス Windows ホストの間の IPsec トランスポート モードを有効にする方法。
 services: expressroute
 author: fabferri
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
-ms.openlocfilehash: d728980517988e2dc39be4e4b64d20157a1aef54
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60367273"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022002"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>ExpressRoute プライベート ピアリング用の IPsec トランスポート モードを構成する
 
@@ -181,8 +181,8 @@ OU に GPO を適用するには、GPO を OU にリンクするだけでなく�
    [![31]][31]
 9. IP フィルター一覧を表示します。  IP フィルター一覧 **azure-onpremises-HTTP8080** の構成により、次の条件に一致するすべてのトラフィックの暗号化がトリガーされます。
 
-   * 10\.0.1.0/24 (Azure Subnet2) の任意の発信元アドレス
-   * 10\.2.27.0/25 (オンプレミス サブネット) のすべての宛先アドレス
+   * 10.0.1.0/24 (Azure Subnet2) の任意の発信元アドレス
+   * 10.2.27.0/25 (オンプレミス サブネット) のすべての宛先アドレス
    * TCP プロトコル
    * 宛先ポート 8080
 

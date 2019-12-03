@@ -1,5 +1,5 @@
 ---
-title: Azure Backup の失敗のトラブルシューティング:ゲスト エージェントの状態を確認できない
+title: Azure Backup の失敗のトラブルシューティング:エージェントと拡張機能に関する問題
 description: エージェント、拡張機能、ディスクに関する Azure Backup のエラーの症状、原因、解決策。
 ms.reviewer: saurse
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9d76dfa338a697825868c31cfe6fc11e5235730b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 50db82206bbc0b98dcc80bd504022799011697d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533724"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074137"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -29,7 +29,7 @@ ms.locfileid: "72533724"
 
 Azure VM エージェントが停止しているか、古くなっているか、一貫性のない状態になっているか、インストールされていないために、Azure Backup サービスがスナップショットをトリガーできなくなっている可能性があります。  
 
-- VM エージェントが停止しているか、一貫性のない状態になっている場合には、**エージェントを再起動**して、バックアップ操作を再試行してください (アドホック バックアップをお試しください)。 エージェントを再起動する手順については、[Windows VM](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) または [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) に関するページを参照してください。
+- VM エージェントが停止しているか、一貫性のない状態になっている場合には、**エージェントを再起動**して、バックアップ操作を再試行してください (オンデマンド バックアップをお試しください)。 エージェントを再起動する手順については、[Windows VM](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) または [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) に関するページを参照してください。
 - VM エージェントがインストールされていないか、古くなっている場合には、VM エージェントをインストールまたは更新してから、バックアップ操作を再試行してください。 エージェントをインストールまたは更新する手順については、[Windows VM](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) または [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) に関するページを参照してください。  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - Could not communicate with the VM agent for snapshot status (スナップショットの状態について VM エージェントと通信できませんでした)
@@ -239,15 +239,15 @@ VM のリソース グループまたは VM 自体を削除した場合、マネ
 
 復元ポイントをクリーンアップするには、次のいずれかの手順に従います。<br>
 
-- [アドホック バックアップを実行して復元ポイント コレクションをクリーンアップする](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+- [オンデマンド バックアップを実行して復元ポイント コレクションをクリーンアップする](#clean-up-restore-point-collection-by-running-on-demand-backup)<br>
 - [Azure portal から復元ポイント コレクションをクリーンアップする](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>アドホック バックアップを実行して復元ポイント コレクションをクリーンアップする
+#### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>オンデマンド バックアップを実行して復元ポイント コレクションをクリーンアップする
 
-ロックを解除した後、アドホックまたは手動のバックアップをトリガーします。 これにより、復元ポイントが自動的にクリーンアップされます。 このアドホックまたは手動操作は、初回は失敗することを予期しておいてください。ただし、復元ポイントの手動削除の代わりに、自動クリーンアップが確実に行われます。 クリーンアップ後、次にスケジュールされているバックアップは成功するはずです。
+ロックを解除した後、オンデマンド バックアップをトリガーします。 これにより、復元ポイントが自動的にクリーンアップされます。 このオンデマンド操作は、初回は失敗することを予期しておいてください。ただし、復元ポイントの手動削除の代わりに、自動クリーンアップが確実に行われます。 クリーンアップ後、次にスケジュールされているバックアップは成功するはずです。
 
 > [!NOTE]
-> 自動クリーンアップは、アドホック/手動バックアップをトリガーした数時間後に行われます。 スケジュールされたバックアップが引き続き失敗する場合は、[こちら](#clean-up-restore-point-collection-from-azure-portal)に記載されている手順を使用して、復元ポイント コレクションを手動で削除してみてください。
+> 自動クリーンアップは、オンデマンド バックアップをトリガーした数時間後に行われます。 スケジュールされたバックアップが引き続き失敗する場合は、[こちら](#clean-up-restore-point-collection-from-azure-portal)に記載されている手順を使用して、復元ポイント コレクションを手動で削除してみてください。
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Azure portal から復元ポイント コレクションをクリーンアップする <br>
 

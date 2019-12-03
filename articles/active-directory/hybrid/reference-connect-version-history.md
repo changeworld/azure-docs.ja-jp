@@ -2,26 +2,22 @@
 title: Azure AD Connect:バージョンのリリース履歴 | Microsoft Docs
 description: この記事では、Azure AD Connect と Azure AD Sync のすべてのリリースの一覧を示します
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5132581c3d79db88dabc3c20ac3b962226d8a12d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 893b617a965b0823b8d630e036d5d5f923647f8f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025837"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73944224"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -35,17 +31,25 @@ Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的�
 --------- | --------- |
 Azure AD Connect からのアップグレード手順 | Azure AD Connect の [以前のバージョンから最新バージョンにアップグレード](how-to-upgrade-previous-version.md) するさまざまな方法を説明しています。
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](reference-connect-accounts-permissions.md#upgrade)に関するページを参照してください。
-
-ダウンロード | [Azure AD Connect をダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)します。
+ダウンロード| [Azure AD Connect のダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)。
 
 >[!NOTE]
 >Azure AD Connect の新バージョンのリリースは、サービスの操作の機能性を確保するためのいくつかの品質管理手順が必要なプロセスであり、このプロセスを進めている間、新しいリリースのバージョン番号とリリースの状態が、最新の状況を反映するように更新されます。
 このプロセスを進めている間、リリースのバージョン番号では、"1.3.X.0" のようにマイナー リリース番号の位置に "X" が表示されます。これは、このドキュメントのリリース ノートは、"1.3." で始まるすべてのバージョンで有効であることを示しています。 リリース プロセスが終了すると、すぐにリリース バージョン番号が最近リリースされたバージョンに更新され、リリースの状態が "ダウンロードと自動アップグレード用にリリース済み" に更新されます。
-Azure AD Connect のすべてのリリースが自動アップグレードに対応しているわけではありません。 リリースの状態により、リリースが自動アップグレードに対応しているか、ダウンロードにのみ対応しているかが分かります。 Azure AD Connect サーバーに対して自動アップグレードが有効になっている場合、そのサーバーは、自動アップグレードのためにリリースされた Azure AD Connect の最新バージョンに自動的にアップグレードされます。 Azure AD Connect のすべての構成が自動アップグレードの対象となっているわけではないので注意してください。 詳細については、[自動アップグレード](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)に関するこのリンクを参照してください。
+Azure AD Connect のすべてのリリースが自動アップグレードに対応しているわけではありません。 リリースの状態により、リリースが自動アップグレードに対応しているか、ダウンロードにのみ対応しているかが分かります。 Azure AD Connect サーバーに対して自動アップグレードが有効になっている場合、そのサーバーは、自動アップグレードのためにリリースされた Azure AD Connect の最新バージョンに自動的にアップグレードされます。 Azure AD Connect のすべての構成が自動アップグレードの対象となっているわけではないので注意してください。 詳細については、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)に関するこのリンクを参照してください。
+
+## <a name="14320"></a>1.4.32.0
+### <a name="release-status"></a>リリースの状態
+2019 年 11 月 8 日: ダウンロード対象としてリリース済み。 自動アップグレードでは使用できません
+
+>[!IMPORTANT]
+>このリリースの Azure AD Connect では、内部的なスキーマ変更があるため、MSOnline PowerShell を使用して ADFS 信頼関係の構成設定を管理する場合は、MSOnline PowerShell モジュールをバージョン 1.1.183.57 以上に更新する必要があります
+### <a name="fixed-issues"></a>修正された問題
+
+このバージョンは、既存の Hybrid Azure AD 参加済みデバイスの問題を修正します。 このリリースには、この問題を修正する新しいデバイス同期規則が含まれています。
+この規則の変更により、古いデバイスが Azure AD から削除される可能性があることに注意してください。 これらのデバイス オブジェクトは、条件付きアクセスの承認時に Azure AD によって使用されないため、それについて心配する必要はありません。 一部のお客様については、この規則の変更によって削除されるデバイスの数が、削除のしきい値を超える場合があります。 Azure AD でのデバイス オブジェクトの削除がエクスポート削除しきい値を超えていることが確認された場合は、これらの削除の実行を許可することをお勧めします。 [削除のしきい値を超えた場合に削除の実行を許可する方法](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
 ## <a name="14250"></a>1.4.25.0
-
-
 
 ### <a name="release-status"></a>リリースの状態
 9/28/2019:一部のテナントを対象に自動アップグレード用がリリース。 ダウンロードでは利用できません。
@@ -62,7 +66,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 >このバージョンの Azure AD Connect にアップグレードした後、既存の Hybrid Azure AD 参加済みデバイスで一部のお客様に問題が発生しているインシデントを調査しています。 Hybrid Azure AD 参加をデプロイしたお客様は、これらの問題の根本原因が完全に認識され軽減されるまで、このバージョンへのアップグレードを延期することをお勧めします。 詳細については、できるだけ早く提供します。
 
 >[!IMPORTANT]
->このバージョンの Azure AD Connect をご利用のお客様に、Windows デバイスの一部または全部が Azure AD から消えるという現象が発生することがあります。 これらのデバイス ID が、条件付きアクセスの承認時に Azure AD によって使用されることはないため、これは問題ありません。 詳細については、[Azure AD Connect 1.4.xx.x デバイスが消える現象](reference-connect-device-disappearance.md)に関するページを参照してください。
+>このバージョンの Azure AD Connect をご利用のお客様に、Windows デバイスの一部または全部が Azure AD から消えるという現象が発生することがあります。 これらのデバイス ID が、条件付きアクセスの承認時に Azure AD によって使用されることはないため、これについて心配する必要はありません。 詳細については、[Azure AD Connect 1.4.xx.x デバイスが消える現象](reference-connect-device-disappearance.md)に関するページを参照してください。
 
 
 ### <a name="release-status"></a>リリースの状態
@@ -80,8 +84,8 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 - コネクタのプロパティ ページに、Sync Service Manager の非推奨警告が追加されました。 この警告は、ユーザーに対して変更は AADC ウィザードを使用して行う必要があることを通知します。
 - ユーザーのパスワード ポリシーに関する問題に対して新しいエラーが追加されました。
 - ドメインおよび OU フィルターによるグループ フィルターの構成の誤りを防止します。 入力したグループのドメインまたは OU が既にフィルターで除外されている場合、グループ フィルターでエラーが表示され、その問題が解決されるまでユーザーが先に進まないように抑制されます。
-- ユーザーは、古い UI で Active Directory Domain Services または Windows Azure Active Directory 用のコネクタを作成できなくなりました。
-- Sync Service Manager のカスタム UI コントロールのアクセシビリティが修正されました
+- ユーザーは、Synchronization Service Manager UI で Active Directory Domain Services または Windows Azure Active Directory 用のコネクタを作成できなくなりました。
+- Sychronization Service Manager のカスタム UI コントロールのアクセシビリティが修正されました
 - Azure AD Connect のすべてのサインイン方法に対して 6 つのフェデレーション管理タスクが有効になりました。  (以前は、すべてのサインインで "AD FS SSL 証明書の更新" タスクのみ使用できました。)
 - フェデレーションから PHS または PTA にサインイン方法を変更したときに表示する、すべての Azure AD ドメインとユーザーがマネージド認証に変換されるという警告が追加されました。
 - "Azure AD と AD FS 信頼のリセット" タスクからトークン署名証明書が削除され、これらの証明書を更新するための別のサブタスクが追加されました。
@@ -120,7 +124,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 
 ### <a name="fixed-issues"></a>修正された問題 
 
-- Microsoft Azure Active Directory Connect ビルド 1.3.20.0 に存在する特権の昇格の脆弱性を修正しました。  この脆弱性により、特定の条件下で、攻撃者は特権アカウントのコンテキストで 2 つの PowerShell コマンドレットを実行し、特権の必要なアクションを実行することができる可能性があります。  このセキュリティ更新プログラムは、これらのコマンドレットを無効にすることで問題を修正します。 詳細については、[セキュリティ更新プログラム](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1000)に関する記事を参照してください。
+- Microsoft Azure Active Directory Connect ビルド 1.3.20.0 に存在する特権の昇格の脆弱性を修正しました。  この脆弱性により、特定の条件下で、攻撃者は特権アカウントのコンテキストで 2 つの PowerShell コマンドレットを実行し、特権の必要なアクションを実行することができる可能性があります。  このセキュリティ更新プログラムは、これらのコマンドレットを無効にすることで問題を修正します。 詳細については、[セキュリティ更新プログラム](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000)に関する記事を参照してください。
 
 ## <a name="13200"></a>1.3.20.0 
 
@@ -133,7 +137,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 - ドメインの更新に対するサポートが追加されました。 
 - Exchange メールのパブリック フォルダー機能が一般提供されました。 
 - サービス エラーに対するウィザードのエラー処理が機能強化されました。 
-- コネクタのプロパティ ページで、古い UI の警告リンクが追加されました。 
+- コネクタのプロパティ ページの Sychronization Service Manager UI に警告リンクが追加されました。 
 - 統合グループの書き戻し機能が一般提供されるようになりました。 
 - DC で LDAP コントロールがない場合の SSPR エラー メッセージが改善されました。 
 - インストール時の DCOM レジストリ エラーに対する診断が追加されました。  
@@ -159,7 +163,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 - LocalDB での VSS エラーが修正されました。  
 - オブジェクトの種類が範囲外の場合の誤解されやすいエラー メッセージが修正されました。 
 - サーバーでの Azure AD PowerShell のインストールで、Azure AD Connect とのアセンブリの競合が発生する可能性があるという問題が修正されました。 
-- 古い UI でコネクタの資格情報が更新されるときのステージング サーバーでの PHS のバグが修正されました。 
+- Sychronization Service Manager UI でコネクタの資格情報が更新されるときのステージング サーバーでの PHS のバグが修正されました。 
 - いくつかのメモリ リークが修正されました。 
 - 自動更新に関するさまざまな修正が行われました。 
 - エクスポートと未確認のインポート処理に対するさまざまな修正が行われました。 
@@ -1177,7 +1181,7 @@ AD FS の管理
 
 **新しくサポートされたシナリオ:**
 
-* 複数のオンプレミス Exchange 組織がサポートされました。 詳細については、「[複数の Active Directory フォレストを伴うハイブリッド展開](https://technet.microsoft.com/library/jj873754.aspx)」を参照してください。
+* 複数のオンプレミス Exchange 組織がサポートされました。 詳細については、「[複数の Active Directory フォレストを伴うハイブリッド展開](https://docs.microsoft.com/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150))」を参照してください。
 
 **修正された問題:**
 

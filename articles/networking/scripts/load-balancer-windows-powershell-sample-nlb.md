@@ -1,26 +1,23 @@
 ---
-title: Azure PowerShell スクリプト サンプル - 高可用性の VM への負荷分散トラフィック | Microsoft Docs
+title: HA のための VM へのトラフィックの負荷分散 - Azure PowerShell
 description: Azure PowerShell スクリプト サンプル - 高可用性の VM への負荷分散トラフィック
 services: load-balancer
 documentationcenter: load-balancer
-author: georgewallace
-manager: timlt
-editor: tysonn
-tags: ''
-ms.assetid: ''
+author: asudbring
+manager: KumudD
 ms.service: load-balancer
 ms.devlang: powershell
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
-ms.author: gwallace
-ms.openlocfilehash: 282a9d0b1ae5afb873d9f3736550dff52e16bc12
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 1f0ff6cad90a4e5578a4f0c578a7da5cbbb75457
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160529"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74067083"
 ---
 # <a name="load-balance-traffic-to-vms-for-high-availability"></a>高可用性の VM への負荷分散トラフィック
 

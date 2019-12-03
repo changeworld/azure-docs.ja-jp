@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 87aa96614b6aec4843723233a77d0a1dc1b66453
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5d327dd1041172bc546b2e0cb5ec3a140f401d84
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300364"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072192"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -93,6 +93,14 @@ azure-cli                         2.0.60 *
 2\.0.63 の前のバージョンの Azure CLI で `az aks use-dev-spaces` を実行している場合は、エラー メッセージに関係なくインストールは成功します。 引き続き問題なく `azds` を使用できます。
 
 この問題を解決するには、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) のインストールを 2.0.63 以降に更新します。 この更新により、`az aks use-dev-spaces` の実行中に受け取るエラー メッセージが解決されます。 また、引き続き現在のバージョンの Azure CLI と Azure Dev Spaces CLI を使用することもできます。
+
+### <a name="error-unable-to-reach-kube-apiserver"></a>エラー"Unable to reach kube-apiserver (kube-apiserver に到達できません)"
+
+Azure Dev Spaces が AKS クラスターの API サーバーに接続できない場合に、このエラーが表示されることがあります。 
+
+AKS クラスターの API サーバーへのアクセスがロック ダウンされている場合、または AKS クラスターに対して [API サーバーの許可された IP アドレス範囲](../aks/api-server-authorized-ip-ranges.md)が有効になっている場合は、[ご利用のリージョンに基づいて追加の範囲を許可する](https://github.com/Azure/dev-spaces/tree/master/public-ips)ために、クラスターを[作成](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)または[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)する必要もあります。
+
+kubectl コマンドを実行して、API サーバーが使用可能であることを確認してください。 API サーバーが使用できない場合は、AKS サポートに連絡し、API サーバーが動作しているときにもう一度試してください。
 
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Azure Dev Spaces のプロジェクトを準備するときに発生する一般的な問題
 
@@ -431,3 +439,17 @@ Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS
 ```
 azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
 ```
+
+### <a name="enable-azure-dev-spaces-on-an-existing-namespace-with-running-pods"></a>ポッドが実行されている既存の名前空間で Azure Dev Spaces を有効にする
+
+既存の AKS クラスターとポッドが実行されている名前空間で Azure Dev Spaces を有効にしたい場合があります。
+
+AKS クラスター内の既存の名前空間で Azure Dev Spaces を有効にするには、`use-dev-spaces` を実行し、`kubectl` を使用して、その名前空間内のすべてのポッドを再起動します。
+
+```console
+az aks get-credentials --resource-group MyResourceGroup --name MyAKS
+az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space my-namespace --yes
+kubectl -n my-namespace delete pod --all
+```
+
+ポッドの再起動後、Azure Dev Spaces で既存の名前空間を使用できるようになります。

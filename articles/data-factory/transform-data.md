@@ -11,15 +11,16 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 97077b9f72de8792e6aba1d72ff34b9185b2d998
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 268c1e66010720d1da052183165ce1cea50a1095
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683796"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092006"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 > [!div class="op_single_selector"]
+> * [マッピング データ フロー](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
@@ -34,7 +35,7 @@ ms.locfileid: "73683796"
 > * [.NET カスタム](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>概要
-この記事では、Azure Data Factory でのデータ変換アクティビティについて説明します。このアクティビティにより、生データを変換および処理することで、予測や把握が容易になります。 変換アクティビティは、Azure HDInsight クラスターや Azure Batch などのコンピューティング環境で実行されます。 各変換アクティビティの詳細情報に関する記事へのリンクが提供されています。
+この記事では、Azure Data Factory でのデータ変換アクティビティについて説明します。このアクティビティを使用すると、生データを大規模な予測と分析情報に変換して処理することができます。 変換アクティビティは、Azure Databricks や Azure HDInsight などのコンピューティング環境で実行されます。 各変換アクティビティの詳細情報に関する記事へのリンクが提供されています。
 
 Data Factory は、次のデータ変換アクティビティをサポートしています。これらのアクティビティは、個別または他のアクティビティと連結した状態で[パイプライン](concepts-pipelines-activities.md)に追加できます。
 
@@ -49,6 +50,8 @@ Data Factory は、次のデータ変換アクティビティをサポートし�
 Azure Data Factory のラングリング データ フローを使用すると、コードなしのデータ準備をクラウド規模で繰り返し実行できます。 ラングリング データ フローは [Power Query Online](https://docs.microsoft.com/power-query/) と統合されており、Spark 実行を通して Power Query M 関数をデータ ラングリングに対してクラウド規模で使用可能にします。 詳細については、[ラングリング データ フロー](wrangling-data-flow-overview.md)に関するページを参照してください。
 
 ## <a name="external-transformations"></a>外部での変換
+
+必要に応じて、変換を手動でコーディングし、外部のコンピューティング環境を自分で管理することもできます。
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight Hive アクティビティ
 Data Factory パイプラインの HDInsight Hive アクティビティでは、独自またはオンデマンドの Windows/Linux ベースの HDInsight クラスターで Hive クエリを実行します。 このアクティビティの詳細については、[Hive アクティビティ](transform-data-using-hadoop-hive.md)に関する記事をご覧ください。 
@@ -80,7 +83,7 @@ Data Lake Analytics U-SQL アクティビティは、Azure Data Lake Analytics �
 
 ### <a name="databricks-notebook-activity"></a>Databricks Notebook アクティビティ
 
-Data Factory パイプラインの Azure Databricks Notebook アクティビティは、Azure Databricks ワークスペースで Databricks Notebook を実行します。Azure Databricks は、Apache Spark を実行するためのマネージド プラットフォームです。 「[Databricks Notebook を実行してデータを変換する](transform-data-databricks-notebook.md)」を参照してください。
+Data Factory パイプラインの Azure Databricks Notebook アクティビティは、Azure Databricks ワークスペースで Databricks ノートブックを実行します。 Azure Databricks は、Apache Spark を実行するための管理されたプラットフォームです。 「[Databricks Notebook を実行してデータを変換する](transform-data-databricks-notebook.md)」を参照してください。
 
 ### <a name="databricks-jar-activity"></a>Databricks Jar アクティビティ
 

@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "70812690"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120119"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング
 この記事では、スコープ フィルターを使用して属性ベースのルールを定義する方法について説明します。このルールで、アプリケーションに対してプロビジョニングするユーザーを指定します。
@@ -110,6 +110,14 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 >[!IMPORTANT] 
 > 新しいスコープ フィルターを保存すると、アプリケーションの完全同期が新たに開始されます。ソース システムのすべてのユーザーが新しいスコープ フィルターに対してもう一度評価されます。 アプリケーションのユーザーが以前はプロビジョニングの範囲に入っていたが、範囲から外れた場合、アプリケーションでそのアカウントが無効になるか、プロビジョニングが解除されます。 この既定の動作をオーバーライドするには、[スコープ外に出るユーザー アカウントの削除のスキップ](skip-out-of-scope-deletions.md)に関する記事を参照してください。
 
+
+## <a name="common-scoping-filters"></a>一般的なスコープ フィルター
+| ターゲット属性| Operator | Value | 説明|
+|----|----|----|----|
+|userPrincipalName|REGEX MATCH|.\*@domain.com |ドメイン @domain.com が指定された userPrincipal を持つすべてのユーザーは、プロビジョニングの範囲内になります|
+|userPrincipalName|NOT REGEX MATCH|.\*@domain.com|ドメイン @domain.com が指定された userPrincipal を持つすべてのユーザーは、プロビジョニングの範囲外になります|
+|department|EQUALS|営業|営業部門のすべてのユーザーは、プロビジョニングの範囲内です|
+|workerID|REGEX MATCH|(1[0-9][0-9][0-9][0-9][0-9][0-9])| 1000000 と 2000000 の間の workerID を持つすべての従業員は、プロビジョニング範囲内です。|
 
 ## <a name="related-articles"></a>関連記事
 * [SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)

@@ -1,5 +1,5 @@
 ---
-title: Sqoop を使用して Azure Data Lake Storage Gen1 と Azure SQL データベースの間でデータをコピーする | Microsoft Docs
+title: Data Lake Storage Gen1 と Azure SQL の間でデータをコピーする - Sqoop | Microsoft Docs
 description: Sqoop を使用して Azure SQL Database と Azure Data Lake Storage Gen1 の間でデータをコピーする
 services: data-lake-store
 author: twooley
@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: 22789deca0934a9d4e88d587cd24aacacc9b12c6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620010"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839071"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Data Lake Storage Gen1 と Azure SQL Database の間でデータをコピーする
 

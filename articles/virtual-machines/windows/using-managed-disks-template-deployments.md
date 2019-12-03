@@ -1,5 +1,5 @@
 ---
-title: Windows VM 向け Azure Resource Manager テンプレートでのマネージド ディスクの使用 | Microsoft Docs
+title: Windows VM 向け Azure Resource Manager テンプレートでのマネージド ディスクの使用
 description: Windows VM 向け Azure Resource Manager テンプレートで管理ディスクを使用する方法について説明します
 services: virtual-machines-windows
 documentationcenter: ''
@@ -12,11 +12,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 783706c93006ab3570436c90e5d88bb15fee2fff
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dc8906547076f796917074a848b4dd09024d1364
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100184"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74064724"
 ---
+# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでの管理ディスクの使用
 [!INCLUDE [virtual-machines-using-managed-disks-template-deployments](../../../includes/virtual-machines-using-managed-disks-template-deployments.md)]

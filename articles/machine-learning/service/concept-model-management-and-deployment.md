@@ -1,7 +1,7 @@
 ---
-title: MLOps:ML モデルを管理、デプロイ、および監視する
+title: MLOps:ML モデル管理
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning をモデルの MLOps (デプロイ、管理、監視) に使用して、継続的にモデルを向上させる方法について説明します。 トレーニングしたモデルを、ローカル コンピューターまたは他のソースから Azure Machine Learning を使用してデプロイできます。
+description: 'Azure Machine Learning (MLOps) を使用したモデル管理について説明します。 モデルをデプロイ、管理、および監視して、継続的に向上させます。 '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716603"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123607"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps:Azure Machine Learning でモデルを管理、デプロイ、および監視する
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Azure Machine Learning を使用したモデルの管理、デプロイ、監視
 
 この記事では、Azure Machine Learning を使用して、モデルのライフサイクルを管理する方法について説明します。 Azure Machine Learning では Machine Learning Operations (MLOps) のアプローチが使用され、機械学習ソリューションの品質と一貫性を高めています。 
 

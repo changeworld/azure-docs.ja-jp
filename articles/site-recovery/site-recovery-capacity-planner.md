@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery を使用する Hyper-V ディザスター リカバリーの容量を計画する | Microsoft Docs
+title: Azure Site Recovery を使用する Hyper-V ディザスター リカバリーの容量を計画する
 description: この記事を使用して、Azure Site Recovery サービスによるディザスター リカバリーを設定するときに容量を見積もります。
 author: rayne-wiselman
 manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 7501982f90cd145e0fc918bf976a840323a31127
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 843d5da26d6791cea880e5dfb654fe27b74f5d9f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972572"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73936043"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM のディザスター リカバリーの容量を計画する 
 

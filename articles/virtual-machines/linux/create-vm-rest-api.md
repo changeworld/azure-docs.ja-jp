@@ -1,5 +1,5 @@
 ---
-title: Azure REST API を使用して Linux 仮想マシンを作成する | Microsoft Docs
+title: Azure REST API を使用して Linux 仮想マシンを作成する
 description: マネージド ディスクと SSH 認証を使用する Linux 仮想マシンを Azure REST API を使用して Azure 内に作成する方法を説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 9851305bdaa2f214e0d00eda3235068cac2ea980
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c1010bf4bde01920449e9252de563d79bfc61997
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083474"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036447"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
 
@@ -62,7 +62,7 @@ REST API 要求の操作の概要については、「[Components of a REST API 
 
 要求本文を作成するには、以下の一般的な定義が使用されます。
 
-| 名前                       | 必須 | Type                                                                                | 説明  |
+| 名前                       | 必須 | 種類                                                                                | 説明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | string                                                                              | リソースの場所。 |
 | 名前                       |          | string                                                                              | 仮想マシンの名前。 |

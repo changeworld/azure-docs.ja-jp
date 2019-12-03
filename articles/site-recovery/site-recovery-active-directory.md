@@ -1,20 +1,18 @@
 ---
-title: Azure Site Recovery で Active Directory と DNS をのディザスター リカバリーを設定する | Microsoft Docs
+title: Azure Site Recovery を使用して Active Directory と DNS のディザスター リカバリーを設定する
 description: この記事では、Azure Site Recovery を使用して Active Directory と DNS 用のディザスター リカバリー ソリューションを実装する方法について説明します。
-services: site-recovery
-documentationcenter: ''
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c1f85217db12b60cdcd8ea0bdb65792b8d02648
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038851"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084582"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 

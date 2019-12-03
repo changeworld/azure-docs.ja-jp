@@ -1,5 +1,5 @@
 ---
-title: Azure の制約付き vCPU のサイズ - Windows | Microsoft Docs
+title: Azure の制約付き vCPU のサイズ - Windows
 description: 制約付き vCPU 数に対応する VM サイズを示します。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
-ms.openlocfilehash: ebd936b7003caaf12030876560ab3ca94537142f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 41260c269fca966ddbe4fdc8d70194f26ac6dcd3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079828"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039458"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>制約付き vCPU 対応の VM サイズ
 

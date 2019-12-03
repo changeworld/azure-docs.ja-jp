@@ -13,16 +13,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
-ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 5de8c9523e05411a4751766c836b8e99ebb977c1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.lastreviewed: 11/13/2019
+ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213135"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066877"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs によるプッシュ通知:よく寄せられる質問
 
@@ -30,9 +30,7 @@ ms.locfileid: "71213135"
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Notification Hubs のリソース構造について教えてください。
 
-Azure Notification Hubs には、2 つのリソース レベルとして、ハブと名前空間があります。 ハブは、1 つのアプリのクロスプラットフォーム プッシュ情報を保持できる単一のプッシュ リソースです。 名前空間は、1 つのリージョンのハブのコレクションです。
-
-推奨されるマッピングでは、1 つの名前空間を 1 つのアプリに対応付けます。 その名前空間内に、運用アプリで動作する運用環境ハブ、テスト アプリで動作するテスト ハブなどを配置できます。
+Azure Notification Hubs には、2 つのリソース レベルとして、ハブと名前空間があります。 ハブは、1 つのアプリのクロスプラットフォーム プッシュ情報を保持できる単一のプッシュ リソースです。 名前空間は、1 つのリージョンのハブのコレクションです。 推奨されるマッピングでは、1 つの名前空間を 1 つのアプリに対応付けます。 その名前空間内に、運用アプリで動作する運用環境ハブ、テスト アプリで動作するテスト ハブなどを配置できます。
 
 ### <a name="what-is-the-price-model-for-notification-hubs"></a>Notification Hubs の価格モデルを教えてください。
 
@@ -45,7 +43,7 @@ Azure Notification Hubs には、2 つのリソース レベルとして、ハ�
 Standard レベルの機能:
 
 * **豊富なテレメトリ**:Notification Hubs のメッセージごとのテレメトリを使用して、デバッグのためにすべてのプッシュ要求とプラットフォーム通知システムのフィードバックを追跡できます。
-* **マルチテナント**:プラットフォーム通知システムの資格情報を名前空間レベルで使用することができます。 このオプションにより、テナントを同じ名前空間内のハブに簡単に分割することができます。
+* **マルチテナント**: プラットフォーム通知システムの資格情報を名前空間レベルで使用することができます。 このオプションにより、テナントを同じ名前空間内のハブに簡単に分割することができます。
 * **プッシュのスケジュール**:通知をいつ送信するかをスケジュールすることができます。
 * **バルク操作**: [登録のエクスポートとインポート]に関するドキュメントで説明しているように、登録のエクスポート/インポート機能を有効にします。
 
@@ -54,7 +52,7 @@ Standard レベルの機能:
 Basic と Standard の Notification Hubs レベルでは、適切に構成されたアプリケーションは、少なくとも 99.9% の時間、プッシュ通知を送信したり、登録管理操作を行ったりすることができます。 SLA の詳細については、「[Notification Hubs の SLA](https://azure.microsoft.com/support/legal/sla/notification-hubs/)」ページを参照してください。
 
 > [!NOTE]
-> プッシュ通知はサードパーティのプラットフォーム通知システム (Apple の APNS、Google の FCM など) に依存するため、これらのメッセージの配信に対する SLA 保証はありません。 Notification Hubs がプラットフォーム通知システムにバッチを送信 (SLA 保証あり) した後、プッシュの配信 (SLA 保証なし) はプラットフォーム通知システムの責任です。
+> プッシュ通知はサードパーティのプラットフォーム通知システム (Apple の Push Notification Service (APNs)、Google の Firebase Cloud Messaging (FCM) など) に依存するため、これらのメッセージの配信に対する SLA 保証はありません。 Notification Hubs がプラットフォーム通知システムにバッチを送信 (SLA 保証あり) した後、プッシュの配信 (SLA 保証なし) はプラットフォーム通知システムの責任です。
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>ハブまたは名前空間を別のレベルにアップグレードまたはダウングレードする方法を教えてください。
 
@@ -75,13 +73,7 @@ Basic と Standard の Notification Hubs レベルでは、適切に構成され
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>テキスト メッセージ、電子メール、または Web 通知をサポートしていますか。
 
-Notification Hubs は、主にモバイル アプリに通知を送信することを目的としています。 電子メールまたはテキスト メッセージの機能は用意されていません。 ただし、こうした機能を提供するサードパーティ製のプラットフォームを Notification Hubs に統合し、[Mobile Apps] を使ってネイティブのプッシュ通知を送信することができます。
-
-また、Notification Hubs には、すぐに使えるブラウザー内プッシュ通知の送信サービスもありません。 この機能は、サポートされているサーバー側プラットフォームで SignalR を使用すれば実装できます。 
-
-### <a name="how-are-mobile-apps-and-azure-notification-hubs-related-and-when-do-i-use-them"></a>Mobile Apps と Azure Notification Hubs はどのように関係していて、どのような場合に使用すればよいですか。
-
-モバイル アプリのバックエンドが既にあり、プッシュ通知の送信機能だけを追加する場合は、Azure Notification Hubs を使用することができます。 モバイル アプリのバックエンドを最初からセットアップする場合は、Azure App Service Mobile Apps 機能を使用することを検討してください。 モバイル アプリのバックエンドからプッシュ通知を簡単に送信できるように、モバイル アプリが通知ハブを自動的にプロビジョニングします。 Mobile Apps の料金には、通知ハブの基本料金が含まれています。 それに含まれているプッシュを超過した分だけを支払えば済みます。 コストの詳細については、「[App Service の価格]」ページを参照してください。
+Notification Hubs は、モバイル アプリを実行しているデバイスに通知を送信します。 電子メールまたはテキスト メッセージの機能は用意されていません。 また、Notification Hubs には、すぐに使えるブラウザー内プッシュ通知の送信サービスもありません。 この機能は、サポートされているサーバー側プラットフォームで SignalR を使用すれば実装できます。 
 
 ### <a name="how-many-devices-can-i-support-if-i-send-push-notifications-via-notification-hubs"></a>Notification Hubs を使用してプッシュ通知を送信する場合、サポートされるデバイス数は何台ですか。
 
@@ -135,7 +127,7 @@ PNS は、通知の送信に関するいかなる SLA も保証しません。 �
 
 #### <a name="geo-distribution"></a>地理的分散
 
-プッシュ通知のシナリオでは、地理的分散は常に重要というわけではありません。 デバイスにプッシュ通知を配信するさまざまな PNS (たとえば、APNS や FCM) は、均等に分散されていません。
+プッシュ通知のシナリオでは、地理的分散は常に重要というわけではありません。 デバイスにプッシュ通知を配信するさまざまな PNS (たとえば、APNs や FCM) は、均等に分散されていません。
 
 世界中で使用されるアプリケーションの場合は、Notification Hubs サービスを使用して、世界のさまざまな Azure リージョンでさまざまな名前空間にハブを作成することができます。
 
@@ -157,7 +149,7 @@ Azure Notification Hubs では、[Shared Access Signature](../storage/common/sto
 Azure Notification Hubs を経由して送信者から PNS に至る間のすべての接続で、HTTPS が使用されます。
 
 > [!NOTE]
-> Azure Notification Hubs では、メッセージのペイロードはいかなる形でも記録されません。
+> Azure Notification Hubs では、メッセージのペイロードは記録されません。
 
 機密情報が含まれているペイロードを送信するには、安全なプッシュのパターンを使用することをお勧めします。 送信者は、機密情報のペイロードが含まれていない、メッセージ識別子の付いた ping 通知をデバイスに配信します。 デバイス上のアプリがペイロードを受信すると、アプリはセキュリティで保護された API を直接呼び出して、メッセージの詳細をフェッチします。 このパターンの実装方法のガイドについては、[Notification Hubs の安全なプッシュのチュートリアル]に関するページを参照してください。
 
@@ -183,6 +175,10 @@ Microsoft 側でのメタデータ (Notification Hubs の名前、接続文字�
 
 開かれていないアプリがあるデバイスが、通知を受信しない期間があります。
 
+### <a name="is-all-of-my-data-stored-in-encrypted-form"></a>自分のデータはすべて暗号化された形式で格納されますか?
+
+Azure Notification Hubs では、登録タグ以外の、保存中のすべての顧客データが暗号化されます。 このため、タグを使用して個人または機密のデータを格納しないでください。
+
 ### <a name="is-there-audit-log-capability"></a>監査ログ機能はありますか。
 
 はい。 すべての Notification Hubs 管理操作は、Azure アクティビティ ログに記録されます。このログは、[Azure portal] 上で公開されます。 Azure アクティビティ ログでは、サブスクリプションのリソースに対して実行された操作に関する分析情報が提供されます。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して行われた書き込み操作 (PUT、POST、DELETE) すべてについて、いつ、誰が、何を行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 ただし、 アクティビティ ログには、読み取り (GET) 操作は含まれません。
@@ -203,9 +199,8 @@ Azure Notification Hubs では、[Azure Portal] で利用統計情報を表示�
 - [Getting metrics and activity logs for a resource (リソースのメトリックとアクティビティ ログの取得)](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
 - [Azure 監視 REST API のチュートリアル](../azure-monitor/platform/rest-api-walkthrough.md)
 
-
 > [!NOTE]
-> 通知の成功は、単にプッシュ通知が外部の PNS (たとえば Apple の APNS や Google の FCM) に配信されたことを意味します。 ターゲット デバイスに通知を配信するのは、PNS の役目です。 通常、PNS は、配信メトリックを第三者に公開しません。  
+> 通知の成功は、単にプッシュ通知が外部の PNS (たとえば iOS および macOS の APNs や Android デバイスの FCM) に配信されたことを意味します。 ターゲット デバイスに通知を配信するのは、PNS の役目です。 通常、PNS は、配信メトリックを第三者に公開しません。  
 
 [Azure Portal]: https://portal.azure.com
 [Notification Hubs の価格]: https://azure.microsoft.com/pricing/details/notification-hubs/
@@ -222,5 +217,4 @@ Azure Notification Hubs では、[Azure Portal] で利用統計情報を表示�
 [登録のエクスポートとインポート]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
-[Mobile Apps]: https://azure.microsoft.com/services/app-service/mobile/
-[App Service の価格]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

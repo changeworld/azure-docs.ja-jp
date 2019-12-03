@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: dacurwin
-ms.openlocfilehash: d0d2663fcf7be9662325b24f9f063a8f3def668a
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 8ba28829d3ee18b441227e537cb0a7ca97fb7638
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688516"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074050"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理
+
 Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
 
 > [!IMPORTANT]
@@ -29,9 +30,8 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 
 制御を強化するために独自のロールを定義する場合は、Azure RBAC で [カスタム ロールを作成](../role-based-access-control/custom-roles.md)する方法を参照してください。
 
-
-
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>バックアップ管理アクションへの組み込みバックアップ ロールのマッピング
+
 次の表に、バックアップ管理アクションと、その操作を実行するために必要な最小限の RBAC ロールを示します。
 
 | 管理操作 | 必要最小限 RBAC ロール | 必要なスコープ |
@@ -63,23 +63,24 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 > VM 共同作成者を VM リソース スコープで指定し、VM 設定の一部としてバックアップをクリックした場合は、VM が既にバックアップされていても、[バックアップの有効化] 画面が開きます。これは、バックアップ状態を確認するための呼び出しが、サブスクリプション レベルでのみ機能するためです。 これを回避するには、コンテナーに移動して VM のバックアップ項目ビューを開くか、VM 共同作成者ロールをサブスクリプション レベルで指定します。
 
 ## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Azure ファイル共有バックアップに使用されるロールの最低要件
+
 次の表に、バックアップ管理アクションと、Azure ファイル共有操作を実行するために必要な対応するロールを示します。
 
 | 管理操作 | 必要なロール | リソース |
 | --- | --- | --- |
-| Azure ファイル共有のバックアップの有効化 | Backup Contributor | Recovery Services コンテナー |
-| | ストレージ アカウント | 共同作成者ストレージ アカウント リソース |
+| Azure ファイル共有のバックアップの有効化 | Backup Contributor |Recovery Services コンテナー |
+| |ストレージ アカウント | 共同作成者ストレージ アカウント リソース |
 | VM のオンデマンド バックアップ | Backup Operator | Recovery Services コンテナー |
 | ファイル共有の復元 | Backup Operator | Recovery Services コンテナー |
 | | Storage Account Contributor | 復元元と復元先のファイル共有が存在するストレージ アカウント リソース |
 | 個々のファイルの復元 | Backup Operator | Recovery Services コンテナー |
-| | Storage Account Contributor |   復元元と復元先のファイル共有が存在するストレージ アカウント リソース |
-| 保護の停止 | Backup Contributor | Recovery Services コンテナー |      
-| コンテナーからのストレージ アカウントの登録解除 |   Backup Contributor | Recovery Services コンテナー |
-| | Storage Account Contributor | ストレージ アカウント リソース|
-
+| |Storage Account Contributor|復元元と復元先のファイル共有が存在するストレージ アカウント リソース |
+| 保護の停止 |Backup Contributor | Recovery Services コンテナー |
+| コンテナーからのストレージ アカウントの登録解除 |Backup Contributor | Recovery Services コンテナー |
+| |Storage Account Contributor | ストレージ アカウント リソース|
 
 ## <a name="next-steps"></a>次の手順
+
 * [ロール ベースのアクセス制御](../role-based-access-control/role-assignments-portal.md): Azure portal での RBAC の基本について説明します。
 * 次の要素を使用したアクセス管理方法の詳細
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)

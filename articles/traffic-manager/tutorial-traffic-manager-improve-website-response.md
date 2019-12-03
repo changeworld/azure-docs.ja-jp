@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Web サイトの応答を向上させるために Azure Traffic Manager を使用してトラフィックをルーティングする
+title: 'チュートリアル: Web サイトの応答性を向上させる - Azure Traffic Manager'
 description: このチュートリアル記事では、応答性の高い Web サイトを構築するための Traffic Manager プロファイルの作成方法について説明します。
 services: traffic-manager
 author: asudbring
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: allensu
-ms.openlocfilehash: 304beeae02da5836ba88a56d7166fc681e263501
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a988b16bb07b1486c4434114eb8653c959aefc6a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66258352"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023282"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して Web サイトの応答性を向上させる
 
@@ -141,10 +141,10 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
-    | Name                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
+    | 名前                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
     | ルーティング方法          | **パフォーマンス**によるルーティング方法を選択します。                                       |
-    | サブスクリプション            | サブスクリプションを選択します。                          |
-    | リソース グループ          | リソース グループ「*myResourceGroupTM1*」を選択します。 |
+    | Subscription            | サブスクリプションを選択します。                          |
+    | Resource group          | リソース グループ「*myResourceGroupTM1*」を選択します。 |
     | Location                | **[米国東部]** を選択します。 これはリソース グループの場所を指定する設定であり、グローバルにデプロイされる Traffic Manager プロファイルには影響しません。                              |
     |
 
@@ -160,8 +160,8 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure エンドポイント                                   |
-    | Name           | myEastUSEndpoint                                        |
+    | 種類                    | Azure エンドポイント                                   |
+    | 名前           | myEastUSEndpoint                                        |
     | ターゲット リソースの種類           | パブリック IP アドレス                          |
     | ターゲット リソース          | **パブリック IP アドレスを選択**して、同じサブスクリプションでパブリック IP アドレスを持つリソースの一覧を表示します。 **[リソース]** で、*myIISVMEastUS-ip* という名前のパブリック IP アドレスを選択します。 これは、米国東部内の IIS サーバー VM のパブリック IP アドレスです。|
     |        |           |

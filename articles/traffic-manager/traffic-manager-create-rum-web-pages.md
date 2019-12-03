@@ -1,6 +1,6 @@
 ---
-title: Web ページでの Azure Traffic Manager への Real User Measurements | Microsoft Docs
-description: Real User Measurements を Traffic Manager に送信するように Web ページを設定する
+title: Web ページでのリアル ユーザー測定 - Azure Traffic Manager
+description: この記事では、Azure Traffic Manager にリアル ユーザー測定を送信するように Web ページを設定する方法について説明します。
 services: traffic-manager
 documentationcenter: traffic-manager
 author: asudbring
@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: 2d044457df80f16a6e8073e7f3253a611f74d8a8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6e3cf5af5aaa894b1595d67c0056073a458b0a88
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071213"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040295"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Web ページを使用して Azure Traffic Manager に Real User Measurements を送信する方法
 

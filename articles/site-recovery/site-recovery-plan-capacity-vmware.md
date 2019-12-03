@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用した Azure への VMware ディザスター リカバリーの容量とスケーリングを計画する | Microsoft Docs
+title: Azure Site Recovery を使用する VMware ディザスター リカバリーの容量を計画する
 description: この記事は、Azure Site Recovery を用いた Azure への VMware VM のディザスター リカバリーを設定するときに、容量とスケーリングを計画するのに役立ちます。
 author: nsoneji
 manager: garavd
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747906"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961368"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーの容量とスケーリングを計画する
 

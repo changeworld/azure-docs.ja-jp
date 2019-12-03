@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery を使用した Azure (CSP) への VMware VM ディザスター リカバリーに対するマルチテナント サポートの概要 | Microsoft Docs
+title: Azure Site Recovery を使用した VMware VM マルチテナント ディザスター リカバリー
 description: マルチ テナント環境 (CSP) プログラムでの、Azure への VMWare ディザスター リカバリーに対する、Azure Site Recovery のサポートの概要について説明します。
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718123"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083986"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>CSP を使用した Azure への VMware ディザスター リカバリーにおけるマルチテナント サポートの概要
 

@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery を使用した VMware から Azure へのディザスター リカバリーに関するよくある質問 | Microsoft Docs
+title: Azure Site Recovery を使用した VMware のディザスター リカバリーについてよくある質問
 description: Azure Site Recovery を使用してオンプレミスの VMware VM を Azure にディザスター リカバリーする場合のよくある質問に対する回答を確認します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-services: site-recovery
-ms.date: 06/27/2019
+ms.date: 11/14/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 508fa7e33cd8572d70b7ebf261edba67fd40dd93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002271"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084154"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -117,7 +116,7 @@ Site Recovery では、オンプレミスの VMware VM と物理サーバーが 
 
 ### <a name="can-i-replicate-new-machines-to-storage-accounts"></a>新しいマシンをストレージ アカウントにレプリケートできますか?
 
-いいえ。 いいえ。2019 年 3 月以降、Azure portal では、Azure のマネージド ディスクだけにレプリケートできます。
+No. いいえ。2019 年 3 月以降、Azure portal では、Azure のマネージド ディスクだけにレプリケートできます。
 
 ストレージ アカウントへの新しい VM のレプリケーションは、PowerShell または REST API (バージョン 2018-01-10 または 2016-08-10) を使用する場合のみ、行うことができます。
 
@@ -136,7 +135,7 @@ Site Recovery では、オンプレミスの VMware VM と物理サーバーが 
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>マネージド ディスクからアンマネージド ディスクにレプリケーションを切り替えることはできますか?
 
-いいえ。 マネージドからアンマネージドへの切り替えはサポートされていません。
+No. マネージドからアンマネージドへの切り替えはサポートされていません。
 
 ## <a name="replication"></a>レプリケーション
 
@@ -181,7 +180,7 @@ Azure への VMware のレプリケーションでは、ディスクのサイズ
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>進行中のレプリケーションに影響を与えることなく、オンプレミスのマシンを新しい vCenter Server に移行できますか?
 
-いいえ。 VMware Vcenter を変更したり、移行を行ったりすると、進行中のレプリケーションに影響が及びます。 新しい vCenter Server を使用して Site Recovery を設定し、マシンのレプリケーションを再度有効にします。
+No. VMware Vcenter を変更したり、移行を行ったりすると、進行中のレプリケーションに影響が及びます。 新しい vCenter Server を使用して Site Recovery を設定し、マシンのレプリケーションを再度有効にします。
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>仮想ネットワーク (Azure Storage ファイアウォールあり) が構成されているキャッシュまたはターゲット ストレージ アカウントにレプリケートすることはできますか?
 
@@ -235,7 +234,7 @@ Site Recovery は、N-4 サポート モデルに従っています。 非常に
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>構成サーバーは複数のリージョンにレプリケートできますか?
 
-いいえ。 複数のリージョンにレプリケートするには、各リージョンに構成サーバーが必要です。
+No. 複数のリージョンにレプリケートするには、各リージョンに構成サーバーが必要です。
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Azure で構成サーバーをホストできますか?
 
@@ -267,15 +266,15 @@ Site Recovery は、N-4 サポート モデルに従っています。 非常に
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>構成サーバー VM を他の目的で使用することはできますか?
 
-いいえ。 VM は構成サーバーにのみ使用します。
+No. VM は構成サーバーにのみ使用します。
 
 ### <a name="can-i-clone-a-configuration-server-and-use-it-for-orchestration"></a>構成サーバーを複製してオーケストレーションに使用することはできますか?
 
-いいえ。 登録に関する問題を避けるために、新しい構成サーバーを設定します。
+No. 登録に関する問題を避けるために、新しい構成サーバーを設定します。
 
 ### <a name="can-i-change-the-vault-in-which-the-configuration-server-is-registered"></a>構成サーバーが登録されているコンテナーを変更することはできますか?
 
-いいえ。 コンテナーは、構成サーバーに関連付けられた後に変更することはできません。 構成サーバーを別のコンテナーに登録する方法を[ご覧ください](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)。
+No. コンテナーは、構成サーバーに関連付けられた後に変更することはできません。 構成サーバーを別のコンテナーに登録する方法を[ご覧ください](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault)。
 
 ### <a name="can-i-use-the-same-configuration-server-for-disaster-recovery-of-both-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーの両方のディザスター リカバリーに同じ構成サーバーを使用できますか?
 

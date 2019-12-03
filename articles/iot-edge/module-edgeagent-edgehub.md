@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: e8a8170023c8f529894522e27a4c6231325089af
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: caee247dfb1f7068e935be9c293a28870cfb98ce
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190994"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74069327"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge エージェントと IoT Edge ハブのモジュール ツインのプロパティ
 
@@ -55,6 +55,7 @@ IoT Edge エージェントのモジュール ツインは `$edgeAgent` と呼�
 | modules.{moduleId}.type | "docker" である必要がある | はい |
 | modules.{moduleId}.status | {"running" \| "stopped"} | はい |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failure" \| "on-unhealthy" \| "always"} | はい |
+| modules.{moduleId}.imagePullPolicy | {"on-create" \| "never"} | いいえ |
 | modules.{moduleId}.settings.image | モジュール イメージへの URI。 | はい |
 | modules.{moduleId}.settings.createOptions | モジュール コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | いいえ |
 | modules.{moduleId}.configuration.id | このモジュールをデプロイしたデプロイの ID。 | このプロパティは、マニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |

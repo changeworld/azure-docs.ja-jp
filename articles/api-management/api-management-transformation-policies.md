@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 4f57f7cbc4e93f8a98b64b31ca51e0f1e32c375c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c26cca40b0bf6d02bcec09945043f4ba854fa8e9
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073292"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012227"
 ---
 # <a name="api-management-transformation-policies"></a>API Management の変換ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。
@@ -468,13 +468,20 @@ OriginalUrl.
 
 ### <a name="examples"></a>例
 
-#### <a name="example"></a>例
+#### <a name="example---adding-header-override-existing"></a>例 - ヘッダーの追加、既存のオーバーライド
 
 ```xml
 <set-header name="some header name" exists-action="override">
     <value>20</value>
 </set-header>
 ```
+#### <a name="example---removing-header"></a>例 - ヘッダーの削除
+
+```xml
+ <set-header name="some header name" exists-action="delete" />
+```
+
+
 
 #### <a name="forward-context-information-to-the-backend-service"></a>バックエンド サービスにコンテキスト情報を転送する
  次の例では、API レベルでポリシーを適用して、バックエンド サービスにコンテキスト情報を提供する方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177:More API Management Features](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: その他の API Management 機能の紹介) を 10:30 まで早送りしてご覧ください。 12:10 に開発者ポータルで操作を呼び出すデモが示されており、このポリシーの動作を確認できます。
@@ -506,7 +513,7 @@ OriginalUrl.
 |名前|説明|必須|
 |----------|-----------------|--------------|
 |set-header|ルート要素。|はい|
-|value|設定するヘッダーの値を指定します。 同じ名前のヘッダーが複数ある場合は、`value` 要素をさらに追加します。|はい|
+|value|設定するヘッダーの値を指定します。 同じ名前のヘッダーが複数ある場合は、`value` 要素をさらに追加します。|いいえ|
 
 ### <a name="properties"></a>properties
 

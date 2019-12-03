@@ -1,20 +1,20 @@
 ---
 title: オブジェクトに BLOB を追加する方法 - Azure Digital Twins | Microsoft Docs
-description: Azure Digital Twins 内のオブジェクトに BLOB を追加する方法について説明します。
+description: Azure Digital Twins でユーザー、デバイス、およびスペースに BLOB を追加する方法について説明します。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 11/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a278501f1110da0ab332d0e1acf170892be26ee
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 6ab9d0ae07978e69bebb0fc24c8965cce971cfd5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949133"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082325"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure Digital Twins 内のオブジェクトに BLOB を追加する
 
@@ -181,8 +181,6 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 最後に、[cURL](https://curl.haxx.se/) ユーザーは、同じ方法でマルチパート フォーム要求を行うことができます。
 
-[![デバイスの BLOB](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
-
 ```bash
 curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
  -H "Authorization: Bearer YOUR_TOKEN" \
@@ -198,7 +196,9 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 | YOUR_SPACE_ID | BLOB を関連付けるスペースの ID |
 | PATH_TO_FILE | テキスト ファイルへのパス |
 
-POST が成功すると、新しい BLOB の ID が返されます (前に赤で強調表示)。
+[![cURL の例](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
+
+POST が成功すると、新しい BLOB の ID が返されます。
 
 ## <a name="api-endpoints"></a>API エンドポイント
 

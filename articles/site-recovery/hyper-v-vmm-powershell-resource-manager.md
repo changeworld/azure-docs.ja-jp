@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery と PowerShell を使用して、VMM クラウド内の Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する | Microsoft Docs
+title: Azure Site Recovery と PowerShell を使用してセカンダリ サイトに Hyper-V (VMM 使用) のディザスター リカバリーを設定する
 description: Azure Site Recovery と PowerShell を使用して、VMM クラウド内の Hyper-V VM のセカンダリ VMM サイトへのディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
 author: sujayt
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 78bd077b5491b093510b9c55bf7b5a42ee9cb578
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2fc66514bdf33611f9e6266d35a2d537fe3b9261
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362358"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084905"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して、Hyper-V VM のセカンダリ サイトへのディザスター リカバリーを設定する
 

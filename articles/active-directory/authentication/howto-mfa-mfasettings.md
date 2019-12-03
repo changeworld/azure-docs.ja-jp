@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ea89af780df72b97fef553cf79b84c4b28da05
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4932089b7315f2756f3760b252c7257868f640fa
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569873"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74066023"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
 この記事は、Azure portal で Multi-Factor Authentication の設定を管理するうえで役立ちます。 ここでは、Azure Multi-factor Authentication を最大限に活用するために役立つさまざまなトピックについて説明します。 すべてのバージョンの Azure Multi-Factor Authentication ですべての機能を使用できるわけではありません。
 
-Azure portal で Azure Multi-Factor Authentication に関連する設定にアクセスするには、 **[Azure Active Directory]**  >  **[MFA]** の順に移動します。
+Azure portal で Azure Multi-Factor Authentication に関連する設定にアクセスするには、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]** の順に移動します。
 
 ![Azure portal - Azure AD Multi-Factor Authentication の設定](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -62,7 +62,7 @@ Azure portal で Azure Multi-Factor Authentication に関連する設定にア�
 ### <a name="block-a-user"></a>ユーザーのブロック
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. **[Azure Active Directory]**  >  **[MFA]**  >  **[ユーザーのブロック/ブロック解除]** に移動します。
+2. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[ユーザーのブロック/ブロック解除]** の順に移動します。
 3. **[追加]** を選択してユーザーをブロックします。
 4. **[レプリケーション グループ]** を選択します。 ブロックされているユーザーのユーザー名を **username\@domain.com** として入力します。 **[理由]** フィールドにコメントを入力します。
 5. **[追加]** を選択してユーザーのブロックを終了します。
@@ -70,7 +70,7 @@ Azure portal で Azure Multi-Factor Authentication に関連する設定にア�
 ### <a name="unblock-a-user"></a>ユーザーのブロック解除
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. **[Azure Active Directory]**  >  **[MFA]**  >  **[ユーザーのブロック/ブロック解除]** に移動します。
+2. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[ユーザーのブロック/ブロック解除]** の順に移動します。
 3. ブロック解除するユーザーの横にある、 **[アクション]** 列の **[ブロック解除]** を選択します。
 4. **[Reason for unblocking]\(ブロック解除の理由)** フィールドにコメントを入力します。
 5. **[ブロック解除]** を選択して、ユーザーのブロック解除を終了します。
@@ -82,7 +82,7 @@ Azure portal で Azure Multi-Factor Authentication に関連する設定にア�
 ### <a name="turn-on-fraud-alerts"></a>不正アクセスのアラートを有効にする
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. **[Azure Active Directory]**  >  **[MFA]**  >  **[不正アクセスのアラート]** の順に移動します。
+2. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[不正アクセスのアラート]** の順に移動します。
 3. **[ユーザーが不正アクセスを通報できるようにする]** 設定を **[オン]** に設定します。
 4. **[保存]** を選択します。
 
@@ -124,7 +124,7 @@ _カスタム音声メッセージ_ 機能では、独自の録音やあいさ�
 開始する前に、次の制限に注意してください。
 
 * サポートされているファイルの形式は .wav と .mp3 です。
-* ファイル サイズの上限は 5 MB です。
+* ファイル サイズの上限は 1 MB です。
 * 認証メッセージは、20 秒より短くする必要があります。 20 秒より長いメッセージの場合は、確認に失敗する可能性があります。 メッセージが終わる前にユーザーが応答せず、確認がタイムアウトになる可能性があります。
 
 ### <a name="custom-message-language-behavior"></a>カスタム メッセージ言語の動作
@@ -145,7 +145,7 @@ _カスタム音声メッセージ_ 機能では、独自の録音やあいさ�
 ### <a name="set-up-a-custom-message"></a>カスタム メッセージを設定する
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-1. **[Azure Active Directory]**  >  **[MFA]**  >  **[電話の設定]** の順に移動します。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[電話の設定]** の順に移動します。
 1. **[案内の追加]** を選択します。
 1. 案内の種類を選択します。
 1. 言語を選択します。
@@ -184,7 +184,7 @@ _ワンタイム バイパス_ 機能は、2 段階認証の実行なしでユ�
 ### <a name="create-a-one-time-bypass"></a>ワンタイム バイパスを作成する
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. **[Azure Active Directory]**  >  **[MFA]**  >  **[ワンタイム バイパス]** の順に移動します。
+2. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[ワンタイム バイパス]** の順に移動します。
 3. **[追加]** を選択します。
 4. 必要に応じて、バイパスのレプリケーション グループを選択します。
 5. ユーザー名を **username\@domain.com** として入力します。 バイパスが持続する秒数を入力します。 バイパスの理由を入力します。
@@ -193,7 +193,7 @@ _ワンタイム バイパス_ 機能は、2 段階認証の実行なしでユ�
 ### <a name="view-the-one-time-bypass-report"></a>ワンタイム バイパス レポートを表示する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[Azure Active Directory]**  >  **[MFA]**  >  **[ワンタイム バイパス]** の順に移動します。
+2. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[ワンタイム バイパス]** の順に移動します。
 
 ## <a name="caching-rules"></a>キャッシュ規則
 
@@ -205,7 +205,7 @@ _キャッシュ_ 機能を使用して、ユーザー認証後の認証の試�
 ### <a name="set-up-caching"></a>キャッシュを設定する
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. **[Azure Active Directory]**  >  **[MFA]**  >  **[キャッシュ規則]** の順に移動します。
+2. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[キャッシュ規則]** の順に移動します。
 3. **[追加]** を選択します。
 4. ドロップダウン リストから**キャッシュの種類**を選択します。 **キャッシュする秒数**の最大数を入力します。
 5. 必要に応じて、認証の種類を選択し、アプリケーションを指定します。
@@ -213,9 +213,11 @@ _キャッシュ_ 機能を使用して、ユーザー認証後の認証の試�
 
 ## <a name="mfa-service-settings"></a>MFA サービスの設定
 
-Azure Multi-Factor Authentication におけるアプリ パスワード、信頼できる IP、確認オプション、および多要素認証の記憶の設定は、サービス設定で確認できます。 Azure portal からサービス設定にアクセスするには、 **[Azure Active Directory]**  >  **[MFA]**  >  **[作業の開始]**  >  **[構成]**  >  **[追加のクラウドベースの MFA 設定]** の順に移動します。
+Azure Multi-Factor Authentication におけるアプリ パスワード、信頼できる IP、確認オプション、および多要素認証の記憶の設定は、サービス設定で確認できます。 Azure portal からサービス設定にアクセスするには、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[作業の開始]**  >  **[構成]**  >  **[追加のクラウドベースの MFA 設定]** の順に移動します。
 
 ![Azure Multi-Factor Authentication のサービス設定](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
+
+信頼できる IP アドレス範囲は、プライベートまたはパブリックのどちらでもかまいません。
 
 ## <a name="app-passwords"></a>アプリ パスワード
 

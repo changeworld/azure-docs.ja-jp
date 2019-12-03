@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub 用語集 | Microsoft Docs
-description: 開発者ガイド - Azure IoT Hub に関連する一般用語の用語集。
+description: 開発者ガイ ド- Azure IoT Hub の記事で使用される一般的な用語の一部について説明した用語集です。
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: 6f89e27b06179c33857d581c0c6e3fc78c683d48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c4215933b3816b445c55282bae9a36e88c0311f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119811"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890526"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
@@ -214,7 +214,7 @@ IoT Hub 上のデバイス向け、またはサービス向けエンドポイン
 ## <a name="reported-properties"></a>報告されるプロパティ
 [デバイス ツイン](iot-hub-devguide-device-twins.md)においては、報告されるプロパティとは、デバイスの構成や状態を同期するために[必要なプロパティ](#desired-properties)とともに使用される、デバイス ツインのサブセクションです。 報告されるプロパティは[デバイス アプリ](#device-app)のみで設定でき、[バックエンド アプリ](#back-end-app)で読み取りおよびクエリの実行を行うことができます。
 
-## <a name="resource-group"></a>リソース グループ
+## <a name="resource-group"></a>Resource group
 [Azure Resource Manager](#azure-resource-manager) は、リソース グループを使用して、関連するリソースをグループ化します。 リソース グループを使用して、グループのすべてのリソースに対して同時に操作を実行できます。
 
 ## <a name="retry-policy"></a>再試行ポリシー
@@ -241,7 +241,7 @@ Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは U
 ## <a name="solution"></a>解決策
 _ソリューション_ は、1 つまたは複数のプロジェクトを含む Visual Studio ソリューションを指す場合があります。 _ソリューション_ は、デバイス、[デバイス アプリ](#device-app)、IoT Hub、他の Azure サービス、[バックエンド アプリ](#back-end-app)などの要素を含む IoT ソリューションを指す場合もあります。
 
-## <a name="subscription"></a>サブスクリプション
+## <a name="subscription"></a>Subscription
 Azure サブスクリプションでは、課金が発生します。 作成する各 Azure リソース、または使用する各 Azure サービスは、1 つのサブスクリプションと関連付けられています。 多くのクォータは、サブスクリプションのレベルで適用されます。
 
 ## <a name="system-properties"></a>システム プロパティ

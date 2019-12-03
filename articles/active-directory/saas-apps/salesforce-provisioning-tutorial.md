@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64de004a1d9b3aa011c447fdded51658582586b0
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "68825783"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120539"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>チュートリアル:Salesforce を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -55,7 +55,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 ## <a name="enable-automated-user-provisioning"></a>自動化されたユーザー プロビジョニングを有効にする
 
-このセクションでは、Azure AD を Salesforce のユーザー アカウント プロビジョニング API に接続する手順のほか、プロビジョニング サービスを構成して、Azure AD のユーザーとグループの割り当てに基づいて割り当て済みのユーザー アカウントを Salesforce で作成、更新、無効化する手順を説明します。
+このセクションでは、Azure AD を [Salesforce のユーザー アカウント プロビジョニング API - v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api.meta/api/implementation_considerations.htm) に接続する手順のほか、プロビジョニング サービスを構成して、Azure AD のユーザーとグループの割り当てに基づいて割り当て済みのユーザー アカウントを Salesforce で作成、更新、無効化する手順を説明します。
 
 > [!Tip]
 > Salesforce では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Azure Portal](https://portal.azure.com) で説明されている手順に従ってください。 シングル サインオンは自動プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
@@ -118,6 +118,18 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 これで、[ユーザーとグループ] セクションで Salesforce に割り当てたユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかることに注意してください。後続の同期は、サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。このログには、プロビジョニング サービスによって Salesforce アプリに対して実行されたすべてのアクションが記載されています。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+
+## <a name="common-issues"></a>一般的な問題
+* Salesforce へのアクセスの承認で問題が発生している場合は、次のことを確認してください。
+    * 使用する資格情報に、Salesforce への管理者アクセス権がある。
+    * 使用している Salesforce のバージョンで、Web アクセスがサポートされている (たとえば、Salesforce の Developer、Enterprise、Sandbox、および Unlimited のエディション)。
+    * Web API アクセスがユーザーに対して有効になっている。
+* Azure AD プロビジョニング サービスでは、ユーザーのプロビジョニング言語、ロケール、およびタイムゾーンがサポートされています。 これらの属性は既定の属性マッピングに含まれていますが、既定のソース属性を保持していません。 既定のソース属性を選択し、そのソース属性が SalesForce で想定されている形式となるようにしてください。 たとえば、英語 (米国) の localeSidKey は、en_US です。 [こちら](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)に記載されているガイダンスを確認して、適切な localeSidKey 形式を把握してください。 languageLocaleKey の形式は、[こちら](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5)に記載されています。 この形式が正しいことを確認するだけでなく、[こちら](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)に説明されているように、ユーザーに対して言語が有効になっていることを確認することが必要な場合もあります。 
+* **SalesforceLicenseLimitExceeded:** このユーザーが使用できるライセンスがないため、ターゲット アプリケーションでユーザーを作成できませんでした。 ターゲット アプリケーションの追加ライセンスを購入するか、ユーザーの割り当てと属性マッピングの構成を調べて、正しい属性で正しいユーザーが割り当てられていることを確認します。
+* **SalesforceDuplicateUserName:** 別の Salesforce.com テナント内に重複している Salesforce.com の 'Username' があるため、ユーザーをプロビジョニングできません。  Salesforce.com では、'Username' 属性の値は、すべての Salesforce.com テナントにわたって一意である必要があります。  既定では、Azure Active Directory のユーザーの userPrincipalName は、Salesforce.com でのそのユーザーの 'Username' になります。   2 つのオプションがあります。  1 つ目のオプションは、他の Salesforce.com テナントも管理する場合に、その他のテナントの重複する 'Username' を持つユーザーを探して、名前を変更することです。  2 つ目のオプションは、Azure Active Directory ユーザーから、ディレクトリが統合されている Salesforce.com テナントへのアクセス権を削除することです。 次回の同期の試行時に、この操作を再試行します。 
+* **SalesforceRequiredFieldMissing:** Salesforce では、ユーザーを正常に作成または更新するために、特定の属性がユーザーに存在する必要があります。 このユーザーには、必須の属性の 1 つがありません。 Salesforce にプロビジョニングするすべてのユーザーに、email や alias などの属性が設定されていることを確認してください。 [属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を使用して、これらの属性を持たないユーザーを対象外にすることができます。 
+* Salesforce へのプロビジョニング用の既定の属性マッピングには、Azure AD の appRoleAssignments を Salesforce の ProfileName にマップするための SingleAppRoleAssignments 式が含まれています。 属性マッピングでは 1 つのロールのプロビジョニングのみがサポートされているため、ユーザーが Azure AD で複数のアプリ ロールの割り当てを持たないようにしてください。 
+
 
 ## <a name="additional-resources"></a>その他のリソース
 

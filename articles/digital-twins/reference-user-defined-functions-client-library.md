@@ -1,5 +1,5 @@
 ---
-title: Azure Digital Twins ユーザー定義関数クライアント ライブラリ リファレンス | Microsoft Docs
+title: ユーザー定義関数クライアント ライブラリ リファレンス - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins ユーザー定義関数クライアント ライブラリ リファレンス。
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: article
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36fb8a5588321426ccae7d6c6577fb4b48f3a4db
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 0bbf247adbeab89cf8b16ed089eb13e53cf501f5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948902"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009236"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>ユーザー定義関数クライアント ライブラリ リファレンス
 
