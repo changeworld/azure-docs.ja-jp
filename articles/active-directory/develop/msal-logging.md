@@ -1,5 +1,6 @@
 ---
-title: Microsoft Authentication Library (MSAL) アプリケーションでのログ記録 | Azure
+title: Microsoft Authentication Library (MSAL) アプリケーションでのログ記録
+titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library (MSAL) アプリケーションのログ記録について説明します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/05/2019
+ms.date: 10/31/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3235037d2b60322ab3e5c393c0a19b1a42bdc6c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e9045fd6c1f5dcc4587b6ff85d567584f02421ba
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678031"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902899"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL アプリケーションでのログ記録
 
@@ -116,14 +117,15 @@ Logger.getInstance().setEnablePII(true);
 Logger.getInstance().setEnablePII(false);
 ```
 
-既定では、logcat へのログ記録は無効になっています。 有効にするには: 
+既定では、logcat へのログ記録は無効になっています。 有効にするには:
+
 ```java
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
 ## <a name="logging-in-msaljs"></a>MSAL.js でのログ記録
 
- `UserAgentApplication` インスタンスの作成用の構成中にロガー オブジェクトを渡すことによって、MSAL.js でのログ記録を有効にします。 このロガー オブジェクトには、次のプロパティがあります。
+ `UserAgentApplication` インスタンスを作成するための構成中にロガー オブジェクトを渡すことによって、MSAL.js (Javascript) でのログ記録を有効にします。 このロガー オブジェクトには、次のプロパティがあります。
 
 - `localCallback`: ユーザー設定の方法でログを使用および公開するために開発者が指定できるコールバック インスタンス。 ログをリダイレクトする方法に応じて localCallback メソッドを実装します。
 - `level` (省略可能): 構成可能なログ レベル。 サポートされているログ レベルは、`Error`、`Warning`、`Info`、`Verbose` です。 既定では、 `Info`です。
@@ -137,7 +139,7 @@ function loggerCallback(logLevel, message, containsPii) {
 
 var msalConfig = {
     auth: {
-        clientId: “<Enter your client id>”,
+        clientId: "<Enter your client id>",
     },
      system: {
              logger: new Msal.Logger(
@@ -201,9 +203,9 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 }
 ```
 
-### <a name="personal-identifiable-information-pii"></a>個人を特定できる情報 (PII)
+### <a name="personal-data"></a>個人データ
 
-既定では、MSAL では PII はキャプチャまたはログ記録されません。 このライブラリにより、アプリ開発者は MSALLogger クラスのプロパティを介して、この設定をオンにできます。 PII の設定をオンにすると、アプリは高度な機密データを安全に処理し、規制要件に従う責任を負います。
+既定では、MSAL は個人データ (PII) をキャプチャまたはログに記録しません。 このライブラリにより、アプリ開発者は MSALLogger クラスのプロパティを介して、この設定をオンにできます。 `pii.Enabled` をオンにすることで、アプリは機密性の高いデータを安全に処理し、規制要件に従う責任を負います。
 
 Objective-C
 ```objc
@@ -237,7 +239,7 @@ iOS および macOS 用の MSAL を使用してログを記録するときにロ
 | `MSALLogLevelError` | 既定のレベルでは、エラーが発生した場合にのみ情報を出力します |
 | `MSALLogLevelWarning` | 警告 |
 | `MSALLogLevelInfo` |  ライブラリ エントリ ポイント、パラメーターおよびさまざまなキーチェーン操作を含む |
-|`MSALLogLevelVerbose`     |  API のトレース       |
+|`MSALLogLevelVerbose`     |  API のトレース |
 
 例:
 
@@ -260,3 +262,51 @@ MSAL ログ メッセージのメッセージ部分は、次の形式となり�
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
 関連付け ID とタイム スタンプを指定することは、問題を追跡する場合に役立ちます。 タイムスタンプと関連付け ID に関する情報は、ログ メッセージで確認できます。 それらの取得元として唯一信頼できるのは MSAL ログ メッセ ージです。
+
+## <a name="logging-in-msal-for-java"></a>MSAL for Java でのログ記録
+
+MSAL for Java (MSAL4J) では、SLF4J と互換性がある限り、アプリで既に使用しているログ記録ライブラリを使用できます。 MSAL4j は、[Simple Logging Facade for Java](http://www.slf4j.org/) (SLF4J) を、さまざまなログ記録フレームワーク ([java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)、[Logback](http://logback.qos.ch/)、および [Log4j](https://logging.apache.org/log4j/2.x/) など) の単純なファサードまたは抽象化として使用します。 SLF4J を使用すると、エンドユーザーはデプロイ時に目的のログ記録フレームワークをプラグインできます。
+
+たとえば、アプリケーションでログ記録フレームワークとして Logback を使用するには、アプリケーションの Maven pom ファイルに Logback の依存関係を追加します。
+
+```xml
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.2.3</version>
+</dependency>
+```
+
+次に、Logback 構成ファイルを追加します。
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+</configuration>
+```
+
+SLF4J は、デプロイ時に自動的に Logback にバインドされます。 MSAL のログはコンソールに書き込まれます。
+
+他のログ記録フレームワークにバインドする方法については、[SLF4J のマニュアル](http://www.slf4j.org/manual.html)を参照してください。
+
+### <a name="personal-and-organization-information"></a>個人情報と組織情報
+
+既定では、MSAL のログ記録によって、個人データや組織データがキャプチャされたりログに記録されたりすることはありません。 次の例では、個人または組織のデータのログ記録は既定で無効になっています。
+
+```java
+    PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
+            .authority(AUTHORITY)
+            .build();
+```
+
+クライアント アプリケーション ビルダーで `logPii()` を設定することにより、個人データと組織データのログ記録を有効にします。 個人データや組織データのログ記録を有効にする場合、機密性の高いデータの安全な処理と規制上の要件の準拠については、アプリで責任を負う必要があります。
+
+次の例では、個人または組織のデータのログ記録が有効になっています。
+
+```java
+PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
+        .authority(AUTHORITY)
+        .logPii(true)
+        .build();
+```

@@ -1,18 +1,18 @@
 ---
-title: Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する
+title: v1 から v2 への移行 - Azure Application Gateway
 description: この記事では、Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する方法を説明します
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/10/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: c4bc0ec2bf15a29962909f14f55854c06f0a6561
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 75d041f8ef0d6593a5ff1c696777b68c5f513bf5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932493"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047621"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Application Gateway と Web アプリケーション ファイアウォールを v1 から v2 に移行する
 
@@ -156,7 +156,7 @@ Azure Az モジュールがインストールされていて、それらをア�
 
   * アプリケーション ゲートウェイでパブリック IP アドレスを使用している場合は、Traffic Manager プロファイルを使用してコントロールおよび細分化された移行を行い、トラフィックを段階的に新しい v2 ゲートウェイにルーティングすることができます (重み付けによるトラフィック ルーティング方法)。
 
-    これを行うには、v1 と v2 の両方のアプリケーション ゲートウェイの DNS ラベルを [Traffic Manager プロファイル](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)に追加し、カスタム DNS レコード (例: www.contoso.com) を Traffic Manager ドメイン (例: contoso.trafficmanager.net) に CNAME します。
+    これを行うには、v1 と v2 の両方のアプリケーション ゲートウェイの DNS ラベルを [Traffic Manager プロファイル](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method)に追加し、カスタム DNS レコード (例: `www.contoso.com`) を Traffic Manager ドメイン (例: contoso.trafficmanager.net) に CNAME します。
   * または、新しい v2 アプリケーション ゲートウェイの DNS ラベルを指すように、カスタム ドメインの DNS レコードを更新することができます。 DNS レコードに構成された TTL に応じて、すべてのクライアント トラフィックが新しい v2 ゲートウェイに移行されるまでに時間がかかる場合があります。
 * **クライアントがアプリケーション ゲートウェイのフロントエンド IP アドレスに接続する**。
 
@@ -174,7 +174,7 @@ Azure Az モジュールがインストールされていて、それらをア�
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-v1-gateway-to-the-newly-created-v2-gateway"></a>Azure PowerShell スクリプトでは、v1 ゲートウェイから新しく作成した v2 ゲートウェイにトラフィックを切り替えることもできますか?
 
-いいえ。 Azure PowerShell スクリプトで移行されるのは構成のみです。 実際のトラフィックの移行は、お客様ご自身の責任において行っていただく必要があります。
+No. Azure PowerShell スクリプトで移行されるのは構成のみです。 実際のトラフィックの移行は、お客様ご自身の責任において行っていただく必要があります。
 
 ### <a name="is-the-new-v2-gateway-created-by-the-azure-powershell-script-sized-appropriately-to-handle-all-of-the-traffic-that-is-currently-served-by-my-v1-gateway"></a>Azure PowerShell スクリプトで作成した新しい v2 ゲートウェイのサイズは、現在 v1 ゲートウェイで対応しているすべてのトラフィックを処理するのに適切な大きさになりますか?
 
@@ -182,11 +182,11 @@ Azure PowerShell スクリプトにより、既存の v1 ゲートウェイの�
 
 ### <a name="i-configured-my-v1-gateway--to-send-logs-to-azure-storage-does-the-script-replicate-this-configuration-for-v2-as-well"></a>Azure Storage にログを送信するように v1 ゲートウェイを構成しました。 スクリプトによって、この構成も v2 用にレプリケートされますか?
 
-いいえ。 スクリプトでは、この構成は v2 用にレプリケートされません。 ログ構成は、移行後の v2 ゲートウェイに個別に追加する必要があります。
+No. スクリプトでは、この構成は v2 用にレプリケートされません。 ログ構成は、移行後の v2 ゲートウェイに個別に追加する必要があります。
 
 ### <a name="does-this-script-support-certificates-uploaded-to-azure-keyvault-"></a>このスクリプトは、Azure KeyVault にアップロードされた証明書をサポートしていますか?
 
-いいえ。 現在、スクリプトは KeyVault の証明書をサポートしていません。 ただし、これは将来のバージョンで検討されています。
+No. 現在、スクリプトは KeyVault の証明書をサポートしていません。 ただし、これは将来のバージョンで検討されています。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>このスクリプトの使用中に問題が発生しました。 どこに問い合わせればよいですか?
   

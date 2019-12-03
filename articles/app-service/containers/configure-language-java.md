@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: fa3cd84978119a5858e63712b4d22c2ea89ea528
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e63d8f03b26c9039fe4093cf15b13522dbb49af9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470904"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081471"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service 向けの Linux Java アプリを構成する
 
@@ -238,6 +238,24 @@ Spring Boot 開発者は、[Azure Active Directory Spring Boot スターター](
 最初に、[Key Vault へのアクセス権をアプリに付与](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault)したり、[アプリケーション設定で自分のシークレットに対する KeyVault 参照を設定](../app-service-key-vault-references.md#reference-syntax)したりするための手順に従います。 App Service のターミナルにリモートでアクセスしている間に環境変数を出力することで、シークレットへの参照が解決されることを確認できます。
 
 Spring または Tomcat 構成ファイルにこれらのシークレットを挿入するには、環境変数の挿入構文 (`${MY_ENV_VAR}`) を使用します。 Spring の構成ファイルについては、[外部化された構成](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)に関するこちらのドキュメントを参照してください。
+
+### <a name="using-the-java-key-store"></a>Java キー ストアの使用
+
+既定では、[App Service Linux にアップロードされた](../configure-ssl-certificate.md)パブリック証明書またはプライベート証明書は、コンテナーの起動時に Java キー ストアに読み込まれます。 これは、送信 TLS 接続を行うときに、アップロードされた証明書が接続コンテキストで使用可能になることを意味します。 証明書のアップロード後、証明書が Java キー ストアに読み込まれるようにするために、App Service を再起動する必要があります。
+
+App Service への [SSH 接続を開き](app-service-linux-ssh-support.md)、コマンド `keytool` を実行することで、Java キー ツールと対話することやデバッグを行うことができます。 コマンドの一覧については、[キー ツールのドキュメント](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html)を参照してください。 証明書は、Java の既定のキー ストア ファイルの場所である `$JAVA_HOME/jre/lib/security/cacerts` に格納されます。
+
+JDBC 接続を暗号化するために、追加の構成が必要になる場合があります。 選択した JDBC ドライバーのドキュメントを参照してください。
+
+- [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
+- [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
+- [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+
+#### <a name="manually-initialize-and-load-the-key-store"></a>キー ストアを手動で初期化して読み込む
+
+キー ストアの初期化と証明書の追加を手動で行うことができます。 アプリ設定 `SKIP_JAVA_KEYSTORE_LOAD` を作成し、値を `1` に設定して、証明書がキー ストアに自動的に読み込まれないように App Service を無効にします。 Azure portal 経由で App Service にアップロードされたすべてのパブリック証明書は `/var/ssl/certs/` に格納されます。 プライベート証明書は `/var/ssl/private/` に格納されます。
+
+キー　ストア API の詳細については、[公式ドキュメント](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)を参照してください。
 
 ## <a name="configure-apm-platforms"></a>APM プラットフォームを構成する
 

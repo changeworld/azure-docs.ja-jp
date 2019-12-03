@@ -7,12 +7,12 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 1ff06afd363745ae465a8f5b625c27a4a9e4a222
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 90402dd6fbe19811b5bb6d5ac0fbdd984b71fd33
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608607"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123187"
 ---
 # <a name="how-to-transfer-additional-data-between-device-and-dps"></a>デバイスと DPS の間で追加データを転送する方法
 DPS では、デバイスを正しい IoT Hub に適切にプロビジョニングするために、デバイスの追加データが必要になる場合があり、データはそのデバイスから提供される必要があります。 逆に、DPS では、クライアント側ロジックの処理を進めるためにデバイスにデータを返すことができます。 
@@ -21,7 +21,7 @@ DPS では、デバイスを正しい IoT Hub に適切にプロビジョニン�
 この機能は[カスタム割り当て](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)の拡張機能として使用できます。 たとえば、人間が介入することなく、デバイス モデルに基づいてデバイス名を割り当てる必要があります。 この場合は[カスタム割り当て](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies)を使用します。 [登録デバイス呼び出し](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)の一部としてモデル情報を報告するようにデバイスを構成します。 デバイスの情報が DPS からカスタム割り当て webhook に渡されます。 また、関数では、モデル情報を受け取ると、このデバイスをプロビジョニングする IoT Hub を判別できます。 同様に、webhook からデバイスに何らかのデータを返す場合は、webhook 応答内の文字列としてそのデータを渡します。  
 
 ## <a name="device-sends-data-to-dps"></a>デバイスが DPS にデータを送信する
-デバイスが[登録デバイス呼び出し](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)を DPS に送信しているとき、 レジスタ呼び出しを拡張して、本文内の他のフィールドを取得することができます。 本文は次のようになります。 
+デバイスが[デバイスの登録呼び出し](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice)を DPS に送信しているときに、本文内の他のフィールドを取得するように登録呼び出しを拡張できます。 本文は次のようになります。 
    ```
    { 
        “registrationId”: “mydevice”, 

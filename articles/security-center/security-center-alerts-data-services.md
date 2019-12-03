@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center でのデータ サービスの脅威検出 | Microsoft Docs
-description: このトピックでは、Azure Security Center で使用可能なデータ サービスのアラートについて説明します。
+description: この記事では、Azure Security Center で使用可能なデータ サービスのアラートについて説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,16 +10,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: c69352b8ff11edfce8bd800a0d3aad4584557572
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d23d9d2712923f37b3ab9da5ae5369342cd82f5d
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621345"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906999"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Azure Security Center でのデータ サービスの脅威検出
 
- Azure Security Center では、データ ストレージ サービスのログが分析され、データ リソースへの脅威が検出されると、アラートがトリガーされます。 このトピックでは、Security Center によって次のサービスに対して生成されるアラートの一覧を示します。
+ Azure Security Center では、データ ストレージ サービスのログが分析され、データ リソースへの脅威が検出されると、アラートがトリガーされます。 この記事では、Security Center が次のサービスに対して生成するアラートの一覧を示します。
 
 * [Azure SQL Database と Azure SQL Data Warehouse](#data-sql)
 * [Azure Storage](#azure-storage)
@@ -53,7 +53,7 @@ Security Center では、脅威を検出するために、BLOB ストレージ�
 
 |アラート:|説明|
 |---|---|
-|**Unusual location access anomaly (通常とは異なる場所の異常なアクセス)**|サンプリングされたネットワーク トラフィックの分析で、デプロイ内のリソースからの異常な発信 Remote Desktop Protocol (RDP) 通信が検出されました。 このアクティビティは、この環境では異常と見なされます。 リソースが侵害されていて、現在、外部 RDP エンドポイントのブルート フォース攻撃に使用されていることを示す可能性があります。 この種のアクティビティによって、自分の IP が外部のエンティティによって悪意のあるものとしてフラグが設定される可能性があります。|
+|**Access from unusual location (通常とは異なる場所からのアクセス)**|Azure Storage アカウントへのアクセス パターンに変化があったことを示しています。 最近のアクティビティと比較して見慣れない IP アドレスから誰かがこのアカウントにアクセスしました。 攻撃者がアカウントへのアクセス権を取得したか、あるいは正当なユーザーが新しい、または通常とは異なる地理的場所から接続しました。 後者の例には、新しいアプリケーションまたは開発者からのリモート メンテナンスがあります。|
 |**Application access anomaly (アプリケーションによる異常なアクセス)**|通常とは異なるアプリケーションがこのストレージ アカウントにアクセスしたことを示します。 原因として考えられるのは、攻撃者が新しいアプリケーションを使用して、ご自分のストレージ アカウントにアクセスしたことです。|
 |**Anonymous access anomaly (匿名での異常なアクセス)**|ストレージ アカウントへのアクセス パターンに変化が生じたことを示します。 たとえば、アカウントへの匿名 (認証なし) アクセスがあり、それがこのアカウントでの最近のアクセス パターンと比較して予測外である場合などです。 原因として考えられるのは、攻撃者が Blob Storage を保持するコンテナーへのパブリック読み取りアクセスを悪用したことです。|
 |**Tor 異常**|このアカウントが Tor (匿名化プロキシ) のアクティブな出口ノードとして知られている IP アドレスから正常にアクセスされていることを示します。 このアラートの重大度では、使用された認証の種類 (ある場合) と、これがそのようなアクセスの最初のケースであるかどうかが考慮されます。 原因として考えられるのは、攻撃者が Tor を使用して、ご自分のストレージ アカウントにアクセスした、あるいは正当なユーザーが Tor を使用して、ご利用のストレージ アカウントにアクセスしたことです。|

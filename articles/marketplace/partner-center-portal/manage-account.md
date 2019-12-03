@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 60837171e3f59312895a76f68c660228697529ad
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825520"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891090"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する方法 
 
@@ -145,6 +145,11 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 詳細については、[GUID を使用した Azure 顧客の使用状況追跡に関する FAQ](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq) ページを参照してください。
 
 
+## <a name="create-a-billing-profile"></a>請求プロファイルを作成する
+
+[Dynamics 365 for Customer Engagement & Power Apps](./create-new-customer-engagement-offer.md) オファーまたは [Dynamics 365 for Operations](./create-new-operations-offer.md) オファーを発行する場合は、**請求プロファイル**に入力する必要があります。
+
+請求先住所は、お客様の法人から事前に設定されています。このアドレスは後で更新できます。 TAX と VAT ID のフィールドは省略可能です。  国名と会社名は編集できません。
 
 ## <a name="multi-user-account-management"></a>マルチユーザー アカウント管理
 

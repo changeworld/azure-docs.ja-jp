@@ -12,12 +12,12 @@ ms.date: 01/16/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2e7f1bb54ce316a10eca0d020519779b0536c9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7287e32fbeff751bddf91bed32afeeae84f9378c
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65825739"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014527"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Azure Active Directory でオンプレミスのアプリケーションにアクセスするための Cookie 設定
 
@@ -27,11 +27,23 @@ Azure Active Directory (Azure AD) には、アプリケーション プロキシ
 
 [アプリケーション プロキシ](application-proxy.md)は、次のアクセス権およびセッション Cookie 設定を使用します。
 
-| Cookie 設定 | 既定値 | 説明 | Recommendations |
+| Cookie 設定 | Default | 説明 | Recommendations |
 | -------------- | ------- | ----------- | --------------- |
 | [HTTP 専用 Cookie を使用する] | **いいえ** | **[はい]** を指定すると、アプリケーション プロキシは HTTP 応答ヘッダーに HTTPOnly フラグを含めることができます。 このフラグにより、追加のセキュリティに関する利点が提供されます。たとえば、クライアント側のスクリプト (CSS) による Cookie のコピーや変更が防止されます。<br></br><br></br>HTTP 専用の設定がサポートされる前、アプリケーション プロキシは、変更から保護するために Cookie を暗号化し、セキュリティ保護された SSL チャネル経由で送信していました。 | 追加のセキュリティに関する利点があるため、 **[はい]** を使用します。<br></br><br></br>セッション Cookie へのアクセス権が必要なクライアントまたはユーザー エージェントには **[いいえ]** を使用します。 たとえば、アプリケーション プロキシ経由でリモート デスクトップ ゲートウェイ サーバーに接続する RDP または MTSC クライアントには **[いいえ]** を使用します。|
 | [Use Secure Cookie] (セキュリティで保護された Cookie を使用する) | **いいえ** | **[はい]** を指定すると、アプリケーション プロキシは HTTP 応答ヘッダーに Secure フラグを含めることができます。 セキュリティで保護された Cookie は、HTTPS などの TLS でセキュリティ保護されたチャネル経由で Cookie を送信することによってセキュリティを拡張します。 これにより、Cookie のクリア テキストでの送信のために、Cookie が承認されていないパーティーによって観察されることが防止されます。 | 追加のセキュリティに関する利点があるため、 **[はい]** を使用します。|
 | [Use Persistent Cookie] (永続的な Cookie を使用する) | **いいえ** | **[はい]** を指定すると、アプリケーション プロキシは、Web ブラウザーが閉じられても期限切れにならないようにアクセス Cookie を設定できます。 この永続性は、アクセス トークンの期限が切れるか、またはユーザーが永続的な Cookie を手動で削除するまで持続します。 | ユーザーが認証されたままになることに関連したセキュリティ上のリスクがあるため、 **[いいえ]** を使用します。<br></br><br></br>**[はい]** は、プロセス間で Cookie を共有できない古いアプリケーションでのみ使用することをお勧めします。 永続的な Cookie を使用するのではなく、プロセス間での Cookie の共有を処理するようにアプリケーションを更新する方が適切です。 たとえば、永続的な Cookie は、ユーザーが SharePoint サイトからエクスプローラー ビューで Office ドキュメントを開けるようにするために必要になることがあります。 永続的な Cookie がない場合、ブラウザー、エクスプローラー プロセス、および Office プロセスの間でアクセス Cookie が共有されていないと、この操作は失敗する可能性があります。 |
+
+## <a name="samesite-cookies"></a>SameSite Cookie
+Chrome バージョン 80 以降、ひいては Chromium を利用しているブラウザーでは、[SameSite](https://web.dev/samesite-cookies-explained) 属性を指定していない Cookie は、**SameSite=Lax** が設定されているものとして扱われます。 SameSite 属性は、同一サイト コンテキストに Cookie を制限する方法を宣言します。 Lax に設定されている場合、Cookie は、同一サイト要求またはトップレベルのナビゲーションにのみ送信されます。 ただし、アプリケーション プロキシでは、セッション中にユーザーを適切にサインインしたままにするために、これらの Cookie をサードパーティのコンテキストで保持する必要があります。 このため、この変更による悪影響を防ぐために、アプリケーション プロキシ アクセスとセッション Cookie を更新しています。 更新内容は以下のとおりです。
+
+* **SameSite** 属性を **None** に設定する。 これにより、アプリケーション プロキシ アクセス Cookie およびセッション Cookie をサードパーティのコンテキストで適切に送信できます。
+* **[セキュリティで保護された Cookie を使用します]** 設定の既定値として **[はい]** を使用するように設定する。 また、Chrome では、Cookie に Secure フラグを指定する必要があり、そうでない場合は拒否されます。 この変更は、アプリケーション プロキシ経由で公開されるすべての既存のアプリケーションに適用されます。 アプリケーション プロキシ アクセス Cookie は、常に Secure に設定され、HTTPS 経由でのみ送信されることに注意してください。 この変更は、セッション Cookie にのみ適用されます。
+
+アプリケーション プロキシ Cookie に対するこれらの変更は、Chrome 80 のリリース日の前に、今後数週間にわたってロールアウトされます。
+
+さらに、バックエンド アプリケーションに、サードパーティ コンテキストで使用できるようにする必要がある Cookie がある場合は、これらの Cookie に対して SameSite=None を使用するようにアプリケーションを変更することで、明示的にオプトインする必要があります。 アプリケーション プロキシは、Set-Cookie ヘッダーをその URL に変換し、バックエンド アプリケーションによって設定されたそれらの Cookie の設定を優先します。
+
+
 
 ## <a name="set-the-cookie-settings---azure-portal"></a>Cookie 設定を設定する - Azure Portal
 Azure Portal を使用して Cookie 設定を設定するには:

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: iainfou
-ms.openlocfilehash: 4add98ae092359c6f070bfc93b69257894f44e48
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 61c9d887f1b193258161cd96ccfa3618e8371890
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596430"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081013"
 ---
 # <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
 
@@ -47,7 +47,7 @@ No. 1 つの Azure AD ディレクトリに対して Azure AD Domain Services �
 はい。 Azure AD Domain Services は Azure Resource Manager 仮想ネットワークで有効にすることができます。 新しいマネージド ドメインを作成する場合、クラシック Azure 仮想ネットワークはサポートされなくなりました。
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>既存のマネージド ドメインをクラシック仮想ネットワークから Resource Manager 仮想ネットワークに移行することはできますか。
-はい。この機能はプレビュー段階です。 詳細については、「クラシック仮想ネットワークモデルから Resource Manager への Azure AD Domain Services の移行 (プレビュー)」[migrate-from-classic-vnet.md] を参照してください。
+はい。この機能はプレビュー段階です。 詳細については、[クラシック仮想ネットワーク モデルから Resource Manager への Azure AD Domain Services の移行 (プレビュー)](migrate-from-classic-vnet.md) に関するページを参照してください。
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Azure AD Domain Services を Azure CSP (Cloud Solution Provider) サブスクリプション内で有効にできますか。
 はい。 詳細については、「[Azure Cloud Solution Provider (CSP) 用 Azure Active Directory (AD) Domain Services](csp.md)」を参照してください。
@@ -62,7 +62,7 @@ No. NTLM または Kerberos を使用してユーザーを認証するには、A
 はい。 詳細については、「[PowerShell を使用した Azure Active Directory Domain Services の有効化](powershell-create-instance.md)」を参照してください。
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure AD Domain Services を有効にできますか？
-いいえ。現在、テンプレートを使用して Azure AD Domain Services を有効にすることはできません。 スクリプトを使った方法については、「[PowerShell を使用した Azure Active Directory Domain Services の有効化](powershell-create-instance.md)」を参照してください。
+はい。Resource Manager テンプレートを使用して Azure AD Domain Services マネージド ドメインを作成できます。 管理用のサービス プリンシパルと Azure AD グループは、テンプレートをデプロイする前に、Azure portal または Azure PowerShell を使用して作成する必要があります。 Azure portal で Azure AD Domain Services マネージド ドメインを作成する場合、追加のデプロイで使用するテンプレートをエクスポートするオプションがあります。 また、[GitHub テンプレート サンプル リポジトリにテンプレートの例](https://github.com/Azure/azure-quickstart-templates/tree/master/101-AAD-DomainServices)もあります。
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインにドメイン コント ローラーを追加することはできますか。
 No. マネージド ドメインは Azure AD Domain Services によって提供されるドメインです。 このドメインに対してドメイン コントローラーをプロビジョニング、構成、管理する必要はありません。 これらの管理アクティビティは、Microsoft からサービスとして提供されています。 そのため、マネージド ドメインにドメイン コントローラー (読み取り/書き込みや読み取り専用) をさらに追加することはできません。
