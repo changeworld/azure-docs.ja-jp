@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: 7747d1b5e2b18ddf02403ad21fe875c498e43820
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02ab7cdcbf0f150157eb44ef5e28e8284621b813
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036044"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173953"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -91,7 +91,7 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 | 2 TB より大きい OS ディスク                    | :x:                | :heavy_check_mark: |
 | カスタム ディスク/イメージ/スワップ OS         | :heavy_check_mark: | :heavy_check_mark: |
 | 仮想マシン スケール セットのサポート | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Site Recovery               | :heavy_check_mark: | :x:                |
+| Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | バックアップ/復元                    | :heavy_check_mark: | :heavy_check_mark: |
 | 共有イメージ ギャラリー              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Disk Encryption             | :heavy_check_mark: | :x:                |
