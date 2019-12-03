@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0b40c15956dc03209dcab49641af66bc8ae24187
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845327"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927305"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>オンプレミスから CloudSimple VPN ゲートウェイへの高可用接続を構成する
 
@@ -21,37 +21,14 @@ ms.locfileid: "70845327"
 
 このガイドでは、IPsec サイト間 VPN 高可用接続のためにオンプレミスのファイアウォールを構成する手順について説明します。 詳細な手順は、オンプレミスのファイアウォールの種類によって異なります。 このガイドでは、例として、2 種類のファイアウォールについて手順を示します。Cisco ASA と Palo Alto Networks です。
 
-## <a name="default-configuration-for-cloudsimple-vpn-gateways"></a>CloudSimple VPN ゲートウェイの既定の構成
-
-既定では、CloudSimple VPN ゲートウェイは、次のフェーズ 1 とフェーズ 2 の属性と共に、IKEv1 モードで構成されます。 異なる VPN 属性を使用する場合、または IKEV1 ではなく IKEv2 を使用する場合は、<a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">サポート リクエストを開きます</a>。
-
-### <a name="phase-1"></a>フェーズ 1
-
-| パラメーター | 値 |
-|-----------|-------|
-| IKE のバージョン | IKEv1 |
-| 暗号化 | AES 256 |
-| ハッシュ アルゴリズム| SHA 256 |
-| Diffie Hellman グループ (DH グループ) | 1 |
-| 有効期間 | 86,400 秒 |
-| データ サイズ | 4 GB |
-
-### <a name="phase-2"></a>フェーズ 2
-
-| パラメーター | 値 |
-|-----------|-------|
-| 暗号化 | AES 256 |
-| ハッシュ アルゴリズム| SHA 256 |
-| Perfect Forward Secrecy グループ (PFS グループ) | なし |
-| 有効期間 | 28,800 秒 |
-| データ サイズ | 4 GB |
-
 ## <a name="before-you-begin"></a>開始する前に
 
 オンプレミスのファイアウォールを構成する前に、次のタスクを実行します。
 
 1. お客様の組織が必要なノードを[プロビジョニング](create-nodes.md)し、少なくとも 1 つの CloudSimple Private Cloud を作成していることを確認します。
 2. オンプレミス ネットワークと CloudSimple Private Cloud の間に[サイト間 VPN ゲートウェイを構成](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)します。
+
+サポートされているフェーズ 1 とフェーズ 2 の提案については、「[VPN ゲートウェイの概要](cloudsimple-vpn-gateways.md)」を参照してください。
 
 ## <a name="configure-on-premises-cisco-asa-firewall"></a>オンプレミスの Cisco ASA ファイアウォールを構成する
 
@@ -120,7 +97,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 
 ### <a name="5-configure-the-transform-set"></a>5.変換セットを構成する
 
-変換セット (TS) を構成します。これにはキーワード ```ikev1``` を使用する必要があります。 TS に指定された暗号化属性とハッシュ属性は、「[CloudSimple VPN ゲートウェイの既定の構成](#default-configuration-for-cloudsimple-vpn-gateways)」に記載されているパラメーターと一致する必要があります。
+変換セット (TS) を構成します。これにはキーワード ```ikev1``` を使用する必要があります。 TS に指定された暗号化属性とハッシュ属性は、「[CloudSimple VPN ゲートウェイの既定の構成](cloudsimple-vpn-gateways.md)」に記載されているパラメーターと一致する必要があります。
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 
@@ -311,7 +288,7 @@ Cisco ASA でサポートされている IKEv1 および IKEv2 属性:
 
 Azure 上の Cisco Adaptive Security Appliance virtual (ASAv) の構成:
 
-<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa96/asav/quick-start-book/asav-96-qsg/asav-azure.html" target="_blank">Cisco Adaptive Security Virtual Appliance (ASAv) クイック スタート ガイド</a>
+<a href="https://www.cisco.com/c/en/us/td/docs/security/asa/asa96/asav/quick-start-book/asav-96-qsg/asav-azure.html" target="_blank">Cisco Adaptive Security Virtual Appliance (ASAv) クイックスタート ガイド</a>
 
 Palo Alto でのプロキシ ID を使用したサイト間 VPN の構成:
 

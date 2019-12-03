@@ -220,7 +220,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-1. ブラウザーのアドレス バーにドメイン名を入力します。 [http://www.contoso.com](`http://www.contoso.com`) など。
+1. ブラウザーのアドレス バーにドメイン名を入力します。 `http://www.contoso.com` など。
 
     ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/create-multiple-sites-portal/application-gateway-iistest.png)
 

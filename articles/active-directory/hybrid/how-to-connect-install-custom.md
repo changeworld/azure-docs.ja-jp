@@ -391,7 +391,7 @@ Azure AD Connect は、前の手順で PingFederate メタデータから取得�
 * 同期が完了したら、Azure AD Connect で [フェデレーション ログインの検証] 追加タスクを使用して、任意のオンプレミス ユーザー アカウントの認証を検証します。
 * イントラネット上のドメイン参加済みマシンのブラウザーからサインインできることを検証する: https://myapps.microsoft.com に接続し、ログインしたアカウントでサインインを検証します。 組み込みの AD DS 管理者アカウントは同期されないため、検証には使用できません。
 * エクストラネット上のデバイスからサインインできることを検証する。 自宅にあるマシンまたはモバイル デバイスで https://myapps.microsoft.com に接続し、資格情報を入力します。
-* リッチ クライアントのサインインを検証する。 https://testconnectivity.microsoft.com に接続し、 **[Office 365]** タブ、 **[Office 365 シングル サインオン テスト]** の順に選択します。
+* リッチ クライアントのサインインを検証する。 https://testconnectivity.microsoft.com(https://testconnectivity.microsoft.com ) に接続し、**Office 365** タブ、**Office 365 シングル サインオン テスト** の順に選択します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 次のセクションには、Azure AD Connect のインストール時に問題が発生した場合に使用できるトラブルシューティングと情報が含まれています。

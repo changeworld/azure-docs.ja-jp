@@ -171,7 +171,7 @@ Accelerator が開いているすべてのブラウザーのタブを閉じ、�
 Azure Storage Explorer を[インストールしてデプロイします]( https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)。
 
 ### <a name="how-to-collect-data-hub-adf-job-logs"></a>データ ハブの ADF ジョブ ログを収集する方法
-1. https://portal.azure.com にログインします。
+1. [https://portal.azure.com](https://portal.azure.com ) にログインします。
 2. **[検索]** テキストボックスで、FarmBeats データ ハブ リソース グループを探します。
 
     > [!NOTE]
@@ -190,7 +190,7 @@ Azure Storage Explorer を[インストールしてデプロイします]( https
 
 ### <a name="how-to-collect-accelerator-adf-job-logs"></a>Accelerator ADF ジョブ ログを収集する方法
 
-1.  https://portal.azure.com にログインします。
+1.  [https://portal.azure.com](https://portal.azure.com ) にログインします。
 2.  **[検索]** テキストボックスで、FarmBeats Accelerator リソース グループを探します。
 
     > [!NOTE]
@@ -207,7 +207,7 @@ Azure Storage Explorer を[インストールしてデプロイします]( https
 
 ### <a name="how-to-collect-data-hub-app-service-logs"></a>データ ハブ App Service ログを収集する方法
 
-1.  https://portal.azure.com にログインします。
+1.  [https://portal.azure.com](https://portal.azure.com ) にログインします。
 2.  **[検索]** テキストボックスで、FarmBeats データ ハブ リソース グループを探します。
 
     > [!NOTE]
@@ -223,7 +223,7 @@ Azure Storage Explorer を[インストールしてデプロイします]( https
 
 ### <a name="how-to-collect-accelerator-app-service-logs"></a>Accelerator App Service ログを収集する方法
 
-1.  https://portal.azure.com にログインします。
+1.  [https://portal.azure.com](https://portal.azure.com ) にログインします。
 2.  **[検索]** で、FarmBeats Accelerator リソース グループを探します。
 
     > [!NOTE]

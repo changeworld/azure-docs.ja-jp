@@ -81,12 +81,12 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
   
 ### <a name="amo"></a>AMO
 
-1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](`C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\`) にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
+1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
 2. **[Microsoft.AnalysisServices]**  >  **[プロパティ]**  >  **[詳細]** の順にクリック (最初は右クリック) します。  
 
 ### <a name="adomd"></a>ADOMD
 
-1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](`C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`) にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
+1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
 2. **[Microsoft.AnalysisServices.AdomdClient]**  >  **[プロパティ]**  >  **[詳細]** の順にクリック (最初は右クリック) します。  
 
 

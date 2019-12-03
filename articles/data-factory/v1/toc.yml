@@ -150,9 +150,9 @@
         - name: .NET カスタム アクティビティ
           href: data-factory-use-custom-activities.md
         - name: R スクリプトを呼び出す
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample'
         - name: Azure Analysis Services でモデルを再処理する
-          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample'
+          href: 'https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/AzureAnalysisServicesProcessSample'
         - name: コンピューティングのリンクされたサービス
           href: data-factory-compute-linked-services.md
     - name: 開発

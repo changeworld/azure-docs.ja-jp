@@ -182,8 +182,6 @@
           href: service-bus-end-to-end-tracing.md
         - name: 多層 Service Bus アプリケーションを構築する
           href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-        - name: Java Enterprise Edition アプリケーションを Azure に移行する
-          href: migrate-java-apps-wild-fly.md
     - name: 管理
       items:
         - name: Azure PowerShell を使用したエンティティのプロビジョニング
