@@ -1,14 +1,14 @@
 ---
 title: サンプル - 許可された ExpressRoute の帯域幅
-description: このサンプル ポリシー定義は、指定した一連の帯域幅の使用を ExpressRoute に要求します。
+description: このサンプル ポリシー定義は、パラメーターで定義される指定された帯域幅のセットを ExpressRoute で使用することを要求します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 20841b5476c50fb98d6b2d4a59f351525e1ecc9e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b7c60879b62020a0864eb2da3a29e1bfe57215c0
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072092"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463746"
 ---
 # <a name="sample---allowed-expressroute-bandwidth"></a>サンプル - 許可された ExpressRoute の帯域幅
 

@@ -1,14 +1,14 @@
 ---
-title: カナダ連邦の PBMM ブループリント サンプル - コントロール マッピング
+title: カナダ連邦の PBMM ブループリント サンプルのコントロール
 description: カナダ連邦の PBMM ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
 ms.date: 09/04/2019
 ms.topic: sample
-ms.openlocfilehash: 0be73497de36ac3c11637b80a492ab0a8558206d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039705"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545249"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>カナダ連邦の PBMM ブループリント サンプルのコントロール マッピング
 

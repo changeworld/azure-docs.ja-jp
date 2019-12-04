@@ -1,23 +1,19 @@
 ---
-title: Azure Dev Spaces を使用して Kubernetes にアプリケーションをデプロイする
-titleSuffix: Azure Dev Spaces
-author: zr-msft
+title: Kubernetes 上でアプリケーションを開発する
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Azure Dev Spaces を使用して AKS にマイクロサービスをデプロイする
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 58cb436a7c2ba0d6a49f5138e46a1f92cdc97a94
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 932b25e277936a2efe6a3e037458fabd67b024c2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815819"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325639"
 ---
-# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes でアプリケーションを開発する
+# <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でアプリケーションを開発する - Azure Dev Spaces
 このガイドでは、以下の方法について説明します。
 
 - Azure でマネージド Kubernetes クラスターを使用して Azure Dev Spaces をセットアップする。

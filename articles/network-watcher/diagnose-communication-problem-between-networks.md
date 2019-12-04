@@ -1,6 +1,7 @@
 ---
-title: ネットワーク間の通信に関する問題を診断する - チュートリアル - Azure Portal | Microsoft Docs
-description: Azure 仮想ネットワークと、Azure 仮想ネットワーク ゲートウェイを介して接続されているオンプレミスまたはその他の仮想ネットワークの間の通信に関する問題を、Network Watcher の VPN の診断機能を使用して診断する方法を説明します。
+title: チュートリアル - Azure portal を使用してネットワーク間の通信に関する問題を診断する
+titleSuffix: Azure Network Watcher
+description: このチュートリアルでは、Azure 仮想ネットワークと、Azure 仮想ネットワーク ゲートウェイを介して接続されているオンプレミスまたはその他の仮想ネットワークの間の通信に関する問題を、Network Watcher の VPN の診断機能を使用して診断する方法を説明します。
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -15,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: e4dc66a5ca6e18b12586b5b03742fba3d6c3d6c4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704212"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419738"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してネットワーク間の通信に関する問題を診断する
 
@@ -53,7 +54,7 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 米国東部リージョンで既に Network Watcher を有効にしている場合は、「[ゲートウェイを診断する](#diagnose-a-gateway)」に進んでください。
 
 1. ポータルで **[すべてのサービス]** を選択します。 **[フィルター]** ボックスに、「*Network Watcher*」と入力します。 結果に **[Network Watcher]** が表示されたら、それを選択します。
-2. 次の図に示すように、**[リージョン]** を選択して展開し、**[米国東部]** の右側の **[...]** を選択します。
+2. 次の図に示すように、 **[リージョン]** を選択して展開し、 **[米国東部]** の右側の **[...]** を選択します。
 
     ![Network Watcher を有効にする](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)
 
@@ -63,20 +64,20 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 
 1. ポータルの左側にある **[その他のサービス]** を選びます。
 2. **[フィルター]** ボックスに「*network watcher*」の入力を始めます。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
-3. **[ネットワーク診断ツール]** で、**[VPN Diagnostics (VPN 診断)]** を選択します。
+3. **[ネットワーク診断ツール]** で、 **[VPN Diagnostics (VPN 診断)]** を選択します。
 4. **[ストレージ アカウント]** を選択し、診断情報の書き込み先にするストレージ アカウントを選択します。
-5. **[ストレージ アカウント]** の一覧から、使用するストレージ アカウントを選択します。 既存のストレージ アカウントを持っていない場合は、**[+ ストレージ アカウント]** を選択し、必要な情報を入力または選択して、**[作成]** を選択してストレージ アカウントを作成します。 [前提条件](#prerequisites)で、スクリプトを使用して VPN ゲートウェイを作成した場合は、同じリソース グループの *TestRG1* 内に、ゲートウェイとしてストレージ アカウントを作成することをお勧めします。
-6. **[コンテナー]** の一覧から、使用するコンテナーを選択し、**[選択]** を選択します。 コンテナーがない場合は、**[+ コンテナー]** を選択し、コンテナーの名前を入力してから、**[OK]** を選択します。
-7. ゲートウェイを選択し、**[トラブルシューティングの開始]** を選択します。 次の図に示すように、テストは **Vnet1GW** という名前のゲートウェイに対して実行されます。
+5. **[ストレージ アカウント]** の一覧から、使用するストレージ アカウントを選択します。 既存のストレージ アカウントを持っていない場合は、 **[+ ストレージ アカウント]** を選択し、必要な情報を入力または選択して、 **[作成]** を選択してストレージ アカウントを作成します。 [前提条件](#prerequisites)で、スクリプトを使用して VPN ゲートウェイを作成した場合は、同じリソース グループの *TestRG1* 内に、ゲートウェイとしてストレージ アカウントを作成することをお勧めします。
+6. **[コンテナー]** の一覧から、使用するコンテナーを選択し、 **[選択]** を選択します。 コンテナーがない場合は、 **[+ コンテナー]** を選択し、コンテナーの名前を入力してから、 **[OK]** を選択します。
+7. ゲートウェイを選択し、 **[トラブルシューティングの開始]** を選択します。 次の図に示すように、テストは **Vnet1GW** という名前のゲートウェイに対して実行されます。
 
     ![VPN 診断](./media/diagnose-communication-problem-between-networks/vpn-diagnostics.png)
 
-8. テストの実行中には、前の図のように、**[Not started (未開始)]** が表示されている **[TROUBLESHOOTING STATUS (トラブルシューティングの状態)]** 列に、**[Running (実行中)]** と表示されます。 このテストの実行には数分かかることがあります。
+8. テストの実行中には、前の図のように、 **[Not started (未開始)]** が表示されている **[TROUBLESHOOTING STATUS (トラブルシューティングの状態)]** 列に、 **[Running (実行中)]** と表示されます。 このテストの実行には数分かかることがあります。
 9. 完了したテストの状態を表示します。 次の図は、完了した診断テストの状態の結果を示しています。
 
     ![Status](./media/diagnose-communication-problem-between-networks/status.png)
 
-    **[TROUBLESHOOTING STATUS (トラブルシューティングの状態)]** が **[異常]** であるのを確認できるのと同時に、**[状態]** タブで問題の **[概要]** と **[Detail (詳細)]** を確認できます。
+    **[TROUBLESHOOTING STATUS (トラブルシューティングの状態)]** が **[異常]** であるのを確認できるのと同時に、 **[状態]** タブで問題の **[概要]** と **[Detail (詳細)]** を確認できます。
 10. **[アクション]** タブを選択すると、VPN 診断から追加の情報が提供されます。 この例では、次の図に示すように、VPN 診断により、各接続の正常性を調べる必要があることがわかります。
 
     ![Action](./media/diagnose-communication-problem-between-networks/action.png)
@@ -90,15 +91,15 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
     ![接続](./media/diagnose-communication-problem-between-networks/connection.png)
 
     テストは数分間実行されます。
-2. 接続のテストが完了した後は、**[状態]** タブと **[アクション]** タブに、以下の図に示すような結果が表示されます。
+2. 接続のテストが完了した後は、 **[状態]** タブと **[アクション]** タブに、以下の図に示すような結果が表示されます。
 
     ![接続の状態](./media/diagnose-communication-problem-between-networks/connection-status.png)
 
     ![接続のアクション](./media/diagnose-communication-problem-between-networks/connection-action.png)
 
-    VPN 診断では、**[状態]** タブでどのような問題があるかが通知され、**[アクション]** タブで、何が問題を引き起こしている可能性があるか、いくつかの候補が示されます。
+    VPN 診断では、 **[状態]** タブでどのような問題があるかが通知され、 **[アクション]** タブで、何が問題を引き起こしている可能性があるか、いくつかの候補が示されます。
 
-    テストしたゲートウェイが、「[前提条件](#prerequisites)」の[スクリプト](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)によってデプロイされたものの場合、**[状態]** タブの問題と、**[アクション]** タブの最初の 2 つの項目が実際の問題です。 スクリプトは、オンプレミスの VPN ゲートウェイ デバイスのために、プレース ホルダー IP アドレス 23.99.221.164 を構成します。
+    テストしたゲートウェイが、「[前提条件](#prerequisites)」の[スクリプト](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)によってデプロイされたものの場合、 **[状態]** タブの問題と、 **[アクション]** タブの最初の 2 つの項目が実際の問題です。 スクリプトは、オンプレミスの VPN ゲートウェイ デバイスのために、プレース ホルダー IP アドレス 23.99.221.164 を構成します。
 
     この問題を解決するには、オンプレミス VPN ゲートウェイが[正しく構成されている](../vpn-gateway/vpn-gateway-about-vpn-devices.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)ことを確認し、ローカル ネットワーク ゲートウェイのためにスクリプトによって構成された IP アドレスを、オンプレミス VPN ゲートウェイの実際のパブリック アドレスに変更する必要があります。
 
@@ -108,7 +109,7 @@ VPN 診断を使用するには、既存の動作している VPN ゲートウ�
 
 1. ポータル上部の **[検索]** ボックスに「*TestRG1*」と入力します。 検索結果に **TestRG1** が表示されたら選択します。
 2. **[リソース グループの削除]** を選択します。
-3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:)** に「*TestRG1*」と入力し、**[削除]** を選択します。
+3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:)** に「*TestRG1*」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

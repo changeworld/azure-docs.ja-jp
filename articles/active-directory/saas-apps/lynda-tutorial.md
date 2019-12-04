@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef24d55089938f6721eb6461f57797bca9ed82fe
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7550ba7f375cb7d8b291c0adf7f0ebded16f0990
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159489"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227509"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>チュートリアル:Azure Active Directory と Lynda.com の統合
 
@@ -189,7 +189,7 @@ Lynda.com へのユーザー プロビジョニングの構成にあたって必
 使用可能なユーザー アカウントがない場合、ユーザー アカウントは Lynda.com により自動的に作成されます。
 
 > [!NOTE]
-> Lynda.com から提供されている他の Lynda.com ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Lynda.com ユーザー アカウント作成ツールや、Lynda.com から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

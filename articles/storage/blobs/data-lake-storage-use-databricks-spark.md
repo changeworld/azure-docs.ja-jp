@@ -1,21 +1,21 @@
 ---
-title: チュートリアル:Spark を使用して Azure Databricks で Azure Data Lake Storage Gen2 のデータにアクセスする | Microsoft Docs
+title: チュートリアル:Azure Data Lake Storage Gen2、Azure Databricks、および Spark | Microsoft Docs
 description: このチュートリアルでは、Azure Databricks クラスター上で Spark クエリを実行して、Azure Data Lake Storage Gen2 ストレージ アカウント内のデータにアクセスする方法を説明します。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 0607c2b848a486e24654081bd7937cb734394e58
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: bbe936fd572a8e23fb6e7c5da4a4bffef1c8bf7e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331838"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327531"
 ---
-# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 のデータにアクセスする
+# <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>チュートリアル:Azure Data Lake Storage Gen2、Azure Databricks、および Spark
 
 このチュートリアルでは、Azure Data Lake Storage Gen2 対応の Azure ストレージ アカウント内の格納データに Azure Databricks クラスターを接続する方法を説明します。 この接続を使用することで、必要なデータに関するクエリや分析をクラスターからネイティブに実行することができます。
 
@@ -67,7 +67,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. Azure portal で、 **[リソースの作成]**  >  **[分析]**  >  **[Azure Databricks]** の順に選択します。
 
-    ![Azure Portal の Databricks](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Azure Portal の Databricks")
+    ![Azure portal での Databricks](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Azure portal での Databricks")
 
 2. **[Azure Databricks サービス]** で次の値を指定して、Databricks サービスを作成します。
 
@@ -79,7 +79,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     |**Location**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。       |
     |**Pricing Tier**     |  **[Standard]** を選択します。     |
 
-    ![Azure Databricks ワークスペースを作成する](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Azure Databricks サービスを作成する")
+    ![Azure Databricks ワークスペースを作成します](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Azure Databricks サービスを作成する")
 
 3. アカウントの作成には数分かかります。 操作の状態を監視するには、上部の進行状況バーを確認します。
 
@@ -91,7 +91,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[クラスター]** を選択します。
 
-    ![Azure の Databricks](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Azure の Databricks")
+    ![Azure での Databricks](./media/data-lake-storage-use-databricks-spark/databricks-on-azure.png "Azure での Databricks")
 
 3. **[New cluster]\(新しいクラスター\)** ページで、クラスターを作成するための値を指定します。
 

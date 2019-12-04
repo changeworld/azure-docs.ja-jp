@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a6d3c53206d917b5b87f26b7fb351bc5acf5937
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 391ae72a9e2bc78ed120cf4f5fdf844a6248566a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095219"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233464"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>チュートリアル:Azure Active Directory と OverDrive の統合
 
@@ -186,7 +186,7 @@ OverDrive で Azure AD シングル サインオンを構成するには、次�
 このセクションでは、Britta Simon というユーザーを Overdrive に作成します。 Overdrive では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Overdrive にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 >[!NOTE]
->OverDrive から提供されている他の OverDrive ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>他の OverDrive ユーザー アカウント作成ツールや、OverDrive から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 >
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 

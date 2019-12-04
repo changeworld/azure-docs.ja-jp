@@ -1,22 +1,22 @@
 ---
-title: クイック スタート - Azure Active Directory の条件付きアクセスで保護されているクラウド アプリにアクセスする前に、使用条件への同意を要求する | Microsoft Docs
+title: 条件付きアクセスで利用規約を必須にする - Azure Active Directory
 description: このクイック スタートでは、選択したクラウド アプリへのアクセスが Azure Active Directory の条件付きアクセスによって許可される前に、使用条件への同意が要求されるようにする方法を学習します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: quickstart
-ms.date: 12/14/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba684209b497792cd2f520f6b530168959e62d7f
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67506918"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380101"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>クイック スタート:クラウド アプリにアクセスする前に利用規約への同意を要求する
 
@@ -105,7 +105,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[新規]** ページの **[名前]** ボックスに、「**Require TOU for Isabella**」と入力します。
 
-   ![Name](./media/require-tou/71.png)
+   ![名前](./media/require-tou/71.png)
 
 1. **[割り当て]** セクションで **[ユーザーとグループ]** をクリックします。
 

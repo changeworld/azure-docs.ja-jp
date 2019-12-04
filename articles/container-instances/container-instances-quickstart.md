@@ -1,23 +1,18 @@
 ---
-title: クイック スタート:Azure Container Instances への Docker コンテナーのデプロイ - Azure CLI
+title: クイックスタート - コンテナー インスタンスに Docker コンテナーをデプロイする - Azure CLI
 description: このクイック スタートでは、Azure CLI を使用して、分離された Azure コンテナー インスタンスで実行されているコンテナー化された Web アプリをすばやくデプロイします
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
-ms.author: danlep
 ms.custom:
 - seo-python-october2019
 - seodec18
 - mvc
-ms.openlocfilehash: 65c067792499017a7e00fdbb6199e591981683f8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ab079c7ad5d741d5a569e042ae8939cbeeff203b
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429201"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533578"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用してコンテナー インスタンスを Azure にデプロイする
 

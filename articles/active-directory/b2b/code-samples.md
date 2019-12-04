@@ -1,5 +1,5 @@
 ---
-title: B2B コラボレーション コードと PowerShell サンプル - Azure Active Directory | Microsoft Docs
+title: B2B コラボレーション コードと PowerShell サンプル - Azure AD
 description: Azure Active Directory B2B コラボレーションのコードと PowerShell サンプル
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79352c2c82cae8fe77ef6313d74e60432c710ec0
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: f3a43ce4c560e89d88594d173aae7b2ad2db99ee
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812500"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273103"
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B コラボレーション コードと PowerShell サンプル
 
@@ -26,7 +26,7 @@ ms.locfileid: "65812500"
 
 1. .CSV ファイルを準備します。新しい CSV ファイルを作成して、invitations.csv という名前を付けます。 この例では、ファイルは、C:\data に保存され、次の情報が格納されています。
   
-   Name                  |  InvitedUserEmailAddress
+   名前                  |  InvitedUserEmailAddress
    --------------------- | --------------------------
    Gmail B2B 招待者     | b2binvitee@gmail.com
    Outlook B2B 招待者   | b2binvitee@outlook.com

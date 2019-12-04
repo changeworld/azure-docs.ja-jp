@@ -1,5 +1,5 @@
 ---
-title: Linux VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする
+title: チュートリアル`:` マネージド ID を使用して Azure Key Vault にアクセスする - Linux - Azure AD
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26d434069870fbfa52687a3abc7913fd121687a1
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cdccabf701d4603b8c78f7e23ec1890171603273
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000067"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232184"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
 

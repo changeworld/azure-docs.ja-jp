@@ -1,19 +1,16 @@
 ---
-title: チュートリアル - Azure Resource Manager テンプレートのリソースにタグを追加する
+title: チュートリアル - テンプレートのリソースにタグを追加する
 description: Azure Resource Manager テンプレートでデプロイするリソースにタグを追加します。 タグを使用すると、リソースを論理的に整理できます。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8b6ff50f7254a51bcdf37ecb0afd8f0041a2c5da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 078d85b3120baf5b8bea9c305fb1f97763f8df59
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177565"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406060"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにタグを追加する
 
@@ -23,9 +20,9 @@ ms.locfileid: "72177565"
 
 必須ではありませんが、[クイックスタート テンプレートに関するチュートリアル](template-tutorial-quickstart-template.md)を済ませておくことをお勧めします。
 
-Visual Studio Code と Resource Manager ツール拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関するセクションを参照してください。
+Visual Studio Code と Resource Manager ツール拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関する記事を参照してください。
 
-## <a name="review-your-template"></a>テンプレートを確認する
+## <a name="review-template"></a>テンプレートを確認する
 
 以前のテンプレートでは、ストレージ アカウント、App Service プラン、Web アプリをデプロイしました。
 
@@ -41,7 +38,7 @@ Visual Studio Code と Resource Manager ツール拡張機能に加え、Azure P
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,78,100)]
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-template"></a>テンプレートのデプロイ
 
 次はテンプレートをデプロイし、結果を確認します。
 
@@ -71,7 +68,7 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>デプロイを検証する
+## <a name="verify-deployment"></a>デプロイの確認
 
 Azure portal からリソース グループを探すことでデプロイを確認できます。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center とは | Microsoft Docs
-description: Azure Security Center の主な機能とそのしくみについて説明します。
+description: このページでは、Security Center の主な利点 (リソースがクラウドとオンプレミスのどちらにあるかを問わず、セキュリティの状態を検出し、改善する) について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2019
 ms.author: memildin
-ms.openlocfilehash: e02fd0de00b8feed15fcd51b657afcc015d816f2
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 378ad4fde94e8bccfbdad9765545675822d202ff
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202113"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558633"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 

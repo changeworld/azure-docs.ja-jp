@@ -1,14 +1,14 @@
 ---
-title: PowerShell を使用して最初のクエリを実行する
-description: この記事では、Azure PowerShell の Resource Graph モジュールを有効にして、最初のクエリを実行する手順について説明します。
-ms.date: 10/18/2019
+title: クイック スタート:初めての PowerShell クエリ
+description: このクイックスタートでは、手順に従って、Azure PowerShell の Resource Graph 拡モジュールを有効にし、最初のクエリを実行します。
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 6aaddcfc6cae16501ba6544f9789aa3ac1d13136
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958780"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304147"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
@@ -16,7 +16,11 @@ Azure Resource Graph を使用する最初の手順では、Azure PowerShell の
 
 このプロセスの最後では、選択した Azure PowerShell のインストールにモジュールを追加して、最初の Resource Graph クエリを実行しています。
 
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-module"></a>Resource Graph モジュールを追加する
 
@@ -28,7 +32,7 @@ Azure Resource Graph モジュールには、次のソフトウェアが必要�
 
 - Azure PowerShell 1.0.0 以降。 インストールされていない場合は、こちらの[手順](/powershell/azure/install-az-ps)に従ってください。
 
-- PowerShellGet 2.0.1 以上。 インストールされていない場合、または更新されていない場合は、こちらの[手順](/powershell/gallery/installing-psget)に従ってください。
+- PowerShellGet 2.0.1 以上。 インストールされていない場合、または更新されていない場合は、こちらの[手順](/powershell/scripting/gallery/installing-psget)に従ってください。
 
 ### <a name="install-the-module"></a>モジュールのインストール
 
@@ -103,10 +107,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>次の手順
 
-- [クエリ言語](./concepts/query-language.md)に関する詳細情報を入手します。
-- [リソースを探索する](./concepts/explore-resources.md)方法について詳しく確認します。
-- [Azure portal](first-query-portal.md) を使用して最初のクエリを実行します。
-- [Azure CLI](first-query-azurecli.md) を使用して最初のクエリを実行します。
-- [Starter クエリ](./samples/starter.md)のサンプルを参照します。
-- [高度なクエリ](./samples/advanced.md)のサンプルを参照します。
-- [UserVoice ](https://feedback.azure.com/forums/915958-azure-governance)にフィードバックを提供します。
+このクイックスタートでは、Azure PowerShell 環境に Resource Graph モジュールを追加し、最初のクエリを実行しました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
+
+> [!div class="nextstepaction"]
+> [クエリ言語に関する詳細情報を入手します](./concepts/query-language.md)

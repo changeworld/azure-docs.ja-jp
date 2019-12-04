@@ -1,20 +1,20 @@
 ---
-title: Azure でプライベート エンドポイントを管理する
-description: Azure portal を使用してプライベート エンドポイントを作成する方法を説明します。
+title: クイックスタート - Azure でプライベート エンドポイントを管理する
+description: このクイックスタートでは、Azure portal を使用してプライベート エンドポイントを作成する方法を説明します
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: d8d7c0232110d3d5b040debc3a24941988d4ee29
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.author: allensu
+ms.openlocfilehash: 2cb3c1d798e48017604d72d8a438d6a1071199ea
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372235"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419770"
 ---
-# <a name="create-a-private-endpoint-using-azure-portal"></a>Azure portal を使用してプライベート エンドポイントを作成する
+# <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>クイック スタート:Azure portal を使用してプライベート エンドポイントを作成する
 
 プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 このクイックスタートでは、Azure portal を使用して、Azure 仮想ネットワーク上の VM と、Azure プライベート エンドポイントを含む SQL Database サーバーを作成する方法を説明します。 その後、VM から SQL Database サーバーに安全にアクセスできます。
 
@@ -241,4 +241,3 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 ## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、仮想ネットワーク上の VM と SQL データベース サーバー、プライベート アクセス用のプライベート エンドポイントを作成しました。 インターネットから 1 つの VM に接続し、Private Link を使用して SQL データベース サーバーと安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](private-endpoint-overview.md)」を参照してください。
-

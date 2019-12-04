@@ -1,14 +1,14 @@
 ---
 title: サンプル - タグとその既定値の適用
-description: このサンプル ポリシー定義は、指定されたタグがない場合、そのタグ名と値を付加します。
+description: このサンプル ポリシー定義は、パラメーターで定義される指定されたタグがない場合、そのタグ名と値を付加します。
 ms.date: 01/26/2019
 ms.topic: sample
-ms.openlocfilehash: 0e5bb38b65f4c302fc5a2c4a0a0d3c2da0082a30
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 33d0580d2f6c231c4cd7e73abdaab6cb14c363d9
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74071488"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463682"
 ---
 # <a name="sample---apply-tag-and-its-default-value"></a>サンプル - タグとその既定値の適用
 

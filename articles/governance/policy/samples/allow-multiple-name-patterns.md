@@ -1,14 +1,14 @@
 ---
 title: サンプル - 複数の名前パターン
-description: このサンプル ポリシー定義は、指定した名前パターンのいずれかに一致することをリソースに要求します。
+description: このサンプル ポリシー定義は、指定した数字または数値の名前パターンのいずれかに一致することをリソースに要求します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 3dcecbf69d4170dd851f1b2678ae0136c86c7e49
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 227b03d0719fcf1a8851213d96b057c9b439a99d
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076518"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463466"
 ---
 # <a name="sample---allow-multiple-name-patterns"></a>サンプル - 複数の名前パターンを許可する
 

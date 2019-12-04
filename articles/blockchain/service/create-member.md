@@ -1,25 +1,19 @@
 ---
-title: Azure portal を使用して Azure Blockchain Service メンバーを作成する
-description: Azure Blockchain Service を使用してブロックチェーン メンバーを作成します。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 10/14/2019
+title: Azure Blockchain Service メンバーを作成する - Azure portal
+description: Azure portal を使用してブロックチェーン コンソーシアムの Azure Blockchain Service メンバーを作成します。
+ms.date: 11/18/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: c87f9a044d6655b2062f2c2657d3b465699e0dd2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 90f859e4d2e2621afad9cab11d66e81018bd3147
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329256"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455787"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する
 
-Azure Blockchain Service は、スマート コントラクト内でビジネス ロジックを実行できるブロックチェーン プラットフォームです。 このクイックスタートでは、Azure portal を使用してブロックチェーン メンバーを作成することから始める方法について説明します。
+このクイックスタートでは、Azure portal を使用して Azure Blockchain Service 内にブロックチェーンの新しいメンバーとコンソーシアムをデプロイします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,25 +23,24 @@ Azure Blockchain Service は、スマート コントラクト内でビジネス
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
-1. **[ブロックチェーン]**  >  **[Azure Blockchain Service]\(Azure Blockchain Service \)** を選択します。
-1. テンプレートを編集して完成させます。
+1. **[ブロックチェーン]**  >  **[Azure Blockchain Service (プレビュー)]** の順に選択します。
 
     ![サービスの作成](./media/create-member/create-member.png)
 
     Setting | 説明
     --------|------------
-    ブロックチェーン メンバー | Azure Blockchain Service のブロックチェーン メンバーを識別する一意の名前を選択します。 ブロックチェーン メンバー名に使用できるのは、小文字と数字のみです。 先頭の文字は英字にする必要があります。 値の長さは 2 から 20 文字にする必要があります。
     Subscription | サービスに使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
-    Resource group | 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。
-    リージョン | コンソーシアムの全メンバーの場所は同じにする必要があります。
+    Resource group | 新しいリソース グループ名を作成するか、サブスクリプションの既存のリソース グループ名を選択します。
+    リージョン | メンバーを作成するリージョンを選択します。 コンソーシアムのメンバーの場所は全員同じにする必要があります。
+    Protocol | プレビュー版の Azure Blockchain Service は現在、Quorum プロトコルをサポートしています。
+    コンソーシアム | 新しいコンソーシアムの一意の名前を入力します。 招待状を介してコンソーシアムに参加する場合には、参加しようとしているコンソーシアムを選択します。
+    名前 | Azure Blockchain Service のメンバーの一意の名前を選択します。 ブロックチェーン メンバー名に使用できるのは、小文字と数字のみです。 先頭の文字は英字にする必要があります。 値の長さは 2 から 20 文字にする必要があります。
     メンバー アカウントのパスワード | メンバー アカウントのパスワードは、メンバー用に作成される Ethereum アカウントの秘密キーの暗号化に使用されます。 メンバー アカウントとメンバー アカウントのパスワードをコンソーシアムの管理に使用します。
-    コンソーシアム名 | 新しいコンソーシアムの一意の名前を入力します。 招待状を介してコンソーシアムに参加する場合、この値は参加しているコンソーシアムです。
     説明 | コンソーシアムの説明。
-    Protocol |  プレビューは Quorum プロトコルをサポートしています。
-    価格 | 新しいサービスのノード構成。 **[Standard]** を選択します。 2 つの検証ノードと 1 つのトランザクション ノードが既定の設定です。
-    トランザクション ノードのパスワード | メンバーの既定のトランザクション ノードのパスワード。 このパスワードは、ブロックチェーン メンバーの既定のトランザクション ノード パブリック エンドポイントに接続する際の基本認証に使用します。
+    価格 | 新しいサービスのノード構成とコスト。 **[変更]** リンクを選択して **[Standard]** と **[Basic]** のいずれかのレベルを選択します。
+    ノードのパスワード | メンバーの既定のトランザクション ノードのパスワード。 このパスワードは、ブロックチェーン メンバーの既定のトランザクション ノード パブリック エンドポイントに接続する際の基本認証に使用します。
 
-1. **[作成]** を選択して、サービスをプロビジョニングします。 プロビジョニングには約 10 分かかります。
+1. **[確認および作成]** を選択して設定を検証します。 **[作成]** を選択して、サービスをプロビジョニングします。 プロビジョニングには約 10 分かかります。
 1. デプロイ プロセスを監視するには、ツール バーの **[通知]** を選択します。
 1. デプロイ後、ブロックチェーン メンバーに移動します。
 
@@ -57,7 +50,7 @@ Azure Blockchain Service は、スマート コントラクト内でビジネス
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-作成したメンバーは、次のクイックスタートまたはチュートリアルに使用できます。 必要なくなったら、Azure Blockchain Service で作成した `myResourceGroup` リソース グループを削除することによって、リソースを削除できます。
+作成したメンバーは、次のクイックスタートまたはチュートリアルに使用できます。 必要なくなったら、このクイックスタートのために作成した `myResourceGroup` リソース グループを削除することによって、リソースを削除できます。
 
 リソース グループを削除するには:
 
@@ -66,5 +59,7 @@ Azure Blockchain Service は、スマート コントラクト内でビジネス
 
 ## <a name="next-steps"></a>次の手順
 
+このクイックスタートでは、Azure Blockchain Service のメンバーと新しいコンソーシアムをデプロイしました。 次は、Azure Blockchain Development Kit for Ethereum を使用して Azure Blockchain Service 上のコンソーシアムに接続するクイックスタートに挑戦してみてください。
+
 > [!div class="nextstepaction"]
-> [MetaMask を使用してスマート コントラクトを接続およびデプロイする](connect-metamask.md)
+> [Visual Studio Code を使用して Azure Blockchain Service に接続する](connect-vscode.md)

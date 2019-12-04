@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/08/2019
+ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 96dae96e16ce033ce15a8f1e9386e5252562654a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: e92e51e8aabf24f1c5c4db31e2e203f391620ecc
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796219"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423474"
 ---
 # <a name="what-is-azure-front-door-service"></a>Azure Front Door Service とは
 Azure Front Door Service では、高可用性のために最大限のパフォーマンスと即時グローバル フェイルオーバーを最適化することで、Web トラフィックのグローバル ルーティングを定義、管理、および監視することができます。 Front Door を使用すると、グローバル (複数リージョン) のコンシューマーや企業のアプリケーションを、Azure を使用して世界中のユーザーに発信する、堅牢で高性能なパーソナライズされた最新のアプリケーション、API、およびコンテンツに変換することができます。
@@ -26,6 +26,8 @@ Front Door は、レイヤー 7 または HTTP/HTTPS 層で動作し、スプリ
 
 >[!NOTE]
 > Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 DNS ベースのグローバルなルーティングが必要で、トランスポート層セキュリティ (TLS) プロトコル終端 ("SSL オフロード") または HTTP/HTTPS 要求によるアプリケーション層の処理に対する要件が**ない**場合は、「[Traffic Manager](../traffic-manager/traffic-manager-overview.md)」をご覧ください。 リージョン内のサーバー間で負荷分散が必要な場合は、アプリケーション層については [Application Gateway](../application-gateway/application-gateway-introduction.md) に関するページ、ネットワーク層については [Load Balancer](../load-balancer/load-balancer-overview.md) を確認してください。 実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
+>
+> Azure の負荷分散オプションの比較については、「[Azure の負荷分散オプションの概要](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)」を参照してください。
 
 Front Door には、次の機能が含まれています。
 

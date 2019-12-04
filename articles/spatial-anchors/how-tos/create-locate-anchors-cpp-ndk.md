@@ -1,19 +1,19 @@
 ---
-title: C++/NDK で Azure Spatial Anchors を使用してアンカーを作成して配置する方法 | Microsoft Docs
+title: C++ と NDK でアンカーを作成および配置する
 description: C++/NDK で Azure Spatial Anchors を使用してアンカーを作成して配置する方法の詳細な説明。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 2578202c2464248c1c765368d308ca669d918057
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9592de0bfb53d0ba3f37cf3d34c6cd7ce3d4d65d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562537"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270277"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>C++/NDK で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 

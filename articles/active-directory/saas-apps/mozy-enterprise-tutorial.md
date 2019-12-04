@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 0f1aca75045f674fa45f5ad00c14a37c1abe7aea
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7d3b7f8982a24856818cbb6ce86060beac969fc2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160412"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233510"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>チュートリアル:Azure Active Directory と Mozy Enterprise の統合
 
@@ -208,7 +208,7 @@ Mozy Enterprise で Azure AD シングル サインオンを構成するには�
 Azure AD ユーザーが Mozy Enterprise にログインできるようにするには、ユーザーを Mozy Enterprise にプロビジョニングする必要があります。 Mozy Enterprise の場合、プロビジョニングは手動で行います。
 
 >[!NOTE]
->Mozy Enterprise から提供されている他の Mozy Enterprise ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>他の Mozy Enterprise ユーザー アカウント作成ツールや、Mozy Enterprise から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 

@@ -1,14 +1,14 @@
 ---
 title: サンプル - 許可されているロード バランサーの SKU
-description: このサンプル ポリシー定義は、承認された SKU をロード バランサーで使用することを要求します。
+description: このサンプル ポリシー定義は、パラメーターで定義される承認された SKU をロード バランサーで使用することを要求します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: f3872ffc2fc75445f4f51573474fc359227b431b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3d3425211e44dc87d87a962630dec574a60614e7
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076437"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463496"
 ---
 # <a name="sample---allowed-load-balancer-skus"></a>サンプル - 許可されているロード バランサーの SKU
 

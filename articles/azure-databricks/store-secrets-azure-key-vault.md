@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 7983e18066578e3f036da84c73b6554ead2c40a1
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 16339590c3cfb11235ef4763c2e32c71b521c709
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791563"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539062"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>チュートリアル:Azure Key Vault を使用して Azure Databricks から Azure Blob Storage にアクセスする
 
@@ -129,7 +129,7 @@ ms.locfileid: "72791563"
 
 4. 自分の Azure Databricks ワークスペースが別のウィンドウで開かれたら、URL の末尾に **#secrets/createScope** を追加します。 URL の形式は次のとおりです。 
 
-   **https://<\場所>.azuredatabricks.net/?o=<\ID>#secrets/createScope**
+   **https://<\場所>.azuredatabricks.net/#secrets/createScope**。
 
 5. スコープ名を入力し、前の手順で保存した Azure キー コンテナーの DNS 名とリソース ID を入力します。 このチュートリアルで後から使用できるように、スコープ名をテキスト エディターに保存します。 そのうえで **[Create]\(作成\)** を選択します。
 

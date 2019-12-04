@@ -1,22 +1,22 @@
 ---
-title: Azure Portal での多要素認証が必要なクラシック ポリシーの移行
+title: 条件付きアクセス ポリシーの移行 - Azure Active Directory
 description: この記事では、Azure Portal で多要素認証が必要なクラシック ポリシーを移行する方法を示します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: tutorial
-ms.date: 06/13/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4819c283a136057ad7c3ffd755fd9e157d99a1bf
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ca00ae62ba114aecef48117fd8a54b7f2e962dfd
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509458"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380323"
 ---
 # <a name="migrate-a-classic-policy-that-requires-multi-factor-authentication-in-the-azure-portal"></a>Azure Portal での多要素認証が必要なクラシック ポリシーの移行
 
@@ -116,4 +116,4 @@ ms.locfileid: "67509458"
 
 - クラシック ポリシーの移行について詳しくは、「[Azure Portal でクラシック ポリシーを移行する](policy-migration.md)」をご覧ください。
 - 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
-- 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」をご覧ください。
+- 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。

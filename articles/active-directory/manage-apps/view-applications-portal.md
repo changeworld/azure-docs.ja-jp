@@ -1,6 +1,6 @@
 ---
-title: テナント アプリケーションの表示 - Azure Active Directory | Microsoft Docs
-description: Azure portal を使用して、Azure Active Directory (Azure AD) テナントのアプリケーションを表示します。
+title: クイックスタート - Azure Active Directory を使用してテナント アプリケーションを表示する
+description: このクイックスタートでは、Azure portal を使用して、Azure Active Directory (Azure AD) テナントのアプリケーションを表示します。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,14 +16,14 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 764c7c048dd0398b495ee31421a8e2bc9f8169ee
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 1d40e968bb7079d50e3fa18889ae996c9b59c90f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477195"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421822"
 ---
-# <a name="view-your-azure-active-directory-tenant-applications"></a>Azure Active Directory テナントのアプリケーションの表示
+# <a name="quickstart-view-your-azure-active-directory-tenant-applications"></a>クイック スタート:Azure Active Directory テナントのアプリケーションの表示
 
 このクイック スタートでは、Azure portal を使用して、Azure Active Directory (Azure AD) テナントのアプリケーションを表示します。
 

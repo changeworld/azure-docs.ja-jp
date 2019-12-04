@@ -1,27 +1,19 @@
 ---
-title: GitHub からデプロイされる関数を Azure で作成する | Microsoft Docs
+title: GitHub デプロイを使用して関数アプリを作成する - Azure CLI
 description: Azure Functions を使用して、関数アプリを作成し、GitHub リポジトリから関数コードをデプロイします。
-services: functions
-ms.service: azure-functions
-keywords: ''
-ms.devlang: azurecli
-author: ggailey777
-ms.author: glenga
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: b973e6538a7639f4119e4407d96e6d9d8f959cbb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 37dc0235b258f6d47f8813546fe953e92799454a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959004"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532819"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHub からデプロイされる関数アプリを Azure で作成する
 
 この Azure Functions のサンプル スクリプトは、[従量課金プラン](../functions-scale.md#consumption-plan)を使用して、関数アプリと関連リソースを作成します。 また、GitHub レポジトリから継続的にデプロイされるように関数コードを構成します。 
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 このサンプルでは、以下が必要です。
 
@@ -46,14 +38,14 @@ Azure CLI をローカルで使用する場合は、バージョン 2.0 以降�
 
 表内の各コマンドは、それぞれのドキュメントにリンクされています。 このスクリプトでは以下のコマンドを使用します。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | 関数アプリに必要なストレージ アカウントを作成します。 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成し、Git リポジトリまたは Mercurial リポジトリにそれを関連付けます。 |
+| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | 関数アプリに必要なストレージ アカウントを作成します。 |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成し、Git リポジトリまたは Mercurial リポジトリにそれを関連付けます。 |
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント](../functions-cli-samples.md)で確認できます。

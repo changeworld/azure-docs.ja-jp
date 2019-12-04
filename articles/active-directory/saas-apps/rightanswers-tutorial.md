@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: f242b2e33b50aa955446ae2b1f62421d39e58418
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8b1f7590e13be97841aae95ec47eaaa61ab004a9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098899"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233487"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>チュートリアル:Azure Active Directory と RightAnswers の統合
 
@@ -191,7 +191,7 @@ Azure AD ユーザーが RightAnswers にサインインできるようにする
 最初のシングル サインオンの試行中に、必要に応じてユーザーが自動的に作成されます。
 
 > [!NOTE]
-> RightAnswers から提供されている他の RightAnswers ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の RightAnswers ユーザー アカウント作成ツールや、RightAnswers から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

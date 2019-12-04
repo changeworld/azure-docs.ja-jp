@@ -1,14 +1,14 @@
 ---
 title: サンプル - マネージド ディスクを使用して VM を作成する
-description: このサンプル ポリシー定義は、仮想マシンにマネージド ディスクの使用を要求します。
+description: このサンプル ポリシー定義は、仮想マシンと仮想マシン スケール セットにマネージド ディスクの使用を要求します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 0ad21e255e771cd94c6f2eb794e20dc9b67f49d5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e849f30c57a6e9776eec561d79cbb263f647b45e
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069785"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463030"
 ---
 # <a name="sample---create-vm-using-managed-disk"></a>サンプル - マネージド ディスクを使用して VM を作成する
 

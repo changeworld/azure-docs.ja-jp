@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/11/2019
+ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 46bf756a729441bd3bc4b2b00aaa2c79fa06c0b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 595b6705b4e876ce5b42a7de831136cb0b62b1f5
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521246"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196443"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Azure Migrate: Server Assessment を使用して VMware VM を評価する
 
@@ -108,8 +108,8 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 
   **アルゴリズム** | **ハッシュ値**
   --- | ---
-  MD5 | 27230f3b012187860281b912ee661709
-  SHA256 | c0a5b5998b7f38ac6e57ea9a808ecc4295795e18f9ca99c367585068883f06e7
+  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
+  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ### <a name="create-the-appliance-vm"></a>アプライアンス VM を作成する
@@ -172,7 +172,7 @@ VM の構成データとパフォーマンス データを検出するには、�
 
 ### <a name="specify-vcenter-server-details"></a>vCenter Server の詳細を指定する
 1. **[vCenter Server の詳細を指定する]** で、vCenter Server の名前 (FQDN) または IP アドレスを指定します。 既定のポートをそのまま使用することも、vCenter Server でリッスンするカスタム ポートを指定することもできます。
-2. **[ユーザー名]** と **[パスワード]** で、アプライアンスで vCenter Server の VM の検出に使用される読み取り専用の資格情報を指定します。 [検出に必要なアクセス許可](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)がアカウントにあることを確認します。 必要に応じて、vCenter アカウントへのアクセスを制限することで、検出のスコープを絞り込むことができます。検出のスコープ設定について詳しくは、[こちら](tutorial-assess-vmware.md#scoping-discovery)をご覧ください。
+2. vCenter Server 上の VM を検出するためにアプライアンスが使用する vCenter Server アカウントの資格情報を **[ユーザー名]** と **[パスワード]** に指定します。 [検出に必要なアクセス許可](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)がアカウントにあることを確認します。 必要に応じて、vCenter アカウントへのアクセスを制限することで、検出のスコープを絞り込むことができます。検出のスコープ設定について詳しくは、[こちら](tutorial-assess-vmware.md#scoping-discovery)をご覧ください。
 3. **[接続の検証]** をクリックし、アプライアンスが vCenter Server に接続できることを確認します。
 
 ### <a name="specify-vm-credentials"></a>VM の資格情報を指定する
@@ -222,7 +222,7 @@ vCenter ユーザー アカウントにロールを割り当ててて、vCenter 
 
     同様に、サーバー移行に関しては、移行対象の VM がホストされるすべての親オブジェクトについて、必要な[特権](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions)が割り当てられた (たとえば <em>Azure_Migrate</em> という名前の) ユーザー定義ロールを vCenter ユーザー アカウントに適用する必要があります。
 
-![アクセス許可の割り当て](./media/tutorial-assess-vmware/assign-perms.png)
+  ![アクセス許可の割り当て](./media/tutorial-assess-vmware/assign-perms.png)
 
 - もう 1 つのアプローチとして、ユーザー アカウントとロールをデータセンター レベルで割り当て、それらを子オブジェクトに伝達する方法もあります。 そのうえで、検出も移行もしたくないすべてのオブジェクト (VM など) に関して、**アクセスなし**ロールをアカウントに与えます。 ただし、この構成は扱いが煩雑です。 親から継承されたアクセス権がすべての新しい子オブジェクトにも自動的に付与されるので、予期しないアクセス制御が行われる恐れがあります。 そのため、最初の方法を使用することをお勧めします。
 

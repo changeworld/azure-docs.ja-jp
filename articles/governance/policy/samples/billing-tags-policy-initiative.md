@@ -1,14 +1,14 @@
 ---
 title: サンプル - 課金タグ ポリシーのイニシアティブ
-description: このサンプル ポリシー定義セットは、コスト センターと製品名に対して指定したタグ値を要求します。
+description: このサンプル ポリシー イニシアティブ (ポリシー セット) では、コスト センターと製品名に対して、パラメーターで定義される指定したタグ値を要求します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: e2fc9a7251fbe548b22f24356e555f92a3a6e22f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 449909b160c2b811c62cd8c6592e74dd0f714e41
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076352"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463380"
 ---
 # <a name="sample---billing-tags-policy-initiative"></a>サンプル - 課金タグ ポリシーのイニシアティブ
 

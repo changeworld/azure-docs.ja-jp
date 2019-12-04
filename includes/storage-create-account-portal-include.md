@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 56545b02c35d68455497c93582073c73d6c75da5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d34f18b688be2afd7febf1f948b3093696ee9118
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180847"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451574"
 ---
 Azure Portal で汎用 v2 ストレージ アカウントを作成するには、次の手順に従います。
 
-1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で「**ストレージ アカウント**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[ストレージ アカウント]** を選択します。
+1. Azure portal のメニューで **[すべてのサービス]** を選択します。 リソースの一覧で「**ストレージ アカウント**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[ストレージ アカウント]** を選択します。
 1. 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
 1. ストレージ アカウントを作成するサブスクリプションを選択します。
 1. **[リソース グループ]** フィールドの下の **[新規作成]** を選択します。 次の図のように、新しいリソース グループの名前を入力します。
 
-    ![ポータルでリソース グループを作成する方法を示すスクリーンショット](./media/storage-create-account-portal-include/create-resource-group.png)
+    ![ポータルでリソース グループを作成する方法を示すスクリーンショット](./media/storage-create-account-portal-include/create-resource-group-for-storage.png)
 
 1. 次に、ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。
 1. ストレージ アカウントの場所を選択するか、または既定の場所を使います。

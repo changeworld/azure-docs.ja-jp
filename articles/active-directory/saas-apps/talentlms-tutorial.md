@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0243a3e0ed83abc1edead5ecece4fd5c6ff1cad9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 970ab9de270b1227884a13ac578d4c439043b20c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089159"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233361"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>チュートリアル:Azure Active Directory と TalentLMS の統合
 
@@ -137,13 +137,13 @@ TalentLMS で Azure AD シングル サインオンを構成するには、次�
 
 1. **[Account & Settings]** セクションで、 **[Users]** タブをクリックします。
 
-    ![Account & Settings](./media/talentlms-tutorial/IC777296.png "Account & Settings")
+    ![[Account & Settings]\(アカウントと設定\)](./media/talentlms-tutorial/IC777296.png "アカウントと設定")
 
 1. **[Single Sign-On (SSO)]** をクリックします。
 
 1. [Single Sign-On] セクションで、次の手順に従います。
 
-    ![シングル サインオン](./media/talentlms-tutorial/IC777297.png "Single Sign-On")
+    ![シングル サインオン](./media/talentlms-tutorial/IC777297.png "[Single Sign-On]")
 
     a. **[SSO integration type]** ボックスの一覧から **[SAML 2.0]** を選択します。
 
@@ -229,7 +229,7 @@ Azure AD ユーザーが TalentLMS にサインインできるようにするに
 
 1. **[Add user]** ダイアログ ページで、次の手順に従います。
 
-    ![ユーザーの追加](./media/talentlms-tutorial/IC777299.png "Add User")  
+    ![ユーザーの追加](./media/talentlms-tutorial/IC777299.png "ユーザーの追加")  
 
     a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
@@ -240,7 +240,7 @@ Azure AD ユーザーが TalentLMS にサインインできるようにするに
     d. **[ユーザーの追加]** をクリックします。
 
 > [!NOTE]
-> TalentLMS から提供されている他の TalentLMS ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の TalentLMS ユーザー アカウント作成ツールや、TalentLMS から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

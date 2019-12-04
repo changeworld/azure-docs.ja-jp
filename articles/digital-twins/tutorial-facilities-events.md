@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Digital Twins 空間からのイベントをキャプチャする
+title: チュートリアル:IoT 空間からのデバイス イベントをキャプチャする - Azure Digital Twins | Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Digital Twins を Logic Apps に統合して空間から通知を受け取る方法について説明します。
 services: digital-twins
 ms.author: alinast
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 545e1757f4f3669957d8f6755cdbd9a2b29513b6
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 492fa7f4989a40ea1d5ec91a4fbf4dbbe79ef6ce
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129099"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383257"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>チュートリアル:Logic Apps を使用して Azure Digital Twins 空間から通知を受け取る
 

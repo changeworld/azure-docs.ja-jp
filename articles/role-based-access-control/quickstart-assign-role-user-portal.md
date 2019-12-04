@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する | Microsoft Docs
-description: Azure portal でロールベースのアクセス制御 (RBAC) を使用して、Azure リソースへのアクセス権をユーザーに付与する方法について説明します。
+title: チュートリアル - RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する
+description: このチュートリアルでは、Azure portal でロールベースのアクセス制御 (RBAC) を使用して、Azure リソースへのアクセス権をユーザーに付与する方法について説明します。
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: 5786f7b48477fa705b43e3a953ac15b2c768bd71
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f4dd3995df2a068824c4aa6bccca5606d250a165
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854257"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419649"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する
 
@@ -38,7 +38,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-1. ナビゲーション リストで、**[リソース グループ]** をクリックします。
+1. ナビゲーション リストで、 **[リソース グループ]** をクリックします。
 
 1. **[追加]** を選択して **[リソース グループ]** ブレードを開きます。
 
@@ -68,7 +68,7 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
 
    ![リソース グループの [アクセス制御 (IAM)] ブレード](./media/quickstart-assign-role-user-portal/access-control.png)
 
-1. **[追加]** > **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ウィンドウを開きます。
+1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ウィンドウを開きます。
 
    ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
@@ -76,7 +76,7 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
 
    ![[ロールの割り当ての追加] ウィンドウ](./media/quickstart-assign-role-user-portal/add-role-assignment.png)
 
-1. **[ロール]** ドロップダウン リストで、**[仮想マシン共同作成者]** を選択します。
+1. **[ロール]** ドロップダウン リストで、 **[仮想マシン共同作成者]** を選択します。
 
 1. **[選択]** 一覧で、自分または別のユーザーを選択します。
 
@@ -96,17 +96,17 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
    ![ロールの割り当ての削除メッセージ](./media/quickstart-assign-role-user-portal/remove-role-assignment.png)
 
-1. 表示されるロールの割り当ての削除メッセージで、**[はい]** をクリックします。
+1. 表示されるロールの割り当ての削除メッセージで、 **[はい]** をクリックします。
 
 ## <a name="clean-up"></a>クリーンアップ
 
-1. ナビゲーション リストで、**[リソース グループ]** をクリックします。
+1. ナビゲーション リストで、 **[リソース グループ]** をクリックします。
 
 1. **rbac-resource-group** をクリックしてリソース グループを開きます。
 
 1. **[リソース グループの削除]** をクリックしてリソース グループを削除します。
 
-   ![Delete resource group](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
+   ![リソース グループの削除](./media/quickstart-assign-role-user-portal/delete-resource-group.png)
 
 1. **[削除しますか]** ブレードにリソース グループ名 **rbac-resource-group** を入力します。
 
@@ -116,4 +116,3 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
 > [!div class="nextstepaction"]
 > [チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](tutorial-role-assignments-user-powershell.md)
-

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 05/29/2019
 ms.author: yegu
-ms.openlocfilehash: c05957cda16c96b841433483a90429aab2b4d22d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 291f6fe48d81397d293ab54a73e777831e25f6ea
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706503"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185273"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>回復性とディザスター リカバリー
 
@@ -25,7 +25,7 @@ ms.locfileid: "67706503"
 
 ## <a name="high-availability-architecture"></a>高可用性アーキテクチャ
 
-複数のリージョンにわたる冗長性を実現するには、複数のリージョンで複数のアプリ構成ストアを作成する必要があります。 このセットアップにより、ご利用のアプリケーションには、プライマリ ストアにアクセスできなくなった場合のフォールバック先として少なくとも 1 つの構成ストアが追加で用意されます。 次の図は、ご利用のアプリケーションとそのプライマリおよびセカンダリ構成ストアの間のトポロジを示したものです。
+複数のリージョンにわたる冗長性を実現するには、複数のリージョンで複数の App Configuration ストアを作成する必要があります。 このセットアップにより、ご利用のアプリケーションには、プライマリ ストアにアクセスできなくなった場合のフォールバック先として少なくとも 1 つの構成ストアが追加で用意されます。 次の図は、ご利用のアプリケーションとそのプライマリおよびセカンダリ構成ストアの間のトポロジを示したものです。
 
 ![geo 冗長ストア](./media/geo-redundant-app-configuration-stores.png)
 

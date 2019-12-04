@@ -1,23 +1,14 @@
 ---
 title: Azure で Jupyter ノートブックを作成して共有する
 description: Azure Notebooks で Jupyter ノートブックをすばやく作成して実行した後、そのノートブックを他と共有します。
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 19e8217bf88427c353fdd4c90c9f421445b7c81a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 71220fa5aa0367d1cb1694582b4f96459a3016e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970171"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277501"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>クイック スタート:ノートブックの作成と共有
 
@@ -42,7 +33,7 @@ ms.locfileid: "71970171"
 
 1. しばらくすると、Azure Notebooks は新しいプロジェクトに移動します。 **[+ 新規]** ドロップダウン ( **[+]** とだけ表示されている場合があります) を選択し、 **[Notebook]\(ノートブック\)** を選択することで、新しいノートブックをプロジェクトに追加します。
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "新しい空のプロジェクトと、ノートブックの追加コマンド")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
 1. 表示される **[Create New Notebook]\(新しいノートブックの作成\)** ポップアップで、ノートブックのファイル名 (例: *HelloWorldInPython.ipynb*、 *.ipynb* は IronPython (Jupyter) ノートブックを意味します) を入力し、言語 ("*カーネル*" とも呼ばれます) として **[Python 3.6]** を選択します。
 

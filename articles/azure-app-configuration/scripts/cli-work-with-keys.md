@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 11/08/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: d89fa4c067e511e6210e8c1473bf1856297fc1de
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 51697aa426a638ad536390c4114df5faa18a41ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904075"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184869"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Azure App Configuration ストアに格納されているキー/値を操作する
 
@@ -84,16 +84,16 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは、次のコマンドを使用して、アプリ構成ストアに格納されているキー/値を操作します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは、次のコマンドを使用して、App Configuration ストアに格納されているキーと値を操作します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | command | メモ |
 |---|---|
-| [az appconfig kv set](/cli/azure/ext/appconfig/appconfig) | キー/値を作成または更新します。 |
-| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig) | アプリ構成ストアに格納されているキー/値をリストします。 |
-| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig) | キー/値を削除します。 |
+| [az appconfig kv set](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-set) | キー/値を作成または更新します。 |
+| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | App Configuration ストアに格納されているキーと値をリストします。 |
+| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-delete) | キー/値を削除します。 |
 
 ## <a name="next-steps"></a>次の手順
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration のドキュメント](../cli-samples.md)のページにあります。
+その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration の CLI サンプル](../cli-samples.md)のページにあります。

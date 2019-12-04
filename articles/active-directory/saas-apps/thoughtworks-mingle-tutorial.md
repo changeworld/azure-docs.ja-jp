@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ea2a88c92dcd52e99bb98563cf76d2c5501ef6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a12d4dca61734275ef0e56dfe2a800c64dc52540
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088748"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233306"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>チュートリアル:Azure Active Directory と Thoughtworks Mingle の統合
 
@@ -130,11 +130,11 @@ Thoughtworks Mingle で Azure AD シングル サインオンを構成するに�
 
 2. **[Admin]** タブをクリックし、 **[SSO Config]** をクリックします。
    
-    ![[Admin] タブ](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO Config")
+    ![[Admin]\(管理\) タブ](./media/thoughtworks-mingle-tutorial/ic785157.png "[SSO Config]")
 
 3. **[SSO Config]** セクションで、次の手順に従います。
    
-    ![SSO Config](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO Config")
+    ![[SSO Config]\(SSO 構成\)](./media/thoughtworks-mingle-tutorial/ic785158.png "[SSO Config]")
     
     a. メタデータ ファイルをアップロードするには、 **[Choose file]** をクリックします。 
 
@@ -204,15 +204,15 @@ Azure AD ユーザーがサインインできるようにするには、Azure Ac
 
 3. **[Admin]** タブをクリックし、 **[Users]** をクリックします。
    
-    ![ユーザー](./media/thoughtworks-mingle-tutorial/ic785161.png "Users")
+    ![ユーザー](./media/thoughtworks-mingle-tutorial/ic785161.png "ユーザー")
 
 4. **[新しいユーザー]** をクリックします。
    
-    ![New User](./media/thoughtworks-mingle-tutorial/ic785162.png "New User")
+    ![[New User]\(新しいユーザー\)](./media/thoughtworks-mingle-tutorial/ic785162.png "[新しいユーザー]")
 
 5. **[New User]** ダイアログ ページで、次の手順に従います。
    
-    ![[New User] ダイアログ](./media/thoughtworks-mingle-tutorial/ic785163.png "New User")  
+    ![[New User]\(新しいユーザー\) ダイアログ](./media/thoughtworks-mingle-tutorial/ic785163.png "[新しいユーザー]")  
  
     a. プロビジョニングする有効な Azure AD アカウントの**サインイン名**、**表示名**、**パスワードの選択**、**パスワードの確認**を該当するボックスに入力します。 
 
@@ -221,7 +221,7 @@ Azure AD ユーザーがサインインできるようにするには、Azure Ac
     c. **[Create This Profile]** をクリックします。
 
 >[!NOTE]
->Thoughtworks Mingle から提供されている他の Thoughtworks Mingle ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>他の Thoughtworks Mingle ユーザー アカウント作成ツールや、Thoughtworks Mingle から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 > 
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 

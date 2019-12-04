@@ -1,21 +1,20 @@
 ---
 title: Azure Policy の概要
 description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
-ms.date: 12/06/2018
+ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: e6b74eb2ffe15256523e46f0c246ba9f4d399c4d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: db6a7c592213b0ef8a17466300c37c859e96476b
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959318"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484017"
 ---
-# <a name="overview-of-the-azure-policy-service"></a>Azure Policy サービスの概要
+# <a name="what-is-azure-policy"></a>Azure Policy とは
 
 ガバナンスは、組織が IT の効率的かつ効果的な使用によって、その組織のゴールを達成できることを検証します。 それは、ビジネスのゴールと IT プロジェクトの間の関係を明確にすることによってこのニーズを満たします。
 
-解決できそうもないほど多くの IT の問題を企業が抱えている場合は、
-優れた IT ガバナンスには、イニシアチブの計画と、問題の管理と防止に役立つ戦略的レベルの優先順位の設定が含まれます。 この戦略的なニーズには、Azure Policy を利用できます。
+解決できそうもないほど多くの IT の問題を企業が抱えている場合は、 優れた IT ガバナンスには、イニシアチブの計画と、問題の管理と防止に役立つ戦略的レベルの優先順位の設定が含まれます。 この戦略的なニーズには、Azure Policy を利用できます。
 
 Azure Policy は、ポリシーの作成、割り当て、管理に使用する Azure のサービスです。 これらのポリシーは、リソースにさまざまなルールと効果を適用して、それらのリソースが会社の標準とサービス レベル アグリーメントに準拠した状態に保たれるようにします。 Azure Policy では、割り当て済みのポリシーでリソースの非準拠を評価することによって、このニーズが満たされます。 たとえば、環境内で特定の SKU サイズの仮想マシンのみを許可するポリシーを作成できます。 このポリシーが実装された後は、新規および既存のリソースのコンプライアンス評価されます。 適切な種類のポリシーにより、既存リソースのコンプライアンスを実現できます。 Azure Policy でポリシーを作成して実装する方法については、このドキュメントの後のほうで詳しく説明します。
 
@@ -35,7 +34,7 @@ Azure Policy は、次の 2 つのリソース プロバイダーにおいて、
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者 (プレビュー)** ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者**は完全な権限を持っています。 **共同作成者**と**閲覧者** はどちらも、すべての読み取り Azure Policy 操作を使用できますが、**共同作成者**は修復処理をトリガーすることもできます。
+Azure Policy のリソースに対するアクセス許可は、さまざまな組み込みロールによって与えられます。 **リソース ポリシーの共同作成者**ロールには、Azure Policy のほとんどの操作が含まれます。 **所有者**は完全な権限を持っています。 **共同作成者**と**閲覧者** はどちらも、すべての読み取り Azure Policy 操作を使用できますが、**共同作成者**は修復処理をトリガーすることもできます。
 
 いずれの組み込みロールにも必要なアクセス許可がない場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成してください。
 
@@ -81,6 +80,9 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 イニシアチブ定義は、単一の包括的なゴールを達成することを目的として調整されたポリシー定義のコレクションです。 イニシアチブ定義により、ポリシー定義の管理と割り当てが簡素化されます。 簡素化するには、一連のポリシーを 1 つのアイテムとしてグループ化します。 たとえば、Azure Security Center で利用可能なすべてのセキュリティ推奨事項を監視することを目的とする、"**Azure Security Center での監視を有効にする**" というタイトルのイニシアチブを作成できます。
 
+> [!NOTE]
+> Azure CLI や Azure PowerShell などの SDK では、**PolicySet** という名前のプロパティとパラメーターを使用して、イニシアチブを参照します。
+
 このイニシアチブでは、次のようなポリシー定義を作成します。
 
 - **暗号化されていない SQL Database を Security Center で監視する** – 暗号化されていない SQL データベースとサーバーを監視します。
@@ -125,11 +127,12 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 - 定義と割り当てを作成するときは、組織階層を考慮します。 管理グループやサブスクリプション レベルのような高いレベルで定義を作成することをお勧めします。 それから、次の子レベルで割り当てを作成します。 管理グループで定義を作成した場合、その管理グループ内にあるサブスクリプションまたはリソース グループまで割り当ての対象にできます。
 
 - 1 つのポリシー定義の場合でも、イニシアチブ定義を作成して割り当てることをお勧めします。
-たとえば、ポリシー定義 *policyDefA* をイニシアチブ定義 *initiativeDefC* の下に作成します。 後で *policyDefA* に似た目標の別のポリシー定義 *policyDefB* を作成する場合、それを *initiativeDefC* の下に追加して、まとめて追跡できます。
+  たとえば、ポリシー定義 *policyDefA* をイニシアチブ定義 *initiativeDefC* の下に作成します。 後で *policyDefA* に似た目標の別のポリシー定義 *policyDefB* を作成する場合、それを *initiativeDefC* の下に追加して、まとめて追跡できます。
 
 - イニシアチブ割り当てを作成してあると、そのイニシアチブに追加されたポリシー定義もそのイニシアチブ割り当ての一部になります。
 
-- イニシアチブ割り当てが評価されたときは、イニシアチブ内のすべてのポリシーも評価されます。 ポリシーを個別に評価する必要がある場合は、ポリシーをイニシアティブに含めないことをお勧めします。
+- イニシアチブ割り当てが評価されたときは、イニシアチブ内のすべてのポリシーも評価されます。
+  ポリシーを個別に評価する必要がある場合は、ポリシーをイニシアティブに含めないことをお勧めします。
 
 ## <a name="video-overview"></a>ビデオの概要
 
@@ -141,8 +144,6 @@ Azure Policy には、既定で使うことができる組み込みポリシー�
 
 これで、Azure Policy の概要といくつかの主要な概念に関する説明は終了です。推奨される次の手順は以下のとおりです。
 
-- [ポータルを使用してポリシー定義を割り当てます](assign-policy-portal.md)。
-- [Azure CLI を使用してポリシー定義を割り当てます](assign-policy-azurecli.md)。
-- [PowerShell を使用してポリシー定義を割り当てます](assign-policy-powershell.md)。
-- 「[Azure 管理グループのリソースを整理する](..//management-groups/overview.md)」で、管理グループとは何かを確認します。
-- チャンネル 9 の「[Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030)」(Azure Policy による Azure 環境の管理) を視聴します。
+- [ポータルを使用してポリシー定義を割り当てます](./assign-policy-portal.md)。
+- [Azure CLI を使用してポリシー定義を割り当てます](./assign-policy-azurecli.md)。
+- [PowerShell を使用してポリシー定義を割り当てます](./assign-policy-powershell.md)。

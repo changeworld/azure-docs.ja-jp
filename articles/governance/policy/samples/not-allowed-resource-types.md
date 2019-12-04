@@ -1,14 +1,14 @@
 ---
 title: サンプル - 許可されないリソースの種類
-description: このサンプル ポリシー定義は、指定されたリソースの種類のデプロイを禁止します。
+description: このサンプル ポリシー定義は、パラメーターで定義される指定されたリソースの種類のデプロイを禁止します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 35bbf4f07ce7deb8458f5dee84710b06b92732b9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2ca0718ce730c3bede3fc65fcf48758de1617029
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076163"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463580"
 ---
 # <a name="sample---not-allowed-resource-types"></a>サンプル - 許可されないリソースの種類
 

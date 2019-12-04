@@ -1,19 +1,19 @@
 ---
-title: Azure Migrate Server Migration を使用して Hyper-V VM を Azure に移行する | Microsoft Docs
-description: この記事では、Azure Migrate Server Migration を使用して Hyper-V VM を Azure に移行する方法を説明します
+title: Azure Migrate Server Migration を使用して Hyper-V VM を Azure に移行する
+description: Azure Migrate Server Migration を使用してオンプレミスの Hyper-V VM を Azure に移行する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 755bb6d019418cf9dae22ebf7ee6a3c94af3c750
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: be5d519269739f09b4a4264292f578b1d7051d26
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309444"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196308"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM を Azure に移行する 
 
@@ -27,7 +27,7 @@ ms.locfileid: "70309444"
 > [!div class="checklist"]
 > * Azure とオンプレミスの Hyper-V 環境を準備する
 > * ソース環境を設定し、レプリケーション アプライアンスをデプロイする。
-> * ターゲット環境を設定する。
+> * ターゲット環境を設定します。
 > * レプリケーションを有効にします。
 > * テスト移行を実行して、すべてが想定どおりに動作していることを確認します。
 > * Azure への完全な移行を実行する。
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを始める前に、次の準備が必要です。
 
-1. Hyper-V の移行のアーキテクチャを[確認](migrate-architecture.md)します。
+1. Hyper-V の移行のアーキテクチャを[確認](hyper-v-migration-architecture.md)します。
 2. このシリーズの[最初のチュートリアルを完了](tutorial-prepare-hyper-v.md)して、移行用に Azure と hyper-V を設定します。 最初のチュートリアルでは、次のことを行います。
     - 移行用に [Azure を準備する](tutorial-prepare-hyper-v.md#prepare-azure)。
     - 移行用に[オンプレミス環境を準備する](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-migration)。

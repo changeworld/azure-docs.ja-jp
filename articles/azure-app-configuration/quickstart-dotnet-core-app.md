@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 149542965737b2703bc18e985bfaf4d90c8dab29
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 986bda4ab95985820e61c93bbe82431fb50c983b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709413"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185029"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>クイック スタート:App Configuration を使用して .NET Core アプリを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "71709413"
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
+## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
@@ -52,7 +52,7 @@ ms.locfileid: "71709413"
 
         dotnet new console
 
-## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
+## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
 1. 次のコマンドを実行して、`Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet パッケージへの参照を追加します。
 
@@ -84,7 +84,7 @@ ms.locfileid: "71709413"
 
 ## <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
-1. **ConnectionString** という名前の環境変数に、アプリ構成ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
+1. **ConnectionString** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -110,7 +110,7 @@ ms.locfileid: "71709413"
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、新しいアプリ構成ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から .NET Core コンソール アプリと共に使用しました。 App Configuration の使用方法についてさらに学習するには、認証について示した次のチュートリアルに進んでください。
+このクイックスタートでは、新しい App Configuration ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から .NET Core コンソール アプリと共に使用しました。 構成設定を動的に更新するように .NET Core アプリを構成する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [マネージド ID の統合](./howto-integrate-azure-managed-service-identity.md)
+> [動的な構成を有効にする](./enable-dynamic-configuration-dotnet-core.md)

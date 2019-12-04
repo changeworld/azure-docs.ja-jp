@@ -1,5 +1,5 @@
 ---
-title: B2B コラボレーション ユーザーを一括で招待するためのチュートリアル - Azure Active Directory | Microsoft Docs
+title: B2B コラボレーション ユーザーを一括で招待するためのチュートリアル - Azure AD
 description: このチュートリアルでは、PowerShell と CSV ファイルを使用して、外部の Azure AD B2B コラボレーション ユーザーに招待状を一括送信する方法について説明します。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1ffcdad43195ce49ef3cd8b695f9ad5009af82fb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128719"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272347"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する (プレビュー)
 

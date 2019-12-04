@@ -1,5 +1,5 @@
 ---
-title: Windows VM のユーザー割り当てマネージド ID を使用して Azure Resource Manager にアクセスする
+title: チュートリアル`:` マネージド ID を使用して Azure Resource Manager にアクセスする - Windows - Azure AD
 description: Windows VM 上でユーザー割り当てマネージド ID を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアル。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6fc7e13cf5ea3991f81d53edcabe0980d799cb0
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 0999492f0d9c7d28da3ac896792fb2d7b898fd18
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59520867"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224214"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>チュートリアル:Windows VM 上でユーザー割り当てマネージド ID を使用して Azure Resource Manager にアクセスする
 
@@ -50,7 +50,7 @@ ms.locfileid: "59520867"
 - このチュートリアルの必要なリソース作成およびロール管理のステップを実行するために、お使いのアカウントには、適切な範囲 (サブスクリプションまたはリソース グループ) を対象とする "所有者" アクセス許可が必要となります。 ロールの割り当てに関するサポートが必要な場合は、「[ロールベースのアクセス制御を使用して Azure サブスクリプション リソースへのアクセスを管理する](/azure/role-based-access-control/role-assignments-portal)」を参照してください。
 - [Azure PowerShell モジュールの最新バージョンをインストール](/powershell/azure/install-az-ps)します。 
 - `Connect-AzAccount` を実行して、Azure との接続を作成します。
-- [PowerShellGet の最新バージョン](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)をインストールします。
+- [PowerShellGet の最新バージョン](/powershell/scripting/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget)をインストールします。
 - `Install-Module -Name PowerShellGet -AllowPrerelease` を実行して `PowerShellGet` モジュールのプレリリース バージョンを取得します (`Az.ManagedServiceIdentity` モジュールをインストールするには、このコマンドを実行した後に現在の PowerShell セッションから `Exit` することが必要になる場合があります)。
 - `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` を実行して `Az.ManagedServiceIdentity` モジュールのプレリリース バージョンをインストールして、この記事のユーザー割り当て ID 操作を実行します。
 
@@ -120,7 +120,7 @@ CanDelegate: False
 
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
-2. ポータルで **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、**[概要]** の **[接続]** をクリックします。
+2. ポータルで **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** の **[接続]** をクリックします。
 
 3. Windows VM を作成したときに使用した**ユーザー名**と**パスワード**を入力します。
 

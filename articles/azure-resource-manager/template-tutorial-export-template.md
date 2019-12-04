@@ -1,19 +1,16 @@
 ---
-title: チュートリアル - Azure portal から Azure Resource Manager テンプレートをエクスポートする
+title: チュートリアル - Azure portal からテンプレートをエクスポートする
 description: エクスポートしたテンプレートを使用してテンプレート開発を行う方法について説明します。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6e4f246cac0ecc1ab5942e522595f59c3625db8f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6c22a8e2b479ed7d3a225bc649d89f5302d0f536
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243202"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406006"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>チュートリアル:Azure portal からエクスポートしたテンプレートを使用する
 
@@ -25,7 +22,7 @@ ms.locfileid: "72243202"
 
 Visual Studio Code と Resource Manager ツール拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関する記事を参照してください。
 
-## <a name="review-your-template"></a>テンプレートを確認する
+## <a name="review-template"></a>テンプレートを確認する
 
 前のチュートリアルで完成したテンプレートには、次の JSON が含まれていました。
 
@@ -52,7 +49,7 @@ Visual Studio Code と Resource Manager ツール拡張機能に加え、Azure P
 1. **[確認と作成]** を選択します。
 1. **作成** を選択します。 リソースが作成されるまでしばらくかかります。
 
-## <a name="export-the-template"></a>テンプレートをエクスポートする
+## <a name="export-template"></a>テンプレートをエクスポートする
 
 1. **[リソースに移動]** を選択します。
 
@@ -71,7 +68,7 @@ Visual Studio Code と Resource Manager ツール拡張機能に加え、Azure P
 > [!IMPORTANT]
 > 通常、エクスポートされたテンプレートには、テンプレートの作成に必要なものより詳細な情報が含まれます。 たとえば、エクスポートされたテンプレートの SKU オブジェクトには、5 つのプロパティがあります。 このテンプレートでも機能しますが、**name** プロパティだけを使用することもできます。 エクスポートしたテンプレートから始めて、必要に応じて変更できます。
 
-## <a name="revise-the-existing-template"></a>既存のテンプレートを修正する
+## <a name="revise-existing-template"></a>既存のテンプレートを修正する
 
 エクスポートされたテンプレートでは、必要な JSON の大部分が提供されますが、カスタマイズして自分用のテンプレートにする必要があります。 独自のテンプレートとエクスポートされたテンプレートでの、パラメーターと変数の違いに特に注意してください。 もちろん、エクスポート プロセスでは、独自のテンプレートで既に定義したパラメーターと変数は認識されません。
 
@@ -81,7 +78,7 @@ Visual Studio Code と Resource Manager ツール拡張機能に加え、Azure P
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-template"></a>テンプレートのデプロイ
 
 テンプレートをデプロイするには、Azure CLI または Azure PowerShell を使用します。
 

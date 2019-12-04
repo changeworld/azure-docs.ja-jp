@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Edge デバイスを Azure IoT Central に追加する | Microsoft Docs
-description: オペレーターとして、Azure IoT Edge デバイスを Azure IoT Central に追加します
+description: オペレーターとして、Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加します
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -9,185 +9,177 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: ae80a624ed1f85a1f59fea79b152a4bc31067ad1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f16db7ebff087b164228f2b23d6fa7ec302705bb
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73892638"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406345"
 ---
-# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application-preview-features"></a>チュートリアル:Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する (プレビュー機能)
+# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-このチュートリアルでは、*Azure IoI Edge デバイス*を Microsoft Azure IoT Central アプリケーションに追加して構成する方法を示します。 このチュートリアルでは、Azure Marketplace から Azure IoT Edge 対応の Linux VM を選択しました。
+このチュートリアルでは、Azure IoT Edge デバイスをお使いの Azure IoT Central アプリケーションに追加して構成する方法について説明します。 このチュートリアルでは、Azure Marketplace から IoT Edge 対応の Linux VM を選択しました。
 
 このチュートリアルは次の 2 つの部分で構成されています。
 
-* まず、オペレーターとして、Azure IoT Edge デバイスのクラウド ファースト プロビジョニングを実行する方法について説明します。
-* 次に、Azure IoT Edge デバイスのデバイス ファースト プロビジョニングを実行する方法を学習します。
+* まず、オペレーターとして、IoT Edge デバイスのクラウド ファースト プロビジョニングを実行する方法について説明します。
+* 次に、IoT Edge デバイスの "デバイス ファースト" プロビジョニングを実行する方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * 新しい Azure IoT Edge デバイスを追加する
-> * プロビジョニングに役立つように SAS キーを使用して Azure IoT Edge デバイスを構成する
+> * 新しい IoT Edge デバイスを追加する
+> * Shared Access Signature (SAS) キーを使用してプロビジョニングに役立つよう IoT Edge デバイスを構成する
 > * IoT Central でダッシュボードとモジュールの正常性を表示する
-> * Azure IoT Edge デバイスで実行されているモジュールにコマンドを送信する
-> * Azure IoT Edge デバイスで実行されているモジュールのプロパティを設定する
+> * IoT Edge デバイスで実行されているモジュールにコマンドを送信する
+> * IoT Edge デバイスで実行されているモジュールのプロパティを設定する
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、Azure IoT Central アプリケーションが必要です。 このクイックスタートに従って [Azure IoT Central アプリケーションを作成](./quick-deploy-iot-central.md)します。
+このチュートリアルを完了するには、Azure IoT Central アプリケーションが必要です。 [こちらのクイックスタートに従って、Azure IoT Central アプリケーションを作成](./quick-deploy-iot-central.md)します。
 
 ## <a name="enable-azure-iot-edge-enrollment-group"></a>Azure IoT Edge 登録グループを有効にする
-[管理] ページから、Azure IoT Edge 登録グループの SAS キーを有効にします。
+**[管理]** ページから、Azure IoT Edge 登録グループの SAS キーを有効にします。
 
-![デバイス テンプレート - Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/groupenrollment.png)
+![デバイス接続が強調表示されている [管理] ページのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/groupenrollment.png)
 
-## <a name="cloud-first-azure-iot-edge-device-provisioning"></a>クラウド ファーストの Azure IoT Edge デバイス プロビジョニング   
-このセクションでは、**環境センサー テンプレート**を使用して新しい Azure IoT Edge デバイスを作成し、デバイスをプロビジョニングします。 左側のナビゲーションで [デバイス] をクリックし、[Environment Sensor Template] (環境センサー テンプレート) をクリックします。 
+## <a name="provision-a-cloud-first-azure-iot-edge-device"></a>"クラウド ファースト" の Azure IoT Edge デバイスをプロビジョニングする  
+このセクションでは、環境センサー テンプレートを使用して新しい IoT Edge デバイスを作成し、デバイスをプロビジョニングします。 **[デバイス]**  >  **[Environment Sensor Template]\(環境センサー テンプレート\)** の順に選択します。 
 
-![デバイス テンプレート - Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/deviceexplorer.png)
+![[Environment Sensor Template]\(環境センサー テンプレート\) が強調表示されている [デバイス] ページのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/deviceexplorer.png)
 
-**[+ 新規]** をクリックし、適切なデバイス ID と名前を入力します。 
+**[+ 新規]** を選択し、任意のデバイス ID と名前を入力します。 **作成** を選択します。
 
-![デバイス テンプレート - Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/cfdevicecredentials.png)
+![[デバイス ID] と [作成] が強調表示されている [新しいデバイスの作成] ダイアログ ボックスのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfdevicecredentials.png)
 
-デバイスのモードが **[Registered] (登録済み)** になります。
+デバイスのモードが **[登録済み]** になります。
 
-![デバイス テンプレート - Azure IoT Edge](./media/tutorial-add-edge-as-leaf-device/cfregistered.png)
+![[Device status]\(デバイスの状態\) が強調表示されている [Environment Sensor Template]\(環境センサー テンプレート\) ページのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfregistered.png)
 
-## <a name="deploy-an-azure-iot-edge-enabled-linux-vm"></a>Azure IoT Edge 対応の Linux VM をデプロイする
+## <a name="deploy-an-iot-edge-enabled-linux-vm"></a>IoT Edge 対応の Linux VM をデプロイする
 
->注:任意のコンピューターまたはデバイスを使用することを選択できます。 OS: Linux または Windows
+> [!NOTE]
+> 任意のコンピューターまたはデバイスを選択して使用できます。 オペレーティング システムは Linux または Windows になります。
 
-このチュートリアルでは、Azure 上に作成できる Azure IoT 対応の Linux VM を選択しました。 [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) が表示されるので、 **[今すぐ入手する]** ボタンをクリックします。 
+このチュートリアルでは、Azure 上に作成された Azure IoT 対応の Linux VM を使用しています。 [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) で、 **[今すぐ入手する]** を選択します。 
 
-![Azure Marketplace](./media/tutorial-add-edge-as-leaf-device/cfmarketplace.png)
+![[今すぐ入手する] が強調表示されている Azure Marketplace のスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfmarketplace.png)
 
-**[Continue]\(続行\)** をクリックします
+**[続行]** をクリックします。
 
-![Azure Marketplace](./media/tutorial-add-edge-as-leaf-device/cfmarketplacecontinue.png)
+![[続行] が強調表示されている [Azure でこのアプリを作成する] ダイアログ ボックスのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfmarketplacecontinue.png)
 
 
-Azure portal に移動されます。 **[作成]** ボタンをクリックします
+Azure portal が表示されます。 **作成** を選択します。
 
-![Azure Marketplace](./media/tutorial-add-edge-as-leaf-device/cfubuntu.png)
+![[作成] が強調表示されている Azure portal のスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfubuntu.png)
 
-[サブスクリプション] を選択し、できれば新しいリソース グループを作成します。VM の可用性のために米国西部 2 を選択し、ユーザーとパスワードを入力します。 この先の手順で必要になるユーザーとパスワードを覚えておきます。 **[確認と作成]** をクリックします
+**[サブスクリプション]** を選択し、新しいリソース グループを作成します。VM の可用性に対して **[(米国) 米国西部 2]** を選択します。 次に、ユーザーとパスワードの情報を入力します。 これらはこの先の手順で必要になるため、覚えておいてください。 **[Review + create]\(レビュー + 作成\)** を選択します。
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfvm.png)
+![さまざまなオプションが強調表示されている [Create a virtual machine]\(仮想マシンの作成\) 詳細ページのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfvm.png)
 
-検証されたら **[作成]** をクリックします
+検証後、 **[作成]** を選択します。
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfvmvalidated.png)
+![[検証に成功しました] と [作成] が強調表示されている [Create a virtual machine]\(仮想マシンの作成\) ページのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfvmvalidated.png)
 
-リソースの作成には数分かかります。 **[リソースに移動]** をクリックします
+リソースの作成には数分かかります。 **[リソースに移動]** を選択します。
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfvmdeploymentcomplete.png)
+![[リソースに移動] が強調表示されている、デプロイの完了ページのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfvmdeploymentcomplete.png)
 
-### <a name="provision-vm-as-azure-iot-edge-device"></a>Azure IoT Edge デバイスとして VM をプロビジョニングする 
+### <a name="provision-vm-as-an-iot-edge-device"></a>IoT Edge デバイスとして VM をプロビジョニングする 
 
-左側のナビゲーションの [サポート + トラブルシューティング] で、[シリアル コンソール] をクリックしします
+**[サポート + トラブルシューティング]** で、 **[シリアル コンソール]** を選択します。
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfserialconsole.png)
+![[シリアル コンソール] が強調表示されている [サポート + トラブルシューティング] のオプションのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfserialconsole.png)
 
-次のような画面が表示されます
+次のような画面が表示されます。
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsole.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfconsole.png)
 
-Enter キーを押し、プロンプトに従ってユーザー名とパスワードを入力して、Enter キーを押します。 
+Enter キーを押します。プロンプトに従ってユーザー名とパスワードを入力し、もう一度 Enter キーを押します。 
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsolelogin.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfconsolelogin.png)
 
-管理者/root としてコマンドを実行するには、**sudo su –** コマンドを実行します
+管理者 (ユーザー "root") としてコマンドを実行するには、「**sudo su -** 」と入力します。
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfsudo.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfsudo.png)
 
-Azure IoT Edge ランタイムのバージョンをチェックします。 最新の GA バージョンは 1.0.8 です
+IoT Edge ランタイムのバージョンを確認します。 この記事の執筆時点では、最新の GA バージョンは 1.0.8 です。
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsoleversion.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfconsoleversion.png)
 
-vim エディターをインストールか、好みに応じて nano を使用します。 
+vim エディターをインストールするか、必要に応じて nano を使用します。 
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsolevim.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfconsolevim.png)
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfvim.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfvim.png)
 
-Azure IoT Edge の config.yaml ファイルを構成します
+IoT Edge の config.yaml ファイルを編集します。
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsoleconfig.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfconsoleconfig.png)
 
-下にスクロールし、yaml ファイルの接続文字列の部分をコメント アウトします。 
+下へスクロールし、yaml ファイルの接続文字列部分をコメントアウトします。 
 
 **変更前**
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioning.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioning.png)
 
-**変更後** (Esc キーを押し、小文字の a を押して、編集を開始します)
+**変更後** (Esc キーを押し、小文字の a キーを押すと、編集が開始されます。)
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioningcomments.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfmanualprovisioningcomments.png)
 
 yaml ファイルの対称キーの部分をコメント解除します。 
 
 **変更前**
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmcomments.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmcomments.png)
 
 **変更後**
 
-![Ubuntu VM](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmuncomments.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfconsolesymmuncomments.png)
 
-IoT Central に移動し、Azure IoT Edge デバイスのスコープ ID、デバイス ID、および対称キーを取得します ![デバイス接続](./media/tutorial-add-edge-as-leaf-device/cfdeviceconnect.png)
+IoT Central に移動します。 IoT Edge デバイスのスコープ ID、デバイス ID、および対称キーを取得します。
+![各種デバイス接続オプションが強調表示されている IoT Central のスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfdeviceconnect.png)
 
-Linux ボックスにアクセスし、スコープ ID と登録 ID をデバイス ID と対称キーに置き換えます
+Linux コンピューターにアクセスし、スコープ ID と登録 ID を、デバイス ID と対称キーに置き換えます。
 
-**Esc** キーを押し、「 **: wq!** 」と入力して、 **Enter** キーを押して変更を保存します
+Esc キーを押し、「 **:wq!** 」と入力します。 Enter キーを押して変更を保存します。
 
-Azure IoT Edge を再起動して変更を処理し、**Enter** キーを押します
+変更を処理するために IoT Edge を再起動し、Enter キーを押します。
 
-![デバイス接続](./media/tutorial-add-edge-as-leaf-device/cfrestart.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfrestart.png)
 
-「**iotedge list**」と入力します。数分経過すると、3 つのモジュールがデプロイされているのを確認できます
+「**iotedge list**」と入力します。 数分後、3 つのモジュールがデプロイされていることがわかります。
 
-![デバイス接続](./media/tutorial-add-edge-as-leaf-device/cfconsolemodulelist.png)
+![コンソールのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfconsolemodulelist.png)
 
 
 ## <a name="iot-central-device-explorer"></a>IoT Central デバイス エクスプローラー 
 
-IoT Central で、デバイスはプロビジョニング状態に移行します
+IoT Central で、デバイスがプロビジョニング済み状態に移行します。
 
-![デバイス接続](./media/tutorial-add-edge-as-leaf-device/cfprovisioned.png)
+![[Device status]\(デバイスの状態\) が強調表示されている、IoT Central デバイスのオプションのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfprovisioned.png)
 
-[モジュール] タブに、IoT Central のデバイスとモジュールの状態が表示されます 
+**[モジュール]** タブには、IoT Central 上のデバイスとモジュールの状態が表示されます。 
 
-![デバイス接続](./media/tutorial-add-edge-as-leaf-device/cfiotcmodulestatus.png)
+![IoT Central の [モジュール] タブのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/cfiotcmodulestatus.png)
 
 
-クラウド プロパティが (前の手順で作成したデバイス テンプレートから) フォームに表示されます。 値を入力し、 **[保存]** をクリックします。 
+前の手順で作成したデバイス テンプレートから、クラウド プロパティがフォームに表示されます。 値を入力し、 **[保存]** を選択します。 
 
-![デバイス接続](./media/tutorial-add-edge-as-leaf-device/deviceinfo.png)
+![[My Linux Edge Device]\(自分の Linux Edge デバイス\) フォームのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/deviceinfo.png)
 
-ダッシュボード タイル
+ダッシュボード タイルの形式で表示されるビューを次に示します。
 
-![デバイス接続](./media/tutorial-add-edge-as-leaf-device/dashboard.png)
-
-このチュートリアルでは、以下の内容を学習しました。
-
-* 新しい Azure IoT Edge デバイスを追加する
-* プロビジョニングに役立つように SAS キーを使用して Azure IoT Edge デバイスを構成する
-* IoT Central でダッシュボードとモジュールの正常性を表示する
-* Azure IoT Edge デバイスで実行されているモジュールにコマンドを送信する
-* Azure IoT Edge デバイスで実行されているモジュールのプロパティを設定する
+![[My Linux Edge Device]\(自分の Linux Edge デバイス\) ダッシュボード タイルのスクリーンショット](./media/tutorial-add-edge-as-leaf-device/dashboard.png)
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは、IoT Central で Azure IoT Edge デバイスを管理する方法について学習しました。推奨される次の手順は以下のとおりです。
+ここでは、IoT Central で IoT Edge デバイスを操作および管理する方法について学習しました。推奨される次の手順は以下のとおりです。
 
 <!-- Next how-tos in the sequence -->
-
-透過的なゲートウェイを構成する方法。次のチュートリアルに従ってください
 
 > [!div class="nextstepaction"]
 > [透過的なゲートウェイを構成する](../../iot-edge/how-to-create-transparent-gateway.md)

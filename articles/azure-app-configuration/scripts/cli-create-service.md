@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8a58b73f3f3acb8d7c6ced9e0086687b54fff734
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cd150368898b3f02b4366debbe775ece76b23043
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029798"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184907"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure App Configuration ストアの作成
 
@@ -71,16 +71,16 @@ echo "$connstring"
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは、次のコマンドを使用して新しいリソース グループとアプリ構成ストアを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは、次のコマンドを使用して新しいリソース グループと App Configuration ストアを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | command | メモ |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az appconfig create](/cli/azure/ext/appconfig/appconfig) | アプリ構成ストア リソースを作成します。 |
-| [az appconfig key list](/cli/azure/ext/appconfig/appconfig/kv) | アプリ構成ストアに格納されているキーを一覧表示します。 |
+| [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | App Configuration ストア リソースを作成します。 |
+| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | App Configuration ストアに格納されているキーを一覧表示します。 |
 
 ## <a name="next-steps"></a>次の手順
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration のドキュメント](../cli-samples.md)のページにあります。
+その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration の CLI サンプル](../cli-samples.md)のページにあります。

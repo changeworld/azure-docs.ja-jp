@@ -1,20 +1,20 @@
 ---
-title: 'チュートリアル: Azure CDN を使用し、静的な Web サイト上で SSL を使ってカスタム ドメインを有効にする - Azure Storage'
+title: チュートリアル:Azure の静的な Web サイトのカスタム ドメインと SSL を有効にする
 description: 静的な Web サイト ホスティングのためにカスタム ドメインを構成する方法について説明します。
 author: normesta
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/22/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a65c0e677182eb224f6bfa7ed834740458b97098
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 893ac53dc9f0b6b162c5ec22e478cd15706e50fb
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847007"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327494"
 ---
-# <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>チュートリアル: Azure CDN を使用し、静的な Web サイトに対して SSL を使ってカスタム ドメインを有効にする
+# <a name="tutorial-enable-custom-domain--ssl-for-a-static-website-in-azure"></a>チュートリアル:Azure の静的な Web サイトのカスタム ドメインと SSL を有効にする
 
 このチュートリアルは、シリーズの第 2 部です。 ここでは、静的な Web サイトに対して SSL を使ってカスタム ドメイン エンドポイントを有効にする方法について説明します。 
 
@@ -30,7 +30,7 @@ ms.locfileid: "68847007"
 
 このチュートリアルを開始する前に、第 1 部の「[Tutorial: Host a static website on Blob Storage](storage-blob-static-website-host.md)」 (チュートリアル: Blob Storage で静的な Web サイトをホストする) を完了します。 
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure ポータル](https://portal.azure.com/)にサインインして、作業を開始します。
 

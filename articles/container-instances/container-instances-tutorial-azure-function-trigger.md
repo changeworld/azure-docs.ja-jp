@@ -1,20 +1,15 @@
 ---
-title: チュートリアル - Azure 関数で Azure Container Instances をトリガーする
+title: チュートリアル - Azure 関数でコンテナー グループをトリガーする
 description: HTTP によってトリガーされるサーバーレス PowerShell 関数を作成して Azure コンテナー インスタンスの作成を自動化します。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 00bd017b0bcff6386e678802c301087819792744
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179950"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533371"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>チュートリアル:HTTP によってトリガーされる Azure 関数を使用してコンテナー グループを作成する
 
@@ -114,7 +109,7 @@ if ($name) {
 
 ## <a name="run-the-function-in-azure"></a>Azure で関数を実行する
 
-デプロイが正常に完了したら、関数の URL を取得します。 たとえば、Visual Studio Code の **[Azure:Functions]** 領域を使用して **HttpTrigger** 関数の URL をコピーするか、または [Azure portal](../azure-functions/functions-create-first-azure-function.md#test-the-function) で関数の URL を取得します。
+デプロイが正常に完了したら、関数の URL を取得します。 たとえば、Visual Studio Code の **[Azure: Functions]** 領域を使用して **HttpTrigger** 関数の URL をコピーするか、[Azure portal](../azure-functions/functions-create-first-azure-function.md#test-the-function) で関数の URL を取得します。
 
 この関数の URL には一意のコードが含まれており、次の形式になっています。
 

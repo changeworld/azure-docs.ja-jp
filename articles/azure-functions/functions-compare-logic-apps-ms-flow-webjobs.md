@@ -1,27 +1,19 @@
 ---
 title: Microsoft Flow、Logic Apps、Functions、および WebJobs の概要 - Azure
 description: 統合タスクに最適化された Microsoft クラウド サービス (Microsoft Flow、Logic Apps、Functions、および WebJobs) を比較します。
-services: functions, logic-apps
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Microsoft Flow, Flow, Logic Apps, Azure Functions, Functions, Azure WebJobs, WebJobs, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
 ms.topic: overview
 ms.date: 04/09/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: e599ff280481549f68822d96f97b85f2516b1593
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: a20729e7c47e6bf2ad77e47fa228495d8b482aab
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082748"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278626"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Microsoft Flow、Logic Apps、Functions、および WebJobs の概要
 
-この記事では、次の Microsoft クラウド サービスを比較します。
-
+この記事では、次の Microsoft クラウドを比較します 
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
@@ -56,8 +48,8 @@ Functions と Logic Apps は、サーバーレス ワークロードを可能に
 
 Azure Functions では、コードを記述したり [Durable Functions 拡張機能](durable/durable-functions-overview.md)を使用したりすることによって、オーケストレーションを開発します。 Logic Apps では、GUI を使用するか構成ファイルを編集することによってオーケストレーションを作成します。
 
-オーケストレーションを構築するときは、ロジック アプリから関数を呼び出したり、関数からロジック アプリを呼び出したりしながら、さまざまなサービスを組み合わせることができます。 どのように個々のオーケストレーションを構築するかは、サービスの機能や個人の好みに基づいて選択します。 これらのサービスの主な違いをいくつか次の表に示します。
- 
+オーケストレーションを構築するときは、ロジック アプリから関数を呼び出したり、関数からロジック アプリを呼び出したりしながら、さまざまなサービスを組み合わせることができます。 どのように個々のオーケストレーションを構築するかは、サービスの機能や個人の好みに基づいて選択します。 これらの主な違いをいくつか次の表に示します。
+
 |  | Durable Functions | Logic Apps |
 | --- | --- | --- |
 | 開発 | コード第一 (命令型) | デザイナー第一 (宣言型) |

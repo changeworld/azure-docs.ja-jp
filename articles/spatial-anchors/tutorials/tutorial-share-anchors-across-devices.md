@@ -1,19 +1,19 @@
 ---
-title: チュートリアル - セッションやデバイス間での Azure Spatial Anchors の共有 | Microsoft Docs
+title: チュートリアル:セッションやデバイス間でアンカーを共有する
 description: このチュートリアルでは、バックエンド サービスを使用して、Unity で Azure Spatial Anchors 識別子を Android/iOS デバイス間で共有する方法について説明します。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e8a60d5d90b684698d6fcb612278bcae6d4ed08e
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f0029fcf8e9efdea529212a7cca49cc8660c623f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882296"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276964"
 ---
 # <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>チュートリアル:セッションやデバイス間での Azure Spatial Anchors の共有
 

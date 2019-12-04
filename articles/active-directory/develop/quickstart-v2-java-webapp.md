@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 93ae820f8c98b749ef8f71b17bf3d540d7886ed6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6645fa30772d7e1556f7a1aae76c7189577c3c1d
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832124"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452621"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -136,7 +136,7 @@ IDE から Web アプリケーションを実行している場合は、[実行]
 
 ### <a name="getting-msal"></a>MSAL の取得
 
-MSAL4J は、ユーザーをサインインさせるために使用されたり、Microsoft ID プラットフォームによって保護されている API にアクセスするためのトークンを要求するために使用されたりする Java ライブラリです。
+MSAL for Java (MSAL4J) は、ユーザーをサインインさせるために使用されたり、Microsoft ID プラットフォームによって保護されている API にアクセスするためのトークンを要求するために使用されたりする Java ライブラリです。
 
 Maven または Gradle を使用して、アプリケーションに MSAL4J を追加し、アプリケーションの pom.xml (Maven) または build.gradle (Gradle) ファイルに対して以下の変更を行うことで、依存関係を管理します。
 
@@ -154,7 +154,7 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '1.0.0'
 
 ### <a name="msal-initialization"></a>MSAL の初期化
 
-MSAL4J を使用するファイルの先頭に次のコードを追加して、MSAL4J への参照を追加します。
+MSAL for Java を使用するファイルの先頭に次のコードを追加して、MSAL4J への参照を追加します。
 
 ```Java
 import com.microsoft.aad.msal4j.*;

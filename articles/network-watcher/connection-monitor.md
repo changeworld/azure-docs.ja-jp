@@ -1,6 +1,6 @@
 ---
-title: ネットワーク通信の監視 - チュートリアル - Azure Portal | Microsoft Docs
-description: Azure Network Watcher の接続モニター機能によって 2 つの仮想マシン間のネットワーク通信を監視する方法を説明します。
+title: チュートリアル - Azure portal を使用してネットワーク通信を監視する
+description: このチュートリアルでは、Azure Network Watcher の接続モニター機能によって 2 つの仮想マシン間のネットワーク通信を監視する方法を説明します。
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233884"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419700"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して 2 つの仮想マシン間のネットワーク通信を監視する
 
@@ -51,11 +51,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     |Setting|値|
     |---|---|
-    |Name|myVm1|
+    |名前|myVm1|
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |サブスクリプション| サブスクリプションを選択します。|
-    |リソース グループ| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
+    |Subscription| サブスクリプションを選択します。|
+    |Resource group| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
     |Location| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、 **[選択]** を選択します。
@@ -74,9 +74,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |手順|Setting|値|
 |---|---|---|
 | 1 | いずれかのバージョンの **Ubuntu Server** を選択する |                                                                         |
-| 3 | Name                                  | myVm2                                                                   |
+| 3 | 名前                                  | myVm2                                                                   |
 | 3 | 認証の種類                   | SSH 公開キーを貼り付けるか、 **[パスワード]** を選択して、パスワードを入力します。 |
-| 3 | リソース グループ                        | **[既存のものを使用]** を選択し、 **[myResourceGroup]** を選択します。                 |
+| 3 | Resource group                        | **[既存のものを使用]** を選択し、 **[myResourceGroup]** を選択します。                 |
 | 6 | Extensions                            | **Linux 用 Network Watcher Agent**                                             |
 
 VM のデプロイには数分かかります。 残りの手順を続行する前に、VM がデプロイを完了するまで待ちます。
@@ -93,10 +93,10 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
 
     | Setting                  | 値               |
     | ---------                | ---------           |
-    | Name                     | myVm1-myVm2(22)     |
-    | ソース                   |                     |
+    | 名前                     | myVm1-myVm2(22)     |
+    | source                   |                     |
     | 仮想マシン          | myVm1               |
-    | 宛先              |                     |
+    | Destination              |                     |
     | 仮想マシンを選択する |                     |
     | 仮想マシン          | myVm2               |
     | Port                     | 22                  |
@@ -151,8 +151,8 @@ VM のデプロイには数分かかります。 残りの手順を続行する�
     | ---                     | ---            |
     | 宛先ポート範囲 | 22             |
     | Action                  | 拒否           |
-    | 優先順位                | 100            |
-    | Name                    | DenySshInbound |
+    | Priority                | 100            |
+    | 名前                    | DenySshInbound |
 
 5. 接続モニターは、60 秒間隔でプローブするため、数分待ってから、ポータルの左側の **[Network Watcher]** 、 **[接続モニター]** の順に選択し、 **[myVm1-myVm2(22)]** モニターを再度選択します。 次の図に示すように、違う結果になります。
 

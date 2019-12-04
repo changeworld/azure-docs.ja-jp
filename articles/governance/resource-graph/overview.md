@@ -1,16 +1,16 @@
 ---
 title: Azure Resource Graph の概要
-description: Azure Resource Graph サービスによってリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
+description: Azure Resource Graph サービスによってサブスクリプションとテナントにまたがるリソースの複雑なクエリの大規模な実行がどのように実現されるかについて理解します。
 ms.date: 10/21/2019
 ms.topic: overview
-ms.openlocfilehash: f75a2b65b59a9f0367a6c52c2a1cf058df5b59c3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 7a96faa8502fca6fc501985cd677ac28454f1ba1
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958742"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406700"
 ---
-# <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph サービスの概要
+# <a name="what-is-azure-resource-graph"></a>Azure Resource Graph とは
 
 Azure Resource Graph は Azure 内のサービスであり、Azure Resource Management を拡張するよう設計されています。環境を効果的に管理できるように、特定のセットのサブスクリプションにわたって大規模にクエリを実行する機能を備えた、高効率および高性能のリソース探索を提供します。 これらのクエリでは、次の機能を提供します。
 
@@ -92,6 +92,3 @@ Resource Graph は、Azure CLI、Azure PowerShell、Azure SDK for .NET などを
 - [Azure portal](first-query-portal.md) を使用して最初のクエリを実行します。
 - [Azure CLI](first-query-azurecli.md) を使用して最初のクエリを実行します。
 - [Azure PowerShell](first-query-powershell.md) を使用して最初のクエリを実行します。
-- [クエリ言語](./concepts/query-language.md)に関する詳細情報を入手します。
-- [初歩的なクエリ](./samples/starter.md)から開始します。
-- [高度なクエリ](./samples/advanced.md)について理解を深めます。

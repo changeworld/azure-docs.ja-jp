@@ -1,18 +1,18 @@
 ---
-title: エージェントレスの Azure Migrate Server Migration を使用してオンプレミスの VMware VM を Azure に移行する | Microsoft Docs
-description: Azure Migrate を使用して、オンプレミスの VMware VM の Azure へのエージェントレス移行を実行する方法について説明します。
+title: Azure Migrate Server Migration を使用して VMware VM のエージェントレス移行を実行する
+description: Azure Migrate を使用して VMware VM のエージェントレス移行を実行する方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ec7d10a1d9fec43c149c068fb408211db76d19eb
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 2b4aad83abc92170df5a7e7cfa7f7751b49b3424
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309376"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196412"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -48,12 +48,11 @@ Azure Migrate Server Migration ツールを使用して、VMware VM を Azure �
 
 このチュートリアルを始める前に、次の準備が必要です。
 
-1. VMware の移行アーキテクチャを[理解](migrate-architecture.md)します。
-2. このシリーズの[最初のチュートリアルを完了](tutorial-prepare-vmware.md)して、移行のために Azure と VMware を設定します。 具体的には、このチュートリアルでは以下を行う必要があります。
+1. このシリーズの[最初のチュートリアルを完了](tutorial-prepare-vmware.md)して、移行のために Azure と VMware を設定します。 具体的には、このチュートリアルでは以下を行う必要があります。
     - 移行のために [Azure を準備する](tutorial-prepare-vmware.md#prepare-azure)。
     - 移行のために[オンプレミス環境を準備する](tutorial-prepare-vmware.md#prepare-for-agentless-vmware-migration)。
     
-3. Azure に移行する前に、Azure Migrate Server Assessment を使用して VMware VM を評価してみることをお勧めします。 評価を設定するには、このシリーズの [2 番目のチュートリアルを完了](tutorial-assess-vmware.md)します。 VM を評価したくない場合、このチュートリアルはスキップできます。 評価を試してみることをお勧めしますが、移行を試みる前に評価を実行しなければならないわけではありません。
+2. Azure に移行する前に、Azure Migrate Server Assessment を使用して VMware VM を評価してみることをお勧めします。 評価を設定するには、このシリーズの [2 番目のチュートリアルを完了](tutorial-assess-vmware.md)します。 VM を評価したくない場合、このチュートリアルはスキップできます。 評価を試してみることをお勧めしますが、移行を試みる前に評価を実行しなければならないわけではありません。
 
 
 

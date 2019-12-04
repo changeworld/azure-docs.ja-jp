@@ -12,20 +12,20 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 83770e8c5f415670855b5cf2502d02c4d6919440
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: fdbe4846700c690261dbc734063f4420478666a8
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998075"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185215"
 ---
 # <a name="point-in-time-snapshot"></a>ポイントインタイム スナップショット
 
-Azure App Configuration は、新しいキーと値のペアが作成されたときとその後変更されたときの正確な時間を記録しています。 これらのレコードは、キー/値の変化の完全なタイムラインを形成します。 アプリ構成ストアは、あらゆるキー/値の履歴を再構築して、過去から現在に至るまでの任意の時点の値を再現することができます。 この機能により、過去にさかのぼって以前のキー/値を取得することができます。 たとえば、以前の構成を復旧してアプリケーションをロールバックするために、直近のデプロイより前の昨日の構成設定を取得できます。
+Azure App Configuration は、新しいキーと値のペアが作成されたときとその後変更されたときの正確な時間を記録しています。 これらのレコードは、キー/値の変化の完全なタイムラインを形成します。 App Configuration ストアは、あらゆるキーと値の履歴を再構築して、過去から現在に至るまでの任意の時点の値を再現することができます。 この機能により、過去にさかのぼって以前のキー/値を取得することができます。 たとえば、以前の構成を復旧してアプリケーションをロールバックするために、直近のデプロイより前の昨日の構成設定を取得できます。
 
 ## <a name="key-value-retrieval"></a>キー/値の取得
 
-過去のキー/値を取得するには、そのスナップショットが作成された日時を REST API 呼び出しの HTTP ヘッダーに指定します。 例: 
+過去のキー/値を取得するには、そのスナップショットが作成された日時を REST API 呼び出しの HTTP ヘッダーに指定します。 例:
 
         GET /kv HTTP/1.1
         Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
@@ -35,4 +35,4 @@ Azure App Configuration は、新しいキーと値のペアが作成された�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core Web アプリの作成](./quickstart-aspnet-core-app.md)  
+> [ASP.NET Core Web アプリケーションの作成](./quickstart-aspnet-core-app.md)  

@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 480e21994846f5b2adb85bcf846df2a7cdda4bda
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7969300e9865c943c0f3759277bd26529c0c5464
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444471"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184882"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Azure App Configuration ストアからのエクスポート
 
@@ -48,14 +48,14 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは、次のコマンドを使用してアプリ構成ストアをエクスポートします。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは、次のコマンドを使用して App Configuration ストアからのエクスポートを実行します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | command | メモ |
 |---|---|
-| [az appconfig export](/cli/azure/ext/appconfig/appconfig) | アプリ構成ストア リソースからのエクスポートを行います。 |
+| [az appconfig kv export](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-export) | App Configuration ストア リソースからのエクスポートを行います。 |
 
 ## <a name="next-steps"></a>次の手順
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration のドキュメント](../cli-samples.md)のページにあります。
+その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration の CLI サンプル](../cli-samples.md)のページにあります。

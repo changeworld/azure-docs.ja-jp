@@ -1,22 +1,22 @@
 ---
-title: クイック スタート - Azure Active Directory の条件付きアクセスを使用して、セッションのリスクが検出されたときにアクセスをブロックする | Microsoft Docs
+title: Azure Active Directory の条件付きアクセスでリスク検出を使用する
 description: このクイック スタートでは、Azure Active Directory (Azure AD) の条件付きアクセス ポリシーを使用して、セッションのリスクに基づいてサインインをブロックする方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: quickstart
-ms.date: 12/14/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 619f1ea3bae001d25eb520f43da33ca94a3160c8
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 9338c1a42737180ec5395f30060b4eed35ce5eda
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72880338"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381067"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>クイック スタート:Azure Active Directory の条件付きアクセスを使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 

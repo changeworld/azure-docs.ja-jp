@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4767f43171e8576fcf35ba7304c48b05b85745c4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 37c27ae71eddcb5a35b9baeae250bee232c7acb7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553580"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213199"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric アプリケーションをクラスターにデプロイする
 
@@ -48,7 +48,7 @@ ms.locfileid: "72553580"
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
 > [!NOTE]
-> 無料アカウントは、仮想マシンを作成するための要件を満たさない可能性があります。 その場合は、チュートリアルを完遂できません。
+> 無料アカウントは、仮想マシンを作成するための要件を満たさない可能性があります。 その場合は、チュートリアルを完遂できません。 加えて、職場アカウントでも学校アカウントでもないアカウントでは、クラスターに関連付けられているキーコンテナーに証明書を作成する過程で、アクセス許可の問題が生じることがあります。 証明書の作成に関連するエラーが発生した場合は、代わりにポータルを使用してクラスターを作成してください。 
 
 ## <a name="download-the-voting-sample-application"></a>投票サンプル アプリケーションをダウンロードする
 

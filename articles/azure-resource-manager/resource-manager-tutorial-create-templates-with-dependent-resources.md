@@ -1,24 +1,16 @@
 ---
-title: 依存リソースを含む Azure Resource Manager テンプレート
+title: 依存リソースを含むテンプレート
 description: 複数のリソースを含む Azure Resource Manager テンプレートを作成し、Azure Portal を使用してデプロイする方法を説明します。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0eb4b29ffb8ae0269dbc7efd7e9ef6b720188bce
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: ef26074b0dd6450895c6aa81d5ab8853e652b41e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533508"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325387"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む Azure Resource Manager テンプレートを作成する
 
@@ -41,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)。  [拡張機能のインストールに関する記事](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-tools-vs-code.md)」を参照してください。
 * セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```azurecli-interactive
@@ -92,7 +84,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 3. 2 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/publicIPAddresses` です。 リソース定義と[テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)を比較します。
 
     ![Visual Studio Code の Azure Resource Manager テンプレートのパブリック IP アドレス定義](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. 4 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/networkInterfaces` です。  
+4. 4 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/networkInterfaces` です。
 
     ![Visual Studio Code Azure Resource Manager テンプレートの dependson](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
@@ -118,14 +110,14 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 テンプレートをデプロイする方法は多数あります。  このチュートリアルでは、Azure Portal から Cloud Shell を使用します。
 
-1. [Cloud Shell](https://shell.azure.com) にサインインします。 
+1. [Cloud Shell](https://shell.azure.com) にサインインします。
 2. Cloud Shell の左上隅から **[PowerShell]** を選択し、 **[確認]** を選択します。  このチュートリアルでは、PowerShell を使用します。
 3. Cloud Shell から **[ファイルのアップロード]** を選択します。
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 4. チュートリアルで前に保存したテンプレートを選択します。 既定の名前は **azuredeploy.json** です。  同じ名前のファイルが既にある場合は、古いファイルが通知なしに上書きされます。
 
-    オプションで **ls $HOME** コマンドと **cat $HOME/azuredeploy.json** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。 
+    オプションで **ls $HOME** コマンドと **cat $HOME/azuredeploy.json** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
 5. Cloud Shell から、次の PowerShell コマンドを実行します。 セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
 

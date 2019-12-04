@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: a9245ab5a2d51ee3995ff0c614cafaebdc20d00f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6786b44aca9ceed3cec5daf0f858a51e2dd12833
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098798"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227576"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>チュートリアル:Azure Active Directory と Kintone の統合
 
@@ -137,23 +137,23 @@ Kintone で Azure AD シングル サインオンを構成するには、次の�
 
 1. **設定**アイコンをクリックします。
 
-    ![設定](./media/kintone-tutorial/ic785879.png "Settings")
+    ![設定](./media/kintone-tutorial/ic785879.png "設定")
 
 1. **[ユーザーとシステム管理]** をクリックします。
 
-    ![Users & System Administration](./media/kintone-tutorial/ic785880.png "Users & System Administration")
+    ![[ユーザーとシステム管理]](./media/kintone-tutorial/ic785880.png "[ユーザーとシステム管理]")
 
 1. **[システム管理] \> [セキュリティ]** で、 **[ログイン]** をクリックします。
 
-    ![Login](./media/kintone-tutorial/ic785881.png "Login")
+    ![ログイン](./media/kintone-tutorial/ic785881.png "ログイン")
 
 1. **[SAML 認証を有効にする]** を選択します。
 
-    ![SAML Authentication](./media/kintone-tutorial/ic785882.png "SAML Authentication")
+    ![SAML 認証](./media/kintone-tutorial/ic785882.png "SAML 認証")
 
 1. [SAML 承認] セクションで、次の手順に従います。
 
-    ![SAML Authentication](./media/kintone-tutorial/ic785883.png "SAML Authentication")
+    ![SAML 認証](./media/kintone-tutorial/ic785883.png "SAML 認証")
 
     a. **[ログイン URL]** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
 
@@ -224,30 +224,30 @@ Azure AD ユーザーが Kintone にサインインできるようにするに�
 
 1. **設定**アイコンをクリックします。
 
-    ![設定](./media/kintone-tutorial/ic785879.png "Settings")
+    ![設定](./media/kintone-tutorial/ic785879.png "設定")
 
 1. **[ユーザーとシステム管理]** をクリックします。
 
-    ![User & System Administration](./media/kintone-tutorial/ic785880.png "User & System Administration")
+    ![[ユーザーとシステム管理]](./media/kintone-tutorial/ic785880.png "ユーザーとシステム管理")
 
 1. **[ユーザー管理]** で、 **[Departments & Users (部門とユーザー)]** をクリックします。
 
-    ![Department & Users](./media/kintone-tutorial/ic785888.png "Department & Users")
+    ![[Department & Users]\(部門とユーザー\)](./media/kintone-tutorial/ic785888.png "部門とユーザー")
 
 1. **[新しいユーザー]** をクリックします。
 
-    ![New Users](./media/kintone-tutorial/ic785889.png "New Users")
+    ![[新しいユーザー]](./media/kintone-tutorial/ic785889.png "新しいユーザー")
 
 1. **[新しいユーザー]** セクションで、次の手順に従います。
 
-    ![New Users](./media/kintone-tutorial/ic785890.png "New Users")
+    ![[新しいユーザー]](./media/kintone-tutorial/ic785890.png "新しいユーザー")
 
     a. プロビジョニングする有効な Azure AD アカウントの **表示名**、**ログイン名**、**新しいパスワード**、**パスワードの確認**、**メール アドレス**、その他の詳細を該当するボックスに入力します。
 
     b. **[Save]** をクリックします。
 
 > [!NOTE]
-> 他の Kintone ユーザー アカウント作成ツールや Kintone から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Kintone ユーザー アカウント作成ツールや、Kintone から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

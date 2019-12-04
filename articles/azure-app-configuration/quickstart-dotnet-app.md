@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329806"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185051"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して .NET Framework アプリを作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "72329806"
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
+## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
@@ -51,7 +51,7 @@ ms.locfileid: "72329806"
 
 1. **[新しいプロジェクトの構成]** で、プロジェクト名を入力します。 **[フレームワーク]** で、 **.NET Framework 4.7.1** 以上を選択します。 **Create** をクリックしてください。
 
-## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
+## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
 1. プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで以下の NuGet パッケージを検索し、プロジェクトに追加します。 見つからない場合は、 **[プレリリースを含める]** チェック ボックスをオンにします。
 
@@ -81,7 +81,7 @@ ms.locfileid: "72329806"
     </appSettings>
     ```
 
-   アプリ構成ストアの接続文字列は環境変数 `ConnectionString` から読み取られます。 `appSettings` セクションの `configBuilders` プロパティの `MyConfigStore` の前に、`Environment` 構成ビルダーを追加します。
+   App Configuration ストアの接続文字列は環境変数 `ConnectionString` から読み取られます。 `appSettings` セクションの `configBuilders` プロパティの `MyConfigStore` の前に、`Environment` 構成ビルダーを追加します。
 
 1. *Program.cs* を開き、`ConfigurationManager` を呼び出して App Configuration を使用するように `Main` メソッドを更新します。
 
@@ -96,7 +96,7 @@ ms.locfileid: "72329806"
 
 ## <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
-1. **ConnectionString** という名前の環境変数をアプリ構成ストアの接続文字列に設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行します。
+1. **ConnectionString** という名前の環境変数を App Configuration ストアの接続文字列に設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行します。
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -112,7 +112,7 @@ ms.locfileid: "72329806"
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、新しいアプリ構成ストアを作成して、.NET Framework コンソール アプリと共に使用しました。 App Configuration の使用方法についてさらに学習するには、認証について示した次のチュートリアルに進んでください。
+このクイックスタートでは、新しい App Configuration ストアを作成して、.NET Framework コンソール アプリと共に使用しました。 アプリケーションの起動後、`ConfiguratoinManager` の値 `AppSettings` は変化しません。 ただし、App Configuration .NET Standard 構成プロバイダー ライブラリは、.NET Framework アプリでも使用できます。 .NET Framework アプリで構成設定を動的に更新できるようにする方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [マネージド ID の統合](./howto-integrate-azure-managed-service-identity.md)
+> [動的な構成を有効にする](./enable-dynamic-configuration-dotnet.md)

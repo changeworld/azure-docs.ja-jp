@@ -1,6 +1,6 @@
 ---
 title: Azure Load Balancer の概要
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Azure Load Balancer の機能の概要、アーキテクチャ、実装。 Load Balancer の動作とクラウドでの活用について説明します。
 services: load-balancer
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/08/2019
+ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: be293a925e507468d96be4c9f6b47f30eea5f025
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 335549f4ccae01fa36921e0e4668fa15e8b33835
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888676"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423911"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer の概要
 
@@ -41,7 +41,9 @@ Azure Load Balancer を使って次のことができます。
 * パブリック ロード バランサー を使って、仮想ネットワーク内の VM に[送信接続](load-balancer-outbound-connections.md)を提供します。
 
 >[!NOTE]
-> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 トランスポート層セキュリティ (TLS) プロトコル終端 ("SSL オフロード") または HTTP/HTTPS 要求によるアプリケーション レイヤーの処理が必要な場合は、「[Azure Application Gateway とは](../application-gateway/application-gateway-introduction.md)」をご覧ください。 グローバル DNS の負荷分散が必要な場合は、「[Traffic Manager とは](../traffic-manager/traffic-manager-overview.md)」をご覧ください。 実際のエンド ツー エンドのシナリオでは、これらのソリューションを組み合わせると役に立つことがあります。
+> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 トランスポート層セキュリティ (TLS) プロトコル終端 ("SSL オフロード") あるいは HTTP または HTTPS 要求によるアプリケーション レイヤーの処理が必要な場合は、「[Azure Application Gateway とは](../application-gateway/overview.md)」を参照してください。 グローバル DNS の負荷分散が必要な場合は、「[Traffic Manager とは](../traffic-manager/traffic-manager-overview.md)」を参照してください。 実際のエンド ツー エンドのシナリオでは、これらのソリューションを組み合わせると役に立つことがあります。
+>
+> Azure の負荷分散オプションの比較については、「[Azure の負荷分散オプションの概要](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)」を参照してください。
 
 ## <a name="what-are-load-balancer-resources"></a>Load Balancer リソースとは
 

@@ -1,19 +1,16 @@
 ---
-title: チュートリアル - Azure Resource Manager テンプレートにテンプレート関数を追加する
+title: チュートリアル - テンプレート関数を追加する
 description: Azure Resource Manager テンプレートにテンプレート関数を追加して値を構築します。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ca6e7f326ba67eac33e4dee5fa844d7676ab864b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 03a38178ec66c1c1a10934975d20778369d80dbe
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963659"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405959"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにテンプレート関数を追加する
 
@@ -23,9 +20,9 @@ ms.locfileid: "71963659"
 
 必須ではありませんが、[パラメーターに関するチュートリアル](template-tutorial-add-parameters.md)を済ませておくことをお勧めします。
 
-Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関するセクションを参照してください。
+Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関する記事を参照してください。
 
-## <a name="review-your-template"></a>テンプレートを確認する
+## <a name="review-template"></a>テンプレートを確認する
 
 前のチュートリアルで完成したテンプレートには、次の JSON が含まれていました。
 
@@ -73,7 +70,7 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>デプロイを検証する
+## <a name="verify-deployment"></a>デプロイの確認
 
 Azure portal からリソース グループを探すことでデプロイを確認できます。
 

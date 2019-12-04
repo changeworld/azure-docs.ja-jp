@@ -1,5 +1,6 @@
 ---
-title: 仮想マシン ネットワーク トラフィック フィルターの問題を診断する - クイック スタート - Azure Portal | Microsoft Docs
+title: クイック スタート:VM ネットワーク トラフィック フィルターの問題を診断する - Azure portal
+titleSuffix: Azure Network Watcher
 description: このクイック スタートでは、Azure Network Watcher の IP フローの確認機能を使って、仮想マシンのネットワーク トラフィック フィルターの問題を診断する方法について説明します。
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 6478c82a93cd35eead3972bb4dccf402219d9b7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d436fab100dc05cde8a434af564c67477b33d8d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702888"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276009"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して仮想マシン ネットワーク トラフィック フィルターの問題を診断する
 
@@ -32,25 +33,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal (https://portal.azure.com) にログインします。
+Azure Portal (https://portal.azure.com ) にログインします。
 
 ## <a name="create-a-vm"></a>VM の作成
 
 1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
-2. **[Compute]** を選択し、**[Windows Server 2016 Datacenter]** またはいずれかのバージョンの **Ubuntu Server** を選択します。
-3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、**[OK]** を選択します。
+2. **[Compute]** を選択し、 **[Windows Server 2016 Datacenter]** またはいずれかのバージョンの **Ubuntu Server** を選択します。
+3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
     |Setting|値|
     |---|---|
-    |Name|myVm|
+    |名前|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |サブスクリプション| サブスクリプションを選択します。|
-    |リソース グループ| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
+    |Subscription| サブスクリプションを選択します。|
+    |Resource group| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
     |Location| **[米国東部]** を選択します。|
 
-4. VM のサイズを選択して、**[選択]** を選択します。
-5. **[設定]** で、すべての既定値をそのままにして、**[OK]** を選択します。
+4. VM のサイズを選択して、 **[選択]** を選択します。
+5. **[設定]** で、すべての既定値をそのままにして、 **[OK]** を選択します。
 6. **[概要]** の **[作成]** で **[作成]** を選択して、VM のデプロイを開始します。 VM のデプロイには数分かかります。 残りの手順を続行する前に、VM がデプロイを完了するまで待ちます。
 
 ## <a name="test-network-communication"></a>ネットワーク通信をテストする
@@ -62,7 +63,7 @@ Network Watcher を使ってネットワーク通信をテストするには、�
 既に少なくとも 1 つのリージョンでネットワーク ウォッチャーを有効にしている場合は、この手順をスキップして、「[IP フローの確認を使用する](#use-ip-flow-verify)」へ進んでください。
 
 1. ポータルで **[すべてのサービス]** を選択します。 **[フィルター]** ボックスに、「*Network Watcher*」と入力します。 結果に **[Network Watcher]** が表示されたら、それを選択します。
-2. 前の手順で VM を展開した米国東部リージョンにおいてネットワーク ウォッチャーを有効にします。 次の図に示すように、**[リージョン]** を選択して展開し、**[米国東部]** の右側の **[...]** を選択します。
+2. 前の手順で VM を展開した米国東部リージョンにおいてネットワーク ウォッチャーを有効にします。 次の図に示すように、 **[リージョン]** を選択して展開し、 **[米国東部]** の右側の **[...]** を選択します。
 
     ![Network Watcher を有効にする](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
 
@@ -73,12 +74,12 @@ Network Watcher を使ってネットワーク通信をテストするには、�
 VM を作成すると、Azure は既定に従って、VM との間でやり取りされるネットワーク トラフィックを許可および拒否します。 後で Azure の既定値をオーバーライドして、他の種類のトラフィックを許可または拒否する場合があります。
 
 1. ポータルで **[すべてのサービス]** を選択します。 **[すべてのサービス]** で *[フィルター]* ボックスに、「*Network Watcher*」と入力します。 結果に **[Network Watcher]** が表示されたら、それを選択します。
-2. **[ネットワーク診断ツール]** で、**[IP フローの確認]** を選択します。
+2. **[ネットワーク診断ツール]** で、 **[IP フローの確認]** を選択します。
 3. サブスクリプションを選択して、以下の値を入力または選択して、次の図に示すように **[確認]** を選択します。
 
     |Setting            |値                                                                                              |
     |---------          |---------                                                                                          |
-    | リソース グループ    | myResourceGroup を選択する                                                                            |
+    | Resource group    | myResourceGroup を選択する                                                                            |
     | 仮想マシン   | myVm を選択する                                                                                       |
     | Linux | myvm - VM を作成したときにポータルが作成したネットワーク インターフェイスの名前は異なります。 |
     | Protocol          | TCP                                                                                               |
@@ -91,15 +92,15 @@ VM を作成すると、Azure は既定に従って、VM との間でやり取�
     ![IP フロー検証](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)
 
     数秒後に、**AllowInternetOutbound** という名前のセキュリティ規則によってアクセスが許可されていることを示す結果が返されます。 確認を実行する前に米国東部リージョン以外のリージョンにネットワーク ウォッチャーが既に存在していた場合は、確認を実行したときに、米国東部リージョンにネットワーク ウォッチャーが自動的に作成されています。
-4. 手順 3 をもう一度実行しますが、**[リモート IP アドレス]** を **172.31.0.100** に変更します。 返される結果では、**DefaultOutboundDenyAll** という名前のセキュリティ規則のためにアクセスが拒否されることが示されています。
-5. 手順 3 をもう一度実行しますが、**[方向]** を **[受信]** に、**[ローカル ポート]** を「**80**」に、**[リモート ポート]** を「**60000**」にそれぞれ変更します。 返される結果では、**DefaultInboundDenyAll** という名前のセキュリティ規則のためにアクセスが拒否されることが示されています。
+4. 手順 3 をもう一度実行しますが、 **[リモート IP アドレス]** を **172.31.0.100** に変更します。 返される結果では、**DefaultOutboundDenyAll** という名前のセキュリティ規則のためにアクセスが拒否されることが示されています。
+5. 手順 3 をもう一度実行しますが、 **[方向]** を **[受信]** に、 **[ローカル ポート]** を「**80**」に、 **[リモート ポート]** を「**60000**」にそれぞれ変更します。 返される結果では、**DefaultInboundDenyAll** という名前のセキュリティ規則のためにアクセスが拒否されることが示されています。
 
 VM へのトラフィックまたは VM からのトラフィックを許可または拒否しているセキュリティ規則がわかったので、問題を解決する方法を決定できます。
 
 ## <a name="view-details-of-a-security-rule"></a>セキュリティ規則の詳細を表示する
 
 1. 「[IP フローの確認を使用する](#use-ip-flow-verify)」の手順 3 ～ 5 の規則によって通信が許可または拒否された理由を特定するには、VM においてネットワーク インターフェイスに対して有効なセキュリティ規則を確認します。 ポータルの上部にある検索ボックスに、「*myvm*」と入力します。 **myvm** ネットワーク インターフェイス (実際にお使いのネットワーク インターフェイスの名前) が検索結果に表示されたら、それを選びます。
-2. 次の図に示すように、**[サポート + トラブルシューティング]** で **[有効なセキュリティ規則]** を選択します。
+2. 次の図に示すように、 **[サポート + トラブルシューティング]** で **[有効なセキュリティ規則]** を選択します。
 
     ![有効なセキュリティ規則](./media/diagnose-vm-network-traffic-filtering-problem/effective-security-rules.png)
 
@@ -120,7 +121,7 @@ VM へのトラフィックまたは VM からのトラフィックを許可ま�
 
 1. ポータル上部の **[検索]** ボックスに「*myResourceGroup*」と入力します。 検索結果に **[myResourceGroup]** が表示されたら、それを選択します。
 2. **[リソース グループの削除]** を選択します。
-3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、**[削除]** を選択します。
+3. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

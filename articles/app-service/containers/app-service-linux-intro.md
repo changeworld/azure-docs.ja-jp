@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 966eb6068ff545dde284463866bfeee3d5074069
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819689"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559019"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -67,7 +67,12 @@ App Service on Linux は [Free、Basic、Standard、および Premium](https://a
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-アプリケーションが起動しない場合、またはアプリのログ記録を調べる場合は、LogFiles ディレクトリの Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。 コンテナーから `stdout` および `stderr` をログに記録するには、 **[App Service ログ]** で **[Docker Container ログ]** を有効にする必要があります。 設定はすぐに有効になります。 App Service で変更が検出され、自動的にコンテナーが再起動されます。
+> [!NOTE]
+> [Azure Monitoring (プレビュー)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) による新しい統合ログ機能があります。 
+>
+>
+
+アプリケーションが起動しない場合、またはアプリのログ記録を調べる場合は、LogFiles ディレクトリの Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。 コンテナーから `stdout` および `stderr` をログに記録するには、 **[App Service ログ]** で **[アプリケーションのログ記録]** を有効にする必要があります。 設定はすぐに有効になります。 App Service で変更が検出され、自動的にコンテナーが再起動されます。
 
 SCM サイトには、 **[開発ツール]** メニューの **[Advanced Tools]** からアクセスできます。
 

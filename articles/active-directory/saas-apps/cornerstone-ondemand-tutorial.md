@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e25b1da7a91dc52aed680bc587dfc20aaee876c4
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 363b5b2dc2891166f779c98c6de1487bc45047a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989570"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227626"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-ondemand"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cornerstone OnDemand の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "68989570"
 
 * Cornerstone OnDemand にアクセスする Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Cornerstone OnDemand に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -141,7 +141,7 @@ Cornerstone OnDemand で Azure AD SSO を構成してテストするには、次
 ユーザーのプロビジョニングを構成するには、プロビジョニングする Azure AD ユーザーに関する情報 (名前、電子メールなど) を、[Cornerstone OnDemand サポート チーム](mailto:moreinfo@csod.com)に送信します。
 
 >[!NOTE]
->Cornerstone OnDemand から提供されている他の Cornerstone OnDemand ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>他の Cornerstone OnDemand ユーザー アカウント作成ツールや、Cornerstone OnDemand から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

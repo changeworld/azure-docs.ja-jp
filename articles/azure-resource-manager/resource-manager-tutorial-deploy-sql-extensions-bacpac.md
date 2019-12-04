@@ -1,28 +1,20 @@
 ---
-title: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする | Microsoft Docs
+title: テンプレートを使用して SQL BACPAC ファイルをインポートする
 description: SQL Database 拡張機能を使用して、Azure Resource Manager テンプレートで SQL BACPAC ファイルをインポートする方法について説明します。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.date: 04/08/2019
+ms.date: 11/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 239bb77d486e8cb845ec439d84def5e34cf64348
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 741521551335712400e5f61822d7dda31199d3df
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170225"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422177"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする
 
-Azure SQL Database 拡張機能を使用して Azure Resource Manager テンプレートで BACPAC ファイルをインポートする方法について説明します。 デプロイの成果物は、メイン テンプレート ファイルに加え、デプロイを完了するために必要なすべてのファイルです。 BACPAC ファイルは成果物です。 このチュートリアルでは、テンプレートを作成して Azure SQL サーバー、SQL データベースをデプロイし、BACPAC ファイルをインポートします。 Azure Resource Manager テンプレートを使用して Azure 仮想マシン拡張機能をデプロイする方法については、「[チュートリアル:Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする](./resource-manager-tutorial-deploy-vm-extensions.md)」を参照してください。
+Azure SQL Database 拡張機能を使用して Azure Resource Manager テンプレートで BACPAC ファイルをインポートする方法について説明します。 デプロイの成果物は、デプロイを完了するために必要なメイン テンプレート ファイルに加えたすべてのファイルです。 この BACPAC ファイルが成果物です。 このチュートリアルでは、テンプレートを作成して Azure SQL サーバー、SQL データベースをデプロイし、BACPAC ファイルをインポートします。 Azure Resource Manager テンプレートを使用して Azure 仮想マシン拡張機能をデプロイする方法については、「[チュートリアル:Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする](./resource-manager-tutorial-deploy-vm-extensions.md)」を参照してください。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -39,21 +31,66 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)。 [拡張機能のインストールに関する記事](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-tools-vs-code.md)」を参照してください。
 * セキュリティを向上させるために、生成されたパスワードを SQL Server 管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```azurecli-interactive
     openssl rand -base64 32
     ```
+
     Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="prepare-a-bacpac-file"></a>BACPAC ファイルを準備する
 
-BACPAC ファイルは、[Github](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) で共有されています。 独自のものを作成するには、「[Azure SQL データベースを BACPAC ファイルにエクスポートする](../sql-database/sql-database-export.md)」を参照してください。 ファイルを独自の場所に発行する場合は、チュートリアルの後半でテンプレートを更新する必要があります。
+BACPAC ファイルは、[GitHub](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac) で共有されています。 独自のものを作成するには、「[Azure SQL データベースを BACPAC ファイルにエクスポートする](../sql-database/sql-database-export.md)」を参照してください。 ファイルを独自の場所に発行する場合は、チュートリアルの後半でテンプレートを更新する必要があります。
+
+BACPAC ファイルは、Resource Manager テンプレートを使用してインポートする前に、Azure Storage アカウントに格納する必要があります。
+
+1. [Cloud Shell](https://shell.azure.com) を開きます。
+1. **[ファイルのアップロード/ダウンロード]** を選択し、 **[アップロード]** を選択します。
+1. 次の URL を指定し、 **[開く]** を選択します。
+
+    ```url
+    https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac
+    ```
+
+1. 次の PowerShell スクリプトをコピーし、シェル ウィンドウに貼り付けます。
+
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+
+    $resourceGroupName = "${projectName}rg"
+    $storageAccountName = "${projectName}store"
+    $containerName = "bacpacfiles"
+    $bacpacFile = "$HOME/SQLDatabaseExtension.bacpac"
+    $blobName = "SQLDatabaseExtension.bacpac"
+
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+    $storageAccount = New-AzStorageAccount -ResourceGroupName $resourceGroupName `
+                                           -Name $storageAccountName `
+                                           -SkuName Standard_LRS `
+                                           -Location $location
+    $storageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName `
+                                                  -Name $storageAccountName).Value[0]
+
+    New-AzStorageContainer -Name $containerName -Context $storageAccount.Context
+
+    Set-AzStorageBlobContent -File $bacpacFile `
+                             -Container $containerName `
+                             -Blob $blobName `
+                             -Context $storageAccount.Context
+
+    Write-Host "The storage account key is $storageAccountKey"
+    Write-Host "The BACPAC file URL is https://$storageAccountName.blob.core.windows.net/$containerName/$blobName"
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+1. ストレージ アカウント キーと BACPAC ファイルの URL を書き留めます。 これらの値は、テンプレートをデプロイするときに必要です。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
-このチュートリアルで使用されているテンプレートは、[Github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) に保存されています。
+このチュートリアルで使用されているテンプレートは、[GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) に保存されています。
 
 1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
@@ -61,6 +98,7 @@ BACPAC ファイルは、[Github](https://github.com/Azure/azure-docs-json-sampl
     ```url
     https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
     ```
+
 3. **[開く]** を選択して、ファイルを開きます。
 
     テンプレートで定義されている 3 つのリソースがあります。
@@ -74,64 +112,85 @@ BACPAC ファイルは、[Github](https://github.com/Azure/azure-docs-json-sampl
 
 ## <a name="edit-the-template"></a>テンプレートの編集
 
-テンプレートには 2 つのリソースをさらに追加します。
-
-* SQL データベース拡張機能を使用して BACPAC ファイルをインポートできるようにするには、Azure サービスへのアクセスを許可する必要があります。 次の JSON を SQL サーバー定義に追加します。
+1. **parameters** セクションの末尾にさらに 2 つのパラメーターを追加して、ストレージ アカウント キーと BACPAC URL を設定します。
 
     ```json
-    {
-        "type": "firewallrules",
-        "name": "AllowAllAzureIps",
-        "location": "[parameters('location')]",
-        "apiVersion": "2015-05-01-preview",
-        "dependsOn": [
-            "[variables('databaseServerName')]"
-        ],
-        "properties": {
-            "startIpAddress": "0.0.0.0",
-            "endIpAddress": "0.0.0.0"
-        }
+    "storageAccountKey": {
+      "type":"string",
+      "metadata":{
+        "description": "Specifies the key of the storage account where the BACPAC file is stored."
+      }
+    },
+    "bacpacUrl": {
+      "type":"string",
+      "metadata":{
+        "description": "Specifies the URL of the BACPAC file."
+      }
     }
     ```
 
-    テンプレートは次のようになります。
+    **adminPassword** の後にコンマを追加します。 JSON ファイルを VS Code から書式設定するには、**Shift + Alt + F** キーを押します。
 
-    ![Azure Resource Manager による SQL 拡張機能 BACPAC のデプロイ](./media/resource-manager-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-firewall.png)
+    これら 2 つの値の取得については、「[BACPAC ファイルを準備する](#prepare-a-bacpac-file)」を参照してください。
 
-* 次の JSON を使用して、SQL データベース拡張機能リソースをデータベース定義に追加します。
+1. テンプレートには 2 つのリソースをさらに追加します。
 
-    ```json
-    "resources": [
+    * SQL データベース拡張機能で BACPAC ファイルをインポートできるようにするには、Azure サービスからのトラフィックを許可する必要があります。 次のファイアウォール規則定義を SQL サーバー定義の下に追加します。
+
+        ```json
         {
-            "name": "Import",
-            "type": "extensions",
-            "apiVersion": "2014-04-01",
-            "dependsOn": [
+          "type": "firewallrules",
+          "apiVersion": "2015-05-01-preview",
+          "name": "AllowAllAzureIps",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[variables('databaseServerName')]"
+          ],
+          "properties": {
+            "startIpAddress": "0.0.0.0",
+            "endIpAddress": "0.0.0.0"
+          }
+        }
+        ```
+
+        テンプレートは次のようになります。
+
+        ![Azure Resource Manager による SQL 拡張機能 BACPAC のデプロイ](./media/resource-manager-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac-firewall.png)
+
+    * 次の JSON を使用して、SQL データベース拡張機能リソースをデータベース定義に追加します。
+
+        ```json
+        "resources": [
+            {
+              "type": "extensions",
+              "apiVersion": "2014-04-01",
+              "name": "Import",
+              "dependsOn": [
                 "[resourceId('Microsoft.Sql/servers/databases', variables('databaseServerName'), variables('databaseName'))]"
-            ],
-            "properties": {
-                "storageKeyType": "SharedAccessKey",
-                "storageKey": "?",
-                "storageUri": "https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac",
+              ],
+              "properties": {
+                "storageKeyType": "StorageAccessKey",
+                "storageKey": "[parameters('storageAccountKey')]",
+                "storageUri": "[parameters('bacpacUrl')]",
                 "administratorLogin": "[variables('databaseServerAdminLogin')]",
                 "administratorLoginPassword": "[variables('databaseServerAdminLoginPassword')]",
-                "operationMode": "Import",
+                "operationMode": "Import"
+              }
             }
-        }
-    ]
-    ```
+        ]
+        ```
 
-    テンプレートは次のようになります。
+        テンプレートは次のようになります。
 
-    ![Azure Resource Manager による SQL 拡張機能 BACPAC のデプロイ](./media/resource-manager-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
+        ![Azure Resource Manager による SQL 拡張機能 BACPAC のデプロイ](./media/resource-manager-tutorial-deploy-sql-extensions-bacpac/resource-manager-tutorial-deploy-sql-extensions-bacpac.png)
 
-    リソース定義を理解するには、[SQL Database 拡張機能のリファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions)に関するページを参照してください。 以下にいくつかの重要な要素を示します。
+        リソース定義を理解するには、[SQL Database 拡張機能のリファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/extensions)に関するページを参照してください。 以下にいくつかの重要な要素を示します。
 
-    * **dependsOn**:拡張機能リソースは、SQL データベースが作成された後に作成される必要があります。
-    * **storageKeyType**:使用するストレージ キーの種類。 値は `StorageAccessKey` と `SharedAccessKey` のいずれかにできます。 提供される BACPAC ファイルはパブリック アクセスが有効な Azure ストレージ アカウントで共有されるため、ここでは "SharedAccessKey" が使用されます。
-    * **storageKey**:使用するストレージ キー。 ストレージ キーの種類が SharedAccessKey の場合は、前に "?" が付いている必要があります。
-    * **storageUri**:使用するストレージ URI。 提供される BACPAC ファイルを使用しない場合は、値を更新する必要があります。
-    * **administratorLoginPassword**:SQL 管理者のパスワード。 生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。
+        * **dependsOn**:拡張機能リソースは、SQL データベースが作成された後に作成される必要があります。
+        * **storageKeyType**:使用するストレージ キーの種類を指定します。 値は `StorageAccessKey` と `SharedAccessKey` のいずれかにできます。 このチュートリアルでは `StorageAccessKey` を使用します。
+        * **storageKey**:BACPAC ファイルが格納されているストレージ アカウントのキーを指定します。 ストレージ キーの種類が SharedAccessKey の場合は、前に "?" が付いている必要があります。
+        * **storageUri**:ストレージ アカウントに格納されている BACPAC ファイルの URL を指定します。
+        * **administratorLoginPassword**:SQL 管理者のパスワード。 生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -139,23 +198,34 @@ BACPAC ファイルは、[Github](https://github.com/Azure/azure-docs-json-sampl
 
 デプロイ手順については、「[テンプレートのデプロイ](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)」セクションを参照してください。 代わりに次の PowerShell デプロイ スクリプトを使用します。
 
-```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+```azurepowershell-interactive
+$projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 $adminUsername = Read-Host -Prompt "Enter the SQL admin username"
 $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
+$storageAccountKey = Read-Host -Prompt "Enter the storage account key"
+$bacpacUrl = Read-Host -Prompt "Enter the URL of the BACPAC file"
+$resourceGroupName = "${projectName}rg"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `
-    -TemplateFile "$HOME/azuredeploy.json"
+    -TemplateFile "$HOME/azuredeploy.json" `
+    -storageAccountKey $storageAccountKey `
+    -bacpacUrl $bacpacUrl
+
+Write-Host "Press [ENTER] to continue ..."
 ```
+
+すべてのリソースが同じリソース グループ内に格納されるように、bacpac ファイルを準備するときに使用したのと同じプロジェクト名を使用することを検討してください。  リソースのクリーンアップなど、リソースの管理がより簡単になります。 同じプロジェクト名を使用した場合は、**New-AzResourceGroup** コマンドをスクリプトから削除したり、既存のリソース グループを更新するかどうかを確認するメッセージが表示されたときに y または n で応答したりすることができます。
 
 生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。
 
 ## <a name="verify-the-deployment"></a>デプロイを検証する
+
+クライアント コンピューターから SQL サーバーにアクセスするには、他のファイアウォール規則を追加する必要があります。 詳細については、「[IP ファイアウォール規則の作成および管理](../sql-database/sql-database-firewall-configure.md#create-and-manage-ip-firewall-rules)」を参照してください。
 
 ポータルで、新しくデプロイされたリソース グループから SQL データベースを選択します。 **[クエリ エディター (プレビュー)]** を選択してから、管理者の資格情報を入力します。 データベースにインポートされた 2 つのテーブルが表示されます。
 

@@ -1,14 +1,14 @@
 ---
-title: タグ ガバナンスを管理する
-description: 新しいリソースと既存のリソースに対してタグ ガバナンス モデルを作成して適用するには、Azure Policy の Modify 効果を使用します。
-ms.date: 11/04/2019
+title: チュートリアル:タグ ガバナンスを管理する
+description: このチュートリアルでは、新しいリソースと既存のリソースに対してタグ ガバナンス モデルを作成して適用するために、Azure Policy の Modify 効果を使用します。
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: edb74bce5758ae040a6170a8e73be75fc228b001
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e3d6e279b293ea8063c690f9fb69a6f183b2838d
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069656"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482265"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>チュートリアル:Azure Policy を使用してタグ ガバナンスを管理する
 
@@ -21,7 +21,16 @@ Azure Policy の [Modify](../concepts/effects.md#modify) 効果は、現在の�
 - タグ ガバナンスのない数千のリソースが既にある
 - 変更が必要な分類が既にある
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+このチュートリアルでは、次のタスクを実行します。
+
+> [!div class="checklist"]
+> - ビジネス要件を特定する
+> - 各要件をポリシー定義にマップする
+> - タグ ポリシーをイニシアチブにグループ化する
+
+## <a name="prerequisites"></a>前提条件
+
+このチュートリアルを完了するには、Azure サブスクリプションが必要です。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 
 ## <a name="identify-requirements"></a>要件を特定する
 
@@ -184,6 +193,16 @@ Azure 環境内に存在する環境ごとに、[Modify](../concepts/effects.md#
 上記のタグ ポリシーが作成されたら、それらをタグ ガバナンスの 1 つのイニシアチブに結合し、管理グループまたはサブスクリプションに割り当てます。 その後、イニシアチブとそれに含まれるポリシーによって、既存のリソースのコンプライアンスが評価され、ポリシー規則の **if** プロパティに一致する新規または更新されたリソースの要求が変更されます。 しかし、ポリシーでは、定義済みのタグの変更によって、既存の準拠していないリソースが自動的に更新されることはありません。
 
 [deployIfNotExists](../concepts/effects.md#deployifnotexists) ポリシーと同様に、**Modify** ポリシーでは修復タスクを使用して、既存の準拠していないリソースを変更します。 [リソースを修復する方法](../how-to/remediate-resources.md)の手順に従って、準拠していない **Modify** リソースを識別し、定義した分類に対するタグを修正します。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このチュートリアルのリソースに対する作業が完了した場合は、次の手順を使用して、ここで作成した割り当てまたは定義をすべて削除してください。
+
+1. Azure Policy ページの左側にある **[作成]** の下の **[定義]** (または割り当てを削除する場合は **[割り当て]** ) を選択します。
+
+1. 削除する新しいイニシアティブまたはポリシー定義 (または割り当て) を見つけます。
+
+1. 行を右クリックするか、定義 (または割り当て) の末尾にある省略記号を選択し、 **[定義の削除]** (または **[割り当ての削除]** ) を選択します。
 
 ## <a name="review"></a>レビュー
 

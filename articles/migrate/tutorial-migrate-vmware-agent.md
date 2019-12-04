@@ -1,19 +1,19 @@
 ---
-title: エージェントベースの Azure Migrate Server Migration を使用してオンプレミスの VMware VM を Azure に移行する | Microsoft Docs
-description: この記事では、Azure Migrate Server Migration を使用して、オンプレミス マシンの Azure へのエージェントベース移行を実行する方法を説明します
+title: エージェントベースの Azure Migrate Server Migration を使用して VMware VM を移行する
+description: Azure Migrate を使用して VMware VM のエージェントベース移行を実行する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07e91abc1130505abc84f6687be7edd04522fa76
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 581014b89627905e3206705dffade5ba19443b65
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720177"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196292"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware VM を Azure に移行する (エージェントベース)
 

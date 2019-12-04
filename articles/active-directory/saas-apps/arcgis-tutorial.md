@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4afd7697272775b8d5558d9c091eeea0d2b9adf
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 74cf0c1e055570df7702465df79dcdfbd8ea9e9f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158026"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232087"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>チュートリアル:Azure Active Directory と ArcGIS Online の統合
 
@@ -223,7 +223,7 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
    
      ![追加とレビュー](./media/arcgis-tutorial/ic784749.png "[Add And Review]")
     
-     a. プロビジョニングする有効な AAD アカウントの **[電子メール]** 、 **[名]** 、および **[姓]** を入力します。
+     a. プロビジョニングする有効な Azure AD アカウントの**メール**、**名**、**姓**を入力します。
   
      b. **[ADD AND REVIEW] \(追加とレビュー)** をクリックします。
 5. 入力したデータを確認してから、 **[ADD MEMBERS] \(メンバーの追加)** をクリックします。

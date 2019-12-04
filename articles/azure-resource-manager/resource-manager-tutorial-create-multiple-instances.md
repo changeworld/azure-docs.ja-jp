@@ -1,24 +1,16 @@
 ---
-title: 複数のリソース インスタンスを作成する - Azure Resource Manager
+title: 複数のリソース インスタンスの作成
 description: Azure Resource Manager テンプレートを作成して、複数の Azure リソース インスタンスを作成する方法を説明します。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b1233ff4695a1f715801d78d70ea80ab84be2a36
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: df41094d163b8e3ecb78827df1a52dafab0aec1f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528253"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326533"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>チュートリアル:Resource Manager テンプレートを使用した複数のリソース インスタンスの作成
 
@@ -39,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* [Visual Studio Code](https://code.visualstudio.com/) と [Resource Manager ツール拡張機能](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-tools-vs-code.md)」を参照してください。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
@@ -57,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="edit-the-template"></a>テンプレートの編集
 
-既存のテンプレートでは、1 つのストレージ アカウントが作成されます。 3 つのストレージ アカウントが作成されるよう、テンプレートをカスタマイズします。  
+既存のテンプレートでは、1 つのストレージ アカウントが作成されます。 3 つのストレージ アカウントが作成されるよう、テンプレートをカスタマイズします。
 
 Visual Studio Code で、次の 4 つの変更を行います。
 

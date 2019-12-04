@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c789d48656173721432779aeaba0530950527fa1
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 61e176314c655ef6380a196043fb3159d003cb6e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646921"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273954"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ (SDK v4)
 
@@ -25,7 +25,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 - SSL または TLS 証明書のタスクを簡略化および自動化する。
 - FIPS 140-2 レベル 2 への準拠が検証済みの HSM を使用する。
 
-[API リファレンスのドキュメント](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+[API リファレンスのドキュメント](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [パッケージ (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,10 +39,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 
 ### <a name="create-new-net-console-app"></a>新しい .NET コンソール アプリを作成する
 
-好みのエディターまたは IDE で、新しい .NET Core アプリケーションを作成します。
-
-コンソール ウィンドウで、`dotnet new` コマンドを使用し、`akv-dotnet` という名前で新しいコンソール アプリを作成します。
-
+コンソール ウィンドウで、`dotnet new` コマンドを使用し、`akv-dotnet` という名前で新しい .NET コンソール アプリを作成します。
 
 ```console
 dotnet new console -n key-vault-console-app
@@ -91,7 +88,7 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、[App Service マネージド ID を使用した Azure Key Vault へのアクセス](managed-identity.md)に関するページを参照してください。 ただし、わかりやすくするために、このクイックスタートでは .NET コンソール アプリケーションを作成します。 Azure でデスクトップ アプリケーションを認証するには、サービス プリンシパルとアクセス制御ポリシーを使用する必要があります。
+クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、[App Service マネージド ID を使用した Azure Key Vault へのアクセス](managed-identity.md)に関するページを参照してください。 ただし、このクイックスタートではわかりやすさを重視して、.NET コンソール アプリケーションを作成します。 Azure でデスクトップ アプリケーションを認証するには、サービス プリンシパルとアクセス制御ポリシーを使用する必要があります。
 
 Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用してサービス プリンシパルを作成します。
 
@@ -160,7 +157,7 @@ setx KEY_VAULT_NAME <your-key-vault-name>
 
 ### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
 
-キー コンテナーに対する認証とキー コンテナー クライアントの作成は、上記の「[環境変数の設定](#set-environmental-variables)」の手順にある環境変数によって異なります。 キー コンテナーの名前は、"https://<your-key-vault-name>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。
+キー コンテナーに対する認証とキー コンテナー クライアントの作成は、上記の「[環境変数の設定](#set-environmental-variables)」の手順にある環境変数によって異なります。 キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。
 
 [!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 

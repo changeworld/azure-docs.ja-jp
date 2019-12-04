@@ -1,6 +1,6 @@
 ---
 title: クイック スタート - Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
-description: Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル シングルページ アプリケーションを実行します。
+description: このクイックスタートでは、Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル シングルページ アプリケーションを実行します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 22cdfaf1d48c4e93e57f46482eacb66742a6c9d6
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 7dc3a52ca9f227f8476cf74286be917b5b6ba021
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515703"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420170"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 

@@ -1,19 +1,16 @@
 ---
-title: チュートリアル - パラメーター ファイルを使用して Azure Resource Manager テンプレートをデプロイしやすくする
+title: チュートリアル - パラメーター ファイルを使用してテンプレートをデプロイする
 description: Azure Resource Manager テンプレートのデプロイに使用する値を含んだパラメーター ファイルを使用します。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fa29ea3d2f6edbbb016ce5c0c74415a5e765e85a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1b01e9ece2d194d76c7184a676f17d626c41a011
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177545"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405987"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>チュートリアル:パラメーター ファイルを使用して Resource Manager テンプレートをデプロイする
 
@@ -23,9 +20,9 @@ ms.locfileid: "72177545"
 
 必須ではありませんが、[タグに関するチュートリアル](template-tutorial-add-tags.md)を済ませておくことをお勧めします。
 
-Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関するセクションを参照してください。
+Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関する記事を参照してください。
 
-## <a name="review-your-template"></a>テンプレートを確認する
+## <a name="review-template"></a>テンプレートを確認する
 
 これまでのテンプレートには、デプロイ時に指定できるパラメーターが多数存在します。 前のチュートリアルで完成したテンプレートの内容は次のとおりです。
 
@@ -49,7 +46,7 @@ VS Code で、次の内容を含む新しいファイルを作成します。 �
 
 このファイルは、運用環境用のパラメーター ファイルです。 ストレージ アカウントに Standard_GRS が使用され、リソースに **contoso** で始まる名前が付き、さらに **Environment** タグが **Production** に設定されていることがわかります。 実際の運用環境では、無料以外の SKU の App Service を使用したい場合もあるかもしれませんが、このチュートリアルでは引き続きこの SKU を使用します。
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-template"></a>テンプレートのデプロイ
 
 テンプレートをデプロイするには、Azure CLI または Azure PowerShell を使用します。
 
@@ -119,7 +116,7 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>デプロイを検証する
+## <a name="verify-deployment"></a>デプロイの確認
 
 Azure portal からリソース グループを探すことでデプロイを確認できます。
 

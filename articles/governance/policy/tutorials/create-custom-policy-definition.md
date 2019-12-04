@@ -1,14 +1,14 @@
 ---
-title: カスタム ポリシー定義の作成
-description: Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
-ms.date: 04/23/2019
+title: チュートリアル:カスタム ポリシー定義の作成
+description: このチュートリアルでは、Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: 97a85eb28cd0dbb2586623fda442d87a5790db2a
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: e30d47ed6e01c4fd8ff061398b1045f9446e466a
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128788"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483986"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 
@@ -31,6 +31,8 @@ ms.locfileid: "74128788"
 > - 使用する効果を決定する
 > - ポリシー定義を作成する
 
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 ## <a name="identify-requirements"></a>要件を特定する
@@ -50,12 +52,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure リソースのプロパティを判別する方法はたくさんあります。 このチュートリアルでは、それぞれについて見ていきます。
 
+- VS Code 用 Azure Policy 拡張機能
 - Resource Manager テンプレート
   - 既存のリソースのエクスポート
   - 作成エクスペリエンス
   - クイック スタート テンプレート (GitHub)
   - テンプレートのリファレンス ドキュメント
 - Azure リソース エクスプローラー
+
+### <a name="view-resources-in-vs-code-extension"></a>VS Code 拡張機能でリソースを表示する
+
+[VS Code 拡張機能](../how-to/extension-for-vscode.md#search-for-and-view-resources)を使用すると、環境内のリソースを参照し、各リソースの Resource Manager プロパティを表示できます。
 
 ### <a name="resource-manager-templates"></a>Resource Manager テンプレート
 
@@ -156,9 +163,14 @@ Azure リソースを探すもう 1 つの方法は、[Azure Resource Explorer](
 
 Azure リソースのエイリアスを判別する方法はいくつかあります。 このチュートリアルでは、それぞれについて見ていきます。
 
+- VS Code 用 Azure Policy 拡張機能
 - Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
+
+### <a name="get-aliases-in-vs-code-extension"></a>VS Code 拡張機能でエイリアスを取得する
+
+VS Code 拡張機能の Azure Policy 拡張機能を使用すると、リソースを簡単に参照し、[エイリアスを検出](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties)できます。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -188,7 +200,7 @@ Azure CLI と同様に、その結果から **supportsHttpsTrafficOnly** とい�
 
 ### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-[Azure Resource Graph](../../resource-graph/overview.md) は、プレビュー段階の新しいサービスです。 これは、Azure リソースのプロパティを探すための別の方法となります。 Resource Graph を使用して単一のストレージ アカウントを探すサンプル クエリを次に示します。
+[Azure Resource Graph](../../resource-graph/overview.md) は、新しいサービスです。 これは、Azure リソースのプロパティを探すための別の方法となります。 Resource Graph を使用して単一のストレージ アカウントを探すサンプル クエリを次に示します。
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -301,12 +313,11 @@ Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1
 }
 ```
 
-Azure Resource Graph (プレビュー) は [Cloud Shell](https://shell.azure.com) を介して使用することもでき、リソースのプロパティを素早く簡単に探すことができます。
+Azure Resource Graph は [Cloud Shell](https://shell.azure.com) を介して使用することもでき、リソースのプロパティをすばやく簡単に探すことができます。
 
 ## <a name="determine-the-effect-to-use"></a>使用する効果を決定する
 
-非準拠リソースをどう処理するかを決定することは、最初に何を評価するかを決定することと同じくらい重要です。 非準拠リソースに対して考えられる応答はそれぞれ、[効果](../concepts/effects.md)と呼ばれます。
-効果は、非準拠リソースがログ記録されるか、ブロックされるか、追加されるデータがあるか、リソースを準拠状態に戻すために関連付けられているデプロイがあるかを制御します。
+非準拠リソースをどう処理するかを決定することは、最初に何を評価するかを決定することと同じくらい重要です。 非準拠リソースに対して考えられる応答はそれぞれ、[効果](../concepts/effects.md)と呼ばれます。 効果は、非準拠リソースがログ記録されるか、ブロックされるか、追加されるデータがあるか、リソースを準拠状態に戻すために関連付けられているデプロイがあるかを制御します。
 
 この例では、非準拠リソースを Azure 環境で作成したくないため、必要な効果は Deny です。 Audit は、ポリシーの効果を Deny に設定する前にポリシーの影響を判別するのに最適な効果です。 割り当てごとにより簡単に効果を変更できるようにする方法の 1 つは、効果をパラメーター化することです。 詳細な方法については、「[パラメーター](#parameters)」を参照してください。
 
@@ -439,6 +450,16 @@ Azure Resource Graph (プレビュー) は [Cloud Shell](https://shell.azure.com
 ```
 
 この完成した定義を使用して、新しいポリシーを作成できます。 ポータルと各 SDK (Azure CLI、Azure PowerShell、REST API) で定義の受け入れ方は異なるので、それぞれのコマンドを参照して適切な使用方法を確認してください。 次に、パラメーター化した効果を使用して適切なリソースに割り当て、ストレージ アカウントのセキュリティを管理します。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このチュートリアルのリソースに対する作業が完了した場合は、次の手順を使用して、ここで作成した割り当てまたは定義をすべて削除してください。
+
+1. Azure Policy ページの左側にある **[作成]** の下の **[定義]** (または割り当てを削除する場合は **[割り当て]** ) を選択します。
+
+1. 削除する新しいイニシアティブまたはポリシー定義 (または割り当て) を見つけます。
+
+1. 行を右クリックするか、定義 (または割り当て) の末尾にある省略記号を選択し、 **[定義の削除]** (または **[割り当ての削除]** ) を選択します。
 
 ## <a name="review"></a>レビュー
 

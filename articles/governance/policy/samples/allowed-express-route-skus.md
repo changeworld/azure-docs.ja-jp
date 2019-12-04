@@ -1,14 +1,14 @@
 ---
 title: サンプル - 許可された ExpressRoute の SKU
-description: このサンプル ポリシー定義は、承認された SKU の使用を ExpressRoute に要求します。
+description: このサンプル ポリシー定義は、パラメーターで定義される承認された SKU を ExpressRoute で使用することを要求します。
 ms.date: 01/29/2019
 ms.topic: sample
-ms.openlocfilehash: a9fa0e98a2973cbaa689358c0922b0eda23dd042
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e4bd9dfe9c9851f80fe7e6f7b93a1c251e163bf7
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072021"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463719"
 ---
 # <a name="sample---allowed-expressroute-skus"></a>サンプル - 許可された ExpressRoute の SKU
 

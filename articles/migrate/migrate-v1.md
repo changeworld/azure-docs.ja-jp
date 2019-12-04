@@ -1,18 +1,18 @@
 ---
-title: 旧バージョンの Azure Migrate を使用する | Microsoft Docs
-description: 旧バージョンの Azure Migrate の使用方法に関する概要を示します
+title: 旧バージョンの Azure Migrate を使用する
+description: 旧バージョンの Azure Migrate を使用する方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 07/11/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 52fe4af87d1f5ed6684896aebf404926691ccb07
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162452"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186532"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>旧バージョンの Azure Migrate を使用する
 

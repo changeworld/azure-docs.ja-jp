@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Java を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法
+title: Java を使用して X.509 デバイスを Azure Device Provisioning Service に登録する
 description: このクイック スタートでは、グループ登録と個別登録の両方を使用します。 このクイック スタートでは、Java を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します。
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 8a1accf232b022bc3028f91d2151c00b98969f1f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 983e410c6f6298c6b251fdc2a4aff5c677d26906
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904782"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423053"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>クイック スタート:Java を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -203,11 +202,11 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-Java Service のサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
+Java サービスのサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されている Java サンプルの出力ウィンドウを閉じます。
 1. マシンの _X509 証明書ジェネレーター_ のウィンドウを閉じます。
-1. Azure Portal で [デバイス プロビジョニング サービス] に移動し、 **[登録を管理します]** をクリックし、 **[登録グループ]** タブを選択します。このクイックスタートを使用して登録した X.509 デバイスの *GROUP NAME* を選択し、ブレードの上部にある **[削除]** ボタンをクリックします。  
+1. Azure portal で Device Provisioning Service に移動し、 **[登録を管理します]** 、 **[登録グループ]** タブの順に選択します。このクイックスタートを使用して登録した X.509 デバイスの "*グループ名*" の隣にあるチェック ボックスをオンにして、ペイン上部にある **[削除]** を押します。  
 
 ## <a name="next-steps"></a>次の手順
 このクイックスタートでは、シミュレートされた X.509 デバイスのグループを Device Provisioning Service に登録しました。 Device Provisioning に関する理解をさらに深めるには、Azure Portal における Device Provisioning Service の設定に関するチュートリアルに進んでください。 

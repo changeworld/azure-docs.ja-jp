@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: f4ebbd4f37422c5aa2fea07a243eb624ec9e2961
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: e8f6f9ca610c515deca6ed1bdbee54f40cacf427
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687018"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184934"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して Java Spring アプリを作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "71687018"
 - バージョン 8 を含む、サポートされている [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk)。
 - [Apache Maven](https://maven.apache.org/download.cgi) バージョン 3.0 以降。
 
-## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
+## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
@@ -58,7 +58,7 @@ ms.locfileid: "71687018"
 
 3. 前の各オプションを指定してから、 **[プロジェクトの生成]** を選択します。 メッセージが表示されたら、ローカル コンピューター上のパスにプロジェクトをダウンロードします。
 
-## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
+## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
 1. ファイルをローカル システム上に展開したら、シンプルな Spring Boot アプリケーションの編集を開始できます。 アプリのルート ディレクトリで *pom.xml* ファイルを探します。
 
@@ -68,7 +68,7 @@ ms.locfileid: "71687018"
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0.M5</version>
     </dependency>
     ```
 
@@ -119,7 +119,7 @@ ms.locfileid: "71687018"
     }
     ```
 
-6. アプリの resources ディレクトリに、`bootstrap.properties` という名前の新しいファイルを作成し、そのファイルに以下の行を追加します。 サンプルの値を、アプリ構成ストアの適切なプロパティに置き換えます。
+6. アプリの resources ディレクトリに、`bootstrap.properties` という名前の新しいファイルを作成し、そのファイルに以下の行を追加します。 サンプルの値を、App Configuration ストアの適切なプロパティに置き換えます。
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
@@ -138,7 +138,7 @@ ms.locfileid: "71687018"
       ```shell
       curl -X GET http://localhost:8080/
       ```
-    アプリ構成ストアに入力したメッセージが表示されます。
+    App Configuration ストアに入力したメッセージが表示されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -146,9 +146,7 @@ ms.locfileid: "71687018"
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、新しいアプリ構成ストアを作成して、Java Spring アプリで使用しました。 詳細については、「[Azure の Spring](https://docs.microsoft.com/java/azure/spring-framework/)」を参照してください。
-
-App Configuration の使用方法についてさらに学習するには、認証について示した次のチュートリアルに進んでください。
+このクイックスタートでは、新しい App Configuration ストアを作成して、Java Spring アプリで使用しました。 詳細については、「[Azure の Spring](https://docs.microsoft.com/java/azure/spring-framework/)」を参照してください。 App Configuration へのアクセスを効率化する Azure マネージド ID を使用する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [マネージド ID の統合](./howto-integrate-azure-managed-service-identity.md)

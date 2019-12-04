@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 150c4b458724562fc35ef97e190c898a289c6122
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: fae7b80fd4d2fcec32bbef5e4cdf18e576412a86
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102914"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231973"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sugar-crm"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Sugar CRM の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "71102914"
 
 * Sugar CRM にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Sugar CRM に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -147,19 +147,19 @@ Sugar CRM に対する Azure AD SSO を構成してテストするには、次�
 
 1. **[Admin]** に移動します。
 
-    ![管理](./media/sugarcrm-tutorial/ic795888.png "Admin")
+    ![管理者](./media/sugarcrm-tutorial/ic795888.png "[Admin]")
 
 1. **[Administration]** セクションで、 **[Password Management]** をクリックします。
 
-    ![Administration](./media/sugarcrm-tutorial/ic795889.png "Administration")
+    ![管理](./media/sugarcrm-tutorial/ic795889.png "管理")
 
 1. **[Enable SAML Authentication]** を選択します。
 
-    ![Administration](./media/sugarcrm-tutorial/ic795890.png "Administration")
+    ![管理](./media/sugarcrm-tutorial/ic795890.png "管理")
 
 1. **[SAML Authentication]** セクションで、次の手順に従います。
 
-    ![SAML Authentication](./media/sugarcrm-tutorial/ic795891.png "SAML Authentication")  
+    ![SAML 認証](./media/sugarcrm-tutorial/ic795891.png "SAML 認証")  
 
     a. **[ログイン URL]** ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
   
@@ -179,19 +179,19 @@ Azure AD ユーザーが Sugar CRM にサインインできるようにするに
 
 1. **[Admin]** に移動します。
 
-    ![管理](./media/sugarcrm-tutorial/ic795888.png "Admin")
+    ![管理者](./media/sugarcrm-tutorial/ic795888.png "[Admin]")
 
 1. **[Administration]** セクションで、 **[User Management]** をクリックします。
 
-    ![Administration](./media/sugarcrm-tutorial/ic795893.png "Administration")
+    ![管理](./media/sugarcrm-tutorial/ic795893.png "管理")
 
 1. **[Users]\>[Create New User]** の順に選択します。
 
-    ![Create New User](./media/sugarcrm-tutorial/ic795894.png "Create New User")
+    ![新しいユーザーの作成](./media/sugarcrm-tutorial/ic795894.png "[新しいユーザーの作成]")
 
 1. **[User Profile]** タブで、次の手順に従います。
 
-    ![New User](./media/sugarcrm-tutorial/ic795895.png "New User")
+    ![[New User]\(新しいユーザー\)](./media/sugarcrm-tutorial/ic795895.png "[新しいユーザー]")
 
     * 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**ユーザー名**、**姓**、および**メール アドレス**を入力します。
   
@@ -199,14 +199,14 @@ Azure AD ユーザーが Sugar CRM にサインインできるようにするに
 
 1. [Password] タブで、次の手順に従います。
 
-    ![New User](./media/sugarcrm-tutorial/ic795896.png "New User")
+    ![[New User]\(新しいユーザー\)](./media/sugarcrm-tutorial/ic795896.png "[新しいユーザー]")
 
     a. 該当するテキスト ボックスにパスワードを入力します。
 
     b. **[Save]** をクリックします。
 
 > [!NOTE]
-> Sugar CRM から提供されている他の Sugar CRM ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Sugar CRM ユーザー アカウント作成ツールや、Sugar CRM から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

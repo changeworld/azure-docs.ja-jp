@@ -1,18 +1,18 @@
 ---
-title: Azure portal でのクエリの作成と共有
-description: このチュートリアルでは、Azure portal で Resource Graph クエリを作成し、他のユーザーと共有する方法について説明します。
-ms.date: 10/23/2019
+title: チュートリアル:Azure portal でのクエリの管理
+description: このチュートリアルでは、Azure portal で Resource Graph クエリを作成し、新しいクエリを他のユーザーと共有します。
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: 65b96da3bd9064f34d75d5e87f1fcf55336d9893
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958570"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74303940"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>チュートリアル:Azure portal で Azure Resource Graph クエリを作成して共有する
 
-Azure Resource Graph エクスプローラーを使うと、Azure portal で直接 Resource Graph クエリを保存できます。 クエリには次の 2 種類があります: "_プライベート_" と "_共有_"。 プライベート クエリは、自分の Azure portal の設定に保存されます。 一方、共有クエリは、ロールベースのアクセス制御 (RBAC) で管理し、リソース ロックで保護することができる Resource Manager リソースです。
+Azure Resource Graph エクスプローラーを使うと、Azure portal で直接 Resource Graph クエリを保存できます。 クエリには次の 2 種類があります: "_プライベート_" と "_共有_"。 プライベート クエリは、自分の Azure portal の設定に保存されます。 一方、共有クエリは、ロールベースのアクセス制御 (RBAC) で管理し、リソース ロックで保護することができる Resource Manager リソースです。 どちらの種類のクエリも、保存時に暗号化されます。
 
 お気に入りのクエリやよく使用するクエリを Azure portal に保存しておくと、探す時間を節約できます。 クエリを共有すると、一貫性と効率性というチームの目標を、繰り返しによって実現することができます。
 
@@ -54,7 +54,7 @@ Azure Resource Graph エクスプローラーを使うと、Azure portal で直�
 1. **[クエリを開く]** を選択します。 種類が **[プライベート クエリ]** であることを確認します。 保存した名前 "**Count VMs by OS**" が、 **[クエリ名]** の一覧に表示されるようになります。 保存したクエリのタイトル リンクを選択すると、そのクエリの名前の新しいタブに読み込まれます。
 
    > [!NOTE] 
-   >保存されているクエリを開き、タブにその名前が表示されている状態で、 **[保存]** ボタンを選択すると、行った変更でクエリが更新されます。 この開いているクエリから新しいクエリを作成して保存するには、 **[名前を付けて保存]** を選択して、新しいクエリを保存したときと同じようにします。
+   > 保存されているクエリを開き、タブにその名前が表示されている状態で、 **[保存]** ボタンを選択すると、行った変更でクエリが更新されます。 この開いているクエリから新しいクエリを作成して保存するには、 **[名前を付けて保存]** を選択して、新しいクエリを保存したときと同じようにします。
 
 1. 保存したクエリを削除するには、 **[クエリを開く]** を再び選択し、 **[種類]** フィールドが **[プライベート クエリ]** に設定されていることを確認します。 保存されている `Count VMs by OS` クエリの行で、 **[削除]** (ごみ箱アイコン) を選択します。 確認ダイアログ ボックスで、 **[はい]** を選択してクエリの削除を完了します。
    次に、 **[クエリを開く]** ウィンドウを閉じます。
@@ -153,9 +153,7 @@ Resources
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure portal](../first-query-portal.md) を使用して最初のクエリを実行します。
-- [クエリ言語](../concepts/query-language.md)に関する詳細情報を入手します。
-- [リソースを探索する](../concepts/explore-resources.md)方法について詳しく確認します。
-- [初歩的なクエリ](../samples/starter.md)のサンプルを参照します。
-- [高度なクエリ](../samples/advanced.md)のサンプルを参照します。
-- [UserVoice ](https://feedback.azure.com/forums/915958-azure-governance)にフィードバックを提供します。
+このチュートリアルでは、プライベート クエリと共有クエリを作成しました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
+
+> [!div class="nextstepaction"]
+> [クエリ言語に関する詳細情報を入手します](../concepts/query-language.md)

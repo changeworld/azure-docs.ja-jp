@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 8331161cde9e7717834dabd2228848de40f7be23
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e02f0de685dc1f67633e13fed1f4114c399afdea
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360291"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280528"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用したデバイスのプロビジョニング
 Microsoft Azure には、すべての IoT ソリューションのニーズに合う豊富な統合されたパブリック クラウド サービス セットがあります。 IoT Hub Device Provisioning Service は、適切な IoT ハブへのゼロタッチでジャストインタイムなプロビジョニングを可能にする、IoT Hub のヘルパー サービスです。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングできます。
@@ -78,7 +78,7 @@ Device Provisioning Service は多くの機能を備えているため、デバ�
 
 * **安全な構成証明**。X.509 と TPM ベースの ID の両方をサポートしています。
 * **登録一覧**。任意の時点で登録できるデバイスまたはデバイス グループの完全なレコードが含まれます。 登録一覧には、デバイスが登録されたときのデバイスの望ましい構成に関する情報が含まれています。いつでも更新することができます。
-* **複数の割り当てポリシー**。実際のシナリオに合わせて Device Provisioning Service がデバイスを IoT ハブに割り当てる方法を制御できます。
+* **複数の割り当てポリシー**。実際のシナリオに合わせて Device Provisioning Service がデバイスを IoT ハブに割り当てる方法を制御できます。最短待ち時間、均等に重み付けされた分布 (既定)、および登録リストによる静的な構成。 待ち時間は [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance) と同じ方法を使用して決定されることに注意してください。
 * **監視および診断ログ**。すべての機能が正常に動作していることを確認できます。
 * **マルチハブのサポート**。Device Provisioning Service でデバイスを複数の IoT ハブに割り当てることができます。 Device Provisioning Service は、複数の Azure サブスクリプションにわたってハブと対話できます。
 * **リージョン間のサポート**。Device Provisioning Service でデバイスを他のリージョンの IoT ハブに割り当てることができます。

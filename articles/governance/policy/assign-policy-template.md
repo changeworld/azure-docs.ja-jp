@@ -1,27 +1,29 @@
 ---
-title: Resource Manager テンプレートを使用した割り当ての作成
-description: この記事では、Resource Manager テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する手順について説明します。
-ms.date: 03/13/2019
+title: クイック スタート:テンプレートを使用した新しいポリシーの割り当て
+description: このクイックスタートでは、Resource Manager テンプレートを使用して、ポリシー割り当てを作成し、準拠していないリソースを特定します。
+ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 0695f0b5993f996ff35296be609d9978f57907f1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 61bffcdeb5d562fe18df98fda091d5d6aa4b4051
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960147"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482332"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 
 Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。
 このクイックスタートでは、ポリシーの割り当てを作成して、マネージド ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
 
-このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに "*準拠していません*"。
+このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに "_準拠していません_"。
+
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
-このクイック スタートでは、ポリシー割り当てを作成し、"*マネージド ディスクを使用していない VM の監査*" という組み込みのポリシー定義を割り当てます。 使用できる組み込みポリシーの部分的な一覧については、[Azure Policy サンプル](./samples/index.md)に関する記事をご覧ください。
+このクイック スタートでは、ポリシー割り当てを作成し、"_マネージド ディスクを使用していない VM の監査_" という組み込みのポリシー定義を割り当てます。 使用できる組み込みポリシーの部分的な一覧については、[Azure Policy サンプル](./samples/index.md)に関する記事をご覧ください。
 
 ポリシー割り当てを作成する方法はいくつかあります。 このクイック スタートでは、[クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)を使用します。
 テンプレートのコピーを次に示します。
@@ -29,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [!code-json[policy-assignment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
 
 > [!NOTE]
-> Azure Policy サービスは無料です。  詳細については、[Azure Policy の概要](./overview.md)に関するページを参照してください。
+> Azure Policy サービスは無料です。 詳細については、[Azure Policy の概要](./overview.md)に関するページを参照してください。
 
 1. 次のイメージを選択して、Azure portal にサインインし、テンプレートを開きます。
 
@@ -40,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    | 名前 | 値 |
    |------|-------|
    | Subscription | Azure サブスクリプションを選択します。 |
-   | Resource group | **[新規作成]** を選択し、名前を指定して、 **[OK]** を選択します。 スクリーンショットでは、リソース グループ名は *mypolicyquickstart\<MMDD 形式の日付>rg* です。 |
+   | Resource group | **[新規作成]** を選択し、名前を指定して、 **[OK]** を選択します。 スクリーンショットでは、リソース グループ名は _mypolicyquickstart\<MMDD 形式の日付\>rg_ です。 |
    | Location | リージョンを選択します。 たとえば **[米国中部]** です。 |
    | ポリシーの割り当て名 | ポリシーの割り当て名を指定します。 必要に応じて、ポリシー定義の表示を使用できます。 たとえば、"**マネージド ディスクを使用していない VM の監査**" などです。 |
    | Rg Name \(RG 名\) | ポリシーを割り当てるリソース グループ名を指定します。 このクイック スタートでは、既定値 **[resourceGroup().name]** を使用します。 **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** は、リソース グループを取得するテンプレート関数です。 |
@@ -53,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - その他のサンプル テンプレートについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)」を参照してください。
 - テンプレート リファレンスを確認するには、[Azure テンプレート リファレンス](/azure/templates/microsoft.authorization/allversions)に関するページを参照してください。
-- Resource Manager テンプレートを開発する方法については、[Azure Resource Manager のドキュメント](/azure/azure-resource-manager/)を参照してください。
+- Resource Manager テンプレートを開発する方法については、[Azure Resource Manager のドキュメント](../../azure-resource-manager/resource-group-overview.md)を参照してください。
 - サブスクリプション レベルのデプロイについては、「[サブスクリプション レベルでリソース グループとリソースを作成する](../../azure-resource-manager/deploy-to-subscription.md)」を参照してください。
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する

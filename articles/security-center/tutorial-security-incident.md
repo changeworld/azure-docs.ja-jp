@@ -1,6 +1,6 @@
 ---
 title: インシデント対応チュートリアル - Azure Security Center
-description: Azure Security Center チュートリアル - セキュリティ インシデントへの対応
+description: このチュートリアルでは、セキュリティ アラートのトリアージ、インシデントの根本原因と影響範囲の特定、セキュリティ データの検索の方法をそれぞれ説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
-ms.openlocfilehash: cd3f99fe82c9a8e5e760aa3be3bed1ad5d9bd5e9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49e2af8fd2d71e1e5103f5337d5c7104c2904322
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663641"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559199"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>チュートリアル:セキュリティ インシデントへの対応
 Security Center では、高度な分析および脅威インテリジェンスを使用してハイブリッド クラウド ワークロードを継続的に分析し、悪意のあるアクティビティに関するアラートを受け取ることができます。 さらに、他のセキュリティ製品およびサービスからのアラートを Security Center に統合し、独自のインジケーターまたはインテリジェンス ソースに基づいたカスタム アラートを作成できます。 アラートが生成されたら、調査と修復を行うために迅速なアクションが必要になります。 このチュートリアルで学習する内容は次のとおりです。

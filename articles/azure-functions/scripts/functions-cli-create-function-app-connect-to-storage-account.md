@@ -1,29 +1,19 @@
 ---
-title: Azure Storage に接続する Azure 関数の作成 | Microsoft Docs
+title: 接続ストレージを使用して関数アプリを作成する - Azure CLI
 description: Azure CLI スクリプトのサンプル - Azure Storage に接続する Azure 関数の作成
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 04/20/2017
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 48f6124373d80d22766d319ec58ed4ad7adaf6f5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9c2a70066e673bfa164a58884891f29e220c7bd6
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963370"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532830"
 ---
-# <a name="create-a-function-app-that-connects-to-an-azure-storage-account"></a>Azure Storage アカウントに接続する関数アプリの作成
+# <a name="create-a-function-app-with-a-named-storage-account-connection"></a>名前付きストレージ アカウント接続を使用して関数アプリを作成する 
 
 この Azure Functions サンプル スクリプトは、関数アプリを作成し、関数を Azure Storage アカウントに接続します。 作成された、接続を含むアプリ設定は、[ストレージのトリガーまたはバインド](../functions-bindings-storage-blob.md)と共に使用することができます。 
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,25 +27,22 @@ CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降を�
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "Integrate Function App into Azure Storage Account")]
 
-
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
-
-サンプル スクリプトの実行後、次のコマンドを実行して、リソース グループとすべての関連リソースを削除できます。
-
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 任意の場所にリソース グループを作成します。 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントを作成します。 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成します。 |
+| [az group create](/cli/azure/group#az-group-create) | 任意の場所にリソース グループを作成します。 |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントを作成します。 |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成します。 |
+| [az storage account show-connection-string](/cli/azure/storage/account#az-storage-account-show-connection-string) | アカウント用の接続文字列を取得します。 |
+| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | 関数アプリのアプリ設定として接続文字列を設定します。 |
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント](../functions-cli-samples.md)で確認できます。

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 01644054868ffc08738e67654ba181c76e7aed39
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129687"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185080"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは
 
@@ -58,12 +58,12 @@ App Configuration は、アプリケーションのシークレットを格納�
 
 ## <a name="use-app-configuration"></a>App Configuration の使用
 
-アプリ構成ストアを自分のアプリケーションに追加する最も簡単な方法は、Microsoft が提供するクライアント ライブラリを使用することです。 プログラミング言語とフレームワークに基づいて、使用できる最適な方法を次に示します。
+App Configuration ストアを自分のアプリケーションに追加する最も簡単な方法は、Microsoft が提供するクライアント ライブラリを使用することです。 プログラミング言語とフレームワークに基づいて、使用できる最適な方法を次に示します。
 
 | プログラミング言語とフレームワーク | 接続する方法 |
 |---|---|
 | .NET Core と ASP.NET Core | .NET Core 用 App Configuration プロバイダー |
-| .NET と ASP.NET | .NET 用 App Configuration ビルダー |
+| .NET Framework および ASP.NET | .NET 用 App Configuration ビルダー |
 | Java Spring | Spring Cloud 用 App Configuration クライアント |
 | その他 | App Configuration の REST API |
 
@@ -72,7 +72,7 @@ App Configuration は、アプリケーションのシークレットを格納�
 * [ASP.NET Core のクイック スタート](./quickstart-aspnet-core-app.md)
 * [.NET Core のクイック スタート](./quickstart-dotnet-core-app.md)
 * [.NET Framework のクイック スタート](./quickstart-dotnet-app.md)
-* [Azure 関数のクイック スタート](./quickstart-azure-function-csharp.md)
+* [Azure Functions のクイックスタート](./quickstart-azure-functions-csharp.md)
 * [Java Spring のクイック スタート](./quickstart-java-spring-app.md)
 * [ASP.NET Core の機能フラグのクイック スタート](./quickstart-feature-flag-aspnet-core.md)
 * [Spring Boot の機能フラグのクイックスタート](./quickstart-feature-flag-spring-boot.md)

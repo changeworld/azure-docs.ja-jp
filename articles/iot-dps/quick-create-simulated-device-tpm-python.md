@@ -1,27 +1,29 @@
 ---
-title: クイック スタート:シミュレートされた TPM デバイスを Python を使用して Azure IoT Hub にプロビジョニングする
-description: Azure クイック スタート - IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングします。このクイック スタートでは、個別登録を使用します。
+title: クイックスタート - シミュレートされた TPM デバイスを Python を使用して Azure IoT Hub にプロビジョニングする
+description: クイックスタート - IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングします。 このクイック スタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 423b04c15bcc2d73a33d7ecde736724168d28025
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: e878245d5329edfe31d402d03fc7e1aef0b6637e
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904851"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555107"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>クイック スタート:IoT Hub Device Provisioning Service 対応の Python デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
 以下の手順では、Windows OS を実行する開発マシン上にシミュレートされたデバイスを作成し、そのデバイスの[ハードウェア セキュリティ モジュール (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) として Windows TPM シミュレーターを実行します。その後、Python コード サンプルを使用して、そのシミュレートされたデバイスを Device Provisioning Service と IoT ハブに接続します。 
+
+> [!IMPORTANT]
+> この記事は、非推奨となっている V1 Python SDK にのみ適用されます。 V2 では、Iot Hub Device Provisioning Service 用のデバイス クライアントとサービス クライアントはまだ利用できません。 チームは現在、V2 を機能パリティに移行する作業に取り組んでいます。
 
 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」も確認してください。 また、先に進む前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
@@ -32,9 +34,6 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 この記事では、個別登録の使用方法を示します。
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
-
-> [!NOTE]
-> このガイドは、現在は非推奨の V1 Python SDK にのみ適用されます。 シミュレートされた TPM デバイスは、V2 ではまだサポートされていません。 現在、チームは、V2 を機能パリティに移行する作業に取り組んでいます。
 
 ## <a name="prepare-the-environment"></a>環境の準備 
 
@@ -77,21 +76,22 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 1. *cmake* フォルダーに生成されたソリューション (`azure_iot_sdks.sln`) を開き、Visual Studio でビルドします。
 
-1. **tpm_device_provision** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 ソリューションを実行する デバイス登録に必要な **_Endorsement Key_** と **_Registration ID_** が出力ウィンドウに表示されます。 これらの値を書き留めておいてください。 
+1. **tpm_device_provision** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 ソリューションを実行する デバイス登録に必要な **_保証キー_** と **_登録 ID_** が出力ウィンドウに表示されます。 これらの値を書き留めておいてください。 
 
     ![TPM のセットアップ](./media/python-quick-create-simulated-device/tpm-setup.png)
 
-1. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
+1. Azure portal にサインインし、左側のメニューの **[すべてのリソース]** を選択して、Device Provisioning Service を開きます。
 
-1. Device Provisioning Service の概要ブレードで、 **[Manage enrollments]\(登録の管理\)** を選択します。 **[個別登録]** タブを選択し、上部にある **[個別登録の追加]** ボタンをクリックします。 
+1. Device Provisioning Service のメニューで、 **[登録を管理します]** を選択します。 **[個々の登録]** タブを選択したうえで、上部にある **[個別登録の追加]** を選択します。 
 
-1. **[Add Enrollment] (登録の追加)** で、次の情報を入力します。
+1. **[登録の追加]** パネルで、次の情報を入力します。
    - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
-   - TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。 
+   - 前にメモしておいた値を基に、TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。
    - プロビジョニング サービスにリンクされた IoT ハブを選択します。
-   - 一意のデバイス ID を入力します。 デバイスに名前を付ける際に機密データを含めないようにしてください。
-   - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
-   - 作業が完了したら、 **[保存]** をクリックします。 
+   - 必要に応じて、次の情報を入力することができます。
+       - 一意の "*デバイス ID*" を入力します。 デバイスに名前を付ける際に機密データを含めないようにしてください。 指定しなかった場合には、デバイスの識別に際して代わりに登録 ID が使用されます。
+       - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
+   - 作業が完了したら、 **[保存]** を押します。 
 
      ![ポータルのブレードにデバイス登録情報を入力します。](./media/python-quick-create-simulated-device/enterdevice-enrollment.png)  
 
@@ -101,9 +101,9 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 ## <a name="simulate-the-device"></a>デバイスをシミュレートする
 
 1. [Python 2.x または 3.x](https://www.python.org/downloads/) をダウンロードしてインストールします。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。
-    - Windows OS を使用している場合は、[Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/confirmation.aspx?id=48145)によって、Python からネイティブ DLL を使用できます。
+    - Windows OS を使用している場合は、[Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)によって、Python からネイティブ DLL を使用できます。
 
-1. [これらの手順](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)に従って、Python パッケージをビルドします。
+1. [これらの手順](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md)に従って、Python パッケージをビルドします。
 
    > [!NOTE]
    > `build_client.cmd` を実行する場合は、必ず `--use-tpm-simulator` フラグを使用してください。
@@ -138,7 +138,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
     ![成功した登録](./media/python-quick-create-simulated-device/registration-success.png)
 
-1. プロビジョニング サービスにリンクされた IoT ハブに対し、シミュレートされたデバイスが正常にプロビジョニングされると、ハブの **[デバイス エクスプローラー]** ブレードにデバイス ID が表示されます。
+1. プロビジョニング サービスにリンクされた IoT ハブに対してシミュレートされたデバイスが正常にプロビジョニングされると、ハブの **[IoT デバイス]** ブレードにデバイス ID が表示されます。
 
     ![IoT ハブに登録されたデバイス](./media/python-quick-create-simulated-device/hubregistration.png) 
 
@@ -151,12 +151,12 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 
 1. マシンに表示されているデバイス クライアント サンプルの出力ウィンドウを閉じます。
 1. マシンに表示されている TPM シミュレーター ウィンドウを閉じます。
-1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、Device Provisioning サービスを選択します。 サービスの **[登録を管理します]** ブレードを開き、 **[個々の登録]** タブをクリックします。このクイックスタートで登録したデバイスの*登録 ID* を選択し、上部の **[削除]** ボタンをクリックします。 
-1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、IoT ハブを選択します。 ハブの **[IoT Devices]\(IoT デバイス\)** ブレードを開き、このクイックスタートで登録したデバイスの "*デバイス ID*" を選択し、一番上の **[削除]** ボタンをクリックします。
+1. Azure portal の左側のメニューで **[すべてのリソース]** を選択し、Device Provisioning Service を選択します。 サービスの **[登録を管理します]** ブレードを開き、 **[個々の登録]** タブを選択します。このクイックスタートで登録したデバイスの "*登録 ID*" の隣にあるチェック ボックスをオンにして、ペイン上部の **[削除]** を押します。 
+1. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、IoT ハブを選択します。 ハブの **[IoT デバイス]** ブレードを開き、このクイックスタートで登録したデバイスの "*デバイス ID*" の隣にあるチェック ボックスをオンにして、ペイン上部の **[削除]** を押します。
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、TPM のシミュレートされたデバイスをコンピューター上に作成し、IoT Hub Device Provisioning Service を使用して IoT ハブにプロビジョニングしました。 プログラミングによって TPM デバイスを登録する方法については、TPM デバイスのプログラミングによる登録のクイックスタートに進みます。 
+このクイックスタートでは、シミュレートされた TPM デバイスをマシン上に作成し、IoT Hub Device Provisioning Service を使用して IoT ハブにプロビジョニングしました。 プログラミングによって TPM デバイスを登録する方法については、TPM デバイスのプログラミングによる登録のクイックスタートに進みます。 
 
 > [!div class="nextstepaction"]
-> [Azure クイックスタート - Azure IoT Hub Device Provisioning Service への TPM デバイスの登録](quick-enroll-device-tpm-python.md)
+> [Azure クイックスタート - TPM デバイスを Azure IoT Hub Device Provisioning Service に登録する](quick-enroll-device-tpm-python.md)

@@ -1,5 +1,6 @@
 ---
-title: 仮想マシン ネットワークのルーティングの問題を診断する - チュートリアル - Azure Portal | Microsoft Docs
+title: チュートリアル:VM ネットワーク ルーティングの問題を診断する - Azure portal
+titleSuffix: Azure Network Watcher
 description: このチュートリアルでは、Azure Network Watcher の次ホップ機能を使用して、仮想マシン ネットワークのルーティングの問題を診断する方法について説明します。
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3ad9cd8b620b55aaa17e84343a82ac361081de44
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684515"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276045"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して仮想マシン ネットワークのルーティングの問題を診断する
 
@@ -40,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal (https://portal.azure.com) にログインします。
+Azure Portal (https://portal.azure.com ) にログインします。
 
 ## <a name="create-a-vm"></a>VM の作成
 
@@ -50,11 +51,11 @@ Azure Portal (https://portal.azure.com) にログインします。
 
     |Setting|値|
     |---|---|
-    |Name|myVm|
+    |名前|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |サブスクリプション| サブスクリプションを選択します。|
-    |リソース グループ| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
+    |Subscription| サブスクリプションを選択します。|
+    |Resource group| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
     |Location| **[米国東部]** を選択します。|
 
 4. VM のサイズを選択して、 **[選択]** を選択します。
@@ -85,7 +86,7 @@ Azure では、既定の接続先へのルートを自動的に作成します�
 
     |Setting                  |値                                                   |
     |---------                |---------                                               |
-    | リソース グループ          | myResourceGroup を選択する                                 |
+    | Resource group          | myResourceGroup を選択する                                 |
     | 仮想マシン         | myVm を選択する                                            |
     | Linux       | myvm - お使いのネットワーク インターフェイス名は異なる場合があります。   |
     | 送信元 IP アドレス       | 10.0.0.4                                               |

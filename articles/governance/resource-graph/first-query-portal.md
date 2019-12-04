@@ -1,20 +1,22 @@
 ---
-title: Azure Resource Graph エクスプローラーを使用して初めてのクエリを実行する
-description: この記事では、Azure Resource Graph エクスプローラーを使用して Azure portal から初めてのクエリを実行する手順を紹介します。
-ms.date: 10/21/2019
+title: クイック スタート:初めてのポータル クエリ
+description: このクイックスタートでは、手順に従って、Azure Resource Graph エクスプローラーを使用して Azure portal から初めてのクエリを実行します。
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 9cb8fdfcc68e2ef8e19a8fce2545d2939ac13e06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958826"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406793"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
 Azure Resource Graph の機能は、Azure portal で Azure Resource Graph エクスプローラーを通じて直接利用できます。 Resource Graph エクスプローラーでは、Azure Resource Manager の照会可能なリソースの種類やプロパティに関する参照可能な情報が提供されます。 また、Resource Graph エクスプローラーには、整然としたインターフェイスが備わっていて、複数のクエリを実行してその結果を評価するほか、いくつかのクエリの結果をグラフに変換して Azure ダッシュボードにピン留めすることもできます。
 
 このクイックスタートの終了時には、Azure portal と Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行し、その結果をダッシュボードにピン留めしたことになります。
+
+## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -105,7 +107,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 インポートしたダッシュボードが自動的に表示されます。 この時点でダッシュボードは Azure portal に存在するため、必要に応じて調査したり変更を加えたりすることができます。また、サンプルから新しいダッシュボードを作成してチームと共有することもできます。 ダッシュボードの操作の詳細については、「[Azure portal でのダッシュボードの作成と共有](../../azure-portal/azure-portal-dashboards.md)」を参照してください。
 
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 ご利用の Azure portal 環境からサンプルの Resource Graph ダッシュボードを削除する場合は、次の手順で実行できます。
 
@@ -117,9 +119,7 @@ Resource Graph クエリの例および Resource Graph エクスプローラー�
 
 ## <a name="next-steps"></a>次の手順
 
-- [クエリ言語](./concepts/query-language.md)に関する詳細情報を入手します。
-- [リソースを探索する](./concepts/explore-resources.md)方法について詳しく確認します。
-- [Azure CLI](first-query-azurecli.md) を使用して最初のクエリを実行します。
-- [Starter クエリ](./samples/starter.md)のサンプルを参照します。
-- [高度なクエリ](./samples/advanced.md)のサンプルを参照します。
-- [UserVoice ](https://feedback.azure.com/forums/915958-azure-governance)にフィードバックを提供します。
+このクイックスタートでは、Azure Resource Graph Explorer を使用して初めてのクエリを実行し、Resource Graph を使用したダッシュボードの例を見てきました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
+
+> [!div class="nextstepaction"]
+> [クエリ言語に関する詳細情報を入手します](./concepts/query-language.md)

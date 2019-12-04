@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f605398896c93d15b7475c05c79361fdcefcfcab
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ea9c88f8eb8ac7b72f11ff286d2294df8cb70860
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442770"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232056"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル:Azure Active Directory と Bonusly の統合
 
@@ -207,7 +207,7 @@ Bonusly で Azure AD シングル サインオンを構成するには、次の�
 Azure AD ユーザーが Bonusly にサインインできるようにするには、そのユーザーを Bonusly にプロビジョニングする必要があります。 Bonusly の場合、プロビジョニングは手動で行います。
 
 > [!NOTE]
-> Bonusly から提供されている他の Bonusly ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。 
+> 他の Bonusly ユーザー アカウント作成ツールや、Bonusly から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。 
 
 **ユーザー プロビジョニングを構成するには、次の手順に従います。**
 
@@ -215,23 +215,23 @@ Azure AD ユーザーが Bonusly にサインインできるようにするに�
 
 1. **[設定]** をクリックします。
 
-    ![設定](./media/bonus-tutorial/ic781041.png "Settings")
+    ![設定](./media/bonus-tutorial/ic781041.png "設定")
 
 1. **[Users and bonuses]** タブをクリックします。
 
-    ![Users and bonuses](./media/bonus-tutorial/ic781042.png "Users and bonuses")
+    ![[Users and bonuses]\(ユーザーとボーナス\)](./media/bonus-tutorial/ic781042.png "[Users and bonuses]")
 
 1. **[Manage Users]** をクリックします。
 
-    ![Manage Users](./media/bonus-tutorial/ic781043.png "Manage Users")
+    ![ユーザーの管理](./media/bonus-tutorial/ic781043.png "[Manage Users]")
 
 1. **[ユーザーの追加]** をクリックします。
 
-    ![ユーザーの追加](./media/bonus-tutorial/ic781044.png "Add User")
+    ![ユーザーの追加](./media/bonus-tutorial/ic781044.png "ユーザーの追加")
 
 1. **[Add User]** ダイアログで、次の手順を実行します。
 
-    ![ユーザーの追加](./media/bonus-tutorial/ic781045.png "Add User")  
+    ![ユーザーの追加](./media/bonus-tutorial/ic781045.png "ユーザーの追加")  
 
     a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 

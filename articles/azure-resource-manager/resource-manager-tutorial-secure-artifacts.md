@@ -1,24 +1,16 @@
 ---
-title: 成果物をセキュリティで保護する - Azure Resource Manager テンプレート
+title: テンプレートでの成果物のセキュリティ保護
 description: Azure Resource Manager テンプレート内で使用される成果物をセキュリティで保護する方法について説明します。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d9570c30e2870a136bd97ed5fc2304d6f0d280c9
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: b37f7e284b655a362c5a4231a7c1da3719762644
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528277"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326433"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>チュートリアル: Azure Resource Manager テンプレートのデプロイ時に成果物をセキュリティで保護する
 
@@ -41,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)。 [拡張機能のインストールに関する記事](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-tools-vs-code.md)」を参照してください。
 * 「[チュートリアル: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)」を確認します。 このチュートリアルで使用するテンプレートは、そのチュートリアルで開発したものです。 この記事では、完成したテンプレートのダウンロード リンクを提供しています。
 * セキュリティを向上させるために、生成されたパスワードを SQL Server 管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 

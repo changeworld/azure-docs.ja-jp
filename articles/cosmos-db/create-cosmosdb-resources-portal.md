@@ -1,6 +1,6 @@
 ---
-title: Azure portal を使用して Azure Cosmos のアカウント、コンテナー、および項目を作成します。
-description: Azure portal を使用して Azure Cosmos のアカウント、コンテナー、および項目を作成します。
+title: Azure portal で Azure Cosmos データベースを作成します。
+description: Azure portal を使用して、Azure Cosmos のデータベース、コンテナー、および項目を作成します。
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/01/2019
-ms.openlocfilehash: e0a9f4fa6ca5ff7447d2ffaef3eab2f3c54fdeae
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b42a442564812f4386eb94b9bd7b7c9aff9e9f29
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241258"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220725"
 ---
-# <a name="quickstart-create-an-azure-cosmos-account-container-and-items-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Cosmos のアカウント、コンテナー、および項目を作成する
+# <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Cosmos のアカウント、データベース、コンテナー、および項目を作成する
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](create-cosmosdb-resources-portal.md)
@@ -71,9 +71,7 @@ Azure portal のデータ エクスプローラーを使用してデータベー
 
 データ エクスプローラーを使用して、ご自分の新しいデータベースにデータを追加します。
 
-
-1. **[データ エクスプローラー]**で、**[ToDoList]** データベースを展開し、**[アイテム]** コンテナーを展開します。 次に、 **[項目]** を選択し、 **[新しい項目]** を選択します。 
-
+1. **[データ エクスプローラー]** で、 **[ToDoList]** データベースを展開し、 **[アイテム]** コンテナーを展開します。 次に、 **[項目]** を選択し、 **[新しい項目]** を選択します。 
    
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png)
    

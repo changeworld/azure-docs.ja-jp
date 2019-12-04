@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e2f682a2782eb1a61dd44e02d665175e31c441f8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357019"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185103"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD パイプラインとの統合
 
@@ -29,7 +29,7 @@ Azure DevOps パイプラインがある場合は、App Configuration からキ�
 
 ## <a name="deploy-app-configuration-data-with-your-application"></a>App Configuration データをアプリケーションと共にデプロイする
 
-アプリケーションは、Azure App Configuration に依存していてそれに到達できない場合、実行に失敗する可能性があります。 発生する可能性が低くても、そのようなイベントに対処するようにアプリケーションの回復性を拡張することができます。 そのためには、現在の構成データを、アプリケーションと共にデプロイされ、起動時にローカルで読み込まれるファイルにパッケージ化します。 このアプローチを利用すると、少なくともアプリケーションの既定値が確実に設定されます。 これらの値は、アプリ構成ストアが使用できる状態になったときに、新しい変更によって上書きされます。
+アプリケーションは、Azure App Configuration に依存していてそれに到達できない場合、実行に失敗する可能性があります。 発生する可能性が低くても、そのようなイベントに対処するようにアプリケーションの回復性を拡張することができます。 そのためには、現在の構成データを、アプリケーションと共にデプロイされ、起動時にローカルで読み込まれるファイルにパッケージ化します。 このアプローチを利用すると、少なくともアプリケーションの既定値が確実に設定されます。 これらの値は、App Configuration ストアが使用できる状態になったときに、新しい変更によって上書きされます。
 
 Azure App Configuration の[エクスポート](./howto-import-export-data.md#export-data)機能を使用して、現在の構成データを 1 つのファイルとして取得するプロセスを自動化できます。 次に、継続的インテグレーションと継続的配信 (CI/CD) パイプラインのビルドまたはデプロイ手順にこのファイルを組み込みます。
 
@@ -43,7 +43,7 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
 
 (たとえば Azure DevOps で) クラウド ビルドを実行するには、必ず [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をビルド システムにインストールします。
 
-### <a name="export-an-app-configuration-store"></a>アプリ構成ストアをエクスポートする
+### <a name="export-an-app-configuration-store"></a>App Configuration ストアをエクスポートする
 
 1. *.csproj* ファイルを開き、次のスクリプトを追加します。
 
@@ -54,7 +54,7 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
     </Target>
     ```
 
-    アプリ構成ストアに関連付けられている *ConnectionString* を環境変数として追加します。
+    App Configuration ストアに関連付けられている *ConnectionString* を環境変数として追加します。
 
 2. *Program.cs* を開き、`config.AddJsonFile()` メソッドを呼び出して、エクスポートされた JSON ファイルを使用するように `CreateWebHostBuilder` メソッドを更新します。
 
@@ -74,7 +74,7 @@ Azure App Configuration の[エクスポート](./howto-import-export-data.md#ex
 
 ### <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
-1. **ConnectionString** という名前の環境変数に、アプリ構成ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
+1. **ConnectionString** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: a51276cd54a88c5e566afef0d06673f14b5862cf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a61b1a44419ac35efa5888de2b5a6e4988dfb512
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572025"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422302"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway とは
 
@@ -26,6 +26,11 @@ Application Gateway では、URI パスやホスト ヘッダーなど、HTTP �
 ![imageURLroute](./media/application-gateway-url-route-overview/figure1-720.png)
 
 この種類のルーティングは、アプリケーション レイヤー (OSI レイヤー 7) の負荷分散と呼ばれます。 Azure Application Gateway は URL ベースのルーティングなどを行うことができます。
+
+>[!NOTE]
+> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 高パフォーマンス、低待ち時間のレイヤー 4 負荷分散機能が必要な場合は、「[Azure Load Balancer の概要](../load-balancer/load-balancer-overview.md)」をご覧ください グローバル DNS の負荷分散が必要な場合は、「[Traffic Manager とは](../traffic-manager/traffic-manager-overview.md)」を参照してください。 実際のエンド ツー エンドのシナリオでは、これらのソリューションを組み合わせると役に立つことがあります。
+>
+> Azure の負荷分散オプションの比較については、「[Azure の負荷分散オプションの概要](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)」を参照してください。
 
 Azure Application Gateway には、次の機能があります。
 

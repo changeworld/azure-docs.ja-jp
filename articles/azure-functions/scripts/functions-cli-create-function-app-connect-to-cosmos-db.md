@@ -1,23 +1,15 @@
 ---
-title: Azure Cosmos DB に接続する Azure 関数の作成 | Microsoft Docs
+title: Azure Cosmos DB を使用して関数アプリを作成する - Azure CLI
 description: Azure CLI スクリプトのサンプル - Azure Cosmos DB に接続する Azure 関数の作成
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/03/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 15a7cc1940a01486c6b660ec65b47f072dc7996e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d881a5eb6132f95239418f032da51d002af01905
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52970682"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532860"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Azure Cosmos DB に接続する Azure 関数の作成
 
@@ -41,16 +33,19 @@ CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降を�
 
 このスクリプトでは以下のコマンドを使用します。表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | メモ |
+| command | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | 任意の場所にリソース グループを作成します |
-| [az storage accounts create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントの作成 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成します。 |
-| [az cosmosdb create](https://docs.microsoft.com/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB のデータベースを作成します。 |
+| [az group create](/cli/azure/group#az-group-create) | 任意の場所にリソース グループを作成します |
+| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | ストレージ アカウントの作成 |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | サーバーレスの[従量課金プラン](../functions-scale.md#consumption-plan)で関数アプリを作成します。 |
+| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Azure Cosmos DB のデータベースを作成します。 |
+| [az cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| データベース アカウント接続を取得します。 |
+| [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys)| データベースのキーを取得します。 |
+| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | 関数アプリのアプリ設定として接続文字列を設定します。 |
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント](../functions-cli-samples.md)で確認できます。
 

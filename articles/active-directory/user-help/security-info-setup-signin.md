@@ -1,6 +1,6 @@
 ---
-title: サインイン プロンプトからセキュリティ情報 (プレビュー) を設定する - Azure AD
-description: 組織のサインイン ページで求められた場合に、職場または学校アカウントのセキュリティ情報を設定する方法について説明します。
+title: サインイン プロンプトから自分のセキュリティ情報 (プレビュー) を設定する - Azure AD
+description: 組織のサインイン ページで求められた後、自分の職場または学校アカウントのセキュリティ情報 (プレビュー) を設定する方法について説明します。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae1856c7934c658bd244445306b4bb78c666e38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 710e43aec82c5d154b2e17a20abb2ce4dd481129
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820298"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278992"
 ---
-# <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>サインイン ページのプロンプトからセキュリティ情報 (プレビュー) を設定する
+# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>サインイン プロンプトから自分のセキュリティ情報 (プレビュー) を設定する
 
 職場または学校アカウントにサインインした直後にセキュリティ情報の設定を求められた場合は、次の手順のようにして設定できます。
 

@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
-ms.date: 08/13/2019
-ms.openlocfilehash: 46ba972c489326157cbdea19a1363a30e18f72b8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/25/2019
+ms.openlocfilehash: aed2e090a1e3a6a4c80f70ba25da9a903a6192c1
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177970"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484146"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Azure Database for MariaDB とは
 
@@ -53,11 +53,7 @@ Azure の業界をリードする可用性 99.99% の SLA は、Microsoft が管
 
 ## <a name="secure-your-data"></a>データのセキュリティ保護
 
-Azure データベース サービスは、Azure Database for MariaDB によって、データ セキュリティを維持してきました。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能が Azure Database for MariaDB には備わっています。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/en-us/trustcenter/security)をご覧ください。
-
-Azure Database for MariaDB サービスでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 バックアップを含むデータはディスク上で暗号化されます (ただし、クエリの実行中に作成された一時ファイルを除きます)。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用されます。 このキーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
-
-既定では、Azure Database for MariaDB サービスは、ネットワーク全体で移動中のデータに [SSL 接続セキュリティ](./concepts-ssl-connection-security.md)を要求するように構成されています。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。 クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要件を無効にできます。
+Azure データベース サービスは、Azure Database for MariaDB によって、データ セキュリティを維持してきました。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能が Azure Database for MariaDB には備わっています。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/trustcenter/security)をご覧ください。 Azure Database for MySQL のセキュリティ機能の詳細については、[セキュリティの概要](concepts-security.md)に関するページを参照してください。
 
 ## <a name="contacts"></a>連絡先
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 773e55bd1908c04e1c73d998348d36b685524715
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: df662353f7c9c788158ce2dfe05385f022289466
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075655"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539095"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -25,9 +25,9 @@ Azure Cosmos Emulator には、Azure Cosmos DB サービスの高忠実度エミ
 
 Azure Cosmos DB サービスのエミュレーションは忠実ですが、エミュレーターの実装はサービスとは異なります。 たとえば、エミュレーターでは、永続化用のローカル ファイル システムや接続用の HTTPS プロトコル スタックなど、標準的な OS コンポーネントが使用されます。 グローバル レプリケーション、読み取り/書き取りの 10 ミリ秒を下回る待ち時間、調整可能な一貫性レベルなど、Azure インフラストラクチャに依存する機能は適用されません。
 
-[Azure Cosmos DB データ移行ツール](https://github.com/azure/azure-documentdb-datamigrationtool)を使用すると、Azure Cosmos Emulator と Azure Cosmos DB サービスの間でデータを移行できます。
+[Azure Cosmos DB Data Migration Tool](https://github.com/azure/azure-documentdb-datamigrationtool) を使用すると、Azure Cosmos Emulator と Azure Cosmos DB サービスの間でデータを移行できます。
 
-Azure Cosmos Emulator は Windows Docker コンテナー上で実行できます。docker pull コマンドについては [Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)、エミュレーターのソース コードについては [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) を、それぞれ参照してください。
+Azure Cosmos Emulator は Windows Docker コンテナー上で実行できます。docker pull コマンドについては [Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)、`Dockerfile` などの詳しい情報については [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) を、それぞれ参照してください。
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>エミュレーターとサービスの違い
 

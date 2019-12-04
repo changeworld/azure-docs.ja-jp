@@ -1,20 +1,20 @@
 ---
 title: Azure VM の更新プログラムとパッチの管理
-description: この記事では、Azure Automation Update Management を使用して、Azure Windows VM の更新プログラムとパッチを管理する方法の概要について説明します。
+description: この記事では、Azure Automation Update Management を使用して、お使いの Azure および非 Azure VM の更新プログラムとパッチを管理する方法の概要について説明します。
 services: automation
-author: zjalexander
+author: mgoedtel
 ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/04/2018
-ms.author: zachal
+ms.date: 11/20/2019
+ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 65ce4234da3f44de11522a626d2c0d10524e4673
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469731"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278779"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM の更新プログラムとパッチの管理
 
@@ -51,15 +51,15 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 1. Update Management を有効にする VM を選択します。
 1. VM のページで、 **[操作]** 、 **[更新の管理]** を選択します。 **[更新管理の有効化]** ウィンドウが開きます。
 
-この VM で Update Management が有効になっているかどうかを確認する検証が行われます。 この検証では、Azure Log Analytics ワークスペースの確認、リンクされた Automation アカウントの確認、Update Management ソリューションがワークスペースにあるかどうかの確認が行われます。
+この VM で Update Management が有効になっているかどうかを確認する検証が行われます。 この検証では、Azure Log Analytics ワークスペースの確認、リンクされた Automation アカウントの確認、およびワークスペースで Update Management ソリューションが有効になっているかどうかの確認が行われます。
 
-[Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペースは、Update Management のような機能およびサービスによって生成されるデータを収集するために使用されます。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
+[Log Analytics](../azure-monitor/platform/data-platform-logs.md) ワークスペースは、Update Management のような機能およびサービスによって生成されるデータを収集するために使用されます。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 
-また、検証プロセスでは、VM が Microsoft Monitoring Agent (MMA) と Automation Hybrid Runbook Worker と共にプロビジョニングされているかどうかが確認されます。 このエージェントは、Azure Automation と通信し、更新の状態に関する情報を取得するために使用されます。 エージェントでは、Azure Automation サービスと通信したり、更新プログラムをダウンロードしたりするために、ポート 443 を開く必要があります。
+また、検証プロセスでは、VM に Log Analytics エージェントと Automation Hybrid Runbook Worker がプロビジョニングされているかどうかも確認されます。 このエージェントは、Azure Automation と通信し、更新の状態に関する情報を取得するために使用されます。 エージェントでは、Azure Automation サービスと通信したり、更新プログラムをダウンロードしたりするために、ポート 443 を開く必要があります。
 
 オンボード中に次の前提条件のいずれかを満たしていないことがわかった場合は、自動的に追加されます。
 
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペース
+* [Log Analytics](../azure-monitor/platform/data-platform-logs.md) ワークスペース
 * [Automation アカウント](./automation-offering-get-started.md)
 * [Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md) (VM 上で有効になっている)
 
@@ -71,9 +71,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="view-update-assessment"></a>更新の評価を確認する
 
-Update Management が有効になると、 **[更新の管理]** ウィンドウが開きます。 不足している更新プログラムがある場合は、 **[不足している更新プログラム]** タブに、足りない更新プログラムの一覧が表示されます。
+Update Management が有効になると、 **[更新の管理]** ウィンドウが開きます。 更新プログラムが不足していると識別された場合は、 **[不足している更新プログラム]** タブに、足りない更新プログラムの一覧が表示されます。
 
-**[情報リンク]** で更新プログラムのリンクを選択すると、新しいウィンドウに更新プログラムのサポート記事が表示されます。 このウィンドウで、更新プログラムに関する重要情報を確認できます。
+**[情報リンク]** で更新プログラムのリンクを選択すると、更新プログラムのサポート記事が表示されます。 更新プログラムに関する重要情報を確認できます。
 
 ![更新ステータスを確認する](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 

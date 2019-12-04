@@ -1,14 +1,14 @@
 ---
 title: サンプル - 許可されていない VM 拡張機能
-description: このサンプル ポリシー定義は、仮想マシンに対する特定の拡張機能の使用を禁止します。
+description: このサンプル ポリシー定義は、仮想マシンに対する、パラメーターで定義される特定の拡張機能の使用を禁止します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 639a5dba7e33b9df51be1a7407ac5450af322e86
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8656cf5111ecdcc793ef8bbe69b8794464e040d2
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069983"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463260"
 ---
 # <a name="sample---not-allowed-vm-extensions"></a>サンプル - 許可されていない VM 拡張機能
 

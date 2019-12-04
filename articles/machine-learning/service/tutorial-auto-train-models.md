@@ -1,7 +1,7 @@
 ---
-title: '回帰モデルのチュートリアル: 自動化された ML'
+title: '回帰のチュートリアル: 自動化された ML'
 titleSuffix: Azure Machine Learning
-description: 自動化された機械学習を使用して機械学習モデルを生成する方法について説明します。 Azure Machine Learning では、データの事前処理、アルゴリズムの選択、ハイパーパラメーターの選択をユーザーに代わって自動的に実行できます。 その後、最終的なモデルが Azure Machine Learning によってデプロイされます。
+description: このチュートリアルでは、自動機械学習を使用して機械学習モデルを生成する方法を学習します。 Azure Machine Learning では、データの事前処理、アルゴリズムの選択、ハイパーパラメーターの選択をユーザーに代わって自動的に実行できます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: 23441fb64293647698921c17c06731ab413b7699
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2a47b6851d9c3250913783c8a63b666e8a8474d9
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582451"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483548"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

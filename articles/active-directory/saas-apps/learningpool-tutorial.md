@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6f5b2b67ec38ef690f932e189bd2fd9f0dd6da
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5bc0b395fcc874190b67bd99262c3a1c9294c0ac
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159591"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>チュートリアル:Azure Active Directory と Learningpool Act の統合
 
@@ -228,7 +228,7 @@ Learningpool Act へのユーザー プロビジョニングの構成にあた�
 ユーザーは [Learningpool Act サポートチーム](https://www.Learningpool.com/support)が作成する必要があります。
 
 > [!NOTE]
-> Learningpool Act から提供されている他の Learningpool Act ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Learningpool Act ユーザー アカウント作成ツールや、Learningpool Act から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

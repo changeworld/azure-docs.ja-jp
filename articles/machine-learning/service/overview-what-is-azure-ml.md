@@ -8,18 +8,18 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 7e07419115a6e9709879c71dfac1234408bda0ee
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 488616ab2068337331d589bbf5c61ae06b299f5d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824075"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173975"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
 この記事では、ML モデルのトレーニング、デプロイ、自動化、管理、追跡に使用できるクラウドベースの環境である Azure Machine Learning について説明します。 
 
-Azure Machine Learning は、従来の ML からディープ ラーニング、教師あり学習と教師なし学習まで、あらゆる種類の機械学習に使用できます。 Python または R のコードを書く場合も、[デザイナー](ui-tutorial-automobile-price-train-score.md)のようなコード不要/ロー コードのオプションを使用する場合も、Azure Machine Learning ワークスペースで高度に正確な機械学習とディープ ラーニングのモデルを作成、トレーニング、追跡することができます。 
+Azure Machine Learning は、従来の ML からディープ ラーニング、教師あり学習と教師なし学習まで、あらゆる種類の機械学習に使用できます。 Python または R のコードを記述するか、または[デザイナー](ui-tutorial-automobile-price-train-score.md)などのコード不要 (またはローコード) オプションを使用するかにかかわらず、Azure Machine Learning ワークスペースできわめて正確な機械学習およびディープ ラーニング モデルを構築、トレーニング、および追跡できます。 
 
 ローカル コンピューターでトレーニングを開始し、その後、クラウドにスケールアウトします。 
 
@@ -54,7 +54,6 @@ Azure Machine Learning には、次のような、開発者やデータ科学者
 
 [MLflow を使用してメトリックを追跡し、モデルをデプロイする](how-to-use-mlflow.md)ことや、Kubeflow を使用して[エンドツーエンドのワークフロー パイプラインを構築する](https://www.kubeflow.org/docs/azure/)こともできます。
 
-
 ## <a name="build-ml-models-in-python-or-r"></a>Python または R で ML モデルを構築する
 
 Azure Machine Learning の <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> または <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a> を使用してローカル コンピューターでトレーニングを開始します。 その後、クラウドにスケールアウトすることができます。 
@@ -69,7 +68,7 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 
 + **Azure Machine Learning デザイナー (プレビュー)**
 
-  デザイナーを使用すると、コードを書かなくても、データの準備、機械学習モデルのトレーニング、テスト、デプロイ、管理、追跡を行うことができます。 プログラミングは必要ありません。データセットとモジュールを視覚的に接続してモデルを構築します。   [デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。
+  デザイナーを使用すると、コードを書かなくても、データの準備、機械学習モデルのトレーニング、テスト、デプロイ、管理、追跡を行うことができます。 プログラミングは必要ありません。データセットとモジュールを視覚的に接続してモデルを構築します。 [デザイナーのチュートリアル](tutorial-designer-automobile-price-train-score.md)をお試しください。
 
   詳細については、[Azure Machine Learning デザイナーの概要に関する記事](concept-designer.md)を参照してください。 
 
@@ -98,6 +97,24 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 スクリプトを使用して機械学習ワークフローを自動化する場合、[Machine Learning CLI](reference-azure-machine-learning-cli.md) には、トレーニング実行の送信やモデルのデプロイなどの一般的なタスクを実行するコマンドライン ツールが用意されています。
 
 Azure Machine Learning の基本的な使い方については、「[次の手順](#next-steps)」を参照してください。
+
+## <a name="integration-with-other-services"></a>他のサービスとの統合
+
+Azure Machine Learning は、Azure プラットフォーム上の他のサービスとの連携に加え、Git や MLFlow といったオープン ソース ツールとの統合にも対応します。
+
++ コンピューティング先 (__Azure Kubernetes Service__、__Azure Container Instances__、__Azure Databricks__、__Azure Data Lake Analytics__、__Azure HDInsight__ など)。 コンピューティング先の詳細については、[コンピューティング先の概要](concept-compute-target.md)に関するページを参照してください。
++ __Azure Event Grid__。 詳細については、[Azure Machine Learning イベントを使用する方法](concept-event-grid-integration.md)に関するページを参照してください。
++ __Azure Monitor__。 詳細については、「[Azure Machine Learning の監視](monitor-azure-machine-learning.md)」を参照してください。
++ データ ストア (__Azure Storage アカウント__、__Azure Data Lake Storage__、__Azure SQL Database__、__Azure Database for PostgreSQL__、__Azure Open Datasets__ など)。 詳細については、「[Azure ストレージ サービスのデータにアクセスする](how-to-access-data.md)」および「[Azure Open Datasets を使用してデータセットを作成する](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets)」を参照してください。
++ __Azure Virtual Networks__。 詳細については、[仮想ネットワークでの実験と推論の安全な実行](how-to-enable-virtual-network.md)に関するページを参照してください。
++ __Azure Pipelines__。 詳細については、「[機械学習モデルのトレーニングとデプロイ](/azure/devops/pipelines/targets/azure-machine-learning)」を参照してください。
++ __Git リポジトリのログ__。 詳細については、「[Git 統合](concept-train-model-git-integration.md)」を参照してください。
++ __MLFlow__。 詳細については、[MLflow を使用してメトリックを追跡し、モデルをデプロイする方法](how-to-use-mlflow.md)に関するページを参照してください。 
++ __Kubeflow__。 詳細については、[エンド ツー エンドのワークフロー パイプラインを構築する方法](https://www.kubeflow.org/docs/azure/)に関するページを参照してください。
+
+### <a name="secure-communications"></a>セキュリティで保護された通信
+
+Azure Storage アカウントやコンピューティング先などのリソースは、仮想ネットワーク内で安全に使用してモデルをトレーニングし、推論を実行することができます。 詳細については、[仮想ネットワークでの実験と推論の安全な実行](how-to-enable-virtual-network.md)に関するページを参照してください。
 
 ## <a name="sku"></a>Basic Edition と Enterprise Edition
 

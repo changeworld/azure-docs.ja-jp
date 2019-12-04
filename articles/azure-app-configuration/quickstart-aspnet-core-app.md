@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 10/11/2019
 ms.author: yegu
-ms.openlocfilehash: 4e08192788329e7a835ddb0b6b3f1aa01b2c73e1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 91712b3f730317e65cda7b48c8f5636b2fb9ab2c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299940"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185082"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "72299940"
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - [.NET Core SDK](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
+## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
@@ -81,7 +81,7 @@ ms.locfileid: "72299940"
 
 シークレット マネージャー ツールは、開発作業の機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。 シークレット マネージャーの詳細については、「[ASP.NET Core での開発におけるアプリ シークレットの安全な格納](https://docs.microsoft.com/aspnet/core/security/app-secrets)」を参照してください。
 
-## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
+## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
 1. 次のコマンドを実行して、`Microsoft.Azure.AppConfiguration.AspNetCore` NuGet パッケージへの参照を追加します。
 
@@ -95,7 +95,7 @@ ms.locfileid: "72299940"
     ```
 3. シークレット マネージャーに、*ConnectionStrings:AppConfig* という名前のシークレットを追加します。
 
-    このシークレットには、アプリ構成ストアにアクセスするための接続文字列が格納されます。 次のコマンドの値を、自分のアプリ構成ストアの接続文字列に置き換えます。
+    このシークレットには、App Configuration ストアにアクセスするための接続文字列が格納されます。 次のコマンドの値を、自分の App Configuration ストアの接続文字列に置き換えます。
 
     このコマンドは、 *.csproj* ファイルと同じディレクトリで実行する必要があります。
 
@@ -216,7 +216,7 @@ ms.locfileid: "72299940"
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、新しいアプリ構成ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から ASP.NET Core Web アプリと共に使用しました。 App Configuration の使用方法の詳細については、次のチュートリアルに進んでください。構成設定を動的に更新するように Web アプリを構成する方法を説明しています。
+このクイックスタートでは、新しい App Configuration ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から ASP.NET Core Web アプリと共に使用しました。 構成設定を動的に更新するように ASP.NET Core アプリを構成する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core アプリで動的な構成を使用する](./enable-dynamic-configuration-aspnet-core.md)
+> [動的な構成を有効にする](./enable-dynamic-configuration-aspnet-core.md)

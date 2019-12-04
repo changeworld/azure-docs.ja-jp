@@ -1,24 +1,16 @@
 ---
-title: Resource Manager デプロイのトラブルシューティング | Microsoft Docs
+title: デプロイのトラブルシューティング
 description: Azure Resource Manager テンプレートのデプロイを監視およびトラブルシューティングする方法について学習します。 アクティビティ ログとデプロイ履歴を紹介します。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4ad32ed83d731a26b6bb72fca230d00d5465c45a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 32f3f55df2b87b35672d811c63a21b956a8a4b52
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390203"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325352"
 ---
 # <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>チュートリアル:Resource Manager テンプレート デプロイのトラブルシューティング
 
@@ -26,7 +18,7 @@ Resource Manager テンプレート デプロイ エラーのトラブルシュ�
 
 テンプレート デプロイに関連するエラーには、次の 2 種類があります。
 
-- **検証エラー**は、デプロイ前に判断できるシナリオで発生します。 これには、テンプレートに構文エラーがある場合や、サブスクリプション クォータを超えるリソースをデプロイしようとしている場合などがあります。 
+- **検証エラー**は、デプロイ前に判断できるシナリオで発生します。 これには、テンプレートに構文エラーがある場合や、サブスクリプション クォータを超えるリソースをデプロイしようとしている場合などがあります。
 - **デプロイ エラー**は、デプロイ プロセスで発生する状況に起因します。 これには、並列でデプロイされているリソースにアクセスしようとしている場合などがあります。
 
 この 2 種類のエラーでは、デプロイのトラブルシューティングに使用するエラー コードが返されます。 どちらの種類のエラーもアクティビティ ログに表示されます。 ただし、検証エラーは、デプロイが開始されていないため、デプロイ履歴には表示されません。
@@ -47,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-- [Visual Studio Code](https://code.visualstudio.com/) と [Resource Manager ツール拡張機能](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-tools-vs-code.md)」を参照してください。
 
 ## <a name="create-a-problematic-template"></a>問題のあるテンプレートの作成
 

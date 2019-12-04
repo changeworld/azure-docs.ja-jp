@@ -1,10 +1,6 @@
 ---
-title: Azure Dev Spaces を使用して AKS 上で Visual Studio と .NET Core でデバッグと反復処理を行う
-titleSuffix: Azure Dev Spaces
-author: zr-msft
+title: 'Kubernetes 上でデバッグと反復処理を行う: Visual Studio と .NET Core'
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 11/13/2019
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
@@ -12,14 +8,14 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナ
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5a7ab993c58730594a0c4e10572939d3dccbdf02
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: a151314bef14e302879f4db0f7c0094779bdcfec
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091813"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325605"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上で Visual Studio と .NET Core でデバッグと反復処理を行う
+# <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でデバッグと反復処理を行う: Visual Studio と .NET Core - Azure Dev Spaces
 
 このガイドでは、以下の方法について説明します。
 

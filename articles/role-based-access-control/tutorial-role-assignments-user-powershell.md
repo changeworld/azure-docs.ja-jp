@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) と Azure PowerShell を使用して、Azure リソースへのアクセス権をユーザーに付与する方法について説明します。
+title: チュートリアル - RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する
+description: このチュートリアルでは、ロールベースのアクセス制御 (RBAC) と Azure PowerShell を使用して、Azure リソースへのアクセス権をユーザーに付与する方法について説明します。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: b9aefc8eae733d9f43d1f5399c1464b40367f09e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: c5570c6b1d2cdd168dbaeb0a91d80a61e171e5d1
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343478"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74418619"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する
 
@@ -48,8 +48,8 @@ RBAC では、アクセス権を付与するには、ロールの割り当てを
 
 | セキュリティ プリンシパル | ロール定義 | Scope (スコープ) |
 | --- | --- | --- |
-| User<br>(RBAC チュートリアル ユーザー) | [Reader](built-in-roles.md#reader) | サブスクリプション |
-| User<br>(RBAC チュートリアル ユーザー)| [Contributor](built-in-roles.md#contributor) | リソース グループ<br>(rbac-tutorial-resource-group) |
+| User<br>(RBAC チュートリアル ユーザー) | [Reader](built-in-roles.md#reader) | Subscription |
+| User<br>(RBAC チュートリアル ユーザー)| [Contributor](built-in-roles.md#contributor) | Resource group<br>(rbac-tutorial-resource-group) |
 
    ![ユーザーのロールの割り当て](./media/tutorial-role-assignments-user-powershell/rbac-role-assignments-user.png)
 

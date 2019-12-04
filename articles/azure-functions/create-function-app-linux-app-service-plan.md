@@ -1,18 +1,14 @@
 ---
-title: Linux 上で Azure portal から関数アプリを作成する | Microsoft Docs
+title: Linux 上で Azure portal から関数アプリを作成する
 description: Azure Portal を使用して、サーバーレス実行のための最初の Azure 関数を作成する方法について説明します。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.author: glenga
-ms.openlocfilehash: 89755e8b70a490f1c5746b23e0d36c5d90b624c1
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: fdc2d9c7b5945e48cc87f3edd918498c3d45f55e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571664"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233103"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service プランで Linux 上に関数アプリを作成する
 

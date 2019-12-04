@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 03cf8eb2036a9670dbc75e3efb55e52a70de5c54
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c79a6ba1a6b7b5582c6430c6de7a4a309bf4920
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607261"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169842"
 ---
 # <a name="what-is-azure-event-grid"></a>Azure Event Grid とは
 
@@ -54,9 +54,9 @@ Azure Event Grid は、すべてのリージョンの複数の障害ドメイン
 * [Event Hubs](event-handlers.md#event-hubs)
 * [VNet](event-handlers.md#hybrid-connections)
 * [Logic Apps](event-handlers.md#logic-apps)
-* [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
+* [Power Automate (旧称 Microsoft Flow)](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
 * [Queue Storage](event-handlers.md#queue-storage)
-* [Service Bus](event-handlers.md#service-bus-queue)
+* [Service Bus](event-handlers.md#service-bus)
 * [WebHooks](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>概念

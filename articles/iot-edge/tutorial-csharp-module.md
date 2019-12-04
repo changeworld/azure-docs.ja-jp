@@ -8,13 +8,13 @@ ms.author: kgremban
 ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 7714d065d8ac449d10d9b022005e7799f8280bda
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: mvc
+ms.openlocfilehash: cabe30c08d13f0ebeb8e0ce784ea29a0b5d61bec
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104449"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560967"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の C# IoT Edge モジュールを開発する
 
@@ -336,7 +336,9 @@ IoT Edge デバイスのステータスは、Visual Studio Code エクスプロ�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[独自の IoT Edge モジュールの開発](module-development.md)または [Visual Studio Code を使用してモジュールを開発](how-to-vs-code-develop-module.md)する方法の詳細をご確認ください。 次のチュートリアルに進むと、Azure のクラウド サービスをデプロイしてエッジでデータの処理と分析を行ううえで、Azure IoT Edge がどのように役立つかを確認できます。
+このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[独自の IoT Edge モジュールの開発](module-development.md)または [Visual Studio Code を使用してモジュールを開発](how-to-vs-code-develop-module.md)する方法の詳細をご確認ください。 シミュレート済み温度モジュールを含む IoT Edge モジュールの例については、[IoT Edge モジュールのサンプル](https://github.com/Azure/iotedge/tree/master/edge-modules)を参照してください。 
+
+次のチュートリアルに進むと、Azure のクラウド サービスをデプロイしてエッジでデータの処理と分析を行ううえで、Azure IoT Edge がどのように役立つかを確認できます。
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)

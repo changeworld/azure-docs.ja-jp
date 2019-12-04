@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 3d4ac9ed9b8d5162f820f7e981d3380b95cf41e4
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: e5e6a2fe856915a3625f22bffa91403e3c036a22
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172816"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481352"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とは
 
@@ -94,6 +94,9 @@ Azure AD DS の実際の動作を確認するために、いくつかの例を�
     * 同期される ID 情報には、ユーザー アカウントとグループ メンバーシップが含まれます。
 * Litware の IT チームは、この仮想ネットワークまたはピアリングされた仮想ネットワーク内の Azure AD テナントに対して Azure AD DS を有効にします。
 * Azure 仮想ネットワーク内にデプロイされたアプリケーションと VM は、ドメイン参加、LDAP 読み取り、LDAP バインド、NTLM 認証、Kerberos 認証、グループ ポリシーなどの Azure AD DS 機能を使用できます。
+
+> [!IMPORTANT]
+> Azure AD Connect は、オンプレミスの AD DS 環境との同期のためにのみインストールおよび構成する必要があります。 オブジェクトを Azure AD に同期するために、Azure AD DS マネージド ドメインに Azure AD Connect をインストールすることはサポートされていません。
 
 ### <a name="azure-ad-ds-for-cloud-only-organizations"></a>クラウド専用組織向けの Azure AD DS
 

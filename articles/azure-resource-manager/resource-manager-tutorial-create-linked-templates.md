@@ -1,24 +1,16 @@
 ---
-title: リンクされた Azure Resource Manager テンプレートの作成 | Microsoft Docs
+title: リンク済みテンプレートの作成
 description: 仮想マシンを作成するためにリンクされた Azure Resource Manager テンプレートを作成する方法
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 869e59aea9b78c44b1a920e58ecefab5e0ca4920
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9764edb986b2ee847e3fcecda228f53551b462c3
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169407"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325423"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>チュートリアル:リンクされた Azure Resource Manager テンプレートの作成
 
@@ -47,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* [Visual Studio Code](https://code.visualstudio.com/) と [Resource Manager ツール拡張機能](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-tools-vs-code.md)」を参照してください。
 * セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```azurecli-interactive

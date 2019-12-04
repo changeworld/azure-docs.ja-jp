@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 134483764ffcb012ece0769a514683fc9487887f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 813117bce4abd3550ac559109c1650ea4a7cff5c
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073628"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538257"
 ---
 # <a name="create-and-publish-a-product"></a>製品を作成して発行する  
 
@@ -57,7 +57,7 @@ Azure API Management の製品には、少なくとも 1 つの API に加え、
     | 承認が必要        | この製品に対するサブスクリプションの申し込みを管理者の審査の下で承認または拒否する場合は、 **[承認を要求する]** をオンにします。 チェック ボックスがオフの場合、サブスクリプションの申し込みは自動承認されます。                                                                                                                         |
     | サブスクリプション数の制限 | 複数同時に利用できるサブスクリプションの数を制限するには、サブスクリプションの上限を入力します。                                                                                                                                                                                                                                |
     | 法的条項              | サブスクライバーが製品を使用するにあたって同意する必要がある製品の使用条件を入力できます。                                                                                                                                                                                                             |
-    | API                     | 製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 <br/> 製品の作成時に既存の API を追加できます。 製品には後から API を追加できます。 **[設定]** ページを使用して追加することも、API の作成時に追加することもできます。 |
+    | API                     | 製品には、1 つまたは複数の API が関連付けられています。 複数の API を組み込み、開発者ポータルを通じてそれらを開発者に提供できます。 <br/> 製品の作成時に既存の API を追加できます。 製品には後から API を追加できます。製品の **[設定]** ページを使用して追加することも、API の作成時に追加することもできます。 |
 
 3. **[作成]** をクリックして新しい製品を作成します。
 

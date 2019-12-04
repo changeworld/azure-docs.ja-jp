@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 61ffd4857ca9a330a4cb0eeace89791fc0973f70
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575094"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186071"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3 の概要
 
@@ -53,6 +53,10 @@ Media Services v3 を使用して、コンテンツのエンコードとパッ�
 
 > [!TIP]
 > 開発を開始する前に、以下を確認してください。<br/>* [基本的な概念](concepts-overview.md) (パッケージ化、エンコード、保護などの重要な概念を含む)<br/>* [Media Services v3 API を使用した開発](media-services-apis-overview.md) (API へのアクセスや名前付け規則などに関する情報を含む)
+
+### <a name="sdks"></a>SDK
+
+[Azure Media Services v3 クライアント SDK](media-services-apis-overview.md#sdks) を使用して開発を始めます。
 
 ### <a name="quickstarts"></a>クイック スタート  
 

@@ -1,14 +1,14 @@
 ---
 title: サンプル - リソース グループのカスタム VM イメージの許可
-description: このサンプル ポリシー定義は、カスタム イメージが、承認されたリソース グループに属したものであることを要求します。
+description: このサンプル ポリシー定義は、カスタム イメージが、パラメーターで定義される承認されたリソース グループに属したものであることを要求します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 4956b01dfc48014a047e61aa4961cc4da418f6ae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 788098998bb5a1f268203e8e37fd671bdfbd6425
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076492"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463782"
 ---
 # <a name="sample---allow-custom-vm-image-from-a-resource-group"></a>サンプル - リソース グループのカスタム VM イメージの許可
 

@@ -1,27 +1,23 @@
 ---
-title: Azure Migrate Server Assessment での物理サーバーの評価を準備する
-description: Azure Migrate Server Assessment を使用して、物理サーバーの評価および Azure への移行を準備する方法について説明します。
+title: Azure Migrate を使用した評価と移行に向けて物理サーバーを準備する
+description: Azure Migrate を使用した評価と移行に向けて物理サーバーを準備する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/07/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 176dfdabeee6299bba0eb17085be25ced3e97993
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091913"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196394"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>物理サーバーの評価および Azure への移行を準備する
 
 この記事では、[Azure Migrate](migrate-services-overview.md) を使用して、オンプレミスの物理サーバーの評価および Azure への移行を準備する方法について説明します。
-
-
-> [!NOTE]
-> Azure Migrate ポータルでこれらの機能の一部がまだ表示されていない場合は、しばらくお待ちください。 来週あたりに表示されるようになります。
 
 [Azure Migrate](migrate-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。 
 
@@ -45,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Azure Migrate のデプロイに対するアクセス許可を設定する必要があります。
 
-- お使いの Azure アカウントで Azure Migrate プロジェクトを作成するためのアクセス許可。 
+- お使いの Azure アカウントで Azure Migrate プロジェクトを作成するためのアクセス許可。
 - お使いの Azure アカウントで Azure Migrate アプライアンスを登録するためのアクセス許可。 アプライアンスは、Hyper-V の検出と移行に使用されます。 アプライアンスの登録時に、Azure Migrate によって、アプライアンスを一意に識別する 2 つの Azure Active Directory (Azure AD) アプリが作成されます。
     - 1 つ目のアプリは、Azure Migrate サービス エンドポイントと通信します。
     - 2 つ目のアプリは、登録時に作成された Azure キー コンテナーにアクセスし、Azure AD アプリ情報とアプライアンス構成設定を格納します。
@@ -73,7 +69,7 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
 次の点に注意してください。
 
 - アプリには、上記で説明した以外に、サブスクリプションに対するアクセス許可はありません。
-- 新しいアプライアンスを登録するときに必要なのは、これらのアクセス許可だけです。 アクセス許可はアプライアンスを設定した後で削除できます。 
+- 新しいアプライアンスを登録するときに必要なのは、これらのアクセス許可だけです。 アクセス許可はアプライアンスを設定した後で削除できます。
 
 
 #### <a name="grant-account-permissions"></a>アカウントへのアクセス許可の付与
@@ -88,7 +84,7 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
 > [!NOTE]
 > これは、重要ではない既定の設定です。 [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
-#### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て 
+#### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て
 
 テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細情報](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
@@ -124,12 +120,12 @@ Azure Migrate には、オンプレミスのサーバーを検出するための
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次のことを行いました。
- 
-> [!div class="checklist"] 
+
+> [!div class="checklist"]
 > * Azure アカウントのアクセス許可を設定しました。
 > * 物理サーバーの評価を準備する
 
 次のチュートリアルに進み、Azure Migrate プロジェクトを作成し、Azure に移行するために物理サーバーを評価します。
 
-> [!div class="nextstepaction"] 
-> [物理サーバーを評価する](./tutorial-assess-physical.md) 
+> [!div class="nextstepaction"]
+> [物理サーバーを評価する](./tutorial-assess-physical.md)

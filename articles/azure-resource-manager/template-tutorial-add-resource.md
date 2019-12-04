@@ -1,18 +1,16 @@
 ---
-title: チュートリアル - Azure Resource Manager テンプレートにリソースを追加する
+title: チュートリアル - テンプレートにリソースを追加する
 description: Azure Resource Manager テンプレートを初めて作成する際の手順について説明します。 テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6b8bd73a1248168ff8f434afa0a9317a8fe0c618
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963579"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148196"
 ---
 # <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにリソースを追加する
 

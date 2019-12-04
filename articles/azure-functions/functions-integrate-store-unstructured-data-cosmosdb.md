@@ -1,24 +1,15 @@
 ---
-title: Azure Cosmos DB と Functions を使用して非構造化データを格納する | Microsoft Docs
+title: Azure Cosmos DB と Functions を使用して非構造化データを格納する
 description: Azure Functions と Cosmos DB を使用して非構造化データを格納する
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, 関数, イベント処理, Cosmos DB, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/01/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: cdae0a04d09b7985935bee0ae636d7f88fbff541
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: bae5e82bfe9091c2b2003b4f1735f51e3d37222d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903657"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230562"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Azure Functions と Azure Cosmos DB を使用して非構造化データを格納する
 
@@ -47,11 +38,11 @@ Azure Functions では、入力および出力バインディングによって�
 
 1. ポータルで、以前に作成した関数アプリに移動し、関数アプリと関数の両方を展開します。
 
-1. **[統合]** を選択し、ページの右上にある **[新規出力]** を選択します。 **[Azure Cosmos DB]** を選択し、**[選択]** をクリックします。
+1. **[統合]** を選択し、ページの右上にある **[新規出力]** を選択します。 **[Azure Cosmos DB]** を選択し、 **[選択]** をクリックします。
 
     ![Azure Cosmos DB の出力バインディングの追加](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-tab-add-new-output-binding.png)
 
-1. メッセージ "**拡張機能がインストールされていません**" が表示された場合は、**[インストール]** を選択して、関数アプリに Azure Cosmos DB バインディング拡張機能をインストールします。 インストールには、1、2 分かかる場合があります。
+1. メッセージ "**拡張機能がインストールされていません**" が表示された場合は、 **[インストール]** を選択して、関数アプリに Azure Cosmos DB バインディング拡張機能をインストールします。 インストールには、1、2 分かかる場合があります。
 
     ![Azure Cosmos DB バインディング拡張機能をインストールする](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-integrate-install-binding-extension.png)
 
@@ -65,7 +56,7 @@ Azure Functions では、入力および出力バインディングによって�
     | **データベース名** | taskDatabase | ドキュメントを保存するデータベースの名前。 |
     | **[コレクション名]** | TaskCollection | データベース コレクションの名前 |
     | **[If true, creates the Cosmos DB database and collection]\(オンの場合、Cosmos DB データベースとコレクションを作成する\)** | オン | コレクションはまだ存在していないため、作成します。 |
-    | **Azure Cosmos DB アカウント接続** | 新しい設定 | **[新規]** を選択し、使用する**サブスクリプション**、前の手順で作成した**データベース アカウント**、**[選択]** の順に選択します。 アカウントの接続のアプリケーション設定を作成します。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
+    | **Azure Cosmos DB アカウント接続** | 新しい設定 | **[新規]** を選択し、使用する**サブスクリプション**、前の手順で作成した**データベース アカウント**、 **[選択]** の順に選択します。 アカウントの接続のアプリケーション設定を作成します。 この設定は、データベースへの接続へのバインディングによって使用されます。 |
     | **コレクションのスループット** |400 RU| 待ち時間を短縮する場合、後でスループットをスケールアップできます。 |
 
 1. **[保存]** を選択してバインディングを作成します。
@@ -143,7 +134,7 @@ module.exports = async function (context, req) {
 
 ## <a name="test-the-function-and-database"></a>関数とデータベースをテストする
 
-1. 右側のウィンドウを展開し、**[テスト]** を選択します。 **[クエリ]** の下の **[+ パラメーターの追加]** をクリックし、クエリ文字列に以下のパラメーターを追加します。
+1. 右側のウィンドウを展開し、 **[テスト]** を選択します。 **[クエリ]** の下の **[+ パラメーターの追加]** をクリックし、クエリ文字列に以下のパラメーターを追加します。
 
     + `name`
     + `task`
@@ -153,11 +144,11 @@ module.exports = async function (context, req) {
 
     ![Cosmos DB の出力バインディングの構成](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-test-function.png)
 
-1. Azure Portal の左側のアイコン バーを展開し、検索フィールドに「`cosmos`」と入力して、**[Azure Cosmos DB]** を選択します。
+1. Azure Portal の左側のアイコン バーを展開し、検索フィールドに「`cosmos`」と入力して、 **[Azure Cosmos DB]** を選択します。
 
     ![Cosmos DB サービスの検索](./media/functions-integrate-store-unstructured-data-cosmosdb/functions-search-cosmos-db.png)
 
-1. Azure Cosmos DB アカウントを選択してから、**[データ エクスプローラー]** を選択します。
+1. Azure Cosmos DB アカウントを選択してから、 **[データ エクスプローラー]** を選択します。
 
 1. **[コレクション]** ノードを展開して新しいドキュメントを選択し、ドキュメントにクエリ文字列値といくつかの追加のメタデータが含まれていることを確認します。
 

@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 10/07/2019
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 48222bf3f964f8c728f980f839c460862a8212ca
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: b8fa0a3cebd87f4da1a47c605ba21b0cb10a2517
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818656"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220048"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>C++ で Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 
@@ -49,14 +49,14 @@ ms.locfileid: "72818656"
 
 C++ 用 Azure ストレージ クライアント ライブラリをインストールする場合、次の方法を使用します。
 
-* Linux。 [C++ 用 Azure Storage クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)に記載されている手順に従います。  
-* Windows。 Visual Studio で、 **[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順に選択します。 **パッケージ マネージャー コンソール** で、次のコマンドを実行します。
+* **Linux:** [C++ 用 Azure Storage クライアント ライブラリの README にある「Linux での基本手順」](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)に記載の手順に従います。
+* **Windows:** Windows では、依存関係マネージャーとして [vcpkg](https://github.com/microsoft/vcpkg) を使用します。 [クイックスタート](https://github.com/microsoft/vcpkg#quick-start)に従って vcpkg を初期化してください。 そのうえで、次のコマンドを使用してライブラリをインストールします。
 
-  ```powershell
-  Install-Package wastorage
-  ```
+```powershell
+.\vcpkg.exe install azure-storage-cpp
+```
 
-**パッケージ マネージャー コンソール** の詳細については、[Visual Studio でパッケージ マネージャー コンソールを使用してパッケージをインストールおよび管理する](/nuget/tools/package-manager-console) を参照してください。
+ソース コードをビルドして Nuget にエクスポートする方法については、[README](https://github.com/Azure/azure-storage-cpp#download--install) ファイルを参照してください。
 
 ### <a name="configure-access-to-the-table-client-library"></a>Table のクライアント ライブラリへのアクセスの構成
 

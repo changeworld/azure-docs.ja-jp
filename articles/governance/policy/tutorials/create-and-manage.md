@@ -1,14 +1,14 @@
 ---
-title: コンプライアンスを強制するポリシーの作成と管理
-description: Azure Policy を使用して、標準を強制し、規制遵守および監査の要件を満たし、コストを制御し、セキュリティとパフォーマンスの一貫性を維持し、企業全体の設計原則を適用します。
-ms.date: 02/04/2019
+title: チュートリアル:コンプライアンスを強制するポリシーを作成する
+description: このチュートリアルでは、標準の強制、コストの制御、セキュリティの維持、および企業全体の設計原則の適用を行うポリシーを使用します。
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: abbe4334767a48cf6444ce5aa7822cc8a79f9f69
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 75a1d892a88f2b5bbdbec2a1b8d525245bb1e86f
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959541"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482364"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>チュートリアル:コンプライアンスを強制するポリシーの作成と管理
 
@@ -20,7 +20,11 @@ Azure でポリシーを作成および管理する方法を理解すること�
 > - 準拠していないリソースまたは拒否されたリソースを解決する
 > - 組織全体で新しいポリシーを実施する
 
-既存のリソースの現在のコンプライアンス状態を識別するためのポリシーを割り当てる方法については、クイック スタートの記事で詳しく説明しています。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+既存のリソースの現在のコンプライアンス状態を識別するためのポリシーを割り当てる方法については、クイック スタートの記事で詳しく説明しています。
+
+## <a name="prerequisites"></a>前提条件
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
 ## <a name="assign-a-policy"></a>ポリシーを割り当てる
 
@@ -443,7 +447,7 @@ az policy definition list
 
 1. 行を右クリックするか、定義 (または割り当て) の末尾にある省略記号を選択し、 **[定義の削除]** (または **[割り当ての削除]** ) を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="review"></a>レビュー
 
 このチュートリアルでは、以下のタスクを完了しました。
 
@@ -452,6 +456,8 @@ az policy definition list
 > - 複数のリソースについてコンプライアンスを追跡するイニシアチブ定義を作成して割り当てる
 > - 準拠していないリソースまたは拒否されたリソースを解決する
 > - 組織全体で新しいポリシーを実施する
+
+## <a name="next-steps"></a>次の手順
 
 ポリシー定義の構造の詳細については、次の記事を参照してください。
 

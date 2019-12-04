@@ -1,10 +1,10 @@
 ---
-title: PaaS リソースへのネットワーク アクセスを制限する - チュートリアル - Azure Portal | Microsoft Docs
+title: PaaS リソースへのアクセスを制限する - チュートリアル - Azure portal
 description: このチュートリアルでは、Azure Portal を使って仮想ネットワーク サービス エンドポイントで Azure Storage、Azure SQL Database などの Azure リソースへのアクセスを制限する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
-ms.openlocfilehash: 34cb2b6c5a770aa9ec38ce02a97d976fe28251ac
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638755"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186370"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用して仮想ネットワーク サービス エンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
@@ -51,7 +51,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
    |Setting|値|
    |----|----|
-   |Name| myVirtualNetwork |
+   |名前| myVirtualNetwork |
    |アドレス空間| 10.0.0.0/16|
    |Subscription| サブスクリプションを選択します。|
    |Resource group | **[新規作成]** を選択し、「*myResourceGroup*と入力します。|
@@ -77,7 +77,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
     |Setting|値|
     |----|----|
-    |Name| プライベート |
+    |名前| プライベート |
     |アドレス範囲| 10.0.1.0/24|
     |サービス エンドポイント| **[サービス]** で **Microsoft.Storage** を選びます|
 
@@ -94,7 +94,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
     |Setting|値|
     |----|----|
-    |Name| myNsgPrivate |
+    |名前| myNsgPrivate |
     |Subscription| サブスクリプションを選択します。|
     |Resource group | **[既存のものを使用]** を選択し、 *[myResourceGroup]* を選択します。|
     |Location| **[米国東部]** を選択します。 |
@@ -106,7 +106,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
     |Setting|値|
     |----|----|
-    |Source| **VirtualNetwork** を選びます。 |
+    |source| **VirtualNetwork** を選びます。 |
     |Source port ranges| * |
     |Destination | **[Service Tag]\(サービス タグ\)** を選びます|
     |宛先サービス タグ | **[ストレージ]** を選びます|
@@ -114,21 +114,21 @@ Azure Portal (https://portal.azure.com ) にログインします。
     |Protocol|Any|
     |Action|Allow|
     |優先順位|100|
-    |Name|Allow-Storage-All|
+    |名前|Allow-Storage-All|
 
 8. インターネットへの通信を拒否する別の送信セキュリティ ルールを作成します。 このルールは、送信方向のインターネット通信を許可する、すべてのネットワーク セキュリティ グループ内の既定のルールをオーバーライドします。 次の値を使用して、手順 5 から 7 をもう一度実行します。
 
     |Setting|値|
     |----|----|
-    |Source| **VirtualNetwork** を選びます。 |
+    |source| **VirtualNetwork** を選びます。 |
     |Source port ranges| * |
     |Destination | **[Service Tag]\(サービス タグ\)** を選びます|
     |宛先サービス タグ| **[インターネット]** を選びます|
     |宛先ポート範囲| * |
     |Protocol|Any|
     |Action|拒否|
-    |優先度|110|
-    |Name|Deny-Internet-All|
+    |Priority|110|
+    |名前|Deny-Internet-All|
 
 9. **[設定]** で **[受信セキュリティ規則]** を選びます。
 10. **[+ 追加]** を選択します。
@@ -142,8 +142,8 @@ Azure Portal (https://portal.azure.com ) にログインします。
     |宛先ポート範囲| 3389 |
     |Protocol|Any|
     |Action|Allow|
-    |優先度|120|
-    |Name|Allow-RDP-All|
+    |Priority|120|
+    |名前|Allow-RDP-All|
 
 12. **[設定]** で、 **[サブネット]** を選択します。
 13. **[+ 関連付け]** を選びます
@@ -162,7 +162,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
     |Setting|値|
     |----|----|
-    |Name| すべての Azure の場所で一意の名前 (3 ～ 24 文字で、数字と小文字のみを使用) を入力します。|
+    |名前| すべての Azure の場所で一意の名前 (3 ～ 24 文字で、数字と小文字のみを使用) を入力します。|
     |アカウントの種類|StorageV2 (汎用 v2)|
     |Location| **[米国東部]** を選択します。 |
     |レプリケーション| ローカル冗長ストレージ (LRS)|
@@ -217,7 +217,7 @@ Azure Portal (https://portal.azure.com ) にログインします。
 
    |Setting|値|
    |----|----|
-   |Name| myVmPublic|
+   |名前| myVmPublic|
    |ユーザー名|任意のユーザー名を入力します。|
    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
    |Subscription| サブスクリプションを選択します。|

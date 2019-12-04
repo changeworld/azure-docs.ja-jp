@@ -1,20 +1,15 @@
 ---
-title: Azure 仮想マシンの大規模なバックアップ
+title: チュートリアル - Azure 仮想マシンの大規模なバックアップ
 description: このチュートリアルでは、Recovery Services コンテナーを作成し、バックアップ ポリシーを定義して、複数の仮想マシンを同時にバックアップする方法について説明します。
-keywords: 仮想マシンのバックアップ; 仮想マシン バックアップ; VM のバックアップ; VM バックアップ; Azure VM のバックアップ; バックアップとディザスター リカバリー
-author: dcurwin
-manager: carmonm
-ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
-ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 99a842704325e38cbf1ab9203a56a25bc2273827
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6034202649e6d9bce75f0069316b79b55e533490
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747023"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171845"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal を使用して複数の仮想マシンをバックアップする
 
@@ -37,7 +32,7 @@ Recovery Services コンテナーには、バックアップ データと、保�
 
 1. 左側のメニューで **[すべてのサービス]** を選択し、サービスの一覧に *「Recovery Services」* と入力します。 入力中、リソースにフィルターが適用されます。 Recovery Services コンテナーが一覧に表示される場合、それを選択すると [Recovery Services コンテナー] メニューが開きます。
 
-    ![[Recovery Services コンテナー] メニューを開く](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png) <br/>
+    ![[Recovery Services コンテナー] メニューを開く](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png)
 
 2. **[Recovery Services コンテナー]** メニューで、 **[追加]** をクリックして [Recovery Services コンテナー] メニューを開きます。
 

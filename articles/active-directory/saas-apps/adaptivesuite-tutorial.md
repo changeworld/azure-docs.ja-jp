@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad059e6047dd883c0a5aab0d714d999840050584
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: bf05fc30a2b111a12c0b8e131db5117ec784075b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70213620"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232133"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>チュートリアル:Adaptive Insights を Azure Active Directory と統合する
 
@@ -29,7 +29,7 @@ ms.locfileid: "70213620"
 
 * Adaptive Insights にアクセスするユーザーを Azure AD で管理できます。
 * ユーザーが自分の Azure AD アカウントを使用して Adaptive Insights に自動的にサインインできます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -195,7 +195,7 @@ Azure AD ユーザーが Adaptive Insights にサインインできるように�
    c. **[送信]** をクリックします。
 
 > [!NOTE]
-> 他の Adaptive Insights ユーザー アカウント作成ツールまたは Adaptive Insights から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Adaptive Insights ユーザー アカウント作成ツールや、Adaptive Insights から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-sso"></a>SSO のテスト 
 

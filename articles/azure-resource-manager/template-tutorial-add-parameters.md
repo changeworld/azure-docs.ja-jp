@@ -1,19 +1,16 @@
 ---
-title: チュートリアル - Azure Resource Manager テンプレートにパラメーターを追加する
+title: チュートリアル - テンプレートにパラメーターを追加する
 description: Azure Resource Manager テンプレートにパラメーターを追加して、そのテンプレートを再利用できるようにします。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001503"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406090"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートにパラメーターを追加する
 
@@ -23,9 +20,9 @@ ms.locfileid: "72001503"
 
 必須ではありませんが、[リソースに関するチュートリアル](template-tutorial-add-resource.md)を済ませておくことをお勧めします。
 
-Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関するセクションを参照してください。
+Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関する記事を参照してください。
 
-## <a name="review-your-template"></a>テンプレートを確認する
+## <a name="review-template"></a>テンプレートを確認する
 
 前のチュートリアルで完成したテンプレートには、次の JSON が含まれていました。
 
@@ -33,7 +30,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 お気付きかもしれませんが、このテンプレートには問題があります。 ストレージ アカウント名がハードコーディングされています。 このテンプレートは、同じストレージ アカウントを毎回デプロイする目的でしか使用できません。 別の名前でストレージ アカウントをデプロイするためには、新しいテンプレートを作成する必要があり、デプロイを自動化する方法としては明らかに実用的ではありません。
 
-## <a name="make-your-template-reusable"></a>テンプレートを再利用可能にする
+## <a name="make-template-reusable"></a>テンプレートを再利用可能にする
 
 テンプレートを再利用可能にするために、ストレージ アカウント名を渡すために使用できるパラメーターを追加しましょう。 次の例で強調表示されている JSON は、テンプレートの変更箇所を示しています。 **storageName** パラメーターは、文字列として指定されています。 長すぎる名前を防止するために最大長は 24 文字に設定されています。
 
@@ -41,7 +38,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-template"></a>テンプレートのデプロイ
 
 では、テンプレートをデプロイしましょう。 次の例では、Azure CLI または PowerShell を使用してテンプレートをデプロイします。 デプロイ コマンドの値の 1 つとしてストレージ アカウント名を指定していることがわかります。 ストレージ アカウント名には、前のチュートリアルで使用したものと同じ名前を指定してください。
 
@@ -87,7 +84,7 @@ az group deployment create \
 
 **storageSKU** パラメーターには既定値があります。 デプロイ中に値が指定されなければ、この値が使用されます。 また、指定できる一連の値も存在します。 これらの値は、ストレージ アカウントの作成に必要な値と一致します。 機能しない SKU がテンプレートのユーザーによって渡されるのを防ぐ必要があります。
 
-## <a name="redeploy-the-template"></a>テンプレートを再デプロイする
+## <a name="redeploy-template"></a>テンプレートの再デプロイ
 
 これで再デプロイする準備は整いました。 既定の SKU は **Standard_LRS** に設定されているため、そのパラメーターの値を指定する必要はありません。
 

@@ -1,5 +1,5 @@
 ---
-title: Windows VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
+title: チュートリアル`:`Windows VM マネージド ID を使用して Azure AD Graph にアクセスする
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60938f26c27b9f94046b1be8e3d0cb6b247017c9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 43ef467adb8970d410404c151d0028ee4cda92b9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997786"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183016"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
 
@@ -144,7 +144,7 @@ Azure AD Graph:
 
 VM のシステム割り当てマネージド ID を Azure AD Graph への認証で使用するには、VM から要求を行う必要があります。
 
-1. ポータルで **[仮想マシン]** を開いて Windows VM に移動し、**[概要]** ブレードの **[接続]** をクリックします。  
+1. ポータルで **[仮想マシン]** を開いて Windows VM に移動し、 **[概要]** ブレードの **[接続]** をクリックします。  
 2. Windows VM を作成したときに使用した**ユーザー名**と**パスワード**を入力します。
 3. これで、仮想マシンを使用するリモート デスクトップ接続が作成されました。リモート セッションで PowerShell を開きます。  
 4. PowerShell の Invoke-WebRequest を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure AD Graph のアクセス トークンを取得するよう要求します。

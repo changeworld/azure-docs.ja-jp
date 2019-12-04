@@ -1,29 +1,21 @@
 ---
-title: Azure CLI スクリプト サンプル - サーバーレス実行用の Function App を作成する | Microsoft Docs
-description: Azure CLI スクリプト サンプル - サーバーレス実行用の Function App を作成する
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
+title: Azure CLI を使用してサーバーレス関数アプリを作成する
+description: Azure CLI を使用して Azure でのサーバーレス実行用の関数アプリを作成する
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 265c4fa3c28783f0d9e5d789348c3cd2e249eb29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4bf0e43132662f6f5322485a59f356f872559092
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325723"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532503"
 ---
-# <a name="create-a-function-app-for-serverless-code-execution"></a>サーバーレス コード実行用の関数アプリを作成する
+# <a name="create-a-function-app-for-serverless-code-execution"></a>サーバーレス コード実行用の関数アプリを作成する 
 
 この Azure Functions サンプル スクリプトでは、関数のコンテナーである関数アプリを作成します。 関数アプリは、[従量課金プラン](../functions-scale.md#consumption-plan)を使用して作成されます。このプランは、イベント ドリブンのサーバーレス ワークロードに最適です。
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -51,6 +43,6 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント](../functions-cli-samples.md)で確認できます。

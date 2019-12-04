@@ -1,26 +1,29 @@
 ---
-title: クイック スタート:Python を使用して TPM デバイスを Azure Device Provisioning Service に登録する
-description: Azure クイック スタート - Python Provisioning Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録します。 このクイック スタートでは、個別登録を使用します。
+title: Python を使用して TPM デバイスを Azure Device Provisioning Service に登録する
+description: クイックスタート - Python Provisioning Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録します。 このクイック スタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 49e7961200a2ab523997350fffa6606d65f60c8c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 9774ba9ba94bdaf4f9219a65be2a223ff00ff489
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903397"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554029"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>クイック スタート:Python Provisioning Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
+
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-以下の手順では、[Python Provisioning Service SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client) とサンプル Python アプリケーションを使用して、Azure IoT Hub Device Provisioning Service への TPM デバイスの個々の登録をプログラムで作成する方法について説明します。 Python Service SDK は Windows マシンと Linux マシンの両方で動作しますが、この記事では Windows 開発マシンを使用して登録プロセスの手順を説明します。
+以下の手順では、[V1 Python Provisioning Service SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) とサンプル Python アプリケーションを使用して、Azure IoT Hub Device Provisioning Service への TPM デバイスの個々の登録をプログラムで作成する方法について説明します。 Python Service SDK は Windows マシンと Linux マシンの両方で動作しますが、この記事では Windows 開発マシンを使用して登録プロセスの手順を説明します。
+
+> [!IMPORTANT]
+> この記事は、非推奨となっている V1 Python SDK にのみ適用されます。 V2 では、Iot Hub Device Provisioning Service 用のデバイス クライアントとサービス クライアントはまだ利用できません。 チームは現在、V2 を機能パリティに移行する作業に取り組んでいます。
 
 事前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)を済ませておいてください。
 
@@ -33,7 +36,7 @@ ms.locfileid: "73903397"
 
 1. 次のいずれかのオプションを選択します。
 
-    - **Azure IoT Python SDK** をビルドしてコンパイルします。 [これらの手順](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)に従って、Python パッケージをビルドします。 Windows OS を使用している場合は、Python からネイティブ DLL を使用できるように [Visual C++ 再配布可能パッケージ](https://www.microsoft.com/download/confirmation.aspx?id=48145)もインストールします。
+    - **Azure IoT Python SDK** をビルドしてコンパイルします。 [これらの手順](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md)に従って、Python パッケージをビルドします。 Windows OS を使用している場合は、Python からネイティブ DLL を使用できるように [Visual C++ 再配布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)もインストールします。
 
     - [Python パッケージ管理システムである *pip* をインストールまたはアップグレードし](https://pip.pypa.io/en/stable/installing/)、次のコマンドを使用してパッケージをインストールします。
 
@@ -99,17 +102,17 @@ ms.locfileid: "73903397"
 
 1. 登録が成功したかどうか、出力を確認します。
 
-1. Azure Portal でプロビジョニング サービスに移動します。 **[登録を管理します]** をクリックします。 TPM デバイスが **[個々の登録]** タブに、前に作成した `registrationid` という名前で表示されていることがわかります。 
+1. Azure Portal でプロビジョニング サービスに移動します。 **[登録を管理します]** を選択します。 TPM デバイスが **[個々の登録]** タブに、前に作成した `registrationid` という名前で表示されていることがわかります。 
 
     ![ポータルで TPM の登録が正常に完了したことを確認する](./media/quick-enroll-device-tpm-python/1.png)  
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-Java Service のサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
+Java サービスのサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されている Python サンプルの出力ウィンドウを閉じます。
 1. シミュレートされた TPM デバイスを作成した場合は、TPM シミュレーター ウィンドウを閉じます。
-1. Azure Portal で Device Provisioning サービスに移動し、 **[登録を管理します]** をクリックし、 **[個々の登録]** タブを選択します。このクイックスタートを使用して作成した登録エントリの*登録 ID* を選択し、ブレードの上部の **[削除]** ボタンをクリックします。  
+1. Azure portal で Device Provisioning サービスに移動し、 **[登録を管理します]** を選択し、 **[個々の登録]** タブを選択します。このクイックスタートを使用して作成した登録エントリの "*登録 ID*" の横にあるチェック ボックスをオンにして、ペイン上部の **[削除]** を押します。
 
 
 ## <a name="next-steps"></a>次の手順

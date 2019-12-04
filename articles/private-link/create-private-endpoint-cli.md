@@ -1,20 +1,20 @@
 ---
-title: Azure CLI を使用して Azure プライベート エンドポイントを作成する | Microsoft Docs
-description: Azure プライベート エンドポイントについて学習します。
+title: クイックスタート - Azure CLI を使用して Azure プライベート エンドポイントを作成する
+description: このクイックスタートでは、Azure プライベート エンドポイントについて学習します
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 477f7d4824d3165357228d200dca9e556a072744
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.author: allensu
+ms.openlocfilehash: 67513c2155e956e005b143c3049abe70a2f126f2
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053518"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419818"
 ---
-# <a name="create-a-private-endpoint-using-azure-cli"></a>Azure CLI を使用してプライベート エンドポイントを作成する
+# <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>クイック スタート:Azure CLI を使用してプライベート エンドポイントを作成する
 プライベート エンドポイントは、Azure の Private Link の基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 このクイック スタートでは、Azure CLI を使用して、仮想ネットワーク上の VM と、プライベート エンドポイントを含む SQL Database サーバーを作成する方法を説明します。 その後、VM にアクセスし、Private Link リソース (この例ではプライベート Azure SQL Database サーバー) に安全にアクセスできます。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -179,4 +179,3 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次の手順
 - [Azure Private Link](private-link-overview.md) の詳細
- 

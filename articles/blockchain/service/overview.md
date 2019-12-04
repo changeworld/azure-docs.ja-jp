@@ -1,21 +1,15 @@
 ---
 title: Azure Blockchain Service の概要
 description: Azure Blockchain Service の概要です
-services: azure-blockchain
-keywords: ブロックチェーン
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/21/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 9fcf75a07d1caf7b411c315d11ce984cbe35df75
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 02cc955822987e3be6f5a2184fc49e5510b29626
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577181"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455914"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blockchain Service とは
 
@@ -31,11 +25,11 @@ Azure Blockchain Service は、複数の台帳プロトコルをサポートす�
 
 ## <a name="network-deployment-and-operations"></a>ネットワークのデプロイと運用
 
-Azure Blockchain Service のデプロイは、Azure portal、Azure CLI、および Azure Blockchain 拡張機能を使用した Visual Studio Code で行うことができます。  デプロイは簡単で、トランザクション ノードと検証ノードの両方、セキュリティ分離のための Azure Virtual Network、サービスによって管理されたストレージのプロビジョニングが含まれます。  さらに、新しいブロックチェーン メンバーをデプロイするときに、ユーザーはコンソーシアムの作成またはコンソーシアムへの参加も行います。  コンソーシアムを使用すると、異なる Azure サブスクリプションの複数のパーティーが、共有ブロックチェーンで相互に安全に通信できます。  この簡素化されたデプロイにより、何日もかかったブロックチェーン ネットワークのデプロイが分単位に短縮されます。
+Azure Blockchain Service のデプロイは、Azure portal、Azure CLI、または Azure Blockchain 拡張機能を使用した Visual Studio Code を使って行います。 デプロイは簡単で、トランザクション ノードと検証ノードの両方、セキュリティ分離のための Azure Virtual Network、サービスによって管理されたストレージのプロビジョニングが含まれます。  さらに、新しいブロックチェーン メンバーをデプロイするときに、ユーザーはコンソーシアムの作成またはコンソーシアムへの参加も行います。  コンソーシアムを使用すると、異なる Azure サブスクリプションの複数のパーティーが、共有ブロックチェーンで相互に安全に通信できます。  この簡素化されたデプロイにより、何日もかかったブロックチェーン ネットワークのデプロイが分単位に短縮されます。
 
 ### <a name="performance-and-service-tiers"></a>パフォーマンス レベルとサービス レベル
 
-Azure Blockchain Service には、次の 2 つのサービス レベルが用意されています: *Basic* と *Standard*。 各レベルでは、軽量の開発をサポートし、大規模な運用ブロックチェーンのデプロイまでワークロードをテストするための、異なるパフォーマンスと機能が提供されています。 どちらのレベルにも、少なくとも 1 つのトランザクション ノードと、1 つの検証ノード (Basic) または 2 つの検証ノード (Standard) が含まれます。
+Azure Blockchain Service には、次の 2 つのサービス レベルが用意されています:*Basic* と *Standard*。 各レベルでは、軽量の開発をサポートし、大規模な運用ブロックチェーンのデプロイまでワークロードをテストするための、異なるパフォーマンスと機能が提供されています。 どちらのレベルにも、少なくとも 1 つのトランザクション ノードと、1 つの検証ノード (Basic) または 2 つの検証ノード (Standard) が含まれます。
 
 ![価格レベル](./media/overview/pricing-tiers.png)
 
@@ -43,13 +37,13 @@ Azure Blockchain Service には、次の 2 つのサービス レベルが用意
 
 ### <a name="security-and-maintenance"></a>セキュリティとメンテナンス
 
-最初のブロックチェーン メンバーをプロビジョニングした後は、追加のトランザクション ノードをメンバーに追加できます。  既定では、トランザクション ノードはファイアウォール規則によって保護されており、アクセスするには構成する必要があります。  さらに、すべてのトランザクション ノードでは、TLS によって移動中のデータが暗号化されます。  トランザクション ノードのアクセスをセキュリティで保護するには、ファイアウォール規則、基本認証、アクセス キー、Azure Active Directory 統合など、複数のオプションがあります。 詳しくは、[トランザクション ノードの構成](configure-transaction-nodes.md)および [Azure Active Directory アクセスの構成](configure-aad.md)に関する記事をご覧ください。
+最初のブロックチェーン メンバーをプロビジョニングした後は、追加のトランザクション ノードをメンバーに追加できます。  既定では、トランザクション ノードはファイアウォール規則によって保護されており、アクセスするための構成が必要です。  さらに、すべてのトランザクション ノードでは、TLS によって移動中のデータが暗号化されます。  トランザクション ノードに対するアクセスをセキュリティで保護する際には、ファイアウォール規則、基本認証、アクセス キー、Azure Active Directory 統合など、複数のオプションがあります。 詳しくは、[トランザクション ノードの構成](configure-transaction-nodes.md)および [Azure Active Directory アクセスの構成](configure-aad.md)に関する記事をご覧ください。
 
 マネージド サービスである Azure Blockchain Service では、ブロックチェーン メンバーのノードが、ホスト オペレーティング システムと台帳ソフトウェア スタックの最新の更新プログラムを適用され、高可用性用に構成され (Standard レベルのみ)、従来の IaaS ブロックチェーン ノードで必要な DevOps の多くが除去されることが保証されます。  修正プログラムの適用と更新プログラムについて詳しくは、[サポートされている Azure Blockchain Service 台帳のバージョン](ledger-versions.md)に関する記事をご覧ください。
 
 ### <a name="monitoring-and-logging"></a>監視およびログ記録
 
-さらに、Azure Blockchain Service では、Azure Monitor Service による豊富なメトリックが用意されており、ノードの CPU、メモリ、ストレージの使用に関する分析情報だけでなく、マイニングされたトランザクションとブロック、トランザクション キューの深さ、アクティブな接続などのブロックチェーン ネットワークのアクティビティに関する便利な分析情報が提供されます。  メトリックは、ブロックチェーン アプリケーションにとって重要な分析情報のビューを提供するようにカスタマイズできます。  さらに、しきい値を定義し、アラートによってユーザーがメールやテキスト メッセージの送信、ロジック アプリや Azure 関数の実行、カスタム定義 webhook の送信などのアクションをトリガーできるようにすることができます。
+さらに、Azure Blockchain Service では、ノードの CPU、メモリ、ストレージの使用状況に関する分析情報を提供する Azure Monitor サービスにより、豊富なメトリックが表示されます。  Azure Monitor ではほかにも、マイニングしたトランザクションとブロック、トランザクションのキューの深さ、アクティブな接続など、ブロックチェーン ネットワークのアクティビティに関する有益な分析情報も確認できます。  メトリックは、ブロックチェーン アプリケーションにとって重要な分析情報のビューを提供するようにカスタマイズできます。  さらに、しきい値を定義し、アラートによってユーザーがメールやテキスト メッセージの送信、ロジック アプリや Azure 関数の実行、カスタム定義 webhook の送信などのアクションをトリガーできるようにすることができます。
 
 ![メトリック](./media/overview/metrics.png)
 
@@ -65,7 +59,11 @@ Azure Log Analytics により、ユーザーは、Quorum 台帳に関するロ�
 
 ## <a name="develop-using-familiar-development-tools"></a>使い慣れた開発ツールを使用して開発する
 
-オープンソースの Quorum Ethereum 台帳に基づき、既存の Ethereum アプリケーションと同じ方法で、Azure Blockchain Service 用のアプリケーションを開発できます。 業界の最先端のパートナーとの協力による Azure Blockchain Development Kit Visual Studio Code 拡張機能を使用して、開発者は Truffle Suite などの使い慣れたツールでスマート コントラクトを構築できます。 Azure Blockchain Development Kit 拡張機能を使用すると、開発者は、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドとデプロイのすべてを 1 つの IDE から実行できます。 Azure Blockchain Visual Studio Code 拡張機能を使用すると、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドと配置のすべてを 1 つの IDE から実行できます。 詳しくは、[VS Code マーケットプレースの Azure Blockchain Development Kit](https://aka.ms/vscodebcextension) および [Azure Blockchain Development Kit ユーザー ガイド](https://aka.ms/vscodebcextensionwiki )をご覧ください。
+オープンソースの Quorum Ethereum 台帳に基づき、既存の Ethereum アプリケーションと同じ方法で、Azure Blockchain Service 用のアプリケーションを開発できます。 業界の最先端のパートナーとの協力による Azure Blockchain Development Kit Visual Studio Code 拡張機能を使用して、開発者は Truffle Suite などの使い慣れたツールでスマート コントラクトを構築できます。 Azure Blockchain Development Kit 拡張機能を使用すると、開発者は、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドとデプロイのすべてを 1 つの IDE から実行できます。 Azure Blockchain Visual Studio Code 拡張機能を使用すると、コンソーシアムを作成するか、または既存のコンソーシアムに接続して、スマート コントラクトのビルドと配置のすべてを 1 つの IDE から実行できます。 詳しくは、[VS Code マーケットプレースの Azure Blockchain 開発キット](https://aka.ms/vscodebcextension)のページと [Azure Blockchain 開発キットのユーザー ガイド](https://aka.ms/vscodebcextensionwiki)を参照してください。
+
+## <a name="publish-blockchain-data"></a>ブロックチェーン データの公開
+
+Azure Blockchain Service の Blockchain Data Manager は、Azure Blockchain Service のトランザクション データのキャプチャ、変換、Azure Event Grid トピックへの配信を行って、ブロックチェーン台帳と Azure サービスとの信頼性と拡張性に優れた統合を提供します。 Blockchain Data Manager を使用すると、オフチェーン アプリケーションとデータ ストアを統合できます。 詳細については、[Azure Blockchain Service の Blockchain Data Manager](data-manager.md) に関するページを参照してください。
 
 ## <a name="support-and-feedback"></a>サポートとフィードバック
 

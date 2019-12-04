@@ -1,19 +1,19 @@
 ---
-title: Azure portal で Azure Firewall DNAT を使用して受信トラフィックをフィルター処理する
+title: ポータルで Azure Firewall DNAT を使用してインバウンド トラフィックをフィルター処理する
 description: このチュートリアルでは、Azure portal を使用して Azure Firewall DNAT をデプロイして構成する方法を学習します。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 11/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f0a58382b9825a7b32aee69c00b9801d1c77251a
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 2f390f3ad540a2a25055dfcc97cc3af1f22c2b73
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114629"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195733"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>チュートリアル:Azure portal で Azure Firewall DNAT を使用して受信トラフィックをフィルター処理する
 

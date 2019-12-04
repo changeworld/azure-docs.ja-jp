@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: add43f081ca6059651725cd6f817d4cce127b74b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e75a45bc4ccd2614520fda39e09996c2286bdbd0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73155759"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>チュートリアル:Azure Active Directory と FreshDesk の統合
 
@@ -272,7 +272,7 @@ FreshDesk の場合、プロビジョニングは手動で行います。
     >Azure AD のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
     >
     >[!NOTE]
-    >Freshdesk から提供されているその他の Freshdesk ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントを Freshdesk にプロビジョニングできます。
+    >その他の Freshdesk ユーザー アカウント作成ツールや、Freshdesk から提供されている API を使用して、Azure AD ユーザー アカウントを Freshdesk にプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

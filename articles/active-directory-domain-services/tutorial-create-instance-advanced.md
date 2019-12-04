@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 7bafcb1508cdb01c4fe27a9d02db63c4f00efd74
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 334a5c3c76f1ebaf4c8c36020110ef9c0bcc8d69
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172571"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208746"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance-with-advanced-configuration-options"></a>チュートリアル:詳細構成オプションを使用して Azure Active Directory Domain Services インスタンスを作成、構成する
 
@@ -56,7 +56,7 @@ Azure AD DS では必須ではありませんが、Azure AD テナントには�
 
 **[Azure AD Domain Services の有効化]** ウィザードを起動するには、次の手順を実行します。
 
-1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
+1. Azure portal メニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
 1. 検索バーに「*Domain Services*」と入力し、検索候補から *[Azure AD Domain Services]* を選択します。
 1. [Azure AD Domain Services] ページで **[作成]** を選択します。 **[Azure AD Domain Services の有効化]** ウィザードが起動します。
 1. マネージド ドメインを作成する Azure **サブスクリプション**を選択します。
@@ -93,6 +93,10 @@ Azure portal の *[基本]* ウィンドウのフィールドに必要事項を�
     Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。
 
     Azure AD DS を複数のゾーンに分散するために、ご自身で構成するものは何もありません。 Azure プラットフォームでは、ゾーンへのリソース分散が自動的に処理されます。 詳細情報および利用可能なリージョンについては、「[Azure の Availability Zones の概要][availability-zones]」を参照してください。
+
+1. "*フォレスト*" は、Active Directory Domain Services が 1 つまたは複数のドメインをグループ化するために使用する論理上の構成体です。 既定では、Azure AD DS のマネージド ドメインが "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。 "*リソース*" フォレストでは、Azure AD に直接作成されたユーザーとグループだけが同期されます。 リソース フォレストは現在プレビュー段階です。 リソース フォレストを使用する理由や、オンプレミスの AD DS ドメインを使用してフォレストの信頼を作成する方法など、"*リソース*" フォレストの詳細については、[Azure AD DS リソース フォレストの概要][resource-forests]に関するページを参照してください。
+
+    このチュートリアルでは、"*ユーザー*" フォレストを作成します。
 
     ![Azure AD Domain Services インスタンスの基本的な設定を構成する](./media/tutorial-create-instance-advanced/basics-window.png)
 
@@ -242,7 +246,7 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 [on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+[resource-forests]: concepts-resource-forest.md
 [availability-zones]: ../availability-zones/az-overview.md
 
 <!-- EXTERNAL LINKS -->
-[naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

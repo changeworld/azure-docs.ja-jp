@@ -1,20 +1,15 @@
 ---
-title: Azure Container Instances とは
+title: Azure のサーバーレス コンテナー
 description: Azure Container Instances サービスには、仮想マシンを管理したり、より高度なオーケストレーターを採用したりせずに、Azure で最も高速かつ簡単に別個のコンテナーを実行する方法が用意されています。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: overview
 ms.date: 04/25/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: a07eda709c813e68bc3e4f08b6aab3f93dec65a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c8f243bc2bda83a467688ac5828219cd015c8326
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325739"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533541"
 ---
 # <a name="what-is-azure-container-instances"></a>Azure Container Instances とは
 

@@ -1,24 +1,16 @@
 ---
-title: Azure Pipelines を使用した継続的インテグレーション | Microsoft Docs
+title: Azure Pipelines を使用した継続的インテグレーション
 description: Azure Resource Manager テンプレートを継続的にビルド、テスト、およびデプロイする方法について説明します。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: carmonm
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 457d2a8868283eed2e211ff26ce77156eee68e01
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052194"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326408"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
 
@@ -50,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * テンプレートのリポジトリの作成に使用する **GitHub アカウント**。 持っていない場合は、[無料で作成](https://github.com)できます。 GitHub リポジトリの使用に関する詳細については、[GitHub リポジトリの構築](/azure/devops/pipelines/repos/github)に関するページを参照してください。
 * **Git をインストールします**。 このチュートリアルの手順では、*Git Bash* または *Git Shell* を使用します。 手順については、[Git のインストールに関するページ]( https://www.atlassian.com/git/tutorials/install-git)を参照してください。
 * **Azure DevOps 組織**。 ない場合は、無料で作成できます。 [組織またはプロジェクト コレクションの作成]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)に関するページを参照してください。
-* **Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)** 。 [拡張機能のインストールに関する記事](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-tools-vs-code.md)」を参照してください。
 
 ## <a name="prepare-a-github-repository"></a>GitHub レポジトリを準備する
 

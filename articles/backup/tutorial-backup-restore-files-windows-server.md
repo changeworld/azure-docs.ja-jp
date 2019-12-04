@@ -1,19 +1,15 @@
 ---
-title: Azure から Windows Server にファイルを回復する
+title: チュートリアル:Windows Server に項目を回復させる
 description: このチュートリアルでは、Microsoft Azure Recovery Services Agent (MARS) エージェントを使用して、Azure から Windows Server に項目を回復する方法について説明します。
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: tutorial
 ms.date: 02/14/2018
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: a0945c70b271d5213e8eb5b6adbd768ec390f40b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 5958f6574f8c559bae8f500b1cb555e96e007d0e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73746941"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171818"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure から Windows Server にファイルを回復する
 

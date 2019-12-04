@@ -1,21 +1,17 @@
 ---
-title: Visual Studio Code を使用する - Azure Blockchain Service
+title: スマート コントラクトを作成、ビルド、デプロイするチュートリアル - Azure Blockchain Service
 description: Visual Studio Code の Ethereum 用 Azure Blockchain 開発キット拡張機能を使用して Azure Blockchain Service にスマート コントラクトを作成、ビルド、デプロイするチュートリアル
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 13a5993a14e386dc7d24c7464610bbf1ace4b9cb
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2d2cb174656f5ed8f13d4463d416455ebb3f9ec9
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329237"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325167"
 ---
-# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>チュートリアル:Visual Studio Code を使用してスマート コントラクトを作成、ビルド、デプロイする
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>チュートリアル:スマート コントラクトの作成、ビルド、Azure Blockchain Service へのデプロイ
 
 このチュートリアルでは、Visual Studio Code の Ethereum 用 Azure Blockchain 開発キット拡張機能を使用して、Azure Blockchain Service にスマート コントラクトを作成、ビルド、デプロイします。 また、Truffle を使用し、トランザクションを介してスマート コントラクト関数を実行します。
 
@@ -32,10 +28,25 @@ Azure Blockchain Development Kit for Ethereum を使用して、以下のこと�
 ## <a name="prerequisites"></a>前提条件
 
 * 「[Quickstart: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」が完了していること
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [Azure Blockchain Development Kit for Ethereum 拡張機能](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node.js 10.15.x 以降](https://nodejs.org/download)
+* [Git 2.10.x 以降](https://git-scm.com)
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)。python.exe をパスに追加します。 Azure Blockchain 開発キットでは、パス内に Python バージョン 2.7.15 が必要です。
+* [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
+
+Windows では、node-gyp モジュール用にインストール済みの C++ コンパイラが必要です。 MSBuild Tools を使用できます。
+
+* Visual Studio 2017 がインストールされている場合は、`npm config set msvs_version 2017 -g` コマンドを使用して、MSBuild Tools を使用するように npm を構成します
+* Visual Studio 2019 がインストールされている場合は、npm に対して MSBuild Tools のパスを設定します。 たとえば、`npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"` のように指定します。
+* それ以外の場合は、"*管理者として実行された*" 管理者特権を持つコマンド シェルで `npm install --global windows-build-tools` を使用して、スタンドアロンの VS ビルド ツールをインストールします。
+
+node-gyp の詳細については、[GitHub の node-gyp のリポジトリ](https://github.com/node-gyp)を参照してください。
 
 ## <a name="create-a-smart-contract"></a>スマート コントラクトを作成する
 
-Azure Blockchain Development Kit for Ethereum では、プロジェクト テンプレートと Truffle ツールを使用して、コントラクトのスキャフォールディング、ビルド、およびデプロイを支援します。 前提条件である「[クイックスタート:Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を事前に済ませておいてください。 クイックスタートには、Ethereum 用 Azure Blockchain 開発キットのインストールと構成の手順が紹介されています。
+Azure Blockchain Development Kit for Ethereum では、プロジェクト テンプレートと Truffle ツールを使用して、コントラクトのスキャフォールディング、ビルド、およびデプロイを支援します。 開始する前に、前提条件の「[クイックスタート: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了してください。 クイックスタートには、Ethereum 用 Azure Blockchain 開発キットのインストールと構成の手順が紹介されています。
 
 1. VS Code コマンド パレットで、 **[Azure Blockchain: New Solidity Project]\(Azure Blockchain: 新しい Solidity プロジェクト\)** を選択します。
 1. **[Create basic project]\(基本プロジェクトの作成\)** を選択します。
@@ -165,7 +176,7 @@ Truffle によってブロックチェーン ネットワーク上でスクリ�
 
 ![スクリプト出力](./media/send-transaction/execute-get.png)
 
-値が "**Hello, blockchain!** " ではないことに注意してください。 返される値は、プレースホルダーです。 コントラクトを変更してデプロイすると、コントラクトは新しいコントラクト アドレスを取得し、状態変数にはスマート コントラクト コンストラクターの値が割り当てられます。 Truffle サンプルの **2_deploy_contracts.js** 移行スクリプトは、スマート コントラクトをデプロイし、引数としてプレースホルダー値を渡します。 コンストラクターは、**RequestMessage** 状態変数をプレースホルダーの値に設定し、この値が返されます。
+値が "**Hello, blockchain!** " ではないことに注意してください。 返される値は、プレースホルダーです。 コントラクトを変更してデプロイすると、変更されたコントラクトは新しいアドレスにデプロイされ、状態変数にはスマート コントラクト コンストラクターの値が割り当てられます。 Truffle サンプルの **2_deploy_contracts.js** 移行スクリプトは、スマート コントラクトをデプロイし、引数としてプレースホルダー値を渡します。 コンストラクターは、**RequestMessage** 状態変数をプレースホルダーの値に設定し、この値が返されます。
 
 1. **RequestMessage** 状態変数を設定して値を照会するには、**sendrequest.js** スクリプトと **getmessage.js** スクリプトをもう一度実行します。
 

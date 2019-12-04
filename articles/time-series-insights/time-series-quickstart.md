@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 09/23/2019
-ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/15/2019
+ms.openlocfilehash: 7bccc75b4a70e98f069d1ffb86909368105b9a32
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006433"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167665"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>クイック スタート:Azure Time Series Insights の探索
 
@@ -38,45 +38,47 @@ Azure Time Series Insights は、数十億件の IoT イベントを同時に簡
 
 1. Time Series Insights のクイック ツアー ページが表示されます。 **[次へ]** を選択してクイック ツアーを開始します。
 
-   [![[次へ] を選択する](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
+   [![クイックスタートの開始 - [次へ] を選択する](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
 ## <a name="explore-the-demo-environment"></a>デモ環境を調査する
 
 1. **日時選択パネル**が表示されます。 このパネルを使用して、視覚化する期間を選択します。
 
-   [![日時選択パネル](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
+   [![日時選択パネル](media/quickstart/quickstart-time-selection-panel.png)](media/quickstart/quickstart-time-selection-panel.png#lightbox)
 
 1. 時間枠を選択してリージョン内にドラッグします。 次に **[検索]** を選択します。
 
-   [![期間を選択する](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [![期間を選択する](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
    Time Series Insights には、指定した期間のグラフが表示されます。 その折れ線グラフ内でさまざまなアクションを実行できます。 たとえば、フィルター処理、ピン留め、並べ替え、積み重ねができます。
 
    **日時選択パネル**に戻るには、次に示すように下矢印を選択します。
 
-   [![グラフ](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [![グラフ](media/quickstart/quickstart-select-down-arrow.png)](media/quickstart/quickstart-select-down-arrow.png#lightbox)
 
 1. 新しい検索条件を追加するには、**条件パネル**で **[追加]** を選択します。
 
-   [![項目を追加する](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [![検索条件の追加パネル](media/quickstart/quickstart-add-terms.png)](media/quickstart/quickstart-add-terms.png#lightbox)
 
 1. グラフでは、リージョンを選択し、そのリージョンを右クリックして **[Explore Events] \(イベントの探索)** を選択できます。
 
-   [![[イベントの探索]](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [![[イベントの探索]](media/quickstart/quickstart-explore-events.png)](media/quickstart/quickstart-explore-events.png#lightbox)
 
    探索しているリージョンの生データのグリッドが表示されます。
 
-   [![グリッド ビュー](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+   [![イベントの探索 - グリッド データ ビュー](media/quickstart/quickstart-explore-events-grid-data.png)](media/quickstart/quickstart-explore-events-grid-data.png#lightbox)
 
 ## <a name="select-and-filter-data"></a>データを選択およびフィルター処理する
 
 1. 条件を編集してグラフ内の値を変更します。 別の条件を追加して、さまざまな種類の値を相互に関連付けます。
 
-   [![用語を追加する](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+   [![用語を追加する](media/quickstart/quickstart-add-a-term.png)](media/quickstart/quickstart-add-a-term.png#lightbox)
 
-1. 系列のフィルター処理を行うには、 **[系列をフィルター処理します]** ボックスに、思い付いたフィルター条件を入力します。 クイック スタートの場合は、「**Station5**」と入力して、そのステーションの温度と圧力を相互に関連付けます。
+1. 選択した検索条件をすべて表示するには、 **[系列をフィルター処理します]** ボックスを空のままにします。系列のフィルター処理を行うには、 **[系列をフィルター処理します]** ボックスに、思い付いたフィルター条件を入力します。
 
-   [![系列をフィルター処理する](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
+   [![系列をフィルター処理する](media/quickstart/quickstart-filter-series.png)](media/quickstart/quickstart-filter-series.png#lightbox)
+
+   クイック スタートの場合は、「**Station5**」と入力して、そのステーションの温度と圧力を相互に関連付けます。
 
 クイック スタートを完了したら、別の視覚化を作成するためにサンプル データ セットを試してみることができます。
 

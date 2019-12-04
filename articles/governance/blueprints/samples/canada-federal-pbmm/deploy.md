@@ -1,14 +1,14 @@
 ---
-title: Canada Federal PBMM ブループリント サンプル - デプロイ手順
+title: カナダ連邦 PBMM ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む Canada Federal PBMM ブループリント サンプルのデプロイ手順です。
 ms.date: 09/05/2019
-ms.topic: conceptual
-ms.openlocfilehash: 788c52ee9a2bf9a0a2c506c2a34d221ff08bd0af
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.topic: sample
+ms.openlocfilehash: 087112df7ab18cd71bde80f22b13c9c7800c05e9
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038413"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544598"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>Canada Federal PBMM ブループリント サンプルをデプロイする
 

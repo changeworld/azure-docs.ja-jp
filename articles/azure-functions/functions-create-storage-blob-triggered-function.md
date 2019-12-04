@@ -1,22 +1,16 @@
 ---
-title: Blob Storage でトリガーされる Azure 関数の作成 | Microsoft Docs
+title: Blob Storage でトリガーされる Azure 関数の作成
 description: Azure Functions を使用して、Azure Blob Storage に追加された項目によって呼び出されるサーバーレスの関数を作成します。
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 10/01/2018
-ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: b8855fa061e07ec77482ca960971db8252608b51
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: be8d7abc6d7bb583516ca75f316edd18965ac395
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096879"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227163"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Azure Blob Storage によってトリガーされる関数の作成
 

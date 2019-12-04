@@ -1,20 +1,20 @@
 ---
-title: ExpressRoute:回線の作成と変更:Azure ポータル
-description: ExpressRoute 回線を作成、プロビジョニング、確認、更新、削除、プロビジョニング解除します。
+title: チュートリアル - ExpressRoute を使った回線の作成と変更
+description: このチュートリアルでは、ExpressRoute 回線の作成、プロビジョニング、確認、更新、削除、プロビジョニング解除の方法について学習します。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: 42fe0a91261453251d56f1c556083e93f5c76bec
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7327031a7cd05674e9823f21601aab34c859f540
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083563"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423569"
 ---
-# <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
+# <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>チュートリアル:ExpressRoute 回線の作成と変更
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)

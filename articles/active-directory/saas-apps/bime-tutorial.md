@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f792798e724387b6917c23d1bde0c2c68fa8a270
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7774fd55a64df198a9b025a67ce377deebefe8fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73157686"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232068"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>チュートリアル:Azure Active Directory と Bime の統合
 
@@ -231,7 +231,7 @@ Azure AD ユーザーが Bime にログインできるようにするには、�
     d. **[Save]** をクリックします。
 
 > [!NOTE]
-> Bime から提供されている他の Bime ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Bime ユーザー アカウント作成ツールや、Bime から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

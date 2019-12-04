@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b52a56f51e4dcf5f27eddcd68ff17973df21c0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 33830ce5822b2edee345cf58fc6f2a53d3c863fa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159225"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227601"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>チュートリアル:Azure Active Directory と Deputy の統合
 
@@ -273,7 +273,7 @@ Azure AD ユーザーが Deputy にログインできるようにするには、
    
     d. **[Save & Invite (保存および招待)]** ボタンをクリックします。
 
-5. AAD アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。 Deputy から提供されている他の Deputy ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+5. Azure AD アカウント所有者が電子メールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。 他の Deputy ユーザー アカウント作成ツールや、Deputy から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

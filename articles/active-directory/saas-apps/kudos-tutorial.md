@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 50f6762c8046850da1e4541f2ccb7688542f7d54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fb1a1bc7bfd8b3cc9d7758bf8e80d8759f9357e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098469"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227481"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>チュートリアル:Azure Active Directory と Kudos の統合
 
@@ -130,7 +130,7 @@ Kudos で Azure AD シングル サインオンを構成するには、次の手
 
 1. 上部のメニューで **[設定] アイコン**をクリックします。
 
-    ![設定](./media/kudos-tutorial/ic787806.png "Settings")
+    ![設定](./media/kudos-tutorial/ic787806.png "設定")
 
 1. **[Integrations]\(統合\) > [SSO]** をクリックして、次の手順に従います。
 
@@ -207,24 +207,24 @@ Azure AD ユーザーが Kudos にサインインできるようにするには�
 
 1. 上部のメニューで **[設定] アイコン**をクリックします。
 
-   ![設定](./media/kudos-tutorial/ic787806.png "Settings")
+   ![設定](./media/kudos-tutorial/ic787806.png "設定")
 
 1. **[ユーザー管理者]** をクリックします。
 
 1. **[Users]\(ユーザー\)** タブをクリックして、 **[Add a User]\(ユーザーの追加\)** をクリックします。
 
-   ![User Admin](./media/kudos-tutorial/ic787809.png "User Admin")
+   ![[ユーザー管理者]](./media/kudos-tutorial/ic787809.png "[ユーザー管理者]")
 
 1. **[ユーザーの追加]** セクションで、次の手順に従います。
 
-    ![Add a User](./media/kudos-tutorial/ic787810.png "Add a User")
+    ![[ユーザーの追加]](./media/kudos-tutorial/ic787810.png "[ユーザーの追加]")
 
     a. プロビジョニングする有効な Azure Active Directory アカウントの **[名]** 、 **[姓]** 、 **[メール]** 、その他の詳細を該当するボックスに入力します。
 
     b. **[Create User]** をクリックします。
 
 > [!NOTE]
-> Kudos から提供されている他の Canvas ユーザー アカウント作成ツールや API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の Kudos ユーザー アカウント作成ツールや、Kudos によって提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

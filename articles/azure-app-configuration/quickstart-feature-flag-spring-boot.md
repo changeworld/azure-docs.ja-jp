@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
 ms.date: 09/26/2019
 ms.author: mametcal
-ms.openlocfilehash: fe943913f9d33923438efb91630c5a85c4d1b748
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687222"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184958"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>クイック スタート:Spring Boot アプリに機能フラグを追加する
 
@@ -86,7 +86,7 @@ Spring Boot 機能管理ライブラリは、包括的な機能フラグのサ�
 
 ## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
-1. アプリの resources ディレクトリにある `bootstrap.properties` を開き、そのファイルに以下の行を追加します。 アプリの構成情報を追加します。
+1. アプリの resources ディレクトリにある `bootstrap.properties` を開き、そのファイルに以下の行を追加します。 App Configuration 情報を追加します。
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}

@@ -1,23 +1,16 @@
 ---
-title: Azure CLI スクリプト サンプル - App Service プランで Function App を作成する | Microsoft Docs
+title: App Service プランで Function App を作成する - Azure CLI
 description: Azure CLI スクリプト サンプル - App Service プランで Function App を作成する
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/03/2018
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 85fe8e567cd00decbefe79c77c11f777820080ee
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 77e026e12d14745c308e1d02fade13f318d9e532
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325682"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532838"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>App Service プランで Function App を作成する
 
@@ -43,13 +36,13 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 | command | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Azure Storage アカウントを作成します。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | App Service プランで関数アプリを作成します。 |
+| [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Azure Storage アカウントを作成します。 |
+| [az functionapp plan create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Premium プランを作成します。 |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | App Service プランで関数アプリを作成します。 |
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント](../functions-cli-samples.md)で確認できます。

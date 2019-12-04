@@ -1,5 +1,5 @@
 ---
-title: Linux VM のシステム割り当てマネージド ID を使用して Azure Resource Manager にアクセスする
+title: クイックスタート`:` マネージド ID を使用して Azure Resource Manager にアクセスする - Azure AD
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure Resource Manager にアクセスするプロセスについて説明するクイック スタートです。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5b9e42da3ae4510c217cb29c211557e28a30074
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ee10a73579e8533cd14ecfeeebab44e726ba16b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236179"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326319"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Linux VM のシステム割り当てマネージド ID を使用して Azure Resource Manager にアクセスする
 
@@ -101,3 +101,4 @@ Azure リソースのマネージド ID を使用すると、Azure AD 認証を�
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
+>[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](how-to-manage-ua-identity-powershell.md)

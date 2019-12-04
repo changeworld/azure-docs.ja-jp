@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 08/07/2019
+ms.date: 11/19/2019
 ms.author: helohr
-ms.openlocfilehash: 4db9e1e812390f173da89a508c1dbc6782f4454f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 5ae6c30c595c2e3c4c7ce90d6ab208e50722bfc2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120003"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227696"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
 
@@ -124,7 +124,7 @@ Windows Virtual Desktop は、次の x64 オペレーティング システム �
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows Virtual Desktop は、x86 (32 ビット) オペレーティング システム イメージをサポートしていません。
+Windows Virtual Desktop では、x86 (32 ビット)、Windows 10 Enterprise N、または Windows 10 Enterprise KN オペレーティング システム イメージがサポートされていません。
 
 利用できる自動化とデプロイ オプションは、選択した OS とバージョンによって異なります。次の表を参照してください。 
 

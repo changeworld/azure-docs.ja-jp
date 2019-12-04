@@ -1,8 +1,6 @@
 ---
-title: Java と VS Code を使用する Azure Dev Spaces でのチーム開発
-titleSuffix: Azure Dev Spaces
+title: Java と Visual Studio Code を使用したチーム開発
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: stepro
 ms.author: stephpr
 ms.date: 08/01/2018
@@ -10,14 +8,14 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: 08155dec072b6ce82eae62443712350ee5f70890
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 400aec21d028011523fc5b441ed8ba77a1a46074
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132074"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325519"
 ---
-# <a name="team-development-with-azure-dev-spaces-using-java-and-vs-code"></a>Java と VS Code を使用する Azure Dev Spaces でのチーム開発
+# <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>Azure Dev Spaces での Java と Visual Studio Code を使用したチーム開発
 
 このチュートリアルでは、開発者のチームが Dev Spaces を使用して同じ Kubernetes クラスター内で同時に共同作業する方法を学習します。
 

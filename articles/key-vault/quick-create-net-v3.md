@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 11/05/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 7546d5c6089a7867b1f8b5bf45d23c81bddd0da9
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 660235331c2c2d800b52f6e29d0011b9616a748c
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647903"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158487"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ (SDK v3)
 
@@ -46,9 +46,7 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 
 ### <a name="create-new-net-console-app"></a>新しい .NET コンソール アプリを作成する
 
-好みのエディターまたは IDE で、新しい .NET Core アプリケーションを作成します。
-
-コンソール ウィンドウで、`dotnet new` コマンドを使用し、`akv-dotnet` という名前で新しいコンソール アプリを作成します。
+コンソール ウィンドウで、`dotnet new` コマンドを使用し、`akv-dotnet` という名前で新しい .NET コンソール アプリを作成します。
 
 
 ```console
@@ -100,7 +98,7 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、[App Service マネージド ID を使用した Azure Key Vault へのアクセス](managed-identity.md)に関するページを参照してください。 ただし、わかりやすくするために、このクイックスタートでは .NET コンソール アプリケーションを作成します。 Azure でデスクトップ アプリケーションを認証するには、サービス プリンシパルとアクセス制御ポリシーを使用する必要があります。
+クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、[App Service マネージド ID を使用した Azure Key Vault へのアクセス](managed-identity.md)に関するページを参照してください。 ただし、このクイックスタートではわかりやすさを重視して、.NET コンソール アプリケーションを作成します。 Azure でデスクトップ アプリケーションを認証するには、サービス プリンシパルとアクセス制御ポリシーを使用する必要があります。
 
 Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用してサービス プリンシパルを作成します。
 
@@ -169,7 +167,7 @@ setx akvClientSecret <your-clientSecret>
 
 ### <a name="save-a-secret"></a>シークレットを保存する
 
-アプリケーションが認証されたら、[SetSecretAsync メソッド](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync)を使用して、キー コンテナーにシークレットを設定できます。これには、キー コンテナーの URL (`https://<your-unique-keyvault-name>.vault.azure.net/secrets/` 形式) が必要です。 また、シークレットの名前も必要です。ここでは "mySecret" という名前を使用します。  再利用のために、これらの文字列を変数に代入してもかまいません。
+アプリケーションが認証されたら、[SetSecretAsync メソッド](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync)を使用して、キー コンテナーにシークレットを設定できます。これには、キー コンテナーの URL (`https://<your-unique-keyvault-name>.vault.azure.net/secrets/` 形式) が必要です。 また、シークレットの名前も必要です。ここでは "mySecret" という名前を使用します。 
 
 [!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
 

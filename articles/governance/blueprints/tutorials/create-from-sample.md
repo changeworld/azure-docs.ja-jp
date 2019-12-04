@@ -1,14 +1,14 @@
 ---
-title: ブループリント サンプルから環境を作成する
-description: ブループリント サンプルを使用して、2 つのリソース グループを設定し、それぞれにロールの割り当てを構成するブループリント定義を作成します。
-ms.date: 03/05/2019
+title: チュートリアル:新しい環境に対するブループリント サンプル
+description: このチュートリアルでは、ブループリント サンプルを使用して、2 つのリソース グループを設定し、それぞれにロールの割り当てを構成するブループリント定義を作成します。
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: d23e9b7242c58e4da5fcfe5ef4d29d9f9df6f754
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960270"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321733"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>チュートリアル:ブループリント サンプルから環境を作成する
 
@@ -183,9 +183,7 @@ ms.locfileid: "73960270"
 
 ## <a name="next-steps"></a>次の手順
 
-- [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する
-- [静的および動的パラメーター](../concepts/parameters.md)の使用方法を理解する
-- [ブループリントのリソース ロック](../concepts/resource-locking.md)の使用方法を調べる
-- [ブループリントの優先順位](../concepts/sequencing-order.md)のカスタマイズを参照する
-- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する
-- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する
+このチュートリアルでは、サンプル定義から新しいブループリントを作成する方法について学習しました。 Azure Blueprints の詳細については、ブループリントのライフサイクルに関する記事に進んでください。
+
+> [!div class="nextstepaction"]
+> [ブループリントのライフサイクルについて学習する](../concepts/lifecycle.md)

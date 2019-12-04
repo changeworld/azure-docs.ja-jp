@@ -1,23 +1,19 @@
 ---
-title: Azure Dev Spaces を使用して Kubernetes 上の Visual Studio Code と Node.js でデバッグと反復処理を行う
-titleSuffix: Azure Dev Spaces
-author: zr-msft
+title: 'Kubernetes 上でデバッグと反復処理を行う: Visual Studio Code と Node.js'
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Azure でコンテナー、マイクロサービス、Node.js を使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b53e18d4b759bc86dd0bc8f913e02b9523fb328b
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 8f3ffb6a539937b6d4a03b8fdc808c033c371697
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815810"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325576"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上の Visual Studio Code と Node.js でデバッグと反復処理を行う
+# <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>クイック スタート:Visual Studio Code と Node.js を使用して Kubernetes 上でデバッグと反復処理を行う - Azure Dev Spaces
 
 このガイドでは、以下の方法について説明します。
 

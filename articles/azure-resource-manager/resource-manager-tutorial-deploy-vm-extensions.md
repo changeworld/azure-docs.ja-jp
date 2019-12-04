@@ -1,22 +1,16 @@
 ---
-title: VM の拡張機能をデプロイする - Azure Resource Manager テンプレート
+title: テンプレートを使用して VM 拡張機能をデプロイする
 description: Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする方法について説明します
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5eb7a8d82f7f61e18afc49c61444354dcde77b5e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: c18e5959a1ec52d9f10f27f456a466669e7b99c9
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533430"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325373"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする
 
@@ -37,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* Resource Manager ツール拡張機能を持つ [Visual Studio Code](https://code.visualstudio.com/)。 [拡張機能のインストール](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)に関する記事を参照してください。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-tools-vs-code.md)」を参照してください。
 * セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```azurecli-interactive

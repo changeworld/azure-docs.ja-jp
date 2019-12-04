@@ -1,8 +1,6 @@
 ---
-title: .NET Core と Visual Studio を使用した Azure Dev Spaces でのチーム開発
-titleSuffix: Azure Dev Spaces
+title: .NET Core と Visual Studio を使用したチーム開発
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 author: DrEsteban
@@ -11,14 +9,14 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 53c870ad135fe13eb3bf7556678cac29352911aa
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 895d2edbb268eab9944909ecda7193ce945bbf39
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442930"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325546"
 ---
-# <a name="team-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したチーム開発
+# <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Azure Dev Spaces での .NET Core と Visual Studio を使用したチーム開発
 
 このチュートリアルでは、開発者のチームが Dev Spaces を使用して同じ Kubernetes クラスター内で同時に共同作業する方法を学習します。
 
@@ -123,7 +121,7 @@ Visual Studio 内から、F5 キーまたは Ctrl + F5 キーを押してサー�
 
 Azure Dev Spaces のこの組み込み機能を使用すると、共有環境でコードをエンド ツー エンドでテストできます。各開発者が自分のスペースにサービスの完全なスタックを再作成する必要はありません。 このガイドの以前の手順で示したように、このルーティングではアプリ コードで伝達ヘッダーを転送する必要があります。
 
-### <a name="test-code-running-in-the-devscott-space"></a>_dev/scott_ 空間で実行されているコードをテストする
+### <a name="test-code-running-in-the-_devscott_-space"></a>_dev/scott_ 空間で実行されているコードをテストする
 *mywebapi* の新しいバージョンと *webfrontend* をテストするには、ブラウザーで *webfrontend* のパブリック アクセス ポイントの URL (たとえば、 http://dev.webfrontend.123456abcdef.eus.azds.io) を開き、About ページに移動します。 "Hello from webfrontend and Hello from mywebapi" という元のメッセージが表示されます。
 
 URL に "scott.s." の部分を追加して、 http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io になるようにし、ブラウザーを更新します。 *mywebapi* プロジェクトで設定したブレークポイントに到達します。 F5 キーを押して続行すると、"Hello from webfrontend and mywebapi now says something new" という新しいメッセージがブラウザーに表示されます。 これは、*mywebapi* で更新したコードのパスが _dev/scott_ 空間で実行されているためです。

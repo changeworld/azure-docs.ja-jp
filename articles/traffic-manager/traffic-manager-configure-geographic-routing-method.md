@@ -1,24 +1,24 @@
 ---
-title: 地理的トラフィック ルーティングの構成 - Azure Traffic Manager
-description: この記事では、Azure Traffic Manager を使用して地理的トラフィック ルーティング方法を構成する方法について説明します。
+title: チュートリアル - Azure Traffic Manager を使用した地理的トラフィック ルーティングの構成
+description: このチュートリアルでは、Azure Traffic Manager を使用して地理的トラフィック ルーティング方法を構成する方法について説明します
 services: traffic-manager
 author: asudbring
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: allensu
-ms.openlocfilehash: f15871705b9839f1c7a7c7f04f6f4a88641673fd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9de1f0b0adc4d82b666adcd4bc9b26e31e7750d6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031947"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422798"
 ---
-# <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Traffic Manager を使用した地理的トラフィック ルーティング方法の構成
+# <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用した地理的トラフィック ルーティング方法の構成
 
 地理的トラフィック ルーティング方法を使用すると、要求の送信元の地理的な場所に基づいて、特定のエンドポイントにトラフィックを転送することができます。 このチュートリアルでは、このルーティング方法を使用して Traffic Manager プロファイルを作成し、特定の地域からのトラフィックを受信するようにエンドポイントを構成する方法を説明します。
 

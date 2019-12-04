@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Python を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法
+title: Python を使用して X.509 デバイスを Azure Device Provisioning Service に登録する
 description: このクイック スタートでは、グループ登録を使用します。 このクイック スタートでは、Python を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します
 author: wesmc7777
 ms.author: wesmc
@@ -7,21 +7,24 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 23ae0bd9e66cbb592db0ec9adea5e4332a9aa19b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ef24195ac1a3d342ac5dcbfe099a2bed429d6197
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904722"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555419"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>クイック スタート: Python を使用して X.509 デバイスを Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 
-デバイスは、[登録グループ](concepts-service.md#enrollment-group)または[個々の登録](concepts-service.md#individual-enrollment)の作成によりプロビジョニング サービス インスタンスに登録されます。 このクイック スタートは、Python を使用して中間またはルートの CA の X.509 証明書を使用する[登録グループ](concepts-service.md#enrollment-group)をプログラムで作成する方法を示します。 登録グループでは、証明書チェーン内の共通の署名証明書を共有するデバイスに関してプロビジョニング サービスへのアクセスを制御します。 登録グループは、[Python Provisioning Service SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client) と Python のサンプル アプリケーションを使用して作成されます。 *Python Provisioning Service SDK* を使用した個々の登録はまだ開発中です。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。 Azure IoT Hub と Device Provisioning Service と共に X.509 証明書ベースの公開キー基盤 (PKI) を使用する方法について詳しくは、[X.509 CA 証明書セキュリティの概要](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)に関するページを参照してください。
+デバイスは、[登録グループ](concepts-service.md#enrollment-group)または[個々の登録](concepts-service.md#individual-enrollment)の作成によりプロビジョニング サービス インスタンスに登録されます。 このクイック スタートは、Python を使用して中間またはルートの CA の X.509 証明書を使用する[登録グループ](concepts-service.md#enrollment-group)をプログラムで作成する方法を示します。 登録グループでは、証明書チェーン内の共通の署名証明書を共有するデバイスに関してプロビジョニング サービスへのアクセスを制御します。 登録グループは、[V1 Python Provisioning Service SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) と Python のサンプル アプリケーションを使用して作成されます。 *Python Provisioning Service SDK* を使用した個々の登録はまだ開発中です。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。 Azure IoT Hub と Device Provisioning Service と共に X.509 証明書ベースの公開キー基盤 (PKI) を使用する方法について詳しくは、[X.509 CA 証明書セキュリティの概要](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)に関するページを参照してください。
+
+> [!IMPORTANT]
+> この記事は、非推奨となっている V1 Python SDK にのみ適用されます。 V2 では、Iot Hub Device Provisioning Service 用のデバイス クライアントとサービス クライアントはまだ利用できません。 チームは現在、V2 を機能パリティに移行する作業に取り組んでいます。
+
 
 このクイック スタートでは、IoT ハブと Device Provisioning Service インスタンスを既に作成していることを前提としています。 これらのリソースをまだ作成していない場合は、この記事を進める前に「[Azure portal で IoT Hub Device Provisioning Service を設定する](./quick-setup-auto-provision.md)」のクイック スタートを完了してください。
 
@@ -29,14 +32,11 @@ ms.locfileid: "73904722"
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-
 ## <a name="prerequisites"></a>前提条件
 
 - [Python 2.x または 3.x](https://www.python.org/downloads/) のインストール 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。
 - [*pip* (Python パッケージ管理システム) のインストールまたはアップグレード](https://pip.pypa.io/en/stable/installing/)。
 - [Git](https://git-scm.com/download/) のインストール。
-
-
 
 ## <a name="prepare-test-certificates"></a>テスト証明書を準備する
 
@@ -137,11 +137,11 @@ ms.locfileid: "73904722"
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-Java Service のサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
+Java サービスのサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されている Java サンプルの出力ウィンドウを閉じます。
 1. マシンの _X509 証明書ジェネレーター_ のウィンドウを閉じます。
-1. Azure Portal で [デバイス プロビジョニング サービス] に移動し、 **[登録を管理します]** をクリックし、 **[登録グループ]** タブを選択します。このクイックスタートを使用して登録した X.509 デバイスの *GROUP NAME* を選択し、ブレードの上部にある **[削除]** ボタンをクリックします。  
+1. Azure portal で Device Provisioning Service に移動し、 **[登録を管理します]** 、 **[登録グループ]** タブの順に選択します。このクイックスタートを使用して登録した X.509 デバイスの "*グループ名*" の隣にあるチェック ボックスをオンにして、ペイン上部にある **[削除]** を押します。    
 
 
 ## <a name="next-steps"></a>次の手順

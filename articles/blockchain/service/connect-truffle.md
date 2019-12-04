@@ -1,25 +1,19 @@
 ---
-title: Truffle を使用して接続する
+title: Truffle を使用して Azure Blockchain Service に接続する
 description: Truffle を使用して Azure Blockchain Service ネットワークに接続する
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 08/29/2019
+ms.date: 11/20/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.reviewer: janders
+ms.openlocfilehash: 9ea96aa32072775fe6fb9563442f5e3564d37ea5
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932588"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455801"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>クイック スタート:Truffle を使用してトランザクション ノードに接続する
+# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>クイック スタート:Truffle を使用して Azure Blockchain Service に接続する
 
-Truffle は、Azure Blockchain Service トランザクション ノードへの接続に使用できるブロックチェーン開発環境です。
+このクイックスタートでは、Truffle を使用して Azure Blockchain Service のトランザクション ノードに接続します。 そのうえで、Truffle の対話型コンソールを使って **web3** を呼び出し、ブロックチェーン ネットワークとやり取りします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -58,12 +52,15 @@ Truffle は、Azure Blockchain Service トランザクション ノードへの�
 
 Truffle プロジェクトを構成するには、Azure portal からいくつかのトランザクション ノード情報が必要です。
 
-### <a name="transaction-node-endpoint-addresses"></a>トランザクション ノードのエンドポイント アドレス
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. Azure Blockchain Service メンバーに移動します。 **[Transaction nodes]\(トランザクション ノード\)** と既定のトランザクション ノード リンクを選択します。
 
-1. Azure portal で既定のトランザクション ノードに移動し、 **[Transaction nodes]\(トランザクション ノード\) > [接続文字列]** の順に選択します。
-1. **HTTPS (アクセスキー 1)** からエンドポイント URL をコピーして保存します。 エンドポイント アドレスは、チュートリアルの後半でスマート コントラクトの構成ファイルに必要になります。
+    ![既定のトランザクション ノードを選択する](./media/connect-truffle/transaction-nodes.png)
 
-    ![トランザクションのエンドポイント アドレス](./media/connect-truffle/endpoint.png)
+1. **[接続文字列]** を選択します。
+1. **[HTTPS (Access key 1)]\(HTTPS (アクセス キー 1)\)** の接続文字列をコピーします。 この文字列は次のセクションで必要になります。
+
+    ![接続文字列](./media/connect-truffle/connection-string.png)
 
 ### <a name="edit-configuration-file"></a>構成ファイルを編集する
 
@@ -100,7 +97,7 @@ Truffle プロジェクトを構成するには、Azure portal からいくつ�
 
     Truffle によって既定のトランザクション ノードに接続され、対話型コンソールが提供されます。
 
-    **web3** オブジェクトでメソッドを呼び出して、トランザクション ノードと対話することができます。
+    **web3** オブジェクトでメソッドを呼び出して、ブロックチェーン ネットワークと対話することができます。
 
 1. **getBlockNumber** メソッドを呼び出して現在のブロック番号を返します。
 
@@ -122,9 +119,9 @@ Truffle プロジェクトを構成するには、Azure portal からいくつ�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、Azure Blockchain Service の既定のトランザクション ノードに接続する Truffle プロジェクトを作成しました。
+このクイックスタートでは、Truffle を使用して Azure Blockchain Service の既定のトランザクション ノードに接続し、対話型コンソールを使用して現在のブロックチェーンのブロック番号を確認しました。
 
-次のチュートリアルで、Ethereum および Truffle 用の Azure Blockchain Development Kit を使用して、トランザクションを介したスマート コントラクト関数の作成、ビルド、デプロイ、実行を試してみます。
+次は、Azure Blockchain Development Kit for Ethereum を使用してトランザクションを介したスマート コントラクト関数を作成、ビルド、デプロイ、実行するチュートリアルに挑戦してみてください。
 
 > [!div class="nextstepaction"]
-> [Visual Studio Code を使用してスマート コントラクトを作成、ビルド、デプロイする](send-transaction.md)
+> [スマート コントラクトの作成、ビルド、Azure Blockchain Service へのデプロイ](send-transaction.md)

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9307bbe58afc45468f222f5b510585d528de532a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 81594e6a21372f2b4dacedbda638cc87bad966db
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158040"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227561"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>チュートリアル:Azure Active Directory と IdeaScale の統合
 
@@ -241,7 +241,7 @@ Azure AD ユーザーが IdeaScale にログインできるようにするには
     > Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
 > [!NOTE]
-> IdeaScale から提供されている他の IdeaScale ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の IdeaScale ユーザー アカウント作成ツールや、IdeaScale から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

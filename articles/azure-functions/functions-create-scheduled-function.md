@@ -1,22 +1,16 @@
 ---
-title: Azure でスケジュールに基づいて実行される関数を作成する | Microsoft Docs
+title: Azure でスケジュールに基づいて実行される関数を作成する
 description: Azure で定義したスケジュールに基づいて実行する関数を作成する方法について説明します。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/28/2018
-ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: a070a7da48af8abe138900dd0221bace2149aa20
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e89c3923daab15793707ff99dbbed6deeb6a0b0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469220"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227171"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
 

@@ -1,21 +1,15 @@
 ---
 title: MetaMask を Azure Blockchain Service ネットワークに接続する
 description: MetaMask を使用して Azure Blockchain Service ネットワークに接続し、スマート コントラクトをデプロイします。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 09/12/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: b89e75d406a738fb685bb3294dca8d79a2b9170c
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.reviewer: janders
+ms.openlocfilehash: 21e45b80a9a08dd6bdeefb0ab01fadabaa08cbce
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966510"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456024"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>クイック スタート:MetaMask を使用してスマート コントラクトを接続およびデプロイする
 
@@ -144,4 +138,4 @@ Remix はブラウザーベースの Solidity 開発環境です。 MetaMask と
 このクイックスタートでは、MetaMask ブラウザー拡張機能を使用して Azure Blockchain Service トランザクション ノードに接続し、スマート コントラクトをデプロイし、トランザクションをブロックチェーンに送信しました。 次のチュートリアルで、Ethereum および Truffle 用の Azure Blockchain Development Kit を使用して、トランザクションを介したスマート コントラクト関数の作成、ビルド、デプロイ、実行を試してみます。
 
 > [!div class="nextstepaction"]
-> [Visual Studio Code を使用してスマート コントラクトを作成、ビルド、デプロイする](send-transaction.md)
+> [スマート コントラクトの作成、ビルド、Azure Blockchain Service へのデプロイ](send-transaction.md)

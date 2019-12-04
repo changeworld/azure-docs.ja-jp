@@ -1,14 +1,14 @@
 ---
-title: FedRAMP Moderate ブループリント サンプル - デプロイ手順
+title: FedRAMP Moderate ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む FedRAMP Moderate ブループリント サンプルのデプロイ手順。
 ms.date: 10/31/2019
 ms.topic: sample
-ms.openlocfilehash: 7bf89ace40e7fb1f45be63f08529ef1fda8a50c8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f38aad3adb625a0874d6287d25b1fe60f2579291
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032315"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74544486"
 ---
 # <a name="deploy-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate ブループリント サンプルをデプロイする
 

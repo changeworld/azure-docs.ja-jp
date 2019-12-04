@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: a480e459fdbbf135b00ee46d1513eddb0f36e09e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e777387437b572eb11ebb7999d87a172b54738bb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479607"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151259"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>クイック スタート:Azure portal を使用して仮想マシンを作成、暗号化する
 
@@ -23,36 +23,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure Portal](https://portal.azure.com) にサインインします。
 
-## <a name="create-a-key-vault"></a>Key Vault を作成します
-
-1. Azure Portal の左上隅にある **[リソースの作成]** オプションを選択します
-1. 検索ボックスに「**Key Vault**」と入力します。
-1. 結果の一覧から **[Key Vault]** を選択します。
-1. [Key Vault] セクションで **[作成]** を選択します。
-1. **[キー コンテナーの作成]** 画面で、新しいキー コンテナーの一意の名前を選択します。
-
-    > [!Important]
-    > 各キー コンテナーには一意の名前が必要です。 次の例では、*myADEKV* という名前のキー コンテナーを作成しますが、ご自身では別の名前を付けるようにしてください。
-
-1. **サブスクリプション**を選択します。
-1.  **[リソース グループ]** で、 **[新規作成]** を選択します。 ポップアップで、リソース グループの名前として「*myResourceGroup*」と入力し、 **[OK]** を選択します。 
-
-    ![リソース グループの作成画面](./media/disk-encryption/portal-qs-keyvaultcreation.png)
-
-1. **[場所]** プルダウン メニューで、 **[米国東部]** を選択します。
-1. 他のオプションは既定値のままにしておきます。
-1. [アクセス ポリシー] を選択して、新しい画面に移動します。
-1. [ボリューム暗号化に対して Azure Disk Encryption へのアクセスを有効にする] の横にあるチェック ボックスをオンにします。
-
-    ![ResourceGroup の作成画面](./media/disk-encryption/portal-qs-keyvault-enable-encryption.png)
-
-1. [アクセス ポリシー] 画面下部の [確認および作成] をクリックします。
-1. 確認したら [作成] をクリックします。
-
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
-
 1. [新規] ページの [人気順] で、 **[Ubuntu Server 18.04 LTS]** を選択します。
 1. **[基本]** タブの **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認します。
 1. **[リソース グループ]** で、先ほどキー コンテナーを作成するときに作成したリソース グループを選択します (例: **myResourceGroup**)。
@@ -73,15 +46,24 @@ VM がデプロイされるまでに数分かかります。 デプロイが完�
 1. 左側のサイド バーで **[ディスク]** を選択します。
 1. [ディスク] 画面で **[暗号化]** を選択します。 
 
-    ![ディスクと暗号化の選択](./media/disk-encryption/portal-qs-disks-to-encryption.png)
+    ![ディスクと暗号化の選択](../media/disk-encryption/portal-qs-disks-to-encryption.png)
 
 1. 暗号化画面の **[Disks to encrypt]\(暗号化するディスク\)** で **[OS とデータ ディスク]** を選択します。
-1. **[暗号化設定]** の [暗号化用のキー コンテナーとキーを選択する] をクリックします。
-1. 右側のサイド バーで、先ほど作成したキー コンテナーの名前を**キー コンテナー**の値として選択し、 **[選択]** をクリックします。
+1. **[暗号化設定]** の **[暗号化用のキー コンテナーとキーを選択する]** を選択します。
+1. **[Azure Key Vault からのキーの選択]** 画面で **[新規作成]** を選択します。
 
-    ![ディスクと暗号化の選択](./media/disk-encryption/portal-qs-encrypt-vm-screen.png)
-1. 暗号化画面の上部の [保存] をクリックします。 VM が再起動されることを示す警告がポップアップ表示されます。 **[はい]** をクリックします。
+    ![ディスクと暗号化の選択](../media/disk-encryption/portal-qs-keyvault-create.png)
 
+1. **[キー コンテナーの作成]** 画面で、[リソース グループ] が VM の作成に使用したものと同じであることを確認します。
+1. キー コンテナーに名前を付けます。  すべてのキー コンテナーに Azure 全体で一意の名前を付ける必要があります。
+1. **[アクセス ポリシー]** タブで、 **[Azure Disk Encryption (ボリューム暗号化用)]** チェック ボックスをオンにします。
+
+    ![ディスクと暗号化の選択](../media/disk-encryption/portal-qs-keyvault-enable.png)
+
+1. **[Review + create]\(レビュー + 作成\)** を選択します。  
+1. キー コンテナーが検証を通過した後、 **[作成]** を選択します。 **[Azure Key Vault からのキーの選択]** 画面が再度表示されます。
+1. **[キー]** フィールドは空白のままにして、 **[選択]** を選択します。
+1. 暗号化画面の上部の **[保存]** をクリックします。 VM が再起動されることを示す警告がポップアップ表示されます。 **[はい]** をクリックします。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

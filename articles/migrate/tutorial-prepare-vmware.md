@@ -1,24 +1,24 @@
 ---
-title: Azure Migrate を使用して評価と Azure への移行のために VMware VM を準備する | Microsoft Docs
-description: Azure Migrate を使用して、オンプレミスの VMware VM の評価および Azure への移行を準備する方法について説明します。
+title: Azure Migrate を使用した評価と移行に向けて VMware VM を準備する
+description: Azure Migrate を使用した評価と移行に向けて VMware VM を準備する方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 4cc04e9ab0acdc9d0cdff77ed1de7bea1c1362d4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cc1eb4c4fce1398365145b2f3d63db984635d667
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498485"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196226"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>評価および Azure への移行のために VMware VM を準備する
 
 この記事は、[Azure Migrate](migrate-services-overview.md) を使用して、オンプレミスの VMware VM の評価や Azure への移行を準備する場合に役立ちます。
 
-[Azure Migrate](migrate-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。 
+[Azure Migrate](migrate-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。
 
 
 これはシリーズの最初のチュートリアルであり、VMware VM を評価して移行する方法を示しています。 このチュートリアルでは、以下の内容を学習します。
@@ -38,9 +38,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 これらのアクセス許可が必要です。
 
-**タスク** | **アクセス許可** 
---- | --- | ---
-**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するためのアクセス許可が必要です。 
+**タスク** | **アクセス許可**
+--- | ---
+**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するためのアクセス許可が必要です。
 **Azure Migrate アプライアンスを登録する** | Azure Migrate では、軽量の Azure Migrate アプライアンスを使用して、Azure Migrate Server Assessment で VMware VM を評価し、Azure Migrate Server Migration で VMware VM の[エージェントレス移行](server-migrate-overview.md)を実行します。 このアプライアンスでは VM が検出され、VM のメタデータとパフォーマンス データが Azure Migrate に送信されます。<br/><br/>登録時に、Azure Migrate によって、アプライアンスを一意に識別する 2 つの Azure Active Directory (Azure AD) アプリが作成され、これらのアプリを作成するためのアクセス許可が必要です。<br/> - 1 つ目のアプリは、Azure Migrate サービス エンドポイントと通信します。<br/> - 2 つ目のアプリでは、登録時に作成された Azure キー コンテナーにアクセスし、Azure AD アプリ情報とアプライアンス構成設定を格納します。
 **キー コンテナーの作成** | Azure Migrate Server Migration を使用して VMware VM を移行するために、Azure Migrate によってキー コンテナーが作成され、ご自分のサブスクリプションのレプリケーション ストレージ アカウントへのアクセス キーが管理されます。 コンテナーを作成するには、Azure Migrate プロジェクトが存在しているリソース グループに対するロールの割り当てアクセス許可が必要です。
 
@@ -62,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!NOTE]
 > - アプリには、上記で説明した以外に、サブスクリプションに対するアクセス許可はありません。
-> - 新しいアプライアンスを登録するときに必要なのは、これらのアクセス許可だけです。 アクセス許可はアプライアンスを設定した後で削除できます。 
+> - 新しいアプライアンスを登録するときに必要なのは、これらのアクセス許可だけです。 アクセス許可はアプライアンスを設定した後で削除できます。
 
 
 #### <a name="grant-account-permissions"></a>アカウントへのアクセス許可の付与
@@ -76,7 +76,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 
 
-#### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て 
+#### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て
 
 テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細情報](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
@@ -90,7 +90,7 @@ Azure Migrate でキー コンテナーを作成できるようにするには�
     - サーバー評価を実行するには、**共同作成者**のアクセス許可で十分です。
     - エージェントレスのサーバー移行を実行するには、**所有者** (または**共同作成者**および**ユーザー アクセス管理者**) のアクセス許可が必要です。
 
-3. 必要なアクセス許可がない場合は、リソース グループの所有者にそれらを依頼してください。 
+3. 必要なアクセス許可がない場合は、リソース グループの所有者にそれらを依頼してください。
 
 
 
@@ -99,7 +99,7 @@ Azure Migrate でキー コンテナーを作成できるようにするには�
 VMware VM の評価を準備するには、以下が必要です。
 
 - **VMware の設定を確認します**。 移行する vCenter Server と VM が要件を満たしていることを確認します。
-- **評価アカウントを設定します**。 評価のための VM を検出するには、Azure Migrate が vCenter Server にアクセスする必要があります。 Azure Migrate アクセスには読み取り専用アカウントが必要です。
+- **評価アカウントを設定します**。 評価のための VM を検出するには、Azure Migrate が vCenter Server にアクセスする必要があります。
 - **アプライアンスの要件を確認します**。 評価に使用する Azure Migrate アプライアンスのデプロイ要件を確認します。
 
 ### <a name="verify-vmware-settings"></a>VMware の設定の確認
@@ -110,7 +110,13 @@ VMware VM の評価を準備するには、以下が必要です。
 
 ### <a name="set-up-an-account-for-assessment"></a>評価のためのアカウントの設定
 
-評価およびエージェントレス移行のための VM を検出するには、Azure Migrate が vCenter Server にアクセスする必要があります。 評価のためだけであれば、vCenter Server 用の読み取り専用アカウントを設定します。
+評価およびエージェントレス移行のための VM を検出するには、Azure Migrate が vCenter Server にアクセスする必要があります。
+
+- アプリケーションを検出したりエージェントレスで依存関係を視覚化したりする予定がある場合は、読み取り専用のアクセス権を持つ vCenter Server アカウントを作成し、 **[仮想マシン]**  >  **[ゲスト操作]** の権限を有効にします。
+
+  ![vCenter Server アカウントの権限](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
+
+- アプリケーションの検出やエージェントレスでの依存関係の視覚化を行う予定がなければ、vCenter Server の読み取り専用アカウントを設定します。
 
 ### <a name="verify-appliance-settings-for-assessment"></a>評価用のアプライアンス設定の確認
 
@@ -120,7 +126,7 @@ VMware VM の評価を準備するには、以下が必要です。
 2. URL ベースのファイアウォール プロキシを使用している場合は、アプライアンスがアクセスする必要がある Azure URL を[確認](migrate-support-matrix-vmware.md#assessment-url-access-requirements)します。 URL の検索中に受信するすべての CNAME レコードがプロキシによって解決されることを確認します。
 3. 検出および評価中にアプライアンスによって収集される[パフォーマンス データ](migrate-appliance.md#collected-performance-data-vmware)と[メタデータ](migrate-appliance.md#collected-metadata-vmware)を確認します。
 4. アプライアンスによってアクセスされるポートに[注意](migrate-support-matrix-vmware.md#assessment-port-requirements)します。
-5. vCenter Server で、OVA ファイルを使用して VM を作成するためのアクセス許可がアカウントにあることを確認します。 OVA ファイルを使用して、Azure Migrate アプライアンスを VMware VM としてデプロイします。 
+5. vCenter Server で、OVA ファイルを使用して VM を作成するためのアクセス許可がアカウントにあることを確認します。 OVA ファイルを使用して、Azure Migrate アプライアンスを VMware VM としてデプロイします。
 
 URL ベースのファイアウォール プロキシを使用している場合は、必要な [Azure URL](migrate-support-matrix-vmware.md#assessment-url-access-requirements) へのアクセスを許可します。
 
@@ -142,7 +148,7 @@ VMware VM のエージェントレス移行の要件を確認します。
 
 VMware VM の[エージェントベース移行](server-migrate-overview.md)の要件を確認します。
 
-1. VMware サーバーの要件を[確認](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements)します。 
+1. VMware サーバーの要件を[確認](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements)します。
 2. [必須のアクセス許可](migrate-support-matrix-vmware.md#agent-based-migration-vcenter-server-permissions)を持つアカウントを設定します。 それにより、Azure Migrate Server Migration を使用してエージェントベース移行を行うために Azure Migrate が vCenter Server にアクセスできるようにします。
 3. エージェントベース移行を使用して Azure に移行する VMware VM の要件 (移行する各 VM へのモビリティ サービスのインストールなど) を[確認](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements)します。
 4. [URL アクセス](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements)に注意します。
@@ -151,14 +157,13 @@ VMware VM の[エージェントベース移行](server-migrate-overview.md)の�
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次のことを行いました。
- 
-> [!div class="checklist"] 
+
+> [!div class="checklist"]
 > * Azure アクセス許可を設定しました。
 > * 評価と移行のために VMware を準備しました。
 
 
 2 番目のチュートリアルに進み、Azure Migrate プロジェクトを設定し、Azure に移行するために VMware VM を評価します。
 
-> [!div class="nextstepaction"] 
-> [VMware VM の評価](./tutorial-assess-vmware.md) 
-
+> [!div class="nextstepaction"]
+> [VMware VM の評価](./tutorial-assess-vmware.md)

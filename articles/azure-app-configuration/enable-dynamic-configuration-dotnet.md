@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7e28cdacce8eac4774683013ae1c30ca34ebfaad
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821629"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185250"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>チュートリアル:.NET Framework アプリで動的な構成を使用する
 
@@ -31,16 +31,15 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
-> * オンデマンドによりアプリ構成ストアで構成を更新するようにアプリケーションを設定する。
-> * アプリケーションのコントローラーに最新の構成を挿入する。
-
+> * App Configuration ストアへの変更に合わせて構成を更新するように .NET Framework アプリを設定する。
+> * 最新の構成をアプリケーションに挿入する。
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.1 以降](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
+## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
@@ -52,7 +51,7 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
 
-## <a name="create-a-net-console-app"></a>.NET コンソール アプリを作成する
+## <a name="create-a-net-framework-console-app"></a>.NET Framework コンソール アプリを作成する
 
 1. Visual Studio を起動し、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。
 
@@ -99,7 +98,7 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
         PrintMessage().Wait();
     }
     ```
-    更新操作がトリガーされたときに、構成データをアプリ構成ストアで更新するために使用する設定を指定するには、`ConfigureRefresh` メソッドを使います。 `AddAzureAppConfiguration` メソッドに指定されたオプションで `GetRefresher` メソッドを呼び出すことによって `IConfigurationRefresher` のインスタンスを取得でき、このインスタンスの `Refresh` メソッドを使ってコード内の任意の場所で更新操作をトリガーできます。
+    更新操作がトリガーされたときに、構成データを App Configuration ストアで更新するために使用する設定を指定するには、`ConfigureRefresh` メソッドを使います。 `AddAzureAppConfiguration` メソッドに指定されたオプションで `GetRefresher` メソッドを呼び出すことによって `IConfigurationRefresher` のインスタンスを取得でき、このインスタンスの `Refresh` メソッドを使ってコード内の任意の場所で更新操作をトリガーできます。
 
     > [!NOTE]
     > 構成設定の既定のキャッシュ有効期限は 30 秒ですが、`ConfigureRefresh` メソッドへの引数として渡されるオプション初期化子で `SetCacheExpiration` メソッドを呼び出すことにより、オーバーライドできます。
@@ -121,7 +120,7 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
 ## <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
-1. **ConnectionString** という名前の環境変数に、アプリ構成ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
+1. **ConnectionString** という名前の環境変数に、App Configuration ストアへのアクセス キーを設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行してコマンド プロンプトを再起動し、変更が反映されるようにします。
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -135,7 +134,7 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
     ![ローカルでのアプリの起動](./media/dotnet-app-run.png)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成したアプリ構成ストア インスタンスを選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
 
 1. **[Configuration Explorer]\(構成エクスプローラー)** を選択して次のキーの値を更新します。
 
@@ -156,7 +155,7 @@ App Configuration .NET クライアント ライブラリでは、アプリケ�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure マネージド サービス ID を追加して、App Configuration へのアクセスを効率化し、アプリの資格情報管理を改善しました。 App Configuration へのアクセスを効率化する Azure で管理されたサービス ID を追加する方法については、次のチュートリアルに進んでください。
+このチュートリアルでは、App Configuration から動的に構成設定を更新できるように .NET Framework アプリを設定しました。 App Configuration へのアクセスを効率化する Azure マネージド ID を使用する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [マネージド ID の統合](./howto-integrate-azure-managed-service-identity.md)

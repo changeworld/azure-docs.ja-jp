@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: notification-hubs
-author: spelluru
+author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 08/28/2018
-ms.author: spelluru
+ms.date: 11/21/2019
+ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 3e4549a21ec32f1a2c1c869c3b2e0bd8c2e4204e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ef2b98821b28d8a49e5f16bf1c6ac176eb8b5793
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446558"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407259"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>証明書の署名要求ファイルを生成する
 
@@ -41,50 +41,52 @@ Apple Push Notification Service (APNs) では、証明書を使用してプッ�
 
 ## <a name="register-your-app-for-push-notifications"></a>アプリケーションをプッシュ通知に登録する
 
-通知を iOS アプリにプッシュするには、アプリケーションを Apple に登録すると共に、プッシュ通知にも登録します。  
+プッシュ通知を iOS アプリに送信するには、アプリケーションを Apple に登録すると共に、プッシュ通知にも登録します。  
 
-1. ご自分のアプリをまだ登録していない場合は、Apple Developer Center の [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) に移動します。 その後、Apple ID を使ってサインインし、 **[Identifiers]\(識別子\)** 、 **[App IDs]\(アプリ ID\)** の順に選択します。最後に **+** を選択して、新しいアプリを登録します。
+1. ご自分のアプリをまだ登録していない場合は、Apple Developer Center の [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) に移動します。 自分の Apple ID を使用してポータルにサインインし、 **[Identifiers]\(識別子\)** を選択します。 次に、 **[+]** を選択して、新しいアプリを登録します。
 
     ![iOS Provisioning Portal の [App IDs]\(アプリ ID\) ページ](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids.png)
 
-1. 新しいアプリで次の 3 つの値を更新してから、 **[Continue]\(続行\)** を選択します。
+2. **[Register a New Identifier]\(新しい識別子の登録\)** 画面で、 **[App IDs]\(アプリ ID\)** を選択します。 その後 **[続行]** を選択します。
 
-   * **[名前]** : **[App ID Description]\(アプリ ID の説明\)** セクションの **[Name]\(名前\)** ボックスに、アプリのわかりやすい名前を入力します。
+    ![iOS Provisioning Portal の ID の新規登録ページ](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids-new.png)
 
-   * **[Bundle Identifier]\(バンドル識別子\)** : **[Explicit App ID]\(明示的なアプリ ID\)** セクションで、[アプリ ディストリビューション ガイド](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)の説明のとおりに `<Organization Identifier>.<Product Name>` の形式で**バンドル識別子**を入力します。 <*組織 ID*> と <*製品名*> の値は Xcode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。 次のスクリーンショットでは、*NotificationHubs* という値が組織 ID として使用され、*GetStarted* という値が製品名として使用されています。 Xcode で正しい発行プロファイルが使用されるように、 **[Bundle Identifier]\(バンドル識別子\)** の値はご自分の Xcode プロジェクトの値と一致させるようにしてください。
+3. 新しいアプリで次の 3 つの値を更新してから、 **[Continue]\(続行\)** を選択します。
 
-   * **[Push Notifications]\(プッシュ通知\)** : **[App Services]\(アプリ サービス\)** セクションの **[Push Notifications]\(プッシュ通知\)** オプションを選択します。
+   * **説明**:アプリのわかりやすい名前を入力します。
 
-     ![新しいアプリ ID を登録するフォーム](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-info.png)
+   * **[Bundle ID]\(バンドル ID\)** : [アプリ ディストリビューション ガイド](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)の説明のとおりに、 **<組織 ID>.<製品名>** の形式のバンドル ID を入力します。 <*組織 ID*> と <*製品名*> の値は Xcode プロジェクトを作成する際に使用する組織 ID と製品名に一致させる必要があります。 次のスクリーンショットでは、**NotificationHubs** という値が組織 ID として使用され、**GetStarted** という値が製品名として使用されています。 Xcode で正しい発行プロファイルが使用されるように、 **[Bundle Identifier]\(バンドル識別子\)** の値はご自分の Xcode プロジェクトの値と一致させるようにしてください。
 
-     このアクションにより、アプリ ID が生成され、その情報を確認するよう求められます。 **[Register]\(登録\)** を選択して、新しいアプリ ID を確定します。
+      ![iOS Provisioning Portal のアプリ ID の登録ページ](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-bundle.png)
 
-     **[Register]\(登録\)** を選択すると、次の図のような **[Registration complete]\(登録完了\)** 画面が表示されます。 **[完了]** を選択します。
+   * **[Push Notifications]\(プッシュ通知\)** : **[Capabilities]\(機能\)** セクションの **[Push Notifications]\(プッシュ通知\)** オプションをオンにします。
 
-     ![エンタイトルメントが表示されるアプリ ID の登録完了](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-registration-complete.png)
+      ![新しいアプリ ID を登録するフォーム](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-push.png)
 
-1. Developer Center にある **[App ID]\(アプリ ID\)** で、自分が作成したアプリ ID を見つけ、その行を選択します。
+      このアクションにより、アプリ ID が生成され、その情報を確認するよう求められます。 **[Continue]\(続行\)** を選択し、 **[Register]\(登録\)** を選択して新しいアプリ ID を確認します。
 
-    ![アプリ ID リスト](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-ios-appids2.png)
+      ![新しいアプリ ID を確認する](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-appid-register.png)
 
-    アプリ ID を選択してアプリの詳細を表示し、下部にある **[Edit]\(編集\)** ボタンを選択します。
+      **[Register]\(登録\)** を選択すると、新しいアプリ ID が **[Certificates, Identifiers & Profiles]\(証明書、識別子、およびプロファイル\)** ページに 1 行の項目として表示されます。
+
+4. **[Certificates, Identifiers & Profiles]\(証明書、識別子、およびプロファイル\)** ページの **[Identifiers]\(識別子\)** で、先ほど作成したアプリ ID の行項目を探し、その行を選択すると **[Edit your App ID Configuration]\(App ID 構成の編集\)** 画面が表示されます。
+
+5. チェック マークが付いた **[Push Notifications]\(プッシュ通知\)** オプションまで下へスクロールします。証明書を作成するために **[Configure]\(構成\)** を選択します。
 
     ![アプリ ID の編集ページ](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-edit-appid.png)
 
-1. 画面の下部までスクロールし、 **[Development Push SSL Certificate]\(開発プッシュ SSL 証明書\)** セクションの **[Create Certificate]\(証明書の作成\)** ボタンを選択します。
+6. **[Apple Push Notification service SSL Certificates]\(Apple Push Notification Service の SSL 証明書\)** ウィンドウが表示されます。 **[Development SSL Certificate]\(開発 SSL 証明書\)** セクションで **[Create Certificate]\(証明書の作成\)** ボタンを選択します。
 
     ![アプリ ID の証明書の作成ボタン](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-create-cert.png)
 
-    ここで **[Add iOS Certificate]\(iOS 証明書の追加\)** アシスタントが表示されます。
+    **[Create a new Certificate]\(新しい証明書の作成\)** 画面が表示されます。
 
     > [!NOTE]
     > このチュートリアルでは開発証明書を使用します。 運用証明書の場合も同じ処理を行います。 通知の送信と同じ証明書の種類を使用するようにします。
 
-1. **[Choose File]\(ファイルの選択\)** を選択して、最初の作業で CSR ファイルを保存した場所に移動し、 **[Generate]\(生成\)** を選択します。
+1. **[Choose File]\(ファイルの選択\)** を選択して、最初のタスクで CSR ファイルを保存した場所を参照し、証明書名をダブルクリックして読み込みます。 その後 **[続行]** を選択します。
 
-    ![生成された証明書の CSR アップロード ページ](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-cert-choose-csr.png)
-
-1. ポータルで証明書が作成されたら、 **[Download]\(ダウンロード\)** ボタンを選択してから **[Done]\(完了\)** を選択します。
+1. ポータルで証明書が作成されたら、 **[Download]\(ダウンロード\)** ボタンを選択します。 この証明書を保存し、この保存場所を覚えておいてください。
 
     ![生成された証明書のダウンロード ページ](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-appid-download-cert.png)
 
@@ -95,9 +97,7 @@ Apple Push Notification Service (APNs) では、証明書を使用してプッ�
     > [!NOTE]
     > 既定では、ダウンロードした開発証明書の名前は **aps_development.cer** になっています。
 
-1. ダウンロードしたプッシュ証明書 **aps_development.cer** を選択します。
-
-    このアクションで、以下の図のように、新しい証明書がキーチェーンにインストールされます:
+1. ダウンロードしたプッシュ証明書 **aps_development.cer** をダブルクリックします。 このアクションで、以下の図のように、新しい証明書がキーチェーンにインストールされます:
 
     ![新しい証明書が表示されたキーチェーン アクセス証明書リスト](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-cert-in-keychain.png)
 
@@ -108,38 +108,45 @@ Apple Push Notification Service (APNs) では、証明書を使用してプッ�
 
     ![p12 形式として証明書をエクスポートする](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-export-cert-p12.png)
 
-    エクスポートした .p12 証明書のファイル名と場所を書き留めます。 これらは、APNs での認証を有効にするために使用されます。
+    パスワードを使用して証明書を保護することもできますが、これはオプションです。 パスワードの作成を省略する場合は、 **[OK]** をクリックします。 エクスポートした .p12 証明書のファイル名と場所を書き留めます。 これらは、APNs での認証を有効にするために使用されます。
 
     > [!NOTE]
-    > このチュートリアルでは、**QuickStart.p12** という名前のファイルを作成します。 ファイル名と場所は同じである必要はありません。
+    > 実際の .p12 ファイルの名前と場所は、このチュートリアルの図に示されているものと異なる場合があります。
 
 ## <a name="create-a-provisioning-profile-for-the-app"></a>アプリケーションのプロビジョニング プロファイルを作成する
 
-1. [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) で、 **[Provisioning Profiles]\(プロビジョニング プロファイル\)** を選択し、 **[All]\(すべて\)** を選択してから、 **+** を選択して新しいプロファイルを作成します。 **[Add iOS Provisiong Profile]\(iOS プロビジョニング プロファイルの追加\)** ウィザードが表示されます。
+1. [iOS Provisioning Portal](https://go.microsoft.com/fwlink/p/?LinkId=272456) に戻り、 **[Certificates, Identifiers & Profiles]\(証明書、識別子、およびプロファイル\)** を選択します。左側のメニューから **[Profiles]\(プロファイル\)** を選択し、 **[+]** を選択して新しいプロファイルを作成します。 **[Register a New Provisioning Profile]\(新しいプロビジョニング プロファイルの登録\)** 画面が表示されます。
+
+1. **[Development]\(開発\)** で、プロビジョニング プロファイルの種類として **[iOS App Development]\(iOS アプリ開発\)** を選択し、 **[Continue]\(続行\)** を選択します。
 
     ![プロビジョニング プロファイル リスト](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-new-provisioning-profile.png)
-
-1. **[Development]\(開発\)** でプロビジョニング プロファイルの種類として **[iOS App Development]\(iOS アプリ開発\)** を選択し、 **[Continue]\(続行\)** を選択します。
 
 1. 次に、 **[App ID]\(アプリ ID\)** ドロップダウン リストで、自分が作成したアプリ ID を選択し、 **[Continue]\(続行\)** を選択します。
 
     ![アプリ ID を選択する](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-select-appid-for-provisioning.png)
 
-1. **[Select certificates]\(証明書の選択\)** ウィンドウで、コード署名に使用した通常の開発証明書を選択して、 **[Continue]\(続行\)** を選択します。 この証明書は、作成したプッシュ証明書ではありません。
+1. **[Select certificates]\(証明書の選択\)** ウィンドウで、コード署名に使用する開発証明書を選択し、 **[Continue]\(続行\)** を選択します。 この証明書は、作成したプッシュ証明書ではありません。 存在しない場合は、作成する必要があります。 証明書が存在する場合は、次の手順に進みます。 開発証明書が存在しない場合に証明書を作成するには:
 
-    ![証明書を選択する](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-cert.png)
+    1. "**No Certificates are available (利用可能な証明書がありません)** " と表示されたら、 **[Create Certificate]\(証明書の作成\)** を選択します。
+    2. **[Software]\(ソフトウェア\)** セクションで、 **[Apple Development]\(Apple 開発\)** を選択します。 その後 **[続行]** を選択します。
+    3. **[Create a New Certificate]\(新しい証明書の作成\)** 画面で、 **[Choose File]\(ファイルの選択\)** を選択します。
+    4. 先ほど作成した**証明書署名要求**証明書を参照して選択し、 **[Open]\(開く\)** を選択します。
+    5. **[続行]** をクリックします。
+    6. 開発証明書をダウンロードします。この保存場所を覚えておいてください。
+
+1. **[Certificates, Identifiers & Profiles]\(証明書、識別子、およびプロファイル\)** ページに戻り、左側のメニューから **[Profiles]\(プロファイル\)** を選択し、 **[+]** を選択して新しいプロファイルを作成します。 **[Register a New Provisioning Profile]\(新しいプロビジョニング プロファイルの登録\)** 画面が表示されます。
+
+1. **[Select certificates]\(証明書の選択\)** ウィンドウで、先ほど作成した開発証明書を選択します。 その後 **[続行]** を選択します。
 
 1. 次に、テストに使用するデバイスを選択し、 **[Continue]\(続行\)** を選択します。
 
-    ![デバイスを選択する](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-select-devices.png)
-
-1. 最後に、 **[Profile Name]\(プロファイル名\)** でプロファイルの名前を選択し、 **[Generate]\(生成\)** を選択します。
+1. 最後に、 **[Provisioning Profile Name]\(プロビジョニング プロファイル名\)** でプロファイルの名前を選択し、 **[Generate]\(生成\)** を選択します。
 
     ![プロビジョニング プロファイル名を選択する](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-name-profile.png)
 
-1. 新しいプロビジョニング プロファイルが作成されたら、それをダウンロードして Xcode の開発用マシンにインストールすることを選択します。 **[完了]** を選択します。
+1. 新しいプロビジョニング プロファイルが作成されたら、 **[Download]\(ダウンロード\)** を選択します。 この保存場所を覚えておいてください。
 
-    ![プロビジョニング プロファイルをダウンロードする](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-provisioning-profile-ready.png)
+1. プロビジョニング プロファイルの場所を参照し、それをダブルクリックして Xcode 開発マシンにインストールします。
 
 ## <a name="create-a-notification-hub"></a>通知ハブを作成する
 
@@ -155,12 +162,14 @@ Apple Push Notification Service (APNs) では、証明書を使用してプッ�
 
 1. ファイル アイコンを選択します。
 
-1. 先ほどエクスポートした .p12 ファイルを選択します。
+1. 先ほどエクスポートした .p12 ファイルを選択し、 **[Open]\(開く\)** を選択します。
 
-1. 正しいパスワードを指定します。
+1. 必要に応じて、適切なパスワードを指定します。
 
 1. **[サンドボックス]** モードを選択します。 **[Production] (運用)** モードは、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。
 
     ![Azure portal で APNs 証明書を構成する](./media/notification-hubs-enable-apple-push-notifications/notification-hubs-apple-config-cert.png)
+
+1. **[保存]** を選択します。
 
 これで、APNs での通知ハブの構成が完了しました。 接続文字列を使用してアプリを登録し、プッシュ通知を送信することもできます。

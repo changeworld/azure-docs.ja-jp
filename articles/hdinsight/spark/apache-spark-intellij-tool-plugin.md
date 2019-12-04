@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: b2705f209b2acf1198ea555a5de2f79987a4d0e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b417823d0ec7ed838186d53c1bb25400a148e0e9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494241"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533914"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>チュートリアル:Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Apache Spark アプリケーションを作成する
 
@@ -336,8 +336,6 @@ WINUTILS.EXE の前提条件が満たされていることを確認します。
 
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark Livy Interactive Session Console(Scala)
 
-これは、IntelliJ 2018.2 および 2018.3 上でのみサポートされます。
-
 1. メニュー バーから、 **[実行]**  >  **[構成の編集...]** に移動します。
 
 2. **[Run/Debug Configurations]\(実行/デバッグ構成\)** ウィンドウから、左側のウィンドウで、 **[Apache Spark on HDInsight]\(HDInsight 上の Apache Spark\)**  >  **[Spark on HDInsight] myApp** を選択します。
@@ -366,6 +364,25 @@ WINUTILS.EXE の前提条件が満たされていることを確認します。
 一部のコードをローカルのコンソールまたは Livy 対話式セッション コンソール (Scala) に送信して、スクリプトの結果を事前に確認すると便利です。 Scala ファイル内の一部のコードを強調表示し、右クリックして **[Send Selection To Spark Console]\(選択項目を Spark コンソールに送信する\)** を選択します。 選択したコードがコンソールに送信され、実行されます。 結果は、コンソール内のコードの後に表示されます。 コンソールは、エラーが存在する場合は、エラーをチェックします。  
 
    ![選択項目の Spark コンソールへの送信](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>HDInsight Identity Broker (HIB) との統合 
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>HDInsight ESP cluster with Id Broker (HIB) に接続する
+HDInsight ESP cluster with Id Broker (HIB) に接続するには、通常の手順に従って Azure サブスクリプションにサインインします。 サインインすると、Azure Explorer にクラスターの一覧が表示されます。 詳細な手順については、「[HDInsight クラスターに接続する](#connect-to-your-hdinsight-cluster)」を参照してください。
+
+### <a name="run-a-spark-scala-application-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>HDInsight ESP cluster with Id Broker (HIB) 上での Spark Scala アプリケーションの実行
+HDInsight ESP cluster with Id Broker (HIB) にジョブを送信するには、通常の手順に従います。 詳細な手順については、「[HDInsight Spark クラスターでの Spark Scala アプリケーションの実行](#run-a-spark-scala-application-on-an-hdinsight-spark-cluster)」を参照してください。
+
+必要なファイルは、ご利用のサインイン アカウントが名前になっているフォルダーにアップロードしてあります。アップロード パスは、構成ファイル内で確認できます。
+
+   ![構成内のアップロード パス](./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png)
+
+### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>HDInsight ESP cluster with Id Broker (HIB) 上の Spark コンソール
+HDInsight ESP cluster with Id Broker (HIB) 上で、Spark Local Console(Scala) を実行したり、Spark Livy Interactive Session Console(Scala) を実行したりすることができます。 詳細な手順については、「[Spark コンソール](#spark-console)」を参照してください。
+
+   > [!NOTE]  
+   > HDInsight ESP cluster with Id Broker (HIB) では、現在、[クラスターのリンク](#link-a-cluster)と[リモートでの Apache Spark アプリケーションのデバッグ](#debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster)はサポートされていません。
+
 
 ## <a name="reader-only-role"></a>読み取り専用ロール
 

@@ -1,5 +1,5 @@
 ---
-title: Windows VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする方法
+title: チュートリアル`:` マネージド ID を使用して Azure Data Lake Store にアクセスする - Windows - Azure AD
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/13/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd03ccdab6a7120dc59e42ab62c1d3b2d1e5bc3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: f3909e80ea36ed7aab638d717ecf8404d80beb59
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444692"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181894"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用して Azure Data Lake Store にアクセスする
 
@@ -46,13 +46,13 @@ Data Lake Store で新しいフォルダーを作成し、VM のシステム割�
 2. このチュートリアルで使用する Data Lake Store をクリックします。
 3. コマンド バーの **[データ エクスプローラー]** をクリックします。
 4. Data Lake Store のルート フォルダーが選択されます。  コマンド バーの **[アクセス]** をクリックします。
-5. **[追加]** をクリックします。  **[選択]** フィールドにお使いの VM の名前 (例: **DevTestVM**) を入力します。  検索結果からお使いの VM をクリックして選択し、**[選択]** をクリックします。
-6. **[アクセス許可の選択]** をクリックします。  **[読み取り]** と **[実行]** を選択して **[このフォルダー]** に追加し、**[An access permission only]\(アクセス許可のみ\)** として追加します。  **[OK]** をクリックします。  アクセス許可が正常に追加されます。
+5. **[追加]** をクリックします。  **[選択]** フィールドにお使いの VM の名前 (例: **DevTestVM**) を入力します。  検索結果からお使いの VM をクリックして選択し、 **[選択]** をクリックします。
+6. **[アクセス許可の選択]** をクリックします。  **[読み取り]** と **[実行]** を選択して **[このフォルダー]** に追加し、 **[An access permission only]\(アクセス許可のみ\)** として追加します。  **[OK]** をクリックします。  アクセス許可が正常に追加されます。
 7. **[アクセス]** ブレードを閉じます。
 8. このチュートリアル用に新しいフォルダーを作成します。  コマンド バーの **[新しいフォルダー]** をクリックし、この新しいフォルダーに名前 (例: **TestFolder**) を付けます。  **[OK]** をクリックします。
 9. 作成したフォルダーをクリックし、コマンド バーの **[アクセス]** をクリックします。
-10. 手順 5 と同様に **[追加]** をクリックし、**[選択]** フィールドに VM の名前を入力したあと、この VM を選択して **[選択]** をクリックします。
-11. 手順 6 と同様に **[アクセス許可の選択]** を選択し、**[読み取り]**、**[書き込み]** および **[実行]** を選択して **[このフォルダー]** に追加したあと、**[アクセス許可エントリと既定のアクセス許可エントリ]** として追加します。  **[OK]** をクリックします。  アクセス許可が正常に追加されます。
+10. 手順 5 と同様に **[追加]** をクリックし、 **[選択]** フィールドに VM の名前を入力したあと、この VM を選択して **[選択]** をクリックします。
+11. 手順 6 と同様に **[アクセス許可の選択]** を選択し、 **[読み取り]** 、 **[書き込み]** および **[実行]** を選択して **[このフォルダー]** に追加したあと、 **[アクセス許可エントリと既定のアクセス許可エントリ]** として追加します。  **[OK]** をクリックします。  アクセス許可が正常に追加されます。
 
 この時点で VM のシステム割り当てマネージド ID は、作成したフォルダーのファイルに対してすべての操作を実行できます。  Data Lake Store のアクセス管理の詳細については、[Data Lake Store のアクセスの制御](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control)に関するページの記事をご覧ください。
 
@@ -65,7 +65,7 @@ Azure Data Lake Store は Azure AD 認証をネイティブにサポートする
 
 このチュートリアルでは、PowerShell を使用して Data Lake Store ファイルシステムの REST API と認証し、REST 要求を行います。 VM のシステム割り当てマネージド ID を認証で使用するには、VM から要求を行う必要があります。
 
-1. ポータルで **[仮想マシン]** を開いてお客様の Windows VM に移動し、**[概要]** の **[接続]** をクリックします。
+1. ポータルで **[仮想マシン]** を開いてお客様の Windows VM に移動し、 **[概要]** の **[接続]** をクリックします。
 2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
 3. これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで **PowerShell** を開きます。 
 4. PowerShell の `Invoke-WebRequest` を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Data Lake Store のアクセス トークンを取得するよう要求します。  Data Lake Store のリソース識別子は `https://datalake.azure.net/` です。  Data Lake はリソース識別子と正確に一致します。末尾のスラッシュが重要です。

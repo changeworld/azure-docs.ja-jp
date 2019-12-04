@@ -1,23 +1,19 @@
 ---
-title: Azure Dev Spaces (Visual Studio Code) を使用して Kubernetes 上の Visual Studio Code と .NET Core でデバッグと反復処理を行う
-titleSuffix: Azure Dev Spaces
-author: zr-msft
+title: 'Kubernetes 上でデバッグと反復処理を行う: Visual Studio Code と .NET Core'
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b65dc5ed5d6d69ecde2108fcc322e27999704123
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 278ec0683a7ddb3c41f724e06e8ca291d18e3bad
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815835"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325600"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>クイック スタート:Azure Dev Spaces (Visual Studio Code) を使用して Kubernetes 上の Visual Studio Code と .NET Core でデバッグと反復処理を行う
+# <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>クイック スタート:Kubernetes 上でデバッグと反復処理を行う: Visual Studio Code と .NET Core - Azure Dev Spaces
 
 このガイドでは、以下の方法について説明します。
 

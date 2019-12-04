@@ -1,14 +1,14 @@
 ---
-title: ブループリントのロックを使用した新しいリソースの保護
-description: このチュートリアルでは、Azure Blueprints のリソース ロックの "読み取り専用" と "削除禁止" のオプションを使用して、新しくデプロイされたリソースを保護する方法を学習します。
-ms.date: 03/28/2019
+title: チュートリアル:新しいリソースをロックで保護する
+description: このチュートリアルでは、Azure Blueprints のリソース ロックの "読み取り専用" と "削除禁止" のオプションを使用して、新しくデプロイされたリソースを保護します。
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: e2adbb1e47222055753d4b3690646daa83b32bf1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960252"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327443"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>チュートリアル:Azure Blueprints のリソース ロックを使用して新しいリソースを保護する
 
@@ -25,7 +25,7 @@ Azure Blueprints の[リソース ロック](../concepts/resource-locking.md)を
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free) を作成してください。
 
 ## <a name="create-a-blueprint-definition"></a>ブループリント定義を作成する
 
@@ -53,9 +53,10 @@ Azure Blueprints の[リソース ロック](../concepts/resource-locking.md)を
    1. **[追加]** を選択して、成果物をブループリントに追加します。
 
 1. リソース グループにテンプレートを追加します。
-   1. **[RGtoLock]** エントリの下で **[成果物の追加]** 行を選択します。 
-   1. **[成果物の種類]** の下で **[Azure Resource Manager テンプレート]** を選択し、 **[成果物の表示名]** を **StorageAccount** に設定し、 **[説明]** は空白のままにします。 
-   1. **[テンプレート]** タブで、次の Resource Manager テンプレートをエディター ボックスに貼り付けます。 テンプレートを貼り付けた後、 **[追加]** を選択してこの成果物をブループリントに追加します。
+   1. **[RGtoLock]** エントリの下で **[成果物の追加]** 行を選択します。
+   1. **[成果物の種類]** の下で **[Azure Resource Manager テンプレート]** を選択し、 **[成果物の表示名]** を **StorageAccount** に設定し、 **[説明]** は空白のままにします。
+   1. **[テンプレート]** タブで、次の Resource Manager テンプレートをエディター ボックスに貼り付けます。
+      テンプレートを貼り付けた後、 **[追加]** を選択してこの成果物をブループリントに追加します。
 
    ```json
    {
@@ -224,9 +225,7 @@ Azure Blueprints の[リソース ロック](../concepts/resource-locking.md)を
 
 ## <a name="next-steps"></a>次の手順
 
-- [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する。
-- [静的および動的パラメーター](../concepts/parameters.md)の使用方法を理解する。
-- [ブループリントのリソース ロック](../concepts/resource-locking.md)の使用方法を調べる。
-- [ブループリントの優先順位](../concepts/sequencing-order.md)のカスタマイズを参照する。
-- [既存の割り当ての更新](../how-to/update-existing-assignments.md)方法を参照する。
-- ブループリントの割り当て時の[問題をトラブルシューティング](../troubleshoot/general.md)する。
+このチュートリアルでは、Azure Blueprints を使用して、デプロイされた新しいリソースを保護する方法について学習しました。 Azure Blueprints の詳細については、ブループリントのライフサイクルに関する記事に進んでください。
+
+> [!div class="nextstepaction"]
+> [ブループリントのライフサイクルについて学習する](../concepts/lifecycle.md)

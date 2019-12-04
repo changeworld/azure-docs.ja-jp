@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: cba0a9a003b53eeb102e14c00cb91f344ebbe3d6
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 0aecf2284e448f879bc20391c8528f8efde42d94
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821879"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184970"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>クイック スタート:.NET Framework アプリに機能フラグを追加する
 
@@ -33,7 +33,7 @@ ms.locfileid: "72821879"
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>アプリ構成ストアを作成する
+## <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
@@ -45,7 +45,7 @@ ms.locfileid: "72821879"
 
 1. **[新しいプロジェクトの構成]** で、プロジェクト名を入力します。 **[フレームワーク]** で、 **.NET Framework 4.7.1** 以上を選択します。 **Create** をクリックしてください。
 
-## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
+## <a name="connect-to-an-app-configuration-store"></a>App Configuration ストアに接続する
 
 1. プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで以下の NuGet パッケージを検索し、プロジェクトに追加します。 見つからない場合は、 **[プレリリースを含める]** チェック ボックスをオンにします。
 
@@ -91,7 +91,7 @@ ms.locfileid: "72821879"
 
 ## <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
-1. **ConnectionString** という名前の環境変数をアプリ構成ストアの接続文字列に設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行します。
+1. **ConnectionString** という名前の環境変数を App Configuration ストアの接続文字列に設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行します。
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

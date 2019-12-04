@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 88ff026ea56e5f41b3b124c2d5594822ffeb6830
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 3f37f0f3fe57015cc733d67f16e64bdf58a8a6b7
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529279"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560999"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C# IoT Edge モジュールを開発する
 
@@ -359,7 +359,10 @@ CSharpModule モジュール ツインを使用して、温度しきい値を 25
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[独自の IoT Edge モジュールの開発](module-development.md)または [Visual Studio を使用したモジュールの開発](how-to-visual-studio-develop-module.md)に関する詳細について確認することができます。 次のチュートリアルに進み、Azure Cloud Services をデプロイしてエッジでデータを処理および分析するうえで、Azure IoT Edge がどのように役立つかを確認することができます。
+このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[独自の IoT Edge モジュールの開発](module-development.md)または [Visual Studio を使用したモジュールの開発](how-to-visual-studio-develop-module.md)に関する詳細について確認することができます。 シミュレート済み温度モジュールを含む IoT Edge モジュールの例については、[IoT Edge モジュールのサンプル](https://github.com/Azure/iotedge/tree/master/edge-modules)を参照してください。 
+
+
+次のチュートリアルに進むと、Azure のクラウド サービスをデプロイしてエッジでデータの処理と分析を行ううえで、Azure IoT Edge がどのように役立つかを確認できます。
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)

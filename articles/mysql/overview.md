@@ -6,13 +6,13 @@ ms.service: mysql
 ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
-ms.date: 08/13/2019
-ms.openlocfilehash: f193dceaf26361fececde9df9df6769e2a971543
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.date: 11/25/2019
+ms.openlocfilehash: 680b5e9ef8e7e8ed59d3b502b49fc1b45d016e80
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72178119"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483519"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Azure Database for MySQL とは -
 
@@ -48,11 +48,7 @@ Azure Database for MySQL サービスには、次の複数のサービス レベ
 Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント (SLA) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 すべての Azure Database for MySQL サーバーで、組み込みのセキュリティ、フォールト トレランス、データ保護を利用できます。これらは、本来なら自身で購入または設計し、構築、管理する必要があります。 Azure Database for MySQL では、ポイントインタイム リストアを使用して、サーバーを 35 日間分さかのぼって以前の状態に戻すことができます。
 
 ## <a name="secure-your-data"></a>データのセキュリティ保護
-Azure データベース サービスは、アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能を備えた Azure Database for MySQL によって、データ セキュリティを維持してきました。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/en-us/trustcenter/security)をご覧ください。
-
-Azure Database for MySQL サービスでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 バックアップを含むデータはディスク上で暗号化されます (ただし、クエリの実行中に作成された一時ファイルを除きます)。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
-
-Azure Database for MySQL サービスは、既定で、ネットワーク上で転送されるデータに [SSL 接続セキュリティ](./concepts-ssl-connection-security.md)を要求するように構成されています。 データベース サーバーとクライアント アプリケーションの間に SSL 接続を適用すると、サーバーとアプリケーションの間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。 クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要求を無効にできます。
+Azure データベース サービスは、アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能を備えた Azure Database for MySQL によって、データ セキュリティを維持してきました。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/trustcenter/security)をご覧ください。 Azure Database for MySQL のセキュリティ機能の詳細については、[セキュリティの概要](concepts-security.md)に関するページを参照してください。
 
 ## <a name="contacts"></a>連絡先
 Azure Database for MySQL についての質問や提案は、Azure Database for MySQL チームにメール ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではありません。

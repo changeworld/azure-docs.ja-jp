@@ -1,21 +1,21 @@
 ---
-title: チュートリアル:Azure HDInsight の Apache Hive を使用して抽出、変換、読み込み (ETL) 操作を実行する
+title: チュートリアル:Azure HDInsight を使用してデータの抽出、変換、読み込みを行う
 description: このチュートリアルでは、生の CSV データセットからデータを抽出し、Azure HDInsight の Apache Hive を使用してデータを変換した後、Sqoop を使用して変換済みデータを Azure SQL Database に読み込む方法について説明します。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f58785b17a1e6236636744c32dac07a6c9ed138d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992247"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327575"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Apache Hive を使用したデータの抽出、変換、および読み込み
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>チュートリアル:Azure HDInsight を使用してデータの抽出、変換、読み込みを行う
 
 このチュートリアルでは、ETL (データの抽出、変換、読み込み) 操作を実行します。 生の CSV データ ファイルを取得して Azure HDInsight クラスターにインポートした後、Apache Hive を使用して変換し、Apache Sqoop を使用して Azure SQL データベースに読み込みます。
 
@@ -234,7 +234,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 
 4. 使用するデータベースの名前でフィルター処理します。 サーバー名は **[サーバー名]** 列に表示されます。
 
-    ![Azure SQL サーバーの詳細を取得](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Azure SQL サーバーの詳細を取得")
+    ![Azure SQL サーバーの詳細を取得する](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Azure SQL サーバーの詳細を取得する")
 
     SQL Database に接続してテーブルを作成するには、多くの方法があります。 次の手順では、HDInsight クラスターから [FreeTDS](https://www.freetds.org/) を使用します。
 

@@ -1,41 +1,41 @@
 ---
-title: Azure CLI を使用してリソースを監査するポリシーを作成する
-description: Azure CLI を使用して Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
-ms.date: 01/23/2019
+title: クイック スタート:Azure CLI を使用した新しいポリシーの割り当て
+description: このクイックスタートでは、Azure CLI を使用して、Azure Policy の割り当てを作成し、準拠していないリソースを特定します。
+ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 589038bb2b5e96c252e19fc0552d4f9ac19dc83a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 80dbccdb728da94d9f9fdd0aeb506ade40fd7394
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960229"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482633"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>クイック スタート:Azure CLI を使用して準拠していないリソースを識別するポリシー割り当てを作成する
 
 Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。
 このクイックスタートでは、ポリシーの割り当てを作成して、マネージド ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
 
-このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに "*準拠していません*"。
+このプロセスを終了すると、マネージド ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシーの割り当てに "_準拠していません_"。
 
 Azure CLI は、コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用してポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-このクイック スタートでは、CLI をローカルにインストールして使用するために、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
-
 ## <a name="prerequisites"></a>前提条件
 
-Azure CLI を使用して Azure Policy Insights リソース プロバイダーを登録します。 リソース プロバイダーを登録すると、そのリソース プロバイダーで、ご利用のサブスクリプションを確実に動作させることができます。 リソース プロバイダーを登録するには、リソース プロバイダーの登録操作のためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録する以下のコマンドを実行します。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-```azurecli-interactive
-az provider register --namespace 'Microsoft.PolicyInsights'
-```
+- このクイックスタートでは、CLI をローカルにインストールして使用するために、Azure CLI バージョン 2.0.76 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
-リソース プロバイダーの登録と表示の詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
+- Azure CLI を使用して Azure Policy Insights リソース プロバイダーを登録します。 リソース プロバイダーを登録すると、そのリソース プロバイダーで、ご利用のサブスクリプションを確実に動作させることができます。 リソース プロバイダーを登録するには、リソース プロバイダーの登録操作のためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録する以下のコマンドを実行します。
 
-[ARMClient](https://github.com/projectkudu/ARMClient) をまだインストールしていない場合はインストールします。 Azure Resource Manager ベースの API に HTTP 要求を送信するツールです。
+  ```azurecli-interactive
+  az provider register --namespace 'Microsoft.PolicyInsights'
+  ```
+
+  リソース プロバイダーの登録と表示の詳細については、「[リソース プロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
+
+- [ARMClient](https://github.com/projectkudu/ARMClient) をまだインストールしていない場合はインストールします。 Azure Resource Manager ベースの API に HTTP 要求を送信するツールです。
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
@@ -49,9 +49,9 @@ az policy assignment create --name 'audit-vm-manageddisks' --display-name 'Audit
 
 上記のコマンドでは次の情報を使用します。
 
-- **Name** - 割り当ての実際の名前。 この例では、*audit-vm-manageddisks* が使用されました。
-- **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、"*Audit VMs without managed disks Assignment*" を使用します。
-- **Policy** - 割り当ての作成に使用するポリシー定義 ID。 ここでは、"*Managed Disks を使用していない VM の監査*" というポリシー定義の ID です。 ポリシー定義 ID を取得するには、次のコマンドを実行します。`az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
+- **Name** - 割り当ての実際の名前。 この例では、_audit-vm-manageddisks_ が使用されました。
+- **DisplayName** - ポリシーの割り当てに使用する表示名。 このケースでは、"_Audit VMs without managed disks Assignment_" を使用します。
+- **Policy** - 割り当ての作成に使用するポリシー定義 ID。 ここでは、"_Managed Disks を使用していない VM の監査_" というポリシー定義の ID です。 ポリシー定義 ID を取得するには、次のコマンドを実行します。`az policy definition list --query "[?displayName=='Audit VMs that do not use managed disks']"`
 - **Scope** - スコープによって、ポリシーの割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループまで、適用対象は多岐にわたります。 &lt;scope&gt; は、実際のリソース グループの名前に置き換えてください。
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する

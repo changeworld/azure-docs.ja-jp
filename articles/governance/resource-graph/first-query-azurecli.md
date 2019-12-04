@@ -1,14 +1,14 @@
 ---
-title: Azure CLI を使用して初めてのクエリを実行する
-description: この記事では、Azure CLI の Resource Graph 拡張機能を有効にして、最初のクエリを実行する手順について説明します。
-ms.date: 10/18/2019
+title: クイック スタート:初めての Azure CLI クエリ
+description: このクイックスタートでは、手順に従って、Azure CLI の Resource Graph 拡張機能を有効にし、最初のクエリを実行します。
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: b74e4314a7755bb067831f955ca02d62485abe4f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958963"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304131"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して最初の Resource Graph クエリを実行します
 
@@ -16,13 +16,17 @@ Azure Resource Graph を使用する最初の手順では、[Azure CLI](/cli/azu
 
 このプロセスの最後では、選択した Azure CLI のインストールに拡張機能を追加して、最初の Resource Graph クエリを実行します。
 
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-extension"></a>Resource Graph 拡張機能を追加する
 
 Azure CLI を Azure Resource Graph のクエリに対して有効にするには、拡張機能を追加する必要があります。 [Windows 10上の bash](/windows/wsl/install-win10)、 [Cloud Shell](https://shell.azure.com) (スタンドアロンと内部の両方のポータル)、 [Azure CLI Docker 画像](https://hub.docker.com/r/microsoft/azure-cli/)、または、ローカルにインストールされた場合を含め、この拡張機能はAzure CLI を使用できる場合はいつでも動作します。
 
-1. 最新の Azure CLI がインストールされていることを確認します (**2.0.45** 以降)。 インストールされていない場合は、こちらの[手順](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)に従ってください。
+1. 最新の Azure CLI がインストールされていることを確認します (**2.0.76** 以降)。 インストールされていない場合は、こちらの[手順](/cli/azure/install-azure-cli-windows?view=azure-cli-latest)に従ってください。
 
 1. 選択された Azure CLI 環境では、次のコマンドでインポートします。
 
@@ -87,10 +91,7 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>次の手順
 
-- [クエリ言語](./concepts/query-language.md)に関する詳細情報を入手します。
-- [リソースを探索する](./concepts/explore-resources.md)方法について詳しく確認します。
-- [Azure portal](first-query-portal.md) を使用して最初のクエリを実行します。
-- [Azure PowerShell](first-query-powershell.md) を使用して最初のクエリを実行します。
-- [Starter クエリ](./samples/starter.md)のサンプルを参照します。
-- [高度なクエリ](./samples/advanced.md)のサンプルを参照します。
-- [UserVoice ](https://feedback.azure.com/forums/915958-azure-governance)にフィードバックを提供します。
+このクイックスタートでは、Azure CLI 環境に Resource Graph 拡張機能を追加し、最初のクエリを実行しました。 Resource Graph 言語の詳細については、クエリ言語の詳細のページに進んでください。
+
+> [!div class="nextstepaction"]
+> [クエリ言語に関する詳細情報を入手します](./concepts/query-language.md)

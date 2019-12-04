@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:C を使用して、対称キーを使用してシミュレートされたデバイスを Azure IoT Hub にプロビジョニングする
+title: クイックスタート - シミュレートされたデバイスを C と対称キーを使用して Azure IoT Hub にプロビジョニングする
 description: このクイック スタートでは、C デバイス SDK を使用して、Azure IoT Hub Device Provisioning Service に対称キーを使用するシミュレートされたデバイスを作成します
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8a5016587240dfcc0813b7f1e23cd574e82bb935
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4d1e1ff5312cfb5aa0b2e378a24d5e0db7fb3605
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904857"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423555"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>クイック スタート:対称キーを使用してシミュレートされたデバイスをプロビジョニングする
 
@@ -90,21 +90,19 @@ ms.locfileid: "73904857"
     -- Build files have been written to: E:/IoT Testing/azure-iot-sdk-c/cmake
     ```
 
-
-
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>ポータルでデバイス登録エントリを作成する
 
-1. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
+1. Azure portal にサインインし、左側のメニューの **[すべてのリソース]** を選択して、Device Provisioning Service を開きます。
 
-2. **[登録を管理します]** タブをクリックし、上部にある **[Add individual enrollment]\(個別登録の追加\)** ボタンをクリックします。 
+2. **[登録を管理します]** タブをクリックし、上部にある **[個別登録の追加]** を選択します。 
 
-3. **[Add enrollment]\(登録の追加\)** で、次の情報を入力し、 **[保存]** をクリックします。
+3. **[登録の追加]** パネルで次の情報を入力して、 **[保存]** を押します。
 
    - **メカニズム**:ID 構成証明の*メカニズム*として **[対称キー]** を選択します。
 
-   - **キーの自動生成**:このボックスをオンにします。
+   - **自動生成キー**:このボックスをオンにします。
 
-   - **登録 ID**:登録を識別する登録 ID を入力します。 小文字の英字、数字、ダッシュ ('-') 文字のみを使用します。 たとえば、「 `symm-key-device-007` 」のように入力します。
+   - **登録 ID**:登録を識別する登録 ID を入力します。 小文字の英字、数字、ダッシュ ('-') 文字のみを使用します。 たとえば、**symm-key-device-007** のようにします。
 
    - **IoT Hub のデバイス ID**:デバイス識別子を入力します。 たとえば、「**device-007**」と入力します。
 
@@ -124,7 +122,7 @@ ms.locfileid: "73904857"
 
 
 
-1. Azure portal で、Device Provisioning Service の **[概要]** タブをクリックし、**[_ID スコープ_]** の値を書き留めます。
+1. Azure portal で、Device Provisioning Service の **[概要]** タブを選択し、**[_ID スコープ_]** の値をメモします。
 
     ![ポータルのブレードから Device Provisioning サービスのエンドポイント情報を抽出](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -169,7 +167,7 @@ ms.locfileid: "73904857"
 
 7. **prov\_dev\_client\_sample** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。 
 
-8. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、 **[はい]** をクリックして、プロジェクトをリビルドしてから実行します。
+8. Visual Studio のメニューで **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、ソリューションを実行します。 プロジェクトをリビルドするよう求められたら、 **[はい]** を選択して、プロジェクトをリビルドしてから実行します。
 
     次の出力は、シミュレートされたデバイスが正常に起動し、IoT ハブに割り当てられるプロビジョニング サービス インスタンスに接続する例です。
 
@@ -187,9 +185,9 @@ ms.locfileid: "73904857"
     Press enter key to exit:
     ```
 
-9. ポータルで、シミュレートされたデバイスが割り当てられた IoT ハブに移動し、 **[IoT デバイス]** タブをクリックします。シミュレートされたデバイスがハブに正常にプロビジョニングされると、そのデバイス ID は、**有効**な*状態*で **[IoT デバイス]** ブレードに表示されます。 必要に応じて、一番上の **[更新]** ボタンをクリックします。 
+9. ポータルで、シミュレートされたデバイスが割り当てられた IoT ハブに移動し、 **[IoT デバイス]** タブを選択します。シミュレートされたデバイスがハブに正常にプロビジョニングされると、そのデバイス ID は、**有効**な*状態*で **[IoT デバイス]** ブレードに表示されます。 場合によっては、一番上にある **[最新の情報に更新]** を押す必要があります。 
 
-    ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device/hub-registration.png) 
+    ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device-symm-key/hub-registration.png) 
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
@@ -197,12 +195,12 @@ ms.locfileid: "73904857"
 引き続きデバイス クライアント サンプルを使用する場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されているデバイス クライアント サンプルの出力ウィンドウを閉じます。
-1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、Device Provisioning サービスを選択します。 サービスの **[登録を管理します]** を開き、 **[個々の登録]** タブをクリックします。このクイックスタートで登録したデバイスの*登録 ID* を選択し、上部の **[削除]** ボタンをクリックします。 
-1. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、IoT ハブを選択します。 ハブの **[IoT デバイス]** を開き、このクイック スタートで登録したデバイスの "*デバイス ID*" を選択し、一番上の **[削除]** ボタンをクリックします。
+1. Azure portal の左側のメニューで **[すべてのリソース]** を選択し、Device Provisioning Service を選択します。 サービスの **[登録を管理します]** を開き、 **[個々の登録]** タブを選択します。このクイックスタートで登録したデバイスの "*登録 ID*" の隣にあるチェック ボックスをオンにして、ペイン上部の **[削除]** を押します。 
+1. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、IoT ハブを選択します。 ハブの **[IoT デバイス]** を開き、このクイックスタートで登録したデバイスの "*デバイス ID*" の隣にあるチェック ボックスをオンにして、ペイン上部の **[削除]** を押します。
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、ポータルでシミュレートされたデバイスを Windows コンピューター上に作成し、Azure IoT Hub Device Provisioning Service で対称キーを使用して IoT ハブにプロビジョニングしました。 プログラムでデバイスを登録する方法については、X.509 デバイスのプログラミングによる登録のクイック スタートに進みます。 
+このクイックスタートでは、シミュレートされたデバイスを Windows マシン上に作成し、ポータル上の Azure IoT Hub Device Provisioning Service で対称キーを使用して IoT ハブにプロビジョニングしました。 プログラムでデバイスを登録する方法については、X.509 デバイスのプログラミングによる登録のクイックスタートに進みます。 
 
 > [!div class="nextstepaction"]
-> [Azure クイックスタート - Azure IoT Hub Device Provisioning Service への X.509 デバイスの登録](quick-enroll-device-x509-java.md)
+> [Azure クイックスタート - X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録する](quick-enroll-device-x509-java.md)

@@ -1,22 +1,18 @@
 ---
-title: VS Code を使用してクラウドに Kubernetes Node.js 開発環境を作成する
-titleSuffix: Azure Dev Spaces
+title: 'Kubernetes 開発空間を作成する: Visual Studio Code と Node.js'
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 30f912e9c1573b32247bb3c2a3f7d4026436748b
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 32ff7554ca599b7d50a4c815083b97eda8b4e57e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67503037"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327317"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Azure Dev Spaces での Node.js の使用
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio Code と Node.js
 
 このガイドでは、以下の方法について説明します。
 

@@ -1,14 +1,14 @@
 ---
 title: サンプル - 許可されるリソースの種類
-description: このサンプル ポリシー定義を適用すると、承認されているリソースの種類のみがデプロイされます。
+description: このサンプル ポリシー定義を適用すると、パラメーターで定義される承認されているリソースの種類のみがデプロイされます。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 16f941cfca419b3fce86101bf8df1b6850858cc9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 5fdf17ff037aaf6f8094bb811e2e6e5a61093250
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076426"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463423"
 ---
 # <a name="sample---allowed-resource-types"></a>サンプル - 許可されるリソースの種類
 

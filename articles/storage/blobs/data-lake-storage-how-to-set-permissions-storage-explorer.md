@@ -1,21 +1,21 @@
 ---
-title: Azure Storage Explorer を使用して Data Lake Storage Gen2 のアクセス許可を設定する
+title: 'Azure Storage Explorer: Azure Data Lake Storage Gen2 でのアクセスを管理する'
 description: このハウツーでは、Azure Data Lake Storage Gen2 対応のストレージ アカウント内のファイルとディレクトリに対するアクセス許可を Azure Storage Explorer で設定する方法について説明します。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/11/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2cc93ad9ae1d9d6d21064a2a80c3d62bf661dabc
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: b34103e521def678acce17e3292e04fca95b5e6e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992292"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327983"
 ---
-# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で Azure Storage Explorer を使用してファイルとディレクトリ レベルのアクセス許可を設定する
+# <a name="use-azure-storage-explorer-to-manage-access-in-azure-data-lake-storage-gen2"></a>Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 でのアクセスを管理する
 
 Azure Data Lake Storage Gen2 に格納されているファイルでは、アクセス許可とアクセス制御リスト (ACL) のきめ細かい管理がサポートされています。 細かいアクセス許可と ACL 管理を組み合わせることで、データへのアクセスをきめ細かいレベルで管理できます。
 

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 12882860b8a9beadd4e56cbb151d670fac4da43b
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ff28ae7dbff40910ac0431fb47f7f0be3e1569c0
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797158"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538144"
 ---
 # <a name="overview-of-azure-farmbeats"></a>Azure FarmBeats の概要
 
@@ -36,11 +36,11 @@ Azure FarmBeats には、以下を行う堅牢で簡単な方法が用意され�
 - 集約されたデータセットの上に AI/ML モデルを構築して、アクションにつながる分析情報を得ます。
 - ファームの正常性の勧告を提供して、デジタル農業ソリューションを構築または強化します。
 
-この記事の以下のセクションでは、Azure FarmBeat のコンポーネントについて説明します。
+この記事の以下のセクションでは、Azure FarmBeats のコンポーネントについて説明します。
 
 ## <a name="data-hub"></a>データ ハブ
 
-プロバイダー間でのさまざまな農業データセットの集計、正規化、コンテキスト化を可能にする API レイヤー。 このプレビューの段階では、2 つのセンサー プロバイダー ([Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/)、[Teralytic](https://teralytic.com/))、1 つの衛星画像プロバイダー ([Sentinel-2](https://sentinel.esa.int/web/sentinel/home))、2 つのドローン画像プロバイダー ([senseFly](https://www.sensefly.com/)、[SlantRange](https://slantrange.com/)) を利用できます。 データ ハブは API プラットフォームとして設計されており、Azure FarmBeats と統合するために多くのプロバイダーと連携しています。そのため、ソリューションを構築するときに、より多くの選択肢があります。
+Azure FarmBeats のデータ ハブは、プロバイダー間でのさまざまな農業データセットの集計、正規化、コンテキスト化を可能にする API レイヤーです。 このプレビューの段階では、2 つのセンサー プロバイダー ([Davis Instruments](https://www.davisinstruments.com/product/enviromonitor-gateway/)、[Teralytic](https://teralytic.com/))、1 つの衛星画像プロバイダー ([Sentinel-2](https://sentinel.esa.int/web/sentinel/home))、3 つのドローン画像プロバイダー ([senseFly](https://www.sensefly.com/)、[SlantRange](https://slantrange.com/)、[DJI](https://dji.com/)) を利用できます。 データ ハブは API プラットフォームとして設計されており、Azure FarmBeats と統合するために多くのプロバイダーと連携しています。そのため、ソリューションを構築するときに、より多くの選択肢があります。
 
 ## <a name="accelerator"></a>アクセラレータ
 
@@ -48,8 +48,8 @@ Azure FarmBeats には、以下を行う堅牢で簡単な方法が用意され�
 
 ## <a name="resources"></a>リソース
 
-FarmBeats の[ブログ](https://aka.ms/AzureFarmBeats)と[フォーラム](https://aka.ms/FarmBeatsMSDN)をご覧ください。
+詳細については、Azure FarmBeats の[ブログ](https://aka.ms/AzureFarmBeats)と[フォーラム](https://aka.ms/FarmBeatsMSDN)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure FarmBeats の使用を開始するには、[Azure Marketplace](https://aka.ms/FarmBeatsMarketplace) にアクセスしてデプロイします。
+Azure FarmBeats の利用を開始するために、[Azure Marketplace](https://aka.ms/FarmBeatsMarketplace) にアクセスしてデプロイのプロセスを開始します。

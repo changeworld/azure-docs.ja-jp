@@ -1,14 +1,14 @@
 ---
 title: サンプル - Azure Hybrid Use Benefit を拒否する
-description: このサンプル ポリシー定義は、Azure Hybrid Use Benefit (AHUB) の使用を禁止します。
+description: このサンプル ポリシー定義は、仮想マシンおよび仮想マシン スケール セットに対する Azure Hybrid Use Benefit (AHUB) の使用を禁止します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 441f3bc75dc066684f201deabe34b2dfd962e0ca
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 98518e33f27f0e46bf224301f3a02bb57141c4e1
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74070903"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463658"
 ---
 # <a name="sample---deny-hybrid-use-benefit"></a>サンプル - Azure Hybrid Use Benefit を拒否する
 

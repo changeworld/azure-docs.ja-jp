@@ -1,5 +1,5 @@
 ---
-title: Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスする
+title: チュートリアル`:` マネージド ID を使用して Azure Storage にアクセスする - Windows - Azure AD
 description: Windows VM のシステム割り当てマネージド ID を使用して Azure Storage にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147ee2450a6a67f8ca02149105533401d038a53a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2449307936839d50fe0d48a0536ca4dd9c8d85c3
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191094"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181916"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>チュートリアル:Windows VM のシステム割り当てマネージド ID を使用してアクセス キーで Azure Storage にアクセスする
 
@@ -50,7 +50,7 @@ ms.locfileid: "65191094"
 まだお持ちでない場合は、この時点でストレージ アカウントを作成します。 この手順をスキップし、既存のストレージ アカウントのキーへのアクセス権を、VM のシステム割り当てマネージド ID に付与することもできます。 
 
 1. Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
-2. **[ストレージ]**、次に **[ストレージ アカウント]** をクリックすると、新しい [ストレージ アカウントの作成] パネルが表示されます。
+2. **[ストレージ]** 、次に **[ストレージ アカウント]** をクリックすると、新しい [ストレージ アカウントの作成] パネルが表示されます。
 3. ストレージ アカウントの名前を入力します。この場前は後ほど使用します。  
 4. **[デプロイ モデル]** と **[アカウントの種類]** がそれぞれ [Resource manager] と [汎用] に設定されている必要があります。 
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。
@@ -65,7 +65,7 @@ ms.locfileid: "65191094"
 1. 新たに作成したストレージ アカウントに戻ります。
 2. 左側の **[コンテナー]** リンク ([Blob service] の下にある) をクリックします。
 3. ページの上部にある **[+ コンテナー]** をクリックすると、[新しいコンテナー] パネルがスライドして現れます。
-4. コンテナーに名前を付け、アクセス レベルを選択して、**[OK]** をクリックします。 指定した名前は、後ほどチュートリアルで使用されます。 
+4. コンテナーに名前を付け、アクセス レベルを選択して、 **[OK]** をクリックします。 指定した名前は、後ほどチュートリアルで使用されます。 
 
     ![ストレージ コンテナーの作成](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
@@ -76,10 +76,10 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 1. 新たに作成したストレージ アカウントに戻ります。  
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  
 3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します
-4. ページの右側で、**[ロール]** を "ストレージ アカウント キー オペレーターのサービス ロール" に設定します。 
-5. 次のドロップダウンで、**[アクセスの割り当て先]** を "仮想マシン" リソースに設定します。  
-6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、**[リソース グループ]** を [すべてのリソース グループ] に設定します。  
-7. 最後に、**[選択]** のドロップダウンで Windows 仮想マシンを選択し、**[保存]** をクリックします。 
+4. ページの右側で、 **[ロール]** を "ストレージ アカウント キー オペレーターのサービス ロール" に設定します。 
+5. 次のドロップダウンで、 **[アクセスの割り当て先]** を "仮想マシン" リソースに設定します。  
+6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、 **[リソース グループ]** を [すべてのリソース グループ] に設定します。  
+7. 最後に、 **[選択]** のドロップダウンで Windows 仮想マシンを選択し、 **[保存]** をクリックします。 
 
     ![イメージ テキスト](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role.png)
 
@@ -89,7 +89,7 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 
 ここでは、Azure Resource Manager PowerShell コマンドレットを使用する必要があります。  インストールしていない場合は、先に進む前に、[最新バージョンをダウンロード](https://docs.microsoft.com/powershell/azure/overview)してください。
 
-1. Azure Portal で **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、**[概要]** ページの上部にある **[接続]** をクリックします。 
+1. Azure Portal で **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、 **[概要]** ページの上部にある **[接続]** をクリックします。 
 2. Windows VM を作成したときに追加した**ユーザー名**と**パスワード**を入力します。 
 3. これで、仮想マシンを使用する**リモート デスクトップ接続**が作成されました。リモート セッションで PowerShell を開きます。
 4. PowerShell の Invoke-WebRequest を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure Resource Manager のアクセス トークンを取得するよう要求します。

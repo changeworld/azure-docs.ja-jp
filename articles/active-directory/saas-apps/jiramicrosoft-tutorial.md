@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20d5db9656dbcab31d73e504f1ca67fd577aec8e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 6deeb224f8c70dabcf8c5a29e80e87414ea32657
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439743"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561418"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と JIRA SAML SSO by Microsoft の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "72439743"
 
 * JIRA SAML SSO by Microsoft にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントで自動的に JIRA SAML SSO by Microsoft にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -60,8 +60,8 @@ JIRA SAML SSO by Microsoft と Azure AD の統合を構成するには、次の�
 
 ## <a name="supported-versions-of-jira"></a>サポートされている JIRA のバージョン
 
-* JIRA Core と Software:6.4 から 8.2.4
-* JIRA Service Desk 3.0.0 から 4.2.1
+* JIRA Core と Software:6.4 から 8.5.1
+* JIRA Service Desk 3.0.0 から 4.5.1
 * JIRA は 5.2 もサポートします。 詳細については、[Microsoft Azure Active Directory single sign-on for JIRA 5.2](jira52microsoft-tutorial.md) に関する記事を参照してください。
 
 > [!NOTE]

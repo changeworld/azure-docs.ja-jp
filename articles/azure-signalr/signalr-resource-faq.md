@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR Service についてよく寄せられる質問
-description: Azure SignalR Service に関する FAQ。
+description: Azure SignalR Service のトラブルシューティングと一般的な使用シナリオについてよく寄せられる質問を紹介しています。
 author: sffamily
 ms.service: signalr
 ms.topic: overview
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 771124d0b8ca15bf72501fdeff8c31d0a43050b8
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9a8c3fd6c591f25aadc696c3c71f8c4cdfca745f
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578683"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157568"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service の FAQ
 

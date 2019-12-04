@@ -1,21 +1,21 @@
 ---
-title: Azure で CSP パートナー情報を使用して Cloudyn に登録する | Microsoft Docs
+title: Azure で CSP パートナー情報を使用して Cloudyn に登録する
 description: このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 11/18/2019
 ms.topic: quickstart
 ms.custom: seodec18
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
-ms.openlocfilehash: 17f4069e38b4e4f0ee7a4ef4acc4535198b62b02
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 4255bfc6a0e51e175bd7cba7102069065b477258
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969200"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229961"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>CSP パートナー プログラムに登録してコスト データを確認する
 
@@ -30,6 +30,8 @@ CSP パートナーであれば、Cloudyn に登録できます。 この登録�
 > 詳細については、[パートナー センター API への接続](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx)に関する記事を参照してください。
 >
 > CSP 間接リセラーは、CSP 間接プロバイダーが Cloudyn に登録した後で、Cloudyn にアクセスできるようになります。 その後、CSP 間接リセラーは、Cloudyn アクセスを Azure のお客様とサブスクリプションに提供できます。
+>
+>Cloudy は、Microsoft Secure Application モデルに準拠しています。 詳細については、「[セキュリティで保護されたアプリケーション モデル フレームワークの有効化](/partner-center/develop/enable-secure-app-model)」を参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -41,10 +43,10 @@ CSP パートナーであれば、Cloudyn に登録できます。 この登録�
 2. **[概要]** の **[Cloudyn]** をクリックします｡  
     ![Azure portal に表示される [Cloudyn] ページ](./media/quick-register-csp/cost-mgt-billing-service.png)
 3. **[Cloudyn]** ページで **[Cloudyn に移動します]** をクリックします。新しいウィンドウで Cloudyn 登録ページが開きます。
-4. Cloudyn ポータル試用版登録のページで、会社名を入力し、**[Microsoft CSP Partner Program Administrator]\(Microsoft CSP パートナー プログラム管理者\)** を選択し、**[次へ]** をクリックします。  
-5. **[アプリケーション ID]**、**[Commerce ID]\(コマース ID\)**、**[Application Secret key]\(アプリケーションの秘密鍵\)** を入力し、**[Default Pricing Plan]\(既定の料金プラン\)** を選択します。 手元に情報がない場合は、パートナー センター ポータル ([https://partnercenter.microsoft.com](https://partnercenter.microsoft.com)) にプライマリ管理者アカウントでサインインして、次の手順を実行します。
-   1. **ダッシュボード**に移動して**設定**の記号をクリックし、**[パートナーの設定]** をクリックして **[アプリの管理]** をクリックします。
-   2. 以前に Web アプリを作成したことがある場合は、この手順をスキップします。 作成したことがない場合は、**[Web アプリ]** セクションの **[新規 Web アプリの追加]** をクリックします。
+4. Cloudyn ポータル試用版登録のページで、会社名を入力し、 **[Microsoft CSP Partner Program Administrator]\(Microsoft CSP パートナー プログラム管理者\)** を選択し、 **[次へ]** をクリックします。  
+5. **[アプリケーション ID]** 、 **[Commerce ID]\(コマース ID\)** 、 **[Application Secret key]\(アプリケーションの秘密鍵\)** を入力し、 **[Default Pricing Plan]\(既定の料金プラン\)** を選択します。 手元に情報がない場合は、パートナー センター ポータル ([https://partnercenter.microsoft.com](https://partnercenter.microsoft.com)) にプライマリ管理者アカウントでサインインして、次の手順を実行します。
+   1. **ダッシュボード**に移動して**設定**の記号をクリックし、 **[パートナーの設定]** をクリックして **[アプリの管理]** をクリックします。
+   2. 以前に Web アプリを作成したことがある場合は、この手順をスキップします。 作成したことがない場合は、 **[Web アプリ]** セクションの **[新規 Web アプリの追加]** をクリックします。
    3. ご自分の Web アプリケーションから、**アプリ ID** の GUID をコピーします。
    4. ご自分の Web アプリケーションから、**Commerce ID** の GUID をコピーします。
    5. キーの有効期間は、必要に応じて、1 年または 2 年を選択します。 **[キーの追加]** を選択し、秘密鍵の値をコピーして保存します。  
@@ -52,8 +54,8 @@ CSP パートナーであれば、Cloudyn に登録できます。 この登録�
    6. Cloudyn の登録ページに戻って、情報を貼り付けます。  
       ![Cloudyn の登録ページに資格情報を貼り付ける](./media/quick-register-csp/csp-reg.png)
 6. 使用条件に同意し、情報を検証します。 **[次へ]** をクリックし、Cloudyn を承認して Azure リソース データを収集します。 収集されたデータには、お客様のサブスクリプションの使用状況、パフォーマンス、請求、サブスクリプションからのタグ データなどが含まれています。  
-7. **[Invite other stakeholders]\(その他の関係者を招待\)** の下に電子メール アドレスを入力することで、ユーザーを追加できます。 完了したら、**[次へ]** をクリックします。 請求データをすべて Cloudyn に追加するには、約 2 時間かかります。
-8. **[Go to Cloudyn]\(Cloudyn に移動\)** をクリックして Cloudyn ポータルを開くと、**[Cloud Accounts Management]\(クラウド アカウント管理\)** ページに、登録された CSP アカウント情報が表示されます。
+7. **[Invite other stakeholders]\(その他の関係者を招待\)** の下に電子メール アドレスを入力することで、ユーザーを追加できます。 完了したら、 **[次へ]** をクリックします。 請求データをすべて Cloudyn に追加するには、約 2 時間かかります。
+8. **[Go to Cloudyn]\(Cloudyn に移動\)** をクリックして Cloudyn ポータルを開くと、 **[Cloud Accounts Management]\(クラウド アカウント管理\)** ページに、登録された CSP アカウント情報が表示されます。
 
 ## <a name="configure-indirect-csp-access-in-cloudyn"></a>Cloudyn で間接 CSP アクセスを構成する
 

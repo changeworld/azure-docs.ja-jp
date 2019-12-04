@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 2/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e53f3adbf7f9909d3590a0bc34dadc49d498291d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7201b7d3f9f7e8333b18a087f58b6211101b1304
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73157298"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233549"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>チュートリアル:Azure Active Directory と Egnyte の統合
 
@@ -243,7 +243,7 @@ Azure AD ユーザーが Egnyte にログインできるようにするには、
     >
 
 >[!NOTE]
->Egnyte から提供されている他の Egnyte ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>他の Egnyte ユーザー アカウント作成ツールや、Egnyte から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 >
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 

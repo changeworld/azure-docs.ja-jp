@@ -1,5 +1,5 @@
 ---
-title: Linux VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
+title: チュートリアル`:`Linux VM マネージド ID を使用して Azure AD Graph API にアクセスする
 description: Linux VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 481cb560daa26e59de2c78cc64bab9fb168eed58
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 68d560e7d326cc2ddc47ed9f689dc8e31f8ab9ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445409"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183642"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
 
@@ -134,7 +134,7 @@ Azure AD Graph:
 
 これらの手順を完了するには、SSH クライアントが必要です。 Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](../../virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
 
-1. ポータルで Linux VM に移動し、**[概要]** の **[接続]** をクリックします。  
+1. ポータルで Linux VM に移動し、 **[概要]** の **[接続]** をクリックします。  
 2. 任意の SSH クライアントを使用して、VM に**接続**します。 
 3. ターミナル ウィンドウで、CURL を使用して、Azure リソース エンドポイントのローカル マネージド ID に、Azure AD Graph のアクセス トークンを取得するよう要求します。  
     

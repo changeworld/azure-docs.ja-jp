@@ -1,5 +1,5 @@
 ---
-title: Azure クイック スタート - アプリケーションの高可用性を実現するフロント ドア プロファイルを Azure portal を使って作成する
+title: クイック スタート:アプリケーションの高可用性を実現する Front Door プロファイルを作成する
 description: このクイック スタート記事では、高可用性で高パフォーマンスのグローバル Web アプリケーション向けのフロント ドアを作成する方法について説明します。
 services: front-door
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 6bcd5bcc2463ec1ab9dcc97644d5046c31bfc78b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461988"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184511"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>クイック スタート:グローバル Web アプリケーションの高可用性を実現するフロント ドアを作成する
 
@@ -39,10 +39,10 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
      | Setting         | 値     |
      | ---              | ---  |
-     | Name           | Web アプリの一意の名前を入力します。  |
-     | リソース グループ          | **[新規]** を選択し、「*myResourceGroupFD1*」と入力します。 |
+     | 名前           | Web アプリの一意の名前を入力します。  |
+     | Resource group          | **[新規]** を選択し、「*myResourceGroupFD1*」と入力します。 |
      | App Service プラン/場所         | **[新規]** を選択します。  [App Service プラン] に「*myAppServicePlanEastUS*」と入力し、 **[OK]** を選択します。 
-     |      Location  |   米国東部        |
+     |      Location  |   East US        |
     |||
 
 3. **作成** を選択します。
@@ -51,8 +51,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
      | Setting         | 値     |
      | ---              | ---  |
-     | Name           | Web アプリの一意の名前を入力します。  |
-     | リソース グループ          | **[新規]** を選択し、「*myResourceGroupFD2*」と入力します。 |
+     | 名前           | Web アプリの一意の名前を入力します。  |
+     | Resource group          | **[新規]** を選択し、「*myResourceGroupFD2*」と入力します。 |
      | App Service プラン/場所         | **[新規]** を選択します。  [App Service プラン] に「*myAppServicePlanWestEurope*」と入力し、 **[OK]** を選択します。 
      |      Location  |   西ヨーロッパ      |
     |||

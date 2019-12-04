@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f0a684c6a38ba3a95438941f668b36b23d278df
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 772b37816b83c275bae927d825434dc3ca76a35c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227731"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231989"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>チュートリアル:AirWatch を Azure Active Directory と統合する
 
@@ -29,7 +29,7 @@ ms.locfileid: "68227731"
 
 * AirWatch にアクセスする Azure AD ユーザーを制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して AirWatch に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -126,15 +126,15 @@ AirWatch に対する Azure AD SSO を構成してテストするには、次の
 
 1. 設定ページで、 **[Settings]\(設定\) > [Enterprise Integration]\(エンタープライズ統合\) > [Directory Services]\(ディレクトリ サービス\)** を選択します。
 
-   ![設定](./media/airwatch-tutorial/ic791921.png "Settings")
+   ![設定](./media/airwatch-tutorial/ic791921.png "設定")
 
 1. **[ユーザー]** タブをクリックし、 **[ベース DN]** テキストボックスにドメイン名を入力してから **[保存]** をクリックします。
 
-   ![ユーザー](./media/airwatch-tutorial/ic791922.png "User")
+   ![User](./media/airwatch-tutorial/ic791922.png "User")
 
 1. **[Server]** タブをクリックします。
 
-   ![サーバー](./media/airwatch-tutorial/ic791923.png "Server")
+   ![サーバー](./media/airwatch-tutorial/ic791923.png "サーバー")
 
 1. **[LDAP]** セクションで次の手順を実行します。
 
@@ -146,7 +146,7 @@ AirWatch に対する Azure AD SSO を構成してテストするには、次の
 
 1. **[SAML 2.0]** セクションで、ダウンロードした証明書をアップロードするには、 **[Upload]\(アップロード\)** をクリックします。
 
-    ![アップロード](./media/airwatch-tutorial/ic791932.png "Upload")
+    ![アップロード](./media/airwatch-tutorial/ic791932.png "アップロード")
 
 1. **[Request]** セクションで、次の手順に従います。
 
@@ -164,7 +164,7 @@ AirWatch に対する Azure AD SSO を構成してテストするには、次の
 
 1. **[User]** タブをもう一度クリックします。
 
-    ![ユーザー](./media/airwatch-tutorial/ic791926.png "User")
+    ![User](./media/airwatch-tutorial/ic791926.png "User")
 
 1. **[Attribute]** セクションで、次の手順に従います。
 
@@ -224,22 +224,22 @@ Azure AD ユーザーが AirWatch にサインインできるようにするに�
 
 2. 左側のナビゲーション ウィンドウで、 **[Accounts]** 、 **[Users]** の順にクリックします。
   
-   ![ユーザー](./media/airwatch-tutorial/ic791929.png "Users")
+   ![ユーザー](./media/airwatch-tutorial/ic791929.png "ユーザー")
 
 3. **Users\(ユーザー\)** メニューで、**List View\(リスト ビュー\)** 、**Add\(追加\) > Add User\(ユーザーの追加\)** の順にクリックします。
   
-   ![ユーザーの追加](./media/airwatch-tutorial/ic791930.png "Add User")
+   ![ユーザーの追加](./media/airwatch-tutorial/ic791930.png "ユーザーの追加")
 
 4. **[Add / Edit User]** ダイアログで、次の手順を実行します。
 
-   ![ユーザーの追加](./media/airwatch-tutorial/ic791931.png "Add User")
+   ![ユーザーの追加](./media/airwatch-tutorial/ic791931.png "ユーザーの追加")
 
    a. 関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの **[Username]** 、 **[Password]** 、 **[Confirm Password]** 、 **[First Name]** 、 **[Last Name]** 、 **[Email Address]** を入力します。
 
    b. **[Save]** をクリックします。
 
 > [!NOTE]
-> 他の AirWatch ユーザー アカウントの作成ツールまたは AirWatch から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の AirWatch ユーザー アカウント作成ツールや、AirWatch から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-sso"></a>SSO のテスト
 

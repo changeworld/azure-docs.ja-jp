@@ -1,14 +1,14 @@
 ---
 title: サンプル - VM ネットワーク インターフェイス用の一覧にある vNet の使用
-description: このサンプル ポリシー定義は、承認された仮想ネットワークの使用をネットワーク インターフェイスに要求します。
+description: このサンプル ポリシー定義は、パラメーターで定義される承認された仮想ネットワークの使用をネットワーク インターフェイスに要求します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 64414f3c52da0c1368898abb5d032b3a728b2bda
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 367edbe2f127c363a19e345f7d55ba125006c999
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076135"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463100"
 ---
 # <a name="sample---use-approved-vnet-for-vm-network-interfaces"></a>サンプル - VM ネットワーク インターフェイスに承認された vNet を使用する
 

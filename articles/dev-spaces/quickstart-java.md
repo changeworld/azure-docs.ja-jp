@@ -1,23 +1,19 @@
 ---
-title: Azure Dev Spaces を使用して Kubernetes 上の Visual Studio Code と Java でデバッグと反復処理を行う
-titleSuffix: Azure Dev Spaces
-author: zr-msft
+title: 'Kubernetes 上でデバッグと反復処理を行う: Visual Studio Code と Java'
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Azure でコンテナー、マイクロサービス、Java を使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Java, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 2154ec3ae99ae816b970c96ffde435f1a3366e99
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: 5f0f9991ae8718b60221c3f291b6169f677b59c5
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815857"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325627"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-java-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上の Visual Studio Code と Java でデバッグと反復処理を行う
+# <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>クイック スタート:Visual Studio Code と Java を使用して Kubernetes 上でデバッグと反復処理を行う - Azure Dev Spaces
 
 このガイドでは、以下の方法について説明します。
 

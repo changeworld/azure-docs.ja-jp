@@ -14,22 +14,22 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cd1e54fc6cfbf254da010c03dfaa859a0ee8213c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 6399039a68279a5b734fb3d7cb5bfad60e2c35e1
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029819"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185013"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Azure App Configuration ストアへのインポート
 
-このサンプル スクリプトでは、Azure App Configuration ストアにキー/値をインポートします。
+このサンプル スクリプトでは、Azure App Configuration ストアにキーと値の設定をインポートします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールとアップグレードについては、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 最初に次のコマンドを実行して Azure App Configuration CLI の拡張機能をインストールする必要があります。
 
@@ -48,14 +48,14 @@ az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは、次のコマンドを使用してアプリ構成ストアをインポートします。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
+このスクリプトでは、次のコマンドを使用して App Configuration ストアへのインポートを実行します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | command | メモ |
 |---|---|
-| [az appconfig import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | アプリ構成ストア リソースへのインポートを行います。 |
+| [az appconfig kv import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | App Configuration ストア リソースへのインポートを行います。 |
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページを参照してください。
 
-その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration のドキュメント](../cli-samples.md)のページにあります。
+その他の App Configuration の CLI サンプル スクリプトは、[Azure App Configuration の CLI サンプル](../cli-samples.md)のページにあります。

@@ -1,19 +1,16 @@
 ---
-title: チュートリアル - Azure Resource Manager テンプレートに出力を追加する
+title: チュートリアル - テンプレートに出力を追加する
 description: Azure Resource Manager テンプレートに出力を追加して構文を単純化します。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 654d3f7cbf6362d982549c86e6f54fea1e890cfc
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001543"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405992"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートに出力を追加する
 
@@ -23,9 +20,9 @@ ms.locfileid: "72001543"
 
 必須ではありませんが、[変数に関するチュートリアル](template-tutorial-add-variables.md)を済ませておくことをお勧めします。
 
-Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関するセクションを参照してください。
+Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関する記事を参照してください。
 
-## <a name="review-your-template"></a>テンプレートを確認する
+## <a name="review-template"></a>テンプレートを確認する
 
 前のチュートリアルで完成したテンプレートには、次の JSON が含まれていました。
 
@@ -49,7 +46,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 最後に、ストレージ アカウントの **primaryEndpoints** プロパティを返します。
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-template"></a>テンプレートのデプロイ
 
 それではテンプレートをデプロイして、返される値を見てみましょう。
 

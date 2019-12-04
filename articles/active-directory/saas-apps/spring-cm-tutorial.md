@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1d1973dd51068e6f3e0746ee988a51f375899f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588014"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>チュートリアル: Azure Active Directory と SpringCM の統合
 
@@ -131,11 +131,11 @@ SpringCM で Azure AD シングル サインオンを構成するには、次の
 
 1. 上部にあるメニューの **[GO TO]** をクリックし、 **[Preferences]** をクリックします。次に、 **[Account Preferences]** セクションで、 **[SAML SSO]** をクリックします。
    
-    ![SAML SSO](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
+    ![[SAML SSO]](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
 
 1. [Identity Provider Configuration] セクションで、次の手順に従います。
    
-    ![Identity Provider Configuration](./media/spring-cm-tutorial/ic797052.png "Identity Provider Configuration")
+    ![[Identity Provider Configuration]\(ID プロバイダーの構成\)](./media/spring-cm-tutorial/ic797052.png "ID プロバイダー構成")
     
     a. ダウンロードした Azure Active Directory 証明書をアップロードするために、 **[Select Issuer Certificate]** または **[Change Issuer Certificate]** をクリックします。
     
@@ -210,7 +210,7 @@ Azure Active Directory ユーザーが SpringCM にサインインできるよ�
 
 1. **[GOTO]\(移動\)** をクリックし、 **[ADDRESS BOOK]\(アドレス帳\)** をクリックします。
    
-    ![Create User](./media/spring-cm-tutorial/ic797054.png "Create User")
+    ![ユーザーの作成](./media/spring-cm-tutorial/ic797054.png "[Create User]")
 
 1. **[Create User]** をクリックします。
 
@@ -225,7 +225,7 @@ Azure Active Directory ユーザーが SpringCM にサインインできるよ�
 1. **[Save]** をクリックします。
 
    > [!NOTE]
-   > SpringCM から提供されている他の SpringCM ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+   > 他の SpringCM ユーザー アカウント作成ツールや、SpringCM から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

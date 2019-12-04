@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:バッチ スコアリング用の ML パイプライン
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning の画像分類モデルでバッチ スコアリングを実行するための機械学習パイプラインを作成する 機械学習パイプラインは、速度、移植性、再利用によってワークフローを最適化します。これにより、ユーザーはインフラストラクチャや自動化にではなく、自分の専門である機械学習に専念することができます。
+description: このチュートリアルでは、Azure Machine Learning の画像分類モデルでバッチ スコアリングを実行するための機械学習パイプラインを作成します。 機械学習パイプラインは、速度、移植性、再利用によってワークフローを最適化します。これにより、ユーザーはインフラストラクチャや自動化にではなく、自分の専門である機械学習に専念することができます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: ccd29952693ecbc1db5927d5deabae874b6e9933
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 11d57031405939e37afade9a9452c5d3a8b9e1e4
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796695"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483289"
 ---
-# <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>バッチ スコアリング用の Azure Machine Learning パイプラインを作成して使用する
+# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

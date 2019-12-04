@@ -1,19 +1,19 @@
 ---
-title: Objective-C で Azure Spatial Anchors を使用してアンカーを作成して配置する方法 | Microsoft Docs
+title: Objective-C でアンカーを作成および配置する
 description: Objective-C で Azure Spatial Anchors を使用してアンカーを作成して配置する方法の詳細な説明。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d9638c96c06c06bd92690e568364551bdc299c80
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 119cf971a18ce7a9c2f2c22aba18d4dd3d9642ec
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672035"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277340"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>Objective-C で Azure Spatial Anchors を使用してアンカーを作成して配置する方法
 

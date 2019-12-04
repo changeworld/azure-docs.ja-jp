@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 07c7a15ea713bb6f73e1174a681dcccb5e79e289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61d7a2a7e4a60794710d602dab6b54e894bfc475
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67090514"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232024"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>チュートリアル:Azure Active Directory と SmarterU の統合
 
@@ -221,7 +221,7 @@ Azure AD ユーザーが SmarterU にサインインできるようにするに�
     d. **[Save]** をクリックします。
 
 > [!NOTE]
-> SmarterU から提供されている他の SmarterU ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の SmarterU ユーザー アカウント作成ツールや、SmarterU から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

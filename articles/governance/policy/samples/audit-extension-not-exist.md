@@ -1,14 +1,14 @@
 ---
 title: サンプル - 拡張機能が存在しない場合の監査
-description: このサンプル ポリシー定義は、仮想マシンに拡張機能がデプロイされていないかどうかを監査します。
+description: このサンプル ポリシー定義は、仮想マシンに、パラメーターで定義される拡張機能がデプロイされていない場合を監査します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 72d7728ef89678998a5fc3726d643142e3842635
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0b81a5f7b59d236cd8edb30cf0cb4f59ed9a7eab
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74071444"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463405"
 ---
 # <a name="sample---audit-if-extension-does-not-exist"></a>サンプル - 拡張機能が存在しない場合の監査
 

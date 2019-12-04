@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 07874988c97044ede59c18b8f85a425483679431
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7548d7d7b808472b3f5446fadfe800584f61b1df
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089531"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233351"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>チュートリアル:Azure Active Directory と SumoLogic の統合
 
@@ -140,7 +140,7 @@ SumoLogic で Azure AD シングル サインオンを構成するには、次�
 
 1. **[Manage]\>[Security]** の順に選択します。
 
-    ![Manage](./media/sumologic-tutorial/ic778556.png "Manage")
+    ![管理](./media/sumologic-tutorial/ic778556.png "管理")
 
 1. **[SAML]** をクリックします。
 
@@ -148,11 +148,11 @@ SumoLogic で Azure AD シングル サインオンを構成するには、次�
 
 1. **[Select a configuration or create a new one]** ボックスの一覧から **[Azure AD]** を選択し、 **[Configure]** をクリックします。
 
-    ![Configure SAML 2.0](./media/sumologic-tutorial/ic778558.png "Configure SAML 2.0")
+    ![[Configure SAML 2.0]\(SAML 2.0 の構成\)](./media/sumologic-tutorial/ic778558.png "[Configure SAML 2.0]")
 
 1. **[Configure SAML 2.0]** ダイアログで、次の手順に従います。
 
-    ![Configure SAML 2.0](./media/sumologic-tutorial/ic778559.png "Configure SAML 2.0")
+    ![[Configure SAML 2.0]\(SAML 2.0 の構成\)](./media/sumologic-tutorial/ic778559.png "[Configure SAML 2.0]")
 
     a. **[Configuration Name]** テキスト ボックスに、「**Azure AD**」と入力します。
 
@@ -231,15 +231,15 @@ Azure AD ユーザーが SumoLogic にサインインできるようにするに
 
 1. **[管理]\>[ユーザー]** の順に移動します。
 
-    ![ユーザー](./media/sumologic-tutorial/ic778561.png "Users")
+    ![ユーザー](./media/sumologic-tutorial/ic778561.png "ユーザー")
 
 1. **[追加]** をクリックします。
 
-    ![ユーザー](./media/sumologic-tutorial/ic778562.png "Users")
+    ![ユーザー](./media/sumologic-tutorial/ic778562.png "ユーザー")
 
 1. **[New User]** ダイアログ ページで、次の手順に従います。
 
-    ![New User](./media/sumologic-tutorial/ic778563.png "New User") 
+    ![[New User]\(新しいユーザー\)](./media/sumologic-tutorial/ic778563.png "[新しいユーザー]") 
 
     a. プロビジョニングする Azure AD アカウントに関連する情報を、 **[First Name]\(名\)** 、 **[Last Name]\(姓\)** 、および **[Email]\(電子メール\)** ボックスに入力します。
   
@@ -250,7 +250,7 @@ Azure AD ユーザーが SumoLogic にサインインできるようにするに
     d. **[Save]** をクリックします。
 
 > [!NOTE]
-> SumoLogic から提供されている他の SumoLogic ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+> 他の SumoLogic ユーザー アカウント作成ツールや、SumoLogic から提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

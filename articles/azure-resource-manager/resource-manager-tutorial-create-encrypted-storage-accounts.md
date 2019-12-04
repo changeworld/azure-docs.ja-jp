@@ -1,25 +1,17 @@
 ---
-title: Azure Resource Manager テンプレートのリファレンスを活用する | Microsoft Docs
+title: テンプレート リファレンスの利用
 description: Azure Resource Manager テンプレートのリファレンスを活用して、暗号化されたストレージ アカウントをデプロイするためのテンプレートを作成します。
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 81c02c5e39e23b49291561821b0732227feb5c05
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 99ec64529b90c7a80aea62090f80c55cf4e23510
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103649"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326476"
 ---
 # <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>チュートリアル: Azure Resource Manager テンプレートのリファレンスを活用する
 
@@ -44,20 +36,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* [Visual Studio Code](https://code.visualstudio.com/) と [Resource Manager ツール拡張機能](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-tools-vs-code.md)」を参照してください。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
 [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)は、Resource Manager テンプレートのリポジトリです。 テンプレートを最初から作成しなくても、サンプル テンプレートを探してカスタマイズすることができます。 このクイック スタートで使用されるテンプレートは、[Create a standard storage account](https://azure.microsoft.com/resources/templates/101-storage-account-create/) と呼ばれます。 テンプレートにより、Azure ストレージ アカウント リソースが定義されます。
 
-1. Visual Studio Code から、**[ファイル]**>**[ファイルを開く]** を選択します。
+1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 3. **[開く]** を選択して、ファイルを開きます。
-4. **[ファイル]**>**[名前を付けて保存]** を選択し、ファイルを **azuredeploy.json** としてご自身のローカル コンピューターに保存します。
+4. **[ファイル]** > **[名前を付けて保存]** を選択し、ファイルを **azuredeploy.json** としてご自身のローカル コンピューターに保存します。
 
 ## <a name="understand-the-schema"></a>スキーマの概要
 
@@ -86,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     選択するべきバージョンがわからない場合は、最新バージョンを使用します。
 
-4. 暗号化関連の定義情報を見つけます。  
+4. 暗号化関連の定義情報を見つけます。
 
     ```json
     "encryption": {

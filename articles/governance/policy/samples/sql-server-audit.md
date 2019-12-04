@@ -1,14 +1,14 @@
 ---
 title: サンプル - SQL Server の監査設定の監査
-description: このサンプル ポリシー定義は、SQL サーバーの監査設定を auditIfNotExists で監査します。
+description: このサンプル ポリシー定義は、パラメーターで定義される SQL サーバーの監査設定を auditIfNotExists で監査します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 5a0d758bd96937ca443d434b76d22aaefc618687
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7eba24c0916297dba0649024874aed7ba0fac2f6
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069808"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463116"
 ---
 # <a name="sample---audit-sql-server-audit-settings"></a>サンプル - SQL Server の監査設定の監査
 

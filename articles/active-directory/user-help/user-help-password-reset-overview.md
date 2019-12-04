@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d14ac3cbce6880604ad44b6aa71998ed061c10
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d517c5f0e45edd16778b1300ba9ff41a1483d84
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028507"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266948"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>職場または学校のパスワードのリセットの概要
 
@@ -34,5 +34,5 @@ ms.locfileid: "74028507"
 
 |記事 |説明 |
 |------|------------|
-| [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md) | 自分のパスワードをリセットできるように、認証方法を確認し、セルフサービスでのパスワードのリセットにサインアップする方法についての説明。 |
+| [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md) | 自分のパスワードをリセットできるように、検証方法を確認し、セルフサービスでのパスワードのリセットにサインアップする方法についての説明。 |
 | [パスワードのリセット](active-directory-passwords-update-your-own-password.md) | 職場または学校アカウントのパスワードをリセットまたはロック解除する方法についての説明。 |

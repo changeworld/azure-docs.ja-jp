@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f8663d59c263b6fa24e23e286f8eb4e75b888da
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 96966e4b9db5af40eee233d746d5790bbb769455
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159432"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>チュートリアル:Azure Active Directory と MCM の統合
 
@@ -186,7 +186,7 @@ MCM で Azure AD シングル サインオンを構成するには、次の手�
 このセクションでは、MCM で Britta Simon というユーザーを作成します。  [MCM サポート チーム](https://mcmtechnology.com/support/)と連携して、MCM プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 >[!NOTE]
->MCM から提供されている他の MCM ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
+>他の MCM ユーザー アカウント作成ツールや、MCM によって提供されている API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

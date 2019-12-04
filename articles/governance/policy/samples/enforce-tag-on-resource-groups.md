@@ -1,14 +1,14 @@
 ---
 title: サンプル - リソース グループへのタグと値の強制
-description: このサンプル ポリシー定義は、1 つのリソース グループに 1 つのタグと値を使用することを要求します。
+description: このサンプル ポリシー定義は、1 つのリソース グループに、パラメーターで定義される 1 つのタグと値を使用することを要求します。
 ms.date: 01/31/2019
 ms.topic: sample
-ms.openlocfilehash: 1a4bf9d27971b149e3df422987f58d0f184181c2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d04c48e2633e1a23990723c91a66cf8ec219b160
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076275"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463628"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>サンプル: リソース グループへのタグと値の強制
 

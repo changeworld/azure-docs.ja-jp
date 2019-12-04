@@ -1,19 +1,16 @@
 ---
-title: チュートリアル - Azure クイックスタート テンプレート | Microsoft Docs
+title: チュートリアル - クイックスタート テンプレートを使用する
 description: Azure クイックスタート テンプレートを使用してテンプレート開発を行う方法について説明します。
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a29d86d105579dda7c12b885e2977406f7b598a4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 1ddae445fb912b4bb60f257f667784b17b0d6ea5
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001486"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405946"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>チュートリアル:Azure クイックスタート テンプレートを使用する
 
@@ -23,9 +20,9 @@ ms.locfileid: "72001486"
 
 必須ではありませんが、[エクスポートしたテンプレートに関するチュートリアル](template-tutorial-export-template.md)を済ませておくことをお勧めします。
 
-Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関するセクションを参照してください。
+Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure PowerShell または Azure CLI を所有している必要があります。 詳細については、[テンプレートのツール](template-tutorial-create-first-template.md#get-tools)に関する記事を参照してください。
 
-## <a name="review-your-template"></a>テンプレートを確認する
+## <a name="review-template"></a>テンプレートを確認する
 
 前のチュートリアルで完成したテンプレートには、次の JSON が含まれていました。
 
@@ -33,7 +30,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 このテンプレートを使用すれば、ストレージ アカウントと App Service プランをデプロイできますが、さらに Web サイトを追加してみましょう。 作成済みのテンプレートを使用すれば、リソースのデプロイに必要な JSON をすばやく見つけることができます。
 
-## <a name="find-a-template"></a>テンプレートを見つける
+## <a name="find-template"></a>テンプレートを検索する
 
 1. [[Azure クイックスタート テンプレート]](https://azure.microsoft.com/resources/templates/) を開きます。
 1. **[検索]** に「**deploy linux web app**」と入力します。
@@ -44,7 +41,7 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
     ![Resource Manager テンプレート クイックスタート Web サイト](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
 
-## <a name="revise-the-existing-template"></a>既存のテンプレートを修正する
+## <a name="revise-existing-template"></a>既存のテンプレートを修正する
 
 クイックスタート テンプレートを既存のテンプレートにマージします。
 
@@ -60,9 +57,9 @@ Web アプリ名は、Azure 全体で一意であることが必要です。 名
 
 **serverFarmId** プロパティには、[resourceId](resource-group-template-functions-resource.md#resourceid) 関数が使用されています。 この関数によって、リソースの一意識別子が取得されます。 このケースでは、App Service プランの一意識別子を取得しています。 Web アプリは、ある決まった 1 つの App Service プランに関連付けられます。
 
-## <a name="deploy-the-template"></a>テンプレートのデプロイ
+## <a name="deploy-template"></a>テンプレートのデプロイ
 
-テンプレートをデプロイするには、Azure PowerShell または Azure CLI を使用します。
+テンプレートをデプロイするには、Azure CLI または Azure PowerShell を使用します。
 
 まだリソース グループを作成していない場合は、「[リソース グループの作成](template-tutorial-create-first-template.md#create-resource-group)」を参照してください。 この例では、**templateFile** 変数にテンプレート ファイルのパスが設定済みであることを想定しています ([1 つ目のチュートリアル](template-tutorial-create-first-template.md#deploy-template)を参照)。
 

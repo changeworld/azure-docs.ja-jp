@@ -1,20 +1,16 @@
 ---
-title: Azure クイックスタート - Resource Manager テンプレートを使用した VM のバックアップ
+title: クイックスタート - Resource Manager テンプレートによる VM バックアップ
 description: Azure Resource Manager テンプレートを使用して仮想マシンをバックアップする方法について説明します
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 5f027926a7b90ac99b04456ad3635466a6e27655
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 7218b496a3cd94362d27b1883fa5055b819768c3
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968785"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171930"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure に仮想マシンをバックアップする
 

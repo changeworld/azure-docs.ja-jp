@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する | Microsoft Docs
-description: Azure PowerShell を使用して Azure リソースのカスタム ロールを作成してみましょう。
+title: チュートリアル - Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する
+description: このチュートリアルで、PowerShell を使用して Azure リソースのカスタム ロールを作成してみましょう。
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 269bd74aca85ddbc2bafda30542c48f8ab391b32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 176e465163d92156308eda64c4187467cc10ee15
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158861"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419752"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する
 

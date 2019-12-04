@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326598"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185171"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure App Configuration イベントを Web エンドポイントにルーティングする
 
@@ -48,7 +48,7 @@ az group create --name <resource_group_name> --location westus
 
 ## <a name="create-an-app-configuration"></a>App Configuration の作成
 
-`<appconfig_name>` をアプリ構成の一意の名前に置き換え、`<resource_group_name>` を先ほど作成したリソース グループに置き換えます。 名前は、DNS 名として使用されるため、一意である必要があります。
+`<appconfig_name>` を App Configuration の一意の名前に置き換え、`<resource_group_name>` を先ほど作成したリソース グループに置き換えます。 名前は、DNS 名として使用されるため、一意である必要があります。
 
 ```azurecli-interactive
 az appconfig create \
@@ -80,7 +80,7 @@ az group deployment create \
 
 ## <a name="subscribe-to-your-app-configuration"></a>App Configuration へのサブスクライブ
 
-どのイベントを追跡し、どこにイベントを送信するかは、トピックをサブスクライブすることによって Event Grid に伝えます。 次の例では、作成したアプリ構成にサブスクライブし、Web アプリの URL をイベント通知のエンドポイントとして渡しています。 `<event_subscription_name>` をイベント サブスクリプションの名前に置き換えます。 `<resource_group_name>` と `<appconfig_name>` には、先ほど作成した値を使用します。
+どのイベントを追跡し、どこにイベントを送信するかは、トピックをサブスクライブすることによって Event Grid に伝えます。 次の例では、作成した App Configuration をサブスクライブし、Web アプリの URL をイベント通知のエンドポイントとして渡しています。 `<event_subscription_name>` をイベント サブスクリプションの名前に置き換えます。 `<resource_group_name>` と `<appconfig_name>` には、先ほど作成した値を使用します。
 
 Web アプリのエンドポイントには、サフィックス `/api/updates/` が含まれている必要があります。
 
@@ -126,7 +126,7 @@ az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-引き続きこのアプリ構成とイベント サブスクリプションを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
+引き続きこの App Configuration とイベント サブスクリプションを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 `<resource_group_name>` は、先ほど作成したリソース グループに置き換えます。
 

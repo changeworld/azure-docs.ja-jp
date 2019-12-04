@@ -6,13 +6,13 @@ ms.author: jonels
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 05/06/2019
-ms.openlocfilehash: 9d4389ed2c0cc5d7b632380fba691ae2e9a6b257
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/25/2019
+ms.openlocfilehash: 9ea0610811f6906526afe55d577e04a8decd5f49
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466758"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481661"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Azure Database for PostgreSQL とは
 Azure Database for PostgreSQL は、開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。 これは、コミュニティ バージョンのオープンソースの [PostgreSQL](https://www.postgresql.org/) データベース エンジンに基づいており、2 つのデプロイ オプション: Single Server と Hyperscale (Citus) で使用できます。
@@ -20,13 +20,14 @@ Azure Database for PostgreSQL は、開発者向けに構築された、Microsof
 ## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server
 Single Server デプロイ オプションでは、次のことを実現できます。
 
-- 追加コストなしの組み込みの高可用性 (99.99% SLA)
+- 追加コストなしの組み込みの[高可用性](concepts-high-availability.md) (99.99% SLA)
 - 包括的な従量課金制の料金を使用した、予測可能なパフォーマンス
-- 必要に応じて数秒以内に垂直スケーリング
-- スケーリングの影響をすばやく評価するための監視とアラート
-- 保存中や移動中の機密データのキュリティ保護
-- 自動バックアップと最大 35 日間のポイントインタイム リストア
+- 数秒以内に[必要に応じて垂直スケーリング](concepts-pricing-tiers.md)
+- サーバーを評価するための[監視とアラート](concepts-monitoring.md)
 - エンタープライズグレードのセキュリティとコンプライアンス
+- 保存中や転送中の機密データの[セキュリティ保護](concepts-security.md)
+- [自動バックアップとポイントインタイム リストア](concepts-business-continuity.md) (最大 35 日間)
+
 
 これらすべての機能は、ほとんど管理を必要とせず、いずれも追加費用なしで利用することができます。 これらにより、貴重な時間とリソースを仮想マシンとインフラストラクチャの管理に費やすことなく、迅速なアプリケーション開発や、製品化に要する時間の短縮に専念することができます。 新しいスキルを身に付けなくても、オープンソースのツールとプラットフォームを自由に選んでアプリケーションの開発を続けることができます。
 
@@ -42,11 +43,6 @@ Hyperscale (Citus) デプロイ オプションでは、次のことを実現で
 - マルチテナント アプリケーション、リアルタイムの運用分析、および高スループットのトランザクション ワークロードに対する優れたサポート
 
 PostgreSQL 向けにビルドされたアプリケーションでは、標準の[接続ライブラリ](./concepts-connection-libraries.md)と最小限の変更により、Hyperscale (Citus) に対して分散クエリを実行できます。
-
-## <a name="data-security"></a>データのセキュリティ
-Azure Database for PostgreSQL では、Azure データベース サービスの従来のデータ セキュリティが維持されています。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能を備えいます。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://azure.microsoft.com/overview/trusted-cloud/)をご覧ください。
-
-Azure Database for PostgreSQL サービスでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 バックアップを含むデータはディスク上で暗号化されます (ただし、クエリの実行中に作成された一時ファイルを除きます)。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。 既定で、Azure Database for PostgreSQL サービスでは、ネットワーク経由の移動データ、およびデータベースとクライアント アプリケーション間の移動データに対して、セキュリティで保護された接続が必要です。
 
 ## <a name="contacts"></a>連絡先
 Azure Database for PostgreSQL についての質問やご提案は、Azure Database for PostgreSQL チームにメール ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)) でお送りください。 このアドレスは、サポート チケットではなく一般的な質問用です。

@@ -1,8 +1,6 @@
 ---
-title: Java と VS Code を使用してクラウドに Kubernetes 開発空間を作成する
-titleSuffix: Azure Dev Spaces
+title: 'Kubernetes 開発空間を作成する: Visual Studio Code と Java'
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: stepro
 ms.author: stephpr
 ms.date: 09/26/2018
@@ -10,14 +8,14 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: ec1c2b385797b1219814e584a9db7da82d111e2d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1dc7005ac0d1cb520e4c0452196a2b47665f9b5c
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704086"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325826"
 ---
-# <a name="get-started-on-azure-dev-spaces-with-java"></a>Azure Dev Spaces での Java の使用
+# <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio Code と Java
 
 このガイドでは、以下の方法について説明します。
 

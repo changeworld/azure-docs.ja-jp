@@ -1,5 +1,5 @@
 ---
-title: Linux VM のシステム割り当てマネージド ID を使用して SAS 資格情報で Azure Storage にアクセスする
+title: チュートリアル:SAS 資格情報を使用して Azure Storage にアクセスする - Linux - Azure AD
 description: Linux VM のシステム割り当てマネージド ID を使用して、ストレージ アカウント アクセス キーではなく、SAS 資格情報で Azure Storage にアクセスする方法を示すチュートリアルです。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06fa483a34efa3a9486e04d894a3139d17b157b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 670ae329943610ba16411da3782bc1da079c6490
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273959"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183208"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル:Linux VM のシステム割り当て ID を使用して SAS 資格情報で Azure Storage にアクセスする
 
@@ -49,7 +49,7 @@ Service SAS は、アカウント アクセス キーを公開することなく
 まだお持ちでない場合は、この時点でストレージ アカウントを作成します。  この手順をスキップし、既存のストレージ アカウントのキーへのアクセス権を、VM のシステム割り当てマネージド ID に付与することもできます。 
 
 1. Azure Portal の左上隅にある **[+/新しいサービスの作成]** ボタンをクリックします。
-2. **[ストレージ]**、次に **[ストレージ アカウント]** をクリックすると、新しい [ストレージ アカウントの作成] パネルが表示されます。
+2. **[ストレージ]** 、次に **[ストレージ アカウント]** をクリックすると、新しい [ストレージ アカウントの作成] パネルが表示されます。
 3. 後で使用する、ストレージ アカウントの**名前**を入力します。  
 4. **[デプロイ モデル]** と **[アカウントの種類]** が "Resource manager" と "General purpose" にそれぞれ設定されている必要があります。 
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。
@@ -64,7 +64,7 @@ Service SAS は、アカウント アクセス キーを公開することなく
 1. 新たに作成したストレージ アカウントに戻ります。
 2. 左側のパネルで、[Blob service] の下の **[コンテナー]** リンクをクリックします。
 3. ページの上部にある **[+ コンテナー]** をクリックすると、[新しいコンテナー] パネルがスライドして現れます。
-4. コンテナーに名前を付け、アクセス レベルを選択して、**[OK]** をクリックします。 指定した名前は、後ほどチュートリアルで使用されます。 
+4. コンテナーに名前を付け、アクセス レベルを選択して、 **[OK]** をクリックします。 指定した名前は、後ほどチュートリアルで使用されます。 
 
     ![ストレージ コンテナーの作成](./media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
@@ -75,10 +75,10 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 1. 新たに作成したストレージ アカウントに戻ります。
 2. 左側のパネルの **[アクセス制御 (IAM)]** リンクをクリックします。  
 3. ページの上部にある **[+ ロール割り当ての追加]** をクリックして、VM 用に新しいロールの割り当てを追加します
-4. ページの右側で、**[ロール]** を ［ストレージ アカウントの共同作業者］ に設定します。 
-5. 次のドロップダウンで、**[アクセスの割り当て先]** を ［仮想マシン］ リソースに設定します。  
-6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、**[リソース グループ]** を [すべてのリソース グループ] に設定します。  
-7. 最後に、**[選択]** のドロップダウンで Linux 仮想マシンを選択し、**[保存]** をクリックします。  
+4. ページの右側で、 **[ロール]** を ［ストレージ アカウントの共同作業者］ に設定します。 
+5. 次のドロップダウンで、 **[アクセスの割り当て先]** を ［仮想マシン］ リソースに設定します。  
+6. 次に、適切なサブスクリプションが **[サブスクリプション]** ドロップダウンにリストされていることを確認してから、 **[リソース グループ]** を [すべてのリソース グループ] に設定します。  
+7. 最後に、 **[選択]** のドロップダウンで Linux 仮想マシンを選択し、 **[保存]** をクリックします。  
 
     ![イメージ テキスト](./media/msi-tutorial-linux-vm-access-storage/msi-storage-role-sas.png)
 
@@ -88,7 +88,7 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 
 これらの手順を完了するには、SSH クライアントが必要です。 Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/install_guide) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](../../virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
 
-1. Azure Portal で **[Virtual Machines]** にナビゲートして Linux 仮想マシンに移動し、**[概要]** ページの上部にある **[接続]** をクリックします。 VM に接続する文字列をコピーします。 
+1. Azure Portal で **[Virtual Machines]** にナビゲートして Linux 仮想マシンに移動し、 **[概要]** ページの上部にある **[接続]** をクリックします。 VM に接続する文字列をコピーします。 
 2. SSH クライアントを使用して VM に接続します。  
 3. 次に、**Linux VM** の作成時に追加した**パスワード**の入力を求められます。 パスワードを入力すると、正常にサインインできます。  
 4. CURL を使用して Azure Resource Manager のアクセス トークンを取得します。  

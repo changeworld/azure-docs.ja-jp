@@ -1,19 +1,19 @@
 ---
-title: Azure Migrate を使って Azure に移行するためにオンプレミスのマシンの準備を整える
-description: この記事では、Azure Migrate を使って Azure に移行するためにオンプレミスのマシンの準備を整える方法を説明します。
+title: Azure Migrate での移行に向けてマシンを準備する
+description: Azure Migrate での移行に向けてオンプレミス マシンを準備する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/03/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 61b4f41a0b36945413e45a357a5ca73ac75ceb98
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480121"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196435"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
@@ -46,8 +46,7 @@ ms.locfileid: "73480121"
 
 - VMware VM については、Azure Migrate Server Migration で[エージェントレスとエージェントベースの 2 種類の移行](server-migrate-overview.md)がサポートされています。 移行に関する VMware VM の要件およびサポートを確認してください ([エージェントレスの場合はこちら](migrate-support-matrix-vmware.md#migration---limitations)、[エージェントベースの場合はこちら](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements))。
 - Hyper-V VM については、[移行の要件とサポート](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements)を確認してください。
-- オンプレミスの物理マシンまたは他の仮想化されたサーバーについては、[移行の要件とサポート](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements)を確認してください。 これらの要件は、VMware VM の要件とほぼ同じです。
-
+- オンプレミスの物理マシンまたは他の仮想化されたサーバーについては、[移行の要件とサポート](migrate-support-matrix-physical.md)を確認してください。 
 
 
 

@@ -11,16 +11,16 @@ ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2ad83e51a11e08373f2132e861ec1c8f3ac20458
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 148f3f99aac5ce01bd88f1efaecb5821ae94f50a
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686017"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539161"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>クイック スタート:Azure PowerShell による Azure SQL Data Warehouse でのコンピューティングの一時停止と再開
 
-PowerShell を使用して、Azure SQL Data Warehouse でのコンピューティングを一時停止してコストを節約します。 データ ウェアハウスを使用する準備ができたら、[コンピューティングを再開](sql-data-warehouse-manage-compute-overview.md)します。
+Azure PowerShell を使用して、Azure SQL Data Warehouse でのコンピューティングを一時停止してコストを節約します。 データ ウェアハウスを使用する準備ができたら、[コンピューティングを再開](sql-data-warehouse-manage-compute-overview.md)します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 

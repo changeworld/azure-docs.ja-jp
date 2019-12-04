@@ -1,14 +1,14 @@
 ---
-title: UK OFFICIAL および UK NHS のブループリント サンプル - コントロール マッピング
+title: UK OFFICIAL および UK NHS ブループリント サンプルのコントロール
 description: UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy にマップされています。
 ms.date: 06/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 5ba7cf481276b236c9299e660acb9668feeea683
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.topic: sample
+ms.openlocfilehash: 79c39ee058a74bc740e72b75fe85882a89f9cd85
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037758"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546444"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング
 

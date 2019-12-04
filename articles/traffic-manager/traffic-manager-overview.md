@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2019
+ms.date: 11/23/2019
 ms.author: allensu
-ms.openlocfilehash: 95ef493ed44da8fd8372c11f15c3ab712961783e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 48ce72104c4cc08fc26777aa7111b705c57317f5
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071023"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420284"
 ---
 # <a name="what-is-traffic-manager"></a>Traffic Manager について
 Azure Traffic Manager は、世界中の Azure リージョン間でサービスへのトラフィックを最適に配分しつつ、高可用性と応答性を実現する DNS ベースのトラフィック ロード バランサーです。
@@ -26,7 +26,8 @@ Traffic Manager は、DNS を使用し、トラフィック ルーティング�
 
 >[!NOTE]
 > Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。 トランスポート層セキュリティ (TLS) プロトコル終端 ("SSL オフロード") または HTTP/HTTPS 要求によるアプリケーション レイヤーの処理が必要な場合は、「[Application Gateway](../application-gateway/application-gateway-introduction.md)」をご覧ください。 リージョン内での負荷分散が必要な場合は、[Load Balancer](../load-balancer/load-balancer-overview.md) に関するページを参照してください。 実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
-
+>
+> Azure の負荷分散オプションの比較については、「[Azure の負荷分散オプションの概要](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)」を参照してください。
 Traffic Managerには、次の機能が用意されています。
 
 ## <a name="increase-application-availability"></a>アプリケーションの可用性の向上

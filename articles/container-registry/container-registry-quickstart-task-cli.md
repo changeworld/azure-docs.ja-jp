@@ -1,20 +1,14 @@
 ---
-title: クイックスタート - Azure Container Registry でコンテナー イメージをビルドして実行する
+title: クイックスタート - コンテナー イメージをビルドして実行する
 description: Azure Container Registry を使用して、クラウド内でコンテナー イメージをオンデマンドでビルドして実行するタスクを迅速に実行します。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: quickstart
 ms.date: 04/02/2019
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: b97249aa61916975fa641d4620179be33e1d5276
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: f0b510607a4d0acf12e0b9caa43835c1cfe6a83d
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931549"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454956"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>クイック スタート:Azure Container Registry タスクを使用したコンテナー イメージのビルドと実行
 

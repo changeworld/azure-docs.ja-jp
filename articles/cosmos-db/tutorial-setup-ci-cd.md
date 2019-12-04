@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 05/23/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 28c7166c3569505d595c55178cf721ee432bd642
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 514c9655a1d303c444cc8c183ed6b73fd3422cf8
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024155"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533205"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 
@@ -150,6 +150,24 @@ Visual Studio Test タスクの [実行オプション] に移動します。 **
 ビルドが完了したら、ビルド タスクの後に Cosmos DB エミュレーターに対してすべてのテストが実行され、成功することを確認します。
 
 ![ビルドを保存して実行する](./media/tutorial-setup-ci-cd/buildComplete_1.png)
+
+## <a name="set-up-using-yaml"></a>YAML を使用して設定する
+
+YAML タスクを使用して CI/CD パイプラインを設定する場合は、次のコードに示すように YAML タスクを定義できます。
+
+```yml
+- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
+  displayName: 'Run Azure Cosmos DB Emulator'
+
+- script: yarn test
+  displayName: 'Run API tests (Cosmos DB)'
+  env:
+    HOST: $(CosmosDbEmulator.Endpoint)
+    # Hardcoded key for emulator, not a secret
+    AUTH_KEY: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+    # The emulator uses a self-signed cert, disable TLS auth errors
+    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+```
 
 ## <a name="next-steps"></a>次の手順
 

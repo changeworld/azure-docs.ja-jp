@@ -1,25 +1,17 @@
 ---
-title: Resource Manager テンプレートで Azure Key Vault を使用する
+title: テンプレートでの Azure Key Vault の使用
 description: Azure Key Vault を使用して Resource Manager テンプレートのデプロイ時にセキュリティで保護されたパラメーターの値を渡す方法について説明します
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 5dfc186e5d047de76e16ec145f5f0afe94b8d2f4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: ebb61bfd0fd1d39a9c1b17126fdd0e576e5629a2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533601"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326392"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>チュートリアル:Resource Manager テンプレートのデプロイで Azure Key Vault を統合する
 
@@ -47,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* [Resource Manager ツール拡張機能](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)を持つ [Visual Studio Code](https://code.visualstudio.com/)。
+* Visual Studio Code と Resource Manager ツール拡張機能。 「[Visual Studio Code を使って Azure Resource Manager テンプレートを作成する](./resource-manager-tools-vs-code.md)」を参照してください。
 * セキュリティを向上させるために、生成されたパスワードを VM 管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
 
     ```azurecli-interactive

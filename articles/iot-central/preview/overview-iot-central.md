@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 5e84b8777fc7671a19b6d8974f1309eb5af35bd3
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048025"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479703"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Azure IoT Central (プレビュー機能) とは?
 
@@ -51,7 +51,7 @@ Web UI では、デバイスの状態を監視し、ルールを作成し、ラ�
 - 配列スキーマの種類はサポートされていない。
 - アプリケーション テンプレートのエクスポートとアプリケーションのコピーはサポートされていない。
 - C デバイス SDK と Node.js のデバイス SDK、サービス SDK のみがサポートされている。
-- 北ヨーロッパ リージョンと米国中部リージョンでのみ利用できます。
+- 米国とヨーロッパの場所でのみ使用可能です。
 - デバイス機能モデルには、すべてのインターフェイスが同じファイル内にインラインで定義されている必要があります。
 
 ## <a name="personas"></a>ペルソナ
@@ -140,6 +140,10 @@ IoT Central ソリューションのデバイスは、オペレーターが IoT 
 ソリューション ビルダーは、接続デバイスからのデータ ストリーミングに対して作用するカスタム ルールやカスタム アクションを定義できます。 それらのルールをオペレーターがデバイス レベルで有効または無効にすることで、アプリケーション内のタスクを制御したり自動化したりすることができます。
 
 アプリケーションへのアクセスは、管理者が[ユーザー ロールとアクセス許可](howto-administer.md)を使って管理します。
+
+## <a name="quotas"></a>Quotas (クォータ)
+
+各 Azure サブスクリプションには既定のクォータが設けられており、IoT ソリューションの範囲に影響する可能性があります。 現在、IoT Central では、サブスクリプションでデプロイできるアプリケーションの数が 10 に制限されています。 この制限を引き上げる必要がある場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
 

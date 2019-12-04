@@ -1,14 +1,14 @@
 ---
 title: サンプル - ストレージ アカウントに対する HTTPS トラフィックの確認
-description: このサンプル ポリシー定義は、HTTPS トラフィックを使用するようストレージ アカウントに要求します。
+description: このサンプル ポリシー定義は、セキュリティで保護された HTTPS トラフィックのみを許可するように、すべての Azure ストレージ アカウントに要求します。
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: c61ccecb72d568ff3a1f4bfce542a2cbbf7d8330
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4d6b6f7e494d2f8c5278c546ead1f9697f245f38
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076235"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463591"
 ---
 # <a name="sample---ensure-https-traffic-only-for-storage-account"></a>サンプル - ストレージ アカウントのみに対する HTTPS トラフィックの確認
 

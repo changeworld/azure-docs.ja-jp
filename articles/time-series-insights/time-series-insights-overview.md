@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: overview
-ms.date: 10/10/2019
+ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa15e9c50cb5cd694a7a6adad352459536292b85
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 042e969b4a0dfea0910a0ef81fae264792cfd85f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012590"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327655"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights とは
 
@@ -84,13 +84,16 @@ Azure Time Series Insights では、すべての新しいイベントが行と�
 1. 参照データをアップロードします。 これは追加のサービスではありません。
 1. Time Series Insights エクスプローラーを使用して、数分でデータを表示できます。
 
-## <a name="time-series-insights-explorer"></a>Time Series Insights エクスプローラー
+## <a name="explorer"></a>エクスプローラー
 
-次の図は、Time Series Insights エクスプローラーを使用して表示された Time Series Insights データの例を示しています。
+Azure Time Series Insights エクスプローラーを使用して、データの傾向を表示、分析、および検出します。
 
-![Time Series Insights エクスプローラー](media/time-series-insights-explorer/explorer4.png)
+![Time Series Insights エクスプローラー](media/overview/time-series-insights-explorer-panel.png)
+
+[Azure Time Series Insights エクスプローラー](time-series-insights-explorer.md)を使用してデータから分析情報を引き出す方法について学習します。
 
 ## <a name="next-steps"></a>次の手順
 
 - Azure Time Series Insights 一般公開版の[無料デモンストレーション環境](./time-series-quickstart.md)を探索します。
+
 - [Time Series Insights 環境の計画](time-series-insights-environment-planning.md)方法について詳しく学習します。

@@ -1,5 +1,6 @@
 ---
-title: 仮想マシン ネットワーク トラフィック フィルターの問題を診断する - クイック スタート - Azure CLI | Microsoft Docs
+title: クイック スタート:VM ネットワーク トラフィック フィルターの問題を診断する - Azure CLI
+titleSuffix: Azure Network Watcher
 description: このクイック スタートでは、Azure Network Watcher の IP フローの確認機能を使って、仮想マシンのネットワーク トラフィック フィルターの問題を診断する方法について説明します。
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 460513e4818cbef8fca0cd1b84d69b3021afaab7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690423"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276073"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>クイック スタート:仮想マシン ネットワーク トラフィック フィルターの問題を診断する - Azure CLI
 
