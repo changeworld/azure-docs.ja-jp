@@ -46,10 +46,10 @@
         - name: 2. ユーザー データの抽出
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+        - name: 3. ユーザーの発話からセンチメントを取得する
+          href: tutorial-publish-settings.md
     - name: アプリのビルド
       items:
-        - name: ユーザーの発話からセンチメントを取得する
-          href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: 正規表現を使用して適切な形式のデータを取得する
           href: luis-quickstart-intents-regex-entity.md
         - name: 一覧を使用して完全なテキスト一致を取得する

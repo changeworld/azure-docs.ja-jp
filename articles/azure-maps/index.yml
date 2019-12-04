@@ -45,7 +45,7 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-maps/tutorial-geofence">ジオフェンスの設定</a>
-          - html: <a href="/azure-maps/tutorial-iot-hub-maps">空間分析</a>
+          - html: <a href="/azure/azure-maps/tutorial-iot-hub-maps">空間分析</a>
           - html: <a href=/azure/azure-maps/tutorial-ev-routing">Azure Notebooks を使用した EV ルーティング (Python)</a>
   - title: リファレンス
     items:
