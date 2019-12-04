@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 09/04/2019
-  ms.openlocfilehash: cbd3a4dbaa80119d72cd54efa7dd2dc751b91b40
-  ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+  ms.openlocfilehash: 2ea0087c000af2e57604109bb11b625d8ec75154
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/23/2019
-  ms.locfileid: "74422821"
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74773928"
 highlightedContent:
   items:
   - title: Azure IoT とは?
@@ -80,7 +80,7 @@ conceptualContent:
       itemType: quickstart
       text: コネクテッド ファクトリ ソリューションを試す
     footerLink:
-      url: ../iot-accelerators/index.md
+      url: ../iot-accelerators/index.yml
       text: 関連項目
   - title: エッジ デバイスでクラウド インテリジェンスを実行する
     links:
