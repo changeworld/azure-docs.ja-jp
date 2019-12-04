@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: サブネットのトラフィック ルーティングを構成する - Azure Traffic Manager'
-description: この記事では、ユーザーのサブネットから特定のエンドポイントにトラフィックをルーティングするように Traffic Manager を構成する方法について説明します。
+title: チュートリアル - Azure Traffic Manager を使用してサブネットのトラフィック ルーティングを構成する
+description: このチュートリアルでは、ユーザーのサブネットから特定のエンドポイントにトラフィックをルーティングするように Traffic Manager を構成する方法について説明します。
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: allensu
-ms.openlocfilehash: c2fbb4a85347c8ee68376069474add865cc06c43
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 00bc453ebb0e467f48bd886fc7c6b6c422693864
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048822"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420262"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
 

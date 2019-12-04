@@ -1,14 +1,14 @@
 ---
-title: ISO 27001 共有サービスのブループリント サンプル - デプロイ手順
+title: ISO 27001 共有サービス ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む ISO 27001 Shared Services ブループリント サンプルのデプロイ手順です。
-ms.date: 03/14/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 54f53e13e6d4561cb46f62318203c41c504ee60b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1ef96a3ccffa705290a90caf436fe1857d9442a7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037346"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546704"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルをデプロイする
 
