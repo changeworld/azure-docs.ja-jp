@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
+title: チュートリアル:Azure portal を使用して Azure Firewall のデプロイと構成を行う
 description: このチュートリアルでは、Azure portal を使用して Azure Firewall をデプロイおよび構成する方法を学習します。
 services: firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 124a87728a8d201c329b15d94ae7e61a225646ab
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468458"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195789"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -40,7 +40,7 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 > * テスト ネットワーク環境を設定する
 > * ファイアウォールをデプロイする
 > * 既定のルートを作成する
-> * [www.google.com](www.google.com) へのアクセスを許可するようにアプリケーションを構成する
+> * www.google.com へのアクセスを許可するようにアプリケーションを構成する
 > * 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
 > * ファイアウォールをテストする
 
@@ -183,7 +183,7 @@ VNet にファイアウォールをデプロイします。
 
 ## <a name="configure-an-application-rule"></a>アプリケーション ルールを構成する
 
-これは、[www.google.com](www.google.com) へのアウトバウンド アクセスを許可するアプリケーション ルールです。
+これは、www.google.com へのアウトバウンド アクセスを許可するアプリケーション ルールです。
 
 1. **Test-FW-RG** を開き、 **[Test-FW01]** ファイアウォールを選択します。
 2. **Test-FW01** ページの **[設定]** で、 **[ルール]** を選択します。
@@ -195,7 +195,7 @@ VNet にファイアウォールをデプロイします。
 8. **[ルール]** の **[ターゲットの FQDN]** で、 **[名前]** に「**Allow-Google**」と入力します。
 9. **[ソース アドレス]** に「**10.0.2.0/24**」と入力します。
 10. **[プロトコル:ポート]** に「**http, https**」と入力します。
-11. **[ターゲットの FQDN]** に「 **[www.google.com](www.google.com)** 」と入力します
+11. **[ターゲットの FQDN]** に「**www.google.com**」と入力します
 12. **[追加]** を選択します。
 
 Azure Firewall には、既定で許可されるインフラストラクチャ FQDN 用の組み込みのルール コレクションが含まれています。 これらの FQDN はプラットフォームに固有であり、他の目的には使用できません。 詳細については、[インフラストラクチャ FQDN](infrastructure-fqdns.md) に関する記事を参照してください。
