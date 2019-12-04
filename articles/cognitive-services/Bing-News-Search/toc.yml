@@ -1,5 +1,5 @@
 - name: Bing News Search のドキュメント
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: 概要
   expanded: true
   items:

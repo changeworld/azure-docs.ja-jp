@@ -1,20 +1,15 @@
 ---
-title: Azure Backup でのシステム状態のバックアップをトラブルシューティングする
+title: システム状態のバックアップをトラブルシューティングする
 description: この記事では、オンプレミスの Windows Server のシステム状態のバックアップに関する問題をトラブルシューティングする方法について説明します。
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-keywords: バックアップ方法; システム状態のバックアップ
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.author: dacurwin
-ms.openlocfilehash: 5901cbe1e30eb1ce2334a7b935a3629c66c24b8a
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 116f8f40193ea276c6150452b0aa6f2d2ce5bc6c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091584"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172623"
 ---
 # <a name="troubleshoot-system-state-backup"></a>システム状態のバックアップをトラブルシューティングする
 
