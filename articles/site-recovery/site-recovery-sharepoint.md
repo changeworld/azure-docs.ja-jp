@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622408"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706362"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する
 
@@ -82,7 +82,7 @@ Site Recovery はアプリケーションに依存しないため、サポート
 
 * Active Directory と DNS の保護に関するガイダンスは、[Protect Active Directory and DNS](site-recovery-active-directory.md)ドキュメントを参照してください。
 
-* SQL Server 上で動作するデータベース層の保護に関するガイダンスは、[Protect SQL Server](site-recovery-active-directory.md) ドキュメントを参照してください。
+* SQL Server 上で動作するデータベース層の保護に関するガイダンスは、[Protect SQL Server](site-recovery-sql.md) ドキュメントを参照してください。
 
 ## <a name="networking-configuration"></a>ネットワーク構成
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 5d5815467444afeb5f08380eea6868336044d237
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: be03684f89382f198c13540bbdfb3de5bf8513a6
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73892328"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404546"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>チュートリアル:デバイス機能モデルを使用して IoT プラグ アンド プレイ デバイスを作成し、ご利用の IoT Central アプリケーションに接続する
 
@@ -34,7 +34,7 @@ _デバイス機能モデル_ (DCM) には、[IoT プラグ アンド プレイ]
 
 このチュートリアルを完了するには、ご利用のローカル コンピューター上に次のソフトウェアをインストールする必要があります。
 
-* [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/): Visual Studio のインストール時に、**NuGet パッケージ マネージャー** コンポーネントと **C++ によるデスクトップ開発**ワークロードを必ず含めるようにしてください。
+* **C++ ビルド ツール**と **NuGet パッケージ マネージャー コンポーネント**のワークロードを利用する [Visual Studio 用のビルド ツール](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16)。 または、同じワークロードを利用する [Visual Studio (Community、Professional、または Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019、2017、2015 が既にインストールされている。
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/): **CMake** をインストールするときに、 **[Add CMake to the system PATH]\(CMake をシステム パスに追加する\)** オプションを選択します。
 * [Visual Studio Code](https://code.visualstudio.com/)。
@@ -55,23 +55,27 @@ VS Code で Azure IoT Tools 拡張機能パックをインストールするに�
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
-### <a name="get-azure-iot-device-sdk-for-c"></a>C 対応の Azure IoT device SDK を取得する
+このチュートリアルでは、[Vcpkg](https://github.com/microsoft/vcpkg) ライブラリ マネージャーを使用して、開発環境に Azure IoT C デバイス SDK をインストールします。
 
-Azure IoT C device SDK をビルドするのに使用できる開発環境を準備します。
+1. コマンド プロンプトを開きます。 次のコマンドを実行して Vcpkg をインストールします。
 
-1. コマンド プロンプトを開きます。 次のコマンドを実行して、[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) の GitHub リポジトリを複製します。
+    ```cmd
+    git clone https://github.com/Microsoft/vcpkg.git
+    cd vcpkg
 
-    ```cmd/sh
-    git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
+    .\bootstrap-vcpkg.bat
     ```
 
-    この操作は、完了するまでに数分かかります。
+    次に、ユーザー全体の[統合](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)をフックするために、次のコマンドを実行します。 このコマンドを初めて実行するときは、管理者権限が必要です。
 
-1. リポジトリのローカル複製のルートに `central_app` フォルダーを作成します。 デバイス モデル ファイルとデバイス コード スタブには、このフォルダーを使用します。
+    ```cmd
+    .\vcpkg.exe integrate install
+    ```
 
-    ```cmd/sh
-    cd azure-iot-sdk-c
-    mkdir central_app
+1. Azure IoT C device SDK の Vcpkg をインストールします。
+
+    ```cmd
+    .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
 ## <a name="generate-device-key"></a>デバイス キーの生成
@@ -89,7 +93,7 @@ Azure IoT C device SDK をビルドするのに使用できる開発環境を準
 1. コマンド プロンプトを開き、次のコマンドを実行してデバイス キーを生成します。
 
     ```cmd/sh
-    dps-keygen  -di:mxchip-01 -mk:{Primary Key from previous step}
+    dps-keygen -di:mxchip-001 -mk:{Primary Key from previous step}
     ```
 
     生成された_デバイス キー_をメモしておきます。この値は、このチュートリアルの後の手順で使用します。
@@ -98,7 +102,7 @@ Azure IoT C device SDK をビルドするのに使用できる開発環境を準
 
 このチュートリアルでは、MxChip IoT DevKit デバイス用のパブリック DCM を使用します。 コードを実行するために実際の DevKit デバイスは必要ありません。このチュートリアルでは、Windows で実行するコードをコンパイルします。
 
-1. VS Code を使用して `azure-iot-sdk-c\central_app` フォルダーを開きます。
+1. `central_app` という名前のフォルダーを作成し、VS Code で開きます。
 
 1. **Ctrl + Shift + P** キーを押してコマンド パレットを開き、「**IoT プラグ アンド プレイ**」と入力して、 **[Open Model Repository]\(モデル リポジトリを開く\)** を選択します。 **[Public repository]\(パブリック リポジトリ\)** を選択します。 VS Code に、パブリック モデル リポジトリ内の DCM の一覧が表示されます。
 
@@ -124,9 +128,11 @@ Azure IoT C device SDK をビルドするのに使用できる開発環境を準
 
 1. 使用する言語として、 **[ANSI C]** を選択します。
 
-1. 使用するプロジェクトの種類として **[CMake プロジェクト]** を選択します。 **[MXChip IoT DevKit Project]\(MXChip IoT DevKit プロジェクト\)** を選択しないでください。このオプションは、実際の DevKit デバイスがある場合に使用するものです。
-
 1. 接続方法として、 **[Via DPS (Device Provisioning Service) symmetric key]\(DPS (デバイス プロビジョニング サービス) の対称キーを使用する\)** を選択します。
+
+1. プロジェクト タイプとして **[CMake Project on Windows]\(Windows 上での CMake プロジェクト\)** を選択します。 **[MXChip IoT DevKit Project]\(MXChip IoT DevKit プロジェクト\)** を選択しないでください。このオプションは、実際の DevKit デバイスがある場合に使用するものです。
+
+1. SDK を含める方法として、 **[Via Vcpkg]\(Vcpkg 経由\)** を選択します。
 
 1. VS Code では新しいウィンドウが開き、`devkit_device` フォルダーに生成されたデバイス コード スタブ ファイルが表示されます。
 
@@ -136,35 +142,37 @@ Azure IoT C device SDK をビルドするのに使用できる開発環境を準
 
 デバイス SDK を使用して、生成されたデバイス コード スタブをビルドします。 ビルドしたアプリケーションにより、**MXChip IoT DevKit** デバイスがシミュレートされ、ご利用の IoT Central アプリケーションに接続されます。 アプリケーションでは、テレメトリとプロパティが送信され、コマンドが受け取られます。
 
-1. VS Code で、`azure-iot-sdk-c` フォルダー内の `CMakeLists.txt` ファイルを開きます。 必ず、`devkit_device` フォルダーではなく、`azure-iot-sdk-c` フォルダー内の `CMakeLists.txt` ファイルを開いてください。
+1. コマンド プロンプトで、`devkit_device` フォルダーに `cmake` サブディレクトリを作成し、そのフォルダーに移動します。
 
-1. コンパイル時にデバイス コード スタブ フォルダーが取り込まれるように、`CMakeLists.txt` ファイルの末尾に次の行を追加します。
-
-    ```txt
-    add_subdirectory(central_app/devkit_device)
-    ```
-
-1. `cmake` フォルダーを `azure-iot-sdk-c` フォルダー内に作成し、コマンド プロンプトでそのフォルダーに移動します。
-
-    ```cmd\sh
+    ```cmd
     mkdir cmake
     cd cmake
     ```
 
-1. 次のコマンドを実行して、デバイス SDK と生成されたコード スタブをビルドします。
+1. 次のコマンドを実行して、生成されたコード スタブをビルドします。 `<directory of your Vcpkg repo>` プレースホルダーを、**Vcpkg** リポジトリのコピーへのパスに置き換えます。
 
-    ```cmd\sh
-    cmake .. -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON
-    cmake --build . -- /m /p:Configuration=Release
+    ```cmd
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build . -- /p:Configuration=Release
     ```
 
-1. ビルドが正常に完了したら、同じコマンド プロンプトでご利用のアプリケーションを実行します。 `scopeid` と `primarykey` は、前に書き留めた値に置き換えてください。
+    Visual Studio 2017 または2015 を使用している場合、使用しているビルド ツールに基づいて CMake ジェネレーターを指定する必要があります。
 
-    ```cmd\sh
-    .\central_app\devkit_device\Release\devkit_device.exe scopeid primarykey mxchip-001
+    ```cmd
+    # Either
+    cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
+    # or
+    cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
     ```
 
-1. そのデバイス アプリケーションによって IoT Central アプリケーションへのデータの送信が開始されます。
+1. ビルドが正常に完了したら、同じコマンド プロンプトでご利用のアプリケーションを実行します。 `<scopeid>` と `<devicekey>` は、前に書き留めた値に置き換えてください。
+
+    ```cmd
+    .\Release\devkit_device.exe mxchip-001 <scopeid> <devicekey>
+    ```
+
+1. そのデバイス アプリケーションによって IoT Hub へのデータの送信が開始されます。 前のコマンドを初めて実行したときに `Error registering device for DPS` エラーが表示されることがあります。 このエラーが表示された場合は、コマンドを再試行してください。
 
 ## <a name="view-the-device"></a>デバイスの表示
 

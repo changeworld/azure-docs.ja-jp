@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 6af076f585e7fc9afe870acada744ead2d2e9118
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49a28fb779b7a48b598059e9494cb28e9ec57a6e
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672086"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405896"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>クイック スタート:.NET 用 Language Understanding (LUIS) 作成クライアント ライブラリ
 
@@ -35,11 +35,51 @@ ms.locfileid: "73672086"
 * Language Understanding (LUIS) ポータル アカウント - [無料で作成できます](https://www.luis.ai)。
 * 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
 
+
 ## <a name="setting-up"></a>設定
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUIS) スターター キーを取得する
 
-[スターター キー](luis-how-to-azure-subscription.md#starter-key)を取得し、そのキーについて `COGNITIVESERVICE_AUTHORING_KEY` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+LUIS 作成リソースを作成して、[スターター キー](luis-how-to-azure-subscription.md#starter-key)を取得します。 次の手順のために、キーとキーのリージョンを保持しておきます。
+
+### <a name="create-an-environment-variable"></a>環境変数を作成する
+
+キーとキーのリージョンを使用して、認証用に 2 つの環境変数を作成します。
+
+* `COGNITIVESERVICE_AUTHORING_KEY` - 要求を認証するためのリソース キー。
+* `COGNITIVESERVICE_REGION` - キーに関連付けられているリージョン。 たとえば、「 `westus` 」のように指定します。
+
+ご利用のオペレーティング システムの手順に従ってください。
+
+#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+```console
+setx COGNITIVESERVICE_AUTHORING_KEY <replace-with-your-authoring-key>
+setx COGNITIVESERVICE_REGION <replace-with-your-authoring-region>
+```
+
+環境変数を追加したら、コンソール ウィンドウを再起動します。
+
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source ~/.bashrc` を実行します。
+
+#### <a name="macostabunix"></a>[macOS](#tab/unix)
+
+次のように `.bash_profile` を編集し、環境変数を追加します。
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key> 
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source .bash_profile` を実行します。
+***
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
@@ -47,7 +87,7 @@ ms.locfileid: "73672086"
 
 1. コンソール ウィンドウ (cmd、PowerShell、Bash など) で、dotnet `new` コマンドを使用し、`language-understanding-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル (`Program.cs`) を使用する単純な "Hello World" C# プロジェクトが作成されます。 
 
-    ```console
+    ```dotnetcli
     dotnet new console -n language-understanding-quickstart
     ```
 
@@ -55,7 +95,7 @@ ms.locfileid: "73672086"
 
 1. 次を使用してアプリケーションをビルドできます。
 
-    ```console
+    ```dotnetcli
     dotnet build
     ```
 
@@ -74,7 +114,7 @@ ms.locfileid: "73672086"
 
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Language Understanding (LUIS) 作成クライアント ライブラリをインストールします。
 
-```console
+```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring --version 3.0.0
 ```
 
@@ -109,7 +149,7 @@ Language Understanding (LUIS) 作成クライアントは、認証を経て作�
 
 ## <a name="add-the-dependencies"></a>依存関係を追加する
 
-プロジェクト ディレクトリから、好みのエディターまたは IDE で **Program.cs** ファイルを開きます。 既存の `using` コードを次の `using` ディレクティブに置き換えます。
+プロジェクト ディレクトリから、好みのエディターまたは IDE で *Program.cs* ファイルを開きます。 既存の `using` コードを次の `using` ディレクティブに置き換えます。
 
 [!code-csharp[Using statements](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=Dependencies)]
 
@@ -188,9 +228,9 @@ LUIS アプリのモデルの中で最も重要なオブジェクトが、意図
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-アプリケーション ディレクトリから、dotnet `run` コマンドを使用してアプリケーションを実行します。
+自分のアプリケーション ディレクトリで `dotnet run` コマンドを使用してアプリケーションを実行します。
 
-```console
+```dotnetcli
 dotnet run
 ```
 

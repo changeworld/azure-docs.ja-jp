@@ -2,19 +2,16 @@
 title: Azure Logic Apps での定期的に実行されるタスクとワークフローのスケジュール設定
 description: Azure Logic Apps で自動的に繰り返し実行されるタスク、プロセス、ワークフローのスケジュール設定に関する概要
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: deli, klam, LADocs
+ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 31260be6c65f5948eba6b9c6228b5ead695278d1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 972b9360fa95b528bd955a07451e7347f3e1791d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350708"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792748"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Azure Logic Apps で自動化された定期的なタスク、プロセス、ワークフローのスケジュールを設定して実行する
 

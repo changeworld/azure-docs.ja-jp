@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:イメージを検索する - Bing Image Search REST API と PHP
+title: クイック スタート:REST API と PHP を使用してイメージを検索する - Bing Image Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、PHP を使って Bing Image Search REST API にイメージ検索要求を送信し、JSON 応答を受信します。
 services: cognitive-services
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 8/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a875a234836cc04ef1b6a52b1087a9dd70dbe4e4
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ef38013d2c5d7f41db0eaf8d6e444471387d7ff6
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034408"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327062"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>クイック スタート:Bing Image Search REST API と PHP を使用してイメージを検索する
 

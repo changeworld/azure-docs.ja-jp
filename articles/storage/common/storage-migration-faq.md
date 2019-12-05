@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 250cdedaa5155f1487cb842be492acd82c0f26b3
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090810"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666428"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -38,7 +38,7 @@ Automation スクリプトは、ストレージ コンテンツの操作では�
 
 **同じリージョン内の同じストレージ アカウントの 2 つのファイル共有間でデータをコピーする場合、料金は発生しますか?**
 
-いいえ。 このプロセスの料金は発生しません。
+No. このプロセスの料金は発生しません。
 
 **ストレージ アカウント全体を他のストレージ アカウントにバックアップするにはどうすればよいですか?**
 
@@ -194,7 +194,7 @@ AzCopy を使用して別のストレージ アカウントにデータをコピ
 
 **ストレージ アカウントのレプリケーションを GRS アカウントから LRS に変更する場合、前提条件はありますか?**
 
-いいえ。 
+No. 
 
 **Azure Files の冗長ストレージにアクセスするにはどうすればよいですか?**
 
@@ -237,7 +237,7 @@ Premium Storage は、Azure ファイル共有では使用できません。
 
 **クラシック ストレージ アカウントから Azure Resource Manager ストレージ アカウントに移行するにはどうすればよいですか?**
 
-**Move-AzStorageAccount** コマンドレットを使用できます。 このコマンドレットには複数の手順 (検証、準備、コミット) があります。 移行する前に、移行を検証できます。
+**Move-AzureStorageAccount** コマンドレットを使用できます。 このコマンドレットには複数の手順 (検証、準備、コミット) があります。 移行する前に、移行を検証できます。
 
 仮想マシンがある場合は、ストレージ アカウントのデータを移行する前に追加の手順を実行する必要があります。 詳細については、「[Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md)」をご覧ください。
 

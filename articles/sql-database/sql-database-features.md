@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 294fd39bfa78219df4bb0134aa744dd7515ff0f2
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 8f078bdfa1c6c106bb12116f30dc69abce42baa0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092143"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790470"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database の機能
 
@@ -35,7 +35,7 @@ Azure SQL Database は、データベースを管理し、高可用性を保証�
 | **SQL の機能** | **単一データベースとエラスティック プール** | **マネージド インスタンスとインスタンス プール** |
 | --- | --- | --- |
 | [常に暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | ○ - [証明書ストア](sql-database-always-encrypted.md)と[キー コンテナー](sql-database-always-encrypted-azure-key-vault.md)に関する記事を参照してください | ○ - [証明書ストア](sql-database-always-encrypted.md)と[キー コンテナー](sql-database-always-encrypted-azure-key-vault.md)に関する記事を参照してください |
-| [AlwaysOn 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [99.99 から 99.995% の可用性](sql-database-high-availability.md)がすべてのデータベースで保証されます。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください | [99.99% の可用性](sql-database-high-availability.md)がすべてのデータベースで保証され、[ユーザーが管理することはできません](sql-database-managed-instance-transact-sql-information.md#always-on-availability)。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。 別のリージョンにセカンダリ Always On Managed Instance を構成するには、[自動フェールオーバー グループ](sql-database-auto-failover-group.md)を使用します。 他の SQL Server インスタンスと単一データベースを Managed Instance のセカンダリとして使用することはできません。 |
+| [AlwaysOn 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [99.99 から 99.995% の可用性](sql-database-high-availability.md)がすべてのデータベースで保証されます。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください | [99.99% の可用性](sql-database-high-availability.md)がすべてのデータベースで保証され、[ユーザーが管理することはできません](sql-database-managed-instance-transact-sql-information.md#availability)。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。 別のリージョンにセカンダリ Always On Managed Instance を構成するには、[自動フェールオーバー グループ](sql-database-auto-failover-group.md)を使用します。 他の SQL Server インスタンスと単一データベースを Managed Instance のセカンダリとして使用することはできません。 |
 | [データベースの接続](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | いいえ | いいえ |
 | [監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [はい](sql-database-auditing.md)| [はい](sql-database-managed-instance-auditing.md)。ただし、いくつかの[相違点](sql-database-managed-instance-transact-sql-information.md#auditing)があります |
 | [Azure Active Directory (AAD) 認証](sql-database-aad-authentication.md) | はい。 AAD ユーザーのみ。 | はい。 サーバーレベルの AAD ログインを含む。 |

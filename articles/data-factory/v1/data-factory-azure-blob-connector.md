@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9aeef3a2f6a43346a7637c3e2497979632b04762
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5ef9774e63995e00e2a193f3d97b3bbe181f07c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683284"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703891"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -48,7 +48,7 @@ ms.locfileid: "73683284"
 > [!IMPORTANT]
 > コピー アクティビティによって、汎用 Azure Strage アカウントとコールド/ホット Blob Storage との間でデータをコピーできるようになりました。 このアクティビティは、**ブロック BLOB、追加 BLOB、ページ BLOB** を読み取りますが、**書き込みはブロック BLOB のみ**をサポートしています。 Azure Premium Storage はページ BLOB によって提供されるため、シンクとしてはサポートされていません。
 >
-> コピー アクティビティでは、コピー先にデータが正常にコピーされた後に、ソースからデータが削除されることはありません。 コピーが成功した後、コピー元データを削除する必要がある場合は、ファイルを削除する[カスタム アクティビティ](data-factory-use-custom-activities.md)を作成し、パイプライン内でそのアクティビティを使用します。 例については、「[Delete blob or folder sample on GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity)」(GitHub の BLOB またはフォルダーのサンプルを削除する) を参照してください。
+> コピー アクティビティでは、コピー先にデータが正常にコピーされた後に、ソースからデータが削除されることはありません。 コピーが成功した後、コピー元データを削除する必要がある場合は、ファイルを削除する[カスタム アクティビティ](data-factory-use-custom-activities.md)を作成し、パイプライン内でそのアクティビティを使用します。 例については、「[Delete blob or folder sample on GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity)」(GitHub の BLOB またはフォルダーのサンプルを削除する) を参照してください。
 
 ## <a name="get-started"></a>作業開始
 さまざまなツール/API を使用して、Azure BLOB ストレージとの間でデータを移動するコピー アクティビティでパイプラインを作成できます。

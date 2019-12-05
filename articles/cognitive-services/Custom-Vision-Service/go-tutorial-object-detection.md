@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Custom Vision SDK for Go を使用して物体検出プロジェクトを作成する
+title: クイック スタート:Go 用の SDK を使用して物体検出プロジェクトを作成する - Custom Vision
 titleSuffix: Azure Cognitive Services
 description: Go SDK を使用して、プロジェクトの作成、タグの追加、画像のアップロード、プロジェクトのトレーニング、物体の検出を行います。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
-ms.openlocfilehash: 050d0593f64c939c687601eb25677f2356f4ba51
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: d0734763ca1dd5ab3162ca00748361bee29cefc1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73519083"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378739"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>クイック スタート:Custom Vision Go SDK を使用して物体検出プロジェクトを作成する
 

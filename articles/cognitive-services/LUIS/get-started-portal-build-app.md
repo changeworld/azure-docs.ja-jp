@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669673"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278596"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
 
 [!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
-このクイック スタートでは、[LUIS ポータル](https://www.luis.ai)で新しいアプリを構築します。 最初に、アプリ、**意図**、**エンティティ**の基本パーツを作成します。 その後インタラクティブ テスト パネルでユーザーの発話の例を入力し、予測意図を取得することにより、アプリをテストします。
+このクイック スタートでは、LUIS ポータルで新しいアプリを構築します。 最初に、アプリ、**意図**、**エンティティ**の基本パーツを作成します。 その後インタラクティブ テスト パネルでユーザーの発話の例を入力し、予測意図を取得することにより、アプリをテストします。
 
 アプリの構築は無料で行うことができます。Azure のサブスクリプションは不要です。 アプリをデプロイする準備ができたら、[アプリをデプロイするためのクイック スタート](get-started-portal-deploy-app.md)を参照します。 この記事では、Azure Cognitive Services リソースを作成し、アプリに割り当てる方法が説明されています。
 

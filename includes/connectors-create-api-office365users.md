@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: ebae0fac5edc0bb79e6a19d8bdc741960f0b0e20
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/03/2016
+ms.openlocfilehash: 3ca8d631110f8b175e7dc68d61cc6da4ac87d375
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181433"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789522"
 ---
-### <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
+
 * [Office 365 Users](https://office365.com) アカウント  
 
 ロジック アプリで Office 365 Users アカウントを使用するには、Office 365 Users アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure Portal のロジック アプリ内から簡単に実行できます。  

@@ -1,19 +1,19 @@
 ---
-title: クイック スタート - Azure Spatial Anchors を使用して HoloLens アプリを作成する | Microsoft Docs
+title: クイック スタート:DirectX を使用して HoloLens アプリを作成する
 description: このクイック スタートでは、Spatial Anchors を使用して HoloLens アプリをビルドする方法について説明します。
 author: craigktreasure
-manager: aliemami
+manager: virivera
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7069a3c8b266938e974d1b7130a349e0c9b66b5c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 3814a12657b2634ede02eda83c7e7bcdf78cd7e2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111833"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277096"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>クイック スタート:Azure Spatial Anchors を使用して HoloLens アプリを C++/WinRT と DirectX で作成する
 

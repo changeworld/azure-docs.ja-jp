@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 1932ac571c94f9dc96240bdb63b44fe53c626f1f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 084ef1b81f7db5bd4a2d371e0c322211c0f0e142
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554738"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483495"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>クイック スタート:Node.js 用 Anomaly Detector クライアント ライブラリ
 
@@ -26,12 +26,13 @@ Node.js. 用 Anomaly Detector クライアント ライブラリは、次の目�
 * バッチ要求として、時系列データセット全体で異常を検出する
 * 時系列で最新のデータ ポイントの異常状態を検出する
 
-[リファレンスのドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) | [コード サンプル](https://github.com/Azure-Samples/anomalydetector)
+[リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/?view=azure-node-latest) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-anomalydetector) | [GitHub でコードを検索する](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/AnomalyDetector)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * 最新バージョンの [Node.js](https://nodejs.org/)
+* Anomaly Detector キーとエンドポイント
 
 ## <a name="setting-up"></a>設定
 
@@ -127,18 +128,4 @@ Anomaly Detector API を呼び出し、クライアントの [lastDetect()](http
 node index.js
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
-
-* [ポータル](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
-
-## <a name="next-steps"></a>次の手順
-
-> [!div class="nextstepaction"]
->[Azure Databricks を使用した異常検出のストリーム配信](../tutorials/anomaly-detection-streaming-databricks.md)
-
-* [Anomaly Detector API](../overview.md) とは
-* Anomaly Detector API を使用する場合の[ベスト プラクティス](../concepts/anomaly-detection-best-practices.md)。
-* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs) にあります。
+[!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

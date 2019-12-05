@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 04/26/2019
-ms.author: rosh
-ms.openlocfilehash: a6b625325e2adfe441d8abd2012f100780b659b4
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 7adca44f1710431ad1095cbd0da897d4c7c7f325
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910026"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689349"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>チュートリアル:C# 用の Bing Visual Search SDK で画像をトリミングする
 

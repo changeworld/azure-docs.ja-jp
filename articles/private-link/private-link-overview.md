@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: e33fce7b3fc19d6dfa83f95b6a9bcb43588945d1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 03fdd67adf5df440cafe4e7411064437b8ef89ac
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228072"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671557"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Azure Private Link とは (プレビュー)
 Azure Private Link を使用すると、仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、Azure Cosmos DB、SQL Database など) と Azure でホストされている顧客/パートナー サービスにアクセスできます。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 また、独自の [Private Link サービス](private-link-service-overview.md)を仮想ネットワーク (VNet) 内に作成し、そのサービスを顧客に非公開で配信することもできます。 Azure Private Link を使用した設定と消費のエクスペリエンスは、Azure PaaS サービス、顧客所有サービス、共有パートナー サービス間で一貫しています。
@@ -38,11 +38,11 @@ Azure Private Link には次のような利点があります。
 ## <a name="availability"></a>可用性 
  次の表に、Private Link サービスと、それらを使用可能なリージョンの一覧を示します。 
 
-|シナリオ  |サポートされているサービス   |対応リージョン | Status   |
-|---------|---------|---------|---------|
-|顧客所有サービス用の Private Link|Standard Load Balancer の背後にある Private Link サービス | すべてのパブリック リージョン  |  プレビュー  |
-|Azure PaaS サービス用の Private Link   | Azure Storage        |  すべてのパブリック リージョン      | プレビュー         |
-|  | Azure Data Lake Storage Gen2        |  すべてのパブリック リージョン      | プレビュー         |
+|シナリオ  |サポートされているサービス  |対応リージョン | Status  |
+|:---------|:-------------------|:-----------------|:--------|
+|顧客所有サービス用の Private Link|Standard Load Balancer の背後にある Private Link サービス | すべてのパブリック リージョン  | プレビュー  |
+|Azure PaaS サービス用の Private Link   | Azure Storage        |  すべてのパブリック リージョン      | プレビュー <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)。  |
+|  | Azure Data Lake Storage Gen2        |  すべてのパブリック リージョン      | プレビュー <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)。  |
 |  |  Azure SQL Database         | すべてのパブリック リージョン      |   プレビュー      |
 ||Azure SQL Data Warehouse| すべてのパブリック リージョン |プレビュー|
 ||Azure Cosmos DB| 米国中西部、米国西部、米国中北部 |プレビュー|

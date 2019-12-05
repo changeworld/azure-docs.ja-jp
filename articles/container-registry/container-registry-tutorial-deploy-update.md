@@ -1,20 +1,15 @@
 ---
-title: チュートリアル - geo レプリケーション Azure Container Registry に更新内容をプッシュする
+title: チュートリアル - geo レプリケートされているレジストリに更新内容をプッシュする
 description: 更新された Docker イメージを geo レプリケーション Azure コンテナー レジストリにプッシュした後、それらの変更が複数のリージョンで実行されている Web アプリに自動的にデプロイされたことを確認します。 3 部構成のシリーズの第 3 部。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 04/30/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: adf6348e3b4c5fa728a0289ccd5bd3f289872108
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931374"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454695"
 ---
 # <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>チュートリアル:更新されたコンテナー イメージをリージョンの Web アプリのデプロイ用に geo レプリケーション コンテナー レジストリにプッシュする
 

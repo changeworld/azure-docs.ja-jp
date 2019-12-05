@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 2b3fcba755c9ddb28e37400c5cba790ed0df41b9
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 0be50ef43774be6082a4ede330f65296094552de
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595123"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786845"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -54,7 +54,7 @@ AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変�
 |    |     |
 |--------|-----------|
 | **構文** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
-| **例** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/'` |
+| **例** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 このコマンドは、指定したコピー先にテスト データをアップロードすることで、パフォーマンス ベンチマークを実行します。 テスト データはメモリ内に生成され、コピー先にアップロードされた後、テストの完了後にコピー先から削除されます。 オプションのコマンド パラメーターを使用して、生成するファイルの数と、必要なサイズを指定できます。
 
@@ -65,7 +65,7 @@ AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変�
 `cap-mbps` フラグを使用して、スループット データ速度の上限を設定できます。 たとえば、次のコマンドはスループットを 1 秒あたり `10` メガビット (MB) に制限します。
 
 ```azcopy
-azcopy cap-mbps 10
+azcopy --cap-mbps 10
 ```
 
 小さいファイルを転送すると、スループットが低下することがあります。 `AZCOPY_CONCURRENCY_VALUE` 環境変数を設定することにより、スループットを向上させることができます。 この変数は、同時に発生することができる要求の数を指定します。  

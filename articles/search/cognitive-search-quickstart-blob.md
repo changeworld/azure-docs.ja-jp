@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:Azure portal でコグニティブ スキルセットを作成する
 titleSuffix: Azure Cognitive Search
-description: データ インポート ウィザードを使用して、インデックス作成パイプラインにコグニティブ スキルを追加します。 コグニティブ スキルには、光学式文字認識 (OCR) と自然言語処理が含まれます。
+description: このポータル クイックスタートでは、データ インポート ウィザードを使用して、コグニティブ スキルを Azure Cognitive Search のインデックス作成パイプラインに追加する方法について説明します。 スキルには、光学式文字認識 (OCR) と自然言語処理が含まれます。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 2280b718fe949384bb67b1b606ab143ddca8e077
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 5e891627b337a0a3a15d0ebfa2b9cc95f27feca4
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113354"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533117"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>クイック スタート:Azure Cognitive Search コグニティブ スキルセットを Azure portal で作成する
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. さまざまなタイプの小さいファイル セットで構成されている[サンプル データをダウンロード](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)します。 .zip ファイルを解凍します
 
-1. [Azure Storage アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)するか、ご自分の現在のサブスクリプションから[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 
+1. [Azure Storage アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)するか、[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 
 
    リージョンは、Azure Cognitive Search と同じものを選択します。 後で別のチュートリアルのナレッジ ストア機能を試してみたい場合は、アカウントの種類として StorageV2 (General Purpose V2) を選択してください。 それ以外の場合、種類はどれでもかまいません。
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![Azure Blob Storage 内のソース ファイル](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、同じサブスクリプションで[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
+1. [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このクイック スタート用には、無料のサービスを使用できます。
 
 <!-- 1. You are almost done with this resource, but before you leave these pages, use a link on the left navigation pane to open the **Access Keys** page. In many tutorials, especially those that use the REST API, you will need a connection string to retrieve data from Blob storage. A connection string looks similar to the following example: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net` -->
 
@@ -152,7 +152,7 @@ CTRL + F キーでは、特定の結果セット内のドキュメントの数�
 
 最後に、インデックスに対してクエリを実行することで内容を確認できることを学習しました。 最終的に、Azure Cognitive Search が提供するものは、[単純](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)または[完全に拡張されたクエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)のいずれかを使用してクエリを実行できる、検索可能なインデックスです。 エンリッチされたフィールドを含むインデックスは、他のフィールドと同様です。 標準または[カスタム アナライザー](search-analyzers.md)、[スコアリング プロファイル](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[シノニム](search-synonyms.md)、[ファセット フィルター](search-filters-facets.md)、地理空間検索、またはその他の Azure Cognitive Search 機能を組み込みたい場合は、確実に実行できます。
 
-## <a name="clean-up"></a>クリーンアップ
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
@@ -160,12 +160,12 @@ CTRL + F キーでは、特定の結果セット内のドキュメントの数�
 
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
+> [!Tip]
+> ここに示した手順をもう一度やってみたい場合や、別の AI エンリッチメントに関するチュートリアルに挑戦してみたい場合には、ポータルからインデクサーを削除してください。 インデクサーを削除すると、Cognitive Services の処理に関する 1 日あたりの無料トランザクションのカウンターがリセットされ、ゼロに戻ります。
+
 ## <a name="next-steps"></a>次の手順
 
 スキルセットは、ポータル、.NET SDK、または REST API を使用して作成できます。 さらに知識を深めたければ、Postman と他のサンプル データを使って REST API を試してみてください。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:AI エンリッチメントを使用して "非構造化コンテンツ" に構造を追加する](cognitive-search-tutorial-blob.md)
-
-> [!Tip]
-> ここに示した手順をもう一度やってみたい場合や、別の AI エンリッチメントに関するチュートリアルに挑戦してみたい場合には、ポータルからインデクサーを削除してください。 インデクサーを削除すると、Cognitive Services の処理に関する 1 日あたりの無料トランザクションのカウンターがリセットされ、ゼロに戻ります。

@@ -2,19 +2,16 @@
 title: 概要 - Azure Logic Apps のデプロイを自動化する
 description: Azure Logic Apps のデプロイを自動化するための Azure Resource Manager テンプレートについて説明します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: bc61e39a02d16827521758ca8248488e46c109b5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f5216181efcd6593fc9f85de0792b98a5d7fd0a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838095"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792558"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 

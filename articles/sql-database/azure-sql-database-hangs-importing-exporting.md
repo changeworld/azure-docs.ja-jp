@@ -9,12 +9,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 29edd7da42a5eb4586cd52cc0f913a56e199a5ba
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e1638c9779ca50507a1ce30dd3bbc9c18248964a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808274"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807070"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Azure SQL Database Import/Export サービスでのデータベースのインポートまたはエクスポートに時間がかかる
 
@@ -22,7 +22,7 @@ Azure SQL Database Import/Export サービスを利用するとき、処理に�
 
 ## <a name="azure-sql-database-importexport-service"></a>Azure SQL Database Import/Export サービス
 
-Azure SQL Database Import/Export サービスは、すべての Azure データセンターで実行される REST ベースの Web サービスです。 このサービスは、[[データベースのインポート]](https://docs.microsoft.com/azure/sql-database/sql-database-import#import-from-a-bacpac-file-in-the-azure-portal) オプションまたは [[エクスポート]](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) オプションを使用して Azure portal で SQL データベースを移動するときに呼び出されます。 このサービスでは、Azure SQL データベースと Azure Blob ストレージの間でインポート/エクスポートを実行するための、要求を待ち行列に入れるサービスや計算処理のサービスが無料で提供されます。
+Azure SQL Database Import/Export サービスは、すべての Azure データセンターで実行される REST ベースの Web サービスです。 このサービスは、[[データベースのインポート]](sql-database-import.md#using-azure-portal) オプションまたは [[エクスポート]](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) オプションを使用して Azure portal で SQL データベースを移動するときに呼び出されます。 このサービスでは、Azure SQL データベースと Azure Blob ストレージの間でインポート/エクスポートを実行するための、要求を待ち行列に入れるサービスや計算処理のサービスが無料で提供されます。
 
 インポート操作とエクスポート操作は従来の物理的なデータベース バックアップではなく、特別な BACPAC 形式を使用するデータベースの論理バックアップです。 BACPAC 形式を使用すると、Microsoft SQL Server と Azure SQL Database のバージョンごとに異なる可能性がある物理形式を使用する必要がなくなります。 そのため、これを使用して、データベースを SQL Server データベースおよび SQL データベースに安全に復元できます。
 

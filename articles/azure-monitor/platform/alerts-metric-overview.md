@@ -7,12 +7,12 @@ ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: b92b4233b6ecd8743f98f7f0dd13e07ad4c76c81
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: aa54b9ce23ffab266ed6403e3525ae1290d99cec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484255"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775723"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -133,7 +133,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 - サブスクリプション内の 1 つまたは複数のリソース グループ内の (1 つの Azure リージョン内の) すべての仮想マシン
 - 1 つのサブスクリプション内の (1 つの Azure リージョン内の) すべての仮想マシン
 
-複数のリソースを監視するメトリックのアラート ルールを作成する方法は、単一のリソースを監視する[他のメトリック アラートを作成する](alerts-metric.md)場合と同じです。 唯一の違いは、監視対象にするリソースをすべて選択する点です。 このようなルールは [Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources)を使って作成することもできます。 仮想マシンごとに個別の通知が届きます。
+複数のリソースを監視するメトリックのアラート ルールを作成する方法は、単一のリソースを監視する[他のメトリック アラートを作成する](alerts-metric.md)場合と同じです。 唯一の違いは、監視対象にするリソースをすべて選択する点です。 このようなルールは [Azure Resource Manager テンプレート](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)を使って作成することもできます。 仮想マシンごとに個別の通知が届きます。
 
 ## <a name="typical-latency"></a>一般的な待機時間
 

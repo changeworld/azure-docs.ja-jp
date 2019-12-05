@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure portal を使用して Azure Front Door 用の Web アプリケーション ファイアウォール ポリシーを作成する
+title: チュートリアル:Azure Front Door 用の WAF ポリシーを作成する - Azure portal
 description: このチュートリアルでは、Azure portal を使用して Web アプリケーション ファイアウォール (WAF) ポリシーを作成する方法について説明します。
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/07/2019
 ms.author: victorh
-ms.openlocfilehash: 602a8620ef35ea247c5865d97495ea43a7d7d93c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508906"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186720"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Front Door で Web アプリケーション ファイアウォール ポリシーを作成する
 

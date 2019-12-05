@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: f95a4e7e9084c304838b01bdfaceee261d8151cf
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4005b171ef61fa02821b4a32db3be26cfb94c9ff
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173225"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668075"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -176,7 +176,7 @@ Azure Backup のストレージ アーキテクチャを使用すると、高速
 
 保護されているインスタンスごとに作成できる復旧ポイントは最大 9,999 個です。 保護されたインスタンスとは、Azure へのバックアップを行うコンピューター、サーバー (物理または仮想)、またはワークロードです。
 
-- 詳細については、[バックアップと保有期間](./backup-overview.md#backup-and-retention)を参照してください。
+- 詳細については、[バックアップと保有期間](./backup-support-matrix.md)を参照してください。
 
 ### <a name="how-many-times-can-i-recover-data-thats-backed-up-to-azure"></a>Azure にバックアップされたデータを回復できる回数に制限はありますか。
 

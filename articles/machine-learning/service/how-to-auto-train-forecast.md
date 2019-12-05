@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 276e741a9462c19a3cba9ad1f9ac44e2da7ef1d3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cd1f516b3d3840262d9221db772f2c186650462e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580701"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807393"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "73580701"
 この記事では、Azure Machine Learning で自動化された機械学習を使用して、時系列予測回帰モデルをトレーニングする方法について説明します。 予測モデルの構成は、自動化された機械学習を使用した標準的な回帰モデルの設定に似ていますが、時系列データを操作するために特定の構成オプションと前処理の手順が存在します。 次の例では、以下の方法について説明します。
 
 * 時系列モデリング用のデータを準備する
-* [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) オブジェクトで特定の時系列パラメーターを構成する
+* [`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) オブジェクトで特定の時系列パラメーターを構成する
 * 時系列データで予測を実行する
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GW]
@@ -122,7 +122,7 @@ test_labels = test_data.pop(label).values
 |`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。||
 |`enable_dnn`|予測 DNN を有効にします。||
 
-詳しくは、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)をご覧ください。
+詳しくは、[リファレンス ドキュメント](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)をご覧ください。
 
 ディクショナリ オブジェクトとして時系列設定を作成します。 `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 ストア A と B 用の **2 つの個別の時系列グループ**がデータに対して作成されるように `grain_column_names` パラメーターを定義します。最後に、テスト セット全体に対して予測を行うために `max_horizon` を 50 に設定します。 `target_rolling_window_size` で予測ウィンドウを 10 期間に設定し、`target_lags` パラメーターで前方に 2 期間のターゲット値に 1 つのラグを指定します。
 

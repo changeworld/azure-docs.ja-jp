@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:PHP を使用して Bing Entity Search REST API に検索要求を送信する
+title: クイック スタート:PHP を使用して REST API に検索要求を送信する - Bing Entity Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、PHP を使って Bing Entity Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 5d57924a22ee097cfe7f492d18b8f84e7e658f41
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 2328313e15fafb3c0f96fdb77f3023afc1e4774f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478953"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323579"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>クイック スタート:PHP を使用して Bing Entity Search REST API に検索要求を送信する
 

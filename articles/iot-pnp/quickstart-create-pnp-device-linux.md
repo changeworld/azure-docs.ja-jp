@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 087f1d76aaab4b05425262e0c1fb87b168c99b95
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ff8303b6af73605aae82bae4d70f9648154f9744
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931217"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406229"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>クイック スタート:デバイス機能モデルを使用して IoT プラグ アンド プレイ プレビュー デバイスを作成する (Linux)
 
@@ -57,7 +57,7 @@ Microsoft の職場または学校アカウントを使用するか、Microsoft 
 
 ## <a name="prepare-an-iot-hub"></a>IoT ハブを準備する
 
-また、このクイックスタートを完了するには、ご利用の Azure サブスクリプション内に Azure IoT ハブが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 IoT ハブがない場合は、以下に作成する手順があります。
+また、このクイックスタートを完了するには、ご利用の Azure サブスクリプション内に Azure IoT ハブが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 使用する IoT ハブがまだない場合は、このセクションの残りの部分に従って作成してください。
 
 Azure CLI をローカルで使用している場合、`az` のバージョンは **2.0.75** 以降である必要があります。Azure Cloud Shell には最新バージョンが使用されています。 マシンにインストールされているバージョンを確認するには、`az --version` コマンドを使用します。
 
@@ -82,17 +82,33 @@ IoT ハブがない場合は、次のコマンドを使用して作成します�
 > [!IMPORTANT]
 > パブリック プレビュー中、IoT プラグ アンド プレイ機能は、**米国中部**、**北ヨーロッパ**、および**東日本**の各リージョンで作成された IoT ハブでのみご利用いただけます。
 
-次のコマンドを実行して、ご利用の IoT ハブにデバイス ID を作成します。 **YourIoTHubName** および **YourDevice** プレースホルダーを実際の名前に置き換えます。
+次のコマンドを実行して、ご利用の IoT ハブにデバイス ID を作成します。 **YourIoTHubName** および **YourDeviceID** のプレースホルダーを、お使いの _IoT Hub 名_および_デバイス ID_ に置き換えます。
 
 ```azurecli-interactive
-az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
+az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-次のコマンドを実行して、登録したばかりのデバイス用の "_デバイス接続文字列_" を取得します。
+次のコマンドを実行して、登録したデバイスの_デバイス接続文字列_を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
 ```
+
+## <a name="prepare-the-development-environment"></a>開発環境の準備
+
+このクイックスタートでは、[Vcpkg](https://github.com/microsoft/vcpkg) ライブラリ マネージャーを使用して、開発環境に Azure IoT C デバイス SDK をインストールします。
+
+シェルを開きます。 次のコマンドを実行して Vcpkg をインストールします。
+
+```bash
+cd ~
+git clone https://github.com/microsoft/vcpkg
+cd vcpkg
+./bootstrap-vcpkg.sh
+./vcpkg install azure-iot-sdk-c[public-preview,use_prov_client]
+```
+
+この操作は、完了するまでに数分かかります。
 
 ## <a name="author-your-model"></a>モデルを作成する
 
@@ -138,7 +154,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 1. プロジェクト テンプレートとして **[CMake Project on Linux]\(Linux 上の CMake テンプレート\)** を選択します。
 
-1. デバイス SDK を含める方法として **[Via Source Code]\(ソース コード経由\)** を選択します。
+1. デバイス SDK を含める方法として、 **[Via Vcpkg]\(Vcpkg 経由\)** を選択します。
 
 1. DCM ファイルと同じ場所に **sample_device** という名前の新しいフォルダーが作成され、生成されたデバイス コード スタブ ファイルがそこに格納されます。 VS Code によって、これらを表示する新しいウィンドウが開かれます。
     ![デバイス コード](media/quickstart-create-pnp-device-linux/device-code.png)
@@ -146,13 +162,6 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 ## <a name="build-and-run-the-code"></a>コードのビルドと実行
 
 デバイス SDK のソース コードを使用して、生成されたデバイス コード スタブをビルドします。 ビルドしたアプリケーションでは、IoT ハブに接続するデバイスのシミュレーションが行われます。 アプリケーションによりテレメトリとプロパティが送信され、コマンドが受け取られます。
-
-1. 次のコマンドを実行して、デバイス SDK のソース コードをダウンロードします。
-
-    ```bash
-    cd ~/pnp_app/sample_device
-    git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
-    ```
 
 1. **sample_device** アプリケーションの **CMake** ビルド フォルダーを作成します。
 
@@ -162,10 +171,10 @@ DCM とそれに関連するインターフェイスの用意ができたので�
     cd cmake
     ```
 
-1. CMake を実行し、SDK を使用してアプリをビルドします。
+1. CMake を実行し、SDK を使用してアプリをビルドします。 次のコマンドでは、ホーム フォルダーに **vcpkg** がインストールされていることを前提としています。
 
     ```bash
-    cmake .. -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -Dskip_samples:BOOL=ON
+    cmake .. -DCMAKE_TOOLCHAIN_FILE=~/vcpkg/scripts/buildsystems/vcpkg.cmake -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON
     cmake --build .
     ```
 
@@ -173,7 +182,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
     ```sh
     cd ~/pnp_app/sample_device/cmake
-    ./sample_device "<device connection string>"
+    ./sample_device "<YourDeviceConnectionString>"
     ```
 
 1. そのデバイス アプリケーションによって IoT Hub へのデータの送信が開始されます。
@@ -213,8 +222,10 @@ az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDevice>
 デバイスから送信されたすべてのプロパティを表示するには、次のコマンドを使用します。
 
 ```azurecli-interactive
-az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<Your company model repository connection string>"
+az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<YourCompanyModelRepositoryConnectionString>"
 ```
+
+[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

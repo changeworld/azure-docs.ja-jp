@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Bing News Search SDK for Node.js を使ってニュース検索を実行する
+title: クイック スタート:Node.js 用の SDK を使用してニュース検索を実行する - Bing News Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Bing News Search SDK for Node.js を使ってニュースを検索し、応答を処理します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c71d76e93eb1a121163d40fe61dcd5a8546d63f8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9bbad7685cf7d562189871bb5fa4a56d69287db4
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203355"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383899"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>クイック スタート:Bing News Search SDK for Node.js を使ってニュース検索を実行する
 

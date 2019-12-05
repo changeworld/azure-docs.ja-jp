@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 05dcff2276a799b1debc76e4f85fbbac6606eb59
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 47ee1682118fd761d55625428e3522de92b9e38a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682545"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703400"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
 > [!NOTE]
@@ -47,7 +47,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
 ## <a name="prerequisites"></a>前提条件
 * Azure Blob Storage: この実験では、Azure Blob Storage (GRS) を使用して、TPC-H テスト データセットを格納します。  Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)」を参照してください。
-* [TPC-H](http://www.tpc.org/tpch/) データ: テスト データセットとして TPC-H を使用します。  これを行うには、TPC-H ツールキットの `dbgen` を使用する必要があります。これにより、データセットを簡単に生成できます。  `dbgen` のソース コードを [TPC Tools](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) からダウンロードして自分でコンパイルするか、コンパイル済みのバイナリを [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools) からダウンロードします。  次のコマンドで dbgen.exe を実行して、10 個のファイルに分散される `lineitem` テーブルの 1 TB のフラット ファイルを生成します。
+* [TPC-H](http://www.tpc.org/tpch/) データ: テスト データセットとして TPC-H を使用します。  これを行うには、TPC-H ツールキットの `dbgen` を使用する必要があります。これにより、データセットを簡単に生成できます。  `dbgen` のソース コードを [TPC Tools](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) からダウンロードして自分でコンパイルするか、コンパイル済みのバイナリを [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools) からダウンロードします。  次のコマンドで dbgen.exe を実行して、10 個のファイルに分散される `lineitem` テーブルの 1 TB のフラット ファイルを生成します。
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
   * `Dbgen -s 1000 -S **2** -C 10 -T L -v`

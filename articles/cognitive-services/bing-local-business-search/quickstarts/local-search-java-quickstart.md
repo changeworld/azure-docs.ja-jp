@@ -1,5 +1,5 @@
 ---
-title: クイックスタート - Java を使用して Bing Local Business Search API にクエリを送信する
+title: クイック スタート - Java を使用して API にクエリを送信する - Bing Local Business Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを利用して、Azure Cognitive Service である Bing Local Business Search API への要求の送信を開始します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.author: aahi
-ms.openlocfilehash: eee5bc8d9d2587251b5564ecbd9f0ab1eaa44fcc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 46187aa1d4e0670b45aeeafd643f541ab90fb9a7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075674"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326745"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>クイック スタート:Java を使用して Bing Local Business Search API にクエリを送信する
 

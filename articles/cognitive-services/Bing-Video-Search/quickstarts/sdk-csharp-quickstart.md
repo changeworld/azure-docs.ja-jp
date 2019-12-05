@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Bing Video Search SDK for C# を使用して動画を検索する
+title: クイック スタート:C# 用の SDK を使用して動画を検索する - Bing Video Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Bing Video Search SDK for C# を使用して動画の検索要求を送信します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 3673f18ff38b2ae98180f470b9f76f1fc57ee8b6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d29aef614b8308dfeba8da7925bd2880c25fe72d
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442537"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383757"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>クイック スタート:Bing Video Search SDK for C# で動画の検索を実行する
 

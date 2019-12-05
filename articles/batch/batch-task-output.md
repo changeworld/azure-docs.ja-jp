@@ -13,12 +13,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d03fd754e5a8e2872063b8a10bd1293b94d8f3b6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d81f89d5e4c3fb797cfc935764bb80853660ee2c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094428"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707540"
 ---
 # <a name="persist-job-and-task-output"></a>ジョブとタスク出力を保持する
 
@@ -50,17 +50,17 @@ Batch サービス API を使用してタスク出力を保持することの詳
 
 ### <a name="use-the-batch-file-conventions-library-for-net"></a>.NET 用の Batch ファイル規則ライブラリの使用
 
-Batch では、Azure Storage 内でのタスク出力ファイルの名前付けについて、任意選択の規則セットが定義されています。 これらの規則については、[Batch ファイル規則の標準に関するページ](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)を参照してください。 ファイル規則の標準では、特定の出力ファイルについて Azure Storage 内での保存先コンテナーと BLOB パスの名前を決める際に、ジョブとタスクの名前を基にします。
+Batch では、Azure Storage 内でのタスク出力ファイルの名前付けについて、任意選択の規則セットが定義されています。 これらの規則については、[Batch ファイル規則の標準に関するページ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)を参照してください。 ファイル規則の標準では、特定の出力ファイルについて Azure Storage 内での保存先コンテナーと BLOB パスの名前を決める際に、ジョブとタスクの名前を基にします。
 
 出力データ ファイルの名前付けでファイル規則の標準を採用するかどうかは、開発者が自分で決めることができます。 また、保存先コンテナーや BLOB の名前を、自分で自由に付けることもできます。 出力ファイルの名前付けにファイル規則の標準を使用した場合は、[Azure Portal][portal] で出力ファイルを表示できます。
 
-C# と .NET で Batch ソリューションを作成している開発者は、[.NET 用のファイル規則ライブラリ][nuget_package]を使用し、[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)に従って、タスクのデータを Azure Storage アカウントに保持することができます。 ファイル規則ライブラリでは、出力ファイルの Azure Storage への移動や、移動先のコンテナーと BLOB の名前付けが、よく知られた方法で処理されます。
+C# と .NET で Batch ソリューションを作成している開発者は、[.NET 用のファイル規則ライブラリ][nuget_package]を使用し、[Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)に従って、タスクのデータを Azure Storage アカウントに保持することができます。 ファイル規則ライブラリでは、出力ファイルの Azure Storage への移動や、移動先のコンテナーと BLOB の名前付けが、よく知られた方法で処理されます。
 
 .NET 用のファイル規則ライブラリを使用してタスク出力を保持することの詳細については、「[.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持](batch-task-output-file-conventions.md)」を参照してください。
 
 ### <a name="implement-the-batch-file-conventions-standard"></a>Batch ファイル規則の標準を実装する
 
-.NET 以外の言語を使用している場合は、開発者が自分のアプリケーション内で [Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)を実装することができます。
+.NET 以外の言語を使用している場合は、開発者が自分のアプリケーション内で [Batch ファイル規則の標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files#conventions)を実装することができます。
 
 実証済みの名前付けスキームを使用する必要がある場合、または Azure Portal でタスク出力を表示する必要がある場合は、ファイル規則の名前付け標準を自分で実装することもできます。
 

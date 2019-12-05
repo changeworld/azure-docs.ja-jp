@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 07/12/2019
 ms.author: dech
-ms.openlocfilehash: b907ad3206f26ee73a41bf98f349107e0431c802
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 7471544e920266c8d23ccc18f4370bbdf66c11a2
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71129480"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707284"
 ---
 # <a name="azure-cosmos-db-net-standard-sdk-for-sql-api-download-and-release-notes"></a>SQL API 用の Azure Cosmos DB .NET Standard SDK:ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "71129480"
 |---|---|
 |**SDK のダウンロード**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)|
 |**API ドキュメント**|[.NET API リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
-|**サンプル**|[.NET コード サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples)|
+|**サンプル**|[.NET コード サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage)|
 |**作業開始**|[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)|
 |**Web アプリ チュートリアル**|[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)|
 |**現在サポートされているフレームワーク**|[Microsoft .NET Standard 2.0](/dotnet/standard/net-standard)|

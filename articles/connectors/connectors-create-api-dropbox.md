@@ -1,22 +1,18 @@
 ---
-title: Dropbox に接続する - Azure Logic Apps
+title: Dropbox に接続する
 description: Dropbox REST API と Azure Logic Apps を使用して、ファイルをアップロードおよび管理します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/01/2019
 tags: connectors
-ms.openlocfilehash: 4e0689454ec074348fcbc775373a48d6825cfac4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: b38f9b9626e5eec0272256aacc71f7503a006dd6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050981"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789815"
 ---
 # <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Dropbox 内のファイルをアップロードおよび管理する
 

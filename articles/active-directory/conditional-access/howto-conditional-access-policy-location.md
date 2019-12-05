@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64b7add9ddb1734d763c46e93d6788ce21a2c321
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 26299ca12071b521fc825a0b1ab1425f24af67e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150876"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803599"
 ---
 # <a name="conditional-access-block-access-by-location"></a>条件付きアクセス:場所ごとにアクセスをブロックする
 
@@ -25,7 +25,7 @@ ms.locfileid: "73150876"
 ## <a name="define-locations"></a>場所を定義する
 
 1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
-1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
 1. **[新しい場所]** を選択します。
 1. 場所に名前を付けます。
 1. その場所または**国/地域**を構成する、外部からアクセス可能な特定の IPv4 アドレス範囲がわかっている場合は、 **[IP 範囲]** を選択します。
@@ -38,7 +38,7 @@ ms.locfileid: "73150876"
 ## <a name="create-a-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する
 
 1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
-1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
 1. **[新しいポリシー]** を選択します。
 1. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。
 1. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。

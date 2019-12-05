@@ -1,24 +1,42 @@
 - name: IoT ソリューション アクセラレータのドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
-  expanded: true
   items:
     - name: IoT ソリューション アクセラレータとは
       href: about-iot-accelerators.md
-    - name: AzureIoTSolution.com
+    - name: AzureIoTSolutions.com
       href: iot-accelerators-permissions.md
-- name: リモート監視
-  items:
-    - name: 概要
+    - name: リモート監視
       href: iot-accelerators-remote-monitoring-sample-walkthrough.md
+    - name: 産業用 IoT
+      href: overview-iot-industrial.md
       items:
-        - name: アーキテクチャの選択
-          href: iot-accelerators-remote-monitoring-architectural-choices.md
-    - name: クイック スタート
-      items:
-        - name: リモート監視ソリューションを試す
-          href: quickstart-remote-monitoring-deploy.md
-    - name: チュートリアル
+        - name: OPC Twin とは
+          href: overview-opc-twin.md
+        - name: OPC Vault とは
+          href: overview-opc-vault.md
+        - name: OPC Publisher とは
+          href: overview-opc-publisher.md
+        - name: コネクテッド ファクトリとは
+          href: iot-accelerators-connected-factory-features.md
+    - name: デバイスのシミュレーション
+      href: iot-accelerators-device-simulation-overview.md
+    - name: 予測的なメンテナンス
+      href: iot-accelerators-predictive-walkthrough.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: リモート監視ソリューションを試す
+      href: quickstart-remote-monitoring-deploy.md
+    - name: コネクテッド ファクトリ ソリューションを試す
+      href: quickstart-connected-factory-deploy.md
+    - name: デバイス シミュレーション ソリューションを試す
+      href: quickstart-device-simulation-deploy.md
+    - name: 予測メンテナンス ソリューションを試す
+      href: quickstart-predictive-maintenance-deploy.md
+- name: チュートリアル
+  items:
+    - name: リモート監視
       items:
         - name: IoT デバイスの監視
           href: iot-accelerators-remote-monitoring-monitor.md
@@ -34,7 +52,31 @@
           href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
         - name: エッジでの異常の検出
           href: iot-accelerators-remote-monitoring-edge.md
-    - name: ハウツー ガイド
+    - name: デバイスのシミュレーション
+      items:
+        - name: シミュレーションの作成と実行
+          href: iot-accelerators-device-simulation-create-simulation.md
+        - name: シミュレートされたカスタム デバイスの作成
+          href: iot-accelerators-device-simulation-create-custom-device.md
+- name: 概念
+  items:
+    - name: リモート監視
+      items:
+        - name: アーキテクチャ
+          href: iot-accelerators-remote-monitoring-architectural-choices.md
+        - name: デバイス モデル スキーマ
+          href: iot-accelerators-remote-monitoring-device-schema.md
+        - name: デバイス モデルの動作
+          href: iot-accelerators-remote-monitoring-device-behavior.md
+    - name: 産業用 IoT
+      items:
+        - name: OPC Twin アーキテクチャ
+          href: overview-opc-twin-architecture.md
+        - name: OPC Vault アーキテクチャ
+          href: overview-opc-vault-architecture.md
+- name: ハウツー ガイド
+  items:
+    - name: リモート監視
       items:
         - name: ソリューションのデプロイ
           items:
@@ -107,51 +149,7 @@
               href: iot-accelerators-remote-monitoring-rbac-tsi.md
         - name: SIM データの統合
           href: iot-accelerators-remote-monitoring-telefonica-sim.md
-    - name: リファレンス
-      items:
-        - name: デバイス モデル スキーマ
-          href: iot-accelerators-remote-monitoring-device-schema.md
-        - name: デバイス モデルの動作
-          href: iot-accelerators-remote-monitoring-device-behavior.md
-    - name: リソース
-      items:
-        - name: 開発者向けリファレンス ガイド (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
-        - name: 開発者向けリファレンス ガイド (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
-        - name: 開発者向けトラブルシューティング ガイド
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
-        - name: GitHub リポジトリ (.NET)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
-        - name: GitHub リポジトリ (Java)
-          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
-        - name: リモート監視に関する FAQ
-          href: iot-accelerators-faq-rm-v2.md
-- name: 産業用 IoT
-  items:
-    - name: 概要
-      items:
-        - name: 産業用 IoT とは
-          href: overview-iot-industrial.md
-        - name: OPC Twin とは
-          href: overview-opc-twin.md
-        - name: OPC Vault とは
-          href: overview-opc-vault.md
-        - name: OPC Publisher とは
-          href: overview-opc-publisher.md
-        - name: コネクテッド ファクトリとは
-          href: iot-accelerators-connected-factory-features.md
-    - name: クイック スタート
-      items:
-        - name: コネクテッド ファクトリ ソリューションを試す
-          href: quickstart-connected-factory-deploy.md
-    - name: 概念
-      items:
-        - name: OPC Twin アーキテクチャ
-          href: overview-opc-twin-architecture.md
-        - name: OPC Vault アーキテクチャ
-          href: overview-opc-vault-architecture.md
-    - name: ハウツー ガイド
+    - name: 産業用 IoT
       items:
         - name: 接続済みファクトリ
           items:
@@ -185,27 +183,7 @@
               href: howto-opc-publisher-configure.md
             - name: OPC Publisher の実行
               href: howto-opc-publisher-run.md
-    - name: リソース
-      items:
-        - name: GitHub リポジトリ
-          href: 'https://github.com/Azure/azure-iot-connected-factory'
-        - name: 接続済みファクトリに関する FAQ
-          href: iot-accelerators-faq-cf.md
-- name: デバイスのシミュレーション
-  items:
-    - name: 概要
-      href: iot-accelerators-device-simulation-overview.md
-    - name: クイック スタート
-      items:
-        - name: デバイス シミュレーション ソリューションを試す
-          href: quickstart-device-simulation-deploy.md
-    - name: チュートリアル
-      items:
-        - name: シミュレーションの作成と実行
-          href: iot-accelerators-device-simulation-create-simulation.md
-        - name: シミュレートされたカスタム デバイスの作成
-          href: iot-accelerators-device-simulation-create-custom-device.md
-    - name: ハウツー ガイド
+    - name: デバイスのシミュレーション
       items:
         - name: 既存の IoT ハブの使用
           href: iot-accelerators-device-simulation-choose-hub.md
@@ -217,44 +195,10 @@
           href: iot-accelerators-device-simulation-protobuf.md
         - name: カスタム Docker イメージのデプロイ
           href: iot-accelerators-device-simulation-deploy-image.md
-    - name: リソース
-      items:
-        - name: 開発者向けリファレンス ガイド
-          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
-        - name: GitHub リポジトリ
-          href: 'https://github.com/Azure/device-simulation-dotnet'
-- name: 予測メンテナンス
-  items:
-    - name: 概要
-      href: iot-accelerators-predictive-walkthrough.md
-    - name: クイック スタート
-      items:
-        - name: 予測メンテナンス ソリューションを試す
-          href: quickstart-predictive-maintenance-deploy.md
-    - name: リソース
-      items:
-        - name: GitHub リポジトリ
-          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
-- name: 参照アーキテクチャ
-  items:
-    - name: 概要
-      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
-    - name: パートナー実装
-      items:
-        - name: Intel コネクテッド ロジスティクス プラットフォーム
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
-        - name: Edge Dynamometer Analysis
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
-        - name: デジタル サイネージ ソリューション
-          href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
 - name: 関連項目
   items:
-    - name: 解決方法
-      items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-accelerators
+    - name: IoT Central
+      href: 'https://docs.microsoft.com/microsoft-iot-central/'
     - name: プラットフォーム サービス
       items:
         - name: IoT Hub
@@ -277,8 +221,47 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: リモート監視
+      items:
+        - name: 開発者向けリファレンス ガイド (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: 開発者向けリファレンス ガイド (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
+        - name: 開発者向けトラブルシューティング ガイド
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+        - name: GitHub リポジトリ (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: GitHub リポジトリ (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: リモート監視に関する FAQ
+          href: iot-accelerators-faq-rm-v2.md
+    - name: 産業用 IoT
+      items:
+        - name: GitHub リポジトリ
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: 接続済みファクトリに関する FAQ
+          href: iot-accelerators-faq-cf.md
+    - name: デバイスのシミュレーション
+      items:
+        - name: 開発者向けリファレンス ガイド
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+        - name: GitHub リポジトリ
+          href: 'https://github.com/Azure/device-simulation-dotnet'
+    - name: 予測メンテナンスに関する GitHub リポジトリ
+      href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
+    - name: 参照アーキテクチャ
+      href: iot-accelerators-architecture-overview.md
+      items:
+        - name: ダウンロード
+          href: 'https://aka.ms/iotrefarchitecture'
+        - name: パートナー実装
+          items:
+            - name: Intel コネクテッド ロジスティクス プラットフォーム
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
+            - name: Edge Dynamometer Analysis
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
+            - name: デジタル サイネージ ソリューション
+              href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
     - name: FAQ
       href: iot-accelerators-faq.md
     - name: スタック オーバーフロー

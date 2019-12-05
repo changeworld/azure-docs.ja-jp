@@ -40,6 +40,8 @@
       href: virtual-wan-custom-ipsec-portal.md
     - name: ユーザー VPN 用の証明書を構成する (ポイント対サイト)
       href: certificates-point-to-site.md
+    - name: ユーザー VPN 用に Azure AD 認証を構成する (プレビュー)
+      href: virtual-wan-point-to-site-azure-ad.md
     - name: 自動化を構成する (Virtual WAN パートナー)
       href: virtual-wan-configure-automation-providers.md
     - name: ルーティングを構成する

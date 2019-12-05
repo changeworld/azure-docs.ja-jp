@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 09/28/2019
+ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: ce70260c6033d22b20675d6f3872c2ffa6368252
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b646035f6a952f679059abab86d94179f447f9ff
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495618"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406198"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Front Door 上の Azure Web アプリケーション ファイアウォール
 
@@ -92,16 +92,16 @@ WAF ポリシーの検出モードでは、既定の規則セットが既定で�
 カスタム規則は常に、既定の規則セット内の規則が評価される前に適用されます。 要求がカスタム規則と一致した場合、対応する規則アクションが適用されて、要求はブロックされるか、またはバックエンドにパススルーされ、それ以上カスタム規則または既定の規則セット内の規則が呼び出されることはありません。 さらに、WAF ポリシーから既定の規則セットを削除することもできます。
 
 
-### <a name="bot-protection-rule-preview"></a>ボット保護規則 (プレビュー)
+### <a name="bot-protection-rule-set-preview"></a>ボット保護規則セット (プレビュー)
 
-マネージド ボット保護規則セットを WAF に対して有効にし、既知の悪意のある IP アドレスからの要求に対してカスタム アクションを実行することができます。 この IP アドレスのソースは、Microsoft の脅威インテリジェンス フィードです。 [インテリジェント セキュリティ グラフ](https://www.microsoft.com/security/operations/intelligence)は、Microsoft の脅威インテリジェンスを動作させる機能です。Azure Security Center を含む複数のサービスによって使用されます。
+マネージド ボット保護規則セットを WAF に対して有効にし、既知のボット カテゴリからの要求に対してカスタム アクションを実行することができます。 サポートされているボット カテゴリは、悪性ボット、良性ボット、不明のボットの 3 つです。 ボットの署名は、WAF プラットフォームによって管理され、動的に更新されます。 悪性ボットの悪意のある IP アドレスのソースは、Microsoft の脅威インテリジェンス フィードです。 [インテリジェント セキュリティ グラフ](https://www.microsoft.com/security/operations/intelligence)は、Microsoft の脅威インテリジェンスを動作させ、Azure Security Center を含む複数のサービスによって使用されます。 良性ボットには、検証済みの検索エンジンが含まれます。 不明のカテゴリには、追加のボット グループが含まれます。 さまざまな種類のボットに対してブロック、許可、ログ、またはリダイレクトを実行するカスタム アクションを設定できます。
 
 ![ボット保護規則セット](../media/afds-overview/botprotect2.png)
 
 > [!IMPORTANT]
-> ボット保護規則セットは、現在パブリック プレビュー段階であり、プレビューのサービス レベル契約が付属します。 特定の機能はサポート対象ではなく、機能が制限されることがあります。  詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+> ボット保護規則セットは、現在パブリック プレビュー段階であり、プレビュー サービス レベル アグリーメントで提供されます。 特定の機能はサポート対象ではなく、機能が制限されることがあります。  詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
 
-ボット保護が有効になっている場合、悪意のあるボット クライアントの IP に一致する着信要求は FrontdoorWebApplicationFirewallLog ログに記録されます。 WAF ログにはストレージ アカウント、イベント ハブ、またはログ分析からアクセスできます。 
+ボット保護が有効になっている場合、ボット規則に一致する着信要求は FrontdoorWebApplicationFirewallLog ログに記録されます。 WAF ログにはストレージ アカウント、イベント ハブ、またはログ分析からアクセスできます。
 
 ## <a name="configuration"></a>構成
 

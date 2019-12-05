@@ -13,12 +13,12 @@ author: nabhishek
 ms.author: abnarain
 manager: craigg
 robots: noindex
-ms.openlocfilehash: 698ca6736af86358de13f6deae8f1e2dba92f46e
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 8826dd51766ee0d1059ab73046e7e078f27a8e03
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990647"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703325"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -722,7 +722,7 @@ Data Factory サービスによって、Azure Batch に **adf-poolname: job-xxx*
 カスタム アクティビティのコードを更新する場合は、カスタム アクティビティを構築し、新しいバイナリを含む zip ファイルを BLOB ストレージにアップロードします。
 
 ## <a name="appdomain-isolation"></a>Appdomain の分離
-Data Factory ランチャーによって使用されるアセンブリ バージョン (WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x など) には制約されないカスタム アクティビティを作成する方法を示す[クロス AppDomain のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample)を参照してください。
+Data Factory ランチャーによって使用されるアセンブリ バージョン (WindowsAzure.Storage v4.3.0、Newtonsoft.Json v6.0.x など) には制約されないカスタム アクティビティを作成する方法を示す[クロス AppDomain のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample)を参照してください。
 
 ## <a name="access-extended-properties"></a>拡張プロパティへのアクセス
 次のサンプルに示すようにアクティビティ JSON の拡張プロパティを宣言できます。

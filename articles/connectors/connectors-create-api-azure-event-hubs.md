@@ -1,22 +1,18 @@
 ---
-title: Azure Event Hubs に接続する - Azure Logic Apps
+title: Azure Event Hubs に接続する
 description: Azure Event Hubs および Azure Logic Apps でイベントを管理および監視します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 24f66782821f372f5c045dbb82db24fa8b6ad482
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 77ff24f3af77e012b9ae9bc702d6a5a2639a5b11
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051085"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789941"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs および Azure Logic Apps でイベントを監視および送受信する
 

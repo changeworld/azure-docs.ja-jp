@@ -28,15 +28,31 @@
       href: tutorial-custom-role-cli.md
 - name: 概念
   items:
-    - name: ロール定義について
-      href: role-definitions.md
     - name: Azure リソース向けの PIM
       href: pim-azure-resource.md
     - name: Azure 管理の条件付きアクセス
       href: conditional-access-azure-management.md
 - name: ハウツー ガイド
   items:
-    - name: アクセスを管理する
+    - name: ロール定義の一覧表示
+      items:
+        - name: 概要
+          href: role-definitions.md
+        - name: ロール定義の一覧表示
+          href: role-definitions-list.md
+        - name: 組み込みのロール
+          href: built-in-roles.md
+    - name: ロールの割り当ての一覧表示
+      items:
+        - name: ポータル
+          href: role-assignments-list-portal.md
+        - name: PowerShell
+          href: role-assignments-list-powershell.md
+        - name: CLI
+          href: role-assignments-list-cli.md
+        - name: REST API
+          href: role-assignments-list-rest.md
+    - name: ロールの割り当てを追加または削除する
       items:
         - name: ポータル
           href: role-assignments-portal.md
@@ -50,9 +66,9 @@
           href: role-assignments-rest.md
         - name: Template
           href: role-assignments-template.md
-    - name: アクセス拒否
+    - name: 拒否割り当てを一覧表示する
       items:
-        - name: 拒否割り当て
+        - name: 概要
           href: deny-assignments.md
         - name: ポータル
           href: deny-assignments-portal.md
@@ -60,7 +76,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: カスタム ロール
+    - name: カスタム ロールを作成する
       items:
         - name: 概要
           href: custom-roles.md
@@ -72,7 +88,7 @@
           href: custom-roles-rest.md
     - name: アクティビティ ログを表示する
       href: change-history-report.md
-    - name: すべてのサブスクリプションを管理するためにアクセス権を昇格する
+    - name: アクセス権を昇格する
       href: elevate-access-global-admin.md
     - name: 従来の管理者
       href: classic-administrators.md
@@ -80,8 +96,6 @@
       href: troubleshooting.md
 - name: リファレンス
   items:
-    - name: 組み込みのロール
-      href: built-in-roles.md
     - name: リソース プロバイダー操作
       href: resource-provider-operations.md
     - name: RBAC の制限

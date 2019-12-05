@@ -4,15 +4,15 @@ description: Azure Migrate サービスの最新の情報や最近行われた�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/18/2019
+ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b3b8e24e7d84e492aeaba64573b6e909707bc5a5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 63b6783a2f36d5bc9e84ce8291e7025b27359b6c
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185751"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666088"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 

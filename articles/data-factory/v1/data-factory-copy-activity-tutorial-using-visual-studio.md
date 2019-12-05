@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3d14b4a821f91486c396d5dae516d3a545c02321
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49f08721c0459e6bc74d440d63090fd8bad55a36
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682871"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703604"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>チュートリアル:コピー アクティビティがあるパイプラインを Visual Studio で作成する
 > [!div class="op_single_selector"]
@@ -508,7 +508,7 @@ Azure Data Factory のエンティティを VS で発行するときに、その
 実際にデプロイすると、JSON ファイルに指定されているプロパティの値が構成ファイルの値を使用して設定された後、Azure Data Factory サービスにエンティティがデプロイされます。   
 
 ## <a name="use-azure-key-vault"></a>Azure Key Vault の使用
-接続文字列などの機密データをコード リポジトリにコミットすることは、お勧めしません。また、多くの場合、セキュリティ ポリシーに違反します。 機密情報を Azure Key Vault に格納し、Data Factory エンティティの発行中に使用する方法について学習するには、GitHub の [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFSecurePublish) サンプルを参照してください。 Visual Studio の Secure Publish 拡張機能を使用すると、機密情報を Key Vault に格納することができ、リンクされたサービスやデプロイ構成ではそれらへの参照だけが指定されます。 これらの参照は、Data Factory エンティティを Azure に発行するときに解決されます。 これらのファイルは、機密情報を公開せずに、ソース リポジトリにコミットできます。
+接続文字列などの機密データをコード リポジトリにコミットすることは、お勧めしません。また、多くの場合、セキュリティ ポリシーに違反します。 機密情報を Azure Key Vault に格納し、Data Factory エンティティの発行中に使用する方法について学習するには、GitHub の [ADF Secure Publish](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFSecurePublish) サンプルを参照してください。 Visual Studio の Secure Publish 拡張機能を使用すると、機密情報を Key Vault に格納することができ、リンクされたサービスやデプロイ構成ではそれらへの参照だけが指定されます。 これらの参照は、Data Factory エンティティを Azure に発行するときに解決されます。 これらのファイルは、機密情報を公開せずに、ソース リポジトリにコミットできます。
 
 
 ## <a name="next-steps"></a>次の手順

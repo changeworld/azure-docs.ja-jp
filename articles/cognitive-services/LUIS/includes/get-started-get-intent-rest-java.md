@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: cac3ee99598f8bcb29bd15c60063159b51f71923
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4e2fb81b19694136896b1dee07c3bd74c63fc01b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125536"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414579"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit Standard Edition)
 * [Visual Studio Code](https://code.visualstudio.com/) または任意の IDE。
-* パブリック アプリ ID: df67dcdb-c37d-46af-88e1-8b97951ca1c2
+* パブリック アプリ ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS キーを取得する
 
@@ -27,7 +27,7 @@ ms.locfileid: "74125536"
 
 ## <a name="get-intent-programmatically"></a>プログラムで意図を取得する
 
-Java を使用して、予測エンドポイント GET [API](https://aka.ms/luis-apim-v3-prediction) にクエリを実行し、予測結果を取得します。
+Java を使用して、[予測エンドポイント](https://aka.ms/luis-apim-v3-prediction)のクエリを実行し、予測結果を取得します。
 
 1. `lib` という名前のサブディレクトリを作成し、次の Java ライブラリにコピーします。
 
@@ -36,7 +36,6 @@ Java を使用して、予測エンドポイント GET [API](https://aka.ms/luis
     * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
 1. `Predict.java` という名前のファイルに次のコードをコピーしてクラスを作成します。
-
 
     ```java
     import java.io.*;
@@ -108,10 +107,10 @@ Java を使用して、予測エンドポイント GET [API](https://aka.ms/luis
 1. 次の値を置き換えます。
 
     * `YOUR-KEY` (スターター キーを使用)
-    * `YOUR-ENDPOINT` (エンドポイントを使用) (例、`westus2.api.cognitive.microsoft.com`)
+    * `YOUR-ENDPOINT` を、ご利用のエンドポイントに。 たとえば、「 `westus2.api.cognitive.microsoft.com` 」のように入力します。
 
 
-1. Java プログラムをコマンド ラインからコンパイルします。 
+1. コマンド ラインから Java プログラムをコンパイルします。 
 
     ```console
     javac -cp ":lib/*" Predict.java
@@ -123,7 +122,7 @@ Java を使用して、予測エンドポイント GET [API](https://aka.ms/luis
     java -cp ":lib/*" Predict
     ```
 
-1. JSON 形式の予測応答を確認します。
+1. JSON として返される予測応答を確認します。
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}

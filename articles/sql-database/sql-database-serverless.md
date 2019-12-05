@@ -4,19 +4,19 @@ description: この記事では、新しいサーバーレス コンピューテ
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
+ms.custom: test
 ms.devlang: ''
 ms.topic: conceptual
-author: moslake
+author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 11/04/2019
-ms.openlocfilehash: fecc394080f54f023529ed2da8c9690c38c1da08
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/03/2019
+ms.openlocfilehash: d1f3bf6cb1467d0bb4906ff2409e72828b22cd20
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818272"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807019"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 

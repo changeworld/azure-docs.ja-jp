@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Digital Twins をデプロイする
+title: チュートリアル:プレビュー環境と空間グラフをデプロイする - Azure Digital Twins |Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Digital Twins のインスタンスをデプロイし、空間リソースを構成する方法について説明します。
 services: digital-twins
 ms.author: alinast
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 4d4e7e47b82c46cca53fab0540a4867031eaab85
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 20174a4eafb4e72fb62eeff6df2d129b91016b9e
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107746"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383022"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>チュートリアル:Azure Digital Twins プレビューをデプロイし、空間グラフを構成する
 

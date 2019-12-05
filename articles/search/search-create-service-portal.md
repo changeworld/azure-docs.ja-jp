@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:ポータルで Search サービスを作成する
 titleSuffix: Azure Cognitive Search
-description: Azure portal で Azure Cognitive Search リソースをプロビジョニングします。 リソース グループ、リージョン、および SKU または価格レベルを選択します。
+description: このポータル クイックスタートでは、Azure portal 内で Azure Cognitive Search リソースを設定する方法を説明します。 リソース グループ、リージョン、および SKU または価格レベルを選択します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 75a7cce55627a981d0d0b0f23a119fac6de920ef
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ec794f66866f9773f8b7c0fc57b644d8a13d697a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112123"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534560"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>クイック スタート:ポータルで Azure Cognitive Search サービスを作成する
 
@@ -41,7 +41,7 @@ PowerShell をお好みですか? Azure Resource Manager [サービス テンプ
 
 ## <a name="choose-a-subscription"></a>サブスクリプションを選択します。
 
-最初の手順として、サブスクリプション ID とリソース グループを設定します。 サブスクリプションが複数ある場合には、データまたはファイル ストレージ サービスがあるものを 1 つ選択します。 Azure Cognitive Search では、"[*インデクサー*](search-indexer-overview.md)" 経由でインデックスが作成されている場合に、Azure テーブルおよび Blob Storage、SQL Database、Azure Cosmos DB の自動検出が可能ですが、これは同じサブスクリプション内のサービスのみで有効です。
+サブスクリプションが複数ある場合には、Search サービスに使用するものを選択します。
 
 ## <a name="set-a-resource-group"></a>リソース グループを設定する
 

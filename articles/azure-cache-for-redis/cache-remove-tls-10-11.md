@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 585828855cdbd3a585ced1aa6803482c3f26f0f4
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 74fcce412b2673a3ec9e4809cef018f1afbc3530
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121580"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812844"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Azure Cache for Redis での使用から TLS 1.0 と 1.1 を削除する
 
@@ -33,7 +33,7 @@ ms.locfileid: "74121580"
 
 Redis .NET クライアントは、.NET Framework 4.5.2 以前では既定で以前の TLS バージョンを使用し、.NET Framework 4.6 以降では最新の TLS バージョンを使用します。 古いバージョンの .NET Framework を使用している場合は、手動で TLS 1.2 を有効にできます。
 
-* **StackExchange.Redis:** 接続文字列に `ssl=true` と `sslprotocls=tls12` を設定します。
+* **StackExchange.Redis:** 接続文字列に `ssl=true` と `sslprotocols=tls12` を設定します。
 * **ServiceStack.Redis:** [ServiceStack.Redis の手順](https://github.com/ServiceStack/ServiceStack.Redis/pull/247)に従ってください。
 
 ### <a name="net-core"></a>.NET Core

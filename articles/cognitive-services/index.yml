@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 11/04/2019
-  ms.openlocfilehash: 15a89528ce53eabe7ed70ca66a514b71ef5e5307
-  ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+  ms.openlocfilehash: fae1321f70d538dcacde83cadd83f5cb15155459
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/27/2019
-  ms.locfileid: "74554949"
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74775525"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -111,34 +111,37 @@ conceptualContent:
   - title: Search
     summary: お使いのアプリに Bing Search API を組み込み、1 つの API 呼び出しで何十億もの Web ページ、画像、動画、ニュースをくまなく調べる機能を実装します。
     links:
-    - url: ./Bing-Autosuggest/index.yml
+    - url: ./Bing-web-search/index.yml
+      itemType: overview
+      text: Bing Search API のハブ ページ
+    - url: ./Bing-Autosuggest/get-suggested-search-terms.md
       itemType: overview
       text: Autosuggest Search
-    - url: ./bing-custom-search/index.yml
+    - url: ./bing-custom-search/overview.md
       itemType: overview
       text: カスタム検索
-    - url: ./bing-entities-search/index.yml
+    - url: ./bing-entities-search/overview.md
       itemType: overview
       text: Entity Search
-    - url: ./bing-image-search/index.yml
+    - url: ./bing-image-search/overview.md
       itemType: overview
       text: Image Search
-    - url: ./bing-local-business-search/index.yml
+    - url: ./bing-local-business-search/overview.md
       itemType: overview
       text: Local Business Search (プレビュー)
-    - url: ./bing-news-search/index.yml
+    - url: ./bing-news-search/search-the-web.md
       itemType: overview
       text: News Search
-    - url: ./bing-spell-check/index.yml
+    - url: ./bing-spell-check/overview.md
       itemType: overview
       text: スペル チェック
-    - url: ./Bing-Video-Search/index.yml
+    - url: ./Bing-Video-Search/overview.md
       itemType: overview
       text: Video Search
-    - url: ./bing-visual-search/index.yml
+    - url: ./bing-visual-search/overview.md
       itemType: overview
       text: Visual Search
-    - url: ./bing-web-search/index.yml
+    - url: ./bing-web-search/overview.md
       itemType: overview
       text: Web Search
   - title: Cognitive Service コンテナー
@@ -159,9 +162,6 @@ conceptualContent:
     - url: ./containers/docker-compose-recipe.md
       itemType: get-started
       text: Docker Compose を使用して複数のコンテナーをデプロイする
-    - url: ./containers/container-image-tags.md
-      itemType: reference
-      text: Cognitive Services コンテナー イメージ タグ
     - url: ./containers/container-faq.md
       itemType: reference
       text: Cognitive Services コンテナーに関する FAQ
@@ -170,12 +170,10 @@ additionalContent:
   - items:
     - title: その他のリソース
       links:
-      - text: サポートとヘルプのオプション
-        url: cognitive-services-support-options.md
       - text: Azure CLI
         url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
       - text: PowerShell
-        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-3.0.0#cognitive_services
+        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
     - title: REST API
       links:
       - text: Cognitive Services Management

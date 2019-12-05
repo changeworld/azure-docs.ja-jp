@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 28666aaac4ec221acca00d937d54a753a4e6a055
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1c375370ec6bae2775ad758688825b92cbbbca50
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172680"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407042"
 ---
 ::: zone target="docs"
 
@@ -123,28 +123,7 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 2. デバイスへのデータ コピーが完了し、 **[発送準備]** の実行が正常終了することを確認します。
 3. デバイスの電源をオフにして、ケーブルを取り外します。
 4. デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-5. メールで Quantium Solutions に集荷を依頼します。 Azure portal で指定されたサービス参照番号を参照してください。 次のメール テンプレートを使用します: - *TAU コードが記載された返送用の配送先住所ラベルの依頼*。 メールには、必ず次の詳細情報を含めてください。 
-
-    ```
-    To: Azure@quantiumsolutions.com
-    Subject: Pickup request for Azure｜Reference number：XXX XXX XXX
-    Body: 
-    - Company name：
-    - Address:
-    - Contact name:
-    - Contact number:
-    - Requested pickup date: mm/dd
-    ```
-6. Quantium Solutions Australia から返送ラベルがメールで送られてきます。
-7. 返品ラベルを印刷して、梱包箱に貼り付けます。
-8. 荷物を宅配業者に渡します。
-
-必要に応じて、Quantium Solutions のサポート (Azure@quantiumsolutions.com) にメールまたは電話でお問い合わせいただくことができます。
-
-電話でご注文についてお問い合わせする場合:
-
-- 最初に集荷に関するメールを送信します。
-- 電話で注文の名前を伝えます。
+5. [DHL のリンク](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference)からオンラインで集荷を予約します。
 
 ::: zone target="chromeless"
 

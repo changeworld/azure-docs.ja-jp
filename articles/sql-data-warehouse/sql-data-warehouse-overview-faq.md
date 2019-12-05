@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f7b4f926bb9611d87c67276f754a6b596850b59d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 9e64d184ef0fd120d1bc64ce274ee882b7938df0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645604"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708649"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (旧称 SQL DW) のよく寄せられる質問
 
@@ -83,10 +83,6 @@ A. 多くの機能がサポートされていますが、サポートされな�
 
 ## <a name="tooling-and-administration"></a>ツールと管理
 
-Q. Visual Studio のデータベース プロジェクトはサポートされますか。
-
-A. 現在、Visual Studio ではデータベース プロジェクトはサポートされていません。 この機能のサポート要求に投票したい場合は、User Voice の[データベース プロジェクト機能要求に関するページ]をご覧ください。
-
 Q. REST API は SQL Analytics でサポートされていますか
 
 A. はい。 SQL Database で使うことができるほとんどの REST 機能は、SQL Analytics でも使用できます。 API の情報については、REST のドキュメントまたは [MSDN] をご覧ください。
@@ -130,6 +126,6 @@ Azure Synapse の詳細については、「[概要]」ページをご覧くだ�
 [サポートされていないテーブルの機能]: ./sql-data-warehouse-tables-overview.md#unsupported-table-features
 [Azure Data Lake Store]: ./sql-data-warehouse-load-from-azure-data-lake-store.md
 [Azure Storage Blobs]: ./sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-[データベース プロジェクト機能要求に関するページ]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
+[Database projects feature request]: https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247-database-project-from-visual-studio-to-support-azu
 [MSDN]: https://msdn.microsoft.com/library/azure/mt163685.aspx
 [概要]: ./sql-data-warehouse-overview-faq.md

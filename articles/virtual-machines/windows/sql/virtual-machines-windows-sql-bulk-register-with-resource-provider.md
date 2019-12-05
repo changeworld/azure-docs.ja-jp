@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 97541484501a3ecdd1bd5998314c1ee9e7a4e3a5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489078"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790554"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Azure の SQL 仮想マシンを SQL VM リソース プロバイダーに一括登録する
 
@@ -222,7 +222,7 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 指定のスクリプトを使用して SQL Server VM をリソース プロバイダーに登録するときは、次の点を考慮してください。
 
-- リソース プロバイダーに登録するには、SQL Server VM でゲスト エージェントが実行されている必要があります。 Windows Server 2008 のイメージにはゲスト エージェントがないため、これらの仮想マシンは失敗します。そのため、[NoAgent 管理モード](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)を使用して手動で登録する必要があります。
+- リソース プロバイダーに登録するには、SQL Server VM でゲスト エージェントが実行されている必要があります。 Windows Server 2008 のイメージにはゲスト エージェントがないため、これらの仮想マシンは失敗します。そのため、[NoAgent 管理モード](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)を使用して手動で登録する必要があります。
 - 透過的なエラーを解決するための再試行ロジックが組み込まれています。 仮想マシンが正常に登録されていれば、短時間の処理になります。 ただし、登録が失敗した場合は、各仮想マシンで再試行されます。  実際の所要時間は、エラーの種類と数によって異なりますが、登録プロセスが完了するまでの時間は十分に確保するようにしてください。 
 
 ## <a name="full-script"></a>完全なスクリプト

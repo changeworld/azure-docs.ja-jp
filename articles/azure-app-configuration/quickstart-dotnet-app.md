@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: f1fd1c21789c272bf8deae72ef64f2bbb1c6b3cb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185051"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707434"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して .NET Framework アプリを作成する
 
@@ -112,7 +112,7 @@ ms.locfileid: "74185051"
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、新しい App Configuration ストアを作成して、.NET Framework コンソール アプリと共に使用しました。 アプリケーションの起動後、`ConfiguratoinManager` の値 `AppSettings` は変化しません。 ただし、App Configuration .NET Standard 構成プロバイダー ライブラリは、.NET Framework アプリでも使用できます。 .NET Framework アプリで構成設定を動的に更新できるようにする方法については、次のチュートリアルに進んでください。
+このクイックスタートでは、新しい App Configuration ストアを作成して、.NET Framework コンソール アプリと共に使用しました。 アプリケーションの起動後、`ConfigurationManager` の値 `AppSettings` は変化しません。 ただし、App Configuration .NET Standard 構成プロバイダー ライブラリは、.NET Framework アプリでも使用できます。 .NET Framework アプリで構成設定を動的に更新できるようにする方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [動的な構成を有効にする](./enable-dynamic-configuration-dotnet.md)

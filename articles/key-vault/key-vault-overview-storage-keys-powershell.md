@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 225d9b715c56e4813a8e26d881c876e7bd498155
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 46e6f19a071986cf12590e9bd5c420e070572a14
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71204223"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707102"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する
 
@@ -238,7 +238,7 @@ Shared Access Signature 定義がキー コンテナーに格納されている�
 最初に、キー コンテナーで Shared Access Signature 定義を見つけます。
 
 ```azurepowershell-interactive
-Get-AzKeyVaultSecret -vault-name <YourKeyVaultName>
+Get-AzKeyVaultSecret -VaultName <YourKeyVaultName>
 ```
 
 SAS 定義に対応するシークレットには、次のプロパティがあります。

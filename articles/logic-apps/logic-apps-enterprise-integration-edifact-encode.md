@@ -1,21 +1,19 @@
 ---
-title: EDIFACT メッセージをエンコードする - Azure Logic Apps | Microsoft Docs
+title: EDIFACT メッセージをエンコードする
 description: Enterprise Integration Pack を備えた Azure Logic Apps 向けの EDIFACT メッセージ エンコーダーを使用して、EDI の検証と XML の生成を行います
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
 ms.date: 01/27/2017
-ms.openlocfilehash: 7396aee56acdf2476ed1bb3cc5a9909349662dc7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 257cbd0b1a68ddd2b16235e6f8dec5d5b0eb10e2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705549"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790648"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps の EDIFACT メッセージをエンコードする
 
@@ -94,5 +92,5 @@ Encode EDIFACT コネクタは次のタスクを実行します。
 EDIFACT コネクタの Swagger の詳細を表示するには、「[EDIFACT](/connectors/edifact/)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-[Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") 
+[Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する") 
 

@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:.NET を使用して C# で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
-description: C# と Azure Cognitive Search .NET SDK を使用して、インデックスの作成、データの読み込み、クエリの実行を行う方法について説明します。
+description: この C# クイックスタートでは、Azure Cognitive Search .NET SDK を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 45d24286a511ff60db33e149627932b0768c543b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1d8eaea4a6eded769542921851fb0c74a3c9d58b
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112029"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406758"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>クイック スタート:.NET SDK を使用して C# で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -548,7 +548,7 @@ Azure Cognitive Search では、ドキュメントにはインデックス作成
 
     出力には、前と同じメッセージが含まれ、クエリの情報と結果が追加されます。
 
-## <a name="clean-up"></a>クリーンアップ
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 

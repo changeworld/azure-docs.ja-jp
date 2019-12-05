@@ -6,29 +6,30 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/18/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: b2c840b9de25ff6997037c284c60390e7afa03ec
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 37249cc560d4493c34dd4be6139de03f9c152a08
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125539"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414519"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 * [Python 3.6](https://www.python.org/downloads/) 以降。
 * [Visual Studio Code](https://code.visualstudio.com/)
+* パブリック アプリ ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS キーを取得する
 
 [!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
-## <a name="get-intent--programmatically"></a>プログラムで意図を取得する
+## <a name="get-intent-from-the-prediction-endpoint"></a>予測エンドポイントから意図を取得する
 
-Python を使用して、予測エンドポイント GET [API](https://aka.ms/luis-apim-v3-prediction) にクエリを実行し、予測結果を取得します。
+Python を使用して、[予測エンドポイント](https://aka.ms/luis-apim-v3-prediction)のクエリを実行し、予測結果を取得します。
 
-1. 次のコード スニペットのいずれかを、`predict.py` というファイルにコピーします。
+1. このコード スニペットを `predict.py` というファイルにコピーします。
 
     ```python
     ########### Python 3.6 #############
@@ -63,28 +64,28 @@ Python を使用して、予測エンドポイント GET [API](https://aka.ms/lu
 
 1. 次の値を置き換えます。
 
-    * `YOUR-KEY` (スターター キーを使用)
-    * `YOUR-ENDPOINT` をご利用のエンドポイントに (例: `westus2.api.cognitive.microsoft.com`)
+    * `YOUR-KEY` を、ご利用のスターター キーに。
+    * `YOUR-ENDPOINT` を、ご利用のエンドポイントに。 たとえば、「 `westus2.api.cognitive.microsoft.com` 」のように入力します。
 
-1. 次のコンソール コマンドを使用して、依存関係をインストールします。
+1. `requests` 依存関係をインストールします。 これは、HTTP 要求を行うために使用されます。
 
     ```console
     pip install requests
     ```
 
-1. 次のコンソール コマンドを使用して、スクリプトを実行します。
+1. 次のコンソール コマンドを使用してスクリプトを実行します。
 
     ```console
     python predict.py
     ``` 
 
-1. JSON 形式の予測応答を確認します。
+1. JSON として返される予測応答を確認します。
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    読みやすくするために書式設定された JSON 応答: 
+    読みやすくするために書式設定された JSON 応答を次に示します。 
 
     ```JSON
     {

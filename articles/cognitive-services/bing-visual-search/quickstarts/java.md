@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Bing Visual Search REST API と Java を使用して画像に関する分析情報を取得する
+title: クイック スタート:REST API と Java を使用して画像に関する分析情報を取得する - Bing Visual Search
 titleSuffix: Azure Cognitive Services
 description: Bing Visual Search API に画像をアップロードし、画像に関する分析情報を取得する方法について説明します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2fe4e9dad0b198fe54e06ce07100d231f1f7d157
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: eecca2372c7265d456276a966cc441b15c17272a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59046446"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383596"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>クイック スタート:Bing Visual Search REST API と Java を使用して画像に関する分析情報を取得する
 

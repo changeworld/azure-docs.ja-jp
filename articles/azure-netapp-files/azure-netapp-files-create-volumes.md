@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 1f312e8a5034d238e4802e9323bc1b5ac5cdae21
-ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
+ms.openlocfilehash: 9e8817f802ca1d73ca0f6bfa2b32b1b14b37d7da
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906241"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773553"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
@@ -32,9 +32,6 @@ Azure NetApp Files では、NFS ボリューム (NFSv3 と NFSv4.1) および SM
 [サブネットを Azure NetApp Files に委任する](azure-netapp-files-delegate-subnet.md)
 
 ## <a name="considerations"></a>考慮事項 
-
-> [!IMPORTANT] 
-> NFSv4.1 機能にアクセスするには、ホワイトリストへの登録が必要です。  ホワイトリストへの登録を申請するには、申請を <anffeedback@microsoft.com> に送信してください。 
 
 * 使用する NFS のバージョンを決定する  
   NFSv3 は、さまざまなユース ケースの処理に使用でき、通常、ほとんどのエンタープライズ アプリケーションにデプロイされます。 アプリケーションで必要なバージョン (NFSv3 または NFSv4.1) を検証し、適切なバージョンを使用してボリュームを作成する必要があります。 たとえば、[Apache ActiveMQ](https://activemq.apache.org/shared-file-system-master-slave) を使用する場合は、NFSv4.1 でのファイル ロックの方が、NFSv3 より推奨されます。 

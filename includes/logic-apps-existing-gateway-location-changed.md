@@ -1,15 +1,15 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/09/2018
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 0bed11921c94776aa6b7e52c9154cf6a00c89333
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 11/09/2018
+ms.openlocfilehash: 01f9a3c74c555338e99776490ceb4828503cef23
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181769"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792071"
 ---
 **Q**: 既存のゲートウェイの場所が変更されたのはなぜですか? <br/>
 **A**: 2017 年 5 月 3 日より前に作成されたゲートウェイ リソースは、そのゲートウェイを作成した職場または学校アカウントの Azure AD テナントの元の場所に移動されました。 ただし、これらの変更は、現在実行中のロジック アプリに影響しません。このようなロジック アプリは、通常どおり動作し続けます。 5 月のゲートウェイの一般公開では、ゲートウェイ リソースの場所がロジック アプリの場所とは異なる可能性があります。

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 11/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 502f71365d78bd8fd949d17fe8907817394586b2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961495"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561500"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Azure VM のディザスター リカバリーを設定する
 
@@ -143,7 +143,7 @@ Site Recovery では、ターゲット リージョンの既定の設定とレ�
     **ターゲットの場所** | ディザスター リカバリーに使用するターゲット リージョン。<br/><br/> ターゲットの場所が Site Recovery コンテナーの場所と一致していることをお勧めします。
     **ターゲット リソース グループ** | フェールオーバー後、Azure VM を保持する、ターゲット リージョンのリソース グループ。<br/><br/> 既定では、Site Recovery は "asr" というサフィックスを持つターゲット リージョンに、新しいリソース グループを作成します。 ターゲット リソース グループの場所は、ソース仮想マシンがホストされているリージョンを除き、どのリージョンでも構いません。
     **ターゲット仮想ネットワーク** | フェールオーバー後、VM が配置される、ターゲット リージョンのネットワーク。<br/><br/> 既定では、Site Recovery は "asr" というサフィックスを持つターゲット リージョンに、新しい仮想ネットワーク (およびサブネット) を作成します。
-    **キャッシュ ストレージ アカウント** | Site Recovery では、ソース リージョンにストレージ アカウントが使用されます。 ソース VM への変更は、ターゲットの場所にレプリケートする前に、このアカウントに送信されます。<br/><br/> ファイアウォールが有効なキャッシュ ストレージ アカウントを使用している場合は必ず、 **[信頼された Microsoft サービスを許可]** を有効にしてください。 [詳細情報。](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+    **キャッシュ ストレージ アカウント** | Site Recovery では、ソース リージョンにストレージ アカウントが使用されます。 ソース VM への変更は、ターゲットの場所にレプリケートする前に、このアカウントに送信されます。<br/><br/> ファイアウォールが有効なキャッシュ ストレージ アカウントを使用している場合は必ず、 **[信頼された Microsoft サービスを許可]** を有効にしてください。 [詳細情報](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)。 また、ソース Vnet の少なくとも 1 つ以上のサブネットにアクセスできることを確認してください。
     **ターゲット ストレージ アカウント (ソース VM で非マネージド ディスクを使用)** | 既定では、Site Recovery によってターゲット リージョンに新しいストレージ アカウントが作成されて、ソース VM のストレージ アカウントがミラーリングされます。<br/><br/> ファイアウォールが有効なキャッシュ ストレージ アカウントを使用している場合は必ず、 **[信頼された Microsoft サービスを許可]** を有効にします。
     **レプリカ マネージド ディスク (ソース VM でマネージド ディスクが使用されている場合)** | 既定では、Site Recovery によってターゲット リージョンにレプリカ マネージド ディスクが作成され、ソース VM のマネージド ディスクと同じストレージ タイプ (標準またはプレミアム) でソース VM のマネージド ディスクがミラーリングされます。 カスタマイズできるのはディスクの種類だけです。 
     **ターゲット可用性セット** | 既定では、Azure Site Recovery によって、新しい可用性セットがターゲット リージョンに作成されます。その名前は、ソース リージョン内の可用性セットの VM 部分に "asr" サフィックスを付けたものになります。 Azure Site Recovery によって作成された可用性セットが既に存在する場合は、それが再利用されます。

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/12/2019
+ms.date: 12/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 06ebe8ed22453289fa02c238d9b2e6ef13191f2a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 912fd6bde4d00cca304a1506465a524cda947a07
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888548"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769848"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する 
 
@@ -257,9 +257,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     * ボリュームの NFS バージョン ( **[NFSv3]** または **[NFSv4.1]** ) を選択します。  
       NFS のバージョンについては、「[考慮事項](azure-netapp-files-create-volumes.md#considerations)」および「[ベスト プラクティス](azure-netapp-files-create-volumes.md#best-practice)」を参照してください。 
       
-> [!IMPORTANT] 
-> NFSv4.1 機能にアクセスするには、ホワイトリストへの登録が必要です。  ホワイトリストへの登録を申請するには、申請を <anffeedback@microsoft.com> に送信してください。 
-
   ![クイック スタートの NFS プロトコルを指定する](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. **[Review + create]\(レビュー + 作成\)** をクリックします。

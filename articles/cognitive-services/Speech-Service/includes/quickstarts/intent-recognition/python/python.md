@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 4efa535118d075addf78b2e9be6a645c458d6bb4
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: f39ddc8a3460bc026bdac96c18b5bea4d6ecfc0f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125533"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280380"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,8 +25,8 @@ ms.locfileid: "74125533"
 > [!div class="checklist"]
 >
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [LUIS アプリケーションを作成し、エンドポイント キーを取得する](../../../../quickstarts/create-luis.md)
-> * [使用する開発環境をセットアップする](../../../../quickstarts/setup-platform.md)
+> * [Language Understanding (LUIS) アプリケーションを作成し、エンドポイント キーを取得する](../../../../quickstarts/create-luis.md)
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md)
 
 ## <a name="open-your-project"></a>プロジェクトを開く

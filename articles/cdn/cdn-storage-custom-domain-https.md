@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 341383c232718349f091a9c92207bb27cf87cc48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e6415c9e8e0ab8743042891a2d0d422dffe37bdb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083014"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279111"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>チュートリアル:HTTPS 経由で Azure CDN のカスタム ドメインを使用してストレージ BLOB にアクセスする
 
@@ -43,11 +43,15 @@ Azure CDN では、SAS トークンに追加された制限がすべて無視さ
 同じ BLOB エンドポイントに複数の SAS URL を作成する場合は、クエリ文字列のキャッシュを有効にすることを検討します。 そうすることで、各 URL が一意のエンティティとして処理されるようになります｡ 詳細については、「[クエリ文字列による Azure CDN キャッシュ動作の制御 - Standard レベル](cdn-query-string.md)」を参照してください。
 
 ## <a name="http-to-https-redirection"></a>HTTP から HTTPS へのリダイレクト
-[Azure CDN ルール エンジン](cdn-verizon-premium-rules-engine.md)を使用して [URL リダイレクト規則](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)を作成することで、HTTP トラフィックから HTTPS にリダイレクトするように選択できます。 このオプションには、**Azure CDN Premium from Verizon** プロファイルが必要です。
+[Standard ルール エンジン](cdn-standard-rules-engine.md)または [Verizon Premium ルール エンジン](cdn-verizon-premium-rules-engine.md)を使用して URL リダイレクト規則を作成することで、HTTP トラフィックを HTTPS にリダイレクトすることを選択できます。 Standard ルール エンジンは、Microsoft プロファイルの Azure CDN に対してのみ使用できます。Verizon Premium ルール エンジンは、Verizon プロファイルの Azure CDN Premium からのみ使用できます。
 
-![URL リダイレクト規則](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+![Microsoft のリダイレクト規則](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
 
-この規則では、*Cdn-endpoint-name* では、ご利用の CDN エンドポイントに対して構成した名前を参照します。これは、ドロップダウン リストから選択できます。 *origin-path* の値では、ご自分の静的コンテンツが存在する配信元ストレージ アカウント内のパスを参照します。 静的コンテンツをすべて 1 つのコンテナーでホストしている場合は、*origin-path* をそのコンテナーの名前に置き換えます。
+上記の規則では、[ホスト名]、[パス]、[クエリ文字列]、[フラグメント] をそのままにすると、受信値がリダイレクトで使用されることになります。 
+
+![Verizon のリダイレクト規則](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+
+上記の規則では、*Cdn-endpoint-name* は、ご利用の CDN エンドポイントに対して構成した名前を参照します。これは、ドロップダウン リストから選択できます。 *origin-path* の値では、ご自分の静的コンテンツが存在する配信元ストレージ アカウント内のパスを参照します。 静的コンテンツをすべて 1 つのコンテナーでホストしている場合は、*origin-path* をそのコンテナーの名前に置き換えます。
 
 ## <a name="pricing-and-billing"></a>価格と課金
 Azure CDN 経由で BLOB にアクセスする場合、POP サーバーと配信元 (BLOB ストレージ) 間のトラフィックに対する [BLOB ストレージ料金](https://azure.microsoft.com/pricing/details/storage/blobs/)と、POP サーバーからアクセスするデータに対する [Azure CDN 価格](https://azure.microsoft.com/pricing/details/cdn/)がかかります｡

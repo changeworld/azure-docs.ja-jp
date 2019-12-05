@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6d32cd12989262ebeaafee60a02bb7ea2a9b1e32
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139292"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703149"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -112,7 +112,7 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
    HDInsight MapReduce アクティビティを使用して、HDInsight クラスター上で MapReduce jar ファイルを実行できます。 次のサンプルのパイプラインの JSON 定義では、Mahout JAR ファイルを実行するために HDInsight アクティビティが構成されます。
 
 ## <a name="sample-on-github"></a>GitHub 上のサンプル
-HDInsight MapReduce アクティビティを使用するためのサンプルを [GitHub の Data Factory のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON/MapReduce_Activity_Sample)からダウンロードできます。  
+HDInsight MapReduce アクティビティを使用するためのサンプルを [GitHub の Data Factory のサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON/MapReduce_Activity_Sample)からダウンロードできます。  
 
 ## <a name="running-the-word-count-program"></a>Word Count プログラムの実行
 このチュートリアルのパイプラインでは、Azure HDInsight クラスターで Word Count Map/Reduce プログラムを実行します。   
@@ -250,5 +250,5 @@ MapReduce アクティビティを使用して、HDInsight Spark クラスター
 * [Pig アクティビティ](data-factory-pig-activity.md)
 * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 * [Spark プログラムを呼び出す](data-factory-spark.md)
-* [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

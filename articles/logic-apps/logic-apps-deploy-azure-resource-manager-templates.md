@@ -1,20 +1,17 @@
 ---
-title: ロジック アプリ テンプレートをデプロイする - Azure Logic Apps
+title: ロジック アプリ テンプレートのデプロイ
 description: Azure Logic Apps 用に作成された Azure Resource Manager テンプレートをデプロイする方法について説明します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 083c908609ebcf1bdc6dcad5e37ae03daa41758f
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 73c4c8839bd1d9e37f3dc4f0802ad5a648b1026b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706506"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793051"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする
 

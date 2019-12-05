@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: 80dab733d5a4e7c04ee75e289a0bc33b88cc811f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 1c403d4d9b5c95c1cb1079b951a26dcaabb805fe
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597164"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405882"
 ---
 # <a name="quickstart-qna-maker-client-library-for-net"></a>クイック スタート:.NET 用 QnA Maker クライアント ライブラリ
 
@@ -49,15 +49,15 @@ Azure Cognitive Services は、ユーザーがサブスクライブする Azure 
 
 好みのエディターまたは IDE で、新しい .NET Core アプリケーションを作成します。 
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、dotnet `new` コマンドを使用し、`qna-maker-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイル (`Program.cs`) を使用する単純な "Hello World" C# プロジェクトが作成されます。 
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`qna-maker-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、1 つのソース ファイルを使用する単純な "Hello World" C# プロジェクトが作成されます。*Program.cs*。 
 
-```console
+```dotnetcli
 dotnet new console -n qna-maker-quickstart
 ```
 
 新しく作成されたアプリ フォルダーにディレクトリを変更します。 次を使用してアプリケーションをビルドできます。
 
-```console
+```dotnetcli
 dotnet build
 ```
 
@@ -75,7 +75,7 @@ Build succeeded.
 
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 QnA Maker クライアント ライブラリをインストールします。
 
-```console
+```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Knowledge.QnAMaker --version 1.0.0
 ```
 
@@ -189,11 +189,11 @@ create や update などのメソッドの中には、プロセスが終了す�
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-アプリケーション ディレクトリから、dotnet `run` コマンドを使用してアプリケーションを実行します。
+アプリケーション ディレクトリから `dotnet run` コマンドを使用してアプリケーションを実行します。
 
-この記事に記載されているすべてのコード スニペットは[入手できます](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)。また、1 つのファイルとして実行できます。
+この記事にあるすべてのコード スニペットは、[入手可能](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)であり、1 つのファイルとして実行できます。
 
-```console
+```dotnetcli
 dotnet run
 ```
 

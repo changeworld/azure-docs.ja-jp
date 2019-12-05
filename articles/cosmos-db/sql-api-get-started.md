@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: a8af36da7b9043492f1ed3c77dcc1b35dc2936fe
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 78b88f4e4e60d1f79263bfd9d7dfaf0cabc70de6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132570"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173905"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>チュートリアル:.NET コンソール アプリをビルドして Azure Cosmos DB SQL API アカウントのデータを管理する
 
@@ -259,7 +259,7 @@ Azure Cosmos DB SQL API を実際に使ってみるチュートリアルへよ�
 1. F5 キーを押してアプリケーションを実行します。
 
    > [!NOTE]
-   > "503 service unavailable exception (503 サービス利用不可の例外)" が表示される場合は、直接モードに必要な[ポート](performance-tips.md#networking)がファイアウォールによってブロックされている可能性があります。 この問題を解決するには、必要な[ポート](performance-tips.md#networking)を開くか、次に示すようにゲートウェイ モードを使用してみてください。
+   > "503 service unavailable exception" (503 サービス利用不可の例外) エラーが表示される場合は、直接接続モードに必要な[ポート](performance-tips.md#networking)がファイアウォールによってブロックされている可能性があります。 この問題を解決するには、次のコードに示すように、必要なポートを開くか、ゲートウェイ モード接続を使用します。
    ```csharp
      // Create a new instance of the Cosmos Client in Gateway mode
      this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()

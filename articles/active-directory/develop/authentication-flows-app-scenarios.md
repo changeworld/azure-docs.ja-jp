@@ -17,12 +17,12 @@ ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d6a36d66d6094bbac1b3e39a4ee5cea55737971
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 24c891c3de9126de6b833dea30c78c14b709384d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473824"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687751"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
@@ -261,14 +261,14 @@ MSAL の **ConfidentialClientApplication** クラスの[クライアント資格
 
   <tr>
    <td><a href="scenario-daemon-overview.md"><img alt="Daemon app that calls web APIs" src="media/scenarios/daemon-app.svg"></a></td>
-   <td><a href=scenario-daemon-overview.md">Web API を呼び出すデーモン アプリ</a></td>
+   <td><a href="scenario-daemon-overview.md">Web API を呼び出すデーモン アプリ</a></td>
    <td><a href="v2-oauth2-client-creds-grant-flow.md">クライアントの資格情報</a></td>
    <td>ユーザーが介在せず、Azure AD 組織でのみ使用されるアプリ専用アクセス許可</td>
  </tr>
 
   <tr>
-   <td><a href=scenario-web-api-call-api-overview.md"><img alt="Web API that calls web APIs" src="media/scenarios/web-api.svg"></a></td>
-   <td><a href=scenario-web-api-call-api-overview.md">Web API を呼び出す Web API</a></td>
+   <td><a href="scenario-web-api-call-api-overview.md"><img alt="Web API that calls web APIs" src="media/scenarios/web-api.svg"></a></td>
+   <td><a href="scenario-web-api-call-api-overview.md">Web API を呼び出す Web API</a></td>
    <td><a href="v2-oauth2-on-behalf-of-flow.md">代理</a></td>
    <td>職場または学校アカウントと個人用アカウント</td>
  </tr>

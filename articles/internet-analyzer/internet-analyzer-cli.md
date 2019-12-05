@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 2952f7f24e92b952daafa682eee9d4605537a37b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839521"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184279"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>CLI を使用した Internet Analyzer テストの作成 (プレビュー)
 
@@ -132,5 +132,6 @@ Internet Analyzer CLI では、次の種類のリソースが公開されます�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Internet Analyzer の FAQ](internet-analyzer-faq.md) を読む
+* サポートされているコマンドと使用例の完全な一覧については、[Internet Analyzer の CLI リファレンス](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest)を参照してください。
+* [Internet Analyzer の FAQ](internet-analyzer-faq.md) を読む。
 * [Internet Analyzer クライアント](internet-analyzer-embed-client.md)の埋め込みと[カスタム エンドポイント](internet-analyzer-custom-endpoint.md)の作成の詳細を確認する。 

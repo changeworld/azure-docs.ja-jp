@@ -1,18 +1,16 @@
 ---
-title: チュートリアル - Azure Resource Manager テンプレートの作成とデプロイ
+title: チュートリアル - テンプレートの作成とデプロイ
 description: 初めての Azure Resource Manager テンプレートを作成します。 このチュートリアルでは、テンプレート ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 463f9a54648a9e6950f839bd856ccf42bc66dca0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9650b8c67e3fd5c786b066c53e78b106935e11e1
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074368"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406035"
 ---
 # <a name="tutorial-create-and-deploy-your-first-azure-resource-manager-template"></a>チュートリアル:初めての Azure Resource Manager テンプレートを作成およびデプロイする
 
@@ -96,7 +94,7 @@ az login
 ---
 ## <a name="create-resource-group"></a>リソース グループの作成
 
-テンプレートをデプロイするときは、リソースを格納するリソース グループを指定します。 デプロイ コマンドを実行する前に、Azure CLI または Azure PowerShell を使用してリソース グループを作成します。 次のコード セクションのタブを選択し、Azure PowerShell または Azure CLI を選択してください。
+テンプレートをデプロイするときは、リソースを格納するリソース グループを指定します。 デプロイ コマンドを実行する前に、Azure CLI または Azure PowerShell を使用してリソース グループを作成します。 次のコード セクションのタブを選択し、Azure PowerShell または Azure CLI を選択してください。 この記事の CLI の例は、Bash シェルを対象として記述されています。
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -133,7 +131,7 @@ New-AzResourceGroupDeployment `
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 ```azurecli
-$templateFile="{provide-the-path-to-the-template-file}"
+templateFile="{provide-the-path-to-the-template-file}"
 az group deployment create \
   --name blanktemplate \
   --resource-group myResourceGroup \

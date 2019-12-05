@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cbad0e5409dfaa25eda040e3c7409b49728a4169
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028476"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667423"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>IoT Hub から Azure Data Explorer にデータを取り込む (プレビュー)
 
@@ -20,17 +20,15 @@ ms.locfileid: "72028476"
 > * [ポータル](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Azure Resource Manager テンプレート](data-connection-iot-hub-resource-manager.md)
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer では、IoT Hub からの取り込み (データの読み込み) が可能で、ビッグ データのストリーミング プラットフォーム、IoT の取り込みサービスがあります。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-
 * *testdb* というデータベース名の[テスト クラスターとデータベース](create-cluster-database-portal.md)を作成します。
-
 * デバイスをシミュレートする[サンプル アプリ](https://github.com/Azure-Samples/azure-iot-samples-csharp)とドキュメントです。
-
 * サンプル アプリを実行するための [Visual Studio 2019](https://visualstudio.microsoft.com/vs/)。
 
 ## <a name="create-an-iot-hub"></a>IoT ハブを作成する
@@ -108,7 +106,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 ## <a name="generate-sample-data-for-testing"></a>テスト用のサンプル データを生成する
 
-シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度の利用統計情報を送信します。
+シミュレートされたデバイス アプリケーションは、IoT Hub 上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度のテレメトリを送信します。
 
 1. [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip ) からサンプル C# プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
@@ -130,7 +128,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     dotnet run
     ```
 
-    次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT ハブに利用統計情報を送信したときの出力を示しています。
+    次のスクリーンショットは、シミュレートされたデバイス アプリケーションが IoT Hub にテレメトリを送信したときの出力を示しています。
 
     ![シミュレートされたデバイスを実行する](media/ingest-data-iot-hub/simulated-device.png)
 

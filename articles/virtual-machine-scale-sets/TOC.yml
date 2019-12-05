@@ -231,8 +231,8 @@
           href: virtual-machine-scale-sets-placement-groups.md
         - name: スケール セット テンプレートを変換してマネージド ディスクを使用する
           href: virtual-machine-scale-sets-convert-template-to-md.md
-        - name: 優先順位の低い VM を使用する
-          href: virtual-machine-scale-sets-use-low-priority.md
+        - name: スポット インスタンスを使用する
+          href: use-spot.md
     - name: 管理
       items:
         - name: 一般的な管理タスク

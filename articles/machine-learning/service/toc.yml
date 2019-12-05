@@ -300,7 +300,7 @@
         - name: バッチ予測を実行する
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions.md
-        - name: バッチ予測にデザイナーを使用する
+        - name: デザイナーによるバッチ予測
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
     - name: モデルを監視する

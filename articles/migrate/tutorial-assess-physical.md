@@ -5,20 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 56b7cc6e95cb85b5508199287cc77aedeebc8b81
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123495"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280548"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Azure Migrate を使用した物理サーバーの評価: Server Assessment
-
-> [!NOTE]
-> Azure Migrate ポータルでこの機能がまだ表示されていない場合は、しばらくお待ちください。 来週あたりに表示されるようになる予定です。
- 
 
 この記事では、Azure Migrate: Server Assessment ツールを使用して、オンプレミスの物理サーバーを評価する方法について説明します。Server Assessment ツールを追加済みであることを確認してください。
 
@@ -108,11 +104,12 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
 
-3.  アプライアンス バージョン 1.19.05.10 の場合は、生成されたハッシュがこれらの設定と一致する必要があります。
+3.  最新のアプライアンス バージョンの場合は、生成されたハッシュがこれらの設定と一致する必要があります。
 
   **アルゴリズム** | **ハッシュ値**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 96fd99581072c400aa605ab036a0a7c0
+  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する
 
@@ -135,7 +132,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
     ```
     PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-スクリプトが正常に終了すると、アプライアンス Web アプリケーションが起動します。 
+スクリプトが正常に終了すると、アプライアンス Web アプリケーションが起動します。
 
 問題が発生した場合は、トラブルシューティングのために、C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log のスクリプト ログにアクセスできます。
 
@@ -166,7 +163,7 @@ Azure Migrate: Server Assessment では、軽量のアプライアンスが実�
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
 1. **[ログイン]** をクリックします。 表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
-2. 新しいタブで、自分の Azure 資格情報を使用してサインインします。 
+2. 新しいタブで、自分の Azure 資格情報を使用してサインインします。
     - 自分のユーザー名とパスワードを使用してサインインします。
     - PIN を使用したサインインはサポートされていません。
 3. 正常にサインインした後、Web アプリに戻ります。
@@ -188,7 +185,7 @@ Windows および Linux サーバーごとに 1 セットの資格情報を追�
     - サーバーを削除するには、 **[削除]** を選択します。
 4. 検証後、 **[保存して検出を開始]** をクリックして、検出プロセスを開始します。
 
-これで検出が開始されます。 検出されたサーバーのメタデータが Azure portal に表示されるまでにサーバーあたり約 1.5 分かかります。 
+これで検出が開始されます。 検出されたサーバーのメタデータが Azure portal に表示されるまでにサーバーあたり約 1.5 分かかります。
 
 ### <a name="verify-servers-in-the-portal"></a>ポータルでサーバーを確認する
 

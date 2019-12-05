@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: ad96d0a04b03e070a7108832370749377d723826
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821756"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707658"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>マネージド インスタンス内の SQL データベースを以前の特定の時点に復元する
 
@@ -230,7 +230,7 @@ az sql midb delete -g mygroupname --mi myinstancename -n mymanageddbname
 マネージド インスタンスに直接接続し、SQL Server Management Studio を起動します。 その後、次の Transact-SQL (T-SQL) クエリを実行します。 このクエリは、復元されたデータベースの名前を、上書きする予定の削除されたデータベースの名前に変更します。
 
 ```sql
-ALTER WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
+ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 ```
 
 マネージド インスタンス内のデータベースに接続するには、次のいずれかの方法を使用します。

@@ -164,7 +164,7 @@
           href: event-hubs-service-endpoints.md
         - name: Event Hubs 名前空間での仮想ネットワークの統合とファイアウォールの有効化
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: 保存データの暗号化のために顧客管理キーを構成する
+        - name: 保存データの暗号化のために顧客管理キーを構成する (プレビュー)
           href: configure-customer-managed-key.md
     - name: トラブルシューティング
       items:

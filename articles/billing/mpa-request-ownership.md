@@ -5,23 +5,23 @@ author: amberbhargava
 manager: amberb
 editor: banders
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 312808517c80041cb45e2e8ac46566c1f59884e1
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d68d95619b6aa6e8098c282977866c4bc21a357c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376792"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561051"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>MPA アカウントに Azure サブスクリプションの課金所有権を取得する
 
-マネージド サービスと Azure の使用に対する単一の統合請求書を提供するために、クラウド ソリューション プロバイダー (CSP) は、Enterprise Agreement (EA) を持つ顧客から Azure サブスクリプションの課金所有権を引き継ぐことができます。
+マネージド サービスと Azure の使用に対する単一の統合請求書を提供するために、クラウド ソリューション プロバイダー (CSP) は、ダイレクト エンタープライズ契約 (EA) の顧客から Azure サブスクリプションの課金所有権を引き継ぐことができます。
 
 この機能は、[Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) として認定された CSP 直接請求パートナーだけが使用できます。 Microsoft のガバナンスとポリシーが適用され、特定の顧客のレビューと承認が必要になる場合があります。
 

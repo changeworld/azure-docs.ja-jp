@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 0e9a71e1e826569930cf593a7e264020617bdc3a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 82b1f13562a49284059c25bcbd39a33daf949dcc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883387"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775542"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Bing Search API とは
 
@@ -23,7 +23,7 @@ Bing Search API を使用すると、広告を除外して Web ページ、画�
 
 ## <a name="the-bing-web-search-api"></a>Bing Web Search API
 
-[Bing Web Search API](../Bing-Web-Search/index.yml) では、Web ページ、画像、ビデオ、ニュースなどが返されます。 この API に送信される検索クエリをフィルター処理して、特定のコンテンツの種類を含めたり除外したりできます。
+[Bing Web Search API](../Bing-Web-Search/overview.md) では、Web ページ、画像、ビデオ、ニュースなどが返されます。 この API に送信される検索クエリをフィルター処理して、特定のコンテンツの種類を含めたり除外したりできます。
 
 すべての種類の関連 Web コンテンツを検索する必要がありそうなアプリケーションでは、Bing Web Search API の使用を検討してください。 特定の種類のオンライン コンテンツを検索するアプリケーションの場合は、以下の検索 API のいずれかを検討します。
 
@@ -33,16 +33,16 @@ Bing Search API を使用すると、広告を除外して Web ページ、画�
 
 | Bing API | 説明 |
 | -- | -- |
-| [Entity Search](../Bing-Entities-Search/index.yml) | Bing Entity Search API では、人、場所、物などのエンティティを含む検索結果が返されます。 この API では、クエリの内容に応じて、条件を満たす 1 つ以上のエンティティが返されます。 検索クエリには、注目すべき個人、地元企業、ランドマーク、目的地などを含めることができます。 |
-| [Image Search](../Bing-Image-Search/index.yml) | Bing Image Search API を使用すると、[Bing.com/images](https://www.Bing.com/images) のような、高品質の静止画や動画を検索して見つけることができます。 検索を微調整し、サイズ、色、ライセンス、新しさなどの属性により、画像を含めたり除外したりできます。 話題になっている画像を検索したり、画像をアップロードしてそれに関する分析情報を取得したり、サムネイルのプレビューを表示したりすることもできます。 |
-| [News Search](../Bing-News-Search/index.yml) | Bing News Search API では、[Bing.com/news](https://www.Bing.com/news) のようなニュース記事を検索できます。 複数のソースまたは特定のドメインからのニュース記事が返されます。 複数のカテゴリを検索して、話題の記事、トップ記事、見出しを取得できます。 |
-| [Video Search](../Bing-Video-Search/index.yml) | Bing Video Search API を使用すると、Web 全体でビデオを検索できます。 話題になっている動画、関連するコンテンツ、サムネイル プレビューを取得します。 |
-| [Visual Search](../Bing-visual-search/index.yml) | 画像をアップロードできます。また、URL を使用して、見た目が似た製品、画像、関連項目の検索など、詳細な分析情報を取得することもできます。 |
- [Local Business Search](../bing-local-business-search/index.yml) | Bing Local Business Search API を使用すると、アプリケーションでは検索クエリに基づいて地元企業に関する連絡先や場所の情報を検索できます。 |
+| [Entity Search](../Bing-Entities-Search/overview.md) | Bing Entity Search API では、人、場所、物などのエンティティを含む検索結果が返されます。 この API では、クエリの内容に応じて、条件を満たす 1 つ以上のエンティティが返されます。 検索クエリには、注目すべき個人、地元企業、ランドマーク、目的地などを含めることができます。 |
+| [Image Search](../Bing-Image-Search/overview.md) | Bing Image Search API を使用すると、[Bing.com/images](https://www.Bing.com/images) のような、高品質の静止画や動画を検索して見つけることができます。 検索を微調整し、サイズ、色、ライセンス、新しさなどの属性により、画像を含めたり除外したりできます。 話題になっている画像を検索したり、画像をアップロードしてそれに関する分析情報を取得したり、サムネイルのプレビューを表示したりすることもできます。 |
+| [News Search](../Bing-News-Search/search-the-web.md) | Bing News Search API では、[Bing.com/news](https://www.Bing.com/news) のようなニュース記事を検索できます。 複数のソースまたは特定のドメインからのニュース記事が返されます。 複数のカテゴリを検索して、話題の記事、トップ記事、見出しを取得できます。 |
+| [Video Search](../Bing-Video-Search/overview.md) | Bing Video Search API を使用すると、Web 全体でビデオを検索できます。 話題になっている動画、関連するコンテンツ、サムネイル プレビューを取得します。 |
+| [Visual Search](../Bing-visual-search/overview.md) | 画像をアップロードできます。また、URL を使用して、見た目が似た製品、画像、関連項目の検索など、詳細な分析情報を取得することもできます。 |
+ [Local Business Search](../bing-local-business-search/overview.md) | Bing Local Business Search API を使用すると、アプリケーションでは検索クエリに基づいて地元企業に関する連絡先や場所の情報を検索できます。 |
 
 ## <a name="the-bing-custom-search-api"></a>Bing Custom Search API
 
-[Bing Custom Search](../Bing-Custom-Search/index.yml) API でカスタム検索インスタンスを作成すると、関心のあるコンテンツとトピックだけに焦点を当てた検索エクスペリエンスを作成することができます。 たとえば、Bing で検索するドメイン、Web サイト、特定の Web ページを指定すると、Bing Custom Search により、その特定のコンテンツに合わせて結果が調整されます。 Bing Custom Autosuggest、Image、Video Search API を組み込んで、検索エクスペリエンスをさらにカスタマイズすることができます。
+[Bing Custom Search](../Bing-Custom-Search/overview.md) API でカスタム検索インスタンスを作成すると、関心のあるコンテンツとトピックだけに焦点を当てた検索エクスペリエンスを作成することができます。 たとえば、Bing で検索するドメイン、Web サイト、特定の Web ページを指定すると、Bing Custom Search により、その特定のコンテンツに合わせて結果が調整されます。 Bing Custom Autosuggest、Image、Video Search API を組み込んで、検索エクスペリエンスをさらにカスタマイズすることができます。
 
 ## <a name="additional-bing-search-apis"></a>その他の Bing Search API
 
@@ -50,7 +50,7 @@ Bing Search API を使用すると、広告を除外して Web ページ、画�
 
 | API | 説明 |
 | -- | -- |
-| [Bing Autosuggest](../Bing-Autosuggest/index.yml) | Bing Autosuggest API を使用すると、検索候補がリアルタイムで返されるので、アプリケーションの検索エクスペリエンスが向上します。  |
+| [Bing Autosuggest](../Bing-Autosuggest/get-suggested-search-terms.md) | Bing Autosuggest API を使用すると、検索候補がリアルタイムで返されるので、アプリケーションの検索エクスペリエンスが向上します。  |
 | [Bing Statistics](bing-web-stats.md) | Bing Statistics では、アプリケーションで使用されている Bing Search API に関する分析情報が提供されます。 使用できる分析には、呼び出しのボリューム、上位のクエリ文字列、地理的な分布などが含まれます。 |
 
 ## <a name="next-steps"></a>次の手順

@@ -1,25 +1,25 @@
 ---
-title: 重み付けラウンドロビンによるトラフィック ルーティングの構成 - Azure Traffic Manager
-description: この記事では、Traffic Manager でラウンドロビン方法を使用してトラフィックの負荷分散を行う方法について説明します
+title: チュートリアル - Azure Traffic Manager を使用した重み付けラウンドロビンによるトラフィック ルーティングの構成
+description: このチュートリアルでは、Traffic Manager でラウンドロビン方式を使用してトラフィックの負荷分散を行う方法について説明します
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: allensu
-ms.openlocfilehash: 0bfed558ec8db0ef715dad044c3965c1b1d8052b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 06bb86e635b7b3377e1f313ef3aa3487e1c215bc
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040329"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422773"
 ---
-# <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Traffic Manager の重み付けトラフィック ルーティング方法の構成
+# <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>チュートリアル:Traffic Manager の重み付けトラフィック ルーティング方法の構成
 
 トラフィック ルーティング方法の一般的なパターンは、クラウド サービスや Web サイトを含む同一のエンドポイントのセットを提供し、各エンドポイントにトラフィックを均等に送信することです。 次の手順では、この種類のトラフィック ルーティング方法を構成する方法について説明します。
 

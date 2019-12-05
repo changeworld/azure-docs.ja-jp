@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:イメージを検索する - Bing Image Search REST API と Node.js
+title: クイック スタート:REST API と Node.js を使用してイメージを検索する - Bing Image Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、JavaScript を使って Bing Image Search REST API にイメージ検索要求を送信し、JSON 応答を受信します。
 services: cognitive-services
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 737927aa725c117158ea867e007ecc0cedde50aa
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: fe6289ce893f959ca958096db80f4b2295f6dd43
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034642"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327083"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>クイック スタート:Bing Image Search REST API と Node.js を使用してイメージを検索する
 

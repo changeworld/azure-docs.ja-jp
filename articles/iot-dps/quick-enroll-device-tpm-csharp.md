@@ -1,21 +1,20 @@
 ---
-title: クイック スタート:C# を使用して TPM デバイスを Azure Device Provisioning Service に登録する
-description: Azure クイックスタート - C# サービス SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録する このクイック スタートでは、個別登録を使用します。
+title: C# を使用して TPM デバイスを Azure Device Provisioning Service に登録する
+description: クイックスタート - C# サービス SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録します。 このクイック スタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 70f9c9d2ec488854a1b386b872f10e4f54c45a1c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: a95a50e5931f42e442e11fe593a151dd273449e8
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904749"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423012"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>クイック スタート:C# サービス SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
@@ -52,13 +51,13 @@ ms.locfileid: "73904749"
 
 1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。 **[新しいプロジェクトの作成]** で、C# 用の **[コンソールアプリ (.NET Cor)]** プロジェクト テンプレートを選択し、 **[次へ]** を選択します。
 
-1. プロジェクトに "*CreateTpmEnrollment*" という名前を付けて、 **[作成]** を選択します。
+1. プロジェクトに "*CreateTpmEnrollment*" という名前を付けて、 **[作成]** を押します。
 
     ![Visual C# Windows クラシック デスクトップ プロジェクトを構成する](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
 
-1. **[ソリューション エクスプローラー]** で **[CreateTpmEnrollment]** プロジェクトを右クリックして、 **[NuGet パッケージの管理]** を選択します。
+1. Visual Studio でソリューションを開き、 **[ソリューション エクスプローラー]** ペインで **CreateTpmEnrollment** プロジェクトを右クリックします。 **[NuGet パッケージの管理]** を選択します。
 
-1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、**Microsoft.Azure.Devices.Provisioning.Service** を検索して選択してから、 **[インストール]** を選択します。
+1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、**Microsoft.Azure.Devices.Provisioning.Service** を検索して選択してから、 **[インストール]** を押します。
 
    ![NuGet Package Manager window](media//quick-enroll-device-tpm-csharp/add-nuget.png)
 
@@ -71,10 +70,10 @@ ms.locfileid: "73904749"
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. `Program` クラスに次のフィールドを追加し、一覧された変更を行います。
+1. `Program` クラスに次のフィールドを追加し、以下の一覧に示す変更を行います。
 
    ```csharp
-   private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
+   private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
    private const string RegistrationId = "sample-registrationid-csharp";
    private const string TpmEndorsementKey =
        "AToAAQALAAMAsgAgg3GXZ0SEs/gakMyNRqXXJP1S124GUgtk8qHaGzMUaaoABgCAAEMAEAgAAAAAAAEAxsj2gUS" +
@@ -88,7 +87,7 @@ ms.locfileid: "73904749"
    private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
    ```
 
-   * `ProvisioningConnectionString` プレースホルダーの値を、登録を作成したいプロビジョニング サービスの接続文字列に置き換えます。
+   * `ProvisioningServiceConnectionString` プレースホルダーの値を、登録を作成したいプロビジョニング サービスの接続文字列に置き換えます。
 
    * 必要に応じて、登録 ID、保証キー、デバイス ID、プロビジョニング状態を変更できます。
 
@@ -143,7 +142,7 @@ ms.locfileid: "73904749"
   
 Visual Studio でサンプルを実行して、TPM デバイスの個々の登録を作成します。
 
-作成が正常に完了すると、コマンド プロンプト ウィンドウに新しい個々の登録のプロパティが表示されます。
+コマンド プロンプト ウィンドウが表示され、確認メッセージの表示が開始されます。 作成が正常に完了すると、コマンド プロンプト ウィンドウに新しい個々の登録のプロパティが表示されます。
 
 個々の登録が作成されたことを確認できます。 Device Provisioning Service の概要に進み、 **[登録の管理]** を選択してから、 **[個々の登録]** を選択します。 サンプルで使用した登録 ID に対応する新しい登録エントリが表示されます。
 
@@ -159,13 +158,13 @@ C# サービスのサンプルを調べる予定の場合は、このクイッ�
 
 1. ご利用のコンピューターに表示されている C# サンプルの出力ウィンドウを閉じます。
 
-1. Azure portal で Device Provisioning サービスに移動し、 **[登録を管理します]** を選択し、 **[個々の登録]** タブを選択します。このクイックスタートを使用して作成した登録エントリの *[登録 ID]* を選択し、 **[削除]** を選択します。
+1. Azure portal で Device Provisioning サービスに移動し、 **[登録を管理します]** を選択し、 **[個々の登録]** タブを選択します。このクイックスタートを使用して作成した登録エントリの "*登録 ID*" の横にあるチェック ボックスをオンにして、ペイン上部の **[削除]** を押します。
 
 1. [C# デバイス SDK を使用したシミュレートされた TPM デバイスの作成とプロビジョニング](quick-create-simulated-device-tpm-csharp.md)に関するページに記載の手順に従って、シミュレートされた TPM デバイスを作成した場合は、次の手順に従います。
 
     1. TPM シミュレーター ウィンドウと、シミュレートされたデバイスのサンプル出力ウィンドウを閉じます。
 
-    1. Azure Portal で、デバイスがプロビジョニングされた IoT ハブに移動します。 **[エクスプローラー]** の下にあるメニューで、 **[IoT デバイス]** を選択し、ご利用のデバイスの横にあるチェックボックスをオンにして、 **[削除]** を選択します。
+    1. Azure Portal で、デバイスがプロビジョニングされた IoT ハブに移動します。 **[エクスプローラー]** の下のメニューで、 **[IoT デバイス]** を選択し、このクイックスタートで登録したデバイスの "*デバイス ID*" の隣にあるチェック ボックスを選択し、ペイン上部の **[削除]** を押します。
 
 ## <a name="next-steps"></a>次の手順
 

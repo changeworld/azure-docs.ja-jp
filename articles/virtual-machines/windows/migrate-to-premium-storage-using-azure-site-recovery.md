@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 1dc119f0f5949b37603bbc1100a4d89d4f420fd6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bd5f9fc787a6299e8d7c14f4b99f6f4d59cf78af
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033453"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819071"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
@@ -79,7 +79,7 @@ Site Recovery を使用して、リージョン間または同じリージョン
 1. [Azure Portal](https://portal.azure.com)を開きます。
 2. **[リソースの作成]**  >  **[管理]**  >  **[Backup and Site Recovery (OMS)]** を選択します。 または、 **[参照]**  >  **[Recovery Services コンテナー]**  >  **[追加]** を選択します。
    >[!NOTE]
-   >Backup および Site Recovery は以前は ![OMS スイート](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand)に含まれていました。
+   >Backup および Site Recovery は以前は [OMS スイート](/azure/azure-monitor/terminology#april-2018---retirement-of-operations-management-suite-brand)に含まれていました。
 1. VM をレプリケートする先のリージョンを指定します。 今回は同じリージョン内で移行を行うため、ソース VM とソース ストレージ アカウントがあるリージョンを選択します。 
 
 ### <a name="step-2-choose-your-protection-goals"></a>手順 2:保護の目標を選択する 

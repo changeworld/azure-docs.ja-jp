@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 1016fbc1478ec713d50a2f04bcc80d08288b03f3
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 73a76c4442bb8af70168e54a294f2cb100ff653c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827236"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703655"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services マネージド ドメインに対するドメイン参加の問題のトラブルシューティング
 
@@ -32,7 +32,7 @@ VM が Azure AD DS マネージド ドメインを見つけられない場合は
 
 1. Azure AD DS に対して有効になっているのと同じ、またはピアリングされた仮想ネットワークに VM が接続されていることを確認します。 それ以外の場合、VM は参加するためのドメインを見つけて接続することができません。
     * VM が同じ仮想ネットワークに接続されていない場合は、トラフィックが正常に流れるように、仮想ネットワーク ピアリングまたは VPN 接続が *[Active]\(有効\)* または *[Connected]\(接続済み\)* になっていることを確認します。
-1. Azure AD DS マネージド ドメインのドメイン名を使用して、ドメインの ping を試行してください (例: `ping contoso.com`)。
+1. Azure AD DS マネージド ドメインのドメイン名を使用して、ドメインの ping を試行してください (例: `ping aadds.contoso.com`)。
     * ping 応答が失敗した場合は、Azure AD DS マネージド ドメインの、ポータルの概要ページに表示されるドメインの IP アドレスに対して ping を実行します (`ping 10.0.0.4` など)。
     * ドメインではなく IP アドレスを ping できた場合、DNS が正しく構成されていない可能性があります。 Azure AD DS マネージド ドメインの DNS サーバーを仮想ネットワークの DNS サーバーとして構成したことを確認してください。
 1. 仮想マシンの DNS リゾルバー キャッシュのフラッシュを試行します (`ipconfig /flushdns` など)。

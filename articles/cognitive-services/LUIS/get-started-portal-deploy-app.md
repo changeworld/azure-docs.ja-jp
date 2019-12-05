@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 279ec4e8a6d9a9d473cc511b4ec690391cdbd634
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669417"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278538"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータル内でアプリをデプロイする
 
@@ -29,6 +29,7 @@ LUIS アプリがクライアント アプリケーション (チャット ボ�
 
 * [Azure サブスクリプション](https://azure.microsoft.com/free)を取得します。
 * [前のポータルのクイック スタート](get-started-portal-build-app.md)を完了するか、[アプリをダウンロードして、インポート](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)します。
+* Azure リソース認証より前のアプリがある場合は、[Azure リソースに移行します](luis-migration-authoring.md)。 一部のポータル ページは、メール認証が有効になっている場合に表示が異なることがあります。
 
 ## <a name="create-the-endpoint-resource"></a>エンドポイント リソースを作成する
 
@@ -60,7 +61,7 @@ LUIS アプリがクライアント アプリケーション (チャット ボ�
 
 LUIS 向けの新しいリソースを作成するたびに、LUIS アプリにそのリソースを割り当てる必要があります。 割り当てた後は、新しいリソースを作成しない限り、この手順をもう一度実行する必要はありません。 ご自分のアプリのリージョンを拡張したり、より多くの予測クエリをサポートしたりする場合に、新しいリソースを作成します。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、アプリの一覧から **myEnglishApp** アプリを選択します。
+1. [LUIS ポータル](https://preview.luis.ai)にサインインし、アプリの一覧から **myEnglishApp** アプリを選択します。
 
 1. 右上のメニューの **[管理]** を選択し、 **[Azure リソース]** を選択します。
 
@@ -86,7 +87,7 @@ LUIS 向けの新しいリソースを作成するたびに、LUIS アプリに�
 
 ## <a name="prediction-endpoint-request"></a>予測エンドポイントの要求
 
-URL の末尾の `query=` は、GET 要求に対してユーザーの発話を追加する場所です。 `query=` の後に、前のクイック スタートの最後に使用したのと同じユーザーの発話を入力します。
+プレビュー ポータルでは、URL の末尾の `query=` は、GET 要求に対してユーザーの発話を追加する場所です。 `query=` の後に、前のクイック スタートの最後に使用したのと同じユーザーの発話を入力します。
 
 ```Is there a form named hrf-234098```
 

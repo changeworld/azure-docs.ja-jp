@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 6d2955a77c06f371975a7a14675eedceab7c98ae
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 5054ee9a23458944257a8010aaab6268d25042a7
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125537"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414483"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 * [Go](https://golang.org/) プログラミング言語  
 * [Visual Studio Code](https://code.visualstudio.com/)
-* パブリック アプリ ID: df67dcdb-c37d-46af-88e1-8b97951ca1c2
+* パブリック アプリ ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS キーを取得する
 
@@ -27,7 +27,7 @@ ms.locfileid: "74125537"
 
 ## <a name="get-intent-programmatically"></a>プログラムで意図を取得する
 
-Go を使用して、予測エンドポイント GET [API](https://aka.ms/luis-apim-v3-prediction) にクエリを実行し、予測結果を取得します。
+Go を使用して、[予測エンドポイント](https://aka.ms/luis-apim-v3-prediction)のクエリを実行し、予測結果を取得します。
 
 1. `predict.go` という名前で新しいファイルを作成します。 次のコードを追加します。
     
@@ -85,8 +85,8 @@ Go を使用して、予測エンドポイント GET [API](https://aka.ms/luis-a
 
 1. 次の値を置き換えます。
 
-    * `YOUR-KEY` (スターター キーを使用)
-    * `YOUR-ENDPOINT` をご使用のエンドポイント (`westus2.api.cognitive.microsoft.com` など) に
+    * `YOUR-KEY` を、ご利用のスターター キーに。
+    * `YOUR-ENDPOINT` を、ご利用のエンドポイントに。 たとえば、「 `westus2.api.cognitive.microsoft.com` 」のように入力します。
 
 1. このファイルを作成したのと同じディレクトリからコマンド プロンプトで次のコマンドを入力し、Go ファイルをコンパイルします。
 

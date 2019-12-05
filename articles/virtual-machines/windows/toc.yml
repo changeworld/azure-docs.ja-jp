@@ -153,8 +153,10 @@
         - name: ネットワーク パフォーマンス
           href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: VM の種類とサイズ
-      href: sizes.md
+      href: null
       items:
+        - name: サイズ ファミリ
+          href: sizes.md
         - name: 第 2 世代 VM
           href: generation-2.md
         - name: 汎用
@@ -187,6 +189,16 @@
         - name: ハイ パフォーマンス コンピューティング
           displayName: H-series
           href: sizes-hpc.md
+        - name: 予約インスタンス
+          items:
+            - name: VM の前払い
+              href: prepay-reserved-vm-instances.md
+            - name: Azure の予約とは
+              href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+            - name: VM インスタンス サイズの柔軟性
+              href: reserved-vm-instance-size-flexibility.md
+        - name: スポット VM
+          href: spot-vms.md
         - name: 旧世代
           href: sizes-previous-gen.md
           displayName: D-series Ds-series A-series Basic
@@ -260,6 +272,16 @@
               href: dedicated-hosts-powershell.md
             - name: ポータル
               href: dedicated-hosts-portal.md
+        - name: スポット VM のデプロイ
+          items:
+            - name: ポータル
+              href: spot-portal.md
+            - name: PowerShell
+              href: spot-powershell.md
+            - name: Template
+              href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+            - name: エラー コード
+              href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: 'C# の使用'
           href: csharp.md
         - name: 特殊化されたディスクを使用する

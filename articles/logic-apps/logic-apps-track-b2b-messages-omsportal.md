@@ -1,20 +1,19 @@
 ---
-title: Azure Monitor ログを使用して B2B メッセージを追跡する - Azure Logic Apps | Microsoft Docs
+title: Azure Monitor ログで B2B メッセージを追跡する
 description: Azure Log Analytics で統合アカウントと Azure Logic Apps の B2B 通信を追跡します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 33c4efb2b783b5071513f069beac9cdf73c373a8
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997853"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792936"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Azure Monitor ログで B2B メッセージを追跡する
 

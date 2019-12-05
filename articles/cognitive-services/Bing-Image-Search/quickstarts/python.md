@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:イメージを検索する - Bing Image Search REST API と Python
+title: クイック スタート:REST API と Python を使用してイメージを検索する - Bing Image Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Python を使って Bing Image Search REST API にイメージ検索要求を送信し、JSON 応答を受信します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 8dc7bc36b3d4b172521b0fbbf9aa09cf4d1a9b29
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 17864ed471537f80b537af4b3a8679cb9deaab57
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390131"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323815"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>クイック スタート:Bing Image Search REST API と Python を使用してイメージを検索する
 

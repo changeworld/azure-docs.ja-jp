@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 75edb385a86be849ec7c165759d3b451eab804f6
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: fec81e843753656d651c6d5d0b73077a964be9d4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828507"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807444"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric のセキュリティ 
 
@@ -166,7 +166,7 @@ user@linux:$ openssl smime -encrypt -in plaintext_UTF-16.txt -binary -outform de
 ```
 ## <a name="authenticate-service-fabric-applications-to-azure-resources-using-managed-service-identity-msi"></a>マネージド サービス ID (MSI) を使用して Azure リソースに対して Service Fabric アプリケーションを認証する
 
-Azure リソースに対するマネージド ID について詳しくは、「[Azure リソースのマネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview#how-does-it-work)」をご覧ください。
+Azure リソースに対するマネージド ID について詳しくは、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)」をご覧ください。
 Azure Service Fabric クラスターは、[マネージド サービス ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-managed-identities-for-azure-resources) をサポートする仮想マシン スケール セットでホストされています。
 MSI を認証に使用できるサービスの一覧を取得するには、「[Azure AD 認証をサポートしている Azure サービス](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-msi#azure-services-that-support-azure-ad-authentication)」をご覧ください。
 

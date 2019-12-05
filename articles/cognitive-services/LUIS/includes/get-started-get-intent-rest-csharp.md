@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 9ab477ffd7001f0f492f63355baaee26827db845
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2d3a000040ff1b4f6e0ae548b578e8be014dc06a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125540"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414532"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 * [.NET Core V2.2 以上](https://dotnet.microsoft.com/download)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* パブリック アプリ ID: df67dcdb-c37d-46af-88e1-8b97951ca1c2
+* パブリック アプリ ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS キーを取得する
 
@@ -27,7 +27,7 @@ ms.locfileid: "74125540"
 
 ## <a name="get-intent-programmatically"></a>プログラムで意図を取得する
 
-C# を使用して、予測エンドポイント GET [API](https://aka.ms/luis-apim-v3-prediction) にクエリを実行し、予測結果を取得します。 
+C# (.NET Core) を使用して、[予測エンドポイント](https://aka.ms/luis-apim-v3-prediction)のクエリを実行し、予測結果を取得します。
 
 1. `predict-with-rest` のプロジェクト名とフォルダー名を使用して、C# 言語をターゲットとした新しいコンソール アプリケーションを作成します。 
 
@@ -35,12 +35,14 @@ C# を使用して、予測エンドポイント GET [API](https://aka.ms/luis-a
     dotnet new console -lang C# -n predict-with-rest
     ```
 
-1. 次の dotnet CLI コマンドを使用して、必要な依存関係をインストールします。
+1. 先ほど作成した `predict-with-rest` ディレクトリに移動し、次のコマンドを使用して必要な依存関係をインストールします。  
 
     ```console
+    cd predict-with-rest
     dotnet add package System.Net.Http
     ```
-1. Program.cs を次のコードで上書きします。
+
+1. 普段使用している IDE またはエディターで `Program.cs` を開きます。 それから、次のコードで `Program.cs` を上書きします。
     
    ```csharp
     using System;
@@ -102,10 +104,10 @@ C# を使用して、予測エンドポイント GET [API](https://aka.ms/luis-a
 
 1. 次の値を置き換えます。
 
-    * `YOUR-KEY` (スターター キーを使用)
-    * `YOUR-ENDPOINT` をご使用のエンドポイント (`westus2.api.cognitive.microsoft.com` など) に
+    * `YOUR-KEY` を、ご利用のスターター キーに。
+    * `YOUR-ENDPOINT` を、ご利用のエンドポイントに。 たとえば、「 `westus2.api.cognitive.microsoft.com` 」のように入力します。
 
-1. コンソール アプリケーションをビルドします。 
+1. 次のコマンドを使用して、コンソール アプリケーションをビルドします。 
 
     ```console
     dotnet build
@@ -117,7 +119,7 @@ C# を使用して、予測エンドポイント GET [API](https://aka.ms/luis-a
     dotnet run
     ```
 
-1. JSON 形式の予測応答を確認します。
+1. JSON として返される予測応答を確認します。
 
     ```console
     Hit ENTER to exit...

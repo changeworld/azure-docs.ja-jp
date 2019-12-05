@@ -1,18 +1,18 @@
 ---
 title: Azure プライベート DNS とは
-description: Microsoft Azure のプライベート DNS ホスティング サービスの概要。
+description: この記事では、Microsoft Azure のプライベート DNS ホスティング サービスの概要から始めます。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
-ms.author: victorh
-ms.openlocfilehash: 152087ab3dc20dfc95cfeaa0353d961917d362d6
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.author: allensu
+ms.openlocfilehash: 2e457dcccfd89d2dcf94a0cc3728cfee9bb1a611
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959349"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210646"
 ---
 # <a name="what-is-azure-private-dns"></a>Azure プライベート DNS とは
 

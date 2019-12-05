@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/13/2018
-ms.openlocfilehash: 229216ee873ade9418574141017aaf88235ba9e4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d313fed6a61ac98e596e6f8caca8f0e46a8c9600
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820700"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689074"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 
@@ -139,7 +139,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Azure Web Apps で実行されているアプリケーションのパフォーマンス カウンター
 
-Azure Web Apps にデプロイされた ASP.NET アプリケーションと ASP.NET Core アプリケーションは、特別なサンド ボックス環境で実行されます。 この環境では、システム パフォーマンス カウンターへの直接アクセスは許可されません。 ただし、[ここ](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables)に記載されているように、限定されたカウンターのサブセットが、環境変数として公開されています。 ASP.NET および ASP.NET Core 用 Application Insights SDK は、これらの環境変数から、Azure Web Apps からのパフォーマンス カウンターを収集します。 この環境ではカウンターのサブセットのみが使用可能で、完全な一覧は[ここ](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)にあります。
+Azure Web Apps にデプロイされた ASP.NET アプリケーションと ASP.NET Core アプリケーションは、特別なサンド ボックス環境で実行されます。 この環境では、システム パフォーマンス カウンターへの直接アクセスは許可されません。 ただし、[ここ](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables)に記載されているように、限定されたカウンターのサブセットが、環境変数として公開されています。 ASP.NET および ASP.NET Core 用 Application Insights SDK は、これらの環境変数から、Azure Web Apps からのパフォーマンス カウンターを収集します。 この環境ではカウンターのサブセットのみが使用可能で、完全な一覧は[ここ](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/WEB/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)にあります。
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>ASP.NET Core アプリケーションのパフォーマンス カウンター
 

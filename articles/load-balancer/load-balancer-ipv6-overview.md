@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 07dd3ee507f31099e32f18143d2beedf76e83c36
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4f4baea1c293a1707d87780044a21ff675cb7f98
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077020"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666207"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 
@@ -78,7 +78,6 @@ Azure Resource Manager を介してデプロイされた VM のネイティブ I
 * IPv6 の loadDistributionMethod パラメーターの変更は、**現在サポートされてません**。
 * 予約済み IPv6 IP (IPAllocationMethod = static) は、**現在サポートされていません**。
 * NAT64 (IPv6 の IPv4 への変換) はサポートされていません。
-* Standard SKU のロード バランサーでは、現在、IPv6 アドレスはサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 04/03/2019
+ms.date: 11/29/2019
 ms.author: scottwhi
-ms.openlocfilehash: 42a7db316e844e5dbd09fb75a07e1c7883a9cec9
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011726"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689176"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>チュートリアル:Bing Visual Search API に画像をアップロードする
 

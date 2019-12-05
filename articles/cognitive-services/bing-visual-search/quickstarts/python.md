@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Bing Visual Search REST API と Python を使用して画像に関する分析情報を取得する
+title: クイック スタート:REST API と Python を使用して画像に関する分析情報を取得する - Bing Visual Search
 titleSuffix: Azure Cognitive Services
 description: Bing Visual Search API に画像をアップロードし、画像に関する分析情報を取得する方法について説明します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7ec37b4c3bdeb924b3e35dbcb5d07a478611f631
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6fafc35d9d74927789fee3f3fea3014ff3be5717
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59047128"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383174"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>クイック スタート:Bing Visual Search REST API と Python を使用して画像に関する分析情報を取得する
 

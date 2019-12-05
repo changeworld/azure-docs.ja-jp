@@ -7,23 +7,26 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 2afe3da8b4d4bee31b17320ad976e795e91d410a
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: a0fe86e2dcb802b822cb08ed0922b5da9c5cfd1c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71997280"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667275"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Python を使用して Azure Data Explorer のデータベースとテーブルのポリシーを作成する
+
+> [!div class="op_single_selector"]
+> * [C#](database-table-policies-csharp.md)
+> * [Python](database-table-policies-python.md)
+>
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 この記事では、Python を使用して Azure Data Explorer のデータベースとテーブルのポリシーを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-
 * [テスト用のクラスターとデータベース](create-cluster-database-python.md)
-
 * [テスト用のテーブル](python-ingest-data.md#create-a-table-on-your-cluster)
 
 ## <a name="install-the-data-libraries"></a>データ ライブラリをインストールする

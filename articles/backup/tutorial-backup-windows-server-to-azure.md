@@ -1,20 +1,15 @@
 ---
-title: Windows Server を Azure にバックアップする
+title: チュートリアル - Windows Server を Azure にバックアップする
 description: このチュートリアルでは、オンプレミスの Windows Server を Recovery Services コンテナーにバックアップする方法について説明します。
-author: dcurwin
-manager: carmonm
-keywords: windows server バックアップ; windows server をバックアップする; バックアップとディザスター リカバリー
-ms.service: backup
 ms.topic: tutorial
 ms.date: 08/22/2018
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: d57d25eff9548bea9d29f8aa908e9e1721495bd9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073944"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226472"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server を Azure にバックアップする
 
@@ -28,7 +23,7 @@ Azure Backup を利用し、破損、攻撃、災害から Windows Server を守
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure portal (<https://portal.azure.com.>) にサインインする
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 

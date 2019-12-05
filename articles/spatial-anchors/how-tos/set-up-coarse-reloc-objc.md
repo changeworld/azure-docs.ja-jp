@@ -1,5 +1,5 @@
 ---
-title: Objective-C でデバイス上のセンサーを使用してアンカーを作成して配置する方法 | Microsoft Docs
+title: Objective-C での粗い再局在化
 description: Objective-C でデバイス上のセンサーを使用してアンカーを作成して配置する方法の詳細な説明。
 author: bucurb
 manager: dacoghl
@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d08f578ddf17c2666c88081dc7b10c89d04beeb4
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: d60bb9dbb546db1af6f689dbdcb485354fb7174e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093108"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277235"
 ---
 # <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-objective-c"></a>Objective-C でデバイス上のセンサーを使用してアンカーを作成して配置する方法
 
@@ -34,7 +34,7 @@ Azure Spatial Anchors では、デバイス上の配置センサー データを
 - Objective-C に関する基本的な知識。
 - 「[Azure Spatial Anchors の概要](../overview.md)」を読んでいる。
 - [5 分間のクイック スタート](../index.yml)のいずれかを完了している。
-- 「[アンカーを作成および探知する方法](../create-locate-anchors-overview.md)」読んでいる。
+- [アンカーを作成して配置する方法](../create-locate-anchors-overview.md)に関するページを読んでいる。
 
 [!INCLUDE [Configure Provider](../../../includes/spatial-anchors-set-up-coarse-reloc-configure-provider.md)]
 

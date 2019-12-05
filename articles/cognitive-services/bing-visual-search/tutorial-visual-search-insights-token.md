@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.author: rosh
-ms.openlocfilehash: 5f4faa290fe4ed02ab1ed75d23755af5dc20f215
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: dff96b19f40c2d897b6a018a4c46cec60f8aa201
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880606"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689321"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>ImageInsightsToken を使用して以前の検索から似た画像を見つける
 

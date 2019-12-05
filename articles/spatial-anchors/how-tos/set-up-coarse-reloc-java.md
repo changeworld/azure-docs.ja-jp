@@ -1,5 +1,5 @@
 ---
-title: Java でデバイス上のセンサーを使用してアンカーを作成して配置する方法 | Microsoft Docs
+title: Java での粗い再局在化
 description: Java でデバイス上のセンサーを使用してアンカーを作成して配置する方法の詳細な説明。
 author: bucurb
 manager: dacoghl
@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f10251dc0b21e8ca3cd0761652633fe579416ac9
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 2aafaed67e68b5842767de32893eddd829b43164
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093058"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277222"
 ---
 # <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-java"></a>Java でデバイス上のセンサーを使用してアンカーを作成して配置する方法
 
@@ -34,7 +34,7 @@ Azure Spatial Anchors では、デバイス上の配置センサー データを
 - Java の基本的な知識。
 - 「[Azure Spatial Anchors の概要](../overview.md)」を読んでいる。
 - [5 分間のクイック スタート](../index.yml)のいずれかを完了している。
-- 「[アンカーを作成および探知する方法](../create-locate-anchors-overview.md)」読んでいる。
+- [アンカーを作成して配置する方法](../create-locate-anchors-overview.md)に関するページを読んでいる。
 
 [!INCLUDE [Configure Provider](../../../includes/spatial-anchors-set-up-coarse-reloc-configure-provider.md)]
 

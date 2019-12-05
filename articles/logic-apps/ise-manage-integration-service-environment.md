@@ -2,19 +2,16 @@
 title: Azure Logic Apps で統合サービス環境を管理する
 description: ネットワーク正常性を確認し、Azure Logic Apps の統合サービス環境 (ISE) のロジック アプリ、接続、カスタム コネクタ、および統合アカウントを管理します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 6a6b096911ac8596fe29aeb4596f1da6d5266794
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: 1d91813e0f39207bcf7768de89600a6bdee0fc53
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70967810"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792629"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) を管理する
 

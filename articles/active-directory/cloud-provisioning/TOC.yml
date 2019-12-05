@@ -1,0 +1,66 @@
+- name: クラウド プロビジョニング
+  href: index.yml
+- name: 概要
+  items:
+    - name: ID プロビジョニングとは
+      href: what-is-provisioning.md
+    - name: Azure AD Connect クラウド プロビジョニングとは
+      href: what-is-cloud-provisioning.md
+      maintainContext: true
+- name: チュートリアル
+  expanded: true
+  items:
+    - name: 単一の AD フォレストを単一の Azure AD テナントに統合する
+      href: tutorial-single-forest.md
+    - name: 既存のフォレストと新しいフォレストを単一の Azure AD テナントに統合する
+      href: tutorial-existing-forest.md
+    - name: 既存の同期済み AD フォレストに対してクラウド プロビジョニングのパイロットを実施する
+      href: tutorial-pilot-aadc-aadccp.md
+- name: 概念
+  items:
+    - name: パスワード ハッシュ同期とは
+      href: /azure/active-directory/hybrid/whatis-phs?context=azure/active-directory/cloud-provisioning/context/cloud-provisioning-context
+    - name: Azure AD のスキーマ、属性、および式について
+      href: concept-attributes.md
+    - name: Azure Active Directory における属性マッピングの式の書き方
+      href: reference-expressions.md
+- name: ハウツー ガイド
+  items:
+    - name: インストールとアップグレード
+      items:
+        - name: インストールの前提条件
+          href: how-to-prerequisites.md
+        - name: Azure AD Connect クラウド プロビジョニング エージェントのインストール
+          href: how-to-install.md
+        - name: クラウド プロビジョニングの構成
+          href: how-to-configure.md
+    - name: 計画と設計
+      items:
+        - name: Azure AD Connect クラウド プロビジョニングのトポロジとシナリオ
+          href: plan-cloud-provisioning-topologies.md
+    - name: 管理
+      items:
+        - name: エージェントの自動アップグレード
+          href: how-to-automatic-upgrade.md
+    - name: 開発
+      items:
+        - name: 変換
+          href: how-to-transformation.md
+        - name: Azure AD の同期 API
+          href: 'https://docs.microsoft.com/graph/api/resources/synchronization-overview'
+    - name: トラブルシューティング
+      items:
+        - name: クラウド プロビジョニングに関するトラブルシューティング
+          href: how-to-troubleshoot.md
+        - name: 重複する属性
+          href: 'https://docs.microsoft.com/office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync'
+- name: リファレンス
+  items:
+    - name: Azure AD Connect クラウド プロビジョニング エージェントのバージョン履歴
+      href: /azure/active-directory/manage-apps/provisioning-agent-release-version-history?context=azure/active-directory/cloud-provisioning/context/cp-context
+    - name: Azure AD Connect クラウド プロビジョニングに関する FAQ
+      href: reference-cloud-provisioning-faq.md
+    - name: 同期される属性
+      href: /azure/active-directory/hybrid/reference-connect-sync-attributes-synchronized?context=azure/active-directory/cloud-provisioning/context/cp-context
+    - name: Active Directory と Azure AD の基本的な環境
+      href: tutorial-basic-ad-azure.md

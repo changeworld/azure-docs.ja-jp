@@ -3,16 +3,17 @@ title: Windows 用の Azure Key Vault VM 拡張機能
 description: 仮想マシンの拡張機能を使用して、仮想マシンに Key Vault シークレットの自動更新を実行するエージェントをデプロイします。
 services: virtual-machines-windows
 author: msmbaldwin
+tags: keyvault
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.date: 09/23/2018
+ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 03351e964fc7247f87d0b823fae06fc03ff18de7
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 1d2606296ba55c0ef66d118091f6764f7a285137
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152105"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806781"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -40,20 +41,20 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault",
-            "type": "KeyVaultForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "secretsManagementSettings": {
-                    "pollingIntervalInS": <polling interval in seconds>,
-                    "certificateStoreName": <certificate store name, e.g.: "MY">,
-                    "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
-                    "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-                    "requireInitialSync": <initial synchronization of certificates e..g: true>,
-                    "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-                }         
-            }
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForWindows",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "secretsManagementSettings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "linkOnRenewal": <Only Windows. This feature enables auto-rotation of SSL certificates, without necessitating a re-deployment or binding.  e.g.: false>,
+          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "requireInitialSync": <initial synchronization of certificates e..g: true>,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+        }      
+      }
       }
     }
 ```
@@ -68,7 +69,7 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
 | 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault| string |
+| publisher | Microsoft.Azure.KeyVault | string |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | string |
@@ -95,17 +96,17 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault",
-            "type": "KeyVaultForWindows",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                    "pollingIntervalInS": <polling interval in seconds>,
-                    "certificateStoreName": <certificate store name, e.g.: "MY">,
-                    "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-                    "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-                }         
-            }
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForWindows",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+        }      
+      }
       }
     }
 ```
@@ -120,10 +121,10 @@ Azure PowerShell を使用すると、Key Vault VM 拡張機能を既存の仮�
     ```powershell
         # Build settings
         $settings = '{"secretsManagementSettings": 
-            { "pollingIntervalInS": "' + <pollingInterval> + 
-            '", "certificateStoreName": "' + <certStoreName> + 
-            '", "certificateStoreLocation": "' + <certStoreLoc> + 
-            '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        { "pollingIntervalInS": "' + <pollingInterval> + 
+        '", "certificateStoreName": "' + <certStoreName> + 
+        '", "certificateStoreLocation": "' + <certStoreLoc> + 
+        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName =  "KeyVaultForWindows"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
@@ -140,10 +141,10 @@ Azure PowerShell を使用すると、Key Vault VM 拡張機能を既存の仮�
     
         # Build settings
         $settings = '{"secretsManagementSettings": 
-            { "pollingIntervalInS": "' + <pollingInterval> + 
-            '", "certificateStoreName": "' + <certStoreName> + 
-            '", "certificateStoreLocation": "' + <certStoreLoc> + 
-            '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        { "pollingIntervalInS": "' + <pollingInterval> + 
+        '", "certificateStoreName": "' + <certStoreName> + 
+        '", "certificateStoreLocation": "' + <certStoreLoc> + 
+        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName = "KeyVaultForWindows"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
@@ -185,8 +186,8 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 
 次の制限/要件に注意してください。
 - Key Vault の制限:
-    - デプロイ時に存在している必要があります 
-    - MSI を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されていること
+  - デプロイ時に存在している必要があります 
+  - MSI を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されていること
 
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
@@ -208,7 +209,7 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 拡張機能の実行の出力は、次のファイルにログ記録されます。
 
 ```
-%windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.Edp.KeyVaultForWindows\<version>\akvvm_service_<date>.log
+%windrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.KeyVault.KeyVaultForWindows\<version>\akvvm_service_<date>.log
 ```
 
 

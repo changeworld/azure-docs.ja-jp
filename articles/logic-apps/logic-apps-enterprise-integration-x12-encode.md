@@ -1,21 +1,19 @@
 ---
-title: X12 メッセージをエンコードする - Azure Logic Apps | Microsoft Docs
+title: X12 メッセージをエンコードする
 description: Enterprise Integration Pack を備えた Azure Logic Apps で、X12 メッセージ エンコーダーを使用して EDI の検証および XML エンコード メッセージの変換を行います
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.date: 01/27/2017
-ms.openlocfilehash: 871d6d2b2019372bd258f8909ed0feeeddac4af7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705690"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792349"
 ---
 # <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack を備えた Azure Logic Apps で X12 メッセージをエンコードする
 
@@ -93,5 +91,5 @@ X12 Encode コネクタは次のタスクを実行します。
 [Swagger の詳細](/connectors/x12/)を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
-[Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") 
+[Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する") 
 

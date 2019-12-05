@@ -4,15 +4,15 @@ description: Azure Migrate サービスを使用したサーバーの評価と�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/19/2019
+ms.date: 11/30/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a64e7366281f15c94d6551c1f7be27f461737634
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5843e6a5669cd90cdc0572e7a104c4fdf70ac2b3
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185788"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74669129"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 

@@ -74,8 +74,9 @@
         - name: ネットワーク パフォーマンス
           href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: VM の種類とサイズ
-      href: sizes.md
       items:
+        - name: サイズ ファミリ
+          href: sizes.md
         - name: 第 2 世代 VM
           href: generation-2.md
         - name: 汎用
@@ -103,6 +104,16 @@
               href: n-series-driver-setup.md
         - name: ハイ パフォーマンス コンピューティング
           href: sizes-hpc.md
+        - name: 予約インスタンス
+          items:
+            - name: VM の前払い
+              href: prepay-reserved-vm-instances.md
+            - name: Azure の予約とは
+              href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: VM インスタンス サイズの柔軟性
+              href: reserved-vm-instance-size-flexibility.md
+        - name: スポット VM
+          href: spot-vms.md
         - name: 旧世代
           href: sizes-previous-gen.md
         - name: Isolated のサイズ
@@ -186,6 +197,16 @@
               href: dedicated-hosts-cli.md
             - name: ポータル
               href: dedicated-hosts-portal.md
+        - name: スポット VM のデプロイ
+          items:
+            - name: CLI
+              href: spot-cli.md
+            - name: ポータル
+              href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
+            - name: Template
+              href: spot-template.md
+            - name: エラー コード
+              href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
     - name: VM のセキュリティ保護
       items:
         - name: Recommendations

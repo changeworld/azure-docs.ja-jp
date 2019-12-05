@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:REST API を使用して Postman で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
-description: Postman、サンプル データ、および定義を使用して Azure Cognitive Search REST API を呼び出す方法について説明します。
+description: この REST API クイックスタートでは、Postman、サンプル データ、および定義を使用して Azure Cognitive Search REST API を呼び出す方法について説明します。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 11/04/2019
-ms.openlocfilehash: 00d1122a8b56237eeb20892ad05cdbbcbe247510
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9014a83596a3eee71f43d12a73188c1c43b832af
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792277"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406956"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>クイック スタート:REST API を使用して Postman で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -288,7 +288,7 @@ URL に `/stats` を追加すると、インデックスの情報が返されま
 
 API バージョンの構文が異なる点に注目してください。 この要求では、`?` を使用して API バージョンを付加しています。 `?` により、URL パスとクエリ文字列を区切り、& により、クエリ文字列内の各 "名前=値" ペアを区切ります。 このクエリのクエリ文字列では、API バージョンは最初で唯一の項目です。
 
-## <a name="clean-up"></a>クリーンアップ
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 

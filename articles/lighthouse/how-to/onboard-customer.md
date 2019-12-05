@@ -3,12 +3,12 @@ title: Azure の委任されたリソース管理に顧客をオンボードす�
 description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: fde0e82ff2dcf048643524b5a2d076d66a4f5a50
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 88e75b92ca09f3c6671fe4399c4672240f863f66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463939"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689258"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Azure の委任されたリソース管理に顧客をオンボードする
 
@@ -335,7 +335,7 @@ az managedservices assignment list
 
 # Delete the registration assignment
 
-az managedservices assignment delete –assignment <id or full resourceId>
+az managedservices assignment delete --assignment <id or full resourceId>
 ```
 
 ## <a name="next-steps"></a>次の手順

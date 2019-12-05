@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24279ff81daf0a350aa5234e78f27a99b7e4a03e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4b64c420290bec687388690f1c901c2ae789a3c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527998"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707566"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG アクセスと Azure Bastion を使用する
 
@@ -58,7 +58,7 @@ NSG を作成して ***AzureBastionSubnet*** に適用する場合は、NSG に�
 * **診断ログとその他:** 443 での AzureCloud への送信。 このサービス タグ内で地域タグはまだサポートされていません。
 * **ターゲット VM:** 3389 および 22 に対する VirtualNetwork への送信
 
-NSG ルールの例は、この[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)で参照できます。
+NSG ルールの例は、この[クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)で参照できます。
 
 ## <a name="next-steps"></a>次の手順
 

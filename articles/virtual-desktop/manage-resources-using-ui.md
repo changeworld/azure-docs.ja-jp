@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ad0c67cea6a5a9b487cd47aa7c10d10da1438050
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904905"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384280"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>チュートリアル:管理ツールをデプロイする
 
@@ -63,10 +63,9 @@ Azure Resource Manager テンプレートをデプロイした後に、管理 UI
 ### <a name="guidance-for-template-parameters"></a>テンプレート パラメーターのガイダンス
 このツールを構成するためのパラメーターを入力する方法は次のとおりです。
 
-- これは、RD ブローカーの URL (https:\//rdbroker.wvd.microsoft.com/) です。
-- これは、リソースの URL (https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod) です。
-- MFA が無効になっているご自分の AAD 資格情報を使用して、Azure にサインインします。 「[Azure Resource Manager テンプレートの実行に必要なもの](#what-you-need-to-run-the-azure-resource-manager-template)」を参照してください。
-- この管理ツールには、ご使用の Azure Active Directory に登録されるアプリケーションの一意の名前を使用します。たとえば、Apr3UX です。
+- **isServicePrincipal** パラメーターには、**false** を選択します。
+- 資格情報には、多要素認証を無効にした Azure Active Directory 資格情報を入力します。 この資格情報は、Azure にサインインして Azure AD アプリケーションと Azure Web アプリのリソースを作成するために使用するものです。 詳細については、「[Azure Resource Manager テンプレートの実行に必要なもの](#what-you-need-to-run-the-azure-resource-manager-template)」を参照してください。
+- **applicationName** には、ご使用の Azure Active Directory に登録されるアプリの一意の名前を使用します。 この名前は、Web アプリの URL にも使用されます。 たとえば、"Apr3UX" のような名前を使用できます。
 
 ## <a name="provide-consent-for-the-management-tool"></a>管理ツールに対して同意を与える
 

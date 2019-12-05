@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Bing Spell Check REST API と PHP を使用してスペルをチェックする
+title: クイック スタート:REST API と PHP を使用してスペルをチェックする - Bing Spell Check
 titleSuffix: Azure Cognitive Services
 description: このシンプルな PHP アプリケーションは、Bing Spell Check API に要求を送信して、一連の修正候補を返します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 4437297c99e346209cf1f7a8973ea0f6f81894af
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 8c95f0960c098ad56affc641996f1b52681d473e
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110789"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383864"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>クイック スタート:Bing Spell Check REST API と PHP を使用してスペルをチェックする
 

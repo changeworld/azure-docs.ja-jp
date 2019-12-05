@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Ruby を使用して Bing Entity Search REST API に検索要求を送信する
+title: クイック スタート:Ruby を使用して REST API に検索要求を送信する - Bing Entity Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Ruby を使って Bing Entity Search REST API に要求を送信し、JSON 応答を受信します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: e892d9917d0cc295236ee5e134348248dd4817a1
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 076fad8c1fc6fdd4bccf07f5eb3223800eddd4a0
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034511"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323550"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Bing Entity Search API のクイック スタート (Ruby)
 

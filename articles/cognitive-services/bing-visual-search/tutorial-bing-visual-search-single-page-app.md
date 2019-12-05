@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: e0370be1c10bc0f5813bec833be78ad31a3d61a7
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 02095a307e5227f477f51e857ee423d22a8edf8f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880638"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689156"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>Visual Search のシングルページ Web アプリを作成する
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Bing Video Search SDK for Python を使用して動画を検索する
+title: クイック スタート:Python 用の SDK を使用して動画を検索する - Bing Video Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Bing Video Search SDK for Python を使用して動画の検索要求を送信します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 5fb6b2b349712a04b79564f9b748538a5cc32d73
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 62f929f3428ef7534d833e54b0b8f492636b8a7e
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446980"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378752"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-python"></a>クイック スタート:Bing Video Search SDK for Python で動画の検索を実行する
 

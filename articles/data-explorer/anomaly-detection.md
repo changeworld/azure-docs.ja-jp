@@ -3,16 +3,16 @@ title: Azure Data Explorer での時系列の異常検出と予測
 description: Azure Data Explorer を使用して異常検出と予測のために時系列データを分析する方法について説明します。
 author: orspod
 ms.author: orspodek
-ms.reviewer: jasonh
+ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: f40350129a12c7865051bcae80b74b6f9c069179
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e06569a3a6948836201b333501bf2de0416d4ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233532"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766040"
 ---
 # <a name="anomaly-detection-and-forecasting-in-azure-data-explorer"></a>Azure Data Explorer での異常検出と予測
 
@@ -30,6 +30,8 @@ Azure Data Explorer を使用すると、クラウド サービスまたは IoT 
 分解モデルを作成するには、関数 [`series_decompose()`](/azure/kusto/query/series-decomposefunction) を使用します。 `series_decompose()` 関数では、時系列のセットを受け取ると、各時系列が季節的、傾向的、残余、ベースラインの各コンポーネントを自動的に分解されます。 
 
 たとえば、次のクエリを使用して、内部の Web サービスのトラフィックを分解することができます。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WQ3WrDMAyF7/sUukvCnDXJGIOVPEULuwxqoixm/gm2+jf28JObFjbYrmyho3M+yRCD1a5jaGFAJtaW8qaqX8qqLqvnYrMySYHnvxRNWT1B07xW1U03JFEzbVYDWd9Z/KAuUtAUm9UXpLJcSnAH2+LxPZe3AO9gJ6ZbRjvDGLy9EbG/BUemOXnvLxD1AOJ1mijQtWhbyHbbOgOA9RogkqGeAaXn3g1BooVb6OiDNHpD6CjAUccDGv2JrL0TSzozuQHyPYqHdqRkDKN3aBRwkJaCQJIoQ4VsuXh2A/Xezj5SWkVBWSvI0vSoOSsWpLtEpyDwY4KTW8nnJ5ws+2+eAhSyOxjkd+HDVVcIfHplp2TYTxgYTpqnnDUbarM32gPO86PY4jjqfmGw3vGkftNlCi5xNprbWW5kYvENQQnqDh8CAAA=) **\]**
 
 ```kusto
 let min_t = datetime(2017-01-05);
@@ -56,6 +58,8 @@ demo_make_series2
 
 次のクエリでは、Web サービスの内部トラフィックでの異常を検出できます。
 
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA3WR3W7CMAyF73mKI25KpRbaTmjSUJ8CpF1WoXVptPxUifmb9vBLoGO7GFeR7ePv2I4ihpamYdToBBNLTYuqKF/zosyLdbqZqagQl/8UVV68oKreimLSdVFUDZtZR9o2WnxQ48lJ8tXsCzHM7yHMUdfidFiEN4U12AXoloUe0Turp4nYTsaeaYzs/RVedgis80CObkFdI9ltywTAagV4UtQyRKiZgyLEaTGZ9taFQqtIGHI4SX8USn4KltYEJF2YTIeFMFaHPPkMvrWOMuxFoEpDaVjujmo6aq0erafmIY+7ZCiX6wx5mSGJHb3kJA1sF8jB8q69toNwjLPkYfGTseqoja//eLNkRXXyTnuIcVyCneh72cL2YQdtDQ8ZHvIkDcsfPWH+3AvPvObx0FMXD/RLhfDYW9VhtNKwj/8U69M1b2S//AbRUQMWQQIAAA==) **\]**
+
 ```kusto
 let min_t = datetime(2017-01-05);
 let max_t = datetime(2017-02-03 22:00);
@@ -79,6 +83,8 @@ demo_make_series2
 
 次のクエリでは、次の週の Web サービス トラフィックを予測できます。
 
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA22QzW6DMBCE73mKuQFqKISqitSIW98gkXpEDl5iK9hG9uanUR++dqE99YRGO8x845EYRtuO0UIKJtaG8qbebMt6U9avxW41Joe4/+doyvoFTfNW14tPJlOjZqGc1w9n263crSQZ1xlxpi6Q1xSa1ReSLGcJezGtuJ7y+C3gLA6xZM/CTBi8MwshuxnkaUlGYJpS5/ETQUvEzJsiTz+ibZEd9psMQFUBgUbqGSLe7GkkpBVYygfn46EfSVjyuOpwEaN+CNbOxki6M1mZTNSLkAbOv3WSemcmF6j7vSX8dcTUlvOFsZJcFDHFx4wYnmp7JTzjplnlrHmkNvugI8Q0PYO9GAbdww0RyDjLav1XHLnBimAjEG5E5zQ7vRP284x36hOOTtxZ8Q3The8P2QEAAA==) **\]**
+
 ```kusto
 let min_t = datetime(2017-01-05);
 let max_t = datetime(2017-02-03 22:00);
@@ -88,7 +94,7 @@ demo_make_series2
 | make-series num=avg(num) on TimeStamp from min_t to max_t+horizon step dt by sid 
 | where sid == 'TS1'   //  select a single time series for a cleaner visualization
 | extend forecast = series_decompose_forecast(num, toint(horizon/dt))
-| render timechart with(title='Web app. traffic of a month, forecasting the next week by Time Series Decmposition')
+| render timechart with(title='Web app. traffic of a month, forecasting the next week by Time Series Decomposition')
 ```
 
 ![時系列予測](media/anomaly-detection/series-forecasting.png)
@@ -101,6 +107,8 @@ demo_make_series2
 Azure Data Explorer のクエリ言語構文では、1 回の呼び出しで複数の時系列を処理できます。 それ固有の最適化された実装では、リアルタイムに近いシナリオで何千ものカウンターを監視する場合、異常検出と予測を効果的に行うのに不可欠な高いパフォーマンスを実現できます。
 
 次のクエリを見ると、3 つの時系列が同時に処理されているのがわかります。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA21Qy26DMBC85yvmFlChcUirSI34ikTqETl4KVawjfDmqX587UCaHuqLtePxPLYjhtG2YpRQkom1oaQQy3Uulrl4TzezLjLk5T9GkYsViuJDiImnIqlox6F1g745W67VZqbIuMrIA1WeBk2+mH0jjvk4wh5NKU9fSbhTOItdMNmyND2awZkpIbsxyMukDM/UR8/9FV6rIEkXJqvgmsYTl7X0lISHspzvtqt5hjdxPxkeYBHA4gGKFMBiAUilIAfWja617CY1NG4ASX/FSfuj7PRNsg4ZXANz7Fj3HSGuBmOjZ5hYbcSqIBwbZpNk+iQFcQpx4/omrqLamd55qh5v41d22nIybWChOI0qQ9Cg4e5ftyE6zprbhDV3VM4/aQ/Z96/gQTahU4wsYZzlNvs11vYL3BJsCIQz0eHed/W30jz9AUEBI0ktAgAA) **\]**
 
 ```kusto
 let min_t = datetime(2017-01-05);

@@ -1,19 +1,19 @@
 ---
 title: Azure portal で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
-description: データ インポート ウィザードを使用して、初めての検索インデックスを Azure Cognitive Search に作成して読み込み、クエリを実行します。
+description: このポータル クイックスタートでは、データ インポート ウィザードを使用して、初めての検索インデックスを Azure Cognitive Search に作成して読み込み、クエリを実行する方法について説明します。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: ee4e9bd5487382ebb6f57996aac5d3de1ff6162a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: be2425d97573e7990ea7f0dfd4c2d999e85fe922
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889937"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406995"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -25,14 +25,7 @@ ms.locfileid: "73889937"
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-ポータルを使用して概念を簡単に把握し、インデックスに対する興味深いクエリを数分で作成します。
-
-> [!div class="checklist"]
-> * Azure にホストされている無料のパブリック サンプル データセットから開始する
-> * Azure Cognitive Search 内の**データ インポート** ウィザードを実行してデータを読み込み、インデックスを生成する
-> * ポータル上でインデックス作成の進行状況を監視する
-> * 既存のインデックスとそれを変更するためのオプションを表示する
-> * **Search エクスプローラー**を使用して、フルテキスト検索、フィルター、ファセット、あいまい検索、地理空間検索について確認する
+ポータルの **データ インポート** ウィザードおよび **Search エクスプローラー** ツールを使用して概念を簡単に把握し、インデックスに対する興味深いクエリを数分で作成します。
 
 ツールに制限がありすぎる場合は、[.NET での Azure Cognitive Search のプログラミングに関するコーディングを前提とした概要記事](search-howto-dotnet-sdk.md)を検討するか、または [REST API の呼び出しを行うために Postman](search-get-started-postman.md) を使います。 
 
@@ -265,7 +258,7 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 ポータル上で、インデックス、インデクサー、データ ソースを検索する方法も学びました。 今後、新しいデータ ソースを扱うときにも、ポータルから、ごくわずかな労力で、その定義やフィールド コレクションを簡単に調べることができるでしょう。
 
-## <a name="clean-up"></a>クリーンアップ
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
@@ -275,8 +268,7 @@ Azure portal の **Search エクスプローラー**を使って、フィルタ�
 
 ## <a name="next-steps"></a>次の手順
 
-次のプログラム ツールを使えば、Azure Cognitive Search の可能性がさらに広がります。
+ポータルは最初の探索や小規模なタスクに役立ちますが、API を早い段階で確認することは、概念とワークフローをより深いレベルで理解するのに役立ちます。
 
-* [.NET SDK を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
-* [REST API を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Postman または Fiddler と Azure Cognitive Search の REST API を使用してインデックスを作成する](search-get-started-postman.md)
+> [!div class="nextstepaction"]
+> [.NET SDK を使用してインデックスを作成する](https://docs.microsoft.com/azure/search/search-create-index-dotnet)

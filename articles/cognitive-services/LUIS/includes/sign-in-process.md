@@ -10,18 +10,19 @@ ms.subservice: luis
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 1effd07cef439a6257028549b7b7114b742eb478
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5e7feac35ddd607d36cb0ddd3bae10cf1b9bc7a7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488764"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278599"
 ---
 ## <a name="sign-in-to-luis-portal"></a>LUIS ポータルにサインインする
 
 LUIS の新しいユーザーは、次の手順に従う必要があります。
 
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、国を選択して利用規約に同意します。
+1. [LUIS ポータル (プレビュー)](https://preview.luis.ai) にサインインし、国を選択して利用規約に同意します。 代わりに **[マイ アプリ]** が表示される場合は、LUIS リソースが既に存在しているため、次の手順に進んでアプリを作成してください。
+
 1. **[Create Azure resource]\(Azure リソースの作成\)** を選択し、 **[Create an authoring resource to migrate your apps to]\(アプリの移行先となるオーサリング リソースの作成\)** を選択します。
 
     ![Language Understanding のオーサリング リソースのタイプを選択する](../media/luis-how-to-azure-subscription/sign-in-create-resource.png)

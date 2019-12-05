@@ -1,22 +1,18 @@
 ---
-title: Bing Search への接続 - Azure Logic Apps
+title: Bing Search に接続する
 description: Bing Search REST API と Azure Logic Apps を使用してニュースを検索します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: f7558a5836d8f087e719346fb38bbf24ece2c8fb
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c3b6cb61e2f7b91b3b1e3595da2d105c5cdb01c8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026772"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789956"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Bing Search と Azure Logic Apps を使用してニュースを検索する
 

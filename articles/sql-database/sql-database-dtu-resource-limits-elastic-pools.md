@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 8b5d87d62f1db5e7d472af4cc2153d8841be6241
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1dd0f90a9844bb3afbd15e1f8c804d3a7c6b7fff
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826558"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687688"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU 購入モデルを使用したエラスティック プールのリソース制限
 
@@ -89,7 +89,7 @@ ms.locfileid: "73826558"
 | プールあたりの最大同時実行ワーカー (要求) 数 | 200 | 400 | 800 | 1600 | 2400 |
 | プールあたりの最大同時セッション数 | 30000 | 30000 | 30000 | 30000 | 30000 |
 | データベースあたりの最小 eDTU 数 | 0、25、50、75、125 | 0、25、50、75、125、250 | 0、25、50、75、125、250、500 | 0、25、50、75、125、250、500、1000 | 0、25、50、75、125、250、500、1000、1500 |
-| データベースあたりの最大 eDTU 数 | 25、50、75、125 | 25、50、75、125、250 | 25、50、75、125、250、500 | 25、50、75、125、250、500、1000 | 25、50、75、125、250、500、1000、1500 |
+| データベースあたりの最大 eDTU 数 | 25、50、75、125 | 25、50、75、125、250 | 25、50、75、125、250、500 | 25、50、75、125、250、500、1000 | 25、50、75、125、250、500、1000|
 | データベースあたりの最大ストレージ (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 |||||||
 

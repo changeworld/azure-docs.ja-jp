@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Bing Video Search REST API と Node.js を使用して動画を検索する
+title: クイック スタート:REST API と Node.js を使用して動画を検索する - Bing Video Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、JavaScript を使用して Bing Video Search REST API に動画の検索要求を送信します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 786302b882fbd59932af17ccc6a390fa41b30ac9
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e9d7aeabceb77597d826d6c76dbdddc625ad45cc
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932954"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383808"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>クイック スタート:Bing Video Search REST API と Node.js を使用して動画を検索する
 

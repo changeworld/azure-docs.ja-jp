@@ -1,20 +1,20 @@
 ---
 title: クイック スタート:REST API を使用して Java で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
-description: Java と Azure Cognitive Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
+description: この Java クイックスタートでは、Azure Cognitive Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 manager: nitinme
-author: lisaleib
-ms.author: v-lilei
+author: HeidiSteen
+ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 9f30c30276db6daa0b4afdf3e6bdd8e617dedc52
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5e53167a083b5e89bd88a45452929dd40f0868f2
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792814"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406729"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>クイック スタート:REST API を使用して Java で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -817,7 +817,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     各クエリの概要とその結果を確認します。 この実行の完了時には、ビルド成功のメッセージとゼロ (0) 終了コードが表示されます。
 
-## <a name="clean-up"></a>クリーンアップ
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 所有するサブスクリプションを使用している場合は、プロジェクトの終了時に、不要になったリソースを削除することをお勧めします。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
@@ -827,10 +827,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-この Java クイックスタートでは、インデックスの作成、ドキュメントを利用した読み込み、およびクエリの実行を行う一連のタスクに取り組みました。 基本的な概念を十分理解している場合は、さらに詳しく学習するために次の記事をお勧めします。
+この Java クイックスタートでは、インデックスの作成、ドキュメントを利用した読み込み、およびクエリの実行を行う一連のタスクに取り組みました。 基本的な概念を十分理解している場合は、REST でのインデクサーの操作を一覧にした次の記事をお勧めします。
 
-+ [インデックスの操作](/rest/api/searchservice/index-operations)
-
-+ [ドキュメントの操作](/rest/api/searchservice/document-operations)
-
-+ [インデクサーの操作](/rest/api/searchservice/indexer-operations)
+> [!div class="nextstepaction"]
+> [インデクサーの操作](/rest/api/searchservice/indexer-operations)

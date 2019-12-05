@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37db9b9679e904aed33de404e91c9f461d3388d7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 83a4323c2679bdf55709aeaed82134b7b4457fee
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150870"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803701"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>条件付きアクセス:Require compliant devices (準拠しているデバイスが必須)
 
@@ -34,7 +34,7 @@ Microsoft Intune をデプロイした組織では、デバイスから返され
 リソースにアクセスするデバイスが組織の Intune 準拠ポリシーに準拠しているとマークされていることを要求する条件付きアクセス ポリシーを作成するには、次の手順に従います。
 
 1. **Azure portal** にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
-1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。
+1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** の順に移動します。
 1. **[新しいポリシー]** を選択します。
 1. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。
 1. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。

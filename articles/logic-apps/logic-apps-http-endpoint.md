@@ -1,20 +1,17 @@
 ---
-title: ロジック アプリの呼び出し、トリガー、または入れ子 - Azure Logic Apps
+title: ロジック アプリを呼び出し、トリガーし、入れ子にする
 description: Azure Logic Apps でロジック アプリ ワークフローの呼び出し、トリガー、または入れ子を行う HTTP エンドポイントを設定する
 services: logic-apps
-ms.service: logic-apps
 ms.workload: integration
-author: ecfan
-ms.author: klam
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, jehollan, logicappspm
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: 27a3bf036cce27a5f215068ff71928cb7e181452
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dbb91106ad00e1a82e2e6e9c470e61764a4ad4c4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833964"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792037"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>Azure Logic Apps で HTTP エンドポイントを使用して、ロジック アプリの呼び出し、トリガー、または入れ子を行います。
 
@@ -101,7 +98,7 @@ HTTP エンドポイントを設定するには、次のいずれかのトリガ
 
       **[要求本文の JSON スキーマ]** ボックスに、生成されたスキーマが表示されます。
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
    **[この URL に HTTP POST]** ボックスに、他のサービスがロジック アプリの呼び出しやトリガーに使用できる生成されたコールバック URL が表示されます。 この URL には、クエリ パラメーター内の (認証に使用される) Shared Access Signature (SAS) キーが含まれています。たとえば、次のようになります。
 
@@ -173,7 +170,7 @@ HTTP エンドポイントを設定するには、次のいずれかのトリガ
 
    ![パラメーターを含む応答本文の例](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
     HTTP エンドポイントの URL に以下の例のような相対パスが含まれるようになりました。
 

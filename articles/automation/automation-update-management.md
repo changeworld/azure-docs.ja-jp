@@ -4,17 +4,17 @@ description: この記事では、Azure Update Management ソリューション�
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 05/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 66acb1284f0814eec91715284259272a065dbae2
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 06d7ede1e9b91832f908c87a22cca37ec2866365
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690894"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806543"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 

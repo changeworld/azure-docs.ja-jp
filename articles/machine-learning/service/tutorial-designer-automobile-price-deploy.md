@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:デザイナーで機械学習モデルをデプロイする
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning デザイナー (プレビュー) で予測分析ソリューションを構築する方法について説明します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行います。
+description: このチュートリアルでは、Azure Machine Learning デザイナー (プレビュー) で予測分析ソリューションを構築する方法について説明します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行います。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 724a38cb516e5689f817e9ddeaa867b17274971b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 31b06f3ad102f39d1a9f95dee2bd98b5d0a3b310
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932039"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483319"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>チュートリアル:デザイナー (プレビュー) で機械学習モデルをデプロイする
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "73932039"
 
     これでパイプラインは次のようになっているはずです。 
 
-   ![デプロイ準備が完了したパイプラインの予測される構成を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
+   ![デプロイ準備が完了したパイプラインの予測される構成を示すスクリーンショット](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
     **[Create inference pipeline]\(推論パイプラインの作成\)** を選択すると、以下のようないくつかの処理が行われます。
     
@@ -70,13 +70,13 @@ ms.locfileid: "73932039"
 
 1. ナビゲーション リボンで、 **[Inference Clusters]\(推論クラスター\)**  >  **[+ New]\(+ 新規\)** の順に選択します。
 
-    ![推論クラスターの新規作成ペインに移動する方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
+    ![推論クラスターの新規作成ペインに移動する方法を示すスクリーンショット](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 
 1. 推論クラスター ウィンドウで、新しい Kubernetes サービスを構成します。
 
 1. **[Compute name]\(コンピューティング名\)** に「*aks-compute*」と入力します。
     
-1. **[Region]\(リージョン\)** に、使用できる近くのリージョンを選択します。
+1. **[Region]\(リージョン\)** には、使用できる近くのリージョンを選択します。
 
 1. **作成** を選択します。
 
@@ -96,7 +96,7 @@ AKS サービスのプロビジョニングが完了したら、リアルタイ�
 
 1. **[デプロイ]** を選択します。
 
-    ![新しいリアルタイム エンドポイントの設定方法を示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+    ![新しいリアルタイム エンドポイントの設定方法を示すスクリーンショット](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
 
     デプロイが完了すると、キャンバスの上に成功通知が表示されます。 これには数分かかる可能性があります。
 
@@ -106,7 +106,7 @@ AKS サービスのプロビジョニングが完了したら、リアルタイ�
 
 1. **[Endpoints]\(エンドポイント\)** ページで、デプロイ済みのエンドポイントを選択します。
 
-    ![リアルタイム エンドポイントのタブを示すスクリーンショット (強調表示されているのは、先ほど作成したエンドポイント)](./media/ui-tutorial-automobile-price-deploy/endpoints.png)
+    ![リアルタイム エンドポイントのタブを示すスクリーンショット (強調表示されているのは、先ほど作成したエンドポイント)](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
 
 1. **[テスト]** を選択します。
 
@@ -114,7 +114,7 @@ AKS サービスのプロビジョニングが完了したら、リアルタイ�
 
     ポータルからエンドポイントにテスト要求が送信されて、その結果が表示されます。 価格値は入力データに対して生成されますが、予測値を生成するためには使用されません。
 
-    ![リアルタイム エンドポイントのテスト方法を示すスクリーンショット (強調表示されているのは価格のスコア付けラベル)](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
+    ![リアルタイム エンドポイントのテスト方法を示すスクリーンショット (強調表示されているのは価格のスコア付けラベル)](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

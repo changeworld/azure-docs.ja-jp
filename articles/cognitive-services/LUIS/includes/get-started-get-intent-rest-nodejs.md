@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/18/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 10216b52ded61328a73e5401549a59e6abc4667a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: b158f3738e5d5e33c831e7312c167e5185d19e95
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125538"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414508"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 * [Node.js](https://nodejs.org/) プログラミング言語 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* パブリック アプリ ID: df67dcdb-c37d-46af-88e1-8b97951ca1c2
+* パブリック アプリ ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS キーを取得する
 
@@ -27,7 +27,7 @@ ms.locfileid: "74125538"
 
 ## <a name="get-intent-programmatically"></a>プログラムで意図を取得する
 
-Node.js を使用して、予測エンドポイント GET [API](https://aka.ms/luis-apim-v3-prediction) にクエリを実行し、予測結果を取得します。
+Node.js を使用して、[予測エンドポイント](https://aka.ms/luis-apim-v3-prediction)のクエリを実行し、予測結果を取得します。
 
 1. `predict.js` という名前のファイルに次のコード スニペットをコピーします。
 
@@ -76,24 +76,24 @@ Node.js を使用して、予測エンドポイント GET [API](https://aka.ms/l
     getPrediction().then(()=>console.log("done")).catch((err)=>console.log(err));
     ```
 
-1. 次の値を設定します。
+1. 次の値を置き換えます。
 
-    * `YOUR-KEY` をスターター キーに
-    * `YOUR-ENDPOINT` をエンドポイント URL に
+    * `YOUR-KEY` を、ご利用のスターター キーに。
+    * `YOUR-ENDPOINT` を、ご利用のエンドポイント URL に。 たとえば、「 `westus2.api.cognitive.microsoft.com` 」のように入力します。
 
-1. コマンド ラインから次のコマンドを実行して依存関係をインストールします。 
+1. 次のコマンドを使用して、`request`、`request-promise`、および `querystring` の依存関係をインストールします。 
 
     ```console
     npm install request request-promise querystring
     ```
 
-1. 次のコマンドを使用して、コードを実行します。
+1. 次のコマンドを使用してアプリを実行します。
 
     ```console
     node predict.js
     ```
 
- 1. JSON 形式の予測応答を確認します。   
+ 1. JSON として返される予測応答を確認します。   
     
     ```console
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}

@@ -1,10 +1,10 @@
 ### YamlMime:Yaml
-ms.openlocfilehash: 8f0811dacfbedd59726fcdfe58d6a71cb02797da
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 798a3ad1a2e81eae8621ae43d47d41031603331f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968370"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74734462"
 groups:
 - id: programming-languages-set-one
   title: プログラミング言語
@@ -20,3 +20,83 @@ groups:
     title: Node.js
   - id: programming-language-go
     title: Go
+- id: cogsvcs-text-analytics-features
+  title: Text Analytics の機能
+  prompt: Text Analytics の機能オファリングの選択
+  pivots:
+  - id: text-analytics-key-phrase-extraction
+    title: キー フレーズ抽出
+  - id: text-analytics-language-detection
+    title: 言語検出
+  - id: text-analytics-sentiment-analysis
+    title: 感情分析
+- id: client-operating-system
+  title: プログラミング言語
+  prompt: クライアントのオペレーティング システムの選択
+  pivots:
+  - id: client-operating-system-linux
+    title: Linux
+  - id: client-operating-system-macos
+    title: MacOS
+  - id: client-operating-system-windows
+    title: Windows
+- id: programming-languages-set-two
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: その他の言語
+- id: programming-languages-set-three
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-cpp
+    title: C++
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+- id: programming-languages-set-four
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-more
+    title: その他の言語
+- id: programming-languages-set-five
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-go
+    title: Go
+  - id: programming-language-ruby
+    title: Ruby
+- id: URL-test-interface
+  title: URL テスト ツール
+  prompt: 次のいずれかを選択
+  pivots:
+  - id: url-test-tool-curl
+    title: cURL
+  - id: url-test-tool-postman
+    title: postman

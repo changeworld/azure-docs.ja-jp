@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
-ms.date: 04/15/2019
-ms.openlocfilehash: 4a9bfe83c9fc1ccbc496ec97822305720dc52c10
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/29/2019
+ms.openlocfilehash: e277814bda41a70f9ac8ff02b6e8018fba4b6f52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076847"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775362"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Java のサンプル
 
@@ -27,11 +27,11 @@ ms.locfileid: "71076847"
 * クラスター作成タスクのサンプルへのリンク
 * その他の管理タスクのリファレンス コンテンツへのリンク
 
-## <a name="prerequisites"></a>前提条件
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-- [Azure HDInsight SDK for Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+## <a name="prerequisites"></a>前提条件
+
+[Azure HDInsight SDK for Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
 
 ## <a name="cluster-management---creation"></a>クラスターの管理 - 作成
 

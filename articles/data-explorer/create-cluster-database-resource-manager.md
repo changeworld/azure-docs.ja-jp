@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 49c55b580abdaea6c876a0fac4e7dd4e73d496af
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: eddfb9a8f2e3c034e50dc3bc1cdf4983a6163079
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643821"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667866"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "73643821"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
-> * [ARM テンプレート](create-cluster-database-resource-manager.md)
+> * [Azure Resource Manager テンプレート](create-cluster-database-resource-manager.md)
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 
 
@@ -155,26 +155,7 @@ Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-Azure リソースが不要になったら、リソース グループを削除して、デプロイしたリソースをクリーンアップします。 
-
-### <a name="clean-up-resources-using-the-azure-portal"></a>Azure portal を使用してリソースをクリーンアップする
-
-「[リソースのクリーンアップ](create-cluster-database-portal.md#clean-up-resources)」の手順に従って、Azure portal でリソースを削除します。
-
-### <a name="clean-up-resources-using-powershell"></a>PowerShell を使用してリソースをクリーンアップする
-
-Cloud Shell がまだ開いている場合は、最初の行 (Read-Host) をコピー/実行する必要はありません。
-
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
-$resourceGroupName = "${projectName}rg"
-
-Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
-
-Write-Host "Press [ENTER] to continue ..."
-```
+[!INCLUDE [data-explorer-clean-resources](../../includes/data-explorer-clean-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

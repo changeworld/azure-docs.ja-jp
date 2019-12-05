@@ -1,24 +1,17 @@
 ---
-title: WebJobs SDK の概要 - Azure
+title: WebJobs SDK の概要
 description: イベント ドリブンのバックグラウンド処理のための WebJobs SDK の概要。 Azure サービスとサード パーティのサービス内のデータにアクセスする方法を説明します。
-services: app-service\web, storage
-documentationcenter: .net
 author: ggailey777
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 2b2b8fe383ff4ee3d4b23c2c6e555b44e0cc088c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 33ae3f9f928a55f50f4ecd0c6c98790a384e880b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390067"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684193"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理で Azure WebJobs SDK の使用を開始する
 

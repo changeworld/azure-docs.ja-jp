@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4ee9bf218765ea4c3966e7f0a8b20a8108de7655
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 72927dd89a81d2440bf78ba24402f5ce283006da
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931908"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405808"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>クイック スタート:デバイス機能モデルを使用して IoT プラグ アンド プレイ プレビュー デバイスを作成する (Windows)
 
@@ -46,46 +46,15 @@ Microsoft の職場または学校アカウントを使用するか、Microsoft 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prepare-an-iot-hub"></a>IoT ハブを準備する
-
-また、このクイックスタートを完了するには、ご利用の Azure サブスクリプション内に Azure IoT ハブが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 IoT ハブがない場合は、[こちらの手順に従って作成します](../iot-hub/iot-hub-create-using-cli.md)。
-
-> [!IMPORTANT]
-> パブリック プレビュー中、IoT プラグ アンド プレイ機能は、**米国中部**、**北ヨーロッパ**、および**東日本**の各リージョンで作成された IoT ハブでのみご利用いただけます。
-
-次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-次のコマンドを実行して、ご利用の IoT ハブに新しいデバイス ID を作成します。 **YourIoTHubName** および **YourDevice** プレースホルダーを実際の名前に置き換えます。
-
-```azurecli-interactive
-az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
-```
-
-次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
-```
-
-次のコマンドを実行して、ご利用のハブに対する _IoT ハブ接続文字列_を取得します。
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
+[!INCLUDE [iot-pnp-prepare-iot-hub-windows.md](../../includes/iot-pnp-prepare-iot-hub-windows.md)]
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備
 
-### <a name="get-azure-iot-device-sdk-for-c"></a>C 対応の Azure IoT device SDK を取得する
-
-このクイックスタートでは、[Vcpkg](https://github.com/microsoft/vcpkg) 経由で Azure IoT C device SDK をインストールして、開発環境を準備します。
+このクイックスタートでは、[Vcpkg](https://github.com/microsoft/vcpkg) ライブラリ マネージャーを使用して、開発環境に Azure IoT C デバイス SDK をインストールします。
 
 1. コマンド プロンプトを開きます。 次のコマンドを実行して Vcpkg をインストールします。
 
-    ```cmd/sh
+    ```cmd
     git clone https://github.com/Microsoft/vcpkg.git
     cd vcpkg
 
@@ -94,13 +63,13 @@ az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 
     次に、ユーザー全体の[統合](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md)をフックするために、以下を実行します (注: 最初の使用時には、管理者権限が必要です)。
 
-    ```cmd/sh
+    ```cmd
     .\vcpkg.exe integrate install
     ```
 
 1. Vcpkg によって、Azure IoT C device SDK をインストールします。
 
-    ```cmd/sh
+    ```cmd
     .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
@@ -151,14 +120,14 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 1. `sample_device` フォルダーに `cmake` サブディレクトリを作成して、そのフォルダーに移動します。
 
-    ```cmd\sh
+    ```cmd
     mkdir cmake
     cd cmake
     ```
 
 1. 次のコマンドを実行して、生成されたコード スタブをビルドします (プレースホルダーを Vcpkg リポジトリのディレクトリに置き換えます)。
 
-    ```cmd\sh
+    ```cmd
     cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
 
     cmake --build .
@@ -166,7 +135,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
     
     > [!NOTE]
     > Visual Studio 2017 または2015 を使用している場合、使用しているビルド ツールに基づいて CMake ジェネレーターを指定する必要があります。
-    >```cmd\sh
+    >```cmd
     ># Either
     >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
     ># or
@@ -178,7 +147,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 1. ビルドが正常に完了したら、IoT ハブ デバイス接続文字列をパラメーターとして渡し、アプリケーションを実行します。
 
-    ```cmd\sh
+    ```cmd
     .\Debug\sample_device.exe "<device connection string>"
     ```
 
@@ -212,11 +181,11 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 1. ご利用の _IoT Hub 接続文字列_を入力し、 **[接続]** を選択します。
 
-1. 接続すると、デバイスの概要ページが表示されます。
+1. 接続すると、 **[デバイス]** の概要ページが表示されます。
 
 1. 会社リポジトリを追加するには、 **[設定]** 、 **[+ Add module definition source]\(モジュール定義ソースの追加\)** 、 **[会社リポジトリ]** の順に選択します。 お使いの会社モデル リポジトリ接続文字列を追加して、 **[Save and Connect]\(保存して接続する\)** を選択します。
 
-1. デバイスの概要ページで、前に作成したデバイス ID を見つけ、それを選択して詳細を表示します。
+1. **[デバイス]** の概要ページに戻り、前に作成したデバイス ID を見つけます。 デバイス アプリケーションがコマンド プロンプトでまだ実行されている状態で、Azure IoT エクスプローラー内のデバイスの **[接続の状態]** が _[接続済み]_ として報告されていることを確認します (そうでない場合は、そうなるまで **[最新の情報に更新]** を押します)。 詳細を表示するには、デバイスを選択します。
 
 1. **urn:<YOUR_INTERFACE_NAME>:EnvironmentalSensor:1** という ID を持つインターフェイスを展開して、IoT プラグ アンド プレイのプリミティブ (プロパティ、コマンド、テレメトリ) を表示します。 表示されるインターフェイス名は、モデルの作成時に指定した名前です。
 
@@ -226,7 +195,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 1. **[プロパティ (書き込み可能)]** ページを選択して、更新を行うことができる書き込み可能なプロパティを表示します。
 
-1. プロパティの**名前**を展開し、新しい名前で更新して、 **[書き込み可能なプロパティの更新]** を選択します。
+1. プロパティの**名前**を展開し、新しい名前で更新して、 **[書き込み可能なプロパティの更新]** を選択します。 
 
 1. 新しい名前が **[報告されるプロパティ]** 列に表示されるのを確認するには、ページの上部にある **[更新]** ボタンを選択します。
 
@@ -235,6 +204,8 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 1. **点滅**コマンドを展開し、新しい点滅時間間隔を設定します。 **[コマンドの送信]** を選択して、デバイス上でコマンドを呼び出します。
 
 1. シミュレートするデバイス コマンド プロンプトにアクセスして、出力された確認メッセージを読み、コマンドが想定どおりに実行されたことを確認します。
+
+[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

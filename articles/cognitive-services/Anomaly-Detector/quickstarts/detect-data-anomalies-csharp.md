@@ -8,30 +8,30 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 10/14/2019
+ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 222fb5d37065bc40e9c96a9ff3487a7ea8ad0570
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 76308e2167cbedae9572f1fb5037dfb394ce4b17
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554761"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483410"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>クイック スタート:Anomaly Detector REST API および C# を使用して時系列データ内の異常を検出する 
 
 このクイック スタートを使用して、Anomaly Detector API の 2 つの検出モードの使用を開始し、時系列データでの異常を検出します。 この C# アプリケーションは、JSON 形式の時系列データを格納している 2 つの API 要求を送信し、応答を取得します。
 
-| API 要求                                        | アプリケーションの出力                                                                                                                         |
-|----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| API 要求                                        | アプリケーションの出力                                                                                                                                         |
+|----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | バッチとして異常を検出する                        | 時系列データの各データ ポイントの異常状態 (および他のデータ) と検出された異常の位置を含んだ JSON 応答。 |
-| 最新のデータ ポイントの異常状態を検出する | 時系列データの最新のデータ ポイントの異常状態 (および他のデータ) を含んだ JSON 応答。                                                                                                                                         |
+| 最新のデータ ポイントの異常状態を検出する | 時系列データの最新のデータ ポイントの異常状態 (および他のデータ) を含んだ JSON 応答。                                        |
 
- このアプリケーションは C# で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
+ このアプリケーションは C# で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このクイック スタートのソース コードは、[GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/csharp-detect-anomalies.cs) にあります。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Visual Studio 2017 またはそれ以降](https://visualstudio.microsoft.com/downloads/)の任意のエディション。
-
+- Anomaly Detector キーとエンドポイント
 - NuGet パッケージとして入手できる [Json.NET](https://www.newtonsoft.com/json) フレームワーク。 Visual Studio に Newtonsoft.Json を NuGet パッケージとしてインストールするには、次の手順に従います。
     
     1. **ソリューション エクスプローラー**で､プロジェクトを右クリックします｡
@@ -55,11 +55,11 @@ ms.locfileid: "72554761"
 
 2. サブスクリプション キーとエンドポイントの変数を作成します。 異常検出に使用できる URI を以下に示します。 これらは、API 要求 URL を作成するために、後からサービス エンドポイントに付加されます。
 
-    |検出方法  |URI  |
-    |---------|---------|
-    |バッチ検出    | `/anomalydetector/v1.0/timeseries/entire/detect`        |
-    |最新のデータ ポイントでの検出     | `/anomalydetector/v1.0/timeseries/last/detect`        |
-    
+    | 検出方法                   | URI                                              |
+    |------------------------------------|--------------------------------------------------|
+    | バッチ検出                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
+    | 最新のデータ ポイントでの検出 | `/anomalydetector/v1.0/timeseries/last/detect`   |
+        
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>要求を送信する関数を作成する
@@ -91,8 +91,8 @@ ms.locfileid: "72554761"
 
 2. JSON オブジェクトを逆シリアル化し、それをコンソールに書き込みます。
 
-[!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
-
+    [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
+ 
 ## <a name="load-your-time-series-data-and-send-the-request"></a>時系列データを読み込み、要求を送信する
 
 1. アプリケーションの main メソッドで、`File.ReadAllText()` を使用して JSON 時系列データを読み込みます。 
@@ -107,11 +107,4 @@ ms.locfileid: "72554761"
 * [バッチ検出応答の例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/batch-response.json)
 * [最新のポイント検出応答の例](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/latest-point-response.json)
 
-## <a name="next-steps"></a>次の手順
-
-> [!div class="nextstepaction"]
->[Azure Databricks を使用した異常検出のストリーム配信](../tutorials/anomaly-detection-streaming-databricks.md)
-
-* [Anomaly Detector API](../overview.md) とは
-* Anomaly Detector API を使用する場合の[ベスト プラクティス](../concepts/anomaly-detection-best-practices.md)。
-* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs) にあります。
+[!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

@@ -3,19 +3,19 @@ title: 開示設計のガイドライン
 titleSuffix: Azure Cognitive Services
 description: 開示設計のガイドラインと開示レベルの評価の概要です。
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837380"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776387"
 ---
 # <a name="disclosure-design-guidelines"></a>開示設計のガイドライン
 音声エクスペリエンスが合成であることを明示することにより、顧客との信頼関係を築いて維持する方法を説明します。

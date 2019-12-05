@@ -2,19 +2,16 @@
 title: Power Automate からフローを Azure Logic Apps にエクスポートする
 description: Azure Resource Manager テンプレートとしてエクスポートすることによって Power Automate から Azure Logic Apps にフローを移行する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: e0dda5c2097243143d18851c47e7006c81769c87
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583255"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792648"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Power Automate からフローをエクスポートして Azure Logic Apps にデプロイする
 
@@ -92,7 +89,7 @@ ms.locfileid: "73583255"
 
    1. 各サービスにサインインするか、接続を承認するために必要な資格情報を指定します。
 
-1. ロジック アプリを保存し、 ロジック アプリをアクティブ化する準備ができたら、ロジック アプリのメニューで **[概要]** を選択し、 **[Enable]\(有効化\)** を選択します。
+1. ロジック アプリを保存します。 ロジック アプリをアクティブ化する準備ができたら、ロジック アプリのメニューで **[概要]** を選択し、 **[Enable]\(有効化\)** を選択します。
 
    ![ロジック アプリを有効にする](./media/export-from-microsoft-flow-logic-app-template/enable-logic-app.png)
 

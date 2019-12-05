@@ -1,20 +1,17 @@
 ---
-title: マネージド ID を使用した認証 - Azure Logic Apps
+title: マネージド ID による認証
 description: 資格情報やシークレットを使用してサインインすることなく、マネージド ID を使用して他の Azure Active Directory テナント内のリソースにアクセスする
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 2d1dbde2499dbe793a895f894e5ae83c36c54449
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200630"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792682"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
 

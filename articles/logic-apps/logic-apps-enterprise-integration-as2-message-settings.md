@@ -1,20 +1,19 @@
 ---
-title: AS2 メッセージ設定 - Azure Logic Apps
+title: AS2 メッセージの設定
 description: Azure Logic Apps と Enterprise Integration Pack の組み合わせにおける AS2 送受信設定のためのリファレンス ガイド
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2019
-ms.openlocfilehash: ead92094b9af1dff56ff68e1ff58a3a4cdd9dca5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad047a30b901d71604c775e9882b0f242f094638
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "63767654"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793032"
 ---
 # <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack の組み合わせにおける AS2 メッセージ設定のためのリファレンス
 

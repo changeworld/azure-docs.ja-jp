@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 57350bd00a33c36b5aef3a0ccd3034b4db3d2c55
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e8deb8ed16186862349cecf70c9d617a4ad30399
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227950"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806900"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Azure Data Lake Storage Gen2 ストレージ アカウントを作成する
 
@@ -199,7 +199,7 @@ az storage account create `
     --location westus2 `
     --sku Standard_LRS `
     --kind StorageV2 `
-    --hierarchical-namespace true
+    --enable-hierarchical-namespace true
 ```
 
 ### <a name="clean-up-resources"></a>リソースのクリーンアップ

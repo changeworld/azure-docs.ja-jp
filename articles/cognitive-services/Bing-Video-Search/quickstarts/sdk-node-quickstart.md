@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Bing Video Search SDK for Node.js を使用して動画を検索する
+title: クイック スタート:Node.js 用の SDK を使用して動画を検索する - Bing Video Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Bing Video Search SDK for Node.js を使用して動画の検索要求を送信します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 07/18/2019
 ms.author: aahi
-ms.openlocfilehash: 12eafca9c673d95813eefcd58d2b3f9ba7b54fd3
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5c8bd4ccadcc3c1947905e6bd74b48045a62ab57
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358894"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383735"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>クイック スタート:Bing Video Search SDK for Node.js で動画の検索を実行する
 

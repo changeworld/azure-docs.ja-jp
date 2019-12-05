@@ -1,26 +1,17 @@
 ---
-title: Visual Studio を使用したアプリのトラブルシューティング - Azure App Service
+title: Visual Studio を使用したトラブルシューティング
 description: Visual Studio 2013 に組み込まれているリモート デバッグ、トレース、ログ記録のツールを使用して、App Service アプリのトラブルシューティングを行う方法について説明します。
-services: app-service
-documentationcenter: .net
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 13ba1ced2d14ed22c89e7df594f3b2a44eea983f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5c0a236dc6ebf02c859d9db3f25f0e9016ac35ab
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359960"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688383"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
 ## <a name="overview"></a>概要

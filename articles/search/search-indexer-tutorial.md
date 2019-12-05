@@ -1,21 +1,21 @@
 ---
-title: 'C# のチュートリアル: Azure SQL データベースのデータにインデックスを付ける'
+title: チュートリアル:Azure SQL データベースのデータに C# でインデックスを付ける
 titleSuffix: Azure Cognitive Search
-description: C# コード例で、Azure SQL データベースに接続し、検索可能なデータを抽出して、それを Azure Cognitive Search インデックスに読み込む方法を示します。
+description: この C# チュートリアルでは、Azure SQL データベースに接続して検索可能なデータを抽出し、Azure Cognitive Search インデックスにそれを読み込みます。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 4e8097eeb07420bee4ba30eb0fedbe5d4db2db9d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 36215403f99cc86ab4fb111ce95a6b3190063d7b
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113329"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406710"
 ---
-# <a name="c-tutorial-import-azure-sql-database-using-azure-cognitive-search-indexers"></a>C# のチュートリアル: Azure Cognitive Search インデクサーを使用して Azure SQL データベースをインポートする
+# <a name="tutorial-import-azure-sql-database-in-c-using-azure-cognitive-search-indexers"></a>チュートリアル:Azure Cognitive Search インデクサーを使用して C# で Azure SQL データベースをインポートする
 
 検索可能なデータをサンプル Azure SQL データベースから抽出するためのインデクサーを構成する方法について説明します。 [インデクサー](search-indexer-overview.md)は、外部データ ソースをクロールして[検索インデックス](search-what-is-an-index.md)にデータを投入する Azure Cognitive Search のコンポーネントです。 Azure SQL Database のインデクサーは、すべてのインデクサーの中で最も広く使用されています。 
 

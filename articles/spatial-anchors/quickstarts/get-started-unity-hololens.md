@@ -1,19 +1,19 @@
 ---
-title: クイック スタート - Azure Spatial Anchors を使用して Unity HoloLens アプリを作成する | Microsoft Docs
+title: クイック スタート:Unity を使用して HoloLens アプリを作成する
 description: このクイック スタートでは、Spatial Anchors を使用して HoloLens アプリを Unity でビルドする方法について説明します。
 author: craigktreasure
-manager: aliemami
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9e8196c9561465930fc9723c9b8f8a0d02668ef5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 561b5391f125cf845eff940a0d3548fc6ade541e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114086"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277048"
 ---
 # <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用する Unity HoloLens アプリを作成する
 

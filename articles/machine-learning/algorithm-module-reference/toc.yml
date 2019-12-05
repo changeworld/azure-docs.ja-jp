@@ -14,8 +14,14 @@
       href: add-columns.md
     - name: 行の追加
       href: add-rows.md
+    - name: 算術演算の適用
+      href: apply-math-operation.md
     - name: SQL 変換の適用
       href: apply-sql-transformation.md
+    - name: 見つからないデータのクリーンアップ
+      href: clean-missing-data.md
+    - name: クリップの値
+      href: clip-values.md
     - name: CSV への変換
       href: convert-to-csv.md
     - name: データセットへの変換
@@ -28,74 +34,28 @@
       href: join-data.md
     - name: データの正規化
       href: normalize-data.md
+    - name: パーティションとサンプル
+      href: partition-and-sample.md
     - name: 重複する行の削除
       href: remove-duplicate-rows.md
+    - name: SMOTE
+      href: smote.md
     - name: Select Columns Transform (列変換の選択)
       href: select-columns-transform.md
     - name: データセット内の列の選択
       href: select-columns-in-dataset.md
-- name: サンプリング
-  items:
-    - name: モデルのクロス検証
-      href: cross-validate-model.md
-    - name: パーティションとサンプル
-      href: partition-and-sample.md
-    - name: SMOTE
-      href: smote.md
-    - name: データの分割
-      href: split-data.md
 - name: 特徴選択
   items:
     - name: フィルターに基づく特徴選択
       href: filter-based-feature-selection.md
     - name: 順列の特徴量の重要度
       href: permutation-feature-importance.md
-- name: Python と R
+- name: 統計関数
   items:
-    - name: Python モデルの作成
-      href: create-python-model.md
-    - name: Python スクリプトの実行
-      href: execute-python-script.md
-    - name: R スクリプトの実行
-      href: execute-r-script.md
-- name: テキスト分析
-  items:
-    - name: テキストからの N Gram 特徴抽出
-      href: extract-n-gram-features-from-text.md
-    - name: 特徴ハッシュ
-      href: feature-hashing.md
-    - name: Preprocess Text (テキストの前処理)
-      href: preprocess-text.md
+    - name: データの集計
+      href: summarize-data.md
 - name: 機械学習のアルゴリズム
   items:
-    - name: 分類
-      items:
-        - name: 多クラス デシジョン フォレスト
-          href: multiclass-decision-forest.md
-        - name: 多クラスのブースト デシジョン ツリー
-          href: multiclass-boosted-decision-tree.md
-        - name: 多クラスのロジスティック回帰
-          href: multiclass-logistic-regression.md
-        - name: 多クラス ニューラル ネットワーク
-          href: multiclass-neural-network.md
-        - name: 一対全多クラス
-          href: one-vs-all-multiclass.md
-        - name: 2 クラスのロジスティック回帰
-          href: two-class-logistic-regression.md
-        - name: 2 クラス平均化パーセプトロン
-          href: two-class-averaged-perceptron.md
-        - name: 2 クラス ブースト デシジョン ツリー
-          href: two-class-boosted-decision-tree.md
-        - name: 2 クラス デシジョン フォレスト
-          href: two-class-decision-forest.md
-        - name: 2 クラス ニューラル ネットワーク
-          href: two-class-neural-network.md
-        - name: 2 クラス サポート ベクター マシン
-          href: two-class-support-vector-machine.md
-    - name: クラスタリング
-      items:
-        - name: K-Means クラスタリング
-          href: k-means-clustering.md
     - name: 回帰
       items:
         - name: 増幅デシジョン ツリーの回帰
@@ -106,37 +66,79 @@
           href: linear-regression.md
         - name: ニューラル ネットワーク回帰
           href: neural-network-regression.md
-    - name: レコメンダー
+    - name: クラスタリング
       items:
-        - name: SVD レコメンダーのトレーニング
-          href: train-svd-recommender.md
-- name: モデルをトレーニングする
+        - name: K-Means クラスタリング
+          href: k-means-clustering.md
+    - name: 分類
+      items:
+        - name: 多クラスのブースト デシジョン ツリー
+          href: multiclass-boosted-decision-tree.md
+        - name: 多クラス デシジョン フォレスト
+          href: multiclass-decision-forest.md
+        - name: 多クラスのロジスティック回帰
+          href: multiclass-logistic-regression.md
+        - name: 多クラス ニューラル ネットワーク
+          href: multiclass-neural-network.md
+        - name: One vs.All Multiclass
+          href: one-vs-all-multiclass.md
+        - name: 2 クラス平均化パーセプトロン
+          href: two-class-averaged-perceptron.md
+        - name: 2 クラス ブースト デシジョン ツリー
+          href: two-class-boosted-decision-tree.md
+        - name: 2 クラス デシジョン フォレスト
+          href: two-class-decision-forest.md
+        - name: 2 クラスのロジスティック回帰
+          href: two-class-logistic-regression.md
+        - name: 2 クラス ニューラル ネットワーク
+          href: two-class-neural-network.md
+        - name: 2 クラス サポート ベクター マシン
+          href: two-class-support-vector-machine.md
+- name: モデル トレーニング
   items:
-    - name: モデルのトレーニング
-      href: train-model.md
     - name: クラスタリング モデルのトレーニング
       href: train-clustering-model.md
+    - name: モデルのトレーニング
+      href: train-model.md
     - name: モデルのハイパーパラメーターの調整
       href: tune-model-hyperparameters.md
-- name: モデルの評価
-  items:
-    - name: モデルの評価
-      href: evaluate-model.md
-    - name: レコメンダーの評価
-      href: evaluate-recommender.md
-- name: モデルのスコア付け
+- name: モデルのスコアリングと評価
   items:
     - name: 変換の適用
       href: apply-transformation.md
     - name: クラスターへのデータの割り当て
       href: assign-data-to-clusters.md
+    - name: モデルのクロス検証
+      href: cross-validate-model.md
+    - name: モデルの評価
+      href: evaluate-model.md
     - name: モデルのスコア付け
       href: score-model.md
+- name: Python 言語
+  items:
+    - name: Python モデルの作成
+      href: create-python-model.md
+    - name: Python スクリプトの実行
+      href: execute-python-script.md
+- name: R 言語
+  items:
+    - name: R スクリプトの実行
+      href: execute-r-script.md
+- name: テキスト分析
+  items:
+    - name: テキストからの N-gram 特徴抽出
+      href: extract-n-gram-features-from-text.md
+    - name: 特徴ハッシュ
+      href: feature-hashing.md
+    - name: Preprocess Text (テキストの前処理)
+      href: preprocess-text.md
+- name: 推奨
+  items:
+    - name: レコメンダーの評価
+      href: evaluate-recommender.md
     - name: Score SVD Recommender
       href: score-svd-recommender.md
-- name: 統計関数
-  items:
-    - name: 算術演算の適用
-      href: apply-math-operation.md
-    - name: データの集計
-      href: summarize-data.md
+    - name: SVD レコメンダーのトレーニング
+      href: train-svd-recommender.md
+- name: モジュールのエラーとトラブルシューティング
+  href: machine-learning-module-error-codes.md

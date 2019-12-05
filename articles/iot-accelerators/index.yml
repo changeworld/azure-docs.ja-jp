@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Azure IoT ソリューション アクセラレータのドキュメント
+summary: Azure IoT ソリューション アクセラレータは、リモート監視などの一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。
+metadata:
+  title: Azure IoT ソリューション アクセラレータのドキュメント
+  description: IoT ソリューション アクセラレータは、一般的な IoT シナリオが実装され、必要な要素がすべて揃った、すぐにデプロイできる IoT ソリューションです。 これらのシナリオは、リモート監視、接続済みファクトリ、予測メンテナンス、デバイス シミュレーションをカバーしています。 ソリューション アクセラレータをデプロイすると、そのデプロイには、必要なクラウド ベースのサービスと、必要なアプリケーション コードがすべて含まれています。
+  services: iot-accelerators
+  ms.service: iot-accelerators
+  ms.topic: landing-page
+  author: dominicbetts
+  ms.author: dobett
+  manager: philmea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: cdad55cb8972e54f613319e890f052c26d94f0ef
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74781628"
+landingContent:
+- title: IoT ソリューション アクセラレータについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure IoT ソリューション アクセラレータとは
+      url: about-iot-accelerators.md
+    - text: AzureIoTSolutions.com サイト
+      url: iot-accelerators-permissions.md
+- title: リモート監視を開始する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: リモート監視ソリューション アクセラレータの概要
+      url: iot-accelerators-remote-monitoring-sample-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: クラウドベースのリモート監視ソリューションを試す
+      url: quickstart-remote-monitoring-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: デバイスを監視する
+      url: iot-accelerators-remote-monitoring-monitor.md
+    - text: デバイスの問題を検出する
+      url: iot-accelerators-remote-monitoring-automate.md
+- title: 産業用 IoT を使ってみる
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Industrial IoT の概要
+      url: overview-iot-industrial.md
+    - text: OPC Twin の概要
+      url: overview-opc-twin.md
+    - text: OPC Vault の概要
+      url: overview-opc-vault.md
+    - text: OPC Publisher の概要
+      url: overview-opc-publisher.md
+    - text: 産業用 IoT とは
+      url: iot-accelerators-connected-factory-features.md
+  - linkListType: quickstart
+    links:
+    - text: クラウドベースのコネクテッド ファクトリ ソリューションを試す
+      url: quickstart-connected-factory-deploy.md
+- title: デバイス シミュレーションを使ってみる
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: デバイス シミュレーション ソリューション アクセラレータの概要
+      url: iot-accelerators-device-simulation-overview.md
+  - linkListType: quickstart
+    links:
+    - text: デバイス シミュレーション ソリューションを試す
+      url: quickstart-device-simulation-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: IoT デバイス シミュレーションを作成して実行する
+      url: iot-accelerators-device-simulation-create-simulation.md
+    - text: シミュレートされたカスタム デバイスの作成
+      url: iot-accelerators-device-simulation-create-custom-device.md
+- title: 予測的なメンテナンスを使ってみる
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 予測メンテナンスのソリューション アクセラレータの概要
+      url: iot-accelerators-predictive-walkthrough.md
+  - linkListType: quickstart
+    links:
+    - text: 予測メンテナンス ソリューションを試す
+      url: quickstart-predictive-maintenance-deploy.md

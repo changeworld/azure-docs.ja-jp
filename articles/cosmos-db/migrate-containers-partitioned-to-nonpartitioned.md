@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844397"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706070"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>非パーティション分割コンテナーをパーティション分割コンテナーに移行する
 
@@ -91,7 +91,7 @@ ItemResponse<DeviceInformationItem> readResponse =
 
 ```
 
-完全なサンプルについては、[.Net サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples)の GitHub リポジトリをご覧ください。
+完全なサンプルについては、[.Net サンプル][1]の GitHub リポジトリをご覧ください。
                       
 ## <a name="migrate-the-documents"></a>ドキュメントを移行する
 
@@ -110,7 +110,7 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 ```
 
-ドキュメントを再パーティション分割する方法の完全なサンプルについては、[.Net サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples)の GitHub リポジトリをご覧ください。 
+ドキュメントを再パーティション分割する方法の完全なサンプルについては、[.Net サンプル][1]の GitHub リポジトリをご覧ください。 
 
 ## <a name="compatibility-with-sdks"></a>SDK との互換性
 
@@ -124,3 +124,5 @@ V2.x.x や V1.x.x などの古いバージョンの Azure Cosmos DB SDK では�
 * [Azure Cosmos DB の要求ユニット](request-units.md)
 * [コンテナーとデータベースのスループットのプロビジョニング](set-throughput.md)
 * [Azure Cosmos アカウントの使用](account-overview.md)
+
+[1]: https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/NonPartitionContainerMigration

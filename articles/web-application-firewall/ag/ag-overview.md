@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 4ba2772ffb89809c2262880385207a12c74882cc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1a210ff7da57147762dcf13e1dda7fee26dbe5f0
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067141"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384109"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール
 
@@ -89,7 +89,12 @@ Application Gateway でサポートされている 3 つのルール セット:C
 
 Application Gateway はカスタム ルールもサポートしています。 カスタム規則を使用すると、WAF を通過する要求ごとに評価される独自の規則を作成できます。 これらの規則は、マネージド規則セット内の他の規則よりも高い優先度を持ちます。 一連の条件が満たされた場合、許可またはブロックするためのアクションが実行されます。 
 
-詳細については、「[Application Gateway のカスタム ルール](custom-waf-rules-overview.md)」を参照してください。
+カスタム規則のパブリック プレビューで Geomatch 演算子が利用できるようになりました。 詳細については、[Geomatch カスタム規則](custom-waf-rules-overview.md#geomatch-custom-rules-preview)に関する記事を参照してください。
+
+> [!NOTE]
+> カスタム規則用の Geomatch 演算子は、現在パブリック プレビュー段階であり、プレビュー サービス レベル アグリーメントで提供されています。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
+
+カスタム規則の詳細については、[Application Gateway のカスタム規則](custom-waf-rules-overview.md)に関する記事を参照してください。
 
 ### <a name="bot-mitigation-preview"></a>ボット軽減策 (プレビュー)
 

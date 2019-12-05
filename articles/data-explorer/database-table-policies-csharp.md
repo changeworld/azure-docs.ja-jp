@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 8a5ea692bfdec7f676a80cc670f686af66152e6f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 17312840b0081056ad04723f2b2c241c47902021
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606597"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667305"
 ---
 # <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>C# を使用して Azure Data Explorer のデータベースとテーブルのポリシーを作成する
 
@@ -26,19 +26,14 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 ## <a name="prerequisites"></a>前提条件
 
 * Visual Studio 2019。 Visual Studio 2019 をお持ちでない場合は、*無料*の [Visual Studio Community 2019](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を選択してください。
-
 * Azure サブスクリプション。 必要に応じて、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成できます。
-
 * [テスト用のクラスターとデータベース](create-cluster-database-csharp.md)。
-
 * [テスト用のテーブル](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)。
 
 ## <a name="install-c-nuget"></a>C# NuGet をインストールする
 
 * [Azure Data Explorer (Kusto) NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)をインストールします。
-
 * [Microsoft.Azure.Kusto.Data.NETStandard NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/)をインストールします。 (省略可能。テーブルのポリシー変更用。)
-
 * 認証用に、[Microsoft.IdentityModel.Clients.ActiveDirectory NuGet パッケージ](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)をインストールします。
 
 ## <a name="authentication"></a>認証

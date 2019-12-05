@@ -1,20 +1,19 @@
 ---
-title: モック データを使用してロジック アプリをテストする - Azure Logic Apps
+title: モック データを使用してロジック アプリをテストする
 description: 運用環境に影響を与えずにモック データでロジック アプリをテストするための静的な結果を設定する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
-ms.openlocfilehash: 45eeb20e5c572ddd98244b2e751322fcce1d4b76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597193"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790283"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>静的な結果を設定してモック データでロジック アプリをテストする
 

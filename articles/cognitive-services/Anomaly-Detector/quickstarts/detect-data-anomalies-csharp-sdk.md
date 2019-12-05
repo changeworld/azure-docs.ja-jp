@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 10/15/2019
+ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 67d6bb0bf880de0b4bf6878128e2ed27e130b18d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 62cf9a03960e895f403ec8fa09407ff61252ecb2
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719007"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483073"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-net"></a>クイック スタート:.NET 用 Anomaly Detector クライアント ライブラリ
 
@@ -26,12 +26,13 @@ ms.locfileid: "73719007"
 * バッチ要求として、時系列データセット全体で異常を検出する
 * 時系列で最新のデータ ポイントの異常状態を検出する
 
-[ライブラリのリファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [コード サンプル](https://github.com/Azure-Samples/anomalydetector)
+[ライブラリのリファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.AnomalyDetector?view=azure-dotnet-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/AnomalyDetector) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.AnomalyDetector/) | [GitHub でコードを検索する](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料で作成できます](https://azure.microsoft.com/free/)
 * 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)
+* Anomaly Detector キーとエンドポイント
 
 ## <a name="setting-up"></a>設定
 
@@ -41,15 +42,15 @@ ms.locfileid: "73719007"
 
 ### <a name="create-a-new-net-core-application"></a>新しい .NET Core アプリを作成する
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、dotnet `new` コマンドを使用し、`anomaly-detector-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、次の C# ソース ファイルを 1 つ使用する単純な "Hello World" プロジェクトが作成されます: *Program.cs*。 
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、`dotnet new` コマンドを使用し、`anomaly-detector-quickstart` という名前で新しいコンソール アプリを作成します。 このコマンドにより、次の C# ソース ファイルを 1 つ使用する単純な "Hello World" プロジェクトが作成されます: *Program.cs*。 
 
-```console
+```dotnetcli
 dotnet new console -n anomaly-detector-quickstart
 ```
 
 新しく作成されたアプリ フォルダーにディレクトリを変更します。 次を使用してアプリケーションをビルドできます。
 
-```console
+```dotnetcli
 dotnet build
 ```
 
@@ -67,7 +68,7 @@ Build succeeded.
 
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Anomaly Detector クライアント ライブラリをインストールします。
 
-```console
+```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.AnomalyDetector --version 0.8.0-preview
 ```
 
@@ -131,24 +132,10 @@ Anomaly Detector の応答は、使用する方法に応じて、[EntireDetectRe
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-アプリケーション ディレクトリから、dotnet `run` コマンドを使用してアプリケーションを実行します。
+アプリケーション ディレクトリから `dotnet run` コマンドを使用してアプリケーションを実行します。
 
-```dotnet
+```dotnetcli
 dotnet run
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-Cognitive Services サブスクリプションをクリーンアップして削除したい場合は、リソースまたはリソース グループを削除することができます。 リソース グループを削除すると、そのリソース グループに関連付けられている他のリソースも削除されます。
-
-* [ポータル](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
-
-## <a name="next-steps"></a>次の手順
-
-> [!div class="nextstepaction"]
->[Azure Databricks を使用した異常検出のストリーム配信](../tutorials/anomaly-detection-streaming-databricks.md)
-
-* [Anomaly Detector API](../overview.md) とは
-* Anomaly Detector API を使用する場合の[ベスト プラクティス](../concepts/anomaly-detection-best-practices.md)。
-* このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs) にあります。
+[!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

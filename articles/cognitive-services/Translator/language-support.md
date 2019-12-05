@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 06/04/2019
+ms.date: 12/02/2019
 ms.author: swmachan
-ms.openlocfilehash: 25ab298a8b72b3734e41daf66ef5063b8e43a96e
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 62c101751e07d8ee31789191ad45fbdd33a1bc4b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286618"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707960"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
@@ -97,7 +97,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 |スペイン語|   `es`    |ニューラルが利用可能|  ニューラル|
 |スウェーデン語|   `sv`    |ニューラルが利用可能   |ニューラル|
 |タヒチ語|  `ty`    |統計のみ|  統計|
-|タミル語| `ta`    |統計のみ|  統計|
+|タミル語| `ta`    |ニューラルが利用可能 | ニューラル|
 |テルグ語|    `te`    |ニューラルのみ|   ニューラル|
 |タイ語|  `th`    |ニューラルが利用可能|  ニューラル|
 |トンガ語|    `to`    |統計のみ|  統計|

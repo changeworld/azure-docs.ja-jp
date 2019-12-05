@@ -12,12 +12,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f159f672c999d7877ef89cd78d23c4a608ccf1ab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666986"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703352"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory での Hive アクティビティを使用したデータ変換 
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -246,5 +246,5 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
 * [MapReduce アクティビティ](data-factory-map-reduce.md)
 * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 * [Spark プログラムを呼び出す](data-factory-spark.md)
-* [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
+* [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

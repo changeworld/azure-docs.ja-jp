@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Digital Twins 設定からのイベントを分析する
+title: チュートリアル:Time Series Insights でのイベントの分析 - Azure Digital Twins |Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Time Series Insights を使って Azure Digital Twins 空間からのイベントを視覚化および分析する方法を学習します。
 services: digital-twins
 ms.author: alinast
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 3df0fa448e320cba6dd3aaba1bb1be09c1a8b49b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c52bf372f21d9c2ef3d1a148aadd899435ad4181
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107684"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383057"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>チュートリアル:Time Series Insights を使用して Azure Digital Twins からのイベントを視覚化および分析する
 
@@ -54,6 +54,8 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. **[Event Hubs]** を見つけて選択します。 **作成** を選択します。
 
+    [![Event Hubs 名前空間の作成](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
+
 1. Event Hubs 名前空間の**名前**を入力します。 **Standard** **価格レベル**、**サブスクリプション**、Digital Twins インスタンスに使用した**リソース グループ**、**場所**を選択します。 **作成** を選択します。
 
 1. Event Hubs 名前空間のデプロイで、 **[概要]** ウィンドウを選択し、 **[リソースに移動]** を選択します。
@@ -77,7 +79,10 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
     [![イベント ハブの接続文字列](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
-1. 作成した ManageSend ポリシーを開き、 **[接続文字列 - 主キー]** と **[接続文字列 - セカンダリ キー]** の値を一時ファイルにコピーします。 これらの値は、次のセクションでイベント ハブのエンドポイントを作成するために必要です。
+    > [!TIP]
+    > 名前空間ではなく、イベント ハブ インスタンスの SAS ポリシーを作成していることを確認してください。
+
+1. 作成した **ManageSend** ポリシーを開き、 **[接続文字列 - 主キー]** と **[接続文字列 - セカンダリ キー]** の値を一時ファイルにコピーします。 これらの値は、次のセクションでイベント ハブのエンドポイントを作成するために必要です。
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>イベント ハブのエンドポイントの作成
 
@@ -105,13 +110,13 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. プレースホルダー `Primary_connection_string_for_your_event_hub` を、イベント ハブの **[接続文字列 - 主キー]** の値に置き換えます。 この接続文字列が次の形式になっていることを確認します。
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
 1. プレースホルダー `Secondary_connection_string_for_your_event_hub` を、イベント ハブの **[接続文字列 - セカンダリ キー]** の値に置き換えます。 この接続文字列が次の形式になっていることを確認します。 
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 

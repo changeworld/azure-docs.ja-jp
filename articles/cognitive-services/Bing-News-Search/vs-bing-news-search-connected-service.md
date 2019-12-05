@@ -3,19 +3,19 @@ title: Visual Studio と C# の接続済みサービスを使用して Bing News
 titleSuffix: Azure Cognitive Services
 description: Bing News Search を使用すると、Web にスコープした広告のない検索エンジンのパワーを、アプリおよびサービスで利用できるようになります。
 services: cognitive-services
-author: ghogen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.author: ghogen
-ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 2afe9a66d9f0ebecaef9626ef6caf9fc30f20841
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111497"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771072"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>チュートリアル:Visual Studio と C# の接続済みサービスを使用して Bing News Search API に接続する
 
@@ -268,4 +268,4 @@ Bing News Search API のサポートをプロジェクトに追加したので�
 
 ## <a name="next-steps"></a>次の手順
 
-Bing News Search API の詳細については、「[Bing News Search とは](index.yml)」を参照してください。
+Bing News Search API の詳細については、「[Bing News Search とは](search-the-web.md)」を参照してください。

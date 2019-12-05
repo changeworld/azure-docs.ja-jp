@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:REST API を使用して Node.js で検索インデックスを作成する
 titleSuffix: Azure Cognitive Search
-description: JavaScript で作成、データの読み込み、クエリを実行する方法を説明する Azure Cognitive Search 用 Node.js サンプル。
+description: この Node.js クイックスタートでは、JavaScript およびREST API を使用して、Azure Cognitive Search でインデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 8b7308b5289ba747dba90716b495ca1ba6afb209
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fd8a053eb4ff0805b95dc11db4206e1dd2edb184
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719990"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406932"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>クイック スタート:REST API を使用して Node.js で Azure Cognitive Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -684,11 +684,12 @@ async queryAsync(searchTerm) {
 
 `run` 関数の全動作は、Azure Cognitive Search インデックスを削除し (存在する場合)、インデックスを作成してデータを追加し、いくつかのクエリを実行することです。  
 
-## <a name="clean-up"></a>クリーンアップ 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 独自のサブスクリプションを使用している場合は、プロジェクトの最後に、作成したリソースがまだ必要かどうかを確認してください。 リソースを実行したままにすると、お金がかかる場合があります。 リソースは個別に削除することも、リソース グループを削除してリソースのセット全体を削除することもできます。
 
 ポータルの左側のナビゲーション ウィンドウにある **[すべてのリソース]** または **[リソース グループ]** リンクを使って、リソースを検索および管理できます。
+
 無料サービスを使っている場合は、3 つのインデックス、インデクサー、およびデータソースに制限されることに注意してください。 ポータルで個別の項目を削除して、制限を超えないようにすることができます。 
 
 ## <a name="next-steps"></a>次の手順

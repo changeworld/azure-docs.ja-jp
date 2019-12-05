@@ -6,14 +6,14 @@ ms.subservice: logs
 ms.topic: conceptual
 author: danimir
 ms.author: danil
-ms.date: 11/12/2019
+ms.date: 12/04/2019
 ms.reviewer: carlrab
-ms.openlocfilehash: b092c547edf37b31e6099227d8cc0e69048bad7a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b54783f29de731613a5f3c9c5d9d3b805b2d0115
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961967"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819533"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -51,7 +51,7 @@ Azure SQL Analytics は、Azure SQL データベース (単一、プール、お
 | Errors | データベースで発生した SQL エラーの階層型のドリルダウンを提供します | はい | はい |
 | Timeouts | データベースで発生した SQL タイムアウトの階層型のドリルダウンを提供します | はい | いいえ |
 | ブロッキング | データベースで発生した SQL ブロッキングの階層型のドリルダウンを提供します | はい | いいえ |
-| データベース待機 | データベース レベルで発生した SQL 待機統計の階層型のドリルダウンを提供します 合計待機時間と待機の種類ごとの待機時間の概要が含まれます。 |はい | はい |
+| データベース待機 | データベース レベルで発生した SQL 待機統計の階層型のドリルダウンを提供します 合計待機時間と待機の種類ごとの待機時間の概要が含まれます。 |はい | いいえ |
 | クエリ実行時間 | クエリの実行時間、CPU 使用率、データ IO 使用率、ログ IO 使用率などのクエリ実行の統計の階層型のドリルダウンを提供します。 | はい | はい |
 | クエリ待機 | 待機カテゴリ別に、クエリ待機統計の階層型のドリルダウンを提供します | はい | はい |
 

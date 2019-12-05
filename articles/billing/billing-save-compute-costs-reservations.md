@@ -3,16 +3,16 @@ title: Azure の予約とは
 description: 仮想マシン、SQL データベース、Azure Cosmos DB、その他のリソースのコストを節約するための Azure の予約と価格について説明します。
 author: yashesvi
 manager: yashar
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 11/01/2019
+ms.date: 11/22/2019
 ms.author: banders
-ms.openlocfilehash: a002f5a1657454ff5048ab695e62eccd268a5891
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: df15bcc0e4a3ef7629abf7b62f8ff36caf732150
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580088"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420148"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
@@ -36,6 +36,12 @@ Azure の予約は、仮想マシン、Azure BLOB ストレージまたは Azure
 - **SQL Database の予約された仮想コア** - 予約にはコンピューティング コストのみが含まれます。 ライセンスの料金は別途請求されます。
 - **SQL Data Warehouse** - 予約には cDWU の使用が含まれます。 SQL Data Warehouse の使用に関連するストレージまたはネットワークの料金は含まれません。
 - **App Service スタンプ料金** - 予約にはスタンプの使用が含まれます。 worker には適用されないので、スタンプに関連する他のすべてのリソースには別途課金されます。
+- Azure Database for MySQL
+- Azure Database for PostgreSQL
+- Azure Database for MariaDB
+- Azure Data Explorer
+- Premium SSD マネージド ディスク
+
 
 Windows 仮想マシンと SQL Database については、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)でライセンス コストを賄うことができます。
 

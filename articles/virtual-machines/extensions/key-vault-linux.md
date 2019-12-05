@@ -3,16 +3,17 @@ title: Linux 用の Azure Key Vault VM 拡張機能
 description: 仮想マシンの拡張機能を使用して、仮想マシンに Key Vault 証明書の自動更新を実行するエージェントをデプロイします。
 services: virtual-machines-linux
 author: msmbaldwin
+tags: keyvault
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.date: 09/23/2018
+ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2de8a072aec66c2c087541ed9620f3dbdc137ee9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d6b8cdf43fea63fa4709dd5fc5319bb92ddefc63
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073007"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806975"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -40,20 +41,20 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
-            "type": "KeyVaultForLinux",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "secretsManagementSettings": {
-                    "pollingIntervalInS": <polling interval in seconds>,
-                    "certificateStoreName": <certificate store name, e.g.: "MY">,
-                    "linkOnRenewal": <Not available on Linux e.g.: false>,
-                    "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-                    "requireInitialSync": <initial synchronization of certificates e..g: true>,
-                    "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-                }         
-            }
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForLinux",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "secretsManagementSettings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
+          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "linkOnRenewal": <Not available on Linux e.g.: false>,
+          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "requireInitialSync": <initial synchronization of certificates e..g: true>,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+        }      
+      }
       }
     }
 ```
@@ -69,7 +70,7 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 | 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault.Edp | 文字列 |
+| publisher | Microsoft.Azure.KeyVault | string |
 | type | KeyVaultForLinux | string |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | string |
@@ -96,17 +97,17 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
-            "type": "KeyVaultForLinux",
-            "typeHandlerVersion": "1.0",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                    "pollingIntervalInS": <polling interval in seconds>,
-                    "certificateStoreName": <certificate store name, e.g.: "MY">,
-                    "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
-                    "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
-                }         
-            }
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForLinux",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
+          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+        }      
+      }
       }
     }
 ```
@@ -121,12 +122,12 @@ Azure PowerShell を使用すると、Key Vault VM 拡張機能を既存の仮�
     ```powershell
         # Build settings
         $settings = '{"secretsManagementSettings": 
-            { "pollingIntervalInS": "' + <pollingInterval> + 
-            '", "certificateStoreName": "' + <certStoreName> + 
-            '", "certificateStoreLocation": "' + <certStoreLoc> + 
-            '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        { "pollingIntervalInS": "' + <pollingInterval> + 
+        '", "certificateStoreName": "' + <certStoreName> + 
+        '", "certificateStoreLocation": "' + <certStoreLoc> + 
+        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName =  "KeyVaultForLinux"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForLinux"
        
     
@@ -141,12 +142,12 @@ Azure PowerShell を使用すると、Key Vault VM 拡張機能を既存の仮�
     
         # Build settings
         $settings = '{"secretsManagementSettings": 
-            { "pollingIntervalInS": "' + <pollingInterval> + 
-            '", "certificateStoreName": "' + <certStoreName> + 
-            '", "certificateStoreLocation": "' + <certStoreLoc> + 
-            '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        { "pollingIntervalInS": "' + <pollingInterval> + 
+        '", "certificateStoreName": "' + <certStoreName> + 
+        '", "certificateStoreLocation": "' + <certStoreLoc> + 
+        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName = "KeyVaultForLinux"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForLinux"
         
         # Add Extension to VMSS
@@ -186,8 +187,8 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
 
 次の制限/要件に注意してください。
 - Key Vault の制限:
-    - デプロイ時に存在している必要があります 
-    - MSI を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されていること
+  - デプロイ時に存在している必要があります 
+  - MSI を使用して VM/VMSS ID に Key Vault アクセス ポリシーが設定されていること
 
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート

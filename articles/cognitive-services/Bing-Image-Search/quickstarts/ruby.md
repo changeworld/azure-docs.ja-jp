@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:イメージを検索する - Bing Image Search REST API と Ruby
+title: クイック スタート:REST API と Ruby を使用してイメージを検索する - Bing Image Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用して、Ruby を使って Bing Image Search REST API にイメージ検索要求を送信し、JSON 応答を受信します。
 services: cognitive-services
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 60a8c0009073a996aef7e7fd0bda8f88311b34e6
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 1051728377e3c40b2b9209653464948988cc4e84
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383597"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327032"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>クイック スタート:Bing Image Search REST API と Ruby を使用してイメージを検索する
 

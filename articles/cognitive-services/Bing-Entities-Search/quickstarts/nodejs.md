@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Node.js を使用して Bing Entity Search REST API に検索要求を送信する
+title: クイック スタート:Node.js を使用して REST API に検索要求を送信する - Bing Entity Search
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートを使用すると、C# を使用して Bing Entity Search REST API に要求を送信し、JSON 応答を受信することができます。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: e56bf0b3daa38f79e637ece947414b885de3797a
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 48d2b36e35a2e0b41b1202beda9944339dc7530c
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478980"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327108"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>クイック スタート:Node.js を使用して Bing Entity Search REST API に検索要求を送信する
 

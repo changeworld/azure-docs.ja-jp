@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796279"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829126"
 ---
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
@@ -37,7 +37,7 @@ ms.locfileid: "73796279"
 
 ### <a name="azure-backup-support"></a>Azure Backup のサポート
 
-リージョン全体の災害から保護するために、[Azure Backup](../articles/backup/backup-overview.md) を使用し、時間ベースのバックアップとバックアップ保存ポリシーを指定してバックアップ ジョブを作成できます。 こうすることで、簡単な VM の復元を任意で実行できます。 現在、Azure Backup では、最大 4 テビバイト (TiB) のディスク サイズがサポートされています。  Azure Backup では、マネージド ディスクのバックアップと復元がサポートされます。 Azure VM バックアップ サポートについて[詳しく確認します](../articles/backup/backup-support-matrix-iaas.md)。
+リージョン全体の災害から保護するために、[Azure Backup](../articles/backup/backup-overview.md) を使用し、時間ベースのバックアップとバックアップ保存ポリシーを指定してバックアップ ジョブを作成できます。 こうすることで、簡単な VM の復元を任意で実行できます。 Azure Backup では、マネージド ディスクのバックアップと復元がサポートされます。 Azure VM バックアップ サポートについて[詳しく確認します](../articles/backup/backup-support-matrix-iaas.md)。
 
 ### <a name="granular-access-control"></a>詳細なアクセス制御
 

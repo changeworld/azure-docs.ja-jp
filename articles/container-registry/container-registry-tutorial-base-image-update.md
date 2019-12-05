@@ -1,20 +1,15 @@
 ---
-title: チュートリアル - 基本イメージの更新時にイメージ ビルドをトリガーする - Azure Container Registry
+title: チュートリアル - 基本イメージの更新時にイメージ ビルドをトリガーする
 description: このチュートリアルでは、基本イメージが更新されたときにクラウドでコンテナー イメージ ビルドを自動的にトリガーするように Azure Container Registry タスクを構成する方法を説明します。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/12/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 1beb66d8491b7dac84e9531558f8967e22086575
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b89bf0364165822368647b4c5b773bf422902aec
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931678"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456132"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>チュートリアル:Azure コンテナー レジストリで基本イメージの更新時にコンテナー イメージ ビルドを自動化する 
 
@@ -272,10 +267,10 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、イメージの基本イメージが更新されたときにコンテナー イメージ ビルドを自動的にトリガーするタスクを使用する方法を説明しました。 次に、コンテナー レジストリの認証について説明します。
+このチュートリアルでは、イメージの基本イメージが更新されたときにコンテナー イメージ ビルドを自動的にトリガーするタスクを使用する方法を説明しました。 次のチュートリアルに進んで、定義されたスケジュールでタスクをトリガーする方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry の 認証](container-registry-authentication.md)
+> [スケジュールに基づいてタスクを実行する](container-registry-tasks-scheduled.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

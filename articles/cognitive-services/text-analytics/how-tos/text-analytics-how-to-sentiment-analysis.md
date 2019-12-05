@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/23/2019
+ms.date: 11/21/2019
 ms.author: aahi
-ms.openlocfilehash: f7a62d1d2b695726421ba990d0f118eb3ae199da
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 33c9c708adcc196bc7d9b2e8a066d18e4dd20608
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031460"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326616"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>例:Text Analytics でセンチメントを検出する
 
@@ -36,7 +36,7 @@ Text Analytics では、機械学習分類アルゴリズムを使用して、0 
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>感情分析 v3 のパブリック プレビュー
 
-[次のバージョンの感情分析](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)は、パブリック プレビューで使用できるようになりました。 API のテキストの分類とスコア付けの精度および詳細が大幅に改善されています。
+次期バージョンの感情分析は、パブリック プレビューで使用できるようになりました。 API のテキストの分類とスコア付けの精度および詳細が大幅に改善されています。 [API テスト コンソール](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)を使用して、試してみてください。
 
 > [!NOTE]
 > * 感情分析 v3 の要求の形式と[データ制限](../overview.md#data-limits)は、以前のバージョンと同じです。

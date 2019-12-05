@@ -1,21 +1,20 @@
 ---
-title: チュートリアル:Azure IoT Hub Device Provisioning Service (.NET) を使用してデバイスをプロビジョニングする
-description: チュートリアル:Azure IoT Hub Device Provisioning Service (.NET) を使用して、1 つの IoT ハブにデバイスをプロビジョニングします
+title: Azure IoT Hub Device Provisioning Service (.NET) を使用してデバイスをプロビジョニングする
+description: チュートリアル - Azure IoT Hub Device Provisioning Service (.NET) を使用して 1 つの IoT ハブにデバイスをプロビジョニングする
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 02995549590f6f53feff92fe45bfb6cc3d543334
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a19774a163c8725e0232e955a7be907420ce8249
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112807"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229493"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>チュートリアル:Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 

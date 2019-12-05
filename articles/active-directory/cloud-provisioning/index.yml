@@ -1,0 +1,50 @@
+### YamlMime:Landing
+title: Azure AD Connect クラウド プロビジョニングに関するドキュメント
+summary: クラウド プロビジョニングは、あらゆる要素をクラウドで保持することによって、オンプレミス ユーザーの管理の簡素化と自動化に寄与します。
+metadata:
+  author: billmath
+  description: クラウド プロビジョニングは、クラウドで管理されるルールを使って既存の AD フォレストから Azure AD ユーザーを同期することができ、Azure AD ユーザーの管理の簡素化と自動化に役立ちます。
+  ms.author: billmath
+  ms.collection: na
+  ms.date: 09/05/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 89f3cf397322be65166e05c20b2e1d978a837581
+  ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74795243"
+landingContent:
+- title: クラウド プロビジョニングについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD Connect クラウド プロビジョニングとは
+      url: what-is-cloud-provisioning.md
+- title: ユーザーとグループのライフサイクルを管理するための最適なソリューションを実装する方法について学ぶ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 単一の AD フォレストを単一の Azure AD テナントに統合する
+      url: tutorial-single-forest.md
+    - text: 既存のフォレストと新しいフォレストを単一の Azure AD テナントに統合する
+      url: tutorial-existing-forest.md
+    - text: 既存の同期済み AD フォレストに対してクラウド プロビジョニングのパイロットを実施する
+      url: tutorial-pilot-aadc-aadccp.md
+- title: クラウド プロビジョニングを開始する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD Connect クラウド プロビジョニングの前提条件
+      url: how-to-prerequisites.md
+    - text: Azure AD Connect クラウド プロビジョニングのインストール
+      url: how-to-install.md
+    - text: Azure AD Connect クラウド プロビジョニング エージェントの構成
+      url: how-to-configure.md
+  - linkListType: reference
+    links:
+    - text: サポートされるトポロジとシナリオ
+      url: plan-cloud-provisioning-topologies.md

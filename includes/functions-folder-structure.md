@@ -9,22 +9,22 @@ ms.topic: include
 ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: aad66a91f7de8380ac7e87f0ce8e35ed43cac4a6
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4460d19de1859a8a3c51d91d418b948b5d3532a6
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594532"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666723"
 ---
 特定の関数アプリ内のすべての関数のコードは、ホスト構成ファイルと 1 つ以上のサブフォルダーを含むルート プロジェクト フォルダーにあります。 各サブフォルダーには、個別の関数のコードが含まれています。 フォルダー構造は、次の図のように表示されます。
 
 ```
 FunctionApp
  | - host.json
- | - Myfirstfunction
+ | - MyFirstFunction
  | | - function.json
  | | - ...  
- | - mysecondfunction
+ | - MySecondFunction
  | | - function.json
  | | - ...  
  | - SharedCode
@@ -40,6 +40,3 @@ Functions ランタイムのバージョン 2.x では、関数アプリ内の�
 * [F# スクリプト](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
 * [Java](../articles/azure-functions/functions-reference-java.md#folder-structure)
 * [JavaScript](../articles/azure-functions/functions-reference-node.md#folder-structure)
-
-
-

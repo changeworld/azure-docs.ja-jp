@@ -3,16 +3,16 @@ title: Azure Data Explorer を使用して時系列データを分析する
 description: Azure Data Explorer を使用してクラウドで時系列データを分析する方法について説明します。
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3873b25394f91ce1c1601c348de2098198ba7fdd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604052"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765485"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure データ エクスプローラーの時系列分析
 
@@ -25,6 +25,8 @@ ADX には、複数の時系列の作成、操作、および分析のための�
 時系列分析の最初の手順では、パーティション分割し、元のテレメトリ テーブルを時系列のセットに変換します。 テーブルには、通常、タイムスタンプ列、コンテキスト ディメンション、および省略可能なメトリックが含まれています。 ディメンションは、データをパーティション分割するために使用されます。 目標は、一定の時間間隔でパーティションあたり何千もの時系列を作成することです。
 
 入力テーブル *demo_make_series1* には、任意の Web サービス トラフィックの 600 件のレコードが含まれています。 次のコマンドを使用して、10 件のレコードをサンプリングします。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA) **\]**
 
 ```kusto
 demo_make_series1 | take 10 
@@ -47,6 +49,8 @@ demo_make_series1 | take 10
 |   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | インド |
 
 メトリックがないため、構築できるのは、次のクエリを使用して OS ごとにパーティション分割された、トラフィック数そのものを表す時系列のセットのみです。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -80,6 +84,8 @@ demo_make_series1
     - [`series_iir()`](/azure/kusto/query/series-iirfunction):IIR フィルターを適用します。 指数平滑法と累積合計に使用します。
 - サイズ 5 のビンの新しい移動平均系列 (名前は *ma_num*) をクエリに追加することで、時系列セットに `Extend` を実行します。
 
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=) **\]**
+
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
 let max_t = toscalar(demo_make_series1 | summarize max(TimeStamp));
@@ -98,6 +104,8 @@ ADX は、時系列の傾向を予測するために、セグメント化され�
 - [series_fit_2lines()](/azure/kusto/query/series-fit-2linesfunction) を使用して、ベースラインに対して相対的な傾向変化を検出します。監視シナリオで役立ちます。
 
 時系列のクエリでの `series_fit_line()` 関数と `series_fit_2lines()` 関数の例を、次に示します。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=) **\]**
 
 ```kusto
 demo_series2
@@ -120,6 +128,8 @@ demo_series2
 
 次の例では、Web サービス (2 時間のビン) の 1 か月間のトラフィックに季節性の検出を適用します。
 
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA) **\]**
+
 ```kusto
 demo_series3
 | render timechart 
@@ -132,6 +142,8 @@ demo_series3
 
 > [!NOTE]
 > これは、個別の特定の期間が存在しない場合は異常です
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA) **\]**
 
 ```kusto
 demo_series3
@@ -151,6 +163,8 @@ demo_series3
 ### <a name="element-wise-functions"></a>要素ごとの関数
 
 時系列では算術演算と論理演算を実行できます。 [series_subtract()](/azure/kusto/query/series-subtractfunction) を使用すると、残差時系列、つまり、元の未加工のメトリックと平滑化されたメトリックの間の差を計算して、残差信号の異常を調べることができます。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -173,6 +187,8 @@ demo_make_series1
 
 次の例は、異常検出のために、何千もの秒単位の時系列でこれらの関数を大規模に実行する方法を示しています。 4 日間にわたる DB サービスの読み取り回数のメトリックの、いくつかのサンプルのテレメトリ レコードを確認するには、次のクエリを実行します。
 
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==) **\]**
+
 ```kusto
 demo_many_series1
 | take 4 
@@ -188,6 +204,8 @@ demo_many_series1
 
 シンプルな統計は次のとおりです。
 
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA) **\]**
+
 ```kusto
 demo_many_series1
 | summarize num=count(), min_t=min(TIMESTAMP), max_t=max(TIMESTAMP) 
@@ -199,6 +217,8 @@ demo_many_series1
 |   | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
 読み取りメトリックの 1 時間のビンで時系列を構築すると (4 日 * 24 時間の合計 = 96 ポイント)、結果として正常なパターンの変動が発生します。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -214,6 +234,8 @@ demo_many_series1
 
 時系列はいくつ作成できるでしょうか。
 
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=) **\]**
+
 ```kusto
 demo_many_series1
 | summarize by Loc, Op, DB
@@ -226,6 +248,8 @@ demo_many_series1
 |   | 18339 |
 
 ここで、読み取り回数のメトリックの 18339 の時系列のセットを作成します。 make-series ステートメントに `by` 句を追加し、線形回帰を適用して、最も重要な減少傾向があった上位 2 つの時系列を選択します。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -240,6 +264,8 @@ demo_many_series1
 ![時系列の上位 2 つ](media/time-series-analysis/time-series-top-2.png)
 
 インスタンスを表示します。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  

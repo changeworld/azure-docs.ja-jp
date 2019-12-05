@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:C# を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法
+title: C# を使用して X.509 デバイスを Azure Device Provisioning Service に登録する
 description: このクイック スタートでは、グループ登録を使用します。 このクイックスタートでは、C# を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します。
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: e43448337f787115c479f2f53ca57b7a20120108
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 3df9afa35b3ae9f7360a5d4b890d3fce209a4b12
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903436"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423319"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>クイック スタート:C# を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -80,13 +79,13 @@ C SDK のツールに加えて、*Microsoft Azure IoT SDK for .NET* に含まれ
 
 1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。 **[新しいプロジェクトの作成]** で、C# プロジェクト テンプレート用の **[コンソールアプリ (.NET Cor)]** を選択し、 **[次へ]** を選択します。
 
-1. プロジェクトに *CreateEnrollmentGroup* という名前を付け、 **[作成]** を選択します。
+1. プロジェクトに *CreateEnrollmentGroup* という名前を付け、 **[作成]** を押します。
 
     ![Visual C# Windows クラシック デスクトップ プロジェクトを構成する](media//quick-enroll-device-x509-csharp/configure-app-vs2019.png)
 
-1. **ソリューション エクスプローラー**で **CreateEnrollmentGroup** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+1. Visual Studio でソリューションを開き、 **[ソリューション エクスプローラー]** ペインで **CreateEnrollmentGroup** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
-1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、**Microsoft.Azure.Devices.Provisioning.Service** を検索して選択してから、 **[インストール]** を選択します。
+1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、**Microsoft.Azure.Devices.Provisioning.Service** を検索して選択してから、 **[インストール]** を押します。
 
     ![NuGet Package Manager window](media//quick-enroll-device-x509-csharp/add-nuget.png)
 
@@ -103,12 +102,12 @@ C SDK のツールに加えて、*Microsoft Azure IoT SDK for .NET* に含まれ
 1. `Program` クラスに次のフィールドを追加し、一覧された変更を行います。  
 
    ```csharp
-   private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
+   private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
    private static string EnrollmentGroupId = "enrollmentgrouptest";
    private static string X509RootCertPath = @"{Path to a .cer or .pem file for a verified root CA or intermediate CA X.509 certificate}";
    ```
 
-   * `ProvisioningConnectionString` プレースホルダーの値を、登録を作成したいプロビジョニング サービスの接続文字列に置き換えます。
+   * `ProvisioningServiceConnectionString` プレースホルダーの値を、登録を作成したいプロビジョニング サービスの接続文字列に置き換えます。
 
    * プレースホルダー `X509RootCertPath` の値は、.pem ファイルまたは .cer ファイルへのパスに置き換えます。 このファイルは、プロビジョニング サービスで以前、アップロードされて検証されている中間証明書またはルート CA x.509 証明書の公開部分を表します。
 
@@ -168,7 +167,7 @@ C SDK のツールに加えて、*Microsoft Azure IoT SDK for .NET* に含まれ
 
 ## <a name="run-the-enrollment-group-sample"></a>登録グループのサンプルを実行する
   
-Visual Studio でサンプルを実行して登録グループを作成します。 作成が正常に完了すると、コマンド プロンプト ウィンドウに新しい登録グループのプロパティが表示されます。
+Visual Studio でサンプルを実行して登録グループを作成します。 コマンド プロンプト ウィンドウが表示され、確認メッセージの表示が開始されます。 作成が正常に完了すると、コマンド プロンプト ウィンドウに新しい登録グループのプロパティが表示されます。
 
 登録グループが作成されていることを確認できます。 Device Provisioning Service の概要に進み、 **[登録の管理]** を選択してから、 **[登録グループ]** を選択します。 サンプルで使用した登録 ID に対応する新しい登録エントリが表示されます。
 
@@ -182,9 +181,9 @@ C# サービスのサンプルを調べる予定の場合は、このクイッ�
 
 1. ご利用のコンピューターに表示されている C# サンプルの出力ウィンドウを閉じます。
 
-1. Azure portal で [デバイス プロビジョニング サービス] に移動し、 **[登録を管理します]** を選択して、 **[登録グループ]** を選択します。 このクイックスタートを使用して作成した登録エントリの *[登録 ID]* を選択し、 **[削除]** を選択します。
+1. Azure portal で [デバイス プロビジョニング サービス] に移動し、 **[登録を管理します]** を選択して、 **[登録グループ]** を選択します。 このクイックスタートを使用して作成した登録エントリの *[登録 ID]* を選択し、 **[削除]** を押します。
 
-1. Azure portal の Device Provisioning サービスから、 **[証明書]** を選択し、このクイックスタート用にアップロードした証明書を選択し、 **[証明書の詳細]** の上部にある **[削除]** を選択します。  
+1. Azure portal の Device Provisioning サービスから、 **[証明書]** を選択し、このクイックスタート用にアップロードした証明書を選択し、 **[証明書の詳細]** の上部にある **[削除]** を押します。  
 
 ## <a name="next-steps"></a>次の手順
 

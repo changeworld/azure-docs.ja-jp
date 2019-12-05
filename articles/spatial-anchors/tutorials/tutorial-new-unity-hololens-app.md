@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Spatial Anchors を使用して新しい HoloLens Unity アプリを作成する詳細な手順 | Microsoft Docs
+title: チュートリアル:新しい HoloLens Unity アプリを作成する
 description: このチュートリアルでは、Azure Spatial Anchors を使用して新しい HoloLens Unity アプリを作成する方法について説明します。
 author: julianparismorgan
 manager: vriveras
@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7e7d4a542146fb8d342cce6c34f9d97e72349f84
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0d63f2df17804d5cc171f94a34ebc5831be384fb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561380"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276919"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい HoloLens Unity アプリを作成する詳細な手順
 
@@ -40,9 +40,9 @@ ms.locfileid: "68561380"
 
 **プロジェクト設定をセットアップする**
 
-次に、開発で Windows Holographic SDK をターゲットにするのに役立つ、Unity プロジェクトの設定をいくつか行います。 
+次に、開発で Windows Holographic SDK をターゲットにするのに役立つ、Unity プロジェクトの設定をいくつか行います。
 
-まず、アプリケーションの品質設定を行いましょう。 
+まず、アプリケーションの品質設定を行いましょう。
 1. **[Edit]\(編集\)**  >  **[Project Settings]\(プロジェクト設定\)**  >  **[Quality]\(品質\)** の順に選択します。
 2. **Windows ストア** ロゴの下の列で、 **[Default]\(既定値\)** 行の矢印をクリックし、 **[Very Low]\(非常に低い\)** を選択します。 **[Windows Store]\(Windows ストア\)** 列のボックスと **[Very Low]\(非常に低い\)** 行が緑色の場合、設定が適切に適用されていることがわかります。
 
@@ -53,7 +53,7 @@ ms.locfileid: "68561380"
 3. **[XR Settings]\(XR 設定\)** グループを展開します。
 4. **[Rendering]\(レンダリング\)** セクションで、 **[Virtual Reality Supported]\(バーチャル リアリティ サポート\)** チェック ボックスをオンにして、新しい**バーチャル リアリティ SDK** の一覧を追加します。
 5. **[Windows Mixed Reality]** が一覧に表示されていることを確認します。 されていない場合は、一覧の下部にある **[+]** ボタンを選択し、 **[Windows Mixed Reality]** を選択します。
- 
+
 > [!NOTE]
 > Windows ストア アイコンが表示されない場合は、インストールの前に Windows ストア .NET スクリプト バックエンドを選択したことをもう一度確認します。 していない場合は、適切な Windows インストールを使用して、Unity を再インストールする必要があります。
 
@@ -76,9 +76,9 @@ ms.locfileid: "68561380"
 6. **[コンポーネントの追加]** を選択し、**Spatial Mapping Collider** を追加します。
 
 **スクリプトを作成する**
-1. **[Project]\(プロジェクト\)** ウィンドウで、**Assets** フォルダーの下に新しいフォルダー (**Scripts**) を作成します。 
-2. そのフォルダーを右クリックして、 **[Create]\(作成\) >** **[C# Script]\(C# スクリプト\)** の順に選択します。 タイトルは「**AzureSpatialAnchorsScript**」にします。 
-3. **[GameObject]\(ゲームオブジェクト\)**  ->  **[Create Empty]\(空のオブジェクトの作成\)** の順に移動します。 
+1. **[Project]\(プロジェクト\)** ウィンドウで、**Assets** フォルダーの下に新しいフォルダー (**Scripts**) を作成します。
+2. そのフォルダーを右クリックして、 **[Create]\(作成\) >** **[C# Script]\(C# スクリプト\)** の順に選択します。 タイトルは「**AzureSpatialAnchorsScript**」にします。
+3. **[GameObject]\(ゲームオブジェクト\)**  ->  **[Create Empty]\(空のオブジェクトの作成\)** の順に移動します。
 4. それを選択し、 **[Inspector]\(インスペクター\)** でその名前を **GameObject** から **MixedRealityCloud** に変更します。 **[Add Component]\(コンポーネントの追加\)** を選択し、**AzureSpatialAnchorsScript** を検索して追加します。
 
 **球のプレハブを作成する**
@@ -93,13 +93,13 @@ ms.locfileid: "68561380"
 問題ないことをテストするために、**Unity** でアプリをビルドし、**Visual Studio** でそれをデプロイします。 そのためには、「[**MR Basics 100: Getting started with Unity (MR の基本 100: Unity の概要)」** コース](https://docs.microsoft.com/windows/mixed-reality/holograms-100#chapter-6---build-and-deploy-to-device-from-visual-studio)の 6 章に従ってください。 Unity のスタート画面、そしてクリアな表示が示されます。
 
 ## <a name="place-an-object-in-the-real-world"></a>現実世界でのオブジェクトの配置
-アプリを使用してオブジェクトを作成し、配置しましょう。 [アプリのデプロイ](#trying-it-out)時に作成した Visual Studio ソリューションを開きます。 
+アプリを使用してオブジェクトを作成し、配置しましょう。 [アプリのデプロイ](#trying-it-out)時に作成した Visual Studio ソリューションを開きます。
 
 まず、以下の import を `Assembly-CSharp (Universal Windows)\Scripts\AzureSpatialAnchorsScript.cs` に追加します。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=19-24)]
 
-それから、次のメンバー変数を `AzureSpatialAnchorsScript` クラスに追加します。 
+それから、次のメンバー変数を `AzureSpatialAnchorsScript` クラスに追加します。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=26-42,48-52,60-79)]
 
@@ -107,13 +107,13 @@ ms.locfileid: "68561380"
 1. **[Unity]** の **[階層]** ウィンドウで **[MixedRealityCloud]** オブジェクトを選択します。
 2. **[プロジェクト]** ウィンドウに保存した**球**のプレハブをクリックします。 **[インスペクター]** ウィンドウで、 **[Azure Spatial Anchors (スクリプト)]** の下の **Sphere Prefab** 領域にクリックした **Sphere** をドラッグします。
 
-これで**球**がスクリプト上のプレハブとして設定されます。 **Unity** からビルドし、結果の **Visual Studio** ソリューションを[試してみる](#trying-it-out)で行ったのと同じように再度開きます。 
+これで**球**がスクリプト上のプレハブとして設定されます。 **Unity** からビルドし、結果の **Visual Studio** ソリューションを[試してみる](#trying-it-out)で行ったのと同じように再度開きます。
 
 **Visual Studio** で、`AzureSpatialAnchorsScript.cs` を再度開きます。 次のコードを `Start()` メソッドに追加します。 このコードでは `GestureRecognizer` をフックします。これは、エア タップが行われたことを検出して `HandleTap` を呼び出します。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=81-90,93&highlight=4-10)]
 
-ここで、次の `HandleTap()` メソッドを `Update()` の下に追加する必要があります。 これにより、レイ キャストを実行し、球体を配置するヒット ポイントを取得します。 
+ここで、次の `HandleTap()` メソッドを `Update()` の下に追加する必要があります。 これにより、レイ キャストを実行し、球体を配置するヒット ポイントを取得します。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=267-277,299-300,304-312)]
 
@@ -125,9 +125,9 @@ ms.locfileid: "68561380"
 
 ## <a name="set-up-the-dispatcher-pattern"></a>ディスパッチャー パターンの設定
 
-Unity を使用する際には、Unity API (UI を更新するために使用する API など) はすべて、メイン スレッドで実行される必要があります。 しかし、これから記述するコードでは、他のスレッドでコールバックを取得します。 これらのコールバックで UI を更新したいため、サイド スレッドからメイン スレッドに移動する手段が必要です。 サイド スレッドからメイン スレッド上でコードを実行するには、ディスパッチャー パターンを使用します。 
+Unity を使用する際には、Unity API (UI を更新するために使用する API など) はすべて、メイン スレッドで実行される必要があります。 しかし、これから記述するコードでは、他のスレッドでコールバックを取得します。 これらのコールバックで UI を更新したいため、サイド スレッドからメイン スレッドに移動する手段が必要です。 サイド スレッドからメイン スレッド上でコードを実行するには、ディスパッチャー パターンを使用します。
 
-メンバー変数 dispatchQueue を追加してみましょう。これはアクションのキューです。 アクションをキューにプッシュしてからデキューし、そのアクションをメイン スレッドで実行します。 
+メンバー変数 dispatchQueue を追加してみましょう。これはアクションのキューです。 アクションをキューにプッシュしてからデキューし、そのアクションをメイン スレッドで実行します。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=38-51&highlight=6-9)]
 
@@ -141,13 +141,13 @@ Unity を使用する際には、Unity API (UI を更新するために使用す
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Azure Spatial Anchors SDK の取得
 
-次に Azure Spatial Anchors SDK をダウンロードします。 [GitHub の Azure Spatial Anchors リリース ページ](https://github.com/Azure/azure-spatial-anchors-samples/releases)に移動します。 [Assets]\(アセット\) で、**AzureSpatialAnchors.unitypackage** ファイルをダウンロードします。 
+次に Azure Spatial Anchors SDK をダウンロードします。 [GitHub の Azure Spatial Anchors リリース ページ](https://github.com/Azure/azure-spatial-anchors-samples/releases)に移動します。 [Assets]\(アセット\) で、**AzureSpatialAnchors.unitypackage** ファイルをダウンロードします。
 
 Unity で **[Assets]\(アセット\)** に移動し、 **[Import Package]\(パッケージのインポート\)**  >  **[Custom Package...]\(カスタム パッケージ\)** の順にクリックします。パッケージに移動して、 **[Open]\(開く\)** を選択します。
 
 表示される新しい **[Import Unity Package]\(Unity パッケージのインポート\)** ウィンドウで、左下にある **[None]\(なし\)** を選択します。 次に、 **[AzureSpatialAnchorsPlugin]**  >  **[Plugins]\(プラグイン\)** で、 **[Common]\(共通\)** 、 **[Editor]\(エディター\)** 、 **[HoloLens]** を選択します。 右下隅にある **[Import]\(インポート\)** をクリックします。
 
-Azure Spatial Anchors SDK を取得するために、ここで Nuget パッケージを復元する必要があります。 **Unity** でビルドし、その結果生成された **Visual Studio** ソリューションを開いてもう一度ビルドします (詳細は「[試してみる](#trying-it-out)」を参照)。 
+Azure Spatial Anchors SDK を取得するために、ここで Nuget パッケージを復元する必要があります。 **Unity** でビルドし、その結果生成された **Visual Studio** ソリューションを開いてもう一度ビルドします (詳細は「[試してみる](#trying-it-out)」を参照)。
 
 自分の **Visual Studio** ソリューションで、次のインポートを `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs` に追加します。
 
@@ -210,7 +210,7 @@ Azure Spatial Anchors アカウント識別子とキーを作成したら、先�
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=200-206&highlight=4-5)]
 
- 
+
 次に、CloudSpatialAnchor が配置されると緑色の球体を作成して配置するコードを追加しましょう。 これにより、画面をもう一度タップできるようになるので、シナリオ全体をもう一度繰り返すことができます。別のローカル アンカーを作成し、アップロードして、もう一度配置します。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=228-265)]

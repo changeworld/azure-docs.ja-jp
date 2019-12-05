@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 14cb4f02bc18bda24f022f1ccf41a06776a5136b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 4e6b648ed70f6ff57a2d11cde43b8168b800fcb3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241474"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806917"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight の Apache Spark 上で自動化された機械学習を使用して Azure Machine Learning ワークロードを実行する
 
@@ -71,7 +71,7 @@ dataflow_with_token = dprep.read_csv(
 
 ## <a name="experiment-submission"></a>実験の送信
 
-[Automated Machine Learning 構成](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig)では、プロパティ `spark_context` は分散モードで実行するパッケージに対して設定する必要があります。 `concurrent_iterations` プロパティは並列で実行されるイテレーションの最大数であり、Spark アプリ用の Executor のコアよりも少ない数値を設定する必要があります。
+[Automated Machine Learning 構成](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)では、プロパティ `spark_context` は分散モードで実行するパッケージに対して設定する必要があります。 `concurrent_iterations` プロパティは並列で実行されるイテレーションの最大数であり、Spark アプリ用の Executor のコアよりも少ない数値を設定する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

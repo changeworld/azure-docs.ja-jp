@@ -3,19 +3,19 @@ title: 認識モデルの指定方法 - Face API
 titleSuffix: Azure Cognitive Services
 description: この記事では、Azure Face API アプリケーションで使用する認識モデルを選択する方法を示します。
 services: cognitive-services
-author: longl
+author: longli0
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: 23c54a69f709ec97d895ed5965841e43ebdc560c
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 5b84e078e3b674a539b61c07c4bb4370719e4799
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306561"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771021"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 

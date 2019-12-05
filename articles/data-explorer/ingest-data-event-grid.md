@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: d3f5ef9d2c3359dc61c32d4971100b096b004f2f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: da701dc91781ef72c29e6454e79523073810dbe4
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881556"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667479"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid の通知をサブスクライブすることで Azure Data Explorer に BLOB を取り込む
 
@@ -20,6 +20,7 @@ ms.locfileid: "72881556"
 > * [ポータル](ingest-data-event-grid.md)
 > * [C#](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
+> * [Azure Resource Manager テンプレート](data-connection-event-grid-resource-manager.md)
 
 Azure Data Explorer は、ログと利用統計情報のための高速でスケーラブルなデータ探索サービスです。 BLOB コンテナーに書き込まれた BLOB からの継続的な取り込み (データの読み込み) を実行できます。 
 

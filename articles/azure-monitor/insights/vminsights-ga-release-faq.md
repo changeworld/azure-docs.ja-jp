@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/07/2019
-ms.openlocfilehash: 523fb2d3a3b148afc9219e666c2fbe7fa40d58ad
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 88634777897341f4bd4d8c12b5f9d3b6d9982758
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553806"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671532"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs の一般提供 (GA) についてよく寄せられる質問
 
@@ -40,8 +40,9 @@ Azure Monitor for VMs を有効にする現在のメソッドでは、ご利用�
 
 InsightsMetrics のデータを使用するように、ユーザー インターフェイスを更新したら、ドキュメントを更新し、Azure portal でのバナーの表示など、複数のチャネルを使ってこのお知らせを伝えます。 その時点で、これらの[パフォーマンス カウンター](vminsights-enable-overview.md#performance-counters-enabled)を使用する必要がなくなった場合は、ご利用のワークスペースで無効にすることができます。 
 
-[!NOTE]
+>[!NOTE]
 >Perf テーブルにこれらのカウンターを参照するアラート ルールがある場合は、`InsightsMetrics` テーブル内の新しいデータを参照するように更新する必要があります。  このテーブルを参照する使用可能なログ クエリの例については、Microsoft のドキュメントを参照してください。
+>
 
 パフォーマンス カウンターを有効にしたままにする場合は、取り込まれたデータに対して課金され、[Log Analytics の価格](https://azure.microsoft.com/pricing/details/monitor/) に基づいて Perf テーブルに保持されます。
 

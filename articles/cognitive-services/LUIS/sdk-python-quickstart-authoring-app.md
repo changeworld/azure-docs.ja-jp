@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 08/07/2019
+ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 1b586af569a9406d7fe9fa3d05c198f62f32744f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 97bb86dc702802fd071015364cf205c4f1bb11d5
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672001"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422719"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>クイック スタート:Python 用 Language Understanding (LUIS) 作成クライアント ライブラリ
 
@@ -39,7 +39,46 @@ Python 用 Language Understanding (LUIS) 作成クライアント ライブラ�
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUIS) スターター キーを取得する
 
-[スターター キー](luis-how-to-azure-subscription.md#starter-key)を取得し、そのキーについて `LUIS_AUTHORING_KEY` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、キーのリージョンの環境変数 (`LUIS_REGION`) を作成します。
+LUIS 作成リソースを作成して、[スターター キー](luis-how-to-azure-subscription.md#starter-key)を取得します。 次の手順のために、キーとキーのリージョンを保持しておきます。
+
+### <a name="create-an-environment-variable"></a>環境変数を作成する
+
+キーとキーのリージョンを使用して、認証用に 2 つの環境変数を作成します。
+
+* `LUIS_AUTHORING_KEY` - 要求を認証するためのリソース キー。
+* `LUIS_REGION` - キーに関連付けられているリージョン。 たとえば、「 `westus` 」のように指定します。
+
+ご利用のオペレーティング システムの手順に従ってください。
+
+#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+```console
+setx LUIS_AUTHORING_KEY <replace-with-your-luis-authoring-key
+setx LUIS_REGION <replace-with-your-luis-region>
+```
+
+環境変数を追加したら、コンソール ウィンドウを再起動します。
+
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+```bash
+export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key>
+export LUIS_REGION=<replace-with-your-luis-region>
+```
+
+環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source ~/.bashrc` を実行します。
+
+#### <a name="macostabunix"></a>[macOS](#tab/unix)
+
+次のように `.bash_profile` を編集し、環境変数を追加します。
+
+```bash
+export LUIS_AUTHORING_KEY=<replace-with-your-luis-authoring-key> 
+export LUIS_REGION=<replace-with-your-luis-region>
+```
+
+環境変数を追加した後、変更を有効にするには、コンソール ウィンドウから `source .bash_profile` を実行します。
+***
 
 ### <a name="install-the-python-library-for-luis"></a>LUIS 用 Python ライブラリをインストールする
 
