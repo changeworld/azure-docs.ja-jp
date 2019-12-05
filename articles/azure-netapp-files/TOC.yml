@@ -75,3 +75,11 @@
       href: 'https://docs.microsoft.com/rest/api/netapp/'
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.netapp/allversions
+- name: リソース
+  items:
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/netapp/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'
+    - name: ビデオ
+      href: azure-netapp-files-videos.md
