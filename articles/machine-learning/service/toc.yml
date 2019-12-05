@@ -69,6 +69,8 @@
   items:
     - name: ワークスペース
       href: concept-workspace.md
+    - name: Data
+      href: concept-data.md
     - name: モデル トレーニング
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
