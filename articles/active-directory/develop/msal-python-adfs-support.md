@@ -18,16 +18,16 @@ ms.author: abpati
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 148b9a4a890b22db63f03c673f5d779547a589e1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0aada339ab68eeb7f29eeb815611a8e434e6a998
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484784"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803650"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>MSAL for Python での Active Directory フェデレーション サービスのサポート
 
-Windows Server で Active Directory フェデレーション サービス (AD FS) を使用すると、Python 用 Microsoft Authentication Library (MSAL) を使用して、アプリに OpenID Connect と OAuth 2.0 ベースの認証と承認を追加できます。 MSAL for Python ライブラリを使用すると、アプリで AD FS に対してユーザーを直接認証できます。 シナリオの詳細については、「[開発者向けの AD FS のシナリオ](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers)」をご覧ください。
+Windows Server で Active Directory フェデレーション サービス (AD FS) を使用すると、Python 用 Microsoft Authentication Library (MSAL) を使用して、アプリに OpenID Connect と OAuth 2.0 ベースの認証と承認を追加できます。 MSAL for Python ライブラリを使用すると、アプリで AD FS に対してユーザーを直接認証できます。 シナリオの詳細については、「[開発者向けの AD FS のシナリオ](/windows-server/identity/ad-fs/ad-fs-development)」をご覧ください。
 
 通常、AD FS に対して認証を行うには、次の 2 つの方法があります。
 
