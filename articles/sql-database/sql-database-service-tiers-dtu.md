@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: 6d4c9dd08f2d00bc12f041748cc78363c9abecbd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/26/2019
+ms.openlocfilehash: 6dee7642ac7ac0544db5b88981483bd1ea0f745e
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822516"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539308"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 
@@ -42,6 +42,12 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 |列ストア インデックス作成 |該当なし|S3 以上|サポートされています|
 |インメモリ OLTP|該当なし|該当なし|サポートされています|
 |||||
+
+> [!IMPORTANT]
+> Basic、Standard S0、S1、S2 サービス レベルでは、1 未満の仮想コア (CPU) が提供されます。  CPU 負荷の高いワークロードの場合は、S3 以上のサービス レベルをお勧めします。 
+>
+>データ ストレージに関しては、Basic、Standard S0 および S1 サービス レベルは Standard ページ BLOB に配置されます。 Standard ページ BLOB は、ハード ディスク ドライブ (HDD) ベースのストレージ メディアで、パフォーマンス変動の影響を受けにくい、開発、テスト、その他のアクセス頻度の少ないワークロードに最適です。
+>
 
 > [!NOTE]
 > Azure 無料アカウントと組み合わせて Basic サービス レベルで無料の Azure SQL データベースを取得して、Azure を探索できます。 詳細については、「[Azure の無料アカウントでマネージド クラウド データベースを作成する](https://azure.microsoft.com/free/services/sql-database/)」をご覧ください。

@@ -1,19 +1,15 @@
 ---
-title: Azure Backup Import/Export サービスを使用したオフライン バックアップのシード処理
+title: Import/Export サービスを使用したオフライン バックアップのシード処理
 description: Azure Backup の Azure Import/Export サービスを使用してネットワークからデータを送信する方法について説明します。 この記事では、Azure Import Export サービスの使用による初期バックアップ データのオフライン シード処理について説明します。
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: dacurwin
-ms.openlocfilehash: 15a5a67209552134969c01220e8412d0c9dace15
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 331d5528c8f124f4d43142ff7be4daa3169b0381
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968514"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173299"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 
@@ -40,7 +36,7 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
 > * Microsoft Azure Recovery Services (MARS) エージェント (Azure Backup エージェントとも呼ばれます) によるファイルとフォルダーのバックアップ。
 > * System Center Data Protection Manager (SC DPM) でのすべてのワークロードとファイルのバックアップ
 > * Microsoft Azure Backup Server でのすべてのワークロードとファイルのバックアップ
-
+ 
    > [!NOTE]
    > Azure Backup エージェントを使用して行われたシステム状態のバックアップでは、オフライン バックアップはサポートされません。
 
@@ -109,7 +105,7 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
 
 *AzureOfflineBackupDiskPrep* ユーティリティは、最寄りの Azure データセンターに送る SATA ドライブを準備します。 このユーティリティは、Azure Backup エージェントのインストール ディレクトリにあります (次のパス)。
 
-   *\Microsoft Azure Recovery Services Agent\Utils\\*
+    *\Microsoft Azure Recovery Services Agent\Utils\\*
 
 1. このディレクトリに移動し、**AzureOfflineBackupDiskPrep** ディレクトリを、SATA ドライブが接続されている別のコンピューターにコピーします。 SATA ドライブが接続されたコンピューターで、次のことを確認します。
 

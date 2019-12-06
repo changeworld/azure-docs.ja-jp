@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 5f497bd06868d586f8378cb81e870a750b8a1670
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 264c60c719ffdd94664ae3a85fc67894d14f394d
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122887"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484456"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 
@@ -232,7 +232,7 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 *   データ ファクトリに対する読み取りアクセス許可は、チーム メンバー全員に必要です。
 *   ファクトリへの発行は、一部のメンバーにのみ許可するようにします。 そのためには、ファクトリに **Data Factory 共同作成者**ロールが必要です。 アクセス許可の詳細については、「[Azure Data Factory のロールとアクセス許可](concepts-roles-permissions.md)」を参照してください。
    
-コラボレーション ブランチへの直接チェックインは許可しないことをお勧めします。 この制限は、すべてのチェックインがプル要求プロセスを実行するたびにバグを防ぐために役立ちます。
+コラボレーション ブランチへの直接チェックインは許可しないことをお勧めします。 この制限は、すべてのチェックインが「[機能ブランチの作成](source-control.md#creating-feature-branches)」に記載されているプル要求のレビュー プロセスを通過するため、バグを防ぐのに役立ちます。
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Azure Key Vault からのパスワードの使用
 

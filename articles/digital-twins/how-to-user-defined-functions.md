@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4db6f0052c92d4532917a996eda82a27d97d3063
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 824fe611867216233e223e505f5321b23b7406fb
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009569"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383311"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Azure Digital Twins 内でユーザー定義関数を作成する方法
 
@@ -46,7 +46,7 @@ ms.locfileid: "74009569"
 
 次の例のマッチャーは、データ型の値が `"Temperature"` であるすべてのセンサー テレメトリ イベントに対して true と評価されます。 ユーザー定義関数に複数のマッチャーを作成するには、以下に対して認証済みの HTTP POST 要求を実行します。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/matchers
 ```
 
@@ -81,7 +81,7 @@ JSON 本文は次のようになります。
 
 マッチャーが作成された後、次の認証済みマルチパート HTTP POST 要求で関数スニペットをアップロードします。
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
@@ -201,7 +201,7 @@ function process(telemetry, executionContext) {
 
 1. すべてのロールについて[システム API に対してクエリを実行](./security-create-manage-role-assignments.md#retrieve-all-roles)して、ユーザー定義関数に割り当てるロール ID を取得します。 そのためには、以下に対して認証済みの HTTP GET 要求を実行します。
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
    目的のロール ID を保持します。 これは、下で JSON 本文属性 **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) として渡されます。
@@ -210,7 +210,7 @@ function process(telemetry, executionContext) {
 1. `fullpath` を使用して空間に対してクエリを実行して、**path** (`YOUR_ACCESS_CONTROL_PATH`) の値を見つけます。
 1. 返された `spacePaths` 値をコピーします。 次のように使用します。 以下に対して認証済みの HTTP GET 要求を実行します。
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
@@ -220,7 +220,7 @@ function process(telemetry, executionContext) {
 
 1. 返された `spacePaths` 値を **path** に貼り付けて、認証済み HTTP POST 要求を以下に対して実行することでユーザー定義関数のロールの割り当てを作成します。
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/roleassignments
     ```
     JSON 本文は次のようになります。
@@ -238,7 +238,7 @@ function process(telemetry, executionContext) {
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | 目的の役割の識別子 |
     | YOUR_USER_DEFINED_FUNCTION_ID | 使用するユーザー定義関数の ID |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | ユーザー定義関数の種類を指定する ID |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | ユーザー定義関数 (`UserDefinedFunctionId`) の種類を指定する ID |
     | YOUR_ACCESS_CONTROL_PATH | アクセス制御パス |
 
 >[!TIP]

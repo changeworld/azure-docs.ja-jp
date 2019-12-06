@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/01/2019
+ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c5e87d8d6fe49302bee2b2248f84ba98a650533
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802311"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554236"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -32,7 +32,7 @@ ms.locfileid: "71802311"
 > [!TIP]
 > 共同管理者を追加する必要があるのは、[Azure サービス管理 PowerShell モジュール](https://docs.microsoft.com/powershell/module/servicemanagement/azure)を使用して Azure クラシック デプロイを管理する必要がある場合だけです。 クラシック リソースの管理に Azure portal だけを使用する場合は、ユーザーに従来の管理者を追加する必要はありません。
 
-1. [Azure portal](https://portal.azure.com) にサービス管理者としてサインインします。
+1. [Azure portal](https://portal.azure.com) にサービス管理者または共同管理者としてサインインします。
 
 1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開き、サブスクリプションを選択します。
 
@@ -52,9 +52,17 @@ ms.locfileid: "71802311"
 
     ![共同管理者追加のスクリーンショット](./media/classic-administrators/add-coadmin.png)
 
-### <a name="adding-a-guest-user-as-a-co-administrator"></a>ゲスト ユーザーを共同管理者として追加する
+## <a name="add-a-guest-user-as-a-co-administrator"></a>ゲスト ユーザーを共同管理者として追加する
 
-共同管理者ロールが割り当てられた[ゲスト ユーザー](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md)は、同じく共同管理者ロールが割り当てられたメンバー ユーザーとは異なる点にいくつか気付くことがあります。 次のシナリオで考えてみましょう。
+ゲスト ユーザーを共同管理者として追加するには、前の [[共同管理者を追加する]](#add-a-co-administrator) セクションと同じ手順に従います。 ゲスト ユーザーは次の条件を満たす必要があります。
+
+- ゲスト ユーザーは、ディレクトリ内に存在している必要があります。 これは、ユーザーがディレクトリに招待され、招待を受け入れたことを意味します。
+
+ゲスト ユーザーを自分のディレクトリに追加する方法の詳細については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md)」を参照してください。
+
+### <a name="differences-for-guest-users"></a>ゲスト ユーザーの違い
+
+共同管理者ロールが割り当てられたゲスト ユーザーは、同じく共同管理者ロールが割り当てられたメンバー ユーザーとは異なります。 次のシナリオで考えてみましょう。
 
 - Azure AD アカウント (職場または学校アカウント) を持つユーザー A は、Azure サブスクリプションのサービス管理者です。
 - ユーザー B は Microsoft アカウントを持っています。
@@ -63,13 +71,15 @@ ms.locfileid: "71802311"
 
 想定とは異なり、ユーザー B はすべてを管理できるわけではありません。 この違いの理由は、Microsoft アカウントはメンバー ユーザーとしてではなく、ゲスト ユーザーとしてサブスクリプションに追加されるためです。 Azure AD でゲスト ユーザーに割り当てられる既定のアクセス許可は、メンバー ユーザーとは異なります。 たとえば、メンバー ユーザーは Azure AD の他のユーザーを読み取ることができますが、ゲスト ユーザーには他のユーザーの読み取りは許可されていません。 メンバー ユーザーは新しいサービス プリンシパルを Azure AD に登録できますが、ゲスト ユーザーにはサービス プリンシパルの登録は許可されていません。
 
-ゲスト ユーザーがこれらのタスクを実行できるようにする必要がある場合、考えられるソリューションは、ゲスト ユーザーに必要な特定の Azure AD 管理者ロールを割り当てることです。 たとえば前のシナリオで他のユーザーの読み取りを許可するには[ディレクトリ リーダー](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)のロールを割り当て、サービス プリンシパルを作成できるようにするには[アプリケーション開発者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)のロールを割り当てます。 メンバー ユーザーとゲスト ユーザーおよびそれぞれのアクセス許可の詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」をご覧ください。
+ゲスト ユーザーがこれらのタスクを実行できるようにする必要がある場合、考えられるソリューションは、ゲスト ユーザーに必要な特定の Azure AD 管理者ロールを割り当てることです。 たとえば前のシナリオで他のユーザーの読み取りを許可するには[ディレクトリ リーダー](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)のロールを割り当て、サービス プリンシパルを作成できるようにするには[アプリケーション開発者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)のロールを割り当てます。 メンバー ユーザーとゲスト ユーザーおよびそれぞれのアクセス許可の詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」をご覧ください。 ゲスト ユーザーにアクセス権を付与する方法の詳細については、「[RBAC を使用して外部ゲスト ユーザーの Azure リソースへのアクセスを管理する](role-assignments-external-users.md)」を参照してください。
 
 [Azure リソースの組み込みロール](../role-based-access-control/built-in-roles.md)は、[Azure AD 管理者ロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md)とは異なることに注意してください。 組み込みロールは Azure AD に対するアクセス許可を一切付与しません。 詳細については、「[各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」をご覧ください。
 
+メンバー ユーザーとゲスト ユーザーの比較情報については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」を参照してください。
+
 ## <a name="remove-a-co-administrator"></a>共同管理者を削除する
 
-1. [Azure portal](https://portal.azure.com) にサービス管理者としてサインインします。
+1. [Azure portal](https://portal.azure.com) にサービス管理者または共同管理者としてサインインします。
 
 1. [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) を開き、サブスクリプションを選択します。
 

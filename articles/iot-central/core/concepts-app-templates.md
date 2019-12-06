@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 3389744c44f7eb4f11a1c9a53ea9e370b83dd79b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: af1870ecc9714eceaf69f2892537e59f068c6a70
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890845"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480319"
 ---
 # <a name="what-are-application-templates"></a>アプリケーション テンプレートとは
 
@@ -50,6 +50,9 @@ Azure IoT Central のアプリケーション テンプレートは、ソリュ�
 - 政府 > 水消費量監視
 - 政府 > 水質監視
 - 医療 > 患者の継続的なモニタリング
+
+> [!NOTE]
+> **カスタム アプリケーション、サンプル Contoso、サンプル Devkits** テンプレートは現在、**米国**、**オーストラリア**、**アジア太平洋**、または**ヨーロッパ**で使用できますが、他のテンプレートは現在**ヨーロッパ**と**米国**でのみ使用できます。
 
 ## <a name="industry-focused-templates"></a>特定業界に焦点を合わせたテンプレート
 

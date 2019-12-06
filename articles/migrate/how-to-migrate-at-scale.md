@@ -1,23 +1,25 @@
 ---
-title: Azure への多数の VM の移行を自動化する | Microsoft Docs
-description: Azure Site Recovery を使用して多数の VM を移行するための、スクリプトの使用方法について説明します
+title: Azure Migrate で移行マシンの移行を自動化する
+description: Azure Migrate を使用して多数のマシンを移行するための、スクリプトの使用方法について説明します
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: b45a158569b3be8250728293c1bf73c1a860a0f6
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67808020"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196363"
 ---
-# <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Azure Site Recovery を使用して VM の移行をスケーリングする
+# <a name="scale-migration-of-vms"></a>VM の移行をスケーリングする 
 
-この記事では、Azure Site Recovery を使用して多数の VM を移行するための、スクリプトの使用方法について説明します。 これらのスクリプトは、GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) リポジトリからダウンロードできます。 スクリプトは、VMware、AWS、GCP の VM と物理サーバーを Azure のマネージド ディスクに移行するために使用できます。 また、VM を物理サーバーとして移行する場合は、これらのスクリプトを使用して Hyper-V VM を移行することもできます。 Azure Site Recovery PowerShell を使用したスクリプトは、[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)に記載されています。
+この記事では、多数の 仮想マシン (VM) を移行するための、スクリプトの使用方法について説明します。 移行をスケーリングするには、[Azure Site Recovery](../site-recovery/site-recovery-overview.md) を使用します。 
 
-## <a name="current-limitations"></a>現在の制限事項:
+Site Recovery スクリプトは、GitHub の [Azure PowerShell サンプル](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) リポジトリからダウンロードできます。 スクリプトは、VMware、AWS、GCP の VM と物理サーバーを Azure のマネージド ディスクに移行するために使用できます。 また、VM を物理サーバーとして移行する場合は、これらのスクリプトを使用して Hyper-V VM を移行することもできます。 Azure Site Recovery PowerShell を使用したスクリプトは、[こちら](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)に記載されています。
+
+## <a name="current-limitations"></a>現時点での制限事項
 - ターゲット VM のプライマリ NIC に対してのみ、静的 IP アドレスの指定がサポートされています
 - スクリプトでは、Azure ハイブリッド特典に関連する入力は受け付けられません。ポータルで、レプリケートされた VM のプロパティを手動で更新する必要があります
 

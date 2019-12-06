@@ -1,18 +1,14 @@
 ---
-title: PowerShell を使用した Azure Backup による Azure VM のバックアップおよび復旧
+title: PowerShell を使用して Azure VM をバックアップおよび復元する
 description: PowerShell を使用して Azure Backup によって Azure VM をバックアップおよび復旧する方法について説明します。
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.author: dacurwin
-ms.openlocfilehash: 91e71e2ab4c028e44f667133237cefb2263ae49a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 7afa791c4a98ca5e40c0ee3983ba8650268c00ee
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969057"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172546"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell を使用して Azure VM をバックアップおよび復元する
 
@@ -21,6 +17,7 @@ ms.locfileid: "72969057"
 この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
+>
 > * Recovery Services のコンテナーを作成し、コンテナーのコンテキストを設定する。
 > * バックアップ ポリシーを定義する
 > * 複数の仮想マシンを保護するバックアップ ポリシーを適用する
@@ -29,7 +26,7 @@ ms.locfileid: "72969057"
 ## <a name="before-you-start"></a>開始する前に
 
 * Recovery Services コンテナーについての[詳細情報](backup-azure-recovery-services-vault-overview.md)を確認します。
-* Azure VM バックアップのアーキテクチャを[確認](backup-architecture.md#architecture-direct-backup-of-azure-vms)して、バックアップ プロセスについて[学び](backup-azure-vms-introduction.md)、サポート、制限、および前提条件を[確認](backup-support-matrix-iaas.md)します。
+* Azure VM バックアップのアーキテクチャを[確認](backup-architecture.md#architecture-built-in-azure-vm-backup)して、バックアップ プロセスについて[学び](backup-azure-vms-introduction.md)、サポート、制限、および前提条件を[確認](backup-support-matrix-iaas.md)します。
 * Recovery Services の PowerShell オブジェクト階層を確認します。
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services オブジェクトの階層

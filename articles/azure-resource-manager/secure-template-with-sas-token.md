@@ -1,18 +1,14 @@
 ---
-title: SAS トークンを使用した Azure Resource Manager テンプレートの安全なデプロイ
+title: SAS トークンを使用してテンプレートを安全にデプロイする
 description: Azure Resource Manager テンプレートを使用して、SAS トークンで保護されているリソースを Azure にデプロイします。 Azure PowerShell と Azure CLI を表示します。
-services: azure-resource-manager
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.author: tomfitz
-ms.openlocfilehash: f396618350e4f4a9be09db421d073aec6ba52b65
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 8138563211cae12cc38f0e737be49b32204dc243
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037303"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150325"
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token"></a>SAS トークンを使用したプライベート Resource Manager テンプレートのデプロイ
 

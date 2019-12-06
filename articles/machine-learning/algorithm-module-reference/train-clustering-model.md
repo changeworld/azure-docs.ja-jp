@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 1b26fc251aeb527041b1e648f19f9dd67f7701b7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 57cf5bab2afe58ed802ef5ec03c316f1ebec6673
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490395"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232588"
 ---
 # <a name="train-clustering-model"></a>クラスタリング モデルのトレーニング
 
@@ -52,11 +52,9 @@ ms.locfileid: "73490395"
 
 +  データセットの値を表示するには、モジュールを右クリックし、 **[Result datasets]\(結果データセット\)** を選択して **[可視化]** をクリックします。
 
-+ トレーニング済みのモデルを保存して後で再利用できるようにするには、モジュールを右クリックし、 **[Trained model]\(トレーニング済みのモデル\)** を選択して **[Save As Trained Model]\(トレーニング済みのモデルとして保存する\)** をクリックします。
++ トレーニングされたモデルを保存して後で再利用できるようにするには、モジュールを右クリックし、 **[Trained model]\(トレーニングされたモデル\)** を選択して **[Save As Trained Model]\(トレーニングされたモデルとして保存する\)** をクリックします。
 
 + モデルからスコアを生成するには、「[クラスターへのデータの割り当て](assign-data-to-clusters.md)」を使用します。
-
-
 
 ## <a name="next-steps"></a>次の手順
 

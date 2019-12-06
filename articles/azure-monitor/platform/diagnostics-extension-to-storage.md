@@ -1,6 +1,6 @@
 ---
 title: Azure Storage への診断データを保存および表示する
-description: Azure Storage に Azure Diagnostics データを保存し、それを表示する
+description: Azure Storage アカウントで Azure 診断データを収集して、使用可能なツールのいずれかで表示できるようにする方法について説明します。
 services: azure-monitor
 author: jpconnock
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: jeconnoc
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 23379e9d9bb29efb7fb026260e8245e8eb8a2d71
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 35e852a36ebc52edff338ed640419afe32297b81
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60395069"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304969"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Azure Storage への診断データの保存と表示
 診断データは、Microsoft Azure ストレージ エミュレーターまたは Azure ストレージに転送しない限り、永続的に保存されません。 診断データは、いったんストレージに保存されると、用意されているいくつかのツールの 1 つを使用して確認することができます。
@@ -34,13 +34,13 @@ ServiceConfiguration.cscfg ファイル内で使用するストレージ アカ�
 | データ ソース | ストレージ形式 |
 | --- | --- |
 | Azure ログ |テーブル |
-| IIS 7.0 ログ |Blob |
+| IIS 7.0 ログ |BLOB |
 | Azure Diagnostics インフラストラクチャ ログ |テーブル |
-| 失敗した要求トレース ログ |Blob |
+| 失敗した要求トレース ログ |BLOB |
 | Windows イベント ログ |テーブル |
 | パフォーマンス カウンター |テーブル |
-| クラッシュ ダンプ |Blob |
-| カスタム エラー ログ |Blob |
+| クラッシュ ダンプ |BLOB |
+| カスタム エラー ログ |BLOB |
 
 ## <a name="transfer-diagnostic-data"></a>診断データの転送
 SDK 2.5 以降では、診断データの転送要求は構成ファイルを介して発生します。 構成で指定したスケジュール間隔で、診断データを転送することができます。

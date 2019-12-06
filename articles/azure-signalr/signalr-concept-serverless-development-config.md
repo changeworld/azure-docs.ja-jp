@@ -1,17 +1,17 @@
 ---
-title: Azure Functions の SignalR Service アプリケーションを開発し構成する
+title: Azure Functions アプリの開発および構成 - Azure SignalR
 description: Azure Functions と Azure SignalR Service を使用してサーバーレスのリアルタイム アプリケーションを開発し構成する方法の詳細
 author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: be77704f562a1e05485e6f3704dff265635b1dc2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 68ada90699fe9a9db6faeb32a04e8eb02c176944
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882303"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157658"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Service を使用した Azure Functions の開発と構成
 

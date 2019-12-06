@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
+title: 強固な ID 基盤を実現するための 4 つのステップ - Azure AD
 description: このトピックでは、ハイブリッド ID のお客様が強固な ID 基盤を構築するために実行できる 4 つのステップについて説明します。
 services: active-directory
 author: martincoetzer
@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2cd080602ec879affb3ece978f14d5afc33ef9d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d3eb98f543e17981be0d5b9ab08fa4e146659b47
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173091"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206791"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ab55441650085f6ca89f05613fe74dd4ae3cba54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b1252c455c2dfad2963f914ee746bcb932e59aa9
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181561"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451652"
 ---
 1. リソースまたはリソース グループのタグを表示するには、概要で既存のタグを探します。 これまでにタグを適用していない場合、リストは空です。
    
@@ -52,9 +52,9 @@ ms.locfileid: "67181561"
 
 タグが付いているすべてのリソースを表示するには:
 
-1. **[すべてのサービス]** 、 **[タグ]** の順に選択します。
+1. Azure portal のメニューで **[すべてのサービス]** を選択します。 **[全般]** 、 **[タグ]** の順番に選択します。
 
-     ![タグで検索する](./media/resource-manager-tag-resources/find-tags.png)
+     ![タグで検索する](./media/resource-manager-tag-resources/find-tags-general.png)
 
 1. リソースを表示するタグを選択します。
 
@@ -70,4 +70,4 @@ ms.locfileid: "67181561"
 
 1. ビューは、ダッシュボードから使用できます。
 
-     ![ダッシュボード](./media/resource-manager-tag-resources/dashboard.png)
+     ![ダッシュボード](./media/resource-manager-tag-resources/dashboard-with-view.png)

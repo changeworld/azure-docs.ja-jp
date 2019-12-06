@@ -7,12 +7,12 @@ ms.date: 03/21/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: f64856d5b0140d529e939d92d4be61b074928d6e
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: be3dc27823c09823133d5b9a3a3f34afe52ec57d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726426"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227903"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>C++ から BLOB ストレージを使用する方法
 
@@ -32,10 +32,14 @@ Blob Storage の詳細については、「[Azure Blob Storage の概要](storag
 
 C++ 用 Azure ストレージ クライアント ライブラリをインストールする場合、次の方法を使用できます。
 
-* **Linux:** [C++ 用 Azure Storage クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。  
-* **Windows:** Visual Studio で、 **[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。 [NuGet パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) に次のコマンドを入力し、 **Enter**キーを押します。  
-  
-     Install-Package wastorage
+* **Linux:** [C++ 用 Azure Storage クライアント ライブラリの README:Linux での開始](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)に関するページで示されている手順のようにします。
+* **Windows:** Windows では、依存関係マネージャーとして [vcpkg](https://github.com/microsoft/vcpkg) を使用します。 [クイックスタート](https://github.com/microsoft/vcpkg#quick-start)に従って vcpkg を初期化してください。 そのうえで、次のコマンドを使用してライブラリをインストールします。
+
+```powershell
+.\vcpkg.exe install azure-storage-cpp
+```
+
+ソース コードをビルドして Nuget にエクスポートする方法については、[README](https://github.com/Azure/azure-storage-cpp#download--install) ファイルを参照してください。
 
 ## <a name="configure-your-application-to-access-blob-storage"></a>BLOB ストレージにアクセスするようにアプリケーションを構成する
 Azure Storage API を使用して BLOB にアクセスする C++ ファイルの先頭には、次の include ステートメントを追加します。  

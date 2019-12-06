@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: d4269480887dba994559271de7e68b2ba2b460b6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996614"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227827"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure Files のパフォーマンスに関する問題のトラブルシューティング
 
@@ -57,6 +57,7 @@ Premium 共有の既定のクォータは 100 GiB であり、これは 100 ベ�
 ### <a name="workaround"></a>対処法
 
 - メタデータ操作の数を減らすようにアプリケーションを変更できるかどうかを調べます。
+- ファイル共有に VHD を追加し、クライアントから SMB を介して VHD をマウントして、データに対するファイル操作を実行します。 このアプローチは、単一のライターと複数のリーダーのシナリオで機能し、ローカルで直接接続されているストレージと同様のパフォーマンスを提供するメタデータ操作をローカルで行うことができます。
 
 ### <a name="cause-3-single-threaded-application"></a>原因 3:シングル スレッド アプリケーション
 

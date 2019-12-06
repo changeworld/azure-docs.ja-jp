@@ -1,5 +1,5 @@
 ---
-title: Azure VPN Gateway パケット キャプチャ |Microsoft Docs
+title: Azure VPN Gateway:パケット キャプチャの構成
 description: VPN ゲートウェイで使用できるパケット キャプチャ機能について説明します。
 services: vpn-gateway
 author: radwiv
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
-ms.openlocfilehash: 0957fabf58a68efe9e215b390d28dbf160574963
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 41c36d302605bb619899131a8ace649b0f1439b2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511700"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151845"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>VPN ゲートウェイのパケット キャプチャを構成する
 

@@ -1,5 +1,6 @@
 ---
-title: Azure Network Watcher のリソース トラブルシューティングの概要 | Microsoft Docs
+title: リソース トラブルシューティングの概要
+titleSuffix: Azure Network Watcher
 description: このページでは、Network Watcher のリソース トラブルシューティング機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 736bbd16456dd0abda3292b9b9e73ea5b941e7ed
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684239"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277773"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
@@ -75,7 +76,7 @@ ms.locfileid: "64684239"
 | ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ|
 | ConnectionNotConfiguredOnGateway | 基になるサービスの接続が構成されていません。 | はい |
 | ConnectionMarkedStandby | 基になるサービスがスタンバイとマークされています。| はい|
-| Authentication | 事前共有キーが一致しません。 | はい|
+| 認証 | 事前共有キーが一致しません。 | はい|
 | PeerReachability | ピア ゲートウェイに到達できません。 | はい|
 | IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | はい|
 | WfpParse Error | WFP ログの解析中にエラーが発生しました。 |はい|

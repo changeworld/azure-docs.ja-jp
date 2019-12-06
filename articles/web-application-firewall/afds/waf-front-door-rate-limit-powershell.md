@@ -1,5 +1,5 @@
 ---
-title: Front Door 用の Web アプリケーション ファイアウォールのレート制限ルールを構成する - Azure PowerShell
+title: Front Door 用の WAF のレート制限ルールを構成する - Azure PowerShell
 description: 既存の Front Door エンドポイント用のレート制限ルールの構成方法について説明します。
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: ce9ace445d87479da4047da205b59e79402ece07
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511608"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186621"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールのレート制限ルールを構成する
 Azure Front Door 用の Azure Web アプリケーション ファイアウォール (WAF) のレート制限ルールでは、1 分間に単一のクライアント IP から送信できる要求数を制御します。

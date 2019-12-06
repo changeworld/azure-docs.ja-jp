@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション | Microsoft Docs
+title: Azure AD アプリケーション プロキシのワイルドカード アプリケーション
 description: Azure Active Directory アプリケーション プロキシでワイルドカード アプリケーションを使用する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d3b8176566593c5c9e9ff63a6ccbafcb2a35cd5
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: c5a9e7be5f582051e03cba08733fcbfa697cc8f5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827987"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275048"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション
 
@@ -158,7 +158,7 @@ DNS 管理を通じて、特定のアプリケーションに対してのみ機�
 
 ![例の構成によって実装された構造を示しています](./media/application-proxy-wildcard/05.png)
 
-| 色 | 説明 |
+| Color | 説明 |
 | ---   | ---         |
 | 青  | 明示的に発行されており、Azure portal に表示されるアプリケーション。 |
 | グレー  | 親アプリケーション経由でアクセスできるアプリケーション。 |
