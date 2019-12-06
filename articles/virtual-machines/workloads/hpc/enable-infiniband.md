@@ -10,77 +10,59 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 10/17/2019
 ms.author: amverma
-ms.openlocfilehash: 7218fceae71969f204c6c25ba4793a7c94341693
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7f7907482da886d9da17ef1e7844b205f3e4b906
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858487"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196764"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>SR-IOV を使用して InfiniBand を有効にする
 
-HPC 用 IaaS VM を始める最も簡単で推奨される方法は、CentOS-HPC 7.6 VM OS イメージを使用することです。 カスタム VM イメージを使用している場合、InfiniBand (IB) でそれを構成する最も簡単で推奨される方法は、InfiniBandDriverLinux または InfiniBandDriverWindows VM 拡張機能をデプロイに追加することです。
-[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) および [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances) でこれらの VM 拡張機能を使用する方法について説明します
+Azure NC、ND、および H シリーズの VM はすべて、専用の InfiniBand ネットワークを利用しています。 RDMA 対応のすべてのサイズは、Intel MPI を使用してそのネットワークを活用できます。 一部の VM シリーズでは、SR-IOV によるすべての MPI 実装と RDMA 動詞のサポートが拡張されています。 RDMA 対応の VM には、[GPU 最適化済み](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu)の[ハイパフォーマンス コンピューティング (HPC)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) VM が含まれます。
 
-SR-IOV 対応の VM (現在は HB および HC シリーズ) 上で InfiniBand を手動で構成するには、次の手順を実行します。 これらの手順は RHEL/CentOS 専用です。 Ubuntu (16.04 および 18.04)、および SLES (12 SP4 および 15) の場合、受信トレイ ドライバーは適切に機能します。
+## <a name="choose-your-installation-path"></a>インストール パスの選択
 
-## <a name="manually-install-ofed"></a>OFED を手動でインストールする
+操作を開始するための簡単なオプションは、InfiniBand 用に事前に構成されたプラットフォーム イメージを使用する方法です。
 
-[Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26) から ConnectX-5 用の最新の MLNX_OFED ドライバーをインストールします。
+- **HPC IaaS VM** – HPC 向け IaaS VM の使用を開始するための最も簡単なソリューションは、InfiniBand で既に構成されている [CentOS-HPC 7.6 VM OS イメージ](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)を使用することです。 このイメージは既に InfiniBand で構成されているため、手動で構成する必要はありません。 互換性のある Windows バージョンについては、「[Windows RDMA 対応のインスタンス](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)」を参照してください。
 
-RHEL/CentOS の場合 (7.6 の場合の例は次のとおり):
+- **GPU IaaS VM** – [CentOS-HPC 7.6 VM OS イメージ](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557)を除き、現在 GPU 最適化されている VM 用に事前に構成されたプラットフォーム イメージはありません。 InfiniBand を使用してカスタム イメージを構成する方法については、「[Mellanox OFEDを手動でインストール](#manually-install-mellanox-ofed)」を参照してください。
 
-```bash
-sudo yum install -y kernel-devel python-devel
-sudo yum install -y redhat-rpm-config rpm-build gcc-gfortran gcc-c++
-sudo yum install -y gtk2 atk cairo tcl tk createrepo
-wget --retry-connrefused --tries=3 --waitretry=5 http://content.mellanox.com/ofed/MLNX_OFED-4.5-1.0.1.0/MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-tar zxvf MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-support
-```
+カスタム VM イメージまたは [GPU 最適化されている](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) VM を使用している場合、InfiniBandDriverLinux または InfiniBandDriverWindows VM 拡張機能をデプロイして、InfiniBand (IB) でそれを構成する必要があります。 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) および [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances) でこれらの VM 拡張機能を使用する方法について説明します。
 
-Windows の場合、[Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34) から ConnectX-5 用の WinOF-2 ドライバーをダウンロードしてインストールします。
+## <a name="manually-install-mellanox-ofed"></a>Mellanox OFED の手動インストール
 
-## <a name="enable-ipoib"></a>IPoIB を有効にする
+SR-IOV で InfiniBand を手動で構成するには、次の手順に従います。 これらの手順の例では、RHEL/CentOS の構文を示していますが、手順は一般的で、Ubuntu (16.04、18.04、19.04)、SLES (12 SP4、15) などの互換性のあるオペレーティング システムで使用できます。 受信トレイドライバーも同様に機能しますが、Mellanox OpenFabrics ドライバーはより多くの機能を提供します。
+
+Mellanox ドライバーでサポートされているディストリビューションの詳細については、最新の [Mellanox OpenFabrics ドライバー](https://www.mellanox.com/page/products_dyn?product_family=26)に関するページを参照してください。 Mellanox OpenFabrics ドライバーの詳細については、[Mellanox ユーザー ガイド](https://docs.mellanox.com/category/mlnxofedib)のページを参照してください。
+
+Linux で InfiniBand を構成する方法については、次の例を参照してください。
 
 ```bash
-sudo sed -i 's/LOAD_EIPOIB=no/LOAD_EIPOIB=yes/g' /etc/infiniband/openib.conf
-sudo /etc/init.d/openibd restart
-if [ $? -eq 1 ]
-then
-  sudo modprobe -rv  ib_isert rpcrdma ib_srpt
-  sudo /etc/init.d/openibd restart
-fi
+# Modify the variable to desired Mellanox OFED version
+MOFED_VERSION=#4.7-1.0.0.1
+# Modify the variable to desired OS
+MOFED_OS=#rhel7.6
+pushd /tmp
+curl -fSsL https://www.mellanox.com/downloads/ofed/MLNX_OFED-${MOFED_VERSION}/MLNX_OFED_LINUX-${MOFED_VERSION}-${MOFED_OS}-x86_64.tgz | tar -zxpf -
+cd MLNX_OFED_LINUX-*
+sudo ./mlnxofedinstall
+popd
 ```
 
-## <a name="assign-an-ip-address"></a>IP アドレスを割り当てる
+Windows の場合は、[Windows 用の Mellanox OFED ドライバー](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)をダウンロードしてインストールします。
 
-以下のいずれかを使用して、ib0 インターフェイスに IP アドレスを割り当てます。
+## <a name="enable-ip-over-infiniband"></a>IP over InfiniBand を有効にする
 
-- (ルートとして) ib0 インターフェイスに IP アドレスを手動で割り当てます。
+次のコマンドを実行して、IP over InfiniBand を有効にします。
 
-    ```bash
-    ifconfig ib0 $(sed '/rdmaIPv4Address=/!d;s/.*rdmaIPv4Address="\([0-9.]*\)".*/\1/' /var/lib/waagent/SharedConfig.xml)/16
-    ```
-
-または
-
-- WALinuxAgent を使用して IP アドレスを割り当て、それを永続化します。
-
-    ```bash
-    yum install -y epel-release
-    yum install -y python-pip
-    python -m pip install --upgrade pip setuptools wheel
-    wget "https://github.com/Azure/WALinuxAgent/archive/release-2.2.36.zip"
-    unzip release-2.2.36.zip
-    cd WALinuxAgent*
-    python setup.py install --register-service --force
-    sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
-    sed -i -e 's/# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
-    systemctl restart waagent
-    ```
+```bash
+sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo systemctl restart waagent
+```
 
 ## <a name="next-steps"></a>次の手順
 
