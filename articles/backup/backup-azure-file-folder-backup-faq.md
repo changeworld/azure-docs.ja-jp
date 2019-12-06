@@ -1,18 +1,14 @@
 ---
-title: Azure Backup によるファイルとフォルダーのバックアップ - 一般的な質問
+title: ファイルとフォルダーのバックアップに関する一般的な質問
 description: Azure Backup を使用したファイルとフォルダーのバックアップに関する一般的な質問に対応します。
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.author: dacurwin
-ms.openlocfilehash: c65c04a67b92642d3664293dd666236919142f12
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b66eb7bca3c9a57f6b44697aa0340cd852fc3db4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074195"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173055"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>ファイルとフォルダーのバックアップに関する一般的な質問
 

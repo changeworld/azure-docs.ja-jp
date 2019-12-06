@@ -1,25 +1,23 @@
 ---
-title: 物理サーバーの評価と移行の Azure Migrate サポート マトリックス
-description: Azure Migrate サービスを使用した物理サーバーの評価と移行に関する設定と制限について、要点を説明します。
+title: Azure Migrate での物理サーバーの評価/移行のサポート
+description: Azure Migrate での物理サーバーの評価/移行のサポートについてまとめます。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 55ada93e6a77dd7e31640988bad95034f77c90dd
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091891"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196350"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>物理サーバーの評価と移行のサポート マトリックス
 
 [Azure Migrate サービス](migrate-overview.md)を使用すると、コンピューターを評価したり、Microsoft Azure クラウドに移行したりできます。 この記事では、オンプレミスの物理サーバーを評価して移行する際にサポートされる設定と制限について概要を説明します。
 
-> [!NOTE]
-> ここで言及されている機能がまだ Azure Migrate ポータルに表示されない場合は、しばらくお待ちください。 来週あたりに表示されるようになります。
 
 
 ## <a name="physical-server-scenarios"></a>物理サーバーのシナリオ

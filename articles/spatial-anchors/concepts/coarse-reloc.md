@@ -1,5 +1,5 @@
 ---
-title: 粗い再局在化 | Microsoft Docs
+title: 粗い再局在化
 description: 粗い再局在化クイックスタート ガイド。
 author: bucurb
 manager: dacoghl
@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1d9e58f2d7eda818665a6253a8d0508104b17405
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f03d2fba01dadc443da19416871a93a72289c0c6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093265"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270145"
 ---
 # <a name="coarse-relocalization"></a>粗い再局在化
 

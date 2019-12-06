@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 0ea8a8ec1a92a7dbc01dddc175f7116825ba00f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067774"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196669"
 ---
 # <a name="what-is-ip-address-1686312916"></a>IP アドレス 168.63.129.16 とは
 
@@ -35,6 +35,7 @@ IP アドレス 168.63.129.16 は、Azure プラットフォーム リソース�
 ## <a name="scope-of-ip-address-1686312916"></a>IP アドレス 168.63.129.16 のスコープ
 
 パブリック IP アドレス 168.63.129.16 は、すべてのリージョンおよびすべての国内クラウドで使用されます。 この特殊なパブリック IP アドレスは Microsoft が所有しており、変化しません。 これは、既定のネットワーク セキュリティ グループの規則によって許可されています。 インバウンドとアウトバウンド両方向のすべてのローカル ファイアウォール ポリシーで、この IP アドレスを許可することをお勧めします。 この特殊な IP アドレスからメッセージを受信できるのは内部 Azure プラットフォームだけであるため、この IP アドレスとリソースの間の通信は安全です。 このアドレスがブロックされると、さまざまなシナリオで予期しない動作が発生する場合があります。
+WireServer と通信できるようにするには、少なくとも次のポートを開く必要があります: 80、443、32526。
 
 [Azure Load Balancer の正常性プローブ](../load-balancer/load-balancer-custom-probe-overview.md)は、この IP アドレスから送信されます。 この IP アドレスをブロックした場合、プローブは失敗します。
 

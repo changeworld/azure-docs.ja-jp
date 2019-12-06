@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a53f2a0e5927a75c4d22ada5837da26bd8deeda
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3b85c5c6c5642d10c8d917ed9785d0fcf48a5e68
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028277"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554125"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -51,9 +51,14 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されないことに注意してください。
 
-> [!IMPORTANT]
-> このロールは、アプリケーションの資格情報を管理する権限を付与します。 このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID に Azure Active Directory へのアクセス権 (ユーザーやその他のオブジェクトの作成や更新など) が付与されている場合、このロールが割り当てられたユーザーは、アプリケーションを偽装している間にこのようなアクションを実行することができます。 アプリケーションの ID を偽装するこの機能は、ユーザーが Azure AD のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 ユーザーにアプリケーション管理者ロールを割り当てると、そのユーザーがアプリケーションの ID を偽装できるようになることを理解することが重要です。
+アプリケーション管理者は、アプリケーションを偽装できるアプリケーションの資格情報を管理できます。 そのため、このロールに割り当てられたユーザーは、Azure AD ロールに割り当てられていないか、次の管理者ロールに割り当てられているアプリケーションのいずれかのアプリケーションの資格情報を管理できます。
+* アプリケーション管理者
+* アプリケーション開発者
+* クラウド アプリケーション管理者
+* ディレクトリ リーダー
 
+アプリケーションが、上記で説明されていない他のロールに割り当てられている場合、アプリケーション管理者はそのアプリケーションの資格情報を管理できません。 
+ 
 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph に対するアクセス許可を除く) に "_同意する_" 権限を付与します。
 
 > [!IMPORTANT]
@@ -122,8 +127,12 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 このロールのユーザーは、(アプリケーション プロキシを管理する権限を除き) アプリケーション管理者ロールと同じアクセス許可を持ちます。 このロールは、エンタープライズ アプリケーションとアプリケーション登録の全側面を作成して管理する権限を付与します。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールに割り当てられたユーザーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
 
-> [!IMPORTANT]
-> このロールは、アプリケーションの資格情報を管理する権限を付与します。 このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID に Azure Active Directory へのアクセス権 (ユーザーやその他のオブジェクトの作成や更新など) が付与されている場合、このロールが割り当てられたユーザーは、アプリケーションを偽装している間にこのようなアクションを実行することができます。 アプリケーションの ID を偽装するこの機能は、ユーザーが Azure AD のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 ユーザーにクラウド アプリケーション管理者ロールを割り当てると、そのユーザーがアプリケーションの ID を偽装できるようになることを理解することが重要です。
+クラウド アプリケーション管理者は、そのアプリケーションを偽装できるアプリケーションの資格情報を管理できます。 そのため、このロールに割り当てられたユーザーは、Azure AD ロールに割り当てられていないか、次の管理者ロールに割り当てられているアプリケーションのいずれかのアプリケーションの資格情報を管理できます。
+* アプリケーション開発者
+* クラウド アプリケーション管理者
+* ディレクトリ リーダー
+
+アプリケーションが、上記で説明されていない他のロールに割り当てられている場合、クラウド アプリケーション管理者は、そのアプリケーションの資格情報を管理できません。
 
 ### <a name="cloud-device-administratorcloud-device-administrator-permissions"></a>[クラウド デバイス管理者](#cloud-device-administrator-permissions)
 
@@ -229,6 +238,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 >- [Azure AD portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) - グローバル閲覧者は企業アプリのプロビジョニング モードを閲覧できません。
 >- [M365 管理者センター](https://admin.microsoft.com/Adminportal/Home#/homepage) - グローバル閲覧者はカスタマー ロックボックス要求を閲覧できません。 M365 管理者センターの左側のウィンドウにある **[サポート]** の下に **[カスタマー ロックボックス要求]** タブがありません。
 >- [M365 セキュリティ センター](https://security.microsoft.com/homepage) - グローバル閲覧者は機密ラベルと保持ラベルを閲覧できません。 M365 セキュリティ センターの左側のウィンドウに **[機密ラベル]** 、 **[保持ラベル]** 、 **[Label analytics]\(ラベル分析\)** タブがありません。
+>- [Office セキュリティ/コンプライアンス センター](https://sip.protection.office.com/homepage) - グローバル閲覧者が、SCC 監査ログを読み取れないか、コンテンツ検索を実行できません。
 >- [Teams 管理者センター](https://admin.teams.microsoft.com) - グローバル閲覧者は **Teams ライフサイクル**、**分析 & レポート**、**IP 電話デバイス管理**、**アプリ カタログ**を閲覧できません。
 >- [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) では、グローバル閲覧者ロールがサポートされていません。
 >- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) - グローバル閲覧者は、[中央レポート](https://docs.microsoft.com/azure/information-protection/reports-aip)のみでサポートされ、Azure AD 組織が [統合ラベル付けプラットフォーム](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)にない場合にサポートされます。
@@ -238,7 +248,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 ### <a name="group-administratorgroup-administrator"></a>[グループ管理者](#group-administrator)
 
-このロールのユーザーは、グループとその設定 (命名ポリシーや有効期限ポリシーなど) を作成/管理できます。 このロールにユーザーを割り当てることにより、Outlook だけでなく、Teams、SharePoint、Yammer などのさまざまなワークロードにわたって、テナント内のすべてのグループを管理する機能がユーザーに付与されるということを理解しておくことが重要です。 また、そのユーザーは、Microsoft 管理センター、Azure portal などのさまざまな管理者ポータル全般のさまざまなグループの設定を管理できるほか、Teams や SharePoint 管理センターなどのワークロード固有の場合についても管理できます。
+このロールのユーザーは、グループとその設定 (命名ポリシーや有効期限ポリシーなど) を作成/管理できます。 このロールにユーザーを割り当てることにより、Outlook だけでなく、Teams、SharePoint、Yammer などのさまざまなワークロードにわたって、テナント内のすべてのグループを管理する機能がユーザーに付与されるということを理解しておくことが重要です。 また、そのユーザーは、Microsoft 管理センター、Azure portal などのさまざまな管理者ポータル全般のさまざまなグループ設定を管理できるほか、Teams や SharePoint 管理センターなどのワークロード固有の場合についても管理できます。
 
 ### <a name="guest-inviterguest-inviter-permissions"></a>[ゲスト招待元](#guest-inviter-permissions)
 
@@ -316,6 +326,10 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 > [!NOTE]
 > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Power BI サービス管理者" として識別されます。 [Azure portal](https://portal.azure.com) では、"Power BI 管理者" になります。
+
+### <a name="power-platform-administratorpower-platform-administrator-permissions"></a>[Power Platform 管理者](#power-platform-administrator-permissions)
+
+このロールのユーザーは、環境、PowerApps、フロー、データ損失防止ポリシーのすべての側面を作成および管理できます。 さらに、このロールを持つユーザーは、サポート チケットを管理し、サービス正常性を監視できます。
 
 ### <a name="privileged-authentication-administratorprivileged-authentication-administrator-permissions"></a>[特権認証管理者](#privileged-authentication-administrator-permissions)
 
@@ -1335,12 +1349,31 @@ Power BI 製品のすべての側面を管理できます。
 > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
 >
 >
-
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Power BI の全側面の管理。 |
+| microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+
+
+### <a name="power-platform-administrator-permissions"></a>Power Platform 管理者のアクセス許可
+
+Microsoft Dynamics 365、PowerApps、Microsoft Flow のすべての側面を作成および管理できます。 
+
+> [!NOTE]
+> このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+>
+>
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.dynamics365/allEntities/allTasks | Dynamics 365 の全側面の管理。 |
+| microsoft.flow/allEntities/allTasks | Microsoft Flow のすべての側面を管理します。 |
+| microsoft.powerApps/allEntities/allTasks | Power Apps のすべての側面を管理します。 |
 | microsoft.office365.webPortal/allEntities/basic/read | microsoft.office365.webPortal のすべてのリソースの基本的なプロパティの読み取り。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
@@ -1698,6 +1731,7 @@ Office アプリ管理者 | Office アプリ管理者 | 2b745bdf-0803-4d80-aa65-
 パートナー レベル 2 のサポート | パートナー レベル 2 のサポート | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 パスワード管理者 | パスワード管理者 | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI サービス管理者 | Power BI 管理者 | a9ea8996-122f-4c74-9520-8edcd192826c
+Power Platform 管理者 | Power Platform 管理者 | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 特権認証管理者 | 特権認証管理者 | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 特権ロール管理者 | 特権ロール管理者 | e8611ab8-c189-46e8-94e1-60213ab1f814
 レポート閲覧者 | レポート閲覧者 | 4a5d8f65-41da-4de4-8968-e035b65339cf

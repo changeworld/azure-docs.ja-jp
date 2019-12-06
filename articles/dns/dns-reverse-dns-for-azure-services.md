@@ -1,23 +1,23 @@
 ---
-title: Azure サービスの逆引き DNS | Microsoft Docs
-description: Azure でホストされているサービスの逆引き DNS 参照を構成する方法について説明します
+title: Azure サービスの逆引き DNS - Azure DNS
+description: このラーニング パスでは、Azure でホストされているサービスに対する逆引き DNS 参照の構成を始めます。
 services: dns
 documentationcenter: na
-author: vhorne
-manager: timlt
+author: asudbring
+manager: KumudD
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: c33914fb404467a20a9799df9643e9702234c300
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: allensu
+ms.openlocfilehash: 550ba617dec0359fd7d4e0bc309e411095de0d1e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224499"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211225"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure でホストされているサービスの逆引き DNS を構成する
 
@@ -224,7 +224,7 @@ Set-AzureService –ServiceName "contosoapp1" –Description "App1 with Reverse 
 
 ### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>Azure サービスに既定の逆引き DNS レコードは作成されますか?
 
-いいえ。 逆引き DNS はオプトイン機能です。 既定の逆引き DNS レコードを構成しない設定の場合、レコードは作成されません。
+No. 逆引き DNS はオプトイン機能です。 既定の逆引き DNS レコードを構成しない設定の場合、レコードは作成されません。
 
 ### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>完全修飾ドメイン名 (FQDN) の形式とは何ですか?
 
@@ -236,15 +236,15 @@ FQDN は順方向で指定します。末尾にはドットを指定する必要
 
 ### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>Azure App Service に対して逆引き DNS を構成できますか?
 
-いいえ。 Azure App Service については逆引き DNS はサポートされていません。
+No. Azure App Service については逆引き DNS はサポートされていません。
 
 ### <a name="can-i-configure-multiple-reverse-dns-records-for-my-azure-service"></a>Azure サービス用に複数の逆引き DNS を構成できますか?
 
-いいえ。 Azure は、Azure Cloud Service または PublicIpAddress ごとに 1 つの逆引き DNS レコードをサポートしています。
+No. Azure は、Azure Cloud Service または PublicIpAddress ごとに 1 つの逆引き DNS レコードをサポートしています。
 
 ### <a name="can-i-configure-reverse-dns-for-ipv6-publicipaddress-resources"></a>IPv6 の PublicIpAddress リソースに対して逆引き DNS を構成できますか?
 
-いいえ。 現在、Azure は、IPv4 の PublicIpAddress リソースおよび Cloud Services の逆引き DNS のみをサポートしています。
+No. 現在、Azure は、IPv4 の PublicIpAddress リソースおよび Cloud Services の逆引き DNS のみをサポートしています。
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Azure コンピューティング サービスから外部ドメインに電子メールを送信できますか?
 

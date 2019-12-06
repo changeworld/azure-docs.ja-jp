@@ -1,5 +1,5 @@
 ---
-title: B2B 外部コラボレーション設定の有効化 - Azure Active Directory | Microsoft Docs
+title: B2B 外部コラボレーションの設定を有効にする - Azure AD
 description: Active Directory の B2B 外部コラボレーションを有効にして、ゲスト ユーザーを招待できるユーザーを管理する方法について説明します。 ゲスト招待元ロールを使用して、招待を委任します。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11dda7fc3760f468c094fb4cf4484a27895f83b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812669"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272897"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する
 

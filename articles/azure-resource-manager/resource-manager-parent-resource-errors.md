@@ -1,17 +1,14 @@
 ---
-title: Azure 親リソース エラー | Microsoft Docs
+title: 親リソースのエラー
 description: Azure Resource Manager テンプレートで親リソースの操作時のエラーを解決する方法について説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.author: tomfitz
-ms.openlocfilehash: 197554e16e28b4928cab351838f00e1631c269fd
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f6e0eb678c6ebce17f168ac09f0777102aafc3d9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390251"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150556"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>親リソースのエラーを解決する
 

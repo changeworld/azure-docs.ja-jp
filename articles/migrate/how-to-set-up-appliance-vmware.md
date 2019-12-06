@@ -1,17 +1,17 @@
 ---
-title: VMware VM 用に Azure Migrate Server Assessment/Migration のアプライアンスを設定する | Microsoft Docs
-description: Azure Migrate Server Assessment/Migration を使用する VMware VM の検出、評価、エージェントレス移行のためにアプライアンスを設定する方法について説明します。
+title: VMware 向け Azure Migrate アプライアンスを設定する
+description: Azure Migrate アプライアンスを設定して VMware VM を評価し移行する方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 77bf9a0f73519aa979da49614475daf70f582a9e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1489d29f854b02cf493493fe022c73dc050e2615
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467130"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185856"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>VMware VM のアプライアンスを設定する
 
@@ -48,11 +48,12 @@ OVA ファイルをデプロイする前に、それが安全であることを�
 2. 次のコマンドを実行して、OVA のハッシュを生成します。
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. アプライアンス バージョン 1.0.0.5 の場合、生成されたハッシュはこれらの設定と一致する必要があります。
+3. アプライアンスの最新のバージョンでは、生成されたハッシュがこれらの設定と一致する必要があります。
 
   **アルゴリズム** | **ハッシュ値**
   --- | ---
-  MD5 | ddfdf21c64af02a222ed517ce300c977
+  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
+  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ## <a name="create-the-appliance-vm"></a>アプライアンス VM を作成する

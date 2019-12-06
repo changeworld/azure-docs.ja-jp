@@ -1,17 +1,19 @@
 ---
-title: Azure Data Factory のマッピング データ フロー機能のシンク変換を設定する
+title: マッピング データ フロー機能のシンク変換を設定する
 description: マッピング データ フローのシンク変換を設定する方法について説明します。
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/03/2019
-ms.openlocfilehash: fa6a2fd853673493c93dbe65f889468c8e0c8617
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 707c0e93b88f34d4663d3dbe20bb2e9e4991a332
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082932"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217923"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>データ フローのシンク変換
 
@@ -92,7 +94,7 @@ Azure BLOB ストレージまたは Data Lake Storage のシンクの種類の�
 * **Update method**(更新方法):既定では、挿入を許可します。 ソースからの新しい行の挿入を停止させる場合は、 **[Allow insert]** (挿入の許可) をオフにします。 行を更新、アップサート、または削除するには、最初に、それらのアクションに対して行をタグ付けするための行の変更変換を追加します。 
 * **Recreate table**(テーブルの再作成):データ フローが完了する前に、対象のテーブルを破棄したり作成します。
 * **[Truncate table]** (テーブルの切り詰め):データ フローが完了する前に、対象のテーブルからすべて行を削除します。
-* **バッチ サイズ**: 書き込みをチャンクにまとめる数値を入力します。 大量のデータの読み込みにこのオプションを使用します。 
+* **Batch size**: 書き込みをチャンクにまとめる数値を入力します。 大量のデータの読み込みにこのオプションを使用します。 
 * **Enable staging**(ステージングの有効化):シンク データセットとして Azure Data Warehouse を読み込むときに、PolyBase を使用します。
 * **[Pre and Post SQL scripts] (事前および事後 SQL スクリプト)** : データがシンク データベースに書き込まれる前 (前処理) と書き込まれた後 (後処理) に実行される複数行の SQL スクリプトを入力します。
 

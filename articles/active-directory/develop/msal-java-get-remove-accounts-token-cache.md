@@ -18,16 +18,16 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343abd87d3b5e8b82989b8b370cef61ec6d051df
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: fa6c4c53d04f227db7a9a83946182c109dc06d39
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905168"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452487"
 ---
-# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java-msal4j"></a>MSAL for Java (MSAL4j) を使用したトークン キャッシュのアカウントの取得と削除
+# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>MSAL for Java を使用したトークン キャッシュのアカウントの取得と削除
 
-MSAL4J は、既定でインメモリ トークン キャッシュを備えています。 アプリケーション インスタンスの期間、インメモリ トークン キャッシュは継続します。
+MSAL for Java は、既定でインメモリ トークン キャッシュを備えています。 アプリケーション インスタンスの期間、インメモリ トークン キャッシュは継続します。
 
 ## <a name="see-which-accounts-are-in-the-cache"></a>キャッシュ内に存在するアカウントを確認する
 

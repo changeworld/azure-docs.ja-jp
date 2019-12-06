@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center と Azure Container Registry | Microsoft Docs
+title: Azure Security Center と Azure Container Registry
 description: Azure Security Center と Azure Container Registry の統合について説明します
 services: security-center
 documentationcenter: na
@@ -10,22 +10,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: f0de56f968488f0e5d551ad705cc6f8ca6e7bc47
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 0ca7bfb276f49da720264305a92d31e81857cfd5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521453"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229316"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry と Security Center の統合 (プレビュー)
 
 Azure Container Registry (ACR) は、Azure デプロイ用のコンテナー イメージを中央のレジストリに格納して管理する、プライベートなマネージド Docker レジストリ サービスです。 これは、オープンソースの Docker Registry 2.0 を基にしています。
 
-ACR を Azure Security Center の Standard レベル ([価格](security-center-pricing.md)を参照) と共に使用すると、レジストリとイメージの脆弱性をより詳しく把握できます。
+レジストリとイメージの脆弱性をより詳細に把握するために、Azure Security Center の Standard レベルのユーザーは、オプションの Container Registry バンドルを有効にすることができます。 詳細については、[価格](security-center-pricing.md)に関するページを参照してください。 バンドルを有効にすると、イメージがレジストリにプッシュされるたびに、Security Center によってレジストリ内のイメージが自動的にスキャンされます。
 
-[![Azure Security Center 内での Azure Container Registry (ACR) の推奨事項](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+> [!NOTE]
+> Security Center の最初のレジストリ スキャンは、Container Registry バンドルが有効にされ、イメージがレジストリにプッシュされた後でのみ、行われます。
+
+スキャンが完了すると (通常は約 10 分後)、次のような Security Center の推奨事項で結果が得られます。
+
+[![Azure Container Registry (ACR) でホストされるイメージで検出された脆弱性に関する Azure Security Center の推奨事項のサンプル](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
 ## <a name="benefits-of-integration"></a>統合の利点
 
@@ -39,7 +44,7 @@ Security Center では、サブスクリプション内の ACR レジストリ�
 
 ## <a name="next-steps"></a>次の手順
 
-Security Center のコンテナーのセキュリティ機能の詳細については、以下を参照してください。
+Security Center のコンテナーのセキュリティ機能の詳細については、以下をご覧ください。
 
 * [Azure Security Center とコンテナーのセキュリティ](container-security.md)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: fb8f5f2adf497a12b4ed54b381a2dbf85e160b8e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123955"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274077"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -32,7 +32,7 @@ Azure Security Center は、コンテナー セキュリティ用の Azure ネ�
 [![Azure Security Center のコンテナーのセキュリティ タブ](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>脆弱性管理 - コンテナー イメージのスキャン (プレビュー)
-Azure Container Registry を監視するには、Security Center に接続します。 新しいイメージがプッシュされると、Security Center では、業界最高レベルの脆弱性スキャン ベンダーである Qualys のスキャナーを使用してイメージがスキャンされます。
+Azure Container Registry を監視するには、Security Center の Standard レベルになっていることを確実にしてください ([価格](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)に関するページを参照してください)。 次に、オプションのコンテナー レジストリ バンドルを有効にします。 新しいイメージがプッシュされると、Security Center では、業界最高レベルの脆弱性スキャン ベンダーである Qualys のスキャナーを使用してイメージがスキャンされます。
 
 Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 Security Center の推奨事項の詳細については、[仮想マシンの保護](security-center-virtual-machine-protection.md##compute-and-app-recs)に関するページの推奨事項の一覧を参照してください。
 
@@ -55,7 +55,7 @@ AKS には、クラスターのセキュリティ体制をセキュリティで�
 
 Security Center の推奨事項の詳細については、[仮想マシンの保護](security-center-virtual-machine-protection.md)に関するページを参照してください。
 
-## <a name="run-time-protection---real-time-threat-detection"></a>実行時保護 - リアルタイムの脅威検出 
+## <a name="run-time-protection---real-time-threat-detection"></a>実行時保護 - リアルタイムの脅威検出
 
 Security Center は、コンテナー化された環境に対するリアルタイムの脅威検出機能を備えており、不審なアクティビティに対してはアラートが生成されます。 ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、コンテナーのセキュリティを強化することができます。
 

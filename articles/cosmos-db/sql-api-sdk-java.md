@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: eb8110c953787d1ebf7f01037808ee77db2eb8b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 42dcc0e9bd07f357c17f28dd754e4ae3404e01ff
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934156"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561886"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Java SDK:リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -42,6 +42,9 @@ SQL API Java SDK は、同期操作をサポートしています。 非同期�
 |**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
+* ユーザーが pkRangeId を提供する場合は、無効なパーティション キー範囲のエラーが発生したときの再試行を回避します。
 
 ### <a name="a-name244244"></a><a name="2.4.4"/>2.4.4
 * パーティション キー範囲のキャッシュ更新を最適化しました。

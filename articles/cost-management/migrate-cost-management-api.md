@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/20/2019
+ms.date: 11/25/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: ee4b2196240ceff1351b7ea310d9660ed613d075
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 20d83c48fb4ad60b091dc87b224a053690251a48
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152064"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481717"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Enterprise Agreement から Microsoft 顧客契約 API に移行する
 
@@ -532,18 +532,7 @@ Azure Cost Management では、次の操作が可能になります。
 
 ## <a name="power-bi-integration"></a>Power BI 統合
 
-コストのレポートで Power BI を使用する場合は、次に移行する必要があります。
-
-- Microsoft Azure Consumption Insights Power BI アプリ
-- Azure Consumption Insights デスクトップ コネクタ
-
-
-最高の柔軟性を必要としている組織には、コネクタを使用することをお勧めします。 ただし、Power BI アプリは、クイック セットアップでの利用できます。
-
-- [Microsoft Azure Consumption Insights Power BI アプリ](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)をインストールする
-- [Azure Consumption Insights コネクタで接続する](/power-bi/desktop-connect-azure-consumption-insights)
-
-以前の Consumption Insights コンテンツ パックおよびコネクタは、加入契約レベルで機能していました。 少なくとも読み取りアクセス許可が必要でした。 新しい Consumption Insights Power BI アプリと新しい Azure Consumption Insights コネクタは、課金プロファイル ユーザーが使用できます。 コストをレビューしたり、複数の課金プロファイルにわたるコストを表示するための追加オプションが必要なチームは、Azure portal の[コスト分析](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/Menu/costanalysis)を使用する必要があります。
+コストの報告には、Power BI を使用することもできます。 Power BI Desktop の [Azure Cost Management コネクタ](/power-bi/desktop-connect-azure-cost-management) を使用すると、Azure のコストをより深く理解するのに役立つ、カスタマイズされた高性能レポートを作成できます。 Azure Cost Management コネクタは現在のところ、Microsoft 顧客契約またはマイクロソフト エンタープライズ契約 (EA) をお持ちのお客様がご利用いただけます。
 
 ## <a name="next-steps"></a>次の手順
 

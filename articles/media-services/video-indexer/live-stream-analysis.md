@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 0f34aad4a8590c71f926d12d201f9a614afaa127
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114702"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185993"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Video Indexer を使用したライブ ストリーム分析
 
-Azure Media Services Video Indexer は、ビデオおよびオーディオ ファイルからオフラインで深い分析情報を抽出するように設計された Azure サービスです。 これは、事前に作成された特定のメディア ファイルを分析するためのものです。 ただし、一部のユース ケースでは、ライブ フィードからメディアの分析情報をできるだけ迅速に取得し、時間の余裕がない運用やその他のユース ケースを開放することが重要です。 たとえば、コンテンツ プロデューサーが、ライブ ストリームでのこのようなリッチ メタデータを使用すると、テレビ制作を自動化できます。 たとえば [Endemol Shine Group](https://customers.microsoft.com/story/esg-media-telecommunications-azure) では、ニュースルームのジャーナリストがライブ フィードを検索し、コンテンツに基づく通知サービスを構築しました。
+Azure Media Services Video Indexer は、ビデオおよびオーディオ ファイルからオフラインで深い分析情報を抽出するように設計された Azure サービスです。 これは、事前に作成された特定のメディア ファイルを分析するためのものです。 ただし、一部のユース ケースでは、ライブ フィードからメディアの分析情報をできるだけ迅速に取得し、時間の余裕がない運用やその他のユース ケースを開放することが重要です。 たとえば、ライブ ストリームのこのようなリッチ メタデータは、コンテンツ プロデューサーがテレビ制作を自動化するために使用できます。
 
 この記事で説明されているソリューションでは、顧客はほぼリアルタイムの解像度で、ライブ フィードに対して Video Indexer を使用できます。 このソリューションを使用したインデックス付けの遅延は、インデックスを付けるデータのチャンク、入力解像度、コンテンツの種類、およびこのプロセスで使用されるコンピューティング能力に応じて、4 分ほどの少なさになる場合があります。
 
@@ -27,7 +27,7 @@ Azure Media Services Video Indexer は、ビデオおよびオーディオ フ�
 
 *図 1 – ライブ ストリームでの Video Indexer メタデータを表示するサンプル プレーヤー*
 
-手元にある[ストリーム分析ソリューション](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/blob/master/media-functions-for-logic-app/LiveStreamAnalysis.md)は、Azure Functions と 2 つの Logic Apps を使用して、Azure Media Services のライブ チャンネルからのライブ プログラムを Video Indexer で処理し、ほぼリアルタイムに結果のストリームを表示する Azure Media Player で結果を表示します。
+手元にある[ストリーム分析ソリューション](https://aka.ms/livestreamanalysis)は、Azure Functions と 2 つの Logic Apps を使用して、Azure Media Services のライブ チャンネルからのライブ プログラムを Video Indexer で処理し、ほぼリアルタイムに結果のストリームを表示する Azure Media Player で結果を表示します。
 
 高レベルでは、これは 2 つの主なステップで構成されています。 最初のステップは 60 秒ごとに実行され、再生された最後の 60 秒間のサブクリップを取得します。次にそれから資産を作成し、Video Indexer によってインデックスを付けます。 その後、インデックス付けが完了すると 2 番目のステップが呼び出されます。 キャプチャされた分析情報が処理され、Azure Cosmos DB に送信されて、インデックスが付けられたサブクリップは削除されます。
 

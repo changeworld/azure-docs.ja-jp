@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub と Event Grid | Microsoft Docs
 description: Azure Event Grid を使い、IoT Hub で発生したアクションに基づいてプロセスをトリガーします。
-author: kgremban
+author: robinsh
 manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: a2bb961989d5bb1cc879b197e45d25b566c56e83
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.author: robinsh
+ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906782"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151300"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
@@ -176,13 +176,21 @@ devices/{deviceId}
 
 さらに、Event Grid では、データ コンテンツなどの各イベントの属性でフィルター処理することもできます。 これにより、テレメトリ メッセージの内容に基づいて配信されるイベントを選択することができます。 [高度なフィルター処理](../event-grid/event-filtering.md#advanced-filtering)を参照して、例を確認してください。 テレメトリ メッセージ本文のフィルター処理の場合、メッセージの[システム プロパティ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要があります。 これらのプロパティでは、どちらも大文字と小文字が区別されません。
 
-DeviceConnected、DeviceDisconnected、DeviceCreated、DeviceDeleted のような非テレメトリ イベントの場合、サブスクリプションの作成時に Event Grid のフィルター処理を使用できます。 テレメトリ イベントの場合、Event Grid でのフィルター処理に加えて、ユーザーは、メッセージ ルーティング クエリ経由で、デバイス ツイン、メッセージのプロパティと本文に対してフィルター処理することもできます。 デバイス テレメトリへの Event Grid サブスクリプションに基づいて、IoT Hub に既定の[ルート](iot-hub-devguide-messages-d2c.md)を作成します。 この単一のルートによって、すべての Event Grid サブスクリプションを処理できます。 テレメトリ データが送信される前に、メッセージをフィルター処理するために、[ルーティング クエリ](iot-hub-devguide-routing-query-syntax.md)を更新できます。 ルーティング クエリは本文が JSON である場合にのみ、メッセージ本文に適用できることに注意してください。 また、メッセージの[システム プロパティ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要もあります。
+DeviceConnected、DeviceDisconnected、DeviceCreated、DeviceDeleted のような非テレメトリ イベントの場合、サブスクリプションの作成時に Event Grid のフィルター処理を使用できます。 テレメトリ イベントの場合、Event Grid でのフィルター処理に加えて、ユーザーは、メッセージ ルーティング クエリ経由で、デバイス ツイン、メッセージのプロパティと本文に対してフィルター処理することもできます。 
+
+Event Grid 経由でテレメトリ イベントをサブスクライブすると、IoT Hub では、Event Grid にデータ ソース型のデバイス メッセージを送信するための既定のメッセージ ルートが作成されます。 メッセージ ルーティングの詳細については、[IoT Hub メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)に関するページを参照してください。 このルートはポータルの [IoT Hub] の [メッセージ ルーティング] に表示されます。 Event Grid までの唯一のルートは、テレメトリ イベントに対して作成される EG サブスクリプションの数に関係なく作成されます。 そのため、フィルターの異なるサブスクリプションがいくつか必要な場合、同じルートでこれらのクエリに OR 演算子を使用できます。 ルートの作成と削除は、Event Grid 経由のテレメトリ イベントのサブスクリプションによって制御されます。 IoT Hub メッセージ ルーティングを利用して Event Grid までのルートを作成したり、削除したりすることはできません。
+
+テレメトリ データが送信される前に、メッセージをフィルター処理するために、[ルーティング クエリ](iot-hub-devguide-routing-query-syntax.md)を更新できます。 ルーティング クエリは本文が JSON である場合にのみ、メッセージ本文に適用できることに注意してください。 また、メッセージの[システム プロパティ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)で contentType を **application/json** に設定し、contentEncoding を **UTF-8** に設定する必要もあります。
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>デバイス接続イベントおよびデバイス切断イベントの制限事項
 
 デバイス接続イベントおよびデバイス切断イベントを受信するには、デバイスの D2C リンクまたは C2D リンクを開く必要があります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP の場合は、[非同期受信 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) を呼び出して C2D リンクを開くことができます。
 
-テレメトリを送信する場合は、D2C リンクが開いています。 デバイスの接続状態が頻繁に変化する場合、つまりデバイスが頻繁に接続されたり切断されたりする場合は、1 つ 1 つの接続状態を送信されるのではなく、スナップショットが毎分取られる接続状態が公開されます。 IoT Hub が停止した場合、停止が解消されるとすぐにデバイスの接続状態が公開されます。 その停止中にデバイスが切断された場合は、デバイス切断イベントが 10 分以内に発行されます。
+テレメトリを送信する場合は、D2C リンクが開いています。 
+
+デバイスの接続状態が頻繁に変化する場合、つまり、デバイスが頻繁に接続されたり切断されたりする場合、接続状態が毎回送信されるのではなく、最終的に矛盾がなくなる*最後*の接続状態が公開されます。 たとえば、デバイスが最初に接続状態になっている場合、数秒間、切断と接続を繰り返し、その後、接続状態に戻ります。 最初の接続状態後、新しいデバイス接続状態イベントは公開されません。 
+
+IoT Hub が停止した場合、停止が解消されるとすぐにデバイスの接続状態が公開されます。 その停止中にデバイスが切断された場合は、デバイス切断イベントが 10 分以内に発行されます。
 
 ## <a name="tips-for-consuming-events"></a>イベントの使用に関するヒント
 

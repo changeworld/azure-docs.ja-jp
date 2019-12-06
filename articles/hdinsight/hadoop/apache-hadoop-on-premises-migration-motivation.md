@@ -2,18 +2,18 @@
 title: メリット:Azure HDInsight へのオンプレミスの Apache Hadoop の 移行
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することの動機と利点について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494929"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267320"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
 
@@ -103,7 +103,7 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 |エッジ ノード構成|m/y、cpu、ディスクなど|
 |HDFS の暗号化?|はい|
 |高可用性|HDFS HA、Metastore HA|
-|ディザスター リカバリー/バックアップ|クラスターのバックアップ?|  
+|ディザスター リカバリー / バックアップ|クラスターのバックアップ?|  
 |クラスターに依存するシステム|SQL Server、Teradata、Power BI、MongoDB|
 |サードパーティによる統合|Tableau、GridGain、Qubole、Informatica、Splunk|
 |**トピック**:**セキュリティ**|||

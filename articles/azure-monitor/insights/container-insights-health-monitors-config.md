@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: b782581318751830ec47b9fecb056fecefb353eb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134387"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279707"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>コンテナーに対する Azure Monitor の正常性モニターの構成ガイド
 
-モニターは、コンテナーに対する Azure Monitor で正常性を測定し、エラーを検出するための主要な要素です。 この記事は、正常性を測定する方法の概念と、[正常性機能](container-insights-health.md)を使用して Kubernetes クラスターの正常性を監視および報告する正常性モデルを構成する要素を理解するのに役立ちます。
+モニターは、コンテナーに対する Azure Monitor で正常性を測定し、エラーを検出するための主要な要素です。 この記事は、正常性を測定する方法の概念と、[正常性 (プレビュー)](container-insights-health.md) 機能を使用して Kubernetes クラスターの正常性を監視および報告する正常性モデルを構成する要素を理解するのに役立ちます。
+
+>[!NOTE]
+>現時点では、正常性機能はパブリック プレビューの段階です。
+>
 
 ## <a name="monitors"></a>モニター
 

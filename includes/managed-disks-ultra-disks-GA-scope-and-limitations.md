@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 11/18/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c847b110cb821ebe3ca7e706fcaec592dcc58fa8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: df488c2a3033015175943f7d092beaaa41e34046
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73600974"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260792"
 ---
 現時点では、Ultra Disk には次のような追加の制限があります。
 
@@ -38,3 +38,4 @@ ms.locfileid: "73600974"
 - ディスク スナップショット、VM イメージ、可用性セット、Azure Disk Encryption はまだサポートされていません
 - Azure Backup または Azure Site Recovery との統合はまだサポートされていません。
 - GA VM での IOPS の現在の上限は 80,000 です。
+- Ultra Disk で 16 万 IOPS を実現できる VM の限定プレビューに参加する場合は、UltraDiskFeedback@microsoft.com に電子メールを送信してください。

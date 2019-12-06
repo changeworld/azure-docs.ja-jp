@@ -1,18 +1,15 @@
 ---
-title: リソース グループとリソースを削除する - Azure Resource Manager
+title: リソース グループとリソースを削除する
 description: リソース グループとリソースを削除する方法について説明します。 ここでは、リソース グループを削除するときに、Azure Resource Manager によってリソースの削除がどのように並べ替えられるかについて説明します。 応答コードと、削除が成功したかを判断するために Resource Manager によって応答コードが処理される方法について説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 30a394fd33ed5d928175fc27e003661c2b53de9a
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c84dcf64555f40f45dbdaeedb05d4cc461f2cbb7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275089"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150817"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager のリソース グループとリソースの削除
 
@@ -57,7 +54,7 @@ GET 操作からエラーが返された場合、次のエラー コードであ
 
 その他のエラー コードの場合は、Resource Manager によるリソースの削除が失敗します。
 
-## <a name="delete-resource-group"></a>Delete resource group
+## <a name="delete-resource-group"></a>リソース グループの削除
 
 リソース グループを削除するには、次のいずれかのメソッドを使用します。
 
@@ -79,7 +76,7 @@ az group delete --name ExampleResourceGroup
 
 1. **[リソース グループの削除]** を選択します。
 
-   ![Delete resource group](./media/resource-group-delete/delete-group.png)
+   ![リソース グループの削除](./media/resource-group-delete/delete-group.png)
 
 1. 削除を確認するには、リソース グループの名前を入力します。
 

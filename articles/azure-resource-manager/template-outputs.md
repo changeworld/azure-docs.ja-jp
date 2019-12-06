@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager テンプレートの出力
+title: テンプレート内の出力
 description: Azure Resource Manager テンプレートで出力値を定義する方法について説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.author: tomfitz
-ms.openlocfilehash: 0ff1e3cb71bd1bf5ee947eb5204839d48103628b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 61120b9941a6a20812ea046265ecbe13014d769e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827944"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689138"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの出力
 
@@ -104,4 +101,3 @@ az group deployment show \
 ## <a name="next-steps"></a>次の手順
 
 * 出力に使用できるプロパティの詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」をご覧ください。
-* 出力の作成に関する推奨事項については、[ベスト プラクティス - 出力](template-best-practices.md#outputs)に関する記事をご覧ください。

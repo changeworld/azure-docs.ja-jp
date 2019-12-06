@@ -1,22 +1,22 @@
 ---
-title: Azure AD Identity Protection でリスク検出に関するフィードバックを提供する- Azure Active Directory
+title: Azure Active Directory Identity Protection でリスクのフィードバックを提供する
 description: Identity Protection リスク検出に関するフィードバックを提供する方法と理由。
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be83f7fd71a4e5b300bd2a04bf335b494d9f05ac
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 4be8290f12d64f0c556100c63ec159bd414c6fcb
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886858"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382088"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>方法:Azure AD Identity Protection でリスクに関するフィードバックを提供する
 

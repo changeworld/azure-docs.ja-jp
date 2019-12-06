@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bde1741d12cc7ef181fb60bc7eecbec1fed8cbd0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 806447f788b7a394b29ee08e8b562662c2cc3e1b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151224"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208393"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティ デフォルトとは
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD) のセキュリティ既定値は、セキュ�
 
 Microsoft では、誰もがセキュリティ既定値を利用できるようにしています。 目標は、すべての組織が追加の費用なしで基本レベルのセキュリティを確実に有効にできるようにすることです。 セキュリティ既定値は、Azure portal で有効にします。
 
-![セキュリティ既定値を有効にするためのトグルがある Azure portal のスクリーンショット](./media/concept-conditional-access-security-defaults/security-defaults-azure-ad-portal.png)
+![セキュリティ デフォルトを有効にするためのトグルがある Azure portal のスクリーンショット](./media/concept-conditional-access-security-defaults/security-defaults-azure-ad-portal.png)
  
 テナントでは、次のセキュリティ構成が有効になります。 
 
@@ -34,7 +34,7 @@ Microsoft では、誰もがセキュリティ既定値を利用できるよう�
 
 テナント内のすべてのユーザーは、Azure Multi-Factor Authentication サービスのフォームを使用して多要素認証 (MFA) に登録する必要があります。 ユーザーは 14 日以内に Microsoft Authenticator アプリを使用して Multi-Factor Authentication に登録する必要があります。 14 日が経過すると、ユーザーは Multi-Factor Authentication への登録が完了するまでサインインできなくなります。
 
-セキュリティ デフォルトを有効にした直後の 14 日以内に出勤またはログインしない場合があることは理解しています。 ユーザー全員に Multi-Factor Authentication の登録のための十分な時間を与えられるように、14 日の期間はユーザーごとに固有です。 14 日の期間は、セキュリティ既定値が有効になった後、それぞれのユーザーの対話型サインインが最初に成功した時点から始まります。
+セキュリティ デフォルトを有効にした直後の 14 日以内に出勤またはログインしない場合があることは理解しています。 ユーザー全員に Multi-Factor Authentication の登録のための十分な時間を与えられるように、14 日の期間はユーザーごとに固有です。 14 日の期間は、セキュリティ デフォルトが有効になった後、それぞれのユーザーの対話型サインインが最初に成功した時点から始まります。
 
 ## <a name="multi-factor-authentication-enforcement"></a>Multi-Factor Authentication の強制
 
@@ -71,7 +71,7 @@ Microsoft では、誰もがセキュリティ既定値を利用できるよう�
 
 今日では、不正侵入を意図したサインイン試行の大部分がレガシ認証によるものです。 レガシ認証では、Multi-Factor Authentication がサポートされていません。 ディレクトリで Multi-Factor Authentication ポリシーが有効になっている場合でも、攻撃者は古いプロトコルを使用して認証を受け、Multi-Factor Authentication をバイパスできます。 
 
-テナントでセキュリティ既定値が有効になった後は、古いプロトコルによるすべての認証要求がブロックされます。 Exchange ActiveSync は、セキュリティ既定値ではブロックされません。
+テナントでセキュリティ デフォルトが有効になった後は、古いプロトコルによるすべての認証要求がブロックされます。 Exchange ActiveSync は、セキュリティ既定値ではブロックされません。
 
 ### <a name="protecting-privileged-actions"></a>特権アクションの保護
 
@@ -85,7 +85,7 @@ Azure Resource Manager を使用してご自身のサービスを管理する操
 
 Azure Resource Manager にアクセスして構成を更新しようとするユーザーの ID を検証することが重要です。 アクセスを許可する前に、追加の認証を要求して ID を検証します。
 
-テナントでセキュリティ既定値を有効にすると、Azure portal、Azure PowerShell、または Azure CLI にアクセスしようとしているユーザーがいずれも、追加の認証を完了しなければならなくなります。 このポリシーは、Azure Resource Manager にアクセスしようとしているユーザーであれば、管理者であるかユーザーであるかに関係なく全員に適用されます。 
+テナントでセキュリティ デフォルトを有効にすると、Azure portal、Azure PowerShell、または Azure CLI にアクセスしようとしているユーザーがいずれも、追加の認証を完了しなければならなくなります。 このポリシーは、Azure Resource Manager にアクセスしようとしているユーザーであれば、管理者であるかユーザーであるかに関係なく全員に適用されます。 
 
 ユーザーが Multi-Factor Authentication に登録していない場合、そのユーザーが操作を続行するには、Microsoft Authenticator アプリを使用してユーザー登録を行う必要があります。 Multi-Factor Authentication に登録するための 14 日の期間は提供されません。
 
@@ -114,6 +114,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 - [Azure 管理のために MFA を必須にする](howto-conditional-access-policy-azure-management.md)
 - [レガシ認証をブロックする](howto-conditional-access-policy-block-legacy.md)
 - [すべてのユーザーに対して MFA を必須にする](howto-conditional-access-policy-all-users-mfa.md)
+- [Azure MFA への登録を必須とする](../identity-protection/howto-identity-protection-configure-mfa-policy.md) - Azure AD Identity Protection が必要です
 
 ## <a name="enabling-security-defaults"></a>セキュリティ デフォルトの有効化
 
@@ -122,7 +123,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 1. セキュリティ管理者、条件付きアクセス管理者、またはグローバル管理者として、 [Azure portal](https://portal.azure.com)  にサインインします。
 1.  **[Azure Active Directory]**  > **[プロパティ]** の順に移動します。
 1. **[セキュリティの既定値の管理]** を選択します。
-1. **[Enable security defaults]\(セキュリティ既定値を有効にする\)** トグルを **[はい]** に設定します。
+1. **[Enable security defaults]\(セキュリティ デフォルトを有効にする\)** トグルを **[はい]** に設定します。
 1. **[保存]** を選択します。
 
 ## <a name="next-steps"></a>次の手順

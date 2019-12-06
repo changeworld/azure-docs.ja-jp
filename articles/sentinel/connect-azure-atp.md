@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 764fb4c22bcce5fc5b045e68dc512243e783020e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fb8f4de3b3b24d1eba372600c817627771ef0ef6
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261839"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158881"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Azure Advanced Threat Protection (ATP) からデータを接続する
 
@@ -32,7 +32,7 @@ ms.locfileid: "71261839"
 ## <a name="prerequisites"></a>前提条件
 
 - グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザー
-- Azure ATP のプレビューのお客様であること
+- Azure ATP のプレビューのお客様であることと、Azure ATP と Microsoft Cloud App Security の統合を有効にすること。 詳細については、「[Azure Advanced Protection の統合](https://docs.microsoft.com/cloud-app-security/aatp-integration)」を参照してください。
 
 ## <a name="connect-to-azure-atp"></a>Azure ATP への接続
 

@@ -1,7 +1,7 @@
 ---
 title: Azure Load Balancer の分散モードの構成
-titlesuffix: Azure Load Balancer
-description: ソース IP アフィニティをサポートするように Azure Load Balancer の分散モードを構成する方法。
+titleSuffix: Azure Load Balancer
+description: この記事では、ソース IP アフィニティをサポートするための Azure Load Balancer に対する分散モードの構成について説明します。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -11,14 +11,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 0d3ddf2e005338a19972cfcdef025579764f7f23
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ddccd02e7157792d942309ae4f74933322f246f9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114709"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225373"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer の分散モードを構成する
 
@@ -26,13 +26,22 @@ ms.locfileid: "70114709"
 
 ## <a name="hash-based-distribution-mode"></a>ハッシュベースの分散モード
 
-Azure Load Balancer の既定の分散モードは、5 タプルのハッシュです。 そのタプルは、ソース IP、接続元ポート、接続先 IP、接続先ポート、プロトコルの種類で構成されます。 ハッシュは使用可能なサーバーにトラフィックをマップするために使用され、アルゴリズムはトランスポート セッション内でのみ持続性を提供します。 同じセッション内のパケットは、負荷分散されたエンドポイントの背後にある同じデータセンター IP (DIP) インスタンスに送信されます。 クライアントが同じソース IP から新しいセッションを開始すると、接続元ポートが変更され、そのトラフィックは別の DIP エンドポイントに送信されます。
+Azure Load Balancer の既定の分散モードは、5 タプル ハッシュです。 
+
+タプルは、次のもので構成されます。
+* **ソース IP**
+* **ソース ポート**
+* **宛先 IP**
+* **宛先ポート**
+* **プロトコルの種類**
+
+ハッシュは、使用可能なサーバーにトラフィックをマップするために使用されます。 アルゴリズムでは、トランスポート セッション内でのみ持続性が提供されます。 同じセッション内のパケットは、負荷分散されたエンドポイントの背後にある同じデータセンターの IP アドレスに送信されます。 クライアントが同じソース IP アドレスから新しいセッションを開始すると、接続元ポートが変更され、そのトラフィックは別のデータセンター エンドポイントに送信されます。
 
 ![5 タプルのハッシュベースの分散モード](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
 ## <a name="source-ip-affinity-mode"></a>ソース IP アフィニティ モード
 
-Load Balancer は、ソース IP アフィニティ分散モードを使用して構成することもできます。 この分散モードは、セッション アフィニティまたはクライアント IP アフィニティとも呼ばれます。 このモードは 2 タプル (ソース IP と接続先 IP) または 3 タプル (ソース IP、接続先 IP、プロトコルの種類) のハッシュを使用して、使用可能なサーバーにトラフィックをマップします。 ソース IP アフィニティを使用すると、同じクライアント コンピューターから開始された接続は同じ DIP エンドポイントに向かいます。
+ロード バランサーは、ソース IP アフィニティ分散モードを使用して構成することもできます。 この分散モードは、セッション アフィニティまたはクライアント IP アフィニティとも呼ばれます。 このモードは 2 タプル (ソース IP と接続先 IP) または 3 タプル (ソース IP、接続先 IP、プロトコルの種類) のハッシュを使用して、使用可能なサーバーにトラフィックをマップします。 ソース IP アフィニティを使用すると、同じクライアント コンピューターから開始された接続は、同じデータセンター エンドポイントに送られます。
 
 次の図は 2 タプルの構成を示しています。 2 タプルの場合に、どのように接続がロード バランサーを通過して仮想マシン 1 (VM1) に向かうかに注目してください。 その後、VM1 は VM2 と VM3 でバックアップされます。
 
@@ -55,8 +64,8 @@ Load Balancer は、ソース IP アフィニティ分散モードを使用し�
 分散モードの構成を変更するには、ポータルで負荷分散規則を変更します。
 
 1. Azure portal にサインインし、 **[リソース グループ]** をクリックして、変更するロード バランサーが含まれているリソース グループを見つけます。
-2. ロード バランサーの概要ブレードで、 **[設定]** の **[負荷分散規則]** をクリックします。
-3. [負荷分散規則] ブレードで、分散モードを変更する負荷分散規則をクリックします。
+2. ロード バランサーの概要画面で、 **[設定]** の **[負荷分散規則]** をクリックします。
+3. [負荷分散規則] 画面で、分散モードを変更する負荷分散規則をクリックします。
 4. 規則の **[セッション永続化]** ドロップ ダウン ボックスを変更することで、分散モードが変更されます。  次のオプションを使用できます。
     
     * **[None (hash-based)]\(なし (ハッシュベース)\)** - 同じクライアントからの連続した要求が、任意の仮想マシンによって処理できることを指定します。
@@ -81,7 +90,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-`LoadBalancerDistribution` 要素の値を、希望の負荷分散の量に合わせて設定します。 2 タプル (ソース IP と接続先 IP) の負荷分散の場合は sourceIP を指定します。 3 タプル (ソース IP、接続先 IP、プロトコルの種類) の負荷分散の場合は sourceIPProtocol を指定します。 既定の 5 タプルの負荷分散の動作の場合は none を指定します。
+`LoadBalancerDistribution` 要素の値を、必要な負荷分散の量に合わせて設定します。 2 タプル (ソース IP と接続先 IP) の負荷分散の場合は sourceIP を指定します。 3 タプル (ソース IP、接続先 IP、プロトコルの種類) の負荷分散の場合は sourceIPProtocol を指定します。 既定の 5 タプルの負荷分散の動作の場合は none を指定します。
 
 次の設定を使用して、エンドポイント ロード バランサー分散モード構成を取得します。
 

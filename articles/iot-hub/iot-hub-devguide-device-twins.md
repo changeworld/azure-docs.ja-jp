@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: f4db353e3c2f625478df6a547d1b67c5d074d18a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 406f6f7a3db5f63fb50242a93f021c481631adaa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640622"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209718"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 
@@ -245,11 +245,11 @@ ms.locfileid: "68640622"
 
 タグ、必要なプロパティ、報告されるプロパティは JSON オブジェクトであり、次のような制限があります。
 
-* JSON オブジェクトのすべてのキーは、大文字小文字が区別される 64 バイトの UTF-8 UNICODE 文字列です。 UNICODE 制御文字列 (セグメント C0 と C1)、`.`、`$`、SP は使用できません。
+* JSON オブジェクト内のすべてのキーは UTF-8 でエンコードされ、大文字と小文字が区別され、最大 1 KB の長さです。 UNICODE 制御文字列 (セグメント C0 と C1)、`.`、`$`、SP は使用できません。
 
 * JSON オブジェクトのすべての値には、ブール値、数値、文字列、オブジェクトの JSON 型を使用できます。 配列は使用できません。 整数の最大値は 4503599627370495 であり、整数の最小値は -4503599627370496 です。
 
-* タグ、必要なプロパティ、および報告されるプロパティのすべての JSON オブジェクトは、深さ 5 まで許容されます。 たとえば、次のオブジェクトは有効です。
+* タグ、必要なプロパティ、および報告されるプロパティのすべての JSON オブジェクトは、深さ 10 まで許容されます。 たとえば、次のオブジェクトは有効です。
 
    ```json
    {
@@ -260,7 +260,17 @@ ms.locfileid: "68640622"
                    "three": {
                        "four": {
                            "five": {
-                               "property": "value"
+                               "six": {
+                                   "seven": {
+                                       "eight": {
+                                           "nine": {
+                                               "ten": {
+                                                   "property": "value"
+                                               }
+                                           }
+                                       }
+                                   }
+                               }
                            }
                        }
                    }
@@ -271,7 +281,7 @@ ms.locfileid: "68640622"
    }
    ```
 
-* すべての文字列値の長さは、最大で 512 バイトまで許容されます。
+* すべての文字列値の長さは、最大で 4 KB まで許容されます。
 
 ## <a name="device-twin-size"></a>デバイス ツインのサイズ
 

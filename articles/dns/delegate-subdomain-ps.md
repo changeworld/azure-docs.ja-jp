@@ -1,18 +1,18 @@
 ---
-title: Azure PowerShell を使用して Azure DNS サブドメインを委任する
-description: Azure PowerShell を使用して Azure DNS サブドメインを委任する方法について説明します。
+title: サブドメインを委任する - Azure PowerShell - Azure DNS
+description: このラーニング パスでは、Azure PowerShell を使用した Azure DNS サブドメインの委任について説明します。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: victorh
-ms.openlocfilehash: 4ee4d9e6390c9a091096bb7c06160b76fd8af90f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: b6023adb65469dedeeba664a51917306e634146f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730283"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212500"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS サブドメインを委任する
 

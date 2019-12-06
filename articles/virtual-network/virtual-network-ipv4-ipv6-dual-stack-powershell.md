@@ -1,11 +1,11 @@
 ---
-title: Basic Load Balancer を使用する IPv6 デュアル スタック アプリケーションを Azure 上にデプロイする - PowerShell
+title: IPv6 デュアル スタック アプリケーションのデプロイ - Basic Load Balancer - PowerShell
 titlesuffix: Azure Virtual Network
 description: この記事では、Azure Powershell を使用して Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 0ce051892cde9cb50b43a6d4f66ed3d461e71285
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 0b7f7a9198664693819143c306eeb1a020d22b7c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011427"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185480"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>Basic Load Balancer を使用する IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell (プレビュー)
 
-この記事では、Basic Load Balancer を使用するデュアル スタック (IPv4 と IPv6) アプリケーションを、Azure CLI を使用してデプロイする方法を示します。これには、デュアル スタック仮想ネットワークとサブネット、デュアル (IPv4 と IPv6) フロントエンド構成の Basic Load Balancer、デュアル IP 構成を持つ NIC、ネットワーク セキュリティ グループ、およびパブリック IP を使用する VM が含まれています。
+この記事では、Basic Load Balancer を使用するデュアル スタック (IPv4 と IPv6) アプリケーションを、Azure PowerShell を使用してデプロイする方法を示します。これには、デュアル スタック仮想ネットワークとサブネット、デュアル (IPv4 と IPv6) フロントエンド構成の Basic Load Balancer、デュアル IP 構成を持つ NIC、ネットワーク セキュリティ グループ、およびパブリック IP を使用する VM が含まれています。
 
 Standard Load Balancer を使用するデュアル スタック (IPV4 と IPv6) アプリケーションをデプロイするには、[Azure PowerShell による Standard Load Balancer を使用する IPv6 デュアル スタック アプリケーションのデプロイ](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)に関する記事を参照してください。
 

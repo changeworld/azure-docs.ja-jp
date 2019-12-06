@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory のレポートと監視のデプロイを計画する
+title: レポートと監視のデプロイを計画する - Azure AD
 description: レポートと監視の実装を計画および実行する方法について説明します。
 services: active-directory
 author: BarbaraSelden
@@ -12,12 +12,12 @@ ms.date: 11/13/2018
 ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d24a4ab74f7957c068fc664fc4e8898c525afcb
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 5ad84b8910e8d4f8af9845c33c22d128e317dedc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162536"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232104"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory のレポートと監視のデプロイを計画する
 

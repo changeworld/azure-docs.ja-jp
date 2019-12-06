@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: f48fe94504d8012affb77c4fd5d39df2537d72b3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fa400d875a8f39d54d10820c603e12e97f0cd854
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300130"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452223"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Azure シリアル コンソールを有効または無効にする
 
@@ -31,11 +31,11 @@ ms.locfileid: "72300130"
 シリアル コンソールは、ブート診断設定を無効にすることによって、特定の VM または仮想マシン スケール セットに対して無効にできます。 VM または仮想マシン スケール セット用のシリアル コンソールを無効にするには、Azure portal からブート診断を無効にします。 仮想マシン スケール セットでシリアル コンソールを使用している場合は、仮想マシン スケール セット インスタンスを最新モデルにアップグレードしたことを確認してください。
 
 
-## <a name="subscription-level-disable"></a>サブスクリプション レベルの無効化
+## <a name="subscription-level-enabledisable"></a>サブスクリプション レベルの有効/無効
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI で次のコマンドを使用することで、サブスクリプション全体に対してシリアル コンソールを無効にして再度有効にできます。
+Azure CLI で次のコマンドを使用して、サブスクリプション全体に対して Serial console を無効にしてから再度有効にすることができます ([試してみる] ボタンを使用して、コマンドを実行できる Azure Cloud Shell のインスタンスを起動できます)。
 
 サブスクリプションに対してシリアル コンソールを無効にするには、以下のコマンドを使用します。
 ```azurecli-interactive
@@ -57,6 +57,9 @@ subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --output=json --api-version="2018-05-01" | jq .properties
 ```
+
+> [!NOTE]
+> このコマンドを実行する前に、適切なクラウド (Azure パブリック クラウド、Azure US Government クラウド) を使用していることを確認してください。 `az cloud list` で確認し、`az cloud set -n <Name of cloud>` でクラウドを設定できます。
 
 ### <a name="powershell"></a>PowerShell
 

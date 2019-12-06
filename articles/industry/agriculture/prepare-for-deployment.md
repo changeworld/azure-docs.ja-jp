@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: acc64486ac8bd15a9abab1f2010ea56b752a1e86
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0fc7eb6c3b582c4fc95d78397c4cb2820ebb4ea8
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927668"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534238"
 ---
 # <a name="deploy-farmbeats"></a>FarmBeats のデプロイ
 
@@ -62,12 +62,15 @@ Marketplace 内に Azure FarmBeats オファーを作成するには、次の手
 3. [作成] を選択し、次の情報を入力します。
     - サブスクリプション名。
     - 既存のリソース グループ名 (空のリソース グループのみ)。または、Azure FarmBeats をデプロイするための新しいリソース グループを作成します。 このリソース グループは、以降のセクションのために書き留めておきます。
-4. Azure FarmBeats をインストールするリージョン。 現在、FarmBeats では次のリージョンがサポートされています:米国中部、西ヨーロッパ、米国東部 2、北ヨーロッパ、東南アジア、米国東部、オーストラリア東部、米国西部 2。
+4. Azure FarmBeats をインストールするリージョン。 現在、Azure FarmBeats は次のリージョンでサポートされています。米国中部、西ヨーロッパ、米国東部 2、北ヨーロッパ、東南アジア、米国東部、オーストラリア東部、米国西部 2。
 5. **[OK]** を選択します。
 利用規約ページが表示されます。 Marketplace の標準使用条件を確認するか、ハイパーリンクを選択して利用規約を確認します。
 6. **[閉じる]** を選択し、[同意する] チェックボックスをオンにして、 **[作成]** を選択します。
 7. これで、Marketplace 上で Azure FarmBeats のエンドユーザー使用許諾契約書 (EULA) に正常に署名されました。  
 7. デプロイを続行するには、このガイドの次の手順に従います。
+
+> [!NOTE]
+> Azure Marketplace でオファーを完了しても、セットアップの一部が完了しただけです。 以下の手順に従って、お使いの Azure サブスクリプションでの Azure FarmBeats のデプロイを完了します。
 
 ## <a name="prepare"></a>準備
 
@@ -154,7 +157,7 @@ Azure AD アプリケーションの登録スクリプトを実行するには�
 |command | 説明|
 |--- | ---|
 |sku  | Azure FarmBeats のコンポーネントのいずれかまたは両方をダウンロードするかどうかを選択できます。 ダウンロードするコンポーネントを指定します。 データ ハブのみをインストールするには、"onlydatabhub" を使用します。 データ ハブとアクセラレータをインストールするには、"both" を使用します|
-|subscriptionId | FarmBeats をインストールするためのサブスクリプションを指定します|
+|subscriptionId | Azure FarmBeats をインストールするためのサブスクリプションを指定します|
 |datahubResourceGroup| データ ハブ リソースのリソース グループ名|
 |location |リソースを作成する場所|
 |acceleratorWebsiteName |データ ハブの名前に対する一意の URL プレフィックス|
@@ -162,7 +165,7 @@ Azure AD アプリケーションの登録スクリプトを実行するには�
 |datahubWebsiteName  | データ ハブ Web サイトの名前に対する一意の URL プレフィックス。 |
 |sentinelUsername | https://scihub.copernicus.eu/dhus/#/self-registration にサインインするためのユーザー名。|
 |notificationEmailAddress  | データ ハブ内で構成するすべてのアラートの通知を受信するためのメール アドレス。|
-|updateIfExists|[省略可能] 既存の FarmBeats インスタンスをアップグレードする場合にのみ、Input.Json 内に含まれるパラメーター。 アップグレードの場合、その他の詳細 (例: リソース グループ名や場所など) は同じである必要があります。|
+|updateIfExists|[省略可能] 既存の Azure FarmBeats インスタンスをアップグレードする場合にのみ、Input.Json 内に含まれるパラメーター。 アップグレードの場合、その他の詳細 (例: リソース グループ名や場所など) は同じである必要があります。|
 |aadAppClientId | **[省略可能]** Azure AD アプリが既に存在する場合にのみ、Input.Json 内に含まれるパラメーター。  |
 |aadAppClientSecret  | **[省略可能]** Azure AD アプリが既に存在する場合にのみ、Input.Json 内に含まれるパラメーター。|
 
@@ -282,8 +285,8 @@ Azure AD アプリケーションの登録スクリプトを実行するには�
 9. これで、インストーラーによってリソースが検証され、その作成が開始されます。これには約 20 分かかります。 この期間中は、Cloud Shell 上でセッションをアクティブにしておきます。
 10. デプロイが正常に行われると、次の出力リンクが表示されます。
 
- - **データ ハブの URL**:FarmBeats Api を試すための Swagger リンク。
- - **アクセラレータの URL**:FarmBeats Smart Farm Accelerator を探索するためのユーザー インターフェイス。
+ - **データ ハブの URL**:Azure FarmBeats Api を試すための Swagger リンク。
+ - **アクセラレータの URL**:Azure FarmBeats Accelerator を探索するためのユーザー インターフェイス。
  - **デプロイ機能のログ ファイル**:デプロイ中に作成されたログ ファイル。 必要な場合に、トラブルシューティングの目的で使用できます。
 
 問題が発生した場合は、「[トラブルシューティング](troubleshoot-project-farmbeats.md)」を確認してください。
@@ -293,7 +296,7 @@ Azure AD アプリケーションの登録スクリプトを実行するには�
 
 ### <a name="data-hub"></a>データ ハブ
 
-データ ハブのインストールが完了すると、Swagger インターフェイスを使用して Azure FarmBeats API にアクセスするための URL が次の形式で返されます: https://\<yourdatahub-website-name>.azurewebsites.net
+データ ハブのインストールが完了すると、Swagger インターフェイスを使用して Azure FarmBeats API にアクセスするための URL が次の形式で返されます: https://\<yourdatahub-website-name>.azurewebsites.net/swagger
 
 1. Swagger を介してサインインするには、URL をコピーしてブラウザーに貼り付けます。
 2. Azure portal の資格情報でサインインします。
@@ -305,7 +308,7 @@ Azure AD アプリケーションの登録スクリプトを実行するには�
 
 ### <a name="accelerator"></a>アクセラレータ
 
-アクセラレータのインストールが完了すると、FarmBeats ユーザー インターフェイスにアクセスするための URL が次の形式で返されます: https://\<accelerator-website-name>.azurewebsites.net
+アクセラレータのインストールが完了すると、Azure FarmBeats ユーザー インターフェイスにアクセスするための URL が次の形式で返されます: https://\<accelerator-website-name>.azurewebsites.net
 
 1. アクセラレータからサインインするには、URL をコピーしてブラウザーに貼り付けます。
 2. Azure portal の資格情報でサインインします。
@@ -334,8 +337,8 @@ Azure AD アプリケーションの登録スクリプトを実行するには�
 9. Sentinel パスワード
 10. これで、インストーラーによってリソースが検証され、その作成が開始されます。これには約 20 分かかります。
 11. デプロイが成功すると、次の出力リンクが表示されます。
- - **データ ハブの URL**:FarmBeats Api を試すための Swagger リンク。
- - **アクセラレータの URL**:FarmBeats Smart Farm Accelerator を探索するためのユーザー インターフェイス。
+ - **データ ハブの URL**:Azure FarmBeats Api を試すための Swagger リンク。
+ - **アクセラレータの URL**:Azure FarmBeats Accelerator を探索するためのユーザー インターフェイス。
  - **デプロイ機能のログ ファイル**: デプロイ中のログが保存されます。 トラブルシューティングの目的で使用できます。
 
 > [!NOTE]
@@ -344,12 +347,12 @@ Azure AD アプリケーションの登録スクリプトを実行するには�
 
 ## <a name="uninstall"></a>アンインストール
 
-現在、インストーラーを使用した FarmBeats の自動アンインストールはサポートされていません。 データ ハブまたはアクセラレータを削除するには、Azure portal 内で、これらのコンポーネントがインストールされているリソース グループを削除するか、リソースを手動で削除します。
+現在、インストーラーを使用した Azure FarmBeats の自動アンインストールはサポートされていません。 データ ハブまたはアクセラレータを削除するには、Azure portal 内で、これらのコンポーネントがインストールされているリソース グループを削除するか、リソースを手動で削除します。
 
 たとえば、2 つの異なるリソース グループにデータ ハブとアクセラレータをデプロイした場合、これらのリソース グループは次のように削除します。
 
 1. Azure portal にサインインします。
-2. 右上隅でお使いのアカウントを選び、Microsoft FarmBeats をデプロイする Azure AD テナントに切り替えます。
+2. 右上隅でお使いのアカウントを選び、Azure FarmBeats をデプロイする Azure AD テナントに切り替えます。
 
    > [!NOTE]
    > アクセラレータを正常に動作させるには、データ ハブが必要です。 アクセラレータをアンインストールせずにデータ ハブをアンインストールすることはお勧めしません。

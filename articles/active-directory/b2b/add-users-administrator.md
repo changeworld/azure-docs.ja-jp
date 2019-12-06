@@ -1,5 +1,5 @@
 ---
-title: Azure Portal で B2B コラボレーション ユーザーを追加する - Azure Active Directory | Microsoft Docs
+title: Azure portal で B2B コラボレーション ユーザーを追加する - Azure AD
 description: 管理者が Azure Active Directory (Azure AD) B2B コラボレーションを使用してパートナー組織からディレクトリにゲスト ユーザーを追加する方法を説明します。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85905e31b9375bac7f813782cbc224a6e770b7ce
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7176101a1e6c1da54ddd8b5f22b61b91fbc5115a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013121"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267935"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する
 
@@ -51,9 +51,9 @@ B2B コラボレーション ユーザーをディレクトリに追加するに
     > グループのメール アドレスはサポートされていません。個人のメール アドレスを入力してください。 また、一部の電子メール プロバイダーでは、ユーザーはプラス記号 (+) と追加テキストを電子メール アドレスに付け加えて、受信ボックスのフィルター処理などに役立てることができます。 ただし、Azure AD では現在、電子メール アドレスのプラス記号はサポートされていません。 配信の問題を回避するために、プラス記号と、それに続く @ 記号より前の任意の文字を含めません。
 
    - **名前。** ゲスト ユーザーの氏名。
-   - **メール アドレス (必須)** 。 ゲスト ユーザーのメールアドレス。
+   - **メール アドレス (必須)** 。 ゲスト ユーザーのメール アドレス。
    - **個人用メッセージ (オプション)** 。ゲスト ユーザーへの個人用ウェルカム メッセージが含まれます。
-   - **グループ**: 1 つまたは複数の既存のグループにユーザーを追加するか、後で追加することができます。
+   - **グループ**: 1 つまたは複数の既存のグループにゲスト ユーザーを追加するか、後で追加することができます。
    - **ディレクトリ ロール**: ユーザーに Azure AD 管理アクセス許可が必要な場合は、Azure AD ロールに追加することができます。 
 
 7. **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 

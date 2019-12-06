@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 30398b5f81ac1893129ba222c5f1a2d762ad1e7f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5fae340ae933b8165a2ea9bb9f6337189fd576d6
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595055"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457042"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -76,7 +76,7 @@ VNet を使用して次のことが行えます。
 - x.x.x.255:ネットワーク ブロードキャスト アドレス
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>VNet およびサブネットは、どれくらい小規模に、また、大規模になるのでしょうか。
-サポートされる最小のサブネットは /29、最大は /8 です (CIDR サブネット定義を使用)。
+サポートされる最小の IPv4 サブネットは /29、最大は /8 です (CIDR サブネット定義を使用)。  IPv6 のサブネットは、正確に /64 のサイズである必要があります。  
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>VNet を使用して、VLAN を Azure に接続できるでしょうか。
 No. VNet はレイヤー 3 のオーバーレイです。 Azure では、任意のレイヤー 2 のセマンティクスはサポートされません。
@@ -109,7 +109,7 @@ No.
 はい。 VNet 内にデプロイされているすべてのサービスは、インターネットに送信接続できます。 Azure での送信インターネット接続について詳しくは、[送信接続](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 Resource Manager を使用してデプロイされたリソースに受信接続するには、リソースにパブリック IP アドレスが割り当てられている必要があります。 パブリック IP アドレスについて詳しくは、[パブリック IP アドレス](virtual-network-public-ip-address.md)に関する記事をご覧ください。 Azure にデプロイされたすべての Azure クラウド サービスには、パブリックにアドレス指定可能な VIP が割り当てられています。 PaaS ロールの入力エンドポイントと仮想マシンのエンドポイントを定義して、これらのサービスがインターネットからの接続を承諾できるようにします。
 
 ### <a name="do-vnets-support-ipv6"></a>VNet は IPv6 をサポートするでしょうか。
-No. この時点で、VNet で IPv6 を使用できません。 ただし、Azure ロード バランサーに IPv6 アドレスを割り当てて、仮想マシンを負荷分散することはできます。 詳細については、「[Azure Load Balancer の IPv6 の概要](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
+はい。VNet は IPv4 専用かデュアル スタック (IPv4 + IPv6) になります。  詳細については、「[Azure 仮想ネットワークの IPv6 の概要](./ipv6-overview.md)」をご覧ください。
 
 ### <a name="can-a-vnet-span-regions"></a>VNet は複数のリージョンで広がるでしょうか。
 No. VNet は、1 つのリージョンに制限されます。 ただし、仮想ネットワークは複数の可用性ゾーンにまたがります。 可用性ゾーンの詳細については、「[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 仮想ネットワーク ピアリングを使用して、別々のリージョンにある仮想ネットワークを接続できます。 詳細については、[仮想ネットワーク ピアリングの概要](virtual-network-peering-overview.md)に関する記事をご覧ください。
@@ -241,8 +241,8 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 はい。 グローバル VNet ピアリングを使用すると、別のリージョンの VNet にピアリングできます。 グローバル VNet ピアリングは、すべての Azure パブリック リージョン、China Cloud リージョン、Government Cloud リージョンで使用できます。 Azure パブリック リージョンから国内クラウド リージョンに、グローバルにピアリングすることはできません。
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>グローバル VNet ピアリングとロード バランサーに関連する制約は何ですか?
-2 つの仮想ネットワークが異なるリージョンにある場合 (グローバル VNet ピアリング)、Basic Load Balancer を使用するリソースには接続できません。 Standard Load Balancer を使用するリソースには接続できます。
-次のリソースは Basic Load Balancer を使用しています。つまり、グローバル VNet ピアリングを介してそれらと通信することはできません。
+2 つの異なるリージョンの 2 つの仮想ネットワークがグローバル VNET ピアリングでピアリングされている場合、ロード バランサーのフロント エンド IP 経由で Basic Load Balancer の後にあるリソースに接続することはできません。 Standard Load Balancer の場合、この制限はありません。
+次のリソースでは Basic Load Balancer を利用できます。つまり、グローバル VNET ピアリングで、ロード バランサーのフロント エンド IP 経由でリソースに到達できます。 ただし、許可されている場合、グローバル VNET ピアリングを使用し、プライベート VNet IP 経由で直接、リソースに到達できます。 
 - Basic Load Balancer の背後にある VM
 - Basic Load Balancer を使用する仮想マシン スケール セット 
 - Redis Cache 

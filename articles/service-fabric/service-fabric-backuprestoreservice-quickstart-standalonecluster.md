@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 559f6cce7044d57c0a17fc3fe17f1c61f710913a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: feec830a81b9afe572e05bb6be21ad39edd7af04
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013331"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232491"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Azure Service Fabric での定期的なバックアップと復元
 > [!div class="op_single_selector"]
@@ -172,6 +172,16 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
+#### <a name="using-service-fabric-explorer"></a>Service Fabric Explorer の使用
+
+1. Service Fabric Explorer で、[バックアップ] タブに移動し、[アクション] > [バックアップ ポリシーの作成] の順に選択します。
+
+    ![バックアップ ポリシーの作成][6]
+
+2. 情報を入力します。 スタンドアロン クラスターの場合は、FileShare を選択する必要があります。
+
+    ![バックアップ ポリシー FileShare を作成する][7]
+
 ### <a name="enable-periodic-backup"></a>定期バックアップを有効にする
 アプリケーションのデータ保護要件を満たすポリシーを定義した後、バックアップ ポリシーをアプリケーションに関連付けする必要があります。 バックアップ ポリシーは、要件に応じて、アプリケーション、サービス、またはパーティションに関連付けることができます。
 
@@ -293,3 +303,5 @@ Service Fabric Explorer でバックアップを表示するには、パーテ�
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
 [4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
 [5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
+[6]: ./media/service-fabric-backuprestoreservice/create-bp.png
+[7]: ./media/service-fabric-backuprestoreservice/create-bp-fileshare.png

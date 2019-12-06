@@ -1,6 +1,6 @@
 ---
-title: マイ アカウント ポータルで接続されているデバイスを管理する - Azure AD
-description: マイ アカウント ポータルの [デバイス] ページから接続されているデバイスを表示したり、無効にしたりする方法。
+title: マイ アカウント ポータルから接続されているデバイスを管理する - Azure AD
+description: マイ アカウント ポータルの [デバイス] ページから、ご利用の職場または学校アカウントに接続されているデバイスを表示および無効にする方法。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c0eb691abaabf09ae8f89354e1fdb6f18cf8e5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73804269"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233210"
 ---
-# <a name="manage-your-connected-devices-from-the-my-account-portal"></a>マイ アカウント ポータルから接続されているデバイスを管理する
+# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>[デバイス] ページから、ご利用の職場または学校アカウントに接続されているデバイスを管理する
 
 **[マイ アカウント]** ポータルの **[デバイス]** ページから、次のことができます。
 
@@ -72,4 +72,4 @@ ms.locfileid: "73804269"
 
 - [サインイン アクティビティ](my-account-portal-sign-ins-page.md)を表示する。
 
-- 組織における[プライバシー関連データの使用](my-account-portal-privacy-page.md)方法を表示する。
+- 組織での[プライバシー関連データの使用](my-account-portal-privacy-page.md)方法を表示します。

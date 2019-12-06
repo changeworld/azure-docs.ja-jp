@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf9a57b58740d1a759e00f10f6f327d605e91148
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d2be8f7f2e8859301285e4b87cfb5da88e3317e3
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123646"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483358"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -23,6 +23,53 @@ ms.locfileid: "74123646"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
+## <a name="2019-11-25"></a>2019-11-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1076"></a>Azure Machine Learning SDK for Python v1.0.76
+
++ **重大な変更**
+  + Azureml-Train-AutoML のアップグレードに関する問題
+    + azureml-train-automl 1.0.76 以下から azureml-train-automl 1.0.76 より上にアップグレードすると、部分的なインストールが発生し、一部の automl のインポートが失敗する可能性があります。 これを解決するには、 https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmd で見つかったセットアップ スクリプトを実行します。 または、pip を直接使用している場合は、以下を実行することができます。
+      + "pip install --upgrade azureml-train-automl"
+      + "pip install --ignore-installed azureml-train-automl-client"
+    + または、アップグレードする前に古いバージョンをアンインストールすることもできます。
+      + "pip uninstall azureml-train-automl"
+      + "pip install azureml-train-automl"
+
++ **バグの修正と機能強化**
+  + **azureml-automl-runtime**
+    + AutoML では、二項分類タスクの平均スカラーメトリックを計算するときに、true と false の両方のクラスが考慮されるようになりました。
+    + AzureML-AutoML-Core の機械学習とトレーニング コードを新しいパッケージ AzureML-AutoML-Runtime に移動しました。
+  + **azureml-contrib-dataset**
+    + ダウンロード オプションを使用してラベル付きのデータセットで `to_pandas_dataframe` を呼び出すと、既存のファイルを上書きするかどうかを指定できるようになりました。
+    + timeseries、label、または image 列が削除される `keep_columns` または `drop_columns` を呼び出すと、データセットの対応する機能も削除されます。
+    + 物体検出タスク用の PyTorch ローダーに関する問題を修正しました。
+  + **azureml-contrib-interpret**
+    + azureml-contrib-interpret から説明ダッシュボード ウィジェットを削除しました、interpret_community の新しいものを参照するようにパッケージを変更しました
+    + interpret-community のバージョンを 0.2.0 に更新しました
+  + **azureml-core**
+    + `workspace.datasets` のパフォーマンスが向上します。
+    + ユーザー名とパスワード認証を使用して Azure SQL Database データストアを登録する機能が追加されました。
+    + 相対パスから RunConfigurations を読み込むように修正します。
+    + timeseries 列が削除される `keep_columns` または `drop_columns` を呼び出すと、データセットの対応する機能も削除されます。
+  + **azureml-interpret**
+    + interpret-community のバージョンを 0.2.0 に更新しました
+  + **azureml-pipeline-steps**
+    + Azure Machine Learning パイプラインの手順の `runconfig_pipeline_params` でサポートされている値を記載しました。
+  + **azureml-pipeline-core**
+    + パイプライン コマンドの json 形式で出力をダウンロードするための CLI オプションが追加されました。
+  + **azureml-train-automl**
+    + AzureML-Train-AutoML を 2 つのパッケージに分割します (クライアント パッケージ AzureML-Train-AutoML-Client と ML トレーニング パッケージ AzureML-Train-AutoML-Runtime)
+  + **azureml-train-automl-client**
+    + 機械学習の依存関係をローカルにインストールすることなく、AutoML 実験を送信できるシン クライアントが追加されました。
+    + リモート実行で自動的に検出されたラグ、ローリング ウィンドウ サイズ、最大期間のログ記録を修正しました。
+  + **azureml-train-automl-runtime**
+    + 新しい AutoML パッケージを追加して、機械学習とランタイム コンポーネントをクライアントから分離しました。
+  + **azureml-contrib-train-rl**
+    + SDK に強化学習サポートが追加されました。
+    + RL SDK に AmlWindowsCompute サポートが追加されました。 
+
+ 
 ## <a name="2019-11-11"></a>2019-11-11
 
 ### <a name="azure-machine-learning-sdk-for-python-v1074"></a>Azure Machine Learning SDK for Python v1.0.74

@@ -3,19 +3,19 @@ title: Azure Advisor の概要 | Microsoft Docs
 description: Azure Advisor を使用して、Azure のデプロイを最適化します。
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: sagupt
 ms.service: advisor
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
-ms.author: kasparks
-ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sagupt
+ms.openlocfilehash: 1a1ed13697d838041d1ac98b966695e24c06edbe
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069687"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145374"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
@@ -37,6 +37,7 @@ Advisor ダッシュボードに、すべてのサブスクリプションの個
 * **セキュリティ**: セキュリティ侵害に至る可能性がある脅威と脆弱性を検出します。 詳細については、「[Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)」を参照してください。
 * **パフォーマンス**: アプリケーションの速度を向上させます。 詳細については、「[Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)」を参照してください。
 * **コスト**: Azure の全体的な支出を最適化し、削減します。 詳細については、「[Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)」を参照してください。
+* **オペレーショナル エクセレンス**:プロセスとワークフローの効率性、リソースの管理性、デプロイに関するベスト プラクティスの実現を支援します。 。 詳細については、「[Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)」を参照してください。
 
   ![Advisor の推奨事項の種類](./media/advisor-overview/advisor-dashboard.png)
 

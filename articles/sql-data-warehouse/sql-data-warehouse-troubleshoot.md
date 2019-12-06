@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 7/29/2019
+ms.date: 11/25/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2aa7926286be277c7ad0aa7054b4bd6fceb8229f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b2a9a7b0b759f5853d83a4b1999887414fd5f430
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685406"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483201"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のトラブルシューティング
 この記事では、一般的なトラブルシューティングの質問を示します。
@@ -41,6 +41,7 @@ ms.locfileid: "73685406"
 | 問題                                                        | 解決策                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | クエリ パフォーマンスのトラブルシューティング                            | 特定のクエリのトラブルシューティングを行う必要がある場合は、 [クエリを監視する方法][Learning how to monitor your queries]に関する記事を参照してください。 |
+| TempDB の領域に関する問題 | [TempDB の領域の使用状況を監視](sql-data-warehouse-manage-monitor.md#monitor-tempdb)します。  TempDB の領域が不足している一般的な原因は次のとおりです。<br>- クエリに割り当てられたリソースが不足しているため、データが TempDB に書き込まれます。  [ワークロード管理](resource-classes-for-workload-management.md)に関する記事を参照してください。 <br>- 統計が不足しているか、期限切れのため、データ移動が過剰になっています。  統計を作成する方法の詳細については、[テーブルの統計の管理][Statistics]に関する記事を参照してください。<br>- TempDB の領域はサービス レベルごとに割り当てられます。  [SQL Data Warehouse][Scaling your SQL Data Warehouse] をより大きな DWU 設定にスケーリングすると、TempDB の領域がさらに割り当てられます。|
 | 統計情報の不足を原因とする、クエリのパフォーマンス低下と不適切なプラン | パフォーマンスの低下の最も一般的な原因は、テーブルの統計情報の不足です。  統計を作成する方法と、それらがパフォーマンスにとって重要な理由の詳細については、[テーブルの統計の管理][Statistics]に関する記事をご覧ください。 |
 | 低いコンカレンシーとキューに置かれたクエリ                             | [ワークロード管理][Workload management] を理解することは、コンカレンシーでのメモリの割り当てのバランスを調整する方法を理解するために重要です。 |
 | ベスト プラクティスを実装する方法                              | クエリのパフォーマンスを向上させる方法については、 [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse best practices] に関する記事を参照してください。 |

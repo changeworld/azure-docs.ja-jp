@@ -1,6 +1,6 @@
 ---
 title: マイ アカウント ポータルでプライバシー関連の情報を表示する - Azure AD
-description: マイ アカウント ポータルのご自分の [プライバシー] ページでプライバシー情報を表示する方法。
+description: マイ アカウント ポータルの [プライバシー] ページからのお客様のプライバシー関連の情報が組織でどのように使用されるかについて説明します。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfb05bdb3aa2cf89328051b196475338eb5a3b3b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ff1a030a17ce4f63427eb6bfebbf84be74f6500d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820363"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231815"
 ---
-# <a name="view-your-privacy-related-info-from-the-my-account-portal"></a>マイ アカウント ポータルでご自分のプライバシー関連の情報を表示する
+# <a name="view-how-your-organization-uses-your-privacy-related-data"></a>組織でのプライバシー関連データの使用方法を表示します。
 
 **マイ アカウント** ポータルの **[プライバシー]** ページでは、所属の組織でご自分のデータがどのように使用されているかを確認できます。
 

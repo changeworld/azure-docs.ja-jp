@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: 883778360bd2315e1424f9f207cbfd994ec1a373
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 11/27/2019
+ms.openlocfilehash: d38874e7cb3fc61e32bd4ecd1fee528c4e5053e8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901190"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547168"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -31,10 +31,8 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 
 この記事では、次のタスクの実行方法について説明します。
 
-* トラフィックが仮想ネットワーク内のサブネット間で ISE を通過できるように、その仮想ネットワーク上の必要なすべてのポートがオープンしていることを確認します。
-
+* ISE のアクセスを有効にします。
 * ISE を作成します。
-
 * ISE に容量を追加します。
 
 > [!IMPORTANT]
@@ -44,7 +42,7 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークがない場合は、[Azure 仮想ネットワークの作成](../virtual-network/quick-create-portal.md)方法について学んでください。 
+* [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークがない場合は、[Azure 仮想ネットワークの作成](../virtual-network/quick-create-portal.md)方法について学んでください。
 
   * 仮想ネットワークには、ISE 内にリソースを作成およびデプロイするため、*空の*サブネットが 4 つ必要です。 このようなサブネットは、事前に作成するか、同時にサブネットを作成できる ISE を作成するまで待つことができます。 [サブネット要件](#create-subnet)の詳細を参照してください。
 
@@ -52,7 +50,7 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
   
   * Azure Resource Manager テンプレートを使用して ISE をデプロイする場合は、最初に空のサブネットを Microsoft.Logic/integrationServiceEnvironment に委任していることを確認します。 Azure portal を使用してデプロイする場合、この委任を行う必要はありません。
 
-  * 仮想ネットワークで[これらのポートが利用可能になっており](#ports)、ISE が正常に動作し、アクセス可能な状態であることを確認します。
+  * ISE が正常に動作し、アクセス可能な状態を維持できるように、仮想ネットワークで [ISE アクセスが有効になっている](#enable-access)ことを確認します。
 
   * Microsoft クラウド サービスにプライベート接続を提供する [ExpressRoute](../expressroute/expressroute-introduction.md) を使用する場合、次のルートを持つ[ルート テーブルを作成](../virtual-network/manage-route-table.md)し、ISE によって使用される各サブネットにそのテーブルをリンクします。
 
@@ -65,23 +63,31 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
   > [!IMPORTANT]
   > ISE を作成した後で DNS サーバーの設定を変更する場合、ISE を必ず再起動してください。 DNS サーバー設定の管理方法に関する詳細については、「[仮想ネットワークの作成、変更、削除](../virtual-network/manage-virtual-network.md#change-dns-servers)」を参照してください。
 
-<a name="ports"></a>
+<a name="enable-access"></a>
 
-## <a name="check-network-ports"></a>ネットワーク ポートを確認する
+## <a name="enable-access-for-ise"></a>ISE のアクセスを有効にする
 
-Azure 仮想ネットワークで ISE を使用した場合、一般的な設定の問題はブロックされたポートが 1 つ以上あることです。 ISE と宛先システムとの間の接続を作成するために使用するコネクターにも独自のポート要件がある可能性があります。 たとえば、FTP コネクタを使用して FTP システムと通信する場合、お使いの FTP システム上で使用するポート (コマンド送信用のポート 21 など) を使用できることを確認します。 ISE がアクセス可能であり、正常に動作することを確認するには、次の表で指定されているポートを開きます。 そうしないと、いずれかの必要なポートが使用できなった場合、ISE は機能を停止します。
+Azure 仮想ネットワークで ISE を使用した場合、一般的な設定の問題はブロックされたポートが 1 つ以上あることです。 ISE と宛先システムとの間の接続を作成するために使用するコネクタにも、独自のポート要件がある可能性があります。 たとえば、FTP コネクタを使用して FTP システムと通信する場合、FTP システム上で使用するポート (コマンド送信用のポート 21 など) が使用可能である必要があります。
+
+ISE にアクセスできること、および ISE 内のロジック アプリが仮想ネットワーク内のサブネット間で通信できることを確認するには、[この表にあるポートを開きます](#network-ports-for-ise)。 いずれかの必要なポートが使用できなった場合、ISE は正常に機能しません。
+
+* 複数の ISE があり、仮想ネットワークで [Azure Firewall](../firewall/overview.md) または[ネットワーク仮想アプライアンス](../virtual-network/virtual-networks-overview.md#filter-network-traffic)を使用している場合は、送信先システムと通信するために、[単一、送信、パブリック、および予測可能な IP アドレスを設定](connect-virtual-network-vnet-set-up-single-ip-address.md)することができます。 このようにすると、送信先で ISE ごとに追加のファイアウォールを設定する必要はありません。
+
+* 新しい Azure 仮想ネットワークとサブネットを制約なしで作成した場合、サブネット間のトラフィックを制御する目的で仮想ネットワーク内に[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md#network-security-groups) を設定する必要はありません。
+
+* 既存の仮想ネットワークでは、*必要に応じて*、[サブネット間のネットワーク トラフィックをフィルター処理](../virtual-network/tutorial-filter-network-traffic.md)して NSG を設定できます。 このルートを選択した場合、NSG を設定する仮想ネットワークで、必ず[この表にあるポートを開きます](#network-ports-for-ise)。 [NSG セキュリティ規則](../virtual-network/security-overview.md#security-rules)を使用する場合、TCP プロトコルと UDP プロトコルの両方が必要です。
+
+* 既存の NGS がある場合、必ず[この表にあるポートを開きます](#network-ports-for-ise)。 [NSG セキュリティ規則](../virtual-network/security-overview.md#security-rules)を使用する場合、TCP プロトコルと UDP プロトコルの両方が必要です。
+
+<a name="network-ports-for-ise"></a>
+
+### <a name="network-ports-used-by-your-ise"></a>ISE で使用されるネットワーク ポート
+
+次の表は、ISE で使用される Azure 仮想ネットワーク内のポートと、それらのポートが使用される場所を説明したものです。 [Resource Manager のサービス タグ](../virtual-network/security-overview.md#service-tags)は、IP アドレス プレフィックスのグループを表し、セキュリティ規則を作成する際の複雑さを最小限に抑えるために役立ちます。
 
 > [!IMPORTANT]
 > ソース ポートは一時的なものです。そのため、すべての規則に対して `*` に設定してください。
 > サブネット内の内部通信の場合、それらのサブネット内のすべてのポートを開いておくことがお使いの ISE では必要になります。
-
-* 新しい仮想ネットワークとサブネットを制約なしで作成した場合、サブネット間のトラフィックを制御する目的で仮想ネットワーク内に[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md#network-security-groups) を設定する必要はありません。
-
-* 既存の仮想ネットワークでは、*必要に応じて*、[サブネット間のネットワーク トラフィックをフィルター処理](../virtual-network/tutorial-filter-network-traffic.md)して NSG を設定できます。 このルートを選択した場合、NSG を設定する仮想ネットワークで、下の表で指定されているポートを開きます。 [NSG セキュリティ規則](../virtual-network/security-overview.md#security-rules)を使用する場合、TCP プロトコルと UDP プロトコルの両方が必要です。
-
-* 仮想ネットワークに以前から NSG またはファイアウォールが存在している場合、下の表で指定されているポートを開きます。 [NSG セキュリティ規則](../virtual-network/security-overview.md#security-rules)を使用する場合、TCP プロトコルと UDP プロトコルの両方が必要です。
-
-次の表は、ISE で使用される仮想ネットワーク内のポートと、それらのポートが使用される場所を説明したものです。 [Resource Manager のサービス タグ](../virtual-network/security-overview.md#service-tags)は、IP アドレス プレフィックスのグループを表し、セキュリティ規則を作成する際の複雑さを最小限に抑えるために役立ちます。
 
 | 目的 | Direction | ターゲット ポート | 発信元サービス タグ | 宛先サービス タグ | メモ |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
@@ -89,8 +95,8 @@ Azure 仮想ネットワークで ISE を使用した場合、一般的な設定
 | Azure Active Directory | 送信 | 80、443 | VirtualNetwork | AzureActiveDirectory | |
 | Azure Storage の依存関係 | 送信 | 80、443 | VirtualNetwork | Storage | |
 | Intersubnet 通信 | 受信および送信 | 80、443 | VirtualNetwork | VirtualNetwork | サブネット間の通信用 |
-| Azure Logic Apps への通信 | 受信 | 443 | 内部アクセス エンドポイント: <br>VirtualNetwork <p><p>外部アクセス エンドポイント: <br>インターネット <p><p>**メモ**:これらのエンドポイントは、[ISE 作成時に選択](#create-environment)されたエンドポイント設定を参照します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 | VirtualNetwork | ロジック アプリ内に存在する任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービスの IP アドレス。 このポートを閉じるかブロックすると、要求トリガーでロジック アプリに HTTP 呼び出しできなくなります。 |
-| ロジック アプリの実行履歴 | 受信 | 443 | 内部アクセス エンドポイント: <br>VirtualNetwork <p><p>外部アクセス エンドポイント: <br>インターネット <p><p>**メモ**:これらのエンドポイントは、[ISE 作成時に選択](#create-environment)されたエンドポイント設定を参照します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 | VirtualNetwork | ロジック アプリの実行履歴を表示するコンピューターの IP アドレス。 このポートを閉じたりブロックしたりしても実行履歴を表示できますが、その実行履歴に含まれる各ステップの入出力は表示されなくなります。 |
+| Azure Logic Apps への通信 | 受信 | 443 | 内部アクセス エンドポイント: <br>VirtualNetwork <p><p>外部アクセス エンドポイント: <br>インターネット <p><p>**メモ**:これらのエンドポイントは、[ISE 作成時に選択](connect-virtual-network-vnet-isolated-environment.md#create-environment)されたエンドポイント設定を参照します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 | VirtualNetwork | ロジック アプリ内に存在する任意の要求トリガーまたは Webhook を呼び出すコンピューターまたはサービスの IP アドレス。 このポートを閉じるかブロックすると、要求トリガーでロジック アプリに HTTP 呼び出しできなくなります。 |
+| ロジック アプリの実行履歴 | 受信 | 443 | 内部アクセス エンドポイント: <br>VirtualNetwork <p><p>外部アクセス エンドポイント: <br>インターネット <p><p>**メモ**:これらのエンドポイントは、[ISE 作成時に選択](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#create-environment)されたエンドポイント設定を参照します。 詳細については、「[エンドポイント アクセス](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)」を参照してください。 | VirtualNetwork | ロジック アプリの実行履歴を表示するコンピューターの IP アドレス。 このポートを閉じたりブロックしたりしても実行履歴を表示できますが、その実行履歴に含まれる各ステップの入出力は表示されなくなります。 |
 | 接続管理 | 送信 | 443 | VirtualNetwork  | AppService | |
 | 診断ログとメトリックの発行 | 送信 | 443 | VirtualNetwork  | AzureMonitor | |
 | Azure Traffic Manager からの通信 | 受信 | 443 | AzureTrafficManager | VirtualNetwork | |
@@ -144,11 +150,11 @@ Azure 仮想ネットワークで ISE を使用した場合、一般的な設定
    **サブネットを作成する**
 
    環境内にリソースを作成およびデプロイする場合、どのサービスにも委任されていない*空の*サブネットが 4 つ ISE に必要です。 環境の作成後に、これらのサブネット アドレスを変更することは*できません*。
-   
+
    > [!IMPORTANT]
    > 
    > サブネット名の最初の文字はアルファベット文字かアンダースコアにする必要があります (数字は禁止)。`<`、`>`、`%`、`&`、`\\`、`?`、`/` は使用できません。
-   
+
    また、各サブネットは、次の要件を満たしている必要があります。
 
    * [Classless Inter-Domain Routing (CIDR) 形式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)とクラス B アドレス空間を使用する。

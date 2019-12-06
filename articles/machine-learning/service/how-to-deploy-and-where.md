@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9d7dc724130286298af6e1d4b0babc551f3f2658
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 63d2aa5c9e4ec751d9b95ba0d884e6dc17e207bb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123623"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276790"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -578,6 +578,10 @@ CLI からプロファイリングを使用する方法については、「[az 
 ## <a name="deploy-to-target"></a>ターゲットにデプロイする
 
 デプロイでは、推論構成のデプロイ構成を使用して、モデルをデプロイします。 デプロイ プロセスは、コンピューティング ターゲットに関係なく類似しています。 AKS へのデプロイは、AKS クラスターへの参照を指定する必要があるため、少し異なります。
+
+### <a name="securing-deployments-with-ssl"></a>SSL を使用したデプロイのセキュリティ保護
+
+Web サービスのデプロイをセキュリティで保護する方法の詳細については、[SSL を使用した Web サービスのセキュリティ保護](how-to-secure-web-service.md#enable)に関する記事を参照してください。
 
 ### <a id="local"></a> ローカル デプロイ
 

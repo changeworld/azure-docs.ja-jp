@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1b900d4a67390ae867d770c3b984c43fd501b5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ef0bfcb8c82d3f3caf90500e8852ca9e02c725aa
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74026756"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382969"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -116,16 +116,17 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 |  <ul><li>EnableGroupCreation<li>型: Boolean<li>既定値はTrue |ディレクトリで管理者以外のユーザーによる Office 365 グループの作成を許可するかどうかを示すフラグ。 この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
 |  <ul><li>GroupCreationAllowedGroupId<li>型: string<li>既定値: “” |EnableGroupCreation == false の場合でも Office 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
 |  <ul><li>UsageGuidelinesUrl<li>型: string<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
-|  <ul><li>ClassificationDescriptions<li>型: string<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、Classification は ClassificationList 内の文字列と一致します。|
-|  <ul><li>DefaultClassification<li>型: string<li>既定値: “” | 何も指定されていない場合にグループの既定の分類として使用される分類。|
+|  <ul><li>ClassificationDescriptions<li>型: string<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、Classification は ClassificationList 内の文字列と一致します。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
+|  <ul><li>DefaultClassification<li>型: string<li>既定値: “” | 何も指定されていない場合にグループの既定の分類として使用される分類。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
 |  <ul><li>PrefixSuffixNamingRequirement<li>型: string<li>既定値: “” | Office 365 グループ用に構成された名前付け規則を定義する文字列。最大文字数は 64 文字です。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
 | <ul><li>CustomBlockedWordsList<li>型: string<li>既定値: “” | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
 | <ul><li>EnableMSStandardBlockedWords<li>型: Boolean<li>既定値は"False" | 使用しないでください
 |  <ul><li>AllowGuestsToBeGroupOwner<li>型: Boolean<li>既定値はFalse | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>型: Boolean<li>既定値はTrue | ゲスト ユーザーが Office 365 グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>型: string<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
-|  <ul><li>AllowAddGuests<li>型: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。|
-|  <ul><li>ClassificationList<li>型: string<li>既定値: “” |Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 |
+|  <ul><li>AllowToAddGuests<li>型: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。 <br>*EnableMIPLabels* が *True* に設定されていて、グループに割り当てられている機密ラベルにゲスト ポリシーが関連付けられている場合は、この設定は上書きされ読み取り専用になります。 |
+|  <ul><li>ClassificationList<li>型: string<li>既定値: “” |Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 <br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
+|  <ul><li>EnableMIPLabels<li>型: Boolean<li>既定値は"False" |Microsoft 365 コンプライアンス センターで公開されている機密ラベルを Office 365 グループに適用できるかどうかを示すフラグ。 詳細については、[Office 365 グループへの機密ラベルの割り当て](groups-assign-sensitivity-labels.md)に関するページを参照してください。 |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>例:ディレクトリ レベルでグループのゲスト ポリシーを構成する
 1. すべての設定テンプレートを取得します。

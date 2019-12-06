@@ -6,22 +6,29 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 11/11/2019
-ms.openlocfilehash: f2a33f96f77678e02c5b72c36563781e7d7ac334
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.date: 11/18/2019
+ms.openlocfilehash: 43016cfb72b90a74ce1313ad2d2316228d743f5f
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928278"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195345"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする方法
 
-この記事では、Kubernetes 環境にデプロイされ、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/)、[Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) 上の AKS エンジン、またはオンプレミスに展開された Kubernetes でホストされるワークロードのパフォーマンスをコンテナーで監視する場合に、Azure Monitor の設定に使用できるオプションの概要について説明します。
+この記事では、Kubernetes 環境にデプロイされ、以下の上でホストされているワークロードのパフォーマンスを監視するために、コンテナーに対して Azure Monitor を設定するために使用できるオプションの概要について説明します。
 
-次のサポートされている方法を使用して、新規または 1 つ以上の既存の AKS のデプロイに対してコンテナー用の Azure Monitor 有効にできます。
+- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) (AKS)
 
-* Azure Portal、Azure PowerShell、または Azure CLI から
-* [Terraform と AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md) を使用して
+- オンプレミスで導入された [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908) または Kubernetes 上の AKS エンジン
+
+- [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
+
+次のサポートされている方法を使用して、新規または 1 つ以上の既存の Kubernetes のデプロイに対してコンテナー用の Azure Monitor 有効にできます。
+
+- Azure Portal、Azure PowerShell、または Azure CLI から
+
+- [Terraform と AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md) を使用して
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -29,25 +36,25 @@ ms.locfileid: "73928278"
 
 始める前に、必ず以下のものを用意してください。
 
-* **Log Analytics ワークスペース。**
+- **Log Analytics ワークスペース。**
 
     Azure Monitor for containers では、Azure の[リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor)に関するページに一覧表示されているリージョンの Log Analytics ワークスペースがサポートされます。
 
     新しい AKS クラスターの監視を有効にするときにワークスペースを作成すること、またはオンボード エクスペリエンスを使用して AKS クラスター サブスクリプションの既定のリソース グループに既定のワークスペースを作成することができます。 自分でワークスペースを作成する場合は、[Azure Resource Manager](../platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../learn/quick-create-workspace.md) のいずれかを使用して作成できます。 既定のワークスペースに使用される、サポートされているマッピング ペアの一覧については、[Azure Monitor for containers のリージョンのマッピング](container-insights-region-mapping.md)に関するページを参照してください。
 
-* コンテナーの監視を有効にするために、**Log Analytics 共同作成者ロール**のメンバーである必要があります。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../platform/manage-access.md)」を参照してください。
+- コンテナーの監視を有効にするために、**Log Analytics 共同作成者ロール**のメンバーである必要があります。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../platform/manage-access.md)」を参照してください。
 
-* AKS クラスター リソースに対する **[[所有者]](../../role-based-access-control/built-in-roles.md#owner)** ロールのメンバーである必要があります。
+- AKS クラスター リソースに対する **[[所有者]](../../role-based-access-control/built-in-roles.md#owner)** ロールのメンバーである必要があります。
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-* 既定では、Prometheus のメトリックは収集されません。 [エージェントを構成](container-insights-prometheus-integration.md)してそれらを収集する前に、Prometheus の[ドキュメント](https://prometheus.io/)を確認して、定義できる内容を理解しておくことが重要です。
+* 既定では、Prometheus のメトリックは収集されません。 [エージェントを構成](container-insights-prometheus-integration.md)してそれらを収集する前に、Prometheus の[ドキュメント](https://prometheus.io/)を確認して、取得できる内容およびサポートされるメソッドを理解しておくことが重要です。
 
 ## <a name="supported-configurations"></a>サポートされている構成
 
 Azure Monitor for containers では、以下が公式にサポートされています。
 
-- 環境:オンプレミスの Kubernetes、Azure 上の AKS エンジン、Azure Stack。 詳細については、[Azure Stack 上の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください。
+- 環境:Azure Red Hat OpenShift、オンプレミスの Kubernetes、Azure 上の AKS エンジン、Azure Stack。 詳細については、[Azure Stack 上の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)に関するページを参照してください。
 - Kubernetes のバージョンとサポート ポリシーについては、[AKS でサポートされているバージョン](../../aks/supported-kubernetes-versions.md)と同じです。 
 
 ## <a name="network-firewall-requirements"></a>ネットワーク ファイアウォールの要件
@@ -102,15 +109,18 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 
 | デプロイの状態 | 方法 | 説明 |
 |------------------|--------|-------------|
-| 新しい AKS クラスター | [Azure CLI を使用してクラスターを作成](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Azure CLI を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
-| | [Terraform を使用してクラスターを作成](container-insights-enable-new-cluster.md#enable-using-terraform)| オープンソースのツールである Terraform を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
-| 既存の AKS クラスター | [Azure CLI を使用して有効にする](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Azure CLI を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
-| |[Terraform を使用して有効にする](container-insights-enable-existing-clusters.md#enable-using-terraform) | オープンソースのツールである Terraform を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
-| | [Azure Monitor から有効にする](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Azure Monitor の AKS マルチクラスター ページから既にデプロイされている 1 つまたは複数の AKS クラスターの監視を有効にできます。 |
+| 新しい Kubernetes クラスター | [Azure CLI を使用して AKS クラスターを作成](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Azure CLI を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
+| | [Terraform を使用して AKS クラスターを作成](container-insights-enable-new-cluster.md#enable-using-terraform)| オープンソースのツールである Terraform を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
+| | [Azure Resource Manager テンプレートを使用した OpenShift クラスターの作成](container-insights-azure-redhat-setup.md#enable-for-a-new-cluster-using-an-azure-resource-manager-template) | 事前構成済みの Azure Resource Manager テンプレートを使用して作成した新しい OpenShift クラスターの監視を有効にできます。 |
+| 既存の Kubernetes クラスター | [Azure CLI を使用して AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-using-azure-cli) | Azure CLI を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
+| |[Terraform を使用して AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-using-terraform) | オープンソースのツールである Terraform を使用して既にデプロイされている AKS クラスターの監視を有効にできます。 |
+| | [Azure Monitor から AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-from-azure-monitor-in-the-portal)| Azure Monitor のマルチクラスター ページから既にデプロイされている 1 つまたは複数の AKS クラスターの監視を有効にできます。 |
 | | [AKS クラスターから有効にする](container-insights-enable-existing-clusters.md#enable-directly-from-aks-cluster-in-the-portal)| Azure portal の AKS クラスターから直接監視を有効にできます。 |
-| | [Azure Resource Manager テンプレートを使用して有効にする](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| 事前構成済みの Azure Resource Manager テンプレートを使用して AKS クラスターの監視を有効にできます。 |
+| | [Azure Resource Manager テンプレートを使用して AKS クラスターを有効にする](container-insights-enable-existing-clusters.md#enable-using-an-azure-resource-manager-template)| 事前構成済みの Azure Resource Manager テンプレートを使用して AKS クラスターの監視を有効にできます。 |
 | | [ハイブリッド Kubernetes クラスターの場合に有効にする](container-insights-hybrid-setup.md) | Azure Stack でホストされている AKS エンジン、またはオンプレミスでホストされている Kubernetes の監視を有効にすることができます。 |
+| | [Azure Resource Manager テンプレートを使用して OpenShift クラスターを有効にする](container-insights-azure-redhat-setup.md#enable-using-an-azure-resource-manager-template) | 事前構成済みの Azure Resource Manager テンプレートを使用して既存の OpenShift クラスターの監視を有効にできます。 |
+| | [Azure Monitor から OpenShift クラスターを有効にする](container-insights-azure-redhat-setup.md#from-the-azure-portal) | Azure Monitor のマルチクラスター ページから既にデプロイされている 1 つまたは複数の OpenShift クラスターの監視を有効にできます。 |
 
 ## <a name="next-steps"></a>次の手順
 
-* AKS クラスター ノードとポッドの両方について正常性メトリックを取得するための監視が有効になったので、これらの正常性メトリックを Azure portal で利用できます。 コンテナー用 Azure Monitor を使用する方法については、[Azure Kubernetes Service の正常性の表示](container-insights-analyze.md)に関するページをご覧ください。
+- 監視を有効にすると、Azure Kubernetes Service (AKS)、Azure Stack、またはその他の環境でホストされている Kubernetes クラスターのパフォーマンスの分析を開始できます。 コンテナー用 Azure Monitor を使用する方法については、[Kubernetes クラスターのパフォーマンスの表示](container-insights-analyze.md)に関するページをご覧ください。

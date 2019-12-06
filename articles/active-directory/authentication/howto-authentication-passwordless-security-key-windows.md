@@ -1,22 +1,22 @@
 ---
-title: Azure AD へのパスワードレス セキュリティ キー サインインを有効にする (プレビュー) - Azure Active Directory
+title: Windows のパスワードレス セキュリティ キー サインイン - Azure Active Directory
 description: FIDO2 セキュリティ キーを使用した Azure AD へのパスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b3aa2add128cfc11a638fe6c7e03cfb25189afc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 5343387da7b2027e1071b19be826e329494cdd3e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081556"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452937"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Windows 10 デバイスへのパスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 
@@ -45,6 +45,7 @@ ms.locfileid: "74081556"
 - セキュリティ キーを使用する "実行" は**サポートされていません**。
 - セキュリティ キーを使用するサーバーへのログインは**サポートされていません**。
 - オンラインのときにセキュリティ キーを使用してデバイスにサインインしていない場合、そのデバイスをサインインまたはオフラインでのロック解除には使用できません。
+- 複数の Azure AD アカウントが含まれるセキュリティ キーで Windows 10 デバイスにサインインするか、ロックを解除します。 このシナリオでは、セキュリティ キーに追加された最後のアカウントが利用されます。 WebAuthN の場合、ユーザーは自分が使用するアカウントを選択できます。
 
 ## <a name="prepare-devices-for-preview"></a>プレビュー用にデバイスを準備する
 

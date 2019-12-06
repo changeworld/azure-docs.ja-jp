@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2d0f92f7bf5b015a30e431354edb0c29f5e103f6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c6951ad129a564193a33a4c21fb97e9000ac8dc2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046430"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555436"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL Data Warehouse データ統合パートナー
 データ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事では、Azure SQL Data Warehouse をサポートする公式のデータ統合ソリューションを提供している Microsoft パートナー企業について説明します。
@@ -36,9 +36,10 @@ ms.locfileid: "74046430"
 | ![Skyvia][11] |**Skyvia (データ統合)**<br>Skyvia のデータ統合は、データのインポートを自動化するウィザードを提供します。 このウィザードは、さまざまな種類のソース (CRM、アプリケーション データベース、CSV ファイルなど) 間でのデータ移行を可能にします。 |[製品ページ][segment_website]<br> |
 | ![SnapLogic][6] |**SnapLogic**<br>SnapLogic プラットフォームを利用すると、顧客は Microsoft Azure SQL Data Warehouse に出入りするデータをすばやく転送できます。 数百ものアプリケーション、サービス、および IoT シナリオを 1 つのソリューションに統合する機能を提供しています。|[製品ページ][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
 | ![StreamSets][15] |**StreamSets**<br>StreamSets は、DataOps 用のデータ統合プラットフォームを提供します。 これは、データを Azure SQL Data Warehouse に統合する、設計、デプロイ、運用の完全なライフサイクルを操作できるようにします。 ストリーミング、バッチ、または変更されたデータ キャプチャ データ配信方法を使用して、ウェアハウス間でデータの迅速な取り込みと統合ができるだけでなく、エンドツーエンドのデータ フローの可視性および回復性を提供するスマート データ パイプラインを使用して継続的な操作を確保することもできます。|[製品ページ][streamsets_website]|
-| ![Talend][12] |**Talend Cloud**<br>Talend Cloud は、クラウドまたはオンプレミスにわたって、データの接続、アクセス、および変換を行うためのエンタープライズ データ統合プラットフォームです。 幅広い接続、組み込みのデータ品質、最新のビッグ データとクラウド技術に対するネイティブ サポートを提供する integration Platform-as-a-Service (iPaaS) のオファリングです。 |[製品ページ][talend_website]<br> [Azure Marketplace][talend_marketplace] |
-| ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta では、個人と組織が、分析のためのさまざまなデータを探索して融合させることができます。 Trifacta Wrangler は、大規模なデータと多数のエンド ユーザーをサポートする必要があるデータ ラングリング ワークロードを処理するように設計されています。|[製品ページ][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
-| ![WhereScape][14] |**Wherescape RED**<br> WhereScape RED は、ETL ワークフローを合理化するための自動ツールをチームに提供する IDE です。 IDE は、一般的なデータ ターゲットに対するベスト プラクティス、つまり最適化されたネイティブ コードを提供します。 WhereScape RED を使用して、データ インフラストラクチャの開発、デプロイ、および運用にかかる時間を短縮します。|[製品ページ][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
+| ![Talend][12] |**Talend Cloud**<br>Talend Cloud は、クラウドまたはオンプレミスにわたって、データの接続、アクセス、および変換を行うためのエンタープライズ データ統合プラットフォームです。 幅広い接続、組み込みのデータ品質、最新のビッグ データとクラウド テクノロジに対するネイティブ サポートを提供する integration Platform-as-a-Service (iPaaS) のオファリングです。 |[製品ページ][talend_website]<br> [Azure Marketplace][talend_marketplace] |
+| ![TimeXtender][13] |**TimeXtender**<br>TimeXtender の検出ハブは、データ インサイトまでの時間を最大 10 倍短縮する、統合されたデータ管理プラットフォームを提供することで、企業が最新のデータ資産を構築するのに役立ちます。 1 つのプラットフォーム内でデータ アクセス、データ モデリング、コンプライアンスの自動化と機能を提供することで、日々の抽出、変換、読み込み (ETL)、または抽出、読み込み、変換 (ELT) を超える作業を行うことができます。 検出ハブでは、クラウド スケール分析用の統合されたデータ ファブリックが提供されています。これにより、さまざまなデータ サイロ、カタログ、モデル、移動、およびドキュメント データを、分析と AI のために接続して統合することができます。 | [製品ページ][timextender_website] |
+| ![Trifacta][14] |**Trifacta Wrangler**<br> Trifacta では、個人と組織が、分析のためのさまざまなデータを探索して融合させることができます。 Trifacta Wrangler は、大規模なデータと多数のエンド ユーザーをサポートする必要があるデータ ラングリング ワークロードを処理するように設計されています。|[製品ページ][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
+| ![WhereScape][15] |**Wherescape RED**<br> WhereScape RED は、ETL ワークフローを合理化するための自動ツールをチームに提供する IDE です。 IDE は、一般的なデータ ターゲットに対するベスト プラクティス、つまり最適化されたネイティブ コードを提供します。 WhereScape RED を使用して、データ インフラストラクチャの開発、デプロイ、および運用にかかる時間を短縮します。|[製品ページ][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
 
 
 ## <a name="next-steps"></a>次の手順
@@ -64,9 +65,10 @@ ms.locfileid: "74046430"
 [10]: ./media/sql-data-warehouse-partner-data-integration/segment_logo.png
 [11]: ./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png
 [12]: ./media/sql-data-warehouse-partner-data-integration/talend_logo.png
-[13]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
-[14]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
-[15]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
+[13]: ./media/sql-data-warehouse-partner-data-integration/timextender-logo.png
+[14]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
+[15]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
+[16]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
 
 
 
@@ -86,6 +88,7 @@ ms.locfileid: "74046430"
 [segment_website]:https://segment.com/
 [skyvia_website]:https://skyvia.com/
 [talend_website]:https://www.talend.com/
+[timextender_website]:https://www.timextender.com/
 [trifacta_website]:https://www.trifacta.com/
 [wherescape_website]:https://www.wherescape.com/
 [streamsets_website]:https://streamsets.com/partners/microsoft

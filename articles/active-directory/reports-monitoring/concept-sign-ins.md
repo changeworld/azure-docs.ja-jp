@@ -17,12 +17,12 @@ ms.date: 10/28/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 778353621491f912d3237900785e6dee17bf975e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6e7b0c379783af2f9131d487f45c0f4e2009e258
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014486"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232144"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 
-* セキュリティ管理者、セキュリティ閲覧者、およびレポート閲覧者ロールのユーザー
+* セキュリティ管理者、セキュリティ閲覧者、グローバル閲覧者、およびレポート閲覧者ロールのユーザー
 * グローバル管理者
 * 任意のユーザー (非管理者) が自分のサインインにアクセス可能 
 

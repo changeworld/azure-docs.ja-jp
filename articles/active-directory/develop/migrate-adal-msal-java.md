@@ -1,5 +1,6 @@
 ---
-title: ADAL から MSAL への移行ガイド (Java) - Microsoft ID プラットフォーム | Azure
+title: Java 用 ADAL から MSAL への移行ガイド | Azure
+titleSuffix: Microsoft identity platform
 description: Azure Active Directory Authentication Library (ADAL) Java アプリを Microsoft Authentication Library (MSAL) に移行する方法について説明します。
 services: active-directory
 author: sangonzal
@@ -16,12 +17,12 @@ ms.author: sagonzal
 ms.reviewer: navyari.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bddf787ce2c654da99b16387ae347f51600c8dd
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: fedfbae5c333991e8cfd014cce6882e61bb1a9dc
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905172"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452212"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Java 用 ADAL から MSAL への移行ガイド
 
@@ -35,7 +36,7 @@ MSAL には、次のような利点があります。
 - ユーザーは、最高のシングル サインオン エクスペリエンスを得られます。
 - アプリケーションでは、増分同意を有効にできるほか、条件付きアクセスのサポートがより簡単になります。
 
-MSAL for java (MSAL4J) は、Microsoft ID プラットフォームで使用することをお勧めする認証ライブラリです。 ADAL4J には新しい機能は実装されません。 今後のすべての取り組みは、MSAL の向上に重点が置かれます。
+MSAL for Java は、Microsoft ID プラットフォームで使用することをお勧めする認証ライブラリです。 ADAL4J には新しい機能は実装されません。 今後のすべての取り組みは、MSAL の向上に重点が置かれます。
 
 ## <a name="differences"></a>相違点
 
@@ -43,13 +44,13 @@ MSAL for java (MSAL4J) は、Microsoft ID プラットフォームで使用す�
 
 ## <a name="scopes-not-resources"></a>リソースではなくスコープ
 
-ADAL4J はリソースのトークンを取得しますが、MSAL4J はスコープのトークンを取得します。 多くの MSAL4J クラスには、スコープ パラメーターが必要です。 このパラメーターは、要求された必要とするアクセス許可とリソースを宣言する文字列のリストです。 スコープの例については、「[Microsoft Graph のスコープ](https://docs.microsoft.com/graph/permissions-reference)」に関するページを参照してください。
+ADAL4J はリソースのトークンを取得しますが、MSAL for Java はスコープのトークンを取得します。 多くの MSAL for Java クラスには、スコープ パラメーターが必要です。 このパラメーターは、要求された必要とするアクセス許可とリソースを宣言する文字列のリストです。 スコープの例については、「[Microsoft Graph のスコープ](https://docs.microsoft.com/graph/permissions-reference)」に関するページを参照してください。
 
 ## <a name="core-classes"></a>コア クラス
 
-ADAL4J では `AuthenticationContext` クラスは、セキュリティ トークン サービス (STS) または承認サーバーへの、証明機関を介した接続を表します。 しかし、MSAL4J はクライアント アプリケーションを中心に設計されています。 これには、クライアント アプリケーションを表す、`PublicClientApplication` と `ConfidentialClientApplication` という 2 つの異なるクラスが用意されています。  後者の `ConfidentialClientApplication` は、デーモン アプリのアプリケーション ID などのシークレットを、安全に維持するように設計されたアプリケーションを表します。
+ADAL4J では `AuthenticationContext` クラスは、セキュリティ トークン サービス (STS) または承認サーバーへの、証明機関を介した接続を表します。 しかしながら、MSAL for Java はクライアント アプリケーションを中心に設計されています。 これには、クライアント アプリケーションを表す、`PublicClientApplication` と `ConfidentialClientApplication` という 2 つの異なるクラスが用意されています。  後者の `ConfidentialClientApplication` は、デーモン アプリのアプリケーション ID などのシークレットを、安全に維持するように設計されたアプリケーションを表します。
 
-次の表は、ADAL4J 関数が新しい MSAL4J 関数にどのようにマップされるかを示しています。
+次の表は、ADAL4J 関数が新しい MSAL for Java 関数にどのようにマップされるかを示しています。
 
 | ADAL4J メソッド| MSAL4J メソッド|
 |------|-------|
@@ -67,18 +68,18 @@ ADAL4J では `AuthenticationContext` クラスは、セキュリティ トー�
 
 ADAL4J はユーザーをうまく扱っていました。 ユーザーとは、単一の人間またはソフトウェア エージェントを表しますが、ユーザーはMicrosoft ID システム内で、1 つ以上のアカウントを持つことができます。 たとえば、ユーザーが複数の Azure AD、Azure AD B2C、または Microsoft の個人アカウントを持っている場合があります。
 
-MSAL4J では、`IAccount` インターフェイスを介してアカウントの概念を定義します。 これは ADAL4J からの重大な変更ですが、同じユーザーが複数のアカウントを持つことができ、場合によってはそれが異なる Azure AD ディレクトリに存在する可能性があるという事実を捉えるので、この方法が適しています。 MSAL4J は、ホーム アカウント情報が提供されるため、ゲスト シナリオでより適切な情報を提供します。
+MSAL for Java では、`IAccount` インターフェイスを介してアカウントの概念を定義します。 これは ADAL4J からの重大な変更ですが、同じユーザーが複数のアカウントを持つことができ、場合によってはそれが異なる Azure AD ディレクトリに存在する可能性があるという事実を捉えるので、この方法が適しています。 MSAL for Java は、ホーム アカウント情報が提供されるため、ゲスト シナリオでより適切な情報を提供します。
 
 ## <a name="cache-persistence"></a>キャッシュの永続化
 
 ADAL4J では、トークンのキャッシュをサポートしていませんでした。
-MSAL4J は、可能な場合に自動的に有効期限切れのトークンを更新し、ユーザーへの不要な資格情報の要求を防止することで、トークンの有効期間の管理を簡素化する、[トークン キャッシュ](msal-acquire-cache-tokens.md)を追加します。
+MSAL for Java は、可能な場合に自動的に有効期限切れのトークンを更新し、ユーザーへの不要な資格情報の要求を防止することで、トークンの有効期間の管理を簡素化する、[トークン キャッシュ](msal-acquire-cache-tokens.md)を追加します。
 
 ## <a name="common-authority"></a>共通の機関
 
 V1.0 では、`https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーは任意の Azure Active Directory (AAD) アカウントで (任意の組織に対して) サインインできます。
 
-V2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーは任意の AAD 組織、または Microsoft の個人アカウント (MSA) を使用してサインインできます。 MSAL4J で、ログインを任意の AAD アカウントに制限したい場合は、`https://login.microsoftonline.com/organizations` 機関 (これは ADAL4J と同じ動作です) を使用する必要があります。 機関を指定するには、`PublicClientApplication` クラスを作成するときに、[PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) メソッドの `authority` パラメーターを設定します。
+V2.0 で `https://login.microsoftonline.com/common` 機関を使用する場合、ユーザーは任意の AAD 組織、または Microsoft の個人アカウント (MSA) を使用してサインインできます。 MSAL for Java で、ログインを任意の AAD アカウントに制限したい場合は、`https://login.microsoftonline.com/organizations` 機関 (これは ADAL4J と同じ動作です) を使用する必要があります。 機関を指定するには、`PublicClientApplication` クラスを作成するときに、[PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) メソッドの `authority` パラメーターを設定します。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 トークンと v2.0 トークン
 
@@ -92,9 +93,9 @@ v1.0 トークンと v2.0 トークンの詳細については、[Azure Active D
 
 ADAL4J では、更新トークンが公開されました。これにより、開発者はこれをキャッシュできます。 次に、`AcquireTokenByRefreshToken()` を使用して、ユーザーが接続されていないときにユーザーの代わりにダッシュボードを更新する、実行時間の長いサービスの実装などのソリューションを有効にします。
 
-MSAL4J は、セキュリティ上の理由から更新トークンを公開しません。 代わりに、MSAL がトークンの更新を処理します。
+MSAL for Java では、セキュリティ上の理由により、更新トークンは公開されません。 代わりに、MSAL がトークンの更新を処理します。
 
-MSAL4J には、ADAL4J で取得した更新トークンを ClientApplication に移行するための API が用意されています: [acquireToken(RefreshTokenParameters)](https://javadoc.io/static/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.html#acquireToken-com.microsoft.aad.msal4j.RefreshTokenParameters-)。 この方法では、必要なスコープ (リソース) と共に、以前使用された更新トークンを提供することができます。 更新トークンは新しいものと交換され、アプリケーションで使用するためにキャッシュされます。
+MSAL for Java には、ADAL4J で取得した更新トークンを ClientApplication に移行するための API が用意されています: [acquireToken(RefreshTokenParameters)](https://javadoc.io/static/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.html#acquireToken-com.microsoft.aad.msal4j.RefreshTokenParameters-)。 この方法では、必要なスコープ (リソース) と共に、以前使用された更新トークンを提供することができます。 更新トークンは新しいものと交換され、アプリケーションで使用するためにキャッシュされます。
 
 次のコード スニペットは、機密クライアント アプリケーションでの移行コードを示しています。
 
