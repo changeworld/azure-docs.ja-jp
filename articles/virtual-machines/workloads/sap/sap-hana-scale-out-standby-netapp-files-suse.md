@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 11/21/2019
 ms.author: radeltch
-ms.openlocfilehash: 7fb7294cc6f7918b4c6a3afa9e3c9dc7f44504e1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49e7fd49e000a3d4475c60a0c58cf6a2c7455fa5
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014954"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531411"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする 
 
@@ -99,17 +99,17 @@ HANA の高可用性を実現するための 1 つの方法は、ホストの自
 ![SAP NetWeaver の高可用性の概要](./media/high-availability-guide-suse-anf/sap-hana-scale-out-standby-netapp-files-suse.png)
 
 上の図は SAP HANA ネットワークに関する推奨事項に従っており、次の 3 つのサブネットが 1 つの Azure 仮想ネットワーク内に表示されています。 
+* クライアント通信用
 * ストレージ システムとの通信用
 * HANA 内部のノード間通信用
-* クライアント通信用
 
 Azure NetApp ボリュームは、[Azure NetApp Files に委任された](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)別のサブネットにあります。  
 
 この構成例では、サブネットは次のとおりです。  
 
+  - `client` 10.23.0.0/24  
   - `storage` 10.23.2.0/24  
   - `hana` 10.23.3.0/24  
-  - `client` 10.23.0.0/24  
   - `anf` 10.23.1.0/26  
 
 ## <a name="set-up-the-azure-netapp-files-infrastructure"></a>Azure NetApp Files インフラストラクチャを設定する 
@@ -166,9 +166,6 @@ SUSE High Availability アーキテクチャ上で SAP NetWeaver 用に Azure Ne
 > [!IMPORTANT]
 > SAP HANA ワークロードにとって、待ち時間の短縮は重要です。 Microsoft の担当者と協力して、仮想マシンと Azure NetApp Files ボリュームが確実に近接してデプロイされるようにします。  
 
-> [!IMPORTANT]
-> VM 上の **sid**adm のユーザー ID と `sapsys` のグループ ID は、Azure NetApp Files の構成と一致している必要があります。 VM の ID と Azure NetApp の構成が一致しない場合、VM にマウントされている Azure NetApp ボリューム上のファイルのアクセス許可は `nobody` と表示されます。 Azure NetApp Files に[新しいシステムをオンボードする](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)ときは、必ず正しい ID を指定してください。
-
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Azure NetApp Files 上の HANA データベースのサイズ指定
 
 Azure NetApp Files ボリュームのスループットは、「[Azure NetApp Files のサービス レベル](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels)」に記載されているように、ボリューム サイズとサービス レベルの機能です。 
@@ -209,40 +206,40 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 
 ## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Azure portal を使用して Linux 仮想マシンをデプロイする
 
-最初に Azure NetApp Files ボリュームを作成する必要があります。 以下の手順を実行します。
+最初に Azure NetApp Files ボリュームを作成する必要があります。 その後、次の手順を行います。
 1. お使いの [Azure 仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)に [Azure 仮想ネットワーク サブネット](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet)を作成します。 
 1. VM をデプロイします。 
 1. 追加のネットワーク インターフェイスを作成し、対応する VM にネットワーク インターフェイスを接続します。  
 
-   各仮想マシンには、3 つの Azure 仮想ネットワーク サブネット (`storage`、`hana`、`client`) に対応する 3 つのネットワーク インターフェイスがあります。 
+   各仮想マシンには、3 つの Azure 仮想ネットワーク サブネット (`client`、`storage`、`hana`) に対応する 3 つのネットワーク インターフェイスが備わっています。 
 
    詳しくは、[複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics)方法に関するページをご覧ください。  
 
 > [!IMPORTANT]
 > SAP HANA ワークロードにとって、待ち時間の短縮は重要です。 待ち時間の短縮を実現するには、Microsoft の担当者と協力して、仮想マシンと Azure NetApp Files ボリュームが近接してデプロイされるようにします。 SAP HANA Azure NetApp Files を使用している[新しい SAP HANA システムをオンボードする](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u)ときに、必要な情報を送信します。 
  
-次の手順では、リソース グループ、Azure 仮想ネットワーク、3 つの Azure 仮想ネットワーク サブネット (`storage`、`hana`、`client`) が既に作成されていることを前提としています。 VM を展開するときに、ストレージ ネットワーク インターフェイスが VM のプライマリ インターフェイスになるように、ストレージ サブネットを選択します。 これが不可能な場合は、ストレージ サブネット ゲートウェイ経由で Azure NetApp Files の委任されたサブネットへの明示的なルートを構成します。 
+次の手順は、リソース グループ、Azure 仮想ネットワーク、3 つの Azure 仮想ネットワーク サブネット (`client`、`storage`、`hana`) が既に作成されていることを前提としています。 VM をデプロイするときに、クライアント ネットワーク インターフェイスが VM のプライマリ インターフェイスになるように、クライアント サブネットを選択します。 ストレージ サブネット ゲートウェイ経由で Azure NetApp Files の委任されたサブネットへの明示的なルートを構成する必要もあります。 
 
 > [!IMPORTANT]
 > 選択した OS が、使用している特定の VM の種類の SAP HANA に対して認定されていることを確認してください。 SAP HANA 認定 VM の種類と、その種類に対応する OS リリースの一覧については、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページをご覧ください。 一覧表示されている VM の種類の詳細をクリックすると、その種類に対して SAP HANA でサポートされている OS のリリースの完全な一覧が表示されます。  
 
 1. SAP HANA 用の可用性セットを作成します。 必ず、更新ドメインの最大数を設定してください。  
 
-2. 次のようにして、3 つの仮想マシン (**hanadb1**、**hanadb2**、**hanadb3**) を作成します  
+2. 次の手順を行って、3 つの仮想マシン (**hanadb1**、**hanadb2**、**hanadb3**) を作成します。  
 
    a. SAP HANA でサポートされている SLES4SAP イメージを、Azure ギャラリーから使用します。 この例では、SLES4SAP 12 SP4 イメージが使用されています。  
 
    b. 前に作成した SAP HANA 用の可用性セットを選択します。  
 
-   c. ストレージ Azure 仮想ネットワーク サブネットを選択します。 [高速ネットワーク](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)を選択します。  
+   c. クライアント Azure 仮想ネットワーク サブネットを選択します。 [高速ネットワーク](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)を選択します。  
 
-   仮想マシンをデプロイすると、ネットワーク インターフェイス名が自動的に生成されます。 ここでは、ストレージ Azure 仮想ネットワーク サブネットに接続されたネットワーク インターフェイスを、**hanadb1**、**hanadb2**、**hanadb3** と呼びます。 
+   仮想マシンをデプロイすると、ネットワーク インターフェイス名が自動的に生成されます。 これらの手順をわかりやすくするために、クライアント Azure 仮想ネットワーク サブネット (**hanadb1-client**、**hanadb2-client**、**hanadb3-client**) に接続されている自動的に生成されたネットワーク インターフェイスについて説明します。 
 
-3. `hana` 仮想ネットワーク サブネットに対して、仮想マシンごとに 1 つずつ、3 つのネットワーク インターフェイスを作成します (この例では、**hanadb1-hana**、**hanadb2-hana**、**hanadb3-hana**)。  
+3. `storage` 仮想ネットワーク サブネットに対して、仮想マシンごとに 1 つずつ、3 つのネットワーク インターフェイスを作成します (この例では、**hanadb1-storage**、**hanadb2-storage**、**hanadb3-storage**)。  
 
-4. `client` 仮想ネットワーク サブネットに対して、仮想マシンごとに 1 つずつ、3 つのネットワーク インターフェイスを作成します (この例では、**hanadb1-client**、**hanadb2-client**、**hanadb3-client**)。  
+4. `hana` 仮想ネットワーク サブネットに対して、仮想マシンごとに 1 つずつ、3 つのネットワーク インターフェイスを作成します (この例では、**hanadb1-hana**、**hanadb2-hana**、**hanadb3-hana**)。  
 
-5. 次のようにして、新しく作成した仮想ネットワーク インターフェイスを対応する仮想マシンに接続します。  
+5. 次の手順を行って、新しく作成した仮想ネットワーク インターフェイスを対応する仮想マシンに接続します。  
 
     a. [Azure portal](https://portal.azure.com/#home) で仮想マシンに移動します。  
 
@@ -250,7 +247,7 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 
     c. **[概要]** ペインで、 **[停止]** を選択して仮想マシンの割り当てを解除します。  
 
-    d. **[ネットワーク]** を選択してから、ネットワーク インターフェイスを接続します。 **[ネットワーク インターフェイスの接続]** ドロップダウン リストで、`hana` および `client` サブネットに対して既に作成したネットワーク インターフェイスを選択します。  
+    d. **[ネットワーク]** を選択してから、ネットワーク インターフェイスを接続します。 **[ネットワーク インターフェイスの接続]** ドロップダウン リストで、`storage` および `hana` サブネットに対して既に作成したネットワーク インターフェイスを選択します。  
     
     e. **[保存]** を選択します。 
  
@@ -258,23 +255,24 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
  
     g. 今のところ、仮想マシンは停止状態のままにしておきます。 次に、新しく接続されたすべてのネットワーク インターフェイスに対して[高速ネットワーク](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)を有効にします。  
 
-6. 以下のようにして、`hana` および `client` サブネット用の追加ネットワーク インターフェイスに対して高速ネットワークを有効にします。  
+6. 次の手順を行って、`storage` および `hana` サブネット用の追加のネットワーク インターフェイスに対して高速ネットワークを有効にします。  
 
     a. [Azure portal](https://portal.azure.com/#home) で [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) を開きます。  
 
-    b. 次のコマンドを実行して、`hana` および `client` サブネットに接続された、追加のネットワーク インターフェイスに対して高速ネットワークを有効にします。  
+    b. 次のコマンドを実行して、`storage` および `hana` サブネットに接続された、追加のネットワーク インターフェイスに対して高速ネットワークを有効にします。  
 
     <pre><code>
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-storage</b> --accelerated-networking true
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-storage</b> --accelerated-networking true
+    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-storage</b> --accelerated-networking true
+    
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-hana</b> --accelerated-networking true
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-hana</b> --accelerated-networking true
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-hana</b> --accelerated-networking true
-    
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-client</b> --accelerated-networking true
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-client</b> --accelerated-networking true
-    az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-client</b> --accelerated-networking true
+
     </code></pre>
 
-7. 次のようにして、仮想マシンを起動します。  
+7. 次の手順を行って、仮想マシンを起動します。  
 
     a. 左側のペインで、 **[Virtual Machines]** を選択します。 仮想マシン名でフィルター処理し (たとえば、**hanadb1**)、仮想マシンを選択します。  
 
@@ -288,36 +286,53 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
 * **[2]** :ノード 2 にのみ適用できます
 * **[3]** : ノード 3 にのみ適用できます
 
-次のようにして、OS の構成と準備を行います。
+次の手順を行って、OS の構成と準備を行います。
 
 1. **[A]** 仮想マシン上にホスト ファイルを維持します。 すべてのサブネットのエントリを含めます。 この例では、次のエントリが `/etc/hosts` に追加されています。  
 
     <pre><code>
     # Storage
-    10.23.2.4   hanadb1
-    10.23.2.5   hanadb2
-    10.23.2.6   hanadb3
+    10.23.2.4   hanadb1-storage
+    10.23.2.5   hanadb2-storage
+    10.23.2.6   hanadb3-storage
     # Client
-    10.23.0.5   hanadb1-client
-    10.23.0.6   hanadb2-client
-    10.23.0.7   hanadb3-client
+    10.23.0.5   hanadb1
+    10.23.0.6   hanadb2
+    10.23.0.7   hanadb3
     # Hana
     10.23.3.4   hanadb1-hana
     10.23.3.5   hanadb2-hana
     10.23.3.6   hanadb3-hana
     </code></pre>
 
-2. **[A]** DHCP とクラウドの構成設定を変更して、意図しないホスト名の変更を回避します。  
+2. **[A]** ストレージ用のネットワーク インターフェイスに対する DHCP とクラウドの構成設定を変更して、意図しないホスト名の変更を回避します。  
+
+    次の手順は、ストレージ ネットワーク インターフェイスが `eth1` であることを前提としています。 
 
     <pre><code>
     vi /etc/sysconfig/network/dhcp
-    #Change the following DHCP setting to "no"
+    # Change the following DHCP setting to "no"
     DHCLIENT_SET_HOSTNAME="no"
-    vi /etc/sysconfig/network/ifcfg-eth0
-    # Edit ifcfg-eth0 
+    vi /etc/sysconfig/network/ifcfg-<b>eth1</b>
+    # Edit ifcfg-eth1 
     #Change CLOUD_NETCONFIG_MANAGE='yes' to "no"
     CLOUD_NETCONFIG_MANAGE='no'
     </code></pre>
+
+2. **[A]** ネットワーク ルートを追加して、Azure NetApp Files への通信がストレージ ネットワーク インターフェイス経由で行われるようにします。  
+
+    次の手順は、ストレージ ネットワーク インターフェイスが `eth1` であることを前提としています。  
+
+    <pre><code>
+    vi /etc/sysconfig/network/ifroute-<b>eth1</b>
+    # Add the following routes 
+    # RouterIPforStorageNetwork - - -
+    # ANFNetwork/cidr RouterIPforStorageNetwork - -
+    <b>10.23.2.1</b> - - -
+    <b>10.23.1.0/26</b> <b>10.23.2.1</b> - -
+    </code></pre>
+
+    VM を再起動して、変更をアクティブにします。  
 
 3. **[A]** 「[NetApp AFF Systems で NFS を使用した SAP HANA の構成ガイド](https://www.netapp.com/us/media/tr-4435.pdf)」で説明されているように、NFS を使用して NetApp 上で SAP HANA を実行するために OS を準備します。 NetApp 構成設定用の構成ファイル */etc/sysctl.d/netapp-hana.conf* を作成します。  
 
@@ -387,28 +402,33 @@ Azure NetApp Files Ultra ストレージ層を使用している、この記事�
     umount /mnt/tmp
     </code></pre>
 
-3. **[A]** NFS ドメイン設定を確認します。 ドメインが **`localdomain`** として構成され、マッピングが **nobody** に設定されていることを確認します。  
+3. **[A]** NFS ドメイン設定を確認します。 ドメインが既定の Azure NetApp Files ドメイン (つまり、 **`defaultv4iddomain.com`** ) として構成され、マッピングが **nobody** に設定されていることを確認します。  
+
+    > [!IMPORTANT]
+    > Azure NetApp Files の既定のドメイン構成 ( **`defaultv4iddomain.com`** ) と一致するように、VM 上の `/etc/idmapd.conf` に NFS ドメインを設定していることを確認します。 NFS クライアント (つまり、VM) と NFS サーバー (つまり、Azure NetApp 構成) のドメイン構成が一致しない場合、VM にマウントされている Azure NetApp ボリューム上のファイルのアクセス許可は `nobody` と表示されます。  
 
     <pre><code>
-    sudo cat  /etc/idmapd.conf
+    sudo cat /etc/idmapd.conf
     # Example
     [General]
     Verbosity = 0
     Pipefs-Directory = /var/lib/nfs/rpc_pipefs
-    Domain = <b>localdomain</b>
+    Domain = <b>defaultv4iddomain.com</b>
     [Mapping]
     Nobody-User = <b>nobody</b>
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** NFSv4 ID マッピングを無効にします。 `nfs4_disable_idmapping` が配置されるディレクトリ構造を作成するには、mount コマンドを実行します。 アクセスがカーネル/ドライバー用に予約されるため、/sys/modules の下に手動でディレクトリを作成することはできなくなります。  
+4. **[A]** `nfs4_disable_idmapping` を確認します。 これは、**Y** に設定されている必要があります。`nfs4_disable_idmapping` が配置されるディレクトリ構造を作成するには、mount コマンドを実行します。 アクセスがカーネル/ドライバー用に予約されるため、/sys/modules の下に手動でディレクトリを作成することはできなくなります。  
 
     <pre><code>
+    # Check nfs4_disable_idmapping 
+    cat /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # If you need to set nfs4_disable_idmapping to Y
     mkdir /mnt/tmp
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
-    # Disable NFSv4 idmapping. 
-    echo "N" > /sys/module/nfs/parameters/nfs4_disable_idmapping
+    echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
     </code></pre>`
 
 5. **[A]** SAP HANA グループとユーザーを手動で作成します。 グループ sapsys とユーザー **hn1**adm の ID は、オンボード時に指定したものと同じ ID に設定する必要があります。 (この例では、ID は **1001** に設定されています)。ID が正しく設定されていない場合、ボリュームにアクセスすることはできません。 グループ sapsys とユーザー アカウント **hn1**adm と sapadm の ID は、すべての仮想マシンで同じである必要があります。  

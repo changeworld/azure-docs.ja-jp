@@ -64,8 +64,6 @@
           href: howto-conditional-access-policy-compliant-device.md
     - name: レガシ認証をブロックする
       href: block-legacy-authentication.md
-    - name: MFA 登録の条件付きアクセス
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: 承認済みクライアント アプリを必須にする
       href: app-based-conditional-access.md
     - name: アプリの保護ポリシーを必須にする

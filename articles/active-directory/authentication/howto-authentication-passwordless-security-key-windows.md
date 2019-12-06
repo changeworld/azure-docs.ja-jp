@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/02/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5343387da7b2027e1071b19be826e329494cdd3e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 05230e39175e71f4eec2c99cd6cbd2f44f05df30
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452937"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766363"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Windows 10 デバイスへのパスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 
@@ -56,7 +56,7 @@ ms.locfileid: "74452937"
 組織では、Windows サインインのセキュリティ キーの使用を有効にするために、組織の要件に基づいて以下の方法の 1 つまたは複数を利用することを選択できます。
 
 - [Intune を使用して有効にする](#enable-with-intune)
-   - [ターゲットとなる Intune のデプロイ](#targeted-intune-deployment)
+- [ターゲットとなる Intune のデプロイ](#targeted-intune-deployment)
 - [プロビジョニング パッケージを使用して有効にする](#enable-with-a-provisioning-package)
 
 ### <a name="enable-with-intune"></a>Intune を使用して有効にする
@@ -67,7 +67,7 @@ ms.locfileid: "74452937"
 
 サインインのセキュリティ キーの構成は、Windows Hello for Business の構成に依存しません。
 
-#### <a name="targeted-intune-deployment"></a>ターゲットとなる Intune のデプロイ
+### <a name="targeted-intune-deployment"></a>ターゲットとなる Intune のデプロイ
 
 資格情報プロバイダーを有効にするために特定のデバイス グループをターゲットにするには、Intune を介して次のカスタム設定を使用します。
 

@@ -60,9 +60,6 @@
         - name: 複合エンティティを使用して関連データをグループ化して抽出する
           href: luis-tutorial-composite-entity.md
           displayName: roles
-        - name: シンプル エンティティを使用して名前を取得する
-          href: luis-quickstart-primary-and-secondary-data.md
-          displayName: roles
     - name: アプリの改善
       items:
         - name: 不明な予測を修正する

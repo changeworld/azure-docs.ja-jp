@@ -24,8 +24,6 @@
           href: migrate-from-hub-spoke-topology.md
         - name: グローバル転送ネットワーク アーキテクチャ
           href: virtual-wan-global-transit-network-architecture.md
-        - name: Virtual WAN の Office 365 コントロール プレーン
-          href: virtual-wan-office365-overview.md
 - name: ハウツー ガイド
   items:
     - name: 仮想ネットワーク ゲートウェイを Virtual WAN に接続する

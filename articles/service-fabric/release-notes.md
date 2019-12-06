@@ -2,19 +2,19 @@
 title: Azure Service Fabric のリリース
 description: Service Fabric の最新の機能および強化に関するリリース ノートです。
 author: athinanthny
-manager: chackdan
+manager: gamonroy
 ms.author: atsenthi
-ms.date: 6/10/2019
+ms.date: 06/10/2019
 ms.topic: conceptual
 ms.service: service-fabric
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 4a681b3a09def3a7b27b603cf5201aebdbf2e4bf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 496a5babe58be4354ffb10a331d35abc8a51b04d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72386211"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186517"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -28,9 +28,41 @@ ms.locfileid: "72386211"
 
 ## <a name="whats-new-in-service-fabric"></a>Service Fabric の新機能
 
+### <a name="service-fabric-70"></a>Service Fabric 7.0
+
+Azure Service Fabric 7.0 の提供開始 Azure portal または Azure Resource Manager のデプロイを使用して、7.0 に更新できます。 休暇の時期のリリースに関するお客様のフィードバックにより、Microsoft は、自動アップグレードを受けるように設定されたクラスターの自動更新を 1 月まで開始しません。
+1 月には、標準のロールアウト手順を再開します。自動アップグレードが有効になっているクラスターは、7.0 更新プログラムの自動的な受信を開始します。 ロールアウトを開始する前に、別の発表を提供します。
+また、このポリシーが考慮されることを示すために、予定されているリリース日も更新します。 将来の[リリース スケジュール](https://github.com/Microsoft/service-fabric/#service-fabric-release-schedule)についてはこちらをご覧ください。
+ 
+これは Service Fabric の最新リリースであり、主要な機能と機能強化が組み込まれています。
+
+### <a name="key-announcements"></a>重要な発表
+ - [**アプリケーション サービスでの KeyVaultReference サポート (プレビュー)** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)[マネージド ID](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) が有効になっている Service Fabric アプリケーションは、環境変数、アプリケーション パラメーター、またはコンテナー リポジトリ資格情報として Key Vault シークレット URL を直接参照できるようになりました。 Service Fabric は、アプリケーションのマネージド ID を使用してシークレットを自動的に解決します。 
+     
+- ステートレス サービスのアップグレードの安全性の向上**:アプリケーションのアップグレード中に可用性を保証するために、使用可能と見なされる[ステートレス サービスの最小インスタンス数](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet)を定義するための新しい構成を導入しました。 以前は、すべてのサービスでこの値は 1 であり、変更できませんでした。 この新しいサービスごとの安全性チェックにより、アプリケーションのアップグレード中、クラスターのアップグレード中、Service Fabric の正常性と安全性のチェックに依存するその他のメンテナンス中に、サービスの稼働インスタンスの最小数を維持できるようになります。
+  
+- [**ユーザー サービスのリソース制限**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance#enforcing-the-resource-limits-for-user-services)ユーザーは、ノード上のユーザー サービスのリソース制限を設定して、Service Fabric システム サービスのリソース不足などのシナリオを防ぐことができます。 
+  
+- 特定の種類のレプリカの[**非常に高いサービス移動コスト**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost)。 移動コストが非常に高いレプリカは、他の方法では解決できないクラスター内での制約違反があった場合にのみ移動されます。 ”非常に高い” 移動コストの使用が妥当である状況、およびその他の考慮事項については、ドキュメントを参照してください。
+  
+-  **追加のクラスターの安全性チェック**:このリリースでは、構成可能なシード ノード クォーラム安全性チェックが導入されました。 これにより、クラスターのライフサイクルと管理のシナリオで使用できるようにする必要があるシード ノードの数をカスタマイズできます。 構成された値を下回るクラスターを取得する操作はブロックされます。 現在、既定値は常にシード ノードのクォーラムです。たとえば、7 つのシード ノードがある場合、5 つのシード ノードを下回る操作は既定でブロックされます。 この変更により、最小セーフ値 6 を作成できるようになりました。これにより、一度にダウンするシード ノードを 1 つだけにすることができます。
+   
+- [**Service Fabric Explorer でのバックアップと復元サービスの管理**](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)のサポートが追加されました。 これにより、SFX 内から次のアクティビティを直接実行できるようになります。バックアップと復元サービスの検出、バックアップ ポリシーの作成、自動バックアップの有効化、アドホック バックアップの実行、復元操作のトリガー、および既存のバックアップの参照を実行できます。
+
+- [**ReliableCollectionsMissingTypesTool**](https://github.com/hiadusum/ReliableCollectionsMissingTypesTool) の提供のお知らせ:このツールは、信頼性の高いコレクションで使用されている型が、アプリケーションのローリング アップグレード中に上位互換性と下位互換性があることを検証するのに役立ちます。 これにより、互換性のない型のためのアップグレードの失敗、データの損失、データの破損を防ぐことができます。
+
+- [**セカンダリ レプリカでの安定した読み取りの有効化**](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-configuration#configuration-names-1): 安定した読み取りは、セカンダリ レプリカの戻り値をクォーラムで確認された戻り値に限定します。
+
+さらに、このリリースには、バグ修正、サポート、信頼性とパフォーマンスの強化などの他の新機能が含まれています。 すべての変更点の一覧については、[リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)を参照してください。
+
+| リリース日 | Release | 詳細情報 |
+|---|---|---|
+| 2019 年 11 月 18 日 | [Azure Service Fabric 7.0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [リリース ノート](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
+
+
 ### <a name="service-fabric-65"></a>Service Fabric 6.5
 
-Service Fabric の最新のリリースには、サポート性、信頼性、パフォーマンスの向上、新機能、バグの修正、およびクラスターとアプリケーションのライフサイクル管理を容易にする拡張機能が含まれています。
+このリリースには、サポート性、信頼性、パフォーマンスの向上、新機能、バグの修正、およびクラスターとアプリケーションのライフサイクル管理を容易にする拡張機能が含まれています。
 
 > [!IMPORTANT]
 > Service Fabric 6.5 は、Visual Studio 2015 での Service Fabric ツールのサポートの最終リリースです。 お客様には、今後は [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) に移行することをお勧めします。

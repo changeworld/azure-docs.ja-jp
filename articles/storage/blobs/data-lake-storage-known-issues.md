@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 3ea77eb5dd8a03f877164179e3accc3a6f6d0aef
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 7fac09ff236e4bb2c63691f9dc1ad41bb49edae4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548330"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793349"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -48,14 +48,12 @@ BLOB API と Data Lake Storage Gen2 API では、同じデータを処理でき�
 
 <a id="api-scope-data-lake-client-library" />
 
-## <a name="api-scope-for-data-lake-storage-client-library-for-sdk-powershell-and-cli"></a>SDK、Powershell、CLI 用の Data Lake Storage クライアント ライブラリの API スコープ
-
-### <a name="filesystem-support-in-sdks"></a>SDK でのファイルシステムのサポート
+## <a name="filesystem-support-in-sdks"></a>SDK でのファイルシステムのサポート
 
 - .NET、Java、Python はパブリック プレビュー段階にあります。 その他の SDK は現在サポートされていません。
 - Get および Set ACL 操作は現在、再帰的ではありません。
 
-### <a name="filesystem-support-in-powershell-and-azure-cli"></a>PowerShell と Azure CLI でのファイルシステムのサポート
+## <a name="filesystem-support-in-powershell-and-azure-cli"></a>PowerShell と Azure CLI でのファイルシステムのサポート
 
 Get および Set ACL 操作は現在、再帰的ではありません。
 
@@ -77,7 +75,6 @@ Get および Set ACL 操作は現在、再帰的ではありません。
 | **診断ログ** |診断ログがサポートされています (プレビュー)。<br><br>Azure portal でのログの有効化は現在サポートされていません。 PowerShell を使用してログを有効にする方法の例を次に示します。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>` <br><br>この例に示すように、`-ServiceType` パラメーターの値として `Blob` を指定してください。 <br><br>現時点では、診断ログの表示に Azure Storage Explorer を使用できません。 ログを表示するには、AzCopy または SDK を使用してください。
 | **不変ストレージ** |まだサポートされていません <br><br>不変ストレージでは、[WORM (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) 状態でデータを格納できます。|
 | **オブジェクト レベルの階層** |クール層とアーカイブ層がサポートされています。 アーカイブ層はプレビュー段階です。 その他のすべてのアクセス層は、まだサポートされていません。 <br><br> 現在、アーカイブ アクセス層に影響するバグがいくつか存在します。  アーカイブ アクセス層のプレビューに[ここから](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)サインアップします。|
-| **Powershell と CLI のサポート** | 機能の制限あり <br><br>BLOB の操作がサポートされています。 ディレクトリの操作とアクセス制御リスト (ACL) の設定は、まだサポートされていません。 |
 | **静的な Web サイト** |まだサポートされていません <br><br>具体的には、[静的な Web サイト](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website)にファイルを提供する機能です。|
 | **サード パーティ製アプリケーション** | 制限付きサポート <br><br>REST API を使用して動作するサード パーティ製アプリケーションは、Data Lake Storage Gen2 と使用しても引き続き機能します。 <br>Blob API を呼び出すアプリケーションは動作する可能性があります。|
 |**論理的な削除** |まだサポートされていません|
