@@ -126,9 +126,6 @@
         - name: クラスター ノードを初期化する
           href: /azure/databricks/clusters/init-scripts
           maintainContext: true
-        - name: カスタム コンテナー
-          href: /azure/databricks/clusters/custom-containers
-          maintainContext: true
         - name: GPU 対応クラスター
           href: /azure/databricks/clusters/gpu
           maintainContext: true
@@ -226,9 +223,6 @@
       maintainContext: true
     - name: Data
       items:
-        - name: Databricks ファイル システム (DBFS)
-          href: /azure/databricks/data/databricks-file-system
-          maintainContext: true
         - name: データベースとテーブル
           href: /azure/databricks/data/tables
           maintainContext: true
@@ -317,6 +311,9 @@
             - name: ZIP ファイル
               href: /azure/databricks/data/data-sources/zip-files
               maintainContext: true
+        - name: Databricks ファイル システム (DBFS)
+          href: /azure/databricks/data/databricks-file-system
+          maintainContext: true
         - name: FileStore
           href: /azure/databricks/data/filestore
           maintainContext: true
@@ -829,8 +826,8 @@
             - name: TensorFlow を使用したモデル推論
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
               maintainContext: true
-            - name: モデル推論のパフォーマンス チューニング
-              href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
+            - name: 分散イメージ モデル推論のリファレンス ソリューション
+              href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
               maintainContext: true
     - name: MLflow
       items:
@@ -1066,9 +1063,6 @@
             - name: クラスター構成の概要
               href: /azure/databricks/administration-guide/clusters/index
               maintainContext: true
-            - name: コンテナー サービスを有効にする
-              href: /azure/databricks/administration-guide/clusters/container-services
-              maintainContext: true
             - name: Databricks Runtime for Genomics を有効にする
               href: /azure/databricks/administration-guide/clusters/genomics-runtime
               maintainContext: true
@@ -1137,9 +1131,6 @@
               maintainContext: true
             - name: 構成設定が既定の設定を上書きする
               href: /azure/databricks/kb/clusters/conf-overwrites-default-settings
-              maintainContext: true
-            - name: シングルコア Executor で JNI ライブラリを実行する
-              href: /azure/databricks/kb/clusters/multiple-executors-single-worker
               maintainContext: true
             - name: log4j の構成を上書きする
               href: /azure/databricks/kb/clusters/overwrite-log4j-logs
@@ -1544,6 +1535,9 @@
           items:
             - name: プラットフォームのリリース ノート
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2019 年 12 月
+              href: /azure/databricks/release-notes/product/2019/december
               maintainContext: true
             - name: 2019 年 11 月
               href: /azure/databricks/release-notes/product/2019/november
