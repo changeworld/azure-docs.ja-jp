@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: cb59fa0fe9094943dfc942d1d6e664891996c9e3
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.openlocfilehash: f5b47a5ae9d13711233d0e4852ec487af7344622
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569293"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173790"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>メトリックを使用した Azure Data Explorer のパフォーマンス、正常性、および使用状況の監視
 
@@ -24,7 +24,7 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 * [クラスターとデータベース](create-cluster-database-portal.md)を作成します。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -67,5 +67,6 @@ Azure Data Explorer クラスターで、 **[メトリック]** を選択して 
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)
+* [チュートリアル:Azure Data Explorer で監視データを取り込んでクエリを実行する](/azure/data-explorer/ingest-data-no-code)
+* [診断ログを使用して Azure Data Explorer インジェスト操作を監視する](/azure/data-explorer/using-diagnostic-logs)
+* [クイック スタート:Azure Data Explorer でデータのクエリを実行する](web-query-data.md)

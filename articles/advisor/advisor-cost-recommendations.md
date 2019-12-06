@@ -3,17 +3,17 @@ title: Azure Advisor を使用してサービスのコストを削減する | Mi
 description: Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: saket-ms
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 78429001b855e3347e72fbb0f0d4d3171731a8e2
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.author: sagupt
+ms.openlocfilehash: 9f074c8077f41392fa9d45022a6a7a537964afa9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703029"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74180585"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -63,6 +63,7 @@ Azure Advisor は、繰り返し障害が発生している Azure Data Factory �
 Advisor の推奨事項の詳細については、以下を参照してください。
 * [Advisor 入門](advisor-overview.md)
 * [作業の開始](advisor-get-started.md)
-* [Advisor のパフォーマンスに関する推奨事項](advisor-cost-recommendations.md)
-* [Advisor の高可用性に関する推奨事項](advisor-cost-recommendations.md)
-* [Advisor のセキュリティに関する推奨事項](advisor-cost-recommendations.md)
+* [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
+* [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
+* [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
+* [Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)

@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: 8fe85685a41e05b5132157453a6dcbc81c2399af
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dfa53acaf392e225873a40b05b8517de2f9780dc
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825764"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169573"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -102,6 +102,11 @@ HTTP 200 OK 応答状態コードを返す必要があります。 HTTP 202 Acce
 
 ### <a name="event-delivery-security"></a>イベント配信のセキュリティ
 
+#### <a name="azure-ad"></a>Azure AD
+
+Event Grid の認証に Azure Active Directory を使用することで Webhook エンドポイントを保護し、エンドポイントにイベントを発行できます。 Azure Active Directory アプリケーションを作成したり、アプリケーションで Event Grid を認証するためのロールとサービス プリンシプルを作成したり、Azure AD アプリケーションを使用するようにイベント サブスクリプションを構成したりする必要があります。 [Event Grid で AAD を構成する方法について学習してください](secure-webhook-delivery.md)。
+
+#### <a name="query-parameters"></a>クエリ パラメーター
 イベント サブスクリプションを作成するときに、webhook URL にクエリ パラメーターを追加することで、webhook エンドポイントをセキュリティで保護できます。 これらのクエリ パラメーターのいずれかを、[アクセス トークン](https://en.wikipedia.org/wiki/Access_token)などのシークレットに設定します。 Webhook はシークレットを使用して、イベントが有効なアクセス許可を持つ Event Grid からのものであることを認識できます。 Event Grid には、webhook へのすべてのイベント配信にこれらのクエリ パラメーターが含められます。
 
 イベント サブスクリプションを編集すると、Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) で [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) パラメーターを使用した場合を除き、クエリ パラメーターが表示されなくなるか、返されなくなります。

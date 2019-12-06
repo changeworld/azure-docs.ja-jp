@@ -1,6 +1,6 @@
 ---
-title: マイ アカウント ポータルで組織を管理する - Azure AD
-description: マイ アカウント ポータルの [組織] ページから自分の組織を表示および脱退する方法。
+title: マイ アカウント ポータルから組織を管理する - Azure AD
+description: マイ アカウント ポータルの [組織] ページから、ご利用の職場または学校アカウントに接続されている組織を表示および脱退する方法。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b81ec4996ae91714b442dd2e62a0bc45c6bfd39
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d0b8a5a8ac4132c998567f956f3171db06a9ca53
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820412"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231861"
 ---
-# <a name="manage-your-organizations-from-the-my-account-portal"></a>マイ アカウント ポータルから組織を管理する
+# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>[組織] ページから、ご利用の職場または学校アカウントに接続されている組織を管理する
 
 **マイ アカウント** ポータルの **[組織]** ページで、ご自分の組織を管理できます。
 
@@ -67,4 +67,4 @@ ms.locfileid: "73820412"
 
 - ご自分の[サインイン アクティビティ](my-account-portal-sign-ins-page.md)を表示します。
 
-- 組織で[プライバシー関連データを使用する](my-account-portal-privacy-page.md)方法を表示します。
+- 組織での[プライバシー関連データの使用](my-account-portal-privacy-page.md)方法を表示します。

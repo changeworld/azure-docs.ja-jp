@@ -1,19 +1,15 @@
 ---
-title: Azure Backup サービスで Azure VM のバックアップを管理および監視する
+title: Azure VM のバックアップを管理および監視する
 description: Azure Backup サービスを使用して Azure VM のバックアップを管理および監視する方法について説明します。
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: 800acb622a54ae922300d4c1b188f7ec19f5a95f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c4c4341286b7ee4f382192d291e08c83ff64994
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074249"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172973"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する
 
