@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 6b9d5eb3adb8cad963ec513d327d237e73f94878
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534855"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803735"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -363,7 +363,7 @@ Azure AD のサインイン アクティビティ、監査とリスク イベン
 - [Azure AD Reporting API と証明書を使ってデータを取得する](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-with-certificates)
 - [Azure Active Directory Identity Protection 用の Microsoft Graph](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 - [Office 365 管理アクティビティ API リファレンス](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference)
-- [Azure Active Directory Power BI コンテンツ パックの使用方法](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-power-bi-content-pack-how-to)
+- [Azure Active Directory Power BI コンテンツ パックの使用方法](../reports-monitoring/howto-use-azure-monitor-workbooks.md)
 
 ## <a name="summary"></a>まとめ
 

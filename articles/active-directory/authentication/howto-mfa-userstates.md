@@ -1,22 +1,22 @@
 ---
-title: Azure Multi-Factor Authentication のユーザーの状態 - Azure Active Directory
-description: Azure Multi-Factor Authentication でユーザーの状態を確認してください。
+title: ユーザーごとの多要素認証 - Azure Active Directory
+description: Azure Multi-Factor Authentication でユーザーの状態を変更することで MFA を有効にします。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2d22c4a7a8b95f5a200518a3c46fc33f55c66a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 258675a343387eb6930cd3511bf885bf510050c6
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569862"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404207"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
 
@@ -56,7 +56,7 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 ユーザーの状態を表示および管理できるページにアクセスするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのユーザー]** に移動します。
+2. *Azure Active Directory* を検索して選択します。 **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
 3. **[Multi-Factor Authentication]** を選択します。
    ![Select Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
 4. 新しいページが開き、ユーザーの状態が表示されます。

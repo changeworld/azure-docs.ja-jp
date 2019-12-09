@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ee7a03f27ab03feadedb7ac8441675a90468655c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534923"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807410"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>計画メンテナンスの通知の処理
 
@@ -80,7 +80,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 **A:** 可用性セットまたは仮想マシン スケール セットにデプロイされた仮想マシンには、更新ドメイン (UD) の概念があります。 メンテナンスを実行するときに、Azure では UD の制約が遵守され、(同じ可用性セット内の) 別の UD の仮想マシンは再起動されません。  また、Azure は仮想マシンの次のグループに移行する前に少なくとも 30 分待機します。 
 
-高可用性の詳細については、[Azure の仮想マシンの可用性](/linux/availability.md)に関するページを参照してください。
+高可用性の詳細については、[Azure の仮想マシンの可用性](./linux/availability.md)に関するページを参照してください。
 
 **Q:計画メンテナンスに関する通知を受け取るにはどうすればよいですか?**
 
@@ -92,7 +92,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 **Q:仮想マシンが影響を受けるタイミングを正確に把握する方法はありますか?**
 
-**A:** スケジュールを設定するときに、数日間の時間枠が設けられています。 ただし、この時間枠内でのサーバー (および VM) の正確な優先順位付けは不明です。 VM の正確な時間を把握したいお客様は、仮想マシン内から[スケジュールされたイベント](/linux/scheduled-events.md)とクエリを使用し、VM が再起動される 15 分前に通知を受け取ることができます。
+**A:** スケジュールを設定するときに、数日間の時間枠が設けられています。 ただし、この時間枠内でのサーバー (および VM) の正確な優先順位付けは不明です。 VM の正確な時間を把握したいお客様は、仮想マシン内から[スケジュールされたイベント](./linux/scheduled-events.md)とクエリを使用し、VM が再起動される 15 分前に通知を受け取ることができます。
 
 **Q:仮想マシンの再起動にはどれくらいの時間がかかりますか?**
 

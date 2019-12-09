@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df895f99b64d30506bc9457fb5bdc54a2182b5fe
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f6fafb2d4d363ee0d01d5bd9f18a1294ae8110b7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012627"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327698"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights エクスプローラー
 
@@ -57,44 +57,44 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
 1. Azure Cloud アイコンをクリックすると、Azure Portal の環境が表示されます。
 
-   [![Time Series Insights 環境](media/time-series-insights-explorer/explorer1.png)](media/time-series-insights-explorer/explorer1.png#lightbox)
+   [![Time Series Insights 環境の選択](media/time-series-insights-explorer/tsi-ga-explorer-environments.png)](media/time-series-insights-explorer/tsi-ga-explorer-environments.png#lightbox)
 
 1. 次に、選択した期間内のすべてのイベントの数を示すグラフが表示されます。 ここでは多くのことを制御できます。
 
     - **期間編集パネル**: 期間のスペースで環境に対するクエリを実行します。 これは画面の左側にあります。
-      - **[メジャー]** :このドロップダウン リストには、すべての数値列 (**Double**) が表示されます。
-      - **分割基準**:このドロップダウン リストには、カテゴリ列 (**String**) が表示されます。
-      - **[メジャー]** の横にあるコントロール パネルから、ステップ補間を有効にしたり、最小値と最大値を表示したり、Y 軸を調整したりできます。 また、データの数、平均、または合計のいずれを表示するかを調整することもできます。
-      - 最大 5 つの期間を追加して同じ X 軸に表示できます。 **[Copy-down] (コピー ダウン)** ボタンを使用して期間を追加するか、または **[追加]** を選択して新しい期間を追加します。
+      - **[MEASURE]\(メジャー\)** :このドロップダウン リストには、すべての数値列 (**Double**) が表示されます。
+      - **[SPLIT BY]\(分割基準\)** :このドロップダウン リストには、カテゴリ列 (**String**) が表示されます。
+      - **[MEASURE]\(メジャー\)** の横にあるコントロール パネルから、ステップ補間を有効にしたり、最小値と最大値を表示したり、Y 軸を調整したりできます。 また、データの数、平均、または合計のいずれを表示するかを調整することもできます。
+      - 最大 5 つの期間を追加して同じ X 軸に表示できます。 新しい期間を追加する場合は **[追加]** を選択し、既存の期間のコピーを追加する場合は **[この期間の複製]** ボタンを使用します。
 
-        [![期間編集パネル](media/time-series-insights-explorer/explorer2.png)](media/time-series-insights-explorer/explorer2.png#lightbox)
+        [![期間の選択、フィルター処理、およびクエリ パネル](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png)](media/time-series-insights-explorer/tsi-ga-explorer-add-or-clone.png#lightbox)
 
       - **[述語]** :次の表に示されているオペランドのセットを使用してイベントをすばやくフィルター処理するには、述語を使用します。 選択またはクリックして検索を実行すると、その検索に基づいて述語が自動的に更新されます。 サポートされるオペランドの型には以下が含まれます。
 
          |Operation  |サポートされている型  |メモ  |
          |---------|---------|---------|
-         |`<`、`>`、`<=`, `>=`     |  Double、DateTime、TimeSpan       |         |
-         |`=`、`!=`、`<>`     | String、Bool、Double、DateTime、TimeSpan、NULL        |         |
-         |IN     | String、Bool、Double、DateTime、TimeSpan、NULL        |  すべてのオペランドは同じ型か NULL 定数である必要があります。        |
-         |HAS     | string        |  右側には定数文字列リテラルのみが許可されます。 空の文字列や NULL は許可されません。       |
+         |**<** 、 **>** 、 **<=** 、 **>=**    |  **Double**、**DateTime**、**TimeSpan**       |         |
+         |**=** 、 **!=** 、 **<>**     | **String**、**Bool**、**Double**、**DateTime**、**TimeSpan**、**NULL**        |         |
+         |**IN**     | **String**、**Bool**、**Double**、**DateTime**、**TimeSpan**、**NULL**        |  すべてのオペランドは同じ型か **NULL** 定数である必要があります。        |
+         |**HAS**     | **文字列**        |  右側には定数文字列リテラルのみが許可されます。 空の文字列や **NULL** は許可されません。       |
 
       - **クエリの例**
 
-         [![クエリの例](media/time-series-insights-explorer/explorer9.png)](media/time-series-insights-explorer/explorer9.png#lightbox)
+         [![GA クエリの例](media/time-series-insights-explorer/tsi-ga-example-queries.png)](media/time-series-insights-explorer/tsi-ga-example-queries.png#lightbox)
 
 1. **間隔サイズ** スライダー ツールを使用すると、同じ期間にわたる間隔を拡大および縮小できます。 このスライダーにより、滑らかな傾向を示す大きな時間スライスから、ミリ秒単位の小さなスライスまでの動きのより正確な制御が可能になるため、きめ細かな高解像度のデータ片を表示できるようになります。 このスライダーの既定の開始点は、解像度、クエリ速度、および細分性のバランスがとれた、選択されたデータの最適なビューとして設定されます。
 
 1. **タイム ブラシ** ツールにより、ある期間から別の期間への移動が簡単になります。
 
-1. 現在のクエリを保存し、それを環境の他のユーザーと共有するには、 **[保存]** コマンドを使用します。 **[開く]** を使用すると、保存されたすべてのクエリと、アクセスできる環境内の他のユーザーのすべての共有クエリを表示できます。
+1. 現在のクエリを保存し、それを環境の他のユーザーと共有するには、 **[保存]** アイコンを選択します。 **[開く]** アイコンを選択すると、保存されたすべてのクエリと、アクセスできる環境内の他のユーザーのすべての共有クエリを表示できます。
 
-   [![クエリ](media/time-series-insights-explorer/explorer3.png)](media/time-series-insights-explorer/explorer3.png#lightbox)
+   [![クエリ](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png)](media/time-series-insights-explorer/tsi-ga-explorer-saved-queries.png#lightbox)
 
 ## <a name="visualize-data"></a>データの視覚化
 
 1. 最大 4 つの固有のクエリを同時に表示するには、**パースペクティブ ビュー** ツールを使用します。 **[Perspective View] (パースペクティブ ビュー)** ボタンは、グラフの右上隅にあります。
 
-   [![パースペクティブ ビュー](media/time-series-insights-explorer/explorer4.png)](media/time-series-insights-explorer/explorer4.png#lightbox)
+   [![[パースペクティブ] ペインに追加するクエリの選択](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png)](media/time-series-insights-explorer/tsi-ga-explorer-perspective-panes.png#lightbox)
 
 1. グラフを表示してデータを視覚的に調査し、**グラフ** ツールを使用します。
 
@@ -104,22 +104,22 @@ Time Series Insights エクスプローラーを使用するための前提条�
     - グラフの左にあるフィルター領域では、表示されているすべてのデータ系列を確認し、値または名前で並べ替えることができます。 また、すべてのデータ系列、またはピン留めされた系列やピン留めされていない系列を表示することもできます。 1 つのデータ系列を選択してその系列を別の列で分割したり、系列を新しい期間として追加したり、選択された系列のみを表示したり、選択された系列を除外したり、その系列をピン留めしたり、選択された系列のイベントを調査したりできます。
     - 複数の期間を同時に表示する場合は、あるデータ系列に関する追加データを積み重ねたり、積み重ねを解除したり、表示したり、すべての期間にわたって同じ Y 軸を使用したりできます。 グラフの右上隅にあるボタンを使用します。
 
-    [![グラフ ツール](media/time-series-insights-explorer/explorer5.png)](media/time-series-insights-explorer/explorer5.png#lightbox)
+    [![グラフ ツールの右上隅のオプション設定](media/time-series-insights-explorer/tsi-ga-example-chart-options.png)](media/time-series-insights-explorer/tsi-ga-example-chart-options.png#lightbox)
 
 1. 特定のクエリ内の固有のデータ系列や異常なデータ系列をすばやく見つけるには、**ヒートマップ**を使用します。 ヒートマップとして視覚化できるのは 1 つの検索期間だけです。
 
-    [![ヒートマップ](media/time-series-insights-explorer/explorer6.png)](media/time-series-insights-explorer/explorer6.png#lightbox)
+    [![GA エクスプローラー ヒートマップのグラフ作成](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png)](media/time-series-insights-explorer/tsi-ga-example-heatmap-charting.png#lightbox)
 
 1. 選択または右クリックしてイベントを調査する場合は、 **[イベント]** パネルが使用可能になります。 ここでは、すべての未加工のイベントを表示したり、イベントを JSON または CSV ファイルとしてエクスポートしたりできます。 Time Series Insights により、すべての生データが格納されます。
 
-    [![イベント](media/time-series-insights-explorer/explorer7.png)](media/time-series-insights-explorer/explorer7.png#lightbox)
+    [![イベント](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png)](media/time-series-insights-explorer/tsi-ga-explorer-events-panel.png#lightbox)
 
 1. イベントを調査した後に **[統計]** タブを選択して、パターンと列の統計を公開します。
 
     - **[パターン]** : この機能は、選択されたデータ リージョン内の最も統計的に有意なパターンを予防的に表面化します。 どのようなパターンに最も多くの時間やエネルギーが必要かを把握するために数千のイベントを調べる必要はありません。 Time Series Insights を使用すると、これらの統計的に有意なパターンに直接移動して、引き続き分析を実行できます。 この機能は、履歴データの事後分析にも役立ちます。
     - **[列の統計]** :列の統計では、選択された期間にわたる選択されたデータ系列の各列のデータを分類するグラフやテーブルが提供されます。
 
-      [![統計](media/time-series-insights-explorer/explorer8.png)](media/time-series-insights-explorer/explorer8.png#lightbox)
+      [![列の統計のグラフ作成とオプション](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png)](media/time-series-insights-explorer/tsi-ga-explorer-stat-column.png#lightbox)
 
 ここまで、Time Series Insights エクスプローラー Web アプリ内で使用できるさまざまな機能やオプションを見てきました。
 

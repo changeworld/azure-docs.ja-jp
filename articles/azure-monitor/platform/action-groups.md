@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a0b0df9110f062b5f9c23840cb21308b634c9c81
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 6b3d1ff76d4f7611da8e08dd4ce42293c805978e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898151"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423854"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -32,10 +32,8 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 ## <a name="create-an-action-group-by-using-the-azure-portal"></a>Azure Portal を使用したアクション グループの作成
 
-1. [Azure Portal](https://portal.azure.com) で、 **[モニター]** を選択します。 **[モニター]** ウィンドウでは、すべての監視設定とデータが 1 つのビューにまとめられています。
+1. [Azure portal](https://portal.azure.com) で、 **[モニター]** を検索して選択します。 **[モニター]** ウィンドウでは、すべての監視設定とデータが 1 つのビューにまとめられています。
 
-    ![[モニター] サービス](./media/action-groups/home-monitor.png)
-    
 1. **[アラート]** 、 **[アクションの管理]** の順に選択します。
 
     ![[アクションの管理] ボタン](./media/action-groups/manage-action-groups.png)
@@ -54,7 +52,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 1. アクションの一覧を定義します。 アクションごとに次の内容を指定します。
 
-    1. **[名前]** :このアクションの一意識別子を入力します。
+    1. **Name**:このアクションの一意識別子を入力します。
 
     1. **アクションの種類**:電子メール/SMS/プッシュ/音声、ロジック アプリ、Webhook、ITSM、または Automation Runbook を選択します。
 

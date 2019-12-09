@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7b46b1108246f0b83fcfce69844d19d01b1994c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 56c2d96e6e4a5900770aaefcabb424eddb1cbde6
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665644"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531389"
 ---
 # <a name="what-are-wrangling-data-flows"></a>ラングリング データ フローとは
 
@@ -37,6 +37,30 @@ Azure Data Factory のラングリング データ フローを使用すると�
 ### <a name="data-validation"></a>データ検証
 
 コードを使用せずにデータを視覚的にスキャンして、外れ値や異常を除外し、データを高速分析用に整形することができます。
+
+## <a name="supported-sources"></a>サポートされているソース
+
+| コネクタ | データ形式 | 認証の種類 |
+| -- | -- | --|
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | アカウント キー |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | サービス プリンシパル |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | アカウント キー、サービス プリンシパル |
+| [Azure SQL Database](connector-azure-sql-database.md) | - | SQL 認証 |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL 認証 |
+
+## <a name="the-mashup-editor"></a>マッシュアップ エディター
+
+ラングリング データ フローを作成する場合、すべてのソース データがデータセット クエリになり、**ADFResource** フォルダーに配置されます。 既定では、UserQuery は最初のデータセット クエリを指します。 データセット クエリに対する変更はサポートされておらず、永続化もされないため、すべての変換は UserQuery で実行される必要があります。 クエリの名前変更、追加、削除は、現在サポートされていません。
+
+![ラングリング](media/wrangling-data-flow/editor.png)
+
+現時点では、Power Query M 関数は、作成中に利用可能であっても、そのすべてがデータ ラングリングでサポートされているわけではありません。 ラングリング データ フローを構築しているときに、関数がサポートされていない場合は、次のエラー メッセージが表示されます。
+
+`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+
+サポートされている変換の詳細については、[ラングリング データ フローの関数](wrangling-data-flow-functions.md)に関するページを参照してください。
+
+現在、ラングリング データ フローでは、1 つのシンクへの書き込みのみがサポートされています。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: ee68400d000ca823816c8efc6bcbc224d1388832
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082994"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284829"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Azure Cloud Shell でファイルを永続化する
 Cloud Shell では Azure File ストレージを使用してセッション間でファイルを維持します。 Cloud Shell の初回起動時に、セッション間でファイルを維持するために新しいまたは既存のファイル共有を関連付けることを求められます。
@@ -38,9 +38,6 @@ Cloud Shell では Azure File ストレージを使用してセッション間�
 
 ファイル共有は `clouddrive` ディレクトリに `$Home` という名前でマウントされます。 これは 1 度限りのアクションであり、ファイル共有は以降のセッションで自動的にマウントされます。 
 
-> [!NOTE]
-> セキュリティのために、各ユーザーが自分のストレージ アカウントをプロビジョニングする必要があります。  ロールベースのアクセス制御 (RBAC) では、ユーザーはストレージ アカウント レベルで共同作成者以上のアクセス権を持つ必要があります。
-
 また、5 GB のイメージを含むファイル共有が作成され、これによって `$Home` ディレクトリに自動的にデータが維持されます。 これは、Bash と PowerShell の両方に適用されます。
 
 ## <a name="use-existing-resources"></a>既存のリソースの使用
@@ -54,7 +51,14 @@ Cloud Shell では Azure File ストレージを使用してセッション間�
 
 ![リソース グループ設定](media/persisting-shell-storage/advanced-storage.png)
 
-### <a name="supported-storage-regions"></a>サポートされているストレージ リージョン
+## <a name="securing-storage-access"></a>ストレージ アクセスのセキュリティ保護
+セキュリティのために、各ユーザーが自分のストレージ アカウントをプロビジョニングする必要があります。  ロールベースのアクセス制御 (RBAC) では、ユーザーはストレージ アカウント レベルで共同作成者以上のアクセス権を持つ必要があります。
+
+Cloud Shell では、指定されたサブスクリプション内のストレージ アカウントで Azure ファイル共有が使用されます。 アクセス許可が継承されるため、サブスクリプションに対する十分なアクセス権を持つユーザーは、サブスクリプションに含まれるすべてのストレージ アカウントとファイル共有にアクセスできます。
+
+ユーザーは、ストレージ アカウントまたはサブスクリプション レベルでアクセス許可を設定することによって、各自のファイルへのアクセスをロックダウンする必要があります。
+
+## <a name="supported-storage-regions"></a>サポートされているストレージ リージョン
 マウント先の Cloud Shell マシンと同じリージョンに、関連付けられた Azure ストレージ アカウントが存在する必要があります。 現在のリージョンを確認するには、Bash で `env` を実行し、変数 `ACC_LOCATION` を見つけます。 ファイル共有には、`$Home` ディレクトリの永続化に使用できる 5 GB のイメージが割り当てられます。
 
 Cloud Shell マシンは、次の各リージョンに存在します。
@@ -67,8 +71,6 @@ Cloud Shell マシンは、次の各リージョンに存在します。
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Azure リソース ポリシーによるリソース作成の制限
 Cloud Shell で作成したストレージ アカウントは `ms-resource-usage:azure-cloud-shell` でタグ付けされます。 Cloud Shell からストレージ アカウントを作成できないようにするには、この固有のタグによってトリガーされる[タグの Azure リソース ポリシー](../azure-policy/json-samples.md)を作成します。
-
-
 
 ## <a name="how-cloud-shell-storage-works"></a>Cloud Shell のストレージのしくみ 
 Cloud Shell は、次の両方の方法を使用してファイルを永続化します。 

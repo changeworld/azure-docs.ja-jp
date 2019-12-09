@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: shants
-ms.openlocfilehash: 8e522b49c53dd40a4438755520481383984c1e01
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 45dba8de8ef735bdb9df102ac367e6a1653bf481
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534947"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807087"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンのメンテナンス
 
@@ -29,7 +29,7 @@ Azure では、定期的にそのプラットフォームを更新して、仮�
 
 このページでは、2 種類のメンテナンスが Azure でどのように実行されるかについて説明します。 計画外のイベント (停止) の詳細については、 [Windows 向けの VM の可用性の管理](./windows/manage-availability.md)に関する記事または [Linux](./linux/manage-availability.md) 向けの該当する記事をご覧ください。
 
-VM 内で、[Linux](/linux/scheduled-events.md) または [Windows 向けの Scheduled Events を使用](/windows/scheduled-events.md)して、今後のメンテナンスに関する通知を受け取ることができます。
+VM 内で、[Linux](./linux/scheduled-events.md) または [Windows 向けの Scheduled Events を使用](./windows/scheduled-events.md)して、今後のメンテナンスに関する通知を受け取ることができます。
 
 
 
@@ -43,7 +43,7 @@ VM 内で、[Linux](/linux/scheduled-events.md) または [Windows 向けの Sch
 
 再起動を必要としないメンテナンス操作は、一度に 1 つの障害ドメインに適用されます。 それらは、警告の正常性シグナルを受信した場合、停止します。 
 
-こうした種類の更新が、一部のアプリケーションに影響を与える可能性があります。 VM を別のホストにライブ移行する場合、影響を受けやすい一部のワークロードでは、VM の一時停止に至るまでの数分間にわずかなパフォーマンスの低下が見られることがあります。 VM のメンテナンスに対する準備をして Azure のメンテナンスの影響を減らすには、そのようなアプリケーションに [Linux](/linux/scheduled-events.md) または [Windows 向けの Scheduled Events を使用](/windows/scheduled-events.md)してみてください。 
+こうした種類の更新が、一部のアプリケーションに影響を与える可能性があります。 VM を別のホストにライブ移行する場合、影響を受けやすい一部のワークロードでは、VM の一時停止に至るまでの数分間にわずかなパフォーマンスの低下が見られることがあります。 VM のメンテナンスに対する準備をして Azure のメンテナンスの影響を減らすには、そのようなアプリケーションに [Linux](./linux/scheduled-events.md) または [Windows 向けの Scheduled Events を使用](./windows/scheduled-events.md)してみてください。 
 
 また、再起動を必要としないメンテナンスの管理に役立つメンテナンス管理機能 (パブリック プレビュー段階) もあります。 [Azure Dedicated Host](./linux/dedicated-hosts.md) または[分離された VM](../security/fundamentals/isolation-choices.md) を使用している必要があります。 メンテナンス管理では、プラットフォーム更新をスキップし、35 日間のローリング期間内の都合のよいときに、それらの更新を適用することを選択できます。 詳細については、[メンテナンス管理と Azure CLI を使用した更新の制御](maintenance-control-cli.md)に関するページを参照してください。
 

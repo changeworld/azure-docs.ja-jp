@@ -4,15 +4,15 @@ description: この記事では、大きなファイル共有を有効化して�
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 00db5905c008644bc21704179363849756fa7dcc
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 34b8af56a8f2f108b96ca07fa73f90bb9eb5bf13
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72518163"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422733"
 ---
 # <a name="how-to-enable-and-create-large-file-shares"></a>大きなファイル共有を有効化して作成する方法
 
@@ -22,13 +22,17 @@ Standard ファイル共有を使用して 100 TiB までスケールアップ�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+- Azure CLI を使用する場合は、[最新バージョンがインストールされている](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)ことを確認してください。
+- Azure PowerShell を使用する場合は、[最新バージョンがインストールされている](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)ことを確認してください。
 
 ## <a name="restrictions"></a>制限
 
 大きなファイル共有が有効になっているアカウントでは、LRS または ZRS がサポートされます。 現時点では、大きなファイル共有が有効になっているアカウントは、GZRS、GRS、RA-GRS をサポートしていません。 アカウントで大きなファイル共有を有効にするプロセスは元に戻せません。有効にすると、アカウントを GZRS、GRS、または RA-GRS に変換することはできません。
 
 ## <a name="create-a-new-storage-account"></a>新しいストレージ アカウントの作成
+
+### <a name="portal"></a>ポータル
 
 [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -58,7 +62,32 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **作成** を選択します。
 
+
+### <a name="cli"></a>CLI
+
+最初に、この機能を有効にできるように、[最新バージョンがインストールされている](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)ことを確認します。
+
+大きなファイル共有が有効なストレージ アカウントを作成するには、`<yourStorageAccountName>`、`<yourResourceGroup>`、および `<yourDesiredRegion>` を実際の値に置き換えてから、次のコマンドを使用します。
+
+```azurecli-interactive
+## This command creates a large file share enabled account, it will not support GZRS, GRS, or RA-GRS
+az storage account create –name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> –sku Standard_LRS --kind StorageV2 –enable-large-file-share
+```
+
+### <a name="powershell"></a>PowerShell
+
+最初に、この機能を有効にできるように、[最新バージョンがインストールされている](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0)ことを確認します。
+
+大きなファイル共有が有効なストレージ アカウントを作成するには、`<yourStorageAccountName>`、`<yourResourceGroup>`、および `<yourDesiredRegion>` を実際の値に置き換えてから、次のコマンドを使用します。
+
+```PowerShell
+## This command creates a large file share enabled account, it will not support GZRS, GRS, or RA-GRS
+New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
+```
+
 ## <a name="enable-on-existing-account"></a>既存のアカウントで有効にする
+
+### <a name="portal"></a>ポータル
 
 既存のアカウントで大きなファイル共有を有効にすることもできます。 これを行うと、アカウントは GZRS、GRS、または RA-GRS に変換できなくなります。 この選択は、このアカウントで元に戻すことはできません。
 
@@ -71,9 +100,31 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 これで、大きなファイル共有をストレージ アカウントで有効にしました。
 
-次のエラー メッセージが表示される場合:"このアカウントで大きなファイル共有はまだ利用できません。" 当該リージョンがロール アウトの完了中である可能性があるため、しばらく待つか、緊急の必要性がある場合は、サポートにお問い合わせください。
+次のエラー メッセージが表示される場合:"このアカウントで大きなファイル共有はまだ利用できません。" リージョンでロール アウトが進行中である可能性があるため、しばらく待つか、緊急に必要としている場合はサポートにお問い合わせください。
+
+### <a name="cli"></a>CLI
+
+既存のアカウントで大きなァイル共有を有効にできます。 これを行うと、アカウントは GZRS、GRS、または RA-GRS に変換できなくなります。 この選択は、このアカウントで元に戻すことはできません。
+
+次のコマンドで `<yourStorageAccountName>` と `<yourResourceGroup>` を置き換え、それを使用して既存のアカウントで大きなファイル共有を有効にします。
+
+```azurecli-interactive
+az storage account update –name <yourStorageAccountName> -g <yourResourceGroup> –enable-large-file-share
+```
+
+### <a name="powershell"></a>PowerShell
+
+既存のアカウントで大きなァイル共有を有効にできます。 これを行うと、アカウントは GZRS、GRS、または RA-GRS に変換できなくなります。 この選択は、このアカウントで元に戻すことはできません。
+
+次のコマンドで `<yourStorageAccountName>` と `<yourResourceGroup>` を置き換え、それを使用して既存のアカウントで大きなファイル共有を有効にします。
+
+```PowerShell
+Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -EnableLargeFileShare
+```
 
 ## <a name="create-a-large-file-share"></a>大きなファイル共有の作成
+
+### <a name="portal"></a>ポータル
 
 大きなファイル共有の作成は、Standard ファイル共有の作成とほぼ同じです。 主な違いは、クォータを最大 100 TiB に設定できることです。
 
@@ -83,7 +134,30 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![large-file-shares-create-share.png](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
+### <a name="cli"></a>CLI
+
+ストレージ アカウントで大きなファイル共有を有効にすると、そのアカウントでのファイル共有をより高いクォータで作成できます。 次のコマンドの `<yourStorageAccountName>`、`<yourStorageAccountKey>`、および `<yourFileShareName>` を実際の値に置き換えた後、それを使用して大きなファイル共有を作成できます。
+
+```azurecli-interactive
+az storage share create --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName>
+```
+
+### <a name="powershell"></a>PowerShell
+
+ストレージ アカウントで大きなファイル共有を有効にすると、そのアカウントでのファイル共有をより高いクォータで作成できます。 次のコマンドの `<YourStorageAccountName>`、`<YourStorageAccountKey>`、および `<YourStorageAccountFileShareName>` を実際の値に置き換えた後、それを使用して大きなファイル共有を作成できます。
+
+```PowerShell
+##Config
+$storageAccountName = "<YourStorageAccountName>"
+$storageAccountKey = "<YourStorageAccountKey>"
+$shareName="<YourStorageAccountFileShareName>"
+$ctx = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+New-AzStorageShare -Name $shareName -Context $ctx
+```
+
 ## <a name="expand-existing-file-shares"></a>既存のファイル共有の拡張
+
+### <a name="portal"></a>ポータル
 
 ストレージ アカウントで大きなファイル共有を有効にすると、既存の共有をより高いクォータに拡張できます。
 
@@ -92,6 +166,28 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. 希望する新しいサイズを入力し、 **[OK]** を選択します。
 
 ![update-large-file-share-quota.png](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
+
+### <a name="cli"></a>CLI
+
+ストレージ アカウントで大きなファイル共有を有効にすると、そのアカウントの既存のファイル共有をより高いクォータに拡張できます。 次のコマンドの `<yourStorageAccountName>`、`<yourStorageAccountKey>`、および `<yourFileShareName>` を実際の値に置き換えた後、それを使用してクォータを最大サイズに設定できます。
+
+```azurecli-interactive
+az storage share update --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName> --quota 102400
+```
+
+### <a name="powershell"></a>PowerShell
+
+ストレージ アカウントで大きなファイル共有を有効にすると、そのアカウントの既存のファイル共有をより高いクォータに拡張できます。 次のコマンドの `<YourStorageAccountName>`、`<YourStorageAccountKey>`、および `<YourStorageAccountFileShareName>` を実際の値に置き換えた後、それを使用してクォータを最大サイズに設定できます。
+
+```PowerShell
+##Config
+$storageAccountName = "<YourStorageAccountName>"
+$storageAccountKey = "<YourStorageAccountKey>"
+$shareName="<YourStorageAccountFileShareName>"
+$ctx = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+# update quota
+Set-AzStorageShareQuota -ShareName $shareName -Context $ctx -Quota 102400
+```
 
 ## <a name="next-steps"></a>次の手順
 

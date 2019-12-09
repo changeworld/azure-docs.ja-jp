@@ -1,21 +1,21 @@
 ---
-title: Azure Data Lake Storage Gen2 の MapReduce パフォーマンス チューニング ガイドライン | Microsoft Docs
+title: パフォーマンスの調整:MapReduce、HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs
 description: Azure Data Lake Storage Gen2 の MapReduce パフォーマンス チューニング ガイドライン
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3bd73b62b8859ffc5a71f610ebbdb55705284a76
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a3ea6858355d6cb921f629bf36134d96371f6244
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855509"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327922"
 ---
-# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight の MapReduce と Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス
+# <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスの調整:MapReduce、HDInsight & Azure Data Lake Storage Gen2
 
 Map Reduce ジョブのパフォーマンスを調整する際に考慮すべき要素について説明します。 この記事では、さまざまなパフォーマンス チューニング ガイドラインについて説明します。
 

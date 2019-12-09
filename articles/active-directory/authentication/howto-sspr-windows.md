@@ -1,22 +1,22 @@
 ---
-title: Windows での Azure AD のパスワード リセットのセルフ サービス - Azure Active Directory
+title: Windows でのパスワード リセットのセルフ サービス - Azure Active Directory
 description: Windows のログオン画面で「パスワードを忘れた場合」を使用してパスワード リセットのセルフ サービスを有効にする方法
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 519993be873e7864dab4de4f66919c56aebfc379
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 44e25efcb068fe51f05dbbde50e8a96da492a735
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73171865"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381241"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>方法:Windows のログイン画面からパスワードをリセットできるようにする
 

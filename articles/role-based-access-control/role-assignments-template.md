@@ -10,19 +10,59 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/20/2019
+ms.date: 11/21/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5f57ea658df0569c4e69e476513863abe6940471
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 268913fb7aebd1d6c8b377b95939c3bc1f77daca
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692904"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383995"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する
 
 [ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 Azure PowerShell または Azure CLI を使う以外に、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使って Azure リソースへのアクセスを管理することもできます。 リソースを一貫して繰り返しデプロイする場合は、テンプレートが便利です。 この記事では、RBAC とテンプレートを使ってアクセスを管理する方法について説明します。
+
+## <a name="get-object-ids"></a>オブジェクト ID を取得する
+
+ロールを割り当てるには、ロールの割り当て先のユーザー、グループ、またはアプリケーションの ID を指定する必要があります。 ID の形式は `11111111-1111-1111-1111-111111111111` です。 この ID は、Azure portal、Azure PowerShell、または Azure CLI を使用して取得できます。
+
+### <a name="user"></a>User
+
+ユーザーの ID を取得するには、[Get-AzADUser](/powershell/module/az.resources/get-azaduser) または [az ad user show](/cli/azure/ad/user#az-ad-user-show) コマンドを使用します。
+
+```azurepowershell
+$objectid = (Get-AzADUser -DisplayName "{name}").id
+```
+
+```azurecli
+objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
+```
+
+### <a name="group"></a>Group
+
+グループの ID を取得するには、[Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) または [az ad group show](/cli/azure/ad/group#az-ad-group-show) コマンドを使用します。
+
+```azurepowershell
+$objectid = (Get-AzADGroup -DisplayName "{name}").id
+```
+
+```azurecli
+objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
+```
+
+### <a name="application"></a>Application
+
+サービス プリンシパルの ID (アプリケーションによって使用される ID) を取得するには、[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) または [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) コマンドを使用します。 サービス プリンシパルの場合は、アプリケーション ID **ではなく**、オブジェクト ID を使用します。
+
+```azurepowershell
+$objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
+```
+
+```azurecli
+objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
+```
 
 ## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>リソース グループをスコープとするロールの割り当ての作成 (パラメーターなし)
 
@@ -33,7 +73,7 @@ RBAC でアクセス権を付与するには、ロールの割り当てを作成
 テンプレートを使うには、以下を実行する必要があります。
 
 - 新しい JSON ファイルを作成してテンプレートをコピーする
-- `<your-principal-id>` を、ロールを割り当てるユーザー、グループ、またはアプリケーションの一意識別子に置き換える。 この識別子の形式は `11111111-1111-1111-1111-111111111111` になります。
+- `<your-principal-id>` を、ロールを割り当てるユーザー、グループ、またはアプリケーションの ID に置き換える
 
 ```json
 {
@@ -76,9 +116,8 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 テンプレートを使うには、次の入力を指定する必要があります。
 
-- ロールを割り当てるユーザー、グループ、またはアプリケーションの一意識別子
-- 割り当てるロール
-- ロール割り当てに使用する一意の識別子。または既定の識別子を使用できます
+- ロールを割り当てるユーザー、グループ、またはアプリケーションの ID
+- ロール割り当てに使用する一意の ID。または既定の ID を使用できます
 
 ```json
 {
@@ -129,38 +168,28 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 }
 ```
 
-ロールを割り当てるユーザーの一意の識別子を取得するには、[Get-AzADUser](/powershell/module/az.resources/get-azaduser) または [az ad user show](/cli/azure/ad/user#az-ad-user-show) コマンドを使用します。
-
-```azurepowershell
-$userid = (Get-AzADUser -DisplayName "{name}").id
-```
-
-```azurecli
-userid=$(az ad user show --upn-or-object-id "{email}" --query objectId --output tsv)
-```
+> [!NOTE]
+> テンプレートの各デプロイのパラメーターとして同じ `roleNameGuid` 値が指定されていない場合、このテンプレートはべき等ではありません。 `roleNameGuid` が指定されていない場合、既定では、デプロイごとに新しい GUID が生成され、後続のデプロイは `Conflict: RoleAssignmentExists` のエラーで失敗します。
 
 ロール割り当てのスコープは、デプロイのレベルから特定できます。 次に示すのは、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) および [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) コマンドの例です。リソース グループのスコープでデプロイを開始する方法を示しています。
 
 ```azurepowershell
-New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Reader
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
 次に示すのは、[New-AzDeployment](/powershell/module/az.resources/new-azdeployment) および [az deployment create](/cli/azure/deployment#az-deployment-create) コマンドの例です。サブスクリプションのスコープでデプロイを開始し、場所を指定する方法を示しています。
 
 ```azurepowershell
-New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Reader
+New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
+az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
-
-> [!NOTE]
-> テンプレートの各デプロイのパラメーターとして同じ `roleNameGuid` 値が指定されていない場合、このテンプレートはべき等ではありません。 `roleNameGuid` が指定されていない場合、既定では、デプロイごとに新しい GUID が生成され、後続のデプロイは `Conflict: RoleAssignmentExists` のエラーで失敗します。
 
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>リソースをスコープとするロールの割り当ての作成
 
@@ -181,8 +210,7 @@ az deployment create --location centralus --template-file rbac-test.json --param
 
 テンプレートを使うには、次の入力を指定する必要があります。
 
-- ロールを割り当てるユーザー、グループ、またはアプリケーションの一意識別子
-- 割り当てるロール
+- ロールを割り当てるユーザー、グループ、またはアプリケーションの ID
 
 ```json
 {
@@ -248,11 +276,11 @@ az deployment create --location centralus --template-file rbac-test.json --param
 前述のテンプレートをデプロイするには、リソース グループのコマンドを使用します。 次に示すのは、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) および [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) コマンドの例です。リソースのスコープでデプロイを開始する方法を示しています。
 
 ```azurepowershell
-New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Contributor
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Contributor
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
 ```
 
 以下では、テンプレートをデプロイした後でユーザーにストレージ アカウントの共同作成者ロールを割り当てる例を示します。

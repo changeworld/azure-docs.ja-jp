@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 8aa6a8bfb690b00ee21980f4aa64d950abec2f3c
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: d30195cb9aceac0e785f01ce8c2ce78d7a9d4da7
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152260"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805775"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に RingCentral を構成する
 
@@ -94,7 +94,7 @@ Azure AD での自動ユーザー プロビジョニング用に RingCentral を
 このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、RingCentral でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> RingCentral では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[RingCentral シングル サインオンのチュートリアル](https://docs.microsoft.comazure/active-directory/saas-apps/ringcentral-tutorial)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> RingCentral では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[RingCentral シングル サインオンのチュートリアル](ringcentral-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 > [!NOTE]
 > RingCentral の SCIM エンドポイントについて詳しくは、[RingCentral API のリファレンス](https://developers.ringcentral.com/api-reference)を参照してください。
