@@ -1,17 +1,18 @@
 ---
-title: Azure Migrate で評価ツールを追加する | Microsoft Docs
-description: Azure Migrate ハブで評価ツールを追加する方法について説明します。
+title: Azure Migrate で評価ツールを追加する
+description: Azure Migrate で評価ツールを追加する方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/04/2019
+ms.manager: carmonm
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 8d13222ec05fc97fa591ac67d636a1f8c5c88845
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715855"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185909"
 ---
 # <a name="add-assessment-tools"></a>評価ツールの追加
 

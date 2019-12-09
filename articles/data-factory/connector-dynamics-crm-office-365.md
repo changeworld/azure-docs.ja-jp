@@ -1,23 +1,24 @@
 ---
-title: Azure Data Factory を使用して Dynamics CRM または Dynamics 365 (Common Data Service) をコピー元またはコピー先としてデータをコピーする
+title: Dynamics でデータをコピーする (Common Data Service)
 description: Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Common Data Service) からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: c9adcf72eeec82fd4b8f1805fca1f284c0b953b7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: linda33wj
+manager: craigg
+ms.reviewer: douglasl
+ms.custom: seo-lt-2019
+ms.date: 11/20/2019
+ms.openlocfilehash: eaf8060d3ccfd1f76aa81a289cba5b795106b2b1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680976"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280685"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
@@ -42,7 +43,7 @@ Dynamics のそれぞれのバージョン/製品でサポートされている�
 
 | Dynamics のバージョン | 認証の種類 | リンクされたサービスの例 |
 |:--- |:--- |:--- |
-| Dynamics 365 Online <br> Dynamics CRM Online | Office365 | [Dynamics Online + Office365 認証](#dynamics-365-and-dynamics-crm-online) |
+| Common Data Service <br> Dynamics 365 Online <br> Dynamics CRM Online | AAD サービス プリンシパル <br> Office365 | [Dynamics online + AAD サービス プリンシパルまたは Office365 認証](#dynamics-365-and-dynamics-crm-online) |
 | IFD 対応オンプレミス Dynamics 365 <br> IFD 対応オンプレミス Dynamics CRM 2016 <br> IFD 対応オンプレミス Dynamics CRM 2015 | IFD | [IFD + IFD 認証対応オンプレミス Dynamics](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
 具体的には、Dynamics 365 では、次のアプリケーションの種類がサポートされます。
@@ -77,13 +78,68 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 | type | type プロパティは、**Dynamics**、**DynamicsCrm**、**CommonDataServiceForApps** のいずれかに設定する必要があります。 | はい |
 | deploymentType | Dynamics インスタンスの展開の種類。 Dynamics Online を **"Online"** にする必要があります。 | はい |
 | serviceUri | Dynamics インスタンスのサービス URL (例: `https://adfdynamics.crm.dynamics.com`)。 | はい |
-| authenticationType | Dynamics サーバーに接続する認証の種類。 Dynamics Online を **"Office365"** に指定します。 | はい |
-| username | Dynamics に接続するためのユーザー名を指定します。 | はい |
-| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
+| authenticationType | Dynamics サーバーに接続する認証の種類。 使用できる値は、以下のとおりです。**AADServicePrincipal**、または **"Office365"** 。 | はい |
+| servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | はい (`AADServicePrincipal` 認証を使用する場合) |
+| servicePrincipalCredentialType | サービス プリンシパル認証に使用する資格情報の種類を指定します。 使用できる値は、以下のとおりです。**ServicePrincipalKey** または **ServicePrincipalCert**。 | はい (`AADServicePrincipal` 認証を使用する場合) |
+| servicePrincipalCredential | サービス プリンシパル認証を指定します。 <br>資格情報の種類として `ServicePrincipalKey` を使用する場合、`servicePrincipalCredential` は文字列 (ADF はリンクされたサービスのデプロイ時に ADF が暗号化します)、または AKV のシークレットへの参照になります。 <br>資格情報として `ServicePrincipalCert` を使用する場合、`servicePrincipalCredential` は AKV の証明書への参照である必要があります。 | はい (`AADServicePrincipal` 認証を使用する場合) | 
+| username | Dynamics に接続するためのユーザー名を指定します。 | はい (`Office365` 認証を使用する場合) |
+| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい (`Office365` 認証を使用する場合) |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合は「いいえ」、シンクの場合は「はい」 (ソースにリンクされたサービスに統合ランタイムがない場合) |
 
 >[!NOTE]
 >Dynamics コネクタは、省略可能な "organizationName" プロパティを使用して Dynamics CRM/365 Online インスタンスを識別するために使用されていました。 それは引き続き機能しますが、代わりに新しい "serviceUri" プロパティを指定して、インスタンス検出のパフォーマンスを向上させることをお勧めします。
+
+**例:AAD サービス プリンシパル + キー認証を使用した Dynamics Online**
+
+```json
+{  
+    "name": "DynamicsLinkedService",  
+    "properties": {  
+        "type": "Dynamics",  
+        "typeProperties": {  
+            "deploymentType": "Online",  
+            "serviceUri": "https://adfdynamics.crm.dynamics.com",  
+            "authenticationType": "AADServicePrincipal",  
+            "servicePrincipalId": "<service principal id>",  
+            "servicePrincipalCredentialType": "ServicePrincipalKey",  
+            "servicePrincipalCredential": "<service principal key>"
+        },  
+        "connectVia": {  
+            "referenceName": "<name of Integration Runtime>",  
+            "type": "IntegrationRuntimeReference"  
+        }  
+    }  
+}  
+```
+**例:AAD サービスプリンシパル + 証明書認証を使用した Dynamics Online**
+
+```json
+{ 
+    "name": "DynamicsLinkedService", 
+    "properties": { 
+        "type": "Dynamics", 
+        "typeProperties": { 
+            "deploymentType": "Online", 
+            "serviceUri": "https://adfdynamics.crm.dynamics.com", 
+            "authenticationType": "AADServicePrincipal", 
+            "servicePrincipalId": "<service principal id>", 
+            "servicePrincipalCredentialType": "ServicePrincipalCert", 
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
+            } 
+        }, 
+        "connectVia": { 
+            "referenceName": "<name of Integration Runtime>", 
+            "type": "IntegrationRuntimeReference" 
+        } 
+    } 
+} 
+```
 
 **例:Office 365 の認証を使用する Dynamics Online**
 
@@ -92,7 +148,6 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
     "name": "DynamicsLinkedService",
     "properties": {
         "type": "Dynamics",
-        "description": "Dynamics online linked service using Office365 authentication",
         "typeProperties": {
             "deploymentType": "Online",
             "serviceUri": "https://adfdynamics.crm.dynamics.com",

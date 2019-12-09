@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 8f24b94226daffb769993c9f6659909fdff039b6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014982"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534133"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>NVA 用の Virtual WAN ハブ ルート テーブルを作成する:Azure ポータル
 
-この記事では、トラフィックをハブからネットワーク仮想アプライアンス (NVA) に誘導する方法を示します。
+この記事では、Virtual WAN ハブに接続されているブランチ (オンプレミス サイト) から、ネットワーク仮想アプライアンス (NVA) を介してスポーク VNet にトラフィックを誘導する方法について説明します。
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -31,7 +31,7 @@ ms.locfileid: "74014982"
 
     * NVA が仮想ハブにデプロイされていません。 独立した VNet 内にデプロイする必要があります。
 
-    *  NVA VNet に、1 つまたは多数の仮想ネットワークが接続されています。 この記事では、NVA VNet を '間接スポーク VNet' と呼びます。 これらの VNet は、VNet ピアリングを使用して NVA VNet に接続できます。
+    *  NVA VNet に、1 つまたは多数の仮想ネットワークが接続されています。 この記事では、NVA VNet を '間接スポーク VNet' と呼びます。 これらの VNet は、VNet ピアリングを使用して NVA VNet に接続できます。 VNet ピアリング リンクは、上の図の Vnet 1、Vnet 2 と、NVA Vnet との間の黒い矢印によって示されています。
 *  2 つ VNet を作成しています。 これらは、スポーク VNet として使用されます。
 
     * この演習では、VNet スポークのアドレス空間は次のとおりです。VNet1:10.0.2.0/24 と VNet2:10.0.3.0/24。 VNet の作成方法に関する情報が必要な場合は、[仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関するページを参照してください。
@@ -79,7 +79,7 @@ ms.locfileid: "74014982"
 
 ## <a name="connections"></a>5.VNet 接続を作成する
 
-それぞれの間接スポーク VNet (VNet1 と VNet2) からハブに接続を作成します。 次に、NVA VNet からハブに接続を作成します。
+それぞれの間接スポーク VNet (VNet1 と VNet2) からハブに VNet 接続を作成します。 これらの VNet 接続は、上の図の青い矢印で示されています。 次に、NVA VNet からハブへの VNet 接続 (図の黒い矢印) を作成します。 
 
  この手順では、次の値を使用します。
 

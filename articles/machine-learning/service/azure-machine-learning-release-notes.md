@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf9a57b58740d1a759e00f10f6f327d605e91148
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 82db94dd201676b769f1ea151b23fa1b149f609c
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123646"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807104"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -23,6 +23,53 @@ ms.locfileid: "74123646"
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
 
+## <a name="2019-11-25"></a>2019-11-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1076"></a>Azure Machine Learning SDK for Python v1.0.76
+
++ **重大な変更**
+  + Azureml-Train-AutoML のアップグレードに関する問題
+    + azureml-train-automl 1.0.76 以下から azureml-train-automl 1.0.76 より上にアップグレードすると、部分的なインストールが発生し、一部の automl のインポートが失敗する可能性があります。 これを解決するには、 https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmd で見つかったセットアップ スクリプトを実行します。 または、pip を直接使用している場合は、以下を実行することができます。
+      + "pip install --upgrade azureml-train-automl"
+      + "pip install --ignore-installed azureml-train-automl-client"
+    + または、アップグレードする前に古いバージョンをアンインストールすることもできます。
+      + "pip uninstall azureml-train-automl"
+      + "pip install azureml-train-automl"
+
++ **バグの修正と機能強化**
+  + **azureml-automl-runtime**
+    + AutoML では、二項分類タスクの平均スカラーメトリックを計算するときに、true と false の両方のクラスが考慮されるようになりました。
+    + AzureML-AutoML-Core の機械学習とトレーニング コードを新しいパッケージ AzureML-AutoML-Runtime に移動しました。
+  + **azureml-contrib-dataset**
+    + ダウンロード オプションを使用してラベル付きのデータセットで `to_pandas_dataframe` を呼び出すと、既存のファイルを上書きするかどうかを指定できるようになりました。
+    + timeseries、label、または image 列が削除される `keep_columns` または `drop_columns` を呼び出すと、データセットの対応する機能も削除されます。
+    + 物体検出タスク用の PyTorch ローダーに関する問題を修正しました。
+  + **azureml-contrib-interpret**
+    + azureml-contrib-interpret から説明ダッシュボード ウィジェットを削除しました、interpret_community の新しいものを参照するようにパッケージを変更しました
+    + interpret-community のバージョンを 0.2.0 に更新しました
+  + **azureml-core**
+    + `workspace.datasets` のパフォーマンスが向上します。
+    + ユーザー名とパスワード認証を使用して Azure SQL Database データストアを登録する機能が追加されました。
+    + 相対パスから RunConfigurations を読み込むように修正します。
+    + timeseries 列が削除される `keep_columns` または `drop_columns` を呼び出すと、データセットの対応する機能も削除されます。
+  + **azureml-interpret**
+    + interpret-community のバージョンを 0.2.0 に更新しました
+  + **azureml-pipeline-steps**
+    + Azure Machine Learning パイプラインの手順の `runconfig_pipeline_params` でサポートされている値を記載しました。
+  + **azureml-pipeline-core**
+    + パイプライン コマンドの json 形式で出力をダウンロードするための CLI オプションが追加されました。
+  + **azureml-train-automl**
+    + AzureML-Train-AutoML を 2 つのパッケージに分割します (クライアント パッケージ AzureML-Train-AutoML-Client と ML トレーニング パッケージ AzureML-Train-AutoML-Runtime)
+  + **azureml-train-automl-client**
+    + 機械学習の依存関係をローカルにインストールすることなく、AutoML 実験を送信できるシン クライアントが追加されました。
+    + リモート実行で自動的に検出されたラグ、ローリング ウィンドウ サイズ、最大期間のログ記録を修正しました。
+  + **azureml-train-automl-runtime**
+    + 新しい AutoML パッケージを追加して、機械学習とランタイム コンポーネントをクライアントから分離しました。
+  + **azureml-contrib-train-rl**
+    + SDK に強化学習サポートが追加されました。
+    + RL SDK に AmlWindowsCompute サポートが追加されました。 
+
+ 
 ## <a name="2019-11-11"></a>2019-11-11
 
 ### <a name="azure-machine-learning-sdk-for-python-v1074"></a>Azure Machine Learning SDK for Python v1.0.74
@@ -174,7 +221,7 @@ SDK の主な機能は次のとおりです。
     + データセットが登録されている場合は、登録名とバージョンを返すように [`Dataset.get_by_id`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29#get-by-id-workspace--id-) を変更します。
     + 引数としてのデータセットを伴う ScriptRunConfig を実験の実行を送信するために繰り返し使用することができないというバグが修正されます。
     + 実行中に取得されたデータセットは、追跡され、実行の詳細ページに、または実行の完了後に [`run.get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29#get-details--) を呼び出すことで表示することができます。
-    + Azure Machine Learning パイプラインの中間データを表形式のデータセットに変換し、[`AutoMLStep`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlstep) で使用できるようにします。
+    + Azure Machine Learning パイプラインの中間データを表形式のデータセットに変換し、[`AutoMLStep`](/python/api/azureml-train-automl-runtime/azureml.train.automl.runtime.automlstep) で使用できるようにします。
     + サポートされているモデル (ONNX、scikit-learn、TensorFlow) の InferenceConfig インスタンスを使用しないデプロイとパッケージ化のサポートが追加されました。
     + SDK および CLI でのサービスのデプロイ (ACI および AKS) の上書きフラグが追加されました。 指定した場合、既存の名前が付けられたサービスについては、既存のサービスを上書きします。 サービスが存在しない場合、新しいサービスが作成されます。
     +  モデルは、Onnx および Tensorflow という 2 つの新しいフレームワークに登録できます。 モデルの登録では、モデルのサンプルの入力データ、サンプルの出力データ、リソース構成が受け入れられます。
@@ -191,7 +238,7 @@ SDK の主な機能は次のとおりです。
     + さまざまなバグの修正 
   + [**azureml-pipeline-core**](https://docs.microsoft.com/python/api/azureml-pipeline-core)
     + パイプラインの `yaml` ファイルから Azure Machine Learning パイプラインの実行を送信するのに、azureml-dataprep は不要になりました。
-  + [**azureml-train-automl**](https://docs.microsoft.com/python/api/azureml-train-automl)
+  + [**azureml-train-automl**](/python/api/azureml-train-automl-runtime/)
     + モデル デプロイの失敗を解決するために、自動生成された conda env に azureml-default を追加します
     + AutoML リモートトレーニングに azureml-default が含まれるようになり、推論にトレーニング env を再利用できるようになりました。
   + **azureml-train-core**
@@ -303,7 +350,7 @@ SDK の主な機能は次のとおりです。
     + 大規模なパイプライン作成のパフォーマンスが向上しました。
   + **[azureml-train-core](https://docs.microsoft.com/python/api/azureml-train-core)**
     + [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow) Estimator で TensorFlow 2.0 がサポートされるようになりました。
-  + **[azureml-train-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-train-automl](/python/api/azureml-train-automl-runtime/)**
     + オーケストレーションで既に処理が行われているため、セットアップの反復処理に失敗した場合でも親の実行が失敗しなくなりました。
     + AutoML 実験で local-docker および local-conda がサポートされるようになりました
     + AutoML 実験で local-docker および local-conda がサポートされるようになりました。
@@ -327,12 +374,12 @@ SDK の主な機能は次のとおりです。
     + キュレートされた環境が追加されました。 これらの環境は、一般的な機械学習タスク用のライブラリを使用してあらかじめ構成されており、実行時間を短縮するため、Docker イメージとして事前にビルドおよびキャッシュされています。 既定で、"AzureML" というプレフィックスが付けられて、[ワークスペース](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29)の環境の一覧に表示されます。
   
   + **azureml-train-automl**
-  + **[azureml-train-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-train-automl](/python/api/azureml-train-automl-runtime/)**
     + ADB と HDI に対する ONNX の変換サポートが追加されました
 
 + **プレビュー機能**  
   + **azureml-train-automl**
-  + **[azureml-train-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-train-automl](/python/api/azureml-train-automl-runtime/)**
     + テキスト フィーチャライザーとして BERT と BiLSTM がサポートされました (プレビューのみ)
     + 列の目的およびトランスフォーマーのパラメーターに対して特性付けのカスタマイズがサポートされました (プレビューのみ)
     + トレーニングの間にユーザーがモデルの説明を有効にしたときに、生の説明がサポートされるようになりました (プレビューのみ)
@@ -344,7 +391,7 @@ SDK の主な機能は次のとおりです。
 + **バグの修正と機能強化**
   + **azureml-automl-core**
     + FeaturizationConfig が AutoMLConfig と AutoMLBaseSettings に導入されました
-    + FeaturizationConfig が [AutoMLConfig](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig) と AutoMLBaseSettings に導入されました
+    + FeaturizationConfig が [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) と AutoMLBaseSettings に導入されました
       + 特性付けの列の目的が特定の列と特徴の種類でオーバーライドされます
       + トランスフォーマー パラメーターがオーバーライドされます
     + explain_model() および retrieve_model_explanations() の非推奨メッセージが追加されました
@@ -389,9 +436,9 @@ SDK の主な機能は次のとおりです。
   + **[azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
     + AML パイプラインによる R スクリプトの実行をサポートする [RScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep) が追加されました。
     + "パラメーター SubscriptionId の割り当てが指定されていない" というエラー メッセージの原因になっていた [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep) でのメタデータ パラメーターの解析を修正しました。
-  + **[azureml-train-automl](https://docs.microsoft.com/python/api/azureml-train-automl)**
+  + **[azureml-train-automl](/python/api/azureml-train-automl-runtime/)**
     + データ入力形式として、training_data、validation_data、label_column_name、weight_column_name がサポートされるようになりました。
-    + [explain_model()](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer#explain-model-fitted-model--x-train--x-test--best-run-none--features-none--y-train-none----kwargs-) および [retrieve_model_explanations()](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlexplainer#retrieve-model-explanation-child-run-) の非推奨メッセージが追加されました。
+    + [explain_model()](/python/api/azureml-train-automl-runtime/azureml.train.automl.runtime.automlexplainer#explain-model-fitted-model--x-train--x-test--best-run-none--features-none--y-train-none----kwargs-) および [retrieve_model_explanations()](/python/api/azureml-train-automl-runtime/azureml.train.automl.runtime.automlexplainer#retrieve-model-explanation-child-run-) の非推奨メッセージが追加されました。
 
   
 ## <a name="2019-09-16"></a>2019-09-16

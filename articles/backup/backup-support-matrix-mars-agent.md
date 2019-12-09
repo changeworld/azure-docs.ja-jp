@@ -1,18 +1,14 @@
 ---
-title: Microsoft Azure Recovery Services エージェントのサポート マトリックス
+title: MARS エージェントを使用したサポート マトリックス
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを実行しているコンピューターをバックアップする場合の Azure Backup のサポートを要約しています。
-author: dcurwin
-ms.service: backup
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.author: dacurwin
-manager: carmonm
-ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 43f11bb73578187bd851f58cb6311c95b8648d08
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090546"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74194998"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
 
@@ -54,7 +50,7 @@ Folder | キャッシュ フォルダーは、重複除去されたボリュー�
 
 ## <a name="networking-and-access-support"></a>ネットワークとアクセスのサポート
 
-### <a name="url-access"></a>URL アクセス
+### <a name="url-and-ip-access"></a>URL と IP アクセス
 
 MARS エージェントには、次の URL へのアクセス権が必要です。
 
@@ -63,6 +59,13 @@ MARS エージェントには、次の URL へのアクセス権が必要です�
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
 - *.Windows.net
+
+これらの IP アドレスに対しては、次のようになります。
+
+- 20.190.128.0/18
+- 40.126.0.0/18
+
+上記のすべての URL と IP アドレスにアクセスするには、ポート 443 で HTTPS プロトコルを使用します。
 
 ### <a name="throttling-support"></a>調整のサポート
 
@@ -76,7 +79,12 @@ Network throttling | Windows Server 2008 R2、Windows Server 2008 SP2、また�
 >[!NOTE]
 > MARS エージェントは、Windows Server Core SKU をサポートしていません。
 
-MARS エージェントを使用すると、オンプレミスのコンピューターや Azure VM で実行されている一部のオペレーティング システム上の Azure に直接バックアップできます。 これらのオペレーティング システムは 64 ビットであり、かつ最新の Service Pack および更新プログラムが実行されている必要があります。 次の表は、これらのオペレーティング システムをまとめたものです。
+MARS エージェントを使用すると、次のように実行されている一部のオペレーティング システム上の Azure に直接バックアップできます。
+
+1. オンプレミスの Windows Server
+2. Windows を実行中の Azure VM
+
+これらのオペレーティング システムは 64 ビットであり、かつ最新の Service Pack および更新プログラムが実行されている必要があります。 次の表は、これらのオペレーティング システムをまとめたものです。
 
 **オペレーティング システム** | **ファイル/フォルダー** | **システム状態** | **ソフトウェア/モジュールの要件**
 --- | --- | --- | ---
@@ -128,7 +136,7 @@ OneDrive (同期されるファイルはスパース ストリーム)| サポー
 読み取り専用ボリューム| サポートされていません | ボリューム コピー シャドウ サービス (VSS) は、ボリュームが書き込み可能な場合にのみ機能します。
 オフライン ボリューム| サポートされていません |VSS は、ボリュームがオンラインである場合にのみ機能します。
 ネットワーク共有| サポートされていません |サーバー上でボリュームがローカルである必要があります。
-Bitlocker で保護されているボリューム| サポートされていません |バックアップを開始する前に、ボリュームのロックを解除する必要があります。
+BitLocker でロックされているボリューム| サポートされていません |バックアップを開始する前に、ボリュームのロックを解除する必要があります。
 ファイル システムの識別| サポートされていません |NTFS のみがサポートされます。
 リムーバブル メディア| サポートされていません |バックアップ項目のすべてのソースが*固定*の状態である必要があります。
 重複除去されたドライブ | サポートされています | Azure Backup は、重複除去されたデータを通常のデータに変換します。 データを最適化および暗号化して格納し、コンテナーに送信します。

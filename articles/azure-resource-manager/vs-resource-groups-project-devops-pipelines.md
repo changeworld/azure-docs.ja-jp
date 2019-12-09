@@ -1,17 +1,14 @@
 ---
-title: Azure Pipelines と Resource Manager テンプレートを使用した CI/CD
+title: Azure Pipelines とテンプレートを使用した CI/CD
 description: Visual Studio で Azure リソース グループのデプロイ プロジェクトを使用して Resource Manager テンプレートをデプロイし、Azure Pipelines での継続的インテグレーションを設定する方法を説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.author: tomfitz
-ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 51122e314ebd0a97647fc4026b1f49619950c351
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597509"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143756"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Azure Pipelines を使用した Resource Manager テンプレートの統合
 

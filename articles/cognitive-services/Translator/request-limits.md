@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 11/25/2019
 ms.author: swmachan
-ms.openlocfilehash: 79cf87cef4e58cf4e5a2039f30289d55038c8b92
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 3694c8cb34b2a050c9e18265c8cc0a0198456076
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671959"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533720"
 ---
 # <a name="request-limits-for-translator-text"></a>Translator Text に対する要求の制限
 
@@ -58,7 +58,7 @@ ms.locfileid: "71671959"
 
 ## <a name="latency"></a>Latency
 
-標準モデルを使用した場合、Translator Text API の最大待ち時間は 15 秒です。 カスタム モデルを使用した場合、翻訳の最大待ち時間は 25 秒です。 この時間までに、結果またはタイムアウト応答を受け取ります。 通常、応答は 150 ミリ秒から 300 ミリ秒で返されます。 応答時間は、要求のサイズと言語ペアによって異なります。 その時間枠内に翻訳または[エラー応答](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)が返されなかった場合、ご使用のネットワーク接続を確認してから、再試行してください。
+Translator Text API の最大待ち時間は、標準モデルを使用した場合は 15 秒、カスタム モデルを使用した場合は 120 秒です。 通常、*100 文字以内のテキスト*の応答は 150 ミリ秒から 300 ミリ秒で返されます。 カスタム トランスレーター モデルの待機時間特性は、持続要求レートに似ており、要求レートが間欠的になると待機時間が長くなる可能性があります。 応答時間は、要求のサイズと言語ペアによって異なります。 その時間枠内に翻訳または[エラー応答](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)が返されなかった場合、ご使用のコードおよびネットワーク接続を確認してから、再試行してください。 
 
 ## <a name="sentence-length-limits"></a>文の長さの制限
 

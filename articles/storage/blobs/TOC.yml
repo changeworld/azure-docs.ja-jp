@@ -91,7 +91,7 @@
           items:
             - name: 1 - アプリケーションの可用性を高める
               href: storage-create-geo-redundant-storage.md
-            - name: 2 - RA-GRS ストレージで障害をシミュレートする
+            - name: 2 - プライマリ リージョンからデータを読み取る際のエラーをシミュレートする
               href: storage-simulate-failure-ragrs-account-app.md
         - name: Azure Key Vault を使用した BLOB の暗号化と暗号化解除
           href: storage-encrypt-decrypt-blobs-key-vault.md
@@ -151,7 +151,7 @@
               href: ../common/storage-redundancy-gzrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: ディザスター リカバリーとフェールオーバー
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: RA-GRS を使用した HA アプリの設計
+            - name: 高可用性アプリケーションの設計
               href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: アクセスとパフォーマンスのレベル
           items:
@@ -406,6 +406,8 @@
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Linux 上でファイル システムとして BLOB ストレージをマウントする
               href: storage-how-to-mount-container-linux.md
+            - name: データ移動ライブラリを使用してデータを転送する
+              href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Storage の移行に関する FAQ
               href: ../common/storage-migration-faq.md
         - name: BLOB を使用した開発

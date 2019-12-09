@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 63ff91c6b4db351e5ec72973874466cff74432b5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a69babdf2fffb4cb9d963f1806f3c85755e50294
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073443"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454360"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
 
@@ -173,6 +173,9 @@ var digest = hmac.update(salt + '\n' + returnUrl).digest();
 
 var signature = digest.toString('base64');
 ```
+
+> [!IMPORTANT]
+> 委任変更を有効にするには、[開発者ポータルを再発行](api-management-howto-developer-portal-customize.md#publish)する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 委任に関する詳細については、次のビデオをご覧ください。

@@ -1,20 +1,15 @@
 ---
-title: 'Azure Backup: Linux VM のアプリケーション整合性バックアップ'
+title: Linux VM のアプリケーション整合性バックアップ
 description: Linux 仮想マシンのアプリケーション整合性バックアップを Azure に作成します。 この記事では、Azure にデプロイされた Linux VM をバックアップするためのスクリプト フレームワークの構成について説明します。 この記事にはトラブルシューティング情報も含まれています。
 ms.reviewer: anuragm
-author: dcurwin
-manager: carmonm
-keywords: アプリケーション整合性バックアップ; アプリケーション整合性 Azure VM バックアップ; Linux VM バックアップ; Azure Backup
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.author: dacurwin
-ms.openlocfilehash: 1835c6968bfdfcc3f3ce4d8a624e8f6bd62e224c
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375946"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173004"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Azure Linux VM のアプリケーション整合性バックアップ
 

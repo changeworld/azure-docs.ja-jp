@@ -1,22 +1,22 @@
 ---
-title: Azure Data Lake Storage Gen2 の Spark パフォーマンス チューニング ガイドライン | Microsoft Docs
+title: パフォーマンスの調整:Spark、HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs
 description: Azure Data Lake Storage Gen2 の Spark パフォーマンス チューニング ガイドライン
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: feefcf4f9f4448ab2b36c415cb745fd98277eb28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a70b8112af201a49e7eece8b689e75102ec55880
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939331"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327547"
 ---
-# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight の Spark と Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス
+# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスの調整:Spark、HDInsight & Azure Data Lake Storage Gen2
 
 Spark のパフォーマンスをチューニングするときは、クラスター上で実行されるアプリの数を考慮する必要があります。  既定では、4 つのアプリを同時に HDI クラスターで実行することができます (注: この既定の設定は変更される可能性があります)。  使用するアプリ数をより少なくすることができます。そうすれば、既定の設定をオーバーライドして、これらのアプリでより多くのクラスターを使用できます。  
 

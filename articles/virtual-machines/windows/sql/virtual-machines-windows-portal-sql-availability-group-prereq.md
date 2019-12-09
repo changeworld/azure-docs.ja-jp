@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 17b1f58a950f2e0589986e9f1da1295671599341
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4c89489964410104726b65e1b1fc3577945ce14a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037473"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224767"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Azure 仮想マシンで SQL Server の Always On 可用性グループを作成するための前提条件
 
@@ -152,7 +152,7 @@ Azure アカウントが必要です。 [無料の Azure アカウントを作�
 可用性セットを作成したら、Azure ポータルでリソース グループに戻ります。
 
 ## <a name="create-domain-controllers"></a>ドメイン コントローラーを作成する
-ネットワーク、サブネット、可用性セット、インターネット接続用のロード バランサーを作成したら、ドメイン コントローラー用の仮想マシンを作成する準備は完了です。
+ネットワーク、サブネット、可用性セットの作成が済むと、ドメイン コントローラー用の仮想マシンを作成する準備は完了です。
 
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>ドメイン コントローラーに使用する仮想マシンの作成
 ドメイン コントローラーを作成して構成するために、 **SQL-HA-RG** リソース グループに戻ります。

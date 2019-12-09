@@ -1,5 +1,6 @@
 ---
-title: Azure Network Watcher でパケット キャプチャを管理する - PowerShell | Microsoft Docs
+title: パケット キャプチャを管理する - Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: このページでは、PowerShell を使用して Network Watcher のパケット キャプチャ機能を管理する方法を説明します。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4158c2c5ce69d1811b20c9937c1d064f4fe657ee
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3be68f6ef87ba37bcfaf418225ce7f460aed53a1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163947"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277879"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>PowerShell を使用して Azure Network Watcher でパケット キャプチャを管理する
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Migrate に移行ツールを追加する
-description: Azure Migrate ハブ内で移行ツールを追加する方法について説明します。
+description: Azure Migrate に移行ツールを追加する方法を説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.manager: carmonm
 ms.topic: article
-ms.date: 07/09/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: b3c77f052ed92db235b363e63859b9beb9e4f5a2
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810242"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185957"
 ---
 # <a name="add-migration-tools"></a>移行ツールの追加
 
@@ -61,7 +61,7 @@ Azure Migrate には、評価と Azure への移行のためのツールのハ�
 ## <a name="select-a-web-app-migration-tool"></a>Web アプリ移行ツールの選択
 
 1. **[Web アプリの評価と移行]** をクリックします。
-2. Azure App Service の移行ツールへのリンクに従います。 次の目的で移行ツールを使用します。
+2. Azure App Service の Migration ツールへのリンクに従います。 この移行ツールを使用して、次のことを行います。
 
     - **オンラインでアプリを評価する**:Azure App Service Migration Assistant を使用して、オンラインでパブリック URL を使用してアプリを評価し、移行することができます。
     - **.NET/PHP**:内部 .NET および PHP アプリの場合は、Migration Assistant をダウンロードして実行できます。

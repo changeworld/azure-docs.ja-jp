@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 826fe1195a142bd0826d6311eab5eb208bbc7e35
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: fde8829da3e523ced44143db0dee6b93cf9152bd
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007439"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147772"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account-preview"></a>Azure Cosmos アカウントの Azure Private Link を構成する (プレビュー)
 
@@ -185,7 +185,7 @@ foreach ($IPConfiguration in $networkInterface.IpConfigurations)
 
 ## <a name="create-a-private-endpoint-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用してプライベート エンドポイントを作成する
 
-Private Link を設定するには、仮想ネットワーク サブネットにプライベート エンドポイントを作成します。 これを実現するには、Azure Resource Manager テンプレートを使用します。 
+Private Link を設定するには、仮想ネットワーク サブネットにプライベート エンドポイントを作成します。 これを実現するには、Azure Resource Manager テンプレートを使用します。
 
 次のコードを使用して、"PrivateEndpoint_template.json" という名前の Resource Manager テンプレートを作成します。 このテンプレートは、既存の仮想ネットワークにある既存の Azure Cosmos SQL API アカウントのプライベート エンドポイントを作成します。
 
@@ -246,7 +246,7 @@ Private Link を設定するには、仮想ネットワーク サブネットに
 }
 ```
 
-### <a name="define-the-parameters-file-for-the-template"></a>テンプレートのパラメーター ファイルを定義する
+**テンプレートのパラメーター ファイルを定義する**
 
 テンプレートのパラメーター ファイルを作成し、"PrivateEndpoint_parameters.json" という名前を付けます。 次のコードをパラメーター ファイルに追加します。
 
@@ -271,7 +271,7 @@ Private Link を設定するには、仮想ネットワーク サブネットに
 }
 ```
 
-### <a name="deploy-the-template-by-using-a-powershell-script"></a>PowerShell スクリプトを使用してテンプレートをデプロイする
+**PowerShell スクリプトを使用してテンプレートをデプロイする**
 
 次のコードを使用して、PowerShell スクリプトを作成します。 スクリプトを実行する前に、サブスクリプション ID、リソース グループ名、その他の変数値を実際の環境の詳細に置き換えます。
 
@@ -334,6 +334,201 @@ PowerShell スクリプトでは、`GroupId` 変数に 1 つの値のみを含�
 ![Resource Manager テンプレートのデプロイの出力](./media/how-to-configure-private-endpoints/resource-manager-template-deployment-output.png)
 
 テンプレートがデプロイされると、プライベート IP アドレスがサブネット内で予約されます。 Azure Cosmos アカウントのファイアウォール規則は、プライベート エンドポイントからの接続のみを受け入れるように構成されています。
+
+### <a name="integrate-the-private-endpoint-with-a-private-dns-zone"></a>プライベート エンドポイントとプライベート DNS ゾーンを統合する
+
+次のコードを使用して、"PrivateZone_template.json" という名前の Resource Manager テンプレートを作成します。 このテンプレートは、既存の仮想ネットワークにある既存の Azure Cosmos SQL API アカウントのプライベート DNS ゾーンを作成します。
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "privateZoneName": {
+            "type": "string"
+        },
+        "VNetId": {
+            "type": "string"
+        }       
+    },
+    "resources": [
+        {
+            "name": "[parameters('privateZoneName')]",
+            "type": "Microsoft.Network/privateDnsZones",
+            "apiVersion": "2018-09-01",
+            "location": "global",
+            "properties": {                
+            }
+        },
+        {
+            "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
+            "apiVersion": "2018-09-01",
+            "name": "[concat(parameters('privateZoneName'), '/myvnetlink')]",
+            "location": "global",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/privateDnsZones', parameters('privateZoneName'))]"
+            ],
+            "properties": {
+                "registrationEnabled": false,
+                "virtualNetwork": {
+                    "id": "[parameters('VNetId')]"
+                }
+            }
+        }       
+    ]
+}
+```
+
+次のコードを使用して、"PrivateZoneRecords_template.json" という名前の Resource Manager テンプレートを作成します。
+
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "DNSRecordName": {
+            "type": "string"
+        },
+        "IPAddress": {
+            "type":"string"
+        }       
+    },
+    "resources": [
+         {
+            "type": "Microsoft.Network/privateDnsZones/A",
+            "apiVersion": "2018-09-01",
+            "name": "[parameters('DNSRecordName')]",
+            "properties": {
+                "ttl": 300,
+                "aRecords": [
+                    {
+                        "ipv4Address": "[parameters('IPAddress')]"
+                    }
+                ]
+            }
+        }   
+    ]
+}
+```
+
+**テンプレートのパラメーター ファイルを定義する**
+
+次の 2 つのパラメーター ファイルをテンプレートに作成します。 "PrivateZone_parameters" を作成します。 を、以下のコードに置き換えます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "privateZoneName": {
+            "value": ""
+        },
+        "VNetId": {
+            "value": ""
+        }
+    }
+}
+```
+
+"PrivateZoneRecords_parameters.json" を作成します。 を、以下のコードに置き換えます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "DNSRecordName": {
+            "value": ""
+        },
+        "IPAddress": {
+            "type":"object"
+        }
+    }
+}
+```
+
+**PowerShell スクリプトを使用してテンプレートをデプロイする**
+
+次のコードを使用して、PowerShell スクリプトを作成します。 スクリプトを実行する前に、サブスクリプション ID、リソース グループ名、その他の変数値を実際の環境の詳細に置き換えます。
+
+```azurepowershell-interactive
+### This script:
+### - creates a private zone
+### - creates a private endpoint for an existing Cosmos DB account in an existing VNet
+### - maps the private endpoint to the private zone
+
+## Step 1: Fill in these details. Replace the variable values with the details for your environment.
+$SubscriptionId = "<your Azure subscription ID>"
+# Resource group where the Azure Cosmos account and virtual network resources are located
+$ResourceGroupName = "myResourceGroup"
+# Name of the Azure Cosmos account
+$CosmosDbAccountName = "mycosmosaccount"
+# API type of the Azure Cosmos account. It can be one of the following: "Sql", "MongoDB", "Cassandra", "Gremlin", "Table"
+$CosmosDbApiType = "Sql"
+# Name of the existing virtual network
+$VNetName = "myVnet"
+# Name of the target subnet in the virtual network
+$SubnetName = "mySubnet"
+# Name of the private zone to create
+$PrivateZoneName = "myPrivateZone.documents.azure.com"
+# Name of the private endpoint to create
+$PrivateEndpointName = "myPrivateEndpoint"
+
+$cosmosDbResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.DocumentDB/databaseAccounts/$($CosmosDbAccountName)"
+$VNetResourceId = "/subscriptions/$($SubscriptionId)/resourceGroups/$($ResourceGroupName)/providers/Microsoft.Network/virtualNetworks/$($VNetName)"
+$SubnetResourceId = "$($VNetResourceId)/subnets/$($SubnetName)"
+$PrivateZoneTemplateFilePath = "PrivateZone_template.json"
+$PrivateZoneParametersFilePath = "PrivateZone_parameters.json"
+$PrivateZoneRecordsTemplateFilePath = "PrivateZoneRecords_template.json"
+$PrivateZoneRecordsParametersFilePath = "PrivateZoneRecords_parameters.json"
+$PrivateEndpointTemplateFilePath = "PrivateEndpoint_template.json"
+$PrivateEndpointParametersFilePath = "PrivateEndpoint_parameters.json"
+
+## Step 2: Login your Azure account and select the target subscription
+Login-AzAccount 
+Select-AzSubscription -SubscriptionId $subscriptionId
+
+## Step 3: Make sure private endpoint network policies are disabled in the subnet
+$VirtualNetwork= Get-AzVirtualNetwork -Name "$VNetName" -ResourceGroupName "$ResourceGroupName"
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq "$SubnetName"} ).PrivateEndpointNetworkPolicies = "Disabled"
+$virtualNetwork | Set-AzVirtualNetwork
+
+## Step 4: Create the private zone
+New-AzResourceGroupDeployment -Name "PrivateZoneDeployment" `
+    -ResourceGroupName $ResourceGroupName `
+    -TemplateFile $PrivateZoneTemplateFilePath `
+    -TemplateParameterFile $PrivateZoneParametersFilePath `
+    -PrivateZoneName $PrivateZoneName `
+    -VNetId $VNetResourceId
+
+## Step 5: Create the private endpoint
+Write-Output "Deploying private endpoint on $($resourceGroupName)"
+$deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpointDeployment" `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile $PrivateEndpointTemplateFilePath `
+    -TemplateParameterFile $PrivateEndpointParametersFilePath `
+    -SubnetId $SubnetResourceId `
+    -ResourceId $CosmosDbResourceId `
+    -GroupId $CosmosDbApiType `
+    -PrivateEndpointName $PrivateEndpointName
+$deploymentOutput
+
+## Step 6: Map the private endpoint to the private zone
+$networkInterface = Get-AzResource -ResourceId $deploymentOutput.Outputs.privateEndpointNetworkInterface.Value -ApiVersion "2019-04-01"
+foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
+    foreach ($fqdn in $ipconfig.properties.privateLinkConnectionProperties.fqdns) {
+        $recordName = $fqdn.split('.',2)[0]
+        $dnsZone = $fqdn.split('.',2)[1]
+        Write-Output "Deploying PrivateEndpoint DNS Record $($PrivateZoneName)/$($recordName) Template on $($resourceGroupName)"
+        New-AzResourceGroupDeployment -Name "PrivateEndpointDNSDeployment" `
+            -ResourceGroupName $ResourceGroupName `
+            -TemplateFile $PrivateZoneRecordsTemplateFilePath `
+            -TemplateParameterFile $PrivateZoneRecordsParametersFilePath `
+            -DNSRecordName "$($PrivateZoneName)/$($RecordName)" `
+            -IPAddress $ipconfig.properties.privateIPAddress
+    }
+}
+```
 
 ## <a name="configure-custom-dns"></a>カスタム DNS の構成
 

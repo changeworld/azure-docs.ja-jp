@@ -13,21 +13,21 @@ ms.date: 07/18/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c79e82680ae81137ee4164e88e62235f934565a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f595013d5404f0cbcb17a0d24d6395a84fa5b607
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028524"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266985"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>2 段階認証またはセキュリティ情報を使ったサインイン方法
 
-2 段階認証またはセキュリティ情報を設定したら、指定した認証方法を使って、アカウントにサインインできるようになります。
+2 段階認証またはセキュリティ情報を設定したら、指定した確認方法を使って、自分のアカウントにサインインできるようになります。
 
 > [!Note]
-> 引き続き 2 段階認証を使用している場合は、「[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)」の手順に従って認証方法を設定する必要があります。
+> 引き続き 2 段階認証を使用している場合は、[アカウントへの 2 段階認証の設定](multi-factor-authentication-end-user-first-time.md)に関する記事の手順に従って確認方法を設定する必要があります。
 >
-> 管理者によってセキュリティ情報エクスペリエンスが有効化されている場合は、次のステップ バイ ステップ記事を使用して認証方法を設定する必要があります。<ul><li>[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)</li><li>[テキスト メッセージを使用するようにセキュリティ情報を設定する](security-info-setup-text-msg.md)</li><li>[電話呼び出しを使用するようにセキュリティ情報を設定する](security-info-setup-phone-number.md)</li><li>[セキュリティ キーを使用するようにセキュリティ情報を設定する](security-info-setup-security-key.md)</li></ul>
+> 管理者によってセキュリティ情報エクスペリエンスが有効化されている場合は、次のステップ バイ ステップ記事を使用して確認方法を設定する必要があります。<ul><li>[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)</li><li>[テキスト メッセージを使用するようにセキュリティ情報を設定する](security-info-setup-text-msg.md)</li><li>[電話呼び出しを使用するようにセキュリティ情報を設定する](security-info-setup-phone-number.md)</li><li>[セキュリティ キーを使用するようにセキュリティ情報を設定する](security-info-setup-security-key.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>モバイル デバイスの認証アプリの通知を使ってサインインする
 

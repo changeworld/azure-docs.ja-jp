@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub Device Provisioning Service で対称キーを使用してレガシ デバイスをプロビジョニングする方法 | Microsoft Docs
+title: 対称キーを使用してレガシ デバイスをプロビジョニングする - Azure IoT Hub Device Provisioning Service
 description: デバイス プロビジョニング サービス インスタンスで対称キーを使用してレガシ デバイスをプロビジョニングする方法 | Microsoft Docs
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 13e22d772ef9b90f415f10b65e4a4290a1f7bd81
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3e3b54592608f5c39d618f5ceda40747ad4fd0fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434821"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209913"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>対称キーを使用してレガシ デバイスをプロビジョニングする方法
 

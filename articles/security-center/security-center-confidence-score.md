@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center の信頼度スコア | Microsoft Docs
-description: " Azure Security Center の信頼度スコアを操作する方法について説明します。 "
+description: Security Center では、脅威が正当であるかどうか、およびアラートのトリアージと優先順位付けの方法をチームが判断するのに役立つ信頼度スコアが生成されます。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: 0f0380ca4a285d9cb4a8472a40c77130a8f63035
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 5b7e53291e10db17f848553b17dae2f84bdb08b7
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202384"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558974"
 ---
 # <a name="alert-confidence-score"></a>アラート信頼度スコア 
 

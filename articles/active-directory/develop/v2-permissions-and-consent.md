@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927149"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271511"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
 
@@ -41,6 +41,7 @@ Microsoft ID プラットフォームでは、[OAuth 2.0](active-directory-v2-pr
 * Microsoft Graph: `https://graph.microsoft.com`
 * Office 365 メール API: `https://outlook.office.com`
 * Azure AD Graph: `https://graph.windows.net`
+* Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
 > Azure AD Graph、Office 365 メール API などではなく、Microsoft Graph を使用することを強くお勧めします。

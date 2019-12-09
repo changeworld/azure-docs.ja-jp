@@ -1,19 +1,14 @@
 ---
-title: Azure Container Instances で readiness probe を構成する
+title: コンテナー インスタンスに readiness probe を設定する
 description: probe を構成して、Azure Container Instances のコンテナーの準備ができたときのみ要求を受信するようにする方法について説明します。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 10/17/2019
-ms.author: danlep
-ms.openlocfilehash: 9cdc8362c377be28a3ed1300b599dc8ebef9e903
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905188"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533557"
 ---
 # <a name="configure-readiness-probes"></a>readiness probe の構成
 

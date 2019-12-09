@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 6779e434339935b64440d7cf617c8946338e36e3
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: c72c65c9d27810ce4ec2df0062dc41d83ed37a6b
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756996"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559101"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>整合性レベルと Azure Cosmos DB API
 
@@ -25,7 +25,7 @@ Casandra API または Azure Cosmos DB の Mongo DB 用 API を使用すると�
 
 ## <a id="cassandra-mapping"></a>Apache Cassandra と Azure Cosmos DB の間の整合性レベルのマッピング
 
-Apache Cassandra は、AzureCosmos DB とは異なり、整合性の保証がネイティブで正確に定義されていません。  代わりに Apache Cassandra には、高可用性、整合性および待機時間とのトレードオフを可能にする、書き込みの整合性レベルと読み取りの整合性レベルがあります。 Azure Cosmos DB の Cassandra API を使用する場合: 
+Apache Cassandra は、Azure Cosmos DB とは異なり、整合性の保証がネイティブで正確に定義されていません。  代わりに Apache Cassandra には、高可用性、整合性および待機時間とのトレードオフを可能にする、書き込みの整合性レベルと読み取りの整合性レベルがあります。 Azure Cosmos DB の Cassandra API を使用する場合: 
 
 * Apache Cassandra の書き込み整合性レベルは、お使いの Azure Cosmos アカウントに構成された既定の整合性レベルにマップされます。 
 

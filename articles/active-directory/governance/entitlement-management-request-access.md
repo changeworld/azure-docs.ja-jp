@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81697293be235c12ca009c76a9fd9d3975e232fc
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173706"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554084"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理でアクセス パッケージへのアクセスを要求する
 
@@ -80,6 +80,30 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 適用されるポリシーが複数あるアクセス パッケージへのアクセスを要求する場合は、ポリシーの選択を求められることがあります。 たとえば、アクセス パッケージ マネージャーは、社内の従業員の 2 つのグループ用に 2 つのポリシーを使用してアクセス パッケージを構成する場合があります。 最初のポリシーでは、60 日間アクセスを許可し、承認を要求する場合があります。 2 番目のポリシーでは、2 日間アクセスを許可し、承認を要求しない場合があります。 このシナリオが発生した場合は、使用するポリシーを選択する必要があります。
 
 ![マイ アクセス ポータル - [アクセスの要求] - 複数のポリシー](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+## <a name="resubmit-a-request"></a>要求を再送信する
+
+アクセス パッケージへのアクセスを要求すると、要求が拒否されたり、承認者が時間内に応答しない場合は、要求が期限切れになったりすることがあります。 アクセスが必要な場合は、再試行して、要求を再送信することができます。 次の手順では、アクセス要求を再送信する方法について説明します。
+
+**事前に必要なロール:** 要求元
+
+1. **マイ アクセス** ポータルにサインインします。
+
+1. 左側のナビゲーション メニューから **[要求の履歴]** をクリックします。
+
+1. 要求を再送信しているアクセス パッケージを検索します。
+
+1. チェック マークをクリックして、アクセス パッケージを選択します。
+
+1. 選択したアクセス パッケージの右側にある青い **[表示]** リンクをクリックします。
+    
+    ![アクセス パッケージと [表示] リンクを選択します](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
+
+    ウィンドウが開き、アクセス パッケージの要求履歴が表示されます。
+    
+    ![[再送信] ボタンを選択します](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
+
+1. ウィンドウの下部にある **[再送信]** ボタンをクリックします。
 
 ## <a name="cancel-a-request"></a>要求を取り消す
 

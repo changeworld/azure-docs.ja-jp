@@ -1,14 +1,14 @@
 ---
 title: 大規模なデータ セットを処理する
-description: Azure Resource Graph の使用時に大きなデータ セットを取得して制御する方法について説明します。
+description: Azure Resource Graph の操作中に大きなデータ セット内のレコードを取得、書式設定、ページング、およびスキップする方法について説明します。
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: a7258534b867c57f89eeb432b579e87070b4fc1d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2c6aca0c468630cee79222bc77bdc20dc9d95b19
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959014"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304003"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>大規模な Azure リソース データ セットの処理
 

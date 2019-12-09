@@ -1,21 +1,21 @@
 ---
-title: Azure Data Box を使用してオンプレミス HDFS ストアから Azure Storage にデータを移行する
+title: Azure Data Box を使用してオンプレミスの HDFS ストアから Azure Storage に移行する
 description: オンプレミス HDFS ストアから Azure Storage にデータを移行する
 author: normesta
 ms.service: storage
-ms.date: 06/11/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 508c67f73bc0e11330b5772b1c1ba3f9bee5e231
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 3360209e9de54d6011a2a430cd2c1fb54a315c43
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255679"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327598"
 ---
-# <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Azure Data Box を使用してオンプレミス HDFS ストアから Azure Storage にデータを移行する
+# <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Azure Data Box を使用してオンプレミスの HDFS ストアから Azure Storage に移行する
 
 Data Box デバイスを使用することにより、Hadoop クラスターのオンプレミス HDFS ストアから Azure Storage (Blob ストレージまたは Data Lake Storage Gen2) にデータを移行できます。 80 TB の Data Box または 770 TB の Data Box Heavy から選択できます。
 

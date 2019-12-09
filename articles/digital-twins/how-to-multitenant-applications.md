@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: 6394d519b93b55358ef9d528f89978d5a3cf3007
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/21/2019
+ms.openlocfilehash: 65e1fa3fe371766566eeeaaa2d33479ea0243d61
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005913"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383366"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Azure Digital Twins でマルチテナント アプリケーションを有効にする
 
@@ -54,7 +54,7 @@ Azure Digital Twins でソリューションを構築する開発者は、単一
 
 - **CUSTOMER** の Azure Active Directory テナント管理者は、[Azure portal](https://portal.azure.com) で以下の手順を実行します。
 
-  1. **[サブスクリプション]** を開きます。
+  1. 上部の Azure の検索フィールドで **[サブスクリプション]** を検索します。 **[サブスクリプション]** を選択します。
   1. **DEVELOPER** のアプリケーションで使用する Azure Active Directory テナントがあるサブスクリプションを選択します。
 
      [![Azure Active Directory のサブスクリプション](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)

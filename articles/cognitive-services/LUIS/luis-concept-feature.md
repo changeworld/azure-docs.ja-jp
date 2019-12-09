@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647418"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280913"
 ---
 # <a name="machine-learned-features"></a>機械学習の特徴 
 
-機械学習では、"*特徴*" がデータを区別するための特性または属性であり、システムを使ってその観察と学習を行います。 Language Understanding (LUIS) では、特徴によって、意図とエンティティに関する重要度が記述および説明されます。
+機械学習では、"_特徴_" がデータを区別するための特性または属性であり、システムを使ってその観察と学習を行います。 Language Understanding (LUIS) では、特徴によって、意図とエンティティに関する重要度が記述および説明されます。
 
 [プレビューの LUIS ポータル](https://preview.luis.ai)における特徴は "_記述子_" です。意図またはエンティティを "_記述_" するために用いられるからです。  
 
@@ -82,7 +82,7 @@ API では、`enabledForAllModels` フラグによって、このモデルのス
 
 ### <a name="entity-as-a-feature-to-another-entity"></a>別のエンティティに対する特徴としてのエンティティ
 
-エンティティ (A) の検出が、別のエンティティ (B) にとって重要である場合は、エンティティ (B) に対する特徴として、エンティティ (A) を追加する必要があります。
+エンティティ (A) の検出が、エンティティ (B) の予測にとって重要である場合は、エンティティ (B) に対する特徴として、エンティティ (A) を追加する必要があります。
 
 たとえば、番地のエンティティ (A) が検出された場合、番地 (A) を検索することで、配送先住所のエンティティ (B) の予測に重みが追加されます。 
 

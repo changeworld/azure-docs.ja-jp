@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: frasim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2abc5434f11bf00c6872775b1336694c04972e95
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: c26197a14e78b1cf1a1e078ba0145eca207206bf
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200221"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561976"
 ---
 # <a name="understand-secure-azure-managed-workstations"></a>セキュリティで保護された Azure マネージド ワークステーションを理解する
 
 セキュリティで保護された分離したワークステーションは、管理者、開発者、重要なサービス オペレーターのような機密性の高い役割のセキュリティには非常に重要です。 クライアント ワークステーションのセキュリティが侵害されると、多くのセキュリティ制御とセキュリティ保証が失敗するか、効果がなくなる可能性があります。
 
-このドキュメントでは、特権アクセス ワークステーション (PAW) として広く知られている、セュリティで保護されたワークステーションを構築するために必要なものについて説明します。 この記事には、最初のセキュリティ制御を設定するための詳細な手順も含まれています。 このガイダンスでは、クラウド ベースのテクノロジがどのようにサービスを管理することができるかについて説明します。 これは、Windows 10RS5、Microsoft Defender Advanced Threat Protection (ATP)、Azure Active Directory、および Intune で導入されたセキュリティ機能に依存します。
+このドキュメントでは、特権アクセス ワークステーション (PAW) として広く知られている、セュリティで保護されたワークステーションを構築するために必要なものについて説明します。 この記事には、最初のセキュリティ制御を設定するための詳細な手順も含まれています。 このガイダンスでは、クラウド ベースのテクノロジがどのようにサービスを管理することができるかについて説明します。 これは、Windows 10RS5、Microsoft Defender Advanced Threat Protection (ATP)、Azure Active Directory、および Microsoft Intune で導入されたセキュリティ機能に依存します。
 
 > [!NOTE]
 > この記事では、セキュリティで保護されたワークステーションの概念とその重要性について説明します。 概念について既によくご存知で、デプロイにスキップする場合は、「[セキュリティで保護されたワークステーションをデプロイする](howto-azure-managed-workstation.md)」をご覧ください。
@@ -52,6 +52,7 @@ ms.locfileid: "73200221"
 * Windows 10 (現在のバージョン) (デバイス正常性構成証明書とユーザー エクスペリエンス用)
 * Defender ATP (クラウド管理によるエンドポイントの保護、検出、および応答用)
 * Azure AD PIM (リソースへのジャストインタイム (JIT) の特権アクセスなどの認証の管理用)
+* Log Analytics、および Sentinel (監視とアラート用)
 
 ## <a name="who-benefits-from-a-secure-workstation"></a>セキュリティで保護されたワークステーションからメリットが得られる人
 
@@ -63,7 +64,7 @@ ms.locfileid: "73200221"
 * SWIFT 支払い端末などの機密性の高いワークステーション
 * 企業機密を扱うワークステーション
 
-リスクを軽減するには、これらのアカウントが使用されている特権ワークステーションに対して、管理者特権でのセキュリティ制御を実装する必要があります。 詳細については、「[Azure Active Directory 機能のデプロイ ガイド](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-checklist-p2)」、[Office 365 ロードマップ](https://aka.ms/o365secroadmap)、および[特権アクセスのセキュリティ保護のロードマップ](https://aka.ms/sparoadmap)に関するページを参照してください。
+リスクを軽減するには、これらのアカウントが使用されている特権ワークステーションに対して、管理者特権でのセキュリティ制御を実装する必要があります。 詳細については、「[Azure Active Directory 機能のデプロイ ガイド](../fundamentals/active-directory-deployment-checklist-p2.md)」、[Office 365 ロードマップ](https://aka.ms/o365secroadmap)、および[特権アクセスのセキュリティ保護のロードマップ](https://aka.ms/sparoadmap)に関するページを参照してください。
 
 ## <a name="why-use-dedicated-workstations"></a>専用のワークステーションを使用する理由
 
@@ -78,16 +79,29 @@ ms.locfileid: "73200221"
 
 ## <a name="supply-chain-management"></a>サプライ チェーン管理
 
-セキュリティで保護されたワークステーションに不可欠なのは、"信頼のルート" と呼ばれる信頼されたワークステーションを使用するサプライ チェーン ソリューションです。 このソリューションでは、信頼のルートで [Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) テクノロジが使用されます。 ワークステーションをセキュリティで保護するため、Autopilot では Microsoft OEM 用に最適化された Windows 10 デバイスが利用できます。 これらのデバイスは、製造元から既知の正常な状態で提供されます。 Autopilot では、セキュリティで保護されていない可能性があるデバイスを再イメージ化する代わりに、Windows デバイスを “ビジネスに即応する” 状態に変換できます。 設定とポリシーを適用し、アプリをインストールし、Windows 10 のエディションも変更します。 たとえば、Autopilot では、高度な機能が使用できるように、デバイスの Windows インストールを Windows 10 Pro から Windows 10 Enterprise に変更することができます。
+セキュリティで保護されたワークステーションに不可欠なのは、"信頼のルート" と呼ばれる信頼されたワークステーションを使用するサプライ チェーン ソリューションです。 信頼のルートのハードウェアの選択で検討する必要があるテクノロジとして、最新のラップトップに搭載されている次のテクノロジが含まれます。 
+
+* [トラステッド プラットフォーム モジュール (TPM) 2.0](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-tpm)
+* [BitLocker ドライブ暗号化](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-bitlocker)
+* [UEFI セキュア ブート](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-secure-boot)
+* [Windows Update 経由で配布されたドライバーとファームウェア](https://docs.microsoft.com/windows-hardware/drivers/dashboard/understanding-windows-update-automatic-and-optional-rules-for-driver-distribution)
+* [仮想化および HVCI 対応](https://docs.microsoft.com/windows-hardware/design/device-experiences/oem-vbs)
+* [ドライバーとアプリの HVCI 対応](https://docs.microsoft.com/windows-hardware/test/hlk/testref/driver-compatibility-with-device-guard)
+* [Windows Hello](https://docs.microsoft.com/windows-hardware/design/device-experiences/windows-hello-biometric-requirements)
+* [DMA I/O 保護](https://docs.microsoft.com/windows/security/information-protection/kernel-dma-protection-for-thunderbolt)
+* [System Guard](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-system-guard/system-guard-how-hardware-based-root-of-trust-helps-protect-windows)
+* [モダン スタンバイ](https://docs.microsoft.com/windows-hardware/design/device-experiences/modern-standby)
+
+このソリューションでは、[Microsoft Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot) テクノロジと最新の技術要件を満たすハードウェアを使用して、信頼のルートをデプロイします。 ワークステーションをセキュリティで保護するため、Autopilot では Microsoft OEM 用に最適化された Windows 10 デバイスが利用できます。 これらのデバイスは、製造元から既知の正常な状態で提供されます。 Autopilot では、セキュリティで保護されていない可能性があるデバイスを再イメージ化する代わりに、Windows デバイスを “ビジネスに即応する” 状態に変換できます。 設定とポリシーを適用し、アプリをインストールし、Windows 10 のエディションも変更します。 たとえば、Autopilot では、高度な機能が使用できるように、デバイスの Windows インストールを Windows 10 Pro から Windows 10 Enterprise に変更することができます。
 
 ![セキュリティで保護されたワークステーションのレベル](./media/concept-azure-managed-workstation/supplychain.png)
 
 ## <a name="device-roles-and-profiles"></a>デバイスのロールとプロファイル
 
-このガイダンスでは、ユーザー、開発者、および IT スタッフにとってより安全性の高いソリューションを作成するのに役立ついくつかのセキュリティ プロファイルとロールについて取り上げています。 これらのプロファイルは、強化された、またはセキュリティで保護されたワークステーションからメリットが得られる一般的なユーザーのために、使いやすさとリスクのバランスを取ります。 ここで提供されている設定の構成は、業界で広く認められている標準に基づいています。 このガイダンスでは、Windows 10 を強化し、デバイスまたはユーザーの侵害に関連するリスクを軽減する方法を示します。 セキュリティ機能とリスクの管理に役立つポリシーとテクノロジを使用します。
+このガイダンスでは、ユーザー、開発者、および IT スタッフにとってより安全性の高いソリューションを作成するのに役立ついくつかのセキュリティ プロファイルとロールについて取り上げています。 これらのプロファイルは、強化された、またはセキュリティで保護されたワークステーションからメリットが得られる一般的なユーザーのために、使いやすさとリスクのバランスを取ります。 ここで提供されている設定の構成は、業界で広く認められている標準に基づいています。 このガイダンスでは、Windows 10 を強化し、デバイスまたはユーザーの侵害に関連するリスクを軽減する方法を示します。 最新のハードウェア テクノロジと信頼のルート デバイスを活用するには、[デバイス正常性構成証明](https://techcommunity.microsoft.com/t5/Intune-Customer-Success/Support-Tip-Using-Device-Health-Attestation-Settings-as-Part-of/ba-p/282643)を使用します。これは、**高セキュリティ** プロファイルで開始すると有効になります。 この機能は、デバイスの初期ブート中に攻撃者が永続性を維持できないようにするために用意されています。 セキュリティ機能とリスクの管理に役立つポリシーとテクノロジを使用します。
 ![セキュリティで保護されたワークステーションのレベル](./media/concept-azure-managed-workstation/seccon-levels.png)
 
-* **低セキュリティ** – 標準的なマネージド ワークステーションは、ほとんどの自宅や小規模企業で手始めとして使用するのに適しています。 これらのデバイスは Azure AD 登録済みで Intune で管理されています。 このプロファイルは、ユーザーにアプリケーションの実行と Web サイトの閲覧を許可します。 [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) などのマルウェア対策ソリューションを有効にする必要があります。
+* **基本的なセキュリティ** – 標準的なマネージド ワークステーションは、ほとんどの自宅や小規模企業で手始めとして使用するのに適しています。 これらのデバイスは Azure AD に登録され、Intune で管理されます。 このプロファイルは、ユーザーにアプリケーションの実行と Web サイトの閲覧を許可します。 [Microsoft Defender](https://www.microsoft.com/windows/comprehensive-security) などのマルウェア対策ソリューションを有効にする必要があります。
 
 * **強化されたセキュリティ** – このエントリ レベルの保護されたソリューションは、ホーム ユーザー、小規模企業のユーザー、および一般的な開発者に適しています。
 
@@ -99,7 +113,7 @@ ms.locfileid: "73200221"
 
 * **特殊** – 攻撃者は、開発者と IT 管理者を標的にします。彼らは、攻撃者にとって関心のあるシステムを変更できるからです。 特殊ワークステーションは、ローカル アプリケーションの管理や Web サイトの制限により、高セキュリティのワークステーションのポリシーを拡張します。 また、ActiveX、Java、ブラウザー プラグイン、およびその他の Windows コントロールなどのリスクの高い生産性機能も制限します。 このプロファイルは、DeviceConfiguration_NCSC - Windows10 (1803) SecurityBaseline スクリプトを使用してデプロイします。
 
-* **セキュリティ保護** – 管理者アカウントを侵害する攻撃者は、データ盗難、データ改ざん、またはサービスの中断によってビジネスに重大な損害を与える可能性があります。 この強化された状態では、ワークステーションによってローカル アプリケーション管理の直接的な制御を制限するすべてのセキュリティ制御とポリシーが有効になります。 セキュリティで保護されたワークステーションには生産性向上ツールがないため、デバイスの侵害がより困難になります。 フィッシング攻撃の最も一般的なベクトルであるメールとソーシャル メディアがブロックされます。  セキュリティ保護されたワークステーションは、Secure Workstation - Windows 10 (1809) SecurityBaseline スクリプトを使用してデプロイできます。
+* **セキュリティ保護** – 管理者アカウントを侵害する攻撃者は、データ盗難、データ改ざん、またはサービスの中断によってビジネスに重大な損害を与える可能性があります。 この強化された状態では、ワークステーションによってローカル アプリケーション管理の直接的な制御を制限するすべてのセキュリティ制御とポリシーが有効になります。 セキュリティで保護されたワークステーションには生産性向上ツールがないため、デバイスの侵害がより困難になります。 フィッシング攻撃の最も一般的なベクトルであるメールとソーシャル メディアがブロックされます。 セキュリティ保護されたワークステーションは、Secure Workstation - Windows 10 (1809) SecurityBaseline スクリプトを使用してデプロイできます。
 
    ![セキュリティ保護されたワークステーション](./media/concept-azure-managed-workstation/secure-workstation.png)
 
@@ -107,8 +121,8 @@ ms.locfileid: "73200221"
 
 * **分離** – このカスタムのオフライン シナリオは、最も極端なものを表しています。 このケースのインストール スクリプトは提供されていません。 サポートされていない、またはパッチが適用されていないレガシ オペレーティング システムを必要とする、ビジネスに不可欠な機能を管理する必要がある場合があります。 たとえば、高価値の生産ラインや生命維持装置などです。 セキュリティは非常に重要であり、クラウド サービスは利用できないため、これらのコンピューターを手動で、または Enhanced Security Admin Environment (ESAE) などの分離された Active Directory フォレスト アーキテクチャを使用して管理および更新できます。 このような状況では、基本の Intune 以外のすべてのアクセス権の削除と ATP 正常性チェックを考慮してください。
 
-  * [Intune ネットワーク通信の要件](https://docs.microsoft.com/intune/network-bandwidth-use)
-  * [ATP ネットワーク通信の要件](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
+   * [Intune ネットワーク通信の要件](https://docs.microsoft.com/intune/network-bandwidth-use)
+   * [ATP ネットワーク通信の要件](https://docs.microsoft.com/azure-advanced-threat-protection/configure-proxy)
 
 ## <a name="next-steps"></a>次の手順
 

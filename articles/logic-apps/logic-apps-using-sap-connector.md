@@ -10,17 +10,17 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 6067a60ed2883ea358dbdfff523b9224175bc5c2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 90348ad05879aff75dadab85af4e905d92228a2d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113565"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287123"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
 > [!IMPORTANT]
-> 以前の SAP アプリケーション サーバーおよび SAP メッセージ サーバー コネクタは、2019 年 11 月 30 日で非推奨になる予定です。 最新の SAP コネクタでは、これらの以前の SAP コネクタが統合されます。そのため、接続の種類を変更する必要がなく、以前のコネクタと完全に互換性があり、多くの追加機能が提供され、SAP .Net コネクタ ライブラリ (SAP NCo) が引き続き使用されます。
+> 以前の SAP アプリケーション サーバーおよび SAP メッセージ サーバー コネクタは、2020 年 2 月 29 日で非推奨になる予定です。 最新の SAP コネクタでは、これらの以前の SAP コネクタが統合されます。そのため、接続の種類を変更する必要がなく、以前のコネクタと完全に互換性があり、多くの追加機能が提供され、SAP .Net コネクタ ライブラリ (SAP NCo) が引き続き使用されます。
 >
 > 古いコネクタを使用するロジック アプリの場合は、非推奨となる日より前に[最新のコネクタに移行](#migrate)してください。 そうしないと、これらのロジック アプリで実行エラーが発生し、SAP システムにメッセージを送信できなくなります。
 
@@ -173,7 +173,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
       ![SAP アクションの完成](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 <a name="add-response"></a>
 
@@ -189,7 +189,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    ![SAP アクションの完成](./media/logic-apps-using-sap-connector/select-sap-body-for-response-action.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 ### <a name="test-your-logic-app"></a>ロジック アプリをテストする
 
@@ -402,7 +402,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    SAP アクションの詳細については、「[IDOC 操作のメッセージ スキーマ](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations)」を参照してください。
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 ### <a name="test-your-logic-app"></a>ロジック アプリをテストする
 
@@ -445,7 +445,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    > }
    > ```
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 ### <a name="test-your-logic-app"></a>ロジック アプリをテストする
 

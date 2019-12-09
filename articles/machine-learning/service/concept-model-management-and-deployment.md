@@ -9,36 +9,35 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: jpe316
 ms.author: jordane
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 19552747db427bf780a140c15f11bed322d1f867
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123607"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420074"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Azure Machine Learning を使用したモデルの管理、デプロイ、監視
 
-この記事では、Azure Machine Learning を使用して、モデルのライフサイクルを管理する方法について説明します。 Azure Machine Learning では Machine Learning Operations (MLOps) のアプローチが使用され、機械学習ソリューションの品質と一貫性を高めています。 
+この記事では、Azure Machine Learning を使用して、モデルのライフサイクルを管理する方法について説明します。 Azure Machine Learning では、Machine Learning Operations (MLOps) の手法を使用します。 MLOps によって、機械学習ソリューションの品質と一貫性が向上します。 
 
 Azure Machine Learning で提供される MLOps 機能は次のとおりです。
 
-- **任意の場所から ML プロジェクトをデプロイする**
-- **運用および ML 関連の問題について ML アプリケーションを監視する** - トレーニングと推論の間でのモデル入力の比較、モデル固有のメトリックの調査、および ML インフラストラクチャに関する監視とアラートの提供を行います。
-- **ML ライフサイクルのエンド ツー エンドの監査証跡を確立するために必要なデータを取り込む** - これには、モデルを公開しているユーザー、変更が行われている理由、モデルがいつ運用環境でデプロイまたは使用されたのかが含まれます。
-- **Azure Machine Learning および Azure DevOps でエンド ツー エンドの ML ライフサイクルを自動化する** - これにより、頻繁にモデルを更新し、新しいモデルをテストし、他のアプリケーションおよびサービスとともに新しい ML モデルを継続的にロールアウトします。
+- **再現可能な ML パイプラインを作成する**。 パイプラインを使用すると、データの準備、トレーニング、およびスコア付けプロセスに対して、反復可能かつ再利用可能な手順を定義できます。
+- **どこからでもモデルを登録、パッケージ化、およびデプロイ**して、モデルの仕様に必要な関連するメタデータを追跡する。
+- **エンドツーエンドの ML ライフサイクルをキャプチャするために必要な管理データを取得する**。モデルを公開しているユーザー、変更が行われている理由、モデルがいつ運用環境でデプロイまたは使用されたかが含まれます。
+- **ML ライフサイクルでのイベントに対する通知とアラート**。実験の完了、モデル登録、モデル デプロイ、およびデータ誤差の検出などです。
+- **運用および ML 関連の問題について ML アプリケーションを監視する**。 トレーニングと推論の間でのモデル入力の比較、モデル固有のメトリックの調査、および ML インフラストラクチャに関する監視とアラートの提供を行います。
+- **Azure Machine Learning および Azure DevOps によって、エンドツーエンドの ML ライフサイクルを自動化する**。これにより、頻繁にモデルを更新し、新しいモデルをテストし、他のアプリケーションおよびサービスとともに新しい ML モデルを継続的にロールアウトします。
 
-MLOps の基本的な概念とそれらを Azure Machine Learning に適用する方法については、次のビデオをご覧ください。
+## <a name="create-reproducible-ml-pipelines"></a>再現可能な ML パイプラインを作成する
 
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GX]
+Azure Machine Learning から ML パイプラインを使用して、モデルのトレーニング プロセスに関連するすべての手順をまとめることができます。
 
-## <a name="deploy-ml-projects-from-anywhere"></a>任意の場所から ML プロジェクトをデプロイする
+ML パイプラインには、データ準備から特徴抽出、さらにはハイパーパラメータ―調整、モデル評価までの手順を含めることができます。 詳細については、「[ML パイプライン](concept-ml-pipelines.md)」をご覧ください。
 
-### <a name="turn-your-training-process-into-a-reproducible-pipeline"></a>トレーニング プロセスを、再現可能なパイプラインに変換する
-Azure Machine Learning の ML パイプラインを使用して、データの準備から、特徴抽出、ハイパーパラメーター調整、モデルの評価まで、モデル トレーニング プロセスに含まれるすべてのステップを結合できます。
-
-詳細については、「[ML パイプライン](concept-ml-pipelines.md)」をご覧ください。
+## <a name="register-package-and-deploy-models-from-anywhere"></a>どこからでもモデルを登録、パッケージ化、およびデプロイする
 
 ### <a name="register-and-track-ml-models"></a>ML モデルを登録および追跡する
 
@@ -46,8 +45,8 @@ Azure Machine Learning の ML パイプラインを使用して、データの�
 
 > [!TIP]
 > 登録済みモデルは、モデルを構成する 1 つまたは複数のファイルの論理コンテナーです。 たとえば、複数のファイルに格納されているモデルがある場合は、Azure Machine Learning ワークスペースに単一モデルとしてそれらを登録することができます。 登録後は、その登録済みモデルをダウンロードするかデプロイし、登録されたすべてのファイルを受信できます。
- 
-登録されたモデルは、名前とバージョンによって識別されます。 モデルを登録するたびに、既存のモデルと同じ名前で登録され、レジストリによってバージョンがインクリメントされます。 モデルの検索時に使用できる追加のメタデータ タグを、登録中に指定することもできます。 Azure Machine Learning は、Python 3.5.2 以上を使用して読み込むことができる任意のモデルをサポートしています。
+
+登録されたモデルは、名前とバージョンによって識別されます。 モデルを登録するたびに、既存のモデルと同じ名前で登録され、レジストリによってバージョンがインクリメントされます。 追加のメタデータ タグは、登録時に指定できます。 これらのタグは、モデルを検索するときに使用されます。 Azure Machine Learning は、Python 3.5.2 以上を使用して読み込むことができる任意のモデルをサポートしています。
 
 > [!TIP]
 > Azure Machine Learning の外部でトレーニングされたモデルを登録することもできます。
@@ -57,7 +56,7 @@ Azure Machine Learning の ML パイプラインを使用して、データの�
 
 ### <a name="package-and-debug-models"></a>モデルをパッケージ化しデバッグする
 
-モデルは、運用環境にデプロイされる前に、Docker イメージにパッケージ化されます。 ほとんどの場合、イメージの作成は、バックグラウンドでデプロイ時に自動的に行われます。 高度なシナリオでは、イメージを手動で指定できます。
+モデルは、運用環境にデプロイされる前に、Docker イメージにパッケージ化されます。 ほとんどの場合、イメージの作成は、バックグラウンドでデプロイ時に自動的に行われます。 イメージは、手動で指定できます。
 
 デプロイで問題が発生した場合は、トラブルシューティングとデバッグを行うためにローカルの開発環境にデプロイできます。
 
@@ -75,7 +74,7 @@ Azure Machine Learning での ONNX の詳細については、「[ML モデル�
 
 ### <a name="use-models"></a>モデルを使用する
 
-トレーニング済みの機械学習モデルは、クラウド上で、またはローカルの開発環境で、Web サービスとしてデプロイできます。 また、Azure IoT Edge デバイスにモデルをデプロイすることもできます。 デプロイでは、推論に CPU、GPU、またはフィールド プログラマブル ゲート アレイ (FPGA) を使用できます。 Power BI からのモデルを使用することもできます。
+トレーニング済みの機械学習モデルは、クラウド上またはローカルで、Web サービスとしてデプロイされます。 また、Azure IoT Edge デバイスにモデルをデプロイすることもできます。 デプロイでは、推論に CPU、GPU、またはフィールド プログラマブル ゲート アレイ (FPGA) を使用します。 Power BI からのモデルを使用することもできます。
 
 モデルを Web サービスまたは IoT Edge デバイスとして使用する場合は、次の項目を指定します。
 
@@ -84,22 +83,14 @@ Azure Machine Learning での ONNX の詳細については、「[ML モデル�
 * モデルとエントリ スクリプトで必要とされる依存関係について記した conda 環境ファイル。
 * モデルとエントリ スクリプトで必要とされるテキストやデータなどすべての追加アセット。
 
-これらのアセットは、Docker イメージにパッケージ化され、Web サービスまたは IoT Edge モジュールとしてデプロイされます。
-
-必要に応じて、デプロイをさらに調整するために次のパラメーターを使用できます。
-
-* GPU の有効化:Docker イメージで GPU サポートを有効にするために使用されます。 イメージは、Azure Container Instances、Azure Kubernetes Service、Azure Machine Learning コンピューティング、Azure Virtual Machines などの Microsoft Azure サービスで使用する必要があります。
-* 追加の docker ファイルの作成手順:Docker イメージを作成するときに実行する追加の Docker 手順を含むファイル。
-* 基本イメージ:基本イメージとして使用するカスタム イメージ。 カスタム イメージを使用しない場合、基本イメージは、Azure Machine Learning から提供されます。
-
 また、ターゲット デプロイ プラットフォームの構成も提供します。 たとえば、Azure Kubernetes Service をデプロイするときの VM ファミリの種類、使用可能なメモリ、およびコアの数です。
 
 イメージが作成されると、Azure Machine Learning で必要なコンポーネントも追加されます。 たとえば、Web サービスを実行し、IoT Edge を操作するために必要なアセットです。
 
-> [!NOTE]
-> Docker イメージで使用される Web サーバーまたは IoT Edge のコンポーネントは変更できません。 Azure Machine Learning では、Microsoft によってテストされサポートされている Web サーバー構成と IoT Edge コンポーネントを使用します。
+#### <a name="batch-scoring"></a>Batch スコアリング
+Batch スコアリングは、ML パイプライン経由でサポートされます。 詳細については、[ビッグ データでのバッチ予測](how-to-run-batch-predictions.md)に関するページをご覧ください。
 
-#### <a name="web-service"></a>Web サービス
+#### <a name="real-time-web-services"></a>リアルタイム Web サービス
 
 次のコンピューティング ターゲットを持つ **Web サービス**でモデルを使用することができます。
 
@@ -126,6 +117,18 @@ Azure Machine Learning での ONNX の詳細については、「[ML モデル�
 Microsoft Power BI は、データ分析への機械学習モデルの使用をサポートします。 詳細については、[Azure Machine Learning の Power BI への統合 (プレビュー)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)に関する記事をご覧ください。
 
 
+## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>エンドツーエンドの ML ライフサイクルをキャプチャするために必要な管理データを取得する
+
+Azure ML を使用すると、すべての ML 資産のエンドツーエンドの監査証跡を追跡できます。 具体的には次の処理が行われます。
+
+- Azure ML が [Git と統合](how-to-set-up-training-targets.md#gitintegration)され、コードが由来しているリポジトリ、ブランチ、コミットについての情報が追跡されます。
+- [Azure ML データセット](how-to-create-register-datasets.md)を使用すると、データの追跡、プロファイル、およびバージョン管理が可能です。 
+- Azure ML 実行履歴により、モデルをトレーニングするために使用されたコード、データ、およびコンピューティングのスナップショットが保存されます。
+- Azure ML モデル レジストリにより、モデルに関連するすべてのメタデータ (それをトレーニングした実験、それがデプロイされている場所、そのデプロイが正常かどうかなど) が取り込まれます。
+
+## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML ライフサイクルでのイベントに関する通知、自動化、アラートを行う
+Azure ML では、Azure EventGrid に重要なイベントが発行され、ML ライフサイクルでのイベントに関する通知と自動化に利用できます。 詳細については、[こちらのドキュメント](how-to-use-event-grid.md)を参照してください。
+
 ## <a name="monitor-for-operational--ml-issues"></a>運用上の問題と ML の問題を監視する
 
 監視により、モデルにどのようなデータが送信されているか、および返される予測を理解することができます。
@@ -134,15 +137,6 @@ Microsoft Power BI は、データ分析への機械学習モデルの使用を�
 
 詳細については、[モデル データ収集を有効にする方法](how-to-enable-data-collection.md)に関するページを参照してください。
 
-
-## <a name="audit-trail-of-the-ml-lifecycle"></a>ML ライフサイクルの監査証跡
-
-Azure ML では、すべての ML 資産のエンド ツー エンドの監査証跡を追跡できます。 具体的には次の処理が行われます。
-
-- Azure ML が [Git と統合](how-to-set-up-training-targets.md#gitintegration)し、コードがどのリポジトリ、ブランチ、コミットから発生しているのかについての情報が追跡されます。
-- [Azure ML データセット](how-to-create-register-datasets.md)により、データの追跡とバージョン管理が容易になります。
-- Azure ML 実行履歴により、モデルをトレーニングするために使用されたコード、データ、コンピューティングのスナップショットが保存されます。
-- Azure ML モデル レジストリにより、モデルに関連するすべてのメタデータ (それをトレーニングした実験、それがデプロイされている場所、そのデプロイが正常かどうかなど) が取り込まれます。
 
 ## <a name="automate-the-ml-lifecycle"></a>ML ライフサイクルを自動化する 
 
@@ -169,6 +163,6 @@ Azure Machine Learning との Azure Pipelines の使用に関する詳細につ�
 
 + [デプロイされたモデルを利用する](how-to-consume-web-service.md)クライアントを作成する
 
-+ [大規模な機械学習](/architecture/data-guide/big-data/machine-learning-at-scale)
++ [大規模な機械学習](/azure/architecture/data-guide/big-data/machine-learning-at-scale)
 
 + [Azure AI リファレンス アーキテクチャとベスト プラクティスのリポジトリ](https://github.com/microsoft/AI)

@@ -1,22 +1,22 @@
 ---
-title: 既存の NPS サーバーを使用して Azure MFA 機能を提供する - Azure Active Directory
+title: NPS を使用して Azure MFA 機能を提供する - Azure Active Directory
 description: クラウドベースの 2 段階認証機能を既存の認証インフラストラクチャに追加する
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8606ad9afb6642fa29cc3cae523c31e129c7ebd
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 8388d5b22cddcf148c68f35758ccdf797abbcd9e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73061481"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420646"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -68,9 +68,9 @@ Windows PowerShell 用 Microsoft Azure Active Directory モジュールは、セ
 
 NPS の拡張機能を使用するすべてのユーザーが、Azure AD Connect を使用して Azure Active Directory に同期され、MFA の対象として登録されている必要があります。
 
-拡張機能をインストールするときに、Azure AD テナントのディレクトリ ID と管理資格情報が必要です。 ディレクトリ ID は [Azure Portal](https://portal.azure.com) で確認できます。 管理者としてサインインし、左側の **[Azure Active Directory]** アイコンを選択して、 **[プロパティ]** を選択します。 **[ディレクトリ ID]** ボックス内の GUID をコピーして保存します。 NPS 拡張機能をインストールする際は、この GUID をテナント ID として使用します。
+拡張機能をインストールするときに、Azure AD テナントのディレクトリ ID と管理資格情報が必要です。 ディレクトリ ID は [Azure Portal](https://portal.azure.com) で確認できます。 管理者としてサインインします。 **[Azure Active Directory]** を探して選択してから、 **[プロパティ]** を選択します。 **[ディレクトリ ID]** ボックス内の GUID をコピーして保存します。 NPS 拡張機能をインストールする際は、この GUID をテナント ID として使用します。
 
-![Azure Active Directory のプロパティでディレクトリ ID を探す](./media/howto-mfa-nps-extension/find-directory-id.png)
+![Azure Active Directory のプロパティでディレクトリ ID を探す](./media/howto-mfa-nps-extension/properties-directory-id.png)
 
 ### <a name="network-requirements"></a>ネットワークの要件
 

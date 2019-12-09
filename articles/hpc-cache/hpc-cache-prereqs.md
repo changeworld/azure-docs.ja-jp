@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: ca7a12f45f8d907ee65df85e349883e4c14af47a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 406b77a428ec725a3d8d070bd60fcd4440a5cb92
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582147"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166470"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -48,7 +48,9 @@ Azure HPC Cache には、次の条件を満たした専用のサブネットが�
 * Azure Blob Storage のエンドポイントなど内部のリソースにアクセスするには、Azure ベースの DNS サーバーが必要です。
 * オンプレミスのストレージにアクセスするためには、ストレージのホスト名を解決できるカスタム DNS サーバーを構成する必要があります。
 
-Blob Storage にだけアクセスできればよいのであれば、Azure に用意されている既定の DNS サーバーをキャッシュに使用できます。 一方、他のリソースにアクセスする必要がある場合は、カスタム DNS サーバーを作成し、Azure 固有の解決要求は Azure DNS サーバーに転送するようそのカスタム DNS サーバーを構成する必要があります (単純な DNS サーバーを使用して、利用可能なすべてのキャッシュ マウント ポイント間でクライアント接続を負荷分散することもできます)。
+Blob Storage にだけアクセスできればよいのであれば、Azure に用意されている既定の DNS サーバーをキャッシュに使用できます。 一方、他のリソースにアクセスする必要がある場合は、カスタム DNS サーバーを作成し、Azure 固有の解決要求は Azure DNS サーバーに転送するようそのカスタム DNS サーバーを構成する必要があります
+
+単純な DNS サーバーを使用して、利用可能なすべてのキャッシュ マウント ポイント間でクライアント接続を負荷分散することもできます。
 
 Azure 仮想ネットワークと DNS サーバーの構成について詳しくは、「[Azure 仮想ネットワーク内のリソースの名前解決](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances)」を参照してください。
 
@@ -58,7 +60,9 @@ Azure 仮想ネットワークと DNS サーバーの構成について詳しく
 
 * キャッシュ インスタンスで仮想ネットワーク インターフェイス (NIC) を作成できる必要があります。 キャッシュを作成するユーザーは、NIC を作成できるだけの権限をサブスクリプションにおいて有している必要があります。
 
-* Blob Storage を使用する場合、Azure HPC Cache には、ストレージ アカウントにアクセスするための承認が必要です。 ロールベースのアクセス制御 (RBAC) を使用して Blob Storage へのアクセス権をキャッシュに与えることができます。 2 つのロールが必要です。ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者です。 ロールを追加するには、[ストレージ ターゲットを追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)する手順に従ってください。
+* Blob Storage を使用する場合、Azure HPC Cache には、ストレージ アカウントにアクセスするための承認が必要です。 ロールベースのアクセス制御 (RBAC) を使用して Blob Storage へのアクセス権をキャッシュに与えます。 2 つのロールが必要です。ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者です。
+
+  ロールを追加するには、[ストレージ ターゲットを追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)する手順に従ってください。
 
 ## <a name="storage-infrastructure"></a>ストレージ インフラストラクチャ
 
@@ -88,7 +92,7 @@ NFS バックエンド ストレージは、互換性のあるハードウェア
 キャッシュと同じ場所にあるストレージ アカウントの使用をお勧めします。
 <!-- clarify location - same region or same resource group or same virtual network? -->
 
-また、キャッシュ アプリケーションには、Azure Storage アカウントへのアクセス権を与える必要があります。 [ストレージ ターゲットを追加する](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)手順の説明に従って、ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者のアクセス ロールをキャッシュに与えます。 ストレージ アカウント所有者ではない場合は、この手順を所有者に依頼してください。
+また、「[アクセス許可](#permissions)」で前述のように、キャッシュ アプリケーションには、Azure Storage アカウントへのアクセス権を与える必要があります。 「[ストレージ ターゲットの追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)」の手順に従い、必要なアクセス ロールをキャッシュに与えます。 ストレージ アカウント所有者ではない場合は、この手順を所有者に依頼してください。
 
 ## <a name="next-steps"></a>次の手順
 

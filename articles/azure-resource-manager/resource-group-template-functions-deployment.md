@@ -1,31 +1,28 @@
 ---
-title: Azure Resource Manager テンプレートの関数 - デプロイ | Microsoft Docs
+title: テンプレート関数 - デプロイ
 description: Azure Resource Manager テンプレートで、デプロイ情報を取得するために使用する関数について説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.date: 11/27/2019
+ms.openlocfilehash: 67540a78e349285be032f696a9ef4b9ba3c7e242
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983989"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561468"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのデプロイ関数 
 
-リソース マネージャーには、テンプレートのセクションから値を取得し、デプロイに関連する値を取得する次の関数が用意されています。
+リソース マネージャーには、現在のデプロイに関連する値を取得する次の関数が用意されています。
 
 * [デプロイ](#deployment)
+* [環境](#environment)
 * [parameters](#parameters)
 * [variables](#variables)
 
 リソース、リソース グループ、サブスクリプションから値を取得する方法については、「 [リソース関数](resource-group-template-functions-resource.md)」を参照してください。
 
-<a id="deployment" />
-
 ## <a name="deployment"></a>deployment
+
 `deployment()`
 
 現在のデプロイ操作に関する情報を返します。
@@ -136,9 +133,106 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 デプロイ関数を使用するサブスクリプションレベルのテンプレートについては、[サブスクリプション デプロイ関数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)に関するページを参照してください。 これは `az deployment create` コマンドまたは `New-AzDeployment` コマンドのいずれかでデプロイされます。
 
-<a id="parameters" />
+## <a name="environment"></a>環境
+
+`environment()`
+
+デプロイに使用される Azure 環境に関する情報を返します。
+
+### <a name="return-value"></a>戻り値
+
+この関数では、現在の Azure 環境のプロパティが返されます。 次の例では、グローバル Azure のプロパティを示しています。 ソブリン クラウドでは、少し異なるプロパティが返される場合があります。
+
+```json
+{
+  "name": "",
+  "gallery": "",
+  "graph": "",
+  "portal": "",
+  "graphAudience": "",
+  "activeDirectoryDataLake": "",
+  "batch": "",
+  "media": "",
+  "sqlManagement": "",
+  "vmImageAliasDoc": "",
+  "resourceManager": "",
+  "authentication": {
+    "loginEndpoint": "",
+    "audiences": [
+      "",
+      ""
+    ],
+    "tenant": "",
+    "identityProvider": ""
+  },
+  "suffixes": {
+    "acrLoginServer": "",
+    "azureDatalakeAnalyticsCatalogAndJob": "",
+    "azureDatalakeStoreFileSystem": "",
+    "azureFrontDoorEndpointSuffix": "",
+    "keyvaultDns": "",
+    "sqlServerHostname": "",
+    "storage": ""
+  }
+}
+```
+
+### <a name="example"></a>例
+
+次のテンプレート例では、環境オブジェクトが返されます。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "environmentOutput": {
+            "value": "[environment()]",
+            "type" : "object"
+        }
+    }
+}
+```
+
+前の例では、グローバル Azure にデプロイされる場合は、次のオブジェクトが返されます。
+
+```json
+{
+  "name": "AzureCloud",
+  "gallery": "https://gallery.azure.com/",
+  "graph": "https://graph.windows.net/",
+  "portal": "https://portal.azure.com",
+  "graphAudience": "https://graph.windows.net/",
+  "activeDirectoryDataLake": "https://datalake.azure.net/",
+  "batch": "https://batch.core.windows.net/",
+  "media": "https://rest.media.azure.net",
+  "sqlManagement": "https://management.core.windows.net:8443/",
+  "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json",
+  "resourceManager": "https://management.azure.com/",
+  "authentication": {
+    "loginEndpoint": "https://login.windows.net/",
+    "audiences": [
+      "https://management.core.windows.net/",
+      "https://management.azure.com/"
+    ],
+    "tenant": "common",
+    "identityProvider": "AAD"
+  },
+  "suffixes": {
+    "acrLoginServer": ".azurecr.io",
+    "azureDatalakeAnalyticsCatalogAndJob": "azuredatalakeanalytics.net",
+    "azureDatalakeStoreFileSystem": "azuredatalakestore.net",
+    "azureFrontDoorEndpointSuffix": "azurefd.net",
+    "keyvaultDns": ".vault.azure.net",
+    "sqlServerHostname": ".database.windows.net",
+    "storage": "core.windows.net"
+  }
+}
+```
 
 ## <a name="parameters"></a>parameters
+
 `parameters(parameterName)`
 
 パラメーター値を返します。 指定したパラメーター名は、テンプレートのパラメーター セクションで定義されている必要があります。
@@ -242,9 +336,8 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 
 パラメーターの使用方法の詳細については、「[Azure Resource Manager テンプレートのパラメーター](template-parameters.md)」を参照してください。
 
-<a id="variables" />
-
 ## <a name="variables"></a>variables
+
 `variables(variableName)`
 
 変数の値を返します。 指定した変数名は、テンプレートの変数セクションで定義されている必要があります。

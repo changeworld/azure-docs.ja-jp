@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 2d9549c88ace63997ff6d17568b6ba5131e8a15f
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 34de38e91d47457d215c7ebf65d04ed2dbae5324
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73083741"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224359"
 ---
 次の表には、各サービス レベル (S1、S2、S3、F1) に関連付けられている制限がリストされています。 各レベルのそれぞれの *ユニット* のコストについては、「 [Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
@@ -41,9 +41,10 @@ ms.locfileid: "73083741"
 | デバイスあたりのクラウドからデバイスへの最大のキューの深さ |50 |
 | クラウドからデバイスへのメッセージに対する <br/> フィードバック メッセージの最大配信数 |100 |
 | クラウドからデバイスへのメッセージに対する <br/> フィードバック メッセージの最大 TTL |2 日 |
-| [デバイス ツインの最大サイズ](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (タグ、報告されるプロパティ、および必要なプロパティ) | 8 KB |
-| デバイス ツイン文字列値の最大サイズ | 4 KB |
-| [デバイス ツインのオブジェクトの最大深度](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 5 |
+| [デバイス ツインの最大サイズ](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) | タグ セクションは 8 KB、必要なプロパティと報告されたプロパティのセクションはそれぞれ 32 KB |
+| デバイス ツイン文字列キーの最大長 | 1 KB |
+| デバイス ツイン文字列値の最大長 | 4 KB |
+| [デバイス ツインのオブジェクトの最大深度](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 10 |
 | ダイレクト メソッドのペイロードの最大サイズ | 128 KB |
 | ジョブ履歴の最大リテンション期間 | 30 日 |
 | 同時ジョブの最大数 | 10 (S3 の場合)、5 (S2 の場合)、1 (S1 の場合) |

@@ -1,5 +1,5 @@
 ---
-title: Azure AD ギャラリー アプリのフェデレーション シングル サインオンを構成する場合の問題 | Microsoft Docs
+title: Azure AD ギャラリー アプリのフェデレーション SSO を構成する際の問題
 description: Azure AD アプリケーション ギャラリーの一覧にあるアプリケーションの SAML を使用してフェデレーション シングル サインオンを構成するときに発生することがある一般的な問題の一部に対処します
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f4e690b440604a312ddfa8cd320ac200c0f40cf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381225"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274652"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成する場合の問題
 

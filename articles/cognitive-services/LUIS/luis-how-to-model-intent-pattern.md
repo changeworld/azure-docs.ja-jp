@@ -9,40 +9,43 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: cbd8ad73ff4a03790dd6b22d5ce33acf09a2b125
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 39b56c5e73c8ce85a020402dafb622b90c536a1e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491368"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143856"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>パターンを追加して予測精度を改善する方法
 LUIS アプリでエンドポイント発話を受信したら、単語の順序と選択を示す[パターン](luis-concept-patterns.md)を使用して、発話の予測精度を改善します。 パターンでは、特定の[構文](luis-concept-patterns.md#pattern-syntax)を使用して、[エンティティ](luis-concept-entity-types.md)、エンティティの[ロール](luis-concept-roles.md)、およびオプションのテキストの場所を示します。
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="add-template-utterance-to-create-pattern"></a>パターンを作成するためのテンプレート発話の追加
+
 1. **[マイ アプリ]** ページでアプリの名前を選択してアプリを開き、左側のパネルの **[アプリのパフォーマンス向上]** の下で **[パターン]** を選択します。
 
-    ![パターン一覧のスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-1.png)
+    > [!div class="mx-imgBorder"]
+    > ![パターン一覧のスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
-2. パターンの適切な意図を選択します。 
+1. パターンの適切な意図を選択します。 
 
-    ![意図の選択](./media/luis-how-to-model-intent-pattern/patterns-2.png)
+1. テンプレート テキスト ボックスに、テンプレートの発話を入力し、Enter キーを押します。 エンティティ名を入力する場合は、正しいパターン エンティティ構文を使用します。 エンティティ構文は `{` で開始します。 エンティティの一覧が表示されます。 正しいエンティティを選択します。 
 
-3. テンプレート テキスト ボックスに、テンプレートの発話を入力し、Enter キーを押します。 エンティティ名を入力する場合は、正しいパターン エンティティ構文を使用します。 エンティティ構文は `{` で開始します。 エンティティの一覧が表示されます。 正しいエンティティを選択し、Enter キーを押します。 
-
-    ![パターンのエンティティのスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-3.png)
+    > [!div class="mx-imgBorder"]
+    > ![パターンのエンティティのスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
     ご自身のエンティティに[ロール](luis-concept-roles.md)が含まれる場合、エンティティ名の後ろにコロンを 1 つ付けて`:`ロールを指定します (`{Location:Origin}` など)。 エンティティのロールの一覧が表示されます。 ロールを選択し、Enter キーを押します。 
 
-    ![ロールを含むエンティティのスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-4.png)
+    > [!div class="mx-imgBorder"]
+    > ![ロールを含むエンティティのスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 
     正しいエンティティを選択したら、パターンを入力して、Enter キーを押します。 パターンの入力が完了したら、ご自身のアプリを[トレーニング](luis-how-to-train.md)します。
 
-    ![両方の型のエンティティを含む入力済みパターンのスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-5.png)
+    > [!div class="mx-imgBorder"]
+    > ![両方の型のエンティティを含む入力済みパターンのスクリーンショット](./media/luis-how-to-model-intent-pattern/patterns-5.png)
 
 ## <a name="train-your-app-after-changing-model-with-patterns"></a>パターンを含むモデルの変更後にアプリをトレーニング
 パターンを追加、編集、削除、または再割り当てしたら、その変更について、エンドポイントのクエリに影響を与えるようにアプリを[トレーニング](luis-how-to-train.md)して[公開](luis-how-to-publish-app.md)します。 

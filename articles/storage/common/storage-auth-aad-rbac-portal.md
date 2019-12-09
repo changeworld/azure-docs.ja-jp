@@ -9,12 +9,12 @@ ms.date: 07/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ad88066ebf19bdcc9bcdb77309ce76828c09ce47
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: b11b2c42087b8724c7d90b87bc33965eb7270dc6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671121"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422004"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する
 
@@ -53,12 +53,12 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 
 ここに示す手順では、コンテナーに対してスコープが指定されたロールを割り当てます。しかし、同じ手順に従って、キューに対してスコープが指定されたロールを割り当てることができます。 
 
-1. [Azure portal](https://portal.azure.com) でストレージ アカウントに移動し、そのアカウントの **[概要]** を表示します。
+1. [Azure portal](https://portal.azure.com) でお使いのストレージ アカウントに移動し、そのアカウントの **[概要]** を表示します。
 1. [サービス] で **[BLOB]** を選択します。 
 1. 割り当てるロールの対象にするコンテナーを見つけて、コンテナーの設定を表示します。 
 1. **[アクセス制御 (IAM)]** を選択して、コンテナーのアクセス制御設定を表示します。 **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
 
-    ![コンテナーのアクセス制御設定を示すスクリーンショット](media/storage-auth-aad-rbac-portal/portal-access-control-container.png)
+    ![コンテナーのアクセス制御設定を示すスクリーンショット](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
 
 1. **[ロールの割り当ての追加]** ボタンをクリックして新しいロールを追加します。
 1. **[ロールの割り当ての追加]** ウィンドウで、割り当てる Azure Storage ロールを選択します。 次に、そのロールの割り当て先となるセキュリティ プリンシパルを検索して見つけます。

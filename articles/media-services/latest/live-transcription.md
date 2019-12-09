@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/27/2019
+ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 98084b9bb6f19d22c7995d3044bb32ceaa947dc5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a85f9f8b9d98f77cf673778f031d8f47f132fbe1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040386"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327347"
 ---
 # <a name="live-transcription-preview"></a>ライブ文字起こし (プレビュー)
 

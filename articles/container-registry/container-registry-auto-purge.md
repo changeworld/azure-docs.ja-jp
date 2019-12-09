@@ -1,27 +1,22 @@
 ---
-title: Azure Container Registry 内のイメージ リソースを自動的に削除する
+title: タグとマニフェストを消去する
 description: 消去コマンドを使用すると、経過時間とタグ フィルターに基づいて Azure コンテナー レジストリから複数のタグとマニフェストを削除できるほか、必要に応じて消去操作をスケジュールすることができます。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
-ms.date: 11/04/2019
-ms.author: danlep
-ms.openlocfilehash: 4fb9eb8a3ef937ce5ed222c7814a8f191e3874f2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 08/14/2019
+ms.openlocfilehash: 65169927f7a1cffa88a2d909217e636417f695cc
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803597"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456472"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure コンテナー レジストリからイメージを自動的に消去する
 
 開発ワークフローの一部として Azure コンテナー レジストリを使用すると、レジストリは短時間で不要なイメージやその他の成果物によりすぐにいっぱいになる可能性があります。 特定の期間よりも前のタグをすべて削除することも、指定した名前フィルターに一致したタグをすべて削除することもできます。 複数の成果物をすばやく削除できるように、この記事では、オンデマンドまたは[スケジュールされた](container-registry-tasks-scheduled.md) ACR タスクとして実行できる `acr purge` コマンドを紹介します。 
 
-`acr purge` コマンドは現在、GitHub の [acr-cli](https://github.com/Azure/acr-cli) リポジトリのソース コードから作成された、パブリック コンテナー イメージ (`mcr.microsoft.com/acr/acr-cli:0.1`) で配布されています。 ACR タスクで、`acr purge` [エイリアス](container-registry-tasks-reference-yaml.md#aliases)を使用してコマンドを実行します。
+`acr purge` コマンドは現在、GitHub の [acr-cli](https://github.com/Azure/acr-cli) リポジトリのソース コードから作成された、パブリック コンテナー イメージ (`mcr.microsoft.com/acr/acr-cli:0.1`) で配布されています。
 
-Azure Cloud Shell または Azure CLI のローカル インストールを使用して、この記事の ACR タスクの例を実行できます。 これをローカルで使用したい場合は、バージョン 2.0.76 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。 
+Azure Cloud Shell または Azure CLI のローカル インストールを使用して、この記事の ACR タスクの例を実行できます。 それをローカルで使用する場合は、バージョン 2.0.69 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。 
 
 > [!IMPORTANT]
 > 現在、この機能はプレビュー段階にあります。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
@@ -63,8 +58,8 @@ Azure CLI コマンドを使用して 1 つのイメージ タグまたはマニ
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
-  filter 'hello-world:.*' --untagged --ago 1d"
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} --filter 'hello-world:.*' --untagged --ago 1d"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -78,8 +73,8 @@ az acr run \
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
-  --filter 'hello-world:.*' --ago 7d"
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 7d"
 
 az acr task create --name purgeTask \
   --cmd "$PURGE_CMD" \
@@ -98,8 +93,8 @@ az acr task create --name purgeTask \
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
-  --filter 'hello-world:.*' --ago 1d --untagged"
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 1d --untagged"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -120,7 +115,8 @@ az acr run \
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged --dry-run"
 
@@ -160,7 +156,8 @@ Number of deleted manifests: 4
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry $Registry \
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged"
 

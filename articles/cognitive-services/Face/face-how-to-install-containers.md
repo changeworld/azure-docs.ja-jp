@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: b3c064ae2dbc37858ca6fe89742161e0dda1784f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 574f6bead9cac384c72d2d0cd35353eb571a9490
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743276"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327036"
 ---
-# <a name="install-and-run-face-containers"></a>Face コンテナーのインストールと実行
+# <a name="install-and-run-face-containers-preview"></a>Face コンテナーのインストールと実行 (プレビュー)
 
 Azure Cognitive Services Face では、画像中の人の顔を検出する、標準化された Docker 用 Linux コンテナーが提供されます。 また、鼻や目などの顔のパーツ、性別、年齢のほか、マシンが予測するその他の顔の特徴など、さまざまな属性が識別されます。 検出に加えて、Face では、同じ画像または異なる画像中の 2 つの顏が同じかどうかを信頼スコアを使って確認できます。 また、Face では顔をデータベースと照合して、似ている顏や同一の顔が既に存在するかどうかを調べることもできます。 さらに、同じ視覚的特徴を使用して、似た顔をグループに整理することもできます。
 

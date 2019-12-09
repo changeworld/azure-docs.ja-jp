@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor for VMs (プレビュー) についてよく寄せられる質問 | Microsoft Docs
-description: Azure Monitor for VMs は、Azure VM オペレーティング システムの正常性およびパフォーマンスの監視と、アプリケーション コンポーネントおよび他のリソースとの依存関係の自動検出を組み合わせ、それらの間の通信をマップする Azure のソリューションです。 この記事ではよくある質問の回答を示します。
+description: アプリケーション コンポーネントとその依存関係を自動的に検出およびマッピングするだけでなく、AzureVM の正常性とパフォーマンスを監視する機能を持つ Azure Monitor for VMs についてよく寄せられる質問への回答を示します。
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/09/2018
-ms.openlocfilehash: 675277a33a5613507297f1c77ee9cef3215b22a2
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 579538996e934c7068c397a284d819f5ddb92f08
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555217"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305455"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Azure Monitor for VMs (プレビュー) についてよく寄せられる質問
 この Microsoft FAQ では、Azure Monitor for VMs についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。

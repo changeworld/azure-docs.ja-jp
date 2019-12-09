@@ -2,7 +2,7 @@
 title: Azure Sentinel に脅威インテリジェンス データを接続する | Microsoft Docs
 description: 脅威インテリジェンス データを Azure Sentinel に接続する方法について説明します。
 documentationcenter: na
-author: rkarlin
+author: cabailey
 manager: rkarlin
 editor: ''
 ms.service: security-center
@@ -10,32 +10,32 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
-ms.author: rkarlin
-ms.openlocfilehash: 44b3830465bf2b5aa06612aa868b086b120f1ece
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.date: 11/22/2019
+ms.author: cabailey
+ms.openlocfilehash: 33edeb04e88a01efafaf69b850ed87120671ed11
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372273"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384136"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する
 
 > [!IMPORTANT]
-> Azure Sentinel の脅威インテリジェンス プラットフォーム データ コネクタは、現在パブリック プレビューです。
+> Azure Sentinel の脅威インテリジェンス データ コネクタは、現在パブリック プレビュー中です。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Azure Sentinel を使用すると、組織で使用されている脅威インジケーターをインポートでき、これにより、セキュリティ アナリストをいっそう適切に既知の脅威を検出して優先順位を付けることができるようになります。 Azure Sentinel の複数の機能が利用可能になるか、強化されます。
+Azure Sentinel を使用すると、組織で使用されている脅威インジケーターをインポートでき、これにより、既知の脅威を検出して優先順位を付けるというセキュリティ アナリストの能力が高まります。 Azure Sentinel の複数の機能が利用可能になるか、強化されます。
 
 - **分析**には、一連のスケジュールされた規則テンプレートが含まれており、これを有効にすると、脅威インジケーターからのログ イベントの一致に基づいてアラートとインシデントを生成できます。
 
-- **ブック**では、Azure Sentinel にインポートされた脅威インジケーターと、脅威インジケーターに一致する分析ルールから生成されたアラートに関する、概要情報が提供されます。
+- **ブック**では、Azure Sentinel にインポートされた脅威インジケーターと脅威インジケーターと一致する分析ルールから生成されたアラートに関する概要情報が提供されます。
 
 - **ハンティング**  クエリを使用すると、セキュリティの調査担当は、一般的な捜索シナリオのコンテキスト内で脅威インジケーターを使用できるようになります。
 
 - **ノートブック**では、異常を調査し、悪意のある動作を捜索するときに、脅威インジケーターを使用できます。
 
-次のセクションの一覧で示す統合された脅威インテリジェンス プラットフォーム (TIP) 製品のいずれかを使用して、または [Microsoft Graph Security tiIndicators API](https://aka.ms/graphsecuritytiindicators) との直接統合を使用することによって、脅威インジケーターを Azure Sentinel にストリーミングできます。
+次のセクションの一覧に示されている統合された脅威インテリジェンス プラットフォーム (TIP) 製品を使用するか、TAXII サーバーに接続するか、[Microsoft Graph Security Indicators API](https://aka.ms/graphsecuritytiindicators) との直接統合を使用することで、脅威インジケーターを Azure Sentinel にストリーミングできます。
 
 ## <a name="integrated-threat-intelligence-platform-products"></a>統合された脅威インテリジェンス プラットフォーム製品
 
@@ -49,6 +49,10 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 
 - [ThreatConnect Platform](https://threatconnect.com/solution/)
 
+    詳細については、[ThreatConnect の Integration](https://threatconnect.com/integrations/) ページに移動し、Microsoft Graph Security API を探してください。
+
+
+## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Azure Sentinel を脅威インテリジェンス プラットフォームに接続する
 
 ## <a name="prerequisites"></a>前提条件  
 
@@ -56,7 +60,7 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 
 - 脅威インジケーターを格納するための、Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可。
 
-## <a name="connect-azure-sentinel-to-your-threat-intelligence-provider"></a>Azure Sentinel を脅威インテリジェンス プロバイダーに接続する
+## <a name="instructions"></a>Instructions
 
 1. Azure Active Directory に[アプリケーションを登録](/graph/auth-v2-service#1-register-your-app)して、アプリケーション ID、アプリケーションシークレット、Azure Active Directory テナント ID を取得します。 Microsoft Graph Security tiIndicators API との直接統合を使用する統合された TIP 製品またはアプリケーションを構成するときに、これらの値が必要になります。
 
@@ -77,6 +81,28 @@ Azure Sentinel を使用すると、組織で使用されている脅威イン�
 6. **[Open connector page]\(コネクタ ページを開く\)** を選択し、 **[接続]** を選択します。
 
 7. Azure Sentinel にインポートされた脅威インジケーターを表示するには、 **[Azure Sentinel - ログ]**  >  **[SecurityInsights]** に移動し、 **[ThreatIntelligenceIndicator]** を展開します。
+
+## <a name="connect-azure-sentinel-to-taxii-servers"></a>Azure Sentinel を TAXII サーバーに接続する
+
+## <a name="prerequisites"></a>前提条件  
+
+- 脅威インジケーターを格納するための、Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可。
+
+- TAXII 2.0 サーバー URI とコレクション ID。
+
+## <a name="instructions"></a>Instructions
+
+1. Azure portal で、 **[Azure Sentinel]**  >  **[データ コネクタ]** に移動し、 **[脅威インテリジェンス - TAXII (プレビュー)]** コネクタを選択します。
+
+2. **[Open connector page]\(コネクタ ページを開く\)** を選択します。
+
+3. 必要な情報とオプションの情報をテキスト ボックスに指定します。
+
+4. **[追加]** を選択して、TAXII 2.0 サーバーへの接続を有効にします。
+
+5. 追加の TAXII 2.0 サーバーがある場合:手順 3 と 手順 4 を繰り返します。
+
+6. Azure Sentinel にインポートされた脅威インジケーターを表示するには、 **[Azure Sentinel - ログ]**  >  **[SecurityInsights]** に移動し、 **[ThreatIntelligenceIndicator]** を展開します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,19 +1,14 @@
 ---
-title: Azure Container Instances のコンテナーの手動での停止または開始
+title: コンテナー グループを手動で停止または開始する
 description: Azure Container Instances のコンテナー グループを手動で停止または開始する方法について説明します。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: c7d46ad8d935e28b5a24e48c85ac2464b55b2669
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c9f8afea33c65df940d02823ec394697d2786d6a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325637"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533424"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Azure Container Instances のコンテナーの手動での停止または開始
 

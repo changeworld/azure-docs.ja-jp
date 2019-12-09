@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Azure Backup で保護されたワークロードの監視'
+title: Azure Backup で保護されたワークロードの監視
 description: この記事では、Azure portal を使用した Azure Backup ワークロードの監視機能と通知機能について説明します。
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Azure Backup; アラート;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: cd9e4e14771744b6275bb1dfe0a96bbef475a123
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090954"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172877"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Azure Backup ワークロードの監視
 

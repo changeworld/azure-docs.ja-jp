@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 15e0b8a5b3ea64148eb78cb376500adac2410a71
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: a9c1ca3ac55c1c995ac858e758d6930b49c5ea1c
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949662"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287008"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux 用 Azure シリアル コンソール
 
@@ -169,7 +169,7 @@ A. はい。 シリアル コンソールは SSH キーを必要としないの�
 ## <a name="next-steps"></a>次の手順
 * シリアル コンソール を使用して [GRUB とシングル ユーザー モードにアクセス](serial-console-grub-single-user-mode.md)します。
 * [NMI および SysRq 呼び出し](serial-console-nmi-sysrq.md)にシリアル コンソールを使用します。
-* シリアル コンソールを使用して[さまざまなディストリビューションで GRUB を有効にする](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/)方法について説明します。
+* シリアル コンソールを使用して、[さまざまなディストリビューションで GRUB を有効にする](serial-console-grub-proactive-configuration.md)方法について学習します。 
 * シリアル コンソールは、[Windows VM](../windows/serial-console.md) でも使用可能です。
 * ブート診断の詳細については、[こちら](boot-diagnostics.md)を参照してください。
 

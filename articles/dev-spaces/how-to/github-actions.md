@@ -1,21 +1,17 @@
 ---
 title: GitHub のアクションと Azure Kubernetes Service
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: GitHub のアクションと Azure Dev Spaces を使用して、プル要求からの変更を Azure Kubernetes Service で直接確認およびテストします。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, GitHub アクション, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 09dc9440628ac5d808f90d086bd88e4f90765c28
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e20efc6b109eeef234dcd621374d25b812cdc0ce
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889729"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483937"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)
 
@@ -35,7 +31,7 @@ Azure Dev Spaces は、プル要求がリポジトリのメイン ブランチ�
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
 * [Azure CLI がインストールされていること][azure-cli-installed]。
-* [Helm 2.13 以上がインストールされていること][helm-installed]。
+* [Helm 2.13 から 2.16 がインストールされていること][helm-installed]。
 * [GitHub アクションが有効になっている][github-actions-beta-signup] GitHub アカウント。
 * AKS クラスターで実行されている [Azure Dev Spaces 自転車共有サンプル アプリケーション](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md)。
 
@@ -184,7 +180,7 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 [github-actions-beta-signup]: https://github.com/features/actions
 [github-action-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikes.yml
 [github-action-bikesharing-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikesharing.yml
-[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [tiller-rbac]: https://helm.sh/docs/using_helm/#role-based-access-control
 [supported-regions]: ../about.md#supported-regions-and-configurations
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md

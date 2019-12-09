@@ -1,23 +1,22 @@
 ---
-title: Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
+title: Azure-SSIS Integration Runtime に対して Azure Active Directory を有効にする
 description: この記事では、Azure-SSIS 統合ランタイムを作成するために、Azure Data Factory のマネージド ID を使用して Azure Active Directory 認証を有効にする方法について説明します。
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 5/14/2019
 author: swinarko
 ms.author: sawinark
-manager: craigg
-ms.openlocfilehash: 5f867126762924906aefada558a65cb68e884f6f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.date: 5/14/2019
+ms.openlocfilehash: 6973e72b06d51241e883038936270fd0931365d7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675665"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217712"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
 

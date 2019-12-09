@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効にする | Microsoft Docs
+title: PowerShell またはテンプレートを使用して Azure Monitor for VMs (クラシック) を有効にする
 description: この記事では、Azure PowerShell または Azure Resource Manager テンプレートを使用して、1 つ以上の Azure 仮想マシンまたは仮想マシン スケール セットで Azure Monitor for VMs を有効にする方法について説明します。
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/14/2019
-ms.openlocfilehash: 25e9848124b84822749d3be4d1ead7b86e6e584e
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 7d5107279654aa883a040a9168eb099a6543caa8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091769"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286234"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure PowerShell または Resource Manager テンプレートを使用して Azure Monitor for VMs (プレビュー) を有効にする
 

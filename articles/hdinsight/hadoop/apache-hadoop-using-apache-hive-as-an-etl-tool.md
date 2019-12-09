@@ -7,13 +7,13 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
-ms.openlocfilehash: 71631cd2394efd6743bc0e80a458fed2678d4be0
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/22/2019
+ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076240"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561769"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>抽出、変換、読み込み (ETL) ツールとして Apache Hive を使用する
 
@@ -21,11 +21,11 @@ ms.locfileid: "71076240"
 
 ## <a name="use-case-and-model-overview"></a>ユース ケースとモデルの概要
 
-次の図に、ETL オートメーションのユース ケースとモデルの概要を示します。 入力データは、適切な出力を生成するために変換されます。  変換中には、データのシェイプおよびデータ型に加えて、データの言語も変更される可能性があります。  ETL プロセスでは、宛先の既存のデータに厳密に合うように、インペリアル法からメートル法への変換、タイム ゾーンの変更、精度の改善を行うことができます。  ETL プロセスでは、常に最新の状態がレポートされるように、または既存のデータに対するさらなる洞察が提供されるように、新しいデータを既存のデータに結合することもできます。  レポート ツールやサービスなどのアプリケーションでは、このデータを目的の形式で利用できます。
+次の図に、ETL オートメーションのユース ケースとモデルの概要を示します。 入力データは、適切な出力を生成するために変換されます。  変換中には、データのシェイプおよびデータ型に加えて、データの言語も変更される可能性があります。  ETL プロセスでは、宛先の既存のデータに厳密に合うように、インペリアル法からメートル法への変換、タイム ゾーンの変更、精度の改善を行うことができます。  ETL プロセスでは、常に最新の状態がレポートされるように、または既存のデータに対するさらなる分析情報が提供されるように、新しいデータを既存のデータに結合することもできます。  レポート ツールやサービスなどのアプリケーションでは、このデータを目的の形式で利用できます。
 
 ![ETL アーキテクチャとしての Apache Hive](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Hadoop は、通常、膨大な数のテキスト ファイル (CSV など) か、数は少ないが頻繁に変更が発生するテキストファイル、あるいはこの両方をインポートする ETL プロセスで使用されます。  Hive は、データを宛先に読み込む前に、データの準備を行うのに優れたツールです。  Hive では、CSV に対するスキーマを作成し SQL に似た言語を使用することで、データを操作する MapReduce プログラムを生成することができます。 
+Hadoop は、通常、膨大な数のテキスト ファイル (CSV など) か、数は少ないが頻繁に変更が発生するテキストファイル、あるいはこの両方をインポートする ETL プロセスで使用されます。  Hive は、データを宛先に読み込む前に、データの準備を行うのに優れたツールです。  Hive では、CSV に対するスキーマを作成し SQL に似た言語を使用することで、データを操作する MapReduce プログラムを生成することができます。
 
 Hive を使用して ETL を実行する一般的な手順は次のとおりです。
 
@@ -38,14 +38,14 @@ Hive を使用して ETL を実行する一般的な手順は次のとおりで�
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
-    
+
     CREATE EXTERNAL TABLE hvac(`date` STRING, time STRING, targettemp BIGINT,
-        actualtemp BIGINT, 
-        system BIGINT, 
-        systemage BIGINT, 
+        actualtemp BIGINT,
+        system BIGINT,
+        systemage BIGINT,
         buildingid BIGINT)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
-    STORED AS TEXTFILE LOCATION 'wasb://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    STORED AS TEXTFILE LOCATION 'wasbs://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
     ```
 
 5. データを変換し、それを宛先に読み込みます。  変換および読み込み時の Hive の使い方は複数あります。
@@ -73,7 +73,7 @@ Hive を使用して、次に示すようなさまざまなターゲットにデ
 * Excel。
 * Azure テーブルと BLOB ストレージ。
 * データが特定の形式に処理される、または特定の種類の情報構造体を含むファイルとしてデータが処理される必要があるアプリケーションまたはサービス。
-* <a href="https://azure.microsoft.com/services/cosmos-db/">CosmosDB</a> などの JSON ドキュメント ストア。
+* [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) などの JSON ドキュメント ストア。
 
 ## <a name="considerations"></a>考慮事項
 

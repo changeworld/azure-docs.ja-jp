@@ -6,59 +6,69 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sgilley
-author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: ee97322e58fe7ab3a1474f55c6294822b8ce90da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: peterlu
+author: peterclu
+ms.date: 11/12/2019
+ms.openlocfilehash: 73facea2b99ee038b16053fd818d93d35da4cbdd
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511832"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196168"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) とは 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Azure Machine Learning 用のデザイナーでは、コードを記述することなく、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、追跡を行うことができます。
+Azure Machine Learning デザイナーを使用すると、対話型キャンバスで[データセット](#datasets)と[モジュール](#module)を視覚的に接続することにより、機械学習モデルを作成できます。 デザイナーの使用を開始する方法については、「[チュートリアル: デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)
 
-プログラミングは必要ありません。[データセット](#datasets)と[モジュール](#module)を視覚的に接続して、モデルを構築します。
+![Azure Machine Learning デザイナーの例](./media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
-デザイナーでは、Azure Machine Learning [ワークスペース](concept-workspace.md)を使用して次の操作を行います。
+デザイナーでは、Azure Machine Learning の[ワークスペース](concept-workspace.md)を使用して、次のような共有リソースが整理されます。
 
-+ ワークスペースで[パイプライン](#pipeline)を作成、編集、実行する
-+ [データセット](#datasets)にアクセスする
-+ ワークスペースで[コンピューティング リソース](#compute)を使用してパイプラインを実行する 
-+ [モデル](concept-azure-machine-learning-architecture.md#models)を登録する
-+ パイプラインを REST エンドポイントとして[公開](#publish)します。
-+ モデルをワークスペースのコンピューティング リソースに、パイプライン エンドポイント (バッチ推論用) またはリアルタイム エンドポイントとして[デプロイ](#deployment)します。
++ [パイプライン](#pipeline)
++ [データセット](#datasets)
++ [コンピューティング リソース](#compute)
++ [登録済みモデル](concept-azure-machine-learning-architecture.md#models)
++ [公開済みパイプライン](#publish)
++ [リアルタイム エンドポイント](#deploy)
 
-![デザイナーの概要](media/ui-concept-visual-interface/overview.png)
+## <a name="model-training-and-deployment"></a>モデルのトレーニングとデプロイ
 
-## <a name="workflow"></a>ワークフロー
-
-デザイナーには、モデルですばやくビルド、テスト、反復処理を行うために、対話型のビジュアル キャンバスが備わっています。 
+デザイナーには、機械学習モデルを構築、テスト、デプロイするためのビジュアルキャンバスが用意されています。 デザイナーを使用すると、次のことができます。
 
 + [データセット](#datasets)と[モジュール](#module)をキャンバスにドラッグ アンド ドロップします。
-+ 複数のモジュールに接続して[パイプライン](#pipeline)を形成します。
-+ Machine Learning Service ワークスペースのコンピューティング リソースを使用してパイプラインを実行します。
-+ パイプラインを編集してもう一度実行することで、モデル デザインを反復処理します。
-+ 準備ができたら、**トレーニング パイプライン**を**予測パイプライン**に変換します。
-+ Python コードが構築されていない状態で再送信する場合は、パイプラインを REST エンドポイントとして[公開](#publish)します。
-+ モデルに他のユーザーがアクセスできるように、推論パイプラインをパイプライン エンドポイントまたはリアルタイム エンドポイントとして[デプロイ](#deployment)します。
++ 複数のモジュールを接続して[パイプラインのドラフト](#pipeline-draft)を作成します。
++ Azure Machine Learning ワークスペースのコンピューティング リソースを使用して、[パイプラインの実行](#pipeline-run)を送信します。
++ **トレーニング パイプライン**を**推論パイプライン**に変換します。
++ パイプラインを REST **パイプライン エンドポイント**に[発行](#publish)し、異なるパラメーターとデータセットを使用して新しいパイプラインの実行を送信します。
+    + **トレーニング パイプライン**を発行し、1 つのパイプラインを再利用して、パラメーターとデータセットを変更しながら、複数のモデルをトレーニングします。
+    + **バッチ推論パイプライン**を発行し、以前にトレーニングしたモデルを使用して、新しいデータで予測を行います。
++ **リアルタイム推論パイプライン**をリアルタイム エンドポイントに[デプロイ](#deploy)して、新しいデータの予測をリアルタイムで行います。
+
+![デザイナーでのトレーニング、バッチ推論、リアルタイム推論のワークフロー図](media/ui-concept-visual-interface/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>パイプライン
 
-ML [パイプライン](concept-azure-machine-learning-architecture.md#ml-pipelines)を最初から作成するか、既存のサンプル パイプラインをテンプレートとして使用します。 パイプラインを実行するたびに、成果物は自分のワークスペースに格納されます。 パイプラインの実行は、[実験](concept-azure-machine-learning-architecture.md#experiments)内にグループ化されます。
+[パイプライン](concept-azure-machine-learning-architecture.md#ml-pipelines)は、ユーザーによって相互に接続されたデータセットと分析モジュールで構成されます。 パイプラインには多くの用途があります。1 つのモデルをトレーニングするパイプラインや、複数のモデルをトレーニングするパイプラインを作成できます。 リアルタイムまたはバッチで予測を行うパイプラインや、データをクリーンアップするだけのパイプラインを作成できます。 パイプラインを使用して、作業を再利用し、プロジェクトを整理することができます。
 
-パイプラインには、接続してモデルを構築するために、データセットと分析モジュールが含まれます。 有効なパイプラインに求められる具体的な条件を以下に示します。
+### <a name="pipeline-draft"></a>パイプラインのドラフト
 
-* データセットはモジュールにのみ接続できる
-* モジュールはデータセットにも別のモジュールにも接続できる
+デザイナーでパイプラインを編集している間、進捗は**パイプラインのドラフト**として保存されます。 いつでも、モジュールの追加または削除、コンピューティング先の構成、パラメーターの作成などを行って、パイプラインのドラフトを編集することができます。
+
+有効なパイプラインには、次のような特徴があります。
+
+* データセットは、モジュールにのみ接続できる。
+* モジュールは、データセットまたは別のモジュールにのみ接続できる。
 * モジュールのすべての入力ポートに、データ フローへの何らかの接続がある
 * 各モジュールの必須パラメーターがすべて設定されている
 
+パイプラインのドラフトを実行する準備ができたら、パイプラインの実行を送信します。
 
-デザイナーの使用を開始する方法については、「[チュートリアル: デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md)」を参照してください。
+### <a name="pipeline-run"></a>パイプラインの実行
+
+パイプラインを実行するたびに、パイプラインの構成とその結果が、**パイプラインの実行**としてワークスペースに格納されます。 任意のパイプラインの実行に戻り、トラブルシューティングや監査のために検査することができます。 パイプラインの実行を**複製**し、編集用に新しいパイプラインのドラフトを作成します。
+
+実行の履歴を整理するために、パイプラインの実行は[実験](concept-azure-machine-learning-architecture.md#experiments)にグループ化されます。 すべてのパイプラインの実行に対して、実験を設定できます。 
 
 ## <a name="datasets"></a>データセット
 
@@ -68,7 +78,7 @@ ML [パイプライン](concept-azure-machine-learning-architecture.md#ml-pipeli
 
 モジュールとは、データに対して実行できるアルゴリズムのことです。 デザイナーには、データのイングレス機能や、プロセスのトレーニング、スコアリング、検証などのさまざまなモジュールが用意されています。
 
-モジュールに一連のパラメーターが含まれている場合、これらを使用してモジュールの内部アルゴリズムを構成することができます。 キャンバスでモジュールを選択すると、モジュールのパラメーターは、キャンバス右側の [プロパティ] ウィンドウに表示されます。 このウィンドウでパラメーターを変更することにより、モデルを微調整できます。
+モジュールに一連のパラメーターが含まれている場合、これらを使用してモジュールの内部アルゴリズムを構成することができます。 キャンバスでモジュールを選択すると、モジュールのパラメーターは、キャンバス右側の [プロパティ] ウィンドウに表示されます。 このウィンドウでパラメーターを変更することにより、モデルを微調整できます。 デザイナーでは、個々のモジュールに対してコンピューティング リソースを設定できます。 
 
 ![モジュールのプロパティ](media/ui-concept-visual-interface/properties.png)
 
@@ -85,21 +95,24 @@ ML [パイプライン](concept-azure-machine-learning-architecture.md#ml-pipeli
 
 コンピューティング先は、自分の Machine Learning [ワークスペース](concept-workspace.md)に接続されています。 [Azure Machine Learning Studio](https://ml.azure.com) で自分のワークスペースのコンピューティング先を管理します。
 
-## <a name="publish"></a>発行
+## <a name="deploy"></a>デプロイ
 
-パイプラインの準備できたら、REST エンドポイントとして公開できます。 [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) は、それを構築した Python コードを使用せずに送信できます。
+リアルタイムの推論を実行するには、**リアルタイム エンドポイント**としてパイプラインをデプロイする必要があります。 リアルタイム エンドポイントでは、外部アプリケーションと自分のスコアリング モデルの間のインターフェイスが作成されます。 リアルタイム エンドポイントを呼び出すと、予測結果がリアルタイムでアプリケーションに返されます。 リアルタイム エンドポイントを呼び出すには、エンドポイントのデプロイ時に作成された API キーを渡します。 エンドポイントは、Web プログラミング プロジェクトで広く使われているアーキテクチャの REST に基づいています。
 
-また、PublishedPipeline を使用して、異なる PipelineParameter 値と入力でパイプラインを再送信することもできます。
-
-## <a name="deployment"></a>Deployment
-
-予測モデルの準備が整ったら、それをデザイナーからパイプライン エンドポイントまたはリアルタイム エンドポイントとしてデプロイします。
-
-パイプライン エンドポイントは PublishedPipeline です。これは、バッチ推論では異なる PipelineParameter 値と入力でパイプラインを再送信することができます。
-
-リアルタイム エンドポイントでは、アプリケーションと自分のスコアリング モデルの間のインターフェイスが提供されます。 外部のアプリケーションでは、スコアリング モデルとリアルタイムで通信できます。 リアルタイム エンドポイントを呼び出すと、予測結果が外部のアプリケーションに返されます。 リアルタイム エンドポイントの呼び出しを実行するには、エンドポイントのデプロイ時に作成された API キーを渡します。 エンドポイントは、Web プログラミング プロジェクトで広く使われているアーキテクチャの REST に基づいています。
+リアルタイム エンドポイントは、Azure Kubernetes Service クラスターにデプロイする必要があります。
 
 モデルのデプロイ方法の詳細については、「[チュートリアル: デザイナーで機械学習モデルをデプロイする](tutorial-designer-automobile-price-deploy.md)」を参照してください。
+
+## <a name="publish"></a>発行
+
+**パイプライン エンドポイント**にパイプラインを発行することもできます。 リアルタイム エンドポイントと同様に、パイプライン エンドポイントでは、REST 呼び出しを使用して、外部アプリケーションから新しいパイプラインの実行を送信することができます。 ただし、パイプライン エンドポイントを使用してリアルタイムでデータを送受信することはできません。
+
+発行されたパイプラインは柔軟性があり、モデルのトレーニングや再トレーニング、バッチ推論の実行、新しいデータの処理などに使用できます。 複数のパイプラインを 1 つのパイプライン エンドポイントに発行し、実行するパイプラインのバージョンを指定できます。
+
+発行されたパイプラインは、各モジュールのパイプライン ドラフトで定義されているコンピューティング リソース上で実行されます。
+
+デザイナーでは、SDK と同じ [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) オブジェクトが作成されます。
+
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>ビジュアル インターフェイスからデザイナーへの移行
 

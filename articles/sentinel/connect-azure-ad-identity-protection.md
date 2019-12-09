@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5dae8c4da46c750f69057f33d593f5bb7396a99e
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 5d73ce12d509b2ccc534e19a27124980f3b60044
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882254"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158887"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Azure AD Identity Protection からデータを接続する
 
@@ -46,7 +46,7 @@ Azure AD Identity Protection がデプロイされ、データを取得してい
 2. **[接続]** をクリックして、Azure AD Identity Protection のイベントの Azure Sentinel へのストリーミングを開始します。
 
 
-6. Azure AD Identity Protection のアラートで Log Analytics の関連スキーマを使用するには、**IdentityProtectionLogs_CL** を検索します。
+6. Azure AD Identity Protection のアラートで Log Analytics の関連スキーマを使用するには、**SecurityAlert** を検索します。
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure AD Identity Protection を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、以下の記事を参照してください。

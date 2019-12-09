@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 507af54b8b4c2e7c67538a1a25a040c7ee5fdfd5
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6cd69ba8abe243daadf5d517ab7c5a224953cc99
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976311"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480640"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>データ ドリブンのスタイルの式 (Web SDK)
 
@@ -375,6 +375,24 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
+次の例では、`coalesce` 式を使用して、指定されたイメージ名のリストからマップ スプライトで使用可能な最初の使用可能なイメージ アイコンを取得します。
+
+```javascript
+var layer = new atlas.layer.SymbolLayer(datasource, null, {
+    iconOptions: {
+        image: [
+            'coalesce',
+
+            //Try getting the image with id 'missing-image'.
+            ['image', 'missing-image'],
+
+            //Specify an image id to fallback to. 
+            'marker-blue'
+        ]
+    }
+});
+``` 
+
 ## <a name="type-expressions"></a>型式
 
 型式では、文字列、数値、ブール値などのさまざまなデータ型をテストおよび変換するためのツールを提供します。
@@ -382,6 +400,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 | 式 | 戻り値の型 | 説明 |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| object | リテラル配列またはオブジェクト値が返されます。 配列またはオブジェクトが式として評価されないようにするには、この式を使用します。 この操作は、式で配列またはオブジェクトを返さなければならない場合に必要となります。 |
+| `['image', string]` | string | 指定されたイメージ ID がマップ イメージ スプライトに読み込まれているかどうかを確認します。 そうである場合は、ID が返されます。それ以外の場合は、null 値が返されます。 |
 | `['to-boolean', value]` | ブール値 | 入力値をブール値に変換します。 入力が空の文字列、`0`、`false`、`null`、`NaN` である場合は、結果は `false` になり、それ以外の場合は `true` になります。 |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 入力値が色に変換されます。 複数の値が指定されている場合は、最初の正常な変換が取得されるまで、それぞれの値が順に評価されます。 いずれの入力も変換できない場合、式はエラーになります。 |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | 可能な場合は、入力値を数値に変換します。 入力が `null` または `false` の場合、結果は 0 になります。 入力が `true` の場合、結果は 1 になります。 入力が文字列である場合は、ECMAScript 言語仕様の [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) 文字列関数を使用して、数値に変換されます。 複数の値が指定されている場合は、最初の正常な変換が取得されるまで、それぞれの値が順に評価されます。 いずれの入力も変換できない場合、式はエラーになります。 |
@@ -400,7 +419,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 >             //Get the entityType value.
 >             ['get', 'entityType'],
 >
->             //If there is no title, try getting the subtitle. 
+>             //If the entity type is 'restaurant', return a different pixel offset. 
 >             'restaurant', ['literal', [0, -10]],
 >
 >             //Default to value.
@@ -665,6 +684,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
  * `'font-scale'` - フォント サイズのスケール ファクターを指定します。 指定されている場合、この値は、個々の文字列に対して `textOptions` の `size` プロパティをオーバーライドします。
  * `'text-font'` - この文字列に使用する 1 つまたは複数のフォント ファミリを指定します。 指定されている場合、この値は、個々の文字列に対して `textOptions` の `font` プロパティをオーバーライドします。
+ * `'text-color'` - レンダリング時にテキストに適用する色を指定します。 
 
 次の疑似コードでは、テキスト フィールドの書式指定式の構造が定義されます。 
 
@@ -674,12 +694,14 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
     input1: string, 
     options1: { 
         'font-scale': number, 
-        'text-font': string[] 
+        'text-font': string[],
+        'text-color': color
     },
     input2: string, 
     options2: { 
         'font-scale': number, 
-        'text-font': string[] 
+        'text-font': string[] ,
+        'text-color': color
     },
     …
 ]
@@ -687,7 +709,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 **例**
 
-次の例では、太字フォントを追加し、機能の `title` プロパティのフォント サイズをスケール アップすることで、テキスト フィールドを書式設定します。 また、この例では、フォント サイズをスケール ダウンして、改行で機能の `subtitle` プロパティを追加します。
+次の例では、太字フォントを追加し、機能の `title` プロパティのフォント サイズをスケール アップすることで、テキスト フィールドを書式設定します。 また、この例では、フォント サイズをスケール ダウンして色を赤にし、改行で機能の `subtitle` プロパティを追加します。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -706,7 +728,10 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
             //Scale the font size down of the subtitle property. 
             ['get', 'subtitle'],
-            { 'font-scale': 0.75 }
+            { 
+                'font-scale': 0.75, 
+                'text-color': 'red' 
+            }
         ]
     }
 });

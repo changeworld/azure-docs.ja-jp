@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f1b2bdcecac0aade21c6c770b2495a1e15ba9bc5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882589"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74174029"
 ---
 # <a name="azure-storage-account-overview"></a>Azure ストレージ アカウントの概要
 
@@ -30,6 +30,7 @@ Azure ストレージ アカウントの作成方法については、「[スト
 汎用 v2 ストレージ アカウントは、最新の Azure Storage の機能をサポートし、汎用 v1 と BLOB ストレージ アカウントのすべての機能が組み込まれています。 汎用 v2 アカウントは、Azure Storage に対してギガバイトあたり最低のキャパシティ価格で提供されます。これは業界内の他社に勝るトランザクション料金でもあります。 汎用 v2 ストレージ アカウントは、次の Azure Storage サービスをサポートします。
 
 - BLOB (すべての種類:ブロック、追加、ページ)
+- Data Lake Gen2
 - ファイル
 - ディスク
 - キュー

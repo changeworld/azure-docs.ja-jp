@@ -1,20 +1,16 @@
 ---
 title: Azure Dev Spaces についてよく寄せられる質問
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/25/2019
 ms.topic: conceptual
 description: Azure Dev Spaces についての一般的ないくつかの質問にお答えします
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 1f25ccd26aed832c068c04198486e769ec980380
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2baab0812061bec7dcf08d35056804313d873889
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072210"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482302"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Azure Dev Spaces についてよく寄せられる質問
 
@@ -48,10 +44,23 @@ Azure Dev Spaces についてよく寄せられる質問に回答します。
 
 はい。[API サーバーの承認済み IP アドレス範囲][aks-auth-range]が有効になっている AKS クラスターで Azure Dev Spaces を使用できます。 クラスターを[作成][aks-auth-range-create]する場合は、[リージョンに基づいて追加の範囲を許可][aks-auth-range-ranges]する必要があります。 また、既存のクラスターを[更新][aks-auth-range-update]して、これらの追加の範囲を許可することもできます。
 
+### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>クラスター ノードのエグレス トラフィックが制限されている AKS クラスターで Azure Dev Spaces を使用できますか?
+
+はい。次の FQDN が許可されていると、[クラスター ノードに対するエグレス トラフィックの制限][aks-restrict-egress-traffic]が有効にされた AKS クラスターで Azure Dev Spaces を使用できます。
+
+| FQDN                                    | Port      | 用途      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS: 443 | linux alpine やその他の Azure Dev Spaces イメージをプルする |
+| gcr.io | HTTP:443 | helm/tiller イメージをプルする |
+| storage.googleapis.com | HTTP:443 | helm/tiller イメージをプルする |
+| azds-<guid>.<location>.azds.io | HTTPS: 443 | コントローラーの Azure Dev Spaces バックエンド サービスと通信する 正確な FQDN は、%USERPROFILE%\.azds\settings.json の "dataplaneFqdn" で確認できます |
+
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
+[aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https

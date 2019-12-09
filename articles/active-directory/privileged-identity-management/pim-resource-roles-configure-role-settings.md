@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a302e723aa898a62bc43ecb38343bcf026dc769e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022938"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74182708"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールの設定を構成する
 
@@ -48,11 +48,22 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
     ![複数の割り当てとアクティブ化の設定を一覧表示する [ロールの設定の詳細] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. **[編集]** を選択して [ロールの設定] ペインを開きます。
+1. **[編集]** を選択して **[ロールの設定]** ペインを開きます。 最初のタブでは、Privileged Identity Management でロールのアクティブ化の構成を更新できます。
 
-    ![割り当てとアクティブ化の設定を更新するためのオプションがある [Edit role settings]/(ロールの設定の編集/) ページ](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![[アクティブ化] タブが開かれている [Edit role settings]\(ロールの設定の編集\) ページ](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 
-    各ロールの [ロールの設定] ウィンドウでは、複数の設定を構成できます。
+1. **[割り当て]** タブまたはページ下部の **[Next: Assignment]\(次へ: 割り当て)** ボタンを選択し、割り当ての設定タブを開きます。これらの設定は、Privileged Identity Management インターフェイス内で行われたロールの割り当てを制御します。
+
+    ![[ロールの設定] ページの [ロールの割り当て] タブ](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
+
+1. **通知** タブまたはページの下部にある **Next:Activation\(次へ: アクティブ化** ボタンから、このロールの通知設定タブを表示します。 これらの設定は、このロールに関連するすべてのメール通知を制御します。
+
+    > [!NOTE]
+    > この通知 UI は、現在 Azure のリージョンとサブスクリプションにわたってロールアウトされています。 これらの詳細な通知を構成できない場合は、1 日または 2 日後にもう一度ご確認ください。
+
+    ![[ロールの設定] ページの [ロールの通知] タブ](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+1. いつでも **[更新]** ボタンを選択して、ロールの設定を更新します。
 
 ## <a name="assignment-duration"></a>割り当て期間
 

@@ -1,5 +1,6 @@
 ---
-title: Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化 | Microsoft Docs
+title: NSG 監査の自動化 - セキュリティ グループ ビュー
+titleSuffix: Azure Network Watcher
 description: このページでは、ネットワーク セキュリティ グループの監査を構成する方法について説明します
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 8e0eddd07fc0c473e4777d9dd90d0b2c64145e34
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f4c553cd144f7c921121aa943e3c40849891f957
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165140"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278057"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Azure Network Watcher のセキュリティ グループ ビューを使用した NSG 監査の自動化
 

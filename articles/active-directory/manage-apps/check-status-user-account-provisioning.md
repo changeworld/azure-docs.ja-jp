@@ -1,5 +1,5 @@
 ---
-title: SaaS アプリケーションへの自動ユーザー アカウント プロビジョニングについてのレポート | Microsoft Docs
+title: SaaS アプリケーションへの自動ユーザー アカウント プロビジョニングについてのレポート
 description: 自動ユーザー アカウント プロビジョニング ジョブの状態を確認する方法と、個々のユーザーのプロビジョニングをトラブルシューティングする方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e5ef4067f22d0e9e015e4d9a646f8b92309010a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033521"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275060"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>チュートリアル:自動ユーザー アカウント プロビジョニングについてのレポート
 

@@ -5,15 +5,15 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 07/20/2019
+ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 535c74fd161019db28e691ff916ad03eaaf07c90
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: f282fce8070d440bdd3a518b4444eb0e67110961
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260369"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559081"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>イベント ハブへの Azure 監視データのストリーム配信
 Azure Monitor では、Azure や他のクラウド、オンプレミスのアプリケーションとサービスに対する包括的なフル スタック監視ソリューションが提供されます。 Azure Monitor を使用してデータを分析し、さまざまな監視シナリオに活用するだけでなく、環境内にある別の監視ツールにそれを送信することが必要な場合もあります。 ほとんどの場合、監視データを外部ツールにストリーム配信するうえで最も効率的なのは、[Azure Event Hubs](/azure/event-hubs/) を使用する方法です。 この記事では、各種ソースからイベント ハブに監視データをストリーム配信する方法について簡単に説明するほか、詳細なガイダンスへのリンクを紹介します。
@@ -57,6 +57,7 @@ Azure Monitor で監視データをイベント ハブにルーティングす�
 | sumologic | 「[イベント ハブから Azure 監査アプリのログを収集する](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)」で、イベント ハブのデータを使用するように SumoLogic を設定する手順が説明されています。 |
 | ArcSight | [ArcSight スマート コネクタ コレクション](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)の一部として、ArcSight Azure イベント ハブ スマート コネクタが提供されています。 |
 | Syslog サーバー | Azure Monitor データを Syslog サーバーに直接ストリーム配信したい場合は、[Azure 関数ベースのソリューション](https://github.com/miguelangelopereira/azuremonitor2syslog/)を使用できます。
+| LogRhythm | LogRhythm を設定してイベント ハブからログを収集するための手順については、[こちら](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)を参照してください。 
 
 
 ## <a name="next-steps"></a>次の手順

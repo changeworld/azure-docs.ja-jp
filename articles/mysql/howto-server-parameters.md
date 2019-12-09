@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: 103e09a0e2b9dd409fa2ddaff1c5311ef9936d22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/19/2019
+ms.openlocfilehash: d589800f62f96510a09d23cb6e8794177121c6dd
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61422129"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419721"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure ポータルを使用して Azure Database for MySQL のサーバー パラメーターを構成する方法
 
@@ -35,30 +35,23 @@ Azure Database for MySQL では、いくつかのサーバー パラメーター
 
 ## <a name="non-configurable-server-parameters"></a>構成不可能なサーバー パラメーター
 
-InnoDB バッファー プールと最大接続数は構成できず、[価格レベル](concepts-service-tiers.md)に関連付けられています。
+InnoDB バッファー プールのサイズは構成できず、ご自分の[価格レベル](concepts-service-tiers.md)に関連付けられています。
 
-|**価格レベル**| **コンピューティング世代**|**仮想コア数**|**InnoDB バッファー プール (MB)**| **最大接続数**|
-|---|---|---|---|--|
-|Basic| Gen 4| 1| 960| 50|
-|Basic| Gen 4| 2| 2560| 100|
-|Basic| Gen 5| 1| 960| 50|
-|Basic| Gen 5| 2| 2560| 100|
-|汎用| Gen 4| 2| 3584| 300|
-|汎用| Gen 4| 4| 7680| 625|
-|汎用| Gen 4| 8| 15360| 1250|
-|汎用| Gen 4| 16| 31232| 2500|
-|汎用| Gen 4| 32| 62976| 5000|
-|汎用| Gen 5| 2| 3584| 300|
-|汎用| Gen 5| 4| 7680| 625|
-|汎用| Gen 5| 8| 15360| 1250|
-|汎用| Gen 5| 16| 31232| 2500|
-|汎用| Gen 5| 32| 62976| 5000|
-|汎用| Gen 5| 64| 125952| 10000|
-|メモリ最適化| Gen 5| 2| 7168| 600|
-|メモリ最適化| Gen 5| 4| 15360| 1250|
-|メモリ最適化| Gen 5| 8| 30720| 2500|
-|メモリ最適化| Gen 5| 16| 62464| 5000|
-|メモリ最適化| Gen 5| 32| 125952| 10000|
+|**Pricing Tier**|**仮想コア数**|**InnoDB バッファー プールのサイズ (MB) <br>(最大 4 TB のストレージをサポートするサーバー)**| **InnoDB バッファー プールのサイズ (MB) <br>(最大 16 TB のストレージをサポートするサーバー)**|
+|:---|---:|---:|---:|
+|Basic| 1| 832| |
+|Basic| 2| 2560| |
+|汎用| 2| 3584| 7168|
+|汎用| 4| 7680| 15360|
+|汎用| 8| 15360| 30720|
+|汎用| 16| 31232| 62464|
+|汎用| 32| 62976| 125952|
+|汎用| 64| 125952| 251904|
+|メモリ最適化| 2| 7168| 14336|
+|メモリ最適化| 4| 15360| 30720|
+|メモリ最適化| 8| 30720| 61440|
+|メモリ最適化| 16| 62464| 124928|
+|メモリ最適化| 32| 125952| 251904|
 
 次に示す追加のサーバー パラメーターは、システム内で構成できません。
 

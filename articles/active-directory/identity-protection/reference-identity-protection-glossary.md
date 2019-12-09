@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5439b8626d1fa0ea502d33455db8b2564fbd45f0
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886690"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232341"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 用語集
 
@@ -45,7 +45,7 @@ Identity Protection ユーザーが手動で設定するリスク検出の状態
 パスワードまたは証明書などの条件に基づいて、認証を使用して検証する必要のある個人またはエンティティです。
 
 ### <a name="identity-risk-detection"></a>ID リスク検出
-Identity Protection が異常としてフラグを付けた AAD イベントです。ID が侵害されていることを示す可能性があります。
+Identity Protection が異常としてフラグを付けた Azure AD イベントです。ID が侵害されていることを示す可能性があります。
 
 ### <a name="ignored-risk-detection"></a>無視 (リスク検出)
 Identity Protection ユーザーが手動で設定するリスク検出の状態です。修復アクションを実行することなく、リスク検出がクローズされたことを示します。

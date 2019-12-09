@@ -1,20 +1,14 @@
 ---
-title: Azure Container Instances でマネージド ID を使用する
-description: ここでは、マネージド ID を使用して、Azure Container Instances から他の Azure サービスに認証する方法を説明します。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: コンテナー グループでマネージド ID を有効にする
+description: ここでは、他のサービスで認証できるマネージド ID を Azure Container Instances で有効にする方法を説明します。
 ms.topic: article
 ms.date: 10/22/2018
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: 773650e5e5e85d4a5fca0b3755f3730921cc5f2e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b5546e8c4b512b584a57e8e4c2ff46c52ab856a0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325941"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533681"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
 

@@ -1,19 +1,14 @@
 ---
-title: Azure Functions 用 Java 開発者向けリファレンス | Microsoft Docs
+title: Azure Functions 用 Java 開発者向けリファレンス
 description: Java を使用して関数を開発する方法について説明します。
-author: ggailey777
-manager: gwallace
-keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ, java
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: glenga
-ms.openlocfilehash: 97c721c504c460856796e296fefc33bf01f002f8
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 50fc4dc278e274109725ff60ea8d438310ce464d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176434"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230395"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 28a0418fd94c03f1fe308c7cd6f17b6d9a331fb0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529356"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481638"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
@@ -146,7 +146,8 @@ Reliable collection は、通常は、パフォーマンスとスループット
 
 - 別のサービスのすべてのパーティションを照会して必要なデータを引き出すサービスを作成します。
 - 別のサービスのすべてのパーティションからデータを受信できるサービスを作成します。
-- 各サービスから外部ストアにデータを定期的にプッシュします。 この方法は、実行する照会が中核となるビジネス ロジックの一部ではない場合のみに適しています。
+- 各サービスから外部ストアにデータを定期的にプッシュします。 外部ストアのデータは古くなるため、この方法は、実行する照会が中核となるビジネス ロジックの一部ではない場合のみに適しています。
+- あるいは、あらゆるレコードにクエリを実行しなければならないデータについては、信頼できるコレクションではなく、データ ストアに直接、格納してください。 これで古いデータの問題が解消されますが、信頼できるコレクションの長所は活用できません。
 
 
 ### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>アクター全体のデータを照会する最善の方法は何ですか。

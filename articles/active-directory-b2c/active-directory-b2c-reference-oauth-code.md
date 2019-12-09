@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1ae3f739d5104ea9a98889f7fbce938b835e84aa
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d738bfb8bcd11c8da4c39d873c7f298b8c49af98
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385939"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167193"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OAuth 2.0 承認コード フロー
 
@@ -115,6 +115,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 |{tenant}| 必須 | Azure AD B2C テナントの名前。|
 |{policy}| 必須| 認証コードの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 |
 | client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。|
+| client_secret | はい (Web アプリの場合) | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 クライアントが安全にクライアント シークレットを格納できる Web アプリのシナリオでは、このフローでクライアント シークレットが使用されます。 ネイティブ アプリ (パブリック クライアント) のシナリオでは、クライアント シークレットは安全に保存できないため、この呼び出しでは使用されません。 クライアント シークレットを使用する場合は、定期的に変更してください。 |
 | grant_type |必須 |付与の種類。 承認コード フローでは、付与の種類には `authorization_code` を指定する必要があります。 |
 | scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できるアクセス トークンをアプリが必要とすることを示します。  `offline_access` スコープは、アプリがリソースに長時間アクセスするには更新トークンが必要になることを示します。  Azure AD B2C に ID トークンを要求するために、`openid` スコープを使用することもできます。 |
 | code |必須 |フローの最初の段階で取得した承認コード。 |
@@ -180,7 +181,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 |{tenant}| 必須 | Azure AD B2C テナントの名前。|
 |{policy} |必須 |元の更新トークンの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 |
 | client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
-| client_secret |必須 |[Azure Portal](https://portal.azure.com) で client_id に関連付けられている client_secret。 |
+| client_secret | はい (Web アプリの場合) | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 クライアントが安全にクライアント シークレットを格納できる Web アプリのシナリオでは、このフローでクライアント シークレットが使用されます。 ネイティブ アプリ (パブリック クライアント) のシナリオでは、クライアント シークレットは安全に保存できないため、この呼び出しでは使用されません。 クライアント シークレットを使用する場合は、定期的に変更してください。 |
 | grant_type |必須 |付与の種類。 この段階の承認コード フローでは、付与の種類には `refresh_token` を指定する必要があります。 |
 | scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できるアクセス トークンをアプリが必要とすることを示します。  `offline_access` スコープは、リソースに長期アクセスするためにアプリは更新トークンを必要とすることを示します。  Azure AD B2C に ID トークンを要求するために、`openid` スコープを使用することもできます。 |
 | redirect_uri |省略可能 |承認コードを受け取った、アプリケーションのリダイレクト URI。 |

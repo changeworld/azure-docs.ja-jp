@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory (Azure AD) で Hybrid Azure Active Directory 参加の実装を計画する方法 | Microsoft Docs
+title: ハイブリッド Azure Active Directory 参加を計画する - Azure Active Directory
 description: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法について説明します。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c016ce349acdfff6145286d9fc07e08db4ed9516
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 3a4f85aeaf2fb263ba2df8f34a51f9e25c212aff
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882812"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379312"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>方法:Hybrid Azure Active Directory 参加の実装を計画する
 
@@ -81,7 +81,7 @@ Hybrid Azure AD 参加は、FIPS に準拠している TPM 2.0 でサポート�
 
 ハイブリッド Azure AD 参加は、ドメイン コントローラー (DC) ロールを実行している Windows Server ではサポートされていません。
 
-資格情報のローミングまたはユーザー プロファイルのローミングを使用している場合、ハイブリッド Azure AD 参加は Windows ダウンレベル デバイスではサポートされていません。
+資格情報のローミングや、ユーザー プロファイルまたは必須のプロファイルのローミングを使用している場合、Hybrid Azure AD 参加は Windows ダウンレベル デバイスではサポートされていません。
 
 システム準備ツール (Sysprep) を使用していて、インストールに **pre-Windows 10 1809** イメージを使用している場合は、そのイメージが既にハイブリッド Azure AD 参加として Azure AD に登録されているデバイスからのものではないことを確認します。
 
@@ -93,7 +93,8 @@ Windows 10 ドメイン参加済みデバイスが既にテナントへの [Azur
 - レジストリ キー HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001 を追加することで、ドメイン参加済みデバイスが Azure AD 登録済みになることを防ぐことができます。
 - Windows 10 1803 では、Windows Hello for Business が構成されている場合、ユーザーは、二重状態のクリーンアップ後に Windows Hello for Business を再設定する必要があります。この問題は KB4512509 で解決されています
 
-
+> [!NOTE]
+> Azure AD 登録済みデバイスは、Intune で管理されている場合、自動的に削除されません。
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の制御された検証を確認する
 

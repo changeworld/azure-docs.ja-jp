@@ -1,19 +1,14 @@
 ---
-title: アプリから Azure Container Registry イメージをビルドする
+title: Cloud Native Buildpack でイメージをビルドする
 description: az acr pack build コマンドを使用して、アプリからコンテナー イメージをビルドし、Dockerfile を使用せずに Azure Container Registry にプッシュします。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 10/24/2019
-ms.author: danlep
-ms.openlocfilehash: 34ef0fe4be00cfa7ce3e73c23eec636784071e56
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 9cd1ae464213027cba3012c93c0ca3894c804750
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965908"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456122"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Cloud Native Buildpacks を使用して、アプリからイメージをビルドしてプッシュする
 

@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/14/2019
-ms.openlocfilehash: c710e2b7c4376fc1725032c86cd02d9a6c8cafac
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 474c2f4f00374ce785b81fe048e11cb353b3078a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090347"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151210"
 ---
 # <a name="monitor-and-improve-performance"></a>パフォーマンスの監視と向上
 
@@ -27,16 +27,16 @@ Azure SQL Database で使用可能なパフォーマンス チューニング �
 
 | パフォーマンス チューニング オプション | 単一データベースとプールされたデータベースのサポート | インスタンス データベースのサポート |
 | :----------------------------- | ----- | ----- |
-| **[[パフォーマンスの概要]](#performance-overview)** - データベースのすべてのパフォーマンス アクティビティを監視します。 | はい | いいえ | 
-| **[[パフォーマンスの推奨事項]](#performance-recommendations)** - ワークロードのパフォーマンスの向上に役立つパフォーマンスの推奨事項が表示されます。 | はい | いいえ | 
-| **[[Query Performance Insight]](#query-performance-insight)** - データベースで負荷の高い上位のクエリのパフォーマンスを表示します。 | はい | いいえ | 
-| **[[自動チューニング]](#automatic-tuning)** - Azure SQL Database を使用してデータベース パフォーマンスを自動的に最適化します。 | はい | いいえ | 
+| **[パフォーマンスの概要]** - データベースのすべてのパフォーマンス アクティビティを監視します。 | はい | いいえ | 
+| **[パフォーマンスの推奨事項]** - ワークロードのパフォーマンスの向上に役立つパフォーマンスの推奨事項が表示されます。 | はい | いいえ | 
+| **[Query Performance Insight]** - データベースで負荷の高い上位のクエリのパフォーマンスを表示します。 | はい | いいえ | 
+| **[自動チューニング]** - Azure SQL Database を使用してデータベース パフォーマンスを自動的に最適化します。 | はい | いいえ | 
 
 ## <a name="performance-overview"></a>パフォーマンスの概要
 
 このビューにデータベースのパフォーマンスの概要が表示され、パフォーマンスのチューニングとトラブルシューティングを実行できます。 
 
-![パフォーマンス](./media/sql-database-performance/performance.png)
+![Azure SQL Database のパフォーマンスの概要](./media/sql-database-performance/performance-overview-annotated.png)
 
 * **[推奨事項]** タイルには、データベースのチューニングに関する推奨事項の内訳が表示されます (推奨事項が 4 つ以上ある場合は、上から 3 番目までが表示されます)。 このタイルをクリックすると、 **[[パフォーマンスの推奨事項]](#performance-recommendations)** が表示されます。 
 * **[Tuning activity]** タイルには、データベースに対して進行中のチューニング操作と完了したチューニング操作の概要が表示され、チューニング操作の履歴を簡単に確認できます。 このタイルをクリックすると、データベースのチューニング履歴がすべて表示されます。
@@ -51,7 +51,7 @@ Azure SQL Database で使用可能なパフォーマンス チューニング �
 * データベースでスキーマの問題が識別された場合の推奨事項。
 * パラメーター化されたクエリがクエリに役立つ場合の推奨事項。
 
-![パフォーマンス](./media/sql-database-performance/recommendations.png)
+![Azure SQL Database のパフォーマンスに関する推奨事項](./media/sql-database-performance/performance-recommendations-annotated.png)
 
 また、過去に適用されたチューニング アクションの履歴すべてを表示することもできます。
 
@@ -65,13 +65,17 @@ Azure SQL Database で使用可能なパフォーマンス チューニング �
 * CPU 消費の多いクエリ。パフォーマンス向上のためのチューニングの対象となる可能性があります。 
 * クエリの詳細にドリルダウンする機能。 
 
-  ![パフォーマンス ダッシュボード](./media/sql-database-query-performance/performance.png)
+  ![Azure SQL Database の Query Performance Insight](./media/sql-database-performance/query-performance-insights-annotated.png)
 
 このページの詳細については、 **[Query Performance Insight の使用方法](sql-database-query-performance.md)** に関する記事を参照してください。
 
 ## <a name="automatic-tuning"></a>自動チューニング
 
-Azure SQL データベースでは、[パフォーマンスの推奨事項](sql-database-advisor.md)を適用することにより、データベース パフォーマンスを自動的にチューニングできます。 詳細については、「[Automatic tuning (自動チューニング)](sql-database-automatic-tuning.md)」を参照してください。 これを有効にするには、[自動チューニングを有効にする方法](sql-database-automatic-tuning-enable.md)に関するページを参照してください。
+Azure SQL データベースでは、[パフォーマンスの推奨事項](sql-database-advisor.md)を適用することにより、データベース パフォーマンスを自動的にチューニングできます。 これを有効にするには、[自動チューニングを有効にする方法](sql-database-automatic-tuning-enable.md)に関するページを参照してください。
+
+  ![Azure SQL Database の自動チューニング](./media/sql-database-performance/automatic-tuning-annotated.png)
+
+詳細については、「[Automatic tuning (自動チューニング)](sql-database-automatic-tuning.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

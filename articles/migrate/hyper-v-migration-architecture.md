@@ -1,17 +1,17 @@
 ---
-title: Azure Migrate Server Migration による Hyper-V の移行のしくみ | Microsoft Docs
-description: Azure Migrate Server Migration での Hyper-V の移行の概要について説明します
+title: Azure Migrate での Hyper-V の移行のしくみについて
+description: Azure Migrate での Hyper-V の移行について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 9148e76a9f2abd369ae595422d785a347e58dfab
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810194"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185874"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Hyper-V のレプリケーションのしくみ
 

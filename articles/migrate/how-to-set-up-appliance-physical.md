@@ -1,17 +1,17 @@
 ---
-title: Azure Migrate Server Assessment での物理サーバーの評価用にアプライアンスを設定する
-description: Azure Migrate Server Assessment を使用した物理サーバーの評価用にアプライアンスを設定する方法について説明します。
+title: 物理サーバー用に Azure Migrate アプライアンスを設定する
+description: 物理サーバー評価用 Azure Migrate アプライアンスの設定方法を学習します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/11/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: a3212e4dac6856a5fd032c731d877453965584ae
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: db67defc72dcc7d913f897c6fb61548c5c33cf52
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907163"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278329"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>物理サーバー用にアプライアンスを設定する
 
@@ -55,14 +55,15 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 2. 次のコマンドを実行して、VHD のハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  アプライアンス バージョン 1.19.05.10 の場合は、生成されたハッシュがこれらの設定と一致する必要があります。
+3.  アプライアンスの最新のバージョンでは、生成されたハッシュがこれらの設定と一致する必要があります。
 
   **アルゴリズム** | **ハッシュ値**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 96fd99581072c400aa605ab036a0a7c0
+  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
 
 
-  
+
 ## <a name="run-the-azure-migrate-installer-script"></a>Azure Migrate インストーラー スクリプトを実行する
 インストーラー スクリプトでは以下が実行されます。
 
@@ -110,7 +111,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
 1. **[ログイン]** をクリックします。 表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
-2. 新しいタブで、自分の Azure 資格情報を使用してサインインします。 
+2. 新しいタブで、自分の Azure 資格情報を使用してサインインします。
     - 自分のユーザー名とパスワードを使用してサインインします。
     - PIN を使用したサインインはサポートされていません。
 3. 正常にサインインした後、Web アプリに戻ります。
@@ -132,14 +133,14 @@ Windows および Linux サーバーごとに 1 セットの資格情報を追�
     - サーバーを削除するには、 **[削除]** を選択します。
 4. 検証後、 **[保存して検出を開始]** をクリックして、検出プロセスを開始します。
 
-これで検出が開始されます。 検出された VM のメタデータが Azure portal に表示されるまでに、約 15 分かかります。 
+これで検出が開始されます。 検出された VM のメタデータが Azure portal に表示されるまでに、約 15 分かかります。
 
 ## <a name="verify-servers-in-the-portal"></a>ポータルでサーバーを確認する
 
 検出の完了後、サーバーがポータルに表示されることを確認できます。
 
 1. Azure Migrate ダッシュボードを開きます。
-2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。 
+2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。
 
 
 ## <a name="next-steps"></a>次の手順

@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall ログ分析のサンプル
-description: Azure Firewall ログ分析のサンプル
+description: Azure Monitor ログを使って、Azure Firewall を分析できます。 サンプル ファイルが、Azure Monitor のビュー デザイナーに組み込まれています。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 714054b8e538b2fb1bfb3fb4f2293636802f3bc4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033976"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168893"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall ログ分析のサンプル
 
@@ -26,7 +26,7 @@ Azure Monitor ログの視覚化の例を構成する方法を次に示します
 
 次の手順を実行して、Log Analytics ワークスペースにビューを追加します。
 
-1. Azure Portal で Log Analytics ワークスペースを開きます。
+1. Azure portal で Log Analytics ワークスペースを開きます。
 2. **[全般]** の下の **[ビュー デザイナー]** を開きます。
 3. **[インポート]** をクリックします。
 4. 前にダウンロードした **AzureFirewall.omsview** ファイルを参照し、選択します。

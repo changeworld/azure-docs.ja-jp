@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 06/05/2019
+ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98ab9ea67ceb1d965e248c93d27cb801ab8c7483
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ea2a66a6b012664a9596a02ea32c1a0b677ee3ea
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033337"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384262"
 ---
 # <a name="azure-disk-encryption-for-windows-vms-faq"></a>Windows VM 用の Azure Disk Encryption に関する FAQ
 
@@ -98,7 +98,17 @@ Azure Disk Encryption を構成するには、最新バージョンの Azure Pow
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Azure Disk Encryption はどのような暗号化方法を使用しますか。
 
-Azure Disk Encryption では、BitLocker AES256 暗号化方法が使用されます (Windows Server 2012 より前のバージョンでは AES256WithDiffuser)。 
+Azure Disk Encryption は、次の BitLocker での暗号化方法を Windows のバージョンに基づき選択します。
+
+| Windows バージョン                 | Version | 暗号化方法        |
+|----------------------------------|--------|--------------------------|
+| Windows Server 2012、Windows 10 以降  | >=1511 |XTS-AES 256 ビット           |
+| Windows Server 2012、Windows 8、8.1、10 以降 | < 1511 |AES 256 ビット *              |
+| Windows Server 2008R2            |        |ディフューザー付き AES 256 ビット |
+
+\* ディフューザー付き AES 256 ビットは、Windows 2012 以降ではサポートされていません。
+
+Windows OS のバージョンを確認するには、お使いの仮想マシンで "winver" ツールを実行します。
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>EncryptFormatAll を使用して、すべてのボリュームの種類を指定した場合、既に暗号化したデータ ドライブ上のデータは消去されますか。
 いいえ、Azure Disk Encryption を使用して既に暗号化されているデータ ドライブのデータは消去されません。 EncryptFormatAll で、OS ドライブが再暗号化されなかったのと同様に、既に暗号化されているデータ ドライブは再暗号化されません。 

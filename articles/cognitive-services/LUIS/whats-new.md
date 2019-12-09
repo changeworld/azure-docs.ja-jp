@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 62ce0ac36223098d013cc75b7f62fc2c68e358ed
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e03c7489268f3ad7076481de4498c5e202f654b6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953377"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280289"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding の新機能
 
@@ -40,7 +40,7 @@ ms.locfileid: "73953377"
     * [分解可能な機械学習エンティティ](tutorial-machine-learned-entity.md) 
 * 高度な言語理解機能 - 少ない労力で[洗練された言語モデルを構築](luis-concept-entity-types.md)します。 
 * モデル レベルで機械学習機能を定義し、モデルを他のモデルへの信号として使用できるようにします。たとえば、エンティティを機能として、意図やその他のエンティティに使用します。
-* 新しい、拡張された[制限](luis-boundaries.md) - フレーズ リストおよびフレーズの合計の最大値、機能制限としての新しいモデル
+* 新しい、拡張された[制限](luis-boundaries.md) - フレーズ リストおよびフレーズの合計のより高い最大値、機能制限としての新しいモデル
 * 深い階層構造の形式でテキストから情報を抽出することで、メッセージ交換アプリケーションをより強力にします。
 
     ![機械学習したエンティティの画像](./media/whats-new/deep-entity-extraction-example.png)

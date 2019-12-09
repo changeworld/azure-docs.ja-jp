@@ -1,20 +1,20 @@
 ---
 title: ゲスト構成ポリシーを作成する方法
-description: Windows VM または Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
-ms.date: 09/20/2019
+description: zure PowerShell を使用して Windows VM または Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
+ms.date: 11/21/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c7b214a07b89f4b66aa32724259b01129b9b7e9
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2e653d07e783425afdcd71f9d58e3569692faaf9
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959475"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407052"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>ゲスト構成ポリシーを作成する方法
 
 ゲスト構成では [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) リソース モジュールを使って、Azure マシンの監査用の構成を作成します。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **auditIfNotExists** がトリガーされて、マシンは**非準拠**と見なされます。
 
-[Azure Policy のゲスト構成](/azure/governance/policy/concepts/guest-configuration)は、マシン内の設定を監査するためにのみ使用できます。 マシン内の設定の修復はまだ利用できません。
+[Azure Policy のゲスト構成](../concepts/guest-configuration.md)は、マシン内の設定を監査するためにのみ使用できます。 マシン内の設定の修復はまだ利用できません。
 
 Azure マシンの状態を検証するための独自の構成を作成するには、次のアクションを使用します。
 
@@ -23,7 +23,7 @@ Azure マシンの状態を検証するための独自の構成を作成する�
 
 ## <a name="add-the-guestconfiguration-resource-module"></a>GuestConfiguration リソース モジュールを追加する
 
-ゲスト構成ポリシーを作成するには、リソース モジュールを追加する必要があります。 このリソース モジュールは、ローカルにインストールされた PowerShell、[Azure Cloud Shell](https://shell.azure.com)、または [Azure PowerShell Docker イメージ](https://hub.docker.com/rsdk-powershell/)で使用できます。
+ゲスト構成ポリシーを作成するには、リソース モジュールを追加する必要があります。 このリソース モジュールは、ローカルにインストールされた PowerShell、[Azure Cloud Shell](https://shell.azure.com)、または [Azure PowerShell Core Docker イメージ](https://hub.docker.com/r/azuresdk/azure-powershell-core)で使用できます。
 
 ### <a name="base-requirements"></a>基本要件
 
@@ -165,7 +165,8 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 - **パス**:出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
 - **ChefProfilePath**: InSpec プロファイルへの完全なパス。 このパラメーターは、Linux を監査するコンテンツを作成する場合にのみサポートされます。
 
-完成したパッケージは、管理対象の仮想マシンからアクセスできる場所に保存されている必要があります。 たとえば、GitHub リポジトリ、Azure リポジトリ、Azure Storage などです。 パッケージを公開したくない場合は、URL に [SAS トークン](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)を含めることができます。 また、マシンの[サービス エンドポイント](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)をプライベート ネットワークに実装することもできますが、この構成はパッケージへのアクセスにのみ適用され、サービスとの通信には適用されません。
+完成したパッケージは、管理対象の仮想マシンからアクセスできる場所に保存されている必要があります。 たとえば、GitHub リポジトリ、Azure リポジトリ、Azure Storage などです。 パッケージを公開したくない場合は、URL に [SAS トークン](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)を含めることができます。
+また、マシンの[サービス エンドポイント](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)をプライベート ネットワークに実装することもできますが、この構成はパッケージへのアクセスにのみ適用され、サービスとの通信には適用されません。
 
 ### <a name="working-with-secrets-in-guest-configuration-packages"></a>ゲスト構成パッケージでのシークレットの使用
 
@@ -412,4 +413,4 @@ Azure Policy ゲスト構成割り当てのトラブルシューティングに�
 
 - [ゲスト構成](../concepts/guest-configuration.md)による VM の監査について学習します。
 - [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](getting-compliance-data.md)方法を学習します。
+- [コンプライアンス データを取得する](get-compliance-data.md)方法を学習します。

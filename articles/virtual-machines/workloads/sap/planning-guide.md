@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d9b9476d8cc62585be7e7003d837607b502c8566
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1b791ac58ada84ac0c2087f266d29bff4bd9c6fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067859"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224706"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -1621,7 +1621,7 @@ SAP ランドスケープを実行し、ハイエンドの DBMS サーバー向�
 
 ![Site-to-site connection between on-premises and Azure (オンプレミスと Azure アセット間のサイト間接続)][planning-guide-figure-2100]
 
-上に示したシナリオでは、オンプレミスのシナリオを示しています。
+上に示したシナリオでは、オンプレミスのシナリオを示しています
 
 最小要件は、安全な通信プロトコル (Azure サービスへのブラウザー アクセス用に SSL/TLS、システム アクセス用に VPN ベースの接続など) を使用することです。 企業が異なる方法で企業ネットワークと Azure 間の VPN 接続に対処することが前提となります。 一部の企業は、すべてのポートを完全に開き、 他の企業は、開く必要があるポートを正確に把握したいと考えています。
 

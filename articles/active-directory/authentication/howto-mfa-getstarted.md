@@ -1,22 +1,22 @@
 ---
-title: Azure Multi-Factor Authentication のデプロイを計画して実行する - Azure Active Directory
+title: Azure Multi-Factor Authentication をデプロイする - Azure Active Directory
 description: Microsoft Azure Multi-Factor Authentication のデプロイの計画
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22e3131a204589a506b2d5f1e2508c37ad3b4100
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847221"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558552"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画
 
@@ -80,7 +80,7 @@ Azure Active Directory Identity Protection によって検出されるリスク�
 
 ## <a name="define-network-locations"></a>ネットワークの場所を定義する
 
-Microsoft では、組織が条件付きアクセスを使用し、[ネームド ロケーション](../conditional-access/location-condition.md#named-locations)を使用してネットワークを定義することを推奨しました。 組織で Identity Protection を使用している場合は、ネームド ロケーションではなく、リスクベースのポリシーを使用することを検討します。
+Microsoft では、組織が条件付きアクセスを使用し、[ネームド ロケーション](../conditional-access/location-condition.md#named-locations)を使用してネットワークを定義することを推奨しています。 組織で Identity Protection を使用している場合は、ネームド ロケーションではなく、リスクベースのポリシーを使用することを検討します。
 
 ### <a name="configuring-a-named-location"></a>ネームド ロケーションを構成する
 

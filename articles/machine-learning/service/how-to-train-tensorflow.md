@@ -1,5 +1,5 @@
 ---
-title: TensorFlow でディープ ラーニング ニューラル ネットワークをトレーニングする
+title: TensorFlow でニューラル ネットワークをトレーニングする
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning を使用して、大規模な TensorFlow トレーニング スクリプトを実行する方法について説明します。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4a055e039e8d7629f3ff1c20c6ce9e4f1533b6b9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2ce3c8c2d28f75d4c1f33d77c7df9e81eed6a822
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931027"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276692"
 ---
 # <a name="build-a-tensorflow-deep-learning-model-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow ディープ ラーニング モデルを構築する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ TensorFlow モデルを一から開発する場合でも、[既存のモデル](
 
     - [Azure Machine Learning SDK をインストールします](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
     - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
-    - [サンプル スクリプト ファイル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` および `utils.py` をダウンロードする
+    - [サンプル スクリプト ファイル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow) `mnist-tf.py` および `utils.py` をダウンロードする
      
     このガイドの完成した [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/tensorflow/deployment/train-hyperparameter-tune-deploy-with-tensorflow/train-hyperparameter-tune-deploy-with-tensorflow.ipynb)は、GitHub サンプル ページにもあります。 このノートブックには、インテリジェントなハイパーパラメーター調整、モデル デプロイ、およびノートブックのウィジェットを示す展開済みセクションが含まれています。
 
@@ -301,7 +301,7 @@ cluster_spec = tf.train.ClusterSpec(cluster)
 
 ## <a name="deployment"></a>Deployment
 
-トレーニングに使用したエスティメーターに関係なく、Azure Machine Learning の他の登録済みモデルとまったく同じ方法で、先ほど登録したモデルをデプロイできます。 デプロイ方法にはモデルの登録に関するセクションが含まれていますが、既にモデルを登録してあるので、デプロイに対する[コンピューティング ターゲットの作成](how-to-deploy-and-where.md#choose-a-compute-target)に直接進んでかまいません。
+今登録したモデルは、どのエスティメーターをトレーニングに使用したかには関係なく、Azure Machine Learning の他のすべての登録済みのモデルとまったく同じ方法でデプロイできます。 デプロイ方法にはモデルの登録に関するセクションが含まれていますが、登録済みのモデルが既にあるため、デプロイのために[コンピューティング先の作成](how-to-deploy-and-where.md#choose-a-compute-target)に直接スキップできます。
 
 ### <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
 

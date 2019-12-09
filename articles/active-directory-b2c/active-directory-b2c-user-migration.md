@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2019
+ms.date: 11/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c8e4027bd8892ff3bf5c598573b7736aea42953f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c01e22cfa96321994c16df6b61a52ebd4137549
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602573"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322931"
 ---
-# <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C:ユーザー移行
+# <a name="migrate-users-to-azure-active-directory-b2c"></a>ユーザーを Azure Active Directory B2C に移行する
 
 ID プロバイダーを Azure Active Directory B2C (Azure AD B2C) に移行する場合は、ユーザー アカウントの移行も必要になる場合があります。 この記事では、既存のユーザー アカウントを ID プロバイダーから Azure AD B2C に移行する方法を説明します。 この記事の内容はこうしなければならないというものではなく、いくつかのシナリオを紹介しています。 どちらの方法が適しているかは、開発者が判断してください。
 
@@ -306,7 +306,17 @@ Azure AD テナントをクリーンアップして Azure AD ディレクトリ�
 
 前述の技術プロファイルは 1 つの入力要求 `signInName` を定義します (メールとして送信)。 サインイン時に、この要求はご利用の RESTful エンドポイントに送信されます。
 
-ご利用の RESTful API 用の技術プロファイルを定義したあと、Azure AD B2C ポリシーがその技術プロファイルを呼び出すようにします。 XML スニペットは、基本ポリシーで定義されている `SelfAsserted-LocalAccountSignin-Email` をオーバーライドします。 また、XML スニペットは、技術プロファイル `LocalAccountUserMigration` を指す ReferenceId を使用して、`ValidationTechnicalProfile` を追加します。
+RESTful API の技術プロファイルを定義した後、既存の `SelfAsserted-LocalAccountSignin-Email` 技術プロファイルを、*TrustFrameworkExtensions.xml* ファイル内でオーバーライドして REST API 技術プロファイルをさらに呼び出すように構成します。
+
+```XML
+<TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+  <ValidationTechnicalProfiles>
+    <ValidationTechnicalProfile ReferenceId="LocalAccountUserMigration" />
+  </ValidationTechnicalProfiles>
+</TechnicalProfile>
+```
+
+次に、`LocalAccountSignIn` 技術プロファイルの `Id` を `LocalAccountUserMigration` に変更します。
 
 ### <a name="step-44-upload-the-policy-to-your-tenant"></a>手順 4.4: ポリシーをテナントにアップロードする
 

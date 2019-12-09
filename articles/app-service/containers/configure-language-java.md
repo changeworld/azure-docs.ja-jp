@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: e63d8f03b26c9039fe4093cf15b13522dbb49af9
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 9625870132d088bf1de6df06f05f0cac41a1e7fa
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081471"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144220"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Azure App Service 向けの Linux Java アプリを構成する
 
@@ -363,40 +363,79 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
 #### <a name="shared-server-level-resources"></a>共有のサーバーレベル リソース
 
-1. 構成がまだ存在しない場合は、SSH を使用して、 */usr/local/tomcat/conf* の内容を、App Service Linux インスタンス上の */home/tomcat/conf* にコピーします。
+サーバーレベルの共有データ ソースを追加するには、Tomcat のserver.xml を編集する必要があります。 まず、[スタートアップ スクリプト](app-service-linux-faq.md#built-in-images)をアップロードし、 **[構成]**  >  **[スタートアップ コマンド]** でスクリプトへのパスを設定します。 [FTP](../deploy-ftp.md) を使用してスタートアップ スクリプトをアップロードできます。
 
-    ```bash
-    mkdir -p /home/tomcat
-    cp -a /usr/local/tomcat/conf /home/tomcat/conf
-    ```
+スタートアップ スクリプトによって、server.xml ファイルへの [xsl 変換](https://www.w3schools.com/xml/xsl_intro.asp)が作成され、結果の xml ファイルが `/usr/local/tomcat/conf/server.xml` に出力されます。 スタートアップ スクリプトでは、apk を使用して libxslt をインストールする必要があります。 xsl ファイルとスタートアップ スクリプトは FTP 経由でアップロードできます。 以下にスタートアップ スクリプトの例を示します。
 
-2. *server.xml* の `<Server>` 要素内に Context 要素を追加します。
+```sh
+# Install libxslt. Also copy the transform file to /home/tomcat/conf/
+apk add --update libxslt
 
-    ```xml
-    <Server>
-    ...
-    <Context>
-        <Resource
-            name="jdbc/dbconnection"
-            type="javax.sql.DataSource"
-            url="${dbuser}"
-            driverClassName="<insert your driver class name>"
-            username="${dbpassword}"
-            password="${connURL}"
-        />
-    </Context>
-    ...
-    </Server>
-    ```
+# Usage: xsltproc --output output.xml style.xsl input.xml
+xsltproc --output /usr/local/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /home/tomcat/conf/server.xml
+```
 
-3. アプリケーションでこのデータ ソースを使用するよう、アプリケーションの *web.xml* を更新します。
+xsl ファイルの例は次のとおりです。 この xsl ファイルの例では、新しいコネクタ ノードが Tomcat server.xml に追加されます。
 
-    ```xml
-    <resource-env-ref>
-        <resource-env-ref-name>jdbc/dbconnection</resource-env-ref-name>
-        <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
-    </resource-env-ref>
-    ```
+```xml
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+
+  <xsl:template match="@* | node()" name="Copy">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="@* | node()" mode="insertConnector">
+    <xsl:call-template name="Copy" />
+  </xsl:template>
+
+  <xsl:template match="comment()[not(../Connector[@scheme = 'https']) and
+                                 contains(., '&lt;Connector') and
+                                 (contains(., 'scheme=&quot;https&quot;') or
+                                  contains(., &quot;scheme='https'&quot;))]">
+    <xsl:value-of select="." disable-output-escaping="yes" />
+  </xsl:template>
+
+  <xsl:template match="Service[not(Connector[@scheme = 'https'] or
+                                   comment()[contains(., '&lt;Connector') and
+                                             (contains(., 'scheme=&quot;https&quot;') or
+                                              contains(., &quot;scheme='https'&quot;))]
+                                  )]
+                      ">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()" mode="insertConnector" />
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- Add the new connector after the last existing Connnector if there is one -->
+  <xsl:template match="Connector[last()]" mode="insertConnector">
+    <xsl:call-template name="Copy" />
+
+    <xsl:call-template name="AddConnector" />
+  </xsl:template>
+
+  <!-- ... or before the first Engine if there is no existing Connector -->
+  <xsl:template match="Engine[1][not(preceding-sibling::Connector)]"
+                mode="insertConnector">
+    <xsl:call-template name="AddConnector" />
+
+    <xsl:call-template name="Copy" />
+  </xsl:template>
+
+  <xsl:template name="AddConnector">
+    <!-- Add new line -->
+    <xsl:text>&#xa;</xsl:text>
+    <!-- This is the new connector -->
+    <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true" 
+               maxThreads="150" scheme="https" secure="true" 
+               keystroreFile="${{user.home}}/.keystore" keystorePass="changeit"
+               clientAuth="false" sslProtocol="TLS" />
+  </xsl:template>
+  
+</xsl:stylesheet>
+```
 
 #### <a name="finalize-configuration"></a>構成を完了する
 

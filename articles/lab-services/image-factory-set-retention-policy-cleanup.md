@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs でイメージ ファクトリを作成する | Microsoft Docs
-description: Azure DevTest Labs でカスタム イメージ ファクトリを作成する方法について説明します。
+title: Azure DevTest Labs でのアイテム保持ポリシーの設定 | Microsoft Docs
+description: DevTest Labs でアイテム保持ポリシーの構成、ファクトリのクリーンアップ、古いイメージの削除を行う方法について説明します。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf1c18fc799014ad862c93076d695f2516c6363d
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622578"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560169"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Azure DevTest Labs でカスタム イメージ ファクトリを作成する
 この記事では、保持ポリシーの設定、ファクトリのクリーンアップ、および組織内の他のすべての DevTest Labs からの古いイメージの回収を取り上げます。 

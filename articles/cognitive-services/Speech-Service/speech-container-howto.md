@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 3d9373067c78f1fe0fa0b414886c30f2ed3c1c9f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132609"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325864"
 ---
-# <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
+# <a name="install-and-run-speech-service-containers-preview"></a>Speech サービス コンテナーをインストールして実行する (プレビュー)
 
 コンテナーを使用すると、独自の環境で一部の Speech Service API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Speech コンテナーをダウンロード、インストール、実行する方法について説明します。
 
@@ -155,10 +155,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 
 #### <a name="speech-to-text-locales"></a>音声テキスト変換ロケール
 
-`latest` を除くすべてのタグは次の形式になっています。ここで、`<culture>` はロケール コンテナーを示します。
+`latest` を除くすべてのタグは、次の形式であり、大文字と小文字が区別されます。
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
 ```
 
 次のタグは、この形式の例です。
@@ -197,10 +197,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 #### <a name="text-to-speech-locales"></a>テキスト読み上げロケール
 
-`latest` を除くすべてのタグは次の形式になっています。ここで、`<culture>` はロケールを示し、`<voice>` はコンテナーの音声を示します。
+`latest` を除くすべてのタグは、次の形式であり、大文字と小文字が区別されます。
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<voice>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
 ```
 
 次のタグは、この形式の例です。

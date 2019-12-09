@@ -2,17 +2,15 @@
 title: Azure Functions の Premium プラン
 description: Azure Functions の Premium プランの詳細と構成オプション (VNet、コールド スタートなし、無制限の実行期間)。
 author: jeffhollan
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 8cda3ce85e6e7e9d5d7787406eb3b9785c1f7724
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719041"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532898"
 ---
 # <a name="azure-functions-premium-plan"></a>Azure Functions の Premium プラン
 
@@ -31,7 +29,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 
 この例の `<RESOURCE_GROUP>` と `<PLAN_NAME>` は、それぞれ実際のリソース グループおよびリソース グループ内で一意となる実際のプランの名前に置き換えてください。 [サポートされる `<REGION>`](#regions) を指定します。 Linux をサポートする Premium プランを作成するには、`--is-linux` オプションを指定します。
 
-プランが作成されたら、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) を使用して関数アプリを作成できます。 ポータルで、プランとアプリの両方が同時に作成されます。 
+プランが作成されたら、[az functionapp create](/cli/azure/functionapp#az-functionapp-create) を使用して関数アプリを作成できます。 ポータルで、プランとアプリの両方が同時に作成されます。 完全な Azure CLI スクリプトの例については、「[Premium プランの関数アプリを作成する](scripts/functions-cli-create-premium-plan.md)」を参照してください。
 
 ## <a name="features"></a>機能
 
@@ -65,9 +63,9 @@ Premium プランで関数アプリにサブネットを割り当てるときは
 
 従量課金プランと同じ高速スケーリング ロジックを使用して、追加のコンピューティング インスタンスが自動的にアプリのために追加されます。  スケーリングのしくみの詳細については、[関数のスケールとホスティング](./functions-scale.md#how-the-consumption-and-premium-plans-work)に関するページを参照してください。
 
-### <a name="unbounded-run-duration"></a>無制限の実行継続時間
+### <a name="longer-run-duration"></a>実行継続時間の延長
 
-Azure Functions の従量課金プランでは、1 回の実行が 10 分までに制限されています。  Premium プランでは、実行中の暴走を防ぐために、実行継続時間の既定値が 30 分になっています。 ただし、[host.json 構成を変更](./functions-host-json.md#functiontimeout)して、Premium プランのアプリでこれを無制限にすることができます。
+Azure Functions の従量課金プランでは、1 回の実行が 10 分までに制限されています。  Premium プランでは、実行中の暴走を防ぐために、実行継続時間の既定値が 30 分になっています。 ただし、[host.json 構成を変更](./functions-host-json.md#functiontimeout)して、Premium プランのアプリでこれを 60 分にすることができます。
 
 ## <a name="plan-and-sku-settings"></a>プランと SKU の設定
 

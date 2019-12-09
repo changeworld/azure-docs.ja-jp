@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c44228d7e1456bce870765935beb011cb24626d5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113588"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790937"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Azure Cognitive Search におけるインデックスの増分作成とは
 
@@ -47,7 +47,7 @@ ms.locfileid: "74113588"
     },
     "fieldMappings" : [],
     "outputFieldMappings": [],
-    "parameters":{}
+    "parameters": {}
 }
 ```
 

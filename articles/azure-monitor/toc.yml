@@ -563,7 +563,7 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: クラウド サービス
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: JSON Lines 診断ログの形式
+                    - name: JSON Lines リソース ログの形式
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: トラブルシューティング
                       href: platform/diagnostics-extension-troubleshooting.md
@@ -1163,7 +1163,7 @@
           href: platform/metrics-supported.md
         - name: 新しいアラートでサポートされるメトリック
           href: platform/alerts-metric-near-real-time.md
-    - name: リソース ログのサービス、カテゴリ、スキーマ
+    - name: プラットフォーム ログのサービス、カテゴリ、スキーマ
       href: platform/diagnostic-logs-schema.md
     - name: Azure CLI
       href: /cli/azure/monitor?view=azure-cli-latest

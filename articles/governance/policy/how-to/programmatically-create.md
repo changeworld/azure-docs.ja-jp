@@ -1,20 +1,20 @@
 ---
 title: プログラムによるポリシーの作成
-description: この記事では、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
+description: この記事では、Azure CLI、Azure PowerShell、および REST API を使用して、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
 ms.date: 01/31/2019
 ms.topic: conceptual
-ms.openlocfilehash: 581f7e5cc2fa20f1ff284e32351e495349fdfad2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 98af714e5aaf8e103b81e77c9960589fa0ee6b77
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959431"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463545"
 ---
 # <a name="programmatically-create-policies"></a>プログラムによるポリシーの作成
 
 この記事では、ポリシーをプログラムで作成して管理する方法について説明します。 Azure Policy の定義によって、さまざまなルールや効果がリソースに適用されます。 適用することで、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。
 
-コンプライアンスについては、「[コンプライアンス データの取得](getting-compliance-data.md)」を参照してください。
+コンプライアンスについては、「[コンプライアンス データの取得](get-compliance-data.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

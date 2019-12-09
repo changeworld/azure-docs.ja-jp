@@ -1,18 +1,15 @@
 ---
 title: リージョン全体での安全なデプロイ - Azure Deployment Manager
 description: Azure Deployment Manager で多くのリージョンにわたってサービスをデプロイする方法について説明します すべてのリージョンにロール アウトする前に、デプロイの安定性を確認する安全なデプロイの実施方法について説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.author: tomfitz
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6cbbd2aef1911bdfe64e781a7cad64a64722192d
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 9b0e314b3911dcd3b96dc2b5b32081bd2e9c0c0c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532303"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307041"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Azure Deployment Manager で安全なデプロイを実施できるようにする (パブリック プレビュー)
 
@@ -341,3 +338,5 @@ ID オブジェクトは、デプロイ アクションを実行する[ユーザ
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する](./deployment-manager-tutorial.md)
+>
+> [クイック スタート:わずか数分で Azure Deployment Manager を試す](https://github.com/Azure-Samples/adm-quickstart)

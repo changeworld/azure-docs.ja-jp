@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 04/26/2019
-ms.author: rosh
-ms.openlocfilehash: 439f775fb6124c847631467caabe3f48cfa6b645
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 2265471001896652a4ce35dbf8bd84aca50000fb
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326705"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665680"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>クイック スタート:C# で Bing Local Business Search API にクエリを送信する
 
@@ -34,7 +34,7 @@ ms.locfileid: "74326705"
 
 次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定し、"restaurant in Bellevue" というクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
 
-```
+```csharp
     // Replace the accessKey string value with your valid access key.
     const string accessKey = "enter key here";
 
@@ -60,7 +60,7 @@ Bing Local Business Search API では、Bing 検索エンジンからのロー�
 3. accessKey 値を、ご利用のサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Text;

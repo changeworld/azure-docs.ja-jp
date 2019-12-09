@@ -1,5 +1,6 @@
 ---
-title: Azure Network Watcher を使用したネットワーク セキュリティ グループに関するフローのログ記録の概要 | Microsoft Docs
+title: NSG のフローのログ記録の概要
+titleSuffix: Azure Network Watcher
 description: この記事では Azure Network Watcher の機能である NSG のフロー ログの使用方法について説明します。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: a77cc22c7a56c29b5b42a032af3d0ea0b2c17d88
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1da1bc330af9d2b652c44114e44dc6d6c9f0d575
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563523"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559182"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -86,6 +87,13 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 以下のテキストはフロー ログの例です。 ご覧の通り、前のセクションで説明されているプロパティの一覧に従って、複数のレコードが存在します。
 
 ## <a name="nsg-flow-logging-considerations"></a>NSG フロー ログ記録の考慮事項
+
+**ストレージ アカウントに関する考慮事項**: 
+
+1. 場所:使用するストレージ アカウントは、NSG と同じリージョンに存在する必要があります。
+2. ファイアウォールなし: NSG フロー ログは、[信頼性の高い Azure Storage 向け Microsoft サービス](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)としては、オンボードされません。 ファイアウォールを無効にするには、「[ストレージ アカウント上でファイアウォールを無効にする方法](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account)」を参照してください。 
+3. サービス エンドポイントなし: 現在の制限により、ログは、サービス エンドポイント経由ではなく、ストレージ アカウントへの直接出力のみが可能です。 既存のサービス エンドポイントの削除に関するヘルプについては、「[サービス エンドポイントによって NSG フローログを使用する方法](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints)」を参照してください。
+4. キー ローテーションの自己管理: アクセス キーをストレージ アカウントに変更/ローテーションすると、NSG フローログの動作が停止します。 これを修正するには、NSG フロー ログを無効にしてから再度有効にする必要があります。
 
 **リソースに接続されているすべての NSG 上で NSG フロー ログ記録を有効にする**:Azure のフロー ログ記録は NSG リソースに対して構成されています。 1 つのフローは 1 つの NSG ルールにのみ関連付けられます。 複数の NSG が利用されるシナリオでは、リソースのサブネットまたはネットワーク インターフェイスが適用されたすべての NSG で NSG フロー ログ記録を有効にして、すべてのトラフィックを確実に記録することをお勧めします。 ネットワーク セキュリティ グループの詳細については、[トラフィックの評価方法](../virtual-network/security-overview.md#how-traffic-is-evaluated)に関するページを参照してください。 
 

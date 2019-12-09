@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
-ms.date: 10/28/2019
+ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 1749fb4c27a1bfa3048ec0e35c8a09556b0e995b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c08de444b691e7bdc1a378e307637fed15b390c3
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007735"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559085"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -69,7 +69,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 ### <a name="using-data-volume-metrics"></a>データ ボリューム メトリックの使用
 <a id="understanding-ingested-data-volume"></a>
 
-データ ボリュームについてさらに詳しく把握するには、Application Insights リソースの **[メトリック]** を選択して、新しいグラフを追加します。 グラフのメトリックとして、 **[ログ ベースのメトリック]** の **[データ ポイントの量]** を選択します。 **[Apply splitting]\(分割の適用\)** をクリックし、 **[Telemetryitem type]\(Telemetryitem 型\)** でグループを選択します。
+データ ボリュームについてさらに詳しく把握するには、Application Insights リソースの **[メトリック]** を選択して、新しいグラフを追加します。 グラフのメトリックとして、 **[ログ ベースのメトリック]** の **[データ ポイントの量]** を選択します。 **[分割の適用]** をクリックし、 **[`Telemetryitem` の種類]** でグループを選択します。
 
 ![メトリックを使用してデータ ボリュームを確認する](./media/pricing/10-billing.png)
 
@@ -203,7 +203,7 @@ Application Insights リソースの既定の保持期間は 90 日です。 App
 
 ![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-005.png)
 
-この保持期間は `retentionInDays` パラメーターを使用して [PowerShell でプログラムによって設定](powershell.md#set-the-data-retention)することもできます。 さらに、データ保持を 30 日間に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用してより古いデータの即時の消去をトリガーできます。これは、コンプライアンス関連のシナリオに役立つ可能性があります。 この消去機能は、Azure Resource Manager 経由でのみ公開されます。また、使用するときは細心の注意を払う必要があります。 
+この保持期間は `retentionInDays` パラメーターを使用して [PowerShell でプログラムによって設定](powershell.md#set-the-data-retention)することもできます。 さらに、データ保持を 30 日間に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用してより古いデータの即時の消去をトリガーできます。これは、コンプライアンス関連のシナリオに役立つ可能性があります。 この消去機能は、Azure Resource Manager 経由でのみ公開されます。また、使用するときは細心の注意を払う必要があります。 データ ボリュームの上限の 1 日あたりのリセット時間は、Azure Resource Manager を使用して、`dailyQuotaResetTime` パラメーターを設定することで構成できます。 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Application Insights の使用でのデータ転送料金
 

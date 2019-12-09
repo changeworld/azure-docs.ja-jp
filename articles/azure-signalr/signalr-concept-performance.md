@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR Service のパフォーマンス ガイド
-description: Azure SignalR Service のパフォーマンスの概要。
+description: Azure SignalR Service のパフォーマンスとベンチマークの概要。 容量を計画するときに考慮する必要がある主要メトリック。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 027f9f99161a0e4f76a39a15780bc840380a61ba
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232534"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157673"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Azure SignalR Service のパフォーマンス ガイド
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 18f3ed9cb2ef0f700e33e8b643b5e7d167d656a5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112732"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533966"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search で BLOB インデクサーを使用して JSON BLOB のインデックスを作成する方法
 
@@ -33,7 +33,7 @@ Azure Blob Storage 内の JSON BLOB は、通常は、単一の JSON ドキュ�
 
 JSON ドキュメントのインデックスを作成する最も簡単な方法は、[Azure portal](https://portal.azure.com/) のウィザードを使用することです。 Azure BLOB コンテナー内のメタデータを解析することにより、[**データのインポート**](search-import-data-portal.md) ウィザードでは、既定のインデックスを作成し、ソース フィールドをターゲット インデックス フィールドにマップし、1 回の操作でインデックスを読み込むことができます。 ソース データのサイズと複雑さによっては、数分で運用可能なフルテキスト検索インデックスを作成できます。
 
-Azure Cognitive Search と Azure Cosmos DB の両方で (可能であれば同じリージョン内の) 同じ Azure サブスクリプションを使用することをお勧めします。
+待機時間を短くし、帯域幅の課金を回避するために、Azure Cognitive Search と Azure Storage の両方に同じリージョンまたは場所を使用することをお勧めします。
 
 ### <a name="1---prepare-source-data"></a>1 - ソース データを準備する
 

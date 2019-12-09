@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 08/29/2019
-ms.openlocfilehash: 29cf947d1e9d26460dc34a6417e76b68bb75e9dc
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/21/2019
+ms.openlocfilehash: f583796fc353852ef3898e28fa96524e08cfb4ad
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005474"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414517"
 ---
 Azure 予約 VM インスタンスにコミットすると、コストを削減できます。 予約割引は、予約スコープと属性に一致する実行中の仮想マシン数に対して自動的に適用されます。 割引を取得するために、仮想マシンに予約を割り当てる必要はありません。 予約インスタンスの購入では、VM 使用量のコンピューティング部分のみが対象となります。 Windows VM の場合、使用量メーターは 2 つの異なるメーターに分割されます。 Linux メーターと同じであるコンピューティング メーターと、Windows IP メーターがあります。 購入時に表示される料金は、コンピューティング コストの分のみです。 料金には、Windows ソフトウェアのコストは含まれません。 ソフトウェアのコストの詳細については、「[Azure Reserved VM Instances に含まれないソフトウェアのコスト](../articles/billing/billing-reserved-instance-windows-software-costs.md)」を参照してください。
 
@@ -79,7 +79,6 @@ VM の予約は、VM のデプロイだけでなく、複数のサービスか�
 ## <a name="buy-a-reserved-vm-instance"></a>予約 VM インスタンスの購入
 
 予約 VM インスタンスは [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) から購入できます。 予約の支払いは、[前払いまたは月払い](../articles/billing/billing-monthly-payments-reservations.md)で行います。
-
 予約 VM インスタンスの購入には、次の要件が適用されます。
 
 - 少なくとも 1 つの EA サブスクリプションまたは従量課金制料金のサブスクリプションの所有者ロールである必要があります。
@@ -92,6 +91,9 @@ VM の予約は、VM のデプロイだけでなく、複数のサービスか�
 1. **[すべてのサービス]**  >  **[予約]** を選択します。
 1. **[追加]** を選択して新しい予約を購入してから、 **[仮想マシン]** をクリックします。
 1. 必須フィールドに入力します。 選択した属性と一致する VM インスタンスを実行することで、予約割引を受けることができます。 割引を受ける VM インスタンスの実際の数は、選択したスコープと数量によって変わります。
+
+EA 契約を結んでいる場合、 **[Add more option]\(さらにオプションを追加\)** を使用してインスタンスをすばやく追加することができます。 このオプションは、他のサブスクリプションの種類では使用できません。
+
 
 | フィールド      | 説明|
 |------------|--------------|

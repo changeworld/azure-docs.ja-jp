@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 2140216a27d9c903495da4f7b43f6fdfda62591e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0ac9247f5156eb1b766aec7403b2dc8473114659
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826904"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483713"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL の接続アーキテクチャ
 
@@ -39,9 +39,15 @@ ms.locfileid: "73826904"
 
 Azure SQL Database は、SQL Database サーバーの接続ポリシー設定について次の 3 つのオプションをサポートしています。
 
-- **リダイレクト (推奨):** クライアントは、データベースをホストしているノードへの直接接続を確立します。 接続を有効にするには、ポート 1433 上の Azure SQL Database ゲートウェイの IP アドレスだけでなく、ネットワーク セキュリティ グループ (NSG) と[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して、11000 から 11999 のポートのリージョン内のすべての Azure IP アドレスに対する送信ファイアウォール ルールを、クライアントで許可する必要があります。 パケットはデータベースに直接送信されるため、待機時間とスループットのパフォーマンスが改善されます。
-- **プロキシ:** このモードでは、すべての接続が Azure SQL Database ゲートウェイ経由でプロキシされます。 接続を有効にするには、Azure SQL Database ゲートウェイの IP アドレスのみ (通常はリージョンあたり 2 つの IP アドレス) を許可する送信ファイアウォール規則がクライアントに必要です。 このモードを選択すると、ワークロードの性質によっては待機時間が長くなり、スループットが低下する可能性があります。 最短の待機時間と最高のスループットを実現するために、`Proxy` 接続ポリシーではなく `Redirect` 接続ポリシーを強くお勧めします。
-- **既定:** これは、明示的に接続ポリシーを `Proxy` または `Redirect` に変更しない限り、作成後のすべてのサーバーで有効になる接続ポリシーです。 有効なポリシーは、接続が Azure (`Redirect`) 内か Azure (`Proxy`) の外部かによって変わります。
+- **リダイレクト (推奨):** クライアントは、データベースをホストしているノードへの直接接続を確立します。これにより、待機時間が短縮され、スループットが向上します。 接続でこのモードを使用するには、クライアントで次のことを行う必要があります
+   - 11000 11999 の範囲のポートで、クライアントから、リージョン内のすべての Azure IP アドレスへのインバウンドおよびアウトバウンド通信を許可します。  
+   - ポート 1433 で、クライアントから、Azure SQL Database ゲートウェイの IP アドレスへのインバウンドおよびアウトバウンド通信を許可します。
+
+- **プロキシ:** このモードでは、すべての接続が Azure SQL Database ゲートウェイ経由でプロキシ化されるため、待機時間が長くなり、スループットが低下します。 接続でこのモードを使用するには、クライアントのポート 1433 で、クライアントから、Azure SQL Database ゲートウェイの IP アドレスへのインバウンドおよびアウトバウンド通信を許可する必要があります。
+
+- **既定:** これは、明示的に接続ポリシーを `Proxy` または `Redirect` に変更しない限り、作成後のすべてのサーバーで有効になる接続ポリシーです。 Azure の内部からの (たとえば、Azure 仮想マシンからの) すべてのクライアント接続の既定のポリシーは `Redirect` であり、内部からのすべてのクライアント接続 (たとえば、ローカル ワークステーションからの接続) の既定のポリシーは `Proxy` です。
+
+ 待機時間を最小化してスループットを最大化するために、`Proxy` 接続ポリシーよりも `Redirect` 接続ポリシーを強くお勧めします。ただし、前述のように、ネットワーク トラフィックを許可するための追加要件を満たす必要があります。 クライアントが Azure 仮想マシンの場合は、ネットワーク セキュリティ グループ (NSG) と[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用してこれを実現できます。 クライアントがオンプレミスのワークステーションから接続している場合は、ネットワーク管理者と協力して、企業のファイアウォールを通過するネットワーク トラフィックを許可することが必要になる必要があります。
 
 ## <a name="connectivity-from-within-azure"></a>Azure 内からの接続
 
@@ -54,6 +60,10 @@ Azure 内から接続する場合、接続には既定で `Redirect` の接続�
 Azure 外から接続する場合、接続には既定で `Proxy` の接続ポリシーが与えられます。 `Proxy` のポリシーとは、TCP セッションが Azure SQL Database ゲートウェイ経由で確立し、すべての後続パケットがゲートウェイ経由で送信されることを意味します。 次の図にこのトラフィックの流れを示します。
 
 ![アーキテクチャの概要](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
+
+> [!IMPORTANT]
+> [DAC による接続](https://docs.microsoft.com/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac)を有効にするには、追加でポート 14000 ～ 14999 を開きます
+
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Azure SQL Database ゲートウェイ IP アドレス
 

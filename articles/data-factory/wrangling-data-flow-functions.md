@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3274641f7b118e13b3ed727f609ce7471fd66b54
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682288"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287037"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>ラングリング データ フローの変換関数
 
@@ -81,12 +81,21 @@ Azure Data Factory のラングリング データ フローを使用すると�
 
 上位の保持と削除、範囲の保持 (対応する M 関数、条件ではなくカウントのみサポート:[Table.FirstN](https://docs.microsoft.com/powerquery-m/table-firstn)、[Table.Skip](https://docs.microsoft.com/powerquery-m/table-skip)、[Table.RemoveFirstN](https://docs.microsoft.com/powerquery-m/table-removefirstn)、[Table.Range](https://docs.microsoft.com/powerquery-m/table-range)、[Table.MinN](https://docs.microsoft.com/powerquery-m/table-minn)、[Table.MaxN](https://docs.microsoft.com/powerquery-m/table-maxn))
 
-## <a name="known-unsupported-functionality"></a>既知のサポートされていない機能
+## <a name="known-unsupported-functions"></a>既知のサポートされていない関数
 
-以下にサポートされていない関数を示します。 この一覧は完全なものではなく、変更されることがあります。
-* 列のマージ (AddColumn を使用して実現可能)
-* 列の分割
-* クエリの追加
-* '最初の行をヘッダーとして使用' と 'ヘッダーを 1 行目として使用'
+| Function | Status |
+| -- | -- |
+| Table.PromoteHeaders | サポートされていません。 データセットで "1 行目をヘッダーとして" 設定することにより、同じ結果を得ることができます。 |
+| Table.CombineColumns | これは、直接サポートされてはいなくても、特定の 2 つの列を連結する新しい列を追加することによって実現できる一般的なシナリオです。  例: Table.AddColumn(RemoveEmailColumn, “Name”, each [FirstName] & ” ” & [LastName]) |
+| Table.TransformColumnTypes | ほとんどの場合、これはサポートされています。 次のシナリオはサポートされていません: 文字列から通貨型への変換、文字列から時刻型への変換、文字列からパーセント型への変換。 |
+| Table.NestedJoin | 結合を行うだけでは、検証エラーが発生します。 機能させるには、列を展開する必要があります。 |
+| Table.Distinct | 重複する行の削除はサポートされていません。 |
+| Table.RemoveLastN | 下端の行の削除はサポートされていません。 |
+| Table.RowCount | サポートされていませんが、すべてのセルが空である列を追加し (条件列を使用できます)、その後、その列で group by を使用することによって実現できます。 Table.Group はサポートされています。 | 
+| 行レベルのエラー処理 | 行レベルのエラー処理は現在サポートされていません。 たとえば、列から数値以外の値を除外する方法の 1 つは、テキスト列を数値に変換することです。 変換が失敗したすべてのセルはエラー状態になり、フィルター処理する必要があります。 このシナリオは、ラングリング データ フローでは使用できません。 |
+| Table.Transpose | サポートされていません |
+| Table.Pivot | サポートされていません |
 
 ## <a name="next-steps"></a>次の手順
+
+[ラングリング データ フローの作成](wrangling-data-flow-tutorial.md)方法について確認します。

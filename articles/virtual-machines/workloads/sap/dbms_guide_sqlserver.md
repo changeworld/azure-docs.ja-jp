@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9d0c6841e29323ceab0758f4c4d6881abd24532d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 803b1e397efd4a6f9ddaa3bae1d101c8f204e728
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099975"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74328295"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -341,7 +341,7 @@ ms.locfileid: "70099975"
 これらの構成によって、tempdb はシステム ドライブが提供するよりも多くの領域を使用ができます。 非永続ドライブの D:\ は、(A シリーズの VM を除き) I/O 待機時間とスループットが優れています。 適切な tempdb のサイズを決定するために、既存のシステムの tempdb のサイズを確認します。 
 
 >[!NOTE]
-> 作成した D:\ ドライブ上のフォルダーに tempdb データ ファイルとログ ファイルを配置する場合は、VM を再起動した後にフォルダーが存在することを確認する必要があります。 VM の再起動後に D:\ ドライブは新たに初期化されるので、すべてのファイルおよびディレクトリ構造は消去されます。SQL Server サービスの開始前に D:\ ドライブ上の最終的なディレクトリ構造を再作成する可能性については、[こちらの記事](https://www.sqlserver.co.uk/index.php/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)を参照してください。
+> 作成した D:\ ドライブ上のフォルダーに tempdb データ ファイルとログ ファイルを配置する場合は、VM を再起動した後にフォルダーが存在することを確認する必要があります。 VM の再起動後に D:\ ドライブは新たに初期化されるので、すべてのファイルおよびディレクトリ構造は消去されます。SQL Server サービスの開始前に D:\ ドライブ上の最終的なディレクトリ構造を再作成する可能性については、[こちらの記事](https://cloudblogs.microsoft.com/sqlserver/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)を参照してください。
 
 SQL Server と SAP データベースを実行し、D:\ ドライブに tempdb データと tempdb ログ ファイルを配置する VM 構成は次のようになります。
 

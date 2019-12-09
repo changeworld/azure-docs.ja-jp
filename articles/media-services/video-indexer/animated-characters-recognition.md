@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 584d3fa787fbd44ad47d21c51ea67f301c04436d
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8cc097bc7083729a0e99c93376fe46b170760cf4
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300317"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327481"
 ---
 # <a name="animated-character-detection-preview"></a>アニメーション化されたキャラクターの検出 (プレビュー)
 
@@ -49,11 +49,47 @@ Video Indexer アカウントの種類に応じて、異なる機能セットを
 
 ## <a name="use-the-animated-character-detection-with-portal"></a>ポータルでアニメーション化されたキャラクターの検出を使用する 
 
-このセクションでは、アニメーション化されたキャラクターの検出モデルの使用を開始するために必要な手順について説明します。
+このセクションでは、アニメーション化されたキャラクターの検出モデルの使用を開始するために必要な手順について説明します。 
 
-### <a name="connect-your-custom-vision-account-paid-accounts-only">"></a>Custom Vision アカウントを接続する (有料アカウントのみ)
+試用版アカウントでは、Custom Vision の統合が Video Indexer によって管理されているため、アニメーション キャラクター モデルの作成と使用を開始し、次のセクション (「Custom Vision アカウントを接続する」) をスキップできます。
 
-Video Indexer 有料アカウントをお持ちの場合は、最初に Custom Vision アカウントを接続する必要があります。 Custom Vision アカウントをまだお持ちではない場合は、アカウントを作成してください。 詳細については、[Custom Vision](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/home) に関するページを参照してください。
+### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Custom Vision アカウントを接続する (有料アカウントのみ)
+
+Video Indexer 有料アカウントをお持ちの場合は、最初に Custom Vision アカウントを接続する必要があります。 Custom Vision アカウントをまだお持ちではない場合は、アカウントを作成してください。 詳細については、[Custom Vision](../../cognitive-services/custom-vision-service/home.md) に関するページを参照してください。
+
+> [!NOTE]
+> 両方のアカウントは同じリージョンに存在する必要があります。 現在、Custom Vision の統合は日本リージョンではサポートされていません。
+
+#### <a name="connect-a-custom-vision-account-with-api"></a>API を使用して Custom Vision アカウントを接続する 
+
+次の手順に従って Custom Vision アカウントを Video Indexer に接続するか、現在 Video Indexer に接続されている Custom Vision アカウントを変更します。
+
+1. [www.customvision.ai](https://www.customvision.ai) にアクセスしてログインします。
+1. 次のキーをコピーします。 
+
+    * トレーニング キー (トレーニング リソース用)
+    * 予測キー (予測リソース用)
+    * エンドポイント 
+    * 予測リソース ID
+    
+    > [!NOTE]
+    > すべてのキーを用意するには、Custom Vision でトレーニング用と予測用の 2 つの個別のリソースを持つ必要があります。
+1. [Video Indexer](https://vi.microsoft.com/) にアクセスしてサインインします。
+1. ページの右上隅にある疑問符をクリックし、 **[API リファレンス]** を選択します。
+1. **[製品]** タブをクリックして、API Management にサブスクライブしていることを確認します。API が接続されている場合は、次の手順に進むことができます。そうでない場合は、サブスクライブします。 
+1. 開発者ポータルで **[Complete API Reference]\(API リファレンスの完了\)** をクリックし、 **[操作]** を参照します。  
+1. **[Connect Custom Vision Account (PREVIEW)]\(Custom Vision アカウントの接続 (プレビュー)\)** を選択し、 **[試す]** をクリックします。
+1. 必要なフィールドとアクセス トークンを入力し、 **[送信]** をクリックします。 
+
+    Video Indexer アクセス トークンを取得する方法の詳細については、[開発者ポータル](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)にアクセスし、[関連ドキュメント](video-indexer-use-apis.md#obtain-access-token-using-the-authorization-api)を参照してください。  
+1. 呼び出しから 200 OK 応答が返されると、アカウントは接続されます。
+1. 接続を確認するには、[Video Indexer](https://vi.microsoft.com/) ポータルに移動します。
+1. 右上隅にある **[コンテンツ モデルのカスタマイズ]** ボタンをクリックします。
+1. **[アニメーション キャラクター]** タブにアクセスします。
+1. [Custom Vision でモデルを管理します]** をクリックすると、先ほど接続した Custom Vision アカウントに転送されます。
+
+> [!NOTE]
+> 現時点では、Video Indexer によって作成されたモデルのみがサポートされています。 Custom Vision によって作成されたモデルは使用できません。 さらに、ベスト プラクティスは、Video Indexer プラットフォームを使用して作成されたモデルの編集には、必ず Video Indexer を使用することです。Custom Vision を使用して加えられた変更によって意図しない結果が生じる可能性があるためです。
 
 ### <a name="create-an-animated-characters-model"></a>アニメーション化されたキャキャラクターモデルを作成する
 
@@ -85,7 +121,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
 
 1. モデルにタグを付け、トレーニングします。
 
-    1. 名前を編集して、検出されたキャラクターにタグを付けます。 モデルにトレーニングされたキャラクターは、そのモデルでインデックス付けされる次のビデオで認識されるようになります。  
+    1. 名前を編集して、検出されたキャラクターにタグを付けます。 モデルにトレーニングされたキャラクターは、そのモデルでインデックス付けされる次のビデオで認識されるようになります。 
     1. ビデオ内のアニメーション化されたキャラクターにタグを付けるには、 **[Insights]\(分析情報\)** タブに移動し、ウィンドウの右上隅の **[編集]** ボタンをクリックします。
     1. **[Insights]\(分析情報\)** ウィンドウで、検出されたアニメーション化されたキャラクターのいずれかをクリックし、名前を "Unknown #X" (または前にキャラクターに割り当てられた名前) から変更します。
     1. 新しい名前を入力したら、新しい名前の横にあるチェックマーク アイコンをクリックします。 これにより、モデル内の新しい名前が Video Indexer に保存されます。
@@ -93,7 +129,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
 
         [カスタマイズ] ページを開き、 **[アニメーション化されたキャラクター]** タブをクリックします。次に、 **[トレーニング]** ボタンをクリックして、お使いのモデルをトレーニングします。
          
-        有料アカウントをお持ちの場合は、次に示すように、<bpt id="p1">**</bpt>[Manage models in Custom Vision]\(Custom Vision でのモデルの管理\)<ept id="p1">**</ept> リンクをクリックします。 **Custom Vision** のモデルのページに転送されます。
+        有料アカウントを持っている場合は、次に示すように、 **[Manage models in Customer Vision]\(Computer Vision でモデルを管理する\)** リンクをクリックします。 **Custom Vision** のモデルのページに転送されます。
  
         ![コンテンツ モデルのカスタマイズ](./media/animated-characters-recognition/content-model-customization-tab.png)
 
@@ -110,7 +146,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
 
 1. モデルを削除します。
 
-    1. 上部のメニューの **[コンテンツ モデルのカスタマイズ]** ボタンをクリックし、 **[アニメーション化されたキャラクター]** タブにアクセスします。
+    1. 上部のメニューの **[コンテンツ モデルのカスタマイズ]** ボタンをクリックし、 **[アニメーション化された文字]** タブにアクセスします。
     1. 削除するモデルの右側にある省略記号アイコンをクリックし、[削除] ボタンをクリックします。
     
     * 有料アカウント: モデルは Video Indexer から切断され、再接続することはできません。
@@ -155,7 +191,7 @@ Video Indexer 有料アカウントをお持ちの場合は、最初に Custom V
     "appearances": [
         {
             "startTime": "0:00:52.333",
-         	"endTime": "0:02:02.6",
+            "endTime": "0:02:02.6",
             "startSeconds": 52.3,
             "endSeconds": 122.6
         },

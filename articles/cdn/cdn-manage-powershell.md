@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 11/20/2019
 ms.author: magattus
-ms.openlocfilehash: 44274c2a46ce51e51d3d8f16d96a0b50c43a3aa1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 476779eff41cb9ce1c0a9c79430813ce9a39e91f
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593703"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286656"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>PowerShell を使用した Azure CDN の管理
 PowerShell により、Azure CDN プロファイルとエンドポイントを柔軟に管理することができます。  この PowerShell は対話的に使用することも、スクリプトを記述して、管理タスクを自動化することもできます。  このチュートリアルでは、Azure CDN のプロファイルとエンドポイントを管理するために、PowerShell で実行できる一般的なタスクをいくつか紹介します。
@@ -43,26 +43,40 @@ PS C:\> Get-Command -Module Az.Cdn
 
 CommandType     Name                                               Version    Source
 -----------     ----                                               -------    ------
-Cmdlet          Get-AzCdnCustomDomain                         2.0.0      Az.Cdn
-Cmdlet          Get-AzCdnEndpoint                             2.0.0      Az.Cdn
-Cmdlet          Get-AzCdnEndpointNameAvailability             2.0.0      Az.Cdn
-Cmdlet          Get-AzCdnOrigin                               2.0.0      Az.Cdn
-Cmdlet          Get-AzCdnProfile                              2.0.0      Az.Cdn
-Cmdlet          Get-AzCdnProfileSsoUrl                        2.0.0      Az.Cdn
-Cmdlet          New-AzCdnCustomDomain                         2.0.0      Az.Cdn
-Cmdlet          New-AzCdnEndpoint                             2.0.0      Az.Cdn
-Cmdlet          New-AzCdnProfile                              2.0.0      Az.Cdn
-Cmdlet          Publish-AzCdnEndpointContent                  2.0.0      Az.Cdn
-Cmdlet          Remove-AzCdnCustomDomain                      2.0.0      Az.Cdn
-Cmdlet          Remove-AzCdnEndpoint                          2.0.0      Az.Cdn
-Cmdlet          Remove-AzCdnProfile                           2.0.0      Az.Cdn
-Cmdlet          Set-AzCdnEndpoint                             2.0.0      Az.Cdn
-Cmdlet          Set-AzCdnOrigin                               2.0.0      Az.Cdn
-Cmdlet          Set-AzCdnProfile                              2.0.0      Az.Cdn
-Cmdlet          Start-AzCdnEndpoint                           2.0.0      Az.Cdn
-Cmdlet          Stop-AzCdnEndpoint                            2.0.0      Az.Cdn
-Cmdlet          Test-AzCdnCustomDomain                        2.0.0      Az.Cdn
-Cmdlet          Unpublish-AzCdnEndpointContent                2.0.0      Az.Cdn
+Cmdlet          Confirm-AzCdnEndpointProbeURL                      1.4.0      Az.Cdn
+Cmdlet          Disable-AzCdnCustomDomain                          1.4.0      Az.Cdn
+Cmdlet          Disable-AzCdnCustomDomainHttps                     1.4.0      Az.Cdn
+Cmdlet          Enable-AzCdnCustomDomain                           1.4.0      Az.Cdn
+Cmdlet          Enable-AzCdnCustomDomainHttps                      1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnCustomDomain                              1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnEdgeNode                                  1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnEndpoint                                  1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnEndpointNameAvailability                  1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnEndpointResourceUsage                     1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnOrigin                                    1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnProfile                                   1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnProfileResourceUsage                      1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnProfileSsoUrl                             1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnProfileSupportedOptimizationType          1.4.0      Az.Cdn
+Cmdlet          Get-AzCdnSubscriptionResourceUsage                 1.4.0      Az.Cdn
+Cmdlet          New-AzCdnCustomDomain                              1.4.0      Az.Cdn
+Cmdlet          New-AzCdnDeliveryPolicy                            1.4.0      Az.Cdn
+Cmdlet          New-AzCdnDeliveryRule                              1.4.0      Az.Cdn
+Cmdlet          New-AzCdnDeliveryRuleAction                        1.4.0      Az.Cdn
+Cmdlet          New-AzCdnDeliveryRuleCondition                     1.4.0      Az.Cdn
+Cmdlet          New-AzCdnEndpoint                                  1.4.0      Az.Cdn
+Cmdlet          New-AzCdnProfile                                   1.4.0      Az.Cdn
+Cmdlet          Publish-AzCdnEndpointContent                       1.4.0      Az.Cdn
+Cmdlet          Remove-AzCdnCustomDomain                           1.4.0      Az.Cdn
+Cmdlet          Remove-AzCdnEndpoint                               1.4.0      Az.Cdn
+Cmdlet          Remove-AzCdnProfile                                1.4.0      Az.Cdn
+Cmdlet          Set-AzCdnEndpoint                                  1.4.0      Az.Cdn
+Cmdlet          Set-AzCdnOrigin                                    1.4.0      Az.Cdn
+Cmdlet          Set-AzCdnProfile                                   1.4.0      Az.Cdn
+Cmdlet          Start-AzCdnEndpoint                                1.4.0      Az.Cdn
+Cmdlet          Stop-AzCdnEndpoint                                 1.4.0      Az.Cdn
+Cmdlet          Test-AzCdnCustomDomain                             1.4.0      Az.Cdn
+Cmdlet          Unpublish-AzCdnEndpointContent                     1.4.0      Az.Cdn
 ```
 
 ## <a name="getting-help"></a>ヘルプの表示
@@ -234,6 +248,29 @@ Get-AzCdnProfile | Get-AzCdnEndpoint | Stop-AzCdnEndpoint
 
 # Start all endpoints
 Get-AzCdnProfile | Get-AzCdnEndpoint | Start-AzCdnEndpoint
+```
+
+## <a name="creating-standard-rules-engine-policy-and-applying-to-an-existing-cdn-endpoint"></a>標準ルール エンジン ポリシーの作成と、既存の CDN エンドポイントへの適用
+`New-AzCdnDeliveryRule`、`New=AzCdnDeliveryRuleCondition`、`New-AzCdnDeliveryRuleAction` を使用して、Microsoft プロファイルから Azure CDN 上の Azure CDN 標準ルール エンジンを構成できます。 
+
+```powershell
+# Create a new http to https redirect rule
+$Condition=New-AzCdnDeliveryRuleCondition -MatchVariable RequestProtocol -Operator Equal -MatchValue HTTP
+$Action=New-AzCdnDeliveryRuleAction -RedirectType Found -DestinationProtocol HTTPS
+$HttpToHttpsRedirectRule=New-AzCdnDeliveryRule -Name "HttpToHttpsRedirectRule" -Order 2 -Condition $Condition -Action $Action
+
+# Create a path based Response header modification rule. 
+$Cond1=New-AzCdnDeliveryRuleCondition -MatchVariable UrlPath -Operator BeginsWith -MatchValue "/images/"
+$Action1=New-AzCdnDeliveryRuleAction -HeaderActionType ModifyResponseHeader -Action Overwrite -HeaderName "Access-Control-Allow-Origin" -Value "*"
+$PathBasedCacheOverrideRule=New-AzCdnDeliveryRule -Name "PathBasedCacheOverride" -Order 1 -Condition $Cond1 -Action $action1
+
+# Create a delivery policy with above deliveryRules.
+$Policy = New-AzCdnDeliveryPolicy -Description "DeliveryPolicy" -Rule $HttpToHttpsRedirectRule,$UrlRewriteRule
+
+# Update existing endpoint with created delivery policy
+$ep = Get-AzCdnEndpoint -EndpointName cdndocdemo -ProfileName CdnDemo -ResourceGroupName CdnDemoRG
+$ep.DeliveryPolicy = $Policy
+Set-AzCdnEndpoint -CdnEndpoint $ep
 ```
 
 ## <a name="deleting-cdn-resources"></a>CDN リソースの削除

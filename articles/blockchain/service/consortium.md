@@ -1,21 +1,15 @@
 ---
 title: Azure Blockchain Service のコンソーシアム
-description: Azure Blockchain Service でプライベート コンソーシアムが使用されるしくみを理解する
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 10/14/2019
+description: Azure Blockchain Service がコンソーシアム ブロックチェーン ネットワークを実装するしくみの概要。
+ms.date: 11/21/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: ddb3f02662c0c71ebc90e1a740b4068d6fbcded4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577505"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455738"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service のコンソーシアム
 
@@ -85,4 +79,4 @@ Azure Blockchain Service でのコンソーシアム管理は、コンソーシ�
 
 ## <a name="next-steps"></a>次の手順
 
-[PowerShell を使用して Azure Blockchain Service のメンバーを管理する方法](manage-consortium-powershell.md)
+コンソーシアムの管理アクションには、PowerShell を使用してアクセスできます。 詳細については、「[PowerShell を使用して Azure Blockchain Service のコンソーシアム メンバーを管理する](manage-consortium-powershell.md)」を参照してください。

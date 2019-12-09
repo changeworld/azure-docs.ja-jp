@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f6fc5112f7106c6cc8f8736237ce803da43cd882
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d26eb0160316737c9ad31d98c8cf23bdcad42d32
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879383"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206499"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>CloudSimple プライベート クラウドの負荷分散ソリューションを選択する
 

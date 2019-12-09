@@ -4,7 +4,7 @@ title: Azure Media Services のドキュメント
 metadata:
   document_id: null
   title: Azure Media Services のドキュメント | Microsoft Docs
-  meta.description: 'Azure Media Services is a cloud-based platform that enables you to build solutions that achieve broadcast-quality video streaming, enhance accessibility and distribution, analyze content, and much more.'
+  description: クラウドベースのプラットフォームである Azure Media Services では、ブロードキャスト品質のビデオ ストリーミングを実現し、アクセス性と配信を強化し、コンテンツを分析するソリューションを構築できます。
   services: media-services
   author: juliako
   manager: femila

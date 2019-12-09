@@ -1,5 +1,5 @@
 ---
-title: B2B コラボレーション ユーザーの監査およびレポート - Azure Active Directory | Microsoft Docs
+title: B2B コラボレーション ユーザーの監査およびレポート - Azure AD
 description: ゲスト ユーザーは、Azure Active Directory B2B コラボレーションで構成できます
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 506721a23a5a18eaea76efaca61df49f20dc9228
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 74d2473d37dcf0d435ab61763e72a64111845956
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812476"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273296"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B コラボレーション ユーザーの監査およびレポート
 ゲスト ユーザーに対しても、メンバー ユーザーに対する場合と同様に、監査機能を使用できます。 

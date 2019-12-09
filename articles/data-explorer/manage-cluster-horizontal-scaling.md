@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 70e6bdfcf9718244632ad02e09d3ddadee71a617
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: eb204701b42436a5ae95bac97ed6fd97cf272860
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311565"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561860"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>需要の変化に対応するために Azure Data Explorer のクラスターの水平スケーリング (スケールアウト) を管理する
 
@@ -41,7 +41,7 @@ Azure Data Explorer クラスターのスケーリングには、2 つのワー�
 
    ![手動スケール方法](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
-### <a name="optimized-autoscale"></a>最適化された自動スケーリング
+### <a name="optimized-autoscale-preview"></a>最適化された自動スケーリング (プレビュー)
 
 最適化された自動スケーリングは、推奨される自動スケーリング方法です。 この方法では、クラスターのパフォーマンスとコストが最適化されます。 クラスターが低使用率状態に近づいた場合は、スケールインされます。 この操作により、コストは削減されますが、パフォーマンス レベルは維持されます。 クラスターが高使用率状態に近づいた場合は、最適なパフォーマンスを維持するためにスケールアウトされます。 最適化された自動スケーリングの構成するには:
 

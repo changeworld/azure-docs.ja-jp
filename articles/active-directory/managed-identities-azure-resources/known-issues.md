@@ -1,5 +1,5 @@
 ---
-title: Azure リソースのマネージド ID に関する FAQ と既知の問題
+title: マネージド ID に関する FAQ と既知の問題 - Azure AD
 description: Azure リソースのマネージド ID に関する既知の問題。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d882b34bc4f057035a16b7916249cfe8f0b8d0b
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: f0f0c678f2426d9de58d2ab337c56243394b4d0f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983430"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183883"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID に関する FAQ と既知の問題
 
@@ -74,13 +74,13 @@ Azure Instance Metadata Service の詳細については、[IMDS のドキュメ
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>サブスクリプションを別のディレクトリに移動する場合、マネージド ID は自動的に再作成されますか?
 
-いいえ。 サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure RBAC ロールの割り当てを許可する必要があります。
+No. サブスクリプションを別のディレクトリに移動する場合、お客様が手動でそれらを再作成し、再度 Azure RBAC ロールの割り当てを許可する必要があります。
 - システム割り当てマネージドID の場合、無効にしてから最有効化します。 
 - ユーザー割り当てマネージド ID の場合、削除、再作成の後、必要なリソース (例： 仮想マシン) へ再度添付します。
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>マネージド ID を使って違うディレクトリやテナント内のリソースへアクセスできますか?
 
-いいえ。 マネージド ID は現在、クロスディレクトリ シナリオをサポートしていません。 
+No. マネージド ID は現在、クロスディレクトリ シナリオをサポートしていません。 
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>リソースのマネージド ID に必要な Azure RBAC アクセス許可は何ですか? 
 

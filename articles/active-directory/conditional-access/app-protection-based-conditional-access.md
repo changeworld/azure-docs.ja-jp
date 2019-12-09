@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory の条件付きアクセスを使用してクラウド アプリへのアクセスにアプリ保護ポリシーを要求する | Microsoft Docs
+title: 条件付きアクセスを使用したアプリ保護ポリシー - Azure Active Directory
 description: Azure Active Directory の条件付きアクセスを使用して、クラウド アプリへのアクセスにアプリ保護ポリシーを要求する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 4/4/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8b7cc1f3a8431986ffbaac604ec5863236f112
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: b3cbb6afb96ccea32aa78d1f587377e5d67e1a5b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357112"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381020"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>条件付きアクセスを使用してクラウド アプリへのアクセスにアプリ保護ポリシーを要求する (プレビュー)
 

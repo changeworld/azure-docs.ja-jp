@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 11/20/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8f95dfd6410ae22a4596ac7d5d72add57e8029d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 49081ba72559b021d2e4846e7d9feffd61ae7b36
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373885"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284913"
 ---
 # <a name="service-to-service-apps"></a>サービス間アプリ
 
@@ -40,7 +40,7 @@ ms.locfileid: "72373885"
 
 ![デーモンまたはサーバー アプリケーション対 Web API のダイアグラム](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
 
-## <a name="dprotocol-flow"></a>DProtocol フロー
+## <a name="protocol-flow"></a>プロトコル フロー
 
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>アプリケーション ID と OAuth 2.0 クライアント資格情報付与
 
@@ -59,11 +59,11 @@ ms.locfileid: "72373885"
 
 ## <a name="code-samples"></a>コード サンプル
 
-デーモン アプリケーションまたはサーバー アプリケーション対 Web API のシナリオのコード サンプルをご覧ください。 新しいサンプルが頻繁に追加されているので、頻繁に確認してください。 [デーモンまたはサーバー アプリケーション対 Web API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+デーモンまたはサーバー アプリケーション対 Web API のシナリオのサンプル コードを参照してください。[デーモンまたはサーバー アプリケーション対 Web API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 ## <a name="app-registration"></a>アプリの登録
 
-* シングル テナント: アプリケーション ID と委任ユーザー ID のどちらの場合も、デーモン アプリケーションまたはサーバー アプリケーションを Azure AD の同じディレクトリに登録する必要があります。 デーモン アプリケーションまたは サーバー アプリケーションによるリソースへのアクセスを制限するために使用する一連のアクセス許可を公開するように Web API を構成できます。 委任ユーザー ID を使用している場合、サーバー アプリケーションで Azure Portal の [他のアプリケーションに対するアクセス許可] ドロップダウン メニューから目的のアクセス許可を選択する必要があります。 アプリケーション ID を使用している場合、この手順は不要です。
+* シングル テナント: アプリケーション ID と委任ユーザー ID のどちらの場合も、デーモン アプリケーションまたはサーバー アプリケーションを Azure AD の同じディレクトリに登録する必要があります。 デーモン アプリケーションまたは サーバー アプリケーションによるリソースへのアクセスを制限するために使用する一連のアクセス許可を公開するように Web API を構成できます。 委任されたユーザー ID の種類が使用されている場合、サーバー アプリケーションは目的のアクセス許可を選択する必要があります。 アプリケーション登録の **[API Permission] (API のアクセス許可)** ページで、 **[アクセス許可の追加]** を選択し、API ファミリを選択した後、 **[委任されたアクセス許可]** を選択してからアクセス許可を選択します。 アプリケーション ID を使用している場合、この手順は不要です。
 * マルチテナント: アプリケーションが機能するために必要なアクセス許可を示すように、デーモンまたはサーバー アプリケーションを構成します。 必要なアクセス許可のこのリストは、アプリケーションを組織で使用できるように、発行先ディレクトリ内のユーザーまたは管理者がアプリケーションに同意するときにダイアログに表示されます。 組織内の任意のユーザーが同意できる、ユーザーレベルのアクセス許可だけを必要とするアプリケーションもあれば、 組織内のユーザーは同意できない、管理者レベルのアクセス許可を必要とするアプリケーションもあります。 このレベルのアクセスを必要とするアプリケーションに同意できるのはディレクトリ管理者だけです。 ユーザーまたは管理者が同意すると、両方の Web API がディレクトリに登録されます。
 
 ## <a name="token-expiration"></a>トークンの有効期限

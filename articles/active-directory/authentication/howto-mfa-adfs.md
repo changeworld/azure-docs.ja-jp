@@ -1,5 +1,5 @@
 ---
-title: Azure MFA と AD FS を使用したクラウド リソースのセキュリティ保護 - Azure Active Directory
+title: Azure MFA と ADFS を使用してリソースをセキュリティで保護する - Azure Active Directory
 description: クラウドで Azure MFA および AD FS を開始する方法について説明する Azure Multi-Factor Authentication のページです。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5b1838007e1be7fc1d9872516ede14c208b1f57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 20e9f0b9a993d2a8af9b9d91399fdd49f9a06eaa
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113455"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381829"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 

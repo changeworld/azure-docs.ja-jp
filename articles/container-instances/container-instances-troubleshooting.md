@@ -1,20 +1,15 @@
 ---
-title: Azure Container Instances のトラブルシューティング
-description: Azure Container Instances に関する問題のトラブルシューティングを行う方法について説明します
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: 一般的な問題のトラブルシューティング
+description: Azure Container Instances をデプロイ、実行、または管理する際の一般的な問題をトラブルシューティングする方法を学習します。
 ms.topic: article
 ms.date: 09/25/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 2716d8515abc52ccadd321414eb7d34df2064709
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 07cdbfb27aaf9076e726ebda861ed24996e10135
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123010"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533389"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 

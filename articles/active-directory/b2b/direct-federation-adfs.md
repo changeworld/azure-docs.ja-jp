@@ -1,5 +1,5 @@
 ---
-title: B2B 用 AD FS との直接フェデレーションの設定 - Azure Active Directory | Microsoft Docs
+title: B2B 用 AD FS との直接フェデレーションの設定 - Azure AD
 description: ご自身の Azure AD アプリにゲストがサインインできるようにするために、AD FS を直接フェデレーションの ID プロバイダーとして設定する方法について説明します
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8f709186f0ef17e037c4203118be07ea2d4f511
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: e350d6338b6ca589ab18d068ef6a314363fe205c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544629"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272827"
 ---
 # <a name="example-direct-federation-with-active-directory-federation-services-ad-fs-preview"></a>例:Active Directory フェデレーション サービス (AD FS) との直接フェデレーション (プレビュー)
 |     |

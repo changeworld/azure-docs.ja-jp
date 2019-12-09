@@ -1,20 +1,14 @@
 ---
-title: ローカルでの Azure Functions の開発と実行 | Microsoft Docs
+title: Azure 関数をローカル環境で開発して実行する
 description: Azure 関数を Azure Functions で実行する前に、ローカル コンピューターでコーディングしてテストする方法について説明します。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.author: glenga
-ms.openlocfilehash: 7c2e727ecb080d1db212e8b45a2c48bac81a3949
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 835edcb94b294d93cab41ea51b88ac38db71d95e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709327"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230647"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 

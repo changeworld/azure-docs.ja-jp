@@ -1,5 +1,5 @@
 ---
-title: Azure VPN Gateway 上で BGP を構成するResource Manager:PowerShell | Microsoft Docs
+title: 'Azure VPN Gateway: BGP を構成する: PowerShell'
 description: この記事では、Azure Resource Manager と PowerShell を使用して Azure VPN ゲートウェイで BGP を構成する方法を説明します。
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 195a6887696bbb8681cdd187a4c03df2ade7e2c0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f4c5e3ddb5a7f5c9a21d29aa24fe28e095123836
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091925"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151397"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>PowerShell を使用して Azure VPN Gateway で BGP を構成する方法
 この記事では、Resource Manager デプロイ モデルと PowerShell を使用して、クロスプレミスのサイト間 (S2S) VPN 接続および VNet 間接続上で BGP を有効にする手順について説明します。

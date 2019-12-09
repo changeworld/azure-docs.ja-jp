@@ -48,20 +48,17 @@
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
         - name: 3. ユーザーの発話からセンチメントを取得する
           href: tutorial-publish-settings.md
-    - name: アプリのビルド
+    - name: エンティティの作成と使用
       items:
-        - name: 正規表現を使用して適切な形式のデータを取得する
-          href: luis-quickstart-intents-regex-entity.md
-        - name: 一覧を使用して完全なテキスト一致を取得する
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: エンティティ ロールを使用して関連データを取得する
+        - name: 正規表現エンティティ
+          href: tutorial-regex-entity.md
+        - name: リスト エンティティ
+          href: tutorial-list-entity.md
+        - name: エンティティのロール
           href: tutorial-entity-roles.md
           displayName: 'roles, geographyV2, context'
         - name: 複合エンティティを使用して関連データをグループ化して抽出する
           href: luis-tutorial-composite-entity.md
-          displayName: roles
-        - name: シンプル エンティティを使用して名前を取得する
-          href: luis-quickstart-primary-and-secondary-data.md
           displayName: roles
     - name: アプリの改善
       items:

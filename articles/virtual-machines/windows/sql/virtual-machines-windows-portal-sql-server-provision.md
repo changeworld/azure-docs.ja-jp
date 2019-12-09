@@ -11,16 +11,16 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 05/04/2018
+ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 68fda45038da48660da0c29787b3a86e00d9b129
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 28f00db3b604534be5ff9cee79c0aacc41f066b5
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033581"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464156"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal で Windows SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -140,7 +140,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 | [ストレージの構成](#storage-configuration) |
 | [自動修正](#automated-patching) |
 | [自動化されたバックアップ](#automated-backup) |
-| [R Services (高度な分析)](#r-services-advanced-analytics) |
+| [Machine Learning サービス](#machine-learning-services) |
 
 
 ### <a name="connectivity"></a>接続
@@ -242,9 +242,9 @@ SQL の自動バックアップを有効にするときは、以下の設定の�
 詳細については、「 [Azure Virtual Machines での SQL Server の自動バックアップ](virtual-machines-windows-sql-automated-backup.md)」をご覧ください。
 
 
-### <a name="r-services-advanced-analytics"></a>R Services (高度な分析)
+### <a name="machine-learning-services"></a>Machine Learning サービス
 
-[SQL Server R Services (高度な分析)](/sql/advanced-analytics/r/sql-server-r-services/) を有効にするオプションがあります。 このオプションを使うと、SQL Server 2017 で高度な分析を使用できるようになります。 **[SQL Server の設定]** ウィンドウで **[有効にする]** を選択します。
+[Machine Learning サービス](/sql/advanced-analytics/)を有効にするオプションがあります。 このオプションを使用すると、SQL Server 2017 で、Python と R で機械学習を使用できます。 **[SQL Server の設定]** ウィンドウで **[有効にする]** を選択します。
 
 
 ## <a name="4-review--create"></a>4.確認と作成

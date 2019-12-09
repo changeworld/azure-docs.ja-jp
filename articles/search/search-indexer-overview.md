@@ -8,12 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 1fd667e14501355f2567712d13b10dd7fbc7ee19
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112697"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534523"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサー
 
@@ -46,6 +47,7 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 インデクサーは、Azure 上のデータ ストアをクロールします。
 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
+* [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (プレビュー段階)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
@@ -67,7 +69,7 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 > インデクサーで自動的にインデックスを生成することはできませんが、ポータルにある**データのインポート**ウィザードを活用することができます。 ほとんどの場合、ウィザードで、ソース内の既存のメタデータからインデックス スキーマを推測し、仮のインデックス スキーマを得ることができます。ウィザードがアクティブである間は、このスキーマをインライン編集することが可能です。 サービスのインデックスが作成された後にポータルで行う編集は、主に新しいフィールドの追加に限定されます。 ウィザードは、あくまでインデックスの作成にご使用ください。インデックスの修正には適していません。 実践的なスキルを身に付けるには、[ポータルのチュートリアル](search-get-started-portal.md)をご覧ください。
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>手順 3:インデクサーを作成してスケジュールを設定する
-インデクサー定義は、データの取り込みに関連するすべての要素をまとめたコンストラクトです。 必要な要素には、データ ソースとインデックスが含まれます。 省略可能な要素には、スケジュールとフィールド マッピングが含まれます。 フィールド マッピングは、ソース フィールドとインデックス フィールドが明らかに対応している場合にのみ、省略可能となります。 インデクサーは、データ ソースが同じサブスクリプションに属していれば、他のサービスのデータ ソースであっても参照できます。 インデクサー構築の詳細については、「[インデクサーの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)」を参照してください。
+インデクサー定義は、データの取り込みに関連するすべての要素をまとめたコンストラクトです。 必要な要素には、データ ソースとインデックスが含まれます。 省略可能な要素には、スケジュールとフィールド マッピングが含まれます。 フィールド マッピングは、ソース フィールドとインデックス フィールドが明らかに対応している場合にのみ、省略可能となります。 インデクサー構築の詳細については、「[インデクサーの作成 (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)」を参照してください。
 
 <a id="RunIndexer"></a>
 

@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager テンプレートのパラメーター
+title: テンプレート内のパラメーター
 description: Azure Resource Manager テンプレートでパラメーターを定義する方法について説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.author: tomfitz
-ms.openlocfilehash: 4947b00d6fad5007751cd97d43ad6aca8d775330
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 3ef87a6f24f99564d0c55ae0bc496045b7011eea
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383271"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150276"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのパラメーター
 

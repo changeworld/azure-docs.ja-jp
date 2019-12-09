@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7e4d51701fd8614831585aac03f2c8a909b2b847
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: f1e1ae76c44e66c04baaad110b87264279dfdaf1
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112736"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74530993"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB データのインデックスを作成する方法 
 
@@ -48,7 +48,7 @@ Azure Cognitive Search の Cosmos DB インデクサーでは、アクセスの�
 
 Azure Cosmos DB 項目のインデックスを作成する最も簡単な方法は、[Azure portal](https://portal.azure.com/) 内のウィザードを使用することです。 コンテナー内のデータをサンプリングしてメタデータを解析することにより、Azure Cognitive Search の[**データのインポート**](search-import-data-portal.md)ウィザードでは、既定のインデックスを作成し、ソース フィールドをターゲット インデックス フィールドにマップし、1 回の操作でインデックスを読み込むことができます。 ソース データのサイズと複雑さによっては、数分で運用可能なフルテキスト検索インデックスを作成できます。
 
-Azure Cognitive Search と Azure Cosmos DB の両方で、可能であれば同じリージョンで、同じ Azure サブスクリプションを使用することをお勧めします。
+待機時間を短くし、帯域幅の課金を回避するために、Azure Cognitive Search と Azure Cosmos DB の両方に同じリージョンまたは場所を使用することをお勧めします。
 
 ### <a name="1---prepare-source-data"></a>1 - ソース データを準備する
 

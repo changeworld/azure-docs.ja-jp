@@ -9,18 +9,18 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8200c2511d4f85705ff56df43f128034d29b0604
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2c68c64202efec6d7dab745b6e1bdc029fa3976f
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012697"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561301"
 ---
 # <a name="understand-data-retention-in-azure-time-series-insights"></a>Azure Time Series Insights のデータ保有について
 
-この記事では、Azure Time Series Insights 環境のデータ保有に影響する 2 つの設定について説明します。
+この記事では、Azure Time Series Insights 環境のデータ保有に影響する 2 つの主要な設定について説明します。
 
 ## <a name="video"></a>ビデオ
 
@@ -88,7 +88,7 @@ ms.locfileid: "74012697"
 
 関連する Event Hubs で **メッセージのリテンション期間**プロパティを調整することで、Time Series Insights でイングレスの一時停止が発生したときのデータ損失を最小限に抑えることができます。
 
-[![イベント ハブのメッセージのリテンション期間。](media/time-series-insights-contepts-retention/event-hub-retention.png)](media/time-series-insights-contepts-retention/event-hub-retention.png#lightbox)
+[![イベント ハブのメッセージのリテンション期間。](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
 Time Series Insights では、イベント ソースでプロパティが構成されていない場合 (`timeStampPropertyName`)、イベント ハブに到着したときのタイムスタンプに X 軸が設定されます。 `timeStampPropertyName` が何か別のものに設定されている場合、イベントの解析時に、データ パケットで構成済みの `timeStampPropertyName` が環境により検索されます。
 

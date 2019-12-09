@@ -1,6 +1,6 @@
 ---
-title: メール アドレスを使用するようにセキュリティ情報 (プレビュー) を設定する - Azure AD
-description: メール アドレスを利用して本人確認をするようにセキュリティ情報を設定する方法です。
+title: メール アドレスを検証方法として設定する - Azure AD
+description: メール アドレスを検証方法として使用して ID を検証するように [Security info (preview)] (セキュリティ情報 (プレビュー)) ページを設定する方法。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a025005065174d5a6ca5fca27ee06ebb036b7b1d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dafa78e6f46a3d2d6b7a9c505defaeae21875946
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820340"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279019"
 ---
-# <a name="set-up-security-info-preview-to-use-your-email-address"></a>メール アドレスを使用するようにセキュリティ情報 (プレビュー) を設定する
+# <a name="set-up-an-email-address-as-your-verification-method"></a>メール アドレスを検証方法として設定する
 
 次の手順に従って、パスワードのリセット メソッドを追加できます。 これを初回に設定したら、 **[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
 

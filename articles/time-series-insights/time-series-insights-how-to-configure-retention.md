@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa905d1686939346827d07419a62fd6f299387ec
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 954e61aec5b622d44435a8a5b196fdbfed33c564
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012605"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561200"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Time Series Insights のリテンション期間の構成
 
@@ -38,7 +38,7 @@ Time Series Insights 環境ごとに、 **[ストレージ制限を超過した�
 
 1. 既存の Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** を選択します。 Time Series Insights 環境を選択します。
 
-1. **[設定]** という見出しの **[構成]** を選択します。
+1. **[設定]** の見出しで、 **[ストレージの構成]** を選択します。
 
     [![[設定]、[構成] の順に選択](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
@@ -50,7 +50,7 @@ Time Series Insights 環境ごとに、 **[ストレージ制限を超過した�
 
     [![データ保有期間 - 受け入れと保存。](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
 
-1. ドキュメントを確認し、データ損失の潜在的なリスクを理解していることを示すチェック ボックスをオンにします。 **[保存]** を選択して、変更した構成を保存します。
+1. データ損失の潜在的なリスクを理解するには、ドキュメントを参照してください。 **[保存]** を選択して、変更した構成を保存します。
 
 ## <a name="next-steps"></a>次の手順
 

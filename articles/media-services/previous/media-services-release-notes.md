@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: f76a2eb098e2d96f617d19de089e56c7e8a497fd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7c6cac925ad53e08ecc10c828765153c905f1c1d
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162771"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423892"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -58,7 +58,7 @@ Media Services REST API バージョン履歴の詳細については、[Azure M
 
 ### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-お知らせしているように *Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、2019 年 11 月 30 日には廃止される予定です。
+*Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、2020 年 3 月 31 日には廃止される予定です。
 
 詳細については、[WAME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101334)と [AME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101335)に関するページを参照してください。
 

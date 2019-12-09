@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 33fd2221d3f3a0562abf83f014a7b84df972eebc
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: b985dfc1f16372c3fad1b0a5c0894931b4c15dcc
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128848"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406482"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
@@ -63,7 +63,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
     ./generateCredentials.ps1   
 
     ```
-7. 画面の指示に従って、値をキャプチャします (API エンドポイント、テナント ID、クライアント ID、クライアント シークレット、EventHub 接続文字列)。
+7. 画面の指示に従って、値をキャプチャします (API エンドポイント、テナント ID、クライアント ID、クライアント シークレット、EventHub 接続文字列)。 EventHub 接続文字列は、Swagger で API 応答の一部として確認できます。
 
 **生成された資格情報を使用してデバイス データを統合する**
 

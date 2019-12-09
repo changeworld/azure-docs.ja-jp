@@ -1,23 +1,15 @@
 ---
-title: Azure Functions 用 JavaScript 開発者向けリファレンス | Microsoft Docs
+title: Azure Functions 用 JavaScript 開発者向けリファレンス
 description: JavaScript を使用して関数を開発する方法について説明します。
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
-ms.service: azure-functions
-ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
-ms.author: glenga
-ms.openlocfilehash: fbecb1d02c2d262487683cb493db2d5a8f0d1c3e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: b6b7db4c5f13a264b76dcab02dba51c464297307
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72898942"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226721"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 

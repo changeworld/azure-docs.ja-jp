@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: cd0ec07ebfffc839fedcdc76c9aff8e86556a7de
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 3b692ed697d69deca4c50a0595cc54251bac4990
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70130098"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74174975"
 ---
 | リソース | 既定/上限 | Note |
 | --- | --- | --- |
@@ -33,7 +33,8 @@ ms.locfileid: "70130098"
 | URL マップあたりのパスベース ルールの最大数|100||
 | リダイレクトの構成 |100<sup>1</sup>| |
 | コンカレント WebSocket 接続 |中規模のゲートウェイ 20k<br> 大規模のゲートウェイ 50k| |
-| URL の最大長|8,000||
+| URL の最大長|32KB| |
+| HTTP/2 向けヘッダーの最大サイズ |4KB| |
 | 最大ファイル アップロード サイズ (標準) |2 GB | |
 | 最大ファイル アップロード サイズ (WAF) |中規模の WAF ゲートウェイ - 100 MB<br>大規模の WAF ゲートウェイ - 500 MB| |
 | WAF の本文サイズの制限 (ファイルがない場合)|128 KB||

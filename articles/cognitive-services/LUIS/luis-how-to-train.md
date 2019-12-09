@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 259ea23c05f0c0a138ad54b6efd11aad2061cf7a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500232"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143698"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>LUIS アプリのアクティブなバージョンをトレーニングする 
 
@@ -26,22 +26,15 @@ ms.locfileid: "73500232"
 
 トレーニングは、LUIS ポータルでのアクティブなバージョンに適用されます。 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
 ## <a name="how-to-train-interactively"></a>対話的にトレーニングする方法
 
 [LUIS ポータル](https://www.luis.ai)で反復的なプロセスを開始するには、まず、LUIS アプリを少なくとも 1 回トレーニングする必要があります。 すべての意図に少なくとも 1 つの発話があることをトレーニングの前に確認してください。
 
 1. **My Apps** ページでアプリの名前を選択してアプリにアクセスします。 
 
-2. アプリで、上部パネルの **[トレーニング]** を選択します。 
+1. アプリで、上部パネルの **[トレーニング]** を選択します。 
 
-3. トレーニングが完了したら、ブラウザーの上部に緑のバーが表示されます。
-
-<!-- The following note refers to what might cause the error message "Training failed: FewLabels for model: <ModelName>" -->
-
->[!NOTE]
->アプリの 1 つまたは複数の意図に、発話の例が含まれていない場合は、アプリのトレーニングを行うことはできません。 すべての意図に発話を追加します。 詳細については、「[Add example utterances](luis-how-to-add-example-utterances.md)」(発話の追加) を参照してください。
+1. トレーニングが完了したら、ブラウザーの上部に通知が表示されます。
 
 ## <a name="training-date-and-time"></a>日付と時刻をトレーニングする
 
@@ -49,20 +42,7 @@ ms.locfileid: "73500232"
 
 ## <a name="train-with-all-data"></a>すべてのデータでトレーニングする
 
-トレーニングでは、ネガティブ サンプリングのごく一部を使用します。 
-
-小規模なネガティブ サンプリングではなくすべてのデータを使用する場合は、[API](#version-settings-api-use-of-usealltrainingdata) を使用します。
-
-<!--
-
- or the [LUIS portal setting](#luis-portal-setting-to-use-all-training-data)
-
-### LUIS portal setting to use all training data
-
-!!!IGNITE
-
-
--->
+トレーニングでは、ネガティブ サンプリングのごく一部を使用します。 小規模なネガティブ サンプリングではなくすべてのデータを使用する場合は、[API](#version-settings-api-use-of-usealltrainingdata) を使用します。
 
 ### <a name="version-settings-api-use-of-usealltrainingdata"></a>バージョン設定 API の UseAllTrainingData の使用
 
@@ -80,5 +60,5 @@ LUIS ポータルでのトレーニングは、 **[トレーニング]** ボタ�
 
 ## <a name="next-steps"></a>次の手順
 
-* [LUIS で推奨される発話にラベルを付ける](luis-how-to-review-endpoint-utterances.md) 
-* [LUIS アプリのパフォーマンスを向上させる機能を使用する](luis-how-to-add-features.md) 
+* [対話型テスト](luis-interactive-test.md)
+* [バッチ テスト](luis-how-to-batch-test.md)

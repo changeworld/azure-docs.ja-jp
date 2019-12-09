@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 3a5517c31cdac0bf6f5ea386a8614d15521d4479
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b0c6e39aebe7864ab132805b78aa7be2d61c5160
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035537"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185138"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>Azure マネージド ID と統合する
+# <a name="integrate-with-azure-managed-identities"></a>Azure マネージド ID との統合
 
-Azure Active Directory [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) は、クラウド アプリケーションのシークレット管理を単純化するのに役立ちます。 マネージド ID では、コードを設定して、それが実行される Azure コンピューティング サービス用に作成されたサービス プリンシパルを使用できます。 Azure Key Vault またはローカル接続文字列に格納された別の資格情報の代わりに、マネージド ID を使用します。 
+Azure Active Directory [マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) は、クラウド アプリケーションのシークレット管理を単純化するのに役立ちます。 マネージド ID では、コードを設定して、それが実行される Azure サービス用に作成されたサービス プリンシパルを使用できます。 Azure Key Vault またはローカル接続文字列に格納された別の資格情報の代わりに、マネージド ID を使用します。 
 
-Azure App Configuration とその .NET Core、.NET、Java Spring のクライアント ライブラリには、マネージド サービス ID (MSI) サポートが組み込まれています。 これの使用は必須ではありませんが、MSI によって、シークレットが含まれるアクセス トークンが不要になります。 コードはサービス エンドポイントのみを使用してアプリ構成ストアにアクセスできます。 シークレットの流出を心配することなく、この URL をコードに直接埋め込むことができます。
+Azure App Configuration とその .NET Core、.NET Framework、Java Spring のクライアント ライブラリには、マネージド ID サポートが組み込まれています。 これの使用は必須ではありませんが、マネージド ID によって、シークレットが含まれるアクセス トークンが不要になります。 コードはサービス エンドポイントのみを使用して App Configuration ストアにアクセスできます。 シークレットの流出を心配することなく、この URL をコードに直接埋め込むことができます。
 
-このチュートリアルでは、MSI を活用して App Configuration にアクセスする方法について説明します。 これは、クイック スタートで紹介されている Web アプリに基づいています。 先に進む前に、[App Configuration を使用した ASP.NET Core アプリの作成](./quickstart-aspnet-core-app.md)を完了しておいてください。
+このチュートリアルでは、マネージド ID を活用して App Configuration にアクセスする方法について説明します。 これは、クイック スタートで紹介されている Web アプリに基づいています。 先に進む前に、[App Configuration を使用した ASP.NET Core アプリの作成](./quickstart-aspnet-core-app.md)を完了しておいてください。
 
-またこのチュートリアルでは、必要に応じて App Configuration の Key Vault 参照と共に MSI を使用する方法についても説明します。 これにより、Key Vault に格納されているシークレットと、App Configuration の構成値にシームレスにアクセスできます。 この機能を確認する場合は、[ASP.NET Core の Key Vault 参照の使用](./use-key-vault-references-dotnet-core.md)に関するページの手順を最初に完了します。
+またこのチュートリアルでは、必要に応じて App Configuration の Key Vault 参照と共に マネージド ID を使用する方法についても説明します。 これにより、Key Vault に格納されているシークレットと、App Configuration の構成値にシームレスにアクセスできます。 この機能を確認する場合は、[ASP.NET Core の Key Vault 参照の使用](./use-key-vault-references-dotnet-core.md)に関するページの手順を最初に完了します。
 
 このチュートリアルの手順は、任意のコード エディターを使用して実行できます。 推奨のエディターは [Visual Studio Code](https://code.visualstudio.com/) です (Windows、macOS、および Linux プラットフォームで使用できます)。
 
@@ -64,7 +64,7 @@ Azure App Configuration とその .NET Core、.NET、Java Spring のクライア
 
 ## <a name="grant-access-to-app-configuration"></a>App Configuration へのアクセスの許可
 
-1. [Azure portal](https://portal.azure.com) で **[すべてのリソース]** を選択し、クイック スタートで作成したアプリ構成ストアを選択します。
+1. [Azure portal](https://portal.azure.com) で **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration を選択します。
 
 1. **[アクセス制御 (IAM)]** を選択します。
 
@@ -82,9 +82,9 @@ Azure App Configuration とその .NET Core、.NET、Java Spring のクライア
 
 ## <a name="use-a-managed-identity"></a>マネージド ID の使用
 
-1. Azure portal の構成画面に移動して、ご利用のアプリ構成ストアへの URL を見つけてから、 **[アクセス キー]** タブをクリックします。
+1. Azure portal の構成画面に移動して、ご利用の App Configuration ストアへの URL を見つけてから、 **[アクセス キー]** タブをクリックします。
 
-1. *appsettings.json* を開き、以下のスクリプトを追加します。 *\<service_endpoint>* を、角かっこも含めて、ご利用のアプリ構成ストアへの URL に置き換えます。 
+1. *appsettings.json* を開き、以下のスクリプトを追加します。 *\<service_endpoint>* を、角かっこも含めて、ご利用の App Configuration ストアへの URL に置き換えます。 
 
     ```json
     "AppConfig": {
@@ -203,7 +203,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>他の言語におけるマネージド ID の使用
 
-.NET Framework 用および Java Spring 用の App Configuration プロバイダーにも、マネージド ID に対する組み込みサポートがあります。 これらの場合、プロバイダーを構成するときに、完全な接続文字列ではなく、アプリ構成ストアの URL エンドポイントを使用します。 たとえば、クイック スタートで作成される .NET Framework コンソール アプリの場合、*App.config* ファイルで次の設定を指定します。
+.NET Framework 用および Java Spring 用の App Configuration プロバイダーにも、マネージド ID に対する組み込みサポートがあります。 これらの場合、プロバイダーを構成するときに、完全な接続文字列ではなく、App Configuration ストアの URL エンドポイントを使用します。 たとえば、クイック スタートで作成される .NET Framework コンソール アプリの場合、*App.config* ファイルで次の設定を指定します。
 
 ```xml
     <configSections>
@@ -228,6 +228,7 @@ http://<app_name>.azurewebsites.net
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>次の手順
+このチュートリアルでは、Azure マネージド ID を追加して、App Configuration へのアクセスを効率化し、アプリの資格情報管理を改善しました。 App Configuration の使用方法の詳細については、Azure CLI のサンプルに進んでください。
 
 > [!div class="nextstepaction"]
 > [CLI のサンプル](./cli-samples.md)

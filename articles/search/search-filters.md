@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 960f6f0de94c6bb4fc6b03c31740b63270cf9e14
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f4ce3cd0db20f76aa6169f15254cf36ee64151a5
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132931"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406745"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Cognitive Search のフィルター 
 
@@ -61,7 +61,6 @@ ms.locfileid: "74132931"
 フィルターは検索と並行して実行され、ドキュメントの取得と関連性のスコア付けのためにダウンストリーム処理に含めるドキュメントを特定します。 フィルターを検索文字列と組み合わせて使用すると、以降の検索操作での再指定を効果的に減らすことができます。 フィルターを単独で使用すると (たとえば、`search=*` ではクエリ文字列が空です)、フィルター条件が唯一の入力になります。 
 
 ## <a name="defining-filters"></a>フィルターを定義する
-
 フィルターは [Azure Cognitive Search でサポートされている OData V4 構文のサブセット](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)を使用して記述される OData 式です。 
 
 各**検索**操作に 1 つのフィルターを指定できますが、フィルター自体には複数のフィールド、複数の条件、および複数のフルテキスト検索式 (**ismatch** 関数を使用する場合) を含めることができます。 マルチパートのフィルター式では、任意の順序で述語を指定できます (演算子の優先順位の規則に従います)。 特定の順序で述語を並べ替えても、感知できるほどパフォーマンスが向上することはありません。
@@ -72,14 +71,14 @@ ms.locfileid: "74132931"
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2019-05-06
+GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
 # Option 2: Use filter for POST and pass it in the request body
 POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "*",
-    "filter": "baseRate lt 150",
-    "select": "hotelId,description"
+    "filter": "Rooms/any(room: room/BaseRate lt 150.0)",
+    "select": "HotelId, HotelName, Rooms/Description, Rooms/BaseRate"
 }
 ```
 
@@ -87,8 +86,8 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
     parameters =
         new SearchParameters()
         {
-            Filter = "baseRate lt 150",
-            Select = new[] { "hotelId", "description" }
+            Filter = "Rooms/any(room: room/BaseRate lt 150.0)",
+            Select = new[] { "HotelId", "HotelName", "Rooms/Description" ,"Rooms/BaseRate"}
         };
 
     var results = searchIndexClient.Documents.Search("*", parameters);
@@ -101,31 +100,31 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 + クエリ文字列がないスタンドアロンの **$filter**。関係があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析、スコア付け、優先度付けはありません。 検索文字列がアスタリスクのみであることに注意してください。これは、"すべてのドキュメントを照合する" ことを意味しています。
 
    ```
-   search=*&$filter=(baseRate ge 60 and baseRate lt 300) and accommodation eq 'Hotel' and city eq 'Nogales'
+   search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
    ```
 
-+ クエリ文字列と **$filter** の組み合わせ。フィルターによってサブセットが作成され、クエリ文字列は、フィルターされたサブセットに対するフルテキスト検索に用語入力を提供します。 フィルターとクエリ文字列の併用は、最も一般的な使用パターンです。
++ クエリ文字列と **$filter** の組み合わせ。フィルターによってサブセットが作成され、クエリ文字列は、フィルターされたサブセットに対するフルテキスト検索に用語入力を提供します。 用語 (walking distance theaters) を追加することにより、結果に検索スコアが導入され、用語に最も一致するドキュメントが上位にランク付けされます。 フィルターとクエリ文字列の併用は、最も一般的な使用パターンです。
 
    ```
-   search=hotels ocean$filter=(baseRate ge 60 and baseRate lt 300) and city eq 'Los Angeles'
+  search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
    ```
 
 + 複合クエリ。"or" で区切られ、それぞれに独自のフィルター条件があります (たとえば、'dog' の 'beagles'、'cat' の 'siamese')。 `or` で結合された式は個別に評価され、各式に一致するドキュメントの和集合が応答で返されます。 この使用パターンは、`search.ismatchscoring` 関数を使用して実行されます。 また、スコア付けなしバージョンである `search.ismatch` を使用することもできます。
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
-   $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+   $filter=search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
    # Match on 'luxury' or 'high-end' in the description field OR on category exactly equal to 'Luxury'.
-   $filter=search.ismatchscoring('luxury | high-end', 'description') or category eq 'Luxury'
+   $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
   `or` の代わりに `and` を指定して、`search.ismatchscoring` によるフルテキスト検索とフィルターを結合することもできますが、これは検索要求で `search` パラメーターと `$filter` パラメーターを使用することと機能的に同じです。 たとえば、次の 2 つのクエリでは同じ結果が生成されます。
 
   ```
-  $filter=search.ismatchscoring('pool') and rating ge 4
+  $filter=search.ismatchscoring('pool') and Rating ge 4
 
-  search=pool&$filter=rating ge 4
+  search=pool&$filter=Rating ge 4
   ```
 
 特定のユース ケースに関する包括的なガイダンスについては、以下の記事を参照してください。

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/14/2019
+ms.date: 11/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 92beb61125c9c6a41bafb9a0c477d81c34a2f5de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0fbdba5c3fbfdfab5267407ccec9c611d74a5e02
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520667"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463977"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>共通イベント形式を使用して外部ソリューションを接続する
 
@@ -36,7 +36,7 @@ ms.locfileid: "73520667"
 
  ![Azure での CEF](./media/connect-cef/cef-syslog-azure.png)
 
-または、別のクラウド内の VM、またはオンプレミスのマシンを使用する場合にも、この設定が存在します。 
+あるいは、別のクラウドの VM かオンプレミスのマシンを使用する場合は、以下の設定が存在することになります。 
 
  ![オンプレミスの CEF](./media/connect-cef/cef-syslog-onprem.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "73520667"
 
  
 ## <a name="prerequisites"></a>前提条件
-プロキシとして使用する Linux マシンで、次のいずれかのオペレーティング システムが実行されていることを確認します。
+プロキシとして使用する Linux マシンで、次のいずれかのオペレーティングシステムが実行されていることを確認します。
 
 - 64 ビット
   - CentOS 6 および 7
@@ -67,32 +67,32 @@ ms.locfileid: "73520667"
    - Ubuntu Linux 14.04 LTS および 16.04 LTS
  
  - デーモンのバージョン
-   - Syslog-ng: 2.1 から 3.22.1
+   - Syslog-ng:2.1 - 3.22.1
    - Rsyslog: v8
   
  - サポートされている Syslog RFC
    - Syslog RFC 3164
    - Syslog RFC 5424
  
-コンピューターが次の要件も満たしていることを確認します。 
+マシンが次の要件も満たしていることを確認します。 
 - アクセス許可
-    - コンピューターに対する管理者特権のアクセス許可 (sudo) が必要です。 
+    - マシンに対する管理者特権のアクセス許可 (sudo) が必要です。 
 - ソフトウェア要件
-    - コンピューターで Python が実行されていることを確認します
+    - マシンで Python が実行されていることを確認します
 ## <a name="step-1-deploy-the-agent"></a>手順 1: エージェントをデプロイする
 
-この手順では、Azure Sentinel とセキュリティ ソリューションの間のプロキシとして機能する Linux マシンを選択する必要があります。 プロキシ マシンで次のスクリプトを実行する必要があります。
-- Log Analytics エージェントをインストールし、必要に応じて、TCP 経由のポート 514 で Syslog メッセージをリッスンし、Azure Sentinel ワークスペースに CEF メッセージを送信するように構成します。
-- ポート 25226 を使用して、CEF メッセージを Log Analytics エージェントに転送するように Syslog デーモンを構成します。
-- データを収集しそれを Log Analytics に安全に送信するように Syslog エージェントを設定します。ここで、データが解析および改良されます。
+このステップでは、Azure Sentinel とセキュリティ ソリューションの間のプロキシとして機能する Linux マシンを選択する必要があります。 プロキシ マシンで次のスクリプトを実行する必要があります。
+- Log Analytics エージェントをインストールし、Syslog メッセージをリッスンするために必要に応じて構成します。
+- TCP ポート 514 を使用して Syslog メッセージをリッスンするように Syslog デーモンを構成し、TCP ポート 25226 を使用して CEF メッセージだけを Log Analytics エージェントに転送します。
+- Syslog エージェントを設定して、データを収集して安全に Azure Sentinel に送信し、そこでデータが解析および補強されるようにします。
  
  
 1. Azure Sentinel ポータルで、 **[Data connectors]\(データ コネクタ\)** をクリックし、 **[Common Event Format (CEF)]** を選択して、 **[Open connector page]\(コネクタ ページを開く\)** を選択します。 
 
 1. **[Install and configure the Syslog agent]\(Syslog エージェントのインストールと構成\)** で、マシンの種類として Azure、他のクラウド、またはオンプレミスのいずれかを選択します。 
    > [!NOTE]
-   > 次の手順のスクリプトでは Log Analytics エージェントをインストールし、マシンを Azure Sentinel ワークスペースに接続するため、このマシンが他のワークスペースに接続されていないことを確認します。
-1. コンピューターに対する管理者特権のアクセス許可 (sudo) が必要です。 次のコマンド `python –version` を使用して、マシンに Python が備わっていることを確認します。
+   > 次の手順のスクリプトでは Log Analytics エージェントをインストールし、コンピューターを Azure Sentinel ワークスペースに接続するため、このコンピューターが他のワークスペースに接続されていないことを確認してください。
+1. マシンに対する管理者特権のアクセス許可 (sudo) が必要です。 コマンド `python –version` を使用して、コンピューターに Python がインストールされていることを確認します。
 
 1. プロキシ マシンで次のスクリプトを実行します。
    `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
@@ -113,13 +113,13 @@ ms.locfileid: "73520667"
 
 1. Log Analytics で CEF イベントに関連するスキーマを使用するために、`CommonSecurityLog` を検索します。
 
-## <a name="step-3-validate-connectivity"></a>手順 3: 接続の検証
+## <a name="step-3-validate-connectivity"></a>手順 3:接続の検証
 
 1. Log Analytics を開いて、CommonSecurityLog スキーマを使用してログを受信していることを確認します。<br> ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。 
 
-1. スクリプトを実行する前に、セキュリティ ソリューションからメッセージを送信して、構成した Syslog プロキシ マシンにそれらが転送されていることを確認することをお勧めします。 
-1. コンピューターに対する管理者特権のアクセス許可 (sudo) が必要です。 次のコマンド `python –version` を使用して、マシンに Python が備わっていることを確認します。
-1. 次のスクリプトを実行して、エージェント、Azure Sentinel、セキュリティ ソリューション間の接続を確認します。 デーモンの転送が正しく構成されていること、正しいポートでリッスンしていること、デーモンと Log Analytics エージェント間の通信がブロックされていないことを確認します。 また、このスクリプトでは、モック メッセージ "TestCommonEventFormat" を送信して、エンドツーエンドの接続も確認されます。 <br>
+1. スクリプトを実行する前に、セキュリティ ソリューションからメッセージを送信して、構成した Syslog プロキシ マシンに転送されていることを確認することをお勧めします。 
+1. マシンに対する管理者特権のアクセス許可 (sudo) が必要です。 コマンド `python –version` を使用して、コンピューターに Python がインストールされていることを確認します。
+1. 次のスクリプトを実行して、エージェント、Azure Sentinel、セキュリティ ソリューションの間の接続を確認します。 これにより、デーモンの転送が正しく構成されていること、正しいポートでリッスンしていること、デーモンと Log Analytics エージェントの間の通信がブロックされていないことが確認されます。 また、このスクリプトは、モック メッセージ「TestCommonEventFormat」を送信して、エンドツーエンドの接続を確認します。 <br>
  `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
 

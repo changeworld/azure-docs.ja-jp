@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: d3b9284282a7ee14cde2461598c81e6dfdfd9f72
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: a45f273078a622de5e256457fc45b6cb6cae512f
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316742"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464127"
 ---
 # <a name="remove-azure-sentinel-from-your-tenant"></a>テナントから Azure Sentinel を削除する
 
@@ -38,7 +38,7 @@ Azure Sentinel のインストール時、バックグラウンドでは、選�
 3.  ページの上部で **[削除]** を選択します。
 
     > [!IMPORTANT]
-    > ワークスペースを削除すると、Azure Monitor のテナントからワークスペースと Azure Sentinel が削除されます。
+    > ワークスペースを削除すると、このワークスペースを使用している他のソリューションやデータ ソース (Azure Monitor など) に影響を与える可能性があります。 このワークスペースを使用しているソリューションを確認するには、「[インストールされている監視ソリューションを一覧表示する](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)」を参照してください。 どのソリューションのデータがワークスペースに取り込まれているかを確認するには、「[取り込まれたデータ ボリュームについて理解する](../azure-monitor/platform/manage-cost-storage.md#understanding-ingested-data-volume)」を参照してください。
 
     ![SecurityInsights ソリューションを削除する](media/offboard/delete-solution.png)
 

@@ -1,6 +1,6 @@
 ---
-title: 自分のパスワードをリセットする方法の登録 - Azure AD
-description: Azure AD のパスワード リセットのセルフサービスにご自分の認証データを登録すると、管理者の支援なしで自分のパスワードをリセットできます。
+title: 自分のパスワードをリセットする認証情報の登録 - Azure AD
+description: Azure AD のパスワード リセットのセルフサービスに自分の確認方法の情報を登録すると、管理者の支援なしで自分のパスワードをリセットできます。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 796702b2189dcfb001f72913e4a01c0ae01462ad
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b9748c0d04f958648f7919b7ac29dc58d5a137ac
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820446"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279046"
 ---
-# <a name="register-to-reset-your-own-password"></a>自分のパスワードをリセットする方法の登録
+# <a name="register-your-verification-method-info-to-reset-your-own-password"></a>確認方法の情報を登録して自分のパスワードをリセットする
 
 > [!IMPORTANT]
 > こちらをご覧になっているのは、サインインできないことが理由ですか。 その場合、「[職場または学校のパスワードをリセットする](active-directory-passwords-update-your-own-password.md)」を参照してください。
 
-エンド ユーザーは、Azure Active Directory (Azure AD) のセルフサービスのパスワード リセット (SSPR) を使用すると、パスワードのリセットまたはアカウントのロック解除を自分で実行できます。 この機能を利用する前に、認証方法を登録するか、管理者によって設定されている定義済みの認証方法を確認する必要があります。
+エンド ユーザーは、Azure Active Directory (Azure AD) のセルフサービスのパスワード リセット (SSPR) を使用すると、パスワードのリセットまたはアカウントのロック解除を自分で実行できます。 この機能を使用する前に、確認方法を登録するか、管理者によって設定されている定義済みの確認方法を確認する必要があります。
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>SSPR への認証データの登録または確認
 
@@ -38,13 +38,13 @@ ms.locfileid: "73820446"
     * **[セキュリティの質問]** : ユーザーが回答する質問のリストは管理者が承認済みです。 同じ質問や回答を複数回使用することはできません。
 4. 管理者から要求されている情報を入力および確認します。 複数のオプションが使用可能な場合、複数の方法を登録することをお勧めします。 そうすることで、いずれかの方法が使用できない場合に柔軟に対応できます。 たとえば、移動中で会社の電話にアクセスできない場合などです。
 
-    ![認証方法の登録と [完了] の選択][Register]
+    ![確認方法の登録と [完了] の選択][Register]
 
 5. **[完了]** を選択します。 今後必要に応じて SSPR を使用できるようになりました。
 
 **[認証用電話]** または **[認証用電子メール]** にデータを入力した場合、そのデータはグローバル ディレクトリには表示されません。 このデータを見ることができるのは、データを入力したユーザーとその管理者だけです。 セキュリティの質問に対する回答を見ることができるのは、それを指定したユーザーだけです。
 
-適切な認証方法が継続して登録されていることを確認するため、管理者から、一定期間経過後に認証方法の確認を求められる場合もあります。
+適切な確認方法が継続して登録されていることを確認するため、管理者から、一定期間経過後にその方法の確認を求められる場合もあります。
 
 ## <a name="common-problems-and-their-solutions"></a>一般的な問題とその解決方法
 

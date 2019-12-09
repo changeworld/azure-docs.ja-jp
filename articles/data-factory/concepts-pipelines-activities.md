@@ -5,20 +5,19 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/12/2018
-ms.openlocfilehash: bed81633b27d5d0f89cb7e3d7a6e0975de4b6772
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/19/2019
+ms.openlocfilehash: 6e466675a9bd86693ce0ee048480712a55829ce6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681459"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280737"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
+
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-create-pipelines.md)
 > * [現在のバージョン](concepts-pipelines-activities.md)
@@ -26,17 +25,18 @@ ms.locfileid: "73681459"
 この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して、データ移動シナリオやデータ処理シナリオ用のエンド ツー エンドのデータ主導ワークフローを作成する方法について説明します。
 
 ## <a name="overview"></a>概要
-データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 たとえば、ログ データを取り込んでクリーニングしてから、HDInsight クラスター上で Spark ジョブを開始してそのログ データを分析するアクティビティのセットをパイプラインに組み込むこともできます。 パイプラインの長所は、アクティビティを個別にではなく、セットとして管理できることです。 たとえば、デプロイとスケジュール設定を、アクティビティごとではなく、パイプライン単位で行うことができます。
+データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 たとえば、ログ データを取り込んでクリーニングしてから、マッピング データ フローを開始してそのログ データを分析するアクティビティのセットをパイプラインに組み込むこともできます。 パイプラインを使用すると、各アクティビティを個別に管理するのではなく、セットとして管理できます。 デプロイとスケジュール設定を、アクティビティごとではなく、パイプライン単位で行うことができます。
 
-パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、オンプレミス SQL Server から Azure Blob Storage にデータをコピーできます。 次に、Azure HDInsight クラスターで Hive スクリプトを実行する Hive アクティビティを使用し、Blob ストレージのデータを処理/変換して出力データを生成します。 最後に、2 番目のコピー アクティビティを使用して、ビジネス インテリジェンス (BI) レポート ソリューションが構築されている Azure SQL Data Warehouse に出力データをコピーします。
+パイプライン内の複数のアクティビティは、データに対して実行するアクションを定義します。 たとえば、コピー アクティビティを使用して、オンプレミス SQL Server から Azure Blob Storage にデータをコピーできます。 次に、データ フロー アクティビティまたは Databricks Notebook アクティビティを使用して、BLOB ストレージから、ビジネス インテリジェンス レポート ソリューションが構築された Azure Synapse Analytics プールにデータを処理して変換します。
 
-Data Factory では、[データ移動アクティビティ](copy-activity-overview.md)、[データ変換アクティビティ](transform-data.md)、[制御アクティビティ](control-flow-web-activity.md)の 3 種類のアクティビティがサポートされています。 アクティビティは 0 個以上の入力[データセット](concepts-datasets-linked-services.md)を受け取り、1 個以上の出力[データセット](concepts-datasets-linked-services.md)を生成できます。 次の図は、Data Factory でのパイプライン、アクティビティ、データセットの関係を示しています。
+Data Factory では、[データ移動アクティビティ](copy-activity-overview.md)、[データ変換アクティビティ](transform-data.md)、[制御アクティビティ](control-flow-web-activity.md)の 3 種類のアクティビティ グループがあります。 アクティビティは 0 個以上の入力[データセット](concepts-datasets-linked-services.md)を受け取り、1 個以上の出力[データセット](concepts-datasets-linked-services.md)を生成できます。 次の図は、Data Factory でのパイプライン、アクティビティ、データセットの関係を示しています。
 
 ![データセット、アクティビティ、パイプラインの関係](media/concepts-pipelines-activities/relationship-between-dataset-pipeline-activity.png)
 
 入力データセットはパイプラインのアクティビティの入力を表し、出力データセットはアクティビティの出力を表します。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 作成したデータセットは、パイプライン内のアクティビティで使用できます。 たとえば、データセットはコピー アクティビティまたは HDInsightHive アクティビティの入力/出力データセットとして使用できます。 データセットの詳細については、「[Azure Data Factory のデータセット](concepts-datasets-linked-services.md)」の記事を参照してください。
 
 ## <a name="data-movement-activities"></a>データ移動アクティビティ
+
 Data Factory のコピー アクティビティは、ソース データ ストアからシンク データ ストアにデータをコピーします。 Data Factory は、このセクションの表に挙げられているデータ ストアをサポートしています。 また、任意のソースのデータを任意のシンクに書き込むことができます。 データ ストアをクリックすると、そのストアとの間でデータをコピーする方法がわかります。
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores.md)]
@@ -48,6 +48,8 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 
 データ変換アクティビティ | Compute 環境
 ---------------------------- | -------------------
+[[データ フロー]](control-flow-execute-data-flow-activity.md) | Azure Data Factory によって管理される Azure Databricks
+[Azure 関数](control-flow-azure-function-activity.md) | Azure Functions
 [Hive](transform-data-using-hadoop-hive.md) | HDInsight [Hadoop]
 [Pig](transform-data-using-hadoop-pig.md) | HDInsight [Hadoop]
 [MapReduce](transform-data-using-hadoop-map-reduce.md) | HDInsight [Hadoop]
@@ -56,26 +58,31 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 [Machine Learning アクティビティ:バッチ実行とリソースの更新](transform-data-using-machine-learning.md) | Azure VM
 [ストアド プロシージャ](transform-data-using-stored-procedure.md) | Azure SQL、Azure SQL Data Warehouse、または SQL Server
 [U-SQL](transform-data-using-data-lake-analytics.md) | Azure Data Lake Analytics
-[カスタム コード](transform-data-using-dotnet-custom-activity.md) | Azure Batch
+[カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md) | Azure Batch
 [Databricks Notebook](transform-data-databricks-notebook.md) | Azure Databricks
 [Databricks Jar アクティビティ](transform-data-databricks-jar.md) | Azure Databricks
 [Databricks Python アクティビティ](transform-data-databricks-python.md) | Azure Databricks
 
 詳細については、[データ変換アクティビティ](transform-data.md)に関する記事を参照してください。
 
-## <a name="control-activities"></a>制御アクティビティ
+## <a name="control-flow-activities"></a>制御フロー アクティビティ
 次の制御フロー アクティビティがサポートされています。
 
 制御アクティビティ | 説明
 ---------------- | -----------
-[ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md) | パイプラインの実行アクティビティを使用すると、Data Factory の 1 つのパイプラインから別のパイプラインを呼び出すことができます。
-[ForEachActivity](control-flow-for-each-activity.md) | ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
-[WebActivity](control-flow-web-activity.md) | Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。
-[ルックアップ アクティビティ](control-flow-lookup-activity.md) | ルックアップ アクティビティを使用して、任意の外部ソースからレコード/テーブル名/値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。
-[メタデータの取得アクティビティ](control-flow-get-metadata-activity.md) | GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。
-[Until アクティビティ](control-flow-until-activity.md) | プログラミング言語の Do-Until ループ構造に似た Do-Until ループを実装します。 Until アクティビティでは、そこに関連付けられている条件が true に評価されるまで、一連のアクティビティがループ実行されます。 Data Factory では、until アクティビティのタイムアウト値を指定することができます。
+[変数の追加](control-flow-append-variable-activity.md) | 既存の配列変数に値を追加します。
+[パイプラインの実行](control-flow-execute-pipeline-activity.md) | パイプラインの実行アクティビティを使用すると、Data Factory の 1 つのパイプラインから別のパイプラインを呼び出すことができます。
+[Filter](control-flow-filter-activity.md) | 入力配列にフィルター式を適用します
+[For Each](control-flow-for-each-activity.md) | ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
+[メタデータの取得](control-flow-get-metadata-activity.md) | GetMetadata アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。
 [If Condition アクティビティ](control-flow-if-condition-activity.md) | If Condition は、true または false として評価される条件に基づき分岐を行うために使用できます。 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。
+[ルックアップ アクティビティ](control-flow-lookup-activity.md) | ルックアップ アクティビティを使用して、任意の外部ソースからレコード/テーブル名/値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。
+[変数の設定](control-flow-set-variable-activity.md) | 既存の変数の値を設定します。
+[Until アクティビティ](control-flow-until-activity.md) | プログラミング言語の Do-Until ループ構造に似た Do-Until ループを実装します。 Until アクティビティでは、そこに関連付けられている条件が true に評価されるまで、一連のアクティビティがループ実行されます。 Data Factory では、until アクティビティのタイムアウト値を指定することができます。
+[検証アクティビティ](control-flow-validation-activity.md) | 参照データセットが存在する、指定された条件を満たす、またはタイムアウトに達した場合にのみ、パイプラインが実行を継続するようにします。
 [Wait アクティビティ](control-flow-wait-activity.md) | パイプラインで Wait アクティビティを使用すると、パイプラインは、指定した期間待った後、後続のアクティビティの実行を続行します。
+[Web アクティビティ](control-flow-web-activity.md) | Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。
+[Webhook アクティビティ](control-flow-webhook-activity.md) | Webhook アクティビティを使用すると、エンドポイントを呼び出し、コールバック URL を渡ことができます。 パイプラインの実行は、コールバックが呼び出されるのを待ってから、次のアクティビティに進みます。
 
 ## <a name="pipeline-json"></a>パイプライン JSON
 パイプラインを JSON 形式で定義する方法を示します。
@@ -90,7 +97,10 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
         [
         ],
         "parameters": {
-         }
+        },
+        "concurrency": <your max pipeline concurrency>,
+        "annotations": [
+        ]
     }
 }
 ```
@@ -101,6 +111,8 @@ name | パイプラインの名前。 パイプラインが実行するアクシ
 description | パイプラインの用途を説明するテキストを指定します。 | String | いいえ
 activities | **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 activities JSON 要素の詳細については、「[アクティビティ JSON](#activity-json)」のセクションを参照してください。 | Array | はい
 parameters | **parameters** セクションでは、パイプライン内に 1 つ以上のパラメーターを定義できるので、パイプラインの再利用に柔軟性を持たせることができます。 | List | いいえ
+concurrency | パイプラインで可能な同時実行の最大数。 既定では、最大値は設定されていません。 同時実行の制限に達した場合、前の実行が完了するまでパイプラインの実行がキューに追加されます | Number | いいえ 
+annotations | パイプラインに関連付けられているタグの一覧 | Array | いいえ
 
 ## <a name="activity-json"></a>アクティビティ JSON
 **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 アクティビティには、主に次の 2 種類があります:実行アクティビティと制御アクティビティ。
@@ -132,7 +144,7 @@ parameters | **parameters** セクションでは、パイプライン内に 1 �
 --- | ----------- | ---------
 name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数:55</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | はい</li></ul>
 description | アクティビティの用途を説明するテキスト。 | はい
-type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-activities)に関するセクションを参照してください。 | はい
+type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-flow-activities)に関するセクションを参照してください。 | はい
 linkedServiceName | アクティビティで使用される、リンクされたサービスの名前。<br/><br/>アクティビティでは、必要なコンピューティング環境にリンクする、リンクされたサービスの指定が必要な場合があります。 | HDInsight アクティビティ、Azure Machine Learning バッチ スコアリング アクティビティ、ストアド プロシージャ アクティビティの場合は "はい"。 <br/><br/>それ以外の場合は "いいえ"
 typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に応じて異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | いいえ
 policy | アクティビティの実行時の動作に影響するポリシーです。 このプロパティには、タイムアウトと再試行の動作が含まれます。 指定されていない場合は、既定値が使用されます。 詳細については、「[アクティビティ ポリシー](#activity-policy)」のセクションを参照してください。 | いいえ
@@ -197,7 +209,7 @@ secureOutput | true に設定すると、アクティビティからの出力が
 --- | ----------- | --------
 name | アクティビティの名前。 アクティビティが実行するアクションを表す名前を指定します。<br/><ul><li>最大文字数:55</li><li>文字、数字、アンダー スコア (\_) のいずれかで始める必要があります</li><li>次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、"\\" | はい</li><ul>
 description | アクティビティの用途を説明するテキスト。 | はい
-type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-activities)に関するセクションを参照してください。 | はい
+type | アクティビティの種類。 各種のアクティビティについては、[データ移動アクティビティ](#data-movement-activities)、[データ変換アクティビティ](#data-transformation-activities)、[制御アクティビティ](#control-flow-activities)に関するセクションを参照してください。 | はい
 typeProperties | typeProperties セクションのプロパティは、アクティビティの種類に応じて異なります。 アクティビティの typeProperties を確認するには、前のセクションでアクティビティのリンクをクリックしてください。 | いいえ
 dependsOn | このプロパティを使用して、アクティビティの依存関係と、後続のアクティビティが前のアクティビティにどのように依存するかを定義します。 詳細については、「[アクティビティの依存関係](#activity-dependency)」を参照してください。 | いいえ
 

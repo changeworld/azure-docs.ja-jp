@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: 1c8717614ec59ef210c7340f70ddedd7f7f86f88
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3b0b5b02fa8f369bdfa03726bd5649b70b7bbd48
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091969"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228043"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>自動データベース バックアップを使用して Azure SQL データベースを復旧する
 
@@ -106,7 +106,7 @@ Azure portal を使用してマネージド インスタンス データベー�
 
 #### <a name="single-azure-sql-database"></a>単一の Azure SQL データベース
 
-Azure portal を使用して、削除された単一データベースまたはプールされたデータベースを復旧するには、サーバーの概要ページを開き、 **[削除されたデータベース]** を選択します。 復元する削除されたデータベースを選択し、バックアップから復元されたデータを使用して作成される新しいデータベースの名前を入力します。
+Azure portal を使用して単一の、またはプールされた削除済みデータベースを削除時刻まで復旧するには、サーバーの概要ページを開き、 **[削除済みデータベース]** を選択します。 復元する削除されたデータベースを選択し、バックアップから復元されたデータを使用して作成される新しいデータベースの名前を入力します。
 
   ![削除された Azure SQL データベースの復元のスクリーンショット](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
 

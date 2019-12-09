@@ -21,6 +21,8 @@
   items:
     - name: FarmBeats のデプロイ
       href: prepare-for-deployment.md
+    - name: ユーザーの管理
+      href: manage-users.md
     - name: ファームの管理
       href: manage-farms.md
     - name: センサー データの取得

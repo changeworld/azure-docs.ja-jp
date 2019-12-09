@@ -10,24 +10,34 @@ ms.assetid: ''
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/14/2019
+ms.date: 11/18/2019
 ms.author: magoedte
-ms.openlocfilehash: e369067a3ff61ffefe1758f6fa8b4acdce4bb2e2
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134227"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279654"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターの正常性を把握する
 
-Azure Monitor for containers を使用すると、マネージド インフラストラクチャ コンポーネントと、Azure Monitor for containers でサポートされている任意の Kubernetes クラスターで実行されているすべてのノードの正常性状態が監視されて報告されます。 このエクスペリエンスは、[マルチクラスター ビュー](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)で計算および報告されたクラスターの正常性状態にはとどまりません。クラスター内の 1 つ以上のノードがリソースの制約を受けているかどうか、またはノードまたはポッドが使用できないことがクラスター内の実行中のアプリケーションに影響を与える可能性があるかどうかを、キュレートされたメトリックに基づいて把握することができるようになりました。 
+Azure Monitor for containers を使用すると、マネージド インフラストラクチャ コンポーネントと、Azure Monitor for containers でサポートされている任意の Kubernetes クラスターで実行されているすべてのノードの正常性状態が監視されて報告されます。 このエクスペリエンスは、[マルチクラスター ビュー](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)で計算および報告されたクラスターの正常性状態にはとどまりません。クラスター内の 1 つ以上のノードがリソースの制約を受けているかどうか、またはノードまたはポッドが使用できないことがクラスター内の実行中のアプリケーションに影響を与える可能性があるかどうかを、キュレートされたメトリックに基づいて把握することができるようになりました。
+
+>[!NOTE]
+>現時点で、正常性機能はパブリック プレビュー段階です。
+>
 
 Azure Monitor for containers を有効にする方法については、[Azure Monitor for containers のオンボード](container-insights-onboard.md)に関する記事を参照してください。
 
+>[!NOTE]
+>AKS エンジン クラスターをサポートするには、次の条件が満たされていることを確認してください。
+>- 最新バージョンの [HELM クライアント](https://helm.sh/docs/using_helm/)を使用している。
+>- コンテナー化されたエージェントのバージョンが *microsoft/oms:ciprod11012019* である。 エージェントをアップグレードするには、[Kubernetes クラスターでのエージェントのアップグレード](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster)に関するページを参照してください。
+>
+
 ## <a name="overview"></a>概要
 
-Azure Monitor for containers では、正常性機能によって、問題の特定と診断に役立つ、Kubernetes クラスターのプロアクティブな正常性の監視が提供されます。 これにより、検出された重要な問題を表示できます。 クラスターの正常性を評価するモニターはコンテナー化されたエージェントで実行され、正常性データは Log Analytics ワークスペース内の **KubeHealth** テーブルに書き込まれます。 
+コンテナーに対する Azure Monitor では、正常性 (プレビュー) 機能によって、問題の識別や診断に役立つ Kubernetes クラスターのプロアクティブな正常性の監視が提供されます。 これにより、検出された重要な問題を表示できます。 クラスターの正常性を評価するモニターはコンテナー化されたエージェントで実行され、正常性データは Log Analytics ワークスペース内の **KubeHealth** テーブルに書き込まれます。 
 
 Kubernetes クラスターの正常性は、次の Kubernetes オブジェクトと抽象化によって編成されたさまざまな監視シナリオに基づいています。
 
@@ -66,7 +76,7 @@ Azure Monitor for containers の正常性機能をサポートする各モニタ
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>AKS または非 AKS クラスターの正常性を表示する
 
-Azure Monitor for containers の正常性機能には、Azure portal の左側のウィンドウで **[Insights]** を選択することにより、AKS クラスターから直接アクセスできます。 **[分析情報]** セクションで **[コンテナー]** を選択します。 
+コンテナーに対する Azure Monitor の正常性 (プレビュー) 機能には、Azure portal の左側のウィンドウから **[洞察]** を選択することによって AKS クラスターから直接アクセスできます。 **[分析情報]** セクションで **[コンテナー]** を選択します。 
 
 オンプレミスまたは Azure Stack でホストされている AKS Engine クラスターである非 AKS クラスターの正常性を表示するには、Azure portal の左側のウィンドウで **[Azure Monitor]** を選択します。 **[分析情報]** セクションで **[コンテナー]** を選択します。  マルチクラスター ページで、一覧から非 AKS クラスターを選択します。
 

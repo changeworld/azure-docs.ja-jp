@@ -1,18 +1,16 @@
 ---
-title: プログラムによる Azure サブスクリプションの作成 | Microsoft Docs
+title: プログラムによる Azure サブスクリプションの作成
 description: 追加の Azure サブスクリプションをプログラムで作成する方法について説明します。
-services: azure-resource-manager
 author: amberb
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: banders
-ms.openlocfilehash: 5d977fd6ce74f9cabedd0553c5815fd64d4d09a7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 757a542c8583f6a2b3f73e8144b6281438d75ef2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376005"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273596"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>プログラムによる Azure サブスクリプションの作成 (プレビュー)
 
@@ -159,7 +157,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 ### <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-まず、`Install-Module Az.Subscription -AllowPrerelease` を実行してこのプレビュー モジュールをインストールします。 `-AllowPrerelease` が正しく動作することを確認するには、[Get PowerShellGet Module](/powershell/gallery/installing-psget) から最新バージョンの PowerShellGet をインストールします。
+まず、`Install-Module Az.Subscription -AllowPrerelease` を実行してこのプレビュー モジュールをインストールします。 `-AllowPrerelease` が正しく動作することを確認するには、[Get PowerShellGet Module](/powershell/scripting/gallery/installing-psget) から最新バージョンの PowerShellGet をインストールします。
 
 次の [New-AzSubscription](/powershell/module/az.subscription) コマンドを実行します。その際、`<enrollmentAccountObjectId>` を最初のステップで収集した `ObjectId` (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) で置き換えます。 所有者を指定する場合、[ユーザー オブジェクト ID の取得方法](grant-access-to-create-subscription.md#userObjectId)をご確認ください。
 
@@ -491,7 +489,7 @@ API 応答には、顧客向けのリセラーが一覧表示されます。
 
 次の例では、*Dev Team subscription* という名前のサブスクリプションを *Fabrikam toys* 用に作成し、*Wingtip* リセラーをそのサブスクリプションに関連付けます。 T
 
-次の要求を実行します。その際、`<customerId>` を最初のステップでコピーした `id` (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) と置き換えます。 2 番目のステップでコピーしたオプションの *resellerId* を API の要求パラメーターで渡します。 
+次の要求を実行します。その際、`<customerId>` を 2 番目のステップでコピーした `id` (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) と置き換えます。 2 番目のステップでコピーしたオプションの *resellerId* を API の要求パラメーターで渡します。 
 
 ```json
 POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview

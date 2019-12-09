@@ -1,11 +1,11 @@
 ---
-title: Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell
+title: IPv6 デュアル スタック アプリケーションのデプロイ - Standard Load Balancer - PowerShell
 titlesuffix: Azure Virtual Network
 description: この記事では、Azure Powershell を使用し、Standard Load Balancer を使用して Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: c924e59a50994827eb2e9be40caa7021c7e4ac3c
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b1506c40d83e1483980c368db1659c9470b9a46a
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174477"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185471"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Azure で IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell (プレビュー)
 

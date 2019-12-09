@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5a48a75d70234b06942f5141402070c89c543f18
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901767"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206543"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Azure 上で VMware を実行する場合のアプリケーション高可用性の確保
 

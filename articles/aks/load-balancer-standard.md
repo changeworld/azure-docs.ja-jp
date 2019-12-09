@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: c2d652b31c264d7b17fcf303564c327d09d416f9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ef826239bc916b4ccf25785f92397286017d00f7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929132"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171401"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 
-Azure Kubernetes Service (AKS) でアプリケーションへのアクセスを提供するために、Azure Load Balancer を作成して使用できます。 AKS で実行されるロード バランサーは、内部または外部ロード バランサーとして使用できます。 内部ロード バランサーは、AKS クラスターと同じ仮想ネットワークで実行されているアプリケーションに対してのみ Kubernetes サービスへのアクセスを可能にします。 外部ロード バランサーは、1 つ以上のイングレス用のパブリック IP を受け取り、そのパブリック IP を使用して外部から Kubernetes サービスにアクセスできるようにします。
+Azure Kubernetes Service (AKS) で `LoadBalancer` 型の Kubernetes サービス経由でのアプリケーションへのアクセスを提供するために、Azure Load Balancer を使用できます。 AKS で実行されるロード バランサーは、内部または外部ロード バランサーとして使用できます。 内部ロード バランサーは、AKS クラスターと同じ仮想ネットワークで実行されているアプリケーションに対してのみ Kubernetes サービスへのアクセスを可能にします。 外部ロード バランサーは、1 つ以上のイングレス用のパブリック IP を受け取り、そのパブリック IP を使用して外部から Kubernetes サービスにアクセスできるようにします。
 
 Azure Load Balancer は、*Basic* と *Standard* の 2 つの SKU で使用できます。 AKS クラスターを作成する場合、既定では *Standard* SKU が使用されます。 *Standard* SKU ロード バランサーを使用すると、より大きいバックエンド プール サイズ、Availability Zones など、追加のフィーチャーや機能が提供されます。 使用するロード バランサーを選択する前に、*Standard* と *Basic* ロード バランサーの違いを理解しておくことが重要です。 AKS クラスターを作成した後は、そのクラスターのロード バランサー SKU は変更できません。 *Basic* と *Standard* SKU の詳細については、「[Azure Load Balancer の SKU の比較][azure-lb-comparison]」をご覧ください。
 
@@ -29,9 +29,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.74 以降を実行していることが要件となります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
+
 この記事では、*Standard* SKU Azure Load Balancer を持つ AKS クラスターがあることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
 既存のサブネットまたはリソース グループを使用する場合、AKS クラスターのサービス プリンシパルにはネットワーク リソースを管理するアクセス許可も必要です。 一般に、委任されたリソースのサービス プリンシパルには*ネットワーク共同作成者*ロールを割り当てます。 アクセス許可の詳細については、[他の Azure リソースへの AKS アクセスの委任][aks-sp]に関する記事を参照してください。
+
+### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Basic SKU から Standard SKU にロード バランサーを移行する
+
+既存のクラスターに Basic SKU ロード バランサーが与えられている場合、Standard SKU ロード バランサーでクラスターを使用する目的で移行するとき、動作に重大な違いがあることにご留意ください。
+
+たとえば、`load-balancer-sku` 型のクラスターをクラスターの作成時にのみ定義できる場合、一般的に blue/green のデプロイでクラスターを移行します。 しかしながら、*Basic SKU* ロード バランサーでは、*Standard SKU* IP アドレスが必須の *Standard SKU* ロード バランサーとの間に互換性がない *Basic SKU* IP アドレスが使用されます。 クラスターを移行してロード バランサー SKU をアップグレードするとき、IP アドレス SKU に互換性がある新しい IP アドレスが必須となります。
+
+クラスターの移行方法に関して他に注意すべき事項については、[移行時の考慮事項に関するドキュメント](acs-aks-migration.md)を参照してください。移行時に考慮すべき重要なトピックが一覧表示されています。 以下の制限事項も、AKS で Standard SKU ロード バランサーを使用するときに注意すべき、動作上の重要な違いです。
 
 ### <a name="limitations"></a>制限事項
 
@@ -41,9 +50,10 @@ CLI をローカルにインストールして使用する場合、この記事�
     * 独自のパブリック IP を指定する。
     * 独自のパブリック IP プレフィックスを指定する。
     * 最大 100 までの数字を指定し、AKS クラスターとして作成された同じリソース グループでそれだけの数の *Standard* SKU パブリック IP を作成することを AKS クラスターに許可します。名前は通常、*MC_* で始まります。 AKS により、パブリック IP が *Standard* SKU ロード バランサーに割り当てられます。 既定では、パブリック IP、パブリック IP プレフィックス、または IP の数が指定されていない場合、同じリソース グループでパブリック IP が 1 つ自動的に作成されます。 また、パブリック アドレスを許可する必要があり、IP 作成を禁止する Azure Policy は作成しないようにする必要があります。
-* ロード バランサーに対して *Standard* SKU を使用する場合、Kubernetes バージョン 1.13 以降を使用する必要があります。
+* ロード バランサーに対して *Standard* SKU を使用する場合、Kubernetes バージョン *1.13 以降*を使用する必要があります。
 * ロード バランサー SKU は、AKS クラスターの作成時にのみ定義できます。 AKS クラスターが作成された後にロード バランサー SKU を変更することはできません。
-* 1 つのクラスターで使用できるロード バランサー SKU は 1 つのみです。
+* 1 つのクラスターで使用できるロード バランサー SKU (Basic または Standard) の種類は 1 つのみです。
+* *Standard* SKU ロード バランサーでは、*Standard* SKU IP アドレスのみがサポートされています。
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>ロード バランサーを内部として構成する
 

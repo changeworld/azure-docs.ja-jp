@@ -1,5 +1,5 @@
 ---
-title: アプリケーション プロキシ用の Kerberos 制約付き委任構成のトラブルシューティング | Microsoft Docs
+title: Kerberos の制約付き委任をトラブルシューティングする - アプリ プロキシ
 description: Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca50cfb8697fdbb8c71054c5a6b4d5e23792eb5
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381527"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275695"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos
 

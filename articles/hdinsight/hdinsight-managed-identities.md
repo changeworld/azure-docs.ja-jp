@@ -5,27 +5,27 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: 02ea164a1fa29b494801623d418be73fc47d069c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 11/20/2019
+ms.openlocfilehash: e7be8fbf5f6c2c59e93d48729785dd34bae5955e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077079"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327384"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Azure HDInsight のマネージド ID
 
-マネージド ID とは、資格情報が Azure によって管理されている Azure Active Directory (Azure AD) に登録されている ID です。 マネージド ID を使用すると、Azure AD にサービス プリンシパルを登録したり、証明書などの資格情報を保持したりする必要はありません。
+マネージド ID とは、資格情報が Azure によって管理されている Azure Active Directory (Azure AD) に登録されている ID です。 マネージド ID を使用すると、Azure AD でサービス プリンシパルを登録したり、証明書などの資格情報を保持したりする必要はありません。
 
 Azure HDInsight でマネージド ID を使用すると、クラスターから Azure AD Domain Services へのアクセス、Azure Key Vault へのアクセス、または Azure Data Lake Storage Gen2 内のファイルへのアクセスが可能になります。
 
-マネージド ID には、ユーザー割り当てとシステム割り当ての 2 種類があります。 Azure HDInsight では、ユーザー割り当てマネージド ID が使用されます。 ユーザー割り当てマネージド ID はスタンドアロン Azure リソースとして作成され、1 つ以上の Azure サービス インスタンスに割り当てることができます。 これに対して、システム割り当てマネージド ID は Azure AD 内で作成され、自動的に特定の Azure サービス インスタンスで直接有効化されます。 システム割り当てマネージド ID の有効期間は、そのマネージド ID が有効になっているサービス インスタンスの有効期間に関連付けられます。
+マネージド ID には、ユーザー割り当てとシステム割り当ての 2 種類があります。 Azure HDInsight では、ユーザー割り当てマネージド ID が使用されます。 ユーザー割り当てマネージド ID は、スタンドアロン Azure リソースとして作成されます。その後、これを 1 つ以上の Azure サービス インスタンスに割り当てることができます。 これに対して、システム割り当てマネージド ID は Azure AD 内で作成され、自動的に特定の Azure サービス インスタンスで直接有効化されます。 システム割り当てマネージド ID の有効期間は、そのマネージド ID が有効になっているサービス インスタンスの有効期間に関連付けられます。
 
 ## <a name="hdinsight-managed-identity-implementation"></a>HDInsight のマネージド ID 実装
 
-Azure HDInsight では、マネージド ID はクラスターのノードごとにプロビジョニングされます。 ただし、これらの ID コンポーネントは HDInsight サービスのみが使用できます。 HDInsight クラスター ノードにインストールされているマネージド ID を使用してアクセス トークンを生成する方法は、現在サポートされていません。 一部の Azure サービスでは、マネージド ID は、ユーザーが他の Azure サービスと独自にやり取りするためのアクセス トークンの取得に使用できるエンドポイントで実装されます。
+Azure HDInsight では、マネージド ID はクラスターのノードごとにプロビジョニングされます。 ただし、これらの ID コンポーネントは HDInsight サービスのみが使用できます。 現在、HDInsight クラスター ノードにインストールされているマネージド ID を使用してアクセス トークンを生成するためのサポートされている方法はありません。 一部の Azure サービスでは、マネージド ID は、ユーザーが他の Azure サービスと独自にやり取りするためのアクセス トークンの取得に使用できるエンドポイントで実装されます。
 
 ## <a name="create-a-managed-identity"></a>マネージド ID の作成
 

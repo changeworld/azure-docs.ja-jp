@@ -3,7 +3,7 @@ title: Azure Load Balancer のトラブルシューティング
 description: Azure Load Balancer に関する既知の問題のトラブルシューティングを行う方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: chadmath
+author: asudbring
 manager: dcscontentpm
 ms.custom: seodoc18
 ms.service: load-balancer
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/09/2018
-ms.author: genli
-ms.openlocfilehash: d1c10fa8267131f13d3148ace6c97218a18fd494
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 11/19/2019
+ms.author: allensu
+ms.openlocfilehash: eab86b3643dde2a6e854d73c38b5267c65fb7e3e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076918"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214760"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
 
@@ -27,6 +27,8 @@ ms.locfileid: "74076918"
 このページには、Azure Load Balancer についてよく寄せられる質問のトラブルシューティング情報が示されています。 Load Balancer の接続が利用できない場合の最も一般的な症状を次に示します。 
 - Load Balancer の背後にある VM が正常性プローブに応答しない 
 - Load Balancer の背後にある VM が構成済みポートのトラフィックに応答しない
+
+バックエンド VM に対する外部クライアントがロード バランサーを通過するときは、クライアントの IP アドレスが通信に使用されます。 クライアントの IP アドレスが NSG 許可リストに追加されていることを確認してください。 
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>症状:Load Balancer の背後にある VM が正常性プローブに応答しない
 バックエンド サーバーがロード バランサ― セットに参加するには、プローブ チェックを渡す必要があります。 正常性プローブの詳細については、[Load Balancer のプローブ](load-balancer-custom-probe-overview.md)に関するページをご覧ください。 
@@ -96,18 +98,20 @@ VM がデータ トラフィックに応答しない場合、その原因とし�
 1. バックエンド VM にログインします。 
 2. コマンド プロンプトを開き、次のコマンドを実行して、データ ポートでリッスンしているアプリケーションが存在しているかどうかを検証します。  netstat -an 
 3. そのポートに "リッスン中" 状態が表示されていない場合は、適切なリスナー ポートを構成します 
-4. ポートが "リッスン中" としてマークされている場合は、そのポートのターゲット アプリケーションに問題がないかどうかを確認します。 
+4. ポートが "リッスン中" としてマークされている場合は、そのポートのターゲット アプリケーションに問題がないかどうかを確認します。
 
 ### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>原因 2:ネットワーク セキュリティ グループが Load Balancer バックエンド プール VM 上のポートをブロックしている  
 
 サブネットまたは VM で構成されている 1 つ以上のネットワーク セキュリティ グループが、発信元 IP またはポートをブロックしている場合、VM は応答できません。
 
-* バックエンド VM で構成されているネットワーク セキュリティ グループを一覧表示します。 詳細については、「[Manage network security groups](../virtual-network/manage-network-security-group.md)」(ネットワーク セキュリティ グループの管理) をご覧ください。
-* ネットワーク セキュリティ グループの一覧で、次を確認します。
+パブリック ロード バランサーの場合、クライアントとロード バランサーのバックエンド VM の間の通信には、インターネット クライアントの IP アドレスが使用されます。 クライアントの IP アドレスがバックエンド VM のネットワーク セキュリティ グループで許可されていることを確認してください。
+
+1. バックエンド VM で構成されているネットワーク セキュリティ グループを一覧表示します。 詳しくは、[ネットワーク セキュリティ グループの管理](../virtual-network/manage-network-security-group.md)に関する記事をご覧ください。
+1. ネットワーク セキュリティ グループの一覧で、次を確認します。
     - データ ポートの受信または送信トラフィックで干渉が発生していないかどうか。 
-    - サブネットまたは VM の NIC で、**すべて拒否**ネットワーク セキュリティ グループ ルールの優先順位が、Load Balancer プローブとトラフィックを許可する既定のルールよりも高くなっていないかどうか (ネットワーク セキュリティ グループでは、プローブ ポートである Load Balancer IP アドレス 168.63.129.16 が許可されている必要があります) 
-* ルールのいずれかがトラフィックをブロックしている場合は、そのルールを削除し、データ トラフィックを許可するように再構成します。  
-* VM が正常性プローブに応答するようになったかどうかをテストします。
+    - サブネットまたは VM の NIC で、**すべて拒否**ネットワーク セキュリティ グループ ルールの優先順位が、Load Balancer プローブとトラフィックを許可する既定のルールよりも高くなっていないかどうか (ネットワーク セキュリティ グループでは、プローブ ポートである Load Balancer IP アドレス 168.63.129.16 が許可されている必要があります)
+1. ルールのいずれかがトラフィックをブロックしている場合は、そのルールを削除し、データ トラフィックを許可するように再構成します。  
+1. VM が正常性プローブに応答するようになったかどうかをテストします。
 
 ### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>原因 3:同じ VM とネットワーク インターフェイスから Load Balancer にアクセスしている 
 

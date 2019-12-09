@@ -1,22 +1,22 @@
 ---
-title: Azure AD へのパスワードレス セキュリティ キー サインインを有効にする (プレビュー) - Azure Active Directory
-description: FIDO2 セキュリティ キーを使用した Azure AD へのパスワードレス セキュリティ キー サインインを有効にします (プレビュー)
+title: パスワードなしのセキュリティ キー サインイン (プレビュー) - Azure Active Directory
+description: FIDO2 セキュリティ キーを使用した Azure AD へのパスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50af82e79e7ba8b979ab28a1b3f608ec7e41bfb2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9f87f1b2561b65590dfe29d7d2c8d1318e3d35e1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603447"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381853"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Azure AD へのパスワードレス セキュリティ キー サインインを有効にする (プレビュー)
 

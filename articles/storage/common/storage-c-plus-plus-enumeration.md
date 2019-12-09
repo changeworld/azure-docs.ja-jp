@@ -1,5 +1,5 @@
 ---
-title: C++ 用ストレージ クライアント ライブラリを使用した Azure Storage のリソース一覧の取得 | Microsoft Docs
+title: C++ クライアント ライブラリを使用して Azure Storage リソースを一覧表示する
 description: C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721914"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269448"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>C++ での Azure Storage のリソース一覧の取得
 

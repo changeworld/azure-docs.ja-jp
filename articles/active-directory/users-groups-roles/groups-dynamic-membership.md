@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 11/27/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6cfad04d9b0dd3537d60f2651ed341d96bd0210
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027124"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538788"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) では、複雑な属性ベースのルール�
 
 > [!NOTE]
 > この機能を使うには、少なくとも 1 つの動的グループのメンバーである一意のユーザーごとに Azure AD Premium P1 ライセンスが必要です。 ユーザーを動的グループのメンバーにするために、そのユーザーにライセンスを割り当てる必要はありませんが、少なくともそのすべてのユーザーを対象にできるだけのライセンス数は必要です。 たとえば、テナントのすべての動的グループに、合計 1,000 人の一意のユーザーがいる場合、ライセンス要件を満たすには、Azure AD Premium P1 に対するライセンスが 1,000 個以上必要です。
->
+> 動的なデバイス グループのメンバーであるデバイスには、ライセンスは必要ありません。
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure portal のルール ビルダー
 

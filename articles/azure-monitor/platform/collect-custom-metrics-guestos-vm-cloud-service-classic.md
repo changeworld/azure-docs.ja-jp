@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor メトリック ストアの従来の Cloud Services にゲスト OS メトリックを送信する
-description: Azure Monitor メトリック ストアの Cloud Services にゲスト OS メトリックを送信する
+title: 従来の Cloud Services のメトリックを Azure Monitor メトリック データベースに送信する
+description: 従来の Azure Cloud Services のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック ストアに送信するためのプロセスについて説明します。
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1c742daf29cbbef5e6f51af5363be7fd949aaebf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844938"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304777"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Azure Monitor メトリック ストアの従来の Cloud Services にゲスト OS メトリックを送信する 
 

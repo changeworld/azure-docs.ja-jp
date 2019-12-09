@@ -1,20 +1,20 @@
 ---
 title: Azure Update Management を利用して動的グループを使用する
-description: Update Management での動的グループのしくみについて説明します
+description: この記事では、動的グループが Azure Automation Update Management でどのように機能するかについて説明します。
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 10/02/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: edc4384be0f1dc73f2e7e098114080d304d92ce8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 022c2061febb54666acee1cfed4ec595421660a3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377448"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278705"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Update Management を利用して動的グループを使用する
 

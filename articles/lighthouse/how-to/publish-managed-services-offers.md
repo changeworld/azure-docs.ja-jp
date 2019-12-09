@@ -2,13 +2,13 @@
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure の委任されたリソース管理に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
 ms.date: 11/15/2019
-ms.topic: overview
-ms.openlocfilehash: 29f17e6227d3c50a4d9fe13f7525ac71f7550632
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: be9d93c2b71bb3db7df86ddd44e0171bec522294
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131291"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483171"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
@@ -99,14 +99,14 @@ ms.locfileid: "74131291"
 |**まとめ**     | 実際のオファーの簡潔な目的または機能。 通常、これはタイトルの下に表示されます。 最大長は 100 文字です。        |
 |**Long Summary (長い要約)**     | 実際のオファーの目的または機能のより長い概要。 最大長は 256 文字です。        |
 |**説明**     | オファーについての詳細。 このフィールドは、最大長が 3,000 文字で、単純な HTML 書式がサポートされています。 説明のどこかに、"マネージド サービス" という語を含める必要があります。       |
-|**Marketing Identifier (マーケティング識別子)**     | 一意の URL フレンドリ識別子。 これはこのオファーの Marketplace URL で使用されます。 たとえば、お客様の発行元 ID が *contoso* で、お客様のマーケティング識別子が *sampleApp* の場合、Azure Marketplace 内では、実際のオファーの URL は *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* になります。        |
+|**Marketing Identifier (マーケティング識別子)**     | 一意の URL フレンドリ識別子。 この識別子には、小文字の英数字とダッシュのみを使用できます。 このオファーの Marketplace URL で使用されます。 たとえば、お客様の発行元 ID が *contoso* で、お客様のマーケティング識別子が *sampleApp* の場合、Azure Marketplace 内では、実際のオファーの URL は *https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp* になります。        |
 |**Preview Subscription IDs (プレビュー サブスクリプション ID)**     | 1 から 100 個のサブスクリプション識別子を追加します。 これらのサブスクリプションに関連付けられている顧客は、オファーの一般公開前に、Azure Marketplace 内でそのオファーを表示することができるようになります。 実際のオファーを顧客が購入できるようにする前に、そのオファーが Azure Marketplace 内でどのように表示されるかをプレビューできるように、ここでお客様自身のサブスクリプションを含めることをお勧めします  (Microsoft のサポートとエンジニアリング チームも、このプレビュー期間中にお客様のオファーを表示することができるようになります)。   |
 |**役に立つリンク**     | ドキュメント、リリース ノート、FAQ など、実際のオファーに関連する URL。        |
 |**推奨されるカテゴリ (最大 5 個)**     | 実際のオファーに該当する 1 つ以上のカテゴリ (最大 5 つ)。 これらのカテゴリは、顧客が Azure Marketplace と Azure portal 内でお客様のプランを見つけるのに役立ちます。        |
 
 **[Marketing Artifacts]\(マーケティングの成果物\)** セクションでは、お客様のプランと共に表示されるロゴとその他のアセットをアップロードできます。 必要に応じて、顧客がお客様のプランを理解するのに役立つスクリーンショットやビデオへのリンクをアップロードできます。
 
-4 つのロゴ サイズが必要です。**小型 (40x40)** 、**中型 (90x90)** 、**大型 (115x115)** 、**ワイド (255x155)** です。 お客様のロゴについては、これらのガイドラインに従ってください。
+4 つのロゴ サイズが必要です。**小型 (40x40)** 、**中型 (90x90)** 、**大型 (115x115)** 、**ワイド (255x115)** です。 お客様のロゴについては、これらのガイドラインに従ってください。
 
 - Azure の設計には簡単なカラー パレットがあります。 ロゴのプライマリ カラーとセカンダリ カラーの数は制限してください。
 - ポータルのテーマの色は白黒です。 この色を、ロゴの背景色として使用しないでください。 ポータルでロゴが目立つ色を使用します。 背景色としてはシンプルなプライマリ カラーをお勧めします。

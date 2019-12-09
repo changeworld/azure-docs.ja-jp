@@ -1,14 +1,14 @@
 ---
 title: リソースの配列プロパティのポリシーを作成する
-description: Azure Policy 定義ルールを使用して、配列パラメーターを作成し、配列の言語式のルールを作成し、[*] エイリアスを評価し、既存の配列に要素を付加する方法について説明します。
-ms.date: 03/06/2019
+description: Azure Policy 定義ルールを使用して、配列パラメーターおよび配列の言語式を処理し、[*] エイリアスを評価し、要素を付加する方法について説明します。
+ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: f28cffcf928f9c4da6b2dae2a0811200397c1f0d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 035f300d01efe80cc44687d3779d7a5fb6be2fc3
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959709"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555159"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -16,7 +16,9 @@ ms.locfileid: "73959709"
 
 - 複数のオプションを提供する、[定義パラメーター](../concepts/definition-structure.md#parameters)の型
 - **in** または **notIn** の条件を使用した[ポリシー ルール](../concepts/definition-structure.md#policy-rule)の一部
-- **[なし]** 、 **[任意]** 、 **[すべて]** など、特定のシナリオを評価するために、[\[\*\] エイリアス](../concepts/definition-structure.md#understanding-the--alias)を評価するポリシー ルールの一部
+- [\[\*\] エイリアス](../concepts/definition-structure.md#understanding-the--alias)を評価して以下を評価するポリシー ルールの一部。
+  - **None**、**Any**、または **All** などのシナリオ
+  - **count** を使用した複雑なシナリオ
 - 既存の配列を置き換えたり追加する [append 効果](../concepts/effects.md#append)において
 
 この記事では、Azure Policy によるそれぞれの使用について説明し、複数の定義例を紹介します。
@@ -138,10 +140,10 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 
 ### <a name="evaluating-the--alias"></a>[*] エイリアスの評価
 
-名前に **[\*]** が付けられたエイリアスは、**type** が _array_ であることを示します。 配列全体の値を評価する代わりに、 **[\*]** は配列の各要素を評価できるようにします。 この項目ごとの評価が役立つシナリオは次の 3 つあります。なし、任意、すべて。
+名前に **\[\*\]** が付けられたエイリアスは、**type** が _array_ であることを示します。 配列全体の値を評価する代わりに、 **\[\*\]** は配列の各要素を評価できるようにします。 この項目ごとの評価が役立つ標準的なシナリオは次の 3 つです。なし、任意、すべて。 複雑なシナリオでは、[count](../concepts/definition-structure.md#count) を使用します。
 
 **if** ルールが true として評価された場合にのみ、ポリシー エンジンは **then** 内の **effect** をトリガーします。
-このファクトは、 **[\*]** が配列の各個々の要素を評価する方法というテキストで理解するために重要になります。
+この事は、 **\[\*\]** が配列の各個々の要素を評価する方法というコンテキストで理解するために重要です。
 
 下のシナリオ テーブルのポリシー ルール例:
 
@@ -194,10 +196,10 @@ Azure portal からこのポリシー定義を作成しようとすると、次�
 
 ## <a name="the-append-effect-and-arrays"></a>append 効果と配列
 
-[append 効果](../concepts/effects.md#append)の動作は、**details.field** が **[\*]** エイリアスであるかどうかに応じて異なります。
+[append 効果](../concepts/effects.md#append)の動作は、**details.field** が **\[\*\]** エイリアスであるかどうかに応じて異なります。
 
-- **[\*]** エイリアスでない場合、append は配列全体を **value** プロパティに置き換えます
-- **[\*]** エイリアスである場合、append は **value** プロパティを既存の配列に追加するか、新しい配列を作成します
+- **\[\*\]** エイリアスでない場合、append は配列全体を **value** プロパティに置き換えます
+- **\[\*\]** エイリアスである場合、append は **value** プロパティを既存の配列に追加するか、新しい配列を作成します
 
 詳細については、「[Append の例](../concepts/effects.md#append-examples)」を参照してください。
 

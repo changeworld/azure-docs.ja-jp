@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: a6694d094d185ad70cce8c546e12f48afb69f1ae
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 11/19/2019
+ms.openlocfilehash: 12372c1f00e994382338adf9bd078018ba702da1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076959"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213359"
 ---
 # <a name="create-a-new-saas-offer"></a>新しい SaaS オファーを作成する
 
@@ -464,7 +464,7 @@ SaaS オファーではテナント ID を使用してプライベート対象�
 
 ## <a name="cloud-solution-provider-csp-reseller-audience"></a>クラウド ソリューション プロバイダー (CSP) リセラーの対象
 
-オファーを CSP プログラムで利用可能にすることを選択したら、クラウド ソリューション プロバイダーがその顧客に対して、お客様の製品をバンドルされたソリューションの一部として販売できます。 詳細については、「[クラウド ソリューション プロバイダー (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers.md)」を参照してください。
+オファーを CSP プログラムで利用可能にすることを選択したら、クラウド ソリューション プロバイダーがその顧客に対して、お客様の製品をバンドルされたソリューションの一部として販売できます。 詳細については、「[クラウド ソリューション プロバイダー](https://go.microsoft.com/fwlink/?linkid=2111109)」を参照してください。
 
 ## <a name="publish"></a>発行
 

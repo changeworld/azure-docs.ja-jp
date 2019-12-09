@@ -1,23 +1,17 @@
 ---
-title: Java と IntelliJ を使用して Azure 関数を作成する | Microsoft Docs
+title: Java と IntelliJ を使用して Azure 関数を作成する
 description: Java と IntelliJ を使用して、単純な HTTP によってトリガーしたサーバーレス アプリを Azure で作成し公開する方法について説明します。
-services: functions
-documentationcenter: na
 author: jeffhollan
-manager: jpconnock
-keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーレス アーキテクチャ, Java
-ms.service: azure-functions
 ms.topic: conceptual
-ms.devlang: java
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5aa0763206289305e98960b6e03ad903eb4547ae
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d3dd0f4f1da4d3815d4d879dd13ed5882f39e8f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70744029"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230721"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java と IntelliJ を使用して初めての Azure 関数を作成する
 

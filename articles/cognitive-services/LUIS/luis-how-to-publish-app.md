@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0d3a413249cb9058e4098f2836131494670a1727
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491332"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554843"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>アクティブでトレーニング済みのアプリをステージング エンドポイントまたは運用環境エンドポイントに発行する
 
-アクティブな LUIS アプリの構築とテストが終了したら、それをエンドポイントに発行して、クライアント アプリケーションが使用できるようにします。 
+アクティブな LUIS アプリの構築、トレーニングおよびテストが終了したら、それをエンドポイントに発行して、クライアント アプリケーションが使用できるようにします。 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
-<a name="publish-your-trained-app-to-an-http-endpoint"></a>
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="publishing"></a>発行
 
@@ -40,16 +38,19 @@ ms.locfileid: "73491332"
 
 ポップアップ ウィンドウが表示されたら、適切なスロットを選択します。 
 
-* ステージング。
-* 運用。 
+* ステージング
+* Production 
 
 両方の発行スロットを使用することで、2 つの異なるバージョンのアプリを発行されたエンドポイントで使用できるようになります。また、2 つの異なるエンドポイントで同じバージョンを使用することもできます。 
 
 ### <a name="publishing-regions"></a>公開リージョン
 
-このアプリは、LUIS ポータルに追加された LUIS 予測エンドポイント リソースに関連付けられているすべてのリージョンに発行されます。 
+このアプリは、 **[管理]**  ->  **[[Azure リソース]](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** ページの LUIS ポータルに追加された LUIS 予測エンドポイント リソースに関連付けられているすべてのリージョンに発行されます。 
 
 たとえば、[www.luis.ai](https://www.luis.ai) で作成されたアプリの場合、**westus** と **eastus** の 2 つのリージョンで LUIS リソースを作成し、それらをリソースとしてアプリに追加すると、アプリは両方のリージョンに発行されます。 LUIS のリージョンの詳細については、[リージョン](luis-reference-regions.md)に関するページを参照してください。
+
+> [!TIP]
+> オーサリング リージョンは 3 つあります。 発行先のリージョンで作成する必要があります。 すべてのリージョンに発行する必要がある場合は、3 のオーサリング リージョンすべてで、作成プロセスおよび結果として得られるトレーニング済みモデルを管理する必要があります。 
 
 
 ## <a name="configuring-publish-settings"></a>発行の設定を構成する
@@ -57,16 +58,14 @@ ms.locfileid: "73491332"
 スロットを選択したら、次のように発行の設定を構成します。
 
 * センチメント分析
-* スペル修正
+* スペル修正 - v2 予測エンドポイントのみ
 * 音声認識の準備 
 
 発行後、これらの設定は **[管理]** セクションの **[Publish settings]\(発行の設定\)** ページで確認できます。 発行ごとに設定を変更できます。 発行を取り消すと、発行中に加えた変更も取り消されます。 
 
 ### <a name="when-your-app-is-published"></a>アプリが発行されたとき
 
-アプリが正常に発行されると、ブラウザーの上部に緑色の成功通知が表示されます。 緑色の通知バーには、エンドポイントへのリンクも含まれています。 
-
-![発行のポップアップ ウィンドウとエンドポイントへのリンク](./media/luis-how-to-publish-app/publish-success.png)
+アプリが正常に発行されると、ブラウザーの上部に成功通知が表示されます。 通知には、エンドポイントへのリンクも含まれています。 
 
 エンドポイント URL が必要な場合は、リンクを選択します。 エンドポイント URL には、上部のメニューの **[管理]** を選択し、左側のメニューの **[Azure リソース]** を選択してもアクセスできます。 
 
@@ -83,6 +82,8 @@ Text Analytics キーを指定する必要はなく、Azure アカウントに�
 感情分析での JSON エンドポイントの応答の詳細については、「[Sentiment analysis](luis-concept-data-extraction.md#sentiment-analysis)」(感情分析) をご覧ください。
 
 ## <a name="spelling-correction"></a>スペル修正
+
+[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 スペル修正は、LUIS ユーザーの発話予測の前に行われます。 応答では、元の発話 (スペルを含む) に対するすべての変更を確認できます。
 

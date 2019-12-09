@@ -15,12 +15,12 @@ ms.date: 10/28/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: dff222788480eea882614ad29478df1dce359199
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: f3ee958484fdb8cacad0a3bfa0c3385374ac7487
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101287"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185736"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -33,134 +33,135 @@ ms.locfileid: "73101287"
 次の表に、各組み込みロールの簡単な説明を示します。 ロール名をクリックすると、各ロールの `Actions`、`NotActions`、`DataActions`、`NotDataActions` の一覧が表示されます。 これらのアクションの意味と、管理プレーンとデータ プレーンへの適用方法については、[Azure リソースのロール定義の概要](role-definitions.md)に関するページを参照してください。
 
 
-| 組み込みのロール | 説明 |
-| --- | --- |
-| [Owner](#owner) | リソースへのアクセスを含め、すべてを管理できます。 |
-| [Contributor](#contributor) | リソースへのアクセス権の付与以外のすべてを管理できます。 |
-| [Reader](#reader) | すべてを表示できますが、変更することはできません。 |
-| [AcrDelete](#acrdelete) | acr の削除 |
-| [AcrImageSigner](#acrimagesigner) | ACR イメージ署名者 |
-| [AcrPull](#acrpull) | acr のプル |
-| [AcrPush](#acrpush) | acr のプッシュ |
-| [AcrQuarantineReader](#acrquarantinereader) | ACR 検査データ閲覧者 |
-| [AcrQuarantineWriter](#acrquarantinewriter) | ACR 検査データ作成者 |
-| [API Management Service Contributor](#api-management-service-contributor) | サービスと API を管理できます |
-| [API Management Service Operator Role](#api-management-service-operator-role) | サービスを管理できますが、API は対象外です |
-| [API Management Service Reader Role](#api-management-service-reader-role) | サービスと API への読み取り専用アクセスです |
-| [Application Insights Component Contributor](#application-insights-component-contributor) | Application Insights コンポーネントを管理できます |
-| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。 |
-| [Automation Job Operator](#automation-job-operator) | Automation Runbook を使用してジョブを作成および管理します。 |
-| [Automation Operator](#automation-operator) | Automation オペレーターはジョブを開始、停止、中断、再開することができます |
-| [Automation Runbook Operator](#automation-runbook-operator) | Runbook のジョブを作成する方法については、Runbook のプロパティを参照してください。 |
-| [Avere 共同作成者](#avere-contributor) | Avere vFXT クラスターを作成および管理できます。 |
-| [Avere オペレーター](#avere-operator) | クラスターを管理するために Avere vFXT クラスターによって使用されます |
-| [Azure Event Hubs データ所有者](#azure-event-hubs-data-owner) | Azure Event Hubs リソースへのフル アクセスを許可します。 |
-| [Azure Event Hubs データ受信者](#azure-event-hubs-data-receiver) | Azure Event Hubs リソースへの受信アクセスを許可します。 |
-| [Azure Event Hubs データ送信者](#azure-event-hubs-data-sender) | Azure Event Hubs リソースへの送信アクセスを許可します。 |
-| [Azure Kubernetes Service クラスター管理者ロール](#azure-kubernetes-service-cluster-admin-role) | クラスター管理者の資格情報アクションを一覧表示します。 |
-| [Azure Kubernetes Service クラスター ユーザー ロール](#azure-kubernetes-service-cluster-user-role) | クラスター ユーザーの資格情報アクションを一覧表示します。 |
-| [Azure Maps データ閲覧者 (プレビュー)](#azure-maps-data-reader-preview) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 |
-| [Azure Sentinel 共同作成者](#azure-sentinel-contributor) | Azure Sentinel 共同作成者 |
-| [Azure Sentinel 閲覧者](#azure-sentinel-reader) | Azure Sentinel 閲覧者 |
-| [Azure Sentinel レスポンダー](#azure-sentinel-responder) | Azure Sentinel レスポンダー |
-| [Azure Service Bus データ所有者](#azure-service-bus-data-owner) | Azure Service Bus リソースへのフル アクセスを許可します。 |
-| [Azure Service Bus データ受信者](#azure-service-bus-data-receiver) | Azure Service Bus リソースへの受信アクセスを許可します。 |
-| [Azure Service Bus データ送信者](#azure-service-bus-data-sender) | Azure Service Bus リソースへの送信アクセスを許可します。 |
-| [Azure Stack Registration Owner](#azure-stack-registration-owner) | Azure Stack の登録を管理できます。 |
-| [Backup Contributor](#backup-contributor) | バックアップ サービスを管理できますが、資格情報コンテナーの作成や他のユーザーに対するアクセス権の付与を行うことはできません |
-| [Backup Operator](#backup-operator) | バックアップ サービスを管理できます (バックアップの削除、資格情報コンテナーの作成、他のユーザーに対するアクセス権の付与を除く) |
-| [Backup Reader](#backup-reader) | バックアップ サービスを表示できますが、変更を行うことはできません |
-| [Billing Reader](#billing-reader) | 課金データへの読み取りアクセスを許可します |
-| [BizTalk Contributor](#biztalk-contributor) | BizTalk Services を管理できます。ただし、それらへのアクセスは含まれません。 |
-| [ブロックチェーン メンバー ノードへのアクセス (プレビュー)](#blockchain-member-node-access-preview) | ブロックチェーン メンバー ノードにアクセスできるようにします |
-| [ブループリント共同作成者](#blueprint-contributor) | ブループリントの定義を管理できますが、それらを割り当てることはできません。 |
-| [ブループリント オペレーター](#blueprint-operator) | 既存の発行済みのブループリントを割り当てることはできますが、ブループリントの新規作成はできません。 注: これは、ユーザーが割り当てたマネージド ID を使用して割り当てが行われた場合にのみ機能します。 |
-| [CDN Endpoint Contributor](#cdn-endpoint-contributor) | CDN エンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 |
-| [CDN Endpoint Reader](#cdn-endpoint-reader) | CDN エンドポイントを表示できますが、変更はできません。 |
-| [CDN Profile Contributor](#cdn-profile-contributor) | CDN プロファイルとそのエンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 |
-| [CDN Profile Reader](#cdn-profile-reader) | CDN プロファイルとそのエンドポイントを表示できますが、変更はできません。 |
-| [Classic Network Contributor](#classic-network-contributor) | 従来のネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
-| [Classic Storage Account Contributor](#classic-storage-account-contributor) | 従来のストレージ アカウントを管理できますが、アクセスすることはできません。 |
-| [従来のストレージ アカウント キー オペレーターのサービス ロール](#classic-storage-account-key-operator-service-role) | 従来のストレージ アカウント キー オペレーターは、従来のストレージ アカウントでのキーの一覧表示と再生成を行うことができます |
-| [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) | 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 |
-| [Cognitive Services 共同作成者](#cognitive-services-contributor) | Cognitive Services のキーの作成、読み取り、更新、削除、管理を行うことができます。 |
-| [Cognitive Services データ閲覧者 (プレビュー)](#cognitive-services-data-reader-preview) | Cognitive Services データを読み取ります。 |
-| [Cognitive Services ユーザー](#cognitive-services-user) | Cognitive Services のキーの読み取りおよび一覧表示を行うことができます。 |
-| [Cosmos DB アカウントの閲覧者ロール](#cosmos-db-account-reader-role) | Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。 |
-| [Cosmos DB オペレーター](#cosmos-db-operator) | Azure Cosmos DB アカウントを管理することができます。ただし、アカウント内のデータにはアクセスできません。 アカウント キーと接続文字列へのアクセスは禁止されます。 |
-| [CosmosBackupOperator](#cosmosbackupoperator) | Cosmos DB データベースまたはアカウントのコンテナーの復元要求を送信できます |
-| [Cost Management 共同作成者](#cost-management-contributor) | コストを表示し、コストの構成 (予算、エクスポートなど) を管理することができます。 |
-| [Cost Management 閲覧者](#cost-management-reader) | コストのデータと構成 (予算、エクスポートなど) を表示することができます。 |
-| [Data Box Contributor](#data-box-contributor) | Data Box サービスですべてを管理できます (他のユーザーに対するアクセス権の付与を除く)。 |
-| [Data Box 閲覧者](#data-box-reader) | Data Box サービスを管理できます (注文の作成または注文の詳細の編集、および他のユーザーに対するアクセス権の付与を除く)。 |
-| [Data Factory Contributor](#data-factory-contributor) | データ ファクトリまたデータ ファクトリ内の子リソースを作成し管理します。 |
-| [Data Lake Analytics Developer](#data-lake-analytics-developer) | 独自のジョブを送信、監視、管理できますが、Data Lake Analytics アカウントを作成または削除することはできません。 |
-| [Data Purger](#data-purger) | 分析データを削除することができます。 |
-| [DevTest Labs User](#devtest-labs-user) | Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャットダウンができます。 |
-| [DNS Zone Contributor](#dns-zone-contributor) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
-| [DocumentDB Account Contributor](#documentdb-account-contributor) | Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。 |
-| [EventGrid EventSubscription 共同作成者](#eventgrid-eventsubscription-contributor) | EventGrid のイベント サブスクリプション操作を管理できます。 |
-| [EventGrid EventSubscription 閲覧者](#eventgrid-eventsubscription-reader) | EventGrid のイベント サブスクリプションを読み取ることができます。 |
-| [HDInsight クラスター オペレーター](#hdinsight-cluster-operator) | HDInsight クラスター構成の読み取りと変更を実行できます。 |
-| [HDInsight ドメイン サービス共同作成者](#hdinsight-domain-services-contributor) | HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、削除を行うことができます。 |
-| [Intelligent Systems Account Contributor](#intelligent-systems-account-contributor) | Intelligent Systems のアカウントを管理できます。ただし、それらへのアクセスは含まれません。 |
-| [Key Vault Contributor](#key-vault-contributor) | キー コンテナーを管理できますが、アクセスすることはできません。 |
-| [Lab Creator](#lab-creator) | Azure Lab アカウントで管理対象のラボを作成、管理、削除できます。 |
-| [Log Analytics Contributor](#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。 |
-| [Log Analytics Reader](#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 |
-| [Logic App Contributor](#logic-app-contributor) | ロジック アプリを管理できますが、アクセス権を変更することはできません。 |
-| [Logic App Operator](#logic-app-operator) | ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。 |
-| [Managed Application Operator Role](#managed-application-operator-role) | マネージド アプリケーション リソースに対する読み取りとアクションの実行が可能です。 |
-| [Managed Applications 閲覧者](#managed-applications-reader) | マネージド アプリおよび要求 JIT アクセスでリソースを読み取ることができます。 |
-| [Managed Identity Contributor](#managed-identity-contributor) | ユーザー割り当て ID の作成、読み取り、更新、削除を行います |
-| [Managed Identity Operator](#managed-identity-operator) | ユーザー割り当て ID の読み取りと割り当てを行います |
-| [マネージド サービスの登録割り当て削除ロール](#managed-services-registration-assignment-delete-role) | マネージド サービスの登録割り当て削除ロールを使用すると、テナント管理ユーザーは、テナントに割り当てられている登録割り当てを削除できます。 |
-| [管理グループ共同作成者](#management-group-contributor) | 管理グループ共同作成者ロール |
-| [管理グループ閲覧者](#management-group-reader) | 管理グループ閲覧者ロール |
-| [Monitoring Contributor](#monitoring-contributor) | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
-| [監視メトリック パブリッシャー](#monitoring-metrics-publisher) | Azure リソースに対するメトリックの公開を有効にします |
-| [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
-| [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
-| [New Relic APM Account Contributor](#new-relic-apm-account-contributor) | New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。 |
-| [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 |
-| [Redis Cache Contributor](#redis-cache-contributor) | Redis Caches を管理できます。ただし、それらへのアクセスは含まれません。 |
-| [リソース ポリシーの共同作成者 (プレビュー)](#resource-policy-contributor-preview) | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 |
-| [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) | スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。 |
-| [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 |
-| [Security Admin](#security-admin) | Security Center のみ: セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます |
-| [セキュリティ マネージャー (レガシ)](#security-manager-legacy) | これは、レガシ ロールです。 代わりにセキュリティ管理者をご使用ください。 |
-| [Security Reader](#security-reader) | Security Center のみ: 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません |
-| [Site Recovery Contributor](#site-recovery-contributor) | 資格情報コンテナーの作成とロールの割り当てを除く、Site Recovery サービスを管理できます |
-| [Site Recovery Operator](#site-recovery-operator) | フェールオーバーとフェールバックを実行できますが、その他の Site Recovery 管理操作は実行しません |
-| [Site Recovery Reader](#site-recovery-reader) | Site Recovery の状態を表示できますが、その他の管理操作は実行できません |
-| [Spatial Anchors アカウント共同作成者](#spatial-anchors-account-contributor) | アカウントで Spatial Anchors を管理します (削除は含まない) |
-| [Spatial Anchors アカウント所有者](#spatial-anchors-account-owner) | アカウントで Spatial Anchors を管理します (削除も含む) |
-| [Spatial Anchors アカウント閲覧者](#spatial-anchors-account-reader) | アカウントで Spatial Anchors のプロパティを検索して読み取ります |
-| [SQL DB Contributor](#sql-db-contributor) | SQL データベースを管理できます。ただし、それらへのアクセスは含まれません。 また、セキュリティ関連のポリシーまたは親 SQL Server を管理することはできません。 |
-| [SQL マネージド インスタンス共同作成者](#sql-managed-instance-contributor) | SQL マネージド インスタンスと必要なネットワーク構成を管理することができますが、他のユーザーにアクセス権を付与することはできません。 |
-| [SQL Security Manager](#sql-security-manager) | SQL サーバーとデータベースのセキュリティ関連のポリシーを管理できます。ただし、それらへのアクセスは管理できません。 |
-| [SQL Server Contributor](#sql-server-contributor) | SQL サーバーとデータベースを管理できます。ただし、それらへのアクセスや、それらのセキュリティ関連ポリシーは管理できません。 |
-| [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントの管理を許可します。 アカウント キーへのアクセスを提供します。これを使用して、共有キー認証を使用してデータにアクセスすることができます。 |
-| [ストレージ アカウント キー オペレーターのサービス ロール](#storage-account-key-operator-service-role) | ストレージ アカウント アクセス キーを一覧表示および再生成できます。 |
-| [ストレージ BLOB データ共同作成者](#storage-blob-data-contributor) | Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
-| [ストレージ BLOB データ所有者](#storage-blob-data-owner) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
-| [ストレージ BLOB データ閲覧者](#storage-blob-data-reader) | Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
-| [Storage Blob デリゲータ](#storage-blob-delegator) | Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 |
-| [記憶域ファイル データの SMB 共有の共同作成者](#storage-file-data-smb-share-contributor) | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します。 |
-| [記憶域ファイル データの SMB 共有の管理者特権共同作成者](#storage-file-data-smb-share-elevated-contributor) | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセス、NTFS アクセス許可の変更アクセスを許可します。 |
-| [ストレージ ファイル データの SMB 共有の閲覧者](#storage-file-data-smb-share-reader) | SMB 経由の Azure ファイル共有に対する読み取りアクセスを許可します。 |
-| [ストレージ キュー データ共同作成者共同作成者](#storage-queue-data-contributor) | Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
-| [ストレージ キュー データのメッセージ プロセッサ](#storage-queue-data-message-processor) | Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
-| [ストレージ キュー データ メッセージ送信者](#storage-queue-data-message-sender) | Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
-| [ストレージ キュー データ閲覧者](#storage-queue-data-reader) | Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 |
-| [Support Request Contributor](#support-request-contributor) | Support request を作成して管理できます |
-| [Traffic Manager Contributor](#traffic-manager-contributor) | Traffic Manager プロファイルを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
-| [User Access Administrator](#user-access-administrator) | Azure リソースに対するユーザー アクセスを管理します。 |
-| [Virtual Machine Administrator Login](#virtual-machine-administrator-login) | ポータルで仮想マシンを表示し、管理者としてログインします |
-| [Virtual Machine Contributor](#virtual-machine-contributor) | 仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 |
-| [Virtual Machine User Login](#virtual-machine-user-login) | ポータルで仮想マシンを表示し、通常のユーザーとしてログインします。 |
-| [Web Plan Contributor](#web-plan-contributor) | Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。 |
-| [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 |
+> [!div class="mx-tableFixed"]
+> | 組み込みのロール | 説明 | Id |
+> | --- | --- | --- |
+> | [Owner](#owner) | リソースへのアクセスを含め、すべてを管理できます。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | [Contributor](#contributor) | リソースへのアクセス権の付与以外のすべてを管理できます。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [Reader](#reader) | すべてを表示できますが、変更することはできません。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+> | [AcrDelete](#acrdelete) | acr の削除 | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
+> | [AcrImageSigner](#acrimagesigner) | ACR イメージ署名者 | 6cef56e8-d556-48e5-a04f-b8e64114680f |
+> | [AcrPull](#acrpull) | acr のプル | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
+> | [AcrPush](#acrpush) | acr のプッシュ | 8311e382-0749-4cb8-b61a-304f252e45ec |
+> | [AcrQuarantineReader](#acrquarantinereader) | ACR 検査データ閲覧者 | cdda3590-29a3-44f6-95f2-9f980659eb04 |
+> | [AcrQuarantineWriter](#acrquarantinewriter) | ACR 検査データ作成者 | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
+> | [API Management Service Contributor](#api-management-service-contributor) | サービスと API を管理できます | 312a565d-c81f-4fd8-895a-4e21e48d571c |
+> | [API Management Service Operator Role](#api-management-service-operator-role) | サービスを管理できますが、API は対象外です | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
+> | [API Management Service Reader Role](#api-management-service-reader-role) | サービスと API への読み取り専用アクセスです | 71522526-b88f-4d52-b57f-d31fc3546d0d |
+> | [Application Insights Component Contributor](#application-insights-component-contributor) | Application Insights コンポーネントを管理できます | ae349356-3a1b-4a5e-921d-050484c6347e |
+> | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
+> | [Automation Job Operator](#automation-job-operator) | Automation Runbook を使用してジョブを作成および管理します。 | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
+> | [Automation Operator](#automation-operator) | Automation オペレーターはジョブを開始、停止、中断、再開することができます | d3881f73-407a-4167-8283-e981cbba0404 |
+> | [Automation Runbook Operator](#automation-runbook-operator) | Runbook のジョブを作成する方法については、Runbook のプロパティを参照してください。 | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
+> | [Avere 共同作成者](#avere-contributor) | Avere vFXT クラスターを作成および管理できます。 | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
+> | [Avere オペレーター](#avere-operator) | クラスターを管理するために Avere vFXT クラスターによって使用されます | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
+> | [Azure Event Hubs データ所有者](#azure-event-hubs-data-owner) | Azure Event Hubs リソースへのフル アクセスを許可します。 | f526a384-b230-433a-b45c-95f59c4a2dec |
+> | [Azure Event Hubs データ受信者](#azure-event-hubs-data-receiver) | Azure Event Hubs リソースへの受信アクセスを許可します。 | a638d3c7-ab3a-418d-83e6-5f17a39d4fde |
+> | [Azure Event Hubs データ送信者](#azure-event-hubs-data-sender) | Azure Event Hubs リソースへの送信アクセスを許可します。 | 2b629674-e913-4c01-ae53-ef4638d8f975 |
+> | [Azure Kubernetes Service クラスター管理者ロール](#azure-kubernetes-service-cluster-admin-role) | クラスター管理者の資格情報アクションを一覧表示します。 | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
+> | [Azure Kubernetes Service クラスター ユーザー ロール](#azure-kubernetes-service-cluster-user-role) | クラスター ユーザーの資格情報アクションを一覧表示します。 | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
+> | [Azure Maps データ閲覧者 (プレビュー)](#azure-maps-data-reader-preview) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | [Azure Sentinel 共同作成者](#azure-sentinel-contributor) | Azure Sentinel 共同作成者 | ab8e14d6-4a74-4a29-9ba8-549422addade |
+> | [Azure Sentinel 閲覧者](#azure-sentinel-reader) | Azure Sentinel 閲覧者 | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
+> | [Azure Sentinel レスポンダー](#azure-sentinel-responder) | Azure Sentinel レスポンダー | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
+> | [Azure Service Bus データ所有者](#azure-service-bus-data-owner) | Azure Service Bus リソースへのフル アクセスを許可します。 | 090c5cfd-751d-490a-894a-3ce6f1109419 |
+> | [Azure Service Bus データ受信者](#azure-service-bus-data-receiver) | Azure Service Bus リソースへの受信アクセスを許可します。 | 4f6d3b9b-027b-4f4c-9142-0e5a2a2247e0 |
+> | [Azure Service Bus データ送信者](#azure-service-bus-data-sender) | Azure Service Bus リソースへの送信アクセスを許可します。 | 69a216fc-b8fb-44d8-bc22-1f3c2cd27a39 |
+> | [Azure Stack Registration Owner](#azure-stack-registration-owner) | Azure Stack の登録を管理できます。 | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
+> | [Backup Contributor](#backup-contributor) | バックアップ サービスを管理できますが、資格情報コンテナーの作成や他のユーザーに対するアクセス権の付与を行うことはできません | 5e467623-bb1f-42f4-a55d-6e525e11384b |
+> | [Backup Operator](#backup-operator) | バックアップ サービスを管理できます (バックアップの削除、資格情報コンテナーの作成、他のユーザーに対するアクセス権の付与を除く) | 00c29273-979b-4161-815c-10b084fb9324 |
+> | [Backup Reader](#backup-reader) | バックアップ サービスを表示できますが、変更を行うことはできません | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
+> | [Billing Reader](#billing-reader) | 課金データへの読み取りアクセスを許可します | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
+> | [BizTalk Contributor](#biztalk-contributor) | BizTalk Services を管理できます。ただし、それらへのアクセスは含まれません。 | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
+> | [ブロックチェーン メンバー ノードへのアクセス (プレビュー)](#blockchain-member-node-access-preview) | ブロックチェーン メンバー ノードにアクセスできるようにします | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
+> | [ブループリント共同作成者](#blueprint-contributor) | ブループリントの定義を管理できますが、それらを割り当てることはできません。 | 41077137-e803-4205-871c-5a86e6a753b4 |
+> | [ブループリント オペレーター](#blueprint-operator) | 既存の発行済みのブループリントを割り当てることはできますが、ブループリントの新規作成はできません。 注: これは、ユーザーが割り当てたマネージド ID を使用して割り当てが行われた場合にのみ機能します。 | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
+> | [CDN Endpoint Contributor](#cdn-endpoint-contributor) | CDN エンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
+> | [CDN Endpoint Reader](#cdn-endpoint-reader) | CDN エンドポイントを表示できますが、変更はできません。 | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
+> | [CDN Profile Contributor](#cdn-profile-contributor) | CDN プロファイルとそのエンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
+> | [CDN Profile Reader](#cdn-profile-reader) | CDN プロファイルとそのエンドポイントを表示できますが、変更はできません。 | 8f96442b-4075-438f-813d-ad51ab4019af |
+> | [Classic Network Contributor](#classic-network-contributor) | 従来のネットワークを管理できます。ただし、それらへのアクセスは含まれません。 | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
+> | [Classic Storage Account Contributor](#classic-storage-account-contributor) | 従来のストレージ アカウントを管理できますが、アクセスすることはできません。 | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
+> | [従来のストレージ アカウント キー オペレーターのサービス ロール](#classic-storage-account-key-operator-service-role) | 従来のストレージ アカウント キー オペレーターは、従来のストレージ アカウントでのキーの一覧表示と再生成を行うことができます | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
+> | [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) | 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
+> | [Cognitive Services 共同作成者](#cognitive-services-contributor) | Cognitive Services のキーの作成、読み取り、更新、削除、管理を行うことができます。 | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
+> | [Cognitive Services データ閲覧者 (プレビュー)](#cognitive-services-data-reader-preview) | Cognitive Services データを読み取ります。 | b59867f0-fa02-499b-be73-45a86b5b3e1c |
+> | [Cognitive Services ユーザー](#cognitive-services-user) | Cognitive Services のキーの読み取りおよび一覧表示を行うことができます。 | a97b65f3-24c7-4388-baec-2e87135dc908 |
+> | [Cosmos DB アカウントの閲覧者ロール](#cosmos-db-account-reader-role) | Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。 | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
+> | [Cosmos DB オペレーター](#cosmos-db-operator) | Azure Cosmos DB アカウントを管理することができます。ただし、アカウント内のデータにはアクセスできません。 アカウント キーと接続文字列へのアクセスは禁止されます。 | 230815da-be43-4aae-9cb4-875f7bd000aa |
+> | [CosmosBackupOperator](#cosmosbackupoperator) | Cosmos DB データベースまたはアカウントのコンテナーの復元要求を送信できます | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
+> | [Cost Management 共同作成者](#cost-management-contributor) | コストを表示し、コストの構成 (予算、エクスポートなど) を管理することができます。 | 434105ed-43f6-45c7-a02f-909b2ba83430 |
+> | [Cost Management 閲覧者](#cost-management-reader) | コストのデータと構成 (予算、エクスポートなど) を表示することができます。 | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
+> | [Data Box Contributor](#data-box-contributor) | Data Box サービスですべてを管理できます (他のユーザーに対するアクセス権の付与を除く)。 | add466c9-e687-43fc-8d98-dfcf8d720be5 |
+> | [Data Box 閲覧者](#data-box-reader) | Data Box サービスを管理できます (注文の作成または注文の詳細の編集、および他のユーザーに対するアクセス権の付与を除く)。 | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
+> | [Data Factory Contributor](#data-factory-contributor) | データ ファクトリまたデータ ファクトリ内の子リソースを作成し管理します。 | 673868aa-7521-48a0-acc6-0f60742d39f5 |
+> | [Data Lake Analytics Developer](#data-lake-analytics-developer) | 独自のジョブを送信、監視、管理できますが、Data Lake Analytics アカウントを作成または削除することはできません。 | 47b7735b-770e-4598-a7da-8b91488b4c88 |
+> | [Data Purger](#data-purger) | 分析データを削除することができます。 | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
+> | [DevTest Labs User](#devtest-labs-user) | Azure DevTest Labs で仮想マシンの接続、起動、再起動、シャットダウンができます。 | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
+> | [DNS Zone Contributor](#dns-zone-contributor) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 | befefa01-2a29-4197-83a8-272ff33ce314 |
+> | [DocumentDB Account Contributor](#documentdb-account-contributor) | Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。 | 5bd9cd88-fe45-4216-938b-f97437e15450 |
+> | [EventGrid EventSubscription 共同作成者](#eventgrid-eventsubscription-contributor) | EventGrid のイベント サブスクリプション操作を管理できます。 | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
+> | [EventGrid EventSubscription 閲覧者](#eventgrid-eventsubscription-reader) | EventGrid のイベント サブスクリプションを読み取ることができます。 | 2414bbcf-6497-4faf-8c65-045460748405 |
+> | [HDInsight クラスター オペレーター](#hdinsight-cluster-operator) | HDInsight クラスター構成の読み取りと変更を実行できます。 | 61ed4efc-fab3-44fd-b111-e24485cc132a |
+> | [HDInsight ドメイン サービス共同作成者](#hdinsight-domain-services-contributor) | HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、削除を行うことができます。 | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
+> | [Intelligent Systems Account Contributor](#intelligent-systems-account-contributor) | Intelligent Systems のアカウントを管理できます。ただし、それらへのアクセスは含まれません。 | 03a6d094-3444-4b3d-88af-7477090a9e5e |
+> | [Key Vault Contributor](#key-vault-contributor) | キー コンテナーを管理できますが、アクセスすることはできません。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | [Lab Creator](#lab-creator) | Azure Lab アカウントで管理対象のラボを作成、管理、削除できます。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
+> | [Log Analytics Contributor](#log-analytics-contributor) | Log Analytics 共同作成者は、すべての監視データを読み取り、監視設定を編集できます。 監視設定の編集には、VM 拡張機能の VM への追加、Azure Storage からログの収集を設定できるようにするためのストレージ アカウント キーの読み取り、Automation アカウントの作成と構成、ソリューションの追加、すべての Azure リソースでの Azure Diagnostics の構成が含まれます。 | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
+> | [Log Analytics Reader](#log-analytics-reader) | Log Analytics Reader は、すべての監視データの表示と検索、およびすべての Azure リソース上の Azure Diagnostics 構成の表示など、監視設定の表示を行うことができます。 | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | [Logic App Contributor](#logic-app-contributor) | ロジック アプリを管理できますが、アクセス権を変更することはできません。 | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
+> | [Logic App Operator](#logic-app-operator) | ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。 | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | [Managed Application Operator Role](#managed-application-operator-role) | マネージド アプリケーション リソースに対する読み取りとアクションの実行が可能です。 | c7393b34-138c-406f-901b-d8cf2b17e6ae |
+> | [Managed Applications 閲覧者](#managed-applications-reader) | マネージド アプリおよび要求 JIT アクセスでリソースを読み取ることができます。 | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
+> | [Managed Identity Contributor](#managed-identity-contributor) | ユーザー割り当て ID の作成、読み取り、更新、削除を行います | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
+> | [Managed Identity Operator](#managed-identity-operator) | ユーザー割り当て ID の読み取りと割り当てを行います | f1a07417-d97a-45cb-824c-7a7467783830 |
+> | [マネージド サービスの登録割り当て削除ロール](#managed-services-registration-assignment-delete-role) | マネージド サービスの登録割り当て削除ロールを使用すると、テナント管理ユーザーは、テナントに割り当てられている登録割り当てを削除できます。 | 91c1777a-f3dc-4fae-b103-61d183457e46 |
+> | [管理グループ共同作成者](#management-group-contributor) | 管理グループ共同作成者ロール | 5d58bcaf-24a5-4b20-bdb6-eed9f69fbe4c |
+> | [管理グループ閲覧者](#management-group-reader) | 管理グループ閲覧者ロール | ac63b705-f282-497d-ac71-919bf39d939d |
+> | [Monitoring Contributor](#monitoring-contributor) | すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
+> | [監視メトリック パブリッシャー](#monitoring-metrics-publisher) | Azure リソースに対するメトリックの公開を有効にします | 3913510d-42f4-4e42-8a64-420c390055eb |
+> | [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
+> | [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
+> | [New Relic APM Account Contributor](#new-relic-apm-account-contributor) | New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。 | 5d28c62d-5b37-4476-8438-e587778df237 |
+> | [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 | c12c1c16-33a1-487b-954d-41c89c60f349 |
+> | [Redis Cache Contributor](#redis-cache-contributor) | Redis Caches を管理できます。ただし、それらへのアクセスは含まれません。 | e0f68234-74aa-48ed-b826-c38b57376e17 |
+> | [リソース ポリシーの共同作成者 (プレビュー)](#resource-policy-contributor-preview) | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 | 36243c78-bf99-498c-9df9-86d9f8d28608 |
+> | [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) | スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
+> | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
+> | [Security Admin](#security-admin) | Security Center のみ: セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [セキュリティ マネージャー (レガシ)](#security-manager-legacy) | これは、レガシ ロールです。 代わりにセキュリティ管理者をご使用ください。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
+> | [Security Reader](#security-reader) | Security Center のみ: 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Site Recovery Contributor](#site-recovery-contributor) | 資格情報コンテナーの作成とロールの割り当てを除く、Site Recovery サービスを管理できます | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
+> | [Site Recovery Operator](#site-recovery-operator) | フェールオーバーとフェールバックを実行できますが、その他の Site Recovery 管理操作は実行しません | 494ae006-db33-4328-bf46-533a6560a3ca |
+> | [Site Recovery Reader](#site-recovery-reader) | Site Recovery の状態を表示できますが、その他の管理操作は実行できません | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
+> | [Spatial Anchors アカウント共同作成者](#spatial-anchors-account-contributor) | アカウントで Spatial Anchors を管理します (削除は含まない) | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
+> | [Spatial Anchors アカウント所有者](#spatial-anchors-account-owner) | アカウントで Spatial Anchors を管理します (削除も含む) | 70bbe301-9835-447d-afdd-19eb3167307c |
+> | [Spatial Anchors アカウント閲覧者](#spatial-anchors-account-reader) | アカウントで Spatial Anchors のプロパティを検索して読み取ります | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
+> | [SQL DB Contributor](#sql-db-contributor) | SQL データベースを管理できます。ただし、それらへのアクセスは含まれません。 また、セキュリティ関連のポリシーまたは親 SQL Server を管理することはできません。 | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
+> | [SQL マネージド インスタンス共同作成者](#sql-managed-instance-contributor) | SQL マネージド インスタンスと必要なネットワーク構成を管理することができますが、他のユーザーにアクセス権を付与することはできません。 | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
+> | [SQL Security Manager](#sql-security-manager) | SQL サーバーとデータベースのセキュリティ関連のポリシーを管理できます。ただし、それらへのアクセスは管理できません。 | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
+> | [SQL Server Contributor](#sql-server-contributor) | SQL サーバーとデータベースを管理できます。ただし、それらへのアクセスや、それらのセキュリティ関連ポリシーは管理できません。 | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
+> | [Storage Account Contributor](#storage-account-contributor) | ストレージ アカウントの管理を許可します。 アカウント キーへのアクセスを提供します。これを使用して、共有キー認証を使用してデータにアクセスすることができます。 | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
+> | [ストレージ アカウント キー オペレーターのサービス ロール](#storage-account-key-operator-service-role) | ストレージ アカウント アクセス キーを一覧表示および再生成できます。 | 81a9662b-bebf-436f-a333-f67b29880f12 |
+> | [ストレージ BLOB データ共同作成者](#storage-blob-data-contributor) | Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | [ストレージ BLOB データ所有者](#storage-blob-data-owner) | Azure Storage Blob コンテナーとデータに対するフル アクセス (POSIX アクセスの制御の割り当てを含む) を提供します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
+> | [ストレージ BLOB データ閲覧者](#storage-blob-data-reader) | Azure Storage コンテナーと BLOB の読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
+> | [Storage Blob デリゲータ](#storage-blob-delegator) | Azure AD 資格情報で署名されたコンテナーまたは BLOB 用の共有アクセス署名を作成するために使用できるユーザー委任キーを取得します。 詳細については、「[ユーザー委任 SAS を作成する](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas)」を参照してください。 | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
+> | [記憶域ファイル データの SMB 共有の共同作成者](#storage-file-data-smb-share-contributor) | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセスを許可します。 | 0c867c2a-1d8c-454a-a3db-ab2ea1bdc8bb |
+> | [記憶域ファイル データの SMB 共有の管理者特権共同作成者](#storage-file-data-smb-share-elevated-contributor) | SMB 経由の Azure Storage ファイル共有に対する読み取りアクセス、書き込みアクセス、削除アクセス、NTFS アクセス許可の変更アクセスを許可します。 | a7264617-510b-434b-a828-9731dc254ea7 |
+> | [ストレージ ファイル データの SMB 共有の閲覧者](#storage-file-data-smb-share-reader) | SMB 経由の Azure ファイル共有に対する読み取りアクセスを許可します。 | aba4ae5f-2193-4029-9191-0cb91df5e314 |
+> | [ストレージ キュー データ共同作成者共同作成者](#storage-queue-data-contributor) | Azure Storage キューおよびキュー メッセージの読み取り、書き込み、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
+> | [ストレージ キュー データのメッセージ プロセッサ](#storage-queue-data-message-processor) | Azure Storage キューからのメッセージのピーク、取得、削除を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
+> | [ストレージ キュー データ メッセージ送信者](#storage-queue-data-message-sender) | Azure Storage キューにメッセージを追加します。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | [ストレージ キュー データ閲覧者](#storage-queue-data-reader) | Azure Storage キューおよびキュー メッセージの読み取りと一覧表示を行います。 特定のデータ操作に必要なアクションについては、「[Permissions for calling blob and queue data operations (BLOB およびキューのデータの操作を呼び出すためのアクセス許可)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)」をご覧ください。 | 19e7f393-937e-4f77-808e-94535e297925 |
+> | [Support Request Contributor](#support-request-contributor) | Support request を作成して管理できます | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
+> | [Traffic Manager Contributor](#traffic-manager-contributor) | Traffic Manager プロファイルを管理できますが、それにアクセスできるユーザーを制御することはできません。 | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
+> | [User Access Administrator](#user-access-administrator) | Azure リソースに対するユーザー アクセスを管理します。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
+> | [Virtual Machine Administrator Login](#virtual-machine-administrator-login) | ポータルで仮想マシンを表示し、管理者としてログインします | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
+> | [Virtual Machine Contributor](#virtual-machine-contributor) | 仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
+> | [Virtual Machine User Login](#virtual-machine-user-login) | ポータルで仮想マシンを表示し、通常のユーザーとしてログインします。 | fb879df8-f326-4884-b1cf-06f3ad86be52 |
+> | [Web Plan Contributor](#web-plan-contributor) | Web サイトの Web プランを管理できます。ただし、それらへのアクセスは含まれません。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+> | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 | de139f84-1756-47ae-9be6-808fbbe84772 |
 
 
 ## <a name="owner"></a>Owner
@@ -3127,6 +3128,6 @@ ms.locfileid: "73101287"
 
 ## <a name="next-steps"></a>次の手順
 
+- [リソース プロバイダーとサービスの関連付け](../azure-resource-manager/azure-services-resource-providers.md)
 - [Azure リソースのカスタム ロール](custom-roles.md)
-- [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
 - [Azure Security Center におけるアクセス許可](../security-center/security-center-permissions.md)

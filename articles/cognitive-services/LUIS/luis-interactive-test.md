@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: ebc86d1cf91cf79ab83b0f49d9898a91d8be8a75
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 628547e8254bb0055cf1f09af50e79b68311a759
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500277"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221792"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>LUIS ポータルで LUIS アプリをテストする
 
 アプリの[テスト](luis-concept-test.md)は反復処理です。 ご自身の LUIS アプリをトレーニングした後、サンプルの発話を使用して、意図とエンティティが正しく認識されるかどうかをテストします。 正しく認識されない場合は、もう一度 LUIS アプリを更新し、トレーニングおよびテストを行います。 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 <!-- anchors for H2 name changes -->
 <a name="train-your-app"></a>
@@ -30,13 +30,20 @@ ms.locfileid: "73500277"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
+## <a name="train-before-testing"></a>テストの前にトレーニングする
+
+アクティブなアプリの最新バージョンに対してテストを行うには、テストの前に、上部のメニューから **[トレーニング]** を選択します。 
+
 ## <a name="test-an-utterance"></a>発話のテスト
+
+テストの発話は、アプリでの発話の例とまったく同じにすることはできません。 テストの発話には、ユーザーが使用すると予想される単語の選択、語句の長さ、エンティティの使用法を含める必要があります。 
 
 1. **[My Apps]\(マイ アプリ\)** ページでご自身のアプリの名前を選択して、アプリにアクセスします。 
 
 1. スライド式の **[Test]\(テスト\)** パネルにアクセスするには、アプリケーションの上部パネルにある **[Test]\(テスト\)** を選択します。
 
-    ![アプリのトレーニングとテストのページ](./media/luis-how-to-interactive-test/test.png)
+    > [!div class="mx-imgBorder"]
+    > ![アプリのトレーニングとテストのページ](./media/luis-how-to-interactive-test/test.png)
 
 1. テキスト ボックスに発話を入力し、Enter キーを押します。 **[Test]\(テスト\)** にはテスト用の発話を必要な数だけ入力できますが、同時に入力できる発話は 1 つだけです。
 
@@ -92,28 +99,29 @@ ms.locfileid: "73500277"
 
 LUIS エンドポイントが複数ある場合は、テストの [公開済み] ウィンドウで **[追加設定]** リンクを使用して、テスト用に使用されているエンドポイントを変更します。 使用するエンドポイントがわからない場合は、既定の **Starter_Key** を選択します。 
 
-![[追加設定] リンクが強調表示されているテスト パネル](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+> [!div class="mx-imgBorder"]
+> ![[追加設定] リンクが強調して示されているテスト パネル](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
+<!--
+###  View Bing Spell Check corrections in test panel
 
-### <a name="view-bing-spell-check-corrections-in-test-panel"></a>テスト パネルでの Bing Spell Check 修正の表示
+Requirements to view the spelling corrections: 
 
-スペルの修正を表示するための要件: 
+* Published app
+* Bing Spell Check [service key](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). The service key is not stored and needs to be reset for each browser session. 
 
-* 公開済みアプリ
-* Bing Spell Check [サービス キー](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)。 サービス キーは保存されないため、ブラウザー セッションごとにリセットする必要があります。 
+Use the following procedure to include the [Bing Spell Check v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) service  in the Test pane results. 
 
-次の手順を使用して、[Bing Spell Check v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) サービスを [Test]\(テスト\) ウィンドウの結果に追加します。 
+1. In the **Test** pane, enter an utterance. When the utterance is predicted, select **[Inspect](#inspect-score)** underneath the utterance you entered. 
 
-1. **[Test]\(テスト\)** ウィンドウで、発話を入力します。 発話が予測されるときに、入力した発話の下で **[[検査]](#inspect-score)** を選択します。 
+1. When the **Inspect** panel opens, select **[Compare with Published](#compare-with-published-version)**. 
 
-1. **[検査]** パネルが開いたら、 **[[Compare with published]\(公開済みのものと比較\)](#compare-with-published-version)** を選択します。 
+1. When the **Published** panel opens, select **[Additional Settings](#additional-settings-in-test-panel)**.
 
-1. **[公開済み]** パネルが開いたら、 **[[追加設定]](#additional-settings-in-test-panel)** を選択します。
+1. In the pop-up dialog, check **Enable Bing Spell Check** and enter the key, then select **Done**. 
+    ![Enter Bing Spell Check service key](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-1. ポップアップ ダイアログで、 **[Enable Bing Spell Check]\(Bing Spell Checkを有効にする\)** チェックボックスをオンにし、キーを入力して、 **[完了]** を選択します。 
-    ![Bing Spell Check サービス キーの入力](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
-
-1. `book flite to seattle` など、間違っているスペルを含むクエリを入力し、Enter キーを入力します。 LUIS に送信されたクエリ内で、スペルが間違っている単語 `flite` が置き換えられ、結果の JSON の `query` には元のクエリが、`alteredQuery` にはクエリ内の修正されたスペルが表示されます。
+1. Enter a query with an incorrect spelling such as `book flite to seattle` and select enter. The incorrect spelling of the word `flite` is replaced in the query sent to LUIS and the resulting JSON shows both the original query, as `query`, and the corrected spelling in the query, as `alteredQuery`.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>
@@ -125,6 +133,7 @@ LUIS エンドポイントが複数ある場合は、テストの [公開済み]
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+-->
 
 ## <a name="batch-testing"></a>バッチ テスト
 バッチ テストの[概念](luis-concept-batch-test.md)と、発話のバッチをテストする[方法](luis-how-to-batch-test.md)を参照してください。

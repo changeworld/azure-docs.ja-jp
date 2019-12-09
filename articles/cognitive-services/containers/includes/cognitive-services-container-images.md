@@ -6,22 +6,22 @@ manager: nitinme
 description: Cognitive Service のすべてのオファリングにおけるコンテナーのレジストリ、リポジトリ、イメージ名を表す 2 つの表を示します。
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: ae11fe785237a02652af1f16aaba1f1bac5ecd62
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2058dd6e52ddb417e24368b27384df9a222c378e
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961911"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74142205"
 ---
 ### <a name="container-repositories-and-images"></a>コンテナーのリポジトリとイメージ
 
-次の表は、Azure Cognitive Services によって提供される使用可能なすべてのコンテナー イメージの一覧です。
+次の表は、Azure Cognitive Services によって提供される使用可能なコンテナー イメージの一覧です。 利用できるコンテナー イメージ名とその利用できるタグの完全一覧が必要であれば、[Cognitive Services コンテナー イメージ タグ](../container-image-tags.md)に関するページを参照してください。
 
 #### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>パブリックで "ゲートされていない" (コンテナー レジストリ: `mcr.microsoft.com`)
 
-Microsoft Container Registry では、Cognitive Services 向けに一般公開されている "ゲートなし" コンテナーをすべてホストしています。
+Microsoft Container Registry (MCR) では、Cognitive Services 向けに一般公開されている "ゲートなし" コンテナーをすべて配信しています。 [Docker Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services) から直接入手することもできます。
 
 | Service | コンテナー | コンテナー レジストリ / リポジトリ / イメージ名 |
 |--|--|--|

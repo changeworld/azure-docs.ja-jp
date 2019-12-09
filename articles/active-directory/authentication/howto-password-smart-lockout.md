@@ -1,22 +1,22 @@
 ---
-title: Azure AD のスマート ロックアウトを使用してブルート フォース攻撃を防止する - Azure Active Directory
+title: スマート ロックアウトを使用した攻撃の防止 - Azure Active Directory
 description: Azure Active Directory のスマート ロックアウトを使用すると、パスワードを推測するブルート フォース攻撃から組織を守れます
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a762009a7aaf1a965333ac573efe55d792c3f04b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 066c4cb598d9a8c14ab5d6ee893376266e104d15
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125020"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381523"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory のスマート ロックアウト
 
@@ -67,7 +67,8 @@ AD FS 2016 と AF FS 2019 を使用したフェデレーション デプロイ�
 
 組織のスマート ロックアウト値を確認または編集するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、 **[Azure Active Directory]**  >  **[認証方法]**  >  **[パスワード保護]** に移動します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. *Azure Active Directory* を検索して選択します。 **[認証方法]**  >  **[パスワード保護]** を選択します。
 1. 何回サインインに失敗したらアカウントがロックアウトされるかを基に **[ロックアウトのしきい値]** を設定します。 既定値は 10 です。
 1. **[Lockout duration in seconds]\(秒単位のロックアウト期間\)** で、各ロックアウトの長さを秒単位で設定します。 既定値は 60 秒 (1 分) です。
 

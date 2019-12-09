@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry でレジストリの正常性をチェックする
+title: レジストリの正常性をチェックする
 description: Azure コンテナー レジストリの使用時の一般的な問題 (ローカル Docker の構成やレジストリへの接続性など) を特定するためのクイック診断コマンドを実行する方法について説明します。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
-ms.author: danlep
-ms.openlocfilehash: 3511655d220ee85ce6b5744612e5d6fddafbe877
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68309735"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456417"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>Azure コンテナー レジストリの正常性のチェック
 

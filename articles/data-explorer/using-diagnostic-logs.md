@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 7d0fec56791c0d3e7ae60d78da83cf286532b9ab
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123921"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173813"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>診断ログを使用して Azure Data Explorer インジェスト操作を監視する (プレビュー)
 
@@ -158,4 +158,6 @@ Azure Data Explorer は、アプリケーション、Web サイト、IoT デバ�
 
 ## <a name="next-steps"></a>次の手順
 
-[メトリックを使用してクラスターの正常性を監視する](using-metrics.md)
+* [チュートリアル:Azure Data Explorer で監視データを取り込んでクエリを実行する](ingest-data-no-code.md)
+* [メトリックを使用してクラスターの正常性を監視する](using-metrics.md)
+

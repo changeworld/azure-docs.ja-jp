@@ -43,8 +43,6 @@
       items:
         - name: MFA のしくみ
           href: concept-mfa-howitworks.md
-        - name: MFA の有効化
-          href: concept-mfa-get-started.md
         - name: ユーザーのライセンス
           href: concept-mfa-licensing.md
         - name: 認証プロバイダーの管理

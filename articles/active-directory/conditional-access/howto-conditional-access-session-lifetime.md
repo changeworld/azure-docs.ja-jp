@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory の条件付きアクセスを使用して認証セッション管理を構成する
+title: 認証セッション管理の構成 - Azure Active Directory
 description: ユーザー サインインの頻度やブラウザー セッション永続化などの、Azure AD 認証のセッション構成をカスタマイズします。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70de9da44d52bd6e93377776a2dbfc1b802dd412
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 797475bfe0f1ec077ad39c6fce1f0facdf679802
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241700"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483469"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>条件付きアクセスを使用して認証セッション管理を構成する
 
@@ -39,7 +39,17 @@ ms.locfileid: "73241700"
 
 ユーザーにサインインし直すように求めないことは不安に感じられるかもしれませんが、実際は IT ポリシーのどのような違反によってもセッションは取り消されます。 たとえば、パスワードの変更、非準拠のデバイス、アカウントの無効化などがあります (ただしこれらに限定されません)。 また、明示的に [PowerShell を使用してユーザーのセッションを取り消す](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)ことができます。 Azure AD の既定の構成は、結局、「セッションのセキュリティ体制が変更していなければ、資格情報の提供をユーザーに求めない」というものになります。
 
-サインイン頻度設定は、標準に従って OAUTH2 または OIDC プロトコルを実装したアプリで動作します。 Windows、Mac、およびモバイル用のほとんどの Microsoft ネイティブ アプリは、この設定に準拠します。
+サインイン頻度設定は、標準に従って OAUTH2 または OIDC プロトコルを実装したアプリで動作します。 Windows、Mac、次の Web アプリケーションを含むモバイル用のほとんどの Microsoft ネイティブ アプリは、この設定に準拠します。
+
+- Word、Excel、PowerPoint Online
+- OneNote Online
+- Office.com
+- O365 管理ポータル
+- Exchange Online
+- SharePoint と OneDrive
+- Teams Web クライアント
+- Dynamics CRM Online
+- Azure ポータル
 
 ## <a name="persistence-of-browsing-sessions"></a>ブラウズ セッションの永続化
 

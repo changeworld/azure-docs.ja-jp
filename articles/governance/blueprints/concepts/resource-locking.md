@@ -1,14 +1,14 @@
 ---
 title: リソース ロックについて
-description: ブループリントを割り当てるときにリソースを保護するロック オプションについて説明します。
+description: ブループリントを割り当てるときにリソースを保護するための Azure Blueprints 内のロック オプションについて説明します。
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 754b9d7f73c6111abf7505e222a1ca5a8712ae45
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960480"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406404"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Azure Blueprint でのリソース ロックについて
 
@@ -61,8 +61,7 @@ ms.locfileid: "73960480"
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>拒否割り当てからプリンシパルを除外する
 
-一部のデザインまたはセキュリティ シナリオでは、ブルー プリント割り当てによって作成される[割り当て拒否](../../../role-based-access-control/deny-assignments.md)からのプリンシパルの除外が必要な場合があります。 これは、[割り当てを作成する](/rest/api/blueprints/assignments/createorupdate)ときに、REST API 内で **locks** プロパティの **excludedPrincipals** 配列に最大 5 つの値を追加することで実行されます。
-これは、**excludedPrincipals** を含む要求本文の例です。
+一部のデザインまたはセキュリティ シナリオでは、ブルー プリント割り当てによって作成される[割り当て拒否](../../../role-based-access-control/deny-assignments.md)からのプリンシパルの除外が必要な場合があります。 これは、[割り当てを作成する](/rest/api/blueprints/assignments/createorupdate)ときに、REST API 内で **locks** プロパティの **excludedPrincipals** 配列に最大 5 つの値を追加することで実行されます。 これは、**excludedPrincipals** を含む要求本文の例です。
 
 ```json
 {

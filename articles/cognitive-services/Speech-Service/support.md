@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: f8793975d920e24924fca7c2ae366f70972e6ab7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 925d21d22806ab2854be29b9648aab78138741ec
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468621"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422615"
 ---
 # <a name="support-and-help-options"></a>サポート オプションとヘルプ オプション
 
@@ -62,16 +62,7 @@ Azure ユーザーは、Azure portal でサポート要求を作成し、管理�
 
 Stack Overflow は、開発関連の質問を投稿するのに適したチャネルです。 コミュニティのメンバーや Microsoft チームのメンバーから、問題の解決方法について直接意見を聞くことができます。
 
-検索で問題に対する回答が見つからない場合は、Stack Overflow に新しい質問を提出します。 質問を作成するときは、次のタグのいずれかを使います。
-
-|コンポーネント/区分  |Tags  |
-|---------|---------|
-|音声認識 |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|音声合成 |[[microsoft-cognitive+text-to-speech]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|音声翻訳 |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|音声意図 |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|General Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-|音声アシスタント | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
+検索で問題に対する回答が見つからない場合は、[microsoft-cognitive-speech](https://stackoverflow.com/questions/tagged/microsoft-cognitive-speech)タグを使用して Stack Overflow に新しい質問を提出します。
 
 > [!TIP]
 > Stack Overflow の次の投稿では、質問の作成方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、コミュニティ メンバーからの評価や回答がより早く返ってくる可能性があります。  

@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/08/2019
+ms.date: 11/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 397e4215e32ee5d9bf5eced60b456c26fa80c901
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c30fed6f23f310c63f23f727d90023e05f107454
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083393"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807053"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -82,7 +82,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Ascenty Data Centers](https://www.ascenty.com/en/cloud/microsoft-express-route)** |サポートされています |サポートされています |サンパウロ |
 | **[AT&T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |サポートされています |サポートされています |モントリオール、トロント、ケベック シティ |
-| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/bt-compute-for-microsoft-azure)** |サポートされています |サポートされています |アムステルダム、香港特別行政区、ヨハネスブルグ、ロンドン、ニューポート (ウェールズ)、サンパウロ、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
+| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |サポートされています |サポートされています |アムステルダム、香港特別行政区、ヨハネスブルグ、ロンドン、ニューポート (ウェールズ)、サンパウロ、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |サポートされています |サポートされています |マイアミ |
 | **CDC** | サポートされています | サポートされています | キャンベラ、キャンベラ2 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |サポートされています |サポートされています |アムステルダム 2、シカゴ、香港特別行政区、ラスベガス、ニューヨーク、パリ、サンアントニオ、シリコン バレー、東京、トロント、ワシントン DC |
@@ -141,7 +141,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Tata Communications](https://www.tatacommunications.com/lp/izo/azure/azure_index.html)** |サポートされています |サポートされています |アムステルダム、チェンナイ、香港特別行政区、ロンドン、ムンバイ、サンパウロ、シリコン バレー、シンガポール、ワシントン DC |
 | **[Telefonica](https://www.business-solutions.telefonica.com/es/enterprise/solutions/efficient-infrastructure/managed-voice-data-connectivity/)** |サポートされています |サポートされています |アムステルダム、サンパウロ |
 | **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |サポートされています |サポートされています |ロンドン、ロンドン 2 |
-| **Telenor** |サポートされています |サポートされています |アムステルダム、ロンドン |
+| **Telenor** |サポートされています |サポートされています |アムステルダム、ロンドン、オスロ |
 | **[Telia Carrier](https://teliacarrier.com/our-services/connectivity/cloud-connect.html?title=Cloud%20Connect)** | サポートされています | サポートされています |アムステルダム、シカゴ、ダラス、香港特別行政区、ロンドン、パリ、シリコン バレー、ストックホルム、ワシントン DC |
 | **Telmex Uninet**| サポートされています | サポートされています | ダラス |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |サポートされています |サポートされています |メルボルン、シンガポール、シドニー |
@@ -179,7 +179,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **サービス プロバイダー** | **Microsoft Azure** | **Office 365** | **場所** |
 | --- | --- | --- | --- |
 | **China Telecom** |サポートされています |サポートされていません |北京、北京 2、上海、上海 2 |
-| **[GDS](http://en.gds-services.com/news_detail/newsId=21.html)** |サポートされています |サポートされていません |北京 2、上海 2 |
+| **[GDS](http://www.gds-services.com/en/about_2.html)** |サポートされています |サポートされていません |北京 2、上海 2 |
 
 詳細については、 [中国の ExpressRoute](http://www.windowsazure.cn/home/features/expressroute/)に関するページを参照してください。
 
@@ -330,7 +330,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **[The IT Consultancy Group](https://itconsult.com.au/)** | オーストラリア |
 | **[MOQdigital](https://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | オーストラリア |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | ヨーロッパ (ドイツ) |
-| **[Nelite](https://www.nelite.com/offres-services/)** | ヨーロッパ |
+| **[Nelite](https://www.exakis-nelite.com/offres/)** | ヨーロッパ |
 | **[New Signature](https://newsignature.com/technologies/express-route/)** | ヨーロッパ |
 | **[OneAs1a](https://www.oneas1a.com/connectivity.html)** | アジア |
 | **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | ヨーロッパ |

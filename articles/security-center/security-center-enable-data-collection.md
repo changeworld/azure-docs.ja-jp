@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center でのデータ収集 | Microsoft Docs
-description: " Azure Security Center のデータ収集を有効にする方法について説明します。 "
+description: この記事では、Log Analytics エージェントをインストールする方法と、収集されたデータの格納先となる Log Analytics ワークスペースを設定する方法について説明します。
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,17 +8,17 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 8aa0adf03aef2085ed2374bcfc7ea774d002061c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4b67e7a2ee9f2d734d927b3488cc15ca310f4295
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162678"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559058"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Security Center でのデータ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure 仮想マシン (VM)、仮想マシン スケール セット、IaaS コンテナー、非 Azure (オンプレミスを含む) コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システム ログ (Windows イベント ログ)、実行中のプロセス、マシン名、IP アドレス、ログイン ユーザーなどがあります。 また、Log Analytics エージェントはクラッシュ ダンプ ファイルもワークスペースにコピーします。
 
-不足している更新プログラム、OS のセキュリティ設定ミス、エンドポイント保護の有効性、正常性と脅威の検出を可視化するためには、データ収集が欠かせません。 
+不足している更新プログラム、OS のセキュリティ設定ミス、エンドポイント保護のステータス、正常性と脅威の検出を可視化するためには、データ収集が欠かせません。 
 
 この記事では、Log Analytics エージェントをインストールする方法と、収集されたデータの格納先となる Log Analytics ワークスペースを設定する方法について説明します。 データ収集を有効にするためには、両方の操作が必要となります。 
 

@@ -1,22 +1,22 @@
 ---
-title: Azure AD Identity Protection でリスクを修復してユーザーをブロック解除する方法
+title: Azure AD Identity Protection でリスクを修復してユーザーをブロック解除する
 description: アクティブなリスク検出をクローズすためのオプションについて説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61fe0e14fbb6c6251b3bf19843b9c065df60dd86
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 350e7b37d36be70cea345db52cdfb639b2f1c1a8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886874"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382112"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>リスクを修復してユーザーをブロック解除する
 

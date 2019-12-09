@@ -1,23 +1,16 @@
 ---
-title: アプリの診断ログの有効化 - Azure App Service
+title: 診断ログの有効化
 description: 診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログ記録された情報にアクセスする方法を説明します。
-services: app-service
-author: cephalin
-manager: gwallace
 ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/17/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 21600036302050aeea3e2ea989d86e18b208c087
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 54435dd21fccdd43f17d13674b324b989a00f7a1
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958042"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684251"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Azure App Service でのアプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -189,7 +182,7 @@ Windows アプリの場合、ZIP ファイルには、App Service ファイル �
 
 次の表は、サポートされるログの種類と説明を示しています。 
 
-| ログのタイプ | Windows のサポート | Linux サポート | 説明 |
+| ログのタイプ | Windows のサポート | Linux (Docker) のサポート | 説明 |
 |-|-|-|
 | AppServiceConsoleLogs | TBA | はい | 標準出力と標準エラー |
 | AppServiceHTTPLogs | はい | はい | Web サーバー ログ |

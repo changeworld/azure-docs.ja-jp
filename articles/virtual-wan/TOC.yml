@@ -24,8 +24,6 @@
           href: migrate-from-hub-spoke-topology.md
         - name: グローバル転送ネットワーク アーキテクチャ
           href: virtual-wan-global-transit-network-architecture.md
-        - name: Virtual WAN の Office 365 コントロール プレーン
-          href: virtual-wan-office365-overview.md
 - name: ハウツー ガイド
   items:
     - name: 仮想ネットワーク ゲートウェイを Virtual WAN に接続する
@@ -40,6 +38,10 @@
       href: virtual-wan-custom-ipsec-portal.md
     - name: ユーザー VPN 用の証明書を構成する (ポイント対サイト)
       href: certificates-point-to-site.md
+    - name: ユーザー VPN 用に Azure AD テナントを構成する
+      href: openvpn-azure-ad-tenant.md
+    - name: ユーザー VPN の Multi-Factor Authentication (MFA) を有効にする
+      href: openvpn-azure-ad-mfa.md
     - name: ユーザー VPN 用に Azure AD 認証を構成する (プレビュー)
       href: virtual-wan-point-to-site-azure-ad.md
     - name: 自動化を構成する (Virtual WAN パートナー)

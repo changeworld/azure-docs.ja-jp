@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 61cb6003549530f381b9cbbed74c1cb62c91431c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510304"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184249"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet Analyzer の FAQ (プレビュー)
 
@@ -98,6 +98,10 @@ Internet Analyzer で作成する各テストは、エンドポイント A と�
 ## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Internet Analyzer は、Azure によって提供される他の監視サービスとどのように違いますか。
 
 Internet Analyzer は、エンドユーザーのパフォーマンスを理解し、パフォーマンスを向上させるための意思決定に役立ちます。 他の Azure 監視ツールは Azure サービスに関する分析情報を提供しますが、Internet Analyzer はユーザーのエンドツーエンドのインターネット パフォーマンスの測定に重点を置いています。
+
+## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Internet Analyzer における測定データの処理方法
+
+Azure には[強力なセキュリティ プロセスがあり、広範囲のコンプライアンス標準を満たします](https://azure.microsoft.com/support/trust-center/)。 あなたとあなたが指名したチームだけがあなたのデータにアクセスできます。 Microsoft のスタッフには、特定の状況下でのみ、あなたに通知した上で限られたアクセスが与えられます。 これは、転送中および保存時に暗号化されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.openlocfilehash: 29725c302887448689f4aafd86f1f834d81c23ed
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/17/2019
+ms.openlocfilehash: f761cb1c4e895cd0960a0a07033e609acf9ef601
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973587"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158417"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の読み取りレプリカ
 
@@ -74,7 +74,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ## <a name="connect-to-a-replica"></a>レプリカへの接続
 
-作成されたレプリカでは、マスター サーバーのファイアウォール規則または VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。
+作成されたレプリカでは、マスター サーバーのファイアウォール規則または VNet サービス エンドポイントが継承されます。 その後、これらの規則はマスター サーバーから独立したものになります。
 
 レプリカの管理者アカウントは、マスター サーバーから継承されます。 マスター サーバー上のすべてのユーザー アカウントが、読み取りレプリカにレプリケートされます。 マスター サーバー上で使用可能なユーザー アカウントを使って読み取りレプリカにのみ接続できます。
 
@@ -126,6 +126,8 @@ Azure Database for MariaDB は、Azure Monitor に**レプリケーションの�
 
 > [!IMPORTANT]
 > マスター サーバー構成が新しい値に更新される前に、レプリカ構成をそれと同等以上の値に更新してください。 このアクションにより、レプリカがマスターのどのような変更にも追従できるようになります。
+
+レプリカが作成されるとき、ファイアウォール規則、仮想ネットワーク規則、パラメーターの設定が、マスター サーバーからレプリカに継承されます。 その後、レプリカの規則は独立したものなります。
 
 ### <a name="stopped-replicas"></a>停止されたレプリカ
 

@@ -1,5 +1,5 @@
 ---
-title: B2B コラボレーション ユーザーをロールに追加する - Azure Active Directory | Microsoft Docs
+title: B2B コラボレーション ユーザーをロールに追加する - Azure Active Directory
 description: Azure Active Directory でゲスト ユーザーをロールに追加します
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cb195fd3fbf668afe436d3247767d2cc998281a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 703e68994a9d156ccf3e74a5df4a2f4ee2f062cd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767582"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268548"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する
 

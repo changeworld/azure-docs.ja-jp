@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: c71893ec9eae844fb213114f6a3805815ff5894f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd92f5aedd1fbc51531730e6a7826322570cd1b1
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555452"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195017"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor でパフォーマンスの問題に関するアラートを設定する方法
 コンテナーに対する Azure Monitor は、Azure Container Instances にデプロイされているか、Azure Kubernetes Service (AKS) でホストされているマネージド Kubernetes クラスターにデプロイされている、コンテナー ワークロードのパフォーマンスを監視します。
@@ -308,4 +308,4 @@ InsightsMetrics
 ## <a name="next-steps"></a>次の手順
 
 - [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
-- Azure Monitor の詳細と、AKS クラスターの他の側面を監視する方法については、[Azure Kubernetes Service の正常性の表示](container-insights-analyze.md)に関するページを参照してください。
+- Azure Monitor と、Kubernetes クラスターの他の側面を監視する方法の詳細については、[Kubernetes クラスターのパフォーマンスの表示](container-insights-analyze.md)および [Kubernetes クラスターの正常性の表示](container-insights-health.md)に関するページをご覧ください。

@@ -12,12 +12,12 @@ ms.date: 07/19/2019
 ms.author: celested
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e993ad17a07ff741ff33073304ed774dcf30203d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2dcc2d6fc252f288f15e2583012798b4d0e9cee6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961653"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169437"
 ---
 # <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>ギャラリー以外のアプリケーションに SAML ベースのシングル サインオンを構成する
 
@@ -52,7 +52,7 @@ ms.locfileid: "73961653"
 
     | [基本的な SAML 構成] の設定 | SP-Initiated | idP-Initiated | 説明 |
     |:--|:--|:--|:--|
-    | **識別子 (エンティティ ID)** | 一部のアプリでは必須 | 一部のアプリでは必須 | アプリケーションを一意に識別します。 Azure AD から ID が SAML トークンの Audience パラメーターとしてアプリケーションに送信されます。 アプリケーションではこの ID を検証する必要があります。 また、この値はアプリケーションによって提供される SAML メタデータ内に Entity ID として表示されます。 "*この値は、アプリケーションから送信された **AuthnRequest** (SAML 要求) の **Issuer** 要素として見つけることができます。* " |
+    | **識別子 (エンティティ ID)** | 一部のアプリでは必須 | 一部のアプリでは必須 | アプリケーションを一意に識別します。 Azure AD から ID が SAML トークンの Audience パラメーターとしてアプリケーションに送信されます。 アプリケーションではこの ID を検証する必要があります。 また、この値はアプリケーションによって提供される SAML メタデータ内に Entity ID として表示されます。 "'https://<subdomain>.contoso.com' *この値は、アプリケーションから送信された **AuthnRequest** (SAML 要求) の **Issuer** 要素として見つけることができます。"* パターンを使用する URL を入力します。 |
     | **応答 URL** | 必須 | 必須 | アプリケーションが SAML トークンを受け取ることになっている場所を指定します。 応答 URL は Assertion Consumer Service (ACS) URL とも呼ばれています。 追加の応答 URL フィールドを使用して、複数の応答 URL を指定できます。 たとえば複数のサブドメインで、追加の応答 URL が必要となります。 またはテスト目的で、複数の応答 URL (ローカル ホストとパブリック URL) を一度に指定できます。 |
     | **サインオン URL** | 必須 | 指定しません | この URL をユーザーが開くと、サービス プロバイダーは、ユーザーの認証とサインインを行う Azure AD にそのユーザーをリダイレクトします。 Azure AD はその URL を使用して Office 365 または Azure AD アクセス パネルからアプリケーションを起動します。 何も入力されていない場合、ユーザーが Office 365、Azure AD アクセス パネル、または Azure AD SSO URL からアプリケーションを起動したとき、Azure AD により IdP-Initiated のサインオンが実行されます。|
     | **リレー状態** | 省略可能 | 省略可能 | 認証が完了した後にユーザーをリダイレクトする場所をアプリケーションに指示します。 通常、値はアプリケーションで有効な URL です。 ただし、一部のアプリケーションでは、このフィールドを異なる方法で使用します。 詳細については、アプリケーションのベンダーに問い合わせてください。

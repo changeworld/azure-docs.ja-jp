@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 668744121c41a6e4797bc335b2736c8b31d87a41
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ed13b5028341637d71dee95f38cc44cc91aa2376
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807940"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481437"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database と Azure SQL Data Warehouse の IP ファイアウォール規則
 
@@ -191,8 +191,10 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
-    -FirewallRuleName "AllowSome" -StartIpAddress "0.0.0.0" -EndIpAddress "0.0.0.0"
+    -FirewallRuleName "ContosoIPRange" -StartIpAddress "192.168.1.0" -EndIpAddress "192.168.1.255"
 ```
+> [!TIP]
+> $servername には、完全修飾 DNS 名ではなくサーバー名を指定します。たとえば、**mysqldbserver.database.windows.net** の代わりに **mysqldbserver** を指定します。
 
 > [!TIP]
 > クイックスタートのコンテキストでの PowerShell の例については、[DB の作成 - PowerShell](sql-database-powershell-samples.md) に関するページと [PowerShell を使用した単一データベースの作成と SQL Database のサーバー レベルの IP ファイアウォール規則の構成](scripts/sql-database-create-and-configure-database-powershell.md)に関するページを参照してください。
@@ -211,8 +213,10 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server $servername \
--n AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+-n ContosoIPRange --start-ip-address 192.168.1.0 --end-ip-address 192.168.1.255
 ```
+> [!TIP]
+> $servername には、完全修飾 DNS 名ではなくサーバー名を指定します。たとえば、**mysqldbserver.database.windows.net** の代わりに **mysqldbserver** を指定します。
 
 > [!TIP]
 > クイックスタートのコンテキストでの CLI の例については、[DB の作成 - Azure CLI](sql-database-cli-samples.md) に関するページと [Azure CLI を使用した単一データベースの作成と SQL Database の IP ファイアウォール規則の構成](scripts/sql-database-create-and-configure-database-cli.md)に関するページを参照してください。

@@ -1,25 +1,23 @@
 ---
-title: Azure DNS メトリックおよびアラート | Microsoft Docs
-description: Azure DNS メトリックとアラートについて説明します。
+title: メトリックとアラート - Azure DNS
+description: このラーニング パスでは、Azure DNS のメトリックとアラートについて説明します。
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jennoc
-editor: ''
-ms.assetid: ''
+author: asudbring
+manager: kumudD
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
-ms.author: victorh
-ms.openlocfilehash: a9d8bc172eb5f5e0e119a0bde56fb167f7a0c2b2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: dc4d7de3d235fcdaf4a7f681065ba6e2857eb2ce
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699148"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212402"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS メトリックとアラート
 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 この記事では、Azure DNS サービスのメトリックとアラートについて説明します。

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 27b180d8d95d7dad967b8ac2495a795ed70836b9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: b6dd91dda559f778eaa8f5a17b46a22020dd8373
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147233"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484045"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -41,6 +41,9 @@ Example:
 通常、ユーザーは、実行中のマイナー バージョンの最新の修正プログラムのリリースを実行するよう努める必要があります。たとえば、運用環境クラスターが *1.12.14* 上にあり、*1.12.15* が *1.12* シリーズ用に使用できる最新の使用可能な修正プログラムのバージョンである場合は、クラスターに完全にパッチが適用されサポートされていることを確認できるようになったらすぐに、*1.12.15* にアップグレードする必要があります。
 
 ## <a name="kubernetes-version-support-policy"></a>Kubernetes バージョン サポート ポリシー
+
+> [!NOTE]
+> 2019 年 12 月 9 日以降、AKS はサポートされている最新の (N) (Kubernetes の 2 つのバージョン) に移行されます。 この変更は、Kubernetes バージョンのサポートの上流ウィンドウに準拠し、最新かつ最もセキュリティで保護されたバージョンが使用されていることを確保するためのものです。 詳しくは、[こちらのアナウンス](https://azure.microsoft.com/updates/azure-kubernetes-service-will-be-retiring-support-for-kubernetes-versions-1-11-and-1-12/)をご覧ください。
 
 AKS では、Kubernetes の 4 つのマイナー バージョンがサポートされています。
 
@@ -112,10 +115,16 @@ AKS は "リリース済み" を、すべての SLO/サービス品質の測定�
 > [!NOTE]
 > マイナー バージョンが非推奨になるか削除されると、お客様には Kubernetes バージョンのリリースと非推奨が通知されます。ユーザーは、60 日間の間に、サポートされているリリースにアップグレードすることができます。 修正プログラムのリリースの場合、お客様は、30 日間の間にサポートされているリリースにアップグレードすることができます。
 
-通知は次の方法で送信されます。
+#### <a name="notification-channels-for-aks-changes"></a>AKS の変更についての通知チャネル
+
+AKS では、[GitHub](https://github.com/Azure/AKS/releases) のサービスでリリースされた新しい Kubernetes バージョン、サービスの変更、コンポーネントの更新をまとめた週単位のサービス更新プログラムをリリースします。
+
+これらの変更は、マネージド サービスの一部として提供される定期的なメンテナンスの一環としてすべてのお客様に継承されます。明示的なアップグレードが必要な方もいれば、アクションを必要としない方もいます。
+
+通知は次の方法でも送信されます。
 
 * [AKS リリース ノート](https://aka.ms/aks/releasenotes)
-* Azure portal の通知
+* Azure Portal の通知
 * [Azure 更新チャネル][azure-update-channel]
 
 ### <a name="policy-exceptions"></a>ポリシーの例外

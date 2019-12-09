@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: d8925f1c31b7a0c8f45e65e783077e8f5e2b0add
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 707fc9f073e37d60c6c6fca8e9a8392b2550da9f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103244"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229306"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
 オプションのシステム サービスである DNS サービスをクラスターで有効にし、DNS プロトコルを使用して他のサービスを検出できます。 
@@ -116,6 +116,8 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
 > [!NOTE]
 > DNS を無効から有効にアップグレードしたときに、Service Fabric Explorer に新しい状態が反映されない場合があります。 解決するには、Azure Resource Manager テンプレート内で UpgradePolicy を変更して、ノードを再起動します。 詳細については、[Service Fabric テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)に関するページを参照してください。
 
+> [!NOTE]
+> ローカル コンピューター上で開発するときに DNS サービスを有効にすると、一部の DNS 設定がオーバーライドされます。 インターネットへの接続で問題が発生する場合は、DNS の設定を確認してください。
 
 ## <a name="setting-the-dns-name-for-your-service"></a>サービスの DNS 名を設定する
 ApplicationManifest.xml ファイルで既定のサービスに対して宣言的に、または PowerShell コマンドを使用してサービスの DNS 名を設定できます。

@@ -9,26 +9,25 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: aa1cbd08bdf8d92653a8f30ae67ecd813e563999
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 138b84a9b7f54782fd6254304a3fdcf4dba83182
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467519"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221935"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>バージョンを使用してステージング アプリまたは運用環境アプリに影響を与えることなく編集とテストを行う
 
 バージョンを使用して、さまざまなモデルを構築および公開できます。 モデルに変更を加える前に、現在のアクティブなモデルをアプリの別の[バージョン](luis-concept-version.md)に複製することをお勧めします。 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
 バージョンを操作するには、 **[マイ アプリ]** ページで名前を選択してアプリを開き、上部のバーにある **[管理]** を選択し、左側のナビゲーションで **[バージョン]** を選択します。 
 
 バージョンの一覧には、公開されているバージョン、公開されている場所、現在アクティブであるバージョンが表示されます。 
 
-[![[管理] セクションの [バージョン] ページ](./media/luis-how-to-manage-versions/versions-import.png "[管理] セクションの [バージョン] ページ")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+> [!div class="mx-imgBorder"]
+> [![[管理] セクションの [バージョン] ページ](./media/luis-how-to-manage-versions/versions-import.png "[管理] セクションの [バージョン] ページ")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>バージョンを複製する
 
@@ -45,15 +44,18 @@ ms.locfileid: "73467519"
 
 ## <a name="set-active-version"></a>アクティブなバージョンを設定する
 
-一覧からバージョンを選択し、ツール バーから **[Make Active]\(アクティブにする\)** を選択します。 
+一覧からバージョンを選択し、ツール バーから **[アクティブにする]** を選択します。 
 
-[![[管理] セクションの [バージョン] ページ、バージョン アクションの作成](./media/luis-how-to-manage-versions/versions-other.png "[管理] セクションの [バージョン] ページ、バージョン アクションの作成")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+> [!div class="mx-imgBorder"]
+> [![[管理] セクションの [バージョン] ページ、バージョン アクションの作成](./media/luis-how-to-manage-versions/versions-other.png "[管理] セクションの [バージョン] ページ、バージョン アクションの作成")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>バージョンをインポートする
 
-1. ツール バーから **[Import version]\(バージョンのインポート\)** を選択します。 
+アプリケーションの `.json` または `.lu` バージョンをインポートできます。
 
-2. **[Import new version]\(新しいバージョンのインポート\)** ポップアップ ウィンドウで、新しい 10 文字のバージョン名を入力します。 JSON ファイルのバージョンが既にアプリに存在する場合、設定する必要があるのはバージョン ID のみです。
+1. ツール バーの **[インポート]** を選択し、形式を選択します。 
+
+2. **[Import new version]\(新しいバージョンのインポート\)** ポップアップ ウィンドウで、新しい 10 文字のバージョン名を入力します。 ファイルのバージョンが既にアプリに存在する場合は、バージョン ID のみを設定する必要があります。
 
     ![[管理] セクションの [バージョン] ページ、新しいバージョンのインポート](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 

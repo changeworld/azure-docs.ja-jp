@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.openlocfilehash: 7624f15e878e13a93b5b5f395ef9cf9af48c95e4
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 11/14/2019
+ms.openlocfilehash: 33b000d0ca5cdd4af2ed57c5db6e71ae5a1e4c58
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104513"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215839"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive クエリの最適化
 
@@ -21,7 +21,7 @@ Azure HDInsight には、Apache Hive クエリを実行できるいくつかの�
 
 たとえば、アドホックなインタラクティブ クエリ用に最適化するには、**インタラクティブ クエリ** クラスター タイプを選択します。 バッチ処理として使用される Hive クエリ用に最適化するには、Apache **Hadoop** クラスター タイプを選択します。 また、**Spark** や **HBase** といったクラスター タイプで Hive クエリを実行することもできます。 Hive クエリを実行するための各種 HDInsight クラスター タイプについて詳しくは、「[Azure HDInsight における Apache Hive と HiveQL](hadoop/hdinsight-use-hive.md)」をご覧ください。
 
-Hadoop クラスター タイプの HDInsight クラスターは、既定ではパフォーマンス用に最適化されていません。 この記事では、クエリに適用できる最も一般的な Hive パフォーマンスの最適化方法について説明します。
+クラスターの種類が Hadoop である HDInsight クラスターは、既定ではパフォーマンス用に最適化されていません。 この記事では、クエリに適用できる最も一般的な Hive パフォーマンスの最適化方法について説明します。
 
 ## <a name="scale-out-worker-nodes"></a>ワーカー ノードのスケール アウト
 
@@ -29,7 +29,7 @@ HDInsight クラスター内のノードのワーカーの数を増やすこと�
 
 * クラスターの作成時に、Azure portal、Azure PowerShell またはコマンド ライン インターフェイスを使用してワーカー ノードの数を指定できます。  詳細については、[HDInsight クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。 次のスクリーンショットは、Azure Portal 上に表示されたワーカー ノード構成を示しています。
   
-    ![Azure portal のクラスター サイズ ノード](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-1.png "scaleout_1")
+    ![Azure portal のクラスター サイズ ノード](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration-pricing-hadoop.png "scaleout_1")
 
 * 作成後にワーカー ノードの数を編集して、クラスターを再作成せずにスケールアウトすることもできます。
 
@@ -46,7 +46,7 @@ HDInsight のスケーリングについて詳しくは、[HDInsight クラス�
 Tez はより高速です。それは次の理由によります。
 
 * **MapReduce エンジンで、有向非巡回グラフ (DAG) を 1 つのジョブとして実行します**。 DAG では、mapper の各セットの後に 1 セットの reducer が続く必要があります。 これにより、複数の MapReduce ジョブが各 Hive クエリでスピンオフされます。 Tez にはこのような制約はありません。複雑な DAG を 1 つのジョブとして処理することができるため、ジョブのスタートアップのオーバーヘッドが最小限に抑えられます。
-* **不要な書き込みを回避できます**。 MapReduce エンジンでは、同じ Hive クエリを 処理するために複数のジョブが使用されます。 各 MapReduce ジョブの出力は、中間データとして HDFS に書き込まれます。 Tez は各 Hive クエリのジョブの数を最小限に抑えるので、不要な書き込みを回避することができます。
+* **不要な書き込みを回避できます**。 MapReduce エンジンでは、同じ Hive クエリを 処理するために複数のジョブが使用されます。 各 MapReduce ジョブの出力は、中間データとして HDFS に書き込まれます。 Tez によって各 Hive クエリのジョブの数が最小限に抑えられるので、不要な書き込みを回避することができます。
 * **起動時の遅延を最小限に抑えられます**。 Tez は、開始に必要な mapper の数を削減することによって、また全体的な最適化を向上させることによって、起動時の遅延を最小限に抑えることができます。
 * **コンテナーを再利用できます**。 コンテナーの起動による待ち時間を軽減するため、可能なときは常にTez はコンテナーを再利用できます。
 * **継続的な最適化手法を使用します**。 これまで、最適化はコンパイル フェーズで行われていました。 しかし最適化を向上させるための入力に関する詳細は、実行時に入手できます。 Tez は、実行時フェーズでプランをさらに最適化する継続的な最適化手法を使用します。
@@ -80,7 +80,7 @@ CREATE TABLE lineitem_part
       (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
       L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
       L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
-      L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING, 
+      L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING,
       L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT STRING)
 PARTITIONED BY(L_SHIPDATE STRING)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
@@ -93,12 +93,12 @@ STORED AS TEXTFILE;
   
    ```sql
    INSERT OVERWRITE TABLE lineitem_part
-   PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
-   SELECT * FROM lineitem 
-   WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
+   PARTITION (L_SHIPDATE = '5/23/1996 12:00:00 AM')
+   SELECT * FROM lineitem
+   WHERE lineitem.L_SHIPDATE = '5/23/1996 12:00:00 AM'
 
-   ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
-   LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
+   ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = '5/23/1996 12:00:00 AM')
+   LOCATION 'wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
 
 * **動的パーティション分割** では、Hive に自動的にパーティションを作成させます。 ステージング テーブルからパーティショニング テーブルを既に作成しているので、あとはパーティション テーブルにデータを挿入するだけです。
@@ -108,19 +108,20 @@ STORED AS TEXTFILE;
    SET hive.exec.dynamic.partition.mode = nonstrict;
    INSERT INTO TABLE lineitem_part
    PARTITION (L_SHIPDATE)
-   SELECT L_ORDERKEY as L_ORDERKEY, L_PARTKEY as L_PARTKEY , 
+   SELECT L_ORDERKEY as L_ORDERKEY, L_PARTKEY as L_PARTKEY,
        L_SUPPKEY as L_SUPPKEY, L_LINENUMBER as L_LINENUMBER,
        L_QUANTITY as L_QUANTITY, L_EXTENDEDPRICE as L_EXTENDEDPRICE,
        L_DISCOUNT as L_DISCOUNT, L_TAX as L_TAX, L_RETURNFLAG as L_RETURNFLAG,
        L_LINESTATUS as L_LINESTATUS, L_SHIPDATE as L_SHIPDATE_PS,
        L_COMMITDATE as L_COMMITDATE, L_RECEIPTDATE as L_RECEIPTDATE,
-       L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as L_SHIPMODE, 
+       L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as L_SHIPMODE,
        L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
    ```
 
 詳細については、「[Partitioned Tables (パーティション テーブル)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables)」を参照してください。
 
 ## <a name="use-the-orcfile-format"></a>ORCFile 形式の使用
+
 Hive は、さまざまなファイル形式をサポートしています。 例:
 
 * **テキスト**: 既定のファイル形式で、ほとんどのシナリオで使用できます。
@@ -151,11 +152,11 @@ STORED AS ORC;
 
 ```sql
 INSERT INTO TABLE lineitem_orc
-SELECT L_ORDERKEY as L_ORDERKEY, 
-         L_PARTKEY as L_PARTKEY , 
+SELECT L_ORDERKEY as L_ORDERKEY,
+         L_PARTKEY as L_PARTKEY ,
          L_SUPPKEY as L_SUPPKEY,
          L_LINENUMBER as L_LINENUMBER,
-         L_QUANTITY as L_QUANTITY, 
+         L_QUANTITY as L_QUANTITY,
          L_EXTENDEDPRICE as L_EXTENDEDPRICE,
          L_DISCOUNT as L_DISCOUNT,
          L_TAX as L_TAX,
@@ -163,7 +164,7 @@ SELECT L_ORDERKEY as L_ORDERKEY,
          L_LINESTATUS as L_LINESTATUS,
          L_SHIPDATE as L_SHIPDATE,
          L_COMMITDATE as L_COMMITDATE,
-         L_RECEIPTDATE as L_RECEIPTDATE, 
+         L_RECEIPTDATE as L_RECEIPTDATE,
          L_SHIPINSTRUCT as L_SHIPINSTRUCT,
          L_SHIPMODE as L_SHIPMODE,
          L_COMMENT as L_COMMENT

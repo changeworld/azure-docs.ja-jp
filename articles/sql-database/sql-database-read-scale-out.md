@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: 1f47b01c4a9227d0e2ee45b17645b2ae97e4ba3d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f111b19eb07c218a9f3250ef3ffdb8a97cf07542
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821223"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420733"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する
 
@@ -35,7 +35,7 @@ ms.locfileid: "73821223"
 SQL 接続文字列の `ApplicationIntent` 設定に関係なく、アプリケーションがプライマリ レプリカに確実に接続されるようにする場合は、データベースを作成するとき、またはその構成を変更するときに、読み取りスケールアウトを明示的に無効にする必要があります。 たとえばデータベースを Standard または General Purpose レベルから Premium、Business Critical、または Hyperscale レベルにアップグレードするときに、すべての接続が引き続きプライマリ レプリカに対して行われるようにするには、読み取りスケールアウトを無効にします。無効にする方法の詳細については、「[読み取りスケールアウトの有効化と無効化](#enable-and-disable-read-scale-out)」を参照してください。
 
 > [!NOTE]
-> 読み取り専用レプリカでは、クエリ データ ストア、拡張イベント、SQL Profiler、および監査の各機能はサポートされていません。 
+> 読み取り専用レプリカでは、クエリ データ ストア、拡張イベント、SQL Profiler、および監査の各機能はサポートされていません。
 
 ## <a name="data-consistency"></a>データの一貫性
 
@@ -50,13 +50,13 @@ SQL 接続文字列の `ApplicationIntent` 設定に関係なく、アプリケ�
 
 たとえば、次の接続文字列はクライアントを読み取り専用レプリカに接続します (山かっこ内の項目は環境内の適切な値に置き換え、山かっこは削除します)。
 
-```SQL
+```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
 次の接続文字列はどちらもクライアントを読み取り/書き込みレプリカに接続します (山かっこ内の項目は環境内の適切な値に置き換え、山かっこは削除します)。
 
-```SQL
+```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadWrite;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
@@ -66,7 +66,7 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>
 
 次のクエリを実行することにより、読み取り専用レプリカに接続しているかどうかを確認することができます。 読み取り専用レプリカに接続している場合は、READ_ONLY が返されます。
 
-```SQL
+```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
@@ -80,10 +80,9 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 > [!NOTE]
 > 論理マスター データベース内の DMV `sys.resource_stats` は、プライマリ レプリカの CPU 使用率とストレージ データを返します。
 
-
 ## <a name="enable-and-disable-read-scale-out"></a>読み取りスケールアウトの有効化と無効化
 
-Premium、Business Critical、および Hyperscale サービス レベルでは、読み取りスケールアウトは既定で有効になっています。 Basic、Standard、または General Purpose サービス レベルで読み取りスケールアウトを有効にすることはできません。 レプリカ数 0 で構成された Hyperscale データベースでは、読み取りスケールアウトは自動的に無効になります。 
+Premium、Business Critical、および Hyperscale サービス レベルでは、読み取りスケールアウトは既定で有効になっています。 Basic、Standard、または General Purpose サービス レベルで読み取りスケールアウトを有効にすることはできません。 レプリカ数 0 で構成された Hyperscale データベースでは、読み取りスケールアウトは自動的に無効になります。
 
 Premium または Business Critical サービス レベルの単一データベースとエラスティック プール データベースの読み取りスケールアウトは、次の方法で無効にして再び有効にすることができます。
 
@@ -92,29 +91,33 @@ Premium または Business Critical サービス レベルの単一データベ�
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-読み取りスケールアウトの設定は、 **[構成]** データベース ブレードで管理できます。 
+読み取りスケールアウトの設定は、 **[構成]** データベース ブレードで管理できます。
 
 ### <a name="powershell"></a>PowerShell
 
+> [!IMPORTANT]
+> PowerShell Azure Resource Manager (RM) モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールは、少なくとも 2020 年 12 月までは引き続きバグ修正を受け取ることができます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
+
 Azure PowerShell で読み取りスケールアウトを管理するには、2016 年 12 月以降のリリースの Azure PowerShell が必要です。 最新の PowerShell リリースについては、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) に関するページを参照してください。
 
-Azure PowerShell で [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) コマンドレットを呼び出し、`-ReadScale` パラメーターに目的の値 (`Enabled` または `Disabled`) を渡すことで、読み取りスケールアウトを無効にし、再び有効にできます。 
+Azure PowerShell で [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) コマンドレットを呼び出し、`-ReadScale` パラメーターに目的の値 (`Enabled` または `Disabled`) を渡すことで、読み取りスケールアウトを無効にし、再び有効にできます。
 
 既存のデータベースの読み取りスケールアウトを無効にするには (山かっこ内の項目を自分の環境用の適切な値に置き換え、山かっこを削除してください):
 
 ```powershell
-Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled
+Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled
 ```
+
 新しいデータベースの読み取りスケールアウトを無効にするには (山かっこ内の項目を自分の環境用の適切な値に置き換え、山かっこを削除してください):
 
 ```powershell
-New-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled -Edition Premium
+New-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled -Edition Premium
 ```
 
 既存のデータベースの読み取りスケールアウトを再び有効にするには (山かっこ内の項目を自分の環境用の適切な値に置き換え、山かっこを削除してください):
 
 ```powershell
-Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled
+Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
 ```
 
 ### <a name="rest-api"></a>REST API
@@ -124,10 +127,8 @@ Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -D
 ```rest
 Method: PUT
 URL: https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{GroupName}/providers/Microsoft.Sql/servers/{ServerName}/databases/{DatabaseName}?api-version= 2014-04-01-preview
-Body:
-{
-   "properties":
-   {
+Body: {
+   "properties": {
       "readScale":"Disabled"
    }
 }
@@ -137,7 +138,7 @@ Body:
 
 ## <a name="using-tempdb-on-read-only-replica"></a>読み取り専用レプリカでの TempDB の使用
 
-TempDB データベースは読み取り専用レプリカにはレプリケートされません。 各レプリカには、レプリカの作成時に作成された独自のバージョンの TempDB データベースがあります。 これにより、TempDB が更新可能となり、クエリの実行時に変更できるようになります。 読み取り専用ワークロードが TempDB オブジェクトの使用に依存している場合は、これらのオブジェクトをクエリ スクリプトの一部として作成する必要があります。 
+TempDB データベースは読み取り専用レプリカにはレプリケートされません。 各レプリカには、レプリカの作成時に作成された独自のバージョンの TempDB データベースがあります。 これにより、TempDB が更新可能となり、クエリの実行時に変更できるようになります。 読み取り専用ワークロードが TempDB オブジェクトの使用に依存している場合は、これらのオブジェクトをクエリ スクリプトの一部として作成する必要があります。
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>geo レプリケートされたデータベースで読み取りスケールアウトを使用する
 

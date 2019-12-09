@@ -1,18 +1,14 @@
 ---
-title: Azure リソースの複数インスタンスのデプロイ | Microsoft Docs
+title: リソースの複数のインスタンスをデプロイする
 description: Azure リソース マネージャー テンプレートで copy 操作と配列を使用して、リソースをデプロイする際に複数回反復処理する方法について説明します。
-services: azure-resource-manager
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3ee4b47dd6cb9043a4100d114c483d1feadbde38
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675100"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150792"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソース、プロパティ、または変数の反復
 

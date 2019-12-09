@@ -68,6 +68,8 @@
           href: devtest-lab-configure-cost-management.md
         - name: 自動シャットダウン通知の送信
           href: devtest-lab-auto-shutdown.md
+        - name: ラボ仮想マシンの自動スタートアップの設定
+          href: devtest-lab-auto-startup-vm.md
         - name: ラボのスケーリング
           href: devtest-lab-scale-lab.md
         - name: 仮想マシンのベースの管理
@@ -193,6 +195,8 @@
           href: add-artifact-repository.md
         - name: 必須アーティファクトの指定
           href: devtest-lab-mandatory-artifacts.md
+        - name: アーティファクトの適用に関する問題のトラブルシューティング
+          href: devtest-lab-troubleshoot-apply-artifacts.md
     - name: CI/CD との統合
       items:
         - name: ラボを Azure Pipelines CI/CD パイプラインに統合する

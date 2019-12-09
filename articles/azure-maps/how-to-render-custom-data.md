@@ -1,6 +1,6 @@
 ---
 title: Azure Maps 内のラスター マップ上にカスタム データをレンダリングする方法 | Microsoft Docs
-description: Azure Maps 内のラスター マップ上にカスタム データをレンダリングします。
+description: この記事では、Azure Maps の静的イメージ サービスを使用して、ラスター マップ上にカスタム データをレンダリングする方法について説明します。
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6619fd842f225a6d362a4b308dde6e35b43677c9
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915752"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559989"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>ラスター マップ上にカスタム データをレンダリングする
 
@@ -48,7 +48,7 @@ Azure Maps アカウント S0 レベルでは、`pins` パラメーターのイ�
 3. [builder]\(ビルダー\) タブで GET HTTP メソッドを選択し、次の URL を入力して GET 要求を作成します。
 
     ```HTTP
-    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttp%3A%2F%2Fazuremapscodesamples.azurewebsites.net%2FCommon%2Fimages%2Fpushpins%2Fylw-pushpin.png
+    https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.98,%2040.77&pins=custom%7Cla15+50%7Cls12%7Clc003b61%7C%7C%27CentralPark%27-73.9657974+40.781971%7C%7Chttps%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FAzureMapsCodeSamples%2Fmaster%2FAzureMapsCodeSamples%2FCommon%2Fimages%2Ficons%2Fylw-pushpin.png
     ```
     結果的に生成される画像:
 

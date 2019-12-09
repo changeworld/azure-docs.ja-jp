@@ -11,31 +11,33 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: f5eaed807e69dcc1a0b7ad426bab91abd2f8309a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283b4004f34372104eb083496400772884f5965e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827264"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420381"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>エラスティック ジョブの作成、構成、および管理
 
-この記事では、エラスティック ジョブを作成、構成、および管理する方法を学びます。 エラスティック ジョブを使用したことがない場合は、[Azure SQL Database でのジョブ自動化の概念](sql-database-job-automation-overview.md)を参照してください。
+この記事では、エラスティック ジョブを作成、構成、および管理する方法を学びます。
+
+エラスティック ジョブを使用したことがない場合は、[Azure SQL Database でのジョブ自動化の概念](sql-database-job-automation-overview.md)を参照してください。
 
 ## <a name="create-and-configure-the-agent"></a>エージェントの作成と構成
 
 1. S0 以上で、中身が空の SQL データベースを作成または特定します。 このデータベースが、エラスティック ジョブ エージェントの作成時に "*ジョブ データベース*" として使用されます。
-2. [ポータル](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent)または [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) を使ってエラスティック ジョブ エージェントを作成します。
+2. [ポータル](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent)または [PowerShell](elastic-jobs-powershell.md#create-the-elastic-job-agent) を使用してエラスティック ジョブ エージェントを作成します。
 
    ![エラスティック ジョブ エージェントの作成中](media/elastic-jobs-overview/create-elastic-job-agent.png)
 
 ## <a name="create-run-and-manage-jobs"></a>ジョブの作成、実行、および管理
 
-1. [PowerShell](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets) または [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) を使用して、"*ジョブ データベース*" にジョブ実行のための資格情報を作成します。
-2. [PowerShell](elastic-jobs-powershell.md#define-the-target-databases-you-want-to-run-the-job-against) または [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) を使用して、ターゲット グループ (ジョブの実行の対象とするデータベース) を定義します。
-3. ジョブを実行するデータベースのそれぞれに、ジョブ エージェントの資格情報を作成 [(グループ内の各データベースにユーザー (またはロール) を追加)](sql-database-control-access.md) します。 例については、[PowerShell のチュートリアル](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets)を参照してください。
-4. [PowerShell](elastic-jobs-powershell.md#create-a-job) または [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) を使用してジョブを作成します。
-5. [PowerShell](elastic-jobs-powershell.md#create-a-job-step) または [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) を使用してジョブ ステップを追加します。
+1. [PowerShell](elastic-jobs-powershell.md) または [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) を使用して、"*ジョブ データベース*" にジョブ実行のための資格情報を作成します。
+2. [PowerShell](elastic-jobs-powershell.md) または [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) を使用して、ターゲット グループ (ジョブの実行の対象とするデータベース) を定義します。
+3. ジョブを実行するデータベースのそれぞれに、ジョブ エージェントの資格情報を作成 [(グループ内の各データベースにユーザー (またはロール) を追加)](sql-database-control-access.md) します。 例については、[PowerShell のチュートリアル](elastic-jobs-powershell.md)を参照してください。
+4. [PowerShell](elastic-jobs-powershell.md) または [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) を使用してジョブを作成します。
+5. [PowerShell](elastic-jobs-powershell.md) または [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) を使用してジョブ ステップを追加します。
 6. [PowerShell](elastic-jobs-powershell.md#run-the-job) または [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job) を使用してジョブを実行します。
 7. ポータル、[PowerShell](elastic-jobs-powershell.md#monitor-status-of-job-executions)、または[T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status) を使用して、ジョブの実行状態を監視します。
 

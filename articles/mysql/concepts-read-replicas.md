@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.openlocfilehash: 6ad71cecfd088a92bdd41ae13cb530c286ebea4c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/17/2019
+ms.openlocfilehash: 66864870f29729e54ad06aef1208641f673c0612
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970393"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158318"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -69,7 +69,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ## <a name="connect-to-a-replica"></a>レプリカへの接続
 
-作成されたレプリカでは、マスター サーバーのファイアウォール規則または VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。
+レプリカでは、作成時にマスター サーバーのファイアウォール規則または VNet サービス エンドポイントが継承されます。 その後、これらのルールはマスター サーバーからは独立します。
 
 レプリカの管理者アカウントは、マスター サーバーから継承されます。 マスター サーバー上のすべてのユーザー アカウントが、読み取りレプリカにレプリケートされます。 マスター サーバー上で使用可能なユーザー アカウントを使って読み取りレプリカにのみ接続できます。
 
@@ -121,6 +121,8 @@ Azure Database for MySQL は、Azure Monitor に **[Replication lag in seconds]\
 
 > [!IMPORTANT]
 > マスター サーバー構成が新しい値に更新される前に、レプリカ構成をそれと同等以上の値に更新してください。 このアクションにより、レプリカがマスターのどのような変更にも追従できるようになります。
+
+ファイアウォール規則、仮想ネットワーク規則、およびパラメーター設定は、レプリカの作成時にマスター サーバーからレプリカに継承されます。 その後、レプリカの規則は独立しています。
 
 ### <a name="stopped-replicas"></a>停止されたレプリカ
 

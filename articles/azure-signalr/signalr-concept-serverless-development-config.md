@@ -1,17 +1,17 @@
 ---
-title: Azure Functions の SignalR Service アプリケーションを開発し構成する
+title: Azure Functions アプリの開発および構成 - Azure SignalR
 description: Azure Functions と Azure SignalR Service を使用してサーバーレスのリアルタイム アプリケーションを開発し構成する方法の詳細
 author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: be77704f562a1e05485e6f3704dff265635b1dc2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882303"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786777"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Service を使用した Azure Functions の開発と構成
 
@@ -40,7 +40,7 @@ Azure Functions および Azure SignalR Service で構築されたサーバー�
 
 HTTP によってトリガーされる Azure 関数と *SignalRConnectionInfo* 入力バインドを使用して、接続情報オブジェクトを生成します。 関数には、`/negotiate` で終わる HTTP ルートが必要です。
 
-negotiate 関数を作成する方法の詳細については、[*SignalRConnectionInfo* 入力バインドのリファレンス](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding)に関するページを参照してください。
+negotiate 関数を作成する方法の詳細については、[*SignalRConnectionInfo* 入力バインドのリファレンス](../azure-functions/functions-bindings-signalr-service.md#input)に関するページを参照してください。
 
 認証トークンを作成する方法の詳細については、[App Service 認証の使用](#using-app-service-authentication)に関するページを参照してください。
 
@@ -50,7 +50,7 @@ negotiate 関数を作成する方法の詳細については、[*SignalRConnect
 
 ユーザーは、1 つ以上のグループに追加できます。 *SignalR* 出力バインドを使用して、グループに対してユーザーを追加または削除することもできます。
 
-詳細については、[*SignalR* 出力バインド リファレンス](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding)に関するページを参照してください。
+詳細については、[*SignalR* 出力バインド リファレンス](../azure-functions/functions-bindings-signalr-service.md#output)に関するページを参照してください。
 
 ### <a name="signalr-hubs"></a>SignalR Hubs
 

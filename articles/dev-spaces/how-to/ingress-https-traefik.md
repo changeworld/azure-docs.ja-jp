@@ -1,20 +1,16 @@
 ---
 title: カスタム traefik イングレス コントローラーの使用と HTTPS の構成
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 08/13/2019
 ms.topic: conceptual
 description: Azure Dev Spaces をカスタム traefik イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: c015fe8e7108f07d66d2464c4f8b6287e8f54446
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8ddaa7b3e982cb85428a7faef20b59525a175778
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582317"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482539"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>カスタム traefik イングレス コントローラーの使用と HTTPS の構成
 
@@ -26,7 +22,7 @@ ms.locfileid: "73582317"
 * [Azure CLI がインストールされていること][az-cli]。
 * [Azure Dev Spaces が有効になっている Azure Kubernetes Service (AKS) クラスター][qs-cli]。
 * [kubectl][kubectl] がインストールされていること。
-* [Helm 2.13 以上がインストールされていること][helm-installed]。
+* [Helm 2.13 から 2.16 がインストールされていること][helm-installed]。
 * [カスタム ドメイン][custom-domain]の [DNS ゾーン][dns-zone]が、お使いの AKS クラスターと同じリソース グループにあること。
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>カスタム traefik イングレス コントローラーの構成
@@ -288,7 +284,7 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
-[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [helpers-js]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/pages/helpers.js#L7
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f20c3c6d6821b5a8bbdb74101095431f6f7f18f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad15342e6d35a5c6101beb1ddc09d4ce1f2089d5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511903"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167567"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C のカスタム ポリシーで検証技術プロファイルを定義する
 
@@ -38,6 +38,9 @@ ms.locfileid: "66511903"
 検証技術プロファイルは、**ValidationTechnicalProfile** 要素で定義されている前提条件に基づいて、条件付きで実行できます。 たとえば、特定の要求が存在するかどうか、要求が特定の値と等しいかどうかなどを確認できます。
 
 セルフアサート技術プロファイルでは、その出力要求の一部またはすべてを検証するために使用する検証技術プロファイルを定義できます。 参照先の技術プロファイルのすべての入力要求は、参照元の検証技術プロファイルの出力要求に表示する必要があります。
+
+> [!NOTE]
+> セルフアサート技術プロファイルでのみ、検証技術プロファイルを使用できます。 セルフアサートではない技術プロファイルからの出力要求を検証する必要がある場合、ユーザー体験で追加のオーケストレーションを使用し、検証を受け持つ技術プロファイルに対応することを検討してください。    
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 

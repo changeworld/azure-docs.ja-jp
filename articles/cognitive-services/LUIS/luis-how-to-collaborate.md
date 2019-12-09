@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 15c7c6664b0c17d02f1f4e9120c9509fda21e0f4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 96aa7517a3418ab30b0b6a1736eea950ecf4a731
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467530"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533802"
 ---
 # <a name="add-contributors-to-your-app"></a>アプリに共同作成者を追加する
 
 アプリの所有者は、アプリに共同作成者を追加できます。 これらの共同作業者は、アプリのモデル作成、トレーニング、および発行が可能です。 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -56,8 +54,6 @@ LUIS オーサリング エクスペリエンスが LUIS ポータルの **[管�
 1. 右上のメニューから **[管理]** を選択してから、左側のメニューで **[コラボレーター]** を選択します。
 
 1. ツールバーから **[Add Collaborator]\(コラボレーターの追加)** を選択します。
-
-    [![コラボレーターを追加する](./media/luis-how-to-collaborate/add-collaborator.png "コラボレーターの追加")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
 
 1. コラボレーターが LUIS ポータルにサインインするために使用するメール アドレスを入力します。
 
@@ -93,7 +89,7 @@ LUIS では、Azure Active Directory (Azure AD) の標準的な同意フロー�
 
 テナント管理者が、特定のユーザーのみに LUIS を使わせたい場合は、いくつかの可能性のあるソリューションがあります。
 * "管理者の同意" を付与します (Azure AD のすべてのユーザーに同意する) が、エンタープライズ アプリケーションのプロパティの下の [ユーザーの割り当てが必要ですか] を [はい] に設定し、最後に目的のユーザーのみをアプリケーションに割り当て/追加します。 この方法では、管理者はアプリに "管理者の同意" を与えますが、それにアクセスできるユーザーを制御できます。
-* 2 つ目のソリューションは、[Azure AD Graph API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) を使用して、特定の各ユーザーに同意を与えることです。 
+* 2 つ目の解決策は、[Azure AD の ID を使用して Microsoft Graph で管理 API にアクセス](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview)し、特定のユーザーそれぞれに同意することです。 
 
 Azure Active Directory ユーザーと同意の詳細を確認します。 
 * [ご利用のアプリを特定のユーザー セットに制限する](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md)
