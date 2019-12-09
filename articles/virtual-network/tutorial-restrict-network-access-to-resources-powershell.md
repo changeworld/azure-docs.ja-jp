@@ -1,10 +1,10 @@
 ---
-title: PaaS リソースへのネットワーク アクセスを制限する - Azure PowerShell | Microsoft Docs
+title: PaaS リソースへのネットワーク アクセスを制限する - Azure PowerShell
 description: この記事では、Azure PowerShell を使って仮想ネットワーク サービス エンドポイントで Azure Storage、Azure SQL Database などの Azure リソースへのアクセスを制限する方法について説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b76256ef70b85df0c504427179518d175f08b645
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d0cf65bb39dbda2b7451c50629ff8949c5507cb
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66727672"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185537"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>PowerShell を使用して仮想ネットワーク サービス エンドポイントで PaaS リソースへのネットワーク アクセスを制限する
 
@@ -364,7 +364,7 @@ Get-AzStorageFile `
   -Context $storageContext
 ```
 
-アクセスが拒否され、*Get-AzStorageFile :リモート サーバーからエラーが返される:(403) 禁止。HTTP 状態コード:403 -HTTP エラー メッセージ:"This request is not authorized to perform this operation (この要求には、この操作を実行する権限がありません)* " というエラーが発生します。これは、使っているコンピューターが *MyVirtualNetwork* 仮想ネットワークの *Private* サブネットにないためです。
+アクセスが拒否され、*Get-AzStorageFile :リモート サーバーがエラー「(403) 許可されていません」を返しました。HTTP 状態コード:403 -HTTP エラー メッセージ:"This request is not authorized to perform this operation (この要求には、この操作を実行する権限がありません)* " というエラーが発生します。これは、使っているコンピューターが *MyVirtualNetwork* 仮想ネットワークの *Private* サブネットにないためです。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

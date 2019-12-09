@@ -1,6 +1,7 @@
 ---
-title: Azure Media Services を使用したビデオおよびオーディオ ファイルの分析 | Microsoft Docs
-description: Azure Media Services を使用すると、AudioAnalyzerPreset と VideoAnalyzerPreset を使用して、音声と画像のコンテンツを分析できます。
+title: ビデオ ファイルとオーディオ ファイルを分析する
+titleSuffix: Azure Media Services
+description: Azure Media Services の AudioAnalyzerPreset と VideoAnalyzerPreset を使用して、オーディオ コンテンツとビデオ コンテンツを分析する方法を説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,18 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 09/21/2019
 ms.author: juliako
-ms.openlocfilehash: bc4be8eaafe805e5d9a985b005efe80bc4af1d21
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 23d546d6adcdb91b4ef4702b81fe77536fe9f3d3
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71177998"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186272"
 ---
-# <a name="analyzing-video-and-audio-files"></a>ビデオおよびオーディオ ファイルの分析
+# <a name="analyze-video-and-audio-files-with-azure-media-services"></a>Azure Media Services を使用してビデオ ファイルとオーディオ ファイルを分析する
 
-Azure Media Services v3 では、Video Indexer と Media Services v3 アナライザー プリセットを使用して、オーディオおよびビデオ ファイルから分析情報を抽出することもできます (この記事で説明します)。 より詳細な分析情報が必要な場合は、Video Indexer を直接使用します。 どのような場合に Video Indexer やMedia Services アナライザー プリセットを使用するかについて詳しくは、[比較のドキュメント](../video-indexer/compare-video-indexer-with-media-services-presets.md)をご覧ください。
+Azure Media Services v3 を使うと、Video Indexer でビデオ ファイルとオーディオ ファイルから分析情報を抽出できます。 この記事では、これらの分析情報の抽出に使用される Media Services v3 アナライザーのプリセットについて説明します。 より詳細な分析情報が必要な場合は、Video Indexer を直接使用します。 どのような場合に Video Indexer や Media Services アナライザー プリセットを使用するかについて詳しくは、[比較のドキュメント](../video-indexer/compare-video-indexer-with-media-services-presets.md)をご覧ください。
 
-Media Services v3 プリセットを使用してコンテンツを分析するには、**Transform** を作成し、次のいずれかのプリセットを使用する **Job** を送信します ([VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) または **AudioAnalyzerPreset**)。 **VideoAnalyzerPreset** を使用する方法については、[Azure Media Services を使用してビデオを分析する方法に関するチュートリアル](analyze-videos-tutorial-with-api.md)を参照してください。
+Media Services v3 プリセットを使用してコンテンツを分析するには、**Transform** を作成し、次のいずれかのプリセットを使用する **Job** を送信します ([VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset) または **AudioAnalyzerPreset**)。 **VideoAnalyzerPreset** の使用方法がわかるチュートリアルについては、[Azure Media Services を使用したビデオの分析](analyze-videos-tutorial-with-api.md)に関する記事をご覧ください。
 
 > [!NOTE]
 > ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。 詳細については、[メディア処理のスケーリング](media-reserved-units-cli-how-to.md)に関するページを参照してください。
@@ -33,32 +34,32 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 |**プリセット名**|**シナリオ**|**詳細**|
 |---|---|---|
-|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|オーディオの分析|このプリセットは、音声の文字起こしなど、事前定義された一連の AI ベースの分析操作を適用します。 現在、プリセットは、1 つの言語での音声を含む単一オーディオ トラックを使用したコンテンツ処理をサポートしています。 BCP-47 形式の "language tag-region" を使用して、入力のオーディオ ペイロードの言語を指定できます。 サポートされる言語は、英語 ("en-US" および "en-GB")、スペイン語 ("es-ES" および "es-MX")、フランス語 ("fr-FR")、イタリア語 ("it-IT")、日本語 ("ja-JP")、ポルトガル語 ("pt-BR")、中国語 ("zh-CN")、ドイツ語 ("de-DE")、アラビア語 ("ar-EG")、ロシア語 ("ru-RU")、ヒンディー語 ("hi-IN")、韓国語 ("ko-KR") です。<br/><br/> 言語が指定されていないか、null 値に設定されている場合、自動言語検出は、最初に検出された言語を選択し、ファイルの実行中、選択された言語で処理を行います。 自動言語検出機能では、現在、英語、中国語、フランス語、ドイツ語、イタリア語、日本語、スペイン語、ロシア語、およびポルトガル語がサポートされています。 現在、最初の言語が検出された後に複数の言語を動的に切り替えることはサポートされていません。 自動言語検出機能は、はっきりと音声が認識できる録音において最も効果的に機能します。 自動言語検出で言語を認識できなかった場合、文字起こしは英語にフォールバックされます。|
+|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|オーディオの分析|このプリセットは、音声の文字起こしなど、事前定義された一連の AI ベースの分析操作を適用します。 現在、プリセットは、1 つの言語での音声を含む単一オーディオ トラックを使用したコンテンツ処理をサポートしています。 BCP-47 形式の "language tag-region" を使用して、入力のオーディオ ペイロードの言語を指定できます。 サポートされる言語は、英語 ("en-US" および "en-GB")、スペイン語 ("es-ES" および "es-MX")、フランス語 ("fr-FR")、イタリア語 ("it-IT")、日本語 ("ja-JP")、ポルトガル語 ("pt-BR")、中国語 ("zh-CN")、ドイツ語 ("de-DE")、アラビア語 ("ar-EG" と "ar-SY")、ロシア語 ("ru-RU")、ヒンディー語 ("hi-IN")、韓国語 ("ko-KR") です。<br/><br/> 言語が指定されていない場合、または null 値に設定されている場合、自動言語検出では、最初に検出された言語が選択されて、ファイルの期間を通して選択された言語が使い続けられます。 自動言語検出機能では、現在、英語、中国語、フランス語、ドイツ語、イタリア語、日本語、スペイン語、ロシア語、およびポルトガル語がサポートされています。 最初の言語が検出された後に、複数の言語を動的に切り替えることはサポートされていません。 自動言語検出機能は、はっきりと音声が認識できる録音において最も効果的に機能します。 自動言語検出で言語を認識できなかった場合、文字起こしは英語にフォールバックされます。|
 |[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|オーディオとビデオの分析|オーディオとビデオの両方から分析情報 (リッチ メタデータ) を抽出し、JSON 形式のファイルを出力します。 ビデオ ファイルを処理するときにオーディオの分析情報のみを抽出するかどうかを指定できます。 詳細については、[ビデオの分析](analyze-videos-tutorial-with-api.md)に関するページを参照してください。|
-|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|ビデオに存在するすべての顔を検出|存在するすべての顔を検出するために、ビデオを分析する際に使用する設定について説明します。|
+|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)|ビデオに存在する顔の検出|ビデオを分析して存在するすべての顔を検出するときに使用される設定について説明します。|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
 このプリセットを使用すると、音声または画像ファイルから複数の音声分析情報を抽出できます。 出力には、JSON ファイル (すべての分析情報が含まれます) と、音声トランスクリプト用の VTT ファイルが含まれます。 このプリセットには、入力ファイルの言語を [BCP47](https://tools.ietf.org/html/bcp47) 文字列形式で指定するプロパティを指定できます。 音声分析情報には、以下が含まれます。
 
-* 音声の文字起こし – タイムスタンプ付きの発話のトランスクリプト。 複数の言語がサポートされます。
-* 話者インデックス – 話者と対応する音声のマッピング。
-* 音声のセンチメント分析 – 音声の文字起こしに対して実行されたセンチメント分析の出力。
-* キーワード – 音声の文字起こしから抽出されたキーワード。
+* **音声の文字起こし**:タイムスタンプ付きの発話のトランスクリプト。 複数の言語がサポートされます。
+* **話者インデックス**: 話者と対応する音声のマッピング。
+* **音声のセンチメント分析**: 音声の文字起こしに対して実行されたセンチメント分析の出力。
+* **キーワード**:音声の文字起こしから抽出されたキーワード。
 
 ### <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
 このプリセットを使用して、ビデオ ファイルから複数の音声と画像の分析情報を抽出できます。 出力には、JSON ファイル (すべての分析情報が含まれます)、画像トランスクリプト用の VTT ファイル、およびサムネールのコレクションが含まれます。 このプリセットには、プロパティとして [BCP47](https://tools.ietf.org/html/bcp47) 文字列 (画像の言語を表します) を指定することもできます。 画像分析情報には、前述のすべての音声分析情報と、次の項目が含まれます。
 
-* 顔追跡 – ビデオに顔が登場している時間。 それぞれの顔には、顔 ID と、対応するサムネイルのコレクションがあります。
-* 視覚テキスト – 光学式文字認識を使用して検出されたテキスト。 テキストにはタイムスタンプが付けられ、(音声トランスクリプションに加え) キーワードの抽出でも使用されます。
-* キーフレーム – 画像から抽出されたキーフレームのコレクション。
-* 視覚コンテンツ モデレーション – 成人向けまたは性的描写としてフラグ付けされている画像の一部。
-* 注釈 – 定義済みのオブジェクト モデルに基づいてビデオに注釈を付けた結果。
+* **顔追跡**: ビデオに顔が登場している時間。 それぞれの顔には、顔 ID と、対応するサムネイルのコレクションがあります。
+* **視覚テキスト**: 光学式文字認識を使用して検出されたテキスト。 テキストにはタイムスタンプが付けられ、(音声トランスクリプションに加え) キーワードの抽出でも使用されます。
+* **キーフレーム**: ビデオから抽出されたキーフレームのコレクション。
+* **ビジュアル コンテンツ モデレーション**:成人向けまたは性的描写としてフラグ付けされたビデオの一部。
+* **注釈**: 定義済みのオブジェクト モデルに基づいてビデオに注釈を付けた結果。
 
-##  <a name="insightsjson-elements"></a>insights.json 要素
+## <a name="insightsjson-elements"></a>insights.json 要素
 
-出力には、画像または音声内で検出されたすべての分析情報を持つ JSON ファイル (insights.json) が含まれます。 json には、次の要素が含まれる可能性があります。
+出力には、ビデオまたは音声内で検出されたすべての分析情報を持つ JSON ファイル (insights.json) が含まれます。 JSON には、次の要素が含まれる可能性があります。
 
 ### <a name="transcript"></a>transcript
 
@@ -150,11 +151,11 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 |confidence|顔認識の信頼度。|
 |description|著名人の説明 |
 |thumbnailId|その顔のサムネイルの ID|
-|knownPersonId|既知の人物の場合は、その内部 ID|
-|referenceId|Bing に登録されている著名人の場合は、その Bing ID|
+|knownPersonId|内部 ID (既知の人物の場合)。|
+|referenceId|Bing ID (Bing に登録されている著名人の場合)。|
 |referenceType|現時点では Bing のみ。|
-|title|著名人の場合は、その肩書 (例: "Microsoft の CEO")|
-|imageUrl|著名人の場合は、その 画像 の URL|
+|title|肩書 (著名人の場合、例: "Microsoft の CEO")。|
+|imageUrl|画像 の URL (著名人の場合)。|
 |instances|特定の時間範囲の中で顔が出現したインスタンス。 各インスタンスにも、thumbnailsId があります。 |
 
 ```json
@@ -250,7 +251,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 |CorrespondenceCount|ビデオ内の通知の数|
 |WordCount|話者あたり単語の数|
 |SpeakerNumberOfFragments|ビデオでの話者のフラグメントの数|
-|SpeakerLongestMonolog|話者の最も長いモノローグ。 モノローグでの話者の沈黙がある場合、それも含まれます。 モノローグの先頭と末尾の無音は削除されます。| 
+|SpeakerLongestMonolog|話者の最も長いモノローグ。 モノローグでの話者の沈黙がある場合、それも含まれます。 モノローグの先頭と末尾の無音は削除されます。|
 |SpeakerTalkToListenRatio|計算は、ビデオの合計時間で割られた話者のモノローグに費やされた時間に基づきます (間の無音は含みません)。 時間は、小数点第 3 位に丸められます。|
 
 
@@ -299,7 +300,6 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 |名前|ラベル名 (例: "Computer"、"TV")。|
 |language|ラベル名の言語 (翻訳時)。 BCP-47|
 |instances|このラベルが出現する時間範囲の一覧 (1 つのラベルが複数回出現する可能性があります)。 各インスタンスに confidence フィールドがあります。 |
-
 
 ```json
 "labels": [
@@ -401,7 +401,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 visualContentModeration ブロックには、Video Indexer で成人向けコンテンツが含まれる可能性があると判断された時間範囲が含まれます。 visualContentModeration が空の場合、特定された成人向けコンテンツはありません。
 
-成人向けまたはわいせつなコンテンツを含むことが検出されたビデオでは、秘密ビューしか利用できない場合があります。 ユーザーは、コンテンツの人間によるレビューの要求を送信できます。この場合、IsAdult 属性に、人間によるレビューの結果が含まれます。
+成人向けまたはわいせつなコンテンツを含むことが検出されたビデオでは、秘密ビューしか利用できない場合があります。 ユーザーは、コンテンツの人間によるレビューの要求を送信できます。この場合、`IsAdult` 属性に、人間によるレビューの結果が含まれます。
 
 |名前|説明|
 |---|---|

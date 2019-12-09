@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: bf9afb66163532b4095e0d30b1167010320abbf8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a5b5de71ee290b39603968cf4309171689e22e4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490955"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184843"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Speech Service を使用してカスタム キーワードを作成する
 
@@ -46,7 +46,7 @@ ms.locfileid: "73490955"
 
 ## <a name="create-your-keyword"></a>キーワードを作成する
 
-カスタム キーワードをデバイスで使用する前に、Microsoft Custom Keyword Generation サービスを使用してキーワードを作成する必要があります。 キーワードを指定すると、このサービスによってファイルが作成されます。このファイルを開発キットにデプロイすることで、デバイスでキーワードを有効にできます。
+カスタム キーワードを使用する前に、[Speech Studio](https://aka.ms/sdsdk-speechportal) の [[Custom Keyword]\(カスタム キーワード\)](https://aka.ms/sdsdk-wakewordportal) ページを使用してキーワードを作成する必要があります。 キーワードを指定すると、デバイスにデプロイするファイルが生成されます。
 
 1. [Speech Studio](https://aka.ms/sdsdk-speechportal)に移動して**サインイン**します。音声サブスクリプションをまだ持っていない場合は、[ **[サブスクリプションを作成する]** ](https://go.microsoft.com/fwlink/?linkid=2086754) を選択します。
 
@@ -62,7 +62,7 @@ ms.locfileid: "73490955"
 
     ![キーワードをダウンロードする](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
 
-1. .zip ファイルをコンピューターに保存します。 開発キットにカスタム キーワードをデプロイするには、このファイルが必要です。
+1. .zip ファイルをコンピューターに保存します。 デバイスにカスタム キーワードをデプロイするには、このファイルが必要です。
 
 ## <a name="next-steps"></a>次の手順
 

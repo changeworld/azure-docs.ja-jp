@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 9fba3221656405f2bf2b1654b43d687f1915cca6
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: d35f0bbc057c97ed4f8b6429c0573fa6bcf3742f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74542290"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807376"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Azure Functions に機械学習モデルをデプロイする (プレビュー)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -234,7 +234,7 @@ print(blob.location)
 
 ## <a name="next-steps"></a>次の手順
 
-* [Functions](https://docs.microsoft.com/azure/azure-functions/functions-create-function-linux-custom-imag) のドキュメントで、関数アプリを構成する方法を学習する。
+* [Functions](/azure/azure-functions/functions-create-function-linux-custom-image) のドキュメントで、関数アプリを構成する方法を学習する。
 * [Azure Blob Storage のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob)に関する記事で、Blob Storage のトリガーの詳細について学習する。
 * [Azure App Service にモデルをデプロイする](how-to-deploy-app-service.md)。
 * [Web サービスとしてデプロイされた ML モデルを使用する](how-to-consume-web-service.md)

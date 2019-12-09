@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager テンプレートの関数 - 文字列 | Microsoft Docs
+title: テンプレート関数 - 文字列
 description: Azure Resource Manager テンプレートで、文字列を操作するために使用する関数について説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.author: tomfitz
-ms.openlocfilehash: d5c95e964740978af0db8db233c65adb7eb074f0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: af972bac39890402cf75e83d10806e9a830c1d4a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834338"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149610"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
 

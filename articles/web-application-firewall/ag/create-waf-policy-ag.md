@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/26/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 31a5ad92942b40e42b66e404df2d09cd8158f7a2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3f7d213aed82d1cb94bb96b9e212d3b255851afd
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606479"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171219"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Application Gateway 用の Web アプリケーション ファイアウォール ポリシーの作成
 
@@ -64,13 +64,13 @@ WAF ポリシーを作成するとき、既定では*検出*モードになり�
 
 Azure マネージド OWASP ルールは、既定で有効になっています。 ルール グループ内の個々のルールを無効にするには、そのルール グループ内のルールを展開し、ルール番号の前のチェック ボックスをオンにして、上のタブの **[無効]** を選択します。
 
-![マネージド ルール](../media/create-waf-policy-ag/managed-rules.png)
+[ ![マネージド ルール](../media/create-waf-policy-ag/managed-rules.png) ](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
 
 ## <a name="custom-rules"></a>カスタム規則
 
 カスタム ルールを作成するには、 **[カスタム ルール]** タブの下の **[カスタム ルールの追加]** を選択します。これで、カスタム ルールの構成ページが開きます。 次のスクリーンショットは、クエリ文字列に "*blockme*" というテキストが含まれている場合に要求をブロックするように構成されたカスタム ルールの例を示しています。
 
-![カスタム ルールの編集](../media/create-waf-policy-ag/edit-custom-rule.png)
+[ ![カスタム ルールの編集](../media/create-waf-policy-ag/edit-custom-rule.png) ](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
 ## <a name="migrate"></a>WAF 構成の WAF ポリシーへの移行
 
@@ -82,7 +82,7 @@ Azure マネージド OWASP ルールは、既定で有効になっています�
 
 WAF の状態を確認するには、ポータルでそれを参照します。 WAF 設定が表示されており、Application Gateway ビュー内から変更できる場合、WAF は状態 1 です。
 
-![WAF 構成](../media/create-waf-policy-ag/waf-configure.png)
+[ ![WAF 構成](../media/create-waf-policy-ag/waf-configure.png) ](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
 
 **[Web アプリケーション ファイアウォール]** を選択すると、関連付けられているポリシーが表示される場合、WAF は状態 2 または状態 3 です。 ポリシーに移動した後、カスタム ルール、および関連付けられているアプリケーション ゲートウェイ**のみ**が表示される場合は、カスタム ルールのみのポリシーです。
 
@@ -98,9 +98,9 @@ WAF の状態を確認するには、ポータルでそれを参照します。 
 
 カスタム ルールのみの WAF ポリシーの編集は無効になっています。 ルールの無効化、除外の追加など、WAF の設定を編集するには、新しいトップ レベルのファイアウォール ポリシー リソースに移行する必要があります。
 
-これを行うには、*Web アプリケーション ファイアウォール ポリシー*を作成し、選択したアプリケーション ゲートウェイおよびリスナーにそれを関連付けます。 この新しいポリシーは、現在の WAF 構成とまったく同じにする**必要**があります。つまり、すべてのカスタム ルール、除外、無効になっているルールなどを、作成する新しいポリシーにコピーする必要があります。 ポリシーをアプリケーション ゲートウェイに関連付けたら、WAF のルールと設定の変更に進むことができます。 
+これを行うには、*Web アプリケーション ファイアウォール ポリシー*を作成し、選択したアプリケーション ゲートウェイおよびリスナーにそれを関連付けます。 この新しいポリシーは、現在の WAF 構成とまったく同じにする**必要**があります。つまり、すべてのカスタム ルール、除外、無効になっているルールなどを、作成する新しいポリシーにコピーする必要があります。 ポリシーをアプリケーション ゲートウェイに関連付けたら、WAF のルールと設定の変更に進むことができます。 Azure PowerShell でこの操作を行うこともできます。 詳細については、「[WAF ポリシーを既存のアプリケーション ゲートウェイに関連付ける](associate-waf-policy-existing-gateway.md)」を参照してください。
 
-Azure PowerShell でこの操作を行うこともできます。 詳細については、「[WAF ポリシーを既存のアプリケーション ゲートウェイに関連付ける](associate-waf-policy-existing-gateway.md)」を参照してください。
+必要な場合は、移行スクリプトを使用して WAF ポリシーに移行できます。 詳しくは、「[Azure PowerShell を使用して Web アプリケーションのファイアウォール ポリシーを移行する](migrate-policy.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

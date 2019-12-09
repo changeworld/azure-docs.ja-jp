@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall に関する FAQ
-description: Azure Firewall に関する FAQ
+description: Azure Firewall に関する FAQ。 Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 10/19/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: f64e9717a1e6391c15ee5207c7566114f2bf9f8f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 418fafdec9bd44fa3682e33cc53bbca9c716dcf2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596777"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167037"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 

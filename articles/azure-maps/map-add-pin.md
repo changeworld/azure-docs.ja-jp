@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 10f6a7ef92bfd6558ed93e7fb40df9e48e1b92f5
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: fff73801d20333a6df5e7952d02ed664c17fe40b
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976171"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480618"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>マップにシンボル レイヤーを追加する
 
@@ -22,6 +22,14 @@ ms.locfileid: "68976171"
 
 > [!TIP]
 > シンボル レイヤーでは、既定ではデータ ソース内のすべてのジオメトリの座標がレンダリングされます。 ポイント ジオメトリ フィーチャーのみがレンダリングされるようにレイヤーを制限するには、レイヤーの `filter` プロパティを `['==', ['geometry-type'], 'Point']` に設定します。または、MultiPoint フィーチャーも含める場合は、`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` に設定します。
+
+(シンボル レイヤーによって使用されるカスタム画像の読み込みに使われる) マップ画像スプライト マネージャーでは、次の画像フォーマットがサポートされています。
+
+- JPEG
+- PNG
+- SVG
+- BMP
+- GIF (アニメーションなし)
 
 ## <a name="add-a-symbol-layer"></a>シンボル レイヤーを追加する
 

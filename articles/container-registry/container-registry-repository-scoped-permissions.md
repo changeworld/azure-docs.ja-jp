@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry でのリポジトリに対するアクセス許可
+title: リポジトリに対するアクセス許可
 description: レジストリ内の特定のリポジトリをスコープとしたアクセス許可を持つトークンを作成して、イメージをプルまたはプッシュする
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 10/31/2019
-ms.author: danlep
-ms.openlocfilehash: 7b9d220ac7e507513458eab6b55276b3aa434739
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: cf36a49ffd6c04897e6f44b844f0c813d0992b18
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742748"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454915"
 ---
 # <a name="repository-scoped-permissions-in-azure-container-registry"></a>Azure Container Registry でのリポジトリをスコープとしたアクセス許可 
 

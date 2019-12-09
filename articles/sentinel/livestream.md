@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ms.author: cabailey
-ms.openlocfilehash: d1d048507946850192c1c6f8ca9024c6f9ddf8ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510988"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546861"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Azure Sentinel でハンティング ライブストリームを使用して脅威を検出する
 
 > [!IMPORTANT]
-> Azure Sentinel のハンティング ライブストリームは現在、パブリック プレビュー段階です。
+> Azure Sentinel のハンティング ライブストリームは現在、パブリック プレビュー段階であり、テナントへのロールアウトが徐々に進められています。
 > この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 
@@ -63,7 +63,7 @@ ms.locfileid: "73510988"
     1. **[Livestream]\(ライブストリーム\)** タブを選択します
     2. **[Go to Livestream]\(ライブストリームに移動\)** を選択します。
     
-4. **[Livestream]\(ライブストリーム\)** ブレードで、次を実行します。
+4. **[Livestream]\(ライブストリーム\)** ウィンドウで、次を実行します。
     
     - クエリからライブストリームを開始した場合は、クエリを確認し、必要があれば変更を加えてください。
     - ゼロからライブストリームの作成を開始した場合は、クエリを作成します。 
@@ -96,7 +96,7 @@ ms.locfileid: "73510988"
 
 ![Azure portal のライブストリーム通知](./media/livestream/notification.png)
 
-通知を選択すると、 **[Livestream]\(ライブストリーム\)** ブレードが開きます。
+通知を選択すると、 **[Livestream]\(ライブストリーム\)** ウィンドウが開きます。
  
 ## <a name="elevate-a-livestream-session-to-an-alert"></a>ライブストリーム セッションをアラートに昇格させる
 

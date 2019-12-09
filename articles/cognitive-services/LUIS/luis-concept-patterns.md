@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 6234a13d07ac024849d1c890d82ef03e19c11af4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012012"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280854"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
 パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。  パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。 
@@ -45,7 +45,7 @@ ms.locfileid: "74012012"
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>パターンでは機械学習エンティティの検出は改善されない
 
-パターンは主として、意図とロールの予測を支援するためのものです。 pattern.any エンティティは、自由形式のエンティティを抽出するために使用されます。 パターンではエンティティが使用されますが、パターンは機械学習エンティティの検出には役に立ちません。  
+パターンは主として、意図とロールの予測を支援するためのものです。 _pattern.any_ エンティティは、自由形式のエンティティを抽出するために使用されます。 パターンではエンティティが使用されますが、パターンは機械学習エンティティの検出には役に立ちません。  
 
 複数の発話を 1 つのパターンにまとめた場合は、エンティティ予測の向上を期待しないでください。 単純エンティティを動作させるには、発話を追加するか、リスト エンティティを使用する必要があります。そうでないと、パターンは動作しません。
 

@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: beea911c9bb938458d8bd12e091e6c908ebb1566
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111736"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185691"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>チュートリアル:C# および .NET SDK を使用して AI エンリッチメント パイプラインを作成する
 
@@ -103,7 +103,7 @@ Visual Studio で `Microsoft.Extensions.Configuration.Json` NuGet パッケー�
 
 Azure Cognitive Search サービスに接続するには、検索サービスの情報をプロジェクトに追加する必要があります。 ソリューション エクスプローラーでプロジェクトを右クリックし、 **[追加]**  >  **[新しい項目...]** を選択します。 ファイルに `appsettings.json` という名前を付けて、 **[追加]** を選択します。 
 
-このファイルは出力ディレクトリに含める必要があります。 そのためには、`appsettings.json` を右クリックし、 **[プロパティ]** を選択します。 **[出力ディレクトリにコピー]** の値を **[Copy of newer]\(新しい場合はコピーする\)** に変更します。
+このファイルは出力ディレクトリに含める必要があります。 そのためには、`appsettings.json` を右クリックし、 **[プロパティ]** を選択します。 **[出力ディレクトリにコピー]** の値を **[新しい場合はコピーする]** に変更します。
 
 次の JSON を新しい JSON ファイルにコピーします。
 

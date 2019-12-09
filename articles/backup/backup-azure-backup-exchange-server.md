@@ -1,19 +1,15 @@
 ---
-title: System Center DPM を使用して Exchange サーバーを Azure Backup にバックアップする
+title: System Center DPM を使用して Exchange サーバーをバックアップする
 description: System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする方法について説明する
 ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: dacurwin
-ms.openlocfilehash: 21f38105913e03adfbf400e82d3572e6e5084538
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: b2231fcadc3e0cb591302ba47572627ae3a17e58
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968504"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173275"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
 

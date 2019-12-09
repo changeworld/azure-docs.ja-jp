@@ -3,19 +3,19 @@ title: 設計パターンを開示する
 titleSuffix: Azure Cognitive Services
 description: 開示のための設計パターンとベスト プラクティスです。
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: e0cb73f224f53441ad4f23298a035f95d59b9f7c
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559004"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776624"
 ---
 # <a name="disclosure-design-patterns"></a>設計パターンを開示する
 合成音声エクスペリエンスの適切な[開示レベル](concepts-disclosure-guidelines.md#disclosure-assessment)が決定されたので、考えられる設計パターンについて検討するよい機会です。

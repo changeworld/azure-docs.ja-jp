@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 834ac1d6e35169689a767a95bbef09673454c46a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 15b9bae1bd901325efdefeaa4db53df2d6b42b44
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73148893"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275887"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
 
-Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API のホームです。 危険なユーザーとサインインに関する情報を明らかにする API が 4 つあります。最初の API **riskDetection** を使用すると、Microsoft Graph に対して、ユーザーやサインインに結び付いているリスク検出とその検出に関連する情報の一覧のクエリを実行できます。 2 つ目の API である **riskyUsers** を使用すると、Microsoft Graph に対して、リスクとして検出されたユーザーの Identity Protection に関する情報のクエリを実行できます。 3 つ目の API である **signIn** を使用すると、Microsoft Graph に対して、リスク状態、詳細、およびレベルに関連する特定のプロパティを使用して、Azure AD のサインインに関する情報のクエリを実行できます。 4 つ目の API である **identityRiskEvents** を使用すると、Microsoft Graph に対して、[リスク検出](../reports-monitoring/concept-risk-events.md)とその関連情報の一覧に対するクエリを実行できます。 この記事では、Microsoft Graph への接続とこれらの API のクエリの概要について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://graph.microsoft.io/)またはこれらの API に関する特定のリファレンス ドキュメントを参照してください。
+Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API のホームです。 危険なユーザーとサインインに関する情報を明らかにする API が 4 つあります。最初の API **riskDetection** を使用すると、Microsoft Graph に対して、ユーザーやサインインに結び付いているリスク検出とその検出に関連する情報の一覧のクエリを実行できます。 2 つ目の API である **riskyUsers** を使用すると、Microsoft Graph に対して、リスクとして検出されたユーザーの Identity Protection に関する情報のクエリを実行できます。 3 つ目の API である **signIn** を使用すると、Microsoft Graph に対して、リスク状態、詳細、およびレベルに関連する特定のプロパティを使用して、Azure AD のサインインに関する情報のクエリを実行できます。 4 つ目の API である **identityRiskEvents** を使用すると、Microsoft Graph に対して、[リスク検出](../reports-monitoring/concept-risk-events.md)とその関連情報の一覧に対するクエリを実行できます。 identityRiskEvents API は 2020 年 1 月 10 日に非推奨となる予定です。代わりに **riskDetections** API を使用することをお勧めします。 この記事では、Microsoft Graph への接続とこれらの API のクエリの概要について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://graph.microsoft.io/)またはこれらの API に関する特定のリファレンス ドキュメントを参照してください。
 
 * [riskDetection API](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta)
 * [riskyUsers API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
 * [signIn API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
-* [identityRiskEvents API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
+* [identityRiskEvents API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta) は *2020 年 1 月 10 日に非推奨となる予定です*。
 
 ## <a name="connect-to-microsoft-graph"></a>Microsoft Graph に接続する
 
@@ -68,7 +68,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
    ![Creating an application](./media/howto-identity-protection-graph-api/44.png)
 
-   1. **[名前]** ボックスにアプリケーションの名前 (例:AADIP Risk Detection API Application) を入力します。
+   1. **[名前]** ボックスにアプリケーションの名前 (例:Azure AD リスク検出 API アプリケーション) を入力します。
 
    1. **[種類]** として **[Web アプリケーションや Web API]** を選択します。
 
@@ -122,7 +122,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
    ![Creating an application](./media/howto-identity-protection-graph-api/24.png)
 
-   1. **[キーの説明]** テキスト ボックスに、説明 (例: *AADIP リスク検出*) を入力します。
+   1. **[キーの説明]** テキスト ボックスに、説明 (例: *Azure AD リスク検出*) を入力します。
    1. **[期間]** として、 **[1 年]** を選びます。
    1. **[Save]** をクリックします。
    1. キーの値をコピーし、安全な場所に貼り付けます。   
@@ -202,14 +202,6 @@ Identity Protection サインイン リスク ポリシーを使用すると、�
 
 ```
 GET https://graph.microsoft.com/beta/riskDetections?$filter=detectionTimingType eq 'offline'
-```
-
-### <a name="get-the-high-risk-and-medium-risk-detections-identityriskevents-api"></a>高リスクと中リスクの検出を取得する (identityRiskEvents API)
-
-中リスクと高リスクの検出は、Identity Protection のサインインまたはユーザーリスク ポリシーをトリガーする機能を持つ可能性があるものを表します。 サインインしようとしているユーザーが正当な ID 所有者ではない可能性が中度または高度であるため、このようなイベントを優先して修正する必要があります。 
-
-```
-GET https://graph.microsoft.com/beta/identityRiskEvents?`$filter=riskLevel eq 'high' or riskLevel eq 'medium'" 
 ```
 
 ### <a name="get-all-of-the-users-who-successfully-passed-an-mfa-challenge-triggered-by-risky-sign-ins-policy-riskyusers-api"></a>危険なサインイン ポリシー (riskyUsers API) によってトリガーされた MFA チャレンジに合格したすべてのユーザーを取得する

@@ -1,18 +1,14 @@
 ---
 title: Azure への SQL Server データベースのバックアップ
-description: このチュートリアルでは、SQL Server を Azure に バックアップする方法について説明します。 また、SQL Server の復旧についても説明します。
-author: dcurwin
-manager: carmonm
-ms.service: backup
-ms.topic: tutorial
+description: この記事では、SQL Server を Azure に バックアップする方法について説明します。 また、SQL Server の復旧についても説明します。
+ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: e5d24c35fd2fafc27f2339af5b1c92875b0138d9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162205"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462594"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM での SQL Server Backup について
 
@@ -55,7 +51,7 @@ SQL Server データベースは、低い回復ポイントの目標値 (RPO) �
 * SQL Server のバックアップは、Azure portal または **PowerShell** を使用して構成できます。 CLI はサポートされていません。
 * このソリューションは、Azure Resource Manager VM とクラシック VM のどちらの種類の[デプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)でもサポートされます。
 * SQL Server を稼働している VM では、Azure パブリック IP アドレスにアクセスするためにインターネット接続を必要とします。
-* SQL Server **フェールオーバー クラスター インスタンス (FCI)** と SQL Server Always on フェールオーバー クラスター インスタンスはサポートされません。
+* SQL Server **フェールオーバー クラスター インスタンス (FCI)** はサポートされていません。
 * ミラー データベースおよびデータベース スナップショットのバックアップ操作および復元操作はサポートされていません。
 * スタンドアロンの SQL Server インスタンスまたは SQL Always On 可用性グループをバックアップするために複数のバックアップ ソリューションを使用すると、バックアップに失敗する可能性があるため、そうしないようにしてください。
 * また、可用性グループの 2 つのノードを、同じまたは異なるソリューションを使用して個別にバックアップすると、バックアップに失敗する可能性があります。

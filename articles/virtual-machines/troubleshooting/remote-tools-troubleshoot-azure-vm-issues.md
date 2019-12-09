@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 01/11/2018
 ms.author: delhan
-ms.openlocfilehash: fab1e0b6f3b01446baed974b4be9b7295af4f837
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3f028431fcd4b338d2e610ce1828a02b753c4d32
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749728"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483709"
 ---
 # <a name="use-remote-tools-to-troubleshoot-azure-vm-issues"></a>リモート ツールを使用して Azure VM の問題をトラブルシューティングする
 
@@ -27,7 +27,7 @@ Azure 仮想マシン (VM) に関する問題をトラブルシューティン�
 
 ## <a name="serial-console"></a>シリアル コンソール
 
-[仮想マシンのシリアル コンソール](serial-console-windows.md)を使用して、リモート Azure VM でコマンドを実行します。
+[Azure Virtual Machines 用のシリアル コンソール](serial-console-windows.md)を使用して、リモートの Azure VM でコマンドを実行します。
 
 ## <a name="remote-cmd"></a>リモート CMD
 
@@ -37,94 +37,92 @@ Azure 仮想マシン (VM) に関する問題をトラブルシューティン�
 psexec \\<computer>-u user -s cmd
 ```
 
->[!Note]
->* コマンドは、同じ VNET にあるコンピューターで実行する必要があります。
+>[!NOTE]
+>* コマンドは、同じ仮想ネットワークにあるコンピューターで実行する必要があります。
 >* DIP または HostName を使用して、\<computer> を置き換えることができます。
 >* -s パラメーターを指定すると、システム アカウント (管理者権限) を使用してコマンドが確実に呼び出されるようになります。
 >* PsExec では TCP ポートの 135 と 445 を使用します。 そのため、2 つのポートをファイアウォールで開く必要があります。
 
-## <a name="run-commands"></a>実行コマンド
+## <a name="run-command"></a>実行コマンド
 
 実行コマンド機能を使用して VM でスクリプトを実行する方法の詳細については、「[実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する](../windows/run-command.md)」を参照してください。
 
-## <a name="customer-script-extension"></a>カスタム スクリプト拡張機能
+## <a name="custom-script-extension"></a>カスタム スクリプト拡張機能
 
 カスタム スクリプト拡張機能を使用して、ターゲット VM でカスタム スクリプトを実行することができます。 この機能を使用するには、次の条件を満たす必要があります。
 
 * VM が接続されている。
-
-* Azure Agent がインストールされており、VM で期待どおりに動作している。
-
+* Azure Virtual Machine Agent がインストールされており、VM で期待どおりに動作している。
 * VM にまだ拡張機能がインストールされていない。
  
   拡張機能では、初回使用時にのみ、スクリプトが挿入されます。 後でこの機能を使用する場合、拡張機能では、それが既に使用されていることが認識され、新しいスクリプトはアップロードされません。
 
-スクリプトをストレージ アカウントにアップロードし、独自のコンテナーを生成する必要があります。 次に、VM に接続されているコンピューター上の Azure PowerShell で以下のスクリプトを実行します。
+スクリプトをストレージ アカウントにアップロードし、独自のコンテナーを生成します。 次に、VM に接続されているコンピューター上の Azure PowerShell で以下のスクリプトを実行します。
 
-### <a name="for-v1-vms"></a>V1 VM の場合
+### <a name="for-classic-deployment-model-vms"></a>クラシック デプロイ モデル VM の場合
 
 ```powershell
-#Setup the basic variables
+#Set up the basic variables.
 $subscriptionID = "<<SUBSCRIPTION ID>>" 
 $storageAccount = "<<STORAGE ACCOUNT>>" 
 $localScript = "<<FULL PATH OF THE PS1 FILE TO EXECUTE ON THE VM>>" 
-$blobName = "file.ps1" #Name you want for the blob in the storage
+$blobName = "file.ps1" #Name you want for the blob in the storage.
 $vmName = "<<VM NAME>>" 
-$vmCloudService = "<<CLOUD SERVICE>>" #Resource group/Cloud Service where the VM is hosted. I.E.: For "demo305.cloudapp.net" the cloud service is going to be demo305
+$vmCloudService = "<<CLOUD SERVICE>>" #Resource group or cloud service where the VM is hosted. For example, for "demo305.cloudapp.net" the cloud service is going to be demo305.
 
-#Setup the Azure Powershell module and ensure the access to the subscription
+#Set up the Azure PowerShell module, and ensure the access to the subscription.
 Import-Module Azure
-Add-AzureAccount  #Ensure Login with account associated with subscription ID
+Add-AzureAccount  #Ensure login with the account associated with the subscription ID.
 Get-AzureSubscription -SubscriptionId $subscriptionID | Select-AzureSubscription
 
-#Setup the access to the storage account and upload the script
+#Set up the access to the storage account, and upload the script.
 $storageKey = (Get-AzureStorageKey -StorageAccountName $storageAccount).Primary
 $context = New-AzureStorageContext -StorageAccountName $storageAccount -StorageAccountKey $storageKey
 $container = "cse" + (Get-Date -Format yyyyMMddhhmmss)<
 New-AzureStorageContainer -Name $container -Permission Off -Context $context
 Set-AzureStorageBlobContent -File $localScript -Container $container -Blob $blobName  -Context $context
 
-#Push the script into the VM
+#Push the script into the VM.
 $vm = Get-AzureVM -ServiceName $vmCloudService -Name $vmName
 Set-AzureVMCustomScriptExtension "CustomScriptExtension" -VM $vm -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName | Update-AzureVM
 ```
 
-### <a name="for-v2-vms"></a>V2 VM の場合
+### <a name="for-azure-resource-manager-vms"></a>Azure Resource Manager VM の場合
 
  
 
 ```powershell
-#Setup the basic variables
+#Set up the basic variables.
 $subscriptionID = "<<SUBSCRIPTION ID>>"
 $storageAccount = "<<STORAGE ACCOUNT>>"
 $storageRG = "<<RESOURCE GROUP OF THE STORAGE ACCOUNT>>" 
 $localScript = "<<FULL PATH OF THE PS1 FILE TO EXECUTE ON THE VM>>" 
-$blobName = "file.ps1" #Name you want for blob in storage
+$blobName = "file.ps1" #Name you want for the blob in the storage.
 $vmName = "<<VM NAME>>" 
 $vmResourceGroup = "<<RESOURCE GROUP>>"
 $vmLocation = "<<DATACENTER>>" 
  
-#Setup the Azure Powershell module and ensure the access to the subscription
-Login-AzAccount #Ensure Login with account associated with subscription ID
+#Set up the Azure PowerShell module, and ensure the access to the subscription.
+Login-AzAccount #Ensure login with the account associated with the subscription ID.
 Get-AzSubscription -SubscriptionId $subscriptionID | Select-AzSubscription
 
-#Setup the access to the storage account and upload the script 
+#Set up the access to the storage account, and upload the script.
 $storageKey = (Get-AzStorageAccountKey -ResourceGroupName $storageRG -Name $storageAccount).Value[0]
 $context = New-AzureStorageContext -StorageAccountName $storageAccount -StorageAccountKey $storageKey
 $container = "cse" + (Get-Date -Format yyyyMMddhhmmss)
 New-AzureStorageContainer -Name $container -Permission Off -Context $context
 Set-AzureStorageBlobContent -File $localScript -Container $container -Blob $blobName  -Context $context
 
-#Push the script into the VM
+#Push the script into the VM.
 Set-AzVMCustomScriptExtension -Name "CustomScriptExtension" -ResourceGroupName $vmResourceGroup -VMName $vmName -Location $vmLocation -StorageAccountName $storageAccount -StorageAccountKey $storagekey -ContainerName $container -FileName $blobName -Run $blobName
 ```
 
 ## <a name="remote-powershell"></a>リモート PowerShell
 
->[!Note]
+>[!NOTE]
 >このオプションを使用できるように、TCP ポート 5986 (HTTPS) を開く必要があります。
 >
->ARM VM の場合は、ネットワーク セキュリティ グループ (NSG) でポート 5986 を開く必要があります。 詳細については、セキュリティ グループに関する記述を参照してください。 
+>Azure Resource Manager VM の場合は、ネットワーク セキュリティ グループ (NSG) でポート 5986 を開く必要があります。 詳細については、セキュリティ グループに関する記述を参照してください。 
 >
 >RDFE VM の場合は、プライベート ポート (5986) とパブリック ポートがあるエンドポイントが必要です。 その後、NSG でそのパブリック側のポートを開く必要もあります。
 
@@ -152,7 +150,7 @@ Set-Item wsman:\localhost\Client\TrustedHosts -value *
 
 ### <a name="enable-remoteps-on-the-vm"></a>VM で RemotePS を有効にする
 
-クラシック VM の場合は、カスタム スクリプト拡張機能を使用して、次のスクリプトを実行します。
+クラシック デプロイ モデルを使用して作成された VM の場合は、カスタム スクリプト拡張機能を使用して次のスクリプトを実行します。
 
 ```powershell
 Enable-PSRemoting -Force
@@ -162,7 +160,7 @@ $command = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostn
 cmd.exe /C $command
 ```
 
-ARM VM の場合は、ポータルから実行コマンドを使用して、EnableRemotePS スクリプトを実行します。
+Azure Resource Manager VM の場合は、ポータルから実行コマンドを使用して、EnableRemotePS スクリプトを実行します。
 
 ![実行コマンド](./media/remote-tools-troubleshoot-azure-vm-issues/run-command.png)
 
@@ -170,30 +168,30 @@ ARM VM の場合は、ポータルから実行コマンドを使用して、Enab
 
 クライアント コンピューターの場所に応じて、以下のコマンドを実行します。
 
-* VNET またはデプロイ外
+* 仮想ネットワークまたはデプロイの外部
 
-  * クラシック VM の場合は、次のコマンドを実行します。
+  * クラシック デプロイ モデルを使用して作成された VM の場合は、次のコマンドを実行します。
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName  "<<CLOUDSERVICENAME.cloudapp.net>>" -port "<<PUBLIC PORT NUMBER>>" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-  * ARM VM の場合は、最初にパブリック IP アドレスに DNS 名を追加します。 詳しい手順については、「[Windows VM 用の Azure Portal での完全修飾ドメイン名の作成](../windows/portal-create-fqdn.md)」を参照してください。 次に、次のコマンドを実行します。
+  * Azure Resource Manager VM の場合は、最初にパブリック IP アドレスに DNS 名を追加します。 詳しい手順については、「[Windows VM 用の Azure Portal での完全修飾ドメイン名の作成](../windows/portal-create-fqdn.md)」を参照してください。 次に、次のコマンドを実行します。
 
     ```powershell
     $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
     Enter-PSSession -ComputerName "<<DNSname.DataCenter.cloudapp.azure.com>>" -port "5986" -Credential (Get-Credential) -useSSL -SessionOption $Skip
     ```
 
-* VNET またはデプロイ内で、次のコマンドを実行します。
+* 仮想ネットワークまたはデプロイ内で、次のコマンドを実行します。
   
   ```powershell
   $Skip = New-PSSessionOption -SkipCACheck -SkipCNCheck
   Enter-PSSession -ComputerName  "<<HOSTNAME>>" -port 5986 -Credential (Get-Credential) -useSSL -SessionOption $Skip
   ```
 
->[!Note] 
+>[!NOTE] 
 >SkipCaCheck フラグを設定すると、セッションを開始するときに VM に証明書をインポートする要件をバイパスできます。
 
 Invoke-Command コマンドレットを使用して、VM でスクリプトをリモートで実行することもできます。
@@ -204,22 +202,22 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="remote-registry"></a>リモート レジストリ
 
->[!Note]
+>[!NOTE]
 >このオプションを使用するには、TCP ポート 135 または 445 を開く必要があります。
 >
->ARM VM の場合は、NSG 上でポート 5986 を開く必要があります。 詳細については、セキュリティ グループに関する記述を参照してください。 
+>Azure Resource Manager VM の場合は、NSG でポート 5986 を開く必要があります。 詳細については、セキュリティ グループに関する記述を参照してください。 
 >
 >RDFE VM の場合は、プライベート ポート 5986 とパブリック ポートがあるエンドポイントが必要です。 NSG でそのパブリック側のポートを開く必要もあります。
 
-1. 同じ VNET 上の別の VM から、レジストリ エディター (regedit.exe) を開きます。
+1. 同じ仮想ネットワーク上の別の VM から、レジストリ エディター (regedit.exe) を開きます。
 
-2. **[ファイル]**  > **[Connect Network Registry]\(ネットワーク レジストリへの接続\)** の順に選択します。
+2. **[ファイル]**  >  **[Connect Network Registry]\(ネットワーク レジストリへの接続\)** の順に選択します。
 
-   ![リモート オプション](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
+   ![レジストリ エディター](./media/remote-tools-troubleshoot-azure-vm-issues/remote-registry.png) 
 
-3. [選択するオブジェクト名を入力してください] ボックスに**ホスト名**または**動的 IP** (推奨) を入力して、ターゲット VM を検索します。
+3. **[選択するオブジェクト名を入力してください]** ボックスに**ホスト名**または**動的 IP** (推奨) を入力して、ターゲット VM を検索します。
 
-   ![リモート オプション](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
+   ![[選択するオブジェクト名を入力してください] ボックス](./media/remote-tools-troubleshoot-azure-vm-issues/input-computer-name.png) 
  
 4. ターゲット VM の資格情報を入力します。
 
@@ -227,14 +225,14 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 ## <a name="remote-services-console"></a>リモート サービス コンソール
 
->[!Note]
+>[!NOTE]
 >このオプションを使用するには、TCP ポート 135 または 445 を開く必要があります。
 >
->ARM VM の場合は、NSG 上でポート 5986 を開く必要があります。 詳細については、セキュリティ グループに関する記述を参照してください。 
+>Azure Resource Manager VM の場合は、NSG でポート 5986 を開く必要があります。 詳細については、セキュリティ グループに関する記述を参照してください。 
 >
->RDFE VM の場合は、プライベート ポート 5986 とパブリック ポートがあるエンドポイントが必要です。 その後、NSG でそのパブリック側のポートを開く必要もあります。
+>RDFE VM の場合は、プライベート ポート 5986 とパブリック ポートがあるエンドポイントが必要です。 NSG でそのパブリック側のポートを開く必要もあります。
 
-1. 同じ VNET の別の VM から、**Services.msc** のインスタンスを開きます。
+1. 同じ仮想ネットワークの別の VM から、**Services.msc** のインスタンスを開きます。
 
 2. **[サービス (ローカル)]** を右クリックします。
 
@@ -244,18 +242,15 @@ Invoke-Command -ComputerName "<<COMPUTERNAME>" -ScriptBlock {"<<SCRIPT BLOCK>>"}
 
 4. ターゲット VM の動的 IP アドレスを入力します。
 
-   ![DIP を入力する](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
+   ![動的 IP の入力](./media/remote-tools-troubleshoot-azure-vm-issues/input-ip-address.png)
 
 5. サービスに対してすべての必要な変更を行います。
 
 ## <a name="next-steps"></a>次の手順
 
-[Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx)
-
-[クラシック デプロイ モデルを使用した Windows 用のカスタム スクリプト拡張機能](../extensions/custom-script-classic.md)
-
-PsExec は、[PSTools スイート](https://download.sysinternals.com/files/PSTools.zip)の一部です。
-
-PSTools スイートの詳細については、[PSTools スイート](https://docs.microsoft.com/sysinternals/downloads/pstools)に関するページを参照してください。
+- Enter-PSSession コマンドレットの詳細については、[Enter-PSSession](https://technet.microsoft.com/library/hh849707.aspx) を参照してください。
+- クラシック デプロイ モデルを使用した Windows のカスタム スクリプト拡張機能の詳細については、「[Windows でのカスタムのスクリプト拡張機能](../extensions/custom-script-classic.md)」を参照してください。
+- PsExec は、[PSTools スイート](https://download.sysinternals.com/files/PSTools.zip)の一部です。
+- PSTools スイートの詳細については、[PSTools](https://docs.microsoft.com/sysinternals/downloads/pstools) に関するページを参照してください。
 
 

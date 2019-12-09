@@ -2,18 +2,18 @@
 title: クラスター構成を最適化するための Apache Ambari - Azure HDInsight
 description: Apache Ambari Web UI を使用して、Azure HDInsight クラスターを構成および最適化します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: e0d94a41febdba1bea6818309e05d287bef6d3a1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492500"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150121"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Apache Ambari を使用して HDInsight クラスター構成を最適化する
 
@@ -143,7 +143,7 @@ Hive では行単位でデータを処理します。 ベクター化では、1 
 
 既定では、Hive は一連のルールに従って、1 つの最適なクエリ実行プランを見つけます。 コストベースの最適化 (CBO) では、複数のクエリ実行プランを評価し、各プランにコストを割り当てて、最もコストがかからないクエリ実行プランを特定します。
 
-CBO を有効にするには、Hive の **[Configs]\(構成\)** タブに移動し、`parameter hive.cbo.enable` を検索して、トグル ボタンを **[On]\(オン\)** に切り替えます。
+CBO を有効にするには、 **[Hive]**  >  **[Configs]\(構成\)**  >  **[Settings]\(設定\)** に移動し、 **[Enable Cost Based Optimizer]\(コスト ベースのオプティマイザー を有効にする\)** を探して、トグル ボタンを **[オン]** に切り替えます。
 
 ![HDInsight のコストベースのオプティマイザー](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
@@ -195,15 +195,13 @@ CBO を有効にすると、次の追加の構成パラメーターによって 
 
 1. カスタム設定を追加するには、次の手順を実行します。
 
-    a. Hive の **[Configs]\(構成\)** タブに移動し、 **[Advanced]\(詳細設定\)** タブを選択します。
+    a. **[Hive]**  >  **[Configs]\(構成\)**  >  **[Advanced]\(詳細\)**  >  **[Custom hive-site]\(カスタム hive-site\)** に移動します。
 
-    b. **[Advanced]\(詳細設定\)** タブで、 **[Custom hive-site]\(カスタム hive-site\)** ウィンドウを見つけて展開します。
+    b. [Custom hive-site]\(カスタム hive-site\) ウィンドウの下部にある **[Add Property...]\(プロパティの追加...\)** を選択します。
 
-    c. [Custom hive-site]\(カスタム hive-site\) ウィンドウの下部にある **[Add Property]\(プロパティの追加\)** リンクをクリックします。
+    c. [Add Property]\(プロパティの追加\) ウィンドウで、キーとして `mapred.map.output.compression.codec`、値として `org.apache.hadoop.io.compress.SnappyCodec` を入力します。
 
-    d. [Add Property]\(プロパティの追加\) ウィンドウで、キーとして `mapred.map.output.compression.codec`、値として `org.apache.hadoop.io.compress.SnappyCodec` を入力します。
-
-    e. **[追加]** をクリックします。
+    d. **[追加]** を選択します。
 
     ![Apache Hive のカスタム プロパティの追加](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
@@ -416,7 +414,7 @@ HBase では、*HFile* と呼ばれる内部ファイル形式でデータを保
 
 * Memstore が `hbase.hregion.memstore.flush.size` プロパティで定義されたサイズに達すると、ディスクにフラッシュされます。 既定のサイズは 128 MB です。
 
-* Hbase のリージョンのブロック乗数は、`hbase.hregion.memstore.block.multiplier` で定義します。 既定値は 4 ですが、 最大許容値は 8 です。
+* HBase リージョンのブロックの乗数は、`hbase.hregion.memstore.block.multiplier` で定義されています。 既定値は 4 ですが、 最大許容値は 8 です。
 
 * Memstore が (`hbase.hregion.memstore.flush.size`  *  `hbase.hregion.memstore.block.multiplier`) バイトになると、HBase は更新をブロックします。
 

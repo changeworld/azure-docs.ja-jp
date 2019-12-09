@@ -1,5 +1,6 @@
 ---
-title: Azure Network Watcher のセキュリティ グループ ビューを使用したネットワーク セキュリティの分析 - PowerShell | Microsoft Docs
+title: ネットワーク セキュリティを分析する - セキュリティ グループ ビュー - Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: この記事では、PowerShell を使用して、セキュリティ グループ ビューで仮想マシンのセキュリティを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4c7b79460169612a046b19a4d66f222936710a8e
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3127d60263437a18e0c8d9a98ebdfad31049c58d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163895"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277910"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>PowerShell を使用してセキュリティ グループ ビューで仮想マシンのセキュリティを分析する
 

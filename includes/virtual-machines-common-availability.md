@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7ea4762684a41e06687adcca91b13872a0c9f740
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 06b54c3038e8b4f5879a93b696920534c2199008
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73897524"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414489"
 ---
 この記事では、Azure 仮想マシン (VM) の可用性機能の概要について説明します。
 
@@ -47,7 +47,7 @@ ms.locfileid: "73897524"
 
 ## <a name="virtual-machines-scale-sets"></a>Virtual Machines スケール セット 
 
-Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つのスケール セット内に 2 つ以上の VM を作成することをお勧めします。 スケール セット自体にはコストはかかりません。料金は、作成した各 VM インスタンスに対してのみ発生します。 1 つの VM が [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。 スケール セット内の仮想マシンは、複数のリージョンと障害ドメインにデプロイして、データセンターの障害や、計画済みまたは計画外のメンテナンス イベントによる障害に対する可用性と復元性を最大にすることができます。 スケール セット内の仮想マシンは、1 つの可用性ゾーン (リージョン) にデプロイすることもできます。 可用性ゾーンのデプロイ オプションは、オーケストレーション モードによって異なる場合があります。
+Azure Virtual Machine Scale Sets では、負荷分散が行われる VM のグループを作成して管理することができます。 需要または定義されたスケジュールに応じて、VM インスタンスの数を自動的に増減させることができます。 スケール セットは、アプリケーションの高可用性を実現します。また、多数の VM の一元的な管理、構成、更新を可能にします。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つのスケール セット内に 2 つ以上の VM を作成することをお勧めします。 スケール セット自体にはコストはかかりません。料金は、作成した各 VM インスタンスに対してのみ発生します。 1 つの VM が [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。 スケール セット内の仮想マシンは、複数の更新ドメインと障害ドメインにデプロイして、データセンターの障害や、計画済みまたは計画外のメンテナンス イベントによる障害に対する可用性と復元性を最大にすることができます。 スケール セット内の仮想マシンは、1 つの可用性ゾーン (リージョン) にデプロイすることもできます。 可用性ゾーンのデプロイ オプションは、オーケストレーション モードによって異なる場合があります。
 
 ### <a name="preview-orchestration-mode-preview"></a>プレビュー:オーケストレーション モードのプレビュー
 仮想マシン スケール セットでは、オーケストレーション モードを指定できます。  仮想マシン スケール セットのオーケストレーション モード (プレビュー) では、スケール セットがスケール セット構成モデルの外部で明示的に作成された仮想マシンを調整するか、構成モデルに基づいて暗黙的に作成された仮想マシン インスタンスを調整するかを選択できるようになりました。 VM オーケストレーション モデルで明示的に定義された仮想マシンをリージョンまたは可用性ゾーンにグループ化できる、オーケストレーション モードを選択します。 可用性ゾーンにデプロイされた仮想マシンは、VM へのゾーン分離を実現します。これらは、可用性ゾーンの境界にバインドされており、リージョン内の他の可用性ゾーンで発生する可能性があるエラーの対象にはなりません。 

@@ -4,19 +4,19 @@ description: Azure Multi-Factor Authentication に関してよく寄せられる
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
+ms.topic: troubleshooting
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 37f375b6d4284b4728b2337dc5ab5186ce22772c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081548"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167774"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -142,13 +142,11 @@ MFA プロバイダーの詳細については、「[Azure Multi-Factor Auth プ
 >
 > アプリ パスワードは、先進認証をサポートしていないアプリにのみ必要になります。 Office 2013 クライアントでは、先進認証プロトコルがサポートされますが、構成が必要です。 Office 2013 の 2015 年 3 月以降の更新を実行しているすべてのお客様は、最新の認証を利用できるようになりました。 詳細については、「[Updated Office 365 modern authentication (Office 365 の先進認証の更新)](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)」を参照してください。
 
-**Q:テキスト メッセージが届かない場合や、双方向テキスト メッセージに返信しても認証がタイムアウトになる場合があるとユーザーが訴えています。**
+**Q:テキスト メッセージが届かない場合や、認証がタイムアウトになる場合があると、ユーザーが訴えています。**
 
-双方向 SMS でのテキスト メッセージの配信と応答の受信は保証されませんが、これはサービスの信頼性に影響しかねない制御不能な要因があるためです。 これらの要因には、相手国/地域、携帯電話会社、信号の強さなどがあります。
+サービスの信頼性に影響する可能性がある制御不能な要因があるため、SMS メッセージの配信は保証されません。 これらの要因には、相手国/地域、携帯電話会社、信号の強さなどがあります。
 
 テキスト メッセージがユーザーに確実に届かない問題が頻発する場合は、代わりにモバイル アプリか電話呼び出しによる認証方法を使用するようユーザーに指示してください。 モバイル アプリは、携帯電話と Wi-fi 接続の両方で通知を受け取ることができます。 さらに、デバイスに信号がまったくない場合でも、モバイル アプリは検証コードを生成できます。 Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](https://go.microsoft.com/fwlink/?Linkid=825073)、[Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) で利用できます。
-
-テキスト メッセージを使用する必要がある場合は、できるだけ双方向の SMS ではなく一方向の SMS を使用することをお勧めします。 一方向の SMS は、信頼性が高く、別の国/地域から送信されたテキスト メッセージに応答して高額な国際 SMS 料金をユーザーが課金されるのを防ぐことができます。
 
 **Q:ユーザーが認証コードを入力しなければならない、テキスト メッセージを受信してからシステムがタイムアウトになるまでの制限時間は変更できますか。**
 
@@ -162,7 +160,7 @@ Azure MFA サーバー v7.0 以降の単方向 SMS の場合、レジストリ �
 >[!TIP] 
 >MFA サーバーが複数ある場合、ユーザーに送信された確認コードを認識しているのは、元の認証要求を処理した 1 つだけです。 ユーザーがコードを入力する際に、そのコードを検証するための認証要求を同じサーバーに送信する必要があります。 コードの検証を別のサーバーに送信すると、認証が拒否されます。 
 
-Azure MFA サーバーの双方向 SMS の場合、MFA 管理ポータルでタイムアウト設定を構成することができます。 ユーザーが定義されたタイムアウト期間内に SMS に応答しない場合、認証は拒否されます。 
+ユーザーが定義されたタイムアウト期間内に SMS に応答しない場合、認証は拒否されます。 
 
 クラウドの Azure MFA の単方向 SMS (AD FS アダプターおよびネットワーク ポリシー サーバー拡張機能など) の場合、タイムアウト設定を構成することはできません。 Azure AD は、確認コードを 180 秒間保存します。 
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory (Azure AD) の条件付きアクセスを使用して信頼されていないネットワークからのアクセスに対して多要素認証 (MFA) を必須にする方法 | Microsoft Docs
+title: 信頼されていないネットワークに MFA を要求する - Azure Active Directory
 description: 信頼されていないネットワークからのアクセスの試行に対して、Azure Active Directory (Azure AD) で条件付きアクセス ポリシーを構成する方法を説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39ec09c1ecb94a5ae189317d89cce4bc8f279b48
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4cedec7f0bd51460796d8138f8d481d2982098f4
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175688"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380004"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>方法:条件付きアクセスを使用して信頼されていないネットワークからのアクセスに対して MFA を必須にする   
 

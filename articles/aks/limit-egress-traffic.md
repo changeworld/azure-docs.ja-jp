@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: mlearned
-ms.openlocfilehash: cfef8ff79f62eca9946dcbb49cafc253f36ab7bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 208ffaa4c78e00031e41b6e2b8c01edb667b54a6
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472746"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481157"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -132,6 +132,17 @@ Azure Monitor for containers 有効になっている AKS クラスターの場�
 | *.oms.opinsights.azure.com | HTTPS: 443 | このアドレスは、ログ分析サービスの認証に使用される omsagent によって使用されます。 |
 |*.microsoftonline.com | HTTPS: 443 | これは、Azure Monitor に対する認証とメトリックの送信に使用されます。 |
 |*.monitoring.azure.com | HTTPS: 443 | これは、メトリック データを Azure Monitor に送信するために使用されます。 |
+
+## <a name="required-addresses-and-ports-with-azure-dev-spaces-enabled"></a>Azure Dev Spaces が有効になっている場合に必要なアドレスとポート
+
+Azure Dev Spaces が有効になっている AKS クラスターの場合、次の FQDN/アプリケーション規則が必要です。
+
+| FQDN                                    | Port      | 用途      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS: 443 | このアドレスは、linux alpine やその他の Azure Dev Spaces イメージをプルするために使用されます。 |
+| gcr.io | HTTP:443 | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
+| storage.googleapis.com | HTTP:443 | このアドレスは、helm/tiller イメージをプルするために使用されます。 |
+| azds-<guid>.<location>.azds.io | HTTPS: 443 | コントローラーの Azure Dev Spaces バックエンド サービスと通信するためのもの。 正確な FQDN は %USERPROFILE%\.azds\settings.json の "dataplaneFqdn" で確認できます |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Azure Policy (パブリック プレビュー) が有効な AKS クラスターに必要なアドレスとポート
 

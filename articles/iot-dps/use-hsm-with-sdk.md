@@ -1,5 +1,5 @@
 ---
-title: Azure - Azure の Device Provisioning Service クライアント SDK で各種構成証明メカニズムを使用する方法
+title: Azure IoT Hub Device Provisioning Service クライアント SDK で各種の構成証明メカニズムを使用する
 description: Azure - Azure の Device Provisioning Service クライアント SDK で各種構成証明メカニズムを使用する方法
 author: robinsh
 ms.author: robinsh
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: fd974ad81a641afb1c93fffb0a12a147c55b3a73
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 0cde591d2ec8c6f2f51c83b3f263c188c8cf2605
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951893"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228285"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>C 言語用 Device Provisioning Service クライアント SDK で各種構成証明メカニズムを使用する方法
 

@@ -1,22 +1,22 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 1f08067768f2d4a0a0c2ab31b3db1c9f2c9e1521
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a05229f22e1682d73b627e3b4644ba64e653335f
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476929"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414455"
 ---
 | リソース | 無料 | 共有 | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
 | [Azure App Service プラン](../articles/app-service/overview-hosting-plans.md)あたりの [Web、モバイル、または API アプリ数](https://azure.microsoft.com/services/app-service/)<sup>1</sup> |10 |100 |無制限<sup>2</sup> |無制限<sup>2</sup> |無制限<sup>2</sup> |無制限<sup>2</sup>|
 | [[App Service プラン]](../articles/app-service/overview-hosting-plans.md) |リージョンあたり 10 件 |リソース グループあたり 10 |リソース グループあたり 100 |リソース グループあたり 100 |リソース グループあたり 100 |リソース グループあたり 100|
 | コンピューティング インスタンスの種類 |共有 |共有 |専用<sup>3</sup> |専用<sup>3</sup> |専用<sup>3</sup></p> |専用<sup>3</sup>|
-| [スケール アウト](../articles/app-service/manage-scale-up.md) (最大インスタンス) |1 Shared インスタンス |1 Shared インスタンス |3 専用インスタンス<sup>3</sup> |10 専用インスタンス<sup>3</sup> |20 専用インスタンス<sup>3</sup>|100 専用インスタンス<sup>4</sup>|
+| [スケール アウト](../articles/app-service/manage-scale-up.md) (最大インスタンス) |1 Shared インスタンス |1 Shared インスタンス |3 専用インスタンス<sup>3</sup> |10 専用インスタンス<sup>3</sup> |30 専用インスタンス<sup>3</sup>|100 専用インスタンス<sup>4</sup>|
 | ストレージ<sup>5</sup> |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
 | CPU 時間 (5 分)<sup>6</sup> |3 分 |3 分 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金|
 | CPU 時間 (1 日)<sup>6</sup> |約 60 分 |約 240 分 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |無制限、Standard の[料金](https://azure.microsoft.com/pricing/details/app-service/)</a>で課金 |

@@ -1,17 +1,14 @@
 ---
-title: リソースを監視する Azure アクティビティ ログの表示 | Microsoft Docs
+title: リソースを監視する Azure アクティビティ ログの表示
 description: アクティビティ ログを使用してユーザーの操作やエラーを確認します。 Azure portal、PowerShell、Azure CLI、REST を表示します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7b70d2a8c158b6f8b3dc87c22e5ca90f2861aebb
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329441"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422275"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>リソースのアクションを監視するアクティビティ ログの表示
 
@@ -31,9 +28,11 @@ ms.locfileid: "72329441"
 
 ## <a name="azure-portal"></a>Azure ポータル
 
-1. ポータルからアクティビティ ログを表示するには、 **[監視]** を選択します。
+ポータルからアクティビティ ログを表示するには、次の手順を実行します。
 
-    ![監視を選択する](./media/resource-group-audit/select-monitor.png)
+1. Azure portal メニューで **[モニター]** を選択するか、または任意のページから **[モニター]** を検索して選択します。
+
+    ![監視を選択する](./media/resource-group-audit/select-monitor-from-menu.png)
 
 1. **[アクティビティ ログ]** を選択します。
 
@@ -67,9 +66,9 @@ ms.locfileid: "72329441"
 
     ![フィルターに名前を付ける](./media/resource-group-audit/name-filters.png)
 
-1. フィルターはダッシュ ボードで提供されます。
+1. フィルターはダッシュ ボードで提供されます。 Azure portal のメニューで **[ダッシュボード]** を選択します。
 
-    ![ダッシュ ボードでフィルターを表示する](./media/resource-group-audit/show-dashboard.png)
+    ![ダッシュ ボードでフィルターを表示する](./media/resource-group-audit/activity-log-on-dashboard.png)
 
 1. ポータルで、リソースへの変更を表示できます。 [監視] で既定のビューに戻り、リソースの変更が関係した操作を選択します。
 

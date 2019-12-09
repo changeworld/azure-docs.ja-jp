@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: iainfou
-ms.openlocfilehash: b82927efa9054e71379d01993d1669527bc71402
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: f239bab48e732755361fe734fdc24b37d3823c63
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249413"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481021"
 ---
 # <a name="management-concepts-for-user-accounts-passwords-and-administration-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でのユーザー アカウント、パスワード、および管理の管理の概念
 
@@ -59,6 +59,21 @@ Azure AD Connect を使用してオンプレミスの AD DS 環境から同期�
 
 適切に構成されれば、使用可能なパスワード ハッシュが Azure AD DS のマネージド ドメインに保存されます。 Azure AD DS のマネージド ドメインを削除した場合、その時点で保存されていたパスワード ハッシュがあればすべて削除されます。 Azure AD DS のマネージド ドメインを後から作成した場合、Azure AD にある同期済みの資格情報は再利用できません。パスワード ハッシュを再度保存するには、パスワード ハッシュ同期を再構成する必要があります。 既にドメイン参加済みの VM またはユーザーがすぐに認証を行うことはできません。Azure AD が、新しい Azure AD DS のマネージド ドメインにパスワード ハッシュを生成して保存する必要があります。 詳細については、[Azure AD DS と Azure AD Connect のパスワード ハッシュ同期プロセス][azure-ad-password-sync]に関するセクションを参照してください。
 
+> [!IMPORTANT]
+> Azure AD Connect は、オンプレミスの AD DS 環境との同期のためにのみインストールおよび構成する必要があります。 オブジェクトを Azure AD に同期するために、Azure AD DS マネージド ドメインに Azure AD Connect をインストールすることはサポートされていません。
+
+## <a name="forests-and-trusts"></a>フォレストと信頼
+
+"*フォレスト*" は、Active Directory Domain Services (AD DS) で 1 つまたは複数の "*ドメイン*" をグループ化するために使われる論理構造です。 ドメインには、ユーザーまたはグループのオブジェクトが格納され、認証サービスが提供されます。
+
+Azure AD DS では、フォレストにはドメインが 1 つだけ含まれます。 多くの場合、オンプレミスの AD DS フォレストには多数のドメインが含まれます。 大規模な組織では、特に合併や買収の後に、複数のオンプレミス フォレストが存在し、各フォレストにそれぞれ複数のドメインが含まれている場合があります。
+
+既定では、Azure AD DS マネージド ドメインは "*ユーザー*" フォレストとして作成されます。 このタイプのフォレストでは、オンプレミスの AD DS 環境で作成されたユーザー アカウントも含め、Azure AD 内のすべてのオブジェクトが同期されます。 ドメインに参加している VM へのサインインなどのために、Azure AD DS マネージド ドメインに対してユーザー アカウントを直接認証できます。 ユーザー フォレストが機能するのは、パスワード ハッシュの同期が可能で、ユーザーがスマート カード認証などの専用サインイン方法を使用していない場合です。
+
+Azure AD DS の "*リソース*" フォレストでは、ユーザーは自身のオンプレミス AD DS からの、一方向のフォレストの "*信頼*" を介して認証されます。 この方法では、ユーザー オブジェクトとパスワード ハッシュが Azure AD DS に同期されません。 ユーザー オブジェクトと資格情報は、オンプレミスの AD DS にのみ存在します。 このアプローチを使用すると、企業は、LDAPS、Kerberos、NTLM などの従来の認証に依存するリソースとアプリケーション プラットフォームを Azure でホストでき、一方で認証に関する問題や懸念事項が取り除かれます。 Azure AD DS リソース フォレストは現在、プレビューの段階です。
+
+Azure AD DS 内のフォレストの種類の詳細については、[リソース フォレストとは何か][concepts-forest]および[フォレストの信頼が Azure AD DS で機能する方法][concepts-trust]に関するページを参照してください。
+
 ## <a name="next-steps"></a>次の手順
 
 まず初めに、[Azure AD DS マネージド ドメインを作成しましょう][create-instance]。
@@ -69,3 +84,6 @@ Azure AD Connect を使用してオンプレミスの AD DS 環境から同期�
 [secure-domain]: secure-your-domain.md
 [azure-ad-password-sync]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
 [create-instance]: tutorial-create-instance.md
+[tutorial-create-instance-advanced]: tutorial-create-instance-advanced.md
+[concepts-forest]: concepts-resource-forest.md
+[concepts-trust]: concepts-forest-trust.md

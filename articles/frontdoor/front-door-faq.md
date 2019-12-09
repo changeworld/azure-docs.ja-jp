@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service - Front Door よく寄せられる質問 | Microsoft Docs
-description: このページでは、Azure Front Door Service に関してよく寄せられる質問の回答を紹介します
+title: Azure Front Door Service - よく寄せられる質問
+description: このページでは、Azure Front Door Service に関してよく寄せられる質問の回答を示します
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 4001b3ed8d7a92d8a751486ab4fd3a097d032373
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: c8f95a1de85fd2eb00b0525fca8e62ade87dd57f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809727"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184655"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Azure Front Door Service についてよく寄せられる質問
 

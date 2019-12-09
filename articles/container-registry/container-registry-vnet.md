@@ -1,19 +1,14 @@
 ---
-title: 仮想ネットワークで Azure Container Registry へのアクセスを制限する
+title: 仮想ネットワークを使用してアクセスを制限する
 description: Azure コンテナー レジストリへは、Azure 仮想ネットワーク内のリソースから、またはパブリック IP アドレス範囲からのみアクセスできます。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
-ms.author: danlep
-ms.openlocfilehash: 5ba5c180def9539c486fb8727a0a78b4f98fa185
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: a6b89b074c25ea0948597ede7e5681b100c7f429
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931330"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454332"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Azure 仮想ネットワークまたはファイアウォール規則を使用して Azure コンテナー レジストリへのアクセスを制限する
 

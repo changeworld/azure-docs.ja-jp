@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a1906b8ac281620381176a2a11dff3841069f69
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 2d54ef06fd63a1064962aea6099a2289d04ff658
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062671"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462002"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -62,7 +62,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * **パスワード同期**機能を使用する場合、Azure AD Connect サーバーが Windows Server 2008 R2 SP1 以降にインストールされている必要があります。
 * **グループ管理サービス アカウント**を使用する場合、Azure AD Connect サーバーが Windows Server 2012 以降にインストールされている必要があります。
 * Azure AD Connect サーバーには、[.NET Framework 4.5.1](#component-prerequisites) 以降と [Microsoft PowerShell 3.0](#component-prerequisites) 以降がインストールされている必要があります。
-* Azure AD Connect サーバーの PowerShell トランスクリプション グループ ポリシーは有効にしないでください。
+* Azure AD Connect ウィザードを使用して ADFS 構成を管理している場合、Azure AD Connect サーバーで PowerShell トランスクリプション グループ ポリシーを有効にしてはなりません。 Azure AD Connect ウィザードを使用して同期構成を管理している場合は、PowerShell トランスクリプションを有効にすることができます。
 * Active Directory Federation Services をデプロイする場合、AD FS または Web アプリケーション プロキシがインストールされるサーバーは、Windows Server 2012 R2 以降である必要があります。 [Windows リモート管理](#windows-remote-management) を有効にする必要があります。
 * Active Directory フェデレーション サービスがデプロイされている場合は、 [SSL 証明書](#ssl-certificate-requirements)が必要です。
 * Active Directory フェデレーション サービス (AD FS) がデプロイされている場合は、 [名前解決](#name-resolution-for-federation-servers)を構成する必要があります。

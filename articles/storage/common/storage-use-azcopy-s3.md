@@ -1,5 +1,5 @@
 ---
-title: AzCopy v10 を使用して Amazon S3 バケットから Azure Storage にデータを転送する | Microsoft Docs
+title: AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする | Microsoft Docs
 description: AzCopy と Amazon S3 バケットでデータを転送する
 services: storage
 author: normesta
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b984d194c75924451a52250490b1a5590b996974
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 21f11b9175566fc020ad21e1983a9bef64ebbae3
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821385"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327853"
 ---
-# <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>AzCopy を使用して Amazon S3 バケットからデータをコピーする
+# <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy を使用して Amazon S3 から Azure Storage にデータをコピーする
 
 AzCopy は、ストレージ アカウント間の BLOB またはファイル コピーに利用できるコマンドライン ユーティリティです。 この記事は、AzCopy を使用して Amazon Web Services (AWS) S3 から Azure BLOB ストレージにオブジェクト、ディレクトリ、およびバケットをコピーする場合に役立ちます。
 

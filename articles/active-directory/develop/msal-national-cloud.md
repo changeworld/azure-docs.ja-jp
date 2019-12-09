@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97855a52831a63a92a46bd0d25d23ba3fc91a07b
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 2f1c73d89b0efc17e8f8836d080595927d500ad6
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268575"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481866"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>国内クラウド環境で MSAL を使用する
 
-[国内クラウド](authentication-national-cloud.md) は、物理的に分離された Azure のインスタンスです。 Azure のこれらのリージョンは、データの保存場所、主権、およびコンプライアンス要件を地理的な境界内で確実に守るために役立ちます。
+ソブリン クラウドとも呼ばれる[国内クラウド](authentication-national-cloud.md)は、物理的に分離された Azure インスタンスです。 Azure のこれらのリージョンは、データの保存場所、主権、およびコンプライアンス要件を地理的な境界内で確実に守るために役立ちます。
 
 Microsoft の世界的なクラウドに加え、Microsoft Authentication Library (MSAL) では、国内クラウドのアプリケーション開発者が、セキュリティで保護された Web API を認証して呼び出すためのトークンを取得できます。 これらの Web API には、Microsoft Graph またはその他の Microsoft API が可能です。
 
@@ -57,7 +57,20 @@ Azure Government サブスクリプションを取得するには、「[Managing
 
 Azure Government サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/global-infrastructure/government/request/)を作成してください。
 
-## <a name="javascript"></a>JavaScript
+特定のプログラミング言語で国内クラウドを使用する方法の詳細については、お使いの言語に一致するタブを選択してください。
+
+## <a name="nettabdonet"></a>[.NET](#tab/donet)
+
+MSAL.NET を使用して、国内クラウドへのユーザーのサインインを実行し、トークンを取得し、Microsoft Graph API を呼び出すことができます。
+
+次のチュートリアルでは、.NET Core 2.2 MVC Web アプリをビルドする方法を示します。 このアプリでは、OpenID Connect を使用して、国内クラウドに属する組織のユーザーの職場および学校アカウントでのサインインを実行します。
+
+- ユーザーのサインインを実行してトークンを取得するには、次のチュートリアルに従います: [ソブリン クラウドで Microsoft ID プラットフォームを使用して ASP.NET Core Web アプリのサインイン ユーザーを構築する](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform)。
+- Microsoft Graph API を呼び出すには、次のチュートリアルに従います: [Microsoft の国内クラウドで職場と学校のアカウントを使用してサインインするユーザーの代わりに Microsoft ID プラットフォームを使用して ASP.NET Core 2.x Web アプリから Microsoft Graph API を呼び出す](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud)。
+
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+ソブリン クラウド用の MSAL.js アプリケーションを有効にするには、次のようにします。
 
 ### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 
@@ -127,22 +140,57 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
    すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、[国内クラウド内の Microsoft Graph エンドポイント](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)に関する記事を参照してください。
 
-## <a name="net"></a>.NET
+## <a name="pythontabpython"></a>[Python](#tab/python)
 
-MSAL.NET を使用して、国内クラウドへのユーザーのサインインを実行し、トークンを取得し、Microsoft Graph API を呼び出すことができます。
+ソブリン クラウド用の MSAL Python アプリケーションを有効にするには、次のようにします。
 
-次のチュートリアルでは、.NET Core 2.2 MVC Web アプリをビルドする方法を示します。 このアプリでは、OpenID Connect を使用して、国内クラウドに属する組織のユーザーの職場および学校アカウントでのサインインを実行します。
+- クラウドに応じて、特定のポータルでアプリケーションを登録します。 ポータルの選択方法の詳細については「[アプリ登録エンドポイント](authentication-national-cloud.md#app-registration-endpoints)」を参照してください
+- リポジトリにある[サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample)のいずれかを、クラウドに応じて構成にいくつかの変更を加えて使用します (次で説明します)。
+- アプリケーションを登録したクラウドに応じて、特定の機関を使用します。 さまざまなクラウド用の機関の詳細については、「[Azure AD 認証エンドポイント](authentication-national-cloud.md#azure-ad-authentication-endpoints)」を参照してください。
 
-- ユーザーのサインインを実行してトークンを取得するには、[こちらのチュートリアル](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-4-Sovereign#build-an-aspnet-core-web-app-signing-in-users-in-sovereign-clouds-with-the-microsoft-identity-platform)に従います。
-- Microsoft Graph API を呼び出すには、[こちらのチュートリアル](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-4-Sovereign-Call-MSGraph#using-the-microsoft-identity-platform-to-call-the-microsoft-graph-api-from-an-an-aspnet-core-2x-web-app-on-behalf-of-a-user-signing-in-using-their-work-and-school-account-in-microsoft-national-cloud)に従います。
+    機関の例は次のとおりです。
 
-## <a name="msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL
+    ```json
+    "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
+    ```
+    
+- Microsoft Graph を呼び出すには、使用しているクラウドに応じた特定の Graph エンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
+
+    次に示すのは、Graph エンドポイントとスコープの例です。
+    
+    ```json
+    "endpoint" : "https://graph.microsoft.us/v1.0/me"
+    "scope": "User.Read"
+    ```
+    
+## <a name="javatabjava"></a>[Java](#tab/java)
+
+ソブリン クラウド用の MSAL for Java アプリケーションを有効にするには、次のようにします。
+
+- クラウドに応じて、特定のポータルでアプリケーションを登録します。 ポータルの選択方法の詳細については「[アプリ登録エンドポイント](authentication-national-cloud.md#app-registration-endpoints)」を参照してください
+- リポジトリにある[サンプル](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples)のいずれかを、クラウドに応じて構成にいくつかの変更を加えて使用します (次で説明します)。
+- アプリケーションを登録したクラウドに応じて、特定の機関を使用します。 さまざまなクラウド用の機関の詳細については、「[Azure AD 認証エンドポイント](authentication-national-cloud.md#azure-ad-authentication-endpoints)」を参照してください。
+
+機関の例は次のとおりです。
+
+```json
+"authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
+```
+
+- Microsoft Graph を呼び出すには、使用しているクラウドに応じた特定の Graph エンドポイント URL が必要です。 すべての国内クラウド用の Microsoft Graph エンドポイントを見つけるには、「[Microsoft Graph および Graph エクスプローラー サービスのルート エンドポイント](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)」を参照してください。
+
+次に示すのは、Graph エンドポイントとスコープの例です。
+
+```json
+"endpoint" : "https://graph.microsoft.us/v1.0/me"
+"scope": "User.Read"
+```
+
+## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 iOS および macOS 用の MSAL は、各国のクラウドでトークンを取得するために使用できますが、`MSALPublicClientApplication` を作成する場合は追加の構成が必要です。
 
 たとえば、お使いのアプリケーションを国内クラウド (ここでは米国政府) のマルチテナント アプリケーションにする場合、次のように記述できます。
-
-Objective-C:
 
 ```objc
 MSALAADAuthority *aadAuthority =
@@ -161,7 +209,11 @@ MSALPublicClientApplication *application =
                 [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
 ```
 
-Swift:
+## <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+iOS および macOS 用の MSAL は、各国のクラウドでトークンを取得するために使用できますが、`MSALPublicClientApplication` を作成する場合は追加の構成が必要です。
+
+たとえば、お使いのアプリケーションを国内クラウド (ここでは米国政府) のマルチテナント アプリケーションにする場合、次のように記述できます。
 
 ```swift
 let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
@@ -170,10 +222,13 @@ let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>"
 if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
 ```
 
+---
+
 ## <a name="next-steps"></a>次の手順
 
 各項目の詳細情報
 
+- [各国のクラウドでの認証](authentication-national-cloud.md)
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
 - [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)
 - [Azure Germany](https://docs.microsoft.com/azure/germany/)

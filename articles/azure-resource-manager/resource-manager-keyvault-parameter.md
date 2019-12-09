@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager テンプレートでの Key Vault シークレット | Microsoft Docs
+title: Key Vault のシークレットとテンプレート
 description: デプロイメント時にパラメーターとして Key Vault からシークレットを渡す方法について説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: 489b09d2523393ae67668ed13c651c9b7b0217b4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 37d21e295eca2b40e91f92d65d6e927ee6857d0e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998902"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149492"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す
 

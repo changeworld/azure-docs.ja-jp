@@ -1,7 +1,7 @@
 ---
-title: デザイナー&#58; 書籍のレビューを分類する
+title: 'デザイナー: 書籍レビュー分類の例'
 titleSuffix: Azure Machine Learning
-description: 書籍のレビューをさまざまなカテゴリに分類するための機械学習モデルを構築します。
+description: Azure Machine Learning デザイナーを使用して、マルチクラス ロジスティック回帰分類器を構築し、Wikipedia SP 500 データセットで会社のカテゴリを予測します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,24 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 949ddc847a6011d460f2a3685008d12e64868767
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 16253abce2940690a80f84aa5b68521c09212bb9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647126"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213760"
 ---
-# <a name="sample-7---text-classification-predict-company-category"></a>サンプル 7 - テキスト分類: 会社のカテゴリを予測する 
+# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用して、会社のカテゴリを予測する分類器を作成する
+
+**デザイナー (プレビュー) サンプル 7**
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 このサンプルでは、Azure Machine Learning デザイナー (プレビュー) でテキスト分析モジュールを使用してテキスト分類パイプラインを構築する方法を示します。
 
 テキスト分類の目的は、いくつかのテキストを 1 つまたは複数のクラスまたはカテゴリに割り当てることです。 テキストには、ドキュメント、ニュース記事、検索クエリ、電子メール、ツイート、サポート チケット、顧客フィードバック、ユーザーの製品レビューなどがあります。テキスト分類の用途には、新聞記事やニュース ワイヤーのコンテンツをトピックに分類する、Web ページを階層的なカテゴリに整理する、スパム メールのフィルター処理、センチメント分析、検索クエリからユーザーの意図を予測する、サポート チケットのルーティング、顧客フィードバックの分析などがあります。 
 
-このパイプラインは、**マルチクラス ロジスティック回帰分類器**をトレーニングし、Wikipedia から取得した Wikipedia SP 500 データセットを使用して会社のカテゴリを予測します。  
+このパイプラインを使って、**マルチクラス ロジスティック回帰分類器**をトレーニングし、**Wikipedia から取得した Wikipedia SP 500 データセット**で会社のカテゴリを予測します。  
 
 テキスト データを使用したトレーニング機械学習モデルの基本的な手順は次のとおりです。
 
@@ -43,7 +47,7 @@ ms.locfileid: "73647126"
 
 これから取り組むパイプラインの最終的な完成したグラフを次に示します。 ご自身で同様の決定を下すことができるように、ここではすべてのモジュールの理論的な根拠を提示します。
 
-[![パイプラインのグラフ](./media/how-to-ui-sample-text-classification/nlp-modules-overall.png)](./media/how-to-ui-sample-text-classification/nlp-modules-overall.png#lightbox)
+[![パイプラインのグラフ](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png)](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png#lightbox)
 
 ## <a name="data"></a>Data
 
@@ -92,7 +96,7 @@ N-gram は、テキストの特定のシーケンスからの n 個の用語の�
 **[Feature Hashing]\(特徴ハッシュ\)** モジュールの場合、スコア付けフローでトレーニング フローのように特徴エンジニアリングを実行するのは簡単です。 **[Feature Hashing]\(特徴ハッシュ\)** モジュールを直接使用して、入力テキスト データを処理します。
 
 **[Extract N-Gram Feature from Text]\(テキストからの N-gram 特徴抽出\)** モジュールの場合、トレーニング データフローからの **[Result Vocabulary output]\(結果ボキャブラリ出力\)** をスコア付けデータフローの **[Input Vocabulary]\(入力ボキャブラリ\)** に接続し、 **[Vocabulary mode]\(ボキャブラリ モード\)** パラメーターを **[ReadOnly]\(読み取り専用\)** に設定します。
-[![N-gram スコアのグラフ](./media/how-to-ui-sample-text-classification/n-gram.png)](./media/how-to-ui-sample-text-classification/n-gram.png)
+[![N-gram スコアのグラフ](./media/how-to-designer-sample-text-classification/n-gram.png)](./media/how-to-designer-sample-text-classification/n-gram.png)
 
 エンジニアリング手順を完了した後、 **[Score Model]\(モデルのスコア付け\)** を使用すると、トレーニングされたモデルを用いることによってテスト データセットに対して予測を生成できます。 結果を確認するには、 **[Score Model]\(モデルのスコア付け\)** の出力ポートを選択し、 **[Visualize]\(可視化\)** を選択します。
 

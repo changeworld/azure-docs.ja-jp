@@ -1,101 +1,102 @@
 ---
 title: Azure Spring Cloud についてよく寄せられる質問 | Microsoft Docs
-description: Azure Spring Cloud に関する FAQ を確認します
+description: この記事では、Azure Spring Cloud についてよく寄せられる質問に回答します。
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1fb241ab1335e6b9c9be55acbbe2e21378831b69
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 6835132192040b4b943b156fb78ae1547522be0c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607227"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229244"
 ---
-# <a name="frequently-asked-questions"></a>よく寄せられる質問
+# <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
-この記事では、Azure Spring Cloud についてよく寄せられる質問にお答えします。 
+この記事では、Azure Spring Cloud についてよく寄せられる質問に回答します。 
 
 ## <a name="general"></a>全般
 
 ### <a name="why-azure-spring-cloud"></a>Azure Spring Cloud が必要なのはなぜですか?
 
-Azure Spring Cloud は、Spring 開発者のためのサービスとしてのプラットフォーム (PaaS) です。 Azure Spring Cloud がアプリケーションのインフラストラクチャを管理してくれるので、開発者がアプリケーションのコードとビジネス ロジックに専念できるようになります。 Azure Spring Cloud に組み込まれているコア機能には、Eureka、構成サーバー、サービス レジストリ サーバー、Pivotal ビルドサービス、ブルーグリーン デプロイなどがあります。 また、このサービスでは、開発者がアプリケーションを CosmosDB、MySQL、Azure Cache for Redis などの Azure サービスにバインドすることもできます。
+Azure Spring Cloud は、Spring Cloud 開発者のためのサービスとしてのプラットフォーム (PaaS) を提供します。 Azure Spring Cloud がアプリケーション インフラストラクチャを管理するため、開発者はアプリケーション コードやビジネス ロジックに焦点を絞ることができます。 Azure Spring Cloud に組み込まれているコア機能には、Eureka、構成サーバー、サービス レジストリ サーバー、Pivotal Build Service、ブルーグリーン デプロイなどが含まれます。 このサービスにより、開発者はアプリケーションを Azure Cosmos DB、Azure Database for MySQL、Azure Cache for Redis などの他の Azure サービスにバインドすることもできます。
 
-Azure Spring Cloud は、Azure Monitor、Application Insights、Log Analytics を統合することによって、アプリケーション診断に関する開発者やオペレーターのエクスペリエンスを強化しています。
+Azure Spring Cloud は、Azure Monitor、Application Insights、および Log Analytics を統合することによって、開発者やオペレーターのアプリケーション診断エクスペリエンスを拡張します。
 
 ### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Azure Spring Cloud にはどのようなサービス プランがあるのでしょうか?
 
-プレビュー期間中は、Azure Spring Cloud で提供されるサービス プランは 1 つです。  Spring Cloud のデプロイには、16 個の vCPU コアと 32 GB のメモリが含まれています。  デプロイ内の各マイクロサービス インスタンスの上限は、8 GB のメモリを持つ 4 個の vCPU コアです。
+プレビュー期間中は、Azure Spring Cloud で提供されるサービス プランは 1 つです。  Spring Cloud のデプロイには、16 個の vCPU コアと 32 GB のメモリが含まれています。  デプロイ内の各マイクロサービス インスタンスの上限は、4 つの vCPU コアと 8 GB のメモリです。
 
 リソース | 金額
 ------- | -------
 Spring アプリケーションあたりのアプリ インスタンスの数 | 20
-Azure Spring Cloud サービス インスタンスあたりのアプリ インスタンスの合計数 | 50*
-サブスクリプション 1 件、1 リージョンあたりの Azure Spring Cloud サービス インスタンスの数 | 2*
-永続ボリューム | 10 x 50 G バイト
+Azure Spring Cloud サービス インスタンスあたりのアプリ インスタンスの合計数 | 500
+サブスクリプション 1 件、1 リージョンあたりの Azure Spring Cloud サービス インスタンスの数 | 10
+永続ボリューム | 10 x 50 GB
 
-*_制限を引き上げるための[サポート チケット](https://azure.microsoft.com/support/faq/)を開いてください。_
+\* _制限を増やすには、[サポート チケット](https://azure.microsoft.com/support/faq/)を開いてください。_
 
 詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。
 
 ### <a name="how-secure-is-azure-spring-cloud"></a>Azure Spring Cloud のセキュリティはどの程度でしょうか?
 
-セキュリティとプライバシーは、Azure と Azure Spring Cloud のどちらのお客様にとっても特に優先度の高い事項の 1 つです。 Azure では、お客様だけがアプリケーションのデータ、ログ、構成にアクセスできるように、そのようなデータのすべてを安全に暗号化しています。 Azure Spring Cloud のサービス インスタンスはすべて、相互に分離されています。
+セキュリティとプライバシーは、Azure や Azure Spring Cloud のお客様にとっての最優先事項です。 Azure では、アプリケーション データ、ログ、または構成を確実に暗号化することにより、お客様だけがこれらのすべてのデータにアクセスできるようにしています。 Azure Spring Cloud のサービス インスタンスはすべて、相互に分離されています。
 
 Azure Spring Cloud には、SSL と証明書の包括的な管理機能が用意されています。
 
 OpenJDK と Spring Cloud のランタイムに重要なセキュリティ パッチがあるときは、可能な限り早期に Azure Spring Cloud に適用されます。
 
-### <a name="which-regions-azure-spring-cloud-are-available"></a>Azure Spring Cloud を利用できるのはどのリージョンですか?
+### <a name="in-which-regions-is-azure-spring-cloud-available"></a>Azure Spring Cloud はどのリージョンで使用できますか?
 
 米国東部、米国西部 2、西ヨーロッパ、東南アジアです。
 
-### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud の既知の制約事項は何ですか?
+### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Azure Spring Cloud の既知の制限事項はどのようなものですか?
 
-プレビュー期間中の Azure Spring Cloud の既知の制約事項は次のとおりです。
+プレビュー リリース中、Azure Spring Cloud には次の既知の制限事項があります。
 
-* `spring.application.name` が、各アプリケーションの作成時に使用されるアプリケーション名によって上書きされます。
-* Git リポジトリから入手する構成ファイルで、`server.port` が許可されていません。 これを構成ファイルに追加すると、他のアプリケーションやインターネットからアプリケーションにアクセスできなくなる可能性があります。
-* Azure portal と Resource Manager テンプレートで、アプリケーション パッケージのアップロードがサポートされていません。 これを行うには、Azure CLI を使ってアプリケーションをデプロイする方法を使用する必要があります。
-* クォータに関する制約は、「[Azure Spring Cloud にはどのようなサービス プランがあるのでしょうか?](#what-service-plans-does-azure-spring-cloud-offer)」を参照してください。
+* `spring.application.name` が、各アプリケーションを作成するために使用されるアプリケーション名によって上書きされます。
+* `server.port` が、Git リポジトリの構成ファイルで許可されていません。 これを構成ファイルに追加すると、他のアプリケーションやインターネットからアプリケーションにアクセスできなくなる可能性があります。
+* Azure portal と Azure Resource Manager テンプレートがアプリケーション パッケージのアップロードをサポートしていません。 Azure CLI 経由でアプリケーションをデプロイすることによってのみ、アプリケーション パッケージをアップロードできます。
+* クォータ制限については、「[Azure Spring Cloud にはどのようなサービス プランがあるのでしょうか?](#what-service-plans-does-azure-spring-cloud-offer)」を参照してください。
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>フィードバックの提供や問題の報告はどのようにするのでしょうか?
 
-Azure Spring Cloud で問題が発生した場合は、[Azure サポート リクエスト](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を作成してください。 機能に関する要望については、[Azure フィードバック](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして、機能を要求するか、フィードバックを提供してください。
+Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を作成してください。 機能要求を送信するか、またはフィードバックを提供するには、[Azure フィードバック](https://feedback.azure.com/forums/34192--general-feedback)に移動してください。
 
 ## <a name="development"></a>開発
 
-### <a name="i-am-a-spring-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-aazure-spring-cloud-application"></a>Spring の開発者ですが、まだ Azure を使ったことがありません。Azure Spring Cloud アプリケーションの開発方法を最も早く学べる方法は何ですか?
+### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>私は Spring Cloud 開発者ですが、Azure は初めてです。 Azure Spring Cloud アプリケーションの開発方法を学習するための最もすばやい方法は何ですか?
 
-[こちらのクイックスタート](spring-cloud-quickstart-launch-app-portal.md)に従うと、Azure Spring Cloud の使い方を最も早く身に付けることができます。
+Azure Spring Cloud の使用を開始するための最もすばやい方法として、「[クイック スタート: Azure portal を使用して Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart-launch-app-portal.md)」の手順に従ってください。
 
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud はどの Java ランタイムをサポートしていますか?
 
 Azure Spring Cloud は、Java 8 および 11 をサポートしています。
 
-### <a name="where-can-i-see-my-spring-application-logs-and-metrics"></a>Spring アプリケーションのログとメトリックはどこで確認できますか?
+### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Spring Cloud アプリケーションのログとメトリックはどこで表示できますか?
 
 [アプリの概要] タブと [[Azure Monitor]](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) タブでメトリックを探してください。
 
-Azure Spring Cloud では、Spring アプリケーションのログとメトリックを Azure Storage、EventHub、[Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries) にエクスポートすることができます。 Log Analytics でのテーブル名は `AppPlatformLogsforSpring` です。 これを有効にするには、[診断サービス](diagnostic-services.md)に関するこちらの記事を参照してください。
+Azure Spring Cloud は、Spring Cloud アプリケーションのログとメトリックの Azure Storage、EventHub、および [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries) へのエクスポートをサポートしています。 Log Analytics でのテーブル名は *AppPlatformLogsforSpring* です。 これを有効にする方法については、[診断サービス](diagnostic-services.md)に関するページを参照してください。
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud は分散トレースをサポートしていますか?
 
-はい。詳細については、[分散トレース](spring-cloud-tutorial-distributed-tracing.md)に関するページを参照してください。
+はい。 詳細については、[チュートリアル: Azure Spring Cloud で分散トレースを使用する](spring-cloud-tutorial-distributed-tracing.md)」を参照してください。
 
 ### <a name="what-resource-types-does-service-binding-support"></a>サービス バインディングでサポートされるリソースの種類は何ですか?
 
-現時点でサポートされているサービスは次の 3 種類です: Azure Cosmos DB、Azure Database for MySQL、Azure Cache for Redis。
+現時点でサポートされているサービスは次の 3 種類です: Azure Cosmos DB、Azure Database for MySQL、および Azure Cache for Redis。
 
-### <a name="can-i-viewaddmove-persistent-volumes-from-inside-my-applications"></a>アプリケーション内から永続的ボリュームを表示、追加、移動することはできますか?
+### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>アプリケーション内から永続ボリュームを表示、追加、または移動できますか?
+
 はい。
 
 ## <a name="deployment"></a>Deployment
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure Spring Cloud はブルーグリーン デプロイをサポートしていますか?
-はい。詳細については、[ステージング環境に関するガイド](spring-cloud-howto-staging-environment.md)のページを参照してください。
+はい。 詳細については、[ステージング環境の設定](spring-cloud-howto-staging-environment.md)に関するページを参照してください。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Kubernetes にアクセスしてアプリケーション コンテナーを操作することはできるのでしょうか?
 
@@ -103,23 +104,23 @@ No.  Azure Spring Cloud は、基盤となるアーキテクチャの管理作�
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud でソースからコンテナーを構築することはできますか?
 
-はい。詳細については、[ソースからのデプロイ](spring-cloud-launch-from-source.md)に関するページを参照してください。
+はい。 詳細については、「[ソース コードから Spring Cloud アプリケーションを起動する](spring-cloud-launch-from-source.md)」を参照してください。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud はアプリ インスタンス内での自動スケーリングをサポートしていますか?
 
 No.
 
-### <a name="what-are-the-best-practices-for-migrating-existing-spring-microservices-to-azure-spring-cloud"></a>既存の Spring マイクロサービスを Azure Spring Cloud に移行する際のベスト プラクティスはどのようなものですか?
+### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行するためのベスト プラクティスはどのようなものですか?
 
-既存の Spring マイクロサービスを Azure Spring Cloud に移行する前に、次のことを行ってください。
+既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行しようとしている場合は、次のベスト プラクティスを確認することをお勧めします。
 * アプリケーションの依存関係をすべて解決しておく必要があります。
-* Azure Spring Cloud のデプロイとの間で比較できるように、構成エントリ、環境変数、JVM パラメーターを用意しておきます。
-* サービス バインディングを使用する場合には、お使いの Azure サービスを確認し、適切なアクセス許可を設定しておきます。
-* サービス検出サービス、構成サーバーなど、Azure Spring Cloud が管理するサービスと競合するおそれのある埋め込みサービスがあれば、削除するか、無効にしておくことをお勧めします。
-*-* 公式の安定した Pivotal Spring ライブラリを使用することをお勧めします。 非公式、ベータ版、またはフォークされたバージョンの Pivotal Spring ライブラリは、SLA の対象外となります。
+* 構成エントリ、環境変数、および JVM パラメーターを準備しておき、それらを Azure Spring Cloud でのデプロイと比較できるようにします。
+* サービス バインドを使用する場合は、Azure サービスをチェックし、適切なアクセス許可を設定していることを確認してください。
+* Azure Spring Cloud によって管理されるサービスと競合する可能性のある組み込みサービス (サービス検出サービスや構成サーバーなど) をすべて削除するか、または無効にすることをお勧めします。
+* 公式の、安定した Pivotal Spring ライブラリを使用することをお勧めします。 非公式版、ベータ版、またはフォーク済みバージョンの Pivotal Spring ライブラリにはサービス レベル アグリーメント (SLA) のサポートがありません。
 
-移行後は、CPU や RAM のメトリックとネットワーク トラフィックを監視して、アプリケーション インスタンスが適切にスケーリングされていることを確認します。
+移行したら、CPU/RAM のメトリックやネットワーク トラフィックを監視して、アプリケーション インスタンスが適切にスケーリングされていることを確認します。
 
 ## <a name="next-steps"></a>次の手順
 
-[このほかにご不明な点がある場合には、トラブルシューティング ガイドをご確認ください](spring-cloud-troubleshoot.md)。
+さらに質問がある場合は、[Azure Spring Cloud のトラブルシューティング ガイド](spring-cloud-troubleshoot.md)に関するページを参照してください。

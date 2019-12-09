@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 08/26/2019
+ms.date: 11/26/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 8cabc1031f9d0be772ba087109ae1dfc881ce163
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 218031830a7516dfd539e1c0b9b665807822f38d
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680083"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533145"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -47,84 +47,6 @@ ms.locfileid: "73680083"
 
 - **解決方法**: 数分後にコピー アクティビティを再実行します。
 
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-
-### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>エラー メッセージ: 文字列から uniqueidentifier に変換中、変換が失敗しました。
-
-- **現象**:ステージング コピーおよび PolyBase を使用して、SQL Server などの表形式のデータ ソースから Azure SQL Data Warehouse にデータをコピーすると、次のエラーが発生します。
-
-    ```
-    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
-    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
-    Message=Conversion failed when converting from a character string to uniqueidentifier...
-    ```
-
-- **原因**: Azure SQL Data Warehouse の PolyBase によって空の文字列を GUID に変換できません。
-
-- **解決方法**:コピー アクティビティ シンクの PolyBase の設定で、"**使用型の既定の**" オプションを false に設定します。
-
-### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>エラー メッセージ:予期されたデータ型: DECIMAL(x,x)、問題のある値
-
-- **現象**: ステージング コピーおよび PolyBase を使用して、SQL Server などの表形式のデータ ソースから SQL DW にデータをコピーすると、次のエラーが発生します。
-
-    ```
-    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
-    Message=Error happened when loading data into SQL Data Warehouse.,
-    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
-    Message=Query aborted-- the maximum reject threshold (0 rows) was reached while reading from an external source: 1 rows rejected out of total 415 rows processed. (/file_name.txt) 
-    Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
-    ```
-
-- **原因**: Azure SQL Data Warehouse の PolyBase では、空の文字列 (null 値) を decimal 型の列に挿入することはできません。
-
-- **解決方法**:コピー アクティビティ シンクの PolyBase の設定で、"**使用型の既定の**" オプションを false に設定します。
-
-### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>エラー メッセージ:Java 例外メッセージ: HdfsBridge::CreateRecordReader
-
-- **現象**: PolyBase を使用して Azure SQL Data Warehouse にデータをコピーすると、次のエラーが発生します。
-
-    ```
-    Message=110802;An internal DMS error occurred that caused this operation to fail. 
-    Details: Exception: Microsoft.SqlServer.DataWarehouse.DataMovement.Common.ExternalAccess.HdfsAccessException, 
-    Message: Java exception raised on call to HdfsBridge_CreateRecordReader. 
-    Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
-    ```
-
-- **原因**: 原因として、スキーマ (列の合計幅) が大きすぎる (1 MB を超えている) ことが考えられます。 次のすべての列のサイズを追加して、ターゲットの SQL DW テーブルのスキーマを確認します。
-
-    - Int -> 4 バイト
-    - Bigint-> 8 バイト
-    - Varchar(n)、char(n)、binary(n)、varbinary(n) -> n バイト
-    - Nvarchar(n)、nchar(n) -> n*2 バイト
-    - Date -> 6 バイト
-    - Datetime/(2)、smalldatetime -> 16 バイト
-    - Datetimeoffset -> 20 バイト
-    - Decimal -> 19 バイト
-    - Float -> 8 バイト
-    - Money -> 8 バイト
-    - Smallmoney -> 4 バイト
-    - Real -> 4 バイト
-    - Smallint -> 2 バイト
-    - Time -> 12 バイト
-    - Tinyint -> 1 バイト
-
-- **解決方法**: 列幅を狭くして 1 MB 未満にします。
-
-- または、PolyBase を無効にして一括挿入アプローチを使用します。
-
-### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>エラー メッセージ:HTTP 条件ヘッダーを使用して指定した条件が満たされません。
-
-- **現象**:SQL クエリを使用して Azure SQL Data Warehouse からデータをプルすると、次のエラーが発生します。
-
-    ```
-    ...StorageException: The condition specified using HTTP conditional header(s) is not met...
-    ```
-
-- **原因**:Azure SQL Data Warehouse では、Azure Storage 内の外部テーブルに対するクエリに関する問題が発生しています。
-
-- **解決方法**:SSMS で同じクエリを実行し、同じ結果が表示されるかどうかを確認します。 表示される場合は、Azure SQL Data Warehouse に対するサポート チケットを作成し、ご利用の SQL DW サーバーとデータベース名を入力してさらにトラブルシューティングを行います。
-
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
 ### <a name="error-message-request-size-is-too-large"></a>エラー メッセージ: 要求のサイズが大きすぎます。
@@ -141,7 +63,7 @@ ms.locfileid: "73680083"
 
     ```
     Message=Partition range id 0 | Failed to import mini-batch. 
-    Exception was Message: {"Errors":["Encountered exception while executing function. Exception &#61; Error: {\"Errors\":[\"Unique index constraint violation.\"]}... 
+    Exception was Message: {"Errors":["Encountered exception while executing function. Exception = Error: {\"Errors\":[\"Unique index constraint violation.\"]}... 
     ```
 
 - **原因**:原因として、次の 2 つが考えられます。
@@ -238,6 +160,249 @@ ms.locfileid: "73680083"
         ```
 
     - 原因 #3 の場合は、キー ファイルまたはパスワードが正しいかどうかを他のツールを使用して再確認することで、それを使用して SFTP サーバーに適切にアクセスできるかどうかを検証します。
+  
+
+## <a name="azure-sql-data-warehouse--azure-sql-database--sql-server"></a>Azure SQL Data Warehouse \ Azure SQL Database \ SQL Server
+
+### <a name="error-code--sqlfailedtoconnect"></a>エラー コード:SqlFailedToConnect
+
+- **メッセージ**: `Cannot connect to SQL database: '%server;', Database: '%database;', User: '%user;'. Please check the linked service configuration is correct, and make sure the SQL database firewall allows the integration runtime to access.`
+
+- **原因**:エラー メッセージに "SqlException" が含まれている場合、SQL データベースは、何らかの特定の操作が失敗したことを示すエラーをスローします。
+
+- **推奨事項**:詳細については、次の参照ドキュメントで SQL エラー コードを検索してください: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 さらに支援が必要な場合は、Azure SQL サポートにお問い合わせください。
+
+- **原因**:"Client with IP address '...' is not allowed to access the server" (IP アドレスが '...' のクライアントはサーバーへのアクセスが許可されていません) という内容がエラー メッセージに含まれており、Azure SQL データベースに接続しようとしている場合、その原因は通常、Azure SQL データベースのファイアウォールの問題です。
+
+- **推奨事項**:Azure SQL Server のファイアウォールの構成で、"Allow Azure services and resources to access this server" (このサーバーへのアクセスを Azure のサービスとリソースに許可する) オプションを有効にします。 参照ドキュメント: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure 。
+
+
+### <a name="error-code--sqloperationfailed"></a>エラー コード:SqlOperationFailed
+
+- **メッセージ**: `A database operation failed. Please search error to get more details.`
+
+- **原因**:エラー メッセージに "SqlException" が含まれている場合、SQL データベースは、何らかの特定の操作が失敗したことを示すエラーをスローします。
+
+- **推奨事項**:詳細については、次の参照ドキュメントで SQL エラー コードを検索してください: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors 。 さらに支援が必要な場合は、Azure SQL サポートにお問い合わせください。
+
+- **原因**:エラー メッセージに "PdwManagedToNativeInteropException" が含まれている場合、通常、ソースとシンクで列のサイズが一致しないことが原因です。
+
+- **推奨事項**:ソースの列とシンクの列の両方のサイズを確認してください。 さらに支援が必要な場合は、Azure SQL サポートにお問い合わせください。
+
+- **原因**:エラー メッセージに "InvalidOperationException" が含まれている場合、通常、無効な入力データが原因です。
+
+- **推奨事項**:問題が発生している行を特定するには、コピー アクティビティでフォールト トレランス機能を有効にしてください。これにより、問題のある行をストレージにリダイレクトして、さらに調査することができます。 参照ドキュメント: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance 。
+
+
+### <a name="error-code--sqlunauthorizedaccess"></a>エラー コード:SqlUnauthorizedAccess
+
+- **メッセージ**: `Cannot connect to '%connectorName;'. Detail Message: '%message;'`
+
+- **原因**:資格情報が正しくないか、ログイン アカウントが SQL データベースにアクセスできません。
+
+- **推奨事項**:SQL データベースにアクセスするための十分なアクセス許可がログイン アカウントにあることを確認してください。
+
+
+### <a name="error-code--sqlopenconnectiontimeout"></a>エラー コード:SqlOpenConnectionTimeout
+
+- **メッセージ**: `Open connection to database timeout after '%timeoutValue;' seconds.`
+
+- **原因**:SQL データベースの一時的な障害の可能性があります。
+
+- **推奨事項**:接続タイムアウトの値を大きくして、リンクされたサービス接続文字列の更新を再試行してください。
+
+
+### <a name="error-code--sqlautocreatetabletypemapfailed"></a>エラー コード:SqlAutoCreateTableTypeMapFailed
+
+- **メッセージ**: `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(colunm name:'%colunmName;') in auto-create table.`
+
+- **原因**:自動作成テーブルがソースの要件を満たすことができません。
+
+- **推奨事項**:"マッピング" で列のデータ型を更新するか、ターゲット サーバーで手動でシンク テーブルを作成してください。
+
+
+### <a name="error-code--sqldatatypenotsupported"></a>エラー コード:SqlDataTypeNotSupported
+
+- **メッセージ**: `A database operation failed. Please check the SQL errors.`
+
+- **原因**:SQL ソースで問題が発生し、エラーが SqlDateTime オーバーフローに関連している場合、データ値が論理型の範囲 (1/1/1753 12:00:00 AM - 12/31/9999 11:59:59 PM) を超えています。
+
+- **推奨事項**:ソースの SQL クエリで型を文字列にキャストするか、コピー アクティビティの列マッピングで列の型を "String" に変更してください。
+
+- **原因**:SQL シンクで問題が発生し、エラーが SqlDateTime オーバーフローに関連している場合、データ値がシンク テーブルの許容範囲を超えています。
+
+- **推奨事項**:シンク テーブルで、対応する列の型を "datetime2" 型に更新してください。
+
+
+### <a name="error-code--sqlinvaliddbstoredprocedure"></a>エラー コード:SqlInvalidDbStoredProcedure
+
+- **メッセージ**: `The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
+
+- **原因**:指定されたストアド プロシージャは無効です。 ストアド プロシージャが何もデータを返さないことが原因である可能性があります。
+
+- **推奨事項**:SQL ツールによってストアド プロシージャを検証してください。 ストアド プロシージャがデータを返せることを確認してください。
+
+
+### <a name="error-code--sqlinvaliddbquerystring"></a>エラー コード:SqlInvalidDbQueryString
+
+- **メッセージ**: `The specified SQL Query is not valid. It could be caused by that the query doesn't return any data. Invalid query: '%query;'`
+
+- **原因**:指定された SQL クエリは無効です。 クエリが何もデータを返さないことが原因である可能性があります
+
+- **推奨事項**:SQL ツールによって SQL クエリを検証してください。 クエリがデータを返せることを確認してください。
+
+
+### <a name="error-code--sqlinvalidcolumnname"></a>エラー コード:SqlInvalidColumnName
+
+- **メッセージ**: `Column '%column;' does not exist in the table '%tableName;', ServerName: '%serverName;', DatabaseName: '%dbName;'.`
+
+- **原因**:列が見つかりません。 構成が不適切な可能性があります。
+
+- **推奨事項**:クエリの列、データセットの "構造"、およびアクティビティの "マッピング" を検証してください。
+
+
+### <a name="error-code--sqlbatchwritetimeout"></a>エラー コード:SqlBatchWriteTimeout
+
+- **メッセージ**: `Timeout in SQL write opertaion.`
+
+- **原因**:SQL データベースの一時的な障害の可能性があります。
+
+- **推奨事項**:問題が解決しない場合は、Azure SQL サポートにお問い合わせください。
+
+
+### <a name="error-code--sqlbatchwriterollbackfailed"></a>エラー コード:SqlBatchWriteRollbackFailed
+
+- **メッセージ**: `Timeout in SQL write operation and rollback also fail.`
+
+- **原因**:SQL データベースの一時的な障害の可能性があります。
+
+- **推奨事項**:接続タイムアウトの値を大きくして、リンクされたサービス接続文字列の更新を再試行してください。
+
+
+### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>エラー コード:SqlBulkCopyInvalidColumnLength
+
+- **メッセージ**: `SQL Bulk Copy failed due to received an invalid column length from the bcp client.`
+
+- **原因**:BCP クライアントから無効な列の長さを受信したため、SQL 一括コピーが失敗しました。
+
+- **推奨事項**:問題が発生している行を特定するには、コピー アクティビティでフォールト トレランス機能を有効にしてください。これにより、問題のある行をストレージにリダイレクトして、さらに調査することができます。 参照ドキュメント: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance 。
+
+
+### <a name="error-code--sqlconnectionisclosed"></a>エラー コード:SqlConnectionIsClosed
+
+- **メッセージ**: `The connection is closed by SQL database.`
+
+- **原因**:同時実行数が多いときに SQL 接続が SQL データベースによって閉じられ、サーバーが接続を終了します。
+
+- **推奨事項**:リモート サーバーで SQL 接続を閉じます。 もう一度試してください。 問題が解決しない場合は、Azure SQL サポートにお問い合わせください。
+
+### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>エラー メッセージ: 文字列から uniqueidentifier に変換中、変換が失敗しました。
+
+- **現象**:ステージング コピーおよび PolyBase を使用して、SQL Server などの表形式のデータ ソースから Azure SQL Data Warehouse にデータをコピーすると、次のエラーが発生します。
+
+    ```
+    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
+    Message=Error happened when loading data into SQL Data Warehouse.,
+    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
+    Message=Conversion failed when converting from a character string to uniqueidentifier...
+    ```
+
+- **原因**: Azure SQL Data Warehouse の PolyBase によって空の文字列を GUID に変換できません。
+
+- **解決方法**:コピー アクティビティ シンクの PolyBase の設定で、"**使用型の既定の**" オプションを false に設定します。
+
+### <a name="error-message-expected-data-type-decimalxx-offending-value"></a>エラー メッセージ:予期されたデータ型: DECIMAL(x,x)、問題のある値
+
+- **現象**: ステージング コピーおよび PolyBase を使用して、SQL Server などの表形式のデータ ソースから SQL DW にデータをコピーすると、次のエラーが発生します。
+
+    ```
+    ErrorCode=FailedDbOperation,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,
+    Message=Error happened when loading data into SQL Data Warehouse.,
+    Source=Microsoft.DataTransfer.ClientLibrary,Type=System.Data.SqlClient.SqlException,
+    Message=Query aborted-- the maximum reject threshold (0 rows) was reached while reading from an external source: 1 rows rejected out of total 415 rows processed. (/file_name.txt) 
+    Column ordinal: 18, Expected data type: DECIMAL(x,x), Offending value:..
+    ```
+
+- **原因**: Azure SQL Data Warehouse の PolyBase では、空の文字列 (null 値) を decimal 型の列に挿入することはできません。
+
+- **解決方法**:コピー アクティビティ シンクの PolyBase の設定で、"**使用型の既定の**" オプションを false に設定します。
+
+### <a name="error-message-java-exception-messagehdfsbridgecreaterecordreader"></a>エラー メッセージ:Java 例外メッセージ: HdfsBridge::CreateRecordReader
+
+- **現象**: PolyBase を使用して Azure SQL Data Warehouse にデータをコピーすると、次のエラーが発生します。
+
+    ```
+    Message=110802;An internal DMS error occurred that caused this operation to fail. 
+    Details: Exception: Microsoft.SqlServer.DataWarehouse.DataMovement.Common.ExternalAccess.HdfsAccessException, 
+    Message: Java exception raised on call to HdfsBridge_CreateRecordReader. 
+    Java exception message:HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.: Error [HdfsBridge::CreateRecordReader - Unexpected error encountered creating the record reader.] occurred while accessing external file.....
+    ```
+
+- **原因**: 原因として、スキーマ (列の合計幅) が大きすぎる (1 MB を超えている) ことが考えられます。 次のすべての列のサイズを追加して、ターゲットの SQL DW テーブルのスキーマを確認します。
+
+    - Int -> 4 バイト
+    - Bigint-> 8 バイト
+    - Varchar(n)、char(n)、binary(n)、varbinary(n) -> n バイト
+    - Nvarchar(n)、nchar(n) -> n*2 バイト
+    - Date -> 6 バイト
+    - Datetime/(2)、smalldatetime -> 16 バイト
+    - Datetimeoffset -> 20 バイト
+    - Decimal -> 19 バイト
+    - Float -> 8 バイト
+    - Money -> 8 バイト
+    - Smallmoney -> 4 バイト
+    - Real -> 4 バイト
+    - Smallint -> 2 バイト
+    - Time -> 12 バイト
+    - Tinyint -> 1 バイト
+
+- **解決方法**: 列幅を狭くして 1 MB 未満にします。
+
+- または、PolyBase を無効にして一括挿入アプローチを使用します。
+
+### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>エラー メッセージ:HTTP 条件ヘッダーを使用して指定した条件が満たされません。
+
+- **現象**:SQL クエリを使用して Azure SQL Data Warehouse からデータをプルすると、次のエラーが発生します。
+
+    ```
+    ...StorageException: The condition specified using HTTP conditional header(s) is not met...
+    ```
+
+- **原因**:Azure SQL Data Warehouse では、Azure Storage 内の外部テーブルに対するクエリに関する問題が発生しています。
+
+- **解決方法**:SSMS で同じクエリを実行し、同じ結果が表示されるかどうかを確認します。 表示される場合は、Azure SQL Data Warehouse に対するサポート チケットを作成し、ご利用の SQL DW サーバーとデータベース名を入力してさらにトラブルシューティングを行います。
+            
+
+## <a name="azure-blob-storage"></a>Azure Blob Storage
+
+### <a name="error-code--azurebloboperationfailed"></a>エラー コード:AzureBlobOperationFailed
+
+- **メッセージ**: `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
+
+- **原因**:BLOB ストレージ操作で問題が発生しました。
+
+- **推奨事項**:エラーの詳細を確認してください。 BLOB のヘルプ ドキュメントを参照してください: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes 。 支援が必要な場合は、ストレージ チームにお問い合わせください。
+
+
+
+## <a name="azure-data-lake-gen2"></a>Azure Data Lake Gen2
+
+### <a name="error-code--adlsgen2operationfailed"></a>エラー コード:AdlsGen2OperationFailed
+
+- **メッセージ**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+
+- **原因**:ADLS Gen2 は、操作が失敗したことを示すエラーをスローします。
+
+- **推奨事項**:ADLS Gen2 によってスローされた詳細なエラー メッセージを確認してください。 一時的な障害が原因の場合は、再試行してください。 さらに支援が必要な場合は、Azure Storage サポートにお問い合わせください。その際、エラー メッセージに含まれる要求 ID をお知らせください。
+
+- **原因**:エラー メッセージに "Forbidden" が含まれている場合、お使いのサービスプリンシパルまたはマネージド ID に、ADLS Gen2 にアクセスするための十分なアクセス許可がない可能性があります。
+
+- **推奨事項**:ヘルプ ドキュメントを参照してください: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication 。
+
+- **原因**:エラー メッセージに "InternalServerError" が含まれている場合、エラーは ADLS Gen2 によって返されたものです。
+
+- **推奨事項**:一時的な障害が原因の可能性があります。再試行してください。 問題が解決しない場合は、Azure Storage サポートにお問い合わせください。その際、エラー メッセージに含まれる要求 ID をお知らせください。
+
 
 ## <a name="next-steps"></a>次の手順
 
@@ -249,6 +414,4 @@ ms.locfileid: "73680083"
 *  [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
 *  [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
-
-
-
+            

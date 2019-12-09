@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2019
-ms.openlocfilehash: 8bf1af096555be8245ff5172905781464dc2d441
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: a01258799efa81c8d3ddba398facaa90c24c2513
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132238"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150031"
 ---
 # <a name="overview-of-the-azure-monitor-agents"></a>Azure Monitor エージェントの概要 
 仮想マシンなどのコンピューティングリ ソースでは、[他のクラウド リソース](../insights/monitor-azure-resource.md)と同様に、自身のパフォーマンスと可用性を監視するためのデータが生成されます。 また、コンピューティング リソースには、監視を必要とする、ゲスト オペレーティング システムとワークロードも含まれています。 この監視データをリソース内から収集するには、エージェントが必要です。 この記事では、Azure Monitor で使用されるエージェントについて説明します。特定の環境の要件を満たす上で必要なエージェントを判断するのに役に立ちます。
@@ -42,7 +42,7 @@ Azure Monitor には 3 つのエージェントがあり、それぞれに固有
 
 
 ## <a name="azure-diagnostic-extension"></a>Azure 診断の拡張機能
-[Azure Diagnostics の拡張機能](../../azure-monitor/platform/diagnostics-extension-overview.md)を使用すると、Azure コンピューティング リソースのゲスト オペレーティング システムおよびワークロードから監視データを収集できます。 それによってデータは主に Azure Storage に収集されます。 ストレージから Log Analytics ワークスペースにデータをコピーするように Azure Monitor を構成することができます。 また、Azure Monitor メトリックにゲスト パフォーマンス データを収集することもできます。
+[Azure Diagnostics 拡張機能](../../azure-monitor/platform/diagnostics-extension-overview.md)を使うと、Azure コンピューティング リソースのゲスト オペレーティング システムとワークロードから監視データを収集できます。 それによってデータは主に Azure Storage に収集されます。 ストレージから Log Analytics ワークスペースにデータをコピーするように Azure Monitor を構成することができます。 また、Azure Monitor メトリックにゲスト パフォーマンス データを収集することもできます。
 
 Azure 診断の拡張機能は、多くの場合、Windows Azure 診断 (WAD) の拡張機能または Linux Azure Diagnostics (LAD) の拡張機能と呼ばれます。
 
@@ -61,7 +61,7 @@ Azure Diagnostics の拡張機能でサポートされるシナリオは次の�
 * ご利用の VM で実行されているアプリケーションから [Application Insights に](diagnostics-extension-to-application-insights.md)データをコピーして、他のアプリケーション監視と統合します。
 
 ## <a name="log-analytics-agent"></a>Log Analytics エージェント
-[Log Analytics エージェント](log-analytics-agent.md) を使用すると、Azure コンピューティング リソースのゲスト オペレーティング システムおよびワークロードから監視データを収集できます。 データは Log Analytics ワークスペースに収集されます。
+[Log Analytics エージェント](log-analytics-agent.md)を使うと、Azure、他のクラウド プロバイダー、オンプレミスの仮想マシンのゲスト オペレーティング システムとワークロードから、監視データを収集できます。 データは Log Analytics ワークスペースに収集されます。
 
 Log Analytics エージェントは、System Center Operations Manager によって使用されるものと同じであり、エージェント コンピューターをマルチホーム化して管理グループおよび Azure Monitor との通信を同時に行います。 このエージェントは、Azure Monitor の特定のソリューションにも必要です。
 
