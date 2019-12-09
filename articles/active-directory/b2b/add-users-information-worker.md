@@ -1,5 +1,5 @@
 ---
-title: インフォメーション ワーカーとして B2B コラボレーション ユーザーを追加する - Azure Active Directory | Microsoft Docs
+title: インフォメーション ワーカーとして B2B コラボレーション ユーザーを追加する - Azure AD
 description: B2B コラボレーションを利用して、インフォメーション ワーカーおよびアプリ所有者がアクセスのために Azure AD にゲスト ユーザーを追加する | Microsoft Docs
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8606a0d4e203e1a910a5cd15ca83a622f5286bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37dc4a618f01022f4963a14aba921edcce9f4b60
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812538"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268849"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>組織内のユーザーがゲスト ユーザーをアプリに招待する方法
 

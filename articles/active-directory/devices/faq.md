@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7730dc1143586eb4c5c05fd475b8412546b7a6
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809260"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207386"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -62,7 +62,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 - ユーザーが、マイ アプリ ポータルからデバイスを無効にする。 
 - 管理者 (またはユーザー) が、Azure portal で、または PowerShell を使用して、デバイスを削除または無効化する
 - Hybrid Azure AD 参加済みのみ:管理者が同期スコープからデバイス OU を削除し、その結果デバイスが Azure AD から削除される
-- AAD Connect をバージョン 1.4.xx.x にアップグレードする。 「[Azure AD Connect 1.4.xx.x およびデバイスの消失について](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance)」を参照してください。
+- Azure AD Connect のバージョン 1.4.xx.x へのアップグレード。 「[Azure AD Connect 1.4.xx.x およびデバイスの消失について](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance)」を参照してください。
 
 
 これらのアクションを修正する方法については、以下を参照してください。
@@ -119,7 +119,7 @@ Azure portal の **[すべてのデバイス]** ビューを使用してくだ�
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>Q:Azure AD での Windows 10 デバイス登録では、FIPS モードの TPM はサポートされますか?
 
-**A:** いいえ。現在、Windows 10 デバイス登録では、すべてのデバイスの状態 (Hybrid Azure AD 参加、Azure AD 参加、および Azure AD 登録済み) について、FIPS モードの TPM はサポートされません。 Azure AD に正常に参加または登録するには、それらのデバイスで FIPS モードを無効にする必要があります。
+**A:** Windows 10 デバイス登録は FIPS 準拠の TPM 2.0 でのみサポートされ、TPM 1.2 ではサポートされていません。 デバイスが FIPS 準拠の TPM 1.2 を使用している場合は、Azure AD 参加または Hybrid Azure AD 参加に進む前に、それを無効にする必要があります。 TPM の FIPS モードを無効にするためのツールは TPM の製造元に依存するため、Microsoft では用意していないことに注意してください。 サポートが必要な場合は、お使いのハードウェアの OEM にお問い合わせください。 
 
 ---
 

@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/26/2019
-ms.openlocfilehash: a33c653199ae21b551acadfb4503eae029ddc5e4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e9934f868fb62f9b1a19ef408dab69ab8a2c0e29
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822824"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159148"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>SQL Database と SQL Data Warehouse へのデータベース アクセスの制御と許可
 
@@ -54,6 +54,9 @@ ms.locfileid: "73822824"
 - データベース、ログイン、master のユーザー、およびサーバー レベルの IP ファイアウォール規則を作成、変更、削除できます。
 - `dbmanager` ロールと `loginmanager` ロールに対して、メンバーの追加と削除を実行できます。
 - `sys.sql_logins` システム テーブルを表示できます。
+- 名前は変更できません。
+- Azure AD 管理者アカウントを変更するには、ポータルまたは Azure CLI を使用します。
+- サーバー管理者アカウントを後で変更することはできません。
 
 ### <a name="configuring-the-firewall"></a>ファイアウォールの構成
 

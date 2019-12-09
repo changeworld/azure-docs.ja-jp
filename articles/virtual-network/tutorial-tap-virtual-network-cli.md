@@ -1,5 +1,5 @@
 ---
-title: 仮想ネットワーク TAP を作成、変更、削除する - Azure CLI | Microsoft Docs
+title: VNet TAP を作成、変更、または削除する - Azure CLI
 description: Azure CLI を使用して仮想ネットワーク TAP を作成、変更、削除する方法について説明します。
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/18/2018
 ms.author: kaanan
-ms.openlocfilehash: 3d95a9ea555cceda82530eb5c487eeb993c1a678
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05ce45a52db2b8a47223023ce31b5591b2b97c37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743192"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185394"
 ---
 # <a name="work-with-a-virtual-network-tap-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク TAP の作業を行う
 

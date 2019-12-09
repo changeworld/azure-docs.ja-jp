@@ -1,22 +1,22 @@
 ---
-title: ネットワーク ポリシー サーバー拡張機能を使用して VPN を Azure MFA と統合する - Azure Active Directory
+title: NPS 拡張機能を使用する VPN と Azure MFA - Azure Active Directory
 description: Microsoft Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合します。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf841738296f0d23bec5d68a0ad1ca0401facfb
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: fa0158b99d10b426efb02ca31cef2bc0053a976f
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812388"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404686"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 

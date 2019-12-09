@@ -2,18 +2,18 @@
 title: Apache Hive Azure HDInsight を使用する Java のユーザー定義関数 (UDF)
 description: Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成する方法について説明します。 この UDF の例では、テキスト文字列のテーブルを小文字に変換します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5690f2cc5bc85d7bcdbf1d05930a05bcc2e764c0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/20/2019
+ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044791"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327203"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>HDInsight 上の Apache Hive で Java UDF を使用する
 
@@ -32,6 +32,7 @@ Apache Hive と連携する Java ベースのユーザー定義関数 (UDF) を�
     > Windows クライアントで Python ファイルを作成する場合は、行末に LF が用いられているエディターを使用する必要があります。 エディターで LF と CRLF のどちらが使用されているかが不明な場合は、「[トラブルシューティング](#troubleshooting)」セクションで、CR 文字を削除する手順をご覧ください。
 
 ## <a name="test-environment"></a>テスト環境
+
 この記事で使用された環境は、Windows 10 を実行しているコンピューターです。  コマンドはコマンド プロンプトで実行され、さまざまなファイルがメモ帳で編集されています。 ご使用の環境に応じて変更します。
 
 コマンド プロンプトで以下のコマンドを入力して、作業環境を作成を作成します。

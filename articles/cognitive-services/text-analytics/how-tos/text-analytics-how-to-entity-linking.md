@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 11/21/2019
 ms.author: aahi
-ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ae5222dcd05740ecb9747037b315c4e920b3eabd
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031425"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326640"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -33,7 +33,7 @@ Text Analytics の `entities` エンドポイントは、名前付きエンテ�
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>名前付きエンティティの認識 v3 パブリック プレビュー
 
-[次期バージョンの名前付きエンティティの認識]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)がパブリック プレビューで使用できるようになりました。 エンティティ リンク設定と名前付きエンティティの認識の両方が更新されています。 
+次期バージョンの名前付きエンティティの認識がパブリック プレビューで使用できるようになりました。 エンティティ リンク設定と名前付きエンティティの認識の両方が更新されています。 [API テスト コンソール](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)を使用して、試してみてください。
 
 :::row:::
     :::column span="":::
@@ -120,6 +120,8 @@ NER
 | DateTime      | Set           | "every Tuesday"     |
 | URL           | 該当なし\*         | "https:\//www.bing.com"    |
 | Email         | 該当なし\*         | "support@contoso.com" |
+| 米国の電話番号  | 該当なし\*         | (米国の電話番号のみ) "(312) 555-0176" |
+| IP アドレス    | 該当なし\*         | "10.0.0.100" |
 
 \* 入力および抽出されたエンティティによっては、一部エンティティで `SubType` が省略されることがあります。  一覧に含まれているすべてのサポートされているエンティティの種類は、英語、簡体中国語、フランス語、ドイツ語、スペイン語でのみ使用できます。
 

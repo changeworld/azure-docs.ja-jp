@@ -1,17 +1,14 @@
 ---
-title: サブスクリプション レベルでのデプロイ - Azure Resource Manager テンプレート
+title: サブスクリプションにリソースをデプロイする
 description: Azure Resource Manager テンプレートでリソース グループを作成する方法について説明します。 Azure サブスクリプション スコープでリソースをデプロイする方法も示します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.author: tomfitz
-ms.openlocfilehash: 04a46700b68bcf498956f93c96ce2dccf1b555fe
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d8a99a19038f98766df25551343a48b9789c8587
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832730"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147148"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>サブスクリプション レベルでリソース グループとリソースを作成する
 
@@ -82,7 +79,7 @@ REST API の場合は、[デプロイ - サブスクリプション スコープ
 
 デプロイ名を指定することも、既定のデプロイ名を使用することもできます。 既定の名前は、テンプレート ファイルの名前です。 たとえば、**azuredeploy.json** という名前のテンプレートをデプロイすると、既定のデプロイ名として **azuredeploy** が作成されます。
 
-デプロイ名ごとに、場所を変更することはできません。 ある場所でデプロイを作成しようとしても、同じ名前の既存のデプロイが別の場所にある場合は、作成することができません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
+デプロイ名ごとに、場所を変更することはできません。 ある場所にデプロイを作成しようとしても、別の場所に同じ名前の既存のデプロイがあると、作成することはできません。 エラー コード `InvalidDeploymentLocation` が表示された場合は、別の名前を使用するか、その名前の以前のデプロイと同じ場所を使用してください。
 
 ## <a name="use-template-functions"></a>テンプレート関数を使用する
 

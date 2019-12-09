@@ -1,5 +1,5 @@
 ---
-title: 招待リンクまたはメールを使用せずに B2B ゲストを追加する - Azure Active Directory | Microsoft Docs
+title: 招待リンクまたは電子メールを使用せずに B2B ゲストを追加する - Azure AD
 description: Azure Active Directory B2B コラボレーションの招待を利用しないでゲスト ユーザーが他のゲスト ユーザーを Azure AD に追加することができます。
 services: active-directory
 documentationcenter: ''
@@ -12,12 +12,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81aad3ef9a4a53532d19fdb81bc48fc50931d49c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9efbb941e589cb8e4cf56ee06a697a1557a3cc89
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056067"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268942"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>招待リンクまたはメールを使用せずに B2B コラボレーション ゲスト ユーザーを追加する
 

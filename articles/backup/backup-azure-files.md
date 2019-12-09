@@ -1,18 +1,14 @@
 ---
 title: Azure ファイル共有のバックアップと復元
 description: この記事では、Azure ファイル共有をバックアップおよび復元する方法について詳しく説明するほか、管理タスクについて説明します。
-author: dcurwin
-ms.author: dacurwin
 ms.date: 07/29/2019
-ms.topic: tutorial
-ms.service: backup
-manager: carmonm
-ms.openlocfilehash: 6f1a793432fa6403639726dbe4340bae6804fb9f
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.topic: conceptual
+ms.openlocfilehash: 59dd46c42cdf94f06709d95f68cfb8d8693b9cce
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091090"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173092"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Azure ファイル共有のバックアップと復元
 
@@ -47,7 +43,7 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Azure ファイル共有のバックアップの構成
 
-このチュートリアルでは、Azure ファイル共有を既に確立していることを前提としています。 Azure ファイル共有をバックアップするには:
+この記事では、Azure ファイル共有を既に確立していることを前提としています。 Azure ファイル共有をバックアップするには:
 
 1. 使用しているファイル共有と同じリージョンに Recovery Services コンテナーを作成します。 コンテナーが既にある場合は、そのコンテナーの [概要] ページを開き、 **[バックアップ]** をクリックします。
 

@@ -1,6 +1,6 @@
 ---
-title: マイ アプリ ポータルでアプリにアクセスし使用する - Azure Active Directory| Microsoft Docs
-description: マイ アプリ ポータルにアクセスする方法について説明します。
+title: マイ アプリ ポータルでアプリを検索して使用する - Azure AD
+description: マイ アプリ ポータルを見つける方法と、組織のクラウドベース アプリへのアクセス方法について説明します。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 901067e198616dba390e0e1162ec26a0b11768f1
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b74fa1caad629e6f7f745f84787b6f415876bbae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68383142"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233177"
 ---
-# <a name="access-and-use-apps-on-the-my-apps-portal"></a>マイ アプリ ポータルでアプリにアクセスして使用する
+# <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>マイ アプリ ポータルで組織のクラウドベース アプリを検索して使用する
 
 Web ベースの**マイ アプリ** ポータルでは、職場または学校アカウントを使用して、社内にあるクラウドベースのアプリを表示して起動したり、一部のプロフィール情報とアカウント情報を更新したり、**グループ**情報を確認したり、アプリとグループの**アクセス レビュー**を実行したりすることができます。 **マイ アプリ** ポータルにアクセスできない場合は、ヘルプデスクに連絡してアクセス許可を得る必要があります。
 

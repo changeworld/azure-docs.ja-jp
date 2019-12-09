@@ -1,22 +1,22 @@
 ---
-title: Azure AD パスワード保護の操作とレポート - Azure Active Directory
+title: パスワード保護の操作とレポート - Azure Active Directory
 description: Azure AD パスワード保護のデプロイ後の操作とレポート
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5ff7f0bbf1bf474a611ae033165bca6dfaac676
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 98668fc836aa21bdd14831c4a801557cdab5a202
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097629"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381662"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Azure AD パスワード保護の操作手順
 

@@ -1,20 +1,16 @@
 ---
-title: Azure Functions ランタイムのインストール | Microsoft Docs
+title: Azure Functions Runtime のインストール
 description: Azure Functions ランタイム プレビュー 2 をインストールする方法
-services: functions
 author: apwestgarth
-manager: stefsch
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 0fbc76f3cb3fea84347ef55e40e1b2bed9b98152
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ad748aa9a5b45af10121648a668344548484cf7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085495"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226738"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Azure Functions ランタイム プレビュー 2 をインストールする
 

@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: f26fe9768930c9d8b99a06e3ea8b51ed1657bcb2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 21582a5a17a3c6f67182173bfe08d80c48765f7d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904505"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325854"
 ---
-# <a name="install-and-run-form-recognizer-containers"></a>Form Recognizer コンテナーのインストールと実行
+# <a name="install-and-run-form-recognizer-containers-preview"></a>Form Recognizer コンテナーのインストールと実行 (プレビュー)
 
 Azure Form Recognizer では、機械学習テクノロジを適用して、フォームにあるキーと値のペアおよびテーブルを識別して抽出します。 値とテーブル エントリをキー値のペアに関連付けてから、元のファイル内の関係を含む構造化データを出力します。 
 

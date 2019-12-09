@@ -1,21 +1,15 @@
 ---
 title: Azure CLI を使用して Azure Blockchain Service を管理する
-description: Azure CLI を使用して Azure Blockchain Service を作成および管理する方法
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+description: Azure CLI を使用して Azure Blockchain Service を管理する方法
+ms.date: 11/22/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 4dd58f2542674633f2d5e2a1724adc7934d7f030
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.reviewer: janders
+ms.openlocfilehash: ac75be644877905c1517395c1c789b1ea16fd49c
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307041"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455588"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLI を使用して Azure Blockchain Service を管理する
 
@@ -30,7 +24,12 @@ Azure portal だけでなく、Azure CLI を使用しても、Azure Blockchain S
 例では、新しいコンソーシアムで Quorum 台帳プロトコルを実行するブロックチェーン メンバーを Azure Blockchain Service で作成します。
 
 ```azurecli
-az resource create --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"<myBlockchainLocation>\", \"properties\": {\"password\": \"<myStrongPassword>\", \"protocol\": \"Quorum\", \"consortium\": \"<myConsortiumName>\", \"consortiumManagementAccountPassword\": \"<myConsortiumManagementAccountPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] }, \"sku\": { \"name\": \"<skuName>\" } }"
+az resource create \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --is-full-object \
+                     --properties '{ "location":"<myBlockchainLocation>", "properties": {"password":"<myStrongPassword>", "protocol":"Quorum","consortium":"<myConsortiumName>", "consortiumManagementAccountPassword":"<myConsortiumManagementAccountPassword>", "firewallRules":[{"ruleName":"<myRuleName>","startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]}, "sku":{"name":"<skuName>"}}'
 ```
 
 | パラメーター | 説明 |
@@ -52,8 +51,14 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName> --re
 例ではブロックチェーン メンバーのパスワードを変更します。
 
 ```azurecli
-az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.password="<myStrongPassword>" --remove properties.consortiumManagementAccountAddress
+az resource update \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --set properties.password='<myStrongPassword>' \
+                     --remove properties.consortiumManagementAccountAddress
 ```
+
 | パラメーター | 説明 |
 |---------|-------------|
 | **resource-group** | Azure Blockchain Service リソースが作成されるリソース グループ名。 |
@@ -65,7 +70,12 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 既存のブロックチェーン メンバーの内部にトランザクション ノードを作成します。 トランザクション ノードを追加することにより、セキュリティの分離と負荷の分散を向上させることができます。 たとえば、異なるクライアント アプリケーションごとにトランザクション ノード エンドポイントを作成できます。
 
 ```azurecli
-az resource create --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --is-full-object --properties "{ \"location\": \"<myRegion>\", \"properties\": { \"password\": \"<myStrongPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] } }"
+az resource create \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --is-full-object \
+                     --properties '{"location":"<myRegion>", "properties":{"password":"<myStrongPassword>", "firewallRules":[{"ruleName":"<myRuleName>", "startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]}}'
 ```
 
 | パラメーター | 説明 |
@@ -83,7 +93,11 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName>/tran
 例ではトランザクション ノードのパスワードを変更します。
 
 ```azurecli
-az resource update --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --set properties.password="<myStrongPassword>"
+az resource update \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --set properties.password='<myStrongPassword>'
 ```
 
 | パラメーター | 説明 |
@@ -97,7 +111,12 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName>/tran
 コンソーシアム管理アカウントは、コンソーシアムのメンバーシップの管理に使用されます。 各メンバーはコンソーシアム管理アカウントによって一意に識別され、このアカウントのパスワードを次のコマンドで変更することができます。
 
 ```azurecli
-az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.consortiumManagementAccountPassword="<myConsortiumManagementAccountPassword>" --remove properties.consortiumManagementAccountAddress
+az resource update \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --set properties.consortiumManagementAccountPassword='<myConsortiumManagementAccountPassword>' \
+                     --remove properties.consortiumManagementAccountAddress
 ```
 
 | パラメーター | 説明 |
@@ -109,7 +128,12 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 ## <a name="update-firewall-rules"></a>ファイアウォール規則を更新する
 
 ```azurecli
-az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.firewallRules="[ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ]" --remove properties.consortiumManagementAccountAddress
+az resource update \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --set properties.firewallRules='[{"ruleName":"<myRuleName>", "startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]' \
+                     --remove properties.consortiumManagementAccountAddress
 ```
 
 | パラメーター | 説明 |
@@ -125,7 +149,11 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 API キーは、ユーザー名とパスワードのようにノード アクセスに使用できます。 キー ローテーションをサポートするために 2 つの API キーがあります。 API キーの一覧を表示するには、次のコマンドを使用します。
 
 ```azurecli
-az resource invoke-action --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --action "listApiKeys" --resource-type Microsoft.Blockchain/blockchainMembers
+az resource invoke-action \
+                            --resource-group <myResourceGroup> \
+                            --name <myMemberName>/transactionNodes/<myTransactionNode> \
+                            --action "listApiKeys" \
+                            --resource-type Microsoft.Blockchain/blockchainMembers
 ```
 
 | パラメーター | 説明 |
@@ -138,9 +166,13 @@ az resource invoke-action --resource-group <myResourceGroup> --name <myMemberNam
 API キーを再生成するには、次のコマンドを使用します。
 
 ```azurecli
-az resource invoke-action --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --action "regenerateApiKeys" --resource-type Microsoft.Blockchain/blockchainMembers --request-body '{"keyName":"<keyValue>"}'
+az resource invoke-action \
+                            --resource-group <myResourceGroup> \
+                            --name <myMemberName>/transactionNodes/<myTransactionNode> \
+                            --action "regenerateApiKeys" \
+                            --resource-type Microsoft.Blockchain/blockchainMembers \
+                            --request-body '{"keyName":"<keyValue>"}'
 ```
-
 
 | パラメーター | 説明 |
 |---------|-------------|
@@ -153,20 +185,26 @@ az resource invoke-action --resource-group <myResourceGroup> --name <myMemberNam
 例では、ブロックチェーン メンバーのトランザクション ノードを削除します。
 
 ```azurecli
-az resource delete --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers
+az resource delete \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers
 ```
 
 | パラメーター | 説明 |
 |---------|-------------|
 | **resource-group** | Azure Blockchain Service リソースが存在するリソース グループ名。 |
-| **name** | 削除する新しいトランザクション ノード名も含む Azure Blockchain Service のブロックチェーン メンバーの名前。 |
+| **name** | 削除するトランザクション ノード名も含む Azure Blockchain Service のブロックチェーン メンバーの名前。 |
 
 ## <a name="delete-a-blockchain-member"></a>ブロックチェーン メンバーを削除する
 
 例ではブロックチェーン メンバーを削除します。
 
 ```azurecli
-az resource delete --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers
+az resource delete \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers
 ```
 
 | パラメーター | 説明 |
@@ -179,7 +217,10 @@ az resource delete --resource-group <myResourceGroup> --name <myMemberName> --re
 ### <a name="grant-access-for-azure-ad-user"></a>Azure AD ユーザーのアクセスを許可する
 
 ```azurecli
-az role assignment create --role <role> --assignee <assignee> --scope /subscriptions/<subId>/resourceGroups/<groupName>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>
+az role assignment create \
+                            --role <role> \
+                            --assignee <assignee> \
+                            --scope /subscriptions/<subId>/resourceGroups/<groupName>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>
 ```
 
 | パラメーター | 説明 |
@@ -194,9 +235,9 @@ Azure AD ユーザーにブロックチェーンの**メンバー**へのノー�
 
 ```azurecli
 az role assignment create \
-  --role "myRole" \
-  --assignee user@contoso.com \
-  --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
+                            --role 'myRole' \
+                            --assignee user@contoso.com \
+                            --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
 **例:**
@@ -205,16 +246,19 @@ Azure AD ユーザーにブロックチェーンの**トランザクション �
 
 ```azurecli
 az role assignment create \
-  --role "MyRole" \
-  --assignee user@contoso.com \
-  --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1/transactionNodes/contosoTransactionNode1
+                            --role 'MyRole' \
+                            --assignee user@contoso.com \
+                            --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1/transactionNodes/contosoTransactionNode1
 ```
 
 ### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>Azure AD グループまたはアプリケーション ロールにノード アクセスを許可する
 
 ```azurecli
-az role assignment create --role <role> --assignee-object-id <assignee_object_id>
+az role assignment create \
+                            --role <role> \
+                            --assignee-object-id <assignee_object_id>
 ```
+
 | パラメーター | 説明 |
 |---------|-------------|
 | **role** | Azure AD ロールの名前。 |
@@ -227,15 +271,18 @@ az role assignment create --role <role> --assignee-object-id <assignee_object_id
 
 ```azurecli
 az role assignment create \
-  --role "myRole" \
-  --assignee-object-id 22222222-2222-2222-2222-222222222222 \
-  --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
+                            --role 'myRole' \
+                            --assignee-object-id 22222222-2222-2222-2222-222222222222 \
+                            --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
 ### <a name="remove-azure-ad-node-access"></a>Azure AD のノード アクセスを削除する
 
 ```azurecli
-az role assignment delete --role <myRole> --assignee <assignee> --scope /subscriptions/mySubscriptionId/resourceGroups/<myResourceGroup>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>/transactionNodes/<myTransactionNode>
+az role assignment delete \
+                            --role <myRole> \
+                            --assignee <assignee> \
+                            --scope /subscriptions/mySubscriptionId/resourceGroups/<myResourceGroup>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>/transactionNodes/<myTransactionNode>
 ```
 
 | パラメーター | 説明 |
@@ -246,5 +293,4 @@ az role assignment delete --role <myRole> --assignee <assignee> --scope /subscri
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Azure portal で Azure Blockchain Service のトランザクション ノードを構成する](configure-transaction-nodes.md)
+[Azure portal で Azure Blockchain Service のトランザクション ノードを構成する](configure-transaction-nodes.md)方法を参照してください。

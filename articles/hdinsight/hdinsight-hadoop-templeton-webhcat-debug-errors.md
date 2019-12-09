@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: cfbd42a67f9c9d6c66df3787b53575dc9e918e35
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c103482771b829730d009d65283a54ec1d8eb8a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067988"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555009"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>HDInsight で WebHCat から受信したエラーの説明と解決策
 
@@ -37,7 +37,7 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 
 次の既定値を超えた場合、WebHCat のパフォーマンスが低下したり、エラーが発生したりします。
 
-| Setting | 実行内容 | Default value |
+| Setting | 実行内容 | 既定値 |
 | --- | --- | --- |
 | [yarn.scheduler.capacity.maximum-applications][maximum-applications] |同時にアクティブにできるジョブの最大数 (保留中または実行中) |10,000 |
 | [templeton.exec.max-procs][max-procs] |同時に処理できる要求の最大数 |20 |
@@ -81,6 +81,6 @@ HDInsight で WebHCat を使用しているときに受信するエラーとそ�
 | ヘッドノードのフェールオーバー中に WebHCat サービスがダウンした。 |2 分待ってから操作をやり直してください。 |
 | WebHCat を通じて送信された 500 個を超えるジョブが保留中になっている。 |現在保留中のジョブが完了するのを待ってから、次のジョブを送信します。 |
 
-[maximum-applications]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
+[maximum-applications]: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration
 [max-age-ms]: https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.6.0/ds_Hadoop/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml

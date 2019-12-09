@@ -6,28 +6,21 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: e344035f05e192de1779a60fc99a7e0144566654
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/19/2019
+ms.openlocfilehash: a8654f6c9c6c6d020872d2c89e0dd141db4e0451
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682184"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215613"
 ---
-# <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>HDInsight の Apache Spark の Jupyter Notebook に外部の Python パッケージをインストールするスクリプト アクション
+# <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>スクリプト アクションを使用して Azure HDInsight で Python 環境を安全に管理する
 
 > [!div class="op_single_selector"]
 > * [cell magic の使用](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [スクリプト アクションの使用](apache-spark-python-package-installation.md)
 
-スクリプト アクションを使用して、HDInsight 上の [Apache Spark](https://spark.apache.org/) クラスターを、そのクラスターの標準では搭載されていない外部のコミュニティから提供されている **python** パッケージを使用するよう構成する方法について説明します。
-
-> [!NOTE]  
-> `%%configure` マジックを使用して Jupyter Notebook を構成して外部パッケージを使用することもできます。 手順については、「[HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する](apache-spark-jupyter-notebook-use-external-packages.md)」を参照してください。
-
-[パッケージ インデックス](https://pypi.python.org/pypi)で、利用できるすべてのパッケージを検索できます。 公開されているパッケージの一覧を他のソースから入手してもかまいません。 たとえば、[conda-forge](https://conda-forge.org/feedstocks/) で使用できるパッケージをインストールできます。
-
-この記事では、例として、クラスターでスクリプト アクションを使用して [TensorFlow](https://www.tensorflow.org/) パッケージをインストールし、Jupyter Notebook で使用する方法について説明します。
+HDInsight では、Spark クラスターに 2 つの Python のインストール (Anaconda Python 2.7 と Python 3.5) が組み込まれています。 場合によっては、ユーザーが外部の Python パッケージや別の Python のバージョンのインストールなどを行って、Python 環境をカスタマイズする必要があります。 この記事では、HDInsight 上の [Apache Spark](https://spark.apache.org/) クラスターで Python 環境を安全に管理するためのベスト プラクティスを示します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +37,7 @@ Microsoft Azure HDInsight サービスは Apache Hadoop を中心に形成され
 
 HDInsight サービスで利用できるオープン ソース コンポーネントには、2 つの種類があります。
 
-* **組み込みコンポーネント** - これらのコンポーネントは、HDInsight クラスターにプレインストールされており、クラスターの主要な機能を提供します。 たとえば、Apache Hadoop YARN リソース マネージャー、 Apache Hive クエリ言語 (HiveQL)、Mahout ライブラリなどがこのカテゴリに属します。 クラスター コンポーネントの完全な一覧は、「[HDInsight で提供されるApache Hadoop クラスター バージョンの新機能](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)」から入手できます。
+* **組み込みコンポーネント** - これらのコンポーネントは、HDInsight クラスターにプレインストールされており、クラスターの主要な機能を提供します。 たとえば、Apache Hadoop YARN リソース マネージャー、Apache Hive クエリ言語 (HiveQL)、Mahout ライブラリがこのカテゴリに属します。 クラスター コンポーネントの完全な一覧は、「[HDInsight で提供されるApache Hadoop クラスター バージョンの新機能](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning)」から入手できます。
 * **カスタム コンポーネント** - クラスターのユーザーは、コミュニティで入手できるコンポーネントや自作のコンポーネントを、インストールするか、ワークロード内で使用することができます。
 
 > [!IMPORTANT]
@@ -52,53 +45,86 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 >
 > カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、次のような数多くのコミュニティ サイトを利用できます: [HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
-## <a name="use-external-packages-with-jupyter-notebooks"></a>Jupyter Notebook で外部のパッケージを使用する
+## <a name="understand-default-python-installation"></a>Python の既定のインストールを理解する
 
-1. [Azure portal](https://portal.azure.com/) で、お使いのクラスターに移動します。  
+HDInsight Spark クラスターは、Anaconda のインストール付きで作成されます。 クラスターには 2 つの Python インストールが存在します (Anaconda Python 2.7 と Python 3.5)。 次の表に、Spark、Livy、および Jupyter 向けの既定の Python 設定を示します。
 
-2. お使いのクラスターを選択して、左側のウィンドウの **[設定]** で **[スクリプト アクション]** を選択します。
+| |Python 2.7|Python 3.5|
+|----|----|----|
+|Path|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|Spark|既定で 2.7 に設定|該当なし|
+|Livy|既定で 2.7 に設定|該当なし|
+|Jupyter|PySpark カーネル|PySpark3 カーネル|
 
-3. **[+新規で送信]** を選択します。
+## <a name="safely-install-external-python-packages"></a>外部 Python パッケージを安全にインストールする
 
-4. **[スクリプト アクションの送信]** ウィンドウで次の値を入力します。  
+HDInsight クラスターは、組み込みの Python 環境 (Python 2.7 と Python 3.5 の両方) に依存しています。 これらの既定の組み込み環境にカスタム パッケージを直接インストールすると、予期しないライブラリ バージョンの変更が発生し、クラスターがさらに壊れる可能性があります。 Spark アプリケーションのカスタム外部 Python パッケージを安全にインストールするには、次の手順に従います。
 
-    |パラメーター | 値 |
-    |---|---|
-    |スクリプトの種類 | ドロップダウン リストから **[- カスタム]** を選択します。|
-    |名前 |テキスト ボックスに「`tensorflow`」と入力します。|
-    |Bash スクリプト URI |テキスト ボックスに「`https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh`」と入力します。 |
-    |ノードの種類 | **[ヘッド]** を選択し、 **[ワーカー]** チェック ボックスをオンにします。 |
+1. conda を使用して Python 仮想環境を作成します。 仮想環境によって、他を壊すことなく、プロジェクト用の分離された空間が用意されます。 Python 仮想環境を作成するときに、使用する Python のバージョンを指定できます。 Python 2.7 と 3.5 を使用する場合でも、仮想環境を作成する必要があることに注意してください。 これは、クラスターの既定の環境を壊さないようにするためです。 次のスクリプトを使用して、Python 仮想環境を作成するクラスターのすべてのノードで、スクリプト アクションを実行します。 
 
-    `tensorflowinstall.sh` には次のコマンドが含まれます。
+    -   `--prefix` には、conda 仮想環境を作成するパスを指定します。 ここで指定したパスに基づいて、さらに変更する必要がある構成がいくつかあります。 この例では、クラスターに py35 という名前の既存の仮想環境が既に存在するため、py35new が使用されています。
+    -   `python=` には、仮想環境用の Python のバージョンを指定します。 この例では、バージョン3.5 が使用されています。これは、クラスターに組み込まれているものと同じバージョンです。 Python の他のバージョンを使用して仮想環境を作成することもできます。
+    -   `anaconda` は、package_spec を anaconda として指定して、仮想環境に Anaconda パッケージをインストールします。
+    
+    ```bash
+    sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes 
+    ```
+
+2. 必要に応じて、作成した仮想環境に外部の Python パッケージをインストールします。 次のスクリプトを使用して、クラスターのすべてのノードでスクリプト アクションを実行して、外部の Python パッケージをインストールします。 仮想環境フォルダーにファイルを書き込むために、ここでは sudo 特権が必要です。
+
+    [パッケージ インデックス](https://pypi.python.org/pypi)で、利用できるすべてのパッケージを検索できます。 公開されているパッケージの一覧を他のソースから入手してもかまいません。 たとえば、[conda-forge](https://conda-forge.org/feedstocks/) で使用できるパッケージをインストールできます。
+
+    -   `seaborn` は、インストールするパッケージの名前です。
+    -   `-n py35new` には、先ほど作成した仮想環境の名前を指定します。 仮想環境の作成に応じて、名前を適宜変更してください。
 
     ```bash
-    #!/usr/bin/env bash
-    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-5. **作成** を選択します。  [カスタム スクリプト アクションの使用方法](../hdinsight-hadoop-customize-cluster-linux.md)に関するドキュメントを参照してください。
+    仮想環境名がわからない場合は、クラスターのヘッダー ノードに SSH 接続し、`/usr/bin/anaconda/bin/conda info -e` を実行して、すべての仮想環境を表示できます。
 
-6. スクリプトが完了するのを待ちます。  **[スクリプト アクション]** ウィンドウには、スクリプトの実行中、"**新しいスクリプト アクションは、現在のクラスター操作の完了後に送信できます**" というメッセージが表示されます。  進捗状況バーが、Ambari UI の **[バック グラウンド操作]** ウィンドウに表示されます。
+3. Spark と Livy の構成を変更して、作成した仮想環境をポイントします。
 
-7. PySpark Jupyter Notebook を開きます。  手順については、「[Spark HDInsight での Jupyter Notebook の作成](./apache-spark-jupyter-notebook-kernels.md#create-a-jupyter-notebook-on-spark-hdinsight)」を参照してください。
-
-    ![新しい Jupyter Notebook を作成します](./media/apache-spark-python-package-installation/hdinsight-spark-create-notebook.png "新しい Jupyter Notebook を作成します")
-
-8. 次に `import tensorflow` によって、hello world の例を実行します。 次のコードを入力します。
-
-    ```
-    import tensorflow as tf
-    hello = tf.constant('Hello, TensorFlow!')
-    sess = tf.Session()
-    print(sess.run(hello))
-    ```
-
-    結果は次のようになります。
+    1. Ambari UI を開き、[Spark2] ページの [Configs]\(構成\) タブに移動します。
     
-    ![TensorFlow コード実行](./media/apache-spark-python-package-installation/tensorflow-execution.png "TensorFlow コードを実行します")
+        ![Ambari を使用して Spark と Livy の構成を変更する](./media/apache-spark-python-package-installation/ambari-spark-and-livy-config.png)
+ 
+    2. [Advanced livy2] を展開し、下のステートメントを末尾に追加します。 仮想環境を別のプレフィックスを使用してインストールした場合は、パスを適宜変更します。
 
-> [!NOTE]  
-> クラスターには 2 つの Python インストールがあります。 Spark では、`/usr/bin/anaconda/bin` の Anaconda Python インストールが使用され、これは既定で Python 2.7 環境になります。 Python 3.x を使用し、PySpark3 カーネルにパッケージをインストールするには、その環境用の `conda` 実行可能ファイルへのパスを使用し、`-n` パラメーターを使用して、環境を指定します。 たとえば、コマンド `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35` は、`conda-forge` チャネルを使用して `ggplot` パッケージを Python 3.5 環境にインストールします。
+        ```
+        export PYSPARK_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
+        export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
+        ```
+
+        ![Ambari を使用して Livy 構成を変更する](./media/apache-spark-python-package-installation/ambari-livy-config.png)
+
+    3. [Advanced spark2-env] を展開し、末尾にある既存の export PYSPARK_PYTHON ステートメントを置き換えます。 仮想環境を別のプレフィックスを使用してインストールした場合は、パスを適宜変更します。
+
+        ```
+        export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
+        ```
+
+        ![Ambari を通して Spark 構成を変更する](./media/apache-spark-python-package-installation/ambari-spark-config.png)
+
+    4. 変更を保存し、影響を受けるサービスを再起動します。 これらの変更では、Spark2 サービスを再起動する必要があります。 Ambari UI によって、再起動が必要であることを示すリマインダーが表示されます。[再起動] をクリックして、影響を受けるすべてのサービスを再起動します。
+
+        ![Ambari を通して Spark 構成を変更する](./media/apache-spark-python-package-installation/ambari-restart-services.png)
+ 
+4.  新しく作成された仮想環境を Jupyter で使用する場合は、 Jupyter の構成を変更し、Jupyter を再起動する必要があります。 次のステートメントを使用して、すべてのヘッダー ノードでスクリプト アクションを実行して、新たに作成された仮想環境に対して Jupyter をポイントします。 パスを仮想環境用に指定したプレフィックスに必ず変更してください。 このスクリプト アクションを実行した後、Ambari UI から Jupyter サービスを再起動して、この変更を使用できるようにします。
+
+    ```
+    sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
+    ```
+
+    次のコードを実行して、Jupyter Notebook の Python 環境を再確認できます。
+
+    ![Jupyter Notebook の Python のバージョンを確認する](./media/apache-spark-python-package-installation/check-python-version-in-jupyter.png)
+
+## <a name="known-issue"></a>既知の問題
+
+Anaconda のバージョン 4.7.11 と4.7.12 には既知のバグがあります。 スクリプト アクションが `"Collecting package metadata (repodata.json): ...working..."` でハングし、`"Python script has been killed due to timeout after waiting 3600 secs"` で失敗した場合は、 [このスクリプト](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh)をダウンロードし、すべてのノードでスクリプト アクションとして実行することで問題を解決できます。
+
+Anaconda のバージョンを確認するには、クラスターのヘッダー ノードに SSH 接続し、`/usr/bin/anaconda/bin/conda --v` を実行します。
 
 ## <a name="seealso"></a>関連項目
 

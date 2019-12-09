@@ -1,67 +1,79 @@
 ---
-title: Azure CDN Standard のルール エンジンを使用した HTTPS の強制 |Microsoft Docs
-description: Standard のルール エンジンでは、Azure CDN from Microsoft が HTTP 要求をどのように処理するかをカスタマイズできます (特定の種類のコンテンツの配信のブロック、キャッシュ ポリシーの定義、HTTP ヘッダーの変更など)。
+title: ルール エンジンを使用して Standard Azure CDN で HTTPS を強制する | Microsoft Docs
+description: Microsoft Standard Azure Content Delivery Network (Azure CDN) に対するルール エンジンを使用して、特定種類のコンテンツの配信ブロック、キャッシュ ポリシーの定義、HTTP ヘッダーの変更など、Azure CDN による HTTP 要求の処理方法をカスタマイズします。 この記事では、ユーザーを HTTPS にリダイレクトするルールを作成する方法について説明します。
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: b24c4a04e0c02258a918ee075066d90c22ea0c75
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 724861305d7a25db409072200ac2bc3bd83f0682
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615830"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171585"
 ---
-# <a name="azure-cdn-standard-rules-engine"></a>Azure CDN Standard のルール エンジン
+# <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN に対する Standard ルール エンジンを設定する
+
+この記事では、Azure Content Delivery Network (Azure CDN) に対する Standard ルール エンジンを設定および使用する方法について説明します。
+
+## <a name="standard-rules-engine"></a>Standard ルール エンジン
+
+Azure CDN に対する Standard ルール エンジンを使用して、HTTP 要求の処理方法をカスタマイズできます。 たとえば、ルール エンジンを使うと、コンテンツ配信で特定のプロトコルを強制的に使用したり、キャッシュ ポリシーを定義したり、HTTP ヘッダーを変更したりすることができます。 この記事では、ユーザーを HTTPS に自動的にリダイレクトするルールを作成する方法について説明します。 
 
 > [!NOTE]
-> Standard のルール エンジンは、Azure CDN from Microsoft にのみ用意されています。 
+> この記事で説明されているルール エンジンは、Microsoft の標準 Standard Azure CDN に対してのみ使用できます。 
 
-Azure CDN Standard のルール エンジンでは、HTTP 要求を処理する方法をカスタマイズできます。 たとえば、特定のプロトコルを介したコンテンツの配信の強制、キャッシュ ポリシーの定義、HTTP ヘッダーの変更などを行うことができます。 このチュートリアルでは、ご自分のユーザーを HTTPS に自動的にリダイレクトするルールを作成する方法について説明します。 
+## <a name="redirect-users-to-https"></a>ユーザーを HTTPS にリダイレクトする
 
+1. Microsoft プロファイルで、Azure Content Delivery Network に移動します。
 
-## <a name="tutorial"></a>チュートリアル
-
-1. Azure CDN from Microsoft プロファイルの **[CDN プロファイル]** ページで、ルールを構成するエンドポイントを選択します。
+1. **[CDN プロファイル]** ページで、ルールを作成するエンドポイントを選択します。
   
-2. 左側の **[ルール エンジン]** タブを選択します。
+1. **[ルール エンジン]** タブを選択します。
    
-    [ルール エンジン] ブレードが、グローバル ルールと共に表示されます。 
+    **[ルール エンジン]** ペインが開き、使用可能なグローバル ルールの一覧が表示されます。 
    
-    [![CDN の新しいルール ページ](./media/cdn-standard-rules-engine/cdn-new-rule.png)](./media/cdn-standard-rules-engine/cdn-new-rule.png#lightbox)
-   
-   > [!IMPORTANT]
-   > 複数の規則が表示される順序は、これらの規則の処理方法に影響します。 前の規則で指定したアクションは、後続の規則でオーバーライドされます。
-   >
-
-3. **[ルールの追加]** ボタンをクリックし、ルール名を指定します。 ルール名は文字で開始し、数字と文字のみを含むようにする必要があります。
-
-4. ルールを適用する要求の種類を指定します。 ドロップダウンを使用して**要求プロトコル**の一致条件を選択し、**Equals** **HTTP** の値を使用します。
-   
-   [![CDN ルールの一致条件](./media/cdn-standard-rules-engine/cdn-match-condition.png)](./media/cdn-standard-rules-engine/cdn-match-condition.png#lightbox)
-   
-   > [!NOTE]
-   > ドロップダウン リストには複数の一致条件が用意されています。 一致条件の詳細な一覧については、[ルール エンジンの一致条件](cdn-standard-rules-engine-match-conditions.md)に関する記事をご覧ください。
-   
-5. 指定した要求に適用するアクションを選択します。 ドロップダウンを使用して **[URL のリダイレクト]** アクションを選択します。[種類] には **[検出 (302)]** 、[プロトコル] には **[HTTPS]** の値を使用します。 他のすべてのフィールドは空白のままにし、受信した値を使用します。
-   
-   [![CDN ルール アクション](./media/cdn-standard-rules-engine/cdn-action.png)](./media/cdn-standard-rules-engine/cdn-action.png#lightbox)
-   
-   > [!NOTE]
-   > ドロップダウン リストには複数のアクションがあります。 アクションの詳細な一覧については、[ルール エンジンのアクション](cdn-standard-rules-engine-actions.md)に関する記事をご覧ください。
-
-6. **[保存]** を選択して新しいルールを保存します。  これで、新しいルールがデプロイされます。
+    [![Azure CDN の新しいルール ページ](./media/cdn-standard-rules-engine/cdn-new-rule.png)](./media/cdn-standard-rules-engine/cdn-new-rule.png#lightbox)
    
    > [!IMPORTANT]
-   > Azure CDN 全体にルールの変更が反映されるには、最大 15 分かかります。
+   > 複数のルールが一覧表示される順序は、ルールの処理方法に影響します。 あるルールで指定されているアクションは、後続のルールで上書きされる可能性があります。
+   >
+
+1. **[ルールの追加]** を選択し、ルールの名前を入力します。 ルール名は文字で始める必要があり、数字と文字のみを含めることができます。
+
+1. ルールを適用する要求の種類を指定するには、一致条件を作成します。
+    1. **[条件の追加]** を選択し、 **[要求プロトコル]** 一致条件を選択します。
+    1. **[演算子]** では、 **[等号]** を選択します。
+    1. **[値]** では、 **[HTTP]** を選択します。
+   
+   [![Azure CDN ルールの一致条件](./media/cdn-standard-rules-engine/cdn-match-condition.png)](./media/cdn-standard-rules-engine/cdn-match-condition.png#lightbox)
+   
+   > [!NOTE]
+   > **[条件の追加]** ドロップダウン リストでは、複数の一致条件から選択できます。 一致条件の詳細な一覧については、[Standard ルール エンジンでの一致条件](cdn-standard-rules-engine-match-conditions.md)に関する記事をご覧ください。
+   
+1. 一致条件を満たす要求に適用するアクションを選択します。
+   1. **[アクションの追加]** を選択し、 **[URL のリダイレクト]** を選択します。
+   1. **[種類]** では、 **[検出 (302)]** を選択します。
+   1. **[プロトコル]** は **[HTTPS]** を選択します。
+   1. 他のすべてのフィールドは空白のままにし、受信した値を使用します。
+   
+   [![Azure CDN のルール アクション](./media/cdn-standard-rules-engine/cdn-action.png)](./media/cdn-standard-rules-engine/cdn-action.png#lightbox)
+   
+   > [!NOTE]
+   > **[アクションの追加]** ドロップダウン リストでは、複数のアクションから選択できます。 アクションの詳細な一覧については、[Standard ルール エンジンでのアクション](cdn-standard-rules-engine-actions.md)に関する記事をご覧ください。
+
+6. **[保存]** を選択して新しいルールを保存します。 これで、ルールを使用できるようになりました。
+   
+   > [!IMPORTANT]
+   > ルールの変更が Azure CDN 全体に反映されるには、最大で 15 分かかります。
    >
    
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
 - [Azure CDN の概要](cdn-overview.md)
 - [Standard のルール エンジンのリファレンス](cdn-standard-rules-engine-reference.md)
-- [Standard のルール エンジンの一致条件](cdn-standard-rules-engine-match-conditions.md)
-- [Standard のルール エンジンのアクション](cdn-standard-rules-engine-actions.md)
+- [Standard ルール エンジンの一致条件](cdn-standard-rules-engine-match-conditions.md)
+- [Standard ルール エンジンのアクション](cdn-standard-rules-engine-actions.md)

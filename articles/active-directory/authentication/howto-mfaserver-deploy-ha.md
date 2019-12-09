@@ -1,22 +1,22 @@
 ---
-title: 高可用性のための Azure MFA Server の構成 - Azure Active Directory
+title: Azure MFA Server の高可用性 - Azure Active Directory
 description: 高可用性を提供する構成で Azure Multi-Factor Authentication Server の複数のインスタンスをデプロイします。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43154e428c3208f5d990688554407777d09f2f1b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18f56665041fed301faf3b4b5f99c78c1d468f8e
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056034"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404302"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>高可用性のための Azure Multi-Factor Authentication Server の構成
 

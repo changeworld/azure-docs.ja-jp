@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる | Microsoft Docs
+title: Azure AD でエンタープライズ アプリケーションにユーザーまたはグループを割り当てる
 description: Azure Active Directory プレビューでエンタープライズ アプリケーションを選択し、このアプリケーションにユーザーまたはグループを割り当てる方法
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d28b9c31b8fbad8a565ff8cbdf717bfb3bc1309
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3a5135f97ffb7d29c9fd928382ca4344beaa654d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72896468"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274733"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる
 

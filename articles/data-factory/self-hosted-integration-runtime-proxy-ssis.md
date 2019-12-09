@@ -1,5 +1,5 @@
 ---
-title: セルフホステッド統合ランタイムを Azure Data Factory で SSIS のプロキシとして構成する
+title: セルフホステッド統合ランタイムを SSIS のプロキシとして構成する
 description: セルフホステッド統合ランタイムを Azure-SSIS IR のプロキシとして構成する方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -7,19 +7,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/12/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 55abdab6a427547ee8bd498500deee94b8f67453
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 11/12/2019
+ms.openlocfilehash: cae15e38f98794a3e97ad0b06329aa2e62c2945e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954740"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217647"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する
+
 この記事では、セルフホステッド統合ランタイム (IR) をプロキシとして構成して、Azure Data Factory (ADF) の Azure SSIS 統合ランタイム (IR) で SQL Server Integration Services (SSIS) パッケージを実行する方法について説明します。  この機能を使用すると、[Azure-SSIS IR を仮想ネットワークに参加](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)させずに、オンプレミスのデータにアクセスすることができます。  これは、企業ネットワークが、Azure SSIS IR を挿入するには複雑すぎる構成/制限の厳しいポリシーを持っている場合に役立ちます。
 
 この機能は、オンプレミスのデータ ソースを使用するデータ フロー タスクを含むパッケージを 2 つのステージング タスクに分割します。セルフホステッド IR で実行されている 1 番目のタスクが、まずオンプレミスのデータ ソースから Azure Blog Storage のステージング領域にデータを移動し、Azure-SSIS IR で実行されている 2 番目のタスクが、ステージング領域から目的のデータ宛先にデータを移動します。
@@ -58,7 +60,7 @@ Visual Studio 用の SSIS プロジェクト拡張機能 ([こちら](https://ma
 
 ![ConnectByProxy プロパティを有効にする](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
-また、既存のパッケージの実行する場合も、それらを 1 つずつ手動で変更することなく、このプロパティを有効にできます。  次の 2 つのオプションがあります。
+また、既存のパッケージの実行する場合も、それらを 1 つずつ手動で変更することなく、このプロパティを有効にできます。  2 つのオプションがあります。
 - Azure SSIS-IR で実行する、最新の SSDT を備えたこれらのパッケージを含むプロジェクトを開いて、再構築し、再デプロイする:SSMS からパッケージを実行するときに [Execute Package]\(パッケージの実行\) ポップアップ ウィンドウの **[接続マネージャー]** タブに表示される、関連する接続マネージャーに対して **True** に設定することでプロパティを有効にできます。
 
   ![ConnectByProxy プロパティを有効にする 2](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)

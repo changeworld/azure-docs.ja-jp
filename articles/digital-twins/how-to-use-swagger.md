@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ccea63e8edee739ce6743d7638b4e5300ad07f8f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 3d4470a89455fd4b49fb7bb5ae26375f9cf9884c
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009881"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456995"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Azure Digital Twins Swagger リファレンス ドキュメント
 
@@ -42,15 +42,15 @@ Swagger は、Azure Digital Twins Management API に対して行われる呼び�
 
 簡潔な概要では、API について説明されています。
 
-[![Swagger の最上部](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[![Swagger 概要と API 概要情報](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
 Management API オブジェクト モデルも一覧表示されます。
 
-[![Swagger モデル](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[![Swagger UI の下部に一覧表示されている Swagger モデル](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
 一覧表示されている各オブジェクト モデルを選択すると、キー属性の詳細な概要が表示されます。
 
-[![Swagger モデル](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![Swagger モデルを展開されてモデルの内容が表示されている](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
 生成された Swagger オブジェクト モデルは、Azure Digital Twins の使用可能なすべての[オブジェクトおよび API](./concepts-objectmodel-spatialgraph.md) を確認するのに便利です。 開発者は、Azure Digital Twins でソリューションを作成するときに、このリソースの使用できます。
 
@@ -64,7 +64,7 @@ Swagger では、Management API を構成するすべてのエンドポイント
 * 必須のパラメーターのデータ型。
 * リソースにアクセスする HTTP メソッド。
 
-[![Swagger エンドポイント](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
+[![Swagger UI に表示されている Swagger エンドポイント](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
 さらに詳細な概要を見るには、各リソースをクリックします。
 
@@ -74,11 +74,11 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
 
 特定のエンドポイントを選択すると、 **[試してみる]** と表示されます。
 
-[![Swagger の試用](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[![Swagger の [試してみる] ボタン](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
 そのセクションを展開すると、必須および省略可能な各パラメーターの入力フィールドが表示されます。 適切な値を入力し、 **[Execute]\(実行\)** を選択します。
 
-[![Swagger の試用後](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[![Swagger の [試してみる] の結果例](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
 テストを実行した後は、応答データを検証できます。
 
@@ -86,7 +86,7 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
 
 一覧表示されている各エンドポイントには、開発およびテストを検証するための応答本文データも含まれます。 これらの例には、HTTP 要求が成功したときに表示される状態コードと JSON が含まれます。
 
-[![Swagger の応答](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
+[![Swagger JSON 応答例](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
 これらの例には、失敗したテストのデバッグまたは改善に役立つエラー コードも含まれます。
 
@@ -97,7 +97,9 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
 
 1. [こちらのクイックスタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad)の手順を実行して、Azure AD アプリケーションを作成し、構成します。 または、既存のアプリの登録を再利用することもできます。
 
-1. 次の応答 URL をアプリの登録に追加します。
+1. 次の**リダイレクト URL** を Azure AD アプリ登録に追加します。
+
+    [![AAD に Swagger リダイレクト URL を登録する](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
@@ -106,7 +108,7 @@ Swagger が提供する強力な機能の 1 つは、ドキュメントの UI �
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | ポータルで見つかった Management REST API ドキュメントの URL  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Azure AD アプリの ID をコピーします。
+1. Azure AD アプリの**クライアント ID** をコピーします。
 
 Azure Active Directory の登録を完了した後:
 

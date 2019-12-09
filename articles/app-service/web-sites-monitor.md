@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7edff127bb981db985bebb41740744f325306bc8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470129"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546190"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Azure App Service のアプリの監視
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、[Azure portal](https://portal.azure.com) 上で Web アプリ、モバイル バック エンド、API アプリに対する組み込みの監視機能が提供されます。
 
-Azure portal 上で、アプリの*クォータ*と*メトリック*の確認、App Service プランの確認、メトリックに基づく*アラート*と*スケーリング*の自動的な設定を行うことができます。
+Azure portal 上で、アプリと App Service プランの*クォータ*と*メトリック*の確認、ベースのメトリックである*アラート*と*自動スケーリング*の設定を行うことができます。
 
 ## <a name="understand-quotas"></a>クォータを理解する
 
@@ -46,7 +46,7 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 | **帯域幅** | このアプリが 1 日に使用できる送信帯域幅の総量。 このクォータは、24 時間ごとに (UTC の午前 0 時に) リセットされます。 |
 | **ファイルシステム** | 使用可能なストレージの総量。 |
 
-*Basic* プラン、*Standard* プラン、*Premium* プランでホストされているアプリに適用できるクォータは、ファイルシステムのみです。
+*Basic*、*Standard*、*Premium* でホストされているアプリに適用できるクォータは、ファイルシステムのみです。
 
 さまざまな App Service SKU で利用できる特定のクォータ、制限、機能について詳しくは、[Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md#app-service-limits)に関するページをご覧ください。
 
@@ -64,6 +64,10 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 
 ## <a name="understand-metrics"></a>メトリックを理解する
 
+> [!NOTE]
+> **ファイル システムの使用量**は、グローバルにロールアウトされている新しいメトリックです。プライベート プレビューのホワイトリストに登録されていない場合、データは表示されません。
+> 
+
 メトリックを利用すると、アプリまたは App Service プランの動作に関する情報が得られます。
 
 アプリについて利用できるメトリックには、次のものがあります。
@@ -77,6 +81,7 @@ Free アプリまたは Shared アプリのクォータは、次のようにな�
 | **現在のアセンブリ** | このアプリケーション内のすべての AppDomain で読み込まれたアセンブリの現在の数。 |
 | **受信データ** | アプリで消費された受信帯域幅の量 (MiB)。 |
 | **送信データ** | アプリで消費された送信帯域幅の量 (MiB)。 |
+| **ファイル システムの使用量** | アプリによって使用されたファイルシステム クォータの割合。 |
 | **Gen 0 ガベージ コレクション** | アプリ プロセスが開始されてからジェネレーション 0 オブジェクトがガベージ コレクションされた回数。 上位のジェネレーションの GC には、下位のジェネレーションの GC がすべて含まれます。|
 | **Gen 1 ガベージ コレクション** | アプリ プロセスが開始されてからジェネレーション 1 オブジェクトがガベージ コレクションされた回数。 上位のジェネレーションの GC には、下位のジェネレーションの GC がすべて含まれます。|
 | **Gen 2 ガベージ コレクション** | アプリ プロセスが開始されてからジェネレーション 2 オブジェクトがガベージ コレクションされた回数。|

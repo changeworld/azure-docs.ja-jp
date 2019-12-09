@@ -12,17 +12,11 @@
       href: require-tou.md
     - name: セッションのリスクが検出されたときにアクセスをブロックする
       href: app-sign-in-risk.md
-- name: チュートリアル
-  items:
-    - name: クラシック MFA ポリシーの移行
-      href: policy-migration-mfa.md
 - name: 概念
   expanded: false
   items:
     - name: 一般的な条件付きアクセス ポリシー
       href: concept-conditional-access-policy-common.md
-    - name: セキュリティの既定値
-      href: concept-conditional-access-security-defaults.md
     - name: 条件付きアクセス ポリシーのコンポーネント
       href: concept-conditional-access-policies.md
     - name: 条件
@@ -37,6 +31,8 @@
       href: service-dependencies.md
     - name: What if ツール
       href: what-if-tool.md
+    - name: クラシック ポリシーの移行
+      href: policy-migration.md
     - name: ベースライン保護ポリシー
       href: concept-baseline-protection.md
 - name: ハウツー ガイド
@@ -66,8 +62,6 @@
           href: howto-conditional-access-policy-compliant-device.md
     - name: レガシ認証をブロックする
       href: block-legacy-authentication.md
-    - name: MFA 登録の条件付きアクセス
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: 承認済みクライアント アプリを必須にする
       href: app-based-conditional-access.md
     - name: アプリの保護ポリシーを必須にする
@@ -83,7 +77,7 @@
     - name: サインインの頻度とブラウザーの永続性の制御
       href: howto-conditional-access-session-lifetime.md
     - name: クラシック ポリシーを移行する
-      href: policy-migration.md
+      href: policy-migration-mfa.md
     - name: 条件付きアクセスの導入
       href: howto-conditional-access-adoption-kit.md
     - name: トラブルシューティング

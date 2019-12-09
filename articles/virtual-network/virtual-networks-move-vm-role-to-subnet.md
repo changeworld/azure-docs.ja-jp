@@ -1,5 +1,5 @@
 ---
-title: VM (クラシック) または Cloud Services のロール インスタンスを別のサブネットに移動する - Azure PowerShell | Microsoft Docs
+title: Azure VM (クラシック) または Cloud Services のロール インスタンスを別のサブネットに移動する
 description: PowerShell を使用して VM (クラシック) と Cloud Services のロール インスタンスを別のサブネットに移動する方法について説明します。
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 275d59a7bddd8b2b609169218afcd15e9a0ce913
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: e2a92355632ef0d7059c9e5294448de0ca591b82
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058373"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196682"
 ---
 # <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>PowerShell を使用して VM (クラシック) と Cloud Services のロール インスタンスを別のサブネットに移動する
 PowerShell を使用すると、同じ仮想ネットワーク (VNet) 内のサブネット間で VM (クラシック) を移動することができます。 ロール インスタンスを移動する場合は、PowerShell を使用せずに、CSCFG ファイルを編集します。

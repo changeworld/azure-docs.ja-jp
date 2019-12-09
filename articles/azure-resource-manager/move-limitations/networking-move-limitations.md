@@ -1,17 +1,14 @@
 ---
-title: Azure ネットワーク リソースを新しいサブスクリプションまたはリソース グループに移動する | Microsoft Docs
+title: Azure ネットワーク リソースを新しいサブスクリプションまたはリソース グループに移動する
 description: Azure Resource Manager を使用して、仮想ネットワークおよびその他のネットワーク リソースを、新しいリソース グループまたはサブスクリプションに移動します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.author: tomfitz
-ms.openlocfilehash: 14a7cb326a3017b1bdbcad21c8483eaaacd54674
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: c4e6acb52f6342c57fb1db9fc3e83d90d6d01285
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72437812"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150829"
 ---
 # <a name="move-guidance-for-networking-resources"></a>ネットワーク リソースの移動ガイダンス
 

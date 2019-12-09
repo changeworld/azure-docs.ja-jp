@@ -1,26 +1,21 @@
 ---
-title: Azure Container Instances のコンテナー グループ
-description: Azure Container Instances の複数コンテナー グループのしくみを理解します
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: コンテナー グループの概要
+description: Azure Container Instances のコンテナー グループ、ライフサイクルとリソース (ストレージやネットワークなど) を共有するインスタンスのコレクションについて学習します
 ms.topic: article
 ms.date: 11/01/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 9fbf9fea7da0896ee6c0e248d18e18d52798fbd7
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904448"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482117"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
 Azure Container Instances の最上位のリソースは、*コンテナー グループ*です。 この記事では、コンテナー グループとは何か、およびそれらによってどのような種類のシナリオが有効になるかを説明します。
 
-## <a name="how-a-container-group-works"></a>コンテナー グループのしくみ
+## <a name="what-is-a-container-group"></a>コンテナー グループとは
 
 コンテナー グループは、同じホスト コンピューター上にスケジュール設定されるコンテナーのコレクションです。 コンテナー グループ内のコンテナーでは、ライフサイクル、リソース、ローカル ネットワーク、ストレージ ボリュームを共有します。 これは、[Kubernetes][kubernetes-pod] における*ポッド*の概念に似ています。
 

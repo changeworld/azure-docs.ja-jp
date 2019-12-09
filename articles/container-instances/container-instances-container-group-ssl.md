@@ -1,20 +1,14 @@
 ---
-title: Azure Container Instances での SSL の有効化
+title: コンテナー グループで SSL を有効にする
 description: Azure Container Instances 内で実行されるコンテナー グループに対する、SSL または TLS エンドポイントを作成します
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: f11fb209f8d2ace51081fd81f453faf9505af27c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7578ad6f8c451694a90dde00b74bf2e8c6c61109
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326064"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483482"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>コンテナー グループで SSL エンドポイントを有効にする
 

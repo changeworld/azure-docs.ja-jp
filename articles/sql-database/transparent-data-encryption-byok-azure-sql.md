@@ -10,19 +10,19 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 11/04/2019
-ms.openlocfilehash: 3ae5403c2313bc1d2f271aeba9d4a99d9a0c5db7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/19/2019
+ms.openlocfilehash: 6676a6f7c694ffd4f2edf3f63a8181863df0016c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822279"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227978"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>カスタマー マネージド キーを使用した Azure SQL Transparent Data Encryption
 
 カスタマー マネージド キーを使用した Azure SQL [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) を使用すると、保存データの保護に Bring Your Own Key (BYOK) シナリオが可能になり、組織がキーとデータの管理における職務の分離を実施できるようになります。 カスタマー マネージド Transparent Data Encryption を使用すると、キー ライフサイクル管理 (キーの作成、アップロード、ローテーション、削除)、キーの使用権限、およびキーに対する操作の監査は、顧客の責任となり、顧客がこれらを完全に制御できます。
 
-このシナリオでは、TDE 保護機能と呼ばれるデータベース暗号化キー (DEK) の暗号化に使用されるキーは、顧客が所有し、顧客が管理する [Azure Key Vault (AKV)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (クラウドベースの外部キー管理システム) に格納されている、カスタマー マネージド非対称キーです。 Key Vault は、FIPS 140-2 Level 2 認定のハードウェア セキュリティ モジュール (HSM) によって支えられた RSA 暗号化キー向けの、可用性が高くスケーラブルでセキュリティで保護されたストレージです。 格納されているキーに直接アクセスすることはできませんが、キーを使用して暗号化/復号化のサービスを認証されたエンティティに提供します。 キーは、キー コンテナーによって生成、インポート、または[オンプレミスの HSM デバイスからキー コンテナーに転送](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)することができます。
+このシナリオでは、TDE 保護機能と呼ばれるデータベース暗号化キー (DEK) の暗号化に使用されるキーは、顧客が所有し、顧客が管理する [Azure Key Vault (AKV)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (クラウドベースの外部キー管理システム) に格納されている、カスタマー マネージド非対称キーです。 Key Vault は、FIPS 140-2 Level 2 認定のハードウェア セキュリティ モジュール (HSM) をオプションで使用できる、RSA 暗号化キー向けの、可用性が高くスケーラブルでセキュリティで保護されたストレージです。 格納されているキーに直接アクセスすることはできませんが、キーを使用して暗号化/復号化のサービスを認証されたエンティティに提供します。 キーは、キー コンテナーによって生成、インポート、または[オンプレミスの HSM デバイスからキー コンテナーに転送](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)することができます。
 
 Azure SQL Database と Azure SQL Data Warehouse の場合、TDE 保護機能は論理サーバー レベルで設定され、そのサーバーに関連付けられているすべての暗号化されたデータベースによって継承されます。 Azure SQL Managed Instance の場合、TDE 保護機能はインスタンス レベルで設定され、そのインスタンス上のすべての暗号化されたデータベースによって継承されます。 *サーバー*という用語は、別途明記されていない限り、このドキュメントでは SQL Database 論理サーバーとマネージド インスタンスの両方を指します。 
 
@@ -82,9 +82,9 @@ AKV の TDE 保護機能を使用するようにサーバーを構成すると�
 
 - TDE 保護機能に使用できるのは、非対称キー、RSA 2048 キー、または RSA HSM 2048 キーだけです。
 
-- キーにアクティブ化や有効期限を設定することはできません。
+- キーがアクティブ化された日時 (設定する場合) は、過去の日付と時刻にする必要があります。 有効期限の日時 (設定する場合) は、将来の日付と時刻にする必要があります。
 
-- キーは、キー コンテナー内で有効状態になっている必要があります。
+- キーは、"*有効*" 状態になっている必要があります。
 
 - キー コンテナーに既存のキーをインポートする場合は、サポートされているファイル形式 (.pfx、.byok、または. backup) で提供する必要があります。
 

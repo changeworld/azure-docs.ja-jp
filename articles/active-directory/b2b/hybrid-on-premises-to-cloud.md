@@ -1,5 +1,5 @@
 ---
-title: B2B ユーザーとしてローカル パートナー アカウントをクラウドに同期する - Azure Active Directory | Microsoft Docs
+title: B2B ユーザーとしてローカル パートナー アカウントをクラウドに同期する - Azure AD
 description: Azure AD B2B コラボレーションと同じ資格情報を使用して、ローカルで管理されている外部パートナーにローカル リソースとクラウド リソースの両方へのアクセス権を付与します。
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ae75311ab61449f37ccea15a0bcb88fed80c3ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767353"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272610"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションを使用してローカルで管理されたパートナーのアカウントにクラウド リソースへのアクセスを許可する
 

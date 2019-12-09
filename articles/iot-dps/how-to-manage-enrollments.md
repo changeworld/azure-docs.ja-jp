@@ -1,5 +1,5 @@
 ---
-title: Azure Portal でデバイス登録を管理する | Microsoft Docs
+title: Azure portal で Azure IoT Hub Device Provisioning Service に対するデバイスの登録を管理する
 description: Azure Portal でデバイス プロビジョニング サービス用にデバイス登録を管理する方法
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 03559183e46182c4f80fe3d16ec542add9b1692b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122781"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229730"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Azure Portal でデバイス登録を管理する方法
 

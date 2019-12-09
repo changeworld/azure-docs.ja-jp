@@ -1,5 +1,6 @@
 ---
-title: Azure Network Watcher との接続のトラブルシューティング - Azure Portal | Microsoft Docs
+title: 接続のトラブルシューティング - Azure portal
+titleSuffix: Azure Network Watcher
 description: Azure Portal を使用して Azure Network Watcher の接続のトラブルシューティング機能を使用する方法を説明します。
 services: network-watcher
 documentationcenter: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: kumud
-ms.openlocfilehash: 783bcd0cdc97328f16c4a0defa18daa46a065842
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5236d076939b6972946adfde3557e3534f9adf5c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702011"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275982"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Azure Portal を使用した Azure Network Watcher との接続のトラブルシューティング
 

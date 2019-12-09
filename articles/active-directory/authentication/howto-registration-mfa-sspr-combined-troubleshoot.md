@@ -1,22 +1,22 @@
 ---
-title: Azure AD SSPR と Multi-Factor Authentication のための統合された登録をトラブルシューティングする (プレビュー) - Azure Active Directory
+title: 統合された登録の使用のトラブルシューティング - Azure Active Directory
 description: Azure AD Multi-Factor Authentication とパスワード リセットのセルフサービスの結合された登録のトラブルシューティングを行う (プレビュー)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 02/20/2019
+ms.topic: troubleshooting
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f3f2a60367a8b76464611878e850fff0c4ba8803
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414625"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381398"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>結合されたセキュリティ情報の登録のトラブルシューティング (プレビュー)
 

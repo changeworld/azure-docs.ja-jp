@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: ae49a84dba01047d85ea0dbb854d1a7a59318567
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1fbd69a095e171ec2fb386bed34b196f723e7496
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647652"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278930"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する
 

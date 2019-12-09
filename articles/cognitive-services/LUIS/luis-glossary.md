@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 22e8fa8fb6999828076ea5f8f34b1f601b920013
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f78b4c50f4cd65f3dc32c48cea81b705dc44de1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499565"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325947"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Language Understanding の用語集
 Language Understanding (LUIS) 用語集では、LUIS API サービスの使用中に目にする可能性のある用語について説明します。
@@ -30,17 +30,16 @@ Language Understanding (LUIS) 用語集では、LUIS API サービスの使用�
 
 ## <a name="authoring-key"></a>オーサリング キー
 
-以前の名前付き "プログラム" キーです。 アプリの作成に使用されます。 運用レベルのエンドポイント クエリでは使用されません。 詳細については、「[キーの制限](luis-boundaries.md#key-limits)」を参照してください。   
+以前の名前付き "プログラム" キーです。 アプリの作成に使用されます。 運用レベルのエンドポイント クエリでは使用されません。 詳細については、「[キーの制限](luis-boundaries.md#key-limits)」を参照してください。
 
-## <a name="batch-test-json-file"></a>バッチ テキストの JSON ファイル
+## <a name="batch-test-json-file"></a>バッチ テスト JSON ファイル
 
 バッチ テストは、ユーザー発話の一貫性のある既知のテスト セットを使用して、現在の LUIS アプリのモデルを検証する機能です。 バッチ テストは、[JSON 形式のファイル](luis-concept-batch-test.md#batch-file-format)に定義されます。
 
-関連項目: 
+関連項目:
 * [概念](luis-concept-batch-test.md)
 * [方法](luis-how-to-batch-test.md)
 * [チュートリアル](luis-tutorial-batch-testing.md)
-
 
 ## <a name="collaborator"></a>コラボレーター
 

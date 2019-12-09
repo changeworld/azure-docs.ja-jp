@@ -1,5 +1,6 @@
 ---
-title: Azure Network Watcher 機能を使用するために必要なアクセス許可 | Microsoft Docs
+title: 機能を使用するために必須の RBAC のアクセス許可
+titleSuffix: Azure Network Watcher
 description: Network Watcher 機能を使用するために必要な、Azure ロールベースのアクセス制御のアクセス許可について説明します。
 services: network-watcher
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: kumud
-ms.openlocfilehash: 5bd7e30a6a95d60bda4b7c3da44be1b8046bb71f
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 9d56865a558f027a044e990a2da697dc53e7a311
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163796"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277717"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Network Watcher 機能を使用するために必要な、Azure ロールベースのアクセス制御のアクセス許可
 

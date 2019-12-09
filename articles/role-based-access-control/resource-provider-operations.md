@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ca9b0289fbc8dd01427de38e0e7b30eec266bb12
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 092c3b4ac6ce163e9fcf8aaad9e74f398559e9e2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818586"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546334"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
-この記事は、Azure Resource Manager の各リソース プロバイダーで使用できる操作の一覧です。 これらの操作を[カスタム ロール](custom-roles.md)で使用することで、Azure のリソースに詳細な[ロールベースのアクセス制御 (RBAC)](overview.md) を提供できます。 操作文字列は、`{Company}.{ProviderName}/{resourceType}/{action}` という形式です。
+この記事は、Azure Resource Manager の各リソース プロバイダーで使用できる操作の一覧です。 これらの操作を[カスタム ロール](custom-roles.md)で使用することで、Azure のリソースに詳細な[ロールベースのアクセス制御 (RBAC)](overview.md) を提供できます。 操作文字列は、次の形式です。`{Company}.{ProviderName}/{resourceType}/{action}` リソース プロバイダーの名前空間を Azure サービスにマップする方法の一覧については、「[リソース プロバイダーとサービスの対応](../azure-resource-manager/azure-services-resource-providers.md)」を参照してください。
 
 リソース プロバイダー操作は常に進化しています。 最新の操作を取得するには、[Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) または [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list) を使用してください。
 
@@ -6235,5 +6235,6 @@ ms.locfileid: "73818586"
 
 ## <a name="next-steps"></a>次の手順
 
+- [リソース プロバイダーとサービスの対応](../azure-resource-manager/azure-services-resource-providers.md)
 - [Azure リソースのカスタム ロール](custom-roles.md)
 - [Azure リソースの組み込みロール](built-in-roles.md)

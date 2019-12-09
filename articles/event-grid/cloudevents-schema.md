@@ -3,25 +3,24 @@ title: CloudEvents スキーマ内のイベントで Azure Event Grid を使用�
 description: CloudEvents スキーマを Azure Event Grid 内のイベント用に設定する方法について説明します。
 services: event-grid
 author: banisadr
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/07/2018
+ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a0e24ce7fa11c6373fbaada40cd9f1b1e7f55a2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61436599"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325468"
 ---
-# <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents スキーマを Event Grid で使用する
+# <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid に CloudEvents v1.0 スキーマを使用する
 
-Azure Event Grid では、[既定のイベント スキーマ](event-schema.md)に加えて、[CloudEvents JSON スキーマ](https://github.com/cloudevents/spec/blob/master/json-format.md)内のイベントをネイティブ サポートしています。 [CloudEvents](https://cloudevents.io/) は、イベント データを記述するための[オープンな仕様](https://github.com/cloudevents/spec/blob/master/spec.md)です。
+Azure Event Grid は、[既定のイベント スキーマ](event-schema.md)に加え、[CloudEvents v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) および [HTTP プロトコル バインディング](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)の JSON 実装のイベントをネイティブでサポートします。 [CloudEvents](https://cloudevents.io/) は、イベント データを記述するための[オープンな仕様](https://github.com/cloudevents/spec/blob/v1.0/spec.md)です。
 
 CloudEvents を使用すると、クラウド ベースのイベントを発行したり使用したりするための共通のイベント スキーマを提供し、相互運用性を簡略化することができます。 このスキーマを使用すれば、ツールを統一化したり、イベントのルーティングや処理方法を標準化したり、外部のイベント スキーマを共通の方法で逆シリアル化することができます。 共通のスキーマを使用することで、プラットフォーム間での作業をより簡単に統合できます。
 
-CloudEvents は、[Cloud Native Computing Foundation](https://www.cncf.io/) を通じ、複数の[コラボレーター](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (マイクロソフトを含む) によって構築されています。 現在、バージョン 0.1 が提供されています。
+CloudEvents は、[Cloud Native Computing Foundation](https://www.cncf.io/) を通じ、複数の[コラボレーター](https://github.com/cloudevents/spec/blob/master/community/contributors.md) (マイクロソフトを含む) によって構築されています。 現在、バージョン 1.0 が提供されています。
 
 この記事では、Event Grid で CloudEvents スキーマを使用する方法について説明します。
 
@@ -37,45 +36,31 @@ CloudEvents は、[Cloud Native Computing Foundation](https://www.cncf.io/) を�
 
 ``` JSON
 {
-    "cloudEventsVersion" : "0.1",
-    "eventType" : "Microsoft.Storage.BlobCreated",
-    "eventTypeVersion" : "",
-    "source" : "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-account}#blobServices/default/containers/{storage-container}/blobs/{new-file}",
-    "eventID" : "173d9985-401e-0075-2497-de268c06ff25",
-    "eventTime" : "2018-04-28T02:18:47.1281675Z",
-    "data" : {
-      "api": "PutBlockList",
-      "clientRequestId": "6d79dbfb-0e37-4fc4-981f-442c9ca65760",
-      "requestId": "831e1650-001e-001b-66ab-eeb76e000000",
-      "eTag": "0x8D4BCC2E4835CD0",
-      "contentType": "application/octet-stream",
-      "contentLength": 524288,
-      "blobType": "BlockBlob",
-      "url": "https://oc2d2817345i60006.blob.core.windows.net/oc2d2817345i200097container/oc2d2817345i20002296blob",
-      "sequencer": "00000000000004420000000000028963",
-      "storageDiagnostics": {
-        "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
-      }
+    "specversion": "1.0",
+    "type": "Microsoft.Storage.BlobCreated",  
+    "source": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-account}",
+    "id": "9aeb0fdf-c01e-0131-0922-9eb54906e209",
+    "time": "2019-11-18T15:13:39.4589254Z",
+    "subject": "blobServices/default/containers/{storage-container}/blobs/{new-file}",
+    "dataschema": "#",
+    "data": {
+        "api": "PutBlockList",
+        "clientRequestId": "4c5dd7fb-2c48-4a27-bb30-5361b5de920a",
+        "requestId": "9aeb0fdf-c01e-0131-0922-9eb549000000",
+        "eTag": "0x8D76C39E4407333",
+        "contentType": "image/png",
+        "contentLength": 30699,
+        "blobType": "BlockBlob",
+        "url": "https://gridtesting.blob.core.windows.net/testcontainer/{new-file}",
+        "sequencer": "000000000000000000000000000099240000000000c41c18",
+        "storageDiagnostics": {
+            "batchId": "681fe319-3006-00a8-0022-9e7cde000000"
+        }
     }
 }
 ```
 
-CloudEvents v0.1 では、次のプロパティが使えます。
-
-| CloudEvents        | Type     | JSON 値の例             | 説明                                                        | Event Grid のマッピング
-|--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
-| eventType          | string   | "com.example.someevent"          | 発生したオカレンスの種類                                   | eventType
-| eventTypeVersion   | string   | "1.0"                            | eventType のバージョン (省略可能)                            | dataVersion
-| cloudEventsVersion | string   | "0.1"                            | イベントで使用される CloudEvents 仕様のバージョン        | *パススルー*
-| source             | URI      | "/mycontext"                     | イベント プロデューサーの説明                                       | topic#subject
-| eventID            | string   | "1234-1234-1234"                 | イベントの ID                                                    | id
-| eventTime          | Timestamp| "2018-04-05T17:31:00Z"           | イベントが発生したときのタイムスタンプ (省略可能)                    | eventTime
-| schemaURL          | URI      | "https:\//myschema.com"           | データ属性が準拠しているスキーマへのリンク (省略可能) | *使用されません*
-| contentType        | string   | "application/json"               | データ エンコード形式の説明 (省略可能)                       | *使用されません*
-| 拡張機能         | マップ      | { "extA": "vA", "extB", "vB" }  | 追加のメタデータ (省略可能)                                 | *使用されません*
-| data               | Object   | { "objA": "vA", "objB", "vB" }  | イベント ペイロード (省略可能)                                       | data
-
-詳しくは、[CloudEvents の仕様](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes)をご覧ください。
+CloudEvents v0.1 で使用できるフィールド、その種類、定義の詳細については、[こちら](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)を参照してください。
 
 CloudEvents スキーマと Event Grid スキーマで配信されるイベントのヘッダー値は同じです (`content-type` を除く)。 CloudEvents スキーマの場合、そのヘッダー値は `"content-type":"application/cloudevents+json; charset=utf-8"` です。 Event Grid スキーマの場合、そのヘッダー値は `"content-type":"application/json; charset=utf-8"` です。
 
@@ -108,7 +93,7 @@ az eventgrid topic create \
   --name <topic_name> \
   -l westcentralus \
   -g gridResourceGroup \
-  --input-schema cloudeventv01schema
+  --input-schema cloudeventschemav1_0
 ```
 
 PowerShell では、次を使用します。
@@ -122,7 +107,7 @@ New-AzureRmEventGridTopic `
   -ResourceGroupName gridResourceGroup `
   -Location westcentralus `
   -Name <topic_name> `
-  -InputSchema CloudEventV01Schema
+  -InputSchema CloudEventSchemaV1_0
 ```
 
 CloudEvents の現在のバージョンでは、イベントのバッチ処理はサポートされていません。 CloudEvent スキーマを使ったイベントをトピックに 対して発行するには、各イベントを個別に発行してください。
@@ -140,7 +125,7 @@ az eventgrid event-subscription create \
   --name <event_subscription_name> \
   --source-resource-id $topicID \
   --endpoint <endpoint_URL> \
-  --event-delivery-schema cloudeventv01schema
+  --event-delivery-schema cloudeventschemav1_0
 ```
 
 PowerShell では、次を使用します。
@@ -151,10 +136,14 @@ New-AzureRmEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName <event_subscription_name> `
   -Endpoint <endpoint_URL> `
-  -DeliverySchema CloudEventV01Schema
+  -DeliverySchema CloudEventSchemaV1_0
 ```
 
-CloudEvents の現在のバージョンでは、イベントのバッチ処理はサポートされていません。 CloudEvent スキーマ用に構成されたイベント サブスクリプションでは、各イベントが個別に受信されます。 現時点では、CloudEvents スキーマでイベントを配信する際に、Azure Functions アプリの Event Grid トリガーを使用することはできません。 HTTP トリガーを使用します。 CloudEvents スキーマでイベントを受け取る HTTP トリガーを実装する例については、「[Event Grid トリガーとして HTTP トリガーを使用する](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)」を参照してください。
+ 現時点では、CloudEvents スキーマでイベントを配信する際に、Azure Functions アプリの Event Grid トリガーを使用することはできません。 HTTP トリガーを使用します。 CloudEvents スキーマでイベントを受け取る HTTP トリガーを実装する例については、「[Event Grid トリガーとして HTTP トリガーを使用する](../azure-functions/functions-bindings-event-grid.md#use-an-http-trigger-as-an-event-grid-trigger)」を参照してください。
+
+ ## <a name="endpoint-validation-with-cloudevents-v10"></a>CloudEvents v1.0 を使用したエンドポイントの検証
+
+Event Grid を既に使い慣れている場合、不正使用を防ぐための Event Grid のエンドポイント検証ハンドシェイクをご存じかもしれません。 CloudEvents v1.0 では、HTTP OPTIONS メソッドを使用して、独自の[不正使用防止のセマンティクス](security-authentication.md#webhook-event-delivery)が実装されています。 詳細については、 [こちら](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)を参照してください。 出力に CloudEvents スキーマを使用すると、Event Grid では、Event Grid の検証イベント メカニズムではなく CloudEvents v1.0 の不正使用防止が使用されます。
 
 ## <a name="next-steps"></a>次の手順
 

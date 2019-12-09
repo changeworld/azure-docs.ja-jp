@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door で Web アプリケーション ファイアウォールのボット保護を構成する (プレビュー)
+title: Azure Front Door で WAF のボット保護を構成する (プレビュー)
 description: Web アプリケーション ファイアウォール (WAF) について説明します。
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 9a8901e3763b10b7ee00c10f4eec08a8325d7dec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 95660f764d28172ecb55a4952b785fea5f2aa4bb
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510172"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186710"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-preview"></a>Web アプリケーション ファイアウォールのボット保護を構成する (プレビュー)
 この記事では、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使って、Front Door 向けの Azure Web アプリケーション ファイアウォール (WAF) でボット保護規則を構成する方法を示します。

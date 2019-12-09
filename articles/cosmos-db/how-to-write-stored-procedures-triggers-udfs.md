@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ffe002e4dced5b5020eb1436ca6d7d577402b077
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606258"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533166"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 
@@ -316,6 +316,17 @@ function tax(income) {
 ```
 
 ユーザー定義関数を登録して使用する方法の例については、 [Azure Cosmos DB でユーザー定義関数を使用する方法](how-to-use-stored-procedures-triggers-udfs.md#udfs)に関する記事を参照してください。
+
+## <a name="logging"></a>ログの記録 
+
+ストアド プロシージャ、トリガー、またはユーザー定義関数を使用する場合は、`console.log()` コマンドを使用してステップをログに記録できます。 このコマンドは、次の例に示すように `EnableScriptLogging` が true に設定されている場合に、デバッグ用の文字列をまとめます。
+
+```javascript
+var response = await client.ExecuteStoredProcedureAsync(
+document.SelfLink,
+new RequestOptions { EnableScriptLogging = true } );
+Console.WriteLine(response.ScriptLog);
+```
 
 ## <a name="next-steps"></a>次の手順
 

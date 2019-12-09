@@ -1,19 +1,17 @@
 ---
-title: Azure Enterprise サブスクリプションを作成する権限を付与する | Microsoft Docs
+title: Azure Enterprise サブスクリプションを作成する権限を付与する
 description: ユーザーまたはサービス プリンシパルがプログラムで Azure Enterprise サブスクリプションを作成できるようにする方法について説明します。
-services: azure-resource-manager
 author: jureid
 manager: jureid
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: a7ed7dffd27b51c1314c4293820dc33be4d7e8e0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8f1f7837b6243f1af49d3b5eb0f3632c5e144f6c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206637"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149845"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Azure Enterprise サブスクリプションを作成する権限を付与する (プレビュー)
 

@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: f9b1af14bd986f1fa6fb5feb398a7f1fdf982f77
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7f98ba9851216737712b6be1ec29156ba0b1a68b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669093"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382284"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -248,6 +249,10 @@ ms.locfileid: "73669093"
 設定の保存後は、指定した割合のクライアントが、非運用スロットにランダムにルーティングされます。 
 
 クライアントは、特定のスロットに自動的にルーティングされると、そのクライアント セッションの有効期間中はそのスロットに "固定" されます。 クライアントのブラウザーで、HTTP ヘッダー内の `x-ms-routing-name` Cookie を調べることにより、セッションが固定されているスロットを確認できます。 "ステージング" スロットにルーティングされる要求には、`x-ms-routing-name=staging` という Cookie が設定されています。 運用スロットにルーティングされる要求には、`x-ms-routing-name=self` という Cookie が設定されています。
+
+   > [!NOTE]
+   > また、Azure portal の次に、Azure CLI の [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) コマンドを使用して、DevOps パイプラインやその他のオートメーション システムなどの CI/CD ツールからルーティングの割合を設定することもできます。
+   > 
 
 ### <a name="route-production-traffic-manually"></a>運用トラフィックを手動でルーティングする
 

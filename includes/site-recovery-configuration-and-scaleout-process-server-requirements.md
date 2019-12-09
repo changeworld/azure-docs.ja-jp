@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: d77269c1e965d5bca1e32b756ef26e2c694e5c81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7baa2dbd1583ebbccbf9b21df3531404bd839e10
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747852"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260795"
 ---
 **構成およびプロセス サーバーの要件**
 
@@ -38,8 +38,9 @@ RAM | 16 GB
 オペレーティング システムのロケール | 英語 (en-us)
 Windows Server の役割 | これらの役割を有効にしないでください。 <br> - Active Directory Domain Services <br>- インターネット インフォメーション サービス <br> - Hyper-V 
 グループ ポリシー | これらのグループ ポリシーを有効にしないでください。 <br> - コマンド プロンプトへのアクセス禁止。 <br> - レジストリ編集ツールへのアクセス禁止。 <br> - ファイル添付の信頼ロジック。 <br> - スクリプト実行の有効化。 <br> [詳細情報](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | - 以前からの既定の Web サイトが存在しない。 <br> - ポート 443 でリッスンしている以前からの Web サイトまたはアプリケーションが存在しない。 <br>- [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする。 <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする。
-| 
+IIS | - 既存の Web サイトが存在しない <br> - ポート 443 でリッスンしている既存の Web サイト/アプリケーションが存在しない <br>- [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする 
+FIPS (連邦情報処理標準) | FIPS モードを有効にしない
+|
 
 ## <a name="network-requirements"></a>ネットワークの要件
 
@@ -67,7 +68,8 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 **コンポーネント** | **要件** 
 --- | ---
 VMware vSphere PowerCLI | VMware 仮想マシン上で構成サーバーが実行されている場合は、[PowerCLI バージョン 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) をインストールする必要があります。
-MySQL | MySQL をインストールする必要があります。 手動でインストールするか、または Azure Site Recovery によってインストールすることができます。 (詳細については、[設定の構成](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings)に関するページを参照してください。)
+MYSQL | MySQL をインストールする必要があります。 手動でインストールするか、または Site Recovery によってインストールすることができます。 (詳細については、「 [設定の構成](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings)」を参照してください)
+|
 
 ## <a name="sizing-and-capacity-requirements"></a>サイズ設定と容量の要件
 
@@ -79,4 +81,5 @@ MySQL | MySQL をインストールする必要があります。 手動でイ�
 8 vCPU<br/><br/> 2 ソケット * 4 コア \@ 2.5 GHz | 16 GB | 300 GB | 500 GB 以下 | 100 台未満のマシン
 12 vCPU<br/><br/> 2 ソケット * 6 コア \@ 2.5 GHz | 18 GB | 600 GB | 500 GB ～ 1 TB | 100 ～ 150 台のマシン
 16 vCPU<br/><br/> 2 ソケット * 8 コア \@ 2.5 GHz | 32 GB | 1 TB (テラバイト) | 1 ～ 2 TB | 150 ～ 200 台のマシン
+|
 

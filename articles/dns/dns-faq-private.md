@@ -1,18 +1,18 @@
 ---
 title: Azure プライベート DNS に関する FAQ
-description: Azure プライベート DNS に関してよく寄せられる質問
+description: この記事では、Azure プライベート DNS に関してよく寄せられる質問について説明します
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
-ms.author: victorh
-ms.openlocfilehash: cb0cc5e99cc07728d475a9f9e54c7eb6a8c7554e
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.author: allensu
+ms.openlocfilehash: de63799400a10afc1930cd373df0c8dd86320f78
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959926"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212004"
 ---
 # <a name="azure-private-dns-faq"></a>Azure プライベート DNS に関する FAQ
 

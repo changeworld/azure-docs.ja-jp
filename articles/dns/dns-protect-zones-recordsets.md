@@ -1,18 +1,18 @@
 ---
-title: Azure DNS ゾーンとレコードを保護する
-description: Microsoft Azure DNS で DNS ゾーンとレコード セットを保護する方法
+title: DNS ゾーンとレコードを保護する - Azure DNS
+description: このラーニング パスでは、Microsoft Azure DNS で DNS ゾーンとレコード セットの保護を始めます。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
-ms.author: victorh
-ms.openlocfilehash: 9340a43eb88b4be03c0f0ccc0d07a32f22a9001c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: b84ba055dd8214ae18e76004671e3922e6f3b878
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121450"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211442"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
 

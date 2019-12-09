@@ -1,5 +1,5 @@
 ---
-title: Azure AD ギャラリー アプリのパスワード シングル サインオンを構成する場合の問題 | Microsoft Docs
+title: Azure AD Gallery のアプリのパスワード SSO を構成する場合の問題
 description: Azure AD アプリケーション ギャラリーに既に表示されているアプリケーションのパスワード シングル サインオンを構成する場合に直面する一般的な問題について説明します
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc75346b1093cc41a44edad1376c5f10dfec2409
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381132"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274190"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのパスワード シングル サインオンを構成する場合の問題
 

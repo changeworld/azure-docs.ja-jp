@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 322615203d188581dd04aadeff2a08307b733d06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cb528d71b94449b282947a487e4fc79b343df778
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65738294"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>チュートリアル:Azure Active Directory と複数の Amazon Web Services (AWS) アカウントの統合
 
@@ -363,6 +363,7 @@ SAML 応答を確認し、クレームとして渡されるロールを参照す
 
 ## <a name="additional-resources"></a>その他のリソース
 
+* [MS Graph API を使用してプロビジョニングを構成する方法](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 

@@ -14,22 +14,23 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: e4596ae2f92e5dfd99dc7c83857e0c9874358fd4
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 7bd9fe4044dace4061285c016cb08562b556b98e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949705"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483624"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Azure シリアル コンソール内での一般的なエラー
 Azure シリアル コンソール内には、一連の既知のエラーがあります。 これらのエラーとその対応策の一覧を次に示します。
 
 ## <a name="common-errors"></a>一般的なエラー
 
-Error                            |   対応策
+Error                             |   対応策
 :---------------------------------|:--------------------------------------------|
-Unable to retrieve boot diagnostics settings for *&lt;VMNAME&gt;* . (VMNAME のブート診断設定を取得できません。) To use the serial console, ensure that boot diagnostics is enabled for this VM. (シリアル コンソールを使用するには、この VM のブート診断が有効になっていることを確認してください。) ![ブート診断エラー](./media/virtual-machines-serial-console/virtual-machines-serial-console-boot-diagnostics-error.png) | VM または仮想マシン スケール セットで[ブート診断](boot-diagnostics.md)が有効になっていることを確認します。 仮想マシン スケール セットでシリアル コンソールを使用している場合は、インスタンスが最新モデルであることを確認してください。
-The VM is in a stopped deallocated state. (VM は停止済み (割り当て解除) 状態です。) Start the VM and retry the serial console connection. (VM を起動し、シリアル コンソール接続を再試行してください。) ![割り当て解除済みエラー](./media/virtual-machines-serial-console/virtual-machines-serial-console-deallocating-error.png) | シリアル コンソールにアクセスするには、VM または仮想マシン スケール セット インスタンスが起動済み状態である必要があります。 VM または仮想マシン スケール セット インスタンスを起動して、もう一度やり直してください。
+"Azure シリアル コンソールでは、ブート診断を有効にする必要があります。 仮想マシンのブート診断を構成するには、ここをクリックしてください。" ![ブート診断エラー](./media/virtual-machines-serial-console/virtual-machines-serial-console-boot-diagnostics-error.png) | VM または仮想マシン スケール セットで[ブート診断](boot-diagnostics.md)が有効になっていることを確認します。 仮想マシン スケール セットでシリアル コンソールを使用している場合は、インスタンスが最新モデルであることを確認してください。
+"Azure シリアル コンソールでは、仮想マシンが実行されている必要があります。 上の [開始] ボタンを使用して、仮想マシンを起動してください。" ![割り当て解除済みエラー](./media/virtual-machines-serial-console/virtual-machines-serial-console-deallocating-error.png) | シリアル コンソールにアクセスするには、VM または仮想マシン スケール セット インスタンスが起動済み状態になっている必要があります (VM を停止または再割り当てしてはいけません)。 VM または仮想マシン スケール セット インスタンスが実行されていることを確認して、もう一度やり直してください。
+"このサブスクリプションの Azure シリアル コンソールが有効になっていません。有効にするには、サブスクリプション管理者に連絡してください。" ![サブスクリプションの無効化エラー](./media/virtual-machines-serial-console/virtual-machines-serial-console-subscription-disabled-error.png) | Azure シリアル コンソールは、サブスクリプション レベルで無効化できます。 サブスクリプション管理者は、[Azure シリアル コンソールを有効または無効にする](./serial-console-enable-disable.md)ことができます。 サブスクリプション管理者でない場合は、次の手順のために、サブスクリプション管理者に連絡する必要があります。
 この VM のブート診断ストレージ アカウントにアクセスする際に、"許可されていません" という応答が発生しました。 ![ストレージ アカウント ファイアウォールのエラー](./media/virtual-machines-serial-console/virtual-machines-serial-console-firewall-error.png)| ブート診断にアカウントのファイアウォールがないことを確認してください。 シリアル コンソールが機能するには、アクセス可能なブート診断ストレージ アカウントが必要です。 シリアル コンソールは、ブート診断ストレージ アカウントで有効になっているストレージ アカウント ファイアウォールと設計上、連動できません。
 You do not have the required permissions to use this VM with the serial console. (シリアル コンソールでこの VM を使用するために必要なアクセス許可がありません。) Ensure you have at least Virtual Machine Contributor role permissions. (少なくとも仮想マシン共同作成者ロールのアクセス許可があることを確認してください。)| シリアル コンソールにアクセスするには、VM または仮想マシン スケール セットに対する共同作成者レベル以上のアクセス権が必要です。 詳細については、[概要](serial-console-overview.md)に関するページを参照してください。
 The storage account '' used for boot diagnostics on this VM could not be found. (この VM のブート診断に使用したストレージ アカウント '' が見つかりませんでした。) Verify that boot diagnostics is enabled for this VM, this storage account has not been deleted, and you have access to this storage account. (この VM に対してブート診断が有効になっていること、このストレージ アカウントが削除されていないこと、このストレージ アカウントへのアクセス権があることをご確認ください。) | VM または仮想マシン スケール セットのブート診断ストレージ アカウントが削除されていないことを再度確認します。

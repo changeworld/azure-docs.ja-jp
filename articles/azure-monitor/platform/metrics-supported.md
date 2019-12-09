@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 58c0db1f8200a757c95d7f66f9d821968e7e1839
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 30e2b880f32f896098778942deb67d7ced9f5c2d
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121127"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484227"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -1450,7 +1450,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |cpu_limit|CPU 制限|Count|平均|CPU 制限。 仮想コア ベースのデータベースに適用されます。|ディメンションなし|
 |cpu_used|使用された CPU|Count|平均|使用された CPU。 仮想コア ベースのデータベースに適用されます。|ディメンションなし|
 |deadlock|デッドロック|Count|合計|デッドロック。 データ ウェアハウスには適用されません。|ディメンションなし|
-|diff_backup_size_bytes|差分バックアップ ストレージ サイズ|Bytes|最大値|累積的な差分バックアップ ストレージ サイズ。 仮想コア ベースのデータベースに適用されます。 ハイパースケール データベースには適用されません。|ディメンションなし|
+|diff_backup_size_bytes|差分バックアップ ストレージ サイズ|Bytes|最大値|累積的な差分バックアップ ストレージ サイズ。 General Purpose および Business Critical データベースに適用されます。 現在、Manage instance データベースには適用されません。|ディメンションなし|
 |dtu_limit|DTU の上限|Count|平均|DTU の上限。 DTU ベースのデータベースに適用されます。|ディメンションなし|
 |dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合。 DTU ベースのデータベースに適用されます。|ディメンションなし|
 |dtu_used|使用された DTU|Count|平均|使用された DTU。 DTU ベースのデータベースに適用されます。|ディメンションなし|
@@ -1459,9 +1459,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |dwu_consumption_percent|DWU の割合|Percent|最大値|DWU の割合。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
 |dwu_limit|DWU 上限|Count|最大値|DWU 上限。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
 |dwu_used|使用済み DWU|Count|最大値|使用された DWU。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
-|full_backup_size_bytes|完全バックアップ ストレージ サイズ|Bytes|最大値|累積的な完全バックアップ ストレージ サイズ。 仮想コア ベースのデータベースに適用されます。 ハイパースケール データベースには適用されません。|ディメンションなし|
+|full_backup_size_bytes|完全バックアップ ストレージ サイズ|Bytes|最大値|累積的な完全バックアップ ストレージ サイズ。 General Purpose および Business Critical データベースに適用されます。 現在、Manage instance データベースには適用されません。|ディメンションなし|
 |local_tempdb_usage_percent|ローカル tempdb の割合|Percent|平均|ローカル tempdb の割合。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
-|log_backup_size_bytes|ログ バックアップ ストレージ サイズ|Bytes|最大値|累積的なログ バックアップ ストレージ サイズ。 仮想コア ベースのデータベースに適用されます。 ハイパースケール データベースには適用されません。|ディメンションなし|
+|log_backup_size_bytes|ログ バックアップ ストレージ サイズ|Bytes|最大値|累積的なログ バックアップ ストレージ サイズ。 General Purpose および Business Critical データベースに適用されます。 現在、Manage instance データベースには適用されません。|ディメンションなし|
 |log_write_percent|ログ IO の割合|Percent|平均|ログ IO の割合。 データ ウェアハウスには適用されません。|ディメンションなし|
 |physical_data_read_percent|データ IO の割合|Percent|平均|データ IO の割合|ディメンションなし|
 |sessions_percent|セッションの割合|Percent|平均|セッションの割合。 データ ウェアハウスには適用されません。|ディメンションなし|

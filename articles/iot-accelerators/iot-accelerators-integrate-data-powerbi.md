@@ -1,19 +1,19 @@
 ---
 title: Power BI を使用してリモート監視データを視覚化する - Azure | Microsoft Docs
-description: このチュートリアルでは、Power BI Desktop と Cosmos DB を使って、リモート監視ソリューションからのデータを、カスタマイズした視覚エフェクトに統合します。 これにより、ユーザーは独自のカスタム ダッシュボードを作成し、ソリューションを使っていないユーザーと共有することができます。
-author: asdonald
+description: このチュートリアルでは、Power BI Desktop と Cosmos DB を使って、リモート監視ソリューションからのデータを、カスタマイズされた視覚エフェクトに統合しています。 これにより、ユーザーは独自のカスタム ダッシュボードを作成し、ソリューションを使っていないユーザーと共有することができます。
+author: dominicbetts
 manager: hegate
-ms.author: asdonald
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3398c6d318e0e3c51d3f6cfe8af651a6e3f55c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61448135"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184240"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Power BI を使用してリモート監視データを視覚化する
 
@@ -22,7 +22,7 @@ ms.locfileid: "61448135"
 ## <a name="prerequisites"></a>前提条件
 
 - 現在リモート監視ソリューションを実行している必要があります
-- [Azure portal](https://portal.azure.com) および IoT Hub とソリューションが実行しているサブスクリプションに、アクセスできる必要があります
+- [Azure portal](https://portal.azure.com) および IoT Hub とソリューションが実行されているご自分のサブスクリプションにアクセスできる必要があります
 - [Power BI Desktop](https://powerbi.microsoft.com) がインストールされている必要があります (任意のバージョン)
 
 

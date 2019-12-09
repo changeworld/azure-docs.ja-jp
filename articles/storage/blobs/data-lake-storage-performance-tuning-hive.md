@@ -1,21 +1,21 @@
 ---
-title: Azure Data Lake Storage Gen2 の Hive パフォーマンス チューニング ガイドライン | Microsoft Docs
-description: Azure Data Lake Storage Gen2 の Hive パフォーマンス チューニング ガイドライン
+title: パフォーマンスの調整:Hive、HDInsight & Azure Data Lake Storage Gen2 | Microsoft Docs
+description: Azure Data Lake Storage Gen2 の Hive パフォーマンス チューニング ガイドライン。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 1290174fb87306b34be81ed7fa4fb5de3bfba43c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66042568cede364c16302fbd85751de4113bbe0f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847129"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327581"
 ---
-# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight の Hive と Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイダンス
+# <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスの調整:Hive、HDInsight & Azure Data Lake Storage Gen2
 
 既定の設定は、多種多様なユース ケースで適切なパフォーマンスを提供するように設定されています。  I/O 集中型クエリの場合、Hive は Azure Data Lake Storage Gen2 でパフォーマンスが高くなるように調整できます。  
 

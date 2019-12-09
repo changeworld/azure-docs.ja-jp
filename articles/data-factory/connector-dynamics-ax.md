@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Dynamics AX からデータをコピーする
+title: Dynamics AX からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Dynamics AX のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 07edc284c29ca209ee20e5de390e8126993f4ce3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 555293492a37b9c635cb11087c08d52aa4b4d8c4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681011"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218622"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics AX からデータをコピーする
 

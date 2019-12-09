@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs インフラストラクチャのガバナンス
-description: この記事では、Azure DevTest Labs インフラストラクチャのガバナンスのためのガイダンスを提供します。
+title: Azure DevTest Labs での会社のポリシーとコンプライアンス
+description: この記事では、Azure DevTest Labs インフラストラクチャに対する会社のポリシーとコンプライアンスの管理に関するガイダンスを提供します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e02400ef940efdf42370fbdc1da75bdc7062a8ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81ca2a90b1940d70e170cab3f8d18144a5d5e5a8
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127363"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560503"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure DevTest Labs インフラストラクチャのガバナンス - 会社のポリシーとコンプライアンス
 この記事では、Azure DevTest Labs インフラストラクチャに対する会社のポリシーとコンプライアンスの管理に関するガイダンスを提供します。 

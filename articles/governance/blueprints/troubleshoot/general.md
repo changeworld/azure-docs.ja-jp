@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
-description: ブループリントの作成、割り当て、および削除で発生する問題を解決する方法について説明します
-ms.date: 12/11/2018
+description: ポリシー違反やブループリント パラメーター関数などの、ブループリントを作成、割り当て、および削除するときの問題をトラブルシューティングする方法について説明します。
+ms.date: 11/22/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: b6f1d6c40f7268e90f09457e680a3ef33996c341
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4e7ea1760e000a167c4329d6f12f3acc18d18f7c
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960290"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406607"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 

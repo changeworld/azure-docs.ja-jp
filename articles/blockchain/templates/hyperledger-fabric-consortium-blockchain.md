@@ -1,21 +1,15 @@
 ---
-title: Azure の Hyperledger Fabric コンソーシアム
-description: Hyperledger Fabric コンソーシアム ネットワークをデプロイおよび構成するソリューション テンプレート
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure に Hyperledger Fabric コンソーシアム ソリューション テンプレートをデプロイする
+description: Azure に Hyperledger Fabric コンソーシアム ネットワーク ソリューション テンプレートをデプロイして構成する方法
 ms.date: 05/09/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: caleteet
-manager: femila
-ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be35cfa26204b36ad65da91252144b9167cb9e54
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510751"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325126"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric コンソーシアム ネットワーク
 
@@ -85,7 +79,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 **SSH キー ([認証の種類] = [SSH 公開キー])** |リモート ログインに使用される Secure Shell キー ||
 **サブスクリプション** |デプロイ対象のサブスクリプション ||
 **リソース グループ** |コンソーシアム ネットワークをデプロイするリソース グループ ||
-**場所** |最初のメンバーをデプロイする Azure リージョン ||
+**Location** |最初のメンバーをデプロイする Azure リージョン ||
 
 **[OK]** を選択します。
 
@@ -99,7 +93,7 @@ Azure で Hyperledger Fabric を有効にするため、サポートされてい
 |---|---|---|
 **ネットワーク構成** |新しいネットワークを作成することも、既存のネットワークに参加することもできます。 *[Join Existing]\(既存に参加\)* を選択した場合、追加の値を指定する必要があります。 |新しいネットワーク <br/> 既存に参加 |
 **HLF CA パスワード** |デプロイの一部として作成される証明機関によって生成された証明書に使用するパスワード。 パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。<br /><br />仮想マシンにはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|1 から 25 文字 |
-**組織のセットアップ** |組織の名前と証明書をカスタマイズしたり、使用する既定値を指定することができます。|既定値 <br/> 詳細 |
+**組織のセットアップ** |組織の名前と証明書をカスタマイズしたり、使用する既定値を指定することができます。|Default <br/> 詳細 |
 **VPN ネットワークの設定** | VM にアクセスするための VPN トンネル ゲートウェイをプロビジョニングします。 | はい <br/> いいえ |
 
 **[OK]** を選択します。

@@ -1,19 +1,14 @@
 ---
-title: Azure Container Instances YAML リファレンス
+title: コンテナー グループの YAML リファレンス
 description: コンテナー グループを構成するために Azure Container Instances によってサポートされている YAML ファイルのリファレンス
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: danlep
-ms.openlocfilehash: 2e6be18371cf3ff96d1ce91d4dde26ff1f14021b
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 5603f2e0f63c4f83a6d3761feb540abb8b8b7d5c
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179994"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533487"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML リファレンス: Azure Container Instances
 
@@ -145,7 +140,7 @@ properties: # Properties of container group
 |  名前 | 種類 | 必須 | 値 |
 |  ---- | ---- | ---- | ---- |
 |  名前 | string | はい | コンテナー グループの名前。 |
-|  apiVersion | enum | はい | 2018 年 10 月 1 日 |
+|  apiVersion | enum | はい | 2018-10-01 |
 |  location | string | いいえ | リソースの場所。 |
 |  tags | object | いいえ | リソース タグ。 |
 |  identity | object | いいえ | コンテナー グループの ID (構成されている場合)。 - [ContainerGroupIdentity オブジェクト](#ContainerGroupIdentity) |

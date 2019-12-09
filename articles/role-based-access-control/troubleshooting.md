@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e8a5b8b5794687f9e3b1707fda4cbe381e277317
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 5429ebb611f852f7672d89de190ddd68dbcb01cf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819777"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707779"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure リソースの RBAC のトラブルシューティング
 
@@ -56,7 +56,11 @@ ms.locfileid: "72819777"
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>不明なセキュリティ プリンシパルがあるロールの割り当て
 
-Azure PowerShell を使ってロールの割り当てを一覧表示すると、空の `DisplayName` と、[Unknown]\(不明\) に設定された `ObjectType` を持つ割り当てが表示される場合があります。 たとえば、[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) では、次のようなロールの割り当てが返されます。
+ロールをセキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、またはマネージド ID) に割り当てた後、ロールの割り当てを削除せずにそのセキュリティ プリンシパルを削除した場合、ロールの割り当てのセキュリティ プリンシパルの種類は **[不明]** と表示されます。 Azure portal の次のスクリーンショットは一例です。 セキュリティ プリンシパル名は "**Identity deleted**" (ID は削除されました) および "**Identity no longer exists**" (ID はもう存在しません) と表示されます。 
+
+![Web アプリ リソース グループ](./media/troubleshooting/unknown-security-principal.png)
+
+Azure PowerShell を使用してこのロールの割り当てを一覧表示すると、空の `DisplayName` および `ObjectType` が "不明" に設定されています。 たとえば、[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) では、次のようなロールの割り当てが返されます。
 
 ```azurepowershell
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -70,7 +74,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-同様に、Azure CLI を使ってロールの割り当てを一覧表示すると、空の `principalName` を持つ割り当てが表示される場合があります。 たとえば、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) では、次のようなロールの割り当てが返されます。
+同様に、Azure CLI を使用してこのロールの割り当てを一覧表示すると、空の `principalName` が表示されます。 たとえば、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) では、次のようなロールの割り当てが返されます。
 
 ```azurecli
 {
@@ -86,9 +90,7 @@ CanDelegate        : False
 }
 ```
 
-これらのロールの割り当ては、セキュリティ プリンシパル (ユーザー、グループ、サービス プリンシパル、または管理対象 ID) にロールを割り当てて、後でそのセキュリティ プリンシパルを削除したときに発生します。 これらのロールの割り当ては、Azure portal には表示されず、そのままにしておいても問題ありません。 ただし、必要であれば、これらのロールの割り当てを削除できます。
-
-これらのロールの割り当てを削除するには、[Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) コマンドまたは [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) コマンドを使用します。
+これらのロールの割り当ては残しておいても問題ありませんが、他のロールの割り当てと同様の手順を使用して削除できます。 ロールの割り当てを削除する方法については、[Azure portal](role-assignments-portal.md#remove-a-role-assignment)、[Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)、または [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) を参照してください
 
 PowerShell では、オブジェクト ID とロール定義名を使ってロールの割り当てを削除しようとし、複数のロールの割り当てがパラメーターに一致する場合、次のエラー メッセージを受け取ります。"The provided information does not map to a role assignment" (指定された情報は、ロールの割り当てにマップされていません)。 エラー メッセージの例を次に示します。
 

@@ -26,7 +26,7 @@
           href: expressroute-locations-providers.md
         - name: プロバイダー別の場所
           href: expressroute-locations.md
-    - name: 仮想ネットワーク ゲートウェイと FastPath
+    - name: 仮想ネットワーク ゲートウェイについて
       href: expressroute-about-virtual-network-gateways.md
     - name: 前提条件
       href: expressroute-prerequisites.md
@@ -40,6 +40,8 @@
       href: expressroute-qos.md
     - name: クラシックから Resource Manager への回線の移行について
       href: expressroute-move.md
+    - name: ExpressRoute FastPath について
+      href: about-fastpath.md
     - name: ExpressRoute Direct について
       href: expressroute-erdirect-about.md
     - name: ExpressRoute Global Reach について

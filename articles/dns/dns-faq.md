@@ -1,18 +1,18 @@
 ---
-title: Azure DNS に関する FAQ
-description: Azure DNS に関してよく寄せられる質問
+title: FAQ - Azure DNS
+description: この記事では、Azure DNS に関してよく寄せられる質問について説明します
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
-ms.author: victorh
-ms.openlocfilehash: bb5c4d508344f391d610aeaa7e0be54a93c997dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: c194d47842c927d3f8049a424dc08a34424a8a31
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67080015"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212028"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 
@@ -68,25 +68,25 @@ Azure DNS では、静的な DNS ドメインのみサポートされます。�
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Azure DNS ではドメイン名の登録がサポートされますか。
 
-いいえ。 現在、Azure DNS では、ドメイン名を購入するというオプションはサポートされていません。 ドメインを購入するには、サード パーティのドメイン名レジストラーを使用する必要があります。 レジストラーは、通常、少額の年間料金がかかります。 購入後、ドメインを Azure DNS でホストして DNS レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
+No. 現在、Azure DNS では、ドメイン名を購入するというオプションはサポートされていません。 ドメインを購入するには、サード パーティのドメイン名レジストラーを使用する必要があります。 レジストラーは、通常、少額の年間料金がかかります。 購入後、ドメインを Azure DNS でホストして DNS レコードを管理できます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
 
 ドメインの購入は Azure バックログで追跡される機能です。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar)してください。
 
 ### <a name="does-azure-dns-support-dnssec"></a>Azure DNS では DNSSEC はサポートされますか。
 
-いいえ。 現在、Azure DNS では、ドメイン ネーム システム セキュリティ拡張機能 (DNSSEC) はサポートされていません。
+No. 現在、Azure DNS では、ドメイン ネーム システム セキュリティ拡張機能 (DNSSEC) はサポートされていません。
 
 DNSSEC 機能は、Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support)してください。
 
 ### <a name="does-azure-dns-support-zone-transfers-axfrixfr"></a>Azure DNS ではゾーン転送 (IXFR AXFR/) はサポートされますか。
 
-いいえ。 現在、Azure DNS でゾーン転送はサポートされていません。 DNS ゾーンは [Azure CLI を使用して Azure DNS にインポート](dns-import-export.md)できます。 DNS レコードは、[Microsoft Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、または [CLI ツール](dns-operations-recordsets-cli.md)で管理できます。
+No. 現在、Azure DNS でゾーン転送はサポートされていません。 DNS ゾーンは [Azure CLI を使用して Azure DNS にインポート](dns-import-export.md)できます。 DNS レコードは、[Microsoft Azure DNS 管理ポータル](dns-operations-recordsets-portal.md)、[REST API](https://docs.microsoft.com/powershell/module/az.dns)、[SDK](dns-sdk.md)、[PowerShell コマンドレット](dns-operations-recordsets.md)、または [CLI ツール](dns-operations-recordsets-cli.md)で管理できます。
 
 ゾーン転送機能は、Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c)してください。
 
 ### <a name="does-azure-dns-support-url-redirects"></a>Azure DNS では URL リダイレクトはサポートされますか。
 
-いいえ。 URL リダイレクト サービスは DNS サービスではありません。 それらは、DNS レベルではなく、HTTP レベルで機能します。 DNS プロバイダーによっては、総合的なオファーの一部として、URL リダイレクト サービスをバンドルしています。 現在、このサービスは、Azure DNS ではサポートされていません。
+No. URL リダイレクト サービスは DNS サービスではありません。 それらは、DNS レベルではなく、HTTP レベルで機能します。 DNS プロバイダーによっては、総合的なオファーの一部として、URL リダイレクト サービスをバンドルしています。 現在、このサービスは、Azure DNS ではサポートされていません。
 
 URL リダイレクト機能は Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)してください。
 

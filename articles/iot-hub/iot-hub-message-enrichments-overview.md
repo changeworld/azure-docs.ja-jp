@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 83114023eb35221bfa53e3ce4de8a861948c7a3a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a623c8d3ff755338ac8b40faa970f2f007115a02
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005839"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144865"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント
 
@@ -54,11 +54,21 @@ ms.locfileid: "74005839"
 
 エンリッチメントは、IoT ハブの組み込みのエンドポイントに向かうメッセージのほか、カスタム エンドポイントにルーティングされるメッセージ (Azure Blob Storage、Service Bus キュー、Service Bus トピックなど) に追加できます。
 
-また、エンドポイントを Event Grid として選択することにより、Event Grid にパブリッシュされるメッセージにエンリッチメントを追加することもできます。 詳細については、[IoT Hub と Event Grid](iot-hub-event-grid.md) に関するページを参照してください。
+また、エンドポイントを Event Grid として選択することにより、Event Grid に発行されるメッセージにエンリッチメントを追加できます。 Event Grid のサブスクリプションに基づいて、IoT Hub にデバイス テレメトリへの 既定のルートを作成します。 この単一のルートによって、すべての Event Grid サブスクリプションを処理できます。 デバイス テレメトリに対するイベント グリッド サブスクリプションを作成した後、イベント グリッド エンドポイントのエンリッチメントを構成できます。 詳細については、[IoT Hub と Event Grid](iot-hub-event-grid.md) に関するページを参照してください。
 
 エンリッチメントは、エンドポイントごとに適用されます。 特定のエンドポイントに関して適用される 5 つのエンリッチメントを指定した場合、そのエンドポイントに向かうすべてのメッセージに同じ 5 つのエンリッチメントを含んだスタンプが適用されます。
 
-メッセージ エンリッチメントを試す方法については、[メッセージ エンリッチメントのチュートリアル](tutorial-message-enrichments.md)を参照してください。
+エンリッチメントは、次のメソッドを使用して構成できます。
+
+| **メソッド** | **コマンド** |
+| ----- | -----| 
+| ポータル | [Azure Portal](https://portal.azure.com) | [メッセージ エンリッチメントのチュートリアル](tutorial-message-enrichments.md)をご覧ください | 
+| Azure CLI   | [az iot hub message-enrichment](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
+
+メッセージ エンリッチメントを追加しても、メッセージのルーティングに待機時間は追加されません。
+
+メッセージ エンリッチメントを試すには、[メッセージ エンリッチメントのチュートリアル](tutorial-message-enrichments.md)を参照してください
 
 ## <a name="limitations"></a>制限事項
 

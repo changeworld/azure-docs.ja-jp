@@ -1,30 +1,30 @@
 ---
-title: Azure Synapse Analytics (旧称 SQL DW) での Data Warehouse ユニット (DWU、cDWU)
-description: 最適な Data Warehouse ユニット (DWU、cDWU) の数の選択についての推奨事項と、ユニットの数を変更する方法を示します。
+title: Azure Synapse Analytics (旧称 SQL DW) での Data Warehouse ユニット (DWU)
+description: 最適な Data Warehouse ユニット (DWU) の数の選択についての推奨事項と、ユニットの数を変更する方法を示します。
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: caa23d3e86fba86aa45e677f7ab85859cda6ddce
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7cd6a037f339f193f63cbe152f0ea9964679c231
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133165"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420480"
 ---
-# <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU)
+# <a name="data-warehouse-units-dwus"></a>Data Warehouse ユニット (DWU)
 
-最適な Data Warehouse ユニット (DWU、cDWU) の数の選択についての推奨事項と、ユニットの数を変更する方法を示します。
+最適な Data Warehouse ユニット (DWU) の数の選択についての推奨事項と、ユニットの数を変更する方法を示します。
 
 ## <a name="what-are-data-warehouse-units"></a>Data Warehouse ユニットとは
 
-SQL プールは、[SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) を使用しているときにプロビジョニングされる分析リソースのコレクションを表します。 分析リソースは、CPU、メモリ、および IO の組み合わせとして定義されます。 これらの 3 つのリソースは、Data Warehouse ユニット (DWU) と呼ばれるコンピューティング スケールのユニットにバンドルされます。 DWU は、コンピューティング リソースとパフォーマンスの抽象的な正規化された単位を表します。 サービス レベルを変更すると、システムで使用できる DWU の数が変更され、それによってさらにシステムのパフォーマンスやコストが調整されます。
+[SQL プール](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)は、[SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) を使用しているときにプロビジョニングされる分析リソースのコレクションを表します。 分析リソースは、CPU、メモリ、および IO の組み合わせとして定義されます。 これらの 3 つのリソースは、Data Warehouse ユニット (DWU) と呼ばれるコンピューティング スケールのユニットにバンドルされます。 DWU は、コンピューティング リソースとパフォーマンスの抽象的な正規化された単位を表します。 サービス レベルを変更すると、システムで使用できる DWU の数が変更され、それによってさらにシステムのパフォーマンスやコストが調整されます。
 
 パフォーマンス向上のために、Data Warehouse ユニットの数を増やすことができます。 パフォーマンスを低下させるには、Data Warehouse ユニットの数を減らします。 ストレージのコストとコンピューティングのコストは、別々に請求されます。したがって、Data Warehouse ユニットの数を変更してもストレージ コストには影響しません。
 
@@ -42,40 +42,19 @@ DWU の数を増やすと、次のメリットが得られます。
 
 ## <a name="service-level-objective"></a>サービス レベル目標
 
-サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 SQL プールのサービス レベルは、コンピューティング Data Warehouse ユニット (cDWU) で測定されます (DW2000c など)。 Gen1 SQL プールのサービス レベルは、DWU で測定されます (DW2000 など)。
-  > [!NOTE]
-  > Gen 2 SQL プールでは最近、100 cDWU という低いコンピューティング レベルをサポートするための新しいスケール機能が追加されました。 現在 Gen1 を使用している、より低いコンピューティング レベルを必要とする既存の SQL プールは、現在追加コストなしで使用できるリージョン内で Gen2 にアップグレードできるようになりました。  お使いのリージョンがまだサポートされていない場合は、サポートされているリージョンにアップグレードできます。 詳細については、[Gen2 へのアップグレード](upgrade-to-latest-generation.md)に関するページを参照してください。
+サービス レベル目標 (SLO) は、データ ウェアハウスのコストとパフォーマンス レベルを決定するスケーラビリティ設定です。 Gen2 SQL プールのサービス レベルは、DW2000c など、Data Warehouse ユニット (DWU) で測定されます。
 
-T-SQL では、SERVICE_OBJECTIVE 設定によって SQL プールのサービス レベルとパフォーマンス レベルが決定されます。
+T-SQL では、SERVICE_OBJECTIVE 設定でお使いの SQL プールのサービス レベルが決定されます。
 
 ```sql
---Gen1
-CREATE DATABASE myElasticSQLDW
-WITH
-(    SERVICE_OBJECTIVE = 'DW1000'
-)
-;
-
---Gen2
-CREATE DATABASE myComputeSQLDW
-(Edition = 'Datawarehouse'
+CREATE DATABASE mySQLDW
+( EDITION = 'Datawarehouse'
  ,SERVICE_OBJECTIVE = 'DW1000c'
 )
 ;
 ```
 
-## <a name="performance-tiers-and-data-warehouse-units"></a>パフォーマンス レベルと Data Warehouse ユニット
-
-各パフォーマンス レベルで、Data Warehouse ユニットの測定単位は若干異なります。 スケールの単位は課金に直接つながるため、この違いは請求書に反映されます。
-
-- Gen1 SQL プールは、Data Warehouse ユニット (DWU) で測定されます。
-- Gen2 SQL プールは、コンピューティング Data Warehouse ユニット (cDWU) で測定されます。
-
-DWU と cDWU はどちらも、コンピューティングのスケールアップまたはスケールダウンと、SQL プールを使用する必要がない場合のコンピューティングの一時停止をサポートしています。 これらの操作はすべて、オンデマンドで実行できます。 Gen2 では、パフォーマンス向上のためにコンピューティング ノードでのローカル ディスク ベースのキャッシュを使用します。 スケール操作やシステムの一時停止を行うと、このキャッシュが無効化されるため、最適なパフォーマンスを実現する前にキャッシュの準備期間が必要となります。  
-
-Data Warehouse ユニットを増やすと、コンピューティング リソースが直線的に増加します。 Gen2 は最適なクエリ パフォーマンスと最大のスケールを提供します。 Gen2 システムは、キャッシュも最大限に活用します。
-
-### <a name="capacity-limits"></a>容量制限
+## <a name="capacity-limits"></a>容量制限
 
 各 SQL Server (たとえば myserver.database.windows.net) には、特定の数の Data Warehouse ユニットを許可する[データベース トランザクション ユニット (DTU)](../sql-database/sql-database-what-is-a-dtu.md) クォータがあります。 詳細については、[ワークロード管理の容量制限](sql-data-warehouse-service-capacity-limits.md#workload-management)に関する記事を参照してください。
 
@@ -122,7 +101,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-DWU または cDWU を変更するには、次の手順に従います。
+DWU を変更するには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) を開き、データベースを開いて、 **[スケール]** をクリックします。
 
@@ -134,32 +113,32 @@ DWU または cDWU を変更するには、次の手順に従います。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-DWU または cDWU を変更するには、[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell コマンドレットを使用します。 次の例では、MyServer サーバーにホストされているデータベース MySQLDW のサービスレベル目標を DW1000 に設定します。
+DWU を変更するには、[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell コマンドレットを使用します。 次の例では、MyServer サーバーにホストされているデータベース MySQLDW のサービス レベル目標を DW1000c に設定します。
 
 ```Powershell
-Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
+Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
 詳細については、[SQL Data Warehouse の PowerShell コマンドレット](sql-data-warehouse-reference-powershell-cmdlets.md)に関するページを参照してください。
 
 ### <a name="t-sql"></a>T-SQL
 
-T-SQL で現在の DWU または cDWU の設定を表示したり、設定を変更したり、進行状況を確認したりできます。
+T-SQL で現在の DWU の設定を表示したり、設定を変更したり、進行状況を確認したりできます。
 
-DWU または cDWU を変更するには、次の手順に従います。
+DWU を変更するには、次の手順に従います。
 
 1. SQL Database 論理サーバーに関連付けられている master データベースに接続します。
-2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL ステートメントを使用します。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000 に設定します。
+2. [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) TSQL ステートメントを使います。 次の例では、MySQLDW データベースのサービス レベル目標を DW1000c に設定します。
 
 ```Sql
 ALTER DATABASE MySQLDW
-MODIFY (SERVICE_OBJECTIVE = 'DW1000')
+MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 ;
 ```
 
 ### <a name="rest-apis"></a>REST API
 
-DWU を変更するには、[データベースの作成または更新](/rest/api/sql/databases/createorupdate) REST API を使います。 次の例では、サーバー MyServer でホストされているデータベース MySQLDW のサービス レベル目標を DW1000 に設定します。 サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
+DWU を変更するには、[データベースの作成または更新](/rest/api/sql/databases/createorupdate) REST API を使います。 次の例では、サーバー MyServer でホストされているデータベース MySQLDW のサービス レベル目標を DW1000c に設定します。 サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -167,7 +146,7 @@ Content-Type: application/json; charset=UTF-8
 
 {
     "properties": {
-        "requestedServiceObjectiveName": DW1000
+        "requestedServiceObjectiveName": DW1000c
     }
 }
 ```

@@ -1,17 +1,17 @@
 ---
-title: Azure Migrate アプライアンスのアーキテクチャ | Microsoft Docs
-description: Azure Migrate アプライアンスの概要を示します。
+title: Azure Migrate アプライアンスのアーキテクチャ
+description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49545ca6c43c272c3fd84f8bee59b8617aae136d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685097"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232567"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -42,7 +42,7 @@ Hyper-V VM | Azure Migrate Assessment ツールを使用した Hyper-V VM の評
 
 **エージェント** | **詳細**
 --- | ---
-検出エージェント | オンプレミスの仮想マシンの構成データを収集します
+検出エージェント | オンプレミスの仮想マシンの構成データを収集する
 評価エージェント | VM のパフォーマンス データを収集するために、オンプレミス環境をプロファイルします。
 移行アダプター | VM のレプリケーションを調整し、VM と Azure 間の通信を調整します。
 移行ゲートウェイ | レプリケートされた VM のデータを Azure に送信します。

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 12/03/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 778353621491f912d3237900785e6dee17bf975e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 706cc38c997c91efc890b213444ff779eb86d5c1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014486"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805270"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 ### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
 
-* セキュリティ管理者、セキュリティ閲覧者、およびレポート閲覧者ロールのユーザー
+* セキュリティ管理者、セキュリティ閲覧者、グローバル閲覧者、およびレポート閲覧者ロールのユーザー
 * グローバル管理者
 * 任意のユーザー (非管理者) が自分のサインインにアクセス可能 
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 追加のフィールドを表示するか、既に表示されているフィールドを削除します。
 
-![サインイン アクティビティ](./media/concept-sign-ins/02.png "サインイン アクティビティ")
+![サインイン アクティビティ](./media/concept-sign-ins/columns.png "サインイン アクティビティ")
 
 詳細な情報を取得するには、リスト ビューで項目を選択します。
 

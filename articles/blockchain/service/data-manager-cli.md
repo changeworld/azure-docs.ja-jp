@@ -1,19 +1,15 @@
 ---
-title: ブロックチェーン データ マネージャーを構成する - Azure CLI
-description: Azure CLI を使用してブロックチェーン データ マネージャーを作成および管理する方法
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: Azure CLI を使用してブロックチェーン データ マネージャーを構成する - Azure Blockchain Service
+description: Azure CLI を使用して、Azure Blockchain Service 用のブロックチェーン データ マネージャーを作成および管理します。
 ms.date: 11/04/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 9f408b090db40e5145b424034c39cdba4de14a8f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605898"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455930"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Azure CLI を使用してブロックチェーン データ マネージャーを構成する
 
@@ -419,7 +415,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>次の手順
 
-ブロックチェーン データ マネージャーと Azure Cosmos DB を使用してブロックチェーン トランザクション メッセージ エクスプローラーの作成を試みます。
+次のチュートリアルで、ブロックチェーン データ マネージャーと Azure Cosmos DB を使用してブロックチェーン トランザクション メッセージ エクスプローラーの作成を試みます。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Blockchain Data Manager を使用して Azure Cosmos DB にデータを送信する](data-manager-cosmosdb.md)
+> [Blockchain Data Manager を使用して Azure Cosmos DB にデータを送信する](data-manager-cosmosdb.md)

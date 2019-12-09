@@ -1,17 +1,14 @@
 ---
-title: リソース マネージャーのテンプレートの関数 | Microsoft Docs
+title: テンプレート関数
 description: 値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: tomfitz
-ms.openlocfilehash: 04358f21af79838f894dc50d5d9c165da67a332c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.date: 11/19/2019
+ms.openlocfilehash: cf263bff72677778433d4ef2f3cee8135fe3ab06
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894156"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224183"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager テンプレートの関数
 
@@ -81,6 +78,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 リソース マネージャーには、テンプレートのセクションから値を取得し、デプロイに関連する値を取得する次の関数が用意されています。
 
 * [デプロイ](resource-group-template-functions-deployment.md#deployment)
+* [environment](resource-group-template-functions-deployment.md#environment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
 * [variables](resource-group-template-functions-deployment.md#variables)
 

@@ -1,19 +1,14 @@
 ---
-title: GPU 対応 Azure コンテナー インスタンスをデプロイする
-description: GPU リソースで実行する Azure コンテナー インスタンスをデプロイする方法について説明します。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: GPU 対応コンテナー インスタンスをデプロイする
+description: GPU リソースを使用してコンピューティング集中型コンテナー アプリを実行するために、Azure コンテナー インスタンスをデプロイする方法について説明します。
 ms.topic: article
 ms.date: 04/17/2019
-ms.author: danlep
-ms.openlocfilehash: 300e9b82d578663a4d2ada3889a07d8b03051cc5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ea3b0ccba2d84487356f4bbd404cec3af1d0979a
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325951"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484186"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU リソースを使用するコンテナー インスタンスをデプロイする
 

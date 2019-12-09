@@ -11,46 +11,69 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/12/2019
+ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef2ce1ce7a754868a1adc2e78b4c0a83fc84f071
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1f661aa67f04de23c7b4871e78d3628c639e7567
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641448"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144558"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
+# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Azure Active Directory でのアプリケーションに対するユーザー プロビジョニングとプロビジョニング解除を自動化する
 
-Azure Active Directory (Azure AD) を使用すると、[Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、[Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、[ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) などのクラウド SaaS アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。 これは、SaaS アプリの自動化されたユーザー プロビジョニングとして知られています。
+Azure Active Directory (Azure AD) での**アプリ プロビジョニング**という用語は、ユーザーがアクセスする必要のあるクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションにおいてユーザーの ID とロールを自動的に作成することを意味します。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。 一般的なシナリオには、[Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)、[Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial)、[ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial) などのアプリケーションへの Azure AD ユーザーのプロビジョニングが含まれます。
 
-> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
+![プロビジョニングの概要図](media/user-provisioning/provisioning-overview.png)
 
 この機能を使用すると次のことができます。
 
-- 新しいユーザーがチームまたは組織に加わるときに、適切なシステムで新しいアカウントを自動的に作成できます。
-- ユーザーがチームまたは組織を離れるときに、適切なシステムでアカウントを自動的に非アクティブ化できます。
-- アプリとシステムの ID は、ディレクトリ (人事システム) の変更に基づいて最新の状態に保たれることが保証されます。
-- ユーザー以外のオブジェクト (グループなど) をサポートするアプリケーションにそれらをプロビジョニングします。
+- **プロビジョニングを自動化する:** 新しいユーザーがチームまたは組織に加わるときに、適切なシステムで新しいアカウントを自動的に作成できます。
+- **プロビジョニング解除を自動化する:** ユーザーがチームまたは組織を離れるときに、適切なシステムでアカウントを自動的に非アクティブ化できます。
+- **システム間でデータを同期する:** アプリとシステムの ID は、ディレクトリ (人事システム) での変更に基づいて最新の状態に保たれることが保証されます。
+- **グループをプロビジョニングする:** グループをサポートするアプリケーションにグループをプロビジョニングします。
+- **アクセスを管理する:** アプリケーションにプロビジョニングされたユーザーの監視と監査を行います。
+- **ブラウン フィールドのシナリオでシームレスにデプロイする:** ターゲット システムにユーザーが既に存在する場合でも、システム間で既存の ID を一致させ、簡単に統合できるようにします。
+- **リッチなカスタマイズを使用する:** ソース システムからターゲット システムにフローする必要があるユーザー データが定義されている、カスタマイズ可能な属性マッピングを利用します。
+- **重大なイベントのアラートを受け取る:** プロビジョニング サービスでは、重大なイベントに対するアラートが提供され、ビジネス ニーズに合わせてカスタム アラートを定義できる Log Analytics の統合が可能になります。
 
-自動化されたユーザー プロビジョニングには、次の機能も含まれています。
+## <a name="benefits-of-automatic-provisioning"></a>自動プロビジョニングの利点
 
-- ソース システムとターゲット システムとの間で既存の ID を一致させる機能。
-- ソース システムからターゲット システムにフローするユーザー データを定義する、カスタマイズ可能な属性マッピング。
-- プロビジョニング エラーのためのオプションの電子メール通知。
-- 監視とトラブルシューティングに役立つレポートとアクティビティ ログ。
+現代の組織では使用されるアプリケーションの数が増え続けており、IT 管理者は大規模なアクセス管理を強いられます。 Security Assertion Markup Language (SAML) や Open ID Connect (OIDC) などの標準を使用すると、管理者はシングル サインオン (SSO) をすばやく設定できますが、アクセスするにはユーザーをアプリにプロビジョニングする必要もあります。 多くの管理者にとって、プロビジョニングとは、すべてのユーザー アカウントを手動で作成すること、または毎週 CSV ファイルをアップロードすることを意味しますが、これらのプロセスは時間がかかり、コストがかかり、エラーが発生しやすくなります。 プロビジョニングを自動化するために SAML Just-In-Time (JIT) などのソリューションが採用されていますが、企業では、ユーザーが組織からいなくなる場合や、役割の変更のために特定のアプリにアクセスする必要がなくなる場合に、ユーザーのプロビジョニングを解除するためのソリューションも必要です。
 
-## <a name="why-use-automated-provisioning"></a>自動プロビジョニングを使用する理由
+自動プロビジョニングを使用する一般的な動機には、次のようなものがあります。
 
-この機能を使用する一般的な動機は、次のとおりです。
-
-- 手動によるプロビジョニング プロセスに関連するコスト、非効率性、および人的エラーを回避する。
-- 独自に開発したプロビジョニング ソリューションやプロビジョニング スクリプトのホスティングとメンテナンスに伴うコストを回避する。
+- プロビジョニング プロセスの効率と正確さを最大限に高める。
+- 独自に開発したプロビジョニング ソリューションやプロビジョニング スクリプトのホスティングとメンテナンスに伴うコストを抑える。
 - ユーザーが組織を離れるときに、主要な SaaS アプリからその ID をすぐに削除することで、組織のセキュリティを高める。
 - 多くのユーザーを特定の SaaS アプリまたは SaaS システムに簡単にインポートする。
 - 誰をプロビジョニングし、誰がアプリにサインインできるようにするかを、1 つのポリシー セットで決定する。
+
+Azure AD のユーザー プロビジョニングは、これらの課題に対応するのに役立ちます。 お客様による Azure AD ユーザー プロビジョニングの使用方法について詳しくは、[ASOS のケース スタディ](https://aka.ms/asoscasestudy)をご覧ください。 次のビデオでは、Azure AD でのユーザー プロビジョニングの概要について説明します。
+
+> [!VIDEO https://www.youtube.com/embed/_ZjARPpI6NI]
+
+## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Azure AD の自動ユーザー プロビジョニングで利用できるアプリケーションとシステム
+
+Azure AD は、一般的な多くの SaaS アプリや人事管理システムとの連携にあらかじめ対応しているほか、[SCIM 2.0 標準](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)の特定の領域を実装するアプリにも広く対応しています。
+
+* **事前統合されたアプリケーション (ギャラリー SaaS アプリ)** 。 Azure AD で事前統合プロビジョニング コネクタがサポートされているすべてのアプリケーションについては、[ユーザー プロビジョニングのためのアプリケーション チュートリアルの一覧](../saas-apps/tutorial-list.md)をご覧ください。 ギャラリーに一覧表示されている事前統合アプリケーションでは、通常、プロビジョニングに SCIM 2.0 ベースのユーザー管理 API が使用されています。 
+
+   ![Salesforce のロゴ](media/user-provisioning/gallery-app-logos.png)
+
+   プロビジョニングのために新しいアプリケーションを要求したい場合は、[アプリケーションをアプリ ギャラリーと統合するよう要求する](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)ことができます。 ユーザー プロビジョニング要求の場合、アプリケーションには SCIM 準拠のエンドポイントが必要です。 アプリをプラットフォームに迅速にオンボードできるよう、アプリケーションのベンダーに SCIM 標準に準拠するよう要求してください。
+
+* **SCIM 2.0 をサポートするアプリケーション**。 SCIM 2.0 ベースのユーザー管理 API が実装されているアプリケーションを汎用的に接続する方法については、[SCIM を使用した Azure Active Directory からアプリケーションへのユーザーおよびグループの自動プロビジョニング](use-scim-to-provision-users-and-groups.md)に関するページをご覧ください。
+
+## <a name="what-is-scim"></a>SCIM とは
+
+プロビジョニングとプロビジョニング解除の自動化を助けるため、アプリでは独自のユーザー API とグループ API を公開します。 ただし、複数のアプリでユーザーを管理しようとすると、すべてのアプリで同じ単純な操作 (ユーザーの作成や更新、ユーザーのグループへの追加、ユーザーのプロビジョニング解除など) が実行されることがわかります。 ただし、これらの単純な操作のすべてが、異なるエンドポイント パス、異なるユーザー情報指定方法、および情報の各要素を表す異なるスキーマを使用して、少しずつ異なる方法で実装されています。
+
+これらの課題に対処するため、SCIM 仕様では、ユーザーのアプリへの移動、アプリからの移動、アプリ内での移動に対し、共通のユーザー スキーマが提供されています。 SCIM は、プロビジョニングに対する事実上の標準になりつつあり、SAML や OpenID Connect などのフェデレーション標準と組み合わせて使用すると、エンドツーエンドの標準ベースのアクセス管理用ソリューションが管理者に提供されます。
+
+アプリケーションに対するユーザーとグループのプロビジョニングおよびプロビジョニング解除を自動化するための SCIM の使用について詳しくは、「[Azure Active Directory での SCIM のユーザー プロビジョニング](use-scim-to-provision-users-and-groups.md)」をご覧ください。
 
 ## <a name="how-does-automatic-provisioning-work"></a>自動プロビジョニングのしくみ
 
@@ -65,54 +88,13 @@ Azure Active Directory (Azure AD) を使用すると、[Dropbox](https://docs.mi
 ![入力方向のユーザー プロビジョニング ワークフロー](./media/user-provisioning/provisioning2.PNG)
 *図 3: 主要な人材管理 (HCM) アプリケーションから Azure Active Directory および Windows Server Active Directory への "入力方向" のユーザー プロビジョニング ワークフロー*
 
-## <a name="what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning"></a>Azure AD の自動ユーザー プロビジョニングで利用できるアプリケーションとシステム
-
-Azure AD は、一般的な多くの SaaS アプリや人事管理システムとの連携にあらかじめ対応しているほか、[SCIM 2.0 標準](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)の特定の領域を実装するアプリにも広く対応しています。
-
-### <a name="pre-integrated-applications"></a>事前統合されたアプリケーション
-
-Azure AD が事前統合プロビジョニング コネクタをサポートするすべてのアプリケーションの一覧については、[ユーザー プロビジョニングのためのアプリケーション チュートリアルの一覧](../saas-apps/tutorial-list.md)に関するページを参照してください。
-
-他のアプリのプロビジョニングのサポートを要求するために Azure AD エンジニア リング チームに問い合わせる場合は、[Azure Active Directory フィードバック フォーラム](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035)からメッセージを送信してください。
-
-> [!NOTE]
-> アプリで自動ユーザー プロビジョニングをサポートするには、まず、外部プログラム上でのユーザーの作成、保守、削除の自動化の実現に必要なユーザー管理 API を提供する必要があります。 そのため、すべての SaaS アプリがこの機能と互換性があるとは限りません。 ユーザー管理 API をサポートするアプリでは、Azure AD エンジニア リング チームがこれらのアプリケーションにプロビジョニング コネクタを作成できるようになります。この作業の優先順位は現在の顧客と見込み顧客のニーズによって決まります。
-
-### <a name="connecting-applications-that-support-scim-20"></a>SCIM 2.0 をサポートするアプリケーションの接続
-
-SCIM 2.0 ベースのユーザー管理 API を実装するアプリケーションを汎用的に接続する方法については、[SCIM を使用した Azure Active Directory からアプリケーションへのユーザーおよびグループの自動プロビジョニング](use-scim-to-provision-users-and-groups.md)に関するページをご覧ください。
-
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>アプリケーションへの自動プロビジョニングを設定する方法
+
+ギャラリーに一覧表示される事前統合アプリケーションについては、自動プロビジョニングの設定すに関するステップバイステップのガイダンスが用意されています。 [統合ギャラリー アプリのチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/saas-apps/)を参照してください。 次のビデオでは、SalesForce の自動ユーザー プロビジョニングの設定方法が説明されています。
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
-Azure Active Directory ポータルを使用して、選択したアプリケーションに対する Azure AD プロビジョニング サービスを構成します。
-
-1. **[Azure Active Directory ポータル](https://aad.portal.azure.com)** を開きます。
-1. 左側のウィンドウで、 **[エンタープライズ アプリケーション]** を選択します。 構成済みのすべてのアプリの一覧が表示されます。
-1. **[+ 新しいアプリケーション]** を選択して、アプリケーションを追加します。 
-1. 詳細を指定し、 **[追加]** を選択します。 新しいアプリがエンタープライズ アプリケーションの一覧に追加され、そのアプリケーションの管理画面が表示されます。
-1. ユーザー アカウントでのアプリのプロビジョニング設定を管理するには、 **[プロビジョニング]** を選択します。
-
-   ![プロビジョニング設定画面を表示します](./media/user-provisioning/provisioning_settings0.PNG)
-
-1. **[プロビジョニング モード]** で [自動] オプションを選択し、管理者の資格情報、マッピング、開始と停止、および同期の設定を指定します。
-
-   - **[管理者資格情報]** を展開し、Azure AD をアプリケーションのユーザー管理 API に接続するために必要な資格情報を入力します。 このセクションでは、資格情報でエラーが発生した場合、またはプロビジョニング ジョブが[検疫](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)に移行した場合の電子メール通知を有効にすることもできます。
-   - **[マッピング]** を展開し、ユーザー アカウントをプロビジョニングまたは更新する場合に、Azure AD とターゲット アプリケーションの間でフローするユーザー属性を表示および編集します。 ターゲット アプリケーションが対応していれば、必要に応じてグループのプロビジョニングとユーザー アカウントをこのセクションで構成することができます。 テーブルでマッピングを選択すると右側にマッピング エディターが開き、ユーザー属性を表示してカスタマイズできます。
-
-     **スコープ フィルター**により、ターゲット システムへのプロビジョニングまたはプロビジョニング解除の対象となるソース システム内のユーザーとグループをプロビジョニング サービスに指定します。 **[属性マッピング]** ウィンドウで **[ソース オブジェクト スコープ]** を選択し、特定の属性値でフィルター処理します。 たとえば、"Department" 属性が "Sales" であるユーザーのみをプロビジョニングの対象として指定することができます。 詳細については、[スコープ フィルターの使用](define-conditional-rules-for-provisioning-user-accounts.md)に関するページをご覧ください。
-
-     詳細については、[属性マッピングのカスタマイズ](customize-application-attributes.md)に関するページを参照してください。
-
-   - 現在実行中かどうかなど、アプリケーションのプロビジョニング サービスの動作は、 **[設定]** で制御します。 **[スコープ]** メニューでは、割り当て済みのユーザーとグループだけをプロビジョニングの対象とするか、Azure AD ディレクトリ内のすべてのユーザーをプロビジョニングの対象とするかを指定できます。 ユーザーとグループの "割り当て" の詳細については、「[Azure Active Directory でエンタープライズ アプリにユーザーまたはグループを割り当てる](assign-user-or-group-access-portal.md)」を参照してください。
-
-アプリ管理画面で、 **[プロビジョニング ログ (プレビュー)]** を選択し、Azure AD プロビジョニング サービスによって実行されたすべての操作の記録を表示します。 詳細については、[プロビジョニング レポートに関するガイド](check-status-user-account-provisioning.md)を参照してください。
-
-![例 - アプリのプロビジョニング ログ画面](./media/user-provisioning/audit_logs.PNG)
-
-> [!NOTE]
-> Azure AD ユーザー プロビジョニング サービスは、[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) を使用して構成および管理することもできます。
+SCIM 2.0 をサポートする他のアプリケーションについては、記事「[Azure Active Directory での SCIM のユーザー プロビジョニング](use-scim-to-provision-users-and-groups.md)」の手順に従ってください。
 
 ## <a name="what-happens-during-provisioning"></a>プロビジョニング中の動作
 

@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 85d2e58d35ef233fda7c724f85152fc74bd11189
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 939606412c55ddad29801776c2385b406dc93a33
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826832"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286758"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>チュートリアル:SQL Database マネージド インスタンスをフェールオーバー グループに追加する
 

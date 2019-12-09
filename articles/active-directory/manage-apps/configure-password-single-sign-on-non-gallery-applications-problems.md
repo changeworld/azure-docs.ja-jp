@@ -1,5 +1,5 @@
 ---
-title: ギャラリー以外のアプリケーションのパスワード SSO を構成する場合の問題 | Microsoft Docs
+title: ギャラリー以外のアプリのパスワード SSO を構成する場合の問題
 description: Azure AD アプリケーション ギャラリーに含まれていないカスタム アプリのパスワード シングル サインオン (SSO) を構成するときに発生する一般的な問題です。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24330dc874173ba1c6f15abb7b4caf9f23e2e00c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440349"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274149"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのパスワード シングル サインオンを構成する場合の問題
 
@@ -237,7 +237,7 @@ ms.locfileid: "67440349"
 
 - **状態**: 通知の特定の状態。
 
-    例:*失敗*
+    例:*Failed*
 
 - **オブジェクト ID**: (空でも可) 実行された操作の対象であるオブジェクト ID。
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 11/21/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3420374e90790bd1ffe4c845c19de1bfed317302
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 795a97f84bebf6c0e7c1692e82df2f7ce11e0bbd
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173735"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384093"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する
 
@@ -266,6 +266,34 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
+## <a name="get-object-ids"></a>オブジェクト ID を取得する
+
+ロールの割り当てを一覧表示、追加、または削除するには、オブジェクトの一意の ID を指定することが必要になる可能性があります。 この ID の形式は `11111111-1111-1111-1111-111111111111` です。 この ID は、Azure portal または Azure CLI を使用して取得できます。
+
+### <a name="user"></a>User
+
+Azure AD ユーザーのオブジェクト ID を取得するには、[az ad user show](/cli/azure/ad/user#az-ad-user-show) を使用できます。
+
+```azurecli
+az ad user show --id "{email}" --query objectId --output tsv
+```
+
+### <a name="group"></a>Group
+
+Azure AD グループのオブジェクト ID を取得するには、[az ad group show](/cli/azure/ad/group#az-ad-group-show) または [az ad group list](/cli/azure/ad/group#az-ad-group-list) を使用できます。
+
+```azurecli
+az ad group show --group "{name}" --query objectId --output tsv
+```
+
+### <a name="application"></a>Application
+
+Azure AD サービス プリンシパルのオブジェクト ID (アプリケーションによって使用される ID) を取得するには、[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) を使用できます。 サービス プリンシパルの場合は、アプリケーション ID **ではなく**、オブジェクト ID を使用します。
+
+```azurecli
+az ad sp list --display-name "{name}" --query [].objectId --output tsv
+```
+
 ## <a name="grant-access"></a>アクセス権の付与
 
 RBAC でアクセス権を付与するには、ロールの割り当てを作成します。
@@ -311,7 +339,7 @@ az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee
 
 ### <a name="create-a-role-assignment-for-a-group"></a>グループのロールの割り当てを作成する
 
-グループにアクセス権を付与するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。 グループの ID を取得するには、[az ad group list](/cli/azure/ad/group#az-ad-group-list) または [az ad group show](/cli/azure/ad/group#az-ad-group-show) を使用できます。
+グループにアクセス権を付与するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。 グループのオブジェクト ID を取得する方法については、「[オブジェクト ID を取得する](#get-object-ids)」を参照してください。
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
@@ -331,7 +359,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ### <a name="create-a-role-assignment-for-an-application-at-a-resource-group-scope"></a>リソース グループをスコープとするアプリケーションのロールの割り当てを作成する
 
-アプリケーションにアクセス権を付与するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。 アプリケーションのオブジェクト ID を取得するには、[az ad app list](/cli/azure/ad/app#az-ad-app-list) または [az ad app show](/cli/azure/ad/app#az-ad-app-show) を使用できます。
+アプリケーションにアクセス権を付与するには、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) を使用します。 アプリケーションのオブジェクト ID を取得する方法については、「[オブジェクト ID を取得する](#get-object-ids)」を参照してください。
 
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group>
@@ -351,7 +379,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
 ```
 
-次の例では、*annm\@example.com* ユーザーに、サブスクリプション スコープで "*閲覧者*" ロールが割り当てられます。
+次の例では、サブスクリプション スコープで *annm\@example.com* ユーザーに*閲覧者*ロールを割り当てます。
 
 ```azurecli
 az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
@@ -365,7 +393,7 @@ az role assignment create --role "Reader" --assignee annm@example.com --subscrip
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-次の例では、*alain\@example.com* ユーザーに、管理グループ スコープで "*課金データ閲覧者*" ロールが割り当てられます。
+次の例では、管理グループ スコープで *alain\@example.com* ユーザーに*課金データ閲覧者*ロールを割り当てます。
 
 ```azurecli
 az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
@@ -401,7 +429,7 @@ az role assignment delete --assignee <assignee> --role <role_name_or_id> --resou
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales
 ```
 
-次の例では、サブスクリプション スコープで "*閲覧者*" ロールが *Ann Mack Team* グループ (ID 22222222-2222-2222-2222-222222222222 ) から削除されます。 グループの ID を取得するには、[az ad group list](/cli/azure/ad/group#az-ad-group-list) または [az ad group show](/cli/azure/ad/group#az-ad-group-show) を使用できます。
+次の例では、サブスクリプション スコープで "*閲覧者*" ロールが *Ann Mack Team* グループ (ID 22222222-2222-2222-2222-222222222222 ) から削除されます。 グループのオブジェクト ID を取得する方法については、「[オブジェクト ID を取得する](#get-object-ids)」を参照してください。
 
 ```azurecli
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000

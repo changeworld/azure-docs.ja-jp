@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 75611dd36196c722254d694e9753deb982e2570d
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811278"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539331"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>DTU 購入モデルを使用した単一データベースに対するリソース制限
 
@@ -43,6 +43,12 @@ ms.locfileid: "73811278"
 | 最大同時セッション数 | 300 |
 |||
 
+> [!IMPORTANT]
+> Basic サービス レベルでは、1 未満の仮想コア (CPU) が提供されます。  CPU 負荷の高いワークロードの場合は、S3 以上のサービス レベルをお勧めします。 
+>
+>データ ストレージに関しては、Basic サービス レベルは Standard ページ BLOB に配置されます。 Standard ページ BLOB は、ハード ディスク ドライブ (HDD) ベースのストレージ メディアで、パフォーマンス変動の影響を受けにくい、開発、テスト、その他のアクセス頻度の少ないワークロードに最適です。
+>
+
 ### <a name="standard-service-tier"></a>Standard サービス レベル
 
 | **コンピューティング サイズ** | **S0** | **S1** | **S2** | **S3** |
@@ -54,6 +60,12 @@ ms.locfileid: "73811278"
 | 最大同時実行ワーカー (要求) 数| 60 | 90 | 120 | 200 |
 | 最大同時セッション数 |600 | 900 | 1200 | 2400 |
 ||||||
+
+> [!IMPORTANT]
+> Standard S0、S1、S2 レベルでは、1 未満の仮想コア (CPU) が提供されます。  CPU 負荷の高いワークロードの場合は、S3 以上のサービス レベルをお勧めします。 
+>
+>データ ストレージに関しては、Standard S0 および S1 サービス レベルは Standard ページ BLOB に配置されます。 Standard ページ BLOB は、ハード ディスク ドライブ (HDD) ベースのストレージ メディアで、パフォーマンス変動の影響を受けにくい、開発、テスト、その他のアクセス頻度の少ないワークロードに最適です。
+>
 
 ### <a name="standard-service-tier-continued"></a>Standard サービス レベル (続き)
 
@@ -90,7 +102,7 @@ ms.locfileid: "73811278"
 
 - 単一データベースに対する仮想コア リソースの制限については、[仮想コア購入モデルを使用した単一データベースに対するリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページを参照してください
 - エラスティック プールに対する仮想コア リソースの制限については、[仮想コア購入モデルを使用したエラスティック プールに対するリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページを参照してください。
-- エラスティック プールに対する DTU リソースの制限については、[DTU 購入モデルを使用したエラスティック プールに対するリソース制限](sql-database-dtu-resource-limits-elastic-pools.md)に関するページを参照してください。
+- エラスティック プールに対する DTU リソースの制限については、「[DTU ベースの購入モデルを使用したエラスティック プールのリソース制限](sql-database-dtu-resource-limits-elastic-pools.md)」を参照してください
 - マネージド インスタンスに対するリソース制限については、[マネージド インスタンスのリソース制限](sql-database-managed-instance-resource-limits.md)に関するページを参照してください。
 - Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 - データベース サーバーでのリソース制限については、サーバーおよびサブスクリプション レベルの制限に関する情報が記載された、[SQL Database サーバー上のリソース制限の概要](sql-database-resource-limits-database-server.md)に関するページを参照してください。

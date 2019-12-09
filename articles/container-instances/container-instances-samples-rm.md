@@ -1,19 +1,14 @@
 ---
-title: Azure Resource Manager テンプレートのサンプル - Azure Container Instances
-description: Azure Container Instances のための Azure Resource Manager テンプレートのサンプル
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Azure Resource Manager テンプレート サンプル
+description: さまざまな構成で Azure Container Instances をデプロイする Azure Resource Manager テンプレートのサンプルを見つける
 ms.topic: article
 ms.date: 03/07/2019
-ms.author: danlep
-ms.openlocfilehash: 2089f024e1de2e92f6e401549c5876e26db17ebb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ddea823525002662363d61a795f34d6094c897d0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325689"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533440"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances のための Azure Resource Manager テンプレート
 

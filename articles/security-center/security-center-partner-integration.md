@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 0a3bc6bcae2f06173cbc334ffe80e2dfa001e407
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 0479918ad2afa99dcd9f18d3ba81f94a3e262e9e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309263"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479373"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -95,8 +95,6 @@ Security Center は、Azure で実行されていても Security Center に接�
 
 ソリューションの下の **[接続]** を選択して、Security Center と統合し、セキュリティのアラートが通知されるようにします。
 
-![検出されたソリューション](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
-
 ### <a name="add-data-sources"></a>データ ソースの追加
 
 **[データ ソースの追加]** セクションには、接続できるその他の使用可能なデータ ソースが表示されます。 このようなソースのいずれかからデータを追加する手順については、 **[追加]** をクリックしてください。
@@ -104,6 +102,10 @@ Security Center は、Azure で実行されていても Security Center に接�
 ![データ ソース](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
 ## <a name="exporting-data-to-a-siem"></a>SIEM へのデータのエクスポート
+
+> [!NOTE]
+> SIEM にデータをエクスポートするためのより簡単な方法 (現在はプレビュー段階) の詳細については、「[セキュリティ アラートと推奨事項のエクスポート (プレビュー)](continuous-export.md)」を参照してください。 この新しい方法では、アクティビティ ログは仲介として使用されず、Security Center から Event Hubs への直接エクスポート (およびその後の SIEM への直接エクスポート) を許可しています。また、セキュリティの推奨事項のエクスポートもサポートしています。
+
 
 Azure Security Center イベントを受信するように SIEM またはその他の監視ツールを構成できます。
 

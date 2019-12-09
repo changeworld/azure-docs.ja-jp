@@ -1,20 +1,15 @@
 ---
-title: Azure Container Instances でコンテナーのログとイベントを取得する
+title: コンテナー インスタンスのログとイベントの取得
 description: Azure Container Instances でコンテナーのログとイベントを使用してデバッグを行う方法を学習する
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 03/21/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8ae7ab3f53f480f46165800504fbb1eb6649c3e2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 57d35b9423fd8c64e5a58ee4d8055aa3b238ba8c
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325963"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481743"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Azure Container Instances でコンテナーのログとイベントを取得する
 

@@ -6,17 +6,24 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: 906ae92b0018430bdda02639642dd66ae2231dce
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/18/2019
+ms.openlocfilehash: 12860d70cad2dbcfa3d06bf4df6939dd27ab3ab3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477063"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279623"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>コンテナーに対する Azure Monitor の概要
 
-コンテナーの Azure Monitor は、Azure Container Instances、Azure Kubernetes Service (AKS) でホストされたマネージド Kubernetes クラスター、Azure Stack でホストされた自己管理の Kubernetes クラスターにデプロイされているコンテナー ワークロードのパフォーマンスを監視するために設計された機能です。 コンテナーの監視は、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
+Azure Monitor for containers は、以下にデプロイされているコンテナー ワークロードのパフォーマンスを監視するために設計された機能です。
+
+- Azure Kubernetes Service (AKS) にホストされているマネージド Kubernetes クラスター
+- Azure Container Instances
+- Azure Stack またはオンプレミスでホストされた自己管理の Kubernetes クラスター
+- Azure Red Hat OpenShift
+
+コンテナーの監視は、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
 
 コンテナーに対する Azure Monitor では、Kubernetes で使用可能なコントローラー、ノード、およびコンテナーから Metrics API 経由でメモリやプロセッサ メトリックを収集することにより、パフォーマンスを把握できます。 コンテナーのログも収集されます。  Kubernetes クラスターから監視を有効化すると、コンテナー化されたバージョンの Linux 向けの Log Analytics エージェントを使用してメトリックとログが自動的に収集されます。 メトリックはメトリック ストアに書き込まれ、ログ データは [Log Analytics](../log-query/log-query-overview.md) ワークスペースに関連付けられたログ ストアに書き込まれます。 
 
@@ -31,7 +38,7 @@ ms.locfileid: "73477063"
 * コントローラーまたはポッドのどこにコンテナーが存在するかを特定します。 この知識は、コントローラーまたはポッド全体のパフォーマンスを表示するのに役立ちます。 
 * ポッドをサポートする標準プロセスと関連のない、ホスト上で実行されているワークロードのリソース使用率を確認します。
 * 平均的な負荷、および最大の負荷がかかったときのクラスターの動作を理解します。 この知識は、容量ニーズを特定し、クラスターが維持できる最大負荷を判断するのに役立ちます。 
-* ノードまたはコンテナーの CPU およびメモリの使用率がしきい値を超えた場合や、インフラストラクチャ、ノード、またはワークロードの正常性ロールアップで正常性状態の変更がクラスターで発生した場合に、事前に通知または記録するようにアラートを構成します。
+* ノードまたはコンテナーの CPU およびメモリの使用率がしきい値を超えた場合や、インフラストラクチャまたはノードの正常性ロールアップで正常性状態の変更がクラスターで発生した場合に、事前に通知または記録するようにアラートを構成します。
 * [Prometheus](https://prometheus.io/docs/introduction/overview/) と統合して、[クエリ](container-insights-log-search.md)を使用してノードと Kubernetes から収集したアプリケーションとワークロードのメトリックを表示し、カスタム アラート、ダッシュボード、詳細な分析を作成します。
 
     >[!NOTE]
@@ -39,6 +46,11 @@ ms.locfileid: "73477063"
     >
 
 * オンプレミスの [AKS エンジンにデプロイされた](https://github.com/microsoft/OMS-docker/tree/aks-engine)コンテナー ワークロードおよび [Azure Stack の AKS エンジン](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)を監視します。
+* [Azure Red Hat OpenShift にデプロイされた](../../openshift/intro-openshift.md)コンテナー ワークロードを監視します。
+
+    >[!NOTE]
+    >現時点では、Red Hat OpenShift のサポートはパブリック プレビューの機能です。
+    >
 
 コンテナーに対する Azure Monitor を使用して AKS クラスターを監視する方法について、中間レベルの詳細情報を紹介した次の動画をご覧ください。
 
@@ -54,6 +66,4 @@ ms.locfileid: "73477063"
 
 ## <a name="next-steps"></a>次の手順
 
-- AKS クラスターの監視を開始するには、「[Azure Monitor for containers を有効にする方法](container-insights-onboard.md)」を参照し、監視を有効にするための要件と使用できる方法を把握してください。 
-
-- オンプレミスでデプロイされた Azure Stack または Kubernetes で AKS エンジンの監視を開始するには、「[コンテナーの Azure Monitor を使用してハイブリッド Kubernetes クラスターを構成する](container-insights-hybrid-setup.md)」を確認してください。  
+Kubernetes クラスターの監視を開始するには、「[Azure Monitor for containers を有効にする方法](container-insights-onboard.md)」を確認し、監視を有効にするための要件と使用できる方法を把握してください。 

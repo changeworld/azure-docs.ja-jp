@@ -1,21 +1,15 @@
 ---
 title: Azure Blockchain Service のセキュリティ
 description: Azure Blockchain Service のデータ アクセスとセキュリティの概念です
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/22/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 63e61844ddb5bd0f0ed52b67e26ea5bf1857fd2b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.reviewer: janders
+ms.openlocfilehash: e1a40acfec6b0dc5cdf21fb84b341b6b4987797a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579916"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455716"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure Blockchain Service のセキュリティ
 
@@ -65,4 +59,4 @@ Quorum ノードを一意に識別するには、Constellation キーが使用�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Blockchain Service のトランザクション ノードを構成する](configure-transaction-nodes.md)
+[Azure Blockchain Service 用に Azure Active Directory アクセスを構成する方法](configure-aad.md)に関するページを参照してください。

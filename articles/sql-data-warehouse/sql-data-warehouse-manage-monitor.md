@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 629ba904d055977fe70f749a46fbbec71be71b79
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b71d3b4824d8c1c73f40c8c6d87db315aabd423b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083647"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555487"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV を利用してワークロードを監視する
 この記事では、動的管理ビュー (DMV) を使用してワークロードを監視する方法について説明します。 Azure SQL Data Warehouse でのクエリの実行の調査が含まれます。
@@ -63,7 +63,7 @@ ORDER BY total_elapsed_time DESC;
 
 上記のクエリ結果から、調査するクエリの **要求 ID を書き留めます** 。
 
-アクティブな実行中のクエリが多数あるため、**中断**状態のクエリをキューに入れることができます。 これらのクエリは、UserConcurrencyResourceType 型の [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) 待機クエリにも表示されます。 コンカレンシーの制限に関する情報については、[パフォーマンス レベル](/azure/sql-data-warehouse/what-is-a-data-warehouse-unit-dwu-cdwu#performance-tiers-and-data-warehouse-units)に関する記事、または「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待っている場合は、この記事の下にある [リソースを待機しているクエリの調査][Investigating queries waiting for resources] に関するトピックをご覧ください。
+アクティブな実行中のクエリが多数あるため、**中断**状態のクエリをキューに入れることができます。 これらのクエリは、UserConcurrencyResourceType 型の [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) 待機クエリにも表示されます。 コンカレンシーの制限に関する詳細については、「[Azure SQL Data Warehouse のメモリおよびコンカレンシーの制限](memory-concurrency-limits.md)」、または[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)に関する記事を参照してください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待っている場合は、この記事の下にある [リソースを待機しているクエリの調査][Investigating queries waiting for resources] に関するトピックをご覧ください。
 
 [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) テーブル内のクエリの検索を簡素化するには、[LABEL][LABEL] を使用して、sys.dm_pdw_exec_requests ビューで検索できるクエリにコメントを割り当てます。
 

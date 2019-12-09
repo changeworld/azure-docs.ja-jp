@@ -1,0 +1,93 @@
+---
+title: Azure SignalR Service のインスタンスのスケーリング
+description: Azure portal または Azure CLI を使用して Azure SignalR Service のインスタンスをスケーリングし、容量を増減する方法について説明します。
+author: sffamily
+ms.service: signalr
+ms.topic: conceptual
+ms.date: 11/21/2019
+ms.author: zhshang
+ms.openlocfilehash: 0c4f91ee9cea5e8b13ecfedafffdc1715fc242c2
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464162"
+---
+# <a name="how-to-scale-an-azure-signalr-service-instance"></a>Azure SignalR Service のインスタンスをスケーリングする方法
+この記事では、Azure SignalR Service のインスタンスをスケーリングする方法を示します。 スケーリングには、スケールアップとスケールアウトの 2 つのシナリオがあります。
+
+* [スケールアップ](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling):ユニット、接続、メッセージなどの数を増やします。 価格レベルを Free から Standard に変更してスケールアップします。
+* [スケールアウト](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling):SignalR ユニットの数を増やします。 最大 100 ユニットまでスケールアウトできます。
+
+スケール設定が適用されるまでに数分かかります。 コードの変更やサーバー アプリケーションの再デプロイは必要ありません。
+
+個別の SignalR Service の価格および容量の詳細については、[Azure SignalR Service の価格詳細](https://azure.microsoft.com/pricing/details/signalr-service/)に関するページを参照してください。  
+
+> [!NOTE]
+> SignalR Service を **Free** レベルから **Standard** レベルに (またはその逆に) 変更すると、パブリック サービス IP が変更され、インターネット全体で DNS サーバーに変更が反映されるまで通常は 3 ～ 60 分かかります。 DNS が更新されるまで、サービスにアクセスできない可能性があります。 一般に、価格レベルを頻繁に変更することはお勧めしません。
+
+
+## <a name="scale-on-azure-portal"></a>Azure portal でのスケーリング
+
+1. ブラウザーで、[Azure Portal](https://portal.azure.com) を開きます。
+
+2. SignalR Service のページで、左側のメニューから **[Scale]\(スケール\)** を選択します。
+   
+3. 価格レベルを選んで **[選択]** をクリックします。 **Standard** レベルでは、ユニット数を設定する必要があります。
+   
+    ![ポータルでのスケーリング](./media/signalr-howto-scale/signalr-howto-scale.png)
+
+4. **[Save]** をクリックします。
+
+## <a name="scale-using-azure-cli"></a>Azure CLI を使用したスケーリング
+
+このスクリプトでは、**Free** レベルの新しい SignalR Service リソースと新しいリソース グループを作成し、**Standard** レベルにスケールアップします。 
+
+```azurecli-interactive
+#!/bin/bash
+
+# Generate a unique suffix for the service name
+let randomNum=$RANDOM*$RANDOM
+
+# Generate a unique service and group name with the suffix
+SignalRName=SignalRTestSvc$randomNum
+#resource name must be lowercase
+mySignalRSvcName=${SignalRName,,}
+myResourceGroupName=$SignalRName"Group"
+
+# Create resource group 
+az group create --name $myResourceGroupName --location eastus
+
+# Create the Azure SignalR Service resource
+az signalr create \
+  --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName \
+  --sku Free_F1 \
+  --service-mode Default
+
+# Scale up to Standard Tier, and scale out to 50 units
+az signalr update \
+  --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName \
+  --sku Standard_S1 \
+  --unit-count 50
+```
+
+新しいリソース グループに対して生成された実際の名前はメモしておいてください。 このリソース グループ名は、すべてのグループ リソースを削除するときに使います。
+
+[!INCLUDE [cli-script-clean-up](../../includes/cli-script-clean-up.md)]
+
+## <a name="compare-pricing-tiers"></a>価格レベルの比較
+
+それぞれの価格レベルに含まれるメッセージや接続などの詳細については、[SignalR Service の価格詳細](https://azure.microsoft.com/pricing/details/signalr-service/)に関するページを参照してください。
+
+サービスの制限、クォータ、各レベルでの制約の表は、[SignalR Service の制限](../azure-subscription-service-limits.md#azure-signalr-service-limits)に関するページを参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+このガイドでは、1 つの SignalR Service インスタンスをスケーリングする方法について説明しました。
+
+複数のエンドポイントも、スケーリング、シャード化、クロスリージョンの各シナリオでサポートされています。
+
+> [!div class="nextstepaction"]
+> [複数のインスタンスがある SignalR Service のスケーリング](./signalr-howto-scale-multi-instances.md)

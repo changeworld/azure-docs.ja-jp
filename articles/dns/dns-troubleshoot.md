@@ -1,18 +1,18 @@
 ---
-title: Azure DNS トラブルシューティング ガイド
-description: Azure DNS における一般的な問題のトラブルシューティング方法
+title: トラブルシューティング ガイド - Azure DNS
+description: このラーニング パスでは、Azure DNS に関する一般的な問題のトラブルシューティングを開始します
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 09/20/2019
-ms.author: genli
-ms.openlocfilehash: 885d41c9cea11805b08b19ec9c3cc4e533813673
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.author: allensu
+ms.openlocfilehash: b5fedba7b739c07a37f3aabf75ddd8ca465ba73b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162063"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210931"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS トラブルシューティング ガイド
 

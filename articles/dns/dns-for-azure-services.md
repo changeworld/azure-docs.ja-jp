@@ -1,11 +1,10 @@
 ---
-title: 他の Azure サービスと共に Azure DNS を使用する | Microsoft Docs
-description: Azure DNS を使用して 他の Azure サービスの名前を解決する方法を理解します
+title: Azure DNS を他の Azure サービスで使用する
+description: このラーニング パスでは、Azure DNS を使用して他の Azure サービスの名前を解決する方法を説明します
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
-editor: ''
+author: asudbring
+manager: kumudD
 tags: azure dns
 ms.assetid: e9b5eb94-7984-4640-9930-564bb9e82b78
 ms.service: dns
@@ -15,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 09/21/2016
-ms.author: victorh
-ms.openlocfilehash: dcf209d2036d2686bea0b51380db3cd2473d04a6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 142157273bd24912311383785d08177abfd04398
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61293193"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211897"
 ---
 # <a name="how-azure-dns-works-with-other-azure-services"></a>Azure DNS を他の Azure サービスと使用する方法
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory でユーザーのエクスペリエンスからアプリケーションを非表示にする | Microsoft Docs
+title: Azure AD でユーザーのエクスペリエンスからアプリケーションを非表示にする
 description: Azure Active Directory アクセス パネルまたは Office 365 ランチャーでユーザーのエクスペリエンスからアプリケーションを非表示にする方法
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 11/12/2018
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd98aa974f2adcd363c04c10b7a10cef6ca8ce7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e01c79c5cc9391922333af4e9a60ba44a6a6b13
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824530"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274003"
 ---
 # <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Azure Active Directory のエンドユーザーに対してアプリケーションを非表示にする
 

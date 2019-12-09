@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: 4ed23beae6edb13efabf034c1e87b9cb76048f82
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: bdb38e36a9f1344a3adde15d349a2ec176c0fe95
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648176"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74424004"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>U-SQL 開発者向けの Apache Spark コードについて
 
@@ -143,7 +143,7 @@ Spark において、NULL は値が認識できないことを示します。 Sp
 
 この動作は、`null` がそれ自体以外のどの値とも異なる C#セマンティクスに従う、U-SQL とは異なります。  
 
-したがって、`WHERE column_name = NULL` を使用する SparkSQL `SELECT` ステートメントでは、`column_name` に NULL 値がある場合でも 0 行が返され、U-SQL では、`column_name` が `null` に設定されている行が返されます。 同様に、`WHERE column_name != NULL` を使用する Spark `SELECT` ステートメントでは、`column_name` に 非null 値がある場合でも 0 行が返され、U-SQL では、非 null に設定されている行が返されます。 したがって、U-SQL の null チェック セマンティクスが必要な場合は、 [isnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)) または [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (または DSL 同等) をそれぞれ使用する必要があります。
+したがって、`WHERE column_name = NULL` を使用する SparkSQL `SELECT` ステートメントでは、`column_name` に NULL 値がある場合でも 0 行が返され、U-SQL では、`column_name` が `null` に設定されている行が返されます。 同様に、`WHERE column_name != NULL` を使用する Spark `SELECT` ステートメントでは、`column_name` に 非null 値がある場合でも 0 行が返され、U-SQL では、非 null に設定されている行が返されます。 したがって、U-SQL の null チェック セマンティクスが必要な場合は、[isnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) および [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (または DSL 同等) をそれぞれ使用する必要があります。
 
 ## <a name="transform-u-sql-catalog-objects"></a>U-SQL カタログ オブジェクトを変換する
 

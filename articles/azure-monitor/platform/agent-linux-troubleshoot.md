@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 11/13/2018
-ms.openlocfilehash: 5b828f62d5a8c7c518f3d28e92f52aac3b77f65c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 11/21/2019
+ms.openlocfilehash: ca0fcd3b68722d44fc285b2dff52b560c591d0be
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932811"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306545"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -165,7 +165,8 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
     |*.ods.opinsights.azure.com | ポート 443| 受信および送信 |  
     |*.oms.opinsights.azure.com | ポート 443| 受信および送信 |  
     |*.blob.core.windows.net | ポート 443| 受信および送信 |  
-    |*.azure-automation.net | ポート 443| 受信および送信 | 
+
+    Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook または管理ソリューションを使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>問題: オンボードしようとすると 403 エラーが発生する
 

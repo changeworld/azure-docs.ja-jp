@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
-ms.date: 10/07/2019
-ms.openlocfilehash: 8070abad675acc69f5b1da232b60179078adbc57
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.date: 11/21/2019
+ms.openlocfilehash: 33ba07ac8d89546856666cc7ab94fae650020001
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932241"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306531"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してログ データを収集する
 
@@ -109,11 +109,10 @@ Azure Monitor ログに転送中のデータのセキュリティを確保する
 |*.ods.opinsights.azure.com |ポート 443 |送信|はい |  
 |*.oms.opinsights.azure.com |ポート 443 |送信|はい |  
 |*.blob.core.windows.net |ポート 443 |送信|はい |  
-|*.azure-automation.net |ポート 443 |送信|はい |  
 
 Azure Government に必要なファイアウォールの情報については、[Azure Government の管理](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs)に関するトピックを参照してください。 
 
-Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook を使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
+Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook または管理ソリューションを使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
 
 Windows および Linux エージェントは、HTTPS プロトコルを使用し、プロキシ サーバーまたは Log Analytics ゲートウェイのいずれかを経由して、Azure Monitor との通信をサポートします。  匿名認証と基本認証 (ユーザー名/パスワード) の両方がサポートされます。  サービスに直接接続される Windows エージェントの場合、プロキシの構成は、インストール時や、[デプロイ後](agent-manage.md#update-proxy-settings)にコントロール パネルまたは PowerShell を使って、指定されます。  
 

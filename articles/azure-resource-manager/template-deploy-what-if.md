@@ -2,23 +2,22 @@
 title: テンプレート デプロイの what-if (プレビュー)
 description: Azure Resource Manager テンプレートをデプロイする前に、リソースがどのような変更されるかを確認します。
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 11/20/2019
 ms.author: jgao
-ms.openlocfilehash: 84540543f2b809520ab56df5b3e098018fa0d76e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 19cb674ca7a2dfefc11c7646b23427c722f6e671
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74018622"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278310"
 ---
 # <a name="resource-manager-template-deployment-what-if-operation-preview"></a>Resource Manager テンプレートのデプロイの what-if 操作 (プレビュー)
 
 テンプレートをデプロイする前に、発生する変更をプレビューしたいことがあります。 Azure Resource Manager の what-if 操作を使うと、テンプレートをデプロイした場合にリソースがどのように変更されるかを確認できます。 what-if 操作では、既存のリソースに対していかなる変更も行われません。 代わりに、指定したテンプレートがデプロイされた場合の変更が予測されます。
 
 > [!NOTE]
-> what-if 操作は、現在プレビューの段階です。 使用するには、[プレビューにサインアップする](https://aka.ms/armtemplatepreviews)必要があります。 プレビュー リリースなので、実際には何も変更されないときに、結果ではリソースが変更されることが示される場合があります。 このような問題を減らす作業が行われていますが、お客様の支援が必要です。 これらの問題を、[https://aka.ms/armwhatifissues](https://aka.ms/armwhatifissues)で報告してください。
+> what-if 操作は、現在プレビューの段階です。 使用するには、[プレビューにサインアップする](https://aka.ms/armtemplatepreviews)必要があります。 プレビュー リリースなので、実際には何も変更されないときに、結果ではリソースが変更されることが示される場合があります。 このような問題を減らす作業が行われていますが、お客様の支援が必要です。 これらの問題を、[https://aka.ms/whatifissues](https://aka.ms/whatifissues)で報告してください。
 
 what-if 操作は、`New-AzDeploymentWhatIf` PowerShell コマンドまたは [デプロイ - What If](/rest/api/resources/deployments/whatif) REST 操作で使用できます。
 
@@ -97,6 +96,8 @@ what-if の出力は次のようになります。
 
 出力の下部では、SKU の名前 (ストレージ アカウントの種類) が **Standard_LRS** から **Standard_GRS** に変更されることが示されています。
 
+削除済みとして一覧されたプロパティの一部は、実際には変更されません。 上の図では、そのセクションにある accessTier、encryption.keySource などがこれらのプロパティです。 プロパティは、テンプレートに含まれていない場合、削除済みとして誤って報告されることがありますが、デプロイ時に既定値として自動的に設定されます。 この結果は、what-if 応答では "ノイズ" と見なされます。 最後にデプロイされたリソースには、プロパティ用の値セットがあります。 what-if 操作が成熟すると、これらのプロパティは結果から除外されます。
+
 ### <a name="test-deletion"></a>削除をテストする
 
 what-if 操作では、[デプロイ モード](deployment-modes.md)の使用がサポートされています。 完全モードに設定すると、テンプレートに含まれていないリソースは削除されます。 次の例では、[リソースが定義されていないテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json)を完全モードでデプロイします。
@@ -117,7 +118,7 @@ what-if では実際には何も変更されないことを覚えておくこと
 
 ## <a name="next-steps"></a>次の手順
 
-- what-if のプレビュー リリースで正しくない結果が表示された場合は、[https://aka.ms/armwhatifissues](https://aka.ms/armwhatifissues) で問題を報告してください。
+- what-if のプレビュー リリースで正しくない結果が表示された場合は、[https://aka.ms/whatifissues](https://aka.ms/whatifissues) で問題を報告してください。
 - Azure PowerShell を使用してテンプレートをデプロイするには、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](resource-group-template-deploy.md)」を参照してください。
 - REST を使用してテンプレートをデプロイするには、「[Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ](resource-group-template-deploy-rest.md)」を参照してください。
 - エラーが発生したときに正常なデプロイにロールバックするには、「[エラー発生時に正常なデプロイにロールバックする](rollback-on-error.md)」を参照してください。

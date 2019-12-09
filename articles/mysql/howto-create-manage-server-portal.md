@@ -1,126 +1,107 @@
 ---
-title: Azure Portal を使用した Azure Database for MySQL サーバーの作成と管理
-description: この記事では、Azure portal を使用して Azure Database for MySQL サーバーをすばやく作成して管理する方法について説明します。
+title: Azure Database for MySQL の管理 - Azure portal
+description: Azure portal から Azure Database for MySQL サーバーを管理する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: fdcb302d3a14b02ea86fb92c8dbf822ef3f42177
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 11/25/2019
+ms.openlocfilehash: 286209673e5743d08ddaa2fed2f507f84d622ea6
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142301"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534038"
 ---
-# <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL サーバーの作成と管理
-このトピックでは、新しい Azure Database for MySQL サーバーをすばやく作成する方法について説明します。 Azure Portal を使用したサーバーの管理方法に関する情報も含まれています。 サーバーの管理には、サーバーの詳細とデータベースの表示、パスワードのリセット、リソースのスケーリング、サーバーの削除が含まれます。
+# <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL サーバーの管理
+この記事では、Azure Database for MySQL を管理する方法について説明します。 管理タスクには、コンピューティングとストレージのスケーリング、管理者パスワードのリセット、サーバーの詳細の表示が含まれます。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
-[Azure Portal](https://portal.azure.com) にログインします。
+## <a name="sign-in"></a>サインイン
+[Azure Portal](https://portal.azure.com) にサインインします。
 
-## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
-"mydemoserver" という名前の Azure Database for MySQL サーバーを作成するには、次の手順のようにします。
+## <a name="create-a-server"></a>サーバーの作成
+Azure Database for MySQL サーバーを作成して使用を開始する方法については、[クイックスタート](quickstart-create-mysql-server-database-using-azure-portal.md)を参照してください。
 
-1. Azure Portal の左上隅にある **[リソースの作成]** ボタンをクリックします。
+## <a name="scale-compute-and-storage"></a>コンピューティングとストレージのスケーリング
 
-2. [新規] ページで **[データベース]** を選択し、[データベース] ページで **[Azure Database for MySQL]** を選択します。
+サーバー作成後は、ニーズの変化に応じて、汎用レベルとメモリ最適化レベルの間でスケーリングできます。 また、仮想コアを増減することによって、コンピューティングとメモリのスケーリングもできます。 ストレージをスケールアップすることはできますが、ストレージをスケールダウンすることはできません。
 
-    > Azure Database for MySQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-pricing-tiers.md)を使用して作成されます。 データベースは、Azure リソース グループ内と Azure Database for MySQL サーバー内に作成されます。
+### <a name="scale-between-general-purpose-and-memory-optimized-tiers"></a>汎用レベルとメモリ最適化レベルの間のスケーリング
 
-   ![新しいサーバーの作成](./media/howto-create-manage-server-portal/create-new-server.png)
+汎用からメモリ最適化 (またはその逆) にスケーリングできます。 サーバー作成後の Basic レベルへの変更や Basic レベルからの変更はサポートされていません。 
 
-3. 次の情報を使用して、Azure Database for MySQL のフォームに入力します。
+1. お使いのサーバーを Azure portal で選択します。 **[設定]** セクションにある **[価格レベル]** を選択します。
 
-    | **フォームのフィールド** | **フィールドの説明** |
-    |----------------|-----------------------|
-    | *サーバー名* | mydemoserver (サーバー名はグローバルに一意である必要があります) |
-    | *サブスクリプション* | mysubscription (ドロップダウン メニューから選びます) |
-    | *リソース グループ* | myresourcegroup (新しいリソース グループを作成するか既存のリソース グループを使います) |
-    | *ソースの選択* | 空白 (空の MySQL サーバーを作成します) |
-    | *サーバー管理者ログイン* | myadmin (管理者アカウント名をセットアップ) |
-    | *パスワード* | 管理者アカウントのパスワードを設定します |
-    | *パスワードの確認* | 管理者アカウントのパスワードを確認 |
-    | *Location* | 東南アジア (北ヨーロッパまたは米国西部を選びます) |
-    | *バージョン* | 5.7 (Azure Database for MySQL サーバーのバージョンを選びます) |
-
-   ![新しいサーバーの作成](./media/howto-create-manage-server-portal/form-field.png)
-
-4. **[価格レベル]** をクリックして、新しいサーバーのサービス レベルとパフォーマンス レベルを指定します。 **[汎用]** タブを選びます。*Gen 5*、*2 仮想コア*、*5 GB*、および *7 日* は、それぞれ **[コンピューティング世代]** 、 **[仮想コア]** 、 **[ストレージ]** 、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、 **[バックアップ冗長オプション]** から **[地理冗長]** を選択します。
-
-   ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
-
-5. **[作成]** をクリックしてサーバーをプロビジョニングします。 プロビジョニングには数分かかります。
-
-    > **[ダッシュボードにピン留めする]** チェック ボックスをオンにすると、デプロイを追跡しやすくなります。
-
-## <a name="update-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの更新
-新しいサーバーをプロビジョニングした後、ユーザーには、管理者パスワードのリセット、価格レベルの変更、仮想コアまたはストレージの変更によるサーバーのスケールアップやスケールダウンなど、既存サーバーの構成に関するいくつかのオプションがあります。
-
-### <a name="change-the-administrator-user-password"></a>管理者ユーザー パスワードを変更する
-1. サーバーの **[概要]** から、 **[パスワードのリセット]** をクリックしてパスワード リセット ウィンドウを表示します。
-
-   ![概要](./media/howto-create-manage-server-portal/overview.png)
-
-2. 次のように、ウィンドウで新しいパスワードを入力し、そのパスワードを確認します。
-
-   ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
-
-3. **[OK]** をクリックして新しいパスワードを保存します。
-
-### <a name="change-the-pricing-tier"></a>価格レベルを変更する
-> [!NOTE]
-> スケーリングがサポートされるのは、General Purpose からメモリ最適化サービス レベル (およびその逆方向) だけです。 サーバーの作成後に Basic 価格レベルに変更したり、Basic 価格レベルから変更したりすることは、Azure Database for MySQL ではサポートされていないことに注意してください。
-> 
-1. **[設定]** の下にある **[価格レベル]** をクリックします。
-2. 変更先の**価格レベル**を選択します。
+2. スケーリングの対象に応じて、 **[汎用]** または **[メモリ最適化]** を選択します。 
 
     ![change-pricing-tier](./media/howto-create-manage-server-portal/change-pricing-tier.png)
 
-4. **[OK]** をクリックして変更を保存します。 
+    > [!NOTE]
+    > レベルを変更すると、サーバーが再起動されます。
 
-### <a name="scale-vcores-updown"></a>仮想コアのスケールアップ/スケールダウン
+4. **[OK]** を選択して変更を保存します。
 
-1. **[設定]** の下にある **[価格レベル]** をクリックします。
+
+### <a name="scale-vcores-up-or-down"></a>仮想コアのスケールアップまたはスケールダウン
+
+1. お使いのサーバーを Azure portal で選択します。 **[設定]** セクションにある **[価格レベル]** を選択します。
 
 2. スライダーを目的の値に動かして、 **[vCore]** の設定を変更します。
 
-    ![scale-compute](./media/howto-create-manage-server-portal/scale-compute.png)
+    ![scale-compute](./media/howto-create-manage-server-portal/scaling-compute.png)
 
-3. **[OK]** をクリックして変更を保存します。
+    > [!NOTE]
+    > 仮想コアをスケーリングすると、サーバーが再起動されます。
+
+3. **[OK]** を選択して変更を保存します。
+
 
 ### <a name="scale-storage-up"></a>ストレージのスケールアップ
 
-1. **[設定]** の下にある **[価格レベル]** をクリックします。
+1. お使いのサーバーを Azure portal で選択します。 **[設定]** セクションにある **[価格レベル]** を選択します。
 
-2. スライダーを目的の値に動かして、 **[ストレージ]** の設定を変更します。
+2. スライダーを目的の値まで上に動かして、 **[ストレージ]** の設定を変更します。
 
-    ![scale-storage](./media/howto-create-manage-server-portal/scale-storage.png)
+    ![scale-storage](./media/howto-create-manage-server-portal/scaling-storage.png)
 
-3. **[OK]** をクリックして変更を保存します。
+    > [!NOTE]
+    > ストレージはスケールダウンできません。
 
-## <a name="delete-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの削除
+3. **[OK]** を選択して変更を保存します。
 
-1. サーバーの **[概要]** から **[削除]** ボタンをクリックして、削除確認プロンプトを開きます。
 
-    ![delete](./media/howto-create-manage-server-portal/delete.png)
+## <a name="update-admin-password"></a>管理パスワードの更新
+Azure portal を使用して、管理者ロールのパスワードを変更できます。
 
-2. 二重確認のために入力ボックスにサーバーの名前を入力します。
+1. お使いのサーバーを Azure portal で選択します。 **[概要]** ウィンドウで **[パスワードのリセット]** を選択します。
 
-    ![confirm-delete](./media/howto-create-manage-server-portal/confirm.png)
+   ![概要](./media/howto-create-manage-server-portal/overview-reset-password.png)
 
-3. **[削除]** ボタンをクリックして、サーバーの削除を確認します。 通知バーに "MySQL サーバーが正常に削除されました" というポップアップが表示されるまで待ちます。
+2. 新しいパスワードを入力し、そのパスワードを確認します。 テキストボックスに、パスワードの複雑さの要件についてのメッセージが表示されます。
 
-## <a name="list-the-azure-database-for-mysql-databases"></a>Azure Database for MySQL データベースの一覧表示
-サーバーの **[概要]** で、下部にあるデータベース タイルが表示されるまで下にスクロールします。 サーバーのすべてのデータベースがテーブルに表示されます。
+   ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
 
-   ![データベースの表示](./media/howto-create-manage-server-portal/show-databases.png)
+3. **[OK]** を選択して新しいパスワードを保存します。
 
-## <a name="show-details-of-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの詳細を表示する
-サーバーに関する詳細情報を表示するには、 **[設定]** の下にある **[プロパティ]** をクリックします。
 
-![properties](./media/howto-create-manage-server-portal/properties.png)
+## <a name="delete-a-server"></a>サーバーの削除
+
+不要になったサーバーは削除できます。 
+
+1. お使いのサーバーを Azure portal で選択します。 **[概要]** ウィンドウで **[削除]** を選択します。
+
+    ![delete](./media/howto-create-manage-server-portal/overview-delete.png)
+
+2. 入力ボックスにサーバーの名前を入力して、削除するサーバーであることを確認します。
+
+    ![confirm-delete](./media/howto-create-manage-server-portal/confirm-delete.png)
+
+    > [!NOTE]
+    > サーバーを削除すると、元に戻せません。
+
+3. **[削除]** を選択します。
+
 
 ## <a name="next-steps"></a>次の手順
-
-[クイック スタート:Azure portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)
+- [バックアップとサーバー復元](howto-restore-server-portal.md)について学習する
+- [Azure Database for MySQL でのチューニングと監視のオプション](concepts-monitoring.md)について学習する

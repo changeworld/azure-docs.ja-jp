@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry - ロールとアクセス許可
+title: RBAC のロールとアクセス許可
 description: Azure のロールベースのアクセス制御 (RBAC) と ID およびアクセス管理 (IAM) を使用して、Azure コンテナー レジストリ内のリソースへのきめ細かいアクセス許可を提供します。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: danlep
-ms.openlocfilehash: 69104cdaeb4abfc15e2ac4209e1ddbc610656c13
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8ef4f26dfd59c7b3b177ef58fa23e08f7e66d328
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793980"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456240"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry のロールとアクセス許可
 

@@ -1,6 +1,6 @@
 ---
 title: Microsoft Authenticator アプリに関する質問と回答 - Azure AD
-description: Microsoft 認証アプリと認証に関してよく寄せられる質問と回答の一覧を提供します。
+description: Microsoft Authentication アプリと 2 要素認証に関してよく寄せられる質問と回答 (FAQ)。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcd8140acaff693f5b73fe9654968a5ae7cd4c4a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5ba475ecae09dadf31441827a2db846286b74ad2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74029802"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266960"
 ---
-# <a name="frequently-asked-questions-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問
+# <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに関してよく寄せられる質問 (FAQ)。
 
 この記事では、Microsoft Authenticator アプリに関する一般的な質問にお答えします。 質問に対する回答がここで見つからない場合は、[Microsoft Authenticator アプリ フォーラム](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp)をご覧ください。
 

@@ -1,5 +1,5 @@
 ---
-title: オンプレミス アプリへのリモート アクセス - Azure Active Directory アプリケーション プロキシ | Microsoft Docs
+title: オンプレミスのアプリへのリモート アクセス - Azure AD アプリケーション プロキシ
 description: Azure Active Directory アプリケーション プロキシは、オンプレミス Web アプリケーションへのセキュリティ保護されたリモート アクセスを提供します。 Azure AD にシングル サインオンした後、ユーザーは、外部の URL または内部のアプリケーション ポータルから、クラウド アプリケーションとオンプレミス アプリケーションの両方にアクセスできます。 たとえば、アプリケーション プロキシでは、リモート デスクトップ、SharePoint、Teams、Tableau、Qlik、および基幹業務 (LOB) アプリケーションへのリモート アクセスとシングル サインオンを提供できます。
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 05/09/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 780dedd52e492aceaab1aa00eedb631d0814ebf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4780786f0caea2c211b6b93fb0736feaade8de80
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108377"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274831"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Azure Active Directory アプリケーション プロキシからのオンプレミス アプリケーションへのリモート アクセス 
 

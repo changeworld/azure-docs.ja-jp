@@ -1,5 +1,6 @@
 ---
-title: Azure Network Watcher を使用したネットワーク セキュリティ グループのフローのログの管理 - REST API | Microsoft Docs
+title: NSG フロー ログを管理する - Azure REST API
+titleSuffix: Azure Network Watcher
 description: このページでは、REST API を使用して Azure Network Watcher でネットワーク セキュリティ グループのフローのログを管理する方法を説明します。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 88173b24ecfca72e05d6f930b45d732aefad0e56
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 636a422cd46dc6b6274766b92753f04195a829a0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563422"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277927"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>REST API を使用したネットワーク セキュリティ グループ のフローのログの構成
 

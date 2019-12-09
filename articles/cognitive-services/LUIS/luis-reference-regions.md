@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: fe4436afe56e631ae308b70ae35b1fb4a7c32e11
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4f8e5d1c5ac3b0383fee5a901d2bb34edab8dae2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669182"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225485"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>作成と公開のリージョンと関連付けられているキー
 
@@ -29,9 +29,9 @@ ms.locfileid: "73669182"
 
 |LUIS|オーサリング リージョン|Azure リージョン名|
 |--|--|--|
-|[www.luis.ai][www.luis.ai]|米国<br>ヨーロッパ以外<br>オーストラリア以外| `westus`|
-|[au.luis.ai][au.luis.ai]|オーストラリア| `australiaeast`|
-|[eu.luis.ai][eu.luis.ai]|ヨーロッパ|`westeurope`|
+|[www.luis.ai][www.luis.ai] <br>[preview.luis.ai](https://preview.luis.ai)|米国<br>ヨーロッパ以外<br>オーストラリア以外| `westus`|
+|[au.luis.ai][au.luis.ai] <br>[preview.au.luis.ai](https://preview.au.luis.ai)|オーストラリア| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai] <br>[preview.eu.luis.ai](https://preview.eu.luis.ai)|ヨーロッパ|`westeurope`|
 
 オーサリング リージョンには、[ペア フェールオーバー リージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)があります。 
 

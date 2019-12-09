@@ -1,18 +1,18 @@
 ---
-title: Azure DNS サブドメインを委任する
-description: Azure DNS サブドメインを委任する方法について説明します。
+title: サブドメインを委任する - Azure DNS
+description: このラーニング パスでは、Azure DNS サブドメインの委任について説明します。
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 2/7/2019
-ms.author: victorh
-ms.openlocfilehash: 31543db8e177701ddfe6beaaa3091d6465b0e9cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: 462282e9674e7a253f61c96338b54174c80fb03f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790812"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212390"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Azure DNS サブドメインを委任する
 

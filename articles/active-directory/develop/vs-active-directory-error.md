@@ -12,18 +12,18 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f25daa01288959c38520f9713d35eb975d2df2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: c6df50db564dac09785b460d158d4276ea8a215e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73941378"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271252"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory の接続済みサービスでエラーを診断する
 
-Azure Active Director 接続済みサービスが以前の認証コードを検出するときに、互換性のない認証の種類が検出されました。
+Azure Active Director 接続済みサービスを使って以前の認証コードが検出されたときに、互換性のない認証の種類が検出されました。
 
-プロジェクトで以前の認証コードを正しく検出するには、プロジェクトを構築する必要があります。  このエラーが発生したときに、以前の認証コードがない場合は、再構築して、もう一度やり直してください。
+プロジェクトで以前の認証コードを正しく検出するには、プロジェクトを再構築する必要があります。 このエラーが発生したときに、以前の認証コードがない場合は、再構築して、もう一度やり直してください。
 
 ## <a name="project-types"></a>プロジェクトの種類
 

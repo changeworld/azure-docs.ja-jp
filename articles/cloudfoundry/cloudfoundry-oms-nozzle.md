@@ -1,5 +1,5 @@
 ---
-title: Cloud Foundry 監視向けの Azure Log Analytics Nozzle のデプロイ | Microsoft Docs
+title: Cloud Foundry 監視向けの Azure Log Analytics Nozzle のデプロイ
 description: Cloud Foundry loggregator Nozzle for Azure Log Analytics をデプロイする手順について説明します。 Nozzle を使用して、Cloud Foundry システムの正常性とパフォーマンス メトリックを監視します。
 services: virtual-machines-linux
 author: ningk
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199399"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286641"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry システム監視向けの Azure Log Analytics Nozzle のデプロイ
 
@@ -220,7 +220,7 @@ Nozzle をスケールアップするには、Apps Manager または CF CLI を�
 loggregator は、ログのプロセスに関する問題を示す **LGR** ログ メッセージを送信します。 アラートを監視して、Loggregator のスケールアップが必要かどうかを決定できます。
 loggregator をスケール アップするには、CF マニフェストで Doppler のバッファー サイズを増やすか、Doppler サーバー インスタンスを追加します。 詳細については、[loggregator のスケーリングに関するガイダンス](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling)を参照してください。
 
-## <a name="update"></a>アップデート
+## <a name="update"></a>更新
 
 Nozzle を新しいバージョンに更新するには、Nozzle の新しいリリースをダウンロードし、前述の「Nozzle のデプロイ」セクションの手順に従ってアプリケーションをもう一度プッシュします。
 

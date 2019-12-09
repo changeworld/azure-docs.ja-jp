@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/15/2019
-ms.openlocfilehash: ab3667d79827e9548338b5beda00c9992f100deb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 95953b4f052531c9804024410e225bb0b5c62aef
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132410"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539183"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング
 
@@ -79,7 +79,7 @@ SQL データベースでメトリックおよび診断ログを有効にしま�
 > エラスティック プールとマネージド インスタンスには、それらに含まれるデータベースとは別の、独自の診断テレメトリがあります。 つまり、以下に示すように、診断テレメトリはそのリソースごとに個別に構成されているということに注意する必要があります。
 
 > [!NOTE]
-> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません (ただし、画面には表示されます)。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242) に関するページを参照してください。
+> 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242) に関するページを参照してください。
 
 ## <a name="azure-portal"></a>Azure ポータル
 
@@ -115,6 +115,7 @@ Azure portal で単一データベース、プールされたデータベース�
 1. Log Analytics の場合は、 **[構成]** を選択し、 **[+ 新しいワークスペースの作成]** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを選択します。
 1. エラスティック プールの診断テレメトリ**基本**メトリック。
    ![エラスティック プールに対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
+
 1. **[保存]** を選択します。
 1. さらに、次のセクションで説明されている手順に従って、監視対象のエラスティック プール内の各データベースに対して診断テレメトリのストリーミングを構成します。
 
@@ -131,9 +132,10 @@ Azure portal で単一データベース、プールされたデータベース�
 1. **[診断設定]** を選択します。
 1. 以前の設定が存在しない場合は **[診断を有効にする]** を選択します。または、以前の設定を編集するには **[設定の編集]** を選択します。
    - 診断テレメトリをストリーミングするため並列接続を最大 3 つ作成できます。
-   - 複数のリソースへの診断データの並列ストリーミングを構成するには、 **[+Add diagnostic setting] (+ 診断設定の追加)** を選択します。
+   - 複数のリソースへの診断データの並列ストリーミングを構成するには、 **[Add diagnostic setting]\(診断設定の追加\)** を選択します。
 
    ![単一データベース、プールされたデータベース、またはインスタンス データベースに対して診断を有効にする](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
+
 1. 独自の参照の設定名を入力します。
 1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]** 、 **[イベント ハブへのストリーム]** 、または **[Log Analytics への送信]** から選択します。
 1. 標準的なイベント ベースの監視エクスペリエンスを得るには、データベース診断ログ テレメトリ **[SQLInsights]** 、 **[AutomaticTuning]** 、 **[QueryStoreRuntimeStatistics]** 、 **[QueryStoreWaitStatistics]** 、 **[Errors]** 、 **[DatabaseWaitStatistics]** 、 **[Timeouts]** 、 **[Blocks]** 、および **[Deadlocks]** のチェックボックスをオンにします。
@@ -143,7 +145,8 @@ Azure portal で単一データベース、プールされたデータベース�
 1. 監視するデータベースごとにこれらの手順を繰り返します。
 
 > [!NOTE]
-> セキュリティ監査ログおよび SQLSecurityAuditEvents ログは、データベースの診断設定から有効にすることはできません (ただし、画面には表示されます)。 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242) に関するページを参照してください。
+> 監査ログのストリーミングを有効にするには、「[データベースに対する監査を設定する](sql-database-auditing.md#subheading-2)」と[ Azure Monitor ログと Azure Event Hubs の監査ログ](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242) に関するページを参照してください。
+
 > [!TIP]
 > 監視する Azure SQL Database ごとにこれらの手順を繰り返します。
 
@@ -176,7 +179,9 @@ Azure portal で単一データベース、プールされたデータベース�
 1. 診断データのストリーミング先のリソースを **[ストレージ アカウントへのアーカイブ]** 、 **[イベント ハブへのストリーム]** 、または **[Log Analytics への送信]** から選択します。
 1. Log Analytics の場合は、 **[構成]** を選択し、 **[+ 新しいワークスペースの作成]** を選択することによって新しいワークスペースを作成するか、または既存のワークスペースを使用します。
 1. インスタンスの診断テレメトリ **[ResourceUsageStats]** のチェックボックスをオンにします。
+
    ![マネージド インスタンスに対して診断を構成する](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
+
 1. **[保存]** を選択します。
 1. さらに、次のセクションで説明されている手順に従って、監視対象のマネージド インスタンス内の各インスタンス データベースに対して診断テレメトリのストリーミングを構成します。
 
@@ -210,6 +215,7 @@ Azure portal で単一データベース、プールされたデータベース�
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 これらのコマンドレットについては、「[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)」を参照してください。 Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。
 
@@ -258,8 +264,8 @@ PowerShell を使用してメトリックと診断のロギングを有効にで
 - 診断データの送信先のワークスペース ID \<$WSID\> を取得するには、次のスクリプトを使用します。
 
     ```powershell
-    PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/<RG_NAME>/providers/microsoft.operationalinsights/workspaces/<WS_NAME>"
-    PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
+    $WSID = "/subscriptions/<subID>/resourcegroups/<RG_NAME>/providers/microsoft.operationalinsights/workspaces/<WS_NAME>"
+    .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
     ```
 
    \<subID\> をサブスクリプション ID に、\<RG_NAME\> をリソース グループ名に、\<WS_NAME\> をワークスペース名に置き換えます。
@@ -365,11 +371,17 @@ Azure SQL Database のメトリックと診断ログは、Microsoft Azure portal
 
 Azure Event Hubs でストリーミングされたメトリックは、次の目的に使用できます。
 
-- **サービスの正常性を表示するには、Power BI にホット パス データをストリーミングします**。 Event Hubs、Stream Analytics および Power BI を使用することで、メトリクスと診断データを Azure サービスの近リアルタイム洞察に簡単に転換できます。 Event Hubs の設定、Stream Analytics を使用したデータ処理、および PowerBI を出力として使用する方法の概要については、「[Stream Analytics と Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)」をご覧ください。
+- **ホット パス データを Power BI にストリーミングしてサービスの正常性を表示する**
 
-- **サード パーティ製のロギングおよびテレメトリ ストリームにログをストリームします**。 Event Hubs ストリーミングを使用することで、さまざまなサードパーティのモニタリングおよびログ解析ソリューションにマトリクスと診断ログを送信できます。
+   Event Hubs、Stream Analytics および Power BI を使用することで、メトリクスと診断データを Azure サービスの近リアルタイム洞察に簡単に転換できます。 Event Hubs の設定、Stream Analytics を使用したデータ処理、および PowerBI を出力として使用する方法の概要については、「[Stream Analytics と Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)」をご覧ください。
 
-- **カスタム テレメトリおよびロギング プラットフォームの構築**。 既にカスタマイズされたテレメトリ プラットフォームがありますか、それとも構築を検討していますか? 高い拡張性の公開サブスクライブを特長とする Event Hubs を使用することで診断ログを柔軟に取り込むことができます。 [グローバル規模のテレメトリ プラットフォームで Event Hubs を使用する方法に関する Dan Rosanova によるガイド](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)をご覧ください。
+- **サード パーティ製のロギングおよびテレメトリ ストリームにログをストリーミングする**
+
+   Event Hubs ストリーミングを使用することで、さまざまなサードパーティのモニタリングおよびログ解析ソリューションにマトリクスと診断ログを送信できます。
+
+- **カスタムのテレメトリおよびログ プラットフォームを構築する**
+
+   既にカスタマイズされたテレメトリ プラットフォームがありますか、それとも構築を検討していますか? 高い拡張性の公開サブスクライブを特長とする Event Hubs を使用することで診断ログを柔軟に取り込むことができます。 [グローバル規模のテレメトリ プラットフォームで Event Hubs を使用する方法に関する Dan Rosanova によるガイド](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)をご覧ください。
 
 ## <a name="stream-into-storage"></a>ストレージへのストリーム
 

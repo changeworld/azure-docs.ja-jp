@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037048"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279134"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>ポータルを利用し、データ ディスクを Linux VM に接続する 
 この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 
@@ -183,6 +183,15 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+
+#### <a name="alternate-method-using-parted"></a>parted を使用する別の方法
+fdisk ユーティリティでは対話式で入力が必要なため、自動化スクリプト内での使用には適していません。 ただし、[parted](https://www.gnu.org/software/parted/) ユーティリティはスクリプト化できるため、自動化のシナリオに適しています。 parted ユーティリティを使用して、データ ディスクのパーティション分割とフォーマットを行うことができます。 以下のチュートリアルでは、新しいデータ ディスクである /dev/sdc を使用し、[XFS](https://xfs.wiki.kernel.org/) ファイルシステムを使用してそれをフォーマットします。
+```bash
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+partprobe /dev/sdc1
+```
+前述のように、[partprobe](https://linux.die.net/man/8/partprobe) ユーティリティを使用して、カーネルが新しいパーティションとファイルシステムをすぐに認識できるようにしています。 partprobe を使用しないと、blkid または lslbk コマンドで、新しいファイルシステムの UUID がすぐに返されない可能性があります。
+
 ### <a name="mount-the-disk"></a>ディスクのマウント
 `mkdir` を使用して、ファイル システムをマウントするディレクトリを作成します。 次の例では、 */datadrive* にディレクトリを作成します。
 

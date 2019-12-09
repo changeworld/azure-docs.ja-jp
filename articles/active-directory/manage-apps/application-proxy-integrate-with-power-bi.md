@@ -1,5 +1,5 @@
 ---
-title: Azure AD アプリケーション プロキシを使用して Power BI へのリモート アクセスを有効にする | Microsoft Docs
+title: Azure AD アプリケーション プロキシを使用して Power BI へのリモート アクセスを有効にする
 description: オンプレミスの Power BI を Azure AD アプリケーション プロキシと統合する方法の基礎について説明します。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795625"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275524"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して Power BI Mobile へのリモート アクセスを有効にする
 

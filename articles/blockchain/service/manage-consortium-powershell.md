@@ -1,23 +1,17 @@
 ---
-title: Azure PowerShell を使用して Azure Blockchain Service のメンバーを管理する
+title: Azure Blockchain Service コンソーシアムのメンバーを管理する - PowerShell
 description: Azure PowerShell を使用して Azure Blockchain Service コンソーシアムのメンバーを管理する方法について説明します。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 10/14/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: c35a3bd99518825805c2f29cfdc586e1ccf5b0bb
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4eb35838394d3324f460b5e83cfbcb47b8114221
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329176"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455502"
 ---
-# <a name="manage-consortium-members-in-azure-blockchain-service-by-using-powershell"></a>PowerShell を使用して Azure Blockchain Service のコンソーシアム メンバーを管理する
+# <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>PowerShell を使用して Azure Blockchain Service のコンソーシアム メンバーを管理する
 
 PowerShell を使用して、Azure Blockchain Service のブロックチェーン コンソーシアム メンバーを管理することができます。 管理者特権を持つメンバーは、ブロックチェーン コンソーシアムのすべての参加者の招待、追加、削除、ロール変更を行うことができます。 ユーザー特権を持つメンバーは、ブロックチェーン コンソーシアムのすべての参加者を表示でき、自分のメンバー表示名を変更できます。
 
@@ -325,7 +319,4 @@ $ContractConnection | Set-BlockchainMemberInvitation -SubscriptionId <Azure subs
 
 ## <a name="next-steps"></a>次の手順
 
-コンソーシアム、メンバー、ノードについて詳しくは、以下をご覧ください。
-
-> [!div class="nextstepaction"]
-> [Azure Blockchain Service のコンソーシアム](consortium.md)
+コンソーシアム、メンバー、ノードについて詳しくは、「[Azure Blockchain Service のコンソーシアム](consortium.md)」をご覧ください

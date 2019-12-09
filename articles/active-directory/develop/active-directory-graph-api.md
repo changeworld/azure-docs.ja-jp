@@ -12,31 +12,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/01/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b677e9a8faf55f121d80f5a6112fbdaf78e6c0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 30c1b5a3600c48dc548561df3cd2f955347a7e64
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853327"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533031"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph API
 
 > [!IMPORTANT]
->
-> 2019 年 2 月の時点で、Azure Active Directory Graph API のいくつかの初期バージョンを非推奨にするプロセスが開始され、Microsoft Graph API が代わりに使用されています。 
->
-> 詳細、更新、およびタイム フレームについては、Office デベロッパー センターの「[Microsoft Graph or the Azure AD Graph (Microsoft Graph か Azure AD Graph か)](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph)」を参照してください。
->
-> 今後、アプリケーションでは Microsoft Graph API を使用する必要があります。 
+> Azure Active Directory (Azure AD) リソースにアクセスする場合、Azure AD Graph API ではなく [Microsoft Graph](https://developer.microsoft.com/graph) を使用することを強くお勧めします。 開発作業は現在 Microsoft Graph に集中しており、Azure AD Graph API の追加の機能強化は予定されていません。 Azure AD Graph API の使用が適切なシナリオの数は非常に限られています。詳しくは、ブログ投稿「[Microsoft Graph か Azure AD Graph か](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph)」および「[Azure AD Graph アプリを Microsoft Graph に移行する](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview)」を参照してください。
 
-
-
-この記事は、Azure AD Graph API に適用されます。 Microsoft Graph API に関する同様の情報については、「[Microsoft Graph API を使用する](https://docs.microsoft.com/graph/use-the-api)」をご覧ください。 
+この記事は、Azure AD Graph API に適用されます。 Microsoft Graph API に関する同様の情報については、「[Microsoft Graph API を使用する](https://docs.microsoft.com/graph/use-the-api)」をご覧ください。
 
 Azure Active Directory Graph API を使用すると、REST API エンドポイントを介して Azure AD にプログラムによってアクセスできます。 アプリケーションでは、Azure AD Graph API を使って、ディレクトリのデータとオブジェクトに対して、作成、読み取り、更新、および削除 (CRUD) の各操作を実行できます。 たとえば、Azure AD Graph API では、ユーザー オブジェクトへの次のような一般的な操作がサポートされています。
 

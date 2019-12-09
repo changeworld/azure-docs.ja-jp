@@ -1,6 +1,6 @@
 ---
 title: 管理ソリューションでの保存された検索条件 | Microsoft Docs
-description: 通常、管理ソリューションには、ソリューションによって収集されたデータを分析するため、Log Analytics の保存された検索条件が含まれます。 また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、アラートも定義できます。 この記事では、管理ソリューションに含めることができるように、Log Analytics の保存された検索条件を Resource Manager テンプレートで定義する方法について説明します。
+description: 通常、管理ソリューションには、ソリューションによって収集されたデータを分析するための、保存されたログ クエリが含まれています。 この記事では、Log Analytics の保存された検索条件を Resource Manager テンプレートで定義する方法について説明します。
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce4f3dcbc28668f786c706e7029061e541a76ce9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1f4f0ac5d592a01b284a12e899b0aa5a9a62d122
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553911"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304936"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 

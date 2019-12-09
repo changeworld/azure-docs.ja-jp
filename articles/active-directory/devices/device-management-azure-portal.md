@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1b44a7df499dc0b6ce4370bf74ece35c99a4493
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 6c8e94a1b15ad8cd55019f9351c82f58130e472d
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200227"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420607"
 ---
 # <a name="manage-device-identities-using-the-azure-portal"></a>Azure portal を使用してデバイス ID を管理する
 
@@ -32,9 +32,8 @@ Azure Active Directory (Azure AD) のデバイス ID 管理を使用して、ユ
 Azure AD ポータルは、お客様のデバイス ID を一元的に管理する場所を提供します。 この場所に移動するには、[直接リンク](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)を使用するか、または次の手動の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. 左側のナビゲーション バーで、 **[Active Directory]** をクリックします。
 
-   ![デバイス設定の構成](./media/device-management-azure-portal/01.png)
+2. **[Azure Active Directory]** を検索して選択するか、 **[ホーム]** ページから選択します。
 
 3. **[管理]** セクションで、 **[デバイス]** をクリックします。
 

@@ -1,5 +1,5 @@
 ---
-title: 静的プライベート IP アドレスを持つ VM を作成する - Azure PowerShell | Microsoft Docs
+title: 静的プライベート IP アドレスを持つ VM を作成する - Azure PowerShell
 description: PowerShell を使用してプライベート IP アドレスを持つ仮想マシンを作成する方法を説明します。
 services: virtual-network
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 9115386b0543e1ac840aec29fc7f57e7c98c03bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1745ca176fac18b4903686cb556670531ee40a1a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685348"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196591"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>PowerShell を使用して静的プライベート IP アドレスを持つ仮想マシンを作成する
 

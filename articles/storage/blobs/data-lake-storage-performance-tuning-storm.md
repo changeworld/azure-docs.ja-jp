@@ -1,21 +1,21 @@
 ---
-title: Azure Data Lake Storage Gen2 の Storm パフォーマンス チューニング ガイドライン | Microsoft Docs
+title: 'パフォーマンスをチューニングする: Storm、HDInsight、および Azure Data Lake Storage Gen2 | Microsoft Docs'
 description: Azure Data Lake Storage Gen2 の Storm パフォーマンス チューニング ガイドライン
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 108eeb03c0ed484e40b884372018bbbef686ee62
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 125c583512f6bae34c2dd3c3dd76a1b96a181ac1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159862"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327913"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>HDInsight と Azure Data Lake Storage Gen2 の Storm に対するパフォーマンス チューニング ガイダンス
+# <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>パフォーマンスをチューニングする: Storm、HDInsight、および Azure Data Lake Storage Gen2
 
 Azure Storm トポロジのパフォーマンスを調整する際に考慮すべき要素について説明します。 たとえば、スパウトとボルトによる処理 (I/O とメモリのどちらを大量に消費する場合でも) の特性を理解しておくことが重要です。 この記事では、一般的な問題のトラブルシューティングを含む、さまざまなパフォーマンス チューニング ガイドラインについて説明します。
 

@@ -1,19 +1,14 @@
 ---
-title: DPM サーバーを準備して ワークロードを Azure にバックアップする
+title: DPM サーバーを準備してワークロードをバックアップする
 description: この記事では、Azure Backup サービスを使用して、Azure への System Center Data Protection Manager (DPM) バックアップを準備する方法について説明します。
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 5c89dc8b5c8ee420c94d61763770cd37e763f2df
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c7b662c07caecb7871ec9f8be89ffc76b8f7f5fb
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747515"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173148"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>System Center DPM を使用して Azure にワークロードをバックアップするための準備
 

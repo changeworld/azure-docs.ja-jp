@@ -1,6 +1,6 @@
 ---
 title: Azure CLI を使用して Azure に VHD をアップロードする
-description: Azure CLI を使用して Azure マネージド ディスクに vhd をアップロードし、リージョン間でマネージド ディスクをコピーする方法を説明します。
+description: Azure CLI を使用して、直接アップロードによって Azure マネージド ディスクに vhd をアップロードし、リージョン間でマネージド ディスクをコピーする方法を説明します。
 services: virtual-machines-linux,storage
 author: roygara
 ms.author: rogarana
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 5215a7d899af15dc028189aee5760a6ec5b6577d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 51c3933b5ee585c96ad81fe04d379b6771ae81e3
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803997"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457595"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-cli"></a>Azure CLI を使用して Azure に VHD をアップロードする
 

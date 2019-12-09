@@ -1,5 +1,5 @@
 ---
-title: マネージド ID VM 拡張機能の使用を止めて Azure Instance Metadata Service エンドポイントの使用を開始する
+title: マネージド ID VM 拡張機能の使用を停止する - Azure AD
 description: VM 拡張機能の使用を止めて、認証用の Azure Instance Metadata Service (IMDS) の使用を開始する手順を順を追って説明します。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 6ee8891eae108256875660cc3f2256b65703a1aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3440713c287967655678e1cde2c000a6ed28b900
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65406784"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183948"
 ---
 # <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>仮想マシンのマネージド ID 拡張機能の使用を止めて Azure Instance Metadata Service の使用を開始する方法
 

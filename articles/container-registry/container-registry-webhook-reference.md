@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry webhook スキーマ リファレンス
-description: Azure Container Registry の webhook 要求 JSON ペイロードのリファレンスです。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: レジストリ Webhook スキーマ リファレンス
+description: 成果物のプッシュまたは削除イベントに対して Webhook が有効にされたときに生成される、Azure コンテナー レジストリでの Webhook 要求の JSON ペイロードのリファレンス
 ms.topic: article
 ms.date: 03/05/2019
-ms.author: danlep
-ms.openlocfilehash: fcdee2be92f2a3052e2ebbfaab3a2f9cb96e0125
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311599"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455961"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure Container Registry webhook リファレンス
 
@@ -41,7 +36,7 @@ Azure Container Registry webhook の構成方法については、「[Azure Cont
 
 ### <a name="push-event-payload"></a>push イベントのペイロード
 
-|要素|Type|説明|
+|要素|種類|説明|
 |-------------|----------|-----------|
 |`id`|string|webhook イベントの ID。|
 |`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
@@ -51,7 +46,7 @@ Azure Container Registry webhook の構成方法については、「[Azure Cont
 
 ### <a name="target"></a>target
 
-|要素|Type|説明|
+|要素|種類|説明|
 |------------------|----------|-----------|
 |`mediaType`|string|参照されているオブジェクトの MIME の種類。|
 |`size`|Int32|コンテンツのバイト数。 length フィールドと同じです。|
@@ -62,7 +57,7 @@ Azure Container Registry webhook の構成方法については、「[Azure Cont
 
 ### <a name="request"></a>request
 
-|要素|Type|説明|
+|要素|種類|説明|
 |------------------|----------|-----------|
 |`id`|string|イベントを開始した要求の ID。|
 |`host`|string|レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の HTTP ホスト ヘッダーで指定されています。|
@@ -105,7 +100,7 @@ Helm chart がリポジトリにプッシュされるとトリガーされる We
 
 ### <a name="chart-push-event-payload"></a>chart の push イベントのペイロード
 
-|要素|Type|説明|
+|要素|種類|説明|
 |-------------|----------|-----------|
 |`id`|string|webhook イベントの ID。|
 |`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
@@ -114,7 +109,7 @@ Helm chart がリポジトリにプッシュされるとトリガーされる We
 
 ### <a name="helm_target"></a>target
 
-|要素|Type|説明|
+|要素|種類|説明|
 |------------------|----------|-----------|
 |`mediaType`|string|参照されているオブジェクトの MIME の種類。|
 |`size`|Int32|コンテンツのバイト数。|
@@ -155,7 +150,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ### <a name="delete-event-payload"></a>delete イベントのペイロード
 
-|要素|Type|説明|
+|要素|種類|説明|
 |-------------|----------|-----------|
 |`id`|string|webhook イベントの ID。|
 |`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
@@ -165,7 +160,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ### <a name="delete_target"></a> target
 
-|要素|Type|説明|
+|要素|種類|説明|
 |------------------|----------|-----------|
 |`mediaType`|string|参照されているオブジェクトの MIME の種類。|
 |`digest`|string|コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。|
@@ -173,7 +168,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ### <a name="delete_request"></a> request
 
-|要素|Type|説明|
+|要素|種類|説明|
 |------------------|----------|-----------|
 |`id`|string|イベントを開始した要求の ID。|
 |`host`|string|レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の HTTP ホスト ヘッダーで指定されています。|
@@ -217,7 +212,7 @@ Helm chart またはリポジトリが削除されるとトリガーされる We
 
 ### <a name="chart-delete-event-payload"></a>chart の delete イベントのペイロード
 
-|要素|Type|説明|
+|要素|種類|説明|
 |-------------|----------|-----------|
 |`id`|string|webhook イベントの ID。|
 |`timestamp`|DateTime|webhook イベントがトリガーされた日時。|
@@ -226,7 +221,7 @@ Helm chart またはリポジトリが削除されるとトリガーされる We
 
 ### <a name="chart_delete_target"></a> target
 
-|要素|Type|説明|
+|要素|種類|説明|
 |------------------|----------|-----------|
 |`mediaType`|string|参照されているオブジェクトの MIME の種類。|
 |`size`|Int32|コンテンツのバイト数。|

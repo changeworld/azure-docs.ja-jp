@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 11/04/2019
-ms.openlocfilehash: 6c5b913835b2080f30ff3dd73e6a59c1043ecf5d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/27/2019
+ms.openlocfilehash: db5ac9465e6b897690c54484de25fde462741fb3
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823294"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548390"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance とは
 
@@ -77,7 +77,7 @@ Azure SQL Database デプロイ オプションの単一データベース、プ
 仮想コア モデルでは、ハードウェアの世代を選択できます。
 
 - **Gen4** 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4-GHz プロセッサ、接続された SSD、物理コア、コアあたり 7 GB の RAM、8 から 24 個の仮想コアのコンピューティング サイズに基づいています。
-- **Gen5** 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3-GHz プロセッサ、高速 NVMe SSD、ハイパースレッド論理コア、4 - 80 コアのコンピューティング サイズに基づいています。
+- **Gen5** 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3-GHz および Intel SP-8160 (Skylake) プロセッサ、高速 NVMe SSD、ハイパースレッド論理コア、4 - 80 コアのコンピューティング サイズに基づいています。
 
 ハードウェアの世代の違いについて詳しくは、[マネージド インスタンスのリソース制限](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics)に関する記事をご覧ください。
 
@@ -149,6 +149,7 @@ Azure SQL Database には、新しいマネージド インスタンスを自動
 
 |カテゴリ |操作 |実行時間の長いセグメント |推定所要時間 |
 |---------|---------|---------|---------|
+
 |**デプロイ** |空のサブネットへの最初のインスタンス|仮想クラスターの作成|操作の 90% は 4 時間以内に完了|
 |デプロイ |空ではないサブネットへの別のハードウェア世代の最初のインスタンス (Gen 4 インスタンスを含んだサブネットへの初の Gen 5 インスタンスなど)|仮想クラスターの作成*|操作の 90% は 4 時間以内に完了|
 |デプロイ |空のサブネットまたは空ではないサブネットに 4 仮想コアの最初のインスタンスを作成|仮想クラスターの作成**|操作の 90% は 4 時間以内に完了|
@@ -161,6 +162,7 @@ Azure SQL Database には、新しいマネージド インスタンスを自動
 |アップデート |4 仮想コアへのインスタンスのスケールダウン (General Purpose)|- 仮想クラスターのサイズ変更 (初回実行の場合、仮想クラスターの作成が必要になる場合があります**)<br>- データベース ファイルのアタッチ|操作の 90% は 4 時間 5 分以内に完了**|
 |アップデート |4 仮想コアへのインスタンスのスケールダウン (General Purpose)|- 仮想クラスターのサイズ変更 (初回実行の場合、仮想クラスターの作成が必要になる場合があります**)<br>- Always On 可用性グループのシード処理|操作の 90% は 4 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)|
 |アップデート |インスタンスのサービス レベルの変更 (General Purpose から Business Critical、またはその逆へ)|- 仮想クラスターのサイズ変更<br>- Always On 可用性グループのシード処理|操作の 90% は 2.5 時間以内に完了。それに加えて、すべてのデータベースにシード処理する時間 (毎時 220 GB)|
+
 |**削除**|インスタンスの削除|すべてのデータベースに対するログ テールのバックアップ|操作の 90% は最長でも 1 分以内に完了。<br>メモ: この操作では、サブネットの最後のインスタンスが削除された場合、12 時間後に仮想クラスターを削除するようにスケジュールされます***|
 |削除|(ユーザーによって開始された操作としての) 仮想クラスターの削除|仮想クラスターの削除|操作の 90% は最長でも 1.5 時間以内に完了|
 

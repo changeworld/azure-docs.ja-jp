@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor for VMs (プレビュー) とは? | Microsoft Docs
-description: Azure Monitor for VMs は Azure Monitor の機能です。この機能では、Azure VM オペレーティング システムの正常性とパフォーマンスの監視が組み合わされているほか、アプリケーション コンポーネントと他のリソースとの依存関係が自動的に検出され、それらの間の通信がマップされます。 この記事では概要を説明します。
+description: アプリケーション コンポーネントとその依存関係を自動的に検出およびマッピングするだけでなく、AzureVM の正常性とパフォーマンスを監視する機能を持つ Azure Monitor for VMs の概要。
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/14/2019
-ms.openlocfilehash: 84ebf92f795dfe1a21570d782bf24fad27f50eda
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e9a3df0172f276800a3049675f6e858db7f0370c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109076"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307293"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) とは?
 

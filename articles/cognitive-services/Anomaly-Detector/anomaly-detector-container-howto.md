@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 11f041ed06117a7e3d495fb43d3a4904f6001520
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 45abd904ea95cf8e68583ba5630a485af59479ec
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316392"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327252"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Anomaly Detector コンテナーのインストールと実行
+# <a name="install-and-run-anomaly-detector-containers-preview"></a>Anomaly Detector コンテナー (プレビュー) のインストールと実行
 
-Anomaly Detector には次のコンテナーがあります。 
+Anomaly Detector には次のコンテナー機能があります。
 
-|Function|機能|
-|-|-|
-|Anomaly Detector| <li> リアルタイムで発生した異常を検出します。 <li> バッチとして設定されたデータ全体で異常を検出します。 <li> データの予想される通常の範囲を推論します。 <li> 実際のデータに合わせた異常検出の機密性調整をサポートします。 |
+| Function | 機能 |
+|--|--|
+| Anomaly Detector | <li> リアルタイムで発生した異常を検出します。 <li> バッチとして設定されたデータ全体で異常を検出します。 <li> データの予想される通常の範囲を推論します。 <li> 実際のデータに合わせた異常検出の機密性調整をサポートします。 |
 
 API の詳細情報については、以下を参照してください。
 * [Anomaly Detector API サービスの詳細情報](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -92,8 +92,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-det
 
 コンテナーを[ホスト コンピューター](#the-host-computer)上に用意できたら、次の手順を使用してコンテナーを操作します。
 
-1. 必要な課金設定を使用して[コンテナーを実行](#run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](anomaly-detector-container-configuration.md#example-docker-run-commands)もご覧いただけます。 
-1. [コンテナーの予測エンドポイントに対するクエリを実行します](#query-the-containers-prediction-endpoint)。 
+1. 必要な課金設定を使用して[コンテナーを実行](#run-the-container-with-docker-run)します。 `docker run` コマンドの他の[例](anomaly-detector-container-configuration.md#example-docker-run-commands)もご覧いただけます。
+1. [コンテナーの予測エンドポイントに対するクエリを実行します](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>`docker run` によるコンテナーの実行
 

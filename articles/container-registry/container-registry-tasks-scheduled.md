@@ -1,23 +1,24 @@
 ---
-title: Azure Container Registry タスクをスケジュールする
-description: 1 つ以上のタイマー トリガーを設定して、定義したスケジュールに基づき、Azure Container Registry タスクを実行する方法を説明します。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: チュートリアル - ACR タスクをスケジュールする
+description: このチュートリアルでは、1 つ以上のタイマー トリガーを設定して、定義したスケジュールに基づき、Azure Container Registry タスクを実行する方法を説明します。
 ms.topic: article
 ms.date: 06/27/2019
-ms.author: danlep
-ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931463"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454679"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>定義したスケジュールで ACR タスクを実行する
 
-この記事では、スケジュールに従って [ACR タスク](container-registry-tasks-overview.md)を実行する方法を説明します。 1 つ以上の "*タイマー トリガー*" を設定することによってタスクをスケジュールします。
+このチュートリアルでは、スケジュールに従って [ACR タスク](container-registry-tasks-overview.md)を実行する方法を説明します。 1 つ以上の "*タイマー トリガー*" を設定することによってタスクをスケジュールします。 タイマー トリガーは単独で使用することも、他のタスク トリガーと組み合わせて使用することもできます。
+
+このチュートリアルでは、タスクのスケジュール設定と次の作業について説明します。
+
+> [!div class="checklist"]
+> * タイマー トリガーを含むタスクを作成する
+> * タイマー トリガーを管理する
 
 タスクのスケジュールは、次のようなシナリオで役に立ちます。
 
@@ -199,9 +200,11 @@ Cron 式で使われるタイム ゾーンは、協定世界時 (UTC) です。 
 
 ## <a name="next-steps"></a>次の手順
 
+このチュートリアルでは、タイマーによって自動的にトリガーされる Azure Container Registry タスクを作成する方法について学習しました。 
+
 スケジュールされたタスクを使用してレジストリ内のリポジトリをクリーンアップする例については、「[Azure コンテナー レジストリからイメージを自動的に消去する](container-registry-auto-purge.md)」を参照してください。
 
-ソース コード コミットまたは基本イメージ更新によってトリガーされるタスクの例については、[ACR タスク チュートリアル シリーズ](container-registry-tutorial-quick-task.md)に関するページをご覧ください。
+ソース コード コミットまたは基本イメージ更新によってトリガーされるタスクの例については、[ACR タスク チュートリアル シリーズ](container-registry-tutorial-quick-task.md)の他の記事をご覧ください。
 
 
 

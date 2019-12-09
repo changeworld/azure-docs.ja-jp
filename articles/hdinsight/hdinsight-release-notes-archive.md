@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 16ce90d3db1091fa759d940f4bbf91a3ef924e42
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 217a1160595bfcbd33fe260613289951370cf409
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025526"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184320"
 ---
 # <a name="archived-release-notes"></a>アーカイブされたリリース ノート
 
@@ -24,7 +24,123 @@ ms.locfileid: "72025526"
 
 Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop および Apache Spark の分析を行う、エンタープライズのお客様の間で最も人気のあるサービスの 1 つです。
 
-## <a name="new-features"></a>新機能
+## <a name="release-date-08072019"></a>リリース日:2019/08/07
+
+### <a name="component-versions"></a>コンポーネントのバージョン
+
+以下に HDInsight 4.0 のすべてのコンポーネントの正式な Apache バージョンを示します。 ここに列挙されているコンポーネントは、利用できる最新の安定したバージョンのリリースです。
+
+- Apache Ambari 2.7.1
+- Apache Hadoop 3.1.1
+- Apache HBase 2.0.0
+- Apache Hive 3.1.0
+- Apache Kafka 1.1.1、2.1.0
+- Apache Mahout 0.9.0+
+- Apache Oozie 4.2.0
+- Apache Phoenix 4.7.0
+- Apache Pig 0.16.0
+- Apache Ranger 0.7.0
+- Apache Slider 0.92.0
+- Apache Spark 2.3.1、2.4.0
+- Apache Sqoop 1.4.7
+- Apache TEZ 0.9.1
+- Apache Zeppelin 0.8.0
+- Apache ZooKeeper 3.4.6
+
+新しいバージョンの Apache のコンポーネントは、上の一覧のバージョンに加えて HDP ディストリビューションにバンドルされていることがあります。 この場合、これらの新しいバージョンの一覧はテクニカル プレビューの表に表示され、運用環境で上の一覧の Apache コンポーネントのバージョンの代替にはなりません。
+
+### <a name="apache-patch-information"></a>Apache のパッチ情報
+
+HDInsight 4.0 で使用可能なパッチの詳細については、以下の表の各製品のパッチ一覧を参照してください。
+
+| 製品名 | パッチ情報 |
+|---|---|
+| Ambari | [Ambari のパッチ情報](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
+| Hadoop | [Hadoop のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
+| hbase | [HBase のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
+| Hive  | このリリースは Hive 3.1.0 を提供します。Apache の追加パッチはありません。  |
+| Kafka | このリリースは Kafka 1.1.1 を提供します。Apache の追加パッチはありません。 |
+| Oozie | [Oozie のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
+| Phoenix | [Phoenix のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
+| Pig | [Pig のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
+| Ranger | [Ranger のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
+| Spark | [Spark のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
+| Sqoop | このリリースは Sqoop 1.4.7 を提供します。Apache の追加パッチはありません。 |
+| Tez | このリリースは Tez 0.9.1 を提供します。Apache の追加パッチはありません。 |
+| Zeppelin | このリリースは Zeppelin 0.8.0 を提供します。Apache の追加パッチはありません。 |
+| Zookeeper | [Zookeeper のパッチ情報](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
+
+### <a name="fixed-common-vulnerabilities-and-exposures"></a>修正された共通脆弱性識別子
+
+このリリースで解決されたセキュリティの問題の詳細については、Hortonworks の「[Fixed Common Vulnerabilities and Exposures for HDP 3.0.1](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html)」を参照してください。
+
+### <a name="known-issues"></a>既知の問題
+
+#### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>既定のインストールで Secure HBase のレプリケーションが破損する
+
+HDInsight 4.0 の場合は、次の手順を実行します。
+
+1. クラスター間通信を有効にします。
+1. アクティブなヘッドノードにサインインします。
+1. 次のコマンドを使用して、スクリプトをダウンロードしてレプリケーションを有効にします。
+
+    ```
+    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
+    ```
+1. コマンド `sudo kinit <domainuser>` を入力します。
+1. 次のコマンドを入力して、スクリプトを実行します。
+
+    ```
+    sudo bash hdi_enable_replication.sh -m <hn0> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
+    ```
+HDInsight 3.6 の場合は、次の手順を実行します。
+
+1. アクティブな HMaster ZK にサインインします。
+1. 次のコマンドを使用して、スクリプトをダウンロードしてレプリケーションを有効にします。
+    ```
+    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
+    ```
+1. コマンド `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>` を入力します。
+1. 次のコマンドを入力します。
+
+    ```bash
+    sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
+    ```
+
+#### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>HBase クラスターを HDInsight 4.0 に移行した後に Phoenix Sqlline の動作が停止する
+
+次の手順を実行します。
+
+1. 次の Phoenix テーブルを削除します。
+    1. `SYSTEM.FUNCTION`
+    1. `SYSTEM.SEQUENCE`
+    1. `SYSTEM.STATS`
+    1. `SYSTEM.MUTEX`
+    1. `SYSTEM.CATALOG`
+1. テーブルを削除できない場合は、HBase を再起動してテーブルへの接続をすべて解除してください。
+1. `sqlline.py` をもう一度実行します。 手順 1 で削除されたすべてのテーブルが Phoenix によって再作成されます。
+1. HBase データ用の Phoenix テーブルとビューを再生成します。
+
+#### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>HBase Phoenix のメタデータを HDInsight 3.6 から 4.0 にレプリケートした後に Phoenix Sqlline の動作が停止する
+
+次の手順を実行します。
+
+1. レプリケーションを行う前に、宛先の 4.0 クラスターに移動して `sqlline.py` を実行します。 このコマンドによって、4.0 にのみ存在する `SYSTEM.MUTEX` や `SYSTEM.LOG` などのPhoenix テーブルが生成されます。
+1. 次のテーブルを削除します。
+    1. `SYSTEM.FUNCTION`
+    1. `SYSTEM.SEQUENCE`
+    1. `SYSTEM.STATS`
+    1. `SYSTEM.CATALOG`
+1. HBase レプリケーションの起動
+
+### <a name="deprecation"></a>非推奨
+
+Apache Storm と ML サービスは、HDInsight 4.0 では使用できません。
+
+
+## <a name="release-date-04142019"></a>リリース日:2019/04/14
+
+### <a name="new-features"></a>新機能
 
 新しい更新内容や機能は、次のカテゴリに分類されます。
 
@@ -40,7 +156,7 @@ Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop およ�
 
 *  ***HDInsight Enterprise セキュリティ パッケージの更新プログラム (プレビュー)***: (プレビュー) [仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)は、Azure Blob Storage、ADLS Gen1、Cosmos DB、および Azure DB をサポートします。
 
-## <a name="component-versions"></a>コンポーネントのバージョン
+### <a name="component-versions"></a>コンポーネントのバージョン
 
 以下に HDInsight 3.6 のすべてのコンポーネントの正式な Apache バージョンの一覧を示します。 ここに列挙されているすべてのコンポーネントは、利用できる最新の安定したバージョンの公式の Apache リリースです。
 
@@ -80,9 +196,9 @@ Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop およ�
 
 新しいバージョンの Apache のいくつかのコンポーネントは、上の一覧のバージョンに加えて HDP ディストリビューションにバンドルされています。 この場合、これらの新しいバージョンの一覧はテクニカル プレビューの表に表示され、運用環境で上の一覧の Apache コンポーネントのバージョンの代替にはなりません。
 
-## <a name="apache-patch-information"></a>Apache のパッチ情報
+### <a name="apache-patch-information"></a>Apache のパッチ情報
 
-### <a name="hadoop"></a>Hadoop
+#### <a name="hadoop"></a>Hadoop
 
 このリリースは、Hadoop Common 2.7.3 と次の Apache のパッチを提供します。
 
@@ -166,7 +282,7 @@ HDP 2.6.4 は、Hadoop Common 2.7.3 と次の Apache のパッチを提供しま
 
 -   [YARN-6805](https://issues.apache.org/jira/browse/YARN-6805): PrivilegedOperationException の終了コードが null であることにより LinuxContainerExecutor に NPE が発生する。
 
-### <a name="hbase"></a>hbase
+#### <a name="hbase"></a>hbase
 
 このリリースは、HBase 1.1.2 と次の Apache のパッチを提供します。
 
@@ -232,7 +348,7 @@ HDP 2.6.4 は、Hadoop Common 2.7.3 と次の Apache のパッチを提供しま
 
 -   [HBASE-20008](https://issues.apache.org/jira/browse/HBASE-20008): リージョン分割後にスナップショットを復元するときに、NullPointerException を\[バックポート\]する。
 
-### <a name="hive"></a>Hive
+#### <a name="hive"></a>Hive
 
 このリリースは、次のパッチに加えて、Hive 1.2.1 と Hive 2.1.0 を提供します。
 
@@ -492,7 +608,7 @@ HDP 2.6.4 は、Hadoop Common 2.7.3 と次の Apache のパッチを提供しま
 
 -   [*HIVE-18944*](https://issues.apache.org/jira/browse/HIVE-18944): DPP 中に Grouping Sets の位置が間違って設定されている。
 
-### <a name="kafka"></a>Kafka
+#### <a name="kafka"></a>Kafka
 
 このリリースは、Kafka 1.0.0 と次の Apache のパッチを提供します。
 
@@ -526,7 +642,7 @@ HDP 2.6.4 は、Hadoop Common 2.7.3 と次の Apache のパッチを提供しま
 
 -   [KAFKA-6274](https://issues.apache.org/jira/browse/KAFKA-6274): KTable ソース状態ストアで自動生成された名前を改善する。
 
-### <a name="mahout"></a>Mahout
+#### <a name="mahout"></a>Mahout
 
 HDP-2.3.x と 2.4.x では、Mahout という特定 Apache リリースを配布する代わりに、Apache Mahout トランク上の特定のリビジョン ポイントに同期しました。 このリビジョン ポイントは、0.9.0 リリースの後、かつ 0.10.0 リリースの前です。 これには 0.9.0 リリースを上回る多数のバグ修正と機能改善が施されており、新しい Spark ベースの 0.10.0 の Mahout に完全に変換される前の Mahout の機能の安定版リリースを提供します。
 
@@ -540,7 +656,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   さらに低い確率で、一部の Mahout のジョブで、バイナリの互換性の問題により、Mahout の HBase クライアント コードが Hadoop の共通ライブラリを呼び出すと、クラッシュが発生する場合があります。 残念ながら、セキュリティ上問題がある可能性がある HDP-2.4.2 バージョンの Mahout に戻す以外に、この問題を解決する方法はありません。 繰り返しますが、これは非常にまれなケースで、ほとんどの Mahout ジョブ スイートでは発生しません。
 
-### <a name="oozie"></a>Oozie
+#### <a name="oozie"></a>Oozie
 
 このリリースは、Oozie 4.2.0 と次の Apache のパッチを提供します。
 
@@ -566,7 +682,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [OOZIE-3167](https://issues.apache.org/jira/browse/OOZIE-3167): Oozie 4.3 ブランチ上の Tomcat のバージョンをアップグレードする。
 
-### <a name="phoenix"></a>Phoenix
+#### <a name="phoenix"></a>Phoenix
 
 このリリースは、Phoenix 4.7.0 と次の Apache のパッチを提供します。
 
@@ -610,7 +726,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [PHOENIX-4588](https://issues.apache.org/jira/browse/PHOENIX-4588): 式の子に Determinism.PER\_INVOCATION がある場合は、その式も複製する。
 
-### <a name="pig"></a>Pig
+#### <a name="pig"></a>Pig
 
 このリリースは、Pig 0.16.0 と次の Apache のパッチを提供します。
 
@@ -618,7 +734,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [PIG-5175](https://issues.apache.org/jira/browse/PIG-5175): JRuby を 1.7.26 にアップグレードする。
 
-### <a name="ranger"></a>Ranger
+#### <a name="ranger"></a>Ranger
 
 このリリースは、Ranger 0.7.0 と次の Apache のパッチを提供します。
 
@@ -638,11 +754,11 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [RANGER-2008](https://issues.apache.org/jira/browse/RANGER-2008): マルチライン ポリシー条件でポリシーの評価が失敗する。
 
-### <a name="slider"></a>スライダー
+#### <a name="slider"></a>スライダー
 
 このリリースは Slider 0.92.0 を提供します。Apache の追加パッチはありません。
 
-### <a name="spark"></a>Spark
+#### <a name="spark"></a>Spark
 
 このリリースは、Spark 2.3.0 と次の Apache のパッチを提供します。
 
@@ -768,11 +884,11 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [SPARK-23881](https://issues.apache.org/jira/browse/SPARK-23881): 不安定なテスト JobCancellationSuite."interruptible iterator of shuffle reader" を修正する。
 
-### <a name="sqoop"></a>Sqoop
+#### <a name="sqoop"></a>Sqoop
 
 このリリースは Sqoop 1.4.6 を提供します。Apache の追加パッチはありません。
 
-### <a name="storm"></a>Storm
+#### <a name="storm"></a>Storm
 
 このリリースは、Storm 1.1.1 と次の Apache のパッチを提供します。
 
@@ -786,13 +902,13 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [STORM-2960](https://issues.apache.org/jira/browse/STORM-2960): Storm プロセスの適切な OS アカウントを設定することの重要性をより強調する。
 
-### <a name="tez"></a>Tez
+#### <a name="tez"></a>Tez
 
 このリリースは、Tez 0.7.0 と次の Apache のパッチを提供します。
 
 -   [TEZ-1526](https://issues.apache.org/jira/browse/TEZ-1526): TezTaskID の LoadingCache が大きなジョブで低速になる。
 
-### <a name="zeppelin"></a>Zeppelin
+#### <a name="zeppelin"></a>Zeppelin
 
 このリリースは Zeppelin 0.7.3 を提供します。Apache の追加パッチはありません。
 
@@ -802,7 +918,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [ZEPPELIN-903](https://issues.apache.org/jira/browse/ZEPPELIN-903): CXF を Jersey2 に置き換える。
 
-### <a name="zookeeper"></a>ZooKeeper
+#### <a name="zookeeper"></a>ZooKeeper
 
 このリリースは、ZooKeeper 3.4.6 と次の Apache のパッチを提供します。
 
@@ -816,11 +932,11 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
 -   [ZOOKEEPER-2726](https://issues.apache.org/jira/browse/ZOOKEEPER-2726): 潜在的な競合状態に対するパッチ。
 
-## <a name="fixed-common-vulnerabilities-and-exposures"></a>修正された共通脆弱性識別子
+### <a name="fixed-common-vulnerabilities-and-exposures"></a>修正された共通脆弱性識別子
 
 このセクションでは、このリリースで対処されているすべての共通脆弱性識別子 (CVE) を紹介します。
 
-### <a name="cve-2017-7676"></a>**CVE-2017-7676**
+#### <a name="cve-2017-7676"></a>**CVE-2017-7676**
 
 | **概要:** Apache Ranger ポリシーの評価で "\*" ワイルドカード文字の後の文字が無視される |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -844,7 +960,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 | **修正の詳細:** 外部の場所に関するアクセス許可のチェックを正しく処理するように、Ranger Hive Authorizer が更新されました。 |
 | **推奨される操作:** ユーザーは、HDI 3.6 (および Apache Ranger 0.7.1+) にアップグレードしてください。 |
 
-### <a name="cve-2017-9799"></a>**CVE-2017-9799**
+#### <a name="cve-2017-9799"></a>**CVE-2017-9799**
 
 | **概要:** Apache Storm で正しくないユーザーとしてコードが実行される可能性がある |
 |--------------------------------------------------------------------------------------------------|
@@ -855,7 +971,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 | **影響:** Storm の状況や構成によっては、トポロジの所有者が、別の (ルート以外の) ユーザーとして worker を起動するようにスーパーバイザーをだますことが理論的に可能になる場合があります。 最悪の場合、他のユーザーのセキュリティ資格情報が侵害されることがあります。 この脆弱性は、セキュリティが有効な Apache Storm のインストールにのみ当てはまります。 |
 | **対応策:** 現時点は対処法がないため、HDP-2.6.2.1 にアップグレードしてください。  |
 
-### <a name="cve-2016-4970"></a>**CVE-2016-4970**
+#### <a name="cve-2016-4970"></a>**CVE-2016-4970**
 
 | **概要:** 4.0.37.Final より前の Netty 4.0.x および 4.1.1.Final より前の 4.1.x の handler/ssl/OpenSslEngine.java で、リモート攻撃によりサービスが妨害 (無限ループ) されることがある |
 |--------------------------------------------------------------------------------------------------|
@@ -866,7 +982,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 | **影響:** Hortonworks は Hadoop コードベースで直接 OpenSslEngine.java を使用していないため、影響は大きくありません。     |
 | **推奨される操作:** HDP 2.6.3 にアップグレードしてください。   |
 
-### <a name="cve-2016-8746"></a>**CVE-2016-8746**
+#### <a name="cve-2016-8746"></a>**CVE-2016-8746**
 
 | **概要:** ポリシーの評価における Apache Ranger のパス照合の問題                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------|
@@ -878,7 +994,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 | **修正の詳細:** ポリシー評価のロジックを修正しました                                                                                          |
 | **推奨される操作:** ユーザーは、HDP 2.5.4 以降 (および Apache Ranger 0.6.3 以降) または HDP 2.6 以降 (および Apache Ranger 0.7.0 以降) にアップグレードしてください         |
 
-### <a name="cve-2016-8751"></a>**CVE-2016-8751**
+#### <a name="cve-2016-8751"></a>**CVE-2016-8751**
 
 | **概要:** Apache Ranger の蓄積型クロス サイト スクリプティングの問題  |
 |--------------------------------------------------------------------------------------------------|
@@ -890,7 +1006,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 | **修正の詳細:** ユーザー入力をサニタイズするロジックを追加しました。  |
 | **推奨される操作:** ユーザーは、HDP 2.5.4 以降 (および Apache Ranger 0.6.3 以降) または HDP 2.6 以降 (および Apache Ranger 0.7.0 以降) にアップグレードしてください  |
 
-## <a name="fixed-issues-for-support"></a>修正されたサポートの問題
+### <a name="fixed-issues-for-support"></a>修正されたサポートの問題
 
 修正された問題は、以前に Hortonworks のサポートにログされたことのある選択された問題を表しますが、現在のリリースでは対処されています。 これらの問題は、以前のバージョンの「既知の問題」セクション内で報告されている場合があります。それらはお客様によって報告されたか、Hortonworks の Quality Engineering チームによって特定された問題であることを意味します。
 
@@ -1293,7 +1409,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 | BUG-99807              | [OOZIE-2844](https://issues.apache.org/jira/browse/OOZIE-2844)                                                                                                                                                                                                                 | Log4j.properties が見つからないか読み取れないときに、Oozie のアクションの安定性を向上させる                                                                         |
 | RMP-9995               | [AMBARI-22222](https://issues.apache.org/jira/browse/AMBARI-22222)                                                                                                                                                                                                             | ローカル ディスク上の /apps/druid の代わりに /var/druid ディレクトリを使用するように druid を切り替える                                                                                |
 
-## <a name="behavioral-changes"></a>動作の変更
+### <a name="behavioral-changes"></a>動作の変更
 
 |**Apache コンポーネント**|**Apache JIRA**|**まとめ**|**詳細**|
 |--|--|--|--|
@@ -1304,7 +1420,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 |**HDFS**|**該当なし** |HDFS が KMS の複数の URI をサポートする必要がある |**以前の動作:** KMS プロバイダー パスの構成に dfs.encryption.key.provider.uri プロパティが使用されていました。<br /><br />**新しい動作:** dfs.encryption.key.provider.uri が非推奨になり、KMS プロバイダー パスの構成に hadoop.security.key.provider.path が優先的に使用されるようになりました。|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|スケジューラを無効にするためのオプション |**影響を受けるコンポーネント:** Zeppelin サーバー<br /><br />**以前の動作:** Zeppelin の以前のリリースでは、スケジューラを無効にするオプションがありませんでした。<br /><br />**新しい動作:** 既定でスケジューラが無効になっているため、既定ではユーザーにスケジューラが表示されなくなります。<br /><br />**回避策/期待されるアクション:** スケジューラを有効にするには、Ambari から Zeppelin の設定の zeppelin のカスタム サイトの下に、値が true の azeppelin.notebook.cron.enable を追加する必要があります。|
 
-## <a name="known-issues"></a>既知の問題
+### <a name="known-issues"></a>既知の問題
 
 - **HDInsight と ADLS Gen 2 の統合** Azure Data Lake Storage Gen 2 を使用する HDInsight ESP クラスターには、ユーザー ディレクトリとアクセス許可に関して次の 2 つの問題があります。
    
@@ -1425,7 +1541,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
     1.  ユーザーのホーム ディレクトリが、ヘッド ノード 1 に作成されません。 回避策は、これらを手動で作成し、所有権をそれぞれのユーザーの UPN に変更することです。
     2.  /hdp に対するアクセス許可が、現在は 751 に設定されません。 これを次のように設定する必要があります。a.  chmod 751 /hdp b.  chmod –R 755 /hdp/apps
 
-## <a name="deprecation"></a>非推奨
+### <a name="deprecation"></a>非推奨
 
 -   **OMS ポータル:** HDInsight のリソース ページから OMC ポータルへのリンクを削除しました。 Azure Monitor ログでは当初、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。 このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。 HDInsight では、OMC ポータルのサポートが非推奨になりました。 お客様は Azure portal の HDInsight Azure Monitor ログの統合を使用します。
 
@@ -1433,7 +1549,7 @@ HDP-2.5.x と 2.6.x では、"commons-httpclient" ライブラリをセキュリ
 
     -   <https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations>
 
-## <a name="upgrading"></a>アップグレード中
+### <a name="upgrading"></a>アップグレード中
 
 これらの機能はすべて HDInsight 3.6 で利用できます。 Spark、Kafka、および Microsoft R Server (Machine Learning Services) の最新バージョンを取得するには、[HDInsight 3.6 クラスターを作成する](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)ときに、Spark、Kafka、ML Services のバージョンを選択してください。 ADLS のサポートを受けるには、オプションとして ADLS ストレージ タイプを選択できます。 既存のクラスターは、これらのバージョンに自動的にはアップグレードされません。
 

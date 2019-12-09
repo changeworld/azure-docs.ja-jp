@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 86a7575c173b4515eaf0f690bcd00c6fb70ee581
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44baac5eb4e8887594ba05498901ba664380005f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492734"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280768"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
 
-Language Understanding (LUIS) のオーサリング認証が、メール アカウントから Azure リソースに変更されました。 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+Language Understanding (LUIS) のオーサリング認証が、メール アカウントから Azure リソースに変更されました。 現在は必須ではありませんが、Azure リソースへの切り替えは今後強制される予定です。
 
 ## <a name="why-migrate"></a>移行する理由
 

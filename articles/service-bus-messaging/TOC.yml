@@ -203,6 +203,10 @@
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: トピック、サブスクリプション、ルールを含んだ名前空間の作成
               href: service-bus-resource-manager-namespace-topic-with-rule.md
+    - name: セキュリティ保護
+      items:
+        - name: 保存時の暗号化向けに顧客管理キーを構成する (プレビュー)
+          href: configure-customer-managed-key.md
     - name: トラブルシューティング
       items:
         - name: トラブルシューティング ガイド

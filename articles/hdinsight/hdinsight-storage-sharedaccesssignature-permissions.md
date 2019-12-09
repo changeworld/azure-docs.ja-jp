@@ -2,18 +2,18 @@
 title: Shared Access Signature を使用してアクセスを制限する - Azure HDInsight
 description: Azure Storage の BLOB に格納されたデータへの HDInsight のアクセスを制限するために、Shared Access Signature を使用する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 031498119eb4f9feb92046d7d7a86cfd77f8f368
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/13/2019
+ms.openlocfilehash: 725bdfd4efe3be600c993e568f1a5c7edccc6952
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498127"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148221"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -33,9 +33,9 @@ HDInsight には、クラスターに関連付けられた Azure Storage アカ�
 
 * 既存の[ストレージ コンテナー](../storage/blobs/storage-quickstart-blobs-portal.md)。  
 
-* PowerShell を使用する場合は、[Az モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要です。
+* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要になります。
 
-* Azure CLI を使用したい場合で、なおかつまだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+* Azure CLI を使用したいが、まだインストールしていない場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 * [Python](https://www.python.org/downloads/) バージョン 2.7 以降 (Python を使用する場合)。
 
@@ -234,7 +234,6 @@ HDInsight クラスターを作成するときは、プライマリ ストレー
 `CLUSTERNAME`、`RESOURCEGROUP`、`DEFAULTSTORAGEACCOUNT`、`STORAGECONTAINER`、`STORAGEACCOUNT`、`TOKEN` を適切な値に置き換えます。 次の PowerShell コマンドを入力します。
 
 ```powershell
-
 $clusterName = 'CLUSTERNAME'
 $resourceGroupName = 'RESOURCEGROUP'
 
@@ -285,11 +284,10 @@ $defaultStorageContext = New-AzStorageContext `
                                 -StorageAccountName $defaultStorageAccountName `
                                 -StorageAccountKey $defaultStorageAccountKey
 
-
 # Create a blob container. This holds the default data store for the cluster.
 New-AzStorageContainer `
     -Name $clusterName `
-    -Context $defaultStorageContext 
+    -Context $defaultStorageContext
 
 # Cluster login is used to secure HTTPS services hosted on the cluster
 $httpCredential = Get-Credential `
@@ -302,9 +300,9 @@ $sshCredential = Get-Credential `
     -UserName "sshuser"
 
 # Create the configuration for the cluster
-$config = New-AzHDInsightClusterConfig 
+$config = New-AzHDInsightClusterConfig
 
-$config = $config | Add-AzHDInsightConfigValues `
+$config = $config | Add-AzHDInsightConfigValue `
     -Spark2Defaults @{} `
     -Core @{"fs.azure.sas.$SASContainerName.$SASStorageAccountName.blob.core.windows.net"=$SASToken}
 
@@ -358,29 +356,29 @@ Remove-AzResourceGroup `
 
 1. クラスターの Ambari Web UI を開きます。 このページのアドレスは `https://YOURCLUSTERNAME.azurehdinsight.net` です。 入力を要求されたら、クラスターを作成するときに使用した管理者名 (admin) とパスワードを使用してクラスターを認証します。
 
-2. Ambari Web UI の左側から、 **[HDFS]** を選択して、ページ中央にある **[Configs]** タブを選択します。
+1. **[HDFS]** 、 **[構成]** 、 **[詳細]** 、 **[カスタム core-site]** の順に移動します。
 
-3. **[詳細設定]** タブをクリックし、 **[カスタム core-site]** セクションが表示されるまでスクロールします。
+1. **[カスタム core-site]** セクションを展開して、最後までスクロールし、 **[プロパティの追加]** を選択します。 **[キー]** と **[値]** に次の値を使用します。
 
-4. **[カスタム core-site]** セクションを展開して、最後までスクロールし、 **[プロパティの追加...]** リンクを選択します。 **[キー]** と **[値]** フィールドに、次の値を使用します。
+    * **キー**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **値**: これまでに実行したいずれかの方法で取得した SAS。
 
-   * **キー**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-   * **値**: これまでに実行したいずれかの方法で取得した SAS。
+    `CONTAINERNAME` を C# または SAS のアプリケーションで使用したコンテナー名に置き換えます。 `STORAGEACCOUNTNAME` には、使用したストレージ アカウント名を指定します。
 
-     `CONTAINERNAME` を C# または SAS のアプリケーションで使用したコンテナー名に置き換えます。 `STORAGEACCOUNTNAME` には、使用したストレージ アカウント名を指定します。
+    **[追加]** を選択し、このキーと値を保存します。
 
-5. **[追加]** ボタンをクリックしてこのキーと値を保存し、 **[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、 **[保存]** をクリックします。
+1. **[保存]** ボタンを選択すると構成変更が保存されます。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、 **[保存]** を選択します。
 
-    変更が完了したら、 **[OK]** をクリックします。
+    変更が完了したら、 **[OK]** を選択します。
 
    > [!IMPORTANT]  
    > 変更を有効にするには、複数のサービスを再起動する必要があります。
 
-6. Ambari Web UI で、左側の一覧から **[HDFS]** を選択して、右側の **[サービス アクション]** ドロップダウン リストから **[すべて再起動]** を選択します。 メッセージが表示されたら、 __[Confirm Restart All]\(すべての再起動の確認\)__ を選択します。
+1. **[再起動]** ドロップダウン リストが表示されます。 ドロップダウン リストから **[影響を受けるものをすべて再起動する]** を選択し、次に __[Confirm Restart All]\(すべて再起動\)__ を選択します。
 
-    この手順を MapReduce2 と YARN に対して繰り返します。
+    この手順を **MapReduce2** と **YARN** に対して繰り返します。
 
-7. これらのサービスが再起動されたら、各サービスを選択して、 **[サービス アクション]** ドロップダウンからメンテナンス モードを無効化します。
+1. これらのサービスが再起動されたら、各サービスを選択して、 **[サービス アクション]** ドロップダウンからメンテナンス モードを無効化します。
 
 ## <a name="test-restricted-access"></a>制限付きアクセスをテストする
 
@@ -405,7 +403,7 @@ Remove-AzResourceGroup `
 3. 次のコマンドを使用して、ファイルの内容を読み取ることができることを確認します。 前の手順と同様に、`SASCONTAINER` と `SASACCOUNTNAME` を置き換えます。 `sample.log` を前のコマンドで表示されたファイルの名前に置き換えます。
 
     ```bash
-    hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
+    hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
     ```
 
     このコマンドにより、ファイルの内容が一覧表示されます。
@@ -441,6 +439,4 @@ Remove-AzResourceGroup `
 HDInsight クラスターにアクセスが制限されたストレージを追加する方法を学習しました。クラスターのデータと連携するその他の方法を確認してください。
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)
-* [HDInsight での Apache Pig の使用](hadoop/hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hadoop/hdinsight-use-mapreduce.md)
-

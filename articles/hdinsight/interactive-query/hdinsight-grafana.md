@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: cea0e9709afb65caa23d28be093c28498f2b82d0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: dae9c47f535d87214c9e1583562b4c0419cd44cf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122994"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305448"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Azure HDInsight で Grafana にアクセスする
 
 [Grafana](https://grafana.com/) は、人気のあるオープン ソースのグラフとダッシュボードのビルダーです。 Grafana は豊富な機能を備えています。カスタマイズ可能で共有可能なダッシュボードを作成できるだけでなく、テンプレート化/スクリプト化されたダッシュボード、LDAP の統合、複数のデータ ソースなどの機能があります。
 
-現在、Azure HDInsight では、Grafana は Hbase と Interactive Query のクラスターの種類でサポートされています。
+現在、Azure HDInsight では、Grafana は Hbase、Kafka、および Interactive Query のクラスターの種類でサポートされています。 Enterprise Security Pack が有効なクラスターではサポートされていません。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     > 
     >
     
-    ![HDInsight Linux の使用。ポータルの Resource Manager テンプレート](./media/hdinsight-grafana/hdinsight-linux-get-started-arm-template-on-portal.png "Azure Portal とリソース グループ マネージャー テンプレートを使用して HDInsight で Hadoop クラスターをデプロイする")
+    ![HDInsight Linux のポータルでの Resource Manager テンプレートの概要](./media/hdinsight-grafana/hdinsight-linux-get-started-arm-template-on-portal.png "Azure portal とリソース グループ マネージャー テンプレートを使用して HDInsight に Hadoop クラスターをデプロイする")
 
     次の値を入力または選択します。
     
@@ -55,11 +55,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. **[上記の使用条件に同意する]** 、 **[ダッシュボードにピン留めする]** の順に選択し、 **[購入]** を選択します。 ポータルのダッシュボードに、 **[デプロイを送信しています]** という新しいタイルが表示されます。 クラスターの作成には約 20 分かかります。
 
-    ![Azure テンプレートのデプロイの進行状況](./media/hdinsight-grafana/deployment-progress-tile.png "Azure テンプレートのデプロイの進行状況")
+    ![Azure Template deployment の進行状況](./media/hdinsight-grafana/deployment-progress-tile.png "Azure Template deployment の進行状況")
 
 4. クラスターが作成されると、タイルのキャプションが、指定したリソース グループ名に変更されます。 タイルには、リソース グループ内で作成された HDInsight クラスターも一覧表示されます。
 
-    ![HDInsight Linux の使用。リソース グループ](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Azure HDInsight クラスター リソース グループ")
+    ![HDInsight Linux のリソース グループの概要](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Azure HDInsight クラスター リソース グループ")
 
 5. タイルには、クラスターに関連付けられている既定のストレージも一覧表示されます。 各クラスターには、[Azure ストレージ アカウント](../hdinsight-hadoop-use-blob-storage.md)または [Azure Data Lake アカウント](../hdinsight-hadoop-use-data-lake-store.md)との依存関係があります。 このアカウントを、既定のストレージ アカウントと呼びます。 HDInsight クラスターとその既定のストレージ アカウントは、同じ Azure リージョンに配置されている必要があります。 クラスターを削除しても、ストレージ アカウントは削除されません。
     
@@ -95,7 +95,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ブラウザーの Azure Portal を開いているタブに戻ります。 [クラスターの概要] ページが表示されているはずです。 クラスターのみを削除し、既定のストレージ アカウントを保持する場合は、 **[削除]** を選択します。
 
-    ![Azure portal のクラスター削除アイコン](./media/hdinsight-grafana/hdinsight-delete-cluster.png "HDInsight クラスターの削除")
+    ![Azure portal のクラスターの削除アイコン](./media/hdinsight-grafana/hdinsight-delete-cluster.png "HDInsight クラスターの削除")
 
 2. クラスターと既定のストレージ アカウントを削除する場合は、(上のスクリーンショットで強調表示されている) リソース グループ名を選択して、リソース グループのページを開きます。
 

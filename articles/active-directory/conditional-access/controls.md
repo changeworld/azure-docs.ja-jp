@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory 条件付きアクセスによるアクセス制御の概要 | Microsoft Docs
+title: Azure Active Directory の条件付きアクセスのアクセス制御
 description: Azure Active Directory の条件付きアクセスのアクセス制御のしくみについて学習します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 06/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5fc672898a56d8b3e1486b1d8d84cf532fa2b6d
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: cac92da744b3d5b7aeaa325c7cc564a3d7e2abdd
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509408"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380808"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスによるアクセス制御の概要
 

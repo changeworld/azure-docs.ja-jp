@@ -1,5 +1,6 @@
 ---
-title: 'ルートベースの VPN ゲートウェイの作成: Azure portal | Microsoft Docs'
+title: 'ルートベースの VPN Gateway を作成する: ポータル'
+titleSuffix: Azure VPN Gateway
 description: Azure portal を使用してルートベースの VPN Gateway をすばやく作成します
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3ab662a4f06b2d73ab0dab52f562398fee23686c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a44bdf654842d964a02f6aebe60e3632aabcd64d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71266512"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151672"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Azure Portal を使用してルートベースの VPN ゲートウェイをすばやく作成する
 

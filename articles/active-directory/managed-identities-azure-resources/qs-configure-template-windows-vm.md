@@ -1,5 +1,5 @@
 ---
-title: テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する方法
+title: Azure VM でテンプレートを使用してマネージド ID を構成する - Azure AD
 description: Azure Resource Manager テンプレートを使用して、Azure VM で Azure リソースのマネージド ID を構成するための詳細な手順。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f5e04440f55c44a53b85aa4d3600e0d926424d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 74bbc596321b4882ef99104e045ee2da752b125a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330000"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547196"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する
 
@@ -32,7 +32,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Resource Manager デプロイ テンプレートを使い慣れていない場合は、[概要セクション](overview.md)をご覧ください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-it-work)を必ず確認してください**。
+- Azure Resource Manager デプロイ テンプレートを使い慣れていない場合は、[概要セクション](overview.md)をご覧ください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-the-managed-identities-for-azure-resources-work)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート

@@ -1,19 +1,15 @@
 ---
-title: Azure のデータを Windows サーバーに復元する - Azure Backup
+title: Azure のデータを Windows サーバーに復元する
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを使用して、Azure に格納されているデータを Windows サーバーまたは Windows コンピューターに復元する方法について説明します。
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.author: dacurwin
-ms.openlocfilehash: 4d9ab47d83caadda9046481c15dfb6af18aee146
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4d663739f25762723fc3a8f566c4b5ef3f957338
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012189"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172785"
 ---
 # <a name="restore-files-to-windows-by-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用してファイルを Windows に復元する
 

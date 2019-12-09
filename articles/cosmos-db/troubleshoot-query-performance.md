@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: d0dd9a371c4912cae0e74b214c673c629fc1ff55
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: fd8e80c7cd7cb71e4e0418d970cf2f328f1a3d79
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515817"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184712"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Azure Cosmos DB のクエリのパフォーマンスをトラブルシューティングする
 この記事では、Azure Cosmos DB の SQL クエリに関する問題を特定、診断、およびトラブルシューティングする方法について説明します。 Azure Cosmos DB のクエリのパフォーマンスを最適化するには、次のトラブルシューティング手順に従います。 
@@ -26,7 +26,7 @@ ms.locfileid: "69515817"
 
 ## <a name="log-the-executed-sql-query"></a>実行された SQL クエリをログに記録する 
 
-実行された SQL クエリを、ストレージ アカウントまたは診断ログ テーブルに記録できます。 [診断ログを使用した SQL クエリ ログ](logging.md#turn-on-logging-in-the-azure-portal)を使用すると、難読化されたクエリを任意のストレージ アカウントに記録できます。 これにより、ログを調べて、より高い RU を使用しているクエリを見つけることができます。 後で、アクティビティ ID を使用して、QueryRuntimeStatistics の実際のクエリと一致させることができます。 クエリは、セキュリティ上の目的で難読化されています。クエリ パラメーター名と where 句の値は、実際の名前と値とは異なります。 ストレージ アカウントへのログ記録を使用すると、実行されたクエリの長期保存を維持できます。  
+実行された SQL クエリを、ストレージ アカウントまたは診断ログ テーブルに記録できます。 [診断ログを使用した SQL クエリ ログ](monitor-cosmos-db.md#diagnostic-settings)を使用すると、難読化されたクエリを任意のストレージ アカウントに記録できます。 これにより、ログを調べて、より高い RU を使用しているクエリを見つけることができます。 後で、アクティビティ ID を使用して、QueryRuntimeStatistics の実際のクエリと一致させることができます。 クエリは、セキュリティ上の目的で難読化されています。クエリ パラメーター名と where 句の値は、実際の名前と値とは異なります。 ストレージ アカウントへのログ記録を使用すると、実行されたクエリの長期保存を維持できます。  
 
 ## <a name="log-query-metrics"></a>ログ クエリ メトリック
 

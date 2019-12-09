@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: d91ac6d50faaadf560ae7ff9e9cce5f7bc4b180a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803917"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307314"
 ---
 # <a name="supported-platforms"></a>サポートされるプラットフォーム 
 
@@ -113,6 +113,8 @@ Azure Security Center では、次の Azure PaaS リソースがサポートさ�
 * Key Vault
 
 上記の PaaS リソースの一覧でサポートされている機能の詳細については、「[PaaS サービスでサポートされる機能](security-center-services.md#paas-services)」をご覧ください。
+
+Azure Stack に存在する Virtual Machines の保護もサポートされています。 Security Center と Azure Stack との統合の詳細については、[Azure Stack 仮想マシンの Security Center へのオンボード](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

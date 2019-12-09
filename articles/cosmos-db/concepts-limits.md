@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 45cf7b7d9383de467f72769465a3ad382fe9d589
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 7ce15a0fe55c32ad7e381ba70e4dffee11c76bee
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064042"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383403"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -30,7 +30,8 @@ ms.locfileid: "73064042"
 | 個別の (論理) パーティション キーの最大数 | 無制限 |
 | コンテナーあたりの最大ストレージ | 無制限 |
 | データベースあたりの最大ストレージ | 無制限 |
-| アカウントあたりの添付ファイルの最大サイズ (添付ファイル機能は推薦されていません) | 2 GB | 
+| アカウントあたりの添付ファイルの最大サイズ (添付ファイル機能は推薦されていません) | 2 GB |
+| 1 GB あたりに必要な最小 RU | 10 RU/秒 |
 
 > [!NOTE]
 > ストレージまたはスループットにより高い制限が必要なパーティション キーを持つワークロードを管理するためのベスト プラクティスについては、「[合成パーティション キーの作成](synthetic-partition-keys.md)」を参照してください。
@@ -134,6 +135,10 @@ Cosmos DB は HMAC を承認のために使用します。 コンテナー、パ
 | トークン承認の最大クロック スキュー| 15 分 |
 
 Cosmos DB は、書き込み中のトリガーの実行をサポートしています。 このサービスでは、書き込み操作あたり最大 1 つのプリトリガーと 1 つのポストトリガーがサポートされます。 
+
+## <a name="autopilot-mode-limits"></a>オートパイロット モードの制限
+
+オートパイロット モードでのスループットとストレージの制限については、[オートパイロット](provision-throughput-autopilot.md#autopilot-limits)に関する記事をご覧ください。
 
 ## <a name="sql-query-limits"></a>SQL クエリの制限
 

@@ -69,6 +69,8 @@
   items:
     - name: ワークスペース
       href: concept-workspace.md
+    - name: Data
+      href: concept-data.md
     - name: モデル トレーニング
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
@@ -150,7 +152,7 @@
     - name: データの処理
       items:
         - name: データストアからデータを取得する
-          displayName: 'blob, get, fileshare, access storage'
+          displayName: 'blob, get, fileshare, access storage, mount, download'
           href: how-to-access-data.md
         - name: データセットを追加および登録する
           displayName: 'data, dataset'
@@ -298,11 +300,14 @@
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
         - name: バッチ予測を実行する
-          displayName: score scoring asynchronous consume pipeline parallelrunstep inference
+          displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions.md
         - name: デザイナーによるバッチ予測
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
+        - name: バッチ予測のデバッグとトラブルシューティング
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-batch-predictions.md
     - name: モデルを監視する
       items:
         - name: モデルのデータを収集して評価する

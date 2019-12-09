@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 21a66b7389df64a776cdecb45c41de56d7d258e4
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 279d7f2ac6481f3aa3ebd8e5a18a52b9e52f6201
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606359"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169316"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Azure Event Grid のイベント ハンドラー
 
@@ -36,6 +36,7 @@ Azure Functions を使うと、サーバーを介さずにイベントに応答�
 
 |タイトル  |説明  |
 |---------|---------|
+| [クイック スタート:関数を使用したイベントの処理](custom-event-to-function.md) | 処理するカスタム イベントを関数に送信します。 |
 | [Azure Functions の Event Grid トリガー](../azure-functions/functions-bindings-event-grid.md) | 関数での Event Grid トリガーの使用に関する概要です。 |
 | [チュートリアル: Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](resize-images-on-storage-blob-upload-event.md) | ユーザーは、Web アプリを使ってストレージ アカウントにイメージをアップロードします。 ストレージ BLOB が作成されると、Event Grid によって関数アプリにイベントが送信され、アップロードされたイメージのサイズが変更されます。 |
 | [チュートリアル: ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md) | Event Hubs によってキャプチャ ファイルが作成されると、Event Grid が関数アプリにイベントを送信します。 アプリは Capture ファイルを取得し、データ ウェアハウスにデータを移行します。 |
@@ -72,10 +73,15 @@ Logic Apps を使うと、イベントに応答するためのビジネス プ�
 | [チュートリアル: Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](publish-iot-hub-events-to-logic-apps.md) | ロジック アプリは、IoT ハブにデバイスが追加されるたびに、通知の電子メールを送信します。 |
 | [チュートリアル:Azure Service Bus の Azure Event Grid への統合の例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid は、Service Bus トピックから関数アプリとロジック アプリにメッセージを送信します。 |
 
-## <a name="service-bus-queue"></a>Service Bus キュー 
+## <a name="service-bus"></a>Service Bus
+
+### <a name="service-bus-queues"></a>Service Bus キュー
+
 エンタープライズ アプリケーションでのバッファー処理または音声コマンドのシナリオで使用するために、Event Grid のイベントを Service Bus キューに直接ルーティングすることができます。
 
-### <a name="using-cli-to-add-a-service-bus-handler"></a>CLI を使って Service Bus ハンドラーを追加する
+Azure portal で、イベント サブスクリプションを作成するときに、エンドポイントの種類として [Service Bus キュー] を選択してから、Service Bus キューを選択するために [エンドポイントの選択] をクリックします。
+
+#### <a name="using-cli-to-add-a-service-bus-queue-handler"></a>CLI を使って Service Bus キューハンドラーを追加する
 
 Azure CLI の場合、次の例でイベント グリッド トピックを Service Bus キューにサブスクライブして接続します。
 
@@ -89,6 +95,28 @@ az eventgrid event-subscription create \
     --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1 \
     --endpoint-type servicebusqueue \
     --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/queues/queue1
+```
+
+### <a name="service-bus-topics"></a>Service Bus トピック
+
+Event Grid のイベントを Service Bus トピックに直接ルーティングして、Service Bus トピックやコマンドと制御メッセージング シナリオで Azure システム イベントを処理することができます。
+
+Azure portal で、イベント サブスクリプションを作成するときに、エンドポイントの種類として [Service Bus トピック] を選択してから、Service Bus トピックを選択するために [エンドポイントの選択] をクリックします。
+
+#### <a name="using-cli-to-add-a-service-bus-topic-handler"></a>CLI を使って Service Bus トピック ハンドラーを追加する
+
+Azure CLI の場合、次の例でイベント グリッド トピックを Service Bus キューにサブスクライブして接続します。
+
+```azurecli-interactive
+# If you haven't already installed the extension, do it now.
+# This extension is required for preview features.
+az extension add --name eventgrid
+
+az eventgrid event-subscription create \
+    --name <my-event-subscription> \
+    --source-resource-id /subscriptions/{SubID}/resourceGroups/{RG}/providers/Microsoft.EventGrid/topics/topic1 \
+    --endpoint-type servicebustopic \
+    --endpoint /subscriptions/{SubID}/resourceGroups/TestRG/providers/Microsoft.ServiceBus/namespaces/ns1/topics/topic1
 ```
 
 ## <a name="queue-storage"></a>Queue Storage

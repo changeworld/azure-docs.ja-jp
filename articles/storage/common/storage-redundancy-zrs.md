@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0196e6fb4b2cd52fd66a26e07e8d4ce71983bc16
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a86d94110e78b7ace0e963469e9f236f7cc72ab4
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013190"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555469"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>高可用 Azure Storage アプリケーションを構築するためのゾーン冗長ストレージ (ZRS)
 
@@ -22,15 +22,15 @@ ms.locfileid: "74013190"
 
 ## <a name="support-coverage-and-regional-availability"></a>サポート範囲とリージョンの可用性
 
-現在、ZRS は標準の汎用 v2 と FileStorage ストレージのアカウントの種類をサポートしています。 ストレージ アカウントの種類の詳細については、[Azure Storage アカウントの概要](storage-account-overview.md)に関するページを参照してください。
+現在、ZRS は標準の汎用 v2 と FileStorage ストレージ、および BlockBlobStorage ストレージのアカウントの種類をサポートしています。 ストレージ アカウントの種類の詳細については、[Azure Storage アカウントの概要](storage-account-overview.md)に関するページを参照してください。
 
-ZRS は、ブロック BLOB、非ディスク ページ BLOB、標準ファイル共有、テーブル、およびキューに使用できます。
+標準の汎用 v2 ZRS アカウントは、ブロック BLOB、非ディスク ページ BLOB、標準ファイル共有、テーブル、およびキューに対応しています。
 
 汎用 v2 アカウントの場合、ZRS は次のリージョンで一般公開されています。
 
 - 東南アジア
-- 西ヨーロッパ
 - 北ヨーロッパ
+- 西ヨーロッパ
 - フランス中部
 - 東日本
 - 英国南部
@@ -39,7 +39,7 @@ ZRS は、ブロック BLOB、非ディスク ページ BLOB、標準ファイ�
 - 米国東部 2
 - 米国西部 2
 
-FileStorage アカウント (Premium ファイル共有) の場合、ZRS は次のリージョンで一般公開されています。
+FileStorage アカウント (Premium ファイル共有) および BlockBlobStorage アカウント (Premium ブロック BLOB) の場合、ZRS は次のリージョンで一般公開されています。
 
 - 西ヨーロッパ
 - 米国東部

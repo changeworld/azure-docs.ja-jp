@@ -1,21 +1,15 @@
 ---
-title: Azure Blockchain Workbench のメッセージ統合の概要
-description: Azure Blockchain Workbench プレビューでのメッセージの使用の概要。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: メッセージを使用して Azure Blockchain Workbench と統合する
+description: メッセージを使用して Azure Blockchain Workbench Preview を他のシステムと統合する方法の概要。
 ms.date: 09/05/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 99159b15ea663d43d125748d6db1f334b72931ae
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161797"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324504"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench のメッセージング統合
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 64efd1a02b903ec3874066f6c663b86a8080f746
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932270"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270219"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>ブロック BLOB ストレージのパフォーマンス レベル
 
@@ -54,6 +54,12 @@ Premium パフォーマンス ストレージは、高速で一貫性のある�
 ## <a name="standard-performance"></a>Standard パフォーマンス
 
 Standard パフォーマンスでは、最もコスト効率の高い方法でデータを格納できるよう、さまざまな[アクセス層](storage-blob-storage-tiers.md)をサポートしています。 大規模なデータ セットで、高容量および高スループットを実現するために最適化されています。
+
+- **バックアップおよびディザスター リカバリーのデータセット**。 Standard パフォーマンス ストレージでは、コスト効率に優れた層が提供されるため、短期および長期のディザスター リカバリー データセット、セカンダリ バックアップ、コンプライアンス データ アーカイブにおける最適なユース ケースとなります。
+
+- **メディア コンテンツ**。 多くの場合、画像とビデオは最初に作成されて保存されるときに頻繁にアクセスされますが、このコンテンツ タイプは古くなるにつれて使用頻度が落ちます。 Standard パフォーマンス ストレージでは、メディア コンテンツのニーズに適した層が提供されます。 
+
+- **バルク データ処理**。 これらの種類のワークロードは、安定した待機時間の短さより、コスト効果の高い高スループットのストレージを必要とするため、Standard Storage に適しています。 大量の生データセットは処理用にステージングされ、最終的にはクールな層に移行します。
 
 ## <a name="migrate-from-standard-to-premium"></a>Standard から Premium に移行する
 

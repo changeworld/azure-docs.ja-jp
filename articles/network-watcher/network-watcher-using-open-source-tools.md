@@ -1,5 +1,6 @@
 ---
-title: Azure Network Watcher とオープン ソース ツールでネットワーク トラフィック パターンを視覚化する | Microsoft Docs
+title: オープン ソース ツールを使用してネットワーク トラフィック パターンを視覚化する
+titleSuffix: Azure Network Watcher
 description: このページでは、Network Watcher のパケット キャプチャ機能と CapAnalysis を使用して、VM の送受信トラフィックのパターンを視覚化する方法について説明しています。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3baf73eed09e6880820952b8457526b6c21dd83b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64936023"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277758"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>VM の送受信ネットワーク トラフィックのパターンをオープン ソース ツールで視覚化する
 

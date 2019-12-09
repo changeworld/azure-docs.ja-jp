@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a7e9e36f75d0b0638fadbf92e713a924e816807d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012394"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566296"
 ---
 増分スナップショット (プレビュー) は、マネージド ディスクの特定の時点のバックアップであり、取得時に、最後のスナップショット以降のすべての変更のみで構成されます。 増分スナップショットをダウンロードまたは使用しようとすると、完全な VHD が使用されます。 マネージド ディスク スナップショットに対するこの新しい機能により、必要に応じて個別のスナップショットごとにディスク全体を保存する必要がなくなるため、コスト効率が向上する可能性があります。 通常のスナップショットと同じように、増分スナップショットを使用して、完全なマネージド ディスクを作成したり、通常のスナップショットを作成したりできます。
 
@@ -25,7 +25,7 @@ ms.locfileid: "74012394"
 
 ## <a name="restrictions"></a>制限
 
-- 増分スナップショットは現在、米国中西部と北ヨーロッパでのみ利用できます。
+- 増分スナップショットは現在、米国東部、米国中部、カナダ中部、米国中西部、および北ヨーロッパでのみ利用できます。
 - 増分スナップショットは、現時点ではディスクのサイズを変更した後に作成することはできません。
 - 増分スナップショットは、現時点ではサブスクリプション間で移動できません。
 - 現時点では、任意の時点で特定のスナップショット ファミリの最大 5 つのスナップショットの SAS URI のみを生成することができます。
@@ -78,11 +78,13 @@ $incrementalSnapshots
 
 ## <a name="cli"></a>CLI
 
-Azure CLI で増分スナップショットを作成できます。Azure CLI の最新版が必要です。 次のコマンドを実行すると、最新版がインストールされるか、既存のインストールが最新版に更新されます。
+Azure CLI で増分スナップショットを作成できます。Azure CLI の最新版が必要です。 
 
+Windows では、次のコマンドを実行すると、最新版がインストールされるか、既存のインストールが最新版に更新されます。
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
+Linux では、CLI のインストールは、オペレーティング システムのバージョンによって異なります。  Linux の特定のバージョンについては、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 増分スナップショットを作成するには、[az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) を使用し、`--incremental` パラメーターを指定します。
 
@@ -154,4 +156,8 @@ Azure Resource Manager テンプレートを使用して、増分スナップシ
 
 ## <a name="next-steps"></a>次の手順
 
-まだプレビューにサインアップしておらず、増分スナップショットの使用を開始する場合は、パブリック プレビューにアクセスするために AzureDisks@microsoft.com までメールでお問い合わせください。
+1. まだプレビューにサインアップしておらず、増分スナップショットの使用を開始する場合は、パブリック プレビューにアクセスするために AzureDisks@microsoft.com までメールでお問い合わせください。 
+
+2. 差分機能を使用した増分スナップショットのリージョン間コピーについては、次のサンプルを参照してください   
+
+    - [Azure .Net Sdk の使用](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)

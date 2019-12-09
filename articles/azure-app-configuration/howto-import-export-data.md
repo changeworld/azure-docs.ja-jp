@@ -12,26 +12,26 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 377c5088d39821e87412c517540b3190b0a14a00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9780dc34aa6b146fe62b11586cbab46825e60535
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393282"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185152"
 ---
 # <a name="import-or-export-configuration-data"></a>構成データのインポートまたはエクスポート
 
-Azure App Configuration はデータのインポート操作とエクスポート操作をサポートします。 これらの操作を使用して、構成データを一括処理し、アプリ構成ストアとコード プロジェクト間でデータを交換することができます。 たとえば、1 つのアプリケーション構成ストアをテスト用に、もう 1 つのアプリ構成ストアを実稼働用に設定することができます。 こうすると、ファイルを介してアプリケーション設定をコピーできるので、データを 2 回入力する必要がなくなります。
+Azure App Configuration はデータのインポート操作とエクスポート操作をサポートします。 これらの操作を使用して、構成データを一括処理し、お使いの App Configuration ストアとコード プロジェクト間でデータを交換することができます。 たとえば、1 つの App Configuration ストアをテスト用に、もう 1 つの App Configuration を実稼働用に設定することができます。 こうすると、ファイルを介してアプリケーション設定をコピーできるので、データを 2 回入力する必要がなくなります。
 
 この記事では、App Configuration でデータをインポートおよびエクスポートするためのガイドを提供します。
 
 ## <a name="import-data"></a>データのインポート
 
-インポートでは、手動で入力するのではなく、既存のソースから App Configuration ストアに構成データが取り込まれます。 インポート機能は、データをアプリ構成ストアに移行したり、複数ソースのデータを集計するために使用します。 App Configuration は、JSON、YAML、またはプロパティ ファイルからのインポートをサポートしています。
+インポートでは、手動で入力するのではなく、既存のソースから App Configuration ストアに構成データが取り込まれます。 インポート機能は、データを App Configuration ストアに移行したり、複数ソースのデータを集計したりするために使用します。 App Configuration は、JSON、YAML、またはプロパティ ファイルからのインポートをサポートしています。
 
 データのインポートには、[Azure portal](https://portal.azure.com) または [Azure CLI](./scripts/cli-import.md) のいずれかを使用します。 Azure portal から次の手順を実行します。
 
-1. アプリ構成ストアを参照し、 **[インポート/エクスポート]** を選択します。
+1. お使いの App Configuration ストアを参照し、 **[インポート/エクスポート]** を選択します。
 
 2. **[インポート]** タブで、 **[Source service]\(ソース サービス\)**  >  **[構成ファイル]** を選択します。
 
@@ -51,11 +51,11 @@ Azure App Configuration はデータのインポート操作とエクスポー�
 
 ## <a name="export-data"></a>データのエクスポート
 
-エクスポートでは、App Configuration に保存されている構成データが別の保存先に書き込まれます。 たとえば、デプロイ時に、アプリケーション構成ストア内のデータをアプリケーション コードに埋め込まれるファイルに保存するときにエクスポート機能を使用します。
+エクスポートでは、App Configuration に保存されている構成データが別の保存先に書き込まれます。 エクスポート機能は、お使いの App Configuration ストア内のデータを、お使いのアプリケーション コードに埋め込まれるファイルにデプロイ時に保存するときなどに使用します。
 
 データのエクスポートには、[Azure portal](https://portal.azure.com) または [Azure CLI](./scripts/cli-export.md) のいずれかを使用します。 Azure portal から次の手順を実行します。
 
-1. アプリ構成ストアを参照し、 **[インポート/エクスポート]** を選択します。
+1. お使いの App Configuration ストアを参照し、 **[インポート/エクスポート]** を選択します。
 
 2. **[エクスポート]** タブで、 **[Target service]\(ターゲット サービス\)**  >  **[構成ファイル]** を選択します。
 

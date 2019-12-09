@@ -1,5 +1,6 @@
 ---
-title: Network Watcher と Elastic Stack を使用してネットワーク セキュリティ グループのフロー ログを管理および分析する | Microsoft Docs
+title: NSG フロー ログの視覚化 - Elastic Stack
+titleSuffix: Azure Network Watcher
 description: Network Watcher と Elastic Stack を使用して Azure のネットワーク セキュリティ グループ フロー ログを管理および分析します。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53cbfe08d310f7244134e1ae31b18644a83c63d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860118"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277740"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化
 

@@ -1,20 +1,16 @@
 ---
 title: Azure Dev Spaces を AKS にインストールし、クライアント側ツールをインストールする
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/24/2019
 ms.topic: conceptual
 description: Azure Dev Spaces を AKS クラスターにインストールし、クライアント側ツールをインストールする方法について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 642d4406840f1748c3b6cbb4441227fff0c6d721
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 2649b36c96313d4a7d878a1c72c3b175ad0f4d30
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494847"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325781"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Azure Dev Spaces を AKS にインストールし、クライアント側ツールをインストールする
 

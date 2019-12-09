@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.topic: landing-page
 ms.date: 10/3/2018
 ms.author: genli
-ms.openlocfilehash: d7ceb3acb1d2e3d174f3b665ec6210d3ddac9970
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: bdb459a69557269a20d36f05acc2da502064efb9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059159"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851351"
 ---
 # <a name="troubleshooting-azure-virtual-machines"></a>Azure Virtual Machines のトラブルシューティング
 
 ## <a name="tools-for-troubleshooting"></a>トラブルシューティング用ツール
 
-- [シリアル コンソール](serial-console-windows.md)
+- [シリアル コンソール](serial-console-overview.md)
 - [ブート診断](boot-diagnostics.md)
 - [Windows VM:トラブルシューティングのために OS ディスクを別の VM にアタッチする](troubleshoot-recovery-disks-portal-windows.md)
 - [Linux VM:トラブルシューティングのために OS ディスクを別の VM にアタッチする](troubleshoot-recovery-disks-portal-linux.md)
@@ -46,7 +46,7 @@ ms.locfileid: "71059159"
 
 **VM の起動エラー**
 
-* [BitLocker ブート エラー](troubleshoot-bitlocker-boot-error.md) 
+* [BitLocker ブート エラー](troubleshoot-bitlocker-boot-error.md)
 * [起動時に "ファイル システムをチェックしています" と表示される](troubleshoot-check-disk-boot-error.md)
 * [ブルー スクリーン エラー](troubleshoot-common-blue-screen-error.md)
 * [VM の起動が停止し、"Windows の準備をしています](troubleshoot-vm-boot-configure-update.md)

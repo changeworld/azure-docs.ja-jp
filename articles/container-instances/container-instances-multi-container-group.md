@@ -1,20 +1,15 @@
 ---
-title: チュートリアル - Azure Container Instances に複数コンテナー グループをデプロイする - テンプレート
+title: チュートリアル - 複数コンテナー グループをデプロイする - テンプレート
 description: このチュートリアルでは、Azure Resource Manager テンプレートと Azure CLI を使用して複数のコンテナーを含むコンテナー グループを Azure Container Instances にデプロイする方法を説明します。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 7438b5a91d3bf0ce8330e33bc1c849a8b0329c6f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d2b4e20520cad28c5d62118f6c9d10fcc43ac89e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325896"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533634"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>チュートリアル:Resource Manager テンプレートを使用してマルチコンテナー グループをデプロイする
 

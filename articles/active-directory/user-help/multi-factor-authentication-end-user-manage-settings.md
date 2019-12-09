@@ -1,6 +1,6 @@
 ---
-title: 2 要素認証の設定を管理する - Azure AD
-description: 2 要素認証に関連するセキュリティ検証方法の詳細を変更する方法について説明します。
+title: 2 要素検証方法と設定を変更する - Azure AD
+description: '[追加のセキュリティ確認] ページから、職場または学校アカウントに対するセキュリティ検証方法と設定を変更する方法について説明します。'
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c402e0992a3a04d674477bc9dd19e0181fd6775
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f7fbc18d8141c44c2b0863547c33b5c5193e928b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805261"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231925"
 ---
-# <a name="manage-your-two-factor-verification-method-settings"></a>2 要素認証方法の設定を管理する
+# <a name="change-your-two-factor-verification-method-and-settings"></a>2 要素検証方法と設定を変更する
 
 職場または学校アカウントのセキュリティ検証方法を設定した後は、次のような関連する詳細情報を更新できます。
 

@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 56830e20b190958c1c411f5daa1d2a7e928f0f3d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bdea9af04008ef68578ff8c136760f2493a2ae35
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821190"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279227"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database リリース ノート
 
@@ -79,6 +79,9 @@ ms.locfileid: "73821190"
 ## <a name="fixed-known-issues"></a>修正された既知の問題
 
 - **2019 年 8 月** - 包含データベースは、マネージド インスタンス内で完全にサポートされています。
+- **2019 年 10月** - ソース データベースにインメモリ OLTP オブジェクトが含まれている場合、Business Critical レベルから General Purpose レベルへの組み込みのポイントインタイム データベース復元は成功しません。
+- **2019 年 10 月** - セキュリティで保護された接続を使用する (Azure 以外の) 外部メール サーバーの**データベース メール**機能を使用できます。
+- **2019 年 11 月** - Azure Blob Storage からデータベースを復元した後、`DBCC CHECKDB` を使用してデータベースの整合性が検証されます。
 
 ## <a name="updates"></a>更新プログラム
 

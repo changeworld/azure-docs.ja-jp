@@ -1,22 +1,22 @@
 ---
-title: Azure AD SSPR と Multi-Factor Authentication のための統合された登録の概要 (プレビュー) - Azure Active Directory
+title: 統合された登録の使用を開始する - Azure Active Directory
 description: Azure AD Multi-Factor Authentication とセルフサービスのパスワード リセットの統合された登録の有効化 (プレビュー)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b610a62e9ca9b964482638c2c0302461996c0bf2
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 075f5112a5ff7d2184a6a42ec531d472974199f3
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145686"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381316"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録の有効化 (プレビュー)
 

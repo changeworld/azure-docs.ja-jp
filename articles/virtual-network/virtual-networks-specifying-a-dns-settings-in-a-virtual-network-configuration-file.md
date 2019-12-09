@@ -1,5 +1,5 @@
 ---
-title: 仮想ネットワーク構成ファイルでの DNS 設定の指定 | Microsoft Docs
+title: Azure VNet 構成ファイルでの DNS 設定の指定
 description: クラシック デプロイ モデルで仮想ネットワーク構成ファイルを使用して仮想ネットワークの DNS サーバーの設定を変更する方法
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: c15d73673c19383deabe15ef30026990dfd138b9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: db8b1817bb14d293632d16fe02792dbb85766559
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059086"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196649"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>仮想ネットワーク構成ファイルでの DNS 設定の指定
 ネットワーク構成ファイルには、ドメイン ネーム システム (DNS) の設定を指定するために使用できる **DnsServers** と **DnsServerRef** という 2 つの要素があります。 **DnsServers** 要素に IP アドレスと参照名を指定することにより、DNS サーバーのリストを追加できます。 その後、 **DnsServerRef** 要素を使用して、DnsServers 要素から、仮想ネットワーク内のネットワーク サイトに使用する DNS サーバー エントリを指定できます。

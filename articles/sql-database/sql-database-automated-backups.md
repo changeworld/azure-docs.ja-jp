@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 114a5bbfd71fc0847c2b1bc65a8ba0bfa0df1add
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 77442eda6c8b2aae71c5d647127ead9f851ec485
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821944"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421421"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
@@ -33,10 +33,10 @@ SQL Database は SQL Server 技術を利用して、[完全バックアップ](h
 
 - **保持期間内の過去の特定の時点に既存のデータベースを復元する**。その際、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用します。 Single Database および Elastic Pool では、この操作により、元のデータベースと同じサーバーに、新しいデータベースが作成されます。 Managed Instance では、この操作により、同じサブスクリプションに、データベースのコピーか、同じ Managed Instance または異なる Managed Instance のコピーを作成できます。
   - **[バックアップ保有期間の変更](#how-to-change-the-pitr-backup-retention-period)** 。7 から 35 日までの値を使用して、ご自身のバックアップ ポリシーを構成できます。
-  - **長期アイテム保持ポリシーの変更 (最大 10 年)** 。[Azure portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) または [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups) を使用して、Single Database および Elastic Pool のポリシーを変更できます。
+  - **長期アイテム保持ポリシーの変更 (最大 10 年)** 。[Azure portal](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies) または [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell) を使用して、Single Database および Elastic Pool のポリシーを変更できます。
 - **削除したデータベースを、削除された時点に復元する**。また、保持期間内の任意の時点に復元することもできます。 削除されたデータベースは、元のデータベースが作成された論理サーバーまたは Managed Instance にのみ復元できます。
 - **別の地理的リージョンにデータベースを復元する**。 geo リストアにより、サーバーやデータベースにアクセスできないときに、地理的な障害から復旧できます。 世界中のどこでも、あらゆる既存のサーバーで新しいデータベースを作成します。
-- **特定の長期バックアップからデータベースを復元する**。データベースが長期アイテム保持ポリシー (LTR) で構成されている場合に、Single Database または Elastic Pool で復元できます。 LTR により、[Azure portal](sql-database-long-term-backup-retention-configure.md#view-backups-and-restore-from-a-backup-using-azure-portal) または [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups) を使用して、コンプライアンスの要求を満たすため、またはアプリケーションの古いバージョンを実行するために、古いバージョンのデータベースを復元できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
+- **特定の長期バックアップからデータベースを復元する**。データベースが長期アイテム保持ポリシー (LTR) で構成されている場合に、Single Database または Elastic Pool で復元できます。 LTR により、[Azure portal](sql-database-long-term-backup-retention-configure.md#using-azure-portal) または [Azure PowerShell](sql-database-long-term-backup-retention-configure.md#using-powershell) を使用して、コンプライアンスの要求を満たすため、またはアプリケーションの古いバージョンを実行するために、古いバージョンのデータベースを復元できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
 - 復元を実行するには、[バックアップからのデータベースの復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 
 > [!NOTE]
@@ -46,8 +46,8 @@ SQL Database は SQL Server 技術を利用して、[完全バックアップ](h
 
 | | Azure ポータル | Azure PowerShell |
 |---|---|---|
-| バックアップ保有期間を変更する | [Single Database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Managed Instance](sql-database-automated-backups.md#managed-instance-database) | [Single Database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| 長期のバックアップ保有期間を変更する | [1 つのデータベース](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Managed Instance - N/A  | [Single Database](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Managed Instance - N/A  |
+| バックアップ保有期間を変更する | [Single Database](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Managed Instance](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [Single Database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| 長期のバックアップ保有期間を変更する | [1 つのデータベース](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Managed Instance - N/A  | [Single Database](sql-database-long-term-backup-retention-configure.md)<br/>Managed Instance - N/A  |
 | 特定の時点からデータベースを復元する | [1 つのデータベース](sql-database-recovery-using-backups.md#point-in-time-restore) | [1 つのデータベース](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | 削除済みデータベースの復元 | [1 つのデータベース](sql-database-recovery-using-backups.md) | [1 つのデータベース](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Azure Blob Storage からデータベースを復元する | Single Database - N/A <br/>Managed Instance - N/A  | Single Database - N/A <br/>[Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
@@ -84,6 +84,15 @@ PITR と同じように、LTR バックアップは、geo 冗長であり、[Azu
 ## <a name="storage-costs"></a>ストレージ コスト
 単一のデータベースとマネージド インスタンスの場合は、データベース サイズの 100% に等しい最小バックアップ ストレージ容量が、追加料金なしで提供されます。 エラスティック プールの場合は、プールに割り当てられたデータ ストレージの 100% に等しい最小バックアップ ストレージ容量が、追加料金なしで提供されます。 100% を超えるバックアップ ストレージの使用については、月あたりの GB 数で請求されます。 この追加の消費量は、個々のデータベースのワークロードとサイズによって異なります。
 
+Azure サブスクリプションのコスト分析では、バックアップ ストレージに現在お使いの支出を確認することができます。
+
+![バックアップ ストレージのコスト分析](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
+
+お使いのサブスクリプションにアクセスして [コスト分析] ブレードを開き、測定サブカテゴリの **[mi pitr backup storage]** \(mi pitr バックアップ ストレージ\) を選択すると、現在のご自分のバックアップ コストと課金予測を確認できます。 バックアップ ストレージのコストを他のコスト カテゴリと比較する、 **[managed instance general purpose ‐ storage]** \(マネージド インスタンス汎用目的 ‐ ストレージ\) や **[managed instance general purpose - compute gen5]** \(マネージド インスタンス汎用目的 ‐ コンピューティング gen5\) などの他の測定サブカテゴリを含めることもできます。
+
+> [!Note]
+> バックアップ ストレージのコストを削減するには、[保有期間を 7 日間に変更](#change-pitr-backup-retention-period-using-azure-portal)します。
+
 ストレージの価格について詳しくは、[価格](https://azure.microsoft.com/pricing/details/sql-database/single/)のページをご覧ください。 
 
 ## <a name="are-backups-encrypted"></a>バックアップの暗号化
@@ -118,17 +127,19 @@ PITR リテンション期間が 35 日間である DTU ベースのサービス
 
 Azure portal を使用して PITR バックアップ保有期間を変更するには、portal 内で保持期間を変更するサーバー オブジェクトに移動し、変更するサーバー オブジェクトに基づいて適切なオプションを選択します。
 
-#### <a name="single-azure-sql-database"></a>単一の Azure SQL Database
+#### <a name="single-database--elastic-poolstabsingle-database"></a>[単一データベースとエラスティック プール](#tab/single-database)
 
 単一の Azure SQL Database に対する PITR バックアップ保有期間の変更は、サーバー レベルで実行されます。 サーバー レベルで行われた変更は、そのサーバー上のデータベースに適用されます。 Azure SQL Database サーバーの PITR を Azure portal から変更するには、サーバーの概要ブレードに移動し、ナビゲーション メニューの [バックアップの管理] をクリックして、ナビゲーション バーの [保有期間の構成] をクリックします。
 
 ![Azure portal の PITR の変更](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instance-database"></a>マネージド インスタンスのデータベース
+#### <a name="managed-instancetabmanaged-instance"></a>[Managed Instance](#tab/managed-instance)
 
 SQL Database マネージド インスタンスの PITR バックアップ保有期間の変更は、個々のデータベース レベルで実行されます。 Azure portal からインスタンス データベースの PITR バックアップ保有期間を変更するには、個々のデータベースの概要ブレードに移動し、ナビゲーション バーの [バックアップ保有期間の構成] をクリックします。
 
 ![Azure portal の PITR の変更](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
+
+---
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>PowerShell を使用して PITR バックアップ リテンション期間を変更する
 

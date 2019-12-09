@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: f1ba54547b947e18d2d42520c0fb51a0855fb37c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 10724407b8ba5568b38a844f2bf475060e2b7699
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901617"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227660"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise マルチセッションに関する FAQ
 

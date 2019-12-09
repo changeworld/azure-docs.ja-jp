@@ -1,6 +1,7 @@
 ---
-title: Media Services エンティティのフィルター処理、順序付け、およびページング - Azure | Microsoft Docs
-description: この記事では、Azure Media Services エンティティのフィルター処理、順序付け、ページングについて説明します。
+title: Media Services エンティティのフィルター処理、順序付け、およびページング
+titleSuffix: Azure Media Services
+description: Azure Media Services エンティティのフィルター処理、順序付け、およびページングについて説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,12 +13,12 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 22b8c4e2454d6130ebcaf85346b767c843fbc1f0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693309"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186243"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、およびページング
 
@@ -41,7 +42,7 @@ ms.locfileid: "72693309"
 
 - `gt`:フィールドが定数値 "*より大きい*" かどうかをテストします。
 - `lt`:フィールドが定数値 "*より小さい*" かどうかをテストします。
-- `ge`:フィールドが定数 "*以上である*" かどうかをテストします。 value
+- `ge`:フィールドが定数値*以上である*かどうかをテストします。
 - `le`:フィールドが定数値 "*以下である*" かどうかをテストします。
 
 ## <a name="filter"></a>filter
@@ -59,11 +60,11 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
-```    
+```
 
 ## <a name="order-by"></a>Order by (並べ替え)
 
-`$orderby` を使用して、指定したパラメーターによって返されたオブジェクトを並べ替えます。 例:    
+`$orderby` を使用して、指定したパラメーターによって返されたオブジェクトを並べ替えます。 例:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
@@ -77,7 +78,7 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 Media Services v3 では、ページ サイズを構成することはできません。 ページ サイズは、エンティティの種類によって異なります。 詳細については、以降の各セクションを参照してください。
 
-コレクションのページング中にエンティティが作成または削除された場合、(コレクションの中で、ダウンロードされていない部分に対する変更の場合) その変更は返される結果に反映されます。 
+コレクションのページング中にエンティティが作成または削除された場合、その変更は返される結果に反映されます (これらの変更が、まだダウンロードされていないコレクションの一部である場合)。
 
 > [!TIP]
 > 常に `nextLink` を使用してコレクションを列挙し、特定のページ サイズに依存しないことが必要になります。

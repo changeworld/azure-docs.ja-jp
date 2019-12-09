@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: 46187aa1d4e0670b45aeeafd643f541ab90fb9a7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8ff70bea8d0e4810b6d5a0d35853077ed0a630cd
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326745"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665187"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-using-java"></a>クイック スタート:Java を使用して Bing Local Business Search API にクエリを送信する
 
@@ -35,7 +35,7 @@ ms.locfileid: "74326745"
 
 次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定して、"hotel in Bellevue" というクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
 
-```
+```java
     // construct URL of search request (endpoint + query string)
      URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8") + &mkt=en-us");
     HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -58,7 +58,7 @@ Bing Local Business Search API では、Bing 検索エンジンからの結果�
 4. subscriptionKey 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 5. プログラムを実行します。
 
-```
+```java
 package localSearch;
 import java.net.*;
 import java.util.*;

@@ -1,14 +1,14 @@
 ---
-title: ブループリント オペレーター用の環境を構成する
+title: ブループリント オペレーター用の環境をセットアップする
 description: ブループリント オペレーターの組み込みのロールベースのアクセス制御 (RBAC) ロールで使用するように Azure 環境を構成する方法について説明します。
 ms.date: 08/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: f4b999354e31afed56a3a5f5a35a80887292e83f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 671ac3aaf42bddb3e775baec6838e4c271c4e855
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960398"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406369"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>ブループリント オペレーター用の環境を構成する
 

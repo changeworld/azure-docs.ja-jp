@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry のコンテンツの形式
+title: サポートされているコンテンツの形式
 description: Docker と互換性のあるコンテナー イメージ、Helm チャート、OCI イメージ、OCI 成果物など、Azure Container Registry でサポートされているコンテンツ形式について説明します。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 08/30/2019
-ms.author: danlep
-ms.openlocfilehash: 38639f22457d923643e8de09cfbbb2fd7f4d2985
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007477"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455008"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>Azure Container Registry 内でサポートされているコンテンツの形式
 

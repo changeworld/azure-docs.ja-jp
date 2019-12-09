@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 6e5d95a47261445e3031f55368f4e2cd8e2830a7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a0058bf309e0ff4fbe687731d676e907d1c3fd82
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754864"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383109"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
 
@@ -21,7 +21,7 @@ Azure Cosmos DB では、多くの API (SQL、MongoDB、Cassandra、Gremlin、Ta
 
 すべてのデータベース操作のコストは Azure Cosmos DB によって正規化され、"*要求ユニット*" (RU) によって表されます。 1 秒間の RU は、スループットのための通貨と考えることができます。 1 秒あたりの RU は、速度に基づく通貨です。 それにより、Azure Cosmos DB によってサポートされるデータベース操作を実行するために必要な CPU、IOPS、メモリなどのシステム リソースが抽象化されます。 
 
-1 KB のアイテムを読み取るコストは 1 要求ユニット (つまり 1 RU) です。 その他のすべてのデータベース操作にも、同様に RU を使用してコストが割り当てられます。 Azure Cosmos コンテナーの操作にどの API 使用するかに関係なく、コストは RU によって測定されます。 書き込み、読み取り、クエリのどのデータベース操作でも、コストは常に RU で測定されます。
+1 KB のアイテムを読み取るコストは 1 要求ユニット (つまり 1 RU) です。 データを 1 GB 格納するには、少なくとも 10 RU/秒が必要です。 その他のすべてのデータベース操作にも、同様に RU を使用してコストが割り当てられます。 Azure Cosmos コンテナーの操作にどの API 使用するかに関係なく、コストは RU によって測定されます。 書き込み、読み取り、クエリのどのデータベース操作でも、コストは常に RU で測定されます。
 
 次の図では、RU の高度な概念を示します。
 

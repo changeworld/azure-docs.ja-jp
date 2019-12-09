@@ -1,5 +1,5 @@
 ---
-title: Azure 仮想ネットワーク (クラシック) をアフィニティ グループからリージョンに移行する | Microsoft Docs
+title: Azure 仮想ネットワーク (クラシック) をアフィニティ グループからリージョンに移行する
 description: 仮想ネットワーク (クラシック) をアフィニティ グループからリージョンに移行する方法について説明します。
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: d33d9ec4eadeaa3a082103f1ad699e2fc3010e3b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 57e6c551e1377425dab5509a886a0454b9410a32
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058393"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196696"
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>仮想ネットワーク (クラシック) をアフィニティ グループからリージョンに移行する
 

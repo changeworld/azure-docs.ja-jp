@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8e5aeb63c54bd9ad71d5eb179fb93972468af4c0
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0936de818303117797e1704f3cecb7f877a3935e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972763"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206549"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>CloudSimple プライベート クラウド サイトを使用し、VMware Horizon を使用して仮想デスクトップ インフラストラクチャをホストする
 

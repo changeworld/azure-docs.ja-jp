@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center に対するテナント全体の可視性を確保する | Microsoft Docs
-description: Azure Security Center 内におけるテナント全体の可視性の確保について説明します。
+description: この記事では、Azure Active Directory テナントにリンクされているすべてのサブスクリプションにポリシーを適用することで、大規模なセキュリティ体制を管理する方法について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,16 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 73b99b9ebcd18e1eb5b670d0809d1f0f6cbf8f9a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 734876380d22f5d4d6dae0dd375b238fd5f6ffed
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582910"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559345"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Azure Security Center に対するテナント全体の可視性を確保する
-この記事では、いくつかのアクションを実行して、Azure Security Center が提供するメリットを最大化する方法について説明します。 これらのアクションを実行することで、自分の Azure Active Directory テナントにリンクされているすべての Azure サブスクリプションへの可視性を確保できると共に、複数のサブスクリプションに対してセキュリティ ポリシーを集合的に適用することで、組織のセキュリティ体制を広範囲にわたって効果的に管理することができます。
-
+この記事では、Azure Active Directory テナントにリンクされているすべての Azure サブスクリプションにセキュリティ ポリシーを適用することで、組織の大規模なセキュリティ体制を管理する方法について説明します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

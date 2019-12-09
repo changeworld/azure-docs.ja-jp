@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b4ae076ba08af5514caa09a2e8027a1cbc909dc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793671"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534549"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure Cognitive Search のデータのインポート ウィザード
 
@@ -43,7 +43,7 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 
 + このウィザードでは、イテレーションと再利用はサポートされていません。 ウィザードをパススルーするたびに、新しいインデックス、スキルセット、およびインデクサー構成が作成されます。 ウィザード内で保持および再利用できるのは、データ ソースのみです。 他のオブジェクトを編集または調整するには、REST API または .NET SDK を使用して、構造を取得して変更する必要があります。
 
-+ ソース コンテンツは、同じサブスクリプションのサービス内の、サポートされている Azure データ ソース内に存在する必要があります。
++ ソース コンテンツは、サポートされている Azure データ ソース内にある必要があります。
 
 + サンプリングは、ソース データのあるサブセットについて行われます。 大規模なデータ ソースの場合、ウィザードでフィールドが見逃される可能性があります。 サンプリングが不十分な場合は、スキーマを拡張するか、推論されたデータ型を修正することが必要になる場合があります。
 

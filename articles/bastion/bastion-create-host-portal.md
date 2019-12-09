@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 356f8d17dd194c79915600f63683e124cc481b33
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7838e1930a8ccd190c95740a6a8e3dadc68149f0
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498368"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422120"
 ---
 # <a name="create-an-azure-bastion-host"></a>Azure Bastion ホストを作成する
 
@@ -33,7 +33,7 @@ Bastion は、以下の Azure パブリック リージョンで利用できま�
 
 このセクションは、Azure portal から新しい Azure Bastion リソースを作成するのに役立ちます。
 
-1. [Azure portal](https://portal.azure.com) 内のホーム ページから **[+ リソースの作成]** をクリックします。
+1. [Azure portal](https://portal.azure.com) メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 
 1. **[新規]** ページで、 *[Marketplace の検索]* フィールドに「**Bastion**」を入力し、**Enter** キーをクリックして検索結果を取得します。
 
@@ -64,7 +64,7 @@ Bastion は、以下の Azure パブリック リージョンで利用できま�
 
 既存の VM を使用してポータルで Bastion ホストを作成する場合、さまざまな設定が自動的にご利用の仮想マシンかつ/または仮想ネットワークに対応する既定値に設定されます。
 
-1. [Azure Portal](https://portal.azure.com)を開きます。 仮想マシンに移動し、 **[接続]** をクリックします。
+1. [Azure Portal](https://portal.azure.com)を開きます。 お使いの仮想マシンに移動し、 **[接続]** をクリックします。
 
    ![VM の接続](./media/bastion-create-host-portal/vmsettings.png)
 1. 右側のサイドバーで、 **[Bastion]** 、 **[Use Bastion]\(Bastion を使用\)** の順にクリックします。

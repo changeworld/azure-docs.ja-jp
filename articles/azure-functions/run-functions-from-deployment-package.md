@@ -1,18 +1,14 @@
 ---
-title: Azure Functions をパッケージから実行する | Microsoft Docs
+title: Azure Functions をパッケージから実行する
 description: 関数アプリのプロジェクト ファイルが含まれたデプロイ パッケージ ファイルをマウントすることで、Azure Functions ランタイムで関数を実行します。
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.author: glenga
-ms.openlocfilehash: dc7f2b6c6e00477b6326e3277cb195aa0de6868c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f5d3465e0899f7e5eab213bdb6234313128b7ec8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176427"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230354"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions をパッケージ ファイルから実行する
 

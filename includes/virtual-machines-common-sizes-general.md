@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn;joelpell
 ms.custom: include file
-ms.openlocfilehash: c4e30c553ed7c697e1903d9745700755776700d2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 85429e67c5e02ef6eb9fe4ef76a5c7e1abaa3d69
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73996097"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74485484"
 ---
 汎用 VM サイズは、CPU とメモリのバランスの取れた比率を提供します。 テストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに最適です。 この記事では、このグループ内のサイズのストレージのスループットに加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
@@ -116,7 +116,7 @@ Dv3 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた�
 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium Storage ディスクを使用するには、Dsv3 サイズを使用してください。 Dsv3 サイズの料金および課金の計算方法は、Dv3 シリーズと同じです。 
 
 
-| サイズ            | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大 NIC/ネットワーク帯域幅 |
+| サイズ            | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | NIC の最大数/ネットワーク帯域幅 (Mbps) |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
 | Standard_D2_v3  | 2         | 8           | 50             | 4              | 3000/46/23                                               | 2/1,000                    |
 | Standard_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2/2,000                    |

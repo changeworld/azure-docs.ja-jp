@@ -1,5 +1,5 @@
 ---
-title: B2B コラボレーションのサポートの利用 - Azure Active Directory | Microsoft Docs
+title: B2B コラボレーションのサポートの利用 - Azure Active Directory
 description: Azure Active Directory B2B コラボレーションのサポート エクスペリエンスとは
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7b9ebefb9762b663adcd17fb1fdd656cb4f2ec2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00817acf93295becefab2d1a61de84a3f5519338
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65768428"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272765"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>B2B コラボレーションのサポートの利用
 

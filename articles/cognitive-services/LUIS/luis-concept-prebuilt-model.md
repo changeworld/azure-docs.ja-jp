@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: d9cb86c1c19649052e4796fd0a8909ce08381d55
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e0b5b95a7524b60a7c3367035a15a7158fa7908a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487587"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280832"
 ---
 # <a name="prebuilt-models"></a>事前構築済みのモデル
 
@@ -44,13 +44,13 @@ Language Understanding (LUIS) には、*事前構築済みのドメイン*が用
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>事前構築済みドメインの意図の動作変更
 
-事前構築済みのドメインに含まれる意図の動作を変えて、LUIS アプリで使用したい場合があります。 たとえば、**場所**の事前構築済みドメインに用意されている、レストランを予約するための `MakeReservation` 意図を、ご自分のアプリでは、ホテルに予約をする意図で使いたいと考えています。 そのような場合は、ホテルの予約に関する意図に発話例を追加することで、その意図の動作を変更できます。 次に、アプリを再トレーニングします。 
+事前構築済みのドメインに含まれる意図の動作を変えて、LUIS アプリで使用したい場合があります。 たとえば、**場所**の事前構築済みドメインに用意されている、レストランを予約するための `MakeReservation` 意図を、ご自分のアプリでは、ホテルに予約をする意図で使いたいと考えています。 そのような場合は、ホテルの予約に関する意図に発話例を追加した後にアプリを再トレーニングすることで、その意図の動作を変更できます。 
 
 [[Prebuilt domains reference]\(事前構築済みのドメインのリファレンス\)](./luis-reference-prebuilt-domains.md) では、事前構築済みのドメインの完全な一覧を確認できます。
 
 ## <a name="prebuilt-intents"></a>事前構築済み意図
 
-LUIS では、事前構築済みドメインからの事前構築済み意図とその発話が提供されています。 ドメイン全体を追加することなく、意図を追加できます。 意図の追加は、意図とその発話をご利用のアプリに追加するプロセスです。 意図名と発話リストの両方を変更できます。  
+LUIS では、事前構築済みの各ドメインからの事前構築済み意図とその発話が提供されています。 ドメイン全体を追加することなく、意図を追加できます。 意図の追加は、意図とその発話をご利用のアプリに追加するプロセスです。 意図名と発話リストの両方を変更できます。  
 
 ## <a name="prebuilt-entities"></a>事前構築済みのエンティティ
 

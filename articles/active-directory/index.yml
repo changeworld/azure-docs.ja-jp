@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: f3e8495671b56eda804e33b78667cf75cc2f8e70
-  ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+  ms.openlocfilehash: 11d32abbcd07f16bd21d512d36cd08abd8ca97df
+  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/29/2019
-  ms.locfileid: "68607630"
+  ms.lasthandoff: 12/05/2019
+  ms.locfileid: "74842308"
 highlightedContent:
   items:
   - title: Azure AD とは
@@ -54,7 +54,7 @@ conceptualContent:
     footerLink:
       url: ./manage-apps/index.yml
       text: 関連項目
-  - title: Authentication
+  - title: 認証
     links:
     - url: ./authentication/concept-mfa-howitworks.md
       itemType: concept
@@ -95,6 +95,20 @@ conceptualContent:
       text: Azure AD B2C のカスタム ポリシー
     footerLink:
       url: ../active-directory-b2c/index.yml
+      text: 関連項目
+  - title: クラウド プロビジョニング
+    links:
+    - url: ./cloud-provisioning/what-is-cloud-provisioning.md
+      itemType: overview
+      text: クラウド プロビジョニングとは
+    - url: ./cloud-provisioning/tutorial-single-forest.md
+      itemType: tutorial
+      text: 単一のフォレストを単一の Azure AD テナントに統合する
+    - url: ./cloud-provisioning/how-to-install.md
+      itemType: how-to-guide
+      text: Azure AD Connect クラウド プロビジョニング エージェントのインストール
+    footerLink:
+      url: ./cloud-provisioning/index.yml
       text: 関連項目
   - title: 条件付きアクセス
     links:

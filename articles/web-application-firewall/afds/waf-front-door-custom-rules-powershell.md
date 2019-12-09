@@ -1,5 +1,5 @@
 ---
-title: Front Door 用のカスタム規則と既定の規則セットで Web アプリケーション ファイアウォール (WAF) ポリシーを構成する - Azure PowerShell
+title: Azure Front Door 用に WAF のカスタム ルールと既定のルール セットを構成する
 description: 既存の Front Door エンドポイントに対するカスタム規則とマネージド規則の両方で構成される WAF ポリシーを構成する方法を説明します。
 services: web-application-firewall
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: fec1ed5d51c4afe43df513b54595b4ce1e2f4bbb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510196"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186647"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォール ポリシーを構成する
 

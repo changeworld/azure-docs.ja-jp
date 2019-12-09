@@ -1,19 +1,16 @@
 ---
-title: Azure Container Registry - よく寄せられる質問
+title: よく寄せられる質問
 description: Azure Container Registry サービスに関連したよく寄せられる質問への回答
-services: container-registry
 author: sajayantony
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 88c4b2065576bd5bdcb29a266bd564c60b0e537c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 1f2c79b47df4cf44b6fa3981bac4a5a3bf61c4df
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622705"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456392"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -256,11 +253,13 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 - [を使用した正常性チェック `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull が "net/http: 接続の待機中に要求が取り消されました (ヘッダーの待機中に Client.Timeout を超えました)" というエラーで失敗する](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [docker push は成功するが、docker pull が "権限がありません: 認証が必要です" というエラーで失敗する](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
+- [`az acr login` は成功するが、Docker コマンドが "権限がありません: 認証が必要です" というエラーで失敗する](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
 - [docker デーモンのデバッグ ログを有効にして取得する](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
 - [更新の直後に新しいユーザー アクセス許可が有効にならない場合がある](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [REST API の直接呼び出しで認証情報が正しい形式で提供されない](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Azure Portal にすべてのリポジトリまたはタグが一覧表示されないのはなぜですか?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Azure portal でリポジトリまたはタグをフェッチできないのはなぜですか?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
+- [許可されていない操作エラーで pull または push の要求が失敗するのはなぜですか?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
 - [Windows で http トレースを収集するにはどうすればよいですか?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>`az acr check-health` を使用した正常性チェック
@@ -318,6 +317,10 @@ unauthorized: authentication required
   ```
 
 `--signature-verification` の詳細は、`man dockerd` を実行して確認できます。
+
+### <a name="az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required"></a>az acr ログインは成功するが、Docker が "権限がありません: 認証が必要です" というエラーで失敗する
+
+レジストリ リソース名が大文字であるか、`myRegistry` のように大文字と小文字が混在している場合でも、`docker push myregistry.azurecr.io/myimage:latest` のように、サーバー URL にはすべて小文字を使用してください。
 
 ### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Docker デーモンのデバッグ ログを有効にして取得する  
 
@@ -421,6 +424,13 @@ Microsoft Edge または IE ブラウザーを使用している場合は、最�
 * DNS エラー
 
 ネットワーク管理者に問い合わせるか、ネットワークの構成と接続を確認してください。 Azure CLI を使用して `az acr check-health -n yourRegistry` を実行し、ご使用の環境から Container Registry に接続できるかどうかを確認します。 また、ブラウザーでシークレット/プライベート セッションを試して、古いブラウザー キャッシュや Cookie を回避することもできます。
+
+### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>許可されていない操作エラーで pull または push の要求が失敗するのはなぜですか?
+
+操作が許可されない可能性のあるいくつかのシナリオを次に示します。
+* クラシック レジストリはサポートされなくなりました。 [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) か Azure portal を使用して、サポートされている [SKU](https://aka.ms/acr/skus) にアップグレードしてください。
+* イメージやリポジトリがロックされているため、削除や更新を実行できない場合があります。 [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) コマンドを使用して、現在の属性を表示できます。
+* イメージが検疫状態の場合、一部の操作は許可されません。 検疫の詳細については、[こちら](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)をご覧ください。
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows で http トレースを収集するにはどうすればよいですか?
 

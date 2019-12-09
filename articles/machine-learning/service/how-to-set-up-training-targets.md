@@ -1,5 +1,5 @@
 ---
-title: モデル トレーニング用のコンピューティング先を作成して使用する
+title: モデル トレーニング用のコンピューティング ターゲットを使用する
 titleSuffix: Azure Machine Learning
 description: 機械学習モデル トレーニング用のトレーニング環境 (コンピューティング ターゲット) を構成します。 トレーニング環境を簡単に切り替えることができます。 ローカルでトレーニングを開始します。 スケール アウトする必要がある場合は、クラウド ベースのコンピューティング先に切り替えます。
 services: machine-learning
@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d628bbe889617464fe97695a17687d5f02cc61bc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489576"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305328"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング先を設定して使用する 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Azure Machine Learning SDK、Azure Machine Learning Studio、Azure CLI、また�
 
 
 >[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.39 を使用してテストされました。
+> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.74 を使用してテストされています。
 
 ## <a name="compute-targets-for-training"></a>モデル トレーニング用のコンピューティング先
 
@@ -105,9 +105,6 @@ Azure Machine Learning コンピューティング環境は、実行をスケジ
 #### <a name="run-based-creation"></a>実行ベースの作成
 
 実行時にコンピューティング先として Azure Machine Learning コンピューティングを作成できます。 実行用にコンピューティングが自動的に作成されます。 実行が完了すると、コンピューティングは自動的に削除されます。 
-
-> [!NOTE]
-> 使用するノードの最大数を指定するには、`node_count` にノード数を設定します。 2019 年 4 月 4 日現在、バグが原因で、この操作を行うことができません。 回避策として、実行構成の `amlcompute._cluster_max_node_count` プロパティを使用してください。 たとえば、「 `run_config.amlcompute._cluster_max_node_count = 5` 」のように入力します。
 
 > [!IMPORTANT]
 > Azure Machine Learning コンピューティングの実行ベースの作成は現在、プレビュー状態です。 自動化されたハイパーパラメーター チューニングまたは自動化された機械学習を使用する場合は、実行ベースの作成を使用しないでください。 ハイパーパラメーター チューニングまたは自動機械学習を使用するには、代わりに[永続的なコンピューティング](#persistent)先を作成します。

@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry SKU
+title: サービス レベルと SKU
 description: Azure Container Registry の Basic、Standard、および Premium サービス階層 (SKU) の機能と制限について説明します。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 11/05/2019
-ms.author: danlep
-ms.openlocfilehash: 19b1fb78413f82d422779b12227b4a5e2361d813
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1ebe5339b7523a4463dee45b126244d7ec5b2e4b
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681812"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456275"
 ---
 # <a name="azure-container-registry-skus"></a>Azure Container Registry SKU
 

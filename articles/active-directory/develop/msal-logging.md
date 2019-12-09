@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/31/2019
+ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9045fd6c1f5dcc4587b6ff85d567584f02421ba
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5960389389e4b75794a7334c0bff12ce3ac0f170
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73902899"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452463"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL アプリケーションでのログ記録
 
@@ -41,6 +41,10 @@ MSAL では、いくつかのレベルのログ記録の詳細が提供されま
 ## <a name="personal-and-organizational-data"></a>個人と組織のデータ
 
 既定では、MSAL ロガーによって、機密性の高い個人または組織のデータはキャプチャされません。 ライブラリには、個人と組織のデータをログ記録することにした場合に、そのログ記録を有効にするオプションが用意されています。
+
+特定の言語での MSAL ログの詳細については、使用する言語に一致するタブを選択してください。
+
+## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ## <a name="logging-in-msalnet"></a>MSAL.NET でのログ
 
@@ -80,6 +84,8 @@ class Program
   }
  }
  ```
+
+## <a name="androidtabandroid"></a>[Android](#tab/android)
 
 ## <a name="logging-in-msal-for-android-using-java"></a>Java を使用した MSAL for Android でのログ記録
 
@@ -123,9 +129,9 @@ Logger.getInstance().setEnablePII(false);
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
-## <a name="logging-in-msaljs"></a>MSAL.js でのログ記録
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
- `UserAgentApplication` インスタンスを作成するための構成中にロガー オブジェクトを渡すことによって、MSAL.js (Javascript) でのログ記録を有効にします。 このロガー オブジェクトには、次のプロパティがあります。
+ `UserAgentApplication` インスタンスを作成するための構成中にロガー オブジェクトを渡すことによって、MSAL.js (JavaScript) でのログ記録を有効にします。 このロガー オブジェクトには、次のプロパティがあります。
 
 - `localCallback`: ユーザー設定の方法でログを使用および公開するために開発者が指定できるコールバック インスタンス。 ログをリダイレクトする方法に応じて localCallback メソッドを実装します。
 - `level` (省略可能): 構成可能なログ レベル。 サポートされているログ レベルは、`Error`、`Warning`、`Info`、`Verbose` です。 既定では、 `Info`です。
@@ -155,7 +161,9 @@ var msalConfig = {
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 ```
 
-## <a name="logging-in-msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL でのログ記録
+## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+
+## <a name="msal-for-ios-and-macos-logging-objc"></a>iOS および macOS 用の MSAL でのログ記録 - ObjC
 
 MSAL ログをキャプチャして独自のアプリケーションのログに組み込むようにコールバックを設定します。 コールバックのシグネチャは次のようになります。
 
@@ -176,7 +184,6 @@ typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL cont
 
 例:
 
-Objective-C
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
     {
@@ -190,7 +197,71 @@ Objective-C
     }];
 ```
 
-Swift
+### <a name="personal-data"></a>個人データ
+
+既定では、MSAL は個人データ (PII) をキャプチャまたはログに記録しません。 このライブラリにより、アプリ開発者は MSALLogger クラスのプロパティを介して、この設定をオンにできます。 `pii.Enabled` をオンにすることで、アプリは機密性の高いデータを安全に処理し、規制要件に従う責任を負います。
+
+```objc
+// By default, the `MSALLogger` doesn't capture any PII
+
+// PII will be logged
+MSALGlobalConfig.loggerConfig.piiEnabled = YES;
+
+// PII will NOT be logged
+MSALGlobalConfig.loggerConfig.piiEnabled = NO;
+```
+
+### <a name="logging-levels"></a>ログ レベル
+
+iOS および macOS 用の MSAL を使用してログを記録するときにログ レベルを設定するには、次のいずれかの値を使用します。
+
+|Level  |説明 |
+|---------|---------|
+| `MSALLogLevelNothing`| すべてのログ記録を無効にします |
+| `MSALLogLevelError` | 既定のレベルでは、エラーが発生した場合にのみ情報を出力します |
+| `MSALLogLevelWarning` | 警告 |
+| `MSALLogLevelInfo` |  ライブラリ エントリ ポイント、パラメーターおよびさまざまなキーチェーン操作を含む |
+|`MSALLogLevelVerbose`     |  API のトレース |
+
+例:
+
+```objc
+MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
+ ```
+
+ ### <a name="log-message-format"></a>ログ メッセージの形式
+
+MSAL ログ メッセージのメッセージ部分は、次の形式となります: `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+
+例:
+
+`TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
+
+関連付け ID とタイム スタンプを指定することは、問題を追跡する場合に役立ちます。 タイムスタンプと関連付け ID に関する情報は、ログ メッセージで確認できます。 それらの取得元として唯一信頼できるのは MSAL ログ メッセ ージです。
+
+## <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+## <a name="msal-for-ios-and-macos-logging-swift"></a>iOS および macOS 用の MSAL でのログ記録 - Swift
+
+MSAL ログをキャプチャして独自のアプリケーションのログに組み込むようにコールバックを設定します。 コールバックのシグネチャ (Objective-C で表されます) は次のようになります。
+
+```objc
+/*!
+    The LogCallback block for the MSAL logger
+ 
+    @param  level           The level of the log message
+    @param  message         The message being logged
+    @param  containsPII     If the message might contain Personally Identifiable Information (PII)
+                            this will be true. Log messages possibly containing PII will not be
+                            sent to the callback unless PIllLoggingEnabled is set to YES on the
+                            logger.
+
+ */
+typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
+```
+
+例:
+
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
     if let message = message, !containsPII
@@ -207,18 +278,6 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 
 既定では、MSAL は個人データ (PII) をキャプチャまたはログに記録しません。 このライブラリにより、アプリ開発者は MSALLogger クラスのプロパティを介して、この設定をオンにできます。 `pii.Enabled` をオンにすることで、アプリは機密性の高いデータを安全に処理し、規制要件に従う責任を負います。
 
-Objective-C
-```objc
-// By default, the `MSALLogger` doesn't capture any PII
-
-// PII will be logged
-MSALGlobalConfig.loggerConfig.piiEnabled = YES;
-
-// PII will NOT be logged
-MSALGlobalConfig.loggerConfig.piiEnabled = NO;
-```
-
-Swift
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
 
@@ -243,12 +302,6 @@ iOS および macOS 用の MSAL を使用してログを記録するときにロ
 
 例:
 
-Objective-C
-```objc
-MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
- ```
- 
- Swift
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
  ```
@@ -263,9 +316,11 @@ MSAL ログ メッセージのメッセージ部分は、次の形式となり�
 
 関連付け ID とタイム スタンプを指定することは、問題を追跡する場合に役立ちます。 タイムスタンプと関連付け ID に関する情報は、ログ メッセージで確認できます。 それらの取得元として唯一信頼できるのは MSAL ログ メッセ ージです。
 
-## <a name="logging-in-msal-for-java"></a>MSAL for Java でのログ記録
+## <a name="javatabjava"></a>[Java](#tab/java)
 
-MSAL for Java (MSAL4J) では、SLF4J と互換性がある限り、アプリで既に使用しているログ記録ライブラリを使用できます。 MSAL4j は、[Simple Logging Facade for Java](http://www.slf4j.org/) (SLF4J) を、さまざまなログ記録フレームワーク ([java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)、[Logback](http://logback.qos.ch/)、および [Log4j](https://logging.apache.org/log4j/2.x/) など) の単純なファサードまたは抽象化として使用します。 SLF4J を使用すると、エンドユーザーはデプロイ時に目的のログ記録フレームワークをプラグインできます。
+## <a name="msal-for-java-logging"></a>MSAL for Java でのログ記録
+
+MSAL for Java では、SLF4J と互換性がある限り、アプリで既に使用しているログ記録ライブラリを使用できます。 MSAL for Java は、[Simple Logging Facade for Java](http://www.slf4j.org/) (SLF4J) を、さまざまなログ記録フレームワーク ([java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html)、[Logback](http://logback.qos.ch/)、および [Log4j](https://logging.apache.org/log4j/2.x/) など) の単純なファサードまたは抽象化として使用します。 SLF4J を使用すると、ユーザーはデプロイ時に目的のログ記録フレームワークをプラグインできます。
 
 たとえば、アプリケーションでログ記録フレームワークとして Logback を使用するには、アプリケーションの Maven pom ファイルに Logback の依存関係を追加します。
 
@@ -310,3 +365,35 @@ PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
         .logPii(true)
         .build();
 ```
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+## <a name="msal-for-python-logging"></a>MSAL for Python でのログ記録
+
+MSAL Python でのログ記録には、`logging.info("msg")` などの標準的な Python ログ記録メカニズムが使用されます。次のように MSAL ログを構成できます ([username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32) で動作を確認できます)。
+
+### <a name="enable-debug-logging-for-all-modules"></a>すべてのモジュールのデバッグ ログを有効にする
+
+既定では、すべての Python スクリプトでログ記録は無効になっています。 Python スクリプト全体のすべてのモジュールに対してデバッグ ログを有効にする場合は、次のようにします。
+
+```python
+logging.basicConfig(level=logging.DEBUG)
+```
+
+### <a name="silence-only-msal-logging"></a>MSAL ログ記録のみをサイレント状態にする
+
+MSAL ライブラリのログ記録のみをサイレント状態にするには、Python スクリプト内の他のすべてのモジュールでデバッグ ログを有効にするときに、MSAL Python で使用されるロガーを無効にします。
+
+```Python
+logging.getLogger("msal").setLevel(logging.WARN)
+```
+
+### <a name="personal-and-organizational-data-in-python"></a>Python での個人と組織のデータ
+
+MSAL for Python では、個人データおよび組織データはログに記録されません。 個人または組織のデータのログ記録を有効または無効にするプロパティはありません。
+
+標準的な Python ログ記録を使用して任意のログを記録することができますが、機密データを安全に処理し、規制要件に従う責任があります。
+
+Python でのログ記録の詳細については、Python の「[Logging HOWTO](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)」を参照してください。
+
+---

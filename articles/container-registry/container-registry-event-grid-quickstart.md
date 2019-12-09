@@ -1,20 +1,15 @@
 ---
-title: クイック スタート - Event Grid への Azure Container Registry イベントの送信
+title: クイックスタート - Event Grid にイベントを送信する
 description: このクイック スタートでは、ご自身のコンテナー レジストリの Event Grid イベントを有効にして、コンテナー イメージの push イベントおよび delete イベントをサンプル アプリケーションに送信します。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
-ms.author: danlep
 ms.custom: seodec18
-ms.openlocfilehash: 49ee9a7f12601b0d93e320ab797be4a1ada41c04
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 1ff9572cf8614e3eb5d015a602ca3f878875a0a4
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309799"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455349"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>クイック スタート: プライベート コンテナー レジストリから Event Grid にイベントを送信する
 

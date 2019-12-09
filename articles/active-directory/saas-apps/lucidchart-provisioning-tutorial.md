@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:LucidChart を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: チュートリアル:LucidChart のユーザー プロビジョニング - Azure AD
 description: Azure Active Directory を構成して、ユーザー アカウントを LucidChart に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9540cf882af6b11f0e8624e477ad336f6d5d9ad3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3791992586edbdc5188c3078b1f1bb108ce580d7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963685"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276868"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>チュートリアル:LucidChart を構成し、自動ユーザー プロビジョニングに対応させる
 

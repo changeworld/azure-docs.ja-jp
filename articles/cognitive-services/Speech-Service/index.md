@@ -1,17 +1,17 @@
 ---
 layout: HubPage
-ms.date: 10-19-2019
+ms.date: 11-21-2019
 ms.topic: hub-page
 title: Speech Service のドキュメント
-description: Speech Service を使ってみましょう。
-ms.openlocfilehash: e9fda2788b28ba882b5c5eb232bfd2ffbc85f049
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+description: Speech Service を使ってみましょう。 音声認識、音声合成、リアルタイムのトランザクションの取得、会話の文字起こし、ボットへの音声の統合を行います。
+ms.openlocfilehash: df90416b9ef046d68b5785b1fcb203159831e8fd
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406184"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885901"
 ---
-<div id="main" class="v2">    
+<div id="main" class="v2">
     <div class="container">
         <h1>Speech Service のドキュメント</h1>
         <ul class="pivots">
@@ -28,7 +28,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_recognition_from_microphone_file.jpg" alt="" />
+                                                        <img src="media/hub/speech-recognition-from-microphone-file.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -47,7 +47,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_recognition_from_file_file.jpg" alt="" />
+                                                        <img src="media/hub/speech-recognition-from-file-file.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -58,7 +58,7 @@ ms.locfileid: "74406184"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                          
+                            </li>
                             <li>
                                 <a href="https://aka.ms/speech/sr-blob">
                                     <div class="cardSize">
@@ -66,7 +66,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_recognition_from_blob.jpg" alt="" />
+                                                        <img src="media/hub/speech-recognition-from-blob.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -85,7 +85,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_programming_languages.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -104,7 +104,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_pricing.jpg" alt="" />
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -123,12 +123,12 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_reference.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>ドキュメント</h3>
-                                                    <p>Speech Service と、それをアプリ、ツール、製品の中で使用する方法について詳しく説明します。</p>
+                                                    <h3>ドキュメントを確認する</h3>
+                                                    <p>使用しているアプリ、ツール、製品に音声認識を追加する方法について説明します。 概念、チュートリアル、API リファレンス、リリースノートが含まれています。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +147,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_synthesis_to_audio_out.jpg" alt="" />
+                                                        <img src="media/hub/speech-synthesis-to-audio-out.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -166,7 +166,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_synthesis_to_file.jpg" alt="" />
+                                                        <img src="media/hub/speech-synthesis-to-file.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -185,7 +185,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_programming_languages.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -204,7 +204,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_programming_languages.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -215,7 +215,7 @@ ms.locfileid: "74406184"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                                                                
+                            </li>
                             <li>
                                 <a href="https://aka.ms/speech/tts-pricing">
                                     <div class="cardSize">
@@ -223,7 +223,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_pricing.jpg" alt="" />
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -242,18 +242,18 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_reference.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>ドキュメント</h3>
-                                                    <p>Speech Service と、それをアプリ、ツール、製品の中で使用する方法について詳しく説明します。</p>
+                                                    <h3>ドキュメントを確認する</h3>
+                                                    <p>使用しているアプリ、ツール、製品に音声合成を追加する方法について説明します。 概念、チュートリアル、API リファレンス、リリースノートが含まれています。</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li>                                               
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -266,7 +266,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_intent_recognition.jpg" alt="" />
+                                                        <img src="media/hub/speech-intent-recognition.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -285,7 +285,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_reference.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -304,7 +304,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_reference.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -315,7 +315,7 @@ ms.locfileid: "74406184"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -328,7 +328,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_translation_from_file.jpg" alt="" />
+                                                        <img src="media/hub/speech-translation-from-file.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -347,7 +347,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_translation_from_microphone_file.jpg" alt="" />
+                                                        <img src="media/hub/speech-translation-from-microphone-file.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -366,7 +366,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_translation_from_microphone_audio_out.jpg" alt="" />
+                                                        <img src="media/hub/speech-translation-from-microphone-audio-out.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -385,7 +385,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_programming_languages.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -404,7 +404,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_pricing.jpg" alt="" />
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -423,18 +423,18 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_reference.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>ドキュメント</h3>
-                                                    <p>Speech Service と、それをアプリ、ツール、製品の中で使用する方法について詳しく説明します。</p>
+                                                    <h3>ドキュメントを確認する</h3>
+                                                    <p>使用しているアプリ、ツール、製品に音声翻訳を追加する方法について説明します。 概念、チュートリアル、API リファレンス、リリースノートが含まれています。</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li>              
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -447,7 +447,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_reference.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -466,7 +466,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_conversation_transcription.jpg" alt="" />
+                                                        <img src="media/hub/speech-conversation-transcription.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -485,7 +485,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_conversation_transcription.jpg" alt="" />
+                                                        <img src="media/hub/speech-conversation-transcription.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -504,7 +504,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_programming_languages.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -523,7 +523,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_pricing.jpg" alt="" />
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -534,7 +534,7 @@ ms.locfileid: "74406184"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -547,7 +547,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_reference.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -566,7 +566,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_conversational_agent.jpg" alt="" />
+                                                        <img src="media/hub/speech-conversational-agent.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -585,7 +585,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_how_to.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-how-to.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -597,6 +597,68 @@ ms.locfileid: "74406184"
                                     </div>
                                 </a>
                             </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#support">サポート</a>
+                        <ul id="support" class="cardsC">
+                            <li>
+                                <a href="https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-github-issues.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>GitHub のイシュー</h3>
+                                                    <p>GitHub で、Speech SDK に関する未解決のイシューを参照したり、新しいイシューを作成したりできます。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://stackoverflow.com/questions/tagged/microsoft-cognitive">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-stackoverflow.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>スタック オーバーフロー</h3>
+                                                    <p>Stack Overflow で、質問をしたり、Speech Service コミュニティによるサポートを受けたりできます。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://cognitive.uservoice.com/forums/912208-speech-service">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-uservoice.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>UserVoice フォーラム</h3>
+                                                    <p>Speech Service に関するアイデアの共有、拡張機能の提案、新機能のリクエストを行うことができます。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>                                                    
                         </ul>
                     </li>
                 </ul>
@@ -614,7 +676,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_how_to.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-how-to.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -633,7 +695,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_how_to.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-how-to.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -652,7 +714,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_how_to.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-how-to.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -663,7 +725,7 @@ ms.locfileid: "74406184"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                             <li>
                                 <a href="https://aka.ms/speech/custom-sr-languages">
                                     <div class="cardSize">
@@ -671,7 +733,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_programming_languages.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -690,7 +752,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_pricing.jpg" alt="" />
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -702,7 +764,7 @@ ms.locfileid: "74406184"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -715,7 +777,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_programming_languages.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -735,7 +797,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_how_to.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-how-to.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -754,7 +816,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_how_to.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-how-to.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -773,7 +835,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_generic_human_languages.jpg" alt="" />
+                                                        <img src="media/hub/speech-generic-human-languages.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -793,7 +855,7 @@ ms.locfileid: "74406184"
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech_pricing.jpg" alt="" />
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -805,9 +867,100 @@ ms.locfileid: "74406184"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                                                         
+                            </li>
                         </ul>
                     </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#scenarios">シナリオ</a>
+                <ul id="scenarios">
+                    <li>
+                        <a href="#use-cases">ユース ケース</a>
+                        <ul id="use-cases" class="cardsC">
+                            <li>
+                                <a href="call-center-transcription.md">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-call-center-transcription.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>コール センターの文字起こし</h3>
+                                                    <p>音声テキスト変換の一般的なシナリオとして、対話型音声応答 (IVR) システムのような発信元から入ってくる大量の電話データの文字起こしがあります。 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="scenario-availability.md">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>シナリオと使用可能な機能</h3>
+                                                    <p>プラットフォームやプログラミング言語別に、シナリオと使用可能な機能について説明します。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#deploy-architecture">デプロイ</a>
+                        <ul id="deploy-architecture" class="cardsC">
+                            <li>
+                                <a href="speech-container-howto.md?tabs=stt">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-containers.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Speech Service をコンテナーにデプロイする</h3>
+                                                    <p>Docker を使用して、Speech Service をコンテナー インスタンスをデプロイします。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="regions.md">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>サポートされているリージョン</h3>
+                                                    <p>Speech Service がサポートされている場所について説明します。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>                                    
+                        </ul>
+                    </li>                    
                 </ul>
             </li>
         </ul>

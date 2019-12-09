@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: de90614d9d24b3f57cb170e9a590de859f689331
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9692c754e59eba02d3d483d44430150107d703a4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683987"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217535"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>SSIS 統合ランタイムでのパッケージ実行のトラブルシューティング
 
@@ -129,7 +129,7 @@ SSIS 統合ランタイムで多数のパッケージが並列に実行されて
 
 *ConnectUsingManagedIdentity* パラメーターが **True** のときは、接続マネージャーの認証方法を **[Active Directory パスワード認証]** として構成していないことを確認してください。 代わりに **[SQL 認証]** として構成できます。これは、*ConnectUsingManagedIdentity* が設定されている場合は無視されます。
 
-### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>エラー メッセージ:"0xC020801F at ..., OData Source [...] (... での 0xC020801F、OData ソース [...]): ランタイム接続マネージャーからマネージド接続を取得できません"
+### <a name="error-message-0xc020801f-at--odata-source--cannot-acquire-a-managed-connection-from-the-run-time-connection-manager"></a>エラー メッセージ:"0xC020801F at ...、OData Source [...]:ランタイム接続マネージャーからマネージド接続を取得できません"
 
 考えられる原因の 1 つは、SSIS 統合ランタイムでトランスポート層セキュリティ (TLS) が有効になっていないことです。これは、OData ソースに必要です。 [セットアップをカスタマイズする] を使用して、SSIS 統合ランタイムで TLS を有効にできます。 詳細については、「[SSIS から Project Online Odata に接続することはできません](https://docs.microsoft.com/office365/troubleshoot/cant-connect-project-online-odata-from-ssis)」と「[Azure-SSIS 統合ランタイムの設定のカスタマイズ](how-to-configure-azure-ssis-ir-custom-setup.md)」を参照してください。
 

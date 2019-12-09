@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: a37280fddf34221a9d08501ef55c6b069cd877a4
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ac1687d371630089436640af15cf46491a38ab51
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70242703"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74485551"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
@@ -25,6 +25,7 @@ ms.locfileid: "70242703"
 | 仮想ネットワーク |1,000 |
 | 仮想ネットワークあたりのサブネット数 |3,000 |
 | 仮想ネットワークあたりの VNet ピアリング |500 |
+| [仮想ネットワークあたりの仮想ネットワーク ゲートウェイ (VPN ゲートウェイ)](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |30 |
 | 仮想ネットワークあたりの DNS サーバー数 |20 |
 | 仮想ネットワークごとのプライベート IP アドレス |65,536 |
 | ネットワーク インターフェイスごとのプライベート IP アドレス |256 |

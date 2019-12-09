@@ -1,17 +1,17 @@
 ---
-title: Hyper-V VM 用に Azure Migrate Server Assessment/Migration のアプライアンスを設定する | Microsoft Docs
-description: Azure Migrate Server Assessment/Migration を使用する Hyper-V VM の検出、評価、エージェントレスの移行のためにアプライアンスを設定する方法について説明します。
+title: Hyper-V 向け Azure Migrate アプライアンスを設定する
+description: Azure Migrate アプライアンスを設定して Hyper-V VM を評価し移行する方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: c531fe49ebff6c021547c2d1c2f382bcd6c9caef
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810210"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534503"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Hyper-V VM のアプライアンスを設定する
 
@@ -29,7 +29,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 
 アプライアンスを設定するには、次のようにします。
 - Azure portal から圧縮された Hyper-V VHD をダウンロードします。
-- アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。 
+- アプライアンスを作成し、それが Azure Migrate Server Assessment に接続できることを確認します。
 - アプライアンスを初めて構成し、Azure Migrate プロジェクトに登録します。
 
 ## <a name="download-the-vhd"></a>VHD をダウンロードする
@@ -50,15 +50,16 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 1. ファイルをダウンロードしたマシンで、管理者用のコマンド ウィンドウを開きます。
 2. 次のコマンドを実行して、VHD のハッシュを生成します
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  アプライアンス バージョン 1.19.05.10 の場合は、生成されたハッシュがこれらの設定と一致する必要があります。
+    - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.vhd SHA256```
+3.  アプライアンス バージョン 2.19.11.12 の場合は、生成されたハッシュがこれらの設定と一致する必要があります。
 
   **アルゴリズム** | **ハッシュ値**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
+  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 
 
-  
+
 ## <a name="create-the-appliance-vm"></a>アプライアンス VM を作成する
 
 ダウンロードしたファイルをインポートし、VM を作成します。
@@ -104,7 +105,7 @@ Azure Migrate アプライアンスに関する[詳細を確認](migrate-applian
 ### <a name="register-the-appliance-with-azure-migrate"></a>Azure Migrate にアプライアンスを登録する
 
 1. **[ログイン]** をクリックします。 表示されない場合は、ブラウザーでポップアップ ブロックを無効にしてあることを確認します。
-2. 新しいタブで、自分の Azure 資格情報を使用してサインインします。 
+2. 新しいタブで、自分の Azure 資格情報を使用してサインインします。
     - 自分のユーザー名とパスワードを使用してサインインします。
     - PIN を使用したサインインはサポートされていません。
 3. 正常にサインインした後、Web アプリに戻ります。
@@ -142,14 +143,14 @@ SMB 上で VHD を実行している場合は、アプライアンスから Hype
     - クラスター内の特定のホストに問題がある場合でも、クラスターを追加できます。
 4. 検証後、 **[保存して検出を開始]** をクリックして、検出プロセスを開始します。
 
-これで検出が開始されます。 検出された VM のメタデータが Azure portal に表示されるまでに、約 15 分かかります。 
+これで検出が開始されます。 検出された VM のメタデータが Azure portal に表示されるまでに、約 15 分かかります。
 
 ## <a name="verify-vms-in-the-portal"></a>ポータル内での VM の特定
 
 検出の完了後、VM がポータルに表示されることを確認できます。
 
 1. Azure Migrate ダッシュボードを開きます。
-2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。 
+2. **[Azure Migrate - サーバー]**  >  **[Azure Migrate: Server Assessment]** ページで、 **[検出済みサーバー]** の数を表示するアイコンをクリックします。
 
 
 ## <a name="next-steps"></a>次の手順

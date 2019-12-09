@@ -1,22 +1,22 @@
 ---
-title: 条件付きアクセス ベースライン保護ポリシー - Azure Active Directory
+title: 条件付きアクセス ベースライン ポリシー - Azure Active Directory
 description: 組織を一般的な攻撃から保護する条件付きアクセス ベースライン ポリシー
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecd46b8cb734355a8394b7480c6def341cf9700d
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: a9bb384045c8b2e0a5743fdc301a829792639b7e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430338"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420560"
 ---
 # <a name="what-are-baseline-policies"></a>ベースライン ポリシーとは?
 
@@ -26,7 +26,7 @@ ms.locfileid: "72430338"
 
 ## <a name="baseline-policies"></a>ベースライン ポリシー
 
-![Azure portal での条件付きアクセス ベースライン ポリシー](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
+![Azure portal での条件付きアクセス ベースライン ポリシー](./media/concept-baseline-protection/conditional-access-policies.png)
 
 ベースライン ポリシーには、次の 4 つがあります。
 
@@ -41,7 +41,7 @@ ms.locfileid: "72430338"
 
 管理者アカウントには権限とアクセス権があるため、特別な注意を払って対処する必要があります。 特権アカウントの保護を向上するための一般的な方法の 1 つは、特権アカウントがサインインに使用されるときに、強力な形式のアカウント検証を必須にすることです。 Azure Active Directory では、Azure Multi-Factor Authentication への登録とその使用を管理者に要求することで、アカウント検証を強力にすることができます。
 
-Require MFA for admins (プレビュー) は、最も高い特権を持つ Azure AD ロールであると見なされている次のディレクトリ ロールに多要素認証 (MFA) を要求するベースライン ポリシーです。
+管理者に MFA を要求する (プレビュー) は、最も高い特権を持つ Azure AD ロールであると見なされている次のディレクトリ ロールに多要素認証 (MFA) を要求するベースライン ポリシーです。
 
 * 全体管理者
 * SharePoint 管理者

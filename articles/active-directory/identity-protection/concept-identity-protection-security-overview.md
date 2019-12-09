@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory (Azure AD) Identity Protection のセキュリティの概要
+title: Azure Active Directory Identity Protection - セキュリティの概要
 description: '[セキュリティの概要] で、組織のセキュリティ体制の分析情報を得る方法について説明します。'
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: adc4acf10fee1b8b2c5e3af18389a49d84e2df14
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886786"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382199"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - セキュリティの概要
 

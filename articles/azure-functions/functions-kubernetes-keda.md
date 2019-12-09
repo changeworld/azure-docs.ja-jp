@@ -1,29 +1,24 @@
 ---
 title: KEDA を使用した Kubernetes での Azure Functions
 description: クラウドまたはオンプレミスで KEDA (Kubernetes ベースのイベント ドリブン自動スケーリング) を使用して Kubernetes で Azure Functions を実行する方法について説明します。
-services: functions
-documentationcenter: na
 author: jeffhollan
-manager: jeconnoc
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ, Kubernetes
-ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 8e07032f84ead4bb003176af84cb4c731819ffa4
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ab851f3156f09a808833c0b31f8c5ce2b7dd5138
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900064"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230495"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>KEDA を使用した Kubernetes での Azure Functions
 
-Azure Functions ランタイムにより、必要な場所と方法でのホスティングにおける柔軟性が提供されます。  [KEDA](https://github.com/kedacore/kore) (Kubernetes ベースのイベント ドリブン自動スケーリング) は、Azure Functions ランタイムおよびツールにシームレスに組み合わされ、Kubernetes でのイベント ドリブンな自動スケーリングを提供します。
+Azure Functions ランタイムにより、必要な場所と方法でのホスティングにおける柔軟性が提供されます。  [KEDA](https://keda.sh) (Kubernetes ベースのイベント ドリブン自動スケーリング) は、Azure Functions ランタイムおよびツールにシームレスに組み合わされ、Kubernetes でのイベント ドリブンな自動スケーリングを提供します。
 
 ## <a name="how-kubernetes-based-functions-work"></a>Kubernetes ベースの関数の動作
 
-Azure Functions サービスは 2 つの主要コンポーネントで構成されています。ランタイムとスケール コントローラーです。  Functions ランタイムでは、ご自分のコードを実行します。  ランタイムには、関数の実行をトリガー、ログ、および管理する方法のロジックが含まれています。  もう 1 つのコンポーネントは、スケール コントローラーです。  スケール コントローラーによって、関数をターゲットにしているイベントの割合が監視され、アプリを実行しているインスタンスの数がプロアクティブにスケーリングされます。  詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md)」を参照してください。
+Azure Functions サービスは 2 つの主要コンポーネントで構成されています。ランタイムとスケール コントローラーです。  Functions ランタイムでは、ご自分のコードを実行します。  ランタイムには、関数の実行をトリガー、ログ、および管理する方法のロジックが含まれています。  Azure Functions ランタイムは、*どこでも*実行できます。  もう 1 つのコンポーネントは、スケール コントローラーです。  スケール コントローラーによって、関数をターゲットにしているイベントの割合が監視され、アプリを実行しているインスタンスの数がプロアクティブにスケーリングされます。  詳細については、「[Azure Functions のスケールとホスティング](functions-scale.md)」を参照してください。
 
 Kubernetes ベースの Functions では、KEDA によるイベント ドリブン スケーリングを使用して、[Docker コンテナー](functions-create-function-linux-custom-image.md)内に Functions ランタイムが提供されます。  KEDA では、0 インスタンスまでのスケールダウン (インスタンスが発生していないとき) と *n* インスタンスまでのスケールアップが可能です。 これは、Kubernetes 自動スケーラー (ポッドの水平自動スケーラー) 用のカスタム メトリックを公開することによって行われます。  KEDA で Functions のコンテナーを使用すると、任意の Kubernetes クラスターにおいてサーバーレス関数の機能をレプリケートできるようになります。  これらの関数は、サーバーレス インフラストラクチャ用の [Azure Kubernetes Services (AKS) 仮想ノード](../aks/virtual-nodes-cli.md)機能を使用してデプロイすることもできます。
 
@@ -86,12 +81,17 @@ func kubernetes remove --namespace keda
 
 ## <a name="supported-triggers-in-keda"></a>KEDA でサポートされているトリガー
 
-KEDA は現在ベータ版であり、次の Azure Function トリガーがサポートされています。
+KEDA は、次の Azure Function トリガーをサポートしています。
 
 * [Azure Storage キュー](functions-bindings-storage-queue.md)
 * [Azure Service Bus キュー](functions-bindings-service-bus.md)
-* [HTTP](functions-bindings-http-webhook.md)
+* [Azure Event/IoT Hubs](functions-bindings-event-hubs.md)
 * [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
+* [RabbitMQ キュー](https://github.com/azure/azure-functions-rabbitmq-extension)
+
+### <a name="http-trigger-support"></a>HTTP トリガーのサポート
+
+HTTP トリガーを公開する Azure Functions は使用することはできますが、KEDA では直接管理されません。  Azure Functions Core Tools は、HTTP エンドポイントの 0 から 1 へのスケーリングを可能にする関連するプロジェクト Osiris をインストールします。  1 から *n* へのスケーリングは、従来の Kubernetes スケーリング ポリシーに依存します。
 
 ## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。

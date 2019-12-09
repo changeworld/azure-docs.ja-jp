@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 55a9cbcfdb9766c6adc6d10f975fa4d074ec3aaf
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: d6e7c04cbd5a7f1ed509b27cf87ac3f692c28d9f
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011668"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454477"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure API Management で Azure Active Directory B2C を使用して開発者アカウントを承認する方法
 
@@ -92,6 +92,9 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 ![AAD ボタン ウィジェット](./media/api-management-howto-aad/portal-oauth-widget.png)
 
 新しいユーザーが AAD B2C を使用してサインインするたびに新しいアカウントが自動的に作成されますが、サインアップ ページに同じウィジェットを追加することを検討できます。
+
+> [!IMPORTANT]
+> AAD の変更を有効にするには、[ポータルを再発行](api-management-howto-developer-portal-customize.md#publish)する必要があります。
 
 ## <a name="legacy-developer-portal---how-to-sign-up-with-azure-ad-b2c"></a>従来の開発者ポータル - Azure AD B2C を使用してサインアップする方法
 

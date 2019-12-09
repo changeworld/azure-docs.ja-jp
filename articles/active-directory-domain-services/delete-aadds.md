@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory Domain Services の無効化 | Microsoft Docs
-description: Azure Portal を使用して Azure Active Directory Domain Services を無効にする方法について説明します
+title: Azure Active Directory Domain Services の削除 | Microsoft Docs
+description: Azure portal を使用して Azure Active Directory Domain Services マネージド ドメインを無効化または削除する方法について説明します
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 05c4e73c56b79c6e313ea15124bd0f3d17b2fc70
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 9f0b8a438a7c236c5e016673a59bfb691e9c2152
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842616"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546295"
 ---
-# <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を無効にする
+# <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Azure portal を使用して Azure Active Directory Domain Services マネージド ドメインを無効化または削除する
 
 マネージド ドメインが不要になった場合、Azure Active Directory Domain Services (Azure AD DS) インスタンスを削除できます。 Azure AD DS マネージド ドメインをオフにしたり、一時的に無効にしたりすることはできません。 Azure AD DS マネージド ドメインを削除しても、Azure AD テナントが削除されたり、削除以外の悪影響が出たりすることはありません。 この記事では、Azure portal を使用して Azure AD DS マネージド ドメインを削除する方法について説明します。
 

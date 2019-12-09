@@ -1,5 +1,5 @@
 ---
-title: クロスプレミス Azure 接続の VPN デバイスについて | Microsoft Docs
+title: Azure VPN Gateway:接続用の VPN デバイスについて
 description: この記事では、S2S VPN Gateway クロスプレミス接続の VPN デバイスと IPsec パラメーターについて説明します。 構成の手順およびサンプルへのリンクが提供されています。
 services: vpn-gateway
 author: yushwang
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: c945fa7e2e8eccb12cc105610adee3d25a5e5316
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58278e241df3d9242c1cb3ad5d6e931c9c4ca701
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495791"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150921"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 

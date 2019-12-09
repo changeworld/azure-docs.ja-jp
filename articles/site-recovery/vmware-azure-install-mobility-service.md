@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016365"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186447"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>モビリティ エージェントをプッシュ インストールできるようソース マシンを準備する
 
@@ -32,7 +32,7 @@ ms.locfileid: "69016365"
    ![ファイアウォールの設定](./media/vmware-azure-install-mobility-service/mobility1.png)
 
 4. CSPSConfigtool で作成したアカウントを追加します。 これを行うには、構成サーバーにサインインします。
-5. **cspsconfigtool.exe** を開きます。 これはデスクトップにショートカットがあり、%ProgramData%\home\svsystems\bin フォルダーに保存されています。
+5. **cspsconfigtool.exe** を開きます。 これはデスクトップにショートカットがあり、%ProgramData%\ASR\home\svsystems\bin フォルダーに保存されています。
 6. **[アカウントの管理]** タブの **[アカウントの追加]** を選択します。
 7. 作成したアカウントを追加します。
 8. コンピューターのレプリケーションを有効にするときに使用する資格情報を入力します。

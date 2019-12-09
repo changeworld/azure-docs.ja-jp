@@ -87,7 +87,7 @@
           href: deploy-kcd.md
         - name: パスワードとアカウントのロックアウト ポリシーの構成
           href: password-policy.md
-        - name: セキュリティ監査イベントの有効化 (プレビュー)
+        - name: セキュリティ監査イベントを有効にする
           href: security-audit-events.md
     - name: VM のドメイン参加
       items:

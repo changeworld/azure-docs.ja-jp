@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 9caadddf281c6df29f6e36057c7b28abcef0e1c4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d691759f1075a08ad13ec1199eb8af7fd634f5a1
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112529"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534473"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Cognitive Search の価格レベルの選択
 
@@ -216,7 +216,7 @@ Free レベルおよびプレビュー機能には、[サービスレベル ア�
 
 + クエリに関するメトリックを構築し、利用パターン (業務時間中のクエリ数、オフピーク時のインデックス作成) に関するデータを収集します。 このデータを使用して、サービス プロビジョニングに関する決定に役立つ情報を提供します。 時間ごと、または毎日の周期では実用的でありませんが、パーティションやリソースを動的に調節して、クエリ数の計画された変化に対応できます。 計画外ではあっても持続した変化に対応することもできます。ただし、対処する間、そのレベルが保持される場合です。
 
-+ 過小なプロビジョニングの唯一の欠点として、実際の要件が予測より大きかった場合にサービスを中断する必要があるということに注意してください。 サービスの中断を回避するには、同じサブスクリプション内のより高いレベルで新しいサービスを作成し、すべてのアプリと要求が新しいエンドポイントを指すようになるまで並行して実行します。
++ 過小なプロビジョニングの唯一の欠点として、実際の要件が予測より大きかった場合にサービスを中断する必要があるということに注意してください。 サービスの中断を回避するには、より高いレベルで新しいサービスを作成し、すべてのアプリと要求が新しいエンドポイントを指すようになるまで並行して実行します。
 
 ## <a name="next-steps"></a>次の手順
 

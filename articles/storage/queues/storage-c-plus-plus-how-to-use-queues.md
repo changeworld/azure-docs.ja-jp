@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: e268e30e8f8c512dd6efb5a50da45f173e526b62
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6c6e092f16111f3f54ed17e19d28775e35eedc96
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721654"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227798"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>C++ から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -39,12 +39,14 @@ ms.locfileid: "68721654"
 
 C++ 用 Azure ストレージ クライアント ライブラリをインストールする場合、次の方法を使用できます。
 
-* **Linux:** [C++ 用 Azure Storage クライアント ライブラリの README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) ページに記載されている手順に従います。
-* **Windows:** Visual Studio で、 **[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。 [NuGet パッケージ マネージャー コンソール](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) に次のコマンドを入力し、 **Enter**キーを押します。
+* **Linux:** [C++ 用 Azure Storage クライアント ライブラリの README: Linux での開始](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux)に関するページで示されている手順のようにします。
+* **Windows:** Windows では、依存関係マネージャーとして [vcpkg](https://github.com/microsoft/vcpkg) を使用します。 [クイックスタート](https://github.com/microsoft/vcpkg#quick-start)に従って、vcpkg を初期化します。 その後、次のコマンドを使用してライブラリをインストールします。
 
 ```powershell
-Install-Package wastorage
+.\vcpkg.exe install azure-storage-cpp
 ```
+
+ソース コードをビルドして Nuget にエクスポートする方法については、[README](https://github.com/Azure/azure-storage-cpp#download--install) ファイルを参照してください。
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Queue ストレージにアクセスするようにアプリケーションを構成する
 Azure Storage API を使用してキューにアクセスする C++ ファイルの先頭には、次の include ステートメントを追加します。  

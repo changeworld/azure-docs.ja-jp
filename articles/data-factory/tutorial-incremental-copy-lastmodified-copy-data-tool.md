@@ -1,5 +1,5 @@
 ---
-title: データのコピー ツールを使用し LastModifiedDate に基づいて新しいファイルおよび変更されたファイルを増分コピーする
+title: 新しいファイルや更新されたファイルを増分コピーするためのデータ ツール
 description: Azure データ ファクトリを作成してから、データのコピー ツールを使用して LastModifiedDate を基に新しいファイルを増分的に読み込みます。
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 09a9fa4515913470c86bbafe293add007a3117ea
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5c20196bd243d025d58f7cc08e015e1e0038e178
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683466"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217785"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>データのコピー ツールを使用し LastModifiedDate に基づいて新しいファイルおよび変更されたファイルを増分コピーする
 
