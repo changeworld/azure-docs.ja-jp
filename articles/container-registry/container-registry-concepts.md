@@ -1,18 +1,14 @@
 ---
-title: Azure Container Registry のリポジトリとイメージについて
+title: リポジトリとイメージについて
 description: Azure のコンテナー レジストリ、リポジトリ、およびコンテナー イメージの主要な概念について紹介します。
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: article
 ms.date: 09/10/2019
-ms.author: danlep
-ms.openlocfilehash: 9a3d4a7d9c3fd4a0465d4e780024559a71372d9d
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 9de0c344b226a0b13e76c7f02977ba3c91ba2d2a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300198"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455296"
 ---
 # <a name="about-registries-repositories-and-images"></a>レジストリ、リポジトリ、イメージについて
 

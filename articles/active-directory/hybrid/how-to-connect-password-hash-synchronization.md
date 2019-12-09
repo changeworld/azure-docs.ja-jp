@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0398ff7eb8931acc400b326ff92deaf75f0aa97e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6e77368c7c0c104e777595a16735a7cf1e797a48
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882841"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539018"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -160,9 +160,11 @@ Azure AD では、登録されたドメインごとに、個別のパスワー�
 
 ## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Azure AD Domain Services のパスワード ハッシュ同期プロセス
 
-Azure AD Domain Services を使用して、Keberos、LDAP、または NTLM を使用する必要があるアプリケーションやサービスにレガシ認証を提供する場合、追加のプロセスがパスワード ハッシュ同期フローに含まれます。 Azure AD Connect は、次の追加プロセスを使用して、Azure AD Domain Services で使用するためにパスワード ハッシュを Azure AD に同期します。
+Azure AD Domain Services を使用して、Kerberos、LDAP、または NTLM を使用する必要があるアプリケーションやサービスにレガシ認証を提供する場合、追加のプロセスがパスワード ハッシュ同期フローに含まれます。 Azure AD Connect は、次の追加プロセスを使用して、Azure AD Domain Services で使用するためにパスワード ハッシュを Azure AD に同期します。
 
 > [!IMPORTANT]
+> Azure AD Connect は、オンプレミスの AD DS 環境との同期のためにのみインストールおよび構成する必要があります。 オブジェクトを Azure AD に同期するために、Azure AD DS マネージド ドメインに Azure AD Connect をインストールすることはサポートされていません。
+>
 > Azure AD Connect によってレガシ パスワード ハッシュが同期されるのは、Azure AD DS を Azure AD テナントに対して有効にしたときだけです。 Azure AD Connect を使用してオンプレミス AD DS 環境と Azure AD の同期しか行わない場合、次の手順は使用されません。
 >
 > レガシ アプリケーションが NTLM 認証または LDAP simple bind を使用していない場合は、Azure AD DS の NTLM パスワード ハッシュ同期を無効にすることをお勧めします。 詳しくは、「[弱い暗号スイートと NTLM 資格情報ハッシュの同期を無効にする](../../active-directory-domain-services/secure-your-domain.md)」をご覧ください。

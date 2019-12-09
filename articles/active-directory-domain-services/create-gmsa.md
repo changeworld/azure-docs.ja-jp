@@ -9,20 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 1cfddf14d60b7d73bae283a18732c7c99ae22b4d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898226"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546306"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Azure AD Domain Services でグループの管理されたサービス アカウント (gMSA) を作成する
 
-多くの場合、アプリケーションとサービスは、他のリソースで自身を認証するために ID を必要とします。 たとえば、Web サービスは、データベース サービスで認証を行う必要がある可能性があります。 アプリケーションまたはサービスに複数のインスタンス (Web サーバー ファームなど) がある場合、それらのリソースの ID を手動で作成して構成すると時間がかかります。 代わりに、グループの管理されたサービス アカウント (gMSA) を Azure Active Directory Domain Services (Azure AD DS) マネージド ドメインで作成することができます。 Windows OS は、gMSA の資格情報を自動的に管理します。これにより、大規模なリソース グループの管理が簡素化されます。
+多くの場合、アプリケーションとサービスは、他のリソースで自身を認証するために ID を必要とします。 たとえば、Web サービスは、データベース サービスで認証を行う必要がある可能性があります。 アプリケーションまたはサービスに複数のインスタンス (Web サーバー ファームなど) がある場合、それらのリソースの ID を手動で作成して構成すると時間がかかります。
 
-この記事では、Azure AD DS マネージド ドメインで gMSA を作成する方法について説明します。
+代わりに、グループの管理されたサービス アカウント (gMSA) を Azure Active Directory Domain Services (Azure AD DS) マネージド ドメインで作成することができます。 Windows OS は、gMSA の資格情報を自動的に管理します。これにより、大規模なリソース グループの管理が簡素化されます。
+
+この記事では、Azure PowerShell を使用して Azure AD DS マネージド ドメインで gMSA を作成する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -59,6 +61,9 @@ Azure AD DS マネージド ドメインは、Microsoft によってロックダ
 ## <a name="create-a-gmsa"></a>gMSA を作成する
 
 まず、[New-ADOrganizationalUnit][New-AdOrganizationalUnit] コマンドレットを使用してカスタム OU を作成します。 カスタム OU の作成と管理について詳しくは、[Azure AD DS のカスタム OU][create-custom-ou] に関する記事を参照してください。
+
+> [!TIP]
+> これらの手順を完了して gMSA を作成するには、[管理 VM 使用します][tutorial-create-management-vm]。 この管理 VM には、必要な AD PowerShell コマンドレットと管理対象ドメインへの接続が既に存在している必要があります。
 
 次の例では、*contoso.com* という名前の Azure AD DS マネージド ドメインで、*myNewOU* という名前のカスタム OU を作成します。 独自の OU とマネージド ドメイン名を使用します。
 

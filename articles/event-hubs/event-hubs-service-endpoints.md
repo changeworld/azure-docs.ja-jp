@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 03/12/2019
+ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: 5a1b293d4d7f652c0cdd95226113ec3ce8f8222c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9b8b3600acc33e177e65002ba69dcf98a20c2253
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466145"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555341"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Azure Event Hubs で仮想ネットワーク サービス エンドポイントを使用する
 
@@ -33,7 +33,7 @@ Event Hubs と[仮想ネットワーク (VNet) サービス エンドポイン�
 > 仮想ネットワークが実装されているときは、信頼できる Microsoft サービスはサポートされません。
 >
 > 仮想ネットワークでは動作しない Azure の一般的なシナリオは次のとおりです (網羅的なリストでは**ない**ことに注意してください)
-> - Azure Monitor
+> - Azure Monitor との統合。 診断ログを**他の** Azure サービスから Event Hubs にストリームすることはできません。 ただし、イベント ハブ自体で Azure 診断ログを有効にすることができます。 これは、ファイアウォール (IP フィルタリング) が有効になっている場合と同じです。
 > - Azure Stream Analytics
 > - Azure Event Grid との統合
 > - Azure IoT Hub ルート

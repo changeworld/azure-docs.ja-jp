@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6634920b1efa3cd24267aca8bcf53587754caa66
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 04c4192293cbfa96eefcc1c84083dd54042ebe8f
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71239975"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484087"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
@@ -33,6 +33,39 @@ Azure Logic Apps コネクタ: <https://docs.microsoft.com/connectors/>
 
 ## <a name="auditing-and-reporting"></a>監査とレポート
 Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)に保持されます。
+
+次のサポートされている操作を監査できます。
+
+|操作の名前|    リソースの種類|
+|----|----|
+|ブックの作成または更新  |Microsoft.Insights/workbooks|
+|ブックの削除    |Microsoft.Insights/workbooks|
+|ワークフローの設定   |Microsoft.Logic/workflows|
+|ワークフローの削除    |Microsoft.Logic/workflows|
+|保存した検索条件を作成する    |Microsoft.OperationalInsights/workspaces/savedSearches|
+|保存した検索条件の削除    |Microsoft.OperationalInsights/workspaces/savedSearches|
+|ダッシュボードの設定  |Microsoft.Portal/dashboards|
+|ダッシュボードの削除   |Microsoft.Portal/dashboards|
+|警告ルールの更新 |Microsoft.SecurityInsights/alertRules|
+|警告ルールの削除 |Microsoft.SecurityInsights/alertRules|
+|警告ルールの応答アクションの更新 |Microsoft.SecurityInsights/alertRules|
+|警告ルールの応答アクションの削除 |Microsoft.SecurityInsights/alertRules|
+|ブックマークの更新   |Microsoft.SecurityInsights/bookmarks|
+|ブックマークの削除   |Microsoft.SecurityInsights/bookmarks|
+|ケースの更新   |Microsoft.SecurityInsights/Cases|
+|ケース調査の更新  |Microsoft.SecurityInsights/Cases|
+|ケース コメントの作成   |Microsoft.SecurityInsights/Cases|
+|データ コネクタの更新 |Microsoft.SecurityInsights/dataConnectors|
+|データ コネクタの削除 |Microsoft.SecurityInsights/dataConnectors|
+|設定の更新    |Microsoft.SecurityInsights/settings|
+
+### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Azure Sentinel で監査とレポート データを表示する
+
+このデータを表示するには、Azure アクティビティ ログから Azure Sentinel にそれをストリーミングし、そこで調査と分析を実行します。
+
+1. [Azure アクティビティ](connect-azure-activity.md) データ ソースに接続します。 この操作を実行すると、監査イベントは、AzureActivity という名前の**ログ**画面で新しいテーブルにストリームされます。
+2. 次に、他のテーブルの場合と同様に、KQL を使用してデータに対してクエリを実行します。
+
 
 
 ## <a name="vendor-documentation"></a>ベンダーのドキュメント

@@ -7,16 +7,20 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 11/11/2019
-ms.openlocfilehash: b513408f551a255facc897b7ba83c68e2befe282
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8fb1c6c65ab9c38ef16cfbc20435b35d0c7a7ce5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928259"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279616"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>メトリックを有効にするためのコンテナーの Azure Monitor の更新方法
 
 コンテナーの Azure Monitor では、Azure Kubernetes Services (AKS) クラスター ノードおよびポッドからのメトリックの収集と、Azure Monitor メトリック ストアへのそれらの書き込みのサポートを導入します。 この変更は、パフォーマンス グラフでの集計計算 (Avg、Count、Max、Min、Sum) を表示するときの適時性の改善、Azure portal ダッシュボードでのパフォーマンス グラフのピン留めのサポート、およびメトリック アラートのサポートを実現するためのものです。
+
+>[!NOTE]
+>現在、この機能は Red Hat OpenShift クラスターをサポートしていません。
+>
 
 この機能の一部として、次のメトリックが有効にされています。
 

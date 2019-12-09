@@ -1,20 +1,16 @@
 ---
 title: Azure 関数からの戻り値の使用
 description: Azure Functions の戻り値を管理する方法について学習します
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 8dd5a4d9d869c879ed402c5450690f0a691e1d2c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074396"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480578"
 ---
 # <a name="using-the-azure-function-return-value"></a>Azure 関数の戻り値の使用
 
@@ -23,6 +19,7 @@ ms.locfileid: "74074396"
 戻り値がある言語では、その戻り値に関数の[出力バインディング](./functions-triggers-bindings.md#binding-direction)をバインドできます。
 
 * C# クラス ライブラリでは、メソッド戻り値に出力バインディング属性を適用します。
+* Java では、出力バインドの注釈を関数メソッドに適用します。
 * その他の言語では、*function.json* 内の `name` プロパティを `$return` に設定します。
 
 複数の出力バインディングが存在する場合は、そのうちの 1 つにのみ戻り値を使用します。
@@ -154,6 +151,24 @@ def main(input: azure.functions.InputStream) -> str:
         'length': input.length,
         'content': input.read().decode('utf-8')
     })
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+出力バインディングに戻り値を使用する Java コードを次に示します。
+
+```java
+@FunctionName("QueueTrigger")
+@StorageAccount("AzureWebJobsStorage")
+@BlobOutput(name = "output", path = "output-container/{id}")
+public static String run(
+  @QueueTrigger(name = "input", queueName = "inputqueue") WorkItem input,
+  final ExecutionContext context
+) {
+  String json = String.format("{ \"id\": \"%s\" }", input.id);
+  context.getLogger().info("Java processed queue message. Item=" + json);
+  return json;
+}
 ```
 
 ---

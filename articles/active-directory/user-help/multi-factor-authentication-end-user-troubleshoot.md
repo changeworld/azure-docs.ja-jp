@@ -1,6 +1,6 @@
 ---
-title: 2 要素認証のよくある問題のトラブルシューティング - Azure AD
-description: 2 要素認証に関してよくあるいくつかの問題について、考えられる解決策を説明します。
+title: アカウント認証の一般的な問題と解決策 - Azure AD
+description: いくつかの一般的な 2 要素認証の問題と、職場または学校のアカウントに関する潜在的な問題と解決策について説明します。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8d226d61f4b67541a6991fef3a435b4cfff500f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9d998fafbf6b3ba0547991de6c3a8e71b66d91f7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805302"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231886"
 ---
-# <a name="troubleshoot-common-two-factor-verification-problems"></a>2 要素認証のよくある問題のトラブルシューティング
+# <a name="common-problems-and-solutions-with-two-factor-verification-and-your-work-or-school-account"></a>2 要素認証と職場または学校アカウントの一般的な問題と解決策
 
 組織で 2 要素認証を有効にすると、職場または学校アカウントでサインインするときに、ユーザー名、パスワード、およびモバイル デバイスまたは電話の組み合わせが必要になります。 組織でこの余分な認証を有効にするのは、ユーザーが知っているものとユーザーが所有するものの 2 つの形式の認証を使用するため、パスワードだけよりも安全性が高くなるためです。 2 要素認証は、悪意のあるハッカーによるなりすましを防ぐのに役立ちます。なぜなら、悪意のあるハッカーがあなたのパスワードを知っていたとしても、あなたのデバイスを持っていない可能性も高いためです。
 

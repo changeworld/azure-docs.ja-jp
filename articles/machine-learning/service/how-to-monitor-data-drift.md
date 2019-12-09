@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: bf82714011754ba516fa38444b1019b9cc1aa732
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: acf1df6bb71f4ea8878d8f50f3f42f4ddd831fb5
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111872"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539238"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) にデプロイされたモデルのデータの誤差 (プレビュー) を検出する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "74111872"
 Azure Machine Learning では、AKS にデプロイされたモデルへの入力を監視し、このデータをそのモデルのトレーニング データセットと比較できます。 推論データは一定の間隔で[スナップショットが取得されてプロファイリングされ](how-to-explore-prepare-data.md)、基準のデータセットに対して計算されて、以下のようなデータの誤差の分析が行われます。 
 
 + ドリフト係数と呼ばれるデータの誤差の大きさを測定します。
-+ フィーチャーによってデータの誤差の寄与度を測定し、データの誤差の原因となったフィーチャーを通知します。
++ フィーチャーごとにデータの誤差の寄与度を測定し、データの誤差の原因となったフィーチャーを示します。
 + 距離メトリックを測定します。 現時点では Wasserstein とエネルギー距離が計算されます。
 + フィーチャーの分布を測定します。 現時点ではカーネル密度の推定とヒストグラムです。
 + データの誤差についてのアラートを電子メールで送信します。
@@ -80,7 +80,7 @@ Azure Machine Learning を使用すると、データの誤差はデータセッ
 ## <a name="configure-data-drift"></a>データの誤差の構成
 実験でのデータの誤差を構成するには、次の Python の例に示すように、依存関係をインポートします。 
 
-この例は、[`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) オブジェクトの構成を示しています。
+この例は、[`DataDriftDetector`](/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) オブジェクトの構成を示しています。
 
 ```python
 # Import Azure ML packages
@@ -90,7 +90,7 @@ from azureml.datadrift import DataDriftDetector, AlertConfiguration
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
 
-# create a new DatadriftDetector object
+# create a new DataDriftDetector object
 datadrift = DataDriftDetector.create(ws, model.name, model.version, services, frequency="Day", alert_config=alert_config)
     
 print('Details of Datadrift Object:\n{}'.format(datadrift))
@@ -112,7 +112,7 @@ run = datadrift.run(target_date, services, feature_list=feature_list, compute_ta
 
 # show details of the data drift run
 exp = Experiment(ws, datadrift._id)
-dd_run = Run(experiment=exp, run_id=run)
+dd_run = Run(experiment=exp, run_id=run.id)
 RunDetails(dd_run).show()
 ```
 
@@ -142,7 +142,7 @@ datadrift_contribution|誤差に寄与するフィーチャーの重要度。|
 # start and end are datetime objects 
 drift_metrics = datadrift.get_output(start_time=start, end_time=end)
 
-# Show all data drift result figures, one per serivice.
+# Show all data drift result figures, one per service.
 # If setting with_details is False (by default), only the data drift magnitude will be shown; if it's True, all details will be shown.
 drift_figures = datadrift.show(with_details=True)
 ```

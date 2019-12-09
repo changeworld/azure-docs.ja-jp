@@ -178,7 +178,7 @@
               href: dealing-with-duplicates.md
     - name: デプロイ
       items:
-        - name: クラスターを VNet にデプロイする
+        - name: 仮想ネットワークにクラスターをデプロイする
           href: vnet-deployment.md
     - name: 監視
       items:

@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: cecd37c16d34c0cd6cf7a4d98732762d16073864
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c1f9c8a03a503444c7c45d5374b67e5b453a8931
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73884146"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561619"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -74,17 +74,11 @@ Visual Studio を起動し、C# 用の新しい**コンソール アプリ (.NET
 
     名前空間の接続文字列を `ServiceBusConnectionString` 変数として入力します。 キュー名を入力します。
 
-1. `Main()` の既定の内容を次のコード行に置き換えます。
+1. `Main()` メソッドを次の **async** `Main` メソッドに置き換えます。 これは次の手順で追加する SendMessagesAsync メソッドを呼び出して、キューにメッセージを送信します。 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. `Main()` のすぐ後に、メッセージ送信メソッドを呼び出す次の非同期 `MainAsync()` メソッドを追加します。
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         const int numberOfMessages = 10;
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
@@ -100,7 +94,6 @@ Visual Studio を起動し、C# 用の新しい**コンソール アプリ (.NET
         await queueClient.CloseAsync();
     }
     ```
-
 1. `MainAsync()` メソッドのすぐ後に、次の `SendMessagesAsync()` メソッドを追加します。`numberOfMessagesToSend` で指定された数 (現時点では 10 に設定) のメッセージを送信する処理が、このメソッドによって実行されます。
 
     ```csharp
@@ -147,25 +140,20 @@ namespace CoreSenderApp
         const string QueueName = "<your_queue_name>";
         static IQueueClient queueClient;
 
-        static void Main(string[] args)
-        {
-            MainAsync().GetAwaiter().GetResult();
-        }
-
-        static async Task MainAsync()
-        {
+        public static async Task Main(string[] args)
+        {    
             const int numberOfMessages = 10;
             queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
-
+    
             Console.WriteLine("======================================================");
             Console.WriteLine("Press ENTER key to exit after sending all the messages.");
             Console.WriteLine("======================================================");
-
-            // Send Messages
+    
+            // Send messages.
             await SendMessagesAsync(numberOfMessages);
-
+    
             Console.ReadKey();
-
+    
             await queueClient.CloseAsync();
         }
 
@@ -235,14 +223,8 @@ namespace CoreSenderApp
 1. `Main()` の既定の内容を次のコード行に置き換えます。
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-1. `Main()` のすぐ後に、`RegisterOnMessageHandlerAndReceiveMessages()` メソッドを呼び出す次の非同期 `MainAsync()` メソッドを追加します。
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         queueClient = new QueueClient(ServiceBusConnectionString, QueueName);
 
         Console.WriteLine("======================================================");

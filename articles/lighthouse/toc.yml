@@ -44,9 +44,6 @@
     - name: 顧客を表示し、管理する
       displayName: my customers
       href: ./how-to/view-manage-customers.md
-    - name: サービス プロバイダーを表示し、管理する
-      displayName: 'customer, update'
-      href: ./how-to/view-manage-service-providers.md
     - name: Azure Policy の統合
       items:
         - name: 大規模なポリシーのデプロイ
@@ -55,6 +52,14 @@
         - name: 修復できるポリシーをデプロイする
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: 顧客のアクション
+      items:
+        - name: サービス プロバイダーを表示し、管理する
+          displayName: 'customer, update'
+          href: ./how-to/view-manage-service-providers.md
+        - name: サービス プロバイダーのアクティビティを表示する
+          displayName: 'monitor, log'
+          href: ./how-to/view-service-provider-activity.md
 - name: リファレンス
   items:
     - name: Azure CLI

@@ -244,6 +244,8 @@
           href: sap-hana-db-manage.md
     - name: Windows Server
       items:
+        - name: MARS エージェントについて
+          href: backup-azure-about-mars.md
         - name: Windows Server のファイルとフォルダーのバックアップ
           href: backup-configure-vault.md
         - name: Windows Server のシステム状態のバックアップ

@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: fd7ff7aa2275defba57aa24b5ef0b9adc78a5355
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093237"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278806"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics ワークスペースを別のサブスクリプションまたはリソース グループに移動する
 
-この記事では、Log Analytics ワークスペースを同じリージョン内の別のリソース グループまたはサブスクリプションに移動する手順について説明します。 Azure portal、PowerShell、Azure CLI、または REST API を使用した Azure リソースの移動の詳細についは、 「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../../azure-resource-manager/resource-group-move-resources.md)」を参照してください。 
+この記事では、Log Analytics ワークスペースを同じリージョン内の別のリソース グループまたはサブスクリプションに移動する手順について説明します。 Azure portal、PowerShell、Azure CLI、または REST API を使用して Azure リソースを移動する方法について詳しくは、 「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../../azure-resource-manager/resource-group-move-resources.md)」をご覧ください。 
 
 > [!IMPORTANT]
 > ワークスペースを別のリージョンに移動することはできません。
@@ -29,17 +29,17 @@ ms.locfileid: "74093237"
 (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
 ```
 
-## <a name="remove-solutions"></a>ソリューションを削除する
-ワークスペースにインストールされているマネージド ソリューションは、Log Analytics ワークスペースの移動操作によって移動されます。 ただし、ワークスペースから Automation アカウントへのリンクは削除しなければならないため、そのリンクに依存するソリューションは削除する必要があります。
+## <a name="workspace-move-considerations"></a>ワークスペースの移動に関する考慮事項
+ワークスペースにインストールされているマネージド ソリューションは、Log Analytics ワークスペースの移動操作によって移動されます。 接続されたエージェントは接続されたままで、送信済みデータは移動後も引き続きワークスペースに保持されます。 移動操作では、ワークスペースから任意の自動アカウントへのリンクがあってはならないため、そのリンクに依存するソリューションは削除する必要があります。
 
-削除する必要があるソリューションには、次のものがあります。 
+自動アカウントのリンクを解除する前に削除する必要があるソリューションには、次のものがあります。
 
 - 更新管理
 - 変更の追跡
 - 勤務時間外に VM を起動/停止する
 
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="delete-in-azure-portal"></a>Azure Portal での削除
 Azure portal を使用してソリューションを削除するには、次の手順を実行してください。
 
 1. ソリューションがインストールされているリソース グループのメニューを開きます。
@@ -48,7 +48,7 @@ Azure portal を使用してソリューションを削除するには、次の�
 
 ![ソリューションを削除する](media/move-workspace/delete-solutions.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="delete-using-powershell"></a>PowerShell を使用して削除する
 
 PowerShell を使用してソリューションを削除するには、次の例に示すように、[Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.8.0) コマンドレットを使用します。
 
@@ -58,7 +58,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
 ```
 
-## <a name="remove-alert-rules"></a>アラート ルール を削除する
+### <a name="remove-alert-rules"></a>アラート ルール を削除する
 **[Start/Stop VMs]** (VM の開始/停止) ソリューションの場合、ソリューションによって作成されたアラート ルールを削除する必要もあります。 これらのルールを削除するには、Azure portal で次の手順を使用します。
 
 1. **[監視]** メニューを開き、 **[アラート]** を選択します。

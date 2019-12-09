@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: b17cdb2ec27676d5d20d6f12bad309368fe32aa3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: bc6c33762fa572e971fff9dee8988a100e50b07c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006799"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561138"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Time Series Insights 環境をスケーリングする方法
 
@@ -34,13 +34,13 @@ Azure ポータルを使用して、容量を特定の価格 SKU 内で増減で
 
 1. Azure Portal で Time Series Insights 環境を見つけて選択します。
 
-1. Time Series Insighs 環境のメニューから、 **[構成]** を選択します。
+1. Time Series Insighs 環境のメニューから、 **[ストレージの構成]** を選択します。
 
-   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [![Time Series Insights の容量を構成する](media/scale-your-environment/scale-your-environment-configure.png)](media/scale-your-environment/scale-your-environment-configure.png#lightbox)
 
 1. **容量**のスライダーを調整して、受信レートとストレージ容量の要件を満たす容量を選択します。 **受信レート**、**ストレージの容量**、および**コストの見積もり**が動的に更新されて変化の影響が示されることに注目してください。
 
-   [![スライダー](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [![容量のスライダーを使用して環境を構成する](media/scale-your-environment/scale-your-environment-slider.png)](media/scale-your-environment/scale-your-environment-slider.png#lightbox)
 
    または、スライダーの右側にあるテキスト ボックスに、容量の乗数の数を入力することもできます。
 
