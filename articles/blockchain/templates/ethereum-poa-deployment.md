@@ -1,28 +1,21 @@
 ---
-title: Ethereum Proof-of-Authority Consortium
-description: Etherereum Proof-of-Authority Consortium ソリューションを使用してマルチメンバー コンソーシアム型 Ethereum ネットワークをデプロイして構成する
-services: azure-blockchain
-keywords: ''
-author: CodyBorn
-ms.author: coborn
+title: Azure 上に Ethereum Proof-of-Authority Consortium ソリューション テンプレートをデプロイする
+description: Etherereum Proof-of-Authority Consortium ソリューションを使用して Azure 上にマルチメンバー コンソーシアム型 Ethereum ネットワークをデプロイして構成する
 ms.date: 04/08/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: brendal
-manager: vamelech
-ms.openlocfilehash: 01b9f7f74077737ea95a56bbe81f440db425bf0c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.reviewer: coborn
+ms.openlocfilehash: c3e449c1d6ebaf7c6cb2c35dc9f91d55f569447a
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698448"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326172"
 ---
-# <a name="ethereum-proof-of-authority-consortium"></a>Ethereum Proof-of-Authority Consortium
+# <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Azure 上に Ethereum Proof-of-Authority Consortium ソリューションをデプロイする
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>概要
-[このソリューション](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium)は、Azure と Ethereum の最小限の知識で、マルチメンバー コンソーシアム型 Proof-of-Authority Ethereum ネットワークを簡単にデプロイ、構成、および管理できるように設計されています。
+[Ethereum Proof-of-Authority Consortium Azure ソリューション テンプレート](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium)は、Azure と Ethereum の最小限の知識で、マルチメンバー コンソーシアム型 Proof-of-Authority Ethereum ネットワークを簡単にデプロイ、構成、および管理できるように設計されています。
 
 Azure Portal でいくつかの項目を入力し、1 回のクリックでデプロイできます。各メンバーは、世界中の Microsoft Azure Compute、ネットワーキング、およびストレージ サービスを使用して、ネットワーク フットプリントをプロビジョニングできます。 各メンバーのネットワーク フットプリントは一連の負荷分散型バリデーター ノードで構成されます。アプリケーションまたはユーザーはそれらのノードと対話して、Ethereum トランザクションを送信できます。
 
