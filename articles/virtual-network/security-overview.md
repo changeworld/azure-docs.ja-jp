@@ -48,7 +48,7 @@ ms.locfileid: "73721483"
 
 ## <a name="augmented-security-rules"></a>拡張セキュリティ規則
 
-拡張セキュリティ規則を使用すると仮想ネットワークのセキュリティ定義が簡略化され、大規模で複雑なネットワーク セキュリティ ポリシーを少ない規則で定義できます。 複数のポート、複数の明示的 IP アドレスおよび範囲を組み合わせて、単一のわかりやすいセキュリティ規則を作成することができます。 拡張規則は、規則のソース、宛先、ポート フィールドで使います。 セキュリティ規則の定義の保守を簡素化するには、拡張セキュリティ規則と[サービス タグ](service-tags-overview.md)または[アプリケーション セキュリティ グループ](#application-security-groups)を組み合わせます。 規則に指定できるアドレス、範囲、およびポートの数には、制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
+拡張セキュリティ規則を使用すると仮想ネットワークのセキュリティ定義が簡略化され、大規模で複雑なネットワーク セキュリティ ポリシーを少ない規則で定義できます。 複数のポート、複数の明示的 IP アドレスおよび範囲を組み合わせて、単一のわかりやすいセキュリティ規則を作成することができます。 拡張規則は、規則のソース、宛先、ポート フィールドで使います。 セキュリティ規則の定義の保守を簡素化するには、拡張セキュリティ規則と[サービス タグ](service-tags-overview.md) または [アプリケーション セキュリティ グループ](#application-security-groups) を組み合わせます。 規則に指定できるアドレス、範囲、およびポートの数には、制限があります。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
 
 ## <a name="service-tags"></a>サービス タグ
 
