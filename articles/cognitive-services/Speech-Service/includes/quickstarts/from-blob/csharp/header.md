@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:BLOB ストレージに格納された音声を認識する (C#) - Speech Service
+title: クイック スタート:BLOB ストレージに格納された音声を認識する、C# - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 7e87dd6e46d4154ce61ad1a8fc0d3f6895c0c1d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 259de7fff432f5ef06a1348cad9a416d99885c40
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505901"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828845"
 ---
 すぐに使用できるようにするには、GitHub ですべての <a href="https://aka.ms/speech/github-csharp">Speech SDK C# サンプル</a>を表示またはダウンロードします。 それ以外の場合は、始めましょう。

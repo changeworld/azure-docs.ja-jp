@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646147"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708664"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のための継続的インテグレーションとデプロイ
 
@@ -25,12 +25,8 @@ ms.locfileid: "73646147"
 
 - [ソース管理の統合のチュートリアル](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration)を実行します
 
-- SQL Data Warehouse (プレビュー) 用に SSDT Preview Bits (16.3 プレビュー 2 以降) がインストールされた[セルフ ホステッド エージェント](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops#install)を作成します
-
 - Azure DevOps を設定して接続する
 
-  > [!NOTE]
-  > SSDT は現在プレビュー段階であり、セルフ ホステッド エージェントを利用する必要があります。 Microsoft によってホストされるエージェントは、数か月以内に更新されます。
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Visual Studio ビルドを使用した継続的インテグレーション
 
@@ -49,13 +45,13 @@ ms.locfileid: "73646147"
 この時点で、ソース管理リポジトリの master ブランチにチェックインすると、データベース プロジェクトの Visual Studio ビルドが成功したことが自動的にトリガーされる単純な環境ができています。 ローカル データベース プロジェクトに変更を加え、その変更を master ブランチにチェックインして、オートメーション全体が正常に機能していることを検証します。
 
 
-## <a name="continuous-deployment-with-the-azure-sql-database-deployment-task"></a>Azure SQL Database デプロイ タスクを使用した継続的なデプロイ
+## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Azure SQL Data Warehouse (または Database) デプロイ タスクを使用した継続的なデプロイ
 
-1. [Azure SQL Database デプロイ タスク](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops)を使用して新しいタスクを追加し、ターゲット データ ウェアハウスへの接続に必要なフィールドに入力します。 このタスクを実行すると、前のビルド プロセスから生成された DACPAC がターゲット データ ウェアハウスにデプロイされます。
+1. [Azure SQL Database デプロイ タスク](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops)を使用して新しいタスクを追加し、ターゲット データ ウェアハウスへの接続に必要なフィールドに入力します。 このタスクを実行すると、前のビルド プロセスから生成された DACPAC がターゲット データ ウェアハウスにデプロイされます。 [Azure SQL Data Warehouse デプロイ タスク](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)を使用することもできます。 
 
       ![デプロイ タスク](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "デプロイ タスク")
 
-2. セルフ ホステッド エージェントを使用する場合は、SQL Data Warehouse 用の正しい SqlPackage.exe を使用するように環境変数を設定してください。 パスは次のようになります。
+2. セルフホステッド エージェントを使用する場合は、SQL Data Warehouse 用の正しい SqlPackage.exe を使用するように環境変数を設定してください。 パスは次のようになります。
 
       ![環境変数](media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "環境変数")
 

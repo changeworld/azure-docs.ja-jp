@@ -1,6 +1,6 @@
 ---
-title: IoT プラグ アンド プレイ プレビュー デバイスを Azure IoT Central に接続する |Microsoft Docs
-description: デバイス機能モデルを使用してデバイス コードを作成します。 次に、デバイス コードを実行して、デバイスがご利用の IoT Central アプリケーションに接続されることを確認し、自動生成されたビューを使用します。
+title: チュートリアル - IoT プラグ アンド プレイ プレビュー デバイスを Azure IoT Central に接続する
+description: このチュートリアルでは、デバイス機能モデルを使用してデバイス コードを作成する方法について説明します。 次に、デバイス コードを実行して、デバイスがご利用の IoT Central アプリケーションに接続されることを確認し、自動生成されたビューを使用します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 08/08/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: be03684f89382f198c13540bbdfb3de5bf8513a6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 59261d6a1cea034df58bd7e8d53439cdf1fbae6b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404546"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702859"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>チュートリアル:デバイス機能モデルを使用して IoT プラグ アンド プレイ デバイスを作成し、ご利用の IoT Central アプリケーションに接続する
 

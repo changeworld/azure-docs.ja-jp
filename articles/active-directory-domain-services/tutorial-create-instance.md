@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 84272336a9f70f663e134e16fe88c7e43bb73548
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208575"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703686"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>チュートリアル:Azure Active Directory Domain Services インスタンスを作成して構成する
 
@@ -72,7 +72,7 @@ Azure AD DS インスタンスを作成する際は、DNS 名を指定します�
 >
 > Azure AD DS マネージド ドメインにルート DNS 名を使用できますが、環境内の他のサービス用にいくつかの DNS レコードを追加作成することが必要になる場合があります。 たとえば、ルート DNS 名を使用するサイトをホストする Web サーバーを実行する場合、名前の競合が発生して、追加の DNS エントリが必要になる可能性があります。
 >
-> これらのチュートリアルとハウツー記事では、簡略な例として *contoso.com* というカスタム ドメインを使用しています。 すべてのコマンドで、一意のプレフィックスを含む、独自のドメイン名を指定してください。
+> これらのチュートリアルとハウツー記事では、簡略な例として *aadds.contoso.com* というカスタム ドメインを使用しています。 すべてのコマンドで、一意のプレフィックスを含む、独自のドメイン名を指定してください。
 >
 > 詳細については、[ドメインの名前付けプレフィックスの選択][naming-prefix]に関するページを参照してください。
 
@@ -117,7 +117,7 @@ Azure AD DS のマネージド ドメインをすばやく作成するには、 
     ![デプロイが進行中であることを示す Azure portal の通知](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. ディレクトリに新しいリソースが作成されたなど、デプロイ プロセスに関する最新情報がページに読み込まれます。
-1. リソース グループ (例: *myResourceGroup*) を選択し、Azure リソースの一覧から Azure AD DS インスタンス (例: *contoso.com*) を選択します。 **[概要]** タブでは、マネージド ドメインが現在 "*デプロイ中*" であることが示されます。 完全にプロビジョニングされるまで、マネージド ドメインを構成することはできません。
+1. リソース グループ (例: *myResourceGroup*) を選択し、Azure リソースの一覧から Azure AD DS インスタンス (例: *aadds.contoso.com*) を選択します。 **[概要]** タブでは、マネージド ドメインが現在 "*デプロイ中*" であることが示されます。 完全にプロビジョニングされるまで、マネージド ドメインを構成することはできません。
 
     ![Domain Services の状態 (プロビジョニング中)](./media/tutorial-create-instance/provisioning-in-progress.png)
 

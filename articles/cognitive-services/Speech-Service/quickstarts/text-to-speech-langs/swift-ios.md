@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する、Swift - Speech Service
+title: クイック スタート:音声を合成する、Swift - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: iOS 上で Swift と Speech SDK を使用して音声を合成する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 1ef473b36634c0e0bed8562f84d0de04d9e64383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 49dc162f59c92cc8e4e154056adb1b27f711e463
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505493"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817745"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>クイック スタート:iOS 上で Swift と Speech SDK を使用して音声を合成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "73505493"
 
 開始する前の前提条件の一覧を次に示します。
 
-* Speech Service 用の[サブスクリプション キー](~/articles/cognitive-services/Speech-Service/get-started.md)。
+* Speech サービス用の[サブスクリプション キー](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 以降と [CocoaPods](https://cocoapods.org/) 以降がインストールされた macOS マシン。
 
 ## <a name="get-the-speech-sdk-for-ios"></a>iOS 用の Speech SDK を取得する

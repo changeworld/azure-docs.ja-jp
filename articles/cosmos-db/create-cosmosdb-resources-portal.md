@@ -1,6 +1,6 @@
 ---
-title: Azure portal で Azure Cosmos データベースを作成します。
-description: Azure portal を使用して、Azure Cosmos のデータベース、コンテナー、および項目を作成します。
+title: クイックスタート - Azure portal から Azure Cosmos データベースを作成する
+description: このクイックスタートでは、Azure portal を使用して、Azure Cosmos のデータベース、コンテナー、項目を作成する方法について説明します。
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/01/2019
-ms.openlocfilehash: b42a442564812f4386eb94b9bd7b7c9aff9e9f29
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0f7102081d5ccd29507917068893b484902a4fb3
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220725"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708180"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Cosmos のアカウント、データベース、コンテナー、および項目を作成する
 

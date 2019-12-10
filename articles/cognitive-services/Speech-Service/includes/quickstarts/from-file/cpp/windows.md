@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:オーディオ ファイルから音声を認識する、C++ (Windows) - Speech Service
+title: クイック スタート:オーディオ ファイルから音声を認識する、C++ (Windows) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Windows デスクトップで C++ と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 09e0b6fbfcb8541a0756a855d4548e456a7b5c90
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 005d3c36525546443f96ec2134a2c8f9ad44b4dd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506381"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819431"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,6 +25,8 @@ ms.locfileid: "73506381"
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=windows)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -84,13 +86,16 @@ ms.locfileid: "73506381"
 
 1. メニュー バーから **[ファイル]**  >  **[すべて保存]** を選択します。
 
+> [!NOTE]
+> Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
+
 ## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
 
 1. メニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** を選択してアプリケーションをビルドします。 これで、コードは、エラーなしでコンパイルされます。
 
 1. **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押して、**helloworld** アプリケーションを起動します。
 
-1. オーディオ ファイルが Speech Services に送信され、ファイルの最初の発話がテキストに文字起こしされて、同じウィンドウに表示されます。
+1. オーディオ ファイルが Speech サービスに送信され、ファイルの最初の発話がテキストに文字起こしされて、同じウィンドウに表示されます。
 
    ```text
    Recognizing first result...

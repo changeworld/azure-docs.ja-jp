@@ -1,22 +1,18 @@
 ---
-title: 承認ベースの自動化されたワークフローを作成する - Azure Logic Apps
+title: 承認ベースの自動化されたワークフローを作成する
 description: チュートリアル - Azure Logic Apps を使用して、メーリング リストの登録を処理する承認ベースの自動化されたワークフローを作成する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: f720e22542533d17fc7ab581f8ba8d9c03a89570
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: bcd90859066911797d78737187cae6d361029ddd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73025580"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784665"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>チュートリアル:Azure Logic Apps を使用して承認ベースの自動化されたワークフローを作成する
 
@@ -120,7 +116,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![シェイプを折りたたんで詳細を非表示](./media/tutorial-process-mailing-list-subscriptions-workflow/collapse-trigger-shape.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 ロジック アプリは現在稼働していますが、受信メールをチェックすること以外は何もしていません。 そこで、トリガーが起動したときに反応するアクションを追加します。
 
@@ -151,7 +147,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    このアクションのプロパティの詳細については、[Office 365 Outlook のコネクタ リファレンス](https://docs.microsoft.com/connectors/office365/)または [Outlook.com のコネクタ リファレンス](https://docs.microsoft.com/connectors/outlook/)を参照してください。
  
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、承認者によって選択された回答をチェックする条件を追加します。
 
@@ -187,7 +183,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       ![Approved に対する完成した条件の例](./media/tutorial-process-mailing-list-subscriptions-workflow/build-condition-check-approval-response-2.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、レビュー担当者が申請を承認したときにロジック アプリによって実行されるアクションを指定します。 
 
@@ -216,7 +212,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    このアクションのプロパティの詳細については、[MailChimp のコネクタ リファレンス](https://docs.microsoft.com/connectors/mailchimp/)を参照してください。
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、新しいメンバーがメーリング リストに正常に登録されたかどうかをチェックするための条件を追加します。 そうすることで、この操作の成否に関する通知をロジック アプリから受け取ることができます。
 
@@ -269,7 +265,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    | **本文** | はい | <*body-for-success-email*> | 成功時に送信されるメールの本文の内容。 このチュートリアルでは、次のテキストを入力します。 <p>`New member has joined "test-members-ML":` <p>動的コンテンツ リストから、 **[メール アドレス]** プロパティを選択します。 <p>次の行で、「`Member opt-in status: `」というテキストを入力します。 <p> 動的コンテンツ リストから、 **[メンバーをリストに追加する]** の **[状態]** プロパティを選択します。 |
    |||||
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 ## <a name="send-email-if-member-not-added"></a>メンバーが追加されなかった場合にメールを送信する
 
@@ -294,7 +290,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    | **本文** | はい | <*body-for-failure-email*> | 失敗時に送信されるメールの本文の内容。 このチュートリアルでは、次のテキストを入力します。 <p>`Member might already exist. Check your MailChimp account.` |
    |||||
 
-1. ロジック アプリを保存し、 
+1. ロジック アプリを保存します。 
 
 次に、ロジック アプリをテストします。この時点で、ロジック アプリは次のようになっています。
 

@@ -1,5 +1,5 @@
 ---
-title: Ruby を使用して Azure Database for PostgreSQL - Single Server に接続する
+title: Ruby を使用して接続する - Azure Database for PostgreSQL - Single Server
 description: このクイックスタートでは、Azure Database for PostgreSQL - Single Server に接続してデータを照会するために使用できる、Ruby コード サンプルを紹介します。
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 242f5724e81f9b8ac6177e5c9d3844b3fab9a7f2
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 5dd4cfe9bee0db6f14f736c79fe91770641008fb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067277"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766907"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-ruby-to-connect-and-query-data"></a>Azure Database for PostgreSQL - Single Server: Ruby を使った接続とデータの照会
 このクイックスタートでは、[Ruby](https://www.ruby-lang.org) アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、Ruby を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
@@ -33,7 +33,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **mydemoserver**) を検索します。
 3. サーバー名をクリックします。
-4. サーバーの **[概要]** パネルから、**[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
+4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
  ![Azure Database for PostgreSQL サーバーの名前](./media/connect-ruby/1-connection-string.png)
 
 > [!NOTE]

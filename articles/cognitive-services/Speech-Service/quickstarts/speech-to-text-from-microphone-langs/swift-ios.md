@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:マイクから音声を認識する、Swift - Speech Service
+title: クイック スタート:マイクから音声を認識する、Swift - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: iOS 上で Swift と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 661dd94caa2a1998b26ec1270688c0729011c15a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 53ddf18c0ea102968db03bc4435b7615e724892a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505701"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818509"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>クイック スタート:iOS 上で Swift と Speech SDK を使用して音声を認識する
 
@@ -27,7 +27,7 @@ ms.locfileid: "73505701"
 
 以降の手順を開始する前に次の要件を満たしておく必要があります。
 
-* Speech Service 用の[サブスクリプション キー](~/articles/cognitive-services/Speech-Service/get-started.md)。
+* Speech サービス用の[サブスクリプション キー](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 以降と [CocoaPods](https://cocoapods.org/) 以降がインストールされた macOS マシン。
 
 ## <a name="get-the-speech-sdk-for-ios"></a>iOS 用の Speech SDK を取得する
@@ -36,7 +36,7 @@ ms.locfileid: "73505701"
 
 このチュートリアルは 1.6.0 より前のバージョンの SDK では動作しません。
 
-iOS 用の Cognitive Services Speech SDK は、フレームワーク バンドルとして配布されています。 Xcode プロジェクトで [CocoaPod](https://cocoapods.org/) として使用することも、 https://aka.ms/csspeech/macosbinary からダウンロードして手動でリンクすることも可能です。 この記事では、CocoaPod を使用します。
+iOS 用の Cognitive Services Speech SDK は、フレームワーク バンドルとして配布されています。 Xcode プロジェクトで [CocoaPod](https://cocoapods.org/) として使用することも、 https://aka.ms/csspeech/iosbinary からダウンロードして手動でリンクすることも可能です。 この記事では、CocoaPod を使用します。
 
 ## <a name="create-an-xcode-project"></a>Xcode プロジェクトを作成する
 

@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 492fa7f4989a40ea1d5ec91a4fbf4dbbe79ef6ce
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383257"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790349"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>チュートリアル:Logic Apps を使用して Azure Digital Twins 空間から通知を受け取る
 
@@ -116,11 +116,11 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
     [![Logic Apps リソースを作成する](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
 
-1. Logic Apps リソースがデプロイされたらこれを開き、 **[ロジック アプリ デザイナー]** ウィンドウを開きます。 
+1. Logic Apps リソースがデプロイされたらこれを開き、 **[ロジック アプリ デザイナー]** ペインを開きます。 
 
-1. **[Event Grid のリソース イベントが発生するとき]** トリガーを選択します。 メッセージが表示されたら、Azure アカウントを使用して目的のテナントにサインインします。 メッセージが表示されたら、目的の Event Grid リソースへの **[アクセスを許可]** を選択します。 **[続行]** をクリックします。
+1. **[Event Grid のリソース イベントが発生するとき]** トリガーを選択します。 **[Azure Event Grid]** オプションを展開し、メッセージが表示されたら、Azure アカウントを使用して目的のテナントにサインインします。 メッセージが表示されたら、目的の Event Grid リソースへの **[アクセスを許可]** を選択します。 **[続行]** をクリックします。
 
-1. **[When a resource event occurs (Preview)]\(リソース イベントが発生したとき (プレビュー)\)** ウィンドウで、次の操作を行います。 
+1. **[リソース イベントが発生したとき]** ウィンドウで、次の操作を行います。 
    
    a. Event Grid トピックを作成するときに使用した**サブスクリプション**を選択します。
 
@@ -128,7 +128,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    c. **[リソース名]** のドロップダウン ボックスで目的の Event Grid リソースを選択します。
 
-   [![ロジック アプリ デザイナー ウィンドウ](./media/tutorial-facilities-events/logic-app-resource-event.png)](./media/tutorial-facilities-events/logic-app-resource-event.png#lightbox)
+   [![ロジック アプリ デザイナー ペイン](./media/tutorial-facilities-events/logic-app-resource-event.png)](./media/tutorial-facilities-events/logic-app-resource-event.png#lightbox)
 
 1. **[新しいステップ]** を選択します。
 
@@ -186,7 +186,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    [![Logic Apps での [電子メールの送信] の選択](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
 
-1. **[ロジック アプリ デザイナー]** ウィンドウの最上部にある **[保存]** ボタンを選択します。
+1. **[ロジック アプリ デザイナー]** ペインの最上部にある **[保存]** ボタンを選択します。
 
 1. コマンド ウィンドウで Digital Twins サンプルの **device-connectivity** フォルダーに移動し、`dotnet run` を実行して、センサー データをシミュレートします。
 

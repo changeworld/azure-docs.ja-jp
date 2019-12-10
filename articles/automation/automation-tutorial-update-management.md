@@ -6,15 +6,15 @@ author: mgoedtel
 ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 12/03/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 65ce4234da3f44de11522a626d2c0d10524e4673
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 44372f32227bbfef46a72afa6f9b0bd88b29905b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278779"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806560"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure VM の更新プログラムとパッチの管理
 
@@ -127,6 +127,10 @@ Update Management が有効になると、 **[更新の管理]** ウィンドウ
 ## <a name="schedule-an-update-deployment"></a>更新プログラムのデプロイをスケジュールする
 
 次に、リリース スケジュールとサービス期間に従って展開をスケジュールし、更新プログラムをインストールします。 デプロイに含める更新の種類を選択できます。 たとえば、緊急更新プログラムやセキュリティ更新プログラムを追加し、更新プログラムのロールアップを除外できます。
+
+>[!NOTE]
+>更新プログラムのデプロイをスケジュールすると、対象マシンへの更新プログラムのデプロイを処理する **Patch-MicrosoftOMSComputers** Runbook にリンクされた[スケジュール](shared-resources/schedules.md) リソースが作成されます。 デプロイの作成後に Azure portal または PowerShell を使用してこのスケジュール リソースを削除した場合、スケジュールされた更新プログラムのデプロイが壊れ、ポータルから再構成しようとするとエラーが発生します。 スケジュール リソースは、対応するデプロイ スケジュールを削除することによってのみ削除することができます。  
+>
 
 VM の新しい更新プログラムの展開をスケジュールするには、 **[更新の管理]** に移動し、 **[更新プログラムの展開のスケジュール]** を選択します。
 

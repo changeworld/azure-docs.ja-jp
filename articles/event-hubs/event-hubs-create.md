@@ -4,18 +4,17 @@ description: このクイック スタートでは、Azure portal を使用し�
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 209bdb919a505e55bdfb8868d556fa1ad08db2fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a94e67af927365eda2b8b98240285e7cd3079a95
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717949"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688138"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>クイック スタート: Azure portal を使用したイベント ハブの作成
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -59,9 +58,11 @@ Event Hubs 名前空間は一意のスコープ コンテナーを提供しま�
 
    ![[追加] ボタン](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. **[名前空間の作成]** ページで、次の手順を実行します。
-    1. 名前空間の名前を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
-    2. 価格レベル (Basic または Standard) を選択します。
-    3. 名前空間を作成する**サブスクリプション**を選択します。
+    1. 名前空間の**名前**を入力します。 その名前が使用できるかどうかがすぐに自動で確認されます。
+    2. **価格レベル** (Basic または Standard) を選択します。
+    3. **[Kafka を有効にする]** オプションが自動的に有効になっていることに注意してください。 Azure Event Hubs は、Kafka エンドポイントを提供します。 このエンドポイントにより、Event Hubs 名前空間で [Apache Kafka](https://kafka.apache.org/intro) メッセージ プロトコルと API をネイティブに認識することができます。 この機能を利用すれば、プロトコル クライアントを変更したり、独自のクラスターを実行したりすることなく、Kafka トピックの場合と同様に、イベント ハブと通信することができます。 Event Hubs は、[Apache Kafka バージョン 1.0](https://kafka.apache.org/10/documentation.html) 以降をサポートします。
+    4. 名前空間を作成する**サブスクリプション**を選択します。
+    5. 既存の**リソース グループ**を選択するか、新しいリソース グループを作成します。 
     4. 名前空間の**場所**を選択します。
     5. **作成** を選択します。 システムがリソースを完全にプロビジョニングするまで、数分間待つことが必要な場合があります。
 

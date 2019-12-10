@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:カスタム音声アシスタント (C#) (UWP) - Speech Service
+title: クイック スタート:カスタム音声アシスタント、C# (UWP) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: この記事では、Cognitive Services Speech ソフトウェア開発キット (SDK) を使用して C# のユニバーサル Windows プラットフォーム (UWP) アプリケーションを作成します。 クライアント アプリケーションを、Direct Line Speech チャネルを使用するように構成された、以前に作成済みの Bot Framework ボットに接続します。 このアプリケーションは、Speech SDK NuGet パッケージと Microsoft Visual Studio 2019 を使用して作成します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 75ecbe8351e68b77a59b40709a2beb15d09b16df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 25d74b640f1bf567792c317626da0178ead7e34f
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506229"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816235"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-uwp"></a>クイック スタート:Speech SDK、UWP を使用して音声アシスタントを作成する
 
@@ -31,7 +31,7 @@ ms.locfileid: "73506229"
 このクイック スタートでは以下が必要です。
 
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。
-* Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) 上に作成します。
+* Speech サービス用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) 上に作成します。
 * [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)で構成された、以前に作成済みのボット。
 
   > [!NOTE]
@@ -292,7 +292,7 @@ ms.locfileid: "73506229"
 1. `InitializeDialogServiceConnector` のメソッド本体に、次のコード スニペットを追加します。 このコードにより、サブスクリプション情報を使用して `DialogServiceConnector` が作成されます。
 
     ```csharp
-    // Create a BotFrameworkConfig by providing a Speech Service subscription key
+    // Create a BotFrameworkConfig by providing a Speech service subscription key
     // the RecoLanguage property is optional (default en-US)
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
     const string region = "YourServiceRegion"; // Your subscription service region.
@@ -422,7 +422,7 @@ ms.locfileid: "73506229"
 ## <a name="see-also"></a>関連項目
 
 - [音声アシスタントについて](voice-assistants.md)
-- [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
+- [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
 - [カスタム キーワード](speech-devices-sdk-create-kws.md)
 - [Direct Line Speech をボットに接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [GitHub で C# のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)

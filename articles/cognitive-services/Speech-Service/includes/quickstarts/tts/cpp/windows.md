@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する、C++ (Windows) - Speech Service
+title: クイック スタート:音声を合成する、C++ (Windows) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Windows デスクトップで C++ と Speech SDK を使用して音声を合成する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/24/2019
 ms.author: yinhew
-ms.openlocfilehash: c0666dccbb7f110e122c4632995299a414bf690a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 35c8eb640e3c8c9e33486d5126f83dd40b5b96e0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505413"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818097"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ ms.locfileid: "73505413"
 
 1. **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押して、**helloworld** アプリケーションを起動します。
 
-1. 英語の語句または文を入力します。 そのテキストが Speech Services に転送され、そこで合成された音声がアプリケーションに送信されてスピーカーで再生されます。
+1. 英語の語句または文を入力します。 そのテキストが Speech サービスに転送され、そこで合成された音声がアプリケーションに送信されてスピーカーで再生されます。
 
    ![音声合成が成功した後のコンソール出力](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-cpp-windows-console-output.png)
 

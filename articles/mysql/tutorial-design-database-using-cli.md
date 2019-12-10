@@ -1,19 +1,19 @@
 ---
-title: チュートリアル:Azure CLI を使用して Azure Database for MySQL を設計する
+title: チュートリアル:サーバーを設計する - Azure CLI - Azure Database for MySQL
 description: このチュートリアルでは、コマンド ラインから Azure CLI を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/29/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 00c2efacab72c08d33b0004650bece2c369c757b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 00beae5a65e61f814d3498dbb41af02aaf0287fb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935998"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771215"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for MySQL を設計する
 
@@ -188,7 +188,7 @@ az mysql server restore --resource-group myresourcegroup --name mydemoserver-res
 | Setting | 推奨値 | 説明  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
-| name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
+| 名前 | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 復元する特定の時点を選びます。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、ローカルなタイムゾーン (例: `2017-04-13T05:59:00-08:00`) または UTC Zulu 形式 (例: `2017-04-13T13:59:00Z`) を使うことができます。 |
 | source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |
 

@@ -1,17 +1,17 @@
 ---
-title: クイック スタート:Maven を使用してアプリケーションを起動する - Azure Spring Cloud
-description: Maven を使用してサンプル アプリケーションを起動する
+title: クイックスタート - Azure Spring Cloud の Maven を使用してアプリケーションを起動する
+description: このチュートリアルでは、Maven を使用してサンプル アプリケーションを起動します。
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1a719b878f3e5fbade3adf453ac7d0604ea85077
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: ea840d1e133c213c907e596e5eb0a651820291c9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384077"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708862"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>クイック スタート:Maven プラグインを使用して Azure Spring Cloud アプリを起動する
 

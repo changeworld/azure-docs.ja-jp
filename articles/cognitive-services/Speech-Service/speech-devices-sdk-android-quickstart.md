@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Android 上で Speech Devices SDK を実行する
+title: クイック スタート:Android 上で Speech Devices SDK を実行する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Android Speech Devices SDK を使用するための前提条件と手順です。
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: c3eb6ec28879a7c53feb270e33857cd67dc06b0b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ccc6c2554576d91d2236fb84f81c8aeccdc07be7
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111694"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815343"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>クイック スタート:Android 上で Speech Devices SDK サンプル アプリを実行する
 
 このクイックスタートでは、Speech Devices SDK for Android を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](conversation-transcription-service.md)デバイスとして使用する方法について説明します。
 
-このガイドでは、Speech Services リソースがある [Azure Cognitive Services](get-started.md) アカウントが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+このガイドでは、Speech サービス リソースがある [Azure Cognitive Services](get-started.md) アカウントが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 サンプル アプリケーションのソース コードは Speech Devices SDK に付属しています。 [GitHub で入手する](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)こともできます。
 
@@ -36,11 +36,11 @@ Speech Devices SDK の使用を開始する前に、次のことを行う必要�
   > [!NOTE]
   > Android-Sample-Release.zip ファイルには、Android サンプル アプリが含まれており、このクイックスタートでは、アプリが C:\SDSDK\Android-Sample-Release に抽出されることを前提としています
 
-- [Speech Services 用の Azure サブスクリプション キー](get-started.md)を取得します。
+- [Speech サービス用の Azure サブスクリプション キー](get-started.md)を取得します
 
 - 会話の文字起こしを使用する予定がある場合は、[円形マイク デバイス](get-speech-devices-sdk.md)を使用する 必要があります。この機能は現在、"centralus" および "eastasia" リージョンの "en-US" と "zh-CN" でのみ使用できます。 会話の文字起こしを使用するには、それらのいずれかのリージョンの Speech キーが必要です。
 
-- Speech Services を使用してユーザーの発話から意図 (またはアクション) を識別する場合は、[Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) サブスクリプションが必要です。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)」 を参照してください。
+- Speech サービスを使用してユーザーの発話から意図 (またはアクション) を識別する場合は、[Language Understanding Service (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) サブスクリプションが必要です。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)」 を参照してください。
 
   [LUIS の単純なモデルを作成](https://docs.microsoft.com/azure/cognitive-services/luis/)またはサンプルの LUIS モデルである LUIS-example.json. を使用できます。 サンプルの LUIS モデルは、[Speech Devices SDK のウンロード サイト](https://aka.ms/sdsdk-luis)から入手できます。 モデルの JSON ファイルを [LUIS ポータル](https://www.luis.ai/home)にアップロードするには、 **[新しいアプリのインポート]** を選択し、その JSON ファイルを選択します。
 

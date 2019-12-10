@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:マイクから音声を認識する - Speech Service
+title: クイック スタート:マイクから音声を認識する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Speech SDK を使用して、マイクからキャプチャされたオーディオ データの音声を対話形式で認識します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 11/07/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e375e570539c6a5f3965549a04248d6c1e1df3d3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 14299ae452f0265a9c02ddf90236c8b328a43773
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961230"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818651"
 ---
 # <a name="quickstart-recognize-speech-from-a-microphone"></a>クイック スタート:マイクから音声を認識する
 

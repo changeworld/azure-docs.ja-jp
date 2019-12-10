@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を認識する、Python - Speech Service
+title: クイック スタート:音声を認識する、Python - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: fe969b45384568a41fe74415995b0173450eeaf4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44fafa361744f3c405cdb5c7ad416146fc0b1de2
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505069"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817231"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -91,7 +91,7 @@ ms.locfileid: "73505069"
    python quickstart.py
    ```
 
-1. 英語の語句または文を読み上げます。 その音声が Speech Services に転送され、(このケースではフランス語とドイツ語に) 翻訳されてテキストに文字起こしされます。 そのテキストが Speech Services からアプリケーションに返されて表示されます。
+1. 英語の語句または文を読み上げます。 その音声が Speech サービスに転送され、翻訳されてテキストに文字起こしされます (このケースではフランス語とドイツ語に)。 そのテキストが Speech サービスからアプリケーションに返されて表示されます。
 
    ```
    Say something...

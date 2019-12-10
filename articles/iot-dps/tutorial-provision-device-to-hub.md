@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub Device Provisioning Service を使用してデバイスをプロビジョニングする
-description: チュートリアル - Azure IoT Hub Device Provisioning Service を使用して 1 つの IoT ハブにデバイスをプロビジョニングする
+title: チュートリアル - Azure IoT Hub Device Provisioning Service を使用してデバイスをプロビジョニングする
+description: このチュートリアルでは、Azure IoT Hub Device Provisioning Service を使用して 1 つの IoT ハブにデバイスをプロビジョニングする方法を説明します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 6be3832163d4aa857b15f73671985b96d864b730
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358fa1fdc767919720ecb26497c818f4945badb6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228292"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702474"
 ---
 # <a name="tutorial-provision-the-device-to-an-iot-hub-using-the-azure-iot-hub-device-provisioning-service"></a>チュートリアル:Azure IoT Hub Device Provisioning Service を使用した IoT ハブへのデバイスのプロビジョニング
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声をオーディオ ファイルに合成する (Python) - Speech Service
+title: クイック スタート:音声をオーディオ ファイルに合成する、Python - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: d6f6519ea5df630a914243046e74c315b4bd7db9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 314a5302c76157810557036370a18ad6fb605033
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505397"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817945"
 ---
 ## <a name="prerequisites"></a>前提条件
 
-* Speech Services 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](~/articles/cognitive-services/Speech-Service/get-started.md)。
+* Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * [Python 3.5 以降](https://www.python.org/downloads/)。
 * 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。
     * Windows: x64 および x86。
@@ -127,7 +127,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
    ![ファイルを作成する](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-newfile.png)
 
 1. 新しく作成されたファイルに [Python コード](#sample-code)をコピーして貼り付け、保存します。
-1. お使いの Speech Services のサブスクリプション情報を挿入します。
+1. お使いの Speech サービスのサブスクリプション情報を挿入します。
 1. Python インタープリターが選択されている場合は、ウィンドウの下部にあるステータス バーの左側にそれが表示されます。
    そうでない場合は、使用可能な Python インタープリターの一覧が表示されます。 コマンド パレットを開いて (Ctrl + Shift + P)、「**Python: Select Interpreter**」と入力します。 適切なものを選択します。
 1. Visual Studio Code 内から Speech SDK Python パッケージをインストールできます。 選択した Python インタープリター用にまだインストールされていない場合は、インストールします。

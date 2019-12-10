@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a9a68e9d71324ba05e24ba98802863211a569689
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839935"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815805"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure SQL Data Warehouse を作成し、クエリを実行する
 
@@ -51,16 +51,14 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
     | Setting | 推奨値 | 説明 |
     | :------ | :-------------- | :---------- |
-    | **データベース名** | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 データ ウェアハウスはデータベースの一種です。|
     | **サブスクリプション** | 該当するサブスクリプション | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
     | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
-    | **ソースの選択** | サンプル | サンプル データベースの読み込みを指定します。 データ ウェアハウスはデータベースの一種です。 |
-    | **[サンプルの選択]** | AdventureWorksDW | AdventureWorksDW サンプル データベースの読み込みを指定します。 |
+    | **データ ウェアハウス名** | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 データ ウェアハウスはデータベースの一種です。|
     ||||
 
     ![データ ウェアハウスを作成する](media/create-data-warehouse-portal/select-sample.png)
 
-4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
+4. 既存の**サーバー**を選択するか、 **[新規作成]** を選択して新しいデータベース用に新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
     | Setting | 推奨値 | 説明 |
     | :------ | :-------------- | :---------- |
@@ -82,7 +80,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 8. **[Apply]** をクリックします。
 
-9. [SQL Data Warehouse] フォームの入力が完了したら、 **[作成]** をクリックしてデータベースをプロビジョニングします。 プロビジョニングには数分かかります。
+9. [SQL Data Warehouse] フォームの [基本] タブの入力が完了したら、 **[確認と作成]** をクリックしてデータベースをプロビジョニングします。 プロビジョニングには数分かかります。
 
     ![[作成] をクリックする](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 

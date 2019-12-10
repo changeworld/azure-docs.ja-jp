@@ -1,27 +1,18 @@
 ---
-title: Node.js Web アプリの作成 - Azure App Service | Microsoft Docs
-description: Azure App Service の Web Apps で、初めての Node.js の Hello World を数分でデプロイします。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'クイック スタート: Node.js Web アプリを作成する'
+description: Azure App Service に、初めての Node.js の Hello World を数分でデプロイします。 デプロイには、App Service への数あるデプロイ方法の 1 つである Visual Studio Code を使用します。
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 09/30/2019
-ms.author: cephalin
 ms.custom: seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: 98d939c69bb03666dbeed124778b06f8a7e73532
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91494cc9c1e3a1fc159702bdbb7f68a4423b604c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471462"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671358"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する 
 

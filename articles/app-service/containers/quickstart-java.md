@@ -1,27 +1,19 @@
 ---
-title: Linux での Java Web アプリの作成 - Azure App Service
-description: このクイック スタートでは、Azure App Service on Linux で、初めての Java の Hello World を数分でデプロイします。
+title: クイック スタート:Linux Java アプリを作成する
+description: App Service で Linux コンテナーに初めての Java アプリをデプロイして、Azure App Service での Linux アプリの使用を開始します。
 keywords: Azure, App Service, Web アプリ, Linux, Java, Maven, クイック スタート
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.author: msangapu
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3b011d3d7dc881d44fdcafb29efacf9548866d7a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: eb5c6ef9b342b149851f907b7bc81370327b12ca
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747734"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689016"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Java アプリを作成する
 
@@ -53,7 +45,11 @@ Azure App Service へのデプロイ プロセスでは、Azure CLI からアカ
 az login
 ```
 
-次に、デプロイを構成し、[コマンド プロンプト] で maven コマンド `mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config` を実行し、 **[Confirm (Y/N)]\(確認 (Y/N)\)** プロンプトが表示されるまで **Enter** キーを押して既定の構成を使用し、 **'y'** キーを押して構成を完了します。
+次に、デプロイを構成し、コマンド プロンプトで maven コマンドを実行し、 **[Confirm (Y/N)]\(確認 (Y/N)\)** プロンプトが表示されるまで **Enter** キーを押して既定の構成を使用し、**y** キーを押して構成を完了します。 
+```cmd
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
+```
+サンプル プロセスは次のようになります。
 
 ```cmd
 ~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
@@ -105,6 +101,9 @@ Confirm (Y/N)? : Y
 [`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | ランタイム環境の構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)を参照してください。 | 0.1.0 以降
 [`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | デプロイ構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)を参照してください。 | 0.1.0 以降
 
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)
+
 ## <a name="deploy-the-app"></a>アプリケーションのデプロイ
 
 次のコマンドを使用して、Java アプリを Azure にデプロイします。
@@ -119,9 +118,12 @@ mvn package azure-webapp:deploy
 
 **お疲れさまでした。** App Service on Linux に初めての Java アプリをデプロイしました。
 
+> [!div class="nextstepaction"]
+> [問題が発生しました](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-前の手順では、リソース グループ内に Azure リソースを作成しました。 これらのリソースが将来必要になると想定していない場合、Cloud Shell で次のコマンドを実行して、リソース グループを削除します。
+前の手順では、リソース グループ内に Azure リソースを作成しました。 今後これらのリソースが必要になることが予想されない場合は、ポータルからリソース グループを削除するか、Cloud Shell で次のコマンドを実行します。
 
 ```azurecli-interactive
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
@@ -142,3 +144,6 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 > [!div class="nextstepaction"]
 > [その他の Java 開発者向けの Azure リソース](/java/azure/)
+
+> [!div class="nextstepaction"]
+> [Azure 用の Maven プラグインの詳細はこちら](https://github.com/microsoft/azure-maven-plugins)

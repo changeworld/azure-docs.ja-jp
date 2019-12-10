@@ -1,23 +1,18 @@
 ---
-title: Visual Studio Code を使用してタスクを自動化する - Azure Logic Apps
+title: Visual Studio Code を使用してタスクを自動化する
 description: Visual Studio Code (VS Code) を使用して、ロジック アプリの基になる JSON 定義を作成または編集します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: azure-vs
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, deli, LADocs
+ms.reviewer: klam, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
-ms.openlocfilehash: 96551d3c7f0d37bc7ed8696666b130fa83dae41b
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 819a60887743f39d3c2ffab3c955b2980cee2725
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063649"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784835"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>クイック スタート:Visual Studio Code を使用してロジック アプリ ワークフローの定義を作成、管理する
 

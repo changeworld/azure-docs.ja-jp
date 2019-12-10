@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声間翻訳、C# (.NET Core Windows) - Speech Service
+title: クイック スタート:音声間で翻訳する、C# (.NET Core Windows) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9dbb1dcb96ba8e46128e6996d78d95dfd43a8527
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ef59f98cf27674b277c02c3e510ca100273bdcf
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504797"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817546"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -127,7 +127,7 @@ ms.locfileid: "73504797"
 
 1. **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押して、**helloworld** アプリケーションを起動します。
 
-1. 英語の語句または文を読み上げます。 このアプリケーションによって、その音声が Speech Services に転送され、(このケースではドイツ語に) 翻訳されてテキストに文字起こしされます。 合成されたオーディオとテキストが Speech Services からアプリケーションに返されて表示されます。
+1. 英語の語句または文を読み上げます。 このアプリケーションによって、その音声が Speech サービスに転送され、翻訳されてテキストに文字起こしされます (このケースではドイツ語に)。 合成されたオーディオとテキストが Speech サービスからアプリケーションに返されて表示されます。
 
 ````
 Say something...

@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: SQL モジュールを使用してデータを格納する - Azure IoT Edge | Microsoft Docs'
-description: SQL Server モジュールを使用して IoT Edge デバイスでデータをローカルに格納する方法について説明します
+title: 'チュートリアル: Azure IoT Edge と SQL モジュールを使用してデータを格納する'
+description: このチュートリアルでは、SQL Server モジュールを使用して IoT Edge デバイスのローカルにデータを格納する方法について説明します
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5a3133100621cee2e786c4001df02f2316b1e4ec
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: dc8e3e92a9b843291643fe3a43092a6ac9b9c7cb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457055"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701910"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル:SQL Server データベースを使用したエッジでのデータの格納
 

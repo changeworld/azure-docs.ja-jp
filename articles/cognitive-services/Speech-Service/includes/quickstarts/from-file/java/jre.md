@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0ba76ed2bd7d6259307e2e8046c4695786ff3045
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0dbfab9b1886b39f166b94447fed8dc6707404bd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506413"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796103"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -17,6 +17,8 @@ ms.locfileid: "73506413"
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=jre)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -108,6 +110,9 @@ ms.locfileid: "73506413"
 1. 文字列 `whatstheweatherlike.wav` を実際のファイル名に置き換えます。
 
 1. プロジェクトへの変更内容を保存します。
+
+> [!NOTE]
+> Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 

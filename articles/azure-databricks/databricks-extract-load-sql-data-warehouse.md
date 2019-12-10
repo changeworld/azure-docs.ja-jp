@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure Databricks を使用して ETL 操作を実行する'
-description: Data Lake Storage Gen2 から Azure Databricks にデータを抽出し、変換して、Azure SQL Data Warehouse に読み込む方法を説明します。
+title: チュートリアル - Azure Databricks を使用して ETL 操作を実行する
+description: このチュートリアルでは、Data Lake Storage Gen2 から Azure Databricks にデータを抽出し、変換して、Azure SQL Data Warehouse に読み込む方法を説明します。
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 8ceb9e940584ae4c41484fe31ce5cb1832bb3400
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 11e5aac559370c478b774f2a503bde590dfeedf4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605698"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707453"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 

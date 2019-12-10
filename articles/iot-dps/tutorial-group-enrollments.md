@@ -1,6 +1,6 @@
 ---
-title: シミュレートされた X.509 デバイスを Java と登録グループを使用して Azure IoT Hub にプロビジョニングする
-description: チュートリアル - シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成およびプロビジョニングする
+title: チュートリアル - シミュレートされた X.509 デバイスを Java と登録グループを使用して Azure IoT Hub にプロビジョニングする
+description: このチュートリアルでは、シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングします。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: a903997c6548aad3638ba5785d23ee7642d403fc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 28cb37ad4fcd41818c3dfc18925ec65b04dddd00
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228331"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702454"
 ---
 # <a name="tutorial-create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>チュートリアル:シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
 

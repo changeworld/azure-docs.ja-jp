@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Speech SDK for .NET Framework (Windows) プラットフォームの設定 - Speech Service
+title: クイック スタート:Speech SDK for .NET Framework (Windows) プラットフォームの設定 - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Speech Services SDK を使用して Windows 用の .NET Framework で C# のプラットフォームを設定するには、このガイドを使用します。
+description: Speech サービス SDK を使用して Windows 用の .NET Framework で C# のプラットフォームを設定するには、このガイドを使用します。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: efd4339f55f2b5454e3ad9853b9c8d833763ea86
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7073791a9ad1da910ee0811478b86840211d9a14
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111008"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818566"
 ---
 # <a name="quickstart-speech-sdk-for-net-framework-windows-platform-setup"></a>クイック スタート:Speech SDK for .NET Framework (Windows) プラットフォームの設定
 

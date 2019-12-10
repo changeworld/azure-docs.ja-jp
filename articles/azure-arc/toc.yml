@@ -10,7 +10,7 @@
   items:
     - name: サーバー向け Azure Arc を使用してマシンを Azure に接続する - ポータル
       href: ./servers/quickstart-onboard-portal.md
-    - name: サーバー向け Azure Arc を使用してマシンを Azure に接続する - PowerShell
+    - name: サーバー向け Azure Arc を使用したマシンの大規模な接続 - PowerShell
       href: ./servers/quickstart-onboard-powershell.md
 - name: リファレンス
   items:

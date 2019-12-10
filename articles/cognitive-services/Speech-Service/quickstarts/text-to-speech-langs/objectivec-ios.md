@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する、Objective-C - Speech Service
+title: クイック スタート:音声を合成する、Objective-C - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: iOS で Objective-C と Speech SDK を使用して音声を合成する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 460d2069bea8809b7d453bbe1cf27284109df9b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 09ee7f0918bce469186688a5d0e82441bb2e5457
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505525"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817778"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>クイック スタート:iOS で Objective-C と Speech SDK を使用して音声を合成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "73505525"
 
 開始する前の前提条件の一覧を次に示します。
 
-* 音声サービス用の[サブスクリプション キー](~/articles/cognitive-services/Speech-Service/get-started.md)
+* Speech サービス用の[サブスクリプション キー](~/articles/cognitive-services/Speech-Service/get-started.md)
 * macOS コンピューターと [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 以降
 * iOS バージョン 9.3 以降に設定されたターゲット
 

@@ -1,26 +1,19 @@
 ---
-title: チュートリアル:Linux 上の PostgreSQL を使用した Python (Django) Web アプリ - Azure App Service
-description: PostgreSQL データベースに接続するデータ駆動型の Python (Django) Web アプリを Azure 上で実行する方法について説明します。
-services: app-service\web
-documentationcenter: python
-author: cephalin
-manager: gwallace
-ms.service: app-service-web
-ms.workload: web
+title: チュートリアル:Postgre を使用する Linux Python アプリ
+description: Azure の PostgreSQL データベースに接続して、Linux Python アプリを Azure App Service で動作させる方法について説明します。 このチュートリアルでは Django を使用します。
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: 34dbce2a6da2395bbc627a30d464a9817dfe76fe
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: d23097c9674d2b7e60e779304a2d08c734bd614d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439439"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688878"
 ---
 # <a name="tutorial-build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Python (Django) Web アプリを Azure App Service で作成する
 

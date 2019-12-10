@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Linux デバイス用のモジュールを開発する - Azure IoT Edge
+title: チュートリアル - Azure IoT Edge を使用して Linux デバイス用のモジュールを開発する
 description: このチュートリアルでは、Linux コンテナーを使用して Linux デバイス用の IoT Edge モジュールを開発するための、開発マシンとクラウド リソースの設定について説明します
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 01ca118348b3a084c97182338bf656da83d52cb4
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e4291c5dcea27699de72b72c52a832a7dc86b97b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114059"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701898"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>チュートリアル:Linux のデバイス用の IoT Edge モジュールを開発する
 

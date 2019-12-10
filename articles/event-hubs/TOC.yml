@@ -170,6 +170,8 @@
       items:
         - name: トラブルシューティング ガイド
           href: event-hubs-messaging-exceptions.md
+        - name: Resource Manager の例外
+          href: resource-manager-exceptions.md
 - name: リファレンス
   items:
     - name: Java

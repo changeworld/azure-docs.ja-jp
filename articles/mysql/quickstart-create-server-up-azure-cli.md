@@ -1,19 +1,19 @@
 ---
-title: クイック スタート - シンプルな Azure CLI コマンド az mysql up (プレビュー) を使用して Azure Database for MySQL を作成する
+title: クイック スタート:az mysql up を使用して Azure Database for MySQL を作成する
 description: Azure CLI (コマンド ライン インターフェイス) up コマンドを使用して Azure Database for MySQL サーバーを作成するためのクイック スタート ガイド。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/18/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: aa0d2a9e990faa8d99355744824f34e26aeb519e
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 4bb5c62a7df53548ff59a03c6ccc8fb28f1503d3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58137914"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765685"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>クイック スタート:シンプルな Azure CLI コマンド az mysql up (プレビュー) を使用して Azure Database for MySQL を作成する
 
@@ -62,9 +62,9 @@ server-name | システム生成 | Azure Database for MySQL サーバーを識�
 resource-group | システム生成 | 新しい Azure リソース グループ。
 sku-name | GP_Gen5_2 | SKU の名前。 省略表現の {価格レベル}\_{コンピューティング世代}\_{仮想コア} という規則に従います。 既定値は、2 個の仮想コアを備えた General Purpose Gen5 サーバーです。 レベルの詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/mysql/)を参照してください。
 backup-retention | 7 | バックアップを保持する必要のある時間。 単位は日数です。
-geo-redundant-backup | Disabled | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。
+geo-redundant-backup | 無効 | このサーバーに対して geo 冗長バックアップを有効にする必要があるかどうかどうか。
 location | westus2 | サーバーの Azure の場所。
-ssl-enforcement | Disabled | このサーバーに対して ssl を有効にする必要があるかどうかどうか。
+ssl-enforcement | 無効 | このサーバーに対して ssl を有効にする必要があるかどうかどうか。
 storage-size | 5120 | サーバーのストレージ容量 (単位はメガバイト)。
 version | 5.7 | MySQL のメジャー バージョン。
 admin-user | システム生成 | 管理者ログインのユーザー名。

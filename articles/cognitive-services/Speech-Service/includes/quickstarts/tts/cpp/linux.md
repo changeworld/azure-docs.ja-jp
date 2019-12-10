@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する、C++ (Linux) - Speech Service
+title: クイック スタート:音声を合成する、C++ (Linux) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Linux で C++ と Speech SDK を使用して音声を合成する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: ba0e04d4dadd9d3a4bea41aeb0a66b37f454f030
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc5d0e0a7f693df87e754383a123dc1cebfdd94c
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505277"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818378"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "73505277"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [使用する開発環境をセットアップする](../../../../quickstarts/setup-platform.md?tabs=linux)
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=linux)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=linux)
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
@@ -32,7 +32,7 @@ ms.locfileid: "73505277"
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/linux/text-to-speech/helloworld.cpp#code)]
 
-1. この新しいファイルで、文字列 `YourSubscriptionKey` を、Speech Services のサブスクリプション キーで置き換えます。
+1. この新しいファイルで、文字列 `YourSubscriptionKey` を、音声サービスのサブスクリプション キーで置き換えます。
 
 1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](~/articles/cognitive-services/Speech-Service/regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
@@ -87,7 +87,7 @@ ms.locfileid: "73505277"
    ./helloworld
    ```
 
-1. コンソール ウィンドウにプロンプトが表示されて、何かテキストを入力するよう求められます。 いくつかの単語または文を入力してください。 入力したテキストが Speech Services に転送されて音声に合成され、スピーカーで再生されます。
+1. コンソール ウィンドウにプロンプトが表示されて、何かテキストを入力するよう求められます。 いくつかの単語または文を入力してください。 入力したテキストが Speech サービスに転送されて音声に合成され、スピーカーで再生されます。
 
    ```text
    Type some text that you want to speak...

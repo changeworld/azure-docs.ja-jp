@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 27fbd0084f9f8c91ee83802efe6a96213363b78f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: b5a59e51190fc8309d35445fba7ef4a2dd22b970
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422060"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770443"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>クイック スタート:Java 用 Azure Blob Storage クライアント ライブラリ v12
 
@@ -46,7 +46,7 @@ Java 用 Azure Blob Storage クライアント ライブラリ v12 を使用す�
 
 ### <a name="create-the-project"></a>プロジェクトを作成する
 
-*blob-quickstart-v12* という名前の Java Core アプリケーションを作成します。
+*blob-quickstart-v12* という名前の Java アプリケーションを作成します。
 
 1. コンソール ウィンドウ (cmd、PowerShell、Bash など) で、Maven コマンドを使用し、*blob-quickstart-v12* という名前で新しいコンソール アプリを作成します。 次の **mvn** コマンドをすべて 1 行に入力して、単純な "Hello world!" を作成します。 Java プロジェクト。 ここでは、読みやすくするために、コマンドが複数の行に表示されています。
 

@@ -1,22 +1,18 @@
 ---
-title: スケジュールに基づいて自動化されたワークフローを作成する - Azure Logic Apps
+title: スケジュールに基づいて自動化されたワークフローを作成する
 description: チュートリアル - スケジュールに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps を使用して作成する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: eae2319e8d1c162969a04f8dafa18eec671ee1d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f9203f77d5b398f53fcb7c9fceb70604b364a4e0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034674"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790286"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>チュートリアル:スケジュールに基づいて定期的に実行される自動化されたワークフローを Azure Logic Apps を使用して作成する
 
@@ -124,7 +120,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![シェイプを折りたたんで詳細を非表示](./media/tutorial-build-scheduled-recurring-logic-app-workflow/collapse-trigger-shape.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 この時点でロジック アプリは稼働していますが、定期実行すること以外は何もしていません。 そこで、トリガーが起動したときに反応するアクションを追加します。
 
@@ -173,7 +169,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    これらのパラメーターの詳細については、「[Calculate a route (ルートの計算)](https://docs.microsoft.com/bingmaps/rest-services/routes/calculate-a-route)」を参照してください。
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、最新の移動時間を秒ではなく分に変換して格納するための変数を作成します。 そうすることで、同じ変換処理を繰り返す手間が省け、以降の手順で値が利用しやすくなります。 
 
@@ -227,7 +223,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       ![式が解決された状態の [値] プロパティが表示される](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、最新の移動時間が特定の上限を超えたかどうかをチェックする条件を追加します。
 
@@ -257,7 +253,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       ![移動時間をチェックするための条件が完成](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-check-travel-time.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、移動時間が上限を超えたときに実行するアクションを追加します。
 
@@ -326,7 +322,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       ![式の中で解決された [本文] プロパティ](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、ロジック アプリをテストします。この時点で、ロジック アプリは次のようになっています。
 

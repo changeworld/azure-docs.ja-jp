@@ -1,5 +1,5 @@
 ---
-title: テナント モデルを作成する (プレビュー) - Speech Service
+title: テナント モデルを作成する (プレビュー) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Office 365 データを活用するテナント モデル (Custom Speech with Office 365 data) を自動的に生成し、セキュリティとコンプライアンスの両方が確保された、組織固有の用語に最適な音声認識を提供します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: c8a2855ce9cd320be3aea8b3b4a05f3b3eb39976
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8ca31dcadebf2dc47d5a4b4db715f26fb38e204e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578217"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816386"
 ---
 # <a name="create-a-tenant-model-preview"></a>テナント モデルを作成する (プレビュー)
 
@@ -96,7 +96,7 @@ Speech SDK でテナント モデルを使用するには、音声リソース�
 
 ## <a name="use-your-model-with-the-speech-sdk"></a>Speech SDK でモデルを使用する
 
-モデルのデプロイが完了したので、Speech SDK でそれを使用できます。 このセクションでは、用意されているサンプル コードを使い、Azure AD 認証を使用して Speech Service を呼び出します。
+モデルのデプロイが完了したので、Speech SDK でそれを使用できます。 このセクションでは、用意されているサンプル コードを使い、Azure AD 認証を使用して Speech サービスを呼び出します。
 
 C# で Speech SDK を呼び出すために使用するコードを見てみましょう。 この例では、テナント モデルを使用して音声認識を実行します。 このガイドは、プラットフォームが既に設定されていることを前提としています。 設定に関してヘルプが必要な場合は、[C# (.NET Core) での音声認識に関するクイックスタート](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)を参照してください。
 

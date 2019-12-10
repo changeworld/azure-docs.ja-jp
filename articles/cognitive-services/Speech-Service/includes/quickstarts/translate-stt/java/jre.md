@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声変換の翻訳、Java (Windows、Linux) - Speech Service
+title: クイック スタート:音声テキスト変換を翻訳する、Java (Windows、Linux) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: c9c793a19a97326f5098a2f6d228a542ebf45570
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ed9d072cc18972d5f6a129b41f0a58bc34900796
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505053"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816987"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "73505053"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [使用する開発環境をセットアップする](../../../../quickstarts/setup-platform.md?tabs=jre)
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=jre)
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
@@ -131,7 +131,7 @@ ms.locfileid: "73505053"
 
 F11 キーを押すか、 **[Run]**  >  **[Debug]** の順に選択します。
 
-1. 英語の語句または文を読み上げます。 このアプリケーションによって、その音声が Speech Services に転送され、(このケースではドイツ語に) 翻訳されてテキストに文字起こしされます。 そのテキストが Speech Services からアプリケーションに返されて表示されます。
+1. 英語の語句または文を読み上げます。 このアプリケーションによって、その音声が Speech サービスに転送され、翻訳されてテキストに文字起こしされます (このケースではドイツ語に)。 そのテキストが Speech サービスからアプリケーションに返されて表示されます。
 
 ````
 Say something...
