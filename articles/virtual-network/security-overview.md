@@ -100,7 +100,7 @@ ms.locfileid: "73721483"
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Any | 拒否 |
 
-"**ソース**" 列と "**ターゲット**" 列の *VirtualNetwork*、*AzureLoadBalancer*、および *Internet* は、IP アドレスではなく[サービス タグ](service-tags-overview.md)です。 "プロトコル" 列で "**Any**" は TCP、UDP、ICMP を含みます。 規則を作成するときに、TCP、UDP、ICMP、または Any を指定できます。 "**ソース**" 列と "**ターゲット**" 列の *0.0.0.0/0* は、すべてのアドレスを表します。 Azure portal、Azure CLI、または Powershell などのクライアントでは * または any をこの式に使用できます。
+"**ソース**" 列と "**宛先**" 列の *VirtualNetwork*、*AzureLoadBalancer*、および *Internet* は、IP アドレスではなく[サービス タグ](service-tags-overview.md)です。 "プロトコル" 列で "**Any**" は TCP、UDP、ICMP を含みます。 規則を作成するときに、TCP、UDP、ICMP、または Any を指定できます。 "**ソース**" 列と "**宛先**" 列の *0.0.0.0/0* は、すべてのアドレスを表します。 Azure portal、Azure CLI、または Powershell などのクライアントでは * または any をこの式に使用できます。
  
 既定の規則は削除できませんが、優先順位の高い規則を作成することでオーバーライドできます。
 
