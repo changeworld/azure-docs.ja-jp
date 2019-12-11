@@ -1,18 +1,18 @@
 ---
-title: Azure Database for MySQL のサーバーをバックアップして復元する方法
+title: バックアップと復元 - Azure CLI - Azure Database for MySQL
 description: Azure CLI を使用して Azure Database for MySQL サーバーをバックアップおよび復元する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: b265b77e08dda582153efa51c036f4f7a9de8d41
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: b2458c42a77ffee6985165252b0ebab836fce457
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965205"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774170"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 

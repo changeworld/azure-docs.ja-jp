@@ -1,28 +1,20 @@
 ---
-title: App Service 環境のネットワーク アーキテクチャの概要 - Azure
-description: App Service 環境のネットワーク トポロジのアーキテクチャの概要
-services: app-service
-documentationcenter: ''
+title: ネットワーク アーキテクチャ v1
+description: App Service 環境のネットワーク トポロジのアーキテクチャの概要 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 98eb4d7440126bedb3d2e1de5711141eaac8b07a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070066"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687347"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>App Service 環境のネットワーク アーキテクチャの概要
-## <a name="introduction"></a>はじめに
 App Service 環境は、常に[仮想ネットワーク][virtualnetwork]のサブネット内に作成され、App Service 環境内で実行されるアプリは、同じ仮想ネットワーク トポロジ内に配置されたプライベート エンドポイントと通信できます。  顧客が仮想ネットワーク インフラストラクチャの一部をロックダウンする場合があるため、App Service 環境で発生するネットワーク通信フローの種類を理解しておくことが重要です。
 
 ## <a name="general-network-flow"></a>一般的なネットワーク フロー

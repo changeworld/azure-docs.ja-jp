@@ -1,21 +1,18 @@
 ---
-title: ワークフロー内の次のアクションを遅延させる - Azure Logic Apps
+title: ワークフロー内の次のアクションの遅延
 description: Azure Logic Apps で [遅延] または [延期期限] アクションを使用して、ロジック アプリ ワークフロー内の次のアクションの実行を待ちます。
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: deli, klam, LADocs
-tags: connectors
+ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 27475fb3f086dbc5166a473e9d657d2dab723938
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+tags: connectors
+ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297594"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787338"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Azure Logic Apps で次のアクションの実行を遅延させる
 
@@ -53,7 +50,7 @@ ms.locfileid: "66297594"
 
    ![遅延の時間を設定する](./media/connectors-native-delay/delay-time-intervals.png)
 
-   | プロパティ | JSON での名前 | 必須 | Type | 説明 |
+   | プロパティ | JSON での名前 | 必須 | 種類 | 説明 |
    |----------|-----------|----------|------|-------------|
    | Count | count | はい | 整数 | 遅延する時間の単位数 |
    | 単位 | unit | はい | string | 時間の単位 (`Second`、`Minute`、`Hour`、`Day`、`Week`、`Month` など) |
@@ -79,7 +76,7 @@ ms.locfileid: "66297594"
 
    ![遅延を終了するタイムスタンプを指定する](./media/connectors-native-delay/delay-until-timestamp.png)
 
-   | プロパティ | JSON での名前 | 必須 | Type | 説明 |
+   | プロパティ | JSON での名前 | 必須 | 種類 | 説明 |
    |----------|-----------|----------|------|-------------|
    | Timestamp | timestamp | はい | string | ワークフローを再開するための終了の日付と時刻であり、 <p>YYYY-MM-DDThh:mm:ssZ の形式を使用 <p>たとえば、2017 年 9 月 18 日午後 2:00 にする場合は、"2017-09-18T14:00:00Z" と指定します。 <p>**注:** この時間の形式は、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンがない場合は、最後にスペースなしで文字 "Z" を追加する必要があります。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 |
    ||||||

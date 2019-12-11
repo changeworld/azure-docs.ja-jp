@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL の読み取りレプリカ。
+title: 読み取りレプリカ - Azure Database for MySQL。
 description: 'Azure Database for MySQL の読み取りレプリカについて次の内容を説明します: リージョンの選択、レプリカの作成、レプリカへの接続、レプリケーションの監視、レプリケーションの停止。'
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 66864870f29729e54ad06aef1208641f673c0612
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 12/03/2019
+ms.openlocfilehash: f3a6da6888b823c637411c508c949686fc378e58
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158318"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790103"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -41,7 +41,9 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 ### <a name="universal-replica-regions"></a>ユニバーサル レプリカ リージョン
 マスター サーバーが配置されている場所に関係なく、次のいずれかのリージョンに読み取りレプリカを作成できます。 サポートされているユニバーサル レプリカ リージョンは次のとおりです。
 
-オーストラリア東部、オーストラリア南東部、米国中部、東アジア、米国東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部、米国西部 2。
+オーストラリア東部、オーストラリア南東部、米国中部、東アジア、米国東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部。
+
+*米国西部 2 は、リージョン間レプリカの場所として一時的に使用できません。
 
 
 ### <a name="paired-regions"></a>ペアになっているリージョン

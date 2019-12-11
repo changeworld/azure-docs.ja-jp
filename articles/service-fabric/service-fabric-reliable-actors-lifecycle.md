@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: f81fde441a2f0dc2504601f82e5b890eb6e216de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a8e95c634a1d30b7c566fcd907cb06f34043fa9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105294"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706489"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>アクターのライフ サイクル、自動ガベージ コレクション、および手動による削除
 アクターは、いずれかのメソッドが最初に呼び出された時点でアクティブ化されます。 一定期間 (値は構成可能) 使用されていない場合、アクターは非アクティブ化されます (アクター ランタイムでガベージ コレクションが発生します)。 アクターとその状態はいつでも手動で削除できます。
@@ -94,7 +94,7 @@ public class Program
     }
 }
 ```
-各アクティブ アクターについて、アクター ランタイムはアクターがアイドル (つまり、未使用) 状態だった時間を追跡します。 アクター ランタイムは、`ScanIntervalInSeconds` ごとにアクターをそれぞれチェックして、ガベージ コレクションが可能かどうかを確認し、`IdleTimeoutInSeconds` の間アイドル状態だった場合はアクターを収集します。
+各アクティブ アクターについて、アクター ランタイムはアクターがアイドル (つまり、未使用) 状態だった時間を追跡します。 アクター ランタイムは、`ScanIntervalInSeconds` ごとにアクターをそれぞれチェックして、ガベージ コレクションおよびマークが可能かどうかを確認し、`IdleTimeoutInSeconds` の間アイドル状態だった場合はアクターを収集します。
 
 アクターが使用されるたびに、そのアイドル時間は 0 にリセットされます。 その後、アクターをガベージ コレクトできるのは、再び `IdleTimeoutInSeconds`の間アイドル状態のままになった場合のみです。 アクター インターフェイス メソッドまたはアクター アラーム コールバックが実行された場合、アクターが使用されていると見なされることを思い出してください。 タイマー コールバックが実行された場合、アクターは使用されていると見なされ **ません** 。
 

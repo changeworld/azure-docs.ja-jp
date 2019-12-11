@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: vashan
-ms.openlocfilehash: 7269c76236b7cbe60995d84e85857da596bec961
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: d3d7f92b3803114321bc7420b5c4ba059aabcb9d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264684"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705920"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Azure 仮想マシン スケール セット インスタンスの通知を終了する (プレビュー)
 スケール セット インスタンスでは、インスタンスの終了通知を受信し、定義済みの遅延タイムアウトを終了操作に設定することをオプトインできます。 終了通知は、Azure Metadata Service の [Scheduled Events](../virtual-machines/windows/scheduled-events.md) を介して送信されます。これにより、再起動や再デプロイなどの影響がある操作の通知と遅延が行われます。 このプレビュー ソリューションでは、別のイベント (Terminate) が Scheduled Events の一覧に追加されます。terminate イベントの関連する遅延は、スケール セット モデルの構成のユーザーによって指定された遅延の制限によって変わります。
@@ -67,7 +67,7 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 >スケール セット インスタンスの終了通知は、API バージョン 2019-03-01 以降でのみ有効にすることができます
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-新しいスケール セットを作成するときに、[New-AzVmssVM](/powershell/module/az.compute/new-azvmss) コマンドレットを使用して、スケール セットの終了通知を有効にすることができます。
+新しいスケール セットを作成するときに、[New-AzVmss](/powershell/module/az.compute/new-azvmss) コマンドレットを使用して、スケール セットの終了通知を有効にすることができます。
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -84,7 +84,7 @@ New-AzVmss `
 
 上の例では、5 分の既定のタイムアウトで終了通知を有効にして新しいスケール セットを作成します。 新しいスケール セットを作成する場合、パラメーター *TerminateScheduledEvents* に値は必要ありません。 タイムアウト値を変更するには、*TerminateScheduledEventNotBeforeTimeoutInMinutes* パラメーターを使用して必要なタイムアウトを指定します。
 
-[Update-AzVmssVM](/powershell/module/az.compute/update-azvmss) コマンドレットを使用して、既存のスケール セットに対する終了通知を有効にします。
+[Update-AzVmss](/powershell/module/az.compute/update-azvmss) コマンドレットを使用して、既存のスケール セットに対する終了通知を有効にします。
 
 ```azurepowershell-interactive
 Update-AzVmss `

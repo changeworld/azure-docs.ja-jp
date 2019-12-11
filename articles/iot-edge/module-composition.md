@@ -1,5 +1,5 @@
 ---
-title: デプロイ マニフェストを使ってモジュールとルートを宣言する Azure IoT Edge |Microsoft Docs
+title: デプロイ マニフェストを使ってモジュールとルートをデプロイする - Azure IoT Edge
 description: デプロイ マニフェストを使ってデプロイするモジュールを宣言する方法、モジュールをデプロイする方法、モジュール間のメッセージ ルートを作成する方法について説明します。
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 935cdbf54360dc0e2a98936d9c589405040cd85d
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 31a83d3edb1bc297fc53b089384ab940482e5b28
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457451"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665833"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
 

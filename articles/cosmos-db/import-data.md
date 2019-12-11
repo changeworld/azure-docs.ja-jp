@@ -15,7 +15,7 @@ ms.locfileid: "73721146"
 ---
 # <a name="tutorial-use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>チュートリアル:データ移行ツールを使用して Azure Cosmos DB にデータを移行する
 
-このチュートリアルでは、Azure Cosmos DB データ移行ツールを使用して、さまざまなソースからデータを Azure Cosmos コンテナーおよびテーブルにインポートする方法について説明します。 JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、さらには Azure Cosmos DB SQL API コレクションからインポートすることができます。 Azure Cosmos DB で使用するためには、そのデータをコレクションやテーブルに移行します。 データ移行ツールは、SQL API の 1 つの単一パーティション コレクションから複数パーティション コレクションに移行する場合にも使用できます。
+このチュートリアルでは、Azure Cosmos DB データ移行ツールを使用して、さまざまなソースからデータを Azure Cosmos コンテナーおよびテーブルにインポートする方法について説明します。 JSON ファイル、CSV ファイル、SQL、MongoDB、Azure Table Storage、Amazon DynamoDB、さらには Azure Cosmos DB SQL API コレクションからインポートすることができます。 Azure Cosmos DB で使用するためには、そのデータをコレクションやテーブルに移行します。 データ移行ツールは、SQL API の 1 つの単一パーティション コレクションから複数パーティション コレクションに移行する場合にも使用できます。
 
 Azure Cosmos DB で使用する API を確認してください。
 
@@ -229,18 +229,18 @@ Azure Table Storage ソース インポーター オプションを使用して�
 
 Azure Table Storage からインポートしたデータは、Table API で使用するために Azure Cosmos DB のテーブルやエンティティに出力できます。 インポートしたデータは、SQL API で使用するためにコレクションやドキュメントに出力することもできます。 ただし、Table API をターゲットとして利用できるのは、コマンドライン ユーティリティでのみです。 データ移行ツールのユーザー インターフェイスを使用して Table API にエクスポートすることはできません。 詳細については、「[Azure Cosmos DB Table API で使用するデータのインポート](table-import.md)」を参照してください。
 
-![Azure テーブル ストレージ ソース オプションのスクリーンショット](./media/import-data/azuretablesource.png)
+![Azure Table Storage ソース オプションのスクリーンショット](./media/import-data/azuretablesource.png)
 
 Azure テーブル ストレージの接続文字列の形式は次のとおりです。
 
 `DefaultEndpointsProtocol=<protocol>;AccountName=<Account Name>;AccountKey=<Account Key>;`
 
 > [!NOTE]
-> [確認] を使用して、[接続文字列] フィールドで指定した Azure テーブル ストレージ インスタンスにアクセスできることを確認してください。
+> [確認] を使用して、[接続文字列] フィールドで指定した Azure Table Storage インスタンスにアクセスできることを確認してください。
 
 データのインポート元となる Azure テーブルの名前を入力します。 必要に応じて、 [フィルター](../vs-azure-tools-table-designer-construct-filter-strings.md)を指定することもできます。
 
-Azure テーブル ストレージ ソース インポーター オプションには、次の追加オプションがあります。
+Azure Table Storage ソース インポーター オプションには、次の追加オプションがあります。
 
 1. 内部フィールドを含める
    1. すべて - 内部フィールド (PartitionKey、RowKey、Timestamp) をすべて含めます。

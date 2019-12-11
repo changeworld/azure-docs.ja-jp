@@ -1,27 +1,21 @@
 ---
-title: ロジック アプリにクエリ アクションを追加する | Microsoft Docs
+title: ロジック アプリにクエリ アクションを追加する
 description: 配列のフィルター処理などのアクションを実行するためのクエリ アクションの概要です。
-services: ''
-documentationcenter: ''
-author: jeffhollan
-manager: erikre
-editor: ''
-tags: connectors
-ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
-ms.service: logic-apps
+services: logic-apps
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/20/2016
-ms.author: jehollan
-ms.openlocfilehash: 10332b95e0d385d7155003efcc52b4bae3969313
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+tags: connectors
+ms.openlocfilehash: 2e5c9d371a280b776699b2e10d3e8e94b5f41f6f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973765"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787134"
 ---
 # <a name="get-started-with-the-query-action"></a>クエリ アクションの概要
+
 クエリ アクションを使用し、バッチと配列を操作して次のワークフローを実現できます。
 
 * データベースの優先度の高いすべてのレコードを対象とするタスクを作成する。
@@ -30,6 +24,7 @@ ms.locfileid: "71973765"
 ロジック アプリでクエリ アクションの使用を開始するには、 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
 ## <a name="use-the-query-action"></a>クエリ アクションの使用
+
 アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 
 アクションの詳細については[こちら](../connectors/apis-list.md)を参照してください。  
 

@@ -1,21 +1,17 @@
 ---
-title: データに対する操作を実行する - Azure Logic Apps
+title: データの操作の実行
 description: Azure Logic Apps でデータの出力と形式に対する変換、管理、操作を行います
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: a21b7f510b6da40d3ab2c72fcfbcb2a746b75db1
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f98daf301e8e17ad3f0bfb850ded1a8ed8bce417
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990608"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793119"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps でデータの操作を実行する
 
@@ -110,7 +106,7 @@ ms.locfileid: "72990608"
 
    !["作成" アクションの完成例](./media/logic-apps-perform-data-operations/finished-compose-action.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 基になるワークフロー定義でのこのアクションについて詳しくは、「[作成アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#compose-action)」をご覧ください。
 
@@ -171,7 +167,7 @@ JavaScript Object Notation (JSON) オブジェクトからのプロパティと�
 
    !["CSV テーブルの作成" アクションの完成例](./media/logic-apps-perform-data-operations/finished-create-csv-table-action.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 ### <a name="customize-table-format"></a>テーブルの形式をカスタマイズする
 
@@ -322,7 +318,7 @@ JavaScript Object Notation (JSON) オブジェクトからのプロパティと�
 
    !["HTML テーブルの作成" の完成例](./media/logic-apps-perform-data-operations/finished-create-html-table-action.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 ### <a name="customize-table-format"></a>テーブルの形式をカスタマイズする
 
@@ -483,7 +479,7 @@ Oranges,2
 
    !["配列のフィルター処理" アクションの完成例](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 基になるワークフロー定義でのこのアクションについて詳しくは、「[クエリ アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#query-action)」をご覧ください。
 
@@ -545,7 +541,7 @@ Oranges,2
 
    ![区切り文字を指定する](./media/logic-apps-perform-data-operations/finished-join-action.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 基になるワークフロー定義でのこのアクションについて詳しくは、「[結合アクション](../logic-apps/logic-apps-workflow-actions-triggers.md#join-action)」をご覧ください。
 
@@ -613,7 +609,7 @@ JavaScript Object Notation (JSON) のコンテンツのプロパティを参照�
 
       ![スキーマを生成するための JSON コンテンツを入力する](./media/logic-apps-perform-data-operations/generate-schema-parse-json-action.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 基になるワークフロー定義でのこのアクションについて詳しくは、「[JSON の解析アクション](../logic-apps/logic-apps-workflow-actions-triggers.md)」をご覧ください。
 
@@ -684,7 +680,7 @@ JavaScript Object Notation (JSON) のコンテンツのプロパティを参照�
 
    !["選択" アクションの完成例](./media/logic-apps-perform-data-operations/finished-select-action.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 基になるワークフロー定義でのこのアクションについて詳しくは、「[選択アクション](../logic-apps/logic-apps-workflow-actions-triggers.md)」をご覧ください。
 

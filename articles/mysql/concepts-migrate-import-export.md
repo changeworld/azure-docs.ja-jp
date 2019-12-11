@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL でのインポートとエクスポート
+title: インポートとエクスポート - Azure Database for MySQL
 description: この記事では、MySQL Workbench などのツールを使用して、Azure Database for MySQL でデータベースをインポートおよびエクスポートする一般的な方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/01/2018
-ms.openlocfilehash: fa72037c8f54271f5651667765c5d5e2e9c03619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 8cf0b88ddc24bfc6bc293dd62416417f1eec3a06
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60838123"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770953"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>インポートとエクスポートを使用した MySQL データベースの移行
 この記事では、MySQL Workbench を使用して、Azure Database for MySQL サーバーにデータをインポートおよびエクスポートする 2 つの一般的な方法について説明します。 

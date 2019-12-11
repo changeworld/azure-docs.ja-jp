@@ -1,17 +1,17 @@
 ---
-title: Azure CLI を使用した Azure Database for MySQL ストレージの自動拡張
+title: ストレージの自動拡張 - Azure CLI - Azure Database for MySQL
 description: この記事では、Azure CLI を使用して Azure Database for MySQL のストレージの自動拡張を有効にする方法について説明します。
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 8/7/2019
-ms.openlocfilehash: c9faaa5d011a32dfbaa5a841d3bce824f7ba5c9d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.date: 12/02/2019
+ms.openlocfilehash: fb39c3afa2977038df7c9a233ba6720771f545dc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390558"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770630"
 ---
 # <a name="auto-grow-azure-database-for-mysql-storage-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL ストレージの自動拡張
 この記事では、Azure Database for MySQL サーバーのストレージを、ワークロードに影響を与えることなく拡張されるように構成する方法について説明します。
