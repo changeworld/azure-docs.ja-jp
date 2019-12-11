@@ -1,6 +1,6 @@
 ---
-title: Azure テーブル ストレージ | Azure Marketplace
-description: Azure テーブル ストレージで潜在顧客管理を構成します。
+title: Azure Table Storage | Azure Marketplace
+description: Azure Table Storageで潜在顧客管理を構成します。
 services: Azure, Marketplace, Cloud Partner Portal,
 author: v-miclar
 ms.service: marketplace
@@ -17,7 +17,7 @@ ms.locfileid: "73825272"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>テーブル ストレージでの潜在顧客管理の手順
 
-この記事では、潜在顧客を管理するために Azure テーブル ストレージを構成する方法について説明します。 テーブル ストレージは、顧客情報を格納および変更するのに役立ちます。
+この記事では、潜在顧客を管理するために Azure Table Storageを構成する方法について説明します。 テーブル ストレージは、顧客情報を格納および変更するのに役立ちます。
 
 ## <a name="configure-table-storage"></a>テーブル ストレージの構成
 
