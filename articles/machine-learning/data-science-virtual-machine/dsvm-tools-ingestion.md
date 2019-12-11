@@ -62,9 +62,9 @@ ms.locfileid: "72330692"
 
 |    |           |
 | ------------- | ------------- |
-| 紹介   | さまざまなソースからクラウド内の NoSQL データベースである Azure Cosmos DB にデータをインポートするツール。 ソースは、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure テーブル ストレージ、Amazon DynamoDB、Azure Cosmos DB SQL API コレクションなどです。      |
+| 紹介   | さまざまなソースからクラウド内の NoSQL データベースである Azure Cosmos DB にデータをインポートするツール。 ソースは、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure Table Storage、Amazon DynamoDB、Azure Cosmos DB SQL API コレクションなどです。      |
 | サポートされている DSVM バージョン      | Windows      |
-| 標準的な使用      | VM から CosmosDB にファイルをインポート、Azure テーブル ストレージから CosmosDB にデータをインポート、および Microsoft SQL Server データベースから CosmosDB にデータをインポートします。     |
+| 標準的な使用      | VM から CosmosDB にファイルをインポート、Azure Table Storageから CosmosDB にデータをインポート、および Microsoft SQL Server データベースから CosmosDB にデータをインポートします。     |
 |  使用/実行方法    |   コマンド ライン バージョンを使用するには、コマンド プロンプトを開いて「`dt`」と入力します。 GUI ツールを使用するには、コマンド プロンプトを開いて「`dtui`」と入力します。    |
 | サンプルへのリンク      | [CosmosDB インポート データ](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | DSVM 上の関連ツール      | AzCopy、AdlCopy      |
