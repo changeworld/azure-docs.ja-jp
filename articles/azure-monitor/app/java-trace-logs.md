@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: 23e3116a0cc3283191d00079e0926dc206e677f0
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a1a0a1462c8a4e52a065eafad315aab3ddae5f3b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819342"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784597"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights を使用した Java トレース ログの探索
 トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
@@ -22,27 +22,41 @@ ms.locfileid: "72819342"
 
 ## <a name="using-the-application-insights-java-agent"></a>Application Insights Java エージェントを使用する
 
-`AI-Agent.xml` ファイルの機能を有効にすることで、ログを自動的にキャプチャするように Application Insights Java エージェントを構成できます。
+既定では、Application Insights Java エージェントは、`WARN` レベル以上で実行されたログを自動的にキャプチャします。
+
+`AI-Agent.xml` ファイルを使用して、キャプチャされるログのしきい値を変更できます。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsightsAgent>
    <Instrumentation>
-      <BuiltIn enabled="true">
-         <Logging enabled="true" />
+      <BuiltIn>
+         <Logging threshold="info"/>
       </BuiltIn>
    </Instrumentation>
-   <AgentLogger />
 </ApplicationInsightsAgent>
 ```
 
-または、以下の手順に従ってください。
+`AI-Agent.xml` ファイルを使用して、Java エージェントのログ キャプチャを無効にすることができます。
 
-## <a name="install-the-java-sdk"></a>Java SDK をインストールする
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging enabled="false"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>別の方法として (Java エージェントは使用する代わりに)、次の手順に従うこともできます。
+
+### <a name="install-the-java-sdk"></a>Java SDK をインストールする
 
 [Application Insights SDK for Java][java] をまだインストールしていない場合は、インストールする手順に従います。
 
-## <a name="add-logging-libraries-to-your-project"></a>プロジェクトへのログ ライブラリの追加
+### <a name="add-logging-libraries-to-your-project"></a>プロジェクトへのログ ライブラリの追加
 *プロジェクトに適した方法を選択してください。*
 
 #### <a name="if-youre-using-maven"></a>Maven を使用している場合:
@@ -123,7 +137,7 @@ Application Insights Java SDK を手動でインストールするガイドラ�
 | Log4J v1.2 |[Log4J v1.2 アペンダー Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>ログ フレームワークへのアペンダーの追加
+### <a name="add-the-appender-to-your-logging-framework"></a>ログ フレームワークへのアペンダーの追加
 トレースの取得を開始するには、適切なコード スニペットを Log4J または Logback の構成ファイルに追加します。 
 
 *Logback*

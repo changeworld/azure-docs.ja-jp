@@ -1,24 +1,15 @@
 ---
-title: 受信/送信 IP アドレス - Azure App Service | Microsoft Docs
-description: App Service での送信 IP アドレスと受信 IP アドレスの使用方法と、アプリ用の IP アドレスに関する情報の検索方法について説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 受信/送信 IP アドレス
+description: Azure App Service で受信および送信 IP アドレスがどのように使用されるか、いつ変更されるかについて、およびアプリのアドレスを見つける方法について説明します。
 ms.topic: article
 ms.date: 06/06/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 26033192ee841262345b0fc7f6aec76872379070
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: aebce04fe2f1b055a4d498021dcd25144cd122a9
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470170"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671602"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 

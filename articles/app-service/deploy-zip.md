@@ -1,25 +1,16 @@
 ---
-title: ZIP または WAR ファイルによるコードのデプロイ- Azure App Service | Microsoft Docs
+title: ZIP または WAR ファイルによるコードのデプロイ
 description: ZIP ファイル (Java 開発者の場合は WAR ファイル) を使用して Azure App Service にアプリをデプロイする方法について説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: cephalin
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 83951f6408094b8d1e04d19650a5f2ef596be988
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 3569c6a066b09daa0c24975b9de840a844b6ba2c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801150"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670224"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>ZIP または WAR ファイルを使用した Azure App Service へのアプリのデプロイ
 

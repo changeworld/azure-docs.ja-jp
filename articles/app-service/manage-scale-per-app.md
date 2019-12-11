@@ -1,25 +1,18 @@
 ---
-title: アプリごとのスケーリングを使った高密度ホスティング - Azure App Service | Microsoft Docs
-description: Azure App Service での高密度ホスティング
+title: 高密度ホスティングのためのアプリごとのスケーリング
+description: App Service プランからは独立してアプリをスケーリングし、プラン内でスケールアウトされたインスタンスを最適化します。
 author: btardif
-manager: erikre
-editor: ''
-services: app-service\web
-documentationcenter: ''
 ms.assetid: a903cb78-4927-47b0-8427-56412c4e3e64
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 7130c9547e0778ce40a0ad1c1ea41607a02df23e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088101"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672349"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>アプリごとのスケーリングを使って Azure App Service で高密度ホスティングを実現する
 

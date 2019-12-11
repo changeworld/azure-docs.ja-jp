@@ -1,17 +1,17 @@
 ---
-title: Azure portal での Azure Database for MariaDB のメトリック アラートの構成
+title: メトリック アラートを構成する - Azure portal - Azure Database for MariaDB
 description: この記事では、Azure portal から Azure Database for MariaDB のメトリック アラートを構成およびアクセスする方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.openlocfilehash: ce9804a4ecad4cd0f2e797038dc10c71b50de9bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: c2367fc58530675783277c2edc4d62efd55a1da8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61041089"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771882"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Azure portal を使用して Azure Database for MariaDB のメトリックのアラートを設定する
 
