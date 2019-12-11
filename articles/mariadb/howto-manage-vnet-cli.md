@@ -1,18 +1,18 @@
 ---
-title: Azure CLI を使用した Azure Database for MariaDB VNet サービス エンドポイントおよびルールの作成と管理 | Microsoft Docs
+title: VNet エンドポイントの管理 - Azure CLI - Azure Database for MariaDB
 description: この記事では、Azure CLI コマンド ラインを使用して Azure Database for MariaDB VNet サービス エンドポイントおよびルールを作成し、管理する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 5e0f2bb19e5c753c5b327781774d3fd96ec58592
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 12/02/2019
+ms.openlocfilehash: eea6f6751f7e7f6ded1b1c7004115d101f1dcc94
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609849"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764339"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB VNet サービス エンドポイントの作成と管理
 
@@ -50,7 +50,7 @@ Azure サービス リソースへのアクセスを VNet に限定するには�
 
 [組み込みロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)と、特定のアクセス許可を[カスタム ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)に割り当てる方法の詳細をご覧ください。
 
-Vnet と Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 VNet と Azure サービス リソースのサブスクリプションが異なる場合、リソースは同じ Active Directory (AD) テナントの下に置かれている必要があります。 両方のサブスクリプションに、**Microsoft.Sql** リソース プロバイダーが登録されていることを確認してください。 詳細については、[リソース マネージャーの登録][resource-manager-portal]に関する記事をご覧ください
+Vnet と Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 VNet と Azure サービス リソースのサブスクリプションが異なる場合、リソースは同じ Active Directory (AD) テナントの下に置かれている必要があります。 両方のサブスクリプションに、**Microsoft.Sql** リソース プロバイダーが登録されていることを確認してください。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
 
 > [!IMPORTANT]
 > サービス エンドポイントを構成する前に、サービス エンドポイントの構成と考慮事項について、この記事を読むことを強くお勧めします。 **仮想ネットワーク サービス エンドポイント:** [仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、プロパティ値に 1 つ以上の正式な Azure サービスの種類名が含まれるサブネットです。 VNet サービス エンドポイントでは、SQL Database という名前の Azure サービスを参照する **Microsoft.Sql** というサービス種類名を使用します。 このサービス タグは、Azure SQL Database、Azure Database for MariaDB、PostgreSQL および MySQL サービスにも適用されます。 VNet サービス エンドポイントに **Microsoft.Sql** サービス タグを適用すると、サブネット上の Azure SQL Database、Azure Database for PostgreSQL、Azure Database for MariaDB、Azure Database for MySQL サーバーを含むすべての Azure Database サービスにサービス エンドポイント トラフィックが構成されることに注意することが重要です。

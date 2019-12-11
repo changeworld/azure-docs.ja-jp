@@ -1,17 +1,17 @@
 ---
-title: Azure portal で Azure Database for MySQL の低速クエリ ログを構成してアクセスする
+title: 低速クエリ ログにアクセスする - Azure portal - Azure Database for MySQL
 description: この記事では、Azure portal から Azure Database for MySQL の低速クエリ ログを構成し、それにアクセスする方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 7eeeb729973e484e9acb26f3ac8cc42693f72eea
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 12/02/2019
+ms.openlocfilehash: 52d219a94676e0f1ce4ceac31b0b50c9d36665ba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841569"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770579"
 ---
 # <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Azure portal で低速クエリ ログを構成してアクセスする
 

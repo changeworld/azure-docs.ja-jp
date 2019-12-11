@@ -1,7 +1,7 @@
 ---
-title: リージョン - Speech Service
+title: リージョン - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: 音声テキスト変換、テキスト読み上げ、音声翻訳など、Speech Service の利用可能なリージョンとエンドポイントの一覧。
+description: 音声テキスト変換、テキスト読み上げ、音声翻訳など、Speech サービスで利用可能なリージョンとエンドポイントのリスト。
 services: cognitive-services
 author: mahilleb-msft
 manager: nitinme
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 478a62eaddcf3b9b831812a0930ff10c1adce99d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072457"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816652"
 ---
-# <a name="speech-service-supported-regions"></a>Speech Service がサポートされているリージョン
+# <a name="speech-service-supported-regions"></a>Speech サービスがサポートされているリージョン
 
 Speech Service を使用すると、アプリケーションで音声をテキストに変換し、音声翻訳を実行し、テキストを音声に変換することができます。 このサービスは、Speech SDK および REST API に固有のエンドポイントを使用して複数のリージョンで利用できます。
 

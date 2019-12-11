@@ -1,23 +1,18 @@
 ---
-title: HTTPS 呼び出しを受信して応答する - Azure Logic Apps
+title: HTTPS 呼び出しを受信して応答する
 description: Azure Logic Apps を使用して、HTTPS 要求とイベントをリアルタイムで処理する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewers: klam, LADocs
-manager: carmonm
-ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
+ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: 6062ca1ce09eb243825b1fb9ae4ecb3d5ac95d1a
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b3723ccc247b8a9451b9a5fdc628bff58da361a0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264355"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786997"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して、HTTPS 呼び出しを受信して応答する
 

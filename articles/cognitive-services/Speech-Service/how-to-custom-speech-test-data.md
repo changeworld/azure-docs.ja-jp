@@ -1,5 +1,5 @@
 ---
-title: Custom Speech 用のテスト データを準備する - Speech Service
+title: Custom Speech 用のテスト データを準備する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Microsoft 音声認識の精度をテストしているか、または独自のモデルをトレーニングしているかどうかにかかわらず、(オーディオ形式またはテキスト形式の) データが必要になります。 このページでは、データの種類、使用方法、および管理方法について説明します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464565"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816405"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -25,7 +25,7 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 
 この表には、許容されるデータの種類と、それぞれのデータの種類を使用する場合と推奨される数量が一覧表示されています。 モデルを作成するのに、すべてのデータの種類は必要ありません。 データ要件は、テストを作成するのか、またはモデルをトレーニングするのかによって異なります。
 
-| データ型 | テストの使用 | Quantity | トレーニングに使用 | Quantity |
+| データ型 | テストの使用 | 推奨数量 | トレーニングに使用 | 推奨数量 |
 |-----------|-----------------|----------|-------------------|----------|
 | [オーディオ](#audio-data-for-testing) | はい<br>目視検査に使用 | 5 つ以上のオーディオ ファイル | いいえ | 該当なし |
 | [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-testingtraining) | はい<br>精度を評価するために使用 | 0.5 - 5 時間のオーディオ | はい | 1 - 1,000 時間のオーディオ |

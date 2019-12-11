@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Single Server の接続ライブラリ
-description: この記事では、Azure Database for PostgreSQL - Single Server の接続およびクエリを実行するアプリケーションをコーディングするときに開発者が使用できるいくつかのライブラリとドライバーについて説明します。
+title: 接続ライブラリ - Azure Database for PostgreSQL - Single Server
+description: この記事では、Azure Database for PostgreSQL-Single Server に接続してクエリするアプリケーションをコーディングするときに使用できる、いくつかのライブラリとドライバーについて説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 85110126f9bdec225b1644860814cd89832132a1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2305a02e5b094ec9e98f39363ddbd0c39221ab0b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073604"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768896"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の接続ライブラリ
 この記事では、Azure Database for PostgreSQL に接続およびクエリを実行するアプリケーションの開発に使用できるライブラリとドライバーを紹介します。
@@ -29,7 +29,7 @@ PostgreSQL サーバーへの接続に使用されるほとんどの言語クラ
 | Go | [Package pq](https://godoc.org/github.com/lib/pq) | 純粋な Go postgres ドライバー | [インストール](https://github.com/lib/pq/blob/master/README.md) |
 | C\#/ .NET | [Npgsql](https://www.npgsql.org/) | ADO.NET データ プロバイダー | [ダウンロード](https://www.microsoft.com/net/) |
 | ODBC | [psqlODBC](https://odbc.postgresql.org/) | ODBC ドライバー | [ダウンロード](https://www.postgresql.org/ftp/odbc/versions/) |
-| C | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | プライマリ C 言語インターフェイス | あり |
+| C | [libpq](https://www.postgresql.org/docs/9.6/static/libpq.html) | プライマリ C 言語インターフェイス | Included |
 | C++ | [libpqxx](http://pqxx.org/) | 新しいスタイルの C++ インターフェイス | [ダウンロード](http://pqxx.org/download/software/) |
 
 ## <a name="next-steps"></a>次の手順

@@ -1,20 +1,17 @@
 ---
-title: ロジック アプリ定義の作成、編集、拡張 - Azure Logic Apps
+title: ロジック アプリ定義の作成、編集、拡張
 description: Azure Logic Apps でロジック アプリの JSON 定義を作成、編集、拡張する方法
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 03203a5fdb6d61ed95e96581a7e4a979c911cd02
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: bffbc29322a57d6bb9b8497299add5dbb0478d2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680032"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792590"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Azure Logic Apps でのロジック アプリ定義の JSON の作成、編集、拡張
 

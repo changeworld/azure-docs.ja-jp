@@ -2,13 +2,13 @@
 title: PowerShell を使用して Windows Server を Azure にバックアップする
 description: この記事では、PowerShell を使用して Windows Server または Windows クライアント上に Azure Backup を設定したり、バックアップと回復を管理したりする方法について説明します。
 ms.topic: conceptual
-ms.date: 08/20/2019
-ms.openlocfilehash: 6285b7fc6493090ab0bead5f00124a6eaa02dc7e
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.date: 12/2/2019
+ms.openlocfilehash: 54cfbb4a550ff14705d8d02b0589ee023cf9c225
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172445"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689191"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>PowerShell を使用して Windows Server/Windows Client に Microsoft Azure Backup をデプロイおよび管理する手順
 
@@ -569,7 +569,7 @@ The backup operation completed successfully.
 
 1. ソース ボリュームを選択する
 2. バックアップの復元ポイントを選択する
-3. 復元する項目を選択する
+3. 復元する項目を選指定する
 4. 復元プロセスをトリガーする
 
 ### <a name="picking-the-source-volume"></a>ソース ボリュームの選択
@@ -593,95 +593,61 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>復元元のバックアップ ポイントの選択
 
-バックアップ ポイントの一覧は、[Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) コマンドレットと適切なパラメーターを実行して取得できます。 この例では、ソース ボリューム *D:* の最新のバックアップ ポイントを選択し、これを使用して特定のファイルを復旧します。
+バックアップ ポイントの一覧は、[Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) コマンドレットと適切なパラメーターを実行して取得できます。 この例では、ソース ボリューム *Ｃ:* の最新のバックアップ ポイントを選択し、これを使用して特定のファイルを復旧します。
 
 ```powershell
-$Rps = Get-OBRecoverableItem -Source $Source[1]
+$Rps = Get-OBRecoverableItem $Source[0]
+$Rps
 ```
 
 ```Output
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 17-Jun-15 6:31:31 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/16/2019 7:00:19 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 ```
 
 オブジェクト `$Rps` は、バックアップ ポイントの配列です。 最初の要素は最新のポイントで、N 番目の要素は最も古いポイントです。 最新のポイントを選択するには、 `$Rps[0]`を使用します。
 
-### <a name="choosing-an-item-to-restore"></a>復元する項目の選択
+### <a name="specifying-an-item-to-restore"></a>復元する項目の指定
 
-復元する正確なファイルまたはフォルダーを特定するには、 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) コマンドレットを再帰的に使用します。 ここでは、フォルダー階層を `Get-OBRecoverableItem`のみを使用して参照できます。
-
-この例では、ファイル *finances.xls* を復元するには、オブジェクト `$FilesFolders[1]` を使用してこれを参照できます。
+特定のファイルを復元するには、ルートボリュームに対して相対的なファイル名を指定します。 たとえば、C:\Test\Cat.job を取得するには、次のコマンドを実行します。 
 
 ```powershell
-$FilesFolders = Get-OBRecoverableItem $Rps[0]
-$FilesFolders
+$Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
+$Item
 ```
 
 ```Output
-IsDir : True
-ItemNameFriendly : D:\MyData\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : MyData
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
-ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
-```
-
-```powershell
-$FilesFolders = Get-OBRecoverableItem $FilesFolders[0]
-$FilesFolders
-```
-
-```Output
-IsDir : False
-ItemNameFriendly : D:\MyData\screenshot.oxps
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : screenshot.oxps
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 228313
-ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
-
-IsDir : False
-ItemNameFriendly : D:\MyData\finances.xls
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\finances.xls
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : finances.xls
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 96256
+IsDir                : False
+ItemNameFriendly     : C:\Test\cat.jpg
+ItemNameGuid         :
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : cat.jpg
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
-```
 
-復元する項目を検索するには、 ```Get-OBRecoverableItem``` コマンドレットを使用します。 この例では、 *finances.xls* を検索するために、次のコマンドを実行して、ファイルのハンドルを取得します。
-
-```powershell
-$Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
 ### <a name="triggering-the-restore-process"></a>復元プロセスのトリガー

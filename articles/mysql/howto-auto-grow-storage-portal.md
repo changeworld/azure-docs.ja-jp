@@ -1,17 +1,17 @@
 ---
-title: Azure portal を使用した Azure Database for MySQL のストレージの自動拡張
+title: ストレージの自動拡張 - Azure portal - Azure Database for MySQL
 description: この記事では、Azure portal を使用して Azure Database for MySQL のストレージの自動拡張を有効にする方法について説明します
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/29/2019
-ms.openlocfilehash: 864bfaefba783d93e795e8780cc02dcf991e38f1
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 12/02/2019
+ms.openlocfilehash: 7be3e7e1a0d2e48b37c319f67e3b382f825469df
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142030"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770613"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL のストレージの自動拡張
 この記事では、Azure Database for MySQL サーバーのストレージを、ワークロードに影響を与えることなく拡張されるように構成する方法について説明します。

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 23e638b1d678e6ecf19c23220828185eb0e25a00
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 3abc09f8c82442e3b24a9edf6ef4fb42f19dfde8
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891457"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806951"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle VM イメージとそのデプロイ
 
@@ -59,7 +59,7 @@ Oracle-WebLogic-Server  Oracle       Oracle-WebLogic-Server  Oracle:Oracle-WebLo
 ユーザーは、Azure で一から作成したカスタム イメージに基づくソリューションにするか、オンプレミス環境からカスタム イメージをアップロードするかを選択することもできます。
 
 ## <a name="oracle-database-vm-images"></a>Oracle データベースの VM イメージ
-Oracle では、Oracle Linux に基づく仮想マシン イメージで、Azure における Oracle DB 12.1 以上の Standard Edition および Enterprise Edition の実行をサポートしています。  Azure で Oracle DB の実稼働ワークロードのパフォーマンスを最大にするには、VM イメージを必ず適切にサイズ変更し、Premium SSD または Ultra SSD Managed Disks を使用してください。 Oracle の発行済み VM イメージを使用して Azure で Oracle DB を迅速に立ち上げて実行する方法については、[Oracle DB のクイック スタート チュートリアルを試してください](oracle-database-quick-create.md)。
+Oracle では、Oracle Linux ベースの仮想マシンイメージ上で、Azure での Oracle Database 12.1 以降の Standard および Enterprise エディションの実行をサポートしています。  Azure 上で Oracle DB の実稼働ワークロードのパフォーマンスを最大にするには、VM イメージのサイズを必ず適切に設定し、Premium SSD または Ultra SSD Managed Disks を使用してください。 Oracle で公開されている VM イメージを使用して Azure で Oracle DB を迅速に立ち上げて実行する方法については、「[Oracle DB のクイック スタート チュートリアル](oracle-database-quick-create.md)」をご覧ください。
 
 ### <a name="attached-disk-configuration-options"></a>接続ディスクの設定オプション
 
@@ -79,13 +79,13 @@ Azure NetApp Files は、クラウド内のデータベースなどの高パフ�
 
 ## <a name="licensing-oracle-database--software-on-azure"></a>Azure での Oracle Database およびソフトウェアのライセンス契約
 Microsoft Azure は、Oracle Database を実行するための承認されたクラウド環境です。 Oracle Core Factor テーブルは、クラウドで Oracle Database をライセンス契約する場合には適用されません。 代わりに、Enterprise Edition のデータベースでハイパースレッディング テクノロジが有効になっている VM を使用するときは、(ポリシー ドキュメントに記載されているように) ハイパースレッディングが有効になっている場合は、1 つの Oracle プロセッサ ライセンスと同等の 2 つの vCPU をカウントします。 ポリシーの詳細については、[こちら](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)をご覧ください。
-一般に、Oracle Database には、より高いメモリと IO が必要です。 このため、これらのワークロードには、[メモリ最適化済み VM](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) を使用することをお勧めします。 ワークロードをさらに最適化するには、高メモリ、ストレージ、I/O 帯域幅を必要とするが、コア数が多いとは限らない Oracle DB のワークロードに[制約付きコア vCPU](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) を使用することをお勧めします。
+一般に、Oracle Database には、より高いメモリと IO が必要です。 このため、これらのワークロードには、[メモリ最適化済み VM](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory) を使用することをお勧めします。 ワークロードをさらに最適化するには、Oracle Database のワークロード対応の[制約付きコア vCPU](https://docs.microsoft.com/azure/virtual-machines/linux/constrained-vcpu) を使用するよう推奨します。これは、高メモリ、ストレージ、I / O帯域幅が必要ですが、コア数を多く必要としません。
 
 Oracle ソフトウェアとワークロードをオンプレミスから Microsoft Azure に移行する場合、Oracle から、「[Oracle on Azure FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)」 (Azure での Oracle に関する FAQ) に記載されているライセンス モビリティが提供されています
 
 
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
-Oracle RAC では、オンプレミスのマルチノード クラスター構成の単一ノードで発生する障害を軽減するように設計されています。 このクラスターは、超大規模パブリック クラウド環境にネイティブではない、2 つのオンプレミスのテクノロジに依存しています。それがネットワーク マルチキャストと共有ディスクです。 お使いのデータベース ソリューションの Azure で Oracle RAC が必要な場合は、サード パーティのソフトウェアを使用してこれらのテクノロジを有効にする必要があります。 Oracle RAC の詳細については、[FlashGrid SkyCluster に関するページ](https://www.flashgrid.io/oracle-rac-in-azure/)を参照してください。
+Oracle Real Application クラスター (Oracle RAC) では、オンプレミスのマルチノード クラスタ構成の単一ノードで発生する障害を軽減するように設計されています。 このクラスターは、超大規模パブリック クラウド環境にネイティブではない、2 つのオンプレミスのテクノロジに依存しています。それがネットワーク マルチキャストと共有ディスクです。 お使いのデータベース ソリューションの Azure で Oracle RAC が必要な場合は、サード パーティのソフトウェアを使用してこれらのテクノロジを有効にする必要があります。 Oracle RAC の詳細については、[FlashGrid SkyCluster に関するページ](https://www.flashgrid.io/oracle-rac-in-azure/)を参照してください。
 
 ## <a name="high-availability-and-disaster-recovery-considerations"></a>高可用性とディザスター リカバリーに関する考慮
 Azure で Oracle データベースを使用する場合、いかなるダウンタイムも回避するために高可用性とディザスター リカバリー ソリューションを実装する責任があります。 
@@ -107,20 +107,20 @@ JD Edwards EnterpriseOne バージョン 9.2、以降は、Oracle のサポー�
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server 仮想マシン イメージ
 
-* **クラスタリングは Enterprise エディションでのみサポートされています。** WebLogic Server の Enterprise Edition を使用する場合にのみ、WebLogic クラスタリングを使用するライセンスが許諾されます。 WebLogic Server Standard Edition の場合、クラスタリングを使用しないでください。
-* **UDP マルチキャストはサポートされていません。** Azure は UDP ユニキャストをサポートしていますが、マルチキャストとブロードキャストはサポートしていません。 WebLogic Server は Azure の UDP ユニキャスト機能に依存できます。 UDP ユニキャストへの依存で最適な結果を得るには、WebLogic クラスターのサイズを静的に保つか、管理サーバーを 10 台以下に保つことをお勧めします。
-* **WebLogic Server は T3 アクセスに対し、パブリック ポートとプライベート ポートを同じにすることを要求します (Enterprise JavaBeans を使用する場合など)。** 次の多層シナリオを検討してみましょう。*SLWLS* という仮想ネットワーク上の、2 つ以上の VM で構成される WebLogic Server クラスターで、サービス層 (EJB) アプリケーションが実行されているとします。 クライアント層は同じ仮想ネットワークの別のサブネットにあり、サービス層にある EJB を呼び出すためにシンプルな Java プログラムを実行します。 サービス層の負荷を分散する必要があるため、負荷分散されたパブリックなエンドポイントを WebLogic Server クラスター内の仮想マシンに作成する必要があります。 指定したプライベート ポートがパブリックポート (7006:7008 など) と異なる場合、次のようなエラーが発生します。
+* **クラスタリングは Enterprise エディションでのみサポートされています。** Oracle WebLogic Server の Enterprise Edition を使用する場合にのみ、WebLogic クラスタリングを使用するライセンスが許諾されます。 Oracle WebLogic Server Standard Edition の場合、クラスタリングを使用しないでください。
+* **UDP マルチキャストはサポートされていません。** Azure は UDP ユニキャストをサポートしていますが、マルチキャストとブロードキャストはサポートしていません。 Oracle WebLogic Server は、Azure UDP ユニキャスト機能に依存できます。 UDP ユニキャストへの依存で最適な結果を得るには、WebLogic クラスターのサイズを静的に保つか、管理サーバーを 10 台以下に保つことをお勧めします。
+* **Oracle WebLogic Server は、パブリック ポートとプライベート ポートが T3 アクセスで同じであると想定されています (たとえば、Enterprise JavaBeans を使用する場合)。** *SLWLS* という名前の仮想ネットワーク内で、サービスレイヤー（EJB）アプリケーションが、2 つ以上の VM で構成される Oracle WebLogic Server クラスター上で実行されている、多層シナリオを考えてみましょう。 クライアント層は同じ仮想ネットワークの別のサブネットにあり、サービス層にある EJB を呼び出すためにシンプルな Java プログラムを実行します。 サービス層の負荷を分散する必要があるため、負荷分散されたパブリック エンド ポイントを Oracle WebLogic Server クラスター内の仮想マシンに作成する必要があります。 指定したプライベート ポートがパブリックポート (7006:7008 など) と異なる場合、次のようなエラーが発生します。
 
        [java] javax.naming.CommunicationException [Root exception is java.net.ConnectException: t3://example.cloudapp.net:7006:
 
        Bootstrap to: example.cloudapp.net/138.91.142.178:7006' over: 't3' got an error or timed out]
 
-   どのようなリモート T3 アクセスにおいても、WebLogic Server に対してロード バランサー ポートおよび WebLogic 管理サーバーのポートが同じでなければいけないためです。 上記の場合、クライアントはポート 7006 (ロード バランサー ポート) へ接続し、管理サーバーは 7008 (プライベート ポート) で待機します。 この制限は、HTTP ではなく T3 アクセスにのみ適用されます。
+   これは、どのリモート T3 アクセスの場合でも、Oracle WebLogic Server は、ロード バランサー ポートと WebLogic 管理サーバーのポートが同じであると想定しているためです。 上記の場合、クライアントはポート 7006 (ロード バランサー ポート) へ接続し、管理サーバーは 7008 (プライベート ポート) で待機します。 この制限は、HTTP ではなく T3 アクセスにのみ適用されます。
 
    この問題を避けるには、次の回避策のいずれかを実施してください。
 
   * T3 アクセス専用の負荷分散エンドポイントに対して、同じプライベートおよびパブリック ポート番号を使用します。
-  * WebLogic Server を開始する場合、次の JVM パラメーターを含めてください。
+  * Oracle WebLogic Server の起動時に、次の JVM パラメータを含めてください。
 
     ```
     -Dweblogic.rjvm.enableprotocolswitch=true
@@ -128,10 +128,10 @@ JD Edwards EnterpriseOne バージョン 9.2、以降は、Oracle のサポー�
 
 関連情報については、<https://support.oracle.com> にあるサポート技術情報 **860340.1** をご覧ください。
 
-* **動的なクラスタリングと負荷分散の制限事項。** WebLogic Server で動的なクラスターを使用し、Azure 上の単一のパブリック負荷分散エンドポイントでそれを公開すると仮定します。 これは、それぞれの管理サーバーに固定のポート番号を使用し (範囲から動的に割り当てられていない)、管理者が追跡記録しているマシンより多く管理サーバーを起動しない限り、実現できます。 つまり、1 つの仮想マシンに対する管理サーバーが複数にならないようにします。 設定の結果、起動する WebLogic Server の数が仮想マシンより多くなる場合 (つまり、複数の WebLogic Server インスタンスが同じ仮想マシンを共有する場合)、指定したポート番号に複数の WebLogic Server インスタンス サーバーをバインドすることはできません。 その仮想マシン上ではその他は失敗します。
+* **動的なクラスタリングと負荷分散の制限事項。** Oracle WebLogic Server で動的クラスターを使用し、Azure 上の単一のパブリック負荷分散エンドポイントを介して、それを公開すると仮定します。 これは、それぞれの管理サーバーに固定のポート番号を使用し (範囲から動的に割り当てられていない)、管理者が追跡記録しているマシンより多く管理サーバーを起動しない限り、実現できます。 つまり、1 つの仮想マシンに対する管理サーバーが複数にならないようにします。 設定の結果、起動する Oracle WebLogic Server の数が仮想マシンより多くなる場合 (つまり、複数の Oracle WebLogic Server インスタンスが同じ仮想マシンを共有する場合)、指定したポート番号に複数の Oracle WebLogic Server インスタンス サーバーをバインドすることはできません。 その仮想マシン上ではその他は失敗します。
 
    管理サーバーに個別のポート番号を自動的に割り当てるように管理サーバーを設定した場合、負荷分散はできません。そのような設定では、単一のパブリック ポートから複数のプライベート ポートにマッピングする必要がありますが、Azure ではサポートされていないためです。
-* **仮想マシン上の WebLogic Server の複数のインスタンス。** 仮想マシンが十分に大きい場合、デプロイ要件によりますが、同じ仮想マシン上で複数の WebLogic Server のインスタンスを実行することを検討できます。 たとえば、2 つのコアを持つ中程度のサイズの仮想マシンでは、WebLogic Server で 2 つのインスタンスを実行できます。 ただし、1 つの仮想マシンで複数の WebLogic Server インスタンスを実行する場合のように、単一障害点をアーキテクチャに導入することは避けることが推奨されます。 2 つ以上の仮想マシンを使うほうがより優れた手法であり、各仮想マシンは複数の WebLogic Server のインスタンスを実行できるようになります。 それでもなお、WebLogic Server の各インスタンスは同じクラスターの一部にすることができます。 ただし、現在は、Azure のロード バランサーを利用する場合、負荷を分散するサーバーを個別の仮想マシン間で配布する必要があるため、同じ仮想マシン内の WebLogic Server のデプロイによって公開されるエンドポイントの負荷を Azure で分散することはできません。
+* **仮想マシン上の Oracle WebLogic Server の複数のインスタンス。** デプロイ要件によりますが、仮想マシンが十分に大きい場合、同じ仮想マシン上で複数の Oracle WebLogic Server のインスタンスを実行することを検討できます。 たとえば、2 つのコアを持つ中規模のサイズの仮想マシンでは、 Oracle WebLogic Server で 2 つのインスタンスを実行できます。 ただし、1 つの仮想マシンで複数の Oracle WebLogic Server インスタンスを実行する場合のように、単一障害点をアーキテクチャに導入することは避けることが推奨されます。 2 つ以上の仮想マシンを使うほうがより優れた手法であり、各仮想マシンは複数の Oracle WebLogic Server のインスタンスを実行できるようになります。 それでもなお、Oracle WebLogic Server の各インスタンスは同じクラスターの一部にすることができます。 ただし、今のところ、Azure のロード バランサーを利用する場合、負荷を分散するサーバーを個別の仮想マシン間で配布する必要があるため、同じ仮想マシン内の Oracle WebLogic Server のデプロイによって公開されるエンドポイントの負荷を Azure で分散することはできません。
 
 ## <a name="oracle-jdk-virtual-machine-images"></a>Oracle JDK 仮想マシンのイメージ
 * **JDK 6 および 7 の最新アップデート。** パブリックをサポートする Java の最新バージョン (現在は Java 8) の使用を推奨していますが、Azure には JDK 6 および JDK 7 のイメージもご利用いただけます。 これは JDK 8 へのアップグレードの準備が整っていない従来のアプリケーションのための対処としてです。 一般向けには以前の JDK イメージの一般公開は終了していますが、Microsoft と Oracle の業務提携により、Azure 提供の JDK 6 および 7 のイメージには、通常、Oracle のサポート対象顧客の選ばれたグループにのみ Oracle が提供する最近の非公開更新が含まれます。 新しいバージョンの JDK イメージは JDK 6 および 7 の更新版がリリースされた後に利用可能になります。

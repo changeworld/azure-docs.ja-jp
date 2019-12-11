@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6c6e680de6253f5e822ba282df2e2397093d003
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 793b9d1b33c244354841402babbd9177ce7ed19b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270992"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687716"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -551,13 +551,13 @@ Azure Monitor を設定する方法については、[Azure Monitor の Azure AD
 
 2019 年 9 月 25 日に、ユーザー セキュリティ情報の登録と管理のためのセキュリティ情報エクスペリエンスのうち、機能強化されていない前のバージョンを無効にし、新しい[機能強化されたバージョン](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271)のみを有効にします。 つまり、ユーザーは以前のエクスペリエンスを使用できなくなります。
 
-機能強化されたセキュリティ情報エクスペリエンスについては、[管理者ドキュメント](https://aka.ms/securityinfodocs) と[ユーザー ドキュメント](https://aka.ms/securityinfoguide)を参照してください。
+機能強化されたセキュリティ情報エクスペリエンスについては、[管理者ドキュメント](https://aka.ms/securityinfodocs) と [ユーザー ドキュメント](https://aka.ms/securityinfoguide)を参照してください。
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>この新しいエクスペリエンスを有効にするには、次の操作を行う必要があります。
 
 1. Azure portal にグローバル管理者またはユーザー管理者としてサインインします。
 
-2.  **Azure Active Directory、[ユーザー設定]、[アクセス パネル プレビュー機能の設定を管理]** の順に移動します。
+2. **[Azure Active Directory]、[ユーザー設定]、[アクセス パネル プレビュー機能の設定を管理]** の順に移動します。
 
 3. **[ユーザーはセキュリティ情報の登録と管理のためにプレビュー機能を使用できます - 拡張]** 領域で **[選択済み]** を選択し、ユーザーのグループを選択するか、 **[すべて]** を選択してテナントのすべてのユーザーに対してこの機能をオンにします。
 
