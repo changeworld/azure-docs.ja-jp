@@ -63,7 +63,7 @@ Power Query は、[Microsoft Power Query for Excel](https://www.microsoft.com/en
 **Power Query を使用してサービス ログを開いて分析する**
 
 1. **Microsoft Excel**を開きます。
-2. **[Power Query]** メニューの **[Azure から]** をクリックし、 **[Microsoft Azure テーブル ストレージから]** をクリックします。
+2. **[Power Query]** メニューの **[Azure から]** をクリックし、 **[Microsoft Azure Table Storage から]** をクリックします。
    
     ![HDInsight Hadoop Excel PowerQuery open Azure Table storage](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-open.png)
 3. ストレージ アカウント名 (短い名前または FQDN) を入力します。
