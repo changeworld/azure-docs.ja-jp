@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bfe306f089a26258ba9c7a07c54925f4540b44b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 90dc42ed6ca16947902622cba0e5a81a2bc900e3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382022"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785996"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 
@@ -36,13 +36,16 @@ ms.locfileid: "74382022"
 
 証明書ベースの認証を構成するには、次のステートメントが当てはまる必要があります。
 
-- 証明書ベース認証 (CBA) は、フェデレーション環境で最新の認証 (ADAL) を使用するブラウザー アプリケーションやネイティブのクライアントのみに対しサポートされます。 1 つの例外は、Exchange Online (EXO) の Exchange Active Sync (EAS) です。これは、フェデレーション アカウントや管理アカウントに使用できます。
+- 証明書ベース認証 (CBA) は、フェデレーション環境のブラウザー アプリケーション、最新の認証 (ADAL) を使用するやネイティブのクライアント、または MSAL ライブラリのみに対しサポートされます。 1 つの例外は、Exchange Online (EXO) の Exchange Active Sync (EAS) です。これは、フェデレーション アカウントや管理アカウントに使用できます。
 - ルート証明機関および中間証明機関は、Azure Active Directory で構成する必要があります。
 - 各証明機関には、インターネットに接続する URL から参照できる証明書失効リスト (CRL) が必要です。
 - Azure Active Directory で少なくとも 1 つの証明機関が構成されている必要があります。 この手順については、「[証明機関を構成する](#step-2-configure-the-certificate-authorities)」セクションをご覧ください。
 - Exchange ActiveSync クライアントの場合、クライアント証明書では、サブジェクト代替名フィールドのプリンシパル名または RFC822 名の値のいずれかで、Exchange Online のユーザーのルーティング可能な電子メール アドレスが必要になります。 Azure Active Directory は、ディレクトリ内のプロキシ アドレス属性に RFC822 値をマップします。
 - クライアント デバイスから、クライアント証明書を発行する証明機関の少なくとも 1 つにアクセスできる必要があります。
 - クライアント認証用のクライアント証明書が、クライアントに対して発行されている必要があります。
+
+>[!IMPORTANT]
+>正常にダウンロードしてキャッシュする Azure Active Directory の CRL の最大サイズは 20 MB であり、CRL のダウンロードに必要な時間は 10 秒以内である必要があります。  Azure Active Directory が CRL をダウンロードできない場合、対応する CA によって発行された証明書を使用する証明書ベースの認証は失敗します。 CRL ファイルがサイズ制限内に収まるようにするためのベスト プラクティスは、証明書の有効期間を妥当な制限内に保ち、期限切れの証明書をクリーンアップすることです。 
 
 ## <a name="step-1-select-your-device-platform"></a>手順 1:デバイス プラットフォームを選択する
 

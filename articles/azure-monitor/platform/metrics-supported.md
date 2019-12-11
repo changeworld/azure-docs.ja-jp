@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 30e2b880f32f896098778942deb67d7ced9f5c2d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ba3535679f37916a18aae5fe7dbe4e9114cea695
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484227"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664915"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -1130,6 +1130,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |ApplicationRuleHit|アプリケーション規則のヒット数|Count|合計|アプリケーション規則がヒットした回数|Status、Reason、Protocol|
 |NetworkRuleHit|ネットワーク規則のヒット数|Count|合計|ネットワーク規則がヒットした回数|Status、Reason、Protocol|
+|DataProcessed|処理済みのデータ|Bytes|合計|ファイアウォールを通過しているデータの量|ディメンションなし|
+|FirewallHealthState|Firewall Health State (ファイアウォールの正常性状態)|Percent|平均|ファイアウォールの正常性を示します。|状態、理由|
+|SNATPortUtilization|SNAT Port Utilization (SNAT ポート使用率)|Percent|平均|ファイアウォールによって使用されている SNAT ポートの割合|ディメンションなし|
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 

@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL の接続アーキテクチャ
+title: 接続アーキテクチャ - Azure Database for MySQL
 description: Azure Database for MySQL サーバーの接続アーキテクチャについて説明します。
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/15/2019
-ms.openlocfilehash: c4fecfadefedf10f7e11534b4efbd197c4d7fdae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/02/2019
+ms.openlocfilehash: 22c77bee95533606156ec6cc337af1d743018005
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213155"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765326"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Azure Database for MySQL の接続アーキテクチャ
 この記事では、Azure Database for MySQL 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for MySQL インスタンスに転送されるかについて説明します。
@@ -66,14 +66,6 @@ Azure Database for MySQL への接続は、受信接続をクラスター内の�
 
 > [!NOTE]
 > *米国東部 2* には、`52.167.104.0` の第 3 IP アドレスもあります。
-
-## <a name="connection-redirection"></a>接続のリダイレクト
-
-Azure Database for MySQL を使うと、クライアント アプリケーションと MySQL サーバーの間のネットワーク待機時間の短縮に役立つ、**リダイレクト**という追加接続ポリシーがサポートされます。 この機能を使うと、Azure Database for MySQL サーバーに対する最初の TCP セッションが確立された後、MySQL サーバーがホストされているノードのバックエンド アドレスが、サーバーからクライアントに返されます。 その後、後続のパケットはすべて、ゲートウェイをバイパスして、サーバーに直接送信されます。 パケットがサーバーに直接送信されるため、待機時間とスループットのパフォーマンスが改善されます。
-
-この機能は、エンジンのバージョンが 5.6、5.7、8.0 の Azure Database for MySQL サーバーでサポートされています。
-
-リダイレクトのプレビュー サポートは、Microsoft によって開発され、[PECL](https://pecl.php.net/package/mysqlnd_azure) から入手できる、[PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) 拡張機能で利用できます。 アプリケーションでリダイレクトを使用する方法について詳しくは、[リダイレクトの構成](./howto-redirection.md)に関する記事をご覧ください。 
 
 ## <a name="next-steps"></a>次の手順
 

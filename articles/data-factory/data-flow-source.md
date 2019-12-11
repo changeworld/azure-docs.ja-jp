@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 33a63b8a887594747aba03e19c107653e438853f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217746"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702053"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>マッピング データ フローのソース変換 
 
@@ -156,7 +156,7 @@ Azure Blob Storage や Azure Data Lake Storage などのファイルベースの
 
 ### <a name="import-schema"></a>Import schema
 
-Avro や CosmosDB のように、複雑なデータ構造をサポートするデータセットの場合は、データセットにスキーマ定義が存在している必要はありません。 そのようなタイプのソースについては、[Projection] タブの [Import schema] ボタンをクリックすることができます。
+Avro や CosmosDB のように、複雑なデータ構造をサポートするデータセットの場合は、データセットにスキーマ定義が存在している必要はありません。 そのようなタイプのソースについては、 **[プロジェクション]** タブの **[スキーマのインポート]** ボタンをクリックすることができます。
 
 ## <a name="cosmosdb-specific-settings"></a>CosmosDB 固有の設定
 

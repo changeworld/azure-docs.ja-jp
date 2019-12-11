@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: a45f273078a622de5e256457fc45b6cb6cae512f
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 4c0c415235fd290bc47ac402a6b81a1afa7af903
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464127"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777436"
 ---
-# <a name="remove-azure-sentinel-from-your-tenant"></a>テナントから Azure Sentinel を削除する
+# <a name="remove-azure-sentinel-from-your-workspace"></a>ワークスペースから Azure Sentinel を削除する
 
-この記事では、Azure Sentinel が不要になった場合のためにテナントから削除する方法について説明しています。
+この記事では、Azure Sentinel が不要になった場合のためにワークスペースから削除する方法について説明します。
 
 ## <a name="how-to-delete-azure-sentinel"></a>Azure Sentinel を削除する方法
 

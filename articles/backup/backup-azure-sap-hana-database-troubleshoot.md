@@ -3,12 +3,12 @@ title: SAP HANA データベースのバックアップ エラーのトラブル
 description: Azure Backup を使用して SAP HANA データベースをバックアップするときに発生する可能性のある一般的なエラーをトラブルシューティングする方法について説明します。
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: b4c39c631963a358dcdc9d1eafe954a85a9499ad
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: e8bb1d3328f95b647a788c53afe3ac1455eefa13
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554856"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665340"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure での SAP HANA データベースのバックアップをトラブルシューティングする
 
@@ -20,61 +20,61 @@ ms.locfileid: "74554856"
 
 ## <a name="common-user-errors"></a>一般的なユーザー エラー
 
-###  <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection 
+### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-| エラー メッセージ      | HANA システムに接続できませんでした                             |
+| エラー メッセージ      | <span style="font-weight:normal">HANA システムに接続できませんでした</span>                        |
 | ------------------ | ------------------------------------------------------------ |
-| 考えられる原因    | SAP HANA インスタンスがダウンしている可能性があります。<br/>Azure Backup が HANA データベースと対話するのに必要なアクセス許可が設定されていません。 |
-| 推奨される操作 | SAP HANA データベースが稼働しているかどうかを確認します。 データベースが稼働している場合は、必要なアクセス許可がすべて設定されているかどうかを確認します。 いずれかのアクセス許可がない場合は、[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行して、不足しているアクセス許可を追加します。 |
+| **考えられる原因**    | SAP HANA インスタンスがダウンしている可能性があります。<br/>Azure Backup が HANA データベースと対話するのに必要なアクセス許可が設定されていません。 |
+| **推奨される操作** | SAP HANA データベースが稼働しているかどうかを確認します。 データベースが稼働している場合は、必要なアクセス許可がすべて設定されているかどうかを確認します。 いずれかのアクセス許可がない場合は、[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行して、不足しているアクセス許可を追加します。 |
 
-###  <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid 
+### <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid
 
-| エラー メッセージ      | 指定した SAP HANA インスタンスは無効であるか、見つかりません |
+| エラー メッセージ      | <span style="font-weight:normal">指定した SAP HANA インスタンスは無効であるか、見つかりません</span>  |
 | ------------------ | ------------------------------------------------------------ |
-| 考えられる原因    | 単一の Azure VM 上の複数の SAP HANA インスタンスをバックアップすることはできません。 |
-| 推奨される操作 | バックアップする SAP HANA インスタンス上で[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行します。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 |
+| **考えられる原因**    | 単一の Azure VM 上の複数の SAP HANA インスタンスをバックアップすることはできません。 |
+| **推奨される操作** | バックアップする SAP HANA インスタンス上で[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行します。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 |
 
-###  <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation 
+### <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation
 
-| エラー メッセージ      | 指定された SAP HANA 操作はサポートされていません             |
+| エラー メッセージ      | <span style="font-weight:normal">指定された SAP HANA 操作はサポートされていません</span>              |
 | ------------------ | ------------------------------------------------------------ |
-| 考えられる原因    | SAP HANA 用 Azure Backup は、SAP HANA ネイティブ クライアント (Studio/ Cockpit/ DBA Cockpit) で実行される増分バックアップやアクションをサポートしていません |
-| 推奨される操作 | 詳しくは、[こちら](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)を参照してください。 |
+| **考えられる原因**    | SAP HANA 用 Azure Backup は、SAP HANA ネイティブ クライアント (Studio/ Cockpit/ DBA Cockpit) で実行される増分バックアップやアクションをサポートしていません |
+| **推奨される操作** | 詳しくは、[こちら](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)を参照してください。 |
 
-###  <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType 
+### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
 
-| エラー メッセージ      | この SAP HANA データベースは、要求されたバックアップの種類をサポートしていません |
+| エラー メッセージ      | <span style="font-weight:normal">この SAP HANA データベースは、要求されたバックアップの種類をサポートしていません</span>  |
 | ------------------ | ------------------------------------------------------------ |
-| 考えられる原因    | Azure Backup は、増分バックアップやスナップショットを使用したバックアップをサポートしていません |
-| 推奨される操作 | 詳しくは、[こちら](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)を参照してください。 |
+| **考えられる原因**    | Azure Backup は、増分バックアップやスナップショットを使用したバックアップをサポートしていません |
+| **推奨される操作** | 詳しくは、[こちら](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)を参照してください。 |
 
-###  <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure 
+### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
 
-| エラー メッセージ      | バックアップ ログ チェーンが壊れています                                   |
+| エラー メッセージ      | <span style="font-weight:normal">バックアップ ログ チェーンが壊れています</span>                                    |
 | ------------------ | ------------------------------------------------------------ |
-| 考えられる原因    | ログ バックアップ先が backint からファイル システムに更新されたか、backint 実行可能ファイルが変更された可能性があります |
-| 推奨される操作 | 問題を解決するには、完全バックアップをトリガーします                   |
+| **考えられる原因**    | ログ バックアップ先が backint からファイル システムに更新されたか、backint 実行可能ファイルが変更された可能性があります |
+| **推奨される操作** | 問題を解決するには、完全バックアップをトリガーします                   |
 
-###  <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore 
+### <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore
 
-| エラー メッセージ      | 復元のソース システムとターゲット システムには互換性がありません   |
+| エラー メッセージ      | <span style="font-weight:normal">復元のソース システムとターゲット システムには互換性がありません</span>    |
 | ------------------ | ------------------------------------------------------------ |
-| 考えられる原因    | 復元用ターゲット システムにソースとの互換性がありません |
-| 推奨される操作 | SAP ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照し、現在サポートされている復元の種類をご確認ください |
+| **考えられる原因**    | 復元用ターゲット システムにソースとの互換性がありません |
+| **推奨される操作** | SAP ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照し、現在サポートされている復元の種類をご確認ください |
 
-###  <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected 
+### <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected
 
-| エラー メッセージ      | SDC から MDC へのアップグレードが検出されました                                  |
+| エラー メッセージ      | <span style="font-weight:normal">SDC から MDC へのアップグレードが検出されました</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
-| 考えられる原因    | SAP HANA インスタンスが、SDC から MDC にアップグレードされました。 更新すると、バックアップは失敗します。 |
-| 推奨される操作 | この問題を解決するには、[SAP HANA 1.0 から 2.0 へのアップグレード](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20)に関するセクションに記載されている手順に従ってください |
+| **考えられる原因**    | SAP HANA インスタンスが、SDC から MDC にアップグレードされました。 更新すると、バックアップは失敗します。 |
+| **推奨される操作** | この問題を解決するには、[SAP HANA 1.0 から 2.0 へのアップグレード](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20)に関するセクションに記載されている手順に従ってください |
 
-###  <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration 
+### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
-| エラー メッセージ      | 無効な backint 構成が検出されました                       |
+| エラー メッセージ      | <span style="font-weight:normal">無効な backint 構成が検出されました</span>                       |
 | ------------------ | ------------------------------------------------------------ |
-| 考えられる原因    | バッキング パラメーターが Azure Backup に対して正しく指定されていません |
-| 推奨される操作 | 次の (backint) パラメーターが設定されているかどうかを確認します。<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>backint ベースのパラメーターが HOST に存在する場合は、それらを削除します。 パラメーターが HOST レベルに存在しないが、データベース レベルで手動で変更されている場合は、それらを既に説明した適切な値に戻します。 または、Azure portal から [[保護を停止してバックアップ データを保持する]](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) を実行してから、 **[バックアップの再開]** を選択します。 |
+| **考えられる原因**    | バッキング パラメーターが Azure Backup に対して正しく指定されていません |
+| **推奨される操作** | 次の (backint) パラメーターが設定されているかどうかを確認します。<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>backint ベースのパラメーターが HOST に存在する場合は、それらを削除します。 パラメーターが HOST レベルに存在しないが、データベース レベルで手動で変更されている場合は、それらを既に説明した適切な値に戻します。 または、Azure portal から [[保護を停止してバックアップ データを保持する]](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) を実行してから、 **[バックアップの再開]** を選択します。 |
 
 ## <a name="restore-checks"></a>復元の確認
 

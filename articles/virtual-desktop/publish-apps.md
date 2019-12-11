@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 26ebcc7f2196267719a5f49aeeb8de00d48b9c3e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 896fd41cff0ab8257da7b91687aaae389a1c81ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483729"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769661"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Windows Virtual Desktop で組み込みアプリを発行する
 
@@ -45,5 +45,8 @@ Microsoft Edge の発行に使用するプロセスは、他のアプリの発�
 New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" 
 ```
 
+## <a name="next-steps"></a>次の手順
 
+- フィードを構成して、ユーザーのためにアプリを表示する方法を整理する方法について、「[Windows Virtual Desktop ユーザー用のフィードをカスタマイズする](customize-feed-for-virtual-desktop-users.md)」を参照してください。
+- MSIX アプリのアタッチ機能について、「[MSIX アプリのアタッチを設定する](app-attach.md)」を参照してください。
 

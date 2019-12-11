@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c16abd02dfef5fb8b74cd5c0cafa97e5f29cc6b2
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 3563b56e596f5c79f2107bdbf74219a19c6c0d06
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286978"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784614"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -278,10 +278,10 @@ Azure ML では、Tensorflow、PyTorch、Chainer、および SKLearn に対応�
 
 ページを手動で最新の情報に更新してください。 初期化の進行速度は、1 秒あたり約 20 データポイントです。 自動更新が実行されない問題が確認されています。 
 
-### <a name="bounding-box-cannot-be-drawn-all-the-way-to-right-edge-of-image"></a>画像の右端まで境界ボックスを描画できない 
-
-ブラウザー ウィンドウのサイズを変更してみてください。 現在、この動作の原因を調査中です。 
-
 ### <a name="when-reviewing-images-newly-labeled-images-are-not-shown"></a>画像をレビューする際に、新しくラベル付けされた画像が表示されない
 
 ラベル付けされたすべての画像を読み込むには、 **[First]\(1 番目\)** ボタンを選択します。 **[First]\(1 番目\)** ボタンを選択すると、リストの先頭に戻りますが、ラベル付けされたデータはすべて読み込まれます。
+
+### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>オブジェクト検出のラベル付け中に Esc キーを押すと、左上隅にゼロ サイズのラベルが作成されます。 この状態でラベルを送信することはできません。
+
+ラベルの横にある交差マークをクリックして、ラベルを削除してください。

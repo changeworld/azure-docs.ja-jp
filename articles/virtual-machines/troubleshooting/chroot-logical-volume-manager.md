@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 9c3f054a1bae745e4ee7ce9e3bddca3c9bf31083
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534983"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684127"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Azure シリアル コンソールにアクセスできず、ディスク レイアウトが LVM (論理ボリューム マネージャー) を使用している場合の Linux VM のトラブルシューティング
 
@@ -204,12 +204,35 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ![詳細](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-必要に応じて**カーネル**をアップグレードします
+必要に応じて**カーネル**を削除またはアップグレードします
 ![詳細](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
 ### <a name="example-3---enable-serial-console"></a>例 3 - シリアル コンソールを有効にする
 Azure シリアル コンソールにアクセスできない場合は、Linux VM の GRUB 構成パラメーターを確認して修正します。 詳細については、[このドキュメント](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration)を参照してください
+
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>例 4 - 問題のある LVM スワップ ボリュームを使用したカーネルの読み込み
+
+VM が完全に起動せず、**dracut** プロンプトにドロップすることがあります。
+エラーの詳細については、Azure シリアル コンソールを使用するか、Azure portal -> [ブート診断] -> [シリアル ログ] を参照してください。
+
+
+次のようなエラーが表示されることがあります。
+
+```
+[  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
+         Starting Dracut Emergency Shell...
+Warning: /dev/VG/SwapVol does not exist
+```
+
+この例では grub.cfg が **rd.lvm.lv=VG/SwapVol** という名前の LV を読み込むように構成されており、VM がこれを見つけられません。 この行は、LV SwapVol を参照しているカーネルがどのように読み込まれているかを示しています
+
+```
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
+[    0.000000] e820: BIOS-provided physical RAM map:
+```
+
+ 問題のある LV を/etc/default/grub 構成から削除し、grub2.cfg をリビルドします
 
 
 ## <a name="exit-chroot-and-swap-the-os-disk"></a>chroot を終了し、OS ディスクをスワップします
@@ -247,4 +270,8 @@ VM が実行中で、ディスク スワップにより VM がシャットダウ
 
 
 ## <a name="next-steps"></a>次の手順
-[Azure シリアル コンソール]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)の詳細を参照する
+項目ごとに詳しい情報を確認できます。
+
+ [Azure シリアル コンソール]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+
+[シングル ユーザー モード](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)

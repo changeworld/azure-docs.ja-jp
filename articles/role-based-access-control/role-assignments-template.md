@@ -1,6 +1,6 @@
 ---
-title: RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) と Azure Resource Manager テンプレートを使用してユーザー、グループ、アプリケーションの Azure リソースへのアクセスを管理する方法を説明します。
+title: Azure RBAC と Azure Resource Manager テンプレートを使用してロールの割り当てを追加する
+description: Azure のロールベースのアクセス制御 (RBAC) と Azure Resource Manager テンプレートを使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/21/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 268913fb7aebd1d6c8b377b95939c3bc1f77daca
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a183dc3b318cb9d740fe91bf553dc9f0c7ec99c4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383995"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707793"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する
+# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Azure RBAC と Azure Resource Manager テンプレートを使用してロールの割り当てを追加する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 Azure PowerShell または Azure CLI を使う以外に、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使って Azure リソースへのアクセスを管理することもできます。 リソースを一貫して繰り返しデプロイする場合は、テンプレートが便利です。 この記事では、RBAC とテンプレートを使ってアクセスを管理する方法について説明します。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Azure PowerShell または Azure CLI を使う以外に、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使ってロールを割り当てることもできます。 リソースを一貫して繰り返しデプロイする場合は、テンプレートが便利です。 この記事では、テンプレートを使用してロールを割り当てる方法について説明します。
 
 ## <a name="get-object-ids"></a>オブジェクト ID を取得する
 
@@ -64,9 +64,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>リソース グループをスコープとするロールの割り当ての作成 (パラメーターなし)
+## <a name="add-a-role-assignment"></a>ロールの割り当てを追加する
 
-RBAC でアクセス権を付与するには、ロールの割り当てを作成します。 次のテンプレートは、ロールの割り当てを作成する基本的な方法を示したものです。 一部の値は、テンプレート内で指定されます。 以下のテンプレートでは次のことを示します。
+RBAC でアクセス権を付与するには、ロールの割り当てを追加します。
+
+### <a name="resource-group-without-parameters"></a>リソース グループ (パラメーターなし)
+
+次のテンプレートは、ロールの割り当てを追加する基本的な方法を示したものです。 一部の値は、テンプレート内で指定されます。 以下のテンプレートでは次のことを示します。
 
 -  リソース グループのスコープでユーザー、グループ、またはアプリケーションに[閲覧者](built-in-roles.md#reader)ロールを割り当てる方法
 
@@ -107,7 +111,7 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 ![リソース グループをスコープとするロールの割り当て](./media/role-assignments-template/role-assignment-template.png)
 
-## <a name="create-a-role-assignment-at-a-resource-group-or-subscription-scope"></a>リソース グループまたはサブスクリプションをスコープとするロールの割り当ての作成
+### <a name="resource-group-or-subscription"></a>リソース グループまたはサブスクリプション
 
 前述のテンプレートは、それほど柔軟性が高いものではありません。 次のテンプレートでは、パラメーターを使用して、異なるスコープで使用できます。 以下のテンプレートでは次のことを示します。
 
@@ -191,9 +195,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-scope"></a>リソースをスコープとするロールの割り当ての作成
+### <a name="resource"></a>リソース
 
-リソース レベルでロールの割り当てを作成する必要がある場合は、ロールの割り当ての形式が異なります。 ロールを割り当てるリソースのリソース プロバイダーの名前空間とリソースの種類を指定します。 ロールの割り当ての名前にリソースの名前も含めます。
+リソース レベルでロールの割り当てを追加する必要がある場合は、ロールの割り当ての形式が異なります。 ロールを割り当てるリソースのリソース プロバイダーの名前空間とリソースの種類を指定します。 ロールの割り当ての名前にリソースの名前も含めます。
 
 ロールの割り当ての種類と名前には、次の形式を使用します。
 
@@ -287,7 +291,7 @@ az group deployment create --resource-group ExampleGroup --template-file rbac-te
 
 ![リソースをスコープとするロールの割り当て](./media/role-assignments-template/role-assignment-template-resource.png)
 
-## <a name="create-a-role-assignment-for-a-new-service-principal"></a>新しいサービス プリンシパルに対するロール割り当ての作成
+### <a name="new-service-principal"></a>新しいサービス プリンシパル
 
 新しいサービス プリンシパルを作成し、そのサービス プリンシパルにロールをすぐに割り当てようとすると、場合によってはそのロールの割り当てが失敗することがあります。 たとえば、新しいマネージド ID を作成し、同じ Azure Resource Manager テンプレート内でそのサービス プリンシパルにロールを割り当てようとすると、ロールの割り当てが失敗する可能性があります。 このエラーの原因は、レプリケーションの遅延である可能性があります。 サービス プリンシパルは 1 つのリージョンに作成されます。ただし、ロールの割り当ては、サービス プリンシパルがまだレプリケートされていない別のリージョンで発生する可能性があります。 このシナリオに対処するには、ロールの割り当てを作成するときに、`principalType` プロパティを `ServicePrincipal` に設定する必要があります。
 

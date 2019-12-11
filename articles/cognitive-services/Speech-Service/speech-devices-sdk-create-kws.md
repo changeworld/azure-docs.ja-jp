@@ -1,5 +1,5 @@
 ---
-title: カスタム キーワードを作成する - Speech Service
+title: カスタム キーワードを作成する - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: デバイスは常にキーワード (またはフレーズ) をリッスンしています。 ユーザーがキーワードを読み上げると、ユーザーが読み上げを止めるまで、デバイスは後続のすべての音声をクラウドに送信します。 キーワードをカスタマイズすることは、デバイスを差別化し、ブランドを強化する上で効果的な方法です。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 9a5b5de71ee290b39603968cf4309171689e22e4
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184843"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815298"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Speech Service を使用してカスタム キーワードを作成する
 

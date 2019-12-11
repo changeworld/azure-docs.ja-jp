@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: a678039b3386c3df290327238d3bf968a803d2c1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229435"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666377"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Traffic Analytics のスキーマとデータ集計
 
@@ -143,7 +143,7 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 | LocalNetworkGateway1_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | フロー内のソース ID アドレスに関連付けられたローカル ネットワーク ゲートウェイ |
 | LocalNetworkGateway2_s | \<SubscriptionID>/\<ResourceGroupName>/\<LocalNetworkGatewayName> | フロー内の宛先 ID アドレスに関連付けられたローカル ネットワーク ゲートウェイ |
 | ConnectionType_s | 可能な値は、VNetPeering、VpnGateway、および ExpressRoute です |    接続の種類 |
-| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | 接続名 |
+| ConnectionName_s | \<SubscriptionID>/\<ResourceGroupName>/\<ConnectionName> | 接続名。 flowtype P2S の場合、これは <gateway name>_<VPN Client IP> として書式設定されます |
 | ConnectingVNets_s | 仮想ネットワーク名のスペース区切りリスト | ハブとスポークのトポロジの場合は、ハブの仮想ネットワークがここに入力されます |
 | Country_s | 2 文字の国コード (ISO 3166-1 alpha-2) | フローの種類が ExternalPublic の場合に入力されます。 PublicIPs_s フィールド内のすべての IP アドレスは、同じ国コードになります |
 | AzureRegion_s | Azure リージョンの場所 | フローの種類が AzurePublic の場合に入力されます。 PublicIPs_s フィールド内のすべての IP アドレスは、同じ Azure リージョンになります |

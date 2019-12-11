@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB での監視
+title: 監視 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB での監視およびアラート生成のためのメトリック (CPU、ストレージ、および接続の統計を含む) について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: e3c25798be8af26c1f5e5c1178395cd1688bb132
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/02/2019
+ms.openlocfilehash: 15a396a86103f41f49d3b49878ec51c1e71add40
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382062"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772481"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MariaDB には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。

@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MySQL のセキュリティ - 単一サーバー
-description: Azure Database for MySQL のセキュリティ機能の概要 - 単一サーバー。
+title: セキュリティ - Azure Database for MySQL
+description: Azure Database for MySQL のセキュリティ機能の概要。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 06f895d2e8cd7936141c9f35c5ed0c81fb7e3e15
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: 421604bcec5277d337b7e7f73a869f40fa73158a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484792"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764969"
 ---
-# <a name="security-in-azure-database-for-mysql---single-server"></a>Azure Database for MySQL のセキュリティ - 単一サーバー
+# <a name="security-in-azure-database-for-mysql"></a>Azure Database for MySQL のセキュリティ
 
 Azure Database for MySQL サーバーには、データを保護するために使用できるセキュリティのレイヤーが複数あります。 この記事では、これらのセキュリティ オプションについてまとめています。
 

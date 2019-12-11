@@ -1,19 +1,19 @@
 ---
-title: Azure Database for MariaDB のセキュリティ - 単一サーバー
-description: Azure Database for MariaDB のセキュリティ機能の概要 - 単一サーバー。
+title: セキュリティ - Azure Database for MariaDB
+description: Azure Database for MariaDB のセキュリティ機能の概要。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 1a2d7ac449c131519473afaa80eb3a57c287eb28
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: d23eabdacc57a3f5a10d9e3b132a6daac42fbd4d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484832"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772150"
 ---
-# <a name="security-in-azure-database-for-mariadb---single-server"></a>Azure Database for MariaDB のセキュリティ - 単一サーバー
+# <a name="security-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のセキュリティ
 
 Azure Database for MariaDB サーバーには、データを保護するために使用できるセキュリティのレイヤーが複数あります。 この記事では、これらのセキュリティ オプションについてまとめています。
 

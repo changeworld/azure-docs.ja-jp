@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 02d87ed5f26d36b7cd438b0d818c7bdcce43520d
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464115"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74762704"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel のアクセス許可
 
@@ -30,9 +30,9 @@ RBAC を使用すると、セキュリティ運用チーム内でロールを使
 
 組み込みの Azure Sentinel ロールは 3 つあります。  
 **すべての Azure Sentinel の組み込みロールでは、Azure Sentinel ワークスペース内のデータに対して読み取りアクセス権が付与されます。**
-- **Azure Sentinel 閲覧者**:詳細については、[組み込みロール](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)に関するページを参照してください
-- **Azure Sentinel レスポンダー**:詳細については、[組み込みロール](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)に関するページを参照してください
-- **Azure Sentinel 共同作成者**:詳細については、[組み込みロール](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)に関するページを参照してください
+- [Azure Sentinel 閲覧者](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)
+- [Azure Sentinel レスポンダー](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)
+- [Azure Sentinel 共同作成者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)
 
 Azure Sentinel 専用 RBAC ロールに加えて、Azure Sentinel ワークスペースやその他のリソースへのアクセスを含む広範なアクセス許可セットを付与できる Azure と Log Analytics RBAC ロールもあります。
 

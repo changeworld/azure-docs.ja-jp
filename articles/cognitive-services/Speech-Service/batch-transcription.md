@@ -1,5 +1,5 @@
 ---
-title: バッチ文字起こしの使用方法 - Speech Service
+title: バッチ文字起こしの使用方法 - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: バッチ文字起こしは、Azure BLOB などのストレージにある大量の音声を文字起こしする場合に理想的です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 158a99b1691e59fa58207f3c9291ca9d37a6679c
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 2cccd17ce04b3954a7d0720d9ba25bbe792da3b6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538129"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806339"
 ---
 # <a name="why-use-batch-transcription"></a>Batch 文字起こしを使用する理由
 
@@ -28,7 +28,7 @@ ms.locfileid: "74538129"
 Speech Service の他の機能と同様に、[使用開始ガイド](get-started.md)に従って [Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。 ベースライン モデルから文字起こしを取得する場合は、行う必要があるのはキーを作成することだけです。
 
 >[!NOTE]
-> バッチ文字起こしを使用するには、Speech Services の Standard サブスクリプション (S0) が必要です。 Free サブスクリプション キー (F0) は機能しません。 詳細については、[価格と制限](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。
+> バッチ文字起こしを使用するには、音声サービスの Standard サブスクリプション (S0) が必要です。 Free サブスクリプション キー (F0) は機能しません。 詳細については、[価格と制限](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。
 
 ### <a name="custom-models"></a>カスタム モデル
 

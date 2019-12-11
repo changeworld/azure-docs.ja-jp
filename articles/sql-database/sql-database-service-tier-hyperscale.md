@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: cb37bd0c83956b9858639a78d4995e14811498e5
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559321"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805758"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 
@@ -246,7 +246,7 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 | エラスティック プール |  エラスティック プールは、現在、SQL Database Hyperscale ではサポートされていません。|
 | ハイパースケールへの移行は現在一方向 | データベースがハイパースケールにいったん移行されると、ハイパースケール以外のサービス レベルに直接移行することはできません。 現時点では、ハイパースケールからハイパースケール以外にデータベースを移行する唯一の方法は、BACPAC ファイルまたはその他のデータ移動テクノロジ (一括コピー、Azure Data Factory、Azure Databricks、SSIS など) を使用してエクスポート/インポートすることです。|
 | 永続メモリ内オブジェクトを含むデータベースの移行 | ハイパースケールでは、非永続メモリ内オブジェクト (テーブル型、ネイティブ SP、関数) のみがサポートされます。  データベースがハイパースケール サービス レベルに移行される前に、永続メモリ内テーブルとその他のオブジェクトは削除され、メモリ内ではないオブジェクトとして再作成されます。|
-| 変更の追跡 | 現時点では、Azure SQL Hyperscale データベースを使用して Change Tracking を構成および使用することはできません。 |
+| 変更の追跡 | Change Tracking は現在パブリック プレビューであり、新規または既存の Hyperscale データベースで有効にすることができます。 |
 | geo レプリケーション  | Azure SQL Database Hyperscale の geo レプリケーションは、まだ構成できません。 |
 | データベース コピー | 現時点では、データベース コピーを使用して、Azure SQL Hyperscale に新しいデータベースを作成することはできません。 |
 | TDE/AKV の統合 | Azure Key Vault を使用した透過的データベース暗号化 (通常、Bring Your Own Key (BYOK) と呼ばれます) は、Azure SQL Database Hyperscale ではまだサポートされていませんが、サービス マネージド キーを使用した TDE は完全にサポートされています。 |

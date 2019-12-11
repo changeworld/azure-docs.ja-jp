@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 31e45906dfeafcd2af1651347dde9dc6d3c6fb7c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274077"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769219"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -34,7 +34,7 @@ Azure Security Center は、コンテナー セキュリティ用の Azure ネ�
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>脆弱性管理 - コンテナー イメージのスキャン (プレビュー)
 Azure Container Registry を監視するには、Security Center の Standard レベルになっていることを確実にしてください ([価格](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)に関するページを参照してください)。 次に、オプションのコンテナー レジストリ バンドルを有効にします。 新しいイメージがプッシュされると、Security Center では、業界最高レベルの脆弱性スキャン ベンダーである Qualys のスキャナーを使用してイメージがスキャンされます。
 
-Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 Security Center の推奨事項の詳細については、[仮想マシンの保護](security-center-virtual-machine-protection.md##compute-and-app-recs)に関するページの推奨事項の一覧を参照してください。
+Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 Security Center の推奨事項の詳細については、[こちら](recommendations-compute-and-apps.md)で推奨事項の一覧を参照してください。
 
 ## <a name="environment-hardening"></a>環境のセキュリティ強化
 
