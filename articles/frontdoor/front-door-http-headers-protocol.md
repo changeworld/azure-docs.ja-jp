@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 92e8435e4336c68982e4becc2a95f99b2c776c0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3579aee46c610e5bb3efc0942944bbfc3fcb801d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736644"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790522"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Azure Front Door Service での HTTP ヘッダー プロトコルのサポート
 この記事では、呼び出しパスの各部で Front Door Service がサポートするプロトコルの概要を示します (画像を参照)。 以下のセクションでは、Front Door Service がサポートする HTTP ヘッダーについて詳しく説明します。
@@ -43,6 +43,7 @@ Front Door Service では、制限により削除されない限り、受信し�
 | X-Forwarded-For | X-Forwarded-For: 127.0.0.1 </br> X-Forwarded-For (XFF) HTTP ヘッダー フィールドは、HTTP プロキシまたはロード バランサーを経由して Web サーバーに接続しているクライアントの発信元 IP アドレスを識別することがよくあります。 既存の XFF ヘッダーがあった場合、Front Door はそのヘッダーにクライアント ソケット IP を追加するか、クライアント ソケット IP を使用した XFF ヘッダーを追加します。 |
 | X-Forwarded-Host | X-Forwarded-Host: contoso.azurefd.net </br> X-Forwarded-Host HTTP ヘッダー フィールドは、Host HTTP 要求ヘッダー内でクライアントによって要求された元のホストを識別するために一般的に使用される方法です。 これは、要求を処理するバックエンド サーバーによって Front Door からのホスト名が異なる場合があるからです。 |
 | X-Forwarded-Proto | X-Forwarded-Proto: http </br> X-Forwarded-Proto HTTP ヘッダー フィールドは、HTTP 要求の発信元のプロトコルを識別するために使用されることがよくあります。Front Door は、構成に基づいて HTTPS を使用してバックエンドと通信することがあるからです。 これは、リバース プロキシへの要求が HTTP である場合でも当てはまります。 |
+| X-FD-HealthProbe | X-FD-HealthProbe HTTP ヘッダー フィールドは、Front Door からの正常性プローブを識別するために使用されます。 このヘッダーが 1 に設定されている場合、要求は正常性プローブです。 X-Forwarded-Host ヘッダー フィールドを使用して、特定の Front Door からの厳密なアクセスが必要な場合に使用できます。 |
 
 ## <a name="front-door-service-to-client"></a>Front Door Service からクライアント
 

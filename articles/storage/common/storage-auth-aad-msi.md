@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea1d286d00564587a9692dac1b04c5bbb04742cc
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3bb3b632a184985f9a3a27d0e56e940ec7c30885
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561472"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806587"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Azure Active Directory と Azure リソースのマネージド ID を使用して BLOB とキューへのアクセスを承認する
 
@@ -36,13 +36,13 @@ Azure リソースのマネージド ID を使用して VM から BLOB および
 
 ## <a name="authenticate-with-the-azure-identity-library"></a>Azure ID ライブラリを使用した認証
 
-Azure ID クライアント ライブラリの利点は、アプリケーションが開発環境または Azure のどちらで実行されているかにかかわらず、同じコードを使用して認証できることです。 Azure 環境で実行されているコードでは、クライアント ライブラリは Azure リソースのマネージ ID を認証します。 開発環境では、マネージド ID が存在しないため、クライアント ライブラリはテスト目的でユーザーまたはサービス プリンシパルのいずれかを認証します。
+Azure ID クライアント ライブラリでは、[Azure SDK](https://github.com/Azure/azure-sdk) に対する Azure AD トークン認証のサポートが提供されています。 .NET、Java、Python、および JavaScript 用の最新バージョンの Azure Storage クライアント ライブラリは、Azure ID ライブラリと統合され、Azure Storage 要求を承認するための OAuth 2.0 トークンを取得するための簡単で安全な手段を提供します。
 
-.NET 対応の Azure ID クライアント ライブラリでは、セキュリティ プリンシパルが認証されます。 コードが Azure 上で実行されている場合、セキュリティ プリンシパルは Azure リソースに対するマネージド ID です。
+Azure ID クライアント ライブラリの利点は、アプリケーションが開発環境または Azure のどちらで実行されているかにかかわらず、同じコードを使用して認証できることです。 .NET 対応の Azure ID クライアント ライブラリでは、セキュリティ プリンシパルが認証されます。 コードが Azure 上で実行されている場合、セキュリティ プリンシパルは Azure リソースに対するマネージド ID です。 開発環境では、マネージド ID が存在しないため、クライアント ライブラリはテスト目的でユーザーまたはサービス プリンシパルのいずれかを認証します。
 
 認証後、Azure ID クライアント ライブラリでは、トークン資格情報を取得します。 このトークン資格情報は、Azure Storage に対して操作を実行するために作成するサービス クライアント オブジェクトにカプセル化されます。 このライブラリは、適切なトークン資格情報を取得することにより、これをユーザーに代わってシームレスに処理します。
 
-Azure ID クライアント ライブラリの詳細については、「[.NET 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)」を参照してください。
+.NET 用 Azure ID クライアント ライブラリの詳細については、「[.NET 用 Azure ID クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)」を参照してください。 Azure ID クライアント ライブラリのリファレンス ドキュメントについては、「[Azure.Identity 名前空間](/dotnet/api/azure.identity)」を参照してください。
 
 ### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>データにアクセスするためのロールベースのアクセス制御 (RBAC) ロールを割り当てる
 
@@ -50,7 +50,7 @@ Azure AD セキュリティ プリンシパルが Blob またはキュー デー
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>開発環境でユーザーを認証する
 
-開発環境でコードを実行している場合は、認証が自動的に処理されるか、使用しているツールに応じてブラウザー ログインが必要になることがあります。 Microsoft Visual Studio では、アクティブな Azure AD ユーザー アカウントが自動的に認証に使用されるように、シングル サインオン (SSO) がサポートされます。 SSO の詳細については、[アプリケーションへのシングル サインオン](../../active-directory/manage-apps/what-is-single-sign-on.md)に関するページを参照してください。
+開発環境でコードを実行している場合は、認証が自動的に処理されるか、使用しているツールに応じてブラウザー ログインが必要になることがあります。 たとえば、Microsoft Visual Studio では、アクティブな Azure AD ユーザー アカウントが自動的に認証に使用されるように、シングル サインオン (SSO) がサポートされています。 SSO の詳細については、[アプリケーションへのシングル サインオン](../../active-directory/manage-apps/what-is-single-sign-on.md)に関するページを参照してください。
 
 他の開発ツールでは、Web ブラウザー経由でログインするように求められる場合があります。
 
@@ -103,19 +103,7 @@ Azure ID クライアント ライブラリでは、実行時に 3 つの環境�
 
 詳細については、[ポータルでの Azure アプリ用の ID 作成](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。
 
-## <a name="install-client-library-packages"></a>クライアント ライブラリ パッケージをインストールする
-
-この記事の例では、BLOB ストレージ用の Azure Storage クライアント ライブラリの最新バージョンが使用されます。 パッケージをインストールするには、NuGet パッケージ マネージャー コンソールから次のコマンドを実行します。
-
-```powershell
-Install-Package Azure.Storage.Blobs
-```
-
-この記事の例では、Azure AD の資格情報で認証するために、[.NET 用 Azure ID クライアント ライブラリ](https://www.nuget.org/packages/Azure.Identity/)の最新バージョンも使用されます。 パッケージをインストールするには、NuGet パッケージ マネージャー コンソールから次のコマンドを実行します。
-
-```powershell
-Install-Package Azure.Identity
-```
+[!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET コード例: ブロック BLOB を作成する
 
@@ -173,6 +161,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Storage の RBAC ロールについては、[RBAC を使用したストレージ データへのアクセス権の管理](storage-auth-aad-rbac.md)に関するページをご覧ください。
-- ストレージ アプリケーション内からコンテナーやキューへのアクセスを承認する方法については、[ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)方法に関するページを参照してください。
-- Azure AD 資格情報を使用して Azure CLI と PowerShell のコマンドを実行する方法については、「[Azure AD ID を使用し、CLI または PowerShell で BLOB とキューのデータにアクセスする](storage-auth-aad-script.md)」を参照してください。
+- [RBAC を使用してストレージ データへのアクセス権を管理する](storage-auth-aad-rbac.md)。
+- [ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)。
+- [Azure AD 資格情報で Azure CLI または PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする](storage-auth-aad-script.md)。

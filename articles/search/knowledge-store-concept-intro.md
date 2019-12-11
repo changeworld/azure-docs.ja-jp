@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a1c6f2d869d8d7ad865005ebd319beac56bdbacd
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: aa32f671756b8ba7f17c25592b6a15b66de42b2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720086"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790017"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアの概要
 
@@ -61,7 +61,9 @@ AI エンリッチメント パイプラインで何を生成できるかを確�
 
 + 接続は、Azure Cognitive Search と同じリージョン内のストレージ アカウントに対するものです。 
 
-+ プロジェクションは、テーブルとオブジェクトのペアです。 `Tables` は、Azure Table Storage におけるエンリッチメントされたドキュメントの物理的な表現を定義します。 `Objects` は、Azure Blob Storage における物理的なオブジェクトを定義します。
++ プロジェクションは、表形式、JSON オブジェクト、またはファイルにすることができます。 `Tables` は、Azure Table Storage におけるエンリッチメントされたドキュメントの物理的な表現を定義します。 `Objects` は、Azure Blob Storage 内の物理 JSON オブジェクトを定義します。 `Files` は、保存されるドキュメントから抽出されたイメージのようなバイナリです。
+
++ プロジェクションは、プロジェクション オブジェクトのコレクションであり、各プロジェクション オブジェクトには `tables`、`objects`、および `files` を含めることができます。 1 つのプロジェクション内に射影されるエンリッチメントは、複数の型 (テーブル、オブジェクト、またはファイル) にわたって射影されている場合でも関連しています。 複数のプロジェクション オブジェクトにまたがったプロジェクションは、関連しておらず、独立しています。 同じ形状を、複数のプロジェクション オブジェクトにわたって射影できます。
 
 ```json
 {
@@ -109,7 +111,10 @@ AI エンリッチメント パイプラインで何を生成できるかを確�
             ], 
             "objects": [ 
                
-            ]      
+            ], 
+            "files": [
+
+            ]  
         },
         { 
             "tables": [ 
@@ -121,13 +126,17 @@ AI エンリッチメント パイプラインで何を生成できるかを確�
                 "source": "/document/Review", 
                 "key": "/document/Review/Id" 
                 } 
-            ]      
+            ],
+            "files": [
+                
+            ]  
         }        
     ]     
     } 
 }
 ```
 
+このサンプルにはイメージは含まれていません。ファイル プロジェクションの使用方法の例については、[プロジェクションの操作](knowledge-store-projection-overview.md)に関する記事を参照してください。
 ### <a name="sources-of-data-for-a-knowledge-store"></a>ナレッジ ストアのデータのソース
 
 ナレッジ ストアが AI エンリッチメント パイプラインの出力だとしたら、入力は何でしょうか。 抽出してエンリッチメントし、最終的にはナレッジ ストアに保存することになる元のデータの取得元は、検索インデクサーによってサポートされる Azure のデータ ソースであれば何でもかまいません。 

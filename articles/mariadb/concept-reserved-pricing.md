@@ -1,17 +1,17 @@
 ---
-title: 予約容量を使用して Azure Database for MariaDB 計算リソースに前払いする
+title: 予約容量を使用して計算を前払いする - Azure Database for MariaDB
 description: 予約容量を使用して Azure Database for MariaDB 計算リソースに前払いする
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 61736d4f7e6b17c6037837bfdfe6d9cb8a00c5f6
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 12/02/2019
+ms.openlocfilehash: 5821fb03dcf4331cbab5744f056521468a56d5d2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076863"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773109"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>予約容量を使用して Azure Database for MariaDB 計算リソースに前払いする
 

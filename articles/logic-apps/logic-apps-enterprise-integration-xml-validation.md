@@ -1,20 +1,19 @@
 ---
-title: B2B エンタープライズ統合用の XML を検証する - Azure Logic Apps
+title: B2B エンタープライズ統合用の XML を検証する
 description: Enterprise Integration Pack を備えた Azure Logic Apps でスキーマを使用して XML を検証する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 7813dcb375ff4a123b1314f8f9db453b1f0b187e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680227"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792169"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack が適用された Azure Logic Apps で B2B エンタープライズ統合用の XML を検証する
 
@@ -58,7 +57,7 @@ ms.locfileid: "72680227"
 
    ![検証に使用するスキーマを選択します](./media/logic-apps-enterprise-integration-xml-validation/select-validation-schema.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
    これで検証の設定は完了です。 実際のアプリでは、検証したデータを Salesforce などの業務 (LOB) アプリケーションに保存する必要がある場合があります。 検証済みの出力を Salesforce に送信するには、アクションを追加します。
 

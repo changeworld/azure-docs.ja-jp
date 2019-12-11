@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL の Query Performance Insight
+title: Query Performance Insight - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL の Query Performance Insight 機能について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 38299a8ffd72722c2d2c1dda9227b7fbf76c0386
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: 762353cbc276eb78868c46bbfde4789e792f6d85
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603122"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775990"
 ---
 # <a name="query-performance-insight-in-azure-database-for-mysql"></a>Azure Database for MySQL の Query Performance Insight
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 29014674cee4d6498ca7b56582313265da886122
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083668"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793328"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Azure CLI で、高速ネットワークを使用する Linux 仮想マシンを作成する
 
@@ -61,6 +61,9 @@ Azure ギャラリーでは次のディストリビューションが既定で�
 ハイパースレッディングをサポートするインスタンスでは、4 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。 サポートされている系列は、D/Dsv3、E/Esv3、Fsv2、Lsv2、Ms/Mms、および Ms/Mmsv2。
 
 VM インスタンスの詳細については、「[Linux 仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+
+### <a name="custom-images"></a>カスタム イメージ
+カスタム イメージを使用し、イメージで高速ネットワークがサポートされている場合は、必要なドライバーが Azure 上の Mellanox ConnectX-3 および ConnectX-4 Lx NIC と連携して動作していることを確認してください。
 
 ### <a name="regions"></a>リージョン
 すべてのパブリック Azure リージョンと Azure Government クラウドで使用できます。

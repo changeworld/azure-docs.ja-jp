@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL (単一サーバー) でのバックアップと復元
+title: バックアップと復元 - Azure Database for PostgreSQL - 単一サーバー
 description: Azure Database for PostgreSQL サーバー (単一サーバー) の自動バックアップおよび復元について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cbd434f2f9e1217a3a481a28988f4e1d855ba08b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209653"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769865"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) でのバックアップと復元
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL では、データ ファイルとトランザク�
 
 ### <a name="backup-frequency"></a>バックアップ頻度
 
-一般に、サポートされている最大ストレージが 4 TB のサーバーについては、完全バックアップは毎週、差分バックアップは 1 日に 2 回行われます。 最大 16 TB のストレージをサポートするサーバーの場合、スナップショットバックアップは少なくとも 1 日に 1 回実行されます。 いずれの場合も、トランザクション ログ バックアップは 5 分ごとに実行されます。 完全バックアップの最初のスナップショットは、サーバーの作成直後にスケジュールされます。 復元されるサーバーが大きい場合、最初の完全バックアップに時間がかかる可能性があります。 初期の完全バックアップが完了した時点が、新しいサーバーの最も早い復元先ポイントです。 スナップショットはすぐに行われるので、最大 16 TB のストレージをサポートするサーバーを、作成時に復元することができます。
+一般に、サポートされている最大ストレージが 4 TB のサーバーについては、完全バックアップは毎週、差分バックアップは 1 日に 2 回行われます。 最大 16 TB のストレージをサポートするサーバーの場合、スナップショットバックアップは少なくとも 1 日に 1 回実行されます。 いずれの場合も、トランザクション ログ バックアップは 5 分ごとに実行されます。 完全バックアップの最初のスナップショットは、サーバーの作成直後にスケジュールされます。 復元されるサーバーが大きい場合、最初の完全バックアップに時間がかかる可能性があります。 初期の完全バックアップが完了した時点が、新しいサーバーの最も早い復元先ポイントです。 スナップショットはすぐに行われるので、最大 16 TB のストレージをサポートするサーバーを、作成時までさかのぼって復元することができます。
 
 ### <a name="backup-redundancy-options"></a>バックアップ冗長オプション
 

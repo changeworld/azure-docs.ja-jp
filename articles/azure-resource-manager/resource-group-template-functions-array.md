@@ -3,12 +3,12 @@ title: テンプレート関数 - 配列とオブジェクト
 description: Azure Resource Manager テンプレートで、配列とオブジェクトを操作するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: d530027c05195caf8b93a61f4e002ce835d021c5
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6722736cad5ad76544be336a2cba85c5ad768781
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149678"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786217"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数
 
@@ -34,11 +34,8 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 文字列値の配列をある値で区切られた状態にするには、「 [split](resource-group-template-functions-string.md#split)」を参照してください。
 
-<a id="array" />
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="array"></a>array
+
 `array(convertToArray)`
 
 値を配列に変換します。
@@ -114,9 +111,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
 ```
 
-<a id="coalesce" />
-
 ## <a name="coalesce"></a>coalesce
+
 `coalesce(arg1, arg2, arg3, ...)`
 
 パラメーターから最初の null 以外の値を返します。 空の文字列、空の配列、空のオブジェクトは null ではありません。
@@ -202,9 +198,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
 ```
 
-<a id="concat" />
-
 ## <a name="concat"></a>concat
+
 `concat(arg1, arg2, arg3, ...)`
 
 複数の配列を結合し、連結された配列を返します。または複数の文字列値を結合し、連結文字列を返します。 
@@ -216,9 +211,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | arg1 |はい |配列または文字列 |連結する最初の配列または文字列。 |
 | 残りの引数 |いいえ |配列または文字列 |順次連結する残りの配列または文字列。 |
 
-この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。
+この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。 ただし、パラメーターに配列と文字列の両方を指定することはできません。 配列は、他の配列とのみ連結されます。
 
 ### <a name="return-value"></a>戻り値
+
 連結された値の文字列または配列。
 
 ### <a name="example"></a>例
@@ -316,9 +312,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
 ```
 
-<a id="contains" />
-
 ## <a name="contains"></a>contains
+
 `contains(container, itemToFind)`
 
 配列に値が含まれるかどうか、オブジェクトにキーが含まれるかどうか、または文字列に部分文字列が含まれるかどうかを確認します。 文字列比較では大文字・小文字を区別します。 ただし、オブジェクトにキーが含まれているかどうかをテストする場合、比較で大文字・小文字を区別しません。
@@ -410,9 +405,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
 ```
 
-<a id="createarray" />
-
 ## <a name="createarray"></a>createarray
+
 `createArray (arg1, arg2, arg3, ...)`
 
 パラメーターから配列を作成します。
@@ -489,8 +483,6 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
 ```
-
-<a id="empty" />
 
 ## <a name="empty"></a>empty
 
@@ -569,9 +561,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
 ```
 
-<a id="first" />
-
 ## <a name="first"></a>first
+
 `first(arg1)`
 
 配列の最初の要素、または文字列の最初の文字を返します。
@@ -634,9 +625,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
 ```
 
-<a id="intersection" />
-
 ## <a name="intersection"></a>intersection
+
 `intersection(arg1, arg2, arg3, ...)`
 
 パラメーターから共通の要素を持つ 1 つの配列またはオブジェクトを返します。
@@ -714,6 +704,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ```
 
 ## <a name="json"></a>json
+
 `json(arg1)`
 
 JSON オブジェクトを返します。
@@ -723,7 +714,6 @@ JSON オブジェクトを返します。
 | パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |string |JSON に変換する値。 |
-
 
 ### <a name="return-value"></a>戻り値
 
@@ -786,9 +776,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
 ```
 
-<a id="last" />
-
 ## <a name="last"></a>last
+
 `last (arg1)`
 
 配列の最後の要素、または文字列の最後の文字を返します。
@@ -851,9 +840,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
 ```
 
-<a id="length" />
-
 ## <a name="length"></a>length
+
 `length(arg1)`
 
 配列内の要素、文字列内の文字、またはオブジェクト内のルート レベル プロパティの数を返します。
@@ -951,9 +939,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 この関数を配列と共に使用する方法の詳細については、「 [Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 
-<a id="max" />
-
 ## <a name="max"></a>max
+
 `max(arg1)`
 
 整数の配列または整数のコンマ区切りリストから最大値を返します。
@@ -1015,9 +1002,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
 ```
 
-<a id="min" />
-
 ## <a name="min"></a>min
+
 `min(arg1)`
 
 整数の配列または整数のコンマ区切りリストから最小値を返します。
@@ -1079,9 +1065,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
 ```
 
-<a id="range" />
-
 ## <a name="range"></a>range
+
 `range(startingInteger, numberOfElements)`
 
 始点となる整数から、指定した数の項目が含まれる配列を作成します。
@@ -1143,9 +1128,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
 ```
 
-<a id="skip" />
-
 ## <a name="skip"></a>skip
+
 `skip(originalValue, numberToSkip)`
 
 配列内の指定した数の要素の後にあるすべての要素から成る配列を返します。または、文字列内の指定した数の文字の後にあるすべての文字から成る文字列を返します。
@@ -1224,9 +1208,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
 ```
 
-<a id="take" />
-
 ## <a name="take"></a>take
+
 `take(originalValue, numberToTake)`
 
 配列の先頭から指定した数の要素を含む配列、または文字列の先頭から指定した数の文字を含む文字列を返します。
@@ -1305,9 +1288,8 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
 ```
 
-<a id="union" />
-
 ## <a name="union"></a>union
+
 `union(arg1, arg2, arg3, ...)`
 
 パラメーターからすべての要素を持つ 1 つの配列またはオブジェクトを返します。 重複する値またはキーは、1 回のみ含まれます。
@@ -1385,6 +1367,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ```
 
 ## <a name="next-steps"></a>次の手順
+
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。

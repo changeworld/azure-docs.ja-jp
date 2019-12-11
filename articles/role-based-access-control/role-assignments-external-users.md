@@ -1,6 +1,6 @@
 ---
-title: RBAC を使用して外部ゲスト ユーザーの Azure リソースへのアクセスを管理する | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) を使用して、組織外のユーザーの Azure リソースへのアクセスを管理する方法について説明します。
+title: Azure RBAC と Azure portal を使用して外部ゲスト ユーザーにロールの割り当てを追加または削除する
+description: Azure ロールベースのアクセス制御 (RBAC) を使用して、組織外のユーザーに Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,20 +12,26 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/12/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555562"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707877"
 ---
-# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>RBAC を使用して外部ゲスト ユーザーの Azure リソースへのアクセスを管理する
+# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用して外部ゲスト ユーザーにロールの割り当てを追加または削除する
 
-ロールベースのアクセス制御 (RBAC) では、環境内の特定のリソースへのアクセスが必要なものの、インフラストラクチャ全体や課金に関連するスコープへのアクセスが必ずしも必要ではない外部のコラボレーター、ベンダー、フリーランサーと連携している大企業や中小企業向けの、優れたセキュリティ管理を実現できます。 [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) の機能を使用して外部ゲスト ユーザーと共同作業を行うことができます。また、RBAC を使用して、自分の環境でゲスト ユーザーに必要なアクセス許可のみを付与することができます。
+[Azure ロールベースのアクセス制御 (RBAC)](overview.md) を使用すると、環境内の特定のリソースへのアクセスが必要なものの、インフラストラクチャ全体や課金に関連するスコープへのアクセスが必ずしも必要ではない外部のコラボレーター、ベンダー、フリーランサーと連携している大企業や中小企業向けの、優れたセキュリティ管理を実現できます。 [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) の機能を使用して外部ゲスト ユーザーと共同作業を行うことができます。また、RBAC を使用して、自分の環境でゲスト ユーザーに必要なアクセス許可のみを付与することができます。
+
+## <a name="prerequisites"></a>前提条件
+
+ロールの割り当てを追加または削除するには、以下が必要です。
+
+- `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
 
 ## <a name="when-would-you-invite-guest-users"></a>ゲスト ユーザーを招待するタイミング
 
@@ -61,9 +67,9 @@ Azure Active Directory ページを使用してディレクトリにゲスト �
 
 招待プロセスの詳細については、「[Azure Active Directory B2B コラボレーションの招待の利用](../active-directory/b2b/redemption-experience.md)」を参照してください。
 
-## <a name="grant-access-to-a-guest-user"></a>ゲスト ユーザーにアクセス権を付与する
+## <a name="add-a-role-assignment-for-a-guest-user"></a>ゲスト ユーザーにロールの割り当てを追加する
 
-RBAC でアクセス権を付与するには、ロールを割り当てます。 ゲスト ユーザーにアクセス権を付与するには、メンバー ユーザー、グループ、サービス プリンシパル、またはマネージド ID の場合と[同じ手順](role-assignments-portal.md#add-a-role-assignment)を実行します。 次の手順に従って、異なるスコープのゲスト ユーザーにアクセス権を付与します。
+RBAC でアクセス権を付与するには、ロールを割り当てます。 ゲスト ユーザーにロールの割り当てを追加するには、メンバー ユーザー、グループ、サービス プリンシパル、またはマネージド ID の場合と[同じ手順](role-assignments-portal.md#add-a-role-assignment)を実行します。 次の手順に従って、さまざまなスコープでゲスト ユーザーにロールの割り当てを追加します。
 
 1. Azure Portal で、 **[すべてのサービス]** をクリックします。
 
@@ -95,9 +101,9 @@ RBAC でアクセス権を付与するには、ロールを割り当てます。
 
     ![仮想マシン共同作成者のロールの割り当て](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>ディレクトリにまだ存在しないゲスト ユーザーにアクセス権を付与する
+## <a name="add-a-role-assignment-for-a-guest-user-not-yet-in-your-directory"></a>ディレクトリにまだ存在しないゲスト ユーザーにロールの割り当てを追加する
 
-RBAC でアクセス権を付与するには、ロールを割り当てます。 ゲスト ユーザーにアクセス権を付与するには、メンバー ユーザー、グループ、サービス プリンシパル、またはマネージド ID の場合と[同じ手順](role-assignments-portal.md#add-a-role-assignment)を実行します。
+ゲスト ユーザーにロールの割り当てを追加するには、メンバー ユーザー、グループ、サービス プリンシパル、またはマネージド ID の場合と[同じ手順](role-assignments-portal.md#add-a-role-assignment)を実行します。
 
 ゲスト ユーザーがディレクトリにまだ存在しない場合は、[ロールの割り当ての追加] ウィンドウからユーザーを直接招待できます。
 
@@ -179,7 +185,7 @@ RBAC でアクセス権を付与するには、ロールを割り当てます。
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>ゲスト ユーザーは、ユーザー、グループ、またはサービス プリンシパルを参照してロールを割り当てることはできません
 
-ゲスト ユーザーは、ディレクトリ アクセス許可を制限されています。 ゲスト ユーザーがスコープの[所有者](built-in-roles.md#owner)であっても、ロールの割り当てを作成して他のユーザーにアクセス権を付与しようとした場合に、ユーザー、グループ、またはサービス プリンシパルの一覧を参照できません。
+ゲスト ユーザーは、ディレクトリ アクセス許可を制限されています。 ゲスト ユーザーがあるスコープでの[所有者](built-in-roles.md#owner)であっても、ロールの割り当てを追加して他のユーザーにアクセス権を付与しようとした場合に、ユーザー、グループ、またはサービス プリンシパルの一覧を参照できません。
 
 ![ゲスト ユーザーがセキュリティ プリンシパルを参照してロールを割り当てられません](./media/role-assignments-external-users/directory-no-browse.png)
 

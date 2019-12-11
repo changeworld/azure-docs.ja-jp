@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: f18e5dbdc257aa1ae647505c323c17f9f197d360
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150976"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666496"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>暗号化要件と Azure VPN ゲートウェイについて
 
@@ -20,7 +20,7 @@ ms.locfileid: "74150976"
 
 ## <a name="about-ikev1-and-ikev2-for-azure-vpn-connections"></a>Azure VPN 接続のための IKEv1 と IKEv2 について
 
-従来から、IKEv1 接続は Basic SKU に対してのみ許可し、IKEv2 接続は Basic SKU 以外のすべての VPN ゲートウェイ SKU に対して許可してきました。 Basic SKU では 1 つの接続のみが許可され、パフォーマンスなどの他の制限と共に、IKEv1 プロトコルのみをサポートするレガシ デバイスを使用している顧客はエクスペリエンスが制限されました。 IKEv1 プロトコルを使用している顧客のエクスペリエンスを拡張するために、すべての VPN ゲートウェイ SKU に対して IKEv1 接続を許可することになりました。 詳細については、[VPN ゲートウェイの SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku) に関するページを参照してください。
+従来から、IKEv1 接続は Basic SKU に対してのみ許可し、IKEv2 接続は Basic SKU 以外のすべての VPN ゲートウェイ SKU に対して許可してきました。 Basic SKU では 1 つの接続のみが許可され、パフォーマンスなどの他の制限と共に、IKEv1 プロトコルのみをサポートするレガシ デバイスを使用している顧客はエクスペリエンスが制限されました。 IKEv1 プロトコルを使用している顧客のエクスペリエンスを拡張するために、Basic SKU を除くすべての VPN ゲートウェイ SKU に対して IKEv1 接続が許可されるようになりました。 詳細については、[VPN ゲートウェイの SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings#gwsku) に関するページを参照してください。
 
 ![Azure VPN Gateway の IKEv1 および IKEv2 接続](./media/vpn-gateway-about-compliance-crypto/ikev1-ikev2-connections.png)
 

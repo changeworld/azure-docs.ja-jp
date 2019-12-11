@@ -1,22 +1,20 @@
 ---
-title: IBM Informix データベースに接続する - Azure Logic Apps | Microsoft Docs
+title: IBM Informix データベースに接続する
 description: IBM Informix REST API と Azure Logic Apps を使用して、リソースを管理します
-author: gplarsen
-manager: jeconnoc
-ms.author: plarsen
-ms.date: 09/26/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+author: gplarsen
+ms.author: plarsen
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 09/26/2016
 tags: connectors
-ms.openlocfilehash: 6004c02f190bbfcf374b3b5d2a5c478f0e52c961
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d6f768bc76d19c0aa21a245c008a4b05588f8f43
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60690907"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789734"
 ---
 # <a name="get-started-with-the-informix-connector"></a>Informix コネクタの概要
 Microsoft Connector for Informix は、IBM Informix データベースに格納されているリソースに Logic Apps を接続します。 Informix コネクタには、TCP/IP ネットワーク経由でリモート Informix サーバー コンピューターと通信する Microsoft クライアントが含まれています。 これには、Azure 仮想化で実行されている IBM Informix for Windows などのクラウド データベースと、オンプレミス データ ゲートウェイを使用するオンプレミス データベースが含まれます。 (このトピックの) IBM Informix のプラットフォームとバージョンの [サポート対象一覧](connectors-create-api-informix.md#supported-informix-platforms-and-versions) をご覧ください。
