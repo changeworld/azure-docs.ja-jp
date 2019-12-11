@@ -4,17 +4,16 @@ description: Key Vault の調整では同時呼び出しの数を制限して、
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
-tags: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f10f40551701cafd94692afc0916972b1fd73aff
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 28e79dffb206e8a62410bf3b4e0e239879b51224
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883053"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806679"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault のスロットル ガイダンス
 
@@ -24,10 +23,34 @@ ms.locfileid: "70883053"
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Key Vault における制限の扱い
 
-リソースの乱用を防ぎ、Key Vault の全クライアントのサービス品質を確保するために、Key Vault にはサービス制限があります。 サービスのしきい値を超えると、Key Vault はそれ以降、一定時間そのクライアントからの要求を制限します。 この状態になると、Key Vault からは HTTP 状態コード 429 (要求が多すぎます) が返され、要求は失敗します。 また、Key Vault によって追跡されているスロットル制限には、429 が返されて失敗した要求も加算されます。 
+Key Vault のサービス制限は、リソースの乱用を防ぎ、Key Vault の全クライアントのサービス品質を確保します。 サービスのしきい値を超えた場合、Key Vault によってそのクライアントからの要求が一定期間制限され、HTTP 状態コード 429 (要求が多すぎます) が返され、要求は失敗します。 429 が返されて失敗した要求は、Key Vault によって追跡されているスロットル制限に加算されます。 
+
+Key Vault は本来、デプロイ時にシークレットを格納および取得するために使用するように設計されました。  世界が進化し、実行時にシークレットを格納および取得するために Key Vault が使用されています。そして多くの場合、アプリやサービスは Key Vault をデータベースのように使用することを希望しています。  現在の制限は、高いスループット率をサポートしていません。
+
+Key Vault は、最初は [Azure Key Vault サービスの制限](key-vault-service-limits.md)で指定された制限を使用して作成されました。  Key Vault のスループット率を最大化するための、いくつかの推奨ガイドライン/ベスト プラクティスを次に示します。
+1. スロットルが機能していることを確認します。  クライアントは、429 に対してのエクスポネンシャル バックオフ ポリシーを遵守し、以下のガイダンスに従って再試行を行う必要があります。
+1. Key Vault トラフィックを複数のコンテナーと異なるリージョンに分割します。   セキュリティ/可用性ドメインごとに個別のコンテナーを使用します。   5 つのアプリが、2 つのリージョンのそれぞれにある場合は、アプリおよびリージョンに固有のシークレットを格納する 10 個のコンテナーを使用することをお勧めします。  すべてのトランザクションの種類に適用されるサブスクリプション全体の制限は、個々のキー コンテナーの制限の 5 倍です。 たとえば、1 つのサブスクリプションで許可される HSM - その他のトランザクションの最大数は、10 秒間に 5,000 トランザクションです。 サービスまたはアプリ内にシークレットをキャッシュして、キー コンテナーへの直接の RPS を減らしたり、バースト ベースのトラフィックに対処したりすることを検討してください。  また、トラフィックを異なるリージョンに分割して待機時間を最小限にしたり、別のサブスクリプション/コンテナーを使用したりすることもできます。  単一の Azure リージョンの Key Vault サービスには、サブスクリプションの制限を超えて送信しないでください。
+1. Azure Key Vault から取得したシークレットをメモリにキャッシュし、可能な限りメモリから再利用してください。  キャッシュされたコピーが動作しなくなった場合 (たとえば、ソースでローテーションされたため) にだけ、Azure Key Vault から再度読み取りしてください。 
+1. Key Vault は、自身のサービス シークレット向けに設計されています。   顧客のシークレットを格納する場合 (特に、高スループットの主要なストレージ シナリオの場合) は、データベースまたはストレージ アカウントに暗号化した状態でキーを配置し、マスター キーだけを Azure Key Vault に格納することを検討してください。
+1. 公開キーの操作の暗号化、ラップおよび確認は、Key Vault にアクセスせずに実行できます。これにより、スロットルのリスクが軽減されるだけでなく、信頼性も向上します (公開キー マテリアルを適切にキャッシュしている場合)。
+1. サービスの資格情報を格納するために Key Vault を使用する場合は、直接認証するために、そのサービスが AAD 認証をサポートしているかどうかを確認します。 これにより、Key Vault は AAD トークンを使用できるようになるため、Key Vault の負荷が軽減され、信頼性が向上してコードが簡単になります。  多くのサービスは、AAD 認証の使用に移行しました。[「Azure リソースのマネージド ID をサポートするサービス」](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources)の現在の一覧を参照してください。
+1. 現在の RPS 制限を維持するために、より長い期間にわたって負荷/デプロイを分散させることを検討してください。
+1. アプリが同じシークレットを読み取る必要がある複数のノードで構成されている場合は、1 つのエンティティが Key Vault からシークレットを読み取ってすべてのノードに展開する、ファンアウト パターンを使用することを検討してください。   取得したシークレットをメモリだけにキャッシュします。
+上記の内容が依然としてニーズに合わない場合は、追加できる容量を決定するために以下の表に記入して、お問い合わせください (説明のみを目的として、以下に例を記載します)。
+
+| コンテナー名 | コンテナーのリージョン | オブジェクトの種類 (シークレット、キー、または証明書) | 操作* | キーの種類 | キーの長さまたは曲線 | HSM キーかどうか?| 安定状態の RPS が必要 | 必要なピークの RPS |
+|--|--|--|--|--|--|--|--|--|
+| https://mykeyvault.vault.azure.net/ | | Key | 署名 | EC | P-256 | いいえ | 200 | 1000 |
+
+\* 使用可能な値の完全な一覧については、「[Azure Key Vault の操作](/rest/api/keyvault/key-operations)」を参照してください。
+
+追加の容量が承認された場合は、容量が増加したため、次の点に注意してください。
+1. データ整合性モデルが変更になります。 追加のスループット容量でコンテナーが許可されると、Key Vault サービスのデータの整合性が保証されます (基になる Azure Storage サービスが維持できなくなるため、より高い量の RPS を満たすために必要です)。  簡単に言うと、
+  1. **許可リストを使用しない場合**:Key Vault サービスは、書き込み操作 (例えば、 SecretSet、CreateKey) の結果を、それに続く呼び出しに即座に反映させます。(呼び出しとは例えば、 SecretGet、KeySign です)。
+  1. **許可リストを使用する場合**:Key Vault サービスは、書き込み操作 (例えば、 SecretSet、CreateKey) の結果を、それに続く呼び出しに 60 秒以内に反映させます。(呼び出しとは例えば、 SecretGet、KeySign です)。
+1. クライアント コードは 429 に対する再試行に関して、バックオフ ポリシーを遵守する必要があります。 429 応答コードを受信したときには、Key Vault サービスを呼び出すクライアント コードは Key Vault 要求をすぐに再試行することはできません。  ここで公開されている Azure Key Vault スロットル ガイダンスでは、429 HTTP 応答コードを受け取った場合にエクスポネンシャル バックオフを適用することをお勧めしています。
 
 業務上の正当な理由でスロットル制限の引き上げを希望される場合は、Microsoft にお問い合わせください。
-
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>サービス制限に対応してアプリをスロットルする方法
 
@@ -41,97 +64,24 @@ ms.locfileid: "70883053"
 
 エクスポネンシャル バックオフを実装するコードを次に示します。 
 ```
-    public sealed class RetryWithExponentialBackoff
+SecretClientOptions options = new SecretClientOptions()
     {
-        private readonly int maxRetries, delayMilliseconds, maxDelayMilliseconds;
-
-        public RetryWithExponentialBackoff(int maxRetries = 50,
-            int delayMilliseconds = 200,
-            int maxDelayMilliseconds = 2000)
+        Retry =
         {
-            this.maxRetries = maxRetries;
-            this.delayMilliseconds = delayMilliseconds;
-            this.maxDelayMilliseconds = maxDelayMilliseconds;
-        }
-
-        public async Task RunAsync(Func<Task> func)
-        {
-            ExponentialBackoff backoff = new ExponentialBackoff(this.maxRetries,
-                this.delayMilliseconds,
-                this.maxDelayMilliseconds);
-            retry:
-            try
-            {
-                await func();
-            }
-            catch (Exception ex) when (ex is TimeoutException ||
-                ex is System.Net.Http.HttpRequestException)
-            {
-                Debug.WriteLine("Exception raised is: " +
-                    ex.GetType().ToString() +
-                    " –Message: " + ex.Message +
-                    " -- Inner Message: " +
-                    ex.InnerException.Message);
-                await backoff.Delay();
-                goto retry;
-            }
-        }
-    }
-
-    public struct ExponentialBackoff
-    {
-        private readonly int m_maxRetries, m_delayMilliseconds, m_maxDelayMilliseconds;
-        private int m_retries, m_pow;
-
-        public ExponentialBackoff(int maxRetries, int delayMilliseconds,
-            int maxDelayMilliseconds)
-        {
-            m_maxRetries = maxRetries;
-            m_delayMilliseconds = delayMilliseconds;
-            m_maxDelayMilliseconds = maxDelayMilliseconds;
-            m_retries = 0;
-            m_pow = 1;
-        }
-
-        public Task Delay()
-        {
-            if (m_retries == m_maxRetries)
-            {
-                throw new TimeoutException("Max retry attempts exceeded.");
-            }
-            ++m_retries;
-            if (m_retries < 31)
-            {
-                m_pow = m_pow << 1; // m_pow = Pow(2, m_retries - 1)
-            }
-            int delay = Math.Min(m_delayMilliseconds * (m_pow - 1) / 2,
-                m_maxDelayMilliseconds);
-            return Task.Delay(delay);
-        }
-    }
+            Delay= TimeSpan.FromSeconds(2),
+            MaxDelay = TimeSpan.FromSeconds(16),
+            MaxRetries = 5,
+            Mode = RetryMode.Exponential
+         }
+    };
+    var client = new SecretClient(new Uri(https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
+                                 
+    //Retrieve Secret
+    secret = client.GetSecret(secretName);
 ```
 
 
-このコードは、クライアントの C\# アプリケーションで使用するのが簡単です。 次の例では HttpClient クラスを使用して方法を示します。
-
-```csharp
-public async Task<Cart> GetCartItems(int page)
-{
-    _apiClient = new HttpClient();
-    //
-    // Using HttpClient with Retry and Exponential Backoff
-    //
-    var retry = new RetryWithExponentialBackoff();
-    await retry.RunAsync(async () =>
-    {
-        // work with HttpClient call
-        dataString = await _apiClient.GetStringAsync(catalogUrl);
-    });
-    return JsonConvert.DeserializeObject<Cart>(dataString);
-}
-```
-
-このコードは概念実証にしか適していないことに注意してください。 
+このコードは、クライアントの C# アプリケーションで使用するのが簡単です。 
 
 ### <a name="recommended-client-side-throttling-method"></a>推奨されるクライアント側のスロットル手法
 

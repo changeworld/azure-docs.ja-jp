@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL (単一サーバー) の Query Performance Insight
+title: Query Performance Insight - Azure Database for PostgreSQL (単一サーバー)
 description: この記事では、Azure Database for PostgreSQL (単一サーバー) の Query Performance Insight 機能について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 748c6f08da535013724f68b8be424e50a2d49dfd
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764431"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768386"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 

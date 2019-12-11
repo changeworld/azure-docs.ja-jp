@@ -1,25 +1,18 @@
 ---
-title: App Service Environment v1 を構成する方法 - Azure
-description: App Service Environment v1 の構成、管理、および監視
-services: app-service
-documentationcenter: ''
+title: ASE v1 の構成
+description: App Service Environment v1 の構成、管理、および監視 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: b8a05b7e8466187202e6a4d11efce288238cc19b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069948"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687255"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Environment v1 の構成
 

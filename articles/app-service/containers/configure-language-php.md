@@ -1,24 +1,15 @@
 ---
-title: PHP アプリを構成する - Azure App Service | Microsoft Docs
-description: Azure App Service で動作するように PHP アプリを構成する方法について説明する
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnock
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+title: PHP アプリの構成
+description: アプリ用に事前構築済みの PHP コンテナーを構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
+ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: cephalin
-ms.openlocfilehash: 279660d903b3b0e893c3ccddb89da7c6dc42fa09
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: a3de4769193d95a3ef483924c4d65c4fa1cc9f8d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205073"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671834"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Azure App Service 向けの Linux PHP アプリを構成する
 
@@ -179,7 +170,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 `/usr/local/etc/php/conf.d` は、*php.ini* が存在している既定のディレクトリです。 `/home/site/ini` は、カスタム *.ini* ファイルを追加するカスタム ディレクトリです。 `:` で値を区切ります。
 
-Linux コンテナーを含む Web SSH セッションに移動します (`https://cephalin-container.scm.azurewebsites.net/webssh/host`)。
+Linux コンテナーを含む Web SSH セッションに移動します (`https://<app-name>.scm.azurewebsites.net/webssh/host`)。
 
 `/home/site` に `ini` というディレクトリを作成し、続いてカスタマイズするディレクティブを使用した *.ini* ファイル (たとえば、*settings.ini*) を `/home/site/ini` ディレクトリに作成します。 *php.ini* ファイルで使用するものと同じ構文を使用します。 
 

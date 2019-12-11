@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3470e27f64a672db0165b0132996db91a1447c08
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: aebd7b58a2107ac109a03d3ce12f27d65ba0ab90
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033976"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769814"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Azure Data Lake Storage のマルチプロトコル アクセス
 
@@ -48,10 +48,13 @@ Data Lake Storage でマルチプロトコル アクセスを使用すると、D
 |Blob ストレージ機能 | サポート レベル |
 |---|---|
 |[クール アクセス層](storage-blob-storage-tiers.md)|一般公開|
-|BLOB SDK |一般公開|
 |BLOB REST API|一般公開|
-|[PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |一般公開|
-|[CLI](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |一般公開|
+|BLOB SDK |一般公開|
+|[PowerShell (BLOB)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |一般公開|
+|[CLI (BLOB)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |一般公開|
+|BLOB SDK とファイル システム セマンティクス ([.NET](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [Python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [Java](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java))|プレビュー|
+|[PowerShell とファイル システム セマンティクス](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|プレビュー|
+|[CLI とファイル システム セマンティクス](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|プレビュー|
 |[診断ログ](../common/storage-analytics-logging.md)| プレビュー|
 |[ライフサイクル管理ポリシー](storage-lifecycle-management-concepts.md)| プレビュー|
 |[Azure Event Grid 経由の通知](data-lake-storage-events.md)|プレビュー|

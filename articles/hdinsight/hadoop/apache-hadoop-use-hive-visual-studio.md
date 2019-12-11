@@ -2,18 +2,18 @@
 title: Apache Hive と Data Lake Tools for Visual Studio - Azure HDInsight
 description: Data Lake Tools for Visual Studio を使って Azure HDInsight 上の Apache Hadoop で Apache Hive クエリを実行する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5b10cc5a8b7468b222fec3f2e66a8258470047ae
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: 27ab13481525819eb1435f4c9ac256a21acd21fb
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931871"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687796"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して Apache Hive クエリを実行する
 
@@ -38,9 +38,9 @@ Hive クエリを作成して実行するためのオプションは 2 つあり
 
 アドホック クエリは **[バッチ]** または **[対話型]** モードで実行できます。
 
-1. **Visual Studio** を開きます。
+1. **Visual Studio** を起動し、 **[コードなしで続行]** を選択します。
 
-2. **サーバー エクスプローラー**から **[Azure]**  >  **[HDInsight]** に移動します。
+2. **[サーバーエクスプローラー]** で、 **[Azure]** を右クリックし **[Microsoft Azureサブスクリプションに接続..]** を選択し、サインイン処理を完了します。
 
 3. **[HDInsight]** を展開し、クエリを実行するクラスターを右クリックして、 **[Hive クエリの作成]** を選択します。
 
@@ -99,7 +99,7 @@ Hive アプリケーションを作成して Hive クエリを実行するには
         > 基になるデータが、MapReduce ジョブや Azure サービスなどの外部ソースによって更新されると考えられる場合は、外部テーブルを使用する必要があります。
         >
         > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
-    
+
     * `ROW FORMAT`:データの形式を Hive に伝えます。 ここでは、各ログのフィールドは、スペースで区切られています。
 
     * `STORED AS TEXTFILE LOCATION`:データの格納先 (*example/data* ディレクトリ) と、データがテキストとして格納されていることを Hive に伝えます。
@@ -138,7 +138,7 @@ Hive アプリケーションを作成して Hive クエリを実行するには
         > `EXTERNAL` テーブルとは異なり、内部テーブルを削除すると、基になるデータも削除されます。
 
     * `STORED AS ORC`:*Optimized Row Columnar* (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
-    
+
     * `INSERT OVERWRITE ... SELECT`:`[ERROR]` を含む `log4jLogs` テーブルの列を選択し、データを `errorLogs` テーブルに挿入します。
 
 3. 必要に応じて **[対話型]** を **[バッチ]** に変更し、 **[送信]** を選択します。
@@ -149,14 +149,8 @@ Hive アプリケーションを作成して Hive クエリを実行するには
 
 おわかりのように、Visual Studio の HDInsight ツールを使用すると、HDInsight で Hive クエリを簡単に操作できます。
 
-HDInsight での Hive に関する全般的な情報
+* HDInsight の Hive に関する一般情報については、「[Azure HDInsight における Apache Hive と HiveQL](hdinsight-use-hive.md)」を参照してください。
 
-* [Azure HDInsight における Apache Hive と HiveQL](hdinsight-use-hive.md)
+* HDInsight で Hadoop のその他の使用する方法の詳細については、「[HDInsight 上の Apache Hadoop での MapReduce の使用](hdinsight-use-mapreduce.md)」を参照してください。
 
-HDInsight での Hadoop のその他の使用方法に関する情報
-
-* [HDInsight 上の Apache Hadoop で MapReduce を使用する](hdinsight-use-mapreduce.md)
-
-Visual Studio の HDInsight ツールに関する詳細情報:
-
-* [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する](apache-hadoop-visual-studio-tools-get-started.md)
+* HDInsight tools for Visual Studio の詳細については、「Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し Apache Hive クエリを実行[」を参照してください。](apache-hadoop-visual-studio-tools-get-started.md)

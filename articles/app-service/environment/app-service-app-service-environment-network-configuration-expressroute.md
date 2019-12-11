@@ -1,25 +1,18 @@
 ---
-title: Azure ExpressRoute のネットワーク構成の詳細 - App Service
-description: Azure ExpressRoute 回線に接続された仮想ネットワーク内の PowerApps 用の App Service Environment のネットワーク構成の詳細です。
-services: app-service
-documentationcenter: ''
+title: Azure ExpressRoute v1 を構成する
+description: Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: b10bd15538ecca7934a397ca63db1150a0bfc32c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8a83c2f6ac7599ff37237834a85b7771cf4ee502
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070034"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688747"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
 

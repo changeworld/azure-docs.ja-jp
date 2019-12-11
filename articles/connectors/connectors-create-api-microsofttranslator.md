@@ -1,24 +1,21 @@
 ---
-title: Microsoft Translator に接続する - Azure Logic Apps | Microsoft Docs
+title: Microsoft Translator への接続
 description: Microsoft Translator REST API と Azure Logic Apps を使用して、テキストを翻訳し、他の言語タスクを実行します
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 11/07/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 29212cf1c1f06ecae9892e0fc8aaaa4a01b2612b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec809a897ce2579125c8797dc8c1d8c7d30a8f9c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105787"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789552"
 ---
 # <a name="get-started-with-the-microsoft-translator-connector"></a>Microsoft Translator コネクタの使用
+
 Microsoft Translator に接続して、テキストの翻訳、言語の検出などを行います。 Microsoft Translator では、次の操作を実行できます。 
 
 * Microsoft Translator から取得したデータに基づいてビジネス フローを構築できます。 
@@ -27,6 +24,7 @@ Microsoft Translator に接続して、テキストの翻訳、言語の検出�
 まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
 
 ## <a name="create-a-connection-to-microsoft-translator"></a>Microsoft Translator への接続を作成する
+
 > [!INCLUDE [Steps to create a connection to Microsoft Translator](../../includes/connectors-create-api-microsofttranslator.md)]
 > 
 > 

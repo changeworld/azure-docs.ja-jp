@@ -1,17 +1,17 @@
 ---
-title: Advanced Threat Protection - Azure Database for MariaDB | Microsoft Docs
+title: Advanced Threat Protection - Azure Database for MariaDB
 description: Advanced Threat Protection は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: a96d8c3b9f9e3f9b1aedf269bce141da3e4ccf42
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 12/02/2019
+ms.openlocfilehash: 164457444fc097c0b1322909110f705726df1083
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67869378"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772847"
 ---
 # <a name="azure-database-for-mariadb-advanced-threat-protection"></a>Azure Database for MariaDB Advanced Threat Protection
 

@@ -1,24 +1,18 @@
 ---
-title: 外部 App Service 環境の作成 - Azure
-description: アプリまたはスタンドアロンの作成中に Azure App Service Environment を作成する方法について説明します。
-services: app-service
-documentationcenter: na
+title: 外部 ASE の作成
+description: アプリが含まれる App Service 環境を作成する方法、またはスタンドアロンの (空の) ASE を作成する方法について説明します。
 author: ccompy
-manager: stefsch
 ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 19d58ed90de4bdbd3cd7606d15c115bb1633770a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 5ec9a99f55c2c9a3cb487ad7d69610a512d5b8bd
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069686"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687241"
 ---
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成
 

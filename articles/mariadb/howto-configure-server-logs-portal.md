@@ -1,19 +1,19 @@
 ---
-title: Azure portal で Azure Database for MariaDB のサーバー ログを構成してアクセスする
-description: この記事では、Azure portal から Azure Database for MariaDB のサーバー ログの構成方法とアクセス方法について説明します。
+title: 低速クエリ ログにアクセスする - Azure portal - Azure Database for MariaDB
+description: この記事では、Azure portal から Azure Database for MariaDB の低速クエリ ログの構成方法とアクセス方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: c7e95521e503ad2d92bf13ae7e410b71ed6dfcd3
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 12/02/2019
+ms.openlocfilehash: 69a01ec021ecbade235a693b1be502353420fde0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844670"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767468"
 ---
-# <a name="configure-and-access-server-logs-from-the-azure-portal"></a>Azure portal からサーバー ログを構成してアクセスする
+# <a name="configure-and-access-slow-query-logs-from-the-azure-portal"></a>Azure portal で低速クエリ ログを構成してアクセスする
 
 Azure portal から [Azure Database for MariaDB の低速クエリ ログ](concepts-server-logs.md)の構成、一覧表示、ダウンロードを行うことができます。
 

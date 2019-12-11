@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 4662e5047e981c74d2422830bc5b152dae738337
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: f4eb275d8e1303ba68a23ac4ea0135c81c6a452a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559315"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672291"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 
@@ -105,6 +105,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 | プロパティ                                                    | 説明                                                  | 必須 |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **RegisterNewNode** "`<AuthenticationKey>`"                     | 指定された認証キーを使用して、セルフホステッド統合ランタイム ノードを登録します | いいえ       |
+| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | 指定された認証キーおよびノード名を使用して、セルフホステッド統合ランタイム ノードを登録します。 | いいえ       |
 | **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | 現在のノードでリモート アクセスを有効にして、高可用性クラスターをセットアップします。 または、Azure Data Factory を介さずにセルフホステッド IR に対する資格情報の直接設定を有効にします。 後者を実行するには、同じネットワーク内のリモート コンピューターから **New-AzDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用します。 | いいえ       |
 | **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | ノードがコンテナーで実行されているときに、現在のノードへのリモート アクセスを有効にします。 | いいえ       |
 | **DisableRemoteAccess**                                         | 現在のノードへのリモート アクセスを無効にします。 マルチノード設定にはリモート アクセスが必要です。 **New-AzDataFactoryV2LinkedServiceEncryptedCredential** PowerShell コマンドレットは、リモート アクセスが無効な場合でも機能します。 この動作は、コマンドレットがセルフホステッド IR ノードと同じコンピューター上で実行されている場合に当てはまります。 | いいえ       |
@@ -119,7 +120,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 | **TurnOnAutoUpdate**                                            | セルフホステッド統合ランタイムの自動更新を有効にします。        | いいえ       |
 | **TurnOffAutoUpdate**                                           | セルフホステッド統合ランタイムの自動更新を無効にします。       | いいえ       |
 | **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | DIAHostService を新しいアカウントとして実行するように設定します。 システム アカウントおよび仮想アカウントの場合は空のパスワード "" を使用します | いいえ       |
-| **Loglevel** `<logLevel>`                                       | Event Trace for Windows (ETW) のログ レベルを **[Off]\(オフ\)** 、 **[Error]\(エラー\)** 、 **[Verbose]\(詳細\)** 、または **[All]\(すべて\)** に設定します。 このプロパティはほとんどの場合、Microsoft サポートのエンジニアがインストールをデバッグするときに使用されます。 | いいえ       |
+
 
 ## <a name="command-flow-and-data-flow"></a>コマンド フローとデータ フロー
 
@@ -435,4 +436,4 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 ## <a name="next-steps"></a>次の手順
 
-詳細な手順については、[チュートリアル:オンプレミスのデータをクラウドにコピーする](tutorial-hybrid-copy-powershell.md)
+詳細な手順については、[オンプレミス データのクラウドへのコピーに関するチュートリアル](tutorial-hybrid-copy-powershell.md)を参照してください。

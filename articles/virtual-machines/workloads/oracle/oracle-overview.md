@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure での Oracle ソリューション | Microsoft Docs
-description: Oracle のアプリケーションおよびソリューションを Microsoft Azure にデプロイするためのオプション (全面的に Azure インフラストラクチャ上で実行する、クラウド間接続と Oracle Cloud Infrastructure (OCI) を使用するなど) について説明します。
+description: Oracle のアプリケーションおよびソリューションを Microsoft Azure にデプロイするためのオプション (全面的に Azure インフラストラクチャ上で実行する、クラウド間接続と Oracle Cloud Infrastructure (OCI) を使用するなど) について学びます。
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: 71caa6730e3a00f3aa80329d6b87d2531fdd8049
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891461"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806611"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure での Oracle アプリケーションおよびソリューションの概要
 
@@ -42,7 +42,7 @@ Azure Marketplace で入手可能な Oracle Linux イメージの Oracle Databas
 
 * Oracle WebLogic Server 12.1.2
 
-* Oracle Linux (UEK) 6.8、6.9、6.10、7.3、7.4、7.5、7.6
+* UEK Enterprise Kernel (UEK) 6.8、6.9、6.10、7.3、7.4、7.5、および 7.6 での Oracle Linux 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>高可用性とディザスター リカバリーのオプション
 
@@ -65,9 +65,9 @@ Oracle Cloud Infrastructure (OCI) のバックエンド データベースに接
 * **クラウド間ネットワーキング** - Azure ExpressRoute と Oracle FastConnect の間で利用可能な直接相互接続を使用して、高帯域幅、プライベート、低待機時間の接続をアプリケーションとデータベース レイヤーの間に確立します。
 * **統合型 ID** - Azure AD と Oracle IDCS 間のフェデレーション ID をセットアップして、ソリューション用の単一の ID ソースを作成します。 OCI と Azure にまたがってリソースを管理するために、シングル サインオンを有効にします。
 
-### <a name="deploy-oracle-applications-on-azure"></a>Oracle アプリケーションを Azure 上に展開する
+### <a name="deploy-oracle-applications-on-azure"></a>Oracle アプリケーションを Azure 上にデプロイする
 
-Terraform テンプレートを使用して Azure インフラストラクチャをセットアップし、クラウド間構成での実行が検証およびサポートされている Oracle アプリケーションをインストールします。
+Terraform テンプレートを使用して Azure インフラストラクチャを設定し、クラウド間構成での実行が検証されサポートされている Oracle アプリケーションをインストールします。
 
 * E-Business Suite
 * JD Edwards EnterpriseOne
@@ -84,10 +84,12 @@ Oracle Database Cloud Services (Autonomous Database、RAC、Exadata、DBaaS、Si
 
 ## <a name="licensing"></a>ライセンス
 
-Azure での Oracle アプリケーションのデプロイは、"ライセンス持ち込み" モデルに基づいています。 つまり、Oracle ソフトウェアを使用するライセンスが適切に供与されていて、Oracle と現在サポート契約を結んでいることを前提としています。 Oracle では、オンプレミスから Azure へのライセンス モビリティを保証しています。 Oracle-Azure [FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) を参照してください。
+Azure での Oracle アプリケーションのデプロイは、「ライセンス持ち込み」モデルに基づいています。 つまり、Oracle ソフトウェアを使用するライセンスが適切に供与されていて、Oracle と現在サポート契約を結んでいることを前提としています。 Oracle では、オンプレミスから Azure へのライセンス モビリティを保証しています。 Oracle-Azure [FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 * Azure インフラストラクチャへの [Oracle VM イメージ](oracle-vm-solutions.md)のデプロイについて詳しく学びます。
 
 * [Azure と OCI を相互接続する](oracle-oci-overview.md)方法について詳しく学びます。
+
+* Ignite 2019 からの [Oracle on Azure の概要セッション](https://myignite.techcommunity.microsoft.com/sessions/82915) を確認してください。 

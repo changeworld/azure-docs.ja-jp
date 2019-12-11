@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4d970e61fc2628843ef847526dcdb4e44bf9796f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4b61cbc8a3e870e9fd2123fd3dcbd941c5dde80c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176932"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786947"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Azure Cosmos DB のデータベース、コンテナー、項目の操作
 
@@ -82,7 +82,7 @@ Azure Cosmos コンテナーには、一連のシステム定義のプロパテ�
 
 | システム定義のプロパティ | システム生成またはユーザー構成可能 | 目的 | SQL API | Cassandra API | MongoDB 用 Azure Cosmos DB API | Gremlin API | テーブル API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | システム生成 | コンテナーの一意識別子 | はい | いいえ | いいえ | いいえ | いいえ |
+|\_rid | システム生成 | コンテナーの一意識別子 | はい | いいえ | いいえ | いいえ | いいえ |
 |\_etag | システム生成 | オプティミスティック同時実行制御に使用されるエンティティ タグ | はい | いいえ | いいえ | いいえ | いいえ |
 |\_ts | システム生成 | コンテナーの最終更新時のタイムスタンプ | はい | いいえ | いいえ | いいえ | いいえ |
 |\_self | システム生成 | コンテナーのアドレス指定可能な URI | はい | いいえ | いいえ | いいえ | いいえ |

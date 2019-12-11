@@ -1,22 +1,18 @@
 ---
-title: Office 365 Outlook に接続する - Azure Logic Apps | Microsoft Docs
+title: Office 365 Outlook に接続する
 description: Office 365 REST API と Azure Logic Apps を使用して、メール、連絡先、予定表を管理します
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 10/18/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 10/18/2016
 tags: connectors
-ms.openlocfilehash: 52abf17e869216e65780129a7b48df79bd79f67a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 858366947fe21a20d6f112fc51899d1533a36472
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105056"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789621"
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Office 365 Outlook コネクタの使用
 Office 365 Outlook コネクタを使用すると、Office 365 Outlook の操作が可能になります。 このコネクタを使用すると、連絡先と予定表アイテムの作成、編集、更新に加え、電子メールの取得、送信、返信を行うことができます。
@@ -92,5 +88,5 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 [コネクタの詳細](/connectors/office365connector/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
 
 ## <a name="next-steps"></a>次の手順
-[ロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。 [API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

@@ -152,7 +152,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-構造、可用性、ポリシーなどのデータセット JSON ファイルの一部のセクションは、すべてのデータセットの型 (Azure SQL Database、Azure Blob Storage、Azure テーブル ストレージ) について同様です。
+構造、可用性、ポリシーなどのデータセット JSON ファイルの一部のセクションは、すべてのデータセットの型 (Azure SQL Database、Azure Blob Storage、Azure Table Storage) について同様です。
 
 データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)をご覧ください。
 

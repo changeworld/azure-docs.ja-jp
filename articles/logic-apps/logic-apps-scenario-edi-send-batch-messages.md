@@ -1,19 +1,18 @@
 ---
-title: EDI メッセージをグループとしてバッチ処理する - Azure Logic Apps
+title: EDI メッセージをグループとしてバッチ処理する
 description: Azure Logic Apps においてバッチ、グループ、またはコレクションとして EDI メッセージを送受信する
 services: logic-apps
-ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680180"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793003"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Azure Logic Apps を使用して取引先パートナーに EDI メッセージをバッチで送信する
 
@@ -108,7 +107,7 @@ ms.locfileid: "72680180"
 
       ![バッチ エンコード アクションのアイテム](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-items.png)
 
-6. ロジック アプリを保存し、 
+6. ロジック アプリを保存します。 
 
 7. Visual Studio を使用している場合、[バッチ受信ロジック アプリを Azure にデプロイ](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)する必要があります。 そうしないと、バッチ送信アプリを作成するときにバッチ受信アプリを選択できません。
 
@@ -133,7 +132,7 @@ ms.locfileid: "72680180"
 
    ![HTTP アクションの詳細を指定する](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-add-http-action-details.png)
 
-4. ロジック アプリを保存し、 
+4. ロジック アプリを保存します。 
 
    バッチ受信ロジック アプリは次の例のようになります。 
 
@@ -182,7 +181,7 @@ ms.locfileid: "72680180"
    
    ![バッチのプロパティを設定する](./media/logic-apps-scenario-EDI-send-batch-messages/batch-sender-set-batch-properties.png)
 
-5. ロジック アプリを保存し、 
+5. ロジック アプリを保存します。 
 
    バッチ送信ロジック アプリは次の例のようになります。
 

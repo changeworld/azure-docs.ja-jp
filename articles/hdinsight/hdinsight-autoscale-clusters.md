@@ -8,17 +8,17 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 5cc473635543a22fd7e7223f4a5715f78457a897
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5a8e641c8a1b29d657fe8b0eabf7657ab5973516
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561744"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666037"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する
 
 > [!Important]
-> 自動スケーリング機能は、2019年 5月 8日より後に作成された Spark、Hive、および MapReduce のクラスターでのみ機能します。 
+> 自動スケーリング機能は、2019 年 5 月 8 日より後に作成された Spark、Hive、LLAP および HBase のクラスターでのみ機能します。 
 
 Azure HDInsight のクラスター自動スケーリング機能では、クラスター内のワーカー ノードの数が自動的にスケールアップおよびスケールダウンされます。 現在、クラスター内の他の種類のノードはスケーリングできません。  新しい HDInsight クラスターの作成中に、ワーカー ノードの最小数と最大数を設定できます。 その後、自動スケーリングによって分析負荷のリソース要件が監視され、ワーカー ノードの数がスケールアップまたはスケールダウンされます。 この機能に対して追加料金は発生しません。
 

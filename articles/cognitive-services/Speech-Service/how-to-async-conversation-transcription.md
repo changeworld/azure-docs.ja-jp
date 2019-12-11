@@ -1,7 +1,7 @@
 ---
-title: 非同期での会話の文字起こし (プレビュー) - Speech Service
+title: 非同期での会話の文字起こし (プレビュー) - 音声サービス
 titleSuffix: Azure Cognitive Services
-description: Speech Service で非同期での会話の文字起こしを使う方法について説明します。 Java でのみ使用できます。
+description: 音声サービスを使って非同期での会話の文字起こしを使用する方法について説明します。 Java でのみ使用できます。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: amishu
-ms.openlocfilehash: 9a2a00a8c76c7b5c02cde623bf93f536b27cf074
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f34ce66d126a47e186cd1196fb5c92d670def445
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621948"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806169"
 ---
 # <a name="asynchronous-conversation-transcription-preview"></a>非同期での会話の文字起こし (プレビュー)
 

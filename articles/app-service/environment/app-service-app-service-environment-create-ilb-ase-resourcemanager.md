@@ -1,25 +1,18 @@
 ---
-title: Azure Resource Manager テンプレートを使用して ILB ASE を作成する - App Service | Microsoft Docs
-description: Azure Resource Manager テンプレートを使用し、内部ロード バランサー ASE を作成する方法について説明します。
-services: app-service
-documentationcenter: ''
+title: ILB ASE v1 を作成する
+description: 内部ロード バランサー (ILB ASE) を使用して、App Service Environment を作成します。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: stefsch
-manager: nirma
-editor: ''
 ms.assetid: 091decb6-b0de-42a1-9f2f-c18d9b2e67df
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 862887e1e530bfdca4359e914b9a81c9360ac4dd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9cbd8b178bfd2edcf99e3bba9b0d967aebcb5cc2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070426"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688773"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法
 

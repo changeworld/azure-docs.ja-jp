@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Single Server での仮想ネットワーク (VNet) サービス エンドポイントの概要
-description: Azure Database for PostgreSQL - Single Server で仮想ネットワーク (VNet) サービス エンドポイントがどのように機能するかについて説明します。
-author: bolzmj
-ms.author: mbolz
+title: 仮想ネットワーク規則 - Azure Database for PostgreSQL - Single Server
+description: 仮想ネットワーク（Vnet）サービスエンドポイントを使用して Azure Database for PostgreSQL-Single Server に接続する方法を学びます。
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: b03be62a634d04f41513e7cf27c3cb55f69da438
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 11ffd323c5f775a795899cc35706493cba6d933b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609980"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768658"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の仮想ネットワーク サービス エンドポイントと規則を使用する
 
@@ -102,7 +102,7 @@ Azure Database for PostgreSQL のファイアウォールでは、Azure Database
 > Azure Database for PostgreSQL と VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
 > - 両方のサブスクリプションが同じ Azure Active Directory テナントに存在する必要がある。
 > - ユーザーに操作 (サービス エンドポイントの有効化や、特定のサーバーへの VNet サブネットの追加など) を開始するために必要な権限がある。
-> - 両方のサブスクリプションに **Microsoft.Sql** リソース プロバイダーが確実に登録されている。 詳細については、[Resource Manager の登録][resource-manager-portal]に関する記事をご覧ください
+> - 両方のサブスクリプションに **Microsoft.Sql** リソース プロバイダーが確実に登録されている。 詳細については、[resource-manager-registration][resource-manager-portal] に関するページをご覧ください
 
 ## <a name="limitations"></a>制限事項
 

@@ -1,25 +1,19 @@
 ---
-title: 構成に関する FAQ - Azure App Service | Microsoft Docs
-description: Azure App Service の Web Apps 機能の構成および管理の問題に関するよく寄せられる質問への回答を確認します。
-services: app-service\web
-documentationcenter: ''
+title: 構成に関する FAQ
+description: Azure App Service の構成と管理の問題についてよく寄せられる質問への回答を取得します。
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 111ee6cda46677b3b0fc39f5a84268e6ac192da9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc13b0939563f93c31683b432b0410035d892de0
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470532"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672499"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 

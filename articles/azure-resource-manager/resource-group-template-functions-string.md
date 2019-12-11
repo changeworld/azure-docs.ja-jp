@@ -3,12 +3,12 @@ title: テンプレート関数 - 文字列
 description: Azure Resource Manager テンプレートで、文字列を操作するために使用する関数について説明します。
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: af972bac39890402cf75e83d10806e9a830c1d4a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 37bf03f2934980d143edeec327a0c424216fd8a1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149610"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784512"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
 
@@ -253,10 +253,13 @@ base64 形式を文字列に変換します。
 
 | パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |はい |文字列または配列 |連結の最初の値。 |
-| 残りの引数 |いいえ |string |連結する順の追加の値。 |
+| arg1 |はい |文字列または配列 |連結の最初の文字列または配列。 |
+| 残りの引数 |いいえ |文字列または配列 |連結する順番での残りの文字列または配列。 |
+
+この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。 ただし、パラメーターに配列と文字列の両方を指定することはできません。 文字列は、他の文字列とのみ連結されます。
 
 ### <a name="return-value"></a>戻り値
+
 連結された値の文字列または配列。
 
 ### <a name="examples"></a>例

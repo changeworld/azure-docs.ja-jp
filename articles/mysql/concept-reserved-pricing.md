@@ -1,17 +1,17 @@
 ---
-title: 予約容量を使用して Azure Database for MySQL 計算リソースを前払いする
+title: 予約容量を使用して計算を前払いする - Azure Database for MySQL
 description: 予約容量を使用して Azure Database for MySQL 計算リソースを前払いする
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 595a96d07cc1804d3ee0830618a70557b768a3b5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 12/02/2019
+ms.openlocfilehash: 44bdd9a58bfe2f1a8d3a0102aa6652bb340ac719
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067102"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773833"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>予約容量を使用して Azure Database for MySQL 計算リソースを前払いする
 

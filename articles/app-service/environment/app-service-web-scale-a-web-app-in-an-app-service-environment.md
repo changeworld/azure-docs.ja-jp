@@ -1,27 +1,20 @@
 ---
-title: App Service 環境内でアプリをスケーリングする方法 - Azure
-description: App Service 環境内でのアプリのスケーリング
-services: app-service
-documentationcenter: ''
+title: ASE v1 におけるアプリをスケールする
+description: App Service Environmen 内でのアプリのスケーリング。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: ccompy
-manager: stefsch
-editor: jimbe
 ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 711dc4d59785418d6637eb144b644948ed495e2c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069723"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688675"
 ---
-# <a name="scaling-apps-in-an-app-service-environment"></a>App Service 環境内でのアプリのスケーリング
+# <a name="scaling-apps-in-an-app-service-environment-v1"></a>App Service Environment v1 内でのアプリのスケーリング
 Azure App Service では、通常、次の 3 つの項目をスケーリングできます。
 
 * 料金プラン

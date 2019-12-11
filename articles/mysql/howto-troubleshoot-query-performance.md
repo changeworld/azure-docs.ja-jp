@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL でのクエリのパフォーマンスをトラブルシューティングする方法
+title: クエリ パフォーマンスのトラブルシューティング - Azure Database for MySQL
 description: EXPLAIN を使って Azure Database for MySQL でのクエリのパフォーマンスをトラブルシューティングする方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 02/28/2018
-ms.openlocfilehash: d58721f1fedd234b3c400a82035048d8e70f8c32
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 5bfefe3215558a94396e729a318e0746a4fb3aec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972851"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764799"
 ---
 # <a name="how-to-use-explain-to-profile-query-performance-in-azure-database-for-mysql"></a>EXPLAIN を使用して Azure Database for MySQL でのクエリのパフォーマンスをプロファイリングする方法
 **EXPLAIN** は、クエリを最適化するための便利なツールです。 EXPLAIN ステートメントを使うと、SQL ステートメントの実行状況に関する情報を取得できます。 EXPLAIN ステートメントを実行したときの出力の例を次に示します。

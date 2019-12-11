@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823014"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791354"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商用マーケットプレース トランザクションの機能と考慮事項
 
@@ -66,7 +66,7 @@ SaaS アプリの場合、公開元は Azure インフラストラクチャの�
 
 * 従量課金制: ソフトウェア ライセンス料金は、使用されている Azure インフラストラクチャに基づいて、時間あたりのコア (vCPU) ごとの価格レートとして提示されます。 これは仮想マシンと Azure アプリケーションのみに適用されます。
 
-* • サブスクリプションの料金: ソフトウェア ライセンス料金は、定額またはシートごとに課金された毎月または毎年の基本料金として提示されます。 これは、SaaS アプリと Azure アプリケーション - マネージド アプリにのみ適用されます。
+* サブスクリプションの料金: ソフトウェア ライセンス料金は、定額またはシートごとに課金された毎月または毎年の基本料金として提示されます。 これは、SaaS アプリと Azure アプリケーション - マネージド アプリにのみ適用されます。
 
 * 無料試用版ソフトウェア: 30 日または 90 日間のソフトウェア ライセンスに対する課金は発生しません。
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f05b9ae490ea2b9d8e7b89ce02c7c1eb818bb0a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679944"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769577"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
@@ -98,6 +98,43 @@ Azure SQL Data Warehouse をシンクまたはソースとして使用する場�
 ## <a name="monitoring-the-data-flow-activity"></a>データ フロー アクティビティを監視する
 
 データ フロー アクティビティには、パーティション分割、ステージ時間、およびデータ系列の情報を表示できる特別な監視エクスペリエンスがあります。 **[アクション]** の下にある眼鏡アイコンを使用して、[監視] ウィンドウを開きます。 詳しくは、[データ フローの監視](concepts-data-flow-monitoring.md)に関するページを参照してください。
+
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>後続のアクティビティでデータ フロー アクティビティの結果を使用する
+
+データ フロー アクティビティは、各シンクに書き込まれた行の数と各ソースから読み取られた行に関するメトリックを出力します。 これらの結果は、アクティビティの実行結果の `output` セクションに返されます。 返されるメトリックは、以下の JSON の形式です。
+
+``` json
+{
+    "runStatus": {
+        "metrics": {
+            "<your sink name1>": {
+                "rowsWritten": <number of rows written>,
+                "sinkProcessingTime": <sink processing time in ms>,
+                "sources": {
+                    "<your source name1>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    "<your source name2>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    ...
+                }
+            },
+            "<your sink name2>": {
+                ...
+            },
+            ...
+        }
+    }
+}
+```
+
+たとえば、'dataflowActivity' という名前のアクティビティで、'sink1' という名前のシンクに書き込まれた行の数を取得するには、`@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten` を使用します。
+
+このシンクで使用されていた、'source1' という名前のソースから読み取られた行の数を取得するには、`@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead` を使用します。
+
+> [!NOTE]
+> シンクに書き込まれた行が 0 の場合は、メトリックに表示されません。 存在を確認するには、`contains` 関数を使用します。 たとえば、`contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')` は、sink1 に行が書き込まれたかどうかを確認します。
 
 ## <a name="next-steps"></a>次の手順
 

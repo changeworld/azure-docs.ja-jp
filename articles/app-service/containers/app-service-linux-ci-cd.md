@@ -1,26 +1,19 @@
 ---
-title: Web App for Containers での継続的なデプロイ - Azure App Service | Microsoft Docs
-description: Web App for Containers で継続的なデプロイを設定する方法について説明します。
+title: カスタム Linux コンテナーへの CI/CD
+description: Azure App Service でカスタム Linux コンテナーへの継続的配置を設定する方法について説明します。 継続的配置は、Docker Hub と ACR でサポートされています。
 keywords: Azure App Service, Linux, Docker, acr, oss
-services: app-service
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1dc776f0a61ac1a29ab3fe3ebdd542469863cd50
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d43491de7500204ed470757a1b744017a8180b57
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071352"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687630"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Web App for Containers での継続的デプロイ
 

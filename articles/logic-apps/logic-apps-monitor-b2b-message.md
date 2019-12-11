@@ -1,20 +1,19 @@
 ---
-title: Azure Monitor を使用して B2B メッセージを監視する - Azure Logic Apps
+title: Azure Monitor で B2B メッセージを監視する
 description: Azure Monitor を使用して Azure Logic Apps に AS2、X12、および EDIFACT メッセージの診断ログを設定する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: e5c8e5f3d42f4e85406fcc7dd5a2f6602045c8ed
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: cd96376f764ec3075b916bf2207ec6ee3dd3fcbd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680199"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791926"
 ---
 # <a name="set-up-diagnostics-logging-for-b2b-messages-in-azure-logic-apps-by-using-azure-monitor"></a>Azure Monitor を使用して Azure Logic Apps に B2B メッセージの診断ログを設定する
 

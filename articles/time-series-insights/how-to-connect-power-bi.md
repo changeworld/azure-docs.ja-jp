@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e218877ee0d29e493a31091ccbce406ed888f8cc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114642"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705970"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Power BI の Time Series Insights からのデータを視覚化する
 
@@ -32,7 +32,10 @@ Azure Time Series Insights は、クラウド内の時系列データを格納�
 ## <a name="prerequisites"></a>前提条件
 
 * 最新バージョンの [Power BI Desktop](https://powerbi.microsoft.com/downloads/) をダウンロードしてインストールすること
-* [Azure Time Series Insights GA インスタンス](time-series-insights-get-started.md)または [Azure Time Series Insights プレビュー インスタンス](time-series-insights-update-how-to-manage.md)を持っているか、作成すること
+* [Azure Time Series Insights プレビュー インスタンス](time-series-insights-update-how-to-manage.md)を備えるまたは作成する
+
+> [!IMPORTANT]
+> Power BI コネクタは、現在、**Warm ストア**用に構成された Time Series Insights プレビュー*従量課金制* 環境でサポートされています。
 
 ## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Time Series Insights から Power BI へのデータの接続
 
@@ -65,12 +68,12 @@ Time Series Insights 環境を Power BI に接続するには、次の手順を�
 
        [![接続](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. ウォーム ストア用に Time Series Insights インスタンスを構成していない場合は、警告が表示されます。
+   1. **Warm ストア**用に Time Series Insights インスタンスを構成していない場合は、警告が表示されます。
 
        [![接続](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > Azure portal では、既存のインスタンスをウォーム ストア用に構成することができます。
+       > Azure ポータルでは、既存のインスタンスを**Warm ストア**用に構成できます。
 
 1. **[クエリをクリップボードにコピー]** を選択します。
 1. 次に、Power BI Desktop を起動します。

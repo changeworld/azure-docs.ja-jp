@@ -57,7 +57,9 @@ Azure Functions のデプロイは通常、次のリソースで構成されて�
 
 さらに、`AzureWebJobsStorage` プロパティを、サイト構成でアプリ設定として指定する必要があります。 関数アプリで監視に Application Insights を使用していない場合は、`AzureWebJobsDashboard` もアプリ設定として指定する必要があります。
 
+
 `AzureWebJobsStorage` 接続文字列は、Azure Functions ランタイムが内部キューを作成するときに使用します。  Application Insights が有効でない場合、ランタイムでは `AzureWebJobsDashboard` 接続文字列を使用して、Azure Table Storageにログを記録し、ポータルの **[監視]** タブをオンにします。
+
 
 こうしたプロパティは、`siteConfig` オブジェクトの `appSettings` コレクションで指定します。
 

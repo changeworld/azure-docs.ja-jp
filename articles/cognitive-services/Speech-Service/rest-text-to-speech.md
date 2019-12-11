@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9fa0157bd458d2de028cab8ff9c836761e99562f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 779df2794267a1cb62d9918fc718da02e94c48cb
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481212"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816628"
 ---
 # <a name="text-to-speech-rest-api"></a>Text to Speech REST API
 
-Speech Services では、一連の REST API を使用して、[テキストを合成音声に変換](#convert-text-to-speech)したり、[リージョンでサポートされている音声の一覧を取得](#get-a-list-of-voices)したりできます。 利用可能な各エンドポイントは、リージョンに関連付けられています。 使用を検討しているエンドポイント/リージョンのサブスクリプション キーが必要です。
+Speech Service では、一連の REST API を使用して、[テキストを合成音声に変換](#convert-text-to-speech)したり、[リージョンでサポートされている音声の一覧を取得](#get-a-list-of-voices)したりできます。 利用可能な各エンドポイントは、リージョンに関連付けられています。 使用を検討しているエンドポイント/リージョンのサブスクリプション キーが必要です。
 
 Text to Speech REST API ではニューラルと標準のテキスト読み上げ音声が提供され、そのいずれでもロケールで識別される特定の言語と方言がサポートされています。
 
@@ -167,7 +167,7 @@ Authorization: Bearer [Base64 access_token]
 
 ### <a name="audio-outputs"></a>オーディオ出力
 
-以下に示したのは、それぞれの要求の `X-Microsoft-OutputFormat` ヘッダーで送信することができるオーディオ形式の一覧です。 それぞれビットレートとエンコードの種類が含まれています。 Speech Services では、24 kHz、16 kHz、および 8 kHz のオーディオ出力がサポートされます。
+以下に示したのは、それぞれの要求の `X-Microsoft-OutputFormat` ヘッダーで送信することができるオーディオ形式の一覧です。 それぞれビットレートとエンコードの種類が含まれています。 Speech Service では、24 kHz、16 kHz、および 8 kHz のオーディオ出力がサポートされます。
 
 |||
 |-|-|

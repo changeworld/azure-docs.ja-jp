@@ -4,12 +4,12 @@ description: Azure Container Instances のコンテナー グループ、ライ�
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 9fbf9fea7da0896ee6c0e248d18e18d52798fbd7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482117"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706324"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
@@ -48,15 +48,15 @@ Azure Container Instances では、グループにインスタンスの[リソ�
 
 ### <a name="resource-usage-by-instances"></a>インスタンス別のリソース使用量
 
-各コンテナー インスタンスには、そのリソース要求で指定されたリソースが割り当てられます。 ただし、あるグループに属するコンテナー インスタンス別のリソース使用量は、そのオプションの[リソース上限][resource-limits]プロパティの設定に依存します。
+各コンテナー インスタンスには、そのリソース要求で指定されたリソースが割り当てられます。 ただし、あるグループに属するコンテナー インスタンス別のリソース使用量は、そのオプションの[リソース上限][resource-limits]プロパティの設定に依存します。 リソース上限は、必須の[リソース要求][resource-requests]プロパティよりも小さくする必要があります。
 
 * リソース上限を指定しない場合、インスタンスの最大リソース使用量はそのリソース要求と同じになります。
 
 * インスタンスにリソース上限を指定する場合、そのワークロードに対してインスタンスのリソース使用量を調整できます。リソース要求に比例させる形で使用量を増減します。 設定できるリソース上限の最大値は、グループに割り当てられているリソース合計になります。
     
-    たとえば、あるグループに属する 2 つのインスタンスが 1 つの CPU を要求するとき、あるコンテナーで実行されるワークロードが他のコンテナーのそれと比べ、多くの CPU 実行を要求することがあります。
+たとえば、あるグループに属する 2 つのインスタンスが 1 つの CPU を要求するとき、あるコンテナーで実行されるワークロードが他のコンテナーのそれと比べ、多くの CPU 実行を要求することがあります。
 
-    このシナリオでは、1 つのインスタンスに対してリソース制限を 0.5 CPU に設定し、2 つ目のインスタンスに 2 CPU の制限を設定することができます。 この構成では、1 つ目のコンテナーのリソース使用率を 0.5 CPU に制限し、利用可能な場合は、2 つ目のコンテナーが最大 2 CPU をすべて使用することを許可します。
+このシナリオでは、1 つのインスタンスに対してリソース制限を 0.5 CPU に設定し、2 つ目のインスタンスに 2 CPU の制限を設定することができます。 この構成では、1 つ目のコンテナーのリソース使用率を 0.5 CPU に制限し、利用可能な場合は、2 つ目のコンテナーが最大 2 CPU をすべて使用することを許可します。
 
 詳細については、コンテナー グループ REST API の [ResourceRequirements][resource-requirements] プロパティを参照してください。
 

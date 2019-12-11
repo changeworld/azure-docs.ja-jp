@@ -2,18 +2,18 @@
 title: HBase .NET SDK の使用 - Azure HDInsight
 description: HBase .NET SDK を使用して、テーブルの作成と削除、およびデータの読み取りと書き込みを行います。
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/13/2017
-ms.author: ashishth
-ms.openlocfilehash: d998ff44804a2dcd2b3282679a9cb53f893991e3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/02/2019
+ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077163"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806662"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase 用 .NET SDK の使用
 
@@ -58,7 +58,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-この新しいテーブルには、2 つの列ファミリ t1 と t2 が含まれます。 列ファミリは異なる HFiles に個別に保存されているため、頻繁にクエリが実行されるデータの列ファミリは別にしておくと効果的です。 次の「[データを挿入する](#insert-data)」の例では、t1 列のファミリに列が追加されます。
+この新しいテーブルには、2 列のファミリ (t1 と t2) が含まれます。 列ファミリは異なる HFiles に個別に保存されているため、頻繁にクエリが実行されるデータの列ファミリは別にしておくと効果的です。 次の「[データを挿入する](#insert-data)」の例では、t1 列のファミリに列が追加されます。
 
 ## <a name="delete-a-table"></a>テーブルを削除する
 
@@ -112,7 +112,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase では [Cloud BigTable](https://cloud.google.com/bigtable/) が実装されるため、データ形式は次のようになります。
+HBase では [Cloud BigTable](https://cloud.google.com/bigtable/) が実装されるため、データ形式は次のようなイメージになります。
 
 ![Apache HBase のサンプル データ出力](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 

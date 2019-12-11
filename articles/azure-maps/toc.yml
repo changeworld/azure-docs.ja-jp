@@ -29,6 +29,8 @@
           href: tutorial-iot-hub-maps.md
         - name: Azure Notebooks (Python) を使用した EV ルーティング
           href: tutorial-ev-routing.md
+        - name: Azure Notebooks (Python) を使用した気象データの分析
+          href: weather-service-tutorial.md
 - name: 概念
   items:
     - name: Azure Maps による認証

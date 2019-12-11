@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/29/2019
-ms.openlocfilehash: 7a7544ef9fe5724d1f6c11918411a76461d908e5
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: c6e60474f74a23add429bf13ca7744afb8e8e1a3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104401"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74777586"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight でクラスター パフォーマンスを監視する
 
@@ -31,9 +31,9 @@ Hadoop クラスターでは、クラスターの負荷がすべてのノード�
 | --- | --- |
 | 赤 | ホスト上の少なくとも 1 つのマスター コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
 | オレンジ | ホスト上の少なくとも 1 つのセカンダリ コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
-| 黄 | Ambari Server がホストからハートビートを受け取らない時間が 3 分を超えています。 |
+| 黄 | Ambari サーバーが、ホストから 3 分以上ハートビートを受信していません。 |
 | 緑 | 通常の実行状態です。 |
-
+ 
 各ホストのコア数と RAM 合計の列と、ディスク使用量と負荷の平均の列も表示されます。
 
 ![Apache Ambari の [ホスト] タブの概要](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
@@ -76,7 +76,7 @@ ResourceManager UI の左側のメニューから **[Scheduler]** を選択し�
 
 Azure Storage を使用している場合、ストレージに関連する問題の監視の詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)」を参照してください。
 
-クラスターのバッキング ストアが Azure Data Lake Storage (ADLS) の場合、調整は帯域幅の制限が原因の可能性が高くなります。 このような調整は、タスク ログの調整エラーを監視することで確認できます。 ADLS については、以下の記事の適切なサービスの調整セクションを参照してください。
+クラスターのバッキング ストアが Azure Data Lake Storage (ADLS) の場合、帯域幅の制限が原因で調整が発生する可能性が最も高くなります。 このような調整は、タスク ログの調整エラーを監視することで確認できます。 ADLS については、以下の記事の適切なサービスの調整セクションを参照してください。
 
 * [HDInsight の Apache Hive と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [HDInsight の MapReduce と Azure Data Lake Storage のパフォーマンス チューニング ガイダンス](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)

@@ -1,22 +1,22 @@
 ---
 title: Azure Dev Space を操作する場合のシークレットを管理する方法
 services: azure-dev-spaces
-ms.date: 05/11/2018
+ms.date: 12/03/2019
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 49f53683b2499e790414d139dcb0bc0833005647
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b184f72dfbbfe093443ab8a9b79bafbece3a3d51
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280006"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790175"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Azure Dev Space を操作する場合のシークレットを管理する方法
 
 サービスで、データベースやその他のセキュリティ保護された Azure サービスなどの特定のパスワード、接続文字列、およびその他のシークレットが必要になることがあります。 構成ファイルにこれらのシークレットの値を設定して、コードで環境変数としてそれらを使用できるようにすることができます。  これらは、シークレットのセキュリティを損なわないように注意して扱う必要があります。
 
-Azure Dev Spaces では、Azure Dev Spaces クライアント ツールによって生成された Helm チャートにシークレットを格納するための 2 つの推奨されるオプションが用意されています。values.dev.yaml ファイル内と azds.yaml にインラインで直接格納する方法です。 values.yaml にシークレットを格納することはお勧めしません。 この記事で定義されているクライアント ツールで生成された Helm チャートに対する 2 つの方法以外では、自身の Helm チャートを作成すれば、Helm チャートを直接使用して、シークレットを管理および格納できます。
+Azure Dev Spaces では、Azure Dev Spaces クライアント ツールによって生成された Helm チャートにシークレットを格納するための 2 つの推奨されるオプションが用意されています。`values.dev.yaml` ファイル内と `azds.yaml` にインラインで直接格納する方法です。 `values.yaml` にシークレットを格納することはお勧めしません。 この記事で定義されているクライアント ツールで生成された Helm チャートに対する 2 つの方法以外では、自身の Helm チャートを作成すれば、Helm チャートを直接使用して、シークレットを管理および格納できます。
 
 ## <a name="method-1-valuesdevyaml"></a>方法 1: values.dev.yaml
 1. Azure Dev Spaces 用に有効にされているプロジェクトで VS Code を開きます。
@@ -62,7 +62,7 @@ Azure Dev Spaces では、Azure Dev Spaces クライアント ツールによっ
 7. _values.dev.yaml_ を _.gitignore_ ファイルに追加して、ソース管理でシークレットがコミットされないようにします。
  
  
-## <a name="method-2-inline-directly-in-azdsyaml"></a>方法 2:azds.yaml にインラインで直接
+## <a name="method-2-azdsyaml"></a>方法 2: azds.yaml
 1.  _Azds.yaml_ で、yaml セクションの configurations/develop/install の下にシークレットを設定します。 ここにシークレット値を直接入力できますが、_azds.yaml_ はソース管理にチェックインされるため、お勧めしません。 代わりに、"$PLACEHOLDER" 構文を使用してプレース ホルダーを追加します。
 
     ```yaml
@@ -104,6 +104,44 @@ Azure Dev Spaces では、Azure Dev Spaces クライアント ツールによっ
     ```
     kubectl get secret --namespace default -o yaml
     ```
+
+## <a name="passing-secrets-as-build-arguments"></a>ビルド引数としてシークレットを渡す
+
+前のセクションでは、コンテナーの実行時に使用するシークレットを渡す方法について説明しました。 `azds.yaml` を使用して、プライベート NuGet のパスワードなど、コンテナーのビルド時にシークレットを渡すこともできます。
+
+`azds.yaml` で、`<variable name>: ${secret.<secret name>.<secret key>}` 構文を使用し、*configurations.develop.build.args* でビルド時のシークレットを設定します。 例:
+
+```yaml
+configurations:
+  develop:
+    build:
+      dockerfile: Dockerfile.develop
+      useGitIgnore: true
+      args:
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Debug}
+        MYTOKEN: ${secret.mynugetsecret.pattoken}
+```
+
+上の例では、*mynugetsecret* は既存のシークレットであり、*pattoken* は既存のキーです。
+
+>[!NOTE]
+> シークレットの名前とキーには `.` 文字を含めることができます。 ビルド引数としてシークレットを渡すときには、`\` を使用して `.` をエスケープすることができます。 たとえば、*foo. bar* という名前のシークレットと *token*: `MYTOKEN: ${secret.foo\.bar.token}` のキーを渡すには、次のように指定します。 また、プレフィックスと postfix テキストを使用してシークレットを評価することもできます。 たとえば、「 `MYURL: eus-${secret.foo\.bar.token}-version1` 」のように入力します。 また、親と親の親のスペースで使用できるシークレットは、ビルド引数として渡すことができます。
+
+Dockerfile で、*ARG* ディレクティブを使用してシークレットを使用し、その同じ変数を Dockerfile で後で使用します。 例:
+
+```dockerfile
+...
+ARG MYTOKEN
+...
+ARG NUGET_EXTERNAL_FEED_ENDPOINTS="{'endpointCredentials': [{'endpoint':'PRIVATE_NUGET_ENDPOINT', 'password':'${MYTOKEN}'}]}"
+...
+```
+
+クラスターで実行されているサービスをこれらの変更で更新します。 コマンド ラインで、次のコマンドを実行します。
+
+```
+azds up
+```
 
 ## <a name="next-steps"></a>次の手順
 

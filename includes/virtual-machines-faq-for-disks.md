@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008570"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795568"
 ---
 この記事では、Azure Managed Disks と Azure Premium SSD ディスクについてよく寄せられるいくつかの質問に回答します。
 
@@ -137,7 +137,9 @@ No. コンピューター名プロパティを更新することはできませ�
 
 **Azure ディスクで GPT パーティション分割を使用できますか?**
 
-GPT パーティション分割は OS ディスクではなく、データ ディスクでのみ使用できます。 OS ディスクは、MBR パーティション分割のスタイルを使用する必要があります。
+第 1 世代のイメージでは、OS ディスクではなく、データ ディスクに対してのみ GPT パーティション分割を使用できます。 OS ディスクは、MBR パーティション分割のスタイルを使用する必要があります。
+
+[第 2 世代のイメージ](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)では、データ ディスクだけでなく、OS ディスクでも GPT パーティション分割を使用できます。
 
 **どのような種類のディスクでスナップショットがサポートされますか。**
 

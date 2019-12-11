@@ -1,20 +1,17 @@
 ---
-title: switch ステートメントをワークフローに追加する - Azure Logic Apps | Microsoft Docs
+title: switch ステートメントをワークフローに追加する
 description: Azure Logic Apps の特定の値に基づいてワークフロー アクションを制御する switch ステートメントを作成する方法です
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60683132"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793236"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Azure Logic Apps の特定の値に基づいてワークフロー アクションを実行する switch ステートメントを作成する
 
@@ -70,12 +67,12 @@ ms.locfileid: "60683132"
    |--------|--------------------|--------|
    | ケース 1 | **Approve** | 承認者が **[Approve]** を選択した場合のみ、RSS 項目の詳細を送信するために Outlook **[Send an email]\(電子メールの送信\)** アクションを追加します。 |
    | ケース 2 | **Reject** | RSS 項目が拒否されたことを他の承認者に通知するために、Outlook **[Send an email]\(電子メールの送信\)** アクションを追加します。 |
-   | 既定値 | なし | 対処不要です。 この例では、 **[SelectedOption]\(SelectedOption\)** に 2 つしかオプションがないため、 **[既定]** ケースは空です。 |
+   | Default | なし | 対処不要です。 この例では、 **[SelectedOption]\(SelectedOption\)** に 2 つしかオプションがないため、 **[既定]** ケースは空です。 |
    |||
 
    ![完了した switch ステートメント](./media/logic-apps-control-flow-switch-statement/finished-switch.png)
 
-1. ロジック アプリを保存し、 
+1. ロジック アプリを保存します。 
 
    この例を手動でテストするには、ロジック アプリが新しい RSS 項目を見つけて承認の電子メールを送信するまで、 **[実行]** を選択します。 
    **[Approve]** を選択して結果を確認します。

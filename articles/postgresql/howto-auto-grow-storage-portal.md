@@ -1,17 +1,17 @@
 ---
-title: Azure portal を使用して Azure Database for PostgreSQL でストレージを自動拡張する - 単一サーバー
-description: この記事では、Azure portal を使用して Azure Database for PostgreSQL のストレージの自動拡張を有効にする方法について説明します - 単一サーバー
+title: ストレージを自動拡張する - Azure portal - Azure Database for PostgreSQL - 単一サーバー
+description: この記事では、Azure Database for PostgreSQL - 単一サーバーで Azure portal を使用して、ストレージを自動拡張するように構成する方法について説明します
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/29/2019
-ms.openlocfilehash: 1d028093b030e1f2cf00ceae9297563c36c314c5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5e4f9d68d02edf456394d4ce10b7b6af5f8643d9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142875"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769236"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Azure portal を使用して Azure Database for PostgreSQL でストレージを自動拡張する - 単一サーバー
 この記事では、ワークロードに影響を与えることなく拡張されるように Azure Database for PostgreSQL サーバーのストレージを構成する方法について説明します。

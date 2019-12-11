@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL にデータをレプリケートするデータイン レプリケーションを構成する
+title: レプリケーションでのデータの構成 - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL のデータイン レプリケーションをセットアップする方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/31/2018
-ms.openlocfilehash: 7d56d7f8fcbd53d4f69863d260591ef80f3d7188
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: eaebcf50084223e1c1f4df30294bece96cffda6d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459081"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774298"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 

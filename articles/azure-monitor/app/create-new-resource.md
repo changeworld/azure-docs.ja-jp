@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 08/16/2019
-ms.openlocfilehash: be68c70a105737f232741f02994da87c0c628bd7
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.date: 12/02/2019
+ms.openlocfilehash: 11b581649e6d7a048899394d69e574e8f9a4d22c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677501"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689208"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 
@@ -30,9 +30,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    | 設定        |  値           | 説明  |
    | ------------- |:-------------|:-----|
-   | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
+   | **Name**      | 一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループまたは既存のリソース グループの名前。 |
    | **Location** | East US | お近くの場所か、アプリがホストされている場所の近くを選択します。 |
+
+> [!NOTE]
+> 異なるリソースグループ間で同じリソース名を使用できますが、グローバルに一意の名前を使用すると便利です。 これは、必要な構文が簡略化するため、 [クロスリソース クエリを実行するする](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application)場合に便利です。
 
 必須フィールドに適切な値を入力し、 **[確認と作成]** を選択します。
 
