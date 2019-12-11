@@ -88,7 +88,7 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 | リソース診断 | Log Analytics ワークスペースへのメトリックなど、診断データを書き込むための診断設定を構成します。 「[Azure 診断ログの Log Analytics へのストリーミング](resource-logs-collect-storage.md)」をご覧ください。 |
 | 監視ソリューション | 監視ソリューションにより収集されたデータが Log Analytics ワークスペースに書き込まれます。 ソリューションの一覧については、「[Azure での管理ソリューションのデータ収集の詳細](../insights/solutions-inventory.md)」をご覧ください。 ソリューションのインストールと使用について詳しくは、「[Azure Monitor での監視ソリューション](../insights/solutions.md)」をご覧ください。 |
 | メトリック | ログ データを長期間保持し、[Kusto クエリ言語](/azure/kusto/query/)を使用して他のデータの種類と共に複雑な分析を実行するために、Azure Monitor リソース用のプラットフォーム メトリックを Log Analytics ワークスペースに送信します。 「[Azure 診断ログの Log Analytics へのストリーミング](resource-logs-collect-storage.md)」をご覧ください。 |
-| Azure テーブル ストレージ | 一部の Azure リソースによて監視データが書き込まれる Azure Storage からデータを収集します。 「[Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する](azure-storage-iis-table.md)」をご覧ください。 |
+| Azure Table Storage | 一部の Azure リソースによて監視データが書き込まれる Azure Storage からデータを収集します。 「[Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する](azure-storage-iis-table.md)」をご覧ください。 |
 
 ### <a name="virtual-machines"></a>Virtual Machines
 
