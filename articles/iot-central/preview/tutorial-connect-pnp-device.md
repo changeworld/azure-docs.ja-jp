@@ -3,17 +3,17 @@ title: チュートリアル - IoT プラグ アンド プレイ プレビュー
 description: このチュートリアルでは、デバイス機能モデルを使用してデバイス コードを作成する方法について説明します。 次に、デバイス コードを実行して、デバイスがご利用の IoT Central アプリケーションに接続されることを確認し、自動生成されたビューを使用します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/08/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 59261d6a1cea034df58bd7e8d53439cdf1fbae6b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2cb07a94b2ae85cc0755e1e7069a76e1ef2a5252
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702859"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977337"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>チュートリアル:デバイス機能モデルを使用して IoT プラグ アンド プレイ デバイスを作成し、ご利用の IoT Central アプリケーションに接続する
 

@@ -8,17 +8,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: tutorial
+ms.custom: seo-lt-2019
 ms.date: 06/26/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 594cdd848a3712d2164616e38f7b75a01a21b7f6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: ff40867bc1e2778ec6f21f479360866b50d0c184
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683589"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926507"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>PowerShell を使用して Azure-SSIS 統合ランタイムを Azure Data Factory にプロビジョニングする
 

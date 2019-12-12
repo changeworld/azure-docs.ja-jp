@@ -4,19 +4,18 @@ description: この記事では、Azure Data Factory と Azure Data Factory バ�
 services: data-factory
 documentationcenter: ''
 author: kromerm
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: e0c92fbd06bec00f09c66c322ba2520bacb7bffb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e964be548a2f82ecc268a147dd20817b232f51a6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267790"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924801"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory と Data Factory バージョン 1 の比較
 この記事では、Data Factory と Azure Data Factory バージョン 1 を比較します。 Data Factory の概要については、[Data Factory の概要](introduction.md)に関するページを参照してください。Data Factory バージョン 1 の概要については、「[Azure Data Factory の概要](v1/data-factory-introduction.md)」を参照してください。 
