@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: b0df6264eb38cbbacd5f624b634eea5f742adbc7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 34c2a27d047888d1e763a0a99461e7eb4b9fb203
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683333"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925098"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 このチュートリアルでは、Azure Portal を使用して Azure Data Factory パイプラインを作成します。 このパイプラインは、Spark アクティビティとオンデマンドの Azure HDInsight のリンクされたサービスを使用して、データを変換します。 
@@ -172,7 +171,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!NOTE]
 > Azure HDInsight には、サポートされる各 Azure リージョンで使用できるコアの合計数に制限があります。 オンデマンドの HDInsight のリンクされたサービスの場合、HDInsight クラスターは、プライマリ ストレージとして使用されるのと同じ Azure ストレージの場所に作成されます。 クラスターを正常に作成するための十分なコア クォータがあることを確認します。 詳細については、「[Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 
 
-## <a name="create-a-pipeline"></a>パイプラインを作成する。
+## <a name="create-a-pipeline"></a>パイプラインを作成する
 
 1. **+** (正符号) ボタンを選択し、メニューの **[パイプライン]** を選択します。
 

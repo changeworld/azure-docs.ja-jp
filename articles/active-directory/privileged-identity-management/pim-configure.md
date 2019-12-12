@@ -14,12 +14,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 578f45a7bc870874319a8238c7c8c50bf7a37998
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c1f0708f0674633ddfee8b84388a2d96f2a04636
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023024"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899980"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
@@ -46,7 +46,7 @@ Privileged Identity Management では、時間ベースおよび承認ベース�
 
 Privileged Identity Management を設定すると、左側のナビゲーション メニューに **[タスク]** 、 **[管理]** 、 **[アクティビティ]** の各オプションが表示されます。 お客様は管理者として、**Azure AD ロール**と **Azure リソース** ロールのどちらかを選択することになります。 管理するロールの種類を選択すると、そのロールの種類に関して同様のオプション一式が表示されます。
 
-![Azure portal での Privileged Identity Management のスクリーンショット](./media/pim-configure/pim-overview.png)
+![Azure portal での Privileged Identity Management のスクリーンショット](./media/pim-configure/pim-quickstart.png)
 
 ## <a name="who-can-do-what"></a>だれが何をできるか
 
