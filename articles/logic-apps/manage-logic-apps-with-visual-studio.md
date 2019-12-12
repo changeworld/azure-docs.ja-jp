@@ -1,21 +1,18 @@
 ---
-title: Visual Studio を使用してロジック アプリを管理する - Azure Logic Apps
+title: Visual Studio を使用してロジック アプリを管理する
 description: Visual Studio と Cloud Explorer を使用してロジック アプリとその他の Azure 資産を管理する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/29/2019
-ms.openlocfilehash: e10683bcd5612db788d6dd5675425fec4130ffeb
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 29b1235ee319567e103267b9054b8c6b244e1ca7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796547"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790842"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -44,7 +41,7 @@ ms.locfileid: "73796547"
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
-  * 必要なバージョンの Visual Studio 拡張機能の最新 Azure Logic Apps ツール:
+  * 必要なバージョンの Visual Studio 拡張機能用の最新の Azure Logic Apps ツール。
 
     * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 

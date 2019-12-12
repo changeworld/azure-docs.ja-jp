@@ -1,7 +1,7 @@
 ---
-title: サポート オプションとヘルプ オプション - Speech Service
+title: サポート オプションとヘルプ オプション - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Speech Service と統合するアプリケーションを作成するときの疑問や問題に対するヘルプやサポートを入手する方法について説明します
+description: Speech サービスと統合するアプリケーションを作成するときの疑問や問題に対するヘルプやサポートを入手する方法について説明します
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 925d21d22806ab2854be29b9648aab78138741ec
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 741217cde5068468a7063a64361df8425346b590
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422615"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815440"
 ---
 # <a name="support-and-help-options"></a>サポート オプションとヘルプ オプション
 
-Speech Services の機能を調べ始めたばかりですか。 アプリケーションに新しい機能を実装しているのですか。 ここでは、開発者がヘルプを入手するためのヒントを示します。
+Speech Service の機能を調べ始めたばかりですか。 アプリケーションに新しい機能を実装しているのですか。 ここでは、開発者がヘルプを入手するためのヒントを示します。
 
 > [!div class="checklist"]
-> * *Azure Cognitive Services* の新たな開発情報を随時確認し、*Speech Service* に関連する最新ニュースを検索します。
+> * *Azure Cognitive Services* の新たな開発情報を随時確認し、*Speech サービス*に関連する最新ニュースを検索します。
 > * リリース ノートには、すべてのリリースの情報が含まれています。
 > * 問題がコミュニティで話題に上がっていないかどうかや、実装しようとしている機能が既存のドキュメントで既に説明されていないかどうかを、検索して確認します。
 > * 十分な答えが見つからない場合は、*Stack Overflow* で質問を投稿します。
@@ -31,7 +31,7 @@ Speech Services の機能を調べ始めたばかりですか。 アプリケー
 
 ## <a name="stay-informed"></a>最新情報を入手
 
-Cognitive Services に関するニュースは、[Cognitive Services ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)から収集できます。 Speech Services 関連の最新情報については、[Speech Services ブログ](https://azure.microsoft.com/blog/tag/speech-service/)をチェックしてください。
+Cognitive Services に関するニュースは、[Cognitive Services ブログ](https://azure.microsoft.com/blog/topics/cognitive-services/)から収集できます。 Speech サービス関連の最新情報については、[Speech サービス ブログ](https://azure.microsoft.com/blog/tag/speech-service/)をチェックしてください。
 
 ## <a name="release-notes"></a>リリース ノート
 

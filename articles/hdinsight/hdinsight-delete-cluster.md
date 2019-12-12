@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/17/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a28d59cb35004fac6b069f2aa41042b4d46e443f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 11/29/2019
+ms.openlocfilehash: 2912777c001a36ec913e2cfd618091ada5aa107a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091536"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807138"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する
 
@@ -32,7 +32,7 @@ HDInsight クラスターの課金は、クラスターが作成されると開�
 
     ![HDInsight クラスター削除ボタン](./media/hdinsight-delete-cluster/hdinsight-delete-cluster.png)
 
-## <a name="azure-powershell-az-module"></a>Azure PowerShell Az モジュール
+## <a name="azure-powershell"></a>Azure PowerShell
 
 `CLUSTERNAME` を、以下のコード内の HDInsight クラスターの名前に置き換えます。 クラスターを削除するには、PowerShell プロンプトで次のコマンドを実行します。
 

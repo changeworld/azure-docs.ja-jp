@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176037"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707568"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -206,7 +206,7 @@ Azure Resource Manager デプロイ モデルを使用している場合は、�
 クラシック デプロイ モデルを使用している場合は、Azure Portal または[ネットワーク構成ファイル](https://msdn.microsoft.com/library/azure/jj157100)を使用して仮想ネットワークの DNS サーバーを指定できます。 クラウド サービスでは、DNS サーバーは、[サービス構成ファイル](https://msdn.microsoft.com/library/azure/ee758710)または PowerShell ([New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm)) を使用して指定できます。
 
 > [!NOTE]
-> 既にデプロイされている仮想ネットワークまたは仮想マシンの DNS 設定を変更した場合、変更を有効にするには、関係する各 VM を再起動する必要があります。
+> 既にデプロイされている仮想ネットワークまたは仮想マシンの DNS 設定を変更した場合、新しい DNS 設定を有効にするには、仮想ネットワーク内の影響を受けるすべての VM で DHCP リースの更新を実行する必要があります。 Windows OS を実行している VM の場合は、その VM で直接 `ipconfig /renew` を入力することによってこれを行うことができます。 この手順は OS によって異なります。 ご使用の種類の OS の関連ドキュメントを参照してください。 
 >
 >
 

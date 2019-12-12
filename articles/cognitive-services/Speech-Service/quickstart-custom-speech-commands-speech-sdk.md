@@ -8,14 +8,14 @@ manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 3301c43aa71f041de1c53fb4083de73b6d2e4450
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111158"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976759"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>クイック スタート:Speech SDK でカスタム コマンド アプリケーションに接続する (プレビュー)
 
@@ -36,7 +36,7 @@ ms.locfileid: "74111158"
 次のものも必要です。
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
+- Speech サービス用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します
 
 ## <a name="optional-get-started-fast"></a>省略可能:すぐに開始
 

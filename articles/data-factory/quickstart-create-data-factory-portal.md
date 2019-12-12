@@ -4,19 +4,19 @@ description: Azure Blob Storage 内のある場所から別の場所へデータ
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 642039e99df19939def5ac850f1abccca0e67222
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ea218da5316e921c44b7e80fa5f072417d98ca05
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684486"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929930"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>クイック スタート:Azure Data Factory UI を使用してデータ ファクトリを作成する
 
@@ -135,7 +135,7 @@ ms.locfileid: "73684486"
 
     f. **[続行]** をクリックします。   
 
-## <a name="create-a-pipeline"></a>パイプラインを作成する。 
+## <a name="create-a-pipeline"></a>パイプラインを作成する 
 この手順では、入力データセットと出力データセットを使用するコピー アクティビティを持つパイプラインを作成および検証します。 コピー アクティビティにより、入力データセットの設定で指定されたファイルから、出力データセットの設定で指定されたファイルにデータがコピーされます。 入力データセットで、ファイル名を指定せず、フォルダーのみを指定すると、コピー アクティビティはソース フォルダーのすべてのファイルをターゲットにコピーします。 
 
 1. **+** (正符号) ボタンを選択し、 **[パイプライン]** を選択します。 

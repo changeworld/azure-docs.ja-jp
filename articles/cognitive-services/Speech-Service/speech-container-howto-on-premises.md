@@ -1,5 +1,5 @@
 ---
-title: Kubernetes と Helm と共に Speech Service コンテナーを使用する
+title: Kubernetes および Helm と共に Speech サービス コンテナーを使用する
 titleSuffix: Azure Cognitive Services
 description: Kubernetes と Helm を使って音声テキスト変換とテキスト読み上げのコンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 42585ae09435e67b7cdea0b437681e2ce044ecd3
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b7f8b98e8241b4502c86cce8c893beb315767d55
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383652"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816497"
 ---
-# <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Kubernetes と Helm と共に Speech Service コンテナーを使用する
+# <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Kubernetes および Helm と共に Speech サービス コンテナーを使用する
 
-オンプレミスの音声コンテナーを管理するための 1 つの方法は、Kubernetes と Helm を使用することです。 Kubernetes と Helm を使って音声テキスト変換とテキスト読み上げのコンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。 最後に、展開されたサービスをテストする方法と、さまざまな構成オプションについて調べます。 Kubernetes オーケストレーションを使用せずに Docker コンテナーを実行する方法の詳細については、「[Speech Service コンテナーをインストールして実行する](speech-container-howto.md)」を参照してください。
+オンプレミスの音声コンテナーを管理するための 1 つの方法は、Kubernetes と Helm を使用することです。 Kubernetes と Helm を使って音声テキスト変換とテキスト読み上げのコンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。 最後に、展開されたサービスをテストする方法と、さまざまな構成オプションについて調べます。 Kubernetes オーケストレーションを使用せずに、Docker コンテナーを実行する方法の詳細については、「[Speech サービス コンテナーをインストールして実行する](speech-container-howto.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -142,7 +142,7 @@ textToSpeech:
 
 > [Helm チャート][helm-charts] は、関連する Kubernetes リソースのセットが記述されているファイルのコレクションです。 1 つのチャートを使って、memcached ポッドのような単純なものや、HTTP サーバー、データベース、キャッシュなどを含む完全な Web アプリ スタックのような複雑なものを、展開できます。
 
-提供されている "*Helm チャート*" では、テキスト読み上げサービスと音声テキスト変換サービス両方の Speech Service の Docker イメージが、`mcr.microsoft.com` コンテナー レジストリからプルされます。
+提供されている 「*Helm チャート*」では、テキスト読み上げサービスと音声テキスト変換サービス両方の Speech サービスの Docker イメージが、`mcr.microsoft.com` コンテナー レジストリからプルされます。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Kubernetes クラスターに Helm チャートをインストールする
 

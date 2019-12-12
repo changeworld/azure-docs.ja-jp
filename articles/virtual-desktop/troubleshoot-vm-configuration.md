@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607406"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791144"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
 
@@ -333,7 +333,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 ### <a name="version-1903"></a>バージョン 1903
 
-バージョン番号が "1903" の場合は、[KB4517211 更新プログラム](https://support.microsoft.com/help/4517211)をインストールします。
+Azure ギャラリーから、最新バージョンの Windows 10 バージョン 1903 イメージを使用して、ホスト オペレーティング システムを再デプロイします。
 
 ## <a name="next-steps"></a>次の手順
 

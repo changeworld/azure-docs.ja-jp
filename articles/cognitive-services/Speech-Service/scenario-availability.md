@@ -1,5 +1,5 @@
 ---
-title: シナリオの可用性 - Speech Service
+title: シナリオの可用性 - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Speech SDK には、さまざまなプログラミング言語と環境にわたる多数のシナリオがあります。 まだ、すべてのシナリオがすべてのプログラミング言語またはすべての環境で利用できるわけではありません。 各シナリオの利用可否は以下のとおりです。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 02632e5bc84c7406ce3a42eb4be71cf6aaf75c15
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e8fc6e8c2f37dcd3edec24fb4d8ed81b32a84bd0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075758"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816579"
 ---
 # <a name="scenario-availability"></a>シナリオの利用可否
 

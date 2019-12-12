@@ -1,22 +1,18 @@
 ---
-title: FTP サーバーへの接続 - Azure Logic Apps
+title: FTP サーバーに接続する
 description: Azure Logic Apps を使用して FTP サーバー上のファイルを作成、監視、管理する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: divswa, klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 06/19/2019
 tags: connectors
-ms.openlocfilehash: ac6ae1a3b00a4e7568bd7967105f202fbf2e4f9b
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: c7b8c1ac94fd35a4a0cb30ad32d8c6ce39edc058
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547486"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789787"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して FTP ファイルを作成、監視、および管理する
 

@@ -1,24 +1,18 @@
 ---
-title: App Service Environment でのネットワークの考慮事項 - Azure
-description: ASE ネットワーク トラフィックと、ASE を使用して NSG と UDR を設定する方法について説明します
-services: app-service
-documentationcenter: na
+title: ネットワークに関する考慮事項
+description: ASE のネットワーク トラフィックと、ASE でネットワーク セキュリティ グループとユーザー定義のルートを設定する方法について説明します。
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ee7e3cb200a20b52a307dba31682a534e9f7b455
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470643"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687122"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 

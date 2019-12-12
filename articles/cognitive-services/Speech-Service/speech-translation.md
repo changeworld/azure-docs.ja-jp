@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 17ad32cba18915bf7f83163cd876686d42323750
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a05a2bf81a278322bc4e07ed959aedb828c39b73
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468761"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815463"
 ---
 # <a name="what-is-speech-translation"></a>音声翻訳とは何か
 
-Azure Speech Services の音声翻訳では、オーディオ ストリームをリアルタイムに処理し、複数言語の音声間翻訳や音声テキスト翻訳を実行することができます。 Speech SDK を使用すると、アプリケーション、ツール、およびデバイスから、提供されたオーディオのソース トランスクリプションや翻訳出力にアクセスすることができます。 音声の検出中には中間トランスクリプションと翻訳結果が返され、最終的な結果は、合成された音声に変換することができます。
+Speech Service の音声翻訳では、オーディオ ストリームをリアルタイムに処理し、複数言語の音声間翻訳や音声テキスト翻訳を実行することができます。 Speech SDK を使用すると、アプリケーション、ツール、およびデバイスから、提供されたオーディオのソース トランスクリプションや翻訳出力にアクセスすることができます。 音声の検出中には中間トランスクリプションと翻訳結果が返され、最終的な結果は、合成された音声に変換することができます。
 
 Microsoft の翻訳エンジンは、統計的機械翻訳 (SMT) とニューラル機械翻訳 (NMT) という 2 つのアプローチによって強化されています。 SMT では、高度な統計分析を使用して、いくつかの単語の文脈から考えられる最善の翻訳が推定されます。 NMT では、ニューラル ネットワークを使用して、文全体のコンテキストを踏まえた、正確で自然な翻訳が提供されます。
 
@@ -55,9 +55,9 @@ Speech SDK のサンプル コードは、GitHub 上で入手できます。 こ
 
 ## <a name="migration-guides"></a>移行ガイド
 
-アプリケーション、ツール、または製品で [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview) をご使用の方に向けて、Speech Services への移行に役立つガイドを作成しました。
+アプリケーション、ツール、または製品で [Translator Speech API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview) をご使用の方に向けて、Speech Service への移行に役立つガイドを作成しました。
 
-* [Translator Speech API から Speech Services に移行する](how-to-migrate-from-translator-speech-api.md)
+* [Translator Speech API から Speech Service に移行する](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
@@ -69,5 +69,5 @@ Speech SDK のサンプル コードは、GitHub 上で入手できます。 こ
 
 ## <a name="next-steps"></a>次の手順
 
-* [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
+* [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
 * [Speech SDK を取得する](speech-sdk.md)

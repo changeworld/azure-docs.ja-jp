@@ -1,7 +1,7 @@
 ---
-title: フレーズ リスト - Speech Service
+title: フレーズ リスト - 音声サービス
 titleSuffix: Azure Cognitive Services
-description: 音声テキスト変換の認識結果を向上させるために、`PhraseListGrammar` オブジェクトを使用して Speech Services にフレーズ リストを提供する方法について説明します。
+description: 音声テキスト変換の認識結果を向上させるために、`PhraseListGrammar` オブジェクトを使用して音声サービスにフレーズ リストを提供する方法について説明します。
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 61d3e4d2de6b8707ee7433815f8002e5d5e3e3d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 052e02ef562da0637b6b5b9683120f0c397dbfd5
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464549"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805877"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>音声テキスト変換用のフレーズ リスト
 
-Speech Services にフレーズのリストを提供することにより、音声認識の精度を向上させることができます。 フレーズ リストは、音声データ内で、人物の名前や特定の場所などの既知のフレーズを識別するために使用されます。
+音声サービスにフレーズのリストを提供することにより、音声認識の精度を向上させることができます。 フレーズ リストは、音声データ内で、人物の名前や特定の場所などの既知のフレーズを識別するために使用されます。
 
 例として、"Move to" という指示があり、会話で考えられる目的地として "Ward" がある場合、"Move to Ward" というエントリーを追加できます。 フレーズを追加すると、音声認識の実行時に、"Move toward" ではなく "Move to Ward" が認識される可能性が高くなります。
 
@@ -68,7 +68,7 @@ phraseListGrammar.addPhrase("Move to Ted");
 ```
 
 >[!Note]
-> Speech Service で音声の照合に使用されるフレーズ リストの最大数は 1024 フレーズです。
+> 音声サービスで音声の照合に使用されるフレーズ リストの最大数は 1024 フレーズです。
 
 clear() を呼び出すことで、`PhraseListGrammar` に関連付けられたフレーズを消去することもできます。
 
@@ -93,7 +93,7 @@ phraseListGrammar.clear();
 ```
 
 > [!NOTE]
-> `PhraseListGrammar` オブジェクトへの変更は、次の認識時、または Speech Services への再接続後に有効になります。
+> `PhraseListGrammar` オブジェクトへの変更は、次の認識時、または音声サービスへの再接続後に有効になります。
 
 ## <a name="next-steps"></a>次の手順
 

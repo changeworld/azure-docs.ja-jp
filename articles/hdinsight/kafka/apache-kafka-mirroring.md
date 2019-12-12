@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/24/2019
-ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 11/29/2019
+ms.openlocfilehash: 2bd25ad823217c5e9260142912a3d2d748b9c15a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123238"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767707"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
 
@@ -80,17 +80,17 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
 1. 仮想ネットワークのピアリングを作成します。 この手順では、2 つのピアリングを作成します。1 つは **kafka-primary-vnet** から **kafka-secondary-vnet** に向かうもの、もう 1 つは **kafka-secondary-vnet** から **kafka-primary-vnet** に戻るものです。
     1. **kafka-primary-vnet** 仮想ネットワークを選択します。
-    1. **[設定]** で **[ピアリング]** をクリックします。
-    1. **[追加]** をクリックします。
+    1. **[設定]** で **[ピアリング]** を選択します。
+    1. **[追加]** を選択します。
     1. **[ピアリングの追加]** 画面で、次のスクリーンショットに示すように詳細を入力します。
 
         ![HDInsight Kafka での VNET ピアリングの追加](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. IP アドバタイズを構成します。
     1. `https://PRIMARYCLUSTERNAME.azurehdinsight.net` からプライマリ クラスターの Ambari ダッシュボードに移動します。
-    1. **[サービス]**  >  **[Kafka]** をクリックします。 **[Configs]** タブをクリックします。
-    1. **kafka env テンプレート** セクションの一番下に次の構成行を追加します。 **[Save]** をクリックします。
-    
+    1. **[サービス]**  >  **[Kafka]** を選択します。 **[Configs]** タブをクリックします。
+    1. **kafka env テンプレート** セクションの一番下に次の構成行を追加します。 **[保存]** を選択します。
+
         ```
         # Configure Kafka to advertise IP addresses instead of FQDN
         IP_ADDRESS=$(hostname -i)
@@ -101,18 +101,18 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
     1. **[構成の保存]** 画面でメモを入力し、 **[保存]** をクリックします。
     1. 構成の警告が表示されたら、 **[Proceed Anyway] (警告を無視して続行)** をクリックします。
-    1. **[Save Configuration Changes] (構成の変更を保存)** の **[Ok]** をクリックします。
-    1. **再起動が必要**通知の **[再起動]**  >  **[すべて再起動]** をクリックします。 **[Confirm Restart All] (すべて再起動)** をクリックします。
+    1. **[Save Configuration Changes] (構成の変更を保存)** の **[OK]** を選択します。
+    1. **再起動が必要**通知の **[再起動]**  >  **[すべて再起動]** をク選択します。 **[Confirm Restart All]\(すべて再起動\)** を選択します。
 
         ![Apache Ambari の影響を受けるものをすべて再起動](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. すべてのネットワーク インターフェイスをリッスンするように Kafka を構成します。
     1. **[サービス]**  >  **[Kafka]** の **[構成]** タブにとどまります。 **[Kafka Broker] (Kafka ブローカー)** セクションで、**リスナー** プロパティを `PLAINTEXT://0.0.0.0:9092` に設定します。
-    1. **[Save]** をクリックします。
-    1. **[再起動]** 、 **[Confirm Restart All] (すべて再起動)** をクリックします。
+    1. **[保存]** を選択します。
+    1. **[再起動]** 、 **[Confirm Restart All] (すべて再起動)** を選択します。
 
 1. プライマリ クラスターのブローカーの IP アドレスと Zookeeper アドレスを記録します。
-    1. Ambari ダッシュボードの **[ホスト]** をクリックします。
+    1. Ambari ダッシュボードの **[ホスト]** を選択します。
     1. ブローカーと Zookeeper の IP アドレスをメモしておきます。 ブローカー ノードのホスト名の最初の 2 文字は **wn**、Zookeeper ノードのホスト名の最初 2 文字は **zk** です。
 
         ![Apache Ambari でのノードの IP アドレスの表示](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
@@ -127,24 +127,24 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
     ssh sshuser@PRIMARYCLUSTER-ssh.azurehdinsight.net
     ```
 
-    **sshuser** は、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
+    **sshuser** は、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **SECONDARYCLUSTER** をクラスターの作成時に使用した名前に置き換えます。
 
     詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-2. プライマリ クラスターの Apache Zookeeper ホストを格納した変数を作成するには、次のコマンドを使用します。 `ZOOKEEPER_IP_ADDRESS1` などの文字列は、`10.23.0.11` や `10.23.0.7` など、先ほど記録した実際の IP アドレスに置き換える必要があります。 カスタム DNS サーバーで FQDN 解決を使用している場合は、[こちらの手順](apache-kafka-get-started.md#getkafkainfo)に従ってブローカーと Zookeeper の名前を取得します。
+1. プライマリ クラスターの Apache Zookeeper ホストを格納した変数を作成するには、次のコマンドを使用します。 `ZOOKEEPER_IP_ADDRESS1` などの文字列は、`10.23.0.11` や `10.23.0.7` など、先ほど記録した実際の IP アドレスに置き換える必要があります。 カスタム DNS サーバーで FQDN 解決を使用している場合は、[こちらの手順](apache-kafka-get-started.md#getkafkainfo)に従ってブローカーと Zookeeper の名前を取得します。
 
     ```bash
     # get the zookeeper hosts for the primary cluster
     export PRIMARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181, ZOOKEEPER_IP_ADDRESS2:2181, ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-3. `testtopic` という名前のトピックを作成するには、次のコマンドを使います。
+1. `testtopic` という名前のトピックを作成するには、次のコマンドを使います。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-3. トピックが作成されたことを確認するには、次のコマンドを使用します。
+1. トピックが作成されたことを確認するには、次のコマンドを使用します。
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $PRIMARY_ZKHOSTS
@@ -152,7 +152,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
     応答には `testtopic` が含まれます。
 
-4. 次を使用して、この (**プライマリ**) クラスターの Zookeeper ホスト情報を表示します。
+1. 次を使用して、この (**プライマリ**) クラスターの Zookeeper ホスト情報を表示します。
 
     ```bash
     echo $PRIMARY_ZKHOSTS
@@ -162,7 +162,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
     `10.23.0.11:2181,10.23.0.7:2181,10.23.0.9:2181`
 
-    この情報は保存してください。 次のセクションで使用します。
+    この情報は保存してください。 これは、次のセクションで使用されます。
 
 ## <a name="configure-mirroring"></a>ミラーリングの構成
 
@@ -176,7 +176,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
     詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-2. `consumer.properties` ファイルは、**プライマリ** クラスターとの通信を構成するために使われます。 ファイルを作成するには、次のコマンドを使います。
+1. `consumer.properties` ファイルは、**プライマリ** クラスターとの通信を構成するために使われます。 ファイルを作成するには、次のコマンドを使います。
 
     ```bash
     nano consumer.properties
@@ -195,7 +195,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
     ファイルを保存するには、**Ctrl + X** キー、**Y** キー、**Enter** キーの順に押します。
 
-3. セカンダリ クラスターと通信するプロデューサーを構成する前に、**セカンダリ** クラスターのブローカーの IP アドレスに使用する変数を設定します。 以下のコマンドを使用して、この変数を作成します。
+1. セカンダリ クラスターと通信するプロデューサーを構成する前に、**セカンダリ** クラスターのブローカーの IP アドレスに使用する変数を設定します。 以下のコマンドを使用して、この変数を作成します。
 
     ```bash
     export SECONDARY_BROKERHOSTS='BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092'
@@ -205,7 +205,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
     `10.23.0.14:9092,10.23.0.4:9092,10.23.0.12:9092`
 
-4. `producer.properties` ファイルは、**セカンダリ** クラスターとの通信に使われます。 ファイルを作成するには、次のコマンドを使います。
+1. `producer.properties` ファイルは、**セカンダリ** クラスターとの通信に使われます。 ファイルを作成するには、次のコマンドを使います。
 
     ```bash
     nano producer.properties
@@ -222,14 +222,14 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
     プロデューサーの構成の詳細については、「[Producer Configs (プロデューサーの構成)](https://kafka.apache.org/documentation#producerconfigs)」(kafka.apache.org) を参照してください。
 
-5. セカンダリ クラスターの Zookeeper ホストの IP アドレスを格納する環境変数を作成するには、次のコマンドを使用します。
+1. セカンダリ クラスターの Zookeeper ホストの IP アドレスを格納する環境変数を作成するには、次のコマンドを使用します。
 
     ```bash
     # get the zookeeper hosts for the secondary cluster
     export SECONDARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181,ZOOKEEPER_IP_ADDRESS2:2181,ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-7. HDInsight の Kafka に使用される既定の構成では、トピックの自動作成が許可されません。 ミラーリング プロセスを開始する前に、次のいずれかの方法を選択する必要があります。
+1. HDInsight の Kafka に使用される既定の構成では、トピックの自動作成が許可されません。 ミラーリング プロセスを開始する前に、次のいずれかの方法を選択する必要があります。
 
     * **セカンダリ クラスターにトピックを作成する**:この方法を選択した場合、パーティション数とレプリケーション係数も設定することができます。
 
@@ -247,9 +247,9 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
         1. `https://SECONDARYCLUSTERNAME.azurehdinsight.net` からセカンダリ クラスターの Ambari ダッシュボードに移動します。
         1. **[サービス]**  >  **[Kafka]** をクリックします。 **[Configs]** タブをクリックします。
-        5. __[フィルター]__ フィールドに `auto.create` の値を入力します。 プロパティの一覧にフィルターが適用されて `auto.create.topics.enable` 設定が表示されます。
-        6. `auto.create.topics.enable` の値を true に変更して __[保存]__ を選択します。 ノートを追加して、もう一度 __[保存]__ を選択します。
-        7. __Kafka__ サービスを選択し、 __[Restart]\(再起動\)__ を選択して、 __[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選択します。 メッセージが表示されたら、 __[Confirm restart all]\(すべて再起動\)__ を選択します。
+        1. __[フィルター]__ フィールドに `auto.create` の値を入力します。 プロパティの一覧にフィルターが適用されて `auto.create.topics.enable` 設定が表示されます。
+        1. `auto.create.topics.enable` の値を true に変更して __[保存]__ を選択します。 ノートを追加して、もう一度 __[保存]__ を選択します。
+        1. __Kafka__ サービスを選択し、 __[Restart]\(再起動\)__ を選択して、 __[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選択します。 メッセージが表示されたら、 __[Confirm restart all]\(すべて再起動\)__ を選択します。
 
         ![kafka でのトピックの自動作成の有効化](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
@@ -263,13 +263,12 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
 
     この例で使用するパラメーターは次のとおりです。
 
-    * **--consumer.config**:コンシューマーのプロパティを格納するファイルを指定します。 これらのプロパティは、*プライマリ* Kafka クラスターから読み取りを行うコンシューマーの作成に使用します。
-
-    * **--producer.config**:プロデューサーのプロパティを格納するファイルを指定します。 これらのプロパティは、*セカンダリ* Kafka クラスターへの書き込みを行うプロデューサーの作成に使用します。
-
-    * **--whitelist**:MirrorMaker がプライマリ クラスターからセカンダリ クラスターにレプリケートするトピックの一覧。
-
-    * **--num.streams**:作成するコンシューマー スレッドの数。
+    |パラメーター |説明 |
+    |---|---|
+    |--consumer.config|コンシューマーのプロパティを格納するファイルを指定します。 これらのプロパティは、*プライマリ* Kafka クラスターから読み取りを行うコンシューマーの作成に使用します。|
+    |--producer.config|プロデューサーのプロパティを格納するファイルを指定します。 これらのプロパティは、*セカンダリ* Kafka クラスターへの書き込みを行うプロデューサーの作成に使用します。|
+    |--whitelist|MirrorMaker がプライマリ クラスターからセカンダリ クラスターにレプリケートするトピックの一覧。|
+    |--num.streams|作成するコンシューマー スレッドの数。|
 
     現在、セカンダリ ノードのコンシューマーは、メッセージの受信を待機しています。
 

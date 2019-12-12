@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6ff996129cc140c9154edb8fb60840cd48017a5e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569802"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704290"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Azure Active Directory Domain Services でセキュリティ監査を有効にする (プレビュー)
 
@@ -82,7 +82,7 @@ Azure portal を使用して Azure AD DS のセキュリティ監査イベント
 > Azure AD DS のセキュリティ監査は、さかのぼって適用されません。 過去のイベントを取得する、または過去のイベントを再生することはできません。 Azure AD DS を有効にした後に発生するイベントのみが送信されます。
 
 1. Azure Portal ( https://portal.azure.com ) にサインインします。
-1. Azure portal の上部で、**Azure AD Domain Services** を検索して選択します。 目的のマネージド ドメインを選択します (例: *contoso.com*)。
+1. Azure portal の上部で、**Azure AD Domain Services** を検索して選択します。 目的のマネージド ドメインを選択します (例: *aadds.contoso.com*)。
 1. Azure AD DS ウィンドウで、左側にある **[診断設定 (プレビュー)]** を選択します。
 1. 診断は、既定では構成されていません。 作業を開始するには、 **[診断設定の追加]** を選択します。
 

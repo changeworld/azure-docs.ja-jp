@@ -1,20 +1,19 @@
 ---
-title: B2B 用の AS2 メッセージを送受信する - Azure Logic Apps
+title: B2B の AS2 メッセージを送受信する
 description: Azure Logic Apps を使用して B2B エンタープライズ統合シナリオ用の AS2 メッセージを交換する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 08/22/2019
-ms.openlocfilehash: 1f063c0e8dada8eb6c4eee031764f6ca7dd3a91d
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: b2d7c8840da3bb44f9e220f2963dc4fee63176e2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680380"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790720"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の AS2 メッセージを交換する
 

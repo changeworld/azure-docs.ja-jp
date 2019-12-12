@@ -1,21 +1,19 @@
 ---
-title: B2B メッセージのカスタム追跡スキーマ - Azure Logic Apps | Microsoft Docs
+title: B2B メッセージのカスタム トラッキング スキーマ
 description: Azure Logic Apps と Enterprise Integration Pack の統合アカウントで B2B メッセージを監視するカスタム追跡スキーマを作成します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.openlocfilehash: 76a9ece9e925543e856136a798a60038316caad9
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 7d7c5ef9e9a86c8b061a56fe41c0c8bbfc5ddbb3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203041"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792800"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Azure Logic Apps でエンド ツー エンドのワークフローを監視するカスタム追跡スキーマを作成する
 
@@ -56,7 +54,7 @@ ms.locfileid: "67203041"
 }
 ```
 
-| プロパティ | 必須 | Type | 説明 |
+| プロパティ | 必須 | 種類 | 説明 |
 | --- | --- | --- | --- |
 | sourceType | はい |   | 実行ソースのタイプ。 許可されている値は、**Microsoft.Logic/workflows** と **custom** です。 |
 | source | はい |   | ソースのタイプが **Microsoft.Logic/workflows** である場合は、このスキーマの後にソース情報を続ける必要があります。 ソースのタイプが **custom** の場合、スキーマは JToken です。 |

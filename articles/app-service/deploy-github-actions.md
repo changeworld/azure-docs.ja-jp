@@ -1,24 +1,17 @@
 ---
-title: GitHub Actions を使用して CI/CD パイプラインからご自分のコードをデプロイする - Azure App Service | Microsoft Docs
-description: GitHub Actions を使用してご自分のコードを App Service にデプロイする方法について説明します
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: GitHub アクションを使用して CI/CD を構成する
+description: GitHub Actions を使用して CI/CD パイプラインからご自分のコードを Azure App Service にデプロイする方法について説明します。 ビルド タスクをカスタマイズし、複雑なデプロイを実行します。
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 9842057a590b08f2207a1ea166e0ce0d457e4381
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e3d6e730846388c4b74cfa0b6361629e836b0517
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620509"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670190"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのデプロイ
 

@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18d60614a07895c7e9468d35b2d389a28129af4d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f1ca0baa98336570d870a98c75c45a5303bdfaca
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74271665"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868909"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B のゲスト ユーザー アクセスとは
 
@@ -61,7 +61,7 @@ Azure AD B2B では、パートナーが各自の ID 管理ソリューション
 - ゲスト ユーザーは、ゲスト ユーザーのアクセス パネルにサインインできるようにするカスタマイズ可能な招待をすぐに受信します。
 - ディレクトリ内のゲスト ユーザーにアプリまたはグループを割り当てることができます。  
 
-![[新しいゲスト ユーザー] 招待入力ページを示すスクリーンショット](media/what-is-b2b/adding-b2b-users-admin.png)
+![[新しいゲスト ユーザー] 招待入力ページを示すスクリーンショット](media/what-is-b2b/add-a-b2b-user-to-azure-portal.png)
 
 ## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>アプリケーションとグループの所有者が自分のゲスト ユーザーを管理できるようにする
 

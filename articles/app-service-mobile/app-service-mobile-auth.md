@@ -1,23 +1,14 @@
 ---
-title: モバイル アプリを対象とした Azure App Service での認証および承認 | Microsoft Docs
-description: 特にモバイル アプリを対象とした Azure App Service の認証/承認機能の概念リファレンスと概要
-services: app-service
-documentationcenter: ''
-author: mattchenderson
-manager: erikre
-editor: ''
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
+title: 認証と権限承認
+description: 。、特にモバイル アプリを対象とした Azure App Service の認証/承認機能の概念リファレンスと概要。
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: mahender
-ms.openlocfilehash: 6017d9bc8b9a791e46fd1562660c9049ca0f72e5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2c3bc1f9563a5657d7574020fc908f23a711391c
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388904"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668529"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-for-mobile-apps"></a>モバイル アプリを対象とした Azure App Service での認証および承認
 

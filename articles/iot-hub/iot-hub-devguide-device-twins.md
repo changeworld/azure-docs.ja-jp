@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 406f6f7a3db5f63fb50242a93f021c481631adaa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4b80004a3d818e66cc2fb61f3d611bbe3e3ded92
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209718"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807036"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 
@@ -191,7 +191,7 @@ ms.locfileid: "74209718"
     deviceId | デバイスの ID |
     hubName | IoT Hub の名前 |
     operationTimestamp | 操作の [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) タイムスタンプ |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | "replaceTwin" または "updateTwin" |
 
     メッセージのシステム プロパティには、`$` シンボルが付きます。
@@ -285,7 +285,7 @@ ms.locfileid: "74209718"
 
 ## <a name="device-twin-size"></a>デバイス ツインのサイズ
 
-読み取り専用の要素を除き、IoT Hub では `tags`、`properties/desired`、`properties/reported` の各合計値に対して強制的に 8 KB のサイズ制限が適用されます。
+IoT Hub では `tags` の値に 8 KB のサイズ制限が適用され、`properties/desired` と `properties/reported` の値にそれぞれ 32 KB のサイズ制限が適用されます。 これらの合計には、読み取り専用の要素は含まれません。
 
 このサイズは、UNICODE 制御文字 (セグメント C0 と C1) を除くすべての文字と、文字列定数以外で使用されるスペースをカウントして計算されます。
 

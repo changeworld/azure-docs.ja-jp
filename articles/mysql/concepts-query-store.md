@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL のクエリ ストア
+title: クエリ ストア - Azure Database for MySQL
 description: Azure Database for MySQL のクエリ ストア機能について説明します。これは、時間の経過と共にパフォーマンスを追跡するのに役立ちます。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: c8891fc96e3e511e4127b4e114a45b5a865cf8eb
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: 4ac6e4c71b028b66ef50ac949c169a1e02a2c0e3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603022"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770844"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>クエリ ストアを使用した Azure Database for MySQL のパフォーマンスの監視
 

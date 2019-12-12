@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f1e1ae76c44e66c04baaad110b87264279dfdaf1
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 9301da884e26a65b198c885000159c383655b2d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530993"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771464"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Azure Cognitive Search でインデクサーを使用して Cosmos DB データのインデックスを作成する方法 
 
@@ -246,7 +246,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 > [!NOTE]
 > パーティション分割されたコレクションの場合、既定のドキュメント キーは Azure Cosmos DB の `_rid` プロパティですが、フィールド名の先頭にはアンダースコア文字を使用できないため、この名前は Azure Cognitive Search によって `rid` に自動的に変更されます。 また、Azure Cosmos DB の `_rid` 値には、Azure Cognitive Search キーでは無効な文字が含まれています。 そのため、`_rid` 値は Base64 でエンコードされます。
 > 
-> MongoDB コレクションの場合、`_id` プロパティ名は、Azure Cognitive Search によって `doc_id` に自動的に変更されます。  
+> MongoDB コレクションの場合、`_id` プロパティ名は、Azure Cognitive Search によって `id` に自動的に変更されます。  
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>JSON データ型と Azure Cognitive Search データ型間のマッピング
 | JSON データ型 | 互換性のあるターゲット インデックス フィールドの型 |
@@ -294,7 +294,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 
 ## <a name="indexing-changed-documents"></a>変更されたドキュメントのインデックス作成
 
-データ変更の検出ポリシーの目的は、変更されたデータ項目を効率的に識別することです。 現在、唯一サポートされているポリシーは、次に示すように、Azure Cosmos DB によって指定される `_ts` (タイムスタンプ) プロパティを使用した `High Water Mark` ポリシーです。
+データ変更の検出ポリシーの目的は、変更されたデータ項目を効率的に識別することです。 現在、唯一サポートされているポリシーは、次に示すように、Azure Cosmos DB によって指定される `_ts` (タイムスタンプ) プロパティを使用した [`HighWaterMarkChangeDetectionPolicy`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.highwatermarkchangedetectionpolicy) です。
 
     {
         "@odata.type" : "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",

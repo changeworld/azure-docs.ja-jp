@@ -1,25 +1,18 @@
 ---
-title: App Service 環境への受信トラフィックを制御する - Azure
-description: App Service 環境への受信トラフィックを制御するネットワーク セキュリティ ルールを構成する方法について説明します。
-services: app-service
-documentationcenter: ''
+title: 着信トラフィックを制御する v1
+description: App Service 環境への受信トラフィックを制御する方法について説明します。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: ccompy
-manager: erikre
-editor: ''
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: c887ae5568bfd0f72f8d90daecd95547ed7b8b7d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070402"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687390"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>App Service 環境への受信トラフィックを制御する方法
 ## <a name="overview"></a>概要

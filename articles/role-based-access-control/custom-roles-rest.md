@@ -1,6 +1,6 @@
 ---
-title: REST API を使用して Azure リソースのカスタム ロールを作成する - Azure | Microsoft Docs
-description: REST API を使用して、ロールベースのアクセス制御 (RBAC) による Azure リソースのカスタム ロールを作成する方法について説明します。 これには、カスタム ロールを一覧表示、作成、更新、削除する方法が含まれます。
+title: REST API を使用して Azure リソースのカスタムまたはアップデート ロールを作成する - Azure | Microsoft Docs
+description: REST API を使用して、Azure リソースのロールベースのアクセス制御（RBAC）でカスタムロールを一覧表示、作成、更新、または削除する方法を学習します。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4024f6fdb40c752ef61f348d15f681e81d81c08c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e5dcd7593ba0992337396bc7c05cc30351644dc
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60596689"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702980"
 ---
-# <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>REST API を使用して Azure リソースのカスタム ロールを作成する
+# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>REST API を使用して Azure リソースのカスタム ロールを作成またはアップデートする
 
-[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、REST API を使用して、カスタム ロールを作成して管理する方法について説明します。
+[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、REST API を使用してカスタムロールを一覧表示、作成、更新、または削除する方法について説明します。
 
 ## <a name="list-custom-roles"></a>カスタム ロールの一覧表示
 
@@ -54,11 +54,11 @@ ms.locfileid: "60596689"
 
 1. URI 内の *{scope}* は、ロールを一覧表示するスコープに置き換えます。
 
-    | Scope (スコープ) | Type |
+    | Scope (スコープ) | 種類 |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | サブスクリプション |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}` | Subscription |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
 
 1. *{filter}* をロールの種類に置き換えます。
 
@@ -78,11 +78,11 @@ ms.locfileid: "60596689"
 
 1. URI 内の *{scope}* は、ロールを一覧表示するスコープに置き換えます。
 
-    | Scope (スコープ) | Type |
+    | Scope (スコープ) | 種類 |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | サブスクリプション |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}` | Subscription |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
 
 1. *{filter}* をロールの表示名に置き換えます。
 
@@ -104,11 +104,11 @@ ms.locfileid: "60596689"
 
 1. URI 内の *{scope}* は、ロールを一覧表示するスコープに置き換えます。
 
-    | Scope (スコープ) | Type |
+    | Scope (スコープ) | 種類 |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | サブスクリプション |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}` | Subscription |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
 
 1. *{roleDefinitionId}* は、ロールの定義の GUID 識別子に置き換えます。
 
@@ -152,11 +152,11 @@ ms.locfileid: "60596689"
 
 1. URI 内の *{scope}* は、カスタム ロールの 1 つ目の `assignableScopes` に置き換えます。
 
-    | Scope (スコープ) | Type |
+    | Scope (スコープ) | 種類 |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | サブスクリプション |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}` | Subscription |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
 
 1. *{roleDefinitionId}* は、カスタム ロールの GUID 識別子に置き換えます。
 
@@ -217,11 +217,11 @@ ms.locfileid: "60596689"
 
 1. URI 内の *{scope}* は、カスタム ロールの 1 つ目の `assignableScopes` に置き換えます。
 
-    | Scope (スコープ) | Type |
+    | Scope (スコープ) | 種類 |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | サブスクリプション |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}` | Subscription |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
 
 1. *{roleDefinitionId}* は、カスタム ロールの GUID 識別子に置き換えます。
 
@@ -301,11 +301,11 @@ ms.locfileid: "60596689"
 
 1. URI 内の *{scope}* は、カスタム ロールを削除するスコープに置き換えます。
 
-    | Scope (スコープ) | Type |
+    | Scope (スコープ) | 種類 |
     | --- | --- |
-    | `subscriptions/{subscriptionId}` | サブスクリプション |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | リソース グループ |
-    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
+    | `subscriptions/{subscriptionId}` | Subscription |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Resource group |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | リソース |
 
 1. *{roleDefinitionId}* は、カスタム ロールの GUID 識別子に置き換えます。
 

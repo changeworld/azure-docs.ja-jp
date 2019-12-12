@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー) - Speech Service
+title: クイック スタート:パラメーターを含むカスタム コマンドを作成する (プレビュー) - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: この記事では、カスタム コマンド アプリケーションにパラメーターを追加します。
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: caa1959ec64bb3a123c60763750267b107685b82
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 50132593ce3301094ea39546f5661df06a716503
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111241"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976589"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)
 

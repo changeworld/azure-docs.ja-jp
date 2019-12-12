@@ -3,7 +3,7 @@ documentType: LandingData
 title: Virtual Machines のドキュメント
 metadata:
   document_id: na
-  title: Azure 仮想マシンのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  title: Azure 仮想マシンのドキュメント - チュートリアル、API リファレンス
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
   author: georgewallace
@@ -13,8 +13,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: gwallace
-abstract:
-  description: Azure 仮想マシンの作成方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Windows と Linux 仮想マシンや VM テンプレートを作成してデプロイする方法を紹介します。
+  description: Windows および Linux 仮想マシンを作成して Azure にデプロイする方法について説明します。
 sections:
   - title: null
     items:

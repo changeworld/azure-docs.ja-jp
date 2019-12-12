@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center での C# のエージェント ローカル構成ファイルについて | Microsoft Docs
-description: Azure Security Center での C# のエージェント ローカル構成ファイルについて説明します。
+title: C# の Azure Security Center for IoT セキュリティ エージェント ローカル構成ファイルについて | Microsoft Docs
+description: Azure Security Center for IoT セキュリティ サービスの C# のセキュリティ エージェントローカル構成ファイルについて説明します。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cc7b9f0b6e537ca3bdcbb82a357b2f2b9451fab0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600338"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664197"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>ローカル構成ファイル (C# エージェント) について
 

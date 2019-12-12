@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL でのビジネス継続性を理解する
+title: ビジネス継続性 - Azure Database for MySQL
 description: Azure Database for MySQL サービスを使用する場合のビジネス継続性 (ポイントインタイム リストア、データ センターの停止、geo リストア) について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 28cd46077e67aa48169421607cd977103da735c5
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 3f82dfd5e289b09761dbdbdc5af4da76d7c961d4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972891"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765360"
 ---
 # <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Azure Database for MySQL でのビジネス継続性を理解する
 

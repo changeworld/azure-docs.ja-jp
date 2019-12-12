@@ -1,25 +1,16 @@
 ---
-title: Azure Active Directory 認証の構成 - Azure App Service
-description: App Service アプリに対して Azure Active Directory 認証を構成する方法について説明します。
-author: cephalin
-services: app-service
-documentationcenter: ''
-manager: gwallace
-editor: ''
+title: Azure AD 認証を構成する
+description: App Service アプリの ID プロバイダーとして Azure Active Directory 認証を構成する方法を学びます。
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
-ms.service: app-service
-ms.workload: web,mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/03/2019
-ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6812f99d8433ef318eca37eb2615d43f4749e944
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b833604ce18873e22c22990a26dcbae1d9928628
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886185"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670881"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service アプリを構成する
 

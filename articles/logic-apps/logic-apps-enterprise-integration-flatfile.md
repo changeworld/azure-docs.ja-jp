@@ -1,30 +1,28 @@
 ---
-title: フラット ファイルをエンコードまたはデコードする - Azure Logic Apps | Microsoft Docs
+title: フラット ファイルのエンコードまたはデコード
 description: Azure Logic Apps と Enterprise Integration Pack を使用したエンタープライズ統合用のフラット ファイルのエンコードまたはデコード
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.date: 07/08/2016
-ms.openlocfilehash: d0ef61b94d7bd604b6c0062341224510f3048c57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53d9935f68c21238cb4f90f78e543a7ab343ced2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61467311"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792521"
 ---
 # <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用したフラット ファイルのエンコードまたはデコード
 
-企業間 (B2B) シナリオでのビジネス パートナーに送信する前に、XML の内容をエンコードする必要がある場合があります。 ロジック アプリでは、フラット ファイル エンコーディング コネクタを使用してこれを実行できます。 作成するロジック アプリは、HTTP 要求トリガー、別のアプリケーション、さらには多くの [コネクタ](../connectors/apis-list.md)の 1 つなど、さまざまなソースから XML の内容を取得できます。 Logic Apps の詳細については、[Logic Apps のドキュメント](logic-apps-overview.md "Logic Apps についての詳細情報")を参照してください。  
+企業間 (B2B) シナリオでのビジネス パートナーに送信する前に、XML の内容をエンコードする必要がある場合があります。 ロジック アプリでは、フラット ファイル エンコーディング コネクタを使用してこれを実行できます。 作成するロジック アプリは、HTTP 要求トリガー、別のアプリケーション、さらには多くの [コネクタ](../connectors/apis-list.md)の 1 つなど、さまざまなソースから XML の内容を取得できます。 Logic Apps の詳細については、[Logic Apps のドキュメント](logic-apps-overview.md "Logic Apps の詳細を見る")を参照してください。  
 
 ## <a name="create-the-flat-file-encoding-connector"></a>コネクタをエンコードするフラット ファイルの作成
 フラット ファイル エンコーディング コネクタをロジック アプリに追加するには、次の手順に従います。
 
-1. ロジック アプリを作成し、[統合アカウントにリンク](logic-apps-enterprise-integration-accounts.md "ロジック アプリへの統合アカウントのリンクについての詳細情報")します。 このアカウントには、XML データをエンコードする際に使用するスキーマが存在します。  
+1. ロジック アプリを作成し、[統合アカウントにリンク](logic-apps-enterprise-integration-accounts.md "ロジック アプリに統合アカウントをリンクする方法を学習する")します。 このアカウントには、XML データをエンコードする際に使用するスキーマが存在します。  
 1. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。  
    ![Screenshot of trigger to select](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
 1. 次の手順でフラット ファイルのエンコード アクションを追加します。
@@ -80,5 +78,5 @@ ms.locfileid: "61467311"
 ここでコネクタをテストするには、HTTP エンドポイントへの要求を作成し、要求の本文にデコードする XML の内容を含めます。  
 
 ## <a name="next-steps"></a>次の手順
-* [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
+* [Enterprise Integration Pack について詳細を確認する](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する")。  
 

@@ -1,20 +1,19 @@
 ---
 title: Apache Hadoop での Apache Sqoop - Azure HDInsight
 description: Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と Azure SQL Database の間でインポートおよびエクスポートを行う方法について説明します。
-keywords: hadoop sqoop,sqoop
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: c839aeae77d7e75fb30d82c410c331d21f5868ae
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/28/2019
+ms.openlocfilehash: 21bc903349876a76576fb742840e9899f9d94bcd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406043"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769389"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
@@ -26,54 +25,116 @@ Azure HDInsight 上の Apache Hadoop クラスターと Azure SQL Database ま�
 
 * 「[HDInsight の Hadoop での Apache Sqoop の使用](./hdinsight-use-sqoop.md)」の「[テスト環境のセットアップ](./hdinsight-use-sqoop.md#create-cluster-and-sql-database)」が完了していること。
 
-* Azure SQL データベースのクエリを実行するクライアント。 [SQL Server Management Studio](../../sql-database/sql-database-connect-query-ssms.md) または [Visual Studio Code](../../sql-database/sql-database-connect-query-vscode.md) の使用を検討してください。
-
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-## <a name="sqoop-export"></a>Sqoop のエクスポート
+* Sqoop に関する知識。 詳細については、「[OpenFOAM ユーザーガイド](https://sqoop.apache.org/docs/1.4.7/SqoopUserGuide.html)」を参照してください。
 
-Hive から SQL Server へ
+## <a name="set-up"></a>セットアップ
 
-1. SSH を使用して、HDInsight クラスターに接続します。 `CLUSTERNAME` をクラスターの名前に置き換えてから、次のコマンドを入力します。
+1. [ssh コマンド](../hdinsight-hadoop-linux-use-ssh-unix.md)を使用して、クラスターに接続します。 次のコマンドを編集して CLUSTERNAME をクラスターの名前に置き換えてから、そのコマンドを入力します。
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-2. `MYSQLSERVER` を SQL Server の名前に置き換えます。 Sqoop が SQL Database を認識できることを確認するには、開いた SSH 接続に次のコマンドを入力します。 プロンプトが表示されたら、SQL Server ログインのパスワードを入力します。 このコマンドはデータベースの一覧を返します。
+1. 使いやすくするために、変数を設定します。 `PASSWORD`、`MYSQLSERVER`、および `MYDATABASE` を関連する値に置き換え、次のコマンドを入力します。
 
     ```bash
-    sqoop list-databases --connect jdbc:sqlserver://MYSQLSERVER.database.windows.net:1433 --username sqluser -P
+    export password='PASSWORD'
+    export sqlserver="MYSQLSERVER"
+    export database="MYDATABASE"
+
+
+    export serverConnect="jdbc:sqlserver://$sqlserver.database.windows.net:1433;user=sqluser;password=$password"
+    export serverDbConnect="jdbc:sqlserver://$sqlserver.database.windows.net:1433;user=sqluser;password=$password;database=$database"
     ```
 
-3. `MYSQLSERVER` を SQL Server の名前に置き換え、`MYDATABASE` を SQL データベースの名前に置き換えます。 Hive `hivesampletable` テーブルから SQL Database 内の `mobiledata` テーブルにデータをエクスポートするには、開いた SSH 接続に次のコマンドを入力します。 プロンプトが表示されたら、SQL Server ログインのパスワードを入力します
+## <a name="sqoop-export"></a>Sqoop のエクスポート
+
+Hive から SQL Server へ
+
+1. Sqoop が SQL Database を認識できることを確認するには、開いた SSH 接続に次のコマンドを入力します。 このコマンドはデータベースの一覧を返します。
 
     ```bash
-    sqoop export --connect 'jdbc:sqlserver://MYSQLSERVER.database.windows.net:1433;database=MYDATABASE' --username sqluser -P -table 'mobiledata' --hcatalog-table hivesampletable
+    sqoop list-databases --connect $serverConnect
     ```
 
-4. データがエクスポートされたことを確認するには、SQL クライアントから次のクエリを使用して、エクスポートされたデータを表示します。
+1. 次のコマンドを入力して、指定したデータベースのテーブルのリストを表示します。
 
-    ```sql
-    SELECT COUNT(*) FROM [dbo].[mobiledata] WITH (NOLOCK);
-    SELECT TOP(25) * FROM [dbo].[mobiledata] WITH (NOLOCK);
+    ```bash
+    sqoop list-tables --connect $serverDbConnect
+    ```
+
+1. Hive `hivesampletable` テーブルから `mobiledata` SQL Database 内のテーブルにデータをエクスポートするには、開いた SSH 接続に次のコマンドを入力します。
+
+    ```bash
+    sqoop export --connect $serverDbConnect \
+    -table mobiledata \
+    --hcatalog-table hivesampletable
+    ```
+
+1. データがエクスポートされたことを確認するには、SSH 接続から、次のクエリを使用して、エクスポートされたデータを表示します。
+
+    ```bash
+    sqoop eval --connect $serverDbConnect \
+    --query "SELECT COUNT(*) from dbo.mobiledata WITH (NOLOCK)"
+
+
+    sqoop eval --connect $serverDbConnect \
+    --query "SELECT TOP(10) * from dbo.mobiledata WITH (NOLOCK)"
     ```
 
 ## <a name="sqoop-import"></a>Sqoop のインポート
 
 SQL Server から Azure Storage へ
 
-1. `MYSQLSERVER` を SQL Server の名前に置き換え、`MYDATABASE` を SQL データベースの名前に置き換えます。 開いた SSH 接続に次のコマンドを入力して、SQL Database 内の `mobiledata` テーブルから HDInsight 上の `wasb:///tutorials/usesqoop/importeddata` ディレクトリにデータをインポートします。 プロンプトが表示されたら、SQL Server ログインのパスワードを入力します。 データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。
+1. 開いた SSH 接続に次のコマンドを入力して、SQL Database 内の `mobiledata` テーブルから HDInsight 上の `wasbs:///tutorials/usesqoop/importeddata` ディレクトリにデータをインポートします。 データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://MYSQLSERVER.database.windows.net:1433;database=MYDATABASE' --username sqluser -P --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect $serverDbConnect \
+    --table mobiledata \
+    --target-dir 'wasb:///tutorials/usesqoop/importeddata' \
+    --fields-terminated-by '\t' \
+    --lines-terminated-by '\n' -m 1
     ```
 
-2. インポートが完了したら、開いた SSH 接続に次のコマンドを入力して、新しいディレクトリ内のデータを列挙します。
+1. または、Hive テーブルを指定することもできます。
 
     ```bash
-    hdfs dfs -text /tutorials/usesqoop/importeddata/part-m-00000
+    sqoop import --connect $serverDbConnect \
+    --table mobiledata \
+    --target-dir 'wasb:///tutorials/usesqoop/importeddata2' \
+    --fields-terminated-by '\t' \
+    --lines-terminated-by '\n' \
+    --create-hive-table \
+    --hive-table mobiledata_imported2 \
+    --hive-import -m 1
     ```
+
+1. インポートが完了したら、開いた SSH 接続に次のコマンドを入力して、新しいディレクトリ内のデータを列挙します。
+
+    ```bash
+    hadoop fs -tail /tutorials/usesqoop/importeddata/part-m-00000
+    ```
+
+1. [beeline](./apache-hadoop-use-hive-beeline.md) を使用して、テーブルがHiveで作成されたことを確認します。
+
+    1. 接続
+
+        ```bash
+        beeline -u 'jdbc:hive2://headnodehost:10001/;transportMode=http'
+        ```
+
+    1. 次のクエリを一度に1つずつ実行し、出力を確認します。
+
+        ```hql
+        show tables;
+        describe mobiledata_imported2;
+        SELECT COUNT(*) FROM mobiledata_imported2;
+        SELECT * FROM mobiledata_imported2 LIMIT 10;
+        ```
+
+    1. Beeline を終了するには、 `!exit`を使用します。
 
 ## <a name="limitations"></a>制限事項
 
@@ -95,7 +156,7 @@ SQL Server から Azure Storage へ
 
 ## <a name="next-steps"></a>次の手順
 
-ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
+ここでは Sqoop の使用方法を学習しました。 詳細については、次を参照してください。
 
 * [HDInsight での Apache Oozie の使用](../hdinsight-use-oozie-linux-mac.md):Oozie ワークフローで Sqoop アクションを使用します。
 * [HDInsight を使用したフライト遅延データの分析](../interactive-query/interactive-query-tutorial-analyze-flight-data.md):Interactive Query を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。

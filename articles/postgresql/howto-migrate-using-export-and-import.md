@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Single Server のインポートとエクスポートを使用してデータベースを移行する
+title: データベースの移行 - Azure Database for PostgreSQL - Single Server
 description: PostgreSQL データベースをスクリプト ファイルに抽出し、そのファイルから対象のデータベースにデータをインポートする方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 0803f56312ca9b650987c2203c4271cff21df9f8
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: f7cf5d245383b8a58f03e2e3610750866a2f4b5a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260361"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770205"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>エクスポートとインポートを使用した PostgreSQL データベースの移行
 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) を使用することで、PostgreSQL データベースをスクリプト ファイルに抽出できます。また、[psql](https://www.postgresql.org/docs/current/static/app-psql.html) を使用することで、そのファイルから対象のデータベースにデータをインポートできます。

@@ -1,5 +1,5 @@
 ---
-title: SAP アプリケーションで最適なネットワーク待ち時間を実現するための Azure 近接通信配置グループ | Microsoft Docs
+title: SAP アプリケーションの Azure 近接通信配置グループ | Microsoft Docs
 description: Azure 近接通信配置グループを使用する SAP のデプロイ シナリオについて説明します
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: deffcb81a4f66783fedc89c3e21ea46b15ad1c64
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: cef5058936a45badd700a573611c82398ca4d546
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720008"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805707"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP アプリケーションで最適なネットワーク待ち時間を実現するための Azure 近接通信配置グループ
 SAP NetWeaver または SAP S/4HANA アーキテクチャを基盤とする SAP アプリケーションは、SAP アプリケーション層と SAP データベース層の間のネットワーク待ち時間の影響を受けます。 この影響は、アプリケーション レイヤーで実行されているほとんどのビジネス ロジックの結果です。 SAP アプリケーション レイヤーはビジネス ロジックを実行するため、データベース層に対して、1 秒あたり何千回または何万回という高い頻度でクエリを実行します。 これらのクエリの性質は、ほとんどの場合単純です。 多くの場合、データベース層で 500 マイクロ秒以内で実行できます。
 
-そのようなクエリをアプリケーション層からデータベース層に送信し、その結果セットを受け取るためにネットワークで費やされる時間は、ビジネス プロセスの実行にかかる時間に大きく影響します。 ネットワーク待ち時間に対するこの影響が、SAP デプロイ プロジェクトで最適なネットワーク待ち時間を達成する必要がある理由です。 ネットワーク待ち時間を分類する方法のガイドラインについては、[SAP ノート #1100926 - FAQ:ネットワーク パフォーマンス](https://launchpad.support.sap.com/#/notes/1100926/E)に関する記事を参照してください。
+そのようなクエリをアプリケーション層からデータベース層に送信し、その結果セットを受け取るためにネットワークで費やされる時間は、ビジネス プロセスの実行にかかる時間に大きく影響します。 ネットワーク待ち時間に対するこの影響が、SAP デプロイ プロジェクトで最適なネットワーク待ち時間を達成する必要がある理由です。 ネットワーク待ち時間を分類する方法のガイドラインについては、[SAP Note #1100926 - FAQ:ネットワーク パフォーマンス](https://launchpad.support.sap.com/#/notes/1100926/E) に関する記事を参照してください。
 
 多くの Azure リージョンで、データセンターの数が増加しています。 Availability Zones の導入もこの増加をもたらすきっかけとなっています。 同時に、お客様 (特にハイエンド SAP システムのお客様) は、M シリーズ ファミリ、または HANA Large Instances でより特別な VM SKU を使用しています。 これらの Azure 仮想マシンの種類は、特定の Azure リージョン内のすべてのデータセンターで利用可能なわけではありません。 この 2 つの傾向のために、お客様は、最適範囲内でないネットワーク待ち時間を経験しています。 場合によっては、この待ち時間のために、SAP システムのパフォーマンスが最適ではなくなることがあります。
 

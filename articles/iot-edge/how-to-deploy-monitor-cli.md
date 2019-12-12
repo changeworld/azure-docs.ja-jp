@@ -1,5 +1,5 @@
 ---
-title: コマンド ラインから自動展開を作成する - Azure IoT Edge | Microsoft Docs
+title: Azure CLI を使用した大規模なモジュールの展開 - Azure IoT Edge
 description: Azure CLI 向け IoT 拡張機能を使用して、一連の IoT Edge デバイスの自動展開を作成します
 keywords: ''
 author: kgremban
@@ -9,12 +9,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 68cc82733bb264eedb96239e7353ac30224bda64
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 14c4ddd5d95abb223fb30e2ce07496e7f2773257
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457400"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666020"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 

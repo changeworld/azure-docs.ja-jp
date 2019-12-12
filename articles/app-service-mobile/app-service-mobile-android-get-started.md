@@ -1,25 +1,17 @@
 ---
-title: Azure App Service Mobile Apps で Android アプリを作成する | Microsoft Docs
-description: Android 開発向けの Azure モバイル アプリ バックエンドの使用を開始するには、このチュートリアルに従ってください。
-services: app-service\mobile
-documentationcenter: android
-author: elamalani
-manager: crdun
-editor: ''
+title: Android アプリの作成
+description: Android アプリ開発向けの Azure モバイル アプリ バックエンドの使用を開始するには、このチュートリアルに従ってください。
 ms.assetid: 355f0959-aa7f-472c-a6c7-9eecea3a34a9
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.author: emalani
-ms.openlocfilehash: 0e12017918432ff264375a9489478ac81f3e69b2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d63faf5c06e648e4bd886d6e62c35a2b451c8c44
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388928"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668598"
 ---
 # <a name="create-an-android-app"></a>Android アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

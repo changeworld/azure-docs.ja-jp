@@ -65,6 +65,7 @@ sections:
           - html: <a href="/azure/aks/tutorial-kubernetes-scale">アプリケーションと Kubernetes インフラストラクチャのスケールを変更する</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Kubernetes で実行されているアプリケーションを更新する</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">AKS クラスターをアップグレードする</a>
+          - html: <a href="/azure/architecture/reference-architectures/microservices/aks">マイクロサービス参照アーキテクチャを学習して実装する</a>
   - title: Microsoft Learn でスキルを身に付ける
     items:
       - type: list

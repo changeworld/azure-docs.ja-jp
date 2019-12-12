@@ -1,22 +1,17 @@
 ---
-title: マネージド ID 概要 - Azure App Service | Microsoft Docs
-description: Azure App Service と Azure Functions でのマネージド ID の概念と設定に関するガイドです
-services: app-service
+title: マネージド ID
+description: マネージド ID が Azure App Service と Azure Functions でどのように機能するのか、mata,マネージド ID を構成してバック エンド リソースのトークンをどのように生成するのかについて説明します。
 author: mattchenderson
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a2f6d7f881e404e9e4dbdb8087cabf25f67d561b
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 6fa8e560dc50859fc0501dde8109ddc7cbd596b8
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847320"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688632"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 

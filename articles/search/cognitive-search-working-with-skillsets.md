@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113649"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790886"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Azure Cognitive Search でのスキルセットの概念と構成
 
@@ -65,7 +65,7 @@ ms.locfileid: "74113649"
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext` は、[Shaper スキル](cognitive-search-skill-shaper.md)と[プロジェクション](knowledge-store-projection-overview.md)でのみ使用されます。 それは、複数レベルの入れ子になったオブジェクトを構築するために使用されます。 `sourceContext` を使用すると、階層型の匿名型オブジェクトを構築でき、コンテキストを使用する場合にのみ、複数のスキルが必要になります。 `sourceContext` の使用については、次のセクションで説明します。
+`sourceContext` は、スキルの入力と[プロジェクション](knowledge-store-projection-overview.md)でのみ使用されます。 それは、複数レベルの入れ子になったオブジェクトを構築するために使用されます。 場合によっては、新しいオブジェクトを作成して、それをスキルまたはプロジェクトへの入力としてナレッジストアに渡す必要があります。 エンリッチメント ノードは、エンリッチメント ツリー内の有効な JSON オブジェクトではない可能性があり、ツリー内のノードを参照すると、作成時のノードの状態のみが返されるため、エンリッチメントをスキル入力またはプロジェクションとして使用するには、適切な形式の JSON オブジェクトを作成する必要があります。 `sourceContext` を使用すると、階層型の匿名型オブジェクトを構築でき、コンテキストを使用する場合にのみ、複数のスキルが必要になります。 `sourceContext` の使用については、次のセクションで説明します。 エンリッチメントを生成したスキル出力を調べて、それがプリミティブ型ではなく有効な JSON オブジェクトであるかを確認します。
 
 ### <a name="projections"></a>プロジェクション
 

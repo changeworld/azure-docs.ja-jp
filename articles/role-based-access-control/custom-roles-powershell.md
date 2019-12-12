@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する | Microsoft Docs
-description: Azure PowerShell を使用して、ロールベースのアクセス制御 (RBAC) による Azure リソースのカスタム ロールを作成する方法について説明します。 これには、カスタム ロールを一覧表示、作成、更新、削除する方法が含まれます。
+title: Azure PowerShell を使用して Azure リソースのカスタム ロールを作成または更新する | Microsoft Docs
+description: Azure PowerShell を使用して、Azure リソースのロールベースのアクセス制御 (RBAC) でカスタム ロールを一覧表示、作成、更新、または削除する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ad1185cab2b2bd2d0fea10f21b7859fd9ab1339f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fa4ff5f35df0f541d8a7e633df024af81676e58b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158460"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703091"
 ---
-# <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する
+# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-powershell"></a>Azure PowerShell を使用して Azure リソースのカスタム ロールを作成または更新する
 
-[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure PowerShell を使用し、カスタム ロールを作成して管理する方法について説明します。
+[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure PowerShell を使用して、カスタム ロールを一覧表示、作成、更新、または削除する方法について説明します。
 
 カスタム ロールの作成方法に関するステップバイステップのチュートリアルが必要な場合は、「[チュートリアル:Azure PowerShell を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-powershell.md)」を参照してください。
 

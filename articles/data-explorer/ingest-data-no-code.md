@@ -7,12 +7,12 @@ ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 11/17/2019
-ms.openlocfilehash: 97faa445a286574aa5fc05d084d21c0740bc8a8b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173851"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995934"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>チュートリアル:Azure Data Explorer で監視データを取り込んでクエリを実行する 
 
@@ -315,10 +315,10 @@ Azure Data Explorer の Web UI を使用して、Azure Data Explorer データ�
         | mv-expand events = Records
         | where isnotempty(events.metricName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             MetricName = tostring(events.metricName),
-            Count = toint(events.count),
+            Count = toint(events['count']),
             Total = todouble(events.total),
             Minimum = todouble(events.minimum),
             Maximum = todouble(events.maximum),

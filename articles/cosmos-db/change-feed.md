@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB での Change Feed サポートの使用
 description: Azure Cosmos DB の Change Feed サポートを使用して、ドキュメントの変更を追跡し、トリガーなどのイベント ベースの処理を実行したり、キャッシュや分析システムを最新の状態に維持したりします。
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/25/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 8e6bd3dadd636127f212db0ea0c0755a6b52a087
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: eef950c4e8c4a880d331022ed60477bebce65b5d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757023"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689088"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB の変更フィード - 概要
 
@@ -33,12 +33,12 @@ Azure Cosmos DB の変更フィードにより、次の図のようにこれら�
 
 この機能は現在、次の Azure Cosmos DB API とクライアント SDK でサポートされています。
 
-| **クライアント ドライバー** | **Azure CLI** | **SQL API** | **Cassandra API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API**|**テーブル API** |
+| **クライアント ドライバー** | **Azure CLI** | **SQL API** | **Cassandra 用 Azure Cosmos DB API** | **Azure Cosmos DB の MongoDB 用 API** | **Gremlin API**|**テーブル API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | NA | はい | いいえ | いいえ | はい | いいえ |
-|Java|NA|はい|いいえ|いいえ|はい|いいえ|
-|Python|NA|はい|いいえ|いいえ|はい|いいえ|
-|Node/JS|NA|はい|いいえ|いいえ|はい|いいえ|
+| .NET | NA | はい | はい | はい | はい | いいえ |
+|Java|NA|はい|はい|はい|はい|いいえ|
+|Python|NA|はい|はい|はい|はい|いいえ|
+|Node/JS|NA|はい|はい|はい|はい|いいえ|
 
 ## <a name="change-feed-and-different-operations"></a>変更フィードとさまざまな操作
 
@@ -119,6 +119,12 @@ _etag は内部形式であり、いつでも変更され得るため、これ�
 * Azure Cosmos コンテナーのすべての論理パーティション キーで並行して変更を使用可能です。 この機能により、大規模なコンテナーの変更を複数のコンシューマーで並行処理できるようになります。
 
 * アプリケーションは、同じコンテナーに対して複数の変更フィードを同時に要求できます。 ChangeFeedOptions.StartTime を使用して、最初の始点を指定できます。 たとえば、設定した時刻に対応する継続トークンを検出する場合です。 ContinuationToken を指定している場合、StartTime 値と StartFromBeginning 値よりも優先されます。 ChangeFeedOptions.StartTime の精度は 5 秒以下です。 
+
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Cassandra と MongoDB の API の変更フィード
+
+変更フィード機能は、MongoDB API では変更ストリームとして表示され、Cassandra API では述語を含むクエリとして表示されます。 MongoDB API の実装の詳細については、[MongoDB 用の Azure Cosmos DB API の変更ストリーム](mongodb-change-streams.md)に関するページを参照してください。
+
+ネイティブ Apache Cassandra には、変更データ キャプチャ (CDC) が用意されています。CDC は、特定のテーブルに対してアーカイブのフラグを設定し、CDC ログ用に構成可能なディスク上のサイズに達すると、そのテーブルへの書き込みを拒否するメカニズムです。 Azure Cosmos DB API for Cassandra の変更フィード機能により、CQL を介して述語を使用して変更をクエリする機能が向上します。 実装の詳細については、[Cassandra 用の Azure Cosmos DB API の変更フィード](cassandra-change-feed.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

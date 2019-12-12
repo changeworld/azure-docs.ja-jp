@@ -1,26 +1,16 @@
 ---
-title: Azure App Service の Web アプリのステージング環境を設定する | Microsoft Docs
-description: Azure App Service の Web アプリのステージングされた発行を使用する方法について説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-writer: cephalin
-manager: jpconnoc
-editor: mollybos
+title: ステージング環境を設定する
+description: 非運用スロットにアプリをデプロイし、運用環境に autoswap をデプロイする方法について説明します。 信頼性を向上させ、デプロイからのアプリのダウンタイムを排除します。
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
-ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7f98ba9851216737712b6be1ec29156ba0b1a68b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 1fec6de65fade0bbb35907f9c69334e16d9193bf
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382284"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671752"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>

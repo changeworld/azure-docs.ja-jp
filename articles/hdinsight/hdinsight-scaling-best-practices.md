@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 4a1d835ebe47ec36bb839da8dcbcd107ffcb9c4c
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 11/22/2019
+ms.openlocfilehash: 15d44f95cccf15fd0f7615655f5bbac1b0c35127
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161970"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706053"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 
@@ -136,7 +136,7 @@ yarn application -kill "application_1499348398273_0003"
 
 クラスターをスケールダウンすると、HDInsight は Apache Ambari 管理インターフェイスを使用して、まず不要なワーカー ノードを削除します。これにより、それらの HDFS ブロックが他のオンライン ワーカー ノードにレプリケートされます。 その後、HDInsight によってクラスターが安全にスケールダウンされます。 スケーリング操作中は、HDFS がセーフ モードになり、スケーリングが終了すると元の状態に戻ります。 ただし、場合によっては、レプリケーション中のファイル ブロックが原因で、スケーリング操作中に HDFS がセーフ モードでスタックします。
 
-既定では、HDFS は 3 の `dfs.replication` 設定 (各ファイル ブロックの使用可能なコピーの数を制御する) で構成されます。 ファイル ブロックの各コピーは、クラスターの別々のノードに格納されます。
+既定では、HDFS は 1 の `dfs.replication` 設定 (各ファイル ブロックの使用可能なコピーの数を制御する) で構成されます。 ファイル ブロックの各コピーは、クラスターの別々のノードに格納されます。
 
 HDFS で想定されている数のブロックのコピーが使用できないことが検出されると、HDFS はセーフ モードになり、Ambari によってアラートが生成されます。 スケーリング操作中に HDFS がセーフ モードになったが、その後、レプリケーションに必要な数のノードが検出されないためにセーフ モードを終了できない場合は、そのクラスターがセーフ モードでスタックする場合があります。
 

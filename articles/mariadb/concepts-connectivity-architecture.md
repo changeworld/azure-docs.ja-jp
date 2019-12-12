@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB の接続アーキテクチャ
+title: 接続アーキテクチャ - Azure Database for MariaDB
 description: Azure Database for MariaDB サーバーの接続アーキテクチャについて説明します。
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.openlocfilehash: 5c24a89ca12c36a54a84c61c6343ce960da012c5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/02/2019
+ms.openlocfilehash: 6e2e39381e1500f86bce55726dda0286385d1674
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498073"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772894"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の接続アーキテクチャ
 この記事では、Azure Database for MariaDB 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for MariaDB インスタンスに転送されるかについて説明します。

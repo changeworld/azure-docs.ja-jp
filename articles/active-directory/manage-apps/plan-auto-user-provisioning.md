@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473335"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786420"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 
@@ -90,11 +90,11 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 
 1. ユーザー/グループは、オンプレミスの HR アプリケーション/システム (SAP など) で作成されます。 
 
-1. Azure AD Connect エージェントは、ローカル AD から Azure AD に、 ID (ユーザーおよびグループ) のスケジュールされた同期を実行します。
+1. **Azure AD Connect エージェント**は、ローカル AD から Azure AD に、 ID (ユーザーおよびグループ) のスケジュールされた同期を実行します。
 
-1. Azure AD プロビジョニング サービスは、ソース システムとターゲット システムに対して[初回サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を実行します。 
+1. **Azure AD プロビジョニング サービス**は、ソース システムとターゲット システムに対して[初回サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を実行します。 
 
-1. Azure AD プロビジョニング サービスは、初回サイクル以降に変更されたすべてのユーザーとグループについてソース システムに対してクエリを実行し、変更を[増分サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)にプッシュします。
+1. **Azure AD プロビジョニング サービス**は、初回サイクル以降に変更されたすべてのユーザーとグループについてソース システムに対してクエリを実行し、変更を[増分サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)にプッシュします。
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>クラウド専用エンタープライズの自動ユーザー プロビジョニング
 
@@ -106,22 +106,23 @@ Azure AD プロビジョニング サービスは、各アプリケーション 
 
 1. ユーザー/グループは Azure AD で作成されます。
 
-1. Azure AD プロビジョニング サービスは、ソース システムとターゲット システムに対して[初回サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を実行します。 
+1. **Azure AD プロビジョニング サービス**は、ソース システムとターゲット システムに対して[初回サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を実行します。 
 
-1. Azure AD プロビジョニング サービスは、初回サイクル以降に更新されたすべてのユーザーとグループについてソース システムに対してクエリを実行し、[増分サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を実行します。
+1. **Azure AD プロビジョニング サービス**は、初回サイクル以降に更新されたすべてのユーザーとグループについてソース システムに対してクエリを実行し、[増分サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を実行します。
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>クラウド HR アプリケーションの自動ユーザー プロビジョニング 
 
-この例では、ユーザーとグループは、Workday などのクラウド HR アプリケーションで作成されます。
+この例では、ユーザーとグループは、Workday や SuccessFactors などのクラウド人事アプリケーションで作成されます。 Azure AD プロビジョニング サービスおよび Azure AD Connect プロビジョニング エージェントが、クラウド人事アプリのテナントから AD にユーザー データをプロビジョニングします。 AD でアカウントが更新されると、Azure AD Connect を介して Azure AD と同期され、電子メール アドレスとユーザー名の属性をクラウド人事アプリのテナントに書き戻すことができます。
 
 ![画像 2](media/auto-user-provision-dp/workdayprovisioning.png)
 
-1. アカウントがクラウド HR システムに作成されます
-1. データが、Azure AD プロビジョニング サービスとプロビジョニング エージェントを介してオンプレミスの AD に送信されます。
-1. Azure AD Connect がデータを Azure AD に同期します
-1. メールとユーザー名の属性をクラウド HR アプリケーションに書き戻すことができます。
-
-ソリューションのアーキテクチャとデプロイの詳細については、「[チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)」を参照してください。
+1.  **人事チーム**は、クラウド人事アプリのテナントでトランザクションを実行します。
+2.  **Azure AD プロビジョニング サービス**は、スケジュールされたサイクルをクラウド人事アプリのテナントから実行し、AD との同期のために処理する必要がある変更を識別します。
+3.  **Azure AD プロビジョニング サービス**は、AD アカウントの作成/更新/有効化/無効化の操作を含む要求ペイロードを使用して、Azure AD プロビジョニング エージェントを呼び出します。
+4.  **Azure AD Connect プロビジョニング エージェント**は、サービス アカウントを使用して AD アカウントのデータを管理します。
+5.  **Azure AD Connect** は、デルタ同期を実行して AD 内の更新をプルします。
+6.  **AD** の更新が Azure AD と同期されます。 
+7.  **Azure AD プロビジョニング サービス**は、Azure AD からクラウド人事アプリのテナントにメール属性とユーザー名を書き戻します。
 
 ## <a name="plan-the-deployment-project"></a>デプロイ プロジェクトを計画する
 

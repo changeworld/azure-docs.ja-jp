@@ -1,5 +1,5 @@
 ---
-title: Speech SDK のログ - Speech Service
+title: Speech SDK のログ - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Speech SDK (C++、C#、Python、Objective-C、Java) でログ記録を有効にする方法について説明します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.openlocfilehash: 58f6c97ac819947f84735bc0bc4c125b43db58dc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 707a0f801a739a7a91cee19635e609305cd8f021
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075795"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805792"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Speech SDK のログの有効化
 

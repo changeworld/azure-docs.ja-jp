@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL の管理 - Azure portal
+title: サーバーの管理 - Azure portal - Azure Database for MySQL
 description: Azure portal から Azure Database for MySQL サーバーを管理する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 286209673e5743d08ddaa2fed2f507f84d622ea6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/02/2019
+ms.openlocfilehash: 553234410a7b8b798d26f0e2fee6132a2602b1cc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534038"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770511"
 ---
 # <a name="manage-an-azure-database-for-mysql-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MySQL サーバーの管理
 この記事では、Azure Database for MySQL を管理する方法について説明します。 管理タスクには、コンピューティングとストレージのスケーリング、管理者パスワードのリセット、サーバーの詳細の表示が含まれます。

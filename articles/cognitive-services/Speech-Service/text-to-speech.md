@@ -1,7 +1,7 @@
 ---
-title: テキスト読み上げ - Speech Service
+title: テキスト読み上げ - 音声サービス
 titleSuffix: Azure Cognitive Services
-description: Speech Service のテキスト読み上げ機能を使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 事前設定の音声を選択するか、独自のカスタム音声を作成します。
+description: 音声サービスのテキスト読み上げ機能を使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 事前設定の音声を選択するか、独自のカスタム音声を作成します。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f5929be58c5e2159e832005b0e0f8d01e014427e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075703"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923752"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
-Azure Speech Services のテキスト読み上げは、アプリケーション、ツール、またはデバイスがテキストを人間のような自然な合成音声に変換できるようにするサービスです。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。 詳細については、[サポートされる言語](language-support.md#text-to-speech)に関するページを参照してください。
+音声サービスのテキスト読み上げを使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。 詳細については、[サポートされる言語](language-support.md#text-to-speech)に関するページを参照してください。
 
 テキスト読み上げテクノロジを使用すると、コンテンツ作成者は、ユーザーとさまざまな方法で対話できます。 テキスト読み上げでは、ユーザーが音声を使ってコンテンツと対話できるため、アクセシビリティが向上します。 視覚障碍や学習障碍をお持ちの方も、車の運転中にナビゲーション情報が必要な方も、テキスト読み上げを使用することにより、これまでのエクスペリエンスを向上させることができます。 テキスト読み上げは、音声ボットや音声アシスタントにも役立つアドオンです。
 
@@ -125,5 +125,5 @@ Azure Speech Services のテキスト読み上げは、アプリケーション�
 
 ## <a name="next-steps"></a>次の手順
 
-- [無料の Speech Services サブスクリプションを取得する](get-started.md)
+- [無料の音声サービス サブスクリプションを取得する](get-started.md)
 - [カスタム音声フォントを作成する](how-to-customize-voice-font.md)

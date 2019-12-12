@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL サーバーでユーザーを作成する
+title: ユーザーの作成 - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL サーバーと対話する新しいユーザー アカウントを作成する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 4cd2305ed3d7f88f6c3825d8f7cdb5d81f9a0f6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: e76e63030cc8e10c857d361cca69e1d35ba8c2c1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61460186"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770477"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーでユーザーを作成する 
 この記事では、Azure Database for MySQL サーバーでユーザーを作成する方法について説明します。

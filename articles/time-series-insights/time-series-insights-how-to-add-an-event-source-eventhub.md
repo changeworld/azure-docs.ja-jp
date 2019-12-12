@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 421a4635a80c5a7a45fb14bf900c205a06789279
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: fd57231901c157ffc0d5a3d4219d827629b401f3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012618"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764183"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Time Series Insights 環境にイベント ハブ イベント ソースを追加する
 
@@ -38,13 +38,15 @@ ms.locfileid: "74012618"
 
 イベント ハブに新しいコンシューマー グループを追加するには:
 
-1. [Azure portal](https://portal.azure.com) で、イベント ハブ名前空間からご利用のイベント ハブを見つけて開きます。
+1. [Azure portal](https://portal.azure.com) で、イベント ハブ名前空間の **[概要]** ウィンドウからご利用のイベント ハブを見つけて開きます。 **[エンティティ] > [イベント ハブ]** を選択するか、 **[名前]** でインスタンスを検索します。
 
-    [![イベント ハブ名前空間を開く](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/1-event-hub-namespace.png#lightbox)
+    [![イベント ハブ名前空間を開く](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-connect-event-hub-namespace.png#lightbox)
 
-1. **[エンティティ]** で **[コンシューマー グループ]** を選択し、 **[コンシューマー グループ]** を選択します。
+1. イベント ハブ インスタンスで、 **[エンティティ] > [コンシューマー グループ]** を選択します。 次に **[+ コンシューマー グループ]** を選択し、新しいコンシューマー グループを追加します。 
 
-   [![イベント ハブ - コンシューマー グループの追加](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/2-event-hub-consumer-group.png#lightbox)
+   [![イベント ハブ - コンシューマー グループの追加](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/add-event-hub-consumer-group.png#lightbox)
+
+   それ以外の場合は、既存のコンシューマー グループを選択し、次のセクションに進みます。
 
 1. **[コンシューマー グループ]** ページで、 **[名前]** に新しい一意の値を入力します。  Time Series Insights 環境で新しいイベント ソースを作成するとき、この同じ名前を使用します。
 
@@ -56,11 +58,11 @@ ms.locfileid: "74012618"
 
 1. 既存の Time Series Insights 環境を見つけます。 左のメニューで **[すべてのリソース]** を選択し、自分の Time Series Insights 環境を選択します。
 
-1. **[環境トポロジ]** で **[イベント ソース]** を選択し、 **[追加]** を選択します。
+1. **[イベント ソース]** を選択し、 **[追加]** ボタンを選択します。
 
-   [![[イベント ソース] で [追加] ボタンを選択](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/3-new-event-source.png#lightbox)
+   [![[イベント ソース] で [追加] ボタンを選択](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-add-an-event-source.png#lightbox)
 
-1. **[イベント ソース名]** に値を入力します。この値はこの Time Series Insights 環境に一意であり、たとえば、**event-stream** とします。
+1. **[イベント ソース名]** に値を入力します。この値はこの Time Series Insights 環境に一意であり、たとえば、`Contoso-TSI-GA-Event-Hub-ES` とします。
 
 1. **[ソース]** で **[イベント ハブ]** を選択します。
 
@@ -68,11 +70,11 @@ ms.locfileid: "74012618"
 
    * サブスクリプションのいずれかに既にイベント ハブが存在する場合、 **[利用可能なサブスクリプションからのイベント ハブを使用する]** を選択します。 このオプションが最も簡単な方法となります。
 
-     [![イベント ソースのインポート オプションの選択](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/4-select-an-option.png#lightbox)
+     [![イベント ソースのインポート オプションの選択](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-event-hub-select-import-option.png#lightbox)
 
     *  **[利用可能なサブスクリプションからのイベント ハブを使用する]** オプションに必要なプロパティについて次の表で説明します。
 
-       [![サブスクリプションとイベント ハブの詳細](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/5-create-button.png#lightbox)
+       [![サブスクリプションとイベント ハブの詳細](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png)](media/time-series-insights-how-to-add-an-event-source-eventhub/tsi-configure-create-confirm.png#lightbox)
 
        | プロパティ | 説明 |
        | --- | --- |

@@ -9,30 +9,44 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/26/2019
-ms.openlocfilehash: e482cf9b5367beba00784e69c5bad88142df5225
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 278639b27d821e8d6440248a1add43bcd9de22c6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076075"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775227"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Azure HDInsight の既定および推奨のノード構成
 
 この記事では、Azure HDInsight クラスターの既定および推奨のノード構成について説明します。
 
-## <a name="default-and-recommended-node-configuration-and-virtual-machine-sizes-for-clusters"></a>クラスターの既定および推奨のノード構成と仮想マシンのサイズ
+## <a name="default-and-minimum-recommended-node-configuration-and-virtual-machine-sizes-for-clusters"></a>クラスターの既定および最小推奨のノード構成と仮想マシンのサイズ
 
-次の表は、HDInsight クラスターの既定および推奨の仮想マシン (VM) のサイズを示しています。  この情報は、HDInsight クラスターをデプロイする PowerShell または Azure CLI スクリプトを作成するときに使用する、VM のサイズを理解する必要があります。 
+次の表は、HDInsight クラスターの既定および推奨の仮想マシン (VM) のサイズを示しています。  この情報は、HDInsight クラスターをデプロイする PowerShell または Azure CLI スクリプトを作成するときに使用する、VM のサイズを理解する必要があります。
 
 クラスターで 32 以上のワーカー ノードが必要になる場合、少なくとも 8 コア、14 GB のヘッド ノードのサイズを選択してください。 
 
 データ ディスクがあるクラスターの種類は、高速書き込み機能が有効な Kafka および HBase クラスターのみです。 HDInsight は、これらのシナリオで P30 と S30 のディスク サイズをサポートしています。
 
+このドキュメントで使用されているすべての最小推奨 VM の種類の仕様を次の表にまとめます。
+
+| Size              | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
+|-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_D3_v2 | 4    | 14          | 200                    | 12000/187/93                                           | 16             / 16x500           | 4/3,000                                       |
+| Standard_D4_v2 | 8    | 28          | 400                    | 24000/375/187                                          | 32            / 32x500           | 8/6,000                                       |
+| Standard_D5_v2 | 16   | 56          | 800                    | 48000/750/375                                          | 64             / 64x500           | 8/12,000                                    |
+| Standard_D12_v2   | 4         | 28          | 200            | 12000/187/93                                         | 16 / 16x500                         | 4/3,000                     |
+| Standard_D13_v2   | 8         | 56          | 400            | 24000/375/187                                        | 32 / 32x500                       | 8/6,000                     |
+| Standard_D14_v2   | 16        | 112         | 800            | 48000/750/375                                        | 64 / 64x500                       | 8/12,000          |
+| Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2 / 2x500               | 2/250                 |
+| Standard_A2_v2  | 2         | 4           | 20             | 2000/40/20                                           | 4 / 4x500               | 2/500                 |
+| Standard_A4_v2  | 4         | 8           | 40             | 4000/80/40                                           | 8 / 8x500               | 4/1,000                     |
+
 各 VM の種類の仕様の詳細については、次のドキュメントを参照してください。
 
-* [汎用仮想マシンのサイズ:Dv2 シリーズ 1-5](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dv2-series)
-* [メモリ最適化済み仮想マシンのサイズ:Dv2 シリーズ 11-15](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-memory#dv2-series-11-15)
-* [汎用仮想マシンのサイズ:Av2 シリーズ 1-8](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#av2-series)
+* [汎用仮想マシンのサイズ:Dv2 シリーズ 1-5](../virtual-machines/linux/sizes-general.md#dv2-series)
+* [メモリ最適化済み仮想マシンのサイズ:Dv2 シリーズ 11-15](../virtual-machines/linux/sizes-memory.md#dv2-series-11-15)
+* [汎用仮想マシンのサイズ:Av2 シリーズ 1-8](../virtual-machines/linux/sizes-general.md#av2-series)
 
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>ブラジル南部と西日本を除くすべてのサポートされているリージョン
 
@@ -41,27 +55,29 @@ ms.locfileid: "70076075"
 
 | クラスターの種類 | Hadoop | hbase | Interactive Query | Storm | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
-| ヘッド: 既定の VM サイズ | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 | D3_v2 |
-| ヘッド: 推奨される VM サイズ | D13_v2、<br/>D14_v2、<br/>D5_v2 | D3_v2、<br/>D4_v2、<br/>D12_v2 | D13_v2、<br/>D14_v2 | A4_v2、<br/>A8_v2 | D12_v2、<br/>D13_v2、<br/>D14_v2 | D12_v2、<br/>D13_v2、<br/>D14_v2 | D3_v2、<br/>D4_v2、<br/>D12_v2 |
+| ヘッド: 既定の VM サイズ | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2、 <br/>D13_v2* | D12_v2 | D3_v2 |
+| ヘッド: 最小推奨 VM サイズ | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2、 <br/>D13_v2* | D12_v2 | D3_v2 |
 | worker: 既定の VM サイズ | D4_v2 | D4_v2 | D14_v2 | D3_v2 | D13_v2 | D4_v2 | 4 D12_v2 (ブローカーあたり 2 S30 ディスク) |
-| worker: 推奨される VM サイズ | D5_v2、<br>D12_v2、<br/>D13_v2 | D3_v2、<br/>D4_v2、<br/>D13_v2 | D13_v2、<br/>D14_v2 | D3_v2<br/>D4_v2、<br/>D12_v2 | D12_v2、<br>D13_v2、<br>D14_v2 | D4_v2、<br/>D12_v2、<br>D13_v2、<br>D14_v2 | D3_v2、<br/>D4_v2、<br/>DS3_v2、<br/>DS4_v2 |
+| ワーカー: 最小推奨 VM サイズ | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 | D3_v2 |
 | ZooKeeper: 既定の VM サイズ |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 | A4_v2 |
-| ZooKeeper: 推奨される VM サイズ |  | A4_v2、 <br/>A8_v2、 <br/>A2m_v2 | A4_v2、<br/>A8_v2、<br/>A2m_v2 | A4_v2、<br/>A2_v2、<br/>A8_v2 |  | A2_v2 | A4_v2、<br/> A8_v2、<br/>A2m_v2 |
+| ZooKeeper: 最小推奨 VM サイズ |  | A4_v2 | A4_v2 | A2_v2 |  | A2_v2 | A4_v2 |
 | ML サービス: 既定の VM サイズ |  |  |  |  |  | D4_v2 |  |
-| ML サービス: 推奨される VM サイズ |  |  |  |  |  | D4_v2、<br/> D12_v2、<br/> D13_v2、<br/>D14_v2 |  |
+| ML サービス: 最小推奨 VM サイズ |  |  |  |  |  | D4_v2 |  |
+
+\* = Spark Enterprise セキュリティ パッケージ (ESP) クラスターの VM サイズ
 
 ### <a name="brazil-south-and-japan-west-only"></a>ブラジル南部および西日本のみ
 
 | クラスターの種類 | Hadoop | hbase | Interactive Query | Storm | Spark | ML サービス |
 |---|---|---|---|---|---|---|
 | ヘッド: 既定の VM サイズ | D12 | D12 | D13 | A4_v2 | D12 | D12 |
-| ヘッド: 推奨される VM サイズ | D5_v2、<br/> D13_v2、<br/> D14_v2 | D3_v2、<br/> D4_v2、<br/> D12_v2 | D13_v2、<br/> D14_v2 | A4_v2、<br/> A8_v2 | D12_v2、<br/> D13_v2、<br/> D14_v2 | D12_v2、<br/> D13_v2、<br/> D14_v2 |
+| ヘッド: 最小推奨 VM サイズ | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |
 | worker: 既定の VM サイズ | D4 | D4 | D14 | D3 | D13 | D4 |
-| worker: 推奨される VM サイズ | D5_v2、<br/> D12_v2、<br/> D13_v2 | D3_v2、<br/> D4_v2、<br/> D13_v2 | D13_v2、<br/> D14_v2 | D3_v2、<br/> D4_v2、<br/> D12_v2 | D12_v2、<br/> D13_v2、<br/> D14_v2 | D4_v2、<br/> D12_v2、<br/> D13_v2、<br/> D14_v2 |
+| ワーカー: 最小推奨 VM サイズ | D5_v2 | D3_v2 | D13_v2 | D3_v2 | D12_v2 | D4_v2 |
 | ZooKeeper: 既定の VM サイズ |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
-| ZooKeeper: 推奨される VM サイズ |  | A4_v2、<br/> A8_v2、<br/> A2m_v2 | A4_v2、<br/> A8_v2、<br/> A2m_v2 | A4_v2、<br/> A8_v2 |  | A2_v2 |
+| ZooKeeper: 最小推奨 VM サイズ |  | A4_v2 | A4_v2 | A4_v2 |  | A2_v2 |
 | ML サービス: 既定の VM サイズ |  |  |  |  |  | D4 |
-| ML サービス: 推奨される VM サイズ |  |  |  |  |  | D4_v2、<br/> D12_v2、<br/> D13_v2、<br/> D14_v2 |
+| ML サービス: 最小推奨 VM サイズ |  |  |  |  |  | D4_v2 |
 
 > [!NOTE]
 > - ヘッドは、Storm クラスター タイプでは *Nimbus* と呼ばれます。

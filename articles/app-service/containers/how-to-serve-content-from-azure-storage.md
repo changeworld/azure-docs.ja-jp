@@ -1,23 +1,20 @@
 ---
-title: Linux 上の Azure Storage からコンテンツを提供する - App Service
-description: Linux 上の Azure App Service 内の Azure Storage を構成してコンテンツを提供する方法を説明します。
-author: msangapu
-manager: jeconnoc
-ms.service: app-service
-ms.workload: web
+title: Linux 上にカスタムストレージコンテナーをアタッチする
+description: Azure App Service で Linux コンテナーにカスタムネットワーク共有をアタッチする方法を学びます。 アプリ間でのファイルの共有、静的コンテンツのリモート管理、ローカルでのアクセスなどを行います。
+author: msangapu-msft
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu
-ms.openlocfilehash: 97c03ad294bba1f8a0285fff4595991ca0acc8b5
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 00c60edeefa5fd8d1304aa5fc301a3b0304f5ca3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018269"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671786"
 ---
-# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Linux 上の App Service 内の Azure Storage からコンテンツを提供する
+# <a name="attach-azure-storage-containers-to-linux-containers"></a>Azure Storage コンテナーを Linux コンテナーにアタッチする
 
-このガイドでは、[Azure Storage](/azure/storage/common/storage-introduction) を使用して Linux 上の App Service 内の静的コンテンツを提供する方法を示します。 利点としては、セキュリティで保護されたコンテンツ、コンテンツの移植性、永続ストレージ、複数のアプリへのアクセス、複数の転送方法などがあります。
+このガイドでは、[Azure Storage](/azure/storage/common/storage-introduction)を使用して、Linux 上の App Service に、ネットワーク共有をアタッチする方法について説明します。 利点としては、セキュリティで保護されたコンテンツ、コンテンツの移植性、永続ストレージ、複数のアプリへのアクセス、複数の転送方法などがあります。
 
 ## <a name="prerequisites"></a>前提条件
 

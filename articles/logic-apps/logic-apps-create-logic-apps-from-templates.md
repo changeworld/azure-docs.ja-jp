@@ -1,21 +1,19 @@
 ---
-title: テンプレートからワークフローを作成する - Azure Logic Apps | Microsoft Docs
+title: テンプレートからワークフローを作成する
 description: Azure Logic Apps でロジック アプリ テンプレートを使用してすばやくワークフローを作成します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 134a8f9625b45a8196ebd47f10286093f6ba0d46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7033185ac3a5411568195d788242a674b569183
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459699"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793183"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>事前作成済みテンプレートを使用したロジック アプリ ワークフローの作成
 
@@ -36,7 +34,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
 
 ## <a name="create-logic-apps-from-templates"></a>テンプレートからのロジック アプリの作成
 
-1. [Azure Portal](https://portal.azure.com "Azure Portal") にまだサインインしていない場合は、サインインします。
+1. まだサインインしていない場合は、[Azure portal](https://portal.azure.com "Azure ポータル") にサインインします。
 
 2. Azure のメイン メニューで、 **[リソースの作成]**  >  **[Enterprise Integration]**  >  **[Logic App]** の順に選択します。
 
@@ -51,7 +49,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
    | **名前** | <*ロジック アプリ名*> | 一意のロジック アプリ名を指定します。 | 
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションを選択します。 | 
    | **リソース グループ** | <*Azure リソース グループ名*> | このロジック アプリ用の [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成するか選択し、このアプリに関連するすべてのリソースを整理します。 | 
-   | **場所** | <*Azure データセンターのリージョン*> | ロジック アプリをデプロイするデータセンターのリージョンを選びます (たとえば米国西部)。 | 
+   | **Location** | <*Azure データセンターのリージョン*> | ロジック アプリをデプロイするデータセンターのリージョンを選びます (たとえば米国西部)。 | 
    | **Log Analytics** | **[オフ]** (既定値) または **[オン]** | [Azure Monitor ログ](../log-analytics/log-analytics-overview.md)を通じてロジック アプリの[診断ログ](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app)を有効にします。 Log Analytics ワークスペースが既にあることが要件です。 | 
    |||| 
 
@@ -101,7 +99,7 @@ Azure サブスクリプションがない場合は、始める前に[無料の 
 
 ## <a name="update-logic-apps-with-templates"></a>テンプレートでロジック アプリを更新する
 
-1. [Azure Portal](https://portal.azure.com "Azure Portal") で、ロジック アプリを探して Logic App デザイナーで開きます。
+1. [Azure portal](https://portal.azure.com "Azure ポータル") のロジック アプリ デザイナーでロジック アプリを探して開きます。
 
 2. デザイナーのツール バーで、 **[テンプレート]** を選択します。 そうすると、保存していない変更が破棄されるので、続行を確認する警告メッセージが表示されます。 確認するには、 **[OK]** を選びます。 例:
 
