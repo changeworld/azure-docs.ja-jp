@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: eb5c6ef9b342b149851f907b7bc81370327b12ca
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 64d70390b3563e17bbe0c70ed426dcda81b50198
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689016"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872742"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Java アプリを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "74689016"
 Cloud Shell プロンプトで次の Maven コマンドを実行して、`helloworld` という名前の新しいアプリを作成します。
 
 ```bash
-mvn archetype:generate -DgroupId=example.demo -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
 ```
 
 ## <a name="configure-the-maven-plugin"></a>Maven プラグインを構成する

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 85022d52c9513e53da31cc3c962f3a54dd538371
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f5929be58c5e2159e832005b0e0f8d01e014427e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815476"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923752"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 

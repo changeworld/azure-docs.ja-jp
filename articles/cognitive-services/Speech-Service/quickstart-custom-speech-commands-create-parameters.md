@@ -8,14 +8,14 @@ manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: d1c709beb225dff0ae616a23eb67eb57f4643ac9
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 50132593ce3301094ea39546f5661df06a716503
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812766"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976589"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)
 
