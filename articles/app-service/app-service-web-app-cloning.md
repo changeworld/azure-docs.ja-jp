@@ -121,7 +121,7 @@ $destapp = New-AzWebApp -ResourceGroupName <Resource group name> -Name dest-weba
 * Kudu 拡張機能は複製されない
 * TiP ルールは複製されない
 * データベースの内容は複製されない
-* 異なるスケール ユニットにクローニングした場合に送信 IP アドレスは変更されない
+* 異なるスケール ユニットにクローニングした場合に送信 IP アドレスは変更される
 * Linux アプリでは利用できない
 
 ### <a name="references"></a>参照
