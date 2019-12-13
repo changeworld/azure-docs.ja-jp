@@ -64,7 +64,7 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 1. ソース IP または IP 範囲を設定し、宛先を Application Gateway サブネット全体、または構成された特定のプライベート フロントエンド IP への着信トラフィックを許可します。 NSG はパブリック IP では機能しません。
 2. [バックエンドの正常性通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)のために、Application Gateway v1 SKU の場合はポート 65503 から 65534 への、 v2 SKU の場合はポート 65200 から 65535 への、すべてのソースからの着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
 3. [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)で Azure Load Balancer プローブ (*AzureLoadBalancer* タグ) と仮想ネットワーク通信 (*VirtualNetwork* タグ) を受信方向で許可します。
-4. 「すべて拒否」のルールを使用して、その他すべての着信トラフィックをブロックします。
+4. 「すべて拒否」の規則を使用して、その他すべての着信トラフィックをブロックします。
 5. インターネットのすべての宛先への送信トラフィックを許可します。
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネットでサポートされるユーザー定義ルート
