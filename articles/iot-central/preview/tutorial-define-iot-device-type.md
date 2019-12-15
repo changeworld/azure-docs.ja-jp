@@ -3,18 +3,18 @@ title: Azure IoT Central で新しい IoT デバイスの種類を定義する |
 description: このチュートリアルでは、ビルダーとして、Azure IoT Central アプリケーションで新しい Azure IoT デバイス テンプレートを作成する方法を示します。 種類に対して、テレメトリ、状態、プロパティ、コマンドを定義します。
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 177caaa5400c10ed8de80b04a3305dce7cae77d6
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2127bec4d5fdf0d3bf76fb31c548eab98f910d42
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74407018"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979021"
 ---
 # <a name="tutorial-define-a-new-iot-device-type-in-your-azure-iot-central-application-preview-features"></a>チュートリアル:Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する (プレビュー機能)
 
@@ -355,7 +355,7 @@ IoT デバイスは IoT ゲートウェイ デバイスに接続できます。
 
 デバイス テンプレートにはクラウド プロパティを含めることができます。 クラウド プロパティは IoT Central アプリケーション内のみに存在しており、デバイスとの間で送受信されることはありません。
 
-1. **[クラウド プロパティ]**  >  **[+ クラウド プロパティの追加]** の順に選択します。 下表の情報に従って、デバイス テンプレートにクラウド プロパティを追加します。
+1. **[クラウド プロパティ]**  >  **[+ クラウド プロパティの追加]** を選択します。 下表の情報に従って、デバイス テンプレートにクラウド プロパティを追加します。
 
     | Display name      | セマンティックの種類 | スキーマ |
     | ----------------- | ------------- | ------ |
@@ -399,7 +399,7 @@ IoT デバイスは IoT ゲートウェイ デバイスに接続できます。
 
 3. **[Publish a Device Template]\(デバイス テンプレートの発行\)** ダイアログで、 **[Publish]\(発行\)** を選択します。
 
-デバイス テンプレートを公開すると、 **[デバイス]** ページに表示され、オペレーターが確認できるようになります。 公開済みのデバイス テンプレートで、新しいバージョンを作成せずにデバイス機能モデルを編集することはできません。 ただし、発行されたデバイス テンプレートで、クラウド プロパティ、カスタマイズ、およびビューを更新することができます。 これらの更新によって新しいバージョンが作成されることはありません。 変更完了後に **[公開]** を選択すると、変更内容がオペレーターにプッシュされます。
+デバイス テンプレートを公開すると、 **[デバイス]** ページに表示され、オペレーターが確認できるようになります。 公開済みのデバイス テンプレートで、新しいバージョンを作成せずにデバイス機能モデルを編集することはできません。 ただし、発行されたデバイス テンプレートで、クラウド プロパティ、カスタマイズ、およびビューを更新できます。 これらの更新によって新しいバージョンが作成されることはありません。 変更完了後に **[公開]** を選択すると、変更内容がオペレーターにプッシュされます。
 
 ## <a name="create-a-gateway-simulated-device"></a>ゲートウェイのシミュレートされたデバイスを作成する
 

@@ -1,20 +1,19 @@
 ---
-title: メッセージをグループとしてバッチ処理する - Azure Logic Apps
+title: メッセージをグループとしてバッチ処理する
 description: Azure Logic Apps でメッセージをバッチとして送受信する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, jonfan, LADocs
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: b56a50fceec8ac6be966c0c58a82e94e0c977143
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 813c625fc72fa7c1440b5d1b9147af9a44c2260f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680435"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791562"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Azure Logic Apps でのメッセージの送信、受信、バッチ処理
 
@@ -118,7 +117,7 @@ ms.locfileid: "72680435"
 
      ![[本文] で [メッセージ ID] を選択する](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
 
-7.  ロジック アプリを保存し、 バッチ受信アプリの作成は以上です。
+7.  ロジック アプリを保存します。 バッチ受信アプリの作成は以上です。
 
     ![ロジック アプリを保存する](./media/logic-apps-batch-process-send-receive-messages/save-batch-receiver-logic-app.png)
 
@@ -206,7 +205,7 @@ ms.locfileid: "72680435"
       この **rand** 関数は 1 から 5 の間の数字を生成します。 
       これにより、この式が動的に設定した 5 つの番号のパーティションにこのバッチが分割されます。
 
-5. ロジック アプリを保存し、 送信ロジック アプリは次の例のようになります。
+5. ロジック アプリを保存します。 送信ロジック アプリは次の例のようになります。
 
    ![送信ロジック アプリを保存する](./media/logic-apps-batch-process-send-receive-messages/batch-sender-finished.png)
 

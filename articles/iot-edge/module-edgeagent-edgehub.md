@@ -1,5 +1,5 @@
 ---
-title: EdgeAgent および EdgeHub の推奨されるプロパティのリファレンス - Azure IoT Edge | Microsoft Docs
+title: エージェントとハブのモジュール ツインのプロパティ - Azure IoT Edge
 description: edgeAgent および edgeHub モジュール ツインの特定のプロパティとその値を確認します。
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1ab45a6bde9ead69a7ea23dd095de84b8ff01334
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 731c51894126a6de75c9fc25e4e7bdb3dfa4dd03
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456693"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665799"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge エージェントと IoT Edge ハブのモジュール ツインのプロパティ
 

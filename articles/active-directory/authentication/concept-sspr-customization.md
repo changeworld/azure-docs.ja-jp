@@ -1,22 +1,22 @@
 ---
-title: Azure AD セルフサービスによるパスワード リセットをカスタマイズする - Azure Active Directory
+title: セルフサービスによるパスワード リセットのカスタマイズ - Azure Active Directory
 description: Azure AD のセルフサービスによるパスワード リセットのカスタマイズ オプション
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/30/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 527dd99f122ec70cc47305947a5cbce3207b9664
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 039b514fe70da0e300e74bbc98a3a0f4e9ea342c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666298"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848597"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットのための Azure AD 機能のカスタマイズ
 

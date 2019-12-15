@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 0d3cbe8c3d2d7931e3e4cc052eedc844a296ccf0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099752"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775779"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
@@ -551,9 +551,11 @@ az group deployment create \
 >
 > メトリック アラートはターゲット リソースと異なるリソース グループに作成することができますが､ターゲット リソースと同じリソース グループを使用することをお勧めします｡
 
-## <a name="template-for-a-more-advanced-static-threshold-metric-alert"></a>高度な静的メトリック アラートのテンプレート
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>複数の条件を監視する静的なしきい値メトリック アラートのテンプレート
 
-新しいメトリック アラートは､多次元メトリックでのアラートをサポートするばかりでなく､複数の基準もサポートしています｡ 次のテンプレートを使用して､多次元メトリックに高度なメトリック アラートを作成し､複数の条件を指定することができます｡
+新しいメトリック アラートは､多次元メトリックでのアラートをサポートするばかりでなく､複数の基準もサポートしています｡ 次のテンプレートを使用して､多次元メトリックに高度なメトリック アラート ルールを作成し､複数の条件を指定することができます｡
+
+アラート ルールに複数の条件が含まれている場合、ディメンションの使用は各条件内のディメンションごとに 1 つの値に制限されることに注意してください。
 
 このチュートリアルでは､以下の JSON を advancedstaticmetricalert.json として保存します｡
 
@@ -757,7 +759,7 @@ az group deployment create \
 ```
 
 
-メトリック アラートはテンプレート､パラメーター ファイルは現在の作業ディレクトリから PowerShell か Azure CLI を使用して作成できます｡
+メトリック アラートはテンプレートを使用して作成でき､パラメーター ファイルは現在の作業ディレクトリから PowerShell または Azure CLI を使用して作成できます｡
 
 Azure PowerShell の使用
 ```powershell
@@ -784,13 +786,243 @@ az group deployment create \
 
 >[!NOTE]
 >
-> メトリック アラートはターゲット リソースと異なるリソース グループに作成することができますが､ターゲット リソースと同じリソース グループを使用することをお勧めします｡
+> アラート ルールに複数の条件が含まれている場合、ディメンションの使用は各条件内のディメンションごとに 1 つの値に制限されます。
 
-## <a name="template-for-a-more-advanced-dynamic-thresholds-metric-alert"></a>高度な動的しきい値メトリック アラートのテンプレート
+## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>複数のディメンションを監視する静的なしきい値メトリック アラートのテンプレート
 
-次のテンプレートを使用して､多次元メトリックに高度な動的しきい値メトリック アラートを作成することができます｡ 複数の条件は現在サポートされていません。
+次のテンプレートを使用して､ディメンション メトリックに静的なメトリック アラート ルールを作成することができます｡
 
-動的しきい値アラート ルールによって、一度に数百のメトリック シリーズ (異なる種類でも) のカスタマイズされたしきい値を作成できます。これにより、管理するアラートが少なくなります。
+1 つのアラート ルールで、複数のメトリック時系列を一度に監視できます。これにより、管理するアラート ルールが少なくなります。
+
+次の例では、アラート ルールによって、**Transactions** メトリックの **ResponseType** と **ApiName** ディメンションのディメンション値の組み合わせが監視されます。
+1. **ResponseType** - "\*" ワイルド カードを使用することは、**ResponseType** ディメンションの各値 (将来の値を含む) について、異なる時系列が個別に監視されることを意味します。
+2. **ApiName** - **GetBlob** および **PutBlob** ディメンション値に対してのみ異なる時系列が監視されます。
+
+たとえば、このアラート ルールによって監視される可能性のある時系列のいくつかを次に示します。
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
+
+このチュートリアルでは､以下の JSON を multidimensionalstaticmetricalert.json として保存します｡
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "alertDescription": {
+            "type": "string",
+            "defaultValue": "This is a metric alert",
+            "metadata": {
+                "description": "Description of alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 3,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "isEnabled": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "resourceId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Resource ID of the resource emitting the metric that will be used for the comparison."
+            }
+        },
+        "criterion":{
+            "type": "object",
+            "metadata": {
+                "description": "Criterion includes metric name, dimension values, threshold and an operator. The alert rule fires when ALL criteria are met"
+            }
+        },
+        "windowSize": {
+            "type": "string",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
+            }
+        },
+        "evaluationFrequency": {
+            "type": "string",
+            "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
+            "metadata": {
+                "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": { 
+        "criteria": "[array(parameters('criterion'))]"
+     },
+    "resources": [
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/metricAlerts",
+            "location": "global",
+            "apiVersion": "2018-03-01",
+            "tags": {},
+            "properties": {
+                "description": "[parameters('alertDescription')]",
+                "severity": "[parameters('alertSeverity')]",
+                "enabled": "[parameters('isEnabled')]",
+                "scopes": ["[parameters('resourceId')]"],
+                "evaluationFrequency":"[parameters('evaluationFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "allOf": "[variables('criteria')]"
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[parameters('actionGroupId')]"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+上記のテンプレートは､以下に示すパラメーター ファイルと共に使用することができます｡ 
+
+このチュートリアルでは､以下の JSON を multidimensionalstaticmetricalert.parameters.json として保存および変更します｡
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "value": "New multi-dimensional metric alert rule (replace with your alert name)"
+        },
+        "alertDescription": {
+            "value": "New multi-dimensional metric alert rule created via template (replace with your alert description)"
+        },
+        "alertSeverity": {
+            "value":3
+        },
+        "isEnabled": {
+            "value": true
+        },
+        "resourceId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
+        },
+        "criterion": {
+            "value": {
+                    "name": "Criterion",
+                    "metricName": "Transactions",
+                    "dimensions": [
+                        {
+                            "name":"ResponseType",
+                            "operator": "Include",
+                            "values": ["*"]
+                        },
+                        {
+                "name":"ApiName",
+                            "operator": "Include",
+                            "values": ["GetBlob", "PutBlob"]    
+                        }
+                    ],
+                    "operator": "GreaterThan",
+                    "threshold": "5",
+                    "timeAggregation": "Total"
+                }
+        },
+        "actionGroupId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
+        }
+    }
+}
+```
+
+
+メトリック アラートはテンプレートを使用して作成でき､パラメーター ファイルは現在の作業ディレクトリから PowerShell または Azure CLI を使用して作成できます｡
+
+Azure PowerShell の使用
+```powershell
+Connect-AzAccount
+
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
+ 
+New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupofTargetResource `
+  -TemplateFile multidimensionalstaticmetricalert.json -TemplateParameterFile multidimensionalstaticmetricalert.parameters.json
+```
+
+
+
+Azure CLI の使用
+```azurecli
+az login
+
+az group deployment create \
+    --name AlertDeployment \
+    --resource-group ResourceGroupofTargetResource \
+    --template-file multidimensionalstaticmetricalert.json \
+    --parameters @multidimensionalstaticmetricalert.parameters.json
+```
+
+
+## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>複数のディメンションを監視する動的しきい値メトリック アラートのテンプレート
+
+次のテンプレートを使用して､多次元メトリックに高度な動的しきい値メトリック アラート ルールを作成することができます｡
+
+1 つの動的しきい値アラート ルールによって、一度に数百のメトリック時系列 (異なる種類でも) のカスタマイズされたしきい値を作成できます。これにより、管理するアラートが少なくなります。
+
+次の例では、アラート ルールによって、**Transactions** メトリックの **ResponseType** と **ApiName** ディメンションのディメンション値の組み合わせが監視されます。
+1. **ResponseType** - **ResponseType** ディメンションの各値 (将来の値を含む) について、異なる時系列が個別に監視されます。
+2. **ApiName** - **GetBlob** および **PutBlob** ディメンション値に対してのみ異なる時系列が監視されます。
+
+たとえば、このアラート ルールによって監視される可能性のある時系列のいくつかを次に示します。
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
 
 このチュートリアルでは､以下の JSON を advanceddynamicmetricalert.json として保存します｡
 
@@ -936,7 +1168,7 @@ az group deployment create \
         "resourceId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
         },
-        "criterion1": {
+        "criterion": {
             "value": {
                     "criterionType": "DynamicThresholdCriterion",
                     "name": "1st criterion",
@@ -945,12 +1177,12 @@ az group deployment create \
                         {
                             "name":"ResponseType",
                             "operator": "Include",
-                            "values": ["Success"]
+                            "values": ["*"]
                         },
                         {
                             "name":"ApiName",
                             "operator": "Include",
-                            "values": ["GetBlob"]
+                            "values": ["GetBlob", "PutBlob"]
                         }
                     ],
                     "operator": "GreaterOrLessThan",
@@ -961,7 +1193,7 @@ az group deployment create \
                     },
                     "timeAggregation": "Total"
                 }
-        }
+        },
         "actionGroupId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
         }
@@ -970,7 +1202,7 @@ az group deployment create \
 ```
 
 
-メトリック アラートはテンプレート､パラメーター ファイルは現在の作業ディレクトリから PowerShell か Azure CLI を使用して作成できます｡
+メトリック アラートはテンプレートを使用して作成でき､パラメーター ファイルは現在の作業ディレクトリから PowerShell または Azure CLI を使用して作成できます｡
 
 Azure PowerShell の使用
 ```powershell
@@ -997,11 +1229,11 @@ az group deployment create \
 
 >[!NOTE]
 >
-> メトリック アラートはターゲット リソースと異なるリソース グループに作成することができますが､ターゲット リソースと同じリソース グループを使用することをお勧めします｡
+> 動的しきい値を使用するメトリック アラート ルールでは、複数の条件が現在サポートされていません。
 
-## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>複数のリソースを監視するメトリック アラートのテンプレート
+## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>複数のリソースを監視するメトリック アラートのテンプレート
 
-前のセクションでは、1 つのリソースを監視するメトリック アラートを作成する Azure Resource Manager テンプレートのサンプルについて説明しました。 Azure Monitor は、1 つのメトリック アラート ルールによる複数リソースの監視をサポートするようになりました。 現在、この機能は Azure パブリック クラウド内でのみサポートされており、仮想マシンと Databox Edge デバイス専用です。
+前のセクションでは、1 つのリソースを監視するメトリック アラートを作成する Azure Resource Manager テンプレートのサンプルについて説明しました。 Azure Monitor は、1 つのメトリック アラート ルールによる複数リソースの監視をサポートするようになりました。 現在、この機能は Azure パブリック クラウド内でのみサポートされており、仮想マシン、SQL Database、SQL エラスティック プール、および Databox Edge デバイス専用です。
 
 動的しきい値アラート ルールは、一度に数百のメトリック シリーズ (異なる種類でも) のカスタマイズされたしきい値を作成するためにも役立つことがあります。これにより、管理するアラートが少なくなります。
 
@@ -1836,6 +2068,7 @@ az group deployment create \
             "type": "string",
             "defaultValue": "PT1M",
             "allowedValues": [
+                "PT1M",
                 "PT5M",
                 "PT15M",
                 "PT30M",

@@ -1,5 +1,5 @@
 ---
-title: REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する
+title: REST API を使用して Azure Monitor メトリック データベースにメトリックを送信する
 description: REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a19b59c758f31ff1ef3416b59031202193d50522
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253863"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285947"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する
 

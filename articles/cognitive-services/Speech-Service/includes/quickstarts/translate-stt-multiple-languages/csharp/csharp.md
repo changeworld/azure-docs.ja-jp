@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を複数の言語に翻訳する、C# - Speech Service
+title: クイック スタート:音声を複数の言語に翻訳する、C# - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 11/19/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d75bba24a0dc17e547cbd8a69661dd4a5765097
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5ed9ed4dc39725644c7ed58575e33f5ff370643b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260785"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981489"
 ---
 **ターゲット環境を選択してください**
 

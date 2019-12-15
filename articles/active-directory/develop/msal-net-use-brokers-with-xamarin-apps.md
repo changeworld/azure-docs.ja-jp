@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e71e9ef72e7b6caaa3894bb30c6e7e9cf762232a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f2ae0d79076a0137b3756721675267d89990bf5a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802717"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554039"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Microsoft Intune ポータル サイトを使用する
 
@@ -142,7 +142,7 @@ MSAL は、`–canOpenURL:` を使用してブローカーがデバイスにイ�
 ```
 
 ### <a name="step-6-register-your-redirect-uri-in-the-application-portal"></a>手順 6:アプリケーション ポータルでリダイレクト URI を登録する
-ブローカーを使用すると、リダイレクト URI に追加の要件が追加されます。 リダイレクト URI は次の形式にする_必要_があります。
+ブローカーを使用すると、リダイレクト URI に追加の要件が追加されます。 リダイレクト URI は次の形式にする _必要_ があります。
 ```CSharp
 $"msauth.{BundleId}://auth"
 ```
@@ -180,7 +180,9 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 ## <a name="brokered-authentication-for-android"></a>Android のブローカー認証
 
-Android では、ブローカー サポートは利用できません。
+現時点で、MSAL.NET では Xamarin.iOS プラットフォームのみがサポートされています。 Xamarin.Android プラットフォームのブローカーはまだサポートされていません。
+
+MSAL Android ネイティブ ライブラリでは既にサポートされています。 詳細については「[Android での仲介型認証](brokered-auth.md)」を参照してください
 
 ## <a name="next-steps"></a>次の手順
 

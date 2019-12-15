@@ -3,17 +3,17 @@ title: Azure Automation でモジュールを管理する
 description: この記事では、Azure Automation でモジュールを管理する方法について説明します
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 06/05/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 492dd182c782b0f6375c2f857cfa4921b065c546
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231589"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786471"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
@@ -32,6 +32,14 @@ Automation アカウントにモジュールをインポートする方法は複
 
 ```azurepowershell-interactive
 New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
+```
+
+同じコマンドレットを使用して、PowerShell ギャラリーからモジュールを直接インポートすることもできます。 **ModuleName** と **ModuleVersion** を [PowerShell ギャラリー](https://www.powershellgallery.com)から必ず取得してください。
+
+```azurepowershell-interactive
+$moduleName = <ModuleName>
+$moduleVersion = <ModuleVersion>
+New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
 ```
 
 ### <a name="azure-portal"></a>Azure ポータル
@@ -69,6 +77,10 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 ## <a name="internal-cmdlets"></a>内部コマンドレット
 
 以下に、すべての Automation アカウントにインポートされる内部 `Orchestrator.AssetManagement.Cmdlets` モジュール内のコマンドレットの一覧を示します。 これらのコマンドレットは、Runbook および DSC 構成でアクセスでき、Automation アカウント内のアセットを操作できるようにします。 さらに、内部コマンドレットは、暗号化された **[変数]** 値、 **[資格情報]** 、および暗号化された **[接続]** フィールドからシークレットを取得できるようにします。 Azure PowerShell コマンドレットはこれらのシークレットを取得できません。 これらのコマンドレットでは、それを使用するとき (実行アカウントを使用して Azure に対して認証するときなど) に Azure に暗黙的に接続する必要はありません。
+
+>[!NOTE]
+>これらの内部コマンドレットは、Hybrid Runbook Worker では使用できません。Azure で実行されている Runbook からのみアクセスできます。 コンピューター上で直接、または環境内のリソースに対して実行される Runbook の場合、対応する [AzureRM.Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) または [Az モジュール](../az-modules.md)を使用します。 
+>
 
 |名前|説明|
 |---|---|

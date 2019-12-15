@@ -1,6 +1,6 @@
 ---
-title: テキスト メッセージにセキュリティ情報 (プレビュー) を設定する - Azure AD
-description: テキスト メッセージとモバイル デバイスを使用して本人確認を行うようにセキュリティ情報を設定する方法です。
+title: テキスト メッセージを検証方法として設定する - Azure AD
+description: テキスト メッセージを検証方法として使用して ID を検証するように [Security info (preview)] (セキュリティ情報 (プレビュー)) ページを設定する方法。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2fe8610d7551b63ed613153ba1ee0e6f8e73b5a5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803831"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278917"
 ---
-# <a name="set-up-security-info-preview-to-use-text-messaging"></a>テキスト メッセージを使用するようにセキュリティ情報 (プレビュー) を設定する
+# <a name="set-up-text-messaging-as-your-verification-method"></a>テキスト メッセージを検証方法として設定する
 
 次の手順に従って、2 要素認証とパスワードのリセット メソッドを追加できます。 これを初回に設定したら、 **[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
 

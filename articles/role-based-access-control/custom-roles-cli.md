@@ -1,6 +1,6 @@
 ---
-title: Azure CLI を使用して Azure リソースのカスタム ロールを作成する | Microsoft Docs
-description: Azure CLI を使用して、ロールベースのアクセス制御 (RBAC) による Azure リソースのカスタム ロールを作成する方法について説明します。 これには、カスタム ロールを一覧表示、作成、更新、削除する方法が含まれます。
+title: Azure CLIを使用してAzureリソースのカスタムロールを作成または更新する| Microsoft Docs
+description: Azure CLIを使用して、Azureリソースのロールベースのアクセス制御（RBAC）でカスタムロールを一覧表示、作成、更新、または削除する方法を学習します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ebced83346a7b130598e4a5f49a72d51ffd18e4f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2b2ffde66468ae7cb2818010ac374126d2973be
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118775"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703132"
 ---
-# <a name="create-custom-roles-for-azure-resources-using-azure-cli"></a>Azure CLI を使用して Azure リソースのカスタム ロールを作成する
+# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>Azure CLIを使用してAzureリソースのカスタムロールを作成または更新する
 
-[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure CLI を使用して、カスタム ロールを作成して管理する方法について説明します。
+[Azure リソースの組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 この記事では、Azure CLIを使用してカスタムロールを一覧表示、作成、更新、または削除する方法について説明します
 
 カスタム ロールの作成方法に関するステップバイステップのチュートリアルが必要な場合は、「[チュートリアル:Azure CLI を使用して Azure リソースのカスタム ロールを作成する](tutorial-custom-role-cli.md)」を参照してください。
 

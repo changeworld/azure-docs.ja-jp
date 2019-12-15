@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Speech SDK for C# .NET Core プラットフォームの設定 - Speech Service
+title: クイック スタート:Speech SDK for C# .NET Core プラットフォームの設定 - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Speech Services SDK を使用して Windows または macOS 上の .NET Core で C# のプラットフォームを設定するには、このガイドを使用します。
+description: Speech サービス SDK を使用して Windows または macOS 上の .NET Core で C# のプラットフォームを設定するには、このガイドを使用します。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: ff18fb372d5feb96369d5d51d386520665302c78
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6bcbf56fd3248098e012d0c56700432ab7594440
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504413"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816343"
 ---
 このガイドでは、C# .NET Core 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。
 

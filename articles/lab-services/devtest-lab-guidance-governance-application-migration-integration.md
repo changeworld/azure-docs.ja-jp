@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs インフラストラクチャのガバナンス
-description: この記事では、Azure DevTest Labs インフラストラクチャのガバナンスのためのガイダンスを提供します。
+title: Azure DevTest Labs でのアプリケーションの移行と統合
+description: この記事では、アプリケーションの移行と統合のコンテキストでの Azure DevTest Labs インフラストラクチャのガバナンスのためのガイダンスを提供します。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 75ce5d6a88b5398bd010cc363b4241bc90068f55
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 25342cfbb8ac7ad5538b1f009c75f1d101bfc047
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193001"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560645"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Azure DevTest Labs インフラストラクチャのガバナンス - アプリケーションの移行と統合
 開発/テスト ラボ環境が確立された後は、次の質問について考慮する必要があります。

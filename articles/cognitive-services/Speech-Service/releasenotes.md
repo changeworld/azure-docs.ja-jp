@@ -1,7 +1,7 @@
 ---
-title: リリース ノート - Speech Service
+title: リリース ノート - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Speech Service に関する機能リリース、改善、バグ修正、既知の問題を時系列で掲載しています。
+description: Speech サービスに関する、機能リリース、改善、バグ修正、既知の問題の時系列ログを参照してください。
 services: cognitive-services
 author: BrianMouncer
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: f38e23f0648d802ba7b09391d6f6bbd0c093d989
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 74b34a1d65f6beb097a649658c508da6ff48f1ac
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888171"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816605"
 ---
 # <a name="release-notes"></a>リリース ノート
 
@@ -177,7 +177,7 @@ ms.locfileid: "73888171"
 
 **バグの修正**
 
-- Mac/iOS:Speech Service への接続を確立できないときに長い待機時間が発生する原因のバグを修正しました。
+- Mac/iOS:Speech サービスへの接続を確立できないときに、長時間待機が発生するバグを修正しました。
 - Python: Python コールバックでの引数のエラー処理が向上しました。
 - JavaScript:RequestSession で終了した音声の正しくない状態レポートが修正されました。
 
@@ -193,7 +193,7 @@ ms.locfileid: "73888171"
 
 **新機能**
 
-- Speech SDK では、AudioConfig クラスによって入力マイクの選択がサポートされます。 これにより、既定以外のマイクから Speech Services にオーディオ データをストリーミングできます。 詳しくは、[オーディオ入力デバイスの選択](how-to-select-audio-input-devices.md)に関する記事をご覧ください。 この機能は、JavaScript からはまだ使用できません。
+- Speech SDK では、AudioConfig クラスによって入力マイクの選択がサポートされます。 これにより、既定以外のマイクから、Speech サービスに、音声 データをストリーミングできます。 詳しくは、[オーディオ入力デバイスの選択](how-to-select-audio-input-devices.md)に関する記事をご覧ください。 この機能は、JavaScript からはまだ使用できません。
 - Speech SDK では、ベータ版で Unity がサポートされるようになりました。 [GitHub サンプル リポジトリ](https://aka.ms/csspeech/samples)の問題セクションでフィードバックをお送りください。 このリリースでは、Windows x86 と x64 (デスクトップまたはユニバーサル Windows プラットフォーム アプリケーション) および Android (ARM32/64、x86) での Unity がサポートされています。 詳しくは、[Unity のクイック スタート](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity)に関する記事をご覧ください。
 - (以前のリリースで提供されていた) `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` ファイルは不要になりました。 この機能はコア SDK に統合されました。
 

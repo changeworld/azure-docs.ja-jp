@@ -1,22 +1,22 @@
 ---
-title: 'Azure Data Factory パイプラインでの分岐 '
+title: Azure Data Factory パイプラインでの分岐
 description: アクティビティの分岐と連鎖によって Azure Data Factory 内のデータのフローを制御する方法を説明します。
 services: data-factory
-documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
+manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 0a7e5f56fe71c174c78f1363e403ae41a2ec90a6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 277616d9fcd15affc7ddc8ede5d9af3ff68c62f8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683662"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926611"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -358,7 +358,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=000000
 ```
 
-## <a name="create-a-pipeline"></a>パイプラインを作成する。
+## <a name="create-a-pipeline"></a>パイプラインを作成する
 
 Visual Studio でプロジェクトに戻ります。 ここで、コピー アクティビティと `DependsOn` プロパティを含むパイプラインを作成する次のコードを追加します。 このチュートリアルでは、パイプラインに 1 つのアクティビティ (コピー アクティビティ) が含まれています。このアクティビティは、ソースとして BLOB データセットを取り込み、シンクとして別の BLOB データセットを取り込みます。 このコピー アクティビティが成功したか失敗したかに応じて、異なるメール タスクが呼び出されます。
 

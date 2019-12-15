@@ -1,5 +1,5 @@
 ---
-title: Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策 |Microsoft Docs
+title: SCIM 2.0 プロトコルへの準拠に関する既知の問題 - Azure AD
 description: SCIM 2.0 をサポートするギャラリー以外のアプリケーションを Azure AD に追加する際に発生する、一般的なプロトコル互換性の問題を解決する方法
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eee480d4a52f77e054bf8f0780707444b6db28b0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963176"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275813"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD ユーザー プロビジョニング サービスの SCIM 2.0 プロトコルへのコンプライアンスに関する既知の問題と解決策
 
@@ -45,7 +45,7 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>説明されているサービス修正プログラムは、既存の SCIM アプリに自動的に適用されていますか。
 
-いいえ。 これらの変更は、以前の動作を使用するようコード化された SCIM アプリに重大な変更をもたらすため、既存のアプリに自動的に適用されることはありません。
+No. これらの変更は、以前の動作を使用するようコード化された SCIM アプリに重大な変更をもたらすため、既存のアプリに自動的に適用されることはありません。
 
 これらの変更は、修正日付後に、Azure portal で構成されたすべての新しい[ギャラリー以外の SCIM アプリ](configure-single-sign-on-non-gallery-applications.md)に適用されます。
 
@@ -66,7 +66,7 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![ジョブの取得](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "ジョブの取得") 
+   ![ジョブを取得する](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "ジョブを取得する") 
 
 
 6. 結果内で、"customappsso" または "scim" のいずれかで始まる完全な "ID" 文字列をコピーします。
@@ -74,7 +74,7 @@ Azure AD による SCIM 2.0 プロトコルのサポートについては、「[
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
-   ![スキーマの取得](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "スキーマの取得") 
+   ![スキーマを取得する](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "スキーマを取得する") 
 
 8. 最後の手順から JSON 出力をコピーし、テキスト ファイルに保存します。 これには、古いアプリに追加したすべてのカスタム属性マッピングが含まれており、およそ数千行の JSON となります。
 9. 次のコマンドを実行して、プロビジョニング ジョブを削除します。

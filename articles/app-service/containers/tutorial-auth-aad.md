@@ -1,26 +1,17 @@
 ---
-title: Linux でユーザーをエンド ツー エンドで認証および承認する - Azure App Service | Microsoft Docs
-description: App Service の認証と承認を使用して、Linux 上で実行されている App Service アプリ (リモート API へのアクセスを含む) をセキュリティで保護する方法について説明します。
+title: チュートリアル:ユーザーを E2E で認証する (Linux)
+description: App Service の認証と承認を使用して、Linux 上で実行されている App Service Linux アプリ (リモート API へのアクセスを含む) をエンド ツー エンドでセキュリティ保護する方法について説明します。
 keywords: App Service, Azure App Service, authN, authZ, 保護, セキュリティ, 多層, Azure Active Directory, Azure Ad
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a50a1183cb2e57e8e98f1940f1c14284e89088c3
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 71aec33d5afe1a909f460ddae2d5cb0552857fee
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019263"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688942"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>チュートリアル: Azure App Service on Linux でユーザーをエンド ツー エンドで認証および承認する
 

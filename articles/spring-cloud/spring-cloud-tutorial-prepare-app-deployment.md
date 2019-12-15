@@ -1,17 +1,17 @@
 ---
-title: Azure Spring Cloud で Spring アプリケーションをデプロイ用に準備する | Microsoft Docs
-description: このクイックスタートでは、Java Spring アプリケーションをデプロイ用に準備します。
+title: チュートリアル - Azure Spring Cloud で Spring アプリケーションをデプロイ用に準備する
+description: このチュートリアルでは、Java Spring アプリケーションをデプロイ用に準備します。
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3c567c54f887afe9ac112970a682b9466515d949
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721241"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708726"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>チュートリアル:Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
 
@@ -176,4 +176,3 @@ pom.xml の依存関係セクションに `spring-boot-starter-actuator` を含�
 
 > [!div class="nextstepaction"]
 > [構成サーバーの設定方法を学習する](spring-cloud-tutorial-config-server.md)。
-

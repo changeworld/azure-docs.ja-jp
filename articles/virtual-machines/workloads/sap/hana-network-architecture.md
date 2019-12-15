@@ -13,16 +13,16 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0872d3c798bd5bd94e425869822602e8123517b4
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: 3777180a4d62f8b253ac4cd096bff15613f33565
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303612"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206622"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (L インスタンス) のネットワーク アーキテクチャ
 
-Azure ネットワーク サービスのアーキテクチャは、HANA L インスタンスへの SAP アプリケーションのデプロイを成功させるための重要な要素です。 通常、SAP HANA on Azure (L インスタンス) デプロイメントには、サイズとデータベース、CPU リソース使用量、メモリ使用量が異なる複数の SAP ソリューションを含む大規模な SAP ランドスケープが存在します。 すべての IT システムが既に Azure に配置されているとは限りません。 また、SAP ランドスケープは、DBMS や SAP アプリケーションの面でハイブリッドである (NetWeaver、S/4HANA、SAP HANA、その他の DBMS を組み合わせて使用している) ことも少なくありません。 Azure では、さまざまな DBMS、NetWeaver、および S/4HANA システムを Azure で運用できるようにする、さまざまなサービスを提供しています。 また、オンプレミスのソフトウェア デプロイで Azure を仮想データ センターのように取り扱うためのネットワーク テクノロジも提供しています。
+Azure ネットワーク サービスのアーキテクチャは、HANA L インスタンスへの SAP アプリケーションのデプロイを成功させるための重要な要素です。 通常、SAP HANA on Azure (L インスタンス) デプロイメントには、サイズとデータベース、CPU リソース使用量、メモリ使用量が異なる複数の SAP ソリューションを含む大規模な SAP ランドスケープが存在します。 すべての IT システムが既に Azure に配置されているとは限りません。 また、SAP ランドスケープは、DBMS や SAP アプリケーションの面でハイブリッドである (NetWeaver、S/4HANA、SAP HANA、その他の DBMS を組み合わせて使用している) ことも少なくありません。 Azure では、さまざまな DBMS、NetWeaver、および S/4HANA システムを Azure で運用できるようにする、さまざまなサービスを提供しています。 また、オンプレミスのソフトウェア デプロイで Azure を仮想データ センターのように取り扱うためのネットワーク テクノロジも提供されています
 
 IT システム全体が Azure でホストされていない限り、 Azure のネットワーキング機能によりオンプレミスの世界と Azure の資産が接続されて、Azure を独自の仮想データセンターのように扱えるようになります。 使用される Azure ネットワーク機能は、次のとおりです。 
 
@@ -147,8 +147,8 @@ HANA L インスタンスと Azure の間で大量のデータを転送するた
 
 それらのシナリオで推移的なルーティングを有効にするには 3 つの方法があります。
 
-- データをルーティングするリバース プロキシ。 たとえば、仮想ファイアウォール/トラフィック ルーティング ソリューションとして HANA L インスタンスやオンプレミスに接続する Azure 仮想ネットワークにデプロイされる F5 BIG-IP や NGINX (および Traffic Manager) などです。
-- Linux VM で [IPTables ルール](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ)を使用して、オンプレミスの場所と HANA L インスタンス ユニット間、または別のリージョンにある HANA L インスタンス ユニット間のルーティングを有効にします。 IPTables を実行している VM は、HANA L インスタンスおよびオンプレミスに接続している Azure 仮想ネットワークにデプロイする必要があります。 VM は、VM のネットワーク スループットが予想ネットワーク トラフィックに対して十分であるように、サイズを設定する必要があります。 VM のネットワーク帯域幅の詳細については、「[Azure の Linux 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」という記事を参照してください。
+- データをルーティングするリバース プロキシ。 たとえば、仮想ファイアウォールおよびトラフィック ルーティング ソリューションとして HANA L インスタンスやオンプレミスに接続する Azure 仮想ネットワークにデプロイされる F5 BIG-IP や NGINX (および Traffic Manager) などです。
+- Linux VM で [IPTables ルール](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ)を使用して、オンプレミスの場所と HANA L インスタンス ユニット間、または別のリージョンにある HANA L インスタンス ユニット間のルーティングを有効にします。 IPTables が実行される VM は、HANA L インスタンスおよびオンプレミスに接続している Azure 仮想ネットワークにデプロイする必要があります。 VM は、VM のネットワーク スループットが予想ネットワーク トラフィックに対して十分であるように、サイズを設定する必要があります。 VM のネットワーク帯域幅の詳細については、「[Azure の Linux 仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)」という記事を参照してください。
 - [Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) は、オンプレミスと HANA L インスタンス ユニットの間の直接のトラフィックを可能にするもう 1 つのソリューションです。 
 
 これらのソリューションのすべてのトラフィックは Azure 仮想ネットワークを通じてルーティングされるため、使用されるソフト アプライアンスまたは Azure ネットワーク セキュリティ グループによってトラフィックがさらに制限される可能性があります。つまり、オンプレミスの特定の IP アドレスまたは IP アドレス範囲が、HANA L インスタンスへのアクセスをブロックされたり、明示的に許可されたりする可能性があります。 
@@ -163,8 +163,8 @@ Microsoft は、[ExpressRoute Global Reach](https://docs.microsoft.com/azure/exp
 - 異なるリージョンにデプロイされている HANA L インスタンス ユニット間の直接通信を可能にします
 
 
-##### <a name="direct-access-from-on-premise"></a>オンプレミスからの直接アクセス
-Global Reach が提供されている Azure リージョンでは、HANA L インスタンス ユニットにも接続する Azure 仮想ネットワークにオンプレミス ネットワークを接続する ExpressRoute 回線に対する Global Reach 機能の有効化を要求できます。 ExpressRoute 回線のオンプレミス側には、コスト面で若干の影響があります。 価格については、[Global Reach アドオン](https://azure.microsoft.com/pricing/details/expressroute/)の価格を参照してください。 HANA L インスタンス ユニットを Azure に接続する回線には、追加のコストは発生しません。 
+##### <a name="direct-access-from-on-premises"></a>オンプレミスからの直接アクセス
+Global Reach が提供されている Azure リージョンでは、HANA L インスタンス ユニットにも接続する Azure 仮想ネットワークにオンプレミス ネットワークを接続する ExpressRoute 回線に対する Global Reach 機能の有効化を要求できます。 ExpressRoute 回線のオンプレミス側には、コスト面で若干の影響があります。 価格については、[Global Reach アドオン](https://azure.microsoft.com/pricing/details/expressroute/)の価格を確認してください。 HANA L インスタンス ユニットを Azure に接続する回線には、追加のコストは発生しません。 
 
 > [!IMPORTANT]  
 > HANA L インスタンス ユニットとオンプレミス資産の間の直接アクセスを可能にするために Global Reach を使用する場合、ネットワーク データと制御フローは **Azure 仮想ネットワークを通じてルーティングされず**、Microsoft のエンタープライズ エクスチェンジ ルーター間で直接ルーティングされます。 その結果、Azure 仮想ネットワークにデプロイしたすべての NSG または ASG の規則、すべての種類のファイアウォール、NVA、またはプロキシは、まったく関与しません。 **ExpressRoute Global Reach を使用してオンプレミスから HANA L インスタンス ユニットへの直接アクセスを有効にする場合、HANA L インスタンス ユニットへのアクセスに対する制限および許可は、オンプレミス側のファイアウォールで定義する必要があります** 

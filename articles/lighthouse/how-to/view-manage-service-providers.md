@@ -2,13 +2,13 @@
 title: サービス プロバイダーを表示し、管理する
 description: サービス プロバイダー、サービス プロバイダーのオファー、委任したリソースに関する情報は、顧客が Azure portal の [サービス プロバイダー] ページを使用して確認できます。
 ms.date: 11/15/2019
-ms.topic: overview
-ms.openlocfilehash: baa5a77b481779ab511ff473aacda5d40e0d771c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: 453f5d3ba4ed5c49b5e71c7530298bc0a03c73ee
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132184"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463819"
 ---
 # <a name="view-and-manage-service-providers"></a>サービス プロバイダーを表示し、管理する
 
@@ -49,7 +49,9 @@ Azure portal の **[サービス プロバイダー]** ページにアクセス�
 
 ## <a name="update-service-provider-offers"></a>サービス プロバイダーのオファーを更新する
 
-顧客がオファーを追加した後に、サービス プロバイダーが同じオファーの更新済みバージョンを Azure Marketplace に公開する場合があります。 たとえば、新しいロール定義を追加する場合があります。 新しいバージョンのオファーが公開されている場合、 **[プロバイダーのオファー]** ページで、そのオファーの行に "更新" アイコンが表示されます。 顧客はこのアイコンを選択して、現在のバージョンのオファーと新しいオファーの違いを確認できます。 
+顧客がオファーを追加した後に、サービス プロバイダーが同じオファーの更新済みバージョンを Azure Marketplace に公開する場合があります。 たとえば、新しいロール定義を追加する場合があります。 新しいバージョンのオファーが公開されている場合、 **[プロバイダーのオファー]** ページで、そのオファーの行に "更新" アイコンが表示されます。 顧客はこのアイコンを選択して、現在のバージョンのオファーと新しいオファーの違いを確認できます。
+
+ ![オファーの更新アイコン](../media/update-offer.jpg)
 
 変更を確認したら、顧客は新しいバージョンに更新するように選択できます。 そうすると、新しいバージョンで指定された承認とその他の設定が、そのオファーに委任されているすべてのサブスクリプションやリソース グループに適用されます。
 

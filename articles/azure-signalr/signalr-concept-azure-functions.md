@@ -1,17 +1,17 @@
 ---
-title: Azure Functions および Azure SignalR Service を使用してリアルタイム アプリを構築する
-description: サーバーレス アプリケーションでの Azure SignalR Service の使用の概要。
+title: リアルタイム アプリを構築する - Azure Functions と Azure SignalR Service
+description: 例に従って、Azure SignalR Service でリアルタイム サーバーレス Web アプリケーションを開発する方法について説明します。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 6a71647d452597c84e0df1beb6e9c6c3932d171b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639932"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157611"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Azure Functions および Azure SignalR Service を使用してリアルタイム アプリを構築する
 

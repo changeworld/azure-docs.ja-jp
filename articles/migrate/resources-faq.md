@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate についてよく寄せられる質問
-description: Azure Migrate についてよく寄せられる質問に対応します
+description: Azure Migrate サービスに関する一般的な質問の回答を示します。
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: 1663e1d418610bcfa2ada28770944bfc8cbf908f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dc7dff0119ec849b447754ae54a45911038f6c48
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480068"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284465"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: 一般的な質問
 
@@ -118,16 +118,10 @@ Server Assessment は、移行準備を支援する評価と、Azure への移�
 
 ### <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Server Assessment と Site Recovery Deployment Planner の違いは何ですか。
 
-Server Assessment は移行計画ツールです。 Site Recovery Deployment Planner は、ディザスター リカバリー計画ツールです。 
+Server Assessment は移行計画ツールです。 Site Recovery Deployment Planner は、ディザスター リカバリー計画ツールです。
 
 - **オンプレミスの Azure への移行計画**:オンプレミスのサーバーを Azure に移行する予定がある場合は、移行計画に Server Assessment を使用します。 オンプレミスのワークロードが評価され、移行する際に役立つガイダンス、ツールが用意されています。 移行計画の準備ができたら、Azure Migrate Server Migration などのツールを使用して、マシンを Azure に移行できます。
 - **Azure へのディザスター リカバリーの計画**:Site Recovery を使用してオンプレミスから Azure へのディザスター リカバリーを設定する場合は、Site Recovery Deployment Planner を使用します。 Deployment Planner は、ディザスター リカバリーを目的として、オンプレミス環境に対する Site Recovery 独自の詳細な評価を提供します。 また、レプリケーションやフェールオーバーなどのディザスター リカバリーに関する推奨事項を提供します。
-
-### <a name="does-azure-migrate-estimate-costs-for-the-enterprise-agreement-ea-program"></a>Azure Migrate で Enterprise Agreement (EA) プログラムのコストを見積もれますか。
-
-現在、Azure Migrate Server Assessment は [Enterprise Agreement プログラム](https://azure.microsoft.com/offers/enterprise-agreement-support/)のコスト見積もりをサポートしていません。 この問題を回避するには、評価を作成する際に **[オファー]** に **[従量課金制]** を指定し、評価プロパティの **[割引]** に、(サブスクリプションに適用される) 割引率を手動で追加することができます。
-
-  ![評価のプロパティ](./media/resources-faq/discount.png)
 
 ### <a name="whats-the-difference-between-as-on-premises-and-performance-based-sizing"></a>オンプレミスに合わせたサイズ設定とパフォーマンス ベースのサイズ設定の違いは何ですか。
 

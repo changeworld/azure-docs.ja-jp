@@ -2,15 +2,15 @@
 title: リンク済みテンプレートの作成
 description: 仮想マシンを作成するためにリンクされた Azure Resource Manager テンプレートを作成する方法
 author: mumian
-ms.date: 10/04/2019
+ms.date: 12/03/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9764edb986b2ee847e3fcecda228f53551b462c3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e8964335d8c436cc590c36c3ea01fac02ed2280a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325423"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815283"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>チュートリアル:リンクされた Azure Resource Manager テンプレートの作成
 
@@ -45,6 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```azurecli-interactive
     openssl rand -base64 32
     ```
+
     Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
@@ -55,42 +56,46 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 * **リンクされたテンプレート**: ストレージ アカウントを作成します。
 
 1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
-2. **[ファイル名]** に以下の URL を貼り付けます。
+1. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
-3. **[開く]** を選択して、ファイルを開きます。
-4. テンプレートによって定義されたリソースは、5 つあります。
+
+1. **[開く]** を選択して、ファイルを開きます。
+1. テンプレートによって定義されたリソースは、6 つあります。
 
    * [`Microsoft.Storage/storageAccounts`](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)
    * [`Microsoft.Network/publicIPAddresses`](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
+   * [`Microsoft.Network/networkSecurityGroups`](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)
    * [`Microsoft.Network/virtualNetworks`](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
    * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
    * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
      テンプレートをカスタマイズする前にテンプレート スキーマの基本をある程度理解することは役に立ちます。
-5. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
-6. **[ファイル]** > **[名前を付けて保存]** を選択し、このファイルの別のコピーを **linkedTemplate.json** という名前で作成します。
+1. **[ファイル]** > **[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
+1. **[ファイル]** > **[名前を付けて保存]** を選択し、このファイルの別のコピーを **linkedTemplate.json** という名前で作成します。
 
 ## <a name="create-the-linked-template"></a>リンクされたテンプレートを作成する
 
 リンクされたテンプレートにより、ストレージ アカウントが作成されます。 リンクされたテンプレートは、ストレージ アカウントを作成するスタンドアロンのテンプレートとして使用できます。 このチュートリアルでは、リンクされたテンプレートで 2 つのパラメーターを受け取り、値をメイン テンプレートに渡し返します。 この "戻り" 値は `outputs` 要素で定義されます。
 
 1. **linkedTemplate.json** が開いていない場合、このファイルを Visual Studio Code で開きます。
-2. 次の変更を行います。
+1. 次の変更を行います。
 
     * **location** 以外のパラメーターをすべて削除します。
     * **storageAccountName** というパラメーターを追加します。
-        ```json
-        "storageAccountName":{
-          "type": "string",
-          "metadata": {
-              "description": "Azure Storage account name."
-          }
-        },
-        ```
-        ストレージ アカウント名と場所は、パラメーターとして、メイン テンプレートからリンクされたテンプレートに渡されます。
+
+      ```json
+      "storageAccountName":{
+        "type": "string",
+        "metadata": {
+            "description": "Azure Storage account name."
+        }
+      },
+      ```
+
+      ストレージ アカウント名と場所は、パラメーターとして、メイン テンプレートからリンクされたテンプレートに渡されます。
 
     * **variables** 要素とすべての変数定義を削除します。
     * ストレージ アカウント以外のすべてのリソースを削除します。 合計で 4 つのリソースを削除します。
@@ -110,6 +115,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
             }
         }
         ```
+
        **storageUri**は、メイン テンプレートの仮想マシン リソース定義で必要です。  この値を、出力値としてメイン テンプレートに値を渡し返します。
 
         完了すると、テンプレートは次のようになります。
@@ -138,7 +144,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
               "type": "Microsoft.Storage/storageAccounts",
               "name": "[parameters('storageAccountName')]",
               "location": "[parameters('location')]",
-              "apiVersion": "2018-07-01",
+              "apiVersion": "2018-11-01",
               "sku": {
                 "name": "Standard_LRS"
               },
@@ -154,7 +160,8 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
           }
         }
         ```
-3. 変更を保存します。
+
+1. 変更を保存します。
 
 ## <a name="upload-the-linked-template"></a>リンクされたテンプレートをアップロードする
 
@@ -208,9 +215,10 @@ $templateURI = New-AzStorageBlobSASToken `
     -ExpiryTime (Get-Date).AddHours(8.0) `
     -FullUri
 
-echo "You need the following values later in the tutorial:"
-echo "Resource Group Name: $resourceGroupName"
-echo "Linked template URI with SAS token: $templateURI"
+Write-Host "You need the following values later in the tutorial:"
+Write-Host "Resource Group Name: $resourceGroupName"
+Write-Host "Linked template URI with SAS token: $templateURI"
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 1. 緑のボタン **[試してみる]** を選択し、Azure Cloud Shell ウィンドウが開きます。
@@ -226,22 +234,7 @@ echo "Linked template URI with SAS token: $templateURI"
 メイン テンプレートは azuredeploy.json と呼ばれます。
 
 1. **azuredeploy.json** が開いていない場合、Visual Studio Code で開きます。
-2. テンプレートからストレージ アカウント リソース定義を削除します。
-
-    ```json
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountName')]",
-      "location": "[parameters('location')]",
-      "apiVersion": "2018-07-01",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {}
-    },
-    ```
-3. 次の json スニペットを、ストレージ アカウント定義があった場所に追加します。
+1. ストレージ アカウント リソース定義を次の json スニペットに置き換えます。
 
     ```json
     {
@@ -251,7 +244,7 @@ echo "Linked template URI with SAS token: $templateURI"
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri":"https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-linked-templates/linkedStorageAccount.json"
+              "uri":""
           },
           "parameters": {
               "storageAccountName":{"value": "[variables('storageAccountName')]"},
@@ -268,8 +261,8 @@ echo "Linked template URI with SAS token: $templateURI"
     * リンクされたテンプレートを呼び出すときは、[増分](./deployment-modes.md)デプロイ モードのみを使用できます。
     * `templateLink/uri` には、リンクされたテンプレート URI が含まれています。 (SAS トークン付きの) リンクされたテンプレートをアップロードしたときに与えられた URI にこの値を更新します。
     * メイン テンプレートから、リンクされたテンプレートに値を渡すには、`parameters` を使用します。
-4. (SAS トークン付きの) リンクされたテンプレートをアップロードしたときに与えられた値に `uri` 要素の値が更新されていることを確認します。 実際には、URI にパラメーターを与えることをお勧めします。
-5. 変更後のテンプレートを保存します。
+1. (SAS トークン付きの) リンクされたテンプレートをアップロードしたときに与えられた値に `uri` 要素の値が更新されていることを確認します。 実際には、URI にパラメーターを与えることをお勧めします。
+1. 変更後のテンプレートを保存します。
 
 ## <a name="configure-dependency"></a>依存関係を構成する
 
@@ -290,6 +283,7 @@ echo "Linked template URI with SAS token: $templateURI"
             }
     }
     ```
+
     この値は、メイン テンプレートで必要です。
 
 1. azuredeploy.json が開いていない場合、Visual Studio Code で開きます。

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 09defe9648208e2300594169add990d4bcbd7a39
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 92da697c95f2b9ea544bb1f9bfa689c13bd0d2ae
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112577"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806764"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Azure Cognitive Search でエンリッチされたドキュメントの増分インデックス作成を設定する方法
 
@@ -41,13 +41,31 @@ api-key: [admin key]
 
 ### <a name="step-2-add-the-cache-property"></a>手順 2:cache プロパティを追加する
 
-GET 要求から応答を編集して、インデクサーに `cache` プロパティを追加します。 キャッシュ オブジェクトには、Azure ストレージ アカウントへの接続文字列である 1 つのプロパティのみが必要です。
+GET 要求から応答を編集して、インデクサーに `cache` プロパティを追加します。 キャッシュオブジェクトには、ストレージアカウントへの接続文字列である単一のプロパティ、`storageConnectionString` のみが必要です。 
 
 ```json
-    "cache": {
-        "storageConnectionString": "[your storage connection string]"
+{
+    "name": "myIndexerName",
+    "targetIndexName": "myIndex",
+    "dataSourceName": "myDatasource",
+    "skillsetName": "mySkillset",
+    "cache" : {
+        "storageConnectionString" : "Your storage account connection string",
+        "enableReprocessing": true,
+        "id" : "Auto generated Id you do not need to set"
+    },
+    "fieldMappings" : [],
+    "outputFieldMappings": [],
+    "parameters": {
+        "configuration": {
+            "enableAnnotationCache": true
+        }
     }
+}
 ```
+#### <a name="enable-reporocessing"></a>再処理を有効にする
+
+オプションで、既定で true に設定されているキャッシュ内の `enableReprocessing` ブール型プロパティを設定することができます。 `enableReprocessing` フラグを使用すると、インデクサーの動作を制御できます。 インデクサーで新しいドキュメントをインデックスに追加する優先順位を設定する場合は、フラグを false に設定します。 インデクサーが新しいドキュメントでキャッチされた後、フラグを true に切り替えると、インデクサーは、既存のドキュメントの最終的な整合を開始できます。 `enableReprocessing`フラグが false に設定されている間、インデクサーはキャッシュへの書き込みのみを行いますが、強化パイプラインに対する特定の変更に基づいて、既存のドキュメントは処理されません。
 
 ### <a name="step-3-reset-the-indexer"></a>手順 3:インデクサーをリセットする
 

@@ -1,20 +1,18 @@
 ---
-title: Azure App Service のセキュリティに関する推奨事項
-description: Azure App Service のセキュリティに関する推奨事項。 これらの推奨事項を実装することにより、お客様は共同責任モデルに記載されたセキュリティに関する義務を果たすことができ、お客様の Web アプリ ソリューションの全体的なセキュリティが向上します。
-services: app-service
+title: セキュリティに関する推奨事項
+description: セキュリティに関する推奨事項を実装することにより、共有責任モデルに記載されたセキュリティに関する義務を果たすことができます。 アプリのセキュリティを強化します。
 author: barclayn
 manager: barbkess
-ms.service: app-service
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: barclayn
 ms.custom: security-recommendations
-ms.openlocfilehash: 71d564dac43328371e9d34684f2d13a26616a99d
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: e3f901fd78436b42729607d38f0ddb533f31cd30
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609777"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684124"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service のセキュリティに関する推奨事項
 

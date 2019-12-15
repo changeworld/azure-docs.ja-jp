@@ -1,22 +1,18 @@
 ---
-title: Azure Dev Spaces を使用した Windows コンテナーの操作
-titleSuffix: Azure Dev Spaces
+title: Windows コンテナーを操作する
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/25/2019
 ms.topic: conceptual
 description: Windows コンテナーを持つ既存のクラスターでの Azure Dev Spaces の実行方法について説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Windows コンテナー
-ms.openlocfilehash: 90d7c8e5fc08405178ab6596b765f289b9bd716f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7410c0e38b84979f0977973b2d6ccf588e2b1230
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582786"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483999"
 ---
-# <a name="use-azure-dev-spaces-to-interact-with-windows-containers"></a>Azure Dev Spaces を使用した Windows コンテナーの操作
+# <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Azure Dev Spaces を使用した Windows コンテナーの操作
 
 Azure Dev Spaces は、新規と既存の両方の Kubernetes 名前空間で有効にすることができます。 Azure Dev Spaces は、Linux コンテナーで実行されるサービスを実行し、インストルメント化します。 それらのサービスは、同じ名前空間で Windows コンテナーで実行されるアプリケーションを操作することもできます。 この記事では、既存の Windows コンテナーを持つ名前空間で Dev Spaces を使用してサービスを実行する方法について説明します。
 
@@ -64,7 +60,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-サンプル アプリケーションでは、クラスターで Windows サービスを実行するために [Helm][helm-installed] が使用されます。 クラスターに Helm をインストールし、適切なアクセス許可を付与します。
+サンプル アプリケーションでは、クラスターで Windows サービスを実行するために [Helm 2][helm-installed] が使用されます。 クラスターに Helm をインストールし、適切なアクセス許可を付与します。
 
 ```console
 helm init --wait
@@ -181,7 +177,7 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md

@@ -1,6 +1,6 @@
 ---
 title: Service Fabric Azure Files ボリューム ドライバー (GA) | Microsoft Docs
-description: Service Fabric は、Azure Files を使用したコンテナーからのボリュームのバックアップをサポートしています。 これは現在プレビューの段階です。
+description: Service Fabric は、Azure Files を使用したコンテナーからのボリュームのバックアップをサポートしています。
 services: service-fabric
 author: athinanthny
 manager: chackdan
@@ -9,12 +9,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.author: atsenthi
-ms.openlocfilehash: 70784e2c8c91d39c34ba503cc3ebfcf3469939d9
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1287df567c60b7ad851c94a8ba787270255d0f35
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013494"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422784"
 ---
 # <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure Files ボリューム ドライバー
 Azure Files ボリューム プラグイン (Docker コンテナーに [Azure Files](/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)) が、**GA (一般提供)** になりました。
@@ -63,7 +63,7 @@ Azure Resource Manager テンプレート (Azure デプロイの場合) また�
 ```
 
 
-## <a name="deploy-the-service-fabric-azure-files-application"></a>Service Fabric Azure Files アプリケーションのデプロイ
+## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Service Fabric Azure Files ボリューム ドライバーを使用してサンプル アプリケーションをデプロイする
 
 ### <a name="using-azure-resource-manager-via-the-provided-powershell-script-recommended"></a>提供された Powershell スクリプトを介した Azure Resource Manager の使用 (推奨)
 
@@ -85,7 +85,7 @@ Linux 用の Azure Resource Manager デプロイ コマンドは次のとおり�
 
 ### <a name="manual-deployment-for-standalone-clusters"></a>スタンドアロン クラスターの手動デプロイ
 
-コンテナーにボリュームを提供する Service Fabric アプリケーションは、[Service Fabric のダウンロード サイト](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.516.9494.zip)からダウンロードできます。 アプリケーションは、[PowerShell](./service-fabric-deploy-remove-applications.md)、[CLI](./service-fabric-application-lifecycle-sfctl.md)、または [FabricClient API](./service-fabric-deploy-remove-applications-fabricclient.md) を使用して、クラスターにデプロイできます。
+コンテナーにボリュームを提供する Service Fabric アプリケーションは、[Service Fabric のダウンロード サイト](https://sfazfilevd.blob.core.windows.net/sfazfilevd/AzureFilesVolumePlugin.6.5.661.9590.zip)からダウンロードできます。 アプリケーションは、[PowerShell](./service-fabric-deploy-remove-applications.md)、[CLI](./service-fabric-application-lifecycle-sfctl.md)、または [FabricClient API](./service-fabric-deploy-remove-applications-fabricclient.md) を使用して、クラスターにデプロイできます。
 
 1. コマンド ラインを使用して、ダウンロードされたアプリケーション パッケージのルート ディレクトリにディレクトリを変更します。
 

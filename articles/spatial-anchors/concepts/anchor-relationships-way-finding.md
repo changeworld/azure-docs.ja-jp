@@ -1,19 +1,19 @@
 ---
-title: Azure Spatial Anchors でのアンカーのリレーションシップとウェイファインディング | Microsoft Docs
+title: アンカーのリレーションシップとウェイファインディング
 description: アンカーのリレーションシップの背後にある概念モデルについて説明します。 空間内のアンカーを接続する方法、および近隣 API を使用してウェイファインディング シナリオを実現する方法について説明します。
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 008269a5883750dc8899d896c101c6a05bf7e814
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969286"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270598"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Azure Spatial Anchors でのアンカーのリレーションシップとウェイファインディング
 
@@ -60,11 +60,11 @@ ms.locfileid: "65969286"
 
 ### <a name="connect-anchors-in-multiple-sessions"></a>複数のセッションでアンカーを接続する
 
-複数のセッションを使用して空間アンカーを接続できます。 この方法を使用すると、いくつかのアンカーを一度に作成および接続してから、後でさらに多くのアンカーを作成および接続できます。 
+複数のセッションを使用して空間アンカーを接続できます。 この方法を使用すると、いくつかのアンカーを一度に作成および接続してから、後でさらに多くのアンカーを作成および接続できます。
 
 複数のセッションを使用してアンカーを接続するには:
 
-1. このアプリは、いくつかのアンカーを 1 つの CloudSpatialAnchorSession で作成します。 
+1. このアプリは、いくつかのアンカーを 1 つの CloudSpatialAnchorSession で作成します。
 2. 別の時間に、アプリは新しい CloudSpatialAnchorSession を使用して、これらのアンカーのいずれか (たとえば、アンカー A) を見つけます。
 3. 新しい場所に歩いて行きます。 基になる複合現実または拡張現実プラットフォームがその移動を追跡します。
 4. 同じ CloudSpatialAnchorSession を使用してアンカー C を作成します。 アンカー A、B、および C が接続されました。 Spatial Anchors サービスがこの関係を保持します。
@@ -73,7 +73,7 @@ ms.locfileid: "65969286"
 
 ### <a name="verify-anchor-connections"></a>アンカーの接続を検証する
 
-このアプリは、近くのアンカーへのクエリを発行することによって、2 つのアンカーが接続されていることを検証できます。 そのクエリの結果にターゲットのアンカーが含まれている場合は、アンカーの接続が検証されました。 アンカーが接続されていない場合、アプリは再度その接続を試みることができます。 
+このアプリは、近くのアンカーへのクエリを発行することによって、2 つのアンカーが接続されていることを検証できます。 そのクエリの結果にターゲットのアンカーが含まれている場合は、アンカーの接続が検証されました。 アンカーが接続されていない場合、アプリは再度その接続を試みることができます。
 
 アンカーが接続に失敗する可能性のあるいくつかの理由を次に示します。
 

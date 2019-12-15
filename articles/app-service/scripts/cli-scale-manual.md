@@ -1,27 +1,20 @@
 ---
-title: Azure CLI のサンプル スクリプト - Azure CLI を使用したアプリの手動によるスケーリング | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - Azure CLI を使用した App Service の手動によるスケーリング
-services: appservice
-documentationcenter: appservice
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: CLI:アプリを手動でスケーリングする
+description: Azure CLI を使用して App Service アプリのデプロイと管理を自動化する方法について説明します。 このサンプルでは、アプリを手動でスケーリングする方法を紹介しています。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 251d9074-8fff-4121-ad16-9eca9556ac96
-ms.service: app-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 5a15a16b05adedf9f7c8738ae26174120a86efd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c05eed7485d0915140bdc95ebeb466fa1efc077d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136658"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685870"
 ---
 # <a name="scale-an-app-service-app-manually-using-azure-cli"></a>Azure CLI を使用した App Service アプリの手動によるスケーリング
 

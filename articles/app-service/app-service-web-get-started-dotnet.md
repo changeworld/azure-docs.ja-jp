@@ -1,25 +1,16 @@
 ---
-title: C# ASP.NET Core Web アプリを作成する - Azure App Service | Microsoft Docs
-description: 既定の C# ASP.NET Core Web アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
+title: 'クイック スタート: C# ASP.NET Core アプリを作成する'
+description: Visual Studio から既定の C# ASP.NET Core Web アプリ テンプレートをデプロイすることによって、Azure App Service で Web アプリを実行する方法について説明します。
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/30/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 919e717811b3b04ca7407772fcf11f293d58508c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 285e4cc1f38dd2adb5934e49d87b43e09d74ce11
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471548"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672109"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Azure に ASP.NET Core Web アプリを作成する
 

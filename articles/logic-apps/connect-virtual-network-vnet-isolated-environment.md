@@ -1,20 +1,17 @@
 ---
-title: ISE を使用して Azure 仮想ネットワークに接続する - Azure Logic Apps
+title: ISE を使用して Azure 仮想ネットワークに接続する
 description: Azure Logic Apps から Azure 仮想ネットワーク (VNET) にアクセスできる統合サービス環境 (ISE) を作成します。
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: d38874e7cb3fc61e32bd4ecd1fee528c4e5053e8
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 6e301cf8e24ba740b56c63d7f95b50617ba25383
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547168"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792709"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -89,7 +86,7 @@ ISE にアクセスできること、および ISE 内のロジック アプリ�
 > ソース ポートは一時的なものです。そのため、すべての規則に対して `*` に設定してください。
 > サブネット内の内部通信の場合、それらのサブネット内のすべてのポートを開いておくことがお使いの ISE では必要になります。
 
-| 目的 | Direction | ターゲット ポート | 発信元サービス タグ | 宛先サービス タグ | メモ |
+| 目的 | Direction | 宛先ポート | 発信元サービス タグ | 宛先サービス タグ | メモ |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
 | Azure Logic Apps からの通信 | 送信 | 80、443 | VirtualNetwork | インターネット | このポートは、Logic Apps サービスが通信する外部サービスに依存しています。 |
 | Azure Active Directory | 送信 | 80、443 | VirtualNetwork | AzureActiveDirectory | |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: magattus
-ms.openlocfilehash: ff877810cb32d22cffd2af79880b6223c41d7d73
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 1bfbc1b730811e1111a08a957db3a747f90fb587
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593523"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546216"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Azure CDN エンドポイントの消去
 ## <a name="overview"></a>概要
@@ -69,7 +69,7 @@ Azure CDN エッジ ノードは、アセットの Time-to-Live (TTL) が期限�
     ![[消去] ボタン](./media/cdn-purge-endpoint/cdn-purge-button.png)
 
 > [!IMPORTANT]
-> 消去要求の処理にかかる時間は、**Azure CDN from Microsoft** と **Azure CDN from Verizon** (Standard と Premium) で約 2 分、**Azure CDN from Akamai** で約 10 秒です。  Azure CDN には、プロファイル レベルで常に同時の消去要求が 50 件という上限があります。 
+> 消去要求の処理にかかる時間は、**Microsoft の Azure CDN** で約 10 分、**Verizon の Azure CDN** (Standard と Premium) で約 2 分、**Akamai の Azure CDN** で約 10 秒です。  Azure CDN には、プロファイル レベルで常に同時の消去要求が 50 件という上限があります。 
 > 
 > 
 

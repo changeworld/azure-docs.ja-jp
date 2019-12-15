@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 668744121c41a6e4797bc335b2736c8b31d87a41
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5c1a146a12fd8881982826e0a87868a6eaf05cb1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73807940"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851828"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database と Azure SQL Data Warehouse の IP ファイアウォール規則
 
@@ -127,13 +127,15 @@ Azure portal でサーバー レベルの IP ファイアウォール規則を�
 
 #### <a name="from-the-database-overview-page"></a>データベースの概要ページから
 
-1. データベースの概要ページからサーバー レベルの IP ファイアウォール規則を設定するには、次の画像に示すように、ツールバーの **[サーバー ファイアウォールの設定]** を選択します。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
+1. データベースの概要ページからサーバー レベルの IP ファイアウォール規則を設定するには、次の画像に示すように、ツールバーの **[サーバー ファイアウォールの設定]** を選択します。 
 
-      ![サーバーの IP ファイアウォール規則](./media/sql-database-get-started-portal/server-firewall-rule.png)
+    ![サーバーの IP ファイアウォール規則](./media/sql-database-get-started-portal/sql-database-server-set-firewall-rule.png)
+
+    SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
 
 2. ツールバーの **[クライアント IP の追加]** を選択し、使用しているコンピューターの IP アドレスを追加したら、 **[保存]** を選択します。 現在の IP アドレスに対してサーバー レベルの IP ファイアウォール規則が作成されます。
 
-      ![サーバー レベルの IP ファイアウォール規則の設定](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
+    ![サーバー レベルの IP ファイアウォール規則の設定](./media/sql-database-get-started-portal/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>サーバーの概要ページから
 
@@ -191,8 +193,10 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ```powershell
 New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
     -ServerName $servername `
-    -FirewallRuleName "AllowSome" -StartIpAddress "0.0.0.0" -EndIpAddress "0.0.0.0"
+    -FirewallRuleName "ContosoIPRange" -StartIpAddress "192.168.1.0" -EndIpAddress "192.168.1.255"
 ```
+> [!TIP]
+> $servername には、完全修飾 DNS 名ではなくサーバー名を指定します。たとえば、**mysqldbserver.database.windows.net** の代わりに **mysqldbserver** を指定します。
 
 > [!TIP]
 > クイックスタートのコンテキストでの PowerShell の例については、[DB の作成 - PowerShell](sql-database-powershell-samples.md) に関するページと [PowerShell を使用した単一データベースの作成と SQL Database のサーバー レベルの IP ファイアウォール規則の構成](scripts/sql-database-create-and-configure-database-powershell.md)に関するページを参照してください。
@@ -211,8 +215,10 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 ```azurecli-interactive
 az sql server firewall-rule create --resource-group myResourceGroup --server $servername \
--n AllowYourIp --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+-n ContosoIPRange --start-ip-address 192.168.1.0 --end-ip-address 192.168.1.255
 ```
+> [!TIP]
+> $servername には、完全修飾 DNS 名ではなくサーバー名を指定します。たとえば、**mysqldbserver.database.windows.net** の代わりに **mysqldbserver** を指定します。
 
 > [!TIP]
 > クイックスタートのコンテキストでの CLI の例については、[DB の作成 - Azure CLI](sql-database-cli-samples.md) に関するページと [Azure CLI を使用した単一データベースの作成と SQL Database の IP ファイアウォール規則の構成](scripts/sql-database-create-and-configure-database-cli.md)に関するページを参照してください。

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを設計する
+title: チュートリアル:Azure Database for PostgreSQL - Single Server を設計する - Azure CLI
 description: このチュートリアルでは、Azure CLI を使用して、初めての Azure Database for PostgreSQL - 単一サーバーを作成、構成、および照会する方法を示します。
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: db0ff9facbd8609955c5ef1918b0f8a6aa53ea65
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0f1f4c07f3dc694bcae9b540c71a11e53a00eb7f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447222"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773682"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Azure Database for PostgreSQL - 単一サーバーを設計する 
 このチュートリアルでは、Azure CLI (コマンド ライン インターフェイス) とその他のユーティリティを使用して、次のことを行う方法を説明します。

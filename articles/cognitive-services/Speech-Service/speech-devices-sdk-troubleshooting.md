@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
-ms.openlocfilehash: 9a757402360b4b69e760315a809482be9b4e04d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c590e0972de289a36890a75b220eddbded701ea8
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558897"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815566"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>Speech Devices SDK のトラブルシューティング
 
@@ -23,7 +23,7 @@ ms.locfileid: "68558897"
 
 ## <a name="certificate-failures"></a>証明書エラー
 
-Speech Services を使用している場合に証明書エラーが発生した場合は、デバイスの日付と時刻が正しいことを確認します。
+Speech Service を使用している場合に証明書エラーが発生した場合は、デバイスの日付と時刻が正しいことを確認します。
 
 1. **[設定]** に移動します。 **[システム]** で、 **[日付と時刻]** を選択します。
 

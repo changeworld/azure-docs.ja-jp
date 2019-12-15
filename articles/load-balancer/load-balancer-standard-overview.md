@@ -1,6 +1,6 @@
 ---
 title: Azure Standard Load Balancer とは
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: このラーニング パスを使用して、Azure Standard Load Balancer の機能の概要を確認します。
 services: load-balancer
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2019
+ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: c14cf572410d02892aa8a2b3e9f0f42fce46d411
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068780"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894428"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Azure Standard Load Balancer の概要
 
@@ -38,9 +38,6 @@ Standard Load Balancer は、パブリック ロード バランサーまたは�
 1 つの重要な側面は、リソースの仮想ネットワークのスコープです。  Basic Load Balancer が可用性セットのスコープ内に存在するのに対し、Standard Load Balancer は仮想ネットワークのスコープに完全に統合され、仮想ネットワークのすべての概念が適用されます。
 
 ロード バランサー リソースはオブジェクトであり、その中では、ユーザーが作成したいシナリオを実現するために Azure がそのマルチ テナント インフラストラクチャをプログラミングする方法を表すことができます。  ロード バランサー リソースと実際のインフラストラクチャの間に直接的な関係はありません。ロード バランサーを作成してもインスタンスは作成されず、容量は常に使用可能であり、考慮しなければならない起動時またはスケーリング時の遅延はありません。 
-
->[!NOTE]
-> Azure では、ユーザーのシナリオのためにフル マネージドの負荷分散ソリューションのスイートが提供されます。  TLS 終端 ("SSL オフロード") または HTTP/HTTPS 要求によるアプリケーション レイヤーの処理が必要な場合は、「[Application Gateway](../application-gateway/application-gateway-introduction.md)」をご覧ください。  グローバル DNS の負荷分散が必要な場合は、「[Traffic Manager](../traffic-manager/traffic-manager-overview.md)」をご覧ください。  実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
 
 ## <a name="why-use-standard-load-balancer"></a>Standard Load Balancer を使用する理由
 

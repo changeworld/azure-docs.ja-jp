@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860233"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806714"
 ---
 # <a name="scenes-shots-and-keyframes"></a>シーン、ショット、キーフレーム
 
@@ -38,9 +38,71 @@ Video Indexer では、連続するフレームの配色での突然の遷移と
 
 ショットを最適に表すフレームを選択します。 キーフレームは、審美的プロパティ (たとえば、コントラストや安定性) に基づいてビデオ全体から選択された代表的なフレームです。 Video Indexer では、キーフレームのサムネイルを抽出できる顧客に基づいて、ショットのメタデータの一部としてキーフレーム ID のリストが取得されます。 
 
-キーフレームは、出力 JSON のショットと関連付けられます。 
+### <a name="extracting-keyframes"></a>キーフレームの抽出
+
+ビデオの高解像度のキーフレームを抽出するには、まずビデオをアップロードしてインデックスを作成する必要があります。
+
+![キーフレーム](./media/scenes-shots-keyframes/extracting-keyframes.png)
+
+#### <a name="with-the-video-indexer-website"></a>Video Indexer Web サイトの使用
+
+Video Indexer web サイトを使用してキーフレームを抽出するには、ビデオをアップロードしてインデックスを作成します。 インデックス作成ジョブが完了したら、 **[ダウンロード]** ボタンをクリックし、 **[成果物 (ZIP)]** を選択します。 これにより、[成果物] フォルダーがコンピューターにダウンロードされます。 
+
+![キーフレーム](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+ 
+フォルダーを解凍して開きます。 *_KeyframeThumbnail* フォルダーに、ビデオから抽出されたすべてのキーフレームが表示されます。 
+
+#### <a name="with-the-video-indexer-api"></a>Video Indexer API の使用
+
+Video Indexer API を使用してキーフレームを取得するには [Upload Video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?) 呼び出しを使用してビデオをアップロードし、インデックスを作成します。 インデックス作成ジョブが完了したら、[Get Video Index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) を呼び出します。 これにより、JSON ファイル内のコンテンツから抽出された Video Indexer すべての分析情報が得られます。  
+
+各ショットのメタデータの一部として、キーフレーム ID の一覧が表示されます。 
+
+```json
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
+      ],
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+
+]
+```
+
+次に、[Get Thumbnails](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?) 呼び出しで、これらのキーフレーム ID をそれぞれ実行する必要があります。 これにより、各キーフレームのイメージがコンピューターにダウンロードされます。 
 
 ## <a name="editorial-shot-type-detection"></a>編集ショット タイプの検出
+
+キーフレームは、出力 JSON のショットと関連付けられます。 
 
 Insights JSON 内の個々のショットに関連付けられたショット タイプは、その編集タイプを表します。 これらのショット タイプ特性は、ビデオを編集してクリップやトレーラーを作成したり、芸術的な目的で特定のスタイルのキーフレームを検索したりするときに便利な場合があります。 各ショットの最初のキーフレームの分析に基づいて、さまざまなタイプが決定されます。 ショットは最初のキーフレームに表示される顔のスケール、サイズ、位置によって識別されます。 
 
@@ -63,6 +125,7 @@ Insights JSON 内の個々のショットに関連付けられたショット �
 
 * 2 ショット: 2 人の人物の中間サイズの顔を示します。
 * 複数の顔: 人物が 3 人以上。
+
 
 ## <a name="next-steps"></a>次の手順
 

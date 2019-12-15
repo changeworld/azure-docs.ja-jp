@@ -1,24 +1,15 @@
 ---
-title: Node.js アプリを構成する - Azure App Service | Microsoft Docs
-description: Azure App Service で動作するように Node.js アプリを構成する方法について説明する
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnock
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+title: Node.js アプリの構成
+description: アプリ用に事前構築済みの Node.js コンテナーを構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
+ms.devlang: nodejs
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: cephalin
-ms.openlocfilehash: 9422d543ad83f29d60fd7e1de51a79c3416e5b14
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6cf60472307a378d2fd4258a9777152344a11ded
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956165"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670282"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>Azure App Service 向けの Linux Node.js アプリを構成する
 

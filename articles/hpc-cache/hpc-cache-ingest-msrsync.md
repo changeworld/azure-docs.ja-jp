@@ -6,18 +6,18 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 3e5937a036763fab57f9e37494ace33e8452b1f2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4f8863d706d623d613ac156cf202c3b7b12f2ae0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582269"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168429"
 ---
 # <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC Cache のデータ取り込み - msrsync を使用した方法
 
 この記事では、Azure HPC Cache で使用する Azure Blob Storage コンテナーに対し、``msrsync`` ユーティリティを使用してデータをコピーする手順を詳しく説明します。
 
-Azure HPC Cache の Blob Storage にデータを移動する方法について詳しくは、「[Azure HPC Cache の Azure Blob Storage にデータを移動する](hpc-cache-ingest.md)」を参照してください。
+Azure HPC Cache の Blob Storage にデータを移動する方法について詳しくは、「[Azure Blob Storage にデータを移動する](hpc-cache-ingest.md)」を参照してください。
 
 ``msrsync`` ツールを使用すると、Azure HPC Cache のバックエンド ストレージ ターゲットにデータを移動することができます。 このツールは、複数の ``rsync`` プロセスを並列実行して帯域幅の使用を最適化することを目的に設計されています。 GitHub (https://github.com/jbd/msrsync ) で入手できます。
 

@@ -1,20 +1,17 @@
 ---
-title: オンプレミス データ ゲートウェイのインストール - Azure Logic Apps
+title: オンプレミスのデータ ゲートウェイのインストール
 description: Azure Logic Apps からオンプレミスのデータにアクセスするには、オンプレミス データ ゲートウェイをダウンロードしてインストールします。
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: arthii, LADocs
+ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: ef46fce8609119777ef73cbe189d7a8ace662c91
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 12/05/2019
+ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076935"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893685"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -66,7 +63,7 @@ ms.locfileid: "74076935"
 
 * **関連する考慮事項**
 
-  * オンプレミス データ ゲートウェイはローカル コンピューターにのみインストールできます。ドメイン コントローラーにはインストールできません。 ただし、データ ソースと同じコンピューターにゲートウェイをインストールする必要はありません。 すべてのデータ ソースに関して必要なゲートウェイは 1 つだけです。そのため、データ ソースごとにゲートウェイをインストールする必要はありません。
+  * オンプレミス データ ゲートウェイはローカル コンピューターにのみインストールします。ドメイン コントローラーにはインストールしません。 データ ソースと同じコンピューターにゲートウェイをインストールする必要はありません。 すべてのデータ ソースに関して必要なゲートウェイは 1 つだけです。そのため、データ ソースごとにゲートウェイをインストールする必要はありません。
 
     > [!TIP]
     > 待機時間を最小限に抑えるために、アクセス許可があることを前提として、データ ソースにできるだけ近いコンピューターまたは同じコンピューターにゲートウェイをインストールできます。
@@ -77,6 +74,8 @@ ms.locfileid: "74076935"
 
   * ゲートウェイ インストール用に選択するリージョンは、後でロジック アプリ用の Azure ゲートウェイ リソースを作成するときに選択する必要がある場所と同じです。 既定では、このリージョンは、Azure アカウントを管理する Azure AD テナントと同じ場所です。 ただし、この場所はゲートウェイのインストール中に変更できます。
 
+  * ゲートウェイのインストールを最新バージョンに更新している場合は、最初に現在のゲートウェイをアンインストールすると手順がすっきりします。
+
   * ゲートウェイには、標準モードと個人用モード (Power BI にのみ適用) の 2 つのモードがあります。 同じコンピューターにおいて同じモードで複数のゲートウェイを実行することはできません。
 
   * Azure Logic Apps では、ゲートウェイを介した読み取りおよび書き込み操作がサポートされます。 ただし、これらの操作には、[ペイロードのサイズに制限](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)があります。
@@ -86,14 +85,6 @@ ms.locfileid: "74076935"
 ## <a name="install-data-gateway"></a>データ ゲートウェイをインストールする
 
 1. [ゲートウェイ インストーラーをローカル コンピューターにダウンロードして実行します](https://aka.ms/on-premises-data-gateway-installer)。
-
-1. インストーラーが開いたら、 **[次へ]** を選択します。
-
-   ![ゲートウェイ インストーラーの導入画面](./media/logic-apps-gateway-install/gateway-intro-screen.png)
-
-1. 標準モードである **［On-premises data gateway (recommended)\(オンプレミス データ ゲートウェイ (推奨)\)** を選択し、**次へ** を選択します。
-
-   ![データ ゲートウェイの実行モードを選択する](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
 1. 最小要件を確認し、既定のインストール パスをそのまま使用して、使用条件に同意してから、 **[インストール]** を選択します。
 

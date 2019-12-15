@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Microsoft Azure Recovery S
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: edb672f97f467378176bf6cdf04fe8e22cc5e51b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f299bdeebab4f42721255d462101f0065a640fab
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173080"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665595"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -159,12 +159,12 @@ ms.locfileid: "74173080"
 
 1. MARS 管理コンソールを開き、 **[アクション]** ウィンドウに移動して、 **[バックアップのスケジュール]** を選択します。
     ![スケジュールされたバックアップを変更または停止する。](./media/backup-azure-manage-mars/mars-actions.png)
-1. **[ポリシー項目の選択]** ページで、 **[Modify backup schedule for your files and folders] (ファイルとフォルダーのバックアップ スケジュールを変更する)** を選択し、 **[次へ]** をクリックします。
+1. **[ポリシー項目の選択]** ページで、 **[ファイルとフォルダーのバックアップ スケジュールを変更します]** を選択し、 **[次へ]** をクリックします。
     ![スケジュールされたバックアップを変更または停止する。](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
 1. **[スケジュールされたバックアップの変更または停止]** ページで、 **[Stop using this backup schedule, but keep the stored backups until a schedule is activated again] (このバックアップ スケジュールの使用を中止するが、スケジュールが再度アクティブ化されるまで保存されているバックアップを保持する)** を選択します。 次に、 **[次へ]** を選択します。  
     ![スケジュールされたバックアップを変更または停止する。](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. **[Pause Scheduled Backup] (スケジュールされたバックアップの一時停止)** で情報を確認し、 **[完了]** をクリックします ![スケジュールされたバックアップを変更または停止する。](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. **[Modify backup process] (バックアップ プロセスの変更)** で、スケジュールのバックアップの一時停止状態が成功であることを確認し、 **[閉じる]** をクリックして終了します。
+1. **[スケジュールされたバックアップの一時停止]** で情報を確認し、 **[完了]** をクリックします ![スケジュールされたバックアップを変更または停止する。](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+1. **[バックアップの進行状況の変更]** で、スケジュールされたバックアップの一時停止が成功ステータスにあることを確認し、 **[閉じる]** をクリックして終了します。
 
 ### <a name="stop-protection-and-delete-backup-data"></a>保護を停止してバックアップ データを削除する
 

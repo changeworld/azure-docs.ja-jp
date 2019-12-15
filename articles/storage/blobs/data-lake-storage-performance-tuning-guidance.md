@@ -1,21 +1,21 @@
 ---
-title: Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン | Microsoft Docs
+title: パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する | Microsoft Docs
 description: Azure Data Lake Storage Gen2 のパフォーマンス チューニング ガイドライン
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b134842303bebdf10efdf388057c8ad7b3be61be
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f1a16228b72d7e0f45048669ade94a0c78d9ac52
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855570"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327942"
 ---
-# <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Azure Data Lake Storage Gen2 のパフォーマンス チューニング
+# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>パフォーマンス用に Azure Data Lake Storage Gen2 を最適化する
 
 Azure Data Lake Storage Gen2 は、I/O 集中型分析とデータ移動での高スループットをサポートします。  Data Lake Storage Gen2 では、利用可能なすべてのスループット (1 秒あたりに読み書き可能なデータの量) を利用することが、最適なパフォーマンスを得るために重要となります。  並列での読み取り数と書き込み数をできるだけ多くすることで、これを実現します。
 

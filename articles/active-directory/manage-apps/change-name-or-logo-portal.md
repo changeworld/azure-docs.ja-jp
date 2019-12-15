@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory でエンタープライズ アプリケーションの名前またはロゴを変更する | Microsoft Docs
+title: Azure AD で エンタープライズ アプリケーションの名前またはロゴを変更する
 description: Azure Active Directory でカスタム エンタープライズ アプリケーションの名前またはロゴを変更する方法
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30da8d6843c27c42d4d99adef50b9ad98a131c95
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3dfe0f8788275dd4403b6c9cad99a8eb09e479b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65780917"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274713"
 ---
 # <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>Azure Active Directory でカスタム エンタープライズ アプリケーションの名前またはロゴを変更する
 

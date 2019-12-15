@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声間翻訳、C++ - Speech Service
+title: クイック スタート:音声間で翻訳する、C++ - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 28bce0f5ddc87fee57ca0781a52c5a072e6ab0d7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 15d1d791c349af6896e4e7b351ff0e7c76de77a7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504813"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981337"
 ---
 すぐに使用できるようにするには、GitHub ですべての <a href="https://aka.ms/speech/github-cpp">Speech SDK C++ サンプル</a>を表示またはダウンロードします。 それ以外の場合は、始めましょう。

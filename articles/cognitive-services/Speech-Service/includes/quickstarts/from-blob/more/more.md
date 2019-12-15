@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:BLOB ストレージに格納された音声を認識する - Speech Service
+title: クイック スタート:BLOB ストレージに格納された音声を認識する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: c95fba97c2c6f79024e7a39222ac14f152898c71
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8b23ab250a68b0337f4f5bdc283b5d2c52498e40
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021132"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828808"
 ---
 ## <a name="additional-language-and-platform-support"></a>言語とプラットフォームのその他のサポート
 

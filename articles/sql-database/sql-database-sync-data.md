@@ -11,23 +11,23 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: d69378b2e791732fb478a66f226c6269e2c515f3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1ee2efbb8aebfc2f1a94c89edef6166898946d8a
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820816"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422529"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
 
 SQL データ同期は、Azure SQL Database 上に構築されているサービスであり、選択したデータを複数の SQL データベースや SQL Server インスタンスの間で双方向に同期させることができます。
 
 > [!IMPORTANT]
-> 現時点では、Azure SQL データ同期で Azure SQL Database Managed Instance はサポート**されていません**。
+> 現時点では、Azure SQL データ同期で Azure SQL Database Managed Instance はサポートされていません。
 
 ## <a name="when-to-use-data-sync"></a>データ同期を使用する場合
 
-データ同期は、いくつかの Azure SQL データベースや SQL Server データベースにわたるデータを最新の状態に保つ必要がある場合に便利です。 以下に、データ同期の主なユース ケースを示します。
+データ同期は、いくつかの Azure SQL データベースや SQL Server データベースにわたってデータを更新し続ける必要がある場合に便利です。 以下に、データ同期の主なユース ケースを示します。
 
 - **ハイブリッド データ同期:** データ同期を使用すると、オンプレミス データベースと Azure SQL データベースの間でデータの同期を維持し、ハイブリッド アプリケーションを実現できます。 この機能は、クラウドへの移行を検討していて、一部のアプリケーションを Azure に配置しようとしているお客様にとって利点となる場合があります。
 - **分散アプリケーション:** 多くの場合、ワークロードが異なるのであればデータベースも分離しておくと便利です。 たとえば、大規模な運用データベースがあり、このデータに対するレポートまたは分析ワークロードを実行する必要がある場合は、この追加のワークロードのために 2 つ目のデータベースを用意すると便利です。 そうすることで、運用ワークロードのパフォーマンスへの影響を最低限にすることができます。 データ同期を使えば、この 2 つのデータベースの同期を維持することができます。
@@ -79,7 +79,6 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 |---|---|---|
 | 長所 | - アクティブ/アクティブのサポート<br/>- オンプレミスと Azure SQL Database 間で双方向 | - 待ち時間の短縮<br/>- トランザクションの整合性<br/>- 移行後に既存のトポロジの再利用 |
 | 短所 | - 5 分以上の待機時間<br/>- トランザクションの整合性なし<br/>- パフォーマンスへの影響が大きい | - Azure SQL Database の単一データベースまたはプールされたデータベースから発行できない<br/>- 高いメンテナンス コスト |
-| | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>SQL データ同期の概要
 
@@ -103,25 +102,25 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 ## <a name="consistency-and-performance"></a>一貫性とパフォーマンス
 
-#### <a name="eventual-consistency"></a>最終的な一貫性
+### <a name="eventual-consistency"></a>最終的な一貫性
 
 データ同期はトリガー ベースであるため、トランザクションの一貫性は保証されません。 Microsoft では、最終的にはすべての変更が行われることと、データ同期でデータ損失が発生しないことを保証しています。
 
-#### <a name="performance-impact"></a>パフォーマンスへの影響
+### <a name="performance-impact"></a>パフォーマンスへの影響
 
 データ同期では、挿入、更新、および削除の 3 種類のトリガーを使用して変更を追跡します。 これにより、ユーザー データベース内に変更追跡のためのサイド テーブルが作成されます。 これらの変更追跡アクティビティは、データベースのワークロードに影響します。 サービス層を評価し、必要な場合はアップグレードします。
 
-同期グループの作成、更新、および削除中のプロビジョニングとプロビジョニング解除は、データベースのパフォーマンスにも影響を与える可能性があります。 
+同期グループの作成、更新、および削除中のプロビジョニングとプロビジョニング解除は、データベースのパフォーマンスにも影響を与える可能性があります。
 
 ## <a name="sync-req-lim"></a> 要件と制限
 
 ### <a name="general-requirements"></a>一般的な要件
 
-- 各テーブルには主キーが必要です。 どの行の主キーも値を変更しないでください。 主キーの値を変更する必要がある場合は、行を削除し、新しい主キー値で作成し直してください。 
+- 各テーブルには主キーが必要です。 どの行の主キーも値を変更しないでください。 主キーの値を変更する必要がある場合は、行を削除し、新しい主キー値で作成し直してください。
 
 > [!IMPORTANT]
-> 既存の主キーの値を変更すると、次の動作不良が生じます。   
->   - 同期の問題がレポートされなくても、ハブとメンバーとの間でデータの損失が生じる可能性があります。
+> 既存の主キーの値を変更すると、次の動作不良が生じます。
+> - 同期の問題がレポートされなくても、ハブとメンバーとの間でデータの損失が生じる可能性があります。
 > - 同期に失敗する可能性があります。主キーの変更で、追跡しているテーブルに、同期元からの存在しない行が含まれることが原因です。
 
 - スナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
@@ -129,12 +128,12 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 ### <a name="general-limitations"></a>一般的な制限事項
 
 - テーブルに、主キー以外の ID 列を設けることはできません。
-- 主キーに、次のデータ型を含めることはできません。sql_variant、binary、varbinary、image、xml。 
+- 主キーに、次のデータ型を含めることはできません。sql_variant、binary、varbinary、image、xml。
 - サポートされている精度は秒に対してのみであるため、次のデータの種類を主キーとして使用するときは注意してください。time、datetime、datetime2、datetimeoffset。
 - オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
 - Azure Active Directory 認証はサポートされていません。
 - 名前が同じでスキーマが異なるテーブル (たとえば、dbo.customers や sales.customers など) はサポートされていません。
-- ユーザー定義データ型の列はサポートされていません。
+- ユーザー定義データ型の列はサポートされていません
 
 #### <a name="unsupported-data-types"></a>サポートされていないデータ型
 
@@ -152,7 +151,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>サービスとデータベースの数量に関する制限
 
-| **数量**                                                      | **制限**              | **対処法**              |
+| **数量**                                                  | **制限**              | **対処法**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | データベースが属することができる同期グループの最大数。       | 5                      |                             |
 | 1 つの同期グループ内のエンドポイントの最大数              | 30                     |                             |
@@ -162,7 +161,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | 同期グループ内のテーブルの列数                              | 1000                   |                             |
 | テーブルでのデータ行のサイズ                                        | 24 Mb                  |                             |
 | 最小同期間隔                                           | 5 分              |                             |
-|||
+
 > [!NOTE]
 > 同期グループが 1 つだけの場合は、 1 つの同期グループで最大 30 個のエンドポイントを持つことができます。 同期グループが 2 つ以上ある場合は、すべての同期グループでのエンドポイントの合計数が最大 30 個に制限されます。 データベースが複数の同期グループに属している場合、それは 1 つではなく、複数のエンドポイントとしてカウントされます。
 
@@ -170,7 +169,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 ### <a name="how-much-does-the-sql-data-sync-service-cost"></a>SQL データ同期サービスのコストはどのくらいですか?
 
-SQL データ同期サービスそのものに対しては課金されません。  ただし、SQL データベース インスタンスへの、またはインスタンスからのデータ移動には、データ転送の料金がかかります。 詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
+SQL データ同期サービスそのものに対しては課金されません。 ただし、SQL データベース インスタンスへの、またはインスタンスからのデータ移動には、データ転送の料金がかかります。 詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 ### <a name="what-regions-support-data-sync"></a>データ同期はどのリージョンでサポートされていますか?
 
@@ -191,7 +190,7 @@ SQL データ同期はすべてのリージョンでご利用いただけます�
 - サブスクリプションが同じテナントに属していて、すべてのサブスクリプションへのアクセス許可がある場合、Azure Portal 上で同期グループを構成できます。
 - それ以外の場合、PowerShell を使用して、異なるサブスクリプションに属している同期メンバーを追加する必要があります。
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china"></a>データ同期を使用して、異なるクラウド (Azure パブリック クラウドと Azure China など) の SQL データベース間で同期できますか?
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>データ同期を使用して、異なるクラウド (Azure パブリック クラウドと Azure China 21Vianet など) の SQL データベース間で同期できますか?
 
 はい。 異なるクラウドに属している SQL データベース間で同期できます。PowerShell を使用して、異なるサブスクリプションに所属する同期メンバーを追加する必要があります。
 
@@ -232,7 +231,7 @@ SQL データ同期を使ってデータのバックアップを作成するこ�
 
 ### <a name="monitor-and-troubleshoot"></a>監視とトラブルシューティング
 
-SQL データ同期が想定どおりに実行されているかどうかを確認したい場合に、 アクティビティを監視して問題のトラブルシューティングを行うには、次の記事を参照してください。
+SQL データ同期が想定どおりに行われているかどうかを確認したい場合に、 アクティビティを監視して問題のトラブルシューティングを行うには、次の記事を参照してください。
 
 - [Azure Monitor ログによる Azure SQL データ同期の監視](sql-database-sync-monitor-oms.md)
 - [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](sql-database-troubleshoot-data-sync.md)

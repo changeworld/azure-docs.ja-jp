@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 872c7ce6a0c39ab19165a5f16ea3e4f6ef8bd6a5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 11/17/2019
+ms.openlocfilehash: 0eb2c2692ed2444a85e7253c6fdd8734385ff881
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388049"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672262"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>マッピング データ フローの式ビルダー
 
@@ -77,6 +77,46 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 特殊文字またはスペースが含まれている列名がある場合は、その名前を中かっこを使って囲みます。
 * ```{[dbo].this_is my complex name$$$}```
+
+## <a name="keyboard-shortcuts"></a>キーボード ショートカット
+
+* ```Ctrl-K Ctrl-C```:行全体をコメントにします
+* ```Ctrl-K Ctrl-U```:コメントを解除します
+* ```F1```:エディターのヘルプ コマンドを提供します
+* ```Alt-Down Arrow```:現在の行を下に移動します
+* ```Alt-Up Arrow```:現在の行を上に移動します
+* ```Cntrl-Space```:コンテキスト ヘルプを表示します
+
+## <a name="manual-comments"></a>手動コメント
+
+* ```/* This is my comment */```
+
+* ```/* This is a```
+*   ```multi-line comment */```
+   
+* ```// This is a single line comment```
+
+式の先頭にコメントを配置すると、変換式を文書化するための変換テキスト ボックスにコメントが表示されます。
+
+![説明](media/data-flow/comments2.png "説明")
+
+## <a name="convert-to-dates-or-timestamps"></a>日付またはタイムスタンプに変換する
+
+```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
+
+タイムスタンプ出力に文字列リテラルを含めるには、```toString()``` 内に変換をラップする必要があることに注意してください。
+
+エポックから日付またはタイムスタンプに秒を変換する方法を次に示します。
+
+```toTimestamp(1574127407*1000l)```
+
+上の式の最後にある末尾の "l" に注意してください。 これは、long への変換をインライン構文として示しています。
+
+## <a name="handling-column-names-with-special-characters"></a>特殊文字を含む列名の処理
+
+特殊文字またはスペースが含まれている列名がある場合は、その名前を中かっこを使って囲みます。
+
+```{[dbo].this_is my complex name$$$}```
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,5 +1,5 @@
 ---
-title: ゲスト ユーザーとして組織を脱退する - Azure Active Directory | Microsoft Docs
+title: ゲスト ユーザーとして組織を脱退する - Azure Active Directory
 description: Azure AD B2B のゲスト ユーザーがアクセス パネルから組織を脱退する方法について説明します。
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26d9eb883cc014c1bea092a12e22b6d144a37994
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bce67c81b924d768826402b707c41c085b7767b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112995"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272492"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>ゲスト ユーザーとして組織を脱退する
 

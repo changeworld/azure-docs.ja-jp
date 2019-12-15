@@ -1,5 +1,5 @@
 ---
-title: クロスプレミス Azure 接続用の VPN Gateway の設定 | Microsoft Docs
+title: 'Azure VPN Gateway: 構成設定'
 description: Azure 仮想ネットワーク ゲートウェイ用の VPN Gateway の設定について説明します。
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: 64a162b9d2f83b4bc703f5912116fd302fcb601c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c72b85bc978191744c55afb73973caa6d3b45db6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495747"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150950"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 

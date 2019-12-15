@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 5fe19d3800883782187ae15c0a6fc0cd9709f0e9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e6645a131766b7ec055ba1c8bb639f054f50c80b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842672"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704379"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Azure AD から Azure Active Directory Domain Services への範囲指定された同期を構成する
 
-Azure Active Directory Domain Services (Azure AD DS) は、認証サービスを提供するため、Azure AD からユーザーとグループを同期します。 ハイブリッド環境では、最初にオンプレミスの Active Directory Domain Services (AD DS) 環境のユーザーとグループが Azure AD Connect を使用して Azure AD に同期された後、Azure AD DS に同期されます。 既定では、Azure AD ディレクトリのすべてのユーザーとグループが Azure AD DS マネージド ドメインに同期されます。 特定のニーズがある場合は、代わりに、定義したユーザー セットのみを同期することを選択できます。
+Azure Active Directory Domain Services (Azure AD DS) は、認証サービスを提供するため、Azure AD からユーザーとグループを同期します。 ハイブリッド環境では、最初にオンプレミスの Active Directory Domain Services (AD DS) 環境のユーザーとグループが Azure AD Connect を使用して Azure AD に同期された後、Azure AD DS に同期されます。
+
+既定では、Azure AD ディレクトリのすべてのユーザーとグループが Azure AD DS マネージド ドメインに同期されます。 特定のニーズがある場合は、代わりに、定義したユーザー セットのみを同期することを選択できます。
 
 この記事では、範囲指定された同期を使用する Azure AD DS マネージド ドメインを作成した後、範囲指定されたユーザー セットを変更したり無効にしたりする方法について説明します。
 
@@ -53,7 +55,7 @@ Azure Active Directory Domain Services (Azure AD DS) は、認証サービスを
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>範囲指定された同期を Azure portal を使用して有効にする
 
-1. [Azure AD DS インスタンスを作成して構成するためのチュートリアル](tutorial-create-instance.md)に従います。 同期スコープ以外のすべての前提条件とデプロイ手順を完了します。
+1. [Azure AD DS インスタンスを作成して構成するためのチュートリアル](tutorial-create-instance-advanced.md)に従います。 同期スコープ以外のすべての前提条件とデプロイ手順を完了します。
 1. 同期の手順で **[範囲指定]** を選択してから、Azure AD DS インスタンスに同期する Azure AD グループを選択します。
 
 Azure AD DS マネージド ドメインのデプロイが完了するまで最大 1 時間かかる場合があります。 Azure portal では、お使いの Azure AD DS マネージド ドメインの **[概要]** ページに、このデプロイ ステージ全体の現在の状態が表示されます。
@@ -62,13 +64,13 @@ Azure AD DS マネージド ドメインがプロビジョニングを完了し�
 
 * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
     * DNS を構成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
-* [Azure AD Domain Services とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
+* [Azure AD Domain Services とのパスワード同期を有効にして](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="modify-scoped-synchronization-using-the-azure-portal"></a>範囲指定された同期を Azure portal を使用して変更する
 
 Azure AD DS マネージド ドメインにユーザーが同期されるグループの一覧を変更するには、次の手順を実行します。
 
-1. Azure portal で、*contoso.com* などのお使いの Azure AD DS インスタンスを選択します。
+1. Azure portal で、**Azure AD Domain Services** を検索して選択します。 *aadds.contoso.com* などのインスタンスを選択します。
 1. 左側のメニューで、 **[同期]** を選択します。
 1. グループを追加するには、上部にある **[+ グループの選択]** を選択し、追加するグループを選択します。
 1. 同期スコープからグループを削除するには、現在同期されているグループの一覧からそのグループを選択し、 **[グループの削除]** を選択します。
@@ -80,7 +82,7 @@ Azure AD DS マネージド ドメインにユーザーが同期されるグル�
 
 Azure AD DS マネージド ドメインのグループベースの範囲指定された同期を無効にするには、次の手順を実行します。
 
-1. Azure portal で、*contoso.com* などのお使いの Azure AD DS インスタンスを選択します。
+1. Azure portal で、**Azure AD Domain Services** を検索して選択します。 *aadds.contoso.com* などのインスタンスを選択します。
 1. 左側のメニューで、 **[同期]** を選択します。
 1. 同期スコープを **[範囲指定]** から **[すべて]** に設定してから、 **[同期スコープを保存します]** を選択します。
 
@@ -192,11 +194,11 @@ Write-Output "******************************************************************
 
 1. ここで、Azure AD DS マネージド ドメインを作成し、グループベースの範囲指定された同期を有効にします。 *-Properties* パラメーターに *"filteredSync" = "Enabled"* を含めます。
 
-    お使いの Azure サブスクリプション ID を設定し、マネージド ドメインの名前 (*contoso.com* など) を指定します。 お使いのサブスクリプション ID は、[Get-AzSubscription][Get-AzSubscription] コマンドレットを使用して取得できます。 サポート対象の Azure リソースを作成するには、リソース グループ名、仮想ネットワーク名、およびリージョンを前の手順で使用した値に設定します。
+    お使いの Azure サブスクリプション ID を設定し、マネージド ドメインの名前 (*aadds.contoso.com* など) を指定します。 お使いのサブスクリプション ID は、[Get-AzSubscription][Get-AzSubscription] コマンドレットを使用して取得できます。 サポート対象の Azure リソースを作成するには、リソース グループ名、仮想ネットワーク名、およびリージョンを前の手順で使用した値に設定します。
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "contoso.com"
+   $ManagedDomainName = "aadds.contoso.com"
    $ResourceGroupName = "myResourceGroup"
    $VnetName = "myVnet"
    $AzureLocation = "westus"
@@ -215,7 +217,9 @@ Azure AD DS マネージド ドメインがプロビジョニングを完了し�
 
 * 仮想マシンがマネージド ドメインを検出してドメイン参加または認証を行うことができるように、仮想ネットワークの DNS 設定を更新します。
     * DNS を構成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、これらの DNS 設定を自動的に構成するように求められます。
-* [Azure AD Domain Services とのパスワード同期を有効にして](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
+* Availability Zones がサポートされているリージョンに Azure AD DS マネージド ドメインを作成した場合は、ネットワーク セキュリティ グループを作成して、Azure AD DS マネージド ドメインの仮想ネットワーク内のトラフィックを制限します。 これらのルールを配置する必要がある Azure Standard Load Balancer が作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。
+    * ネットワーク セキュリティ グループと必要な規則を作成するには、ポータルで Azure AD DS のマネージド ドメインを選択します。 **[概要]** ウィンドウで、ネットワーク セキュリティ グループを自動的に作成および構成するように求められます。
+* [Azure AD Domain Services とのパスワード同期を有効にして](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds)、エンド ユーザーが会社の資格情報を使用してマネージド ドメインにサインインできるようにします。
 
 ## <a name="modify-scoped-synchronization-using-powershell"></a>範囲指定された同期を PowerShell を使用して変更する
 

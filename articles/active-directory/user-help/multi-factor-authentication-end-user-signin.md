@@ -1,5 +1,5 @@
 ---
-title: 2 要素認証を使用してサインインする - Azure AD
+title: 職場または学校アカウントでの認証を使用してサインインする - Azure AD
 description: さまざまな 2 要素認証の方法を使用して、ご自分の職場または学校アカウントにサインインする方法について説明します。
 services: active-directory
 author: eross-msft
@@ -14,14 +14,14 @@ ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de080a613c69dd6f48f548c4ba89b2728e8c5e1d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 86c7be7f786a4fcecc39ea9af552a0dc03f2fcac
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820425"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233228"
 ---
-# <a name="sign-in-to-your-work-or-school-account-using-two-factor-verification"></a>2 要素認証を使用してご自分の職場または学校アカウントにサインインする
+# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>2 要素検証方法を使用して職場または学校アカウントにサインインする
 
 > [!NOTE]
 > この記事では、一般的なサインイン エクスペリエンスを紹介しています。 サインインに関するヘルプやトラブルシューティングについては、「[2 段階認証で発生する問題](multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。

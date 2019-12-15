@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 594367db838266a6d11f4fbf3b763b024f8e14d4
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5ce8bfb593b1973e76b90223de9261134ec71dd4
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882853"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483247"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Azure AD ID で Azure Cosmos DB アカウントのキーにアクセスするための証明書ベースの認証
 
@@ -30,7 +30,7 @@ ms.locfileid: "70882853"
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. **[Azure Active Directory]** ウィンドウを開き、[アプリの登録] ウィンドウに移動して **[新規登録]** を選択します。 
+1. **[Azure Active Directory]** ウィンドウを開き、 **[アプリの登録]** ウィンドウに移動し、 **[新規登録]** を選択します。 
 
    ![Active Directory での新しいアプリケーションの登録](./media/certificate-based-authentication/new-app-registration.png)
 
@@ -114,6 +114,19 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
 
 1. フォームに入力したら **[保存]** を選択します。
 
+## <a name="register-your-certificate-with-azure-ad"></a>Azure AD に証明書を登録する
+
+Azure portal から、証明書ベースの資格情報を Azure AD 内のクライアント アプリケーションに関連付けることができます。 資格情報を関連付けるには、次の手順で証明書ファイルをアップロードする必要があります。
+
+クライアント アプリケーションの Azure アプリ登録で、以下を実行します。
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+
+1. **[Azure Active Directory]** ウィンドウを開き、 **[アプリの登録]** ウィンドウに移動し、前の手順で作成したサンプル アプリを開きます。 
+
+1. **[証明書とシークレット]** を選択し、その後 **[証明書のアップロード]** を選択します。 前の手順で作成した証明書ファイルを参照してアップロードします。
+
+1. **[追加]** を選択します。 証明書がアップロードされると、サムプリント、開始日、有効期限の値が表示されます。
 
 ## <a name="access-the-keys-from-powershell"></a>PowerShell からキーにアクセスする
 

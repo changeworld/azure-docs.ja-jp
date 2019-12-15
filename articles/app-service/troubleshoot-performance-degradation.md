@@ -1,27 +1,18 @@
 ---
-title: パフォーマンスの低下のトラブルシューティング - Azure App Service | Microsoft Docs
-description: この記事は、Azure App Service でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: パフォーマンスの低下をトラブルシューティングする
+description: アプリの動作の監視、データの収集、問題の軽減など、Azure App Service でのアプリパフォーマンスの低下に関する問題のトラブルシューティングの方法について説明します。
 tags: top-support-issue
 keywords: Web アプリのパフォーマンス、低速なアプリ、アプリが低速
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/03/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3f7389022eaee4268d5d4fc5439b64d7f7f1bf07
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066535"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688308"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service でのアプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。

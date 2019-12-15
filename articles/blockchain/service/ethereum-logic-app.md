@@ -1,21 +1,15 @@
 ---
-title: Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用する
+title: Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用する - Azure Blockchain Service
 description: Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用して、スマート コントラクト関数をトリガーし、スマート コントラクト イベントに応答します。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 10/14/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: chrisseg
-manager: femila
-ms.openlocfilehash: bb23d6b9b42e1c51646765255870a14a1b5d39f7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579937"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325220"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps で Ethereum ブロックチェーン コネクタを使用する
 
@@ -23,7 +17,7 @@ ms.locfileid: "73579937"
 
 ## <a name="prerequisites"></a>前提条件
 
-オプションの前提条件である「[クイック スタート: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了しておいてください。 このクイックスタートでは、[Azure Blockchain Development Kit for Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) のインストール方法とブロックチェーン開発環境の設定方法について説明しています。
+オプションの前提条件である「[クイックスタート: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を完了します。 このクイックスタートでは、[Azure Blockchain Development Kit for Ethereum](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) のインストール方法とブロックチェーン開発環境の設定方法について説明しています。
 
 ## <a name="create-a-logic-app"></a>ロジック アプリを作成します
 
@@ -199,7 +193,7 @@ Azure Blockchain Service メンバーに対する接続を設定できるよう�
 ブロックチェーンにトランザクションを送信する際の認証に、Ethereum アカウントの秘密キーを使用することができます。 ご自分の Ethereum アカウントの公開キーと秘密キーは、12 ワードのニーモニックから生成されます。 Azure Blockchain Service のコンソーシアム メンバーに接続すると、Azure Blockchain Development Kit for Ethereum によってニーモニックが生成されます。 開発キット拡張機能を使用して、エンドポイントのアドレスを取得できます。
 
 1. Visual Studio Code で、コマンド パレットを開きます (F1 キー)。
-1. **[Azure Blockchain: Retrieve private key]\(Azure Blockchain: 秘密キーの取得\)** を選択します。
+1. **[Azure Blockchain: Retrieve private key] (Azure Blockchain: 秘密キーを取得する)** を選択します。
 1. コンソーシアム メンバーへの接続時に保存したニーモニックを選択します。
 
     ![ニーモニックを選択するためのオプションを備えたコマンド パレット](./media/ethereum-logic-app/private-key.png)

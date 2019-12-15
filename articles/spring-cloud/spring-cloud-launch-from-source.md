@@ -1,19 +1,19 @@
 ---
-title: クイック スタート:ソース コードから Spring Cloud アプリケーションを起動する
-description: ソース コードから Azure Spring Cloud アプリケーションを直接起動する方法について説明します
+title: クイックスタート - ソース コードから Spring Cloud アプリケーションを起動する
+description: このクイックスタートでは、ソース コードから Azure Spring Cloud アプリケーションを直接起動する方法について説明します
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 6e18ac6c0fa97125b89ea5760a5d7da6c1545393
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721273"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708884"
 ---
-# <a name="launch-your-spring-cloud-application-from-source-code"></a>ソース コードから Spring Cloud アプリケーションを起動する
+# <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>クイック スタート:ソース コードから Spring Cloud アプリケーションを起動する
 
 Azure Spring Cloud では、Spring Cloud ベースのマイクロサービス アプリケーションを Azure で簡単に実行できます。
 

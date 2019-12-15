@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 52bbb52b13a3606e3ddc8deca2da8505233c9352
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: aa4ac011a7b6258958ac1ac176fd63b18a4ef856
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062023"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560180"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -98,6 +98,16 @@ Stream Analytics で Cosmos DB を出力として作成すると、情報の入�
 |Database        | Azure Cosmos DB データベース名。|
 |コンテナー名 | 使用するコンテナーの名前。 `MyContainer` は有効な入力の例です。`MyContainer` という 1 つのコンテナーが存在する必要があります。  |
 |ドキュメント ID     | 省略可能。 挿入操作または更新操作の基にする必要がある固有キーとして使用される出力イベント内の列名。 空のままにすると、更新オプションはなく、すべてのイベントが挿入されます。|
+
+Cosmos DB 出力は、構成後に [INTO ステートメント](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics)の対象としてクエリで使用できます。 そのような Cosmos DB 出力を使用する場合は、[パーティション キーを明示的に設定する必要があります](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks)。 出力レコードには、Cosmos DB のパーティション キーの後に名前が付けられた大文字と小文字が区別される列が含まれている必要があります。 より多くの並列処理を実現するには、ステートメントで同じ列を使用する [PARTITION BY 句](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs)が必要になることがあります。
+
+**サンプル クエリ**:
+
+```SQL
+    SELECT TollBoothId, PartitionId
+    INTO CosmosDBOutput
+    FROM Input1 PARTITION BY PartitionId
+``` 
 
 ## <a name="error-handling-and-retries"></a>エラー処理と再試行
 

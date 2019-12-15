@@ -51,6 +51,10 @@
       href: concepts-custom-role-definition.md
     - name: デバイスのオンボード
       href: concepts-custom-providers-resourceonboarding.md
+    - name: カスタム プロバイダーの関連付け用の Azure Policy
+      href: concepts-custom-providers-built-in-policy.md
+    - name: マネージド アプリケーションの関連付け用の Azure Policy
+      href: concepts-managed-applications-built-in-policy.md
 - name: ハウツー ガイド
   items:
     - name: カスタム プロバイダー

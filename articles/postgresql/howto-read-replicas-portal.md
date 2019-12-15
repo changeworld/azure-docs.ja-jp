@@ -1,17 +1,17 @@
 ---
-title: Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを管理する
+title: 読み取りレプリカを管理する - Azure portal - Azure Database for PostgreSQL - 単一サーバー
 description: Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを管理する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 0ff6cd50a5a6cb1599a2248fbc61b0b6b307e791
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 5e031354d4695a1d7eb6f199e23e74b796273230
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995448"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770222"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを作成および管理する
 

@@ -1,24 +1,16 @@
 ---
-title: バックアップ アプリ - Azure App Service
-description: Azure App Service でアプリのバックアップを作成する方法を説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: アプリのバックアップ
+description: Azure App Service でアプリのバックアップを作成する方法を説明します。 手動またはスケジュールされたバックアップを実行します。 接続済データベースを含めることにより、バックアップをカスタマイズします。
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a56abbcb72afc1f45683259d3bd3bf13309cda07
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886061"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671660"
 ---
 # <a name="back-up-your-app-in-azure"></a>Azure でのアプリのバックアップ
 [Azure App Service](overview.md) のバックアップと復元の機能により、アプリのバックアップを手動またはスケジュール設定により簡単に作成できます。 バックアップが無期限に保持されるように構成できます。 以前の状態のスナップショットにアプリを復元するには、既存のアプリを上書きするか、別のアプリに対して復元を行います。

@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 08/07/2019
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 8b31a5ab716b58d167a0d16579b44aa7df95a0ff
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 684c067f393b1f6037e67d3b49a861341f3353c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232837"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706122"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -22,8 +22,8 @@ ms.locfileid: "74232837"
 Durable Functions では、現在次の言語をサポートしています。
 
 * **C#** : [プリコンパイル済みクラス ライブラリ](../functions-dotnet-class-library.md)と [C# スクリプト](../functions-reference-csharp.md)の両方。
-* **F#** : プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
 * **JavaScript**: Azure Functions ランタイムのバージョン 2.x でのみサポートされています。 Durable Functions 拡張機能のバージョン 1.7.0 以降が必要です。 
+* **F#** : プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
 
 Durable Functions では、すべての [Azure Functions 言語](../supported-languages.md)をサポートすることを目標としています。 追加言語をサポートするための最新の作業状況については、[Durable Functions の問題の一覧](https://github.com/Azure/azure-functions-durable-extension/issues)を参照してください。
 
@@ -38,7 +38,7 @@ Durable Functions の主なユース ケースは、サーバーレス アプリ
 * [非同期 HTTP API シリーズ](#async-http)
 * [監視](#monitoring)
 * [人による操作](#human)
-* [アグリゲーター](#aggregator)
+* [アグリゲーター (ステートフル エンティティ)](#aggregator)
 
 ### <a name="chaining"></a>パターン #1: 関数チェーン
 
@@ -48,7 +48,9 @@ Durable Functions の主なユース ケースは、サーバーレス アプリ
 
 次の例に示すように、Durable Functions を使用して、関数チェーン パターンを簡潔に実装できます。
 
-#### <a name="c"></a>C#
+この例では、`F1`、`F2`、`F3`、および `F4` という値が、関数アプリ内の他の関数の名前です。 通常の命令型のコーディング構造を使用して、制御フローを実装できます。 コードは、上から下に実行されます。 コードに条件文やループなどの既存言語の制御フロー セマンティクスを含めることができます。 `try`/`catch`/`finally` ブロックに、エラー処理ロジックを含めることができます。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Chaining")]
@@ -69,25 +71,31 @@ public static async Task<object> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
+`context` パラメーターを使用して、他の関数を名前で呼び出し、パラメーターを渡して、関数の出力を返すことができます。 コードが `await` を呼び出すたびに Durable Functions フレームワークは、現在の関数インスタンスの進行状況にチェックポイントを設定します。 プロセスまたは仮想マシンが実行途中でリサイクルされる場合、関数インスタンスは直前の `await` 呼び出しから再開されます。 詳細については、次のセクション (パターン #2: ファンアウト/ファンイン) を参照してください。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
-    const x = yield context.df.callActivity("F1");
-    const y = yield context.df.callActivity("F2", x);
-    const z = yield context.df.callActivity("F3", y);
-    return    yield context.df.callActivity("F4", z);
+    try {
+        const x = yield context.df.callActivity("F1");
+        const y = yield context.df.callActivity("F2", x);
+        const z = yield context.df.callActivity("F3", y);
+        return    yield context.df.callActivity("F4", z);
+    } catch (error) {
+        // Error handling or compensation goes here.
+    }
 });
 ```
 
-この例では、`F1`、`F2`、`F3`、および `F4` という値が、関数アプリ内の他の関数の名前です。 通常の命令型のコーディング構造を使用して、制御フローを実装できます。 コードは、上から下に実行されます。 コードに条件文やループなどの既存言語の制御フロー セマンティクスを含めることができます。 `try`/`catch`/`finally` ブロックに、エラー処理ロジックを含めることができます。
-
-`context` パラメーター [IDurableOrchestrationContext] \(.NET\) および `context.df` オブジェクト (JavaScript) を使用して、名前で他の関数を呼び出し、パラメーターを渡して、関数の出力を受け取ることができます。 コードで `await` (C#) または `yield` (JavaScript) が呼び出されるたびに Durable Functions フレームワークによって、現在の関数インスタンスの進行状況に対するチェックポイントが設定されます。 プロセスまたは VM が実行途中でリサイクルされる場合、関数インスタンスは直前の `await` または `yield` 呼び出しから再開されます。 詳細については、次のセクション (パターン #2: ファンアウト/ファンイン) を参照してください。
+`context.df` オブジェクトを使用して、他の関数を名前で呼び出し、パラメーターを渡して、関数の出力を返すことができます。 コードが `yield` を呼び出すたびに Durable Functions フレームワークは、現在の関数インスタンスの進行状況にチェックポイントを設定します。 プロセスまたは仮想マシンが実行途中でリサイクルされる場合、関数インスタンスは直前の `yield` 呼び出しから再開されます。 詳細については、次のセクション (パターン #2: ファンアウト/ファンイン) を参照してください。
 
 > [!NOTE]
-> JavaScript の `context` オブジェクトは、[IDurableOrchestrationContext] パラメーターだけではなく、[関数コンテキスト](../functions-reference-node.md#context-object)全体を表しています。
+> JavaScript の `context` オブジェクトは、[関数コンテキスト](../functions-reference-node.md#context-object)全体を表しています。 Durable Functions コンテキストには、メイン コンテキストの `df` プロパティを使用してアクセスします。
+
+---
 
 ### <a name="fan-in-out"></a>パターン #2: ファンアウト/ファンイン
 
@@ -99,7 +107,7 @@ module.exports = df.orchestrator(function*(context) {
 
 Durable Functions 拡張機能では、比較的単純なコードでこのパターンを処理します。
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("FanOutFanIn")]
@@ -124,7 +132,11 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
+ファンアウト作業は、`F2` 関数の複数のインスタンスに分散されます。 動的タスク リストを使用して、この作業が追跡されます。 `Task.WhenAll` が呼び出され、すべての呼び出された関数が終了するまで待機します。 その後、`F2` 関数の出力が動的タスク リストから集計され、`F3` 関数に渡されます。
+
+`Task.WhenAll` の `await` 呼び出しの際に設定される自動チェックポイントによって、実行途中でクラッシュや再起動が発生した場合でも、既に完了したすべてのタスクをやり直す必要がなくなります。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -146,9 +158,11 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-ファンアウト作業は、`F2` 関数の複数のインスタンスに分散されます。 動的タスク リストを使用して、この作業が追跡されます。 .NET `Task.WhenAll` API または JavaScript `context.df.Task.all` API が呼び出され、呼び出された関数がすべて終了するまで待機します。 その後、`F2` 関数の出力が動的タスク リストから集計され、`F3` 関数に渡されます。
+ファンアウト作業は、`F2` 関数の複数のインスタンスに分散されます。 動的タスク リストを使用して、この作業が追跡されます。 `context.df.Task.all` API が呼び出され、すべての呼び出された関数が終了するまで待機します。 その後、`F2` 関数の出力が動的タスク リストから集計され、`F3` 関数に渡されます。
 
-`Task.WhenAll` または `context.df.Task.all` の `await` 呼び出しまたは `yield` 呼び出しの際に設定される自動チェックポイントによって、実行途中でクラッシュや再起動が発生した場合でも、既に完了したすべてのタスクをやり直す必要がなくなります。
+`context.df.Task.all` の `yield` 呼び出しの際に設定される自動チェックポイントによって、実行途中でクラッシュや再起動が発生した場合でも、既に完了したすべてのタスクをやり直す必要がなくなります。
+
+---
 
 > [!NOTE]
 > まれな状況ですが、アクティビティ関数の完了後、完了がオーケストレーション履歴に保存される前の時間帯にクラッシュが発生する可能性があります。 この場合、アクティビティ関数は、プロセス復旧後に最初から再実行されます。
@@ -200,11 +214,11 @@ Durable Functions 拡張機能には、長時間実行されるオーケスト�
 
 ![監視パターンの図](./media/durable-functions-concepts/monitor.png)
 
-数行のコードで、Durable Functions を使用して任意のエンドポイントを観察する複数のモニターを作成できます。 条件が満たされたときにこれらのモニターによって実行を終了するか、`IDurableOrchestrationClient` によってモニターを終了できます。 特定の条件に基づいてモニターの `wait` 間隔を変更できます (指数関数的バックオフなど)。 
+数行のコードで、Durable Functions を使用して任意のエンドポイントを観察する複数のモニターを作成できます。 条件が満たされたときにこれらのモニターによって実行を終了するか、別の関数から持続的オーケストレーション クライアントを使用してモニターを終了できます。 特定の条件に基づいてモニターの `wait` 間隔を変更できます (指数関数的バックオフなど)。 
 
 次のコードでは、基本的なモニターが実装されます。
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("MonitorJobStatus")]
@@ -234,7 +248,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -262,7 +276,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-要求が受信されると、そのジョブ ID 用の新しいオーケストレーション インスタンスが作成されます。 インスタンスは、条件が満たされてループが終了するまで、状態をポーリングします。 ポーリング間隔は、永続タイマーによって制御されます。 その後、さらに作業を実行するか、オーケストレーションを終了できます。 `context.CurrentUtcDateTime` (.NET) または `context.df.currentUtcDateTime` (JavaScript) が `expiryTime` を超えると、モニターは終了します。
+---
+
+要求が受信されると、そのジョブ ID 用の新しいオーケストレーション インスタンスが作成されます。 インスタンスは、条件が満たされてループが終了するまで、状態をポーリングします。 ポーリング間隔は、永続タイマーによって制御されます。 その後、さらに作業を実行するか、オーケストレーションを終了できます。 `nextCheck` が `expiryTime` を超えると、モニターが終了します。
 
 ### <a name="human"></a>パターン #5: 人による操作
 
@@ -276,7 +292,7 @@ module.exports = df.orchestrator(function*(context) {
 
 次の例では、人による操作パターンを示すための承認プロセスを作成しています。
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalWorkflow")]
@@ -303,7 +319,9 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 のみ)
+永続タイマーを作成するために、`context.CreateTimer` が呼び出されます。 通知は `context.WaitForExternalEvent` が受け取ります。 その後、エスカレーションする (タイムアウトが先に発生した場合) か承認を処理する (タイムアウト前に承認を得た場合) かを決定するために、`Task.WhenAny` が呼び出されます。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -325,9 +343,19 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-永続タイマーを作成するために、`context.CreateTimer` (.NET) または `context.df.createTimer` (JavaScript) が呼び出されます。 通知は `context.WaitForExternalEvent` (.NET) または `context.df.waitForExternalEvent` (JavaScript) が受け取ります。 その後、エスカレーションする (タイムアウトが先に発生した場合) か承認を処理する (タイムアウト前に承認を得た場合) かを決定するために、`Task.WhenAny` (.NET) または `context.df.Task.any` (JavaScript) が呼び出されます。
+永続タイマーを作成するために、`context.df.createTimer` が呼び出されます。 通知は `context.df.waitForExternalEvent` が受け取ります。 その後、エスカレーションする (タイムアウトが先に発生した場合) か承認を処理する (タイムアウト前に承認を得た場合) かを決定するために、`context.df.Task.any` が呼び出されます。
 
-外部クライアントでは、[組み込みの HTTP API](durable-functions-http-api.md#raise-event) を使用するか、別の関数からの `RaiseEventAsync` (.NET) または `raiseEvent` (JavaScript) メソッドを使用して、待機中のオーケストレーター関数にイベント通知を配信できます。
+---
+
+外部クライアントでは、[組み込みの HTTP API](durable-functions-http-api.md#raise-event) を使用して、待機中のオーケストレーター関数にイベント通知を配信できます。
+
+```bash
+curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
+```
+
+別の関数から持続的オーケストレーション クライアントを使用してイベントを発生させることもできます。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("RaiseEventToOrchestration")]
@@ -340,6 +368,8 @@ public static async Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -350,11 +380,9 @@ module.exports = async function (context) {
 };
 ```
 
-```bash
-curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/ApprovalEvent -H "Content-Type: application/json"
-```
+---
 
-### <a name="aggregator"></a>パターン #6:アグリゲーター
+### <a name="aggregator"></a>パターン #6:アグリゲーター (ステートフル エンティティ)
 
 6 番目のパターンは、ある期間のイベント データを 1 つのアドレス可能な*エンティティ* に集計することに関連しています。 このパターンでは、集計されるデータは、複数のソースから取得されるか、バッチで配信されるか、または長期間にわたって分散される可能性があります。 アグリゲーターがイベント データの到着時にイベント データに対してアクションを行ったり、外部クライアントが集計されたデータをクエリする必要が生じたりする場合があります。
 
@@ -363,6 +391,8 @@ curl -d "true" http://localhost:7071/runtime/webhooks/durabletask/instances/{ins
 このパターンを通常のステートレス関数で実装しようとする際に注意が必要な点は、同時実行制御が大きな課題となることです。 複数のスレッドが同時に同じデータを変更することに注意する必要があるだけでなく、アグリゲーターが一度に 1 つの VM 上でのみ実行されるようにすることも注意する必要があります。
 
 [持続エンティティ](durable-functions-entities.md)を使用すると、このパターンを単一の関数として簡単に実装できます。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Counter")]
@@ -385,26 +415,6 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-```javascript
-const df = require("durable-functions");
-
-module.exports = df.entity(function(context) {
-    const currentValue = context.df.getState(() => 0);
-    switch (context.df.operationName) {
-        case "add":
-            const amount = context.df.getInput();
-            context.df.setState(currentValue + amount);
-            break;
-        case "reset":
-            context.df.setState(0);
-            break;
-        case "get":
-            context.df.return(currentValue);
-            break;
-    }
-});
-```
-
 持続エンティティは、.NET のクラスとしてモデル化することもできます。 このモデルは、操作の一覧が固定されていて、サイズが大きくなった場合に役立ちます。 次の例は、.NET クラスおよびメソッドを使用した `Counter` エンティティの同等の実装です。
 
 ```csharp
@@ -425,7 +435,33 @@ public class Counter
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.entity(function(context) {
+    const currentValue = context.df.getState(() => 0);
+    switch (context.df.operationName) {
+        case "add":
+            const amount = context.df.getInput();
+            context.df.setState(currentValue + amount);
+            break;
+        case "reset":
+            context.df.setState(0);
+            break;
+        case "get":
+            context.df.return(currentValue);
+            break;
+    }
+});
+```
+
+---
+
 クライアントは、[エンティティ クライアント バインディング](durable-functions-bindings.md#entity-client)を使用して、エンティティ関数の*操作*をエンキューすることができます ("シグナル通知" とも呼ばれる)。
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -445,6 +481,7 @@ public static async Task Run(
 > [!NOTE]
 > 動的に生成されたプロキシは、.NET においてタイプセーフな方法でシグナル通知エンティティに対して使用することもできます。 シグナル通知に加えて、クライアントは、オーケストレーション クライアント バインディングで[タイプ セーフのメソッド](durable-functions-bindings.md#entity-client-usage)を使用して、エンティティ関数の状態をクエリすることもできます。
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -455,6 +492,8 @@ module.exports = async function (context) {
     await context.df.signalEntity(entityId, "add", 1);
 };
 ```
+
+---
 
 エンティティ関数は、[Durable Functions 2.0](durable-functions-versions.md) 以降で使用できます。
 

@@ -2,28 +2,24 @@
 title: Microsoft ID プラットフォームでの認証 | Azure
 description: Microsoft ID プラットフォーム (v2.0) の認証の基本について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0ffe0773c943983fc098d41f56b21b898682b2a0
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927110"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843990"
 ---
 # <a name="authentication-basics"></a>認証の基本
 
@@ -148,7 +144,7 @@ Web アプリの開発者は、すべてのページまたは特定のページ�
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Web アプリでサインインが Azure AD に委任され、トークンが取得されるしくみ
 
 ユーザー認証は、ブラウザーを介して行われます。 OpenID プロトコルで、標準の HTTP プロトコル メッセージが使用されます。
-- Web アプリでは、HTTP 202 (リダイレクト) がブラウザーに送信され、Azure AD が使用されます。
+- Web アプリでは、Azure AD を使用するために HTTP 302 (リダイレクト) がブラウザーに送信されます。
 - ユーザーが認証されると、Azure AD では、ブラウザーからリダイレクトを使用して Web アプリにトークンが送信されます。
 - リダイレクトは、リダイレクト URI の形式で Web アプリから提供されます。 このリダイレクト URI は、Azure AD アプリケーション オブジェクトに登録されます。 アプリケーションは複数の URL でデプロイされる可能性があるため、リダイレクト URI は複数存在する場合があります。 そのため、Web アプリで、使用するリダイレクト URI も指定する必要があります。
 - Azure AD では、Web アプリから送信されるリダイレクト URI が、アプリの登録されたリダイレクト URI のいずれかであることを確認します。
@@ -159,7 +155,7 @@ Web アプリの開発者は、すべてのページまたは特定のページ�
 
 デスクトップ アプリケーションとモバイル アプリケーションでは、認証のために、埋め込み Web コントロールまたはシステム ブラウザーを使用できます。 次の図は、デスクトップ アプリまたはモバイル アプリで Microsoft 認証ライブラリ (MSAL) を使用してアクセス トークンを取得し、Web API を呼び出す方法を示しています。
 
-![デスクトップ アプリのしくみ](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
+![デスクトップ アプリのしくみ](media/authentication-scenarios/desktop-app-how-it-appears-to-be.png)
 
 MSAL では、ブラウザーを使用してトークンを取得し、Web アプリと同様、認証を Azure AD に委任します。
 

@@ -1,22 +1,18 @@
 ---
 title: トラブルシューティング
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/25/2019
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 5d327dd1041172bc546b2e0cb5ec3a140f401d84
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 64b9cda61e5af3e8b9ea52477b5bf4fa879f48e6
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072192"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483861"
 ---
-# <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
+# <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces のトラブルシューティング
 
 このガイドでは、Azure Dev Spaces 使用時の一般的な問題についての情報を示します。
 
@@ -258,6 +254,21 @@ Service cannot be started.
 
 このエラーは、AKS ノードでマルチステージ ビルドをサポートしていない旧バージョンの Docker が実行されているために発生します。 マルチステージ ビルドを回避するには、Dockerfile を書き直します。
 
+### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>開発マシンに接続するときに、ネットワーク トラフィックが AKS クラスターに転送されない
+
+[Azure Dev Spaces を使用して AKS クラスターを開発マシンに接続する](how-to/connect.md)と、開発マシンと AKS クラスターの間でネットワーク トラフィックが転送されないという問題が発生する可能性があります。
+
+開発マシンを AKS クラスターに接続すると、Azure Dev Spaces は開発マシンの `hosts` ファイルを変更することによって、お使いの AKS クラスターと開発マシンの間でネットワーク トラフィックを転送します。 Azure Dev Spaces は、ホスト名として置き換える Kubernetes サービスのアドレスを使用して、`hosts` にエントリを作成します。 このエントリは、開発マシンと AKS クラスターの間でネットワーク トラフィックを転送するために、ポート フォワーディングと共に使用されます。 開発マシン上のサービスが、置き換える Kubernetes サービスのポートと競合する場合、Azure Dev Spaces は Kubernetes サービスのネットワーク トラフィックを転送できません。 たとえば、*Windows BranchCache* サービスは通常 *0.0.0.0:80* にバインドされます。これにより、すべてのローカル IP でポート 80 の競合が発生します。
+
+この問題を解決するには、置き換えようとしている Kubernetes サービスのポートと競合する、あらゆるサービスやプロセスを停止する必要があります。 *netstat* などのツールを使用して、開発マシン上のどのサービスまたはプロセスが競合しているかを調べることができます。
+
+たとえば、*Windows BranchCache* サービスを停止および無効にするには、次のようにします。
+* コマンド プロンプトで `services.msc` を実行します。
+* *[BranchCache]* を右クリックし、 *[プロパティ]* を選択します。
+* *[停止]* をクリックします。
+* 必要に応じて、 *[スタートアップの種類]* を *[無効]* に設定して無効にすることができます。
+* Click *OK*.
+
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Visual Studio と Visual Studio Code を Azure Dev Spaces で使用するときに発生する一般的な問題
 
 ### <a name="error-required-tools-and-configurations-are-missing"></a>エラー "必要なツールと構成が見つからない"
@@ -453,3 +464,14 @@ kubectl -n my-namespace delete pod --all
 ```
 
 ポッドの再起動後、Azure Dev Spaces で既存の名前空間を使用できるようになります。
+
+### <a name="enable-azure-dev-spaces-on-aks-cluster-with-restricted-egress-traffic-for-cluster-nodes"></a>クラスター ノードのエグレス トラフィックが制限されている AKS クラスターで Azure Dev Spaces を有効にする
+
+クラスターノードからのエグレス トラフィックが制限されている AKS クラスターで Azure Dev Spaces を有効にするには、次の FQDN を許可する必要があります。
+
+| FQDN                                    | Port      | 用途      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS: 443 | Linux Alpine とその他の Azure Dev Spaces イメージをプルします |
+| gcr.io | HTTP:443 | helm/tiller イメージをプルします|
+| storage.googleapis.com | HTTP:443 | helm/tiller イメージをプルします|
+| azds-<guid>.<location>.azds.io | HTTPS: 443 | コントローラーのための Azure Dev Spaces のバックエンド サービスと通信します。 正確な FQDN は、%USERPROFILE%\.azds\settings.json の "dataplaneFqdn" にあります|

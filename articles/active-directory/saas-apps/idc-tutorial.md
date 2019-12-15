@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df8dfc72dea9289fc13d648b05b59f6d1bd9b3e0
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 9fc7ccb1d619e36990fbc1b654a2b7be36a287e1
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273585"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705997"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-idc"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IDC の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "71273585"
 
 * IDC にアクセスできる Azure AD ユーザーを制御する。
 * ユーザーが自分の Azure AD アカウントを使用して IDC に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -93,7 +93,7 @@ IDC で Azure AD SSO を構成してテストするには、次の構成要素�
     **[サインオン URL]** テキスト ボックスに URL として「`https://www.idc.com/saml-welcome/<SamlWelcomeCode>`」と入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 この値を取得するには、[IDC クライアント サポート チーム](mailto:webchanneldev@idc.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、IDC クライアント サポート チームにお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -135,7 +135,7 @@ IDC で Azure AD SSO を構成してテストするには、次の構成要素�
 
 ## <a name="configure-idc-sso"></a>IDC SSO を構成する
 
-**IDC** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [IDC サポート チーム](mailto:webchanneldev@idc.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**IDC** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を IDC サポート チームに送信する必要があります。 SAML SSO 接続が両側で正しく設定されるように、IDC によってこの設定が構成されます。
 
 ### <a name="create-idc-test-user"></a>IDC テスト ユーザーを作成する
 

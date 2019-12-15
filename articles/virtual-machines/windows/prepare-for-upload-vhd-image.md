@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2019
 ms.author: genli
-ms.openlocfilehash: 4b6fea63cd56ddee7eaeaed50a74a01cc8549f0a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6db0f6c5f65967dd42d6ed9a8a1e50364ced094d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032935"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672469"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 
@@ -356,7 +356,7 @@ VM が正常であり、セキュリティで保護されており、RDP アク�
 12. 物理コンポーネントまたはその他の仮想化テクノロジに関連する、その他のサードパーティ ソフトウェアまたはドライバーをアンインストールします。
 
 ### <a name="install-windows-updates"></a>Windows 更新プログラムのインストール
-理想的には、継続して*パッチ レベル*でマシンを更新する必要があります。 これを実行できない場合は、以下の更新プログラムがインストールされていることを確認してください。
+理想的には、継続して*パッチ レベル*でマシンを更新する必要があります。 これを実行できない場合は、以下の更新プログラムがインストールされていることを確認してください。 最新の更新プログラムを入手するには、Windows Update の履歴ページを参照してください。[Windows 10 および Windows Server 2019](https://support.microsoft.com/help/4000825)、[Windows 8.1 および Windows Server 2012 R2](https://support.microsoft.com/help/4009470)、[Windows 7 SP1 および Windows Server 2008 R2 SP1](https://support.microsoft.com/help/4009469)。
 
 | コンポーネント               | Binary         | Windows 7 SP1、Windows Server 2008 R2 SP1 | Windows 8、Windows Server 2012               | Windows 8.1、Windows Server 2012 R2 | Windows 10 v1607、Windows Server 2016 v1607 | Windows 10 v1703    | Windows 10 v1709、Windows Server 2016 v1709 | Windows 10 v1803、Windows Server 2016 v1803 |
 |-------------------------|----------------|-------------------------------------------|---------------------------------------------|------------------------------------|---------------------------------------------------------|----------------------------|-------------------------------------------------|-------------------------------------------------|

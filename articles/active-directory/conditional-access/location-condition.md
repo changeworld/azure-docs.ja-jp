@@ -1,23 +1,23 @@
 ---
-title: Azure Active Directory 条件付きアクセスの場所の条件の概要 | Microsoft Docs
+title: Azure Active Directory の条件付きアクセスの場所の条件
 description: ユーザーのネットワークの場所に基づき、場所の条件を使用してクラウド アプリへのアクセスを制御する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 799a994e1351f62fac9f5a07060658cea60c9274
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74065733"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380290"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスの場所の条件の概要 
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声をオーディオ ファイルに合成する (C# (.NET)) - Speech Service
+title: クイック スタート:音声をオーディオ ファイルに合成する、C# (.NET) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 24f44d02170866645711cb302453a009d2935fbf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0b34c65f6b7003cbdd4d99b684fe2b5a3249c410
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505101"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817917"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -91,7 +91,7 @@ using (var synthesizer = new SpeechSynthesizer(config, fileOutput))
 
 ## <a name="synthesize-text-using-speaktextasync"></a>SpeakTextAsync を使用してテキストを合成する
 
-`SpeechSynthesizer` オブジェクトから、`SpeakTextAsync()` メソッドの呼び出しを行います。 このメソッドは、音声に変換するテキストを Speech Service に送信します。 `config.VoiceName` が明示的に指定されていない場合、`SpeechSynthesizer` は既定の音声を使用します。
+`SpeechSynthesizer` オブジェクトから、`SpeakTextAsync()` メソッドを呼び出します。 このメソッドは、音声に変換するテキストを Speech サービスに送信します。 `config.VoiceName` が明示的に指定されていない場合、`SpeechSynthesizer` は既定の音声を使用します。
 
 using ステートメント内に、このコードを追加します。
 ````C#

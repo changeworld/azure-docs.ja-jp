@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Speech SDK for C# (Xamarin) プラットフォームの設定 - Speech Service
+title: クイック スタート:Speech SDK for C# (Xamarin) プラットフォームの設定 - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Speech Services SDK を使用して C# Xamarin のプラットフォームを設定するには、このガイドを使用します。
+description: Speech サービス SDK を使用して C# Xamarin のプラットフォームを設定するには、このガイドを使用します。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 3a86e1ffa581e1a8677e0a5d6db4b47b206e5490
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 498aaa03544acc5a7c8399f1928129b70a7114e9
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504357"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816513"
 ---
 このガイドでは、[Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin) 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。これは、.NET を使用する iOS、Android、および Windows 用の最新の高パフォーマンス アプリケーションを構築するためのオープン ソース プラットフォームです。 
 

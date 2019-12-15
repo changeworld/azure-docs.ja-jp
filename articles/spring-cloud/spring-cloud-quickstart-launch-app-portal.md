@@ -1,17 +1,17 @@
 ---
-title: クイック スタート:Azure portal を使用して Azure Spring Cloud アプリケーションを起動する
-description: Azure portal を使用して、サンプル アプリケーションを Azure Spring Cloud にデプロイします。
+title: クイックスタート - Azure portal を使用して Azure Spring Cloud アプリケーションを起動する
+description: このクイックスタートでは、Azure portal を使用して、サンプル アプリケーションを Azure Spring Cloud にデプロイします。
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 8a34dcd31ba15ed949fa0a50ec904da96a048a7d
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 891952000f633d7d873c6d76c475916acc8ac4ec
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560059"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708856"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Spring Cloud アプリケーションを起動する
 
@@ -72,13 +72,17 @@ az extension add --name spring-cloud
 
 1. サービスの **[概要]** ページに移動し、 **[Config Server]\(構成サーバー\)** を選択します。
 
-1. **[既定のリポジトリ]** セクションで **[URI]** を "https\://github.com/Azure-Samples/piggymetrics" に設定し、 **[ラベル]** を "構成" に設定して、 **[適用]** を選択し、変更を保存します。
+1. **[既定のリポジトリ]** セクションで **[URI]** を "https\://github.com/Azure-Samples/piggymetrics" に設定します。
+
+1. **[ラベル]** を "構成" に設定します。
+
+1. **[適用]** を選択して変更を保存します。
 
     ![ASC ポータルのスクリーンショット](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>マイクロサービス アプリケーションのビルドとデプロイ
 
-1. [Azure Cloudshell](https://shell.azure.com) を開き、サンプル アプリのリポジトリをご利用のローカル コンピューターにクローンします。  ここでは、まず、`source-code` という名前の一時ディレクトリを作成してから、アプリを複製します。
+1. [Azure Cloud Shell](https://shell.azure.com) を開き、サンプル アプリのリポジトリをご利用のローカル コンピューターにクローンします。  ここでは、まず、`source-code` という名前の一時ディレクトリを作成してから、アプリを複製します。
 
     ```azurecli
     mkdir source-code

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: d18822cf7d4827016a55fa1b1a1408a003e933ab
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f693da11b5b850d8ebca637b426ac0748a4127ef
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035973"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232421"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 

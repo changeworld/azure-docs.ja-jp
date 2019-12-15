@@ -1,20 +1,19 @@
 ---
-title: エラーと例外の処理 - Azure Logic Apps
+title: エラーと例外の処理
 description: Azure Logic Apps におけるエラーと例外の処理パターンについて説明します。
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/31/2018
 ms.topic: article
-ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 781abb1ce92a9d96a93ac0c6b04d55075d752db8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208179"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792073"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps におけるエラーと例外の処理
 
@@ -28,7 +27,7 @@ ms.locfileid: "70208179"
 
 再試行ポリシーの種類を次に示します。 
 
-| Type | 説明 | 
+| 種類 | 説明 | 
 |------|-------------| 
 | **既定値** | このポリシーは、"*指数関数的に増加*" する間隔で、最大 4 回の再試行を送信します。間隔の増加係数は 7.5 秒で、下限と上限はそれぞれ 5 秒と 45 秒になります。 | 
 | **指数間隔**  | このポリシーは、指数関数的に増加する範囲から選択されるランダムな間隔を待ち時間として、次の要求を送信します。 | 
@@ -70,7 +69,7 @@ ms.locfileid: "70208179"
 
 *必須*
 
-| 値 | Type | 説明 |
+| 値 | 種類 | 説明 |
 |-------|------|-------------|
 | <*retry-policy-type*> | string | 使用する再試行ポリシーの種類: `default`、`none`、`fixed`、または `exponential` | 
 | <*retry-interval*> | string | 再試行間隔。この値には [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)を使用する必要があります。 既定の最小間隔は `PT5S` で、最大間隔は `PT1D` です。 指数の間隔ポリシーを使用するとき、最小と最大にさまざまな値を指定できます。 | 
@@ -79,7 +78,7 @@ ms.locfileid: "70208179"
 
 *省略可能*
 
-| 値 | Type | 説明 |
+| 値 | 種類 | 説明 |
 |-------|------|-------------|
 | <*minimum-interval*> | string | 指数間隔ポリシーに関して、ランダムに選択される間隔の最小値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 | 
 | <*maximum-interval*> | string | 指数間隔ポリシーに関して、ランダムに選択される間隔の最大値です ([ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations))。 | 

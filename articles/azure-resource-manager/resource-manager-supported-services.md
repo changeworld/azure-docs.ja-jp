@@ -1,23 +1,14 @@
 ---
-title: Azure リソース プロバイダーとリソースの種類 | Microsoft Docs
+title: リソース プロバイダーとリソースの種類
 description: リソース マネージャーをサポートするリソース プロバイダー、そのスキーマと利用可能な API バージョン、およびリソースをホストできるリージョンについて説明します。
-services: azure-resource-manager
-documentationcenter: na
-author: tfitzmac
-ms.assetid: 3c7a6fe4-371a-40da-9ebe-b574f583305b
-ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/29/2019
-ms.author: tomfitz
-ms.openlocfilehash: 2cbc8843d41b760c52b9ca5ccfb6d940bd454136
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 73cc053ab2ca19f42e3c45b8350d1e2baedfcc7a
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164817"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422219"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure リソース プロバイダーと種類
 
@@ -43,9 +34,10 @@ ms.locfileid: "70164817"
 すべてのリソース プロバイダー、およびサブスクリプションの登録状態を表示するには、以下を実行します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[すべてのサービス]** を選択します。
+2. Azure portal のメニューで **[すべてのサービス]** を選択します。
 
-    ![サブスクリプションの選択](./media/resource-manager-supported-services/select-subscriptions.png)
+    ![サブスクリプションの選択](./media/resource-manager-supported-services/select-all-services.png)
+
 3. **[すべてのサービス]** ボックスで **"サブスクリプション (subscription)"** と入力し、 **[サブスクリプション]** を選択します。
 4. サブスクリプションの一覧から、表示するサブスクリプションを選択します。
 5. **[リソース プロバイダー]** を選択し、利用可能なリソース プロバイダーの一覧を表示します。
@@ -59,11 +51,11 @@ ms.locfileid: "70164817"
 特定のリソース プロバイダーの情報を表示するには、以下を実行します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[すべてのサービス]** を選択します。
-
-    ![[すべてのサービス] を選択する](./media/resource-manager-supported-services/more-services.png)
-
+2. Azure portal のメニューで **[すべてのサービス]** を選択します。
 3. **[すべてのサービス]** ボックスで **"リソース エクスプ ローラー (resource explorer)"** と入力し、 **[リソース エクスプ ローラー]** を選択します。
+
+    ![[すべてのサービス] を選択する](./media/resource-manager-supported-services/select-resource-explorer.png)
+
 4. 右矢印を選択して **[プロバイダー]** を展開します。
 
     ![プロバイダーの選択](./media/resource-manager-supported-services/select-providers.png)

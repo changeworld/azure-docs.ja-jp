@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
+title: ビジネス継続性 - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL を使用する場合のビジネス継続性 (ポイント インタイム リストア、データ センターの停止、geo リストア) について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 3623611bcd22486d90651c6e8b6880c6de1de0c5
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 13fbab52c16fcde72da8073b429fe6fb4665c21b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950097"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763880"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
 

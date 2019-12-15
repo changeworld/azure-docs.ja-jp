@@ -2,18 +2,18 @@
 title: データの移行:オンプレミスの Apache Hadoop から Azure HDInsight
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのデータ移行のベスト プラクティスについて説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/08/2019
-ms.author: hrasheed
-ms.openlocfilehash: 30f7ae2eeb928e3f8dc71baed20d9c9b2129d1f9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 11/22/2019
+ms.openlocfilehash: 41112359408497d84243ed9bb06f396acf008dc5
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494987"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666003"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - データ移行のベスト プラクティス
 
@@ -23,16 +23,20 @@ ms.locfileid: "73494987"
 
 データをオンプレミスから Azure 環境に移行するには、主に次の 2 つのオプションがあります。
 
-1.  TLS を使用してネットワーク経由でデータを転送する
-    1. インターネット経由 - Azure Storage Explorer、AzCopy、Azure Powershell、Azure CLI などの複数のツールのいずれかを使用して、通常のインターネット接続経由でデータを Azure ストレージに転送できます。  詳しくは、「[Azure Storage との間でのデータの移動](../../storage/common/storage-moving-data.md)」をご覧ください。
-    2. ExpressRoute - ExpressRoute は、Microsoft のデータセンターとオンプレミスや共用施設にあるインフラストラクチャの間にプライベート接続を作成できる Azure サービスです。 ExpressRoute 接続はパブリックなインターネットを経由しないため、インターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 詳しくは、「[ExpressRoute 回線の作成と変更](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)」をご覧ください。
-    1. Data Box オンライン データ転送 - Data Box Edge と Data Box Gateway は、ネットワーク ストレージのゲートウェイとして機能して自社サイトと Azure の間でデータを管理するオンライン データ転送製品です。 Data Box Edge は、Azure との間でデータを転送する機能と、人工知能 (AI) に対応したエッジ計算によってデータを処理する機能とを備えたオンプレミスのネットワーク デバイスです。 Data Box Gateway は、ストレージ ゲートウェイ機能を備えた仮想アプライアンスです。 詳しくは、「[Azure Data Box のドキュメント - オンライン転送](https://docs.microsoft.com/azure/databox-online/)」をご覧ください。
-1.  オフラインでのデータの発送
-    1. Data Box オフライン データ転送 - ネットワークを利用できない場合は、Data Box、Data Box Disk、Data Box Heavy の各デバイスを使えば、大量のデータを Azure に転送するのに役立ちます。 これらのオフライン データ転送デバイスは、貴社と Azure データセンターとの間で運送業者を介してやり取りされます。 転送中のデータは AES 暗号化を使って保護され、また、アップロード後はサニタイズ処理が適用され、データがデバイスから削除されます。 Data Box オフライン転送デバイスの詳細については、「[Azure Data Box のドキュメント - オフライン転送](https://docs.microsoft.com/azure/databox/)」を参照してください。 Hadoop クラスターの移行の詳細については、[Azure Data Box を使用したオンプレミス HDFS ストアから Azure Storage への移行](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)に関するページを参照してください。
+* TLS を使用してネットワーク経由でデータを転送する
+    * インターネット経由 - Azure Storage Explorer、AzCopy、Azure Powershell、Azure CLI などの複数のツールのいずれかを使用して、通常のインターネット接続経由でデータを Azure ストレージに転送できます。 詳細については、「[Azure Storage との間でのデータの移動](../../storage/common/storage-moving-data.md)」をご覧ください。
+
+    * ExpressRoute - ExpressRoute は、Microsoft のデータセンターとオンプレミスや共用施設にあるインフラストラクチャの間にプライベート接続を作成できる Azure サービスです。 ExpressRoute 接続はパブリックなインターネットを経由しないため、インターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 詳しくは、「[ExpressRoute 回線の作成と変更](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)」をご覧ください。
+
+    * Data Box オンライン データ転送 - Data Box Edge と Data Box Gateway は、ネットワーク ストレージのゲートウェイとして機能して自社サイトと Azure の間でデータを管理するオンライン データ転送製品です。 Data Box Edge は、Azure との間でデータを転送する機能と、人工知能 (AI) に対応したエッジ計算によってデータを処理する機能とを備えたオンプレミスのネットワーク デバイスです。 Data Box Gateway は、ストレージ ゲートウェイ機能を備えた仮想アプライアンスです。 詳しくは、「[Azure Data Box のドキュメント - オンライン転送](https://docs.microsoft.com/azure/databox-online/)」をご覧ください。
+
+* オフラインでのデータの発送
+
+    Data Box オフライン データ転送 - ネットワークを利用できない場合は、Data Box、Data Box Disk、Data Box Heavy の各デバイスを使えば、大量のデータを Azure に転送するのに役立ちます。 これらのオフライン データ転送デバイスは、貴社と Azure データセンターとの間で運送業者を介してやり取りされます。 転送中のデータは AES 暗号化を使って保護され、また、アップロード後はサニタイズ処理が適用され、データがデバイスから削除されます。 Data Box オフライン転送デバイスの詳細については、「[Azure Data Box のドキュメント - オフライン転送](https://docs.microsoft.com/azure/databox/)」を参照してください。 Hadoop クラスターの移行の詳細については、[Azure Data Box を使用したオンプレミス HDFS ストアから Azure Storage への移行](../../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md)に関するページを参照してください。
 
 次の表に、データ ボリュームとネットワーク帯域幅に基づくおおまかなデータ転送時間を示します。 データ移行に 3 週間以上かかることが予想される場合は Data Box を使用してください。
 
-|**データ量**|**ネットワーク帯域幅**||||
+|データ量|ネットワーク帯域幅||||
 |---|---|---|---|---|
 || **45 Mbps (T3)**|**100 Mbps**|**1 Gbps**|**10 Gbps**|
 |1 TB (テラバイト)|2 日|1 日| 2 時間|14 分|
@@ -47,9 +51,7 @@ ms.locfileid: "73494987"
 
 Apache Hadoop DistCp、Azure Data Factory、AzureCp などの Azure にネイティブなツールを使用して、ネットワーク経由でデータを転送できます。 同じ目的で、サード パーティ製ツール WANDisco も使用できます。 オンプレミスから Azure ストレージ システムへの継続的なデータ転送には、Apache Kafka Mirrormaker および Apache Sqoop を使用できます。
 
-
 ## <a name="performance-considerations-when-using-apache-hadoop-distcp"></a>Apache Hadoop DistCp を使用する場合のパフォーマンスに関する考慮事項
-
 
 DistCp は、 MapReduce マップ ジョブを使用して、データ転送、エラーの処理、およびそれらのエラー回復を行う Apache プロジェクトです。 ソース ファイルの一覧が、各マップ タスクに割り当てられます。 マップ タスクは、割り当て済みのすべてのファイルを宛先にコピーします。 いくつかの手法によって、DistCp のパフォーマンスを向上させることができます。
 
@@ -57,8 +59,9 @@ DistCp は、 MapReduce マップ ジョブを使用して、データ転送、�
 
 DistCp では、それぞれがほぼ同じバイト数をコピーするようにするために、マップ タスクを作成しようとしています。 既定では、DistCp ジョブは 20 個のマッパーを使用します。 Distcp に対して使用するマッパーを増やす (コマンド ラインで「m」パラメーターを指定する) と データ転送プロセス中の並列度が増加し、データ転送時間が減少します。 ただし、Mapper の数を増やすときに次の 2 つのことを考慮する必要があります。
 
-1. DistCp の最小粒度は 1 つのファイルです。 マッパーの数をソース ファイルの数より多く指定しても効果はなく、使用可能なクラスター リソースが浪費されます。
-1. マッパーの数を決定する場合はクラスターで使用可能な Yarn メモリを検討してください。 各マップ タスクは Yarn コンテナーとして起動されます。 負荷の大きい別のワークロードがクラスター上で実行中でない場合、マッパー数は m = (ワーカー ノードの数 \* worker ノードごとの YARN メモリ) / YARN コンテナーサイズという式で決定できます。 ただし、他のアプリケーションがメモリを使用している場合は、クラスターの YARN メモリで DistCp ジョブに対する部分のみを使用するように選択できます。
+* DistCp の最小粒度は 1 つのファイルです。 マッパーの数をソース ファイルの数より多く指定しても効果はなく、使用可能なクラスター リソースが浪費されます。
+
+* マッパーの数を決定する場合はクラスターで使用可能な Yarn メモリを検討してください。 各マップ タスクは Yarn コンテナーとして起動されます。 負荷の大きい別のワークロードがクラスター上で実行中でない場合、マッパー数は m = (ワーカー ノードの数 \* worker ノードごとの YARN メモリ) / YARN コンテナーサイズという式で決定できます。 ただし、他のアプリケーションがメモリを使用している場合は、クラスターの YARN メモリで DistCp ジョブに対する部分のみを使用するように選択できます。
 
 ### <a name="use-more-than-one-distcp-job"></a>複数の DistCp ジョブを使用する
 
@@ -102,9 +105,9 @@ Hive metastore はスクリプトを使用するか、DB のレプリケーシ�
 - オンプレミスの Hive metastore DB と HDInsight metastore DB の間でデータベース レプリケーションを設定します。
 - 「Hive MetaTool」を使用して、HDFS の url を WASB/ABFS/WASB または ADLS の url で置き換えます。たとえば次のようにします
 
-```bash
-./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
-```
+    ```bash
+    ./hive --service metatool -updateLocation hdfs://nn1:8020/ wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
+    ```
 
 ### <a name="apache-ranger"></a>Apache Ranger
 

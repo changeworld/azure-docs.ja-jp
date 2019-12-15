@@ -3,12 +3,12 @@ title: Java 関数を Azure Storage に接続する
 description: Queue storage の出力バインドを使用して、HTTP によってトリガーされる Java 関数を Azure Storage に接続する方法を学習します。
 ms.date: 10/14/2019
 ms.topic: quickstart
-ms.openlocfilehash: f9c3445efbe14c27cad9de62f5b46f50965e3145
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 98f49338f0df935347a26798aceccb80f9f43f50
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231207"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926899"
 ---
 # <a name="connect-your-java-function-to-azure-storage"></a>Java 関数を Azure Storage に接続する
 
@@ -118,7 +118,7 @@ mvn azure-functions:run
 ```
 
 > [!NOTE]  
-> host.json で拡張バンドルを有効にしていたため、スタートアップ時に[ストレージ バインド拡張機能](functions-bindings-storage-blob.md#packages---functions-2x)が他の Microsoft バインド拡張機能と共に自動的にダウンロードされ、インストールされました。
+> host.json で拡張バンドルを有効にしていたため、スタートアップ時に[ストレージ バインド拡張機能](functions-bindings-storage-blob.md#packages---functions-2x-and-higher)が他の Microsoft バインド拡張機能と共に自動的にダウンロードされ、インストールされました。
 
 前と同様に、新しいターミナル ウィンドウで cURL を使用して、コマンド ラインから関数をトリガーします。
 

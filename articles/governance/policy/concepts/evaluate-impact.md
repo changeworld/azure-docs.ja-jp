@@ -1,14 +1,14 @@
 ---
 title: 新しい Azure ポリシーの影響を評価する
-description: Azure 環境に新しいポリシーを導入するときの手順について説明します。
+description: Azure 環境に新しいポリシー定義を導入するときの手順について説明します。
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c1a3ea764aedec7de5eab1f564176eaafead70b
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959837"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463529"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>新しい Azure ポリシーの影響を評価する
 
@@ -71,6 +71,6 @@ Azure Policy は、Azure リソースをビジネス標準に合わせて管理�
 - [ポリシー定義の構造](./definition-structure.md)についてさらに学習します。
 - [ポリシー割り当ての構造](./assignment-structure.md)についてさらに学習します。
 - [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)方法を学習します。
+- [コンプライアンス データを取得する](../how-to/get-compliance-data.md)方法を学習します。
 - [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習します。
 - 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

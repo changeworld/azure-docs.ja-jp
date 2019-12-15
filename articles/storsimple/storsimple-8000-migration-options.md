@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 1e637f58b392b2de67a5ead9d57a6a87ab705b93
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d51891c076f1784fbddb88bfaed28ac1d889afdc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631611"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227761"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 シリーズのデータを移行するためのオプション 
 
@@ -67,7 +67,7 @@ Nasuni では簡単に移行できます ‐ 今すぐ開始しましょう http
 
 #### <a name="migrate-to-talon-fast"></a>Talon FAST に移行する
 
-StorSimple 5000-7000 をお使いのお客様は、Talon にすることで、StorSimple プラットフォームで得られていたメリット (無制限のクラウド リソースでサポートされた小さいオンサイト フットプリント) を、いっそう優れた機能で引き続き利用できます。  Talon FAST ソリューションでは、お客様はデータを移行して Azure に保持できますが、さらに小さいソフトウェア専用のオンサイト フットプリントが用意され、グローバル ファイル ロック、グローバル名前空間、マルチサイト コラボレーションなどのベネフィットが加わっています。  Talon は最先端の Azure エコシステム ソリューションであり、世界中のお客様が、オンプレミスのファイル サーバーのワークロードを、ユーザー ワークフローやエクスペリエンスを損なうことなく、統合された Azure ベースのフットプリントに移行しています。  
+StorSimple 5000-7000 をお使いのお客様は、Talon にすることで、StorSimple プラットフォームで得られていたメリット (無制限のクラウド リソースでサポートされた小さいオンサイト フットプリント) を、いっそう優れた機能で引き続き利用できます。  Talon FAST ソリューションでは、お客様はデータを移行して Azure に保持できますが、さらに小さいソフトウェア専用のオンサイト フットプリントが用意され、グローバル ファイル ロック、グローバル名前空間、マルチサイト コラボレーションなどのベネフィットが加わっています。  Talon は、世界中のお客様と協力して、そのオンプレミスのファイル サーバーのワークロードを、ユーザー ワークフローまたはエクスペリエンスを損なうことなく、統合された Azure ベースのフットプリントに移行するための有数の Azure エコシステム ソリューションです。  
 
 クラウド統合エンタープライズに発展する方法の詳細については、 https://www.talonstorage.com/alliances/microsoft-storsimple を参照してください。
 

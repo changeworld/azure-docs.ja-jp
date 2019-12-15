@@ -1,18 +1,18 @@
 ---
-title: 一時的なエラーを処理して Azure Database for MySQL に効率的に接続する | Microsoft Docs
+title: 一時的な接続エラー - Azure Database for MySQL
 description: 一時的な接続エラーを処理して Azure Database for MySQL に効率的に接続する方法について説明します。
 keywords: MySQL 接続,接続文字列,接続の問題,一時的なエラー,接続エラー,効率的に接続する
 author: jan-eng
 ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/09/2018
-ms.openlocfilehash: 4bc5281c891a9d4cd27a48aa365e6cfcec16ad82
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.date: 12/02/2019
+ms.openlocfilehash: b598fafbbfce9a2c0a824dd6530d07a5933a2873
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598266"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765208"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>一時的なエラーを処理して Azure Database for MySQL に効率的に接続する
 

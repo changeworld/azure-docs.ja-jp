@@ -1,21 +1,17 @@
 ---
-title: 値を格納するための変数を作成して管理する - Azure Logic Apps
+title: 値を格納するための変数を作成して管理する
 description: Azure Logic Apps で変数を使用して値を格納、管理する方法
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 0f7947e4a96a49e3a7a3b0059a1b20b21ac8cbd1
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 9b3ba7ff20e581988c3e862cff3bbf6d5ee96bf4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180790"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793170"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Azure Logic Apps で変数を使用して値を格納および管理する
 
@@ -286,7 +282,7 @@ ms.locfileid: "71180790"
 
    ![結果を送信するアクションの追加](./media/logic-apps-create-variables-store-values/send-email-results.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 ### <a name="test-your-logic-app"></a>ロジック アプリをテストする
 

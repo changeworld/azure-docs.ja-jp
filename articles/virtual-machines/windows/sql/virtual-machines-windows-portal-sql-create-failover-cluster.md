@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 08549935c7a0651709a08bef61624e4e436d4aad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084089"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792185"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -55,7 +55,7 @@ Azure Virtual Machines では、従量課金制 (PAYG) またはライセンス�
 
 ソフトウェア アシュアランスの Enterprise Agreement を締結している場合、アクティブ ノードごとに 1 つの無料のパッシブ FCI ノードを使用することができます。 Azure でこの利点を利用するには、BYOL VM イメージを使用した後、FCI のアクティブ ノードとパッシブ ノードの両方で同じライセンスを使用します。 詳細については、[Enterprise Agreement](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx) に関するページを参照してください。
 
-SQL Server on Azure Virtual Machines の従量課金制ライセンスと BYOL ライセンスを比較するには、[SQL VM の概要](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)に関するページを参照してください。
+SQL Server on Azure Virtual Machines の従量課金制ライセンスと BYOL ライセンスを比較するには、「[SQL VM の概要](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)」に関するページを参照してください。
 
 SQL Server のライセンスに関する完全な情報については、[価格](https://www.microsoft.com/sql-server/sql-server-2017-pricing)に関するページを参照してください。
 
@@ -81,9 +81,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
 - [Azure リソース グループ](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> 現時点では、Azure 仮想マシン上の SQL Server フェールオーバー クラスター インスタンスは、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)の[軽量](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider)管理モードでのみサポートされています。 フェールオーバー クラスターに参加している VM から完全拡張機能をアンインストールし、軽量モードで SQL VM リソース プロバイダーに登録します。
->
-> 完全拡張機能では、自動バックアップ、パッチ適用、高度なポータル管理などの機能がサポートされます。 エージェントを軽量管理モードで再インストールすると、これらの機能は SQL Server VM で動作しなくなります。
+> 現時点では、Azure 仮想マシン上の SQL Server フェールオーバー クラスター インスタンスは、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)の[軽量](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)管理モードでのみサポートされています。 完全拡張機能モードから軽量に変更するには、対応する VM の **SQL 仮想マシン** リソースを削除し、それらを軽量モードの SQL VM リソース プロバイダーに登録します。 Azure portal を使用して **SQL 仮想マシン** リソースを削除するときに、**正しい仮想マシンの横のチェックボックスをオフにします**。 完全拡張機能では、自動バックアップ、パッチ適用、高度なポータル管理などの機能がサポートされます。 エージェントを軽量管理モードで再インストールすると、これらの機能は SQL VM で動作しなくなります。
 
 ### <a name="what-to-have"></a>必要なもの
 
@@ -136,7 +134,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
       >[!IMPORTANT]
       >仮想マシンを作成した後に可用性セットを設定または変更することはできません。
 
-   Azure Marketplace からイメージを選択します。 Windows Server と SQL Server、または Windows Server だけを含む Azure Marketplace イメージを使用できます。 詳細については、[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関する記事を参照してください。
+   Azure Marketplace からイメージを選択します。 Windows Server と SQL Server、または Windows Server だけを含む Azure Marketplace イメージを使用できます。 詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」に関する記事を参照してください。
 
    Azure ギャラリーの SQL Server の公式イメージには、インストール済みの SQL Server インスタンス、SQL Server のインストール ソフトウェア、必要なキーが含まれます。
 
@@ -157,7 +155,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
 
    または、オペレーティング システムだけを含む Azure Marketplace イメージを使用することができます。 フェールオーバー クラスターと記憶域スペース ダイレクトの設定後、**Windows Server 2016 Datacenter** イメージを選択し、SQL Server FCI をインストールします。 このイメージには、SQL Server インストール メディアは含まれません。 各サーバーに対して実行できる場所に、SQL Server インストール メディアを配置します。
 
-1. Azure によって仮想マシンが作成されたら、RDP で各仮想マシンに接続します。
+1. Azure で仮想マシンが作成されたら、RDP で各仮想マシンに接続します。
 
    RDP を使用して最初に仮想マシンに接続する際、この PC をネットワーク上で検出可能にするかどうかを確認するメッセージが表示されます。 **[はい]** を選択します。
 
@@ -211,13 +209,13 @@ SQL Server のライセンスに関する完全な情報については、[価�
 
 ### <a name="add-windows-server-failover-clustering"></a>Windows Server フェールオーバー クラスタリングを追加する
 
-1. ローカルの Administrators のメンバーであり、かつ Active Directory でオブジェクトを作成するアクセス許可を持つドメイン アカウントを使用して、RDP で最初の仮想マシンに接続します。 このアカウントを使用して、構成を進めます。
+1. ローカル管理者のメンバーであり、かつ Active Directory でオブジェクトを作成するアクセス許可を持つドメイン アカウントを使用して、RDP で最初の仮想マシンに接続する。 このアカウントを使用して、構成を進めます。
 
 1. [各仮想マシンにフェールオーバー クラスタリングを追加します](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
    UI からフェールオーバー クラスタリングをインストールするには、両方の仮想マシンで次の手順を実行します。
-   1. **サーバー マネージャー**で、 **[管理]** 、 **[役割と機能の追加]** の順に選択します。
-   1. **役割と機能の追加ウィザード**で、 **[機能の選択]** ページが表示されるまで **[次へ]** を選択します。
+   1. **[サーバー マネージャー]** で、 **[管理]** 、 **[役割と機能の追加]** の順に選択します。
+   1. **[役割と機能の追加ウィザード]** で、 **[機能の選択]** ページが表示されるまで **[次へ]** を選択します。
    1. **[機能の選択]** で **[フェールオーバー クラスタリング]** を選択します。 必要なすべての機能と管理ツールを含めます。 **[機能の追加]** を選択します。
    1. **[次へ]** を選択し、 **[完了]** を選択して、機能をインストールします。
 
@@ -275,7 +273,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 #### <a name="windows-server-2019"></a>Windows Server 2019
 
-次の PowerShell スクリプトは、Windows Server 2019 用のフェールオーバー クラスターを作成します。 詳細については、「[フェールオーバー クラスター: クラスター ネットワーク オブジェクト](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)」を確認してください。 ノード名 (仮想マシン名) と、Azure VNET の使用可能な IP アドレスでスクリプトを更新してください。
+次の PowerShell スクリプトは、Windows Server 2019 用のフェールオーバー クラスターを作成します。 詳細については、「[フェールオーバー クラスター:クラスター ネットワーク オブジェクト](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)」に関するセクションを確認してください。 ノード名 (仮想マシン名) と、Azure VNET の使用可能な IP アドレスでスクリプトを更新してください。
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
@@ -359,7 +357,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 Azure 仮想マシンでは、クラスターは、一度に 1 つのクラスター ノードに存在する必要がある IP アドレスを保持するためにロード バランサーを使用します。 このソリューションでは、ロード バランサーは SQL Server FCI の IP アドレスを保持します。
 
-詳細については、[Azure のロード バランサーの作成と構成](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)に関する記事を参照してください。
+詳細については、「[Azure のロード バランサーの作成と構成](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)」に関する記事を参照してください。
 
 ### <a name="create-the-load-balancer-in-the-azure-portal"></a>Azure Portal でロード バランサーを作成する
 

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ef26074b0dd6450895c6aa81d5ab8853e652b41e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 61f9ff575c927cdafa4aa26fbad0ebb6e257b010
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325387"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815249"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>チュートリアル:依存リソースを含む Azure Resource Manager テンプレートを作成する
 
@@ -86,7 +86,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     ![Visual Studio Code の Azure Resource Manager テンプレートのパブリック IP アドレス定義](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
 4. 4 番目のリソースを展開します。 リソースの種類は `Microsoft.Network/networkInterfaces` です。
 
-    ![Visual Studio Code Azure Resource Manager テンプレートの dependson](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
+    ![Visual Studio Code Azure Resource Manager テンプレートの dependsOn](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
     dependsOn 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 このリソースは他の 2 つのリソースに依存しています。
 
@@ -111,15 +111,15 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 テンプレートをデプロイする方法は多数あります。  このチュートリアルでは、Azure Portal から Cloud Shell を使用します。
 
 1. [Cloud Shell](https://shell.azure.com) にサインインします。
-2. Cloud Shell の左上隅から **[PowerShell]** を選択し、 **[確認]** を選択します。  このチュートリアルでは、PowerShell を使用します。
-3. Cloud Shell から **[ファイルのアップロード]** を選択します。
+1. Cloud Shell の左上隅から **[PowerShell]** を選択し、 **[確認]** を選択します。  このチュートリアルでは、PowerShell を使用します。
+1. Cloud Shell から **[ファイルのアップロード]** を選択します。
 
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
-4. チュートリアルで前に保存したテンプレートを選択します。 既定の名前は **azuredeploy.json** です。  同じ名前のファイルが既にある場合は、古いファイルが通知なしに上書きされます。
+1. チュートリアルで前に保存したテンプレートを選択します。 既定の名前は **azuredeploy.json** です。  同じ名前のファイルが既にある場合は、古いファイルが通知なしに上書きされます。
 
     オプションで **ls $HOME** コマンドと **cat $HOME/azuredeploy.json** コマンドを使用して、ファイルが正常にアップロードされたことを確認できます。
 
-5. Cloud Shell から、次の PowerShell コマンドを実行します。 セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
+1. Cloud Shell から、次の PowerShell コマンドを実行します。 セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -135,18 +135,20 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile "$HOME/azuredeploy.json"
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
-8. 次の PowerShell コマンドを実行して、新しく作成された仮想マシンの一覧を表示します。
+1. 次の PowerShell コマンドを実行して、新しく作成された仮想マシンの一覧を表示します。
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     Get-AzVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
     仮想マシンの名前は、テンプレート内に **SimpleWinVM** としてハードコーディングされています。
 
-9. 仮想マシンの確認を目的とする仮想マシンへの RDP が、正常に作成されました。
+1. 仮想マシンの確認を目的とする仮想マシンへの RDP が、正常に作成されました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

@@ -1,20 +1,17 @@
 ---
-title: Azure Container Registry から Azure Container Instances へのデプロイ
+title: Azure Container Registry からコンテナー イメージをデプロイする
 description: Azure コンテナー レジストリのコンテナー イメージを使用して、Azure Container Instances のコンテナーをデプロイする方法を紹介します。
 services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 502f178b66e7ba233552d7db4e095363c8bb8628
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: adc2c95874c1cc20e49506891c9972ebcfe71f94
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68325558"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533290"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 

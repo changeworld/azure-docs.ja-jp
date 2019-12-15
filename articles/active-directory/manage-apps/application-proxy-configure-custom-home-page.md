@@ -1,5 +1,5 @@
 ---
-title: Azure AD アプリケーション プロキシを使用して、発行されたアプリのカスタム ホーム ページを設定する | Microsoft Docs
+title: 発行されたアプリのカスタム ホーム ページ - Azure AD アプリケーション プロキシ
 description: Azure AD アプリケーション プロキシ コネクタの基本について説明します
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51596e4db8999de5089748e40f9b24bd46c84e56
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 1621b273f617955a374ed46d9c215ba99e5b2913
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807832"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275610"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して、発行されたアプリのカスタム ホーム ページを設定する
 

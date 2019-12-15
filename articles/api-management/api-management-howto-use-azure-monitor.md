@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 598168285ee67921ab17ab8c2ce780753c562f81
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6ecce4dc97272f03a3151708cd9c047212c36e03
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072342"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707199"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -180,13 +180,13 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 }  
 ```
 
-| プロパティ  | Type | 説明 |
+| プロパティ  | 種類 | 説明 |
 | ------------- | ------------- | ------------- |
 | isRequestSuccess | ブール値 | 応答の状態コードが 2xx または 3xx の範囲内で HTTP 要求が完了した場合は True |
-| time | date-time | ゲートウェイによる HTTP 要求の受信タイムスタンプ |
+| time | date-time | ゲートウェイが要求の処理を開始した日時のタイムスタンプ |
 | operationName | string | "Microsoft.ApiManagement/GatewayLogs" (定数値) |
 | category | string | "GatewayLogs" (定数値) |
-| durationMs | integer | ゲートウェイが要求を受信した時点から、応答全体が送信された時点までのミリ秒数 |
+| durationMs | integer | ゲートウェイが要求を受信した時点から、応答全体が送信された時点までのミリ秒数。 これには clienTime、cacheTime、backendTime が含まれます。 |
 | callerIpAddress | string | 直接 (中間の場合もあります) のゲートウェイ呼び出し元の IP アドレス |
 | correlationId | string | API Management によって割り当てられる一意の http 要求識別子 |
 | location | string | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |

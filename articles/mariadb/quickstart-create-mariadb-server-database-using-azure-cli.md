@@ -1,19 +1,19 @@
 ---
-title: クイック スタート:Azure Database for MariaDB サーバーを作成する - Azure CLI
+title: クイック スタート:サーバーを作成する - Azure CLI - Azure Database for MariaDB
 description: このクイック スタートでは、Azure CLI を使用して、Azure Database for MariaDB サーバーを Azure リソース グループに作成する方法を説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cfdcf2664871849d4488be4320f6aa03e296ce7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171412"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770035"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーを作成する
 
@@ -47,7 +47,7 @@ az group create --name myresourcegroup --location westus
 
 Setting | 値の例 | 説明
 ---|---|---
-name | **mydemoserver** | Azure Database for MariaDB サーバーを識別する一意の名前を入力します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 から 63 文字にする必要があります。
+名前 | **mydemoserver** | Azure Database for MariaDB サーバーを識別する一意の名前を入力します。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 から 63 文字にする必要があります。
 resource-group | **myresourcegroup** | Azure リソース グループの名前を入力します。
 sku-name | **GP_Gen5_2** | SKU の名前。 省略表現の *<価格レベル>* \_ *<コンピューティング世代>* \_ *<仮想コア>* という規則に従います。 **sku-name** パラメーターの詳細については、この表の後続のセクションを参照してください。
 backup-retention | **7** | バックアップを保持する必要のある時間。 単位は日数です。 範囲は 7 から 35 です。 

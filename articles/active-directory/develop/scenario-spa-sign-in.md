@@ -1,6 +1,6 @@
 ---
 title: シングルページ アプリケーション (サインイン) - Microsoft ID プラットフォーム
-description: シングルページ アプリケーション (サインイン) を構築する方法を説明します
+description: シングルページ アプリケーション (サインイン) を構築する方法を学習する
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,34 +17,34 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bf614a5523e78fc72918db973ef8d738a171fff
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e0fd546724b8d684746a9f4d63a03bc6b58ded52
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031787"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764646"
 ---
-# <a name="single-page-application---sign-in"></a>シングルページ アプリケーション - サインイン
+# <a name="single-page-application-sign-in"></a>シングルページ アプリケーション：サインイン
 
-ご利用のシングルページ アプリケーションのコードにサインインを追加する方法について説明します。
+ご利用のシングルページ アプリケーションのコードにサインインを追加する方法について学びます。
 
-ご利用のアプリケーション内の API にアクセスするトークンを取得する前に、認証されたユーザー コンテキストが必要です。 MSAL.js 内のアプリケーションにユーザーをサインインさせる方法には、次の 2 つがあります。
+アプリケーション内の API にアクセスするトークンを取得する前に、認証されたユーザー コンテキストが必要です。 MSAL.js 内のアプリケーションにユーザーをサインインさせる方法には、次の 2 つがあります。
 
-* `loginPopup` メソッドを使用して[ポップアップ ウィンドウでサインイン](#sign-in-with-a-pop-up-window)する
-* `loginRedirect` メソッドを使用して[リダイレクトによりサインイン](#sign-in-with-redirect)する
+* `loginPopup` メソッドを使用して[ウィンドウをポップアップ](#sign-in-with-a-pop-up-window) する
+* `loginRedirect` メソッドを使用して[リダイレクト](#sign-in-with-redirect)する
 
-また、必要に応じて、サインイン時にユーザーに同意してもらう必要がある API のスコープを渡すこともできます。
+また、オプションで、サインイン時にユーザーに同意してもらう必要がある API のスコープを渡すこともできます。
 
 > [!NOTE]
-> 認証されたユーザー コンテキストまたは ID トークンに、ご利用のアプリケーションから既にアクセスできる場合は、ログイン手順を省略して直接トークンを取得することができます。 詳細については、「[sso without msal.js login](msal-js-sso.md#sso-without-msaljs-login)」 (msal.js ログインなしの sso) を参照してください。
+> 認証されたユーザー コンテキストまたは ID トークンに、ご利用のアプリケーションから既にアクセスできる場合は、ログイン手順を省略して直接トークンを取得することができます。 詳細については、「[SSO without MSAL.js login](msal-js-sso.md#sso-without-msaljs-login)」を参照してください。
 
 ## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>ポップアップ エクスペリエンスか、リダイレクト エクスペリエンスを選択
 
-ご利用のアプリケーション内で、ポップアップ メソッドとリダイレクト メソッドの両方を組み合わせて使用することはできません。 ポップアップまたはリダイレクト エクスペリエンスのいずれを選択するかは、ご利用のアプリケーション フローに依存します。
+ご利用のアプリケーション内で、ポップアップ メソッドとリダイレクト メソッドの両方を使用することはできません。 ポップアップまたはリダイレクト エクスペリエンスのいずれを選択するかは、ご利用のアプリケーション フローに依存します。
 
-* 認証中にユーザーにメイン アプリケーション ページから移動してほしくない場合は、ポップアップ メソッドの使用をお勧めします。 認証リダイレクトはポップアップ ウィンドウで行われるため、メイン アプリケーションの状態は保持されます。
+* 認証中にユーザーにメイン アプリケーション ページから移動してほしくない場合は、ポップアップ メソッドをお勧めします。 認証リダイレクトはポップアップ ウィンドウで行われるため、メイン アプリケーションの状態は保持されます。
 
-* リダイレクト メソッドを使用することが必要になる特定のケースがあります。 アプリケーションのユーザーが使用しているブラウザーに制約またはポリシーが存在し、ポップアップ ウィンドウが無効になっている場合は、リダイレクト メソッドを使用することができます。 ポップアップ ウィンドウを処理するとき [Internet Explorer には特定の問題が存在することがわかっている](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)ので、Internet Explorer ブラウザーではリダイレクト メソッドを使用してください。
+* ポップアップウィンドウが無効になっているブラウザの制約またはポリシーがある場合は、リダイレクト方法を使用できます。 [Internet Explorer のポップアップ ウィンドウには既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser) があるので、Internet Explorer ブラウザーでは、リダイレクト メソッドを使用してください。
 
 ## <a name="sign-in-with-a-pop-up-window"></a>ポップアップ ウィンドウを使用してサインインする
 
@@ -66,7 +66,7 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 
 ### <a name="angular"></a>Angular
 
-MSAL Angular ラッパーを使用すると、ルート定義に `MsalGuard` を追加するだけで、ご利用のアプリケーション内の特定のルートをセキュリティで保護することができます。 このガードにより、そのルートにアクセスすると、サインインのためのメソッドが呼び出されます。
+MSAL Angular ラッパーを使用すると、ルート定義に `MsalGuard` を追加するだけで、ご利用のアプリケーション内の特定のルートを保護することができます。 このガードにより、そのルートにアクセスすると、サインインのためのメソッドが呼び出されます。
 
 ```javascript
 // In app.routes.ts
@@ -95,7 +95,7 @@ MSAL Angular ラッパーを使用すると、ルート定義に `MsalGuard` を
 
 ### <a name="javascript"></a>JavaScript
 
-リダイレクト メソッドでは、メイン アプリから移動することから、Promise は返されません。 返されたトークンを処理し、これにアクセスするには、リダイレクト メソッドを呼び出す前に成功とエラーのコールバックを登録する必要があります。
+リダイレクトメソッドは、メインアプリから離れるため、Promise　を返しません。 返されたトークンを処理し、これにアクセスするには、リダイレクト メソッドを呼び出す前に成功とエラーのコールバックを登録する必要があります。
 
 ```javascript
 function authCallback(error, response) {
@@ -113,16 +113,16 @@ userAgentApplication.loginRedirect(loginRequest);
 
 ### <a name="angular"></a>Angular
 
-次のコードは、前述の「ポップアップ ウィンドウを使用してサインインする」セクションで示したものと同じです。 既定のフローはリダイレクトです。
+このコードは、ポップアップウィンドウを使用したサインインに関するセクションで説明したものと同じです。 既定のフローはリダイレクトです。
 
 > [!NOTE]
 > ID トークンには同意されたスコープは含まれず、認証されたユーザーのみが示されます。 同意されたスコープは、次の手順で取得するアクセス トークンで返されます。
 
-## <a name="sign-out"></a>サインアウトする
+## <a name="sign-out"></a>サインアウト
 
-MSAL ライブラリには `logout` メソッドが用意されています。これにより、ブラウザー ストレージ内のキャッシュがクリアされ、Azure AD にサインアウト要求が送信されます。 サインアウト後、それは既定ではアプリケーションのスタート ページに再びリダイレクトされます。
+MSAL ライブラリには、`logout` メソッドが用意されています。これにより、ブラウザー ストレージ内のキャッシュがクリアされ、Azure Active Directory (Azure AD) にサインアウト要求が送信されます。 サインアウト後、ライブラリは既定でアプリケーションの開始ページにリダイレクトします。
 
-`postLogoutRedirectUri` を設定することで、サインアウト後に、それがリダイレクトされる URI を構成することができます。 この URI は、アプリケーションの登録内にログアウト URI として登録することも必要です。
+`postLogoutRedirectUri` を設定することで、サインアウト後に、リダイレクトされる URI を構成することができます。 この URI は、アプリケーションの登録のログアウト URI として登録する必要もあります。
 
 ### <a name="javascript"></a>JavaScript
 

@@ -1,7 +1,7 @@
 ---
-title: 'デザイナー: 顧客離れを分類、予測する'
+title: 'デザイナー: 顧客離れの予測の例'
 titleSuffix: Azure Machine Learning
-description: このデザイナー (プレビュー) サンプルのパイプラインでは、顧客関係管理 (CRM) の一般的なタスクである顧客離れのバイナリ分類器予測を示します。
+description: Azure Machine Learning デザイナーとブースト デシジョン ツリーを使用して顧客離れを予測するには、次の分類の例に従います。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: a09060e16b877df4412b785edbb60930cb4122bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1fe3598fd15424ab2593e3d236146c7566493743
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647173"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225100"
 ---
-# <a name="sample-5---classification-predict-churn"></a>サンプル 5 - 分類: 顧客離れを予測する
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでブースト デシジョン ツリーを使用して顧客離れを予測する
+
+**デザイナー (プレビュー) のサンプル 5**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 コードを 1 行も書くことなく、デザイナー (プレビュー) を使用して、複雑な機械学習のパイプラインを構築する方法について説明します。
@@ -28,7 +31,7 @@ ms.locfileid: "73647173"
 
 このパイプラインの完成したグラフを次に示します。
 
-![パイプラインのグラフ](./media/how-to-ui-sample-classification-predict-churn/pipeline-graph.png)
+![パイプラインのグラフ](./media/how-to-designer-sample-classification-predict-churn/pipeline-graph.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,11 +51,11 @@ ms.locfileid: "73647173"
 
 - 生のデータセットには、多くの欠損値が含まれています。 **見つからないデータのクリーンアップ** モジュールを使用して、欠損値を 0 に置換します。
 
-    ![データセットをクリーンアップする](./media/how-to-ui-sample-classification-predict-churn/cleaned-dataset.png)
+    ![データセットをクリーンアップする](./media/how-to-designer-sample-classification-predict-churn/cleaned-dataset.png)
 
 - 特徴と、それに対応する顧客離れは、異なるデータセットに含まれます。 **列の追加**モジュールを使用して、ラベル列を特徴列に追加します。 最初の列 **Col1** はラベル列です。 視覚化の結果から、データセットが不均衡であることがわかります。 正 (+ 1) の例よりも、負 (-1) の例の方がずっと多くあります。 後で **SMOTE** モジュールを使用して、少ししか存在しないケースを増やします。
 
-    ![列のデータセットを追加する](./media/how-to-ui-sample-classification-predict-churn/added-column1.png)
+    ![列のデータセットを追加する](./media/how-to-designer-sample-classification-predict-churn/added-column1.png)
 
 
 
@@ -66,7 +69,7 @@ ms.locfileid: "73647173"
 
 **モデルの評価**モジュールの出力を視覚化し、テスト セットでのモデルのパフォーマンスを確認します。 
 
-![結果を評価](./media/how-to-ui-sample-classification-predict-churn/evaluate-result.png)
+![結果を評価](./media/how-to-designer-sample-classification-predict-churn/evaluate-result.png)
 
  **[しきい値]** スライダーを動かして、バイナリ分類器タスクのメトリックの変化を確認できます。 
 

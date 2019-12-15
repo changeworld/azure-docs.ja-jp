@@ -1,20 +1,20 @@
 ---
-title: Azure IoT Central で新しい Azure IoT Edge デバイスの種類を定義する | Microsoft Docs
+title: チュートリアル - Azure IoT Central で新しい Azure IoT Edge デバイスの種類を定義する
 description: このチュートリアルでは、作成者向けに、Azure IoT Central アプリケーションで新しい Azure IoT Edge デバイスを作成する方法について説明します。 種類に対して、テレメトリ、状態、プロパティ、コマンドを定義します。
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 0a293d74c9e37a6771c5bb246b74bda38db3b7c3
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 00ab92effbc5167d8bca3242e55d566c71209ac4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406480"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979089"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>チュートリアル:Azure IoT Central アプリケーションで新しい Azure IoT Edge デバイスの種類を定義する (プレビュー機能)
 
@@ -249,7 +249,7 @@ IoT Edge デバイスで、IoT プラグ アンド プレイを次のように�
   
     ![[スキーマ] が強調表示された [Environment Sensor Template Capabilities]\(環境センサー テンプレートの機能\) ページのスクリーンショット](./media/tutorial-define-edge-device-type/edgetemplatemachineobject.png)
 
-1. **[定義]** を選択します。 表示されるダイアログ ボックスで、オブジェクト名を **machine** に変更します。 temperature プロパティおよび pressure プロパティを作成し、** [適用]** を選択します。
+1. **[定義]** を選択します。 表示されるダイアログ ボックスで、オブジェクト名を **machine** に変更します。 temperature プロパティおよび pressure プロパティを作成し、 **[適用]** を選択します。
   
     ![各種オプションが強調表示されている属性ダイアログ ボックスのスクリーンショット](./media/tutorial-define-edge-device-type/edgetemplatemachineattributes.png)
   

@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e040533acdd8979b7b43358c74d1b729dafa2c66
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111842"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534300"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>geo ゾーン冗長ストレージ (GZRS) (プレビュー) を使用して高可用性 Azure Storage アプリケーションを構築する
 
@@ -29,6 +29,7 @@ GZRS と RA-GZRS は、汎用 v2 ストレージ アカウントでのみサポ�
 
 GZRS と RA-GZRS は現在、次のリージョンにおいてプレビューで利用できます。
 
+- 東南アジア
 - 北ヨーロッパ
 - 西ヨーロッパ
 - 英国南部
@@ -84,6 +85,11 @@ RA-GZRS を使用したパフォーマンスとスケーラビリティに関す
 ## <a name="migrate-a-storage-account-to-gzrs-or-ra-gzrs"></a>ストレージ アカウントを GZRS または RA-GZRS に移行する
 
 既存のストレージ アカウントを GZRS または RA-GZRS に移行することができます。 既存の ZRS アカウントから GZRS または RA-GZRS への移行は簡単ですが、LRS、GRS、または RA-GRS アカウントからの移行はもう少し複雑です。 次のセクションでは、両方の場合の移行方法について説明します。
+
+**既知の制限事項**
+
+- アーカイブ層は、(RA-)GZRS アカウントでは現在サポートされていません。 詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)」を参照してください。
+- マネージド ディスクでは (RA-)GZRS はサポートされていません。 Standard SSD Managed Disks のスナップショットとイメージを、Standard HDD ストレージに保存できます。また、[LRS オプションと ZRS オプションから選択](https://azure.microsoft.com/pricing/details/managed-disks/)できます。
 
 ### <a name="migrating-from-a-zrs-account"></a>ZRS アカウントからの移行
 

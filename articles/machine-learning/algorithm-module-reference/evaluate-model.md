@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: ddc6a35d5959a2d1f85c151a6f229223db9ba566
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 192aae4da4d9b07804f473ec6e98615f46e2ee86
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497923"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214583"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール
 
@@ -26,7 +26,6 @@ ms.locfileid: "73497923"
   
 -   **分類モデル**    
 -   **回帰モデル**    
-
 
 
 > [!TIP]
@@ -107,7 +106,7 @@ ms.locfileid: "73497923"
 
 ##  <a name="bkmk_regression"></a> 回帰モデルのメトリック
  
-回帰モデルに対して返されるメトリックは通常、エラーの量を見積もるために設計されています。  観察された値と予測された値の差が小さい場合は、モデルがデータとうまく適合しているとみなされます。 ただし、残差のパターン (任意の 1 つの予測ポイントとそれに対応する実際の値の差) を調べることで、モデル内の潜在的なバイアスに関して多くのことがわかります。  
+回帰モデルに対して返されるメトリックは、エラーの量を見積もるように設計されています。  観察された値と予測された値の差が小さい場合は、モデルがデータとうまく適合しているとみなされます。 ただし、残差のパターン (任意の 1 つの予測ポイントとそれに対応する実際の値の差) を調べることで、モデル内の潜在的なバイアスに関して多くのことがわかります。  
   
  回帰モデルを評価するために次のメトリックが報告されます。 モデルを比較するときに、評価のために選択したメトリックによってモデルが順位付けされます。  
   

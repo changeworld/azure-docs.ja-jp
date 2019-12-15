@@ -1,6 +1,6 @@
 ---
-title: セキュリティの質問用のセキュリティ情報 (プレビュー) を設定する - Azure AD
-description: あらかじめ定義されたセキュリティの質問を使用して本人確認をするようにセキュリティ情報を設定する方法です。
+title: セキュリティの質問を検証方法として設定する - Azure AD
+description: あらかじめ定義されたセキュリティの質問を検証方法として使用して ID を検証するように [Security info (preview)] (セキュリティ情報 (プレビュー)) ページを設定する方法。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2513b52c347db428b5ac0236a2561e5d4f1cdd2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6c32e2e2a7b609f999c7b804494188e2c6820171
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820318"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279005"
 ---
-# <a name="set-up-security-info-preview-to-use-security-questions"></a>セキュリティの質問を使用するようにセキュリティ情報 (プレビュー) を設定する
+# <a name="set-up-security-questions-as-your-verification-method"></a>セキュリティの質問を検証方法として設定する
 
 次の手順に従って、パスワードのリセット メソッドを追加できます。 これを初回に設定したら、 **[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
 

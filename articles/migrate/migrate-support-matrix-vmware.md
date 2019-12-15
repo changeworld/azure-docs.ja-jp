@@ -1,19 +1,18 @@
 ---
-title: VMware の評価と移行に関する Azure Migrate サポート マトリックス
-description: Azure Migrate サービスを使用して VMware VM を評価して Azure に移行する際にサポートされる設定と制限について要点を説明します。
-services: backup
+title: Azure Migrate での VMware の評価と移行のサポート
+description: Azure Migrate での VMware VM の評価と移行のサポートについて説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4b07252aed2205917f6b43e3e09a2877663e5bab
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 135680a9b0b6c8b5520958c884d99a83f1f87c88
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838911"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196270"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware の評価と移行のサポート マトリックス
 
@@ -79,7 +78,13 @@ Azure Migrate: サーバー評価により、アプリ、役割、および機�
 
 ## <a name="assessment-vcenter-server-permissions"></a>評価 - vCenter Server のアクセス許可
 
-評価を行うには、vCenter Server 用の読み取り専用アカウントが必要です。
+評価およびエージェントレス移行のための VM を検出するには、Azure Migrate が vCenter Server にアクセスする必要があります。
+
+- アプリケーションを検出したりエージェントレスで依存関係を視覚化したりする予定がある場合は、読み取り専用のアクセス権を持つ vCenter Server アカウントを作成し、 **[仮想マシン]**  >  **[ゲスト操作]** の権限を有効にします。
+
+  ![vCenter Server アカウントの権限](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
+
+- アプリケーションの検出やエージェントレスでの依存関係の視覚化を行う予定がなければ、vCenter Server の読み取り専用アカウントを設定します。
 
 ## <a name="assessment-appliance-requirements"></a>評価 - アプライアンスの要件
 
@@ -324,7 +329,7 @@ Azure Migrate でダウンロードしてインストールする | アプライ
 **独立ディスク** | サポートされています。
 **パススルー ディスク** | サポートされています。
 **NFS** | VM 上のボリュームとしてマウントされた NFS ボリュームはレプリケートされません。
-iSCSI ターゲット | iSCSI ターゲットを含む VM は、エージェントレス移行ではサポートされていません。
+**iSCSI ターゲット** | iSCSI ターゲットを含む VM は、エージェントレス移行ではサポートされていません。
 **マルチパス IO** | サポートされていません。
 **ストレージ vMotion** | サポートされています
 **チーミングされた NIC** | サポートされていません。

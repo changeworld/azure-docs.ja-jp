@@ -1,0 +1,206 @@
+---
+title: Azure Active Directory の ID およびアクセス管理の運用リファレンス ガイド
+description: この運用リファレンス ガイドでは、ID およびアクセス管理をセキュリティで保護するために実行する必要がある検査とアクションについて説明します
+services: active-directory
+author: martincoetzer
+manager: daveba
+tags: azuread
+ms.service: active-directory
+ms.topic: conceptual
+ms.workload: identity
+ms.subservice: fundamentals
+ms.date: 10/31/2019
+ms.author: martinco
+ms.openlocfilehash: 36b3857f8827f8a33e5fc0981b22a49128f7c193
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534775"
+---
+# <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory の ID およびアクセス管理の運用リファレンス ガイド
+
+[Azure AD 運用リファレンス ガイド](active-directory-ops-guide-intro.md)のこのセクションでは、ID とその割り当てのライフサイクルのセキュリティ保護と管理のために考慮する必要がある検査とアクションについて説明します。
+
+> [!NOTE]
+> これらの推奨事項は公開日の時点で最新ですが、時間の経過と共に変化する可能性があります。 Microsoft の製品とサービスは時間の経過と共に進化するため、継続的に ID プラクティスを評価する必要があります。
+
+## <a name="key-operational-processes"></a>主要な運用プロセス
+
+### <a name="assign-owners-to-key-tasks"></a>主要タスクに所有者を割り当てる
+
+Azure Active Directory を管理するには、ロールアウト プロジェクトに含まれていない主要な運用タスクとプロセスを継続的に実行する必要があります。 環境を維持するためには、これらのタスクを設定することも重要です。 主なタスクと推奨される所有者は次のとおりです。
+
+| タスク | Owner |
+| :- | :- |
+| Azure サブスクリプションを作成するプロセスを定義する | 組織によって異なる |
+| Enterprise Mobility + Security: ライセンスを取得するユーザーを決定する | IAM 運用チーム |
+| Office 365 のライセンスを取得するユーザーを決定する | 生産性チーム |
+| 他のライセンス (Dynamics、VSO など) を取得するユーザーを決定する | Application Owner |
+| ライセンスを割り当てる | IAM 運用チーム |
+| ライセンスの割り当てエラーをトラブルシューティングして修復する | IAM 運用チーム |
+| Azure AD のアプリケーションに ID をプロビジョニングする | IAM 運用チーム |
+
+リストを確認する際には、所有者が空のタスクに所有者を割り当てるか、上記の推奨事項に一致しない所有者を持つタスクの所有権を調整する必要がある場合があります。
+
+#### <a name="assigning-owners-recommended-reading"></a>所有者の割り当てに関する推奨資料
+
+- [Azure Active Directory での管理者ロールの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
+- [Azure でのガバナンス](https://docs.microsoft.com/azure/security/governance-in-azure)
+
+## <a name="on-premises-identity-synchronization"></a>オンプレミスの ID の同期
+
+### <a name="identify-and-resolve-synchronization-issues"></a>同期の問題を特定して解決する
+
+Microsoft では、クラウドに対する同期の問題が発生する可能性があるオンプレミス環境での問題を十分に把握し、理解しておくことをお勧めします。 [IdFix](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix) や [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-azure-ad-connect#why-use-azure-ad-connect-health) などの自動化されたツールによって大量の誤検知が発生する可能性があるため、エラーが発生したオブジェクトをクリーンアップすることで、100 日を超えて解決されなかった同期エラーを特定することをお勧めします。 長期にわたって未解決の同期エラーによって、サポート インシデントが発生する可能性があります。 「[同期中のエラーのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-sync-errors)」では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。
+
+### <a name="azure-ad-connect-sync-configuration"></a>Azure AD Connect 同期の構成
+
+すべてのハイブリッド エクスペリエンス、デバイスベースのセキュリティ体制、および Azure AD との統合を有効にするには、従業員が自分のデスクトップにログインするために使用するユーザー アカウントを同期する必要があります。
+
+フォレスト ユーザーのログインを同期しない場合は、動悸が適切なフォレストから行われるように変更する必要があります。
+
+#### <a name="synchronization-scope-and-object-filtering"></a>同期スコープとオブジェクトのフィルター処理
+
+同期する必要がないオブジェクトの既知のバケットを削除すると、次の操作上の利点があります。
+
+- 同期エラーの原因の削減
+- 同期サイクルの高速化
+- オンプレミスから繰り越される "ガベージ" の削減 (たとえば、クラウドに関連しないオンプレミスのサービス アカウントのグローバル アドレス一覧の汚染)
+
+> [!NOTE]
+> クラウドにエクスポートされていない多数のオブジェクトをインポートすることがわかっている場合は、OU または特定の属性でフィルター処理する必要があります。
+
+除外するオブジェクトの例を次に示します。
+
+- クラウド アプリケーションに使用されていないサービス アカウント
+- リソースへのアクセスを許可するために使用されるものなど、クラウドのシナリオで使用されないことを意図していないグループ
+- Azure AD B2B コラボレーションで表現されることを意図した外部 ID であるユーザーまたは連絡先
+- 従業員がサーバーなどからクラウド アプリケーションにアクセスすることを意図していないコンピューター アカウント
+
+> [!NOTE]
+> 1 人のユーザーの ID に、レガシ ドメインの移行、合併、買収などによってプロビジョニングされた複数のアカウントがある場合は、ユーザーが使用するアカウント (ユーザーがコンピューターにログインするために使用するものなど) を毎日同期するだけで済みます。
+
+理想としては、同期するオブジェクトの数を減らすこととルールの複雑さのバランスを取ることをお勧めします。 一般に、OU/コンテナーの[フィルター処理](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering)と、cloudFiltered 属性への単純な属性マッピングとの組み合わせによって、効果的なフィルターの組み合わせが有効になります。
+
+> [!IMPORTANT]
+> 運用環境でグループのフィルター処理を使用する場合は、別のフィルター処理方法に切り替える必要があります。
+
+#### <a name="sync-failover-or-disaster-recovery"></a>フェールオーバーまたはディザスター リカバリー
+
+Azure AD Connect は、プロビジョニング プロセスにおいて重要な役割を果たします。 何らかの理由で同期サーバーがオフラインになると、オンプレミスへの変更をクラウドで更新できず、ユーザーに対するアクセス問題が生じる可能性があります。 そのため、同期サーバーがオフラインになった後、管理者がすばやく同期を再開できるようにするフェールオーバー戦略を定義することが重要です。 そのような戦略は次のカテゴリに分類されることがあります。
+
+- **ステージング モードでの Azure AD Connect サーバーのデプロイ** - 管理者は、単純な構成の切り替えによってステージング サーバーを運用に "昇格" させることができます。
+- **仮想化の使用** - Azure AD 接続が仮想マシン (VM) にデプロイされている場合、管理者は仮想化スタックを利用して VM のライブ マイグレーションや迅速な再デプロイを行うことができ、それによって同期を再開できます。
+
+組織の同期にディザスター リカバリーとフェールオーバー戦略がない場合は、Azure AD Connect をステージング モードでデプロイする必要はありません。 同様に、運用環境とステージング環境の構成が一致しない場合は、ソフトウェアのバージョンや構成などの運用構成と一致するように、Azure AD Connect ステージング モードのベースラインを再設定する必要があります。
+
+![Azure AD Connect ステージング モードの構成のスクリーンショット](./media/active-directory-ops-guide/active-directory-ops-img1.png)
+
+#### <a name="stay-current"></a>最新情報
+
+Microsoft では Azure AD Connect を定期的に更新しています。 パフォーマンスの向上、バグの修正、および新しい各バージョンで提供される新機能を利用するために、最新の状態に保ってください。
+
+Azure AD Connect のバージョンが 6 か月を超えている場合は、最新のバージョンにアップグレードする必要があります。
+
+#### <a name="source-anchor"></a>ソース アンカー
+
+**ms-DS-consistencyguid** を[ソース アンカー](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-design-concepts)として使用すると、フォレストおよびドメイン間でのオブジェクトの移行が容易になります。これは、AD ドメインの統合/クリーンアップ、合併、買収、および売却に共通です。
+
+現在 **ObjectGuid** をソース アンカーとして使用している場合は、**ms-DS-ConsistencyGuid** を使用して切り替えることをお勧めします。
+
+#### <a name="custom-rules"></a>カスタム規則
+
+Azure AD Connect カスタム規則を使用すると、オンプレミスのオブジェクトとクラウド オブジェクトの間の属性のフローを制御できます。 ただし、カスタム規則を乱用したり誤用したりすると、次のようなリスクが生じる可能性があります。
+
+- トラブルシューティングの複雑さ
+- 複数のオブジェクトに対して複雑な操作を実行するときのパフォーマンスの低下
+- 運用サーバーとステージング サーバーの間で構成が分岐する確率の増加
+- 100 より大きい優先順位 (組み込みの規則で使用) でカスタム規則が作成された場合の、Azure AD Connect のアップグレード時の追加のオーバーヘッド
+
+過度に複雑な規則を使用している場合は、複雑さの理由を調査し、簡略化のための機会を見つける必要があります。 同様に、優先順位の値が 100 を超えるカスタム規則を作成した場合は、規則を修正して、リスクが発生したり既定の設定と競合しないようにする必要があります。
+
+カスタム規則の誤用の例を次に示します。
+
+- **ディレクトリ内のダーティ データの補正** - この場合は、AD チームの所有者と協力して、修復タスクとしてディレクトリ内のデータをクリーンアップし、不適切なデータが再度取り込まれないないようにプロセスを調整することをお勧めします。
+- **個々のユーザーの 1 回限りの修復** - 通常は特定のユーザーの問題のために、特殊なケースの外れ値を検出する規則を見つけることが一般的です。
+- **過剰に複雑な "CloudFiltering"** - オブジェクトの数を減らすことをお勧めしますが、多くの同期ルールを使用して、過度に複雑な同期スコープを作成するリスクがあります。 OU のフィルター処理以外のオブジェクトを含めたり除外したりする複雑なロジックがある場合は、同期の外部でこのロジックを処理し、単純な同期規則でフローできる単純な "cloudFiltered" 属性でオブジェクトにラベルを付けることをお勧めします。
+
+#### <a name="azure-ad-connect-configuration-documenter"></a>Azure AD Connect 構成の解析ツール
+
+[Azure AD Connect 構成の解析ツール](https://github.com/Microsoft/AADConnectConfigDocumenter)は、Azure AD Connect インストールのドキュメントを生成するために使用できるツールです。このツールを使用すると、同期構成の理解を深め、物事を適切に遂行することに自信を持つことができます。また、Azure AD Connect の新しいビルドまたは構成を適用したり、カスタムの同期規則を追加または更新したときに変更された内容を知ることができます。 このツールの最新の機能は次のとおりです。
+
+- Azure AD Connect 同期の完全な構成に関するドキュメント。
+- 2 つの Azure AD Connect 同期サーバーの構成の変更、または特定の構成ベースラインの変更に関するドキュメント。
+- サーバー間で同期規則の相違点またはカスタマイズを移行するための PowerShell デプロイ スクリプトの生成。
+
+## <a name="assignment-to-apps-and-resources"></a>アプリとリソースへの割り当て
+
+### <a name="group-based-licensing-for-microsoft-cloud-services"></a>Microsoft クラウド サービスのグループベースのライセンス
+
+Azure Active Directory は、Microsoft クラウド サービスの[グループベースのライセンス](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal) を使用してライセンスの管理を効率化します。 このようにして IAM は、グループのインフラストラクチャと、組織内の適切なチームに対するそれらのグループの委任管理を提供します。 Azure AD でグループのメンバーシップを設定するには、次のような複数の方法があります。
+
+- **オンプレミスからの同期** - グループはオンプレミスのディレクトリから取得できます。これは、Office 365 でライセンスを割り当てるために拡張できるグループ管理プロセスが確立されている組織に適しています。
+
+- **属性ベース/動的** - グループは、ユーザー属性に基づいた式に基づいてクラウドで作成できます。たとえば、Department は "sales" となります。 Azure AD は、定義された式との一貫性を維持したまま、グループのメンバーを保持します。 ライセンスの割り当てにこの種類のグループを使用すると、属性ベースのライセンスの割り当てが有効になります。これは、ディレクトリ内のデータ品質が高い組織に適しています。
+
+- **委任された所有権** - グループはクラウドで作成でき、所有者として指定できます。 これにより、コラボレーション チームや BI チームなどのビジネス オーナーが、アクセス権を持つ必要があるユーザーを定義できるようになります。
+
+現在は手動のプロセスを使用してライセンスとコンポーネントをユーザーに割り当てている場合は、グループベースのライセンスを実装することをお勧めします。 現在のプロセスがライセンス エラーや割り当てられているものと使用可能なものを監視していない場合は、ライセンス エラーに対処してライセンスの割り当てを監視するプロセスの改善を定義する必要があります。
+
+ライセンス管理のもう 1 つの側面は、組織内の職務に基づいて有効にする必要があるサービス プラン (ライセンスのコンポーネント) の定義です。 不要なサービス プランへのアクセス権を付与すると、Office ポータルに、ユーザーがトレーニングを行っていないツールや使用する必要のないツールが表示される可能性があります。 これにより、ヘルプ デスクの量や不要なプロビジョニングが追加され、コンプライアンスとガバナンスをリスクにさらす可能性があります。たとえば、コンテンツを共有することが許可されていない個人に OneDrive for Business をプロビジョニングする場合などです。
+
+ユーザーに対するサービス プランを定義するには、次のガイドラインに従ってください。
+
+- 管理者は、ロールに基づいてユーザーに提供されるサービス プランの "バンドル" を定義する必要があります。たとえば、事務系の従業員や現場作業員などです。
+- クラスターごとにグループを作成し、サービス プランにライセンスを割り当てます。
+- 必要に応じて、ユーザーのパッケージを保持する属性を定義できます。
+
+> [!IMPORTANT]
+> Azure AD のグループベースのライセンスでは、ユーザーのライセンス付与に関してエラー状態の概念が導入されています。 ライセンスに関するエラーが発生した場合は、直ちにライセンスの割り当ての問題を[特定して解決](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-resolve-problems)してください。
+
+![自動的に生成されたコンピューター画面の説明のスクリーンショット](./media/active-directory-ops-guide/active-directory-ops-img2.png)
+
+#### <a name="lifecycle-management"></a>ライフサイクル管理
+
+オンプレミスのインフラストラクチャに依存する [Microsoft Identity Manager](https://docs.microsoft.com/microsoft-identity-manager/) やサードパーティ システムなどのツールを現在使用している場合は、既存のツールから割り当てをオフロードし、グループベースのライセンスを実装し、[グループの](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-group-advanced#use-group-based-licensing-with-dynamic-groups)に基づいてグループのライフサイクル管理を定義することをお勧めします。 同様に、既存のプロセスが新しい従業員や組織を離れる従業員を考慮していない場合は、動的グループに基づくグループベースのライセンスをデプロイし、グループ メンバーシップのライフサイクルを定義する必要があります。 最後に、ライフサイクル管理が行われていないオンプレミスのグループに対してグループベースのライセンスをデプロイする場合は、クラウド グループを使用して、委任された所有権や属性ベースの動的メンバーシップなどの機能を有効にすることを検討してください。
+
+### <a name="assignment-of-apps-with-all-users-group"></a>"すべてのユーザー" グループを使用したアプリの割り当て
+
+リソースの所有者は、**すべてのユーザー** グループに実際には**企業の従業員**と**ゲスト**の両方が含まれている可能性があるときに、**企業の従業員**のみが含まれていると考えることがあります。 そのため、**すべてのユーザー** グループを使用してアプリケーションの割り当てを行い、SharePoint コンテンツやアプリケーションなどのリソースへのアクセスを許可する場合は、特別な注意を払う必要があります。
+
+> [!IMPORTANT]
+> **すべてのユーザー** グループが有効になっていて、条件付きアクセス ポリシー、アプリ、またはリソースの割り当てに使用されている場合に、ゲスト ユーザーを含めたくない場合は、必ず[グループをセキュリティで保護](https://docs.microsoft.com/azure/active-directory/b2b/use-dynamic-groups#hardening-the-all-users-dynamic-group)してください。 さらに、**企業の従業員**のみが含まれるグループを作成して割り当てることによって、ライセンスの割り当てを修正する必要があります。 一方、**すべてのユーザー** グループが有効になっていて、リソースへのアクセスを許可するために使用されていない場合は、組織の運用上のガイダンスがそのグループ (**企業の従業員**と**ゲスト**を含む) を意図的に使用していることを確認してください。
+
+### <a name="automated-user-provisioning-to-apps"></a>自動化されたアプリへのユーザー プロビジョニング
+
+アプリケーションへの[自動化されたユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)は、複数のシステムにわたった ID のプロビジョニング、プロビジョニング解除、およびライフサイクルを作成するための最良の方法です。
+
+現在アドホック方式でアプリをプロビジョニングしている場合や、CSV ファイル、JIT、またはライフサイクル管理に対応していないオンプレミス ソリューションを使用している場合は、サポートされているアプリケーションには Azure AD を使用して[アプリケーションのプロビジョニングを実装](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#how-do-i-set-up-automatic-provisioning-to-an-application)し、Azure AD でまだサポートされていないアプリケーションには対して一貫性のあるパターンを定義することをお勧めします。
+
+![Azure AD プロビジョニング サービス](./media/active-directory-ops-guide/active-directory-ops-img3.png)
+
+### <a name="azure-ad-connect-delta-sync-cycle-baseline"></a>Azure AD Connect 差分同期サイクルのベースライン
+
+組織における変更の量を把握し、予測可能な同期時間を確保するのに時間がかかりすぎないようにすることが重要です。
+
+[既定の差分同期](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler)の頻度は 30 分です。 差分同期が一貫して 30 分以上かかっている場合、またはステージングと運用の差分同期のパフォーマンスに大きな違いがある場合は、[Azure AD Connect のパフォーマンスに影響を及ぼす因子](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-performance-factors)を調査して確認する必要があります。
+
+#### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect のトラブルシューティングに関する推奨資料
+
+- [IdFix ツールを使用した Office 365 との同期のためのディレクトリ属性の準備 - Office 365](https://docs.microsoft.com/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [Azure AD Connect:同期中のエラーのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)
+
+## <a name="summary"></a>まとめ
+
+セキュリティで保護された ID インフラストラクチャには、5 つの側面があります。 この一覧は、組織内の ID とそのエンタイトルメントのライフサイクルをセキュリティで保護して管理するために必要なアクションをすばやく見つけて実行するのに役立ちます。
+
+- 主要タスクに所有者を割り当てます。
+- 同期の問題を見つけて解決します。
+- ディザスター リカバリーのためのフェールオーバー戦略を定義します。
+- ライセンスの管理とアプリの割り当てを効率化します。
+- アプリへのユーザー プロビジョニングを自動化します。
+
+## <a name="next-steps"></a>次の手順
+
+[認証管理の検査とアクション](active-directory-ops-guide-auth.md)を開始します。

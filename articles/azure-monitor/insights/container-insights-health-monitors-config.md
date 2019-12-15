@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279707"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664949"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>コンテナーに対する Azure Monitor の正常性モニターの構成ガイド
 
@@ -82,7 +82,7 @@ ms.locfileid: "74279707"
 |ノード (ノード プールの親) |これは、すべてのノード プールの集計モニターです。 状態は、子モニタ (クラスタ内に存在するノード プール) の最も悪い状態に基づいています。 |最低 |
 |クラスター (ノードの親/<br> Kubernetes インフラストラクチャ) |これは、正常性状態が最も悪い子モニタの状態と一致する親モニター (kubernetes インフラストラクチャとノード) です。 |最低 |
 |Kubernetes インフラストラクチャ |このモニターは、クラスターで管理されているインフラストラクチャ コンポーネントの正常性状態をまとめて報告します。 状態は、その子モニターの '最も悪い' 状態 (kube システムのワークロードと API サーバーの状態) として計算されます。 |最低|
-|システム ワークロード |このモニターは、kube システム ワークロードの正常性状態を報告します。 このモニターは、正常性状態が最も悪いの子モニターの状態、つまり **[準備完了状態のポッド]** モニターとワークロード内のコンテナーと一致します。 |最低 |
+|システム ワークロード |このモニターは、kube システム ワークロードの正常性状態を報告します。 このモニターは、正常性状態が最も悪いの子モニターの状態、つまり **[準備完了状態のポッド]** (モニターとワークロード内のコンテナー) と一致します。 |最低 |
 |コンテナー |このモニターは、特定のワークロード内のコンテナーの全体的な正常性状態を報告します。 このモニターは、正常性状態が最も悪い子モニターの状態、つまり **[CPU 使用率]** と **[メモリ使用率]** モニターと一致します。 |最低 |
 
 ## <a name="next-steps"></a>次の手順

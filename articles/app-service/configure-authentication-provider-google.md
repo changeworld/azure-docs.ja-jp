@@ -1,25 +1,16 @@
 ---
-title: Google 認証の構成 - Azure App Service
-description: App Services アプリに Google 認証を構成する方法について説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
+title: Google 認証を構成する
+description: App Service アプリ用の ID プロバイダーとして Google 認証を構成する方法について説明します。
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
-ms.service: app-service-mobile
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/02/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 917fa87a0cd0f7b0615a5139a7c15311f866739a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 81ce3e393d308323c8d5a3d688c16c9b45e7be9d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176979"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670826"
 ---
 # <a name="configure-your-app-service-app-to-use-google-login"></a>Google ログインを使用するように App Service アプリを構成する
 

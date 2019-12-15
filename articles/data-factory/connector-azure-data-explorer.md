@@ -11,18 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/26/2019
 ms.author: orspodek
-ms.openlocfilehash: 6945e4dcf6baf44881bd5b13571dd03e3dee41ed
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0ffec2639d9dfbf3a82a3c24248d65a53e114745
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300536"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547141"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、[Azure Data Explorer](../data-explorer/data-explorer-overview.md) との間で双方向にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
+
+>[!TIP]
+>Azure Data Factory と Azure Data Explorer の統合全般の詳細については、「[Azure Data Explorer と Azure Data Factory の統合](../data-explorer/data-factory-integration.md)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -45,7 +48,7 @@ Azure Data Explorer コネクタを使用すると、次のことができます
 ## <a name="getting-started"></a>使用の開始
 
 >[!TIP]
->Azure Data Explorer コネクタのチュートリアルについては、「[Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする](../data-explorer/data-factory-load-data.md)」を参照してください。
+>Azure Data Explorer コネクタのチュートリアルについては、「[Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする](../data-explorer/data-factory-load-data.md)」と、[データベースから Azure Data Explorer への一括コピー](../data-explorer/data-factory-template.md)に関するページを参照してください。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

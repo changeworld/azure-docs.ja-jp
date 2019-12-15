@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:マイクから音声を認識する (Java (Android)) - Speech Service
+title: クイック スタート:マイクから音声を認識する、Java (Android) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Android で Java と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
@@ -10,20 +10,21 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: f0d9a4d2a86b13d5e2d37a900f27d2977f63de14
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e492381c4ab2f7ab41b5363ed70f9c5c6b12ce99
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505781"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818991"
 ---
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、必ず次のことを行ってください。
+開始する前に、以下の操作を行います。
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=android)
+> * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
 ## <a name="create-a-user-interface"></a>ユーザー インターフェイスを作成する
 
@@ -71,7 +72,7 @@ ms.locfileid: "73505781"
 
    ![配置ターゲットの選択ウィンドウのスクリーンショット](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-12-deploy.png)
 
-アプリケーションのボタンを押して音声認識に関するセクションを開始します。 次の 15 秒間の英語スピーチが Speech Services に送信されて文字起こしされます。 結果は Android アプリケーションと Android Studio の logcat ウィンドウに表示されます。
+アプリケーションのボタンを押して音声認識に関するセクションを開始します。 次の 15 秒間の英語スピーチが Speech サービスに送信されて変換されます。 結果は Android アプリケーションと Android Studio の logcat ウィンドウに表示されます。
 
 ![Android アプリケーションのスクリーンショット](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-13-gui-on-device.png)
 

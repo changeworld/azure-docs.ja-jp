@@ -1,6 +1,6 @@
 ---
-title: シミュレートされたデバイスを Azure IoT Central に追加する | Microsoft Docs
-description: デバイス テンプレートを作成し、Azure IoT Central アプリケーションにシミュレートされたデバイスを追加します。
+title: クイックスタート - シミュレートされたデバイスを Azure IoT Central に追加する
+description: このクイックスタートでは、デバイス テンプレートを作成し、IoT Central アプリケーションにシミュレートされたデバイスを追加する方法を紹介します。
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/24/2019
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 8b6720af6328242a1fe297e60c9d413d0b83f3d2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 46d325fd609363a5425fc16845552e75b575c231
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896300"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706709"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application-preview-features"></a>クイック スタート:シミュレートされたデバイスを IoT Central アプリケーションに追加する (プレビュー機能)
 

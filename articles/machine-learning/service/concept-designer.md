@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 73facea2b99ee038b16053fd818d93d35da4cbdd
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196168"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707734"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) とは 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -45,7 +45,7 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
     + **バッチ推論パイプライン**を発行し、以前にトレーニングしたモデルを使用して、新しいデータで予測を行います。
 + **リアルタイム推論パイプライン**をリアルタイム エンドポイントに[デプロイ](#deploy)して、新しいデータの予測をリアルタイムで行います。
 
-![デザイナーでのトレーニング、バッチ推論、リアルタイム推論のワークフロー図](media/ui-concept-visual-interface/designer-workflow-diagram.png)
+![デザイナーでのトレーニング、バッチ推論、リアルタイム推論のワークフロー図](media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>パイプライン
 
@@ -80,7 +80,7 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 
 モジュールに一連のパラメーターが含まれている場合、これらを使用してモジュールの内部アルゴリズムを構成することができます。 キャンバスでモジュールを選択すると、モジュールのパラメーターは、キャンバス右側の [プロパティ] ウィンドウに表示されます。 このウィンドウでパラメーターを変更することにより、モデルを微調整できます。 デザイナーでは、個々のモジュールに対してコンピューティング リソースを設定できます。 
 
-![モジュールのプロパティ](media/ui-concept-visual-interface/properties.png)
+![モジュールのプロパティ](media/concept-designer/properties.png)
 
 利用できる機械学習アルゴリズムのライブラリ内の移動に関するヘルプについては、「[アルゴリズムとモジュールのリファレンスの概要](../algorithm-module-reference/module-reference.md)」を参照してください。
 
@@ -107,7 +107,7 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 
 **パイプライン エンドポイント**にパイプラインを発行することもできます。 リアルタイム エンドポイントと同様に、パイプライン エンドポイントでは、REST 呼び出しを使用して、外部アプリケーションから新しいパイプラインの実行を送信することができます。 ただし、パイプライン エンドポイントを使用してリアルタイムでデータを送受信することはできません。
 
-発行されたパイプラインは柔軟性があり、モデルのトレーニングや再トレーニング、バッチ推論の実行、新しいデータの処理などに使用できます。 複数のパイプラインを 1 つのパイプライン エンドポイントに発行し、実行するパイプラインのバージョンを指定できます。
+発行されたパイプラインは柔軟性があり、モデルのトレーニングや再トレーニング、[バッチ推論の実行](how-to-run-batch-predictions-designer.md)、新しいデータの処理などに使用できます。 複数のパイプラインを 1 つのパイプライン エンドポイントに発行し、実行するパイプラインのバージョンを指定できます。
 
 発行されたパイプラインは、各モジュールのパイプライン ドラフトで定義されているコンピューティング リソース上で実行されます。
 

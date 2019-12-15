@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight の Spark ストリーミング
 description: HDInsight Spark クラスターで Apache Spark ストリーミング アプリケーションを使用する方法を説明します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/11/2019
-ms.openlocfilehash: f990e5eb2761f1743c2731f499ecc341990edf53
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 11/20/2019
+ms.openlocfilehash: 521d72642a27995d096402a4ca0e4af632b0788c
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813999"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406291"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark ストリーミングの概要
 
@@ -27,7 +27,7 @@ Spark ストリーミング アプリケーションは、処理用にそのバ�
 
 Spark ストリーミングは、DStream と呼ばれる*分離されたストリーム*を使用して受信データの継続的なストリームを表します。 DStream は、Event Hubs または Kafka などの入力ソースから作成するか、別の DStream に変換を適用して作成することができます。
 
-DStream には、生イベント データの上に抽象化の層を備えています。 
+DStream には、生イベント データの上に抽象化の層を備えています。
 
 1 つのイベント、たとえば、接続されたサーモスタットからの温度の読み取りから開始するとします。 このイベントが Spark ストリーミング アプリケーションに到達すると、イベントは確実な方法 (複数のノードにレプリケートされる) で格納されます。 このフォールト トレランスにより、単一ノードに障害が発生しても、イベントを損失することはありません。 Spark コアは、クラスター内の複数のノードにデータを分散するデータ構造を使用します。ここでは通常、パフォーマンスを最大限高めるため、各ノードがその独自のデータをメモリ内に保持します。 このデータ構造は、*Resilient Distributed Dataset* (RDD) と呼ばれます。
 
@@ -139,7 +139,7 @@ stream.foreachRDD { rdd =>
     val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
     _sqlContext.createDataFrame(rdd).toDF("value", "time")
         .registerTempTable("demo_numbers")
-} 
+}
 
 // Start the stream processing
 ssc.start()
@@ -214,7 +214,7 @@ stream.window(org.apache.spark.streaming.Minutes(1)).foreachRDD { rdd =>
     val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
     _sqlContext.createDataFrame(rdd).toDF("value", "time")
     .registerTempTable("demo_numbers")
-} 
+}
 
 // Start the stream processing
 ssc.start()

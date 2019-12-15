@@ -1,26 +1,18 @@
 ---
-title: カスタム イメージ、複数コンテナー、または組み込みのイメージをデプロイする - Azure App Service | Microsoft Docs
-description: App Service on Linux のカスタム Docker コンテナーのデプロイか、複数コンテナーか、組み込みのアプリケーション フレームワークかを判断する方法
+title: Linux コンテナーのデプロイ オプション
+description: Linux 上で動作する App Service のカスタム Docker コンテナー デプロイ、マルチコンテナー、および組み込みアプリケーションフレームワークを決定します。
 keywords: Azure App Service, Web アプリ, Linux, OSS
-services: app-service
-documentationCenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+author: msangapu-msft
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: ae28b185aa44ca22d59204826036435a10c64e91
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7c4025e393c196fb98455bac26e94e5f252840b9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066787"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687512"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>カスタム イメージか、複数コンテナーか、組み込みのプラットフォーム イメージか
 

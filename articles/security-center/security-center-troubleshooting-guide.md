@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center トラブルシューティング ガイド | Microsoft Docs
-description: このドキュメントは、Azure Security Center で問題をトラブルシューティングするのに役立ちます。
+description: このガイドは、Azure Security Center 関連の問題をトラブルシューティングする必要がある IT プロフェッショナル、セキュリティ アナリスト、およびクラウド管理者を対象としています。
 services: security-center
 author: v-miegge
 manager: dcscontentpm
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 073e500028634e3c35a482d8efc5f9ae169145e3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b9650c3c30d95c85f505b640564ff416931676ea
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257698"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559206"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 

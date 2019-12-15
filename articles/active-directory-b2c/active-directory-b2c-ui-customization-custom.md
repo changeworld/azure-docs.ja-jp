@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ef4ddc422041de623b96f3a0c85f067427cacd7
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 2f0e13b4e68ee4b94a254cb8497a44cc0b8b470f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374223"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209444"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
@@ -207,4 +207,4 @@ sample_templates/wingtip フォルダーには、次の HTML ファイルが含�
 
 ## <a name="next-steps"></a>次の手順
 
-カスタマイズできる UI 要素の詳細については、[組み込みのポリシーの UI のカスタマイズのリファレンス ガイド](active-directory-b2c-reference-ui-customization.md)に関するページを参照してください。
+カスタマイズできる UI 要素の詳細については、[ユーザー フローの UI のカスタマイズに関するリファレンス ガイド](active-directory-b2c-reference-ui-customization.md)を参照してください。

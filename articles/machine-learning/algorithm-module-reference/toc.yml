@@ -141,4 +141,4 @@
     - name: SVD レコメンダーのトレーニング
       href: train-svd-recommender.md
 - name: モジュールのエラーとトラブルシューティング
-  href: machine-learning-module-error-codes.md
+  href: designer-error-codes.md

@@ -1,19 +1,14 @@
 ---
-title: Azure Container Instances を Jenkins ビルド エージェントとして使用する
-description: Azure Container Instances を Jenkins ビルド エージェントとして使用する方法を説明します。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: コンテナー インスタンスでの Jenkins ビルド
+description: Azure Container Instances でビルド ジョブをオンデマンドで実行するように Jenkins サーバーを構成する方法について説明します
 ms.topic: article
 ms.date: 08/31/2018
-ms.author: danlep
-ms.openlocfilehash: ed000779940d9af7b1384873bf9fddd1cde79c71
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e63ade82d4efeed40a9fba6f11d16131e8c728e7
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326014"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484063"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Azure Container Instances を Jenkins ビルド エージェントとして使用する
 
@@ -27,7 +22,7 @@ Azure Container Instances の詳細については、「[Azure Container Instanc
 
 2. **[基本]** フォームに次の情報を入力した後、 **[OK]** を選びます。
 
-   - **[名前]** :Jenkins デプロイの名前を入力します。
+   - **Name**:Jenkins デプロイの名前を入力します。
    - **[ユーザー名]** : Jenkins 仮想マシンの管理ユーザーの名前を入力します。
    - **[認証の種類]** : 認証には SSH 公開キーをお勧めします。 このオプションを選んだ場合は、Jenkins 仮想マシンへのログインに使う SSH 公開キーを貼り付けます。
    - **サブスクリプション**:Azure サブスクリプションを選択します。
@@ -70,7 +65,7 @@ Azure Container Instances の詳細については、「[Azure Container Instanc
 
 4. セッションが接続された後、次のコマンドを実行して、初期管理者パスワードを取得します。
 
-   ```
+   ```bash
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 

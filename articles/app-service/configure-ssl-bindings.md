@@ -1,24 +1,17 @@
 ---
-title: SSL バインディングを使用してカスタム DNS 名をセキュリティで保護する - Azure App Service | Microsoft Docs
-description: App Service 証明書を購入して App Service アプリにバインドする方法を説明します。
-services: app-service
-author: cephalin
-manager: gwallace
+title: SSL バインディングを使用してカスタム DNS のセキュリティを確保する
+description: 証明書を使用して TLS/SSL バインディングを作成することによって、カスタム ドメインに対する HTTPS アクセスのセキュリティを確保します。 HTTPS または TLS 1.2 を強制して Web サイトのセキュリティを強化しましょう。
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 10/25/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 259a4d33ba6e8c072f8df906da4784119b299822
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509056"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670691"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Azure App Service で SSL バインディングを使用してカスタム DNS 名をセキュリティで保護する
 

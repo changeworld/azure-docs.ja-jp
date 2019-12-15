@@ -297,7 +297,7 @@ parallel_run_config = ParallelRunConfig(
 スクリプト、環境構成、およびパラメーターを使用して、パイプラインのステップを作成します。 スクリプトの実行の対象としてワークスペースに関連付けたコンピューティング ターゲットを指定します。 `ParallelRunStep` を使用して、バッチ推論パイプラインのステップを作成します。このステップでは、次のすべてのパラメーターが使用されます。
 - `name`:ステップの名前。3 文字以上 32 文字以内で、一意の名前にする必要があります。また、正規表現 ^\[a-z\]([-a-z0-9]*[a-z0-9])?$ を使用できます。
 - `models`:Azure Machine Learning モデル レジストリに既に登録されている 0 個以上のモデル名。
-- `parallel_run_config`:`ParallelRunConfig` オブジェクト (前に定義)。
+- `parallel_run_config`:`ParallelRunConfig` オブジェクト (前述にて定義)。
 - `inputs`:1 つ以上の single 型 のAzure Machine Learning データセット。
 - `output`:`PipelineData` オブジェクト (出力ディレクトリに対応)。
 - `arguments`:ユーザー スクリプトに渡された引数の一覧 (省略可能)。

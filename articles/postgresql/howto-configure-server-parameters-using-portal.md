@@ -1,17 +1,17 @@
 ---
-title: Azure Portal を使用した Azure Database for PostgreSQL のサーバー パラメーターの構成
-description: この記事では、Azure Portal を使用して Azure Database for PostgreSQL のサーバー パラメーターを構成する方法について説明します。
+title: サーバー パラメーターの構成 - Azure portal - Azure Database for PostgreSQL - Single Server
+description: この記事では、Azure portal を介して Azure Database for PostgreSQL の Postgres パラメーターを構成する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: ed19083c6a4245a1b4bf7af166ae965d956c9e37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9d078fe9aab12b9044733d17a1437801d5130a4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067140"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763676"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>Azure portal を使用した Azure Database for PostgreSQL - Single Server でのサーバー パラメーターの構成 
 Azure Portal を使用して、Azure Database for PostgreSQL サーバーの構成パラメーターを一覧表示、表示、更新できます。

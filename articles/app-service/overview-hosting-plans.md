@@ -1,26 +1,17 @@
 ---
-title: App Service プランの概要 - Azure | Microsoft Docs
-description: Azure App Service の App Service プランのしくみと、それが管理機能にもたらすメリットについて説明します。
+title: App Service プラン
+description: App Service プランが Azure App Service でどのように機能するか、顧客にどのように課金されるか、さらにニーズに合わせてスケーリングする方法について説明します。
 keywords: App Service, Azure App Service, スケール, スケーラブル, スケーラビリティ, App Service プラン, App Service コスト
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 78440185b4a26bccc8ffb0258416a19aa929af6b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c0b28bd7a854d1b4a8b387e40fb045d47160768d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470244"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672277"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service プランの概要
 

@@ -17,6 +17,14 @@
   items:
     - name: ID セキュリティ スコア
       href: identity-secure-score.md
+    - name: セキュリティ
+      items:
+        - name: MFA の有効化
+          href: concept-fundamentals-mfa-get-started.md
+        - name: セキュリティの既定値
+          href: concept-fundamentals-security-defaults.md
+        - name: レガシ認証をブロックする
+          href: concept-fundamentals-block-legacy-authentication.md
     - name: グループとアクセス管理
       href: active-directory-manage-groups.md
     - name: グループベースのライセンス

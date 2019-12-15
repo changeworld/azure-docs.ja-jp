@@ -41,12 +41,12 @@ Microsoft Speech Recognition API は、オーディオ ストリームを、ア�
 | 中間結果を使って音声をストリーミングする | いいえ | はい |
 | LUIS を使用して、音声から変換されたテキストの意味を解釈する | いいえ | はい |
 
-いずれの手法 (REST API とクライアント ライブラリ) を使用する場合でも、Microsoft Speech Service は次をサポートします。
+いずれの手法 (REST API とクライアント ライブラリ) を使用する場合でも、Microsoft Speech Service は以下についてサポートします。
 
 - Microsoft の高度な音声認識テクノロジ。Cortana、Office Dictation、Office Translator、およびその他の Microsoft 製品で使用されているものと同じです。
-- リアルタイムの連続的認識。 Speech Recognition API は、リアルタイムでオーディオをテキストに起こし、途中までに認識されている中間結果の言葉を受け取ります。 Speech Service は、発話の終了の検出もサポートします。 また、大文字/小文字の設定、句読点、不適切な表現のマスキング、テキストの正規化など、追加の書式設定機能を選択することができます。
+- リアルタイムの連続的認識。 Speech Recognition API は、リアルタイムでオーディオをテキストに起こし、その時点で認識されている中間結果の言葉を受け取ります。 Speech Service は、発話の終了の検出もサポートします。 また、大文字/小文字の設定、句読点、不適切な表現のマスキング、テキストの正規化など、追加の書式設定機能を選択することができます。
 - *対話*、*会話*、および*ディクテーション*のシナリオでの音声認識結果の最適化をサポート。 カスタマイズされた言語モデルと音響モデルを必要とするユーザー シナリオにおいて、[Custom Speech Service](../custom-speech-service/cognitive-services-custom-speech-home.md) を使用すると、お使いのアプリケーションやそのユーザー向けにカスタマイズされた音声モデルを作成できます。
-- 複数の方言で話される多くの言語をサポート。 各認識モードでサポートされている言語の完全な一覧については、[認識言語](api-reference-rest/supportedlanguages.md)に関するページをご覧ください。
+- 複数の方言で話される多くの言語をサポート。 各認識モードでサポートされている言語の全一覧については、[認識言語](api-reference-rest/supportedlanguages.md)に関するページをご覧ください。
 - Language Understanding との統合。 入力オーディオをテキストに変換する以外に、*Speech to Text* はアプリケーションにテキストの意味を理解するための追加機能を提供します。 [Language Understanding Intelligent Service (LUIS)](../LUIS/what-is-luis.md) を使用して認識されたテキストから意図やエンティティを抽出します。
 
 ### <a name="next-steps"></a>次の手順

@@ -1,24 +1,14 @@
 ---
-title: Azure で予約されたリソース名のエラー | Microsoft Docs
+title: 予約されたリソース名のエラー
 description: 予約された単語を含むリソース名を指定するときのエラーを解決する方法について説明します。
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/08/2017
-ms.author: tomfitz
-ms.openlocfilehash: 922389b7c6c1bb7ad1d9b8f6ec35ccc1c5656723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683934"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150448"
 ---
 # <a name="resolve-reserved-resource-name-errors"></a>予約されたリソース名のエラーを解決する
 

@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/20/2019
+ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052511"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706257"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: よく寄せられる質問
 
@@ -180,6 +180,11 @@ Hive メタストアは、Hive サーバーによって使用されるデータ 
 - エッジ ノード:クラスターに別のエッジ ノードを追加することができます。詳細については、「[HDInsight の Apache Hadoop クラスターで空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md)」を参照してください。
 
 - スタンドアロン ノード:スタンドアロンの仮想マシンを同じサブネットに追加し、その仮想マシンからクラスターにアクセスするには、プライベート エンド ポイント `https://<CLUSTERNAME>-int.azurehdinsight.net` を使用します。 詳細については、「[ネットワーク トラフィックのコントロール](hdinsight-plan-virtual-network-deployment.md#networktraffic)」を参照してください。
+
+### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>データをエッジ ノードのローカル ディスクに格納すべきでしょうか。
+
+いいえ、ローカル ディスクにデータを格納することはお勧めできません。 ノードで障害が発生した場合、ローカルで格納されているすべてのデータが失われます。 Azure Data Lake Storage Gen2 または Azure Blob Storage にデータを格納するか、データを格納するために Azure Files 共有をマウントすることをお勧めします。
+
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>既存の HDInsight クラスターを別の仮想ネットワークに追加することはできますか。
 

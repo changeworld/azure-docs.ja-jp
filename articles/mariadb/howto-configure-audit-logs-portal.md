@@ -1,17 +1,17 @@
 ---
-title: Azure portal での Azure Database for MariaDB の監査ログの構成とアクセス
+title: 監査ログにアクセスする - Azure portal - Azure Database for MariaDB
 description: この記事では、Azure portal から Azure Database for MariaDB の監査ログを構成し、それにアクセスする方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.openlocfilehash: 8fadcc8cb418063662df45d4134bef0578ffccda
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 12/02/2019
+ms.openlocfilehash: e3c87143652895c57b464cba229a0e68049ffeb2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444813"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767519"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Azure portal での監査ログの構成とアクセス
 

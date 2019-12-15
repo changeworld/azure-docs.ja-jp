@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Java (Windows、Linux、macOS) 用 Speech SDK のプラットフォームのセットアップ - Speech Service
+title: クイック スタート:Java (Windows、Linux、macOS) 用 Speech SDK のプラットフォームの設定 - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Speech Services SDK と一緒に Java (Windows、Linux、macOS) を使用するためにプラットフォームを設定するには、このガイドを使用します。
+description: Speech サービス SDK を使用して Java (Windows、Linux、macOS) 用にプラットフォームを設定するには、このガイドを使用します。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 57e278fe1f1401474dfcee896ec19e379133f4d1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 63bff1549830cc4ef05c28b1de9e50b40d0e16ba
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110931"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816303"
 ---
 # <a name="quickstart-speech-sdk-for-java-windows-linux-macos-platform-setup"></a>クイック スタート:Java (Windows、Linux、macOS) 用 Speech SDK のプラットフォームのセットアップ
 

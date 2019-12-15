@@ -1,6 +1,6 @@
 ---
-title: 職場や学校のアカウントを認証アプリに追加する - Azure AD
-description: 2 要素認証のために Microsoft Authenticator アプリに職場または学校のアカウントを追加する方法。
+title: Microsoft Authenticator アプリに職場または学校アカウントを追加する - Azure AD
+description: 2 要素検証の使用中に ID を検証するために、Microsoft Authenticator アプリに職場または学校アカウントを追加します。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7c9fa41a1278f0e1e54a06c3930e3bbc3d3d3ae
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bcd69fab269e39a8c78a56c08854262ca839d60f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803731"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267138"
 ---
-# <a name="add-your-work-or-school-account"></a>職場または学校のアカウントを追加する
+# <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに職場または学校アカウントを追加する
 
 組織で 2 要素認証を使用している場合は、認証方法の 1 つとして、Microsoft Authenticator アプリを使用するように職場または学校のアカウントを設定できます。
 

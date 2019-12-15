@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:マイクから音声を認識する (C++ (Windows)) - Speech Service
+title: クイック スタート:マイクから音声を認識する、C++ (Windows) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Windows デスクトップで C++ と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 1a08a5413ae41ef8c17e817a01be9e9efcb7ff99
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 74bc77fbb9436983c26c572b521d96795f14cfcd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505717"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818704"
 ---
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、必ず次のことを行ってください。
+開始する前に、以下の操作を行います。
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=windows)
+> * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -40,13 +41,16 @@ ms.locfileid: "73505717"
 
 1. メニュー バーから **[ファイル]**  >  **[すべて保存]** を選択します。
 
+> [!NOTE]
+> Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
+
 ## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
 
 1. メニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** を選択してアプリケーションをビルドします。 これで、コードは、エラーなしでコンパイルされます。
 
 1. **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押して、**helloworld** アプリケーションを起動します。
 
-1. 英語の語句または文を読み上げます。 その音声が Speech Services に転送されてテキストに文字起こしされ、再びアプリケーションに戻されて表示されます。
+1. 英語の語句または文を読み上げます。 その音声が Speech サービスに転送されてテキストに文字起こしされ、再びアプリケーションに戻されて表示されます。
 
    ![認識が成功した後のコンソール出力](~/articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-08-console-output-release.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Speech コンテナーをインストールする - Speech Service
+title: Speech コンテナーをインストールする - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Speech コンテナーをインストールして実行します。 音声テキスト変換では、オーディオ ストリームからテキストへの文字起こしがリアルタイムで行われます。結果のテキストを、アプリケーション、ツール、またはデバイスで使用したり表示したりできます。 テキスト読み上げでは、入力テキストが人間のような合成音声に変換されます。
 services: cognitive-services
@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132609"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815365"
 ---
-# <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
+# <a name="install-and-run-speech-service-containers-preview"></a>Speech サービス コンテナーをインストールして実行する (プレビュー)
 
-コンテナーを使用すると、独自の環境で一部の Speech Service API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Speech コンテナーをダウンロード、インストール、実行する方法について説明します。
+コンテナーを使用すると、独自の環境で一部の Speech サービス API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Speech コンテナーをダウンロード、インストール、実行する方法について説明します。
 
 Speech コンテナーでは、堅牢なクラウド機能とエッジの局所性の両方のために最適化された音声アプリケーション アーキテクチャを構築できます。 4 つの異なるコンテナーを利用できます。 2 つの標準コンテナーは、**音声テキスト変換**と**テキスト読み上げ**です。 2 つのカスタム コンテナーは、**カスタム音声変換**と**カスタム テキスト読み上げ**です。
 
@@ -155,10 +155,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 
 #### <a name="speech-to-text-locales"></a>音声テキスト変換ロケール
 
-`latest` を除くすべてのタグは次の形式になっています。ここで、`<culture>` はロケール コンテナーを示します。
+`latest` を除くすべてのタグは、次の形式であり、大文字と小文字が区別されます。
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
 ```
 
 次のタグは、この形式の例です。
@@ -197,10 +197,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 #### <a name="text-to-speech-locales"></a>テキスト読み上げロケール
 
-`latest` を除くすべてのタグは次の形式になっています。ここで、`<culture>` はロケールを示し、`<voice>` はコンテナーの音声を示します。
+`latest` を除くすべてのタグは、次の形式であり、大文字と小文字が区別されます。
 
 ```
-<major>.<minor>.<patch>-<platform>-<culture>-<voice>-<prerelease>
+<major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
 ```
 
 次のタグは、この形式の例です。
@@ -371,12 +371,10 @@ ApiKey={API_KEY}
 
 ## <a name="query-the-containers-prediction-endpoint"></a>コンテナーの予測エンドポイントに対するクエリの実行
 
-| コンテナー | エンドポイント | Protocol |
+| Containers | SDK ホスト URL | Protocol |
 |--|--|--|
-| 音声テキスト変換 | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
-| カスタム音声変換 | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
-| テキスト読み上げ | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
-| カスタム テキスト読み上げ | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
+| 音声変換およびカスタム音声変換 | `ws://localhost:5000` | WS |
+| テキスト読み上げおよびカスタム テキスト読み上げ | `http://localhost:5000` | HTTP |
 
 WSS プロトコルと HTTPS プロトコルを使用する方法については、[コンテナー セキュリティ](../cognitive-services-container-support.md#azure-cognitive-services-container-security)に関するセクションを参照してください。
 
@@ -436,5 +434,5 @@ Speech コンテナーは、Azure アカウントの *Speech* リソースを使
 ## <a name="next-steps"></a>次の手順
 
 * 構成設定について、[コンテナーの構成](speech-container-configuration.md)を確認します。
-* [Kubernetes と Helm と共に Speech Service コンテナーを使用する](speech-container-howto-on-premises.md)方法を学習します。
+* [Kubernetes と Helm と共に Speech サービス コンテナーを使用する](speech-container-howto-on-premises.md)方法を学習します。
 * さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

@@ -10,23 +10,23 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: ae46df875d588186cd083134820f349158d7e307
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695215"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841219"
 ---
-# <a name="regular-expression-entity"></a>正規表現エンティティ 
+# <a name="regular-expression-entity"></a>正規表現エンティティ
 
 正規表現エンティティは、指定された正規表現パターンに基づいてエンティティを抽出します。
 
-生の発話テキストには正規表現をお勧めします。 大文字小文字とカルチャのバリアントは無視されます。  正規表現の照合は、スペルチェックによる変更後に、トークン レベルではなく文字レベルで適用されます。 角かっこが多用されているなど、正規表現が複雑すぎる場合は、このモデルに式を追加できません。 [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) ライブラリの全体ではなく一部が使用されます。 
+生の発話テキストには正規表現をお勧めします。 大文字小文字とカルチャのバリアントは無視されます。  正規表現の照合は、スペルチェックによる変更後に、トークン レベルではなく文字レベルで適用されます。 角かっこが多用されているなど、正規表現が複雑すぎる場合は、このモデルに式を追加できません。 [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions) ライブラリの全体ではなく一部が使用されます。
 
 **エンティティは、次のような場合に最適です。**
 
 * データが一貫して書式設定され、バリエーションにも一貫性がある。
-* 正規表現では、2 レベルを超える入れ子は必要ありません。 
+* 正規表現では、2 レベルを超える入れ子は必要ありません。
 
 ![正規表現エンティティ](./media/luis-concept-entities/regex-entity.png)
 
@@ -36,7 +36,7 @@ ms.locfileid: "71695215"
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
+```
 
 この正規表現は、`phone` のように、これらの数字で終わる単語にも一致します。 このような問題を修正するには、正規表現の一致が必ず、単語の境界を考慮に入れるようにします。 この例で単語の境界を使用するための正規表現は、次の正規表現で使用されます。
 
@@ -102,8 +102,8 @@ ms.locfileid: "71695215"
 }
 ```
 
-* * * 
+* * *
 
 ## <a name="next-steps"></a>次の手順
 
-この[チュートリアル](luis-quickstart-intents-regex-entity.md)では、**正規表現**エンティティを使用して、発話から一貫した形式のデータを抽出するアプリを作成します。
+この[チュートリアル](tutorial-regex-entity.md)では、**正規表現**エンティティを使用して、発話から一貫した形式のデータを抽出するアプリを作成します。

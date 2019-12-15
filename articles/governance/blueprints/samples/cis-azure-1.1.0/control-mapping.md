@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark ブループリント サンプルのコントロール
 description: CIS Microsoft Azure Foundations Benchmark ブループリント サンプルと Azure Policy の推奨事項のマッピング。
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 55abac9f7479f0ee7d1adddea64cb81a1c7cf2b5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544541"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707423"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>CIS Microsoft Azure Foundations Benchmark ブループリント サンプルの推奨事項のマッピング
 
@@ -40,6 +40,12 @@ ms.locfileid: "74544541"
 - 所有者アクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 - 読み取りアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
 - 書き込みアクセス許可を持つ外部アカウントをサブスクリプションから削除する必要がある
+
+## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1.23 カスタム サブスクリプションの所有者ロールが作成されていないことを確認する
+
+このブループリントでは、削除が必要になる可能性のあるカスタム サブスクリプションの所有者ロールの監視に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- カスタム サブスクリプションの所有者ロールが作成されていないこと
 
 ## <a name="21-ensure-that-standard-pricing-tier-is-selected"></a>2.1 Standard 価格レベルが選択されていることを確認する
 
@@ -243,11 +249,35 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 
 - MySQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
 
+## <a name="412-ensure-server-parameter-log_checkpoints-is-set-to-on-for-postgresql-database-server"></a>4.12 サーバー パラメーターである "log_checkpoints" が PostgreSQL データベース サーバー向けに [オン] に設定されていることを確認する
+
+このブループリントでは、PostgreSQL データベース サーバーによってチェックポイントがログに記録されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- PostgreSQL データベース サーバーではチェックポイントのログが有効でなければならない
+
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13 PostgreSQL データベース サーバーで [SSL 接続を強制する] が [有効] に設定されていることを確認する
 
 このブループリントでは、PostgreSQL データベース サーバーで SSL 接続が強制的に適用されることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
 - PostgreSQL データベース サーバーで [SSL 接続を強制する] が有効でなければならない
+
+## <a name="414-ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>4.14 サーバー パラメーターである "log_connections" が PostgreSQL データベース サーバー向けに [オン] に設定されていることを確認する
+
+このブループリントでは、PostgreSQL データベース サーバーによって接続がログに記録されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- PostgreSQL データベース サーバーでは接続のログが有効でなければならない
+
+## <a name="415-ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>4.15 サーバー パラメーターである "log_disconnections" が PostgreSQL データベース サーバー向けに [オン] に設定されていることを確認する
+
+このブループリントでは、PostgreSQL データベース サーバーによって切断がログに記録されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- PostgreSQL データベース サーバーの切断はログに記録する必要がある。
+
+## <a name="416-ensure-server-parameter-log_duration-is-set-to-on-for-postgresql-database-server"></a>4.16 サーバー パラメーターである "log_duration" が PostgreSQL データベース サーバー向けに [オン] に設定されていることを確認する
+
+このブループリントでは、PostgreSQL データベース サーバーによって完了したステートメントの継続時間がログに記録されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- PostgreSQL データベース サーバーでは継続時間のログが有効でなければならない
 
 ## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4.17 サーバー パラメーターである "connection_throttling" が PostgreSQL データベース サーバー向けに [オン] に設定されていることを確認する
 
@@ -350,6 +380,71 @@ Azure Storage 暗号化は、新規と既存のすべてのストレージ ア�
 このブループリントでは、セキュリティで保護された接続を介してのみ Web アプリケーションにアクセスできることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
 
 - Web アプリケーションには HTTPS を介してのみアクセスできるようにする
+
+## <a name="93-ensure-web-app-is-using-the-latest-version-of-tls-encryption"></a>9.3 Web アプリが最新バージョンの TLS 暗号化を使用していることを確認する
+
+このブループリントでは、最新バージョンの TLS が Web アプリに使用されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- API アプリでは最新の TLS バージョンを使用する必要がある
+- 関数アプリでは最新の TLS バージョンを使用する必要がある
+- Web アプリでは最新の TLS バージョンを使用する必要がある
+
+## <a name="94-ensure-the-web-app-has-client-certificates-incoming-client-certificates-set-to-on"></a>9.4 Web アプリで "クライアント証明書 (着信クライアント証明書)" が [オン] に設定されていることを確認する
+
+このブループリントでは、有効な証明書を持つクライアントだけが Web アプリに到達できることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- API で "クライアント証明書 (着信クライアント証明書)" が [オン] に設定されていることを確認する
+- 関数アプリで "クライアント証明書 (着信クライアント証明書)" が [オン] に設定されていることを確認する
+- Web アプリで "クライアント証明書 (着信クライアント証明書)" が [オン] に設定されていることを確認する
+
+## <a name="95-ensure-that-register-with-azure-active-directory-is-enabled-on-app-service"></a>9.5 App Service で [Azure Active Directory に登録する] が有効になっていることを確認する
+
+このブループリントでは、Web アプリでマネージド ID が使用されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- API アプリで [Azure Active Directory に登録する] が有効になっていることを確認する
+- 関数アプリで [Azure Active Directory に登録する] が有効になっていることを確認する
+- Web アプリで [Azure Active Directory に登録する] が有効になっていることを確認する
+
+## <a name="96-ensure-that-net-framework-version-is-the-latest-if-used-as-a-part-of-the-web-app"></a>9.6 Web アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
+
+このブループリントでは、最新バージョンの .Net Framework が Web アプリに使用されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- API アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
+- 関数アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
+- Web アプリの一部として使用された ".NET Framework" のバージョンが最新であることを確認する
+
+## <a name="97-ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>9.7 Web アプリの実行に使用された "PHP のバージョン" が最新であることを確認する
+
+このブループリントでは、最新バージョンの PHP が Web アプリに使用されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- API アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
+- 関数アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
+- Web アプリの一部として使用された "PHP のバージョン" が最新であることを確認する
+
+## <a name="98-ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>9.8 Web アプリの実行に使用された "Python のバージョン" が最新であることを確認する
+
+このブループリントでは、最新バージョンの Python が Web アプリに使用されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- API アプリの一部として使用された "Python のバージョン" が最新であることを確認する
+- 関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する
+- Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する
+
+## <a name="99-ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>9.9 Web アプリの実行に使用された "Java のバージョン" が最新であることを確認する
+
+このブループリントでは、最新バージョンの Java が Web アプリに使用されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- API アプリの一部として使用された "Java のバージョン" が最新であることを確認する
+- 関数アプリの一部として使用された "Java のバージョン" が最新であることを確認する
+- Web アプリの一部として使用された "Java のバージョン" が最新であることを確認する
+
+## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9.10 Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
+
+このブループリントでは、最新バージョンの HTTP が Web アプリに使用されていることの確認に役立つ [Azure Policy](../../../policy/overview.md) 定義を割り当てます。
+
+- API アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
+- 関数アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
+- Web アプリの実行に使用された "HTTP のバージョン" が最新であることを確認する
+
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,5 +1,5 @@
 ---
-title: Azure portal を使用した Stream Analytics ジョブの作成および管理
+title: チュートリアル - Azure portal を使用した Stream Analytics ジョブの作成および管理
 description: このチュートリアルでは、通話ストリームにおける不正な呼び出しを Azure Stream Analytics を使用して分析する方法を、デモでまるごとお見せします。
 services: stream-analytics
 author: mamccrea
@@ -9,14 +9,14 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 128859a00402c3381edfa65918a7135c9fd775de
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cca9f25fae9646b4207db7aa98f4c334457fc426
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925275"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707395"
 ---
-# <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する
+# <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>チュートリアル:Stream Analytics で通話データを分析し、Power BI ダッシュボードで結果を視覚化する
 
 このチュートリアルでは、Azure Stream Analytics を使用して通話データを分析する方法について説明します。 クライアント アプリケーションによって生成される通話データには、Stream Analytics ジョブによってフィルター処理される不正な呼び出しが含まれています。
 
