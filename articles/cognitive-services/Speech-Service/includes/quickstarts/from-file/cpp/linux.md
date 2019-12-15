@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:オーディオ ファイルから音声を認識する、C++ (Linux) - Speech Service
+title: クイック スタート:オーディオ ファイルから音声を認識する、C++ (Linux) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Linux で C++ と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 4d03c0f8e8aa387bae68dda6aeb974efe155366d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2372e04ed7e20757cc0a3cbb9aae5e7597f17c3f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506325"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819391"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,8 +23,10 @@ ms.locfileid: "73506325"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [使用する開発環境をセットアップする](../../../../quickstarts/setup-platform.md?tabs=linux)
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=linux)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=linux)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -74,11 +76,14 @@ ms.locfileid: "73506325"
 
    ````
 
-1. この新しいファイルで、文字列 `YourSubscriptionKey` を、Speech Services のサブスクリプション キーで置き換えます。
+1. この新しいファイルで、文字列 `YourSubscriptionKey` を、音声サービスのサブスクリプション キーで置き換えます。
 
 1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](~/articles/cognitive-services/Speech-Service/regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
 1. 文字列 `whatstheweatherlike.wav` を実際のファイル名に置き換えます。
+
+> [!NOTE]
+> Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
 
 ## <a name="build-the-app"></a>アプリのビルド
 
@@ -131,7 +136,7 @@ ms.locfileid: "73506325"
    ./helloworld
    ```
 
-1. オーディオ ファイルが Speech Services に送信され、ファイルの最初の発話がテキストに文字起こしされて、同じウィンドウに表示されます。
+1. オーディオ ファイルが Speech サービスに送信され、ファイルの最初の発話がテキストに文字起こしされて、同じウィンドウに表示されます。
 
    ```text
    Recognizing first result...

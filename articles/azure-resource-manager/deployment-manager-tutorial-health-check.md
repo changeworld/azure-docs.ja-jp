@@ -1,16 +1,16 @@
 ---
-title: テンプレートで Azure Deployment Manager を使用する
-description: Resource Manager テンプレートで Azure Deployment Manager を使用して、Azure リソースを配備します。
+title: Azure Deployment Manager の正常性チェックを使用する
+description: Azure Deployment Manager で正常性チェックを使用して、Azure のリソースを安全にデプロイします。
 author: mumian
 ms.date: 10/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0ce37a744cdf22beddcef433fca1a64252e1673d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 355a40db7714ddae39c4171aaa0ebe4b5e5f777e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149901"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784682"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>チュートリアル:Azure Deployment Manager で正常性チェックを使用する (パブリック プレビュー)
 

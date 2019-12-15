@@ -1,21 +1,19 @@
 ---
-title: B2B メッセージの AS2 追跡スキーマ - Azure Logic Apps | Microsoft Docs
+title: B2B メッセージの AS2 追跡スキーマ
 description: Azure Logic Apps と Enterprise Integration Pack の統合アカウントで B2B メッセージを監視する AS2 追跡スキーマを作成します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.date: 01/27/2017
-ms.openlocfilehash: 180d90450497b38f107f3601944385a003f50282
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 515d7cfc985ee9929f70de2c862170ff79ae4d60
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845785"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792813"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Azure Logic Apps の統合アカウントで AS2 メッセージと MDN を追跡するスキーマを作成する
 
@@ -56,7 +54,7 @@ ms.locfileid: "60845785"
 }
 ```
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | AS2 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | string | AS2 メッセージ受信者のパートナー名。 (省略可能) |
@@ -109,7 +107,7 @@ ms.locfileid: "60845785"
 }
 ```
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | --- | --- | --- |
 | senderPartnerName | String | AS2 メッセージ送信者のパートナー名。 (省略可能) |
 | receiverPartnerName | string | AS2 メッセージ受信者のパートナー名。 (省略可能) |

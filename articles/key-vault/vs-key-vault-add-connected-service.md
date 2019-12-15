@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 4cbc4044b5d1270cecd1a271d2a1db02801650dd
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 1df0ff3b6fea335dde5a3200f824adf14f924d9c
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012771"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452368"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -25,15 +25,15 @@ ms.locfileid: "74012771"
 ## <a name="prerequisites"></a>前提条件
 
 - **Azure サブスクリプション**。 サブスクリプションをお持ちでない場合には、[無料のアカウントにサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。
-- **Visual Studio 2019 バージョン 16.3 Preview 1** 以降または **Visual Studio 2017 バージョン 15.7** (**Web 開発**ワークロードもインストールされます)。 [こちら](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)でダウンロードできます。
+- **Visual Studio 2019 バージョン 16.3** 以降または **Visual Studio 2017 バージョン 15.7** (**Web 開発**ワークロードのインストールあり)。 [こちら](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)でダウンロードできます。
 - ASP.NET (Core ではありません) と Visual Studio 2017 の組み合わせの場合、.NET Framework 4.7.1 以降の開発ツールが必要ですが、これは既定ではインストールされません。 インストールするには、Visual Studio インストーラーを起動し、 **[変更]** を選択します。次に、 **[個々 のコンポーネント]** を選択した後、右側にある **[ASP.NET と Web 開発]** を展開し、 **[.NET Framework 4.7.1 開発ツール]** を選択します。
-- ASP.NET 4.7.1 以降または ASP.NET Core 2.0 Web プロジェクトが開きます。
+- ASP.NET 4.7.1 以降、または ASP.NET Core 2.0 以降の Web プロジェクトが開くこと。
 
 ## <a name="add-key-vault-support-to-your-project"></a>Key Vault のサポートをプロジェクトに追加する
 
 開始する前に、必ず Visual Studio にサインインしてください。 Azure サブスクリプションに使用するものと同じアカウントでサインインします。 次に、ASP.NET 4.7.1 以降か、ASP.NET Core 2.0 Web プロジェクトを開き、次の手順を行います。
 
-1. **ソリューション エクスプローラー**で、キー コンテナー サポートを追加するプロジェクトを右クリックし、 **[追加]** 、 >  **[接続済みサービス]** を選択します。
+1. **ソリューション エクスプローラー**で、キー コンテナーのサポートを追加するプロジェクトを右クリックし、 **[追加]** 、 >  **[接続済みサービス]** を選択します。
    [接続済みサービス] ページが開いて、プロジェクトに追加できるサービスが表示されます。
 1. 使用可能なサービスのメニューから、 **[Secure Secrets With Azure Key Vault]\(Azure Key Vault でシークレットを保護する\)** を選択します。
 
@@ -51,7 +51,7 @@ ms.locfileid: "74012771"
 1. **[OK]** を選択し、構成の選択を受け入れます。
 1. 既存の Key Vault を選択するか、新しい Key Vault を構成したら、Visual Studio の **[Azure Key Vault]** タブで、 **[追加]** を選択し、接続済みサービスを追加します。
 1. **[このキー コンテナーに格納されているシークレットの管理]** リンクを選択し、Key Vault の **[シークレット]** ページを開きます。 ページまたはプロジェクトが閉じている場合、[Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択し、 **[セキュリティ]** の下の **[Key Vault]** を選択してページまたはプロジェクトに移動し、Key Vault を選択できます。
-1. 作成したキー コンテナーの [Key Vault] セクションで、 **[シークレット]** 、 **[生成/インポート]** の順に選択します。
+1. 作成したキー コンテナーの [キー コンテナー] セクションで、 **[シークレット]** 、 **[生成/インポート]** の順に選択します。
 
    ![シークレットを生成/インポートする](media/vs-key-vault-add-connected-service/azure-generate-secrets.png)
 
@@ -63,21 +63,14 @@ ms.locfileid: "74012771"
 
 これで、コードでシークレットにアクセスできます。 次の手順は、ASP.NET 4.7.1 または ASP.NET Core のどちらを使用しているかに応じて異なります。
 
-## <a name="access-your-secrets-in-code"></a>コードでシークレットにアクセスする
+## <a name="access-your-secrets-in-code-aspnet-core"></a>コードでシークレットにアクセスする (ASP.NET Core)
 
-1. ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで、次の 2 つの NuGet パッケージを検索してインストールします。[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) と [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) です。
+1. ソリューション エクスプローラーで、プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。 **[参照]** タブで、次の 2 つの NuGet パッケージを検索してインストールします。[Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) .NET Core 2 の場合は [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) を追加します .NET Core 3 の場合は [Microsoft.Azure.KeyVault.Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core) を追加します。
 
-1. `Program.cs` タブを選択し、Program クラスを次のコードに置き換えます。
+1. .NET Core 2 の場合は、[`Program.cs`] タブを選択し、Program クラスの `BuildWebHost` 定義を次のように変更します。
 
    ```csharp
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            BuildWebHost(args).Run();
-        }
-
-        public static IWebHost BuildWebHost(string[] args) =>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
            WebHost.CreateDefaultBuilder(args)
                .ConfigureAppConfiguration((ctx, builder) =>
                {
@@ -92,24 +85,53 @@ ms.locfileid: "74012771"
                            keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
                    }
                }
-            ).UseStartup<Startup>()
-             .Build();
+            ).UseStartup<Startup>();
 
         private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     }
    ```
 
-1. 次に `About.cshtml.cs` ファイルを開き、次のコードを記述します。
-   1. この using ステートメントで `Microsoft.Extensions.Configuration` の参照を含めます。
+   .NET Core 3 の場合は、次のコードを使用します。
+
+   ```csharp
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((context, config) =>
+                {
+                    var keyVaultEndpoint = GetKeyVaultEndpoint();
+                    if (!string.IsNullOrEmpty(keyVaultEndpoint))
+                    {
+                        var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                        var keyVaultClient = new KeyVaultClient(
+                            new KeyVaultClient.AuthenticationCallback(
+                                azureServiceTokenProvider.KeyVaultTokenCallback));
+                        config.AddAzureKeyVault(keyVaultEndpoint, keyVaultClient, new DefaultKeyVaultSecretManager());
+                    }
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+        private static string GetKeyVaultEndpoint() => "https://WebApplication4-3-kv.vault.azure.net";
+    ```
+
+1. 次に、いずれかのページ ファイル (*Index.cshtml.cs* など) を開き、次のコードを記述します。
+   1. この using ディレクティブによって `Microsoft.Extensions.Configuration` の参照を含めます。
 
        ```csharp
-       using Microsoft.Extensions.Configuration
+       using Microsoft.Extensions.Configuration;
        ```
 
-   1. このコンストラクターを追加します。
+   1. 構成変数を追加します。
+
+      ```csharp
+      private static readonly IConfiguration _configuration;
+      ```
+
+   1. このコンストラクターを追加するか、既存のコンストラクターを次のように置き換えます。
 
        ```csharp
-       public AboutModel(IConfiguration configuration)
+       public IndexModel(IConfiguration configuration)
        {
            _configuration = configuration;
        }
@@ -120,12 +142,37 @@ ms.locfileid: "74012771"
        ```csharp
        public void OnGet()
        {
-           //Message = "Your application description page.";
-           Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
+           ViewData["Message"] = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
        }
        ```
 
-[About] ページを参照して、アプリをローカルで実行します。 シークレット値が取得されるはずです。
+   1. 実行時に値を確認するには、`ViewData["Message"]` を表示するコードを *.cshtml* ファイルに追加して、メッセージ内にシークレットを表示します。
+
+      ```cshtml
+          <p>@ViewData["Message"]</p>
+      ```
+
+アプリをローカルで実行して、キー コンテナーからシークレットが正常に取得されることを確認できます。
+
+## <a name="access-your-secrets-aspnet"></a>シークレットにアクセスする (ASP.NET)
+
+web.config ファイルの `appSettings` 要素のダミーの値が実行時に true 値に置き換えられるように、構成を設定できます。 これには、`ConfigurationManager.AppSettings` データ構造体を使用してアクセスできます。
+
+1. web.config ファイルを編集します。  appSettings タグを検索し、属性 `configBuilders="AzureKeyVault"` を追加し、行を追加します。
+
+   ```xml
+      <add key="mysecret" value="dummy"/>
+   ```
+
+1. 確認のために値が表示されるように、*HomeController.cs* の `About` メソッドを編集します。
+
+   ```csharp
+   public ActionResult About()
+   {
+       ViewBag.Message = "Key vault value = " + ConfigurationManager.AppSettings["mysecret"];
+   }
+   ```
+1. デバッガーの下でアプリをローカルで実行し、 **[About]\(概要\)** タブに切り替えて、キー コンテナーの値が表示されていることを確認します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -137,7 +184,7 @@ ms.locfileid: "74012771"
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-お使いのキー コンテナーを Visual Studio にログインしているものとは異なる Microsoft アカウントで実行している場合 (たとえば、キー コンテナーはご自分の職場アカウントで実行していて、Visual Studio はご自身のプライベート アカウントを使用している場合)、お使いの Program.cs ファイルで Visual Studio がキー コンテナーにアクセスできないというエラーが発生します。 この問題を解決するには、次の手順に従います。
+お使いのキー コンテナーを Visual Studio にログインしているものとは異なる Microsoft アカウントで実行している場合 (たとえば、キー コンテナーは職場アカウントで実行しているが、Visual Studio ではプライベート アカウントを使用している場合)、お使いの Program.cs ファイルで、Visual Studio によるキー コンテナーへのアクセスを実行できないというエラーが発生します。 この問題を解決するには、次の手順に従います。
 
 1. [Azure portal](https://portal.azure.com) に移動してお使いのキー コンテナーを開きます。
 
@@ -148,7 +195,7 @@ ms.locfileid: "74012771"
 
 1. **[ツール]**  >  **[オプション]** の順に選択し、 **[Azure Service Authentication]\(Azure サービス認証\)** を探します。 次に、Visual Studio に追加したアカウントを選択します。
 
-これで、お使いのアプリケーションをデバッグする場合、Visual Studio はお使いのキー コンテナーが配置されているアカウントに接続されます。
+これで、ご自分のアプリケーションをデバッグするときに、お使いのキー コンテナーが配置されているアカウントに Visual Studio が接続されます。
 
 ## <a name="how-your-aspnet-core-project-is-modified"></a>ASP.NET Core プロジェクトの変更
 
@@ -239,5 +286,7 @@ ms.locfileid: "74012771"
 - 指定したリソース グループにキー コンテナーが作成されます。
 
 ## <a name="next-steps"></a>次の手順
+
+このチュートリアルに従っている場合、お使いのキー コンテナーへのアクセス許可は、ご自分の Azure サブスクリプションで実行するように設定されますが、これは運用環境のシナリオには適していない可能性があります。 マネージド ID を作成して、アプリの Key Vault へのアクセスを管理できます。 「[マネージド ID で Key Vault の認証を提供する](/azure/key-vault/managed-identity)」を参照してください。
 
 Key Vault の開発の詳細については、「[Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。

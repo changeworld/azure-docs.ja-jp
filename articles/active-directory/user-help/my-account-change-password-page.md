@@ -1,6 +1,6 @@
 ---
-title: マイ アカウント ポータルからパスワードを変更する - Azure Active Directory| Microsoft Docs
-description: マイ アカウント ポータルの [パスワードの変更] ページで職場または学校アカウントのパスワードを変更する方法。
+title: 職場または学校アカウントのパスワードを変更する - Azure AD
+description: マイ アカウント ポータルの [パスワードの変更] ページで職場または学校アカウントのパスワードを変更する方法について説明します。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4716ef932debe50bfe0aee6519b53e3a19e8d51
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 510f1ca441ef9645cff7f577bbad39991cebc285
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586956"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231869"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>マイ アカウント ポータルから職場または学校アカウントのパスワードを変更する
 
@@ -50,9 +50,9 @@ ms.locfileid: "73586956"
 
 - [セキュリティ情報](user-help-security-info-overview.md)を表示または管理します。
 
-- 接続されている[デバイス](my-account-portal-devices-page.md)を表示または管理します。
+- 接続されている[デバイス](my-account-portal-devices-page.md)を表示または管理する。
 
-- [組織](my-account-portal-organizations-page.md)を表示または管理します。
+- [組織](my-account-portal-organizations-page.md)を表示または管理する。
 
 - [サインイン アクティビティ](my-account-portal-sign-ins-page.md)を表示します。
 

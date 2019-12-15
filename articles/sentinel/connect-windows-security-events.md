@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 34762d561edfa5b37b1841c55f3fff6a4b8337a3
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c74cc5cc65f16eb38ead7c09b5e662cd2463af35
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240518"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555277"
 ---
 # <a name="connect-windows-security-events"></a>Windows セキュリティ イベントの接続 
 
@@ -59,7 +59,7 @@ Azure Sentinel ワークスペースに接続されている Windows サーバ�
 
 Windows セキュリティと Azure Sentinel を完全に統合するには、以下の手順を実行します。
 
-1. Azure Sentinel ポータルで、 **[データ コネクタ]** を選択し、次に **[Windows セキュリティ イベント]** タイルをクリックします。 
+1. Azure Sentinel ポータルで、 **[データ コネクタ]** を選択し、次に **[セキュリティ イベント]** タイルをクリックします。 
 1. ストリーミングするデータの種類を選択します。
 1. **[Update]** をクリックします。
 6. Log Analytics で Windows セキュリティ イベントに関連するスキーマを使用するために、**SecurityEvent** を検索します。

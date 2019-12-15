@@ -1,23 +1,18 @@
 ---
-title: Visual Studio 内でタスク ワークフローを自動化する - Azure Logic Apps
+title: Visual Studio 内でタスク ワークフローを自動化する
 description: Azure Logic Apps と Visual Studio を使用して、エンタープライズ統合のためのワークフローを作成、スケジュール設定、および実行します
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: azure-vs
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.manager: carmonm
+ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: e7ce31f489ae274eddb02c1bfb7e57eb486f5851
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: f4d10f6b0934e7dea9779f45d0f05d7c28966965
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796894"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819178"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio
 
@@ -196,11 +191,11 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
 
 1. ロジック アプリの作成に使用したのと同じアカウントで、[Azure Portal](https://portal.azure.com) にサインインします。
 
-1. Azure のメイン メニューで **[リソース グループ]** を選択します。 ロジック アプリのリソース グループを選択し、 **[概要]** を選択します。
+1. Azure portal メニューで **[リソース グループ]** を選択するか、または任意のページから **[リソース グループ]** を検索して選択します。 ロジック アプリのリソース グループを選択します。
 
 1. **[概要]** ページで、 **[リソース グループの削除]** を選択します。 確認のためにリソース グループ名を入力し、 **[削除]** を選択します。
 
-   ![[リソース グループ] > [概要] > [リソース グループの削除]](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
+   ![[リソース グループ] > [概要] > [リソース グループの削除]](./media/quickstart-create-logic-apps-with-visual-studio/clean-up-resources.png)
 
 1. ローカル コンピューターで Visual Studio ソリューションを削除します。
 

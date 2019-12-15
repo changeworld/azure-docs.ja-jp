@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Speech SDK を使用して音声でボットを有効にする
+title: チュートリアル:Speech SDK を使用してボットを音声対応にする - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Microsoft Bot-Framework を使用してエコー ボットを作成し、それを Azure にデプロイし、Bot-Framework Direct Line Speech チャネルに登録します。 その後、Windows 用のサンプル クライアント アプリを構成します。これにより、ボットに話しかけて、応答を聞くことができます。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: dcohen
-ms.openlocfilehash: c95bc7b58f3883fee54aaa8095cb187eaefdb3e0
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b42314d1c8c1bd734181f02c36ae3f43507e9b79
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836956"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815209"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
-Speech Services の機能を使用して、チャット ボットを音声で簡単に有効にできるようになりました。
+音声サービスの機能を使用して、チャット ボットを簡単に音声対応にできるようになりました。
 
 このチュートリアルでは、Microsoft Bot-Framework を使用してエコー ボットを作成し、それを Azure にデプロイし、Bot-Framework Direct Line Speech チャネルに登録します。 その後、Windows 用のサンプル クライアント アプリを構成します。これにより、ボットに話しかけて、応答を聞くことができます。
 
@@ -39,7 +39,7 @@ Speech Services の機能を使用して、チャット ボットを音声で簡
 ![diagram-tag](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "Speech チャネルのフロー")
 
 > [!NOTE]
-> このチュートリアルの手順では、有料サービスは必要ありません。 新しい Azure ユーザーとして、無料のAzure 試用版サブスクリプションのクレジットと、Free レベルの Speech Services を使用して、このチュートリアルを完了することができます。
+> このチュートリアルの手順では、有料サービスは必要ありません。 新しい Azure ユーザーは、無料のAzure 試用版サブスクリプションのクレジットと、音声サービスの Free レベルを使用して、このチュートリアルを完了することができます。
 
 このチュートリアルの内容:
 > [!div class="checklist"]
@@ -63,7 +63,7 @@ Speech Services の機能を使用して、チャット ボットを音声で簡
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-このチュートリアルで作成するクライアント アプリでは、いくつかの Azure サービスを使用します。 ボットからの応答のラウンドトリップ時間を短縮するには、これらのサービスが同じ Azure リージョンに配置されていることを確認します。 ここでは、リソース グループを**米国西部**リージョンに作成します。 このリソース グループは、Bot-Framework、Direct Line Speech チャネル、および Speech Services 用に個別のリソースを作成するときに使用されます。
+このチュートリアルで作成するクライアント アプリでは、いくつかの Azure サービスを使用します。 ボットからの応答のラウンドトリップ時間を短縮するには、これらのサービスが同じ Azure リージョンに配置されていることを確認します。 ここでは、リソース グループを**米国西部**リージョンに作成します。 このリソース グループは、Bot-Framework、Direct Line Speech チャネル、および音声サービスの個別のリソースを作成するときに使用されます。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 左側のナビゲーションから、 **[リソース グループ]** を選択します。 次に、 **[追加]** をクリックして新しいリソース グループを追加します。
@@ -89,7 +89,7 @@ Speech Services の機能を使用して、チャット ボットを音声で簡
 
 **米国西部**リージョンにリソース グループを作成したので、次の手順は、このチュートリアルで使用するサービスごとの個別リソースの作成です。
 
-### <a name="create-a-speech-services-resource"></a>Speech Services リソースの作成
+### <a name="create-a-speech-service-resource"></a>音声サービスのリソースを作成する
 
 Speech リソースを作成するには、以下の手順に従います。
 
@@ -426,7 +426,7 @@ Direct Line Speech Client のソース コード内で、これらのファイ�
 * [高品質なニューラル TTS 音声をサポートする Azure リージョン](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)にデプロイする
 * Direct Line Speech チャネルに関連付けられている価格:
   * [Bot Service pricing (Bot Service の価格)](https://azure.microsoft.com/pricing/details/bot-service/)
-  * [Speech Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
+  * [Speech サービス](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)
 * 独自の音声対応ボットの構築とデプロイ:
   * [Bot-Framework ボット](https://dev.botframework.com/)を構築します。 [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)に登録し、[音声用にボットをカスタマイズ](https://docs.microsoft.com/azure/bot-service/directline-speech-bot?view=azure-bot-service-4.0)します
   * 既存の [Bot-Framework ソリューション](https://microsoft.github.io/botframework-solutions/index)を調べます:[仮想アシスタント](https://microsoft.github.io/botframework-solutions/overview/virtual-assistant-solution/)を構築し、[それを Direct Line Speech に拡張します](https://microsoft.github.io/botframework-solutions/clients-and-channels/tutorials/enable-speech/1-intro/)

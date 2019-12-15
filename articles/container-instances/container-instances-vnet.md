@@ -1,19 +1,14 @@
 ---
-title: コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
+title: Azure 仮想ネットワークへのコンテナー グループのデプロイ
 description: コンテナー グループを新規または既存の Azure 仮想ネットワークにデプロイする方法について説明します。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 07/11/2019
-ms.author: danlep
-ms.openlocfilehash: 05f1bcd5e80d7c06fbaca1abe89c84f6743a5979
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: f211924eb74035f4bb30db2d2b848e0a2591de09
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034975"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533266"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 

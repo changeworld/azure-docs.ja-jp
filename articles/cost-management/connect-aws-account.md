@@ -42,7 +42,7 @@ AWS IAM の ID の詳細については、「[ID (ユーザー、グループ、
 
 ### <a name="add-aws-read-only-role-based-access"></a>AWS の読み取り専用のロールベースのアクセスを追加する
 
-1. https://console.aws.amazon.com/iam/home から AWS コンソールにサインインし、 **[Roles]\(ロール\)** を選択します。
+1. [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home ) から AWS コンソールにサインインし、 **[Roles]\(ロール\)** を選択します。
 2. **[Create Role]\(ロールの作成\)** をクリックし、 **[Another AWS account]\(別の AWS アカウント\)** を選択します。
 3. **[Account ID]\(アカウント ID\)** に `432263259397` を貼り付けます。 このアカウント ID は、AWS によって Cloudyn サービスに割り当てられた Cloudyn データ コレクター アカウントです。 表示されたアカウント ID を使用します。
 4. **[オプション]** の横にある **[Require external ID]\(外部 ID が必要\)** を選択します。 前に Cloudyn で **[External ID]\(外部 ID\)** フィールドからコピーした一意の値を貼り付けます。 **[Next:Permissions]\(次へ: アクセス許可\)** をクリックします。  
@@ -77,7 +77,7 @@ Cloudyn は、データの収集とレポートの作成を開始します。 �
 
 ### <a name="add-aws-read-only-user-based-access"></a>AWS の読み取り専用のユーザーベースのアクセスを追加する
 
-1. https://console.aws.amazon.com/iam/home から AWS コンソールにサインインし、 **[ユーザー]** を選択します。
+1. [https://console.aws.amazon.com/iam/home](https://console.aws.amazon.com/iam/home ) から AWS コンソールにサインインし、 **[ユーザー]** を選択します。
 2. **[ユーザーの追加]** をクリックします。
 3. **[User name]\(ユーザー名\)** フィールドに、ユーザー名を入力します。
 4. **[Access type]\(アクセスの種類\)** で、 **[Programmatic access]\(プログラムによるアクセス\)** を選択し、 **[Next:Permissions]\(次へ: アクセス許可\)** をクリックします。  
@@ -108,7 +108,7 @@ Cloudyn は、データの収集とレポートの作成を開始します。 �
 
 AWS ロール ARN を取得するには、次の手順を実行します。 ロール ARN を使用して、請求バケットに読み取りアクセス許可を与えます。
 
-1. https://console.aws.amazon.com から AWS コンソールにサインインし、 **[Services]\(サービス\)** を選択します。
+1. [https://console.aws.amazon.com](https://console.aws.amazon.com ) から AWS コンソールにサインインし、 **[Services]\(サービス\)** を選択します。
 2. [Service Search] に「*IAM*」と入力し、そのオプションを選択します。
 3. 左手のメニューから **[Roles]\(ロール\)** を選択します。
 4. ロールの一覧で、Cloudyn アクセス用に作成したロールを選択します。
@@ -118,7 +118,7 @@ AWS ロール ARN を取得するには、次の手順を実行します。 ロ�
 
 課金の詳細情報を格納する S3 バケットを作成します。
 
-1. https://console.aws.amazon.com から AWS コンソールにサインインし、 **[Services]\(サービス\)** を選択します。
+1. [https://console.aws.amazon.com](https://console.aws.amazon.com ) から AWS コンソールにサインインし、 **[Services]\(サービス\)** を選択します。
 2. [Service Search] に「*S3*」と入力し、 **[S3]** を選択します。
 3. [Amazon S3] ページで、 **[Create bucket]\(バケットの作成\)** をクリックします。
 4. バケットの作成ウィザードで、バケットの名前と地域を選択し、 **[次へ]** をクリックします。  

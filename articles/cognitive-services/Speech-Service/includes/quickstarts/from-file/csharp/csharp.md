@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:オーディオ ファイルから音声を認識する (C#) - Speech Service
+title: クイック スタート:オーディオ ファイルから音声を認識する、C# - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: ed3338549788346eb7784119b266fa6dc2865239
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fcb64c1f6287cdbf15459fecc1db438e6cfecdbe
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506341"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819402"
 ---
 [!INCLUDE [dotnet](./dotnet.md)]
 

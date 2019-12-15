@@ -5,106 +5,69 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: 7b79fd9c87e97e624cce567b57c1c65fefcc151e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/19/2018
+ms.openlocfilehash: a4258b51acfa603c156bc35cdb2cbc3b16f37ab0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684644"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278366"
 ---
-# <a name="visually-monitor-azure-data-factories"></a>Azure Data Factory を視覚的に監視する
-Azure Data Factory は、クラウドベースのデータ統合サービスです。 これを使用して、データ移動とデータ変換を調整し、自動化するためのデータ主導型ワークフローをクラウド内に作成できます。 Azure Data Factory を使用して、以下を実行できます。
+# <a name="visually-monitor-azure-data-factory"></a>Azure Data Factory を視覚的に監視する
 
-- 各種のデータ ストアからデータを取り込むことができるデータ主導型のワークフロー (パイプライン) を作成し、スケジューリングする。
-- そのデータを Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning などのコンピューティング サービスを使って処理または変換する。
-- ビジネス インテリジェンス (BI) アプリケーションから利用できるよう、Azure SQL Data Warehouse などのデータ ストアに出力データを公開する。
+Azure Data Factory でパイプラインを作成して公開した後、それをトリガーに関連付けたり、アドホック実行を手動で開始したりできます。 Azure Data Factory ユーザー エクスペリエンスで、すべてのパイプラインの実行をネイティブに監視できます。 監視エクスペリエンスを開くには、[Azure portal](https://portal.azure.com/) の [データ ファクトリ] ブレードで **[監視と管理]** タイルを選択します。 ADF UX を既に使用している場合は、左側のサイドバーにある **[監視]** アイコンをクリックします。
 
-このクイック スタートでは、Data Factory パイプラインを視覚的に監視する方法について説明します。コードの記述は一切必要ありません。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-
-## <a name="monitor-data-factory-pipelines"></a>Data Factory パイプラインを監視する
-
-単純なリスト ビュー インターフェイスでパイプラインとアクティビティの実行を監視します。 すべての実行はブラウザーのローカル タイム ゾーンで表示されます。 タイム ゾーンを変更した場合、すべての日付/時刻フィールドは選択したものにスナップされます。  
-
-1. Microsoft Edge または Google Chrome を起動します。 現在、Data Factory の UI はこの 2 つの Web ブラウザーでのみサポートされています。
-2. [Azure portal](https://portal.azure.com/) にサインインします。
-3. Azure portal で、作成済みのデータ ファクトリのブレードに移動します。 **[Monitor & Manage]\(監視と管理\)** タイルを選択して、Data Factory ビジュアル監視エクスペリエンス を開始します。
+すべてのデータ ファクトリの実行は、ブラウザーのローカル タイム ゾーンで表示されます。 タイム ゾーンを変更した場合、すべての日付/時刻フィールドは選択したものにスナップされます。
 
 ## <a name="monitor-pipeline-runs"></a>パイプラインの実行を監視する
-リスト ビューには、Data Factory パイプラインの各パイプラインの実行が表示されます。 次の列が含まれます。
+
+既定の監視ビューは、選択した期間内のパイプラインの実行の一覧です。 次の列が表示されます。
 
 | **列名** | **説明** |
 | --- | --- |
 | Pipeline Name (パイプライン名) | パイプラインの名前 |
-| Actions | アクティビティの実行の表示に使用できる単一のアクション |
+| Actions | アクティビティの詳細の表示、キャンセル、またはパイプラインの再実行を可能にするアイコン |
 | Run Start (実行の開始) | パイプラインの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
 | Duration | 実行期間 (HH:MM:SS) |
-| Triggered By (トリガー元) | 手動トリガーまたはスケジュール済みのトリガー |
-| Status | **失敗**、 **成功**、または**進行中** |
+| Triggered By (トリガー元) | パイプラインを開始したトリガーの名前 |
+| Status | **失敗**、**成功**、**進行中**、**キャンセル済**、または **キューに登録済み** |
+| 注釈 | パイプラインに関連付けられたフィルター可能なタグ  |
 | parameters | パイプラインの実行のパラメーター (名前/値のペア) |
-| Error | パイプラインの実行エラー (発生した場合) |
+| Error | パイプラインが失敗した場合の実行エラー |
 | Run ID (実行 ID) | パイプライン実行の ID。 |
 
 ![パイプラインの実行を監視するためのリスト ビュー](media/monitor-visually/pipeline-runs.png)
 
+パイプラインとアクティビティの実行一覧を最新の情報に更新するには、 **[最新の情報に更新]** ボタンを手動で選択する必要があります。 現在、自動更新はサポートされていません。
+
+![[最新の情報に更新] ボタン](media/monitor-visually/refresh.png)
+
 ## <a name="monitor-activity-runs"></a>アクティビティの実行を監視する
-リスト ビューには、各パイプラインの実行に対応するアクティビティの実行が表示されます。 各パイプライン実行のアクティビティの実行を表示するには、 **[アクション]** 列の **[アクティビティの実行]** アイコンを選択します。 リスト ビューには、次の列が含まれます。
+
+各パイプラインの実行でのアクティビティの実行を表示するには、 **[アクション]** 列の **[アクティビティの実行の表示]** アイコンを選択します。 リスト ビューには、各パイプラインの実行に対応するアクティビティの実行が表示されます。
 
 | **列名** | **説明** |
 | --- | --- |
 | Activity Name (アクティビティ名) | パイプライン内のアクティビティの名前 |
-| Activity Type (アクティビティの種類) | アクティビティの種類 (**Copy**、**HDInsightSpark**、**HDInsightHive** など) |
+| Activity Type (アクティビティの種類) | アクティビティの種類 (**Copy**、**ExecuteDataFlow**、**AzureMLExecutePipeline**  など) |
+| Actions | JSON 入力情報、JSON 出力情報、またはアクティビティ固有の詳細な監視エクスペリエンスの表示を可能にするアイコン | 
 | Run Start (実行の開始) | アクティビティの実行の開始日時 (MM/DD/YYYY, HH:MM:SS AM/PM) |
 | Duration | 実行期間 (HH:MM:SS) |
-| Status | **失敗**、 **成功**、または**進行中** |
-| 入力 | アクティビティの入力を記述する JSON 配列 |
-| Output | アクティビティの出力を記述する JSON 配列 |
-| Error | アクティビティの実行エラー (発生した場合) |
+| Status | **失敗**、**成功**、**進行中**、または**キャンセル済** |
+| 統合ランタイム | アクティビティが実行された統合ランタイム |
+| ユーザー プロパティ | アクティビティのユーザー定義プロパティ |
+| Error | アクティビティが失敗した場合の実行エラー |
+| Run ID (実行 ID) | アクティビティ実行の ID。 |
 
 ![アクティビティの実行を監視するためのリスト ビュー](media/monitor-visually/activity-runs.png)
 
-> [!IMPORTANT]
-> パイプラインとアクティビティの実行一覧を最新の情報に更新するには、上部の **[最新の情報に更新]** ボタンを選択する必要があります。 現在、自動更新はサポートされていません。
+### <a name="promote-user-properties-to-monitor"></a>監視対象のユーザー プロパティを昇格する
 
-![[最新の情報に更新] ボタン](media/monitor-visually/refresh.png)
-
-## <a name="select-a-data-factory-to-monitor"></a>監視するデータ ファクトリの選択
-左上の **[Data Factory]** アイコンにマウス ポインターを移動します。 矢印アイコンを選択して、監視できる Azure サブスクリプションとデータ ファクトリのリストを表示します。
-
-![データ ファクトリの選択](media/monitor-visually/select-datafactory.png)
-
-## <a name="configure-the-list-view"></a>リスト ビューを構成する
-
-### <a name="apply-rich-ordering-and-filtering"></a>高度な並べ替えとフィルター処理を適用する
-
-パイプラインの実行順序を、実行の開始時刻に従って昇順または降順で並べ替えます。 次の列を使用して、パイプラインの実行をフィルター処理します。
-
-| **列名** | **説明** |
-| --- | --- |
-| Pipeline Name (パイプライン名) | パイプラインの名前。 オプションには **[過去 24 時間]** 、 **[先週]** 、 **[過去 30 日間]** のクイック フィルターがあります。 または、カスタムの日付と時刻を選択します。 |
-| Run Start (実行の開始) | パイプラインの実行の開始日時。 |
-| Run Status (ジョブの状態) | 次の状態別に実行をフィルター処理:**成功**、 **失敗**、または**進行中**。 |
-
-![フィルターのオプション](media/monitor-visually/filter.png)
-
-### <a name="add-or-remove-columns"></a>列を追加または削除する
-リスト ビューの見出しを右クリックし、リスト ビューに表示する列を選択します。
-
-![列のオプション](media/monitor-visually/columns.png)
-
-### <a name="adjust-column-widths"></a>列幅を調整する
-リスト ビューの列幅を拡大または縮小するには、列見出しにマウス ポインターを移動します。
-
-## <a name="promote-user-properties-to-monitor"></a>監視対象のユーザー プロパティを昇格する
-
-監視可能なエンティティになるように、任意のパイプラインのアクティビティ プロパティをユーザー プロパティとして昇格できます。 たとえば、パイプラインのコピー アクティビティの **Source** プロパティと **Destination** プロパティをユーザー プロパティとして昇格できます。 また、 **[自動生成]** を選択して、コピー アクティビティの **Source** および **Destination** ユーザー プロパティを生成することもできます。
+監視対象のエンティティになるように、任意のパイプラインのアクティビティ プロパティをユーザー プロパティとして昇格します。 たとえば、パイプラインのコピー アクティビティの **Source** プロパティと **Destination** プロパティをユーザー プロパティとして昇格できます。 **[自動生成]** を選択して、コピー アクティビティの **Source** および **Destination** ユーザー プロパティを生成します。
 
 ![ユーザー プロパティの作成](media/monitor-visually/monitor-user-properties-image1.png)
 
@@ -119,9 +82,33 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![アクティビティ実行の一覧とユーザー プロパティの列](media/monitor-visually/monitor-user-properties-image4.png)
 
+## <a name="configure-the-list-view"></a>リスト ビューを構成する
+
+### <a name="order-and-filter"></a>順序とフィルター
+
+パイプラインの実行が、実行の開始時刻に従って降順になるか昇順になるかを切り替えます。 次の列を使用して、パイプラインの実行をフィルター処理します。
+
+| **列名** | **説明** |
+| --- | --- |
+| Pipeline Name (パイプライン名) | パイプラインの名前でフィルター処理します。 |
+| Run Start (実行の開始) |  表示されるパイプラインの実行の時間範囲を決定します。 オプションには **[過去 24 時間]** 、 **[先週]** 、および **[過去 30 日間]** のクイック フィルターが含まれています。または、カスタムの日時を選択します。 |
+| Run Status (ジョブの状態) | 次の状態別に実行をフィルター処理:**成功**、**失敗**、**キューに登録済み**、**キャンセル済**、または**進行中**。 |
+| 注釈 | 各パイプラインに適用されるタグでフィルター処理する |
+| 実行 | パイプラインを表示するかどうかでフィルター処理する |
+
+![フィルターのオプション](media/monitor-visually/filter.png)
+
+### <a name="add-or-remove-columns"></a>列を追加または削除する
+リスト ビューの見出しを右クリックし、リスト ビューに表示する列を選択します。
+
+![列のオプション](media/monitor-visually/columns.png)
+
+### <a name="adjust-column-widths"></a>列幅を調整する
+リスト ビューの列幅を拡大または縮小するには、列見出しにマウス ポインターを移動します。
+
 ## <a name="rerun-activities-inside-a-pipeline"></a>パイプライン内のアクティビティを再実行する
 
-パイプライン内のアクティビティを再実行できる状態になりました。 **[View activity runs]\(アクティビティの実行の表示\)** を選択し、パイプラインからその再実行の起点となるアクティビティを選択します。
+パイプライン内のアクティビティを再実行できます。 **[View activity runs]\(アクティビティの実行の表示\)** を選択し、パイプラインからその再実行の起点となるアクティビティを選択します。
 
 ![アクティビティの実行の表示](media/monitor-visually/rerun-activities-image1.png)
 
@@ -139,9 +126,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="gantt-views"></a>ガント ビュー
 
-ガント ビューを使用すると、パイプラインとアクティビティの実行をすばやく可視化できます。 ガント ビューをパイプラインごとに表示することも、パイプラインで作成した注釈やタグでグループ化することもできます。
+ガント ビューを使用すると、パイプラインとアクティビティの実行をすばやく可視化できます。
 
 ![ガント チャートの例](media/monitor-visually/gantt1.png)
+
+ガント ビューをパイプラインごとに表示することも、パイプラインで作成した注釈/タグでグループ化することもできます。
 
 ![ガント チャートの注釈](media/monitor-visually/gantt2.png)
 
@@ -153,11 +142,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 左下の**情報**アイコンを選択します。 次に、**ガイド ツアー**を選択して、パイプラインの実行やアクティビティの実行を監視する方法について詳細な手順を確認します。
 
 ![ガイド ツアー](media/monitor-visually/guided-tours.png)
-
-## <a name="feedback"></a>フィードバック
-**フィードバック** アイコンを選択して、さまざまな機能や、発生している問題についてフィードバックをお寄せください。
-
-![フィードバック](media/monitor-visually/feedback.png)
 
 ## <a name="alerts"></a>アラート
 

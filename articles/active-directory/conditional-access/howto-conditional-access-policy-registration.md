@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5864424f003ce9254a6452d8374d78c54516f2bc
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08c1db1a8e377edd1bf9b8f1b942e65b970edf56
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322731"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803683"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>条件付きアクセス:信頼できる場所を MFA 登録で必須にする
 
@@ -26,7 +26,7 @@ Azure Multi-Factor Authentication とパスワード リセットのセルフサ
 
 次のポリシーは、統合された登録エクスペリエンスを使用して登録を試みるすべての選択ユーザーに適用され、信頼されたネットワークとマークされている場所から接続している場合を除き、アクセスをブロックします。
 
-1. **Azure portal** で、 **[Azure Active Directory]**  >  **[条件付きアクセス]** に移動します。
+1. **Azure portal** で、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** に移動します。
 1. **[新しいポリシー]** を選択します。
 1. [名前] に、このポリシーの名前を入力します。 たとえば、「**信頼されたネットワーク上の統合されたセキュリティ情報の登録**」など。
 1. **[割り当て]** から **[ユーザーとグループ]** をクリックし、このポリシーを適用するユーザーとグループを選択します。

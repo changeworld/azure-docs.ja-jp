@@ -1,5 +1,5 @@
 ---
-title: カスタム Java モジュールのチュートリアル - Azure IoT Edge | Microsoft Docs
+title: チュートリアル - Azure IoT Edge を使用したカスタム Java モジュールのチュートリアル
 description: このチュートリアルでは、Java コードで IoT Edge モジュールを作成し、Edge デバイスに展開する方法について説明します。
 services: iot-edge
 author: kgremban
@@ -9,12 +9,12 @@ ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fbf03dd6d585f1357f8f3cebf08de25e437286ac
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: d2c781c1ee09e4e70d119b59e6c02e0440d5bf54
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560982"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701855"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Java IoT Edge モジュールを開発する
 

@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL (単一サーバー) 用に Azure AD を構成してサインインする
-description: Azure Database for PostgreSQL (単一サーバー) での認証に Azure Active Directory を設定する方法について説明します
+title: Azure Active Directory の使用 - Azure Database for PostgreSQL (単一サーバー)
+description: Azure Database for PostgreSQL (単一サーバー) での認証に Azure Active Directory (AAD) を設定する方法について説明します
 author: lfittl
 ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d5abfe4cc6aa0679d8009343fa24c1059700bb79
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c929ac1c171547a4ff485fc43f0f329440f9c3b5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511268"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763642"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 

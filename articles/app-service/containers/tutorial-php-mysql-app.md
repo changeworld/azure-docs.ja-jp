@@ -1,22 +1,16 @@
 ---
-title: Linux 上の PHP (Laravel) と MySQL - Azure App Service | Microsoft Docs
-description: Azure での MySQL データベースへの接続を使用して、PHP アプリを Azure App Service on Linux で動作させる方法について説明します。 このチュートリアルでは Laravel を使用します。
-services: app-service\web
-author: cephalin
-manager: jeconnoc
-ms.service: app-service-web
-ms.workload: web
+title: チュートリアル:Linux PHP アプリと MySQL
+description: Azure での MySQL データベースへの接続を使用して、Linux Node.js アプリを Azure App Service で動作させる方法について説明します。 このチュートリアルでは Laravel を使用します。
 ms.devlang: php
 ms.topic: tutorial
 ms.date: 11/25/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4fade03d798096e250cb5b56fbb2003ea4b58e1b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: be8bbfde7e9873f9cef3a85cacc2dfcf4db9039b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481324"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687433"
 ---
 # <a name="build-a-php-and-mysql-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で PHP と MySQL アプリを構築する
 

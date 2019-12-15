@@ -1,17 +1,17 @@
 ---
-title: Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする方法 | Microsoft Docs
-description: Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする方法について説明します
+title: チュートリアル - Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする方法
+description: このチュートリアルでは、Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする方法について説明します。
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeconnoc
-ms.openlocfilehash: a901e4194909df85f53799d5937515e42ea87a69
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1653db3619fd569238872ca1fcfd6d0c439e84c9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607568"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708781"
 ---
 # <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>チュートリアル:Azure サービスを Azure Spring Cloud アプリケーションにバインドする: Azure Cache for Redis
 

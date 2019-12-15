@@ -1,5 +1,5 @@
 ---
-title: C++ 用ストレージ クライアント ライブラリを使用した Azure Storage のリソース一覧の取得 | Microsoft Docs
+title: C++ クライアント ライブラリを使用して Azure Storage リソースを一覧表示する
 description: C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721914"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269448"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>C++ での Azure Storage のリソース一覧の取得
 
@@ -97,7 +97,7 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
 
 *max_results* パラメーターを指定しない場合、1 ページでは、既定の上限値である 5000 個までの結果が返されます。
 
-また、Azure テーブル ストレージに対するクエリでは、継続トークンが空でないとしても、レコードが返されないか、指定した *max_results* パラメーターの値より少ないレコードが返される場合があることにも注意してください。 考えられる理由の 1 つは、クエリが 5 秒以内に完了しなかったためです。 継続トークンが空でない限りクエリは継続されるため、コードでセグメント結果のサイズが推測されることはありません。
+また、Azure Table Storage に対するクエリでは、継続トークンが空でないとしても、レコードが返されないか、指定した *max_results* パラメーターの値より少ないレコードが返される場合があることにも注意してください。 考えられる理由の 1 つは、クエリが 5 秒以内に完了しなかったためです。 継続トークンが空でない限りクエリは継続されるため、コードでセグメント結果のサイズが推測されることはありません。
 
 ほとんどのシナリオで推奨されるコーディング パターンは、一覧取得のセグメント化です。これにより、一覧取得またはクエリ実行の進行状況が明示され、各要求に対するサービスの応答が指定されます。 特に C++ のアプリケーションやサービスでは、一覧取得の進行状況を下位レベルで制御することで、メモリおよびパフォーマンスをコントロールしやすくなります。
 

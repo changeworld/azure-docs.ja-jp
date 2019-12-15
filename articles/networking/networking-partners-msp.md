@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 3151d72c0e74e7eb694ef2bdd5737f65992fe905
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 10c27c18b8003bf286789e478f504bca98ebe7ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824381"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766484"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ネットワーク MSP パートナーについて
 
@@ -28,12 +28,13 @@ Azure ネットワーク MSP は、クラウドおよびハイブリッド ネ�
 
 Azure ネットワーク MSP パートナーによって提供されるマネージド クラウド ネットワーク サービスの詳細については、このセクションのリンクを使用してください。 お客様のクラウド ネットワーク サービス パートナーが下のセクションに記載されていない場合は、プロバイダーから Microsoft に問い合わせるようお伝えください。 パートナーは ManagedVirtualWAN@microsoft.com にメールを送信して Microsoft に問い合わせることができます。 
 
-| **MSP** | **クラウド ネットワーク変換サービス** | **マネージド ExpressRoute** | **マネージド仮想 WAN** | **マネージド ネットワーク セキュリティ サービス** |**マネージド ネットワーク Edge コンピューティング** |
+| **MSP** | **クラウド ネットワーク変換サービス** | **マネージド ExpressRoute** | **マネージド仮想 WAN** | **マネージド ネットワーク セキュリティ サービス** |**管理されたマルチアクセス Edge コンピューティング** |
 | ---| ---| ---| ---| ---| ---|
 |[Amdocs](https://www.amdocs.com/)|||||はい|
 |[ANS Group UK](https://www.ans.co.uk/)|はい|はい||||
 |[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)|はい |はい |はい | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|はい|はい|はい|||
+|[共同進化](https://www.coevolve.com/services/azure-networking-services/)|はい||はい|はい||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|はい|||||
 |[Dimension Data](https://www.dimensiondata.com/)|はい|||||
 |[Equinix](https://www.equinix.com/)|はい|はい||||

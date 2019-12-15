@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/25/2019
 ms.author: rkarlin
-ms.openlocfilehash: ba22cc3db0ca50a292ddef4d0d646f8578c15cd4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1b78f6f0773e114a4dda536213e2684d8fbd706d
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489154"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483254"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter のノートブックを使用してセキュリティの脅威を検出する
 
@@ -62,18 +62,18 @@ Azure Sentinel ノートブックでは、pandas、matplotlib、bokeh など、�
 > [!div class="mx-imgBorder"]
 >![[Azure Notebooks にサインアップ] オプション](./media/notebooks/sentinel-azure-sign-up-azure-notebooks.png)
 
-## <a name="view-available-notebooks-from-azure-sentinel"></a>Azure Sentinel で使用できるノートブックを表示する
+Azure Sentinel から直接ノートブックを実行することも、すべての Azure Sentinel ノートブックを新しい Azure Notebooks プロジェクトに複製することもできます。
+
+## <a name="run-a-notebook-from-azure-sentinel"></a>Azure Sentinel からノートブックを実行する
  
 1. Azure portal から **[Azure Sentinel]**  >  **[Threat management]\(脅威の管理\)**  >  **[Notebooks]\(ノートブック\)** に移動します。ここで、Azure Sentinel によって提供されるノートブックを確認できます。 
 
 2. 個々のノートブックを選択し、それらの説明、必要なデータの種類、データ ソースを確認します。 例:
     
     > [!div class="mx-imgBorder"]
-    > ![ノートブックの起動](./media/notebooks/sentinel-azure-notebooks-nolaunch.png)
+    > ![ノートブックの起動](./media/notebooks/sentinel-azure-notebooks-launch.png)
 
-3. **[Launch Notebook]\(ノートブックの起動\)** を選択して、[Azure Sentinel Community GitHub リポジトリ](https://github.com/Azure/Azure-Sentinel)のノートブックを参照します。
-
-現時点では、Azure Sentinel から直接ノートブックを起動することはできません。 代わりに、次の手順を使用して、GitHub のノートブックを Azure Notebooks プロジェクトに複製します。
+3. 使用するノートブックを選択してから、 **[Launch Notebook (Preview)]\(ノートブックの起動 (プレビュー)\)** を選択して、Azure Sentinel ワークスペースに接続する新しい Azure Notebooks プロジェクトにノートブックを複製し、構成します。 プロセスが完了すると、Azure Notebooks 内でノートブックが開き、実行できるようになります。
 
 ## <a name="clone-azure-sentinel-notebooks-to-a-new-azure-notebooks-project"></a>Azure Sentinel のノートブックを新しい Azure Notebooks プロジェクトに複製する
 

@@ -1,22 +1,22 @@
 ---
-title: Azure AD SSPR のパスワード ライトバックを構成する方法 - Azure Active Directory
+title: SSPR のパスワード ライトバックを構成する - Azure Active Directory
 description: Azure AD と Azure AD Connect を使って、オンプレミスのディレクトリにパスワードを書き戻します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e12fe38ba69f6ac8f27130e01baff0c358aa409
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 67737aed3bd9961a37dc761fddf608d9bcfe3ffe
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74021767"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847254"
 ---
 # <a name="how-to-configure-password-writeback"></a>方法: パスワード ライトバックを構成する
 

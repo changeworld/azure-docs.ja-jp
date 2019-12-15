@@ -3,18 +3,18 @@ title: Azure IoT Edge デバイスを Azure IoT Central に追加する | Micros
 description: オペレーターとして、Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加します
 author: rangv
 ms.author: rangv
-ms.date: 10/22/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: f16db7ebff087b164228f2b23d6fa7ec302705bb
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e5d60c77e9bdc0733c12bca891eb6c3e33a1fceb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406345"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979072"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Edge デバイスを Azure IoT Central アプリケーションに追加する
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 9c8bae879c5e28914981eec34afb0759dd963004
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c48bcab0a3d009b186832a6b728597f03788a7cd
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73928977"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382989"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -208,12 +208,12 @@ AKS コントロール プレーンをアップグレードするには、`az ak
 
 ### <a name="validation-rules-for-upgrades"></a>アップグレードの検証規則
 
-クラスターのコントロール プレーンまたはノード プールによって保持される Kubernetes バージョンの有効なアップグレードは、次の規則のセットによって検証されます。
+クラスターのコントロール プレーンおよびノード プールに対して有効な Kubernetes のアップグレードは、次の規則のセットによって検証されます。
 
-* アップグレードする先の有効なバージョンの規則:
+* ノード プールをアップグレードするための有効なバージョンの規則:
    * ノード プールのバージョンは、コントロール プレーンと同じ "*メジャー*" バージョンである必要があります。
-   * ノード プールのバージョンは、コントロール プレーンのバージョンの 2 つ前の "*マイナー*" バージョンにすることができます。
-   * ノード プールのバージョンは、コントロール プレーンのバージョンの 2 つ前の "*パッチ*" バージョンにすることができます。
+   * ノード プールの "*マイナー*" バージョンは、コントロール プレーンのバージョンの 2 つ以内の "*マイナー*" バージョンでなければなりません。
+   * ノード プールのバージョンを、コントロールの `major.minor.patch` バージョンよりも大きくすることはできません。
 
 * アップグレード操作を送信するための規則:
    * コントロール プレーンでも、ノード プールでも、Kubernetes バージョンをダウングレードすることはできません。

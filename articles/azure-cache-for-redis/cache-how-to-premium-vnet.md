@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: b2ddac9439183321691104d4eedccb0c971d19c9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 03cc5bd4e6e7198a6a3a916226c72e9b0f9ff1b2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129407"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233127"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Cache for Redis インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -96,11 +96,7 @@ Azure Cache for Redis が VNet でホストされている場合は、次の表�
 
 #### <a name="outbound-port-requirements"></a>送信ポートの要件
 
-送信ポートには 9 個の要件があります。
-
-- インターネットに対するすべてのアウトバウンド接続をクライアントのオンプレミス監査デバイス経由にすることができます。
-- 3 つのポートは、Azure Storage と Azure DNS を提供する Azure エンドポイントにトラフィックをルーティングします。
-- その他のポート範囲は、内部の Redis サブネット通信用です。 内部 Redis サブネット通信用にサブネット NSG 規則は必要ありません。
+送信ポートには 9 個の要件があります。 これらの範囲内の送信要求は、キャッシュが機能するために必要な他のサービスに送信されるか、またはノード間通信のために Redis サブネットの内部に送信されます。 geo レプリケーションの場合は、プライマリ キャッシュとセカンダリ キャッシュのサブネット間の通信のための追加の送信要件が存在します。
 
 | ポート | Direction | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
 | --- | --- | --- | --- | --- | --- |

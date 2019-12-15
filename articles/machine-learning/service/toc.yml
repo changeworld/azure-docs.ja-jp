@@ -152,7 +152,7 @@
     - name: データの処理
       items:
         - name: データストアからデータを取得する
-          displayName: 'blob, get, fileshare, access storage'
+          displayName: 'blob, get, fileshare, access storage, mount, download'
           href: how-to-access-data.md
         - name: データセットを追加および登録する
           displayName: 'data, dataset'

@@ -1,61 +1,80 @@
 ---
-title: SAP HANA データベースのバックアップ エラーのトラブルシューティング - Azure Backup
+title: SAP HANA データベースのバックアップ エラーのトラブルシューティング
 description: Azure Backup を使用して SAP HANA データベースをバックアップするときに発生する可能性のある一般的なエラーをトラブルシューティングする方法について説明します。
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
-ms.date: 08/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/7/2019
+ms.openlocfilehash: e8bb1d3328f95b647a788c53afe3ac1455eefa13
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968447"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665340"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Azure での SAP HANA データベースのバックアップをトラブルシューティングする
 
-この記事では、Azure 仮想マシン上で SAP HANA データベースをバックアップするためのトラブルシューティング情報を提供します。 次のセクションでは、SAP HANA バックアップの一般的なエラーの診断に必要となる重要な概念データについて説明します。
+この記事では、Azure 仮想マシン上で SAP HANA データベースをバックアップするためのトラブルシューティング情報を提供します。 現在サポートされている SAP HANA バックアップ シナリオの詳細については、「[シナリオのサポート](sap-hana-backup-support-matrix.md#scenario-support)」を参照してください。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites-and-permissions"></a>前提条件とアクセス許可
 
-[前提条件](backup-azure-sap-hana-database.md#prerequisites)の一部として、HANA がインストールされている仮想マシン上で事前登録スクリプトが実行されていることを確認してください。
+バックアップを構成する前に、「[前提条件](tutorial-backup-sap-hana-db.md#prerequisites)」および「[アクセス許可の設定](tutorial-backup-sap-hana-db.md#setting-up-permissions)」のセクションを参照してください。
 
-### <a name="setting-up-permissions"></a>アクセス許可の設定
+## <a name="common-user-errors"></a>一般的なユーザー エラー
 
-事前登録スクリプトは、次のことを実行します。
+### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-1. HANA システム内に AZUREWLBACKUPHANAUSER を作成し、次の必要なロールとアクセス許可を追加します。
-    - DATABASE ADMIN: 復元中に新しい DB を作成します。
-    - CATALOG READ: バックアップ カタログを読み取ります。
-    - SAP_INTERNAL_HANA_SUPPORT いくつかのプライベート テーブルにアクセスします。
-2. すべての操作 (データベース クエリ、復元操作、バックアップの構成および実行) を処理するためのキーを HANA プラグインの Hdbuserstore に追加します。
+| エラー メッセージ      | <span style="font-weight:normal">HANA システムに接続できませんでした</span>                        |
+| ------------------ | ------------------------------------------------------------ |
+| **考えられる原因**    | SAP HANA インスタンスがダウンしている可能性があります。<br/>Azure Backup が HANA データベースと対話するのに必要なアクセス許可が設定されていません。 |
+| **推奨される操作** | SAP HANA データベースが稼働しているかどうかを確認します。 データベースが稼働している場合は、必要なアクセス許可がすべて設定されているかどうかを確認します。 いずれかのアクセス許可がない場合は、[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行して、不足しているアクセス許可を追加します。 |
 
-   キーの作成を確認するには、SIDADM 資格情報を使用して HANA コンピューター上で HDBSQL コマンドを実行します。
+### <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid
 
-    ``` hdbsql
-    hdbuserstore list
-    ```
+| エラー メッセージ      | <span style="font-weight:normal">指定した SAP HANA インスタンスは無効であるか、見つかりません</span>  |
+| ------------------ | ------------------------------------------------------------ |
+| **考えられる原因**    | 単一の Azure VM 上の複数の SAP HANA インスタンスをバックアップすることはできません。 |
+| **推奨される操作** | バックアップする SAP HANA インスタンス上で[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を実行します。 引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 |
 
-    このコマンド出力には、AZUREWLBACKUPHANAUSER として示されるユーザーと共に {SID}{DBNAME} キーが表示されます。
+### <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation
 
-> [!NOTE]
-> **/usr/sap/{SID}/home/.hdb/** の下に固有の一連の SSFS ファイルがあることを確認してください。 このパスにはフォルダーが 1 つしか存在しません。
+| エラー メッセージ      | <span style="font-weight:normal">指定された SAP HANA 操作はサポートされていません</span>              |
+| ------------------ | ------------------------------------------------------------ |
+| **考えられる原因**    | SAP HANA 用 Azure Backup は、SAP HANA ネイティブ クライアント (Studio/ Cockpit/ DBA Cockpit) で実行される増分バックアップやアクションをサポートしていません |
+| **推奨される操作** | 詳しくは、[こちら](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)を参照してください。 |
 
-### <a name="setting-up-backint-parameters"></a>BackInt パラメーターの設定
+### <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType
 
-バックアップのためのデータベースが選択されると、Azure Backup サービスは DATABASE レベルで次の backInt パラメーターを構成します。
+| エラー メッセージ      | <span style="font-weight:normal">この SAP HANA データベースは、要求されたバックアップの種類をサポートしていません</span>  |
+| ------------------ | ------------------------------------------------------------ |
+| **考えられる原因**    | Azure Backup は、増分バックアップやスナップショットを使用したバックアップをサポートしていません |
+| **推奨される操作** | 詳しくは、[こちら](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support)を参照してください。 |
 
-- [catalog_backup_using_backint:true]
-- [enable_accumulated_catalog_backup:false]
-- [parallel_data_backup_backint_channels:1]
-- [log_backup_timeout_s:900)]
-- [backint_response_timeout:7200]
+### <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure
 
-> [!NOTE]
-> これらのパラメーターが HOST レベルに存在*しない*ことを確認してください。 ホスト レベルのパラメーターによってこれらのパラメーターがオーバーライドされるため、予期しない動作が発生することがあります。
+| エラー メッセージ      | <span style="font-weight:normal">バックアップ ログ チェーンが壊れています</span>                                    |
+| ------------------ | ------------------------------------------------------------ |
+| **考えられる原因**    | ログ バックアップ先が backint からファイル システムに更新されたか、backint 実行可能ファイルが変更された可能性があります |
+| **推奨される操作** | 問題を解決するには、完全バックアップをトリガーします                   |
+
+### <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore
+
+| エラー メッセージ      | <span style="font-weight:normal">復元のソース システムとターゲット システムには互換性がありません</span>    |
+| ------------------ | ------------------------------------------------------------ |
+| **考えられる原因**    | 復元用ターゲット システムにソースとの互換性がありません |
+| **推奨される操作** | SAP ノート [1642148](https://launchpad.support.sap.com/#/notes/1642148) を参照し、現在サポートされている復元の種類をご確認ください |
+
+### <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected
+
+| エラー メッセージ      | <span style="font-weight:normal">SDC から MDC へのアップグレードが検出されました</span>                                   |
+| ------------------ | ------------------------------------------------------------ |
+| **考えられる原因**    | SAP HANA インスタンスが、SDC から MDC にアップグレードされました。 更新すると、バックアップは失敗します。 |
+| **推奨される操作** | この問題を解決するには、[SAP HANA 1.0 から 2.0 へのアップグレード](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20)に関するセクションに記載されている手順に従ってください |
+
+### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
+
+| エラー メッセージ      | <span style="font-weight:normal">無効な backint 構成が検出されました</span>                       |
+| ------------------ | ------------------------------------------------------------ |
+| **考えられる原因**    | バッキング パラメーターが Azure Backup に対して正しく指定されていません |
+| **推奨される操作** | 次の (backint) パラメーターが設定されているかどうかを確認します。<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>backint ベースのパラメーターが HOST に存在する場合は、それらを削除します。 パラメーターが HOST レベルに存在しないが、データベース レベルで手動で変更されている場合は、それらを既に説明した適切な値に戻します。 または、Azure portal から [[保護を停止してバックアップ データを保持する]](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) を実行してから、 **[バックアップの再開]** を選択します。 |
 
 ## <a name="restore-checks"></a>復元の確認
 
@@ -70,24 +89,32 @@ SDC HANA インスタンス "H21" がバックアップされているとしま�
 以下の点に注意してください。
 
 - 既定では、復元されるデータベース名に、バックアップ項目名 h21 (sdc) が設定されます。
-- ターゲットを H11 として選択しても、復元されるデータベース名は自動的に変更されません。 **h11(sdc) となるように編集する必要があります**。 SDC の場合、復元されるデータベース名は、小文字のターゲット インスタンス ID の後に sdc をかっこで囲んで付けたものです。
+- ターゲットを H11 として選択しても、復元されるデータベース名は自動的に変更されません。 **h11(sdc) となるように編集する必要があります**。 SDC に関しては、復元されるデータベース名は、小文字のターゲット インスタンス ID の後に sdc をかっこで囲んで付けたものです。
 - SDC はデータベースを 1 つしか含むことができないため、復旧ポイント データによる既存のデータベース データのオーバーライドを許可するチェックボックスをオンにすることも必要です。
-- Linux では大文字と小文字が区別されるため、必ず大文字と小文字をそのまま使用してください。
+- Linux では大文字と小文字が区別されます。 このため、大文字と小文字の区別を維持するように注意してください。
 
 ### <a name="multiple-container-database-mdc-restore"></a>複数コンテナー データベース (MDC) の復元
 
-HANA 用の複数コンテナー データベースの場合、標準構成は SYSTEMDB と 1 つ以上のテナント DB です。 SAP HANA インスタンス全体の復元は、SYSTEMDB とテナント DB の両方を復元することを意味します。 最初に SYSTEMDB を復元してから、テナント DB の処理に進みます。 基本的にシステム DB では、選択したターゲットのシステム情報がオーバーライドされます。 ターゲット インスタンス内の BackInt 関連情報もオーバーライドされます。 したがって、システム DB がターゲット インスタンスに復元された後で、事前登録スクリプトを再実行する必要があります。 その後でのみ、後続のテナント DB の復元が成功します。
+HANA 用の複数コンテナー データベースの場合、標準構成は SYSTEMDB と 1 つ以上のテナント DB です。 SAP HANA インスタンス全体の復元は、SYSTEMDB とテナント DB の両方を復元することを意味します。 最初に SYSTEMDB を復元してから、テナント DB の処理に進みます。 基本的にシステム DB では、選択したターゲットのシステム情報がオーバーライドされます。 この復元では、ターゲット インスタンス内の BackInt 関連情報もオーバーライドされます。 したがって、システム DB がターゲット インスタンスに復元された後で、事前登録スクリプトを再実行する必要があります。 その後でのみ、後続のテナント DB の復元が成功します。
 
-## <a name="common-user-errors"></a>一般的なユーザー エラー
+## <a name="upgrading-from-sap-hana-10-to-20"></a>SAP HANA 1.0 から 2.0 へのアップグレード
 
-### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
+SAP HANA 1.0 データベースを保護しているときに、2.0 にアップグレードする場合は、次の手順を実行します。
 
-data| エラー メッセージ | 考えられる原因 | 推奨される操作 |
-|---|---|---|
-| HANA システムに接続できませんでした。 システムが稼働していることを確認してください。| HANA データベースがダウンしているため、Azure Backup サービスは HANA に接続できません。 または、HANA は実行されているが、Azure Backup サービスの接続が許可されていません。 | HANA データベースまたはサービスがダウンしているかどうかを確認してください。 HANA データベースまたはサービスが稼働している場合は、[すべてのアクセス許可が設定されている](#setting-up-permissions)かどうかを確認してください。 キーがない場合は、事前登録スクリプトを再実行して新しいキーを作成します。 |
+- 古い SDC データベースのデータ保持の[保護を停止](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)します。
+- (sid と mdc) の適切な詳細を指定して、[事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を再実行します。
+- 拡張機能を再登録します (バックアップ -> 詳細の表示 -> 関連する Azure VM の選択 > 再登録)。
+- 同じ VM に対して [DB の再検出] をクリックします。 このアクションにより、手順 2 の新しい DB が適切な詳細と共に表示されます (SDC ではなく SYSTEMDB とテナント DB)。
+- これらの新しいデータベースを保護します。
 
-### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
+## <a name="upgrading-without-an-sid-change"></a>SID を変更しないアップグレード
 
-| エラー メッセージ | 考えられる原因 | 推奨される操作 |
-|---|---|---|
-| 無効な Backint 構成が検出されました。 保護を停止し、データベースを再構成してください。| backInt パラメーターが Azure Backup に対して正しく指定されていません。 | [パラメーターが設定されている](#setting-up-backint-parameters)かどうかを確認してください。 backInt ベースのパラメーターが HOST に存在する場合は、それらを削除します。 パラメーターが HOST レベルに存在しないが、データベース レベルで手動で変更されている場合は、それらを先に説明した適切な値に戻します。 または、Azure portal から **[保護を停止してバックアップ データを保持する]** を実行してから、 **[バックアップの再開]** を選択します。|
+SID の変更が生じない OS や SAP HANA へのアップグレードは、次のように処理できます。
+
+- そのデータベースのデータ保持の[保護を停止](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database)します
+- [事前登録スクリプト](https://aka.ms/scriptforpermsonhana)を再実行します
+- データベースの[保護を再開](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database)します
+
+## <a name="next-steps"></a>次の手順
+
+- Azure VM 上の SAP HANA データベースのバックアップに関する[よく寄せられる質問](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm)を確認する

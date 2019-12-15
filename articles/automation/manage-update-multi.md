@@ -1,20 +1,20 @@
 ---
 title: 複数の Azure 仮想マシンの更新を管理する
-description: この記事では、Azure 仮想マシンの更新プログラムを管理する方法について説明します。
+description: この記事では、Azure 仮想マシンと Azure 以外の仮想マシンの更新プログラムを管理する方法について説明します。
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/02/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 367a4409c004c98cc4b5ec844aab5b05ec74abcb
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374507"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806509"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -31,6 +31,8 @@ Update Management を使用するには、以下が必要です。
 
 - サポートされているオペレーティング システムのいずれかがインストールされている仮想マシンまたはコンピューター。
 
+- ソリューションにオンボードされている Linux VM の更新リポジトリへのアクセス。
+
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
 
 Update Management は、次のオペレーティング システムでサポートされています。
@@ -39,17 +41,13 @@ Update Management は、次のオペレーティング システムでサポー�
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
 |Windows Server 2008 R2 SP1 以降     |Windows PowerShell 4.0 以降が必要です ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。</br> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))         |
-|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
-|Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
-|SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
-|Ubuntu 14.04 LTS、16.04 LTS、および 18.04 LTS (x86/x64)      |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |
+|CentOS 6 (x86/x64) および 7 (x64)      | |
+|Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | |
+|SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | |
+|Ubuntu 14.04 LTS、16.04 LTS、および 18.04 LTS (x86/x64)      | |
 
 > [!NOTE]
 > Ubuntu でメンテナンス期間外に更新プログラムが適用されないようにするには、無人アップグレード パッケージを再構成して自動更新を無効にします。 詳細については、[Ubuntu サーバー ガイドの自動更新に関するトピック](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)を参照してください。
-
-Linux エージェントは、更新リポジトリへのアクセスが必要です。
-
-このソリューションでは、Log Analytics エージェント for Linux が複数の Azure Log Analytics ワークスペースにレポートする構成はサポートされていません。
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Update Management を Azure 仮想マシンに対して有効にする
 
@@ -69,9 +67,7 @@ Azure Portal で、Automation アカウントを開き、 **[Update Management]*
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Azure 以外の仮想マシンとコンピューターに対して Update Management を有効にする
 
-Azure 以外の Windows 仮想マシンとコンピューターに対して Update Management を有効にする方法については、[Windows コンピューターを Azure の Azure Monitor サービスに接続する](../log-analytics/log-analytics-windows-agent.md)方法に関する記事を参照してください。
-
-Azure 以外の Linux 仮想マシンとコンピューターに対して Update Management を有効にする方法については、[Linux コンピューターを Azure Monitor ログに接続する](../log-analytics/log-analytics-agent-linux.md)方法に関する記事を参照してください。
+Windows および Linux で Update Management を有効にするには、企業ネットワークまたはその他のクラウド環境で実行されている VM にそれらの OS 用の Log Analytics エージェントをインストールする必要があります。 Azure の外部でホストされているコンピューターにエージェントをデプロイするためのシステム要件とサポートされている方法については、[Log Analytics エージェントの概要](../azure-monitor/platform/log-analytics-agent.md)に関するページを参照してください。
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Automation アカウントに接続されているコンピューターを表示する
 
@@ -124,14 +120,23 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 更新プログラムをインストールするには、リリース スケジュールとサービス期間と合致する展開をスケジュールします。 デプロイに含める更新の種類を選択できます。 たとえば、緊急更新プログラムやセキュリティ更新プログラムを追加し、更新プログラムのロールアップを除外できます。
 
+>[!NOTE]
+>更新プログラムのデプロイをスケジュールすると、対象マシンへの更新プログラムのデプロイを処理する **Patch-MicrosoftOMSComputers** Runbook にリンクされた[スケジュール](shared-resources/schedules.md) リソースが作成されます。 デプロイの作成後に Azure portal または PowerShell を使用してこのスケジュール リソースを削除した場合、スケジュールされた更新プログラムのデプロイが壊れ、ポータルから再構成しようとするとエラーが発生します。 スケジュール リソースは、対応するデプロイ スケジュールを削除することによってのみ削除することができます。
+>
+
 1 台以上の仮想マシンの新しい更新プログラムのデプロイをスケジュールするには、 **［更新管理］** で、 **［更新プログラムの展開のスケジュール］** を選択します。
 
 **[新しい更新プログラムの展開]** ウィンドウで、次の情報を指定します。
 
 - **[名前]** :更新プログラムの展開を識別する一意の名前を入力します。
 - **[オペレーティング システム]** : **[Windows]** または **[Linux]** を選択します。
-- **[更新するグループ (プレビュー)]** :サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 詳細については、[動的グループ](automation-update-management-groups.md)に関するページを参照してください。
-- **[更新するマシン]** :保存した検索条件、インポートしたグループを選択するか、[マシン] を選択し、更新するマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 更新プログラムの展開をスケジュールする前にマシンの正常性状態を確認できます。 Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください
+- **[更新するグループ]** : サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 Azure 以外の VM の場合は、保存された検索条件が使用され、デプロイに含める動的グループが作成されます。 詳細については、[動的グループ](automation-update-management-groups.md)に関するページを参照してください。
+- **[更新するマシン]** :保存した検索条件、インポートしたグループを選択するか、[マシン] を選択し、更新するマシンを選択します。
+
+   >[!NOTE]
+   >[保存する検索条件] オプションを選択すると、マシン ID ではなく、その名前のみが返されます。 複数のリソース グループにまたがって同じ名前を持ついくつかの VM がある場合は、それらが結果で返されます。 条件に一致する一意の VM を確実に含めるには、 **[更新するグループ]** オプションを使用することをお勧めします。
+
+   **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 更新プログラムの展開をスケジュールする前にマシンの正常性状態を確認できます。 Azure Monitor ログでコンピューター グループを作成するさまざまな方法については、[Azure Monitor ログのコンピューター グループ](../azure-monitor/platform/computer-groups.md)に関するページを参照してください
 
   ![[新しい更新プログラムの展開] ウィンドウ](./media/manage-update-multi/update-select-computers.png)
 
@@ -196,5 +201,5 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 ## <a name="next-steps"></a>次の手順
 
-- ログ、出力、エラーを含む Update Management の詳細については、「[Azure の Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)」をご覧ください。
+ログ、出力、エラーを含む Update Management の詳細については、「[Azure の Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)」をご覧ください。
 

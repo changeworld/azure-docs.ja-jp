@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:スピーカーに音声を合成する - Speech Service
+title: クイック スタート:スピーカーに音声を合成する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Speech SDK を使用してテキストを合成音声に変換し、出力をスピーカーで再生します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 960e87860f004d8f9f2002b8125ecf26ee55237d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9f91d4b0c390b2014dfd88c94b89374d3ea67324
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826852"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818152"
 ---
 # <a name="quickstart-synthesize-speech-to-a-speaker"></a>クイック スタート:スピーカーに音声を合成する
 

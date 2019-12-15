@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:オーディオ ファイルから音声を認識する、C++ - Speech Service
+title: クイック スタート:オーディオ ファイルから音声を認識する、C++ - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 9ce65f4266faa6af0a631ede3cc145397c62c0c0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f874fc091cec552f475ae099715e0d0bbeb47627
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260789"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819306"
 ---
 **ターゲット環境を選択する**
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)

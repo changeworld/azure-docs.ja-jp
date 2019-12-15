@@ -8,12 +8,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 1dc7005ac0d1cb520e4c0452196a2b47665f9b5c
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 5888547939759984effb10aa2c7c6b2add135d12
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325826"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708393"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-java-with-azure-dev-spaces"></a>Kubernetes 開発空間を作成する: Azure Dev Spaces での Visual Studio Code と Java
 
@@ -43,9 +43,10 @@ az login
 以下を実行して、サブスクリプションを表示できます。 
 
 ```cmd
-az account list
+az account list --output table
 ```
-JSON 出力に `isDefault: true` が含まれているサブスクリプションを見つけます。
+
+*IsDefault* が *True* のサブスクリプションを探します。
 それが使用したいサブスクリプションでない場合は、既定のサブスクリプションを変更できます。
 
 ```cmd

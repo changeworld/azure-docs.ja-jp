@@ -72,6 +72,8 @@
           href: how-to-enable-remote-desktop-linux.md
         - name: テンプレート VM で入れ子になった仮想化を有効にする
           href: how-to-enable-nested-virtualization-template-vm.md
+        - name: Windows テンプレート VM の準備
+          href: how-to-prepare-windows-template.md
     - name: クラスルーム ラボの VM に接続する (学生)
       items:
         - name: クラスルーム ラボへのアクセス

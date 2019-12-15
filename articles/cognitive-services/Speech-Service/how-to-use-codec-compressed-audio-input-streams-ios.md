@@ -1,7 +1,7 @@
 ---
 title: iOS で Speech SDK を使用してコーデック圧縮オーディオをストリーミングする
 titleSuffix: Azure Cognitive Services
-description: iOS で Speech SDK を使用して圧縮オーディオを Azure Speech Services にストリーミングする方法について学習します。
+description: iOS で Speech SDK を使用して圧縮オーディオを Speech Service にストリーミングする方法について学習します。
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 1d78c690fd07eb974418f0ea17d71d1f394d863d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109573"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805860"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>方法:iOS で Speech SDK を使用してコーデック圧縮オーディオ入力を使用する
 
@@ -42,7 +42,7 @@ Xcode でプロジェクトを開いて、**汎用 iOS デバイス** ターゲ�
 
 この構築のステップでは、`GStreamerWrapper.framework` の名前のすべての必要なアーキテクチャに対して、ダイナミック ライブラリを含むダイナミック フレームワーク バンドルが生成されます。
 
-このフレームワークは、Speech Services SDK で圧縮オーディオ ストリームを使用するすべてのアプリに含まれている必要があります。
+このフレームワークは、Speech Service SDK で圧縮オーディオ ストリームを使用するすべてのアプリに含まれている必要があります。
 
 Xcode プロジェクトに次の設定を適用してこれを完了します。
 

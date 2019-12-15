@@ -7,16 +7,16 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 98598a28e14dfd8175cbb019ff1b001c65503580
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c4ee4ed81cd4cc443a8f412462a5a7f204c91898
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73644594"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688190"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>ワンクリックでのインジェストを使用して Azure Data Explorer にデータを取り込む
 
-この記事では、ワンクリックでのインジェストを使用して json 形式または csv 形式の新しいテーブルをストレージから Azure Data Explorer に簡単に取り込む方法について説明します。 データが取り込まれたら、Web UI を使用してテーブルを編集したりクエリを実行したりできます。
+この記事では、ワンクリックでのインジェストを使用して json 形式または csv 形式の新しいテーブルをストレージまたはローカル ファイルから Azure Data Explorer の既存のテーブルまたは新しいテーブルにすばやく取り込む方法について説明します。 直感的なウィザードを使用することで、数分以内にデータを取り込み、テーブルを編集し、Web UI を使用してクエリを実行することができます。
 
 ## <a name="prerequisites"></a>前提条件
 

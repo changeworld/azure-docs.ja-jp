@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: f15d6fd81337aa4a859539e86f37a516848c9370
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165983"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479362"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Azure リソースの拒否割り当ての概要
 
@@ -30,7 +30,10 @@ ms.locfileid: "67165983"
 
 ## <a name="how-deny-assignments-are-created"></a>拒否割り当てが作成されるしくみ
 
-拒否割り当ては、リソースを保護するために Azure によって作成および管理されます。 たとえば、Azure Blueprints や Azure 管理アプリでは、システム管理リソースを保護するために拒否割り当てを使用します。 詳細については、「[Azure Blueprints のリソース ロックを使用して新しいリソースを保護する](../governance/blueprints/tutorials/protect-new-resources.md)」を参照してください。
+拒否割り当ては、リソースを保護するために Azure によって作成および管理されます。 Azure Blueprints および Azure マネージド アプリでは、システム管理対象リソースを保護するために拒否割り当てを使用します。 Azure Blueprints と Azure マネージド アプリは、拒否割り当てを作成できる唯一の方法です。 独自の拒否割り当てを直接作成することはできません。  詳細については、「[Azure Blueprints のリソース ロックを使用して新しいリソースを保護する](../governance/blueprints/tutorials/protect-new-resources.md)」を参照してください。
+
+> [!NOTE]
+> 独自の拒否割り当てを直接作成することはできません。
 
 ## <a name="compare-role-assignments-and-deny-assignments"></a>ロール割り当てと拒否割り当ての比較
 
@@ -51,7 +54,7 @@ ms.locfileid: "67165983"
  拒否割り当てには、以下のプロパティがあります。
 
 > [!div class="mx-tableFixed"]
-> | プロパティ | 必須 | Type | 説明 |
+> | プロパティ | 必須 | 種類 | 説明 |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | はい | string | 拒否割り当ての表示名。 名前は、指定のスコープで一意である必要があります。 |
 > | `Description` | いいえ | string | 拒否割り当ての説明。 |

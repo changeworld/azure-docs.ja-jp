@@ -1,26 +1,17 @@
 ---
-title: FTP/S を使用してコンテンツをデプロイする - Azure App Service | Microsoft Docs
-description: FTP または FTPS を使用して Azure App Service にアプリをデプロイする方法について説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: FTP/S を使用したコンテンツのデプロイ
+description: FTP または FTPS を使用して Azure App Service にアプリをデプロイする方法について説明します。 暗号化されていない FTP を無効にして Web サイトのセキュリティを強化します。
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/18/2019
-ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098054"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671719"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>FTP/S を使用した Azure App Service へのアプリのデプロイ
 

@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB のサーバー パラメーターの構成方法
+title: サーバー パラメーターの構成 - Azure portal - Azure Database for MariaDB
 description: この記事では、Azure portal を使用して Azure Database for MariaDB で使用できる MariaDB サーバー パラメータを構成する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: c618a4035e9ec9b1ca1986e898ea1060ac05712d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 3477820cb20d856c2e979cdfbe5528113bf4b562
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60922522"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769406"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバー パラメーターを構成する方法
 
@@ -37,7 +37,7 @@ Azure Database for MariaDB では、いくつかのサーバー パラメータ�
 
 InnoDB バッファー プールと最大接続数は構成できず、[価格レベル](concepts-pricing-tiers.md)に関連付けられています。
 
-|**価格レベル**| **仮想コア数**|**InnoDB バッファー プール (MB)**| **最大接続数**|
+|**Pricing Tier**| **仮想コア数**|**InnoDB バッファー プール (MB)**| **最大接続数**|
 |---|---|---|---|
 |Basic| 1| 1024| 50|
 |Basic| 2| 2560| 100|

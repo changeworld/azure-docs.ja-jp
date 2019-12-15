@@ -15,12 +15,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ac8acf2193442de5c85e0a1134d46330821c77b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 92ea116414e12cb231fdbaa5ec9ad375d2c0eea9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756439"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145001"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Privileged Identity Management (PIM) で Azure AD のカスタム ロールをアクティブ化する
 
@@ -39,6 +39,9 @@ Azure AD のカスタム ロールをアクティブ化する必要がある場�
 1. **[Azure AD カスタム ロール]** を選択して、資格のある Azure AD カスタム ロールの割り当てを一覧表示します。
 
    ![資格のある Azure AD カスタム ロールの割り当てを一覧表示する](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
+
+> [!Note] 
+>  ロールを割り当てる前に、ロールを作成または構成する必要があります。 AAD カスタム ロールの構成について詳しくは、[こちら](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-custom-roles-configure) をご覧ください
 
 1. **[Azure AD カスタム ロール (プレビュー)]** ページで、必要な割り当てを探します。
 1. **[自分のロールをアクティブにします ]** を選択して **[アクティブ化]** ページを開きます。

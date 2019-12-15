@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Speech SDK C++ (Linux) プラットフォームのセットアップ - Speech Service
+title: クイック スタート:Speech SDK C++ (Linux) プラットフォームの設定 - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: Speech Services SDK を使用して、Linux で C++ のプラットフォームを設定するには、このガイドを使用します。
+description: Speech サービス SDK を使用して、Linux 上で C++ のプラットフォームを設定するには、このガイドを使用します。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 96e4c12d7b0aaceea3d652a81f2df8721c43954c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 03aafb133f1d4a18ffe2b46ae5ec36225865a239
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504549"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819039"
 ---
 このガイドでは、Linux 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します
 

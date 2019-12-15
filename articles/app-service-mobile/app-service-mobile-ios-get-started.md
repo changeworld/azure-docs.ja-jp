@@ -1,25 +1,17 @@
 ---
-title: Azure App Service Mobile Apps で iOS アプリを作成する | Microsoft Docs
-description: このチュートリアルに従って、Objective-C または Swift で iOS を開発用するための Azure モバイル アプリ バックエンドの使用を開始します。
-services: app-service\mobile
-documentationcenter: ios
-author: elamalani
-manager: crdun
-editor: ''
+title: iOS アプリの作成
+description: このチュートリアルに従って、Objective-C または Swift で iOS を開発するための Azure モバイル アプリ バックエンドの使用を開始します。
 ms.assetid: 6461a899-9340-42dd-b118-ffc5ba00e846
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: a0b73ba248ae9a12f9ee01f591ddbbedecc25f70
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d933319d22fe7622f0409e8931c41a801fcd18ca
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388686"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668789"
 ---
 # <a name="create-an-ios-app"></a>iOS アプリの作成
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 048051a612793cbe82f82fbde482ed470ad3758c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 12/06/2019
 ms.locfileid: "73177829"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>チュートリアル:Service Fabric クラスターをホストする AWS インフラストラクチャを作成する
@@ -82,7 +82,7 @@ Service Fabric では、クラスター内のホスト間で多数のポート�
 
 これらのポートが世界中に対して開かれないようにするために、同じセキュリティ グループ内のホストだけに対してポートを開きます。 セキュリティ グループ ID を書き留めておきます。この例では、**sg-c4fb1eba** です。  **[Edit]\(編集\)** を選択します。
 
-次に、サービスの依存関係のためにセキュリティ グループに 4 つの規則を追加し、Service Fabric 自体のためにさらに 3 つの規則を追加します。 最初の規則は、基本的な接続チェックのために、ICMP トラフィックを許可します。 他の規則は、リモート レジストリを有効にするために必要なポートを開きます。
+次に、サービスの依存関係のためにセキュリティ グループに 4 つの規則を追加し、Service Fabric 自体のためにさらに 3 つの規則を追加します。 最初の規則は、基本的な接続チェックのために、ICMP トラフィックを許可します。 他の規則は、SMB とリモート レジストリを有効にするために必要なポートを開きます。
 
 最初の規則のために、 **[Add Rule]\(規則の追加\)** を選択し、ドロップダウン メニューの **[All ICMP - IPv4]\(すべての ICMP - IPv4\)** を選択します。 カスタムの横にある入力ボックスを選択し、上のセキュリティ グループ ID を入力します。
 
@@ -118,18 +118,30 @@ Service Fabric の最後の 2 つの規則については、世界中に対し�
 ping 172.31.20.163
 ```
 
-`Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` のような出力が 4 回繰り返された場合、インスタンス間の接続は機能しています。  
+`Reply from 172.31.20.163: bytes=32 time<1ms TTL=128` のような出力が 4 回繰り返された場合、インスタンス間の接続は機能しています。  次に、以下のコマンドを使用して、SMB 共有が機能することを検証します。
+
+```
+net use * \\172.31.20.163\c$
+```
+
+出力として、`Drive Z: is now connected to \\172.31.20.163\c$.` が返されるはずです。
 
 ## <a name="prep-instances-for-service-fabric"></a>Service Fabric 用にインスタンスを準備する
 
-これをゼロから作成していたならば、さらにいくつかの手順を行う必要があったでしょう。  つまり、リモート レジストリが実行されていることを検証し、必要なポートを開かなければなりませんでした。
+これをゼロから作成していたならば、さらにいくつかの手順を行う必要があったでしょう。  つまり、リモート レジストリが実行されていることを検証し、SMB を有効にし、SMB およびリモート レジストリに必要なポートを開かなければなりませんでした。
 
 作業を簡単にするために、ユーザー データ スクリプトでインスタンスをブートストラップしたときに、このすべての作業を埋め込みました。
+
+SMB を有効にするために使用した PowerShell コマンドは、次のとおりです。
+
+```powershell
+netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+```
 
 ファイアウォールでポートを開くための PowerShell コマンドは、次のとおりです。
 
 ```powershell
-New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
 ```
 
 ## <a name="next-steps"></a>次の手順

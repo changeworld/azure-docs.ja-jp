@@ -1,22 +1,18 @@
 ---
-title: Office 365 Users に接続する - Azure Logic Apps | Microsoft Docs
+title: Office 365 ユーザーへの接続
 description: Office 365 Users REST API と Azure Logic Apps を使用して、ユーザー プロファイルを管理します
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
+services: logic-apps
+ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.date: 08/18/2016
 ms.topic: article
-ms.service: logic-apps
-services: logic-apps
-ms.reviewer: klam, LADocs
-ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 3865fbc4fbc39da0860218565b0a8956b2dad8ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: addb64a9b43c51af8363caa6f0fb3261a618e893
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105873"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789523"
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Office 365 Users コネクタの使用
 Office 365 ユーザーに接続して、プロファイルの取得、ユーザーの検索などを行います。 Office 365 ユーザーは、次のことを行えます。

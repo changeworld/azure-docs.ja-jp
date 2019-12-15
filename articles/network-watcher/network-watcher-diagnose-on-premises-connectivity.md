@@ -1,5 +1,6 @@
 ---
-title: Azure Network Watcher を使用して VPN Gateway 経由でオンプレミスの接続を診断する | Microsoft Docs
+title: VPN ゲートウェイ経由でオンプレミスの接続を診断する
+titleSuffix: Azure Network Watcher
 description: この記事では、Azure Network Watcher のリソース トラブルシューティングを使用して、VPN Gateway 経由でオンプレミスの接続を診断する方法を説明します。
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 05335cb6949928244e10641ebe82008275830e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754068"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531827"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN Gateway を使用してオンプレミスの接続を診断する
 
@@ -41,7 +42,7 @@ Azure Network Watcher のトラブルシューティング機能により、Gate
 
 サイト対サイト構成を構成するための詳細なガイダンスについては、[Azure portal を使用したサイト対サイト接続を含む VNet の作成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関する記事を参照してください。
 
-最も重要な構成の手順の 1 つは、IPsec コミュニケーション パラメーターの構成です。いかなる構成の誤りでも、オンプレミス ネットワークと Azure との間の接続は失われます。 Azure VPN Gateway は現在、以下のフェーズ 1 の IPsec パラメーターをサポートするように構成されています。 既に説明したように、これらの設定は修正できないことに注意してください。  次の表に示すように、Azure VPN Gateway でサポートされている暗号化アルゴリズムは、AES256、AES128、3DES です。
+最も重要な構成の手順の 1 つは、IPsec コミュニケーション パラメーターの構成です。いかなる構成の誤りでも、オンプレミス ネットワークと Azure との間の接続は失われます。 Azure VPN Gateway は現在、以下のフェーズ 1 の IPsec パラメーターをサポートするように構成されています。 次の表に示すように、Azure VPN Gateway でサポートされている暗号化アルゴリズムは、AES256、AES128、3DES です。
 
 ### <a name="ike-phase-1-setup"></a>IKE フェーズ 1 セットアップ
 
@@ -52,7 +53,7 @@ Azure Network Watcher のトラブルシューティング機能により、Gate
 | 認証方法 |事前共有キー |事前共有キー |
 | 暗号化アルゴリズム |AES256 AES128 3DES |AES256 3DES |
 | ハッシュ アルゴリズム |SHA1(SHA128) |SHA1(SHA128)、SHA2(SHA256) |
-| フェーズ 1 のセキュリティ アソシエーション (SA) の有効期間 (時間) |28,800 秒 |10,800 秒 |
+| フェーズ 1 のセキュリティ アソシエーション (SA) の有効期間 (時間) |28,800 秒 |28,800 秒 |
 
 ユーザーとして、FortiGate を構成する必要があります。構成のサンプルは [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt) で参照できます。 知らないうちに FortiGate に対して SHA-512 をハッシュ アルゴリズムとして使用するように構成したとします。 このアルゴリズムはポリシー ベースの接続でサポートされていないため、VPN 接続が機能しません。
 
@@ -107,7 +108,7 @@ Azure Network Watcher のトラブルシューティング機能を使用する�
 | ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ|
 | ConnectionNotConfiguredOnGateway | 基になるサービスで接続が構成されていません。 | はい |
 | ConnectionMarkedStandby | 基になるサービスがスタンバイとマークされています。| はい|
-| Authentication | 事前共有キーが一致しません。 | はい|
+| 認証 | 事前共有キーが一致しません。 | はい|
 | PeerReachability | ピア ゲートウェイに到達できません。 | はい|
 | IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | はい|
 | WfpParse Error | WFP ログの解析中にエラーが発生しました。 |はい|

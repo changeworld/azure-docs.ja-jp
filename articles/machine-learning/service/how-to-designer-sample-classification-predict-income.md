@@ -1,7 +1,7 @@
 ---
-title: 'デザイナー: 収入を分類、予測する'
+title: 'デザイナー: 収入の分類と予測の例'
 titleSuffix: Azure Machine Learning
-description: コードを 1 行も書くことなく、デザイナー (プレビュー) を使用して、機械学習の分類器を構築する方法について説明します。
+description: この例では、Azure Machine Learning デザイナーを使用して、コードを書かずに分類子を構築し、収入を予測します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: adc7712a4f41daea9ed691e6df52290e98e8d81f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647974"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214133"
 ---
-# <a name="sample-3---classification-with-feature-selection-income-prediction"></a>サンプル 3 -特徴選択による分類:収入予測
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーで、分類子を作成し、特徴選択を使用して、収入を予測する
+
+**デザイナー (プレビュー) サンプル 3**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 コードを 1 行も書くことなく、デザイナー (プレビュー) を使用して、機械学習の分類器を構築する方法について説明します。 このサンプルでは、**2 クラス ブースト デシジョン ツリー**をトレーニングして、国勢調査の成人収入 (>= 50,000 または <= 50,000) を予測します。
@@ -26,7 +29,7 @@ ms.locfileid: "73647974"
 
 このサンプルの最終的なパイプラインのグラフは次のようになります。
 
-![パイプラインのグラフ](media/how-to-ui-sample-classification-predict-income/overall-graph.png)
+![パイプラインのグラフ](media/how-to-designer-sample-classification-predict-income/overall-graph.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +41,7 @@ ms.locfileid: "73647974"
 
 ## <a name="data"></a>Data
 
-データセットには、14 個の特徴と 1 つのラベル列が含まれています。 特徴には、数値やカテゴリなどの複数の種類があります。 次の図は、データセット ![data](media/how-to-ui-sample-classification-predict-income/data.png) からの抜粋を示しています
+データセットには、14 個の特徴と 1 つのラベル列が含まれています。 特徴には、数値やカテゴリなどの複数の種類があります。 次の図は、データセット ![data](media/how-to-designer-sample-classification-predict-income/data.png) からの抜粋を示しています
 
 
 
@@ -52,7 +55,7 @@ ms.locfileid: "73647974"
 1. ブースト デシジョン ツリー分類器を初期化するために、**2 クラス ブースト デシジョン ツリー** モジュールを追加します。
 1. **モデルのトレーニング** モジュールを追加します。 前の手順の分類器を**モデルのトレーニング**の左側の入力ポートに接続します。 フィルターに基づく特徴選択モジュールからのフィルター処理されたデータセットを、トレーニング データセットとして接続します。  **モデルのトレーニング**が分類器をトレーニングします。
 1. 列変換の選択と変換の適用モジュールを追加して、テスト データセットに同じ変換 (フィルターに基づく特徴選択) を適用します。
-![apply-transformation](media/how-to-ui-sample-classification-predict-income/transformation.png)
+![apply-transformation](media/how-to-designer-sample-classification-predict-income/transformation.png)
 1. **モデルのスコア付け**モジュールを追加し、それに**モデルのトレーニング** モジュールを接続します。 次に、テストセット (特徴選択をテストセットに適用する、変換の適用モジュールの出力) を**モデルのスコア付け**に追加します。 **モデルのスコア付け**で予測が作成されます。 その出力ポートを選択すると、予測と正のクラス確率が表示されます。
 
 
@@ -62,7 +65,7 @@ ms.locfileid: "73647974"
 
 ## <a name="results"></a>結果
 
-![結果を評価](media/how-to-ui-sample-classification-predict-income/evaluate-result.png)
+![結果を評価](media/how-to-designer-sample-classification-predict-income/evaluate-result.png)
 
 評価結果では、ROC や精度/再現率などの曲線、および混同行列が表示されます。 
 

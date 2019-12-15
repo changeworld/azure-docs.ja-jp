@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声間翻訳、Java (Windows、Linux) - Speech Service
+title: クイック スタート:音声間で翻訳する、Java (Windows、Linux) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a6ef6c0070642e1c2f762f5cb19f97bd4d1e8cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a9d8f61ba3a4bfd2b52efc1e14e39be6a2b1fac7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505197"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981307"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -143,7 +143,7 @@ ms.locfileid: "73505197"
 
 F11 キーを押すか、 **[Run]**  >  **[Debug]** の順に選択します。
 
-1. 英語の語句または文を読み上げます。 このアプリケーションによって、その音声が Speech Services に転送され、(このケースではドイツ語に) 翻訳されてテキストに文字起こしされます。 合成されたオーディオとテキストが Speech Services からアプリケーションに返されて表示されます。
+1. 英語の語句または文を読み上げます。 このアプリケーションによって、その音声が Speech サービスに転送され、翻訳されてテキストに文字起こしされます (このケースではドイツ語に)。 合成されたオーディオとテキストが Speech サービスからアプリケーションに返されて表示されます。
 
 ````
 Say something...

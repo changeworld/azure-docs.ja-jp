@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 5dc33de19ef71a0714052a6457bef9f32fc159c3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92fe564b849c728952dd549757be42b8b5131b25
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720160"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791031"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Azure Cognitive Search における AI の概要
 
@@ -116,6 +116,8 @@ Azure Cognitive Search のコグニティブ スキルは、Cognitive Services A
 | Indexer |  検索可能なデータとメタデータを外部データ ソースから抽出し、ドキュメント解読のために、インデックスとデータ ソース間のフィールド対フィールドのマッピングに基づいてインデックスを作成するクローラーです。 AI エンリッチメントのために、インデクサーはスキルセットを呼び出し、インデックス内のターゲット フィールドとエンリッチメント出力を関連付けるフィールド マッピングを含みます。 インデクサーの定義には、パイプライン操作のためのすべての指示と参照が含まれ、ユーザーがインデクサーを実行すると、パイプラインが呼び出されます。 構成を追加することによって、既存の処理を再利用し、変更があったステップとスキルだけを実行することもできます。 | [インデクサー](search-indexer-overview.md)と[増分インデックスの作成 (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) に関するページを参照してください。 |
 | データ ソース  | Azure でサポートされる型の外部データ ソースに接続するために、インデクサーによって使用されるオブジェクト。 | [インデクサーの概要](search-indexer-overview.md)に関するページを参照してください。 |
 | Index | フィールド構造と使用状況を定義するインデックス スキーマから構築された Azure Cognitive Search で永続化された検索インデックスです。 | [基本インデックスの作成](search-what-is-an-index.md)に関するページを参照してください。 | 
+| ナレッジ ストア | 検索インデックスに加えて、エンリッチメントされたドキュメントを整形して投影することができるストレージ アカウント | [ナレッジ ストアの概要](knowledge-store-concept-intro.md)に関するページを参照してください。 | 
+| インデクサー キャッシュ | ストレージ アカウント スキルの出力は、インデクサーによってキャッシュされます。 このキャッシュによってインデクサーは、スキルセットが編集されたときの大量のドキュメントの再処理に伴うコストを最小化することができます。 | [増分インデックスの作成](cognitive-search-incremental-indexing-conceptual.md)に関するページを参照してください。 | 
 
 <a name="where-do-i-start"></a>
 

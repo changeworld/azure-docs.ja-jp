@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL (単一サーバー) を監視およびチューニングする
+title: 監視とチューニング - Azure Database for PostgreSQL - 単一サーバー
 description: この記事では、Azure Database for PostgreSQL (単一サーバー) の監視およびチューニング機能について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: c69ffb30a37de8e6dc3e15aa1f7dcd6a9311d614
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 283ffdd32dbb5b2c80106da98b846ab81aca9608
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274289"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768556"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) を監視およびチューニングする
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for PostgreSQL には、サーバーの動作の分析情報を提供する各種の監視オプションが用意されています。
@@ -35,7 +35,7 @@ Azure Database for PostgreSQL では、次のメトリックを使用できま�
 |serverlog_storage_limit|サーバー ログ ストレージの上限|Bytes|このサーバーの最大サーバー ログ ストレージ。|
 |active_connections|アクティブな接続|Count|サーバーへのアクティブな接続の数|
 |connections_failed|失敗した接続|Count|サーバーへの失敗した接続の数|
-|network_bytes_egress|ネットワーク送信|Bytes|アクティブな接続全体のネットワーク送信。|
+|network_bytes_egress|Network Out|Bytes|アクティブな接続全体のネットワーク送信。|
 |network_bytes_ingress|Network In|Bytes|アクティブな接続全体のネットワーク受信。|
 |backup_storage_used|使用済みバックアップ ストレージ|Bytes|使用されているバックアップ ストレージの量。|
 |pg_replica_log_delay_in_bytes|Max Lag Across Replicas (レプリカ間の最大ラグ)|Bytes|マスターと最も遅れているレプリカの間のバイト単位でのラグ。 このメトリックは、マスター サーバーのみで使用できます。|
@@ -52,6 +52,14 @@ Azure Database for PostgreSQL では、次のメトリックを使用できま�
 
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 [パフォーマンスの推奨事項](concepts-performance-recommendations.md)機能によって、ワークロード パフォーマンス改善の機会が特定されます。 パフォーマンスの推奨事項によって、ワークロードのパフォーマンスを改善する可能性がある新しいインデックスを作成するための推奨事項が提供されます。 推奨インデックスを作成するために、この機能は、クエリ ストアから報告されたスキーマ、ワークロードなどのさまざまなデータベースの特性を考慮します。 顧客は、パフォーマンスに関する推奨事項を実装した後、パフォーマンスをテストし、変更の影響を評価する必要があります。 
+
+## <a name="service-health"></a>サービス正常性
+[Azure サービスの正常性](../service-health/overview.md)は、サブスクリプション内のすべてのサービス正常性通知のビューを提供します。 使用している Azure サービスやリージョンに影響を与える可能性のある問題または変更が発生した場合は、希望する通信チャネル経由で通知を受けるようにサービス正常性アラートを設定できます。
+
+**計画メンテナンス**のイベントの種類を使用して、Azure Database for PostgreSQL - Single Server の予定メンテナンス イベントを表示できます。 **サービス正常性アラート**を作成する方法については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」の記事を参照してください。
+
+> [!IMPORTANT]
+> 計画メンテナンスの通知は、米国東部および英国南部向けのプレビューでのみ使用できます。
 
 ## <a name="next-steps"></a>次の手順
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-on-metric.md)に関するページをご覧ください。

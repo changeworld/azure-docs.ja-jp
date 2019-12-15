@@ -1,6 +1,6 @@
 ---
 title: クイック スタート:Azure Security Center for IoT のカスタム アラートを作成する
-description: このクイックスタートでは、Azure Security Center for IoT のカスタム デバイス アラートを作成して割り当てます。
+description: Azure Security Center for IoT セキュリティ サービスのカスタム デバイス アラートを取り上げます。それらを作成し、割り当てる方法について説明しています。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: eca5d69efb04cf8210b0b2aa502bcee5cd4f5264
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 992dd7b85dee0774b8388ae22fe18377ca9e5691
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904138"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664833"
 ---
 # <a name="quickstart-create-custom-alerts"></a>クイック スタート:カスタム アラートの作成
 

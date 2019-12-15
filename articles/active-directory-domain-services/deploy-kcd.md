@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 89bc690e5a8c8d24d7732dd4e12f70a9f1f368af
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842664"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705275"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services で Kerberos の制約付き委任 (KCD) を構成する
 
@@ -42,7 +42,9 @@ ms.locfileid: "70842664"
 
 Kerberos の委任を使用すると、あるアカウントが別のアカウントを偽装してリソースにアクセスできるようになります。 たとえば、バックエンド Web コンポーネントにアクセスする Web アプリケーションは、バックエンド接続を行うときに、別のユーザー アカウントとして偽装できます。 Kerberos の委任は、偽装する側のアカウントがどのリソースにアクセスできるかの制限がないため、安全ではありません。
 
-Kerberos の制約付き委任 (KCD) では、指定されたサーバーまたはアプリケーションが別の ID を偽装している場合に、接続できるサービスまたはリソースを制限します。 従来の KCD では、サービスのドメイン アカウントを構成するのにドメイン管理者の特権が必要です。また、そのアカウントは 1 つのドメイン上での実行だけに制限されます。 従来の KCD にも、いくつかの問題があります。 たとえば、以前のオペレーティング システムでは、サービス管理者には、所有しているリソース サービスにどのフロントエンド サービスが委任されるかを把握する便利な方法はありませんでした。 リソース サービスに委任されるフロントエンド サービスは、攻撃ポイントになる可能性がありました。 リソース サービスに委任されるように構成されているフロントエンド サービスをホストするサーバーが侵害された場合は、リソース サービスも侵害される可能性がありました。
+Kerberos の制約付き委任 (KCD) では、指定されたサーバーまたはアプリケーションが別の ID を偽装している場合に、接続できるサービスまたはリソースを制限します。 従来の KCD では、サービスのドメイン アカウントを構成するのにドメイン管理者の特権が必要です。また、そのアカウントは 1 つのドメイン上での実行だけに制限されます。
+
+従来の KCD にも、いくつかの問題があります。 たとえば、以前のオペレーティング システムでは、サービス管理者には、所有しているリソース サービスにどのフロントエンド サービスが委任されるかを把握する便利な方法はありませんでした。 リソース サービスに委任されるフロントエンド サービスは、攻撃ポイントになる可能性がありました。 リソース サービスに委任されるように構成されているフロントエンド サービスをホストするサーバーが侵害された場合は、リソース サービスも侵害される可能性がありました。
 
 Azure AD DS マネージド ドメインでは、ドメイン管理者特権がありません。 そのため、Azure AD DS マネージド ドメインでは、従来のアカウントベースの KCD は構成できません。 代わりに、リソースベースの KCD を使用できます。これも、より安全な方法です。
 
@@ -54,7 +56,7 @@ Windows Server 2012 以降では、サービス管理者はサービスに制約
 
 ## <a name="configure-resource-based-kcd-for-a-computer-account"></a>コンピューター アカウントにリソースベースの KCD を構成する
 
-このシナリオでは、*contoso-webapp.contoso.com* というコンピューター上で実行されている Web アプリがあるとします。 この Web アプリは、*contoso-api.contoso.com* という名前のコンピューター上でドメイン ユーザーのコンテキストで実行されている Web API にアクセスする必要があります。 このシナリオを構成するには、以下の手順を実行します。
+このシナリオでは、*contoso-webapp.aadds.contoso.com* というコンピューター上で実行されている Web アプリがあるとします。 この Web アプリは、*contoso-api.aadds.contoso.com* という名前のコンピューター上でドメイン ユーザーのコンテキストで実行されている Web API にアクセスする必要があります。 このシナリオを構成するには、以下の手順を実行します。
 
 1. [カスタム OU を作成します](create-ou.md)。 このカスタム OU を管理するアクセス許可を、Azure AD DS マネージド ドメイン内のユーザーに委任できます。
 1. [仮想マシンをドメイン参加][create-join-windows-vm]させます。Web アプリを実行しているものと Web API を実行しているものの両方を、Azure AD DS マネージド ドメインに参加させます。 前の手順のカスタム OU 内に、これらのコンピューター アカウントを作成します。
@@ -65,8 +67,8 @@ Windows Server 2012 以降では、サービス管理者はサービスに制約
 1. 最後に、[Set-ADComputer][Set-ADComputer] PowerShell コマンドレットを使用して、リソースベースの KCD を構成します。 ドメインに参加している管理 VM で、"*Azure AD DC 管理者*" グループのメンバーであるユーザー アカウントとしてログインし、次のコマンドレットを実行します。 必要に応じて、独自のコンピューター名を指定します。
     
     ```powershell
-    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.contoso.com
-    Set-ADComputer contoso-api.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
+    $ImpersonatingAccount = Get-ADComputer -Identity contoso-webapp.aadds.contoso.com
+    Set-ADComputer contoso-api.aadds.contoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
     ```
 
 ## <a name="configure-resource-based-kcd-for-a-user-account"></a>ユーザー アカウントにリソースベースの KCD を構成する

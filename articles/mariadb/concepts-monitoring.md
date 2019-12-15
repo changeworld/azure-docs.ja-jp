@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MariaDB での監視
+title: 監視 - Azure Database for MariaDB
 description: この記事では、Azure Database for MariaDB での監視およびアラート生成のためのメトリック (CPU、ストレージ、および接続の統計を含む) について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 2f4346dfdb095e849adc65baf0fd31d25d03c4a7
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: 15a396a86103f41f49d3b49878ec51c1e71add40
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604062"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772481"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MariaDB には、サーバーの動作への洞察を提供する各種のメトリックが用意されています。
@@ -55,6 +55,14 @@ ms.locfileid: "73604062"
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 
 [パフォーマンスの推奨事項](concepts-performance-recommendations.md)機能によって、ワークロード パフォーマンス改善の機会が特定されます。 パフォーマンスの推奨事項によって、ワークロードのパフォーマンスを改善する可能性がある新しいインデックスを作成するための推奨事項が提供されます。 推奨インデックスを作成するために、この機能は、クエリ ストアから報告されたスキーマ、ワークロードなどのさまざまなデータベースの特性を考慮します。 顧客は、パフォーマンスに関する推奨事項を実装した後、パフォーマンスをテストし、変更の影響を評価する必要があります。
+
+## <a name="service-health"></a>サービス正常性
+[Azure サービス正常性](../service-health/overview.md)は、サブスクリプション内のすべてのサービス正常性通知のビューを提供します。 使用している Azure サービスやリージョンに影響を与える可能性のある問題または変更が発生した場合は、希望する通信チャネル経由で通知を受けるようにサービス正常性アラートを設定できます。
+
+**計画メンテナンス**のイベントの種類を使用して、Azure Database for MariaDB の予定されているメンテナンス イベントを表示できます。 **サービス正常性アラート**を作成する方法については、「[サービス通知のアクティビティ ログ アラートを作成する](../service-health/alerts-activity-log-service-notifications.md)」の記事を参照してください。
+
+> [!IMPORTANT]
+> 計画メンテナンスの通知は、米国東部および英国南部向けのプレビューでのみ使用できます。
 
 ## <a name="next-steps"></a>次の手順
 

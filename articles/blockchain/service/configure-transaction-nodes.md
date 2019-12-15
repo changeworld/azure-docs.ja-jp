@@ -1,31 +1,17 @@
 ---
 title: Azure Blockchain Service のトランザクション ノードを構成する
 description: Azure Blockchain Service のトランザクション ノードを構成する方法です
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/20/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: dffeb81ae1eb244c38639a1241c0581e6fcdf94a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: janders
+ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027625"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326301"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Blockchain Service のトランザクション ノードを構成する
-
-Azure Blockchain Service を操作するには、ブロックチェーン メンバーの 1 つ以上のトランザクション ノードに接続します。  トランザクション ノードを操作するには、ノードをアクセス用に構成する必要があります。
-
-## <a name="prerequisites"></a>前提条件
-
-* [Azure Blockchain メンバーを作成します](create-member.md)
-
-## <a name="transaction-node-overview"></a>トランザクション ノードの概要
 
 トランザクション ノードは、パブリック エンドポイントを介して Azure Blockchain Service にブロックチェーン トランザクションを送信するために使用されます。 既定のトランザクション ノードは、ブロックチェーンに登録された Ethereum アカウントの秘密キーを格納しているので、削除することはできません。
 
@@ -51,7 +37,7 @@ Azure Blockchain Service を操作するには、ブロックチェーン メン
 
     | Setting | 説明 |
     |---------|-------------|
-    | Name | トランザクション ノードの名前。 名前は、トランザクション ノードのエンドポイントの DNS アドレスを作成するために使われます。 たとえば、「 `newnode-myblockchainmember.blockchain.azure.com` 」のように入力します。 作成後にノード名を変更することはできません。 |
+    | 名前 | トランザクション ノードの名前。 名前は、トランザクション ノードのエンドポイントの DNS アドレスを作成するために使われます。 たとえば、「 `newnode-myblockchainmember.blockchain.azure.com` 」のように入力します。 作成後にノード名を変更することはできません。 |
     | パスワード | 強力なパスワードを設定します。 そのパスワードを使って、基本認証でトランザクション ノードのエンドポイントにアクセスします。
 
 1. **作成** を選択します。
@@ -141,7 +127,7 @@ Web3、Nethereum、Web3js、および Truffle を使用して、トランザク�
 
 トランザクション ノードのサンプル接続コードを表示し、それをコピーして、人気のある開発者ツールで使用できます。 Azure Blockchain Service メンバーのトランザクション ノードの 1 つに移動し、設定で **[サンプル コード]** を選択します。
 
-[Web3] または [Nethereum] タブを選択し、使用するコード サンプルを表示します。
+[Web3]、[Nethereum]、[Truffle]、または [Web3j] タブを選択し、使用するコード サンプルを表示します。
 
 ![サンプル コード](./media/configure-transaction-nodes/sample-code.png)
 

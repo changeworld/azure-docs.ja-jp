@@ -9,18 +9,21 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: f49567b8060be2bf2a9ca2b8a1bdee23f58fdd6b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b79ca1d93baf1941d5de8db0c314f9cd21e51056
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012682"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74328265"
 ---
 # <a name="grant-data-access-to-an-environment"></a>環境へのデータ アクセスの許可
 
 この記事では、Azure Time Series Insights プレビューの 2 つのタイプのアクセス ポリシーについて説明します。
+
+> [!TIP]
+> Azure Active Directory アプリの登録手順については、[認証と承認](time-series-insights-authentication-and-authorization.md)に関する記事を参照してください。
 
 ## <a name="sign-in-to-time-series-insights"></a>Time Series Insights へのサインイン
 
@@ -34,11 +37,11 @@ ms.locfileid: "74012682"
 
 1. **[データ アクセス ポリシー]** を選択し、 **[+ 追加]** をクリックします。
 
-    [![Data-access-one](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
+    [![データ アクセス ポリシーの選択と追加](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
 
 1. **[ユーザーの選択]** を選択します。 ユーザー名または電子メール アドレスを検索して追加するユーザーを探します。 **[選択]** を選択して選択内容を確定します。
 
-    [![Data-access-two](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
+    [![追加するユーザーの選択](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
 
 1. **[ロールの選択]** を選択します。 ユーザーに割り当てる適切なアクセス ロールを選択します。
 
@@ -48,37 +51,37 @@ ms.locfileid: "74012682"
 
    **[OK]** を選び、ロールの選択を確定します。
 
-    [![Data-access-three](media/data-access/data-access-three.png)](media/data-access/data-access-three.png#lightbox)
+    [![選択したロールの確定](media/data-access/data-access-select-a-role.png)](media/data-access/data-access-select-a-role.png#lightbox)
 
 1. **[ユーザー ロールの選択]** ページで **[OK]** を選択します。
 
-    [![Data-access-four](media/data-access/data-access-four.png)](media/data-access/data-access-four.png#lightbox)
+    [![[ユーザー ロールの選択] ページで [OK] を選択する](media/data-access/data-access-confirm-user-and-role.png)](media/data-access/data-access-confirm-user-and-role.png#lightbox)
 
 1. **[データ アクセス ポリシー]** ページに、ユーザーと各ユーザーのロールが一覧表示されていることを確認します。
 
-    [![Data-access-five](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
+    [![正しいユーザーおよびロールの確認](media/data-access/data-access-verify-and-confirm-assignments.png)](media/data-access/data-access-verify-and-confirm-assignments.png#lightbox)
 
-## <a name="provide-guest-access-from-another-aad-tenant"></a>別の AAD テナントからのゲスト アクセスの提供
+## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>別の Azure AD テナントからのゲスト アクセスの提供
 
-`Guest` は管理ロールではありません。 あるテナントから別のテナントに招待されたアカウントを示す用語として使用されます。 ゲスト アカウントは、テナントのディレクトリに招待されると、他のアカウントと同様に、同じアクセス制御を付与できます。 [アクセス制御 (IAM)] ブレードを使用して、Time Series Insights 環境に管理アクセスを許可できます。 または、[データ アクセス ポリシー] ブレードで、環境内のデータへのアクセスを許可できます。 Azure Active Directory (Azure AD) テナントのゲスト アクセスの詳細については、「[Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)」を参照してください。
+`Guest` ロールは、管理ロールではありません。 あるテナントから別のテナントに招待されたアカウントを示す用語として使用されます。 ゲスト アカウントは、テナントのディレクトリに招待されると、他のアカウントと同様に、同じアクセス制御を付与できます。 [アクセス制御 (IAM)] ブレードを使用して、Time Series Insights 環境に管理アクセスを許可できます。 または、[データ アクセス ポリシー] ブレードで、環境内のデータへのアクセスを許可できます。 Azure Active Directory (Azure AD) テナントのゲスト アクセスの詳細については、「[Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)」を参照してください。
 
 別のテナントから Azure AD ユーザーに Time Series Insights 環境へのゲスト アクセスを付与するには、以下の手順を実行します。
 
 1. **[データ アクセス ポリシー]** を選択し、 **[+ 招待]** をクリックします。
 
-    [![Data-access-six](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
+    [![[データ アクセス ポリシー] を選択して [+ 招待] を選択する](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
 1. 招待するユーザーの電子メール アドレスを入力します。 この電子メール アドレスは、Azure AD に関連付ける必要があります。 招待状に個人的なメッセージを含めることもできます。
 
-    [![Data-access-seven](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
+    [![メール アドレスを入力して、選択したユーザーを検索する](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
 
 1. 画面に表示される確認のバブルを探します。
 
-    [![Data-access-eight](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
+    [![表示される確認のバブルを探す](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
 
 1. **[ユーザーの選択]** を選択します。 招待したゲスト ユーザーの電子メール アドレスを検索し、追加するユーザーを見つけます。 次に、 **[選択]** を選択して選択内容を確定します。
 
-    [![Data-access-nine](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
+    [![ユーザーを選択して選択内容を確定する](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
 
 1. **[ロールの選択]** を選択します。 ゲスト ユーザーに割り当てる適切なアクセス ロールを選択します。
 
@@ -88,31 +91,38 @@ ms.locfileid: "74012682"
 
    **[OK]** を選び、ロールの選択を確定します。
 
-    [![Data-access-ten](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
+    [![ロールの選択の確定](media/data-access/data-access-select-ok-and-confirm.png)](media/data-access/data-access-select-ok-and-confirm.png#lightbox)
 
 1. **[ユーザー ロールの選択]** ページで **[OK]** を選択します。
 
 1. **[データ アクセス ポリシー]** ページに、ゲスト ユーザーと各ゲスト ユーザーのロールが一覧表示されていることを確認します。
 
-    [![Data-access-eleven](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
+    [![ユーザーとロールが正しく割り当てられていることを確認する](media/data-access/data-access-confirm-invited-users-and-roles.png)](media/data-access/data-access-confirm-invited-users-and-roles.png#lightbox)
 
-1. ゲスト ユーザーは、招待された Azure テナントに用意された環境にアクセスするために、いくつかの手順を踏む必要があります。 まず、先ほど送信した招待を承認します。 この招待は、ステップ 5 で使用した電子メール アドレスにメールで送信されます。 **[はじめに]** を選択して承認します。
+1. これで、ゲスト ユーザーは、上で指定したメール アドレスで招待メールを受信します。 ゲスト ユーザーは **[使ってみる]** を選択して承諾を確認し、Azure Cloud に接続します。
 
-    [![Data-access-twelve](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
+    [![ゲストが [使ってみる] を選択して承諾する](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
 
-1. 次に、ゲスト ユーザーは、管理者の組織に関連付けられているアクセス許可を承認します。
+1. **[使ってみる]** を選択すると、管理者の組織に関連付けられているアクセス許可ボックスがゲスト ユーザーに表示されます。 **[承諾]** を選択してアクセス許可を付与すると、そのユーザーはサインインされます。
 
-    [![Data-access-thirteen](media/data-access/data-access-thirteen.png)](media/data-access/data-access-thirteen.png#lightbox)
+    [![ゲストがアクセス許可を確認して承諾する](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
 
-1. 招待した電子メール アドレスにゲスト ユーザーがサインインして、招待を承認すると、そのユーザーは insights.azure.com に転送されます。 ここで、ユーザーは画面の右上に表示された自分の電子メール アドレスの横にあるアバターを選択します。
+1. 管理者は、ゲストと[環境 URL を共有します](time-series-insights-parameterized-urls.md)。
 
-    [![Data-access-fourteen](media/data-access/data-access-fourteen.png)](media/data-access/data-access-fourteen.png#lightbox)
+1. 招待に使用されたメール アドレスに対してゲスト ユーザーがサインインして、招待を承諾すると、そのユーザーは Azure portal に誘導されます。 
 
-1. 次に、ゲスト ユーザーはディレクトリのドロップダウン メニューから Azure テナントを選択します。 このテナントは、招待したテナントです。
+1. ゲストは、管理者が提供する環境 URL を使用して共有環境にアクセスできるようになります。 この URL を Web ブラウザーに入力すると、すぐにアクセスできます。
 
-    [![Data-access-fifteen](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
+1. ゲスト ユーザーが管理者のテナントを確認するには、Time Series エクスプローラーの右上隅にある自分のプロファイル アイコンを選択します。
 
-ゲスト ユーザーがテナントを選択した後に、アクセス権を付与した Time Series Insights 環境がゲスト ユーザーに表示されます。 ユーザーは、**手順 5.** で提供されたロールに関連付けられているすべての能力を持つようになりました。
+    [![insights.azure.com でのアバターの選択](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
+
+
+    ゲスト ユーザーが管理者のテナントを選択すると、共有されている Time Series Insights 環境を選択できるようになります。 
+    
+    ユーザーは、**手順 5.** で提供されたロールに関連付けられているすべての能力を持つようになりました。
+
+    [![ゲスト ユーザーがドロップダウンから Azure テナントを選択する](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>次の手順
 

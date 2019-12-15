@@ -1,26 +1,26 @@
 ---
-title: Azure CLI から Azure Storage 暗号化用にカスタマー マネージド キーを構成する
-description: Azure CLI を使用して Azure Storage 暗号化用にカスタマー マネージド キーを構成する方法について説明します。 カスタマー マネージド キーを使用すると、アクセス制御の作成、ローテーション、無効化、および取り消しを行うことができます。
+title: Azure CLI を使用して Azure Key Vault でカスタマー マネージド キーを構成する - Azure Storage
+description: Azure CLI を使用して、Azure Storage 暗号化用に Azure Key Vault でカスタマー マネージド キーを構成する方法について説明します。 カスタマー マネージド キーを使用すると、アクセス制御の作成、ローテーション、無効化、および取り消しを行うことができます。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/15/2019
+ms.topic: how-to
+ms.date: 12/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 18209816b5b73f58a8112efca0363b31dd47bd91
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: fd3b7767bad104f4074b2460ecba3fe89d5a23e1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374284"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806628"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Azure CLI から Azure Storage 暗号化用にカスタマー マネージド キーを構成する
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>Azure CLI を使用して Azure Storage 用にカスタマー マネージド キーを構成する
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-この記事では、Azure CLI を使用して、カスタマー マネージド キーを使用するキー コンテナーを構成する方法について説明します。
+この記事では、Azure CLI を使用して、カスタマー マネージド キーを使用する Azure Key Vault を構成する方法について説明します。 Azure CLI を使用してキー コンテナーを作成する方法を学習するには、「[クイック スタート: Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/quick-create-cli.md)」を参照してください。
 
 > [!IMPORTANT]
 > Azure Storage 暗号化でカスタマー マネージド キーを使うには、キー コンテナーに **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** の 2 つのプロパティが構成されている必要があります。 これらのプロパティは、既定では有効になっていません。 これらのプロパティを有効にするには、PowerShell または Azure CLI を使用します。
@@ -91,7 +91,7 @@ az keyvault key create
 
 既定では、Azure Storage の暗号化には Microsoft マネージド キーを使用します。 カスタマー マネージド キーを使うように Azure ストレージ アカウントを構成し、そのストレージ アカウントに関連付けるキーを指定します。
 
-ストレージ アカウントの暗号化設定を更新するには、[az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出します。 この例では、キー コンテナーの URI とキーのバージョンの照会も行います。どちらの値も、キーをストレージ アカウントに関連付けるために必要です。 山かっこ内のプレースホルダーをご自分の値に置き換えることを忘れないようにしてください。
+ストレージ アカウントの暗号化設定を更新するには、[az storage account update](/cli/azure/storage/account#az-storage-account-update) を呼び出します。 この例では、キー コンテナーの URI と最新のキー バージョンの照会も行います。どちらの値も、キーをストレージ アカウントに関連付けるために必要です。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -102,7 +102,7 @@ key_vault_uri=$(az keyvault show \
 key_version=$(az keyvault key list-versions \
     --name <key> \
     --vault-name <key-vault> \
-    --query [].kid \
+    --query [-1].kid \
     --output tsv | cut -d '/' -f 6)
 az storage account update 
     --name <storage-account> \

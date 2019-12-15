@@ -1,17 +1,17 @@
 ---
-title: Azure Migrate Server Migration のエージェントベースの移行アーキテクチャ
+title: Azure Migrate Server Migration でのエージェント ベースの移行
 description: Azure Migrate Server Migration を使用したエージェントベースの VMware VM の移行について概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: f5ad3aa0fc51f47942750d3745ffef1d6e4a087d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a8477b4c10ccbc76f36eed4d64ac12e8bb648a28
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232582"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186099"
 ---
 # <a name="agent-based-migration-architecture"></a>エージェントベースの移行アーキテクチャ
 

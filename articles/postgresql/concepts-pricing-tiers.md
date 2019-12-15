@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Single Server の価格レベル
-description: この記事では、Azure Database for PostgreSQL - Single Server の価格レベルについて説明します。
+title: 価格レベル - Azure Database for PostgreSQL - Single Server
+description: この記事では、Azure Database for PostgreSQL - Single Server の計算およびストレージオプションについて説明します。
 author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: 4f8bbf22d1081948cf6effd5fdbd8b6a6b7d5332
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f7e5d3e681c86d5ecb014f95d838e6d3d51e1c48
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903292"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768369"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の価格レベル
 

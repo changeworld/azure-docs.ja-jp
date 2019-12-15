@@ -1,25 +1,18 @@
 ---
-title: PowerShell でアプリを複製する - Azure App Service
-description: PowerShell を使用して App Service アプリを新しいアプリに複製する方法について説明します。
-services: app-service\web
-documentationcenter: ''
+title: PowerShell を使用したアプリの複製
+description: PowerShell を使用して App Service アプリを新しいアプリに複製する方法について説明します。 Traffic Manager 統合など、さまざまな複製シナリオについて説明します。
 author: ahmedelnably
-manager: stefsch
-editor: ''
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 47efcfc4bf2b0268d6720b659786300e751e861d
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: ccff07009d2f46f6d91b8e3c57158aa6ede3607e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983687"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671426"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
 

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: 4ee597f96d28b43b9c69d1515634aadde2f0ab7c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 93f0117096a5601632ccced6b698e84a0714bbd4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608019"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805809"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>リアルタイムでの会話の文字起こし (プレビュー)
 
-Speech SDK の **ConversationTranscriber** API を使用すると、会議やその他の会話を文字起こしして、`PullStream` または `PushStream` を使用し、音声を Speech Services にストリーミングすることによって、複数の参加者を追加、削除、または識別することができます。 このトピックでは、Speech SDK (バージョン 1.8.0 以降) で音声テキスト変換を使用する方法について理解している必要があります。 詳細については、「[Speech Service とは](overview.md)」を参照してください。
+Speech SDK の **ConversationTranscriber** API を使用すると、会議やその他の会話を文字起こしして、`PullStream` または `PushStream` を使用し、音声を Speech Service にストリーミングすることによって、複数の参加者を追加、削除、または識別することができます。 このトピックでは、Speech SDK (バージョン 1.8.0 以降) で音声テキスト変換を使用する方法について理解している必要があります。 詳細については、「[Speech Service とは](overview.md)」を参照してください。
 
 ## <a name="limitations"></a>制限事項
 
@@ -37,7 +37,7 @@ Speech Device SDK には、8 チャネルを使用したリアルタイム オ�
 
 ## <a name="prerequisites"></a>前提条件
 
-Speech Services のサブスクリプションです。 お持ちでない場合は、[Speech の試用版サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)を入手できます。
+Speech Service のサブスクリプション。 お持ちでない場合は、[Speech の試用版サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)を入手できます。
 
 ## <a name="create-voice-signatures"></a>声紋を作成する
 

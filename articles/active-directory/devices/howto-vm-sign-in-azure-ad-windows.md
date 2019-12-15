@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ac52fa7eab055a2b2e9154481019d49acdca65d9
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832866"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420547"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure 内の Windows 仮想マシンにサインインする
 
@@ -34,8 +34,8 @@ Azure AD 認証を使用して、Azure 内の Windows VM にログインする�
 - Azure RBAC を使用すると、VM への適切なアクセス権を必要に応じて付与し、不要になったら削除することができます。
 - VM へのアクセスを許可する前に、Azure AD 条件付きアクセスにより、次のような追加要件を適用できます。 
    - 多要素認証
-   - サインイン リスク
-- Azure ベースの Windows VM の Azure AD 参加を自動化したりスケーリングしたりすることができます。
+   - サインイン リスク チェック
+- VDI のデプロイの一部である Azure Windows VM の Azure AD 参加の自動化とスケーリングを行います。
 
 ## <a name="requirements"></a>必要条件
 
@@ -68,7 +68,7 @@ Azure 内の Windows VM に Azure AD ログインを使用するには、最初�
 Windows VM に対して Azure AD ログインを有効にするには、次のような複数の方法があります。
 
 - Windows VM の作成時に Azure portal のエクスペリエンスを使用する
-- Windows VM の作成時に、または既存の Windows VM に対して、Azure Cloud Shell のエクスペリエンスを使用する
+- Windows VM の作成時に、**または既存の Windows VM に対して**、Azure Cloud Shell エクスペリエンスを使用する
 
 ### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Azure portal の VM の作成エクスペリエンスを使用して Azure AD ログインを有効にする
 
@@ -186,6 +186,13 @@ RBAC を使用して、Azure サブスクリプション リソースへのア�
 - [RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 - [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 - [RBAC と Azure PowerShell を使用して Azure リソースへのアクセスを管理する](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+
+## <a name="using-conditional-access"></a>条件付きアクセスの使用
+
+Azure AD サインインで有効になる Azure 上の Windows VM へのアクセスを承認する前に、多要素認証やユーザー サインイン リスク チェックなどの条件付きアクセス ポリシーを適用できます。 条件付きアクセス ポリシーを適用するには、クラウド アプリまたはアクションの割り当てオプションから "Azure Windows VM サインイン" アプリを選択し、条件としてサインイン リスクを使用するか、アクセス制御付与として多要素認証を要求する、あるいはその両方を実行します。 
+
+> [!NOTE]
+> "Azure Windows VM サインイン" アプリへのアクセス要求に対して、"Azure Windows VM サインイン" をアクセス制御付与として使用する場合は、Azure上のターゲット Windows VM に対して RDP セッションを開始するクライアントの一部として、多要素認証要求を提供する必要があります。 Windows 10 クライアントでこれを実現する唯一の方法は、RDP クライアントで Windows Hello for Business の PIN または生体認証を使用することです。 生体認証のサポートは、Windows 10 バージョン 1809 で RDP クライアントに追加されています。 Windows Hello for Business 認証を使用するリモート デスクトップは、証明書信頼モデルを使用するデプロイでのみ利用でき、現時点ではキー信頼モデルでは利用できません。
 
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Azure AD 資格情報を使用して Windows VM にログインする
 
@@ -337,7 +344,12 @@ VM へのリモート デスクトップ接続を開始したときに次のエ�
 
 ![The sign-in method you're trying to use isn't allowed. (使用しようとしているサインイン方法は許可されていません。)](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
-RBAC リソースにアクセスする前に MFA の実行を求める条件付きアクセス ポリシーを構成している場合、VM へのリモート デスクトップ接続を開始する Windows 10 PC が、Windows Hello などの強力な認証方法を使用して確実にサインインするようにする必要があります。 リモート デスクトップ接続に強力な認証方法を使用しない場合、次のエラーが表示されます。
+リソースにアクセスする前に多要素認証 (MFA) を要求する条件付きアクセス ポリシーを構成している場合は、VM へのリモート デスクトップ接続を開始する Windows 10 PC で、Windows Hello などの強力な認証方法を使用したサインインが行われるようにする必要があります。 リモート デスクトップ接続で強力な認証方法が使用されていない場合は、前述のエラーが表示されます。
+
+Windows Hello for Business のデプロイがなく、それが当面は選択肢にならない場合は、MFA を要求するクラウド アプリの一覧から "Azure Windows VM サインイン" アプリを除外する条件付きアクセス ポリシーを構成することで、MFA 要件を除外できます。 Windows Hello for Business の詳細については、[Windows Hello for Business の概要](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)に関するページを参照してください。
+
+> [!NOTE]
+> RDP での Windows Hello for Business PIN 認証は Windows 10 のいくつかのバージョンでサポートされています。ただし、RDP での生体認証のサポートは Windows 10 バージョン 1809 で追加されています。 RDP での Windows Hello for Business 認証の使用は、証明書信頼モデルを使用するデプロイでのみ利用でき、現時点ではキー信頼モデルでは利用できません。
  
 ## <a name="preview-feedback"></a>プレビューのフィードバック
 

@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2b69fdd7abefca360433fc9fb090569cba23febe
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011480"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454396"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
 
@@ -26,8 +26,6 @@ ms.locfileid: "74011480"
 この記事では、API Management の開発者ポータルのセルフホステッド バージョンとマネージド バージョンの違いについて説明します。 また、アーキテクチャについて説明し、よく寄せられる質問とその回答を紹介します。
 
 > [!WARNING]
-> 新しい開発者ポータルは、現在 API Management サービスにロールアウト中です。
-> サービスが新しく作成したものである場合や、Developer レベルのサービスの場合は、最新バージョンが既に存在している必要があります。 そうではない場合、問題が発生する可能性があります (たとえば、発行機能を使用する場合)。 この機能のロールアウトは、2019 年 11 月 22 日の金曜日までに完了する予定です。
 >
 > 開発者ポータルの[プレビュー バージョンから一般公開バージョンへの移行方法について確認](#preview-to-ga)してください。
 
@@ -95,6 +93,8 @@ ms.locfileid: "74011480"
 
 新しい開発者ポータルでは、"*アプリケーション*" と "*問題*" はサポートされていません。 以前のポータルで "*問題*" を使用していて、新しいポータルでも必要な場合は、[専用の GitHub の問題](https://github.com/Azure/api-management-developer-portal/issues/122)にコメントを投稿してください。
 
+対話型の開発者コンソールでの OAuth による認証は、まだサポートされていません。 問題の進展状況は [GitHub](https://github.com/Azure/api-management-developer-portal/issues/208) で追跡できます。
+
 ### <a name="has-the-old-portal-been-deprecated"></a>古いポータルは非推奨となりましたか。
 
 以前の開発者ポータルと発行者ポータルは、*レガシ機能*となりました。セキュリティ更新プログラムのみ受け取ることになります。 新しい機能は、新しい開発者ポータルにのみ実装されます。
@@ -111,13 +111,31 @@ API については、[GitHub リポジトリの wiki セクション][2]に記�
 
 No.
 
-### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>マネージド ポータルの依存関係に対して追加の VNET 接続を有効にする必要がありますか。
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>新しいマネージド ポータルの依存関係に対して追加の VNet 接続を有効にする必要がありますか。
 
-No.
+ほとんどの場合、必要ありません。
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>対話型コンソールを使用すると、CORS エラーが発生します。 どうすればよいですか。
+API Management サービスが内部の VNet にある場合、開発者ポータルにはネットワーク内からしかアクセスできません。 管理エンドポイントのホスト名は、ポータルの管理インターフェイスにアクセスするために使用するコンピューターから、サービスの内部 VIP に解決される必要があります。 管理エンドポイントが DNS に登録されていることを確認してください。 設定に誤りがある場合は、次のエラーが表示されます: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`
 
-対話型コンソールは、ブラウザーからクライアント側の API 要求を行います。 API に [CORS ポリシー](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS)を追加して、CORS の問題を解決することができます。 すべてのパラメーターを手動で指定するか、ワイルドカード `*` の値を使用することができます。 例:
+### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>カスタムの API Management ドメインを割り当てていますが、発行済みのポータルが正しく動作しません
+
+ドメインを更新した後、変更を有効にするには、[ポータルを再発行](api-management-howto-developer-portal-customize.md#publish)する必要があります。
+
+### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>ID プロバイダーを追加しましたが、ポータルに表示されません
+
+(AAD、AAD B2C などの) ID プロバイダーを構成した後、変更を有効にするには[ポータルを再発行](api-management-howto-developer-portal-customize.md#publish)する必要があります。
+
+### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>委任を設定しましたが、ポータルで使用されていません
+
+委任を設定した後、変更を有効にするには、[ポータルを再発行](api-management-howto-developer-portal-customize.md#publish)する必要があります。
+
+### <a name="my-other-api-management-configuration-changes-havent-been-propagated-in-the-developer-portal"></a>API Management の構成に対するその他の変更が開発者ポータルに反映されていません
+
+(VNet、サインイン、製品条項などの) ほとんどの構成変更には[ポータルの再発行](api-management-howto-developer-portal-customize.md#publish)が必要です。
+
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>対話型コンソールを使用すると、CORS エラーが発生します
+
+対話型コンソールは、ブラウザーからクライアント側の API 要求を行います。 API に [CORS ポリシー](api-management-cross-domain-policies.md#CORS)を追加して、CORS の問題を解決することができます。 すべてのパラメーターを手動で指定するか、ワイルドカード `*` の値を使用することができます。 例:
 
 ```XML
 <cors>
@@ -142,6 +160,54 @@ No.
     </expose-headers>
 </cors>
 ```
+
+> [!NOTE]
+> 
+> API(s) スコープではなく Product スコープで CORS ポリシーを適用し、API でヘッダーを介してサブスクリプション キー認証を使用する場合、コンソールは正しく動作しません。
+>
+> ブラウザーは OPTIONS HTTP 要求を自動的に発行しますが、サブスクリプション キーを含むヘッダーがこの要求には含まれていません。 サブスクリプション キーがないため、API Management は OPTIONS 呼び出しを Product に関連付けることができず、したがって CORS ポリシーを適用できません。
+>
+> 回避策として、クエリ パラメーターでサブスクリプション キーを渡すことができます。
+
+### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>開発者ポータルを編集するにはどのようなアクセス許可が必要ですか。
+
+管理モードでポータルを開いたときに `Oops. Something went wrong. Please try again later.` エラーが表示される場合、必要なアクセス許可 (RBAC) が不足している可能性があります。
+
+従来のポータルでは、ユーザー管理者によるポータルへのアクセスを許可するためには、サービス スコープのアクセス許可 `Microsoft.ApiManagement/service/getssotoken/action` (`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`) が必要でした。 新しいポータルでは、スコープ `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` のアクセス許可 `Microsoft.ApiManagement/service/users/token/action` が必要です。
+
+次の PowerShell スクリプトを使用して、必要なアクセス許可を持つロールを作成することができます。 `<subscription-id>` パラメーターを忘れずに変更してください。 
+
+```PowerShell
+#New Portals Admin Role 
+Import-Module Az 
+Connect-AzAccount 
+$contributorRole = Get-AzRoleDefinition "API Management Service Contributor" 
+$customRole = $contributorRole 
+$customRole.Id = $null
+$customRole.Name = "APIM New Portal Admin" 
+$customRole.Description = "This role gives the user ability to log in to the new Developer portal as administrator" 
+$customRole.Actions = "Microsoft.ApiManagement/service/users/token/action" 
+$customRole.IsCustom = $true 
+$customRole.AssignableScopes.Clear() 
+$customRole.AssignableScopes.Add('/subscriptions/<subscription-id>') 
+New-AzRoleDefinition -Role $customRole 
+```
+ 
+作成したロールは、Azure portal の **[Access Control (IAM)]\(アクセス制御 (IAM)\)** セクションから任意のユーザーに付与できます。 このロールをユーザーに割り当てると、サービス スコープのアクセス許可が割り当てられます。 ユーザーは、サービスの*任意の*ユーザーに代わって SAS トークンを生成できるようになります。 最低限、このロールはサービスの管理者に割り当てる必要があります。 次の PowerShell コマンドは、不必要なアクセス許可をユーザーに付与することを避けるために、最も低いスコープでユーザー `user1` にロールを割り当てる方法を示しています。 
+
+```PowerShell
+New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 
+```
+
+ユーザーにアクセス許可を付与した後、新しいアクセス許可を有効にするには、ユーザーが Azure portal から一度サインアウトし、再びサインインする必要があります。
+
+### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>`Unable to start the portal. See if settings are specified correctly (...)` エラーが表示されます
+
+このエラーは、`https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview` に対する `GET` 呼び出しが失敗すると表示されます。 この呼び出しは、ポータルの管理インターフェイスによってブラウザーから発行されます。
+
+API Management サービスが VNet 内にある場合は、VNet 接続に関する前出の質問を参照してください。
+
+カスタム ドメインに割り当てられているがブラウザーで信頼されていない SSL 証明書が原因で呼び出しが失敗する場合もあります。 軽減策として、管理エンドポイントのカスタム ドメインを削除することができます。API Management は、信頼できる証明書を使用して既定のエンドポイントにフォールバックします。
 
 ## <a name="next-steps"></a>次の手順
 

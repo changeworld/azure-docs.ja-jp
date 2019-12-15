@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9d134e522575f30fd1f1be8176e0e1589faa7ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a45caeed8b601a845b0eb0fbcd25f1ec097a77a1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586884"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279040"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>[自分のサインイン (プレビュー)] ページから最近のサインイン アクティビティを表示および検索する
 
@@ -49,7 +49,7 @@ ms.locfileid: "73586884"
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>サインインの失敗が表示される場合
 
-セッション アクティビティのないサインインの失敗が表示される場合は、プライマリ認証方法 (ユーザー名/パスワード) が失敗したことを意味します。 これは、ユーザー名またはパスワードを間違って入力したことを意味する可能性がありますが、攻撃者がパスワードを推測しようとしている可能性もあります。 攻撃者がパスワードの推測に失敗したと考えられる場合は、パスワードを変更する必要はありませんが、Azure Multi-Factor Authentication (MFA) に登録することを強くお勧めします。 MFA を使用すると、ハッカーが最終的にパスワードを推測したとしても、それだけではアカウントにアクセスできません。
+セッション アクティビティのないサインインの失敗が表示される場合は、プライマリ検証方法 (ユーザー名/パスワード) が失敗したことを意味します。 これは、ユーザー名またはパスワードを間違って入力したことを意味する可能性がありますが、攻撃者がパスワードを推測しようとしている可能性もあります。 攻撃者がパスワードの推測に失敗したと考えられる場合は、パスワードを変更する必要はありませんが、Azure Multi-Factor Authentication (MFA) に登録することを強くお勧めします。 MFA を使用すると、ハッカーが最終的にパスワードを推測したとしても、それだけではアカウントにアクセスできません。
 
 失敗したサインインが表示され、[セッション アクティビティ] の下に「**追加認証が失敗しました。コードが無効です**」というメモが表示された場合、これは、プライマリ認証 (ユーザー名/パスワード) は成功しても、MFA が失敗したことを意味します。 これが攻撃者であった場合、攻撃者はパスワードを正しく推測しても、MFA チャレンジに成功できませんでした。 この場合は、パスワードを変更することをお勧めします。これは、攻撃者がその部分を取得した後、[[セキュリティ情報]](https://mysignins.microsoft.com/security-info) ページに移動してセキュリティ設定を更新するためです。
 
@@ -69,7 +69,7 @@ ms.locfileid: "73586884"
 
 - [セキュリティ情報](user-help-security-info-overview.md)を表示または管理します。
 
-- 接続されている[デバイス](my-account-portal-devices-page.md)を表示または管理します。
+- 接続されている[デバイス](my-account-portal-devices-page.md)を表示または管理する。
 
 - [組織](my-account-portal-organizations-page.md)を表示または管理します。
 

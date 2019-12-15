@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f03d2fba01dadc443da19416871a93a72289c0c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3477bac051346e4b334ff3437085c402090b2c98
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270145"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765463"
 ---
 # <a name="coarse-relocalization"></a>粗い再局在化
 
@@ -107,13 +107,8 @@ cloudSpatialAnchorSession->LocationProvider(sensorProvider);
 
 # <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 ```cpp
-// Create the ASA factory
-SpatialAnchorsFactory m_asaFactory { nullptr };
-// . . .
-
 // Create the sensor fingerprint provider
-PlatformLocationProvider sensorProvider;
-sensorProvider = m_asaFactory.CreatePlatformLocationProvider();
+PlatformLocationProvider sensorProvider = PlatformLocationProvider();
 
 // Create and configure the session
 cloudSpatialAnchorSession = CloudSpatialAnchorSession();
@@ -495,7 +490,7 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-Azure Spatial Anchors では、一覧にある Bluetooth ビーコンのみが追跡されます。 ホワイトリストに登録された UUID を取得するようにプログラミングされた悪意のあるビーコンは、サービスの品質に悪影響を及ぼす可能性があります。 そのため、ビーコンは、デプロイを制御できるキュレートされた空間でのみ使用する必要があります。
+Azure Spatial Anchors では、一覧にある Bluetooth ビーコンのみが追跡されます。 許可リストに登録された UUID を取得するようにプログラミングされた悪意のあるビーコンは、サービスの品質に悪影響を及ぼす可能性があります。 そのため、ビーコンは、デプロイを制御できるキュレートされた空間でのみ使用する必要があります。
 
 ## <a name="querying-with-sensor-data"></a>センサー データを使用してクエリを実行する
 
@@ -581,7 +576,7 @@ anchorLocateCriteria->NearDevice(nearDeviceCriteria);
 # <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
-NearDeviceCriteria nearDeviceCriteria = m_asaFactory.CreateNearDeviceCriteria();
+NearDeviceCriteria nearDeviceCriteria = NearDeviceCriteria();
 
 // Choose a maximum exploration distance between your device and the returned anchors
 nearDeviceCriteria.DistanceInMeters(5.0f);
@@ -590,7 +585,7 @@ nearDeviceCriteria.DistanceInMeters(5.0f);
 nearDeviceCriteria.MaxResultCount(25);
 
 // Set the session's locate criteria
-anchorLocateCriteria = m_asaFactory.CreateAnchorLocateCriteria();
+anchorLocateCriteria = AnchorLocateCriteria();
 anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 ```
 

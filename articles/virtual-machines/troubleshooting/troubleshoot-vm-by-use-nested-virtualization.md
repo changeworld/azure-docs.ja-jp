@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: ad359a19cb42bf115189aca7905d1908d0dc5284
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087060"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185518"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う
 
@@ -72,70 +72,55 @@ ms.locfileid: "71087060"
 
 ## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>手順 2:復旧 VM の Hyper-V サーバー上に問題のある VM を作成する
 
-1.  問題のある VM のディスクの名前を記録しておき、問題のある VM を削除します。 アタッチされているディスクはすべて維持してください。 
+1.  問題のある VM の OS ディスクの[スナップショット ディスクを作成](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk)し、そのスナップショット ディスクを復旧 VM に接続します。
 
-2.  問題のある VM の OS ディスクを復旧 VM のデータ ディスクとしてアタッチします。
+2.  復旧 VM にリモート デスクトップ接続します。
 
-    1.  問題のある VM の削除後、復旧 VM に移動します。
+3.  ディスクの管理 (diskmgmt.msc) を開きます。 問題のある VM のディスクが **[オフライン]** に設定されていることを確認します。
 
-    2.  **[ディスク]** を選択してから、 **[データ ディスクの追加]** を選択します。
+4.  Hyper-V マネージャーを開き、 **[サーバー マネージャー]** で **Hyper-V ロール**を選択します。 そのサーバーを右クリックし、 **[Hyper-V マネージャー]** を選択します。
 
-    3.  問題のある VM のディスクを選択してから、 **[保存]** を選択します。
+5.  Hyper-V マネージャーで、復旧 VM を右クリックし、 **[新規]**  >  **[仮想マシン]**  >  **[次へ]** の順に選択します。
 
-3.  ディスクが正常にアタッチされたら、リモート デスクトップで復旧 VM に接続します。
+6.  VM の名前を入力し、 **[次へ]** を選択します。
 
-4.  ディスクの管理 (diskmgmt.msc) を開きます。 問題のある VM のディスクが **[オフライン]** に設定されていることを確認します。
+7.  **[第 1 世代]** を選択します。
 
-5.  Hyper-V マネージャーを開き、 **[サーバー マネージャー]** で **Hyper-V ロール**を選択します。 そのサーバーを右クリックし、 **[Hyper-V マネージャー]** を選択します。
+8.  起動メモリを 1024 MB 以上に設定します。
 
-6.  Hyper-V マネージャーで、復旧 VM を右クリックし、 **[新規]**  >  **[仮想マシン]**  >  **[次へ]** の順に選択します。
+9. 該当する場合、作成済みの Hyper-V ネットワーク スイッチを選択します。 それ以外の場合、次のページに進みます。
 
-7.  VM の名前を入力し、 **[次へ]** を選択します。
-
-8.  **[第 1 世代]** を選択します。
-
-9.  起動メモリを 1024 MB 以上に設定します。
-
-10. 該当する場合、作成済みの Hyper-V ネットワーク スイッチを選択します。 それ以外の場合、次のページに進みます。
-
-11. **[後で仮想ハード ディスクを接続する]** を選択します。
+10. **[後で仮想ハード ディスクを接続する]** を選択します。
 
     ![[後で仮想ハード ディスクを接続する] オプションの画像](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
-12. VM が作成されたら **[完了]** を選択します。
+11. VM が作成されたら **[完了]** を選択します。
 
-13. 作成した VM を右クリックし、 **[設定]** を選択します。
+12. 作成した VM を右クリックし、 **[設定]** を選択します。
 
-14. **[IDE コントローラー 0]** を選択し、 **[ハード ドライブ]** を選択して、 **[追加]** をクリックします。
+13. **[IDE コントローラー 0]** を選択し、 **[ハード ドライブ]** を選択して、 **[追加]** をクリックします。
 
     ![新しいハード ドライブの追加に関する画像](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-15. **[物理ハード ディスク]** で、Azure VM にアタッチされている問題のある VM のディスクを選択します。 ディスクが一覧にない場合は、[ディスクの管理] でそのディスクがオフラインに設定されているかどうかを確認してください。
+14. **[物理ハード ディスク]** で、Azure VM にアタッチされている問題のある VM のディスクを選択します。 ディスクが一覧にない場合は、[ディスクの管理] でそのディスクがオフラインに設定されているかどうかを確認してください。
 
     ![ディスクのマウントに関する画像](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
-17. **[Apply]\(適用\)** を選択し、次に **[OK]** を選択します。
+15. **[Apply]\(適用\)** を選択し、次に **[OK]** を選択します。
 
-18. VM をダブルクリックして起動します。
+16. VM をダブルクリックして起動します。
 
-19. これでその VM をオンプレミス VM として使用することができます。 必要なトラブルシューティング手順を実施することができます。
+17. これでその VM をオンプレミス VM として使用することができます。 必要なトラブルシューティング手順を実施することができます。
 
-## <a name="step-3-re-create-your-azure-vm-in-azure"></a>手順 3:Azure で Azure VM を再作成する
+## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>手順 3:問題のある VM によって使用されている OS ディスクを交換する
 
 1.  VM をオンライン状態に復帰させた後、その VM を Hyper-V マネージャーでシャットダウンします。
 
-2.  [Azure Portal](https://portal.azure.com) に移動し、復旧 VM の [ディスク] を選択し、そのディスクの名前をコピーします。 この名前は、次の手順で使用します。 復旧 VM から固定ディスクをデタッチします。
-
-3.  **[すべてのリソース]** に移動して目的のディスク名を検索し、そのディスクを選択します。
-
-     ![ディスクの検索に関する画像](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
-
-4. **[VM の作成]** をクリックします。
-
-     ![ディスクからの VM 作成に関する画像](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
-
-Azure PowerShell を使用してディスクから VM を作成することもできます。 詳細については、[PowerShell を使用して既存のディスクから新しい VM を作成する方法](../windows/create-vm-specialized.md#create-the-new-vm)に関するページを参照してください。 
+2.  [修復された OS ディスクのマウントを解除して切断](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk
+)します。
+3.  [VM によって使用されている OS ディスクを修復された OS ディスクに交換](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
+)します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:カスタム音声アシスタント、Java (Android) - Speech Service
+title: クイック スタート:カスタム音声アシスタント、Java (Android) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用して Android 上で Java を使用して音声アシスタント アプリケーションを作成する方法について説明します
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 12/09/2019
 ms.author: travisw
-ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 70031513d6f120e539e80d6befad4bf9320fb9c4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111799"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975960"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート:Speech SDK を使用して Android 上で Java を使用して音声アシスタントを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "74111799"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) 上に作成します。
+- Speech サービス用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) 上に作成します。
 - [Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)で構成された、以前に作成済みのボット
 - [Android Studio](https://developer.android.com/studio/) v3.3 以降
 
@@ -260,7 +260,7 @@ ms.locfileid: "74111799"
 
     * `YourSpeechSubscriptionKey` は、実際のサブスクリプション キーで置き換えてください。
 
-    * `YourServiceRegion` を、サブスクリプションに関連付けられている[リージョン](regions.md)に置き換えます。Direct Line Speech では Speech Services リージョンの一部のみが現在サポートされています。 詳細については、[リージョン](regions.md#voice-assistants)に関するページを参照してください。
+    * `YourServiceRegion` を、サブスクリプションに関連付けられている[リージョン](regions.md)に置き換えます。Direct Line Speech では Speech サービス リージョンの一部のみが現在サポートされています。 詳細については、[リージョン](regions.md#voice-assistants)に関するページを参照してください。
 
 ## <a name="build-and-run-the-app"></a>アプリのビルドと実行
 
@@ -285,7 +285,7 @@ ms.locfileid: "74111799"
 
 ## <a name="see-also"></a>関連項目
 - [音声アシスタントについて](voice-assistants.md)
-- [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
+- [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
 - [カスタム キーワード](speech-devices-sdk-create-kws.md)
 - [Direct Line Speech をボットに接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [GitHub で Java のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)

@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 診断ログの形式変更のための準備
-description: Azure 診断ログでは、2018 年 11 月 1 日より追加 BLOB を使用するように移行されます。
+description: 2018 年 11 月 1 日に追加 BLOB を使用するように変更された新しい Azure Diagnostic ログの影響と、それを処理するようにツールを更新する方法について説明します。
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5e71f4c590e4eafea5a2c6ad52b8df8c7dcf3814
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258383"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307057"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor 診断ログの形式変更のための準備
 

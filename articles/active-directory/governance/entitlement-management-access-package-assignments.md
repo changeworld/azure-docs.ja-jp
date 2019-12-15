@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f06da43e758c24da65664b34dd83f876a00e3a0
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0501da153567f3b95804d8a8a6576d8cf199762c
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174898"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74553985"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理でアクセス パッケージの割り当てを表示、追加、および削除する
 
@@ -76,6 +76,24 @@ Azure AD エンタイトルメント管理では、アクセス パッケージ�
 1. **[追加]** をクリックして、選択したユーザーをアクセス パッケージに直接割り当てます。
 
     しばらくしてから **[更新]** をクリックすると、割り当ての一覧にユーザーが表示されます。
+
+## <a name="remove-an-assignment"></a>割り当ての削除
+
+**事前に必要なロール:** グローバル管理者、ユーザー管理者、カタログ所有者、またはアクセス パッケージ マネージャー
+
+1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
+
+1. 左側のメニューで **[アクセス パッケージ]** をクリックして、アクセス パッケージを開きます。
+
+1. 左側のメニューで **[割り当て]** をクリックします。
+ 
+1. 割り当てをアクセス パッケージから削除するユーザーの横にあるチェック ボックスをオンにします。 
+
+1. 左ウィンドウの上部付近にある **[削除]** ボタンをクリックします。 
+ 
+    ![割り当て - アクセス パッケージからユーザーを削除する](./media/entitlement-management-access-package-assignments/remove-assignment-select-remove-assignment.png)
+
+    割り当てが削除されたことを知らせる通知が表示されます。 
 
 ## <a name="next-steps"></a>次の手順
 

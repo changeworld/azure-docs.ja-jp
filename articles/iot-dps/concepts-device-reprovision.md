@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub Device Provisioning Service におけるデバイスの再プロビジョニングの概念 | Microsoft Docs
+title: Azure IoT Hub Device Provisioning Service - デバイスの概念
 description: Azure IoT Hub Device Provisioning Service におけるデバイスの再プロビジョニングの概念について説明します
 author: wesmc7777
 ms.author: wesmc
@@ -7,13 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: fa8cb29f145c7658227f93d08a990c98563a0cfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d6e5b5c7e8e8bf83646b417aa94658efd25b49e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730020"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228834"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub デバイスの再プロビジョニングの概念
 

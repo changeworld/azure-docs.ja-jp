@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Java 用カスタム音声アシスタント (Windows、Linux) - Speech Service
+title: クイック スタート:Java 用カスタム音声アシスタント (Windows、Linux) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Cognitive Services Speech SDK を Java コンソール アプリケーションで使用する方法を学習します。 クライアント アプリケーションを、Direct Line Speech チャネルを使用するように構成されている作成済みの Bot Framework ボットに接続して、音声アシスタント エクスペリエンスを有効にする方法を学習します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: bidishac
-ms.openlocfilehash: 54a5be769ace97ffa9a4f5f38a9227d9565abfd1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111709"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815863"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>クイック スタート:Speech SDK と Java を使用して音声アシスタントを作成する (プレビュー)
 
@@ -30,7 +30,7 @@ ms.locfileid: "74111709"
 - オペレーティング システム:Windows (64 ビット)、Ubuntu Linux 16.04 または 18.04 (64 ビット)、または macOS 10.13 以降。
 - [Eclipse Java IDE](https://www.eclipse.org/downloads/)。
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)。
-- Speech Services 用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します。
+- Speech サービス用の Azure サブスクリプション キー。 [無料で入手する](get-started.md)か、[Azure portal](https://portal.azure.com) で作成します。
 - Bot Framework バージョン 4.2 以上を使用して作成された事前構成済みのボット。 ボットは、音声入力を受信するために新しい Direct Line Speech チャネルに登録する必要があります。
 
   > [!NOTE]
@@ -477,7 +477,7 @@ F11 キーを押すか、 **[Run]\(実行\)**  >  **[Debug]\(デバッグ\)** �
 ## <a name="see-also"></a>関連項目
 
 - [音声アシスタントについて](voice-assistants.md)
-- [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
+- [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
 - [カスタム キーワード](speech-devices-sdk-create-kws.md)
 - [Direct Line Speech をボットに接続する](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [GitHub で Java のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)

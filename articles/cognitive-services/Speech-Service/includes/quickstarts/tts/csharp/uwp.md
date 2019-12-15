@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する、C# (UWP) - Speech Service
+title: クイック スタート:音声を合成する、C# (UWP) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: この記事では、Cognitive Services Speech SDK を使用して C# のユニバーサル Windows プラットフォーム (UWP) アプリケーションを作成する方法について説明します。 リアルタイムでテキストから音声を合成し、デバイスのスピーカーに出力します。 このアプリケーションは、Speech SDK NuGet パッケージと Microsoft Visual Studio 2019 を使用して作成します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 3a88f4fc14286a60feb9d72676827b0cce91eb25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 276de42f2a37a0e48cd323e285760c00e6db9f32
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505133"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818102"
 ---
 > [!NOTE]
 > ユニバーサル Windows プラットフォームを使用すると、PC、Xbox、Surface Hub、その他のデバイスなど、Windows 10 をサポートする任意のデバイスで動作するアプリを開発できます。
@@ -61,7 +61,7 @@ ms.locfileid: "73505133"
 
    ![サンプル UWP 音声合成アプリケーション (C#) - クイックスタート](~/articles/cognitive-services/Speech-Service/media/sdk/qs-text-to-speech-uwp-helloworld-window.png)
 
-1. テキストボックスに何かテキストを入力し、 **[Speak]\(読み上げ\)** をクリックします。 テキストが Speech Services に転送されて音声に合成され、スピーカーで再生されます。
+1. テキストボックスに何かテキストを入力し、 **[Speak]\(読み上げ\)** をクリックします。 テキストが Speech サービスに転送されて音声に合成され、スピーカーで再生されます。
 
     ![音声合成ユーザー インターフェイス](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-uwp-ui-result.png)
 

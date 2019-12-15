@@ -1,27 +1,20 @@
 ---
-title: Azure CLI サンプル スクリプト - アプリを作成して Azure Repos から継続的にデプロイする | Microsoft Docs
-description: Azure CLI サンプル スクリプト - Azure Repos からの継続的なデプロイでアプリを作成する
-services: app-service\web
-documentationcenter: ''
+title: Azure Repos からの継続的なデプロイ
+description: Azure CLI を使用して App Service アプリのデプロイと管理を自動化する方法について説明します。 このサンプルでは、Azure Repos から CI/CD を設定する方法を示します。
 author: msangapu-msft
-manager: jeconnoc
-editor: ''
 tags: azure-service-management
 ms.assetid: 389d3bd3-cd8e-4715-a3a1-031ec061d385
-ms.service: app-service-web
-ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: f7b28e75e8ae722169f3e41f657ef6292e12cc6b
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1b1d829f2e1e9dcf277f3be5276a1494d5b96c12
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879029"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688392"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Azure CLI を使用して継続的なデプロイで App Service アプリを作成する
 

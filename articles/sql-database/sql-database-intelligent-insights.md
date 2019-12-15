@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: bd42117b384b9e384d59f9f4298c937135cafd34
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f17c588d28d0904041970eee8e9aa2201f905836
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810177"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151419"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>AI を使用してデータベース パフォーマンスの監視とトラブルシューティングを行う Intelligent Insights
 
@@ -65,6 +65,17 @@ Azure SQL Analytics を伴う Intelligent Insights の使用に関する実践�
 >
 
 Intelligent Insights は、SQL Database のパフォーマンス問題の検出とトラブルシューティングで威力を発揮します。 Intelligent Insights を使用して SQL Database および Managed Instance データベースのパフォーマンスの問題をトラブルシューティングする方法については、「[Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)」をご覧ください。
+
+## <a name="intelligent-insights-options"></a>Intelligent Insights のオプション
+
+Azure SQL Database で使用可能な Intelligent Insights のオプションは次のとおりです。
+
+| Intelligent Insights のオプション | 単一データベースとプールされたデータベースのサポート | インスタンス データベースのサポート |
+| :----------------------------- | ----- | ----- |
+| **[Configure Intelligent Insights]\(Intelligent Insights を構成する\)** - データベース用に Intelligent Insights の分析を構成します。 | はい | はい | 
+| **[Stream insights to Azure SQL Analytics]\(Azure SQL Analytics に分析情報をストリーム配信する\)** - Azure SQL Database 用の Azure SQL Analytics 監視ソリューションに分析情報をストリーム配信します。 | はい | はい | 
+| **[Stream insights to Event Hub]\(Event Hubs に分析情報をストリーム配信する\)** - 詳細なカスタム統合のために Event Hubs に分析情報をストリーム配信します。 | はい | はい | 
+| **[Stream insights to Azure Storage]\(Azure Storage に分析情報をストリーム配信する\)** - 詳細な分析と長期的なアーカイブのために、Azure Storage に分析情報をストリーム配信します。 | はい | はい |
 
 ## <a name="configure-intelligent-insights"></a>Intelligent Insights を構成する
 

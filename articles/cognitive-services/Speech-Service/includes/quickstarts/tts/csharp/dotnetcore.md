@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する、C# (.NET Core) - Speech Service
+title: クイック スタート:音声を合成する、C# (.NET Core) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Windows の .NET Core で C# と Speech SDK を使用して音声を合成する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 6/24/2019
 ms.author: yinhew
-ms.openlocfilehash: 670d32a93df9e2a0363163079b50c7306f81975e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6e732237b22bec6e2a66d44f12ac25e5f9adca3f
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504885"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818290"
 ---
 > [!NOTE]
 > .NET Core は、[.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) 仕様を実装した、オープン ソース、クロスプラットフォームの .NET プラットフォームです。
@@ -26,7 +26,7 @@ ms.locfileid: "73504885"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [使用する開発環境をセットアップする](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=dotnetcore)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=dotnetcore)
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -50,7 +50,7 @@ ms.locfileid: "73504885"
 
     ![[デバッグの開始] オプションが強調表示された、Visual Studio アプリケーションのスクリーン ショット](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "アプリを起動してデバッグする")
 
-1. コンソール ウィンドウが表示され、何かテキストを入力するように求められます。 いくつかの単語または文を入力してください。 入力したテキストが Speech Services に転送されて音声に合成され、スピーカーで再生されます。
+1. コンソール ウィンドウが表示され、何かテキストを入力するように求められます。 いくつかの単語または文を入力してください。 入力したテキストが Speech サービスに転送されて音声に合成され、スピーカーで再生されます。
 
     ![合成が成功した後のコンソール出力のスクリーンショット](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "合成が成功した後のコンソール出力")
 

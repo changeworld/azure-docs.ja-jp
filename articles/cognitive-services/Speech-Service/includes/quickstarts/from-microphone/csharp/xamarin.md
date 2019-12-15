@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:マイクから音声を認識する、C# (Xamarin) - Speech Service
+title: クイック スタート:マイクから音声を認識する、C# (Xamarin) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: この記事では、Cognitive Services Speech SDK を使用して、ユニバーサル Windows プラットフォーム (UWP)、Android、および iOS 向けのクロスプラットフォーム C# Xamarin アプリケーションを作成します。 デバイスまたはシミュレーターのマイクからの音声を、リアルタイムでテキストに変換します。 このアプリケーションは、Speech SDK NuGet パッケージと Microsoft Visual Studio 2019 を使用して作成します。
 services: cognitive-services
@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: d0d1cfee535a04203d9ff995b94fcad5d432ed3e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ecfdc74c72284da97ebf3107140911e666a3a12d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961191"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818846"
 ---
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、必ず次のことを行ってください。
+開始する前に、以下の操作を行います。
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=xamarin)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=xamarin)
+> * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
 既にこれを行っている場合は、これで完了です。 続けましょう。
 
@@ -135,7 +136,7 @@ ms.locfileid: "73961191"
 
    ![マイクへのアクセス許可要求](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. **[Start Speech recognition]\(音声認識を開始する\)** を選択し、デバイスのマイクに向かって英語のフレーズを話します。 音声が Speech Services に送信されてテキストに文字起こしされ、ウィンドウに表示されます。
+1. **[Start Speech recognition]\(音声認識を開始する\)** を選択し、デバイスのマイクに向かって英語のフレーズを話します。 音声が Speech サービスに送信されてテキストに変換され、ウィンドウに表示されます。
 
    ![音声認識ユーザー インターフェイス](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *

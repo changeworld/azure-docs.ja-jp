@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a536eb89f2040333617329e963ce00f5c6b1ba7a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4026de0b13a143a6bd3905e3d4fbb5071e196c21
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086972"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384226"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM のシステム再起動について
 
@@ -67,7 +67,7 @@ Microsoft Azure のこのクラスの更新では、実行中の VM に関して
 
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>ユーザーが開始した再起動/シャットダウン操作
 
-再起動を Azure Portal、Azure PowerShell、コマンド ライン インターフェイス、または Reset API から実行した場合は、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)でそのイベントを見つけることができます。
+再起動を Azure portal、Azure PowerShell、コマンド ライン インターフェイス、または REST API から実行した場合は、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)でそのイベントを見つけることができます。
 
 VM のオペレーティング システムから操作を実行した場合は、システム ログでそのイベントを見つけることができます。
 

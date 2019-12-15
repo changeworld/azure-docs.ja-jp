@@ -1,5 +1,5 @@
 ---
-title: バッチ文字起こしの使用方法 - Speech Service
+title: バッチ文字起こしの使用方法 - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: バッチ文字起こしは、Azure BLOB などのストレージにある大量の音声を文字起こしする場合に理想的です。 専用の REST API を使用すると、Shared Access Signatures (SAS) URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 101cfacf071292d00556656b0df9c6bf9c15f414
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 2cccd17ce04b3954a7d0720d9ba25bbe792da3b6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515876"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806339"
 ---
 # <a name="why-use-batch-transcription"></a>Batch 文字起こしを使用する理由
 
@@ -28,7 +28,7 @@ ms.locfileid: "69515876"
 Speech Service の他の機能と同様に、[使用開始ガイド](get-started.md)に従って [Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。 ベースライン モデルから文字起こしを取得する場合は、行う必要があるのはキーを作成することだけです。
 
 >[!NOTE]
-> バッチ文字起こしを使用するには、Speech Services の Standard サブスクリプション (S0) が必要です。 Free サブスクリプション キー (F0) は機能しません。 詳細については、[価格と制限](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。
+> バッチ文字起こしを使用するには、音声サービスの Standard サブスクリプション (S0) が必要です。 Free サブスクリプション キー (F0) は機能しません。 詳細については、[価格と制限](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページを参照してください。
 
 ### <a name="custom-models"></a>カスタム モデル
 
@@ -65,7 +65,7 @@ Batch 文字起こし API では、次の形式がサポートされています
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
   "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<locale to us, for example en-US>",
+  "locale": "<locale to use, for example en-US>",
   "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
@@ -96,12 +96,6 @@ Batch 文字起こし API では、次の形式がサポートされています
 
 Batch 文字起こしでは、オーディオの読み取りや、文字起こしのストレージへの書き込みに [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) をサポートしています。
 
-## <a name="webhooks"></a>Webhooks
-
-文字起こし状態のポーリングでは、最も高いパフォーマンスを実現できない場合や、最適なユーザー エクスペリエンスを提供できない場合があります。 状態をポーリングするには、コールバックを登録して、実行時間の長い文字起こしタスクが完了したときにクライアントに通知することができます。
-
-詳細については、「[Webhooks](webhooks.md)」を参照してください。
-
 ## <a name="speaker-separation-diarization"></a>話者の分離 (ダイアライゼーション)
 
 ダイアライゼーションは、音声に含まれる話者を分離するプロセスです。 ダイアライゼーションはバッチ パイプラインによってサポートされ、モノラル チャンネル レコーディングの 2 人の話者を認識できます。
@@ -122,7 +116,7 @@ Batch 文字起こしでは、オーディオの読み取りや、文字起こ�
 }
 ```
 
-単語レベルのタイムスタンプも、上の要求に示されているように、パラメーターとして "有効にする" 必要があります。
+単語レベルのタイムスタンプも、上の要求に示されているように、パラメーターとして "有効にする" 必要があります。 
 
 対応する音声には、番号で識別された話者 (現時点では 2 つの音声のみがサポートされているため、話者は 'Speaker 1' と 'Speaker 2' として識別されます) と、文字起こしの出力が含まれます。
 

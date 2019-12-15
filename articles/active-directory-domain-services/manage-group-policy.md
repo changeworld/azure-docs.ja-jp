@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 894396686a54ed3a685366fcf3e933fa8f03bee8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32020341c7ac3bf33082ba365f053a613dcdffc2
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474530"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705096"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでグループ ポリシーを管理する
 
@@ -53,7 +53,7 @@ Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジ�
 1. **[サーバー マネージャー]** ウィンドウの *[ダッシュボード]* ウィンドウで **[役割と機能の追加]** を選択します。
 1. *[役割と機能の追加]* ウィザードの **[開始する前に]** ページで **[次へ]** を選択します。
 1. *[インストールの種類]* で、 **[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** を選択します。
-1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.contoso.com*) を選択し、 **[次へ]** を選択します。
+1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.aadds.contoso.com*) を選択し、 **[次へ]** を選択します。
 1. **[サーバーの役割]** ページで、 **[次へ]** をクリックします。
 1. **[機能]** ページで、 **[グループ ポリシー管理]** 機能を選択します。
 
@@ -76,7 +76,7 @@ Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジ�
 
 Azure AD DS マネージド ドメインには、*AADDC Computers* コンテナー用と *AADDC Users* コンテナー用の 2 つの組み込みのグループ ポリシー オブジェクト (GPO) があります。 これらの GPO をカスタマイズして、Azure AD DS マネージド ドメイン内で必要に応じてグループ ポリシーを構成することができます。
 
-1. **グループ ポリシー管理**コンソールで、 **[フォレスト: contoso.com]** ノードを展開します。 次に、 **[ドメイン]** ノードを展開します。
+1. **グループ ポリシー管理**コンソールで、 **[フォレスト: aadds.contoso.com]** ノードを展開します。 次に、 **[ドメイン]** ノードを展開します。
 
     *AADDC Computers* と *AADDC Users* には、2 つの組み込みのコンテナーがあります。 これらの各コンテナーには、既定の GPO が適用されています。
 

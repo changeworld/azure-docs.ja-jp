@@ -1,17 +1,17 @@
 ---
-title: ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
+title: ダンプと復元を使用した移行 - Azure Database for MySQL
 description: この記事では、mysqldump、MySQL Workbench、PHPMyAdmin などのツールを使用して、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/02/2018
-ms.openlocfilehash: a2a879ed677b981adcd50aea0468e0c5976c2a8a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.date: 12/02/2019
+ms.openlocfilehash: 65cd5e637434c717ab9ba1b5598c467eea9b4a74
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390544"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770936"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
 この記事では、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
@@ -61,7 +61,7 @@ $ mysqldump --opt -u [uname] -p[pass] [dbname] > [backupfile.sql]
 指定するパラメーターは次のとおりです。
 - [uname]: データベースのユーザー名 
 - [pass]: データベースのパスワード (-p とパスワードの間にスペースがありません) 
-- [dbname]: データベースの名前 
+- [dbname]­: データベースの名前 
 - [backupfile.sql]: データベース バックアップのファイル名 
 - [--opt]: mysqldump オプション 
 

@@ -1,23 +1,16 @@
 ---
-title: Linux 上の Ruby (Rails) と Postgres - Azure App Service | Microsoft Docs
-description: Ruby アプリを Azure で動作させて、Azure の PostgreSQL データベースに接続する方法について説明します。 このチュートリアルでは Rails を使用します。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-ms.service: app-service-web
-ms.workload: web
+title: チュートリアル:Linux Ruby アプリと Postgres
+description: Linux Ruby アプリを Azure App Service で動作させて、Azure の PostgreSQL データベースに接続する方法について説明します。 このチュートリアルでは Rails を使用します。
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3ec19b1c564c09406ab1f29c38aef6332d80f8f1
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 6af9da060f7742fe2a9b9656199edd5feb67bec1
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544690"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687407"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres のアプリを構築する
 
@@ -125,7 +118,7 @@ Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と�
 
 [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) コマンドを使用して、PostgreSQL サーバーを作成します。
 
-Cloud Shell で次のコマンドを実行します。*\<postgres-server-name>* プレースホルダーは一意のサーバー名で置き換えてください。 このサーバー名は、Azure のすべてのサーバーで一意である必要があります。 
+Cloud Shell で次のコマンドを実行します。 *\<postgres-server-name>* プレースホルダーは一意のサーバー名で置き換えてください。 このサーバー名は、Azure のすべてのサーバーで一意である必要があります。 
 
 ```azurecli-interactive
 az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres-server-name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2

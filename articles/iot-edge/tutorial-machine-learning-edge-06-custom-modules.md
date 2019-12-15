@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:カスタム モジュールの作成とデプロイ - Azure IoT Edge での Machine Learning
-description: チュートリアル:機械学習モデルを使用してリーフ デバイスからのデータを処理する IoT Edge モジュールを作成およびデプロイした後、その分析情報を IoT Hub に送信します。
+description: このチュートリアルでは、機械学習モデルを使用してリーフ デバイスからのデータを処理する IoT Edge モジュールを作成およびデプロイした後、その分析情報を IoT Hub に送信します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7bfe620510d5ff88a20c518be1f4dd1fb422daa2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106548"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701842"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>チュートリアル:カスタム IoT Edge モジュールの作成とデプロイ
 

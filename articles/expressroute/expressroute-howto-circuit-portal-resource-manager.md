@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7327031a7cd05674e9823f21601aab34c859f540
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 686ac8013879eff8adc4476d56119bbb4a169900
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423569"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74813161"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>チュートリアル:ExpressRoute 回線の作成と変更
 
@@ -45,9 +45,12 @@ ms.locfileid: "74423569"
 > [!IMPORTANT]
 > ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行します。
 
-1. 新しいリソースを作成するオプションを選択して、ExpressRoute 回線を作成できます。 次の図に示すように、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[ExpressRoute]** をクリックします。
+新しいリソースを作成するオプションを選択して、ExpressRoute 回線を作成できます。 
 
-   ![ExpressRoute 回線の作成](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。 次の図に示すように、 **[ネットワーク]**  >  **[ExpressRoute]** を選択します。
+
+   ![ExpressRoute 回線の作成](./media/expressroute-howto-circuit-portal-resource-manager/create-an-expressroute-circuit.png)
+
 2. **[ExpressRoute]** をクリックすると、 **[ExpressRoute 回線の作成]** ページが表示されます。 このページで値を入力するときは、正しい SKU レベル (Standard または Premium) とデータ計測課金モデル (無制限または従量制) を指定してください。
 
    ![SKU レベルとデータ計測方法の構成](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
@@ -146,7 +149,7 @@ ExpressRoute 回線の特定のプロパティは、接続に影響を与える�
 
 ExpressRoute 回線を変更するには、 **[構成]** をクリックします。
 
-![回線の変更](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
+![回線の変更](./media/expressroute-howto-circuit-portal-resource-manager/modify-circuit-configuration.png)
 
 ## <a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
 

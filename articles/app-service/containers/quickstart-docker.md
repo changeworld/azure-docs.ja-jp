@@ -1,19 +1,18 @@
 ---
-title: Linux に Docker アプリをデプロイする - Azure App Service
-description: Azure App Service for Linux に Docker イメージをデプロイする方法
-author: msangapu
+title: クイック スタート:カスタム Linux コンテナーを実行する
+description: Azure コンテナー レジストリを使用して初めてのカスタム コンテナーをデプロイして、Azure App Service での Linux コンテナーの使用を開始します。
+author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.service: app-service
-ms.openlocfilehash: 2a7dc477b4cd0be0c50569d84e10cfe1d666eac9
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 14ea5444d3d8827919405a4d5aa8a176746c2e72
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392701"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688959"
 ---
-# <a name="deploy-to-azure-using-docker"></a>Docker を使用して Azure にデプロイする
+# <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Azure App Service にカスタム Linux コンテナーをデプロイする
 
 App Service on Linux は、事前定義済みのアプリケーション スタックを Linux 上で提供し、.NET、PHP、Node.js などの言語をサポートします。 まだ Azure で定義されていないアプリケーション スタックで Web アプリを実行する場合にも、カスタム Docker イメージを使用できます。 このクイックスタートでは、[Azure Container Registry](/azure/container-registry) (ACR) から App Service にイメージをデプロイする方法について説明します。
 

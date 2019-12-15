@@ -1,21 +1,15 @@
 ---
-title: Azure Blockchain Workbench SQL DB ファイアウォールを構成する
-description: Azure Blockchain Workbench Preview SQL DB ファイアウォールを構成する方法を説明します。
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Workbench データベース ファイアウォールを構成する
+description: 外部クライアントおよびアプリケーションの接続を許可するように Azure Blockchain Workbench Preview データベース ファイアウォールを構成する方法について説明します。
 ms.date: 09/09/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: 0153065ca0ccd6cf34456d630d7437d5ea7c5b48
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e6739b7ead9299f020465d3c50ed01826334ca76
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845218"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325999"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Azure Blockchain Workbench データベース ファイアウォールを構成する
 

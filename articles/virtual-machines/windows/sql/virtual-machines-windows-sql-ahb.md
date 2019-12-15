@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 08/05/2019
+ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aac20034fb4a528e48d5b383f39205a952878539
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0aa2cbad75319de93c34128a09f94971e5c70216
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900689"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790616"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Azure での SQL Server 仮想マシンのライセンス モデルを変更する
 この記事では、新しい SQL VM リソース プロバイダーである **Microsoft.SqlVirtualMachine** を使用して Azure 内の SQL Server 仮想マシン (VM) のライセンス モデルを変更する方法について説明します。
@@ -36,17 +36,18 @@ Microsoft 製品の利用規約に従って、"お客様は、Azure 上でワー
 Azure VM 上の SQL Server 向け Azure ハイブリッド特典を使用していることと、準拠していることを示すには、次の 3 つのオプションがあります。
 
 - Azure Marketplace からのライセンス持ち込み SQL Server イメージを使用して、仮想マシンをプロビジョニングします。 このオプションは、マイクロソフト エンタープライズ契約を結んでいるお客様のみが利用できます。
-- Azure Marketplace からの従量課金制の SQL Server イメージを使用して仮想マシンをプロビジョニングし、Azure ハイブリッド特典をアクティブにします。
-- Azure VM に SQL Server をセルフインストールし、手動で [SQL Server VM を登録](virtual-machines-windows-sql-register-with-resource-provider.md)して、Azure ハイブリッド特典をアクティブにします。
+- Azure Marketplace からの従量課金制の SQL Server イメージを使用して、仮想マシンをプロビジョニングし、Azure ハイブリッド特典をアクティブにします。
+- Azure VM に SQL Server をセルフインストールし、手動で [SQL Server VM を登録](virtual-machines-windows-sql-register-with-resource-provider.md) をして、Azure ハイブリッド特典をアクティブにします。
 
-SQL Server のライセンスの種類は、VM がプロビジョニングされるときに設定されます。 これは後でいつでも変更できます。 ライセンス モデル間の切り替えを行っても、ダウンタイムは発生せず、VM は再起動されず、追加のコストは発生せず、ただちに有効となります。 実際には、Azure ハイブリッド特典をアクティブにするとコストが*削減*されます。
+SQL Server のライセンスの種類は、VM がプロビジョニングされるときに設定されます。 これは後でいつでも変更できます。 ライセンス モデル間の切り替えを行っても、ダウンタイムは発生せず、VM や SQL Serverサービスが再起動されたり、追加コストが追加されることもなく、すぐに有効になります。 実際には、Azure ハイブリッド特典をアクティブにするとコストが*削減*されます。
 
 ## <a name="prerequisites"></a>前提条件
 
-SQL VM リソース プロバイダーを利用するには、SQL Server IaaS 拡張機能が必要です。 そのため、次のものが必要です。
+SQL Server VM のライセンスモデルを変更するには、次の要件があります。 
+
 - [Azure サブスクリプション](https://azure.microsoft.com/free/)。
-- [ソフトウェア アシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)。 
 - [SQL VM リソース プロバイダー](virtual-machines-windows-sql-register-with-resource-provider.md)に登録された [SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。
+- [ソフトウェアアシュアランス](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) は、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用するための要件です。 
 
 
 ## <a name="change-the-license-for-vms-already-registered-with-the-resource-provider"></a>リソース プロバイダーに既に登録されている VM のライセンスを変更する 
@@ -94,29 +95,16 @@ PowerShell を使用して、ご利用のライセンス モデルを変更で�
 
 ```powershell-interactive
 # Switch your SQL Server VM license from pay-as-you-go to bring-your-own
-#example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
-$SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
-$SqlVm.Properties.sqlServerLicenseType="AHUB"
-<# the following code snippet is only necessary if using Azure Powershell version > 4
-$SqlVm.Kind= "LicenseChange"
-$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
-$SqlVm | Set-AzResource -Force 
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType AHUB
 ```
 
 次のコード スニペットは、BYOL モデルを従量課金制に切り替えます。
 
 ```powershell-interactive
 # Switch your SQL Server VM license from bring-your-own to pay-as-you-go
-#example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
-$SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
-$SqlVm.Properties.sqlServerLicenseType="PAYG"
-<# the following code snippet is only necessary if using Azure Powershell version > 4
-$SqlVm.Kind= "LicenseChange"
-$SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-$SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new() #>
-$SqlVm | Set-AzResource -Force 
+Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -LicenseType PAYG
 ```
+
 ---
 
 ## <a name="change-the-license-for-vms-not-registered-with-the-resource-provider"></a>リソース プロバイダーに登録されていない VM 用のライセンスを変更する
@@ -137,44 +125,29 @@ SQL Server VM が SQL VM リソースプロバイダーに登録されている�
 
 ## <a name="limitations"></a>制限事項
 
-- ライセンス モデルの変更は、ソフトウェア アシュアランスをお持ちのお客様のみご利用いただけます。
-- ライセンス モデルの変更は、SQL Server の Standard エディションおよび Enterprise エディションでのみサポートされています。 Express、Web、および Developer でのライセンスの変更はサポートされていません。 
-- ライセンス モデルの変更は、Azure Resource Manager モデルを介してデプロイされた仮想マシンに対してのみサポートされます。 クラシック モデルを介してデプロイされた VM はサポートされません。 ご利用の VM をクラシック モデルから Resource Manager モデルに移行し、SQL VM リソース プロバイダーに登録することができます。 VM を SQL VM リソース プロバイダーに登録したら、VM に対してライセンス モデルを変更できるようになります。
-- ライセンス モデルの変更は、パブリック クラウドのインストールの場合にのみ有効です。
-- ライセンス モデルの変更は、1 つの NIC (ネットワーク インターフェイス) を持つ仮想マシンでのみサポートされます。 複数の NIC を持つ仮想マシンでは、手順を実行する前に、まず (Azure portal を使用して) NIC の 1 つを削除する必要があります。 そうしないと、次のようなエラーが表示されます。 
-   
-  `The virtual machine '\<vmname\>' has more than one NIC associated.` 
-   
-  ライセンス モードを変更した後に NIC を再び VM に追加できる可能性はありますが、Azure portal の SQL Server 構成ページを介して実行された操作は、自動パッチや自動バックアップと同様に、サポートされているとは見なされなくなります。
+ライセンスモデルの変更は次のとおりです。
+   - [ソフトウェアアシュアランス](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview) をお持ちのお客様のみご利用いただけます。
+   - SQL Server の Standard および Enterprise エディションでのみサポートされています。 Express、Web、Developer のライセンス変更はサポートされていません。 
+   - Azure Resource Manager モデルを介してデプロイされた仮想マシンでのみサポートされます。 クラシック モデルを介してデプロイされた仮想マシンはサポートされていません。 
+   - パブリッククラウドのインストールでのみ使用できます。 
+   - 1 つのネットワークインターフェイス (NIC) を持つ仮想マシンでのみサポートされます。 
+
 
 ## <a name="known-errors"></a>既知のエラー
 
 ### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found"></a>リソース 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' が見つかりませんでした。
+
 このエラーは、SQL Server VM 上で SQL VM リソース プロバイダーに登録されていないライセンス モデルを変更しようとしたときに発生します。
 
 `The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/\<resource-group>' under resource group '\<resource-group>' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set.`
 
 リソース プロバイダーをサブスクリプションに登録してから、[そのリソース プロバイダーにご利用の SQL Server VM を登録する](virtual-machines-windows-sql-register-with-resource-provider.md)必要があります。 
 
-### <a name="cannot-validate-argument-on-parameter-sku"></a>パラメーター 'Sku' の引数を検証できない
-バージョン 4.0 より後の Azure PowerShell を使用して SQL Server VM のライセンス モデルを変更しようとすると、このエラーが発生することがあります。
 
-`Set-AzResource: Cannot validate argument on parameter 'Sku'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.`
+## <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>仮想マシン「\<VMName\>」に複数の NIC が関連付けられています
 
-このエラーを解決するには、ライセンス モデルを切り替えるときに、前に説明した PowerShell コード スニペットの以下の行のコメントを解除します。
+このエラーは、複数の NIC を持つ仮想マシンで発生します。 ライセンスモデルを変更する前に、いずれかの NIC を削除します。 ライセンスモデルを変更した後に NIC を VM に再び追加することはできますが、自動バックアップや修正プログラム適用などの Azure portal の操作はサポートされなくなります。 
 
-  ```powershell-interactive
-  # the following code snippet is necessary if using Azure Powershell version > 4
-  $SqlVm.Kind= "LicenseChange"
-  $SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
-  $SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new()
-  ```
-  
-Azure PowerShell のバージョンを確認するには、次のコードを使用します。
-  
-  ```powershell-interactive
-  Get-Module -ListAvailable -Name Azure -Refresh
-  ```
 
 ## <a name="next-steps"></a>次の手順
 

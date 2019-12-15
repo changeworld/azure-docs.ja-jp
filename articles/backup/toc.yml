@@ -56,6 +56,8 @@
           href: backup-support-matrix-mars-agent.md
         - name: SAP HANA バックアップのサポート マトリックス
           href: sap-hana-backup-support-matrix.md
+        - name: Azure Policy 向けにサポートされる VM SKU
+          href: backup-azure-policy-supported-skus.md
     - name: セキュリティ
       items:
         - name: ロールベースのアクセス制御
@@ -174,6 +176,10 @@
               href: backup-azure-vms-encryption.md
             - name: 暗号化された VM の Key Vault のキーとシークレットを復元する
               href: backup-azure-restore-key-secret.md
+    - name: Azure Backup 用に組み込まれた Azure Policy
+      items:
+        - name: Azure Policy を使用して VM 作成時のバックアップを自動的に有効にする
+          href: backup-azure-auto-enable-backup.md
     - name: Recovery Services コンテナーの診断イベント
       items:
         - name: Recovery Services コンテナーの診断設定を使用する
@@ -216,6 +222,8 @@
       items:
         - name: Recovery Services コンテナーの作成
           href: backup-azure-arm-userestapi-createorupdatevault.md
+        - name: Recovery Services コンテナーの構成の更新
+          href: use-restapi-update-vault-properties.md
         - name: バックアップ ポリシーの作成と更新
           href: backup-azure-arm-userestapi-createorupdatepolicy.md
         - name: Azure VM のバックアップ
@@ -244,6 +252,8 @@
           href: sap-hana-db-manage.md
     - name: Windows Server
       items:
+        - name: MARS エージェントについて
+          href: backup-azure-about-mars.md
         - name: Windows Server のファイルとフォルダーのバックアップ
           href: backup-configure-vault.md
         - name: Windows Server のシステム状態のバックアップ

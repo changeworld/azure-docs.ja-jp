@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 11/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 9e32715766734bcbb150d70aeed2dc5b06a4bcbb
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 8457f1c0c5b6107c4b44f6f00236a33f7c67452a
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614464"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325436"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Azure Kubernetes Service (AKS) ロード バランサーで静的 IP アドレスを使用する
 
@@ -26,40 +26,31 @@ ms.locfileid: "67614464"
 
 また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
 
-現在は *Basic IP の SKU* のみがサポートされています。 *Standard IP* リソース SKU をサポートするように取り組んでいます。 詳しくは、「[Azure における IP アドレスの種類と割り当て方法][ip-sku]」をご覧ください。
+この記事では、*Standard* SKU IP を *Standard* SKU ロード バランサーと共に使用する方法について説明します。 詳しくは、「[Azure における IP アドレスの種類と割り当て方法][ip-sku]」をご覧ください。
 
 ## <a name="create-a-static-ip-address"></a>静的 IP アドレスを作成する
 
-AKS で使用する静的パブリック IP アドレスを作成する場合、その IP アドレスのリソースは**ノード** リソース グループ内に作成する必要があります。 これらのリソースを分離する場合は、後述のセクション (「[ノード リソース グループの外で静的 IP アドレスを使用する](#use-a-static-ip-address-outside-of-the-node-resource-group)」) をご覧ください。
-
-まず、[az aks show][az-aks-show] コマンドを使用してノード リソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します。 次の例では、リソース グループ名 *myResourceGroup* にある AKS クラスター名のノード リソース グループ *myAKSCluster* を取得しています｡
-
-```azurecli-interactive
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
-
-MC_myResourceGroup_myAKSCluster_eastus
-```
-
-次に、[az network public-ip create][az-network-public-ip-create] コマンドを使用して、静的パブリック IP アドレスを作成します。 上記コマンドで取得したノードのリソース グループ名を指定して､その IP アドレス リソースに対して､*myAKSPublicIP* などの名前を指定します｡
+[az network public-ip create][az-network-public-ip-create] コマンドを使用して、静的パブリック IP アドレスを作成します。 以下では、*myResourceGroup* リソース グループに *myAKSPublicIP* という名前の静的 IP リソースを作成します。
 
 ```azurecli-interactive
 az network public-ip create \
-    --resource-group MC_myResourceGroup_myAKSCluster_eastus \
+    --resource-group myResourceGroup \
     --name myAKSPublicIP \
+    --sku Standard \
     --allocation-method static
 ```
+
+> [!NOTE]
+> AKS クラスターで *Basic* SKU ロード バランサーを使用している場合は、パブリック IP を定義するときに *sku* パラメーターに *Basic* を使用します。 *Basic* SKU IP のみが *Basic* SKU ロード バランサーで動作し、*Standard* SKU IP のみが *Standard* SKU ロード バランサーで動作します。 
 
 次の出力例 (一部) に見られるように IP アドレスが表示されます。
 
 ```json
 {
   "publicIp": {
-    "dnsSettings": null,
-    "etag": "W/\"6b6fb15c-5281-4f64-b332-8f68f46e1358\"",
-    "id": "/subscriptions/<SubscriptionID>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/Microsoft.Network/publicIPAddresses/myAKSPublicIP",
-    "idleTimeoutInMinutes": 4,
+    ...
     "ipAddress": "40.121.183.52",
-    [...]
+    ...
   }
 }
 ```
@@ -67,47 +58,23 @@ az network public-ip create \
 このパブリック IP アドレスは､後で [az network public ip list][az-network-public-ip-list] コマンドを使用して取得することができます。 次の例に示すように、ノードのリソース グループ名と作成したパブリック IP を指定して、*ipAddress* に対するクエリを指定します。
 
 ```azurecli-interactive
-$ az network public-ip show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --query ipAddress --output tsv
+$ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
 
 40.121.183.52
 ```
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>静的 IP アドレスを使用してサービスを作成する
 
-静的パブリック IP アドレスを使用してサービスに作成するには､YAML マニフェストに `loadBalancerIP` プロパティと静的パブリック IP の値を追加します｡ `load-balancer-service.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 以前の手順で作成した独自のパブリック IP アドレスを指定します。
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-load-balancer
-spec:
-  loadBalancerIP: 40.121.183.52
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: azure-load-balancer
-```
-
-`kubectl apply` コマンドを使用して、サービスとデプロイを作成します。
-
-```console
-kubectl apply -f load-balancer-service.yaml
-```
-
-## <a name="use-a-static-ip-address-outside-of-the-node-resource-group"></a>ノード リソース グループの外で静的 IP アドレスを使用する
-
-Kubernetes 1.10 以降に対しては、ノード リソース グループの外で作成された静的 IP アドレスを使用することができます。 次の例に示すように、AKS クラスターで使用されるサービス プリンシパルには、該当する他のリソース グループへの委任されたアクセス許可が含まれている必要があります。
+サービスを作成する前に、AKS クラスターで使用されるサービス プリンシパルに、該当する他のリソース グループへの委任されたアクセス許可が含まれていることを確認してください。 例:
 
 ```azurecli-interactive
-az role assignment create\
+az role assignment create \
     --assignee <SP Client ID> \
-    --role "Network Contributor" \
+    --role "Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-ノード リソース グループの外で IP アドレスを使用するには、Service 定義に注釈を追加します。 次の例では、*myResourceGroup* という名前のリソース グループに注釈が設定されています。 次の独自のリソース グループ名を指定します。
+静的パブリック IP アドレスを使用して *LoadBalancer* サービスを作成するには､YAML マニフェストに `loadBalancerIP` プロパティと静的パブリック IP の値を追加します｡ `load-balancer-service.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 以前の手順で作成した独自のパブリック IP アドレスを指定します。 次の例では、*myResourceGroup* という名前のリソース グループに注釈も設定されます。 次の独自のリソース グループ名を指定します。
 
 ```yaml
 apiVersion: v1
@@ -123,6 +90,12 @@ spec:
   - port: 80
   selector:
     app: azure-load-balancer
+```
+
+`kubectl apply` コマンドを使用して、サービスとデプロイを作成します。
+
+```console
+kubectl apply -f load-balancer-service.yaml
 ```
 
 ## <a name="troubleshoot"></a>トラブルシューティング

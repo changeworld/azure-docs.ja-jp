@@ -17,8 +17,6 @@
   items:
     - name: 一般的な条件付きアクセス ポリシー
       href: concept-conditional-access-policy-common.md
-    - name: セキュリティの既定値
-      href: concept-conditional-access-security-defaults.md
     - name: 条件付きアクセス ポリシーのコンポーネント
       href: concept-conditional-access-policies.md
     - name: 条件
@@ -80,8 +78,6 @@
       href: howto-conditional-access-session-lifetime.md
     - name: クラシック ポリシーを移行する
       href: policy-migration-mfa.md
-    - name: 条件付きアクセスの導入
-      href: howto-conditional-access-adoption-kit.md
     - name: トラブルシューティング
       items:
         - name: What If ツールを使用したトラブルシューティング

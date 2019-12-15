@@ -1,7 +1,7 @@
 ---
 title: Android で Speech SDK を使用してコーデック圧縮オーディオをストリーミングする
 titleSuffix: Azure Cognitive Services
-description: Android で Speech SDK を使用して圧縮オーディオを Azure Speech Services にストリーミングする方法について学習します。
+description: Android で Speech SDK を使用して圧縮オーディオを Speech Service にストリーミングする方法について学習します。
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109903"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805843"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>方法:Android で Speech SDK を使用してコーデック圧縮オーディオ入力を使用する
 
-Speech SDK の**圧縮オーディオ入力ストリーム** API では、PullStream または PushStream を使用して、圧縮オーディオを Speech サービスにストリーミングできます。
+Speech SDK の**圧縮オーディオ入力ストリーム** API では、PullStream または PushStream を使用して、圧縮オーディオを Speech Service にストリーミングできます。
 
 > [!IMPORTANT]
 > 現在、圧縮入力オーディオのストリーミングは、[Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9) では C++、C#、Java](how-to-use-codec-compressed-audio-input-streams.md) でサポートされています。 また、Android では Java、[iOS プラットフォームでは Objective-C](how-to-use-codec-compressed-audio-input-streams-ios.md) でもサポートされています。
@@ -133,7 +133,7 @@ ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=armeab
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>コーデック圧縮オーディオ入力を使用するコード例
 
-圧縮オーディオ形式で Speech サービスにストリーミングするには、`PullAudioInputStream` または `PushAudioInputStream` を作成します。 次に、ストリームの圧縮形式を指定して、ストリーム クラスのインスタンスから `AudioConfig` を作成します。
+圧縮オーディオ形式で Speech Service にストリーミングするには、`PullAudioInputStream` または `PushAudioInputStream` を作成します。 次に、ストリームの圧縮形式を指定して、ストリーム クラスのインスタンスから `AudioConfig` を作成します。
 
 `myPullStream` という入力ストリーム クラスがあり、OPUS/OGG を使用しているものと想定します。 コードは次のようになります。
 

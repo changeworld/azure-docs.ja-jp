@@ -1,26 +1,17 @@
 ---
-title: ポータルでアプリを構成する - Azure App Service
-description: Azure portal で App Service アプリの一般的な設定を構成する方法について説明します。
+title: ポータルでアプリを構成する
+description: Azure portal で App Service アプリの一般的な設定を構成する方法について説明します。 アプリの設定、接続文字列、プラットフォーム、言語スタック、コンテナーなど
 keywords: Azure App Service、Web アプリ、アプリ設定、環境変数
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c22f88487fd8b34d48d3012c706bb0415760b21e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470944"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671964"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal で App Service アプリを構成する
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Multi-Factor Auth プロバイダーをいつどのように使用するか - Azure Active Directory
+title: Azure Multi-Factor 認証プロバイダー - Azure Active Directory
 description: どのようなときに Azure MFA 認証プロバイダーを使用するかについて説明します。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 399fccf9aaaeb9e252527e80a6549ee286bb1898
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 57ac23bbb0465be2f15e0a35bb4fd7c331e83988
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369350"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848716"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Multi-Factor Authentication プロバイダーをいつ使用するか
 

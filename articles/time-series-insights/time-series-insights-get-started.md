@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc3f21c95ad6f4bb033336018dddb9e966e9cc9a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: cc99b469701b3974a5b8a2f235ee3a9edb798368
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006900"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790221"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>Azure Portal で新しい Time Series Insights 環境を作成する
 
@@ -34,13 +34,13 @@ Time Series Insights では、Azure IoT Hub や Event Hubs に送信されたデ
 
 1. **[モノのインターネット]** カテゴリを選択し、 **[Time Series Insights]** を選択します。
 
-   [![Time Series Insights 環境の作成](media/time-series-insights-get-started/1-new-tsi.png)](media/time-series-insights-get-started/1-new-tsi.png#lightbox))
+   [![Time Series Insights 環境の作成](media/time-series-insights-get-started/tsi-create-new-environment.png)](media/time-series-insights-get-started/tsi-create-new-environment.png#lightbox)
 
 1. **[Time Series Insights]** ページで、 **[作成]** を選択します。
 
 1. 必要なパラメーターを入力します。 次の表に各パラメーターを示します。
    
-   [![Time Series Insights リソース グループの作成](media/time-series-insights-get-started/2-create-tsi.png)](media/time-series-insights-get-started/2-create-tsi.png#lightbox)
+   [![Time Series Insights リソース グループの作成](media/time-series-insights-get-started/tsi-configure-and-create.png)](media/time-series-insights-get-started/tsi-configure-and-create.png#lightbox)
    
    Setting|推奨値|説明
    ---|---|---
@@ -55,13 +55,13 @@ Time Series Insights では、Azure IoT Hub や Event Hubs に送信されたデ
 
 1. デプロイ プロセスを監視するために、 **[通知]** シンボル (ベルのアイコン) をクリックします。
 
-   [![通知の確認](media/time-series-insights-get-started/3-notifications.png)](media/time-series-insights-get-started/3-notifications.png#lightbox)
+   [![通知の確認](media/time-series-insights-get-started/tsi-deploy-notifications.png)](media/time-series-insights-get-started/tsi-deploy-notifications.png#lightbox)
 
-    デプロイが成功したら、 **[リソースに移動]** を選択して、他のプロパティの構成、データ アクセス ポリシーによるセキュリティの設定、イベント ソースの追加などの操作を行うことができます。
+1. リソースの **[概要]** で、デプロイの構成を確認します。
 
-1. 今後はリソースの **[概要]** で、右上隅にある**ピン アイコン**を選択すると、Time Series Insights 環境に簡単にアクセスできます。
+   [![Time Series Insights の作成の [ダッシュボードにピン留めする]](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
 
-   [![Time Series Insights の作成の [ダッシュボードにピン留めする]](media/time-series-insights-get-started/4-pin-create.png)](media/time-series-insights-get-started/4-pin-create.png#lightbox)
+1. **(オプション)** 右上隅にある**ピン アイコン**を選択すると、Time Series Insights 環境に簡単にアクセスできます。
 
 ## <a name="next-steps"></a>次の手順
 

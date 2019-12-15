@@ -1,5 +1,5 @@
 ---
-title: Azure CLI スクリプト - Azure Database for MariaDB サーバーの復元
+title: CLI スクリプト - サーバーを復元する - Azure Database for MariaDB
 description: この Azure CLI サンプル スクリプトでは、Azure Database for MariaDB サーバーとそのデータベースを過去の特定の時点に復元する方法を示します。
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 11/28/2018
-ms.openlocfilehash: 2d294f5b43ba3fb7587ca1d03903e39d75291754
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 12/02/2019
+ms.openlocfilehash: d7591c4f88026644ee2453150cfa226a155ab32d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171345"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771707"
 ---
 # <a name="restore-an-azure-database-for-mariadb-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for MariaDB サーバーを復元する
 この CLI サンプル スクリプトでは、単一の Azure Database for MariaDB サーバーを過去の特定の時点に復元します。

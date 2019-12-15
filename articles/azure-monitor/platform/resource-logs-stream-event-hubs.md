@@ -1,6 +1,6 @@
 ---
 title: Azure リソース ログをイベント ハブにストリーミングする
-description: Azure リソース ログをイベント ハブにストリーミングする方法について説明します。
+description: サードパーティ製の SIEM やその他のログ分析ソリューションなどの外部システムにデータを送信するイベント ハブに、Azure リソース ログをストリーミングする方法について説明します。
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 1d7a533658b6c72caae9649d7e5a9c4fad117245
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 680570c5102f656b2b2d2e05f9e08f51fe892f44
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262994"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304945"
 ---
 # <a name="stream-azure-resource-logs-to-azure-event-hubs"></a>Azure リソース ログを Azure Event Hubs にストリーミングする
 Azure の[リソース ログ](resource-logs-overview.md)からは、Azure リソースの内部操作で頻繁に見られるデータが豊富に提供されます。 この記事では、サードパーティ製の SIEM やその他のログ分析ソリューションなどの外部システムにデータを送信するイベント ハブに、リソース ログをストリーミングする方法について説明します。

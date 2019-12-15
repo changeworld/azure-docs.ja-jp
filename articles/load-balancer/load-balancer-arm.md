@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager による Load Balancer のサポート | Microsoft Docs
-description: Azure Resource Manager で Load Balancer に PowerShell を使用します。 ロード バランサーにテンプレートを使用します。
+title: Azure Resource Manager による Load Balancer のサポート
+description: この記事では、Azure Load Balancer で Azure PowerShell とテンプレートを使用します
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -9,16 +9,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 839b607b7787d51151401737848a46d7b66229dd
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 57a60a65dee995695224aa1b451e848ea8768ab1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275482"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215385"
 ---
-# <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Azure Load Balancer での Azure Resource Manager のサポートの使用
+# <a name="azure-resource-manager-support-with-azure-load-balancer"></a>Azure Load Balancer での Azure Resource Manager のサポート
 
 
 
@@ -29,8 +29,8 @@ Azure Resource Manager は、Azure のサービスの優先管理フレームワ
 Resource Manager を使用する場合、Azure Load Balancer には次の子リソースが含まれています。
 
 * フロントエンド IP 構成: ロード バランサーには、仮想 IP (VIP) とも呼ばれる 1 つ以上のフロントエンド IP アドレスを含めることができます。 これらの IP アドレスは、受信トラフィック用として機能します。
-* バックエンド アドレス プール: 負荷分散先の仮想マシンのネットワーク インターフェイス カード (NIC) に関連付けられた IP アドレスです。
-* 負荷分散規則: 規則のプロパティでは、特定のフロントエンド IP とポートの組み合わせを、一連のバックエンド IP アドレスとポートの組み合わせにマップします。 1 つのロード バランサーで複数の負荷分散規則を使用できます。 各規則は、VM に関連付けられた、フロントエンド IP/ポートとバックエンド IP/ポートの組み合わせです。
+* バックエンド アドレス プール: このプールは、負荷分散先の仮想マシンのネットワーク インターフェイス カード (NIC) に関連付けられた IP アドレスのコレクションです。
+* 負荷分散規則: 規則のプロパティでは、特定のフロントエンド IP とポートの組み合わせが、一連のバックエンド IP アドレスとポートの組み合わせにマップされます。 1 つのロード バランサーで複数の負荷分散規則を使用できます。 各規則は、VM に関連付けられた、フロントエンド IP/ポートとバックエンド IP/ポートの組み合わせです。
 * プローブ: プローブを使用すると、VM インスタンスの正常性を追跡できます。 正常性プローブが失敗した場合、VM インスタンスは自動的にローテーションから除外されます。
 * インバウンド NAT 規則: フロントエンド IP を通過し、バックエンド IP に配信されるインバウンド トラフィックを定義する NAT 規則です。
 
@@ -40,7 +40,17 @@ Resource Manager を使用する場合、Azure Load Balancer には次の子リ�
 
 Azure リソース マネージャーでは、宣言型のテンプレートを使用してアプリケーションをプロビジョニングすることができます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
 
-テンプレートには、Virtual Machines、Virtual Network、可用性セット、ネットワーク インターフェイス (NIC)、ストレージ アカウント、Load Balancer、ネットワーク セキュリティ グループ、パブリック IP の定義を含めることができます。 テンプレートを使用して、複雑なアプリケーションに必要なあらゆるものを作成できます。 テンプレート ファイルは、バージョン管理とコラボレーション用のコンテンツ管理システムにチェックインできます。
+テンプレートには、次の定義を含めることができます。
+* **仮想マシン**
+* **仮想ネットワーク**
+* **可用性セット**
+* **ネットワーク インターフェイス (NIC)**
+* **ストレージ アカウント**
+* **ロード バランサー**
+* **ネットワーク セキュリティ グループ**
+* **パブリック IP。** 
+
+テンプレートを使用して、複雑なアプリケーションに必要なあらゆるものを作成できます。 テンプレート ファイルは、バージョン管理とコラボレーション用のコンテンツ管理システムにチェックインできます。
 
 [テンプレートの詳細](../azure-resource-manager/resource-manager-template-walkthrough.md)
 
@@ -65,6 +75,6 @@ Azure Resource Manager コマンドレット、コマンド ライン ツール�
 
 ## <a name="next-steps"></a>次の手順
 
-[インターネットに接続するロード バランサーの作成を開始](load-balancer-get-started-internet-arm-ps.md)し、特定のロード バランサーのネットワーク トラフィックの動作に適した種類の[分散モード](load-balancer-distribution-mode.md)を構成することもできます。
+[インターネットに接続するロード バランサーの作成を開始](load-balancer-get-started-internet-arm-ps.md)し、特定のネットワーク トラフィックの動作に適した種類の[分散モード](load-balancer-distribution-mode.md)を構成します。
 
-[ロード バランサーの TCP アイドル タイムアウト設定](load-balancer-tcp-idle-timeout.md)を管理する方法を確認します。 これは、ロード バランサーの背後にあるサーバーに対してアプリケーションの接続を維持する必要がある場合に重要となります。
+[ロード バランサーの TCP アイドル タイムアウト設定](load-balancer-tcp-idle-timeout.md)を管理する方法を確認します。 これらの設定は、ロード バランサーの内側にあるサーバーに対してアプリケーションの接続を維持する必要がある場合に重要です。

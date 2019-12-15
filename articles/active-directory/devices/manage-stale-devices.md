@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e92ca85c485f8c93fc9202b9084ec37d7506e1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175051"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538799"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>方法:Azure AD で古いデバイスを管理する
 
@@ -30,7 +30,7 @@ ms.locfileid: "73175051"
 古いデバイスとは、Azure AD に登録されているものの、一定の期間にわたってクラウド アプリへのアクセスに使用されていないデバイスです。 古いデバイスは、次の理由により、テナント内のデバイスとユーザーを管理およびサポートする能力に影響を及ぼします。 
 
 - デバイスが重複していると、どのデバイスが現在アクティブであるかをヘルプデスクのスタッフが識別することが難しくなる可能性があります。
-- デバイスの数が増えると、不要なデバイス ライトバックが発生し、AAD 接続同期の時間が長くなります。
+- デバイスの数が増えると、不要なデバイス ライトバックが発生し、Azure AD 接続同期の時間が長くなります。
 - 一般的な衛生学として、またコンプライアンスを満たすために、クリーンな状態のデバイスが必要です。 
 
 Azure AD 内の古いデバイスは、組織内のデバイスの一般的なライフサイクル ポリシーに干渉する可能性があります。

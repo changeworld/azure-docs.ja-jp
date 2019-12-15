@@ -82,7 +82,11 @@
         - name: セキュリティの概要
           href: overview-security.md
     - name: ネットワーク機能
-      href: networking-features.md
+      items:
+        - name: 概要
+          href: networking-features.md
+        - name: Application Gateway とサービス エンドポイントの併用
+          href: networking/app-gateway-with-service-endpoints.md
     - name: 受信 IP と送信 IP
       href: overview-inbound-outbound-ips.md
     - name: Virtual Network 統合

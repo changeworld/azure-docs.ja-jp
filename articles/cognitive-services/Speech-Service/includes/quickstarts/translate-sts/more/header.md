@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声間翻訳 - Speech Service
+title: クイック スタート:音声間で翻訳する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: d9f3d7197f36de0fb5a19d1560eec1abe3e18803
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 79bbf28067e3af7076425fdd5849e5c03946940a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505237"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981305"
 ---
 GitHub ですべての <a href="https://aka.ms/speech/github">Speech SDK サンプル</a>を表示またはダウンロードします。

@@ -5,40 +5,40 @@ services: data-factory
 documentationcenter: ''
 author: djpmsft
 ms.author: daperlov
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: 75441a398e654893601cb7375ad3674d2b8aff29
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.date: 11/25/2019
+ms.openlocfilehash: 9ef4b569fd8413d2825374c963fb272dd450cf0e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679911"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533135"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
+
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
 > * [Version 1](v1/data-factory-functions-variables.md)
 > * [現在のバージョン](control-flow-expression-language-functions.md)
 
 この記事では、Azure Data Factory によってサポートされている式と関数に関する詳細情報を提供します。 
 
-## <a name="introduction"></a>はじめに
+## <a name="expressions"></a>式
+
 定義内の JSON 値には、実行時に評価されるリテラルまたは式を指定できます。 例:  
   
 ```json
 "name": "value"
 ```
 
- (または)  
+ or  
   
 ```json
 "name": "@pipeline().parameters.password"
 ```
 
-## <a name="expressions"></a>式  
 式は、JSON string 値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式である場合は、アットマーク (\@) を削除することによって式の本体が抽出されます。 \@ で始まるリテラル文字列が必要な場合は、\@\@ を使用してその文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
   
 |JSON 値|結果|  
@@ -62,9 +62,9 @@ ms.locfileid: "73679911"
 |"\@concat('Answer is: ', string(pipeline().parameters.myNumber))"| string `Answer is: 42` が返されます。|  
 |"Answer is: \@\@{pipeline().parameters.myNumber}"| string `Answer is: @{pipeline().parameters.myNumber}` が返されます。|  
   
-### <a name="examples"></a>例
+## <a name="examples"></a>例
 
-#### <a name="a-dataset-with-a-parameter"></a>パラメーターを備えたデータセット
+### <a name="a-dataset-with-a-parameter"></a>パラメーターを備えたデータセット
 次の例では、BlobDataset は **path** という名前のパラメーターを受け取ります。 その値は、`dataset().path` という式を使用して **folderPath** プロパティの値を設定するために使用されます。 
 
 ```json
@@ -88,7 +88,7 @@ ms.locfileid: "73679911"
 }
 ```
 
-#### <a name="a-pipeline-with-a-parameter"></a>パラメーターを備えたパイプライン
+### <a name="a-pipeline-with-a-parameter"></a>パラメーターを備えたパイプライン
 次の例では、パイプラインは **inputPath** パラメーターと **outputPath** パラメーターを受け取ります。 パラメーター化された BLOB データセットの **path** は、これらのパラメーターの値を使用して設定されます。 ここで使用する構文は `pipeline().parameters.parametername` です。 
 
 ```json
@@ -138,128 +138,3183 @@ ms.locfileid: "73679911"
     }
 }
 ```
-#### <a name="tutorial"></a>チュートリアル
+### <a name="tutorial"></a>チュートリアル
 この[チュートリアル](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-data-factory-passing-parameters/Azure%20data%20Factory-Whitepaper-PassingParameters.pdf)では、パイプラインとアクティビティ間、およびアクティビティ間でパラメーターを渡す方法について説明します。
 
   
-## <a name="functions"></a>Functions  
- 式の中で関数を呼び出すことができます。 以降のセクションでは、式で使用できる関数に関する情報を提供します。  
+## <a name="functions"></a>Functions
+
+式の中で関数を呼び出すことができます。 以降のセクションでは、式で使用できる関数に関する情報を提供します。  
 
 ## <a name="string-functions"></a>文字列関数  
- 次の関数は、文字列にのみ適用されます。 文字列では、いくつかのコレクション関数を使用することもできます。  
-  
-|関数名|説明|  
-|-------------------|-----------------|  
-|concat|任意の数の文字列を結合します。 たとえば、パラメーター 1 が `foo,` である場合、次の式は `somevalue-foo-somevalue` を返します: `concat('somevalue-',pipeline().parameters.parameter1,'-somevalue')`<br /><br /> **パラメーター番号**: 1 ... *n*<br /><br /> **Name**:String *n*<br /><br /> **説明**:必須。 1 つの文字列に結合する文字列です。|  
-|substring|文字列から文字のサブセットを返します。 たとえば、次の式<br /><br /> `substring('somevalue-foo-somevalue',10,3)`<br /><br /> は次を返します。<br /><br /> `foo`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 部分文字列を取得する文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Start index<br /><br /> **説明**:必須。 パラメーター 1 で取得する部分文字列の開始位置のインデックスです。 開始インデックスは 0 から始まります。 <br /><br /> **パラメーター番号**: 3<br /><br /> **Name**:Length<br /><br /> **説明**:必須。 部分文字列の長さです。|  
-|replace|文字列を指定された文字列に置き換えます。 たとえば、式<br /><br /> `replace('the old string', 'old', 'new')`<br /><br /> は次を返します。<br /><br /> `the new string`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: string<br /><br /> **説明**:必須。  パラメーター 1 の中にパラメーター 2 が見つかった場合、パラメーター 2 が検索された文字列であり、パラメーター 3 で更新されます。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Old string<br /><br /> **説明**:必須。 パラメーター 1 の中に一致が見つかったときに、パラメーター 3 に置き換える文字列<br /><br /> **パラメーター番号**: 3<br /><br /> **Name**:New string<br /><br /> **説明**:必須。 パラメーター 1 でパラメーター 2 と一致する文字列が見つかった場合、この文字列に置き換えます。|  
-|guid| グローバルに一意の文字列 (GUID とも呼ばれます) を生成します。 たとえば、次の出力が生成されることがあります: `c2ecc88d-88c8-4096-912c-d6f2e2b138ce`<br /><br /> `guid()`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:形式<br /><br /> **説明**:省略可能。 [この GUID の値の書式設定方法](https://msdn.microsoft.com/library/97af8hh4%28v=vs.110%29.aspx)を示す単一の書式設定指定子です。 指定できる書式設定パラメーターは、"N"、"D"、"B"、"P"、"X" です。 指定しないと、"D" が使われます。|  
-|toLower|文字列を小文字に変換します。 たとえば、次は `two by two is four` を返します: `toLower('Two by Two is Four')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 小文字に変換する文字列です。 文字列内の文字に小文字の対応する文字がない場合、その文字は返される文字列に変更されずに含まれます。|  
-|toUpper|文字列を大文字に変換します。 たとえば、次の式は `TWO BY TWO IS FOUR` を返します: `toUpper('Two by Two is Four')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 大文字に変換する文字列です。 文字列内の文字に大文字の対応する文字がない場合、その文字は返される文字列に変更されずに含まれます。|  
-|indexof|文字列内で値のインデックスを探します。大文字と小文字は区別されません。 インデックスは 0 から始まります。 たとえば、次の式は `7` を返します: `indexof('hello, world.', 'world')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:string<br /><br /> **説明**:必須。 インデックスを探す値です。|  
-|lastindexof|文字列内で値の最後のインデックスを探します。大文字と小文字は区別されません。 インデックスは 0 から始まります。 たとえば、次の式は `3` を返します: `lastindexof('foofoo', 'foo')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:string<br /><br /> **説明**:必須。 インデックスを探す値です。|  
-|startswith|文字列が値で始まっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `startswith('hello, world', 'hello')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:string<br /><br /> **説明**:必須。 文字列が始まっている可能性のある値です。|  
-|endswith|文字列が値で終わっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `endswith('hello, world', 'world')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:string<br /><br /> **説明**:必須。 文字列が終わっている可能性のある値です。|  
-|split|区切り記号を使って文字列を分割します。 たとえば、次の式は `["a", "b", "c"]` を返します: `split('a;b;c',';')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 分割する文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:string<br /><br /> **説明**:必須。 区切り記号です。|  
-  
-  
-## <a name="collection-functions"></a>コレクション関数  
- これらの関数は、配列、文字列、場合によっては辞書などのコレクションに対して動作します。  
-  
-|関数名|説明|  
-|-------------------|-----------------|  
-|contains|ディクショナリにキーが含まれる場合、リストに値が含まれる場合、または文字列に部分文字列が含まれる場合、true を返します。 たとえば、次の式は `true:``contains('abacaba','aca')` を返します<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Within collection<br /><br /> **説明**:必須。 その中で検索を行うコレクションです。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Find object<br /><br /> **説明**:必須。 **Within collection** 内で検索するオブジェクトです。|  
-|length|配列または文字列内の要素の数を返します。 たとえば、次の式は `3` を返します: `length('abc')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:コレクション<br /><br /> **説明**:必須。 次の長さを取得するコレクション。|  
-|empty|オブジェクト、配列、または文字列が空の場合は true を返します。 たとえば、次の式は `true` を返します:<br /><br /> `empty('')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:コレクション<br /><br /> **説明**:必須。 空かどうかを確認するコレクションです。|  
-|intersection|渡された配列またはオブジェクトの間の共通要素を含む 1 つの配列またはオブジェクトを返します。 たとえば、次の関数は `[1, 2]` を返します。<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> 関数のパラメーターは、オブジェクトのセットまたは配列のセットです (両方を混ぜることはできません)。 同じ名前のオブジェクトが複数ある場合は、その名前を持つ最後のオブジェクトが最終的なオブジェクトに含まれます。<br /><br /> **パラメーター番号**: 1 ... *n*<br /><br /> **Name**:Collection *n*<br /><br /> **説明**:必須。 評価対象のコレクションです。 結果にオブジェクトが含まれるには、渡されるすべてのコレクションにオブジェクトが存在する必要があります。|  
-|union|渡された配列またはオブジェクトにあるすべての要素を含む 1 つの配列またはオブジェクトを返します。 たとえば、この関数は `[1, 2, 3, 10, 101]:` を返します<br /><br /> :  `union([1, 2, 3], [101, 2, 1, 10])`<br /><br /> 関数のパラメーターは、オブジェクトのセットまたは配列のセットです (両方を混ぜることはできません)。 最終的な出力に同じ名前のオブジェクトが複数ある場合は、その名前を持つ最後のオブジェクトが最終的なオブジェクトに含まれます。<br /><br /> **パラメーター番号**: 1 ... *n*<br /><br /> **Name**:Collection *n*<br /><br /> **説明**:必須。 評価対象のコレクションです。 いずれかのコレクションに現れるオブジェクトは、結果に含まれます。|  
-|first|渡された配列または文字列の最初の要素を返します。 たとえば、次の関数は `0` を返します。<br /><br /> `first([0,2,3])`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:コレクション<br /><br /> **説明**:必須。 最初のオブジェクトを取得するコレクションです。|  
-|last|渡された配列または文字列の最後の要素を返します。 たとえば、次の関数は `3` を返します。<br /><br /> `last('0123')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:コレクション<br /><br /> **説明**:必須。 最後のオブジェクトを取得するコレクションです。|  
-|take|渡された配列または文字列の最初の **Count** 個の要素を返します。たとえば、この関数は `[1, 2]` を返します: `take([1, 2, 3, 4], 2)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:コレクション<br /><br /> **説明**:必須。 最初の **Count** 個のオブジェクトを取得するコレクション。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Count<br /><br /> **説明**:必須。 **Collection** から取得するオブジェクトの数です。 正の整数にする必要があります。|  
-|skip|インデックス **Count** から始まる配列内の要素を返します。たとえば、この関数は `[3, 4]` を返します。<br /><br /> `skip([1, 2 ,3 ,4], 2)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:コレクション<br /><br /> **説明**:必須。 最初の **Count** 個のオブジェクトをスキップするコレクションです。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Count<br /><br /> **説明**:必須。 **Collection** の先頭から除去するオブジェクトの数です。 正の整数にする必要があります。|  
-  
+
+文字列を処理するには、以下の文字列関数および一部の[コレクション関数](#collection-functions)も使用できます。
+文字列関数は文字列でのみ機能します。
+
+| 文字列関数 | タスク |
+| --------------- | ---- |
+| [concat](control-flow-expression-language-functions.md#concat) | 2 つ以上の文字列を結合し、結合された文字列を返します。 |
+| [endsWith](control-flow-expression-language-functions.md#endswith) | 文字列が指定された部分文字列で終わっているかどうかを調べます。 |
+| [guid](control-flow-expression-language-functions.md#guid) | 文字列としてグローバル一意識別子 (GUID) を生成します。 |
+| [indexOf](control-flow-expression-language-functions.md#indexof) | 部分文字列の開始位置を返します。 |
+| [lastIndexOf](control-flow-expression-language-functions.md#lastindexof) | 部分文字列の最後の出現箇所の開始位置を返します。 |
+| [replace](control-flow-expression-language-functions.md#replace) | 部分文字列を指定した文字列で置換し、更新された文字列を返します。 |
+| [split](control-flow-expression-language-functions.md#split) | 元の文字列で指定された区切り文字に基づいたより大きい文字列から、コンマで区切られた部分文字列を含む配列を返します。 |
+| [startsWith](control-flow-expression-language-functions.md#startswith) | 文字列が特定の部分文字列で始まっているかどうかを調べます。 |
+| [substring](control-flow-expression-language-functions.md#substring) | 文字列から、指定された位置から始まる文字を返します。 |
+| [toLower](control-flow-expression-language-functions.md#toLower) | 小文字の形式で文字列を返します。 |
+| [toUpper](control-flow-expression-language-functions.md#toUpper) | 大文字の形式で文字列を返します。 |
+| [trim](control-flow-expression-language-functions.md#trim) | 文字列から先頭と末尾の空白を削除し、更新された文字列を返します。 |
+
+## <a name="collection-functions"></a>コレクション関数
+
+コレクション (通常は配列や文字列、場合によってはディクショナリ) を操作するには、以下のコレクション関数を使用できます。
+
+| コレクション関数 | タスク |
+| ------------------- | ---- |
+| [contains](control-flow-expression-language-functions.md#contains) | コレクションに特定の項目があるかどうかを確認します。 |
+| [empty](control-flow-expression-language-functions.md#empty) | コレクションが空かどうかを調べます。 |
+| [first](control-flow-expression-language-functions.md#first) | コレクションから最初の項目を返します。 |
+| [intersection](control-flow-expression-language-functions.md#intersection) | 指定したコレクションすべてに共通する項目 "*のみ*" を含むコレクションを返します。 |
+| [join](control-flow-expression-language-functions.md#join) | 配列の "*すべて*" の項目を含み、指定された区切り記号で各項目が区切られた、文字列を返します。 |
+| [last](control-flow-expression-language-functions.md#last) | コレクションから最後の項目を返します。 |
+| [length](control-flow-expression-language-functions.md#length) | 文字列または配列内の項目の数を返します。 |
+| [skip](control-flow-expression-language-functions.md#skip) | コレクションの先頭から項目を削除し、"*他のすべて*" の項目を返します。 |
+| [take](control-flow-expression-language-functions.md#take) | コレクションの先頭から項目を返します。 |
+| [union](control-flow-expression-language-functions.md#union) | 指定した複数のコレクションの "*すべての*" 項目を含む 1 つのコレクションを返します。 | 
+
 ## <a name="logical-functions"></a>論理関数  
- これらの関数は条件の内部で役立ち、任意の種類のロジックを評価するために使用できます。  
+
+これらの関数は条件の内部で役立ち、任意の種類のロジックを評価するために使用できます。  
   
-|関数名|説明|  
-|-------------------|-----------------|  
-|equals|2 つの値が等しい場合、true を返します。 たとえば、パラメーター 1 が foo である場合、次の式は `true` を返します: `equals(pipeline().parameters.parameter1), 'foo')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Object 1<br /><br /> **説明**:必須。 **Object 2** と比較するオブジェクトです。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Object 2<br /><br /> **説明**:必須。 **Object 1** と比較するオブジェクトです。|  
-|less|1 番目の引数が 2 番目の引数より小さい場合、true を返します。 値として指定できる型は integer、float、string だけであることに注意してください。 たとえば、次の式は `true` を返します: `less(10,100)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Object 1<br /><br /> **説明**:必須。 **Object 2** より小さいかどうかを調べるオブジェクトです。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Object 2<br /><br /> **説明**:必須。 **Object 1** より大きいかどうかを調べるオブジェクトです。|  
-|lessOrEquals|1 番目の引数が 2 番目の引数より小さいか等しい場合、true を返します。 値として指定できる型は integer、float、string だけであることに注意してください。 たとえば、次の式は `true` を返します: `lessOrEquals(10,10)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Object 1<br /><br /> **説明**:必須。 **Object 2** 以下かどうかを調べるオブジェクトです。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Object 2<br /><br /> **説明**:必須。 **Object 1** 以上かどうかを調べるオブジェクトです。|  
-|greater|1 番目の引数が 2 番目の引数より大きい場合、true を返します。 値として指定できる型は integer、float、string だけであることに注意してください。 たとえば、次の式は `false` を返します: `greater(10,10)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Object 1<br /><br /> **説明**:必須。 **Object 2** より大きいかどうかを調べるオブジェクトです。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Object 2<br /><br /> **説明**:必須。 **Object 1** より小さいかどうかを調べるオブジェクトです。|  
-|greaterOrEquals|1 番目の引数が 2 番目の引数より大きいか等しい場合、true を返します。 値として指定できる型は integer、float、string だけであることに注意してください。 たとえば、次の式は `false` を返します: `greaterOrEquals(10,100)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Object 1<br /><br /> **説明**:必須。 **Object 2** 以上かどうかを調べるオブジェクトです。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Object 2<br /><br /> **説明**:必須。 **Object 1** 以下かどうかを調べるオブジェクトです。|  
-|and|両方のパラメーターが true である場合は、true を返します。 両方の引数は、ブール値である必要があります。 次は `false` を返します: `and(greater(1,10),equals(0,0))`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Boolean 1<br /><br /> **説明**:必須。 `true` でなければならない 1 番目の引数です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Boolean 2<br /><br /> **説明**:必須。 `true` でなければならない 2 番目の引数です。|  
-|or|どちらかのパラメーターが true である場合は、true を返します。 両方の引数は、ブール値である必要があります。 次は `true` を返します: `or(greater(1,10),equals(0,0))`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Boolean 1<br /><br /> **説明**:必須。 `true` になることができる 1 番目の引数です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Boolean 2<br /><br /> **説明**:必須。 `true` になることができる 2 番目の引数です。|  
-|not|パラメーターが `false` である場合は、true を返します。 両方の引数は、ブール値である必要があります。 次は `true` を返します: `not(contains('200 Success','Fail'))`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Boolean<br /><br /> **説明**:パラメーターが `false` である場合は、true を返します。 両方の引数は、ブール値である必要があります。 次は `true` を返します: `not(contains('200 Success','Fail'))`|  
-|if|指定された式が `true` または `false` のどちらになるかに基づいて、指定された値を返します。  たとえば、次は `"yes"` を返します: `if(equals(1, 1), 'yes', 'no')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:式<br /><br /> **説明**:必須。 式によってどの値が返されるかを決定するブール値。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:True<br /><br /> **説明**:必須。 式が `true` の場合に返す値です。<br /><br /> **パラメーター番号**: 3<br /><br /> **Name**:False<br /><br /> **説明**:必須。 式が `false` の場合に返す値です。|  
+| 論理比較関数 | タスク |
+| --------------------------- | ---- |
+| [and](control-flow-expression-language-functions.md#and) | すべての式が true かどうかを調べます。 |
+| [equals](control-flow-expression-language-functions.md#equals) | 両方の値が等しいかどうかを調べます。 |
+| [greater](control-flow-expression-language-functions.md#greater) | 1 番目の値が 2 番目の値より大きいかどうかを調べます。 |
+| [greaterOrEquals](control-flow-expression-language-functions.md#greaterOrEquals) | 1 番目の値が 2 番目の値以上かどうかを調べます。 |
+| [if](control-flow-expression-language-functions.md#if) | 式が true か false かを調べます。 結果に基づき、指定された値を返します。 |
+| [less](control-flow-expression-language-functions.md#less) | 1 番目の値が 2 番目の値より小さいかどうかを調べます。 |
+| [lessOrEquals](control-flow-expression-language-functions.md#lessOrEquals) | 1 番目の値が 2 番目の値以下かどうかを調べます。 |
+| [not](control-flow-expression-language-functions.md#not) | 式が false かどうかを調べます。 |
+| [or](control-flow-expression-language-functions.md#or) | 少なくとも 1 つの式が true かどうかを調べます。 |
   
 ## <a name="conversion-functions"></a>変換関数  
+
  これらの関数は、言語の各ネイティブ型の間の変換に使われます。  
-  
--   string  
-  
--   integer  
-  
--   float  
-  
--   ブール値  
-  
--   arrays  
-  
--   dictionaries  
-  
-|関数名|説明|  
-|-------------------|-----------------|  
-|int|パラメーターを整数に変換します。 たとえば、次の式は文字列ではなく、数値として 100 を返します: `int('100')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:値<br /><br /> **説明**:必須。 整数に変換する値です。|  
-|string|パラメーターを文字列に変換します。 たとえば、次の式は `'10'` を返します: `string(10)`。また、オブジェクトを文字列に変換することもできます。たとえば、**foo** パラメーターが 1 つのプロパティ `bar : baz` を備えたオブジェクトである場合、次は `{"bar" : "baz"}` `string(pipeline().parameters.foo)` を返します<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:値<br /><br /> **説明**:必須。 文字列に変換する値です。|  
-|json|パラメーターを JSON 型の値に変換します。 これは、string() の反対です。 たとえば、次の式は文字列ではなく、配列として `[1,2,3]` を返します。<br /><br /> `json('[1,2,3]')`<br /><br /> 同様に、文字列をオブジェクトに変換することもできます。 たとえば、`json('{"bar" : "baz"}')` は次を返します。<br /><br /> `{ "bar" : "baz" }`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 ネイティブな型の値に変換する文字列です。<br /><br /> json 関数は、xml 入力もサポートします。 たとえば、次のようなパラメーター値があるものとします。<br /><br /> `<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>`<br /><br /> 次の json に変換されます。<br /><br /> `{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
-|float|パラメーター引数を浮動小数点数に変換します。 たとえば、次の式は `10.333` を返します: `float('10.333')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:値<br /><br /> **説明**:必須。 浮動小数点数に変換する値です。|  
-|bool|パラメーターをブール値に変換します。 たとえば、次の式は `false` を返します: `bool(0)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:値<br /><br /> **説明**:必須。 ブール値に変換する値です。|  
-|coalesce|渡された引数で最初の null 以外のオブジェクトを返します。 注: 空の文字列は null ではありません。 たとえば、パラメーター 1 と 2 が定義されていない場合、これは `fallback` を返します: `coalesce(pipeline().parameters.parameter1', pipeline().parameters.parameter2 ,'fallback')`<br /><br /> **パラメーター番号**: 1 ... *n*<br /><br /> **Name**:Object*n*<br /><br /> **説明**:必須。 `null` をチェックするオブジェクト。|  
-|base64|入力文字列の base64 表現を返します。 たとえば、次の式は `c29tZSBzdHJpbmc=` を返します: `base64('some string')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:String 1<br /><br /> **説明**:必須。 base 64 表現にエンコードする文字列です。|  
-|base64ToBinary|base64 でエンコードされた文字列のバイナリ表現を返します。 たとえば、次の式は一部の文字列のバイナリ表現を返します: `base64ToBinary('c29tZSBzdHJpbmc=')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 base64 でエンコードされた文字列です。|  
-|base64ToString|base64 でエンコードされた文字列の文字列表現を返します。 たとえば、次の式は一部の文字列を返します: `base64ToString('c29tZSBzdHJpbmc=')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 base64 でエンコードされた文字列です。|  
-|Binary|値のバイナリ表現を返します。  たとえば、次の式は一部の文字列のバイナリ表現を返します: `binary(‘some string’).`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:値<br /><br /> **説明**:必須。 バイナリに変換する値です。|  
-|dataUriToBinary|データの URI のバイナリ表現を返します。 たとえば、次の式は一部の文字列のバイナリ表現を返します: `dataUriToBinary('data:;base64,c29tZSBzdHJpbmc=')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 バイナリ表現に変換するデータ URI です。|  
-|dataUriToString|データの URI の文字列表現を返します。 たとえば、次の式は一部の文字列を返します: `dataUriToString('data:;base64,c29tZSBzdHJpbmc=')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br />**説明**:必須。 文字列表現に変換するデータ URI です。|  
-|dataUri|値のデータ URI を返します。 たとえば、次の式はデータを返します: `text/plain;charset=utf8;base64,c29tZSBzdHJpbmc=: dataUri('some string')`<br /><br /> **パラメーター番号**: 1<br /><br />**Name**:値<br /><br />**説明**:必須。 データ URI に変換する値です。|  
-|decodeBase64|入力の base64 文字列の文字列表現を返します。 たとえば、次の式は `some string` を返します: `decodeBase64('c29tZSBzdHJpbmc=')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:入力の base64 文字列の文字列表現を返します。|  
-|encodeUriComponent|渡される URL でエスケープされた文字列です。 たとえば、次の式は `You+Are%3ACool%2FAwesome` を返します: `encodeUriComponent('You Are:Cool/Awesome')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 URL の安全でない文字をエスケープする文字列です。|  
-|decodeUriComponent|渡された文字列の URL エスケープを解除します。 たとえば、次の式は `You Are:Cool/Awesome` を返します: `encodeUriComponent('You+Are%3ACool%2FAwesome')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 URL の安全でない文字をデコードする文字列です。|  
-|decodeDataUri|入力データの URI 文字列のバイナリ表現を返します。 たとえば、次の式は `some string` のバイナリ表現を返します: `decodeDataUri('data:;base64,c29tZSBzdHJpbmc=')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br /> **説明**:必須。 バイナリ表現にデコードする dataURI です。|  
-|uriComponent|値の URI でエンコードされた表現を返します。 たとえば、次の式は `You+Are%3ACool%2FAwesome: uriComponent('You Are:Cool/Awesome ')` を返します<br /><br /> パラメーターの詳細: 番号: 1、名前: String、説明: 必須。 URI でエンコードする文字列です。|  
-|uriComponentToBinary|URI でエンコードされた文字列のバイナリ表現を返します。 たとえば、次の式は `You Are:Cool/Awesome` のバイナリ表現を返します: `uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:string<br /><br />**説明**:必須。 URI でエンコードされた文字列です。|  
-|uriComponentToString|URI でエンコードされた文字列の文字列表現を返します。 たとえば、次の式は `You Are:Cool/Awesome` を返します: `uriComponentToString('You+Are%3ACool%2FAwesome')`<br /><br /> **パラメーター番号**: 1<br /><br />**Name**:string<br /><br />**説明**:必須。 URI でエンコードされた文字列です。|  
-|xml|値の xml 表現を返します。 たとえば、次の式は `'\<name>Alan\</name>'` によって表される xml コンテンツを返します: `xml('\<name>Alan\</name>')` xml 関数は、JSON オブジェクトの入力もサポートします。 たとえば、パラメーター `{ "abc": "xyz" }` は xml コンテンツ `\<abc>xyz\</abc>` に変換されます<br /><br /> **パラメーター番号**: 1<br /><br />**Name**:値<br /><br />**説明**:必須。 XML に変換する値です。|  
-|xpath|xpath 式が評価された値の xpath 式に一致する xml ノードの配列を返します。<br /><br />  **例 1**<br /><br /> パラメーター 'p1' の値が次の XML の文字列表現であるとします。<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1.コード `xpath(xml(pipeline().parameters.p1), '/lab/robot/name')`<br /><br /> は次を返します<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> これに対して<br /><br /> 2.コード `xpath(xml(pipeline().parameters.p1, ' sum(/lab/robot/parts)')`<br /><br /> は次を返します<br /><br /> `13`<br /><br /> <br /><br /> **例 2**<br /><br /> 次のような XML コンテンツがあるものとします。<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.コード `@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> or<br /><br /> 2.コード `@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> は、次の値は返します。<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> and<br /><br /> 3.コード `@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> は、次の値は返します。<br /><br /> ``bar``<br /><br /> **パラメーター番号**: 1<br /><br />**Name**:xml<br /><br />**説明**:必須。 XPath 式を評価する XML です。<br /><br /> **パラメーター番号**: 2<br /><br />**Name**:XPath<br /><br />**説明**:必須。 評価する XPath 式です。|  
-|array|パラメーターを配列に変換します。  たとえば、次の式は `["abc"]` を返します: `array('abc')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:値<br /><br /> **説明**:必須。 配列に変換する値です。|
-|createArray|パラメーターから配列を作成します。  たとえば、次の式は `["a", "c"]` を返します: `createArray('a', 'c')`<br /><br /> **パラメーター番号**: 1 ... n<br /><br /> **Name**:Any n<br /><br /> **説明**:必須。 配列に結合する値です。|
+-   string
+-   integer
+-   float
+-   ブール値
+-   arrays
+-   dictionaries
+
+| 変換関数 | タスク |
+| ------------------- | ---- |
+| [array](control-flow-expression-language-functions.md#array) | 指定した 1 つの入力から配列を返します。 複数の入力の場合は、[createArray](control-flow-expression-language-functions.md#createArray) をご覧ください。 |
+| [base64](control-flow-expression-language-functions.md#base64) | 文字列の base64 エンコード バージョンを返します。 |
+| [base64ToBinary](control-flow-expression-language-functions.md#base64ToBinary) | base64 エンコード文字列のバイナリ バージョンを返します。 |
+| [base64ToString](control-flow-expression-language-functions.md#base64ToString) | base64 エンコード文字列の文字列バージョンを返します。 |
+| [binary](control-flow-expression-language-functions.md#binary) | 入力値のバイナリ バージョンを返します。 |
+| [bool](control-flow-expression-language-functions.md#bool) | 入力値のブール値バージョンを返します。 |
+| [coalesce](control-flow-expression-language-functions.md#coalesce) | 1 つまたは複数のパラメーターから、最初の null 以外の値を返します。 |
+| [createArray](control-flow-expression-language-functions.md#createArray) | 複数の入力から配列を作成して返します。 |
+| [dataUri](control-flow-expression-language-functions.md#dataUri) | 入力値のデータ URI を返します。 |
+| [dataUriToBinary](control-flow-expression-language-functions.md#dataUriToBinary) | データ URI のバイナリ バージョンを返します。 |
+| [dataUriToString](control-flow-expression-language-functions.md#dataUriToString) | データ URI の文字列バージョンを返します。 |
+| [decodeBase64](control-flow-expression-language-functions.md#decodeBase64) | base64 エンコード文字列の文字列バージョンを返します。 |
+| [decodeDataUri](control-flow-expression-language-functions.md#decodeDataUri) | データ URI のバイナリ バージョンを返します。 |
+| [decodeUriComponent](control-flow-expression-language-functions.md#decodeUriComponent) | エスケープ文字をデコード バージョンに置き換えた文字列を返します。 |
+| [encodeUriComponent](control-flow-expression-language-functions.md#encodeUriComponent) | URL の安全でない文字をエスケープ文字に置き換えた文字列を返します。 |
+| [float](control-flow-expression-language-functions.md#float) | 入力値の浮動小数点数を返します。 |
+| [int](control-flow-expression-language-functions.md#int) | 文字列の整数バージョンを返します。 |
+| [json](control-flow-expression-language-functions.md#json) | 文字列または XML に対する JSON (JavaScript Object Notation) 型の値またはオブジェクトを返します。 |
+| [string](control-flow-expression-language-functions.md#string) | 入力値の文字列バージョンを返します。 |
+| [uriComponent](control-flow-expression-language-functions.md#uriComponent) | URL の安全でない文字がエスケープ文字に置き換えられた、入力値の URI エンコード バージョンを返します。 |
+| [uriComponentToBinary](control-flow-expression-language-functions.md#uriComponentToBinary) | URI エンコード文字列のバイナリ バージョンを返します。 |
+| [uriComponentToString](control-flow-expression-language-functions.md#uriComponentToString) | URI エンコード文字列の文字列バージョンを返します。 |
+| [xml](control-flow-expression-language-functions.md#xml) | 文字列の XML バージョンを返します。 |
+| [xpath](control-flow-expression-language-functions.md#xpath) | XML で XPath (XML Path Language) 式と一致するノードまたは値を調べて、一致するノードまたは値を返します。 |
 
 ## <a name="math-functions"></a>算術関数  
  これらの関数は、**integer** 型および **float** 型の値に使うことができます。  
-  
-|関数名|説明|  
-|-------------------|-----------------|  
-|add|2 つの数値の加算の結果を返します。 たとえば、この関数は `20.333` を返します: `add(10,10.333)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Summand 1<br /><br /> **説明**:必須。 **Summand 2** に加算する値です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Summand 2<br /><br /> **説明**:必須。 **Summand 1** に加算する値です。|  
-|sub|2 つの数値の減算の結果を返します。 たとえば、この関数は `-0.333` を返します。<br /><br /> `sub(10,10.333)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Minuend<br /><br /> **説明**:必須。 **Subtrahend** を減算する値です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Subtrahend<br /><br /> **説明**:必須。 **Minuend** から減算する値です。|  
-|mul|2 つの数値の乗算の結果を返します。 たとえば、次は `103.33` を返します。<br /><br /> `mul(10,10.333)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Multiplicand 1<br /><br /> **説明**:必須。 **Multiplicand 2** と乗算する値です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Multiplicand 2<br /><br /> **説明**:必須。 **Multiplicand 1** と乗算する値です。|  
-|div|2 つの数値の除算の結果を返します。 たとえば、次は `1.0333` を返します。<br /><br /> `div(10.333,10)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Dividend<br /><br /> **説明**:必須。 **Divisor** によって除算される値です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Divisor<br /><br /> **説明**:必須。 **Dividend** を除算する値です。|  
-|mod|2 つの数値の除算の後の残りの結果 (モジュロ) を返します。 たとえば、次の式は `2` を返します:<br /><br /> `mod(10,4)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Dividend<br /><br /> **説明**:必須。 **Divisor** によって除算される値です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Divisor<br /><br /> **説明**:必須。 **Dividend** を除算する値です。 除算の後、残りの部分が取得されます。|  
-|min|この関数を呼び出すには、2 つの異なるパターンがあります: `min([0,1,2])`。ここで、min は配列を受け取ります。 この式は `0` を返します。 または、次の関数は、値のコンマ区切りリストを受け取ります: `min(0,1,2)`。この関数も 0 を返します。 注: すべての値が数値である必要があるため、パラメーターが配列である場合は、その中に数値だけが含まれている必要があります。<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Collection または Value<br /><br /> **説明**:必須。 最小値を見つけるための値の配列、またはセットの最初の値のどちらかを指定できます。<br /><br /> **パラメーター番号**: 2 ... *n*<br /><br /> **Name**:Value *n*<br /><br /> **説明**:省略可能。 最初のパラメーターが Value である場合は、追加の値を渡すことができ、渡されたすべての値の最小値が返されます。|  
-|max|この関数を呼び出すには、2 つの異なるパターンがあります: `max([0,1,2])`<br /><br /> ここで、max は配列を受け取ります。 この式は `2` を返します。 または、次の関数は、値のコンマ区切りリストを受け取ります: `max(0,1,2)`。次の関数は 2 を返します。 注: すべての値が数値である必要があるため、パラメーターが配列である場合は、その中に数値だけが含まれている必要があります。<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Collection または Value<br /><br /> **説明**:必須。 最大値を見つけるための値の配列、またはセットの最初の値のどちらかを指定できます。<br /><br /> **パラメーター番号**: 2 ... *n*<br /><br /> **Name**:Value *n*<br /><br /> **説明**:省略可能。 最初のパラメーターが Value である場合は、追加の値を渡すことができ、渡されたすべての値の最大値が返されます。|  
-|range| 特定の数値から始まる整数の配列を生成し、返される配列の長さを定義します。 たとえば、次の関数は `[3,4,5,6]` を返します。<br /><br /> `range(3,4)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Start index<br /><br /> **説明**:必須。 これは、配列内の最初の整数です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Count<br /><br /> **説明**:必須。 配列内にある整数の数。|  
-|rand| 指定された範囲 (両端を包む) 内のランダムな整数を生成します。 たとえば、これは `42` を返す可能性があります。<br /><br /> `rand(-1000,1000)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:最小値<br /><br /> **説明**:必須。 返される可能性のある最小の整数。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:最大値<br /><br /> **説明**:必須。 返される可能性のある最大の整数。|  
+
+| 算術関数 | タスク |
+| ------------- | ---- |
+| [add](control-flow-expression-language-functions.md#add) | 2 つの数値を加算した結果を返します。 |
+| [div](control-flow-expression-language-functions.md#div) | 2 つの数値を除算した結果を返します。 |
+| [max](control-flow-expression-language-functions.md#max) | 数値のセットまたは配列から最大の値を返します。 |
+| [min](control-flow-expression-language-functions.md#min) | 数値のセットまたは配列から最小の値を返します。 |
+| [mod](control-flow-expression-language-functions.md#mod) | 2 つの数値を除算した剰余を返します。 |
+| [mul](control-flow-expression-language-functions.md#mul) | 2 つの数値を乗算した積を返します。 |
+| [rand](control-flow-expression-language-functions.md#rand) | 指定された範囲からランダムな整数を返します。 |
+| [range](control-flow-expression-language-functions.md#range) | 指定した整数から始まる整数の配列を返します。 |
+| [sub](control-flow-expression-language-functions.md#sub) | 1 番目の数値から 2 番目の数値を減算して、結果を返します。 |
   
 ## <a name="date-functions"></a>データ関数  
-  
-|関数名|説明|  
-|-------------------|-----------------|  
-|utcnow|現在のタイムスタンプを文字列として返します。 例: `2015-03-15T13:27:36Z`<br /><br /> `utcnow()`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:形式<br /><br /> **説明**:省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
-|addseconds|渡されたタイムスタンプ文字列に秒数を表す整数を追加します。 秒数は正でも負でもかまいません。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-03-15T13:27:00Z`<br /><br /> `addseconds('2015-03-15T13:27:36Z', -36)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Timestamp<br /><br /> **説明**:必須。 時刻を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:Seconds<br /><br /> **説明**:必須。 追加する秒の値です。 負の値にして秒数を減算できます。<br /><br /> **パラメーター番号**: 3<br /><br /> **Name**:形式<br /><br /> **説明**:省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
-|addminutes|渡されたタイムスタンプ文字列に分の値を表す整数を追加します。 分の値は正でも負でもかまいません。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-03-15T14:00:36Z`<br /><br /> `addminutes('2015-03-15T13:27:36Z', 33)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Timestamp<br /><br /> **説明**:必須。 時刻を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:分<br /><br /> **説明**:必須。 追加する分の値です。 負の値にして分数を減算できます。<br /><br /> **パラメーター番号**: 3<br /><br /> **Name**:形式<br /><br /> **説明**:省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
-|addhours|渡されたタイムスタンプ文字列に時間数を表す整数を追加します。 時間の値は正でも負でもかまいません。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-03-16T01:27:36Z`<br /><br /> `addhours('2015-03-15T13:27:36Z', 12)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Timestamp<br /><br /> **説明**:必須。 時刻を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:時間<br /><br /> **説明**:必須。 追加する時間数。 負の値にして時間数を減算できます。<br /><br /> **パラメーター番号**: 3<br /><br /> **Name**:形式<br /><br /> **説明**:省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
-|adddays|渡されたタイムスタンプ文字列に日数を表す整数を追加します。 日の値は正でも負でもかまいません。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-02-23T13:27:36Z`<br /><br /> `adddays('2015-03-15T13:27:36Z', -20)`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**:Timestamp<br /><br /> **説明**:必須。 時刻を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:日数<br /><br /> **説明**:必須。 追加する日数です。 負の値にして日数を減算できます。<br /><br /> **パラメーター番号**: 3<br /><br /> **Name**:形式<br /><br /> **説明**:省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
-|formatDateTime|日付形式の文字列を返します。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-02-23T13:27:36Z`<br /><br /> `formatDateTime('2015-03-15T13:27:36Z', 'o')`<br /><br />日付の書式を "yyyy/MM/dd" に設定するには、formatDateTime(utcnow(),'yyyy/MM/dd') を使用します。</br>日付に名前を追加するには、@concat('foo-','/',formatDateTime(utcnow(),'yyyy/MM/dd')) を使用します。<br><br> **パラメーター番号**: 1<br /><br /> **Name**:Date<br /><br /> **説明**:必須。 日付を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **Name**:形式<br /><br /> **説明**:省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。 |  
+
+| 日付または時刻の関数 | タスク |
+| --------------------- | ---- |
+| [addDays](control-flow-expression-language-functions.md#addDays) | タイムスタンプに日数を加算します。 |
+| [addHours](control-flow-expression-language-functions.md#addHours) | タイムスタンプに時間数を加算します。 |
+| [addMinutes](control-flow-expression-language-functions.md#addMinutes) | タイムスタンプに分数を加算します。 |
+| [addSeconds](control-flow-expression-language-functions.md#addSeconds) | タイムスタンプに秒数を加算します。 |
+| [addToTime](control-flow-expression-language-functions.md#addToTime) | タイムスタンプに時間単位数を加算します。 [getFutureTime](control-flow-expression-language-functions.md#getFutureTime) もご覧ください。 |
+| [convertFromUtc](control-flow-expression-language-functions.md#convertFromUtc) | タイムスタンプを協定世界時 (UTC) からターゲット タイム ゾーンに変換します。 |
+| [convertTimeZone](control-flow-expression-language-functions.md#convertTimeZone) | タイムスタンプをソース タイム ゾーンからターゲット タイム ゾーンに変換します。 |
+| [convertToUtc](control-flow-expression-language-functions.md#convertToUtc) | タイムスタンプをソース タイム ゾーンから協定世界時 (UTC) に変換します。 |
+| [dayOfMonth](control-flow-expression-language-functions.md#dayOfMonth) | タイムスタンプから月コンポーネントの日付を返します。 |
+| [dayOfWeek](control-flow-expression-language-functions.md#dayOfWeek) | タイムスタンプから曜日を返します。 |
+| [dayOfYear](control-flow-expression-language-functions.md#dayOfYear) | タイムスタンプから年の何日目かを返します。 |
+| [formatDateTime](control-flow-expression-language-functions.md#formatDateTime) | タイムスタンプから日付を返します。 |
+| [getFutureTime](control-flow-expression-language-functions.md#getFutureTime) | 現在のタイムスタンプに指定した時刻単位を加えて返します。 [addToTime](control-flow-expression-language-functions.md#addToTime) もご覧ください。 |
+| [getPastTime](control-flow-expression-language-functions.md#getPastTime) | 現在のタイムスタンプから指定した時刻単位を引いて返します。 [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime) もご覧ください。 |
+| [startOfDay](control-flow-expression-language-functions.md#startOfDay) | タイムスタンプの日の開始日時を返します。 |
+| [startOfHour](control-flow-expression-language-functions.md#startOfHour) | タイムスタンプの時刻の開始を返します。 |
+| [startOfMonth](control-flow-expression-language-functions.md#startOfMonth) | タイムスタンプの月の開始を返します。 |
+| [subtractFromTime](control-flow-expression-language-functions.md#subtractFromTime) | タイムスタンプから時間単位数を減算します。 [getPastTime](control-flow-expression-language-functions.md#getPastTime) もご覧ください。 |
+| [ticks](control-flow-expression-language-functions.md#ticks) | 指定したタイムスタンプの `ticks` プロパティの値を返します。 |
+| [utcNow](control-flow-expression-language-functions.md#utcNow) | 現在のタイムスタンプを文字列として返します。 |
+
+## <a name="function-reference"></a>関数リファレンス
+
+このセクションでは、使用可能なすべての関数をアルファベット順に示します。
+
+<a name="add"></a>
+
+### <a name="add"></a>add
+
+2 つの数値を加算した結果を返します。
+
+```
+add(<summand_1>, <summand_2>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*summand_1*>、<*summand_2*> | はい | 整数、浮動小数点数、または混合 | 加算する数値 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | -----| ----------- |
+| <*result-sum*> | 整数または浮動小数点数 | 指定した数値を加算した結果 |
+||||
+
+*例*
+
+この例は、指定した数値を加算します。
+
+```
+add(1, 1.5)
+```
+
+返される結果: `2.5`
+
+<a name="addDays"></a>
+
+### <a name="adddays"></a>addDays
+
+タイムスタンプに日数を加算します。
+
+```
+addDays('<timestamp>', <days>, '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*days*> | はい | 整数 | 追加する正または負の日数 |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-timestamp*> | string | タイムスタンプに指定した日数を加えた値  |
+||||
+
+*例 1*
+
+この例は、指定したタイムスタンプに 10 日を加算します。
+
+```
+addDays('2018-03-15T13:00:00Z', 10)
+```
+
+返される結果: `"2018-03-25T00:00:0000000Z"`
+
+*例 2*
+
+この例は、指定したタイムスタンプから 5 日を減算します。
+
+```
+addDays('2018-03-15T00:00:00Z', -5)
+```
+
+返される結果: `"2018-03-10T00:00:0000000Z"`
+
+<a name="addHours"></a>
+
+### <a name="addhours"></a>addHours
+
+タイムスタンプに時間数を加算します。
+
+```
+addHours('<timestamp>', <hours>, '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*hours*> | はい | 整数 | 追加する正または負の時間数 |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-timestamp*> | string | タイムスタンプに指定した時間数を加えた値  |
+||||
+
+*例 1*
+
+この例は、指定したタイムスタンプに 10 時間を加算します。
+
+```
+addHours('2018-03-15T00:00:00Z', 10)
+```
+
+返される結果: `"2018-03-15T10:00:0000000Z"`
+
+*例 2*
+
+この例は、指定したタイムスタンプから 5 時間を減算します。
+
+```
+addHours('2018-03-15T15:00:00Z', -5)
+```
+
+返される結果: `"2018-03-15T10:00:0000000Z"`
+
+<a name="addMinutes"></a>
+
+### <a name="addminutes"></a>addMinutes
+
+タイムスタンプに分数を加算します。
+
+```
+addMinutes('<timestamp>', <minutes>, '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*minutes*> | はい | 整数 | 追加する正または負の分数 |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-timestamp*> | string | タイムスタンプに指定した分数を加えた値 |
+||||
+
+*例 1*
+
+この例は、指定したタイムスタンプに 10 分を加算します。
+
+```
+addMinutes('2018-03-15T00:10:00Z', 10)
+```
+
+返される結果: `"2018-03-15T00:20:00.0000000Z"`
+
+*例 2*
+
+この例は、指定したタイムスタンプから 5 分を減算します。
+
+```
+addMinutes('2018-03-15T00:20:00Z', -5)
+```
+
+返される結果: `"2018-03-15T00:15:00.0000000Z"`
+
+<a name="addSeconds"></a>
+
+### <a name="addseconds"></a>addSeconds
+
+タイムスタンプに秒数を加算します。
+
+```
+addSeconds('<timestamp>', <seconds>, '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*seconds*> | はい | 整数 | 追加する正または負の秒数 |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-timestamp*> | string | タイムスタンプに指定した秒数を加えた値  |
+||||
+
+*例 1*
+
+この例は、指定したタイムスタンプに 10 秒を加算します。
+
+```
+addSeconds('2018-03-15T00:00:00Z', 10)
+```
+
+返される結果: `"2018-03-15T00:00:10.0000000Z"`
+
+*例 2*
+
+この例は、指定したタイムスタンプから 5 秒を減算します。
+
+```
+addSeconds('2018-03-15T00:00:30Z', -5)
+```
+
+返される結果: `"2018-03-15T00:00:25.0000000Z"`
+
+<a name="addToTime"></a>
+
+### <a name="addtotime"></a>addToTime
+
+タイムスタンプに時間単位数を加算します。
+[getFutureTime()](#getFutureTime) もご覧ください。
+
+```
+addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*interval*> | はい | 整数 | 追加する指定した時間単位の数 |
+| <*timeUnit*> | はい | string | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-timestamp*> | string | タイムスタンプに指定した時間単位数を加えた値  |
+||||
+
+*例 1*
+
+この例は、指定したタイムスタンプに 1 日を加算します。
+
+```
+addToTime('2018-01-01T00:00:00Z', 1, 'Day')
+```
+
+返される結果: `"2018-01-02T00:00:00.0000000Z"`
+
+*例 2*
+
+この例は、指定したタイムスタンプに 1 日を加算します。
+
+```
+addToTime('2018-01-01T00:00:00Z', 1, 'Day', 'D')
+```
+
+省略可能な "D" 形式を使用して返される結果: `"Tuesday, January 2, 2018"`
+
+<a name="and"></a>
+
+### <a name="and"></a>and
+
+すべての式が true かどうかを調べます。
+すべての式が true の場合は true を返し、少なくとも 1 つの式が false の場合は false を返します。
+
+```
+and(<expression1>, <expression2>, ...)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*expression1*>, <*expression2*>, ... | はい | Boolean | 調べる式 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | -----| ----------- |
+| true または false | Boolean | すべての式が true の場合は true を返します。 少なくとも 1 つの式が false の場合は false を返します。 |
+||||
+
+*例 1*
+
+これらの例は、指定したブール値がすべて true かどうかを調べます。
+
+```
+and(true, true)
+and(false, true)
+and(false, false)
+```
+
+次の結果を返します。
+
+* 1 番目の例:両方の式が true なので、`true` を返します。
+* 2 番目の例:片方の式が false なので、`false` を返します。
+* 3 番目の例:両方の式が false なので、`false` を返します。
+
+*例 2*
+
+これらの例は、指定した式がすべて true かどうかを調べます。
+
+```
+and(equals(1, 1), equals(2, 2))
+and(equals(1, 1), equals(1, 2))
+and(equals(1, 2), equals(1, 3))
+```
+
+次の結果を返します。
+
+* 1 番目の例:両方の式が true なので、`true` を返します。
+* 2 番目の例:片方の式が false なので、`false` を返します。
+* 3 番目の例:両方の式が false なので、`false` を返します。
+
+<a name="array"></a>
+
+### <a name="array"></a>array
+
+指定した 1 つの入力から配列を返します。
+複数の入力の場合は、[createArray()](#createArray) をご覧ください。
+
+```
+array('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | 配列を作成するための文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| [<*value*>] | Array | 指定した 1 つの入力を含む配列 |
+||||
+
+*例*
+
+この例は、"hello" という文字列から配列を作成します。
+
+```
+array('hello')
+```
+
+返される結果: `["hello"]`
+
+<a name="base64"></a>
+
+### <a name="base64"></a>base64
+
+文字列の base64 エンコード バージョンを返します。
+
+```
+base64('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | 入力文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*base64-string*> | string | 入力文字列の base64 エンコード バージョン |
+||||
+
+*例*
+
+この例は、"hello" という文字列を base64 エンコード文字列に変換します。
+
+```
+base64('hello')
+```
+
+返される結果: `"aGVsbG8="`
+
+<a name="base64ToBinary"></a>
+
+### <a name="base64tobinary"></a>base64ToBinary
+
+base64 エンコード文字列のバイナリ バージョンを返します。
+
+```
+base64ToBinary('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | 変換する base64 エンコード文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*binary-for-base64-string*> | string | base64 エンコード文字列のバイナリ バージョン |
+||||
+
+*例*
+
+この例は、"aGVsbG8=" という base64 エンコード文字列をバイナリ文字列に変換します。
+
+```
+base64ToBinary('aGVsbG8=')
+```
+
+返される結果:
+
+`"0110000101000111010101100111001101100010010001110011100000111101"`
+
+<a name="base64ToString"></a>
+
+### <a name="base64tostring"></a>base64ToString
+
+base64 エンコード文字列の文字列バージョンを返し、実質的に base64 の文字列をデコードします。
+[decodeBase64()](#decodeBase64) ではなく、この関数を使用してください。
+どちらの関数も機能は同じですが、`base64ToString()` をお勧めします。
+
+```
+base64ToString('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | デコードする base64 エンコード文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*decoded-base64-string*> | string | base64 エンコード文字列の文字列バージョン。 |
+||||
+
+*例*
+
+この例は、"aGVsbG8=" という base64 エンコード文字列を単なる文字列に変換します。
+
+```
+base64ToString('aGVsbG8=')
+```
+
+返される結果: `"hello"`
+
+<a name="binary"></a>
+
+### <a name="binary"></a>binary
+
+文字列のバイナリ バージョンを返します。
+
+```
+binary('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | 変換する文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*binary-for-input-value*> | string | 指定した文字列のバイナリ バージョン |
+||||
+
+*例*
+
+この例は、"hello" という文字列をバイナリ文字列に変換します。
+
+```
+binary('hello')
+```
+
+返される結果:
+
+`"0110100001100101011011000110110001101111"`
+
+<a name="bool"></a>
+
+### <a name="bool"></a>bool
+
+値のブール値バージョンを返します。
+
+```
+bool(<value>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | Any | 変換する値 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false | Boolean | 指定した値のブール値バージョン |
+||||
+
+*例*
+
+これらの例は、指定した値をブール値に変換します。
+
+```
+bool(1)
+bool(0)
+```
+
+次の結果を返します。
+
+* 1 番目の例: `true`
+* 2 番目の例: `false`
+
+<a name="coalesce"></a>
+
+### <a name="coalesce"></a>coalesce
+
+1 つまたは複数のパラメーターから、最初の null 以外の値を返します。
+空の文字列、空の配列、空のオブジェクトは null ではありません。
+
+```
+coalesce(<object_1>, <object_2>, ...)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*object_1*>, <*object_2*>, ... | はい | 任意、型が混在してもかまいません | null かどうか調べる 1 つまたは複数の項目 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*first-non-null-item*> | Any | null ではない最初の項目または値。 すべてのパラメーターが null の場合、この関数は null を返します。 |
+||||
+
+*例*
+
+これらの例は、指定した値から最初の null 以外の値を返し、すべての値が null のときは null を返します。
+
+```
+coalesce(null, true, false)
+coalesce(null, 'hello', 'world')
+coalesce(null, null, null)
+```
+
+次の結果を返します。
+
+* 1 番目の例: `true`
+* 2 番目の例: `"hello"`
+* 3 番目の例: `null`
+
+<a name="concat"></a>
+
+### <a name="concat"></a>concat
+
+2 つ以上の文字列を結合し、結合された文字列を返します。
+
+```
+concat('<text1>', '<text2>', ...)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*text1*>, <*text2*>, ... | はい | string | 結合する少なくとも 2 つの文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*text1text2...* > | string | 入力文字列を結合して作成された文字列 |
+||||
+
+*例*
+
+この例は、文字列 "Hello" と "World" を結合します。
+
+```
+concat('Hello', 'World')
+```
+
+返される結果: `"HelloWorld"`
+
+<a name="contains"></a>
+
+### <a name="contains"></a>contains
+
+コレクションに特定の項目があるかどうかを確認します。
+項目が見つかった場合は true を返し、見つからない場合は false を返します。
+この関数は、大文字と小文字を区別します。
+
+```
+contains('<collection>', '<value>')
+contains([<collection>], '<value>')
+```
+
+具体的には、この関数は次のコレクション型で動作します。
+
+* "*文字列*" からの "*部分文字列*" の検索
+* "*配列*" からの "*値*" の検索
+* "*ディクショナリ*" からの "*キー*" の検索
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*collection*> | はい | 文字列、配列、ディクショナリ | 調べるコレクション |
+| <*value*> | はい | それぞれ文字列、配列、ディクショナリ | 検索する項目 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false | Boolean | 項目が見つかった場合は true を返します。 見つからなかった場合は false を返します。 |
+||||
+
+*例 1*
+
+この例は、文字列 "hello world" で部分文字列 "world" を調べて、true を返します。
+
+```
+contains('hello world', 'world')
+```
+
+*例 2*
+
+この例は、文字列 "hello world" で部分文字列 "universe" を調べて、false を返します。
+
+```
+contains('hello world', 'universe')
+```
+
+<a name="convertFromUtc"></a>
+
+### <a name="convertfromutc"></a>convertFromUtc
+
+タイムスタンプを協定世界時 (UTC) からターゲット タイム ゾーンに変換します。
+
+```
+convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*destinationTimeZone*> | はい | string | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*converted-timestamp*> | string | ターゲット タイム ゾーンに変換されたタイムスタンプ |
+||||
+
+*例 1*
+
+この例は、タイムスタンプを指定したタイム ゾーンに変換します。
+
+```
+convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time')
+```
+
+返される結果: `"2018-01-01T00:00:00.0000000"`
+
+*例 2*
+
+この例は、タイムスタンプを指定したタイム ゾーンに変換して形式を設定します。
+
+```
+convertFromUtc('2018-01-01T08:00:00.0000000Z', 'Pacific Standard Time', 'D')
+```
+
+返される結果: `"Monday, January 1, 2018"`
+
+<a name="convertTimeZone"></a>
+
+### <a name="converttimezone"></a>convertTimeZone
+
+タイムスタンプをソース タイム ゾーンからターゲット タイム ゾーンに変換します。
+
+```
+convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*sourceTimeZone*> | はい | string | ソース タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*destinationTimeZone*> | はい | string | ターゲット タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*converted-timestamp*> | string | ターゲット タイム ゾーンに変換されたタイムスタンプ |
+||||
+
+*例 1*
+
+この例は、ソース タイム ゾーンをターゲット タイム ゾーンに変換します。
+
+```
+convertTimeZone('2018-01-01T08:00:00.0000000Z', 'UTC', 'Pacific Standard Time')
+```
+
+返される結果: `"2018-01-01T00:00:00.0000000"`
+
+*例 2*
+
+この例は、タイム ゾーンを指定したタイム ゾーンに変換して形式を設定します。
+
+```
+convertTimeZone('2018-01-01T80:00:00.0000000Z', 'UTC', 'Pacific Standard Time', 'D')
+```
+
+返される結果: `"Monday, January 1, 2018"`
+
+<a name="convertToUtc"></a>
+
+### <a name="converttoutc"></a>convertToUtc
+
+タイムスタンプをソース タイム ゾーンから協定世界時 (UTC) に変換します。
+
+```
+convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*sourceTimeZone*> | はい | string | ソース タイム ゾーンの名前。 タイム ゾーン名については、「[マイクロソフトのタイム ゾーンのインデックス値](https://support.microsoft.com/help/973627/microsoft-time-zone-index-values)」を参照してください。ただし、タイム ゾーン名から句読点を削除することが必要な場合があります。 |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*converted-timestamp*> | string | UTC に変換されたタイムスタンプ |
+||||
+
+*例 1*
+
+この例は、タイムスタンプを UTC に変換します。
+
+```
+convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time')
+```
+
+返される結果: `"2018-01-01T08:00:00.0000000Z"`
+
+*例 2*
+
+この例は、タイムスタンプを UTC に変換します。
+
+```
+convertToUtc('01/01/2018 00:00:00', 'Pacific Standard Time', 'D')
+```
+
+返される結果: `"Monday, January 1, 2018"`
+
+<a name="createArray"></a>
+
+### <a name="createarray"></a>createArray
+
+複数の入力から配列を作成して返します。
+単一入力の配列については、[array()](#array) をご覧ください。
+
+```
+createArray('<object1>', '<object2>', ...)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*object1*>, <*object2*>, ... | はい | 任意、ただし混在していてはなりません | 配列を作成する少なくとも 2 つの項目 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| [<*object1*>, <*object2*>, ...] | Array | すべての入力項目から作成された配列 |
+||||
+
+*例*
+
+この例は、以下の入力から配列を作成します。
+
+```
+createArray('h', 'e', 'l', 'l', 'o')
+```
+
+返される結果: `["h", "e", "l", "l", "o"]`
+
+<a name="dataUri"></a>
+
+### <a name="datauri"></a>dataUri
+
+文字列のデータ URI (Uniform Resource Identifier) を返します。
+
+```
+dataUri('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | 変換する文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*data-uri*> | string | 入力文字列に対するデータ URI |
+||||
+
+*例*
+
+この例は、"hello" という文字列に対する URI を作成します。
+
+```
+dataUri('hello')
+```
+
+返される結果: `"data:text/plain;charset=utf-8;base64,aGVsbG8="`
+
+<a name="dataUriToBinary"></a>
+
+### <a name="datauritobinary"></a>dataUriToBinary
+
+データ URI (Uniform Resource Identifier) のバイナリ バージョンを返します。
+[decodeDataUri()](#decodeDataUri) ではなく、この関数を使用してください。
+どちらの関数も機能は同じですが、`dataUriBinary()` をお勧めします。
+
+```
+dataUriToBinary('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | 変換するデータ URI |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*binary-for-data-uri*> | string | データ URI のバイナリ バージョン |
+||||
+
+*例*
+
+この例は、次のデータ URI のバイナリ バージョンを作成します。
+
+```
+dataUriToBinary('data:text/plain;charset=utf-8;base64,aGVsbG8=')
+```
+
+返される結果:
+
+`"01100100011000010111010001100001001110100111010001100101011110000111010000101111011100000
+1101100011000010110100101101110001110110110001101101000011000010111001001110011011001010111
+0100001111010111010101110100011001100010110100111000001110110110001001100001011100110110010
+10011011000110100001011000110000101000111010101100111001101100010010001110011100000111101"`
+
+<a name="dataUriToString"></a>
+
+### <a name="datauritostring"></a>dataUriToString
+
+データ URI (Uniform Resource Identifier) の文字列バージョンを返します。
+
+```
+dataUriToString('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | 変換するデータ URI |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*string-for-data-uri*> | string | データ URI の文字列バージョン |
+||||
+
+*例*
+
+この例は、次のデータ URI の文字列を作成します。
+
+```
+dataUriToString('data:text/plain;charset=utf-8;base64,aGVsbG8=')
+```
+
+返される結果: `"hello"`
+
+<a name="dayOfMonth"></a>
+
+### <a name="dayofmonth"></a>dayOfMonth
+
+タイムスタンプから月の日付を返します。
+
+```
+dayOfMonth('<timestamp>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*day-of-month*> | 整数 | 指定したタイムスタンプの月の日付 |
+||||
+
+*例*
+
+この例は、次のタイムスタンプから月の日付を返します。
+
+```
+dayOfMonth('2018-03-15T13:27:36Z')
+```
+
+返される結果: `15`
+
+<a name="dayOfWeek"></a>
+
+### <a name="dayofweek"></a>dayOfWeek
+
+タイムスタンプから曜日を返します。
+
+```
+dayOfWeek('<timestamp>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*day-of-week*> | 整数 | 指定したタイムスタンプの曜日。日曜日は 0、月曜日は 1、などとなります。 |
+||||
+
+*例*
+
+この例は、次のタイムスタンプから曜日を返します。
+
+```
+dayOfWeek('2018-03-15T13:27:36Z')
+```
+
+返される結果: `3`
+
+<a name="dayOfYear"></a>
+
+### <a name="dayofyear"></a>dayOfYear
+
+タイムスタンプから年の何日目かを返します。
+
+```
+dayOfYear('<timestamp>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*day-of-year*> | 整数 | 指定したタイムスタンプの年初からの通算日数 |
+||||
+
+*例*
+
+この例は、次のタイムスタンプから年の何日目かを返します。
+
+```
+dayOfYear('2018-03-15T13:27:36Z')
+```
+
+返される結果: `74`
+
+<a name="decodeBase64"></a>
+
+### <a name="decodebase64"></a>decodeBase64
+
+base64 エンコード文字列の文字列バージョンを返し、実質的に base64 の文字列をデコードします。
+`decodeBase64()` ではなく、[base64ToString()](#base64ToString) を使うようにしてください。
+どちらの関数も機能は同じですが、`base64ToString()` をお勧めします。
+
+```
+decodeBase64('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | デコードする base64 エンコード文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*decoded-base64-string*> | string | base64 エンコード文字列の文字列バージョン。 |
+||||
+
+*例*
+
+この例は、base64 エンコード文字列の文字列を作成します。
+
+```
+decodeBase64('aGVsbG8=')
+```
+
+返される結果: `"hello"`
+
+<a name="decodeDataUri"></a>
+
+### <a name="decodedatauri"></a>decodeDataUri
+
+データ URI (Uniform Resource Identifier) のバイナリ バージョンを返します。
+`decodeDataUri()` ではなく、[dataUriToBinary()](#dataUriToBinary) を使うようにしてください。
+どちらの関数も機能は同じですが、`dataUriToBinary()` をお勧めします。
+
+```
+decodeDataUri('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | デコードするデータ URI 文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*binary-for-data-uri*> | string | データ URI 文字列のバイナリ バージョン |
+||||
+
+*例*
+
+この例は、次のデータ URI のバイナリ バージョンを返します。
+
+```
+decodeDataUri('data:text/plain;charset=utf-8;base64,aGVsbG8=')
+```
+
+返される結果:
+
+`"01100100011000010111010001100001001110100111010001100101011110000111010000101111011100000
+1101100011000010110100101101110001110110110001101101000011000010111001001110011011001010111
+0100001111010111010101110100011001100010110100111000001110110110001001100001011100110110010
+10011011000110100001011000110000101000111010101100111001101100010010001110011100000111101"`
+
+<a name="decodeUriComponent"></a>
+
+### <a name="decodeuricomponent"></a>decodeUriComponent
+
+エスケープ文字をデコード バージョンに置き換えた文字列を返します。
+
+```
+decodeUriComponent('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | エスケープ文字をデコードする文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*decoded-uri*> | string | エスケープ文字がデコードされた更新後の文字列 |
+||||
+
+*例*
+
+この例は、次の文字列内のエスケープ文字をデコード バージョンに置き換えます。
+
+```
+decodeUriComponent('http%3A%2F%2Fcontoso.com')
+```
+
+返される結果: `"https://contoso.com"`
+
+<a name="div"></a>
+
+### <a name="div"></a>div
+
+2 つの数値を除算した結果の整数値を返します。
+結果の残りの部分を取得するには、[mod()](#mod) をご覧ください。
+
+```
+div(<dividend>, <divisor>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*dividend*> | はい | 整数または浮動小数点数 | *divisor* によって除算される値。 |
+| <*divisor*> | はい | 整数または浮動小数点数 | *dividend* を除算する値。0 にすることはできません。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*quotient-result*> | 整数 | 1 番目の数値を 2 番目の数値で除算した結果の整数値 |
+||||
+
+*例*
+
+どちらの例も、1 番目の数値を 2 番目の数値で除算します。
+
+```
+div(10, 5)
+div(11, 5)
+```
+
+返される結果: `2`
+
+<a name="encodeUriComponent"></a>
+
+### <a name="encodeuricomponent"></a>encodeUriComponent
+
+URL の安全でない文字がエスケープ文字に置き換えられた、文字列の URI (Uniform Resource Identifier) エンコード バージョンを返します。
+`encodeUriComponent()` ではなく、[uriComponent()](#uriComponent) を使うようにしてください。
+どちらの関数も機能は同じですが、`uriComponent()` をお勧めします。
+
+```
+encodeUriComponent('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | URI エンコード形式に変換する文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*encoded-uri*> | string | エスケープ文字が使われている URI エンコード文字列 |
+||||
+
+*例*
+
+この例は、次の文字列の URI エンコード バージョンを作成します。
+
+```
+encodeUriComponent('https://contoso.com')
+```
+
+返される結果: `"http%3A%2F%2Fcontoso.com"`
+
+<a name="empty"></a>
+
+### <a name="empty"></a>empty
+
+コレクションが空かどうかを調べます。
+コレクションが空の場合は true を返し、空でない場合は false を返します。
+
+```
+empty('<collection>')
+empty([<collection>])
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*collection*> | はい | 文字列、配列、オブジェクト | 調べるコレクション |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false | Boolean | コレクションが空の場合は true を返します。 空でない場合は false を返します。 |
+||||
+
+*例*
+
+これらの例は、指定したコレクションが空かどうかを調べます。
+
+```
+empty('')
+empty('abc')
+```
+
+次の結果を返します。
+
+* 1 番目の例:空の文字列を渡しているので、関数は `true` を返します。
+* 2 番目の例:文字列 "abc" を渡しているので、関数は `false` を返します。
+
+<a name="endswith"></a>
+
+### <a name="endswith"></a>endsWith
+
+文字列が特定の部分文字列で終わっているかどうかを調べます。
+部分文字列が見つかった場合は true を返し、見つからない場合は false を返します。
+この関数は、大文字と小文字を区別しません。
+
+```
+endsWith('<text>', '<searchText>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*text*> | はい | string | 調べる文字列。 |
+| <*searchText*> | はい | string | 検索する末尾の部分文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false  | Boolean | 末尾の部分文字列が見つかった場合は true を返します。 見つからなかった場合は false を返します。 |
+||||
+
+*例 1*
+
+この例は、文字列 "hello world" が文字列 "world" で終わっているかどうかを調べます。
+
+```
+endsWith('hello world', 'world')
+```
+
+返される結果: `true`
+
+*例 2*
+
+この例は、文字列 "hello world" が文字列 "universe" で終わっているかどうかを調べます。
+
+```
+endsWith('hello world', 'universe')
+```
+
+返される結果: `false`
+
+<a name="equals"></a>
+
+### <a name="equals"></a>equals
+
+両方の値、式、またはオブジェクトが等しいかどうかを調べます。
+両方が等しい場合は true を返し、等しくない場合は false を返します。
+
+```
+equals('<object1>', '<object2>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*object1*>, <*object2*> | はい | 各種 | 比較する値、式、またはオブジェクト |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false | Boolean | 両方が等しい場合は true を返します。 等しくない場合は false を返します。 |
+||||
+
+*例*
+
+これらの例は、指定した入力が等しいかどうかを調べます。
+
+```
+equals(true, 1)
+equals('abc', 'abcd')
+```
+
+次の結果を返します。
+
+* 1 番目の例:両方の値が等しいので、関数は `true` を返します。
+* 2 番目の例:両方の値が等しくないので、関数は `false` を返します。
+
+<a name="first"></a>
+
+### <a name="first"></a>first
+
+文字列または配列から最初の項目を返します。
+
+```
+first('<collection>')
+first([<collection>])
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*collection*> | はい | 文字列、配列 | 最初の項目を検索するコレクション |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*first-collection-item*> | Any | コレクション内の最初の項目 |
+||||
+
+*例*
+
+これらの例は、以下のコレクション内の最初の項目を検索します。
+
+```
+first('hello')
+first(createArray(0, 1, 2))
+```
+
+次の結果を返します。
+
+* 1 番目の例: `"h"`
+* 2 番目の例: `0`
+
+<a name="float"></a>
+
+### <a name="float"></a>float
+
+浮動小数点数の文字列バージョンを実際の浮動小数点数に変換します。
+
+```
+float('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | 変換する有効な浮動小数点数を含む文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*float-value*> | Float | 指定した文字列の浮動小数点数 |
+||||
+
+*例*
+
+この例は、次の浮動小数点数の文字列バージョンを作成します。
+
+```
+float('10.333')
+```
+
+返される結果: `10.333`
+
+<a name="formatDateTime"></a>
+
+### <a name="formatdatetime"></a>formatDateTime
+
+指定した形式でタイムスタンプを返します。
+
+```
+formatDateTime('<timestamp>', '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*reformatted-timestamp*> | string | 指定した形式に更新されたタイムスタンプ。 |
+||||
+
+*例*
+
+この例は、タイムスタンプを指定した形式に変換します。
+
+```
+formatDateTime('03/15/2018 12:00:00', 'yyyy-MM-ddTHH:mm:ss')
+```
+
+返される結果: `"2018-03-15T12:00:00"`
+
+<a name="getFutureTime"></a>
+
+### <a name="getfuturetime"></a>getFutureTime
+
+現在のタイムスタンプに指定した時刻単位を加えて返します。
+
+```
+getFutureTime(<interval>, <timeUnit>, <format>?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*interval*> | はい | 整数 | 追加する指定した時間単位の数 |
+| <*timeUnit*> | はい | string | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-timestamp*> | string | 現在のタイムスタンプに指定した時間単位数を加えた値 |
+||||
+
+*例 1*
+
+現在のタイムスタンプが "2018-03-01T00:00:00.0000000Z" であるものとします。
+この例は、そのタイムスタンプに 5 日を加算します。
+
+```
+getFutureTime(5, 'Day')
+```
+
+返される結果: `"2018-03-06T00:00:00.0000000Z"`
+
+*例 2*
+
+現在のタイムスタンプが "2018-03-01T00:00:00.0000000Z" であるものとします。
+この例は、5 日を加算して、結果を "D" 形式に変換します。
+
+```
+getFutureTime(5, 'Day', 'D')
+```
+
+返される結果: `"Tuesday, March 6, 2018"`
+
+<a name="getPastTime"></a>
+
+### <a name="getpasttime"></a>getPastTime
+
+現在のタイムスタンプから指定した時刻単位を引いて返します。
+
+```
+getPastTime(<interval>, <timeUnit>, <format>?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*interval*> | はい | 整数 | 減算する指定した時間単位の数 |
+| <*timeUnit*> | はい | string | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-timestamp*> | string | 現在のタイムスタンプから指定した時間単位数を引いた値 |
+||||
+
+*例 1*
+
+現在のタイムスタンプが "2018-02-01T00:00:00.0000000Z" であるものとします。
+この例は、そのタイムスタンプから 5 日を減算します。
+
+```
+getPastTime(5, 'Day')
+```
+
+返される結果: `"2018-01-27T00:00:00.0000000Z"`
+
+*例 2*
+
+現在のタイムスタンプが "2018-02-01T00:00:00.0000000Z" であるものとします。
+この例は、5 日を減算して、結果を "D" 形式に変換します。
+
+```
+getPastTime(5, 'Day', 'D')
+```
+
+返される結果: `"Saturday, January 27, 2018"`
+
+<a name="greater"></a>
+
+### <a name="greater"></a>greater
+
+1 番目の値が 2 番目の値より大きいかどうかを調べます。
+1 番目の値の方が大きい場合は true を返し、大きくない場合は false を返します。
+
+```
+greater(<value>, <compareTo>)
+greater('<value>', '<compareTo>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | 整数、浮動小数点数、混合 | 2 番目の値より大きいかどうかを調べる 1 番目の値 |
+| <*compareTo*> | はい | それぞれ整数、浮動小数点数、混合 | 比較する値 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false | Boolean | 1 番目の値が 2 番目の値より大きい場合は true を返します。 1 番目の値が 2 番目の値以下の場合は false を返します。 |
+||||
+
+*例*
+
+これらの例は、1 番目の値が 2 番目の値より大きいかどうかを調べます。
+
+```
+greater(10, 5)
+greater('apple', 'banana')
+```
+
+次の結果を返します。
+
+* 1 番目の例: `true`
+* 2 番目の例: `false`
+
+<a name="greaterOrEquals"></a>
+
+### <a name="greaterorequals"></a>greaterOrEquals
+
+1 番目の値が 2 番目の値以上かどうかを調べます。
+1 番目の値が大きいか等しい場合は true を返し、小さい場合は false を返します。
+
+```
+greaterOrEquals(<value>, <compareTo>)
+greaterOrEquals('<value>', '<compareTo>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | 整数、浮動小数点数、混合 | 2 番目の値以上かどうかを調べる 1 番目の値。 |
+| <*compareTo*> | はい | それぞれ整数、浮動小数点数、混合 | 比較する値 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false | Boolean | 1 番目の値が 2 番目の値より大きいか等しい場合は true を返します。 1 番目の値が 2 番目より小さい場合は false を返します。 |
+||||
+
+*例*
+
+これらの例は、1 番目の値が 2 番目の値以上かどうかを調べます。
+
+```
+greaterOrEquals(5, 5)
+greaterOrEquals('apple', 'banana')
+```
+
+次の結果を返します。
+
+* 1 番目の例: `true`
+* 2 番目の例: `false`
+
+<a name="guid"></a>
+
+### <a name="guid"></a>guid
+
+グローバル一意識別子 (GUID) を文字列として生成します (例: "c2ecc88d-88c8-4096-912c-d6f2e2b138ce")。
+
+```
+guid()
+```
+
+既定の "D" 形式 (ハイフンで区切られた 32 桁) 以外の GUID 形式を指定することもできます。
+
+```
+guid('<format>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*format*> | いいえ | string | 返される GUID の単一の[形式指定子](https://msdn.microsoft.com/library/97af8hh4)。 規定の形式は "D" ですが、"N"、"D"、"B"、"P"、"X" も指定できます。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*GUID-value*> | string | ランダムに生成された GUID |
+||||
+
+*例*
+
+この例は同じ GUID を生成しますが、32 桁で、ハイフンによって区切られており、かっこで囲まれています。
+
+```
+guid('P')
+```
+
+返される結果: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"`
+
+<a name="if"></a>
+
+### <a name="if"></a>if
+
+式が true か false かを調べます。
+結果に基づき、指定された値を返します。
+
+```
+if(<expression>, <valueIfTrue>, <valueIfFalse>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*expression*> | はい | Boolean | 調べる式。 |
+| <*valueIfTrue*> | はい | Any | 式が true の場合に返す値 |
+| <*valueIfFalse*> | はい | Any | 式が false の場合に返す値 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*specified-return-value*> | Any | 式が true か false かに基づいて返すように指定された値 |
+||||
+
+*例*
+
+この例は、指定した式が true を返すため `"yes"` を返します。
+それ以外の場合、この例は `"no"` を返します。
+
+```
+if(equals(1, 1), 'yes', 'no')
+```
+
+<a name="indexof"></a>
+
+### <a name="indexof"></a>indexOf
+
+部分文字列の開始位置またはインデックス値を返します。
+この関数は大文字と小文字を区別せず、インデックスは値 0 から始まります。
+
+```
+indexOf('<text>', '<searchText>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*text*> | はい | string | 検索する部分文字列を含む文字列 |
+| <*searchText*> | はい | string | 検索する部分文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*index-value*>| 整数 | 指定した部分文字列の開始位置またはインデックス値。 <p>文字列が見つからない場合は、値 -1 を返します。 |
+||||
+
+*例*
+
+この例は、文字列 "hello world" 内で部分文字列 "world" の開始インデックス値を検索します。
+
+```
+indexOf('hello world', 'world')
+```
+
+返される結果: `6`
+
+<a name="int"></a>
+
+### <a name="int"></a>int
+
+文字列の整数バージョンを返します。
+
+```
+int('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | 変換する文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*integer-result*> | 整数 | 指定した文字列の整数バージョン |
+||||
+
+*例*
+
+この例は、文字列 "10" の整数バージョンを作成します。
+
+```
+int('10')
+```
+
+返される結果: `10`
+
+<a name="json"></a>
+
+### <a name="json"></a>json
+
+文字列または XML に対する JSON (JavaScript Object Notation) 型の値またはオブジェクトを返します。
+
+```
+json('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | 文字列、XML | 変換する文字列または XML |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*JSON-result*> | JSON ネイティブの型またはオブジェクト | 指定した文字列または XML に対する JSON ネイティブの型の値またはオブジェクト。 文字列が null の場合、この関数は空のオブジェクトを返します。 |
+||||
+
+*例 1*
+
+この例は、次の文字列を JSON 値に変換します。
+
+```
+json('[1, 2, 3]')
+```
+
+返される結果: `[1, 2, 3]`
+
+*例 2*
+
+この例は、次の文字列を JSON に変換します。
+
+```
+json('{"fullName": "Sophia Owen"}')
+```
+
+返される結果:
+
+```
+{
+  "fullName": "Sophia Owen"
+}
+```
+
+*例 3*
+
+この例は、次の XML を JSON に変換します。
+
+```
+json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))
+```
+
+返される結果:
+
+```json
+{
+   "?xml": { "@version": "1.0" },
+   "root": {
+      "person": [ {
+         "@id": "1",
+         "name": "Sophia Owen",
+         "occupation": "Engineer"
+      } ]
+   }
+}
+```
+
+<a name="intersection"></a>
+
+### <a name="intersection"></a>intersection
+
+指定したコレクションすべてに共通する項目 "*のみ*" を含むコレクションを返します。
+結果に含まれるためには、この関数に渡されるすべてのコレクションに項目が含まれる必要があります。
+1 つまたは複数の項目が同じ名前である場合は、その名前を持つ最後の項目が結果に含まれます。
+
+```
+intersection([<collection1>], [<collection2>], ...)
+intersection('<collection1>', '<collection2>', ...)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*collection1*>, <*collection2*>, ... | はい | 配列またはオブジェクト、両方ともは不可 | 共通項目 "*のみ*" を抽出するコレクション |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*common-items*> | それぞれ、配列またはオブジェクト | 指定したコレクションすべてに共通する項目のみを含むコレクション |
+||||
+
+*例*
+
+この例は、次のすべての配列に共通する項目を検索します。
+
+```
+intersection(createArray(1, 2, 3), createArray(101, 2, 1, 10), createArray(6, 8, 1, 2))
+```
+
+そして、それらの項目 `[1, 2]` "*のみ*" を含む配列を返します。
+
+<a name="join"></a>
+
+### <a name="join"></a>join
+
+配列のすべての項目を含み、各文字が "*区切り記号*" で区切られた文字列を返します。
+
+```
+join([<collection>], '<delimiter>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*collection*> | はい | Array | 結合する項目を含む配列 |
+| <*delimiter*> | はい | string | 結果の文字列内の各文字の間に挿入される区切り記号 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*char1*><*delimiter*><*char2*><*delimiter*>... | string | 指定した配列内のすべての項目から作成された結果の文字列 |
+||||
+
+*例*
+
+この例は、指定した文字で区切られた、次の配列のすべての項目を含む文字列を作成します。
+
+```
+join(createArray('a', 'b', 'c'), '.')
+```
+
+返される結果: `"a.b.c"`
+
+<a name="last"></a>
+
+### <a name="last"></a>last
+
+コレクションから最後の項目を返します。
+
+```
+last('<collection>')
+last([<collection>])
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*collection*> | はい | 文字列、配列 | 最後の項目を検索するコレクション |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*last-collection-item*> | それぞれ文字列、配列 | コレクション内の最後の項目 |
+||||
+
+*例*
+
+これらの例は、以下のコレクション内の最後の項目を検索します。
+
+```
+last('abcd')
+last(createArray(0, 1, 2, 3))
+```
+
+次の結果を返します。
+
+* 1 番目の例: `"d"`
+* 2 番目の例: `3`
+
+<a name="lastindexof"></a>
+
+### <a name="lastindexof"></a>lastIndexOf
+
+部分文字列の最後の出現箇所の開始位置またはインデックス値を返します。
+この関数は大文字と小文字を区別せず、インデックスは値 0 から始まります。
+
+```
+lastIndexOf('<text>', '<searchText>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*text*> | はい | string | 検索する部分文字列を含む文字列 |
+| <*searchText*> | はい | string | 検索する部分文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*ending-index-value*> | 整数 | 指定された部分文字列の最後の出現箇所の開始位置またはインデックス値。 <p>文字列が見つからない場合は、値 -1 を返します。 |
+||||
+
+*例*
+
+この例は、文字列 "hello world" 内の部分文字列 "world" の最後の出現箇所の開始インデックス値を検索します。
+
+```
+lastIndexOf('hello world', 'world')
+```
+
+返される結果: `6`
+
+<a name="length"></a>
+
+### <a name="length"></a>length
+
+コレクション内の項目の数を返します。
+
+```
+length('<collection>')
+length([<collection>])
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*collection*> | はい | 文字列、配列 | 項目を数えるコレクション |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*length-or-count*> | 整数 | コレクション内の項目数 |
+||||
+
+*例*
+
+これらの例は、次のコレクション内の項目の数をカウントします。
+
+```
+length('abcd')
+length(createArray(0, 1, 2, 3))
+```
+
+返される結果: `4`
+
+<a name="less"></a>
+
+### <a name="less"></a>less
+
+1 番目の値が 2 番目の値より小さいかどうかを調べます。
+1 番目の値の方が小さい場合は true を返し、小さくないい場合は false を返します。
+
+```
+less(<value>, <compareTo>)
+less('<value>', '<compareTo>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | 整数、浮動小数点数、混合 | 2 番目の値より小さいかどうかを調べる 1 番目の値 |
+| <*compareTo*> | はい | それぞれ整数、浮動小数点数、混合 | 比較する項目 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false | Boolean | 1 番目の値の方が 2 番目より小さい場合は true を返します。 1 番目の値が 2 番目の値以上の場合は false を返します。 |
+||||
+
+*例*
+
+これらの例は、1 番目の値が 2 番目の値より小さいかどうかを調べます。
+
+```
+less(5, 10)
+less('banana', 'apple')
+```
+
+次の結果を返します。
+
+* 1 番目の例: `true`
+* 2 番目の例: `false`
+
+<a name="lessOrEquals"></a>
+
+### <a name="lessorequals"></a>lessOrEquals
+
+1 番目の値が 2 番目の値以下かどうかを調べます。
+1 番目の値が小さいか等しい場合は true を返し、大きい場合は false を返します。
+
+```
+lessOrEquals(<value>, <compareTo>)
+lessOrEquals('<value>', '<compareTo>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | 整数、浮動小数点数、混合 | 2 番目の値以下かどうかを調べる 1 番目の値。 |
+| <*compareTo*> | はい | それぞれ整数、浮動小数点数、混合 | 比較する項目 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false  | Boolean | 1 番目の値が 2 番目の値より小さいか等しい場合は true を返します。 1 番目の値が 2 番目の値より大きい場合は false を返します。 |
+||||
+
+*例*
+
+これらの例は、1 番目の値が 2 番目の値以下かどうかを調べます。
+
+```
+lessOrEquals(10, 10)
+lessOrEquals('apply', 'apple')
+```
+
+次の結果を返します。
+
+* 1 番目の例: `true`
+* 2 番目の例: `false`
+
+<a name="max"></a>
+
+### <a name="max"></a>max
+
+両端を含む数値のリストまたは配列から最大の値を返します。
+
+```
+max(<number1>, <number2>, ...)
+max([<number1>, <number2>, ...])
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*number1*>, <*number2*>, ... | はい | 整数、浮動小数点数、または両方 | 最大値を取得する数値のセット |
+| [<*number1*>, <*number2*>, ...] | はい | 配列 - 整数、浮動小数点数、または両方 | 最大値を取得する数値の配列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*max-value*> | 整数または浮動小数点数 | 指定した配列内または数値セット内で最大の値 |
+||||
+
+*例*
+
+これらの例は、数値のセットと配列から最大値を取得します。
+
+```
+max(1, 2, 3)
+max(createArray(1, 2, 3))
+```
+
+返される結果: `3`
+
+<a name="min"></a>
+
+### <a name="min"></a>min
+
+数値のセットまたは配列から最小の値を返します。
+
+```
+min(<number1>, <number2>, ...)
+min([<number1>, <number2>, ...])
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*number1*>, <*number2*>, ... | はい | 整数、浮動小数点数、または両方 | 最小値を取得する数値のセット |
+| [<*number1*>, <*number2*>, ...] | はい | 配列 - 整数、浮動小数点数、または両方 | 最小値を取得する数値の配列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*min-value*> | 整数または浮動小数点数 | 指定した数値セット内または配列内で最小の値 |
+||||
+
+*例*
+
+これらの例は、数値のセットと配列で最小の値を取得します。
+
+```
+min(1, 2, 3)
+min(createArray(1, 2, 3))
+```
+
+返される結果: `1`
+
+<a name="mod"></a>
+
+### <a name="mod"></a>mod
+
+2 つの数値を除算した剰余を返します。
+整数の結果を取得するには、[div()](#div) をご覧ください。
+
+```
+mod(<dividend>, <divisor>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*dividend*> | はい | 整数または浮動小数点数 | *divisor* によって除算される値。 |
+| <*divisor*> | はい | 整数または浮動小数点数 | *dividend* を除算する値。0 にすることはできません。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*modulo-result*> | 整数または浮動小数点数 | 1 番目の数値を 2 番目の数値で除算した剰余 |
+||||
+
+*例*
+
+この例は、1 番目の数値を 2 番目の数値で除算します。
+
+```
+mod(3, 2)
+```
+
+返される結果: `1`
+
+<a name="mul"></a>
+
+### <a name="mul"></a>mul
+
+2 つの数値を乗算した積を返します。
+
+```
+mul(<multiplicand1>, <multiplicand2>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*multiplicand1*> | はい | 整数または浮動小数点数 | *multiplicand2* と乗算する値 |
+| <*multiplicand2*> | はい | 整数または浮動小数点数 | *multiplicand1* と乗算する値 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*product-result*> | 整数または浮動小数点数 | 1 番目の数値と 2 番目の数値を乗算した積 |
+||||
+
+*例*
+
+これらの例は、1 番目の数値と 2 番目の数値を乗算します。
+
+```
+mul(1, 2)
+mul(1.5, 2)
+```
+
+次の結果を返します。
+
+* 1 番目の例: `2`
+* 2 番目の例: `3`
+
+<a name="not"></a>
+
+### <a name="not"></a>not
+
+式が false かどうかを調べます。
+式が false の場合は true を返し、true の場合は false を返します。
+
+```json
+not(<expression>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*expression*> | はい | Boolean | 調べる式。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false | Boolean | 式が false の場合は true を返します。 式が true の場合は false を返します。 |
+||||
+
+*例 1*
+
+これらの例は、指定した式が false かどうかを調べます。
+
+```json
+not(false)
+not(true)
+```
+
+次の結果を返します。
+
+* 1 番目の例:式が false なので、関数は `true` を返します。
+* 2 番目の例:式が true なので、関数は `false` を返します。
+
+*例 2*
+
+これらの例は、指定した式が false かどうかを調べます。
+
+```json
+not(equals(1, 2))
+not(equals(1, 1))
+```
+
+次の結果を返します。
+
+* 1 番目の例:式が false なので、関数は `true` を返します。
+* 2 番目の例:式が true なので、関数は `false` を返します。
+
+<a name="or"></a>
+
+### <a name="or"></a>or
+
+少なくとも 1 つの式が true かどうかを調べます。
+少なくとも 1 つの式が true の場合は true を返し、すべての式が false の場合は false を返します。
+
+```
+or(<expression1>, <expression2>, ...)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*expression1*>, <*expression2*>, ... | はい | Boolean | 調べる式 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false | Boolean | 少なくとも 1 つの式が true の場合は true を返します。 すべての式が false の場合は false を返します。 |
+||||
+
+*例 1*
+
+これらの例は、少なくとも 1 つの式が true かどうかを調べます。
+
+```json
+or(true, false)
+or(false, false)
+```
+
+次の結果を返します。
+
+* 1 番目の例:少なくとも 1 つの式が true なので、関数は `true` を返します。
+* 2 番目の例:両方の式が false なので、関数は `false` を返します。
+
+*例 2*
+
+これらの例は、少なくとも 1 つの式が true かどうかを調べます。
+
+```json
+or(equals(1, 1), equals(1, 2))
+or(equals(1, 2), equals(1, 3))
+```
+
+次の結果を返します。
+
+* 1 番目の例:少なくとも 1 つの式が true なので、関数は `true` を返します。
+* 2 番目の例:両方の式が false なので、関数は `false` を返します。
+
+<a name="rand"></a>
+
+### <a name="rand"></a>rand
+
+指定した範囲からランダムな整数を返します。開始側の端のみを含みます。
+
+```
+rand(<minValue>, <maxValue>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*minValue*> | はい | 整数 | 範囲に含まれる最小の整数 |
+| <*maxValue*> | はい | 整数 | 関数が返すことのできる範囲内で最も大きい整数の次の整数 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*random-result*> | 整数 | 指定した範囲から返されるランダムな整数 |
+||||
+
+*例*
+
+この例は、指定した範囲 (最大値は除きます) からランダムな整数を取得します。
+
+```
+rand(1, 5)
+```
+
+結果として次のいずれかの整数が返ります: `1`、`2`、`3`、`4`
+
+<a name="range"></a>
+
+### <a name="range"></a>range
+
+指定した整数から始まる整数の配列を返します。
+
+```
+range(<startIndex>, <count>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*startIndex*> | はい | 整数 | 最初の項目として配列を開始する整数値 |
+| <*count*> | はい | 整数 | 配列内の整数の数 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| [<*range-result*>] | Array | 指定したインデックスから始まる整数の配列 |
+||||
+
+*例*
+
+この例は、指定したインデックスから始まり、指定された数の整数を含む、整数の配列を作成します。
+
+```
+range(1, 4)
+```
+
+返される結果: `[1, 2, 3, 4]`
+
+<a name="replace"></a>
+
+### <a name="replace"></a>replace
+
+部分文字列を指定した文字列で置換し、結果の文字列を返します。 この関数は、大文字と小文字を区別します。
+
+```
+replace('<text>', '<oldText>', '<newText>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*text*> | はい | string | 置換する部分文字列を含む文字列 |
+| <*oldText*> | はい | string | 置換前の部分文字列 |
+| <*newText*> | はい | string | 置換後の文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-text*> | string | 部分文字列を置換した後の更新された文字列 <p>部分文字列が見つからない場合は、元の文字列を返します。 |
+||||
+
+*例*
+
+この例は、文字列 "the old string" で部分文字列 "old" を検索し、"old" を "new" に置き換えます。
+
+```
+replace('the old string', 'old', 'new')
+```
+
+返される結果: `"the new string"`
+
+<a name="skip"></a>
+
+### <a name="skip"></a>skip
+
+コレクションの先頭から項目を削除し、"*他のすべて*" の項目を返します。
+
+```
+skip([<collection>], <count>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*collection*> | はい | Array | 項目を削除するコレクション |
+| <*count*> | はい | 整数 | 先頭から削除する項目の数を示す正の整数 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| [<*updated-collection*>] | Array | 指定した項目を削除した後の更新されたコレクション |
+||||
+
+*例*
+
+この例は、指定した配列の先頭から 1 つの項目 (番号 0) を削除します。
+
+```
+skip(createArray(0, 1, 2, 3), 1)
+```
+
+そして、残りの項目を含む配列 `[1,2,3]` を返します。
+
+<a name="split"></a>
+
+### <a name="split"></a>split
+
+元の文字列で指定された区切り文字に基づいて、コンマで区切られた部分文字列を含む配列を返します。
+
+```
+split('<text>', '<delimiter>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*text*> | はい | string | 元の文字列で指定された区切り記号に基づいて部分文字列に分割する文字列 |
+| <*delimiter*> | はい | string | 区切り記号として使用する、元の文字列内の文字 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| [<*substring1*>,<*substring2*>,...] | Array | コンマで区切られた、元の文字列からの部分文字列を含む配列 |
+||||
+
+*例*
+
+この例では、区切り記号として指定した文字に基づいて指定された文字列からの部分文字列を含む配列を作成します。
+
+```
+split('a_b_c', '_')
+```
+
+返される配列の結果: `["a","b","c"]`
+
+<a name="startOfDay"></a>
+
+### <a name="startofday"></a>startOfDay
+
+タイムスタンプの日の開始日時を返します。
+
+```
+startOfDay('<timestamp>', '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-timestamp*> | string | 指定したタイムスタンプの日の午前 0 時を表す日時文字列 |
+||||
+
+*例*
+
+この例は、次のタイムスタンプの日の開始を取得します。
+
+```
+startOfDay('2018-03-15T13:30:30Z')
+```
+
+返される結果: `"2018-03-15T00:00:00.0000000Z"`
+
+<a name="startOfHour"></a>
+
+### <a name="startofhour"></a>startOfHour
+
+タイムスタンプの時刻の開始を返します。
+
+```
+startOfHour('<timestamp>', '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-timestamp*> | string | 指定したタイムスタンプの時刻の 0 分を表す日時文字列 |
+||||
+
+*例*
+
+この例は、次のタイムスタンプの時刻の開始を取得します。
+
+```
+startOfHour('2018-03-15T13:30:30Z')
+```
+
+返される結果: `"2018-03-15T13:00:00.0000000Z"`
+
+<a name="startOfMonth"></a>
+
+### <a name="startofmonth"></a>startOfMonth
+
+タイムスタンプの月の開始を返します。
+
+```
+startOfMonth('<timestamp>', '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-timestamp*> | string | 指定したタイムスタンプの月の開始日の午前 0 時を表す文字列 |
+||||
+
+*例*
+
+この例は、次のタイムスタンプの月の開始を返します。
+
+```
+startOfMonth('2018-03-15T13:30:30Z')
+```
+
+返される結果: `"2018-03-01T00:00:00.0000000Z"`
+
+<a name="startswith"></a>
+
+### <a name="startswith"></a>startsWith
+
+文字列が特定の部分文字列で始まっているかどうかを調べます。
+部分文字列が見つかった場合は true を返し、見つからない場合は false を返します。
+この関数は、大文字と小文字を区別しません。
+
+```
+startsWith('<text>', '<searchText>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*text*> | はい | string | 調べる文字列。 |
+| <*searchText*> | はい | string | 検索する開始文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| true または false  | Boolean | 先頭の部分文字列が見つかった場合は true を返します。 見つからなかった場合は false を返します。 |
+||||
+
+*例 1*
+
+この例は、文字列 "hello world" が部分文字列 "hello" で始まっているかどうかを調べます。
+
+```
+startsWith('hello world', 'hello')
+```
+
+返される結果: `true`
+
+*例 2*
+
+この例は、文字列 "hello world" が部分文字列 "greetings" で始まっているかどうかを調べます。
+
+```
+startsWith('hello world', 'greetings')
+```
+
+返される結果: `false`
+
+<a name="string"></a>
+
+### <a name="string"></a>string
+
+値の文字列バージョンを返します。
+
+```
+string(<value>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | Any | 変換する値 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*string-value*> | string | 指定した値の文字列バージョン |
+||||
+
+*例 1*
+
+この例は、次の数値の文字列バージョンを作成します。
+
+```
+string(10)
+```
+
+返される結果: `"10"`
+
+*例 2*
+
+この例は、指定した JSON オブジェクトの文字列を作成します。二重引用符 (") のエスケープ文字として、バックスラッシュ文字 (\\) を使います。
+
+```
+string( { "name": "Sophie Owen" } )
+```
+
+返される結果: `"{ \\"name\\": \\"Sophie Owen\\" }"`
+
+<a name="sub"></a>
+
+### <a name="sub"></a>sub
+
+1 番目の数値から 2 番目の数値を減算して、結果を返します。
+
+```
+sub(<minuend>, <subtrahend>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*minuend*> | はい | 整数または浮動小数点数 | *subtrahend* を引く数値 |
+| <*subtrahend*> | はい | 整数または浮動小数点数 | *minuend* から引く数値 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*result*> | 整数または浮動小数点数 | 1 番目の数値から 2 番目の数値を減算した結果 |
+||||
+
+*例*
+
+この例は、1 番目の数値から 2 番目の数値を減算します。
+
+```
+sub(10.3, .3)
+```
+
+返される結果: `10`
+
+<a name="substring"></a>
+
+### <a name="substring"></a>substring
+
+文字列から、指定された位置またはインデックスから始まる文字を返します。
+インデックス値は 0 から始まります。
+
+```
+substring('<text>', <startIndex>, <length>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*text*> | はい | string | 文字を取得する文字列 |
+| <*startIndex*> | はい | 整数 | 開始位置またはインデックスの値として使用する 0 以上の正の数 |
+| <*length*> | はい | 整数 | 取得する部分文字列の文字数を示す正の値 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*substring-result*> | string | ソース文字列の指定したインデックス位置から始まる、指定した文字数を含む部分文字列 |
+||||
+
+*例*
+
+この例は、指定した文字列のインデックス値 6 から始まる 5 文字を含む部分文字列を作成します。
+
+```
+substring('hello world', 6, 5)
+```
+
+返される結果: `"world"`
+
+<a name="subtractFromTime"></a>
+
+### <a name="subtractfromtime"></a>subtractFromTime
+
+タイムスタンプから時間単位数を減算します。
+[getPastTime](#getPastTime) もご覧ください。
+
+```
+subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
+| <*interval*> | はい | 整数 | 減算する指定した時間単位の数 |
+| <*timeUnit*> | はい | string | *間隔*と共に使用する時間単位:"Second"、"Minute"、"Hour"、"Day"、"Week"、"Month"、"Year" |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-timestamp*> | string | タイムスタンプから指定した時間単位数を引いた値 |
+||||
+
+*例 1*
+
+この例は、次のタイムスタンプから 1 日を減算します。
+
+```
+subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
+```
+
+返される結果: `"2018-01-01T00:00:00:0000000Z"`
+
+*例 2*
+
+この例は、次のタイムスタンプから 1 日を減算します。
+
+```
+subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day', 'D')
+```
+
+省略可能な "D" 形式を使用して返される結果: `"Monday, January, 1, 2018"`
+
+<a name="take"></a>
+
+### <a name="take"></a>take
+
+コレクションの先頭から項目を返します。
+
+```
+take('<collection>', <count>)
+take([<collection>], <count>)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*collection*> | はい | 文字列、配列 | 項目を取得するコレクション |
+| <*count*> | はい | 整数 | 先頭から取得する項目の数を示す正の整数 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*subset*> または [<*subset*>] | それぞれ文字列、配列 | 元のコレクションの先頭から取得された指定個数の項目を含む文字列または配列 |
+||||
+
+*例*
+
+これらの例は、次のコレクションの先頭から指定した数の項目を取得します。
+
+```
+take('abcde', 3)
+take(createArray(0, 1, 2, 3, 4), 3)
+```
+
+次の結果を返します。
+
+* 1 番目の例: `"abc"`
+* 2 番目の例: `[0, 1, 2]`
+
+<a name="ticks"></a>
+
+### <a name="ticks"></a>ticks
+
+指定したタイムスタンプの `ticks` プロパティの値を返します。
+"*ティック*" は 100 ナノ秒の間隔です。
+
+```
+ticks('<timestamp>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*timestamp*> | はい | string | タイムスタンプの文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*ticks-number*> | 整数 | 指定したタイムスタンプからのティック数 |
+||||
+
+<a name="toLower"></a>
+
+### <a name="tolower"></a>toLower
+
+小文字の形式で文字列を返します。 文字列内の文字に小文字バージョンがない場合、その文字は返される文字列に変更されないまま残ります。
+
+```
+toLower('<text>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*text*> | はい | string | 小文字形式で返される文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*lowercase-text*> | string | 元の文字列の小文字形式 |
+||||
+
+*例*
+
+この例は、次の文字列を小文字に変換します。
+
+```
+toLower('Hello World')
+```
+
+返される結果: `"hello world"`
+
+<a name="toUpper"></a>
+
+### <a name="toupper"></a>toUpper
+
+大文字の形式で文字列を返します。 文字列内の文字に大文字バージョンがない場合、その文字は返される文字列に変更されないまま残ります。
+
+```
+toUpper('<text>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*text*> | はい | string | 大文字形式で返される文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*uppercase-text*> | string | 元の文字列の大文字形式 |
+||||
+
+*例*
+
+この例は、次の文字列を大文字に変換します。
+
+```
+toUpper('Hello World')
+```
+
+返される結果: `"HELLO WORLD"`
+
+<a name="trim"></a>
+
+### <a name="trim"></a>trim
+
+文字列から先頭と末尾の空白を削除し、更新された文字列を返します。
+
+```
+trim('<text>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*text*> | はい | string | 先頭と末尾に削除する空白を含む文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updatedText*> | string | 先頭または末尾の空白が削除された、元の文字列の更新バージョン |
+||||
+
+*例*
+
+この例は、文字列 " Hello World  " から先頭と末尾の空白を削除します。
+
+```
+trim(' Hello World  ')
+```
+
+返される結果: `"Hello World"`
+
+<a name="union"></a>
+
+### <a name="union"></a>union
+
+指定した複数のコレクションの "*すべての*" 項目を含む 1 つのコレクションを返します。
+この関数に渡されるいずれかのコレクションに含まれる項目は、結果にも含まれます。 1 つまたは複数の項目が同じ名前である場合は、その名前を持つ最後の項目が結果に含まれます。
+
+```
+union('<collection1>', '<collection2>', ...)
+union([<collection1>], [<collection2>], ...)
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*collection1*>, <*collection2*>, ...  | はい | 配列またはオブジェクト、両方ともは不可 | "*すべての*" 項目を取得するコレクション |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*updatedCollection*> | それぞれ、配列またはオブジェクト | 指定したコレクションのすべての項目を含むコレクション。重複はありません。 |
+||||
+
+*例*
+
+この例は、以下のコレクションから "*すべての*" 項目を取得します。
+
+```
+union(createArray(1, 2, 3), createArray(1, 2, 10, 101))
+```
+
+返される結果: `[1, 2, 3, 10, 101]`
+
+<a name="uriComponent"></a>
+
+### <a name="uricomponent"></a>uriComponent
+
+URL の安全でない文字がエスケープ文字に置き換えられた、文字列の URI (Uniform Resource Identifier) エンコード バージョンを返します。
+[encodeUriComponent()](#encodeUriComponent) ではなく、この関数を使用してください。
+どちらの関数も機能は同じですが、`uriComponent()` をお勧めします。
+
+```
+uriComponent('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | URI エンコード形式に変換する文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*encoded-uri*> | string | エスケープ文字が使われている URI エンコード文字列 |
+||||
+
+*例*
+
+この例は、次の文字列の URI エンコード バージョンを作成します。
+
+```
+uriComponent('https://contoso.com')
+```
+
+返される結果: `"http%3A%2F%2Fcontoso.com"`
+
+<a name="uriComponentToBinary"></a>
+
+### <a name="uricomponenttobinary"></a>uriComponentToBinary
+
+URI (Uniform Resource Identifier) コンポーネントのバイナリ バージョンを返します。
+
+```
+uriComponentToBinary('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | 変換する URI エンコード文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*binary-for-encoded-uri*> | string | URI エンコード文字列のバイナリ バージョン バイナリ コンテンツは base64 でエンコードされ、`$content` によって表されます。 |
+||||
+
+*例*
+
+この例は、次の URI エンコード文字列のバイナリ バージョンを作成します。
+
+```
+uriComponentToBinary('http%3A%2F%2Fcontoso.com')
+```
+
+返される結果:
+
+`"001000100110100001110100011101000111000000100101001100
+11010000010010010100110010010001100010010100110010010001
+10011000110110111101101110011101000110111101110011011011
+110010111001100011011011110110110100100010"`
+
+<a name="uriComponentToString"></a>
+
+### <a name="uricomponenttostring"></a>uriComponentToString
+
+URI (Uniform Resource Identifier) エンコード文字列の文字列バージョンを返します。実質的に、URI エンコード文字列をデコードします。
+
+```
+uriComponentToString('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | デコードする URI エンコード文字列 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*decoded-uri*> | string | URI エンコード文字列のデコード バージョン |
+||||
+
+*例*
+
+この例は、次の URI エンコード文字列のデコードされた文字列バージョンを作成します。
+
+```
+uriComponentToString('http%3A%2F%2Fcontoso.com')
+```
+
+返される結果: `"https://contoso.com"`
+
+<a name="utcNow"></a>
+
+### <a name="utcnow"></a>utcNow
+
+現在のタイムスタンプを返します。
+
+```
+utcNow('<format>')
+```
+
+必要に応じて、<*format*> パラメーターで異なる形式を指定できます。
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*current-timestamp*> | string | 現在の日付と時刻 |
+||||
+
+*例 1*
+
+現在の日時が 2018 年 4 月 15 日午後 1 時 0 分 0 秒であるものとします。
+この例は、現在のタイムスタンプを取得します。
+
+```
+utcNow()
+```
+
+返される結果: `"2018-04-15T13:00:00.0000000Z"`
+
+*例 2*
+
+現在の日時が 2018 年 4 月 15 日午後 1 時 0 分 0 秒であるものとします。
+この例は、オプションの "D" 形式を使って現在のタイムスタンプを取得します。
+
+```
+utcNow('D')
+```
+
+返される結果: `"Sunday, April 15, 2018"`
+
+<a name="xml"></a>
+
+### <a name="xml"></a>xml
+
+JSON オブジェクトを含む文字列の XML バージョンを返します。
+
+```
+xml('<value>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*value*> | はい | string | 変換する JSON オブジェクトを含む文字列 <p>JSON オブジェクトのルート プロパティは 1 つに限る必要があり、配列にはできません。 <br>二重引用符 (") のエスケープ文字としてはバックスラッシュ文字 (\\) を使います。 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*xml-version*> | Object | 指定した文字列または JSON オブジェクトのエンコードされた XML |
+||||
+
+*例 1*
+
+この例は、JSON オブジェクトを含む次の文字列の XML バージョンを作成します。
+
+`xml(json('{ \"name\": \"Sophia Owen\" }'))`
+
+返される結果の XML:
+
+```xml
+<name>Sophia Owen</name>
+```
+
+*例 2*
+
+次のような JSON オブジェクトがあるものとします。
+
+```json
+{
+  "person": {
+    "name": "Sophia Owen",
+    "city": "Seattle"
+  }
+}
+```
+
+この例は、この JSON オブジェクトを含む文字列の XML を作成します。
+
+`xml(json('{\"person\": {\"name\": \"Sophia Owen\", \"city\": \"Seattle\"}}'))`
+
+返される結果の XML:
+
+```xml
+<person>
+  <name>Sophia Owen</name>
+  <city>Seattle</city>
+<person>
+```
+
+<a name="xpath"></a>
+
+### <a name="xpath"></a>xpath
+
+XML で XPath (XML Path Language) 式と一致するノードまたは値を調べて、一致するノードまたは値を返します。 XPath 式または単に "XPath" は、XML コンテンツ内のノードまたは計算値を選択できるように、XML ドキュメント構造内の移動を補助します。
+
+```
+xpath('<xml>', '<xpath>')
+```
+
+| パラメーター | 必須 | 種類 | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*xml*> | はい | Any | XPath 式の値に一致するノードまたは値を検索する XML 文字列 |
+| <*xpath*> | はい | Any | 一致する XML ノードまたは値の検索に使用する XPath 式 |
+|||||
+
+| 戻り値 | 種類 | 説明 |
+| ------------ | ---- | ----------- |
+| <*xml-node*> | XML | 1 つのノードだけが指定した XPath 式と一致するときの XML ノード |
+| <*value*> | Any | 1 つの値だけが指定した XPath 式と一致するときの XML ノードの値 |
+| [<*xml-node1*>, <*xml-node2*>, ...] </br>または </br>[<*value1*>, <*value2*>, ...] | Array | 指定した XPath 式と一致する XML ノードまたは値の配列 |
+||||
+
+*例 1*
+
+例 1 に続き、この例では `<count></count>` ノードと一致するノードを検索し、`sum()` 関数でそれらのノードの値を追加します。
+
+`xpath(xml(parameters('items')), 'sum(/produce/item/count)')`
+
+返される結果: `30`
+
+*例 2*
+
+この例の式はどちらも、名前空間を含む XML が格納されている指定した引数で、`<location></location>` ノードと一致するノードを検索します。 式では、二重引用符 (") のエスケープ文字としてバックスラッシュ文字 (\\) を使います。
+
+* *式 1*
+
+  `xpath(xml(body('Http')), '/*[name()=\"file\"]/*[name()=\"location\"]')`
+
+* *式 2*
+
+  `xpath(xml(body('Http')), '/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]')`
+
+引数は次のとおりです。
+
+* XML ドキュメントの名前空間 `xmlns="http://contoso.com"` を含む次の XML:
+
+  ```xml
+  <?xml version="1.0"?> <file xmlns="http://contoso.com"> <location>Paris</location> </file>
+  ```
+
+* どちらかの XPath 式:
+
+  * `/*[name()=\"file\"]/*[name()=\"location\"]`
+
+  * `/*[local-name()=\"file\" and namespace-uri()=\"http://contoso.com\"]/*[local-name()=\"location\"]`
+
+`<location></location>` ノードと一致する結果のノード:
+
+```xml
+<location xmlns="https://contoso.com">Paris</location>
+```
+
+*例 3*
+
+例 3 に続き、この例では `<location></location>` ノードの値を検索します。
+
+`xpath(xml(body('Http')), 'string(/*[name()=\"file\"]/*[name()=\"location\"])')`
+
+返される結果: `"Paris"`
 
 ## <a name="next-steps"></a>次の手順
 式で使用できるシステム変数の一覧については、「[システム変数](control-flow-system-variables.md)」を参照してください。

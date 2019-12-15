@@ -1,5 +1,5 @@
 ---
-title: Cosmos DB エンドポイントを使用して Azure Databricks を構築する
+title: チュートリアル - Cosmos DB エンドポイントを使用して Azure Databricks を構築する
 description: このチュートリアルでは、仮想ネットワークに、Cosmos DB に対して有効なサービス エンドポイントを使用して Azure Databricks を構築する方法について説明します。
 author: mamccrea
 ms.author: mamccrea
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
-ms.openlocfilehash: d1268ea2cfc22e6350edb32230588a497be8bc79
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ac8c01e986cf1f3158c615a0791ba476e5bf1bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054509"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706160"
 ---
 # <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>チュートリアル:Cosmos DB エンドポイントを使用して Azure Databricks を構築する
 
@@ -57,7 +57,7 @@ ms.locfileid: "67054509"
 
    |Setting|値|
    |-------|-----|
-   |サブスクリプション|*該当するサブスクリプション*|
+   |Subscription|*該当するサブスクリプション*|
    |リソース グループ|<*該当するリソース グループ*>|
    |アカウント名|db-vnet-service-endpoint|
    |API|コア (SQL)|

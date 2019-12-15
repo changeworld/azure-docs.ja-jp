@@ -1,6 +1,6 @@
 ---
-title: RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する | Microsoft Docs
-description: ロールベースのアクセス制御 (RBAC) と Azure portal を使用して、ユーザー、グループ、サービス プリンシパル、およびマネージド ID の Azure リソースへのアクセスを管理する方法について説明します。 具体的には、アクセス権の一覧表示、付与、削除などを取り上げます。
+title: Azure RBAC と Azure portal を使用してロールの割り当てを追加または削除する
+description: Azure のロールベースのアクセス制御 (RBAC) と Azure portal を使用して、ユーザー、グループ、サービス プリンシパル、またはマネージド ID に対して Azure リソースへのアクセス権を付与する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,129 +11,57 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/24/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1e9a53c41535c17de2d56227012160c7f6eb25c6
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 17a325e96e9709b60da2f23d1dc68e3300fde80c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71337615"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707865"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する
+# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用してロールの割り当てを追加または削除する
 
-[ロールベースのアクセス制御 (RBAC)](overview.md) は、Azure のリソースに対するアクセスを管理するための手法です。 この記事では、Azure portal を使用してアクセスを管理する方法について説明します。 Azure Active Directory へのアクセスを管理する必要がある場合は、「[Azure Active Directory で管理者ロールを表示して割り当てる](../active-directory/users-groups-roles/directory-manage-roles-portal.md)」を参照してください。
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] この記事では、Azure portal を使用してロールを割り当てる方法について説明します。
+
+Azure Active Directory で管理者ロールを割り当てる必要がある場合、「[Azure Active Directory で管理者ロールを表示して割り当てる](../active-directory/users-groups-roles/directory-manage-roles-portal.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-ロールの割り当てを追加および削除するには、以下が必要です。
+ロールの割り当てを追加または削除するには、以下が必要です。
 
 - `Microsoft.Authorization/roleAssignments/write` および `Microsoft.Authorization/roleAssignments/delete` のアクセス許可 ([ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)や[所有者](built-in-roles.md#owner)など)
 
 ## <a name="overview-of-access-control-iam"></a>アクセス制御 (IAM) の概要
 
-**アクセス制御 (IAM)** は、Azure リソースに対するアクセスを管理するために使用するブレードです。 ID とアクセス管理とも呼ばれ、Azure portal のいくつかの場所に示されます。 サブスクリプションの [アクセス制御 (IAM)] ブレードの例を次に示します。
+**[アクセス制御 (IAM)]** は、ロールの割り当てに使用するブレードです。 ID とアクセス管理とも呼ばれ、Azure portal のいくつかの場所に示されます。 サブスクリプションの [アクセス制御 (IAM)] ブレードの例を次に示します。
 
-![サブスクリプションの [アクセス制御 (IAM)] ブレード](./media/role-assignments-portal/access-control-numbers.png)
+![サブスクリプションの [アクセス制御 (IAM)] ブレード](./media/role-assignments-portal/access-control-subscription.png)
 
-使用される要素をいくつか次の表に示します。
-
-| # | 要素 | 用途 |
-| --- | --- | --- |
-| 1 | アクセス制御 (IAM) が開かれるリソース | スコープを特定する (この例ではサブスクリプション) |
-| 2 | **[追加]** ボタン | ロールの割り当てを追加する |
-| 3 | **[アクセスの確認]** タブ | 単一ユーザーのロールの割り当てを表示する |
-| 4 | **[ロールの割り当て]** タブ | 現在のスコープのロールの割り当てを一覧表示する |
-| 5 | **[ロール]** タブ | すべてのロールとアクセス許可を表示する |
-
-アクセス制御 (IAM) ブレードで最も効果的なものにするために、アクセス管理を試行する際に以下の 3 つの質問に回答できる場合に役立ちます。
+[アクセス制御 (IAM)] ブレードを最も効果的に使用するには、ロールを割り当てる際に、次の 3 つの質問に回答できると役立ちます。
 
 1. **誰がアクセスを必要としていますか?**
 
     誰とは、ユーザー、グループ、サービス プリンシパル、またはマネージド ID を指します。 *セキュリティ プリンシパル* とも呼ばれます。
 
-1. **どのようなアクセス許可が必要ですか?**
+1. **それらには、どのようなロールが必要ですか?**
 
-    アクセス許可はロールでまとめてグループ化されます。 いくつかの組み込みロールの一覧から選択できます。
+    アクセス許可はロールでまとめてグループ化されます。 複数の[組み込みロール](built-in-roles.md)の一覧から選択することも、独自のカスタム ロールを使用することもできます。
 
 1. **どこでアクセスが必要ですか?**
 
     どことは、アクセスが適用されるリソースのセットを指します。 管理グループ、サブスクリプション、リソース グループ、またはストレージ アカウントなどの単一のリソースである場合があります。 これは*スコープ* と呼ばれます。
 
-## <a name="open-access-control-iam"></a>[アクセス制御 (IAM)] を開く
+## <a name="add-a-role-assignment"></a>ロールの割り当てを追加する
 
-最初に決定する必要があるのは、アクセス制御 (IAM) ブレードを開く場所です。 これは、アクセスを管理するリソースによって異なります。 管理グループ内のすべて、サブスクリプション内のすべて、リソース グループ内のすべて、あるいは単一リソースに対するアクセスを管理しますか?
+さまざまなスコープでロールを割り当てるには、次の手順に従います。
 
 1. Azure portal で、 **[すべてのサービス]** をクリックしてからスコープを選びます。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
 
 1. 特定のリソースをクリックします。
 
 1. **[アクセス制御 (IAM)]** をクリックします。
-
-    サブスクリプションの [アクセス制御 (IAM)] ブレードの例を次に示します。 ここでアクセスの制御を変更すると、その変更内容はサブスクリプション全体に適用されます。
-
-    ![サブスクリプションの [アクセス制御 (IAM)] ブレード](./media/role-assignments-portal/access-control-subscription.png)
-
-## <a name="view-roles-and-permissions"></a>ロールとアクセス許可を表示する
-
-ロール定義とは、ロールの割り当てに使用するアクセス許可のコレクションを指します。 Azure には、[Azure リソースに対して 70 個を超える組み込みロール](built-in-roles.md)があります。 以下の手順に従って、使用可能なロールとアクセス許可を表示します。
-
-1. 任意のスコープで **[アクセス制御 (IAM)]** を開きます。
-
-1. **[ロール]** タブをクリックして、すべての組み込みおよびカスタム ロールの一覧を表示します。
-
-   現在のスコープの各ロールに割り当てられているユーザーとグループの数を確認できます。
-
-   ![ロールの一覧表示](./media/role-assignments-portal/roles-list.png)
-
-1. 個々のロールをクリックすると、このロールが割り当てられているユーザーのほか、そのロールのアクセス許可も表示されます。
-
-   ![ロールの割り当て](./media/role-assignments-portal/role-assignments.png)
-
-## <a name="view-role-assignments"></a>ロールの割り当てを表示する
-
-アクセス権を管理するときは、どのユーザーがアクセス権を持っており、どのようなアクセス許可が認められていて、そのアクセス許可がどのスコープのものであるかを把握する必要があります。 ユーザー、グループ、サービス プリンシパル、またはマネージド ID のアクセス権を一覧表示するには、ロールの割り当てを表示します。
-
-### <a name="view-role-assignments-for-a-single-user"></a>1 人のユーザーのロールの割り当てを表示する
-
-特定のスコープでの 1 人のユーザー、グループ、サービス プリンシパル、またはマネージド ID のアクセス権を表示するには、次の手順に従います。
-
-1. アクセス権を表示する管理グループ、サブスクリプション、リソース グループ、リソースなどのスコープで **[アクセス制御 (IAM)]** を開きます。
-
-1. **[Check access] (アクセスの確認)** タブをクリックします。
-
-    ![アクセス制御 - [アクセスの確認] タブ](./media/role-assignments-portal/access-control-check-access.png)
-
-1. **[検索]** 一覧で、アクセス権を確認するセキュリティ プリンシパルの種類を選択します。
-
-1. 検索ボックスに、表示名、メール アドレス、またはオブジェクト識別子のディレクトリを検索するための文字列を入力します。
-
-    ![[アクセスの確認] の選択リスト](./media/role-assignments-portal/check-access-select.png)
-
-1. セキュリティ プリンシパルをクリックして **[割り当て]** ウィンドウを開きます。
-
-    ![[割り当て] ウィンドウ](./media/role-assignments-portal/check-access-assignments.png)
-
-    このウィンドウでは、選択したセキュリティ プリンシパルに割り当てられているロールとスコープを確認できます。 このスコープに拒否割り当てが存在するか、またはこのスコープに継承されている場合は、それらが一覧表示されます。
-
-### <a name="view-all-role-assignments-at-a-scope"></a>あるスコープのすべてのロールの割り当てを表示する
-
-1. アクセス権を表示する管理グループ、サブスクリプション、リソース グループ、リソースなどのスコープで **[アクセス制御 (IAM)]** を開きます。
-
-1. **[ロールの割り当て]** タブをクリックして、このスコープのすべてのロールの割り当てを表示します。
-
-   ![アクセス制御 - [ロールの割り当て] タブ](./media/role-assignments-portal/access-control-role-assignments.png)
-
-   [ロールの割り当て] タブでは、このスコープにアクセス権があるユーザーを確認できます。 スコープが **[このリソース]** のロールもあれば、別のスコープからスコープを **[(継承)]** しているロールもあることに注目してください。 アクセス権は、このリソースに明確に割り当てられるか、または親スコープへの割り当てから継承されます。
-
-## <a name="add-a-role-assignment"></a>ロールの割り当てを追加する
-
-RBAC でアクセス権を付与するには、ユーザー、グループ、サービス プリンシパル、またはマネージド ID にロールを割り当てます。 さまざまなスコープでアクセス権を付与するには、次の手順に従います。
-
-### <a name="assign-a-role-at-a-scope"></a>あるスコープのロールを割り当てる
-
-1. アクセス権を付与する管理グループ、サブスクリプション、リソース グループ、リソースなどのスコープで **[アクセス制御 (IAM)]** を開きます。
 
 1. **[ロールの割り当て]** タブをクリックして、このスコープのすべてのロールの割り当てを表示します。
 
@@ -153,13 +81,13 @@ RBAC でアクセス権を付与するには、ユーザー、グループ、サ
 
    しばらくすると、セキュリティ プリンシパルに選択されたスコープのロールが割り当てられます。
 
-### <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>サブスクリプションの管理者としてユーザーを割り当てる
+## <a name="assign-a-user-as-an-administrator-of-a-subscription"></a>サブスクリプションの管理者としてユーザーを割り当てる
 
-ユーザーを Azure サブスクリプションの管理者にするには、サブスクリプション スコープで、そのユーザーに[所有者](built-in-roles.md#owner)ロールを割り当てます。 これにより、他のユーザーへアクセス権を委任する権限を含め、サブスクリプションにあるすべてのリソースへのフル アクセスがユーザーに付与されます。 次の手順は、他のロールの割り当てと同じです。
+ユーザーを Azure サブスクリプションの管理者にするには、サブスクリプション スコープで、そのユーザーに[所有者](built-in-roles.md#owner)ロールを割り当てます。 所有者ロールにより、他のユーザーにアクセス権を付与する権限を含め、サブスクリプションにあるすべてのリソースへのフル アクセス権がユーザーに付与されます。 次の手順は、他のロールの割り当てと同じです。
 
 1. Azure portal で、 **[すべてのサービス]** 、 **[サブスクリプション]** の順にクリックします。
 
-1. アクセス権を付与するサブスクリプションをクリックします。
+1. ロールの割り当てを追加するサブスクリプションをクリックします。
 
 1. **[アクセス制御 (IAM)]** をクリックします。
 
@@ -181,9 +109,9 @@ RBAC でアクセス権を付与するには、ユーザー、グループ、サ
 
    しばらくすると、サブスクリプション スコープで、ユーザーに所有者のロールが割り当てられます。
 
-## <a name="remove-role-assignments"></a>ロールの割り当てを削除する
+## <a name="remove-a-role-assignment"></a>ロールの割り当てを削除する
 
-RBAC では、アクセス権を削除するにはロールの割り当てを削除する必要があります。 アクセス権を削除するには、次の手順に従います。
+RBAC では、アクセス権を削除するにはロールの割り当てを削除する必要があります。 ロールの割り当てを削除するには、次の手順に従います。
 
 1. アクセス権を削除する管理グループ、サブスクリプション、リソース グループ、リソースなどのスコープで **[アクセス制御 (IAM)]** を開きます。
 
@@ -205,7 +133,7 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 
 ## <a name="next-steps"></a>次の手順
 
-* [チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](quickstart-assign-role-user-portal.md)
-* [チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](tutorial-role-assignments-user-powershell.md)
-* [Azure リソースの RBAC のトラブルシューティング](troubleshooting.md)
-* [Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md)
+- [Azure RBAC と Azure portal を使用してロールの割り当てを一覧表示する](role-assignments-list-portal.md)
+- [チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](quickstart-assign-role-user-portal.md)
+- [Azure リソースの RBAC のトラブルシューティング](troubleshooting.md)
+- [Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md)

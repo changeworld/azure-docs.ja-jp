@@ -1,19 +1,15 @@
 ---
-title: Azure Backup Server と DPM (Data Protection Manager) に関する FAQ
-description: この記事では、Microsoft Azure Backup Server (MABS) と DPM に関してよく寄せられる質問への回答を示します。
+title: Azure Backup Server と DPM に関する FAQ
+description: この記事では、Microsoft Azure Backup Server (MABS) と DPM (Data Protection Manager) に関してよく寄せられる質問への回答を示します。
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.author: dacurwin
-ms.openlocfilehash: 940ac4d94bf39583fad828545a45cbb033908f15
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091655"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173161"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure Backup Server と DPM - FAQ
 

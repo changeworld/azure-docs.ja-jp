@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 31a1c7cd72d57b9c680452d5e84f8fe78f47cebb
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693307"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704268"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の正常性状態の理解と中断されたドメインの解決
 
@@ -96,7 +96,7 @@ Azure portal の Azure AD DS の正常性ページに、ドメインが中断さ
 "*中断済み*" 状態である Azure AD DS マネージド ドメインの正常性を復元するには、次の手順を実行します。
 
 1. Azure portal で、**Domain services** を検索して選択します。
-1. 一覧から Azure AD DS マネージド ドメイン (*contoso.com* など) を選択し、 **[正常性]** を選択します。
+1. 一覧から Azure AD DS マネージド ドメイン (*aadds.contoso.com* など) を選択し、 **[正常性]** を選択します。
 1. 中断の原因によって *AADDS503* や *AADDS504* などのアラートを選択します。
 1. アラートで提供される解決リンクを選択し、手順に従ってそれを解決します。
 

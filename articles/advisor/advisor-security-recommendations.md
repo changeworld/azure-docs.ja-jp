@@ -3,7 +3,7 @@ title: Azure Advisor を使用してリソースのセキュリティを向上�
 description: Azure Advisor を使用して、Azure のデプロイのセキュリティを向上させます。
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: saket-ms
 manager: ''
 ms.assetid: ''
 ms.service: advisor
@@ -11,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 1e9c3556d904dd961a2b8f99f84983c35ccf5c6a
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.author: sagupt
+ms.openlocfilehash: 8392e3b74677a8977684300d33ceb663c4e2fe81
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772276"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145323"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Advisor を使用してリソースのセキュリティを向上させる
 
@@ -41,6 +41,6 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 * [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
-
+* [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)
 
  

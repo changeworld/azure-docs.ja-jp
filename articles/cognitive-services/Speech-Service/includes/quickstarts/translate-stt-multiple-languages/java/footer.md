@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を複数の言語に翻訳する、Java (Windows、Linux) - Speech Service
+title: クイック スタート:音声を複数の言語に翻訳する、Java (Windows、Linux) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 7a5f722ebf1b31f83561e608f2ffbfe5f98df257
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3c984ccd963f0bb426d3e7a659765255eb56927b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505045"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980615"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で Java のサンプルを詳しく見てみる](https://aka.ms/speech/github-java)

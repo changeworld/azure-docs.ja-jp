@@ -1,24 +1,15 @@
 ---
-title: OS とランタイムのパッチ適用周期 - Azure App Service | Microsoft Docs
-description: Azure App Service で OS とランタイムが更新される方法と、更新プログラムのお知らせを取得する方法について説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: OS とランタイムの修正プログラムの適用頻度
+description: Azure App Service が OS とランタイムを更新する方法、アプリのランタイムと修正プログラムのレベル、および更新プログラムのお知らせを取得する方法について説明します。
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3469c4f11a075ceb958e35e4cfc87a78e60b3882
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1a56fed04399325be315d8d977e5a72223bddac5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074129"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688569"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service での OS とランタイムのパッチ適用
 

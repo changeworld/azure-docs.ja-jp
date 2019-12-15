@@ -1,17 +1,17 @@
 ---
-title: Azure SignalR Service の複数のインスタンスでのスケーリング方法
+title: 複数のインスタンスでスケーリングする - Azure SignalR Service
 description: 多くのスケーリング シナリオでは、大規模なデプロイを作成するために、お客様が複数のインスタンスをプロビジョニングし、それらを一緒に使用しなければならない場合がよくあります。 たとえば、シャーディングでは複数のインスタンスのサポートが必要です。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 1e31bc4133cced793d793c07d2e0ee3df29efddb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672332"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158163"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>複数のインスタンスでの SignalR Service のスケーリング方法
 最新の SignalR Service SDK では、SignalR Service インスタンスの複数のエンドポイントがサポートされています。 この機能を使用して同時接続をスケーリングすることや、リージョンをまたがるメッセージングにこれを使用することができます。

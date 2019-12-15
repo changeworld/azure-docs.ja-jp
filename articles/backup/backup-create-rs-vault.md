@@ -1,20 +1,15 @@
 ---
-title: 'Azure Backup: Recovery Services コンテナーの作成'
+title: Recovery Services コンテナーの作成
 description: この記事では、バックアップと復旧ポイントを格納する Recovery Services コンテナーを作成する方法について説明します。
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-keywords: Recovery Services コンテナー; Azure VM バックアップ; Azure VM 復元;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 30e2f8812b14f27b57ef22e30aea89f19fa56e58
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 144d8cdb870e12474dfc47784749b5f0e466f8bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074874"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273392"
 ---
 # <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
@@ -77,6 +72,13 @@ Azure Backup では、コンテナーのストレージが自動的に処理さ�
 
 > [!NOTE]
 > Recovery Services コンテナーの**ストレージのレプリケーションの種類** (ローカル冗長/geo 冗長) の変更は、コンテナーでバックアップを構成する前に行う必要があります。 バックアップをいったん構成すると、変更オプションは無効になり、**ストレージのレプリケーションの種類**は変更できません。
+
+## <a name="modifying-default-settings"></a>既定の設定を変更する
+
+コンテナーでバックアップを構成する前に、 **[ストレージ レプリケーションの種類]** と **[セキュリティ設定]** の既定の設定を確認することを強くお勧めします。 
+* 既定では、 **[ストレージ レプリケーションの種類]** は **[Geo-redundant]\(geo 冗長\)** に設定されます。 バックアップを構成すると、変更オプションは無効になります。 この[手順](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)に従って、設定を確認、変更します。 
+* 誤った削除や悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナー上で **[論理的な削除]** は既定で **[Enabled]\(有効\)** になっています。 この[手順](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete)に従って、設定を確認、変更します。
+
 
 ## <a name="next-steps"></a>次の手順
 

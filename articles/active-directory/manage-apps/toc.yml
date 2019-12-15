@@ -385,6 +385,12 @@
           href: functions-for-customizing-application-data.md
         - name: プロビジョニング方法の選択
           href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: クラウド HR のプロビジョニング
+      items:
+        - name: SuccessFactors 属性のリファレンス
+          href: sap-successfactors-attribute-reference.md
+        - name: Workday 属性のリファレンス
+          href: workday-attribute-reference.md
     - name: Azure AD Connect プロビジョニング エージェント
       items:
         - name: プロビジョニング エージェントのバージョン履歴

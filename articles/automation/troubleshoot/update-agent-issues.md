@@ -1,30 +1,30 @@
 ---
-title: Azure Update Management での Windows エージェント チェック結果について
-description: Update Management エージェントの問題をトラブルシューティングする方法を説明します。
+title: Azure Update Management での Windows Hybrid Runbook Worker の正常性について理解する
+description: Update Management をサポートする Windows の Hybrid Runbook Worker に関する問題をトラブルシューティングする方法について説明します。
 services: automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: d3099498c3abea428e04d94ca0fcd553e6a0fec6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886398"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850127"
 ---
-# <a name="understand-the-windows-agent-check-results-in-update-management"></a>Update Management での Windows エージェント チェック結果について
+# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Update Management での Windows Hybrid Runbook Worker の正常性について理解する
 
-Update Management でマシンに**準備完了**が表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Worker エージェントの正常性を検査して背後にある問題を判別することができます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
+Update Management でマシンに**準備完了**が表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Runbook Worker エージェントの正常性を検査して、背後にある問題を特定できます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
 
 次の一覧は、マシンが取り得る 3 つの準備状態です。
 
-* **Ready (準備完了)** - Update エージェントがデプロイされ、最後に表示されてから 1 時間以内である。
-* **Disconnected (切断)** -  Update エージェントがデプロイされ、最後に表示されてから 1 時間以上になった。
-* **Not configured (未構成)** - Update エージェントが見つからないか、オンボードを終了していない。
+* **準備完了** - Hybrid Runbook Worker がデプロイされ、最後に表示されてからの経過時間が 1 時間未満である。
+* **切断** -  Hybrid Runbook Worker がデプロイされ、最後に表示されてからの経過時間が 1 時間以上である。
+* **未構成** - Hybrid Runbook Worker が見つからないか、オンボードが終了していない。
 
 > [!NOTE]
 > Azure portal に表示される内容とマシンの現在の状態の間で、わずかに遅延が発生する可能性があります。
@@ -36,9 +36,9 @@ Azure マシンの場合は、ポータルの **[Update エージェントの準
 ![仮想マシンの管理の一覧の更新](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> エージェントの正常性を確認するには、VM が実行されている必要があります。 VM が実行されていない場合は、 **[Start the VM]\(VM を起動\)** ボタンが表示されます。
+> Hybrid Runbook Worker の正常性を確認するには、VM が実行されている必要があります。 VM が実行されていない場合は、 **[Start the VM]\(VM を起動\)** ボタンが表示されます。
 
-「**Update エージェントのトラブルシューティング**」のページで **[チェックの実行]** を選択すると、トラブルシューティング ツールが開始します。 トラブルシューティング ツールでは [[実行コマンド]](../../virtual-machines/windows/run-command.md) を使ってマシンに対してスクリプトを実行し、エージェントの依存関係を検証します。 トラブルシューティング ツールが終了すると、チェック結果が返されます。
+「**Update エージェントのトラブルシューティング**」のページで **[チェックの実行]** を選択すると、トラブルシューティング ツールが開始します。 トラブルシューティング ツールでは [[実行コマンド]](../../virtual-machines/windows/run-command.md) を使ってマシンに対してスクリプトを実行し、依存関係を検証します。 トラブルシューティング ツールが終了すると、チェック結果が返されます。
 
 ![「Update エージェントのトラブルシューティング」のページ](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -50,16 +50,16 @@ Azure マシンの場合は、ポータルの **[Update エージェントの準
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-オペレーティング システムのチェックでは、Hybrid Runbook Worker が次のいずれかのオペレーティング システムを実行しているかどうかを検証します。
+オペレーティング システム チェックでは、Hybrid Runbook Worker が次のいずれかのオペレーティング システムを実行しているかどうかが検証されます。
 
 |オペレーティング システム  |メモ  |
 |---------|---------|
 |Windows Server 2008 R2 RTM、Windows Server 2008 | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2008 R2 SP1 以降 |.NET Framework 4.6.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 5.1 が必要です。  ([Windows Management Framework 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 以降 |.NET Framework 4.6 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 5.1 が必要です。  ([Windows Management Framework 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
-### <a name="net-461"></a>.NET 4.6.1 以降
+### <a name="net-462"></a>.NET 4.6.2
 
-.NET Framework のチェックでは、最小要件の [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981) がインストールされているかどうかが検証されます。
+.NET Framework のチェックでは、最小要件の [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) がインストールされているかどうかが検証されます。
 
 ### <a name="wmf-51"></a>WMF 5.1
 
@@ -206,4 +206,3 @@ CheckResultMessageArguments : {}
 ## <a name="next-steps"></a>次の手順
 
 Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください。
-

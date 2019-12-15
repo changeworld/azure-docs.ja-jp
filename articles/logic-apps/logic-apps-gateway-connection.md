@@ -1,20 +1,17 @@
 ---
-title: オンプレミスのデータ ソースにアクセスする - Azure Logic Apps
+title: オンプレミスのデータ ソースにアクセスする
 description: Azure オンプレミス データ ゲートウェイ リソースを作成することによって、Azure Logic Apps からオンプレミスのデータ ソースに接続する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: arthii, LADocs
+ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 20cdcfdd3795a7614c054ed96b82cc99fc2c5894
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068904"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815191"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
@@ -73,7 +70,7 @@ Azure Logic Apps では、データ ゲートウェイを介した読み取り�
 
 1. Azure portal の検索ボックスに「オンプレミスのデータ ゲートウェイ」と入力し、 **[オンプレミスのデータ ゲートウェイ]** を選択します。
 
-   !["オンプレミス データ ゲートウェイ" を見つける](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
+   !["オンプレミス データ ゲートウェイ" を見つける](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
 1. **[オンプレミスのデータ ゲートウェイ]** で、 **[追加]** を選択します。
 
@@ -92,7 +89,7 @@ Azure Logic Apps では、データ ゲートウェイを介した読み取り�
 
    ゲートウェイ リソースと同じリージョンにあり、同じ Azure アカウントにリンクされているゲートウェイのインストール例を以下に示します。
 
-   ![データ ゲートウェイ リソースを作成するための詳細を指定する](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
+   ![データ ゲートウェイ リソースを作成するための詳細を指定する](./media/logic-apps-gateway-connection/on-premises-data-gateway-create-connection.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -131,7 +128,7 @@ Azure Logic Apps では、データ ゲートウェイを介した読み取り�
 
 1. ロジック アプリのみの API 接続をすべて見つけるには、ロジック アプリのメニューで、 **[開発ツール]** の **[API 接続]** を選択します。
 
-   ![ロジック アプリ メニューで、[API 接続] を選択する](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
+   ![ロジック アプリ メニューで、[API 接続] を選択する](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
 1. 目的のゲートウェイ接続を選択し、 **[API 接続の編集]** を選択します。
 
@@ -140,8 +137,8 @@ Azure Logic Apps では、データ ゲートウェイを介した読み取り�
 
 Azure サブスクリプションに関連付けられているすべての API 接続を見つけるには、次の操作を行います。
 
-* Azure のメイン メニューから、 **[すべてのサービス]**  >  **[Web]**  >  **[API 接続]** に移動します。
-* または、Azure のメイン メニューから **[すべてのリソース]** を選択します。 **[タイプ]** フィルターを **[API 接続]** に設定します。
+* Azure portal メニューから、 **[すべてのサービス]**  >  **[Web]**  >  **[API 接続]** を選択します。
+* または、Azure portal メニューから **[すべてのリソース]** を選択します。 **[タイプ]** フィルターを **[API 接続]** に設定します。
 
 <a name="change-delete-gateway-resource"></a>
 
@@ -149,13 +146,13 @@ Azure サブスクリプションに関連付けられているすべての API 
 
 別のゲートウェイ リソースを作成するには、ゲートウェイのインストールを別のゲートウェイ リソースにリンクするか、ゲートウェイ リソースを削除します。ゲートウェイ リソースは、ゲートウェイのインストールに影響を与えずに削除できます。
 
-1. Azure のメイン メニューで、 **[すべてのリソース]** を選択します。 ゲートウェイ リソースを検索して選択します。
+1. Azure portal メニューから **[すべてのリソース]** を選択するか、任意のページから検索し、 **[すべてのリソース]** を選択します。 ゲートウェイ リソースを検索して選択します。
 
 1. まだ選択していない場合は、ゲートウェイ リソースのメニューで **[オンプレミスのデータ ゲートウェイ]** を選択します。 ゲートウェイ リソース ツールバーで、 **[削除]** を選択します。
 
    例:
 
-   ![Azure でゲートウェイ リソースを削除する](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
+   ![Azure でゲートウェイ リソースを削除する](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 
 <a name="faq"></a>
 

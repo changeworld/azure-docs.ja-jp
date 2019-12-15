@@ -1,5 +1,5 @@
 ---
-title: Azure Storage の開発とテストに Azurite オープンソース エミュレーターを使用する (プレビュー)
+title: ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する
 description: Azurite オープンソース エミュレーター (プレビュー) では、Azure Storage アプリケーションをテストするための無料のローカル環境が提供されます。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,14 +7,14 @@ ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: e611afd6f10154636eb2e0dd08437b4f7468d6b3
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309525"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269472"
 ---
-# <a name="use-the-azurite-open-source-emulator-for-azure-storage-development-and-testing-preview"></a>Azure Storage の開発とテストに Azurite オープンソース エミュレーターを使用する (プレビュー)
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>ローカルでの Azure Storage の開発とテストに Azurite エミュレーターを使用する (プレビュー)
 
 Azurite バージョン 3.2 オープンソース エミュレーター (プレビュー) では、Azure Blob Storage アプリケーションおよび Azure Queue storage アプリケーションをテストするための無料のローカル環境が提供されます。 ローカルでのアプリケーションの動作に満足できたら、クラウドでの Azure Storage アカウントの使用に切り替えることができます。 エミュレーターは、Windows、Linux、および MacOS でのクロスプラットフォーム サポートを提供します。 Azurite v3 は、Azure Blob サービスによって実装された API をサポートします。
 

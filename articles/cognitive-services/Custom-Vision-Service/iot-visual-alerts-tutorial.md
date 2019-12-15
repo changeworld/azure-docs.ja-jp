@@ -6,16 +6,16 @@ services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.subservice: computer-vision
+ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: d146c264ebc2d36f0842f464f4547520546fd363
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9f3802ada79ee87d1a04634f7caac3b1b4286dce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888269"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978034"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>チュートリアル:IoT デバイスで Custom Vision を使用して視覚的な状態を報告する
 
@@ -49,7 +49,7 @@ IoT Visual Alerts アプリは状況に応じて 4 つの異なる状態を切�
 
 * **モデルなし**:操作なしの状態です。 アプリは継続的に 1 秒間スリープ状態になり、カメラを検査します。
 * **トレーニング イメージのキャプチャ中**:この状態では、アプリは画像をキャプチャし、ターゲットの Custom Vision プロジェクトにトレーニング イメージとしてアップロードします。 その後、アプリは 500 ミリ秒間スリープ状態になり、イメージのターゲット数が設定回数キャプチャされるまで操作を繰り返します。 次に、Custom Vision モデルのトレーニングをトリガーします。
-* **トレーニング済みモデルの待機中**:この状態では、アプリは 1 秒ごとに Custom Vision API を呼び出して、ターゲット プロジェクトにトレーニング済みのイテレーションが含まれているかどうかを確認します。 トレーニング済みのイテレーションがあ検出されると、対応する ONNX モデルがローカル ファイルにダウンロードされ、**スコアリング**状態に切り替わります。
+* **トレーニング済みモデルの待機中**:この状態では、アプリは 1 秒ごとに Custom Vision API を呼び出して、ターゲット プロジェクトにトレーニング済みのイテレーションが含まれているかどうかを確認します。 トレーニング済みのイテレーションが検出されると、対応する ONNX モデルがローカル ファイルにダウンロードされ、**スコアリング**状態に切り替わります。
 * **スコアリング**:この状態では、アプリはローカル ONNX モデルに対して Windows ML を使用してカメラから 1 つのフレームを評価します。 最終的なイメージの分類が画面に表示され、IoT Hub にメッセージとして送信されます。 アプリは、新しいイメージをスコアリングする前に 1 秒間スリープ状態になります。
 
 ## <a name="understand-the-code-structure"></a>コードの構造を理解する

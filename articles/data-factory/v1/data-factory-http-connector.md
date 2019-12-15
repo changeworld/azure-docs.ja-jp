@@ -4,20 +4,19 @@ description: Azure Data Factory を使用してオンプレミスまたはクラ
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4133393b7b21394ea397598a5e1651ee370f92f0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e668f44bbc3d2e381edeb80c568a41355584a4ee
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682511"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924174"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP ソースからデータを移動する
 
@@ -152,7 +151,7 @@ Data Factory は現在、HTTP ソースから他のデータ ストアのへの�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-構造、可用性、ポリシーなどのデータセット JSON ファイルの一部のセクションは、すべてのデータセットの型 (Azure SQL Database、Azure Blob Storage、Azure テーブル ストレージ) について同様です。
+構造、可用性、ポリシーなどのデータセット JSON ファイルの一部のセクションは、すべてのデータセットの型 (Azure SQL Database、Azure Blob Storage、Azure Table Storage) について同様です。
 
 データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)をご覧ください。
 

@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL の接続アーキテクチャ
-description: Azure Database for PostgreSQL サーバーの接続アーキテクチャについて説明します。
+title: 接続アーキテクチャ - Azure Database for PostgreSQL - Single Server
+description: Azure Database for PostgreSQL - Single Server の接続アーキテクチャについて説明します。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 5288c3025e523e767082f4ab7cfbb08805a74eaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cbb3c3b3b91bf5111efcf6f2a53cfb40b48f3fe7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500086"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768879"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の接続アーキテクチャ
 この記事では、Azure Database for PostgreSQL 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for PostgreSQL データベース インスタンスに転送されるかについて説明します。

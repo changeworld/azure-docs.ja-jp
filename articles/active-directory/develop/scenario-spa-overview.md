@@ -1,6 +1,6 @@
 ---
 title: JavaScript シングルページ アプリケーションのシナリオの概要 - Microsoft ID プラットフォーム
-description: Microsoft ID プラットフォームを統合するシングルページ アプリケーションを構築する方法 (シナリオの概要) について説明します。
+description: Microsoft ID プラットフォームを使用してシングルページ アプリケーションを構築する方法 (シナリオの概要) について説明します。
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3c4e671473ff6c6fecdc13fe61dbde1d3fb3809
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 77f59e8c628d7ba37aaf258541664e40e1d4a2dc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852514"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764680"
 ---
 # <a name="scenario-single-page-application"></a>シナリオ: シングルページ アプリ
 
@@ -39,19 +39,21 @@ JavaScript SPA のクイック スタートに従って、最初のアプリケ�
 
 ## <a name="overview"></a>概要
 
-最近の Web アプリケーションの多くは、JavaScript または SPA フレームワーク (Angular、Vue.js、React.js など) を使用して記述されたクライアント側のシングルページ アプリケーションとして構築されています。 これらのアプリケーションは、Web ブラウザーで実行され、従来のサーバー側 Web アプリケーションとは異なる認証特性を持ちます。 Microsoft ID プラットフォームにより、シングルページ アプリケーションでユーザーをサインインさせ、[OAuth 2.0 暗黙的フロー](./v2-oauth2-implicit-grant-flow.md)を使用してバックエンド サービスまたは Web API にアクセスするトークンを取得できます。 暗黙的フローにより、アプリケーションから、認証されたユーザーを表す ID トークンを取得し、保護された API の呼び出しに必要なトークンにもアクセスできます。
+多くの最新の Web アプリケーションは、クライアント側のシングル ページ アプリケーションとして構築されています。 開発者は、JavaScript または SPA フレームワーク (Angular、Vue.js、React.js など) を使用してそれらを作成します。 これらのアプリケーションは Web ブラウザーで実行され、その認証には、従来のサーバー側 Web アプリケーションとは異なる特性があります。 
+
+Microsoft ID プラットフォームにより、シングルページ アプリケーションでユーザーをサインインさせ、[OAuth 2.0 暗黙的フロー](./v2-oauth2-implicit-grant-flow.md)を使用してバックエンド サービスまたは Web API にアクセスするトークンを取得できます。 暗黙的フローにより、アプリケーションから、認証されたユーザーを表す ID トークンを取得し、保護された API の呼び出しに必要なトークンにもアクセスできます。
 
 ![シングルページ アプリケーション](./media/scenarios/spa-app.svg)
 
-この認証フローには、Electron、React-Native などのクロスプラットフォーム JavaScript フレームワークを使用したアプリケーション シナリオは含まれません。 これらでは、ネイティブ プラットフォームとの対話にさらに機能が必要になるためです。
+この認証フローには、Electron や React-Native などのクロスプラットフォーム JavaScript フレームワークを使用するアプリケーション シナリオは含まれません。 それらでは、ネイティブ プラットフォームと対話するための追加の機能が必要になります。
 
 ## <a name="specifics"></a>詳細
 
-アプリケーションでこのシナリオを有効にするには、次の要素が必要です。
+アプリケーションでこのシナリオを有効にするには、次のことが必要です。
 
-* Azure AD でのアプリケーションの登録には、暗黙的フローの有効化、およびトークンを返すリダイレクト URI の設定が含まれます。
-* アプリケーション ID などの登録されたアプリケーション プロパティを使用したアプリケーション構成。
-* MSAL ライブラリを使用して認証フローを実行し、サインインしてトークンを取得する。
+* Azure Active Directory (Azure AD) へのアプリケーションの登録。 この登録では、暗黙的フローを有効にし、トークンが返されるリダイレクト URI を設定する必要があります。
+* アプリケーション ID などの登録済みアプリケーション プロパティを使用したアプリケーション構成。
+* Microsoft Authentication Library (MSAL) を使用した、サインインしてトークンを取得するための認証フローの実行。
 
 ## <a name="next-steps"></a>次の手順
 

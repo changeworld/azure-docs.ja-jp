@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 20a08345d8335b4857ca9777efb55f953ee63e9f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ae6ff5fb5a5bfc6ba9299e06bad9afafc1403f3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681550"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671586"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -120,6 +120,14 @@ DW への行単位の挿入を回避するには、シンク設定で **[Enable 
 ```DateFiles/*_201907*.txt```
 
 ワイルドカードを使用すると、パイプラインには 1 つの Data Flow アクティビティだけが含まれます。 BLOB ストアを検索し、ForEach を使用して、その内側で Data Flow の実行アクティビティを使用しながら、一致するすべてのファイルを反復処理させるよりも、この方が効率がよくなります。
+
+### <a name="optimizing-for-cosmosdb"></a>CosmosDB のための最適化
+
+CosmosDB シンクのスループットとバッチ プロパティの設定は、パイプライン データ フロー アクティビティからのそのデータ フローの実行中にのみ有効になります。 元のコレクションの設定は、データ フローの実行後に CosmosDB によって受け入れられます。
+
+* バッチ サイズ: データの行のおおよそのサイズを計算し、rowSize * バッチサイズが 200 万未満であることを確認します。 その場合は、バッチ サイズを増やしてスループットを向上させます。
+* スループット:ここでより高いスループットを設定して、CosmosDB にドキュメントを高速で書き込むことができるようにします。 高いスループットの設定に基づいて、RU コストが高くなることに注意してください。
+*   書き込みスループット予算:1 分あたりの RU の合計よりも小さい値を使用してください。 多数の Spark パーティションが含まれるデータ フローがある場合、予算のスループットを設定すると、これらのパーティション間でより均等にバランスを取ることができます。
 
 ## <a name="next-steps"></a>次の手順
 

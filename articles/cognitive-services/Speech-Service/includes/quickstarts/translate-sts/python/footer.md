@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声間翻訳、Python - Speech Service
+title: クイック スタート:音声間で翻訳する、Python - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 0816102794e5119e10ebe3d99f529e63608cb437
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 34b27151e1f14c573de34bcab4f058046e44595e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505285"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980791"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で Python のサンプルを詳しく見てみる](https://aka.ms/speech/github-python)

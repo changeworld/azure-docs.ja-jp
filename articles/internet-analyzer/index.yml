@@ -10,12 +10,12 @@ metadata:
   author: megan-beatty
   ms.author: mebeatty
   ms.date: 10/16/2019
-  ms.openlocfilehash: d7c9b0c848087048d676a2e30bba40e182e8e673
-  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+  ms.openlocfilehash: f1d8bc4bafe140a8522591e57bf2aa6665120d1f
+  ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/19/2019
-  ms.locfileid: "74185645"
+  ms.lasthandoff: 12/06/2019
+  ms.locfileid: "74896494"
 landingContent:
 - title: Internet Analyzer について
   linkLists:
@@ -37,13 +37,15 @@ landingContent:
       url: internet-analyzer-embed-client.md
     - text: カスタム エンドポイントの構成
       url: internet-analyzer-custom-endpoint.md
+    - text: スコアカードの解釈
+      url: internet-analyzer-scorecard.md
 - title: リソース
   linkLists:
   - linkListType: reference
     links:
     - text: Internet Analyzer の FAQ
       url: internet-analyzer-faq.md
-    - text: スコアカードの解釈
-      url: internet-analyzer-scorecard.md
+    - text: Internet Analyzer のトラブルシューティング
+      url: troubleshoot.md
     - text: Internet Analyzer の CLI リファレンス
       url: https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest

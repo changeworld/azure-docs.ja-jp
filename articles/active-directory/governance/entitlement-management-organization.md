@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a8e5dc43170af8f33ad266edfa02ac5b41ca67a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2dec950f5475a8a64cfecfac1fb25246d6a7aa29
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174145"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561917"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で接続されている組織を追加する
 
@@ -29,7 +29,7 @@ Azure AD のエンタイトルメント管理を利用すると、自分の組�
 
 ## <a name="what-is-a-connected-organization"></a>接続されている組織とは
 
-接続されている組織とは、自分と関係のある外部 Azure AD ディレクトリまたはドメインです。
+接続されている組織とは、ご自身と関係のある外部 Azure AD ディレクトリまたはドメインです。
 
 たとえば、あなたは Woodgrove Bank で働いていて、2 つの外部組織 Graphic Design Institute および Contoso と共同作業を行う必要があるとします。 あなたは、Graphic Design Institute の担当者から Graphic Design Institute では Azure AD を使用していて、ユーザーのユーザー プリンシパル名が `graphicdesigninstitute.com` で終わることを聞きました。 また、Contoso の担当者から Contoso では Azure AD を使用していないが、ユーザーのユーザー プリンシパル名が `contoso.com` で終わることを聞きました。
 
@@ -42,6 +42,10 @@ Azure AD ディレクトリまたはドメインのユーザーの認証方法�
 - Azure AD
 - [直接フェデレーション](../b2b/direct-federation.md)
 - [ワンタイム パスコード](../b2b/one-time-passcode.md) (ドメイン)
+
+接続された組織を追加する方法のデモについては、次のビデオをご覧ください。
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4dskS]
 
 ## <a name="add-a-connected-organization"></a>接続されている組織の追加
 

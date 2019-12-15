@@ -1,20 +1,15 @@
 ---
-title: Azure Functions の関数アプリのリソース デプロイを自動化 | Microsoft Docs
+title: Azure Functions で関数アプリのリソース デプロイを自動化する
 description: 関数アプリをデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。
-author: ggailey777
-manager: gwallace
-keywords: Azure Functions, 関数, サーバーレス アーキテクチャ, コードとしてのインフラストラクチャ, Azure Resource Manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: glenga
-ms.openlocfilehash: 8435aab65d26627de26fb8b5ad0510fcd7c57c33
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9c222937831c0e8017a390b16ef192783e9e564a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575951"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230523"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Functions の関数アプリのリソース デプロイを自動化
 
@@ -62,7 +57,9 @@ Azure Functions のデプロイは通常、次のリソースで構成されて�
 
 さらに、`AzureWebJobsStorage` プロパティを、サイト構成でアプリ設定として指定する必要があります。 関数アプリで監視に Application Insights を使用していない場合は、`AzureWebJobsDashboard` もアプリ設定として指定する必要があります。
 
-`AzureWebJobsStorage` 接続文字列は、Azure Functions ランタイムが内部キューを作成するときに使用します。  Application Insights が有効でない場合、ランタイムでは `AzureWebJobsDashboard` 接続文字列を使用して、Azure テーブル ストレージにログを記録し、ポータルの **[監視]** タブをオンにします。
+
+`AzureWebJobsStorage` 接続文字列は、Azure Functions ランタイムが内部キューを作成するときに使用します。 Application Insights が有効でない場合、ランタイムでは `AzureWebJobsDashboard` 接続文字列を使用して、Azure Table Storage にログを記録し、ポータルの **[監視]** タブをオンにします。
+
 
 こうしたプロパティは、`siteConfig` オブジェクトの `appSettings` コレクションで指定します。
 

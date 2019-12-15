@@ -1,6 +1,6 @@
 ---
 title: Microsoft Authenticator アプリをダウンロードしてインストールする - Azure AD
-description: 2 要素認証用に Microsoft Authenticator アプリをダウンロード、インストール、使用する方法。
+description: 2 要素検証の使用中に ID を検証するために、Microsoft Authenticator アプリをダウンロードしてインストールします。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebe80d44d52ffa348413e51cd5e82e8468537479
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 86bbe9560a4c3520bce5aa006c18f794c8298a54
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820218"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266928"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリのダウンロードとインストール
 

@@ -1,22 +1,18 @@
 ---
-title: 複数の Azure サービスを使用したタスクの自動化 - Azure Logic Apps
+title: 複数の Azure サービスを使用したタスクの自動化
 description: チュートリアル - Azure Logic Apps、Azure Storage、および Azure Functions を使用してメールを処理する自動化ワークフローの作成
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 52c9a23e3e00075e934b9f9f22a835090e02f1b9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 6486427753543e0f4fe9a197b6825a555ef2fc70
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820218"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793466"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>チュートリアル:Azure Logic Apps、Azure Functions、Azure Storage を使用してメール処理のタスクを自動化する
 
@@ -300,7 +296,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![シェイプを折りたたんで詳細を非表示](./media/tutorial-process-email-attachments-workflow/collapse-trigger-shape.png)
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
    この時点でロジック アプリは稼働していますが、メールをチェックすること以外は何もしていません。 次の手順で、ワークフローの続行基準を指定する条件を追加します。
 
@@ -354,7 +350,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    }
    ```
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 ### <a name="test-your-condition"></a>条件をテストする
 
@@ -423,7 +419,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![関数に渡す完成した要求本文](./media/tutorial-process-email-attachments-workflow/add-email-body-for-function-processing-2.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、メールの本文を保存できるように、ストレージ コンテナーに BLOB を作成するアクションを追加します。
 
@@ -462,7 +458,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![完成した "BLOB の作成" アクション](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body-done.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 ### <a name="check-attachment-handling"></a>添付ファイルの処理を確認する
 
@@ -516,7 +512,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    メールに含まれているすべての添付ファイルの配列が、 **[添付ファイル]** フィールドから渡されます。 その配列で渡された各要素に対するアクションが、**For each** ループで反復実行されます。
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、個々の添付ファイルを BLOB として **attachments** ストレージ コンテナーに保存するアクションを追加します。
 
@@ -547,7 +543,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![完成した "BLOB の作成" アクション](./media/tutorial-process-email-attachments-workflow/create-blob-per-attachment-done.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 ### <a name="check-attachment-handling"></a>添付ファイルの処理を確認する
 
@@ -611,7 +607,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    > [!NOTE]
    > **[Content]** フィールド (添付ファイルを保持する配列) など、配列が格納されているフィールドを選択すると、そのフィールドを参照するアクションに "For each" ループが自動的に追加されます。 こうすることで、ロジック アプリは、そのアクションを各配列項目に対して実行できます。 ループを削除するには、配列のフィールドを削除し、その参照アクションをループの外に移動して、ループのタイトル バーにある省略記号 ( **...** ) を選択し、 **[削除]** を選択します。
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、ロジック アプリをテストします。この時点で、ロジック アプリは次の例のようになっています。
 

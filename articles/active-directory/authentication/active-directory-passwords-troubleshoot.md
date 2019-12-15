@@ -1,23 +1,23 @@
 ---
-title: セルフサービスによるパスワードのリセットのトラブルシューティング - Azure Active Directory
+title: セルフサービスのパスワード リセットをトラブルシューティングする - Azure Active Directory
 description: Azure AD のセルフサービスのパスワード リセットのトラブルシューティング
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 003ceb19fafade4972ebb0cf4e60ceda34dc1928
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a22c0cc922e021edc37dfbb2d89fdd20c77b2c87
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893444"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848767"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービスのパスワードのリセットのトラブルシューティング
 

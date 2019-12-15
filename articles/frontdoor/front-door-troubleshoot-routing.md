@@ -1,5 +1,5 @@
 ---
-title: トラブルシューティング - Azure Front Door Service の構成の問題のトラブルシューティング | Microsoft Docs
+title: Azure Front Door Service の構成に関する問題のトラブルシューティング
 description: このチュートリアルでは、Front Door で発生する可能性のある、一般的な問題のいくつかを自己解決する方法を説明します。
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c0d6303620b92368e422b54beab4f9c346d022a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335887"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184559"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>ルーティングの一般的な問題のトラブルシューティング
 この記事では、Azure Front Door Service の構成で、よく発生する可能性のあるルーティングの問題をトラブルシューティングする方法について説明します。 

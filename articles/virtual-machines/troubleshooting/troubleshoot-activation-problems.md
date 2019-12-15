@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: f3ad58c4094e9f39bcf9782b7b98e351e9d7809b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a1c2049d7355ab946dbf426ec71f7f6178b8f153
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058146"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819107"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
@@ -26,7 +26,7 @@ ms.locfileid: "71058146"
 
 ## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Azure Virtual Machines の Windows 製品ライセンス認証の Azure KMS エンドポイントについて
 
-Azure では、KMS ライセンス認証に対して、VM が存在するクラウド リージョンに応じたエンドポイント使用します。 このトラブルシューティング ガイドを使用する際は、ご利用のリージョンに適用される適切な KMS エンドポイントを使用してください。
+Azure では、KMS (キー管理サービス) ライセンス認証に対して、VM が存在するクラウド リージョンに応じたエンドポイントが使用されます。 このトラブルシューティング ガイドを使用する際は、ご利用のリージョンに適用される適切な KMS エンドポイントを使用してください。
 
 * Azure パブリック クラウド リージョン: kms.core.windows.net:1688
 * Azure China 21Vianet 国内クラウド リージョン: kms.core.chinacloudapi.cn:1688
@@ -117,7 +117,7 @@ Azure Windows VM をライセンス認証しようとすると、次の例のよ
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>Azure Marketplace から Windows Server 2016 を作成しました。 Windows Server 2016 をライセンス認証するために KMS キーを構成する必要はありますか? 
 
  
-いいえ。 Azure Marketplace のイメージでは、適切な KMS クライアント セットアップ キーが既に構成されています。 
+No. Azure Marketplace のイメージでは、適切な KMS クライアント セットアップ キーが既に構成されています。 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>Windows ライセンス認証は、VM が Azure Hybrid Use Benefit (HUB) を使用しているかどうかにかかわらず、同じように動作しますか? 
 

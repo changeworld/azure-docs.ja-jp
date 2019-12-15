@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 4ecb0189736ca2787f0725fb471ef8a22252185c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.author: Zhchia
+ms.openlocfilehash: 73991efa2e98ff033987f1ce172d24fe3ecddb96
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641516"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144587"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>チュートリアル:Oracle Fusion ERP を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -52,7 +52,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 * Oracle Fusion ERP にユーザーを割り当てるときは、割り当てダイアログで、有効なアプリケーション固有ロール (使用可能な場合) を選択する必要があります。 既定のアクセス ロールのユーザーは、プロビジョニングから除外されます。
 
-## <a name="setup-oracle-fusion-erp-for-provisioning"></a>プロビジョニングのために Oracle Fusion ERP を設定する
+## <a name="set-up-oracle-fusion-erp-for-provisioning"></a>プロビジョニングのために Oracle Fusion ERP を設定する
 
 Azure AD での自動ユーザー プロビジョニング用に Oracle Fusion ERP を構成する前に、Oracle Fusion ERP で SCIM プロビジョニングを有効にする必要があります。
 
@@ -95,7 +95,10 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Oracle
 このセクションでは、Azure AD でのユーザー、グループ、またはその両方の割り当てに基づいて、Oracle Fusion ERP でユーザー、グループ、またはその両方が作成、更新、および無効化されるように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> Oracle Fusion ERP では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Oracle Fusion ERP シングル サインオンのチュートリアル](oracle-fusion-erp-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> [Oracle Fusion ERP シングル サインオンのチュートリアル](oracle-fusion-erp-tutorial.md)で説明されている手順に従うことで、Oracle Fusion ERP に対して SAML ベースのシングル サインオンを有効にすることもできます。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+
+> [!NOTE]
+> Oracle Fusion ERP の SCIM エンドポイントについて詳しくは、「[Oracle アプリケーション クラウドの一般的な機能の REST API](https://docs.oracle.com/en/cloud/saas/applications-common/18b/farca/index.html)」をご覧ください。
 
 ### <a name="to-configure-automatic-user-provisioning-for-fuze-in-azure-ad"></a>Azure AD で Fuze の自動ユーザー プロビジョニングを構成するには、次の操作を行います。
 
@@ -128,28 +131,42 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Oracle
 8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Oracle Fusion ERP]\(Azure Active Directory ユーザーを Oracle Fusion ERP に同期する\)** を選択します。
 
     ![Oracle Fusion ERP での SCIM の追加](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
-    
+
 9. **[属性マッピング]** セクションで、Azure AD から Oracle Fusion ERP に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Oracle Fusion ERP のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
     ![Oracle Fusion ERP での SCIM の追加](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
 
-10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+10. **[マッピング]** セクションで、 **[Synchronize Azure Active Directory Groups to Oracle Fusion ERP]\(Azure Active Directory グループを Oracle Fusion ERP に同期する\)** を選択します。
 
-11. Oracle Fusion ERP に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
+    ![Oracle Fusion ERP グループのマッピング](media/oracle-fusion-erp-provisioning-tutorial/groupmappings.png)
+
+11. **[属性マッピング]** セクションで、Azure AD から Oracle Fusion ERP に同期されるグループ属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新操作で Oracle Fusion ERP のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+
+    ![Oracle Fusion ERP グループの属性](media/oracle-fusion-erp-provisioning-tutorial/groupattributes.png)
+
+12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+
+13. Oracle Fusion ERP に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニングの状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
-12. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Oracle Fusion ERP にプロビジョニングするユーザー、グループ、またはこれらの両方を定義します。
+14. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Oracle Fusion ERP にプロビジョニングするユーザー、グループ、またはこれらの両方を定義します。
 
     ![プロビジョニングのスコープ](common/provisioning-scope.png)
 
-13. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
+15. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
     これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Oracle Fusion ERP に対して実行されたすべてのアクションが記載されています。
 
-    Azure AD プロビジョニング ログの読み方について詳しくは、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+    Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
+
+## <a name="connector-limitations"></a>コネクタの制限事項
+
+* Oracle Fusion ERP では、SCIM エンドポイントに対して基本認証のみがサポートされています。
+* Oracle Fusion ERP では、グループ プロビジョニングはサポートされていません。
+* Oracle Fusion ERP のロールは、Azure AD のグループにマップされます。 Azure AD から Oracle Fusion ERP のユーザーにロールを割り当てるには、Oracle Fusion ERP でロールの後に名前が付けられている目的の Azure AD グループに、ユーザーを割り当てる必要があります。
 
 ## <a name="additional-resources"></a>その他のリソース
 

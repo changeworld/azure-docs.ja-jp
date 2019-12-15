@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9efaeb9d3fe0ec8684f10c58897f5490d0f28cb9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182271"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786488"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
 
@@ -269,7 +269,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
  
     ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure12.png)
 
-1. アプリケーションがデプロイされたら、 **[Finish]\(完了\)** をクリックします。
+1. アプリケーションが構成されたら、 **[Finish]\(完了\)** をクリックします。
 
     ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure13.png)
 

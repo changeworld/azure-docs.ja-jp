@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120323"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167869"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,7 +32,7 @@ ms.locfileid: "74120323"
 > [!NOTE]
 > G Suite コネクタは最近、2019 年 10 月に更新されました。 G Suite コネクタに加えられた変更には、次のものがあります。
 - G Suite の追加のユーザーおよびグループ属性に対するサポートが追加されました。 
-- G Suite ターゲットの属性名が、[ここで](/azure/active-directory/manage-apps/customize-application-attributes)定義されている内容に一致するように更新されました。
+- G Suite ターゲットの属性名が、[ここで](https://developers.google.com/admin-sdk/directory)定義されている内容に一致するように更新されました。
 - 既定の属性マッピングが更新されました。
 
 ## <a name="prerequisites"></a>前提条件
@@ -129,6 +129,9 @@ Azure AD で自動ユーザー プロビジョニング用に G Suite を構成�
 > [!TIP]
 > [G Suite のシングル サインオン](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial)に関するチュートリアルで提供されている手順に従って、G Suite で SAML ベースのシングル サインオンを有効にすることも選択できます。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
+> [!NOTE]
+> G Suite の Directory API エンドポイントについて詳しくは、[Directory API](https://developers.google.com/admin-sdk/directory) に関するページをご覧ください。
+
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Azure AD で G Suite の自動ユーザー プロビジョニングを構成するには:
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
@@ -196,15 +199,6 @@ Azure AD で自動ユーザー プロビジョニング用に G Suite を構成�
 これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用すると、進行状況を監視したり、G Suite 上で Azure AD プロビジョニング サービスによって実行されたすべてのアクションが記載されているプロビジョニング アクティビティ レポートへのリンクに従ったりできます。
 
 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」をご覧ください。
-
-> [!NOTE]
-> G Suite へのユーザー プロビジョニングを自動化するための別の実行可能なオプションは、[Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en) の使用です。このオプションは、オンプレミスの Active Directory ID を G Suite にプロビジョニングします。
-
-## <a name="common-issues"></a>一般的な問題
-* G Suite では、プロビジョニングされたすべてのユーザーが確認済みドメインに属している必要があります。 プロビジョニングするユーザーに、G Suite の確認済みドメインの UPN が付いていることを確認します。 未確認ドメインのユーザーがプロビジョニングの対象となっている場合、"GoogleAppsInvalidDomain" などのエラーが[プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)に表示されます。 [スコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を使用すると、このようなエラーを回避し、未確認ドメインのユーザーが対象外になるようにすることができます。
-    * ターゲットの属性: userPrincipalName
-    * 演算子:REGEX MATCH または NOT REGEX MATCH
-    * 値: .*@domain.com
 
 ## <a name="additional-resources"></a>その他のリソース
 

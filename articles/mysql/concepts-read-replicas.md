@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL の読み取りレプリカ。
+title: 読み取りレプリカ - Azure Database for MySQL。
 description: 'Azure Database for MySQL の読み取りレプリカについて次の内容を説明します: リージョンの選択、レプリカの作成、レプリカへの接続、レプリケーションの監視、レプリケーションの停止。'
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.openlocfilehash: 6ad71cecfd088a92bdd41ae13cb530c286ebea4c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/03/2019
+ms.openlocfilehash: f3a6da6888b823c637411c508c949686fc378e58
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970393"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790103"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -41,7 +41,9 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 ### <a name="universal-replica-regions"></a>ユニバーサル レプリカ リージョン
 マスター サーバーが配置されている場所に関係なく、次のいずれかのリージョンに読み取りレプリカを作成できます。 サポートされているユニバーサル レプリカ リージョンは次のとおりです。
 
-オーストラリア東部、オーストラリア南東部、米国中部、東アジア、米国東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部、米国西部 2。
+オーストラリア東部、オーストラリア南東部、米国中部、東アジア、米国東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部。
+
+*米国西部 2 は、リージョン間レプリカの場所として一時的に使用できません。
 
 
 ### <a name="paired-regions"></a>ペアになっているリージョン
@@ -69,7 +71,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 ## <a name="connect-to-a-replica"></a>レプリカへの接続
 
-作成されたレプリカでは、マスター サーバーのファイアウォール規則または VNet サービス エンドポイントは継承されません。 これらの規則は、レプリカに対して個別に設定する必要があります。
+レプリカでは、作成時にマスター サーバーのファイアウォール規則または VNet サービス エンドポイントが継承されます。 その後、これらのルールはマスター サーバーからは独立します。
 
 レプリカの管理者アカウントは、マスター サーバーから継承されます。 マスター サーバー上のすべてのユーザー アカウントが、読み取りレプリカにレプリケートされます。 マスター サーバー上で使用可能なユーザー アカウントを使って読み取りレプリカにのみ接続できます。
 
@@ -121,6 +123,8 @@ Azure Database for MySQL は、Azure Monitor に **[Replication lag in seconds]\
 
 > [!IMPORTANT]
 > マスター サーバー構成が新しい値に更新される前に、レプリカ構成をそれと同等以上の値に更新してください。 このアクションにより、レプリカがマスターのどのような変更にも追従できるようになります。
+
+ファイアウォール規則、仮想ネットワーク規則、およびパラメーター設定は、レプリカの作成時にマスター サーバーからレプリカに継承されます。 その後、レプリカの規則は独立しています。
 
 ### <a name="stopped-replicas"></a>停止されたレプリカ
 

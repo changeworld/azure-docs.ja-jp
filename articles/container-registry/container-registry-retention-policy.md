@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry でタグなしマニフェストを保持するポリシー
+title: タグなしマニフェストを保持するポリシー
 description: Azure コンテナー レジストリで保持ポリシーを有効化して、指定期間後にタグなしマニフェストを自動で削除する方法について説明します。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 10/02/2019
-ms.author: danlep
-ms.openlocfilehash: 79b3e48373114bfcee6dca2e6142f23bed1699e6
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972646"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454821"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>タグなしマニフェストの保持ポリシーの設定
 

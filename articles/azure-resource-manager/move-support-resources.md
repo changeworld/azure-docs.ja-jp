@@ -1,17 +1,14 @@
 ---
-title: Azure リソースの種類別の移動操作のサポート
+title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループまたはサブスクリプションに移動できる Azure リソースの種類を一覧表示します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 10/24/2019
-ms.author: tomfitz
-ms.openlocfilehash: 05f7d022588eee0e5e97f10d6300da04c4be6270
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b4a6f448807dd82b2c81cc207070d30a823151c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161942"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707011"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 この記事では、Azure リソースの種類は、移動操作をサポートしているかどうかを示します。 また、リソースを移動するときに考慮すべき特別な条件に関する情報も提供します。
@@ -1271,9 +1268,9 @@ ms.locfileid: "73161942"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
-> | account | はい | はい |
-> | account / extension | はい | はい |
-> | account/project | はい | はい |
+> | account | いいえ | いいえ |
+> | account / extension | いいえ | いいえ |
+> | account/project | いいえ | いいえ |
 
 > [!IMPORTANT]
 > Azure DevOps のサブスクリプションを変更するには、[change the Azure subscription used for billing (課金に使用される Azure サブスクリプションの変更)](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) に関する記事をご覧ください。

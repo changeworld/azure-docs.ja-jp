@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467197"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707946"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
-Azure Personalizer は、ユーザーのリアルタイムの集団動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースの API サービスです。
+Azure Personalizer は、ユーザーのリアルタイムの集団動作から学習し、ユーザーに表示する最良のエクスペリエンスをアプリケーションで選択できるようにするクラウドベースの API サービスです。
 
 * ユーザーに関する情報とコンテンツを提供し、ユーザーに表示する最上位のアクションを受信します。 
 * Personalizer を使用する前に、データのクリーンアップやラベル付けを行う必要はありません。
@@ -60,8 +60,8 @@ Personalizer は、ユーザー プロファイル情報を保持および管理
 
 Personalizer サービスには、次の 2 つの API があります。
 
-* ユーザーに関する情報 (_特徴_) および個人用に設定するコンテンツ (_アクション_) を送信します。 Personalizer は最上位のアクションで応答します。
-* ランク付けが[報酬スコア](concept-rewards.md)としてどの程度機能したかについて Personalizer にフィードバックを送信します。 
+* *Rank*: 現在の "_コンテキスト_" で表示する "_アクション_" を決めるには、Rank API を使用します。 アクションは JSON オブジェクトの配列として、それぞれの ID と情報 ("_機能_") と共に送信されます。一方、コンテキストは、別の JSON オブジェクトとして送信されます。 この API からは、アプリケーションがユーザーにレンダリングすべき actionId が返されます。
+* *報酬*: アプリケーションに対してユーザーによる対話操作が行われたら、個人用設定がどの程度うまく機能しているかを 0 から 1 までの数値として測定し、[報酬スコア](concept-rewards.md)として送信します。 
 
 ![個人用設定のイベントの基本的なシーケンス](media/what-is-personalizer/personalization-intro.png)
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 4634519f55582a3184472d28acfd98fa849be86a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 135b425ca87a309bc171e252d8ff04b2027a3c50
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497765"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213913"
 ---
 # <a name="module-k-means-clustering"></a>モジュール:K-Means クラスタリング
 
@@ -141,4 +141,4 @@ K-Means は、最も単純であり、よく知られている "*教師なし*" 
   
 -   メトリックを変えるか、さらに反復処理して、複数のモデルを作成します。  
   
-一般に、クラスタリング モデルでは、どのような構成でもローカルで最適化された一連のクラスターが生成される可能性があります。 つまり、モデルから返される一連のクラスターは現在のデータ ポイントのみに適合し、他のデータに一般化することはできません。 別の初期構成を使用した場合、K-Means 法では、別の、場合によっては優れた構成が見つかる可能性があります。 
+一般に、クラスタリング モデルでは、どのような構成でもローカルで最適化された一連のクラスターが生成される可能性があります。 つまり、モデルから返される一連のクラスターは現在のデータ ポイントのみに適合し、他のデータに一般化することはできません。 別の初期構成を使用した場合、K-Means 法では、別の優れた構成が見つかる可能性があります。 

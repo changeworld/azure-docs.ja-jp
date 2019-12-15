@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f35c9c3c6c974c79dc849425fc91b532aed4d22
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755699"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704997"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure Active Directory Domain Services マネージド ドメインに Windows Server 仮想マシンを参加させる
 
@@ -93,7 +93,7 @@ Windows Server VM を作成して、それを Azure AD DS マネージド ドメ
     | 既存のサブネットの名前      | 既存の仮想ネットワーク サブネットの名前 (*Workloads* など)。 |
     | DNS ラベル プレフィックス          | VM に使用する DNS 名を入力します (*myvm* など)。 |
     | VM サイズ                   | VM サイズを指定します (*Standard_DS2_v2* など)。 |
-    | 参加するドメイン            | Azure AD DS マネージド ドメインの DNS 名 (*contoso.com* など)。 |
+    | 参加するドメイン            | Azure AD DS マネージド ドメインの DNS 名 (*aadds.contoso.com* など)。 |
     | ドメイン ユーザー名           | VM をマネージド ドメインに参加させるために使用する必要がある、Azure AD DS マネージド ドメインでのユーザー アカウント。 このアカウントは、 *[Azure AD DC administrators]\(Azure AD DC 管理者\)* グループのメンバーになっている必要があります。 |
     | ドメイン パスワード           | 前の設定で指定したユーザー アカウントのパスワード。 |
     | オプションの OU パス          | VM を追加するカスタム OU。 このパラメーターに値を指定しない場合、VM は既定の *[AAD DC Computers]\(AAD DC コンピューター\)* の OU に追加されます。 |

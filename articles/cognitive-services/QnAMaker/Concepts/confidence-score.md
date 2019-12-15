@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/19/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a80c61efbcbff569f5fed53734def3979ed70616
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e2f7136ea7b973386eeb746a74ad09fadb490e83
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820777"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229117"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。 
@@ -71,8 +71,16 @@ ms.locfileid: "73820777"
 複数の応答の信頼度スコアが似ている場合は、クエリが一般的すぎるために、複数の回答で信頼度が等しくなっている可能性があります。 QnA の構造を改善して、すべての QnA エンティティが明確な意図を持つようにすることを試してください。
 
 
-## <a name="confidence-score-differences"></a>信頼度スコアの違い
-コンテンツが同じ場合でも、ナレッジ ベースのテスト バージョンと公開バージョンの間で、回答の信頼度スコアが、無視できるほどですが、変化する場合があります。 これは、テストのコンテンツと公開されているナレッジ ベースが、別の Azure Cognitive Search インデックスに配置されているためです。 ナレッジ ベースを公開すると、ナレッジ ベースの質問と回答コンテンツが、Azure Search のテスト インデックスから実稼働インデックスへ移動されます。 [公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)のしくみを確認してください。
+## <a name="confidence-score-differences-between-test-and-production"></a>テストと実稼働の間の信頼度スコアの違い
+コンテンツが同じ場合でも、ナレッジ ベースのテスト バージョンと公開バージョンの間で、回答の信頼度スコアが、無視できるほどですが、変化する場合があります。 これは、テストのコンテンツと公開されているナレッジ ベースが、別の Azure Cognitive Search インデックスに配置されているためです。 
+
+テスト インデックスはナレッジ ベースのすべての QnA ペアを保持します。 テスト インデックスに対してクエリを実行すると、クエリはインデックス全体に適用され、結果はその特定のナレッジ ベースのパーティションに制限されます。 テスト クエリの結果がナレッジ ベースを検証する機能に悪影響を与える場合は、次のことができます。
+* 次のいずれかを使用してナレッジ ベースを整理します。
+    * 1 つのリソースを 1 つの KB に制限する: 単一の QnA リソース (および結果の Azure Cognitive Search テスト インデックス) を 1 つのナレッジ ベースに制限します。 
+    * 2 つのリソース (テストに 1 つ、実稼働に 1 つ): 2 つの QnA Maker リソースを、1 つはテストに使用し (独自のテスト インデックスと実稼働インデックスを含みます)、もう 1 つは製品用に使用します (こちらも独自のテスト インデックスと実稼働インデックスを含みます)。
+* また、テストと実稼働の両方のナレッジ ベースに対してクエリを実行する場合は、 **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** などの同じパラメーターを常に使用します。
+
+ナレッジ ベースを公開すると、ナレッジ ベースの質問と回答コンテンツが、Azure Search のテスト インデックスから実稼働インデックスへ移動されます。 [公開](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)のしくみを確認してください。
 
 異なるリージョンにナレッジ ベースがある場合は、各リージョンによって独自の Azure Cognitive Search インデックスが使用されます。 異なるインデックスが使用されるため、スコアはまったく同じにはなりません。 
 

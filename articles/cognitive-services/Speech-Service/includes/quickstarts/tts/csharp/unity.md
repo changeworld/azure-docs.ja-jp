@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する (C# (Unity)) - Speech Service
+title: クイック スタート:音声を合成する、C# (Unity) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: このガイドでは、Unity と Unity 用 Speech SDK を使用してテキスト読み上げアプリケーションを作成します。 完了すると、テキストから音声を合成し、デバイスのスピーカーにリアルタイムで出力できます。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 281fbcf3f42160b18adcad3f06f6ef4a7b8de243
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f3b3d68e0154913e3eb6d101965ad33530502954
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504901"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818124"
 ---
 > [!NOTE]
 > Unity では、Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM、ARM64)、Android (x86、ARM32、ARM64)、および iOS (x64 シミュレーター、ARM32 および ARM64) がサポートされています。
@@ -64,7 +64,7 @@ ms.locfileid: "73504901"
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/text-to-speech/Assets/Scripts/HelloWorld.cs#code)]
 
-1. `YourSubscriptionKey` という文字列を探し、実際の Speech Services のサブスクリプション キーに置き換えます。
+1. `YourSubscriptionKey` という文字列を探し、実際の Speech サービスのサブスクリプション キーに置き換えます。
 
 1. `YourServiceRegion` という文字列を探し、実際のサブスクリプションに関連付けられている[リージョン](~/articles/cognitive-services/Speech-Service/regions.md)に置き換えます。 たとえば、無料試用版を使用している場合、リージョンは `westus` になります。
 
@@ -83,7 +83,7 @@ ms.locfileid: "73504901"
 ## <a name="run-the-application-in-the-unity-editor"></a>Unity エディターでアプリケーションを実行する
 
 * Unity エディターのメニュー バーの下のツール バーの **[Play]\(再生\)** を選択します。
-* アプリの起動後、入力フィールドに何かテキストを入力して、ボタンを選択します。 テキストが Speech Services に転送されて音声に合成され、スピーカーで再生されます。
+* アプリの起動後、入力フィールドに何かテキストを入力して、ボタンを選択します。 テキストが Speech サービスに転送されて音声に合成され、スピーカーで再生されます。
 
   [![Unity の [Game]\(ゲーム\) ウィンドウで実行中のクイックスタートのスクリーンショット](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-inline.png)](~/articles/cognitive-services/speech-service/media/sdk/qs-tts-csharp-unity-output-expanded.png#lightbox)
 

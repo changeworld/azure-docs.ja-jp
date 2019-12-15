@@ -1,17 +1,17 @@
 ---
-title: Azure CLI、REST API から Azure Database for PostgreSQL - Single Server の読み取りレプリカを管理する
+title: 読み取りレプリカを管理する - Azure CLI、REST API - Azure Database for PostgreSQL - Single Server
 description: Azure CLI と REST API から Azure Database for PostgreSQL - Single Server の読み取りレプリカを管理する方法について説明します
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: e146a0f42b6487545321ebfbc9ec523da5e78c8a
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: fb0803987428ced688e83a37fae36c61b63a28a8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70995347"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770120"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Azure CLI、REST API から読み取りレプリカを作成および管理する
 
