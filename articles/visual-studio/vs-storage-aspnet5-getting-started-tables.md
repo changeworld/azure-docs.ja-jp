@@ -26,7 +26,7 @@ ms.locfileid: "72298818"
 
 この記事では、Visual Studio の**接続済みサービス**機能を使用して ASP.NET Core プロジェクトで Azure ストレージ アカウントを参照または作成した後に、Visual Studio で Azure Table Storage の使用を開始する方法について説明します。 **接続済みサービス**の操作によって、プロジェクト内の Azure Storage にアクセスする適切な NuGet パッケージがインストールされ、プロジェクトの構成ファイルにストレージ アカウントの接続文字列が追加されます。 (Azure Storage の一般情報については、「[Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)」をご覧ください。)
 
-Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。 Azure Table Storage の使用に関する全般的な情報については、「 [.NET を使用して Azure Table Storage を使用する](../storage/storage-dotnet-how-to-use-tables.md)」をご覧ください。
+Azure Table Storage サービスを使用すると、大量の構造化データを格納できるようになります。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。 Azure Table Storage の使用に関する全般的な情報については、「 [.NET を使用して Azure Table Storage を使用する](../storage/storage-dotnet-how-to-use-tables.md)」をご覧ください。
 
 最初に、ストレージ アカウント内にテーブルを作成します。 この記事ではその後、C# でテーブルを作成する方法と、テーブル エントリの追加、変更、読み取り、および削除などの基本的なテーブル操作を実行する方法を示します。  コードでは .NET 用の Azure Storage クライアント ライブラリを使用します。 ASP.NET の詳細については、 [ASP.NET](https://www.asp.net)に関するページを参照してください。
 
