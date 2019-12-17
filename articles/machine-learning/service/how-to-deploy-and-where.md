@@ -520,7 +520,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 推論構成を利用したカスタム Docker イメージの使用については、[カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)に関するページを参照してください。
 
-### <a name="3-define-your-deployment-configuration"></a>手順 3.デプロイ構成を定義する
+### <a name="3-define-your-deployment-configuration"></a>3.デプロイ構成を定義する
 
 モデルをデプロイする前にデプロイ構成を定義する必要があります。 *デプロイ構成は、Web サービスがホストされるコンピューティング ターゲットに固有となります*。 たとえば、モデルをローカルでデプロイするときに、サービスが要求を受け入れるポートを指定する必要があります。 デプロイ構成は、エントリ スクリプトの一部ではありません。 これは、モデルとエントリ スクリプトをホストするコンピューティング先の特性を定義するために使用されます。
 
