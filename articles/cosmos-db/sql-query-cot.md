@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB クエリ言語の COT
-description: Azure Cosmos DB での SQL システム関数 COT について学習します。
+description: Azure Cosmos DB の Cotangent (COT) SQL システム関数で、数値式で指定されたラジアン単位の角度の三角関数コタンジェントを返す方法について説明します。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: d980319730e69fdcb529272ba1b8fb48d2b5b230
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: f049d1295eef3e6a45abeaafe8c22d376f90abe1
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351252"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871501"
 ---
 # <a name="cot-azure-cosmos-db"></a>COT (Azure Cosmos DB)
  数値式で指定されたラジアン単位の角度の三角関数コタンジェントを返します。  
@@ -50,5 +50,5 @@ SELECT COT(124.1332) AS cot
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Cosmos DB の数学関数](sql-query-mathematical-functions.md)
-- [システム関数 (Azure Cosmos DB)](sql-query-system-functions.md)
+- [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 38d86a9ed82c3a242364e788cce371f83575c1ea
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108725"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996646"
 ---
 # <a name="application-gateway-configuration-overview"></a>アプリケーション ゲートウェイ構成の概要
 
@@ -61,10 +61,10 @@ Application Gateway は、インスタンスごとに 1 つのプライベート
 
 このシナリオでは、Application Gateway サブネット上の NSG を使用します。 次の制約は、この優先順位でサブネットに適用します。
 
-1. ソース IP または IP 範囲を設定し、宛先を Application Gateway サブネット全体、または構成された特定のプライベート フロントエンド IP への着信トラフィックを許可します。 NSG はパブリック IP では機能しません。
-2. [バックエンドの正常性通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)のために、Application Gateway v1 SKU の場合はポート 65503 から 65534 への、 v2 SKU の場合はポート 65200 から 65535 への、すべてのソースからの着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
-3. [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)で Azure Load Balancer プローブ (*AzureLoadBalancer* タグ) と仮想ネットワーク通信 (*VirtualNetwork* タグ) を受信方向で許可します。
-4. 「すべて拒否」の規則を使用して、その他すべての着信トラフィックをブロックします。
+1. ソース IP または IP 範囲および宛先から、Application Gateway サブネット全体、または構成された特定のプライベート フロントエンド IP への着信トラフィックを許可します。 NSG はパブリック IP では機能しません。
+2. Application Gateway v1 SKU の場合はポート 65503 から 65534 への、[バックエンドの正常性通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)用の v2 SKU の場合はポート 65200 から 65535 への、すべてのソースからの着信要求を許可します。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 適切な証明書が配置されていない外部エンティティは、そのようなエンドポイントに対する変更を開始できません。
+3. [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview)で着信 Azure Load Balancer プローブ (*AzureLoadBalancer* タグ) と受信仮想ネットワーク トラフィック (*VirtualNetwork* タグ) を許可します。
+4. すべて拒否規則を使用して、その他すべての着信トラフィックをブロックします。
 5. インターネットのすべての宛先への送信トラフィックを許可します。
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>アプリケーション ゲートウェイ サブネットでサポートされるユーザー定義ルート
@@ -256,7 +256,7 @@ HTTP から HTTPS へのリダイレクトの詳細については、以下を�
 
 ### <a name="connection-draining"></a>接続のドレイン
 
-接続のドレインを使用すると、計画的なサービスの更新中にバックエンド プール メンバーを正常に削除することができます。 この設定は、規則の作成中にバックエンド プールのすべてのメンバーに適用することができます。 これで、バックエンド プールの登録を解除するすべてのインスタンスが新しい要求を受け取らなくなります。 その間、構成された制限時間内に既存の要求を完了できます。 接続のドレインは、バックエンド プールから明示的に削除されるバックエンド インスタンスに適用されます。
+接続のドレインを使用すると、計画的なサービスの更新中にバックエンド プール メンバーを正常に削除することができます。 この設定は、規則の作成中にバックエンド プールのすべてのメンバーに適用することができます。 これで、バックエンド プールの登録を解除するすべてのインスタンスが既存の接続を維持して、構成可能なタイムアウトに対して進行中の要求を処理し、新しい要求や接続を受信しないことが保証されます。 これに対する唯一の例外は、ゲートウェイによって管理されるセッション アフィニティのために登録を解除するインスタンス宛ての要求です。これらは、登録を解除するインスタンスによって引き続きプロキシ処理されます。 接続のドレインは、バックエンド プールから明示的に削除されるバックエンド インスタンスに適用されます。
 
 ### <a name="protocol"></a>Protocol
 

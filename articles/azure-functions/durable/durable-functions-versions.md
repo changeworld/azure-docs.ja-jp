@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 93c35eb4f69cc4f9b16f669d96c2df53f50bcf84
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 789af25cc37183e9eeae253e1e8529615abdd308
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231188"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849804"
 ---
 # <a name="durable-functions-versions-overview"></a>Durable Functions のバージョンの概要
 
@@ -55,7 +55,7 @@ Durable Functions 2.x では、いくつかの重大な変更が導入されて�
 Durable Functions 2.x では、新しいホストの json スキーマが使用されます。 1\.x からの主な変更点は次のとおりです。
 
 * ストレージ固有の構成用の `"storageProvider"` (および `"azureStorage"` サブセクション)。
-* 追跡とログ記録の構成用の `"tracking"`。
+* 追跡とログ記録の構成用の `"tracing"`。
 * イベント グリッド通知構成用の `"notifications"` (および `"eventGrid"` サブセクション)
 
 詳細については、[Durable Functions host. json のリファレンス ドキュメント](durable-functions-bindings.md#durable-functions-2-0-host-json)を参照してください。

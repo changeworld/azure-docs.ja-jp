@@ -1,5 +1,6 @@
 ---
-title: カスタム ポリシーに関する開発者向けのメモ - Azure Active Directory B2C | Microsoft Docs
+title: カスタム ポリシーに関する開発者向けのメモ
+titleSuffix: Azure AD B2C
 description: カスタム ポリシーで Azure AD B2C を構成および管理する開発者向けのメモ。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f8d1ac217647ee292338da875671ef8bd3f79db
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: edbd31434715c380badf15118b0779885aed700f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227207"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949757"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -60,7 +61,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 
 ### <a name="identity-providers-tokens-protocols"></a>ID プロバイダー、トークン、プロトコル
 
-| 機能 | 開発 | プレビュー | 一般公開 | メモ |
+| 機能 | 開発 | プレビュー | GA | メモ |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | IDP-OpenIDConnect |  |  | X | 例: Google+。  |
 | IDP-OAUTH2 |  |  | X | 例: Facebook。  |
@@ -77,7 +78,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 
 ### <a name="component-support"></a>コンポーネントのサポート
 
-| 機能 | 開発 | プレビュー | 一般公開 | メモ |
+| 機能 | 開発 | プレビュー | GA | メモ |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Multi Factor Authentication |  |  | X |  |
 | ローカル ディレクトリとしての Azure Active Directory |  |  | X |  |
@@ -88,7 +89,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 
 ### <a name="content-definition"></a>コンテンツ定義
 
-| 機能 | 開発 | プレビュー | 一般公開 | メモ |
+| 機能 | 開発 | プレビュー | GA | メモ |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | エラー ページ、api.error |  |  | X |  |
 | IDP の選択ページ、api.idpselections |  |  | X |  |
@@ -104,7 +105,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 
 ### <a name="app-ief-integration"></a>アプリケーションと IEF の統合
 
-| 機能 | 開発 | プレビュー | 一般公開 | メモ |
+| 機能 | 開発 | プレビュー | GA | メモ |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | クエリ文字列パラメーター domain_hint |  |  | X | 要求として使用可能、IDP に渡すことができる。 |
 | クエリ文字列パラメーター login_hint |  |  | X | 要求として使用可能、IDP に渡すことができる。 |
@@ -114,7 +115,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 
 ### <a name="session-management"></a>セッションの管理
 
-| 機能 | 開発 | プレビュー | 一般公開 | メモ |
+| 機能 | 開発 | プレビュー | GA | メモ |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | SSO セッション プロバイダー |  |  | X |  |
 | 外部ログイン セッション プロバイダー |  |  | X |  |
@@ -123,7 +124,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 
 ### <a name="security"></a>セキュリティ
 
-| 機能 | 開発 | プレビュー | 一般公開 | メモ |
+| 機能 | 開発 | プレビュー | GA | メモ |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | ポリシー キー - 生成、手動、アップロード |  |  | X |  |
 | ポリシー キー - RSA/証明書、シークレット |  |  | X |  |
@@ -131,7 +132,7 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 
 ### <a name="developer-interface"></a>開発者向けインターフェイス
 
-| 機能 | 開発 | プレビュー | 一般公開 | メモ |
+| 機能 | 開発 | プレビュー | GA | メモ |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Portal - IEF UX |  |  | X |  |
 | Application Insights の UserJourney ログ |  | X |  | 開発中のトラブルシューティングに使用される。  |

@@ -1,18 +1,18 @@
 ---
 title: Azure CLI と IoT 拡張機能を使用して IoT Hub Device Provisioning Service を管理する
-description: Azure CLI と IoT 拡張機能を使用して IoT Hub Device Provisioning Service を管理する方法
+description: Azure CLI と IoT 拡張機能を使用して IoT Hub Device Provisioning Service (DPS) を管理する方法を説明します
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0e276ca32d7cd02f9668b33b3729757404b13b00
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0ba92279632a7283ea6ede423e808e3c7be82cff
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229740"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975161"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Azure CLI と IoT 拡張機能を使用して IoT Hub Device Provisioning Service を管理する方法
 
@@ -56,7 +56,7 @@ IoT 拡張機能によって、Azure CLI には、デバイス管理、完全な
 ![リソース グループの作成][2]
 
 
-### <a name="3-create-two-device-provisioning-services"></a>3.2 つのデバイス プロビジョニング サービスを作成する
+### <a name="3-create-two-device-provisioning-services"></a>手順 3.2 つのデバイス プロビジョニング サービスを作成する
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps
 

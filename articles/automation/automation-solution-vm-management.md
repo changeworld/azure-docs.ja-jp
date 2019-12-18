@@ -4,17 +4,17 @@ description: この VM 管理ソリューションは、スケジュールに従
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 11/06/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d7a43ee2ed8719df2c38d00c9a50811c6d5ea70d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0b022ed759837fc6d922386dd48a2f3a109527a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718687"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951498"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -55,7 +55,7 @@ Start/Stop VM ソリューションには個別の Automation アカウントを
 
 既存の Automation アカウントと Log Analytics ワークスペースに Start/Stop VMs during off-hours ソリューションをデプロイするには、そのソリューションをデプロイするユーザーは**リソース グループ**に次のアクセス許可が必要です。 ロールの詳細については、「[Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md)」をご覧ください。
 
-| アクセス許可 | Scope (スコープ)|
+| アクセス許可 | スコープ|
 | --- | --- |
 | Microsoft.Automation/automationAccounts/read | リソース グループ |
 | Microsoft.Automation/automationAccounts/variables/write | リソース グループ |
@@ -84,13 +84,13 @@ Start/Stop VM ソリューションには個別の Automation アカウントを
 - [Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md) **アプリケーション開発者**ロールのメンバー。 実行アカウントの構成の詳細については、「[実行アカウントを構成するためのアクセス許可](manage-runas-account.md#permissions)」を参照してください。
 - サブスクリプションまたは次のアクセス許可の共同作成者。
 
-| アクセス許可 |Scope (スコープ)|
+| アクセス許可 |スコープ|
 | --- | --- |
-| Microsoft.Authorization/Operations/read | Subscription|
-| Microsoft.Authorization/permissions/read |Subscription|
-| Microsoft.Authorization/roleAssignments/read | Subscription |
-| Microsoft.Authorization/roleAssignments/write | Subscription |
-| Microsoft.Authorization/roleAssignments/delete | Subscription |
+| Microsoft.Authorization/Operations/read | サブスクリプション|
+| Microsoft.Authorization/permissions/read |サブスクリプション|
+| Microsoft.Authorization/roleAssignments/read | サブスクリプション |
+| Microsoft.Authorization/roleAssignments/write | サブスクリプション |
+| Microsoft.Authorization/roleAssignments/delete | サブスクリプション |
 | Microsoft.Automation/automationAccounts/connections/read | リソース グループ |
 | Microsoft.Automation/automationAccounts/certificates/read | リソース グループ |
 | Microsoft.Automation/automationAccounts/write | リソース グループ |
@@ -119,7 +119,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
    - 新しい **Log Analytics ワークスペース**の名前 ("ContosoLAWorkspace" など) を指定します。
    - 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
    - **[リソース グループ]** では、新しいリソース グループを作成するか、既存のリソース グループを選択できます。
-   - **[場所]** を選択します。 現在使用できる場所は、**オーストラリア南東部**、**カナダ中部**、**インド中部**、**米国東部**、**東日本**、**東南アジア**、**英国南部**、**西ヨーロッパ**、および**米国西部 2** のみです。
+   - **[場所]** を選択します。
    - **[価格レベル]** を選択します。 **[GB ごと (スタンドアロン)]** オプションを選択します。 Azure Monitor ログは[価格](https://azure.microsoft.com/pricing/details/log-analytics/)が更新され、GB あたりのレベルが唯一のオプションです。
 
    > [!NOTE]
@@ -304,7 +304,7 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 |プロパティ | 説明|
 |----------|----------|
 |Caller |  操作を開始したユーザー。 スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。|
-|Category | データの種類の分類。 Automation の場合、値は JobLogs です。|
+|カテゴリ | データの種類の分類。 Automation の場合、値は JobLogs です。|
 |CorrelationId | GUID。Runbook ジョブの関連付け ID です。|
 |JobId | GUID。Runbook ジョブの ID です。|
 |operationName | Azure で実行された操作の種類を指定します。 Automation の場合、値は Job です。|
@@ -325,7 +325,7 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 |プロパティ | 説明|
 |----------|----------|
 |Caller |  操作を開始したユーザー。 スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。|
-|Category | データの種類の分類。 Automation の場合、値は JobStreams です。|
+|カテゴリ | データの種類の分類。 Automation の場合、値は JobStreams です。|
 |JobId | GUID。Runbook ジョブの ID です。|
 |operationName | Azure で実行された操作の種類を指定します。 Automation の場合、値は Job です。|
 |ResourceGroup | Runbook ジョブのリソース グループ名を指定します。|
@@ -428,7 +428,7 @@ Azure Portal で、[監視]、[アクション グループ] の順に移動し�
 
 Automation アカウントと Log Analytics ワークスペースは、このプロセスの一部として削除されません。 Log Analytics ワークスペースを保持しない場合は、これを手動で削除する必要があります。 これは、Azure Portal から行うことができます。
 
-1. Azure portal ホーム画面で **[Log Analytics ワークスペース]** を選択します。
+1. Azure portal で、 **[Log Analytics ワークスペース]** を検索して選択します。
 1. **[Log Analytics ワークスペース]** ページで、ワークスペースを選択します。
 1. ワークスペースの設定ページのメニューから **[削除]** を選択します。
 

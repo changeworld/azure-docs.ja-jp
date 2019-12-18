@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348946"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971147"
 ---
 # <a name="application-gateway-components"></a>アプリケーション ゲートウェイのコンポーネント
 
@@ -53,7 +53,7 @@ V1 SKU は、静的または動的な内部 IP アドレスと動的パブリッ
 >HTTP/2 プロトコルのサポートを利用できるのは、アプリケーション ゲートウェイ リスナーに接続しているクライアントだけです。 バックエンド サーバー プールへの通信は、常に HTTP/1.1 で行われます。 既定では、HTTP/2 のサポートは無効になっています。 必要であれば、有効にすることもできます。
 
 - リスナー構成で HTTP プロトコルか HTTPS プロトコルを指定します。
-- [WebSockets プロトコルと HTTP/2 プロトコル](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic)のサポートはネイティブで提供されます。[WebSocket サポート](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket)は既定で有効になっています。 ユーザーが構成可能な、WebSocket のサポートを選択的に有効または無効にするための設定はありません。 WebSocket は HTTP リスナーと HTTPS リスナーの両方で使用します。
+- [WebSockets プロトコルと HTTP/2 プロトコル](overview.md#websocket-and-http2-traffic)のサポートはネイティブで提供されます。[WebSocket サポート](application-gateway-websocket.md)は既定で有効になっています。 ユーザーが構成可能な、WebSocket のサポートを選択的に有効または無効にするための設定はありません。 WebSocket は HTTP リスナーと HTTPS リスナーの両方で使用します。
 
 HTTPS リスナーは SSL 終了に使用します。 HTTPS リスナーは暗号化と解読の作業負荷をアプリケーション ゲートウェイにまかせるため、Web サーバーはオーバーヘッドの負担から解放されます。
 
@@ -61,7 +61,7 @@ HTTPS リスナーは SSL 終了に使用します。 HTTPS リスナーは暗�
 
 アプリケーション ゲートウェイでは、既定のエラー ページを表示する代わりに、カスタム エラー ページを作成できます。 カスタム エラー ページでは、独自のブランディングとレイアウトを使用することができます。 要求がバックエンドに到達できない場合、Application Gateway にはカスタム エラー ページが表示されます。
 
-詳しくは、[Application Gateway のカスタム エラー ページの作成](https://docs.microsoft.com/azure/application-gateway/custom-error)に関するページをご覧ください。
+詳しくは、[Application Gateway のカスタム エラー ページの作成](custom-error.md)に関するページをご覧ください。
 
 ### <a name="types-of-listeners"></a>リスナーの種類
 
@@ -71,11 +71,11 @@ HTTPS リスナーは SSL 終了に使用します。 HTTPS リスナーは暗�
 
 - **マルチサイト**。 このリスナー構成は、同じアプリケーション ゲートウェイ インスタンスで複数の Web アプリケーションを構成する場合に必要になります。 最大で 100 個の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のバックエンド プールに送られるようにすることができます。 たとえば、abc.contoso.com、xyz.contoso.com、pqr.contoso.com という 3 つのサブドメインがアプリケーション ゲートウェイの IP アドレスを指しています。 マルチサイト リスナーを 3 つ作成し、リスナーごとにポートとプロトコル設定を構成します。
 
-    詳しくは、[マルチサイト ホスティング](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview)に関するページをご覧ください。
+    詳しくは、[マルチサイト ホスティング](application-gateway-web-app-overview.md)に関するページをご覧ください。
 
 リスナーを作成したら、要求ルーティング規則に関連付ける必要があります。 この規則により、リスナー上で受信された要求がバック エンドにルーティングされる方法が決まります。
 
-Application Gateway は示されている順序でリスナーを処理します。 基本リスナーが着信した要求と一致した場合、それが最初に処理されます。 適切なバックエンドにトラフィックを転送するには、基本リスナーの前にマルチサイト リスナーを構成します。
+Application Gateway は[示されている順序](configuration-overview.md#order-of-processing-listeners)でリスナーを処理します。
 
 ## <a name="request-routing-rules"></a>要求ルーティング規則
 
@@ -89,7 +89,7 @@ Application Gateway は示されている順序でリスナーを処理します
 
 - **パスベース**。 このルーティング規則では、関連付けられたリスナー上の要求を、要求内の URL に基づいて、特定のバックエンド プールにルーティングできます。 要求内の URL のパスがパスベース規則内のパス パターンと一致した場合は、その規則により要求がルーティングされます。 パスのパターンは URL パスのみに適用され、そのクエリ パラメーターには適用されません。 リスナー要求の URL のパスがいずれのパスベース規則とも一致しなかった場合、要求は既定のバックエンド プールと HTTP 設定にルーティングされます。
 
-詳しくは、[URL ベースのルーティング](https://docs.microsoft.com/azure/application-gateway/url-route-overview)に関する記事をご覧ください。
+詳しくは、[URL ベースのルーティング](url-route-overview.md)に関する記事をご覧ください。
 
 ### <a name="redirection-support"></a>リダイレクトのサポート
 
@@ -97,7 +97,7 @@ Application Gateway は示されている順序でリスナーを処理します
 
 リダイレクト先として別のリスナー (HTTP から HTTPS への自動リダイレクトに便利) や外部サイトを選択できます。 リダイレクトを一時的なものとして指定することも、いつも同じ場所にリダイレクトすることもできます。URI パスとクエリ文字列をリダイレクト先の URL に追加することもできます。
 
-詳しくは、[アプリケーション ゲートウェイでのトラフィックのリダイレクト](https://docs.microsoft.com/azure/application-gateway/redirect-overview)に関する記事をご覧ください。
+詳しくは、[アプリケーション ゲートウェイでのトラフィックのリダイレクト](redirect-overview.md)に関する記事をご覧ください。
 
 ### <a name="rewrite-http-headers"></a>HTTP ヘッダーを書き換える
 
@@ -105,7 +105,7 @@ Application Gateway は示されている順序でリスナーを処理します
 
 ヘッダーは静的な値に設定するか、その他のヘッダーやサーバー変数に設定できます。 クライアント IP アドレスを抽出する、バックエンドに関する機密情報を削除する、セキュリティを追加するなど、重要なユース ケースで役立ちます。
 
-詳しくは、[アプリケーション ゲートウェイでの HTTP ヘッダーの書き換え](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)に関する記事をご覧ください。
+詳しくは、[アプリケーション ゲートウェイでの HTTP ヘッダーの書き換え](rewrite-http-headers.md)に関する記事をご覧ください。
 
 ## <a name="http-settings"></a>HTTP 設定
 
@@ -115,9 +115,9 @@ Application Gateway は示されている順序でリスナーを処理します
 
 このコンポーネントは次の目的にも使用されます。
 
-- [Cookie ベースのセッション アフィニティ](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity)を利用し、ユーザー セッションを同じサーバー上で維持するかどうかを決定する。
+- [Cookie ベースのセッション アフィニティ](overview.md#session-affinity)を利用し、ユーザー セッションを同じサーバー上で維持するかどうかを決定する。
 
-- [接続のドレイン](https://docs.microsoft.com/azure/application-gateway/overview#connection-draining)を使用し、バックエンド プール メンバーを正常に削除する。
+- [接続のドレイン](overview.md#connection-draining)を使用し、バックエンド プール メンバーを正常に削除する。
 
 - カスタム プローブを関連付け、バックエンドの正常性を監視する。要求タイムアウトの間隔を設定する。要求のホスト名とパスをオーバーライドする。App Service バックエンドの設定をワンクリックで簡単に指定できるようにする。
 
@@ -134,7 +134,7 @@ Application Gateway は示されている順序でリスナーを処理します
 
 Application Gateway バックエンド プールのメンバーは、可用性セットには関連付けられません。 アプリケーション ゲートウェイは、それが属している仮想ネットワークの外部にあるインスタンスとの通信が可能です。 そのため、IP 接続がある限り、バックエンド プールのメンバーを、クラスターやデータ センターをまたいで、または Azure の外部に配置したりすることができます。
 
-バックエンド プール メンバーとして内部 IP を使用する場合、[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)または [VPN ゲートウェイ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)を使用する必要があります。 仮想ネットワーク ピアリングはサポート対象であり、他の仮想ネットワークにおけるトラフィックの負荷分散に適しています。
+バックエンド プール メンバーとして内部 IP を使用する場合、[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)または [VPN ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md)を使用する必要があります。 仮想ネットワーク ピアリングはサポート対象であり、他の仮想ネットワークにおけるトラフィックの負荷分散に適しています。
 
 アプリケーション ゲートウェイは、Azure ExpressRoute や VPN トンネルによって接続されているとき、トラフィックが許可されていれば、オンプレミスのサーバーとも通信できます。
 
@@ -146,7 +146,7 @@ Application Gateway バックエンド プールのメンバーは、可用性�
 
 既定の正常性プローブによる監視を行うだけでなく、アプリケーションの要件に合わせて正常性プローブをカスタマイズすることもできます。 カスタム プローブを使用すると、正常性監視をより細かく制御できます。 カスタム プローブを使用すると、プローブの間隔やテスト対象となる URL とパスを構成したり、バックエンド プール インスタンスを異常と判断する基準とする応答失敗回数を構成したりすることができます。 カスタム プローブでは、各バックエンド プールの正常性を監視するように構成することをお勧めします。
 
-詳しくは、[アプリケーション ゲートウェイの正常性の監視](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview)に関する記事をご覧ください。
+詳しくは、[アプリケーション ゲートウェイの正常性の監視](../application-gateway/application-gateway-probe-overview.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

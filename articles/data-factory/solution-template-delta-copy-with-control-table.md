@@ -1,24 +1,23 @@
 ---
-title: Azure Data Factory で制御テーブルを使用してデータベースから差分コピーを行う
+title: 制御テーブルを使用してデータベースから増分コピーを行う
 description: Azure Data Factory でソリューション テンプレートを使用して、データベースから新規行または更新行のみを増分コピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: douglasl
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: c9ab1d005cf71dbe03546ce5b6014f616a872f8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4c72bd37a636ec31c13737705c22aaa895b9ad72
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684217"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928209"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
 

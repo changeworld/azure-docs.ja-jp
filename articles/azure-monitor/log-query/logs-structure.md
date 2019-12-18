@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 091d7f598a9841ae45b4248ad8a07a355203445a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6ce8470da6b444cedb7bff1d14bcc6448b52fe94
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894245"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893639"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor Logs の構造
 [ログ クエリ](log-query-overview.md)を使用して迅速にデータの分析情報が得られるのは、Azure Monitor の強力な機能です。 効率的で便利なクエリを作成するには、目的のデータがどこにあり、どのように構造化されているかなど、いくつかの基本概念を理解する必要があります。 この記事では、作業を始めるために必要な基本概念を提供します。
@@ -27,7 +27,7 @@ Azure Monitor Logs のデータは、Log Analytics ワークスペースまた�
 ![テーブル](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
-Application Insights を除いた Azure Monitor Logs によって収集されたすべてのデータは、[Log Analytics ワークスペース](../platform/manage-access.md)に格納されます。 特定の要件に応じて、1 つまたは複数のワークスペースを作成できます。 Azure リソースのアクティビティ ログや診断ログ、仮想マシン上のエージェント、インサイトや監視ソリューションからのデータなどの[データ ソース](../platform/data-sources.md)は、そのオンボーディング過程で構成された 1 つ以上のワークスペースにデータを書き込みます。 [Azure Security Center](/azure/security-center/) や [Azure Sentinel](/azure/sentinel/) など、その他のサービスも Log Analytics ワークスペースを使用してデータを格納し、他のソースからの監視データと共にログ クエリを使って分析できるようにします。
+Application Insights を除いた Azure Monitor Logs によって収集されたすべてのデータは、[Log Analytics ワークスペース](../platform/manage-access.md)に格納されます。 特定の要件に応じて、1 つまたは複数のワークスペースを作成できます。 Azure リソースのアクティビティ ログやリソース ログ、仮想マシン上のエージェント、インサイトや監視ソリューションからのデータなどの[データ ソース](../platform/data-sources.md)は、そのオンボーディング過程で構成された 1 つ以上のワークスペースにデータを書き込みます。 [Azure Security Center](/azure/security-center/) や [Azure Sentinel](/azure/sentinel/) など、その他のサービスも Log Analytics ワークスペースを使用してデータを格納し、他のソースからの監視データと共にログ クエリを使って分析できるようにします。
 
 さまざまな種類のデータがワークスペース内のさまざまなテーブルに格納され、各テーブルには一意のプロパティ セットがあります。 ワークスペースが作成されると、標準的なテーブル セットがワークスペースに追加され、各種データ ソース、ソリューション、およびサービスのオンボーディング過程でそれら用の新しいテーブルが追加されます。 [Data Collector API](../platform/data-collector-api.md) を使用してカスタム テーブルを作成することもできます。
 
@@ -43,7 +43,7 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-データ ソースが作成するテーブルの詳細については、各データ ソースのドキュメントを参照してください。 例としては、[エージェント データ ソース](../platform/agent-data-sources.md)、[診断ログ](../platform/diagnostic-logs-schema.md)、および[監視ソリューション](../insights/solutions-inventory.md)に関する記事があります。
+データ ソースが作成するテーブルの詳細については、各データ ソースのドキュメントを参照してください。 例としては、[エージェント データ ソース](../platform/agent-data-sources.md)、[リソース ログ](../platform/diagnostic-logs-schema.md)、および[監視ソリューション](../insights/solutions-inventory.md)に関する記事があります。
 
 ### <a name="workspace-permissions"></a>ワークスペースのアクセス許可
 ワークスペース内のデータへのアクセスを提供するためのアクセス制御戦略と推奨事項については、「[Azure Monitor ログのデプロイの設計](../platform/design-logs-deployment.md)」を参照してください。 ワークスペース自体へのアクセスを許可することに加えて、[テーブル レベルの RBAC](../platform/manage-access.md#table-level-rbac) を使用して個々のテーブルへのアクセスを制限できます。

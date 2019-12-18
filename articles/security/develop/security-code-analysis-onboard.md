@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 77be6d8518774a1e2656e23024490dd9c1431865
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 108d116500454605f33de201caffc11ae263f74c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707245"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851504"
 ---
 # <a name="onboarding-and-installing"></a>オンボードとインストール
 
@@ -31,23 +31,23 @@ Microsoft Security Code Analysis の使用を開始するための前提条件:
 ## <a name="onboarding-the-microsoft-security-code-analysis-extension"></a>Microsoft Security Code Analysis 拡張機能のオンボード
 
 - 以下のいずれかのサポート プランをお持ちの場合、拡張機能にアクセスするには、テクニカル アカウント マネージャーに連絡して、時間を購入するか、既存の時間を交換します。
-   - Unified Support Advanced レベル
-   - Unified Support Performance レベル
-   - 開発者向け Premier サポート
-   - パートナー向け Premier サポート
-   - エンタープライズ向け Premier サポート
+  - Unified Support Advanced レベル
+  - Unified Support Performance レベル
+  - 開発者向け Premier サポート
+  - パートナー向け Premier サポート
+  - エンタープライズ向け Premier サポート
 - 以下のいずれかのサポート サービスをご利用の場合、または Microsoft のサポート プランをお持ちでない場合は、資格のあるサポート プランにアップグレードする必要があります。
-   - パートナー向け Azure サポート
-   - Azure Basic サポート
-   - Azure Developer サポート
-   - Azure Standard サポート
-   - Azure Professional Direct
-   - 統合サポート コア レベル
+  - パートナー向け Azure サポート
+  - Azure Basic サポート
+  - Azure Developer サポート
+  - Azure Standard サポート
+  - Azure Professional Direct
+  - 統合サポート コア レベル
 - 資格のあるサポート プランを購入するには、[サポート サービスのホーム ページ](https://www.microsoft.com/enterprise/services/support)にアクセスしてください。
 - サポート契約を結んだ後、作業の開始と、必要なすべての詳細情報の収集を支援する、テクニカル アカウント マネージャーに連絡します。
 
 >[!NOTE]
-> Microsoft Partner Network に登録済みのパートナーは、パートナー向け Premier サポートを購入する資格があります。 それ以外の場合は、前に示した対象のサポート プランのいずれかを購入する必要があります。
+>サポート契約を結んでいないお客様のために、Microsoft では、統合サポート プランを購入しなくてもサード パーティのパートナーを活用して拡張機能を購入できるパートナー購入プログラムの実現に向けて取り組んでいます。 [こちらまでメールを](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Onboarding%20Request)お寄せください。 このオプションに興味がある旨をお知らせいただければ、 プログラムの提供が開始されしだい、こちらからご連絡いたします。
 
 ## <a name="installing-the-microsoft-security-code-analysis-extension"></a>Microsoft Security Code Analysis 拡張機能のインストール
 
@@ -61,7 +61,7 @@ Microsoft Security Code Analysis の使用を開始するための前提条件:
 >[!NOTE]
 > 拡張機能をインストールするためのアクセス権がない場合でも、インストール手順を続行します。 インストール プロセスの間に、Azure DevOps 組織の管理者にアクセスを要求できます。
 
-拡張機能のインストールが済むと、セキュリティで保護された開発ビルド タスクが表示され、Azure パイプラインに追加できるようになります。
+拡張機能のインストールが済むと、セキュリティで保護された開発ビルド タスクが表示され、Azure Pipelines に追加できるようになります。
 
 ## <a name="adding-specific-build-tasks-to-your-azure-devops-pipeline"></a>Azure DevOps パイプラインへの特定のビルド タスクの追加
 
@@ -87,6 +87,6 @@ Microsoft Security Code Analysis の使用を開始するための前提条件:
 
 ## <a name="next-steps"></a>次の手順
 
-ビルド タスクの構成の詳細については、[構成のガイド](security-code-analysis-customize.md)を参照してください。
+ビルド タスクの構成の詳細については、[構成ガイド](security-code-analysis-customize.md)または [YAML の構成ガイド](yaml-configuration.md)を参照してください。
 
 この拡張機能と提供されるツールにさらに質問がある場合は、[FAQ ページ](security-code-analysis-faq.md)を参照してください。

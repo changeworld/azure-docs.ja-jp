@@ -7,21 +7,25 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: load-data
-ms.date: 08/08/2019
+ms.date: 12/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 522cb9b75d5c0db270f8ba4a65850e35a2e8c4fd
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fdbf0eb849549071b4cbbb961c9e9f71fce1faf8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685695"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923640"
 ---
 # <a name="load-data-from-azure-data-lake-storage-to-sql-data-warehouse"></a>Azure Data Lake Storage から Azure SQL Data Warehouse へのデータの読み込み
-PolyBase 外部テーブルを使用して Azure Data Lake Storage から Azure SQL Data Warehouse にデータを読み込みます。 Data Lake Storage の格納データに対してアドホック クエリを実行できますが、最高のパフォーマンスを得るには、SQL Data Warehouse にデータをインポートすることをお勧めします。
+このガイドでは、PolyBase 外部テーブルを使用して Azure Data Lake Storage から Azure SQL Data Warehouse にデータを読み込む方法について説明します。 Data Lake Storage の格納データに対してアドホック クエリを実行できますが、最高のパフォーマンスを得るには、SQL Data Warehouse にデータをインポートすることをお勧めします。 
 
+> [!NOTE]  
+> 読み込みの代替手段は、[COPY ステートメント](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)です (現在、パブリック プレビュー段階)。 COPY ステートメントに関するご意見やご感想は、配布リストの sqldwcopypreview@service.microsoft.com までメールでお寄せください。
+>
 > [!div class="checklist"]
+
 > * Data Lake Storage から読み込む必要のあるデータベース オブジェクトを作成する。
 > * Data Lake Storage ディレクトリに接続する。
 > * Azure SQL Data Warehouse にデータを読み込む。
@@ -33,14 +37,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを実行するには、次のものが必要です。
 
-* サービス間認証に使用する Azure Active Directory アプリケーション。 作成方法については、[Azure Active Directory 認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
-
 * Azure SQL Data Warehouse。 [Azure SQL Data Warehouse の作成とクエリ](create-data-warehouse-portal.md)に関するページをご覧ください。
-
-* Data Lake Storage アカウント。 [Azure Data Lake Storage の使用開始](../data-lake-store/data-lake-store-get-started-portal.md)に関する記事を参照してください。 
+* Data Lake Storage アカウント。 [Azure Data Lake Storage の使用開始](../data-lake-store/data-lake-store-get-started-portal.md)に関する記事を参照してください。 このストレージ アカウントでは、次のいずれかの資格情報を構成または指定して読み込む必要があります。ストレージ アカウントに対する適切な RBAC ロールを持つストレージ アカウント キー、Azure Directory アプリケーション ユーザー、または AAD ユーザー。 
 
 ##  <a name="create-a-credential"></a>資格情報を作成する
-Data Lake Storage アカウントにアクセスするには、次の手順で使用する資格情報シークレットを暗号化するためのデータベース マスター キーを作成する必要があります。 その後、データベース スコープ資格情報を作成します。 サービス プリンシパルを使用して認証する場合、データベース スコープ資格情報には AAD 内で設定されたサービス プリンシパル資格情報が格納されます。 Gen2 のデータベース スコープ資格情報のストレージ アカウント キーを使用することもできます。 
+AAD パススルーを使用して認証する場合は、このセクションを省略し、「外部データ ソースを作成する」に進むことができます。 AAD パススルーを使用する場合は、データベース スコープ資格情報を作成または指定する必要はありませんが、AAD ユーザーがストレージ アカウントに対する適切な RBAC ロール (ストレージ BLOB データ閲覧者、共同作成者、または所有者ロール) を持っていることを確認してください。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/Azure-SQL-Data-Warehouse/How-to-use-PolyBase-by-authenticating-via-AAD-pass-through/ba-p/862260)で説明しています。 
+
+Data Lake Storage アカウントにアクセスするには、資格情報シークレットを暗号化するためのデータベース マスター キーを作成する必要があります。 その後、データベース スコープ資格情報を作成して、シークレットを格納します。 サービス プリンシパル (Azure Directory アプリケーション ユーザー) を使用して認証する場合、データベース スコープ資格情報には AAD 内で設定されたサービス プリンシパル資格情報が格納されます。 データベース スコープ資格情報を使用して、Gen2 のストレージ アカウント キーを格納することもできます。
 
 サービス プリンシパルを使用して Data Lake Store に接続するには、**最初に** Azure Active Directory Application を作成し、アクセス キーを作成して、そのアプリケーションに Data Lake Storage アカウントへのアクセス許可を付与する必要があります。 手順については、[Active Directory を使用した Azure Data Lake Storage に対する認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)に関するページをご覧ください。
 
@@ -75,7 +78,7 @@ WITH
     SECRET = '<azure_storage_account_key>'
 ;
 
--- It should look something like this when authenticating using service principals:
+-- It should look something like this when authenticating using service principal:
 CREATE DATABASE SCOPED CREDENTIAL ADLSCredential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
@@ -84,7 +87,7 @@ WITH
 ```
 
 ## <a name="create-the-external-data-source"></a>外部データ ソースを作成する
-データの場所を格納するには、この [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) コマンドを使用します。 
+データの場所を格納するには、この [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) コマンドを使用します。 AAD パススルーを使用して認証する場合、CREDENTIAL パラメーターは必要ありません。 
 
 ```sql
 -- C (for Gen1): Create an external data source
@@ -216,8 +219,8 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 以下のことを行いました。
 > [!div class="checklist"]
-> * Data Lake Store Gen1 から読み込む必要のあるデータベース オブジェクトを作成しました。
-> * Data Lake Storage Gen1 ディレクトリに接続しました。
+> * Data Lake Storage から読み込む必要のあるデータベース オブジェクトを作成しました。
+> * Data Lake Storage ディレクトリに接続しました。
 > * Azure SQL Data Warehouse にデータを読み込みました。
 >
 

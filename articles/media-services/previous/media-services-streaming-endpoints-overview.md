@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services ストリーミング エンドポイントの概要 | Microsoft Docs
-description: このトピックでは、Azure Media Services ストリーミング エンドポイントの概要を説明します。
+description: この記事では、Azure Media Services ストリーミング エンドポイントの概要を説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ac9c9a73e52c678c8a6d9b1e1779d9ec75cab2c8
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69016444"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885638"
 ---
 # <a name="streaming-endpoints-overview"></a>ストリーミング エンドポイントの概要  
 
@@ -50,7 +50,7 @@ Azure Media Services アカウントを作成すると、既定の標準スト�
 2017 年 1 月リリース以降の Media Services には、ストリーミング タイプ **Standard** (プレビュー) と **Premium** の 2 つの型があります。 これらのタイプは、ストリーミング エンドポイントのバージョン「2.0」の一部です。
 
 
-|Type|説明|
+|種類|説明|
 |--------|--------|  
 |**Standard**|既定のストリーミング エンドポイントは **Standard** 型ですが、ストリーミング ユニットを調整することで Premium 型に変更できます。|
 |**Premium** |このオプションは、より高度なスケールやコントロールを必要とするプロフェッショナルなシナリオに適しています。 **Premium** 型には、ストリーミング ユニットを調整することで移行します。<br/>専用のストリーミング エンドポイントは、分離環境で存在し、リソースの競合はありません。|
@@ -75,7 +75,7 @@ Azure Media Services アカウントを作成すると、既定の標準スト�
 
 ### <a name="versions"></a>バージョン
 
-|Type|StreamingEndpointVersion|ScaleUnits|CDN|課金|
+|種類|StreamingEndpointVersion|ScaleUnits|CDN|課金|
 |--------------|----------|-----------------|-----------------|-----------------|
 |クラシック|1.0|0|NA|無料|
 |Standard ストリーミング エンドポイント (プレビュー)|2.0|0|はい|有料|

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.openlocfilehash: 31eefbad8e8d7cb626d87d53690388d09b85257e
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: e035c1ff4c8e16fbf40883b54e3153eab9729040
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122652"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894279"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
 
@@ -57,52 +57,56 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
 * [Azure Kubernetes Service (AKS) クラスターのデプロイ - Portal](../../aks/kubernetes-walkthrough-portal.md)
 * [Azure Kubernetes Service (AKS) クラスターのデプロイ - CLI](../../aks/kubernetes-walkthrough.md)
 
-> [!NOTE]  
-> AKS では、インストール時に仮想ネットワークが作成されます。 このネットワークは、次のセクションで HDInsight 用に作成するネットワークにピアリングされます。
+> [!IMPORTANT]  
+> AKS では、**追加の**リソース グループへのインストール時に仮想ネットワークが作成されます。 追加のリソース グループは、**MC_resourceGroup_AKSclusterName_location** という名前付け規則に従います。  
+> このネットワークは、次のセクションで HDInsight 用に作成するネットワークにピアリングされます。
 
 ## <a name="configure-virtual-network-peering"></a>仮想ネットワーク ピアリングを構成する
 
-1. [Azure Portal](https://portal.azure.com) から __[リソース グループ]__ を選択し、AKS クラスター用の仮想ネットワークが含まれているリソース グループを探します。 リソース グループ名は `MC_<resourcegroup>_<akscluster>_<location>` です。 `resourcegroup` と `akscluster` はそれぞれ、クラスターを作成したリソース グループの名前と、クラスターの名前になります。 `location` は、クラスターを作成した場所です。
+### <a name="identify-preliminary-information"></a>準備情報の特定
 
-2. リソース グループで、 __[仮想ネットワーク]__ リソースを選択します。
+1. [Azure portal](https://portal.azure.com) で、AKS クラスター用の仮想ネットワークが含まれている追加の**リソース グループ**を探します。
 
-3. __[アドレス空間]__ を選択します。 表示されたアドレス空間をメモします。
+2. リソース グループで、 __[仮想ネットワーク]__ リソースを選択します。 後で使うので名前をメモしておきます。
 
-4. HDInsight 用の仮想ネットワークを作成するには、 __[+ リソースの作成]__ 、 __[ネットワーク]__ 、 __[仮想ネットワーク]__ の順に選択します。
+3. **[設定]** で、 __[アドレス空間]__ を選択します。 表示されたアドレス空間をメモします。
 
-    > [!IMPORTANT]  
-    > 新しい仮想ネットワークの値を入力する際には、AKS クラスター ネットワークに使用されているものと重複しないアドレス空間を使用する必要があります。
+### <a name="create-virtual-network"></a>Create virtual network
 
-    AKS クラスターに使用した仮想ネットワークと同じ __場所__ を使用します。
+1. HDInsight 用の仮想ネットワークを作成するには、 __[+ リソースの作成]__  >  __[ネットワーク]__  >  __[仮想ネットワーク]__ の順に移動します。
 
-    仮想ネットワークが作成されるまで待ち、その後、次の手順に進みます。
+1. 特定のプロパティに対する以下のガイドラインを使用して、ネットワークを作成します。
 
-5. HDInsight ネットワークと AKS クラスター ネットワークの間のピアリングを構成するには、仮想ネットワークを選択し、 __[ピアリング]__ を選択します。 __[+ 追加]__ を選択し、次の値を使用してフォームに値を入力します。
+    |プロパティ | 値 |
+    |---|---|
+    |アドレス空間|AKS クラスター ネットワークに使用されているものと重複しないアドレス空間を使用する必要があります。|
+    |Location|AKS クラスターに使用した仮想ネットワークと同じ __場所__ を使用します。|
 
-   * __Name__:このピアリング構成の一意の名前を入力します。
-   * __仮想ネットワーク__:**AKS クラスター**用の仮想ネットワークを選択するには、このフィールドを使用します。
+1. 仮想ネットワークが作成されるまで待ち、その後、次の手順に進みます。
 
-     その他のフィールドはすべて既定値のままにし、 __[OK]__ を選択してピアリングを構成します。
+### <a name="configure-peering"></a>ピアリングの構成
 
-6. AKS クラスター ネットワークと HDInsight ネットワークの間のピアリングを構成するには、__AKS クラスターの仮想ネットワーク__ を選択し、 __[ピアリング]__ を選択します。 __[+ 追加]__ を選択し、次の値を使用してフォームに値を入力します。
+1. HDInsight ネットワークと AKS クラスター ネットワークの間のピアリングを構成するには、仮想ネットワークを選択し、 __[ピアリング]__ を選択します。
 
-   * __Name__:このピアリング構成の一意の名前を入力します。
-   * __仮想ネットワーク__:__HDInsight クラスター__ 用の仮想ネットワークを選択するには、このフィールドを使用します。
+1. __[+ 追加]__ を選択し、次の値を使用してフォームに値を入力します。
 
-     その他のフィールドはすべて既定値のままにし、 __[OK]__ を選択してピアリングを構成します。
+    |プロパティ |値 |
+    |---|---|
+    |\<この VN> からリモート仮想ネットワークへのピアリングの名前|このピアリング構成の一意の名前を入力します。|
+    |仮想ネットワーク|**AKS クラスター**用の仮想ネットワークを選択します。|
+    |\<AKS VN> から \<この VN> へのピアリングの名前|一意の名前を入力します。|
 
-## <a name="install-apache-kafka-on-hdinsight"></a>HDInsight に Apache Kafka をインストールする
+    その他のフィールドはすべて既定値のままにし、 __[OK]__ を選択してピアリングを構成します。
+
+## <a name="create-apache-kafka-cluster-on-hdinsight"></a>HDInsight 上に Apache Kafka クラスターを作成する
 
 Kafka HDInsight クラスターを作成する際には、先ほど HDInsight 用に作成した仮想ネットワークに参加する必要があります。 Kafka クラスターの作成の詳細については、[Apache Kafka クラスターの作成](apache-kafka-get-started.md)に関するドキュメントを参照してください。
-
-> [!IMPORTANT]  
-> クラスターを作成する際には、__詳細設定__ を使用して、HDInsight 用に作成した仮想ネットワークに接続する必要があります。
 
 ## <a name="configure-apache-kafka-ip-advertising"></a>Apache Kafka の IP アドバタイズを構成する
 
 次の手順を使用して、ドメイン名の代わりに IP アドレスを提供するように Kafka を構成します。
 
-1. Web ブラウザーを使用し、 https://CLUSTERNAME.azurehdinsight.net にアクセスします。 __CLUSTERNAME__ を HDInsight クラスター上の Kafka の名前に置き換えます。
+1. Web ブラウザーを使用し、`https://CLUSTERNAME.azurehdinsight.net` にアクセスします。 CLUSTERNAME を HDInsight クラスター上の Kafka の名前に置き換えます。
 
     プロンプトが表示されたら、クラスターの HTTPS ユーザー名とパスワードを入力します。 クラスターの Ambari Web UI が表示されます。
 

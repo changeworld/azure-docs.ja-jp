@@ -1,5 +1,5 @@
 ---
-title: Web API を呼び出すデスクトップ アプリ (アプリの登録) - Microsoft ID プラットフォーム
+title: Web API を呼び出すデスクトップ アプリを登録する - Microsoft ID プラットフォーム | Azure
 description: Web API を呼び出すデスクトップ アプリ (アプリの登録) をビルドする方法について学習します
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,16 +17,16 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 648652ed32a5dea30de665b7fa49190171a7f10a
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 94f7f2dfdbf404a092773857a0f7727618cd429a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268410"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965536"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Web API を呼び出すデスクトップ アプリ - アプリの登録
 
-この記事には、デスクトップ アプリケーションのアプリ登録の特異性が含まれています。
+この記事では、デスクトップ アプリケーションのアプリ登録の詳細について説明しています。
 
 ## <a name="supported-accounts-types"></a>サポートされているアカウントの種類
 

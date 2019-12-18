@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf338ad0c555038cd99c3604d69ab80371d6ea22
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e3d85850fb18b80490bba44b293ece7765124133
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74804976"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846115"
 ---
 # <a name="common-conditional-access-policies"></a>一般的な条件付きアクセス ポリシー
 
@@ -44,4 +44,5 @@ ms.locfileid: "74804976"
 
 ## <a name="next-steps"></a>次の手順
 
-[Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md) (条件付きアクセスの What If ツールを使用したサインイン動作のシミュレート)
+- [条件付きアクセスの What If ツールを使用してサインイン動作をシミュレートします。](troubleshoot-conditional-access-what-if.md)
+- [条件付きアクセスのレポート専用モードを使用して、新しいポリシー決定の影響を判断します。](concept-conditional-access-report-only.md)

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB でインデックス作成ポリシーを管理する
-description: Azure Cosmos DB でインデックス作成ポリシーを管理する方法について説明します
+description: インデックス作成ポリシーを管理して、インデックス作成に対してプロパティを含めるか除外する方法、さまざまな Azure Cosmos DB SDK を使用してインデックス作成を定義する方法について説明します。
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 46d0124eb701b0c2d779a96c8efd50ba43e8fc07
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 3b98975df194af4625087e1beb556efb2a347f43
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034456"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872062"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 

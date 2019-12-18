@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: cfe0caaf199821358f8a66ac65ae75c38336c725
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228086"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899807"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する
 Azure プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 仮想マシン (VM) などの Azure リソースとプライベート リンク リソースとの非公開での通信が可能になります。
@@ -38,7 +38,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | ------- | ----- |
     | 名前 | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
-    | Subscription | サブスクリプションを選択します。|
+    | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
     | Location | **[WestCentralUS]** を選択します。|
     | サブネット - 名前 | 「*mySubnet*」と入力します。 |
@@ -56,7 +56,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Setting | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
-    | Subscription | サブスクリプションを選択します。 |
+    | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。  |
     | **インスタンスの詳細** |  |
     | 仮想マシン名 | 「*myVm*」と入力します。 |
@@ -104,7 +104,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Setting | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
-    | Subscription | サブスクリプションを選択します。 |
+    | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | **インスタンスの詳細** |  |
     | ストレージ アカウント名  | 「*mystorageaccount*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
@@ -122,7 +122,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Setting | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
-    | Subscription | サブスクリプションを選択します。 |
+    | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     |Location|**[WestCentralUS]** を選択します。|
     |名前|「 *myPrivateEndpoint*」と入力します。  |
@@ -151,7 +151,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[RDP ファイルのダウンロード]** を選択します。 リモート デスクトップ プロトコル ( *.rdp*) ファイルが作成され、お使いのコンピューターにダウンロードされます。
 
-1. ダウンロードした .rdp* ファイルを開きます。
+1. *downloaded.rdp* ファイルを開きます。
 
     1. メッセージが表示されたら、 **[Connect]** を選択します。
 
@@ -169,9 +169,6 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 ## <a name="access-storage-account-privately-from-the-vm"></a>VM から非公開でストレージ アカウントにアクセスする
 
 このセクションでは、プライベート エンドポイントを使ったストレージ アカウントに非公開で接続します。
-
-> [!IMPORTANT]
-> ストレージ用の DNS 構成には、特定のアカウントの FQDN を含めるために、hosts ファイルに手動で変更を加える必要があります。管理者権限を使用して、Windows の c:\Windows\System32\Drivers\etc\hosts または Linux の /etc/hosts にあるファイルを変更してください。[プライベート IP アドレス] myaccount.blob.core.windows.net の形式で、前の手順のアカウントの DNS 情報を含めます。
 
 1.  *myVM* のリモート デスクトップで、PowerShell を開きます。
 2. 「 `nslookup mystorageaccount.blob.core.windows.net`」と入力します。次のようなメッセージが返されます。

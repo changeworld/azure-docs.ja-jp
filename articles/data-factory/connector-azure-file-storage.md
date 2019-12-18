@@ -1,23 +1,22 @@
 ---
-title: Azure Data Factory を使用して Azure File Storage をコピー元またはコピー先としてデータをコピーする
+title: Azure File Storage との間でデータをコピーする
 description: Azure Data Factory を使用して、Azure File Storage からサポートされるシンク データ ストアにデータをコピーしたり、サポートされるソース データ ストアから Azure Data Factory にデータをコピーしたりする方法を説明します。
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.author: jingwang
-ms.openlocfilehash: bf7ae7f9dc3bb45482f20df07be5e2358a388714
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 37ec461edc587d8ad55cdf40bcd55736ce84c316
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681207"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929692"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して File Storage をコピー元またはコピー先としてデータをコピーする
 
