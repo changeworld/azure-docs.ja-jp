@@ -11,17 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2019
+ms.date: 12/09/2019
 ms.author: takamath
-ms.openlocfilehash: 080dd91b2ab6792debfae3a3ccc97b0927015de4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e2dd642139ae082cc0d0838e61399c549d2d812a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580150"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970783"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>ラボ仮想マシンでブラウザー接続を有効にする 
-
 DevTest Labs が [Azure Bastion](https://docs.microsoft.com/azure/bastion/) と統合されたことにより、ブラウザーを使用して仮想マシンに接続できます。 最初に、ラボ仮想マシンでブラウザー接続を有効にする必要があります。
 
 ラボの所有者は、ブラウザーを使用したすべてのラボ仮想マシンへのアクセスを有効にできます。 追加のクライアント、エージェント、ソフトウェアは必要ありません。 Azure Bastion は、Azure portal で直接 SSL を経由して、仮想マシンへの安全かつシームレスな RDP 接続または SSH 接続を提供します。 Azure Bastion 経由で接続する場合、仮想マシンにパブリック IP アドレスは必要ありません。 詳細については、「[Azure Bastion とは](../bastion/bastion-overview.md)」を参照してください。
@@ -30,11 +29,19 @@ DevTest Labs が [Azure Bastion](https://docs.microsoft.com/azure/bastion/) と�
 この記事では、ラボ仮想マシンでブラウザー接続を有効にする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件 
-既存のラボの仮想ネットワークに Bastion ホストをデプロイする**か、(または)** Bastion が構成されている VNet にラボを接続します。 
+既存のラボの仮想ネットワークに Bastion ホストをデプロイするか、 **(または)** Bastion が構成されている仮想ネットワークにラボを接続します。 
 
-VNet で Bastion ホストをデプロイする方法については、「[Azure Bastion ホスト (プレビュー) を作成する](../bastion/bastion-create-host-portal.md)」を参照してください。 Bastion ホストを作成するときに、ラボの仮想ネットワークを選択します。 
+仮想ネットワークで Bastion ホストをデプロイする方法については、「[Azure Bastion ホストを作成する](../bastion/bastion-create-host-portal.md)」を参照してください。 Bastion ホストを作成するときに、ラボの仮想ネットワークを選択します。 
 
-Bastion が構成されている VNet にラボを接続する方法については、「[Azure DevTest Labs で仮想ネットワークを構成する](devtest-lab-configure-vnet.md)」を参照してください。 Bastion ホストがデプロイされている VNet と、その中にある **AzureBastionSubnet** を選択します。 詳細な手順を以下に示します。 
+最初に、Bastion 仮想ネットワークに 2 番目のサブネットを作成する必要があります。これは、AzureBastionSubnet の中に Bastion 以外のリソースを作成することが許可されていないためです。 
+
+## <a name="create-a-second-sub-net-in-the-bastion-virtual-network"></a>Bastion 仮想ネットワークに 2 番目のサブネットを作成する
+Azure Bastion サブネットにラボ VM を作成することはできません。 次の図に示すように、Bastion 仮想ネットワーク内に別のサブネットを作成します。
+
+![Azure Bastion 仮想ネットワーク内の 2 番目のサブネット](./media/connect-virtual-machine-through-browser/second-subnet.png)
+
+## <a name="enable-vm-creation-in-the-subnet"></a>サブネットで VM の作成を有効にする
+ここで、次の手順に従って、このサブネットで VM の作成を有効にします。 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 左側のナビゲーション メニューで、 **[すべてのサービス]** を選択します。 
@@ -47,23 +54,23 @@ Bastion が構成されている VNet にラボを接続する方法について
 1. 左側のメニューの **[設定]** セクションで、 **[構成とポリシー]** を選択します。 
 1. **[仮想ネットワーク]** を選択します。
 1. ツールバーの **[追加]** を選択します。 
-1. Bastion ホストがデプロイされている **VNet** を選択します。 
-1. 次のサブネットを選択します:**AzureBastionSubnet**。 
+1. Bastion ホストがデプロイされている**仮想ネットワーク**を選択します。 
+1. VM 用のサブネットを選択します。これは **AzureBastionSubnet** ではなく、以前作成した別のものです。 一覧の下部にサブネットが表示されない場合は、ページを閉じて再度開きます。 
 
-    ![Subnet](./media/enable-browser-connection-lab-virtual-machines/subnet.png)
+    ![サブネットで VM の作成を有効にする](./media/connect-virtual-machine-through-browser/enable-vm-creation-subnet.png)
 1. **[仮想マシン作成時に使用]** オプションを選択します。 
 1. ツールバーの **[保存]** を選択します。 
-1. ラボに古い VNet がある場合は、* *...* と **[削除]** を選択して削除します。 
+1. ラボに古い仮想ネットワークがある場合は、* *...* および **[削除]** を選択して削除します。 
 
 ## <a name="enable-browser-connection"></a>ブラウザー接続の有効化 
 
-ラボ内に Bastion が構成されている VNet を追加すると、ラボの所有者は、ラボ仮想マシンでブラウザー接続を有効にできます。
+ラボ内に Bastion が構成されている仮想ネットワークを追加すると、ラボの所有者は、ラボ仮想マシンでブラウザー接続を有効にできます。
 
 ラボ仮想マシンでブラウザー接続を有効にするには、次の手順に従ってください。
 
 1. Azure portal で、"*目的のラボ*" に移動します。
 1. **[Configuration and policies (構成とポリシー)]** を選択します。
-1. **[設定]** で、 **[Browser connect (Preview)]\(ブラウザー接続 (プレビュー)\)** を選択します。
+1. **[設定]** で、 **[ブラウザー接続]** を選択します。 このオプションが表示されない場合は、 **[構成ポリシー]** ページを閉じて、再度開きます。 
 
     ![ブラウザー接続の有効化](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)
 

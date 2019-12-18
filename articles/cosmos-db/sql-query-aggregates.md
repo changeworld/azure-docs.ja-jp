@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の集計関数
-description: Azure Cosmos DB の SQL 集計関数の構文について説明します。
+description: SQL 集計関数の構文、Azure Cosmos DB でサポートされる集計関数の種類について説明します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: a6937e9e811ea8e44eda6f2bcb5d2c7d78db4934
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1ce3b18dd31944a1a4d4e6fad8fb49e63996dace
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343125"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871841"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Azure Cosmos DB の集計関数
 

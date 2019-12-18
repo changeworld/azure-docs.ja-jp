@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 12/03/2019
-ms.openlocfilehash: d1f3bf6cb1467d0bb4906ff2409e72828b22cd20
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e90bff7548be5f469ebbcdc21dd9b93dc887a30e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807019"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931949"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 
@@ -185,18 +185,22 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
 次の例では、サーバーレス コンピューティング レベルで新しいデータベースを作成します。  この例では、最小仮想コア数、最大仮想コア数、および自動一時停止遅延を明示的に指定します。
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```powershell
-New-AzSqlDatabase `
-  -ResourceGroupName $resourceGroupName `
-  -ServerName $serverName `
-  -DatabaseName $databaseName `
-  -ComputeModel Serverless `
-  -Edition GeneralPurpose `
-  -ComputeGeneration Gen5 `
-  -MinVcore 0.5 `
-  -MaxVcore 2 `
-  -AutoPauseDelayInMinutes 720
+New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
+  -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
+  -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```powershell
+az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
+  -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
+```
+
+* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) の使用
 
@@ -215,22 +219,26 @@ CREATE DATABASE testdb
 
 次の例では、プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動します。 この例では、最小仮想コア数、最大仮想コア数、および自動一時停止遅延を明示的に指定します。
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```powershell
-Set-AzSqlDatabase `
-  -ResourceGroupName $resourceGroupName `
-  -ServerName $serverName `
-  -DatabaseName $databaseName `
-  -Edition GeneralPurpose `
-  -ComputeModel Serverless `
-  -ComputeGeneration Gen5 `
-  -MinVcore 1 `
-  -MaxVcore 4 `
-  -AutoPauseDelayInMinutes 1440
+Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName -DatabaseName $databaseName `
+  -Edition GeneralPurpose -ComputeModel Serverless -ComputeGeneration Gen5 `
+  -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```powershell
+az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
+  --edition GeneralPurpose --min-capacity 1 --capacity 4 --family Gen5 --compute-model Serverless --auto-pause-delay 1440
+```
+
+* * *
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) の使用
 
-次の例では、プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動します。 
+次の例では、プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動します。
 
 ```sql
 ALTER DATABASE testdb 
@@ -245,23 +253,15 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 ## <a name="modifying-serverless-configuration"></a>サーバーレス構成の変更
 
-### <a name="maximum-vcores"></a>最大仮想コア数
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-#### <a name="use-powershell"></a>PowerShell の使用
+最大または最小の仮想コア、および自動一時停止遅延の変更は、PowerShell の [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) コマンドと、 `MaxVcore`、`MinVcore`、および `AutoPauseDelayInMinutes` の引数を使用して実行されます。
 
-最大仮想コア数の変更は、PowerShell の [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) コマンドと `MaxVcore` 引数を使用して実行します。
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="minimum-vcores"></a>最小仮想コア数
+最大または最小の仮想コア、および自動一時停止遅延の変更は、Azure CLI の [az sql db update](/cli/azure/sql/db#az-sql-db-update) コマンドと、 `capacity`、`min-capacity`、および `auto-pause-delay` の引数を使用して実行されます。
 
-#### <a name="use-powershell"></a>PowerShell の使用
-
-最小仮想コア数の変更は、PowerShell の [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) コマンドと `MinVcore` 引数を使用して実行します。
-
-### <a name="autopause-delay"></a>自動一時停止遅延
-
-#### <a name="use-powershell"></a>PowerShell の使用
-
-自動一時停止遅延の変更は、PowerShell の [Set-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) コマンドと `AutoPauseDelayInMinutes` 引数を使用して実行されます。
+* * *
 
 ## <a name="monitoring"></a>監視
 
@@ -298,13 +298,20 @@ Azure portal では、データベースの状態は、サーバーに含まれ�
 
 データベースの一時停止と再開の状態を照会するには、次の PowerShell コマンドを使用します。
 
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```powershell
-Get-AzSqlDatabase `
-  -ResourceGroupName $resourcegroupname `
-  -ServerName $servername `
-  -DatabaseName $databasename `
+Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername -DatabaseName $databasename `
   | Select -ExpandProperty "Status"
 ```
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```powershell
+az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json
+```
+
+* * *
 
 ## <a name="resource-limits"></a>リソース制限
 

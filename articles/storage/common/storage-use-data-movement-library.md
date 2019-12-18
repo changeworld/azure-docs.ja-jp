@@ -1,26 +1,25 @@
 ---
-title: Microsoft Azure Storage Data Movement Library を使用してデータを転送する | Microsoft Docs
-description: Data Movement Library ユーティリティを使用して、BLOB およびファイル間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
+title: .NET 用データ移動ライブラリを使用してデータを転送する
+titleSuffix: Azure Storage
+description: データ移動ライブラリを使用して、BLOB およびファイル間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 09/27/2017
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 8e09e2c33359c94275d9819b335544d15d4c7d78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22dae518a45d5c4af20044d5f3eb88e764e92c8b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65790090"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895113"
 ---
-# <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Microsoft Azure Storage Data Movement Library を使用してデータを転送する
+# <a name="transfer-data-with-the-data-movement-library"></a>データ移動ライブラリを使用してデータを転送する
 
-## <a name="overview"></a>概要
-Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB およびファイルの高パフォーマンスのアップロード、ダウンロード、およびコピーを実現するように設計された、クロスプラットフォームのオープン ソース ライブラリです。 このライブラリは、[AzCopy](../storage-use-azcopy.md) を動作させているコア データ移動フレームワークです。 Data Movement Library には、従来の [.NET Azure Storage クライアント ライブラリ](../blobs/storage-dotnet-how-to-use-blobs.md)では使用できない便利な方法が用意されています。 たとえば、並列操作数を設定する、転送の進行状況を追跡する、取り消された転送を簡単に再開する、などの操作を行うことができます。
+Azure Storage データ移動ライブラリは、BLOB およびファイルをハイ パフォーマンスでアップロード、ダウンロード、およびコピーできるように設計された、クロスプラットフォームのオープンソース ライブラリです。 このライブラリは、[AzCopy](../storage-use-azcopy.md) を動作させているコア データ移動フレームワークです。 データ移動ライブラリには、.NET 用の Azure Storage クライアント ライブラリでは使用できない便利なメソッドが用意されています。 これらのメソッドを使用すると、並列操作数を設定したり、転送の進行状況を追跡したり、取り消された転送を簡単に再開したりすることができます。
 
 また、.NET Core が採用されているため、Windows、Linux、macOS 向け .NET アプリを構築するときにも、このライブラリを使用できます。 .NET Core の詳細については、[.NET Core のドキュメント](https://dotnet.github.io/)を参照してください。 このライブラリは、Windows 用の従来の .NET Framework アプリにも利用できます。
 
@@ -33,15 +32,10 @@ Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB および
 - URL から Blob Storage にファイルをコピーする。
 - Blob Storage 間でコピーする。
 
-**必要なもの:**
+## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Azure ストレージ アカウント](storage-quickstart-create-account.md)
-
-> [!NOTE]
-> このガイドでは、既に [Azure Storage](https://azure.microsoft.com/services/storage/)を使い慣れている前提で説明します。 使い慣れていない場合は、「[Microsoft Azure Storage の概要](storage-introduction.md)」を参照してください。 最も重要なのは、Data Movement Library を使用し始めるには、[ストレージ アカウントを作成する](storage-quickstart-create-account.md)必要がある、ということです。
->
->
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Azure ストレージ アカウント](storage-quickstart-create-account.md)
 
 ## <a name="setup"></a>セットアップ
 
@@ -53,25 +47,27 @@ Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB および
 6. `.vscode` の `launch.json` を変更し、コンソールとして外部ターミナルを使用するようにします。 この設定は `"console": "externalTerminal"` のようになります。
 7. Visual Studio Code を使用すると、.NET Core アプリケーションをデバッグできます。 `F5` キーを押してアプリケーションを実行し、セットアップが動作していることを確認します。 "Hello World!" が コンソールに表示されます。
 
-## <a name="add-data-movement-library-to-your-project"></a>プロジェクトへの Data Movement Library の追加
+## <a name="add-the-data-movement-library-to-your-project"></a>プロジェクトへのデータ移動ライブラリの追加
 
-1. 最新バージョンの Data Movement Library を `<project-name>.csproj` ファイルの `dependencies` セクションに追加します。 この資料の作成時点では、このバージョンは `"Microsoft.Azure.Storage.DataMovement": "0.6.2"` です
+1. 最新バージョンのデータ移動ライブラリを `<project-name>.csproj` ファイルの `dependencies` セクションに追加します。 この資料の作成時点では、このバージョンは `"Microsoft.Azure.Storage.DataMovement": "0.6.2"` です
 2. プロジェクトを復元するように求めるメッセージが表示されます。 [復元] ボタンをクリックします。 プロジェクト ディレクトリのルートで `dotnet restore` コマンドを入力して、コマンド ラインからプロジェクトを復元することもできます。
 
 `<project-name>.csproj` を変更します。
 
-    <Project Sdk="Microsoft.NET.Sdk">
-
-        <PropertyGroup>
-            <OutputType>Exe</OutputType>
-            <TargetFramework>netcoreapp2.0</TargetFramework>
-        </PropertyGroup>
-        <ItemGroup>
-            <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.6.2" />
-            </ItemGroup>
-        </Project>
+```xml
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.6.2" />
+        </ItemGroup>
+    </Project>
+```
 
 ## <a name="set-up-the-skeleton-of-your-application"></a>アプリケーションのスケルトンの設定
+
 最初に アプリケーションの "スケルトン" コードに設定します。 このコードにより、ストレージ アカウント名とアカウント キーを入力するように求められ、その資格情報を使用して `CloudStorageAccount` オブジェクトが作成されます。 このオブジェクトは、すべての転送シナリオでストレージ アカウントを操作するときに使用されます。 また、コードでは、実行する転送操作の種類を選択することも求められます。
 
 `Program.cs` を変更します。
@@ -149,7 +145,8 @@ namespace DMLibSample
 }
 ```
 
-## <a name="transfer-local-file-to-azure-blob"></a>Azure BLOB へのローカル ファイルの転送
+## <a name="upload-a-local-file-to-a-blob"></a>BLOB にローカル ファイルをアップロードする
+
 `GetSourcePath` メソッドと `GetBlob` メソッドを `Program.cs` に追加します。
 
 ```csharp
@@ -196,8 +193,9 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 `F5` キーを押してアプリケーションを実行します。 アップロードが行われたことを確認するには、[Microsoft Azure ストレージ エクスプ ローラー](https://storageexplorer.com/)でストレージ アカウントを表示します。
 
-## <a name="set-number-of-parallel-operations"></a>並列操作数の設定
-Data Movement Library では、並列操作数を設定できます。この優れた機能によって、データ転送のスループットを向上させることができます。 既定では、Data Movement Library の並列操作数は "8 x コンピューター上のコア数" に設定されています。
+## <a name="set-the-number-of-parallel-operations"></a>並列操作数の設定
+
+データ移動ライブラリでは、並列操作数を設定できます。この機能によって、データ転送のスループットを向上させることができます。 既定では、データ移動ライブラリの並列操作数は "8 * コンピューター上のコアの数" に設定されています。
 
 低帯域幅の環境で大量に並列操作を実行すると、接続するネットワークに過剰な負荷がかかり、操作を完了できなくなる場合があることに注意してください。 利用可能なネットワーク帯域幅で最適に動作する並列操作数を確認するには、この設定をテストする必要があります。
 
@@ -260,7 +258,8 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 ```
 
 ## <a name="track-transfer-progress"></a>転送の進捗状況の追跡
-データの転送にかかった時間がわかっていると便利ですが、 転送操作 "*の間に*" 転送の進捗状況を確認できると、さらに役に立ちます。 このシナリオを実現するには、`TransferContext` オブジェクトを作成する必要があります。 `TransferContext` オブジェクトには `SingleTransferContext` と `DirectoryTransferContext` の 2 つのフォームがあります。 前者は 1 つのファイルを転送するためのフォーム (現在の操作) で、後者はファイルのディレクトリを転送するためのフォームです (後で追加します)。
+
+データの転送にかかった時間がわかっていると便利です。 しかし、転送動作 "*の間に*" 転送の進捗状況を確認できると、さらに役に立ちます。 このシナリオを実現するには、`TransferContext` オブジェクトを作成する必要があります。 `TransferContext` オブジェクトには `SingleTransferContext` と `DirectoryTransferContext` の 2 つのフォームがあります。 前者は 1 つのファイルを転送するためのもので、後者は複数のファイルから成るディレクトリを転送するためのものです。
 
 `GetSingleTransferContext` メソッドと `GetDirectoryTransferContext` メソッドを `Program.cs` に追加します。
 
@@ -309,7 +308,8 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 ```
 
 ## <a name="resume-a-canceled-transfer"></a>取り消された転送の再開
-Data Movement Library に用意されている便利な機能として、取り消された転送を再開するというものがあります。 まず「`c`」と入力して、一時的に転送を取り消すためのコードを追加しましょう。そして、3 秒後に転送を再開します。
+
+データ移動ライブラリに用意されている便利な機能として、取り消された転送を再開するというものがあります。 まず「`c`」と入力して、一時的に転送を取り消すためのコードを追加しましょう。そして、3 秒後に転送を再開します。
 
 `TransferLocalFileToAzureBlob` を変更します。
 
@@ -365,8 +365,9 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 これまでは、`checkpoint` 値は常に `null` に設定されていました。 ここで、転送を取り消すと、転送の最後のチェックポイントが取得され、この新しいチェックポイントが転送コンテキストで使用されます。
 
-## <a name="transfer-local-directory-to-azure-blob-directory"></a>Azure BLOB ディレクトリへのローカル ディレクトリの転送
-Data Movement Library で転送できるのが一度に 1 ファイルだとすると残念です。 幸い、そうではありません。 Data Movement Library には、ファイルのディレクトリとそのサブディレクトリすべてを転送する機能が用意されています。 それを実現するコードを追加してみましょう。
+## <a name="transfer-a-local-directory-to-blob-storage"></a>ローカル ディレクトリを BLOB ストレージに転送する
+
+もしデータ移動ライブラリが一度に 1 ファイルしか転送できないとすれば、残念です。 幸い、そうではありません。 データ移動ライブラリには、複数のファイルから成るディレクトリと、そのサブディレクトリすべてを転送する機能が用意されています。 それを実現するコードを追加してみましょう。
 
 最初に、`GetBlobDirectory` メソッドを `Program.cs` に追加します。
 
@@ -445,7 +446,8 @@ public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorage
 
 このメソッドと、1 つのファイルをアップロードするためのメソッドの間には違いがいくつかあります。 現時点では、`TransferManager.UploadDirectoryAsync` と、前に作成した `getDirectoryTransferContext` メソッドを使用しています。 また、`options` 値をアップロード操作に提供します。これにより、サブディレクトリをアップロードに含めることを指定できます。
 
-## <a name="copy-file-from-url-to-azure-blob"></a>URL から Azure BLOB へのファイルのコピー
+## <a name="copy-a-file-from-url-to-a-blob"></a>URL から BLOB へのファイルのコピー
+
 ここで、URL から Azure BLOB にファイルをコピーするためのコードを追加してみましょう。
 
 `TransferUrlToAzureBlob` を変更します。
@@ -502,8 +504,9 @@ public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
 
 この機能の使用事例として重要なのは、別のクラウド サービス (AWS など) からデータを Azure に移動する必要がある場合です。 リソースへのアクセスを提供する URL がある場合は、`TransferManager.CopyAsync` メソッドを使用することで、そのリソースを簡単に Azure BLOB に移動できます。 このメソッドには、新しいブール型パラメーターも導入されています。 このパラメーターを `true` に設定すると、非同期のサーバー側コピーを実行する必要があることを示します。 このパラメーターを `false` に設定した場合は、同期コピーが行われます。つまり、リソースは、ローカル コンピューターにダウンロードされてから、Azure BLOB にアップロードされます。 ただし、同期コピーは、現在 Azure Storage リソース間でのコピーにしか利用できません。
 
-## <a name="transfer-azure-blob-to-azure-blob"></a>Azure BLOB 間の転送
-Data Movement Library には、Azure Storage リソース間でのコピーという固有の機能も用意されています。
+## <a name="copy-a-blob"></a>BLOB をコピーする
+
+データ移動ライブラリが独自に提供するもう一つの機能として、Azure Storage リソース間でのコピーというものもあります。
 
 `TransferAzureBlobToAzureBlob` を変更します。
 
@@ -559,10 +562,10 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 
 この例では、`TransferManager.CopyAsync` のブール値パラメーターを `false` に設定して、同期コピーを実行する必要があることを指定します。 つまり、リソースは、ローカル コンピューターにダウンロードされてから、Azure BLOB にアップロードされます。 同期コピー オプションは、コピー操作を一定の速度で確実に行うには最適です。 これに対し、非同期のサーバー側コピーの速度は、サーバーで利用可能なネットワーク帯域幅に依存しており、変動します。 ただし、同期コピーでは、非同期コピーと比較すると、追加の送信コストが発生する可能性があります。 この送信コストが発生しないように、同期コピーは、ソース ストレージ アカウントと同じリージョンにある Azure VM で使用することをお勧めします。
 
-## <a name="conclusion"></a>まとめ
 これでデータ移動アプリケーションが完成しました。 [完全なコード サンプルは GitHub で入手できます](https://github.com/azure-samples/storage-dotnet-data-movement-library-app)。
 
 ## <a name="next-steps"></a>次の手順
-この入門では、Azure Storage とやり取りし、Windows、Linux、macOS で実行されるアプリケーションを作成しました。 この入門では、Blob Storage を重点的に取り上げていますが、 これと同じ情報は File Storage にも適用できます。 詳細については、[Azure Storage Data Movement Library のリファレンス ドキュメント](https://azure.github.io/azure-storage-net-data-movement)を参照してください。
+
+[Azure Storage データ移動ライブラリのリファレンス ドキュメント](https://azure.github.io/azure-storage-net-data-movement)。
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]

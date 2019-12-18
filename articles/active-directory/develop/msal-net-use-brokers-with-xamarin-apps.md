@@ -1,28 +1,24 @@
 ---
-title: Xamarin iOS および Android アプリケーションで Microsoft Authenticator または Microsoft Intune ポータル サイトを使用する
+title: Xamarin でのブローカー認証、iOS および Android | Azure
 titleSuffix: Microsoft identity platform
 description: .NET 用の Azure AD Authentication ライブラリ (ADAL.NET) から .NET 用 Microsoft 認証ライブラリ (MSAL.NET) に Microsoft Authenticator を使用することができる Xamarin iOS アプリケーションの移行の方法について説明します
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2ae0d79076a0137b3756721675267d89990bf5a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: a26f73354b99160275649855f7a2a616249ce05c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554039"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921842"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Microsoft Intune ポータル サイトを使用する
 
@@ -142,7 +138,7 @@ MSAL は、`–canOpenURL:` を使用してブローカーがデバイスにイ�
 ```
 
 ### <a name="step-6-register-your-redirect-uri-in-the-application-portal"></a>手順 6:アプリケーション ポータルでリダイレクト URI を登録する
-ブローカーを使用すると、リダイレクト URI に追加の要件が追加されます。 リダイレクト URI は次の形式にする _必要_ があります。
+ブローカーを使用すると、リダイレクト URI に追加の要件が追加されます。 リダイレクト URI は次の形式にする_必要_があります。
 ```CSharp
 $"msauth.{BundleId}://auth"
 ```
