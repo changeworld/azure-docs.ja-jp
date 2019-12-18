@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8604df894367ccc25d7e9ffae4453a6b3080b7d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226698"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941833"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -31,35 +31,45 @@ Core Tools を使用して、ローカル コンピューターで関数を開�
 
 ## <a name="core-tools-versions"></a>Core Tools のバージョン
 
-Azure Functions Core Tools には、2 つのバージョンがあります。 使用するバージョンは、ローカル開発環境、[選択した言語](supported-languages.md)、および必要なサポートのレベルによって異なります。
+Azure Functions Core Tools には、3 つのバージョンがあります。 使用するバージョンは、ローカル開発環境、[選択した言語](supported-languages.md)、および必要なサポートのレベルによって異なります。
 
-+ バージョン 1.x: ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://docs.npmjs.com/getting-started/what-is-npm)からインストールされます。 このバージョンでは、正式にサポートされていない試験段階の言語で関数を作成できます。 詳細については、「[Azure Functions でサポートされている言語](supported-languages.md)」を参照してください
++ **バージョン 1.x**: Azure Functions ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://www.npmjs.com/package/azure-functions-core-tools)からインストールされます。
 
-+ [バージョン 2.x](#v2): [ランタイムのバージョン 2.x](functions-versions.md) をサポートします。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux) に対応しています。 インストールには、プラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
++ [**バージョン 2.x および 3.x**](#v2): [Azure Functions ランタイムのバージョン 2.x および 3.x](functions-versions.md) をサポートします。 これらのバージョンでは [Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux) がサポートされ、インストールにはプラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
 
-特に記載がない限り、この記事の例ではバージョン 2.x を対象にしています。
+特に記載がない限り、この記事の例ではバージョン 3.x を対象にしています。
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 
 [Azure Functions Core Tools] は、Azure Functions ランタイムを実行するのと同じランタイムのバージョンを含み、ローカルの開発コンピューターで実行できます。 また、このツールには、関数を作成し、Azure に接続し、関数プロジェクトをデプロイするためのコマンドも用意されています。
 
-### <a name="v2"></a>バージョン 2.x
+### <a name="v2"></a>バージョン 2.x および 3.x
 
-バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux)など、.NET Core 2.x が対応しているすべてのプラットフォームでサポートされます。 
+バージョン 2.x および 3.x のツールは、.NET Core 上に構築されている Azure Functions ランタイムを使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、[Linux](#linux) など、.NET Core が対応しているすべてのプラットフォームでサポートされています。 
 
 > [!IMPORTANT]
-> [拡張バンドル]を使用すると、.NET Core 2.x SDK をインストールするための要件をバイパスできます。
+> [拡張バンドル]を使用すると、.NET Core SDK をインストールするための要件をバイパスできます。
 
 #### <a name="windows-npm"></a>Windows
 
 次の手順では、npm を使用して Windows 上に Core Tools をインストールします。 また、[Chocolatey](https://chocolatey.org/) を使用することもできます。 詳細については、[Core Tools の readme ](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)に関するページを参照してください。
 
-1. [Node.js]をインストールします。これには、npm が同梱されています。 2x バージョンのツールの場合、Node.js 8.5 以降のバージョンのみがサポートされています。
+1. [Node.js]をインストールします。これには、npm が同梱されています。
+    - 2x バージョンのツールの場合、Node.js 8.5 以降のバージョンのみがサポートされています。
+    - バージョン 3.x のツールの場合、Node 10 以降のバージョンのみがサポートされています。
 
 1. 次のコマンドを使って、Core Tools のパッケージをインストールします。
 
+    ##### <a name="v2x"></a>v2.x
+
     ```bash
     npm install -g azure-functions-core-tools
+    ```
+
+    ##### <a name="v3x"></a>v3.x
+
+    ```bash
+    npm install -g azure-functions-core-tools@3
     ```
 
    npm をダウンロードして Core Tools パッケージをインストールするには、数分かかる場合があります。
@@ -74,13 +84,21 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 1. 次のコマンドを使って、Core Tools のパッケージをインストールします。
 
+    ##### <a name="v2x"></a>v2.x
+
     ```bash
     brew tap azure/functions
     brew install azure-functions-core-tools
     ```
 
-1. [拡張バンドル]を使用しない場合、[.NET Core 2.x SDK for macOS](https://www.microsoft.com/net/download/macos) をインストールします。
+    ##### <a name="v3x"></a>v3.x
 
+    ```bash
+    brew tap azure/functions
+    brew install azure-functions-core-tools@3
+    # if upgrading on a machine that has 2.x installed
+    brew link --overwrite azure-functions-core-tools@3
+    ```
 
 #### <a name="linux"></a>APT による Linux (Ubuntu/Debian)
 
@@ -212,7 +230,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 開発のためにストレージ エミュレーターを使用している場合であっても、実際のストレージに接続してテストすることができます。 [ストレージ アカウントを作成済み](../storage/common/storage-create-storage-account.md)である場合は、次の方法のいずれかで、有効なストレージ接続文字列を取得できます。
 
 - [Azure ポータル] から、 **[ストレージ アカウント]** を検索して選択します。 
-  ![Azure portal から [ストレージ アカウント] を選択する](./media/functions-run-local/select-storage-accounts.png)
+  ![Azure portal で [ストレージ アカウント] を選択する](./media/functions-run-local/select-storage-accounts.png)
   
   使用するストレージ アカウントを選択し、 **[設定]** の **[アクセス キー]** を選択してから、 **[接続文字列]** の値のいずれかをコピーします。
   ![Azure portal から接続文字列をコピーする](./media/functions-run-local/copy-storage-connection-portal.png)
@@ -517,7 +535,7 @@ Azure portal で関数アプリを作成する場合、Application Insights と�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Functions Core Tools は[オープン ソースであり、GitHub でホストされています](https://github.com/azure/azure-functions-cli)。  
+Azure Functions Core Tools [Microsoft 学習モジュール](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/) を使用して Azure Functions を開発、テスト、および発行する方法について説明します。Azure Functions Core Tools は[オープンソースであり、GitHub ](https://github.com/azure/azure-functions-cli)でホストされています。  
 バグまたは機能要求を提出するには、[GitHub の問題をオープン](https://github.com/azure/azure-functions-cli/issues)してください。
 
 <!-- LINKS -->

@@ -1,34 +1,32 @@
 ---
 title: Azure Active Directory 認証プロトコル | Microsoft Docs
 description: Azure Active Directory (AD) でサポートされる認証プロトコルの概要
-documentationcenter: dev-center-name
 author: rwike77
 services: active-directory
 manager: CelesteDG
-editor: ''
 ms.assetid: 7a838ae2-c24c-4304-b6c0-e77fb888e6c0
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f292d4804adf7e1a58e5c2097f689aac182ff783
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b370736a5e4994651499716e3a923cf59465ca96
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835479"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845418"
 ---
 # <a name="azure-active-directory-authentication-protocols"></a>Azure Active Directory の認証プロトコル
+
 Azure Active Directory (Azure AD) では、最も広く使用されている認証および承認のプロトコルを複数サポートしています。 このセクションの各トピックでは、Azure AD でサポートされているプロトコルとその実装について説明します。 これらのトピックには、サポートされている要求の種類の確認、フェデレーション メタデータの使用の概要、OAuth 2.0 および SAML 2.0 プロトコルの詳細なリファレンス ドキュメント、トラブルシューティング セクションが含まれます。
 
 ## <a name="authentication-protocols-articles-and-reference"></a>認証プロトコルの記事とリファレンス
+
 * [Azure AD での署名キーのロールオーバーに関する重要な情報](active-directory-signing-key-rollover.md) - Azure AD の署名キーのロールオーバーの周期、キーを自動的に更新するために可能な変更、最も一般的なアプリケーション シナリオを更新する方法について説明します。
 * [サポートされているトークンと要求の種類](v1-id-and-access-tokens.md) - Azure AD が発行するトークン内の要求について説明します。
 * [フェデレーション メタデータ](azure-ad-federation-metadata.md) - Azure AD が生成するメタデータ ドキュメントの検索と解釈の方法について説明します。
@@ -39,6 +37,6 @@ Azure Active Directory (Azure AD) では、最も広く使用されている認�
 * [SAML プロトコル リファレンス](active-directory-saml-protocol-reference.md) - Azure AD のシングル サインオンおよびシングル サインアウト SAML プロファイルについて説明します。
 
 ## <a name="see-also"></a>関連項目
-[Azure Active Directory 開発者ガイド](v1-overview.md)
 
-[Active Directory のコード例](sample-v1-code.md)
+* [Azure Active Directory 開発者ガイド](v1-overview.md)
+* [Active Directory のコード例](sample-v1-code.md)

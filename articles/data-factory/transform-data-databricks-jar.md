@@ -1,23 +1,22 @@
 ---
-title: Databricks Jar でデータを変換する - Azure
+title: Databricks Jar を使用してデータを変換する
 description: Databricks Jar を実行してデータを処理または変換する方法を説明します。
 services: data-factory
 documentationcenter: ''
 ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/15/2018
-author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 982f00b5de9fd3e84233e5fe3b68e22fa6f7fe2a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: nabhishek
+manager: shwang
+ms.date: 03/15/2018
+ms.openlocfilehash: 20858069b745beeaf64951c4ef23c2eb85251985
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683961"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929110"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Azure Databricks で Jar アクティビティを実行してデータを変換する
 

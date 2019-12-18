@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub Device Provisioning Service でマルチテナント用にデバイスをプロビジョニングする方法 | Microsoft Docs
+title: Azure IoT Hub Device Provisioning Service でマルチテナント用にデバイスをプロビジョニングする方法
 description: デバイス プロビジョニング サービス インスタンスでマルチテナント用にデバイスをプロビジョニングする方法です
 author: wesmc7777
 ms.author: wesmc
@@ -7,13 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 84e1f57175d772ad281c18b67fa1be484c0cac69
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6d9755c076763a72d54abb66cfdf01b0ac7ffb9d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66116058"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228785"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>マルチテナント用にプロビジョニングする方法 
 

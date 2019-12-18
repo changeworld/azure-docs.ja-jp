@@ -1,14 +1,14 @@
 ---
 title: Azure Blueprints の関数
 description: Azure Blueprints の定義と割り当てに使用できる関数について説明します。
-ms.date: 04/15/2019
+ms.date: 12/09/2019
 ms.topic: reference
-ms.openlocfilehash: 92539da02ddbe22f943454aff54dae4ccb5af3ce
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128759"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970892"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure Blueprints で使用する関数
 
@@ -28,6 +28,9 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 `artifacts(artifactName)`
 
 そのブループリント アーティファクトの出力が設定されたプロパティのオブジェクトが返されます。
+
+> [!NOTE]
+> `artifacts()` 関数は、Resource Manager テンプレート内からは使用できません。 Azure PowerShell または REST API によってブループリントを [Blueprints-as-code](https://github.com/Azure/azure-blueprints/blob/master/README.md) の一部として管理する場合、関数は、ブループリント定義の JSON 内またはアーティファクト JSON 内のみで使用できます。
 
 ### <a name="parameters"></a>parameters
 

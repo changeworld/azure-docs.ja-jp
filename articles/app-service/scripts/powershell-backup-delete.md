@@ -1,25 +1,19 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - Web アプリのバックアップの削除 | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - Web アプリのバックアップの削除
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: PowerShell:アプリのバックアップを削除する
+description: Azure PowerShell を使用して App Service のデプロイと管理を自動化する方法について説明します。 このサンプルでは、アプリのバックアップを削除する方法を紹介しています。
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9b9a6ecc93489c6690e0128ef9129c480f506b31
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b8d3175b4266e132d94f6f2dde163cb60fb11396
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098424"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685798"
 ---
 # <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Azure PowerShell を使用して Web のバックアップを削除する
 

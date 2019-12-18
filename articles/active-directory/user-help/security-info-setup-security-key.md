@@ -1,6 +1,6 @@
 ---
-title: セキュリティ キー用のセキュリティ情報 (プレビュー) を設定する - Azure AD
-description: Fast Identity Online (FIDO2) セキュリティ キーを使用して本人確認をするようにセキュリティ情報を設定する方法です。
+title: セキュリティ キーを検証方法として設定する - Azure AD
+description: Fast Identity Online (FIDO2) セキュリティ キーを検証方法として使用して ID を検証するように [Security info (preview)] (セキュリティ情報 (プレビュー)) ページを設定する方法。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803790"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278943"
 ---
-# <a name="set-up-security-info-preview-for-a-security-key"></a>セキュリティ キー用のセキュリティ情報 (プレビュー) を設定する
+# <a name="set-up-a-security-key-as-your-verification-method"></a>セキュリティ キーを検証方法として設定する
 
-セキュリティ キーは、組織内でパスワードなしのサインイン方法として使用できます。 セキュリティ キーは、職場または学校アカウントにサインインするために一意の PIN と共に使用される物理デバイスです。 セキュリティ キーを使用するには、物理デバイスと自分だけが知る情報が必要となります。このため、ユーザー名とパスワードよりも強力な認証方法と見なされています。
+セキュリティ キーは、組織内でパスワードなしのサインイン方法として使用できます。 セキュリティ キーは、職場または学校アカウントにサインインするために一意の PIN と共に使用される物理デバイスです。 セキュリティ キーを使用するには物理デバイスと自分だけが知っている何かが必要なため、それはユーザー名とパスワードより強力な検証方法と見なされています。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
@@ -35,7 +35,7 @@ ms.locfileid: "73803790"
 職場または学校アカウントにセキュリティ キーが必要な場合は、管理者または組織から提供されます。 使用できるセキュリティ キーには、デバイスに差し込む USB キーや NFC リーダーでタップする NFC キーなど、さまざまな種類があります。 ご使用のセキュリティ キーの詳細 (種類など) については、製造元のドキュメントを参照してください。
 
 > [!Note]
-> FIDO2 セキュリティ キーを使用できない場合は、他のパスワードなしの認証方法として、Microsoft Authenticator アプリや Windows Hello などを使用できます。 Microsoft Authenticator アプリの詳細については、「[Microsoft Authenticator アプリとは](user-help-auth-app-overview.md)」を参照してください Windows Hello の詳細については、[Windows Hello の概要](https://www.microsoft.com/windows/windows-hello)に関するページを参照してください。
+> FIDO2 セキュリティ キーを使用できない場合は、Microsoft Authenticator アプリや Windows Hello など、パスワードなしの他の検証方法を使用できます。 Microsoft Authenticator アプリの詳細については、「[Microsoft Authenticator アプリとは](user-help-auth-app-overview.md)」を参照してください Windows Hello の詳細については、[Windows Hello の概要](https://www.microsoft.com/windows/windows-hello)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -150,7 +150,7 @@ ms.locfileid: "73803790"
 
 ## <a name="next-steps"></a>次の手順
 
-- ブログ「[Microsoft の Azure AD が FIDO2 セキュリティ キーの公開プレビューを開始、パスワードなしのログインが可能に](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins)」や、「[Microsoft Authenticator アプリとは](user-help-auth-app-overview.md)」と [Windows Hello の概要](https://www.microsoft.com/windows/windows-hello)に関する記事を読んで、パスワードなしの認証方法について詳しく確認する。
+- パスワードなしの検証方法の詳細については、[Microsoft の Azure AD での FIDO2 セキュリティ キーのパブリック プレビューの開始 (パスワードなしのログインの有効化)](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) に関するブログ、または「[Microsoft Authenticator アプリとは](user-help-auth-app-overview.md)」および [Windows Hello の概要](https://www.microsoft.com/windows/windows-hello)に関する記事を参照してください。
 
 - [Microsoft と互換性のあるセキュリティ キー](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key)に関する詳細情報を確認する。
 

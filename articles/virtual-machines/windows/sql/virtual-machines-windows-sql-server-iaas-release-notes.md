@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/01/2019
-ms.openlocfilehash: 2f89b57257088b0b647fd5f0159a58c2ac03bda7
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c122baa21c5d94b57f29cb0530f0a2655faa87d0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72897255"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790380"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 
@@ -56,7 +56,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 | --- | --- |
 | **新しい SQL IaaS インストール モード** | SQL Server サービスの再開を回避するため、SQL Server IaaS 拡張機能を[軽量モード](virtual-machines-windows-sql-server-agent-extension.md)でインストールできるようになりました。  |
 | **SQL Server エディションの変更** | SQL Server VM の [エディション プロパティ](virtual-machines-windows-sql-change-edition.md)を変更できるようになりました。 |
-| **SQL VM リソース プロバイダーの変更** | 新しい SQL IaaS モードを使用して、[SQL Server VM を SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-register-with-resource-provider.md)できます。 この機能には、[Windows 2008 のイメージ](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms)が含まれます。|
+| **SQL VM リソース プロバイダーの変更** | 新しい SQL IaaS モードを使用して、[SQL Server VM を SQL VM リソース プロバイダーに登録](virtual-machines-windows-sql-register-with-resource-provider.md)できます。 この機能には、[Windows Server 2008 のイメージ](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)が含まれます。|
 | **Azure ハイブリッド特典を使用するライセンス持ち込みイメージ** | Azure Marketplace からデプロイされたライセンス持ち込みイメージを使用して、[ライセンスの種類を従量課金制に](virtual-machines-windows-sql-ahb.md#remarks)切り替えることができるようになりました。| 
 | &nbsp; | &nbsp; |
 

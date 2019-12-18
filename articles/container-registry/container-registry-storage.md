@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry へのイメージの保存
+title: コンテナー イメージの保存
 description: Azure Container Registry に Docker コンテナー イメージが保存される方法について、セキュリティ、冗長性、および容量も含めて説明します。
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
-ms.author: danlep
-ms.openlocfilehash: 4517cc21ca0087358e750cd480288d4ec3718791
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: f66c3dd95edfe5035c46857cb6f9aa59d8a6a0e1
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310539"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456212"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry へのコンテナー イメージの保存
 
@@ -35,7 +30,7 @@ Azure では、geo 冗長ストレージ スキームを使用して、コンテ
 
 次の表は、Azure Container Registry に適用されるコンテナー イメージとストレージの制限について説明しています。
 
-| Resource | 制限 |
+| リソース | 制限 |
 | -------- | :---- |
 | リポジトリ | 制限なし |
 | イメージ | 制限なし |

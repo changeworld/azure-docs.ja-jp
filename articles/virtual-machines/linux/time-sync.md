@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: e5d68a31db3797f9919d044eed284d0d09052390
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1e459e96c128e20f44f1a5adcb18c5b1824c3bf5
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034663"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534120"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
 
@@ -39,7 +39,7 @@ Azure ホストは内部の Microsoft タイム サーバーに同期されて�
 
 スタンドアロン ハードウェアでは、Linux OS によって、起動時にホスト ハードウェア クロックのみが読み取られます。 その後、クロックは、Linux カーネルの割り込みタイマーを使用して維持されます。 この構成では、クロックは時間の経過と共に誤差が生じます。 Azure の新しい Linux ディストリビューションでは、VM で VMICTimeSync プロバイダーを使用できます。このプロバイダーは LIS (Linux Integration Services) に含まれており、ホストからより頻繁にクロック更新についてクエリを実行するためのものです。
 
-仮想マシンとホストとのやりとりがクロックに影響する場合もあります。 [メモリ保持メンテナンス](maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)中に、VM は最大で 30 秒間一時停止します。 たとえば、メンテナンスの開始前に、VM クロックには午前 10 時 00 分 00 秒と示され、この状態が 28 秒間続きます。 VM の再開後、VM のクロックはまだ午前 10 時 00 分 00 秒と示されており、28 秒遅れていることになります。 これを修正するため、VMICTimeSync サービスでは、ホストで何が発生しているのかを監視し、VM で生じた変更の補正を求めます。
+仮想マシンとホストとのやりとりがクロックに影響する場合もあります。 [メモリ保持メンテナンス](../maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot)中に、VM は最大で 30 秒間一時停止します。 たとえば、メンテナンスの開始前に、VM クロックには午前 10 時 00 分 00 秒と示され、この状態が 28 秒間続きます。 VM の再開後、VM のクロックはまだ午前 10 時 00 分 00 秒と示されており、28 秒遅れていることになります。 これを修正するため、VMICTimeSync サービスでは、ホストで何が発生しているのかを監視し、VM で生じた変更の補正を求めます。
 
 時刻同期が動作しないと、VM のクロックでエラーが蓄積されます。 VM が 1 つのみであれば、ワークロードで高精度のタイムキーピングが必要でない限り、影響は大きくならない場合があります。 しかし、ほとんどの場合、相互接続された VM が複数あり、それらの VM ではトランザクションを追跡するために時間を使用し、その時間はデプロイ全体で一貫している必要があります。 VM 間の時間が異なると、次のような影響が見られる場合があります。
 
@@ -144,6 +144,16 @@ Red Hat および NTP の詳細については、[NTP の構成](https://access.
 chrony の詳細については、[chrony の使用](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-using_chrony)に関するページを参照してください。
 
 chrony および TimeSync ソースの両方が同時に有効になっている場合は、一方を**優先**としてマークし、もう一方のソースをバックアップとして設定することができます。 NTP サービスでは、長時間の経過後を除き、大きなスキューが発生した場合にクロックが更新されないため、VMICTimeSync によって、NTP ベースのツールを単独で使用する場合よりはるかに早く一時停止した VM イベントからクロックが回復されます。
+
+既定では、chronyd は、時間の誤差を修正するために、システム クロックを加速または減速します。 誤差が大きすぎる場合、chrony は誤差の修正に失敗します。 これを解決するために、 **/etc/chrony.conf** の `makestep` パラメーターを変更して、誤差が指定されたしきい値を超えた場合に timesync を強制的に適用することができます。
+ ```bash
+makestep 1.0 -1
+```
+ここでは、chrony は、誤差が 1 秒よりも大きい場合に時間の更新を強制します。 変更を適用するには、chronyd サービスを再起動します。
+
+```bash
+systemctl restart chronyd
+```
 
 
 ### <a name="systemd"></a>systemd 

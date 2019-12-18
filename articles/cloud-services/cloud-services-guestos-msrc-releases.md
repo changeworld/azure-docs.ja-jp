@@ -10,17 +10,57 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/1/2019
+ms.date: 11/15/2019
 ms.author: raiye
-ms.openlocfilehash: 22e833a1d555057c7e6a2ce46e7a1bb136260851
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: fd4936357035d8163130064bd6f0600c9d2b08bb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888303"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149995"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="november-2019-guest-os"></a>2019 年 11 月のゲスト OS
+
+>[!NOTE]
+>11 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 11 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 19-11   |  [4525106]  |  Internet Explorer   |  2.92  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525233]  |  Windows セキュリティ   |  2.92  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525106]  |  Internet Explorer   |  3.79  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525253]  |  Windows セキュリティ   |  3.79  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525106]  |  Internet Explorer   |  4.72  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525250]  |  Windows セキュリティ   |  4.72  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4525236]  |  最新の累積更新プログラム   |  5.37  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4523205]  |  最新の累積更新プログラム   |  6.13  |  2019 年 11 月 12 日  |
+|  Rel 19-11   |  [4519976]  |  セキュリティ以外   |  2.92  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4520007]  |  セキュリティ以外   |  3.79  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4521857]  |  ServicingStackUpdate   |  3.79  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4520005]  |  セキュリティ以外   |  4.72  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4521864]  |  ServicingStackUpdate   |  4.72  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4521858]  |  ServicingStackUpdate   |  5.37  |  2019 年 10 月 8 日  |
+|  Rel 19-11   |  [4521862]  |  ServicingStackUpdate   |  6.13  |  2019 年 10 月 8 日  |
+
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525233]: https://support.microsoft.com/kb/4525233
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525253]: https://support.microsoft.com/kb/4525253
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525250]: https://support.microsoft.com/kb/4525250
+[4525236]: https://support.microsoft.com/kb/4525236
+[4523205]: https://support.microsoft.com/kb/4523205
+[4519976]: https://support.microsoft.com/kb/4519976
+[4520007]: https://support.microsoft.com/kb/4520007
+[4521857]: https://support.microsoft.com/kb/4521857
+[4520005]: https://support.microsoft.com/kb/4520005
+[4521864]: https://support.microsoft.com/kb/4521864
+[4521858]: https://support.microsoft.com/kb/4521858
+[4521862]: https://support.microsoft.com/kb/4521862
+
 
 ## <a name="october-2019-guest-os"></a>2019 年 10 月のゲスト OS
 

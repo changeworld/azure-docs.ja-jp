@@ -1,28 +1,24 @@
 ---
-title: Xamarin iOS および Android アプリケーションで Microsoft Authenticator または Microsoft Intune ポータル サイトを使用する
+title: Xamarin でのブローカー認証、iOS および Android | Azure
 titleSuffix: Microsoft identity platform
 description: .NET 用の Azure AD Authentication ライブラリ (ADAL.NET) から .NET 用 Microsoft 認証ライブラリ (MSAL.NET) に Microsoft Authenticator を使用することができる Xamarin iOS アプリケーションの移行の方法について説明します
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e71e9ef72e7b6caaa3894bb30c6e7e9cf762232a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: a26f73354b99160275649855f7a2a616249ce05c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802717"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921842"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Xamarin アプリケーションで Microsoft Authenticator または Microsoft Intune ポータル サイトを使用する
 
@@ -180,7 +176,9 @@ public static string redirectUriOnIos = "msauth.com.yourcompany.XForms://auth";
 
 ## <a name="brokered-authentication-for-android"></a>Android のブローカー認証
 
-Android では、ブローカー サポートは利用できません。
+現時点で、MSAL.NET では Xamarin.iOS プラットフォームのみがサポートされています。 Xamarin.Android プラットフォームのブローカーはまだサポートされていません。
+
+MSAL Android ネイティブ ライブラリでは既にサポートされています。 詳細については「[Android での仲介型認証](brokered-auth.md)」を参照してください
 
 ## <a name="next-steps"></a>次の手順
 

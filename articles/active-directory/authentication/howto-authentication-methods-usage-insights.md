@@ -1,22 +1,22 @@
 ---
-title: 認証方法の使用状況と分析情報に関するレポート (プレビュー) - Azure Active Directory
+title: 認証方法の使用状況と分析情報 - Azure Active Directory
 description: Azure AD のパスワード リセットのセルフサービスと Multi-Factor Authentication の認証方法の使用状況に関するレポート
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfea07989f52c463816318276fd5b6643cb2041
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: b448e6ce7c8b4522d5e7bdbafb39eccca982fdee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255063"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848512"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>認証方法の使用状況と分析情報 (プレビュー)
 

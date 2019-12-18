@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する、Java (Android) - Speech Service
+title: クイック スタート:音声を合成する、Java (Android) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Android 上で Java と Speech SDK を使用して音声を合成する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/19/2019
 ms.author: yulili
-ms.openlocfilehash: 47120c6b6fee945938ac5348091be55795077f6c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e38b1bdd3258675dfac9a155f7cee338a1f8f806
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505373"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818158"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,7 +23,7 @@ ms.locfileid: "73505373"
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [使用する開発環境をセットアップする](../../../../quickstarts/setup-platform.md?tabs=android)
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=android)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=android)
 
 ## <a name="create-user-interface"></a>ユーザー インターフェイスを作成する

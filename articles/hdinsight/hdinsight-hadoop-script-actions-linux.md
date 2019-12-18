@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/22/2019
-ms.openlocfilehash: 66132a2a6a7b5b89bca0767efe7c194ca3dec051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2019
+ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687443"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687739"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -75,7 +75,7 @@ fi
 
 ### <a name="bps10"></a>オペレーティング システム バージョンをターゲットにします。
 
-Linux ベースの HDInsight は、Ubuntu Linux ディストリビューションに基づいています。 異なるバージョンの HDInsight は、異なるバージョンの Ubuntu に依存し、スクリプトの動作が変わる可能性があります。 たとえば、HDInsight 3.4 以前は、Upstart を使用する Ubuntu バージョンに基づいています。 バージョン 3.5 以降は、Systemd を使用する Ubuntu 16.04 に基づいています。 Systemd と Upstart は、異なるコマンドに依存しているため、両方で動作するスクリプトを記述する必要があります。
+HDInsight は、Ubuntu Linux ディストリビューションに基づいています。 異なるバージョンの HDInsight は、異なるバージョンの Ubuntu に依存し、スクリプトの動作が変わる可能性があります。 たとえば、HDInsight 3.4 以前は、Upstart を使用する Ubuntu バージョンに基づいています。 バージョン 3.5 以降は、Systemd を使用する Ubuntu 16.04 に基づいています。 Systemd と Upstart は、異なるコマンドに依存しているため、両方で動作するスクリプトを記述する必要があります。
 
 HDInsight 3.4 と 3.5 のもう 1 つの重要な違いは `JAVA_HOME` が Java 8 を指すようになった点です。 次のコードでは、スクリプトが Ubuntu 14 または 16 で実行されているかどうかを判断する方法を示しています。
 
@@ -329,7 +329,7 @@ Microsoft は、HDInsight クラスターにコンポーネントをインスト
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-次に、開発したスクリプトを使用しているときに発生するエラーを示します。
+次に、開発したスクリプトを使用しているときに発生する可能性のあるエラーを示します。
 
 **エラー**: `$'\r': command not found`. `syntax error: unexpected end of file`が続くこともあります。
 

@@ -1,24 +1,17 @@
 ---
-title: Web App for Containers でマルチコンテナー アプリを作成する - Azure App Service
-description: Docker Compose、WordPress および MySQL を使用して、Azure で複数のコンテナーを使用する方法について説明します。
+title: チュートリアル:複数コンテナー アプリを作成する
+description: WordPress アプリと MySQL コンテナーを含んだ複数コンテナー アプリを Azure App Service 上に作成して、WordPress アプリを構成する方法について説明します。
 keywords: azure app service, Web アプリ, linux, docker, compose, マルチコンテナー, マルチ コンテナー, コンテナー用の Web アプリ, 複数のコンテナー, コンテナー, wordpress, azure db for mysql, コンテナーを使用した運用データベース
-services: app-service
-documentationcenter: ''
 author: msangapu-msft
-manager: gwallace
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/29/2019
 ms.author: msangapu
-ms.openlocfilehash: f4a366809bd5c6267ef76632e8990309f100c393
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 327b2aaadd77c00d847504ff16415813d2fcf89c
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554932"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687455"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>チュートリアル:Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
 

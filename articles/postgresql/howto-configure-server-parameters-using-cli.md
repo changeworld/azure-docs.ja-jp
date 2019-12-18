@@ -1,18 +1,18 @@
 ---
-title: Azure Database for PostgreSQL - Single Server でサービス パラメーターを構成する
-description: この記事では、Azure CLI コマンド ラインを使用して Azure Database for PostgreSQL - Single Server でサービス パラメーターを構成する方法について説明します。
+title: Azure Database for PostgreSQL - Single Server でパラメーターを構成する
+description: この記事では、Azure CLI を使用して Azure Database for PostgreSQL - Single Server で Postgres パラメーターを構成する方法について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: f276247076438a03973148b5cf65ddbeb409b024
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 4e029428a3709bacdbcd50a6ac3714e730377242
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274766"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763625"
 ---
 # <a name="customize-server-configuration-parameters-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - Single Server のサーバー構成パラメーターをカスタマイズする
 コマンド ライン インターフェイス (Azure CLI) を使用して、Azure PostgreSQL サーバーの構成パラメーターを一覧表示、表示、更新できます。 エンジン構成のサブセットは、サーバーレベルで公開され、変更が可能です。 

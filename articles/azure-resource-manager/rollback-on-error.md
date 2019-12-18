@@ -1,17 +1,14 @@
 ---
-title: エラー発生時に正常な Azure デプロイにロールバックする
+title: エラー発生時に正常なデプロイにロールバックする
 description: 失敗したデプロイを、正常なデプロイにロールバックすることを指定します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 035b684bb9f5fbc10eb13e642c3fd5945b85c561
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0978d2547e23a9ac6f920c76be3e877ec236d9ed
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975378"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150333"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>エラー発生時に正常なデプロイにロールバックする
 

@@ -1,5 +1,6 @@
 ---
-title: Azure Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視 | Microsoft Docs
+title: VPN ゲートウェイをトラブルシューティングおよび監視する - Azure Automation
+titleSuffix: Azure Network Watcher
 description: この記事では、Azure Automation と Network Watcher を使用してオンプレミスの接続を診断する方法について説明します
 services: network-watcher
 documentationcenter: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: d3a09ee83d4a1f05781c885eaa708e6e024b7f97
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 07847289c156aaa48b9d15c40d4135ce2cf39c10
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64719799"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275904"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視
 

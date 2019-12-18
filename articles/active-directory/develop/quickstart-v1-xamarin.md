@@ -2,10 +2,8 @@
 title: Azure AD Xamarin の概要 | Microsoft Docs
 description: Azure AD と連携して、OAuth を使用してサインインし、Azure AD で保護された API を呼び出すことができる、Xamarin アプリケーションを構築します。
 services: active-directory
-documentationcenter: xamarin
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 198cd2c3-f7c8-4ec2-b59d-dfdea9fe7d95
 ms.service: active-directory
 ms.subservice: develop
@@ -18,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f93816168a95fa10639da91d72a070660157a96f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 6197a27b9a94de0f9a10407215e5755689cd0b56
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149547"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920822"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>クイック スタート:Microsoft のサインインを統合する Xamarin アプリを作成する
 

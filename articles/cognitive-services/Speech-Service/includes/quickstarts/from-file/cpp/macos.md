@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:オーディオ ファイルから音声を認識する (C++ (macOS)) - Speech Service
+title: クイック スタート:オーディオ ファイルから音声を認識する、C++ (macOS) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: macOS で C++ と macOS を使用して音声を認識する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: a3a651286fec9328c6d1835f68a4651212b5bd8c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5cd7173d2df6f08b79d544a3a371039c24d5882a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506373"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819195"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,6 +25,8 @@ ms.locfileid: "73506373"
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=macos)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=macos)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
@@ -74,12 +76,14 @@ ms.locfileid: "73506373"
 
    ````
 
-1. この新しいファイルで、文字列 `YourSubscriptionKey` を、Speech Services のサブスクリプション キーで置き換えます。
+1. この新しいファイルで、文字列 `YourSubscriptionKey` を、音声サービスのサブスクリプション キーで置き換えます。
 
 1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](~/articles/cognitive-services/Speech-Service/regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
 1. 文字列 `whatstheweatherlike.wav` を実際のファイル名に置き換えます。
 
+> [!NOTE]
+> Speech SDK では、既定で認識される言語が en-us です。ソース言語の選択については、「[音声テキスト変換のソース言語を指定する](../../../../how-to-specify-source-language.md)」を参照してください。
 
 ## <a name="build-the-app"></a>アプリのビルド
 
@@ -106,7 +110,7 @@ ms.locfileid: "73506373"
    ./helloworld
    ```
 
-1. オーディオ ファイルが Speech Services に送信され、ファイルの最初の発話がテキストに文字起こしされて、それが同じウィンドウに表示されます。
+1. オーディオ ファイルが Speech サービスに送信され、ファイルの最初の発話がテキストに文字起こしされて、同じウィンドウに表示されます。
 
    ```text
    Recognizing first result...

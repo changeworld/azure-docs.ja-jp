@@ -1,6 +1,6 @@
 ---
-title: 電話呼び出しにセキュリティ情報 (プレビュー) を設定する - Azure AD
-description: 電話呼び出しを使用して本人確認をするようにセキュリティ情報を設定する方法です。
+title: 電話番号を検証方法として設定する - Azure AD
+description: 電話番号とモバイル デバイスを検証方法として使用して ID を検証するように [Security info (preview)] (セキュリティ情報 (プレビュー)) ページを設定する方法。
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5dc5ec06e60112e69a31d1ce4c69e698576609f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6bb7d811b1d622fb14935b4d5ddf0cb60e44daa8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803796"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278966"
 ---
-# <a name="set-up-security-info-preview-to-use-phone-calls"></a>電話呼び出しを使用するようにセキュリティ情報 (プレビュー) を設定する
+# <a name="set-up-a-phone-number-as-your-verification-method"></a>電話番号を検証方法として設定する
 
 次の手順に従って、2 要素認証とパスワードのリセット メソッドを追加できます。 これを初回に設定したら、 **[セキュリティ情報]** ページに戻り、セキュリティ情報を追加、更新、または削除できます。
 

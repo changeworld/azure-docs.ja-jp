@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能 | Microsoft Docs
-description: " Azure Security Center のアダプティブ ネットワークのセキュリティ強化機能を有効にする方法を説明します。 "
+description: 実際のトラフィック パターン、ネットワーク セキュリティ グループ (NSG) のルールに基づいて、セキュリティ体制を強化し、さらに向上させる方法について説明します。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
 ms.author: memildin
-ms.openlocfilehash: 060a5a6a356574e04a3492cdeadd93ddf9a38535
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: fb1e381f9b956a0c6414a82505aced2cbdb2d680
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255258"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559277"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能
 Azure Security Center のアダプティブ ネットワークのセキュリティ強化機能を構成する方法を説明します。
@@ -83,7 +83,7 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 * "許可" ルールを "拒否" ルールに変更することはできません。 
 
   > [!NOTE]
-  > "拒否" ルールの作成と変更は、NSG で直接行います。詳細については、「[ネットワーク セキュリティ グループの作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)」をご覧ください。
+  > "拒否" ルールの作成と変更は、NSG で直接実行されます。 詳細については、「[ネットワーク セキュリティ グループを作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)」をご覧ください。
 
 * **"すべてのトラフィックを拒否"** ルールは、ここで表示される唯一の "拒否" ルールのタイプで、変更することはできません。 ただし、そのルールを削除することはできます (「[ルールの削除](#delete-rule)」をご覧ください)。
   > [!NOTE]

@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Windows 用の C# モジュールを開発する - Azure IoT Edge| Microsoft Docs'
+title: チュートリアル - Azure IoT Edge を使用して Windows 用の C# モジュールを開発する
 description: このチュートリアルでは、C# コードで IoT Edge モジュールを作成して、Windows IoT Edge デバイスにデプロイする方法について説明します。
 services: iot-edge
 author: kgremban
@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3f37f0f3fe57015cc733d67f16e64bdf58a8a6b7
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 041efc62b32e8d8c0c477d9d5715882fd7899cd9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560999"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701939"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>チュートリアル:Windows デバイス用の C# IoT Edge モジュールを開発する
 

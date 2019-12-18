@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声間翻訳 - Speech Service
+title: クイック スタート:音声間で翻訳する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Speech SDK を使用して、ある言語の音声を別の言語のテキストに対話的に翻訳します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 551fa6fe336f6d4d11f95fba5530e4a250a736be
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 393f1aa6a8fe74d6fef7d5d544dec490078089d0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681933"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817707"
 ---
 # <a name="quickstart-translate-speech-to-speech"></a>クイック スタート:音声間翻訳
 

@@ -1,21 +1,17 @@
 ---
-title: 障害のトラブルシューティングと診断 - Azure Logic Apps | Microsoft Docs
+title: 障害のトラブルシューティングと診断
 description: Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, jehollan, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.date: 10/15/2017
-ms.openlocfilehash: 62a74364939fffb6e06f51f1c0cabb6cce8c10e1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93b6d9d2975aa1758afffd19deb1d315b974cc47
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60999812"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790762"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Azure Logic Apps でのワークフローの問題のトラブルシューティングと診断
 
@@ -40,7 +36,7 @@ ms.locfileid: "60999812"
 
    | Status | 説明 | 
    | ------ | ----------- | 
-   | **成功** | トリガーによりエンドポイントがチェックされ、使用可能なデータが見つかりました。 通常、この状態は、"起動済み" と共に表示されます。 表示されない場合、トリガー定義に、十分でない条件または `SplitOn` コマンドが含まれる可能性があります。 <p>この状態は、手動トリガー、繰り返しトリガー、またはポーリング トリガーに適用できます。 トリガーは正常に実行できますが、アクションによって未処理のエラーが生成されると、実行自体が引き続き失敗する可能性があります。 | 
+   | **Succeeded** | トリガーによりエンドポイントがチェックされ、使用可能なデータが見つかりました。 通常、この状態は、"起動済み" と共に表示されます。 表示されない場合、トリガー定義に、十分でない条件または `SplitOn` コマンドが含まれる可能性があります。 <p>この状態は、手動トリガー、繰り返しトリガー、またはポーリング トリガーに適用できます。 トリガーは正常に実行できますが、アクションによって未処理のエラーが生成されると、実行自体が引き続き失敗する可能性があります。 | 
    | **スキップ済み** | トリガーによりエンドポイントがチェックされましたが、データが見つかりませんでした。 | 
    | **失敗** | エラーが発生しました。 失敗したトリガーに対して生成されたエラー メッセージを確認するには、そのトリガー試行を選択し、 **[出力]** を選択します。 たとえば、無効な入力が見つかる場合があります。 | 
    ||| 
@@ -81,8 +77,8 @@ ms.locfileid: "60999812"
 
    | Status | 説明 | 
    | ------ | ----------- | 
-   | **成功** | アクションはすべて成功しています。 <p>特定のアクションでエラーが発生した場合、そのエラーは、ワークフローの後続のアクションによって処理済みです。 | 
-   | **失敗** | 少なくとも 1 つのアクションに失敗し、その失敗は、ワークフローの後続のアクションによって処理されていません。 | 
+   | **Succeeded** | アクションはすべて成功しています。 <p>特定のアクションでエラーが発生した場合、そのエラーは、ワークフローの後続のアクションによって処理済みです。 | 
+   | **Failed** | 少なくとも 1 つのアクションに失敗し、その失敗は、ワークフローの後続のアクションによって処理されていません。 | 
    | **取り消し済み** | ワークフローは実行されていましたが、キャンセル要求を受け取りました。 | 
    | **実行中** | ワークフローは現在実行中です。 <p>この状態は、ワークフローのスロットル、または現行の価格プランが原因で発生している可能性があります。 詳細については、[価格ページのアクション制限](https://azure.microsoft.com/pricing/details/logic-apps/)に関するページをご覧ください。 [診断ログ](../logic-apps/logic-apps-monitor-your-logic-apps.md)を設定すると、発生するスロットル イベントに関する情報を取得することもできます。 | 
    ||| 

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の Azure Cosmos DB 内の変更フィードへのアクセス
 description: この記事では、Azure Cosmos DB の Azure Cosmos DB 内の変更フィードの読み取りとアクセスに使用できるさまざまなオプションについて説明します。
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 3d30c9f946f97f06c1a3ba1cd2e77e1ab151a572
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 11/25/2019
+ms.openlocfilehash: fc7e78a44d03af8952c1e178a3e92b1ee0c6fe66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754886"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688130"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB の変更フィードの読み取り
 
@@ -31,7 +31,13 @@ Azure Functions は、最も簡単で推奨されるオプションです。 Cos
 
 ## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>Azure Cosmos DB SQL API SDK を使用する
 
-SDK を使用すると、変更フィードを低レベルで制御できます。 チェックポイントの管理、特定の論理パーティション キーへのアクセスなどを行うことができます。複数の閲覧者がいる場合、`ChangeFeedOptions` を使用して、読み取りの負荷を異なるスレッドや異なるクライアントに分散させることができます。 
+SDK を使用すると、変更フィードを低レベルで制御できます。 チェックポイントの管理、特定の論理パーティション キーへのアクセスなどを行うことができます。複数の閲覧者がいる場合、`ChangeFeedOptions` を使用して、読み取りの負荷を異なるスレッドや異なるクライアントに分散させることができます。
+
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Cassandra と MongoDB の API の変更フィード
+
+変更フィード機能は、MongoDB API では変更ストリームとして表示され、Cassandra API では述語を含むクエリとして表示されます。 MongoDB API の実装の詳細については、[MongoDB 用の Azure Cosmos DB API の変更ストリーム](mongodb-change-streams.md)に関するページを参照してください。
+
+ネイティブ Apache Cassandra には、変更データ キャプチャ (CDC) が用意されています。CDC は、特定のテーブルに対してアーカイブのフラグを設定し、CDC ログ用に構成可能なディスク上のサイズに達すると、そのテーブルへの書き込みを拒否するメカニズムです。 Azure Cosmos DB API for Cassandra の変更フィード機能により、CQL を介して述語を使用して変更をクエリする機能が向上します。 実装の詳細については、[Cassandra 用の Azure Cosmos DB API の変更フィード](cassandra-change-feed.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ceb3b7315439aced7f781e8de5e62b49fd83818c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ff183261f67ff76f56fc034d8102e3aa3a4838a8
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73833809"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480531"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -110,7 +110,7 @@ ms.locfileid: "73833809"
 
     Azure Active Directory (AAD) と Azure Maps を統合する方法を示すサンプルの一覧は、[ここ](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)にあります。 
     
-    詳細については、「[Azure Maps による認証](azure-maps-authentication.md)」ドキュメントを参照してください。
+    詳細については、[Azure Maps での認証](azure-maps-authentication.md)と [Azure Maps での Azure AD 認証のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)に関するドキュメントを参照してください。
 
 6. 必要に応じて、ページの見出しに次のメタ タグ要素を追加すると役立つ場合があります。
 
@@ -234,4 +234,4 @@ map = new atlas.Map('myMap', {
 Azure Active Directory (AAD) と Azure Maps を統合する方法を示すサンプルの一覧については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [AAD 認証のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+> [Azure AD 認証のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

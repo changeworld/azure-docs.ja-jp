@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub Device Provisioning サービスにおけるサービスの概念 | Microsoft Docs
-description: デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のサービス プロビジョニングの概念を説明します。
+description: デバイス プロビジョニング サービス (DPS) と IoT Hub を備えたデバイスに固有のサービス プロビジョニングの概念を説明します
 author: nberdy
 ms.author: nberdy
 ms.date: 09/18/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 51486da6b34c0ff1e9b6d05558c2132a416913e9
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104357"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975603"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Azure IoT Hub Device Provisioning サービスの概念
 
@@ -73,6 +73,6 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 登録は、デバイス プロビジョニング サービス経由で IoT Hub に正常に登録/プロビジョニングされるデバイスのレコードです。 登録レコードは自動的に作成されます。また、削除はできますが、更新はできません。
 
-## <a name="operations"></a>Operations
+## <a name="operations"></a>操作
 
 操作は、デバイス プロビジョニング サービスの課金単位です。 1 つの操作は、サービスに対する 1 つの手順の正常な完了です。 操作には、デバイスの登録や再登録などがあります。加入契約リスト エントリの追加や更新といったサービス側の変更も操作に入ります。

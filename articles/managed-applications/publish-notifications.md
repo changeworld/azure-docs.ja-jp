@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: a00e5be4493b8c8116e2925e88a3ce4bf8cfb722
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8cf9fc0b3d9c13ebc5309be6d27c7be0f2e60878
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085199"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805690"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications と通知
 
@@ -132,6 +132,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -152,6 +155,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -178,6 +184,7 @@ eventType | 通知をトリガーしたイベントの種類。 (例: "PUT"、"P
 applicationId | 通知がトリガーされたマネージド アプリケーションの完全修飾リソース識別子。 
 eventTime | 通知をトリガーしたイベントのタイムスタンプ。 (UTC ISO 8601 形式の日付と時刻。)
 provisioningState | マネージド アプリケーション インスタンスのプロビジョニングの状態。 (例: "Succeeded"、"Failed"、"Deleting"、"Deleted")
+billingDetails | マネージド アプリケーション インスタンスの課金の詳細。 マーケットプレースで使用量の詳細を照会するために使用できる resourceUsageId が含まれます。
 error | *provisioningState が Failed の場合にのみ指定されます*。 エラー コード、メッセージ、およびエラーの原因となった問題の詳細が含まれます。
 applicationDefinitionId | *サービス カタログ マネージド アプリケーションに対してのみ指定されます*。 マネージド アプリケーション インスタンスがプロビジョニングされたアプリケーション定義の完全修飾リソース識別子を表します。
 プラン | *Marketplace マネージド アプリケーションに対してのみ指定されます*。 マネージド アプリケーション インスタンスのパブリッシャー、オファー、SKU、およびバージョンを表します。

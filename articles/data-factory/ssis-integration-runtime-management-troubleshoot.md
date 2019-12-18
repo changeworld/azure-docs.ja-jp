@@ -1,23 +1,22 @@
 ---
-title: 'Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う '
+title: SSIS Integration Runtime 管理のトラブルシューティング
 description: この記事では、SSIS Integration Runtime (SSIS IR) の管理に関する問題のトラブルシューティング ガイダンスを提供します
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/08/2019
 author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
-manager: craigg
-ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 07/08/2019
+ms.openlocfilehash: 52b1d93935e6428563c72361655893ffddf8a507
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684028"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941859"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う
 
@@ -157,3 +156,38 @@ SSIS IR を停止すると、Virtual Network に関連するすべてのリソ�
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
 このエラーは IR の実行中に発生し、IR が異常になったことを意味します。 このエラーは常に、SSIS IR が必要なサービスに接続できないようにする DNS サーバーまたは NSG 構成の変更によって発生します。 DNS サーバーと NSG の構成はお客様が制御するため、お客様は自分の側の障害となっている問題を修正する必要があります。 詳細については、[SSIS IR 仮想ネットワークの構成](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)に関する記事を参照してください。 問題が解決しない場合は、Azure Data Factory サポート チームにお問い合わせください。
+
+## <a name="static-public-ip-addresses-configuration"></a>静的パブリック IP アドレスの構成
+
+Azure-SSIS IR を Azure Virtual Network に参加させる場合、特定の IP アドレスのみにアクセスが制限されているデータ ソースに IR からアクセスできるように、IR 用に独自の静的パブリック IP アドレスを利用することもできます。 詳細については、「[Azure-SSIS Integration Runtime を仮想ネットワークに参加させる](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください。
+
+上記の仮想ネットワークの問題に加えて、静的パブリック IP アドレス関連の問題も発生することがあります。 解決策については、次のエラーを確認してください。
+
+### <a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
+
+このエラーは、Azure-SSIS IR の開始時にさまざまな理由で発生する可能性があります。
+
+| エラー メッセージ | 解決策|
+|:--- |:--- |
+| The provided static public IP address is already used, please provide two unused ones for your Azure-SSIS Integration Runtime. (指定された静的パブリック IP アドレスは既に使用されています。Azure-SSIS Integration Runtime 向けに未使用の IP アドレスを 2 つ指定してください。) | 未使用の静的パブリック IP アドレスを 2 つ選択するか、指定したパブリック IP アドレスへの現在の参照を削除してから、Azure-SSIS IR を再起動してください。 |
+| The provided static public IP address has no DNS name, please provide two of them with DNS name for your Azure-SSIS Integration Runtime. (指定された静的パブリック IP アドレスには DNS 名が設定されていません。Azure-SSIS Integration Runtime 向けに、これら 2 つに DNS 名を指定してください。) | 下図に示すように、Azure portal でパブリック IP アドレスの DNS 名を設定できます。 具体的な手順は次のとおりです。(1) Azure portal を開き、目的のパブリック IP アドレスのリソース ページに移動します。(2) **[構成]** セクションを選択して DNS 名を設定し、 **[保存]** ボタンをクリックします。(3) Azure-SSIS IR を再起動します。 |
+| The provided VNet and static public IP addresses for your Azure-SSIS Integration Runtime must be in the same location. (Azure-SSIS Integration Runtime に指定する VNet と静的パブリック IP アドレスは、同じ場所内に存在する必要があります。) | Azure ネットワークの要件に従い、静的パブリック IP アドレスと仮想ネットワークは、同じ場所およびサブスクリプション内に存在する必要があります。 有効な静的パブリック IP アドレスを 2 つ指定し、Azure-SSIS IR を再起動してください。 |
+| The provided static public IP address is a basic one, please provide two standard ones for your Azure-SSIS Integration Runtime. (指定された静的パブリック IP アドレスは Basic のものです。Azure-SSIS Integration Runtime では Standard の IP アドレスを 2 つ指定してください。) | 詳細については、[パブリック IP アドレスの SKU](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) に関するセクションを参照してください。 |
+
+![Azure-SSIS IR](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
+
+### <a name="publicipresourcegrouplockedduringstart"></a>PublicIPResourceGroupLockedDuringStart
+
+Azure-SSIS IR のプロビジョニングに失敗した場合、作成されたすべてのリソースが削除されます。 ただし、サブスクリプション レベルまたは (静的パブリック IP アドレスが含まれる) リソース グループ レベルのリソース削除ロックがある場合、ネットワーク リソースは想定どおりに削除されません。 エラーを修正するには、削除ロックを解除し、IR を再起動してください。
+
+### <a name="publicipresourcegrouplockedduringstop"></a>PublicIPResourceGroupLockedDuringStop
+
+Azure-SSIS IR を停止すると、パブリック IP アドレスが含まれるリソース グループ内に作成されているネットワーク リソースがすべて削除されます。 ただし、サブスクリプション レベルまたは (静的パブリック IP アドレスが含まれる) リソース グループ レベルのリソース削除ロックがある場合、削除は失敗することがあります。 削除ロックを解除し、IR を再起動してください。
+
+### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
+
+Azure-SSIS IR は、定期的に自動更新されます。 アップグレード中に新しい IR ノードが作成され、古いノードは削除されます。 また、古いノードで作成済みのネットワーク リソース (ロード バランサー、ネットワーク セキュリティ グループなど) が削除され、自分のサブスクリプション下に新しいネットワーク リソースが作成されます。 このエラーは、サブスクリプション レベルまたは (静的パブリック IP アドレスが含まれる) リソース グループ レベルのリソース削除ロックがあることが原因で、古いノードのネットワーク リソースを削除できなかったことを意味します。 古いノードをクリーンアップしてこれらのノード用の静的パブリック IP アドレスを解放できるように、削除ロックを解除してください。 そうしないと、静的パブリック IP アドレスを解放できないので、IR のアップグレードを進めることができません。
+
+### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
+
+独自の静的パブリック IP アドレスを使用する場合、パブリック IP アドレスを 2 つ指定する必要があります。 これらのうち 1 つは直ちに IR ノードの作成に使用され、もう 1 つは IR のアップグレード中に使用されます。 このエラーは、アップグレード中に後者のパブリック IP アドレスを使用できないときに発生する可能性があります。 考えられる原因については、「[InvalidPublicIPSpecified](#InvalidPublicIPSpecified)」を参照してください。

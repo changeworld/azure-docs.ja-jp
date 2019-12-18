@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 0eb15d1b9b56522b9caa1bb10890eb2b485714e8
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 152b9f3974f24644e55bed68f5ed65faa90d7fe7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586852"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851657"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ 
 <a name="network-service-tags"></a>
@@ -51,6 +51,8 @@ ms.locfileid: "73586852"
 | **AzureContainerRegistry** | Azure Container Registry サービス。 | 送信 | はい | はい |
 | **AzureCosmosDB** | Azure Cosmos データベース サービス。 | 送信 | はい | はい |
 | **AzureDataLake** | Azure Data Lake サービス。 | 送信 | いいえ | はい |
+| **AzureHDInsight** | Azure HDInsight サービス。 | 受信 | はい | いいえ |
+| **AzureIoTHub** | Azure IoT Hub サービス。 | 送信 | いいえ | いいえ |
 | **AzureKeyVault** | Azure KeyVault サービス。<br/><br/>*注:* このタグは、**AzureActiveDirectory** タグに依存します。 | 送信 | はい | はい |
 | **AzureLoadBalancer** | Azure のインフラストラクチャ ロード バランサー このタグは、Azure の正常性プローブの送信元となる[ホストの仮想 IP アドレス](security-overview.md#azure-platform-considerations) (168.63.129.16) に変換されます。 Azure Load Balancer を使っていない場合は、この規則をオーバーライドできます。 | 両方 | いいえ | いいえ |
 | **AzureMachineLearning** | Azure Machine Learning service。 | 送信 | いいえ | はい |

@@ -972,6 +972,8 @@
           href: access-secrets-from-keyvault.md
         - name: Azure AD による証明書ベースの認証
           href: certificate-based-authentication.md
+        - name: ユーザー アクセスをデータ操作のみに制限する
+          href: how-to-restrict-user-data.md
     - name: エンタープライズ対応
       items:
         - name: バックアップからデータを復元する

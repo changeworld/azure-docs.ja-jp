@@ -2,26 +2,23 @@
 title: Microsoft ID プラットフォーム (v2.0) に更新する理由 | Azure
 description: Microsoft ID プラットフォーム (v2.0) エンドポイントと Azure Active Directory (Azure AD) v1.0 エンドポイントの相違点と、v2.0 に更新する利点について説明します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 975c7f18da9797305b0af3f81b00acca1ba14a1a
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 882b4a8bfe951212d2d1fe081d16b25641dfa4d4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200321"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843888"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Microsoft ID プラットフォーム (v2.0) に更新する理由
 
@@ -62,9 +59,9 @@ Microsoft ID プラットフォーム エンドポイントでは、Azure portal
 
 ## <a name="scopes-not-resources"></a>リソースではなくスコープ
 
-v1.0 エンドポイントを使用するアプリの場合、アプリは、**リソース**、またはトークンの受信者として動作できます。 リソースには、リソースで識別できる多数の**スコープ**または **oAuth2Permissions** を定義できます。それによりクライアント アプリは、そのリソースから特定のスコープのセットのトークンを要求できます。 リソースの例として、Azure AD Graph API があります。
+v1.0 エンドポイントを使用するアプリの場合、アプリは、**リソース**、またはトークンの受信者として動作できます。 リソースには、リソースで識別できる多数の**スコープ**または **oAuth2Permissions** を定義できます。それによりクライアント アプリは、そのリソースから特定のスコープのセットのトークンを要求できます。 リソースの例として、Microsoft Graph API があります。
 
-* リソース識別子、または `AppID URI`: `https://graph.windows.net/`
+* リソース識別子、または `AppID URI`: `https://graph.microsoft.com/`
 * スコープ、または `oAuth2Permissions`: `Directory.Read`、`Directory.Write` など。
 
 これは、Microsoft ID プラットフォーム エンドポイントの場合に該当します。 アプリはリソースとして動作し、スコープを定義することができ、URI によって識別できます。 また、クライアント アプリは、スコープへのアクセスを要求できます。 ただし、クライアントがそれらのアクセス許可を要求する方法が変更されました。

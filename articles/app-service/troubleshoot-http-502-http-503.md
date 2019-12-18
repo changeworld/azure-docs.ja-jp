@@ -1,27 +1,18 @@
 ---
-title: "\"502 無効なゲートウェイ\" エラーと \"503 サービス利用不可\" エラーの解決 - Azure App Service | Microsoft Docs"
+title: HTTP 502 と HTTP 503 エラーを修正する
 description: Azure App Service でホストされているアプリで発生するエラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティングを行います。
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
 tags: top-support-issue
 keywords: 502 無効なゲートウェイ, 503 サービス利用不可, 503 エラー, 502 エラー
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fdbd77db349eed62af2eb8cf539ef749217a187a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066682"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688325"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Azure App Service での HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティング
 "502 無効なゲートウェイ" と "503 サービス利用不可" は、[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) でホストされているアプリで発生する一般的なエラーです。 この記事は、これらのエラーのトラブルシューティングを行うために役立ちます。
@@ -97,7 +88,7 @@ Kudu で利用できる機能の詳細については、 [知っておくべき 
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>手順 3.問題を緩和する
+### <a name="3-mitigate-the-issue"></a>3.問題を緩和する
 #### <a name="scale-the-app"></a>アプリをスケーリングする
 Azure App Service では、アプリケーションが実行されるスケールを調整することによって、パフォーマンスとスループットを高めることができます。 アプリのスケール アップには、2 つの関連する措置が伴います。1 つは、App Service プランの価格レベルを引き上げること、もう 1 つは、価格レベルを引き上げた後に特定の設定を構成することです。
 

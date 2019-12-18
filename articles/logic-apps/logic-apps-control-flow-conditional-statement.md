@@ -1,20 +1,17 @@
 ---
-title: 条件付きステートメントをワークフローに追加する - Azure Logic Apps | Microsoft Docs
+title: 条件付きステートメントをワークフローに追加する
 description: Azure Logic Apps のワークフロー内のアクションを制御する条件を作成する方法です
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fe79cf5af86e1f303e4735214b993d8db4488a25
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684808"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793255"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションを制御する条件付きステートメントを作成する
 
@@ -45,7 +42,7 @@ ms.locfileid: "60684808"
 
    ワークフローの末尾に条件を追加するときは、ロジック アプリの一番下で **[新しいステップ]** > **[アクションの追加]** を選択します。
 
-1. 検索ボックスに、フィルターとして「条件」と入力します。 このアクションを選択: **[条件] - [Control]\(コントロール)\**
+1. 検索ボックスに、フィルターとして「条件」と入力します。 このアクションを選択: **[条件] - (コントロール)**
 
    ![条件を追加する](./media/logic-apps-control-flow-conditional-statement/add-condition.png)
 
@@ -79,7 +76,7 @@ ms.locfileid: "60684808"
    > [!TIP]
    > 既存のアクションを **[If true]\(true の場合\)** パスと **[If false]\(false の場合\)** パスにドラッグできます。
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 これで、このロジック アプリは、RSS フィードの新しい項目が条件を満たす場合のみメールを送信します。
 

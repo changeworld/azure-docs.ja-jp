@@ -1,29 +1,25 @@
 ---
-title: アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する | Microsoft Docs
+title: Azure AD アプリケーション ギャラリーにアプリを公開する | Microsoft Docs
 description: シングル サインオンをサポートするアプリケーションを Azure Active Directory アプリ ギャラリーで公開する方法を説明します
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 12/06/2019
 ms.author: ryanwi
-ms.reviewer: elisol, bryanla
+ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 3bfdeaba26e98f600b81b3a473326ff4086f1aa2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374067"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967152"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -46,6 +42,10 @@ ms.locfileid: "72374067"
 - パスワード SSO の場合、シングル サインオンが期待どおりに動作するように、アプリケーションでフォーム認証をサポートしてパスワード保管を行えることを確認します。
 - テストには、2 人以上のユーザーが登録されている永続的なアカウントが必要です。
 
+**開発者向け Azure AD の取得方法**
+
+すべての Premium Azure AD 機能を持つ無料のテスト アカウントを入手できます。90 日間無料で、開発作業を行っている限り、延長することができます: https://docs.microsoft.com/office/developer-program/office-365-developer-program
+
 ## <a name="submit-the-request-in-the-portal"></a>ポータルで要求を送信する
 
 アプリケーションの統合が Azure AD で動作することをテストした後は、[アプリケーション ネットワーク ポータル](https://microsoft.sharepoint.com/teams/apponboarding/Apps)へのアクセスを求める要求を送信します。 Office 365 アカウントがある場合は、それを使ってこのポータルにサインインします。 ない場合は、自分の Microsoft アカウント (Outlook、Hotmail など) を使ってサインインします。
@@ -63,6 +63,26 @@ ms.locfileid: "72374067"
 Microsoft のチームが詳細をレビューし、それに応じてアクセスを提供します。 要求が承認されると、ポータルにサインインし、ホーム ページの **[要求の送信 (ISV)]** タイルを選択することで、要求を送信できます。
 
 ![ホーム ページの [要求の送信 (ISV)] タイル](./media/howto-app-gallery-listing/homepage.png)
+
+## <a name="issues-on-logging-into-portal"></a>ポータルへのログインに関する問題
+
+ログイン中に次のエラーが表示される問題について、ここで詳細と解決方法を説明します。
+
+* サインインが次に示すようにブロックされた場合。
+
+  ![ギャラリーのアプリケーションの解決に関する問題](./media/howto-app-gallery-listing/blocked.png)
+
+**起きていること:**
+
+ゲスト ユーザーは、ホーム テナントにフェデレーションされます。このテナントも、Azure AD です。 ゲスト ユーザーは高リスクです。 Microsoft では、高リスクのユーザーにリソースへのアクセスを許可していません。 すべての高リスク ユーザー (従業員またはゲストおよびベンダー) が Microsoft リソースにアクセスするには、リスクを修復またはクローズする必要があります。 ゲスト ユーザーの場合、このユーザーのリスクはホーム テナントに由来しており、ポリシーはリソース テナント (この場合は Microsoft) から取得されます。
+ 
+**安全なソリューション:**
+
+* MFA に登録されたゲスト ユーザーは、自分のユーザー リスクを修復します。 そうするには、ゲスト ユーザーがホーム テナントで、セキュリティで保護されたパスワード変更またはリセット (https://aka.ms/sspr) を行います (これにはホーム テナントでの MFA および SSPR が必要です)。 セキュリティで保護されたパスワード変更またはリセットは、オンプレミスではなく Azure AD で開始する必要があります。
+
+* ゲスト ユーザーは、管理者にリスクを修正してもらいます。 この場合、管理者はパスワードのリセット (一時的なパスワードの生成) を行います。 これには Identity Protection は必要ありません。 ゲスト ユーザーの管理者は、 https://aka.ms/RiskyUsers にアクセスして、[パスワードのリセット] をクリックできます。
+
+* ゲスト ユーザーは、管理者にリスクをクローズまたは無視してもらいます。 この場合も、Identity Protection は必要ありません。 管理者は https://aka.ms/RiskyUsers にアクセスして、[ユーザー リスクを無視する] をクリックできます。 ただし、管理者はユーザー リスクをクローズする前にデュー デリジェンスを行い、これが偽陽性のリスク評価であったことを確認する必要があります。 そうしない場合、調査なしでリスク評価を無視することで、自分と Microsoft のリソースをリスクにさらすことになります。
 
 > [!NOTE]
 > アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
@@ -83,6 +103,7 @@ Azure AD アプリ ギャラリーにアプリケーションを公開するに�
   ![ギャラリーでの SAML 2.0 または WS-Fed アプリケーションの一覧表示](./media/howto-app-gallery-listing/saml.png)
 
   * **SAML 2.0** または **WS-Fed** を使用してギャラリー内の一覧にご利用のアプリケーションを追加する場合は、上記のように **[SAML 2.0/WS-Fed]** を選択します。
+
   * アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
 
 ## <a name="implement-sso-by-using-the-password-sso"></a>パスワード SSO を使用して SSO を実装する

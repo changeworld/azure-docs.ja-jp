@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL の監査ログ
+title: 監査ログ - Azure Database for MySQL
 description: Azure Database for MySQL で利用できる監査ログと、各種ログ レベルを有効にするため利用可能なパラメーターについて説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.openlocfilehash: 42881fcb12f29ec14bbdc0ec4942b2eef17c7312
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.date: 12/09/2019
+ms.openlocfilehash: eae7e434ce21b5f9d9f3e6c40f94261df8baa426
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434407"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972355"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL の監査ログ
 
@@ -29,7 +29,7 @@ Azure Database for MySQL では、ユーザーは監査ログを使用できま�
 - `audit_log_events`: 記録するイベントを制御します。 特定の監査イベントについては、次のを参照してください。
 - `audit_log_include_users`:ログ記録の対象となる MySQL ユーザー。 このパラメーターの既定値は空で、すべてのユーザーがログに記録されます。 優先順位は、`audit_log_exclude_users` より高くなっています。 パラメーターの最大長は 512 文字です。
 > [!Note]
-> `audit_log_include_users` は `audit_log_exclude_users` よりも優先度が高くなります。たとえば、audit_log_include_users = `demouser` かつ audit_log_exclude_users = `demouser` の場合、`audit_log_include_users` の優先度が高いためログが監査されます。
+> `audit_log_include_users` は、`audit_log_exclude_users`よりも優先順位が高くなっています。 たとえば、`audit_log_include_users` = `demouser` かつ `audit_log_exclude_users` = `demouser`の場合、`audit_log_include_users` の優先度が高いので、ユーザーは監査ログに含まれます。
 - `audit_log_exclude_users`:ログ記録から除外する MySQL ユーザー。 パラメーターの最大長は 512 文字です。
 
 > [!Note]

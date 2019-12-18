@@ -1,5 +1,5 @@
 ---
-title: Direct Line Speech - Speech Service
+title: Direct Line Speech - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Direct Line Speech と Speech SDK (ソフトウェア開発キット) を使用した音声アシスタントの特徴、機能、制限の概要。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 72029d1d56c9d561e629cc750244fd7de8ec113a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cec3131d791d591375fd87d1c080294c9034a815
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506566"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806220"
 ---
 # <a name="about-direct-line-speech"></a>Direct Line Speech について
 
-[音声アシスタント](voice-assistants.md)はユーザーの音声を聞き取り、応答としてアクションを実行します (多くの場合は音声で応答します)。 この機能は[音声テキスト変換](speech-to-text.md)を使用してユーザーの音声を文字起こしし、そのテキストを自然言語として解釈してアクションを実行します。 このアクションには、多くの場合、[テキスト読み上げ](text-to-speech.md)で生成されたアシスタントからの音声出力が含まれます。 デバイスは、Speech SDK の `DialogServiceConnector` オブジェクトを使用してアシスタントに接続します。
+[音声アシスタント](voice-assistants.md)はユーザーの音声を聞き取り、応答としてアクションを実行します (多くの場合は音声で応答します)。 これは、[音声テキスト変換](speech-to-text.md)を使用してユーザーの音声を文字に変換し、そのテキストの自然言語理解に対してアクションを実行します。 このアクションには、多くの場合、[テキスト読み上げ](text-to-speech.md)で生成されたアシスタントからの音声出力が含まれます。 デバイスは、Speech SDK の `DialogServiceConnector` オブジェクトを使用してアシスタントに接続します。
 
 **Direct Line Speech** は、柔軟で拡張可能な音声アシスタントを作成するための、堅牢なエンドツーエンドのソリューションです。このようなアシスタントは、Bot Framework とその Direct Line Speech チャネルによって実現され、音声によるボットとの対話のために最適化されます。
 
@@ -50,7 +50,7 @@ Direct Line Speech を使用して簡単な音声アシスタントを作成す�
 
 ## <a name="customization"></a>カスタマイズ
 
-Azure Speech Services を使用して構築された音声アシスタントでは、[音声変換](speech-to-text.md)、[テキスト読み上げ](text-to-speech.md)、および[カスタム キーワードの選択](speech-devices-sdk-create-kws.md)に利用できるさまざまなカスタム オプションを使用できます。
+音声サービスを使用して構築された音声アシスタントでは、[音声変換](speech-to-text.md)、[テキスト読み上げ](text-to-speech.md)、および[カスタム キーワードの選択](speech-devices-sdk-create-kws.md)に利用できるさまざまなカスタム オプションを使用できます。
 
 > [!NOTE]
 > カスタマイズのオプションは、言語やロケールによって異なります ([サポートされる言語](supported-languages.md)に関するページを参照してください)。
@@ -64,7 +64,7 @@ Direct Line Speech と音声アシスタントのための関連する機能は�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
+* [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)
 * [Speech SDK を取得する](speech-sdk.md)
 * [基本ボットの作成とデプロイ](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [仮想アシスタント ソリューションとエンタープライズ テンプレートの入手](https://github.com/Microsoft/AI)

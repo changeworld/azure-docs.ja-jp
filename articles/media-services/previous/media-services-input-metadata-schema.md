@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services 入力メタデータのスキーマ | Microsoft Docs
-description: このトピックでは、Azure Media Services 入力メタデータのスキーマの概要を説明します。
+description: この記事では、Azure Media Services 入力メタデータのスキーマの概要を説明します。
 author: Juliako
 manager: femila
 editor: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: fa4487b07f130947ac5da2a5dbae6776b06acbe7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a81d6edfd887dc935a53742b7bc1492651c9bda5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463771"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887120"
 ---
 # <a name="input-metadata"></a>入力メタデータ 
 
@@ -38,7 +38,7 @@ Media Services は、メタデータを生成するために入力資産を事�
 
 XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
-| Name | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | **AssetFile**<br /><br /> minOccurs="1" maxOccurs="unbounded" |1 つの子要素。 詳細については、「[AssetFile 要素](media-services-input-metadata-schema.md#AssetFile)」を参照してください。 |
 
@@ -48,7 +48,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
  XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **Name**<br /><br /> 必須 |**xs:string** |資産ファイルの名前。 |
 | **サイズ**<br /><br /> 必須 |**xs:long** |資産ファイルのサイズ (バイト単位)。 |
@@ -65,7 +65,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 > 
 
 ### <a name="child-elements"></a>子要素
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **Programs**<br /><br /> minOccurs="0" | |資産ファイルが MPEG-TS 形式の場合のすべての [Programs 要素](media-services-input-metadata-schema.md#Programs)のコレクション。 |
 | **VideoTracks**<br /><br /> minOccurs="0" | |各物理資産ファイルには、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 この要素には、資産ファイルの一部であるすべての [VideoTracks](media-services-input-metadata-schema.md#VideoTracks) のコレクションが含まれます。 |
@@ -76,7 +76,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **Id**<br /><br /> 必須 |**xs:int** |このオーディオまたはビデオ トラックの 0 から始まるインデックス。<br /><br /> 必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **Codec** |**xs:string** |ビデオ トラック コーデック文字列。 |
@@ -92,7 +92,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 > 
 
 ### <a name="child-elements"></a>子要素
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **Disposition**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |プレゼンテーション情報が含まれます (特定のオーディオ トラックが視覚障碍者向けかどうか、など)。 |
 | **Metadata**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |さまざまな情報を保持する際に使用できる汎用的なキー/値文字列。 例: key=”language”、value=”eng”。 |
@@ -105,7 +105,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
  XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **SampleFormat** |**xs:string** |サンプル形式。 |
 | **ChannelLayout** |**xs: string** |チャネル レイアウト。 |
@@ -122,7 +122,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **FourCC**<br /><br /> 必須 |**xs:string** |ビデオ コーデックの FourCC コード。 |
 | **プロファイル** |**xs: string** |ビデオ トラックのプロファイル。 |
@@ -146,7 +146,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **key**<br /><br /> 必須 |**xs:string** |キー/値ペアのキー。 |
 | **value**<br /><br /> 必須 |**xs:string** |キー/値ペアの値。 |
@@ -155,7 +155,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 **ProgramType** は、プログラムを記述するグローバルな複合型です。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **ProgramId**<br /><br /> 必須 |**xs:int** |プログラム ID |
 | **NumberOfPrograms**<br /><br /> 必須 |**xs:int** |プログラム数。 |
@@ -170,7 +170,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **既定値**<br /><br /> 必須 |**xs: int** |この属性を 1 に設定して、これが既定のプレゼンテーションであることを示します。 |
 | **Dub**<br /><br /> 必須 |**xs:int** |この属性を 1 に設定して、これが吹き替えのプレゼンテーションであることを示します。 |
@@ -188,7 +188,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
 複数の **Program** 要素が保持されているラッパー要素。  
 
 ### <a name="child-elements"></a>子要素
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **Program**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |MPEG-TS 形式の資産ファイルについては、資産ファイルのプログラムに関する情報が含まれます。 |
 
@@ -198,7 +198,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
  XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **VideoTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[VideoTrackType (TrackType から継承)](media-services-input-metadata-schema.md#VideoTrackType) |資産ファイルのビデオ トラックに関する情報が含まれます。 |
 
@@ -208,7 +208,7 @@ XML の例については、この記事の最後の「[XML の例](media-servic
  XML の例については、この記事の最後の「[XML の例](media-services-input-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="elements"></a>要素
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **AudioTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[AudioTrackType (TrackType から継承)](media-services-input-metadata-schema.md#AudioTrackType) |資産ファイルのオーディオ トラックに関する情報が含まれます。 |
 

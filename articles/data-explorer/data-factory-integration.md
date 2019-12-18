@@ -8,12 +8,12 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: dd2b3bd584bb39810e0a5c9acde1a961330c273d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093229"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819130"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Data Explorer と Azure Data Factory の統合
 
@@ -96,7 +96,7 @@ Azure Data Explorer にデータをコピーするためのコピー アクテ�
 | | 接続をテスト | "*データベース監視者*" または "*テーブル取り込み者*" <br>サービス プリンシパルには、データベース レベルの `.show` コマンドまたはテーブル レベルの取り込みを実行する権限が必要です。 | <ul><li>TestConnection では、データベースではなく、クラスターへの接続が検証されます。 データベースが存在しない場合でも成功する可能性があります。</li><li>テーブル管理者のアクセス許可では不十分です。</li></ul>|
 | **データセットの作成** | テーブル ナビゲーション | "*データベース監視者*" <br>ADF を使用してログインしたユーザーには、データベース レベルの `.show` コマンドを実行する権限が必要です。 | ユーザーは、テーブル名を手動で指定できます。|
 | **データセットの作成**または**コピー アクティビティ** | データのプレビュー | "*データベース表示者*" <br>サービス プリンシパルには、データベース メタデータを読み取る権限が必要です。 | | 
-|   | スキーマのインポート | "*データベース表示者*" <br>サービス プリンシパルには、データベース メタデータを読み取る権限が必要です。 | ADX が表形式から表形式へのコピーのソースである場合、ユーザーがスキーマを明示的にインポートしなかった場合でも、ADF によってスキーマが自動的にインポートされます。 |
+|   | Import schema | "*データベース表示者*" <br>サービス プリンシパルには、データベース メタデータを読み取る権限が必要です。 | ADX が表形式から表形式へのコピーのソースである場合、ユーザーがスキーマを明示的にインポートしなかった場合でも、ADF によってスキーマが自動的にインポートされます。 |
 | **シンクとしての ADX** | by-name 列マッピングの作成 | "*データベース監視者*" <br>サービス プリンシパルには、データベース レベルの `.show` コマンドを実行する権限が必要です。 | <ul><li>すべての必須操作は "*テーブル取り込み者*" で機能します。</li><li> 一部のオプションの操作は失敗する場合があります。</li></ul> |
 |   | <ul><li>テーブルに CSV マッピングを作成する</li><li>マッピングを削除する</li></ul>| "*テーブル取り込み者*" または "*データベース管理者*" <br>サービス プリンシパルには、テーブルに変更を加える権限が必要です。 | |
 |   | データの取り込み | "*テーブル取り込み者*" または "*データベース管理者*" <br>サービス プリンシパルには、テーブルに変更を加える権限が必要です。 | | 
@@ -118,13 +118,90 @@ Azure Data Explorer がソースであり、クエリを含むルックアップ
 | **データ処理の複雑さ** | 待ち時間は、ソース ファイル形式、列マッピング、および圧縮によって異なります。|
 | **統合ランタイムを実行している VM** | <ul><li>Azure のコピーでは、ADF VM とマシン SKU を変更することはできません。</li><li> オンプレミスから Azure へのコピーの場合は、セルフホステッド IR をホストしている VM が十分に強力であることを確認します。</li></ul>|
 
-## <a name="monitor-activity-progress"></a>アクティビティの進行状況の監視
+## <a name="tips-and-common-pitfalls"></a>ヒントとよくある落とし穴
+
+### <a name="monitor-activity-progress"></a>アクティビティの進行状況の監視
 
 * アクティビティの進行状況を監視する場合、"*書き込まれたデータ*" プロパティは "*読み取られたデータ*" プロパティよりもはるかに大きくなる可能性があります。なぜなら、"*読み取られたデータ*" はバイナリ ファイル サイズに従って計算されるのに対し、"*書き込まれたデータ*" はデータがシリアル化解除および圧縮解除された後にメモリ内のサイズに基づいて計算されるからです。
 
 * アクティビティの進行状況を監視するときに、データが Azure Data Explorer シンクに書き込まれていることを確認できます。 Azure Data Explorer テーブルに対してクエリを実行すると、データが到着していないことがわかります。 これは、Azure Data Explorer にコピーするときに 2 つのステージがあるためです。 
     * 最初のステージでは、ソース データが読み取られ、それが 900 MB のチャンクに分割されて、各チャンクが Azure BLOB にアップロードされます。 最初のステージは、ADF アクティビティの進行状況ビューに表示されます。 
     * 2 番目のステージは、すべてのデータが Azure BLOB にアップロードされた後に開始されます。 Azure Data Explorer エンジン ノードにより、BLOB がダウンロードされ、データがシンク テーブルに取り込まれます。 その後、データが Azure Data Explorer テーブルに表示されます。
+
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>不適切なエスケープ処理のために CSV ファイルの取り込みに失敗
+
+Azure Data Explorer では、CSV ファイルが [RFC 4180](https://www.ietf.org/rfc/rfc4180.txt) に合致していることが予期されています。
+次のことが予期されています。
+* エスケープ処理 (" や改行など) を必要とする文字が含まれているフィールドの先頭と末尾は、空白を含まない **"** 文字にする必要があります。 フィールド*内*のすべての **"** 文字は、二重の **"** 文字 ( **""** ) を使用してエスケープされます。 たとえば、 _"Hello, ""World"""_ は、_Hello, "World"_ という内容の 1 つの列またはフィールドを持つ 1 つのレコードを含む有効な CSV ファイルです。
+* ファイル内のすべてのレコードには、同じ数の列とフィールドが含まれている必要があります。
+
+Azure Data Factory では、バックスラッシュ (エスケープ) 文字を使用できます。 Azure Data Factory を使用してバックスラッシュを含む CSV ファイルを生成すると、そのファイルの Azure Data Explorer への取り込みは失敗します。
+
+#### <a name="example"></a>例
+
+次のテキスト値の場合: Hello, "World"<br/>
+ABC   DEF<br/>
+"ABC\D"EF<br/>
+"ABC DEF<br/>
+
+適切な CSV ファイルには次のように表示されます。"Hello, ""World"""<br/>
+"ABC   DEF"<br/>
+"""ABC DEF"<br/>
+"""ABC\D""EF"<br/>
+
+既定のエスケープ文字 (バックスラッシュ) を使用すると、次の CSV は Azure Data Explorer では機能しません。"Hello, \"World\""<br/>
+"ABC   DEF"<br/>
+"\"ABC DEF"<br/>
+"\"ABC\D\"EF"<br/>
+
+### <a name="nested-json-objects"></a>入れ子になった JSON オブジェクト
+
+JSON ファイルを Azure Data Explorer にコピーするときは、次の点に注意してください。
+* 配列はサポートされません。
+* JSON 構造にオブジェクトのデータ型が含まれている場合、Azure Data Factory はオブジェクトの子項目をフラット化し、各子項目を Azure Data Explorer テーブル内の別の列にマップしようとします。 オブジェクト項目全体を Azure Data Explorer の 1 つの列にマップするには、次のようにします。
+    * JSON 行全体を Azure Data Explorer の 1 つの動的列に取り込みます。
+    * Azure Data Factory の JSON エディターを使用して、パイプライン定義を手動で編集します。 **[Mappings]\(マッピング\)** で、
+       * 子項目ごとに作成された複数のマッピングを削除し、オブジェクトの種類をテーブル列にマップする 1 つのマッピングを追加します。
+       * 終わり角かっこの後にコンマを追加し、続けて次を指定します。<br/>
+       `"mapComplexValuesToString": true`
+
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>Azure Data Explorer にコピーするときに AdditionalProperties を指定する
+
+> [!NOTE]
+> この機能は現在、JSON ペイロードを手動で編集することによって利用できます。 
+
+次のように、コピー アクティビティの "sink" セクションの下に 1 行を追加します。
+
+```json
+"sink": {
+    "type": "AzureDataExplorerSink",
+    "additionalProperties": "{\"tags\":\"[\\\"drop-by:account_FiscalYearID_2020\\\"]\"}"
+},
+```
+
+この値のエスケープには注意が必要です。 次のコード スニペットを参照として使用してください。
+
+```csharp
+static void Main(string[] args)
+{
+       Dictionary<string, string> additionalProperties = new Dictionary<string, string>();
+       additionalProperties.Add("ignoreFirstRecord", "false");
+       additionalProperties.Add("csvMappingReference", "Table1_mapping_1");
+       IEnumerable<string> ingestIfNotExists = new List<string> { "Part0001" };
+       additionalProperties.Add("ingestIfNotExists", JsonConvert.SerializeObject(ingestIfNotExists));
+       IEnumerable<string> tags = new List<string> { "ingest-by:Part0001", "ingest-by:IngestedByTest" };
+       additionalProperties.Add("tags", JsonConvert.SerializeObject(tags));
+       var additionalPropertiesForPayload = JsonConvert.SerializeObject(additionalProperties);
+       Console.WriteLine(additionalPropertiesForPayload);
+       Console.ReadLine();
+}
+```
+
+表示される値は次のようになります。
+
+```json
+{"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
+```
 
 ## <a name="next-steps"></a>次の手順
 

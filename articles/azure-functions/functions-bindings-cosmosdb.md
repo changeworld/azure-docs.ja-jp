@@ -1,21 +1,17 @@
 ---
 title: Functions 1.x の Azure Cosmos DB バインド
 description: Azure Functions で Azure Cosmos DB のトリガーとバインドを使用する方法について説明します。
-services: functions
 author: craigshoemaker
 ms.author: cshoe
-manager: gwallace
-keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0e6782c48543723438ee332313de268117dee3e9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: bae027fc5a3b6ce7b4246c403841fa529b8884cb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480719"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925939"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 
@@ -26,7 +22,7 @@ ms.locfileid: "67480719"
 この記事では、Azure Functions で [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) のバインドを操作する方法について説明します。 Azure Functions は、Azure Cosmos DB のトリガー、入力、出力のバインドをサポートしています。
 
 > [!NOTE]
-> この記事は、Azure Functions 1.x を対象としています。 Functions 2.x でこれらのバインドを使用する方法については、[Azure Functions 2.x の Azure Cosmos DB のバインド](functions-bindings-cosmosdb-v2.md)に関するページを参照してください。
+> この記事は、Azure Functions 1.x を対象としています。 Functions 2.x およびそれ以降で、これらのバインディングを使用する方法については、[「Azure Functions 2.x バインド用の Microsoft Azure Cosmos DB」](functions-bindings-cosmosdb-v2.md)を参照してください。
 >
 >このバインドの元の名称は DocumentDB でした。 Functions バージョン 1.x では、トリガーのみが Cosmos DB に名称が変更され、入力バインド、出力バインド、および NuGet パッケージは DocumentDB のままでした。
 
@@ -47,15 +43,7 @@ Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmo
 
 ## <a name="trigger---example"></a>トリガー - 例
 
-言語固有の例をご覧ください。
-
-* [C#](#trigger---c-example)
-* [C# スクリプト (.csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
-
-[トリガーの例をスキップする](#trigger---attributes)
-
-### <a name="trigger---c-example"></a>トリガー - C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次の例では、指定されたデータベースとコレクション内に挿入または更新がある場合に呼び出される [C# 関数](functions-dotnet-class-library.md)を示します。
 
@@ -88,9 +76,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[トリガーの例をスキップする](#trigger---attributes)
-
-### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
 次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、Cosmos DB レコードが変更されるとログ メッセージを書き込みます。
 
@@ -126,9 +112,7 @@ C# スクリプト コードを次に示します。
     }
 ```
 
-[トリガーの例をスキップする](#trigger---attributes)
-
-### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルの Cosmos DB トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、Cosmos DB レコードが変更されるとログ メッセージを書き込みます。
 
@@ -157,7 +141,11 @@ JavaScript コードを次に示します。
     }
 ```
 
+---
+
 ## <a name="trigger---attributes"></a>トリガー - 属性
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) 属性を使用します。
 
@@ -174,7 +162,17 @@ JavaScript コードを次に示します。
     }
 ```
 
-完全な例については、「[トリガー - C# の例](#trigger---c-example)」を参照してください。
+完全な例については、「[トリガー - C# の例](#trigger)」を参照してください。
+
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+属性は、C# スクリプトではサポートされていません。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+---
 
 ## <a name="trigger---configuration"></a>トリガー - 構成
 
@@ -217,18 +215,7 @@ JavaScript コードを次に示します。
 
 Azure Cosmos DB 入力バインドでは、SQL API を使用して 1 つ以上の Azure Cosmos DB ドキュメントを取得して関数の入力パラメーターに渡します。 ドキュメント ID またはクエリ パラメーターは、関数を呼び出したトリガーに基づいて決定することができます。
 
-## <a name="input---examples"></a>入力 - 例
-
-次のリンクから、ID 値を指定することで単一のドキュメントを読み取る言語固有の例を参照してください。
-
-* [C#](#input---c-examples)
-* [C# スクリプト (.csx)](#input---c-script-examples)
-* [JavaScript](#input---javascript-examples)
-* [F#](#input---f-examples)
-
-[入力の例をスキップする](#input---attributes)
-
-### <a name="input---c-examples"></a>入力 - C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 このセクションには、次の例が含まれています。
 
@@ -252,9 +239,9 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="queue-trigger-look-up-id-from-json-c"></a>
 
-#### <a name="queue-trigger-look-up-id-from-json-c"></a>キュー トリガー、JSON からの ID の検索 (C#)
+### <a name="queue-trigger-look-up-id-from-json"></a>キュー トリガー、JSON からの ID の検索
 
 次の例は、単一のドキュメントを取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、JSON オブジェクトを含むキュー メッセージによってトリガーされます。 キュー トリガーは、検索する ID を含む `ToDoItemLookup` という名前のオブジェクトへの JSON を解析します。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
 
@@ -301,9 +288,9 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-c"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-c"></a>HTTP トリガー、クエリ文字列からの ID の検索 (C#)
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP トリガー、クエリ文字列からの ID の検索
 
 次の例は、単一のドキュメントを取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
 
@@ -343,9 +330,9 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-c"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-c"></a>HTTP トリガー、ルート データからの ID の検索 (C#)
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP トリガー、ルート データからの ID の検索
 
 次の例は、単一のドキュメントを取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、ルート データを使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
 
@@ -390,7 +377,9 @@ namespace CosmosDBSamplesV1
 
 [入力の例をスキップする](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>HTTP トリガー、SqlQuery を使用したルート データからの ID の検索 (C#)
+<a id="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP トリガー、SqlQuery を使用したルート データからの ID の検索
 
 次の例は、単一のドキュメントを取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、ルート データを使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
 
@@ -430,7 +419,9 @@ namespace CosmosDBSamplesV1
 
 [入力の例をスキップする](#input---attributes)
 
-#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c"></a>HTTP トリガー、SqlQuery を使用した複数のドキュメントの取得 (C#)
+<a id="http-trigger-get-multiple-docs-using-sqlquery-c"></a>
+
+### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP トリガー、SqlQuery を使用した複数のドキュメントの取得
 
 次の例は、ドキュメントの一覧を取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、HTTP 要求によってトリガーされます。 クエリは、`SqlQuery` 属性プロパティで指定されます。
 
@@ -471,7 +462,9 @@ namespace CosmosDBSamplesV1
 
 [入力の例をスキップする](#input---attributes)
 
-#### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP トリガー、DocumentClient を使用した複数のドキュメントの取得 (C#)
+<a id="http-trigger-get-multiple-docs-using-documentclient-c"></a>
+
+### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP トリガー、DocumentClient を使用した複数のドキュメントの取得 (C#)
 
 次の例は、ドキュメントの一覧を取得する [C# 関数](functions-dotnet-class-library.md)を示しています。 関数は、HTTP 要求によってトリガーされます。 コードでは、Azure Cosmos DB バインドによって提供される `DocumentClient` インスタンスを使用して、ドキュメントの一覧を読み取ります。 また、`DocumentClient` インスタンスは、書き込み操作に使用できます。
 
@@ -530,9 +523,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[入力の例をスキップする](#input---attributes)
-
-### <a name="input---c-script-examples"></a>入力 - C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
 このセクションには、次の例が含まれています。
 
@@ -556,9 +547,9 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="queue-trigger-look-up-id-from-string-c-script"></a>
 
-#### <a name="queue-trigger-look-up-id-from-string-c-script"></a>キュー トリガー、文字列からの ID の検索 (C# スクリプト)
+### <a name="queue-trigger-look-up-id-from-string"></a>キュー トリガー、文字列からの ID の検索
 
 次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
 
@@ -576,6 +567,7 @@ namespace CosmosDBSamplesV1
     "direction": "in"
 }
 ```
+
 これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
 
 C# スクリプト コードを次に示します。
@@ -590,9 +582,9 @@ C# スクリプト コードを次に示します。
     }
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>
 
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>キュー トリガー、SqlQuery を使用した複数のドキュメントの取得 (C# スクリプト)
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>キュー トリガー、SqlQuery を使用した複数のドキュメントの取得
 
 次の例は、*function.json* ファイルの Azure Cosmos DB 入力バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得します。
 
@@ -631,9 +623,9 @@ C# スクリプト コードを次に示します。
     }
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-c-script"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-c-script"></a>HTTP トリガー、クエリ文字列からの ID の検索 (C# スクリプト)
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP トリガー、クエリ文字列からの ID の検索
 
 次の例は、単一のドキュメントを取得する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
 
@@ -692,9 +684,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 }
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-c-script"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-c-script"></a>HTTP トリガー、ルート データからの ID の検索 (C# スクリプト)
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP トリガー、ルート データからの ID の検索
 
 次の例は、単一のドキュメントを取得する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 関数は、ルート データを使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
 
@@ -754,9 +746,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 }
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>HTTP トリガー、SqlQuery を使用した複数のドキュメントの取得 (C# スクリプト)
+### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP トリガー、SqlQuery を使用した複数のドキュメントの取得
 
 次の例は、ドキュメントの一覧を取得する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 関数は、HTTP 要求によってトリガーされます。 クエリは、`SqlQuery` 属性プロパティで指定されます。
 
@@ -811,9 +803,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, IEnumerable<ToDoIt
 }
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>HTTP トリガー、DocumentClient を使用した複数のドキュメントの取得 (C# スクリプト)
+### <a name="http-trigger-get-multiple-docs-using-documentclient"></a>HTTP トリガー、DocumentClient を使用した複数のドキュメントの取得
 
 次の例は、ドキュメントの一覧を取得する [C# スクリプト関数](functions-reference-csharp.md)を示しています。 関数は、HTTP 要求によってトリガーされます。 コードでは、Azure Cosmos DB バインドによって提供される `DocumentClient` インスタンスを使用して、ドキュメントの一覧を読み取ります。 また、`DocumentClient` インスタンスは、書き込み操作に使用できます。
 
@@ -889,9 +881,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 }
 ```
 
-[入力の例をスキップする](#input---attributes)
-
-### <a name="input---javascript-examples"></a>入力 - JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 このセクションには、次の例が含まれています。
 
@@ -900,9 +890,10 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 * [HTTP トリガー、ルート データからの ID の検索](#http-trigger-look-up-id-from-route-data-javascript)
 * [キュー トリガー、SqlQuery を使用した複数のドキュメントの取得](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
 
-[入力の例をスキップする](#input---attributes)
 
-#### <a name="queue-trigger-look-up-id-from-json-javascript"></a>キュー トリガー、JSON からの ID の検索 (JavaScript)
+<a id="queue-trigger-look-up-id-from-json-javascript"></a>
+
+### <a name="queue-trigger-look-up-id-from-json"></a>キュー トリガー、JSON からの ID の検索
 
 次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
 
@@ -930,6 +921,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
     "direction": "out"
 }
 ```
+
 これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
 
 JavaScript コードを次に示します。
@@ -943,9 +935,9 @@ JavaScript コードを次に示します。
     };
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-javascript"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-javascript"></a>HTTP トリガー、クエリ文字列からの ID の検索 (JavaScript)
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP トリガー、クエリ文字列からの ID の検索
 
 次の例は、単一のドキュメントを取得する [JavaScript 関数](functions-reference-node.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
 
@@ -1001,9 +993,9 @@ module.exports = function (context, req, toDoItem) {
 };
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-javascript"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-javascript"></a>HTTP トリガー、ルート データからの ID の検索 (JavaScript)
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP トリガー、ルート データからの ID の検索
 
 次の例は、単一のドキュメントを取得する [JavaScript 関数](functions-reference-node.md)を示しています。 関数は、クエリ文字列を使用して検索のための ID を指定する HTTP 要求によってトリガーされます。 該当の ID は、指定されたデータベースとコレクションからの `ToDoItem` ドキュメントの取得に使用されます。
 
@@ -1060,11 +1052,9 @@ module.exports = function (context, req, toDoItem) {
 };
 ```
 
-[入力の例をスキップする](#input---attributes)
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>
 
-
-
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>キュー トリガー、SqlQuery を使用した複数のドキュメントの取得 (JavaScript)
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>キュー トリガー、SqlQuery を使用した複数のドキュメントの取得
 
 次の例は、*function.json* ファイルの Azure Cosmos DB 入力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、SQL クエリで指定されている複数のドキュメントを、キュー トリガーを使用してクエリ パラメーターをカスタマイズすることで取得します。
 
@@ -1099,61 +1089,25 @@ JavaScript コードを次に示します。
     };
 ```
 
-[入力の例をスキップする](#input---attributes)
-
-<a name="infsharp"></a>
-
-### <a name="input---f-examples"></a>入力 - F# の例
-
-次の例は、*function.json* ファイルの Cosmos DB 入力バインドと、そのバインドが使用される [F# スクリプト関数](functions-reference-fsharp.md)を示しています。 この関数は、1 つのドキュメントを読み取って、そのドキュメントのテキスト値を更新します。
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-    "name": "inputDocument",
-    "type": "documentDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "id" : "{queueTrigger}",
-    "connection": "MyAccount_COSMOSDB",
-    "direction": "in"
-}
-```
-
-これらのプロパティについては、「[構成](#input---configuration)」セクションを参照してください。
-
-F# コードを次に示します。
-
-```fsharp
-    (* Change input document contents using Azure Cosmos DB input binding *)
-    open FSharp.Interop.Dynamic
-    let Run(myQueueItem: string, inputDocument: obj) =
-    inputDocument?text <- "This has changed."
-```
-
-この例には、`FSharp.Interop.Dynamic` と `Dynamitey` の NuGet 依存関係を指定する `project.json` ファイルが必要です。
-
-```json
-{
-    "frameworks": {
-        "net46": {
-            "dependencies": {
-                "Dynamitey": "1.0.2",
-                "FSharp.Interop.Dynamic": "3.0.0"
-            }
-        }
-    }
-}
-```
-
-`project.json` ファイルの追加方法については、[のパッケージ管理](functions-reference-fsharp.md#package)に関するセクションを参照してください。
+---
 
 ## <a name="input---attributes"></a>入力 - 属性
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) 属性を使用します。
 
 この属性のコンストラクターにはデータベース名とコレクションを指定します。 これらの設定や構成できる他のプロパティについて詳しくは、[この後の構成に関するセクション](#input---configuration)をご覧ください。
+
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+属性は、C# スクリプトではサポートされていません。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+---
 
 ## <a name="input---configuration"></a>入力 - 構成
 
@@ -1175,33 +1129,30 @@ F# コードを次に示します。
 
 ## <a name="input---usage"></a>入力 - 使用方法
 
-C# および F# 関数では、関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更がすべて自動的に保持されます。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-JavaScript 関数の場合、関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 [JavaScript の例](#input---javascript-examples)を参照してください。
+関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更がすべて自動的に保持されます。
+
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+関数が正常に終了したときに、名前付き入力パラメーターを介した入力ドキュメントへの変更がすべて自動的に保持されます。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+関数の終了時に更新が自動的に行われることはありません。 代わりに、`context.bindings.<documentName>In` と `context.bindings.<documentName>Out` を使用して、更新を行います。 [入力例](#input)を参照してください。
+
+---
 
 ## <a name="output"></a>Output
 
 Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azure Cosmos DB データベースに新しいドキュメントを記述できます。
 
-## <a name="output---examples"></a>出力 - 例
-
-言語固有の例を参照してください。
-
-* [C#](#output---c-examples)
-* [C# スクリプト (.csx)](#output---c-script-examples)
-* [JavaScript](#output---javascript-examples)
-* [F#](#output---f-examples)
-
-`DocumentClient` を使用した[入力の例](#input---c-examples)も参照してください。
-
-[出力の例をスキップする](#output---attributes)
-
-### <a name="output---c-examples"></a>出力 - C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 このセクションには、次の例が含まれています。
 
 * キュー トリガー、1 つのドキュメントの書き込み
-* キュー トリガー、IAsyncCollector を使用したドキュメントの書き込み
+* キュー トリガー、`IAsyncCollector` を使用したドキュメントの書き込み
 
 例では、次のようなシンプルな `ToDoItem` タイプを参照します。
 
@@ -1216,9 +1167,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[出力の例をスキップする](#output---attributes)
-
-#### <a name="queue-trigger-write-one-doc-c"></a>キュー トリガー、1 つのドキュメントの書き込み (C#)
+### <a name="queue-trigger-write-one-doc"></a>キュー トリガー、1 つのドキュメントの書き込み
 
 次の例は、キュー ストレージからのメッセージで提供されるデータを使用して、ドキュメントをデータベースに追加する[ C# 関数](functions-dotnet-class-library.md)を示しています。
 
@@ -1249,9 +1198,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[出力の例をスキップする](#output---attributes)
-
-#### <a name="queue-trigger-write-docs-using-iasynccollector-c"></a>キュー トリガー、IAsyncCollector を使用したドキュメントの書き込み (C#)
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>キュー トリガー、IAsyncCollector を使用したドキュメントの書き込み
 
 次の例は、キュー メッセージ JSON で提供されるデータを使用して、ドキュメントのコレクションをデータベースに追加する[ C# 関数](functions-dotnet-class-library.md)を示しています。
 
@@ -1286,18 +1233,14 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[出力の例をスキップする](#output---attributes)
-
-### <a name="output---c-script-examples"></a>出力 - C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
 このセクションには、次の例が含まれています。
 
 * キュー トリガー、1 つのドキュメントの書き込み
-* キュー トリガー、IAsyncCollector を使用したドキュメントの書き込み
+* キュー トリガー、`IAsyncCollector` を使用したドキュメントの書き込み
 
-[出力の例をスキップする](#output---attributes)
-
-#### <a name="queue-trigger-write-one-doc-c-script"></a>キュー トリガー、1 つのドキュメントの書き込み (C# スクリプト)
+### <a name="queue-trigger-write-one-doc"></a>キュー トリガー、1 つのドキュメントの書き込み
 
 次の例は、*function.json* ファイルの Azure Cosmos DB 出力バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、次の形式で JSON を受信するキューのキュー入力バインドを使用します。
 
@@ -1359,7 +1302,7 @@ C# スクリプト コードを次に示します。
     }
 ```
 
-#### <a name="queue-trigger-write-docs-using-iasynccollector"></a>キュー トリガー、IAsyncCollector を使用したドキュメントの書き込み
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>キュー トリガー、IAsyncCollector を使用したドキュメントの書き込み
 
 複数のドキュメントを作成するために `ICollector<T>` または `IAsyncCollector<T>` にバインドできます。`T` は、サポートされている型のいずれかです。
 
@@ -1418,9 +1361,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-[出力の例をスキップする](#output---attributes)
-
-### <a name="output---javascript-examples"></a>出力 - JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルの Azure Cosmos DB 出力バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、次の形式で JSON を受信するキューのキュー入力バインドを使用します。
 
@@ -1475,87 +1416,11 @@ JavaScript コードを次に示します。
     };
 ```
 
-[出力の例をスキップする](#output---attributes)
-
-### <a name="output---f-examples"></a>出力 - F# の例
-
-次の例は、*function.json* ファイルの Azure Cosmos DB 出力バインドと、そのバインドが使用される [F# 関数](functions-reference-fsharp.md)を示しています。 この関数は、次の形式で JSON を受信するキューのキュー入力バインドを使用します。
-
-```json
-{
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-この関数は、各レコードに対して次の形式の Azure Cosmos DB ドキュメントを作成します。
-
-```json
-{
-    "id": "John Henry-123456",
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-    "name": "employeeDocument",
-    "type": "documentDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": true,
-    "connection": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-これらのプロパティについては、「[構成](#output---configuration)」セクションを参照してください。
-
-F# コードを次に示します。
-
-```fsharp
-    open FSharp.Interop.Dynamic
-    open Newtonsoft.Json
-
-    type Employee = {
-      id: string
-      name: string
-      employeeId: string
-      address: string
-    }
-
-    let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
-      log.Info(sprintf "F# Queue trigger function processed: %s" myQueueItem)
-      let employee = JObject.Parse(myQueueItem)
-      employeeDocument <-
-        { id = sprintf "%s-%s" employee?name employee?employeeId
-          name = employee?name
-          employeeId = employee?employeeId
-          address = employee?address }
-```
-
-この例には、`FSharp.Interop.Dynamic` と `Dynamitey` の NuGet 依存関係を指定する `project.json` ファイルが必要です。
-
-```json
-{
-    "frameworks": {
-        "net46": {
-          "dependencies": {
-            "Dynamitey": "1.0.2",
-            "FSharp.Interop.Dynamic": "3.0.0"
-           }
-        }
-    }
-}
-```
-
-`project.json` ファイルの追加方法については、[のパッケージ管理](functions-reference-fsharp.md#package)に関するセクションを参照してください。
+---
 
 ## <a name="output---attributes"></a>出力 - 属性
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs) 属性を使用します。
 
@@ -1571,7 +1436,17 @@ F# コードを次に示します。
     }
 ```
 
-完全な例については、「[出力 - C# の例](#output---c-examples)」を参照してください。
+完全な例については、「[出力](#output)」を参照してください。
+
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+属性は、C# スクリプトではサポートされていません。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+---
 
 ## <a name="output---configuration"></a>出力 - 構成
 

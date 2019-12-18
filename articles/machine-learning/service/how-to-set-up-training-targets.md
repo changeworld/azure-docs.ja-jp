@@ -1,5 +1,5 @@
 ---
-title: モデル トレーニング用のコンピューティング先を作成して使用する
+title: モデル トレーニング用のコンピューティング ターゲットを使用する
 titleSuffix: Azure Machine Learning
 description: 機械学習モデル トレーニング用のトレーニング環境 (コンピューティング ターゲット) を構成します。 トレーニング環境を簡単に切り替えることができます。 ローカルでトレーニングを開始します。 スケール アウトする必要がある場合は、クラウド ベースのコンピューティング先に切り替えます。
 services: machine-learning
@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 934899a74362ec9354c772c341d38d6a8f988ab4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489576"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951872"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング先を設定して使用する 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Azure Machine Learning SDK、Azure Machine Learning Studio、Azure CLI、また�
 
 
 >[!NOTE]
-> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.39 を使用してテストされました。
+> この記事のコードは、Azure Machine Learning SDK バージョン 1.0.74 を使用してテストされています。
 
 ## <a name="compute-targets-for-training"></a>モデル トレーニング用のコンピューティング先
 
@@ -54,7 +54,7 @@ Azure Machine Learning では、異なるコンピューティング先に対し
 
 ## <a name="whats-an-estimator"></a>Estimator とは
 
-一般的なフレームワークを使用したモデルのトレーニングを容易にするために、Azure Machine Learning の Python SDK には、代替の高度な抽象化である Estimator クラスが用意されています。 このクラスを使用すると、実行構成を簡単に作成できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成し、それを使用して、自分で選択した任意の学習フレームワーク (scikit-learn など) を使用するトレーニング スクリプトを送信できます。
+一般的なフレームワークを使用したモデルのトレーニングを容易にするために、Azure Machine Learning の Python SDK には、代替の高度な抽象化である Estimator クラスが用意されています。  このクラスを使用すると、実行構成を簡単に作成できます。 汎用の [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) を作成し、それを使用して、自分で選択した任意の学習フレームワーク (scikit-learn など) を使用するトレーニング スクリプトを送信できます。 環境オブジェクトや RunConfiguration オブジェクトなどの埋め込みオブジェクトがお客様用に自動的に構成されるため、トレーニングには見積もりツールを使用することをお勧めします。 これらのオブジェクトの作成方法をさらに詳細に制御し、試験実行用にインストールするパッケージを指定する場合は、[次の手順](#amlcompute)に従って、Azure Machine Learning コンピューティング上で RunConfiguration オブジェクトを使用してトレーニング試験を送信します。
 
 PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning には、これらのフレームワークを簡単に使用するための [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)、および [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) Estimator が用意されています。
 
@@ -105,9 +105,6 @@ Azure Machine Learning コンピューティング環境は、実行をスケジ
 #### <a name="run-based-creation"></a>実行ベースの作成
 
 実行時にコンピューティング先として Azure Machine Learning コンピューティングを作成できます。 実行用にコンピューティングが自動的に作成されます。 実行が完了すると、コンピューティングは自動的に削除されます。 
-
-> [!NOTE]
-> 使用するノードの最大数を指定するには、`node_count` にノード数を設定します。 2019 年 4 月 4 日現在、バグが原因で、この操作を行うことができません。 回避策として、実行構成の `amlcompute._cluster_max_node_count` プロパティを使用してください。 たとえば、「 `run_config.amlcompute._cluster_max_node_count = 5` 」のように入力します。
 
 > [!IMPORTANT]
 > Azure Machine Learning コンピューティングの実行ベースの作成は現在、プレビュー状態です。 自動化されたハイパーパラメーター チューニングまたは自動化された機械学習を使用する場合は、実行ベースの作成を使用しないでください。 ハイパーパラメーター チューニングまたは自動機械学習を使用するには、代わりに[永続的なコンピューティング](#persistent)先を作成します。

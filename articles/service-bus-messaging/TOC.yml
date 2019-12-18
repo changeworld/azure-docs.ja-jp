@@ -211,6 +211,8 @@
       items:
         - name: トラブルシューティング ガイド
           href: service-bus-messaging-exceptions.md
+        - name: Resource Manager の例外
+          href: service-bus-resource-manager-exceptions.md
 - name: リファレンス
   items:
     - name: .NET

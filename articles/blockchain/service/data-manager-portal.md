@@ -1,19 +1,15 @@
 ---
-title: ブロックチェーン データ マネージャーの構成 - Azure portal
-description: Azure portal を使用してブロックチェーン データ マネージャー インスタンスを作成および管理する方法。
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: Azure portal を使用してブロックチェーン データ マネージャーを構成する - Azure Blockchain Service
+description: Azure portal を使用して、Azure Blockchain Service 用のブロックチェーン データ マネージャーを作成および管理します。
 ms.date: 11/04/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 484322fb0486eeb4ab67366d32350c69a18da743
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605920"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977023"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portal を使用してブロックチェーン データ マネージャーを構成する
 
@@ -40,7 +36,7 @@ ms.locfileid: "73605920"
 1. ブロックチェーン データ マネージャーに接続する Azure Blockchain Service メンバーに移動します。 **[Blockchain Data Manager]\(ブロックチェーン データ マネージャー\)** を選択します。
 1. **[追加]** を選択します。
 
-    ![ブロックチェーン データ マネージャーを追加する](./media/data-manager-portal/add-instance.png)
+    ![Blockchain Data Manager を追加する](./media/data-manager-portal/add-instance.png)
 
     次の詳細を入力します。
 
@@ -53,7 +49,7 @@ ms.locfileid: "73605920"
 
 1. **[OK]** を選択します。
 
-    ブロックチェーン データ マネージャー インスタンスの作成には 1 分もかかりません。 インスタンスは、デプロイされると、自動的に開始されます。 実行中のブロックチェーン データ マネージャー インスタンスは、トランザクション ノードからブロックチェーン イベントをキャプチャし、送信接続にデータを送信します。
+    Blockchain Data Manager インスタンスの作成には 1 分もかかりません。 インスタンスは、デプロイされると、自動的に開始されます。 実行中のブロックチェーン データ マネージャー インスタンスは、トランザクション ノードからブロックチェーン イベントをキャプチャし、送信接続にデータを送信します。
 
     新しいインスタンスは、Azure Blockchain Service メンバーのブロックチェーン データ マネージャー インスタンスの一覧に表示されます。
 
@@ -80,17 +76,19 @@ ms.locfileid: "73605920"
 
     コントラクト ABI がクリップボードにコピーされます。
 
-1. **abi** 配列を JSON ファイルとして保存します。 たとえば、*abi.json* とします。 このファイルは、後の手順で使用します。
+1. **abi** 配列を JSON ファイルとして保存します。 たとえば、*abi.json* です。 このファイルは、後の手順で使用します。
 
-ブロックチェーン データ マネージャーには、スマート コントラクトのデプロイ済みバイトコードが必要です。 デプロイ済みバイトコードは、スマート コントラクトのバイトコードとは異なります。 デプロイ済みバイトコードは、コンパイルされたコントラクト メタデータ ファイルから取得できます。
+Blockchain Data Manager には、スマート コントラクトのデプロイ済みバイトコードが必要です。 デプロイ済みバイトコードは、スマート コントラクトのバイトコードとは異なります。 Azure ブロックチェーン開発キット拡張機能を使用して、バイトコードをクリップボードにコピーします。
 
-1. 自分の Solidity プロジェクトの **build/contracts** フォルダー内に含まれているコントラクト メタデータ ファイルを開きます。 ファイル名は、スマート コントラクト名に **.json** 拡張子を付けたものです。
-1. JSON ファイル内の **deployedBytecode** 要素を見つけます。
-1. 引用符を除く 16 進値をコピーします。
+1. Visual Studio Code のエクスプローラー ウィンドウで、自分の Solidity プロジェクトの **build/contracts** フォルダーを展開します。
+1. コントラクト メタデータの JSON ファイルを右クリックします。 ファイル名は、スマート コントラクト名に **.json** 拡張子を付けたものです。
+1. **[Copy Transaction Bytecode] (トランザクション バイトコードのコピー)** を選択します。
 
-    ![Visual Studio Code のウィンドウに表示されたメタデータ内のバイトコード](./media/data-manager-portal/bytecode-metadata.png)
+    ![[Copy Transaction Bytecode] (トランザクション バイトコードのコピー) が選択されている Visual Studio Code のウィンドウ](./media/data-manager-portal/bytecode-devkit.png)
 
-1. **バイトコード**値を JSON ファイルとして保存します。 たとえば、*bytecode.json* とします。 このファイルは、後の手順で使用します。
+    バイトコードがクリップボードにコピーされます。
+
+1. **バイトコード**値を JSON ファイルとして保存します。 たとえば、*bytecode.json* です。 このファイルは、後の手順で使用します。
 
 次の例は、VS Code エディターで開いている *abi.json* ファイルと *bytecode.json* ファイルを示しています。 ファイルは次のようになります。
 
@@ -98,7 +96,7 @@ ms.locfileid: "73605920"
 
 ### <a name="create-contract-abi-and-bytecode-url"></a>コントラクト ABI とバイトコード URL の作成
 
-ブロックチェーン データ マネージャーでは、アプリケーションの追加時に、コントラクト ABI ファイルとバイトコードファイルに URL からアクセスできる必要があります。 Azure Storage アカウントを使用して、プライベートにアクセスできる URL を提供できます。
+Blockchain Data Manager では、アプリケーションの追加時に、コントラクト ABI ファイルとバイトコードファイルに URL からアクセスできる必要があります。 Azure Storage アカウントを使用して、プライベートにアクセスできる URL を提供できます。
 
 #### <a name="create-storage-account"></a>ストレージ アカウントの作成
 
@@ -112,7 +110,7 @@ ms.locfileid: "73605920"
 
     | フィールド | 説明 |
     |-------|-------------|
-    | 名前  | コンテナーに名前を付けます。 たとえば、*smartcontract* とします。 |
+    | 名前  | コンテナーに名前を付けます。 たとえば、*smartcontract* です。 |
     | パブリック アクセス レベル | *[Private (no anonymous access)]\(プライベート (匿名アクセスなし)\)* を選択します |
 
 1. **[OK]** を選択してコンテナーを作成します。
@@ -142,7 +140,7 @@ ms.locfileid: "73605920"
 1. **ブロックチェーン アプリケーション**を選択します。
 1. **[追加]** を選択します。
 
-    ![ブロックチェーン アプリケーションの追加](./media/data-manager-portal/add-application.png)
+    ![ブロックチェーン アプリケーションを追加する](./media/data-manager-portal/add-application.png)
 
     ブロックチェーン アプリケーションの名前と、スマート コントラクト ABI およびバイトコードの URL を入力します。
 
@@ -170,7 +168,7 @@ Azure Storage アカウントを削除したり、それを使用してさらに
 
 ## <a name="next-steps"></a>次の手順
 
-ブロックチェーン データ マネージャーと Azure Cosmos DB を使用してブロックチェーン トランザクション メッセージ エクスプローラーの作成を試みます。
+次のチュートリアルで、ブロックチェーン データ マネージャーと Azure Cosmos DB を使用してブロックチェーン トランザクション メッセージ エクスプローラーの作成を試みます。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Blockchain Data Manager を使用して Azure Cosmos DB にデータを送信する](data-manager-cosmosdb.md)
+> [Blockchain Data Manager を使用して Azure Cosmos DB にデータを送信する](data-manager-cosmosdb.md)

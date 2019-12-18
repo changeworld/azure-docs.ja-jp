@@ -3,19 +3,19 @@ title: 設計パターンを開示する
 titleSuffix: Azure Cognitive Services
 description: 開示のための設計パターンとベスト プラクティスです。
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836992"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776624"
 ---
 # <a name="disclosure-design-patterns"></a>設計パターンを開示する
 合成音声エクスペリエンスの適切な[開示レベル](concepts-disclosure-guidelines.md#disclosure-assessment)が決定されたので、考えられる設計パターンについて検討するよい機会です。
@@ -167,7 +167,7 @@ Recommendations
 
 ![暗黙的な合図の一貫性](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues-amp-feedback"></a>暗黙的な合図 &amp; フィードバック
+### <a name="implicit-cues--feedback"></a>暗黙的な合図とフィードバック
 
 擬人化は、エージェントの実際の視覚的表現から、音声、サウンド、光のパターン、跳ねる姿、さらにはデバイスの振動まで、さまざまな形で表現されます。 ペルソナを定義するときは、人間そっくりのアバターを目指すよりも、暗黙的な合図とフィードバック パターンを利用します。 これは、より明示的な開示の必要性を最小限に抑える 1 つの方法です。
 

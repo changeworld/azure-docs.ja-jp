@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: 7ca7256cbe42949141bc216ee1cb5c89ceac935c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd561f616c9e120a38f1c6b125e349684f82942e
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226369"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665612"
 ---
 # <a name="create-an-additional-azure-subscription"></a>追加 Azure サブスクリプションの作成
 
@@ -36,7 +36,7 @@ Microsoft Online Services プログラム (MOSP) の課金アカウントをお�
 |---------|---------|
 |Enterprise Agreement (EA) |  マイクロソフト エンタープライズ契約の加入契約におけるアカウント オーナー ロール。 詳細については、「[Understand Azure Enterprise Agreement administrative roles in Azure](billing-understand-ea-roles.md)」(Azure の Azure Enterprise Agreement 管理者ロールを理解する) を参照してください。    |
 |Microsoft 顧客契約 (MCA) |  請求書セクション、課金プロファイル、または課金アカウントにおける所有者ロールまたは投稿者ロール。 または、請求書セクションにおける Azure サブスクリプションの作成者ロール。  詳細については、「[サブスクリプションの課金ロールとタスク](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks)」を参照してください。    |
-|Microsoft Partner Agreement (MPA) |   取引先組織の全体管理者ロールおよび管理者エージェント ロール。 詳細については、「[パートナー センター - ユーザー ロールとアクセス許可の割り当て](https://docs.microsoft.com/partner-center/permissions-overview)」を参照してください。  |
+|Microsoft Partner Agreement (MPA) |   CSP パートナー組織の全体管理者ロールおよび管理者エージェント ロール。 詳細については、[パートナー センターでのユーザー ロールとアクセス許可の割り当て](https://docs.microsoft.com/partner-center/permissions-overview)に関するページを参照してください。  Azure サブスクリプションを作成するためには、ユーザーがパートナー テナントにサインインする必要があります。   |
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Azure portal にサブスクリプションを作成する
 

@@ -1,6 +1,6 @@
 ---
-title: Media Services リリース ノート | Microsoft Docs
-description: Media Services リリース ノート
+title: Azure Media Services リリース ノート | Microsoft Docs
+description: この記事では、Microsoft Azure Media Services v2 のリリース ノートについて説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: f76a2eb098e2d96f617d19de089e56c7e8a497fd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d4c8dd4b3a53d484d5240f3514d171231fc93ae0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162771"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968512"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -58,7 +58,7 @@ Media Services REST API バージョン履歴の詳細については、[Azure M
 
 ### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
 
-お知らせしているように *Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、2019 年 11 月 30 日には廃止される予定です。
+*Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、2020 年 3 月 31 日には廃止される予定です。
 
 詳細については、[WAME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101334)と [AME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101335)に関するページを参照してください。
 
@@ -554,6 +554,10 @@ Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Ser
 * 非同期メソッドのサポート
   
     * すべてのメソッドに非同期のサポートが追加されました。
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

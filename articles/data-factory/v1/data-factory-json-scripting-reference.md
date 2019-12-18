@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b72be7026b0b8077cf5bf9f775d10fd03edd9118
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dc79582efd2f009f1715e04b769d030cfd36561f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815638"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972481"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -371,7 +371,7 @@ structure:
 
 リンクされたサービス、データセット、コピー アクティビティの source/sink に使用される JSON スキーマについては、目的のデータ ストアのリンクをクリックしてください。
 
-| Category | データ ストア
+| カテゴリ | データ ストア
 |:--- |:--- |
 | **Azure** |[Azure BLOB Storage](#azure-blob-storage) |
 | &nbsp; |Azure Data Lake Store |
@@ -592,13 +592,13 @@ Azure Data Lake Store のリンクされたサービスを定義するには、�
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**AzureDataLakeStore** | はい |
 | dataLakeStoreUri | Azure Data Lake Store アカウントの情報を指定します。 `https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` という形式で指定します。 | はい |
-| subscriptionId | Data Lake Store が所属する Azure サブスクリプション ID。 | シンクでは必須 |
+| subscriptionId | Data Lake Store が属する Azure サブスクリプション ID。 | シンクでは必須 |
 | resourceGroupName | Data Lake Store が所属する Azure リソース グループの名前。 | シンクでは必須 |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | はい (サービス プリンシパル認証の場合) |
 | servicePrincipalKey | アプリケーションのキーを取得します。 | はい (サービス プリンシパル認証の場合) |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅にマウスを置くことで取得できます。 | はい (サービス プリンシパル認証の場合) |
 | authorization | **Data Factory エディター**で **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | はい (ユーザー資格情報認証の場合)|
-| sessionId | OAuth 承認セッションの OAuth セッション ID。 各セッション ID は一意であり、1 回のみ使用できます。 Data Factory エディターを使用すると、この設定が自動的に生成されます。 | はい (ユーザー資格情報認証の場合) |
+| sessionId | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使用できます。 Data Factory エディターを使用すると、この設定が自動的に生成されます。 | はい (ユーザー資格情報認証の場合) |
 
 #### <a name="example-using-service-principal-authentication"></a>例: サービス プリンシパル認証の使用
 ```json
@@ -3311,7 +3311,7 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 
 
 ### <a name="linked-service"></a>リンクされたサービス
-**オンプレミスのファイル サーバー**のリンクされているサービスで、オンプレミスのファイル システムを Azure Data Factory にリンクできます。 次の表は、オンプレミスのファイル サーバーのリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+**オンプレミスのファイル サーバー**のリンクされているサービスで、オンプレミスのファイル システムを Azure データ ファクトリにリンクできます。 次の表に、オンプレミスのファイル サーバーのリンクされたサービスに固有の JSON 要素の説明をまとめています。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |

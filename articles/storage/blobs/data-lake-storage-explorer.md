@@ -1,23 +1,23 @@
 ---
-title: Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のデータを管理する
-description: このクイック スタートでは、Azure Storage Explorer を使用して、Azure Data Lake Storage Gen2 アカウントでコンテナーだけでなく、ディレクトリとファイルを作成する方法について学習します。 次に、ローカル コンピューターにファイルをダウンロードする方法と、ディレクトリ内のすべてのファイルを表示する方法について説明します。
+title: Azure Data Lake Storage Gen2 で Azure Storage Explorer を使用する
+description: Azure Data Lake Storage Gen2 アカウントで Azure Storage Explorer を使用して、ファイル システムと、ディレクトリおよびファイルを作成する方法について説明します。 次に、ローカル コンピューターにファイルをダウンロードする方法と、ディレクトリ内のすべてのファイルを表示する方法について説明します。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/19/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 95d7a58c8188e8c6633f6be50af608aed437edff
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: b300d96408bed621a0687c04a9c94021af009f95
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991420"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484482"
 ---
-# <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 アカウントのデータを管理する
+# <a name="use-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 で Azure Storage Explorer を使用する
 
-このクイック スタートでは、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、ディレクトリと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、ディレクトリ内のすべての BLOB を表示する方法について説明します。 また、BLOB のスナップショットを作成する方法、ディレクトリのアクセス ポリシーを管理する方法、共有アクセス署名を作成する方法についても学習します。
+この記事では、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して、ディレクトリと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、ディレクトリ内のすべての BLOB を表示する方法について説明します。 また、BLOB のスナップショットを作成する方法、ディレクトリのアクセス ポリシーを管理する方法、共有アクセス署名を作成する方法についても学習します。
 
 ## <a name="prerequisites"></a>前提条件
 

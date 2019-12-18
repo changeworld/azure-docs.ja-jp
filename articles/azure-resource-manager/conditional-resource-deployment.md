@@ -2,13 +2,13 @@
 title: テンプレートを使用した条件付きデプロイ
 description: Azure Resource Manager テンプレート内のリソースを条件付きでデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 09/03/2019
-ms.openlocfilehash: e3d78f875e39628194ac30310314e59e2ef19fdb
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/03/2019
+ms.openlocfilehash: ec2337686f92bb631ae4b08ce125eb576cd8bd69
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147175"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806475"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Resource Manager テンプレートでの条件付きデプロイ
 
@@ -78,6 +78,8 @@ ms.locfileid: "74147175"
 条件付きでデプロイされるリソースで [reference](resource-group-template-functions-resource.md#reference) または [list](resource-group-template-functions-resource.md#list) 関数を使用した場合、この関数はリソースがデプロイされていなくても評価されます。 この関数が存在しないリソースを参照する場合、エラーが返されます。
 
 リソースがデプロイされるときにのみ条件に対してこの関数が評価されるようにするには、[if](resource-group-template-functions-logical.md#if) 関数を使用します。 条件付きでデプロイされるリソースで if と reference を使用するサンプル テンプレートについては、[if 関数](resource-group-template-functions-logical.md#if)に関する説明を参照してください。
+
+他のリソースと同じように、条件付きリソースにる[依存するリソース](resource-group-define-dependencies.md)として設定します。 条件付きリソースがデプロイされていない場合、Azure Resource Manager によって必要な依存関係からそれが自動的に削除されます。
 
 ## <a name="condition-with-complete-mode"></a>完全モードの状態
 

@@ -1,25 +1,18 @@
 ---
-title: App Service Environment v1 の作成方法 - Azure
-description: App Service Environment v1 の作成フローの説明
-services: app-service
-documentationcenter: ''
+title: ASE v1 を作成する
+description: App Service Environment v1 の作成フローの説明。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: ccompy
-manager: stefsch
-editor: ''
 ms.assetid: 81bd32cf-7ae5-454b-a0d2-23b57b51af47
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 017c79ec1341c85f3bd08393dd5553f90a2f6cef
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 752334e3d594b1f95786aecaca134b74c4e264d5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069737"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688689"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>App Service Environment v1 の作成方法 
 

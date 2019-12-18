@@ -1,22 +1,22 @@
 ---
-title: Azure AD SSPR と Multi-Factor Authentication のための統合された登録をトラブルシューティングする (プレビュー) - Azure Active Directory
+title: 統合された登録の使用のトラブルシューティング - Azure Active Directory
 description: Azure AD Multi-Factor Authentication とパスワード リセットのセルフサービスの結合された登録のトラブルシューティングを行う (プレビュー)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: troubleshooting
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ab7c38d23cb1f05e07488810640aeb791ded3d4a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414625"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847390"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>結合されたセキュリティ情報の登録のトラブルシューティング (プレビュー)
 
@@ -51,13 +51,13 @@ ms.locfileid: "60414625"
 
 | 症状 | トラブルシューティングの手順 |
 | --- | --- |
-| 予期していた方法が表示されません。 | 1.ユーザーに Azure AD 管理者ロールがあるかどうかを確認します。 ある場合は、SSPR 管理者ポリシーの違いを確認します。 <br> 2.ユーザーが中断される理由が、Multi-Factor Authentication 登録の適用か SSPR 登録の適用であるかを確認します。 どの方法が表示される必要があるかを判断するために、「統合された登録のモード」で[フローチャート](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes)を確認します。 <br> 手順 3.Multi-Factor Authentication または SSPR ポリシーがどのくらい最近に変更されたかを判定します。 最近、変更が加えられた場合、更新されたポリシーが反映されるまでしばらく時間がかかることがあります。|
+| 予期していた方法が表示されません。 | 1.ユーザーに Azure AD 管理者ロールがあるかどうかを確認します。 ある場合は、SSPR 管理者ポリシーの違いを確認します。 <br> 2.ユーザーが中断される理由が、Multi-Factor Authentication 登録の適用か SSPR 登録の適用であるかを確認します。 どの方法が表示される必要があるかを判断するために、「統合された登録のモード」で[フローチャート](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes)を確認します。 <br> 3.Multi-Factor Authentication または SSPR ポリシーがどのくらい最近に変更されたかを判定します。 最近、変更が加えられた場合、更新されたポリシーが反映されるまでしばらく時間がかかることがあります。|
 
 ## <a name="troubleshooting-manage-mode"></a>管理モードのトラブルシューティング
 
 | 症状 | トラブルシューティングの手順 |
 | --- | --- |
-| 特定の方法を追加する選択肢がありません。 | 1.その方法が Multi-Factor Authentication または SSPR に対して有効になっているかどうかを判定します。 <br> 2.その方法が有効になっている場合は、ポリシーを再度保存し、1 ～ 2 時間待ってから再テストします。 <br> 手順 3.方法が有効になっている場合は、ユーザーが設定を許可されている、その最大数の方法を既に設定していないことを確認します。|
+| 特定の方法を追加する選択肢がありません。 | 1.その方法が Multi-Factor Authentication または SSPR に対して有効になっているかどうかを判定します。 <br> 2.その方法が有効になっている場合は、ポリシーを再度保存し、1 ～ 2 時間待ってから再テストします。 <br> 3.方法が有効になっている場合は、ユーザーが設定を許可されている、その最大数の方法を既に設定していないことを確認します。|
 
 ## <a name="disable-combined-registration"></a>結合された登録を無効にする
 

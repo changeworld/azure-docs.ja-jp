@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Windows 上で Speech Devices SDK を実行する
+title: クイック スタート:Windows 上で Speech Devices SDK を実行する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Windows Speech Devices SDK の使用を開始するための前提条件と手順です。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: e4da99d895ba7a6d9ce537ab513ce4cc248aff7a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e3764dbfa7de52bf210a1e6cc8bd240d64d64aeb
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111673"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815542"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>クイック スタート:Windows 上で Speech Devices SDK サンプル アプリを実行する
 
@@ -23,7 +23,7 @@ ms.locfileid: "74111673"
 
 アプリケーションは、Speech SDK パッケージと、64 ビット Windows 上の Eclipse Java IDE (v4) で構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
-このガイドでは、Speech Services リソースがある [Azure Cognitive Services](get-started.md) アカウントが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+このガイドでは、Speech サービス リソースがある [Azure Cognitive Services](get-started.md) アカウントが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 [サンプル アプリケーション](https://aka.ms/sdsdk-download-JRE)のソース コードは Speech Devices SDK に付属しています。 [GitHub で入手する](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)こともできます。
 
@@ -36,7 +36,7 @@ ms.locfileid: "74111673"
 * [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) または [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) のみ。
 * [Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
-* Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+* Speech サービス用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 * Java 用の [Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) の最新バージョンをダウンロードし、.zip を作業ディレクトリに解凍します。
    > [!NOTE]
    > JRE-Sample-Release.zip ファイルには、JRE サンプル アプリが含まれており、このクイックスタートでは、アプリが C:\SDSDK\JRE-Sample-Release に抽出されることを前提としています

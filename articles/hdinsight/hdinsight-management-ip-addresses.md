@@ -7,15 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: 3f0b31cd3d37c3040ff99a89c1a5201b413fd3fc
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 10/22/2019
+ms.openlocfilehash: 9caf0a41096a22e94aeb80ccfd0e6e6f70954a3d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076628"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185652"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight の管理 IP アドレス
+
+> [!Important]
+> ネットワーク セキュリティ グループに対して、[サービス タグ](hdinsight-service-tags.md)機能を使用します。 新しいリージョンはサービス タグに対してのみ追加され、静的 IP アドレスは最終的に非推奨になります。
 
 ネットワーク セキュリティ グループ (NSG) またはユーザー定義ルート (UDR) を使用して HDInsight クラスターへの受信トラフィックを制御する場合は、クラスターが Azure の重要な正常性サービスと管理サービスと通信できるようにする必要があります。  これらのサービスで使用される IP アドレスは、一部がリージョン固有であり、一部がすべての Azure リージョンに適用されます。 カスタム DNS を使用していない場合は、必要に応じて Azure DNS サービスからのトラフィックも許可します。
 
@@ -41,7 +44,7 @@ Azure で提供される DNS サービスを使用している場合は、ポー
 リソースが配置されている特定の Azure リージョンで、Azure HDInsight の正常性サービスと管理サービス用に記載されている IP アドレスからのトラフィックを許可します。
 
 > [!IMPORTANT]  
-> 使用している Azure リージョンが一覧にない場合は、前のセクションで示した 4 つの IP アドレスのみを使用してください。
+> 使用している Azure リージョンが一覧にない場合は、[サービス タグ](hdinsight-service-tags.md)機能をネットワーク セキュリティ グループに対して使用します。
 
 | Country | リージョン | 許可されているソース IP アドレス | 許可されている宛先 | Direction |
 | ---- | ---- | ---- | ---- | ----- |

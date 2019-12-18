@@ -1,26 +1,27 @@
 ---
-title: PowerShell から Azure Storage 暗号化用にカスタマー マネージド キーを構成する
+title: PowerShell を使用してカスタマー マネージド キーを構成する
+titleSuffix: Azure Storage
 description: PowerShell を使用して Azure Storage 暗号化用にカスタマー マネージド キーを構成する方法について説明します。 カスタマー マネージド キーを使用すると、アクセス制御の作成、ローテーション、無効化、および取り消しを行うことができます。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/09/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 30fed5a75e368e9d87da54d4c75e6f69759813e7
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 87ee96b0f6ad27fc34709f3fc20a2dd69be49089
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249282"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895267"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-powershell"></a>PowerShell から Azure Storage 暗号化用にカスタマー マネージド キーを構成する
+# <a name="configure-customer-managed-keys-with-azure-key-vault-by-using-powershell"></a>PowerShell を使用して Azure Key Vault でカスタマー マネージド キーを構成する
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-この記事では、PowerShell を使用して、カスタマー マネージド キーを使用するキー コンテナーを構成する方法について説明します。
+この記事では、PowerShell を使用するカスタマー マネージド キーでAzure Key Vault を構成する方法を説明します。 Azure CLI を使用してキー コンテナーを作成する方法を学習するには、「[クイック スタート: PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う](../../key-vault/quick-create-powershell.md)」を参照してください。
 
 > [!IMPORTANT]
 > Azure Storage 暗号化でカスタマー マネージド キーを使うには、キー コンテナーに **[論理的な削除]** と **[Do Not Purge]\(消去しない\)** の 2 つのプロパティが構成されている必要があります。 これらのプロパティは、既定では有効になっていません。 これらのプロパティを有効にするには、PowerShell または Azure CLI を使用します。
@@ -96,5 +97,5 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
 
 ## <a name="next-steps"></a>次の手順
 
-- [保存データに対する Azure Storage 暗号化](storage-service-encryption.md) 
+- [保存データに対する Azure Storage 暗号化](storage-service-encryption.md)
 - [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

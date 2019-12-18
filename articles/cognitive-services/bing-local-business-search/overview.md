@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-local-business
 ms.topic: overview
-ms.date: 09/13/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: bdada613ef46881bbf051144efded541ac3d0974
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 4e08596e8cf71bbb0e88abdc51f5d8e69972464d
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996683"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665257"
 ---
 # <a name="what-is-bing-local-business-search"></a>Bing Local Business Search とは
 RESTful サービスである Bing Local Business Search API を使用すると、アプリケーションで検索クエリに基づいて地元企業に関する情報を検索できます。 たとえば、`q=<business-name> in Redmond, Washington`、または `q=Italian restaurants near me` です。 
@@ -36,9 +36,9 @@ HTTP 要求を行って JSON 応答を解析できる任意のプログラミン
 4. JSON 応答を解析します 
 
 > [!NOTE]
-> 現時点で Local Business Search でサポートされているのは、`en-US` 市場のみです。 
-> [!NOTE]
-> 現時点では、Local Business Search で Autosuggest はサポートされていません。 
+> Local Business Search の現在のサポート状況は次のとおりです。 
+> * サポートされるのは `en-US` 市場のみです。 
+> * Bing Autosuggest はサポートされません。 
 
 ## <a name="next-steps"></a>次の手順
 - [クエリと応答](local-search-query-response.md)

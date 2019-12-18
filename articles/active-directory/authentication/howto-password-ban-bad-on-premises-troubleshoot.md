@@ -1,22 +1,22 @@
 ---
-title: Azure AD パスワード保護のトラブルシューティング - Azure Active Directory
+title: パスワード保護のトラブルシューティング - Azure Active Directory
 description: Azure AD パスワード保護の一般的なトラブルシューティングについて説明します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62395b0b6f1ed152292106a774c1e2f7c6d4f11f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: bd609eb1f289c0a104bddaa08a60e7dc6202acee
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893279"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847662"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD パスワード保護のトラブルシューティング
 

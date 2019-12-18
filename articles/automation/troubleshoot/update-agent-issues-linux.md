@@ -1,30 +1,30 @@
 ---
-title: Azure Update Management での Linux エージェントのチェック結果について
-description: Update Management エージェントの問題をトラブルシューティングする方法を説明します。
+title: Azure Update Management での Linux Hybrid Runbook Worker の正常性について理解する
+description: Update Management をサポートする Linux の Hybrid Runbook Worker に関する問題をトラブルシューティングする方法について説明します。
 services: automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: c37d8be8862e75a6520ccefe4b9df93dd993b2a8
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 924c2fd176b5b8e45352d616d226f484e814450d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477116"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849261"
 ---
-# <a name="understand-the-linux-agent-check-results-in-update-management"></a>Update Management での Linux エージェントのチェック結果について
+# <a name="understand-the-linux-hybrid-runbook-worker-health-in-update-management"></a>Update Management での Linux Hybrid Runbook Worker の正常性について理解する
 
-Update Management でコンピューターに**準備完了**が表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Worker エージェントの正常性を検査して背後にある問題を判別することができます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
+Update Management でマシンに**準備完了**が表示されない理由は多数存在する可能性があります。 Update Management では、Hybrid Runbook Worker エージェントの正常性を検査して、背後にある問題を特定できます。 この記事では、Azure portal から Azure マシンを対象として、また、[オフラインのシナリオ](#troubleshoot-offline)で Azure 以外のマシンを対象としてトラブルシューティング ツールを実行する方法について説明します。
 
 次の一覧は、マシンが取り得る 3 つの準備状態です。
 
-* **Ready (準備完了)** - Update エージェントがデプロイされ、最後に表示されてから 1 時間以内である。
-* **Disconnected (切断)** -  Update エージェントがデプロイされ、最後に表示されてから 1 時間以上になった。
-* **Not configured (未構成)** - Update エージェントが見つからないか、オンボードを終了していない。
+* **準備完了** - Hybrid Runbook Worker がデプロイされ、最後に表示されてからの経過時間が 1 時間未満である。
+* **切断** -  Hybrid Runbook Worker がデプロイされ、最後に表示されてからの経過時間が 1 時間以上である。
+* **未構成** - Hybrid Runbook Worker が見つからないか、オンボードが終了していない。
 
 > [!NOTE]
 > Azure portal に表示される内容とマシンの現在の状態の間で、わずかに遅延が発生する可能性があります。
@@ -38,7 +38,7 @@ Azure マシンの場合は、ポータルの **[Update エージェントの準
 > [!NOTE]
 > 検査を行うには VM が実行中である必要があります。 VM が実行されていない場合、 **[VM の開始]** ボタンが表示されます。
 
-**Troubleshoot Update Agent (Update エージェントのトラブルシューティング)** ページで **[チェックの実行]** をクリックすると、トラブルシューティング ツールが開始します。 トラブルシューティング ツールでは [[コマンドの実行]](../../virtual-machines/linux/run-command.md) を使ってマシンに対してスクリプトを実行し、エージェントの依存関係を検証します。 トラブルシューティング ツールの実行が完了すると、チェック結果が返されます。
+**Troubleshoot Update Agent (Update エージェントのトラブルシューティング)** ページで **[チェックの実行]** をクリックすると、トラブルシューティング ツールが開始します。 トラブルシューティング ツールは、[[実行コマンド]](../../virtual-machines/linux/run-command.md) を使用してマシンでスクリプトを実行し、依存関係を検証します。 トラブルシューティング ツールの実行が完了すると、チェック結果が返されます。
 
 ![トラブルシューティング ページ](../media/update-agent-issues-linux/troubleshoot-page.png)
 
@@ -50,7 +50,7 @@ Azure マシンの場合は、ポータルの **[Update エージェントの準
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-OS チェックでは、Hybrid Runbook Worker が次のいずれかのオペレーティング システムを実行しているかどうかを検証します。
+オペレーティング システム チェックでは、Hybrid Runbook Worker が次のいずれかのオペレーティング システムを実行しているかどうかが検証されます。
 
 |オペレーティング システム  |メモ  |
 |---------|---------|
@@ -61,14 +61,14 @@ OS チェックでは、Hybrid Runbook Worker が次のいずれかのオペレ�
 
 ## <a name="monitoring-agent-service-health-checks"></a>監視エージェント サービスの正常性チェック
 
-### <a name="oms-agent"></a>OMS エージェント
+### <a name="log-analytics-agent"></a>Log Analytics エージェント
 
-このチェックでは、OMS エージェント for Linux がインストールされていることが確認されます。 インストールする方法については、「[Linux 用エージェントのインストール](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
+このチェックでは、Linux 用 Log Analytics エージェントがインストールされているかが確認されます。 インストールする方法については、「[Linux 用エージェントのインストール](../../azure-monitor/learn/quick-collect-linux-computer.md#install-the-agent-for-linux
 )」をご覧ください。
 
-### <a name="oms-agent-status"></a>OMS エージェントの状態
+### <a name="log-analytics-agent-status"></a>Log Analytics エージェントの状態
 
-このチェックでは、OMS エージェント for Linux が実行されていることが確認されます。 このエージェントが実行されていない場合は、次のコマンドを実行してその再起動を試みることができます。 エージェントのトラブルシューティングの詳細については、[Linux Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md#linux)に関するページを参照してください。
+このチェックでは、Linux 用 Log Analytics エージェントが実行されているかが確認されます。 このエージェントが実行されていない場合は、次のコマンドを実行してその再起動を試みることができます。 エージェントのトラブルシューティングの詳細については、[Linux Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md#linux)に関するページを参照してください。
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -80,7 +80,7 @@ sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker
 
-このチェックでは、OMS エージェント for Linux に Hybrid Runbook Worker パッケージが含まれているかどうかが確認されます。 Update Management が動作するにはこのパッケージが必要です。
+このチェックでは、Linux 用 Log Analytics エージェントに Hybrid Runbook Worker パッケージが含まれているかどうかが確認されます。 Update Management が動作するにはこのパッケージが必要です。
 
 ### <a name="hybrid-runbook-worker-status"></a>Hybrid Runbook Worker の状態
 
@@ -100,7 +100,7 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 
 ### <a name="registration-endpoint"></a>登録エンドポイント
 
-このチェックでは、エージェントがエージェント サービスと正しく通信できるかどうかを判別します。
+このチェックでは、Hybrid Runbook Worker が Azure Automation および Log Analytics ワークスペースと正しく通信できるかどうかが確認されます。
 
 Hybrid Runbook Worker エージェントが登録エンドポイントと通信できるように、プロキシとファイアウォールが構成されている必要があります。 アドレスと開くポートの一覧については、[Hybrid Worker 用のネットワーク計画](../automation-hybrid-runbook-worker.md#network-planning)を参照してください
 
@@ -179,5 +179,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>次の手順
 
-Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください
-
+Hybrid Runbook Worker のその他の問題をトラブルシューティングする方法については、「[Hybrid Runbook Worker のトラブルシューティング](hybrid-runbook-worker.md)」を参照してください。

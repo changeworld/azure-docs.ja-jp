@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: c8aa3fb124420c933e17b0e9f7e52b7f114a7f61
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012905"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454419"
 ---
 # <a name="access-and-customize-developer-portal"></a>開発者ポータルへのアクセスとそのカスタマイズ
 
@@ -35,10 +35,6 @@ ms.locfileid: "74012905"
 開発者ポータルの詳細については、「[Azure API Management 開発者ポータルの概要](api-management-howto-developer-portal.md)」を参照してください。
 
 ![API Management 開発者ポータル - 管理者モード](media/api-management-howto-developer-portal-customize/cover.png)
-
-> [!WARNING]
-> 開発者ポータルは、現在 API Management サービスにロールアウト中です。
-> サービスが新しく作成したものである場合や、Developer レベルのサービスの場合は、最新バージョンが既に存在している必要があります。 そうではない場合、問題が発生する可能性があります (たとえば、発行機能を使用する場合)。 機能のロールアウトは、2019 年 11 月 22 日の金曜日までに完了する予定です。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -115,13 +111,16 @@ ms.locfileid: "74012905"
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 
-## <a name="publish-the-portal"></a>ポータルを発行する
+## <a name="publish"> </a>ポータルを発行する
 
 ポータルとその最新の変更を訪問者が利用できるようにするには、発行する必要があります。
 
 1. **[保存]** アイコンをクリックして、変更を確実に保存します。
 1. メニューの **[操作]** セクションで、 **[Publish website]\(Web サイトの発行\)** をクリックします。 この操作には数分かかることがあります。  
     ![ポータルを発行する](media/api-management-howto-developer-portal-customize/publish-portal.png)
+
+> [!NOTE]
+> ポータルは、API Management サービスの構成が変更された後 (カスタム ドメインの割り当て、ID プロバイダーの更新、委任の設定、サインイン条件や製品の使用条件の指定など)、再発行される必要があります。
 
 ## <a name="visit-the-published-portal"></a>発行されたポータルにアクセスする
 

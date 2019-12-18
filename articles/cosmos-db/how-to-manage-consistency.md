@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB で一貫性を管理する方法について
-description: Azure Cosmos DB で一貫性を管理する方法について
+description: Azure portal、.Net SDK、Java SDK など各種の SDK を使用して、Azure Cosmos DB に一貫性レベルを構成、管理する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: bc5554e2d56987e969894ba57052d548e1499938
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 46c4c4afe737fd11c2e711a23a3355f48dbd6231
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093303"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872079"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB で一貫性レベルを管理する
 

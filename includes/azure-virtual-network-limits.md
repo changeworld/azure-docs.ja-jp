@@ -5,15 +5,15 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 06/25/2019
+ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: a37280fddf34221a9d08501ef55c6b069cd877a4
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 2596351a0db921276ad74c27e30a8e2af93f2f36
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70242703"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980433"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>ネットワークの制限 - Azure Resource Manager 次の制限は、サブスクリプションごとにリージョン単位で **Azure Resource Manager** デプロイ モデルを通して管理されるネットワーク リソースにのみ適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
@@ -25,13 +25,14 @@ ms.locfileid: "70242703"
 | 仮想ネットワーク |1,000 |
 | 仮想ネットワークあたりのサブネット数 |3,000 |
 | 仮想ネットワークあたりの VNet ピアリング |500 |
+| [仮想ネットワークあたりの仮想ネットワーク ゲートウェイ (VPN ゲートウェイ)](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |30 |
 | 仮想ネットワークあたりの DNS サーバー数 |20 |
 | 仮想ネットワークごとのプライベート IP アドレス |65,536 |
 | ネットワーク インターフェイスごとのプライベート IP アドレス |256 |
 | 仮想マシンごとのプライベート IP アドレス |256 |
 | ネットワーク インターフェイスごとのパブリック IP アドレス |256 |
 | 仮想マシンごとのパブリック IP アドレス |256 |
-| 仮想マシンまたはロール インスタンスの NIC ごとの同時 TCP または UDP フロー数 |500,000 |
+| [仮想マシンまたはロール インスタンスの NIC ごとの同時 TCP または UDP フロー数](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500,000 |
 | ネットワーク インターフェイス カード |65,536 |
 | ネットワーク セキュリティ グループ |5,000 |
 | NSG あたりの NSG ルール数 |1,000 |

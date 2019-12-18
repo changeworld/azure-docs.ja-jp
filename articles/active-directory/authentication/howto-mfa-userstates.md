@@ -1,22 +1,22 @@
 ---
-title: Azure Multi-Factor Authentication のユーザーの状態 - Azure Active Directory
-description: Azure Multi-Factor Authentication でユーザーの状態を確認してください。
+title: ユーザーごとの多要素認証 - Azure Active Directory
+description: Azure Multi-Factor Authentication でユーザーの状態を変更することで MFA を有効にします。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2d22c4a7a8b95f5a200518a3c46fc33f55c66a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 46195a0a799f9edabcd8cd5a27e1b79752d03a45
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569862"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964057"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
 
@@ -41,22 +41,28 @@ Azure AD Identity Protection で有効にする - この方法では、Azure AD 
 
 Azure Multi-factor Authentication のユーザー アカウントには、次の 3 つの異なる状態があります。
 
+> [!IMPORTANT]
+> 条件付きアクセス ポリシーを使用して Azure MFA を有効にしても、ユーザーの状態は変更されません。 ユーザーが無効に見えても問題ありません。 条件付きアクセスでは、状態は変更されません。 **組織は、条件付きアクセス ポリシーを使用しているユーザーを有効にしたり、強制したりしないでください。**
+
 | Status | 説明 | 非ブラウザー アプリに影響があるか | ブラウザー アプリに影響があるか | 影響を受ける先進認証 |
-|:---:|:---:|:---:|:--:|:--:|
-| 無効 |新しいユーザーの既定の状態は、Azure MFA に登録されていません。 |いいえ |いいえ |いいえ |
-| 有効 |ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 |No.  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure MFA の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure MFA の登録が必要になります。 |
-| 強制 |ユーザーは、Azure MFA にサインインして Azure MFA に対する登録プロセスを完了しています。 |はい。 アプリはアプリ パスワードを必要とします。 |はい。 ログイン時に Azure MFA が必要です。 | はい。 ログイン時に Azure MFA が必要です。 |
+|:---:| --- |:---:|:--:|:--:|
+| 無効 | 新しいユーザーの既定の状態は、Azure MFA に登録されていません。 | いいえ | いいえ | いいえ |
+| 有効 | ユーザーは Azure MFA にサインインできますが、登録されていません。 次回のサインイン時に登録することを求められます。 | No.  これらは登録プロセスが完了するまで機能し続けます。 | はい。 セッションの有効期限が切れると、Azure MFA の登録が必要になります。| はい。 アクセス トークンの有効期限が切れると、Azure MFA の登録が必要になります。 |
+| 強制 | ユーザーは、Azure MFA にサインインして Azure MFA に対する登録プロセスを完了しています。 | はい。 アプリはアプリ パスワードを必要とします。 | はい。 ログイン時に Azure MFA が必要です。 | はい。 ログイン時に Azure MFA が必要です。 |
 
 ユーザーの状態は、管理者がユーザーをAzure MFA に登録し、ユーザーが登録プロセスを完了したかどうかを反映します。
 
-すべてのユーザーの状態は、 *[無効]* から始まります。 管理者がユーザーを Azure MFA に登録すると、ユーザーの状態は *[有効]* に変わります。 [有効] 状態のときにユーザーがサインインして登録プロセスを完了すると、ユーザーの状態は *[適用]* に変わります。  
+すべてのユーザーの状態は、 *[無効]* から始まります。 管理者がユーザーを Azure MFA に登録すると、ユーザーの状態は *[有効]* に変わります。 [有効] 状態のときにユーザーがサインインして登録プロセスを完了すると、ユーザーの状態は *[適用]* に変わります。
+
+> [!NOTE]
+> 電話や電子メールなどの登録の詳細が既にあるユーザー オブジェクトで MFA を再度有効にする場合には、管理者は Azure portal または PowerShell を使用して MFA を再登録する必要があります。 ユーザーが再登録していない場合、MFA の状態は *有効* から MFA 管理 UI で *強制* に移行されません。
 
 ### <a name="view-the-status-for-a-user"></a>ユーザーの状態を表示する
 
 ユーザーの状態を表示および管理できるページにアクセスするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
-2. **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのユーザー]** に移動します。
+2. *Azure Active Directory* を検索して選択します。 **[ユーザー]**  >  **[すべてのユーザー]** の順に選択します。
 3. **[Multi-Factor Authentication]** を選択します。
    ![Select Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
 4. 新しいページが開き、ユーザーの状態が表示されます。
@@ -97,10 +103,15 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 > [!TIP]
 > 必ず **Connect-MsolService** を使用して接続してください
 
+   ```PowerShell
+   Connect-MsolService
+   ```
+
 この PowerShell スクリプトの例では、個々のユーザーに対して MFA を有効にします。
 
    ```PowerShell
    Import-Module MSOnline
+   Connect-MsolService
    $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
    $st.RelyingParty = "*"
    $st.State = "Enabled"
@@ -176,6 +187,8 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 > [!NOTE]
 > 最近、これに応じてこの動作と上記の PowerShell スクリプトを変更しました。 以前は、このスクリプトにより、MFA メソッドが保存され、MFA が無効化され、メソッドが復元されました。 無効化の既定の動作でメソッドが消去されないため、これは不要になりました。
+>
+> 電話や電子メールなどの登録の詳細が既にあるユーザー オブジェクトで MFA を再度有効にする場合には、管理者は Azure portal または PowerShell を使用して MFA を再登録する必要があります。 ユーザーが再登録していない場合、MFA の状態は *有効* から MFA 管理 UI で *強制* に移行されません。
 
 ## <a name="next-steps"></a>次の手順
 

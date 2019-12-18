@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3312b5ba6f97dc51f5eeff06eeb194e367935e08
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607406"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869529"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
 
@@ -81,10 +81,10 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
 次の手順でコンポーネントがインストールされていることを確認し、エラー メッセージがないか確認します。
 
 1. **[コントロール パネル]**  > 、 **[プログラム]**  > 、 **[プログラムと機能]** の順に選択し、2 つのコンポーネントがインストールされていることを確認します。 **Windows Virtual Desktop Agent** と **Windows Virtual Desktop Agent Boot Loader** がない場合、VM にインストールされていません。
-2. **エクスプローラー**を開き、**C:\Windows\Temp\scriptlogs.log** に移動します。 ファイルがない場合、2 つのコンポーネントをインストールした PowerShell DSC が、指定されたセキュリティ状況の中で実行できなかったことを示します。
-3. ファイル **C:\Windows\Temp\scriptlogs.log** がある場合、それを開き、エラー メッセージがないか確認します。
+2. **エクスプローラー**を開き、**C:\Windows\Temp\ScriptLog.log** に移動します。 ファイルがない場合、2 つのコンポーネントをインストールした PowerShell DSC が、指定されたセキュリティ状況の中で実行できなかったことを示します。
+3. ファイル **C:\Windows\Temp\ScriptLog.log** がある場合、それを開き、エラー メッセージがないか確認します。
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>エラー:Windows Virtual Desktop Agent と Windows Virtual Desktop Agent Boot Loader がありません C:\Windows\Temp\scriptlogs.log もありません
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>エラー:Windows Virtual Desktop Agent と Windows Virtual Desktop Agent Boot Loader がありません C:\Windows\Temp\ScriptLog.log もありません
 
 **原因 1:** Azure Resource Manager テンプレートに入力中に指定された資格情報が間違っているか、アクセス許可が足りません。
 
@@ -98,7 +98,7 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
 - テナント名が正しく、テナントが Windows Virtual Desktop に存在することを確認します。
 - アカウントに少なくとも RDS 共同作成者のアクセス許可が与えられていることを確認します。
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>エラー:認証失敗、C:\Windows\Temp\scriptlogs.log にエラー
+### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>エラー:認証失敗、C:\Windows\Temp\ScriptLog.log にエラー
 
 **原因:** PowerShell DSC は実行できましたが、Windows Virtual Desktop に接続できませんでした。
 
@@ -333,7 +333,7 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 
 ### <a name="version-1903"></a>バージョン 1903
 
-バージョン番号が "1903" の場合は、[KB4517211 更新プログラム](https://support.microsoft.com/help/4517211)をインストールします。
+Azure ギャラリーから、最新バージョンの Windows 10 バージョン 1903 イメージを使用して、ホスト オペレーティング システムを再デプロイします。
 
 ## <a name="next-steps"></a>次の手順
 

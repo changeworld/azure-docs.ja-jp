@@ -1,18 +1,18 @@
 ---
-title: Hyper-V の評価と移行に関する Azure Migrate サポート マトリックス
-description: Azure Migrate サービスを使用した Hyper-V の評価と移行に関する設定と制限について、要点を説明します。
+title: Azure Migrate での Hyper-V の評価と移行のサポート
+description: Azure Migrate を使用した Hyper-V の評価と移行のサポートについて説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: dd100e2390cdd2731df498379e376bde4cf2b87d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6562d3f15d080a3bbc54a9985c12eae5908a9980
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498693"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186656"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V の評価と移行のサポート マトリックス
 

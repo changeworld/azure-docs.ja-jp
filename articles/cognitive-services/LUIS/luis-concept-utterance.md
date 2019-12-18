@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486629"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280809"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>LUIS アプリに対して良い発話を理解する
 
@@ -60,17 +60,17 @@ LUIS モデルに[発話の例を追加する](luis-how-to-add-example-utterance
 |コンピューターを手に入れたいのですが、どうすればよいですか?|
 |いつコンピューターを入手できますか?| 
 
-ここでのコア用語 "コンピューター" は全部同じです。 デスクトップ コンピューター、ラップトップ、ワークステーション、マシンなどの代替を使用します。 LUIS はコンテキストからシノニムをインテリジェントに推論しますが、それでもトレーニング用の発話を作成するときは、変更することをお勧めします。
+ここでのコア用語 "コンピューター" は全部同じです。 デスクトップ コンピューター、ラップトップ、ワークステーション、マシンなどの代替を使用します。 LUIS はコンテキストからシノニムをインテリジェントに推論できますが、それでもトレーニング用の発話を作成するときは、常に変更することをお勧めします。
 
 ## <a name="example-utterances-in-each-intent"></a>各意図での発話の例
 
-意図ごとに少なくとも 15 個の発話の例が必要です。 発話の例がない意図がある場合、LUIS をトレーニングできません。 意図の発話の例が 1 つまたは非常に少ない場合、LUIS は意図を正確に予測できません。 
+意図ごとに少なくとも 15 個の発話の例が必要です。 発話の例がない意図がある場合、LUIS をトレーニングできません。 意図の発話の例が 1 つまたは非常に少ない場合、LUIS は意図を正確に予測できないことがあります。 
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>作成イテレーションごとに 15 個の発話からなる小さいグループを追加する
 
 モデルの各イテレーションでは、大量の発話を追加しないようにします。 15 個の発話を追加します。 もう一度[トレーニング](luis-how-to-train.md)し、[発行](luis-how-to-publish-app.md)し、[テスト](luis-interactive-test.md)します。  
 
-LUIS は、LUIS モデルの作成者によって慎重に選択された発話で有効なモデルを構築します。 追加する発話が多すぎると、混乱が発生するので役に立ちません。  
+LUIS は、LUIS モデルの作成者によって慎重に選択された発話で有効なモデルを構築します。 追加する発話が多すぎると、混乱が発生するので役に立ちません。
 
 少数の発話で開始し、[エンドポイント発話を確認](luis-how-to-review-endpoint-utterances.md)して意図の予測とエンティティの抽出が正しいことを確認することをお勧めします。
 
@@ -112,7 +112,7 @@ LUIS JSON アプリ ファイルに対して、分音記号または句読点の
 
 既定では、句読点を正規化しない場合、LUIS で句読点は無視されません。これは、クライアント アプリケーションによっては、句読点が重要視されるものがあるためです。 どちらの形式でも同じ相対スコアが返されるように、発話の例では必ず、句読点があるケースとないケースの両方を使用してください。 
 
-モデルが[発話の例](luis-concept-utterance.md) (句読点がある場合とない場合) か、または[パターン](luis-concept-patterns.md) (特殊な構文 `I am applying for the {Job} position[.]` を使用して句読点を簡単に無視できる場合) のどちらかで句読点を処理することを確認してください。
+モデルが発話の例 (句読点がある場合とない場合) か、または[パターン](luis-concept-patterns.md) (特殊な構文 `I am applying for the {Job} position[.]` を使用して句読点を簡単に無視できる場合) のどちらかで句読点を処理することを確認してください。
 
 クライアント アプリケーションで句読点が特別な意味を持たない場合は、句読点を正規化して[句読点を無視](#utterance-normalization)することを検討してください。 
 

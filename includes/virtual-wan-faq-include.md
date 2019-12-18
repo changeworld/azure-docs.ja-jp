@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0ba69715998f110d88015bdba2fbf340a6b64089
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491627"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829021"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 仮想ネットワーク ゲートウェイ (VPN ゲートウェイ) と Azure Virtual WAN VPN ゲートウェイの違いは何ですか。
 
@@ -36,8 +36,6 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 No. Azure の IKEv2/IKEv1 IPsec サポートのための要件に準拠する、任意の VPN 対応デバイスを使用できます。
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Virtual WAN パートナーはどのように Azure Virtual WAN との接続を自動化しますか。
-
-通常、ソフトウェア定義の接続ソリューションでは、コントローラーまたはデバイス プロビジョニング センターを使用してブランチ デバイスを管理します。 コントローラーは、Azure API を使用して、Azure Virtual WAN への接続を自動化できます。 詳細については、Virtual WAN パートナーの自動化に関するページを参照してください。
 
 通常、ソフトウェア定義の接続ソリューションでは、コントローラーまたはデバイス プロビジョニング センターを使用してブランチ デバイスを管理します。 コントローラーは、Azure API を使用して、Azure Virtual WAN への接続を自動化できます。 自動化には、支店情報のアップロードや、Azure の構成のダウンロード、Azure 仮想ハブに対する IPsec トンネルの設定、支店デバイスから Azure Virtual WAN への接続の自動設定が含まれます。 何百もの支店が存在する場合は、Virtual WAN CPE パートナーを使用して接続するのが簡単です。オンボーディング エクスペリエンスにより、大規模な IPsec 接続の設定、構成、管理が不要となるためです。 詳細については、「[Virtual WAN partner automation](../articles/virtual-wan/virtual-wan-configure-automation-providers.md)」 (Virtual WAN パートナーの自動化) を参照してください。
 
@@ -115,11 +113,13 @@ No. 仮想ハブに接続されている場合、スポーク VNet に仮想ネ�
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>仮想ハブに接続されているスポーク VNet は相互に通信できますか。
 
-はい。 スポーク VNet は、仮想ネットワーク ピアリングを介して直接通信できます。 詳細については、「[仮想ネットワーク ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)」を参照してください。 ハブを通じて推移的に通信する VNet もサポートされます。
+はい。 Standard Virtual WAN では、Vnet が接続されている Virtual WAN ハブを介して、Vnet 間の推移的な接続がサポートされています。 Virtual WAN の用語では、これらのパスを、VNet が単一のリージョン内の Virtual Wan Hub に接続されている場合は "ローカル Virtual WAN VNet 転送" と呼び、VNet が 2 つ以上のリージョンにまたがる複数の Virtual WAN Hub を通じて接続されている場合は "グローバル Virtual WAN VNet 転送" と呼びます。 VNet 転送では、パブリック プレビュー期間中、最大 3 Gbps のスループットがサポートされます。 グローバル転送が GA になると、スループットが拡張されます。   
+
+一部のシナリオでは、ローカルまたはグローバルの Virtual WAN VNet 転送の他に、[仮想ネットワーク ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)を使用してスポーク Vnet を相互に直接ピアリングすることもできます。 この場合、Vnet ピアリングは、Virtual WAN ハブを介した推移的な接続よりも優先されます。 
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Azure Virtual WAN への支店接続とは
 
-支店デバイスから Azure Virtual WAN への接続では、最大で 4 つのリンクがサポートされます。 リンクとは、支店の場所 (ATT、Verizon など) における物理接続リンクです。 それぞれのリンク接続は、2 つのアクティブ/アクティブ IPsec トンネルで構成されます。
+支店デバイスから Azure Virtual WAN への接続では、最大で 4 つのリンクがサポートされます。 リンクは、支店の場所における物理接続リンクです (ATT、Verizon など)。 それぞれのリンク接続は、2 つのアクティブ/アクティブ IPsec トンネルで構成されます。
 
 ### <a name="is-branch-to-branch-connectivity-allowed-in-virtual-wan"></a>Virtual WAN では、支店間接続を行うことができますか?
 

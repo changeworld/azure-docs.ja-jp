@@ -1,5 +1,5 @@
 ---
-title: Swagger ドキュメント - Speech Service
+title: Swagger ドキュメント - 音声サービス
 titleSuffix: Azure Cognitive Services
 description: Swagger ドキュメントを使用して、さまざまなプログラミング言語の SDK を自動生成できます。 Microsoft のサービスの操作はすべて Swagger によってサポートされています
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: reference
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 232435a424d2461bce4598356a986473cb1d3644
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dd9ac9654f916653af974e816485630423466ae5
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552575"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815431"
 ---
 # <a name="swagger-documentation"></a>Swagger ドキュメント
 
-Speech Services では、データのインポート、モデルの作成、モデルの精度のテスト、カスタム エンドポイントの作成、文字起こしのキューへのバッチ配置、およびサブスクリプションの管理に使用されるいくつかの REST API を操作するための Swagger 仕様を提供しています。 Custom Speech ポータルを介して利用できる操作のほとんどは、これらの API を使用してプログラムによって実行できます。
+音声サービスでは、データのインポート、モデルの作成、モデルの精度のテスト、カスタム エンドポイントの作成、文字起こしのキューへのバッチ配置、およびサブスクリプションの管理に使用されるいくつかの REST API を操作するための Swagger 仕様を提供しています。 Custom Speech ポータルを介して利用できる操作のほとんどは、これらの API を使用してプログラムによって実行できます。
 
 > [!NOTE]
 > 音声変換とテキスト読み上げの両方の操作がサポートされており、REST API として利用可能で、Swagger 仕様に記載されています。
@@ -28,15 +28,15 @@ Speech Services では、データのインポート、モデルの作成、モ�
 
 [Swagger 仕様](https://cris.ai/swagger/ui/index)には、さまざまなパスをすばやくテストできるオプションが用意されています。 ただし、すべてのパスのコードを生成し、今後のソリューションの基盤にできる呼び出しの 1 つのライブラリを作成することが望ましい場合があります。 Python ライブラリを生成するプロセスを見てみましょう。
 
-ご利用の Speech Service サブスクリプションと同じリージョンに Swagger を設定する必要があります。 Azure portal 内のご利用の Speech Service リソースの下でご利用のリージョンを確認できます。 サポートされているリージョンの完全な一覧については、[リージョン](regions.md)に関するページをご覧ください。
+ご利用の音声サービス サブスクリプションと同じリージョンに Swagger を設定する必要があります。 Azure portal 内のご利用の音声サービス リソースの下でご利用のリージョンを確認できます。 サポートされているリージョンの完全な一覧については、[リージョン](regions.md)に関するページをご覧ください。
 
 1. [https://resources.azure.com](https://editor.swagger.io ) に移動します
 2. **[File]\(ファイル\)** 、 **[Import]\(インポート\)** の順にクリックします
-3. ご利用の Speech Service サブスクリプションのリージョンを含む Swagger URL を入力します `https://<your-region>.cris.ai/docs/v2.0/swagger`
+3. ご利用の音声サービス サブスクリプションのリージョンを含む Swagger URL を入力します `https://<your-region>.cris.ai/docs/v2.0/swagger`
 4. **[Generate Client]\(クライアントの生成\)** をクリックし、[Python] を選択します
 5. クライアント ライブラリを保存する
 
-生成した Python ライブラリは、[GitHub 上の Speech Services サンプル](https://aka.ms/csspeech/samples)で使用できます。
+生成した Python ライブラリは、[GitHub 上の音声サービス サンプル](https://aka.ms/csspeech/samples)で使用できます。
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
@@ -46,5 +46,5 @@ Speech Services では、データのインポート、モデルの作成、モ�
 
 ## <a name="next-steps"></a>次の手順
 
-* [GitHub 上の Speech Services サンプル](https://aka.ms/csspeech/samples)
-* [Speech Services のサブスクリプション キーを無料で取得する](get-started.md)
+* [GitHub 上の音声サービス サンプル](https://aka.ms/csspeech/samples)。
+* [Speech サービスのサブスクリプション キーを無料で取得する](get-started.md)

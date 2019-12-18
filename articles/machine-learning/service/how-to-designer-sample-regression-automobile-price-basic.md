@@ -1,7 +1,7 @@
 ---
-title: 'デザイナー: 価格を予測する (回帰)'
+title: 'デザイナー: 車両価格の予測 (基本) の例'
 titleSuffix: Azure Machine Learning
-description: コードを 1 行も書くことなく、自動車の価格を予測する機械学習モデルを構築する方法について説明します。
+description: Azure Machine Learning デザイナーを使用して、1 行のコードも書かずに、自動車の価格を予測する ML 回帰モデルを構築します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 0cdf2d0b632368a5a5bc24e092783c979f7c26bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 4dfcc76c31452d93d30cd9f2e4c649924b68c203
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647166"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213899"
 ---
-# <a name="sample-1---regression-predict-price"></a>サンプル 1 - 回帰: 価格を予測する
+# <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーで回帰を使用して自動車の価格を予測する
+
+**デザイナー (プレビュー) サンプル 1**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 コードを 1 行も書くことなく、デザイナー (プレビュー) を使用して、機械学習の回帰モデルを構築する方法について説明します。
@@ -33,7 +36,7 @@ ms.locfileid: "73647166"
 
 パイプラインの最終的な完成したグラフを次に示します。 この記事では、ご自身で同様の決定を下すことができるように、ここではすべてのモジュールの理論的な根拠を提示します。
 
-![パイプラインのグラフ](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
+![パイプラインのグラフ](media/how-to-designer-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,7 +55,7 @@ ms.locfileid: "73647166"
 
 **データセット内の列の選択**モジュールを使用して、欠損値が多い正規化された損失を除外します。 次に、 **[Clean Missing Data]\(欠損データのクリーニング\)** を使用して、欠損値がある行を削除します。 これにより、クリーンなトレーニング データセットを作成できます。
 
-![データの前処理](./media/how-to-ui-sample-regression-predict-automobile-price-basic/data-processing.png)
+![データの前処理](./media/how-to-designer-sample-regression-predict-automobile-price-basic/data-processing.png)
 
 ## <a name="train-the-model"></a>モデルをトレーニングする
 
@@ -70,11 +73,11 @@ ms.locfileid: "73647166"
 
 **モデルのスコア付け**は、トレーニングされたモデルを使用してテスト データセットの予測を生成します。 結果を確認するには、 **[Score Model]\(モデルのスコア付け\)** の出力ポートを選択し、 **[Visualize]\(可視化\)** を選択します。
 
-![スコア付けの結果](./media/how-to-ui-sample-regression-predict-automobile-price-basic/score-result.png)
+![スコア付けの結果](./media/how-to-designer-sample-regression-predict-automobile-price-basic/score-result.png)
 
 そのスコアを**モデルの評価**モジュールに渡して評価メトリックを生成します。 結果を確認するには、 **[Evaluate Model]\(モデルの評価\)** の出力ポートを選択し、 **[Visualize]\(可視化\)** を選択します。
 
-![評価結果](./media/how-to-ui-sample-regression-predict-automobile-price-basic/evaluate-result.png)
+![評価結果](./media/how-to-designer-sample-regression-predict-automobile-price-basic/evaluate-result.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

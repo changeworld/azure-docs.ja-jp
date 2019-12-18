@@ -1,17 +1,17 @@
 ---
-title: クイック スタート:Maven を使用してアプリケーションを起動する - Azure Spring Cloud
-description: Maven を使用してサンプル アプリケーションを起動する
+title: クイックスタート - Azure Spring Cloud の Maven を使用してアプリケーションを起動する
+description: このチュートリアルでは、Maven を使用してサンプル アプリケーションを起動します。
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1a719b878f3e5fbade3adf453ac7d0604ea85077
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 61436b4317e85b67387a75e87c31a1c6cd13d84f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384077"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895406"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>クイック スタート:Maven プラグインを使用して Azure Spring Cloud アプリを起動する
 
@@ -113,3 +113,5 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 > [!div class="nextstepaction"]
 > [Azure Spring Cloud アプリケーションをデプロイ用に準備する](spring-cloud-tutorial-prepare-app-deployment.md)
 > [Azure の Maven プラグインの詳細を確認する](https://github.com/microsoft/azure-maven-plugin)
+
+その他のサンプルを GitHub で入手できます ([Azure Spring Cloud のサンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql))。

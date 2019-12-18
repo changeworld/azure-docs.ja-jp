@@ -1,6 +1,7 @@
 ---
-title: Azure Media Services のストリーミング エンドポイント (配信元) | Microsoft Docs
-description: Azure Media Services では、ストリーミング エンドポイント (配信元) は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信できるダイナミック パッケージおよびストリーミング サービスを表します。
+title: ストリーミング エンドポイント (配信元)
+titleSuffix: Azure Media Services
+description: コンテンツをクライアント プレーヤー アプリまたは CDN (Content Delivery Network) に直接配信するダイナミック パッケージおよびストリーミング サービスであるストリーミング エンドポイント (配信元) について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,45 +12,45 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: cd1dc7b55060e8262b300022f5ffd1b4da5f7922
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: c8901dccb67e91c608e999f823cf7d2e757da08b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350351"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186014"
 ---
-# <a name="streaming-endpoints"></a>ストリーミング エンドポイント 
+# <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services のストリーミング エンドポイント (配信元)
 
-Microsoft Azure Media Services では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリケーションに直接配信できます。 また、**ストリーミング エンドポイント**は、業界最先端の DRM に動的 (Just-In-Time) 暗号化を提供します。
+Microsoft Azure Media Services では、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)は、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できるダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。 さらに、**ストリーミング エンドポイント**は、業界有数の DRM に動的 (Just-In-Time) 暗号化を提供します。
 
-Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定**のストリーミング エンドポイントは削除できません。 このアカウントで追加のストリーミング エンドポイントを作成できます ([クォータと制限](limits-quotas-constraints.md)に関する記事を参照)。 
+Media Services アカウントを作成すると、**既定**のストリーミング エンドポイントが停止状態で作成されます。 **既定の**ストリーミング エンドポイントを削除することはできません。 このアカウントでさらに多くのストリーミング エンドポイントを作成できます ([クォータと制限](limits-quotas-constraints.md)に関するページを参照)。
 
 > [!NOTE]
-> ビデオのストリーミングを開始するには、ビデオをストリーミングする**ストリーミング エンドポイント**を開始する必要があります。 
->  
-> ストリーミング エンドポイントが実行状態の場合のみ課金されます。
+> ビデオのストリーミングを開始するには、ビデオをストリーミングする**ストリーミング エンドポイント**を開始する必要があります。
+>
+> ストリーミング エンドポイントが実行状態にある場合にのみ課金されます。
 
 ## <a name="naming-convention"></a>命名規則
 
-ストリーミング URL のホスト名の形式は `{servicename}-{accountname}-{regionname}.streaming.media.azure.net` です。ここで、`servicename` はストリーミング エンドポイントの名前またはライブ イベントの名前になります。 
+ストリーミング URL のホスト名の形式は `{servicename}-{accountname}-{regionname}.streaming.media.azure.net` です。ここで、`servicename` はストリーミング エンドポイントの名前またはライブ イベントの名前になります。
 
-既定のストリーミング エンドポイントを使用する場合、`servicename` が省略され、URL は `{accountname}-{regionname}.streaming.azure.net` になります。 
+既定のストリーミング エンドポイントを使用する場合、`servicename` が省略され、URL は `{accountname}-{regionname}.streaming.azure.net` になります。
 
 ### <a name="limitations"></a>制限事項
 
 * ストリーミング エンドポイント名の最大値は 24 文字です。
 * 名前は、次の [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) パターン `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` に従う必要があります。
 
-## <a name="types"></a>型  
+## <a name="types"></a>型
 
-**ストリーミング エンドポイント**には、**Standard** (プレビュー) と **Premium** の 2 つの型があります。 型は、ストリーミング エンドポイントに割り当てられたスケール ユニットの数 (`scaleUnits`) によって定義されます。 
+**ストリーミング エンドポイント**には、**Standard** (プレビュー) と **Premium** の 2 つの型があります。 型は、ストリーミング エンドポイントに割り当てられたスケール ユニットの数 (`scaleUnits`) によって定義されます。
 
-次の表で、型について説明します。  
+次の表で、型について説明します。
 
 |種類|スケール ユニット|説明|
 |--------|--------|--------|  
-|**Standard**|0|既定のストリーミング エンドポイントは **Standard** 型ですが、`scaleUnits` を調整することで Premium 型に変更できます。|
-|**Premium**|>0|**Premium** ストリーミング エンドポイントは専用のスケーラブルな帯域幅の容量を提供するため、高度なワークロードに適しています。 **Premium** 型には、`scaleUnits` (ストリーミング ユニット) を調整することで移行します。 `scaleUnits` は 200 Mbps 単位で購入できる専用の送信容量を提供します。 **Premium** 型を使用するときは、有効になっている各ユニットがアプリケーションに追加の帯域幅容量を提供します。 |
+|**Standard**|0|既定のストリーミング エンドポイントは **Standard** 型です。これは、`scaleUnits` を調整することによって Premium 型に変更できます。|
+|**Premium**|>0|**Premium** ストリーミング エンドポイントは高度なワークロードに適しており、専用のスケーラブルな帯域幅容量を提供します。 **Premium** 型には、`scaleUnits` (ストリーミング ユニット) を調整することで移行します。 `scaleUnits` は 200 Mbps 単位で購入できる専用の送信容量を提供します。 **Premium** 型を使用している場合は、有効になっている各ユニットがアプリに追加の帯域幅容量を提供します。 |
 
 > [!NOTE]
 > 多数のインターネットの対象ユーザーにコンテンツを配信することを検討しているお客様には、ストリーミング エンドポイントで CDN を有効にすることをお勧めします。
@@ -61,103 +62,105 @@ SLA については、[価格と SLA](https://azure.microsoft.com/pricing/detail
 機能|Standard|Premium
 ---|---|---
 スループット |最大 600 Mbps であり、CDN を使用した場合に実効スループットが大幅に向上します。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN を使用した場合に実効スループットが大幅に向上します。
-CDN|Azure CDN、サード パーティ製 CDN、または CDN なし。|Azure CDN、サード パーティ製 CDN、または CDN なし。
+CDN|Azure CDN、サードパーティ CDN、または CDN なし。|Azure CDN、サードパーティ CDN、または CDN なし。
 課金は日割り計算| 毎日|毎日
 動的な暗号化|はい|はい
 動的パッケージ|はい|はい
 スケール|対象スループットまで自動スケールアップ。|追加の SU
-IP フィルタリング/G20/カスタム ホスト  <sup>1</sup>|はい|はい
+IP フィルタリング/G20/カスタム ホスト <sup>1</sup>|はい|はい
 プログレッシブ ダウンロード|はい|はい
 推奨使用量 |大半のストリーミング シナリオに推奨。|プロフェッショナルな使用量。
 
-<sup>1</sup> エンドポイントで CDN が有効でない場合にのみ、ストリーミング エンドポイントで直接使用します。<br/>
+<sup>1</sup> エンドポイントで CDN が有効になっていない場合にのみ、ストリーミング エンドポイントで直接使用されます。<br/>
 
-## <a name="properties"></a>properties 
+## <a name="properties"></a>properties
 
-このセクションでは、ストリーミング エンドポイントの一部のプロパティについて詳しく説明します。 新しいストリーミング エンドポイントを作成する方法の例と全プロパティの説明については、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)に関する記事をご覧ください。 
+このセクションでは、ストリーミング エンドポイントの一部のプロパティについて詳しく説明します。 新しいストリーミング エンドポイントを作成する方法の例と全プロパティの説明については、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)に関する記事をご覧ください。
 
-- `accessControl` - このストリーミング エンドポイントのセキュリティ設定(このエンドポイントに接続することが許可された Akamai 署名認証キーと IP アドレス) 構成するために使用されます。<br />このプロパティは、`cdnEnabled` が false に設定されているときにのみ設定できます。
-- `cdnEnabled` - このストリーミング エンドポイントに対して Azure CDN 統合が有効になっているかどうかを示します (既定では無効)。 `cdnEnabled` を true に設定した場合、`customHostNames` と `accessControl` の構成が無効になります。
-  
-    すべてのデータ センターが Azure CDN 統合をサポートしているわけではありません。 対象のデータ センターで Azure CDN 統合を利用できるかどうかを確認するには、次の操作を行います。
- 
+- `accessControl`:このストリーミング エンドポイントのセキュリティ設定である、このエンドポイントに接続することを許可された Akamai 署名ヘッダー認証キーと IP アドレスを構成するために使用されます。 このプロパティは、`cdnEnabled` が false に設定されているときにのみ設定できます。
+
+- `cdnEnabled`:このストリーミング エンドポイントに対する Azure CDN 統合が有効になっているかどうかを示します (既定では無効)。 `cdnEnabled` を true に設定した場合、`customHostNames` と `accessControl` の構成が無効になります。
+
+    すべてのデータ センターが Azure CDN 統合をサポートしているわけではありません。 データ センターで Azure CDN 統合を使用できるかどうかを確認するには、次の手順を実行します。
+
   - `cdnEnabled` を true に設定してみます。
-  - \- "Streaming endpoint CdnEnabled property cannot be set to true as CDN capability is not available in the current region"\(現在のリージョンで CDN 機能を利用できないため、ストリーミング エンドポイントの cdnEnabled プロパティを true に設定できません\) というメッセージと共に返された `HTTP Error Code 412` (PreconditionFailed) の結果を確認します。 
+  - 返された結果に "Streaming endpoint CdnEnabled property can't be set to true as CDN capability is not available in the current region (現在のリージョンで CDN 機能を使用できないため、ストリーミング エンドポイントの CdnEnabled プロパティを true に設定できません)" のメッセージと共に `HTTP Error Code 412` (PreconditionFailed) があるかどうかを確認します。
 
-    このエラーが発生した場合、そのデータ センターはサポートされていません。 別のデータ センターをお試しください。
-- `cdnProfile` - `cdnEnabled` が true に設定されている場合は、`cdnProfile` の値を渡すこともできます。 `cdnProfile` は CDN エンドポイントのポイントが作成される、CDN プロファイルの名前です。 既存の cdnProfile を指定するか、新しいものを使用できます。 値が NULL で `cdnEnabled` が true の場合、既定値 "AzureMediaStreamingPlatformCdnProfile" が使用されます。 指定された `cdnProfile` が既に存在する場合、その下にエンドポイントが作成されます。 プロファイルが存在しない場合は、新しいプロファイルが自動的に作成されます。
-- `cdnProvider` - CDN が有効になっている場合は、`cdnProvider` の値を渡すこともできます。 `cdnProvider` は使用されるプロバイダーを制御します。 現時点では、"StandardVerizon"、"PremiumVerizon"、および "StandardAkamai" の 3 つの値がサポートされています。 値が指定されておらず、`cdnEnabled` が true の場合、"StandardVerizon" (既定値) が使用されます。
-- `crossSiteAccessPolicies` - さまざまなクライアントのクロス サイト アクセス ポリシーを指定するために使用します。 詳しくは、[Cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)と「[Making a Service Available Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx)」(ドメインの境界を越えてサービスを利用できるようにする) をご覧ください。<br/>設定は、Smooth Streaming にのみ適用されます。
-- `customHostNames` - カスタム ホスト名に送信されるトラフィックを受け入れるようにストリーミング エンドポイントを構成するために使用します。  このプロパティは Standard と Premium のストリーミング エンドポイントで有効であり、`cdnEnabled`: false のときに設定できます。
-    
-    ドメイン名の所有権は、Media Services によって確認される必要があります。 Media Services は、使用中のドメインに追加されるコンポーネントとして Media Services アカウント ID が含まれる `CName` レコードを要求することで、ドメイン名の所有権を検証します。 例として、ストリーミング エンドポイントのカスタム ホスト名として "sports.contoso.com" が使用されるには、Media Services の検証ホスト名の 1 つにポイントするよう、`<accountId>.contoso.com` のレコードを構成する必要があります。 検証ホスト名は、verifydns.\<mediaservices-dns-zone> で構成されます。 
+    このエラーが表示されている場合、そのデータ センターではサポートされていません。 別のデータ センターを試してください。
+
+- `cdnProfile`:`cdnEnabled` が true に設定されていると、`cdnProfile` の値を渡すこともできます。 `cdnProfile` は CDN エンドポイントのポイントが作成される、CDN プロファイルの名前です。 既存の cdnProfile を指定するか、新しいものを使用できます。 値が NULL で `cdnEnabled` が true の場合、既定値 "AzureMediaStreamingPlatformCdnProfile" が使用されます。 指定された `cdnProfile` が既に存在する場合、その下にエンドポイントが作成されます。 プロファイルが存在しない場合は、新しいプロファイルが自動的に作成されます。
+- `cdnProvider`:CDN が有効になっていると、`cdnProvider` の値を渡すこともできます。 `cdnProvider` は使用されるプロバイダーを制御します。 現時点では、"StandardVerizon"、"PremiumVerizon"、および "StandardAkamai" の 3 つの値がサポートされています。 値が指定されておらず、`cdnEnabled` が true である場合は、"StandardVerizon" (既定値) が使用されます。
+- `crossSiteAccessPolicies`:さまざまなクライアントのクロス サイト アクセス ポリシーを指定するために使用されます。 詳しくは、[Cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)と「[Making a Service Available Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx)」(ドメインの境界を越えてサービスを利用できるようにする) をご覧ください。 設定は、Smooth Streaming にのみ適用されます。
+- `customHostNames`:カスタム ホスト名に転送されたトラフィックを受け入れるようにストリーミング エンドポイントを構成するために使用されます。 このプロパティは Standard と Premium のストリーミング エンドポイントで有効であり、`cdnEnabled`: false のときに設定できます。
+
+    ドメイン名の所有権は、Media Services によって確認される必要があります。 Media Services は、使用中のドメインに追加されるコンポーネントとして Media Services アカウント ID が含まれる `CName` レコードを要求することで、ドメイン名の所有権を検証します。 例として、ストリーミング エンドポイントのカスタム ホスト名として "sports.contoso.com" が使用されるには、Media Services の検証ホスト名の 1 つにポイントするよう、`<accountId>.contoso.com` のレコードを構成する必要があります。 検証ホスト名は、verifydns.\<mediaservices-dns-zone> で構成されます。
 
     さまざまな Azure リージョンでのレコードの検証で使用されることが想定される DNS ゾーンを次に示します。
   
   - 北米、ヨーロッパ、シンガポール、香港特別行政区、日本:
-      
+
     - `media.azure.net`
     - `verifydns.media.azure.net`
-      
+
   - 中国:
-        
+
     - `mediaservices.chinacloudapi.cn`
     - `verifydns.mediaservices.chinacloudapi.cn`
-        
-    たとえば、"945a4c4e-28ea-45cd-8ccb-a519f6b700ad.contoso.com" を "verifydns.media.azure.net" にマップする `CName` レコードは、Media Services ID 945a4c4e-28ea-45cd-8ccb-a519f6b700ad が contoso.com ドメインの所有権を持っていることを証明することによって、contoso.com の下の任意の名前を、そのアカウントの下のストリーミング エンドポイントのカスタム ホスト名として使用できるようになります。 メディア サービス ID の値は、[Azure portal](https://portal.azure.com/) に移動してお使いのメディア サービス アカウントを選択することで確認できます。 **アカウント ID** はページの右上に表示されます。
-        
-    `CName` レコードの適切な検証なしにカスタム ホスト名を設定しようとした場合、DNS の応答は失敗し、その後しばらくの間キャッシュされます。 適切なレコードが配置されると、キャッシュされた応答が再検証されるまで少し時間がかかる場合があります。 カスタム ドメインの DNS プロバイダーによっては、レコードの再検証に数分から数時間かかることがあります。
-        
-    `<accountId>.<parent domain>` を `verifydns.<mediaservices-dns-zone>` にマップする `CName` に加え、カスタム ホスト名 (例: `sports.contoso.com`) を Media Services ストリーミング エンドポイントのホスト名 (例: `amstest-usea.streaming.media.azure.net`) にマップする別の `CName` も作成する必要があります。
- 
-    > [!NOTE]
-    > 同じデータ センターにあるストリーミング エンドポイントで、同じカスタム ホスト名を共有することはできません。
 
-    現在、Media Services ではカスタム ドメインを使用した SSL はサポートされていません。 
-    
+    たとえば、"945a4c4e-28ea-45cd-8ccb-a519f6b700ad.contoso.com" を "verifydns.media.azure.net" にマップする `CName` レコードは、Media Services ID 945a4c4e-28ea-45cd-8ccb-a519f6b700ad が contoso.com ドメインの所有権を持っていることを証明することによって、contoso.com の下の任意の名前を、そのアカウントの下のストリーミング エンドポイントのカスタム ホスト名として使用できるようになります。 メディア サービス ID の値は、[Azure portal](https://portal.azure.com/) に移動してお使いのメディア サービス アカウントを選択することで確認できます。 **アカウント ID** はページの右上に表示されます。
+
+    `CName` レコードの適切な検証なしでカスタム ホスト名を設定しようとした場合、DNS 応答は失敗し、その後しばらくの間キャッシュされます。 適切なレコードが配置されると、キャッシュされた応答が再検証されるまで少し時間がかかる場合があります。 カスタム ドメインの DNS プロバイダーによっては、レコードの再検証に数分から 1 時間ほどかかります。
+
+    `<accountId>.<parent domain>` を `verifydns.<mediaservices-dns-zone>` にマップする `CName` に加え、カスタム ホスト名 (例: `sports.contoso.com`) を Media Services ストリーミング エンドポイントのホスト名 (例: `amstest-usea.streaming.media.azure.net`) にマップする別の `CName` も作成する必要があります。
+
+    > [!NOTE]
+    > 同じデータ センターにあるストリーミング エンドポイントが同じカスタム ホスト名を共有することはできません。
+
+    現在、Media Services ではカスタム ドメインを使用した SSL はサポートされていません。
+
 - `maxCacheAge` - メディア フラグメントとオンデマンドのマニフェスト上のストリーミング エンドポイントで設定されている、既定の max-age HTTP キャッシュ コントロール ヘッダーをオーバーライドします。 値は秒単位で設定されます。
 - `resourceState` -
 
-    - Stopped (停止) - ストリーミング エンドポイント作成後の初期状態です。
-    - Starting (起動中) - 実行状態に遷移しています。
-    - Running (実行中) - クライアントにコンテンツをストリーミングできます。
-    - Scaling (スケーリング中) - スケール ユニットを増減中です。
-    - Stopping (停止中) - 停止状態に遷移しています。
-    - Deleting (削除中) - 削除中です。
-    
-- `scaleUnits` - 200 Mbps 単位で購入できる専用の送信容量を提供します。 **Premium** 型に移行する必要がある場合は、`scaleUnits` を調整します。
+    - Stopped (停止済み): 作成後のストリーミング エンドポイントの初期状態
+    - Starting (開始中): 実行中の状態に移行しています
+    - Running (実行中): コンテンツをクライアントにストリーミングできます
+    - Scaling (スケーリング中): スケール ユニットが増加または減少しています
+    - Stopping (停止中): 停止済みの状態に移行しています
+    - Deleting (削除中): 削除されているところです
+
+- `scaleUnits`:200 Mbps の増分で購入できる専用の送信容量を提供します。 **Premium** 型に移行する必要がある場合は、`scaleUnits` を調整します。
 
 ## <a name="working-with-cdn"></a>CDN の操作
 
-CDN はほとんどのケースで有効にしておくことをお勧めします。 ただし、CDN はコンカレンシーに合わせて最適なスケーリングを行うため、最大コンカレンシーが 500 に満たないことが予想される場合は、CDN を無効にすることをお勧めします。
+CDN はほとんどのケースで有効にしておくことをお勧めします。 ただし、CDN はコンカレンシーと共に最適にスケーリングするため、500 ビューアー未満の最大コンカレンシーを予測している場合は CDN を無効にすることをお勧めします。
 
 ### <a name="considerations"></a>考慮事項
 
 * CDN を有効にするかどうかを問わず、ストリーミング エンドポイント `hostname` とストリーミング URL は同じままにします。
-* CDN の有無にかかわらずコンテンツをテストする必要がある場合は、CDN が有効になっていない別のストリーミング エンドポイントを作成できます。
+* CDN の有無にかかわらずコンテンツをテストできる必要がある場合は、CDN が有効になっていない別のストリーミング エンドポイントを作成してください。
 
 ### <a name="detailed-explanation-of-how-caching-works"></a>キャッシュのしくみに関する詳しい説明
 
-CDN を追加するケースに、具体的な帯域幅の値はありません。CDN が有効なストリーミング エンドポイントに必要な帯域幅の量は場合によって変わるためです。 多くはコンテンツの種類、その人気、ビットレート、プロトコルによって変わります。 CDN は要求されたもののみをキャッシュします。 つまり、ビデオ フラグメントがキャッシュされている限り、人気のコンテンツは CDN から直接配信されます。 通常、多くのユーザーがまったく同じものを視聴するライブ コンテンツは、キャッシュされる可能性が高くなります。 人気のコンテンツもあればそうでないものもあるオンデマンドのコンテンツは、やや複雑になる場合があります。 あまり人気のない (視聴者が週に 1 人か 2 人) ビデオ アセットが何百万もあるものの、何千ものユーザーが全員異なるビデオを視聴している場合、CDN はほとんど効力を発揮しません。 このキャッシュ ミスにより、ストリーミング エンドポイントの負荷が高くなります。
- 
-また、アダプティブ ストリーミングの動作も考慮する必要があります。 個々のビデオ フラグメントはそれぞれのエンティティとしてキャッシュされます。 たとえば、ある特定のビデオが初めて視聴され、そのユーザーがあちこち数秒ずつ見てスキップすることを繰り返している場合、そのユーザーが視聴したビデオに関連するビデオ フラグメントのみが CDN にキャッシュされます。 アダプティブ ストリーミングでは通常、5 から 7 の異なるビットレートのビデオがあります。 あるユーザーがあるビットレートで視聴しており、別のユーザーが異なるビットレートで視聴している場合、CDN ではそれぞれ別個にキャッシュされます。 2 人が同じビットレートで視聴していても、異なるプロトコルでストリーミングしている可能性もあります。 各プロトコル (HLS、MPEG-DASH、スムーズ ストリーミング) は別個にキャッシュされます。 つまり、各ビットレートやプロトコルは別個にキャッシュされ、要求されたビデオ フラグメントのみがキャッシュされます。
+CDN が有効になっているストリーミング エンドポイントに必要な帯域幅の量は変動するため、CDN を追加する場合の特定の帯域幅の値はありません。 その多くは、コンテンツの種類、その人気の程度、ビットレート、およびプロトコルによって異なります。 CDN は、要求されたもののみをキャッシュしています。 つまり、ビデオ フラグメントがキャッシュされている限り、人気のコンテンツは CDN から直接配信されます。 通常、多くのユーザーがまったく同じものを視聴するライブ コンテンツは、キャッシュされる可能性が高くなります。 オンデマンド コンテンツは、人気のコンテンツとそうでないコンテンツが混在している可能性があるため、少し厄介な場合があります。 どれも人気のない (1 週間に視聴者が 1 人か 2 人だけ) ビデオ アセットが数百万個存在するが、数千人の視聴者がすべて異なるビデオを視聴している場合、CDN の効率は非常に悪くなります。 このキャッシュ ミスにより、ストリーミング エンドポイントの負荷が高くなります。
+
+また、アダプティブ ストリーミングの動作も考慮する必要があります。 個々のビデオ フラグメントはそれぞれのエンティティとしてキャッシュされます。 たとえば、特定のビデオが初めて視聴されたとします。 視聴者があちこちを数秒だけ視聴してスキップすることを繰り返している場合は、その視聴者が視聴した内容に関連付けられたビデオ フラグメントのみが CDN にキャッシュされます。 アダプティブ ストリーミングでは通常、5 から 7 の異なるビットレートのビデオがあります。 ある視聴者があるビットレートを視聴し、別の視聴者が別のビットレートを視聴している場合は、これらがそれぞれ個別に CDN にキャッシュされます。 2 人が同じビットレートを視聴している場合でも、異なるプロトコル経由でストリーミングしている可能性があります。 各プロトコル (HLS、MPEG-DASH、スムーズ ストリーミング) は別個にキャッシュされます。 つまり、各ビットレートやプロトコルは別個にキャッシュされ、要求されたビデオ フラグメントのみがキャッシュされます。
 
 ### <a name="enable-azure-cdn-integration"></a>Azure CDN 統合を有効にする
 
-CDN を有効にした状態でストリーミング エンドポイントがプロビジョニングされた後、ストリーミング エンドポイントを CDN エンドポイントにマップするための DNS 更新が行われる前に、Media Services に定義されている待機時間があります。
+CDN が有効になった状態でストリーミング エンドポイントがプロビジョニングされた後、ストリーミング エンドポイントを CDN エンドポイントにマップするために DNS の更新が実行される前に、Media Services には定義された待機時間が存在します。
 
-後で CDN を有効/無効にする場合は、ストリーミング エンドポイントを**停止**状態にする必要があります。 Azure CDN 統合が有効になり、すべての CDN POP で変更がアクティブになるまでに、最大で 2 時間かかる場合があります。 ただし、ストリーミング エンドポイントの起動は可能で、ストリーミング エンドポイントから中断なくストリーミングを行うことができます。統合が完了すると、CDN からストリーミングが提供されます。 プロビジョニング期間中はストリーミング エンドポイントが**開始中**の状態になり、パフォーマンスが低下します。
+後で CDN を有効/無効にする場合は、ストリーミング エンドポイントを**停止**状態にする必要があります。 Azure CDN 統合が有効になり、すべての CDN POP で変更がアクティブになるまでに、最大で 2 時間かかる場合があります。 ただし、ストリーミング エンドポイントを開始し、そのストリーミング エンドポイントからの中断なしでストリーミングすることができ、統合が完了するとストリームは CDN から配信されます。 プロビジョニング期間中、ストリーミング エンドポイントは**開始中**の状態になり、パフォーマンスが低下する可能性があります。
 
-Standard ストリーミング エンドポイントが作成されるとき、既定では Standard Verizon を使用して構成されます。 REST API を使用して、Premium Verizon または Standard Akamai プロバイダーを構成することができます。 
+Standard ストリーミング エンドポイントは作成されるとき、既定では Standard Verizon で構成されます。 REST API を使用して、Premium Verizon または Standard Akamai プロバイダーを構成することができます。
 
 CDN 統合は、中国および連邦政府地域を除くすべての Azure データ センターで有効になります。
 
 > [!IMPORTANT]
 > Azure CDN との Azure Media Services 統合は、Standard ストリーミング エンドポイント用の **Azure CDN from Verizon** で実装されます。 Premium ストリーミング エンドポイントは、すべての **Azure CDN 価格レベルとプロバイダー**を使用して構成できます。 Azure CDN 機能の詳細については、「 [CDN の概要](../../cdn/cdn-overview.md)」を参照してください。
 
-### <a name="determine-if-dns-change-has-been-made"></a>DNS の変更が行われたかどうかを確認する
+### <a name="determine-if-dns-change-was-made"></a>DNS の変更が行われたかどうかを確認する
 
-ストリーミング エンドポイントで DNS の変更が行われた (トラフィックが Azure CDN に配信されている) かどうかは、 https://www.digwebinterface.com を使用して確認できます。 その結果に azureedge.net domain の名前が含まれていれば、トラフィックは現在 CDN に配信されています。
+ストリーミング エンドポイントで DNS の変更が行われた (トラフィックが Azure CDN に転送されている) かどうかは、 https://www.digwebinterface.com を使用して確認できます。 その結果に azureedge.net domain の名前が含まれていれば、トラフィックは現在 CDN に配信されています。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの提供、最新情報の入手
 
@@ -166,4 +169,3 @@ CDN 統合は、中国および連邦政府地域を除くすべての Azure デ
 ## <a name="next-steps"></a>次の手順
 
 [このリポジトリ](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)のサンプルは、既定のストリーミング エンドポイントを .NET を使用して開始する方法について示します。
-

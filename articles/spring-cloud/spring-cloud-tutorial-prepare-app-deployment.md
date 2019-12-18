@@ -1,17 +1,17 @@
 ---
-title: Azure Spring Cloud で Spring アプリケーションをデプロイ用に準備する | Microsoft Docs
-description: このクイックスタートでは、Java Spring アプリケーションをデプロイ用に準備します。
+title: チュートリアル - Azure Spring Cloud で Spring アプリケーションをデプロイ用に準備する
+description: このチュートリアルでは、Java Spring アプリケーションをデプロイ用に準備します。
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e112fdc9e6f518e2ea3c72161e8978118cf19335
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721241"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890316"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>チュートリアル:Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
 
@@ -177,3 +177,4 @@ pom.xml の依存関係セクションに `spring-boot-starter-actuator` を含�
 > [!div class="nextstepaction"]
 > [構成サーバーの設定方法を学習する](spring-cloud-tutorial-config-server.md)。
 
+その他のサンプルを GitHub で入手できます ([Azure Spring Cloud のサンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql))。

@@ -5,20 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 7/16/2019
+ms.date: 12/06/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: d4797232a51739238a88576a1fdd95bc62d6afaa
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: a7b6867033e750f476b3d995926f0b670965a5d7
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975320"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875554"
 ---
 | リソース | 既定の制限 |
 | --- | --- |
 | データ スループット |30 Gbps<sup>1</sup> |
-|ルール|10,000 個。すべての規則の種類が結合されます。|
+|ルール|10,000。 すべての規則の種類が結合されます。|
+|パブリック IP アドレスあたりの DNAT の規則|299|
 |AzureFirewallSubnet の最小サイズ |/26|
 |ネットワークおよびアプリケーション ルールのポート範囲|0-64,000。 現在、この制限を緩和するように取り組んでいます。|
 |パブリック IP アドレス|最大 100 (現在、SNAT ポートは、最初の 5 つのパブリック IP アドレスに対してのみ追加されます。)|

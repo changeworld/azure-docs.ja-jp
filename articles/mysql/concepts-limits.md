@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL の制限事項
+title: 制限事項 - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL の制限 (接続数やストレージ エンジンのオプションなど) について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/6/2018
-ms.openlocfilehash: 9088e9ad98633b46dc3a7f0ee9002a0dd9fc5a55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/9/2019
+ms.openlocfilehash: 8b3d6ea46c4a88187b70b520457ad34f7e7f36ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65551891"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975144"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL の制限事項
 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。 MySQL データベース エンジンに適用できる[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)も確認してください。
@@ -19,21 +19,21 @@ ms.locfileid: "65551891"
 ## <a name="maximum-connections"></a>最大接続数
 価格レベルと仮想コアごとの最大接続数は次のとおりです。 
 
-|**価格レベル**|**仮想コア数**| **最大接続数**|
+|**Pricing Tier**|**仮想コア数**| **最大接続数**|
 |---|---|---|
 |Basic| 1| 50|
 |Basic| 2| 100|
-|汎用| 2| 300|
-|汎用| 4| 625|
-|汎用| 8| 1250|
-|汎用| 16| 2500|
-|汎用| 32| 5000|
-|汎用| 64| 10000|
-|メモリ最適化| 2| 600|
-|メモリ最適化| 4| 1250|
-|メモリ最適化| 8| 2500|
-|メモリ最適化| 16| 5000|
-|メモリ最適化| 32| 10000|
+|汎用| 2| 600|
+|汎用| 4| 1250|
+|汎用| 8| 2500|
+|汎用| 16| 5000|
+|汎用| 32| 10000|
+|汎用| 64| 20000|
+|メモリ最適化| 2| 1250|
+|メモリ最適化| 4| 2500|
+|メモリ最適化| 8| 5000|
+|メモリ最適化| 16| 10000|
+|メモリ最適化| 32| 20000|
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
 > ERROR 1040 (08004):Too many connections (接続が多すぎます)

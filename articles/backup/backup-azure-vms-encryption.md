@@ -1,19 +1,14 @@
 ---
-title: 暗号化された Azure VM を Azure Backup でバックアップおよび復元する
+title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
-ms.reviewer: geg
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004f15a1af11e3ed27f792e245888671b94fbb1a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4bc413e70d8e19f8006580c0631641651dcaf92
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074926"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172536"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
@@ -21,7 +16,7 @@ ms.locfileid: "74074926"
 
 開始する前に Azure Backup が Azure VM とやりとりするしくみの詳細について確認する場合は、次のリソースを参照してください。
 
-- Azure VM のバックアップ アーキテクチャを[確認する](backup-architecture.md#architecture-direct-backup-of-azure-vms)。
+- Azure VM のバックアップ アーキテクチャを[確認する](backup-architecture.md#architecture-built-in-azure-vm-backup)。
 - Azure VM のバックアップと Azure Backup の拡張機能の[詳細を確認](backup-azure-vms-introduction.md)する
 
 ## <a name="encryption-support"></a>暗号化のサポート

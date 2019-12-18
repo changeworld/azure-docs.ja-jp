@@ -8,12 +8,12 @@ ms.date: 08/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d0ac7fa3a1dbb1c91da5b9919bc2c62de74213b5
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c005dcd91412552e2b10c27a7809ca4bc46d4709
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456788"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792342"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
@@ -284,7 +284,7 @@ Azure IoT Edge の Git リポジトリには、テスト証明書の生成に使
 
 IoT Hub とのすべての通信は送信接続を介して行われるため、Standard IoT Edge デバイスが機能するために受信接続は必要ありません。 ゲートウェイ デバイスは、ダウンストリーム デバイスからメッセージを受信する必要があるため、異なります。 ダウンストリーム デバイスとゲートウェイ デバイスの間にファイアウォールがある場合は、ファイアウォール経由でも通信が可能である必要があります。
 
-ゲートウェイ シナリオが機能するには、IoT Edge ハブでサポートされているプロトコルの少なくとも 1 つが、ダウンストリーム デバイスからの受信トラフィック用に開かれている必要があります。 サポートされているプロトコルは、MQTT、AMQP、HTTPS です。 
+ゲートウェイ シナリオが機能するには、IoT Edge ハブでサポートされているプロトコルの少なくとも 1 つが、ダウンストリーム デバイスからの受信トラフィック用に開かれている必要があります。 サポートされているプロトコルは、MQTT、AMQP、HTTPS、MQTT over WebSockets、および AMQP over WebSockets です。 
 
 | Port | Protocol |
 | ---- | -------- |

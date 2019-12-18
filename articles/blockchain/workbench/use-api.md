@@ -1,21 +1,15 @@
 ---
-title: Azure Blockchain Workbench REST API を使用する
+title: Azure Blockchain Workbench REST API の使用
 description: Azure Blockchain Workbench プレビューのREST API を使用する方法を示すシナリオ
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 10/14/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: 2f751cc4f0037b8d60034636a0c512989113e441
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.reviewer: brendal
+ms.openlocfilehash: 188bbb9a9f6d289a7950ff74596352dff36e79f2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328873"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324197"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Azure Blockchain Workbench プレビューの REST API を使用する
 
@@ -28,6 +22,19 @@ Azure Blockchain Workbench プレビューの REST API は、開発者やイン�
 * コントラクトのアクションを実行する
 
 このシナリオで使用されているブロックチェーン アプリケーションのサンプルは [GitHub からダウンロード](https://github.com/Azure-Samples/blockchain)できます。
+
+## <a name="blockchain-workbench-api-endpoint"></a>Blockchain Workbench API エンドポイント
+
+Blockchain Workbench API は、デプロイのためのエンドポイント経由でアクセスされます。 デプロイのための API エンドポイント URL を取得するには:
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. 左側のナビゲーション ウィンドウで、 **[リソース グループ]** を選択します。
+1. デプロイされた Blockchain Workbench のリソース グループ名を選択します。
+1. **[種類]** 列見出しを選択して、種類のアルファベット順に一覧を並べ替えます。
+1. **[App Service]** の種類で 2 つのリソースがあります。 "-api" サフィックス*の付いた*、種類が **App Service** のリソースを選択します。
+1. App Service の **[概要]** で、 **[URL]** 値をコピーします。これは、デプロイされた Blockchain Workbench への API エンドポイント URL を表します。
+
+    ![アプリ サービスの API エンドポイント URL](media/use-api/app-service-api.png)
 
 ## <a name="list-applications"></a>List applications
 

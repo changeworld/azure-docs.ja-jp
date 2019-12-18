@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:マイクから音声を認識する (Objective-C) - Speech Service
+title: クイック スタート:マイクから音声を認識する、Objective-C - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: macOS で Objective-C と Speech SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 0025e6e84a8a76ad3a332056f51f802ca95da23f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: be5f62a75d9a3998d843e9865768b46658b8386c
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505661"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815016"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>クイック スタート:macOS で Objective-C と Speech SDK を使用して音声を認識する
 
@@ -27,7 +27,7 @@ ms.locfileid: "73505661"
 
 以降の手順を開始する前に次の要件を満たしておく必要があります。
 
-* Speech Service 用の[サブスクリプション キー](~/articles/cognitive-services/Speech-Service/get-started.md)。
+* Speech サービス用の[サブスクリプション キー](~/articles/cognitive-services/Speech-Service/get-started.md)。
 * [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 以降と macOS 10.13 以降がインストールされた macOS マシン
 
 ## <a name="get-the-speech-sdk-for-macos"></a>macOS 用の Speech SDK を取得する

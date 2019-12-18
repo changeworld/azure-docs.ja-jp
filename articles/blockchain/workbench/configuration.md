@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Workbench の構成メタデータ リファレンス
 description: Azure Blockchain Workbench Preview アプリケーションの構成メタデータの概要。
-ms.date: 09/05/2019
+ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 2ee1d1da1a9a5d8e890a6578eaec42cc6bf9f3ed
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 661e795f0e85f872b1072a8f641b8938115c5d7a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326064"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972444"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 構成リファレンス
 
@@ -391,6 +391,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 | 名前 | プロパティまたはパラメーターの一意の名前。 対応するスマート コントラクトでは、該当するプロパティまたはパラメーターに対して同じ **Name** を使用する必要があります。 | はい | 50 |
 | DisplayName | プロパティまたはパラメーターのわかりやすい表示名。 | はい | 255 |
 | Description | プロパティまたはパラメーターの説明。 | いいえ | 255 |
+| 種類 | プロパティの[データ型](#type)。 | はい |
 
 ### <a name="identifiers-example"></a>識別子の例
 

@@ -8,14 +8,14 @@ manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 80eb0a2018ece23de80e8eb9c4a68c149b590440
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 056dd4331d30335078ea68350f711e37a7b42070
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111370"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976623"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>クイック スタート:カスタム コマンドを作成する (プレビュー)
 
@@ -28,16 +28,6 @@ ms.locfileid: "74111370"
 
   > [!NOTE]
   > プレビュー期間中は、サブスクリプション キーに対して westus2 リージョンのみがサポートされています。
-
-- [Language Understanding](https://www.luis.ai/home) (LUIS) オーサリング キー:
-  1. Web ブラウザーを開いて [Azure Portal](https://portal.azure.com) に移動します。
-  1. [リソースの作成] を選択します。
-  1. [Language Understanding](https://aka.ms/sc-luis-all) を検索して選択します。
-  1. 作成オプションで [作成] を選択します。
-  1. リソースがデプロイされたら、リソースにアクセスして、[クイックスタート] または [キー] セクションからキーをコピーします。
-
-      > [!div class="mx-imgBorder"]
-      > ![オーサリング リソースを作成する](media/custom-speech-commands/resources-lu-authoring.png)
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>カスタム コマンドを使用するため Speech Studio にアクセスする
 
@@ -58,11 +48,21 @@ ms.locfileid: "74111370"
 1. **[新しいプロジェクト]** を選択して新しいプロジェクトを作成します。
 
    > [!div class="mx-imgBorder"]
-   > ![新しいプロジェクトの作成](media/custom-speech-commands/create-new-project.png)
+   > ![プロジェクトの作成](media/custom-speech-commands/create-new-project.png)
 
-1. プロジェクトの名前と言語を入力し、 **[次へ]** を選択して続行します
-1. LUIS のオーサリング キーを入力します。
-1. 作成したら、プロジェクトを選択します
+1. プロジェクトの名前と言語を入力します。
+1. 作成リソースを選択します。 有効な作成リソースがない場合は、 **[新しいリソースの作成]** を選択して作成します。
+
+   > [!div class="mx-imgBorder"]
+   > ![リソースの作成](media/custom-speech-commands/create-new-resource.png)
+
+   1. リソース名、グループ、場所、価格レベルを入力します。
+
+         > [!NOTE]
+         > リソース グループを作成するには、[リソース グループ] フィールドに目的のリソース グループ名を入力します。 **[作成]** を選択すると、リソース グループが作成されます。
+
+1. **[作成]** を選択してプロジェクトを作成します。
+1. 作成したら、プロジェクトを選択します。
 
 これで、カスタム コマンド アプリケーションの概要が表示されます。
 
@@ -99,25 +99,41 @@ turn on the tv
 
 次に、完了ルールを追加し、アクションが実行されていることを示す応答をユーザーに返します。
 
+1. [完了ルール] の横にある `+` アイコンを選択して、新しい完了ルールを作成します
+1. ルール名を入力します
+1. アクションを追加する
+   1. [アクション] の横にある `+` アイコンを選択して新しい音声応答アクションを作成し、`SpeechResponse` を選択します
+   1. 応答を入力します
+
+   > [!NOTE]
+   > 標準テキストはダッシュで始める必要があります。 詳細については、[こちら](https://aka.ms/sc-lg-format)を参照してください
+
+   > [!div class="mx-imgBorder"]
+   > ![音声応答の作成](media/custom-speech-commands/create-speech-response-action.png)
+
+1. **[保存]** をクリックしてルールを保存します
+
 > [!div class="mx-imgBorder"]
 > ![完了ルールの作成](media/custom-speech-commands/create-basic-completion-response-rule.png)
+
 
 | Setting    | 推奨値                        | 説明                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | 規則の名前  | "ConfirmationResponse"                 | ルールの目的を説明する名前          |
 | 条件 | なし                                   | ルールを実行できるタイミングを決定する条件    |
-| Actions    | SpeechResponse "Ok, turning on the TV" (了解です。テレビをつけます) | ルール条件が真のときに実行するアクション |
+| Actions    | SpeechResponse "- Ok, turning on the TV" (了解です。テレビをつけます) | ルール条件が真のときに実行するアクション |
 
 ## <a name="try-it-out"></a>試してみる
 
 テスト チャット パネルを使用して動作をテストします。
 
 > [!div class="mx-imgBorder"]
-> ![Webchat を使用したテスト](media/custom-speech-commands/create-basic-test-chat.png)
+> ![Web チャットを使用したテスト](media/custom-speech-commands/create-basic-test-chat.png)
 
 - 「turn on the tv」と入力します。
 - 予期される応答:Ok, turning on the tv (了解です。テレビをつけます)
 
 ## <a name="next-steps"></a>次の手順
+
 > [!div class="nextstepaction"]
 > [クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)

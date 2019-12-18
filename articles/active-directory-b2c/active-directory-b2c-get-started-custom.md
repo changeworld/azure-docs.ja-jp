@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 411710280a631d341adeb55bc4b587a613ee3c4c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 66b361a7eb82610d12a10c9c190f2872c072d7ba
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643622"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664065"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
@@ -34,7 +34,7 @@ ms.locfileid: "73643622"
 1. [Azure ポータル](https://portal.azure.com)
 1. 上部のメニューにある **[ディレクトリとサブスクリプション]** フィルターを使用して、お使いの Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+1. [概要] ページで、 **[ポリシー]** ウィンドウから **[Identity Experience Framework]** を選択します。
 
 ### <a name="create-the-signing-key"></a>署名キーを作成します。
 
@@ -149,7 +149,7 @@ Azure AD B2C では、ローカル アカウントでのユーザーのサイン
 1. **[アクセス許可]** で、前に定義した **[user_impersonation]** スコープを選択します。
 1. **[アクセス許可の追加]** を選択します. 指示に従って、数分待ってから次の手順に進みます。
 1. **[(ご自身のテナント名) に管理者の同意を与えます]** を選択します。
-1. 現在サインインしている管理者アカウントを選択するか、"*クラウド アプリケーション管理者*" ロール以上が割り当てられている Azure AD B2C テナントのアカウントでサインインします。
+1. 現在サインインしているお使いの管理者アカウントを選択するか、少なくとも*クラウド アプリケーション管理者* ロールが割り当てられているお使いの Azure AD B2C テナントのアカウントでサインインします。
 1. **[Accept]\(承認\)** を選択します。
 1. **[更新]** を選択し、両方のスコープの **[状態]** に、"... に付与されました" が表示されていることを確認します。 アクセス許可が反映されるまでに数分かかる場合があります。
 

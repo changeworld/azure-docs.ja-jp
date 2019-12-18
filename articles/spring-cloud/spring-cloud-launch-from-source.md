@@ -1,19 +1,19 @@
 ---
-title: クイック スタート:ソース コードから Spring Cloud アプリケーションを起動する
-description: ソース コードから Azure Spring Cloud アプリケーションを直接起動する方法について説明します
+title: クイックスタート - ソース コードから Spring Cloud アプリケーションを起動する
+description: このクイックスタートでは、ソース コードから Azure Spring Cloud アプリケーションを直接起動する方法について説明します
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ca78a9d7eeeeccb71fea75f6ab429e76f2344bbe
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721273"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895455"
 ---
-# <a name="launch-your-spring-cloud-application-from-source-code"></a>ソース コードから Spring Cloud アプリケーションを起動する
+# <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>クイック スタート:ソース コードから Spring Cloud アプリケーションを起動する
 
 Azure Spring Cloud では、Spring Cloud ベースのマイクロサービス アプリケーションを Azure で簡単に実行できます。
 
@@ -158,3 +158,5 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 
 > [!div class="nextstepaction"]
 > [Azure Spring Cloud アプリケーションをデプロイ用に準備する](spring-cloud-tutorial-prepare-app-deployment.md)
+
+その他のサンプルを GitHub で入手できます ([Azure Spring Cloud のサンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql))。

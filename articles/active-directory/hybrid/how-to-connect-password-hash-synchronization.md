@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0398ff7eb8931acc400b326ff92deaf75f0aa97e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0c903e3378e06734a8785531c1a16c695d4b6c21
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882841"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814943"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -123,15 +123,12 @@ Azure AD では、登録されたドメインごとに、個別のパスワー�
   
 一時パスワード機能を使用すると、資格情報の所有権の譲渡が初回使用時に確実に完了し、複数の個人がその資格情報に関する知識を持つ期間を最小限に抑えることができます。
 
-同期済みユーザーに対して Azure AD 上で一時パスワードをサポートするには、Azure AD Connect サーバー上で次のコマンドを実行して *ForcePasswordResetOnLogonFeature* 機能を有効にできます。<AAD Connector Name> は、ご自身の環境に固有のコネクタ名に置き換えます。
+同期済みユーザーに対して Azure AD 上で一時パスワードをサポートするには、Azure AD Connect サーバー上で次のコマンドを実行して *ForcePasswordResetOnLogonFeature* 機能を有効にできます。
 
-`Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
 
-次のコマンドを使用して、コネクタ名を判別できます。
-
-`(Get-ADSyncConnector | where{$_.ListName -eq "Windows Azure Active Directory (Microsoft)"}).Name`
-
-注意:次回ログオン時のパスワード変更をユーザーに強制すると、同時でのパスワード変更が必要になります。  AD Connect では、パスワードの強制変更フラグは、パスワード ハッシュの同期中に行われた検出済みのパスワード変更に対する補足であり、単独では取得されません。
+> [!NOTE]
+> 次回ログオン時のパスワード変更をユーザーに強制すると、同時でのパスワード変更が必要になります。  AD Connect では、パスワードの強制変更フラグは、パスワード ハッシュの同期中に行われた検出済みのパスワード変更に対する補足であり、単独では取得されません。
 
 > [!CAUTION]
 > Azure AD 上でセルフサービスのパスワード リセット (SSPR) を有効にしていない場合、Azure AD 上でパスワードをリセットしてから、新しいパスワードを使用して Active Directory にサインインしようとすると、Active Directory では新しいパスワードが有効ではないため、混乱が生じます。 この機能は、テナント上で SSPR とパスワード ライトバックが有効になっている場合にのみ使用してください。
@@ -160,9 +157,11 @@ Azure AD では、登録されたドメインごとに、個別のパスワー�
 
 ## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Azure AD Domain Services のパスワード ハッシュ同期プロセス
 
-Azure AD Domain Services を使用して、Keberos、LDAP、または NTLM を使用する必要があるアプリケーションやサービスにレガシ認証を提供する場合、追加のプロセスがパスワード ハッシュ同期フローに含まれます。 Azure AD Connect は、次の追加プロセスを使用して、Azure AD Domain Services で使用するためにパスワード ハッシュを Azure AD に同期します。
+Azure AD Domain Services を使用して、Kerberos、LDAP、または NTLM を使用する必要があるアプリケーションやサービスにレガシ認証を提供する場合、追加のプロセスがパスワード ハッシュ同期フローに含まれます。 Azure AD Connect は、次の追加プロセスを使用して、Azure AD Domain Services で使用するためにパスワード ハッシュを Azure AD に同期します。
 
 > [!IMPORTANT]
+> Azure AD Connect は、オンプレミスの AD DS 環境との同期のためにのみインストールおよび構成する必要があります。 オブジェクトを Azure AD に同期するために、Azure AD DS マネージド ドメインに Azure AD Connect をインストールすることはサポートされていません。
+>
 > Azure AD Connect によってレガシ パスワード ハッシュが同期されるのは、Azure AD DS を Azure AD テナントに対して有効にしたときだけです。 Azure AD Connect を使用してオンプレミス AD DS 環境と Azure AD の同期しか行わない場合、次の手順は使用されません。
 >
 > レガシ アプリケーションが NTLM 認証または LDAP simple bind を使用していない場合は、Azure AD DS の NTLM パスワード ハッシュ同期を無効にすることをお勧めします。 詳しくは、「[弱い暗号スイートと NTLM 資格情報ハッシュの同期を無効にする](../../active-directory-domain-services/secure-your-domain.md)」をご覧ください。

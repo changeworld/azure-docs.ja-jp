@@ -1,26 +1,17 @@
 ---
-title: 認証と認可 - Azure App Service | Microsoft Docs
-description: Azure App Service の認証/認可の機能の概念リファレンスと概要
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
+title: 認証と権限承認
+description: Azure App Service での組み込みの認証と認可のサポート、およびそれが認可されていないアクセスからアプリを保護するのにどのように役立つかについて説明します。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 2179f4e7d5350cdf9d82413e4f70647c20c3c399
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808759"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672240"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および認可
 
@@ -32,8 +23,10 @@ Azure App Service は組み込みの認証と認可のサポートを提供す�
 
 安全な認証と認可には、フェデレーション、暗号化、[JSON Web トークン (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[付与タイプ](https://oauth.net/2/grant-types/)など、セキュリティについての深い理解が必要です。 App Service ではこれらのユーティリティが提供されているので、ビジネス価値を顧客に提供することにいっそうの時間と労力を費やすことができます。
 
-> [!NOTE]
-> 認証と認可に App Service を必ず使う必要はありません。 多くの Web フレームワークにセキュリティ機能がバンドルされており、必要に応じてそれらを使うことができます。 App Service より高い柔軟性が必要な場合は、独自のユーティリティを記述することもできます。  
+> [!IMPORTANT]
+> 認証/認可に App Service を使用する必要はありません。 多くの Web フレームワークにセキュリティ機能がバンドルされており、必要に応じてそれらを使うことができます。 App Service より高い柔軟性が必要な場合は、独自のユーティリティを記述することもできます。  
+>
+> ただし、リモート認証について App Service 以外のオプションを使用する場合、[Chrome 80 で、Cookie 用の SameSite の実装に破壊的変更が行われること](https://www.chromestatus.com/feature/5088147346030592)に注意してください (リリース日は 2020 年3月頃)。これにより、クライアント ブラウザーが更新されると、アプリの認証メカニズムが動作しなくなる可能性があります。 ASP.NET Core のドキュメントに、アプリでこれに対処する方法が記載されています (「[HTTP:ブラウザーの SameSite の変更の認証への影響](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication)」に関する記事)。 これには、ASP.NET Core を使用しているかどうかに関係なく、主要なブラウザーに対して、この破壊的変更をどのようにテストするかについての役立つガイダンスが含まれています。
 >
 
 ネイティブ モバイル アプリに固有の情報については、[Azure App Service でのモバイル アプリ用のユーザー認証と認可](../app-service-mobile/app-service-mobile-auth.md)に関する記事をご覧ください。
@@ -109,7 +102,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 | - | - | - |
 | 1.ユーザーをサインインさせる | クライアントを `/.auth/login/<provider>` にリダイレクトします。 | クライアント コードはプロバイダーの SDK でユーザーを直接サインインさせ、認証トークンを受け取ります。 詳しくは、プロバイダーのドキュメントをご覧ください。 |
 | 2.認証をポストする | プロバイダーはクライアントを `/.auth/login/<provider>/callback` にリダイレクトします。 | クライアント コードは検証のために[プロバイダーからのトークンを `/.auth/login/<provider>` にポスト](app-service-authentication-how-to.md#validate-tokens-from-providers)します。 |
-| 手順 3.認証済みのセッションを確立する | App Service は認証された Cookie を応答に追加します。 | App Service は独自の認証トークンをクライアント コードに返します。 |
+| 3.認証済みのセッションを確立する | App Service は認証された Cookie を応答に追加します。 | App Service は独自の認証トークンをクライアント コードに返します。 |
 | 4.認証済みのコンテンツを提供する | クライアントは以降の要求に認証クッキーを含めます (ブラウザーによって自動的に処理されます)。 | クライアント コードは `X-ZUMO-AUTH` ヘッダーで認証トークンを提示します (Mobile Apps クライアント SDK によって自動的に処理されます)。 |
 
 クライアント ブラウザーの場合、App Service は認証されていないすべてのユーザーを `/.auth/login/<provider>` に自動的に送ることができます。 また、ユーザーが選んだプロバイダーを使ってアプリにサインインするための 1 つまたは複数の `/.auth/login/<provider>` リンクをユーザーに表示することもできます。

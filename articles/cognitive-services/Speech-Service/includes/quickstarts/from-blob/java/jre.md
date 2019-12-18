@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:BLOB ストレージに格納された音声を認識する (Java) - Speech Service
+title: クイック スタート:BLOB ストレージに格納された音声を認識する、Java - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c5fa12621d689287db0d91885fc0a35edb772294
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d4a436540460240ebd97c39d3406b2886586a6df
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506061"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829141"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "73506061"
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [ソース ファイルを Azure BLOB にアップロードする](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-eclipse"></a>Eclipse でプロジェクトを開く
@@ -42,7 +42,7 @@ pom.xml を開き、次の参照 [!code-xml[](~/samples-cognitive-services-speec
 
 ## <a name="start-with-some-boilerplate-code"></a>スケルトン コードを使用して開始する
 
-このプロジェクトのスケルトンとして機能するコードを追加してみましょう。
+プロジェクトのスケルトンとして機能するコードを追加してみましょう。
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=1-13,95-105,206-207)]
 (`YourSubscriptionKey`、`YourServiceRegion`、および `YourFileUrl` の値を独自の値に置き換える必要があります。)
@@ -56,14 +56,14 @@ REST API は JSON 形式で要求を受け取り、結果も JSON で返すた�
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=15-93)]
 
 ## <a name="create-and-configure-an-http-client"></a>Http クライアントを作成して構成する
-最初に必要なものは、正しいベース URL と認証セットを持つ Http クライアントです。
+最初に必要なのは、適切なベース URL と認証セットを含む Http クライアントです。
 このコードを `Main` [!code-java に挿入します。[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=106-113)]
 
 ## <a name="generate-a-transcription-request"></a>文字起こし要求を生成する
 次に、文字起こし要求を生成します。 このコードを `Main` に追加します。[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=115-116)]
 
 ## <a name="send-the-request-and-check-its-status"></a>要求を送信し、その状態を確認する
-次に、Speech Service に要求を投稿し、初期の応答コードを確認します。 この応答コードは、サービスで要求が受信されたかどうかを単に示すものです。 文字起こしの状態が格納される場所である URL が応答ヘッダーに入れられて、サービスから返されます。
+ここで、Speech サービスに要求を投稿し、初期の応答コードを確認します。 この応答コードは、サービスが要求を受信したかどうかを示すだけに過ぎません。 サービスからは応答ヘッダーで URL が返され、文字起こしの状態はこの URL に格納されます。
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=118-129)]
 
 ## <a name="wait-for-the-transcription-to-complete"></a>文字起こしが完了するのを待つ

@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0e9f909aba11d35307e02a98a41ffa04e36e4db2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 2259343d2c7bca1f60a5256efcd572e6cc21b565
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953121"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706049"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>オートパイロット モードで Azure Cosmos のコンテナーとデータベースを作成する (プレビュー)
 
@@ -68,7 +68,7 @@ Azure Cosmos DB を使用すると、手動モードまたはオートパイロ�
 | **料金** | 手動でプロビジョニングされた 1 時間あたりの RU/秒。 | 単一書き込みリージョン アカウントでは、1 時間あたりのオートパイロット RU/秒レートを使用して、時間単位でスループット使用量に対して支払います。 <br/><br/>複数の書き込みリージョンがあるアカウントの場合、オートパイロットに対する追加料金は発生しません。 1 時間あたりの同じマルチマスター RU/秒レートを使用して、時間単位でスループット使用量に対して支払います。 |
 | **最適なワークロードの種類** |  予測可能で安定したワークロード|   予測不可能で変動するワークロード  |
 
-## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a><a id="enable-autopilot">Azure portal からオートパイロットを有効にする
+## <a id="enable-autopilot"></a> Azure portal からオートパイロットを有効にする
 
 オートパイロットを、Azure portal から有効にすることで、Azure Cosmos アカウントで試すことができます。 オートパイロット オプションを有効にするには、次の手順に従います。
 
@@ -93,6 +93,17 @@ Azure Cosmos DB を使用すると、手動モードまたはオートパイロ�
 1. **[OK]** を選択します。
 
 同様の手順で、オートパイロット モードのプロビジョニング済みスループットを使用してデータベースを作成することもできます。
+
+## <a id="autopilot-limits"></a> オートパイロットのスループットとストレージ制限
+
+次の表は、オートパイロット モードでのさまざまなオプションの最大スループットとストレージ制限を示しています。
+
+|最大スループット制限  |最大ストレージ制限  |
+|---------|---------|
+|4000 RU/秒  |   50 GB    |
+|20,000 RU/秒  |  200 GB  |
+|100,000 RU/秒    |  1 TB (テラバイト)   |
+|500,000 RU/秒    |  5 TB  |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,21 +1,18 @@
 ---
-title: Azure Service Bus を使用してメッセージを交換する - Azure Logic Apps
+title: Azure Service Bus を使用したメッセージ交換
 description: Azure Logic Apps で Azure Service Bus を使用してメッセージを送受信する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 477fdc2291d875c57bfb0ae3cb87b6df9bd41398
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c83e2bc0411c9bec3c3a5fa35dcc6565ed7f44f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024308"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789404"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Azure Logic Apps と Azure Service Bus を使用してクラウド内でメッセージを交換する
 
@@ -153,7 +150,7 @@ Service Bus から応答を取得し、その出力をロジック アプリ内�
 
    たとえば、メッセージが送信されたことを確認するメールを送信するアクションを追加することができます。
 
-1. ロジック アプリを保存し、 デザイナーのツール バーで、 **[保存]** を選択します。
+1. ロジック アプリを保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 

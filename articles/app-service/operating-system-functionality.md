@@ -1,25 +1,16 @@
 ---
-title: App Service におけるオペレーティング システムの機能 - Azure
-description: Azure App Service 上の Web アプリ、モバイル アプリ バックエンド、API アプリで使用できる OS の機能について説明します。
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: mollybos
+title: オペレーティング システムの機能
+description: Windows での Azure App Service の OS 機能について学びます。 アプリによって取得されるファイル、ネットワーク、レジストリアクセスの種類を確認します。
 ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b108814caaace83cd417dc8858e27ed01d54c39e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066765"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671624"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
 この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
@@ -54,7 +45,7 @@ App Service には、ローカル ドライブやネットワーク ドライブ
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>ローカル ドライブ
-根本的に、App Service は、Azure PaaS (Platform as a Service) インフラストラクチャ上で動作するサービスです。 したがって、仮想マシンに "接続" されるローカル ドライブは、Azure 上の worker ロールで使用するドライブと同じ種類です。 次のトピックがあります。
+根本的に、App Service は、Azure PaaS (Platform as a Service) インフラストラクチャ上で動作するサービスです。 したがって、仮想マシンに "接続" されるローカル ドライブは、Azure 上の worker ロールで使用するドライブと同じ種類です。 これには次のものが含まれます
 
 - オペレーティング システム ドライブ (D:\ ドライブ)
 - App Service によって排他的に使用される (顧客はアクセスできない) Azure Package cspkg ファイルを含むアプリケーション ドライブ。

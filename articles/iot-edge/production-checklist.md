@@ -1,5 +1,5 @@
 ---
-title: 運用環境のためにデバイスとデプロイを準備する - Azure IoT Edge | Microsoft Docs
+title: ソリューションを運用環境にデプロイするための準備を行う - Azure IoT Edge
 description: Azure IoT Edge ソリューションを開発環境から運用環境に移行する方法について説明します。これには、適切な証明書でのデバイスの設定と、今後のコード更新のためのデプロイ計画が含まれます。
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1d8ba8452f5f2d4ab05083e1a97fa0b9ba75017f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a19fdfaf70dffb7f0bcb8001475fee89b2d05086
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457313"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665816"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 

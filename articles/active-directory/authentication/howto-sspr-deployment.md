@@ -1,22 +1,22 @@
 ---
-title: パスワード リセットのセルフサービスのデプロイ計画 - Azure Active Directory
+title: パスワード リセットのセルフサービスのデプロイ - Azure Active Directory
 description: Azure AD のパスワード リセットのセルフサービスを正常にデプロイするための戦略
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 11/21/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b648d6f914b5e3004ea3b62019bbec33e5a4871d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: bc2c68c53a7c03d1de08e5cde528f27aa61b0096
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081532"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847271"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Azure AD のパスワード リセットのセルフサービスをデプロイする
 
@@ -136,7 +136,7 @@ SSPR で使用可能な認証方法、定義済みのセキュリティの質問
 | パスワード リセットの登録が強制されているときに、ユーザーがサインインする | ユーザーはセキュリティ情報を登録するように求められる |
 | パスワード リセットの登録が完了しているときに、ユーザーがサインインする | ユーザーはセキュリティ情報を登録するように求められない |
 | ユーザーがライセンスを持っていないときに、SSPR ポータルにアクセスできる | アクセスできる |
-| ユーザーが登録した後、Windows 10 AADJ または H+AADJ のデバイス ロック画面からユーザーのパスワードをリセットする | ユーザーはパスワードをリセットできる |
+| ユーザーが登録した後、Windows 10 Azure AD 参加済みまたはハイブリッド Azure AD 参加済みデバイスのロック画面からユーザーのパスワードをリセットする | ユーザーはパスワードをリセットできる |
 | SSPR の登録と使用状況のデータを、管理者がほぼリアルタイムで使用できる | 監査ログを介して利用できる |
 
 ### <a name="support-plan"></a>サポート プラン

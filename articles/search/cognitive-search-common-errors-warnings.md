@@ -8,18 +8,17 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0230fbb2cb94001f7965cf1756a8a0d1061978da
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: fb8aec10d58ed4f2eca462774aeaf61f2ea21dd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133221"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973970"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的なエラーと警告のトラブルシューティング
 
 この記事では、Azure Cognitive Search でインデックス作成中と AI の強化中に発生する可能性のある一般的なエラーと警告に関する情報と解決策を提供します。
 
-## <a name="errors"></a>Errors
 エラー数が ['maxFailedItems'](cognitive-search-concept-troubleshooting.md#tip-3-see-what-works-even-if-there-are-some-failures) を超えると、インデックス作成は停止します。 
 
 インデクサーでこれらのエラーを無視する (および "失敗したドキュメント" をスキップする) 場合は、[ここ](https://docs.microsoft.com/rest/api/searchservice/create-indexer#general-parameters-for-all-indexers)で説明する `maxFailedItems` と `maxFailedItemsPerBatch` を更新することを検討してください。
@@ -27,61 +26,88 @@ ms.locfileid: "74133221"
 > [!NOTE]
 > 失敗した各ドキュメントとそのドキュメント キー (使用可能な場合) は、インデクサーの実行状態にエラーとして表示されます。 インデクサーにエラーが許容されるように設定している場合は、[インデックス API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) を使用して、後でドキュメントを手動でアップロードできます。
 
-以下のセクションでは、エラーを解決して、インデックス作成を続行できるようにする方法について説明します。
+この記事のエラー情報では、エラーを解決して、インデックス作成を続行できるようにする方法について説明します。
 
-### <a name="could-not-read-document"></a>Could not read document (ドキュメントを読み取れませんでした)
+警告でインデックス作成は停止されませんが、予期しない結果になる可能性がある条件を示しています。 アクションを実行するかどうかは、データとシナリオによって変わります。
+
+API バージョン `2019-05-06` 以降では、項目レベルのインデクサーのエラーと警告は、原因と次の手順をより明確にするために構造化されています。 次のプロパティが含まれます。
+
+| プロパティ | 説明 | 例 |
+| --- | --- | --- |
+| key | エラーまたは警告によって影響を受けるドキュメントのドキュメント ID。 | https:\//coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| 名前 | エラーまたは警告が発生した場所を示す操作名。 これは、次の構造によって生成されます: [category].[subcategory].[resourceType].[resourceName] | DocumentExtraction.azureblob.myBlobContainerName Enrichment.WebApiSkill.mySkillName Projection.SearchIndex.OutputFieldMapping.myOutputFieldName Projection.SearchIndex.MergeOrUpload.myIndexName Projection.KnowledgeStore.Table.myTableName |
+| message | エラーまたは警告の概要。 | Web API 要求が失敗したため、スキルを実行できませんでした。 |
+| details | カスタム スキルの実行に失敗した場合の WebApi 応答など、問題を診断するのに役立つその他の詳細情報。 | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 source, Func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.` ...スタック トレースの残り... |
+| documentationLink | 問題をデバッグして解決するための詳細情報が記載された関連ドキュメントへのリンク。 このリンクは、多くの場合、このページの以下のいずれかのセクションを指します。 | https://go.microsoft.com/fwlink/?linkid=2106475 |
+
+<a name="could-not-read-document"/>
+
+## <a name="error-could-not-read-document"></a>エラー:Could not read document (ドキュメントを読み取れませんでした)
+
 インデクサーで、データ ソースからドキュメントを読み取ることができませんでした。 これは、次の理由で発生する可能性があります。
 
-| 理由 | 例 | Action |
+| 理由 | 詳細/例 | 解決策 |
 | --- | --- | --- |
 | 異なるドキュメント間でフィールドの型が一致していません | 値の型が列の型と合いません。 authors 列に `'{47.6,-122.1}'` を格納できませんでした。  想定されている型は JArray です。 | 異なるドキュメント間で各フィールドの型が同じであることを確認します。 たとえば、最初のドキュメントの `'startTime'` フィールドが DateTime で、2 つ目のドキュメントが文字列である場合、このエラーが発生します。 |
 | データ ソースの基となるサービスのエラー | (Cosmos DB から) `{"Errors":["Request rate is large"]}` | ストレージ インスタンスが正常に稼働していることを確認します。 場合によっては、スケーリングやパーティション分割を調整する必要があります。 |
 | 一時的な問題 | サーバーから結果を受信しているときに、トランスポート レベルのエラーが発生しました。 (プロバイダー:TCP プロバイダー、エラー:0 - 既存の接続はリモート ホストに強制的に切断されました | 予期しない接続の問題が発生することがあります。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
 
-### <a name="could-not-extract-document-content"></a>Could not extract document content (ドキュメントの内容を抽出できませんでした)
+<a name="could-not-extract-document-content"/>
+
+## <a name="error-could-not-extract-document-content"></a>エラー:Could not extract document content (ドキュメントの内容を抽出できませんでした)
 BLOB データ ソースを使用するインデクサーで、ドキュメント (PDF ファイルなど) から内容を抽出できませんでした。 これは、次の理由で発生する可能性があります。
 
-| 理由 | 例 | Action |
+| 理由 | 詳細/例 | 解決策 |
 | --- | --- | --- |
 | BLOB がサイズ制限を超えています | ドキュメントは `'150441598'` バイトです。これは、現在のサービス レベルのドキュメント抽出の最大サイズである `'134217728'` バイトを超えています。 | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | BLOB にサポートされていないコンテンツ タイプがあります | ドキュメントにサポートされていないコンテンツ タイプ `'image/png'` があります | [BLOB インデックス作成エラー](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
-| BLOB は暗号化されています | ドキュメントを処理できませんでした。暗号化されているか、パスワードで保護されている可能性があります。 | [BLOB の設定](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed) |
+| BLOB は暗号化されています | ドキュメントを処理できませんでした。暗号化されているか、パスワードで保護されている可能性があります。 | [BLOB の設定](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed)で BLOB をスキップできます。 |
 | 一時的な問題 | BLOB の処理エラー:要求が中止されました:要求は取り消されました。 | 予期しない接続の問題が発生することがあります。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
 
-### <a name="could-not-parse-document"></a>Could not parse document (ドキュメントを解析できませんでした)
+<a name="could-not-parse-document"/>
+
+## <a name="error-could-not-parse-document"></a>エラー:Could not parse document (ドキュメントを解析できませんでした)
 インデクサーによってデータ ソースからドキュメントが読み取られましたが、ドキュメントの内容を指定されたフィールド マッピング スキーマに変換する際に問題が発生しました。 これは、次の理由で発生する可能性があります。
 
-| 理由 | 例 | Action |
+| 理由 | 詳細/例 | 解決策 |
 | --- | --- | --- |
 | ドキュメント キーがありません | ドキュメント キーを指定しない、または空にすることはできません | すべてのドキュメントに有効なドキュメント キーがあることを確認します |
 | ドキュメント キーが無効です | ドキュメント キーは 1024 文字以内にする必要があります | 検証要件を満たすようにドキュメント キーを変更します。 |
 | フィールドにフィールドのマッピングを適用できませんでした | マッピング関数 `'functionName'` をフィールド `'fieldName'` に適用できませんでした。 配列を null にすることはできません。 パラメーター名: bytes | インデクサーに定義されている[フィールドのマッピング](search-indexer-field-mappings.md)を再確認し、失敗したドキュメントの指定したフィールドのデータと比較します。 フィールドのマッピングまたはドキュメント データの変更が必要になる可能性があります。 |
 | フィールド値を読み取れませんでした | インデックス `'fieldIndex'` の列 `'fieldName'` の値を読み取れませんでした。 サーバーから結果を受信しているときに、トランスポート レベルのエラーが発生しました。 (プロバイダー:TCP プロバイダー、エラー:0 - 既存の接続はリモート ホストに強制的に切断されました。) | 通常、データ ソースの基となるサービスで予期しない接続の問題が発生したことが原因で、これらのエラーが発生します。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
 
-### <a name="could-not-execute-skill"></a>スキルを実行できませんでした
+<a name="could-not-execute-skill"/>
+
+## <a name="error-could-not-execute-skill"></a>エラー:スキルを実行できませんでした
 インデクサーがスキルセットでスキルを実行できませんでした。
 
-| 理由 | 例 | Action |
+| 理由 | 詳細/例 | 解決策 |
 | --- | --- | --- |
-| フィールドに大きすぎる用語が含まれています | ドキュメント内の用語が [32 KB の制限](search-limits-quotas-capacity.md#api-request-limits)を超えています | この制限を回避するには、フィールドがフィルター可能、ファセット可能、または並べ替え可能として構成されていないことを確実にします。
-| ドキュメントが大きすぎてインデックスを作成できません | ドキュメントが [API 要求の最大サイズ](search-limits-quotas-capacity.md#api-request-limits)を超えています | [大規模なデータ セットのインデックスを作成する方法](search-howto-large-index.md)
 | 一時的な接続に関する問題 | 一時的なエラーが発生しました。 後でもう一度やり直してください。 | 予期しない接続の問題が発生することがあります。 後でインデクサーを使用してドキュメントをもう一度実行してください。 |
 | 潜在的な製品バグ | 予期しないエラーが発生しました。 | これはエラーのクラスが不明であり、製品バグがある可能性があることを意味します。 サポートを受けるには、[サポート チケット](https://ms.portal.azure.com/#create/Microsoft.Support)を提出してください。 |
 | スキルの実行中にエラーが発生しました | (マージ スキルから) 1 つ以上のオフセット値が無効なため、解析できませんでした。 項目がテキストの末尾に挿入されました | エラー メッセージに記載されている情報を参照して、問題を解決します。 この種のエラーを解決するには、対処が必要です。 |
 
-### <a name="could-not-execute-skill-because-the-web-api-request-failed"></a>Web API 要求が失敗したため、スキルを実行できませんでした
+<a name="could-not-execute-skill-because-the-web-api-request-failed"/>
+
+## <a name="error-could-not-execute-skill-because-the-web-api-request-failed"></a>エラー:Web API 要求が失敗したため、スキルを実行できませんでした
 Web API の呼び出しに失敗したため、スキルを実行できませんでした。 このクラスのエラーは通常、カスタム スキルが使用されている場合に発生します。この場合は、カスタム コードをデバッグして問題を解決する必要があります。 これとは異なり、エラーが組み込みのスキルで発生した場合は、エラー メッセージを参照して問題を修正してください。
 
-### <a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"></a>Web API のスキルの応答が無効であるため、スキルを実行できませんでした
+<a name="could-not-execute-skill-because-web-api-skill-response-is-invalid"/>
+
+## <a name="error-could-not-execute-skill-because-web-api-skill-response-is-invalid"></a>エラー:Web API のスキルの応答が無効であるため、スキルを実行できませんでした
 Web API の呼び出しに無効な応答が返されたため、スキルを実行できませんでした。 このクラスのエラーは通常、カスタム スキルが使用されている場合に発生します。この場合は、カスタム コードをデバッグして問題を解決する必要があります。 これとは異なり、エラーが組み込みのスキルで発生した場合、サポートを受けるには、[サポート チケット](https://ms.portal.azure.com/#create/Microsoft.Support)を提出してください。
 
-### <a name="skill-did-not-execute-within-the-time-limit"></a>Skill did not execute within the time limit (制限時間内にスキルが実行されませんでした)
+<a name="skill-did-not-execute-within-the-time-limit"/>
+
+## <a name="error-skill-did-not-execute-within-the-time-limit"></a>エラー:Skill did not execute within the time limit (制限時間内にスキルが実行されませんでした)
 このエラー メッセージが表示される可能性のあるケースが 2 つあります。それぞれ異なる方法で処理する必要があります。 このエラーが返されたスキルに応じて、以下の手順を実行してください。
 
-#### <a name="built-in-cognitive-service-skills"></a>組み込みの Cognitive Service スキル
+### <a name="built-in-cognitive-service-skills"></a>組み込みの Cognitive Service スキル
 言語検出、エンティティ認識、OCR など、組み込みの認知技術の多くは、Cognitive Service API エンドポイントによって支えられています。 これらのエンドポイントに一時的な問題が発生すると、要求がタイムアウトすることがあります。一時的な問題の場合、待ってから再試行する以外の解決策はありません。 軽減策として、[スケジュールに従って実行](search-howto-schedule-indexers.md)するようにインデクサーを設定することを検討してください。 スケジュールされたインデックス作成では、中断されたところから取得されます。 一時的な問題が解決した場合、インデックス作成と認知技術の処理は、次回のスケジュールされた実行で続行できる必要があります。
 
-#### <a name="custom-skills"></a>カスタム スキル
+組み込みの Cognitive スキルに関して同じドキュメントでこのエラーが引き続き表示される場合、この事態は想定外であるため、[サポート チケット](https://ms.portal.azure.com/#create/Microsoft.Support)を提出して支援を受けてください。
+
+### <a name="custom-skills"></a>カスタム スキル
 作成したカスタム スキルでタイムアウト エラーが発生した場合は、いくつかのことを試してみることができます。 最初に、カスタム スキルを見直し、無限ループに陥っていないこと、一貫して結果が返されていることを確認します。 そのような状況であることを確認したら、スキルの実行時間を決定します。 カスタム スキル定義で `timeout` の値を明示的に設定しなかった場合、既定の `timeout` は 30 秒です。 30 秒では短すぎてスキルを実行できない場合は、カスタム スキル定義で `timeout` を超える値を指定することをお勧めします。 タイムアウトが 90 秒に設定されているカスタム スキル定義の例を次に示します。
 
 ```json
@@ -108,25 +134,29 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 `timeout` パラメーターに設定できる最大値は 230 秒です。  230 秒以内に一貫してカスタム スキルを実行できない場合は、1 回の実行で処理するドキュメントが少なくなるように、カスタム スキルの `batchSize` を減らすことを検討します。  `batchSize` が既に 1 に設定されている場合は、230 秒未満で実行できるようにスキルを作成し直すか、1 つのカスタム スキルの実行時間が最大 230 秒になるように複数のカスタム スキルに分割する必要があります。 詳細については、[カスタム スキルのドキュメント](cognitive-search-custom-skill-web-api.md)を参照してください。
 
-### <a name="could-not-mergeorupload--delete-document-to-the-search-index"></a>検索インデックスに対するドキュメントの '`MergeOrUpload`' | '`Delete`' を行うことができませんでした
+<a name="could-not-mergeorupload--delete-document-to-the-search-index"/>
+
+## <a name="error-could-not-mergeorupload--delete-document-to-the-search-index"></a>エラー:検索インデックスに対するドキュメントの '`MergeOrUpload`' | '`Delete`' を行うことができませんでした
 
 ドキュメントは読み取りおよび処理されましたが、インデクサーによって検索インデックスに追加することができませんでした。 これは、次の理由で発生する可能性があります。
 
-| 理由 | 例 | Action |
+| 理由 | 詳細/例 | 解決策 |
 | --- | --- | --- |
-| ドキュメント内の用語が [32 KB の制限](search-limits-quotas-capacity.md#api-request-limits)を超えています | フィールドに大きすぎる用語が含まれています | この制限を回避するには、フィールドがフィルター可能、ファセット可能、または並べ替え可能として構成されていないことを確実にします。
-| ドキュメントが [API 要求の最大サイズ](search-limits-quotas-capacity.md#api-request-limits)を超えています | ドキュメントが大きすぎてインデックスを作成できません | [大規模なデータ セットのインデックスを作成する方法](search-howto-large-index.md)
+| フィールドに大きすぎる用語が含まれています | ドキュメント内の用語が [32 KB の制限](search-limits-quotas-capacity.md#api-request-limits)を超えています | この制限を回避するには、フィールドがフィルター可能、ファセット可能、または並べ替え可能として構成されていないことを確実にします。
+| ドキュメントが大きすぎてインデックスを作成できません | ドキュメントが [API 要求の最大サイズ](search-limits-quotas-capacity.md#api-request-limits)を超えています | [大規模なデータ セットのインデックスを作成する方法](search-howto-large-index.md)
 | ドキュメントでコレクションに含まれているオブジェクトが多すぎます | ドキュメント内のコレクションが、[すべての複合コレクション制限にわたる最大要素数](search-limits-quotas-capacity.md#index-limits)を超えています | ドキュメント内の複合コレクションのサイズを制限より小さくし、記憶域の使用率が高くならないようにすることをお勧めします。
 | サービスにその他の負荷 (クエリやインデックスの作成など) がかかっているため、ターゲット インデックス (再試行後も保持されます) に接続できません。 | インデックスを更新するための接続を確立できませんでした。 Search サービスの負荷が高くなっています。 | [検索サービスをスケールアップする](search-capacity-planning.md)
 | Search サービスは、サービスの更新に対して修正プログラムが適用されているか、トポロジの再構成中です。 | インデックスを更新するための接続を確立できませんでした。 Search サービスは現在ダウンしているか、Search サービスが移行中です。 | [SLA ドキュメント](https://azure.microsoft.com/support/legal/sla/search/v1_0/)による 99.9% の可用性を確保するために、少なくとも 3 つのレプリカでサービスを構成します
 | 基になるコンピューティング/ネットワーク リソースでエラーが発生しました (まれ) | インデックスを更新するための接続を確立できませんでした。 不明なエラーが発生しました。 | インデクサーを[スケジュールに従って実行](search-howto-schedule-indexers.md)し、失敗した状態から取得するように構成します。
 | ターゲット インデックスに対して行われたインデックス作成要求は、ネットワークの問題により、タイムアウト期間内に受信確認されませんでした。 | 検索インデックスへの接続を時間内に確立できませんでした。 | インデクサーを[スケジュールに従って実行](search-howto-schedule-indexers.md)し、失敗した状態から取得するように構成します。 また、このエラー状況が解決しない場合は、インデクサーの[バッチ サイズ](https://docs.microsoft.com/rest/api/searchservice/create-indexer#parameters)を小さくしてみてください。
 
-### <a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>インデックスを作成するインデクサー データが無効なため、ドキュメントのインデックスを作成できませんでした
+<a name="could-not-index-document-because-the-indexer-data-to-index-was-invalid"/>
+
+## <a name="error-could-not-index-document-because-the-indexer-data-to-index-was-invalid"></a>エラー:インデックスを作成するインデクサー データが無効なため、ドキュメントのインデックスを作成できませんでした
 
 ドキュメントが読み取られ、処理されましたが、インデックス フィールドの構成とインデクサーによって抽出されたデータの性質が一致していないため、検索インデックスに追加できませんでした。 これは、次の理由で発生する可能性があります。
 
-| 理由 | 例
+| 理由 | 詳細/例
 | --- | ---
 | インデクサーによって抽出されたフィールドのデータ型は、対応する対象のインデックス フィールドのデータ モデルと互換性がありません。 | '_data_' キーを持つドキュメントのデータ フィールド '_data_' に、''Edm.String' 型の ' 無効な値が含まれています。 想定されている型は 'Collection (Edm String)' です。 |
 | 文字列値から JSON エンティティを抽出できませんでした。 | フィールド '_data_' の 'Edm.String' 型 ' を JSON オブジェクトとして解析できませんでした。 エラー: '値を解析した後に、予期しない文字が見つかりました: ''。 パス '_path_'、行 1、位置 3162。' |
@@ -136,14 +166,15 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 これらのすべてのケースで、インデックス スキーマが正しく作成され、[インデクサー フィールド マッピング](search-indexer-field-mappings.md)が適切に設定されていることを確認するには、[サポートされているデータ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)および[インデクサーのデータ型マップ](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search)に関する記事を参照してください。 エラー メッセージには、不一致の原因を突き止めるのに役立つ詳細が含まれます。
 
-### <a name="could-not-process-document-within-indexer-max-run-time"></a>インデクサーの最大実行時間内にドキュメントを処理できませんでした
+<a name="could-not-process-document-within-indexer-max-run-time"/>
+
+## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>エラー:インデクサーの最大実行時間内にドキュメントを処理できませんでした
 
 このエラーは、許可された実行時間内にインデクサーがデータ ソースからの 1 つのドキュメントの処理を完了できない場合に発生します。 スキルセットが使用されていると、[最大実行時間](search-limits-quotas-capacity.md#indexer-limits)は短くなります。 このエラーが発生したとき、maxFailedItems が 0 以外の値に設定されていると、インデクサーは将来の実行時にドキュメントをバイパスして、インデックス作成を継続できるようにします。 ドキュメントをスキップする余裕がない場合、またはこのエラーが常に表示される場合は、1 回のインデクサー実行内で部分的にでも処理を進められるよう、ドキュメントを小さなドキュメントに分割することを検討してください。
 
-##  <a name="warnings"></a>警告
-警告でインデックス作成は停止されませんが、予期しない結果になる可能性がある条件を示しています。 アクションを実行するかどうかは、データとシナリオによって変わります。
+<a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 
-### <a name="could-not-execute-skill-because-a-skill-input-was-invalid"></a>スキルの入力が無効だったため、スキルを実行できませんでした
+## <a name="warning-could-not-execute-skill-because-a-skill-input-was-invalid"></a>警告:スキルの入力が無効だったため、スキルを実行できませんでした
 スキルへの入力が存在しないか、正しくない型であるか、または無効であるため、インデクサーはスキルセットでスキルを実行できませんでした。
 
 コグニティブ スキルには、必須の入力と省略可能な入力があります。 たとえば、[キー フレーズ抽出スキル](cognitive-search-skill-keyphrases.md)には、必須の入力が 2 つ (`text`、`languageCode`) あり、省略可能な入力はありません。 必須の入力が無効な場合は、スキルがスキップされ、警告が生成されます。 スキップされたスキルは出力を生成しません。そのため、スキップされたスキルの出力を他のスキルが使用する場合は、警告がさらに生成される可能性があります。
@@ -164,13 +195,15 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 }
 ```
 
-| 理由 | 例 | Action |
+| 理由 | 詳細/例 | 解決策 |
 | --- | --- | --- |
 | スキルの入力タイプが正しくありません。 | 必須のスキルの入力 `X` が、予期された型 `String` ではありませんでした。 必須のスキルの入力 `X` が、予期された形式ではありませんでした。 | 特定のスキルでは、入力が特定の型であることを想定しています。たとえば[センチメント スキル](cognitive-search-skill-sentiment.md)では、`text` が文字列である必要があります。 入力に文字列以外の値が指定されている場合、そのスキルは実行されず、出力は生成されません。 データ セットの型が統一されていることを確認するか、[カスタム Web API スキル](cognitive-search-custom-skill-web-api.md)を使用して入力を前処理します。 配列に対してスキルを反復する場合は、スキル コンテキストをチェックし、入力の正しい位置に `*` があることを確認します。 通常、コンテキストと入力ソースの両方が配列の `*` で終わる必要があります。 |
 | スキルの入力がありません | 必須のスキルの入力 `X` がありません。 | すべてのドキュメントでこの警告が表示される場合は、入力したパスに入力ミスがある可能性が高いので、プロパティ名の大文字と小文字の区別、パス内の `*` が余分に追加されているか欠落しているかを確認し、データ ソースのドキュメントで必要な入力を定義します。 |
 | スキル言語コードの入力が無効です | スキルの入力 `languageCode` に次の言語コード `X,Y,Z` が含まれており、その少なくとも 1 つが無効です。 | 詳しくは、[以下](cognitive-search-common-errors-warnings.md#skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid)をご覧ください |
 
-### <a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>Skill input 'languageCode' has the following language codes 'X,Y,Z', at least one of which is invalid. (スキルの入力 'languageCode' に次の言語コード 'X,Y,Z' が含まれており、その少なくとも 1 つが無効です。)
+<a name="skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"/>
+
+## <a name="warning--skill-input-languagecode-has-the-following-language-codes-xyz-at-least-one-of-which-is-invalid"></a>警告:Skill input 'languageCode' has the following language codes 'X,Y,Z', at least one of which is invalid. (スキルの入力 'languageCode' に次の言語コード 'X,Y,Z' が含まれており、その少なくとも 1 つが無効です。)
 ダウンストリーム スキルの省略可能な `languageCode` の入力に渡された 1 つ以上の値がサポートされていません。 [LanguageDetectionSkill](cognitive-search-skill-language-detection.md) の出力を後続のスキルに渡し、それらのダウンストリーム スキルでサポートされているよりも多くの言語で出力が構成されている場合に、これが発生する可能性があります。
 
 データ セットがすべて 1 つの言語であることがわかっている場合は、[LanguageDetectionSkill](cognitive-search-skill-language-detection.md) および `languageCode` スキル入力を削除し、代わりにそのスキルに対して `defaultLanguageCode` スキル パラメーターを使用する必要があります (スキルに対してその言語がサポートされている場合)。
@@ -195,7 +228,9 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 * [Translator のサポートされる言語](https://docs.microsoft.com/azure/cognitive-services/translator/language-support) ([Text TranslationSkill](cognitive-search-skill-text-translation.md) の場合)
 * [Text SplitSkill](cognitive-search-skill-textsplit.md) のサポートされる言語: `da, de, en, es, fi, fr, it, ko, pt`
 
-### <a name="skill-input-was-truncated"></a>Skill input was truncated (スキルの入力が切り捨てられました)
+<a name="skill-input-was-truncated"/>
+
+## <a name="warning-skill-input-was-truncated"></a>警告:Skill input was truncated (スキルの入力が切り捨てられました)
 コグニティブ スキルには、一度に分析できるテキストの長さの制限があります。 これらのスキルのテキスト入力がこの制限を超えている場合は、その制限に合わせてテキストが切り捨てられ、その切り捨てられたテキストに対して強化が実行されます。 つまり、スキルは実行されますが、すべてのデータに対しては実行されません。
 
 次の LanguageDetectionSkill の例では、`'text'` 入力フィールドが文字制限を超えている場合にこの警告がトリガーされることがあります。 スキルの入力制限については、[スキルのドキュメント](cognitive-search-predefined-skills.md)を参照してください。
@@ -215,10 +250,15 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 すべてのテキストが分析されるようにするには、[スキルの分割](cognitive-search-skill-textsplit.md)を使用することを検討してください。
 
-### <a name="web-api-skill-response-contains-warnings"></a>Web API のスキル応答に警告が含まれています
+<a name="web-api-skill-response-contains-warnings"/>
+
+## <a name="warning-web-api-skill-response-contains-warnings"></a>警告:Web API のスキル応答に警告が含まれています
 インデクサーはスキル セットでスキルを実行できましたが、Web API 要求からの応答には、実行中に警告が発生したことが示されています。 警告を確認して、データがどのように影響を受けているか、およびアクションが必要かどうかを理解します。
 
-### <a name="the-current-indexer-configuration-does-not-support-incremental-progress"></a>現在のインデクサー構成は増分の進行状況をサポートしていません
+<a name="the-current-indexer-configuration-does-not-support-incremental-progress"/>
+
+## <a name="warning-the-current-indexer-configuration-does-not-support-incremental-progress"></a>警告:現在のインデクサー構成は増分の進行状況をサポートしていません
+
 この警告は Cosmos DB データ ソースでのみ発生します。
 
 インデックスの作成中に増分の進行状況を利用すると、一時的な障害や実行の制限時間によってインデクサーの実行が中断された場合、次の実行時に、最初からコレクション全体のインデックスを再作成するのではなく、中断したところからインデックスを作成することができます。 大規模なコレクションのインデックスを作成する場合、この機能は特に重要です。
@@ -229,16 +269,47 @@ Web API の呼び出しに無効な応答が返されたため、スキルを実
 
 詳細については、「[増分の進行状況とカスタム クエリ](search-howto-index-cosmosdb.md#IncrementalProgress)」を参照してください。
 
-### <a name="some-data-was-lost-during-projection-row-x-in-table-y-has-string-property-z-which-was-too-long"></a>一部のデータがプロジェクション中に失われました。 テーブル "Y" の行 "X" に含まれる文字列プロパティ "Z" が長すぎました。
+<a name="some-data-was-lost-during projection-row-x-in-table-y-has-string-property-z-which-was-too-long"/>
+
+## <a name="warning-some-data-was-lost-during-projection-row-x-in-table-y-has-string-property-z-which-was-too-long"></a>警告:一部のデータがプロジェクション中に失われました。 テーブル "Y" の行 "X" に含まれる文字列プロパティ "Z" が長すぎました。
+
 [Table Storage サービス](https://azure.microsoft.com/services/storage/tables) には、[エンティティ プロパティ](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model#property-types) のサイズに制限があります。 文字列の長さは 32,000 文字以下になります。 文字列プロパティが 32,000 文字を超える行がプロジェクションされるとき、最初の 32,000 文字だけが保持されます。 この問題を回避するには、文字列プロパティが 32,000 文字を超える行のプロジェクションを回避します。
 
-### <a name="truncated-extracted-text-to-x-characters"></a>抽出されたテキストが X 文字に切り詰められました
+<a name="truncated-extracted-text-to-x-characters"/>
+
+## <a name="warning-truncated-extracted-text-to-x-characters"></a>警告:抽出されたテキストが X 文字に切り詰められました
 インデクサーには、1 つのドキュメントから抽出できるテキストの量の制限があります。 この制限は、価格レベルによって異なります。Free レベルの場合は 32,000 文字、Basic レベルの場合は 64,000 文字、Standard レベル、Standard S2 レベル、および Standard S3 レベルの場合は 400 万文字です。 切り詰められたテキストには、インデックスが付けられません。 この警告を回避するには、大量のテキストを含むドキュメントを複数の小さなドキュメントに分割してみてください。 
 
 詳細については、「[インデクサー制限](search-limits-quotas-capacity.md#indexer-limits)」を参照してください。
 
-### <a name="could-not-map-output-field-x-to-search-index"></a>出力フィールド "X" を検索インデックスにマップできませんでした
+<a name="could-not-map-output-field-x-to-search-index"/>
+
+## <a name="warning-could-not-map-output-field-x-to-search-index"></a>警告:出力フィールド "X" を検索インデックスにマップできませんでした
 存在しないデータや null のデータを参照する出力フィールド マッピングがあると、ドキュメントごとに警告が発生し、結果は空のインデックス フィールドになります。 この問題を回避するには、出力フィールド マッピングのソース パスに誤りがないことを再確認するか、[条件付きスキル](cognitive-search-skill-conditional.md#sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist)を使用して既定値を設定します。
 
-### <a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>データ変更検出ポリシーは、キー列 "X" を使用するように構成されています。
+<a name="the-data-change-detection-policy-is-configured-to-use-key-column-x"/>
+
+## <a name="warning-the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>警告:データ変更検出ポリシーは、キー列 "X" を使用するように構成されています。
 [データ変更検出ポリシー](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies)には、変更検出に使用する列に関する特定の要件が与えられます。 そのような要件の 1 つは、ソース項目が変更されるたびにこの列が更新されるということです。 もう 1 つの要件は、この列の新しい値が前の値より大きくなるということです。 キー列ではこの要件が満たされません。更新のたびに変わるわけではないためです。 この問題を回避するには、変更検出ポリシーに別の列を選択します。
+
+<a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"/>
+
+## <a name="warning-document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>警告:Document text appears to be UTF-16 encoded, but is missing a byte order mark (ドキュメント テキストは UTF-16 でエンコードされているようですが、バイト オーダー マークがありません)
+
+[インデクサー解析モード](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters)では、テキストを解析する前に、テキストのエンコード方法が認識される必要があります。 テキストをエンコードする方法として最も一般的なのは、UTF-16 と UTF-8 の 2 つです。 UTF-8 は可変長エンコーディングで、各文字は 1 バイトから 4 バイト長です。 UTF-16 は固定長エンコーディングで、各文字は 2 バイト長です。 UTF-16 には、"ビッグ エンディアン" と "リトル エンディアン" という 2 種類のバリアントがあります。 テキストのエンコードは、テキストの前にある一連のバイトである "バイト オーダー マーク" によって決定されます。
+
+| エンコード | バイト オーダー マーク |
+| --- | --- |
+| UTF-16 ビッグ エンディアン | 0xFE 0xFF |
+| UTF-16 リトル エンディアン | 0xFF 0xFE |
+| UTF-8 | 0xEF 0xBB 0xBF |
+
+バイト オーダー マークが存在しない場合、テキストは UTF-8 としてエンコードされていると見なされます。
+
+この警告を回避するには、この BLOB のテキストのエンコードが何であるか特定し、適切なバイト オーダー マークを追加します。
+
+<a name="cosmos-db-collection-has-a-lazy-indexing-policy"/>
+
+## <a name="warning-cosmos-db-collection-x-has-a-lazy-indexing-policy-some-data-may-be-lost"></a>警告:Cosmos DB コレクション "X" には、Lazy インデックス作成ポリシーがあります。 一部のデータが失われるおそれがあります
+
+[Lazy](https://docs.microsoft.com/azure/cosmos-db/index-policy#indexing-mode) インデックス作成ポリシーを持つコレクションには、一貫性のあるクエリを実行できません。そのため、インデクサーにはデータがありません。 この警告を回避するには、インデックス作成ポリシーを Consistent に変更します。

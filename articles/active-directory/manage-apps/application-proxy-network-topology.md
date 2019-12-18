@@ -1,5 +1,5 @@
 ---
-title: Azure AD アプリケーション プロキシのネットワーク トポロジに関する注意事項 | Microsoft Docs
+title: Azure AD アプリケーション プロキシのネットワーク トポロジに関する注意事項
 description: Azure AD アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項について説明しています。
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7320df63885f562b4724285a3ca5c3cf6ea2a52
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 075b2c92168afe0c366608266c38b14394b73cff
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381450"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275482"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項
 

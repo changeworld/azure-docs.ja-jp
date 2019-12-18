@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d337d026e89d2383e25498288ba11a9c60f77b39
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498169"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228987"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight 用の仮想ネットワークを計画する
 
@@ -221,7 +221,7 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
 
 1. HDInsight を使用する予定の Azure リージョンを特定します。
 
-2. HDInsight が必要とする IP アドレスを特定します。 詳細については、[HDInsight 管理 IP アドレス](hdinsight-management-ip-addresses.md)に関する記事を参照してください。
+2. 自分のリージョンで HDInsight が必要とするサービス タグを特定します。 詳細については、「[Azure HDInsight のネットワーク セキュリティ グループ (NSG) サービス タグ](hdinsight-service-tags.md)」を参照してください。
 
 3. HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループを作成または変更します。
 
@@ -233,7 +233,7 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
 
 HDInsight クラスターからの送信トラフィックを制御する方法の詳細については、「[Azure HDInsight クラスターの送信ネットワーク トラフィック制限の構成](hdinsight-restrict-outbound-traffic.md)」を参照してください。
 
-#### <a name="forced-tunneling-to-on-premise"></a>オンプレミスへの強制トンネリング
+#### <a name="forced-tunneling-to-on-premises"></a>オンプレミスへの強制トンネリング
 
 強制トンネリングは、サブネットからのすべてのトラフィックを強制的に、特定のネットワークまたは場所に送るユーザー定義のルーティングの構成です。 HDInsight では、オンプレミス ネットワークへのトラフィックの強制トンネリングはサポートされて__いません__。 
 

@@ -1,24 +1,18 @@
 ---
-title: App Service Environment の概要 - Azure
-description: Azure App Service Environment の簡単な概要
-services: app-service
-documentationcenter: na
+title: はじめに
+description: Azure App Service Environments を利用して、完全に分離された専用の環境でアプリをスケーリング、セキュリティ保護、および最適化する方法について学習します。
 author: ccompy
-manager: stefsch
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5a7374af71b262a72b680ac215f6960f961b3a15
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 35b667056698fdb2563ad9b1be9af19bcc98c1cc
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470613"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688604"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
  

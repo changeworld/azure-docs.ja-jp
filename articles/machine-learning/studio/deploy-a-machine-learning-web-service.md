@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 4324d33a9da66c5f49645e1c8014bd5f57d37bd9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: a2c1ba1d4cd2dfdbf2a94005c539e70705486ba4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837741"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851096"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (クラシック) Web サービスをデプロイする
 
@@ -121,7 +121,7 @@ Machine Learning Studio (クラシック) Web サービスへのアクセスの�
 
 ### <a name="manage-your-new-web-service"></a>新しい Web サービスを管理する
 
-新しい Web サービスの Machine Learning Studio (クラシック) Web サービス ポータルを管理できます。 [メイン ポータル ページ](https://services.azureml-test.net/) で **[Web サービス]** をクリックします。 Web サービスのページでは、サービスを削除したり、コピーしたりすることができます。 特定のサービスを監視するには、サービスをクリックし、 **[ダッシュボード]** をクリックします。 Web サービスに関連付けられたバッチ ジョブを監視するには、 **[Batch Request Log (バッチ要求ログ)]** をクリックします。
+Machine Learning Studio (クラシック) Web サービス ポータルを使用して新しい Web サービスを管理できます。 [メイン ポータル ページ](https://services.azureml.net/) で **[Web サービス]** をクリックします。 Web サービスのページでは、サービスを削除したり、コピーしたりすることができます。 特定のサービスを監視するには、サービスをクリックし、 **[ダッシュボード]** をクリックします。 Web サービスに関連付けられたバッチ ジョブを監視するには、 **[Batch Request Log (バッチ要求ログ)]** をクリックします。
 
 ### <a id="multi-region"></a>複数のリージョンへの新しい Web サービスのデプロイ
 

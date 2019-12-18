@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 072c58377645c807328bfcd79028daad70df7338
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b1578547fbca4caaecb209021569f0fbb2f1ae24
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102108"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790642"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用して SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -337,12 +337,13 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualM
 > ブート診断に関するエラーが表示される場合、そのエラーは無視できます。 仮想マシンのディスク用に指定したストレージ アカウントは Premium Storage アカウントであるため、ブート診断用に Standard Storage アカウントが作成されることに注意してください。
 
 ## <a name="install-the-sql-iaas-agent"></a>SQL Iaas Agent のインストール
-SQL Server 仮想マシンでは、[SQL Server IaaS エージェントの拡張機能](virtual-machines-windows-sql-server-agent-extension.md)を使用して自動管理機能をサポートします。 新しい VM にエージェントをインストールするには、VM の作成後に次のコマンドを実行します。
+SQL Server 仮想マシンでは、[SQL Server IaaS エージェントの拡張機能](virtual-machines-windows-sql-server-agent-extension.md)を使用して自動管理機能をサポートします。 エージェントを新しい VM にインストールし、リソース プロバイダーに登録するには、仮想マシンが作成された後に、[New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) コマンドを実行します。 SQL Server VM のライセンスの種類を指定し、[[Azure ハイブリッド特典]](https://azure.microsoft.com/pricing/hybrid-benefit/) を使用して従量課金制またはライセンス持ち込みを選択します。 ライセンスの詳細については、「[ライセンス モデル](virtual-machines-windows-sql-ahb.md)」を参照してください。 
 
 
    ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
 
 ## <a name="stop-or-remove-a-vm"></a>VM の停止または削除
 
@@ -419,8 +420,8 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName $Publis
 # Create the VM in Azure
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
-# Add the SQL IaaS Extension
-Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+# Add the SQL IaaS Extension, and choose the license type
+New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
 ```
 
 ## <a name="next-steps"></a>次の手順

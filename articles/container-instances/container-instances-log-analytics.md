@@ -1,21 +1,17 @@
 ---
-title: Azure Monitor ログによるコンテナー インスタンスのログ記録
-description: Azure コンテナー インスタンスから Azure Monitor ログにログを送信する方法について学習します。
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
-ms.topic: overview
+title: コンテナー グループのリソース ログ
+description: Azure Container Instances のコンテナー グループからリソース ログとイベント データを Azure Monitor ログに送信する方法について説明します
+ms.topic: article
 ms.date: 09/02/2019
 ms.author: danlep
-ms.openlocfilehash: 1c4846414036e86d460d9abe0bd93e785e710395
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 02f950917f43b514f83bd7e10078c79634c6c751
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258466"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533730"
 ---
-# <a name="container-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー インスタンスのログ記録
+# <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー グループおよびインスタンスのログ記録
 
 Log Analytics ワークスペースは、Azure リソースだけでなくオンプレミスのリソースや他のクラウドのリソースからのログ データも格納して照会できる一元的な場所を提供します。 Azure Container Instances には、ログとイベント データを Azure Monitor ログに送信するための組み込みサポートが含まれています。
 

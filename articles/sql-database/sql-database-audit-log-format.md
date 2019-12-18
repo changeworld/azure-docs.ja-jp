@@ -4,19 +4,17 @@ description: SQL Database 監査ログの構成方法について説明します
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 389404f59b5a0cba1acd7aa097ddd3dd929d8082
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821994"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928634"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database 監査ログの形式
 
@@ -32,13 +30,16 @@ BLOB ストレージに格納されている監査ログは、Azure Storage ア�
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
+[読み取り専用レプリカ](sql-database-read-scale-out.md)の監査ログは、同じコンテナーに格納されます。 コンテナー内のディレクトリ階層は、`<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` という形式になります。 BLOB ファイル名は同じ形式を共有します。 読み取り専用レプリカの監査ログは、同じコンテナーに格納されます。
+
+
 ### <a name="event-hub"></a>イベント ハブ
 
-監査イベントは、監査の構成中に定義された名前空間とイベント ハブに書き込まれ、[Apache Avro](https://avro.apache.org/) イベントの本体に入れられ、UTF-8 エンコードされた JSON の書式設定を使用して格納されます。 監査ログを読み取るために、[Avro Tools](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) またはこの形式を処理する同様のツールを使用できます。
+監査イベントは、監査の構成中に定義された名前空間とイベント ハブに書き込まれ、[Apache Avro](https://avro.apache.org/) イベントの本体に入れられ、UTF-8 エンコードされた JSON の書式設定を使用して格納されます。 監査ログを読み取るために、[Avro Tools](../event-hubs/event-hubs-capture-overview.md#use-avro-tools) またはこの形式を処理する同様のツールを使用できます。
 
 ### <a name="log-analytics"></a>Log Analytics
 
-監査イベントは、監査の構成中に定義された Log Analytics ワークスペースである `AzureDiagnostics` カテゴリを持つテーブル `SQLSecurityAuditEvents`に書き込まれます。 Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search)に関するページをご覧ください。
+監査イベントは、監査の構成中に定義された Log Analytics ワークスペースである `AzureDiagnostics` カテゴリを持つテーブル `SQLSecurityAuditEvents`に書き込まれます。 Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](../log-analytics/log-analytics-log-search.md)に関するページをご覧ください。
 
 ## <a id="subheading-1"></a>監査ログのフィールド
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:マイクから音声を認識する、C# (Unity) - Speech Service
+title: クイック スタート:マイクから音声を認識する、C# (Unity) - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,24 +10,27 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: babc6b1c0b6207d404091db3117f95f6d71c53ac
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0a9eddf147eedfa972e0574e62c9e7c2eace84f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505557"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818877"
 ---
 > [!NOTE]
 > Unity 用 Speech SDK では、Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM、ARM64)、Android (x86、ARM32、ARM64)、および iOS (x64 シミュレーター、ARM32 および ARM64) がサポートされています
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、必ず次のことを行ってください。
+開始する前に、以下の操作を行います。
 
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
-> * [開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=unity)
-> * [空のサンプル プロジェクト](../../../../quickstarts/create-project.md?tabs=unity) を作成します。既に作成済みの場合は このまま続けましょう。
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=unity)
+> * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=unity)
+> * オーディオ キャプチャ用のマイクにアクセスできることを確認する
+
+既にこれを行っている場合は、これで完了です。 このまま続けましょう。
 
 ## <a name="create-a-unity-project"></a>Unity プロジェクトを作成する
 
@@ -86,7 +89,7 @@ Unity プロジェクトにサンプル スクリプト コードを追加する
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/unity/from-microphone/Assets/Scripts/HelloWorld.cs#code)]
 
-1. `YourSubscriptionKey` という文字列を探し、実際の Speech Services のサブスクリプション キーに置き換えます。
+1. `YourSubscriptionKey` という文字列を探し、実際の Speech サービスのサブスクリプション キーに置き換えます。
 
 1. `YourServiceRegion` という文字列を探し、実際のサブスクリプションに関連付けられている[リージョン](~/articles/cognitive-services/Speech-Service/regions.md)に置き換えます。 たとえば、無料試用版を使用している場合、リージョンは `westus` になります。
 
@@ -117,7 +120,7 @@ Unity エディターに戻り、ゲーム オブジェクトの 1 つにコン�
 
 1. [ **[Game]\(ゲーム\)** ビュー](https://docs.unity3d.com/Manual/GameView.html)にアクセスし、**テキスト** オブジェクトに **[Click button to recognize speech]\(ボタンをクリックして音声を認識する\)** が表示されるまで待機します (アプリケーションが開始されていないか、応答する準備ができていない場合は、**新しいテキスト**が表示されます)。
 
-1. ボタンを選択し、コンピューターのマイクに向かって英語のフレーズや文章を話します。 音声が Speech Services に送信されてテキストに変換され、 **[Game]\(ゲーム\)** ビューに表示されます。
+1. ボタンを選択し、コンピューターのマイクに向かって英語のフレーズや文章を話します。 音声が Speech サービスに送信されてテキストに変換され、 **[Game]\(ゲーム\)** ビューに表示されます。
 
    [![Unity エディターの [Game]\(ゲーム\) ビュー](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png)](~/articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-unity-03-output-inline.png#lightbox)
 

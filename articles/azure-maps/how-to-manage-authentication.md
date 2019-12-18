@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 496edb4f3528daa5bd06193383f0277922e8a93a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 057bd18c50d7074e8a88b8273bec766a306a3776
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478773"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484359"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Azure Maps での認証の管理
 
@@ -112,4 +112,4 @@ Azure Maps アカウントにおける API 使用状況のメトリックを表�
 Azure Active Directory (AAD) と Azure Maps を統合する方法を示すサンプルの一覧については、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [AAD 認証のサンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+> [Azure AD 認証サンプル](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

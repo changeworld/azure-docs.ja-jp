@@ -1,22 +1,18 @@
 ---
-title: Azure Logic Apps から RSS フィードに接続する | Microsoft Docs
+title: Azure Logic Apps から RSS フィードに接続する
 description: Azure Logic Apps を使用して RSS フィードを監視および管理するタスクとワークフローを自動化する
 services: logic-apps
-ms.service: logic-apps
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
 ms.topic: article
-ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 70b250074395977f70ac1b3eb0ce3ffdc96fced1
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 3f1e092c2ff325cdcbc32c617af316d6fbe6dd74
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050853"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789343"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して RSS フィードを管理する
 

@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C から Application Insights のイベントを使用してユーザーの動作を追跡する | Microsoft Docs
+title: Application Insights でのユーザー動作の追跡
+titleSuffix: Azure AD B2C
 description: カスタム ポリシーを使用して、Azure AD B2C ユーザー体験から Application Insights のイベント ログを有効にする方法について説明します (プレビュー)。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 6643759688817811890fd022c7aa061607270b9e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066183"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948948"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights を使用した Azure Active Directory B2C でのユーザー動作の追跡
 

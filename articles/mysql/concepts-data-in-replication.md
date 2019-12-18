@@ -1,17 +1,17 @@
 ---
-title: データを Azure Database for MySQL にレプリケートする
+title: データイン レプリケーション - Azure Database for MySQL
 description: データイン レプリケーションを使用して、外部のサーバーから Azure Database for MySQL サービスに同期する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: b501a1f1ea54aff5617932dc5085d6d19f86976c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 58882f7569e26ebcba237158db2eb23e76bcd015
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970362"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765088"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>データを Azure Database for MySQL にレプリケートする
 

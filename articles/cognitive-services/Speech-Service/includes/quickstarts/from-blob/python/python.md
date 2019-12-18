@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:BLOB ストレージに格納された音声を認識する (C#) - Speech Service
+title: クイック スタート:BLOB ストレージに格納された音声を認識する、C# - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 40b226796b4dfb9aced3c6b00eba1a12bad66894
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9223fa484d45b927059c73e23e0607526e70fae4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506157"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829073"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,9 +34,9 @@ ms.locfileid: "73506157"
 
 次のインストール手順に従います。
 
-1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](https://editor.swagger.io ) にアクセスします。
+1. https://editor.swagger.io にアクセスします。
 1. **[ファイル]** 、 **[URL のインポート]** の順にクリックします。
-1. ご利用の Speech Services サブスクリプションのリージョンを含む Swagger URL を入力します: `https://<your-region>.cris.ai/docs/v2.0/swagger`
+1. ご利用の Speech サービス サブスクリプションのリージョンを含む Swagger URL (`https://<your-region>.cris.ai/docs/v2.0/swagger`) を入力します。
 1. **[クライアントの生成]** をクリックし、 **[Python]** を選択します。
 1. クライアント ライブラリを保存します。
 1. ダウンロードした python-client-generated.zip を、ご自身のファイル システム内の任意の場所に抽出します。
@@ -71,19 +71,19 @@ pip install requests
 
 ## <a name="create-and-configure-an-http-client"></a>Http クライアントを作成して構成する
 最初に必要なのは、適切なベース URL と認証セットを含む Http クライアントです。
-このコードを `transcribe` [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)] に挿入します
+このコードを `transcribe` [!code-python に挿入します。[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=37-45)]
 
 ## <a name="generate-a-transcription-request"></a>文字起こし要求を生成する
-次に、文字起こし要求を生成します。 このコードを `transcribe` [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)] に追加します
+次に、文字起こし要求を生成します。 このコードを `transcribe` に追加します。[!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=52-54)]
 
 ## <a name="send-the-request-and-check-its-status"></a>要求を送信し、その状態を確認する
-ここで、Speech Service に要求を投稿し、初期の応答コードを確認します。 この応答コードは、サービスが要求を受信したかどうかを示すだけに過ぎません。 サービスからは応答ヘッダーで URL が返され、文字起こしの状態はこの URL に格納されます。
+ここで、Speech サービスに要求を投稿し、初期の応答コードを確認します。 この応答コードは、サービスが要求を受信したかどうかを示すだけに過ぎません。 サービスからは応答ヘッダーで URL が返され、文字起こしの状態はこの URL に格納されます。
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=65-73)]
 
 ## <a name="wait-for-the-transcription-to-complete"></a>文字起こしが完了するのを待つ
 サービスでは文字起こしが非同期的に処理されるため、その状態を頻繁にポーリングする必要があります。 チェックは 5 秒ごとに実行します。
 
-この Speech Service リソースが処理しているすべての文字起こしを列挙し、作成した文字起こしを検索します。
+この Speech サービス リソースが処理しているすべての文字起こしを列挙し、作成した文字起こしを検索します。
 
 ここでは、正常な完了を除くすべての状態が示されているポーリング コードを示します。正常な完了については次に取り上げます。
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=75-94,99-112)]
@@ -95,7 +95,7 @@ pip install requests
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=95-98)]
 
 ## <a name="check-your-code"></a>コードを確認する
-この時点で、コードは次のようになります。(このバージョンにはいくつかのコメントを追加しました) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-118)]
+この時点で、コードは次のようになります。(このバージョンにはいくつかのコメントを追加してあります) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-118)]
 
 ## <a name="build-and-run-your-app"></a>アプリをビルドして実行する
 

@@ -1,24 +1,17 @@
 ---
-title: GitHub Actions を使用して CI/CD パイプラインからご自分のコンテナーをデプロイする - Azure App Service | Microsoft Docs
-description: GitHub アクションを使用してコンテナーを App Service にデプロイする方法について説明します
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: GitHub アクションからのカスタム コンテナー CI/CD
+description: GitHub アクションを使用してカスタム Linux コンテナーを CI/CD パイプラインから App Service にデプロイする方法について説明します。
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 7fbd7b571f5590ff35d52062cc621069a47b619c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 127dd8645596b605980bf3c6fbc87bf159f7c03e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620226"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671805"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub Actions を使用した App Service へのカスタム コンテナーのデプロイ
 

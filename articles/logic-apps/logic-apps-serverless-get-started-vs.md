@@ -1,21 +1,17 @@
 ---
-title: Visual Studio で最初のサーバーレス アプリを構築する - Azure Logic Apps
+title: Visual Studio で最初のサーバーレス アプリを構築する
 description: Visual Studio で Azure Logic Apps と Azure Functions を使用してサーバーレス アプリを構築、デプロイ、および管理する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: vs-azure
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 76ab76440ddc25f4b1cf51f7d540a6e21614541d
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 4ed2ad2d2ff92e9320a7b9c773c4d6e5857fb905
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680131"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792971"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Visual Studio で Azure Logic Apps と Azure Functions を使用して初めてのサーバーレス アプリを構築する
 

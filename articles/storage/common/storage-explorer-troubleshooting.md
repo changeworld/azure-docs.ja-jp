@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 4aa9e93831b902ff9f0a0659c650cd2ca123b1a3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 3d5b1ab4e72ec759098e9c71515200f89a8dfe82
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74124012"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931208"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -95,7 +95,7 @@ Storage Explorer は自己署名証明書または信頼されない証明書が
 
 空白のサインイン ダイアログ ボックスが表示されるのは、多くの場合、Active Directory フェデレーション サービス (AD FS) が Storage Explorer に対して、リダイレクトを実行するよう指示した場合です。これは、Electron ではサポートされていません。 この問題を回避するには、サインインにデバイス コード フローを使用してみることができます。 これを行うには、次のステップに従います。
 
-1. メニューで、 **[プレビュー]**  >  **[Use Device Code Sign-In]\(デバイス コード サインインの使用\)** の順に移動します。
+1. 左側の垂直ツールバーで、 **[設定]** を開きます。 [設定] パネルで、 **[アプリケーション]**  >  **[サインイン]** にアクセスします。 **[デバイス コード フロー サインインの使用]** を有効にします。
 2. **[接続]** ダイアログを開きます (左側の垂直バーのプラグ アイコン、またはアカウント パネルの **[アカウントの追加]** を使用)。
 3. サインインする環境を選択します。
 4. **[サインイン]** を選択します。
@@ -301,7 +301,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 Linux 用の Storage Explorer の場合、次のパッケージが最も一般的な要件となります。
 
-* [.NET Core 2.0 ランタイム](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x)
+* [.NET Core 2.2 ランタイム](/dotnet/core/install/dependencies?tabs=netcore22&pivots=os-linux)
 * `libgconf-2-4`
 * `libgnome-keyring0` または `libgnome-keyring-dev`
 * `libgnome-keyring-common`

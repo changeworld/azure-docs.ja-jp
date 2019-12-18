@@ -1,24 +1,18 @@
 ---
-title: App Service Environment の送信トラフィックのロックダウン - Azure
-description: Azure Firewall と統合して送信トラフィックをセキュリティで保護する方法について説明します
-services: app-service
-documentationcenter: na
+title: 送信トラフィックをロックダウンする
+description: Azure Firewall と統合して、App Service 環境内からの送信トラフィックをセキュリティで保護する方法について説明します。
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 038178b3b73e9b07ce96e079403cb641f8efe8b1
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: c78749d9d0f0bd4b1dadb8dc0d2f6dd84408a95e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210063"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687226"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
@@ -29,6 +23,9 @@ ASE が持っている受信依存関係は複数あります。 受信管理ト
 ASE の送信依存関係は、ほぼすべて、背後に静的アドレスがない FQDN を使用して定義されています。 静的アドレスがないということは、ネットワーク セキュリティ グループ (NSG) を使用して ASE からの送信トラフィックをロックできないことを意味します。 アドレスは頻繁に変わるので、現在の解決策に基づいてルールを設定し、それを使用して NSG を作成することができません。 
 
 送信アドレスをセキュリティで保護する解決策は、ドメイン名に基づいて送信トラフィックを制御できるファイアウォール デバイスの使用方法にあります。 Azure Firewall では、宛先の FQDN に基づいて送信 HTTP および HTTPS トラフィックを制限できます。  
+
+> [!NOTE]
+> 現時点では、送信接続を完全にロックダウンすることはできません。
 
 ## <a name="system-architecture"></a>システム アーキテクチャ
 

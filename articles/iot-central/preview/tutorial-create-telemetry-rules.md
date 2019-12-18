@@ -1,19 +1,19 @@
 ---
-title: Azure IoT Central アプリケーションでルールを作成して管理する | Microsoft Docs
-description: Azure IoT Central のルールを使用すると、ほぼリアルタイムでデバイスを監視し、ルールがトリガーされたときに、電子メールの送信などのアクションを自動的に呼び出すことができます。
+title: チュートリアル - Azure IoT Central アプリケーションでルールを作成して管理する
+description: このチュートリアルでは、Azure IoT Central のルールを使用して、ほぼリアルタイムでデバイスを監視し、ルールがトリガーされたときに、電子メールの送信などのアクションを自動的に呼び出す方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6327ee8a1b0d52c933844670d9b8098c2c3c4f09
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 793bb46e14725b14c766569e8b0fc2aa0246858e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958141"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979055"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>チュートリアル:Azure IoT Central アプリケーションでルールを作成して通知を設定する (プレビュー機能)
 
@@ -80,7 +80,7 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
 
 1. **[アクション]** セクションで **[+ 電子メール]** を選択します。
 
-1. アクションの表示名として「_温度の警告_」と入力し、 **[宛先]** フィールドに電子メール アドレスを入力し、メールの本文に表示される注記として「_デバイスを確認する必要があります_」 と入力します。
+1. アクションの表示名として「_温度の警告_」と入力し、 **[宛先]** フィールドにメール アドレスを入力し、メールの本文に表示される注記として「_デバイスを確認する必要があります_」 と入力します。
 
     > [!NOTE]
     > 電子メールは、アプリケーションに追加されており、少なくとも 1 回はログインしているユーザーにのみ送信されます。 Azure IoT Central での[ユーザー管理](howto-administer.md)について詳しくは、こちらをご覧ください。

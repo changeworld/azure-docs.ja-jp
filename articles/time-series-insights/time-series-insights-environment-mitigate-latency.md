@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7ea98baa9cb202e2584c18998c5ab96d1c1f9e5a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012652"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561357"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Azure Time Series Insights で待機時間を削減するために調整を監視して緩和する
 
@@ -42,13 +42,13 @@ ms.locfileid: "74012652"
 
 アラートは、環境に起因する待機時間の問題の診断および緩和に役立ちます。
 
-1. Azure portal で、 **[アラート]** を選択します。
+1. Azure portal で、Time Series Insights 環境を選択します。 次に、 **[アラート]** を選択します。
 
-   [![アラート](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![Time Series Insights 環境にアラートを追加する](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. **[ルールの作成]** パネルが表示されます。 **[条件]** の **[追加]** を選択します。
 
-   [![アラートの追加](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [![アラート ペインの追加](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
 1. 次に、シグナル ロジックの正確な条件を構成します。
 
@@ -70,7 +70,7 @@ ms.locfileid: "74012652"
 
 1. 目的のシグナル ロジックを構成したら、選択したアラート規則を目視で確認します。
 
-   [![イングレス](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [![待機時間の表示とグラフ作成](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png)](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>調整とイングレスの管理
 

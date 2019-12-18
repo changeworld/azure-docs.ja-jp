@@ -3,16 +3,16 @@ title: Azure Data Explorer の機械学習機能
 description: Azure Data Explorer での根本原因分析には機械学習クラスタリングを使用します。
 author: orspod
 ms.author: orspodek
-ms.reviewer: jasonh
+ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: bc72cc21ab525ec82d9ce4b24e80ce82d92a5d21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe72031ef9ade7473dc4d5de7e090e92ef2a6843
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233499"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769933"
 ---
 # <a name="machine-learning-capability-in-azure-data-explorer"></a>Azure Data Explorer の機械学習機能
 
@@ -24,7 +24,9 @@ Azure Data Explorer には、[`autocluster`](/azure/kusto/query/autoclusterplugi
 
 ## <a name="clustering-a-single-record-set"></a>単一レコード セットのクラスター化
 
-一般的なシナリオには、異常な動作、高温状態のデバイスの測定値、長時間におよんでいるコマンド、および消費量の多いユーザーを示している時間ウィンドウなど、特定の条件によって選択されたデータ セットが含まれます。 データ内の共通するパターン (セグメント) をシンプルかつ迅速に検索する方法を必要としています。 パターンとは、複数のディメンション (カテゴリ列) にわたって同じ値を共有するレコードを持つデータ セットのサブセットです。 次のクエリでは、サービスの例外の時系列が 1 週間にわたり 10 分間のビンで作成され表示されます。
+一般的なシナリオには、異常な動作、高温状態のデバイスの測定値、長時間におよんでいるコマンド、および消費量の多いユーザーを示している時間ウィンドウなど、特定の条件によって選択されたデータ セットが含まれます。 データ内の共通するパターン (セグメント) を簡単かつ迅速に検索する方法を必要としています。 パターンとは、複数のディメンション (カテゴリ列) にわたって同じ値を共有するレコードを持つデータ セットのサブセットです。 次のクエリでは、サービスの例外の時系列が 1 週間にわたり 10 分間のビンで作成され表示されます。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPsaoCQQyF4d6nCFa7oHCtZd9B0F6G8ajByWTJZHS5+PDOgpVgYRn485EkOAnno9NAriWGFKw7QfQYUy0O43zZ0JNKFQnG/5jrbmeIXHBgwd6DjH2/JVqk2QrTL1aYvlifa4tni29YlzaiUK4yRK3Zu54006dBZ1N5/+X6PqpRI23+pFGGfIKRtz5egzk92K+dsycMyz3szhGEKWJ01lxI760O9ABuq0bMcvV2hqFoqnOz7F9BdSHlSgEAAA==) **\]**
 
 ```kusto
 let min_t = toscalar(demo_clustering1 | summarize min(PreciseTimeStamp));  
@@ -40,6 +42,8 @@ demo_clustering1
 
 データの急激な増加が 2 番目に発生しているのは火曜日の午後です。 このような急激な増加を詳しく診断するには、次のクエリを使用します。 このクエリを使用すると、急激な増加を示している付近のグラフがより高い解像度 (1 分間のビンで 8 時間) で再描画され、鋭角で急増しているかどうかや、その境界を確認することができます。
 
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAAyXNwQrCMBAE0Hu/YvHUooWkghSl/yDoyUsJyWpCk2xJNnjx403pbeYwbzwyBBdnnoxiZBewHYS89GLshzNIeRWiuzUGA83al8yYXPzI5gdBLdjnWjFDLGHSVCK3HVCEe0LtMj4r9mAVVngnCvsLMO3hOFqo2goyVCxhNJhgu9dWJYavY9uyY4/T4UV1XVm2CEM0kFe34AnkBhXGOs7kCzuKh+4P3/XM5M8AAAA=) **\]**
+
 ```kusto
 let min_t=datetime(2016-08-23 11:00);
 demo_clustering1
@@ -50,6 +54,8 @@ demo_clustering1
 ![急激な増加の時間グラフに焦点を合わせる](media/machine-learning-clustering/focus-spike-timechart.png)
 
 15 時 00 分から 15 時 02 分までの 2 分間という短い期間に急激な増加が発生したことがわかります。 次のクエリでは、この 2 分間の時間枠での例外の数がカウントされます。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA8tJLVHIzcyLL0hNzI4vsU1JLEktycxN1TAyMDTTNbDQNTJWMDS1MjDQtObKASlNrCCk1AioNCU1Nz8+Oae0uCS1KDMv3ZCrRqE8I7UoVSGgKDU5szg1BKgvuCQxt0AhKbWkPDU1TwPhBj09hCWaQI3J+aV5JQACnQoRpwAAAA==) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -64,6 +70,8 @@ demo_clustering1
 |972    |
 
 次のクエリでは、972 個の例外の中から 20 個をサンプリングします。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4XOsQrCMBSF4b1Pccd2aLmJKKL4DoLu4doeNDSJJb1SBx/eOHV0/37OCVCKPrkJMjo9DaJQH1FbNruW963dkNkemJtjFX5U3v+oLXRAfLo+vGZF9uluqg8tD2TQOaP3M66lu6jEiW7QBUj1+qHr1pGmhCojyPIX7QHvzakAAAA=) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -100,6 +108,8 @@ demo_clustering1
 
 例外の数が 1,000 未満であっても、各列には複数の値が含まれているため、共通するセグメントを見つけにくいことには変りありません。 [`autocluster()`](/azure/kusto/query/autoclusterplugin) を使用すれば、次のクエリに示されているように、共通するセグメントの小規模なリストを瞬時に抽出し、急激に増加した 2 分間において興味深いクラスターを検索することができます。
 
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQrCMBRF937FG5OhJYkoovQfBN1DbC8aTNqSvlgHP94IQkf3c+65AUzRD3aCe1hue8dgHyGM0rta7WuzIb09KCWPVfii7vUPNQXtEUfbhTwzkh9uunrTckcCnRI6P+NSvDO7ONEVvACDWD80zRqRRcTThVxa5DKPv00hP81KL1+4AAAA) **\]**
+
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
 let max_peak_t=datetime(2016-08-23 15:02);
@@ -123,6 +133,8 @@ Autocluster では、複数のディメンションをマイニングして、�
 ### <a name="use-basket-for-single-record-set-clustering"></a>basket() を使用して単一レコード セットをクラスタ化する
 
 次のクエリに示すように、[`basket()`](/azure/kusto/query/basketplugin) プラグインを使用することもできます。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA4WOsQ6CMBgGd57iH9sB0tZojMZ3MNG9KfBFG1og7Y84+PDWidH9LncBTNGPdoYbLF96x2AfIYzSh1oda7MjvT8pJc9V+KHu/Q81Be0RJ9uFJTOSHx+6+tD6RAJdEzqfcS/ejV2cqQWvwCi2h6bZIrKIeLmwlBa1Lg9gIb9KJv2TswAAAA==) **\]**
 
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
@@ -158,6 +170,8 @@ basket では、項目セットのマイニングのため Apriori アルゴリ�
 
 次のクエリでは、`diffpatterns` を使用して、ベースライン内のクラスターとは異なる、急激に増加した 2 分間での興味深いクラスターが検索されます。 15 時 00 分 (急激な増加が始まった時刻) より前の 8 分をベースライン ウィンドウとして定義します。 また、特定のレコードがベースラインまたは異常セットのどちらに属するかを指定するバイナリ列 (AB) によって拡張する必要があります。 `Diffpatterns` では監視下学習アルゴリズムが実装されます。ここで、異常対ベースライン フラグ (AB) によって 2 つのクラス ラベルは生成済みです。
 
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA42QzU+DQBDF7/wVcwOi5UtrmhJM4OzBRO9kWqbtpssuYacfGv94t0CrxFTd02by5jfvPUkMtVBlQ7gtOauQiUVNXhLFD5NoNknuIJ7Oo8hPHXmS4vEvaXKWWuoCDUmh6Jr8fj79Tv6HfOanEIbwRLgnQFhjAwviA5EC3hCcCYCq6gamEVsC1oB7LfoRt6iMYKEVvGtFQXfeNFKc7mXe2MjNVzl+mARR6lRU63Ipd4apFWodOx9w2FBL4D23tBSGXi3mhbG+OPPGVQTB+ITvg24dGN7vlN5JTxhc+dYAHZls4LzIxGr1k/B4iXcLbq50jfLNtd9i8OB2jD3KnW0dKstokG08Zby8uLbyCfX/tG46AgAA) **\]**
+
 ```kusto
 let min_peak_t=datetime(2016-08-23 15:00);
 let max_peak_t=datetime(2016-08-23 15:02);
@@ -182,6 +196,8 @@ demo_clustering1
 | 6 | 57 | 204 | 5.86 | 16.56 | 10.69 |  |  |  |  |
 
 最も際立っているセグメントは、`autocluster` によって抽出されたセグメントと同じです。2 分間の異常なウィンドウでのそのカバレッジは 65.74% です。 ただし、8 分間のベースライン ウィンドウでのそのカバレッジは 1.7% に過ぎません。 差異は 64.04% です。 この差異は、異常な急増に関連しているようです。 この想定を検証するには、次のクエリに示されるように、元のグラフを、この問題あるセグメントに属するレコードのグラフと他のセグメントに属するレコードのグラフに分割します。
+
+**\[** [**クリックするとクエリが実行されます**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WRsWrDMBCG9zzF4cmGGuJUjh2Ktw7tUkLTzuEsnRNRnRQkuSQlD185yRTo0EWIO913/J8MRWBttxE6iC5INOhzRey20owhktd2V8EZwsiMXv/Q9Dpfe5I60Idm2kTkQ1E8AczMxMLjf1h4/IN1PzY7Ax0jWQWBdomvhyF/p512FroOMsIxA0zdTdpKn1bHSzmMzbX8TAfjTkw2vqpLp69VpYQaatEogXOBsqrbtl5WDake6yabXWjkv7WkFxeuPGqG5VzWqhQrIUqx6B/L1WKB6aBViy01imT2ANnau94QT9c35xlNVqQAjF9UhpSHAtiRO+lGG/MCUoZ7CTB4x7ePie5mNbk4QDVn6E+ThUT0SQh5iGlM7tHHX4WFgLHOAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_clustering1 | summarize min(PreciseTimeStamp));  

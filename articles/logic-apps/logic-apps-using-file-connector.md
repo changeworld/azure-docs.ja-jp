@@ -1,20 +1,19 @@
 ---
-title: オンプレミスのファイル システムに接続する - Azure Logic Apps
+title: オンプレミスのファイル システムに接続する
 description: Azure Logic Apps でファイル システム コネクタを使用し、オンプレミス データ ゲートウェイを介してオンプレミスのファイル システムに接続するタスクとワークフローを自動化します。
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 1b5cf27c49a003042086cd9452f288c7f348d343
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799707"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792779"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps でオンプレミスのファイル システムに接続する
 

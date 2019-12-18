@@ -1,6 +1,6 @@
 ---
-title: チュートリアル:Azure IoT Hub Device Provisioning Service 用にデバイスをセットアップする
-description: チュートリアル:デバイスの製造プロセス中に、IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスを設定します。
+title: チュートリアル - Azure IoT Hub Device Provisioning Service 用にデバイスをセットアップする
+description: このチュートリアルでは、デバイスの製造プロセス中に、IoT Hub Device Provisioning Service (DPS) を使用してプロビジョニングするデバイスを設定する方法について説明します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e7f6151968fb14d44f1e330fb6ddc06fabad3ee6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 337ac2f60809370e6a07b2b0403d21ef7230b034
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112760"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976708"
 ---
 # <a name="tutorial-set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>チュートリアル:Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定
 
@@ -212,4 +212,3 @@ PROV_DEVICE_RESULT Prov_Device_LL_SetOption(PROV_DEVICE_LL_HANDLE handle, const 
 
 > [!div class="nextstepaction"]
 > [IoT ハブにデバイスをプロビジョニングする](tutorial-provision-device-to-hub.md)
-

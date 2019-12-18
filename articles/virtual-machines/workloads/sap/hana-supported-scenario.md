@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/06/2018
+ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f17e447f26ae4f7573941fc0c578a918ff45a145
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ed63f5caa6b1f1c0072a92f6a60ad43c5431af0
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101224"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538349"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA L インスタンスのサポートされるシナリオ
 このドキュメントでは、HANA L インスタンス (HLI) のサポートされるシナリオとそのアーキテクチャの詳細について説明します。
@@ -37,7 +37,7 @@ HLI ユニットのプロビジョニングに進む前に、SAP またはサー
 - 多目的 DR:DR イベントに使用するように構成された実稼働インスタンスと共に、非実稼働環境を使用するように構成された DR サイトのシステム。 
 - 単一 SID:1 つのインスタンスがインストールされているシステム。
 - マルチ SID:複数のインスタンスが構成されているシステム。 MCOS 環境とも呼ばれます。
-
+- HSR:SAP HANA システム レプリケーション。
 
 ## <a name="overview"></a>概要
 HANA L インスタンスは、ビジネス要件を達成するためにさまざまなアーキテクチャをサポートしています。 以下の一覧は、シナリオとその構成の詳細をまとめたものです。 
@@ -107,7 +107,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 
 アーキテクチャ図では、以下の表記がグラフィックに使用されています。
 
-![Legends.PNG](media/hana-supported-scenario/Legends.PNG)
+[ ![Legends.PNG](media/hana-supported-scenario/Legends.png)](media/hana-supported-scenario/Legends.png#lightbox)
 
 以下の一覧は、サポートされているシナリオです。
 
@@ -199,7 +199,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
 - ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 
-## <a name="3-single-node-with-dr-normal"></a>手順 3.DR (標準) ありの単一ノード
+## <a name="3-single-node-with-dr-using-storage-replication"></a>3.ストレージ レプリケーションを使用した DR の単一ノード
  
 このトポロジは、プライマリ SID の DR サイトに対するストレージベースのレプリケーション使用し、1 つまたは複数の SID を使用してスケールアップ構成で 1 つのノードをサポートします。 この図では、プライマリ サイトには 1 つの SID しか表示されていませんが、マルチ SID (MCOS) もサポートされています。
 
@@ -240,7 +240,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
 
-## <a name="4-single-node-with-dr-multipurpose"></a>4.DR (多目的) ありの単一ノード
+## <a name="4-single-node-with-dr-multipurpose-using-storage-replication"></a>4.ストレージ レプリケーションを使用した DR (多目的) の単一ノード
  
 このトポロジは、プライマリ SID の DR サイトに対するストレージベースのレプリケーション使用し、1 つまたは複数の SID を使用してスケールアップ構成で 1 つのノードをサポートします。 この図では、プライマリ サイトには 1 つの SID しか表示されていませんが、マルチ SID (MCOS) もサポートされています。 DR サイトでは、実稼働操作がプライマリ サイトから実行されているときに、HLA ユニットが QA インスタンスに使用されます。 DR のフェールオーバー (またはフェールオーバー テスト) 時には、DR サイトの QA インスタンスが停止されます。
 
@@ -289,7 +289,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 - DR: QA インスタンスのインストール用に、QA のデータ、ログバックアップ、ログ、共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
 
-## <a name="5-hsr-with-stonith"></a>5.STONITH ありの HSR
+## <a name="5-hsr-with-stonith-for-high-availability"></a>5.HSR と STONITH を使用した高可用性
  
 このトポロジは、HANA System Replication (HSR) 構成の 2 つのノードをサポートします。 この構成は、ノード上の単一 HANA インスタンスに対してのみサポートされます。 つまり、MCOS シナリオはサポートされません。
 
@@ -338,7 +338,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 - STONITH: SBD は STONITH 設定用に構成されています。 ただし、STONITH の使用は省略可能です。
 
 
-## <a name="6-hsr-with-dr"></a>6.DR ありの HSR
+## <a name="6-high-availability-with-hsr-and-dr-with-storage-replication"></a>6.HSR と DR を使用した高可用性とストレージ レプリケーション
  
 このトポロジは、HANA System Replication (HSR) 構成の 2 つのノードをサポートします。 標準 DR と多目的 DR の両方がサポートされます。 これらの構成は、ノード上の単一 HANA インスタンスに対してのみサポートされます。 つまり、これらの構成では MCOS シナリオはサポートされません。
 
@@ -515,7 +515,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 ### <a name="key-considerations"></a>重要な考慮事項
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
 
-## <a name="10-scale-out-with-dr"></a>10.DR ありのスケールアウト
+## <a name="10-scale-out-with-dr-using-storage-replication"></a>10.ストレージ レプリケーションを使用した DR のスケールアウト
  
 このトポロジは、DR ありのスケールアウト構成で複数のノードをサポートします。 標準 DR と多目的 DR の両方がサポートされます。 この図では、単一目的の DR のみが描かれています。 このトポロジは、スタンバイ ノードありまたはなしで依頼できます。
 
@@ -560,6 +560,239 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 -  DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("HANA のインストールに必須" とマークされています)。 
 - DR: データ、ログバックアップ、および共有ボリューム ("ストレージ レプリケーション" とマークされています) は、実稼働サイトのスナップショットを介してレプリケートされます。 これらのボリュームは、フェールオーバー時にのみマウントされます。 詳細については、「[ディザスター リカバリーのフェールオーバー手順](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)」のドキュメントを参照してください。 
 - **SKU Type I クラス**のブート ボリュームは DR ノードです。
+
+
+## <a name="11-single-node-with-dr-using-hsr"></a>11.HSR を使用した DR の単一ノード
+ 
+このトポロジは、プライマリ SID の DR サイトに対する HANA システムのレプリケーション使用し、1 つの SID を使用してスケールアップ構成で 1 つのノードをサポートします。 この図では、プライマリ サイトには 1 つの SID しか表示されていませんが、マルチ SID (MCOS) もサポートされています。
+
+### <a name="architecture-diagram"></a>アーキテクチャ ダイアグラム  
+
+![single-node-hsr-dr-111.png](media/hana-supported-scenario/single-node-hsr-dr-111.png)
+
+### <a name="ethernet"></a>イーサネット
+次のネットワーク インターフェイスは事前に構成されています。
+
+| NIC 論理インターフェイス | SKU の種類 | SUSE OS の場合の名前 | RHEL OS の場合の名前 | ユース ケース|
+| --- | --- | --- | --- | --- |
+| A | TYPE I | eth0.tenant | eno1.tenant | クライアントから HLI/HSR |
+| b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
+| C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
+| D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI/HSR |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+
+### <a name="storage"></a>Storage
+次のマウントポイントは、両方の HLI ユニット (プライマリと DR) の両方で事前に構成されています。
+
+| マウントポイント | ユース ケース | 
+| --- | --- |
+|/hana/shared/SID | SID の HANA のインストール | 
+|/hana/data/SID/mnt00001 | SID のデータ ファイルのインストール | 
+|/hana/log/SID/mnt00001 | SID のログ ファイルのインストール | 
+|/hana/logbackups/SID | SID の再実行ログ |
+
+
+### <a name="key-considerations"></a>重要な考慮事項
+- /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
+- MCOS の場合:ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
+- プライマリ ノードは、HANA システム レプリケーションを使用して DR ノードに同期します。 
+- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
+
+
+
+## <a name="12-single-node-hsr-to-dr-cost-optimized"></a>12.単一ノード HSR から DR (コスト最適化) 
+ 
+ このトポロジは、プライマリ SID の DR サイトに対する HANA システムのレプリケーション使用し、1 つの SID を使用してスケールアップ構成で 1 つのノードをサポートします。 この図では、プライマリ サイトには 1 つの SID しか表示されていませんが、マルチ SID (MCOS) もサポートされています。 DR サイトでは、実稼働操作がプライマリ サイトから実行されているときに、HLA ユニットが QA インスタンスに使用されます。 DR のフェールオーバー (またはフェールオーバー テスト) 時には、DR サイトの QA インスタンスが停止されます。
+
+### <a name="architecture-diagram"></a>アーキテクチャ ダイアグラム  
+
+![single-node-hsr-dr-cost-optimized-121.png](media/hana-supported-scenario/single-node-hsr-dr-cost-optimized-121.png)
+
+### <a name="ethernet"></a>イーサネット
+次のネットワーク インターフェイスは事前に構成されています。
+
+| NIC 論理インターフェイス | SKU の種類 | SUSE OS の場合の名前 | RHEL OS の場合の名前 | ユース ケース|
+| --- | --- | --- | --- | --- |
+| A | TYPE I | eth0.tenant | eno1.tenant | クライアントから HLI/HSR |
+| b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
+| C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
+| D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI/HSR |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+
+### <a name="storage"></a>Storage
+次のマウントポイントは事前に構成されています。
+
+| マウントポイント | ユース ケース | 
+| --- | --- |
+|**プライマリ サイト**|
+|/hana/shared/SID | 実稼働 SID 用 HANA のインストール | 
+|/hana/data/SID/mnt00001 | 実稼働 SID 用データ ファイルのインストール | 
+|/hana/log/SID/mnt00001 | 実稼働 SID 用ログ ファイルのインストール | 
+|/hana/logbackups/SID | 実稼働 SID 用再実行ログ |
+|**DR サイト**|
+|/hana/shared/SID | 実稼働 SID 用 HANA のインストール | 
+|/hana/data/SID/mnt00001 | 実稼働 SID 用データ ファイルのインストール | 
+|/hana/log/SID/mnt00001 | 実稼働 SID 用ログ ファイルのインストール | 
+|/hana/logbackups/SID | 実稼働 SID 用再実行ログ |
+|/hana/shared/QA-SID | QA SID 用 HANA のインストール | 
+|/hana/data/QA-SID/mnt00001 | QA SID 用データ ファイルのインストール | 
+|/hana/log/QA-SID/mnt00001 | QA SID 用ログ ファイルのインストール |
+|/hana/logbackups/QA-SID | QA SID 用再実行ログ |
+
+### <a name="key-considerations"></a>重要な考慮事項
+- /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
+- MCOS の場合:ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
+- DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("DR サイトの実稼働インスタンス" とマークされています)。 
+- DR: QA インスタンスのインストール用に、QA のデータ、ログバックアップ、ログ、共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
+- プライマリ ノードは、HANA システム レプリケーションを使用して DR ノードに同期します。 
+- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
+
+## <a name="13-high-availability-and-disaster-recovery-with-hsr"></a>13.HSR の高可用性とディザスター リカバリー 
+ 
+ このトポロジは、ローカル リージョンの高可用性のための HANA System Replication (HSR) 構成の 2 つのノードをサポートします。 DR の場合、DR リージョンの 3 番目のノードは、HSR (非同期モード) を使用してプライマリ サイトから同期します。 
+
+### <a name="architecture-diagram"></a>アーキテクチャ ダイアグラム  
+
+![hana-system-replication-dr-131.png](media/hana-supported-scenario/hana-system-replication-dr-131.png)
+
+### <a name="ethernet"></a>イーサネット
+次のネットワーク インターフェイスは事前に構成されています。
+
+| NIC 論理インターフェイス | SKU の種類 | SUSE OS の場合の名前 | RHEL OS の場合の名前 | ユース ケース|
+| --- | --- | --- | --- | --- |
+| A | TYPE I | eth0.tenant | eno1.tenant | クライアントから HLI/HSR |
+| b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
+| C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
+| D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI/HSR |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+
+### <a name="storage"></a>Storage
+次のマウントポイントは事前に構成されています。
+
+| マウントポイント | ユース ケース | 
+| --- | --- |
+|**プライマリ サイト**|
+|/hana/shared/SID | 実稼働 SID 用 HANA のインストール | 
+|/hana/data/SID/mnt00001 | 実稼働 SID 用データ ファイルのインストール | 
+|/hana/log/SID/mnt00001 | 実稼働 SID 用ログ ファイルのインストール | 
+|/hana/logbackups/SID | 実稼働 SID 用再実行ログ |
+|**DR サイト**|
+|/hana/shared/SID | 実稼働 SID 用 HANA のインストール | 
+|/hana/data/SID/mnt00001 | 実稼働 SID 用データ ファイルのインストール | 
+|/hana/log/SID/mnt00001 | 実稼働 SID 用ログ ファイルのインストール | 
+|/hana/logbackups/SID | 実稼働 SID 用再実行ログ |
+
+
+### <a name="key-considerations"></a>重要な考慮事項
+- /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
+- DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("実稼働 DR インスタンス" とマークされています)。 
+- プライマリ サイトのノードは、HANA システム レプリケーションを使用して DR ノードに同期します。 
+- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
+
+## <a name="14-high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>14.HSR の高可用性とディザスター リカバリー (コスト最適化)
+ 
+ このトポロジは、ローカル リージョンの高可用性のための HANA System Replication (HSR) 構成の 2 つのノードをサポートします。 DR の場合、DR リージョンの 3 番目のノードは、HSR (非同期モード) を使用してプライマリ サイトから同期しますが、 別のインスタンス (例えば QA) は既に DR ノード外で実行されています。 
+
+### <a name="architecture-diagram"></a>アーキテクチャ ダイアグラム  
+
+![hana-system-replication-dr-cost-optimized-141.png](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
+
+### <a name="ethernet"></a>イーサネット
+次のネットワーク インターフェイスは事前に構成されています。
+
+| NIC 論理インターフェイス | SKU の種類 | SUSE OS の場合の名前 | RHEL OS の場合の名前 | ユース ケース|
+| --- | --- | --- | --- | --- |
+| A | TYPE I | eth0.tenant | eno1.tenant | クライアントから HLI/HSR |
+| b | TYPE I | eth2.tenant | eno3.tenant | 構成されているが使用されていない |
+| C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
+| D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI/HSR |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | 構成されているが使用されていない |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+
+### <a name="storage"></a>Storage
+次のマウントポイントは事前に構成されています。
+
+| マウントポイント | ユース ケース | 
+| --- | --- |
+|**プライマリ サイト**|
+|/hana/shared/SID | 実稼働 SID 用 HANA のインストール | 
+|/hana/data/SID/mnt00001 | 実稼働 SID 用データ ファイルのインストール | 
+|/hana/log/SID/mnt00001 | 実稼働 SID 用ログ ファイルのインストール | 
+|/hana/logbackups/SID | 実稼働 SID 用再実行ログ |
+|**DR サイト**|
+|/hana/shared/SID | 実稼働 SID 用 HANA のインストール | 
+|/hana/data/SID/mnt00001 | 実稼働 SID 用データ ファイルのインストール | 
+|/hana/log/SID/mnt00001 | 実稼働 SID 用ログ ファイルのインストール | 
+|/hana/logbackups/SID | 実稼働 SID 用再実行ログ |
+|/hana/shared/QA-SID | QA SID 用 HANA のインストール | 
+|/hana/data/QA-SID/mnt00001 | QA SID 用データ ファイルのインストール | 
+|/hana/log/QA-SID/mnt00001 | QA SID 用ログ ファイルのインストール |
+|/hana/logbackups/QA-SID | QA SID 用再実行ログ |
+
+### <a name="key-considerations"></a>重要な考慮事項
+- /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
+- DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます ("実稼働 DR インスタンス" とマークされています)。 
+- DR: QA インスタンスのインストール用に、QA のデータ、ログバックアップ、ログ、共有ボリューム ("QA インスタンスのインストール" とマークされています) が構成されています。
+- プライマリ サイトのノードは、HANA システム レプリケーションを使用して DR ノードに同期します。 
+- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
+
+## <a name="15-scale-out-with-dr-using-hsr"></a>15.HSR を使用した DR ありのスケールアウト
+ 
+このトポロジは、DR ありのスケールアウト構成で複数のノードをサポートします。 このトポロジは、スタンバイ ノードありまたはなしで依頼できます。 プライマリ サイトのノードは、HANA システム レプリケーション (非同期モード) を使用して DR サイトのノードに同期されます。
+
+
+### <a name="architecture-diagram"></a>アーキテクチャ ダイアグラム  
+
+[ ![scale-out-dr-hsr-151.png](media/hana-supported-scenario/scale-out-dr-hsr-151.png)](media/hana-supported-scenario/scale-out-dr-hsr-151.png#lightbox)
+
+
+### <a name="ethernet"></a>イーサネット
+次のネットワーク インターフェイスは事前に構成されています。
+
+| NIC 論理インターフェイス | SKU の種類 | SUSE OS の場合の名前 | RHEL OS の場合の名前 | ユース ケース|
+| --- | --- | --- | --- | --- |
+| A | TYPE I | eth0.tenant | eno1.tenant | クライアントから HLI/HSR |
+| b | TYPE I | eth2.tenant | eno3.tenant | ノード間通信 |
+| C | TYPE I | eth1.tenant | eno2.tenant | ノードからストレージ |
+| D | TYPE I | eth4.tenant | eno4.tenant | 構成されているが使用されていない |
+| A | TYPE II | vlan\<tenantNo> | team0.tenant | クライアントから HLI/HSR |
+| b | TYPE II | vlan\<tenantNo+2> | team0.tenant+2 | ノード間通信 |
+| C | TYPE II | vlan\<tenantNo+1> | team0.tenant+1 | ノードからストレージ |
+| D | TYPE II | vlan\<tenantNo+3> | team0.tenant+3 | 構成されているが使用されていない |
+
+### <a name="storage"></a>Storage
+次のマウントポイントは事前に構成されています。
+
+| マウントポイント | ユース ケース | 
+| --- | --- |
+|**プライマリ ノード上**|
+|/hana/shared | 実稼働 SID 用 HANA のインストール | 
+|/hana/data/SID/mnt00001 | 実稼働 SID 用データ ファイルのインストール | 
+|/hana/log/SID/mnt00001 | 実稼働 SID 用ログ ファイルのインストール | 
+|/hana/logbackups/SID | 実稼働 SID 用再実行ログ |
+|**DR ノード上**|
+|/hana/shared | 実稼働 SID 用 HANA のインストール | 
+|/hana/data/SID/mnt00001 | 実稼働 SID 用データ ファイルのインストール | 
+|/hana/log/SID/mnt00001 | 実稼働 SID 用ログ ファイルのインストール | 
+|/hana/logbackups/SID | 実稼働 SID 用再実行ログ |
+
+
+### <a name="key-considerations"></a>重要な考慮事項
+- /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
+- DR: ボリュームとマウントポイントは、DR HLI ユニットの実稼働 HANA インスタンスのインストール用に構成されます。 
+- プライマリ サイトのノードは、HANA システム レプリケーションを使用して DR ノードに同期します。 
+- [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) を使用して ExpressRoute 回線を相互にリンクし、リージョンのネットワーク間にプライベート ネットワークを構築します。
 
 
 ## <a name="next-steps"></a>次の手順

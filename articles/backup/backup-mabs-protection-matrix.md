@@ -3,12 +3,12 @@ title: Azure Backup Server でバックアップできる内容
 description: この記事では、Azure Backup Server によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示したサポート マトリックスを示します。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: b375dd5869da85f09a58c77742b7246c5c25c605
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172286"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996155"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server の保護マトリックス
 
@@ -38,7 +38,8 @@ ms.locfileid: "74172286"
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 SP2|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|サポートされていません|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2008 SP2|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
 |サーバー (32 ビットおよび 64 ビット)|Windows Storage Server 2008|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
-|SQL Server|SQL Server 2017|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3|すべてのデプロイ シナリオ: データベース|
+|SQL Server|SQL Server 2019|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合) <br /><br /> VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3|すべてのデプロイ シナリオ: データベース|
+|SQL Server|SQL Server 2017|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合) <br /><br /> VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3|すべてのデプロイ シナリオ: データベース|
 |SQL Server|SQL Server 2016 SP2|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
 |SQL Server|SQL Server 2016 SP1|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
 |SQL Server|SQL Server 2016|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
@@ -56,7 +57,7 @@ ms.locfileid: "74172286"
 |SQL Server|SQL Server 2008|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
 |SQL Server|SQL Server 2008|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
 |SQL Server|SQL Server 2008|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|すべてのデプロイ シナリオ: データベース|
-|Exchange|Exchange 2016|物理サーバー<br/><br/> オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): スタンドアロンの Exchange サーバー、データベース可用性グループ (DAG) の下のデータベース<br /><br />回復 (すべてのデプロイ シナリオ): メールボックス、DAG の下のメールボックス データベース<br/><br/> ReFS 経由での Exchange のバックアップはサポートされていません |
+|Exchange|Exchange 2016|物理サーバー<br/><br/> オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack<br /> <br />Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)|V3、V2|保護 (すべてのデプロイ シナリオ): スタンドアロンの Exchange サーバー、データベース可用性グループ (DAG) の下のデータベース<br /><br />回復 (すべてのデプロイ シナリオ): メールボックス、DAG の下のメールボックス データベース<br/><br/> ReFS 経由での Exchange のバックアップはサポートされていません |
 |Exchange|Exchange 2016|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): スタンドアロンの Exchange サーバー、データベース可用性グループ (DAG) の下のデータベース<br /><br />回復 (すべてのデプロイ シナリオ): メールボックス、DAG の下のメールボックス データベース<br/><br/> ReFS 経由での Exchange のバックアップはサポートされていません |
 |Exchange|Exchange 2013|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): スタンドアロンの Exchange サーバー、データベース可用性グループ (DAG) の下のデータベース<br /><br />回復 (すべてのデプロイ シナリオ): メールボックス、DAG の下のメールボックス データベース<br/><br/> ReFS 経由での Exchange のバックアップはサポートされていません |
 |Exchange|Exchange 2013|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)<br /> <br /> Azure Stack|V3、V2|保護 (すべてのデプロイ シナリオ): スタンドアロンの Exchange サーバー、データベース可用性グループ (DAG) の下のデータベース<br /><br />回復 (すべてのデプロイ シナリオ): メールボックス、DAG の下のメールボックス データベース<br/><br/> ReFS 経由での Exchange のバックアップはサポートされていません |

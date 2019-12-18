@@ -1,5 +1,5 @@
 ---
-title: ロールベースのアクセス制御を備える Azure Monitor ブックを使用した対話型レポートの作成 | Microsoft Docs
+title: Azure Monitor ブックのアクセス制御
 description: ロールベースのアクセス制御を備えた作成済みのブックやパラメーター化されたカスタム ブックを使用して、複雑なレポート作成を簡素化します
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: e2f1388d9823744d2382f1818ecb8dcb613895bc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c9b9f9ca2a9c08c05a3ce32230a39ca79625cd72
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164521"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872929"
 ---
 # <a name="access-control"></a>アクセス制御
 

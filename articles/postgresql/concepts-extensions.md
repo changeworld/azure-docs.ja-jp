@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Single Server での PostgreSQL 拡張機能の使用
-description: Azure Database for PostgreSQL - Single Server で拡張機能を使用して、データベースの機能を拡張する方法について説明します。
+title: 拡張子 - Azure Database for PostgreSQL - Single Server
+description: Azure Database for PostgreSQL - Single Server での PostgreSQL 拡張機能の使用の可用性について学びます。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 4f81b23378427faa522071f4a20e07485f5c3387
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.date: 12/03/2019
+ms.openlocfilehash: 7a55cc9398cc511ced0a43f0d7a0c1aa6e37f155
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296421"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790403"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
@@ -224,7 +224,7 @@ pgAudit 拡張機能では、セッションとオブジェクトの監査ログ
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB は、PostgreSQL の拡張機能としてパッケージされた時系列データベースです。 TimescaleDB は、時間指向の分析関数、最適化を提供し、時系列ワークロードに合わせて PostgreSQL を拡大縮小します。
 
-[TimescaleDB の詳細を参照](https://docs.timescale.com/latest) ([Timescale, Inc.](https://www.timescale.com/) の登録商標)
+[Timescale, Inc.](https://www.timescale.com/)の登録商標である[TimescaleDBの詳細をご覧ください](https://docs.timescale.com/latest)。 Azure Database for PostgreSQL には、タイムスケールのオープンソースバージョンが用意されています。 このバージョンで使用できるタイムスケール機能については、「[時系列製品の比較](https://www.timescale.com/products/)」を参照してください。
 
 ### <a name="installing-timescaledb"></a>TimescaleDB をインストールする
 TimescaleDB をインストールするには、それをサーバーの共有プリロード ライブラリに含める必要があります。 Postgres の `shared_preload_libraries` パラメーターへの変更を有効にするには、**サーバーの再起動**が必要です。 [Azure portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用してパラメーターを変更できます。

@@ -1,19 +1,18 @@
 ---
-title: Azure IoT Hub Device Provisioning Service でカスタム割り当てポリシーを使用する方法 | Microsoft Docs
-description: Azure IoT Hub Device Provisioning Service でカスタム割り当てポリシーを使用する方法
+title: Azure IoT Hub Device Provisioning Service のカスタム割り当てポリシー
+description: Azure IoT Hub Device Provisioning Service (DPS) でカスタム割り当てポリシーを使用する方法
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 8f9cc48384e6e1e85a92b3f23c3a362db0df98e0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b6b7d4614d3c63fe93e213fb830b85d0b7f9c474
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108201"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974872"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>カスタム割り当てポリシーの使用方法
 

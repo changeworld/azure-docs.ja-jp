@@ -1,5 +1,5 @@
 ---
-title: 会話の文字起こし (プレビュー) とは - Speech Service
+title: 会話の文字起こし (プレビュー) とは - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: 会話の文字起こしとは、音声認識、話者識別、および各話者の文の属性 (ダイアライゼーションとも呼ばれる) を組み合わせて、任意の会話のリアルタイムまたは非同期 (あるいはその両方) の文字起こしを提供する音声テキスト変換ソリューションです。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 0c15b053028bd707159a632c98faaea8b9954a9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 07e3e498a3bd2693b72079a8a731c3d139414c90
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075845"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806288"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>会話の文字起こし (プレビュー) とは
 

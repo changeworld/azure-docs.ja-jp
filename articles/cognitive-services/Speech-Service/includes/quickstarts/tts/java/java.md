@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する (Java) - Speech Service
+title: クイック スタート:音声を合成する、Java - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 67f5ef3d0458885abf65ebb4ab24f4cdea044e19
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a92858d2510a2951575160f64906824694e9c327
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505405"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818408"
 ---
 **ターゲット環境を選択する**
 

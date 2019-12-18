@@ -1,7 +1,7 @@
 ---
-title: 'デザイナー: 自動車の価格を予測する (回帰)'
+title: 'デザイナー: 自動車価格の予測 (詳細) の例'
 titleSuffix: Azure Machine Learning
-description: この記事では、コードを 1 行も書くことなく、デザイナー (プレビュー) を使用して、複雑な機械学習のパイプラインを構築する方法について説明します。 技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較する方法について説明します。
+description: Azure Machine Learning デザイナーを使用して技術的な機能に基づいて自動車の価格を予測するために、複数の ML 回帰モデルを構築および比較します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: d73f6d67afff13696de78d026ff65228fd68fb28
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 60baf2229b6c704f951e6cc54949109d5e403bc0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647950"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225055"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>サンプル 2 - 回帰:価格を予測し、アルゴリズムを比較する
+# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用して自動車価格を予測するために、複数の回帰モデルをトレーニングおよび比較する
+
+**デザイナー (プレビュー) のサンプル 2**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 コードを 1 行も書くことなく、デザイナー (プレビュー) を使用して、機械学習のパイプラインを構築する方法について説明します。 このサンプルでは、技術的な特徴に基づいて自動車の価格を予測するために、複数の回帰モデルをトレーニングし、比較します。 ご自身で機械学習の問題に取り組むことができるように、ここではこのパイプラインで行われた選択の理論的な根拠を提示します。
@@ -26,7 +29,7 @@ ms.locfileid: "73647950"
 
 このパイプラインの完成したグラフを次に示します。
 
-[![パイプラインのグラフ](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![パイプラインのグラフ](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +56,7 @@ ms.locfileid: "73647950"
 
 **データセット内の列の選択**モジュールを使用して、欠損値が多い正規化された損失を除外します。 次に、 **[Clean Missing Data]\(欠損データのクリーニング\)** を使用して、欠損値がある行を削除します。 これにより、クリーンなトレーニング データセットを作成できます。
 
-![データの前処理](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
+![データの前処理](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
 
 ## <a name="train-the-model"></a>モデルをトレーニングする
 
@@ -75,7 +78,7 @@ ms.locfileid: "73647950"
 
 結果は次のとおりです。
 
-![結果を比較する](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
+![結果を比較する](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
 これらの結果は、**Boosted Decision Tree Regression** で構築したモデルが、**Decision Forest Regression** で構築したモデルよりも二乗平均平方根誤差が小さいことを示しています。
 

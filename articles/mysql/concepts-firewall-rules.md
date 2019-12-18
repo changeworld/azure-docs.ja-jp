@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL サーバーのファイアウォール規則
+title: ファイアウォール規則 - Azure Database for MySQL
 description: ファイアウォール規則を使用して、ご利用の Azure Database for MySQL サーバーへの接続を有効にする方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/25/2019
-ms.openlocfilehash: 434ecbcf5158009b8e74ae392aeea95b5ea8b281
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.date: 12/02/2019
+ms.openlocfilehash: 6b78c3ffa11d481c77f393bbbd156f2ba76f36e0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72963432"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770290"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。

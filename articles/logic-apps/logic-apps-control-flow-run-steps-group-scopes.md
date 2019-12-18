@@ -1,20 +1,17 @@
 ---
-title: スコープ別にアクションをグループ化して実行する - Azure Logic Apps
+title: スコープ別にアクションをグループ化して実行する
 description: Azure Logic Apps でグループの状態に基づいて実行されるスコープ付きアクションを作成する
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b0f53d1dbcd5b8bbbe38ffe3dd9ba62087ed3432
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680018"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791494"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを使用してグループの状態に基づいてアクションを実行する
 
@@ -153,7 +150,7 @@ ms.locfileid: "72680018"
        ![完成した[本文] フィールド](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 次に、スコープを追加して特定のアクションをグループ化し、それらの状態を評価します。
 
@@ -223,7 +220,7 @@ ms.locfileid: "72680018"
 
    ![スコープの状態に基づいて行うアクションを追加する](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
 
-1. ロジック アプリを保存し、
+1. ロジック アプリを保存します。
 
 完成したロジック アプリは次の例のようになります。
 

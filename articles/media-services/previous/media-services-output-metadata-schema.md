@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services 出力メタデータのスキーマ | Microsoft Docs
-description: このトピックでは、Azure Media Services 出力メタデータのスキーマの概要を説明します。
+description: この記事では、Azure Media Services 出力メタデータのスキーマの概要を説明します。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 42227095c69924cd2922673d020b349aa29f2daa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3f0c6b60e2be625d1f869c3eda4acb9dfd3c6e9e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61129748"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74886814"
 ---
 # <a name="output-metadata"></a>出力メタデータ
 ## <a name="overview"></a>概要
@@ -37,7 +37,7 @@ Media Services では、メタデータを生成するために入力資産を�
 エンコード ジョブの AssetFile エントリのコレクション。  
 
 ### <a name="child-elements"></a>子要素
-| Name | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |AssetFiles コレクションの一部である AssetFile 要素。 |
 
@@ -45,14 +45,14 @@ Media Services では、メタデータを生成するために入力資産を�
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **Name**<br/><br/> 必須 |**xs:string** |メディア資産ファイルの名前。 |
 | **サイズ**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:long** |資産ファイルのサイズ (バイト単位)。 |
 | **Duration**<br/><br/> 必須 |**xs:duration** |コンテンツの再生時間。 |
 
 ### <a name="child-elements"></a>子要素
-| Name | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | **Sources** |この AssetFile を生成するために処理された入力/ソース メディア ファイルのコレクション。 詳細については、「Source 要素」を参照してください。 |
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 詳細については、「VideoTracks 要素」を参照してください。 |
@@ -64,7 +64,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
-| Name | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | **ソース**<br/><br/> minOccurs="1" maxOccurs="unbounded" |この資産を生成するときに使用される入力/ソース ファイル。 詳細については、「Source 要素」を参照してください。 |
 
@@ -74,7 +74,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **Name**<br/><br/> 必須 |**xs:string** |入力ソース ファイルの名前。 |
 
@@ -84,7 +84,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
-| Name | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |親 AssetFile 内の特定のビデオ トラック。 詳細については、「VideoTrack 要素」を参照してください。 |
 
@@ -94,7 +94,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |このビデオ トラックの 0 から始まるインデックス。**注:** この **Id** は、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **FourCC**<br/><br/> 必須 |**xs:string** |ビデオ コーデックの FourCC コード。 |
@@ -116,7 +116,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
-| Name | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |親 AssetFile 内の特定のオーディオ トラック。 詳細については、「AudioTrack 要素」を参照してください。 |
 
@@ -126,7 +126,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |このオーディオ トラックの 0 から始まるインデックス。**注:** これは、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **Codec** |**xs:string** |オーディオ トラック コーデック文字列。 |
@@ -137,7 +137,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 | **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |wFormatTag 形式タイプのサンプルあたりのビット数。 |
 
 ### <a name="child-elements"></a>子要素
-| Name | 説明 |
+| 名前 | 説明 |
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |ラウドネス測定結果パラメーター。 詳細については、「LoudnessMeteringResultParameters 要素」を参照してください。 |
 
@@ -147,7 +147,7 @@ XML の例については、「[XML の例](#xml)」を参照してください�
 XML の例については、「[XML の例](#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs:string** |**Dolby** Professional Loudness Metering 開発キット バージョン。 |
 | **DialogNormalization**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> 必須 |**xs:int** |DPLM によって生成された DialogNormalization。LoudnessMetering が設定されているときに必要 |

@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL に安全に接続するために SSL 接続を構成する
+title: SSL を構成する - Azure Database for MySQL
 description: SSL 接続を正しく使用するために Azure Database for MySQL と関連するアプリケーションを適切に構成する方法について
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 07/02/2019
-ms.openlocfilehash: 7a6c42da3fb92dc7dda014faa64fb8daa8c58774
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 12/05/2019
+ms.openlocfilehash: 3a1c7f6542ebdf1617982fbb50a239b66a6675ba
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359455"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926716"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する
 Azure Database for MySQL は、Secure Sockets Layer (SSL) を使用した、クライアント アプリケーションへの Azure Database for MySQL サーバーへの接続をサポートします。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
@@ -67,6 +67,8 @@ mysql> status
 
 ## <a name="sample-code"></a>サンプル コード
 アプリケーションから Azure Database for MySQL へのセキュリティで保護された接続を SSL 経由で確立するためには、次のコード サンプルを参照してください。
+
+Azure Database for MySQL サービスでサポートされている[互換性のあるドライバー](concepts-compatibility.md)の一覧を参照してください。
 
 ### <a name="php"></a>PHP
 ```php

@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor のメトリック グラフのサンプル
+title: Azure Monitor のメトリック グラフの例
 description: Azure Monitor データの視覚化について学習します。
 author: vgorbenko
 services: azure-monitor
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: bbfeb428d38c23955df4497242184499349aecf9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8cc653b8e5d2c239243bf6a09955b10011c7408b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256690"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538963"
 ---
-# <a name="metric-chart-samples"></a>メトリック グラフのサンプル
+# <a name="metric-chart-examples"></a>メトリック グラフの例 
 
 Azure プラットフォームでは [1,000 個を超えるメトリック](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)が提供されます。その多くはディメンションを備えています。 [ディメンション フィルター](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)の使用、[分割](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)の適用、グラフの種類の制御、グラフ設定の調整を通じて、お客様のインフラストラクチャとアプリケーションの正常性に関する分析情報を提供する強力な診断ビューとダッシュボードを作成できます。 この記事では、お客様が[メトリックス エクスプローラー](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)を使用して作成できるグラフの例をいくつか紹介し、これらのそれぞれのグラフを構成するために必要な手順を説明します。
 

@@ -1,7 +1,7 @@
 ---
 title: クイック スタート:Python 用 Speech SDK のプラットフォームのセットアップ - Speech Service
 titleSuffix: Azure Cognitive Services
-description: このガイドを使用して、Speech Services SDK で Python を使用するためのプラットフォームを設定します。
+description: Speech サービス SDK を使用して Python 用にプラットフォームを設定するには、このガイドを使用します。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: d4a81c6dd2b44efd432345627e78bb69fff1688d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 095c591f63cb228b48681ffc67499820631bbaf5
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504333"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816449"
 ---
 このガイドでは、Python 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。
 

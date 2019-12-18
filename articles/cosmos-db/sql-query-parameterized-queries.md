@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB のパラメーター化されたクエリ
-description: SQL のパラメーター化されたクエリについて説明します
+description: パラメーター化された SQL クエリによってユーザー入力の堅牢な処理とエスケープ処理が提供され、SQL インジェクションによってデータが誤って開示されるリスクを回避する方法について説明します。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: tisande
-ms.openlocfilehash: 45c1344c32e35f60f35ba8ed105e912d92574cce
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003597"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870821"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB のパラメーター化されたクエリ
 

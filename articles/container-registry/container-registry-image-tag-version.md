@@ -1,18 +1,16 @@
 ---
-title: Azure Container Registry でのイメージのタグとバージョン
+title: イメージ タグのベスト プラクティス
 description: Azure コンテナー レジストリに対してイメージのプッシュとイメージのプルを行うときに、Docker コンテナー イメージのタグ付けとバージョン管理を行うためのベスト プラクティス
-services: container-registry
 author: stevelasker
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: 41013fb5831d09d7a4334e94d2b8b39e0cafe4d2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931563"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455002"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>コンテナー イメージのタグ付けとバージョン管理に関する推奨事項
 

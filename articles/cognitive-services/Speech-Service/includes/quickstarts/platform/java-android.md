@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Speech SDK for Java (Android) プラットフォームの設定 - Speech Service
+title: クイック スタート:Speech SDK for Java (Android) プラットフォームの設定 - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: このガイドを使用して、Speech Services SDK で Java (Android) を使用するためのプラットフォームを設定します。
+description: Speech サービス SDK を使用して Java (Android) 用にプラットフォームを設定するには、このガイドを使用します。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: b0b3084cf8a1ad4de972ad90d2ed508d54ba2b29
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3d7f265993a03c637577678cd9b3012776598c7
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504373"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816339"
 ---
 このガイドでは、Android 上の Java 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 この設定は、Speech SDK Maven パッケージと Android Studio 3.3 が基になっています。
 

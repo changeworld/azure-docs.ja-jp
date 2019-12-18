@@ -1,22 +1,22 @@
 ---
-title: dsregcmd コマンドを使用したデバイスのトラブルシューティング - Azure Active Directory
+title: dsregcmd コマンドを使用してトラブルシューティングする - Azure Active Directory
 description: Azure AD 内のデバイスの状態を把握するための dsregcmd からの出力の使用
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aa8f9a7c6807a2f9505559ea13fb0b4f410346d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8ef3edace53cf7367716027811cf3061b617a9a6
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987164"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379200"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>dsregcmd コマンドを使用したデバイスのトラブルシューティング
 
@@ -84,6 +84,9 @@ dsregcmd /status ユーティリティは、ドメイン ユーザー アカウ�
 ## <a name="tenant-details"></a>Tenant details (テナントの詳細)
 
 デバイスが Azure AD 参加済みまたはハイブリッド Azure AD 参加済み (Azure AD に未登録) の場合にのみ表示されます。 このセクションには、デバイスが Azure AD に参加している場合の一般的なテナントの詳細が示されます。
+
+> [!NOTE]
+> このセクションの MDM URL が空である場合は、MDM が構成されなかったか、または現在のユーザーが MDM 登録の範囲内にないことを示します。 Azure AD のモビリティ設定をチェックして MDM の構成を確認してください。
 
 > [!NOTE]
 > MDM の URL が表示されている場合でも、デバイスが MDM によって管理されているわけではありません。 この情報は、デバイス自体が管理されていない場合でも、テナントが自動登録のための MDM 構成を持っている場合に表示されます。 

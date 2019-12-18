@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: radeltch
-ms.openlocfilehash: 910ffc1a94b78fec259dcf30a3c7284716809355
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e8205497262c2c7a500769f32a473d628974220c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832581"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151804"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性
 
@@ -172,11 +172,10 @@ Azure NetApp Files はいくつかの [Azure リージョン](https://azure.micr
 
 SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure NetApp Files を検討するときは、以下の重要な考慮事項に注意してください。
 
-- 最小容量プールは 4 TiB です。 容量プールのサイズは 4 TiB の倍数である必要があります。
+- 最小容量プールは 4 TiB です。 容量プールのサイズは、1 TiB 単位で増やすことができます。
 - 最小ボリュームは 100 GiB です。
 - Azure NetApp Files と、Azure NetApp Files のボリュームがマウントされるすべての仮想マシンは、同じ Azure 仮想ネットワーク内、または同じリージョン内の[ピアリングされた仮想ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)内に存在する必要があります。 同じリージョン内の VNET ピアリング経由での Azure NetApp Files のアクセスが、サポートされるようになっています。 グローバル ピアリング経由での Azure NetApp Files のアクセスは、まだサポートされていません。
 - 選択した仮想ネットワークには、Azure NetApp Files に委任されているサブネットがある必要があります。
-- 現在、Azure NetApp Files でサポートされるのは NFSv3 のみです。 
 - Azure NetApp Files の[エクスポート ポリシー](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)では、ユーザーが制御できるのは、許可されたクライアント、アクセスの種類 (読み取りおよび書き込み、読み取り専用など) です。 
 - Azure NetApp Files 機能は、ゾーンにはまだ対応していません。 現在、Azure NetApp Files 機能は、Azure リージョン内のすべての可用性ゾーンにはデプロイされていません。 Azure リージョンによっては、待ち時間が発生する可能性があることに注意してください。 
 
@@ -403,7 +402,7 @@ SUSE High Availability アーキテクチャ上で SAP Netweaver 用に Azure Ne
    </code></pre>
    
    > [!NOTE]
-   > 現在、Azure NetApp Files でサポートされるのは NFSv3 のみです。 nfsvers=3 switch は省略しないでください。
+   > ボリュームをマウントするときは、Azure NetApp Files ボリュームの NFS プロトコルバージョンと一致していることを確認してください。 この例では、Azure NetApp Files ボリュームが NFSv3 ボリュームとして作成されています。  
    
    `autofs` を再起動して新しい共有をマウントします
     <pre><code>

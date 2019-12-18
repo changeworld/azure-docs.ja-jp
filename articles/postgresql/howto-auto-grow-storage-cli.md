@@ -1,17 +1,17 @@
 ---
-title: Azure CLI を使用して Azure Database for PostgreSQL ストレージ - 単一サーバーを自動拡張する
-description: この記事では、Azure Database for PostgreSQL - 単一サーバーで Azure CLI を使用してストレージの自動拡張を有効にする方法について説明します。
+title: ストレージを自動拡張する - Azure CLI - Azure Database for PostgreSQL - 単一サーバー
+description: この記事では、Azure Database for PostgreSQL - 単一サーバーで Azure CLI を使用して、ストレージを自動拡張するように構成する方法について説明します。
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 8/7/2019
-ms.openlocfilehash: 272b26050288e63181c8d0c71dc2c1851f09f3c9
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: b0dc2fbb168d9325439ee18a227f71a3b88ef9c8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390844"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767945"
 ---
 # <a name="auto-grow-azure-database-for-postgresql-storage---single-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL ストレージ - 単一サーバーを自動拡張する
 この記事では、ワークロードに影響を与えることなく拡張されるように Azure Database for PostgreSQL サーバーのストレージを構成する方法について説明します。

@@ -1,25 +1,20 @@
 ---
-title: Azure Backup と PowerShell を使用して Azure Files をバックアップおよび復元する
+title: PowerShell を使用して Azure Files をバックアップおよび復元する
 description: この記事では、Azure Backup サービスと PowerShell を使用して Azure Files をバックアップおよび復元する方法について説明します。
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.author: dacurwin
-ms.reviewer: pullabhk
-ms.openlocfilehash: 4642549dcdd455c97ea3e8fd8a8b5440779b923c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 78000bc669eb7a61f8698ad8c39ef49f65b245a2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903624"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224170"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>PowerShell を使用して Azure Files をバックアップおよび復元する
 
 この記事では、[Azure Backup](backup-overview.md) Recovery Services コンテナーを使用して Azure Files のファイル共有をバックアップおよび復元するために Azure PowerShell を使用する方法を説明します。
 
-このチュートリアルでは、次の方法について説明します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
 >
@@ -278,7 +273,7 @@ testAzureFS       Backup               Completed            11/12/2018 2:42:07 P
 
 オンデマンド バックアップを使用すると、スナップショットを 10 年間保持することができます。 スケジューラを使い、保持期間を選択して PowerShell スクリプトをオンデマンドで実行することで、スナップショットを定期的 (週次、月次、年次) に作成することも可能です。 定期的なスナップショットの取得については、Azure Backup を使用した[オンデマンド バックアップの制限](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share)に関するページを参照してください。
 
-サンプル スクリプトをお探しの場合、GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)> でサンプル スクリプトをご覧いただけます。定期バックアップのスケジュールを設定すると共にそれらのバックアップを最大 10 年間保持できる Azure Automation Runbook を使用したサンプル スクリプトをご用意しています。
+サンプル スクリプトをお探しの場合は、バックアップを定期的にスケジュールし、それを最大 10 年間保持することが可能な Azure Automation Runbook を使用した GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>) 上のサンプル スクリプトを参照できます。
 
 ### <a name="modify-the-protection-policy"></a>保護ポリシーを変更する
 

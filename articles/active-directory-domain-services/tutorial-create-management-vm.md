@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172347"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703649"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメインを構成および管理するための管理 VM を作成する
 
@@ -105,7 +105,7 @@ Azure AD DS のマネージド ドメインは、Active Directory 管理セン�
 1. **[サーバー マネージャー]** ウィンドウの *[ダッシュボード]* ウィンドウで **[役割と機能の追加]** を選択します。
 1. *[役割と機能の追加]* ウィザードの **[開始する前に]** ページで **[次へ]** を選択します。
 1. *[インストールの種類]* で、 **[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** を選択します。
-1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.contoso.com*) を選択し、 **[次へ]** を選択します。
+1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.aadds.contoso.com*) を選択し、 **[次へ]** を選択します。
 1. **[サーバーの役割]** ページで、 **[次へ]** をクリックします。
 1. **[機能]** ページで、 **[リモート サーバー管理ツール]** ノードを展開し、次に **[役割管理ツール]** ノードを展開します。
 
@@ -125,7 +125,7 @@ Azure AD DS のマネージド ドメインは、Active Directory 管理セン�
     ![サーバーにインストールされている管理ツール](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. **[Active Directory 管理センター]** を選択します。
-1. Azure AD DS のマネージド ドメインの詳細を確認するために、左側のウィンドウでドメイン名を選択します (例: *contoso.com*)。 一覧の先頭に *AADDC Computers* および *AADDC Users* という名前の 2 つのコンテナーがあります。
+1. Azure AD DS のマネージド ドメインの詳細を確認するために、左ペインでドメイン名を選択します (例: *aadds.contoso.com*)。 一覧の先頭に *AADDC Computers* および *AADDC Users* という名前の 2 つのコンテナーがあります。
 
     ![Azure AD DS のマネージド ドメインで使用できるコンテナーの一覧](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

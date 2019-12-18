@@ -1,22 +1,18 @@
 ---
-title: タスクを自動化してエンタープライズ統合を実現する - Azure Logic Apps
+title: タスクを自動化してエンタープライズ統合を実現する
 description: Azure Logic Apps を使用し、アプリ、データ、サービス、システムを最小限のコードで統合することによってエンタープライズ統合を実現するワークフローの自動化について説明します。
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/29/2018
-ms.openlocfilehash: 22b8558c8808afacc6ef92bd0fd41d3adbc92bf5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2327632fc2a71855874bb8fe45e97af430fa696a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533839"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791844"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>概要 - Azure Logic Apps とは
 

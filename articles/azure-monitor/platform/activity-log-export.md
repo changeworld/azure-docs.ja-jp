@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 33302d7252c56badfed1dc7adea6a4f7cbf961b6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ff8956d942aa54500a08cac4ebd94127b14b0bd4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048249"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931773"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする
 
-> [!NOTE]
-> リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](activity-log-collect.md)」を参照してください。
+> [!WARNING]
+> リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](diagnostic-settings-subscription.md)」を参照してください。
 
 [Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 Azure portal でアクティビティ ログを表示したり、これを Azure Monitor によって収集された他のデータで分析できる Log Analytics ワークスペースにコピーしたりするだけでなく、ログ プロファイルを作成してアクティビティ ログを Azure ストレージ アカウントにアーカイブしたり、これをイベント ハブにストリーミングしたりすることができます。
 
@@ -33,7 +33,7 @@ ms.locfileid: "74048249"
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="storage-account"></a>ストレージ アカウント
-アクティビティ ログをアーカイブしていて、まだストレージ アカウントを持っていない場合は、[作成する](../../storage/common/storage-quickstart-create-account.md)必要があります。 監視データへのアクセスをさらに制御するために他の非監視データが格納されている、既存のストレージ アカウントは使用しないでください。 ただし、診断ログとメトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、同じアカウントを使用することができます。
+アクティビティ ログをアーカイブしていて、まだストレージ アカウントを持っていない場合は、[作成する](../../storage/common/storage-quickstart-create-account.md)必要があります。 監視データへのアクセスをさらに制御するために他の非監視データが格納されている、既存のストレージ アカウントは使用しないでください。 ただし、ログとメトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、同じアカウントを使用することができます。
 
 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントは、ログを出力するのと同じサブスクリプションに属している必要はありません。
 > [!NOTE]
@@ -118,7 +118,7 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
     | serviceBusRuleId |いいえ |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 文字列の形式は `{service bus resource ID}/authorizationrules/{key name}` になります。 |
     | Location |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
     | RetentionInDays |はい |ストレージ アカウントにイベントを保持する日数 (1 から 365 の範囲)。 値が 0 の場合、ログは無期限に保存されます。 |
-    | Category |いいえ |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、_Write_、_Delete_、_Action_ です。 |
+    | カテゴリ |いいえ |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、_Write_、_Delete_、_Action_ です。 |
 
 ### <a name="example-script"></a>サンプル スクリプト
 ストレージ アカウントとイベント ハブの両方にアクティビティ ログを書き込むログ プロファイルを作成する PowerShell スクリプトのサンプルを次に示します。
@@ -169,7 +169,7 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
 Azure Storage とイベント ハブのどちらに送信される場合でも、アクティビティ ログ データは、次の形式で JSON に書き込まれます。
 
 
-> ストレージ アカウントに書き込まれるアクティビティ ログ データの形式は、2018 年 11 月 1 日に JSON 行に変更されました。 この形式変更の詳細については、「[ストレージ アカウントにアーカイブされている Azure Monitor 診断ログの形式変更のための準備](diagnostic-logs-append-blobs.md)」を参照してください。
+> ストレージ アカウントに書き込まれるアクティビティ ログ データの形式は、2018 年 11 月 1 日に JSON 行に変更されました。 この形式変更の詳細については、「[ストレージ アカウントにアーカイブされている Azure Monitor リソース ログの形式変更のための準備](diagnostic-logs-append-blobs.md)」を参照してください。
 
 ``` JSON
 {

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e9daf1be1f931bb13cda446cbb9d6e37acce3bcf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7b86d643540e46f9a4fc86c83fc77d739bfba418
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498099"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978494"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -56,13 +56,13 @@ Python クライアント ライブラリは、次の環境でテストされて
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="datasetAccess"></a>Studio Code スニペットを使ってデータ セットにアクセスする
+## <a name="datasetAccess"></a>を使ってデータ セットにアクセスする
 Python クライアント ライブラリを使うと、実行している実験から既存のデータ セットへプログラムでアクセスできるようになります。
 
-Studio Web インターフェイスから、ローカル マシンでデータ セットを pandas DataFrame オブジェクトとしてダウンロードして逆シリアル化するために必要なすべての情報を含むコード スニペットを生成できます。
+Azure Machine Learning Studio (クラシック) Web インターフェイスから、ローカル コンピューターでデータ セットを pandas DataFrame オブジェクトとしてダウンロードして逆シリアル化するために必要なすべての情報を含むコード スニペットを生成できます。
 
 ### <a name="security"></a>データ アクセスのためのセキュリティ
-Python クライアント ライブラリで使用するために Studio で提供されるコード スニペットには、ワークスペース ID や認証トークンが含まれます。 これらを使用すればワークスペースにフル アクセスできますので、パスワードなどで保護する必要があります。
+Python クライアント ライブラリで使用するために Azure Machine Learning Studio (クラシック) で提供されるコード スニペットには、ユーザーのワークスペース ID や認証トークンが含まれます。 これらを使用すればワークスペースにフル アクセスできますので、パスワードなどで保護する必要があります。
 
 セキュリティ上の理由から、ワークスペースの **[所有者]** として設定された役割を持つユーザーのみコード スニペットの機能を使うことができます。 役割は Azure Machine Learning Studio (クラシック) で **[設定]** の下の **[ユーザー]** ページに表示されます。
 
@@ -72,18 +72,18 @@ Python クライアント ライブラリで使用するために Studio で提�
 
 次のいずれかを実行することで認証トークンを取得できます。
 
-* 所有者からトークンをリクエストします。 所有者は Studio のワークスペースの [設定] ページから認証トークンを確認できます。 左側のウィンドウから **[設定]** を選択し、 **[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。 プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
+* 所有者からトークンをリクエストします。 所有者は Azure Machine Learning Studio (クラシック) のワークスペースの [設定] ページから自分の認証トークンを確認できます。 左側のウィンドウから **[設定]** を選択し、 **[認証トークン]** をクリックしてプライマリとセカンダリのトークンを確認します。 プライマリとセカンダリの認証トークンのどちらもコード スニペットで使用できますが、所有者はセカンダリの認証トークンのみ共有することをお勧めします。
 
-![認証トークン](./media/python-data-access/ml-python-access-settings-tokens.png)
+   ![認証トークン](./media/python-data-access/ml-python-access-settings-tokens.png)
 
 * 所有者への役割の昇格を申請する そのためにはまず、ワークスペースの現在の所有者にワークスペースから削除してもらい、その後所有者としてに再度招待してもらう必要があります。
 
-開発者がワークスペース ID と認証トークンを取得したら、役割に関係なく、コード スニペットを使用してワークスペースにアクセスできるようになります。
+開発者がワークスペース ID と認証トークンを取得したら、ロールに関係なく、コード スニペットを使用してワークスペースにアクセスできるようになります。
 
 認証トークンは、 **[設定]** ページの **[認証トークン]** で管理されます。 認証トークンを再度生成することは可能ですが、以前のトークンへのアクセスは無効になります。
 
 ### <a name="accessingDatasets"></a>ローカル Python アプリケーションからデータ セットにアクセスする
-1. Machine Learning Studio で、左側のナビゲーション バーの **[データセット]** をクリックします。
+1. Machine Learning Studio (クラシック) で、左側のナビゲーション バーの **[データセット]** をクリックします。
 2. アクセスするデータ セットを選択します。 **[マイ データ セット]** リストか **[サンプル]** リストからどのデータ セットでも選択できます。
 3. 下のツールバーから、 **[データ アクセス コードの生成]** をクリックします。 データが Python クライアント ライブラリと互換性のない形式の場合、このボタンは無効になります。
    
@@ -96,7 +96,7 @@ Python クライアント ライブラリで使用するために Studio で提�
     ![ノートブックにコードを貼り付ける][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>Machine Learning 実験から中間データセットにアクセスする
-Machine Learning Studio で実験が実行されると、モジュールの出力ノードから中間データ セットにアクセスできます。 中間データセットは、モデル ツールが実行されているときに中間手順で作成され使用されるデータです。
+Machine Learning Studio のクラシック バージョンで実験が実行されると、モジュールの出力ノードから中間データ セットにアクセスできます。 中間データセットは、モデル ツールが実行されているときに中間手順で作成され使用されるデータです。
 
 中間データセットは、データの形式が Python クライアント ライブラリと互換性がある限りアクセスできます。
 
@@ -141,7 +141,7 @@ Machine Learning Studio で実験が実行されると、モジュールの出�
 
 ## <a name="clientApis"></a>Machine Learning Python クライアント ライブラリを使用してデータ セットのアクセス、読み込み、作成、管理をする
 ### <a name="workspace"></a>ワークスペース
-ワークスペースは、Python クライアント ライブラリのエントリ ポイントです。 ワークスペース ID と認証トークンを使って `Workspace` クラスを提供し、インスタンスを作成します。
+ワークスペースは、Python クライアント ライブラリのエントリ ポイントです。 `Workspace` クラスに自分のワークスペース ID と認証トークンを指定し、インスタンスを作成します。
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
                    authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')

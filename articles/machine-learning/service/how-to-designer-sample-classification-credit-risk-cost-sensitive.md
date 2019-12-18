@@ -1,7 +1,7 @@
 ---
-title: 'デザイナー: 信用リスクを予測する (費用重視)'
+title: 'デザイナー: 信用リスク予測の例'
 titleSuffix: Azure Machine Learning
-description: この記事では、デザイナー (プレビュー) を使用して、複雑な機械学習パイプラインを構築する方法について説明します。 カスタムの Python スクリプトを実装し、複数のモデルを比較して最適なオプションを選択する方法について説明します。
+description: Azure Machine Learning デザイナーを使用して、分類子を作成し、カスタム Python スクリプトを使って信用リスクを予測します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 7af0ee31c7d7e5dae4a38db7f6c74ff3e5f964bb
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: f174ed995b043ef99d22a0a292e9b5be394029a5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647988"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214260"
 ---
-# <a name="sample-4---classification-with-custom-python-script-predict-credit-risk"></a>サンプル 4 - カスタム Python スクリプトを使用した分類: 信用リスクの予測
+# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用して、分類子を作成し、Python スクリプトを使って信用リスクを予測する
+
+**デザイナー (プレビュー) サンプル 4**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 この記事では、デザイナー (プレビュー) を使用して、複雑な機械学習パイプラインを構築する方法について説明します。 Python スクリプトを使用してカスタム ロジックを実装し、複数のモデルを比較して最適なオプションを選択する方法について説明します。
@@ -26,7 +29,7 @@ ms.locfileid: "73647988"
 
 このパイプラインの完成したグラフを次に示します。
 
-[![パイプラインのグラフ](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![パイプラインのグラフ](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +54,7 @@ ms.locfileid: "73647988"
 
 パイプラインのグラフを次に示します。
 
-[![パイプラインのグラフ](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![パイプラインのグラフ](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>データ処理
 
@@ -107,7 +110,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 次の図は、このパイプラインの一部を示したもので、ここでは 2 つの異なる SVM モデルをトレーニングするために元のトレーニング セットとレプリケートされたトレーニング セットが使用されています。 **Train Model (モデルのトレーニング)** はトレーニング セットに接続され、**Score Model (モデルのスコア付け)** はテスト セットに接続されています。
 
-![パイプラインのグラフ](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![パイプラインのグラフ](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
 パイプラインの評価ステージでは、この 4 つのモデルの精度をそれぞれ計算します。 このパイプラインの場合は、**Evaluate Model (モデルの評価)** を使用して同じ誤分類のコストを持つサンプルを比較します。
 
@@ -141,7 +144,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 パイプラインの結果を表示するには、最後の **Select Columns in Dataset (データセット内の列の選択)** モジュールの可視化出力を右クリックします。
 
-![可視化出力](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
+![可視化出力](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
 最初の列には、モデルの生成に使用された機械学習アルゴリズムが一覧表示されます。
 

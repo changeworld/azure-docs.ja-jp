@@ -1,7 +1,7 @@
 ---
 title: Video Indexer を利用できるリージョン - Azure
 titleSuffix: Azure Media Services
-description: この記事では、Video Indexer を利用できる Azure リージョンについて説明します。
+description: この記事では、Azure Media Services Video Indexer を使用できる Azure リージョンについて説明します。
 services: media-services
 author: anikaz
 manager: johndeu
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: b67c89e02091d57b4f2dc901005c2dae36deafc2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 6ba6f189f4290bb2751adf9b44135eeda7266ca0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838200"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892755"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Video Indexer が存在する Azure リージョン
 

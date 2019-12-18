@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 137ab722df280d17fe5ccc5c07acfd323feb6531
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea37dc9ee6c9249aa9d18f7ee7ab1fdbe1230930
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091206"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975841"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
@@ -52,12 +52,12 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 
 |ヘッダー| 説明 | 必須/省略可能 |
 |------|-------------|---------------------|
-| `Ocp-Apim-Subscription-Key` | Speech Services のサブスクリプション キー。 | このヘッダーと `Authorization` のどちらかが必須となります。 |
+| `Ocp-Apim-Subscription-Key` | 音声サービスのサブスクリプション キー。 | このヘッダーと `Authorization` のどちらかが必須となります。 |
 | `Authorization` | 単語 `Bearer` が前に付いた認証トークン。 詳細については、[認証](#authentication)に関するページをご覧ください。 | このヘッダーと `Ocp-Apim-Subscription-Key` のどちらかが必須となります。 |
 | `Content-type` | 指定したオーディオ データの形式とコーデックを記述します。 指定できる値は、`audio/wav; codecs=audio/pcm; samplerate=16000` と `audio/ogg; codecs=opus` です。 | 必須 |
 | `Transfer-Encoding` | オーディオを個別のファイルとしてではなくチャンク データとして送信することを指定します。 このヘッダーは、オーディオ データをチャンクにする場合にのみ使用してください。 | 省略可能 |
-| `Expect` | チャンク転送を使用する場合、`Expect: 100-continue` を送信します。 Speech Services は最初の要求を確認し、追加のデータを待ちます。| オーディオのチャンク データを送信する場合は必須となります。 |
-| `Accept` | 指定する場合は、`application/json` とする必要があります。 Speech Services から、結果が JSON 形式で返されます。 一部の要求フレームワークでは、互換性のない既定値が提供されます。 常に `Accept` を含めることをお勧めします。 | 省略可能ですが、指定することをお勧めします。 |
+| `Expect` | チャンク転送を使用する場合、`Expect: 100-continue` を送信します。 音声サービスは最初の要求を確認し、追加のデータを待ちます。| オーディオのチャンク データを送信する場合は必須となります。 |
+| `Accept` | 指定する場合は、`application/json` とする必要があります。 Speech Service からは、結果が JSON 形式で返されます。Speech Service からは、結果が JSON 形式で返されます。 一部の要求フレームワークでは、互換性のない既定値が提供されます。 常に `Accept` を含めることをお勧めします。 | 省略可能ですが、指定することをお勧めします。 |
 
 ## <a name="audio-formats"></a>オーディオの形式
 
@@ -69,7 +69,7 @@ REST 要求のクエリ文字列には、次のパラメーターを含めるこ
 | OGG | OPUS | 16 ビット | 16 kHz、モノラル |
 
 >[!NOTE]
->上の形式は、Speech Services の REST API と WebSocket を介してサポートされます。 現在、[Speech SDK](speech-sdk.md) では PCM コーデックの WAV 形式のみがサポートされています。
+>上の形式は、Speech Service の REST API と WebSocket を介してサポートされます。 現在、[Speech SDK](speech-sdk.md) では PCM コーデックの WAV 形式のみがサポートされています。
 
 ## <a name="sample-request"></a>要求のサンプル
 

@@ -1,20 +1,17 @@
 ---
-title: 複数の ISE に対するアクセスの設定 - Azure Logic Apps
+title: 複数の ISE に対するアクセスの設定
 description: 複数の統合サービス環境 (ISE) の場合、Azure Logic Apps から外部システムにアクセスするための単一のパブリック送信 IP アドレスを設定できます
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/27/2019
-ms.openlocfilehash: f35b6836012df7ac3879070f7a85fbfb21b456c0
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: f3b422a55b7e2abbc8b1538183fd57fb234900d4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74549209"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792689"
 ---
 # <a name="set-up-access-for-multiple-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps で複数の統合サービス環境のアクセスを設定する
 

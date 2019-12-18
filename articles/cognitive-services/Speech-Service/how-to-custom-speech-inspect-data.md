@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 12/02/2019
 ms.author: erhopf
-ms.openlocfilehash: cf0deffb6fe484f7e3ee38b95f285bb4b7cc809c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 60b415f69800885f37ee53cc4f090098f5ebf1f1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072561"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806081"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech データを検査する
 
@@ -40,6 +40,8 @@ Custom Speech には、オーディオ データを対応する認識結果と�
 6. **Create** をクリックしてください。
 
 テストが正常に作成されたら、モデルを並べて比較できます。
+
+[!INCLUDE [service-pricing-advisory](includes/service-pricing-advisory.md)]
 
 ## <a name="side-by-side-model-comparisons"></a>モデルを並べて比較する
 

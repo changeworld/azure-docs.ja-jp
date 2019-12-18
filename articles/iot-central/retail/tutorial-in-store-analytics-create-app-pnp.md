@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure IoT Central でストア内分析アプリケーションを作成する
+title: チュートリアル - Azure IoT Central でストア内分析アプリケーションを作成する
 description: このチュートリアルでは、IoT Central でストア内分析小売アプリケーションを作成する方法について説明します。 これを作成し、カスタマイズして、センサー デバイスを追加します。
 services: iot-central
 ms.service: iot-central
@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 071d432ba2769705213cb98cee644b64e9e81b6e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 145aa87841c6334f7fa12535103b5e97db9c6918
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112903"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702023"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>チュートリアル:Azure IoT Central でストア内分析アプリケーションを作成する
 

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声変換の翻訳、C# - Speech Service
+title: クイック スタート:音声テキスト変換を翻訳する、C# - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 11/19/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: e3825e1520c5f2696da64ae151ceffc0d1a5414e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 071a4e78eaa61a164f190a3b9d4badeee71a784f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260784"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981007"
 ---
 **ターゲット環境を選択してください**
 

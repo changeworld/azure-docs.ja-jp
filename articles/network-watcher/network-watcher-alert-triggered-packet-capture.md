@@ -1,5 +1,6 @@
 ---
-title: パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する | Microsoft Docs
+title: パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する - Azure Functions
+titleSuffix: Azure Network Watcher
 description: この記事では、Azure Network Watcher を使用して、アラートでトリガーされるパケット キャプチャを作成する方法について説明します
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: d894fabf3cfd4c6949aba94d558751bf007356d9
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165152"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276132"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 
@@ -149,7 +150,7 @@ Network Watcher PowerShell コマンドレットを使うには、最新の Powe
 
     ![PowerShell ファイル][functions7]
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 
 PowerShell コマンドレットを使用するには、認証する必要があります。 Function App で認証を構成します。 認証を構成するには、環境変数を構成して、暗号化されたキー ファイルを Function App にアップロードする必要があります。
 

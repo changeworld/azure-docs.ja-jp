@@ -1,7 +1,7 @@
 ---
-title: 'デザイナー: フライトの遅延を分類、予測する'
+title: 'デザイナー: フライト遅延予測の例'
 titleSuffix: Azure Machine Learning
-description: この記事では、ドラッグ アンド ドロップ方式のデザイナーとカスタム R コードを使用してフライト遅延を予測する機会学習モデルを構築する方法を説明します。
+description: Azure Machine Learning デザイナーで、分類子を作成し、カスタム R コードを使用して、フライトの遅延を予測します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,24 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 10b3b78b4878eeddf2f786fda90ab9709e4bd2b4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 23b763a69fc0ea3191150c6255cf358d69bc4b73
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647192"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213947"
 ---
-# <a name="sample-6---classification-predict-flight-delays-using-r"></a>サンプル 6 - 分類:R を利用してフライトの遅延を予測する
+# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーで、分類子を作成し、R を使用して、フライトの遅延を予測する
+
+**デザイナー (プレビュー) サンプル 6**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 このパイプラインでは、過去のフライトと天候のデータを利用し、予定されている旅客便が 15 分以上遅れるかどうかを予測します。 この問題には、遅延と定刻という 2 つのクラスを予測する分類の問題として取り組むことができます。
 
 このサンプルの最終的なパイプラインのグラフは次のようになります。
 
-[![パイプラインのグラフ](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![パイプラインのグラフ](media/how-to-designer-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -52,13 +55,13 @@ ms.locfileid: "73647192"
 
 通常、データセットには、分析前にある程度の前処理が必要です。
 
-![data-process](media/how-to-ui-sample-classification-predict-flight-delay/data-process.png)
+![data-process](media/how-to-designer-sample-classification-predict-flight-delay/data-process.png)
 
 ### <a name="flight-data"></a>フライト データ
 
 **[Carrier]** 、 **[OriginAirportID]** 、 **[DestAirportID]** 列は整数として保存されます。 ただし、分類属性であり、そのために **Edit Metadata** モジュールを使用します。
 
-![edit-metadata](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
+![edit-metadata](media/how-to-designer-sample-classification-predict-flight-delay/edit-metadata.png)
 
 次に、Dataset モジュールの **[列を選択]** を使用し、 **[DepDelay]** 、 **[DepDel15]** 、 **[ArrDelay]** 、 **[Canceled]** 、 **[Year]** というターゲットを漏らす可能性のあるデータセット列から除外します。 
 
@@ -78,18 +81,18 @@ ms.locfileid: "73647192"
 
 フライト レコードは、**Join Data** モジュールを利用し、フライトの出発地 (**OriginAirportID**) の気象データと結合されます。
 
- ![フライトの出発地でフライトと天候を結合する](media/how-to-ui-sample-classification-predict-flight-delay/join-origin.png)
+ ![フライトの出発地でフライトと天候を結合する](media/how-to-designer-sample-classification-predict-flight-delay/join-origin.png)
 
 
 フライト レコードは、フライトの目的地 (**DestAirportID**) を利用し、気象データと結合されます。
 
- ![フライトの目的地でフライトと天候を結合する](media/how-to-ui-sample-classification-predict-flight-delay/join-destination.png)
+ ![フライトの目的地でフライトと天候を結合する](media/how-to-designer-sample-classification-predict-flight-delay/join-destination.png)
 
 ### <a name="preparing-training-and-test-samples"></a>トレーニングおよびテスト サンプルの準備
 
 **Split Data** モジュールにより、データが 4 月から 9 月までのレコード (トレーニング用) と 10 月のレコード (テスト用) に分割されます。
 
- ![トレーニングおよびテスト データを分割する](media/how-to-ui-sample-classification-predict-flight-delay/split.png)
+ ![トレーニングおよびテスト データを分割する](media/how-to-designer-sample-classification-predict-flight-delay/split.png)
 
 Select Columns モジュールを利用することで、年度、月、時間帯の列がトレーニング データセットから削除されます。
 
@@ -111,7 +114,7 @@ Select Columns モジュールを利用することで、年度、月、時間�
 ## <a name="evaluate"></a>Evaluate
 このロジスティック回帰モデルでは、テスト セットで AUC が 0.631 になります。
 
- ![evaluate](media/how-to-ui-sample-classification-predict-flight-delay/evaluate.png)
+ ![evaluate](media/how-to-designer-sample-classification-predict-flight-delay/evaluate.png)
 
 ## <a name="next-steps"></a>次の手順
 

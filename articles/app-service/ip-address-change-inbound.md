@@ -1,22 +1,15 @@
 ---
-title: 受信 IP アドレスの変更に備える - Azure App Service
+title: 受信 IP アドレスの変更の準備
 description: 受信 IP アドレスの変更が予定されている場合に、変更後もアプリが動作し続けるようにするための方法を説明します。
-services: app-service\web
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: aaa89b5a3bb1af6878ed21e0160a534a1c989228
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 999511c4759ee761f028a61fbfaa0310ac93d9b4
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61270066"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672416"
 ---
 # <a name="how-to-prepare-for-an-inbound-ip-address-change"></a>受信 IP アドレスの変更に備える方法
 

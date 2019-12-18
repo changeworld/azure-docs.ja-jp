@@ -1,25 +1,16 @@
 ---
-title: Azure App Service の Mobile Apps について
+title: Mobile Apps について
 description: App Service が企業のモバイル アプリにもたらす利点について説明します。
-services: app-service\mobile
-documentationcenter: ''
-author: elamalani
-manager: yochayk
-editor: ''
 ms.assetid: 4e96cb9d-a632-4cf6-8219-0810d8ade3f9
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-multiple
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 89e3fb57f29a6c24b64082db06678b3965ad8517
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d85ac89a4226b545419cea3413a04f4013a073be
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388604"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668703"
 ---
 # <a name="getting-started"> </a>Azure App Service の Mobile Apps について
 

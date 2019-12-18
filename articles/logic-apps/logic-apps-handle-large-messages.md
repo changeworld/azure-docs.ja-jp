@@ -1,25 +1,18 @@
 ---
-title: 大きいサイズのメッセージを処理する - Azure Logic Apps | Microsoft Docs
+title: 大きいメッセージを処理する
 description: Azure Logic Apps でチャンクを使用して大きいサイズのメッセージを処理する方法について説明します
 services: logic-apps
-documentationcenter: ''
+ms.suite: integration
 author: shae-hurst
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.devlang: ''
-ms.tgt_pltfrm: ''
-ms.topic: article
-ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: ed086c4c36711f92ba654a64856b43a5fdaadf5f
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.topic: article
+ms.date: 12/03/2019
+ms.openlocfilehash: 8c2e857808b0638fbba54cfe9a623ba3fd764119
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69989922"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815092"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps でチャンクを使用して大きいサイズのメッセージを処理する
 
@@ -46,6 +39,9 @@ Logic Apps は、メッセージ サイズの制限を超えているチャン�
 Logic Apps と通信するサービスが、独自のメッセージ サイズの制限を持っている可能性があります。 多くの場合、これらの制限は、Logic Apps の制限よりも小さくなります。 たとえば、コネクタがチャンクをサポートしていることを前提として、コネクタは、30 MB のメッセージを大きいサイズのメッセージとみなす場合がありますが、Logic Apps では、これは大きいサイズのメッセージではありません。 このコネクタの制限を守るために、Logic Apps は、30 MB を超えるメッセージ を小さいチャンクに分割します。
 
 チャンクをサポートするコネクタでは、エンドユーザーがチャンク プロトコルを認識することはありません。 ただし、すべてのコネクタがチャンクをサポートしているわけではないため、これらのコネクタでは、受信したメッセージがコネクタのサイズ制限を超えた場合は実行時エラーが生成されます。
+
+> [!NOTE]
+> チャンクを使用するアクションでは、トリガー本体を渡すことはできず、またそれらのアクションで `@triggerBody()?['Content']` などの式を使用することもできません。 代わりに、テキストまたは JSON ファイルのコンテンツに対して、[**作成**アクション](../logic-apps/logic-apps-perform-data-operations.md#compose-action)を使用したり、または[変数を作成](../logic-apps/logic-apps-create-variables-store-values.md)してそのコンテンツを処理したりすることができます。 トリガー本体にメディア ファイルなどの他のコンテンツの種類が含まれている場合は、そのコンテンツを処理するために他の手順を実行する必要があります。
 
 <a name="set-up-chunking"></a>
 
@@ -117,7 +113,7 @@ HTTP アクションからチャンクされたコンテンツをアップロー
 
 1. ロジック アプリは、最初の HTTP POST または PUT 要求をメッセージ本文を空にして送信します。 要求ヘッダーには、ロジック アプリがチャンクでアップロードするコンテンツに関する情報が含まれます。
 
-   | Logic Apps の要求ヘッダー フィールド | 値 | Type | 説明 |
+   | Logic Apps の要求ヘッダー フィールド | 値 | 種類 | 説明 |
    |---------------------------------|-------|------|-------------|
    | **x-ms-transfer-mode** | chunked | string | コンテンツがチャンクでアップロードされることを示します |
    | **x-ms-content-length** | <*content-length*> | 整数 | チャンクする前のコンテンツ全体のサイズ (バイト単位) |
@@ -125,7 +121,7 @@ HTTP アクションからチャンクされたコンテンツをアップロー
 
 2. エンドポイントは、成功を示す状態コード "200" と次の省略可能な情報を返します。
 
-   | エンドポイントの応答ヘッダー フィールド | Type | 必須 | 説明 |
+   | エンドポイントの応答ヘッダー フィールド | 種類 | 必須 | 説明 |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | 整数 | いいえ | 推奨されたチャンク サイズ (バイト単位) |
    | **Location** | string | はい | HTTP PATCH メッセージを送信する URL の場所 |
@@ -137,7 +133,7 @@ HTTP アクションからチャンクされたコンテンツをアップロー
 
    * これらのヘッダーには、それぞれの PATCH メッセージで送信されるコンテンツのチャンクの詳細が記述されます。
 
-     | Logic Apps の要求ヘッダー フィールド | 値 | Type | 説明 |
+     | Logic Apps の要求ヘッダー フィールド | 値 | 種類 | 説明 |
      |---------------------------------|-------|------|-------------|
      | **Content-Range** | <*range*> | string | 現在のコンテンツのチャンクのバイト範囲。開始値、終了値、および合計コンテンツ サイズ合計が含まれます。例: "bytes=0-1023/10100" |
      | **Content-Type** | <*content-type*> | string | チャンクされたコンテンツの種類 |
@@ -146,7 +142,7 @@ HTTP アクションからチャンクされたコンテンツをアップロー
 
 4. 各 PATCH 要求の後、エンドポイントでは、"200" 状態コードと次の応答ヘッダーで応答することによって、各チャンクの受信を確認します。
 
-   | エンドポイントの応答ヘッダー フィールド | Type | 必須 | 説明 |
+   | エンドポイントの応答ヘッダー フィールド | 種類 | 必須 | 説明 |
    |--------------------------------|------|----------|-------------|
    | **Range** | string | はい | エンドポイントで受信されたコンテンツのバイト範囲。例: "bytes=0-1023" |   
    | **x-ms-chunk-size** | 整数 | いいえ | 推奨されたチャンク サイズ (バイト単位) |

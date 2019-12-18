@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services の Fragmented MP4 ライブ インジェスト仕様 | Microsoft Docs
-description: この仕様では、Azure Media Services 用 Fragmented MP4 ベースのライブ ストリーミング インジェストのプロトコルと形式について説明します。 Azure Media Services では、Azure をクラウド プラットフォームとして使用することにより、ライブ イベントのストリーミング配信とリアルタイムでのコンテンツのブロードキャストを行うことができます。 このドキュメントでは、冗長性の高い、堅牢なライブ インジェスト メカニズムを構築する上でのベスト プラクティスについても説明します。
+description: この仕様では、Azure Media Services 用 Fragmented MP4 ベースのライブ ストリーミング インジェストのプロトコルと形式について説明します。 このドキュメントでは、冗長性の高い、堅牢なライブ インジェスト メカニズムを構築する上でのベスト プラクティスについても説明します。
 services: media-services
 documentationcenter: ''
 author: cenkdin
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 4e1d41216f99a86a1b04ada882dcae0ff34b823b
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 507afad294e8233ea4de4130795f29925870fcdf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "69014767"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888055"
 ---
 # <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Azure Media Services の Fragmented MP4 ライブ インジェスト仕様 
 
@@ -38,7 +38,7 @@ ms.locfileid: "69014767"
 
 ![インジェスト フロー][image1]
 
-## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>手順 3.ビットストリーム形式 – ISO 14496-12 Fragmented MP4
+## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3.ビットストリーム形式 – ISO 14496-12 Fragmented MP4
 このドキュメントで言及するライブ ストリーミング インジェスト用のワイヤ形式は、[ISO-14496-12] に基づきます。 Fragmented MP4 形式、ビデオ オンデマンド ファイルの拡張子、ライブ ストリーミング インジェストの詳細については、[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) に関するページをご覧ください。
 
 ### <a name="live-ingest-format-definitions"></a>ライブ インジェスト形式の定義

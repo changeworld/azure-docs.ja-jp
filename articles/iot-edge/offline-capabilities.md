@@ -3,21 +3,20 @@ title: デバイスをオフラインで操作する - Azure IoT Edge | Microsof
 description: IoT Edge デバイスおよびモジュールがどのようにして長時間インターネット接続なしで動作できるか、さらに IoT Edge を使って通常の IoT デバイスがどのようにオフラインで動作できるかを理解します。
 author: kgremban
 ms.author: kgremban
-ms.date: 08/04/2019
+ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b16a8d8ddd4ac23a59db8e7fed48f1c39752d130
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ba64dcdadc5fa670c4502a7d8d92cb35e3b0cacd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456888"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924864"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する
 
-Azure IoT Edge では、IoT Edge デバイスでの拡張オフライン操作がサポートされており、IoT Edge 以外の子デバイスでのオフライン操作も可能です。 IoT Edge デバイスが IoT Hub に接続できる何らかの方法がある限り、IoT Edge デバイスとすべての子デバイスは、断続的な接続により、またはインターネット接続なしに、機能し続けることができます。 
-
+Azure IoT Edge では、IoT Edge デバイスでの拡張オフライン操作がサポートされており、IoT Edge 以外の子デバイスでのオフライン操作も可能です。 IoT Edge デバイスが IoT Hub に接続できるなんらかの方法がある限り、そのデバイスとすべての子デバイスは、断続的なインターネット接続により、またはインターネット接続なしに、機能し続けることができます。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
@@ -39,7 +38,9 @@ IoT Edge デバイスがオフライン モードになると、IoT Edge ハブ�
 
 4. **IoT Hub に再接続して再同期する**
 
-   IoT Hub との接続が復元されると、IoT Edge デバイスは再同期されます。 ローカルに格納されているメッセージは、格納された際と同じ順序で配信されます。 モジュールおよびデバイスにおける、必要なプロパティと報告されたプロパティとの違いが調整されます。 IoT Edge デバイスにより、割り当てられている一連の子 IoT デバイスへのすべての変更が更新されます。
+   IoT Hub との接続が復元されると、IoT Edge デバイスは再同期されます。 ローカルに保存されたメッセージは IoT Hub にすぐに配信されますが、接続速度、IoT Hub 待ち時間、および関連する要因に依存します。 これらのメッセージは、格納された際と同じ順序で配信されます。
+
+   モジュールおよびデバイスにおける、必要なプロパティと報告されたプロパティとの違いが調整されます。 IoT Edge デバイスにより、割り当てられている一連の子 IoT デバイスへのすべての変更が更新されます。
 
 ## <a name="restrictions-and-limits"></a>制約と制限
 

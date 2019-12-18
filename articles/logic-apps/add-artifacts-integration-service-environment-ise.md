@@ -1,20 +1,17 @@
 ---
-title: 統合サービス環境に成果物を追加する - Azure Logic Apps
+title: 成果物を統合サービス環境に追加する
 description: 統合サービス環境 (ISE) にロジック アプリ、統合アカウント、カスタム コネクタを追加して Azure 仮想ネットワーク (VNET) にアクセスする
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 266c942adb62b187d39d2eac4a47455482bfadaa
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7221619c8d9388a9f6d46ec1dfbb11e467db861a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680528"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793308"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) に成果物を追加する
 

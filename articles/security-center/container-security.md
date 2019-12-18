@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9cb4f6ec7331a2d0eb03beb2680c882484b69541
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274077"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868492"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -34,7 +34,7 @@ Azure Security Center は、コンテナー セキュリティ用の Azure ネ�
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>脆弱性管理 - コンテナー イメージのスキャン (プレビュー)
 Azure Container Registry を監視するには、Security Center の Standard レベルになっていることを確実にしてください ([価格](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)に関するページを参照してください)。 次に、オプションのコンテナー レジストリ バンドルを有効にします。 新しいイメージがプッシュされると、Security Center では、業界最高レベルの脆弱性スキャン ベンダーである Qualys のスキャナーを使用してイメージがスキャンされます。
 
-Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 Security Center の推奨事項の詳細については、[仮想マシンの保護](security-center-virtual-machine-protection.md##compute-and-app-recs)に関するページの推奨事項の一覧を参照してください。
+Qualys または Security Center によって問題が見つかった場合は、Security Center ダッシュボードで通知されます。 Security Center には、すべての脆弱性について、実行可能な推奨事項、重大度の分類、および問題の修正方法に関するガイダンスが表示されます。 Security Center の推奨事項の詳細については、[こちら](recommendations-compute-and-apps.md)で推奨事項の一覧を参照してください。
 
 ## <a name="environment-hardening"></a>環境のセキュリティ強化
 
@@ -59,8 +59,7 @@ Security Center の推奨事項の詳細については、[仮想マシンの保
 
 Security Center は、コンテナー化された環境に対するリアルタイムの脅威検出機能を備えており、不審なアクティビティに対してはアラートが生成されます。 ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、コンテナーのセキュリティを強化することができます。
 
-脅威は、ホストおよび AKS クラスター レベルで検出されます。 詳細については、[Azure コンテナー サービス](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)に関するページを参照してください。
-
+脅威は、ホストおよび AKS クラスター レベルで検出されます。 詳細については、[Azure コンテナーに対する脅威の検出](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)に関する記事を参照してください。
 
 ## <a name="to-view-the-security-posture-of-your-container-related-resources"></a>コンテナー関連のリソースのセキュリティ体制を確認するには
 1.  Security Center の **[計算とアプリ]** ページを開きます。

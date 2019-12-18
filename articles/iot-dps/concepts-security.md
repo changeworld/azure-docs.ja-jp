@@ -1,19 +1,18 @@
 ---
-title: Azure IoT Hub Device Provisioning サービスにおけるセキュリティの概念 | Microsoft Docs
-description: デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のセキュリティ プロビジョニングの概念を説明します。
+title: Azure IoT Hub Device Provisioning Service - セキュリティの概念
+description: デバイス プロビジョニング サービス (DPS) と IoT Hub を備えたデバイスに固有のセキュリティ プロビジョニングの概念を説明します。
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: e35330874c647eba2cddde694563c8a1d9e83df5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60775119"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973460"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub デバイス プロビジョニング サービスのセキュリティの概念 
 

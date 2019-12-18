@@ -1,26 +1,17 @@
 ---
-title: Linux での ASP.NET Core と SQL Database - Azure App Service | Microsoft Docs
-description: SQL Database に接続された ASP.NET Core アプリを Azure App Service on Linux で動作させる方法について説明します。
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: チュートリアル:SQL DB を使用する Linux ASP.NET Core
+description: SQL Database に接続して、データ駆動型 ASP.NET Core アプリを Azure App Service で動作させる方法について説明します。
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 532c6a45351f872260ea9383adaacacd486b9d9a
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 67ea11b2e1457bf4a788f54664ed54ff7ca9c8d9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532724"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688928"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での ASP.NET Core および SQL Database アプリの作成
 

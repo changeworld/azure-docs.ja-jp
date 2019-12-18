@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 7d4546a6d2de01575825154ab30a909b76b3fc89
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a0c9a654d0ee49dc2bdb6efb7370a3ad2b199e10
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474475"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481299"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ
 
@@ -98,6 +98,9 @@ Azure Active Directory Domain Services (AD DS) のマネージド ドメイン�
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>オンプレミスの AD DS から Azure AD と Azure AD DS への同期
 
 Azure AD Connect は、オンプレミスの AD DS 環境から Azure AD へのユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュの同期に使用されます。 UPN やオンプレミスのセキュリティ識別子 (SID) などのユーザー アカウントの属性が同期されます。 Azure AD Domain Services を使用してサインインするために、NTLM および Kerberos 認証に必要な従来のパスワード ハッシュも、Azure AD に同期されます。
+
+> [!IMPORTANT]
+> Azure AD Connect は、オンプレミスの AD DS 環境との同期のためにのみインストールおよび構成する必要があります。 オブジェクトを Azure AD に同期するために、Azure AD DS マネージド ドメインに Azure AD Connect をインストールすることはサポートされていません。
 
 ライトバックを構成すると、Azure AD からの変更がオンプレミスの AD DS 環境に同期されます。 たとえば、ユーザーが Azure AD のセルフサービス パスワード管理を使用してパスワードを変更すると、パスワードがオンプレミスの AD DS 環境内で更新されます。
 

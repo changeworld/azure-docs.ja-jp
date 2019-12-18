@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL のデータベース アプリケーション開発の概要
+title: アプリケーション開発 - Azure Database for MySQL
 description: 開発者が Azure Database for MySQL に接続するためのアプリケーション コードを記述するときに従う必要がある、設計上の考慮事項について説明します
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 946f7011c51b7c6844e023d03e01e4c2043d2578
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 12/02/2019
+ms.openlocfilehash: 74abf680223d562522a11ecb8999fedb37de9907
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615651"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770273"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Azure Database for MySQL のアプリケーション開発の概要 
 この記事では、開発者が Azure Database for MySQL に接続するためのアプリケーション コードを記述するときに従う必要がある、設計上の考慮事項について説明します。 
@@ -33,7 +33,7 @@ Azure Database for MySQL では、サーバーが使用できるリソースを�
 ## <a name="security"></a>セキュリティ
 Azure Database for MySQL には、MySQL データベースに対するアクセスの制限、データの保護、ユーザーとロールの構成、およびアクティビティの監視を行うためのリソースが用意されています。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 Azure Database for MySQL は、ユーザーとログインのサーバー認証をサポートしています。
 
 ## <a name="resiliency"></a>回復性

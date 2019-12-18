@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 08/15/2019
-ms.openlocfilehash: e5738b9f7cca03898d3bb5c593004bb316aa0b23
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: aaf7d1a38d4b809b904b6c607a4cfc23efd4dde5
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553884"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286330"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Azure Monitor for Storage (プレビュー) でストレージ サービスを監視する
 
@@ -168,7 +168,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 ### <a name="modify-metrics-and-colors-in-the-workbook"></a>ブックのメトリックと色を変更する
 
-作成済みのブックにはメトリック データが含まれており、どの視覚エフェクトも変更または削除することができ、チーム固有のニーズに合わせてカスタマイズすることができます。 
+作成済みのブックにはメトリック データが含まれており、どの視覚エフェクトも変更または削除することができ、チーム固有のニーズに合わせてカスタマイズすることができます。
 
 この例では、複数サブスクリプションとストレージ アカウントの容量ブックを使用して、次の方法を示します。
 
@@ -183,7 +183,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
     ![[編集] を選択してブックを変更する](./media/storage-insights-overview/workbook-edit-workbook.png)
 
-3. メトリック セクションの横にある **[編集]** を選択します。 
+3. メトリック セクションの横にある **[編集]** を選択します。
 
     ![[編集] を選択して容量ブックのメトリックを変更する](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
 
@@ -191,7 +191,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
     ![列の設定を編集する](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
-5. **[列の設定の編集]** ウィンドウの **[列]** セクションで **[microsoft.storage/storageaccounts-Capacity-UsedCapacity Timeline$|Account used capacity Timeline$]** を選択し、 **[列レンダラー]** ドロップダウン リストで **[非表示]** を選択します。 
+5. **[列の設定の編集]** ウィンドウの **[列]** セクションで **[microsoft.storage/storageaccounts-Capacity-UsedCapacity Timeline$|Account used capacity Timeline$]** を選択し、 **[列レンダラー]** ドロップダウン リストで **[非表示]** を選択します。
 
 6. **[保存して閉じる]** を選択して、変更をコミットします。
 
@@ -234,6 +234,86 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>パフォーマンス、容量、または可用性の問題の解決
 
 Azure Monitor for Storage (プレビュー) で発生するストレージ関連の問題のトラブルシューティングについては、Azure Storage の[トラブルシューティング ガイダンス](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)に関する記事をご覧ください。  
+
+### <a name="why-can-i-only-see-200-storage-accounts"></a>200 個のストレージ アカウントしか表示できないのはなぜですか。
+
+選択されているサブスクリプションの数には関係なく、選択されるストレージ アカウントの数には 200 の制限があります。
+
+### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>ダッシュボードの最近ピン留めされたタイルをクリックするとどうなりますか。
+
+* タイル上の任意の場所をクリックすると、そのタイルがピン留めされたときのタブが表示されます。 たとえば、[ストレージ アカウントの概要] タブでグラフをピン留めした場合は、ダッシュボードのそのタイルをクリックすると、その既定のビューが開きます。ただし、独自の保存されたコピーからグラフをピン留めした場合は、その保存されたコピーのビューが開きます。
+* タイトルの左上にあるフィルター アイコンをクリックすると、[タイル設定の構成] タブが開きます。
+* 右上にある省略記号アイコンをクリックすると、[Customize title data] (タイトル データのカスタマイズ) のオプションである [カスタマイズ]、[更新]、および [ダッシュボードから削除する] が表示されます。
+
+### <a name="what-happens-when-i-save-a-workbook"></a>ブックを保存するとどうなりますか。
+
+* ブックを保存すると、編集を使用してブックの新しいコピーを作成したり、タイトルを変更したりできるようになります。 保存してもブックは上書きされず、現在のブックは常に既定のビューになります。
+* **保存されていない**ブックは、単なる既定のビューです。
+
+
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>ポータルに自分のすべてのサブスクリプションが表示されないのはなぜですか。
+
+ポータルには、ポータルの起動時に選択されたサブスクリプションのデータのみが表示されます。 選択されているサブスクリプションを変更するには、右上に移動し、フィルター アイコンを含むノートブックをクリックします。 これにより、[ディレクトリ + サブスクリプション] タブが表示されます。
+
+![[ディレクトリ + サブスクリプション]](./media/storage-insights-overview/fqa3.png)
+
+### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>可用性の色としきい値を変更するにはどうしたらよいですか。
+
+可用性の色としきい値を変更する方法に関する詳細な手順については、「[可用性のしきい値を変更する](storage-insights-overview.md#modify-the-availability-threshold)」のセクションを参照してください。
+
+### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Azure Monitor for Storage に表示されているデータを分析およびトラブルシューティングするにはどうしたらよいですか。
+
+ Azure Monitor for Storage に表示されている Azure Storage データを分析およびトラブルシューティングする方法の詳細については、「[Microsoft Azure Storage の監視、診断、およびトラブルシューティング](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting)」の記事を参照してください。
+
+### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>メトリックにすべての種類のエラーが表示されないのはなぜですか。
+
+現在、最大 3 種類のエラーが表示され、残りのエラーは 1 つのバケットにグループ化されます。 これは splitByLimit を使用して制御され、変更が可能です。 このプロパティを変更するには、次の操作を行います。
+
+1. [edit workbook] (ブックの編集) をクリックします。
+2. メトリックに移動し、編集をクリックしてから、 **[Transactions, Sum] (トランザクション、合計)** または編集する任意のメトリックを選択します。
+
+    ![メトリックに移動し、編集をクリックしてから、[Transactions, Sum] (トランザクション、合計) をクリックする](./media/storage-insights-overview/fqa7.png)
+
+1. 次に、[Number of Splits] (分割数) を変更します。
+
+    ![[Select Metric Parameters] (メトリック パラメーターの選択)](./media/storage-insights-overview/fqa7-2.png)
+
+n 種類のエラーを表示する場合は、splitByLimit を n+1 として指定し、残りのエラーのために 1 を追加します。
+
+###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>あるストレージ アカウントで自分のブックを保存しました。 今それが見つからないのはなぜですか。
+
+各ブックは、それを保存したときのストレージ アカウントに保存されます。 ユーザーがそのブックを保存した特定のストレージ アカウントを探してみてください。 それ以外に、リソース (ストレージ アカウント) がわからずに特定のブックを見つける方法はありません。
+
+### <a name="what-is-time-range"></a>時間範囲とはどのようなものですか。
+
+時間範囲は、特定の期間のデータを示します。 たとえば、時間範囲が 24 時間である場合は、過去 24 時間分のデータを示しています。
+
+### <a name="what-is-time-granularity-time-grain"></a>時間の粒度 (時間グレイン) とはどのようなものですか。
+
+時間の粒度は、2 つのデータ ポイント間の時間差です。 たとえば、時間グレインが 1 秒に設定されている場合は、メトリックが 1 秒ごとに収集されることを示します。
+
+### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>ブックのある部分をダッシュボードにピン留めした後の時間の粒度はどれだけですか。
+
+既定の時間の粒度は自動に設定されています。現時点で、それを変更することはできません。
+
+### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>ダッシュボード上のブック ステップの期間/時間範囲を変更するにはどうしたらよいですか。
+
+既定では、ダッシュボード タイルの期間/時間範囲は 24 時間に設定されています。これを変更するには、右上にある省略記号ボタンをクリックして **[タイル データをカスタマイズする]** を選択し、[override the dashboard time settings at the title level] (タイトル レベルでダッシュボードの時刻の設定をオーバーライドする) ボックスをオンにしてから、ドロップダウン メニューを使用して期間を選択します。  
+
+![タイルの右の隅にある省略記号ボタンを選択し、[Customize this data] (このデータをカスタマイズする) を選択します。](./media/storage-insights-overview/fqa-data-settings.png)
+
+![[タイル設定の構成] で、期間のドロップダウンを選択して期間/時間範囲を変更します。](./media/storage-insights-overview/fqa-timespan.png)
+
+### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>ダッシュボードにピン留めしたブックまたはブック ステップのタイトルを変更するにはどうしたらよいですか。
+
+ダッシュボードにピン留めされたブックまたはブック ステップのタイトルは、そのブックにあったものと同じ名前を保持します。 タイトルを変更するには、ブックの独自のコピーを保存する必要があります。 その後、[保存] を押す前に、ブックに名前を付けることができます。
+
+![上部にある [保存] を選択してブックのコピーを保存し、その名前を変更します。](./media/storage-insights-overview/fqa-change-workbook-name.png)
+
+保存されたブック内のステップの名前を変更するには、そのステップの下の [編集] を選択した後、[設定] の一番下にある歯車を選択します。
+
+![ブック ステップの下部にある [編集] を選択して [設定] を開く](./media/storage-insights-overview/fqa-edit.png)
+![[設定] の一番下にある歯車を選択すると、ステップ名を変更できる](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>次の手順
 

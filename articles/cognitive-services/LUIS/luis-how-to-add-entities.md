@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132693"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383681"
 ---
 # <a name="add-entities-to-extract-data"></a>データを抽出するエンティティを追加する 
 
@@ -66,7 +66,7 @@ Language Understanding (LUIS) アプリでユーザーの発話から重要な�
 |--|--|
 |[リスト エンティティ](#add-list-entities-for-exact-matches)|正規名と代替形式としてのシノニムの一覧|
 |正規表現エンティティ|正規表現エンティティを利用してテキストを照合する|
-|[事前構築済みのエンティティ](tutorial-machine-learned-entity.md#add-prebuilt-number-to-app-to-help-extract-data)|数値、メール、日付など、一般的なデータ型を照合する|
+|[事前構築済みのエンティティ](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|数値、メール、日付など、一般的なデータ型を照合する|
 |事前構築済みのドメイン エンティティ|選択したサブジェクト ドメインを使用して照合する|
 |[Pattern.any](#add-a-patternany-entity)| 周囲のテキストと混同しがちなエンティティを照合する|  
 
@@ -82,7 +82,7 @@ Language Understanding (LUIS) アプリでユーザーの発話から重要な�
 
 ### <a name="add-list-entities-for-exact-matches"></a>完全一致のリスト エンティティを追加する
 
-リスト エンティティとは、関連単語の集まりであり、固定かつ限定的です。 作成者はリストを変更できますが、LUIS によってリストが増減することはありません。 [list entity .json format](reference-entity-list.md#example-json-to-import-into-list-entity) を利用して既存のリスト エンティティにインポートすることもできます。 
+リスト エンティティとは、関連単語の集まりであり、固定かつ限定的です。 作成者はリストを変更できますが、LUIS によってリストが増減することはありません。 [list entity .json format]\(reference-entity-list.md#example-json-to-import-into-list-entity) を利用して既存のリスト エンティティにインポートすることもできます。 
 
 次のリストは、正規名とシノニムの例になっています。 
 
@@ -179,14 +179,18 @@ Pattern.any が含まれているパターンでエンティティが正しく�
 
 ## <a name="next-steps"></a>次の手順
 
-パターンについて学習する:
+> [!div class="nextstepaction"] 
+> [事前構築済みのモデルの使用](howto-add-prebuilt-models.md) 
 
-* [パターンの概念](luis-concept-patterns.md)
-* [パターンの構文](reference-pattern-syntax.md)
+各項目の詳細情報
+* [トレーニング](luis-how-to-train.md)方法
+* [テスト](luis-interactive-test.md)方法
+* [発行](luis-how-to-publish-app.md)方法
+* パターン:
+    * [概念](luis-concept-patterns.md)
+    * [構文](reference-pattern-syntax.md)
+* [事前構築済みエンティティの GitHub リポジトリ](https://github.com/Microsoft/Recognizers-Text)
+* [データ抽出の概念](luis-concept-data-extraction.md)
 
-事前構築済みエンティティについて詳しくは、[レコグナイザー テキスト](https://github.com/Microsoft/Recognizers-Text) プロジェクトをご覧ください。 
 
-エンティティが JSON エンドポイント クエリの応答でどのように表示されるかについては、「[データの抽出](luis-concept-data-extraction.md)」をご覧ください
-
-意図、発話、エンティティを追加したことで、基本的な LUIS アプリが完成しました。 アプリを[トレーニング](luis-how-to-train.md)、[テスト](luis-interactive-test.md)、および[発行](luis-how-to-publish-app.md)する方法を学びます。
  

@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager テンプレートの構文と式
+title: テンプレートの構文と式
 description: Azure Resource Manager テンプレートの宣言型 JSON 構文について説明します。
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.author: tomfitz
-ms.openlocfilehash: 1e7288da19e2e81d609b952e03d5143b03a65c63
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 046f7f4866e9b5933c55bc5a9d0ee96c945bff0e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259435"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149201"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構文と式
 

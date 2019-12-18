@@ -1,17 +1,17 @@
 ---
-title: Azure Database for MySQL ドライバーと管理ツールの互換性
+title: ドライバーとツールの互換性 - Azure Database for MySQL
 description: この記事では、Azure Database for MySQL との、MySQL ドライバーと管理ツールの互換性について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.openlocfilehash: 916c02c30f6d54aef44459775a7a437fe96a4ff9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 12/05/2019
+ms.openlocfilehash: bb8477165afcaafe6d03ccb3fe7764124aa166c6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720145"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928667"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 この記事では、Azure Database for MySQL との、ドライバーと管理ツールの互換性について説明します。
@@ -30,7 +30,7 @@ Azure Database for MySQL では、MySQL データベースの世界で最も人�
 | Python | MySQL コネクタ/Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3、2.0、2.1、2.2、8.0.16 以降と MySQL 8.0 を使用  | 1.2.2 以前 | |
 | Python | PyMySQL | https://pypi.org/project/PyMySQL/ | 0.7.11、0.8.0、0.8.1、0.9.3 以降 | 0.9.0 ～ 0.9.2 (web2py での回帰) | |
 | Java | MariaDB コネクタ/J | https://downloads.mariadb.org/connector-java/ | 2.1、2.0、1.6 | 1.5.5 以前 | | 
-| Java | MySQL コネクタ/J | https://github.com/mysql/mysql-connector-j | 5.1.20 以降、8.0.17 以降と MySQL 8.0 を使用 | 5.1.9 以下 | |
+| Java | MySQL コネクタ/J | https://github.com/mysql/mysql-connector-j | 5.1.21 以降、8.0.17 以降と MySQL 8.0 を使用 | 5.1.20 以下 | |
 | C | MySQL コネクタ/C (libmysqlclient) | https://dev.mysql.com/doc/refman/5.7/en/c-api-implementations.html | 6.0.2 以降 | | |
 | C | MySQL コネクタ/ODBC (myodbc) | https://github.com/mysql/mysql-connector-odbc | 3.51.29 以降 | | |
 | C++ | MySQL コネクタ/C++ | https://github.com/mysql/mysql-connector-cpp | 1.1.9 以降 | 1.1.3 以下 | | 

@@ -4,17 +4,17 @@ description: この記事では、PowerShell またはポータルを使用し�
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fd7e94261d8302224b0e31e5f4ac46978dfa812f
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 2ce6c27487e834325b59fb21ba0d54d1e788ea57
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690879"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951379"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation の実行アカウントを管理する
 
@@ -67,7 +67,7 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 このセクションでは、以下の手順に従って、Azure Portal で Azure Automation アカウントを更新します。 実行アカウントとクラシック実行アカウントをそれぞれ作成します。 クラシック リソースを管理する必要がない場合は、Azure 実行アカウントのみを作成できます。
 
 1. サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用して、Azure Portal にサインインします。
-2. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]** を選択します。
+2. Azure portal 上で、 **[Automation アカウント]** を検索して選択します。
 3. **[Automation アカウント]** ページで、Automation アカウントの一覧からご使用の Automation アカウントを選択します。
 4. 左側のウィンドウの **[アカウント設定]** セクションで、 **[実行アカウント]** を選択します。
 5. 必要なアカウントに応じて、 **[Azure 実行アカウント]** または **[Azure クラシック実行アカウント]** を選択します。 **[Azure 実行アカウントを追加する]** または **[Azure クラシック実行アカウントを追加する]** のどちらかを選択すると、ウィンドウが表示されます。概要情報を確認してから、 **[作成]** をクリックして実行アカウントの作成を進めます。
@@ -86,7 +86,7 @@ Azure Automation の実行アカウントは、Azure コマンドレットを使
 
 スクリプトの必須パラメーターである *SubscriptionID*、*ResourceGroup*、*AutomationAccountName* の値を取得するには、次の手順を実行します。
 
-1. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Automation**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Automation アカウント]** を選択します。
+1. Azure portal 上で、 **[Automation アカウント]** を検索して選択します。
 1. [Automation アカウント] ページで自分の Automation アカウントを選択し、 **[アカウント設定]** で **[プロパティ]** を選択します。
 1. **[プロパティ]** ページの **[サブスクリプション ID]** 、 **[名前]** 、および **[リソース グループ]** の値をメモします。
 

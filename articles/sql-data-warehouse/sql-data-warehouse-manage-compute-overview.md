@@ -2,21 +2,21 @@
 title: コンピューティング リソースの管理
 description: Azure SQL Data Warehouse のパフォーマンス スケールアウト機能について説明します。 DWU を調整してスケールアウトしたり、データ ウェアハウスを一時停止してコストを削減したりします。
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 ms.date: 11/12/2019
-ms.author: kevin
+ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 936d92d085420e1386e29a924470b9bac9200d43
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 305b17a9118bddac53b19462cb8c3be887395311
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039097"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923593"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのコンピューティングの管理
 Azure SQL Data Warehouse でコンピューティング リソースを管理する方法について説明します。 また、データ ウェアハウスを一時停止してコストを削減したり、データ ウェアハウスをパフォーマンス需要に応じてスケーリングしたりする方法についても説明します。 
@@ -59,7 +59,7 @@ SQL Data Warehouse のアーキテクチャではストレージとコンピュ�
 
 最適なデータ ウェアハウス ユニット数を確認する際の推奨事項を以下に示します。
 
-- 開発中のデータ ウェアハウスの場合は、少ない数のデータ ウェアハウス ユニットを選択することから始めます。  手始めとしては、DW400 または DW200 が適しています。
+- 開発中のデータ ウェアハウスの場合は、少ない数のデータ ウェアハウス ユニットを選択することから始めます。  手始めとしては、DW400c または DW200c が適しています。
 - アプリケーションのパフォーマンスを監視し、選択したデータ ウェアハウス ユニットの数に対するパフォーマンスの変化を観察します。
 - 線形スケールを想定し、データ ウェアハウス ユニットをどれだけ増減する必要があるかを確認します。 
 - ビジネス要件に応じた最適なパフォーマンス レベルに到達するまで調整を行います。

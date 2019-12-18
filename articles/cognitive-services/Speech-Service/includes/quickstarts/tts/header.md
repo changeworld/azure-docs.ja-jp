@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を合成する - Speech Service
+title: クイック スタート:音声を合成する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: Speech SDK を使用して音声を合成する方法について学習します
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 263a8e98c4c029728272c020efe00e82be20f5e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d19f779f67cc0dea8cc7f06aa275885d75c3092e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505077"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818215"
 ---
 このクイックスタートでは、[Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) を使用して、テキストを合成された音声に変換します。 いくつかの前提条件を満たすと、次の 4 つの手順だけで合成された音声を既定のスピーカーにレンダリングします。
 > [!div class="checklist"]

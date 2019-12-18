@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory のマッピング データ フローのパフォーマンスとチューニング ガイド
+title: Mapping data flow のパフォーマンスとチューニング ガイド
 description: Azure Data Factory でのマッピング データ フローのパフォーマンスに影響する主な要因について説明します。
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
+ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 20a08345d8335b4857ca9777efb55f953ee63e9f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681550"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928531"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -120,6 +121,14 @@ DW への行単位の挿入を回避するには、シンク設定で **[Enable 
 ```DateFiles/*_201907*.txt```
 
 ワイルドカードを使用すると、パイプラインには 1 つの Data Flow アクティビティだけが含まれます。 BLOB ストアを検索し、ForEach を使用して、その内側で Data Flow の実行アクティビティを使用しながら、一致するすべてのファイルを反復処理させるよりも、この方が効率がよくなります。
+
+### <a name="optimizing-for-cosmosdb"></a>CosmosDB のための最適化
+
+CosmosDB シンクのスループットとバッチ プロパティの設定は、パイプライン データ フロー アクティビティからのそのデータ フローの実行中にのみ有効になります。 元のコレクションの設定は、データ フローの実行後に CosmosDB によって受け入れられます。
+
+* バッチ サイズ: データの行のおおよそのサイズを計算し、rowSize * バッチサイズが 200 万未満であることを確認します。 その場合は、バッチ サイズを増やしてスループットを向上させます。
+* スループット:ここでより高いスループットを設定して、CosmosDB にドキュメントを高速で書き込むことができるようにします。 高いスループットの設定に基づいて、RU コストが高くなることに注意してください。
+*   書き込みスループット予算:1 分あたりの RU の合計よりも小さい値を使用してください。 多数の Spark パーティションが含まれるデータ フローがある場合、予算のスループットを設定すると、これらのパーティション間でより均等にバランスを取ることができます。
 
 ## <a name="next-steps"></a>次の手順
 

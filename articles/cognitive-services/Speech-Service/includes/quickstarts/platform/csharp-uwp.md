@@ -1,7 +1,7 @@
 ---
-title: クイック スタート:Speech SDK for C# のユニバーサル Windows プラットフォーム (UWP) プラットフォームのセットアップ - Speech Service
+title: クイック スタート:Speech SDK for C# のユニバーサル Windows プラットフォーム (UWP) プラットフォームのセットアップ - Speech サービス
 titleSuffix: Azure Cognitive Services
-description: このガイドでは、Speech Services SDK を使用するユニバーサル Windows プラットフォーム (UWP) の下で、C# のプラットフォームを設定する方法を説明します。
+description: このガイドでは、Speech サービス SDK を使用するユニバーサル Windows プラットフォーム (UWP) の下で、C# のプラットフォームを設定する方法を説明します。
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 89b318af37f30179a7026df135cf864727976762
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ea6218066ce381bbfa7ae8c6a02991b351163084
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504453"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815052"
 ---
 このガイドでは、C# ユニバーサル Windows プラットフォーム (UWP) 用の [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。
 

@@ -1,22 +1,22 @@
 ---
-title: Azure Active Directory の条件付きアクセスを使用してクラウド アプリへのアクセスにアプリ保護ポリシーを要求する | Microsoft Docs
+title: 条件付きアクセスを使用したアプリ保護ポリシー - Azure Active Directory
 description: Azure Active Directory の条件付きアクセスを使用して、クラウド アプリへのアクセスにアプリ保護ポリシーを要求する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 4/4/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8b7cc1f3a8431986ffbaac604ec5863236f112
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357112"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964091"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>条件付きアクセスを使用してクラウド アプリへのアクセスにアプリ保護ポリシーを要求する (プレビュー)
 
@@ -330,7 +330,7 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 
 ### <a name="configuration"></a>構成
 
-**手順 1:Exchange Online 用の Azure AD 条件付きアクセス ポリシーを構成する**
+**手順 1:Exchange Online と SharePoint Online 用の Azure AD 条件付きアクセス ポリシーを構成する**
 
 この手順の条件付きアクセス ポリシーの場合、次のコンポーネントを構成します。
 
@@ -338,7 +338,7 @@ Azure Active Directory の条件付きアクセスでは、クラウド アプ�
 
 1. 条件付きアクセス ポリシーの名前を入力します。
 1. **[割り当て]** の **[ユーザーとグループ]** で、条件付きアクセス ポリシーごとに少なくとも 1 人のユーザーまたは 1 つのグループを選択します。
-1. **[クラウド アプリ]** で、 **[Office 365 Exchange Online]** を選択します。 
+1. **[クラウド アプリ]** で、 **[Office 365 Exchange Online]** と **[Office 365 SharePoint Online]** を選択します。 
 
    ![条件付きアクセス](./media/app-protection-based-conditional-access/02.png)
 

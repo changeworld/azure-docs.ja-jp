@@ -1,24 +1,14 @@
 ---
-title: Azure SKU 利用不可エラー | Microsoft Docs
+title: SKU が使用できないエラー
 description: Azure Resource Manager でリソースをデプロイするときに、SKU が使用できないことを示すエラーのトラブルシューティングを行う方法について説明します。
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/19/2018
-ms.author: tomfitz
-ms.openlocfilehash: fca028412052a9a1520e1178f5d182a9987a9a85
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0b3696d3207a88d87b11e65f4697473963f960d5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390234"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769137"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>SKU 利用不可エラーを解決する
 
@@ -39,6 +29,8 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 ## <a name="cause"></a>原因
 
 このエラーは、選択したリソースの SKU (VM サイズなど) が、選択した場所で利用できない場合に発生します。
+
+Azure スポット VM またはスポット スケール セット インスタンスをデプロイする場合、この場所に Azure スポットの容量はありません。 詳細については、[スポットのエラー メッセージ](../virtual-machines/error-codes-spot.md)に関する記事を参照してください。
 
 ## <a name="solution-1---powershell"></a>解決策 1 - PowerShell
 

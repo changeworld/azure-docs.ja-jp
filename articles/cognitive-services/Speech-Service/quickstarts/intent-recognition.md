@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声、意図、エンティティを認識する - Speech Service
+title: クイック スタート:音声、意図、エンティティを認識する - Speech サービス
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Speech SDK を使用して、マイクからキャプチャされたオーディオ データの音声を対話形式で認識します。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b385c9bed1a6cf2aa1163d35fade69ddc15ff8b3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9b8fed7a023a4c39dca3eacb4f8496730a7f50b2
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280388"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816181"
 ---
 # <a name="quickstart-recognize-speech-intents-and-entities-with-language-understanding-luis"></a>クイック スタート:Language Understanding (LUIS) を使用して、音声、意図、エンティティを認識する
 

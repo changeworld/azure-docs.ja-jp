@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 436b7899b1a9d4f9cab1ca2581ff9b5b162de8ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e42234e9fcdcfe3ee5ce975babbe03b64a750e36
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60357974"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846829"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Azure AD アカウントで Azure Multi-Factor Authentication を使用するためのセキュリティ ガイダンス
 
@@ -52,7 +52,7 @@ Azure MFA を含むライセンスを持っていない場合は、[MFA 認証�
 * 多要素認証プロバイダーの作成に Azure AD ディレクトリは必要ありませんが、ディレクトリがあるとより高度な機能を利用できます。 Azure AD ディレクトリに認証プロバイダーを関連付けると、次に示す機能が有効になります。
   * すべてのユーザーを 2 段階認証の対象にする
   * 管理ポータル、カスタムの案内応答、レポートなどの追加機能をグローバル管理者に提供する
-* オンプレミスの Active Directory 環境を Azure AD ディレクトリと同期する場合は、DirSync または AAD Sync が必要です。Active Directory のオンプレミスのインスタンスと同期されない Azure AD ディレクトリを使用する場合、DirSync または AAD Sync は必要ありません。
+* オンプレミスの Active Directory 環境を Azure AD ディレクトリと同期する場合は、DirSync または Azure AD Sync が必要です。Active Directory のオンプレミスのインスタンスと同期されない Azure AD ディレクトリを使用する場合、DirSync または Azure AD Sync は必要ありません。
 * ビジネスに最も適した使用モデルを選択してください。 使用モデルはいったん選択すると変更できません。 2 つのモデルを次に示します。
   * 認証ごと: 認証ごとに課金されます。 特定のユーザーではなく、特定のアプリにアクセスするすべてのユーザーに対して 2 段階認証を実行する場合は、このモデルを使用します。
   * 有効化されたユーザーごと: Azure MFA を有効にしたユーザーごとに課金されます。 Azure AD Premium または Enterprise Mobility Suite ライセンスを所有しているユーザーと所有していないユーザーが混在している場合は、このモデルを使用します。

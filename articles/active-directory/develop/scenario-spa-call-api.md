@@ -1,6 +1,6 @@
 ---
-title: シングルページ アプリケーション (Web API の呼び出し) - Microsoft ID プラットフォーム
-description: シングルページ アプリケーションを構築する方法について説明します (Web API の呼び出し)
+title: Web API を呼び出すシングル ページ アプリを構築する - Microsoft IDプラットフォーム | Azure
+description: Web API を呼び出すシングル ページ アプリケーションをビルドする方法について学ぶ
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -15,16 +15,16 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77a4ed01ac55a1153a62c672b33056a543b912ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1171d8c3bc28c7b325cc8daf6cc072965363339c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545611"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965333"
 ---
-# <a name="single-page-application---call-a-web-api"></a>シングルページ アプリケーション - Web API の呼び出し
+# <a name="single-page-application-call-a-web-api"></a>シングルページ アプリケーション：Web API を呼び出す
 
-Web API を呼び出す前に、`acquireTokenSilent` メソッドを呼び出してアクセス トークンを取得または更新することをお勧めします。 トークンを取得すると、保護された Web API を呼び出せます。
+Web API を呼び出す前に、`acquireTokenSilent` メソッドを呼び出してアクセス トークンを取得または更新することをお勧めします。 トークンを取得した後に、保護された Web API を呼び出せます。
 
 ## <a name="call-a-web-api"></a>Web API を呼び出す
 
@@ -50,7 +50,7 @@ Web API を呼び出す前に、`acquireTokenSilent` メソッドを呼び出し
 
 ### <a name="angular"></a>Angular
 
-[トークンの取得セクション](scenario-spa-acquire-token.md)で説明されているように、MSAL Angular ラッパーは HTTP インターセプターを利用して自動的にアクセス トークンをサイレントに取得し、API への HTTP 要求に添付します。
+MSAL Angular ラッパーを使用すると、自動的にアクセス トークンをサイレントに取得して API への HTTP 要求にそれを添付するために HTTP インターセプターを利用できます。 詳細については、[API を呼び出すためのトークンの取得](scenario-spa-acquire-token.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
