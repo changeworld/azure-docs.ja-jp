@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub Device Provisioning Service での Roll X.509 証明書
-description: Azure IoT Hub Device Provisioning サービス インスタンスに X.509 証明書を展開する方法
+description: デバイス プロビジョニング サービス (DPS) インスタンスに X.509 証明書を展開する方法
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 55ed99c434028b9761ef53fc09a01481bbd184e1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228750"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974889"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>デバイスの X.509 証明書を展開する方法
 

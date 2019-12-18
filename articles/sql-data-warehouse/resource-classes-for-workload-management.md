@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 30a3be1365f152a88713604570169091f09f0536
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685934"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975433"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のリソース クラスでのワークロード管理
 
@@ -24,7 +24,7 @@ Azure SQL Data Warehouse のクエリで、リソース クラスを使用して
 
 ## <a name="what-are-resource-classes"></a>リソース クラスについて
 
-クエリのパフォーマンス能力は、ユーザーのリソース クラスによって決定されます。  リソース クラスとは、コンピューティング リソースとのクエリのコンカレンシーを制御する Azure SQL Data Warehouse のあらかじめ決定されたリソース制限です。 リソース クラスでは、同時実行されるクエリの数と、各クエリに割り当てられているコンピューティング リソースの数に制限を設定して、ワークロードを管理するのに役立ちます。  メモリとコンカレンシーの間にはトレードオフがあります。
+クエリのパフォーマンス能力は、ユーザーのリソース クラスによって決定されます。  リソース クラスとは、コンピューティング リソースとのクエリのコンカレンシーを制御する Azure SQL Data Warehouse のあらかじめ決定されたリソース制限です。 リソース クラスを利用して、同時実行されるクエリの数と、各クエリに割り当てられているコンピューティング リソースの数に制限を設定することで、クエリに対するリソースを構成することができます。  メモリとコンカレンシーの間にはトレードオフがあります。
 
 - リソース クラスが少数の場合、クエリごとの最大メモリは減少しますが、コンカレンシーは増えます。
 - より大規模なリソース クラスでは、クエリあたりの最大メモリは増えますが、コンカレンシーは減ります。
@@ -36,7 +36,7 @@ Azure SQL Data Warehouse のクエリで、リソース クラスを使用して
 
 リソース クラスでは、リソースの消費を測定するのにコンカレンシー スロットを使用します。  [コンカレンシー スロット](#concurrency-slots)については、この記事で後述します。
 
-- リソース クラスのリソース使用率を表示するには、メモリおよびコンカレンシーの制限に関する記事 (memory-concurrency-limits.md) を参照してください。
+- リソース クラスのリソース使用率を表示するには、「[Memory and concurrency limits](memory-concurrency-limits.md)」 (メモリとコンカレンシーの制限) を参照してください。
 - リソース クラスを調整するには、別のユーザーとしてクエリを実行するか、[現在のユーザーのリソース クラス](#change-a-users-resource-class) メンバーシップを変更します。
 
 ### <a name="static-resource-classes"></a>静的リソース クラス
@@ -65,14 +65,18 @@ Azure SQL Data Warehouse のクエリで、リソース クラスを使用して
 - largerc
 - xlargerc
 
-各リソース クラスのメモリ割り当ては、**サービス レベルに関係なく**次のようになります。  最小同時実行クエリ数も示されています。  サービス レベルによっては、最小同時実行数を超える可能性もあります。
+各リソース クラスのメモリ割り当ては、次のようになります。 
 
-| リソース クラス | メモリ率 | 最小同時実行クエリ数 |
-|:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 3%                | 32                     |
-| mediumrc       | 10%               | 10                     |
-| largerc        | 22%               | 4                      |
-| xlargerc       | 70%               | 1                      |
+| Service Level  | smallrc           | mediumrc               | largerc                | xlargerc               |
+|:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
+| DW100c         | 25%               | 25%                    | 25%                    | 70%                    |
+| DW200c         | 12.5%             | 12.5%                  | 22%                    | 70%                    |
+| DW300c         | 8%                | 10%                    | 22%                    | 70%                    |
+| DW400c         | 6.25%             | 10%                    | 22%                    | 70%                    |
+| DW500c         | 20%               | 10%                    | 22%                    | 70%                    |
+| DW1000c から<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
+
+
 
 ### <a name="default-resource-class"></a>既定のリソース クラス
 
@@ -105,6 +109,8 @@ Azure SQL Data Warehouse のクエリで、リソース クラスを使用して
 
 > [!NOTE]  
 > 動的管理ビュー (DMV) やその他のシステム ビューの SELECT ステートメントは、コンカレンシーの制限の対象になりません。 ユーザーは、システムで実行されるクエリの数にとらわれずにシステムを監視できます。
+>
+>
 
 ### <a name="operations-not-governed-by-resource-classes"></a>リソース クラスによって管理されない操作
 
@@ -178,6 +184,11 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 - 大規模リソース クラスが小規模リソースクラスに優先します。 たとえば、ユーザーが mediumrc と largerc のメンバーの場合、クエリは largerc で実行されます。 同様に、ユーザーが staticrc20 と statirc80 の両方のメンバーの場合、クエリは staticrc80 に対するリソースの割り当てを使用して実行されます。
 
 ## <a name="recommendations"></a>Recommendations
+
+>[!NOTE]
+>ワークロードと予測可能なパフォーマンスをより詳細に制御するために、ワークロード管理機能 [(ワークロードの分離](sql-data-warehouse-workload-isolation.md)、[分類](sql-data-warehouse-workload-classification.md)および[重要度](sql-data-warehouse-workload-importance.md)) を活用することを検討してください。  
+>
+>
 
 お勧めするのは、特定の種類のクエリまたは読み込み操作を実行する専用のユーザーを作成することです。 頻繁にリソース クラスを変更する代わりに、そのユーザーに永続的なリソース クラスを指定します。 静的リソース クラスを指定すると、ワークロード全体が制御しやすくなります。したがって、動的リソース クラスを検討する前に、静的リソース クラスを使用することをお勧めします。
 

@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: cb3bb6a91c25298535cfba1107b85f200031a7d6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6cf636e7d7ee35680c1da872b186748c333a81dc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035914"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930000"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>簡単な手順: Azure 内に Linux VM 用の SSH 公開/秘密キーのペアを作成して使用する
 
@@ -38,10 +38,10 @@ Windows コンピューター上で、SSH キーを生成して使用するそ�
 
 `ssh-keygen` コマンドを使用して、SSH 公開キーと秘密キーのファイルを生成します。 既定では、これらのファイルは ~/.ssh ディレクトリに作成されます。 秘密キー ファイルにアクセスするには、別の場所、および任意のパスワード (*パスフレーズ*) を指定できます。 同じ名前の SSH キー ペアが指定された場所にある場合、それらのファイルは上書きされます。
 
-次のコマンドでは、RSA 暗号化と 2048 ビット長を使用して SSH キー ペアが作成されます。
+次のコマンドでは、RSA 暗号化と 4096 ビット長を使用して SSH キー ペアが作成されます。
 
 ```bash
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
 [Azure CLI](/cli/azure) を使用して [az vm create](/cli/azure/vm#az-vm-create) コマンドで VM を作成する場合は、必要に応じて `--generate-ssh-keys` オプションを使用して、SSH 公開キー ファイルと秘密キー ファイルを生成できます。 `--ssh-dest-key-path` オプションで指定されない限り、キー ファイルは ~/.ssh ディレクトリに格納されます。 `--generate-ssh-keys` オプションでは、既存のキー ファイルを上書きすることはありません。代わりにエラーを返します。 次のコマンドで、*VMname* と *RGname* を独自の値に置き換えます。

@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C でリソース所有者のパスワード資格情報フローを構成する | Microsoft Docs
-description: Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する方法を説明します。
+title: カスタム ポリシーを使ってリソース所有者のパスワード資格情報フローを構成する
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 上で、カスタム ポリシーを使用して、リソース所有者のパスワード資格情報 (ROPC) フローを構成する方法について説明します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678135"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951066"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
 

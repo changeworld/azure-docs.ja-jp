@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e88f6f344c77109ee01cd6b0332138518f70270d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 10c778025c3def384f621cb5311d0d71ccb457d7
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795338"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951124"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングとは
 Azure AD Connect クラウド プロビジョニングは、ユーザー、グループ、および連絡先を Azure AD に同期するためのハイブリッド ID の 目標を満たすために設計された新しい Microsoft エージェントです。  これは Azure AD Connect sync と共に使用することができ、次のような利点があります。
@@ -33,7 +33,7 @@ Azure AD Connect クラウドプロビジョニングでは、Microsoft Online S
 
 次の表は、Azure AD Connect と Azure AD Connect のクラウドプロビジョニングの比較を示しています。
 
-| 機能 | Azure Active Directory Connect の同期| Azure Active Directory Connect クラウド プロビジョニング |
+| 機能 | Azure Active Directory Connect 同期| Azure Active Directory Connect クラウド プロビジョニング |
 |:--- |:---:|:---:|
 |単一のオンプレミス AD フォレストへの接続|● |● |
 | 複数のオンプレミス AD フォレストへの接続 |● |● |
@@ -59,8 +59,10 @@ Azure AD Connect クラウドプロビジョニングでは、Microsoft Online S
 | AD から Azure AD に流れる属性の削除の許可 |● |● |
 | 属性フローの高度なカスタマイズの許可 |● | |
 | 書き戻しのサポート (パスワード、デバイス、グループ) |● | |
+| Azure AD Domain Services のサポート|● | |
+| Exchange ハイブリッドの構成 |● | |
 
 ## <a name="next-steps"></a>次の手順 
 
 - [プロビジョニングとは](what-is-provisioning.md)
-- [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)
+- [クラウド プロビジョニングのインストール](how-to-install.md)

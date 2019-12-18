@@ -1,20 +1,20 @@
 ---
-title: Windows 仮想マシンのイメージ ギャラリーで Azure Image Builder を使用する (プレビュー)
-description: Azure Image Builder と共有イメージ ギャラリーを使って Windows イメージを作成します。
+title: Windows VM のイメージ ギャラリーで Azure Image Builder を使用する (プレビュー)
+description: Azure Image Builder と Shared Image Gallery を使って Windows VM イメージを作成します。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 1d9763ccc5f5967b9fc9932a11fff655e6120fd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698684"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976079"
 ---
-# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>更新:Windows イメージを作成して共有イメージ ギャラリーに配布する 
+# <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Windows イメージを作成して共有イメージ ギャラリーに配布する 
 
 この記事では、Azure Image Builder を使って[共有イメージ ギャラリー](shared-image-galleries.md)にイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。
 

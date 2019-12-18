@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 143a05944799ff04f9c21384f85a4b00cc65b750
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: de36f760fb637ad02446265927e7df7aa91b2abf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545727"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928373"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions のタイマー トリガー 
 
@@ -26,7 +26,7 @@ ms.locfileid: "74545727"
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>パッケージ - Functions 2.x 以降
 
 タイマー トリガーは、[Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/) GitHub リポジトリにあります。
 
@@ -327,7 +327,7 @@ App Service にデプロイされていない関数アプリの間でストレ�
 
 | Functions バージョン | Setting                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2.x               | `AzureFunctionsWebHost__hostid` 環境変数 |
+| 2.x (以上)  | `AzureFunctionsWebHost__hostid` 環境変数 |
 | 1.x               | *host.json* での `id`                                  |
 
 識別値を省略するか、各関数アプリの識別構成に異なる値を手動で設定することができます。
