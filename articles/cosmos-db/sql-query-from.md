@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB での FROM 句
-description: Azure Cosmos DB の SQL FROM 句について説明します
+description: SQL 構文、および Azure Cosmos DB の FROM 句の例について説明します。 この記事では、FROM 句を使用して結果をスコープし、サブ項目を取得する例も示します。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 79bb17277a041f71c095ed724737012f9501f16f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326994"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873371"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での FROM 句
 

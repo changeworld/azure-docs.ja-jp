@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 0026aa377a58f6b766a400860692a35440deb962
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2ae0f3033b88b3229d3dbef35c8bc9a32510c00e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748364"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972338"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング
 
@@ -43,9 +43,9 @@ ms.locfileid: "73748364"
 
 - **推奨事項**:Databricks アクティビティに Notebook のパスを指定してください。
 
-<br/>    
-              
-- **メッセージ**: `Cluster   ... does not exist.`
+<br/>  
+
+- **メッセージ**: `Cluster... does not exist.`
 
 - **原因**: `Authoring error: Databricks cluster does not exist or has been deleted.`
 
@@ -53,7 +53,7 @@ ms.locfileid: "73748364"
 
 <br/>  
 
-- **メッセージ**: `Invalid Python file URI.... Please visit Databricks user guide for supported URI schemes.`
+- **メッセージ**: `Invalid Python file URI... Please visit Databricks user guide for supported URI schemes.`
 
 - **原因**: `Bad authoring.`
 
@@ -334,56 +334,56 @@ ms.locfileid: "73748364"
 
 ### <a name="error-code--4121"></a>エラー コード:4121
 
-- **メッセージ**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **メッセージ**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **原因**:Azure ML サービスへのアクセスに使用された資格情報の有効期限が切れています。
+- **原因**:Azure Machine Learning へのアクセスに使用された資格情報の有効期限が切れています。
 
 - **推奨事項**:資格情報が有効であることを確認してから、再試行してください
 
 
 ### <a name="error-code--4122"></a>エラー コード:4122
 
-- **メッセージ**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **メッセージ**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **原因**:Azure ML サービスのリンクされたサービスで指定された資格情報が無効であるか、操作に対するアクセス許可がありません。
+- **原因**:Azure Machine Learning のリンクされたサービスで指定された資格情報が無効であるか、操作に対するアクセス許可がありません。
 
-- **推奨事項**:リンクされたサービスの資格情報が有効で、Azure ML サービスにアクセスするためのアクセス許可があることを確認してください。
+- **推奨事項**:リンクされたサービスの資格情報が有効で、Azure Machine Learning にアクセスするためのアクセス許可があることを確認してください。
 
 
 ### <a name="error-code--4123"></a>エラー コード:4123
 
-- **メッセージ**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **メッセージ**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **原因**: `Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+- **原因**:Azure ML パイプラインには、pipelineParameters などのアクティビティのプロパティは無効です。
 
 - **推奨事項**:アクティビティのプロパティの値が、リンクされたサービスで指定されている公開済みの Azure ML パイプラインの予想されるペイロードと一致することを確認してください。
 
 
 ### <a name="error-code--4124"></a>エラー コード:4124
 
-- **メッセージ**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **メッセージ**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **原因**:公開された Azure ML パイプライン エンドポイントが存在しません。
 
-- **推奨事項**:リンクされたサービスで指定された公開済みの Azure ML パイプライン エンドポイントが Azure ML サービスに存在することを確認してください。
+- **推奨事項**:リンクされたサービスで指定された公開済みの Azure Machine Learning パイプライン エンドポイントが、Azure Machine Learning に存在することを確認してください。
 
 
 ### <a name="error-code--4125"></a>エラー コード:4125
 
-- **メッセージ**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **メッセージ**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **原因**:Azure ML サービスでサーバー エラーが発生しています。
+- **原因**:Azure Machine Learning でサーバー エラーが発生しています。
 
-- **推奨事項**:後で再試行してください。 問題が解決しない場合は、Azure ML サービス チームにお問い合わせください。
+- **推奨事項**:後で再試行してください。 問題が解決しない場合は、Azure Machine Learning チームにお問い合わせください。
 
 
 ### <a name="error-code--4126"></a>エラー コード:4126
 
-- **メッセージ**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure ML Service for more error logs.`
+- **メッセージ**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure Machine Learning for more error logs.`
 
 - **原因**:Azure ML パイプラインを実行できませんでした。
 
-- **推奨事項**:Azure ML サービスでエラー ログの詳細を確認し、ML パイプラインを修正してください
+- **推奨事項**:Azure Machine Learning でエラー ログの詳細を確認し、ML パイプラインを修正してください。
 
 
 
@@ -522,7 +522,7 @@ ms.locfileid: "73748364"
 
 ### <a name="error-code--2507"></a>エラー コード:2507
 
-- **メッセージ**: `The folder path does not exist or is empty: ....`
+- **メッセージ**: `The folder path does not exist or is empty: ...`
 
 - **原因**:指定されたパスのストレージ アカウントにファイルがありません。
 
@@ -977,7 +977,7 @@ ms.locfileid: "73748364"
 
 - **原因**:クラスター作成に失敗したが、ADF には HDInsight サービスからエラーが返されませんでした。
 
-- **推奨事項**:Azure Portal を開き、指定の名前で HDI リソースを見つけてください。また、プロビジョニング状態を確認してください。 さらに支援が必要であれば、HDInsight サポート チームにお問い合わせください。
+- **推奨事項**:Azure portal を開き、指定の名前で HDI リソースを見つけて、プロビジョニング状態を確認してください。 さらに支援が必要であれば、HDInsight サポート チームにお問い合わせください。
 
 
 ### <a name="error-code--2362"></a>エラー コード:2362
@@ -1018,7 +1018,7 @@ Fiddler を使用して監視対象 Web アプリケーションの HTTP セッ�
 
 1. Web アプリケーションで HTTPS が使用されている場合は、 **[Tools]\(ツール\)**  >  **[Fiddler Options]\(Fiddler オプション\)**  >  **[HTTPS]** の順に選択します。 **[Capture HTTPS CONNECTs]\(HTTPS 接続をキャプチャする\)** と **[Decrypt HTTPS traffic]\(HTTPS トラフィックの暗号化を解除する\)** をオンにします。
 
-![Fiddler オプション](media/data-factory-troubleshoot-guide/fiddler-options.png)
+   ![Fiddler オプション](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. お使いのアプリケーションで SSL 証明書が使用されている場合は、Fiddler の証明書をデバイスに追加します。 **[Tools]\(ツール\)**  >  **[Fiddler Options]\(Fiddler オプション\)**  >  **[HTTPS]**  >  **[Actions]\(アクション\)**  >  **[Export Root Certificate to Desktop]\(ルート証明書をデスクトップにエクスポート\)** に移動します。
 
@@ -1028,17 +1028,17 @@ Fiddler を使用して監視対象 Web アプリケーションの HTTP セッ�
 
 1. 要求を作成します。
 
-a. **[Composer]\(コンポーザー\)** タブを選択します。
+   1. **[Composer]\(コンポーザー\)** タブを選択します。
 
-b. HTTP メソッドと URL を設定します。
+   1. HTTP メソッドと URL を設定します。
+   
+   1. 必要に応じてヘッダーと要求本文を追加します。
 
-c. 必要に応じてヘッダーと要求本文を追加します。
+   1. **[実行]** を選択します。
 
-d. **[実行]** を選択します。
+1. トラフィックのキャプチャを再び有効にし、ページで問題のあるトランザクションを完了します。
 
-9. トラフィックのキャプチャを再び有効にし、ページで問題のあるトランザクションを完了します。
-
-10. **[File]\(ファイル\)**  >  **[Save]\(保存\)**  >  **[All Sessions]\(すべてのセッション\)** に移動します。
+1. **[File]\(ファイル\)**  >  **[Save]\(保存\)**  >  **[All Sessions]\(すべてのセッション\)** に移動します。
 
 詳細については、「[Fiddler の基本](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)」を参照してください。
 

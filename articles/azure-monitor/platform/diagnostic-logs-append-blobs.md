@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 診断ログの形式変更のための準備
-description: 2018 年 11 月 1 日に追加 BLOB を使用するように変更された新しい Azure Diagnostic ログの影響と、それを処理するようにツールを更新する方法について説明します。
+title: Azure Monitor リソース ログの形式変更のための準備
+description: 2018 年 11 月 1 日に追加 BLOB を使用するように変更された新しい Azure リソース ログの影響と、それを処理するようにツールを更新する方法について説明します。
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 5e71f4c590e4eafea5a2c6ad52b8df8c7dcf3814
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: dc7fd8916f356414437d4def21f26f0b651ee76f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307057"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893520"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor 診断ログの形式変更のための準備
+# <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor プラットフォーム ログの形式変更のための準備
 
 > [!WARNING]
-> [Azure リソース診断ログまたはメトリックをリソース診断設定を使用してストレージ アカウントに](./../../azure-monitor/platform/archive-diagnostic-logs.md)、または[アクティビティ ログをログ プロファイルを使用してストレージ アカウントに](./../../azure-monitor/platform/archive-activity-log.md)送信する場合、ストレージ アカウントのデータの形式は、2018 年 11 月 1 日付より JSON Lines に変更されます。 以下の手順では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。 
+> [Azure リソースのリソース ログまたはメトリックをリソース診断設定を使用してストレージ アカウントに](./../../azure-monitor/platform/archive-diagnostic-logs.md)、または[アクティビティ ログをログ プロファイルを使用してストレージ アカウントに](./../../azure-monitor/platform/archive-activity-log.md)送信する場合、ストレージ アカウントのデータの形式は、2018 年 11 月 1 日付より JSON Lines に変更されます。 以下の手順では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。 
 >
 > 
 
@@ -31,13 +31,13 @@ Azure Monitor で、Azure ストレージ アカウント、Event Hubs 名前空
 * 今から 11 月 1 日までの間に診断設定が行われた場合、11 月 1 日までは現在の形式で引き続きデータが出力されます。
 * この変更はすべてのパブリック クラウド リージョンで一度に行われます。 21Vianet が運営する Microsoft Azure、Azure Germany、および Azure Government のクラウドではまだこの変更は行われません。
 * この変更は次のデータの種類に影響します。
-  * [Azure リソース診断ログ](archive-diagnostic-logs.md) ([このリソースの一覧を参照してください](diagnostic-logs-schema.md))
+  * [Azure リソースのリソース ログ](archive-diagnostic-logs.md) ([リソースの一覧をこちらから参照してください](diagnostic-logs-schema.md))
   * [診断設定でエクスポートされる Azure リソース メトリック](diagnostic-settings.md)
   * [ログ プロファイルでエクスポートされる Azure アクティビティ ログ データ](archive-activity-log.md)
 * この変更は以下のものには影響しません。
   * ネットワーク フロー ログ
-  * Azure Monitor を通じてまだ使用可能になっていない Azure サービス ログ (Azure App Service の診断ログ、ストレージ分析ログなど)
-  * Azure 診断ログとアクティビティ ログの他の送信先 (Event Hubs、Log Analytics) へのルーティング
+  * Azure Monitor を通じてまだ使用可能になっていない Azure サービス ログ (Azure App Service のリソース ログ、ストレージ分析ログなど)
+  * Azure リソース ログとアクティビティ ログの他の送信先 (Event Hubs、Log Analytics) へのルーティング
 
 ### <a name="how-to-see-if-you-are-impacted"></a>影響があるかどうかを確認する方法
 
@@ -135,6 +135,6 @@ Azure BLOB ストレージ内の PT1H.json ファイルの現在の形式では�
 
 ## <a name="next-steps"></a>次の手順
 
-* [ストレージ アカウントへのリソース診断ログのアーカイブ](./../../azure-monitor/platform/archive-diagnostic-logs.md)について確認します。
+* [ストレージ アカウントへのリソース ログのアーカイブ](./../../azure-monitor/platform/archive-diagnostic-logs.md)について確認します。
 * [ストレージ アカウントへのアクティビティ ログ データのアーカイブ](./../../azure-monitor/platform/archive-activity-log.md)について確認します。
 

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 47c7e35f71fd33cc53d498867ef015364252d5ea
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 39bdcc94b785371044b5d49fd844a06a176a8fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910317"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970038"
 ---
 # <a name="media-services-concepts"></a>Media Services の概念
 
@@ -100,6 +100,9 @@ Media Services **動的マニフェスト**を使用し、動画を特定の方�
 - [コンテンツ保護](content-protection-overview.md)
 - [動的マニフェスト](filters-dynamic-manifest-overview.md)
 - [フィルター](filters-concept.md)
+
+> [!NOTE]
+> Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="live-streaming"></a>ライブ ストリーミング
 

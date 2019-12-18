@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する | Microsoft Docs
+title: カスタム ポリシーを使用してパスワードの変更を構成する
+titleSuffix: Azure AD B2C
 description: ユーザーが Azure Active Directory B2C でカスタム ポリシーを使用してパスワードを変更できるようにする方法を説明します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0775920e1d6572223253edbfc066123a515b5480
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fd1f623eecdd855dbfb8e27795f813db4d099f53
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065523"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950580"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する
 

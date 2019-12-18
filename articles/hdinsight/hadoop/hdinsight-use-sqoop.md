@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.openlocfilehash: f2a153b1eef974c8c73df49a6eed53ef5dbf2353
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 12/06/2019
+ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076212"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951855"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Apache Sqoop の使用
 
@@ -61,6 +61,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 この記事では、これら 2 つのデータセットを使用して Sqoop のインポートとエクスポートをテストします。
 
 ## <a name="create-cluster-and-sql-database"></a>テスト環境のセットアップ
+
 クラスター、SQL データベース、およびその他のオブジェクトは、Azure Resource Manager テンプレートを使用して Azure portal から作成されます。 テンプレートは [Azure クイック スタート テンプレート集](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/)にあります。 Resource Manager テンプレートでは、SQL データベースにテーブル スキーマをデプロイするために bacpac パッケージを呼び出します。  bacpac パッケージは、パブリック BLOB コンテナー、 https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac の中にあります。 bacpac ファイルのプライベート コンテナーを使用する場合は、テンプレートで、次の値を使用します。
 
 ```json
@@ -79,7 +80,7 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
     |フィールド |値 |
     |---|---|
-    |Subscription |ドロップダウン リストから Azure サブスクリプションを選択します。|
+    |サブスクリプション |ドロップダウン リストから Azure サブスクリプションを選択します。|
     |Resource group |ドロップダウン リストからリソース グループを選択するか、新しいリソース グループを作成します。|
     |Location |ドロップダウン リストからリージョンを選択します。|
     |クラスター名 |Hadoop クラスターの名前を入力します。 小文字のみを使用します。|
@@ -116,8 +117,9 @@ HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行
 * バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入を実行します。
 
 ## <a name="next-steps"></a>次の手順
-ここでは Sqoop の使用方法を説明しました。 詳細については、次を参照してください。
+
+ここでは Sqoop の使用方法を学習しました。 詳細については、次を参照してください。
 
 * [HDInsight での Apache Hive の使用](../hdinsight-use-hive.md)
-* [HDInsight での Apache Pig の使用](../hdinsight-use-pig.md)
 * [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight/Azure Blob Storage にデータをアップロードするその他の方法を説明します。
+* [Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする](./apache-hadoop-use-sqoop-mac-linux.md)

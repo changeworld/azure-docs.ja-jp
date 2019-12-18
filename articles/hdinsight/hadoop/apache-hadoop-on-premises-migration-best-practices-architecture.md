@@ -2,18 +2,18 @@
 title: アーキテクチャ:オンプレミスの Apache Hadoop から Azure HDInsight
 description: オンプレミスの Hadoop クラスターを Azure HDInsight に移行する場合のアーキテクチャのベスト プラクティスについて説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4ef3cded9aba7bd95ecc48e1feadf6c55acd7bdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 9f532e7bbf9e24e431341344b3172c988f69bfc3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499266"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951532"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行する - アーキテクチャのベスト プラクティス
 
@@ -23,9 +23,9 @@ ms.locfileid: "73499266"
 
 多くのオンプレミスの Apache Hadoop デプロイは、多数のワークロードをサポートする 1 つの大規模なクラスターで構成されています。 この 1 つのクラスターは複雑になることがあり、すべてを連携させるために個々のサービスに対して妥協が必要になる場合があります。 オンプレミスの Hadoop クラスターを Azure HDInsight に移行するには、アプローチの変更が必要になります。
 
-Azure HDInsight クラスターは、特定の種類の計算を利用するために設計されています。 ストレージは複数のクラスター間で共有できるため、ワークロードに最適化された複数のコンピューティング クラスターを作成してさまざまなジョブのニーズを満たすことができます。 クラスターの種類ごとに、それぞれ特定のワークロードに最適な構成があります。 次の表には、HDInsight でサポートされるクラスターの種類と対応するワークロードを示しています。
+Azure HDInsight クラスターは、特定の種類の計算を利用するために設計されています。 ストレージは複数のクラスターとの間で共有できるため、ワークロードに最適化された複数のコンピューティング クラスターを作成してさまざまなジョブのニーズを満たすことができます。 クラスターの種類ごとに、それぞれ特定のワークロードに最適な構成があります。 次の表には、HDInsight でサポートされるクラスターの種類と対応するワークロードを示しています。
 
-|**ワークロード**|**HDInsight クラスターの種類**|
+|ワークロード|HDInsight クラスターの種類|
 |---|---|
 |バッチ処理 (ETL/ELT)|Hadoop、Spark|
 |データ ウェアハウス|Hadoop、Spark、対話型クエリ|
@@ -36,7 +36,7 @@ Azure HDInsight クラスターは、特定の種類の計算を利用するた�
 
 次の表は、HDInsight クラスターの作成に使用できる各種方法を示しています。
 
-|**ツール**|**ブラウザー ベース**|**コマンド ライン**|**REST API**|**SDK**|
+|ツール|ブラウザー ベース|コマンド ライン|REST API|SDK|
 |---|---|---|---|---|
 |[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
@@ -62,7 +62,7 @@ HDInsight クラスターは、長期間未使用の状態が続くことがあ�
 
 一般的なオンプレミスの Hadoop デプロイでは、データ ストレージとデータ処理に同じ一連のマシンを使用します。 これらは併置されているため、コンピューティングとストレージを一緒にスケーリングする必要があります。
 
-HDInsight クラスターでは、ストレージをコンピューティングと同じ場所にデプロイする必要はなく、Azure Storage、Azure Data Lake Storage、またはその両方に配置することができます。 ストレージをコンピューティングから切り離すことには、次の利点があります。
+HDInsight クラスターでは、ストレージをコンピューティングと併置する必要はなく、Azure Storage、Azure Data Lake Storage、またはその両方に配置することができます。 ストレージをコンピューティングから切り離すことには、次の利点があります。
 
 - クラスター間でのデータ共有。
 - データがクラスターに依存していないための一時的なクラスターの使用。
@@ -74,9 +74,7 @@ HDInsight クラスターでは、ストレージをコンピューティング�
 
 ## <a name="use-external-metadata-stores"></a>外部のメタデータ ストアを使用する
 
-
 HDInsight クラスターで動作する主なメタストアには、[Apache Hive](https://hive.apache.org/) と [Apache Oozie](https://oozie.apache.org/) の 2 つがあります。 Hive metastore は、Hadoop、Spark、LLAP、Presto、Apache Pig などのデータ処理エンジンで使用できる中央のスキーマ リポジトリです。 Oozie metastore には、スケジューリングの詳細と、進行中および完了した Hadoop ジョブの状態が格納されます。
-
 
 HDInsight では、Hive metastore と Oozie metastore に Azure SQL Database を使用します。 HDInsight クラスターで metastore を設定する方法は 2 とおりあります。
 
@@ -105,7 +103,7 @@ HDInsight では、Hive metastore と Oozie metastore に Azure SQL Database を
 - カスタム metastore を定期的にバックアップします。
 - metastore と HDInsight クラスターを同じリージョンで保持します。
 - Azure portal や Azure Monitor ログなどの Azure SQL Database 監視ツールを使用して、metastore のパフォーマンスと可用性を監視します。
-- 必要に応じて **ANALYZE TABLE** コマンドを実行して、表と列の統計を生成します。 たとえば、「 `ANALYZE TABLE [table_name] COMPUTE STATISTICS` 」のように入力します。
+- 必要に応じて `ANALYZE TABLE` コマンドを実行し、表と列の統計を生成します。 たとえば、「 `ANALYZE TABLE [table_name] COMPUTE STATISTICS` 」のように入力します。
 
 ## <a name="best-practices-for-different-workloads"></a>さまざまなワークロードのベスト プラクティス
 

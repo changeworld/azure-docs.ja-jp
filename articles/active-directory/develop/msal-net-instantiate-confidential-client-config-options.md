@@ -1,29 +1,25 @@
 ---
-title: オプションを使用して機密クライアント アプリをインスタンス化する (.NET 用 Microsoft Authentication Library)
+title: 機密クライアント アプリをインスタンス化する (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: .NET 用 Microsoft Authentication Library (MSAL.NET) を使用して、構成オプションで機密クライアント アプリケーションをインスタンス化する方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e382a8d0b5d6f08eafc5621d0e7591111a5e286b
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 749b81062fe542ae743e27483f6e9bd2323dafd9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802820"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921815"
 ---
 # <a name="instantiate-a-confidential-client-application-with-configuration-options-using-msalnet"></a>MSAL.NET を使用して、構成オプションで機密クライアント アプリケーションをインスタンス化する
 

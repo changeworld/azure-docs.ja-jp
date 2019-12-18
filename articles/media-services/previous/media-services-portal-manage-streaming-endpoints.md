@@ -1,6 +1,6 @@
 ---
 title: Azure Portal を使用したストリーミング エンドポイントの管理 | Microsoft Docs
-description: このトピックでは、Azure ポータルを使用してストリーミング エンドポイントを管理する方法について説明します。
+description: この記事では、Azure portal を使ってストリーミング エンドポイントを管理する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 1775bbb2913f6b1a985ca7ec9e89bafed42fd0e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 57ec22cb02512577f8737718cae9175403fb5603
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61129713"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900878"
 ---
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントの管理 
 
@@ -81,9 +81,9 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 
 ![ストリーミング エンドポイント](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
-1. [Maximum cache policy \(最大キャッシュ ポリシー)]: このストリーミング エンドポイントから提供されるアセットのキャッシュの有効期間を構成するために使用します。 値を設定しない場合は、既定値が使用されます。 既定値は Azure ストレージで直接定義することもできます。 ストリーミング エンドポイントで Azure CDN を有効にする場合、キャッシュ ポリシーの値は 600 秒以上に設定してください。  
+1. [Maximum cache policy (最大キャッシュ ポリシー)]\: このストリーミング エンドポイントから提供されるアセットのキャッシュの有効期間を構成するために使用します。 値を設定しない場合は、既定値が使用されます。 既定値は Azure ストレージで直接定義することもできます。 ストリーミング エンドポイントで Azure CDN を有効にする場合、キャッシュ ポリシーの値は 600 秒以上に設定してください。  
 2. [Allowed IP addresses \(使用できる IP アドレス)]: 公開されているストリーミング エンドポイントへの接続を許可する IP アドレスを指定するために使用します。 IP アドレスが指定されていない場合、どの IP アドレスでも接続できます。 IP アドレスは、1 つの IP アドレス (例: ‘10.0.0.1’)、IP アドレスと CIDR サブネット マスクを使用した IP 範囲 (例: ‘10.0.0.1/22’)、IP アドレスとピリオドで区切られた 10 進数のサブネット マスクを使用した IP 範囲 (例: ‘10.0.0.1(255.255.255.0)’) のいずれかの形で指定できます。
-3. [Configuration for Akamai signature header authentication (Akamai 署名ヘッダー認証の構成)]: Akamai サーバーからの署名ヘッダー認証要求を構成する方法 を指定するために使用します。 有効期限は UTC 時間で指定します。
+3. [Configuration for Akamai signature header authentication (Akamai 署名ヘッダー認証の構成)\]\: Akamai サーバーからの署名ヘッダー認証要求を構成する方法 を指定するために使用します。 有効期限は UTC 時間で指定します。
 
 ## <a name="scale-your-premium-streaming-endpoint"></a>Premium ストリーミング エンドポイントを拡張する
 

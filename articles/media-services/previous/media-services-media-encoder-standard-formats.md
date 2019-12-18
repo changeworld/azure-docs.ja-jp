@@ -1,6 +1,6 @@
 ---
 title: Media Encoder Standard の形式とコーデック - Azure
-description: このトピックでは、Media Encoder Standard の形式とコーデックの概要を示します。
+description: この記事では、Media Encoder Standard の形式とコーデックの概要を示します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 8fd68269f73506c2d605c0cb4560e6a57e1a2128
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e2ccce13e4ef09426d0f3a02dcbce2f330b0ead8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016535"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895941"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard の形式とコーデック
 

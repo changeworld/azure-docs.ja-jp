@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 722907328fe17c4116f4f8d948e081f9582ca712
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c26c4c47cb17acf88bc545af3a1fc979138d56b1
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266575"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951736"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -99,8 +99,8 @@ VPN Gateway と共に VNet を既に使用している場合、そのゲート�
 ### 2.<a name="local"></a>ローカル サイトの構成
 
 1. **[すべてのリソース]** に移動し、リスト内で **ClassicVNet** を見つけます。
-2. **[概要]** ページの **[VPN 接続]** セクションで、 **[ゲートウェイ]** をクリックしてゲートウェイを作成します。
-  ![VPN Gateway を構成する](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "VPN Gateway を構成する")
+2. メニューの **[設定]** セクションで **[ゲートウェイ]** をクリックし、バナーをクリックしてゲートウェイを作成します。
+  ![VPN ゲートウェイの構成](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "CVPN ゲートウェイの構成)
 3. **[新しい VPN 接続]** ページの **[接続の種類]** で、 **[サイト対サイト]** を選びます。
 4. **[ローカル サイト]** で、 **[必要な設定の構成]** をクリックします。 これにより、 **[ローカル サイト]** ページが開きます。
 5. **[ローカル サイト]** ページで、Resource Manager の VNet を参照するための名前を作成します。 たとえば、「RMVNetLocal」などにします。
@@ -190,13 +190,13 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
    ![VPN 接続](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN 接続")
 4. **[サイト対サイト VPN 接続]** ページで、サイトの名前をクリックします。
 
-   ![サイト名](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "ローカル サイトの名前")
+   ![サイト名](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "ローカル サイト名")
 5. ローカル サイトの接続ページで、ローカル サイトの名前をクリックして、 **[ローカル サイト]** ページを開きます。
 
-   ![ローカル サイトを開く](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "ローカル サイトを開く")
+   ![[ローカル サイト] を開く](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "ローカル サイトを開く")
 6. **[ローカル サイト]** ページで、**VPN Gateway の IP アドレス**を、Resource Manager ゲートウェイの IP アドレスで置き換えます。
 
-   ![ゲートウェイの IP アドレス](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "ゲートウェイの IP アドレス")
+   ![ゲートウェイ IP アドレス](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "ゲートウェイ IP アドレス")
 7. **[OK]** をクリックして、IP アドレスを更新します。
 
 ## <a name="RMtoclassic"></a>セクション 4 - Resource Manager からクラシックへの接続の作成

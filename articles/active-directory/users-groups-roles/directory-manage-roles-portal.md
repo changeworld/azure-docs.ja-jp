@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ac62a4f318690a1e8156d619c82e9b936973159
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b2815b496545ca5f920c00df7b2b5b7efe15c12a
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027896"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900897"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Azure Active Directory で管理者ロールを表示して割り当てる
 
@@ -26,11 +26,11 @@ Azure Active Directory ポータルで、管理者ロールのすべてのメン
 
 ## <a name="view-all-roles"></a>すべてのロールを表示する
 
-Azure Active Directory で、 **[ロールと管理者]** を選択して、利用可能なすべてのロールの一覧を表示します。 
+**Azure Active Directory** を検索して選択します。 **[ロールと管理者]** を選択して、利用可能なすべてのロールの一覧を表示します。
 
 各行の右側にある省略記号をクリックすると、ロールの詳細な説明が表示されます。
 
-![Azure AD ポータルでのロールの一覧](./media/directory-manage-roles-portal/role-list.png)
+![Azure AD ポータルでのロールの一覧](./media/directory-manage-roles-portal/view-roles-in-azure-active-directory.png)
 
 ## <a name="view-my-roles"></a>自分のロールを表示する
 

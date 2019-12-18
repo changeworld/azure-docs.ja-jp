@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub Device Provisioning Service - 対称キーの構成証明
-description: この記事では、IoT Device Provisioning Service を使用する対称キーの構成証明の概念について概説します。
+description: この記事では、IoT Device Provisioning Service (DPS) を使用する対称キーの構成証明の概念について概説します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: b1a849732539dbc9e066bee7cc20141f56ffe10c
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 0e3d343c0a68dd527e4e8e8d23e5b3843a216a78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348359"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975297"
 ---
 # <a name="symmetric-key-attestation"></a>対称キーの構成証明
 

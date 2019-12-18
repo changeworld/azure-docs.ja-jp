@@ -1,6 +1,6 @@
 ---
-title: ユーザーをサインインさせる Web アプリ (アプリの登録) - Microsoft ID プラットフォーム
-description: ユーザーをサインインさせる Web アプリをビルドする方法について学習します (アプリの登録)
+title: ユーザーがサインインするための Web アプリの登録 - Microsoft ID プラットフォーム | Azure
+description: ユーザーがサインインするための Web アプリを登録する方法について学習します
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d840cbaba2cc8325c619248bb7f4421d3b2f83c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b08dd5602196bae0e250953c83320e69ddc6da83
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766074"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964822"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>ユーザーをサインインさせる Web アプリ:アプリの登録
 

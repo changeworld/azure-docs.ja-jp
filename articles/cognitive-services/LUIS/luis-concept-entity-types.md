@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 808e110ccb45b0b4f7bf34a43597c1f7a7bc0fed
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422587"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976963"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>エンティティと LUIS におけるその目的
 
@@ -75,7 +75,7 @@ ms.locfileid: "74422587"
 
 機械学習エンティティは、トレーニング発話を通じて学習したコンテキストに基づいてトリガーされます。 **制約**は、機械学習エンティティに適用されるオプションの規則で、[リスト](reference-entity-list.md) や [正規表現](reference-entity-regular-expression.md)など、非機械学習エンティティのテキスト完全一致の定義に基づきトリガーをさらに制限します。 たとえば、`size` 機械学習エンティティは、`sizeList` エンティティ内に含まれる値が検出された場合にのみ `size` エンティティがトリガーされるように制約する `sizeList` リスト エンティティの制約を持つことができます。
 
-[**記述子**](luis-concept-feature.md)は、予測のために単語や語句の関連性を高める目的で適用される機能です。 これらは意図またはエンティティを*記述する*目的で使用されるため、*記述子*と呼ばれます。 記述子は、重要な単語や語句など、データの特徴的な特性または属性を識別します。 (LUIS が監視および学習したもの)。
+[**記述子**](luis-concept-feature.md)は、予測のために単語や語句の関連性を高める目的で適用される機能です。 これらは意図またはエンティティを*記述する*目的で使用されるため、*記述子*と呼ばれます。 記述子は、LUIS によって観察され、学習される重要な単語や語句など、データの特徴的な特性または属性を識別します。
 
 LUIS アプリで語句一覧機能を作成すると、既定でグローバルに有効になり、すべての意図とエンティティに対して均等に適用されます。 ただし、機械学習エンティティ (または *モデル*) の記述子 (機能) として語句一覧を適用した場合、そのスコープは、そのモデルにのみ適用されるように縮小され、他のすべてのモデルでは使用されなくなります。 モデルに対して語句一覧を記述子として使用すると、それが適用されるモデルの精度が向上し、分解に役立ちます。
 
@@ -141,3 +141,4 @@ LUIS ポータルは、発話の例のエンティティに、選択したエン
 [エンティティの追加](luis-how-to-add-entities.md)に関するページで、LUIS アプリにエンティティを追加する方法の詳細を確認します。
 
 手順については、「[チュートリアル: Language Understanding (LUIS) で機械学習エンティティを使用して、ユーザーの発話から構造化データを抽出する](tutorial-machine-learned-entity.md)」を参照して、機械学習エンティティを使用して発話から構造化データを抽出する方法について確認します。
+ 

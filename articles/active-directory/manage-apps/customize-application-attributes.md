@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641499"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997056"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 
@@ -78,12 +78,12 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
   - **作成中のみ** - このマッピングをユーザーの作成アクションのみに適用します。
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>ソース システムとターゲット システムで一致するユーザー
-Azure AD プロビジョニング サービスは、"未開発" (ユーザーがターゲット システムに存在しない) シナリオと "再開発" (ユーザーが既にターゲット システムに存在する) シナリオのどちらでもデプロイできます。 両方のシナリオをサポートするために、プロビジョニング サービスでは、一致する属性の概念を使用します。 一致する属性を利用すると、ソースのユーザーを一意に識別してターゲットのユーザーとの一致を判定する方法を任意に決定できます。 デプロイの計画の一環として、ソース システムとターゲット システムのユーザーを一意に識別するために使用できる属性を特定します。 注意する点:
+Azure AD プロビジョニング サービスは、"未開発" シナリオ(ユーザーがターゲット システムに存在しない) シナリオと "再開発" シナリオ (ユーザーが既にターゲット システムに存在する) のどちらでもデプロイできます。 両方のシナリオをサポートするために、プロビジョニング サービスでは、一致する属性の概念を使用します。 一致する属性を利用すると、ソースのユーザーを一意に識別してターゲットのユーザーとの一致を判定する方法を任意に決定できます。 デプロイの計画の一環として、ソース システムとターゲット システムのユーザーを一意に識別するために使用できる属性を特定します。 注意する点:
 
 - **一致する属性は一意であることが望ましい:** 顧客は多くの場合、userPrincipalName、mail、オブジェクト ID などの属性を一致する属性として使用します。
 - **複数の属性を一致する属性として使用できる:** ユーザーを一致するときに評価される複数の属性と、それらの属性が評価される順序 (UI では一致の優先順位として定義されます) を定義することができます。 たとえば、一致する属性として 3 つの属性を定義し、最初の 2 つの属性を評価した後にユーザーが一意に一致する場合、サービスは 3 番目の属性を評価しません。 サービスは、指定された順序で一致する属性を評価し、一致が見つかったら評価を停止します。  
 - **ソースとターゲットの値が厳密に一致している必要はない:** ターゲットの値は、ソースの値の単純な関数である可能性があります。 したがって、ソースに emailAddress 属性、ターゲットに userPrincipalName がある場合に、emailAddress 属性の関数で一部の文字を何らかの定数値に置き換えることによって一致を判定できる場合があります。  
-- **属性の組み合わせに基づいた一致はサポートされていない:** 2 つのプロパティに基づいたクエリはほとんどのアプリケーションでサポートされていないため、属性の組み合わせに基づいて一致を判定することはできません。 プロパティを 1 つずつ順番に評価することは可能です。
+- **属性の組み合わせに基づいた一致はサポートされていない:** ほとんどのアプリケーションでは、2 つのプロパティに基づくクエリはサポートされていません。 したがって、属性の組み合わせに基づいて一致させることはできません。 プロパティを 1 つずつ順番に評価することは可能です。
 - **少なくとも 1 つの一致する属性の値をすべてのユーザーが持っていることが必要:** 1 つの一致する属性を定義する場合、ソース システムですべてのユーザーがその属性の値を持っている必要があります。 たとえば、userPrincipalName を一致する属性として定義する場合、すべてのユーザーが userPrincipalName を持っている必要があります。 複数の一致する属性 (例: extensionAttribute1 と mail) を定義する場合、すべてのユーザーが同じ一致する属性を持っている必要はありません。 あるユーザーが extensionAttribute1 を持っていて mail は持っていない一方、別のユーザーが mail を持っていて extensionAttribute1 は持っていなくても問題ありません。 
 - **ターゲット アプリケーションは一致する属性のフィルター処理をサポートする必要がある:** アプリケーション開発者が、ユーザーまたはグループ API で属性のサブセットに対するフィルター処理を許可します。 ギャラリー内のアプリケーションの場合、既定の属性マッピングは、ターゲット アプリケーションの API でフィルター処理がサポートされている属性に対するものであることが保証されています。 ターゲット アプリケーションの既定の一致する属性を変更するときは、サードパーティの API ドキュメントを参照して、その属性がフィルター処理可能であることを確認してください。  
 
@@ -134,7 +134,61 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - **[API 式]** - 特定のプロビジョニング コネクタ (Workday など) のドキュメントで指示されていない限り、使用しないでください。
 - **[Referenced Object Attribute]** (参照オブジェクト属性) - これが Reference 型属性の場合は、このメニューを使用して、この属性に関連付けられている値を含むターゲット アプリケーションのテーブルと属性を選択できます。 たとえば、"Department" という名前の属性があるとき、そこに格納されている値が別の "Departments" テーブルのオブジェクトを参照する場合は、"Departments.Name" を選択します。 特定のアプリケーションでサポートされる参照テーブルとプライマリ ID フィールドは事前に構成されます。現在、Azure portal を使用して編集することはできませんが、[Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) を使用すると編集できます。
 
-新しい属性を追加するには、サポートされる属性一覧の最後までスクロールしてから、提供された入力値を使用して上のフィールドを設定し、 **[属性の追加]** を選択します。 属性の追加が終了したら、 **[保存]** を選択します。 新しい属性を属性マッピング エディターで使用できるようにするには、 **[プロビジョニング]** タブをリロードする必要があります。
+#### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>SCIM 準拠アプリケーションへカスタム拡張属性をプロビジョニングする
+SCIM RFC ではコア ユーザーとグループ スキーマが定義されているだけでなく、スキーマの拡張をアプリケーションのニーズに合わせて使用することもできます。 カスタム属性を SCIM アプリケーションに追加するには、次の手順に従います。
+   1. [Azure Active Directory ポータル](https://aad.portal.azure.com)にサインインし、 **[Enterprise Applications]\(エンタープライズ アプリケーション\)** を選択して、アプリケーションを選択し、 **[Provisioning]\(プロビジョニング\)** を選択します。
+   2. **マッピング**で、カスタム属性を追加するオブジェクト (ユーザーまたはグループ) を選択します。
+   3. ページの下部にある **[Show advanced options]\(詳細オプションの表示\)** を選択します。
+   4. **[Edit attribute list for AppName]\(AppName の属性リストの編集\)** を選択します。
+   5. 属性の一覧の下部にあるフィールドに、カスタム属性に関する情報を入力します。 **[属性の追加]** を選択します。
+
+SCIM アプリケーションの場合は、次の例に示すパターンに従って属性名を指定する必要があります。 "CustomExtensionName" と "CustomAttribute" は、アプリケーションの要件に応じてカスタマイズできます。例: urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute
+
+これらの手順は、SCIM 対応アプリケーションにのみ適用されます。 ServiceNow や Salesforce などのアプリケーションは、SCIM を使用する Azure AD と統合されていないため、カスタム属性を追加するときにこの特定の名前空間は必要ありません。
+
+カスタム属性を参照属性または複数値の属性にすることはできません。 現在、カスタムの複数値の拡張属性は、ギャラリー内のアプリケーションに対してのみサポートされています。  
+ 
+**拡張属性を持つユーザーの表記を次に示します。**
+
+```json
+   {
+     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "userName":"bjensen",
+     "externalId":"bjensen",
+     "name":{
+       "formatted":"Ms. Barbara J Jensen III",
+       "familyName":"Jensen",
+       "givenName":"Barbara"
+     },
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+     "employeeNumber": "701984",
+     "costCenter": "4130",
+     "organization": "Universal Studios",
+     "division": "Theme Park",
+     "department": "Tour Operations",
+     "manager": {
+       "value": "26118915-6090-4610-87e4-49d8ca9f808d",
+       "$ref": "../Users/26118915-6090-4610-87e4-49d8ca9f808d",
+       "displayName": "John Smith"
+     }
+   },
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "CustomAttribute": "701984",
+   },
+   "meta": {
+     "resourceType": "User",
+     "created": "2010-01-23T04:56:22Z",
+     "lastModified": "2011-05-13T04:42:34Z",
+     "version": "W\/\"3694e05e9dff591\"",
+     "location":
+ "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
+   }
+ }
+```
+
+
 ## <a name="provisioning-a-role-to-a-scim-app"></a>SCIM アプリへのロールのプロビジョニング
 ユーザーのロールをアプリケーションにプロビジョニングするには、次の手順を使用します。 下記の説明は、カスタム SCIM アプリケーションに固有のものであることに注意してください。 Salesforce や ServiceNow などのギャラリー アプリケーションの場合、事前定義済みのロール マッピングを使用します。 下記の項目は、アプリケーションで想定されている形式に AppRoleAssignments 属性を変換する方法を説明しています。
 

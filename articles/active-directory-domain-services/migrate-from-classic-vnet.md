@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 8cba2cbf8fcbad1acae8c36892308c3249fc4181
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674917"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893061"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>プレビュー - クラシック仮想ネットワーク モデルから Resource Manager への Azure AD Domain Services の移行
 
@@ -306,12 +306,13 @@ Azure AD DS には、マネージド ドメインに必要なポートをセキ�
 
 手順 2 で移行用に準備するため、または手順 3 で移行自体を行うために PowerShell コマンドレットを実行したときにエラーが発生した場合、Azure AD DS マネージド ドメインを元の構成にロールバックできます。 このロールバックを行うには、元のクラシック仮想ネットワークが必要です。 ロールバック後も IP アドレスが変更される可能性があることに注意してください。
 
-*-Abort* パラメーターを使用して `Migrate-Aadds` コマンドレットを実行します。 *contoso.com* など、前述のセクションで準備したご自身の Azure AD DS マネージド ドメインの *-ManagedDomainFqdn* を指定します。
+*-Abort* パラメーターを使用して `Migrate-Aadds` コマンドレットを実行します。 *contoso.com* など、前述のセクションで準備したご自身の Azure AD DS マネージド ドメインの *-ManagedDomainFqdn* と、*myClassicVnet* など、クラシック仮想ネットワークの名前を指定します。
 
 ```powershell
 Migrate-Aadds `
     -Abort `
     -ManagedDomainFqdn contoso.com `
+    -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```
 
@@ -360,4 +361,4 @@ Azure AD DS マネージド ドメインを Resource Manager デプロイ モデ
 [get-credential]: /powershell/module/microsoft.powershell.security/get-credential
 
 <!-- EXTERNAL LINKS -->
-[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/1.0
+[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/

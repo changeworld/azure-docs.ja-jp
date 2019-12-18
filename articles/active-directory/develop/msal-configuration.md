@@ -1,33 +1,29 @@
 ---
-title: Android Microsoft Authentication Library (MSAL) 構成ファイルについて
+title: Android Microsoft Authentication Library 構成ファイル | Azure
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory でのアプリケーションの構成を表す Android Microsoft Authentication Library (MSAL) 構成ファイルの概要。
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c06bc1ebf3b87f622029e9e875fe478eae7e6a30
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f643022c85a44b2202fcbd91be50664882c8ba7b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803158"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916828"
 ---
-# <a name="android-microsoft-authentication-library-msal-configuration-file"></a>Android Microsoft Authentication Library (MSAL) 構成ファイル
+# <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Authentication Library 構成ファイル
 
-MSAL には[既定の構成の JSON ファイル](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json)が付属しています。このファイルをカスタマイズして、既定の機関や使用する機関など、使用するパブリック クライアント アプリの動作を定義することができます。
+Android Microsoft Authentication Library (MSAL) には[既定の構成の JSON ファイル](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json)が付属しています。このファイルをカスタマイズして、既定の機関や使用する機関など、使用するパブリック クライアント アプリの動作を定義することができます。
 
 この記事では、構成ファイルでのさまざまな設定についてわかりやすく示すと共に、MSAL ベースのアプリで使用する構成ファイルの指定方法について説明します。
 
