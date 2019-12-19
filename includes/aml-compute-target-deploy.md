@@ -28,6 +28,6 @@ ms.locfileid: "74549443"
 | [Azure Data Box Edge](../articles/databox-online/data-box-edge-overview.md)   | IoT Edge を使用 |  &nbsp; | はい | IoT デバイスに ML モデルをデプロイし、サービスを提供します。 |
 
 > [!NOTE]
-> ローカル、Azure Machine Learning コンピューティング インスタンス、Azure Machine Learning コンピューティング クラスターなどのコンピューティング先では、トレーニングと実験のために GPU をサポートしていますが、__Web サービスとしてデプロイされる場合__に、推論に GPU を使用することは、Azure Kubernetes Service でのみサポートされています。
+> ローカル、Azure Machine Learning コンピューティング インスタンス、Azure Machine Learning コンピューティング クラスターなどのコンピューティング先では、トレーニングと実験のために GPU をサポートしていますが、__Web サービスとしてデプロイされる場合__ に、推論に GPU を使用することは、Azure Kubernetes Service でのみサポートされています。
 >
 > __機械学習パイプラインでスコアリングするとき__、推論に GPU を使用することは、Azure Machine Learning コンピューティングでのみサポートされます。
