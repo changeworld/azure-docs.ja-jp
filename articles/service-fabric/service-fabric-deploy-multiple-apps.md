@@ -36,7 +36,7 @@ Visual Studio を使用して、複数のゲスト実行可能ファイルを含
 別の方法として、ゲスト実行可能ファイルを手動でパッケージ化することができます。 詳細については、「[既存の実行可能ファイルの手動によるパッケージ化とデプロイ](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable)」を参照してください。
 
 ### <a name="packaging-the-nodejs-application"></a>Node.js アプリケーションのパッケージ化
-この記事は、Service Fabric クラスター内のノードに Node.js がインストールされていないことを前提としています。 そのため、パッケージ化する前に、ノード アプリケーションのルート ディレクトリに Node.exe を追加する必要があります。 (Express Web フレームワークと Jade テンプレート エンジンを使用する) Node.js アプリケーションのディレクトリ構造は、次のようになります。
+この記事は、Service Fabric クラスター内のノードに Node.js がインストールされていないことを前提としています。 そのため、パッケージ化する前に、node アプリケーションのルート ディレクトリに Node.exe を追加する必要があります。 (Express Web フレームワークと Jade テンプレート エンジンを使用する) Node.js アプリケーションのディレクトリ構造は、次のようになります。
 
 ```
 |-- NodeApplication

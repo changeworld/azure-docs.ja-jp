@@ -15,9 +15,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 12/02/2019
 ms.locfileid: "74672041"
 ---
-# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド
+# <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows での node アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
-この記事では、Azure App Service で実行されている[ノード アプリケーション](app-service-web-get-started-nodejs.md) ([iisnode](https://github.com/azure/iisnode) を使用) のベスト プラクティスとトラブルシューティングの手順について説明します。
+この記事では、Azure App Service で実行されている[node アプリケーション](app-service-web-get-started-nodejs.md) ([iisnode](https://github.com/azure/iisnode) を使用) のベスト プラクティスとトラブルシューティングの手順について説明します。
 
 > [!WARNING]
 > 運用サイトでトラブルシューティング手順を使用する場合は、注意が必要です。 ステージング スロットなどの運用環境以外のセットアップでアプリのトラブルシューティングを行い、問題が修正されたら、ステージング スロットを運用スロットと交換することをお勧めします。
@@ -29,7 +29,7 @@ ms.locfileid: "74672041"
 
 ### <a name="nodeprocesscountperapplication"></a>nodeProcessCountPerApplication
 
-この設定は、IIS アプリケーションごとに起動されるノード プロセスの数を制御します。 既定値は 1 です。 値を 0 に変更することで、VM vCPU と同じ数の node.exe を起動できます。 ほとんどのアプリケーションでは、推奨値は 0 です。これにより、コンピューター上のすべての vCPU を使用できます。 node.exe はシングルスレッドなので、1 つの node.exe で最大 1 vCPU を使用します。 ノード アプリケーションのパフォーマンスを最大にするために、すべての vCPU を使用します。
+この設定は、IIS アプリケーションごとに起動されるノード プロセスの数を制御します。 既定値は 1 です。 値を 0 に変更することで、VM vCPU と同じ数の node.exe を起動できます。 ほとんどのアプリケーションでは、推奨値は 0 です。これにより、コンピューター上のすべての vCPU を使用できます。 node.exe はシングルスレッドなので、1 つの node.exe で最大 1 vCPU を使用します。 node アプリケーションのパフォーマンスを最大にするために、すべての vCPU を使用します。
 
 ### <a name="nodeprocesscommandline"></a>nodeProcessCommandLine
 
@@ -56,7 +56,7 @@ ms.locfileid: "74672041"
 
 ### <a name="debuggerextensiondll"></a>debuggerExtensionDll
 
-この設定は、ノード アプリケーションのデバッグ時に iisnode が node-inspector のどのバージョンを使用するかを制御します。 現在、この設定に有効な値は、iisnode-inspector-0.7.3.dll と iisnode-inspector.dll の 2 つだけです。 既定値は、iisnode-inspector-0.7.3.dll です。 iisnode-inspector-0.7.3.dll バージョンでは node-inspector-0.7.3 と Web ソケットを使用します。 このバージョンを使用するには、Azure WebApp で Web ソケットを有効にする必要があります。 新しい node-inspector を使用するよう iisnode を構成する方法の詳細については、<https://ranjithblogs.azurewebsites.net/?p=98> を参照してください。
+この設定は、node アプリケーションのデバッグ時に iisnode が node-inspector のどのバージョンを使用するかを制御します。 現在、この設定に有効な値は、iisnode-inspector-0.7.3.dll と iisnode-inspector.dll の 2 つだけです。 既定値は、iisnode-inspector-0.7.3.dll です。 iisnode-inspector-0.7.3.dll バージョンでは node-inspector-0.7.3 と Web ソケットを使用します。 このバージョンを使用するには、Azure WebApp で Web ソケットを有効にする必要があります。 新しい node-inspector を使用するよう iisnode を構成する方法の詳細については、<https://ranjithblogs.azurewebsites.net/?p=98> を参照してください。
 
 ### <a name="flushresponse"></a>flushResponse
 
@@ -87,7 +87,7 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-既定値は false です。 有効にした場合、ノード アプリケーションは名前付きパイプ (環境変数 IISNODE\_CONTROL\_PIPE) に接続し、"リサイクル" メッセージを送信できます。 これにより、w3wp は適切にリサイクルされます。
+既定値は false です。 有効にした場合、node アプリケーションは名前付きパイプ (環境変数 IISNODE\_CONTROL\_PIPE) に接続し、"リサイクル" メッセージを送信できます。 これにより、w3wp は適切にリサイクルされます。
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -111,15 +111,15 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (実稼働の運用サイトでは有効にしないでください)
 
-この設定は、デバッグ機能を制御します。 iisnode は、node-inspector と統合されています。 この設定を有効にすることで、ノード アプリケーションのデバッグが有効になります。 この設定が有効になると、ノード アプリケーションへの最初のデバッグ要求の際に、iisnode によって、node-inspector ファイルが 'debuggerVirtualDir' ディレクトリに作成されます。 `http://yoursite/server.js/debug` に要求を送信することによって、node-inspector を読み込むことができます。 デバッグ URL セグメントは、"debuggerPathSegment" 設定で制御できます。 既定では、debuggerPathSegment = 'debug' です。 他のユーザーによる検出が難しくなるように、たとえば GUID に `debuggerPathSegment` を設定できます。
+この設定は、デバッグ機能を制御します。 iisnode は、node-inspector と統合されています。 この設定を有効にすることで、node アプリケーションのデバッグが有効になります。 この設定が有効になると、node アプリケーションへの最初のデバッグ要求の際に、iisnode によって、node-inspector ファイルが 'debuggerVirtualDir' ディレクトリに作成されます。 `http://yoursite/server.js/debug` に要求を送信することによって、node-inspector を読み込むことができます。 デバッグ URL セグメントは、"debuggerPathSegment" 設定で制御できます。 既定では、debuggerPathSegment = 'debug' です。 他のユーザーによる検出が難しくなるように、たとえば GUID に `debuggerPathSegment` を設定できます。
 
 デバッグの詳細については、[Windows での node.js アプリケーションのデバッグ](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html)に関するページを参照してください。
 
 ## <a name="scenarios-and-recommendationstroubleshooting"></a>シナリオと推奨事項/トラブルシューティング
 
-### <a name="my-node-application-is-making-excessive-outbound-calls"></a>ノード アプリケーションによる発信呼び出しが多すぎる
+### <a name="my-node-application-is-making-excessive-outbound-calls"></a>node アプリケーションによる発信呼び出しが多すぎる
 
-多くのアプリケーションは、通常の操作の一環として、発信接続を行う必要があります。 たとえば、要求を受信すると、ノード アプリケーションは別の場所の REST API に問い合わせて、要求を処理するための情報を取得しようとします。 http または https 呼び出しを行うときに、キープ アライブ エージェントを使用する場合があります。 これらの発信呼び出しを行うときに、キープ アライブ エージェントとして agentkeepalive モジュールを使用できます。
+多くのアプリケーションは、通常の操作の一環として、発信接続を行う必要があります。 たとえば、要求を受信すると、node アプリケーションは別の場所の REST API に問い合わせて、要求を処理するための情報を取得しようとします。 http または https 呼び出しを行うときに、キープ アライブ エージェントを使用する場合があります。 これらの発信呼び出しを行うときに、キープ アライブ エージェントとして agentkeepalive モジュールを使用できます。
 
 agentkeepalive モジュールは、Azure の Web WebApp VM でソケットが再利用されることを保証します。 送信要求のたびに新しいソケットを作成すると、アプリケーションにオーバーヘッドが追加されます。 アプリケーションでソケットを再利用することで、アプリケーションが VM ごとに割り当てられている maxSockets を超えないことが保証されます。 Azure App Service では、agentKeepAlive maxSockets 値を VM あたり合計 160 ソケット (node.exe の 4 つのインスタンス \* インスタンス当たり 40 の maxSockets) に設定することが推奨されています。
 
@@ -138,12 +138,12 @@ let keepaliveAgent = new Agent({
 > この例では、VM で 4 つの node.exe を実行していることを想定しています。 VM で実行している node.exe の数が異なる場合は、それに応じて maxSockets の設定を変更することが必要になります。
 >
 
-#### <a name="my-node-application-is-consuming-too-much-cpu"></a>ノード アプリケーションが消費する CPU が多すぎる
+#### <a name="my-node-application-is-consuming-too-much-cpu"></a>node アプリケーションが消費する CPU が多すぎる
 
 高い CPU 消費率に関する Azure App Service からの推奨事項がポータルに表示されている可能性があります。 特定の[メトリック](web-sites-monitor.md)を監視するためにモニターをセットアップすることもできます。 [Azure Portal ダッシュボード](../azure-monitor/app/web-monitor-performance.md)で CPU 使用率をチェックするときに、CPU の最大値を確認して、ピーク値を見逃さないようにしてください。
-アプリケーションによる CPU の消費量が明らかに多すぎるが、理由を説明できない場合は、ノード アプリケーションをプロファイリングして調べることができます。
+アプリケーションによる CPU の消費量が明らかに多すぎるが、理由を説明できない場合は、node アプリケーションをプロファイリングして調べることができます。
 
-#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>V8-Profiler を使用した Azure App Service のノード アプリケーションのプロファイリング
+#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>V8-Profiler を使用した Azure App Service の node アプリケーションのプロファイリング
 
 たとえば、以下のような hello world アプリをプロファイリングするとします。
 
@@ -211,7 +211,7 @@ http.createServer(function (req, res) {
 
 95% の時間が WriteConsoleLog 関数によって消費されたことがわかります。 出力には、問題の原因となる正確な行番号とソース ファイルも表示されます。
 
-### <a name="my-node-application-is-consuming-too-much-memory"></a>ノード アプリケーションで消費されるメモリが多すぎる
+### <a name="my-node-application-is-consuming-too-much-memory"></a>node アプリケーションで消費されるメモリが多すぎる
 
 アプリケーションの消費メモリ量が多すぎる場合は、Portal にメモリ消費量が多いことに関する Azure App Service の通知が表示されます。 特定の[メトリック](web-sites-monitor.md)を監視するようにモニターを設定できます。 [Azure Portal ダッシュボード](../azure-monitor/app/web-monitor-performance.md)でメモリ使用量をチェックするときに、メモリの最大値を確認して、ピーク値を見逃さないようにしてください。
 
@@ -227,7 +227,7 @@ node.exe がランダムにシャット ダウンされる理由はいくつか�
 1. アプリケーションが、キャッチされない例外をスローしています。d:\\home\\LogFiles\\Application\\logging-errors.txt ファイルで、スローされた例外の詳細を確認してください。 このファイルには、アプリケーションのデバッグと修正に役立つスタック トレースが含まれています。
 2. アプリケーションが過度のメモリを消費しています。このため、他のプロセスの開始に影響を与えています。 VM メモリの合計が 100% に近い場合は、プロセス マネージャーによって node.exe が強制終了される可能性があります。 プロセス マネージャは、他のプロセスに作業を行う機会を与えるために、いくつかのプロセスを強制終了します。 この問題を修正するには、アプリケーションをプロファイルしてメモリ リークを解決します。 アプリケーションが大量のメモリを必要とする場合は、大規模な VM にスケール アップします (VM が利用できる RAM が増えます)。
 
-### <a name="my-node-application-does-not-start"></a>ノード アプリケーションが起動しない
+### <a name="my-node-application-does-not-start"></a>node アプリケーションが起動しない
 
 アプリケーションが起動時に 500 エラーを返す場合は、次のような原因が考えられます。
 
@@ -236,11 +236,11 @@ node.exe がランダムにシャット ダウンされる理由はいくつか�
 3. Web.config の構成が正しくありません。設定の名前/値を確認してください。
 4. コールド スタート。アプリケーションの起動に時間がかかりすぎます。 アプリケーションでかかる時間が (maxNamedPipeConnectionRetry \* namedPipeConnectionRetryDelay) / 1,000 秒を超えると、iisnode は 500 エラーを返します。 iisnode がタイムアウトして 500 エラーを返すことを防ぐために、アプリケーションの開始時間と一致するようにこれらの設定の値を大きくしてください。
 
-### <a name="my-node-application-crashed"></a>ノード アプリケーションがクラッシュした
+### <a name="my-node-application-crashed"></a>node アプリケーションがクラッシュした
 
 アプリケーションが、キャッチされない例外をスローしています。`d:\\home\\LogFiles\\Application\\logging-errors.txt` ファイルで、スローされた例外の詳細を確認してください。 このファイルには、アプリケーションの診断と修正に役立つスタック トレースが含まれています。
 
-### <a name="my-node-application-takes-too-much-time-to-start-cold-start"></a>ノード アプリケーションの起動 (コールド スタート) に時間がかかりすぎる
+### <a name="my-node-application-takes-too-much-time-to-start-cold-start"></a>node アプリケーションの起動 (コールド スタート) に時間がかかりすぎる
 
 アプリケーションの起動時間が長くなる一般的な原因は、node\_modules 内に多数のファイルがあることです。 アプリケーションは起動時にこれらのファイルのほとんどを読み込もうとします。 既定では、ファイルは Azure App Service 上のネットワーク共有に存在するため、多くのファイルの読み込みには時間がかかります。
 このプロセスを高速化するための解決策は、次のようにいくつかあります。
@@ -267,7 +267,7 @@ node.exe がランダムにシャット ダウンされる理由はいくつか�
 | 503 |1002 |実際の理由については、win32 エラー コードを確認してください。要求を node.exe にディスパッチできませんでした。 |
 | 503 |1003 |名前付きパイプがビジー状態です – ノードが CPU を大量に消費しているかどうかを確認してください。 |
 
-NODE.exe には、`NODE_PENDING_PIPE_INSTANCES` という設定があります。 Azure App Service では、この値は 5000 に設定されています。 つまり、node.exe では名前付きパイプを使用して同時に 5000 個の要求を受け入れることができます。 Azure App Service で実行されるほとんどのノード アプリケーションでは、この値で十分です。 `NODE_PENDING_PIPE_INSTANCES` には大きい値が設定されているため、Azure App Service に 503.1003 が表示されることはありません。
+NODE.exe には、`NODE_PENDING_PIPE_INSTANCES` という設定があります。 Azure App Service では、この値は 5000 に設定されています。 つまり、node.exe では名前付きパイプを使用して同時に 5000 個の要求を受け入れることができます。 Azure App Service で実行されるほとんどの node アプリケーションでは、この値で十分です。 `NODE_PENDING_PIPE_INSTANCES` には大きい値が設定されているため、Azure App Service に 503.1003 が表示されることはありません。
 
 ## <a name="more-resources"></a>その他のリソース
 
