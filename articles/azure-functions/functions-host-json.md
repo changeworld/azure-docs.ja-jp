@@ -3,23 +3,23 @@ title: Azure Functions 2.x の host.json のリファレンス
 description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 09/08/2018
-ms.openlocfilehash: bb10f15db1d152ff1d8fd8d38ba22e312a2031b7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08d772fc9b2871262b449a017f8be59a344576b2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323074"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975450"
 ---
-# <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
+# <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 以降の host.json のリファレンス 
 
-> [!div class="op_single_selector" title1="使用している Azure Functions ランタイムのバージョンを選択してください: "]
+> [!div class="op_single_selector" title1="使用している Azure Functions ランタイムのバージョンを選択します。 "]
 > * [Version 1](functions-host-json-v1.md)
 > * [Version 2](functions-host-json.md)
 
-*host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、v2 ランタイムで使用できる設定の一覧を紹介します。  
+*host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、Azure Functions ランタイムのバージョン 2.x 移行で使用できる設定を一覧表示しています。  
 
 > [!NOTE]
-> この記事は、Azure Functions 2.x を対象としています。  Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
+> この記事は、Azure Functions 2.x 以降のバージョンを対象としています。  Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md)」を参照してください。
 
 関数アプリの他の構成オプションは、[アプリの設定](functions-app-settings.md)で管理されます。
 
@@ -216,7 +216,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
-|logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 これにより、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
+|logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x 以降のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 これにより、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
 |console|該当なし| [console](#console) ログ記録の設定。 |
 |applicationInsights|該当なし| [applicationInsights](#applicationinsights) の設定。 |
 

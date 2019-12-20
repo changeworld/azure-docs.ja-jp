@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Hyperscale (Citus) での SSL の構成
+title: SSL - Hyperscale (Citus) - Azure Database for PostgreSQL
 description: SSL 接続を正しく使用するように Azure Database for PostgreSQL - Hyperscale (Citus) と関連アプリケーションを構成するための手順および情報。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: be02c9114f30a63fe710cfd2fc56347bfc68fab5
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 3e4ef5d2d6db3a3d4f8923f47079f2484639a751
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275297"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973987"
 ---
 # <a name="configure-ssl-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) での SSL の構成
 Hyperscale (Citus) コーディネーター ノードへのクライアント アプリケーション接続には、Secure Sockets Layer (SSL) が必要です。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、中間者 (man in the middle) 攻撃から保護されます。

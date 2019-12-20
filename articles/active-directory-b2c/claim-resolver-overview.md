@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて | Microsoft Docs
-description: Azure Active Directory B2C 内のカスタム ポリシーで要求リゾルバーがどのように使用されるかについて説明します。
+title: カスタム ポリシーでの要求リゾルバー
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C 内のカスタム ポリシーで要求リゾルバーを使用する方法について説明します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f08c85cee2378f4a879daf197af7a2adf0c20f45
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064396"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949876"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 

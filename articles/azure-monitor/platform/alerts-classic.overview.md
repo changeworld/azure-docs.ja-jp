@@ -7,22 +7,22 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 3ad0bdc2ec5db2f34a3bb6a1b8fda54cf9037483
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555685"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893588"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Microsoft Azure のクラシック アラートの概要
 
 > [!NOTE]
-> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](../../azure-monitor/platform/alerts-overview.md)がサポートされています。 クラシック アラートは[廃止される予定です](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)。  
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいほぼリアルタイムのメトリック アラートとアラート エクスペリエンス](../../azure-monitor/platform/alerts-overview.md)がサポートされています。 従来のアラートは[廃止](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement)されますが、新しいアラートをまだサポートしていないリソースのために、引き続き限定的に使用されます。 
 >
 
 アラートを使用してデータに対する条件を構成し、その条件が最新の監視データと一致したときに通知を受け取ることができます。
 
-## <a name="old-and-new-alerting-capabilities"></a>新旧のアラート機能
+## <a name="old-and-new-alerting-capabilities"></a>新旧のアラートの機能
 
 Azure Monitor、Application Insights、Log Analytics、Service Health のアラート機能は以前は別々でした。 Azure では、ユーザー インターフェイスとさまざまなアラート方法が時間と共に統合され、改善されました。 この統合は現在も継続中です。
 
@@ -54,7 +54,7 @@ Azure Monitor、Application Insights、Log Analytics、Service Health のアラ�
 
 * **クラシック アクティビティ ログ アラート** - アクティビティ ログ イベント エントリがフィルター条件と一致したときにトリガーされるストリーミング ログ アラート。 これらのアラートには、"アクティブ化済み" の 1 つの状態しかありません。 アラート エンジンはすべての新規イベントにフィルター条件を適用するだけです。 古いエントリを検索することはしません。 これらのアラートでは、新しい Service Health インシデントが発生したとき、またはユーザーまたはアプリケーションがサブスクリプションで "仮想マシンの削除" などの操作を実行したときに通知を受け取ることができます。
 
-Azure Monitor で使用できる診断ログ データの場合、データを Log Analytics (旧称 OMS) に転送し、Log Analytics クエリ アラートを使用します。 Log Analytics では、[新しいアラート メソッド](../../azure-monitor/platform/alerts-overview.md)を使用しています。 
+Azure Monitor で使用できるリソース ログ データの場合は、データが Log Analytics に転送され、ログ クエリ アラートが使用されます。 Log Analytics では、[新しいアラート メソッド](../../azure-monitor/platform/alerts-overview.md)を使用しています。 
 
 次の図は、Azure Monitor のデータのソースと、そのデータからアラートを生成する方法をまとめたものです。
 

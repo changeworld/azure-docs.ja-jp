@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services v3 API に接続する - Python
-description: Python を使用して Media Services v3 API に接続する方法について学習します。
+description: この記事では、Python を使用して Media Services v3 API に接続する方法を示します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 2ceebd88f4988f23bf9cd32bd827aaca67d70461
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 98a8cdf4120cf56184eb5735249640e3423acdf4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307873"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888463"
 ---
 # <a name="connect-to-media-services-v3-api---python"></a>Media Services v3 API に接続する - Python
 

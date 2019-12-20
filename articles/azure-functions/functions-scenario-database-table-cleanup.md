@@ -4,12 +4,12 @@ description: Azure Functions を使用して、Azure SQL Database に接続し�
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: f70b5b83561e7c580dd7192850c8eb50be5aac0a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3dafe275dcd5eb172e744f1d163b33ebb0bac7cc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230394"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972236"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 
@@ -19,7 +19,7 @@ C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向け
 
 ## <a name="prerequisites"></a>前提条件
 
-+ 「[Visual Studio を使用して初めての関数を作成する](functions-create-your-first-function-visual-studio.md)」記事の手順が完了しており、バージョン 2.x ランタイムを対象としたローカル関数アプリを作成しています。 また、プロジェクトを Azure の関数アプリに発行している必要があります。
++ 「[Visual Studio を使用して初めての関数を作成する](functions-create-your-first-function-visual-studio.md)」記事の手順が完了しており、バージョン 2.x 以降のランタイムを対象としたローカル関数アプリを作成しています。 また、プロジェクトを Azure の関数アプリに発行している必要があります。
 
 + この記事では、AdventureWorksLT サンプル データベースの **SalesOrderHeader** テーブルに対して一括クリーンアップ操作を実行する Transact-SQL コマンドの例を取り上げています。 AdventureWorksLT サンプル データベースを作成するには、記事「[Azure portal で Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」の手順を実行します。
 

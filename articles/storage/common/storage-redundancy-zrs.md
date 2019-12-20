@@ -1,22 +1,23 @@
 ---
-title: ゾーン冗長ストレージ (ZRS) に高可用 Azure Storage アプリケーションを構築する | Microsoft Docs
+title: ゾーン冗長化ストレージ (ZRS) で高可用アプリケーションを構築する
+titleSuffix: Azure Storage
 description: ゾーン冗長ストレージ (ZRS) を利用すると、高可用アプリケーションを簡単に構築できます。 ZRS は、データセンターのハードウェア障害だけでなく、一部の地域の災害からも保護できます。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a86d94110e78b7ace0e963469e9f236f7cc72ab4
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 7d341c7081fef7aee2c33b9a7080d60417ce410d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555469"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895193"
 ---
-# <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>高可用 Azure Storage アプリケーションを構築するためのゾーン冗長ストレージ (ZRS)
+# <a name="build-highly-available-applications-with-zone-redundant-storage-zrs"></a>ゾーン冗長化ストレージ (ZRS) で高可用アプリケーションを構築する
 
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 

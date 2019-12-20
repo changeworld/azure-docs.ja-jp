@@ -3,16 +3,16 @@ title: Azure Monitor でのメトリック アラートの機能
 description: メトリック アラートの用途と、Azure Monitor での機能の概要を理解します。
 author: rboucher
 ms.author: robb
-ms.date: 11/18/2019
+ms.date: 12/5/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: aa54b9ce23ffab266ed6403e3525ae1290d99cec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8f84b5641b79514ffed493302f246ecc51a20a87
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775723"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850059"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -125,7 +125,7 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 ## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートによるスケールの監視
 
-ここまでは、単一の Azure リソースに関連する 1 つ以上のメトリックの時系列を監視するために、単一のメトリック アラートを使用する方法について説明しました。 1 つのアラート ルールを多数のリソースに適用する場合はよくあります。 また、Azure Monitor はプレビューで 1 つのメトリック アラート ルールによる複数リソースの監視をサポートするようになりました。 現在、この機能は仮想マシンでのみサポートされています。 また、1 つのメトリック アラートが 1 つの Azure リージョン内のリソースを監視することもできます。
+ここまでは、単一の Azure リソースに関連する 1 つ以上のメトリックの時系列を監視するために、単一のメトリック アラートを使用する方法について説明しました。 1 つのアラート ルールを多数のリソースに適用する場合はよくあります。 また、Azure Monitor はプレビューで 1 つのメトリック アラート ルールによる複数リソースの監視をサポートするようになりました。 この機能は現在、仮想マシン、SQL Server データベース、SQL Server エラスティック プール、およびデータボックス エッジ デバイスでのみサポートされています。 また、1 つのメトリック アラートが 1 つの Azure リージョン内のリソースを監視することもできます。
 
 1 つのメトリック アラートでの監視範囲は、次の 3 つのいずれかの方法で指定することができます。
 

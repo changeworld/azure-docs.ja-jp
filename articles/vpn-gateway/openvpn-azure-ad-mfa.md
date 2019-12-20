@@ -18,7 +18,7 @@ ms.locfileid: "74382203"
 
 ユーザーにアクセス許可を付与する前に 2 つ目の認証要素の入力を求める場合は、Azure AD テナントに対して Azure Multi-Factor Authentication (MFA) を構成できます。 この記事の手順は、2 段階認証の要件を有効にするために役立ちます。
 
-## <a name="prereq">前提条件</a>
+## <a name="prereq"></a>前提条件
 
 この構成の前提条件は、[テナントの構成](openvpn-azure-ad-tenant.md)に関する記事の手順に従って構成された Azure AD テナントです。
 

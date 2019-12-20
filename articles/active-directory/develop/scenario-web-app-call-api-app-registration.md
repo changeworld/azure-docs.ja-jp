@@ -1,6 +1,6 @@
 ---
-title: Web API を呼び出す Web アプリ (アプリの登録) - Microsoft ID プラットフォーム
-description: Web API を呼び出す Web アプリを構築する方法について説明します (アプリの登録)
+title: Web API を呼び出す Web アプリを登録する - Microsoft ID プラットフォーム | Azure
+description: Web API を呼び出す Web アプリを登録する方法を説明します
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5becdc287f7cad28aa6c7c07ebc107586e9a2b2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 784de823e94aace6f91222c19c1ff8130c3f995f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080143"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962935"
 ---
 # <a name="web-app-that-calls-web-apis---app-registration"></a>Web API を呼び出す Web アプリ - アプリの登録
 

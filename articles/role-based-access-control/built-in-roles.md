@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 10/28/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: f3ee958484fdb8cacad0a3bfa0c3385374ac7487
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 00d4487abed97084976d81ee1ec78316fc688193
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185736"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851385"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -123,9 +123,10 @@ ms.locfileid: "74185736"
 > | [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | [New Relic APM Account Contributor](#new-relic-apm-account-contributor) | New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。 | 5d28c62d-5b37-4476-8438-e587778df237 |
+> | [Policy Insights データ ライター (プレビュー)](#policy-insights-data-writer-preview) | リソース ポリシーに対する読み取りアクセスとリソース コンポーネント ポリシー イベントへの書き込みアクセスを許可します。 | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
 > | [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | [Redis Cache Contributor](#redis-cache-contributor) | Redis Caches を管理できます。ただし、それらへのアクセスは含まれません。 | e0f68234-74aa-48ed-b826-c38b57376e17 |
-> | [リソース ポリシーの共同作成者 (プレビュー)](#resource-policy-contributor-preview) | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 | 36243c78-bf99-498c-9df9-86d9f8d28608 |
+> | [リソース ポリシーの共同作成者](#resource-policy-contributor) | リソース ポリシーの作成または変更、サポート チケットの作成、リソースまたは階層の読み取りを行う権限を持つユーザー。 | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) | スケジューラ ジョブ コレクションを管理できます。ただし、それらへのアクセスは含まれません。 | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | [Search Service Contributor](#search-service-contributor) | Search サービスを管理できます。ただし、それらへのアクセスは含まれません。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [Security Admin](#security-admin) | Security Center のみ: セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます | fb1c8493-542b-48eb-b624-b4c8fea62acd |
@@ -666,6 +667,7 @@ ms.locfileid: "74185736"
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
 > | Microsoft.OperationsManagement/solutions/read | 既存の OMS ソリューションを取得します。 |
 > | Microsoft.OperationalInsights/workspaces/query/read | ワークスペース内のデータに対してクエリを実行します |
+> | Microsoft.OperationalInsights/workspaces/query/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
 > | Microsoft.Insights/workbooks/* |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -693,6 +695,7 @@ ms.locfileid: "74185736"
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | 保存された検索クエリを取得します。 |
 > | Microsoft.OperationsManagement/solutions/read | 既存の OMS ソリューションを取得します。 |
 > | Microsoft.OperationalInsights/workspaces/query/read | ワークスペース内のデータに対してクエリを実行します |
+> | Microsoft.OperationalInsights/workspaces/query/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
 > | Microsoft.Insights/workbooks/read | ブックを読み取ります |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -722,6 +725,7 @@ ms.locfileid: "74185736"
 > | Microsoft.OperationalInsights/workspaces/savedSearches/read | 保存された検索クエリを取得します。 |
 > | Microsoft.OperationsManagement/solutions/read | 既存の OMS ソリューションを取得します。 |
 > | Microsoft.OperationalInsights/workspaces/query/read | ワークスペース内のデータに対してクエリを実行します |
+> | Microsoft.OperationalInsights/workspaces/query/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
 > | Microsoft.Insights/workbooks/read | ブックを読み取ります |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -1361,6 +1365,7 @@ ms.locfileid: "74185736"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
 > | **NotActions** |  |
 > | Microsoft.DocumentDB/databaseAccounts/readonlyKeys/* |  |
 > | Microsoft.DocumentDB/databaseAccounts/regenerateKey/* |  |
@@ -1631,6 +1636,7 @@ ms.locfileid: "74185736"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -2139,6 +2145,24 @@ ms.locfileid: "74185736"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
+## <a name="policy-insights-data-writer-preview"></a>Policy Insights データ ライター (プレビュー)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | リソース ポリシーに対する読み取りアクセスとリソース コンポーネント ポリシー イベントへの書き込みアクセスを許可します。 |
+> | **Id** | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
+> | **アクション** |  |
+> | Microsoft.Authorization/policyassignments/read | ポリシー割り当てに関する情報を取得します。 |
+> | Microsoft.Authorization/policydefinitions/read | ポリシー定義に関する情報を取得します。 |
+> | Microsoft.Authorization/policysetdefinitions/read | ポリシー セットの定義に関する情報を取得します。 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | Microsoft.PolicyInsights/checkDataPolicyCompliance/action | 指定されたコンポーネントのコンプライアンス状態をデータ ポリシーと照合します。 |
+> | Microsoft.PolicyInsights/policyEvents/logDataEvents/action | リソース コンポーネントのポリシー イベントをログに記録します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
 ## <a name="reader-and-data-access"></a>Reader and Data Access
 > [!div class="mx-tableFixed"]
 > | | |
@@ -2177,11 +2201,11 @@ ms.locfileid: "74185736"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
-## <a name="resource-policy-contributor-preview"></a>リソース ポリシーの共同作成者 (プレビュー)
+## <a name="resource-policy-contributor"></a>リソース ポリシー共同作成者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 |
+> | **説明** | リソース ポリシーの作成または変更、サポート チケットの作成、リソースまたは階層の読み取りを行う権限を持つユーザー。 |
 > | **Id** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | **アクション** |  |
 > | */read | 機密データを除くあらゆる種類のリソースの読み取り |
@@ -2343,6 +2367,7 @@ ms.locfileid: "74185736"
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
+> | Microsoft.RecoveryServices/vaults/replicationOperationStatus/read | コンテナー レプリケーション操作の状態を読み取ります |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | **NotActions** |  |
 > | "*なし*" |  |
@@ -3128,6 +3153,6 @@ ms.locfileid: "74185736"
 
 ## <a name="next-steps"></a>次の手順
 
-- [リソース プロバイダーとサービスの関連付け](../azure-resource-manager/azure-services-resource-providers.md)
+- [リソース プロバイダーとサービスの対応](../azure-resource-manager/azure-services-resource-providers.md)
 - [Azure リソースのカスタム ロール](custom-roles.md)
 - [Azure Security Center におけるアクセス許可](../security-center/security-center-permissions.md)

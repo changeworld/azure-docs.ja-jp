@@ -1,22 +1,22 @@
 ---
-title: Azure Data Factory を使用して SAP Business Warehouse からデータを読み込む
+title: SAP Business Warehouse からデータを読み込む
 description: Azure Data Factory を使用して SAP Business Warehouse (BW) からデータをコピーする
 services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: craigg
+ms.author: jingwang
+manager: shwang
 ms.reviewer: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 05/22/2019
-ms.author: jingwang
-ms.openlocfilehash: 0c96ecff27a57b3277e7c8105766059b739d11af
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7d9c0000964348b7c9c83ccbc2490677614c50cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672647"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931464"
 ---
 # <a name="copy-data-from-sap-business-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Business Warehouse からデータをコピーする
 

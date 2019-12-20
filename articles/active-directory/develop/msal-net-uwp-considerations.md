@@ -1,29 +1,25 @@
 ---
-title: ユニバーサル Windows プラットフォームに関する考慮事項 (.NET 用 Microsoft 認証ライブラリ)
+title: UWP に関する考慮事項 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: .NET (MSAL.NET) 用 Microsoft 認証ライブラリでユニバーサル Windows プラットフォームを使用する場合の固有の考慮事項について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27a41ad084d21c7623011b5678fb84ed27d68325
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: d14546a63db952119303428140c65ee402010816
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802667"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921790"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>MSAL.NET でのユニバーサル Windows プラットフォームに固有の考慮事項
 UWP には、MSAL.NET を使用する場合に考慮する必要がある考慮事項がいくつかあります。

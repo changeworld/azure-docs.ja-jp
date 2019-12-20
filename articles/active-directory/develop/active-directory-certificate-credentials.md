@@ -1,38 +1,35 @@
 ---
-title: Azure AD での証明書資格情報
+title: Azure AD 証明書資格情報
 titleSuffix: Microsoft identity platform
 description: この記事では、アプリケーションを認証するための証明書資格情報の登録と使用について説明します
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fca872d639ab5c2d4053656cdd3e68a59fdc1e6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473971"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963870"
 ---
-# <a name="certificate-credentials-for-application-authentication"></a>アプリケーションを認証するための証明書資格情報
+# <a name="azure-ad-application-authentication-certificate-credentials"></a>Azure AD アプリケーションを認証する証明書資格情報
 
 Azure Active Directory (Azure AD) では、OAuth 2.0 クライアント資格情報の付与フロー ([v1.0](v1-oauth2-client-creds-grant-flow.md)、[v2.0](v2-oauth2-client-creds-grant-flow.md)) や On-Behalf-Of フロー ([v1.0](v1-oauth2-on-behalf-of-flow.md)、[v2.0](v2-oauth2-on-behalf-of-flow.md)) などで、アプリケーションが認証用の独自の資格情報を使用することを許可しています。
 
 アプリケーションが認証を行うために使用できる資格情報の 1 つの形式は、アプリケーションが所有している証明書で署名された JSON Web トークン(JWT) アサーションです。
 
 ## <a name="assertion-format"></a>アサーションの形式
+
 アサーションを計算するために、多数の [JSON Web トークン](https://jwt.ms/) ライブラリの中から好きな言語を選択して使用できます。 トークンによって伝達される情報は次のとおりです。
 
 ### <a name="header"></a>ヘッダー

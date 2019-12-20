@@ -1,5 +1,5 @@
 ---
-title: Visual Studio の Azure Application Insights でアプリケーションをデバッグする | Microsoft Docs
+title: Azure Application Insights を使用して Visual Studio でデバッグする
 description: デバッグ中および運用環境の Web アプリのパフォーマンス分析と診断。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -9,12 +9,12 @@ ms.author: daviste
 ms.date: 07/07/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
-ms.openlocfilehash: 32596b058918d3a8859dc356f8f0b1223b7f755a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c4b32d775f64d3adba4ca07fa5154e395717d599
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899277"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930670"
 ---
 # <a name="debug-your-applications-with-azure-application-insights-in-visual-studio"></a>Visual Studio の Azure Application Insights でアプリケーションをデバッグする
 Visual Studio (2015 以降) では、[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) からのテレメトリを使用して、ASP.NET Web アプリのパフォーマンスの分析と問題の診断を、デバッグ中と運用環境の両方において実行できます。

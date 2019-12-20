@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 052e02ef562da0637b6b5b9683120f0c397dbfd5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+zone_pivot_groups: programming-languages-set-two
+ms.openlocfilehash: 2ceb53b50810aef501278710ae990c57fc45030c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805877"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971674"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>音声テキスト変換用のフレーズ リスト
 
@@ -23,7 +24,7 @@ ms.locfileid: "74805877"
 
 例として、"Move to" という指示があり、会話で考えられる目的地として "Ward" がある場合、"Move to Ward" というエントリーを追加できます。 フレーズを追加すると、音声認識の実行時に、"Move toward" ではなく "Move to Ward" が認識される可能性が高くなります。
 
-フレーズ リストには、単一の単語または完全なフレーズを追加できます。 認識時に音声に完全一致が含まれる場合、フレーズ リスト内のエントリーが使用されます。 前述の例の場合、フレーズ リストに "Move to Ward" が含まれており、自動キャプチャされた音声が、"Move toward" と "Move to Ward" の両方に十分に類似している場合、認識結果は "Move to Ward slowly" と認識される可能性が高くなります。
+フレーズ リストには、単一の単語または完全なフレーズを追加できます。 認識時に、音声にフレーズ全体に対する完全一致が個別のフレーズとして含まれる場合、フレーズ リスト内のエントリが使用されます。 フレーズに対する完全一致が見つからない場合、認識はサポートされません。
 
 >[!Note]
 > 現時点では、フレーズ リストの音声テキスト変換では英語のみサポートされています。
@@ -32,12 +33,7 @@ ms.locfileid: "74805877"
 
 次の例では、`PhraseListGrammar` オブジェクトを使用してフレーズ リストを作成する方法を示します。
 
-```C++
-auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
-phraselist->AddPhrase("Move to Ward");
-phraselist->AddPhrase("Move to Bill");
-phraselist->AddPhrase("Move to Ted");
-```
+::: zone pivot="programming-language-csharp"
 
 ```cs
 PhraseListGrammar phraseList = PhraseListGrammar.FromRecognizer(recognizer);
@@ -46,19 +42,20 @@ phraseList.AddPhrase("Move to Bill");
 phraseList.AddPhrase("Move to Ted");
 ```
 
-```Python
-phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)
-phrase_list_grammar.addPhrase("Move to Ward")
-phrase_list_grammar.addPhrase("Move to Bill")
-phrase_list_grammar.addPhrase("Move to Ted")
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+auto phraselist = PhraseListGrammar::FromRecognizer(recognizer);
+phraselist->AddPhrase("Move to Ward");
+phraselist->AddPhrase("Move to Bill");
+phraselist->AddPhrase("Move to Ted");
 ```
 
-```JavaScript
-var phraseListGrammar = SpeechSDK.PhraseListGrammar.fromRecognizer(reco);
-phraseListGrammar.addPhrase("Move to Ward");
-phraseListGrammar.addPhrase("Move to Bill");
-phraseListGrammar.addPhrase("Move to Ted");
-```
+::: zone-end
+
+::: zone pivot="programming-language-java"
 
 ```Java
 PhraseListGrammar phraseListGrammar = PhraseListGrammar.fromRecognizer(recognizer);
@@ -67,30 +64,74 @@ phraseListGrammar.addPhrase("Move to Bill");
 phraseListGrammar.addPhrase("Move to Ted");
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+```Python
+phrase_list_grammar = speechsdk.PhraseListGrammar.from_recognizer(reco)
+phrase_list_grammar.addPhrase("Move to Ward")
+phrase_list_grammar.addPhrase("Move to Bill")
+phrase_list_grammar.addPhrase("Move to Ted")
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
+
+```JavaScript
+var phraseListGrammar = SpeechSDK.PhraseListGrammar.fromRecognizer(reco);
+phraseListGrammar.addPhrase("Move to Ward");
+phraseListGrammar.addPhrase("Move to Bill");
+phraseListGrammar.addPhrase("Move to Ted");
+```
+
+::: zone-end
+
 >[!Note]
 > 音声サービスで音声の照合に使用されるフレーズ リストの最大数は 1024 フレーズです。
 
 clear() を呼び出すことで、`PhraseListGrammar` に関連付けられたフレーズを消去することもできます。
 
-```C++
-phraselist->Clear();
-```
+::: zone pivot="programming-language-csharp"
 
 ```cs
 phraseList.Clear();
 ```
 
+::: zone-end
+
+::: zone pivot="programming-language-cpp"
+
+```C++
+phraselist->Clear();
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-java"
+
+```Java
+phraseListGrammar.clear();
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
 ```Python
 phrase_list_grammar.clear()
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-more"
 
 ```JavaScript
 phraseListGrammar.clear();
 ```
 
-```Java
-phraseListGrammar.clear();
-```
+::: zone-end
 
 > [!NOTE]
 > `PhraseListGrammar` オブジェクトへの変更は、次の認識時、または音声サービスへの再接続後に有効になります。

@@ -1,6 +1,7 @@
 ---
-title: OpenID Connect でのサインアップとサインインを設定する - Azure Active Directory B2C | Microsoft Docs
-description: Azure Active Directory B2C を使用して OpenID Connectでのサインアップおよびサインインを設定する。
+title: OpenID Connect でのサインアップおよびサインインを設定する
+titleSuffix: Azure AD B2C
+description: Azure Active Directory B2C で任意の OpenID Connect ID プロバイダー (IdP) でのサインアップとサインインを設定します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0303f8c7e18a5c229bc5a8c5e9b90d95cdaccbe7
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 471163fc8fe8c5bad550d0615683ef2b97b818dc
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672912"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950470"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して OpenID Connectでのサインアップおよびサインインを設定する
 
@@ -39,7 +40,7 @@ ms.locfileid: "71672912"
 > [!NOTE]
 > クライアント シークレットはオプションです。 ただし、[承認コード フロー](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)を使用する場合は、クライアント シークレットを入力する必要があります。承認コード フローでは、そのシークレットを使用してトークンのコードの交換が行われます。
 
-## <a name="scope"></a>Scope (スコープ)
+## <a name="scope"></a>スコープ
 
 スコープは、カスタム ID プロバイダーから収集する情報およびアクセス許可を定義します。 OpenID Connect 要求には、ID プロバイダーから ID トークンを受け取るために `openid` スコープ値を含める必要があります。 ID トークンがないと、ユーザーはカスタム ID プロバイダーを使用して Azure AD B2C にサインインすることはできません。 別のスコープをスペースで区切って追加することもできます。 使用可能な他のスコープについては、カスタム ID プロバイダーのドキュメントを参照してください。
 

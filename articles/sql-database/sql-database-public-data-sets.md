@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821277"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973545"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>テストとプロトタイプ作成用の公開されているデータ セット
 
@@ -26,7 +26,7 @@ ms.locfileid: "73821277"
 
 | データ ソース | データについて | ファイルについて |
 |---|---|---|
-| [米国政府データ](https://www.census.gov/data.html) | 米国の農業、気候、コンシューマー、エコシステム、教育、エネルギー、金融、医療、地方自治体、製造業、海運、海洋、公安、科学調査を対象とする 190,000 件を越えるデータ セット。 | HTML、XML、CSV、JSON、Excel、などの各種形式のさまざまなサイズのファイル。 使用可能なデータ セットをファイル形式でフィルター処理できます。 |
+| [米国政府データ](https://catalog.data.gov/dataset) | 米国の農業、気候、コンシューマー、エコシステム、教育、エネルギー、金融、医療、地方自治体、製造業、海運、海洋、公安、科学調査を対象とする 250,000 件を越えるデータ セット。 | HTML、XML、CSV、JSON、Excel、などの各種形式のさまざまなサイズのファイル。 使用可能なデータ セットをファイル形式でフィルター処理できます。 |
 | [米国国勢調査データ](https://www.census.gov/data.html) | 米国の人口統計データです。 | データ セットはさまざまな形式で提供されます。 |
 | [NASA の地球科学データ](https://earthdata.nasa.gov/) | 農業、大気、生物圏、気候、雪氷圏、人的事象、水圏、地表、海洋、太陽と地球の相互作用などを対象とする 32,000 件を越えるデータ セット。 | データ セットはさまざまな形式で提供されます。 |
 | [航空会社のフライト遅延データとその他の輸送データ](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "米国運輸省 (DOT) の運輸統計局 (BTS) では、大手航空会社が運航している国内フライトの定刻実績を追跡しています。 定時便、遅延便、欠航便、迂回便の数に関する概要情報が ... この Web サイトに掲載されている集計表に表示されます。" | ファイルは CSV 形式で提供されます。 |

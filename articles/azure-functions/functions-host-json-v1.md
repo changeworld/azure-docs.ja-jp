@@ -3,12 +3,12 @@ title: Azure Functions 1.x の host.json のリファレンス
 description: Azure Functions の v1 ランタイムの host.json ファイルのリファレンス ドキュメント。
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 99a571483086343d4e7d6188b2f401abc616c1bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 256cd47fa0f309bef46c7f72951810d5f76d0fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230586"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975467"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x の host.json のリファレンス
 
@@ -19,7 +19,7 @@ ms.locfileid: "74230586"
 *host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、v1 ランタイムで使用できる設定の一覧を紹介します。 JSON スキーマは、 http://json.schemastore.org/host にあります。
 
 > [!NOTE]
-> この記事は、Azure Functions 1.x を対象としています。  Functions 2.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 2.x (Azure Functions 2.x の host.json のリファレンス)](functions-host-json.md)」を参照してください。
+> この記事は、Azure Functions 1.x を対象としています。  Functions 2.x 以降の host.json のリファレンスについては、[Azure Functions 2.x の host.json のリファレンス](functions-host-json.md)に関する記事を参照してください。
 
 関数アプリの他の構成オプションは、[アプリの設定](functions-app-settings.md)で管理されます。
 

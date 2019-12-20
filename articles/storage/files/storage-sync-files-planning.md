@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: bb75fd8aafdc886a8753fa2e6be30d9d7f83bb6f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546347"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927872"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -159,14 +159,14 @@ Windows Server フェールオーバー クラスタリングは、Azure ファ�
 
 ### <a name="data-deduplication"></a>データ重複除去
 **Windows Server 2016 および Windows Server 2019**   
-データ重複除去は、Windows Server 2016 でクラウドを使った階層化が有効になっているボリュームでサポートされます。 クラウドを使った階層化が有効なボリュームでデータ重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。 
+データ重複除去は、Windows Server 2016 および Windows Server 2019 でクラウドを使った階層化が有効になっているボリュームでサポートされます。 クラウドを使った階層化が有効なボリュームでデータ重複除去を有効にすると、より多くのストレージをプロビジョニングしなくても、より多くのファイルをオンプレミスでキャッシュできます。 
 
 クラウドを使った階層化が有効なボリュームでデータ重複除去が有効になっている場合、サーバー エンドポイントの場所にある重複除去最適化ファイルは、クラウドを使った階層化のポリシー設定に基づいて、通常のファイルと同様に階層化されます。 重複除去最適化ファイルが階層化された後、データ重複除去ガベージ コレクション ジョブが自動的に実行され、ボリューム上の他のファイルから参照されなくなった不要なチャンクを削除することによって、ディスク領域が解放されます。
 
 ボリュームの節約はサーバーにのみ適用されることに注意してください。Azure ファイル共有内のデータは重複除去されません。
 
 > [!Note]  
-> Server 2019 については、データ重複除去とクラウドを使った階層化は、同じボリューム上では現在サポートされていません。これはバグによるもので、そのバグは今後の更新で修正される予定です。
+> Windows Server 2019 でクラウドを使った階層化が有効になっているボリュームでデータ重複除去をサポートするには、Windows 更新プログラム [KB4520062](https://support.microsoft.com/help/4520062) をインストールし、Azure File Sync エージェント バージョン 9.0.0.0 以降が必要です。
 
 **Windows Server 2012 R2**  
 Azure File Sync については、データ重複除去とクラウドを使った階層化は、Windows Server 2012 R2 の同じボリューム上ではサポートされていません。 ボリュームでデータ重複除去が有効になっている場合は、クラウドを使った階層化を無効にする必要があります。 

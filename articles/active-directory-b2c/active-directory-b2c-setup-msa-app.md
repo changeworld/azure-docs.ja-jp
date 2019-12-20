@@ -1,5 +1,6 @@
 ---
-title: Microsoft アカウントでのサインアップおよびサインインを設定する - Azure Active Directory B2C
+title: Microsoft アカウントでのサインアップおよびサインインを設定する
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用するアプリケーションで Microsoft アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a921d6110fd0294012e2e59542ba2c82d63ffcde
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: fc79211f55edb471eb95fc55fe8519d228ca192e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73642073"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949323"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Microsoft アカウントでのサインアップおよびサインインを設定する
 

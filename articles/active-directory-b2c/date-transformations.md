@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory B2C の Identity Experience Framework スキーマの日付要求変換の例 | Microsoft Docs
-description: Azure Active Directory B2C の Identity Experience Framework スキーマの日付要求変換の例。
+title: カスタム ポリシーの日付要求変換の例
+description: Azure Active Directory B2C の Identity Experience Framework (IEF) スキーマの日付要求変換の例。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 13c3f3aaf54bc3fb8ef656b5c1ce227fa70cee0b
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: bde2fcad6f84e4a2df5268d1135e88a263b65ee0
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71936799"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949118"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
 

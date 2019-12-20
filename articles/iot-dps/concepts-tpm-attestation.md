@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub Device Provisioning Service - TPM の構成証明
-description: この記事では、IoT Device Provisioning Service を使用して TPM 構成証明フローの概念について概説します。
+description: この記事では、IoT Device Provisioning Service (DPS) を使用する TPM 構成証明フローの概念について概説します。
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 07c5dbce0b98d1c197164f4fc77682f78ede57f0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 624171ffc10a06ac3089b6dceb1683c63c88dbda
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746472"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975280"
 ---
 # <a name="tpm-attestation"></a>TPM の構成証明
 

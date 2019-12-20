@@ -1,29 +1,25 @@
 ---
-title: アプリケーションの発行元ドメインを構成する
+title: アプリの発行元ドメインを構成する | Azure
 titleSuffix: Microsoft identity platform
 description: ユーザーに情報の送信先を知らせるためにアプリケーションの発行元ドメインを構成する方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/05/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3558e589004e0488e5b96b0e39bd3f5ceea69658
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2739f5db8c50449e3481ccdfb495b30edba54ce1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013053"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966981"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>方法:アプリケーションの発行元ドメインを構成する
 

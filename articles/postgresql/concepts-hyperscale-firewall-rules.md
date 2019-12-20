@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則
+title: ファイアウォール規則 - Hyperscale (Citus) - Azure Database for PostgreSQL
 description: この記事では、Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則について説明します。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 567fb27ed942a24ab7d031d791e18fa487956fad
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275305"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975569"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則
 Azure Database for PostgreSQL サーバーのファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、Hyperscale (Citus) コーディネーター ノードへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。

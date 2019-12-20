@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 12/09/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/23/2019
-ms.openlocfilehash: 66388f139b63c63e1f0f8ee8ee063e0ddd0f9da5
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 236e222da9e9a64d4b93002d28c94fa6fe469c08
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213042"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972003"
 ---
 # <a name="routing-and-tag-expressions"></a>ルーティングとタグ式
 
@@ -41,7 +41,7 @@ ms.locfileid: "71213042"
 
 タグは、最大 120 文字の任意の文字列です。英数字と一部の英数字以外の文字 ("_"、"@"、"#"、"."、":"、"-") を使用できます。 ‘_’, ‘@’, ‘#’, ‘.’, ‘:’, ‘-’.次の例は、特定の音楽グループに関するトースト通知を受信するアプリケーションを示します。 このシナリオでは、次の図に示すように、通知をルーティングするための単純な方法として、さまざまなバンドを表すタグを使用して登録にラベルを付けます。
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
+![タグの概要](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
 この図で、 **[Beatles]** というタグが付いたメッセージは、タグ **[Beatles]** で登録されたタブレットにのみ到達します。
 
@@ -65,7 +65,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 タグは複数のアプリケーション固有概念を参照できるため、事前にプロビジョニングする必要はありません。 たとえば、このサンプル アプリケーションのユーザーがバンドについてコメントでき、自分のお気に入りのバンドのコメントだけでなく、自分がコメントしていないバンドに関する友人のすべてのコメントについてもトーストを受信したいとします。 以下の図はこのシナリオの例を示したものです。
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags2.png)
+![友人にタグを付ける](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
 
 この図で、Alice は Beatles の近況に関心があり、Bob は Wailers の近況に関心があります。 Bob は Charlie のコメントにも関心があり、Charlie は Wailers に関心があります。 Beatles に関する Charlie のコメントに関する通知が送信されると、Alice と Bob の両方に配信されます。
 
@@ -80,7 +80,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 タグを使用するもう 1 つの方法は、特定のユーザーのすべてのデバイスを識別する方法です。 次の図に示すように、ユーザー ID を含むタグを使用して登録にタグ付けすることができます。
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
+![ユーザーにタグを付ける](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
 この図では、uid:Alice のタグが付けられたメッセージは、"uid:Alice" というタグが付けられたすべての登録、つまり Alice のすべてのデバイスに到達します。
 
@@ -94,7 +94,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 (follows_RedSox || follows_Cardinals) && location_Boston
 ```
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags4.png)
+![タグ式](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
 タグ式には AND (&&)、OR (||)、NOT (!) などのすべてのブール演算子を含むことができます。 かっこを使用することもできます。 タグ式に OR のみが含まれる場合、タグの数は 20 個に制限されます。それ以外の場合は、6 個のタグに制限されます。
 

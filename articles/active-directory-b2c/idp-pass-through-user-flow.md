@@ -1,5 +1,6 @@
 ---
-title: アクセス トークンをユーザー フローを通してアプリケーションに渡す - Azure Active Directory B2C
+title: ユーザー フローを通じてアクセス トークンをご自身のアプリに渡す
+titleSuffix: Azure AD B2C
 description: OAuth 2.0 ID プロバイダーのアクセス トークンを Azure Active Directory B2C のユーザー フローで要求として渡す方法について説明します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a1a9ad0c615e50db746548a1ed5b557fe6fdea5a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064299"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948813"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローを通じてアクセス トークンをご自身のアプリケーションに渡す
 

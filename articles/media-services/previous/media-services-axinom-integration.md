@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 4d4823e8dcce0d1296ebe39a0b7a7c4bbc180317
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 275fa173c5005c4d1609a858c8edb39b5c307c5e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015429"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974616"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Axinom を使用して Azure Media Services に Widevine ライセンスを配信する 
 > [!div class="op_single_selector"]
@@ -177,6 +177,7 @@ JWT トークンを生成するためのコードでは、キー ID が必要で
     }
 
 ## <a name="summary"></a>まとめ
+
 Azure Media Services Content Protection と Azure Media Player の両方で Widevine のサポートが新しく追加されました。これにより、次の最新のブラウザーで、AMS の PlayReady ライセンス サービスと Axinom の Widevine ライセンス サーバーの両方を使用して DASH とマルチネイティブ DRM (PlayReady + Widevine) のストリーミングを実装できます。
 
 * Chrome
@@ -193,6 +194,10 @@ Axinom Widevine ライセンス サーバーを利用する解決策では、次
 | キー シード |任意のコンテンツ キー ID でコンテンツ キーを生成するために使用する必要があります ([この](media-services-axinom-integration.md#content-protection) セクションを参照してください)。 |
 | Widevine ライセンス取得 URL |DASH ストリーミングの資産配信ポリシーの構成で使用する必要があります ([この](media-services-axinom-integration.md#content-protection)セクションをご覧ください)。 |
 | コンテンツ キー ID |JWT トークンの権利メッセージ 要求の値の一部として含める必要があります ( [この](media-services-axinom-integration.md#jwt-token-generation) セクションを参照してください)。 |
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

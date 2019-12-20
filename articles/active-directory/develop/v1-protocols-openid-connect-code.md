@@ -1,5 +1,5 @@
 ---
-title: Azure AD での OpenID Connect 認証コード フローについて | Microsoft Docs
+title: OpenID Connect と Azure AD を使用して Web アプリのアクセスを承認する | Microsoft Docs
 description: この記事では、Azure Active Directory と OpenID Connect を利用してテナントの Web アプリケーションと Web API へのアクセスを承認するために HTTP メッセージを使用する方法について説明します。
 services: active-directory
 documentationcenter: .net
@@ -18,19 +18,18 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c2e80f80ea5d7e7d5ee26eee8b26506386a6e2f
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 67f9107e352f1ae52158d09caea4ba8118a3c515
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389787"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964431"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>OpenID Connect と Azure Active Directory を使用する Web アプリケーションへのアクセスの承認
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 プロトコル上に構築された単純な ID 層です。 OAuth 2.0 では保護されたリソースにアクセスするための[**アクセス トークン**](access-tokens.md)を取得して使用するためのメカニズムを定義しますが、ID 情報を提供するための標準的な方法は定義しません。 OpenID Connect は、OAuth 2.0 承認プロセスの拡張機能として認証を実装します。 エンド ユーザーに関する情報を [`id_token`](id-tokens.md) の形式で提供し、これを使ってユーザーの ID を検証し、ユーザーに関する基本的なプロファイル情報を提供します。
 
 OpenID Connect は、サーバーでホストされ、ブラウザーでアクセスされる Web アプリケーションを構築している場合に推奨されます。
-
 
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)] 
 

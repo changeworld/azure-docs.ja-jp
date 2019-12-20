@@ -1,19 +1,19 @@
 ---
 title: Azure CLI を使用した Azure HDInsight クラスターの管理
 description: Azure CLI を使用して、Azure HDInsight クラスターを管理する方法について説明します。 クラスターの種類には、Apache Hadoop、Spark、HBase、Storm、Kafka、Interactive Query、および ML サービスがあります。
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-author: tylerfox
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.author: tyfox
-ms.openlocfilehash: 5ae97b17d06fa0a9934a58ac662ef12116cce4f6
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/06/2019
+ms.openlocfilehash: 81bc632f1061f0ee73d2295cafa5f7a8472d20ee
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137400"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951804"
 ---
 # <a name="manage-azure-hdinsight-clusters-using-azure-cli"></a>Azure CLI を使用した Azure HDInsight クラスターの管理
 
@@ -31,7 +31,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="connect-to-azure"></a>Azure への接続
 
-Azure サブスクリプションにサインインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[試してみる]** を選択するだけです。 それ以外の場合は、次のコマンドを入力します。
+Azure サブスクリプションにサインインします。 Azure Cloud Shell を使用する予定の場合は、コード ブロックの右上隅で **[試してみる]** を選択します。 それ以外の場合は、次のコマンドを入力します。
 
 ```azurecli-interactive
 az login
@@ -90,7 +90,7 @@ az hdinsight resize --resource-group RESOURCE_GROUP_NAME --name CLUSTER_NAME --t
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、さまざまな HDInsight クラスター管理タスクを実行する方法について説明しました。 詳細については、次の記事を参照してください。
+この記事では、さまざまな HDInsight クラスター管理タスクを実行する方法について学習しました。 詳細については、次の記事を参照してください。
 
 * [Azure portal を使用して HDInsight の Apache Hadoop クラスターを管理する](hdinsight-administer-use-portal-linux.md)
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)

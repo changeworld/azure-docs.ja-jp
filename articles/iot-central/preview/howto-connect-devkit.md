@@ -3,17 +3,17 @@ title: DevKit デバイスを Azure IoT Central アプリケーションに接�
 description: デバイス開発者向けに、IoT プラグ アンド プレイを使用して MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する方法について説明します。
 author: liydu
 ms.author: liydu
-ms.date: 08/17/2019
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 178f518ed7ab24fc0d3678f77ae75933a7163b58
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 32dd3fa1fc137d786174e47d842f762c2a479d64
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930145"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848984"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する (プレビュー機能)
 
@@ -34,9 +34,21 @@ ms.locfileid: "73930145"
 
 ## <a name="get-device-connection-details"></a>デバイス接続の詳細を取得する
 
-IoT Central アプリケーションで、 **[Administration]\(管理\)** タブを選択し、 **[Device Connection]\(デバイス接続\)** を選択します。 **スコープ ID** と、( **[キーの表示]** リンクで) **主キー**の値をメモします。 **[自動承認]** が有効になっていることを確認します。
+1. IoT Central アプリケーションで、 **[デバイス テンプレート]** タブを選択し、 **[新規]** を選択します。 **[Use a preconfigured device template]\(構成済みのデバイス テンプレートを使用する\)** のセクションで、一覧から **[MXChip IoT DevKit]** を選択します。 **[Next:Customize]\(次へ: カスタマイズ\)** および **[作成]** を選択します。
 
-![デバイス グループ接続の詳細](media/howto-connect-devkit/device-group-connection-details.png)
+    ![MXChip IoT DevKit のデバイス テンプレート](media/howto-connect-devkit/device-template.png)
+
+1. **[デバイス]** タブを選択し、デバイスの一覧で **[MXChip IoT DevKit]** を選択し、 **[New]** を選択してデバイス テンプレートから新しいデバイスを作成します。
+
+    ![新しいデバイス](media/howto-connect-devkit/new-device.png)
+
+1. ポップアップ ウィンドウで、 **[デバイス ID]** を `SampleDevKit`、 **[デバイス名]** を `MXChip IoT DevKit - Sample` のように入力します。 **[シミュレート済み]** オプションがオフになっていることを確認します。 **[作成]** を選択します。
+
+    ![デバイス ID と名前](media/howto-connect-devkit/device-id-name.png)
+
+1. 先ほど作成したデバイスをクリックし、 **[接続]** を選択します。 **[ID スコープ]** 、 **[デバイス ID]** 、および **[主キー]** の値をメモします。
+
+    ![デバイスの接続情報](media/howto-connect-devkit/device-connection-info.png)
 
 ## <a name="prepare-the-device"></a>デバイスの準備
 
@@ -61,7 +73,7 @@ IoT Central アプリケーションで、 **[Administration]\(管理\)** タブ
 
     - WiFi ネットワークの名前 (SSID)。
     - WiFi ネットワークのパスワード。
-    - 接続の詳細: 自分で選択できる**デバイス ID**、および前にメモした**スコープ ID** と **グループ SAS の主キー**。
+    - 接続の詳細: 前にメモした **[デバイス ID]** 、 **[ID スコープ]** および **[SAS Primary Key]\(SAS 主キー\)** を入力します。
 
     > [!NOTE]
     > 現時点では、IoT DevKit は 2.4 GHz の Wi-Fi にのみ接続できます。ハードウェアの制限のため、5 GHz はサポートされていません。
@@ -86,7 +98,7 @@ IoT Central アプリケーションで、 **[Devices]\(デバイス\)** タブ�
 
 ## <a name="review-the-code"></a>コードの確認
 
-コードを確認したり、コードを変更してコンパイルしたりするには、[MXChip IoT DevKit サンプル コード GitHub リポジトリ](https://github.com/MXCHIP/IoTDevKit/tree/master/pnp)にアクセスします。
+コードを確認したり、コードを変更してコンパイルしたりするには、[コード サンプル](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)にアクセスします。
 
 ## <a name="next-steps"></a>次の手順
 

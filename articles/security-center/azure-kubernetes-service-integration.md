@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 4fc0654aab1c68888e86dc95de658bc69a01e02d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2a5d01978d8a4883d760e7ecf84afa381dfd563d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123983"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868560"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Azure Kubernetes Service と Security Center の統合 (プレビュー)
 Azure Kubernetes Service (AKS) は、コンテナー化されたアプリケーションを開発、デプロイ、管理するためのMicrosoft のマネージド サービスです。 
@@ -41,7 +41,7 @@ Security Center は、AKS マスター ノードで既に収集済みのデー�
 
 * **環境の強化機能** - Security Center では、Kubernetes クラスターの構成を常に監視し、業界標準を反映したセキュリティの推奨事項を生成します。
 
-* **実行時の保護** - Security Center では、次の AKS ソースの継続的な分析によって、ホスト*および* AKS クラスター レベルで検出された脅威や悪意のあるアクティビティについてアラートを通知します (詳細については、[Azure Container Service](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-) に関する記事をご覧ください)。
+* **実行時の保護** - Security Center では、次の AKS ソースの継続的な分析によって、ホスト "*および*" AKS クラスター レベルで検出された脅威や悪意のあるアクティビティについてアラートを通知します (詳細については、[Azure Container に対する脅威の検出](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)に関する記事をご覧ください)。
     * 未加工のセキュリティ イベント (ネットワーク データやプロセスの作成など)
     * Kubernetes 監査ログ
 

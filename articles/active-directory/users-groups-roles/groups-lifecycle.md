@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea0f9e07b476459824c8166781f549d788185ba
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 6a9e410be7a52291d19478dbfb8e9ad30f144ccb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024783"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74914067"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 グループの有効期限ポリシーの構成
 
@@ -62,7 +62,7 @@ Azure AD で Office 365 グループの有効期限を構成および使用で�
 
 役割 | アクセス許可
 -------- | --------
-グローバル管理者またはユーザー管理者 | Office 365 グループの有効期限ポリシー設定の作成、読み取り、更新、または削除が可能です<br>任意の Office 365 グループを更新できます
+グローバル管理者、グループ管理者、またはユーザー管理者 | Office 365 グループの有効期限ポリシー設定の作成、読み取り、更新、または削除が可能です<br>任意の Office 365 グループを更新できます
 User | 所有する Office 365 グループを更新できます<br>所有する Office 365 グループを復元できます<br>有効期限ポリシーの設定を読み取ることができます
 
 削除したグループを復元するためのアクセス許可の詳細については、[Azure Active Directory で削除した Office 365 グループの復元](groups-restore-deleted.md)に関するページをご覧ください。

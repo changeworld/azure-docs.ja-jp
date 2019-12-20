@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 01/25/2019
-ms.openlocfilehash: ac198ed8eac6221831fbb280129b76e5fa4e3413
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f718bc17b987926f4324635f096d5983acdb63fc
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815779"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997277"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>SQL Database の単一およびプールされたデータベースへのレプリケーション
 
@@ -32,14 +32,17 @@ Azure SQL Database の [SQL Database サーバー](sql-database-servers.md)で�
 
 ## <a name="versions"></a>バージョン  
 
-- パブリッシャーとディストリビューターは、少なくとも次のバージョンのいずれかでなければなりません。  
-- SQL Server 2017 (14.x)
-- SQL Server 2016 (13.x)
-- SQL Server 2014 (12.x) SP1 CU3
-- SQL Server 2014 (12.x) RTM CU10
-- SQL Server 2012 (11.x) SP2 CU8 または SP3
-- 以前のバージョンを使用してレプリケーションを構成しようとすると、エラー番号 MSSQL_REPL20084 (プロセスはサブスクライバーに接続できませんでした) および MSSQL_REPL40532 (ログインによって要求されたサーバー \<name > を開くことができません。 ログインに失敗しました) のエラーが発生する可能性があります。  
-- Azure SQL Database のすべての機能を使用するには、最新バージョンの [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) および [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用する必要があります。  
+オンプレミスの SQL Server パブリッシャーおよびディストリビューターは、(少なくとも) 次のいずれかのバージョンを使用する必要があります。  
+
+- SQL Server 2016 以降
+- SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) または [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) または [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+
+> [!NOTE]
+> サポートされていないバージョンを使用してレプリケーションを構成しようとすると、エラー番号 MSSQL_REPL20084 (プロセスはサブスクライバーに接続できませんでした) および MSSQL_REPL40532 (ログインによって要求されたサーバー \<name > を開くことができません。 ログインに失敗しました) のエラーが発生する可能性があります。  
+
+Azure SQL Database のすべての機能を使用するには、最新バージョンの [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) および [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用する必要があります。  
+
   
 ## <a name="remarks"></a>解説
 

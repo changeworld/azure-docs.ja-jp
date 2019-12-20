@@ -1,18 +1,18 @@
 ---
-title: スマート検出 - Azure Application Insights での例外数の異常な増加 | Microsoft Docs
-description: 例外数の異常なパターンを検出するために、Azure Application Insights でアプリケーションの例外を監視します。
+title: 例外数の異常な上昇 - Azure Application Insights
+description: 例外数の異常なパターンを検出するために、Azure Application Insights でアプリケーションの例外をスマート検出で監視します。
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/08/2017
-ms.openlocfilehash: fa7669b78caabb95b08200e83ed18ea982ce9ac9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 02c4fca42f3d5d7494dc8fd6fe0e33161904ddbe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820606"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928219"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>例外数の異常な上昇 (プレビュー)
 

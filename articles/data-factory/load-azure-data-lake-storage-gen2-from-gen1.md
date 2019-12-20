@@ -1,22 +1,23 @@
 ---
-title: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
+title: Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 description: Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーします
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.author: jingwang
-ms.openlocfilehash: d13dad6e87bd6c821b497138ad75d7ae2b9a052d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19b1b345c72361ae1fcdad5221dcd0e877b32fe7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67068987"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926301"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 
@@ -36,7 +37,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 * データを備えた Azure Data Lake Storage Gen1 アカウント。
 * Data Lake Storage Gen2 が有効な Azure Storage アカウント。 ストレージ アカウントがない場合、[作成します](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. 左側のメニューで、 **[リソースの作成]** 、 **[データ + 分析]** 、 **[Data Factory]** の順に選択します。
    
@@ -46,7 +47,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
       
    ![[新しいデータ ファクトリ] ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/new-azure-data-factory.png)
  
-    * **[名前]** :Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 データ ファクトリをもう一度作成します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 データ ファクトリをもう一度作成します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
     * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択します。 **[新規作成]** オプションを選択し、リソース グループの名前を入力することもできます。 リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。 
     * **バージョン**: **[V2]** を選択します。

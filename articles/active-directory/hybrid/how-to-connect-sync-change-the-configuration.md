@@ -1,27 +1,23 @@
 ---
-title: 'Azure AD Connect 同期: Azure AD Connect 同期で構成を変更する | Microsoft Docs'
+title: 'Azure AD Connect 同期: Azure AD Connect 同期で構成を変更する'
 description: Azure AD Connect Sync の構成に変更する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5844d440da768ae2647ea7f15c4c913f83078ce1
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672965"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919071"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同期: 既定の構成に変更を加える
 この記事の目的は、Azure Active Directory (Azure AD) Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
@@ -204,7 +200,7 @@ Active Directory の一部の属性は、Active Directory ユーザーとコン�
 
 - Azure AD で指定できる UserType 属性の値は、**Member** と **Guest** の 2 つのみです。
 - Azure AD Connect で同期に対して UserType 属性が有効になっていない場合、ディレクトリの同期によって作成された Azure AD ユーザーの UserType 属性は **Member** に設定されます。
-- Azure AD では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されていません。 これは、Azure AD ユーザーの作成中にのみ設定できます。
+- Azure AD では、Azure AD Connect によって既存の Azure AD ユーザーの UserType 属性を変更することは許可されていません。 これは、Azure AD ユーザーの作成中にのみ設定でき、[PowerShell を介して変更](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0)できます。
 
 UserType 属性の同期を有効にする前に、まず UserType 属性をオンプレミス Active Directory からどのように派生させるかを決める必要があります。 その一般的な方法を次に示します。
 
@@ -288,7 +284,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
     | フローの種類 | ターゲット属性 | source | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | UserType | extensionAttribute1 | オフ | アップデート |
+    | 直接 | UserType | extensionAttribute1 | オフ | 更新 |
 
     他の例として、他のプロパティから UserType 属性の値を派生させる場合があります。 たとえば、オンプレミス AD UserPrincipalName 属性の末尾のドメイン部分が <em>@partners.fabrikam123.org</em> である場合、すべてのユーザーをゲストとして同期する必要があるとします。次のように式を実装することができます。
 
@@ -331,7 +327,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
     | フローの種類 | ターゲット属性 | source | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | UserType | UserType | オフ | アップデート |
+    | 直接 | UserType | UserType | オフ | 更新 |
 
 7. **[追加]** をクリックして送信方向の規則を作成します。
 

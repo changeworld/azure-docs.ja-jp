@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9f3dd3c7d1a1352d40f9a15ba9aa1c012d1784d6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580763"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978272"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -73,8 +73,8 @@ ms.locfileid: "73580763"
 |---------------------------|---------|---------|------------|------------|
 | ワークスペースの作成        | **&check;**     | | **&check;** | **&check;** |
 | ワークスペース アクセスの管理    | **&check;**   || |  **&check;**    |
-| Enterprise Edition へのアップグレード    | **&check;** |  | |     |
-| コンピューティング リソースを作成して管理する    |   | **&check;** | **&check;** |  **&check;**   |
+| Enterprise Edition へのアップグレード    | **&check;** | **&check;**  | |     |
+| コンピューティング リソースを作成して管理する    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | ノートブック VM を作成する |   | **&check;** | |     |
 
 
@@ -113,6 +113,6 @@ Azure Machine Learning の利用を開始するには、以下を参照してく
 + [ワークスペースを作成する](how-to-manage-workspace.md)
 + [ワークスペースを管理する](how-to-manage-workspace.md)
 + [チュートリアル:Python SDK で初めての ML 実験を作成する](tutorial-1st-experiment-sdk-setup.md)
-+ [チュートリアル:R SDK で Azure Machine Learning の利用を開始する]( tutorial-1st-r-experiment.md)
++ [チュートリアル:R SDK による Azure Machine Learning の利用を開始する]( tutorial-1st-r-experiment.md)
 + [チュートリアル:自動機械学習を使用して最初の分類モデルを作成する](tutorial-first-experiment-automated-ml.md) ([Enterprise Edition](overview-what-is-azure-ml.md#sku) ワークスペースでのみ利用可能)
 + [チュートリアル:デザイナーを使用して自動車の価格を予測する](tutorial-designer-automobile-price-train-score.md) ([Enterprise Edition](overview-what-is-azure-ml.md#sku) ワークスペースでのみ利用可能)

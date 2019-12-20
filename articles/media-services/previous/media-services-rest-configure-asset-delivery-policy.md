@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5e4e565b0b5272de19458617a9c4bd3509907cce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1c71a1329b930beea38fe39518914b278f9372d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60817402"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968410"
 ---
 # <a name="configuring-asset-delivery-policies"></a>資産配信ポリシーの構成
 [!INCLUDE [media-services-selector-asset-delivery-policy](../../../includes/media-services-selector-asset-delivery-policy.md)]
@@ -421,6 +421,10 @@ Widevine DRM を使用してコンテンツを保護する場合は、WidevineLi
         /// </summary>
         WidevineLicenseAcquisitionUrl
     }
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

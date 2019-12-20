@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C でソーシャル ID を持つユーザーを移行する | Microsoft Docs
-description: Graph API を使った、ソーシャル ID を持つユーザーの Azure AD B2C への移行に関する主要な概念について説明します。
+title: ソーシャル ID を持つユーザーを移行する
+titleSuffix: Azure AD B2C
+description: Graph API を使った、ソーシャル ID を持つユーザーの Azure AD B2C への移行に関する主要な概念を確認します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +12,12 @@ ms.date: 03/03/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0117a0881422584e3cb949661b1d58cd0257cf67
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c34535454f80b424fc0500363313a799efbdc001
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853866"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950122"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C:ソーシャル ID を持つユーザーを移行する
 ご利用の ID プロバイダーを Azure AD B2C に移行する場合は、ソーシャル ID を持つユーザーも移行する必要がある場合があります。 この記事では、Facebook、LinkedIn、Microsoft、Google などの既存のソーシャル ID アカウントを Azure AD B2C に移行する方法を説明します。 この記事はフェデレーション ID にも適用されますが、これらの移行はあまり一般的ではありません。 この記事の残りの部分では、ソーシャル アカウントに適用されるすべての記述が、他の種類のフェデレーション アカウントにも適用されるものと考えてください。
@@ -47,32 +48,33 @@ ms.locfileid: "68853866"
 * ID プロバイダーによっては、**発行者ユーザー ID** は、アプリケーションごとの特定のユーザーまたは開発アカウントの一意の値です。 ソーシャル プロバイダーまたは同じ開発アカウント内の別のアプリケーションによって割り当てられたのと同じアプリケーション ID で Azure AD B2C ポリシーを構成します。
 
 ## <a name="use-graph-api-to-migrate-users"></a>Graph API を使ってユーザーを移行する
-[Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) で Azure AD B2C ユーザー アカウントを作成します。 Graph API と通信するには、まず管理特権を持つサービス アカウントを持っている必要があります。 Azure AD 内で、アプリケーションと認証を Azure AD に登録します。 アプリケーションの資格情報は、アプリケーション ID とアプリケーション シークレットです。 アプリケーションはユーザーとしてではなくアプリケーションそれ自体として Graph API を呼び出します。 [ユーザー移行](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration)に関する記事の手順 1 の指示に従います。
+[Graph API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) で Azure AD B2C ユーザー アカウントを作成します。
+Graph API と通信するには、まず管理特権を持つサービス アカウントを持っている必要があります。 Azure AD 内で、アプリケーションと認証を Azure AD に登録します。 アプリケーションの資格情報は、アプリケーション ID とアプリケーション シークレットです。 アプリケーションはユーザーとしてではなくアプリケーションそれ自体として Graph API を呼び出します。 [ユーザー移行](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration)に関する記事の手順 1 の指示に従います。
 
 ## <a name="required-properties"></a>必須プロパティ
 次の一覧は、ユーザーを作成するときに必要なプロパティを示しています。
 * **accountEnabled** - true
 * **displayName** - ユーザーのアドレス帳に表示される名前です。
-* **passwordProfile** -ユーザーのパスワード プロファイルです。 
+* **passwordProfile** -ユーザーのパスワード プロファイルです。
 
 > [!NOTE]
 > ソーシャル アカウントのみ (ローカル アカウントの資格情報なし) の場合は、依然としてパスワードを指定する必要があります。 Azure AD B2C では、ソーシャル アカウントに指定したパスワードが無視されます。
 
 * **userPrincipalName** - ユーザー プリンシパル名 (someuser@contoso.com)。 ユーザー プリンシパル名には、テナントの検証済みドメインの 1 つが含まれている必要があります。 UPN を指定するには、新しい GUID 値を生成し、`@` とテナント名を連結します。
-* **mailNickname** - ユーザーのメールの別名です。 この値には、userPrincipalName に使うのと同じ ID を指定できます。 
+* **mailNickname** - ユーザーのメールの別名です。 この値には、userPrincipalName に使うのと同じ ID を指定できます。
 * **signInNames** - ユーザーのサインイン名を指定する 1 つ以上の SignInName レコードです。 各サインイン名は、企業/テナント全体で一意にする必要があります。 ソーシャル アカウントのみの場合、このプロパティは空のままにすることができます。
 * **userIdentities** - ソーシャル アカウントの種類を指定する 1 つ以上の UserIdentity レコードと、ソーシャル ID プロバイダーからの一意のユーザー識別子です。
-* [オプション] **otherMails** - ソーシャル アカウントのみの場合は、ユーザーの電子メール アドレスです 
+* [オプション] **otherMails** - ソーシャル アカウントのみの場合は、ユーザーの電子メール アドレスです
 
 詳細については、次を参照してください。[Graph API リファレンス](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>ソーシャル アカウント (のみ) の移行
-ローカル アカウントの資格情報なしでソーシャル アカウントのみを作成するには、Graph API に HTTPS POST 要求を送信します。 要求本文には、作成するソーシャル アカウント ユーザーのプロパティが含まれます。 少なくとも、必須プロパティを指定する必要があります。 
+ローカル アカウントの資格情報なしでソーシャル アカウントのみを作成するには、Graph API に HTTPS POST 要求を送信します。 要求本文には、作成するソーシャル アカウント ユーザーのプロパティが含まれます。 少なくとも、必須プロパティを指定する必要があります。
 
 
 **POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
 
-次のフォーム データを送信します。 
+次のフォーム データを送信します。
 
 ```JSON
 {
@@ -99,11 +101,11 @@ ms.locfileid: "68853866"
 }
 ```
 ## <a name="migrate-social-account-with-local-account"></a>ソーシャル アカウントとローカル アカウントの移行
-ソーシャル id で結合されたローカルアカウントを作成するには、Graph API に HTTPS POST 要求を送信します。 要求本文には、ローカル アカウントのサインイン名を含む、作成するソーシャル アカウント ユーザーのプロパティが含まれます。 少なくとも、必須プロパティを指定する必要があります。 
+ソーシャル id で結合されたローカルアカウントを作成するには、Graph API に HTTPS POST 要求を送信します。 要求本文には、ローカル アカウントのサインイン名を含む、作成するソーシャル アカウント ユーザーのプロパティが含まれます。 少なくとも、必須プロパティを指定する必要があります。
 
 **POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
 
-次のフォーム データを送信します。 
+次のフォーム データを送信します。
 
 ```JSON
 {
@@ -149,11 +151,11 @@ ms.locfileid: "68853866"
 > B2C テナントのローカルである B2C テナント管理者アカウントを使います。 アカウント名の構文は admin@tenant-name.onmicrosoft.com です。
 
 ### <a name="is-it-possible-to-add-a-social-identity-to-an-existing-user"></a>ソーシャル ID を既存のユーザーに追加することはできますか?
-はい。 ソーシャル ID は、(ローカル アカウントかソーシャル アカウントか、またはその組み合わせであるかに関係なく) Azure AD B2C アカウントが作成された後に追加できます。 HTTPS PATCH 要求を実行します。 userObjectId を、更新するユーザー ID に置き換えます。 
+はい。 ソーシャル ID は、(ローカル アカウントかソーシャル アカウントか、またはその組み合わせであるかに関係なく) Azure AD B2C アカウントが作成された後に追加できます。 HTTPS PATCH 要求を実行します。 userObjectId を、更新するユーザー ID に置き換えます。
 
 **PATCH** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 
-次のフォーム データを送信します。 
+次のフォーム データを送信します。
 
 ```JSON
 {
@@ -167,11 +169,11 @@ ms.locfileid: "68853866"
 ```
 
 ### <a name="is-it-possible-to-add-multiple-social-identities"></a>複数のソーシャル ID を追加することはできますか?
-はい。 1 つの Azure AD B2C アカウントに複数のソーシャル ID を追加することができます。 HTTPS PATCH 要求を実行します。 userObjectId をユーザー ID に置き換えます。 
+はい。 1 つの Azure AD B2C アカウントに複数のソーシャル ID を追加することができます。 HTTPS PATCH 要求を実行します。 userObjectId をユーザー ID に置き換えます。
 
 **PATCH** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 
-次のフォーム データを送信します。 
+次のフォーム データを送信します。
 
 ```JSON
 {

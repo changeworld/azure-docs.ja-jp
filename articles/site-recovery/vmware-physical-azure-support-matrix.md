@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 8c5b932a1b44169cc50c8c7214d3f3410c581f4e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: bb76f41b4272392c1aeebe83d9a8fd3aaea3cb0b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792268"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851759"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -74,10 +74,10 @@ Site Recovery は、サポートされているマシンで実行されている
 Windows Server 2019 | [更新プログラム ロールアップ 34](https://support.microsoft.com/help/4490016) (モビリティ サービスのバージョン 9.22) 以降でサポートされています。
 Windows Server 2016 64 ビット | Server Core、Server with Desktop Experience でサポートされています。
 Windows Server 2012 R2 / Windows Server 2012 | サポートされています。
-Windows Server 2008 R2 SP1 以降。 | サポートされています。<br/><br/> モビリティ サービス エージェントのバージョン 9.30.x.x (2019 年 11 月初めにリリース予定) 以降では、Windows 2008 R2 SP1 以降を実行しているコンピューターに[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。 SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件の詳細については、[こちら](https://aka.ms/SHA-2KB)を参照してください。
-Windows Server 2008 SP2 以降 (64 ビット/32 ビット) |  移行についてのみサポートされています。 [詳細情報](migrate-tutorial-windows-server-2008.md)。<br/><br/> モビリティ サービス エージェントのバージョン 9.30.x.x (2019 年 11 月初めにリリース予定) 以降では、Windows 2008 SP2 コンピューターに[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4493730) と [SHA-2 更新プログラム](h https://support.microsoft.com/help/4474419)をインストールする必要があります。 ISHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件の詳細については、[こちら](https://aka.ms/SHA-2KB)を参照してください。
+Windows Server 2008 R2 SP1 以降。 | サポートされています。<br/><br/> モビリティ サービス エージェントのバージョン [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 以降では、Windows 2008 R2 SP1 以降を実行しているコンピューターに[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。 SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件の詳細については、[こちら](https://aka.ms/SHA-2KB)を参照してください。
+Windows Server 2008 SP2 以降 (64 ビット/32 ビット) |  移行についてのみサポートされています。 [詳細情報](migrate-tutorial-windows-server-2008.md)。<br/><br/> モビリティ サービス エージェントのバージョン [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 以降では、Windows 2008 SP2 コンピューター上に[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4493730) と [SHA-2 更新プログラム](h https://support.microsoft.com/help/4474419)をインストールする必要があります。 ISHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件の詳細については、[こちら](https://aka.ms/SHA-2KB)を参照してください。
 Windows 10、Windows 8.1、Windows 8 | サポートされています。
-Windows 7 SP1 64 ビット | [更新プログラム ロールアップ 36](https://support.microsoft.com/help/4503156) (モビリティ サービスのバージョン 9.22) 以降でサポートされています。 </br></br> モビリティ サービス エージェントのバージョン 9.30.x.x (2019 年 11 月初めにリリース予定) 以降では、Windows 7 SP1 コンピューターに[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。  SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件の詳細については、[こちら](https://aka.ms/SHA-2KB)を参照してください。
+Windows 7 SP1 64 ビット | [更新プログラム ロールアップ 36](https://support.microsoft.com/help/4503156) (モビリティ サービスのバージョン 9.22) 以降でサポートされています。 </br></br> モビリティ サービス エージェントの [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 以降では、Windows 7 SP1 コンピューター上に[サービス スタック更新プログラム (SSU)](https://support.microsoft.com/help/4490628) と [SHA-2 更新プログラム](https://support.microsoft.com/help/4474419)をインストールする必要があります。  SHA-1 は 2019 年 9 月からはサポートされておらず、SHA-2 コード署名が有効になっていない場合、エージェント拡張機能は正常にインストールまたはアップグレードされません。 SHA-2 のアップグレードと要件の詳細については、[こちら](https://aka.ms/SHA-2KB)を参照してください。
 Linux | 64 ビット システムのみがサポートされています。 32 ビット システムはサポートされていません。<br/><br/>すべての Linux サーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)がインストールされている必要があります。 テスト フェールオーバー/フェールオーバー後に Azure でサーバーを起動するために必要です。 LIS コンポーネントがない場合、Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。 <br/><br/> Site Recovery では、Azure で Linux サーバーを実行するためにフェールオーバーが調整されます。 ただし Linux ベンダーによっては、サポート終了前のディストリビューション バージョンしかサポート対象に含まれない場合もあります。<br/><br/> Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。<br/><br/> 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。<br/><br/> Azure での Linux およびオープン ソース テクノロジのサポートについて詳しくは、[こちら](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)をご覧ください。
 Linux Red Hat Enterprise | 5.2 から 5.11</b><br/> 6.1 から 6.10</b> </br> 7.0、7.1、7.2、7.3、7.4、7.5、7.6、[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery)、[8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) <br/> Red Hat Enterprise Linux 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていません。 Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。
 Linux:CentOS | 5.2 から 5.11</b><br/> 6.1 から 6.10</b><br/> 7.0 から 7.6<br/> <br/> CentOS 5.2 から 5.11 および 6.1 から 6.10 を実行しているサーバーには [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)が事前インストールされていません。 Azure で起動するマシンのレプリケーションを有効にする前に、必ず[コンポーネント](https://www.microsoft.com/download/details.aspx?id=55106)をインストールしてください。

@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/8/2019
+ms.date: 12/6/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 633465e9123d679b1aa0e7f7ad048b17c18f2acb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8caa66801dda223681c38e966ba3d08b1b0c5921
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771038"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931076"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -77,7 +77,8 @@ Azure File Sync エージェントでサポートされるバージョンは次�
     - リコールの失敗が軽減されました。 ネットワーク帯域幅に基づいて、再呼び出しサイズが自動的に調整されるようになりました。 
     - 新しいサーバーを同期グループに追加するときのダウンロード パフォーマンスが向上しました。 
     - 制約の競合により、同期されないファイルが削減されました。 
-
+    - サーバー エンドポイント パスがボリューム マウント ポイントの場合、特定のシナリオでは、ファイルの階層化が失敗するか、予期せずに取り消されます。
+    
 ### <a name="evaluation-tool"></a>評価ツール
 Azure File Sync をデプロイする前に、Azure File Sync 評価ツールを使用して、お使いのシステムと互換性があるかどうかを評価する必要があります。 このツールは Azure PowerShell コマンドレットであり、サポートされていない文字やサポートされていない OS バージョンなど、ファイル システムとデータセットに関する潜在的な問題をチェックします。 インストールおよび使用手順については、計画ガイドの「[評価ツール](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet)」セクションを参照してください。 
 

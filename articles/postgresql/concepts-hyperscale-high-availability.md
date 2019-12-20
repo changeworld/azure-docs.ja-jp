@@ -1,5 +1,5 @@
 ---
-title: Azure Database for PostgreSQL の高可用性 - Hyperscale (Citus)
+title: 高可用性 - Hyperscale (Citus) - Azure Database for PostgreSQL
 description: 高可用性とディザスター リカバリーの概念
 author: jonels-msft
 ms.author: jonels
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 616b5bff735f52d137c12c58ac6023c38a2d4044
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 10679ab02826fb606af65c72621f2afb609bc81b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510872"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975535"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL の高可用性 - Hyperscale (Citus)
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 593c9ea9c37cc5684e85604340f8aae3d84d9afb
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 4f9a2842f99c7f8b0bb9f820584fb2cd4e41a2b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546362"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927893"
 ---
 # <a name="deploy-azure-file-sync"></a>Azure File Sync のデプロイ
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -400,6 +400,10 @@ Azure File Sync での最初のオンボードで完全なファイル忠実性�
 - クラウド エンドポイントを作成した後、Azure File Sync は、最初の同期を開始する前にクラウド内のファイルを検出するプロセスを実行します。このプロセスの完了にかかる時間は、ネットワークの速度、使用可能な帯域幅、ファイルとフォルダーの数など、さまざまな要因によって異なります。 プレビュー リリースでの大まかな見積もりでは、検出プロセスは約 10 ファイル/秒で実行されます。そのため、データがクラウドに事前シードされる場合は、事前シード処理の実行が高速であっても、システムが完全に稼働するまでの全体的な時間が大幅に長くなることがあります。
 
 ## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>以前のバージョンおよび VSS (ボリューム シャドウ コピー サービス) を使用するセルフサービス復元
+
+> [!IMPORTANT]
+> 次の情報は、ストレージ同期エージェントのバージョン 9 (以降) でのみ使用できます。 9 より前のバージョンでは、StorageSyncSelfService コマンドレットがありません。
+
 以前のバージョンとは、ボリュームのサーバー側 VSS スナップショットを利用してファイルの復元可能なバージョンを SMB クライアントに提供する、Windows の機能です。
 これにより、IT 管理者に復元を依頼しなくても、インフォメーション ワーカーが直接利用できる強力なシナリオが実現します。これは一般に、セルフサービス復元と呼ばれます。
 

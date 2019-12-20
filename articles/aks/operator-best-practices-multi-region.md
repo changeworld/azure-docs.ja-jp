@@ -7,12 +7,13 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
-ms.openlocfilehash: 5a0a7e59e71e51a109af0f89cbb7ba580b2b97e6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 5fdb189fcab3da4dad52642571ac42e669828fe3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967185"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971657"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -60,6 +61,12 @@ Traffic Manager は DNS 参照を実行して、ユーザーの最も適切な�
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Azure Front Door Service を使用したレイヤー 7 のアプリケーション ルーティング
 
 Traffic Manager は、DNS (レイヤー 3) を使ってトラフィックのシェーピングを行います。 [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) には、HTTP/HTTPS (レイヤー 7) のルーティング オプションが用意されています。 Azure Front Door Service の追加機能としては、SSL 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティがあります。 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
+
+### <a name="interconnect-regions-with-global-virtual-network-peering"></a>グローバル仮想ネットワーク ピアリングを使用してリージョンを相互接続する
+
+クラスターが相互に通信する必要がある場合、両方の仮想ネットワークを相互に接続するには、[仮想ネットワーク ピアリング](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)を使用して実現できます。 このテクノロジは、異なる地理的リージョンにまたがっていても、Microsoft のバックボーン ネットワーク全体で高帯域幅を提供して仮想ネットワークを相互に接続します。
+
+AKS クラスターが実行されている仮想ネットワークをピアリングするための前提条件は、仮想ネットワーク ピアリングを介して Kubernetes サービスに到達できるように、AKS クラスター内で標準 Load Balancer を使用することです。
 
 ## <a name="enable-geo-replication-for-container-images"></a>コンテナー イメージの geo レプリケーションを有効にする
 
@@ -115,7 +122,7 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 
 Azure Managed Disks を使用している場合は、次のようなレプリケーションと DR ソリューションを選択することができます。
 
-* [Azure での Velero](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
+* [Azure での Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 * [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
 
 ### <a name="application-based-asynchronous-replication"></a>アプリケーションベースの非同期レプリケーション

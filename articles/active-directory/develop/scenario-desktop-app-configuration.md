@@ -1,6 +1,6 @@
 ---
-title: Web API を呼び出すデスクトップ アプリ (コードの構成) - Microsoft ID プラットフォーム
-description: Web API を呼び出すデスクトップ アプリを構築する方法 (アプリのコード構成) について説明します
+title: Web API を呼び出すデスクトップ アプリの構成 - Microsoft ID プラットフォーム | Azure
+description: Web API を呼び出すデスクトップ アプリのコードを構成する方法について説明します
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6baf7d21748b5b524745f26302e70612dab29a8d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0d31a70ebc63a5e9a16e0da00623bd5855f0a7d1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175439"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920261"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデスクトップ アプリ - コードの構成
 
@@ -188,7 +188,7 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-MSAL Java dev サンプルでその構成に使用されているクラス: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
+次に、MSAL Java dev サンプルでその構成に使用されているクラスを紹介します。[TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
 
 ```Java
 PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)

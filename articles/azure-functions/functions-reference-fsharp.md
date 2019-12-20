@@ -6,19 +6,19 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: cf080b841e5fb3bbf3b36a2629a619f77fe52ddd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226750"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975008"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開発者向けリファレンス
 
 Azure Functions 用 F# は、小規模なコード ("関数") をクラウドで手軽に実行できるソリューションです。 データは関数の引数を通じて F# 関数に渡されます。 引数名は `function.json`で指定され、関数のロガーやキャンセル トークンなどにアクセスするための定義済みの名前があります。 
 
 >[!IMPORTANT]
->F# スクリプト (.fsx) は、Azure Functions [バージョン 1.x](functions-versions.md#creating-1x-apps) の関数でのみサポートされています。 F# をバージョン 2.x のランタイムで使用するには、プリコンパイル済み F# クラス ライブラリ プロジェクト (.fs) を使用する必要があります。 F# クラス ライブラリ プロジェクトを作成、管理、公開するには、[C# クラス ライブラリ プロジェクト](functions-dotnet-class-library.md)の場合と同じように Visual Studio を使用します。 Functions バージョンの詳細については、「[Azure Functions ランタイム バージョンの概要](functions-versions.md)」をご覧ください。
+>F# スクリプト (.fsx) は、Azure Functions [バージョン 1.x](functions-versions.md#creating-1x-apps) の関数でのみサポートされています。 F# をバージョン 2.x 以降のランタイムで使用するには、プリコンパイル済み F# クラス ライブラリ プロジェクト (.fs) を使用する必要があります。 F# クラス ライブラリ プロジェクトを作成、管理、公開するには、[C# クラス ライブラリ プロジェクト](functions-dotnet-class-library.md)の場合と同じように Visual Studio を使用します。 Functions バージョンの詳細については、「[Azure Functions ランタイム バージョンの概要](functions-versions.md)」をご覧ください。
 
 この記事では、「 [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
@@ -48,7 +48,7 @@ FunctionsProject
 
 関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.fsx) とバインディング構成ファイル (function.json) があります。
 
-Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
+Functions ランタイムの[バージョン 2.x 以降](functions-versions.md)に必要なバインド拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](./functions-bindings-register.md#extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="binding-to-arguments"></a>引数へのバインド
 「[Azure Functions のトリガーとバインドの開発者用リファレンス](functions-triggers-bindings.md)」で詳しく説明されているように、各バインドはいくつかの引数のセットをサポートしています。 たとえば、BLOB トリガーでサポートされている引数バインドの 1 つは、POCO です。これは、F# レコードを使用して表すことができます。 例:

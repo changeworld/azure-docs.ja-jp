@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services で CLI 使用してフィルターを作成する | Microsoft Docs
-description: このトピックでは、Media Services で CLI を使用してフィルターを作成する方法について説明します。
+description: この記事では、Azure Media Services v3 で CLI を使用してフィルターを作成する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 26350479f0f066f45c143e1a35061b3a409de309
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 74516aa921e45917f327a193a1c972b021c9c8ff
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786494"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896070"
 ---
 # <a name="creating-filters-with-cli"></a>CLI を使用してフィルターを作成する 
 
-コンテンツを顧客に配信 (ライブ イベントやビデオ オン デマンドをストリーム配信) する際、資産の既定のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツの資産フィルターを定義することができます。 
+コンテンツを顧客に配信 (ライブ イベントやビデオ オン デマンドをストリーム配信) する際、資産の既定のマニフェスト ファイルに記述された内容だけではクライアントのニーズに柔軟に対応できない場合があります。 Azure Media Services では、アカウント フィルターと、コンテンツのアセットフィルターを定義することができます。 
 
 この機能と、この機能が使用されているシナリオの詳細については、[動的マニフェスト](filters-dynamic-manifest-overview.md)と[フィルター](filters-concept.md)に関する記事を参照してください。
 
@@ -102,7 +102,7 @@ az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-
 
 ## <a name="associate-filters-with-streaming-locator"></a>フィルターをストリーミング ロケーターに関連付ける
 
-資産またはアカウント フィルターの一覧を指定できます。これはストリーミング ロケーターに適用されます。 [ダイナミック パッケージャー (ストリーミング エンドポイント)](dynamic-packaging-overview.md) では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
+アセットまたはアカウント フィルターの一覧を指定できます。これはストリーミング ロケーターに適用されます。 [ダイナミック パッケージャー (ストリーミング エンドポイント)](dynamic-packaging-overview.md) では、クライアントで URL に指定されるフィルターと共にこのフィルターの一覧が適用されます。 この組み合わせによって、URL 内のフィルターとストリーミング ロケーターに指定されたフィルターに基づく[動的マニフェスト](filters-dynamic-manifest-overview.md)が生成されます。 フィルターを適用したいものの URL でフィルター名を公開したくない場合は、この機能を使用することをお勧めします。
 
 次の CLI コードは、ストリーミング ロケーターを作成し、`filters` を指定する方法を示します。 これは、アセット フィルター名やアカウント フィルター名のスペースで区切られたリストを受け取る省略可能なプロパティです。
 

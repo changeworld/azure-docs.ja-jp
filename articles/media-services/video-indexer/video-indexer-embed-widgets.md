@@ -1,7 +1,7 @@
 ---
 title: アプリケーションに Video Indexer ウィジェットを埋め込む
 titleSuffix: Azure Media Services
-description: アプリケーションに Video Indexer ウィジェットを埋め込む方法について説明します。
+description: この記事では、アプリケーションに Azure Media Services Video Indexer ウィジェットを埋め込む方法について説明します。
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: 99d6647ab5e7fa8f35cef883dd00ae9fea866370
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bb0af855a136c83eac7e28287b28046b50a7c124
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839115"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892738"
 ---
 # <a name="embed-video-indexer-widgets-in-your-applications"></a>アプリケーションに Video Indexer ウィジェットを埋め込む
 

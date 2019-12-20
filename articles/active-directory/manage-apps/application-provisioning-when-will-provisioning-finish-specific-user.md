@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac9ad5877c6a1408d4045df4d4e1fd8f64ea94
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: ebe362be49995ce2cd1f4c43a5cfbee408396976
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275735"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900404"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>ユーザー プロビジョニングの状態を確認する
 
@@ -101,6 +101,8 @@ Azure portal でプロビジョニング ログを確認する方法の詳細に
 - ターゲット システムによって実装される要求レートの制限および調整。 ターゲット システムによって、要求レートの制限および調整が実装される場合があり、大規模な同期動作中にパフォーマンスに影響する可能性があります。 このような条件下では、高速で大量の要求を受信するアプリは応答レートが遅くなったり、接続が閉じたりする場合があります。 パフォーマンスを向上するために、アプリが処理できるよりも速くアプリ要求を送信しないようにコネクタによって調整する必要があります。 Microsoft がビルドしたプロビジョニング コネクタはこの調整を行います。 
 
 - 割り当てられたグループの数とサイズ。 割り当てられたグループの同期はユーザーの同期よりも時間がかかります。 割り当てられたグループの数とサイズの両方がパフォーマンスに影響します。 [グループ オブジェクト同期用に有効にされたマッピング](customize-application-attributes.md#editing-group-attribute-mappings)がアプリにある場合、グループ名やメンバーシップなどのグループ プロパティがユーザーの他に同期されます。 これらの追加の同期はユーザー オブジェクトの同期のみの場合よりも時間がかかります。
+
+- パフォーマンスが問題になり、テナント内のユーザーとグループのほとんどをプロビジョニングしようとしている場合は、スコープ フィルターを使用します。 スコープ フィルターによって、ユーザーが特定の属性値に基づいてフィルター処理され、プロビジョニング サービスが Azure AD から抽出するデータを細かく調整できるようになります。 スコープ フィルターの詳細については、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning)

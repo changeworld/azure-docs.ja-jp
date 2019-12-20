@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a187ea9d22efa40c482ea8930be0271d84a899a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8ba3cc27777d13448b0e1114413128b550b0b2f5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273988"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842290"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する
 ユーザーがアプリケーションのアクセス許可に同意する方法を構成する方法について説明します。 管理者の同意を付与することでユーザー エクスペリエンスを簡素化できます。 この記事では、ユーザーの同意を構成するさまざまな方法を紹介します。 この方法は、Azure Active Directory (Azure AD) テナントのすべてのエンド ユーザーに適用されます。 
@@ -27,6 +27,8 @@ ms.locfileid: "74273988"
 ## <a name="prerequisites"></a>前提条件
 
 管理者の同意を付与するには、全体管理者、アプリケーション管理者、またはクラウド アプリケーション管理者としてサインインする必要があります。
+
+Microsoft Graph と Azure AD Graph のアクセス許可に管理者の同意を付与するには、全体管理者特権が必要です。 
 
 アプリケーションへのアクセスを制限するには、ユーザーの割り当てが必要で、その後、アプリケーションにユーザーまたはグループを割り当てる必要があります。  詳細については、[ユーザーとグループの割り当て方法](methods-for-assigning-users-and-groups.md)に関するページを参照してください。
 

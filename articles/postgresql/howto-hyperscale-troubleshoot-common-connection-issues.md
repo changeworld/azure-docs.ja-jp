@@ -1,5 +1,5 @@
 ---
-title: Azure Database for PostgreSQL - Hyperscale (Citus) への接続に関する問題のトラブルシューティング
+title: 接続のトラブルシューティング - Hyperscale (Citus) - Azure Database for PostgreSQL
 description: Azure Database for PostgreSQL - Hyperscale (Citus) への接続に関する問題のトラブルシューティング方法について説明します。
 keywords: postgresql 接続, 接続文字列, 接続の問題, 一時的なエラー, 接続エラー
 author: jonels-msft
@@ -7,12 +7,12 @@ ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: b812b730cebba4dbf0735f49f544e53bf7f8787c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942088"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977507"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) への接続に関する問題のトラブルシューティング
 
@@ -50,7 +50,7 @@ Hyperscale サーバー グループ ノードの高可用性を有効にする�
 
 * コーディネーター ノードのファイアウォール構成:Hyperscale サーバーのファイアウォールが、プロキシ サーバーやゲートウェイなど、クライアントからの接続を許可するように構成されていることを確認します。
 * クライアントのファイアウォールの構成:クライアント上のファイアウォールで、データベース サーバーへの接続を許可する必要があります。 ファイアウォールによっては、名前を指定してアプリケーションを許可するだけでなく、サーバーの IP アドレスとポートを許可する必要があります。
-* ユーザー エラー:接続文字列を再度確認します。 サーバー名などのパラメーターを誤って入力したか、ユーザー名の *\@servername* サフィックスを忘れている可能性があります。
+* ユーザー エラー:接続文字列を再度確認します。 サーバー名など、パラメーターを間違って入力している可能性があります。 Azure portal では、さまざまな言語フレームワークと psql の接続文字列が見つかります。 Hyperscale (Citus) サーバー グループの **[接続文字列]** ページに移動します。 また、Hyperscale (Citus) クラスターにはデータベースが 1 つしかないことと、その事前定義名は **citus** であることにご留意ください。
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>永続的な接続の問題を解決する手順
 

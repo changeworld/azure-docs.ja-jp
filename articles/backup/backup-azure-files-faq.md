@@ -3,12 +3,12 @@ title: Azure Files のバックアップに関する FAQ
 description: この記事では、Azure Backup サービスを使用して Azure ファイル共有を保護する方法に関してよく寄せられる質問への回答を示します。
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bf04458d859601de7ca0e9d07f6a3dbf506a51e6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173112"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892572"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 
@@ -70,6 +70,18 @@ Azure ファイル共有のバックアップは現在プレビュー段階で�
 - US Gov アリゾナ (UGA)
 - US Gov テキサス (UGT)
 - US Gov バージニア (UGV)
+- オーストラリア中部 (ACL)
+- インド西部 (INW)
+- 南アフリカ北部 (SAN)
+- アラブ首長国連邦北部 (UAN)
+- フランス中部 (FRC)
+- ドイツ北部 (GN)                       
+- ドイツ中西部 (GWC)
+- 南アフリカ西部 (SAW)
+- アラブ首長国連邦中部 (UAC)
+- NWE (ノルウェー東部)     
+- NWW (ノルウェー西部)
+- SZN (スイス北部)
 
 上記以外の特定の geo で使用する必要がある場合は、[AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) 宛てにメールをお送りください。
 

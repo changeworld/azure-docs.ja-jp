@@ -76,7 +76,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 | Operation | エラーの詳細 | 対処法 |
 | --- | --- | --- |
 | 保護されたサーバーへのエージェントのプッシュ | サーバーに対して指定された資格情報が無効です。 | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br> [この記事](https://technet.microsoft.com/library/hh758186(v=sc.12).aspx#BKMK_Manual)に示されているように、保護エージェントを運用サーバーに手動でインストールします。|
-| Azure Backup エージェントは、Azure Backup サービスに接続できませんでした (ID:100050) | Azure Backup エージェントは、Azure Backup サービスに接続できませんでした | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br>1.管理者特権のコマンド プロンプトから、コマンド **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe** を実行します。 Internet Explorer のウィンドウが開きます。 <br/> 2. **[ツール]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。 <br/> 手順 3.プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<br/> 4.マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL](backup-configure-vault.md#verify-internet-access) と [IP アドレス](backup-configure-vault.md#verify-internet-access)が許可されることを確認します。|
+| Azure Backup エージェントは、Azure Backup サービスに接続できませんでした (ID:100050) | Azure Backup エージェントは、Azure Backup サービスに接続できませんでした | **製品が推奨する対処法でうまくいかない場合は、次の手順を実行します**: <br>1.管理者特権のコマンド プロンプトから、コマンド **psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe** を実行します。 Internet Explorer のウィンドウが開きます。 <br/> 2. **[ツール]**  >  **[インターネット オプション]**  >  **[接続]**  >  **[LAN の設定]** の順に移動します。 <br/> 3.プロキシ サーバーを使用するように設定を変更します。 その後、プロキシ サーバーの詳細を指定します。<br/> 4.マシンのインターネットへのアクセスが制限されている場合は、マシンまたはプロキシのファイアウォール設定によって次の [URL](backup-configure-vault.md#verify-internet-access) と [IP アドレス](backup-configure-vault.md#verify-internet-access)が許可されることを確認します。|
 | Azure Backup エージェントインストールに失敗しました | Microsoft Azure Recovery Services のインストールに失敗しました。 Microsoft Azure Recovery Services のインストールによってシステムに対して実行されたすべての変更はロールバックされました。 (ID: 4024) | Azure エージェントを手動でインストールします。
 
 ## <a name="configuring-protection-group"></a>保護グループの構成
@@ -119,7 +119,7 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 
 エラー メッセージ | 推奨される操作 |
 -- | --
-ディスク バックアップ レプリカが無効または不足しているため、バックアップが失敗しました。 | この問題を解決するには、次の手順を確認し、操作を再試行してください。 <br/> 1.ディスク復旧ポイントを作成する<br/> 2.データソースで整合性チェックを実行する <br/> 手順 3.データソースの保護を停止してから、このデータ ソースの保護を再構成する
+ディスク バックアップ レプリカが無効または不足しているため、バックアップが失敗しました。 | この問題を解決するには、次の手順を確認し、操作を再試行してください。 <br/> 1.ディスク復旧ポイントを作成する<br/> 2.データソースで整合性チェックを実行する <br/> 3.データソースの保護を停止してから、このデータ ソースの保護を再構成する
 
 ### <a name="cbpsourcesnapshotfailedreplicametadatainvalid"></a>CBPSourceSnapshotFailedReplicaMetadataInvalid
 

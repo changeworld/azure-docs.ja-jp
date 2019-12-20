@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services LiveEvent の種類 |Microsoft Docs
-description: この記事では、LiveEvent の種類を比較する詳細な表を示します。
+description: Azure Media Services のライブ イベントには、ライブ エンコードとパススルーの 2 種類があります。 この記事では、LiveEvent の種類を比較する詳細な表を示します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 884cf8d913cec038df3b38c8af2ed0a67bd8060d
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 8377c4339b07e0b917e10ed413ffc79baef91fac
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802250"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888395"
 ---
 # <a name="live-event-types-comparison"></a>ライブ イベントの種類の比較
 

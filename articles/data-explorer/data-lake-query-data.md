@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d572e7f3fceaf2df8ad0ec684eaa421922389e71
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383376"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922149"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する (プレビュー)
 
@@ -21,13 +21,8 @@ Azure Data Lake Storage は、スケーラビリティが高く拡張性と費�
 Azure Data Explorer は、Azure BLOB ストレージおよび Azure Data Lake Storage Gen2 と統合され、レイク内のデータへの高速でキャッシュされたインデックス付きのアクセスを提供します。 レイク内のデータは、Azure Data Explorer に事前に取り込まずに分析およびクエリを実行できます。 また、取り込んだデータと取り込んでいないネイティブ　レイク データに対して同時にクエリを実行することもできます。  
 
 > [!TIP]
-> 最良のクエリ パフォーマンスを得るには、Azure Data Explorer へのデータの取り込みが必要です。 事前に取り込まずに Azure Data Lake Storage Gen2 内のデータのクエリを実行する機能は、履歴データか、ほとんどクエリが実行されないデータに対してのみ使用してください。
+> 最良のクエリ パフォーマンスを得るには、Azure Data Explorer へのデータの取り込みが必要です。 事前に取り込まずに Azure Data Lake Storage Gen2 内のデータのクエリを実行する機能は、履歴データか、ほとんどクエリが実行されないデータに対してのみ使用してください。 最高の結果を得るために、[レイク内でのクエリのパフォーマンスを最適化](#optimize-your-query-performance)してください。
  
-## <a name="optimize-query-performance-in-the-lake"></a>レイクでのクエリ パフォーマンスを最適化する 
-
-* パフォーマンスを向上させ、クエリ時間を最適化するためにデータをパーティション分割します。
-* パフォーマンス向上のためにデータを圧縮します (最適な圧縮のためには gzip、最良のパフォーマンスのためには lz4)。
-* Azure BLOB ストレージまたは Azure Data Lake Storage Gen2 を、Azure Data Explorer クラスターと同じリージョンで使用します。 
 
 ## <a name="create-an-external-table"></a>外部テーブルの作成
 
@@ -231,6 +226,37 @@ external_table("TaxiRides")
 ![パーティション分割されたクエリのレンダリング](media/data-lake-query-data/taxirides-with-partition.png)
   
 外部テーブル *TaxiRides* で実行する追加のクエリを記述することで、このデータについてさらに詳しく知ることができます。 
+
+## <a name="optimize-your-query-performance"></a>クエリ パフォーマンスを最適化する
+
+外部データに対するクエリの実行に関する次のベスト プラクティスに従って、レイクでのクエリのパフォーマンスを最適化します。 
+ 
+### <a name="data-format"></a>データ形式
+ 
+分析クエリには列形式を使用します。なぜなら、
+* クエリに関連する列のみを読み取ることができるためです。 
+* 列エンコード手法を使用すると、データのサイズを大幅に削減できるためです。  
+Azure Data Explorer は、Parquet および ORC の列形式をサポートしています。 最適化された実装である Parquet 形式が推奨されます。 
+ 
+### <a name="azure-region"></a>Azure リージョン 
+ 
+外部データが Azure Data Explorer クラスターと同じ Azure リージョンに存在することを確認します。 これにより、コストとデータのフェッチ時間が削減されます。
+ 
+### <a name="file-size"></a>ファイル サイズ
+ 
+最適なファイルサイズは、ファイルあたり数百 MB (最大 1 GB) です。 低速のファイル列挙プロセスや列形式の使用の制限などの、不要なオーバーヘッドを要求する大量の小さなファイルは避けてください。 ファイルの数は、Azure Data Explorer クラスター内の CPU コアの数より多くする必要があることに注意してください。 
+ 
+### <a name="compression"></a>圧縮
+ 
+圧縮を使用して、リモート ストレージからフェッチされるデータの量を減らします。 Parquet 形式の場合は、内部 Parquet 圧縮メカニズムを使用して列グループを個別に圧縮するため、個別に読み取ることができます。 圧縮メカニズムの使用を検証するには、ファイル名が “<filename>.parquet.gz” ではなく、“<filename>.gz.parquet” または “<filename>.snappy.parquet” であることを確認します。 
+ 
+### <a name="partitioning"></a>パーティション分割
+ 
+"フォルダー" パーティションを使用してデータを整理し、クエリで無関係なパスをスキップできるようにします。 パーティション分割を計画するときは、クエリ内でタイムスタンプやテナント ID などの、ファイル サイズおよび一般的なフィルターを検討してください。
+ 
+### <a name="vm-size"></a>VM サイズ
+ 
+よりコア数が多く、ネットワーク スループットが高い VM SKU を選択します (メモリはあまり重要ではありません)。 詳細については、[Azure Data Explorer クラスターに適した VM SKU を選択する](manage-cluster-choose-sku.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

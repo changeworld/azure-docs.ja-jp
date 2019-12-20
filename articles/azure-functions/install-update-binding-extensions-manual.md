@@ -3,16 +3,16 @@ title: Azure Functions バインド拡張機能を手動でインストールま
 description: デプロイした関数アプリに Azure Functions バインド拡張機能をインストールまたは更新する方法について説明します。
 ms.topic: reference
 ms.date: 09/26/2018
-ms.openlocfilehash: 49e8e2ce7eb0267d5a4e6fc0f5566dffaed82661
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 83ae2cdd16bce0b0a5b11b8c24e996306453a7a9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226502"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977490"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Azure Functions バインド拡張機能をポータルから手動でインストールまたは更新する
 
-Azure Functions バージョン 2.x ランタイムは、トリガーとバインドのコードを実装するためにバインド拡張機能を使用します。 バインド拡張機能は、NuGet パッケージで提供されます。 拡張機能を登録するには、パッケージをインストールします。 関数を開発しているときに、バインド拡張機能をインストールする方法は、開発環境に応じて異なります。 詳細については、トリガーとバインドに関する記事の「[バインド拡張機能を登録する](./functions-bindings-register.md)」をご覧ください。
+バージョン 2.x 以降、Azure Functions ランタイムは、トリガーとバインドのコードを実装するためにバインド拡張機能を使用します。 バインド拡張機能は、NuGet パッケージで提供されます。 拡張機能を登録するには、パッケージをインストールします。 関数を開発しているときに、バインド拡張機能をインストールする方法は、開発環境に応じて異なります。 詳細については、トリガーとバインドに関する記事の「[バインド拡張機能を登録する](./functions-bindings-register.md)」をご覧ください。
 
 ときおり、バインド拡張機能を Azure portal から手動でインストールまたは更新することが必要になる場合があります。 たとえば、登録済みのバインドを新しいバージョンに更新する必要がある場合があります。 また、ポータルの **[統合]** タブにはインストールできない、サポート対象のバインドを登録する必要がある場合もあります。
 

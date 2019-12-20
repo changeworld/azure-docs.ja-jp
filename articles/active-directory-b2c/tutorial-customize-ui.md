@@ -1,6 +1,7 @@
 ---
-title: チュートリアル - ユーザー エクスペリエンスのインターフェースをカスタマイズする - Azure Active Directory B2C | Microsoft Docs
-description: Azure portal を使用し、Azure Active Directory B2C でアプリケーションのユーザー インターフェイスをカスタマイズする方法について説明します。
+title: チュートリアル:ユーザー インターフェイスをカスタマイズする
+titleSuffix: Azure AD B2C
+description: Azure portal を使用し、Azure Active Directory B2C でアプリケーションのユーザー インターフェイス (UI) をカスタマイズする方法について説明します。
 services: B2C
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71291106"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950869"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でユーザー エクスペリエンスのインターフェースをカスタマイズする
 

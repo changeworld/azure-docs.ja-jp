@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: efc9d7fb31dc9f63780c3f94238bbbfb17756089
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707734"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973630"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Azure Machine Learning デザイナー (プレビュー) とは 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -88,12 +88,12 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 
 自分のワークスペースからコンピューティング リソースを使用して、パイプラインを実行し、デプロイ済みのモデルをリアルタイム エンドポイントまたはパイプライン エンドポイント (バッチ推論用) としてホストします。 サポートされているコンピューティング ターゲットを次に示します。
 
-| コンピューティング ターゲット | トレーニング | Deployment |
+| コンピューティング ターゲット | トレーニング | デプロイ |
 | ---- |:----:|:----:|
 | Azure Machine Learning コンピューティング | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-コンピューティング先は、自分の Machine Learning [ワークスペース](concept-workspace.md)に接続されています。 [Azure Machine Learning Studio](https://ml.azure.com) で自分のワークスペースのコンピューティング先を管理します。
+コンピューティング先は、自分の [Azure Machine Learning ワークスペース](concept-workspace.md)に接続されています。 [Azure Machine Learning Studio (クラシック)](https://ml.azure.com) で自分のワークスペースのコンピューティング先を管理します。
 
 ## <a name="deploy"></a>デプロイ
 

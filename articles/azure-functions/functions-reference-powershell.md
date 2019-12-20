@@ -4,12 +4,12 @@ description: PowerShell を使用して関数を開発する方法について�
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 26e52e8aa498c37bd4cef95fb2b54b2fe9322f90
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226673"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974242"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -50,7 +50,7 @@ PSFunctionApp
 
 プロジェクトのルートには、関数アプリの構成に使用できる共有 [`host.json`](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.ps1) とバインディング構成ファイル (`function.json`) が含まれるフォルダーがあります。 function.json ファイルの親ディレクトリの名前は常に関数の名前です。
 
-特定のバインディングには、`extensions.csproj` ファイルが必要になります。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイルで定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](functions-bindings-register.md#extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
+特定のバインディングには、`extensions.csproj` ファイルが必要になります。 Functions ランタイムの[バージョン 2.x 以降](functions-versions.md)に必要なバインド拡張機能は `extensions.csproj` ファイルで定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](functions-bindings-register.md#extension-bundles)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 PowerShell 関数アプリには、必要に応じて `profile.ps1` を含めることができます。これは、関数アプリの実行開始時 (" *[コールド スタート](#cold-start)* " とも呼ばれます) に実行されます。 詳細については、「[PowerShell プロファイル](#powershell-profile)」を参照してください。
 

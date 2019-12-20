@@ -1,20 +1,21 @@
 ---
-title: 'PowerShell スクリプト - Data Factory を使用してクラウド内のデータを変換する '
+title: PowerShell を使用してクラウドのデータを変換する
 description: この PowerShell スクリプトは、Azure HDInsight Spark クラスター上で Spark プログラムを実行して、クラウド内のデータを変換します。
 author: djpmsft
 ms.author: daperlov
-manager: jroth
+manager: anandsub
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/12/2017
-ms.openlocfilehash: 53f64103819476e4efe918bd7a7be4ee2a1bcca3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c09d0532b845472d0ccaac1ad57e3772630bb5c9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684309"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932061"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使用してクラウド内のデータを変換する
 

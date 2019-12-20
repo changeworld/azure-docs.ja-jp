@@ -7,12 +7,12 @@ ms.date: 11/26/2019
 ms.author: fauhse
 ms.subservice: files
 description: StorSimple は提供を終了した製品であり、Azure File Sync がこのソリューションの移行先となります。 移行の概念を確認し、移行に関するカスタマイズされた支援が必要な場合は、AzureFiles@microsoft.com にご連絡ください。
-ms.openlocfilehash: edad4d1c6be2c39dbf8150b6ab8979ae3924fb53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 1cc88080522a62085d9a515223512ef25c20a9e4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666539"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895078"
 ---
 # <a name="storsimple-migration-to-azure-file-sync"></a>StorSimple の Azure File Sync への移行
 
@@ -26,7 +26,7 @@ StorSimple アプライアンスの移行先となる、既定の戦略的な長
 StorSimple から Azure File Sync に移行する必要があるお客様は、お客様自身でその作業を進める必要がない点を知っておいてください。
 
 > [!IMPORTANT]
-> Microsoft はお客様の移行を支援できるよう取り組んでいます。 カスタマイズした移行計画について、および移行中のサポートについては、AzureFiles@microsoft.com にメールをお送りください。
+> Microsoft はお客様の移行を支援できるよう取り組んでいます。 カスタマイズした移行計画について、および移行中のサポートについては、AzureFiles@microsoft .com にメールをお送りください。
 
 ## <a name="migration-approach"></a>移行のアプローチ
 Azure File Sync への移行はクラウド側で開始され、オンプレミスへの影響は最小限に抑えられ、ダウンタイムも抑制されます。
@@ -67,7 +67,7 @@ AzureFiles@microsoft.com にご連絡いただくと、適切な数の代替デ�
 Azure Files と Azure File Sync についてよく理解してください。移行を成功させるには、Azure File Sync の用語とデプロイ パターンを理解することが重要です。 この概要の記事にあるすべての手順に関する詳細情報が用意されています。 移行の計画や実行の際にカスタマイズした支援が必要な場合は、Microsoft にご連絡ください。
 
 > [!IMPORTANT]
-> Microsoft はお客様の移行を支援できるよう取り組んでいます。 カスタマイズした移行計画について、および移行中のサポートについては、AzureFiles@microsoft.com にメールをお送りください。
+> Microsoft はお客様の移行を支援できるよう取り組んでいます。 カスタマイズした移行計画について、および移行中のサポートについては、AzureFiles@microsoft .com にメールをお送りください。
 
 ## <a name="additional-resources"></a>その他のリソース
 ターゲット サービスとしての Azure File Sync には、Azure File Sync を初めて使用する場合に読むことをお勧めする 2 つの基本的なドキュメントが用意されています。

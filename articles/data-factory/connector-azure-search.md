@@ -1,23 +1,22 @@
 ---
-title: Azure Data Factory を使用して Search インデックスにデータをコピーする
+title: 検索インデックスにデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Search インデックスにデータをコピーまたはプッシュする方法について説明します。
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.author: jingwang
-ms.openlocfilehash: ffdde571bbd2ae967003c520b09349ea9dcff414
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8a5b7bd366c504f0f5f4652728bf265289fb92e8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806083"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929672"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cognitive Search インデックスにデータをコピーする
 
@@ -44,7 +43,7 @@ Azure Cognitive Search のリンクされたサービスでは、次のプロパ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**AzureSearch**。 | はい |
-| url | Search サービスの URL。 | はい |
+| url | 検索サービスの URL。 | はい |
 | key | Search サービスの管理者キー。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
@@ -82,7 +81,7 @@ Azure Cognitive Search のリンクされたサービスでは、次のプロパ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | データセットの type プロパティは、次のように設定する必要があります:**AzureSearchIndex** | はい |
-| indexName | 検索インデックスの名前。 Data Factory では、インデックスは作成されません。 Azure Cognitive Search にこのインデックスが存在する必要があります。 | はい |
+| indexName | 検索インデックスの名前。 Data Factory では、インデックスは作成されません。 このインデックスは Azure Cognitive Search に存在する必要があります。 | はい |
 
 **例:**
 
@@ -119,7 +118,7 @@ Azure Cognitive Search にデータをコピーするには、コピー アク�
 
 ### <a name="writebehavior-property"></a>WriteBehavior プロパティ
 
-データを書き込むときに AzureSearchSink で upsert されます。 つまり、ドキュメントを書き込むときに検索インデックスにそのドキュメントのキーが既に存在する場合は、Azure Cognitive Search は競合の例外をスローするのではなく、既存のドキュメントを更新します。
+データを書き込むときに AzureSearchSink で upsert されます。 つまり、ドキュメントを書き込むとき、そのドキュメントのキーが検索インデックスに既に存在する場合、Azure Cognitive Search は競合の例外をスローするのではなく、既存のドキュメントを更新します。
 
 AzureSearchSink で提供される upsert 動作 (AzureSearch SDK の使用による) は、次の 2 とおりあります。
 
@@ -130,7 +129,7 @@ AzureSearchSink で提供される upsert 動作 (AzureSearch SDK の使用に�
 
 ### <a name="writebatchsize-property"></a>WriteBatchSize プロパティ
 
-Azure Cognitive Search サービスでは、バッチとしてのドキュメントの書き込みをサポートしています。 バッチには、1 ～ 1,000 のアクションを含めることができます。 1 つのアクションで、1 つのドキュメントのアップロード/マージ操作の実行を処理します。
+Azure Cognitive Search サービスは、バッチとしてのドキュメントの書き込みをサポートしています。 バッチには、1 ～ 1,000 のアクションを含めることができます。 1 つのアクションで、1 つのドキュメントのアップロード/マージ操作の実行を処理します。
 
 **例:**
 
@@ -166,9 +165,9 @@ Azure Cognitive Search サービスでは、バッチとしてのドキュメン
 
 ## <a name="data-type-support"></a>データ型のサポート
 
-次の表は、Azure Cognitive Search データ型がサポートされているかどうかを示します。
+次の表は、Azure Cognitive Search のデータ型がサポートされているかどうかを示しています。
 
-| Azure Cognitive Search のデータ型 | Azure Cognitive Search のシンクでサポートされている |
+| Azure Cognitive Search のデータ型 | Azure Cognitive Search のシンクでのサポート |
 | ---------------------- | ------------------------------ |
 | string | Y |
 | Int32 | Y |

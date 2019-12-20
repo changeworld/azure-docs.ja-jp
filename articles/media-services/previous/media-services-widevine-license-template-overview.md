@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ab9725dd50487cf9df9d6fb967959b276f39979f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c7511279e66ab598e4ae3c26f053915b7393b39d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162461"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978392"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine ライセンス テンプレートの概要 
 Azure Media Services を使用すると、Google Widevine ライセンスを構成および要求できます。 プレーヤーが Widevine の保護されたコンテンツを再生しようとすると、ライセンスを取得する要求がライセンス配信サービスに送信されます。 ライセンス サービスが要求を承認すると、サービスがライセンスを発行します。 これはクライアントに送信され、指定されたコンテンツの復号化と再生に使用されます。
@@ -189,6 +189,9 @@ Media Services が提供する .NET API を使用して、Widevine ライセン�
         return configuration;
     }
 
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

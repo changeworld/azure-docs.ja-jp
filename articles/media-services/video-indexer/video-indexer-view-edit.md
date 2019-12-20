@@ -1,7 +1,7 @@
 ---
 title: Video Indexer の分析情報の表示と編集
 titlesuffix: Azure Media Services
-description: このトピックでは、Video Indexer の分析情報を表示および編集する方法を示します。
+description: この記事では、Azure Media Services Video Indexer の分析情報を表示および編集する方法について説明します。
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 24a723bd32cb40807da1757b3fffb925d4ba1fef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e9bb516d498d989b97f1069af9a9f4cb673ea96d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799175"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892670"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Video Indexer の分析情報の表示と編集
 

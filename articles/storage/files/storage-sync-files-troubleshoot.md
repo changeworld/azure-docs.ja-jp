@@ -4,15 +4,15 @@ description: Azure File Sync の一般的な問題をトラブルシューティ
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 31a9eda0e17083aac25be071c1d1a3ab84049e39
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: ee8d71cb913dd17bc72023326dbc2ce8a33a3776
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274882"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976232"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -137,6 +137,9 @@ Reset-StorageSyncServer
 <a id="-2134376427"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2134376427 または 0x80c80015) というエラーで失敗する**  
 このエラーは、指定したサーバー エンドポイント パスが別のサーバー エンドポイントによって既に同期されている場合に発生します。 Azure File Sync では、同じディレクトリまたはボリュームを複数のサーバー エンドポイントで同期することはサポートされていません。
 
+<a id="-2160590967"></a>**サーバー エンドポイントの作成が "MgmtServerJobFailed" (エラー コード: -2160590967 または 0x80c80077) というエラーで失敗する**  
+このエラーは、サーバー エンドポイントのパスに孤立した階層化ファイルが含まれている場合に発生します。 サーバー エンドポイントが最近削除された場合は、孤立した階層化ファイルのクリーンアップが完了するまで待ちます。 孤立した階層化ファイルのクリーンアップが開始されると、イベント ID 6662 がテレメトリ イベント ログに記録されます。 孤立した階層化ファイルのクリーンアップが完了し、パスを使用してサーバー エンドポイントを再度作成できるようになったら、イベント ID 6661 が記録されます。 イベント ID 6661 が記録された後にサーバー エンドポイントの作成が失敗する場合は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」セクションの手順を実行して、孤立した階層化ファイルを削除します。
+
 <a id="-2134347757"></a>**サーバー エンドポイントの削除が "MgmtServerJobExpired" (エラー コード: -2134347757 または 0x80c87013)** というエラーで失敗する  
 このエラーは、サーバーがオフラインの場合、またはネットワークに接続されていない場合に発生します。 サーバーを使用できなくなったら、ポータルでサーバーの登録を解除します。これで、サーバー エンドポイントが削除されます。 サーバー エンドポイントを削除するには、[Azure File Sync 使用したサーバーの登録解除](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)に関するセクションで説明されている手順を実行します。
 
@@ -159,28 +162,31 @@ Set-AzStorageSyncServerEndpoint `
 ```
 <a id="server-endpoint-noactivity"></a>**サーバー エンドポイントの正常性状態が "アクティビティなし" または "保留中" で、登録済みサーバー ブレードのサーバーの状態が "オフラインのようです" になっている**  
 
-この問題は、ストレージ同期モニター プロセスが実行されていない場合、またはプロキシやファイアウォールのためにサーバーが Azure File Sync サービスと通信できない場合に、発生する可能性があります。
+この問題は、ストレージ同期モニター プロセス (AzureStorageSyncMonitor.exe) が実行されていない場合、またはサーバーが Azure File Sync サービスにアクセスできない場合に発生する可能性があります。
 
-この問題を解決するには、次の手順を実行します。
+ポータルに "オフラインのようです" と表示されているサーバーで、(イベント ビューアーの Applications and Services\Microsoft\FileSync\Agent にある) テレメトリ イベント ログのイベント ID 9301 を確認し、そのサーバーが Azure File Sync サービスにアクセスできない理由を特定します。 
 
-1. サーバーでタスク マネージャーを開き、ストレージ同期モニター (AzureStorageSyncMonitor.exe) プロセスが実行されていることを確認します。 プロセスが実行されていない場合は、最初にサーバーの再起動を試みます。 サーバーを再起動しても問題が解決しない場合は、Azure File Sync [エージェントのバージョン](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes)を最新のものにアップグレードします。
-2. ファイアウォールとプロキシの設定が正しく構成されていることを確認します。
+- **GetNextJob の完了状態が 0** であると記録されている場合、サーバーは Azure File Sync サービスと通信できます。 
+    - サーバーでタスク マネージャーを開き、ストレージ同期モニター (AzureStorageSyncMonitor.exe) プロセスが実行されていることを確認します。 プロセスが実行されていない場合は、最初にサーバーの再起動を試みます。 サーバーを再起動しても問題が解決しない場合は、Azure File Sync [エージェントのバージョン](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes)を最新のものにアップグレードします。 
+
+- **GetNextJob の完了状態が -2134347756** であると記録されている場合、サーバーはファイアウォールまたはプロキシが原因で Azure File Sync サービスと通信できません。 
     - サーバーがファイアウォールの背後にある場合は、送信ポート 443 が許可されていることを確認します。 ファイアウォールで特定のドメインへのトラフィックが制限されている場合は、ファイアウォールの[ドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall)に記載されているドメインにアクセスできることを確認します。
     - サーバーがプロキシの背後にある場合は、プロキシの[ドキュメント](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)に記載されている手順に従って、コンピューター全体またはアプリ固有のプロキシ設定を構成します。
+
+- **GetNextJob の完了状態が -2134347764** であると記録されている場合、サーバーは証明書の有効期限切れまたは削除が原因で Azure File Sync サービスと通信できません。  
+    - サーバーで次の PowerShell コマンドを実行して、認証に使用される証明書をリセットしてください。
+    ```powershell
+    Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
+    ```
+
 
 <a id="endpoint-noactivity-sync"></a>**サーバー エンドポイントの正常性状態が [アクティビティなし] で、登録済みサーバー ブレードのサーバーの状態が [オフライン] になっている**  
 
 サーバー エンドポイントの正常性状態 [アクティビティなし] とは、過去 2 時間にわたってサーバー エンドポイントで同期アクティビティが記録されていないことを意味します。
 
-サーバー エンドポイントでは、次の理由により同期アクティビティが記録されない場合があります。
+サーバー上の現在の同期アクティビティを確認するには、「[現在の同期セッションの進行状況を監視するにはどうすればよいですか。](#how-do-i-monitor-the-progress-of-a-current-sync-session)」を参照してください。
 
-- 4\.3.0.0 またはそれよりも古いバージョンのエージェントがインストールされており、アクティブな VSS 同期セッション (SnapshotSync) がサーバーに存在している。 あるサーバー エンドポイントで VSS 同期セッションがアクティブな場合、その VSS 同期セッションが完了するまで、同じボリューム上の他のサーバー エンドポイントは同期セッションを開始できません。 この問題を解決するには、VSS 同期セッションがアクティブなときにボリュームで複数のサーバー エンドポイントの同期をサポートするエージェント バージョン 5.0.2.0 以降をインストールします。
-
-    サーバー上の現在の同期アクティビティを確認するには、「[現在の同期セッションの進行状況を監視するにはどうすればよいですか。](#how-do-i-monitor-the-progress-of-a-current-sync-session)」を参照してください。
-
-- サーバーが同時同期セッションの最大数に達している。 
-    - エージェント バージョン 4.x 以降:制限は、使用できるシステム リソースに応じて変わります。
-    - エージェント バージョン 3.x:プロセッサごとに 2 つのアクティブな同期セッション、またはサーバーごとに最大 8 つのアクティブな同期セッション。
+バグまたはシステム リソースの不足によって、サーバー エンドポイントで数時間、同期アクティビティを記録できていない場合があります。 最新の Azure File Sync [エージェント バージョン](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes)がインストールされていることを確認してください。 問題が解決しない場合は、サポート リクエストを開いてください。
 
 > [!Note]  
 > [登録済みサーバー] ブレードで、サーバーの状態が [オフラインのようです] になっている場合は、「[サーバー エンドポイントの正常性状態が [アクティビティなし] または [保留中] で、登録済みサーバー ブレードのサーバーの状態が [オフラインのようです] になっている](#server-endpoint-noactivity)」セクションに記載されている手順を実行してください。
@@ -278,12 +284,15 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | サーバー上の階層化されたファイルにアクセスできません。 この問題は、サーバー エンドポイントを削除する前に、階層化されたファイルが取り消されなかった場合に発生します。 | この問題を解決する方法は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」を参照してください。 |
 | 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | 依存フォルダーがまだ同期されていないため、ファイルまたはディレクトリの変更を同期できません。 この項目は、依存する変更が同期された後に同期されます。 | 必要なアクションはありません。 |
+| 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | 依存フォルダーがまだ同期されておらず、同期セッションが失敗したため、ファイルまたはディレクトリの変更を同期できません。 この項目は、依存する変更が同期された後に同期されます。 | 必要なアクションはありません。 エラーが引き続き発生する場合は、同期セッションの失敗を調査します。 |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | ファイルまたはディレクトリの名前が無効です。 | 問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | ファイルは使用中のため、同期できません。 ファイルは使用されなくなると同期されます。 | 必要なアクションはありません。 Azure File Sync は、1 日 1 回サーバー上で一時 VSS スナップショットを作成して、開くハンドルを含むファイルを同期します。 |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | ファイルが変更されましたが、まだ同期によって変更が検出されていません。この変更が検出された後に同期が復旧します。 | 必要なアクションはありません。 |
 | 0x80070002 | -2147024894 | ERROR_FILE_NOT_FOUND | ファイルが削除されており、同期で変更が認識されません。 | 必要なアクションはありません。 変更の検出によってファイルが削除されたことが検出されると、同期によってこのエラーのログ記録が停止されます。 |
-| 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | ファイルがスキップされましたが、次の同期セッション中に同期されます。 | 必要なアクションはありません。 |
+| 0x80070003 | -2147942403 | ERROR_PATH_NOT_FOUND | 同期先で項目が既に削除されているのに同期で変更が認識されないため、ファイルまたはディレクトリの削除を同期できません。 | 必要なアクションはありません。 同期先で変更の検出が実行されて、削除済みの項目が同期で検出されると、同期によってこのエラーのログ記録が停止されます。 |
+| 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | ファイルまたはディレクトリがスキップされましたが、次の同期セッション中に同期されます。 項目のダウンロード時にこのエラーがレポートされる場合は、ファイルまたはディレクトリの名前が高確率で無効になっています。 | ファイルのアップロード時にこのエラーがレポートされる場合は、必要なアクションはありません。 ファイルのダウンロード時にこのエラーがレポートされる場合は、問題のファイルまたはディレクトリの名前を変更します。 詳しくは、「[サポートされていない文字の処理](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters)」をご覧ください。 |
+| 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | 同期先で項目が既に存在しているのに同期で変更が認識されないため、ファイルまたはディレクトリの作成を同期できません。 | 必要なアクションはありません。 同期先で変更の検出が実行されて、この新しい項目が同期で認識されると、同期によってこのエラーのログ記録が停止されます。 |
 | 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Azure ファイル共有の制限に達したため、ファイルを同期できません。 | この問題を解決するには、トラブルシューティング ガイドの「[Azure のファイル共有ストレージの上限に到達しました](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810)」をご覧ください。 |
 | 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | ファイルは、サポートされていないソリューション (NTFS EFS など) によって暗号化されています。 | ファイルの暗号化を解除し、サポートされている暗号化ソリューションを使用します。 サポートされているソリューションの一覧については、計画ガイドの「[暗号化ソリューション](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions)」セクションをご覧ください。 |
 | 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | ファイルは、DFS-R 読み取り専用レプリケーション フォルダーにあります。 | ファイルは、DFS-R 読み取り専用レプリケーション フォルダーにあります。 Azure Files Sync は DFS-R 読み取り専用レプリケーション フォルダーにおけるサーバー エンドポイントをサポートしません。 詳細については、[計画ガイド](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#distributed-file-system-dfs)を参照してください。 |
@@ -808,6 +817,17 @@ Azure ファイル共有が削除されている場合は、新しいファイ�
 
 このエラーは、Azure File Sync が HTTP リダイレクトをサポートしていないために発生します (3xx 状態コード)。 この問題を解決するには、プロキシ サーバーまたはネットワーク デバイスで HTTP リダイレクトを無効にします。
 
+<a id="-2134364027"></a>**オフラインのデータ転送中にタイムアウトが発生したものの、まだ進行中である。**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83085 |
+| **HRESULT (10 進値)** | -2134364027 |
+| **エラー文字列** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
+| **修復が必要か** | いいえ |
+
+このエラーは、データ インジェスト操作のタイムアウト期間が経過したときに発生します。 同期が進行中である (AppliedItemCount が 0 より大きい) 場合、このエラーは無視してもかまいません。 「[現在の同期セッションの進行状況を監視するにはどうすればよいですか。](#how-do-i-monitor-the-progress-of-a-current-sync-session)」を参照してください。
+
 ### <a name="common-troubleshooting-steps"></a>一般的なトラブルシューティング手順
 <a id="troubleshoot-storage-account"></a>**ストレージ アカウントが存在することを確認します。**  
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
@@ -1025,7 +1045,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 | HRESULT | HRESULT (10 進値) | エラー文字列 | 問題 | Remediation |
 |---------|-------------------|--------------|-------|-------------|
-| 0x80070079 | -121 | ERROR_SEM_TIMEOUT | I/O タイムアウトのため、ファイルの呼び戻しに失敗しました。 この問題は、サーバー リソースの制約、ネットワーク接続の低下、または Azure Storage の問題 (調整など) といったいくつかの理由によって発生する可能性があります。 | 必要なアクションはありません。 エラーが数時間継続して発生する場合は、サポート ケースを開いてください。 |
+| 0x80070079 | -2147942521 | ERROR_SEM_TIMEOUT | I/O タイムアウトのため、ファイルの呼び戻しに失敗しました。 この問題は、サーバー リソースの制約、ネットワーク接続の低下、または Azure Storage の問題 (調整など) といったいくつかの理由によって発生する可能性があります。 | 必要なアクションはありません。 エラーが数時間継続して発生する場合は、サポート ケースを開いてください。 |
 | 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | ネットワークの問題が発生したため、ファイルの呼び戻しに失敗しました。  | エラーが引き続き発生する場合は、Azure ファイル共有へのネットワーク接続を確認します。 |
 | 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | サーバー エンドポイントが削除されたため、ファイルの呼び戻しに失敗しました。 | この問題を解決する方法は、「[サーバー エンドポイントを削除した後、サーバー上で階層化されたファイルにアクセスできない](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint)」を参照してください。 |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | アクセス拒否エラーが発生したため、ファイルの呼び戻しに失敗しました。 この問題は、ストレージ アカウントでファイアウォールと仮想ネットワークの設定が有効になっていて、サーバーにそのストレージ アカウントへのアクセス権がない場合に発生します。 | この問題を解決するには、デプロイ ガイドの「[ファイアウォールと仮想ネットワークの設定を構成する](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)」セクションに記載されている手順に従い、サーバー IP アドレスまたは仮想ネットワークを追加します。 |

@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C でカスタム ポリシーに独自の属性を追加する | Microsoft Docs
+title: 独自の属性をカスタム ポリシーに追加する
+titleSuffix: Azure AD B2C
 description: 拡張プロパティおよびカスタム属性を使用し、ユーザー インターフェイスにそれらを含めるチュートリアル。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 82a796a3252a4de6eacabcad45c61c864e963fe0
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 92050261777482bae8055f697ef50c2295675c5b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066165"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948779"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C:カスタム プロファイル編集ポリシーでカスタム属性を使用する
 
@@ -302,3 +303,4 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 > * **TechnicalProfile** は、エンドポイントの名前、メタデータ、およびプロトコルを定義する要素の種類 (または関数) です。 **TechnicalProfile** には、Identity Experience Framework によって実行される要求の交換が詳細に示されています。 この関数がオーケストレーションの手順または別の **TechnicalProfile** から呼び出されると、**InputClaims** と **OutputClaims** が呼び出し元によってパラメーターとして指定されます。
 > * Graph API の拡張属性には、`extension_ApplicationObjectID_attributename` という規則を使って名前が付けられます。
 > * カスタム ポリシーでは、拡張属性を **extension_attributename** として参照します。 この参照では、XML での **ApplicationObjectId** が省略されます。
+> * どこから参照されていても、属性 ID は次の形式 **extension_attributename** で指定する必要があります。

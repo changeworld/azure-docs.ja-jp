@@ -1,37 +1,40 @@
 ---
-title: Azure Storage でリージョン間持久性を実現する geo 冗長ストレージ (GRS) | Microsoft Docs
+title: リージョン間持続性を実現する geo 冗長ストレージ (GRS)
+titleSuffix: Azure Storage
 description: geo 冗長ストレージ (GRS) によって、何百キロも離れた 2 つのリージョン間でデータがレプリケートされます。 GRS は、データセンター内のハードウェア障害だけでなく地域の災害からも保護できます。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/20/2018
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 16a5f214495025d16d10ee01a7b2a40b78f7a17a
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: c44c13f268a561e3094ae76757504a86627e1f58
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670805"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895223"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>geo 冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション
+
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
 
 ## <a name="read-access-geo-redundant-storage"></a>読み取りアクセス geo 冗長ストレージ
+
 読み取りアクセス geo 冗長ストレージ (RA-GRS) は、ストレージ アカウントの可用性を最大化します。 RA-GRS は、2 つのリージョンにまたがる geo レプリケーションだけでなく、セカンダリ ロケーションにあるデータに対する読み取り専用アクセスを提供します。
 
 セカンダリ リージョンのデータに対して読み取り専用アクセスを有効にすると、ご利用のストレージ アカウントのプライマリ エンドポイントだけでなく、セカンダリ エンドポイントのデータも使用できます。 セカンダリ エンドポイントはプライマリ エンドポイントと似ていますが、アカウント名に `–secondary` というサフィックスが追加されます。 たとえば、Blob service のプライマリ エンドポイントが `myaccount.blob.core.windows.net` の場合、セカンダリ エンドポイントは `myaccount-secondary.blob.core.windows.net` になります。 ストレージ アカウントのアクセス キーは、プライマリ エンドポイントとセカンダリ エンドポイントの両方で同じです。
 
 RA-GRS 使用時の考慮事項:
 
-* RA-GRS を使うときは、通信対象のエンドポイントをアプリケーションで管理する必要があります。
-* 非同期レプリケーションには遅延が伴うため、データをプライマリ リージョンから復旧できないと、セカンダリ リージョンにまだレプリケートされていない変更は失われる可能性があります。
-* ストレージ アカウントの最後の同期時刻を確認できます。 最後の同期時刻は、GMT 日付/時刻の値です。 最後の同期時刻より前にプライマリに対して書き込まれたデータはすべて、セカンダリ ロケーションに対して正常に書き込まれています。つまり、これらのデータは、セカンダリ ロケーションから読み取ることができます。 最後の同期時刻より後にプライマリに対して書き込まれたデータに関しては、読み取りできる場合とできない場合とがあります。 この値を、[Azure Portal](https://portal.azure.com/)、[Azure PowerShell](storage-powershell-guide-full.md)、または Azure Storage クライアント ライブラリの 1 つを使用して、クエリできます。
-* セカンダリ リージョンへの GRS または RA-GRS アカウントのアカウント フェールオーバー (プレビュー) を開始する場合、そのアカウントへの書き込みアクセスは、フェールオーバーが完了した後に復元されます。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)](storage-disaster-recovery-guidance.md)」を参照してください。
-* RA-GRS は高可用性を目的として作られています。 スケーラビリティのガイダンスについては、[パフォーマンス チェックリスト](storage-performance-checklist.md)をご覧ください。
-* RA-GRS を使用して高可用性を確保するためのお勧めの設計方法については、「[RA-GRS を使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md)」を参照してください。
+- RA-GRS を使うときは、通信対象のエンドポイントをアプリケーションで管理する必要があります。
+- 非同期レプリケーションには遅延が伴うため、データをプライマリ リージョンから復旧できないと、セカンダリ リージョンにまだレプリケートされていない変更は失われる可能性があります。
+- ストレージ アカウントの最後の同期時刻を確認できます。 最後の同期時刻は、GMT 日付/時刻の値です。 最後の同期時刻より前にプライマリに対して書き込まれたデータはすべて、セカンダリ ロケーションに対して正常に書き込まれています。つまり、これらのデータは、セカンダリ ロケーションから読み取ることができます。 最後の同期時刻より後にプライマリに対して書き込まれたデータに関しては、読み取りできる場合とできない場合とがあります。 この値を、[Azure Portal](https://portal.azure.com/)、[Azure PowerShell](storage-powershell-guide-full.md)、または Azure Storage クライアント ライブラリの 1 つを使用して、クエリできます。
+- セカンダリ リージョンへの GRS または RA-GRS アカウントのアカウント フェールオーバー (プレビュー) を開始する場合、そのアカウントへの書き込みアクセスは、フェールオーバーが完了した後に復元されます。 詳細については、「[ディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)](storage-disaster-recovery-guidance.md)」を参照してください。
+- RA-GRS は高可用性を目的として作られています。 スケーラビリティのガイダンスについては、[パフォーマンス チェックリスト](storage-performance-checklist.md)をご覧ください。
+- RA-GRS を使用して高可用性を確保するためのお勧めの設計方法については、「[RA-GRS を使用した高可用性アプリケーションの設計](storage-designing-ha-apps-with-ragrs.md)」を参照してください。
 
 ## <a name="what-is-the-rpo-and-rto-with-grs"></a>GRS の RPO や RTO とは何ですか。
 
@@ -39,13 +42,15 @@ RA-GRS 使用時の考慮事項:
 
 **Recovery Time Objective (RTO: 目標復旧時間):** RTO は、フェールオーバーを実行してストレージ アカウントをオンラインに戻すまでにかかる時間の指標です。 フェールオーバーの所要時間には、次のアクションが含まれます。
 
-   * プライマリからセカンダリ リージョンへのストレージ アカウントのフェールオーバーが開始されるまでの時間。
-   * Azure がプライマリ DNS エントリの参照先をセカンダリ ロケーションに変更してフェールオーバーを実行するのに必要な時間。
+- プライマリからセカンダリ リージョンへのストレージ アカウントのフェールオーバーが開始されるまでの時間。
+- Azure がプライマリ DNS エントリの参照先をセカンダリ ロケーションに変更してフェールオーバーを実行するのに必要な時間。
 
-## <a name="paired-regions"></a>ペアになっているリージョン 
+## <a name="paired-regions"></a>ペアになっているリージョン
+
 ストレージ アカウントの作成時に、アカウントのプライマリ リージョンを選択します。 ペアのセカンダリ リージョンはプライマリ リージョンに基づいて決定され、変更することはできません。 Azure でサポートされているリージョンに関する最新の情報については、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
+
 - [Azure Storage のレプリケーション](storage-redundancy.md)
 - [ローカル冗長ストレージ (LRS):Azure Storage の低コストのデータ冗長性](storage-redundancy-lrs.md)
 - [ゾーン冗長ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)

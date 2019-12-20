@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 8820818528835df6379c894eb06c154f4120f507
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b1717b9b336d31c86db1ec38eb97c7e8814b76d7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227314"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925993"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
@@ -24,7 +24,7 @@ Event Grid は、"*パブリッシャー*" 内で発生したイベントにつ�
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>パッケージ - Functions 2.x 以降
 
 Event Grid トリガーは、[Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet パッケージ、バージョン 2.x で提供されます。 パッケージのソース コードは、[azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x) GitHub リポジトリにあります。
 
@@ -48,9 +48,9 @@ Event Grid トリガーの言語固有の例をご覧ください。
 
 HTTP トリガーの例については、後の「[HTTP トリガーを使用する方法](#use-an-http-trigger-as-an-event-grid-trigger)」をご覧ください。
 
-### <a name="c-2x"></a>C# (2.x)
+### <a name="c-2x-and-higher"></a>C# (2.x 以降)
 
-次の例は、`EventGridEvent` にバインドする Functions 2.x の [C# 関数](functions-dotnet-class-library.md)を示したものです。
+次の例は、`EventGridEvent` にバインドする[ C# 関数](functions-dotnet-class-library.md)を示したものです。
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -118,9 +118,9 @@ namespace Company.Function
 }
 ```
 
-#### <a name="c-script-version-2x"></a>C# スクリプト (バージョン 2.x)
+#### <a name="c-script-version-2x-and-higher"></a>C# スクリプト (バージョン 2.x 以降)
 
-`EventGridEvent` にバインドする Functions 2.x の C# スクリプト コードを次に示します。
+`EventGridEvent` にバインドする例を次に示します。
 
 ```csharp
 #r "Microsoft.Azure.EventGrid"
@@ -326,7 +326,7 @@ Azure Functions 1.x の C# および F# 関数については、Event Grid ト�
 * `JObject`
 * `string`
 
-Azure Functions 2.x の C# および F# 関数については、Event Grid トリガーに次のパラメーター型を使用することもできます。
+Azure Functions 2.x 以降の C# および F# 関数については、Event Grid トリガーに次のパラメーター型を使用することもできます。
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent`- すべてのイベントの種類に共通するフィールドのプロパティを定義します。
 
@@ -395,7 +395,7 @@ Azure Portal を使ってサブスクリプションを作成する方法につ�
 
 このコマンドには、関数を呼び出すエンドポイント URL が必要です。 バージョン固有の URL パターンの例を次に示します。
 
-#### <a name="version-2x-runtime"></a>バージョン 2.x ランタイム
+#### <a name="version-2x-and-higher-runtime"></a>バージョン 2.x (以降) のランタイム
 
     https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
 
@@ -407,7 +407,7 @@ Azure Portal を使ってサブスクリプションを作成する方法につ�
 
 BLOB ストレージ アカウントをサブスクライブする例を次に示します (システム キーのプレースホルダーを含みます)。
 
-#### <a name="version-2x-runtime"></a>バージョン 2.x ランタイム
+#### <a name="version-2x-and-higher-runtime"></a>バージョン 2.x (以降) のランタイム
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -435,7 +435,7 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 
 次の API (HTTP GET) を使って、システム キーを取得できます。
 
-#### <a name="version-2x-runtime"></a>バージョン 2.x ランタイム
+#### <a name="version-2x-and-higher-runtime"></a>バージョン 2.x (以降) のランタイム
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
@@ -522,7 +522,7 @@ Event Grid 関数をローカルで実行します。
 * `aeg-event-type: Notification` ヘッダーを設定します。
 * 要求本文に RequestBin のデータを貼り付けます。
 * Event Grid トリガー関数の URL に投稿します。
-  * 2\.x の場合は、以下のパターンを使用します。
+  * 2\.x 以降の場合は、次のパターンを使用します。
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
@@ -591,7 +591,7 @@ ngrok の URL は Event Grid によって特別に処理されないので、サ
 
 テストする種類の Event Grid サブスクリプションを作成し、それに ngrok エンドポイントを提供します。
 
-Functions 2.x に対して、次のようにこのエンドポイント パターンを使用します。
+Functions 2.x 以降に対して、次のようにこのエンドポイント パターンを使用します。
 
 ```
 https://{SUBDOMAIN}.ngrok.io/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}

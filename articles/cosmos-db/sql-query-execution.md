@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB での SQL クエリの実行
-description: Azure Cosmos DB での SQL クエリの実行について学習します
+description: Azure Cosmos DB で SQL クエリを作成して実行する方法について説明します。 この記事では、REST API、.Net SDK、JavaScript SDK などのさまざまな SDK を使用して SQL クエリを作成し、実行する方法について説明します。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999908"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871263"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL クエリの実行
 

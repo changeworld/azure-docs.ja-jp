@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services を使用してコンテンツを保護する | Microsoft Docs
-description: この記事では、Media Services でのコンテンツ保護の概要について説明します。
+description: この記事では、Azure Media Services v2 を使用したコンテンツ保護の概要について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8259b58c7f30b63084e970bd9aed99642a43226f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ff4025941e9a77148daa91995ecf182231d1f0b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61216171"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976283"
 ---
 # <a name="content-protection-overview"></a>コンテンツ保護の概要 
 
@@ -87,6 +87,10 @@ Media Services は、承認されたクライアントに DRM (PlayReady、Widev
   * **cenc**: PlayReady または Widevine の場合 (共通暗号化)
   * **cbcs-aapl**: FairPlay の場合 (AES CBC 暗号化)
   * **cbc**: AES エンベロープ暗号化の場合
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
 
 ## <a name="next-steps"></a>次の手順
 以下の記事では、コンテンツ保護を開始するために役立つ次の手順について説明しています。
