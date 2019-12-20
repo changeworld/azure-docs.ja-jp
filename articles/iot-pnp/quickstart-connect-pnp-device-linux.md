@@ -65,13 +65,13 @@ az login
 
 Azure Cloud Shell を使用している場合は、既に自動的にサインインしています。
 
-次のコマンドを実行して、ご利用の IoT ハブに新しいデバイス ID を作成します。 **YourIoTHubName** および **YourDeviceID** のプレースホルダーを、お使いの _IoT Hub 名_および_デバイス ID_ に置き換えます。
+次のコマンドを実行して、ご利用の IoT ハブに新しいデバイス ID を作成します。 **YourIoTHubName** および **YourDeviceID** のプレースホルダーを、お使いの "_IoT Hub 名_" および "_デバイス ID_" に置き換えます。
 
 ```azurecli-interactive
 az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-次のコマンドを実行して、登録したデバイスの_デバイス接続文字列_を取得します (後で使用するためにメモします)。
+次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
@@ -126,7 +126,7 @@ git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
 
 1. デバイスの SDK ルート フォルダーの `digitaltwin_client/samples/digitaltwin_sample_environmental_sensor` フォルダーにある `EnvironmentalSensor.interface.json` ファイルを選択します。 **[開く]** 、 **[保存]** の順に選択し、インターフェイス ファイルをリポジトリにアップロードします。
 
-1. **[Company repository]\(会社リポジトリ\)** 、 **[接続文字列]** の順に選択します。 最初の_会社モデル リポジトリの接続文字列_をメモしておきます。このクイックスタートの後の手順で使用します。
+1. **[Company repository]\(会社リポジトリ\)** 、 **[接続文字列]** の順に選択します。 最初の "_会社モデル リポジトリの接続文字列_" をメモしておきます。このクイックスタートの後の手順で使用します。
 
 ## <a name="run-the-device-sample"></a>デバイス サンプルを実行する
 

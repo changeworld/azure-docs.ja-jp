@@ -24,19 +24,19 @@ ms.locfileid: "74152040"
 az extension add --name azure-cli-iot-ext
 ```
 
-次のコマンドを実行して、ご利用の IoT ハブに新しいデバイス ID を作成します。 **YourIoTHubName** と **YourDeviceID** のプレースホルダーを、任意の _IoT Hub 名_と_デバイス ID_ に置き換えます。
+次のコマンドを実行して、ご利用の IoT ハブに新しいデバイス ID を作成します。 **YourIoTHubName** と **YourDeviceID** のプレースホルダーを、任意の "_IoT Hub 名_" と "_デバイス ID_" に置き換えます。
 
 ```azurecli-interactive
 az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-次のコマンドを実行して、登録したデバイスの_デバイス接続文字列_を取得します (後で使用するためにメモします)。
+次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
 ```
 
-次のコマンドを実行して、ご使用のハブに対する _IoT ハブ接続文字列_を取得します (後で使用するためにメモします)。
+次のコマンドを実行して、ご使用のハブに対する "_IoT ハブ接続文字列_" を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table

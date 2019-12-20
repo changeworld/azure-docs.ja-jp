@@ -42,7 +42,7 @@ ms.locfileid: "74405808"
 
 ### <a name="get-the-connection-string-for-your-company-model-repository"></a>ご利用の会社モデル リポジトリの接続文字列を取得する
 
-Microsoft の職場または学校アカウントを使用するか、Microsoft パートナー ID (所持している場合) を使用してサインインすると、[Azure Certified for IoT](https://preview.catalog.azureiotsolutions.com) ポータルに、ご利用の_会社モデル リポジトリ接続文字列_が表示されます。 サインインしたら、 **[Company repository]\(会社リポジトリ\)** 、 **[接続文字列]** の順に選択します。
+Microsoft の職場または学校アカウントを使用するか、Microsoft パートナー ID (所持している場合) を使用してサインインすると、[Azure Certified for IoT](https://preview.catalog.azureiotsolutions.com) ポータルに、ご利用の "_会社モデル リポジトリ接続文字列_" が表示されます。 サインインしたら、 **[Company repository]\(会社リポジトリ\)** 、 **[接続文字列]** の順に選択します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -179,7 +179,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 1. Azure IoT エクスプローラーを開きます。 **[アプリの構成]** ページが表示されます。
 
-1. ご利用の _IoT Hub 接続文字列_を入力し、 **[接続]** を選択します。
+1. ご利用の "_IoT Hub 接続文字列_" を入力し、 **[接続]** を選択します。
 
 1. 接続すると、 **[デバイス]** の概要ページが表示されます。
 
