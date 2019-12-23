@@ -73,7 +73,7 @@ Time Series Insights の更新では、インスタンスを使用して、受�
 
     [![主キーの接続文字列の値をコピーする](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. https://tsiclientsample.azurewebsites.net/windFarmGen.html にアクセスします。 その URL では、シミュレートされた風力発電デバイスが実行されます。
+1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](https://tsiclientsample.azurewebsites.net/windFarmGen.html ) にアクセスします。 その URL では、シミュレートされた風力発電デバイスが実行されます。
 1. Web ページの **[イベント ハブ接続文字列]** ボックスに、[風力発電の入力フィールド](#push-events-to-windmills-sample)でコピーした接続文字列を貼り付けます。
   
     [![[イベント ハブ接続文字列] ボックスに主キーの接続文字列を貼り付ける](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)

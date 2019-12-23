@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dc66ae0f69c19524b32b55c654f7c8fd2d32762
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7d7744aab6d83b3415f32ca9e311940836c6f93c
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123213"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997243"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Machine Learning の Azure Kubernetes Service および Azure Container Instances デプロイのトラブルシューティング
 
@@ -505,7 +505,7 @@ VS Code を使用した Python のデバッグの詳細については、「[Pyt
     docker exec -it debug /bin/bash
     ```
 
-1. サービスで使用されるファイルを検索するには、コンテナーで Bash シェルから次のコマンドを使用します。
+1. サービスで使用されるファイルを検索するには、コンテナーで Bash シェルから次のコマンドを使用します (既定のディレクトリが `/var/azureml-app` と異なる場合)。
 
     ```bash
     cd /var/azureml-app

@@ -1,6 +1,6 @@
 ---
 title: Azure Media Content Moderator を使用して、成人向けやわいせつな可能性のあるコンテンツを検出する | Microsoft Docs
-description: ビデオのモデレートを使用すると、ビデオに含まれる成人向けやわいせつな可能性のあるコンテンツを検出するのに役立ちます。
+description: Azure Media Content Moderator メディア プロセッサは、ビデオに含まれる成人向けやわいせつな可能性のあるコンテンツを検出するのに役立ちます。
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8560df6120dd773e13dbfc7427d9a16e6f6c83b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61465679"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895996"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media Content Moderator を使用して、成人向けやわいせつな可能性のあるコンテンツを検出する 
 

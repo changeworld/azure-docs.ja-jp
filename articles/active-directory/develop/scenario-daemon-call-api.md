@@ -1,6 +1,6 @@
 ---
-title: Web API を呼び出すデーモン アプリ (Web API の呼び出し) - Microsoft ID プラットフォーム
-description: Web API を呼び出すデーモン アプリを構築する方法について説明します (Web API の呼び出し)
+title: デーモン アプリから Web API を呼び出す - Microsoft ID プラットフォーム | Azure
+description: Web API を呼び出すデーモン アプリをビルドする方法について学習します
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8af0bb023136ba07057e4078d5abfcb4a3194a56
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 46f1676ab1bdcf2b23907824bb9bf543b5f28ce6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175383"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962612"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Web API を呼び出すデーモン アプリ - アプリからの Web API 呼び出し
 

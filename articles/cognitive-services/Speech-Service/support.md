@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 741217cde5068468a7063a64361df8425346b590
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 7017c3065e41befab6b5d7cdea47e2e3e6720173
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815440"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928658"
 ---
 # <a name="support-and-help-options"></a>サポート オプションとヘルプ オプション
 
@@ -62,7 +62,7 @@ Azure ユーザーは、Azure portal でサポート要求を作成し、管理�
 
 Stack Overflow は、開発関連の質問を投稿するのに適したチャネルです。 コミュニティのメンバーや Microsoft チームのメンバーから、問題の解決方法について直接意見を聞くことができます。
 
-検索で問題に対する回答が見つからない場合は、[microsoft-cognitive-speech](https://stackoverflow.com/questions/tagged/microsoft-cognitive-speech)タグを使用して Stack Overflow に新しい質問を提出します。
+検索で問題に対する回答が見つからない場合は、[\[microsoft-cognitive\]\[speech\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech) タグを使用して Stack Overflow に新しい質問を提出します。
 
 > [!TIP]
 > Stack Overflow の次の投稿では、質問の作成方法やソース コードの追加方法に関するヒントが示されています。 これらのガイドラインに従うと、コミュニティ メンバーからの評価や回答がより早く返ってくる可能性があります。  

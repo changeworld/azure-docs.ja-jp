@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB での高可用性
-description: この記事では、Azure Cosmos DB で高可用性を実現する方法について説明します
+description: この記事では、Azure Cosmos DB で、Azure Cosmos アカウントに関連付けられているすべてのリージョンにデータを透過的にレプリケートして高可用性を実現する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ab6544e4535f2d2c2e88284f61251f177d457a84
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 1dab10592c8a34bc9df4425785e6dae95e44f219
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146660"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872096"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB での高可用性
 

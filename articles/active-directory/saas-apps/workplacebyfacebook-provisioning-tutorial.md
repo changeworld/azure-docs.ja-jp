@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574258"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996937"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル:Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -99,7 +99,7 @@ Azure AD は、割り当てられたユーザーのアカウントの詳細を W
 これでテスト アカウントを作成できるようになりました。 ここで 20 分間待機し、アカウントが Workplace by Facebook に同期されたことを確認します。
 
 > [!NOTE]
-> Microsoft では、Azure AD アプリケーションが承認されて、新しいガイドラインを満たすように Workplace by Facebook チームと密接に連携しています。 Workplace by Facebook の期限は 12 月 16 日であり、この期限には間に合う見込みです。 その時点でお客様の作業は必要ありません。 お客様は 2020 年 2 月 28 日までに新しい統合に移行する必要があります。 移行の方法が明らかになり次第、こちらでお知らせします。    
+> Workplace by Facebook の Azure AD サードパーティ アプリケーションが承認されました。 12 月 16 日にサービスの中断が発生することはありません。 新しいアプリケーションへの移行が必要になった際は、Workplace by Facebook 管理コンソールに、2020 年 2 月28 日の移行期限を示すメモが表示されます。 Microsoft は、移行を可能な限りシンプルにするために取り組んでおり、今月末までに、こちらで更新プログラムを提供します。
 
 ## <a name="additional-resources"></a>その他のリソース
 

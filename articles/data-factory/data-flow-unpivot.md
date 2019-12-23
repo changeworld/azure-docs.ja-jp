@@ -1,18 +1,19 @@
 ---
-title: Azure Data Factory のマッピング データ フローのピボット解除変換
+title: マッピング データ フローのピボット解除変換
 description: Azure Data Factory のマッピング データ フローのピボット解除変換
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 41423f704c87f05ad3e31b253d4a80799a554849
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b207012335e68d389a07b54408e840dbb305a30c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387745"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930133"
 ---
 # <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory のピボット解除変換
 

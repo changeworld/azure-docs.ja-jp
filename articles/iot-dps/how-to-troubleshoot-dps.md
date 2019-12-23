@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub DPS との切断に関する診断とトラブルシューティング
-description: Azure IoT Hub DPS のデバイス接続に関する一般的なエラーを診断し、解決する方法について説明します
+description: Azure IoT Hub Device Provisioning Service (DPS) のデバイス接続に関する一般的なエラーを診断し、解決する方法について説明します
 author: xujing-ms
 manager: nberdy
 ms.service: iot-dps
@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: b596a09e2185b38e6161ea4af2aa109e80faf248
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ffe20ff80e26bc5564b9379ea21ca99e2890b519
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963373"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974821"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のトラブルシューティング
 

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704290"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848895"
 ---
-# <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Azure Active Directory Domain Services でセキュリティ監査を有効にする (プレビュー)
+# <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services でセキュリティ監査を有効にする
 
 Azure Active Directory Domain Services (Azure AD DS) セキュリティ監査を使用すると、Azure でセキュリティ イベントを対象のリソースにストリーミングできます。 これらのリソースには、Azure Storage、Azure Log Analytics ワークスペース、または Azure Event Hub が含まれます。 セキュリティ監査イベントを有効にすると、Azure AD DS は、選択されたカテゴリのすべての監査対象イベントを対象のリソースに送信します。 Azure ストレージ内にイベントをアーカイブし、Azure Event Hubs を使用してセキュリティ情報およびイベント管理 (SIEM) ソフトウェア (または同等のもの) にイベントをストリーム配信したり、Azure portal から Azure Log Analytics ワークスペースを使用して独自の分析を行ったりすることができます。
 
@@ -83,7 +83,7 @@ Azure portal を使用して Azure AD DS のセキュリティ監査イベント
 
 1. Azure Portal ( https://portal.azure.com ) にサインインします。
 1. Azure portal の上部で、**Azure AD Domain Services** を検索して選択します。 目的のマネージド ドメインを選択します (例: *aadds.contoso.com*)。
-1. Azure AD DS ウィンドウで、左側にある **[診断設定 (プレビュー)]** を選択します。
+1. Azure AD DS ウィンドウで、左側にある **[診断設定]** を選択します。
 1. 診断は、既定では構成されていません。 作業を開始するには、 **[診断設定の追加]** を選択します。
 
     ![Azure AD Domain Services の診断設定を追加する](./media/security-audit-events/add-diagnostic-settings.png)

@@ -1,18 +1,20 @@
 ---
-title: Azure Data Factory データ フローのトラブルシューティング
+title: データ フローのトラブルシューティング
 description: Azure Data Factory でのデータ フローに関する問題のトラブルシューティングを行う方法について説明します。
 services: data-factory
+ms.author: makromer
 author: kromerm
+manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/08/2019
-ms.author: makromer
-ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721352"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930168"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory データ フローのトラブルシューティング
 
@@ -83,6 +85,14 @@ ms.locfileid: "73721352"
 - **原因**:JSON ソースで 1 つのドキュメントが入れ子になった多数の行に分かれている場合に、その JSON ソースを対象として読み取りを実行すると、新しいドキュメントがどこから始まっており、前のドキュメントがどこで終わっているかを ADF (Spark 経由) が特定できません。
 
 - **解決方法**:JSON データセットを使用しているソース変換で [JSON 設定] を展開し、[単一のドキュメント] をオンにします。
+
+### <a name="error-message-duplicate-columns-found-in-join"></a>エラー メッセージ:結合の中に重複する列が見つかりました
+
+- **現象**:結合変換により、左辺と右辺の両方から、重複する列名を含む列が生成されました
+
+- **原因**:結合される予定のストリームに、共通の列名があります
+
+- **解決方法**:結合後に Select 変換を追加し、入力と出力の両方に対して [Remove duplicate columns]\(重複する列の削除\) を選択します。
 
 
 ## <a name="general-troubleshooting-guidance"></a>一般的なトラブルシューティング ガイダンス

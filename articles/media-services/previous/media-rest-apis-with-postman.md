@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services REST API 呼び出し用の Postman の構成
-description: Media Services REST API 呼び出し用に Postman を構成する方法を説明します。
+description: この記事では、Media Services REST API 呼び出し用の Postman を構成する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5d0b5a57f3fe587a06a102c958b17dbf2a73225c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f55b3d5767f38c8fba2e79925f6f6e1e390aad2d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61466715"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887795"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成  
 

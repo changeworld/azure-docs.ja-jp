@@ -1,5 +1,5 @@
 ---
-title: Azure Database for PostgreSQL – Hyperscale (Citus) パフォーマンス オプション
+title: パフォーマンス オプション – Hyperscale (Citus) - Azure Database for PostgreSQL
 description: ノードのコンピューティング、ストレージ、およびリージョンを含む、Hyperscale (Citus) サーバー グループのオプションです。
 author: jonels-msft
 ms.author: jonels
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 2b848827d3d2017e5e787989553c0bf1e26d48e7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ee3e661d6c01aa2e4f37ac9a70e00be5da5f794
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482638"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975637"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-performance-options"></a>Azure Database for PostgreSQL – Hyperscale (Citus) パフォーマンス オプション
 
@@ -32,7 +32,7 @@ Hyperscale (Citus) サーバー グループ内のワーカー ノードおよ�
 ## <a name="regions"></a>リージョン
 Hyperscale (Citus) サーバー グループは次の Azure リージョンで使用できます。
 
-* アメリカ:
+* アメリカ合衆国:
     * カナダ中部 *
     * East US
     * 米国東部 2

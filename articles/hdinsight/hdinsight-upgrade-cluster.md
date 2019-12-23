@@ -5,15 +5,15 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/04/2017
-ms.openlocfilehash: 808e592a01bca2066b7d3d37a5fdfa697d739d4b
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 1a1d4a71786ebb1e68f59084086b3256a1c1ea40
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122444"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951158"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight クラスターを新しいバージョンにアップグレードする
 
@@ -34,14 +34,15 @@ HDInsight クラスターをアップグレードするワークフローは次�
 
 すべて予期したとおりに動作していることを確認したら、移行のダウンタイムをスケジュールします。 このダウンタイム中に、次の操作を実行します。
 
-1.  クラスター ノードでローカルに格納されている一時的なデータをバックアップします。 たとえば、ヘッド ノードに直接データを格納している場合です。
-2.  既存のクラスターを削除します。
-3.  同じ VNET サブネットの中に、前のクラスターで使用していたのと同じ既定のデータ ストアを使用する、最新の (またはサポートされている) バージョンの HDI クラスターを作成します。 これで、新しいクラスターで既存の運用データを引き続き使用できます。
-4.  バックアップしたすべての一時的なデータをインポートします。
-5.  新しいクラスターを使用して、ジョブを開始または処理を続行します。
+1. クラスター ノードでローカルに格納されている一時的なデータをバックアップします。 たとえば、ヘッド ノードに直接データを格納している場合です。
+1. [既存のクラスターを削除します](./hdinsight-delete-cluster.md)。
+1. 同じ VNET サブネットの中に、前のクラスターで使用していたのと同じ既定のデータ ストアを使用する、最新の (またはサポートされている) バージョンの HDI クラスターを作成します。 これで、新しいクラスターで既存の運用データを引き続き使用できます。
+1. バックアップしたすべての一時的なデータをインポートします。
+1. 新しいクラスターを使用して、ジョブを開始または処理を続行します。
 
 ## <a name="next-steps"></a>次の手順
 
 * [Linux ベースの HDInsight クラスターを作成する方法を確認する](hdinsight-hadoop-provision-linux-clusters.md)
 * [SSH を使用して HDInsight に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Apache Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
+* [HDInsight リリース ノート](./hdinsight-version-release.md)

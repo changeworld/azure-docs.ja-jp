@@ -11,12 +11,12 @@ ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fea35325f11878373db8dd52b9b2bf08a25b81d1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 28d239d47b46a5aafdf65c72ef826a0efb79f52b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692367"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974635"
 ---
 # <a name="azure-sql-data-warehouse-workload-importance"></a>Azure SQL Data Warehouse のワークロードの重要度
 
@@ -26,11 +26,11 @@ ms.locfileid: "73692367"
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
-ビジネス ニーズでは、データ ウェアハウスのワークロードを他よりも重要視することが求められる場合があります。  会計期間が終了する前にミッション クリティカルな販売データが読み込まれるというシナリオを検討します。  気象データなど、その他のソースのデータ読み込には、厳密な SLA はありません。   売上データの読み込み要求に高い重要度を設定し、気象データの読み込み要求に低い重要度を設定すると、売上データの読み込みが確実にリソースに対するアクセス権を最初に取得し、より速く完了することになります。
+ビジネス ニーズでは、データ ウェアハウスのワークロードを他よりも重要視することが求められる場合があります。  会計期間が終了する前にミッション クリティカルな販売データが読み込まれるというシナリオを検討します。  気象データなど、その他のソースのデータ読み込には、厳密な SLA はありません。 売上データの読み込み要求に高い重要度を設定し、気象データの読み込み要求に低い重要度を設定すると、売上データの読み込みが確実にリソースに対するアクセス権を最初に取得し、より速く完了することになります。
 
 ## <a name="importance-levels"></a>重要度のレベル
 
-重要度のレベルには、low、below_normal、normal、above_normal、high の 5 つがあります。  重要度が設定されない要求には、既定のレベルである normal が割り当てられます。  同じ重要度レベルが設定された要求については、現時点で存在しているスケジュール動作と同じになります。
+重要度のレベルには、low、below_normal、normal、above_normal、high の 5 つがあります。  重要度が設定されない要求には、既定のレベルである normal が割り当てられます。 同じ重要度レベルが設定された要求については、現時点で存在しているスケジュール動作と同じになります。
 
 ## <a name="importance-scenarios"></a>重要度のシナリオ
 
@@ -38,7 +38,7 @@ ms.locfileid: "73692367"
 
 ### <a name="locking"></a>ロック
 
-読み取りおよび書き込みアクティビティ用のロックへのアクセスは、自然な競合の 1 つの領域です。  [パーティションの切り替え](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)や[オブジェクトの名前変更](/sql/t-sql/statements/rename-transact-sql)などのアクティビティには、管理者特権でのロックが必要です。  ワークロードの重要度が設定されていなくても、SQL Data Warehouse ではスループットの最適化が行われます。  スループットの最適化とは、実行中の要求とキューに置かれた要求が同じロック ニーズを持ち、リソースが利用可能な場合、キューに置かれた要求は、要求キューに先に到達した、より高いロック ニーズを持つ要求をバイパスする可能性があることを意味しています。  より高いロック ニーズを持つ要求にワークロードの重要度が適用されると、 重要度の高い方の要求が、重要度の低い方の要求よりも先に実行されます。
+読み取りおよび書き込みアクティビティ用のロックへのアクセスは、自然な競合の 1 つの領域です。 [パーティションの切り替え](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)や[オブジェクトの名前変更](/sql/t-sql/statements/rename-transact-sql)などのアクティビティには、管理者特権でのロックが必要です。  ワークロードの重要度が設定されていなくても、SQL Data Warehouse ではスループットの最適化が行われます。  スループットの最適化とは、実行中の要求とキューに置かれた要求が同じロック ニーズを持ち、リソースが利用可能な場合、キューに置かれた要求は、要求キューに先に到達した、より高いロック ニーズを持つ要求をバイパスする可能性があることを意味しています。  ロックの必要性がより高い要求に対してワークロードの重要度が適用されると、重要度の低い要求より先に重要度の高い要求が実行されます。
 
 次の例を考えてみます。
 
@@ -50,7 +50,7 @@ Q2 と Q3 が同じ重要度を持ち、Q1 がまだ実行中である場合、Q
 
 ### <a name="non-uniform-requests"></a>均一でない要求
 
-クエリ要求を満たすのに重要度を役立てることができるというもう 1 つのシナリオは、リソース クラスが異なる要求を送信する場合に適用されます。  既に述べたように、同じ重要度の下では、SQL Data Warehouse のスループットが最適化されます。  混在したサイズ要求 (Smallrc または mediumrc など) がキューに置かれると、使用可能なリソース内で収まる最も早く到着した要求が SQL Data Warehouse によって選択されます。  ワークロードの重要度が適用されると、重要度の最も高い要求が次にスケジュールされます。
+クエリ要求を満たすのに重要度を役立てることができるというもう 1 つのシナリオは、リソース クラスが異なる要求を送信する場合に適用されます。  既に述べたように、同じ重要度の下では、SQL Data Warehouse のスループットが最適化されます。 混在したサイズ要求 (Smallrc または mediumrc など) がキューに置かれると、使用可能なリソース内で収まる最も早く到着した要求が SQL Data Warehouse によって選択されます。 ワークロードの重要度が適用されると、重要度の最も高い要求が次にスケジュールされます。
   
 DW500c に対する次の例について考えてみてください。
 
@@ -58,11 +58,11 @@ Q1、Q2、Q3、および Q4 は、smallrc クエリを実行しています。
 Q5 は、午前 9 時に mediumrc リソース クラスを使用して送信されます。
 Q6 は、午前 9 時 01 分に smallrc リソース クラスを使用して送信されます。
 
-Q5 は mediumrc であるために、2 つの同時実行スロットが必要になります。  Q5 は、2 つの実行中のクエリが完了するまで待機する必要があります。  ただし、実行中のクエリ (Q1 から Q4 まで) のいずれかが完了すると、クエリを実行するリソースが存在するため Q6 がすぐにスケジュールされます。  Q5 の重要度は Q6 よりも高いため、Q6 は Q5 が実行されるのを待って、実行を開始する必要があります。
+Q5 は mediumrc であるために、2 つの同時実行スロットが必要になります。 Q5 は、2 つの実行中のクエリが完了するまで待機する必要があります。  ただし、実行中のクエリ (Q1 から Q4 まで) のいずれかが完了すると、クエリを実行するリソースが存在するため Q6 がすぐにスケジュールされます。  Q5 の重要度は Q6 よりも高いため、Q6 は Q5 が実行されるのを待って、実行を開始する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
-- 分類子の作成の詳細については、「[CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)」を参照してください。  
+- 分類子の作成の詳細については、「[CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql)」を参照してください。  
 - SQL Data Warehouse のワークロード分類の詳細については、[ワークロードの分類](sql-data-warehouse-workload-classification.md)に関する記事を参照してください。  
 - ワークロード分類子の作成方法については、[ワークロード分類子の作成](quickstart-create-a-workload-classifier-tsql.md)に関するクイック スタートを参照してください。
 - [ワークロードの重要度の構成](sql-data-warehouse-how-to-configure-workload-importance.md)と [Workload Management の管理と監視](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)に関するハウツー記事を参照してください。

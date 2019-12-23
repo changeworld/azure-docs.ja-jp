@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7c259371ccdb55eff01eb7f0605315b17c33cdd3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167869"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842749"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>チュートリアル:G Suite を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -178,7 +178,7 @@ Azure AD で自動ユーザー プロビジョニング用に G Suite を構成�
 
     ![G Suite のグループ マッピング](media/google-apps-provisioning-tutorial/groupmappings.png)
 
-12. **[属性マッピング]** セクションで、Azure AD から G Suite に同期されるグループ属性を確認します。 **[Matching] (照合)** プロパティとして選択されている属性は、更新操作のために G Suite のグループを照合するために使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+12. **[属性マッピング]** セクションで、Azure AD から G Suite に同期されるグループ属性を確認します。 **[Matching] (照合)** プロパティとして選択されている属性は、更新操作のために G Suite のグループを照合するために使用されます。 **[保存]** ボタンをクリックして変更をコミットします。 Azure AD と G Suite 間の既定の属性マッピング一式が UI に表示されます。 [新しいマッピングの追加] をクリックすることによって、さらに別の属性 (組織単位など) を追加することができます。 
 
     ![G Suite のグループ属性](media/google-apps-provisioning-tutorial/groupattributes.png)
 
@@ -204,6 +204,9 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+
+## <a name="common-issues"></a>一般的な問題
+* 接続の確立に使用されたアカウントが GSuite の管理者のものではない場合、認可エラーが発生することがあります。 アクセス承認用のアカウントに、ユーザーのプロビジョニングに使用する**すべてのドメイン**に対する管理者権限があることを確認してください。 
 
 ## <a name="next-steps"></a>次の手順
 

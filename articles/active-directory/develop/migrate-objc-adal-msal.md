@@ -1,30 +1,25 @@
 ---
-let application: MSALPublicClientApplication!
-title: MSAL.ObjectiveC へのアプリの移行
+title: アプリを MSAL に移行する (iOS および macOS) | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft Authentication Library for ObjectiveC (iOS および macOS 用の MSAL) と Azure AD Authentication Library for ObjectiveC (ADAL.ObjC) の違いと、iOS および macOS 用の MSAL に移行する方法について説明します。
+description: iOS および macOS 用の MSAL と Azure AD Authentication Library for ObjectiveC (ADAL.ObjC) の違いと、iOS および macOS 用の MSAL に移行する方法について学習します。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: twhitney
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ccf88bcffdf484772f5f3ad35316d2c74fb104e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 88fcb3422c900419abf68173ff5026a7dd0b87ea
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175632"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963598"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>アプリケーションを iOS および macOS 用の MSAL に移行する
 

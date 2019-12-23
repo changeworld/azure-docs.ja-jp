@@ -1,20 +1,20 @@
 ---
-title: Linux 仮想マシンのイメージ ギャラリーとともに Azure Image Builder を使用する (プレビュー)
-description: Azure Image Builder と共有イメージ ギャラリーで Linux イメージを作成します。
+title: Linux VM のイメージ ギャラリーで Azure Image Builder を使用する (プレビュー)
+description: Azure Image Builder と共有イメージ ギャラリーで Linux VM イメージを作成します。
 author: cynthn
 ms.author: cynthn
 ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9fc624ab24cd98d0025fe2a34bf48c29b47c50e9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 09dceb84a20ef49b3e9d5264b94bb5e74180cd2b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695421"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976130"
 ---
-# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>更新:Linux イメージを作成して共有イメージ ギャラリーに配布する 
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Linux イメージを作成して共有イメージ ギャラリーに配布する 
 
 この記事では、Azure Image Builder を使用して[共有イメージ ギャラリー](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)でイメージ バージョンを作成し、そのイメージをグローバルに配布する方法について説明します。
 

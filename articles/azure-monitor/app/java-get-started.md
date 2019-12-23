@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights を使用した Java Web アプリの分析 | Microsoft Docs
+title: Azure Application Insights を使用した Java Web アプリの分析
 description: 'Application Insights を使用した Java Web アプリのアプリケーション パフォーマンス監視 '
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 05/24/2019
-ms.openlocfilehash: 28fbb5fcfba2b346d0519dec79e538b1e513b7dd
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 0686cea590ca26096b443dba21b05dc3335c7add
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817131"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927253"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -83,7 +83,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
   * 依存関係を手動で管理している場合:
     * 最新の [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) をダウンロードして、古いものと置き換えます。 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
 
-## <a name="3-add-an-applicationinsightsxml-file"></a>手順 3.ApplicationInsights.xml ファイルを追加する
+## <a name="3-add-an-applicationinsightsxml-file"></a>3.ApplicationInsights.xml ファイルを追加する
 ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
 
 インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。

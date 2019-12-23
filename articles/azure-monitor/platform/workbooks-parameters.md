@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor ブックを使用した対話型レポートの作成 | パラメーターの作成 | Microsoft Docs
+title: Azure Monitor ブックの作成パラメーター
 description: 作成済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポート作成を簡素化します。
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c221abf423a21d424bd5198696a61d7ec83521e9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f3a7e47d1e6ac0018c8695751ba2ea5091ddbfe8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164389"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872827"
 ---
 # <a name="workbook-parameters"></a>ブックのパラメーター
 
@@ -42,7 +42,7 @@ ms.locfileid: "73164389"
     1. [パラメーター名]\: `TimeRange` " *(パラメーター__名__にスペースや特殊文字を含めることは**できません**)* "
     2. [表示名]\: `Time Range` " *(ただし、__表示名__にはスペース、特殊文字、絵文字などを含めることができます)* "
     2. [パラメーターの種類]\: [`Time range picker`]
-    3. [必須ですか?]\: `checked`
+    3. [必須ですか?]\: `checked` (オン)
     4. [使用可能な時間の範囲]\:[過去 1 時間]、[過去 12 時間]、[過去 24 時間]、[過去 48 時間]、[過去 3 日間]、[過去 7 日間]、[ユーザー設定の時間範囲の選択を許可する]
 5. ツール バーの [保存] を選択して、パラメーターを作成します。
 
@@ -72,7 +72,7 @@ ms.locfileid: "73164389"
 ### <a name="in-text"></a>テキスト内 
 1. テキスト コントロールをブックに追加します。
 2. マークダウンで、「`The chosen time range is {TimeRange:label}`」と入力します。
-3. _[Done Editing]\(編集完了\)_ を選択します。
+3. _[編集完了]_ を選択します
 4. テキスト コントロールに、"_The chosen time range is Last 24 hours\(選択された時間範囲は [過去 24 時間] です\)_ " というテキストが表示されます。
 
 ## <a name="parameter-options"></a>パラメーターのオプション

@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 診断ログの形式変更のための準備
-description: Azure 診断ログでは、2018 年 11 月 1 日より追加 BLOB を使用するように移行されます。
+title: Azure Monitor リソース ログの形式変更のための準備
+description: Azure リソース ログは、2018 年 11 月 1 日に追加 BLOB を使用する目的で移動されました。
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,21 +8,20 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: c6f21ffdcf94f23d089073710f2e6c18fd20558d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 09a5d95ead9f294d54a7491734b11c7247353444
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262998"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894500"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-platform-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor プラットフォーム ログの形式変更のための準備
 
 > [!WARNING]
-> [Azure リソース ログまたはメトリックを診断設定を使用してストレージ アカウントに](resource-logs-collect-storage.md)、または[アクティビティ ログをログ プロファイルを使用してストレージ アカウントに](activity-log-export.md)送信する場合、ストレージ アカウントのデータの形式は、2018 年 11 月 1 日付より JSON Lines に変更されました。 以下の手順では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。 
+> [Azure リソース ログまたはメトリックを診断設定を使用してストレージ アカウントに](resource-logs-collect-storage.md)、または[アクティビティ ログをログ プロファイルを使用してストレージ アカウントに](activity-log-export.md)送信する場合、ストレージ アカウントのデータの形式は、2018 年 11 月 1 日付より JSON Lines に変更されました。 以下の手順では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。
 >
-> 
 
-## <a name="what-is-changing"></a>変更点
+## <a name="what-changed"></a>変更箇所
 
 Azure Monitor では、Azure ストレージ アカウント、Event Hubs 名前空間、または Azure Monitor の Log Analytics ワークスペースへのリソース ログやアクティビティ ログの送信を可能にする機能が提供されます。 システム パフォーマンスの問題に対処するために、**2018 年 11 月 1 日の深夜 12 時 00 分 (UTC)** より、BLOB ストレージに送信されるログ データの形式が変更されます。 BLOB ストレージからデータを読み取っているツールがある場合は、新しいデータ形式を認識するようにツールを更新する必要があります。
 
@@ -36,8 +35,8 @@ Azure Monitor では、Azure ストレージ アカウント、Event Hubs 名前
   * [ログ プロファイルでエクスポートされる Azure アクティビティ ログ データ](activity-log-collect.md)
 * この変更は以下のものには影響しません。
   * ネットワーク フロー ログ
-  * Azure Monitor を通じてまだ使用可能になっていない Azure サービス ログ (Azure App Service の診断ログ、ストレージ分析ログなど)
-  * Azure 診断ログとアクティビティ ログの他の送信先 (Event Hubs、Log Analytics) へのルーティング
+  * Azure Monitor を通じてまだ使用可能になっていない Azure サービス ログ (Azure App Service のリソース ログ、ストレージ分析ログなど)
+  * Azure リソース ログとアクティビティ ログの他の送信先 (Event Hubs、Log Analytics) へのルーティング
 
 ### <a name="how-to-see-if-you-are-impacted"></a>影響があるかどうかを確認する方法
 
@@ -135,6 +134,6 @@ Azure BLOB ストレージ内の PT1H.json ファイルの現在の形式では�
 
 ## <a name="next-steps"></a>次の手順
 
-* [ストレージ アカウントへのリソース診断ログのアーカイブ](./../../azure-monitor/platform/archive-diagnostic-logs.md)について確認します。
+* [ストレージ アカウントへのリソース ログのアーカイブ](./../../azure-monitor/platform/archive-diagnostic-logs.md)について確認します。
 * [ストレージ アカウントへのアクティビティ ログ データのアーカイブ](./../../azure-monitor/platform/archive-activity-log.md)について確認します。
 

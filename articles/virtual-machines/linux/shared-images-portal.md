@@ -1,11 +1,10 @@
 ---
-title: ポータルを使用して Linux 用の共有 Azure 仮想マシン イメージを作成する
+title: ポータルを使用して Linux 用の共有 Azure VM イメージを作成する
 description: Azure portal を使用して、仮想マシン イメージを作成して共有する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -14,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 89c98379a8e79d1b00db47021ae737ae471f79b3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 44df85a94ad26d3abcd48f01c31e7aa093c1123f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035007"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978698"
 ---
-# <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Azure portal を使用して共有イメージ ギャラリーを作成する
+# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>ポータルを使用して Azure 共有イメージ ギャラリーを作成する
 
 [共有イメージ ギャラリー](shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、デプロイ タスク (アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成など) のブートストラップを実行するために使用できます。 
 
@@ -34,7 +33,7 @@ ms.locfileid: "74035007"
 | リソース | 説明|
 |----------|------------|
 | **マネージド イメージ** | 単独で使用することも、イメージ ギャラリーに**イメージ バージョン**を作成するために使用することもできる基本的なイメージ。 マネージド イメージは、[一般化された](shared-image-galleries.md#generalized-and-specialized-images) VM から作成されます。 マネージド イメージは、複数の VM を作成する際に使用できる特別な種類の VHD で、共有イメージ バージョンを作成する際にも使用できるようになりました。 |
-| **スナップショット** | **イメージ バージョン**の作成に使用できる VHD のコピー。 スナップショットは、[特殊化された](shared-image-galleries.md#generalized-and-specialized-images) VM (一般化されていない VM) から取得し、単独またはデータ ディスクのスナップショットと一緒に使用して、特殊化されたイメージ バージョンを作成できます。
+| **スナップショット** | **イメージ バージョン**の作成に使用できる VHD のコピー。 [特殊化された](shared-image-galleries.md#generalized-and-specialized-images) VM (一般化されていない VM) からスナップショットを取得し、単独でまたはデータ ディスクのスナップショットと一緒に使用して、特殊化されたイメージ バージョンを作成できます。
 | **イメージ ギャラリー** | Azure Marketplace などの **イメージ ギャラリー**は、イメージを管理して共有するためのリポジトリです。ただし、アクセス権の所有者を制御します。 |
 | **イメージ定義** | イメージはギャラリー内で定義され、組織内で使用するためにイメージと要件に関する情報を伝達します。 イメージが一般化されているか特殊化されているか、オペレーティング システム、最小および最大メモリ要件、リリース ノートなどの情報を含めることができます。 これは、イメージの種類の定義です。 |
 | **イメージ バージョン** | **イメージ バージョン**は、ギャラリーを利用している場合に、VM の作成に使用します。 お使いの環境に必要な複数のイメージ バージョンを保持できます。 マネージド イメージのように、**イメージ バージョン**を使用して VM を作成する場合、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 イメージ バージョンは複数回、使用できます。 |
@@ -45,7 +44,7 @@ ms.locfileid: "74035007"
 > 特殊化されたイメージは現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 >
-> **プレビューに関する既知の制限事項** VM は、ポータルか API を使用して、特殊化されたイメージからのみ作成できます。 プレビューでは CLI や PowerShell はサポートされていません。
+> **プレビューに関する既知の制限事項**: VM は、ポータルまたは API を使用して、特殊化されたイメージからのみ作成できます。 プレビューでは CLI や PowerShell はサポートされていません。
 
 
 ## <a name="before-you-begin"></a>開始する前に

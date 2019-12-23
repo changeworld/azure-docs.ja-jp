@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/04/2019
+ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3611e61b303997a4291f4436403bb0a95e647e65
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dfdaef0002f068dc4c9044e979b169de779cf6d5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686024"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851283"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のメモリおよびコンカレンシーの制限
 Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。  
@@ -50,7 +50,7 @@ Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリ
 最大のサービス レベルは DW30000c で、60 のコンピューティング ノードと、コンピューティング ノードごとに 1 つの配布です。 たとえば、DW30000c の 600 TB のデータ ウェアハウスは、コンピューティング ノードあたり約 10 TB を処理します。
 
 ## <a name="concurrency-maximums-for-workload-groups"></a>ワークロード グループの同時実行の最大値
-ワークロード グループが導入され (リンク未定)、コンカレンシー スロットの概念は適用されなくなりました。  要求ごとのリソースはパーセント単位で割り当てられ、ワークロード グループの定義で指定されます。  ただし、コンカレンシー スロットを削除したとしても、サービス レベルに基づいてクエリごとに必要なリソースの最小量があります。  次の表では、サービス レベル全体のクエリごとに必要なリソースの最小量と、実現可能な関連するコンカレンシー数を定義しています。 
+[ワークロード グループ](sql-data-warehouse-workload-isolation.md)が導入され、コンカレンシー スロットの概念は適用されなくなりました。  要求ごとのリソースはパーセント単位で割り当てられ、ワークロード グループの定義で指定されます。  ただし、コンカレンシー スロットを削除したとしても、サービス レベルに基づいてクエリごとに必要なリソースの最小量があります。  次の表では、サービス レベル全体のクエリごとに必要なリソースの最小量と、実現可能な関連するコンカレンシー数を定義しています。 
 
 |Service Level|同時クエリの最大数|REQUEST_MIN_RESOURCE_GRANT_PERCENT でサポートされる最小量 (%)|
 |---|---|---|

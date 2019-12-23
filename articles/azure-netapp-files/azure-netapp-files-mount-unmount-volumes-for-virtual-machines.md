@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 12/05/2019
 ms.author: b-juche
-ms.openlocfilehash: 84496fbc8a415171172d0a138f647ecb0310b6c7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7f1e9500a9268e0fba054f7065e858cd801aca7b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173579"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894098"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する 
 
@@ -41,6 +41,12 @@ ms.locfileid: "74173579"
     * `$ANFIP` は、ボリューム プロパティのブレードにある Azure NetApp Files ボリュームの IP アドレスです。
     * `$FILEPATH` は、Azure NetApp Files ボリュームのエクスポート パスです。
     * `$MOUNTPOINT` は、NFS エクスポートのマウントに使用する、Linux ホスト上に作成されたディレクトリです。
+
+4. NFS を使用して Windows にボリュームをマウントする場合:
+
+    a. まず、ボリュームを Unix または Linux VM にマウントします。  
+    b. ボリュームに対して `chmod 777` または `chmod 775` コマンドを実行します。  
+    c. Windows 上の NFS クライアントを使用してボリュームをマウントします。
 
 ## <a name="next-steps"></a>次の手順
 

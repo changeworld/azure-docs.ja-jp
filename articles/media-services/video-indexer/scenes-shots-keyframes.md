@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: a833fd808049cfce95b182910e50e38d3c39f4e5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806714"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976606"
 ---
 # <a name="scenes-shots-and-keyframes"></a>シーン、ショット、キーフレーム
 
@@ -36,7 +36,7 @@ Video Indexer では、連続するフレームの配色での突然の遷移と
 
 ## <a name="keyframe-detection"></a>キーフレームの検出
 
-ショットを最適に表すフレームを選択します。 キーフレームは、審美的プロパティ (たとえば、コントラストや安定性) に基づいてビデオ全体から選択された代表的なフレームです。 Video Indexer では、キーフレームのサムネイルを抽出できる顧客に基づいて、ショットのメタデータの一部としてキーフレーム ID のリストが取得されます。 
+Video Indexer により、各ショットを最適に表すフレームが選択されます。 キーフレームは、審美的プロパティ (たとえば、コントラストや安定性) に基づいてビデオ全体から選択された代表的なフレームです。 Video Indexer により、ショットのメタデータの一部としてキーフレーム ID のリストが取得されます。顧客は、これに基づいてキーフレームを高解像度画像として抽出できます。  
 
 ### <a name="extracting-keyframes"></a>キーフレームの抽出
 

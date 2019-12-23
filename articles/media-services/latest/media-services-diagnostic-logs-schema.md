@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services の診断ログのスキーマ - Azure
-description: この記事では、Azure Media Services の診断ログのスキーマについて説明します。
+description: この記事では、Azure Media Services 診断ログのスキーマを示します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: f95258368664aabeb89426afb83854378c0e4429
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5e416087df6c27eff42db487e90ff908d7d49df8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261098"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977694"
 ---
 # <a name="diagnostic-logs-schemas"></a>診断ログのスキーマ
 
@@ -107,6 +107,10 @@ ms.locfileid: "71261098"
     }
 } 
 ```
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,5 +1,6 @@
 ---
-title: ダウンストリーム Web API を呼び出す Web API (アプリのコード構成) - Microsoft ID プラットフォーム
+title: Web API を呼び出す Web API を構成する | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出す Web API を構築する方法について説明します (アプリのコード構成)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +16,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bae9f565dd37fbd3bcae38833662e13e0b7ac6d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 219724186e3fa69fec35e89435af495b662c871d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960648"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919751"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Web API を呼び出す Web API - コードの構成
 

@@ -1,6 +1,6 @@
 ---
 title: HTTPS URL から Azure Media Services ジョブの入力を作成する | Microsoft Docs
-description: このトピックでは、HTTP(S) URL から、ジョブの入力を作成する方法を示します。
+description: このトピックでは、HTTPS URL から Azure Media Services ジョブの入力を作成する手順を説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: f6eee912bb3bba112bd13969f1a8d9cb5748e387
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a3d4568dd237491f28ae2880bdd78dd236870c3f
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413828"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899825"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>HTTPS URL からジョブの入力を作成する
 

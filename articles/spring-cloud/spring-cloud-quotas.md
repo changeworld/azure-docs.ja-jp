@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 41a2b1a7d9aa5089ba2ee73cd3c5c5c5e31f5225
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0518b13ea228b4834a095a9bf126b131e70a5f45
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607666"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851555"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure Spring Cloud のクォータとサービス プラン
 
@@ -25,11 +25,10 @@ ms.locfileid: "73607666"
 
 リソース | 金額
 ------- | -------
-vCPU | 4
-メモリ | 8 GB
-Azure Spring Cloud サブスクリプション | 1
-サブスクリプション 1 件、1 リージョンあたりの Azure Spring Cloud サービス インスタンスの数 | 2
-Azure Spring Cloud のサービス インスタンスあたりのアプリ インスタンスの合計数 | 50
+vCPU | サービス インスタンスごとに 4 つ
+メモリ | サービス インスタンスごとに 8 GB
+サブスクリプション 1 件、1 リージョンあたりの Azure Spring Cloud サービス インスタンスの数 | 10
+Azure Spring Cloud サービス インスタンスあたりのアプリ インスタンスの合計数 | 500
 Spring アプリケーションあたりのアプリ インスタンスの合計数 | 20
 永続ボリューム | 10 x 50 GB
 

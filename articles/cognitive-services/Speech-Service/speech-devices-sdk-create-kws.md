@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 42bcc336bfeb325a08c3d65438d66690c0b35100
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815298"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896391"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Speech Service を使用してカスタム キーワードを作成する
 
@@ -50,17 +50,29 @@ ms.locfileid: "74815298"
 
 1. [Speech Studio](https://aka.ms/sdsdk-speechportal)に移動して**サインイン**します。音声サブスクリプションをまだ持っていない場合は、[ **[サブスクリプションを作成する]** ](https://go.microsoft.com/fwlink/?linkid=2086754) を選択します。
 
-1. [[Custom Keyword]\(カスタム キーワード\)](https://aka.ms/sdsdk-wakewordportal) ページで、選択したキーワードを入力し、 **[キーワードの追加]** をクリックします。 効果的なキーワードを選択するために役立つ[ガイドライン](#choose-an-effective-keyword)がいくつかあります。 現在、サポートは en-US 言語に限定されています。
+1. [[カスタム キーワード]](https://aka.ms/sdsdk-wakewordportal) ページで **[新しいプロジェクト]** を作成します。 
 
-    ![キーワードを入力する](media/speech-devices-sdk/custom-kws-portal-enter-keyword.png)
+1. **[名前]** と任意で **[説明]** を入力し、言語を選択します。 プロジェクトは言語あたり 1 つ必要になります。現在のところ、サポートは en-US 言語に限定されています。
 
-1. ポータルでは、次に、キーワードの発音候補が作成されます。 再生ボタンをクリックして各工法をリッスンし、間違った発音の横にあるチェック ボックスをオフにします。 正しい発音のチェック ボックスのみをオンにした後、 **[送信]** を選択して、キーワードの生成を開始します。 キーワードを変更する場合は、まず、マウス ポインターを行の上に置いたときに右側に表示される [削除] ボタンをクリックして、既存のキーワードを削除します。
+    ![キーワード プロジェクトについて説明する](media/custom-keyword/custom-kws-portal-new-project.png)
 
-    ![キーワードを確認する](media/speech-devices-sdk/custom-kws-portal-review-keyword.png)
+1. 一覧からプロジェクトを選択します。 
 
-1. モデルが生成されるまでに最大で 1 分かかる場合があります。 ファイルをダウンロードするように求められます。
+    ![キーワード プロジェクトを選択する](media/custom-keyword/custom-kws-portal-project-list.png)
 
-    ![キーワードをダウンロードする](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
+1. 新しいキーワード モデルを開始するには、 **[モデルのトレーニング]** をクリックします。
+
+1. キーワード モデルの **[名前]** と任意で **[説明]** を入力し、選択した **[キーワード]** に入力し、 **[次へ]** をクリックします。 効果的なキーワードを選択するために役立つ[ガイドライン](#choose-an-effective-keyword)がいくつかあります。
+
+    ![キーワードを入力する](media/custom-keyword/custom-kws-portal-new-model.png) 
+
+1. ポータルでは、次に、キーワードの発音候補が作成されます。 再生ボタンをクリックして各工法をリッスンし、間違った発音の横にあるチェック ボックスをオフにします。 正しい発音のチェック ボックスのみをオンにした後、 **[トレーニング]** をクリックし、キーワードの生成を開始します。 
+
+    ![キーワードを確認する](media/custom-keyword/custom-kws-portal-choose-prons.png) 
+
+1. モデルが生成されるまでに最大で 10 分かかる場合があります。 モデルが完了すると、キーワードの一覧が **[処理中]** から **[成功]** に変わります。 これでファイルをダウンロードできます。
+
+    ![キーワードを確認する](media/custom-keyword/custom-kws-portal-download-model.png) 
 
 1. .zip ファイルをコンピューターに保存します。 デバイスにカスタム キーワードをデプロイするには、このファイルが必要です。
 

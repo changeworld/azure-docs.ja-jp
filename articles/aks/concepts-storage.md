@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 70272413ef4952cfeed558dd313f12096204d569
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 601f89c4510899dbb1f5d8a238961d9a4e5864e0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120500"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913713"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションのストレージ オプション
 
@@ -60,7 +60,7 @@ Premium や Standard など異なる階層を定義するために、*StorageCla
 
 AKS では、次の 2 つの初期 StorageClasses が作成されます。
 
-- *default* - Azure Standard ストレージを使用してマネージド ディスクを作成します。 解放ポリシーは、基礎となる Azure ディスクを使用したポッドが削除されるときに、ディスクが削除されるように指定します。
+- *default* - Azure Standard ストレージを使用してマネージド ディスクを作成します。 解放ポリシーは、基礎となる Azure ディスクを使用した永続ボリュームが削除されるときに、ディスクが削除されるように指定します。
 - *managed-premium* - Azure Premium ストレージを使用してマネージド ディスクを作成します。 ここでも、解放ポリシーは、基礎となる Azure ディスクを使用したポッドが削除されるときに、ディスクが削除されるように指定します。
 
 永続ボリュームで StorageClass が指定されない場合は、既定の StorageClass が使用されます。 永続ボリュームを要求するときは、必要なストレージが使用されることに注意してください。 `kubectl` を使用して、その他のニーズのために StorageClass を作成できます。 次の例は、Premium マネージド ディスクを使用し、ポッドの削除時に基礎となる Azure ディスクを "*保持する*" ように指定します。

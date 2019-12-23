@@ -1,5 +1,5 @@
 ---
-title: 仮想ネットワーク内に Azure Databricks ワークスペースを作成する
+title: 自分の仮想ネットワークに Azure Databricks ワークスペースを作成するためのクイック スタート
 description: この記事では、仮想ネットワークに Azure Databricks をデプロイする方法について説明します。
 services: azure-databricks
 author: mamccrea
@@ -7,19 +7,21 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 04/02/2019
-ms.openlocfilehash: 69afe2aab3c10707f7160d727b970ad73d59a952
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/04/2019
+ms.openlocfilehash: 404aa1d345bb1e30a0fe55d033d49d7dd8ba5a1b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791556"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893437"
 ---
-# <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>クイック スタート:仮想ネットワーク内に Azure Databricks ワークスペースを作成する
+# <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>クイック スタート:自分の仮想ネットワークに Azure Databricks ワークスペースを作成する
 
-このクイック スタートでは、仮想ネットワーク内に Azure Databricks ワークスペースを作成する方法を説明します。 また、そのワークスペース内に Apache Spark クラスターも作成します。
+Azure Databricks の既定のデプロイでは、Databricks によって管理される新しい仮想ネットワークが作成されます。 このクイック スタートでは、その代わりに自分の仮想ネットワーク内に Azure Databricks ワークスペースを作成する方法について説明します。 そのワークスペース内に Apache Spark クラスターも作成します。 
 
-Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
+自分の仮想ネットワーク内に Azure Databricks ワークスペースを作成することを選択する理由の詳細については、[お使いの Azure 仮想ネットワークに Azure Databricks をデプロイする (VNet インジェクション)] (/databricks/administration-guide/cloud-configurations/azure/vnet-inject) を参照してください。
+
+Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/databricks/)を作成してください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -31,15 +33,17 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-1. Azure Portal で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順に選択します。
+1. Azure portal メニューから **[リソースの作成]** を選択します。 次に、 **[ネットワーク] > ［仮想ネットワーク］** を選択します。
+
+    ![Azure portal で仮想ネットワークを作成する](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-portal.png)
 
 2. **[仮想ネットワークの作成]** で、次の設定を適用します。 
 
     |Setting|推奨値|説明|
     |-------|---------------|-----------|
     |Name|databricks-quickstart|仮想ネットワークの名前を選択します。|
-    |アドレス空間|10.1.0.0/16|CIDR 表記の仮想ネットワークのアドレス範囲。|
-    |Subscription|\<該当するサブスクリプション\>|使用する Azure サブスクリプションを選択します。|
+    |アドレス空間|10.1.0.0/16|CIDR 表記の仮想ネットワークのアドレス範囲。 CIDR の範囲は /16 から /24 の間である必要があります|
+    |サブスクリプション|\<該当するサブスクリプション\>|使用する Azure サブスクリプションを選択します。|
     |Resource group|databricks-quickstart|**[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。|
     |Location|\<ユーザーに最も近いリージョンを選択\>|お客様の仮想ネットワークをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。|
     |サブネット名|default|仮想ネットワークの既定のサブネットの名前を選択します。|
@@ -53,23 +57,25 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
-1. Azure portal で、 **[リソースの作成]**  >  **[分析]**  >  **[Databricks]** の順に選択します。
+1. Azure portal メニューから **[リソースの作成]** を選択します。 次に、 **[分析] > [Databricks]** を選択します。
+
+    ![Azure portal で Azure Databricks ワークスペースを作成する](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-portal.png)
 
 2. **[Azure Databricks サービス]** で、次の設定を適用します。
 
     |Setting|推奨値|説明|
     |-------|---------------|-----------|
     |ワークスペース名|databricks-quickstart|Azure Databricks ワークスペースの名前を選択します。|
-    |Subscription|\<該当するサブスクリプション\>|使用する Azure サブスクリプションを選択します。|
+    |サブスクリプション|\<該当するサブスクリプション\>|使用する Azure サブスクリプションを選択します。|
     |Resource group|databricks-quickstart|仮想ネットワークに使用したものと同じリソース グループを選択します。|
     |Location|\<ユーザーに最も近いリージョンを選択\>|仮想ネットワークと同じ場所を選択します。|
     |価格レベル|Standard と Premium のいずれかを選択します。|価格レベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。|
-    |仮想ネットワーク内での Azure Databricks ワークスペースのデプロイ|はい|この設定により、仮想ネットワークに Azure Databricks ワークスペースをデプロイすることができます。|
+    |自分の仮想ネットワーク (VNet) に Azure Databricks ワークスペースをデプロイする|はい|この設定により、仮想ネットワークに Azure Databricks ワークスペースをデプロイすることができます。|
     |Virtual Network|databricks-quickstart|前のセクションで作成した仮想ネットワークを選択します。|
     |パブリック サブネット名|public-subnet|既定のパブリック サブネット名を使用します。|
-    |パブリック サブネットの CIDR 範囲|10.179.64.0/18|このサブネットの CIDR 範囲は、/18 から /26 の範囲内である必要があります。|
+    |パブリック サブネットの CIDR 範囲|10.179.64.0/18|/26 までの CIDR 範囲を使用します (26 も含まれます)。|
     |プライベート サブネット名|private-subnet|既定のプライベート サブネット名を使用します。|
-    |プライベート サブネットの CIDR 範囲|10.179.0.0/18|このサブネットの CIDR 範囲は、/18 から /26 の範囲内である必要があります。|
+    |プライベート サブネットの CIDR 範囲|10.179.0.0/18|/26 までの CIDR 範囲を使用します (26 も含まれます)。|
 
     ![Azure portal で Azure Databricks ワークスペースを作成する](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
 
@@ -77,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
     ![Azure portal の Azure Databricks の概要](./media/quickstart-create-databricks-workspace-vnet-injection/databricks-overview-portal.png)
 
-    マネージド リソース グループには、ストレージ アカウント (DBFS)、worker-sg (ネットワーク セキュリティ グループ)、worker-vnet (仮想ネットワーク) の物理的な場所が含まれています。 これは、仮想マシン、ディスク、IP アドレス、およびネットワーク インターフェイスを作成する場所でもあります。 このリソース グループは既定ではロックされています。ただし、仮想ネットワークでクラスターが起動されると、マネージド リソース グループ内の workers-vnet と、"ハブ" の仮想ネットワーク間にネットワーク インターフェイスが作成されます。
+    マネージド リソース グループは変更可能ではありません。また、仮想マシンの作成には使用されません。 自分で管理しているリソース グループ内に仮想マシンを作成するだけです。
 
     ![Azure Databricks マネージド リソース グループ](./media/quickstart-create-databricks-workspace-vnet-injection/managed-resource-group.png)
 

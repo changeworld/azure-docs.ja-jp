@@ -1,22 +1,23 @@
 ---
-title: Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認する | Microsoft Docs
+title: Active Directory を使用して BLOB とキューへのアクセスを承認する
+titleSuffix: Azure Storage
 description: Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: aed61e5cf32ed0148e8b9eee6edf44daa03acd17
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 445d98ab07a91b056d4cf747f7c0f4cf1cdf9d53
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598103"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891815"
 ---
-# <a name="authorize-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory を使用して Azure BLOB およびキューへのアクセスを承認します
+# <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>Azure Active Directory を使用して BLOB とキューへのアクセスを承認する
 
 Azure Storage では、Azure Active Directory (AD) を使用した BLOB および Queue Storage に対する要求の承認をサポートしています。 Azure AD では、ロールベースのアクセス制御 (RBAC) を使用して、サービス プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 セキュリティ プリンシパルは、Azure AD によって認証されて、OAuth 2.0 トークンを返します。 トークンは、BLOB または Queue Storage のリソースにアクセスする要求を承認するために使用できます。
 

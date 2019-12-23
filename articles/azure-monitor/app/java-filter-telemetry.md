@@ -1,5 +1,5 @@
 ---
-title: Java Web アプリでの Azure Application Insights Telemetry のフィルター処理 | Microsoft Docs
+title: Java Web アプリでの Azure Application Insights テレメトリのフィルター処理
 description: 監視する必要のないイベントをフィルターで除外して、テレメトリのトラフィックを削減します。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 3/14/2019
-ms.openlocfilehash: de2a7c73b87254a6fd2e6c5dc942a9c93d28c2d4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: dd47ef68726f3f804dabbc9751e9c86dfe846559
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819366"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927297"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理
 
@@ -250,7 +250,7 @@ ApplicationInsights.xml で、以下を使用します。
 
 ```
 
-### <a name="3-invoke-your-filter-java-spring"></a>手順 3.お使いのフィルターを呼び出す (Java Spring)
+### <a name="3-invoke-your-filter-java-spring"></a>3.お使いのフィルターを呼び出す (Java Spring)
 
 Spring フレームワークに基づくアプリケーションの場合、カスタムのテレメトリ プロセッサを、ご自身のメイン アプリケーション クラスに Bean として登録する必要があります。 その後、アプリケーションの開始時に自動接続されます。
 

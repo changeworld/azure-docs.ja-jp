@@ -1,23 +1,22 @@
 ---
-title: Azure Data Factory を使用してファイルベースのストレージ間でファイルを移動する
+title: ファイル ベースのストレージ間でファイルを移動する
 description: Azure Data Factory を使用してファイル ベースのストレージ間でファイルを移動するための、ソリューション テンプレートの使用方法について説明します。
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: f6f83917e84a880fb86b5f592c4d51b03462753d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684120"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941930"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Azure Data Factory でファイルを移動する
 
@@ -37,9 +36,11 @@ ms.locfileid: "73684120"
 - **Copy** では、ソース ストアからコピー先ストアに 1 つのファイルがコピーされます。
 - **Delete** では、同じ 1 つのファイルがソース ストアから削除されます。
 
-このテンプレートには、次の 2 つのパラメーターが定義されています。
-- *FolderPath_SourceStore* は、ファイルの移動元となるソース ストアのフォルダー パスです。 
-- *FolderPath_DestinationStore* は、ファイルの移動先となる移動先ストアのフォルダー パスです。 
+このテンプレートには、4 つのパラメーターが定義されています。
+- *SourceStore_Location* は、ファイルの移動元となるソース ストアのフォルダー パスです。 
+- *SourceStore_Directory* は、ファイルの移動元となるソース ストアのサブフォルダー パスです。
+- *DestinationStore_Location* は、ファイルの移動先となる移動先ストアのフォルダー パスです。 
+- *DestinationStore_Directory* は、ファイルの移動先となる移動先ストアのサブフォルダー パスです。
 
 ## <a name="how-to-use-this-solution-template"></a>このソリューション テンプレートの使用方法
 
@@ -51,9 +52,7 @@ ms.locfileid: "73684120"
 
     ![コピー先への新しい接続を作成する](media/solution-template-move-files/move-files2.png)
 
-3. **[このテンプレートを使用]** を選択します。
-
-    ![このテンプレートを使用](media/solution-template-move-files/move-files3.png)
+3. **[このテンプレートを使用]** タブを選択します。
     
 4. 次の例に示すように、パイプラインが表示されます。
 

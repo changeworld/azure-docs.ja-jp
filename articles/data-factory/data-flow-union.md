@@ -1,22 +1,21 @@
 ---
-title: Azure Data Factory マッピング データ フローの新しい分岐変換
+title: Mapping Data Flow の和集合変換
 description: Azure Data Factory マッピング データ フローの新しい分岐変換
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 02/12/2019
-ms.openlocfilehash: 4832cd2036f615d1e90d5e7a21c1a9832c2fa837
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: adba1eb61676dbebcb356490b14b279ebe69c644
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387129"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930161"
 ---
-# <a name="mapping-data-flow-union-transformation"></a>Mapping Data Flow の和集合変換
-
-
+# <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Azure Data Factory マッピング データ フローの和集合変換
 
 和集合では、複数のデータ ストリームの SQL Union を和集合変換からの新しい出力として使用し、これらのストリームを 1 つに結合します。 各入力ストリームのすべてのスキーマは、結合キーを必要とすることなく、データ フロー内で結合されます。
 

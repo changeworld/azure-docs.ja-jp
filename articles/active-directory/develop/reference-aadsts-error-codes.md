@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 認証と承認エラー コード | Microsoft Docs
+title: Azure AD 認証と承認のエラー コード | Azure
 description: Azure AD セキュリティ トークン サービス (STS) から返される AADSTS エラー コードについて説明します。
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193171"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965808"
 ---
-# <a name="authentication-and-authorization-error-codes"></a>認証と承認エラー コード
+# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
 Azure Active Directory (Azure AD) セキュリティ トークン サービス (STS) から返される AADSTS エラー コードに関する情報をお探しですか。 AADSTS エラーの説明、修正、およびいくつかの推奨される回避策を見つけるには、このドキュメントをお読みください。
 

@@ -1,22 +1,23 @@
 ---
-title: RBAC と Azure CLI を使用して BLOB とキューのデータへの Azure AD アクセス権を管理する - Azure Storage
-description: Azure CLI とロールベースのアクセス制御 (RBAC) を使用して、コンテナーおよびキューへのアクセスを割り当てます。 Azure Storage では、Azure AD を使用した認証用の組み込みとカスタムの RBAC ロールがサポートされています。
+title: Azure CLI を使用してデータ アクセスのための RBAC ロールを割り当てる
+titleSuffix: Azure Storage
+description: Azure CLI を使用して、ロールベースのアクセス制御 (RBAC) を使用して Azure Active Directory セキュリティ プリンシパルへのアクセス許可を割り当てる方法について説明します。 Azure Storage では、Azure AD を使用した認証用の組み込みとカスタムの RBAC ロールがサポートされています。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/25/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 606dd88fbad8cbd5c7e24d47dcf71199a25b49a2
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: abe35f3193e2d7ff9a949ca7cd330cb58da2b78c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673203"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891970"
 ---
-# <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>RBAC と Azure CLI を使用して Azure BLOB とキューのデータへのアクセスを付与する
+# <a name="use-azure-cli-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Azure CLI を使用して、BLOB およびキュー データにアクセスするための RBAC ロールを割り当てる
 
 Azure Active Directory (Azure AD) では、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 BLOB またはキュー データへのアクセスに使用される一般的なアクセス許可セットを含む一連の組み込み RBAC ロールは、Azure Storage によって定義されます。
 
@@ -28,7 +29,7 @@ RBAC ロールが Azure AD セキュリティ プリンシパルに割り当て�
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>リソースのスコープを決定する 
+## <a name="determine-resource-scope"></a>リソースのスコープを決定する
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 

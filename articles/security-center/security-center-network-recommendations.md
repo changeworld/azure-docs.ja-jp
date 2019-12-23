@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 21feed73d025e0c0a4b2c7bb07d23f450780126e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 5d13e944cbc083b314c71936d181101ec13037b4
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766788"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997141"
 ---
 # <a name="protect-your-network-resources"></a>ネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -27,7 +27,7 @@ Azure Security Center では、ネットワーク セキュリティのベスト
 
 ネットワークに関するすべての推奨事項の覧については、[ネットワークに関する推奨事項](recommendations-network.md)のページを参照してください。
 
-この記事では、ネットワーク セキュリティの観点から Azure リソースに適用される推奨事項について説明します。 ネットワークに関する推奨事項は、次世代ファイアウォール、ネットワーク セキュリティ グループ、JIT VM アクセス権が過度な受信トラフィック規則などが中心です。 ネットワークの推奨事項の一覧および修復アクションについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。
+この記事では、ネットワーク セキュリティの観点から Azure リソースに適用される推奨事項について説明します。 ネットワークに関する推奨事項は、次世代ファイアウォール、ネットワーク セキュリティ グループ、JIT VM アクセス、過度に許容されるインバウンド トラフィック規則などが中心です。 ネットワークの推奨事項の一覧および修復アクションについては、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」をご覧ください。
 
 > [!NOTE]
 > **[ネットワーク]** ページでは、ネットワークの観点から、Azure リソースの正常性を詳しく確認できます。 ネットワーク マップとアダプティブ ネットワーク コントロールは、Azure Security Center Standard レベルでのみ使用できます。 [Free レベルを使用する場合は、ボタンをクリックして**レガシ ネットワークを表示**し、ネットワーク リソースの推奨事項を受信できます](#legacy-networking)。

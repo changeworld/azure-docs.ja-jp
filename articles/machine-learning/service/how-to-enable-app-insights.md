@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 19dba88bf04ee84459ebd9ef0279f125724d7522
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: f4bb399e24b2c480023eba6bf5b71990f6d39c8c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406433"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978375"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web サービス エンドポイントからのデータを監視および収集する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "74406433"
 
 ## <a name="web-service-input-and-response-data"></a>Web サービスの入力データと応答データ
 
-サービスへの入力と応答は、ML モデルへの入力とその予測に対応しており、メッセージ `"model_data_collection"` で Azure Application Insights のトレースに記録されます。 Azure Application Insights に直接クエリを実行してこのデータにアクセスしたり、長期の保持やさらなる処理のためにストレージ アカウントに対する[連続エクスポート](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)を設定したりできます。 その後、モデル データを Azure ML service で使用して、ラベル付け、再トレーニング、説明、データ分析、その他の用途に設定できます。 
+サービスへの入力と応答は、ML モデルへの入力とその予測に対応しており、メッセージ `"model_data_collection"` で Azure Application Insights のトレースに記録されます。 Azure Application Insights に直接クエリを実行してこのデータにアクセスしたり、長期の保持やさらなる処理のためにストレージ アカウントに対する[連続エクスポート](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)を設定したりできます。 その後、Azure Machine Learning 上でモデル データを使用して、ラベル付け、再トレーニング、説明、データ分析、その他の用途に設定できます。 
 
 ## <a name="use-the-azure-portal-to-configure"></a>Azure portal を使用して構成する
 
@@ -121,7 +121,7 @@ Azure Application Insights を無効にするには、次のコードを使用�
 サービスのデータは、Azure Machine Learning と同じリソース グループ内の Azure Application Insights アカウントに保存されます。
 表示するには:
 
-1. [Azure Machine Learning Studio](https://ml.azure.com) の Machine Learning service ワークスペースに移動し、Application Insights のリンクをクリックします。
+1. [Azure Machine Learning Studio](https://ml.azure.com) の Azure Machine Learning ワークスペースに移動し、[Application Insights] のリンクをクリックします。
 
     [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 

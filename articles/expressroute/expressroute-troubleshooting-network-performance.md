@@ -1,5 +1,5 @@
 ---
-title: 仮想ネットワークのパフォーマンスのトラブルシューティング:Azure | Microsoft Docs
+title: ネットワーク リンクのパフォーマンスのトラブルシューティング:Azure
 description: このページでは、Azure ネットワーク リンクのパフォーマンスをテストする標準化された方法について説明します。
 services: expressroute
 author: tracsman
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883318"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869648"
 ---
 # <a name="troubleshooting-network-performance"></a>ネットワーク パフォーマンスのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -28,7 +28,7 @@ Azure では、オンプレミスのネットワークから Azure に接続す�
 
 ## <a name="network-components"></a>ネットワーク コンポーネント
 トラブルシューティングの詳細を説明する前に、一般的な用語とコンポーネントについて見ていきましょう。 これにより、Azure の接続性を実現するエンドツーエンド チェーン内の各コンポーネントについて考えていくことができます。
-[![1]][1]
+![1][1]
 
 最上位のレベルでは、次のネットワークの 3 つの主要なルーティング ドメインについて説明します。
 
@@ -93,7 +93,7 @@ AzureCT の PowerShell モジュールには、[可用性テスト][Availability
 
     PowerShell の出力形式は次のようになります。
 
-    [![4]][4]
+    ![4][4]
 
     iPerf と PSPing のすべてのテストの詳細な結果は、AzureCT ツールのディレクトリ (C:\ACTTools) 内の、個々のテキスト ファイルで確認できます。
 
@@ -118,7 +118,7 @@ AzureCT の PowerShell モジュールには、[可用性テスト][Availability
 ## <a name="advanced-expressroute-troubleshooting"></a>ExpressRoute の高度なトラブルシューティング
 クラウドの端の部分が具体的にどこなのかわからないと、Azure コンポーネントの特定が難しくなります。 ExpressRoute を使用している場合は、Microsoft Enterprise Edge (MSEE) と呼ばれるネットワーク コンポーネントが端になります。 **ExpressRoute を使用している場合**、MSEE は Microsoft ネットワークへの最初のコンタクト ポイントであり、また Microsoft ネットワークから離れる最後のホップでもあります。 VNet ゲートウェイと ExpressRoute 回線の間に接続オブジェクトを作成すると、実際には MSEE への接続を作成することになります。 MSEE を (進行方向がどちらかに応じて) 最初または最後のホップと認識することは、Azure ネットワークの問題を特定し、問題が Azure 内にあるのか、それともダウンストリームの WAN や企業ネットワーク内にあるのかを明らかにする上で極めて重要です。 
 
-[![2]][2]
+![2][2]
 
 >[!NOTE]
 > MSEE は Azure クラウド内にないことに注意してください。 ExpressRoute は実際には Microsoft ネットワークの端に位置し、Azure 内にはありません。 ExpressRoute を使用して MSEE に接続すると、Microsoft のネットワークに接続します。そこから Office 365 (Microsoft ピアリング経由) や Azure (プライベート ピアリングや Microsoft ピアリング経由) などのクラウド サービスのどれにでも移動できます。
@@ -144,7 +144,7 @@ AzureCT の PowerShell モジュールには、[可用性テスト][Availability
 
 WAN では、テスト結果をサービス プロバイダーや ISP と共有することが彼らの取り組みに役立ち、すでにテスト済みの領域を再度調べる手間を省くことができます。 ただし、彼らが結果を自分たちで確認しようとしても気を悪くしないでください。 他の人の報告結果をもとにトラブルシューティングを行う場合、"信頼しても確認する" ことが優れた方法です。
 
-Azure では、可能な限り詳しく問題を特定したら、[Azure ネットワークのドキュメント][Network Docs]をご覧ください。その上でなおサポートが必要な場合は[サポート チケット][Ticket Link]を開いてください。
+Azure では、可能な限り詳しく問題を特定したら、[Azure ネットワークのドキュメント][Network Docs]をご覧ください。その上でなおサポートが必要な場合は[サポート チケットを開いて][Ticket Link]ください。
 
 ## <a name="references"></a>参照
 ### <a name="latencybandwidth-expectations"></a>待機時間と帯域幅の期待値
@@ -169,7 +169,7 @@ Azure では、可能な限り詳しく問題を特定したら、[Azure ネッ�
  - "待機時間" 列のデータは、ロードなしテスト (iPerf を実行しない TCP の待機時間テスト) から得られたデータです。
  - "最大帯域幅" 列のデータは、ウィンドウ サイズが 1 MB の、16 の TCP フローのロード テストから得られたデータです。
 
-[![3]][3]
+![3][3]
 
 ### <a name="latencybandwidth-results"></a>待機時間と帯域幅の結果
 >[!IMPORTANT]
@@ -186,7 +186,7 @@ Azure では、可能な限り詳しく問題を特定したら、[Azure ネッ�
 | シアトル | 米国中南部 |  2,877 km |  51 ミリ秒 |  30.6 メガビット/秒 |  2.49 ギガビット/秒 |
 | シアトル | 米国中北部 |  2,792 km |  55 ミリ秒 |  27.7 メガビット/秒 |  2.19 ギガビット/秒 |
 | シアトル | 米国東部 2        |  3,769 km |  73 ミリ秒 |  21.3 メガビット/秒 |  1.79 ギガビット/秒 |
-| シアトル | 米国東部          |  3,699 km |  74 ミリ秒 |  21.1 メガビット/秒 |  1.78 ギガビット/秒 |
+| シアトル | East US          |  3,699 km |  74 ミリ秒 |  21.1 メガビット/秒 |  1.78 ギガビット/秒 |
 | シアトル | 東日本       |  7,705 km | 106 ミリ秒 |  14.6 メガビット/秒 |  1.22 ギガビット/秒 |
 | シアトル | 英国南部         |  7,708 km | 146 ミリ秒 |  10.6 メガビット/秒 |   896 メガビット/秒 |
 | シアトル | 西ヨーロッパ      |  7,834 km | 153 ミリ秒 |  10.2 メガビット/秒 |   761 メガビット/秒 |
@@ -204,7 +204,7 @@ Azure では、可能な限り詳しく問題を特定したら、[Azure ネッ�
 <!--Image References-->
 [1]: ./media/expressroute-troubleshooting-network-performance/network-components.png "Azure ネットワーク コンポーネント"
 [2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "ExpressRoute のトラブルシューティング"
-[3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "パフォーマンス テスト環境"
+[3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "テスト環境の実行"
 [4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "PowerShell の出力"
 
 <!--Link References-->

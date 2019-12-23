@@ -3,12 +3,12 @@ title: クラウド ワークロードの保護に役立つセキュリティ機
 description: Azure Backup のセキュリティ機能を使用してバックアップのセキュリティを強化する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: b6ce2f9400ad46150fbd4ee86f126b137b5f7800
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 0be85bf57510f575f238012b9bd1ef21e44e3cf1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278233"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894030"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup を使用したクラウド ワークロードを保護するためのセキュリティ機能
 
@@ -24,7 +24,7 @@ ms.locfileid: "74278233"
 
 現在、論理的な削除は、米国中西部、東アジア、カナダ中部、カナダ東部、フランス中部、フランス南部、韓国中部、韓国南部、英国南部、英国西部、オーストラリア東部、オーストラリア南東部、北ヨーロッパ、米国西部、米国西部 2、米国中部、東南アジア、米国中北部、米国中南部、東日本、西日本、インド南部、インド中部、インド西部、米国東部 2、スイス北部、スイス西部など、すべての国のリージョンでサポートされています。
 
-### <a name="soft-delete-for-vms"></a>VM の論理的な削除
+### <a name="soft-delete-for-vms-using-azure-portal"></a>Azure portal を使用した VM の論理的な削除
 
 1. VM のバックアップ データを削除するには、バックアップを停止する必要があります。 Azure portal で、Recovery Services コンテナーにアクセスし、バックアップ項目を右クリックして、 **[バックアップの停止]** を選択します。
 
@@ -66,9 +66,59 @@ ms.locfileid: "74278233"
 
 詳細については、後述の「[よく寄せられる質問](backup-azure-security-feature-cloud.md#frequently-asked-questions)」を参照してください。
 
+### <a name="soft-delete-for-vms-using-azure-powershell"></a>Azure PowerShell を使用した VM の論理的な削除
+
+> [!IMPORTANT]
+> Azure PS で論理的に削除するために必要な Az.RecoveryServices バージョンの最小は 2.2.0 です。 ```Install-Module -Name Az.RecoveryServices -Force``` を使用し、最新バージョンを取得してください。
+
+Azure portal に関する上記の説明にあるように、Azure PowerShell の使用時も手順は同じです。
+
+#### <a name="delete-the-backup-item-using-azure-powershell"></a>Azure PowerShell を使用したバックアップ項目の削除
+
+[Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS コマンドレットを使用してバックアップ項目を削除します。
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
+
+バックアップ項目の "DeleteState" が "NotDeleted" から "ToBeDeleted" に変更されます。 バックアップ データは 14 日間保持されます。 削除操作を元に戻す場合、削除操作を元に戻します。
+
+#### <a name="undoing-the-deletion-operation-using-azure-powershell"></a>Azure PowerShell を使用して削除操作を元に戻す
+
+まず、削除予定など、論理的な削除状態にある関連バックアップ項目をフェッチします。
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+次に、[Undo-AzRecoveryServicesBackupItemDeletion](https://docs.microsoft.com/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion?view=azps-3.1.0) PS コマンドレットで削除操作を元に戻します。
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+バックアップ項目の "DeleteState" が "NotDeleted" に戻ります。 しかし、保護は引き続き停止状態にあります。 保護を再び有効にするには、[バックアップを再開する](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#change-policy-for-backup-items)必要があります。
+
 ## <a name="disabling-soft-delete"></a>論理的な削除の無効化
 
 論理的な削除は、偶発的または悪意のある削除からバックアップ データを保護するために、新しく作成されたコンテナーでは既定で有効になっています。  この機能を無効にすることは推奨されません。 論理的な削除を無効にすることを検討する必要があるのは、保護された項目を新しいコンテナーに移動することを計画していて、削除と再保護の前に (テスト環境などで) 必要な 14 日間待機できない場合のみです。バックアップ管理者のみがこの機能を無効にできます。 この機能を無効にした場合、保護された項目を削除すると、復元する機能はなく、すべてがすぐに削除されます。 この機能を無効にする前に、論理的に削除された状態のバックアップ データは、論理的に削除された状態のままになります。 これらをすぐに完全に削除する場合、完全に削除されるように、削除を取り消してからもう一度削除する必要があります。
+
+### <a name="disabling-soft-delete-using-azure-portal"></a>Azure portal を使用した論理的な削除を無効にする
 
 論理的な削除を無効にするには、次の手順に従います。
 
@@ -76,17 +126,36 @@ ms.locfileid: "74278233"
 2. プロパティ ウィンドウで、 **[セキュリティ設定] **[更新]**  -> ** を選択します。  
 3. [セキュリティ設定] ウィンドウの **[論理的な削除]** で、 **[無効にする]** を選択します。
 
-
 ![論理的な削除の無効化](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+### <a name="disabling-soft-delete-using-azure-powershell"></a>Azure PowerShell を使用した論理的な削除を無効にする
+
+> [!IMPORTANT]
+> Azure PS で論理的に削除するために必要な Az.RecoveryServices バージョンの最小は 2.2.0 です。 ```Install-Module -Name Az.RecoveryServices -Force``` を使用し、最新バージョンを取得してください。
+
+無効にするには、[Set-AzRecoveryServicesVaultBackupProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty?view=azps-3.1.0) PS コマンドレットを使用します。
+
+```powershell
+Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
+
+
+StorageModelType       :
+StorageType            :
+StorageTypeState       :
+EnhancedSecurityState  : Enabled
+SoftDeleteFeatureState : Disabled
+```
 
 ## <a name="permanently-deleting-soft-deleted-backup-items"></a>論理的に削除されたバックアップ項目を完全に削除する
 
-この機能を無効にする前に、論理的に削除された状態のバックアップ データは、論理的に削除された状態のままになります。 これらをすぐに完全に削除する場合、削除を取り消し、もう一度削除して完全に削除します。 
+この機能を無効にする前に、論理的に削除された状態のバックアップ データは、論理的に削除された状態のままになります。 これらをすぐに完全に削除する場合、削除を取り消し、もう一度削除して完全に削除します。
+
+### <a name="using-azure-portal"></a>Azure Portal の使用
 
 次の手順に従います。
 
 1. [論理的な削除を無効にする](#disabling-soft-delete)には、この手順に従います。 
-2. Azure portal で、コンテナーにアクセスし、**バックアップ項目**にアクセスして論理的に削除された VM を選択します。 
+2. Azure portal で、コンテナーにアクセスし、**バックアップ項目**にアクセスして論理的に削除された VM を選択します。
 
 ![論理的に削除された VM の選択](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
@@ -109,6 +178,42 @@ ms.locfileid: "74278233"
 
 7. 項目のバックアップ データを削除するには、 **[削除]** を選択します。 バックアップ データが削除されたことを示す通知メッセージが表示されます。
 
+### <a name="using-azure-powershell"></a>Azure PowerShell の使用
+
+論理的な削除を無効にする前に項目を削除した場合、項目は論理的に削除されている状態になります。 すぐに削除するには、削除操作を元に戻してからもう一度削除する必要があります。
+
+論理的に削除された状態にある項目を特定します。
+
+```powershell
+
+Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID | Where-Object {$_.DeleteState -eq "ToBeDeleted"}
+
+Name                                     ContainerType        ContainerUniqueName                      WorkloadType         ProtectionStatus     HealthStatus         DeleteState
+----                                     -------------        -------------------                      ------------         ----------------     ------------         -----------
+VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;selfhostrg;AppVM1       AzureVM              Healthy              Passed               ToBeDeleted
+
+$myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
+```
+
+次に、論理的な削除が有効になっていたときに実行された削除操作を元に戻します。
+
+```powershell
+Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM     12/5/2019 12:47:40 PM     65311982-3755-46b5-8e53-c82ea4f0d2a2
+```
+
+これで論理的な削除が無効になったため、削除操作後、バックアップ データがすぐに削除されるようになります。
+
+```powershell
+Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
+
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   -----
+AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM     12/5/2019 12:44:50 PM     0488c3c2-accc-4a91-a1e0-fba09a67d2fb
+```
 
 ## <a name="other-security-features"></a>その他のセキュリティ機能
 
@@ -168,7 +273,7 @@ No. 論理的に削除された項目を強制的に削除することはでき�
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>PowerShell または CLI で論理的な削除操作を実行できますか?
 
-いいえ、PowerShell または CLI のサポートは現在使用できません。
+論理的な削除操作は [PowerShell](#soft-delete-for-vms-using-azure-powershell) で実行できますか。 現在のところ、CLI はサポートされていません。
 
 #### <a name="is-soft-delete-supported-for-other-cloud-workloads-like-sql-server-in-azure-vms-and-sap-hana-in-azure-vms"></a>他のクラウド ワークロード (Azure VM での SQL Server や Azure VM での SAP HANA など) では、論理的な削除はサポートされていますか?
 

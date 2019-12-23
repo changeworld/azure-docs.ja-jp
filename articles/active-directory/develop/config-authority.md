@@ -1,29 +1,25 @@
 ---
-title: さまざまな ID プロバイダーを使用するように iOS および macOS 用 MSAL を構成する
+title: さまざまな ID プロバイダーを構成する (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: B2C、ソブリン クラウド、ゲスト ユーザーなどのさまざまな機関を、iOS および macOS 用 MSAL で使用する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4df5067317170e18a52fbac53bc02a2ba7d35aba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0f2408dc2dd80ab3f52b158a18355087fe941b48
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473798"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917983"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>方法:さまざまな ID プロバイダーを使用するように iOS および macOS 用 MSAL を構成する
 

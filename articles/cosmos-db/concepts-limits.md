@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7ce15a0fe55c32ad7e381ba70e4dffee11c76bee
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8d2873dd2fd36ed1193aed457a04baae94a043a2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383403"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951821"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -115,13 +115,14 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 
 ## <a name="per-request-limits"></a>要求あたりの制限
 
-Cosmos DB は、コンテナー、項目、データベースなどのリソースに対して [CRUD とクエリ操作](https://docs.microsoft.com/rest/api/cosmos-db/)をサポートしています。  
+Azure Cosmos DB は、コンテナー、項目、データベースなどのリソースに対して [CRUD とクエリ操作](https://docs.microsoft.com/rest/api/cosmos-db/)をサポートしています。 また、コンテナー内の同じパーティション キーを持つ複数の項目に対する[トランザクション バッチ要求](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch)もサポートしています。
 
 | リソース | 既定の制限 |
 | --- | --- |
 | 1 つの操作 (ストアド プロシージャの実行や 1 回のクエリ ページ取得など) の最大実行時間| 5 秒 |
-| 最大要求サイズ (ストアド プロシージャ、CRUD)| 2 MB |
+| 最大要求サイズ (ストアド プロシージャ、CRUD など)| 2 MB |
 | 最大応答サイズ (ページ分割されたクエリなど) | 4 MB |
+| トランザクション バッチ内の操作の最大数 | 100 |
 
 クエリなどの操作が実行タイムアウトまたは応答サイズの制限に達すると、その操作は、実行を再開するために結果のページと継続トークンをクライアントに返します。 1 つのクエリをページや継続にまたがって実行できる期間に実質的に制限はありません。
 

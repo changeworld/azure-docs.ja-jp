@@ -1,6 +1,6 @@
 ---
 title: コンテンツに対応したエンコードの試験的プリセット - Azure |Microsoft Docs
-description: この記事では、Azure Media Services でのコンテンツに対応したエンコードについて説明します
+description: この記事では、Microsoft Azure Media Services v3 でのコンテンツに対応したエンコードについて説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: ddb7bfd2437af806c8db75068c50545e69867ea0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65151018"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896135"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>コンテンツに対応したエンコードの試験的プリセット
 

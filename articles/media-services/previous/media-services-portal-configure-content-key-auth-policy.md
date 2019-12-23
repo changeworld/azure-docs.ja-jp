@@ -1,6 +1,6 @@
 ---
 title: Azure Portal を使用したコンテンツ キー承認ポリシーの構成 | Microsoft Docs
-description: コンテンツ キー承認ポリシーを構成する方法について説明します。
+description: この記事では、コンテンツ キー承認ポリシーを構成する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b046ce5a8647abe601a6327667241d98445ce1e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61130561"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968792"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -79,6 +79,10 @@ PlayReady を使用してコンテンツを保護する場合、承認ポリシ�
         </PlayReadyLicenseResponseTemplate>
 
 **[ポリシー xml のインポート]** ボタンを選択し、「[Media Services PlayReady ライセンス テンプレートの概要](media-services-playready-license-template-overview.md)」で定義されている XML スキーマに準拠した別の XML を指定できます。
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="next-steps"></a>次の手順
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

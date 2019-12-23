@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 18c6499afe450a0387b0d9f0f13ee4378e0a21a9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 42f52581d8f2f80deb5d6250ed54ab64fc1ba4d3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174490"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849056"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>Excel 用 Azure Data Explorer コネクタを使用してデータを視覚化する
 
@@ -75,3 +75,6 @@ Azure Data Explorer Excel ネイティブ コネクタを使用すると、ク�
 
 1. データを監視するための完全なダッシュボードを作成します。
 
+## <a name="next-steps"></a>次の手順
+
+[Microsoft Excel にインポートされた Azure Data Explorer Kusto クエリを使用してデータを視覚化する](excel-blank-query.md)

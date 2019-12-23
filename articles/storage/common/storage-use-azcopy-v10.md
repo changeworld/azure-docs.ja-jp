@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: af24a6b6d165ba60a0d88a4ddf74a4f18836e813
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0572a18e530eaff2b5a2d8aa8ced5af26f762aa8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111761"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873932"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy を使ってみる
 
@@ -73,7 +73,7 @@ AzCopy ディレクトリをご自分のパスに追加しないことを選択�
 | ストレージの種類 | 現在サポートされている認証方法 |
 |--|--|
 |**Blob Storage** | Azure AD および SAS |
-|**BLOB ストレージ (階層的名前空間)** | Azure AD および SAS |
+|**BLOB ストレージ (階層型名前空間)** | Azure AD および SAS |
 |**File Storage** | SAS のみ |
 
 ### <a name="option-1-use-azure-active-directory"></a>オプション 1:Azure Active Directory を使用する
@@ -99,7 +99,7 @@ Azure Active Directory を使用すると、各コマンドに SAS トークン�
 - コンテナー (ファイル システム)
 - ストレージ アカウント
 - Resource group
-- Subscription
+- サブスクリプション
 
 ロールを確認し、割り当てる方法については、「[Azure portal で RBAC を使用して Azure BLOB とキューのデータへのアクセスを付与する](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
