@@ -1,6 +1,6 @@
 ---
 title: Azure AD への接続時に WebAPI プロジェクトに行われる変更
-description: Visual Studio を使用して Azure AD に接続した場合の WebAPI プロジェクトの変更内容の説明
+description: Visual Studio を使用して Azure AD に接続した場合の WebAPI プロジェクトの変更内容を説明します
 author: ghogen
 manager: jillfra
 ms.assetid: 57630aee-26a2-4326-9dbb-ea2a66daa8b0
@@ -12,12 +12,12 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32fc72d22d3f739018df22c315d7a1a3124c8823
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3a0cf375902281817ecc002f8fb76be32eed149d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851800"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966318"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>WebAPI プロジェクトの変更点 (Visual Studio Azure Active Directory 接続済みサービス)
 
@@ -33,7 +33,7 @@ ms.locfileid: "68851800"
 
 プロジェクト ファイル (*.NET 参照) と `packages.config` (NuGet 参照) に影響します。
 
-| Type | リファレンス |
+| 種類 | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -46,7 +46,7 @@ ms.locfileid: "68851800"
 
 追加の参照 ( **[ディレクトリ データの読み取り]** オプションを選択した場合):
 
-| Type | リファレンス |
+| 種類 | リファレンス |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 のみ) |
@@ -60,7 +60,7 @@ ms.locfileid: "68851800"
 
 次の参照は削除されます (Visual Studio 2015 では ASP.NET 4 プロジェクトのみ)。
 
-| Type | リファレンス |
+| 種類 | リファレンス |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |

@@ -1,12 +1,12 @@
 ---
 title: 長時間実行される操作のポーリング | Microsoft Docs
-description: このトピックでは、長時間実行される操作をポーリングする方法について説明します。
+description: 'Azure Media Services は、要求を Media Services に送信して操作 (例: 作成、開始、停止、チャネルの削除) を開始する API を提供します。これらは実行時間の長い操作です。 このトピックでは、長時間実行される操作をポーリングする方法について説明します。'
 services: media-services
 documentationcenter: ''
-author: juliako
+author: Juliako
+writer: juliako
 manager: femila
 editor: ''
-ms.assetid: 9a68c4b1-6159-42fe-9439-a3661a90ae03
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 752c502268ef53d3c0575d92e75ce6a965fccd9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43d9a6adc935010eab6e5e52d73f2019c8afcf5f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464982"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887160"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Azure Media Services を使用したライブ ストリーミング配信
 

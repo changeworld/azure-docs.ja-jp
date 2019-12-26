@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: raynew
-ms.openlocfilehash: 9ddb63fcf4d960d2d8ed2671eba83fc38cddcbe4
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 68026af5b96728ea66fd9e584e67e5e596e690fb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710045"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974667"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware 移行オプションを選択する
 
@@ -45,6 +45,7 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 
 **タスク** | **詳細** |**エージェントレス** | **エージェント ベース**
 --- | --- | --- | ---
+**評価** | 移行前にサーバーを評価します。  評価はオプションです。 移行前にマシンを評価することをお勧めしますが、必須ではありません。 <br/><br/> 評価のために、Azure Migrate によって、VM を検出して評価するための軽量アプライアンスが設定されます。 | 評価後にエージェントレスの移行を実行する場合は、評価用に設定したのと同じ Azure Migrate アプライアンスが、エージェントレスの移行に使用されます。  |  評価後にエージェントベースの移行を実行する場合は、評価用に設定したアプライアンスが、エージェントレスの移行中には使用されません。 アプライアンスは、そのまま置いておくことができます。これ以上検出と評価を行わない場合は、削除することもできます。
 **VMware サーバーと VM を移行のために準備する** | VMware サーバーと VM でいくつかの設定を構成します。 | 必須 | 必須
 **Server Migration ツールを追加する** | Azure Migrate プロジェクトで Azure Migrate Server Migration ツールを追加します。 | 必須 | 必須
 **Azure Migrate アプライアンスをデプロイする** | VMware VM 上に VM の検出と評価のための軽量アプライアンスを設定します。 | 必須 | 不要。

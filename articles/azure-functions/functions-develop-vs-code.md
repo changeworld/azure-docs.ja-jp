@@ -3,12 +3,12 @@ title: Visual Studio Code を使用して Azure Functions を開発する
 description: Visual Studio Code 用 Azure Functions 拡張機能を使用して、Azure Functions を開発およびテストする方法を説明します。
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: f9ad40cd50863990b9af629c77321195dce5e97c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cf96a0630440904282f076de2f916fb3dbf3eb1c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227049"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975586"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -20,7 +20,7 @@ Azure Functions 拡張機能には、次のような利点があります。
 * Azure に直接 Azure Functions プロジェクトを発行できます。
 * Visual Studio Code の利点を活用しながら、さまざまな言語で関数を作成できます。
 
-拡張機能は、Azure Functions バージョン 2.x ランタイムでサポートされている次の言語で使用できます。
+拡張機能は、Azure Functions ランタイム バージョン 2.x 以降でサポートされている次の言語で使用できます。
 
 * [C# コンパイル済み](functions-dotnet-class-library.md)
 * [C# スクリプト](functions-reference-csharp.md)<sup>*</sup>
@@ -214,7 +214,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 1. サインしていない場合は、**Azure にサインイン**するよう求められます。 **無料の Azure アカウントを作成**することもできます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。
 
-1. 複数のサブスクリプションがある場合、関数アプリの**サブスクリプションを選択**してから、 **[+ Create New Function App in Azure... _Advanced_]\(+ Azure で新しい関数アプリを作成... 詳細\)** を選択します。 この_高度_なオプションを使用すると、Azure で作成するリソースをより細かく制御できます。 
+1. 複数のサブスクリプションがある場合、関数アプリの**サブスクリプションを選択**してから、 **[+ Create New Function App in Azure... _Advanced_]\(+ Azure で新しい関数アプリを作成... 詳細\)** を選択します。 この _Advanced_ オプションを使用すると、Azure で作成するリソースをより細かく制御できます。 
 
 1. プロンプトに従って、次の情報を入力します。
 
@@ -263,7 +263,7 @@ Azure Functions 拡張機能を使用すると、ローカルの開発用コン�
 
 Functions プロジェクトをローカルで実行するには、これらの追加要件を満たす必要があります。
 
-* [Azure Functions Core Tools](functions-run-local.md#v2) のバージョン 2.x をインストールします。 プロジェクトをローカルで開始すると、Core Tools パッケージが自動的にダウンロードされてインストールされます。 Core Tools には、Azure Functions ランタイム全体が含まれているため、ダウンロードとインストールにはしばらく時間がかかる場合があります。
+* [Azure Functions Core Tools](functions-run-local.md#v2) のバージョン 2.x 以降をインストールします。 プロジェクトをローカルで開始すると、Core Tools パッケージが自動的にダウンロードされてインストールされます。 Core Tools には、Azure Functions ランタイム全体が含まれているため、ダウンロードとインストールにはしばらく時間がかかる場合があります。
 
 * 選択した言語に固有の要件をインストールします。
 

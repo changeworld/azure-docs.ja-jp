@@ -1,7 +1,7 @@
 ---
 title: ML パイプラインとは
 titleSuffix: Azure Machine Learning
-description: この記事では、Azure Machine Learning SDK for Python を使用して構築できる機械学習パイプラインの利点について説明します。 機械学習 (ML) パイプラインは、データ サイエンティストが機械学習ワークフローを構築、最適化、管理するために使用します。
+description: この記事では、Azure Machine Learning SDK for Python を使用して構築できる機械学習 (ML) パイプラインの利点について学習します。 機械学習パイプラインは、データ サイエンティストが機械学習ワークフローを構築、最適化、管理するために使用します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 21aa869d53a35ee974fb2f852b9be9b10eb929b0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 84a01597570a488652e3db2345bdf68b52d4bf5b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112402"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973579"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 

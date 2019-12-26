@@ -1,5 +1,5 @@
 ---
-title: Azure Database for PostgreSQL での分散データ – Hyperscale (Citus)
+title: 分散データ – Hyperscale (Citus) - Azure Database for PostgreSQL
 description: Azure Database for PostgreSQL の分散テーブル、参照テーブル、ローカル テーブル、およびシャードについて説明します。
 author: jonels-msft
 ms.author: jonels
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 53d656d8d39c71c813d7dd7a504ec45667bf18b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ade7632dc042741a07bdb59e34e30b3fb464e0e9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482433"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975620"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL での分散データ – Hyperscale (Citus)
 

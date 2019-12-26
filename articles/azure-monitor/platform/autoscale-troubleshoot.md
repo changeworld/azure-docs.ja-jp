@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 14e2f79383aa45125ce6955f3611a75ece1df10d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152344"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893571"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure 自動スケーリングのトラブルシューティング
  
@@ -115,7 +115,7 @@ Azure Monitor 自動スケーリングを使用すると、適切な量のリソ
 
 ![自動スケーリングの診断設定](media/autoscale-troubleshoot/diagnostic-settings.png)
 
-前の図は、Azure portal 自動スケーリングの診断設定を示しています。 ここで、[診断ログ] タブを選択し、ログの収集とルーティングを有効にすることができます。 また、REST API、CLI、PowerShell、Resource Manager テンプレートを使用して診断設定を行うこともできます。これを行うには、リソースの種類として *[Microsoft Insights/AutoscaleSettings]* を選択します。 
+前の図は、Azure portal 自動スケーリングの診断設定を示しています。 ここで、[診断ログ] タブまたは [リソース ログ] タブを選択し、ログの収集とルーティングを有効にすることができます。 また、REST API、CLI、PowerShell、Resource Manager テンプレートを使用して診断設定を行うこともできます。これを行うには、リソースの種類として *[Microsoft Insights/AutoscaleSettings]* を選択します。 
 
 ## <a name="troubleshooting-using-autoscale-logs"></a>自動スケーリング ログを使用したトラブルシューティング 
 

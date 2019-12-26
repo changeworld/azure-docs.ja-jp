@@ -4,17 +4,17 @@ description: Azure Automation State Configuration による管理のためのマ
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: cf95a66cf68cf0b33444a17cf762bae79db4b50c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 89b51af3beaad645dc27b599c2493be4d4bdf30f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243429"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951413"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンのオンボード
 
@@ -305,6 +305,15 @@ State Configuration 登録プロトコルに必要な情報は、Azure Portal �
 
 セキュリティ強化のため、Automation アカウントのプライマリおよびセカンダリ アクセス キーを ( **[キーの管理]** ページで) いつでも再生成して、以前のキーを使用して今後ノードが登録されないようにすることができます。
 
+## <a name="certificate-expiration-and-re-registration"></a>証明書の有効期限と再登録
+
+Azure Automation State Configuration に DSC ノードとしてマシンを登録した後も、さまざまな理由で、そのノードを再登録する必要があります。
+
+- Windows Server 2019 より前のバージョンのWindows Server では、1 年後に有効期限が切れる認証用の一意の証明書を各ノードが自動的にネゴシエートします。 現時点では、PowerShell DSC 登録プロトコルは、有効期限が近づいたときに証明書を自動的に更新することはできないため、1 年後にノードを再登録する必要があります。 再登録する前に、各ノードで Windows Management Framework 5.0 RTM が実行されていることを確認します。 ノードの認証証明書の有効期限が切れるときにノードが再登録されない場合、ノードは Azure Automation と通信できなくなり、[反応なし] とマークされます。 証明書の有効期限が切れる 90 日以内または証明書の有効期限が切れた後で再登録を実行すると、新しい証明書が生成されて使用されます。  Windows Server 2019 以降には、この問題への解決策が含まれています。
+- ConfigurationMode など、ノードの最初の登録時に設定した [PowerShell DSC Configuration Manager 値](/powershell/scripting/dsc/managing-nodes/metaConfig4)を変更する場合。 現在、DSC エージェント値を変更するには、再登録を使用する必要があります。 1 つの例外は、ノードに割り当てられたノード構成です。この場合、Azure Automation DSC で直接変更できます。
+
+再登録は、このドキュメントで説明しているオンボード方法のいずれかを使用して、ノードを最初に登録したときと同じ方法で実行できます。 ノードを再登録する前に、Azure Automation State Configuration のノードの登録を解除する必要はありません。
+
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Azure 仮想マシンのオンボードに関するトラブルシューティング
 
 Azure Automation State Configuration を使用すると、構成管理のための Azure Windows VM を簡単にオンボードできます。 内部で、Azure VM Desired State Configuration 拡張機能を使用して、VM を Azure Automation State Configuration に登録します。 Azure VM Desired State Configuration 拡張機能は非同期に実行されるため、その進行状況の追跡とその実行に関するトラブルシューティングが重要な場合があります。
@@ -314,14 +323,7 @@ Azure Automation State Configuration を使用すると、構成管理のため�
 
 トラブルシューティングを行う場合や、Azure VM Desired State Configuration 拡張機能の状態を表示する場合は、Azure Portal でオンボードされている VM に移動し、 **[設定]** の **[拡張機能]** をクリックします。 次に、お使いのオペレーティング システムに応じて **[DSC]** または **[DSCForLinux]** をクリックします。 詳細は、 **[詳細な状態の表示]** をクリックして表示できます。
 
-## <a name="certificate-expiration-and-reregistration"></a>証明書の有効期限と再登録
-
-Azure Automation State Configuration に DSC ノードとしてマシンを登録した後も、さまざまな理由で、そのノードを再登録する必要があります。
-
-- Windows Server 2019 より前のバージョンのWindows Server では、1 年後に有効期限が切れる認証用の一意の証明書を各ノードが自動的にネゴシエートします。 現時点では、PowerShell DSC 登録プロトコルは、有効期限が近づいたときに証明書を自動的に更新することはできないため、1 年後にノードを再登録する必要があります。 再登録する前に、各ノードで Windows Management Framework 5.0 RTM が実行されていることを確認します。 ノードの認証証明書の有効期限が切れるときにノードが再登録されない場合、ノードは Azure Automation と通信できなくなり、[反応なし] とマークされます。 証明書の有効期限が切れる 90 日以内または証明書の有効期限が切れた後で再登録を実行すると、新しい証明書が生成されて使用されます。  Windows Server 2019 以降には、この問題への解決策が含まれています。
-- ConfigurationMode など、ノードの最初の登録時に設定した [PowerShell DSC Configuration Manager 値](/powershell/scripting/dsc/managing-nodes/metaConfig4)を変更する場合。 現在、DSC エージェント値を変更するには、再登録を使用する必要があります。 1 つの例外は、ノードに割り当てられたノード構成です。この場合、Azure Automation DSC で直接変更できます。
-
-再登録は、ノードを最初に登録する場合と同様です。このドキュメントで説明しているオンボード方法のいずれかを使用します。 ノードを再登録する前に、Azure Automation State Configuration のノードの登録を解除する必要はありません。
+トラブルシューティングの詳細については、「[Azure Automation Desired State Configuration (DSC) の問題をトラブルシューティングする](./troubleshoot/desired-state-configuration.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

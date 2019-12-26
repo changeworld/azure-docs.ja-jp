@@ -1,5 +1,5 @@
 ---
-title: ポータルで Azure ML ワークスペースを作成する
+title: ポータルで Azure Machine Learning ワークスペースを作成する
 titleSuffix: Azure Machine Learning
 description: Azure portal で Azure Machine Learning ワークスペースを作成、表示、削除する方法について説明します。
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e3915a2f55680fc2e24ac63d5e7170ada026c2e
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 80b554b7dd4f37e1a215892962d8ec5622d8ae5c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615154"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974038"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Azure portal 内で Azure Machine Learning ワークスペースを作成および管理する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "73615154"
    フィールド|説明 
    ---|---
    ワークスペース名 |ワークスペースを識別する一意の名前を入力します。 この例では、**docs-ws** を使用します。 名前は、リソース グループ全体で一意である必要があります。 覚えやすく、他のユーザーが作成したワークスペースと区別しやすい名前を使用します。  
-   Subscription |使用する Azure サブスクリプションを選択します。
+   サブスクリプション |使用する Azure サブスクリプションを選択します。
    Resource group | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力して新しいリソース グループを作成します。 リソース グループは、Azure ソリューションの関連するリソースを保持します。 この例では、**docs-aml** を使用します。 
    Location | ユーザーとデータ リソースに最も近い場所を選択し、ワークスペースを作成します。
    ワークスペースのエディション | **[Basic]** または **[Enterprise]** を選択します。  このワークスペース エディションによって、アクセスでき、価格設定の対象となる機能が決まります。 詳細については、[Basic および Enterprise Edition のオファリング](overview-what-is-azure-ml.md#sku)に関するページを参照してください。 
@@ -73,15 +73,15 @@ ms.locfileid: "73615154"
 
 Basic Edition から Enterprise Edition にワークスペースをアップグレードすることで、ローコード エクスペリエンスや強化されたセキュリティ機能などの拡張機能を利用できます。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。
 
 1. アップグレードするワークスペースを選択します。
 
-1. 上部またはアップグレード メッセージで、 **[アップグレード]** を選択します。
+1. ページの右上部にある **[詳細]** を選択します。
 
-    ![ワークスペースのアップグレード](media/how-to-manage-workspace/upgrade.png)
+   [ ![ワークスペースをアップグレードする](media/how-to-manage-workspace/upgrade.png) ](media/how-to-manage-workspace/upgrade.png#lightbox)
 
-1. **[更新の確認]** を選択します。
+1. 表示されるウィンドウで **[アップグレード]** を選択します。
 
 
 > [!IMPORTANT]

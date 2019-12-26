@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor ブックを使用した対話型レポートの作成 | 時間パラメーター | Microsoft Docs
+title: Azure Monitor ブックの時間パラメーター
 description: 作成済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポート作成を簡素化します。
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 906ebcc49eca72744abf5854a1b320407d0384dc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1d1ee243fa9df8a77a6ce80ecb9d8e5336e8b19b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164313"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872759"
 ---
 # <a name="workbook-time-parameters"></a>ブックの時間パラメーター
 
@@ -25,11 +25,11 @@ ms.locfileid: "73164313"
 1. 編集モードの空白のブックを使用して開始します。
 2. ブック内のリンクから _[Add parameters]\(パラメーターの追加\)_ を選択します。
 3. 青い _[パラメーターの追加]_ ボタンをクリックします。
-4. ポップアップ表示される新しいパラメーター ペインで入力を行います。
+4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `TimeRange` (パラメーター名: {2})
-    2. [パラメーターの種類]\: `Time range picker`[時間範囲の選択]
+    2. [パラメーターの種類]\: [`Time range picker`ドロップ ダウン]
     3. [必須ですか?]\: `checked` (オン)
-    4. [使用可能な時間の範囲]\:[過去 1 時間]、[過去 12 時間]、[過去 24 時間]、[過去 48 時間]、[過去 3 日間]、[過去 7 日間]、および [ユーザー設定の時間範囲の選択を許可する]
+    4. [使用可能な時間の範囲]\:[過去 1 時間]、[過去 12 時間]、[過去 24 時間]、[過去 48 時間]、[過去 3 日間]、[過去 7 日間]、[ユーザー設定の時間範囲の選択を許可する]
 5. ツール バーの [保存] を選択して、パラメーターを作成します。
 
     ![時間範囲パラメーターの作成を示す画像](./media/workbooks-time/time-settings.png)
@@ -42,24 +42,24 @@ ms.locfileid: "73164313"
 ### <a name="via-bindings"></a>バインド経由
 1. クエリ コントロールをブックに追加し、Application Insights リソースを選択します。
 2. ほとんどのブック コントロールは _[Time Range]\(時間範囲\)_ スコープ ピッカーをサポートしています。 _[Time Range]\(時間範囲\)_ ドロップダウンを開き、下部の時間範囲パラメーター グループで [`{TimeRange}`] を選択します。
-3. これにより、時間範囲パラメーターがグラフの時間範囲にバインドされます。 これで、サンプル クエリの時間範囲は過去 24 時間になりました。
-4. クエリを実行し、結果を確認します
+3. これにより、時間範囲パラメーターがグラフの時間範囲にバインドされます。 これで、サンプル クエリの時間範囲は [過去 24 時間] になりました。
+4. クエリを実行して結果を確認します。
 
     ![バインドを介して参照される時間範囲パラメーターを示す画像](./media/workbooks-time/time-binding.png)
 
 ### <a name="in-kql"></a>KQL 内
 1. クエリ コントロールをブックに追加し、Application Insights リソースを選択します。
-2. KQL で、パラメーターを使用して時間スコープ フィルターを入力します: `| where timestamp {TimeRange}`
+2. KQL で、パラメーター `| where timestamp {TimeRange}` を使用して時間スコープ フィルターを入力します。
 3. これにより、クエリの評価時間が `| where timestamp > ago(1d)` に拡張されます。これは、パラメーターの時間範囲の値です。
-4. クエリを実行し、結果を確認します
+4. クエリを実行して結果を確認します。
 
     ![KQL で参照される時間範囲を示す画像](./media/workbooks-time/time-in-code.png)
 
 ### <a name="in-text"></a>テキスト内 
 1. テキスト コントロールをブックに追加します。
-2. マークダウンで、「`The chosen time range is {TimeRange:label}`」と入力します
+2. マークダウンで、「`The chosen time range is {TimeRange:label}`」と入力します。
 3. _[編集完了]_ を選択します
-4. テキスト コントロールにテキストが表示されます: "_The chosen time range is 過去 24 時間_"
+4. テキスト コントロールに、"_The chosen time range is 過去 24 時間_"
 
 ## <a name="time-parameter-options"></a>時間パラメーターのオプション
 | パラメーター | 説明 | 例 |

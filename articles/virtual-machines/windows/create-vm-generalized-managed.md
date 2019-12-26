@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 17100769bac2e7af08e0bcba6ca2eb129b621013
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: de59edc2e2c702993efd6187a590264d9aac16a7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037524"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841933"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
 
@@ -29,8 +29,7 @@ Azure portal または PowerShell を使用して、Azure 管理 VM イメージ
 
 ## <a name="use-the-portal"></a>ポータルの使用
 
-1. [Azure Portal](https://portal.azure.com)を開きます。
-2. 左側のメニューで、 **[すべてのリソース]** を選択します。 **[種類]** でリソースを並べ替えて、イメージを簡単に見つけることができます。
+1. [Azure portal](https://portal.azure.com) にアクセスしてマネージド イメージを検索します。 **[イメージ]** を検索して選択します。
 3. 一覧から使うイメージを選びます。 イメージの **[概要]** ページが開きます。
 4. メニューから **[VM の作成]** を選択します。
 5. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのログインに使用されます。 完了したら、 **[OK]** を選択します。 既存のリソース グループに新しい VM を作成するか、 **[新規作成]** を選択して VM を格納する新しいリソース グループを作成することができます。

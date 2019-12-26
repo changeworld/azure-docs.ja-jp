@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828243"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851521"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 ご不明な点がある場合は、 詳細については、次の FAQ を参照してください。
@@ -26,7 +26,7 @@ ms.locfileid: "71828243"
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Azure DevOps インスタンスではなく、Visual Studio Team Foundation Server インスタンスに拡張機能をインストールすることはできますか?
 
-いいえ。 この拡張機能は、Visual Studio Team Foundation Server 用のダウンロードとインストールには使用できません。
+No. この拡張機能は、Visual Studio Team Foundation Server 用のダウンロードとインストールには使用できません。
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Microsoft Security Code Analysis は、ビルドに対して実行しなければなりませんか? 
 
@@ -55,7 +55,7 @@ ms.locfileid: "71828243"
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>Azure DevOps ビルドの複数のリポジトリにわたってビルド タスク (Credential Scanner など) を実行することはできますか?
 
-いいえ。 1 つのパイプラインで複数のリポジトリにわたってセキュリティで保護された開発ツールを実行することはできません。
+No. 1 つのパイプラインで複数のリポジトリにわたってセキュリティで保護された開発ツールを実行することはできません。
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>指定した出力ファイルが作成されない、または指定した出力ファイルが見つからない
 
@@ -88,9 +88,9 @@ ms.locfileid: "71828243"
 
 インストールすると、拡張機能によって提供されるセキュリティ ビルド タスクを組織内のすべてのユーザーが使用できるようになります。 Azure パイプラインを作成または編集する場合、これらのタスクはビルド - タスク コレクションの一覧から利用できます。 それ以外の点では、Azure DevOps 組織にこの拡張機能をインストールしても影響はありません。 インストールによって、アカウント設定、プロジェクト設定、またはパイプラインは変更されません。
 
-### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>この拡張機能をインストールすると、既存の Azure パイプラインは変更されますか? 
+### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>この拡張機能をインストールすると、既存の Azure Pipelines は変更されますか? 
 
-いいえ。 拡張機能をインストールすると、セキュリティ ビルド タスクをパイプラインに追加できるようになります。 ただし、ツールによってビルド プロセスを操作できるように、ビルド定義を追加または更新する必要があります。
+No. 拡張機能をインストールすると、セキュリティ ビルド タスクをパイプラインに追加できるようになります。 ただし、ツールによってビルド プロセスを操作できるように、ビルド定義を追加または更新する必要があります。
 
 ## <a name="task-specific-faq"></a>タスク固有の FAQ
 
@@ -222,9 +222,6 @@ Roslyn アナライザー ビルド タスクでは、MSBuild ビルド タス�
 
 さらにサポートが必要な場合は、Microsoft Security Code Analysis サポートまでお問い合わせください (平日の午前 9:00 から午後 5:00 (太平洋標準時) まで営業)。
 
-  - オンボード:使用開始手順については、担当のテクニカル アカウント マネージャーにお問い合わせください。
+- オンボード:[オンボードに関するドキュメント](security-code-analysis-onboard.md)を参照してください。
   
-  - サポート:[Microsoft Security Code Analysis サポート](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)までメールをお送りください。
-
-  >[!NOTE] 
-  >Microsoft の有料サポートに申し込まれていない可能性があります。 または、Phoenix カタログからサービスを購入できないサポート オファリングをご利用の場合があります。 これらの条件のいずれかに該当する場合は、[サポート サービスのホーム ページ](https://www.microsoft.com/enterprise/services/support)で詳細を確認してください。
+- サポート:[Microsoft Security Code Analysis サポート](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)までメールをお送りください

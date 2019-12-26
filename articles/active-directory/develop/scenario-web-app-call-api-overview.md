@@ -1,5 +1,5 @@
 ---
-title: Web API を呼び出す Web アプリ (概要) - Microsoft ID プラットフォーム
+title: Web API を呼び出す Web アプリを構築する - Microsoft ID プラットフォーム | Azure
 description: Web API を呼び出す Web アプリ を構築する方法 (概要) について説明します
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,16 +15,16 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce45f11a697b72ebdd0fe01166a70e7b47aa8e9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3888c7f838d6009382f849bc7d3e34c49b3b70a4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080291"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962136"
 ---
 # <a name="scenario-web-app-that-calls-web-apis"></a>シナリオ: Web API を呼び出す Web アプリ
 
-Microsoft ID プラットフォームでユーザーをサインインさせ、サインインしたユーザーに代わって Web API を呼び出す Web アプリを構築する方法について説明します。
+Microsoft ID プラットフォーム上でユーザーがサインインし、サインインしたユーザーに代わって Web API を呼び出す Web アプリを構築する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

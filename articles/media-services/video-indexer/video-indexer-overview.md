@@ -1,7 +1,7 @@
 ---
 title: Video Indexer とは
 titleSuffix: Azure Media Services
-description: Azure Media Services Video Indexer サービスの概要。
+description: この記事では、Azure Media Services Video Indexer サービスの概要を説明します。
 services: media-services
 author: Juliako
 manager: femila
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: juliako
-ms.openlocfilehash: 9f6a5fa96034e0bf43ddd573a425de8d114d47ce
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a942277b5616f3e8220e7fc0fd00f7d660d76d3e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575109"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892704"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
 

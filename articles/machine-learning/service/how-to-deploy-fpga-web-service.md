@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5e8dc6181660f0c1545df0688e2749f8f0187027
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b387c9d595898158ff8b5ab8c25f705825b8c248
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496889"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978221"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>フィールド プログラマブル ゲート アレイ (FPGA) の説明とデプロイ方法
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -136,9 +136,9 @@ Azure Machine Learning Hardware Accelerated Models を使用して、モデル�
 
 [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに自動的に圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
 
-### <a name="load-azure-ml-workspace"></a>Azure ML ワークスペースを読み込む
+### <a name="load-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースを読み込む
 
-Azure ML ワークスペースを読み込みます。
+Azure Machine Learning ワークスペースを読み込みます。
 
 ```python
 import os
@@ -380,7 +380,7 @@ ssl_enabled = address.startswith("https")
 address = address[address.find('/')+2:].strip('/')
 port = 443 if ssl_enabled else 80
 
-# Initialize AzureML Accelerated Models client
+# Initialize Azure ML Accelerated Models client
 client = PredictionClient(address=address,
                           port=port,
                           use_ssl=ssl_enabled,
@@ -432,7 +432,7 @@ FPGA の Web サービスをセキュリティで保護するには、[Web サ�
 
 次のノートブック、ビデオ、およびブログをご覧ください。
 
-+ さまざまな[サンプル ノートブック](https://aka.ms/aml-accel-models-notebooks)。
++ 各種の[サンプル ノートブック](https://aka.ms/aml-accel-models-notebooks)
 
 + [Hyperscale hardware:ML at scale on top of Azure + FPGA (ハイパースケール ハードウェア: Azure + FPGA 基盤の大規模 ML):Build 2018 (ビデオ)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 

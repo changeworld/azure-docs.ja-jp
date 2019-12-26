@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3563b56e596f5c79f2107bdbf74219a19c6c0d06
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ed67981a79e2bc998d0f1f64858206243c0a7070
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784614"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997209"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Azure Machine Learning の既知の問題とトラブルシューティング
 
@@ -90,9 +90,22 @@ Tensor Flow の自動化された機械学習は現在、Tensor Flow バージ�
 
 これらは、Azure Machine Learning のデータセットの既知の問題です。
 
+### <a name="typeerror-filenotfound-no-such-file-or-directory"></a>TypeError:FileNotFound:を開けませんでした 原因: ファイルまたはディレクトリが存在しません
+
+このエラーは、指定したファイル パスにファイルがない場合に発生します。 ファイルを参照する方法が、コンピューティング先でデータセットをマウントした場所と一致していることを確認する必要があります。 確定的な状態を確保するには、データセットをコンピューティング先にマウントするときに抽象パスを使用することをお勧めします。 たとえば、次のコードでは、コンピューティング先のファイルシステムのルート `/tmp` にデータセットをマウントしています。 
+
+```python
+# Note the leading / in '/tmp/dataset'
+script_params = {
+    '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+} 
+```
+
+先頭のスラッシュ "/" を含めない場合は、データセットをマウントする場所を示すために、コンピューティング先の作業ディレクトリをプレフィックスとして付ける必要があります (たとえば、`/mnt/batch/.../tmp/dataset`)。 
+
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>HTTP または ADLS Gen 2 から Parquet ファイルを読み取ることができない
 
-AzureML DataPrep SDK バージョン 1.1.25 には、HTTP または ADLS Gen 2 から Parquet ファイルを読み込んでデータセットを作成するときにエラーが発生する既知の問題があります。 `Cannot seek once reading started.` のエラーが発生します。 この問題を解決するには、`azureml-dataprep` を 1.1.26 よりも上のバージョンにアップグレードするか、1.1.24 よりも下のバージョンにダウングレードしてください。
+AzureML DataPrep SDK バージョン 1.1.25 には、HTTP または ADLS Gen 2 から Parquet ファイルを読み取ってデータセットを作成するときにエラーが発生する既知の問題があります。 `Cannot seek once reading started.` のエラーが発生します。 この問題を解決するには、`azureml-dataprep` を 1.1.26 よりも上のバージョンにアップグレードするか、1.1.24 よりも下のバージョンにダウングレードしてください。
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -128,7 +141,7 @@ psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 
 自動化された機械学習の設定で、繰り返し回数が 10 回を超えている場合は、実行を送信するときに `show_output` を `False` に設定します。
 
-### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Azure Machine Learning SDK/自動化された機械学習のウィジェット
+### <a name="widget-for-the-azure-machine-learning-sdk-and-automated-machine-learning"></a>Azure Machine Learning SDK のウィジェットと自動化された機械学習
 
 Azure Machine Learning SDK ウィジェットは、Databricks ノートブックではサポートされていません。この理由は、ノートブックが HTML ウィジェットを解析できないからです。 Azure Databricks のノートブック セルで次の Python コードを使用することにより、portal でウィジェットを表示することができます。
 
@@ -215,7 +228,7 @@ Azure Kubernetes Service クラスターにインストールされている Azu
 > [!WARNING]
 > 次の操作を実行する前に、Azure Kubernetes Service クラスターのバージョンを確認してください。 クラスターのバージョンが 1.14 以降の場合、クラスターを Azure Machine Learning ワークスペースに再アタッチすることはできません。
 
-これらの更新プログラムを適用するには、Azure Machine Learning ワークスペースからクラスターをデタッチしてから、クラスターをワークスペースに再アタッチします。 クラスターで SSL が有効な場合は、クラスターを再接続するときに SSL 証明書と秘密キーを指定する必要があります。 
+これらの更新プログラムを適用するには、Azure Machine Learning ワークスペースからクラスターをデタッチしてから、クラスターをワークスペースに再アタッチします。 クラスターで SSL が有効な場合は、クラスターを再アタッチするときに SSL 証明書と秘密キーを指定する必要があります。 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -248,6 +261,16 @@ kubectl get secret/azuremlfessl -o yaml
 ## <a name="recommendations-for-error-fix"></a>エラー修正に関する推奨事項
 一般的な見地に基づいて、Azure ML においていくつかの一般的なエラーを修正するための Azure ML での推奨事項を示します。
 
+### <a name="metric-document-is-too-large"></a>Metric Document is too large (メトリック ドキュメントが大きすぎます)
+Azure Machine Learning service には、トレーニングの実行から一度にログに記録できるメトリック オブジェクトのサイズに関する内部制限があります。 リスト値メトリックのログ記録時に "Metric Document is too large (メトリック ドキュメントが大きすぎます)" エラーが発生した場合は、次の例のように、リストを小さいチャンクに分割してみてください。
+
+```python
+run.log_list("my metric name", my_metric[:N])
+run.log_list("my metric name", my_metric[N:])
+```
+
+ 内部的には、実行履歴サービスにより、同じメトリック名を持つブロックが連続したリストに連結されます。
+
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (モジュール名が指定されていない)
 Azure ML で実験を送信する際に ModuleErrors が発生した場合、トレーニング スクリプトではパッケージがインストールされていることを期待しているのに、それが追加されていないことを意味します。 パッケージ名を指定すると、Azure ML では、トレーニングに使用される環境にパッケージがインストールされます。 
 
@@ -255,15 +278,16 @@ Azure ML で実験を送信する際に ModuleErrors が発生した場合、ト
 
 Azure ML では、Tensorflow、PyTorch、Chainer、および SKLearn に対応するフレームワーク固有の Estimator も提供されています。 これらの Estimator を使用すると、ユーザーに代わって、トレーニングに使用される環境にフレームワークの依存関係が確実にインストールされます。 前述のように、追加の依存関係を指定することもできます。 
  
- Azure ML によって保守される docker イメージとそのコンテンツは、[AzureML のコンテナー](https://github.com/Azure/AzureML-Containers)内で確認できます。
+Azure ML によって保守される docker イメージとそのコンテンツは、[AzureML のコンテナー](https://github.com/Azure/AzureML-Containers)内で確認できます。
 フレームワーク固有の依存関係は、それぞれのフレームワークのドキュメント ([Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks)、[PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks)、[TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks)、[SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks)) に示されています。
 
->[注意!] 特定のパッケージが Azure ML によって保守されるイメージと環境に追加できるほど十分に一般的だと考えられる場合は、[AzureML のコンテナー](https://github.com/Azure/AzureML-Containers)に関するページで、GitHub の問題を作成してください。 
+> [!Note]
+> 特定のパッケージが Azure ML によって保守されるイメージと環境に追加できるほど十分に一般的だと考えられる場合は、[AzureML のコンテナー](https://github.com/Azure/AzureML-Containers)に関するページで、GitHub の問題を作成してください。 
  
  ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (名前が定義されていない)、AttributeError (オブジェクトに属性がない)
 この例外は、トレーニング スクリプトに起因しているはずです。 Azure portal からログ ファイルを参照して、定義されていない特定の名前または属性エラーに関する詳細情報を取得できます。 SDK から、`run.get_details()` を使用して、エラー メッセージを確認できます。 これにより、実行に対して生成されたすべてのログ ファイルも一覧表示されます。 トレーニング スクリプトを確認して、再試行する前に必ずエラーを修正してください。 
 
-### <a name="horovod-is-shutdown"></a>horovod がシャットダウンされる
+### <a name="horovod-is-shut-down"></a>horovod がシャットダウンされる
 ほとんどの場合、この例外は、プロセスの 1 つにおいて horovod のシャットダウンを引き起こした基になる例外が発生したことを意味します。 MPI ジョブの各ランクでは、Azure ML 内にある固有の専用ログ ファイルが取得されます。 これらのログは、`70_driver_logs` という名前です。 分散トレーニングの場合、ログを区別しやすいようにログ名の末尾に `_rank` が付与されます。 horovod シャットダウンの原因となった厳密なエラーを見つけるには、すべてのログ ファイルを確認して、driver_log ファイルの末尾にある `Traceback` を探します。 これらのファイルの 1 つから、基になる実際の例外がわかります。 
 
 ## <a name="labeling-projects-issues"></a>ラベル付けプロジェクトの問題

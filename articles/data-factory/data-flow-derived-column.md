@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory マッピング データ フローの派生列変換
+title: マッピング データ フローの派生列変換
 description: Azure Data Factory で、マッピング データ フローの派生列変換を使用して、大規模にデータを変換する方法について説明します。
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: 387af25b87fdedff5d15ccb6a03819ad8b020e9a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676882"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972253"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>マッピング データ フローの派生列変換
 
@@ -26,6 +27,16 @@ ms.locfileid: "73676882"
 派生列を追加するには、既存の派生列にカーソルを合わせ、プラス アイコンをクリックします。 **[列の追加]** または **[列パターンの追加]** のいずれかを選択します。 列名がソースからの変数の場合は、列パターンが役に立つ可能性があります。 詳細については、「[列パターン](concepts-data-flow-column-pattern.md)」を参照してください。
 
 ![新しい派生列の選択](media/data-flow/columnpattern.png "新しい派生列の選択")
+
+## <a name="build-schemas-in-output-schema-pane"></a>[Output Schema]\(出力スキーマ\) ウィンドウにスキーマを作成する
+
+変更している列と自分のスキーマに追加している列は、[出力スキーマ] ペインに一覧表示されます。 ここでは、単純なデータ構造と複雑なデータ構造を対話形式で作成できます。 フィールドを追加するには、 **[列の追加]** を選択します。 階層を構築するには、 **[Add subcolumn]\(サブ列の追加\)** を選択します。
+
+![サブ列の追加](media/data-flow/addsubcolumn.png "サブ列の追加")
+
+データ フローでの複合型の処理に関する詳細については、「[マッピング データ フローでの JSON の処理](concepts-data-flow-json.md)」を参照してください
+
+![複合列の追加](media/data-flow/complexcolumn.png "列の追加")
 
 ## <a name="data-flow-script"></a>データ フローのスクリプト
 

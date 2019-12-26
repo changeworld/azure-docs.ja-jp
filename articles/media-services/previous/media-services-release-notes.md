@@ -1,6 +1,6 @@
 ---
-title: Media Services リリース ノート | Microsoft Docs
-description: Media Services リリース ノート
+title: Azure Media Services リリース ノート | Microsoft Docs
+description: この記事では、Microsoft Azure Media Services v2 のリリース ノートについて説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7c6cac925ad53e08ecc10c828765153c905f1c1d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: d4c8dd4b3a53d484d5240f3514d171231fc93ae0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423892"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968512"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 
@@ -554,6 +554,10 @@ Media Services SDK バージョン 3.0.0.0 以降、[Azure AD Access Control Ser
 * 非同期メソッドのサポート
   
     * すべてのメソッドに非同期のサポートが追加されました。
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

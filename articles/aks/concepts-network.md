@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 26ba3ff600ddca6158579941ab5d32b60ff13101
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950360"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913877"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -92,7 +92,7 @@ kubenet と Azure CNIは、両方とも AKS クラスターのネットワーク
     * ユーザー定義のルート (UDR) は、手動で管理および保守する必要があります。
     * クラスターあたり最大 400 ノード。
 * **Azure CNI**
-    * ポッドは完全な仮想ネットワーク接続を取得するため、クラスターの外部から直接アクセスできます。
+    * ポッドは完全な仮想ネットワーク接続を取得するため、接続されているネットワークからプライベート IP アドレスを介して直接アクセスできます。
     * より多くの IP アドレス空間を必要とします。
 
 kubenet と Azure CNI には、次のような動作の違いが存在します。

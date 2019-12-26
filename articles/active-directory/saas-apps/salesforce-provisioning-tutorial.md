@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 32f3c439460ddc61dbf08fc4e8d7b7a000aa20f9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120539"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849175"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>チュートリアル:Salesforce を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -129,6 +129,7 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 * **SalesforceDuplicateUserName:** 別の Salesforce.com テナント内に重複している Salesforce.com の 'Username' があるため、ユーザーをプロビジョニングできません。  Salesforce.com では、'Username' 属性の値は、すべての Salesforce.com テナントにわたって一意である必要があります。  既定では、Azure Active Directory のユーザーの userPrincipalName は、Salesforce.com でのそのユーザーの 'Username' になります。   2 つのオプションがあります。  1 つ目のオプションは、他の Salesforce.com テナントも管理する場合に、その他のテナントの重複する 'Username' を持つユーザーを探して、名前を変更することです。  2 つ目のオプションは、Azure Active Directory ユーザーから、ディレクトリが統合されている Salesforce.com テナントへのアクセス権を削除することです。 次回の同期の試行時に、この操作を再試行します。 
 * **SalesforceRequiredFieldMissing:** Salesforce では、ユーザーを正常に作成または更新するために、特定の属性がユーザーに存在する必要があります。 このユーザーには、必須の属性の 1 つがありません。 Salesforce にプロビジョニングするすべてのユーザーに、email や alias などの属性が設定されていることを確認してください。 [属性ベースのスコープ フィルター](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)を使用して、これらの属性を持たないユーザーを対象外にすることができます。 
 * Salesforce へのプロビジョニング用の既定の属性マッピングには、Azure AD の appRoleAssignments を Salesforce の ProfileName にマップするための SingleAppRoleAssignments 式が含まれています。 属性マッピングでは 1 つのロールのプロビジョニングのみがサポートされているため、ユーザーが Azure AD で複数のアプリ ロールの割り当てを持たないようにしてください。 
+* Salesforce では、メールを変更する前に、その更新を手動で承認する必要があります。 そのため、メールの変更が承認されるまでは、プロビジョニングのログに、ユーザーのメールを更新するエントリが複数表示されることがあります。
 
 
 ## <a name="additional-resources"></a>その他のリソース

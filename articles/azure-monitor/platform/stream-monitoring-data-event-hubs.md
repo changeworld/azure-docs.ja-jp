@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: f282fce8070d440bdd3a518b4444eb0e67110961
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 254cbc995da9380f108970fb981c000fca7dc63f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559081"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925805"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>イベント ハブへの Azure 監視データのストリーム配信
 Azure Monitor では、Azure や他のクラウド、オンプレミスのアプリケーションとサービスに対する包括的なフル スタック監視ソリューションが提供されます。 Azure Monitor を使用してデータを分析し、さまざまな監視シナリオに活用するだけでなく、環境内にある別の監視ツールにそれを送信することが必要な場合もあります。 ほとんどの場合、監視データを外部ツールにストリーム配信するうえで最も効率的なのは、[Azure Event Hubs](/azure/event-hubs/) を使用する方法です。 この記事では、各種ソースからイベント ハブに監視データをストリーム配信する方法について簡単に説明するほか、詳細なガイダンスへのリンクを紹介します。
@@ -30,7 +30,6 @@ Azure Monitor では、Azure や他のクラウド、オンプレミスのアプ
 * Azure アクティビティ ログについては、Event Hubs 名前空間を選択すると、Azure Monitor によって、その名前空間内に _insights-logs-operational-logs_ という名前のイベント ハブが作成されます。 その他のログ タイプについては、既存のイベント ハブを選択するか、Azure Monitor によってログ カテゴリごとにイベント ハブを作成することができます。
 * 通常、イベント ハブからのデータを消費するコンピューターまたは VNET では、送信ポート 5671 と 5672 を開く必要があります。
 
-
 ## <a name="monitoring-data-available"></a>利用可能な監視データ
 Azure アプリケーションの各種データ階層とそれぞれで利用できる監視データの種類については、「[Azure Monitor で使用する監視データのソース](data-sources.md)」で説明しています。 次の表に、これらの各階層の一覧と、イベント ハブにデータをストリーム配信する方法を示します。 詳細については、記載されているリンクを参照してください。
 
@@ -38,7 +37,7 @@ Azure アプリケーションの各種データ階層とそれぞれで利用�
 |:---|:---|:---|
 | [Azure テナント](data-sources.md#azure-tenant) | Azure Active Directory 監査ログ | ご自分の AAD テナントでテナント診断設定を構成します。 詳細については、「[チュートリアル: Azure Active Directory ログを Azure イベント ハブにストリーム配信する](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)」を参照してください。 |
 | [Azure サブスクリプション](data-sources.md#azure-subscription) | [Azure Activity Log (Azure アクティビティ ログ)] | アクティビティ ログ イベントを Event Hubs にエクスポートするログ プロファイルを作成します。  詳細については、「[Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする](activity-log-export.md)」を参照してください。 |
-| [Azure リソース](data-sources.md#azure-resources) | プラットフォームのメトリック<br>診断ログ |どちらの種類のデータも、リソース診断設定を使用してイベント ハブに送信されます。 詳細については、[イベント ハブへの Azure 診断ログのストリーム配信](resource-logs-stream-event-hubs.md)に関するページを参照してください。 |
+| [Azure リソース](data-sources.md#azure-resources) | プラットフォームのメトリック<br> リソース ログ |どちらの種類のデータも、リソース診断設定を使用してイベント ハブに送信されます。 詳細については、[イベント ハブへの Azure リソース ログのストリーム配信](resource-logs-stream-event-hubs.md)に関するページを参照してください。 |
 | [オペレーティング システム (ゲスト)](data-sources.md#operating-system-guest) | Azure Virtual Machines | Azure の Windows と Linux 仮想マシンに、[Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)をインストールします。 Windows VM の場合の詳細については「[Event Hubs を利用してホット パスの Azure Diagnostics データをストリーム配信する](diagnostics-extension-stream-event-hubs.md)」を、Linux VM の場合の詳細については「[Linux Diagnostic Extension を使用して、メトリックとログを監視する](../../virtual-machines/extensions/diagnostics-linux.md#protected-settings)」を参照してください。 |
 | [アプリケーション コード](data-sources.md#application-code) | Application Insights | Application Insights には、イベント ハブにデータを直接ストリーム配信する方法は備わっていません。 ストレージ アカウントへの Application Insights データの[連続エクスポートを設定](../../azure-monitor/app/export-telemetry.md)してから、「[ロジック アプリを使用した手動ストリーム配信](#manual-streaming-with-logic-app)」の説明に従って、ロジック アプリを使用してデータをイベント ハブに送信できます。 |
 
@@ -46,18 +45,19 @@ Azure アプリケーションの各種データ階層とそれぞれで利用�
 イベント ハブに直接ストリーム配信できないデータについては、Azure Storage に書き込んでから、時刻トリガー式のロジック アプリを使用し、[データを BLOB ストレージからプル](../../connectors/connectors-create-api-azureblobstorage.md#add-action)して[メッセージとしてイベント ハブにプッシュ](../../connectors/connectors-create-api-azure-event-hubs.md#add-action)できます。 
 
 
-## <a name="tools-with-azure-monitor-integration"></a>Azure Monitor とツールの統合
+## <a name="partner-tools-with-azure-monitor-integration"></a>Azure Monitor とパートナー ツールの統合
 
 Azure Monitor で監視データをイベント ハブにルーティングすると、外部の SIEM や監視ツールに簡単に統合することができます。 Azure Monitor とツールの統合例としては、次のものがあります。
 
-| ツール | 説明 |
-|:---|:---|
-|  IBM QRadar | Microsoft Azure DSM および Microsoft Azure Event Hub Protocol は、[IBM サポート Web](https://www.ibm.com/support) サイトからダウンロードすることができます。 Azure との統合の詳細については、「[QRadar DSM の構成](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)」を参照してください。 |
-| Splunk | [Splunk 向けの Azure Monitor アドオン](https://splunkbase.splunk.com/app/3534/)が、Splunkbase でオープンソース プロジェクトとして公開されています。 ドキュメントは、「[Splunk 向けの Azure Monitor アドオン](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)」でご覧いただけいます。<br><br> プロキシの使用時や Splunk Cloud での実行時など、アドオンをご自分の Splunk インスタンスにインストールできない場合は、イベント ハブの新着メッセージによりトリガーされる [Splunk 向け Azure 関数](https://github.com/Microsoft/AzureFunctionforSplunkVS)を使用して、Splunk HTTP イベント コレクターにこれらのイベントを転送できます。 |
-| sumologic | 「[イベント ハブから Azure 監査アプリのログを収集する](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)」で、イベント ハブのデータを使用するように SumoLogic を設定する手順が説明されています。 |
-| ArcSight | [ArcSight スマート コネクタ コレクション](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)の一部として、ArcSight Azure イベント ハブ スマート コネクタが提供されています。 |
-| Syslog サーバー | Azure Monitor データを Syslog サーバーに直接ストリーム配信したい場合は、[Azure 関数ベースのソリューション](https://github.com/miguelangelopereira/azuremonitor2syslog/)を使用できます。
-| LogRhythm | LogRhythm を設定してイベント ハブからログを収集するための手順については、[こちら](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)を参照してください。 
+| ツール | Azure でホスト | 説明 |
+|:---|:---| :---|
+|  IBM QRadar | いいえ | Microsoft Azure DSM および Microsoft Azure Event Hub Protocol は、[IBM サポート Web](https://www.ibm.com/support) サイトからダウンロードすることができます。 Azure との統合の詳細については、「[QRadar DSM の構成](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)」を参照してください。 |
+| Splunk | いいえ | [Splunk 向けの Azure Monitor アドオン](https://splunkbase.splunk.com/app/3534/)が、Splunkbase でオープンソース プロジェクトとして公開されています。 ドキュメントは、「[Splunk 向けの Azure Monitor アドオン](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)」でご覧いただけいます。<br><br> プロキシの使用時や Splunk Cloud での実行時など、アドオンをご自分の Splunk インスタンスにインストールできない場合は、イベント ハブの新着メッセージによりトリガーされる [Splunk 向け Azure 関数](https://github.com/Microsoft/AzureFunctionforSplunkVS)を使用して、Splunk HTTP イベント コレクターにこれらのイベントを転送できます。 |
+| sumologic | いいえ | 「[イベント ハブから Azure 監査アプリのログを収集する](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)」で、イベント ハブのデータを使用するように SumoLogic を設定する手順が説明されています。 |
+| ArcSight | いいえ | [ArcSight スマート コネクタ コレクション](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)の一部として、ArcSight Azure イベント ハブ スマート コネクタが提供されています。 |
+| Syslog サーバー | いいえ | Azure Monitor データを Syslog サーバーに直接ストリーム配信したい場合は、[Azure 関数ベースのソリューション](https://github.com/miguelangelopereira/azuremonitor2syslog/)を使用できます。
+| LogRhythm | いいえ| LogRhythm を設定してイベント ハブからログを収集するための手順については、[こちら](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)を参照してください。 
+|Logz.io | はい | 詳細については、[Azure で実行される Java アプリ用の Logz.io を使用した監視とログ記録の概要](https://docs.microsoft.com/azure/java/java-get-started-with-logzio)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB クエリ言語の ARRAY_CONCAT
-description: Azure Cosmos DB での SQL システム関数 ARRAY_CONCAT について説明します。
+description: Azure Cosmos DB の Array Concat SQL システム関数から、複数の配列値を連結した結果の配列がどのように返されるかについて説明します
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: ad973650ac205313f9045c170f99e15e385a82d1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 10370e16c95f4fc747dd3a66a56794da38562972
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348720"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871824"
 ---
 # <a name="array_concat-azure-cosmos-db"></a>ARRAY_CONCAT (Azure Cosmos DB)
  2 つ以上の配列値を連結した結果である配列を返します。  

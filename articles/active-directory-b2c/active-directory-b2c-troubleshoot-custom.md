@@ -1,5 +1,6 @@
 ---
-title: Application Insights でのカスタム ポリシーのトラブルシューティング - Azure Active Directory B2C
+title: Application Insights でのカスタム ポリシーのトラブルシューティング
+titleSuffix: Azure AD B2C
 description: カスタム ポリシーの実行を追跡するための Application Insights の設定方法。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8bf26791ca6489c12e4f9538d56ae0f0f66cc8c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3aeef1614f22563e0fd348c5bc6ae7ff1e7b0b03
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602034"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950087"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights を使用して Azure Active Directory B2C のログを収集する
 

@@ -4,17 +4,17 @@ description: この記事では、Desired State Configuration (DSC) のトラブ
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ab9a39cfba082ea4c4d1cc6c29764619011d8cb8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231547"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951464"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする
 
@@ -89,6 +89,68 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 #### <a name="resolution"></a>解決策
 
 マシンが Azure Automation DSC の適切なエンドポイントへのアクセス権を持つことを確認し、もう一度やり直してください。 必要なポートとアドレスの一覧については、[ネットワークの計画](../automation-dsc-overview.md#network-planning)に関する記事を参照してください
+
+### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>シナリオ:状態レポートが応答コード "承認されていません" を返す
+
+#### <a name="issue"></a>問題
+
+State Configuration (DSC) によってノードを登録すると、次のいずれかのエラー メッセージが表示される
+
+```error
+The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+```
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / Registration of the Dsc Agent with the server failed.
+```
+
+### <a name="cause"></a>原因
+
+この問題は、証明書が正しくないまたは期限切れになっていることが原因で発生します。  詳細については、「[証明書の有効期限と再登録](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration)」を参照してください。
+
+### <a name="resolution"></a>解決策
+
+次の手順に従って、失敗した DSC ノードを再登録します。
+
+第一に、以下の手順を使用してノードを登録解除します。
+
+1. Azure portal から、 **[ホーム]** 下  ->  **[Automation アカウント]** -> {ご自身の Automation アカウント} -> **[State configuration (DSC)]\(State configuration (DSC)\)** の順に移動します
+2. [ノード] をクリックし、問題が発生しているノードをクリックします。
+3. ノードの登録を解除するために、[登録解除] をクリックします。
+
+第二に、ノードから DSC 拡張機能をアンインストールします。
+
+1. Azure portal から、 **[ホーム]** 下  ->  **[仮想マシン]** > {失敗したノード}-> **[拡張機能]** の順に移動します
+2. [Microsoft.Powershell.DSC] をクリックします。
+3. [アンインストール] をクリックして、PowerShell DSC 拡張機能をアンインストールします。
+
+第三に、正しくないまたは期限切れになっている証明書をすべて、ノードから削除します。
+
+管理者特権の PowerShell プロンプトから、失敗したノード上で以下を実行します。
+
+```powershell
+$certs = @()
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC"}
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC-OaaS Client Authentication"}
+$certs += dir cert:\localmachine\CA | ?{$_.subject -like "CN=AzureDSCExtension*"}
+"";"== DSC Certificates found: " + $certs.Count
+$certs | FL ThumbPrint,FriendlyName,Subject
+If (($certs.Count) -gt 0)
+{ 
+    ForEach ($Cert in $certs) 
+    {
+        RD -LiteralPath ($Cert.Pspath) 
+    }
+}
+```
+
+最後に、以下の手順を使用して、失敗したノードを再登録します。
+
+1. Azure portal から、 **[ホーム]** 下  ->  **[Automation アカウント]** -> {ご自身の Automation アカウント} -> **[State configuration (DSC)]\(State configuration (DSC)\)** の順に移動します
+2. [ノード] をクリックします。
+3. [追加] ボタンをクリックします。
+4. 失敗したノードを選択します。
+5. [接続] をクリックして、必要なオプションを選択します。
 
 ### <a name="failed-not-found"></a>シナリオ:ノードが失敗状態になり、「見つかりません」というエラーが表示される
 
@@ -187,6 +249,49 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 * ノードに割り当てるノード構成名が、サービスに存在するものと正確に一致していることを確認します。
 * ノード構成名を含めないようにすることもできます。この場合、ノードはオンボードされますが、ノード構成は割り当てられません。
+
+### <a name="cross-subscription"></a>シナリオ:PowerShell を使ってノードを登録すると "1 つ以上のエラーが発生しました" というエラーが返される
+
+#### <a name="issue"></a>問題
+
+`Register-AzAutomationDSCNode` または `Register-AzureRMAutomationDSCNode` を使用してノードを登録した場合、以下のエラーを受信します。
+
+```error
+One or more errors occurred.
+```
+
+#### <a name="cause"></a>原因
+
+Automation アカウント以外の別のサブスクリプションにあるノードを登録しようとすると、このエラーが発生します。
+
+#### <a name="resolution"></a>解決策
+
+別のクラウド内またはオンプレミス上にあるかのように、クロスサブスクリプション ノードを扱います。
+
+以下の手順に従って、ノードを登録します。
+
+* Windows - [オンプレミス、または Azure/AWS 以外のクラウド内の物理/仮想 Windows マシン](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)。
+* Linux - [オンプレミス、または Azure 以外のクラウド内の物理/仮想 Linux マシン](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)。
+
+### <a name="agent-has-a-problem"></a>シナリオ:エラー メッセージ - "プロビジョニングに失敗しました"
+
+#### <a name="issue"></a>問題
+
+ノードの登録時に、以下のエラーが表示されます。
+
+```error
+Provisioning has failed
+```
+
+#### <a name="cause"></a>原因
+
+ノードおよび Azure 間に接続の問題がある場合、このメッセージが表示されます。
+
+#### <a name="resolution"></a>解決策
+
+ノードがプライベート仮想ネットワーク内にあるのか、または他の Azure への接続の問題を抱えているかを判断します。
+
+詳細については、「[ソリューションをオンボードする際のエラーをトラブルシューティングする](onboarding.md)」を参照してください。
 
 ### <a name="failure-linux-temp-noexec"></a>シナリオ:Linux で構成を適用するときに、一般的なエラーで障害が発生する
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB クエリ言語の COS
-description: Azure Cosmos DB での SQL システム関数 COS について学習します。
+description: Azure Cosmos DB の Cosine (COS) SQL システム関数で指定されたラジアン単位の角度の三角関数コサインを返す方法について説明します
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 7e64127b7af749af87b90331c3f175957cfa7f09
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 05546ef531059e05a1426a288a48446d63d8e5df
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351067"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873405"
 ---
 # <a name="cos-azure-cosmos-db"></a>COS (Azure Cosmos DB)
  式で指定されたラジアン単位の角度の三角関数コサインを返します。  
@@ -49,5 +49,5 @@ SELECT COS(14.78) AS cos
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Cosmos DB の数学関数](sql-query-mathematical-functions.md)
-- [システム関数 (Azure Cosmos DB)](sql-query-system-functions.md)
+- [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)

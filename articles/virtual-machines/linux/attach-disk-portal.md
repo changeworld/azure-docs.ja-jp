@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3071effeb2d5eeaafc48fd742559b093a0517c1c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279134"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851674"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>ポータルを利用し、データ ディスクを Linux VM に接続する 
 この記事では、Azure ポータルを使用して新しいディスクと既存のディスクの両方を Linux 仮想マシンに接続する方法について示します。 [Azure Portal で Windows VM にデータ ディスクを接続する](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)こともできます。 
@@ -33,10 +33,9 @@ VM にディスクを接続する前に、次のヒントを確認してくだ�
 
 
 ## <a name="find-the-virtual-machine"></a>仮想マシンの検索
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. 左側のメニューで **[仮想マシン]** をクリックします。
-3. 一覧から仮想マシンを選択します。
-4. [仮想マシン] ページにアクセスし、 **[要点]** にある **[ディスク]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) にアクセスして VM を検索します。 **[仮想マシン]** を検索して選択します。
+2. 一覧から VM を選択します。
+3. **[仮想マシン]** ページのサイドバーの **[設定]** で、 **[ディスク]** を選択します。
    
     ![ディスク設定を開く](./media/attach-disk-portal/find-disk-settings.png)
 

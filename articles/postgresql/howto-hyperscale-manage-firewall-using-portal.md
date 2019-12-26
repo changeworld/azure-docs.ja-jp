@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Hyperscale (Citus) でのファイアウォール規則の管理
+title: ファイアウォール規則の管理 - Hyperscale (Citus) - Azure Database for PostgreSQL
 description: Azure portal を使用して Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則を作成および管理します
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 1b132eb168f3d873c8150bc33b581aa0f0f8d124
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 660c395e6cff81b0abcac07e66385f80a538695f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275293"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977541"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) のファイアウォール規則を管理する
 サーバーレベルのファイアウォール規則を使用して、指定した IP アドレスまたは IP アドレス範囲からの Hyperscale (Citus) コーディネーター ノードへのアクセスを管理できます。

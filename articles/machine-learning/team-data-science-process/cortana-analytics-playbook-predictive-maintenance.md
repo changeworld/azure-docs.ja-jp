@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: ec87146c721222702073eae067a259aa9848d0f7
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048985"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977133"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -203,7 +203,9 @@ _特徴エンジニア リング_ の前提条件として、さまざまなス�
 #### <a name="rolling-aggregates"></a>ローリング集計
 資産の各レコードについて、サイズ "W" のローリング ウィンドウが時間単位の数として選択され、集計が計算されます。 次に、そのレコードの "_日付以前_" の W 期間を使用して、ラグ特徴が計算されます。 図 1 の青い線は、各時間単位の資産の記録されたセンサーの値を示します。 これらは、サイズ W=3 のウィンドウの特徴値のローリング平均値を表します。 ローリング平均は、t<sub>1</sub> (オレンジ) から t<sub>2</sub> (緑) の範囲のすべてのタイムスタンプ付きレコートについて計算されます。 通常、W の値は、データの特性に応じて分または時間です。 ただし、一部の問題では、大きな W (12 か月など) を選択すると、記録時までに資産の履歴全体が提供されます。
 
-![図 1: ローリング集計の特徴](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) 図 1. ローリング集計の特徴
+![図 1. ローリング集計の特徴](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png)
+
+図 1. ローリング集計の特徴
 
 時間枠でのローリング集計の例として、数量、平均、CUMESUM (累積合計)、最小/最大値などがあります。 また、分散、標準偏差、および N 標準偏差を超える外れ値の数が一般的に使用されます。 このガイドの[ユース ケース](#sample-pdm-use-cases)に適用できる集計の例を以下に示します。 
 - _フライト遅延_: 前日/前の週のエラー コードの数。
@@ -217,7 +219,9 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 #### <a name="tumbling-aggregates"></a>タンブリング集計
 資産の各ラベル付き資産について、サイズ _W-<sub>k</sub>_ のウィンドウが定義されます。ここで、_k_ はサイズ _W_ のウィンドウの数です。次に、レコードのタイムスタンプ前の期間について、集計が _k_ _タンブリング ウィンドウ_ _W-k、W-<sub>(k-1)</sub>、…、W-<sub>2</sub>、W-<sub>1</sub>_ で作成されます。 _k_ を小さい数値にして短期の効果を取得したり、大きな数値にして長期の老朽化パターンを取得したりできます。 (図 2 を参照)
 
-![図 2: タンブリング集計の特徴](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png) 図 2. タンブリング集計の特徴
+![図 2. タンブリング集計の特徴](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png)
+
+図 2. タンブリング集計の特徴
 
 たとえば、風力タービン ユース ケースのラグ特徴は、W=1 と k=3 を使用して作成できます。 これらは、上下の外れ値を使用した過去 3 か月ごとのラグを示します。
 
@@ -262,7 +266,9 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 #### <a name="label-construction-for-binary-classification"></a>二項分類のラベル構築
 ここでは、"資産が次の X 期間に故障する確率はどのくらいか?" という質問です。 この質問に回答するために、資産の故障前の X レコードを "故障する可能性のあるもの" (ラベル = 1) としてラベル付けし、その他のすべてのレコードを "正常" (ラベル = 0) としてラベル付けします。 (図 3 を参照)
 
-![図 3: 二項分類のラベル付け](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) 図 3: 二項分類のラベル付け
+![図 3: Labeling for binary classification](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png)
+
+図 3: 二項分類のラベル付け
 
 一部の事例のラベル付け方法の例を以下に示します。
 - _フライト遅延_: 今後 24 時間以内に遅延を予測する、1 日として X を選択できます。 故障前の 24 時間以内に予定されたすべてのフライトを 1 としてラベル付けします。
@@ -277,7 +283,9 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 #### <a name="label-construction-for-regression"></a>回帰のラベル構築
 ここでは、機器の残存耐用年数 (RUL) はどれくらいかが問題になります。 故障前の各レコードに対して、ラベルを次の故障までに残っている期間の数値として計算します。 この方法では、ラベルは連続変数です。 (図 4 を参照)
 
-![図 4: 回帰のラベル付け](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) 図 4: 回帰のラベル付け
+![図 4: Labeling for regression](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png)
+
+図 4: 回帰のラベル付け
 
 回帰では、障害点を参照してラベル付けを行います。 故障前に資産が稼働していた期間がわからなければ、計算は不可能です。 したがって、二項分類とは対照的に、故障のデータがない資産はモデリングに使用できません。 この問題には、[生存率分析](https://en.wikipedia.org/wiki/Survival_analysis)と呼ばれる別の統計手法で対処します。 ただし、時間とともに頻繁に変化するデータを扱う PdM ユース ケースに対してこの手法を応用すると、潜在的な複雑さが発生する可能性があります。 生存率分析について詳しくは、[この資料](https://www.cscu.cornell.edu/news/news.php/stnews78.pdf)をご覧ください。
 
@@ -289,11 +297,15 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 #### <a name="label-construction-for-multi-class-classification"></a>多クラス分類のラベル構築
 ここでは、_n_ を期間の数として、次の _nZ_ の期間内に資産が故障する確率はどれくらいかが問題になります。 この問題を解決するには、時間のバケット (3Z、2Z、Z) を使用して、資産の故障前の nZ 個のレコードをラベル付けします。 その他のレコードはすべて "正常" (ラベル = 0) としてラベル付けします。 この方法では、ターゲット変数は "_カテゴリ_" の値です。 (図 5 を参照)
 
-![図 5: 多クラス分類の故障時予測ラベル](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) 図 5: 多クラス分類のラベル付けによる故障の予測
+![図 5: 多クラス分類の故障時予測ラベル](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png)
+
+図 5: 多クラス分類のラベル付けによる故障の予測
 
 ここでは、根本原因/問題 _P<sub>i</sub>_ によって次の X 期間内に資産が故障する確率は、どれくらいかが問題となります。 _i_ は可能な根本原因の数です。 この問題を解決するには、資産の故障前の X 個のレコードを、"根本原因 _P<sub>i</sub>_ によってまもなく故障する" (ラベル = _P<sub>i</sub>_ ) としてラベル付けします。 その他のレコードはすべて "正常である" (ラベル = 0) としてラベル付けします。 この方法でも、ラベルはカテゴリ変数です (図 6 を参照)。
 
-![図 6: 多クラス分類の根本原因予測ラベル](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) 図 6: 多クラス分類のラベル付けによる根本原因の予測
+![図 6: 多クラス分類の根本原因予測ラベル](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png)
+
+図 6: 多クラス分類のラベル付けによる根本原因の予測
 
 このモデルは、各 _P<sub>i</sub>_ によって故障する確率と、故障しない確率を割り当てます。 これらの確率を magnitude により並べ替えて、今後最も発生する可能性のある問題を予測できます。
 
@@ -329,7 +341,9 @@ PdM に対して推奨される方法は、"_時間に依存した_" 方法に�
 
 時間に依存した分割では、モデルをトレーニングする "_トレーニング分割時間 T<sub>c</sub>_ " を選択します。これには、T<sub>c</sub> までの履歴データを使用して調整したハイパーパラメーターを使用します。 T<sub>c</sub> を超えた将来のラベルがトレーニング データに混入するのを回避するには、トレーニング例をラベル付けする最新の時間を、T<sub>c</sub> よりも X 単位分前にします。 図 7 に示す例では、各四角形が、前述の方法で特徴とラベルを計算したデータ セット内のレコードを表しています。 この図では、X=2、W=3 の場合にトレーニング セットとテスト セットに入るレコードを示しています。
 
-![図 7: 二項分類の時間に依存した分割](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) 図 7: 二項分類の時間に依存した分割
+![図 7: Time-dependent split for binary classification](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png)
+
+図 7: 二項分類の時間に依存した分割
 
 緑の四角形は、トレーニングに使用できる期間に属するレコードを表します。 各トレーニング例は、特徴の生成のために過去の期間を 3 つ考慮し、ラベル付けのために T<sub>c</sub> より前の将来の期間を 2 つ考慮することで生成されています。 将来の期間 2 つのうちいずれかの部分が T<sub>c</sub> を超える場合は、その例をトレーニング データ セットから除外します。T<sub>c</sub> 以降では表示が保証されないためです。
 
@@ -411,7 +425,7 @@ PdM では、通常の例よりも、少数派クラスを構成する故障の�
 
 | # | タイトル | 説明 |
 |--:|:------|-------------|
-| 2 | [Azure 予測メンテナンス ソリューション テンプレート](https://github.com/Azure/AI-PredictiveMaintenance) | IoT リモート監視における、ML モデリングと、予測メンテナンス シナリオを支援できる完全な Azure インフラストラクチャを示すオープンソースのソリューション テンプレート。 |
+| 2 | [Azure 予測メンテナンス ソリューション テンプレート](https://github.com/Azure/AI-PredictiveMaintenance) | IoT リモート監視における、Azure ML モデリングと、予測メンテナンス シナリオを支援できる完全な Azure インフラストラクチャを示すオープンソースのソリューション テンプレート。 |
 | 3 | [予測メンテナンスのためのディープ ラーニング](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | 予測メンテナンスのために LSTM (Long Short-Term Memory) ネットワーク (再帰型ニューラル ネットワークの 1 クラス) を使用したデモ ソリューションを含む Azure Notebook です。[このサンプルに関するブログ記事](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance)をご覧ください。|
 | 4 | [R での予測メンテナンスのモデリング ガイド](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | R のスクリプトを使用した PdM のモデリング ガイドです。|
 | 5 | [航空宇宙業界向けの Azure 予測メンテナンス](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | 航空機メンテナンスのための、Azure ML v1.0 に基づいた最初の PdM ソリューション テンプレートの 1 つです。 本ガイドの起源はこのプロジェクトでした。 |

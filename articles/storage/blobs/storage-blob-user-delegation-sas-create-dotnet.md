@@ -1,20 +1,21 @@
 ---
-title: .NET を使用してコンテナーまたは BLOB 用のユーザー委任 SAS を作成する (プレビュー) - Azure Storage
-description: .NET クライアント ライブラリを使用して、Azure Storage で Azure Active Directory 資格情報を使用するユーザー委任 SAS (プレビュー) を作成する方法について説明します。
+title: .NET を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
+titleSuffix: Azure Storage
+description: Azure Storage 用の .NET クライアント ライブラリを使用して、Azure Active Directory 資格情報によるユーザー委任 SAS (プレビュー) を作成する方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 12/03/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: dada27f1fa08cdaa6c2495246375869ea5a8ab9e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 915f2895fbc1e543fbbfbb408ba27eb758a40515
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806934"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892534"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>.NET を使用してコンテナーまたは BLOB 用のユーザー委任 SAS を作成する (プレビュー)
 

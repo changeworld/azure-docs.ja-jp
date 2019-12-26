@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33b7db8d08c285056e637eb962b28eef0e74fc94
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 691c8e8d2f2c6c8e9472ba7a4ae83d8b76f2850c
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814097"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868730"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>チュートリアル:単一のフォレストを単一の Azure AD テナントに統合する
 
@@ -43,7 +43,7 @@ ms.locfileid: "74814097"
      | --- | --- |
      | **80** | SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードする |
      | **443** | サービスを使用したすべての送信方向の通信を処理する |
-     | **8080** (省略可能) | ポート 443 が使用できない場合、エージェントは、ポート 8080 経由で 10 分おきにその状態をレポートします。 この状態は Azure AD ポータルに表示されます。 ポート 8080 は、ユーザー サインインには _使用されません_。 |
+     | **8080** (省略可能) | ポート 443 が使用できない場合、エージェントは、ポート 8080 経由で 10 分おきにその状態をレポートします。 この状態は Azure AD ポータルに表示されます。 |
      
      ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
    - ファイアウォールまたはプロキシで安全なサフィックスを指定できる場合は、 **\*.msappproxy.net** および **\*.servicebus.windows.net** への接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
@@ -72,9 +72,9 @@ ms.locfileid: "74814097"
 
    ![[ようこそ] 画面](media/how-to-install/install4.png)
 
-10. この操作が完了すると、"**Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました)** " という通知が表示されます。  **[終了]** をクリックします。</br>
+10. この操作が完了すると、次の通知が表示されます。 **"Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)"**  **[終了]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install5.png)</br>
-11. まだ最初のスプラッシュ スクリーンが表示される場合は、 **[閉じる]** をクリックします。
+11. まだ最初のスプラッシュ スクリーンが表示されている場合は、 **[閉じる]** をクリックします。
 
 
 ## <a name="verify-agent-installation"></a>エエージェントのインストールを確認する
@@ -102,7 +102,7 @@ ms.locfileid: "74814097"
 ![サービス](media/how-to-troubleshoot/troubleshoot1.png)
 
 ## <a name="configure-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect クラウド プロビジョニングを構成する
- プロビジョニングを構成するには次の手順に従います。
+ プロビジョニングを構成するには、次の手順に従います。
 
 1.  Azure AD ポータルにサインインします。
 2.  **[Azure Active Directory]** をクリックします。
@@ -117,7 +117,7 @@ ms.locfileid: "74814097"
 ![](media/how-to-configure/manage4.png)
 
 ## <a name="verify-users-are-created-and-synchronization-is-occurring"></a>ユーザーが作成され、同期が実行されていることを確認する
-オンプレミスのディレクトリに存在していたユーザーが同期され、現在 Azure AD テナントに存在することを確認します。  これが完了するまでに数時間かかる場合があることに注意してください。  ユーザーが同期されていることを確認するには、以下を実行します。
+オンプレミスのディレクトリに存在していたユーザーが同期され、現在は Azure AD テナントに存在することを確認します。  これが完了するまでに数時間かかる場合があることに注意してください。  ユーザーが同期されていることを確認するには、以下を実行します。
 
 
 1. [Azure portal](https://portal.azure.com) に移動し、Azure サブスクリプションがあるアカウントを使ってサインインします。

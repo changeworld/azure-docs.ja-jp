@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 09/20/2019
-ms.openlocfilehash: ae737b908aad95f61cef922b493b41752da68f14
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 373c498b9ce58062e42f4318c9fa94688556d8c5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932348"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894217"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -147,7 +147,7 @@ Operation
 
 Application Insights や Azure Monitor for VMs など、異なるチームによってメンテナンスされているインフラストラクチャとアプリケーションをサポートするすべてのリソース、監視ソリューション、および分析情報は、収集したログ データを IT 組織の一元的な共有ワークスペースに転送するように構成されています。 各チームのユーザーには、アクセス権が付与されているリソースのログへのアクセスが許可されます。
 
-ワークスペース アーキテクチャをデプロイしたら、[Azure Policy](../../governance/policy/overview.md) を使用して Azure リソースにこれを適用できます。 これにより、ポリシーを定義し、Azure リソースへのコンプライアンスを確保して、すべての診断ログが特定のワークスペースに送信されるようにする方法が提供されます。 たとえば、Azure 仮想マシンまたは仮想マシン スケール セットを使用すると、ワークスペースのコンプライアンスとレポートの結果を評価する既存のポリシーを使用したり、非準拠の場合に修復するようにカスタマイズしたりすることができます。  
+ワークスペース アーキテクチャをデプロイしたら、[Azure Policy](../../governance/policy/overview.md) を使用して Azure リソースにこれを適用できます。 これにより、ポリシーを定義し、Azure リソースへのコンプライアンスを確保して、すべてのリソース ログが特定のワークスペースに送信されるようにする方法が提供されます。 たとえば、Azure 仮想マシンまたは仮想マシン スケール セットを使用すると、ワークスペースのコンプライアンスとレポートの結果を評価する既存のポリシーを使用したり、非準拠の場合に修復するようにカスタマイズしたりすることができます。  
 
 ## <a name="workspace-consolidation-migration-strategy"></a>ワークスペース統合移行戦略
 

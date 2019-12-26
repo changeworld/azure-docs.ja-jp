@@ -1,5 +1,5 @@
 ---
-title: Web API を呼び出すデスクトップ アプリ (概要) - Microsoft ID プラットフォーム
+title: Web API を呼び出すデスクトップ アプリを構築する - Microsoft ID プラットフォーム | Azure
 description: Web API を呼び出すデスクトップ アプリを構築する方法について説明します (概要)
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d56a07b46c4cd54577bcb3d81f2c45c03433fc31
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 545012629686e1fe3ece8a48ed852542e09e54fe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268346"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965519"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>シナリオ: Web API を呼び出すデスクトップ アプリ
 

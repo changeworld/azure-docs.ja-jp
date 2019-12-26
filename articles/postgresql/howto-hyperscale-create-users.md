@@ -1,17 +1,17 @@
 ---
-title: Azure Database for PostgreSQL - Hyperscale (Citus) でユーザーを作成する
+title: ユーザーの作成 - Hyperscale (Citus) - Azure Database for PostgreSQL
 description: この記事では、Azure Database for PostgreSQL - Hyperscale (Citus) と対話する新しいユーザー アカウントを作成する方法について説明します。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7187135b29f0a9a790c032330c73bcb1ae27229b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d093d4c23fcc44e7e9f3461f875607926f4b612d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511240"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977575"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) でユーザーを作成する
 
@@ -26,15 +26,13 @@ ms.locfileid: "73511240"
 * *postgres*
 * *citus*
 
-サーバーの管理者ユーザー *citus* は、*azure_pg_admin* ロールのメンバーです。
-ただし、*postgres* (スーパー ユーザー) ロールの一部ではありません。  Hyperscale はマネージド PaaS サービスであるため、Microsoft だけがスーパー ユーザー ロールの一部になります。
-
 [PostgreSQL 製品のドキュメント](https://www.postgresql.org/docs/current/static/sql-createrole.html)で説明されているように、PostgreSQL エンジンは特権を使ってデータベース オブジェクトへのアクセスを制御します。
-Azure Database for PostgreSQL でサーバー管理者ユーザーが付与される特権は、LOGIN、NOSUPERUSER、INHERIT、CREATEDB、CREATEROLE、NOREPLICATION です
+サーバーの管理者ユーザー *citus* は、*azure_pg_admin* ロールのメンバーです。
+ただし、*postgres* (スーパー ユーザー) ロールの一部ではありません。  Hyperscale はマネージド PaaS サービスであるため、Microsoft だけがスーパー ユーザー ロールの一部になります。 *citus* ユーザーのアクセス許可は制限されており、たとえば、データベースを新規作成できないことがあります。
 
 ## <a name="how-to-create-additional-users"></a>追加のユーザーを作成する方法
 
-*citus* 管理者アカウントには、追加のユーザーを作成するアクセス許可がありません。 ユーザーを追加するには、代わりに Azure portal を使用します。
+*citus* 管理者アカウントには、追加のユーザーを作成するアクセス許可がありません。 ユーザーを追加するには、Azure portal インターフェイスを使用します。
 
 1. Hyperscale サーバー グループの **[ロール]** ページに移動して、 **[+ 追加]** をクリックします。
 

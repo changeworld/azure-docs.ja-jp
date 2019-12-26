@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 956962503dcb3a6355d455ff96744143c5965d1e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795470"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997124"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Azure AD Connect クラウド プロビジョニングの新しい構成
 
@@ -32,8 +32,7 @@ ms.locfileid: "74795470"
 
 4.  **[新しい構成]** をクリックします。
 5.  構成画面では、オンプレミス ドメインが事前に設定されています。
-6. **[通知用メール]** に入力します。 このメールに通知が送信されます 
-7. プロビジョニングが正常でない場合。  
+6. **[通知用メール]** に入力します。 このメールは、プロビジョニングが正常でない場合に通知されます。  
 8. セレクターを **[有効]** に移動し、 **[保存]** をクリックします。
 ![](media/tutorial-single-forest/configure2.png)
 

@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 12/09/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a14338e552250ac63c344365099a16f20616ea9a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358033"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964032"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>エンド ユーザーによる登録を必要としないパスワード リセットをデプロイする
 
-Azure Active Directory (Azure AD) のセルフサービスによるパスワードのリセット (SSPR) をデプロイするには、認証データが存在する必要があります。 ユーザーに自分で認証データを入力させている組織もあります。 しかし、多くの組織では Active Directory に既に存在するデータと同期する方法が採用されています。 次の条件が満たされていれば、ユーザーが介入しなくても、同期されたデータは Azure AD と SSPR で利用できるようになります。
+Azure Active Directory (Azure AD) のセルフサービスによるパスワードのリセット (SSPR) をデプロイするには、認証データが存在する必要があります。 ユーザーに自分で認証データを入力させている組織もあります。 他の組織では Active Directory に既に存在するデータと同期する方法が採用されています。 次の条件が満たされていれば、ユーザーが介入しなくても、この同期されたデータは Azure AD と SSPR で利用できるようになります。
 
 * オンプレミスのディレクトリ内のデータが正しい形式になっていること。
 * [簡単設定を使って Azure AD Connect](../hybrid/how-to-connect-install-express.md) が構成されていること。
@@ -41,21 +41,18 @@ Azure AD Connect で既定の設定を使用する場合、次のマッピング
 | telephoneNumber | 会社電話 |
 | mobile | 携帯電話 |
 
-ユーザーが携帯電話番号を認証すると、Azure AD の [認証の連絡先情報] の下にある [電話番号] フィールドにもその番号が入力されます。
+ユーザーが携帯電話番号を認証すると、Azure AD の **[認証の連絡先情報]** の下にある *[電話番号]* フィールドにもその番号が設定されます。
 
 ## <a name="authentication-contact-info"></a>認証の連絡先情報
 
-グローバル管理者は、次のスクリーンショットに示すように、ユーザーの認証の連絡先情報を手動で設定できます。
+Azure portal の Azure AD ユーザーの **[認証方法]** ページでは、次のスクリーンショットの例で示すように、グローバル管理者が認証の連絡先情報を手動で設定できます。
 
 ![Azure AD におけるユーザーの認証の連絡先情報][Contact]
 
-[電話番号] フィールドに電話番号が入力され、SSPR ポリシーの携帯電話が有効になると、その番号がパスワード リセット登録ページに表示され、また、パスワード リセット ワークフロー中に表示されます。
-
-パスワード リセットには、[代替の電話] フィールドは使用されません。
-
-[電子メール] フィールドにメール アドレスが入力され、SSPR ポリシーの電子メールが有効になると、その電子メールがパスワード リセット登録ページに表示され、また、パスワード リセット ワークフロー中に表示されます。
-
-[連絡用メール アドレス] フィールドにメール アドレスが入力され、SSPR ポリシーの電子メールが有効になった場合、その電子メールはパスワード リセット登録ページには**表示されません**が、パスワード リセット ワークフロー中に表示されます。
+* **[電話番号]** フィールドに電話番号が設定され、SSPR ポリシーの **[携帯電話]** が有効になると、その番号がパスワード リセット登録ページに表示され、パスワード リセット ワークフロー中にも表示されます。
+* パスワード リセットには、 **[代替の電話]** フィールドは使用されません。
+* **[電子メール]** フィールドにメール アドレスが設定され、SSPR ポリシーの **[電子メール]** が有効になると、そのメール アドレスがパスワード リセット登録ページに表示され、パスワード リセット ワークフロー中にも表示されます。
+* **[連絡用メール アドレス]** フィールドにメール アドレスが設定され、SSPR ポリシーの **[電子メール]** が有効になると、そのメール アドレスはパスワード リセット登録ページには表示され**ません**が、パスワード リセット ワークフロー中には表示されます。
 
 ## <a name="security-questions-and-answers"></a>セキュリティの質問と回答
 

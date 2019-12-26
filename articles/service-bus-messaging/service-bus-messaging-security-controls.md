@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: d2b92759384a9a0b63d784a8cb1afb3d18d55aeb
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: d0118f815a2ceb149c62363fa334c16d28c6d615
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219313"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894399"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Azure Service Bus Messaging のセキュリティ コントロール
 
@@ -48,8 +48,8 @@ ms.locfileid: "71219313"
 
 | セキュリティ コントロール | はい/いいえ | メモ | ドキュメント |
 |---|---|--|--|
-| 保存時のサーバー側の暗号化:Microsoft のマネージド キー |  はい (サーバー側の保存時の暗号化では既定で)。 | 顧客管理キーと BYOK はまだサポートされていません。 クライアント側の暗号化はクライアントの責任です |
-| 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | いいえ |   |   |
+| 保存時のサーバー側の暗号化:Microsoft のマネージド キー |  はい (サーバー側の保存時の暗号化では既定で)。 |  |  |
+| 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | はい。 現在プレビューの段階 | Azure KeyVault 内のカスタマー マネージド キーを使用して、保存されている Service Bus 名前空間のデータを暗号化できます。 | [Azure portal を使用して Azure Service Bus 保存データの暗号化用のカスタマー マネージド キーを構成する (プレビュー)](configure-customer-managed-key.md)  |
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |   |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | 標準の HTTPS/TLS メカニズムがサポートされます。 |   |
 | API 呼び出しの暗号化| はい | API 呼び出しは、[Azure Resource Manager](../azure-resource-manager/index.yml) と HTTPS を使用して行われます。 |   |

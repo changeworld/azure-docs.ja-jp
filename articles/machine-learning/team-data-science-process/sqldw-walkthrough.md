@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 76afafb59de762776b7d2614e383320b7d8f79e4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b32e2abcffda24fa82d3911575fe48acfc294ccc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669404"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973171"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
@@ -540,7 +540,7 @@ Visual Studio で、SQL DW ログイン名とパスワードを使用して Azur
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>モデルのビルド用にデータを準備する
-次のクエリはテーブル **nyctaxi\_trip** と **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]** 、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体からサンプルを抽出します。 サンプリングは、降車時間に基づいて乗車のサブセットを取得することで行われます。  その後、このクエリをコピーして [Azure Machine Learning Studio](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL データベース インスタンスから直接データを取り込めます。 このクエリは、座標が正しくないレコード (0, 0) を除外します。
+次のクエリはテーブル **nyctaxi\_trip** と **nyctaxi\_fare** を結合して、二項分類ラベル **[tipped]** 、多クラス分類ラベル **[tip\_class]** を生成し、結合データセット全体からサンプルを抽出します。 サンプリングは、降車時間に基づいて乗車のサブセットを取得することで行われます。  その後、このクエリをコピーして [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) の[データのインポート][import-data] モジュールに直接貼り付け、Azure の SQL データベース インスタンスから直接データを取り込めます。 このクエリは、座標が正しくないレコード (0, 0) を除外します。
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -567,15 +567,15 @@ Azure Machine Learning に進む準備ができれば、次のいずれかを実
 
 ローカル マシンにダウンロードされたサンプルの IPython Notebook と Python スクリプト ファイルで必要な Azure SQL DW の情報は、PowerShell スクリプトによって既に取り込まれています。 これらは変更しなくても実行できます。
 
-AzureML ワークスペースを既にセットアップしている場合は、サンプルの IPython Notebook を AzureML IPython Notebook サービスに直接アップロードして、実行を開始できます。 AzureML IPython Notebook サービスにアップロードする手順を次に示します。
+Azure Machine Learning ワークスペースを既に設定している場合は、サンプルの IPython Notebook を AzureML IPython Notebook サービスに直接アップロードして、実行を開始できます。 AzureML IPython Notebook サービスにアップロードする手順を次に示します。
 
-1. AzureML ワークスペースにログインし、Web ページの上部にある [Studio] をクリックしてから、左側にある [NOTEBOOKS] をクリックします。
+1. Azure Machine Learning ワークスペースにログインし、Web ページの上部にある **[Studio]** をクリックしてから、左側にある **[NOTEBOOKS]** をクリックします。
 
     ![[Studio]、[NOTEBOOKS] の順にクリックする][22]
-2. Web ページの左下隅にある [新規] をクリックし、[Python 2] を選択します。 次に、Notebook に名前を指定し、チェック マークをクリックして新しい空白の IPython Notebook を作成します。
+2. Web ページの左下隅にある **[新規]** をクリックし、 **[Python 2]** を選択します。 次に、Notebook に名前を指定し、チェック マークをクリックして新しい空白の IPython Notebook を作成します。
 
     ![[新規] をクリックして [Python 2] を選択する][23]
-3. 新しい IPython Notebook の左上隅にある "Jupyter" のシンボルをクリックします。
+3. 新しい IPython Notebook の左上隅にある "**Jupyter**" のシンボルをクリックします。
 
     ![Jupyter Notebook のシンボルをクリックする][24]
 4. サンプルの IPython Notebook をドラッグして AzureML IPython Notebook サービスの**ツリー** ページにドロップしてから、 **[アップロード]** をクリックします。 これで、サンプルの IPython Notebook が AzureML IPython Notebook サービスにアップロードされます。
@@ -590,7 +590,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 - pyodbc
 - PyTables
 
-大量のデータを使用して AzureML に高度な分析ソリューションをビルドする場合は、以下の順で行うことをお勧めします。
+大量のデータを使用して Azure Machine Learning に高度な分析ソリューションを構築する場合は、以下の順で行うことをお勧めします。
 
 * メモリ内のデータ フレームに、データの小さなサンプルを読み込みます。
 * サンプリングされたデータを使用して、視覚化と探索を行います。
@@ -811,14 +811,14 @@ and
 
 モデリングの演習を開始するには、**Azure Machine Learning (クラシック)** ワークスペースにログインします。 Machine Learning ワークスペースをまだ作成していない場合は、[Azure Machine Learning Studio (クラシック) ワークスペースの作成](../studio/create-workspace.md)に関するページを参照してください。
 
-1. Azure Machine Learning の使用を開始するには、「 [Azure Machine Learning Studio とは](../studio/what-is-ml-studio.md)
-2. [Azure Machine Learning Studio](https://studio.azureml.net)にログインします。
-3. Studio のホーム ページには、豊富な情報、ビデオ、チュートリアル、モジュール リファレンスへのリンク、およびその他のリソースが用意されています。 Azure Machine Learning の詳細については、 [Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
+1. Azure Machine Learning の使用を開始するには、「[Machine Learning Studio (クラシック) とは](../studio/what-is-ml-studio.md)」を参照してください。
+2. [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) にログインします。
+3. Machine Learning Studio (クラシック) のホーム ページには、豊富な情報、ビデオ、チュートリアル、モジュール リファレンスへのリンク、その他のリソースが用意されています。 Azure Machine Learning の詳細については、 [Azure Machine Learning ドキュメント センター](https://azure.microsoft.com/documentation/services/machine-learning/)をご覧ください。
 
 一般的なトレーニング実験は以下のステップで構成されています。
 
 1. **+NEW** 実験を作成する
-2. Azure Machine Learning Studio へのデータの取り込み。
+2. Azure Machine Learning Studio (クラシック) へのデータの取得。
 3. 必要に応じたデータの事前処理、変換、および操作。
 4. 必要に応じた特徴の生成。
 5. トレーニング/検証/テスト データ セットへのデータの分割 (またはそれぞれに個別のデータセットを用意する)。
@@ -828,7 +828,7 @@ and
 9. 学習問題の関連メトリックを計算するためのモデルの評価。
 10. モデルの微調整およびデプロイに最適なモデルの選択。
 
-この演習では、既に SQL Data Warehouse でデータの探索とエンジニアリングを実行し、Azure Machine Learning Studio に取り込むサンプルのサイズを決定しました。 1 つ以上の予測モデルを作成する手順を以下に示します。
+この演習では、既に SQL Data Warehouse でデータの探索とエンジニアリングを実行し、Azure Machine Learning Studio (クラシック) に取り込むサンプルのサイズを決定しました。 1 つ以上の予測モデルを作成する手順を以下に示します。
 
 1. **[データの入力と出力]** セクションで利用できる[データのインポート][import-data] モジュールを使用して、Azure Machine Learning Studio (クラシック) にデータを取り込みます。 詳細については、[データのインポート][import-data] モジュールのリファレンス ページを参照してください。
 
@@ -881,7 +881,9 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 このサンプルのチュートリアルとそれに付随するスクリプトおよび IPython notebooks は、MIT ライセンスの下で Microsoft と共有されています。 詳細については、GitHub のサンプル コードのディレクトリにある LICENSE.txt ファイルを確認してください。
 
 ## <a name="references"></a>参照
-•    [Andrés Monroy NYC タクシー乗車データ ダウンロード ページ](https://www.andresmh.com/nyctaxitrips/) •    [NYC のタクシー乗車データを FOIL する (Chris Whong)](https://chriswhong.com/open-data/foil_nyc_taxi/) •    [ニューヨーク市タクシー&リムジン委員会調査および統計](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+- [Andrés Monroy NYC Taxi Trips のダウンロード ページ](https://www.andresmh.com/nyctaxitrips/)
+- [NYC のタクシー乗車データを FOIL する (Chris Whong)](https://chriswhong.com/open-data/foil_nyc_taxi/)
+- [NYC Taxi and Limousine Commission の調査および統計](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png

@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/04/2019
-ms.openlocfilehash: e4fc00d3889d10dddb9ec147a19f06a7211f53be
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/04/2019
+ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230297"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850076"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service のパフォーマンスの監視
 
@@ -37,7 +37,9 @@ Azure App Services がホストするアプリケーションについてアプ�
 > [!NOTE]
 > エージェント ベースの監視と手動の SDK ベースのインストルメンテーションの両方が検出された場合は、手動のインストルメンテーション設定のみが受け付けられます。 これは、重複したデータが送信されないようにするためです。 この詳細については、以下の「[トラブルシューティング](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)」セクションを参照してください。
 
-## <a name="enable-agent-based-monitoring-for-net-applications"></a>.NET アプリケーションのエージェントベースの監視を有効にする
+## <a name="enable-agent-based-monitoring"></a>エージェント ベースの監視を有効にする
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > APPINSIGHTS_JAVASCRIPT_ENABLED と urlCompression の組み合わせはサポートされていません。 詳細については、[トラブルシューティングのセクション](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)の説明を参照してください。
@@ -73,7 +75,7 @@ Azure App Services がホストするアプリケーションについてアプ�
 
     * サポートされるアダプティブ サンプリング テレメトリ プロセッサ設定の一覧については、[コード](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs)と[関連ドキュメント](https://docs.microsoft.com/azure/azure-monitor/app/sampling)を参照してください。
 
-## <a name="enable-agent-based-monitoring-for-net-core-applications"></a>.NET Core アプリケーションのエージェントベースの監視を有効にする
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 次のバージョンの .NET Core がサポートされます。ASP.NET Core 2.0、ASP.NET Core 2.1、ASP.NET Core 2.2
 
@@ -94,7 +96,23 @@ Azure App Services がホストするアプリケーションについてアプ�
 
     ![プラットフォームごとのオプションを選択する](./media/azure-web-apps/choose-options-new-net-core.png)
 
-## <a name="enable-client-side-monitoring-for-net-applications"></a>.NET アプリケーションのクライアント側の監視を有効にする
+# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
+
+**[Settings]\(設定\)**  >  **[select Application Insights]\(Application Insights の選択\)**  >  **[Enable]\(有効化\)** の App Service の Web アプリで選択します。 Node.js エージェント ベースの監視は、現在プレビューの段階です。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Java App Service ベースの Web アプリケーションでは、エージェント/拡張機能ベースの自動監視は現在サポートされていません。 Java アプリケーションの監視を有効にするには、[アプリケーションを手動でインストルメント化する](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started)必要があります。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python App Service ベースの Web アプリケーションでは、エージェント/拡張機能ベースの自動監視は現在サポートされていません。 Python アプリケーションの監視を有効にするには、[アプリケーションを手動でインストルメント化する](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python)必要があります。
+
+---
+
+## <a name="enable-client-side-monitoring"></a>クライアント側の監視を有効にする
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 ASP.NET の場合、クライアント側の監視はオプトインです。 クライアント側の監視を有効にするには:
 
@@ -111,7 +129,7 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
 
 クライアント側の監視を無効にするには、[アプリケーション設定] から関連付けられているキーと値のペアを削除するか、値を false に設定します。
 
-## <a name="enable-client-side-monitoring-for-net-core-applications"></a>.NET Core アプリケーションのクライアント側の監視を有効にする
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 アプリ設定 'APPINSIGHTS_JAVASCRIPT_ENABLED' の有無に関係なく、.NET Core アプリと**推奨収集**の組み合わせの場合、クライアント側の監視は**既定で有効**です。
 
@@ -127,6 +145,20 @@ ASP.NET の場合、クライアント側の監視はオプトインです。 �
    * 設定を **[保存]** し、アプリを **[再起動]** します。
 
 ![アプリケーション設定 UI のスクリーンショット](./media/azure-web-apps/appinsights-javascript-disabled.png)
+
+# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
+
+Node.js アプリケーションでクライアント側の監視を有効にするには、[クライアント側の JavaScript SDK をアプリケーションに手動で追加する](https://docs.microsoft.com/azure/azure-monitor/app/javascript)必要があります。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Java アプリケーションでクライアント側の監視を有効にするには、[クライアント側の JavaScript SDK をアプリケーションに手動で追加する](https://docs.microsoft.com/azure/azure-monitor/app/javascript)必要があります。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python アプリケーションでクライアント側の監視を有効にするには、[クライアント側の JavaScript SDK をアプリケーションに手動で追加する](https://docs.microsoft.com/azure/azure-monitor/app/javascript)必要があります。
+
+---
 
 ## <a name="automate-monitoring"></a>監視の自動化
 
@@ -322,7 +354,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 以下は、Azure App Services 上で実行されている .NET および .NET Core ベースのアプリケーションの拡張機能/エージェント ベースの監視について、手順を追って説明するトラブルシューティング ガイドです。
 
 > [!NOTE]
-> Java および Node.js アプリケーションは、手動の SDK ベースのインストルメンテーションを介してのみ Azure App Services でサポートされるため、以下の手順はこのようなシナリオには適用されません。
+> Java アプリケーションは、手動の SDK ベースのインストルメンテーションを介してのみ Azure App Services でサポートされるため、以下の手順はこのようなシナリオには適用されません。
 
 1. `ApplicationInsightsAgent` を介してアプリケーションが監視されていることを確認します。
     * `ApplicationInsightsAgent_EXTENSION_VERSION` アプリ設定が "2 以下" の値に設定されていることを確認します。
