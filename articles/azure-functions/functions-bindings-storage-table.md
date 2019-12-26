@@ -14,13 +14,13 @@ ms.locfileid: "74925324"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
-この記事では、Azure Functions で Azure Table Storage のバインドを使用する方法について説明します。 Azure Functions は、Azure Table ストレージの入力および出力のバインドをサポートしています。
+この記事では、Azure Functions で Azure Table Storage のバインドを使用する方法について説明します。 Azure Functions は、Azure Table Storage の入力および出力のバインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-Table ストレージ バインディングは [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet パッケージ、バージョン 2.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub リポジトリにあります。
+Table Storage バインディングは [Microsoft.Azure.WebJobs NuGet](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) パッケージ、バージョン 2.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Table) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -28,7 +28,7 @@ Table ストレージ バインディングは [Microsoft.Azure.WebJobs](https:/
 
 ## <a name="packages---functions-2x-and-higher"></a>パッケージ - Functions 2.x 以降
 
-Table ストレージ バインディングは [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub リポジトリにあります。
+Table Storage バインディングは [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -151,7 +151,7 @@ namespace FunctionAppCloudTable2
 }
 ```
 
-CloudTable オブジェクトの使用方法の詳細については、[Azure Table ストレージの概要](../cosmos-db/table-storage-how-to-use-dotnet.md)ページをご覧ください。
+CloudTable オブジェクトの使用方法の詳細については、[Azure Table Storage の概要](../cosmos-db/table-storage-how-to-use-dotnet.md)ページをご覧ください。
 
 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
@@ -315,7 +315,7 @@ public class LogEntity : TableEntity
 }
 ```
 
-CloudTable オブジェクトの使用方法の詳細については、[Azure Table ストレージの概要](../cosmos-db/table-storage-how-to-use-dotnet.md)ページをご覧ください。
+CloudTable オブジェクトの使用方法の詳細については、[Azure Table Storage の概要](../cosmos-db/table-storage-how-to-use-dotnet.md)ページをご覧ください。
 
 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 

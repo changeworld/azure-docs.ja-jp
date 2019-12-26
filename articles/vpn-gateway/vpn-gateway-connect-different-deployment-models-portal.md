@@ -100,7 +100,7 @@ VPN Gateway と共に VNet を既に使用している場合、そのゲート�
 
 1. **[すべてのリソース]** に移動し、リスト内で **ClassicVNet** を見つけます。
 2. メニューの **[設定]** セクションで **[ゲートウェイ]** をクリックし、バナーをクリックしてゲートウェイを作成します。
-  ![VPN ゲートウェイの構成](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "CVPN ゲートウェイの構成)
+  ![VPN ゲートウェイの構成](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "CVPN ゲートウェイの構成")
 3. **[新しい VPN 接続]** ページの **[接続の種類]** で、 **[サイト対サイト]** を選びます。
 4. **[ローカル サイト]** で、 **[必要な設定の構成]** をクリックします。 これにより、 **[ローカル サイト]** ページが開きます。
 5. **[ローカル サイト]** ページで、Resource Manager の VNet を参照するための名前を作成します。 たとえば、「RMVNetLocal」などにします。
@@ -271,7 +271,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 - VNet 名は **VirtualNetworkSite name =** と示されています
 - サイト名は **LocalNetworkSite name=** と示されています
 
-### <a name="3-create-the-connection"></a>3.接続の作成
+### <a name="3-create-the-connection"></a>手順 3.接続の作成
 
 共有キーを設定し、クラシック VNet から Resource Manager VNet への接続を作成します。 ポータルを使用して共有キーを設定することはできません。 次の手順を実行するときは、クラシック バージョンの PowerShell コマンドレットを使用してログインします。 それには、**Add-azureaccount** を使用します。 それ以外の場合は、"-AzureVNetGatewayKey" を設定できません。
 
