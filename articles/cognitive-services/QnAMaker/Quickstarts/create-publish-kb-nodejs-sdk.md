@@ -52,7 +52,7 @@ Azure Cognitive Services は、ユーザーがサブスクライブする Azure 
 mkdir myapp && cd myapp
 ```
 
-`npm init -y` コマンドを実行し、`package.json` ファイルを使用してノード アプリケーションを作成します。 
+`npm init -y` コマンドを実行し、`package.json` ファイルを使用して node アプリケーションを作成します。 
 
 ```console
 npm init -y
