@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 402379a99be467e9db7fb692d7d532e9d39a54a6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 82e62b6d0925aa53fc8456addb4732b16e69080b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700794"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935802"
 ---
 GPU 最適化済み VM サイズは、1 つまたは複数の NVIDIA GPU を備えた、特殊な用途に特化した仮想マシンです。 これらのサイズは、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードを意図して設計されています。 この記事では、GPU、vCPU、データ ディスク、NIC の数と種類についての情報を提供します。 このグループ内の各サイズのストレージのスループットおよびネットワーク帯域幅も含まれています。
 
@@ -22,6 +22,9 @@ GPU 最適化済み VM サイズは、1 つまたは複数の NVIDIA GPU を備�
 * **ND および NDv2** ND シリーズは、ディープ ラーニング用のトレーニングと推論のシナリオにフォーカスしています。 これは、NVIDIA Tesla P40 GPU および Intel Xeon E5-2690 v4 (Broadwell) プロセッサを使用しています。 NDv2 シリーズは、Intel Xeon Platinum 8168 (Skylake) プロセッサを使用しています。
 
 * **NV と NVv3** のサイズは、リモートの視覚化、ストリーミング、ゲーム、エンコーディング、および OpenGL や DirectX などのフレームワークを使用する VDI シナリオ用に最適化および設計されています。  これらの VM は、NVIDIA Tesla M60 GPU によってバックアップされされます。
+
+* **NVv4** のサイズは、VDI およびリモート視覚化用に最適化され、設計されています。 パーティション化された GPU の場合、NVv4 ではより小規模な GPU リソースしか必要としないワークロードに適正なサイズを提供します。  これらの VM は、AMD Radeon Instinct MI25 GPU によって支援されています。
+
 
 ## <a name="nc-series"></a>NC シリーズ
 
@@ -56,7 +59,7 @@ NC24rs v2 構成には、密結合並列コンピューティングのワーク�
 > このサイズ ファミリーでは、ご利用のサブスクリプションの vCPU (コア) クォータが、各リージョンで 0 に初期設定されています。 このファミリーについては、[提供リージョン](https://azure.microsoft.com/regions/services/)で [vCPU クォータの引き上げを要求](../articles/azure-supportability/resource-manager-core-quotas-request.md)してください。
 >
 
-| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD):GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 |
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 |
 | --- | --- | --- | --- | --- | --- | ---  | ---| --- |
 | Standard_NC6s_v2 | 6 |112 | 736 | 1 | 16 | 12 | 20000/200 | 4 |
 | Standard_NC12s_v2 | 12 |224 | 1474 | 2 | 32 | 24 | 40000/400 | 8 |
@@ -167,3 +170,26 @@ NVv3 インスタンス内の各 GPU には GRID ライセンスが付属して�
 1 GPU = M60 カードの 2 分の 1 相当。
 
 <sup>1</sup> NVv3 シリーズ VM は Intel ハイパースレッディング テクノロジを搭載しています。
+
+## <a name="nvv4-series-preview--sup1sup"></a>NVv4 シリーズ (プレビュー)  <sup>1</sup>
+
+Premium Storage: サポートされています
+
+Premium Storage キャッシュ:サポートされています
+
+NVv4 シリーズ仮想マシンは [AMD Radeon Instinct MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPU および AMD EPYC 7V12 (Rome) CPU を搭載しています。 NVv4 シリーズの場合、Azure では、部分的な GPU を備えた仮想マシンを導入しています。 16 GiB フレーム バッファーを備えた完全な GPU に対して 2 GiB フレーム バッファーを備えた 8 分の 1 の GPU を下限として、GPU で強化されたグラフィックス アプリケーションと仮想デスクトップに対して適正なサイズの仮想マシンを選択します。 NVv4 仮想マシンでは現在、Windows ゲスト オペレーティング システムのみがサポートされています。
+
+[ぜひプレビュー期間中にサインアップして、これらのマシンをご利用ください](https://aka.ms/nvv4signup)。
+<br>
+
+| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | GPU | GPU メモリ: GiB | 最大データ ディスク数 | 最大 NIC 数 |
+| --- | --- | --- | --- | --- | --- | --- | --- | 
+| Standard_NV4as_v4 |4 |14 |88 | 1/8 | 2 | 4 | 2 |
+| Standard_NV8as_v4 |8 |28 |176 | 1/4 | 4 | 8 | 4 |
+| Standard_NV16as_v4 |16 |56 |352 | 1/2 | 8 | 16 | 8 | 
+| Standard_NV32as_v4 |32 |112 |704 | 1 | 16 | 32 | 8 | 
+
+
+
+<sup>1</sup> NVv4 シリーズ VM では、AMD 同時実行マルチスレッド技術を考慮しています
+

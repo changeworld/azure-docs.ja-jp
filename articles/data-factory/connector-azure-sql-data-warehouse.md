@@ -1,25 +1,25 @@
 ---
-title: Azure Data Factory を使用して Azure SQL Data Warehouse のデータをコピーおよび変換する
+title: Azure SQL Data Warehouse のデータをコピーして変換する
 description: Azure SQL Data Warehouse との間でデータをコピーする方法、および Data Factory を使用して Azure SQL Data Warehouse のデータを変換する方法について説明します。
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/13/2019
-ms.author: jingwang
-ms.openlocfilehash: 4d08a388e98283ff7bf05e938d7b8c48b7065074
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 25c00caf359a502487fc4ffbb7a1b9bc253d730a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076763"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929628"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse のデータをコピーおよび変換する 
+
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択します。"]
 > * [バージョン 1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [現在のバージョン](connector-azure-sql-data-warehouse.md)

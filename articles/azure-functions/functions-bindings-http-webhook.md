@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 598074a6d5093c4febd4d62266a1c852200e3f69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f1bb2731f5f14b80ca46f4fb28b9b9cb4284c4d7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231169"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972372"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions のトリガーとバインド
 
@@ -22,7 +22,7 @@ HTTP トリガーは [webhook](https://en.wikipedia.org/wiki/Webhook) に応答�
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-この記事のコードは .NET Core を使用する Functions 2.x 構文が既定です。 1\.x 構文については、[1.x 関数テンプレート](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates)を参照してください。
+この記事のコードは、既定では Functions バージョン 2.x 以降で使用される .NET Core を使用する構文になっています。 1\.x 構文については、[1.x 関数テンプレート](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates)を参照してください。
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
@@ -30,7 +30,7 @@ HTTP バインディングは [Microsoft.Azure.WebJobs.Extensions.Http](https://
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>パッケージ - Functions 2.x 以降
 
 HTTP バインディングは [Microsoft.Azure.WebJobs.Extensions.Http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) NuGet パッケージ バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/) GitHub リポジトリにあります。
 
@@ -40,7 +40,7 @@ HTTP バインディングは [Microsoft.Azure.WebJobs.Extensions.Http](https://
 
 HTTP トリガーでは、HTTP 要求で関数を呼び出すことができます。 HTTP トリガーを使用して、サーバーなしの API を構築し、webhook に応答することができます。
 
-既定では、HTTP トリガーは、Functions 1.x では HTTP 200 OK と空の本文を返し、Functions 2.x では HTTP 204 No Content と空の本文を返します。 応答を変更するには、[HTTP 出力バインド](#output)を構成します。
+既定では、HTTP トリガーによって、Functions 1.x では "HTTP 200 OK" と空の本文が返され、Functions 2.x 以降では "HTTP 204 コンテンツがありません" と空の本文が返されます。 応答を変更するには、[HTTP 出力バインド](#output)を構成します。
 
 ## <a name="trigger---example"></a>トリガー - 例
 
@@ -680,11 +680,29 @@ public class HttpTriggerJava {
 }
 ```
 
+### <a name="using-route-parameters"></a>ルート パラメーターの使用
+
+関数の `route` パターンを定義したルート パラメーターは、各バインドで使用できます。 たとえば、ルートが `"route": "products/{id}"` として定義されている場合、テーブル ストレージ バインドでは、バインド構成の `{id}` パラメーターの値を使用できます。
+
+次の構成は、`{id}` パラメーターをバインドの `rowKey` に渡す方法を示しています。
+
+```json
+{
+    "type": "table",
+    "direction": "in",
+    "name": "product",
+    "partitionKey": "products",
+    "tableName": "products",
+    "rowKey": "{id}"
+}
+```
+
+
 ### <a name="working-with-client-identities"></a>クライアント ID の操作
 
 関数アプリが [App Service の認証と承認](../app-service/overview-authentication-authorization.md)を使用している場合は、コードから認証されたクライアントに関する情報を確認することができます。 この情報は、[プラットフォームによって挿入された要求ヘッダー](../app-service/app-service-authentication-how-to.md#access-user-claims)として使用できます。 
 
-また、この情報はバインディング データから参照することもできます。 この機能は、Functions 2.x ランタイムのみで使用可能です。 また、現在のところ .NET 言語でのみ使用可能です。
+また、この情報はバインディング データから参照することもできます。 この機能は、Functions 2.x 以降の Functions ランタイムのみで使用可能です。 また、現在のところ .NET 言語でのみ使用可能です。
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -774,7 +792,7 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 > キーは開発中に HTTP エンドポイントを難読化するのに役立つかもしれませんが、運用環境で HTTP トリガーを確保する方法としては意図されていません。 詳細については、[運用環境で HTTP エンドポイントを保護する](#secure-an-http-endpoint-in-production)を参照してください。
 
 > [!NOTE]
-> Functions 1.x ランタイムでは、Webhook プロバイダーは、プロバイダーがサポートするものに応じて、さまざまな方法で要求を認可するためにキーを使用することがあります。 これについては、[Webhook とキー](#webhooks-and-keys)を参照してください。 バージョン 2.x ランタイムには、Webhook プロバイダーの組み込みサポートは含まれていません。
+> Functions 1.x ランタイムでは、Webhook プロバイダーは、プロバイダーがサポートするものに応じて、さまざまな方法で要求を認可するためにキーを使用することがあります。 これについては、[Webhook とキー](#webhooks-and-keys)を参照してください。 バージョン 2.x 以降の Functions ランタイムには、Webhook プロバイダーの組み込みサポートは含まれていません。
 
 キーには、次の 2 つの種類があります。
 
@@ -825,9 +843,9 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 ### <a name="webhooks"></a>Webhooks
 
 > [!NOTE]
-> Webhook モードは、関数ランタイムのバージョン 1.x でのみ使用できます。 この変更は、バージョン 2.x での HTTP トリガーのパフォーマンスを向上させるために行われました。
+> Webhook モードは、関数ランタイムのバージョン 1.x でのみ使用できます。 この変更は、バージョン 2.x 以降での HTTP トリガーのパフォーマンスを向上させるために行われました。
 
-バージョン 1.x では、Webhook テンプレートで Webhook ペイロードの追加検証が提供されます。 バージョン 2.x では、基本 HTTP トリガーは引き続き機能し、Webhook の推奨アプローチです。 
+バージョン 1.x では、Webhook テンプレートで Webhook ペイロードの追加検証が提供されます。 バージョン 2.x 以降では、基本 HTTP トリガーは引き続き機能し、Webhook の推奨アプローチです。 
 
 #### <a name="github-webhooks"></a>GitHub webhook
 
@@ -854,7 +872,7 @@ HTTP トリガーを使用する関数が約 2.5 分以内に完了しない場�
 
 ## <a name="output"></a>Output
 
-HTTP 要求送信者に応答するには、HTTP 出力バインドを使用します。 このバインドには、HTTP トリガーが必要です。このバインドを使用すると、トリガーの要求に関連付けられている応答をカスタマイズすることができます。 HTTP 出力バインドが提供されていない場合、HTTP トリガーは、Functions 1.x では HTTP 200 OK と空の本文を返し、Functions 2.x では HTTP 204 No Content と空の本文を返します。
+HTTP 要求送信者に応答するには、HTTP 出力バインドを使用します。 このバインドには、HTTP トリガーが必要です。このバインドを使用すると、トリガーの要求に関連付けられている応答をカスタマイズすることができます。 HTTP 出力バインドが提供されていない場合、HTTP トリガーによって、Functions 1.x では "HTTP 200 OK" と空の本文が返され、Functions 2.x 以降では "HTTP 204 コンテンツがありません" と空の本文が返されます。
 
 ## <a name="output---configuration"></a>出力 - 構成
 
@@ -874,7 +892,7 @@ HTTP 応答を送信するには、言語標準の応答パターンを使いま
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインディングのバージョン 2.x の設定のみが含まれています。 バージョン 2.x でのグローバル構成設定の詳細については、[Azure Functions バージョン 2.x の host.json のリファレンス](functions-host-json.md)を参照してください。
+このセクションでは、バージョン 2.x 以降でこのバインドに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインドのバージョン 2.x 以降の設定のみが含まれています。 バージョン 2.x 以降でのグローバル構成設定の詳細については、[Azure Functions の host.json のリファレンス](functions-host-json.md)に関する記事を参照してください。
 
 > [!NOTE]
 > Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](functions-host-json-v1.md#http)」を参照してください。

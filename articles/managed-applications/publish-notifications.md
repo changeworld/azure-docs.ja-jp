@@ -191,7 +191,7 @@ applicationDefinitionId | *サービス カタログ マネージド アプリ�
 
 ## <a name="endpoint-authentication"></a>エンドポイントの認証
 Webhook エンドポイントをセキュリティで保護し、通知の信頼性を確保するには、次のようにします。
-- https://your-endpoint.com?sig=Guid のように、Webhook URI に加えて、クエリ パラメーターを指定します。 各通知で、クエリ パラメーター `sig` が予期された値 `Guid` を持っていることを簡単に確認します。
+- [https://your-endpoint.com?sig=Guid](https://your-endpoint.com?sig=Guid ) のように、Webhook URI に加えて、クエリ パラメーターを指定します。 各通知で、クエリ パラメーター `sig` が予期された値 `Guid` を持っていることを簡単に確認します。
 - applicationId を使用してマネージド アプリケーション インスタンスに対して GET を発行します。 一貫性を確保するために、provisioningState が通知の provisioningState と一致していることを確認します。
 
 ## <a name="notification-retries"></a>通知の再試行

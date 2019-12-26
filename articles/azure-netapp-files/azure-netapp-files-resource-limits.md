@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/09/2019
 ms.author: b-juche
-ms.openlocfilehash: f7213ddee5d7bdfd41508f5fee66de63cde5b7c4
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 6fcea0aaecb860e07c2066877494c05b51f43ca4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170027"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976249"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -31,7 +31,7 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 
 |  リソース  |  既定の制限  |  サポート要求による調整の可否  |
 |----------------|---------------------|--------------------------------------|
-|  Azure サブスクリプションあたりの NetApp アカウント数   |  10    |  はい   |
+|  Azure リージョンあたりの NetApp アカウントの数   |  10    |  はい   |
 |  NetApp アカウントあたりの容量プールの数   |    25     |   はい   |
 |  容量プールあたりのボリュームの数     |    500   |    はい     |
 |  ボリュームあたりのスナップショット数       |    255     |    いいえ        |
@@ -70,8 +70,8 @@ Azure portal ナビゲーション プレーンから:
 2. **[+ New support request]** (新しいサポート要求) をクリックします。
 3. [基本] タブで次の情報を指定します。 
     1. [問題の種類]\: **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
-    2. [サブスクリプション]:クォータの増加が必要なリソースのサブスクリプションを選択します。
-    3. [クォータの種類]: **[Storage:Azure NetApp Files limits]\(ストレージ: Azure NetApp Files の制限\)** を選択します。
+    2. [サブスクリプション]\:クォータの増加が必要なリソースのサブスクリプションを選択します。
+    3. [クォータの種類]\: **[Storage:Azure NetApp Files limits]\(ストレージ: Azure NetApp Files の制限\)** を選択します。
     4. **次へ: 「解決方法」** を参照してください。
 4. [詳細] タブで次の操作を実行します。
     1. [説明] ボックスで、対応するリソースの種類に対して、次の情報を指定します。

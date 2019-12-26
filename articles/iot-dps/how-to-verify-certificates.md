@@ -1,18 +1,18 @@
 ---
 title: Azure IoT Hub Device Provisioning Service で X.509 CA 証明書を確認する
-description: Azure IoT Hub Device Provisioning Service で X.509 CA 証明書の所有証明を行う方法
+description: Azure IoT Hub Device Provisioning Service (DPS) で X.509 CA 証明書の所有証明を行う方法
 author: wesmc7777
 ms.author: wesmc
 ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: b701b15b3dd4463b2d5adbb38ee23bf0c3bfdfe9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b008c4ebc83200043d51fc8ef367f1983c549949
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228678"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973443"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>デバイス プロビジョニング サービスで X.509 CA 証明書の所有証明を行う方法
 

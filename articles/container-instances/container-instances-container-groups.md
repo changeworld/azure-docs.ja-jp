@@ -4,12 +4,12 @@ description: Azure Container Instances のコンテナー グループ、ライ�
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706324"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896580"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
@@ -34,7 +34,7 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 > [!NOTE]
 > 現在、複数コンテナー グループでサポートされているのは、Linux コンテナーのみです。 Windows コンテナーの場合、Azure Container Instances では、1 つのインスタンスのデプロイのみをサポートします。 Microsoft ではすべての機能を Windows コンテナーにも取り入れるように取り組んでいますが、現在のプラットフォームの違いは、サービスの[概要](container-instances-overview.md#linux-and-windows-containers)に関するページで確認できます。
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 複数コンテナー グループをデプロイするには、一般的な方法が 2 つあります: [Resource Manager テンプレート][resource-manager template]または [YAML ファイル][yaml-file]を使用します。 コンテナー インスタンスのデプロイ時に追加の Azure サービス リソース ([Azure Files 共有][azure-files]など) をデプロイする必要がある場合は、Resource Manager テンプレートをお勧めします。 YAML フォーマットは簡潔であるため、デプロイにコンテナー インスタンスのみが含まれている場合は、YAML ファイルをお勧めします。 設定できるプロパティの詳細については、「[Resource Manager テンプレート リファレンス](/azure/templates/microsoft.containerinstance/containergroups)」または「[YAML リファレンス](container-instances-reference-yaml.md)」のドキュメントを参照してください。
 
@@ -68,7 +68,9 @@ Azure Container Instances では、グループにインスタンスの[リソ�
 
 ## <a name="networking"></a>ネットワーク
 
-コンテナー グループは、IP アドレスと、その IP アドレス上のポートの名前空間を共有します。 外部クライアントがグループ内のコンテナーにアクセスできるようにするには、IP アドレスのポートをコンテナーから公開する必要があります。 グループ内のコンテナーがポートの名前空間を共有するため、ポートのマッピングはサポートされません。 グループ内のコンテナーは、ポートの localhost 経由で相互にアクセスできます。これは、これらのポートがグループの IP アドレスで外部的に公開されていない場合でも同じです。
+コンテナー グループは、外部接続 IP アドレスと、その IP アドレス上のポートの名前空間を共有できます。 外部クライアントがグループ内のコンテナーにアクセスできるようにするには、IP アドレスのポートをコンテナーから公開する必要があります。 グループ内のコンテナーがポートの名前空間を共有するため、ポートのマッピングはサポートされません。 
+
+コンテナー グループ内では、コンテナー インスタンスは任意のポートの localhost を通じて相互にアクセスできます。それらのポートがグループの IP アドレスまたはコンテナーで外部に公開されていなくてもかまいません。
 
 必要に応じて、[Azure 仮想ネットワーク][virtual-network] (プレビュー) にコンテナー グループをデプロイして、コンテナーで仮想ネットワーク内の他のリソースと安全に通信することを許可します。
 

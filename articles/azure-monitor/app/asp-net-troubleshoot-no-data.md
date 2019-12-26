@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a1e299f195a148ebd1bdbda91e5a56e297f34d31
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887532"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889177"
 ---
-# <a name="troubleshooting-no-data---application-insights-for-net"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET
+# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
+
 ## <a name="some-of-my-telemetry-is-missing"></a>テレメトリの一部が見つからない
 *Application Insights で、アプリによって生成されているイベントのごく一部しか表示されません。*
 
@@ -212,7 +213,7 @@ Application Insights をインストールしているとき、またはログ �
 
 1. NuGet から [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) パッケージをインストールします。 インストールするバージョンは、`Microsoft.ApplicationInsights` の現在インストールされているバージョンと一致する必要があります。
 
-Microsoft.ApplicationInsights.AspNetCore の最新バージョンは 2.7.1 であり、それは Microsoft.ApplicationInsights バージョン 2.10 を参照します。 そのため、インストールする Microsoft.AspNet.ApplicationInsights.HostingStartup のバージョンは 2.10.0 になります。
+Microsoft.ApplicationInsights.AspNetCore の最新バージョンは 2.8.2 であり、これにより Microsoft.ApplicationInsights バージョン 2.11.2 が参照されます。 そのため、インストールする Microsoft.AspNet.ApplicationInsights.HostingStartup のバージョンは 2.11.2 になります。
 
 2. `Startup.cs` クラスの `ConfigureServices` メソッドを変更します。
 

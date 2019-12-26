@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor for VMs と System Center Operations Manager の統合 | Microsoft Docs
+title: Azure Monitor for VMs マップを Operations Manager と統合する | Microsoft Docs
 description: Azure Monitor for VMs は、Windows システムおよび Linux システム上のアプリケーション コンポーネントを自動的に検出して、サービス間の通信をマップします。 この記事では、マップ機能を使用して、Operations Manager で分散アプリケーション ダイアグラムを自動的に作成する方法について説明します。
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 07/12/2019
-ms.openlocfilehash: 3523756e89506e90407090db105fdced5853d9d9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f1acf3c1574fd94606d75c6250dedd40a9c7ea4d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553963"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849821"
 ---
-# <a name="system-center-operations-manager-integration-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager と Azure Monitor for VMs マップ機能の統合
+# <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager と Azure Monitor for VMs マップ機能を統合する
 
-Azure Monitor for VMs では、Azure またはお客様の環境で実行する Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 このマップ機能と System Center Operations Manager との統合を利用すると、Azure Monitor for VMs の動的依存関係マップに基づいた分散アプリケーション ダイアグラムを Operation Manager で自動的に作成できます。 
+Azure Monitor for VMs では、Azure またはお客様の環境で実行する Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 このマップ機能と System Center Operations Manager との統合を利用すると、Azure Monitor for VMs の動的依存関係マップに基づいた分散アプリケーション ダイアグラムを Operation Manager で自動的に作成できます。 この記事では、この機能をサポートするように System Center Operations Manager 管理グループを構成する方法について説明します。
 
 >[!NOTE]
 >Service Map を既にデプロイ済みの場合は、VM の正常性とパフォーマンスを監視する追加機能が組み込まれた Azure Monitor for VMs でマップを表示できます。 Azure Monitor for VMs のマップ機能は、スタンドアロンの Service Map ソリューションに取って代わる予定です。 詳細については、[VM 用 Azure Monitor の概要](vminsights-overview.md)に関するページを参照してください。

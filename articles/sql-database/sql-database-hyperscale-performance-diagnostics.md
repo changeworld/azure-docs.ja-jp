@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: a7c64284c958fa8b3ec89c2b27515fe167a04011
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2e162b30a0227c5f04c74dae01413177d1623235
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811143"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901240"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL Hyperscale のパフォーマンスのトラブルシューティング診断
 
@@ -44,13 +44,14 @@ Hyperscale データベースでのパフォーマンスの問題のトラブル
  
 コンピューティング レプリカに対して読み取りが発行されると、データがバッファー プールまたはローカル RBPEX キャッシュに存在しない場合、getPage(pageId, LSN) 関数呼び出しが発行され、対応するページ サーバーからそのページが取り込まれます。 ページ サーバーからの読み取りはリモート読み取りであるため、ローカル RBPEX からの読み取りよりも低速です。 IO 関連のパフォーマンスの問題のトラブルシューティングを行うときは、比較的低速なリモート ページ サーバー読み取りによって IO が何回実行されたのかを把握できる必要があります。
 
-複数の DMV および拡張イベントの列とフィールドがあり、ページ サーバーからのリモート読み取りの回数が示されています。これを、合計読み取り数と比較できます。 
+複数の DMV および拡張イベントの列とフィールドがあり、ページ サーバーからのリモート読み取りの回数が示されています。これを、合計読み取り数と比較できます。 クエリ ストアでは、クエリ実行時間の統計の一部として、リモート読み取りもキャプチャされます。
 
-- ページ サーバー読み取りを報告する列は、実行 DMV で利用でき、次のようなものがあります。
+- ページ サーバー読み取りをレポートする列は、実行 DMV およびカタログ ビューで利用でき、次のようなものがあります。
     - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
     - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
     - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
     - [sys.dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys.query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - ページ サーバー読み取りは、次の拡張イベントに追加されます。
     - sql_statement_completed
     - sp_statement_completed

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB クエリ言語の ATN2
-description: Azure Cosmos DB での SQL システム関数 ATN2 について学習します。
+description: Azure Cosmos DB の ATN2 SQL システム関数から y/x のアーク タンジェントの主値 (ラジアンで表される) が返される方法について説明します。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 43bf2f6e27d093b72560b87349150268e0f58a60
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 11321ef9d7b81af279b04e0e435b19c645cf3bcf
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350204"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871654"
 ---
 # <a name="atn2-azure-cosmos-db"></a>ATN2 (Azure Cosmos DB)
  ラジアン単位で表される y/x のアーク タンジェントの主値を返します。  
@@ -48,6 +48,6 @@ SELECT ATN2(35.175643, 129.44) AS atn2
 
 ## <a name="next-steps"></a>次の手順
 
-- [数学関数 (Azure Cosmos DB)](sql-query-mathematical-functions.md)
-- [システム関数 (Azure Cosmos DB)](sql-query-system-functions.md)
+- [Azure Cosmos DB の数学関数](sql-query-mathematical-functions.md)
+- [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)

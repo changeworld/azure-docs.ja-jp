@@ -1,5 +1,5 @@
 ---
-title: REST API を使用して Azure リソースのカスタムまたはアップデート ロールを作成する - Azure | Microsoft Docs
+title: Rest API を使用して Azure リソースのカスタム ロールを作成または更新する - Azure | Microsoft Docs
 description: REST API を使用して、Azure リソースのロールベースのアクセス制御（RBAC）でカスタムロールを一覧表示、作成、更新、または削除する方法を学習します。
 services: active-directory
 documentationcenter: na

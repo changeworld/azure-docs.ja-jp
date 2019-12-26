@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB のコンテナーのスループットをプロビジョニングする
-description: Azure Cosmos DB のコンテナー レベルでスループットをプロビジョニングする方法について説明します。
+description: Azure portal、CLI、PowerShell および他のさまざまな SDK を使用して、Azure Cosmos DB のコンテナー レベルでスループットをプロビジョニングする方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0b48652f7b181f1254a4b20af75b83593c2aba05
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: ed6a55c8b6049f16e96a4a95ecf3ef125db908d7
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147597"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872045"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Azure Cosmos コンテナー上でのスループットをプロビジョニングする
 

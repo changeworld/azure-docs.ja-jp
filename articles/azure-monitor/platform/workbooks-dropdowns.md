@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor ブックのドロップダウン パラメーターの詳細 | Microsoft Docs
+title: Azure Monitor ブックのドロップダウン パラメーター
 description: ドロップダウン パラメーターを含む作成済みのブックやパラメーター化されたカスタム ブックを使用して、複雑なレポート作成を簡素化します
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 20a1c5f4b4ef12f81e801769a2ee1b5f08860e38
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: df30b71e6ec9e982988ed75b187db08255e24b61
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164221"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872878"
 ---
 # <a name="workbook-drop-down-parameters"></a>ブックのドロップダウン パラメーター
 
@@ -28,12 +28,12 @@ ms.locfileid: "73164221"
 1. 編集モードの空白のブックを使用して開始します。
 2. ブック内のリンクから _[Add parameters]\(パラメーターの追加\)_ を選択します。
 3. 青い _[パラメーターの追加]_ ボタンをクリックします。
-4. ポップアップ表示される新しいパラメーター ペインで入力を行います。
+4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `Environment` (パラメーター名: {2})
     2. [パラメーターの種類]\: [`Drop down`ドロップ ダウン]
     3. [必須ですか?]\: `checked`オン
     4. [複数選択を許可する]\: オフ
-    5. [データの取得元]\: [`JSON`]
+    5. [データの取得元]\: [クエリ]
 5. [JSON 入力] テキスト ブロックに、この JSON スニペットを挿入します。
     ```json
     [
@@ -42,7 +42,7 @@ ms.locfileid: "73164221"
         { "value":"prod", "label":"Production", "selected":true }
     ]
     ```
-6. 青い [更新] ボタンを押します。
+6. 青い [クエリの実行] ボタンを押します。
 7. ツール バーの [保存] を選択して、パラメーターを作成します。
 8. Environment パラメーターは、3 つの値を含むドロップダウンになります。
 
@@ -67,7 +67,7 @@ ms.locfileid: "73164221"
 1. 編集モードの空白のブックを使用して開始します。
 2. ブック内のリンクから _[Add parameters]\(パラメーターの追加\)_ を選択します。
 3. 青い _[パラメーターの追加]_ ボタンをクリックします。
-4. ポップアップ表示される新しいパラメーター ペインで入力を行います。
+4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `RequestName` (パラメーター名: {2})
     2. [パラメーターの種類]\: [`Drop down`ドロップ ダウン]
     3. [必須ですか?]\: `checked`オン

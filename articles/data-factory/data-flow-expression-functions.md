@@ -1,22 +1,22 @@
 ---
-title: Azure Data Factory のマッピング データ フロー機能での式関数
+title: マッピング データ フローでの式関数
 description: マッピング データ フローでの式関数について説明します。
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: dc742fc625604e71909f49c7453a9215dce71e35
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 230305b66ec093043e4c2dca9515da4ce0793712
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596964"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930375"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>マッピング データ フローでのデータ変換式 
-
-
 
 ## <a name="expression-functions"></a>式関数
 
@@ -312,7 +312,7 @@ CumeDist 関数は、パーティション内のすべての値の相対値を�
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-このジョブの実行を開始する現在の日付を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
+このジョブの実行を開始する現在の日付を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 [https://github.com/mysqljs/mysql/](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
 
 * ``currentDate() == toDate('2250-12-31') -> false``
 
@@ -465,7 +465,7 @@ ___
 ___
 ### <code>fromUTC</code>
 <code><b>fromUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-UTC からタイムスタンプに変換します。 必要に応じて、タイムゾーンを "GMT"、"PST"、"UTC"、"America/Cayman" の形式で渡すことができます。 既定値は現在のタイムゾーンです。使用可能な形式については、Java の SimpleDateFormat を参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
+UTC からタイムスタンプに変換します。 必要に応じて、タイムゾーンを "GMT"、"PST"、"UTC"、"America/Cayman" の形式で渡すことができます。 既定値は現在のタイムゾーンです。使用可能な形式については、Java の SimpleDateFormat を参照してください。 [https://github.com/mysqljs/mysql/](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
 
 * ``fromUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``
 
@@ -515,7 +515,7 @@ ___
 ___
 ### <code>hour</code>
 <code><b>hour(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-タイムスタンプから時間の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
+タイムスタンプから時間の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 [https://github.com/mysqljs/mysql/](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
 
 * ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``
 
@@ -863,7 +863,7 @@ ___
 ___
 ### <code>millisecond</code>
 <code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-日付のミリ秒の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
+日付のミリ秒の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 [https://github.com/mysqljs/mysql/](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
 
 * ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``
 
@@ -908,7 +908,7 @@ ___
 ___
 ### <code>minute</code>
 <code><b>minute(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-タイムスタンプから分の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
+タイムスタンプから分の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 [https://github.com/mysqljs/mysql/](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
 
 * ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``
 
@@ -940,7 +940,7 @@ ___
 ___
 ### <code>monthsBetween</code>
 <code><b>monthsBetween(<i>&lt;from date/timestamp&gt;</i> : datetime, <i>&lt;to date/timestamp&gt;</i> : datetime, [<i>&lt;roundoff&gt;</i> : boolean], [<i>&lt;time zone&gt;</i> : string]) => double</b></code><br/><br/>
-2 つの日付の間の月数を取得します。 計算を丸めることができいます。省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
+2 つの日付の間の月数を取得します。 計算を丸めることができいます。省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 [https://github.com/mysqljs/mysql/](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
 
 * ``monthsBetween(toTimestamp('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677``
 
@@ -1181,7 +1181,7 @@ ___
 ___
 ### <code>second</code>
 <code><b>second(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-日付の秒の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
+日付の秒の値を取得します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 ローカル タイムゾーンが既定値として使用されます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 [https://github.com/mysqljs/mysql/](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
 
 * ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``
 
@@ -1536,7 +1536,7 @@ ___
 ___
 ### <code>toTimestamp</code>
 <code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
-省略可能なタイムスタンプ形式を指定して、文字列をタイムスタンプに変換します。 使用できるすべての形式については、Java SimpleDateFormat を参照してください。 タイムスタンプを省略すると、既定のパターンの yyyy-[M]M-[d]d hh:mm:ss[.f...] が使用されます。 省略可能なタイムゾーンは、'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡すことができます。タイムスタンプはミリ秒の精度で 999 の値までサポートされます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
+省略可能なタイムスタンプ形式を指定して、文字列をタイムスタンプに変換します。 使用できるすべての形式については、Java SimpleDateFormat を参照してください。 タイムスタンプを省略すると、既定のパターンの yyyy-[M]M-[d]d hh:mm:ss[.f...] が使用されます。 省略可能なタイムゾーンは、'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡すことができます。タイムスタンプはミリ秒の精度で 999 の値までサポートされます。使用可能な形式については、Java の SimpleDateFormat を参照してください。 [https://github.com/mysqljs/mysql/](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
 
 * ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``
 
@@ -1549,7 +1549,7 @@ ___
 ___
 ### <code>toUTC</code>
 <code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-タイムスタンプを UTC に変換します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 既定値は現在のタイムゾーンです。使用可能な形式については、Java の SimpleDateFormat を参照してください。 https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
+タイムスタンプを UTC に変換します。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 既定値は現在のタイムゾーンです。使用可能な形式については、Java の SimpleDateFormat を参照してください。 [https://github.com/mysqljs/mysql/](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
 
 * ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor ブックを使用した対話型レポートの作成 | リソース パラメーター | Microsoft Docs
+title: Azure Monitor ブックのリソース パラメーター
 description: 作成済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポート作成を簡素化します。
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 2cd170fdc3bed04a81c66d83b9e75ed77e3c0a5a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: adc9855d30a3b286cfbc3489ec639ab8b460e314
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164417"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872810"
 ---
 # <a name="workbook-resource-parameters"></a>ブックのリソース パラメーター
 
@@ -29,7 +29,7 @@ ms.locfileid: "73164417"
 3. 青い _[パラメーターの追加]_ ボタンをクリックします。
 4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `Applications` (パラメーター名: {2})
-    2. [パラメーターの種類]\: [`Resource picker`]
+    2. [パラメーターの種類]\: [`Resource picker`ドロップ ダウン]
     3. [必須ですか?]\: `checked`
     4. [Allow multiple selections]\(複数選択を許可する\): `checked`
 5. [データの取得元]\: [`Workbook Resources`]
@@ -44,7 +44,7 @@ ms.locfileid: "73164417"
 3. 青い _[パラメーターの追加]_ ボタンをクリックします。
 4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `Applications` (パラメーター名: {2})
-    2. [パラメーターの種類]\: [`Resource picker`]
+    2. [パラメーターの種類]\: [`Resource picker`ドロップ ダウン]
     3. [必須ですか?]\: `checked`
     4. [Allow multiple selections]\(複数選択を許可する\): `checked`
 5. [データの取得元]\: [`Query`]
@@ -70,7 +70,7 @@ ms.locfileid: "73164417"
 3. 青い _[パラメーターの追加]_ ボタンをクリックします。
 4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `Applications` (パラメーター名: {2})
-    2. [パラメーターの種類]\: [`Resource picker`]
+    2. [パラメーターの種類]\: [`Resource picker`ドロップ ダウン]
     3. [必須ですか?]\: `checked`
     4. [Allow multiple selections]\(複数選択を許可する\): `checked`
 5. [データの取得元]\: [`JSON`]

@@ -2,18 +2,18 @@
 title: Apache Hadoop 上での C#、Apache Hive、Apache Pig - Azure HDInsight
 description: Azure HDInsight 上の Apache Hive と Apache Pig のストリーミングで C# のユーザー定義関数 (UDF) を使用する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.author: hrasheed
-ms.openlocfilehash: b8baf8ee11d34756e55f3a78fd5916e042785587
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 9ef9eada9b9aec50642a8bf357edab0677868817
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821614"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949391"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop の Apache Hive と Apache Pig で C# のユーザー定義関数を使用する
 
@@ -52,11 +52,11 @@ HDInsight バージョンに付属する Mono と .NET Framework のバージョ
 
 Apache Hive UDF の C# プロジェクトを作成するには、次のようにします。
 
-1. Visual Studio を開きます。
+1. Visual Studio を起動します。
 
-2. **[開始]** ウィンドウで、 **[新しいプロジェクトの作成]** を選択します。
+2. **[新しいプロジェクトの作成]** を選択します。
 
-3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) までスクロールし、それを選択します。 次に、 **[次へ]** を選択します。
+3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 次に、 **[次へ]** を選択します。
 
 4. **[新しいプロジェクトを構成します]** ウィンドウで、*HiveCSharp* の**プロジェクト名**を入力し、新しいプロジェクトを保存する**場所**に移動または場所を作成します。 **[作成]** を選択します。
 
@@ -111,7 +111,9 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
     }
     ```
 
-6. メニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** を選択してプロジェクトをビルドします。
+6. メニュー バーで **[ビルド]**  >  **[ソリューションのビルド]** の順に選択して、プロジェクトをビルドします。
+
+7. ソリューションを閉じます。
 
 ### <a name="apache-pig-udf"></a>Apache Pig UDF
 
@@ -121,7 +123,7 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 2. **[開始]** ウィンドウで、 **[新しいプロジェクトの作成]** を選択します。
 
-3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) までスクロールし、それを選択します。 次に、 **[次へ]** を選択します。
+3. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** テンプレート (C# バージョン) を選択します。 次に、 **[次へ]** を選択します。
 
 4. **[新しいプロジェクトを構成します]** ウィンドウで、*PigUDF* の**プロジェクト名**を入力し、新しいプロジェクトを保存する**場所**に移動または場所を作成します。 **[作成]** を選択します。
 
@@ -160,17 +162,17 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 6. メニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** を選択してプロジェクトをビルドします。
 
+7. ソリューションを開いたままにしておきます。
+
 ## <a name="upload-to-storage"></a>ストレージにアップロードする
 
 次に、Hive と Pig の UDF アプリケーションを HDInsight クラスター上のストレージにアップロードします。
 
-1. Visual Studio で、 **[表示]**  >  **[サーバー エクスプローラー]** を選択します。
+1. Visual Studio で、 **[表示]**  >  **[サーバー エクスプローラー]** の順に移動します。
 
-2. **[Azure]** を展開して、 **[HDInsight]** を展開します。
+1. **[サーバー エクスプローラー]** で、 **[Azure]** を右クリックし、 **[Microsoft Azure サブスクリプションへの接続]** を選択し、サインイン処理を完了します。
 
-3. 入力を求められた場合は、Azure サブスクリプションの資格情報を入力し、 **[サインイン]** を選択します。
-
-4. このアプリケーションをデプロイする HDInsight クラスターを展開します。 エントリとテキスト **(既定のストレージ アカウント)** が一覧表示されます。
+1. このアプリケーションをデプロイする HDInsight クラスターを展開します。 エントリとテキスト **(既定のストレージ アカウント)** が一覧表示されます。
 
     ![既定のストレージ アカウント、HDInsight クラスター、サーバー エクスプローラー](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-storage-account.png)
 
@@ -178,14 +180,14 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
     * このエントリを展開できない場合は、クラスターの既定のストレージとして **Azure Data Lake Storage** を使用します。 クラスターの既定のストレージにファイルを表示するには、 **(既定のストレージ アカウント)** エントリをダブルクリックします。
 
-5. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
+1. .exe ファイルをアップロードするには、次のいずれかの方法を使用します。
 
     * **Azure ストレージ アカウント**を使用している場合は、 **[BLOB のアップロード]** アイコンを選択します。
 
         ![新しいプロジェクトの HDInsight アップロード アイコン](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/hdinsight-upload-icon.png)
 
         **[新しいファイルのアップロード]** ダイアログ ボックスの **[ファイル名]** で、 **[参照]** を選択します。 **[BLOB のアップロード]** ダイアログ ボックスで、*HiveCSharp* プロジェクトの *bin\debug* フォルダーに移動し、*HiveCSharp.exe* ファイルを選択します。 最後に、 **[開く]** を選択し、 **[OK]** を選択してアップロードを完了します。
-    
+
     * **Azure Data Lake Storage** を使用している場合は、ファイルの一覧の空の領域を右クリックし、 **[アップロード]** を選択します。 最後に、*HiveCSharp.exe* ファイルを選び、 **[OK]** を選択します。
 
     *HiveCSharp.exe* のアップロードが完了したら、*PigUDF.exe* ファイルのアップロード プロセスを繰り返します。
@@ -194,7 +196,7 @@ Apache Hive UDF の C# プロジェクトを作成するには、次のように
 
 Hive UDF アプリケーションを使用する Hive クエリを実行できるようになりました。
 
-1. Visual Studio で、 **[表示]**  >  **[サーバー エクスプローラー]** を選択します。
+1. Visual Studio で、 **[表示]**  >  **[サーバー エクスプローラー]** の順に移動します。
 
 2. **[Azure]** を展開して、 **[HDInsight]** を展開します。
 
@@ -204,7 +206,7 @@ Hive UDF アプリケーションを使用する Hive クエリを実行でき�
 
     ```hiveql
     -- Uncomment the following if you are using Azure Storage
-    -- add file wasb:///HiveCSharp.exe;
+    -- add file wasbs:///HiveCSharp.exe;
     -- Uncomment the following if you are using Azure Data Lake Storage Gen1
     -- add file adl:///HiveCSharp.exe;
     -- Uncomment the following if you are using Azure Data Lake Storage Gen2
@@ -222,7 +224,7 @@ Hive UDF アプリケーションを使用する Hive クエリを実行でき�
 
     このクエリは、`hivesampletable` から `clientid`、`devicemake`、`devicemodel` の各フィールドを選択し、*HiveCSharp.exe* アプリケーションに選択したフィールドを渡します。 クエリはアプリケーションが 3 つのフィールドを返すことを想定し、これは `clientid`、`phoneLabel`、`phoneHash` として格納されます。 このクエリでは、既定のストレージ コンテナーのルートで *HiveCSharp.exe* が見つかることを想定しています。
 
-5. **[送信]** を選択して HDInsight クラスターにジョブを送信します。 **[Hive ジョブの概要]** ウィンドウが開きます。
+5. 既定の **[対話型]** を **[バッチ]** に切り替えてから、 **[送信]** を選択して、ジョブを HDInsight クラスターに送信します。 **[Hive ジョブの概要]** ウィンドウが開きます。
 
 6. **[更新]** を選択し、 **[ジョブの状態]** が **[完了]** に変わるまで概要を更新します。 ジョブの出力を表示するには、 **[ジョブの出力]** を選択します。
 
@@ -265,6 +267,8 @@ Pig UDF アプリケーションを使用する Pig ジョブを実行するこ�
     (2019-07-15 16:43:25 SampleClass7 [DEBUG] detail for id 1475865947)
     ```
 
+5. `exit` を使用して、pig を終了します。
+
 ## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、HDInsight の Hive と Pig から .NET Framework アプリケーションを使用する方法について説明しました。 Hive と Pig で Python を使用する方法について学習するには、[HDInsight における Apache Hive および Apache Pig での Python の使用](python-udf-hdinsight.md)に関するページを参照してください。
@@ -273,3 +277,4 @@ Hive を使用する他の方法と、MapReduce の使用方法については�
 
 * [HDInsight での Apache Hive の使用](hdinsight-use-hive.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
+* [Pig Latin の基本](https://pig.apache.org/docs/latest/basic.html)

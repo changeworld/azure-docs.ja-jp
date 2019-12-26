@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C を使用して Weibo アカウントでのサインアップおよびサインインを設定する
+title: Weibo アカウントでのサインアップおよびサインインを設定する
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用するアプリケーションで Weibo アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4a019c3f197f123486dd28dc2bdb46e34f6cabc4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3f84d1d33874ac70a21c9d596c6fa5a9e608bb84
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064914"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950308"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Weibo アカウントでのサインアップおよびサインインを設定する
 

@@ -4,16 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 5d2608d1c374fadac18cebc093ce50ef93f9656a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 193968b5acf8288cb3f602c90374535fc2046b01
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597367"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941718"
 ---
-この表は、Azure Functions の 2 つのメジャー バージョンのランタイムでサポートされているバインディングを示しています。
+この表は、Azure Functions のメジャー バージョンのランタイムでサポートされているバインディングを示しています。
 
-| 種類 | 1.x | 2.x<sup>1</sup> | トリガー | 入力 | Output |
+
+| 種類 | 1.x | 2.x 以降<sup>1</sup> | トリガー | 入力 | Output |
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
@@ -36,4 +37,4 @@ ms.locfileid: "72597367"
 | [Timer](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 
-<sup>1</sup> バージョン 2.x ランタイムでは、HTTP と Timer を除くすべてのバインドを登録する必要があります。 「[バインディング拡張機能を登録する](../articles/azure-functions/functions-bindings-register.md)」を参照してください。 特に記載がない限り、サポートされているすべての 2.x バインドがバージョン 3.x でもサポートされます。   
+<sup>1</sup> バージョン 2.x ランタイム以降では、HTTP と Timer を除くすべてのバインドを登録する必要があります。 「[バインディング拡張機能を登録する](../articles/azure-functions/functions-bindings-register.md)」を参照してください。

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13b316568ba555de764c1aaa4ddf0e72d25cf24f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f7f5b983a00dfc0af2e7a40571ce58fafca5914e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990647"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964569"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 SAML ベアラー アサーション フロー
 OAuth 2.0 SAML ベアラー アサーション フローでは、クライアントが既存の信頼関係を使用する必要があるときに、SAML アサーションを使用して OAuth アクセス トークンを要求することができます。 SAML アサーションに適用される署名は、承認されたアプリの認証を提供します。 SAML アサーションは、ID プロバイダーによって発行され、サービス プロバイダーによって使用される XML セキュリティ トークンです。 サービス プロバイダーは、セキュリティ関連の目的でアサーションの対象を識別するために、そのコンテンツに依存します。
@@ -46,7 +46,7 @@ OAuth SAML ベアラー アサーション フローは、Azure Active Directory
 承認サーバー/環境 (Microsoft 365) と ID プロバイダー、または SAML 2.0 ベアラー アサーションの発行者 (ADFS) との間で信頼関係を確立します。 シングル サインオン用および ID プロバイダーとして ADFS を構成するには、[こちらの記事](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/)をご覧ください。
 
 次の手順に従って、[ポータル](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)でアプリケーションを登録します。
-1. [ポータルの [アプリの登録] ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)にサインインします (Graph API には v2.0 エンドポイントを使用しているため、このポータルでアプリケーションを登録する必要があることに注意してください。 それ以外の場合は、Azure Active Directory で登録を使用することもできます)。 
+1. [ポータルの [アプリの登録] ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)にサインインします (Graph API には v2.0 エンドポイントを使用しているため、このポータルでアプリケーションを登録する必要があることに注意してください。 それ以外の場合は、Azure Active Directory での登録を使用することもできます)。 
 1. **[新規登録]** を選択します。
 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。 
     1. **[名前]** - アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します。

@@ -1,6 +1,6 @@
 ---
 title: アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 - Azure Media Services | Microsoft Docs
-description: Microsoft Smooth Streaming Client Porting Kit のライセンスの取得について説明します。
+description: この記事では、Azure Media Services を使用してマルチ DRM コンテンツ保護システムを設計する方法を詳しく説明します。
 services: media-services
 documentationcenter: ''
 author: willzhan
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: ffbf53c0bb0aaf2832afecc2d0df935f04eeff19
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 00ddedf135d13c07e8abe1094dd5366acb0f4ae5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310325"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896170"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 
 

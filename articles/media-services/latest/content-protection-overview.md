@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: eeb1dc44341768984bd6e337a2fe65a277f5aa77
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1ae8645f3e782305ed5e1b7847b019a978e48dde
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581215"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977779"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
 
@@ -244,7 +244,10 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 `ContentKeyId` は、要求されたキーの値を持っています。 要求をユーザー側のエンティティにマップする場合は、`AlternativeMediaId` を使用できます。 たとえば、`AlternativeMediaId` を使用すると、アクセス許可を調べるときに役立ちます。
 
- カスタムのライセンス/キーの取得 URL を使用する REST の例については、「[ストリーミング ポリシー - 作成](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)」をご覧ください。
+カスタムのライセンス/キーの取得 URL を使用する REST の例については、「[ストリーミング ポリシー - 作成](https://docs.microsoft.com/rest/api/media/streamingpolicies/create)」をご覧ください。
+
+> [!NOTE]
+> Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 

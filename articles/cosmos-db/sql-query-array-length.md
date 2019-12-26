@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB クエリ言語の ARRAY_LENGTH
-description: Azure Cosmos DB での SQL システム関数 ARRAY_LENGTH について説明します。
+description: Azure Cosmos DB の配列の長さ SQL システム関数から、指定した配列式の要素の数を返す方法について説明します。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: b27b3f09212047e2e8937a4bf649fa3335e15cb2
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 9a8bf33befdd842a2979151fef3d54679ee03de1
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348662"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871773"
 ---
 # <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB)
  指定された配列式の要素の数を返します。  

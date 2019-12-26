@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805758"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978630"
 ---
 # <a name="hyperscale-service-tier"></a>ハイパースケール サービス レベル
 
@@ -196,25 +196,25 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 
 掲載されていないリージョンに Hyperscale データベースを作成できるように要求するには:
 
-1. [Azure の [ヘルプとサポート] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)に移動します
+1. Azure portal メニューから **[ヘルプとサポート]** を選択するか、任意のページから検索し、 **[ヘルプとサポート]** を選択します。
 
-2. [ **[新しいサポート リクエスト]** ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) をクリックします
+2. Azure の [[ヘルプとサポート]](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) で [ **[新しいサポート要求]** ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) を選択します。
 
-    ![Azure の [ヘルプとサポート] ブレード](media/sql-database-service-tier-hyperscale/request-screen-1.png)
+3. **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します。
 
-3. **[問題の種類]** で、 **[サービスとサブスクリプションの制限 (クォータ)]** を選択します
+4. データベースの作成に使用するサブスクリプションを選択します。
 
-4. データベースの作成に使用するサブスクリプションを選択します
+5. **[クォータの種類]** で、 **[SQL データベース]** を選択します。
 
-5. **[クォータの種類]** で、 **[SQL データベース]** を選択します
+    ![Azure の [ヘルプとサポート] ブレード](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
 
-6. **[次へ: ソリューション]** をクリックします
+6. **次へ: 「解決方法」** を参照してください。
 
-1. **[詳細の指定]** をクリックします
+7. **[詳細の指定]** をクリックします。
 
     ![問題の詳細](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. **[SQL Database のクォータの種類]** で **[その他のクォータ要求]** を選択します
+8. **[SQL Database のクォータの種類]** で **[その他のクォータ要求]** を選択します。
 
 9. 次のテンプレートを入力します。
 
@@ -231,7 +231,7 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 
 11. 適切な連絡方法を選択し、詳細を入力します。
 
-12. **[保存]** 、 **[続行]** の順にクリックします
+12. **[保存]** をクリックし、 **[続行]** をクリックします。
 
 ## <a name="known-limitations"></a>既知の制限事項
 以下は、一般提供時点の Hyperscale サービス レベルに対する現在の制限事項です。  これらの制限事項ができるだけなくなるように、積極的に取り組んでいます。
@@ -240,18 +240,19 @@ Hyperscale の SLA については、「[SLA for Azure SQL Database の SLA](htt
 | :---- | :--------- |
 | [バックアップの管理] ウィンドウに、ハイパースケール データベースが表示されません。"SQL server" でフィルター処理すると表示されます。  | ハイパースケールは別の方法でバックアップを管理しています。そのため、長期的な保有期間と特定の時点のバックアップなどの保有設定が適用されず、無効になります。 したがって、ハイパースケールのデータベースは、[バックアップの管理] ウィンドウに表示されません。 |
 | ポイントインタイム リストア | データベースがハイパースケール サービス レベルに移行された後で、移行よりも前の特定の時点への復元はサポートされません。|
-| Hyperscale 以外の DB と Hypserscale の間での復元 | Hyperscale データベースを Hyperscale 以外のデータベースに復元することも、Hyperscale 以外のデータベースを Hyperscale データベースに復元することもできません。|
+| Hyperscale ではない DB を Hyperscale に復元する (および、その反対方向の復元を行う) | Hyperscale データベースを Hyperscale 以外のデータベースに復元することも、Hyperscale 以外のデータベースを Hyperscale データベースに復元することもできません。|
 | 1 TB を超えるデータ ファイルがデータベースに 1 つ以上ある場合、移行に失敗します。 | 場合によっては、サイズの大きいファイルを 1 TB 未満に圧縮することで、この問題を回避できることがあります。 移行プロセス中に使用されているデータベースを移行する場合は、1 TB を超えるファイルがないことを確認してください。 データベース ファイルのサイズを確認するには、以下のクエリを使用してください。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | マネージド インスタンス | Azure SQL Database Managed Instance は、現在、Hyperscale データベースではサポートされていません。 |
 | エラスティック プール |  エラスティック プールは、現在、SQL Database Hyperscale ではサポートされていません。|
 | ハイパースケールへの移行は現在一方向 | データベースがハイパースケールにいったん移行されると、ハイパースケール以外のサービス レベルに直接移行することはできません。 現時点では、ハイパースケールからハイパースケール以外にデータベースを移行する唯一の方法は、BACPAC ファイルまたはその他のデータ移動テクノロジ (一括コピー、Azure Data Factory、Azure Databricks、SSIS など) を使用してエクスポート/インポートすることです。|
-| 永続メモリ内オブジェクトを含むデータベースの移行 | ハイパースケールでは、非永続メモリ内オブジェクト (テーブル型、ネイティブ SP、関数) のみがサポートされます。  データベースがハイパースケール サービス レベルに移行される前に、永続メモリ内テーブルとその他のオブジェクトは削除され、メモリ内ではないオブジェクトとして再作成されます。|
+| インメモリ OLTP オブジェクトを使用したデータベースの移行 | Hyperscale では、メモリ最適化テーブル型、ネイティブ コンパイルされたストアド プロシージャ、関数など、インメモリ OLTP オブジェクト型のみがサポートされています。 ただし、インメモリ OLTP オブジェクトがデータベースに存在すると、Premium および Business Critical サービス レベルから Hyperscale に直接移行できません。 このようなデータベースを Hyperscale に移行するには 3 つの手順が必要です。(1) インメモリ OLTP オブジェクトとその依存関係をすべて削除します。 永続的なメモリ最適化テーブルにデータを保存するには、永続的なメモリ最適化テーブルをディスク テーブルに変換します。 (2) データベースのサービス レベルを Hyperscale に変更します。 (3) 前に削除したオブジェクトを再作成します。 永続的なメモリ最適化テーブルと非永続的なメモリ最適化テーブルは Hyperscale で同時にサポートされず、ディスク テーブルのままにする必要があります。 メモリ最適化テーブル変数がサポートされています。 |
 | 変更の追跡 | Change Tracking は現在パブリック プレビューであり、新規または既存の Hyperscale データベースで有効にすることができます。 |
 | geo レプリケーション  | Azure SQL Database Hyperscale の geo レプリケーションは、まだ構成できません。 |
 | データベース コピー | 現時点では、データベース コピーを使用して、Azure SQL Hyperscale に新しいデータベースを作成することはできません。 |
 | TDE/AKV の統合 | Azure Key Vault を使用した透過的データベース暗号化 (通常、Bring Your Own Key (BYOK) と呼ばれます) は、Azure SQL Database Hyperscale ではまだサポートされていませんが、サービス マネージド キーを使用した TDE は完全にサポートされています。 |
 |インテリジェント データベース機能 | [Force Plan] オプションを除き、他のすべての自動チューニング オプションは Hyperscale ではまだサポートされていません。オプションは有効になっているように見えますが、推奨事項やアクションは実行されません。 |
-| データベースの圧縮 | DBCC SHRINKDATABASE または DBCC SHRINKFILE は、現在、Azure SQL Hyperscale データベースではサポートされていません。 |
+| データベースの圧縮 | DBCC SHRINKDATABASE または DBCC SHRINKFILE は、現在、Hyperscale データベースではサポートされていません。 |
+| データベースの整合性チェック | DBCC CHECKDB は現在、Hyperscale データベースではサポートされていません。 Azure SQL Database におけるデータ整合性管理の詳細については、「[Azure SQL Database でのデータ整合性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)」を参照してください。 |
 
 ## <a name="next-steps"></a>次の手順
 

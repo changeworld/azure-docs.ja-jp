@@ -1311,9 +1311,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Average_Total Rx Errors|Total Rx Errors|Count|平均|Average_Total Rx Errors|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Total Tx Errors|Total Tx Errors|Count|平均|Average_Total Tx Errors|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Total Collisions|Total Collisions|Count|平均|Average_Total Collisions|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Avg。 Disk sec/Read|Avg.Disk sec/Read|Count|平均|Average_Avg。 Disk sec/Read|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Avg。 Disk sec/Transfer|Avg.Disk sec/Transfer|Count|平均|Average_Avg。 Disk sec/Transfer|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Avg。 Disk sec/Write|Avg.Disk sec/Write|Count|平均|Average_Avg。 Disk sec/Write|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Avg. Disk sec/Read|Avg.Disk sec/Read|Count|平均|Average_Avg. Disk sec/Read|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Avg. Disk sec/Transfer|Avg.Disk sec/Transfer|Count|平均|Average_Avg. Disk sec/Transfer|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Avg. Disk sec/Write|Avg.Disk sec/Write|Count|平均|Average_Avg. Disk sec/Write|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Physical Disk Bytes/sec|Physical Disk Bytes/sec|Count|平均|Average_Physical Disk Bytes/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Pct Privileged Time|Pct Privileged Time|Count|平均|Average_Pct Privileged Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Pct User Time|Pct User Time|Count|平均|Average_Pct User Time|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
@@ -1334,8 +1334,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Average_Size Stored In Paging Files|Size Stored In Paging Files|Count|平均|Average_Size Stored In Paging Files|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Uptime|Uptime|Count|平均|Average_Uptime|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Users|ユーザー|Count|平均|Average_Users|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Avg。 Disk sec/Read|Avg.Disk sec/Read|Count|平均|Average_Avg。 Disk sec/Read|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
-|Average_Avg。 Disk sec/Write|Avg.Disk sec/Write|Count|平均|Average_Avg。 Disk sec/Write|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Avg. Disk sec/Read|Avg.Disk sec/Read|Count|平均|Average_Avg. Disk sec/Read|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
+|Average_Avg. Disk sec/Write|Avg.Disk sec/Write|Count|平均|Average_Avg. Disk sec/Write|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Current Disk Queue Length|現在のディスク キューの長さ|Count|平均|Average_Current Disk Queue Length|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Disk Reads/sec|Disk Reads/sec|Count|平均|Average_Disk Reads/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|
 |Average_Disk Transfers/sec|Disk Transfers/sec|Count|平均|Average_Disk Transfers/sec|Computer、ObjectName、InstanceName、CounterPath、SourceSystem|

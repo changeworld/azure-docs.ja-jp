@@ -1,5 +1,5 @@
 ---
-title: シングルページ アプリケーション (アプリのコード構成) - Microsoft ID プラットフォーム
+title: シングルページ アプリを構成する - Microsoft ID プラットフォーム | Azure
 description: シングルページ アプリケーション (アプリのコード構成) を構築する方法について説明します
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ec98a62aab0b8d87645f3f58dc28219abe4e4fc
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 111f8d45fced1ed0e9293c874d7a56c64e9fb0e4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766278"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965417"
 ---
 # <a name="single-page-application-code-configuration"></a>シングルページ アプリケーション:コード構成
 

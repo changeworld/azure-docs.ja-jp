@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 99cd9fc1da009660023a246c5210e7f54bdebcfd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f287d3782148ca48a0367fa2a6a9a346a0299684
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177429"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931349"
 ---
 # <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 
@@ -52,7 +52,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
-次の図は、仮想ネットワーク TAP のしくみを示しています。 仮想ネットワークにデプロイされている仮想マシンに接続された[ネットワーク インターフェイス](virtual-network-network-interface.md)に TAP 構成を追加できます。 接続先は、監視対象のネットワーク インターフェイスまたは [ピアリングされた仮想](virtual-network-peering-overview.md)ネットワークと同じ仮想ネットワーク内の仮想ネットワーク IP アドレスです。 仮想ネットワーク TAP 用のコレクター ソリューションは、高可用性のために [Azure 内部ロード バランサー](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts)の背後にデプロイできます。 個々のソリューションのデプロイ オプションを評価するには、[パートナー ソリューション](#virtual-network-tap-partner-solutions)のページを参照してください。
+次の図は、仮想ネットワーク TAP のしくみを示しています。 仮想ネットワークにデプロイされている仮想マシンに接続された[ネットワーク インターフェイス](virtual-network-network-interface.md)に TAP 構成を追加できます。 接続先は、監視対象のネットワーク インターフェイスまたは [ピアリングされた仮想](virtual-network-peering-overview.md)ネットワークと同じ仮想ネットワーク内の仮想ネットワーク IP アドレスです。 仮想ネットワーク TAP 用のコレクター ソリューションは、高可用性のために Azure 内部ロード バランサーの背後にデプロイできます。 個々のソリューションのデプロイ オプションを評価するには、[パートナー ソリューション](#virtual-network-tap-partner-solutions)のページを参照してください。
 
 ![仮想ネットワーク TAP のしくみ](./media/virtual-network-tap/architecture.png)
 

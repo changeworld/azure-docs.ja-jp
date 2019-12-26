@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: d372b94ac0df4cef3c43fab10686e9bf20633bfe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c522af44be51eb89ee9f64bae2dc4e9e7b24123
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034246"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873949"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セットを構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
@@ -39,6 +39,7 @@ Microsoft は、動作保証済み Linux ディストリビューションのパ
 |Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
 |CoreOS |CoreOS |安定版 |latest |はい |
 |OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |preview |
+|Oracle 7.7 |Oracle-Linux |77-ci |7.7.01|preview |
 |RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |はい |
 |RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
     
@@ -47,6 +48,7 @@ Microsoft は、動作保証済み Linux ディストリビューションのパ
 * RHEL 7.6 の cloud init パッケージでは、次のパッケージがサポートされています。*18.2-1.el7_6.2* 
 * RHEL 7.7 (プレビュー) の cloud init パッケージでは、プレビュー パッケージは次のとおりです: *18.5-3.el7*
 * CentOS 7.7 (プレビュー) の cloud init パッケージでは、プレビュー パッケージは次のとおりです: *18.5-3.el7.centos*
+* Oracle 7.7 (プレビュー) の cloud init パッケージでは、プレビュー パッケージは次のとおりです: *18.5-3.0.1.el7*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>cloud-init と Linux エージェント (WALA) の相違点
 WALA は、VM のプロビジョニングと構成および Azure 拡張機能の処理に使われる、Azure プラットフォーム固有のエージェントです。 既存の cloud-init のお客様が現在の cloud-init スクリプトを使用できるよう、Linux エージェントではなく cloud-init を使うように VM 構成タスクの拡張を行っています。  Linux システム構成用の cloud-init スリプトが既にある場合、それを有効にするために**追加の設定は必要ありません**。 

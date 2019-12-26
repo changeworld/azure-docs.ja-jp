@@ -1,29 +1,25 @@
 ---
-title: ページのリロードを回避する (JavaScript 用 Microsoft Authentication Library)
+title: ページの再読み込みを回避する (MSAL.js) | Azure
 titleSuffix: Microsoft identity platform
 description: JavaScript (MSAL.js) 用 Microsoft 認証ライブラリを使用してトークンを自動的に取得、更新するときにページのリロードを回避する方法を説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/29/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29edafdc27a3835653f82ec36d576a4871e66155
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 04d1ef1f76b1b1a807f48f7c79e41ada68b561fc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803105"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916437"
 ---
 # <a name="avoid-page-reloads-when-acquiring-and-renewing-tokens-silently-using-msaljs"></a>MSAL.js を使用してトークンを自動的に取得、更新するときにページのリロードを回避する
 JavaScript (MSAL.js) 用 Microsoft Authentication Library では非表示の `iframe` 要素を使用して、バックグラウンドでトークンが自動的に取得、更新されます。 Azure AD によって、トークン要求で指定された登録済み redirect_uri にトークンが戻されます (既定では、これはアプリのルート ページです)。 応答は 302 なので、結果は `iframe` にロードされる `redirect_uri` に対応する HTML になります。 通常、アプリの `redirect_uri` はルート ページで、これにより、リロードされます。

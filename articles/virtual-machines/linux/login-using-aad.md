@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: a67d3a9fb74b1a4f07fc4995c268bb40a84834f7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cccdb54b89dff7c6a1fc9dac55c63b19d661ab65
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035923"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951311"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
@@ -67,6 +67,19 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 
 
 CLI をローカルにインストールして使用する場合、Azure CLI バージョン 2.0.31 以降を実行していることがこのチュートリアルの要件になります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+
+## <a name="network-requirements"></a>ネットワークの要件
+
+Azure 内の Linux VM に対して Azure AD 認証を有効にするには、VM のネットワーク構成で、TCP ポート 443 を経由した次のエンドポイントへの発信アクセスが確実に許可されているようにする必要があります。
+
+* https://login.microsoftonline.com
+* https://device.login.microsoftonline.com
+* https://pas.windows.net
+* https://management.azure.com
+* https://packages.microsoft.com
+
+> [!NOTE]
+> 現時点では、Azure AD 認証が有効になっている VM に対して Azure ネットワーク セキュリティ グループを構成することはできません。
 
 ## <a name="create-a-linux-virtual-machine"></a>Linux 仮想マシンの作成
 
@@ -193,6 +206,10 @@ Web ブラウザーで認証手続きを完了した直後に、新しいコー�
 - SSH プロンプトに入力したサインイン名が正しいことを確認します。 サインイン名の入力ミスにより、SSH プロンプトに指定したサインイン名と Azure AD へのサインインに使用するアカウントの間で不整合が発生している場合があります。 たとえば、「*azureuser\@contoso.onmicrosoft.com*」ではなく、「*azuresuer\@contoso.onmicrosoft.com*」と入力しました。
 - 複数のユーザー アカウントを使用している場合は、Azure AD にサインインするときに、ブラウザーのウィンドウに別のユーザー アカウントを入力していないことを確認します。
 - Linux は、大文字と小文字を区別するオペレーティング システムです。 'Azureuser@contoso.onmicrosoft.com' と 'azureuser@contoso.onmicrosoft.com' の差により、不一致が発生します。 SSH プロンプトに大文字と小文字を正しく入力して UPN を指定してください。
+
+### <a name="other-limitations"></a>その他の制限事項
+
+入れ子になったグループまたはロールの割り当てによってアクセス権を継承したユーザーは、現在サポートされていません。 ユーザーまたはグループには、[必要なロールの割り当て](#configure-role-assignments-for-the-vm)が直接割り当てられている必要があります。 たとえば、管理グループまたは入れ子になったグループのロールの割り当てを使用しても、ユーザーのサインインを許可する正しいアクセス許可は付与されません。
 
 ## <a name="preview-feedback"></a>プレビューのフィードバック
 

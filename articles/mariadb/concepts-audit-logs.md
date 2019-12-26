@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 64662499b4ee782bbf04e9e706cd659e84c90eec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 9c5f6aa2900570aa00ddbc50ec8be4dbb0d16a34
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773076"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978051"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Azure Database for MariaDB での監査ログ
 
@@ -27,6 +27,9 @@ Azure Database for MariaDB では、ユーザーは監査ログを使用でき�
 調整できるその他のパラメーターは次のとおりです。
 
 - `audit_log_events`: 記録するイベントを制御します。 特定の監査イベントについては、次のを参照してください。
+- `audit_log_include_users`:ログ記録の対象となる MariaDB ユーザー。 このパラメーターの既定値は空で、すべてのユーザーがログに記録されます。 優先順位は、`audit_log_exclude_users` より高くなっています。 パラメーターの最大長は 512 文字です。
+> [!Note]
+> `audit_log_include_users` は、`audit_log_exclude_users` よりも優先順位が高くなっています。 たとえば、`audit_log_include_users` = `demouser` かつ `audit_log_exclude_users` = `demouser`の場合、`audit_log_include_users` の優先度が高いので、ユーザーは監査ログに含まれます。
 - `audit_log_exclude_users`:ログ記録から除外する MariaDB ユーザー。 最大で 4 人のユーザーを指定できます。 パラメーターの最大長は 256 文字です。
 
 | **Event** | **説明** |

@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の SQL クエリ演算子
-description: Azure Cosmos DB の SQL 演算子について学習します。
+description: Azure Cosmos DB でサポートされている等値演算子、比較演算子、論理演算子などの SQL 演算子について説明します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 899355ad7331a3df8cd5d647a573dc15e3a0bb14
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f3efe4bee749f0d3132206ca68a33a60f0e16b81
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003387"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870940"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB の演算子
 

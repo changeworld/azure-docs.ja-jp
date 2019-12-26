@@ -1,5 +1,5 @@
 ---
-title: Web API を呼び出すモバイル アプリ - 概要
+title: Web API を呼び出すモバイル アプリの構築 | Azure
 titleSuffix: Microsoft identity platform
 description: Web API を呼び出すモバイル アプリを構築する方法 (概要) について説明します
 services: active-directory
@@ -17,16 +17,16 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f05470a07bad82a1e51517a787fb98c78f92ce
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: c6ebeed4a7806c013205d01621107ef65655e753
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803747"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965468"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>シナリオ: Web API を呼び出すモバイル アプリケーション
 
-Web API を呼び出すモバイル アプリを構築するために知っておくべきすべてのことについて説明します。
+Web API を呼び出すモバイル アプリを構築する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,7 @@ Web API を呼び出すモバイル アプリを構築するために知って�
 
 ## <a name="getting-started"></a>使用の開始
 
-最初のモバイル アプリケーションを作成する場合は、クイック スタートをお試しください。
+最初のモバイル アプリケーションを作成して、クイック スタートをお試しください。
 
 > [!div class="nextstepaction"]
 > [クイック スタート:Android アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-android.md)

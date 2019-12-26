@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80d356426fe312708d64cc4284dbb1fd925e47c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233328"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849338"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -236,16 +236,16 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 **統合システム ユーザーを作成するには、次の手順に従います。**
 
-1. 管理者アカウントを使用して、Workday テナントにサインインします。 **Workday アプリケーション** で、検索ボックスに「ユーザーの作成」と入力し、 **[Create Integration System User (統合システム ユーザーの作成)]** をクリックします。
+1. 管理者アカウントを使用して Workday テナントにサインインします。 **Workday アプリケーション** で、検索ボックスに「ユーザーの作成」と入力し、 **[Create Integration System User (統合システム ユーザーの作成)]** をクリックします。
 
-    ![ユーザーの作成](./media/workday-inbound-tutorial/wd_isu_01.png "ユーザーの作成")
+   ![ユーザーの作成](./media/workday-inbound-tutorial/wd_isu_01.png "ユーザーの作成")
 2. 新しい統合システム ユーザーのユーザー名とパスワードを指定して、**統合システム ユーザーの作成**を完了します。  
   
-* このユーザーはプログラムを使用してログオンするため、 **[次回のサインイン時に新しいパスワードを要求する]** オプションはオフのままにしておきます。
-* **[セッション タイムアウト (分)]** は既定値の 0 のままにしておきます。これにより、ユーザーのセッションが有効期限前にタイムアウトするのを防ぎます。
-* オプション **[Do Not Allow UI Sessions]\(UI セッションを許可しない)** を選択します。これは、統合システムのパスワードを持つユーザーが Workday にログインできないようにする追加のセキュリティ層を提供するためです。
+   * このユーザーはプログラムを使用してログオンするため、 **[次回のサインイン時に新しいパスワードを要求する]** オプションはオフのままにしておきます。
+   * **[セッション タイムアウト (分)]** は既定値の 0 のままにしておきます。これにより、ユーザーのセッションが有効期限前にタイムアウトするのを防ぎます。
+   * オプション **[Do Not Allow UI Sessions]\(UI セッションを許可しない)** を選択します。これは、統合システムのパスワードを持つユーザーが Workday にログインできないようにする追加のセキュリティ層を提供するためです。
 
-    ![[Create Integration System User (統合システム ユーザーの作成)]](./media/workday-inbound-tutorial/wd_isu_02.png "[Create Integration System User (統合システム ユーザーの作成)]")
+   ![[Create Integration System User (統合システム ユーザーの作成)]](./media/workday-inbound-tutorial/wd_isu_02.png "[Create Integration System User (統合システム ユーザーの作成)]")
 
 ### <a name="creating-an-integration-security-group"></a>統合セキュリティ グループの作成
 
@@ -356,20 +356,44 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 このセクションでは、Workday から、統合の範囲内にある各 Active Directory ドメインへのユーザー アカウントのプロビジョニングの手順について説明します。
 
-* [オンプレミス プロビジョニング エージェントのインストールと構成](#part-1-install-and-configure-on-premises-provisioning-agents)
-* [プロビジョニング コネクタ アプリの追加と Workday への接続の作成](#part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday)
-* [属性マッピングの構成](#part-3-configure-attribute-mappings)
+* [プロビジョニング コネクタ アプリを追加し、プロビジョニング エージェントをダウンロードする](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
+* [オンプレミス プロビジョニング エージェントのインストールと構成](#part-2-install-and-configure-on-premises-provisioning-agents)
+* [Workday と Active Directory への接続を構成する](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)
+* [属性マッピングの構成](#part-4-configure-attribute-mappings)
 * [ユーザー プロビジョニングの有効化と起動](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>パート 1:オンプレミス プロビジョニング エージェントのインストールと構成
+### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>パート 1:プロビジョニング コネクタ アプリを追加し、プロビジョニング エージェントをダウンロードする
 
-オンプレミスの Active Directory にプロビジョニングするには、.NET 4.7.1 以降の Framework と目的の Active Directory ドメインへのネットワーク アクセスを備えたサーバーに、エージェントがインストールされている必要があります。
+**Workday を Active Directory プロビジョニングに構成するには、**
+
+1. <https://portal.azure.com> に移動します
+
+2. 左のナビゲーション バーで、 **[Azure Active Directory]** を選択します
+
+3. **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** の順に選択します。
+
+4. **[アプリケーションの追加]** を選択し、 **[すべて]** のカテゴリを選択します。
+
+5. 「**Workday Provisioning to Active Directory**」を検索し、ギャラリーからそのアプリを追加します。
+
+6. アプリが追加され、アプリの詳細画面が表示されたら、 **[プロビジョニング]** を選択します
+
+7. **[プロビジョニング** **モード]** を **[自動]** に設定します
+
+8. 表示された情報バナーをクリックして、プロビジョニング エージェントをダウンロードします。 
+
+   ![エージェントのダウンロード](./media/workday-inbound-tutorial/pa-download-agent.png "[エージェントのダウンロード] 画面")
+
+
+### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>パート 2:オンプレミス プロビジョニング エージェントのインストールと構成
+
+オンプレミスの Active Directory にプロビジョニングするには、.NET 4.7.1 以降の Framework と目的の Active Directory ドメインへのネットワーク アクセスを備えたサーバーに、プロビジョニング エージェントがインストールされている必要があります。
 
 > [!TIP]
 > [ここ](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)に示した手順に従って、サーバーの .NET Framework のバージョンをチェックできます。
 > サーバーに .NET 4.7.1 以降がインストールされていない場合は、[ここ](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows)からダウンロードできます。  
 
-.NET 4.7.1 以降をデプロイしたら、 **[ここのオンプレミス プロビジョニング エージェント](https://go.microsoft.com/fwlink/?linkid=847801)** をダウンロードして、以下に示す手順に従ってエージェントの構成を完了できます。
+ダウンロードしたエージェント インストーラーをサーバー ホストに転送し、以下の手順に従ってエージェントの構成を完了します。
 
 1. 新しいエージェントをインストールする Windows Server にサインインします。
 
@@ -420,25 +444,12 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
   
    ![サービス](./media/workday-inbound-tutorial/services.png)
 
-### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 2:プロビジョニング コネクタ アプリの追加と Workday への接続の作成
+### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>パート 3:プロビジョニング アプリで Workday と Active Directory への接続を構成する
+この手順では、Azure portal で Workday および Active Directory との接続を確立します。 
 
-**Workday を Active Directory プロビジョニングに構成するには、**
+1. Azure portal で、[パート 1](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent) で作成した Active Directory User Provisioning アプリに戻ります。
 
-1. <https://portal.azure.com> に移動します
-
-2. 左のナビゲーション バーで、 **[Azure Active Directory]** を選択します
-
-3. **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** の順に選択します。
-
-4. **[アプリケーションの追加]** を選択し、 **[すべて]** のカテゴリを選択します。
-
-5. 「**Workday Provisioning to Active Directory**」を検索し、ギャラリーからそのアプリを追加します。
-
-6. アプリが追加され、アプリの詳細画面が表示されたら、 **[プロビジョニング]** を選択します
-
-7. **[プロビジョニング** **モード]** を **[自動]** に設定します
-
-8. 以下のように **[管理者の資格情報]** セクションを完了します。
+1. 以下のように **[管理者の資格情報]** セクションを完了します。
 
    * **管理ユーザー名** - Workday 統合システム アカウントのユーザー名にテナント ドメイン名を追加して入力します。 このようになります。**username\@tenant_name**
 
@@ -465,7 +476,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
    * 資格情報が正常に保存されると、 **[マッピング]** セクションに既定のマッピング **[Synchronize Workday Workers to On Premises Active Directory]\(Workday の社員をオンプレミスの Active Directory に同期する\)** が表示されます
 
-### <a name="part-3-configure-attribute-mappings"></a>パート 3:属性マッピングの構成
+### <a name="part-4-configure-attribute-mappings"></a>パート 4:属性マッピングの構成
 
 このセクションでは、ユーザー データが Workday から Active Directory に移動する方法を構成します。
 
@@ -1181,7 +1192,7 @@ manager 属性は AD の参照属性です。 プロビジョニング サービ
 |--|---|---|---|
 |1.| 次のエラー メッセージを伴うプロビジョニング エージェントのインストール時のエラー:"*Service 'Microsoft Azure AD Connect Provisioning Agent' (AADConnectProvisioningAgent) failed to start.Verify that you have sufficient privileges to start the system. (サービス 'Microsoft Azure AD Connect Provisioning Agent' (AADConnectProvisioningAgent) を開始できませんでした。システムを起動するために十分な特権を持っていることを確認してください。)* " | 通常、このエラーはプロビジョニング エージェントをドメイン コントローラーにインストールしようとして、グループ ポリシーによってサービスが開始されない場合に発生します。  また、以前のバージョンのエージェントが実行されていて、新規インストールを開始する前にアンインストールが完了していない場合にも表示されます。| DC 以外のサーバーにプロビジョニング エージェントをインストールします。 新しいエージェントをインストールする前に、必ず以前のバージョンのエージェントをアンインストールします。|
 |2.| Windows サービス 'Microsoft Azure AD Connect Provisioning Agent' が "*開始中*" の状態で、"*実行中*" の状態に切り替わりません。 | インストールの一環で、エージェント ウィザードによってサーバー上にローカル アカウント (**NT サービス\\AADConnectProvisioningAgent**) が作成されます。これは、サービスの開始に使用される **[ログオン]** アカウントです。 Windows サーバー上のセキュリティ ポリシーにより、ローカル アカウントでサービスを実行できない場合は、このエラーが発生します。 | "*サービス*" コンソールを開きます。 Windows サービスの 'Microsoft Azure AD Connect Provisioning Agent' を右クリックし、[ログオン] タブでサービスを実行するドメイン管理者のアカウントを指定します。 サービスを再起動します。 |
-|手順 3.| "*Active Directory の接続*" 手順で AD ドメインを使用してプロビジョニング エージェントを構成するときに、ウィザードによる AD スキーマの読み込み時間が長くかかり、最終的にタイムアウトします。 | 通常、このエラーは、ファイアウォールの問題のためにウィザードから AD ドメイン コントローラー サーバーに接続できない場合に表示されます。 | "*Active Directory の接続*" ウィザード画面で、AD ドメインの資格情報を入力するときに、"*ドメイン コントローラーの優先順位の選択*" というオプションがあります。 このオプションは、エージェント サーバーと同じサイト内にあるドメイン コントローラーを選択し、通信をブロックするファイアウォール規則がないようにするために使用します。 |
+|3.| "*Active Directory の接続*" 手順で AD ドメインを使用してプロビジョニング エージェントを構成するときに、ウィザードによる AD スキーマの読み込み時間が長くかかり、最終的にタイムアウトします。 | 通常、このエラーは、ファイアウォールの問題のためにウィザードから AD ドメイン コントローラー サーバーに接続できない場合に表示されます。 | "*Active Directory の接続*" ウィザード画面で、AD ドメインの資格情報を入力するときに、"*ドメイン コントローラーの優先順位の選択*" というオプションがあります。 このオプションは、エージェント サーバーと同じサイト内にあるドメイン コントローラーを選択し、通信をブロックするファイアウォール規則がないようにするために使用します。 |
 
 #### <a name="connectivity-errors"></a>接続エラー
 

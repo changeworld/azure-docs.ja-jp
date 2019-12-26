@@ -4,12 +4,12 @@ description: Azure Application Insights を Azure Functions とともに使用�
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 5f7f6c130226080cba635f89280f655498e5db27
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a182ddffd4c1ee4d2e71e7d9e6385df23e4260e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226896"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978085"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -169,11 +169,11 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 ### <a name="log-configuration-in-hostjson"></a>host.json 内のログの構成
 
-[Host.json] ファイルでは、関数アプリから Application Insights に送信するログの量を設定します。 カテゴリごとに、送信する最小のログ レベルを指定します。 2 つの例があり、1 つ目の例は [Functions バージョン 2.x ランタイム](functions-versions.md#version-2x) (.NET Core) を対象としていて、2 つ目の例はバージョン 1.x ランタイム用です。
+[Host.json] ファイルでは、関数アプリから Application Insights に送信するログの量を設定します。 カテゴリごとに、送信する最小のログ レベルを指定します。 2 つの例があり、1 つ目の例は Functions ランタイムの[バージョン 2.x 以降](functions-versions.md#version-2x) (.NET Core を使用) を対象とし、2 つ目の例はバージョン 1.x ランタイム用です。
 
-### <a name="version-2x"></a>バージョン 2.x
+### <a name="version-2x-and-higher"></a>バージョン 2.x 以降
 
-v2.x ランタイムでは、[.NET Core のログ記録フィルター階層](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)が使用されます。 
+バージョン v2. x 以降のバージョンの Functions ランタイムでは、[.NET Core のログ記録フィルター階層](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)が使用されます。 
 
 ```json
 {
@@ -216,7 +216,7 @@ v2.x ランタイムでは、[.NET Core のログ記録フィルター階層](ht
 
 [host.json] に先頭の文字列が同一のカテゴリが複数含まれる場合は、同一の部分がより長いものが最初に一致する。 `Host.Aggregator` 以外のランタイムからのすべてのログを `Error` レベルで記録し、`Host.Aggregator` のログは `Information` レベルで記録するとします。
 
-### <a name="version-2x"></a>バージョン 2.x 
+### <a name="version-2x-and-later"></a>バージョン 2.x 以降
 
 ```json
 {
@@ -298,7 +298,7 @@ v2.x ランタイムでは、[.NET Core のログ記録フィルター階層](ht
 
 Application Insights には、負荷がピークのときに、完了した実行に関してテレメトリ データが生成されすぎないようにする[サンプリング](../azure-monitor/app/sampling.md)機能があります。 Application Insights では、受信実行の割合が指定されたしきい値を超えると、受信した実行の一部がランダムに無視され始めます。 1 秒あたりの最大実行数の既定の設定は 20 (バージョン 1.x では 5) です。 [host.json] でサンプリングを構成できます。  次に例を示します。
 
-### <a name="version-2x"></a>バージョン 2.x 
+### <a name="version-2x-and-later"></a>バージョン 2.x 以降
 
 ```json
 {
@@ -396,7 +396,7 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>カスタム メトリックのログ記録
 
-Functions Runtime の[バージョン 1.x](functions-versions.md#creating-1x-apps) で Node.js 関数を実行すると、`context.log.metric` メソッドを使用して、Application Insights でカスタム メトリックを作成できます。 このメソッドは、バージョン 2.x では現在サポートされていません。 メソッド呼び出しの例を次に示します。
+Functions Runtime の[バージョン 1.x](functions-versions.md#creating-1x-apps) で Node.js 関数を実行すると、`context.log.metric` メソッドを使用して、Application Insights でカスタム メトリックを作成できます。 このメソッドは現在、バージョン 2.x 以降ではサポートされていません。 メソッド呼び出しの例を次に示します。
 
 ```javascript
 context.log.metric("TestMetric", 1234);
@@ -408,9 +408,9 @@ Application Insights 用 Node.js SDK を使用して `trackMetric` を呼び出�
 
 [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) NuGet パッケージを使用して、カスタム テレメトリ データを Application Insights に送信できます。 次の C# の例では、[カスタム テレメトリ API](../azure-monitor/app/api-custom-events-metrics.md) を使用します。 この例は .NET クラス ライブラリ用ですが、Application Insights のコードは C# スクリプト用と同じです。
 
-### <a name="version-2x"></a>バージョン 2.x
+### <a name="version-2x-and-later"></a>バージョン 2.x 以降
 
-バージョン 2.x ランタイムでは、テレメトリを現在の操作と自動的に関連付けるために、Application Insights のより新しい機能が使用されます。 `Id`、`ParentId`、または `Name` フィールドを手動で設定する操作は必要ありません。
+バージョン 2.x 以降のランタイム バージョンでは、テレメトリを現在の操作と自動的に関連付けるために、Application Insights 内のより新しい機能が使用されます。 `Id`、`ParentId`、または `Name` フィールドを手動で設定する操作は必要ありません。
 
 ```cs
 using System;

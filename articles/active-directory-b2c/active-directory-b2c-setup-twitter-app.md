@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C を使用して Twitter アカウントでのサインアップおよびサインインを設定する
+title: Twitter アカウントでのサインアップおよびサインインを設定する
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用するアプリケーションで Twitter アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5cb5c5813bff8c0df5b119ea1cadf4f2e7c1696a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8b316fdb185c8a9c78e1a0c9be5f7d57b809141c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811399"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950444"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Twitter アカウントでのサインアップおよびサインインを設定する
 

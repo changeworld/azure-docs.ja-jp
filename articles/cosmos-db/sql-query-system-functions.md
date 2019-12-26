@@ -1,24 +1,24 @@
 ---
 title: Azure Cosmos DB クエリ言語のシステム関数
-description: Azure Cosmos DB での SQL システム関数について説明します。
+description: Azure Cosmos DB の組み込み SQL システム関数とユーザー定義 SQL システム関数について説明します。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 12/02/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 98a087f02035545b828cfcf11c58d03d02a5e76a
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 6f41adbb726313ef095084d079dc7852736e0c06
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349178"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870532"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>システム関数 (Azure Cosmos DB)
 
  Cosmos DB は、多くの組み込み SQL 関数を提供します。 組み込み関数のカテゴリは次のとおりです。  
   
-|関数グループ|説明|Operations|  
+|関数グループ|説明|操作|  
 |--------------|-----------------|-----------------| 
 |[配列関数](sql-query-array-functions.md)|配列関数は、配列入力値に対して演算を実行し、数値、ブール値、または配列値を返します。 | [ARRAY_CONCAT](sql-query-array-concat.md)、[ARRAY_CONTAINS](sql-query-array-contains.md)、[ARRAY_LENGTH](sql-query-array-length.md)、[ARRAY_SLICE](sql-query-array-slice.md) |
 |[日付と時刻関数](sql-query-date-time-functions.md)|日付と時刻関数では、UTC での現在の日付と時刻を、数値のタイムスタンプ (値はミリ秒単位の Unix エポック) または ISO 8601 形式に準拠した文字列という 2 つの形式で取得できます。 | [GetCurrentDateTime](sql-query-getcurrentdatetime.md)、[GetCurrentTimestamp](sql-query-getcurrenttimestamp.md) |

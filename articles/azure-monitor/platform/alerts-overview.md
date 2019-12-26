@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 01/28/2018
-ms.openlocfilehash: 9796b41d0df091bc6eb23ba525a79da278e00bbd
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b655181f41aeda71364edd061b7c81db23e59990
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802312"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951141"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -108,7 +108,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 | 列 | 説明 |
 |:---|:---|
-| Subscription | アラートを表示する Azure サブスクリプションを選択します。 必要に応じて、すべてのサブスクリプションを選択できます。 このビューには、選択したサブスクリプション内のアクセス権のあるアラートのみが含まれます。 |
+| サブスクリプション | アラートを表示する Azure サブスクリプションを選択します。 必要に応じて、すべてのサブスクリプションを選択できます。 このビューには、選択したサブスクリプション内のアクセス権のあるアラートのみが含まれます。 |
 | Resource group | 1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 |
 | 時間範囲 | このビューには、選択された時間枠内に発生したアラートのみが含まれます。 サポートされる値は、過去 1 時間、過去 24 時間、過去 7 日間、および過去 30 日間です。 |
 
@@ -151,7 +151,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 
 | 列 | 説明 |
 |:---|:---|
-| Subscription | アラートを表示する Azure サブスクリプションを選択します。 必要に応じて、すべてのサブスクリプションを選択できます。 このビューには、選択したサブスクリプション内のアクセス権のあるアラートのみが含まれます。 |
+| サブスクリプション | アラートを表示する Azure サブスクリプションを選択します。 必要に応じて、すべてのサブスクリプションを選択できます。 このビューには、選択したサブスクリプション内のアクセス権のあるアラートのみが含まれます。 |
 | Resource group | 1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 |
 | リソースの種類 | 1 つ以上のリソースの種類を選択します。 このビューには、選択された種類のターゲットを含むアラートのみが含まれます。 この列は、リソース グループを指定した後でのみ使用できます。 |
 | リソース | リソースを選択します。 このビューには、そのリソースをターゲットとして含むアラートのみが含まれます。 この列は、リソースの種類を指定した後でのみ使用できます。 |
@@ -211,6 +211,7 @@ Azure Monitor のメトリック、Application Insights、Log Analytics、およ
 - [アクション グループの詳細](../../azure-monitor/platform/action-groups.md)
 - [Azure でのアラート インスタンスの管理](https://aka.ms/managing-alert-instances)
 - [スマート グループの管理](https://aka.ms/managing-smart-groups)
+- [Azure アラートの価格についての詳細](https://azure.microsoft.com/pricing/details/monitor/)
 
 
 

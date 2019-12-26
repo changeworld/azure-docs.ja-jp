@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 31e45906dfeafcd2af1651347dde9dc6d3c6fb7c
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9cb4f6ec7331a2d0eb03beb2680c882484b69541
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769219"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868492"
 ---
 # <a name="container-security-in-security-center"></a>Security Center のコンテナーのセキュリティ
 
@@ -59,8 +59,7 @@ Security Center の推奨事項の詳細については、[仮想マシンの保
 
 Security Center は、コンテナー化された環境に対するリアルタイムの脅威検出機能を備えており、不審なアクティビティに対してはアラートが生成されます。 ユーザーは、この情報を使用して、迅速にセキュリティの問題を修復し、コンテナーのセキュリティを強化することができます。
 
-脅威は、ホストおよび AKS クラスター レベルで検出されます。 詳細については、[Azure コンテナー サービス](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)に関するページを参照してください。
-
+脅威は、ホストおよび AKS クラスター レベルで検出されます。 詳細については、[Azure コンテナーに対する脅威の検出](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)に関する記事を参照してください。
 
 ## <a name="to-view-the-security-posture-of-your-container-related-resources"></a>コンテナー関連のリソースのセキュリティ体制を確認するには
 1.  Security Center の **[計算とアプリ]** ページを開きます。

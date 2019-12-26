@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: e7114febe85af4acaf94ef7fe64fe47988fd6321
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d26ccd47ada4f1f1fd87f315e05f822bb2463114
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74079265"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976181"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う
 
@@ -45,20 +45,20 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
-- [Azure Machine Learning Studio](https://studio.azureml.net/) アカウント。
+- [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net/) アカウント。
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>天気予報モデルを Web サービスとしてデプロイする
 
 1. [[weather prediction model] \(天気予報モデル) ページ](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1)に移動します。
-1. Microsoft Azure Machine Learning Studio の **[Studio で開く]** をクリックします。
+1. Microsoft Azure Machine Learning Studio (クラシック) の **[Studio で開く]** をクリックします。
    ![Cortana Intelligence ギャラリーで [weather prediction model] \(天気予報モデル) ページを開く](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
 1. **[実行]** をクリックしてモデルの手順を検証します。 この手順の完了までに約 2 分かかります。
-   ![Azure Machine Learning Studio で天気予報モデルを開く](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![Azure Machine Learning Studio (クラシック) で天気予報モデルを開く](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. **[Web サービスの設定]**  >  **[予測 Web サービス]** の順にクリックします。
-   ![Azure Machine Learning Studio に天気予報モデルをデプロイする](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![Azure Machine Learning Studio (クラシック) に天気予報モデルをデプロイする](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. ダイアグラムで、**Web サービスの入力**モジュールを**モデルのスコア付け**モジュールの近くにドラッグします。
 1. **Web サービスの入力**モジュールを**モデルのスコア付け**モジュールに接続します。
-   ![Azure Machine Learning Studio で 2 つのモジュールを接続する](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+   ![Azure Machine Learning Studio (クラシック) で 2 つのモジュールを接続する](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
 1. **[実行]** をクリックしてモデルの手順を検証します。
 1. **[DEPLOY WEB SERVICE] \(Web サービスのデプロイ)** をクリックして、モデルを Web サービスとしてデプロイします。
 1. モデルのダッシュボードで、**要求/応答**用に **Excel 2010 以前のブック**をダウンロードします。

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: f1e014bb14b2b5c1ae924f4371e08aa8bf8698f2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7305976060cb5df01f683b3310e59644d7e45b35
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056473"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975093"
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 
@@ -42,6 +42,21 @@ Azure が P2S VPN 接続を受け入れる前に、ユーザーはまず認証�
 ネイティブ Azure 証明書認証を使用する場合、デバイス上にあるクライアント証明書が、接続するユーザーの認証に使用されます。 クライアント証明書は信頼されたルート証明書から生成され、各クライアント コンピューターにインストールされます。 エンタープライズ ソリューションを使って生成されたルート証明書を使用することも、自己署名証明書を生成することもできます。
 
 クライアント証明書の検証は、P2S VPN 接続が確立される間、VPN ゲートウェイによって実行されます。 検証にはルート証明書が必要なため、そのルート証明書を Azure にアップロードする必要があります。
+
+### <a name="authenticate-using-native-azure-active-directory-authentication"></a>ネイティブ Azure Active Directory 認証を使用した認証
+
+Azure AD 認証では、ユーザーは Azure Active Directory 資格情報を使用して、Azure に接続できます。 ネイティブ Azure AD 認証は、OpenVPN プロトコルと Windows 10 のみでサポートされており、[Azure VPN Client (プレビュー)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) を使用する必要があります。
+
+ネイティブ Azure AD 認証を使用すると、Azure AD の条件付きアクセスに加えて、VPN 用の Multi-Factor Authentication (MFA) 機能を利用できます。
+
+大まかに言えば、Azure AD 認証を構成するには、次の手順を実行する必要があります。
+
+[1.Azure AD テナントを構成する](openvpn-azure-ad-tenant.md)
+
+[2.ゲートウェイでの Azure AD 認証を有効にする](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+
+[3.Azure VPN クライアントをダウンロードして構成する (プレビュー)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Active Directory (AD) ドメイン サーバーを使用した認証
 

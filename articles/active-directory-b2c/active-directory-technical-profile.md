@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C のカスタム ポリシーで Azure Active Directory 技術プロファイルを定義する | Microsoft Docs
+title: カスタム ポリシーで Azure AD 技術プロファイルを定義する
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C のカスタム ポリシーで Azure Active Directory 技術プロファイルを定義します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4383980953147560b9e51e4ccab3032dd8173dd4
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1a839c86a717122778f736f01fea4bdd08da8945
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064621"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949560"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで Azure Active Directory 検証技術プロファイルを定義します。
 
@@ -254,7 +255,7 @@ Azure Active Directory B2C (Azure AD B2C) は、Azure Active Directory ユーザ
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Operation | はい | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 |
+| 操作 | はい | 実行する操作。 指定できる値: `Read`、`Write`、`DeleteClaims`、または `DeleteClaimsPrincipal`。 |
 | RaiseErrorIfClaimsPrincipalDoesNotExist | いいえ | ユーザー オブジェクトがディレクトリに存在しない場合、エラーを発生させます。 指定できる値: `true` または `false`。 |
 | UserMessageIfClaimsPrincipalDoesNotExist | いいえ | エラーが発生する場合 (RaiseErrorIfClaimsPrincipalDoesNotExist 属性の説明を参照)、ユーザー オブジェクトが存在しない場合にユーザーに表示するメッセージを指定します。 値を[ローカライズ](localization.md)することができます。|
 | RaiseErrorIfClaimsPrincipalAlreadyExists | いいえ | ユーザー オブジェクトが既に存在する場合、エラーを発生させます。 指定できる値: `true` または `false`。|

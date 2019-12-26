@@ -1,25 +1,30 @@
 ---
 title: v2 API によって生成される Azure Media Services Video Indexer の出力を調べる
 titleSuffix: Azure Media Services
-description: このトピックでは、v2 API によって生成される Video Indexer の出力を調べます。
+description: このトピックでは、v2 API によって生成される Azure Media Services Video Indexer の出力を調べます。
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: 0a42c2dce3976a1bf83c85644f56f4c1d8abc9c8
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c978fed1675ea80ae9b2f6fb7fbe9a4c84472638
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839535"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978306"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>API によって生成される Video Indexer の出力の詳細
 
 **Get Video Index** API を呼び出して、応答の状態が OK になると、応答コンテンツとして詳細な JSON 出力が表示されます。 JSON コンテンツには、指定されたビデオの分析情報の詳細が含まれています。 分析情報には、トランスクリプト、OCR、顔、トピック、ブロックなどのディメンションが含まれます。ディメンションには、各ディメンションがいつビデオに表示されたかを示す時間の範囲のインスタンスが含まれます。  
+
+1. JSON ファイルを取得するには、[Get Video Index API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) を呼び出します
+1. 特定の成果物にも興味がある場合は、[Get Video Artifact Download URL API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) を呼び出します
+
+    API 呼び出しで、要求される成果物の種類 (OCR、顔、キー フレームなど) を指定します。
 
 [Video Indexer](https://www.videoindexer.ai/) Web サイトのビデオの **[再生]** ボタンを押して、ビデオの要約された分析情報を視覚的に確認することもできます。 詳しくは、「[View and edit video insights](video-indexer-view-edit.md)」(ビデオの分析情報の表示と編集) をご覧ください。
 

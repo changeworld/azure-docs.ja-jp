@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132213"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929004"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python アプリケーション用に Azure Monitor をセットアップする (プレビュー)
 
@@ -61,7 +61,16 @@ python -m pip install opencensus-ext-azure
 
 SDK では 3 つの Azure Monitor エクスポーターを使用して、さまざまな種類のテレメトリ (トレース、メトリック、ログ) を Azure Monitor に送信します。 これらのテレメトリの種類の詳細については、[データ プラットフォームの概要](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform)に関するページを参照してください。 次の手順に従い、3 つのエクスポーターを使用してこれらのテレメトリの種類を送信します。
 
+## <a name="telemetry-type-mappings"></a>テレメトリの種類のマッピング
+
+次に、Azure Monitor に表示されるテレメトリの種類にマップされる OpenCensus のエクスポーターを示します。
+
+![OpenCensus から Azure Monitor へのテレメトリの種類のマッピングを示すスクリーンショット](./media/opencensus-python/0012-telemetry-types.png)
+
 ### <a name="trace"></a>Trace
+
+> [!NOTE]
+> OpenCensus の `Trace` は[分散トレース](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)を表します。 `AzureExporter` によって `requests` および `dependency` テレメトリが Azure Monitor に送信されます。
 
 1. まずいくつかのトレース データをローカルで生成しましょう。 Python IDLE か任意のエディターで、次のコードを入力します。
 
@@ -268,7 +277,7 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
     90
     ```
 
-3. 値の入力はデモとしても有用ですが、最終的にはメトリック データを Azure Monitor に送信するようにします。 前の手順のコードを、次のコード サンプルに基づいて変更します。
+3. 値の入力はデモとしても有用ですが、最終的にはログ データを Azure Monitor に送信するようにします。 前の手順のコードを、次のコード サンプルに基づいて変更します。
 
     ```python
     import logging
@@ -293,9 +302,58 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
         main()
     ```
 
-4. エクスポーターはログ データを Azure Monitor に送信します。 データは `traces` で確認できます。
+4. エクスポーターはログ データを Azure Monitor に送信します。 データは `traces` で確認できます。 
 
-5. トレース コンテキスト データを使用してログを強化する方法の詳細については、OpenCensus Python [ログの統合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation)に関するページを参照してください。
+> [!NOTE]
+> このコンテキストでの `traces` は `Tracing` と同じではありません。 `traces` は、`AzureLogHandler` を利用するときに Azure Monitor に表示されるテレメトリの種類を表します。 `Tracing` は OpenCensus の概念を表し、[分散トレース](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing)に関連します。
+
+5. ログ メッセージの書式を設定するには、組み込みの Python [ログ API](https://docs.python.org/3/library/logging.html#formatter-objects) で `formatters` を使用します。
+
+    ```python
+    import logging
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    
+    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
+    date_format = '%Y-%m-%d %H:%M:%S'
+    formatter = logging.Formatter(format_str, date_format)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    handler = AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
+    
+    def main():
+        while True:
+            valuePrompt()
+    
+    if __name__ == "__main__":
+        main()
+    ```
+
+6. ログにカスタム ディメンションを追加することもできます。 これらは、Azure Monitor に `customDimensions` のキーと値のペアとして表示されます。
+> [!NOTE]
+> この機能を使用するには、ディクショナリを引数としてログに渡す必要があります。その他のデータ構造は無視されます。 文字列の書式設定を維持するには、それらをディクショナリに格納し、引数として渡します。
+
+    ```python
+    import logging
+    
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+    ```
+
+7. トレース コンテキスト データを使用してログを強化する方法の詳細については、OpenCensus Python [ログの統合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation)に関するページを参照してください。
 
 ## <a name="view-your-data-with-queries"></a>クエリを使用してデータを表示する
 

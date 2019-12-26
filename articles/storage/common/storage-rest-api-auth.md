@@ -1,5 +1,6 @@
 ---
-title: 共有キーによる承認を使用して Azure Storage の REST API 操作を呼び出す | Microsoft Docs
+title: 共有キーによる承認を使用して REST API 操作を呼び出す
+titleSuffix: Azure Storage
 description: Azure Storage の REST API と共有キーによる承認を使用して、Blob Storage への要求を行います。
 services: storage
 author: tamram
@@ -9,14 +10,14 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 05f71d4952d5f500a93adbb740739a46e9036ac1
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 13e9abb2a7b79ad9355261832145766e424c3df6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803075"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895176"
 ---
-# <a name="using-the-azure-storage-rest-api"></a>Azure Storage REST API の使用
+# <a name="call-rest-api-operations-with-shared-key-authorization"></a>共有キーによる承認を使用して REST API 操作を呼び出す
 
 この記事では、Authorization ヘッダーを形成する方法を含む、Azure Storage の REST API を呼び出す方法を示します。 REST について何も知らず、REST をどうやって呼び出せばよいかわからない開発者の観点から書かれています。 REST 操作を呼び出す方法を学習した後、その他の Azure Storage の REST 操作を使用するために、この知識を活用できます。
 
@@ -58,9 +59,9 @@ REST API への呼び出しは、クライアントが作成する要求およ�
 
 「[Blob Service REST API](/rest/api/storageservices/Blob-Service-REST-API)」(Blob service REST API) を見ると、Blob Storage に対して実行できるすべての操作がわかります。 ストレージ クライアント ライブラリは REST API のラッパーであり、REST API を直接使わずにストレージに簡単にアクセスできます。 ただし、前述のように、ストレージ クライアント ライブラリではなく REST API を使うことが必要な場合があります。
 
-## <a name="rest-api-reference-list-containers-api"></a>REST API リファレンス: List Containers API
+## <a name="list-containers-operation"></a>コンテナー操作を一覧表示する
 
-REST API リファレンスの [ListContainers](/rest/api/storageservices/List-Containers2) 操作のページを参照してください。 この情報は、いくつかのフィールドが要求および応答のどこから来ているのかを理解する助けとなります。
+[ListContainers](/rest/api/storageservices/List-Containers2) 操作のリファレンスを確認します。 この情報は、いくつかのフィールドが要求および応答のどこから来ているのかを理解する助けとなります。
 
 **要求メソッド**: GET。 この動詞は、要求オブジェクトのプロパティとして指定する HTTP メソッドです。 この動詞の他の値としては、呼び出す API に応じて HEAD、PUT、DELETE などがあります。
 
@@ -132,29 +133,29 @@ using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri)
 `x-ms-date` と `x-ms-version` 用の要求ヘッダーを追加します。 コード内のこの場所では、呼び出しに必要な他の要求ヘッダーも追加します。 この例では、追加ヘッダーはありません。 余分なヘッダーで渡す API の例は、Set Container ACL 操作です。 この API の呼び出しでは、"x-ms-blob-public-access" という名前のヘッダーとアクセス レベルの値を追加します。
 
 ```csharp
-    // Add the request headers for x-ms-date and x-ms-version.
-    DateTime now = DateTime.UtcNow;
-    httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
-    httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
-    // If you need any additional headers, add them here before creating
-    //   the authorization header.
+// Add the request headers for x-ms-date and x-ms-version.
+DateTime now = DateTime.UtcNow;
+httpRequestMessage.Headers.Add("x-ms-date", now.ToString("R", CultureInfo.InvariantCulture));
+httpRequestMessage.Headers.Add("x-ms-version", "2017-07-29");
+// If you need any additional headers, add them here before creating
+//   the authorization header.
 ```
 
 Authorization ヘッダーを作成するメソッドを呼び出し、要求ヘッダーに追加します。 Authorization ヘッダーを作成する方法については後で説明します。 メソッドの名前は GetAuthorizationHeader で、次はそのコード スニペットです。
 
 ```csharp
-    // Get the authorization header and add it.
-    httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetAuthorizationHeader(
-        storageAccountName, storageAccountKey, now, httpRequestMessage);
+// Get the authorization header and add it.
+httpRequestMessage.Headers.Authorization = AzureStorageAuthenticationHelper.GetAuthorizationHeader(
+    storageAccountName, storageAccountKey, now, httpRequestMessage);
 ```
 
 この時点で、`httpRequestMessage` には Authorization ヘッダーが設定された REST 要求が含まれています。
 
-## <a name="call-the-rest-api-with-the-request"></a>要求で REST API を呼び出す
+## <a name="send-the-request"></a>要求を送信する
 
-要求が完成したので、SendAsync を呼び出して REST 要求を送信できます。 SendAsync は、API を呼び出し、戻った応答を取得します。 応答の StatusCode を調べ (200 は正常)、応答を解析します。 この例では、コンテナーの XML リストを取得しています。 GetRESTRequest メソッドを呼び出して要求を作成するコードを確認し、要求を実行してから、コンテナーの一覧の応答を調べてみましょう。
+要求が作成されたので、SendAsync メソッドを呼び出して Azure Storage に送信することができます。 応答状態コードの値が 200 であることを確認します。これは操作が成功したことを意味します。 次に、応答を解析します。 この例では、コンテナーの XML リストを取得しています。 GetRESTRequest メソッドを呼び出して要求を作成するコードを確認し、要求を実行してから、コンテナーの一覧の応答を調べてみましょう。
 
-```csharp 
+```csharp
     // Send the request.
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))

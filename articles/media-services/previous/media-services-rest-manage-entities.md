@@ -1,6 +1,6 @@
 ---
 title: REST による Media Services エンティティの管理 | Microsoft Docs
-description: REST API を使用して Media Services エンティティを管理する方法について説明します。
+description: この記事では、REST API を使用して Media Services エンティティを管理する方法について説明します。
 author: juliako
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ffbf30f2bfdf0a175513a8d2b9182b35c39f6aae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ecbca99a65d99cc3b8d842a7b61d858398a80ff
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761711"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885706"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>REST による Media Services エンティティの管理  
 

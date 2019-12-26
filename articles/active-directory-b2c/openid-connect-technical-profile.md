@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C 内のカスタム ポリシーで OpenID Connect 技術プロファイルを定義する |Microsoft Docs
+title: カスタム ポリシーで OpenID Connect の技術プロファイルを定義する
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 内のカスタム ポリシーで OpenID Connect 技術プロファイルを定義します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0a776c793bab9aee76cf338bc19c560ab700e787
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: fdb925f820cad79fe68e7082f4ed63292a7d9444
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258207"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951090"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OpenID Connect 技術プロファイルを定義する
 

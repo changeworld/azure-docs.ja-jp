@@ -1,28 +1,24 @@
 ---
-title: v1.0 アプリケーションのスコープ (Microsoft Authentication Library) | Azure
+title: v1.0 アプリケーションの MSAL スコープ | Azure
 description: Microsoft Authentication Library (MSAL) を使用した v1.0 アプリケーションのスコープについて説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70a8a5859c7f1e2353b53d01a25a0ca39e0b04dd
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0606376c455733ca90f1bff3d0295cbd1a075637
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532974"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963258"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>v1.0 トークンを受け入れる Web API のスコープ
 
@@ -30,7 +26,7 @@ OAuth 2 アクセス許可は、開発者向け Azure Active Directory (Azure AD
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>v1.0 アプリケーションの特定の OAuth2 アクセス許可へのアクセス権を要求するスコープ
 
-v1.0 アプリケーション (たとえば Azure AD Graph。https: \//graph.windows.net) の特定のスコープのためにトークンを取得するには、目的のリソース ID とそのリソースの目的の OAuth2 アクセス許可を連結して、スコープを作成する必要はありません。
+v1.0 アプリケーションの特定のスコープのためにトークンを取得する場合 (Azure AD グラフ、 https://graph.windows.net) など)、目的のリソース ID とそのリソースの目的の OAuth2 アクセス許可を連結して、スコープを作成します。
 
 たとえば、ユーザーに代わって、アプリ ID URI が `ResourceId` である v1.0 Web API にアクセスするには次のように指定します。
 

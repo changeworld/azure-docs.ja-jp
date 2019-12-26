@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos DB の SQL クエリでのスカラー式
-description: Azure Cosmos DB のスカラー式の SQL 構文について説明します。
+description: Azure Cosmos DB のスカラー式の SQL 構文について説明します。 この記事では、演算子を使用して、スカラー式を複雑な式と組み合わせる方法についても説明します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
-ms.openlocfilehash: c35ad65a584f8ee95142e9bc85a58b5b6cd99744
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003534"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870736"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Azure Cosmos DB の SQL クエリでのスカラー式
 

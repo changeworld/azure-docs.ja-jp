@@ -1,5 +1,5 @@
 ---
-title: Azure Application Insights のカスタム メトリックと診断を使用した Live Metrics Stream | Microsoft Docs
+title: Live Metrics Stream による診断 - Azure Application Insights
 description: カスタム メトリックを使用して Web アプリをリアルタイムで監視し、エラー、トレース、イベントのライブ フィードを使用して問題を診断します。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 69aaa61bb0be9a5f07de85ff4ef81b28a86aefaa
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ac2aabe12697336377df808e02e283dde0e4da16
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575614"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927222"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
@@ -22,7 +22,7 @@ ms.locfileid: "73575614"
 Live Metrics Stream を使用すると、次のことが可能になります。
 
 * 修正がリリースされている間に、パフォーマンスと失敗の数を確認して、修正を検証します。
-* テスト負荷の影響を監視し、問題をライブで診断します。 
+* テスト負荷の影響を監視し、問題をライブで診断します。
 * 監視するメトリックを選択してフィルタリングすることにより、特定のテスト セッションに焦点を当てたり、既知の問題を除外したりできます。
 * 発生時に例外トレースを取得します。
 * フィルターを試して、最も関連性の高い KPI を検索します。

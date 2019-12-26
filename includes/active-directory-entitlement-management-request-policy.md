@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/11/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 4a09389cfd9a5e61c1d73440545c76df7c9eadb2
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: d89240467d5ea5172d04c8eb187fe85d1b702723
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566303"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980780"
 ---
 ## <a name="for-users-in-your-directory"></a>ディレクトリ内のユーザーの場合
 
@@ -66,6 +66,7 @@ ms.locfileid: "74566303"
     | --- | --- |
     | **Specific connected organizations (特定の接続済み組織)** | 管理者が以前に追加した組織の一覧から選択する場合は、このオプションを選択します。 選択された組織のすべてのユーザーは、このアクセス パッケージを要求できます。 |
     | **All connected organizations (すべての接続済み組織)** | すべての接続済み組織のすべてのユーザーがこのアクセス パッケージを要求できるようにする場合は、このオプションを選択します。 |
+    | **すべてのユーザー (すべての接続済み組織 + 新しい外部ユーザー)** | このオプションは、すべての接続済み組織のすべてのユーザーがこのアクセス パッケージを要求できる場合に選択し、しかも新しい外部ユーザーに対して B2B 許可リストまたは拒否リストの設定が優先されます。 |
 
     接続されている組織とは、ご自身と関係のある外部 Azure AD ディレクトリまたはドメインです。
 

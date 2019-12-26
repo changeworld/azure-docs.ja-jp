@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C 内のカスタム ポリシーで OAuth2 技術プロファイルを定義する | Microsoft Docs
+title: カスタム ポリシーで OAuth2 技術プロファイルを定義する
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C 内のカスタム ポリシーで OAuth2 技術プロファイルを定義します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 63500c057b5c9f497e59589286a852a4394059ec
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 33bad4982d54eb18e91be28511fb9137223f4a91
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063984"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950971"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで OAuth2 技術プロファイルを定義する
 

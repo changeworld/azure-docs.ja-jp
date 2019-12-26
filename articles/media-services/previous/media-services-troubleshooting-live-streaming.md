@@ -1,6 +1,6 @@
 ---
 title: ライブ ストリーミングのトラブルシューティング ガイド | Microsoft Docs
-description: このトピックでは、ライブ ストリーミングに関する問題のトラブルシューティング方法について推奨事項を説明します。
+description: この記事では、Azure Media Services のライブ ストリーミングの問題のトラブルシューティング方法に関する推奨事項を説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f502e3228274840d23b9f52512280fc0d9f0553b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b00df5e8176aaad86be5cf3ae4e04c736f36cf5b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60544696"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885604"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>ライブ ストリーミングのトラブルシューティング ガイド  
 

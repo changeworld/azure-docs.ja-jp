@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: 5f138314fd536d0264f8d40e1ac78da954c19e74
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: afe2ac60d7b945dd1bb3b8841ae0a7605865f29f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030692"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893384"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -30,7 +30,7 @@ ms.locfileid: "74030692"
 | [`TrackMetric`](#trackmetric) |キューの長さなど、特定のイベントに関連しないパフォーマンスを測定します。 |
 | [`TrackException`](#trackexception) |診断用に例外を記録します。 他のイベントとの関連で例外の発生箇所を追跡し、スタック トレースを調べます。 |
 | [`TrackRequest`](#trackrequest) |パフォーマンス分析用にサーバー要求の頻度と期間を記録します。 |
-| [`TrackTrace`](#tracktrace) |メッセージを記録し、診断に利用します。 サードパーティのログをキャプチャすることもできます。 |
+| [`TrackTrace`](#tracktrace) |リソース診断ログ メッセージ。 サードパーティのログをキャプチャすることもできます。 |
 | [`TrackDependency`](#trackdependency) |アプリが依存する外部コンポーネントへの呼び出しの実行時間と頻度を記録します。 |
 
 これらのテレメトリの呼び出しのほとんどに [プロパティとメトリックをアタッチ](#properties) できます。

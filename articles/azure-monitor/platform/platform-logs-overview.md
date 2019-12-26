@@ -1,6 +1,6 @@
 ---
 title: Azure プラットフォーム ログの概要 | Microsoft Docs
-description: Azure リソースの操作に関する高頻度の豊富なデータを提供する、Azure の診断ログの概要。
+description: Azure リソースの操作に関する高頻度の豊富なデータを提供する、Azure Monitor のログの概要。
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: c1602b9beb5e667caf1688901c7ae4e67e5f5839
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 480c028f11de9a7c44168b217ad3553d721d01e1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263042"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894562"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Azure プラットフォーム ログの概要
 プラットフォーム ログでは、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 これらは自動的に生成されますが、特定のプラットフォーム ログを保持するための 1 つ以上の送信先に転送するように構成する必要があります。 この記事では、提供される情報の内容や収集と分析のための構成方法など、プラットフォーム ログの概要について説明します。
@@ -37,7 +37,7 @@ Azure portal で、[アクティビティ ログ](activity-log-view.md)と [Azur
 ## <a name="destinations"></a>Destinations
 監視要件に応じて、次の表に示す 1 つ以上の送信先にプラットフォーム ログを送信できます。 
 
-| Destination | シナリオ | 参照 |
+| 宛先 | シナリオ | 参照 |
 |:---|:---|:---|:---|
 | Log Analytics ワークスペース | 他の監視データと共にログを分析し、ログ クエリやアラートなどの Azure Monitor 機能を活用します。 | [リソース ログ](resource-logs-collect-storage.md)<br>[アクティビティ ログ](activity-log-collect.md)<br>[Azure Active Directory ログ](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
 | Azure Storage | 監査、静的分析、バックアップのためにログをアーカイブします。 |[リソース ログ](archive-diagnostic-logs.md)<br>[アクティビティ ログ](activity-log-export.md)<br>[Azure Active Directory ログ](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |

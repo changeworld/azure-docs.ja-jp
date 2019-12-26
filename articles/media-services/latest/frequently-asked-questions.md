@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 6e52a51c82529a98ef679dd747b9c8b7d177b660
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: c9da29ad288811bbed225fd906f2a7eb1fd9edf7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338831"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977728"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
 
@@ -118,6 +118,9 @@ ASP.NET のプレーヤー アプリケーションはベスト プラクティ�
 
 * STS は、ライセンス サーバー ファームによって許容可能で検証できるトークンを発行する必要があります。 たとえば、Axinom によって提供される Widevine ライセンス サーバーには、権利メッセージを含む特定の JWT が必要です。 そのため、STS でそのような JWT を発行する必要があります。 
 * Media Services でライセンス配信サービスを構成する必要はもうありません。 必要なのは、ContentKeyPolicies を構成するときに、ライセンス取得 URL を (PlayReady、Widevine、FairPlay に) 提供することです。
+
+> [!NOTE]
+> Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
 
 ## <a name="media-services-v2-vs-v3"></a>Media Services v2 対 v3 
 

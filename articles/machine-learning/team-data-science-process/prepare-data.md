@@ -1,5 +1,5 @@
 ---
-title: Azure Machine Learning 用にデータをクリーニングして準備する - Team Data Science Process
+title: ML Studio (クラシック) 用のデータ準備 - Team Data Science Process
 description: データの前処理とクリーニングを行って、機械学習に効果的に使用できるように準備します。
 services: machine-learning
 author: marktab
@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 2b3ec3352d6e1939b195bbba87b8a824404346ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d0754f7ac85976b5ef307bf1266d26a9380ab1c6
+ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044602"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74936039"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>機械学習を強化するためのデータを準備するタスク
 データの前処理とクリーニングは、通常は、機械学習でデータセットを効果的に使用する前に行う必要がある重要なタスクです。 未加工のデータは、多くの場合、ノイズが多く、信頼性が低く、値が欠落している可能性もあります。 このようなデータを使用してモデリングを行うと、誤解を招く結果が生成されることがあります。 これらのタスクは、Team Data Science Process (TDSP) の一部です。通常、必要な前処理の検出と計画に使用されるデータセットの初期の探察の後に行われます。 TDSP プロセスの詳細については、「[Team Data Science Process](overview.md)」の手順を参照してください。
 
 前処理とクリーニングのタスクは、データ探索タスクと同様に、データの格納場所と形式に応じて、多様な環境 (SQL、Hive、Azure Machine Learning Studio など)、多様なツール、多様な言語 (R、Python など) で実行できます。 TDSP には反復的な性質があるので、プロセスのワークフロー内のさまざまな手順でこれらのタスクを実行できます。
 
-この記事では、多様なデータ処理の概念と、データを Azure Machine Learning に取り込む前または後に実行できるさまざまなタスクを紹介します。
+この記事では、多様なデータ処理の概念と、データを Azure ML Studio (クラシック) に取り込む前または後に実行できるさまざまなタスクを紹介します。
 
-Azure Machine Learning Studio 内で実行されるデータ探索と前処理の例については、 [Azure Machine Learning Studio でのデータの前処理](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) に関するビデオをご覧ください。
+Azure ML Studio (クラシック) 内で実行されるデータ探索と前処理の例については、 [データの前処理](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)に関するビデオをご覧ください。
 
 ## <a name="why-pre-process-and-clean-data"></a>なぜデータの前処理とクリーニングを行うのか?
 実世界のデータはさまざまなソースやプロセスから収集されるため、不規則なデータや破損されたデータが含まれていて、データセットの品質が損なわれることがあります。 よく発生するデータ品質の問題には、次のようなものがあります。
@@ -51,7 +51,7 @@ Azure Machine Learning Studio 内で実行されるデータ探索と前処理�
 
 データに関する問題が見つかったら、多くの場合、次のような**処理ステップ**が必要になります。欠落値のクリーニング、データの正規化、データの離散化、データの配置に影響する可能性がある埋め込み文字を削除/置換するテキスト処理、共通のフィールドにデータ型が混在している場合の処理、その他。
 
-**Azure Machine Learning は、形式の整った表形式のデータを取り込みます**。  データが既に表形式である場合は、Machine Learning Studio で Azure Machine Learning を使用してデータの前処理を直接実行できます。  データが表形式でない場合は (たとえば、XML)、データを表形式に変換するための解析が必要になることがあります。  
+**Azure Machine Learning は、形式の整った表形式のデータを取り込みます**。  データが既に表形式である場合は、データの前処理を Machine Learning 内で Azure ML Studio (クラシック) を使用して直接実行できます。  データが表形式でない場合は (たとえば、XML)、データを表形式に変換するための解析が必要になることがあります。  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>データの前処理の主要なタスクにはどのようもなのがあるか?
 * **データのクリーニング**:欠落値を入力し、ノイズ データや外れ値を検出して削除します。

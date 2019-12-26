@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C で顧客のサインアップ時のメール検証を無効にする
+title: 顧客のサインアップ時のメール検証を無効にする
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C で顧客のサインアップ時のメール検証を無効にする方法について説明します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 9a7adc04991dd4a472bdaf1aa47aacaf6cdeb190
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c5b3598e33dac131c8881248a5f4b740a6302e20
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256923"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948149"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で顧客のサインアップ時のメール検証を無効にする
 

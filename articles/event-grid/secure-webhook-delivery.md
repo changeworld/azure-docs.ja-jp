@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 9ee1dd74384725b3fffbfea7144c3a536b50c531
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 074378668b0516936e11968ea8c800d3daa667bb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174228"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931551"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Azure Active Directory で保護されたエンドポイントにイベントを発行する
 
@@ -22,7 +22,7 @@ ms.locfileid: "74174228"
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
-## <a name="create-and-azure-ad-application"></a>Azure AD アプリケーションの作成
+## <a name="create-an-azure-ad-application"></a>Azure AD アプリケーションを作成する
 
 まず、保護された エンドポイント用の Azure AD アプリケーションを作成します。 [https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview ) をご覧ください。
     - デーモン アプリで呼び出されるよう、保護された API を構成します。

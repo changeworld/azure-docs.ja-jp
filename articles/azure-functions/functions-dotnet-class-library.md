@@ -3,12 +3,12 @@ title: Azure Functions C# developer reference (Azure Functions C# 開発者向�
 description: C# を使用して Azure Functions を開発する方法について説明します。
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 9ecaff438eb30e6a05a7e744e17d2d713eef21cd
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f412e5ea358fe7b97476802f432616c37b05dbd9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665578"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975484"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -25,7 +25,15 @@ Azure Functions では、C# および C# スクリプト プログラミング�
 
 ## <a name="supported-versions"></a>サポートされているバージョン
 
-Azure Functions 2.x ランタイムでは、.NET Core 2.2 が使用されます。 関数のコードでは、Visual Studio プロジェクトの設定を更新することにより、.NET Core 2.2 API を使用できます。 .NET Core 2.2 をインストールしていない顧客に悪影響を及ぼさないように、関数テンプレートの既定は .NET Core 2.2 ではありません。
+Functions ランタイムの各バージョンは、.NET の特定のバージョンと動作します。 次の表は、プロジェクト内の特定のバージョンの Functions と共に使用できる最高レベルの .NET Core と .NET Framework を示しています。 
+
+| Functions ランタイムのバージョン | 最大の .NET バージョン |
+| ---- | ---- |
+| Functions 3.x | .NET Core 3.1 |
+| Functions 2.x | .NET Core 2.2 |
+| Functions 1.x | .NET Framework 4.6 |
+
+詳細については、「[Azure Functions ランタイム バージョンの概要](functions-versions.md)」を参照してください
 
 ## <a name="functions-class-library-project"></a>関数クラス ライブラリ プロジェクト
 
@@ -49,7 +57,7 @@ Visual Studio では、**Azure Functions** プロジェクト テンプレート
 このディレクトリは、Azure 上で関数アプリにデプロイされるディレクトリです。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は、[NuGet パッケージとしてプロジェクトに追加](./functions-bindings-register.md#vs)されます。
 
 > [!IMPORTANT]
-> ビルド処理では、関数ごとに *function.json* ファイルが作成されます。 この *function.json* ファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 関数を無効にする方法については、[関数を無効にする方法](disable-function.md#functions-2x---c-class-libraries)に関するページをご覧ください。
+> ビルド処理では、関数ごとに *function.json* ファイルが作成されます。 この *function.json* ファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 関数を無効にする方法については、[関数を無効にする方法](disable-function.md)に関するページをご覧ください。
 
 
 ## <a name="methods-recognized-as-functions"></a>関数として認識されるメソッド

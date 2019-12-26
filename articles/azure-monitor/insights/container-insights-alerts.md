@@ -1,20 +1,21 @@
 ---
-title: コンテナーに対する Azure Monitor を使用してパフォーマンス アラートを作成する | Microsoft Docs
-description: この記事では、コンテナーに対する Azure Monitor を使用して、メモリおよび CPU の使用率に対するログ クエリに基づいてカスタム アラートを作成する方法について説明します。
+title: コンテナー用 Azure Monitor におけるパフォーマンス アラートを作成する | Microsoft Docs
+description: この記事では、コンテナー用 Azure Monitor からのメモリおよび CPU の使用率に対するログ クエリに基づいてカスタム アラートを作成する方法について説明します。
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: dd92f5aedd1fbc51531730e6a7826322570cd1b1
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 66baa3095744c8b486430d587b992ba507d87733
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195017"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841627"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor でパフォーマンスの問題に関するアラートを設定する方法
+
 コンテナーに対する Azure Monitor は、Azure Container Instances にデプロイされているか、Azure Kubernetes Service (AKS) でホストされているマネージド Kubernetes クラスターにデプロイされている、コンテナー ワークロードのパフォーマンスを監視します。
 
 この記事では、以下の状況のアラートを有効にする方法について説明します。
@@ -30,6 +31,7 @@ ms.locfileid: "74195017"
 Azure Monitor のアラートに詳しくない場合は、事前に「[Microsoft Azure のアラートの概要](../platform/alerts-overview.md)」を参照してください。 ログ クエリを使用したアラートの詳細については、「[Azure Monitor でのログ アラート](../platform/alerts-unified-log.md)」を参照してください。 メトリック アラートの詳細については、[Azure Monitor でのメトリック アラート](../platform/alerts-metric-overview.md)に関するページを参照してください。
 
 ## <a name="resource-utilization-log-search-queries"></a>リソース使用率のログ検索クエリ
+
 このセクションのクエリでは、各アラート シナリオがサポートされています。 それらは、この記事の[アラートの作成](#create-an-alert-rule)のセクションの手順 7 で使用します。
 
 次のクエリでは、平均 CPU 使用率を、メンバー ノードの 1 分ごとの CPU 使用率の平均として算出します。  
@@ -278,7 +280,8 @@ InsightsMetrics
 ```
 
 ## <a name="create-an-alert-rule"></a>アラート ルールを作成する
-前述のログ検索ルールのいずれかを使用して、Azure Monitor でログ アラートを作成するには、次の手順に従います。  
+
+前述のログ検索ルールのいずれかを使用して、Azure Monitor でログ アラートを作成するには、次の手順に従います。 ARM テンプレートを使用して作成するには、「[Azure リソース テンプレートを使用したサンプル ログ アラートの作成](../platform/alerts-log.md#sample-log-alert-creation-using-azure-resource-template)」のセクションを参照してください。
 
 >[!NOTE]
 >コンテナー リソースの使用率に関するアラート ルールを作成する次の手順では、「[ログ アラートの API の基本設定を切り替える](../platform/alerts-log-api-switch.md)」の説明に従って、新しいログ アラート API に切り替える必要があります。

@@ -1,6 +1,6 @@
 ---
 title: Media Services Operations REST API の概要 | Microsoft Docs
-description: Media Services REST API の概要
+description: "\"Media Services Operations REST\" API は、Media Services アカウントで、ジョブ、アセット、ライブ チャンネル、およびその他のリソースを作成するときに使用されます。 この記事では、Azure Media Services v2 REST API の概要を説明します。"
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 29b995d722cd304cc85580ac4f2f38a0b0d9cecd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014847"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895811"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要 
 
@@ -58,7 +58,7 @@ REST を使用するときには、次の考慮事項が適用されます。
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 要求ヘッダー
 Media Services に対して行うそれぞれの呼び出しについて、要求に含める必要がある必須のヘッダーのセットと、含める可能性がある省略可能なヘッダーのセットがあります。 以下の表に、必須ヘッダーの一覧を示します。
 
-| ヘッダー | Type | 値 |
+| ヘッダー | 種類 | 値 |
 | --- | --- | --- |
 | Authorization |ベアラ |ベアラは、唯一許容される承認のメカニズムです。 値には、Azure Active Directory によって提供されるアクセス トークンを含める必要もあります。 |
 | x-ms-version |Decimal |2.17 (または最新バージョン)|
@@ -72,7 +72,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 
 省略可能なヘッダーのセットを次に示します。
 
-| ヘッダー | Type | 値 |
+| ヘッダー | 種類 | 値 |
 | --- | --- | --- |
 | Date |RFC 1123 の日付 |要求のタイムスタンプ |
 | Accept |Content type |次のような応答に対する要求のコンテンツの種類:<p> \- application/json;odata=verbose<p> - application/atom+xml<p> 応答には、BLOB フェッチのように、さまざまなコンテンツの種類があります。正常な応答にはペイロードなどの BLOB ストリームが含まれます。 |
@@ -86,7 +86,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 応答ヘッダー
 要求したリソースと実行を意図した操作によって返されるヘッダーのセットを次に示します。
 
-| ヘッダー | Type | 値 |
+| ヘッダー | 種類 | 値 |
 | --- | --- | --- |
 | request-id |string |現在の操作、生成されたサービスのための一意の識別子。 |
 | client-request-id |string |元の要求の呼び出し元によって指定された識別子 (存在する場合)。 |

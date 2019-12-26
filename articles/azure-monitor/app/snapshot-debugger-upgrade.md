@@ -1,6 +1,6 @@
 ---
-title: .NET アプリ向けの Azure Application Insights スナップショット デバッガーのアップグレード | Microsoft Docs
-description: Azure App Services で、または Nuget パッケージを使用して、スナップショット デバッガーを最新バージョンにアップグレードする方法
+title: Azure Application Insights スナップショット デバッガーをアップグレードする
+description: .NET アプリ向けの Azure App Services で、または Nuget パッケージを使用して、スナップショット デバッガーを最新バージョンにアップグレードする方法
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
@@ -8,12 +8,12 @@ author: pharring
 ms.author: pharring
 ms.date: 03/28/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 51642dde3de16f2bed3ca247e573237effb30917
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: d246fb36cc56a90faaf00c5b47ba69580a9c8a5d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73935991"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927187"
 ---
 # <a name="upgrading-the-snapshot-debugger"></a>スナップショット デバッガーのアップグレード
 

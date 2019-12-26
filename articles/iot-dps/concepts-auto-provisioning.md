@@ -1,6 +1,6 @@
 ---
 title: IoT Hub Device Provisioning Service - 自動プロビジョニングの概念
-description: この記事では、IoT Device Provisioning Service、IoT Hub、およびクライアント SDK を使用した、デバイスの自動プロビジョニングのフェーズの概要について説明します。
+description: この記事では、IoT Device Provisioning Service (DPS)、IoT Hub、およびクライアント SDK を使用した、デバイスの自動プロビジョニングのフェーズの概要について説明します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0df4eb664accd828c47d834fb0014d0d60f57458
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746007"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975331"
 ---
 # <a name="auto-provisioning-concepts"></a>自動プロビジョニングの概念
 
@@ -47,7 +47,7 @@ Azure IoT 自動プロビジョニングは、次の 3 つのフェーズに分�
 
 一連のクイック スタートが左側の目次に用意されており、ハンズオン エクスペリエンスによる自動プロビジョニングの説明に役立ちます。 学習プロセスを簡易にする目的で、物理デバイスの加入および登録をシミュレートするために、ソフトウェアが使用されます。 一部のクイック スタートでは、クイック スタートのシミュレーションとしての性質のために、複数の役割に対する操作を、存在しない役割に対する操作も含めて、実行する必要があります。
 
-| Role | Operation | 説明 |
+| Role | 操作 | 説明 |
 |------| --------- | ------------|
 | Manufacturer | ID と登録 URL をエンコードする | 使用される構成証明メカニズムに基づいて、製造元は、デバイスの ID 情報と Device Provisioning Service の登録 URL をエンコードします。<br><br>**クイック スタート**: デバイスがシミュレートされるため、製造元の役割はありません。 この情報の取得方法の詳細については、開発者の役割を参照してください。この情報は、サンプル登録アプリケーションのコーディングで使用されます。 |
 | | デバイス ID を指定する | 製造元は、デバイス ID 情報の作成者として、情報をオペレーター (または指定されたエージェント) に通知するか、API を通じて Device Provisioning Service への加入操作を直接行う責任があります。<br><br>**クイック スタート**: デバイスがシミュレートされるため、製造元の役割はありません。 デバイス ID を取得する方法の詳細については、オペレーターの役割を参照してください。デバイス ID は、シミュレートされているデバイスを Device Provisioning Service インスタンスに加入させるために使用されます。 |
@@ -106,7 +106,7 @@ Azure IoT 自動プロビジョニングは、次の 3 つのフェーズに分�
 |  | シミュレートされたデバイスの構成証明メカニズム | クイック スタート SDK/言語 |  |
 |--|--|--|--|
 |  | トラステッド プラットフォーム モジュール (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | X.509 証明書 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+|  | X.509 証明書 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.JS](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
 
 
 

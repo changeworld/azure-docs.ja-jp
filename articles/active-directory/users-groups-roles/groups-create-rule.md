@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e8ce4f2fbdffc46d18a5f94496e9433c01a65fb
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027243"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900956"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>動的グループの作成と状態チェックを行う
 
@@ -47,10 +47,10 @@ Azure AD には、重要なルールをすばやく作成したり更新した�
 ## <a name="to-create-a-group-membership-rule"></a>グループ メンバーシップ ルールを作成するには
 
 1. 全体管理者、Intune 管理者、またはテナントのユーザー管理者ロールであるアカウントを使用して、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[グループ]** を選びます。
+1. **[グループ]** を検索して選択します。
 1. **[すべてグループ]** を選び、 **[新しいグループ]** を選びます。
 
-   ![新しいグループを追加するコマンドを選択する](./media/groups-create-rule/new-group-creation.png)
+   ![新しいグループを追加するコマンドを選択する](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 
 1. **[グループ]** ページで、新しいグループの名前と説明を入力します。 ユーザーまたはデバイスのいずれかに対して **[メンバーシップの種類]** を選択し、 **[動的クエリの追加]** を選択します。 ルール ビルダーでは、最大で 5 つの式がサポートされます。 5 つを超える式を追加するには、テキスト ボックスを使用する必要があります。
 

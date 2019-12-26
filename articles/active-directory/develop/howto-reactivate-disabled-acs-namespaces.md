@@ -1,27 +1,24 @@
 ---
-title: 無効化された Azure Access Control Service (ACS) 名前空間を再度有効化する方法
-description: Azure Access Control Service (ACS) 名前空間を見つけて有効化し、2019 年 2 月 4 日まで有効化状態の延長を要請する方法について説明します。
+title: 無効化された Azure Access Control Service (ACS) 名前空間を再アクティブ化する
+description: Azure Access Control Service (ACS) 名前空間を見つけて有効化し、2019 年 2 月 4 日まで有効化状態の延長を要求します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cb17109d53c6e08c8607959207e367086032f6d
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 9cc038e67e5528a52b0b98ea1698da07e8120242
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482703"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966947"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>方法:無効化された Access Control Service 名前空間を再アクティブ化する
 

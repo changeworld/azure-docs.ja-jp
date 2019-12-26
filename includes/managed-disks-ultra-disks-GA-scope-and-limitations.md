@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/18/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: df488c2a3033015175943f7d092beaaa41e34046
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b819264895e35c6ef4fe9dc5263444dcac17eaa2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260792"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935767"
 ---
 現時点では、Ultra Disk には次のような追加の制限があります。
 
@@ -32,8 +32,8 @@ ms.locfileid: "74260792"
     - FSv2
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
-- Ultra Disk がサポートされているすべてのリージョンで、すべての VM サイズを使用できるわけではありません。
-- データ ディスクとしてのみ使用可能であり、4k 物理セクター サイズのみをサポートしています  
+- Ultra Disk がサポートされているすべてのリージョンで、すべての VM サイズを使用できるわけではありません
+- データ ディスクとしてのみ使用可能であり、4k 物理セクター サイズのみをサポートしています。 Ultra Disk の 4K ネイティブ セクター サイズのために、Ultra Disk と互換性のないアプリケーションがいくつかあります。 1 つの例が、Oracle Database です。この場合、Ultra Disk をサポートするには、リリース 12.2 以降が必要です。  
 - 空のディスクとしてのみ作成できます  
 - ディスク スナップショット、VM イメージ、可用性セット、Azure Disk Encryption はまだサポートされていません
 - Azure Backup または Azure Site Recovery との統合はまだサポートされていません。

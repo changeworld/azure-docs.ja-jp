@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor ブックとテキスト パラメーターを使用した対話型レポートの作成 | Microsoft Docs
+title: Azure Monitor ブックのテキスト パラメーター
 description: 作成済みのブックやパラメーター化されたカスタム ブックを使用して複雑なレポート作成を簡素化します。 ブックのテキスト パラメーターの詳細について学習します。
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: ee3e24444b87c461841b591176774d4e945e4fcc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3b7affb9c7d7be790d4279c1db8174a5dd3b2c2a
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164205"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872776"
 ---
 # <a name="workbook-text-parameters"></a>ブックのテキスト パラメーター
 
@@ -27,9 +27,9 @@ ms.locfileid: "73164205"
 1. 編集モードの空白のブックを使用して開始します。
 2. ブック内のリンクから _[Add parameters]\(パラメーターの追加\)_ を選択します。
 3. 青い _[パラメーターの追加]_ ボタンをクリックします。
-4. ポップアップ表示される新しいパラメーター ペインで入力を行います。
+4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `SlowRequestThreshold` (パラメーター名: {2})
-    2. [パラメーターの種類]\: [テキスト]
+    2. [パラメーターの種類]\: [`Text`ドロップ ダウン]
     3. [必須ですか?]\: オン
     4. [クエリから既定値を取得します]\: オフ
 5. ツール バーの [保存] を選択して、パラメーターを作成します。
@@ -65,9 +65,9 @@ ms.locfileid: "73164205"
 1. 編集モードの空白のブックを使用して開始します。
 2. ブック内のリンクから _[Add parameters]\(パラメーターの追加\)_ を選択します。
 3. 青い _[パラメーターの追加]_ ボタンをクリックします。
-4. ポップアップ表示される新しいパラメーター ペインで入力を行います。
+4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `SlowRequestThreshold` (パラメーター名: {2})
-    2. [パラメーターの種類]\: [テキスト]
+    2. [パラメーターの種類]\: [`Text`ドロップ ダウン]
     3. [必須ですか?]\: オン
     4. [クエリから既定値を取得します]\: オン
 5. KQL ボックスに、このスニペットを追加します。

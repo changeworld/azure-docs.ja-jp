@@ -1,6 +1,6 @@
 ---
-title: Web API を呼び出す Web アプリ (コードの構成) - Microsoft ID プラットフォーム
-description: Web API を呼び出す Web アプリをビルドする方法について学習します (アプリのコード構成)
+title: Web API を呼び出す Web アプリを構成する - Microsoft ID プラットフォーム | Azure
+description: Web API を呼び出す Web アプリのコードを構成する方法について説明します
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 231ecdb6afae1fc36d11b2c12aa82c7e860bb708
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 83523fd12700789fb5c34230d529e06c0b284147
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175321"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964987"
 ---
 # <a name="web-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出す Web アプリ - コードの構成
 
