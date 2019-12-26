@@ -51,7 +51,7 @@ ms.locfileid: "74406229"
 
 ### <a name="get-the-connection-string-for-your-company-model-repository"></a>ご利用の会社モデル リポジトリの接続文字列を取得する
 
-Microsoft の職場または学校アカウントを使用するか、Microsoft パートナー ID (所持している場合) を使用してサインインすると、[Azure Certified for IoT](https://preview.catalog.azureiotsolutions.com) ポータルに、ご利用の_会社モデル リポジトリ接続文字列_が表示されます。 サインインしたら、 **[Company repository]\(会社リポジトリ\)** 、 **[接続文字列]** の順に選択します。
+Microsoft の職場または学校アカウントを使用するか、Microsoft パートナー ID (所持している場合) を使用してサインインすると、[Azure Certified for IoT](https://preview.catalog.azureiotsolutions.com) ポータルに、ご利用の "_会社モデル リポジトリ接続文字列_" が表示されます。サインインしたら、**[Company repository]\(会社リポジトリ\)**、**[接続文字列]** の順に選択します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -82,13 +82,13 @@ IoT ハブがない場合は、次のコマンドを使用して作成します�
 > [!IMPORTANT]
 > パブリック プレビュー中、IoT プラグ アンド プレイ機能は、**米国中部**、**北ヨーロッパ**、および**東日本**の各リージョンで作成された IoT ハブでのみご利用いただけます。
 
-次のコマンドを実行して、ご利用の IoT ハブにデバイス ID を作成します。 **YourIoTHubName** および **YourDeviceID** のプレースホルダーを、お使いの _IoT Hub 名_および_デバイス ID_ に置き換えます。
+次のコマンドを実行して、ご利用の IoT ハブにデバイス ID を作成します。**YourIoTHubName** および **YourDeviceID** のプレースホルダーを、お使いの "_IoT Hub 名_" および "_デバイス ID_" に置き換えます。
 
 ```azurecli-interactive
 az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-次のコマンドを実行して、登録したデバイスの_デバイス接続文字列_を取得します (後で使用するためにメモします)。
+次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します (後で使用するためにメモします)。
 
 ```azurecli-interactive
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
