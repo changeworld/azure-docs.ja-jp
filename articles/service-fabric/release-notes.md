@@ -39,7 +39,7 @@ Azure Service Fabric 7.0 の提供開始 Azure portal または Azure Resource M
 ### <a name="key-announcements"></a>重要な発表
  - [**アプリケーション サービスでの KeyVaultReference サポート (プレビュー)** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references)[マネージド ID](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) が有効になっている Service Fabric アプリケーションは、環境変数、アプリケーション パラメーター、またはコンテナー リポジトリ資格情報として Key Vault シークレット URL を直接参照できるようになりました。 Service Fabric は、アプリケーションのマネージド ID を使用してシークレットを自動的に解決します。 
      
-- ステートレス サービスのアップグレードの安全性の向上**:アプリケーションのアップグレード中に可用性を保証するために、使用可能と見なされる[ステートレス サービスの最小インスタンス数](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet)を定義するための新しい構成を導入しました。 以前は、すべてのサービスでこの値は 1 であり、変更できませんでした。 この新しいサービスごとの安全性チェックにより、アプリケーションのアップグレード中、クラスターのアップグレード中、Service Fabric の正常性と安全性のチェックに依存するその他のメンテナンス中に、サービスの稼働インスタンスの最小数を維持できるようになります。
+- **ステートレス サービスのアップグレードの安全性の向上**:アプリケーションのアップグレード中に可用性を保証するために、使用可能と見なされる[ステートレス サービスの最小インスタンス数](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet)を定義するための新しい構成を導入しました。 以前は、すべてのサービスでこの値は 1 であり、変更できませんでした。 この新しいサービスごとの安全性チェックにより、アプリケーションのアップグレード中、クラスターのアップグレード中、Service Fabric の正常性と安全性のチェックに依存するその他のメンテナンス中に、サービスの稼働インスタンスの最小数を維持できるようになります。
   
 - [**ユーザー サービスのリソース制限**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance#enforcing-the-resource-limits-for-user-services)ユーザーは、ノード上のユーザー サービスのリソース制限を設定して、Service Fabric システム サービスのリソース不足などのシナリオを防ぐことができます。 
   
