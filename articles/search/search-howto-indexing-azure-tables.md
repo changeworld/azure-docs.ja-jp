@@ -1,5 +1,5 @@
 ---
-title: Azure Table storage のコンテンツを検索する
+title: Azure Table Storage のコンテンツを検索する
 titleSuffix: Azure Cognitive Search
 description: Azure Table Storage に格納されているデータのインデックスを Azure Cognitive Search インデクサーで作成する方法について説明します。
 manager: nitinme
