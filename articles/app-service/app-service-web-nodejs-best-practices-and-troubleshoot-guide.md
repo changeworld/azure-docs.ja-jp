@@ -87,7 +87,7 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-既定値は false です。 有効にした場合、ノード アプリケーションは名前付きパイプ (環境変数 IISNODE\_CONTROL\_PIPE) に接続し、"リサイクル" メッセージを送信できます。 これにより、w3wp は適切にリサイクルされます。
+既定値は false です。 有効にした場合、node アプリケーションは名前付きパイプ (環境変数 IISNODE\_CONTROL\_PIPE) に接続し、"リサイクル" メッセージを送信できます。 これにより、w3wp は適切にリサイクルされます。
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -111,7 +111,7 @@ IIS の既定の動作として、応答データは、フラッシュするま�
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (実稼働の運用サイトでは有効にしないでください)
 
-この設定は、デバッグ機能を制御します。 iisnode は、node-inspector と統合されています。 この設定を有効にすることで、ノード アプリケーションのデバッグが有効になります。 この設定が有効になると、ノード アプリケーションへの最初のデバッグ要求の際に、iisnode によって、node-inspector ファイルが 'debuggerVirtualDir' ディレクトリに作成されます。 `http://yoursite/server.js/debug` に要求を送信することによって、node-inspector を読み込むことができます。 デバッグ URL セグメントは、"debuggerPathSegment" 設定で制御できます。 既定では、debuggerPathSegment = 'debug' です。 他のユーザーによる検出が難しくなるように、たとえば GUID に `debuggerPathSegment` を設定できます。
+この設定は、デバッグ機能を制御します。 iisnode は、node-inspector と統合されています。 この設定を有効にすることで、node アプリケーションのデバッグが有効になります。 この設定が有効になると、node アプリケーションへの最初のデバッグ要求の際に、iisnode によって、node-inspector ファイルが 'debuggerVirtualDir' ディレクトリに作成されます。 `http://yoursite/server.js/debug` に要求を送信することによって、node-inspector を読み込むことができます。 デバッグ URL セグメントは、"debuggerPathSegment" 設定で制御できます。 既定では、debuggerPathSegment = 'debug' です。 他のユーザーによる検出が難しくなるように、たとえば GUID に `debuggerPathSegment` を設定できます。
 
 デバッグの詳細については、[Windows での node.js アプリケーションのデバッグ](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html)に関するページを参照してください。
 
