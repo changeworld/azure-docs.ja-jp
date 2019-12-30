@@ -93,7 +93,7 @@ SSH を使用してノードにアクセスするには、「[SSH 接続を作�
 
 SSH アクセス用の仮想マシン可用性セット ベースの AKS クラスターを構成するには、クラスターの Linux ノードの名前を見つけ、そのスケール セットに SSH 公開キーを追加します。
 
-[az aks show][az-aks-show] コマンドを使用して AKS クラスターのリソース グループ名を取得した後、[az vmss list][az-vm-list] コマンドを使用して、クラスターの Linux ノードの仮想マシンの名前を表示します。
+[az aks show][az-aks-show] コマンドを使用して AKS クラスターのリソース グループ名を取得した後、[az vm list][az-vm-list] コマンドを使用して、クラスターの Linux ノードの仮想マシンの名前を表示します。
 
 ```azurecli-interactive
 CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
