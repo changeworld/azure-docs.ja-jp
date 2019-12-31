@@ -34,7 +34,7 @@ Azure Kubernetes Service (AKS) クラスターのライフサイクル全体を�
 
 SSH アクセス用の仮想マシン スケール セットを構成するには、クラスターの仮想マシン スケール セットの名前を見つけ、そのスケール セットに SSH 公開キーを追加します。
 
-[az aks show][az-aks-show] コマンドを使用して AKS クラスターのリソース グループ名を取得した後、[az vmss list][az-vmss-list] コマンドを使用してスケール セットの名前を取得します。
+[az aks show][az-aks-show] コマンドを使用して AKS クラスターのリソース グループ名を取得した後、[az vm list][az-vmss-list] コマンドを使用してスケール セットの名前を取得します。
 
 ```azurecli-interactive
 CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
