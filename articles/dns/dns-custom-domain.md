@@ -113,7 +113,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 アクティブな DNS 名を移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](../app-service/manage-custom-dns-migrate-domain.md)」を参照してください。
 
-カスタム ドメインを購入する必要がある場合、App Service ドメインの詳細について[Buy a custom domain name for Azure Web Apps](../app-service/manage-custom-dns-buy-domain.md)を参照してください。
+カスタム ドメインを購入する必要がある場合は、[「Azure Web Apps のカスタム ドメイン名を購入する](../app-service/manage-custom-dns-buy-domain.md)」を参照して、App Service ドメインの詳細を確認してください。
 
 ## <a name="blob-storage"></a>BLOB ストレージ
 
