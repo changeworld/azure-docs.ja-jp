@@ -138,7 +138,7 @@ PHP のインストールを変更する必要がある場合は、以下の手�
 > PHP のバージョンと現在の *php.ini* 構成を確認する最善の方法は、アプリで [phpinfo()](https://php.net/manual/function.phpinfo.php) を呼び出すことです。
 >
 
-### <a name="Customize-non-PHP_INI_SYSTEM directives">非 PHP_INI_SYSTEM ディレクティブをカスタマイズする</a>
+### <a name="Customize-non-PHP_INI_SYSTEM directives"></a> 非 PHP_INI_SYSTEM ディレクティブをカスタマイズする
 
 PHP_INI_USER、PHP_INI_PERDIR、および PHP_INI_ALL ディレクティブ ([php.ini ディレクティブ](https://www.php.net/manual/ini.list.php)を参照) をカスタマイズするには、 *.htaccess* ファイルをアプリのルート ディレクトリに追加します。
 
