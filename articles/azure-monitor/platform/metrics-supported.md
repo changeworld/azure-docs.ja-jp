@@ -1494,7 +1494,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |physical_data_read_percent|データ IO の割合|Percent|平均|データ IO の割合|ディメンションなし|
 |sessions_percent|セッションの割合|Percent|平均|セッションの割合|ディメンションなし|
 |storage_limit|データの最大サイズ|Bytes|平均|ストレージの制限|ディメンションなし|
-|storage_percent|使用済みのデータ領域の割合||Percent|平均|ストレージの割合|ディメンションなし|
+|storage_percent|使用済みのデータ領域の割合|Percent|平均|ストレージの割合|ディメンションなし|
 |storage_used|使用済みのデータ領域|Bytes|平均|使用済みストレージ|ディメンションなし|
 |sqlserver_process_core_percent|SQL Server プロセス コアの割合|Percent|最大値|このメトリックはプレースホルダーであり、現時点では設定されていません。|ディメンションなし|
 |sqlserver_process_memory_percent|SQL Server プロセス メモリの割合|Percent|最大値|このメトリックはプレースホルダーであり、現時点では設定されていません。|ディメンションなし|
