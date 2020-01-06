@@ -19,19 +19,21 @@
       href: terminology.md
     - name: ロールと要件
       href: concepts-roles-permissions.md
+    - name: 障害復旧
+      href: disaster-recovery.md
 - name: サンプル
   items:
     - name: コード サンプル
       href: 'https://docs.microsoft.com/samples/browse/?service=data-share/'
     - name: Azure PowerShell
       href: samples-powershell.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
-    - name: 監視
+    - name: モニター
       href: how-to-monitor.md
     - name: データセット マッピングの構成
       href: how-to-configure-mapping.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       href: data-share-troubleshoot.md
     - name: データセットの追加
       href: how-to-add-datasets.md

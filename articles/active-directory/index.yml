@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: 11d32abbcd07f16bd21d512d36cd08abd8ca97df
-  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+  ms.openlocfilehash: d212a7223eea2ccbaaddeb9c45db85e13c7ff9c8
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/05/2019
-  ms.locfileid: "74842308"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443459"
 highlightedContent:
   items:
   - title: Azure AD とは
@@ -53,7 +53,7 @@ conceptualContent:
       text: オンプレミス アプリ用のアプリケーション プロキシ
     footerLink:
       url: ./manage-apps/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: 認証
     links:
     - url: ./authentication/concept-mfa-howitworks.md
@@ -67,7 +67,7 @@ conceptualContent:
       text: Azure AD のパスワード保護
     footerLink:
       url: ./authentication/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: 企業間 (B2B)
     links:
     - url: ./b2b/what-is-b2b.md
@@ -81,7 +81,7 @@ conceptualContent:
       text: B2B と Office 365 の共有
     footerLink:
       url: ./b2b/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: 企業-消費者間 (B2C)
     links:
     - url: ../active-directory-b2c/active-directory-b2c-overview.md
@@ -95,7 +95,7 @@ conceptualContent:
       text: Azure AD B2C のカスタム ポリシー
     footerLink:
       url: ../active-directory-b2c/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: クラウド プロビジョニング
     links:
     - url: ./cloud-provisioning/what-is-cloud-provisioning.md
@@ -109,7 +109,7 @@ conceptualContent:
       text: Azure AD Connect クラウド プロビジョニング エージェントのインストール
     footerLink:
       url: ./cloud-provisioning/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: 条件付きアクセス
     links:
     - url: ./conditional-access/overview.md
@@ -123,7 +123,7 @@ conceptualContent:
       text: 場所に基づく条件
     footerLink:
       url: ./conditional-access/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: 開発者
     links:
     - url: ./develop/about-microsoft-identity-platform.md
@@ -137,7 +137,7 @@ conceptualContent:
       text: Microsoft ID プラットフォームにアプリを登録する
     footerLink:
       url: ./develop/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: デバイス管理
     links:
     - url: ./devices/overview.md
@@ -151,7 +151,7 @@ conceptualContent:
       text: Azure AD 参加を計画する
     footerLink:
       url: ./devices/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: ドメイン サービス
     links:
     - url: ../active-directory-domain-services/active-directory-ds-overview.md
@@ -165,7 +165,7 @@ conceptualContent:
       text: グループ ポリシーを管理する
     footerLink:
       url: ../active-directory-domain-services/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: エンタープライズ ユーザー
     links:
     - url: ./users-groups-roles/groups-create-rule.md
@@ -179,7 +179,7 @@ conceptualContent:
       text: Azure AD サービスの制限と制約
     footerLink:
       url: ./users-groups-roles/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: ハイブリッド ID
     links:
     - url: ./hybrid/whatis-hybrid-identity.md
@@ -193,7 +193,7 @@ conceptualContent:
       text: Azure AD Connect のカスタム インストール
     footerLink:
       url: ./hybrid/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: Identity Governance
     links:
     - url: ./governance/create-access-review.md
@@ -207,21 +207,21 @@ conceptualContent:
       text: 利用規約が必須
     footerLink:
       url: ./governance/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: Identity Protection
     links:
-    - url: ./identity-protection/overview.md
+    - url: ./identity-protection/overview-identity-protection.md
       itemType: overview
       text: ID 保護とは
-    - url: ./identity-protection/quickstart-sign-in-risk-policy.md
-      itemType: quickstart
-      text: セッションのリスクが検出されたときにアクセスをブロックする
-    - url: ./identity-protection/howto-unblock-user.md
+    - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
+      itemType: how-to-guide
+      text: リスク ポリシーの構成
+    - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
       itemType: how-to-guide
       text: ユーザーのブロックを解除する方法
     footerLink:
       url: ./identity-protection/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: Azure リソースのマネージド ID
     links:
     - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
@@ -235,7 +235,7 @@ conceptualContent:
       text: マネージド ID をサポートするサービス
     footerLink:
       url: ./managed-identities-azure-resources/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: Privileged Identity Management (PIM)
     links:
     - url: ./privileged-identity-management/pim-getting-started.md
@@ -249,7 +249,7 @@ conceptualContent:
       text: ディレクトリ ロールを割り当てる
     footerLink:
       url: ./privileged-identity-management/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: レポートと監視
     links:
     - url: ./reports-monitoring/concept-audit-logs.md
@@ -263,7 +263,7 @@ conceptualContent:
       text: サインインのエラー コード リファレンス
     footerLink:
       url: ./reports-monitoring/index.yml
-      text: 関連項目
+      text: 詳細情報
 additionalContent:
   sections:
   - items:

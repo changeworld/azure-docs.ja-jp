@@ -16,17 +16,9 @@
   items:
     - name: ブログ
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
-    - name: Azure Blockchain Service の Visual Studio Code 拡張機能
-      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
-    - name: コード サンプル
-      href: 'https://github.com/Azure-Samples/blockchain'
-    - name: コミュニティ
-      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: フォーラム
-      href: 'https://aka.ms/workbenchforum'
     - name: 製品フィードバック
       href: 'https://feedback.azure.com/forums/586780-blockchain'
+    - name: コミュニティ
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/blockchain-tokens'
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'

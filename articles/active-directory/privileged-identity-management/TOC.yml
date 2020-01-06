@@ -16,11 +16,11 @@
       href: pim-how-to-require-mfa.md
     - name: 概要のダッシュボード
       href: pim-resource-roles-overview-dashboards.md
-    - name: 電子メール通知
+    - name: メール通知
       href: pim-email-notifications.md
     - name: Microsoft Graph API
       href: pim-apis.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: PIM をデプロイする
@@ -45,6 +45,8 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Azure AD ロールの管理
       items:
+        - name: 機能更新プログラム
+          href: azure-ad-roles-features.md
         - name: ロールを割り当てる
           href: pim-how-to-add-role-to-user.md
         - name: 要求の承認

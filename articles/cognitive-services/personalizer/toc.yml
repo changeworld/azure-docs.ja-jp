@@ -9,7 +9,7 @@
     - name: 新機能
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: 'C# の使用'
       href: csharp-quickstart-commandline-feedback-loop.md
@@ -61,7 +61,7 @@
           href: concept-feature-evaluation.md
     - name: スケーラビリティとパフォーマンス
       href: concepts-scalability-performance.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Personalizer の作成と構成
       href: how-to-settings.md
@@ -94,6 +94,8 @@
               href: 'https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0'
         - name: Python
           items:
+            - name: リファレンス
+              href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python'
             - name: Pypi パッケージ
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: リソース

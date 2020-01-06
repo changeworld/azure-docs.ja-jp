@@ -7,15 +7,15 @@
       href: search-what-is-azure-search.md
     - name: 新機能
       href: whats-new.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: サービスの作成
       href: search-create-service-portal.md
     - name: ポータル
       items:
-        - name: 検索インデックスの作成
+        - name: インデックスを作成する
           href: search-get-started-portal.md
-        - name: アプリの作成 (プレビュー)
+        - name: アプリを作成する
           href: search-create-app-portal.md
         - name: コグニティブ スキルセットの作成
           href: cognitive-search-quickstart-blob.md
@@ -95,7 +95,7 @@
       href: knowledge-store-projection-overview.md
     - name: 増分インデックスの作成
       href: cognitive-search-incremental-indexing-conceptual.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 計画
       items:
@@ -109,7 +109,7 @@
           href: search-performance-optimization.md
         - name: マルチテナント アーキテクチャ
           href: search-modeling-multitenant-saas-applications.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティの概要
           href: search-security-overview.md
@@ -145,7 +145,7 @@
               href: search-dotnet-mgmt-sdk-migration.md
         - name: REST API をアップグレードする
           href: search-api-migration.md
-    - name: インデックスの作成
+    - name: '[インデックスを作成する]'
       items:
         - name: 基本インデックスの作成
           href: search-what-is-an-index.md
@@ -307,7 +307,7 @@
           href: search-monitor-usage.md
         - name: 検索トラフィックの分析
           href: search-traffic-analytics.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: インデクサーの問題
           href: search-indexer-troubleshooting.md
@@ -413,7 +413,7 @@
           href: 'https://aka.ms/azjobsdemo'
         - name: Search のユース ケース
           href: 'https://searchsamples.azurewebsites.net/'
-    - name: FAQ
+    - name: よく寄せられる質問
       href: search-faq-frequently-asked-questions.md
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/search/'

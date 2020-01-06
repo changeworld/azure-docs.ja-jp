@@ -4,7 +4,7 @@
   items:
     - name: Custom Vision とは
       href: home.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Web ポータルの使用
       items:
@@ -48,7 +48,7 @@
       href: iot-visual-alerts-tutorial.md
     - name: モバイルでロゴを認識する
       href: logo-detector-mobile.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: モデルのテスト
       href: test-your-model.md
@@ -68,8 +68,6 @@
           href: export-model-python.md
     - name: アカウント データのエクスポートまたは削除
       href: ./export-delete-data.md
-    - name: 期間限定試用版のプロジェクトの Azure への移行
-      href: ./move-your-project-to-azure.md
     - name: アプリを 3.0 API に更新する
       href: ./update-application-to-3.0-sdk.md
 - name: リファレンス

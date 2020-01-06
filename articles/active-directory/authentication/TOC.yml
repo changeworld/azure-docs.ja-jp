@@ -27,7 +27,7 @@
       href: concept-authentication-passwordless.md
     - name: セキュリティ情報の登録
       href: concept-registration-mfa-sspr-combined.md
-    - name: パスワード リセット
+    - name: パスワードのリセット
       items:
         - name: パスワード リセットのしくみ
           href: concept-sspr-howitworks.md
@@ -49,6 +49,8 @@
           href: concept-mfa-authprovider.md
         - name: セキュリティ ガイダンス
           href: multi-factor-authentication-security-best-practices.md
+        - name: データの保存場所
+          href: concept-mfa-data-residency.md
         - name: Office 365 での MFA
           href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
         - name: MFA に関する FAQ
@@ -61,7 +63,7 @@
           href: concept-password-ban-bad-on-premises.md
     - name: 回復性があるアクセス制御
       href: concept-resilient-controls.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: セルフサービスのパスワード リセット
       items:
@@ -81,7 +83,7 @@
           href: howto-mfa-userstates.md
         - name: ユーザーとデバイスの設定
           href: howto-mfa-userdevicesettings.md
-        - name: 設定を構成する
+        - name: 設定の構成
           href: howto-mfa-mfasettings.md
         - name: ディレクトリ フェデレーション
           items:
@@ -150,7 +152,7 @@
               href: active-directory-certificate-based-authentication-android.md
             - name: iOS デバイスでの CBA
               href: active-directory-certificate-based-authentication-ios.md
-    - name: レポート
+    - name: レポーティング
       items:
         - name: 使用状況と分析情報
           href: howto-authentication-methods-usage-insights.md
@@ -158,7 +160,7 @@
           href: howto-sspr-reporting.md
         - name: MFA レポート
           href: howto-mfa-reporting.md
-        - name: データ収集
+        - name: データ コレクション
           href: howto-mfa-reporting-datacollection.md
     - name: MFA サーバー
       items:
@@ -174,7 +176,7 @@
           href: howto-mfaserver-deploy-upgrade.md
         - name: PhoneFactor からアップグレードする
           href: howto-mfaserver-deploy-upgrade-pf.md
-        - name: Windows 認証
+        - name: '[Windows 認証]'
           href: howto-mfaserver-windows.md
         - name: IIS Web アプリ
           href: howto-mfaserver-iis.md
@@ -200,7 +202,7 @@
               href: howto-mfaserver-nps-vpn.md
             - name: NPS 拡張機能のエラー
               href: howto-mfa-nps-extension-errors.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: SSPR のトラブルシューティング
           href: active-directory-passwords-troubleshoot.md

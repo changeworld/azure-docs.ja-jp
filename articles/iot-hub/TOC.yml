@@ -4,12 +4,12 @@
   items:
     - name: Azure IoT Hub とは
       href: about-iot-hub.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: テレメトリを送信する
       items:
-        - name: 作業開始
+        - name: はじめに
           href: quickstart-send-telemetry-cli.md
         - name: C
           href: quickstart-send-telemetry-c.md
@@ -83,6 +83,8 @@
       href: tutorial-connectivity.md
 - name: 概念
   items:
+    - name: TLS 1.2 の適用
+      href: tls-1.2-everywhere.md
     - name: メッセージ エンリッチメントの概要
       href: iot-hub-message-enrichments-overview.md
     - name: デバイス管理の概要
@@ -91,7 +93,7 @@
       href: iot-hub-compare-event-hubs.md
     - name: 適切な階層の選択
       href: iot-hub-scaling.md
-    - name: 高可用性と障害復旧
+    - name: 高可用性とディザスター リカバリー
       href: iot-hub-ha-dr.md
     - name: IoT ハブを別のリージョンに複製する方法
       href: iot-hub-how-to-clone.md
@@ -164,13 +166,13 @@
           href: iot-hub-amqp-support.md
         - name: 用語集
           href: iot-hub-devguide-glossary.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Recommendations
           href: /azure/iot-fundamentals/security-recommendations?context=azure/iot-hub/rc/rc
         - name: 徹底的なセキュリティ
           href: /azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc
-        - name: セキュリティのベスト プラクティス
+        - name: セキュリティの運用方法
           href: /azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc
         - name: セキュリティのアーキテクチャ
           href: /azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc
@@ -182,7 +184,7 @@
           href: iot-hub-x509ca-overview.md
         - name: X.509 CA 証明書セキュリティの概念
           href: iot-hub-x509ca-concept.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 開発
       items:
@@ -276,7 +278,7 @@
               href: iot-hub-java-java-schedule-jobs.md
             - name: Python
               href: iot-hub-python-python-schedule-jobs.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: IoT Hub の作成
           items:
@@ -366,7 +368,7 @@
               href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
             - name: Logic Apps を使用したリモートの監視と通知
               href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: デバイスの切断
           href: iot-hub-troubleshoot-connectivity.md
@@ -408,7 +410,7 @@
           href: iot-hub-migrate-to-diagnostics-settings.md
 - name: 関連項目
   items:
-    - name: 解決方法
+    - name: ソリューション
       items:
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'

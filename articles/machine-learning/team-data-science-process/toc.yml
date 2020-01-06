@@ -11,7 +11,7 @@
       href: lifecycle-data.md
     - name: 3. モデリング
       href: lifecycle-modeling.md
-    - name: 4. Deployment
+    - name: 4. デプロイ
       href: lifecycle-deployment.md
     - name: 5. 顧客による受け入れ
       href: lifecycle-acceptance.md
@@ -74,7 +74,7 @@
       href: team-data-science-process-for-data-scientists.md
     - name: DevOps 向け
       href: team-data-science-process-for-devops.md
-- name: 方法
+- name: 操作方法
   items:
     - name: データ サイエンス環境の設定
       href: environment-setup.md
@@ -134,7 +134,7 @@
           items:
             - name: データを準備する
               href: prepare-data.md
-            - name: データを調査する
+            - name: データの探索
               items:
                 - name: 概要
                   href: explore-data.md
@@ -193,7 +193,7 @@
 - name: 関連項目
   items:
     - name: Azure Machine Learning
-      href: ../service/
+      href: ../
     - name: Azure AI ギャラリー
       href: 'https://gallery.azure.ai'
     - name: Cortana Analytics
@@ -206,7 +206,7 @@
           items:
             - name: 概要
               href: cortana-analytics-playbook-predictive-maintenance.md
-            - name: アーキテクチャ
+            - name: Architecture
               href: cortana-analytics-architecture-predictive-maintenance.md
             - name: テクニカル ガイド
               href: cortana-analytics-technical-guide-predictive-maintenance.md

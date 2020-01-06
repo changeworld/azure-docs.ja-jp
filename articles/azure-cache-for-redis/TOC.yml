@@ -1,10 +1,10 @@
 - name: Azure Cache for Redis のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
     - name: Azure Cache for Redis について
       href: cache-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: ASP.NET アプリ
@@ -39,7 +39,7 @@
       href: cache-best-practices.md
     - name: キャッシュに関するアーキテクチャのベスト プラクティス
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: プラン
       items:
@@ -77,7 +77,7 @@
           items:
             - name: Spring Boot Initializer の使用
               href: cache-java-spring-boot-initializer-with-redis-cache.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: Azure Portal での構成
           href: cache-configure.md
@@ -91,7 +91,7 @@
           href: cache-how-to-redis-cli-tool.md
         - name: TLS 1.0 および 1.1 の削除
           href: cache-remove-tls-10-11.md
-    - name: 監視
+    - name: モニター
       items:
         - name: Azure Portal での監視
           href: cache-how-to-monitor.md

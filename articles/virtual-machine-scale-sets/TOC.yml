@@ -4,7 +4,7 @@
   items:
     - name: 仮想マシン スケール セットとは
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Azure Portal で作成する
@@ -64,7 +64,7 @@
 - name: 概念
   items:
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: リージョン
       href: ../virtual-machines/windows/regions.md
@@ -152,7 +152,7 @@
     - name: インフラストラクチャの自動化
       href: ../virtual-machines/windows/infrastructure-automation.md
       maintainContext: true
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティとポリシー
           href: ../virtual-machines/windows/security-policy.md
@@ -171,7 +171,7 @@
           maintainContext: true
     - name: スケール セットの FAQ
       href: virtual-machine-scale-sets-faq.md
-- name: 方法
+- name: 操作方法
   items:
     - name: 計画と設計
       items:
@@ -189,7 +189,7 @@
           href: virtual-machine-scale-sets-mvss-custom-image.md
         - name: Linux スケール セット テンプレートでゲストベースの自動スケーリングを使用する
           href: virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md
-    - name: デプロイ
+    - name: 配置
       items:
         - name: Visual Studio で作成する
           href: virtual-machine-scale-sets-vs-create.md
@@ -233,7 +233,7 @@
           href: virtual-machine-scale-sets-convert-template-to-md.md
         - name: スポット インスタンスを使用する
           href: use-spot.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: 一般的な管理タスク
           items:

@@ -6,7 +6,7 @@
       href: overview.md
     - name: 新機能
       href: whats-new.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: アプリケーション ゲートウェイの作成 - ポータル
@@ -81,9 +81,9 @@
       href: application-gateway-web-app-overview.md
     - name: WebSocket のサポート
       href: application-gateway-websocket.md
-    - name: FAQ
+    - name: よく寄せられる質問
       href: application-gateway-faq.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 単一のサイトをホストする
       items:
@@ -93,7 +93,7 @@
           href: tutorial-manage-web-traffic-cli.md
     - name: 内部 Load Balancer を構成する
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: configure-application-gateway-with-private-frontend-ip.md
         - name: Azure PowerShell
           href: application-gateway-ilb-arm.md
@@ -133,7 +133,7 @@
           href: ingress-controller-install-new.md
         - name: Cookie のアフィニティを有効にする
           href: ingress-controller-cookie-affinity.md
-        - name: 複数名前空間のサポートを有効にする
+        - name: 複数の名前空間のサポートを有効にする
           href: ingress-controller-multiple-namespace-support.md
         - name: プライベート IP を内部のルーティングに使用する
           href: ingress-controller-private-ip.md
@@ -171,7 +171,7 @@
               href: redirect-external-site-cli.md
         - name: HTTP から HTTPS
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: redirect-http-to-https-portal.md
             - name: Azure PowerShell
               href: redirect-http-to-https-powershell.md
@@ -187,7 +187,7 @@
           href: tutorial-url-redirect-powershell.md
     - name: HTTP ヘッダーを書き換える
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: rewrite-http-headers-portal.md
         - name: Azure PowerShell
           href: add-http-header-rewrite-rule-powershell.md
@@ -207,7 +207,7 @@
           href: application-gateway-create-probe-classic-ps.md
         - name: Resource Manager PowerShell
           href: application-gateway-create-probe-ps.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: ILB と App Service Environment
           href: create-gateway-internal-load-balancer-app-service-environment.md
@@ -247,7 +247,7 @@
       href: /rest/api/applicationgateway
     - name: Azure Resource Manager
       displayName: ARM
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
     - name: Resource Manager テンプレート
       displayName: ARM
       href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
@@ -255,7 +255,7 @@
   items:
     - name: テンプレートの作成
       displayName: ARM
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: コミュニティ テンプレート

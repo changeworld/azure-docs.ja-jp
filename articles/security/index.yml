@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: c3f75decc72cbc314309b8cfb0bd81d9c0be2774
-  ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+  ms.openlocfilehash: a25189e75bcf313a5e2e8eee410a581d50f70584
+  ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/06/2019
-  ms.locfileid: "73686313"
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75563753"
 highlightedContent:
   items:
   - title: Azure のセキュリティの概要
@@ -46,7 +46,7 @@ conceptualContent:
       text: Azure サービスのセキュリティ コントロール
     footerLink:
       url: ./fundamentals/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: 開発者
     links:
     - url: ./develop/secure-dev-overview.md
@@ -60,20 +60,23 @@ conceptualContent:
       text: Microsoft Threat Modeling Tool
     footerLink:
       url: ./develop/index.yml
-      text: 関連項目
+      text: 詳細情報
   - title: ベンチマークと推奨事項
     links:
-    - url: https://azure.microsoft.com/resources/azure-cloud-security-benchmark-draft/
+    - url: ./benchmarks/introduction.md
       itemType: download
       text: Azure クラウドのセキュリティ ベンチマーク
     - url: ../security-center/security-center-using-recommendations.md
       itemType: overview
       text: Azure Security Center の推奨事項
+    footerLink:
+      url: ./benchmarks/index.yml
+      text: 詳細情報
   - title: シークレットとキー
     links:
     - url: ../key-vault/key-vault-overview.md
       itemType: overview
-      text: Azure Key Vault とは
+      text: Azure Key Vault とは?
     - url: ../key-vault/quick-create-cli.md
       itemType: quickstart
       text: シークレットの設定と取得
@@ -82,7 +85,7 @@ conceptualContent:
       text: Azure Dedicated HSM とは何か
     footerLink:
       url: /azure/key-vault/
-      text: 関連項目
+      text: 詳細情報
   - title: データ保護
     links:
     - url: ./fundamentals/encryption-atrest.md
@@ -96,7 +99,7 @@ conceptualContent:
       text: ストレージのセキュリティ
     footerLink:
       url: ./fundamentals/encryption-overview.md
-      text: 関連項目
+      text: 詳細情報
   - title: ID 管理
     links:
     - url: ./fundamentals/choose-ad-authn.md
@@ -107,10 +110,10 @@ conceptualContent:
       text: ID インフラストラクチャのセキュリティ保護
     - url: ./fundamentals/identity-management-best-practices.md
       itemType: concept
-      text: セキュリティのベスト プラクティス
+      text: セキュリティの運用方法
     footerLink:
       url: ./fundamentals/identity-management-overview.md
-      text: 関連項目
+      text: 詳細情報
   - title: セキュリティの監視
     links:
     - url: ../security-center/security-center-get-started.md
@@ -124,7 +127,7 @@ conceptualContent:
       text: セキュリティ ポリシーの操作
     footerLink:
       url: /azure/security-center/
-      text: 関連項目
+      text: 詳細情報
   - title: IoT セキュリティの監視
     links:
     - url: ../asc-for-iot/overview.md
@@ -138,7 +141,7 @@ conceptualContent:
       text: Azure Security Center for IoT の使用を開始する
     footerLink:
       url: /azure/asc-for-iot/
-      text: 関連項目
+      text: 詳細情報
   - title: セキュリティ分析
     links:
     - url: ../sentinel/overview.md
@@ -152,7 +155,7 @@ conceptualContent:
       text: Azure Sentinel プレビューでの作業の開始
     footerLink:
       url: /azure/sentinel/
-      text: 関連項目
+      text: 詳細情報
   - title: 脅威の防止
     links:
     - url: ../security-center/security-center-alerts-overview.md
@@ -166,7 +169,7 @@ conceptualContent:
       text: Azure SQL Database の Advanced Threat Protection
     footerLink:
       url: ./fundamentals/threat-detection.md
-      text: 関連項目
+      text: 詳細情報
   - title: ログ記録と監査
     links:
     - url: ./fundamentals/log-audit.md
@@ -185,7 +188,7 @@ conceptualContent:
       text: セキュリティの概要
     - url: ./fundamentals/network-best-practices.md
       itemType: concept
-      text: セキュリティのベスト プラクティス
+      text: セキュリティの運用方法
     - url: ./fundamentals/ddos-best-practices.md
       itemType: concept
       text: DDoS Protection
@@ -202,7 +205,7 @@ conceptualContent:
       text: 顧客データの保護
     footerLink:
       url: ./fundamentals/infrastructure.md
-      text: 関連項目
+      text: 詳細情報
   - title: 仮想マシンのセキュリティ
     links:
     - url: ./fundamentals/virtual-machines-overview.md
@@ -221,7 +224,7 @@ conceptualContent:
       text: セキュリティの概要
     - url: ./fundamentals/database-best-practices.md
       itemType: concept
-      text: セキュリティのベスト プラクティス
+      text: セキュリティの運用方法
     - url: ./fundamentals/database-security-checklist.md
       itemType: concept
       text: セキュリティ チェックリスト
@@ -235,4 +238,4 @@ conceptualContent:
       text: Azure Blueprints サービス
     footerLink:
       url: /azure/governance/
-      text: 関連項目
+      text: 詳細情報

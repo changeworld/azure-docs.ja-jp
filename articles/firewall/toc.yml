@@ -25,7 +25,7 @@
   items:
     - name: FQDN のタグ
       href: fqdn-tags.md
-    - name: インフラストラクチャの FQDN
+    - name: インフラストラクチャ FQDN
       href: infrastructure-fqdns.md
     - name: ログとメトリック
       href: logs-and-metrics.md
@@ -35,7 +35,7 @@
       href: rule-processing.md
     - name: サービス タグ
       href: service-tags.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Azure PowerShell を使用したデプロイ
       href: deploy-ps.md
@@ -70,13 +70,13 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: リソース
   items:
-    - name: FAQ
+    - name: よく寄せられる質問
       href: firewall-faq.md
     - name: テンプレートの作成
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: コミュニティ テンプレート

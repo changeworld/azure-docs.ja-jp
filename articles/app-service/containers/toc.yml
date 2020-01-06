@@ -8,7 +8,7 @@
       href: app-service-linux-intro.md
     - name: ホスティング オプションの比較
       href: /azure/architecture/guide/technology-choices/compute-decision-tree
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: .NET Core アプリの作成
@@ -169,7 +169,7 @@
       items:
         - name: アプリのバックアップ
           href: ../manage-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: バックアップの復元
+        - name: バックアップを復元する
           href: ../web-sites-restore.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: アプリの複製
           href: ../app-service-web-app-cloning.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
@@ -192,7 +192,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: クォータの情報
-      href: '../../azure-subscription-service-limits.md#app-service-limits'
+      href: '../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Migration Assistant のガイド
@@ -219,7 +219,7 @@
           href: ../troubleshoot-http-502-http-503.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: パフォーマンスに関する問題のトラブルシューティング
           href: ../troubleshoot-performance-degradation.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-        - name: FAQ
+        - name: よく寄せられる質問
           items:
             - name: 可用性、パフォーマンス、アプリケーションに関する FAQ
               href: ../faq-availability-performance-application-issues.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json

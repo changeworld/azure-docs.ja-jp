@@ -5,7 +5,7 @@
   items:
     - name: Azure Files とは
       href: storage-files-introduction.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: ファイル共有の作成および使用 - Windows
       href: storage-files-quick-create-use-windows.md
@@ -49,12 +49,10 @@
       href: storage-snapshots-files.md
     - name: スケーラビリティとパフォーマンスのターゲット
       href: storage-files-scale-targets.md
-    - name: セキュリティ
+    - name: Security
       items:
-        - name: Authorization
+        - name: 承認
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure Storage セキュリティ
-          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure Storage の暗号化
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: SMB 経由の Azure AD 認証
@@ -83,9 +81,9 @@
           href: ../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: ディザスター リカバリーとフェールオーバー
       href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: FAQ
+    - name: よく寄せられる質問
       href: storage-files-faq.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 作成
       items:
@@ -95,7 +93,7 @@
           href: storage-files-how-to-create-large-file-share.md
         - name: Premium ファイル共有を作成する
           href: storage-how-to-create-premium-fileshare.md
-    - name: デプロイ
+    - name: 配置
       items:
         - name: Azure Files のデプロイ
           href: storage-files-deployment-guide.md
@@ -121,7 +119,7 @@
           href: storage-files-configure-p2s-vpn-windows.md
         - name: Linux でポイント対サイト VPN を構成する
           href: storage-files-configure-p2s-vpn-linux.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: Azure File Sync でのサーバーの登録
           href: storage-sync-files-server-registration.md
@@ -131,7 +129,7 @@
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: アカウントのフェールオーバーを開始する
           href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: 監視
+    - name: モニター
       items:
         - name: Azure File Sync の監視
           href: storage-sync-files-monitoring.md
@@ -145,7 +143,7 @@
           href: storage-sync-files-storsimple-migration.md
         - name: AzCopy を使用したデータの移動
           items:
-            - name: 作業開始
+            - name: はじめに
               href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
             - name: ファイルでの使用
               href: ../common/storage-use-azcopy-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
@@ -165,7 +163,7 @@
           href: storage-c-plus-plus-how-to-use-files.md
         - name: Python
           href: storage-python-how-to-use-file-storage.md
-    - name: セキュリティ保護
+    - name: セキュリティで保護
       items:
         - name: ファイアウォールと仮想ネットワークの構成
           href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
@@ -175,7 +173,7 @@
           href: storage-files-active-directory-enable.md
         - name: Azure Storage クライアントのセキュリティで保護された TLS の有効化
           href: ../common/storage-security-tls.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: Azure Files のトラブルシューティング - Windows
           href: storage-troubleshoot-windows-file-connection-problems.md
@@ -199,7 +197,7 @@
       items:
         - name: Files (バージョン 11.x)
           href: /dotnet/api/microsoft.azure.storage.file
-        - name: データの移動
+        - name: データ移動
           href: /dotnet/api/microsoft.azure.storage.datamovement
         - name: ストレージ リソース プロバイダー
           href: /dotnet/api/overview/azure/storage/management
@@ -219,7 +217,7 @@
           href: /rest/api/storageservices
         - name: ストレージ リソース プロバイダー
           href: /rest/api/storagerp
-        - name: Import/Export
+        - name: インポート/エクスポート
           href: /rest/api/storageimportexport
     - name: C++
       href: 'https://azure.github.io/azure-storage-cpp'

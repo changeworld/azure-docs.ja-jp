@@ -10,7 +10,7 @@
       href: avere-vfxt-deploy-plan.md
     - name: Avere vFXT デプロイの概要
       href: avere-vfxt-deploy-overview.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Avere vFXT の作成を準備する
       href: avere-vfxt-prereqs.md
@@ -20,7 +20,7 @@
       href: avere-vfxt-cluster-gui.md
     - name: サポートのアップロードを有効にする
       href: avere-vfxt-enable-support.md
-    - name: ストレージの構成
+    - name: 記憶域を構成する
       href: avere-vfxt-add-storage.md
     - name: Avere vFXT クラスターをマウントする
       href: avere-vfxt-mount-clients.md

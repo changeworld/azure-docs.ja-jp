@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4005b171ef61fa02821b4a32db3be26cfb94c9ff
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: c8449ef27ca73cd6e0c2908ce4cbebea2c513dbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668075"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450089"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -43,11 +43,11 @@ ms.locfileid: "74668075"
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>バックアップ データを別のコンテナーに移動することはできますか。
 
-No. コンテナーに保存されているバックアップ データを別のコンテナーに移行することはできません。
+いいえ。 コンテナーに保存されているバックアップ データを別のコンテナーに移行することはできません。
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>バックアップ後に GRS から LRS へ変更することはできますか?
 
-No. Recovery Services コンテナーでは、バックアップが保存される前にしか、ストレージ オプションを変更できません。
+いいえ。 Recovery Services コンテナーでは、バックアップが保存される前にしか、ストレージ オプションを変更できません。
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Recovery Services コンテナーにバックアップした VM でアイテム レベルの復元 (ILR) を行うことはできますか。
 
@@ -107,7 +107,7 @@ Windows 8 以降 | 54,400 GB
 Windows 7 |1,700 GB
 Windows Server 2012 またはそれ以降 | 54,400 GB
 Windows Server 2008、Windows Server 2008 R2 | 1,700 GB
-Azure VM | 16 個のデータ ディスク<br/><br/> 最大 4095 GB のデータ ディスク
+Azure VM | 16 個のデータ ディスク<br/> 16 台以上のディスク (最大 32 ディスク) を搭載した VM のプライベート プレビューにサインアップするには、AskAzureBackupTeam@microsoft.com に記載されている連絡先にご連絡ください <br><br> 最大 32 TB のデータ ディスク
 
 ### <a name="how-is-the-data-source-size-determined"></a>データ ソースのサイズはどのように決定されますか。
 
@@ -135,7 +135,7 @@ Azure Backup エージェント、DPM、または Azure Backup Server からバ�
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>バックアップを開始した後でバックアップ ジョブを取り消すと、転送されたバックアップ データは削除されますか。
 
-No. バックアップ ジョブを取り消す前にコンテナーに転送されたすべてのデータは、コンテナー内に残ります。
+いいえ。 バックアップ ジョブを取り消す前にコンテナーに転送されたすべてのデータは、コンテナー内に残ります。
 
 - Azure Backup では、チェックポイント メカニズムを使用して、バックアップ中に随時バックアップ データにチェックポイントを追加します。
 - バックアップ データにチェックポイントがあることで、次回のバックアップ処理でファイルの整合性を検証できます。
@@ -155,13 +155,13 @@ Azure VM のバックアップ ジョブを取り消した場合、転送済み�
 
 ### <a name="can-i-use-different-times-for-backup-scheduling-and-retention-policies"></a>バックアップ スケジュールと保有ポリシーを別々の期間に使用できますか。
 
-No. 保有ポリシーは、バックアップ ポイントにのみ適用できます。 一例として、この図には午前 12 時と午後 6 時に作成されたバックアップの保有ポリシーが示されています。
+いいえ。 保有ポリシーは、バックアップ ポイントにのみ適用できます。 一例として、この図には午前 12 時と午後 6 時に作成されたバックアップの保有ポリシーが示されています。
 
 ![バックアップのスケジュールと保有期間](./media/backup-azure-backup-faq/Schedule.png)
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>バックアップを長期にわたって保持した場合、データ ポイントが古いほど復元に時間がかかるのでしょうか。
 
-No. 最古のデータ ポイントも最新のデータ ポイントも復元に要する時間は同じです。 それぞれの回復ポイントは、完全なポイントと同じように動作します。
+いいえ。 最古のデータ ポイントも最新のデータ ポイントも復元に要する時間は同じです。 それぞれの回復ポイントは、完全なポイントと同じように動作します。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>それぞれの回復ポイントが完全なポイントと同じように機能する場合、それは課金対象のバックアップ ストレージの合計に影響するのでしょうか。
 
@@ -184,7 +184,7 @@ Azure Backup からの回復の数に制限はありません。
 
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure"></a>データを復元している間に発生する Azure からのエグレス トラフィックには料金が発生するのでしょうか。
 
-No. データ回復は無料ですので、送信トラフィックに対しては課金されません。
+いいえ。 データ回復は無料ですので、送信トラフィックに対しては課金されません。
 
 ### <a name="what-happens-when-i-change-my-backup-policy"></a>バックアップ ポリシーを変更した場合どうなりますか。
 
@@ -216,7 +216,7 @@ Azure Backup エージェントを使用する場合、暗号化キーは 16 文
 
 バックアップ データの暗号化に使用されるキーは、ユーザーのサイトにだけ存在します。 マイクロソフトは Azure にコピーを保持していませんし、キーにもアクセスできません。 ユーザーがキーを紛失した場合、マイクロソフトはバックアップ データを回復できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 その他のよく寄せられる質問をお読みください。
 
