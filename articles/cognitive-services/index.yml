@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 11/04/2019
-  ms.openlocfilehash: fae1321f70d538dcacde83cadd83f5cb15155459
-  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+  ms.openlocfilehash: 291d2ca69a1f02f76430074b2a548b7d36c942be
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/03/2019
-  ms.locfileid: "74775525"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75446411"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -89,7 +89,7 @@ conceptualContent:
     links:
     - url: ./speech-service/index.md
       itemType: overview
-      text: Speech Services
+      text: Speech サービス
     - url: ./speaker-recognition/home.md
       itemType: overview
       text: Speaker Recognition (プレビュー)
@@ -108,7 +108,7 @@ conceptualContent:
     - url: ./personalizer/index.yml
       itemType: overview
       text: Personalizer
-  - title: Search
+  - title: 検索
     summary: お使いのアプリに Bing Search API を組み込み、1 つの API 呼び出しで何十億もの Web ページ、画像、動画、ニュースをくまなく調べる機能を実装します。
     links:
     - url: ./Bing-web-search/index.yml

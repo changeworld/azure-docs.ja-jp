@@ -4,11 +4,9 @@
   items:
     - name: Azure IoT Central とは
       href: overview-iot-central.md
-    - name: IoT ソリューションのオプション
-      href: overview-iot-options.md
     - name: UI について
       href: overview-iot-central-tour.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: 新しいアプリケーションを作成する
@@ -27,13 +25,13 @@
       href: tutorial-add-device.md
 - name: 概念
   items:
-    - name: アーキテクチャ
+    - name: Architecture
       href: concepts-architecture.md
     - name: 接続
       href: concepts-connectivity.md
     - name: アプリケーション テンプレートとは
       href: concepts-app-templates.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: デバイスの接続
       items:
@@ -133,7 +131,7 @@
           href: howto-show-hide-chat.md
 - name: 関連項目
   items:
-    - name: 解決方法
+    - name: ソリューション
       items:
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'

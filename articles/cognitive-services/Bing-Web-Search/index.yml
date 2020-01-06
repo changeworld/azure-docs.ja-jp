@@ -14,12 +14,12 @@ metadata:
   author: aahill
   ms.author: aahi
   ms.date: 11/06/2019
-  ms.openlocfilehash: 27161f4d3d9b39ae4fcfa6f9f170b85e98517937
-  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+  ms.openlocfilehash: a425aab2f9f2fb8bf8ffcff5ec91aa1f43078250
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/03/2019
-  ms.locfileid: "74763897"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75448312"
 highlightedContent:
   items:
   - title: Bing Search API を比較する
@@ -35,7 +35,7 @@ highlightedContent:
     itemType: reference
     url: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/
 conceptualContent:
-  title: 作業開始
+  title: はじめに
   summary: 利用可能な以下の API のいずれかを選択して、Web から検索結果の取得を開始します。
   items:
   - title: Bing Web Search
@@ -57,7 +57,7 @@ conceptualContent:
       text: シングルページ Web アプリの作成
     footerLink:
       url: overview.md
-      text: 関連項目
+      text: 詳細情報
   - title: Bing Custom Search API
     links:
     - text: カスタム検索インスタンスの作成
@@ -77,7 +77,7 @@ conceptualContent:
       url: ../bing-custom-search/tutorials/custom-search-web-page.md
     footerLink:
       url: ../bing-custom-search/overview.md
-      text: 関連項目
+      text: 詳細情報
   - title: Bing Image Search
     links:
     - url: ../bing-image-search/image-search-sdk-quickstart.md
@@ -97,7 +97,7 @@ conceptualContent:
       url: ../bing-image-search/tutorial-bing-image-search-single-page-app.md
     footerLink:
       url: ../bing-image-search/overview.md
-      text: 関連項目
+      text: 詳細情報
   - title: Bing Entity Search API
     links:
     - text: C# の使用
@@ -117,7 +117,7 @@ conceptualContent:
       url: ../bing-entities-search/tutorial-bing-entities-search-single-page-app.md
     footerLink:
       url: ../bing-entities-search/overview.md
-      text: 関連項目
+      text: 詳細情報
   - title: Bing News Search API
     links:
     - text: C# の使用
@@ -137,7 +137,7 @@ conceptualContent:
       url: ../bing-news-search/tutorial-bing-news-search-single-page-app.md
     footerLink:
       url: ../bing-news-search/search-the-web.md
-      text: 関連項目
+      text: 詳細情報
   - title: Bing Video Search API
     links:
     - text: C# の使用
@@ -157,7 +157,7 @@ conceptualContent:
       url: ../Bing-Video-Search/tutorial-bing-video-search-single-page-app.md
     footerLink:
       url: ../Bing-Video-Search/overview.md
-      text: 関連項目
+      text: 詳細情報
   - title: Bing Visual Search API
     links:
     - text: C# の使用
@@ -177,7 +177,7 @@ conceptualContent:
       url: ../bing-visual-search/tutorial-visual-search-crop-area-results.md
     footerLink:
       url: ../bing-visual-search/overview.md
-      text: 関連項目
+      text: 詳細情報
   - title: Bing Autosuggest API
     links:
     - text: C# の使用
@@ -197,7 +197,7 @@ conceptualContent:
       url: ../Bing-Autosuggest/tutorials/autosuggest.md
     footerLink:
       url: ../Bing-Autosuggest/get-suggested-search-terms.md
-      text: 関連項目
+      text: 詳細情報
   - title: Bing Spell Check API
     links:
     - text: C# の使用
@@ -217,7 +217,7 @@ conceptualContent:
       url: ../bing-spell-check/tutorials/spellcheck.md
     footerLink:
       url: ../bing-spell-check/overview.md
-      text: 関連項目
+      text: 詳細情報
   - title: Local Business Search API
     links:
     - text: C# の使用
@@ -234,7 +234,7 @@ conceptualContent:
       url: ../bing-local-business-search/quickstarts/local-search-python-quickstart.md
     footerLink:
       url: ../bing-local-business-search/overview.md
-      text: 関連項目
+      text: 詳細情報
 additionalContent:
   sections:
   - title: リファレンス
@@ -362,4 +362,4 @@ additionalContent:
       - text: Azure PowerShell
         url: https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services
       - text: Azure CLI
-        url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+        url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list

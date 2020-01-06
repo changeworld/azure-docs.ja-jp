@@ -12,12 +12,12 @@ metadata:
   author: j-martens
   ms.author: jmartens
   ms.date: 10/29/2019
-  ms.openlocfilehash: 9921093e078504323a57a2ae17a24b13b72fbc60
-  ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+  ms.openlocfilehash: d9ff6c7d5fffd8ceb5d282b35db61e0ec0a0b7de
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/10/2019
-  ms.locfileid: "74973664"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75428361"
 landingContent:
 - title: Azure ML を使ってみる
   linkLists:
@@ -39,7 +39,7 @@ landingContent:
       url: service/concept-azure-machine-learning-architecture.md
   - linkListType: how-to-guide
     links:
-    - text: 環境をセットアップする
+    - text: 環境の設定方法
       url: service/how-to-configure-environment.md
     - text: トレーニング コンピューティング ターゲットを設定する
       url: service/how-to-set-up-training-targets.md
@@ -93,6 +93,8 @@ landingContent:
       url: service/concept-model-management-and-deployment.md
     - text: デプロイの方法と場所
       url: service/how-to-deploy-and-where.md
+    - text: 認証
+      url: service/how-to-setup-authentication.md
     - text: リアルタイムの予測
       url: service/how-to-consume-web-service.md
     - text: バッチ予測

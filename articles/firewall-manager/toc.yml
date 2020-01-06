@@ -19,7 +19,7 @@
       href: trusted-security-partners.md
     - name: ルール処理ロジック
       href: rule-processing.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 信頼されたセキュリティ パートナーのデプロイ
       href: deploy-trusted-security-partner.md
@@ -42,11 +42,11 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: リソース
   items:
     - name: テンプレートの作成
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: コミュニティ テンプレート

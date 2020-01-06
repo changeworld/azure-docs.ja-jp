@@ -4,7 +4,7 @@
   items:
     - name: Azure リソースのマネージド ID について
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: VM マネージド ID を使用した Azure Resource Manager へのアクセス
       items:
@@ -22,8 +22,6 @@
           href: tutorial-vm-windows-access-storage.md
         - name: アクセス キーを使用した Azure Storage へのアクセス
           href: tutorial-windows-vm-access-storage.md
-        - name: SAS を使用した Azure Storage へのアクセス
-          href: tutorial-windows-vm-access-storage-sas.md
         - name: Azure SQL へのアクセス
           href: tutorial-windows-vm-access-sql.md
         - name: Azure Key Vault へのアクセス
@@ -62,7 +60,7 @@
       href: /azure/event-hubs/event-hubs-managed-service-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
     - name: Azure Container Instances
       href: /azure/container-instances/container-instances-managed-identity?context=azure/active-directory/managed-identities-azure-resources/context/msi-context
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: VM でのマネージド ID の構成
       items:

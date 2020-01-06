@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 09/05/2019
-  ms.openlocfilehash: 8a4d99c195cd1341e491e5112a4f58013b074115
-  ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+  ms.openlocfilehash: defff242971a55d48b595b441c9dd3d420462801
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/11/2019
-  ms.locfileid: "70915423"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75437078"
 landingContent:
 - title: Event Hubs について
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure ポータル
+    - text: Azure portal
       url: event-hubs-create.md
     - text: Azure CLI
       url: event-hubs-quickstart-cli.md
@@ -135,7 +135,7 @@ landingContent:
       url: event-hubs-auto-inflate.md
     - text: 例外のトラブルシューティング
       url: event-hubs-messaging-exceptions.md
-- title: セキュリティ保護
+- title: セキュリティで保護
   linkLists:
   - linkListType: how-to-guide
     links:

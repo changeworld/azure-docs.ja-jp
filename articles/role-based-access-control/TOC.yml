@@ -7,7 +7,7 @@
       href: overview.md
     - name: 各種ロールについて
       href: rbac-and-directory-admin-roles.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: ユーザーのアクセス権の表示
       href: check-access.md
@@ -32,7 +32,7 @@
       href: pim-azure-resource.md
     - name: Azure 管理の条件付きアクセス
       href: conditional-access-azure-management.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: ロール定義の一覧表示
       items:
@@ -92,14 +92,14 @@
       href: elevate-access-global-admin.md
     - name: 従来の管理者
       href: classic-administrators.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       href: troubleshooting.md
 - name: リファレンス
   items:
     - name: リソース プロバイダー操作
       href: resource-provider-operations.md
     - name: RBAC の制限
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure CLI
