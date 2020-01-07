@@ -4,7 +4,7 @@
   items:
     - name: Azure Maps とは
       href: about-azure-maps.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Web アプリを作成する
@@ -31,6 +31,16 @@
           href: tutorial-ev-routing.md
         - name: Azure Notebooks (Python) を使用した気象データの分析
           href: weather-service-tutorial.md
+    - name: Google Maps から移行する
+      items:
+        - name: Google Maps から移行する
+          href: migrate-from-google-maps.md
+        - name: Web アプリを移行する
+          href: migrate-from-google-maps-web-app.md
+        - name: Android アプリを移行する
+          href: migrate-from-google-maps-android-app.md
+        - name: Web サービスを移行する
+          href: migrate-from-google-maps-web-services.md
 - name: 概念
   items:
     - name: Azure Maps による認証
@@ -63,7 +73,7 @@
       href: mobility-service-data-structure.md
     - name: 天気サービスの概念
       href: weather-services-concepts.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Maps のアカウントを管理する
       items:
@@ -103,44 +113,48 @@
               href: create-data-source-web-sdk.md
             - name: シンボル レイヤーを追加する
               href: map-add-pin.md
+            - name: ポップアップを追加する
+              href: map-add-popup.md
             - name: バブル レイヤーを追加する
               href: map-add-bubble-layer.md
+            - name: HTML マーカーを追加する
+              href: map-add-custom-html.md
             - name: 線レイヤーを追加する
               href: map-add-line-layer.md
             - name: 多角形レイヤーを追加する
               href: map-add-shape.md
-            - name: 浮き出し多角形レイヤーを追加する
+            - name: 多角形浮き出しレイヤーを追加する
               href: map-extruded-polygon.md
             - name: ヒート マップ レイヤーを追加する
               href: map-add-heat-map-layer.md
-            - name: ポップアップを追加する
-              href: map-add-popup.md
+            - name: イメージ レイヤーを追加する
+              href: map-add-image-layer.md
+            - name: タイル レイヤーを追加する
+              href: map-add-tile-layer.md
+            - name: 交通情報を表示する
+              href: map-show-traffic.md
             - name: ポイント データのクラスタリング
               href: clustering-point-data-web-sdk.md
             - name: データドリブンのスタイルの式を使用する
               href: data-driven-style-expressions-web-sdk.md
             - name: イメージ テンプレートの使用方法
               href: how-to-use-image-templates-web-sdk.md
-            - name: イメージ レイヤーを追加する
-              href: map-add-image-layer.md
-            - name: タイル レイヤーを追加する
-              href: map-add-tile-layer.md
-            - name: HTML マーカー
-              href: map-add-custom-html.md
-            - name: 交通情報を表示する
-              href: map-show-traffic.md
             - name: イベントへの反応
               href: map-events.md
             - name: アプリをアクセス可能にする
               href: map-accessibility.md
         - name: 描画ツール
           items:
-            - name: 描画ツール バーの追加
-              href: map-add-drawing-toolbar.md
-            - name: 描画オプションの設定
+            - name: 描画ツール モジュールを使用する
               href: set-drawing-options.md
-            - name: シェイプ データの取得
+            - name: 描画ツールバーを追加する
+              href: map-add-drawing-toolbar.md
+            - name: 図形データを取得する
               href: map-get-shape-data.md
+            - name: 描画イベントに応答する
+              href: drawing-tools-events.md
+            - name: 相互作用の種類とキーボード ショートカット
+              href: drawing-tools-interactions-keyboard-shortcuts.md
         - name: サービス モジュール
           items:
             - name: サービス モジュールの使用
@@ -231,6 +245,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps のビデオ
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: オープン ソース プロジェクト
+      href: open-source-projects.md
     - name: Azure Maps のケース スタディ
       href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps の用語集
@@ -247,7 +263,7 @@
       href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
 - name: 関連項目
   items:
-    - name: 解決方法
+    - name: ソリューション
       items:
         - name: IoT ソリューション アクセラレータ
           href: /azure/iot-suite

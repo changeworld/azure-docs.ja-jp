@@ -5,7 +5,7 @@
       items:
         - name: Azure Dev Spaces について
           href: about.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: チーム開発
           href: quickstart-team-development.md
@@ -91,9 +91,11 @@
           href: how-to/run-dev-spaces-windows-containers.md
         - name: カスタム イングレスと HTTPS に traefik を使用する
           href: how-to/ingress-https-traefik.md
+        - name: カスタムのイングレスと HTTPS に NGINX を使用する
+          href: how-to/ingress-https-nginx.md
         - name: 開発用マシンを AKS クラスターに接続する (プレビュー)
           href: how-to/connect.md
     - name: トラブルシューティング
       href: troubleshooting.md
-    - name: FAQ
+    - name: よく寄せられる質問
       href: faq.md
