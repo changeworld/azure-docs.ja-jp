@@ -6,7 +6,7 @@
       href: stream-analytics-introduction.md
     - name: エンドツーエンド ソリューション パターン
       href: stream-analytics-solution-patterns.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: ジョブの作成 - Azure Portal
@@ -49,7 +49,7 @@
           href: stream-analytics-define-inputs.md
         - name: 参照データ入力
           href: stream-analytics-use-reference-data.md
-        - name: .NET カスタム逆シリアライザーの作成
+        - name: カスタム デシリアライザーを使用して任意の形式の入力を読み取る
           href: custom-deserializer-examples.md
     - name: ジョブの出力の種類
       items:
@@ -79,9 +79,9 @@
       href: stream-analytics-concepts-checkpoint-replay.md
     - name: エラー ポリシー
       href: stream-analytics-output-error-policy.md
-- name: ハウツーガイド
+- name: ハウツー ガイド
   items:
-    - name: 管理
+    - name: 管理する
       items:
         - name: 資格情報の更新
           href: stream-analytics-login-credentials-inputs-outputs.md
@@ -138,7 +138,7 @@
           maintainContext: true
         - name: 地理空間のシナリオ
           href: geospatial-scenarios.md
-    - name: 監視
+    - name: モニター
       items:
         - name: ジョブの監視 - Azure Portal
           href: stream-analytics-monitoring.md
@@ -154,7 +154,7 @@
           href: stream-analytics-streaming-unit-consumption.md
         - name: 並列処理を使用したスケーリング
           items:
-            - name: クエリ並列処理
+            - name: クエリの並列処理
               href: stream-analytics-parallelization.md
             - name: スループットの向上
               href: stream-analytics-scale-jobs.md
@@ -174,9 +174,9 @@
       items:
         - name: ツールをインストールする
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: サンプル データに対する
+        - name: サンプル データを使用してローカルでテストする
           href: stream-analytics-vs-tools-local-run.md
-        - name: ライブ データに対するテスト
+        - name: ライブ データを使用してローカルでテストする
           href: stream-analytics-live-data-local-testing.md
         - name: Visual Studio でのジョブの表示
           href: stream-analytics-vs-tools.md
@@ -188,17 +188,19 @@
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
-        - name: サンプル データに対する
-          href: vscode-local-run.md
+        - name: サンプル データを使用してローカルでテストする
+          href: visual-studio-code-local-run.md
+        - name: ライブ データを使用してローカルでテストする
+          href: visual-studio-code-local-run-live-input.md
         - name: CI/CD パイプラインの設定
           href: setup-cicd-vs-code.md
         - name: ジョブの探索
-          href: vscode-explore-jobs.md
-    - name: トラブルシューティング
+          href: visual-studio-code-explore-jobs.md
+    - name: '[トラブルシューティング]'
       items:
         - name: 入力
           href: stream-analytics-troubleshoot-input.md
-        - name: 出力
+        - name: Output
           href: stream-analytics-troubleshoot-output.md
         - name: クエリ ロジック
           href: stream-analytics-troubleshoot-query.md
@@ -231,7 +233,7 @@
             - name: AVG
               href: /stream-analytics-query/avg-azure-stream-analytics
               maintainContext: true
-            - name: COUNT
+            - name: '[COUNT]'
               href: /stream-analytics-query/count-azure-stream-analytics
               maintainContext: true
             - name: Collect
@@ -240,10 +242,10 @@
             - name: CollectTOP
               href: /stream-analytics-query/collecttop-azure-stream-analytics
               maintainContext: true
-            - name: MAX
+            - name: '[MAX]'
               href: /stream-analytics-query/max-azure-stream-analytics
               maintainContext: true
-            - name: MIN
+            - name: '[MIN]'
               href: /stream-analytics-query/min-azure-stream-analytics
               maintainContext: true
             - name: PERCENTILE_CONT
@@ -252,13 +254,13 @@
             - name: PERCENTILE_DISC
               href: /stream-analytics-query/percentile-disc-azure-stream-analytics
               maintainContext: true
-            - name: STDEV
+            - name: '[STDEV]'
               href: /stream-analytics-query/stdev-azure-stream-analytics
               maintainContext: true
             - name: STDEVP
               href: /stream-analytics-query/stdevp-azure-stream-analytics
               maintainContext: true
-            - name: SUM
+            - name: '[SUM]'
               href: /stream-analytics-query/sum-azure-stream-analytics
               maintainContext: true
             - name: TopOne
@@ -267,7 +269,7 @@
             - name: VAR
               href: /stream-analytics-query/var-azure-stream-analytics
               maintainContext: true
-            - name: VARP
+            - name: '[VARP]'
               href: /stream-analytics-query/varp-azure-stream-analytics
               maintainContext: true
         - name: 分析関数
@@ -323,7 +325,7 @@
             - name: 日付と時刻関数の概要
               href: /stream-analytics-query/date-and-time-functions-azure-stream-analytics
               maintainContext: true
-            - name: DATEADD
+            - name: '[DATEADD]'
               href: /stream-analytics-query/dateadd-azure-stream-analytics
               maintainContext: true
             - name: DATEDIFF
@@ -401,7 +403,7 @@
             - name: POWER
               href: /stream-analytics-query/power-azure-stream-analytics
               maintainContext: true
-            - name: ROUND
+            - name: '[ROUND]'
               href: /stream-analytics-query/round-azure-stream-analytics.md
               maintainContext: true
             - name: SIGN
@@ -438,7 +440,7 @@
             - name: LEN
               href: /stream-analytics-query/len-azure-stream-analytics
               maintainContext: true
-            - name: LOWER
+            - name: '[LOWER]'
               href: /stream-analytics-query/lower-azure-stream-analytics
               maintainContext: true
             - name: PATINDEX
@@ -447,13 +449,13 @@
             - name: REGEXMATCH
               href: /stream-analytics-query/regexmatch-azure-stream-analytics
               maintainContext: true
-            - name: REPLACE
+            - name: '[REPLACE]'
               href: /stream-analytics-query/replace-azure-stream-analytics.md
               maintainContext: true
-            - name: SUBSTRING
+            - name: '[SUBSTRING]'
               href: /stream-analytics-query/substring-azure-stream-analytics
               maintainContext: true
-            - name: UPPER
+            - name: '[UPPER]'
               href: /stream-analytics-query/upper-azure-stream-analytics
               maintainContext: true
         - name: ウィンドウ関数

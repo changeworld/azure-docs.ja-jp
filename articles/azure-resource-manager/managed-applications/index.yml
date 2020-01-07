@@ -1,0 +1,89 @@
+### YamlMime:Landing
+title: Managed Applications のドキュメント
+summary: ユーザーがデプロイと運用を簡単に行うことができるクラウド ソリューションを提供します。
+metadata:
+  title: Azure Managed Applications のドキュメント
+  description: Azure マネージド アプリケーションを使用して、ユーザーが簡単にデプロイして運用できるクラウド ソリューションを提供できます。
+  ms.service: managed-applications
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 60f7d4b9c9bd9057e0869b3efe1843eeb8d873f8
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75648380"
+landingContent:
+- title: Managed Applications について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Managed Applications とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: ビュー定義アーティファクト
+      url: concepts-view-definition.md
+    - text: 関連付け用の Azure Policy
+      url: concepts-built-in-policy.md
+    - text: ロール定義のアーティファクト
+      url: concepts-custom-role-definition.md
+- title: マネージド アプリケーションを作成する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: アプリケーション定義の発行
+      url: publish-managed-app-definition-quickstart.md
+    - text: サービス カタログ アプリのデプロイ
+      url: deploy-service-catalog-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: 定義ファイルの作成
+      url: publish-service-catalog-app.md
+    - text: マーケットプレース アプリケーションの発行
+      url: publish-marketplace-app.md
+    - text: カスタム プロバイダーを使用してマネージド アプリケーションを作成する
+      url: tutorial-create-managed-app-with-custom-provider.md
+  - linkListType: how-to-guide
+    links:
+    - text: Key Vault のシークレットを使用する
+      url: key-vault-access.md
+    - text: ポータルを使用して発行する
+      url: publish-portal.md
+- title: アクセス制御
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Just-In-Time アクセスを要求する
+      url: request-just-in-time-access.md
+    - text: Just-In-Time アクセスを承認する
+      url: approve-just-in-time-access.md
+    - text: マネージド ID を使用したデプロイ
+      url: publish-managed-identity.md
+- title: ポータル UI を作成する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ポータルのインターフェイスを作成する
+      url: create-uidefinition-overview.md
+    - text: ポータルのインターフェイスをテストする
+      url: test-createuidefinition.md
+    - text: ユーザー インターフェイス要素の成果物
+      url: reference-createuidefinition-artifact.md
+    - text: インターフェイス要素
+      url: create-uidefinition-elements.md
+    - text: インターフェイス関数
+      url: create-uidefinition-functions.md
+- title: リソースの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: デプロイ済みインスタンスを監視する
+      url: monitor-managed-application-portal.md
+    - text: 通知を使用してデプロイする
+      url: publish-notifications.md
+    - text: マネージド リソースの更新
+      url: update-managed-resources.md

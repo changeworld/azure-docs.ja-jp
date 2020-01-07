@@ -4,7 +4,7 @@
   items:
     - name: Azure Backup とは
       href: backup-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: VM のバックアップ - ポータル
@@ -36,6 +36,14 @@
       href: tutorial-backup-windows-server-to-azure.md
     - name: Windows Server へのファイルの復元
       href: tutorial-backup-restore-files-windows-server.md
+    - name: Azure VM 上の SAP HANA データベース - CLI の使用
+      items:
+        - name: SAP HANA データベースのバックアップ - CLI
+          href: tutorial-sap-hana-backup-cli.md
+        - name: SAP HANA データベースの復元 - CLI
+          href: tutorial-sap-hana-restore-cli.md
+        - name: バックアップされた SAP HANA データベースの管理 - CLI
+          href: tutorial-sap-hana-manage-cli.md
 - name: サンプル
   items:
     - name: Azure PowerShell
@@ -58,7 +66,7 @@
           href: sap-hana-backup-support-matrix.md
         - name: Azure Policy 向けにサポートされる VM SKU
           href: backup-azure-policy-supported-skus.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: ロールベースのアクセス制御
           href: backup-rbac-rs-vault.md
@@ -110,7 +118,7 @@
               href: backup-mabs-whats-new-mabs.md
             - name: リリース ノート MABS V3
               href: backup-mabs-release-notes-v3.md
-            - name: 無人インストール
+            - name: 自動実行インストール
               href: backup-mabs-unattended-install.md
         - name: ワークロードの保護
           items:
@@ -244,6 +252,8 @@
           href: manage-monitor-sql-database-backup.md
     - name: Azure VM 上の SAP HANA データベース
       items:
+        - name: Azure VM 上の SAP HANA のバックアップについて
+          href: sap-hana-db-about.md
         - name: Azure VM 上の SAP HANA データベースのバックアップ
           href: backup-azure-sap-hana-database.md
         - name: Azure VM での SAP HANA データベースの復元
@@ -276,7 +286,7 @@
           href: backup-azure-move-recovery-services-vault.md
         - name: Recovery Services コンテナーの監視と管理
           href: backup-azure-manage-windows-server.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md

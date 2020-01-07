@@ -6,6 +6,14 @@
       href: migrate-services-overview.md
     - name: 新機能
       href: whats-new.md
+    - name: 一般的な質問
+      items:
+        - name: Azure Migrate に関する質問
+          href: resources-faq.md
+        - name: Azure Migrate アプライアンスに関する質問
+          href: common-questions-appliance.md
+        - name: 検出、評価、依存関係の視覚化に関する質問
+          href: common-questions-discovery-assessment.md
 - name: チュートリアル
   items:
     - name: VMware VM の評価と移行
@@ -44,8 +52,6 @@
           href: tutorial-assess-import.md
 - name: 概念
   items:
-    - name: 一般的な質問
-      href: resources-faq.md
     - name: サポート マトリックス
       items:
         - name: Azure Migrate のサポート マトリックス
@@ -70,7 +76,7 @@
       href: concepts-assessment-calculation.md
     - name: 依存関係の視覚化
       href: concepts-dependency-visualization.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 以前のバージョンの使用
       href: migrate-v1.md
@@ -114,7 +120,7 @@
       href: how-to-migrate-at-scale.md
     - name: 移行の例 (Contoso シリーズ)
       href: contoso-migration-overview.md
-- name: トラブルシューティング
+- name: '[トラブルシューティング]'
   items:
     - name: Azure Migrate のトラブルシューティング
       href: troubleshooting-general.md

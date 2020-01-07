@@ -1,0 +1,138 @@
+- name: Azure リソースの管理に関するドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Resource Manager とは
+      href: overview.md
+- name: 概念
+  items:
+    - name: サブスクリプションとサービスの制限
+      href: azure-subscription-service-limits.md
+    - name: Resource Manager デプロイとクラシック デプロイ
+      href: deployment-models.md
+    - name: Azure の一般的なセキュリティ属性
+      href: azure-resource-manager-security-controls.md
+    - name: サービスごとのリソース プロバイダー
+      href: azure-services-resource-providers.md
+    - name: リソース インスタンスの制限
+      href: resources-without-resource-group-limit.md
+- name: 方法
+  items:
+    - name: 移動 - リソース グループ/サブスクリプション
+      items:
+        - name: リソースの移動
+          href: move-resource-group-and-subscription.md
+        - name: サポートされているリソース
+          href: move-support-resources.md
+        - name: 移動のトラブルシューティング
+          href: troubleshoot-move.md
+        - name: サービス
+          items:
+            - name: App Service
+              href: ./move-limitations/app-service-move-limitations.md
+            - name: Azure DevOps
+              href: /azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json
+            - name: 従来のデプロイ
+              href: ./move-limitations/classic-model-move-limitations.md
+            - name: ネットワーク
+              href: ./move-limitations/networking-move-limitations.md
+            - name: 復旧サービス
+              href: ../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtual Machines
+              href: ./move-limitations/virtual-machines-move-limitations.md
+    - name: 移動 - リージョン
+      items:
+        - name: リージョン間で移動する
+          href: move-region.md
+        - name: サポートされているサービス
+          href: region-move-support.md
+        - name: サービス
+          items:
+            - name: Azure VM
+              href: ../../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure Storage
+              href: ../../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: 仮想ネットワーク
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: ネットワーク セキュリティ グループ (NSG)
+              href: ../../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: パブリック IP アドレス
+              href: ../../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: Tags
+      items:
+        - name: リソースへのタグ付け
+          href: tag-resources.md
+        - name: タグのサポート
+          href: tag-support.md
+    - name: 管理する
+      items:
+        - name: リソース グループの管理
+          items:
+            - name: Azure ポータルの使用
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-portal.md
+            - name: Azure CLI の使用
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-cli.md
+            - name: Azure PowerShell の使用
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-powershell.md
+        - name: リソースの管理
+          items:
+            - name: Azure ポータルの使用
+              displayName: 'open,delete,deploy,move,lock,tag,monitor'
+              href: manage-resources-portal.md
+            - name: Azure CLI の使用
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-cli.md
+            - name: Azure PowerShell の使用
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-powershell.md
+        - name: リソース グループとリソースの削除
+          href: delete-resource-group.md
+        - name: リソースのロック
+          href: lock-resources.md
+        - name: EA サブスクリプションを作成する
+          href: programmatically-create-subscription.md
+        - name: EA サブスクリプションを作成するためのアクセスを許可する
+          href: grant-access-to-create-subscription.md
+        - name: テナントをまたいだ認証
+          href: authenticate-multi-tenant.md
+    - name: アクティビティ ログを表示する
+      href: view-activity-logs.md
+    - name: リソース プロバイダーと種類
+      href: resource-providers-and-types.md
+    - name: スロットル リクエスト
+      href: request-limits-and-throttling.md
+    - name: 非同期操作の追跡
+      href: async-operations.md
+- name: リファレンス
+  items:
+    - name: REST
+      href: /rest/api/resources/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources?view=azure-python
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: 個人データを管理する
+      href: resource-manager-personal-data.md
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

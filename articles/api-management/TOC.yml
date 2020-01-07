@@ -6,7 +6,9 @@
       href: api-management-key-concepts.md
     - name: API Management の使用可能な機能
       href: api-management-features.md
-- name: クイック スタート
+    - name: AKS にデプロイされたマイクロサービスを管理する
+      href: api-management-kubernetes.md
+- name: クイックスタート
   expanded: true
   items:
     - name: インスタンスの作成 - ポータル
@@ -41,7 +43,7 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: 用語集
+    - name: 用語
       href: api-management-terminology.md
     - name: ポリシー
       items:
@@ -49,11 +51,11 @@
           href: api-management-howto-policies.md
         - name: ポリシー リファレンスのインデックス
           href: api-management-policies.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 組み込みのセキュリティ制御
           href: api-management-security-controls.md
-    - name: Subscriptions
+    - name: サブスクリプション
       href: api-management-subscriptions.md
     - name: Automation を使用して管理する
       href: automation-manage-api-management.md
@@ -63,7 +65,7 @@
       href: api-management-api-import-restrictions.md
     - name: セルフホステッド ゲートウェイの概要
       href: self-hosted-gateway-overview.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: API の定義
       items:
@@ -163,9 +165,9 @@
           href: api-management-developer-portal-templates-reference.md
         - name: API
           href: api-management-api-templates.md
-        - name: 成果物
+        - name: 製品
           href: api-management-product-templates.md
-        - name: アプリケーション
+        - name: '[アプリケーション]'
           href: api-management-application-templates.md
         - name: 発行
           href: api-management-issue-templates.md
@@ -243,7 +245,7 @@
       href: /azure/templates/microsoft.apimanagement/allversions
 - name: リソース
   items:
-    - name: FAQ
+    - name: よく寄せられる質問
       href: api-management-faq.md
     - name: 価格
       href: 'https://aka.ms/apimpricing'

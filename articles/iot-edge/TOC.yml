@@ -4,7 +4,7 @@
   items:
     - name: Azure IoT Edge について
       href: about-iot-edge.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Linux デバイスへのコードのデプロイ
@@ -83,7 +83,7 @@
           href: module-development.md
         - name: 開発環境
           href: development-environment.md
-    - name: Deployment
+    - name: デプロイ
       items:
         - name: 配置マニフェスト
           href: module-composition.md
@@ -93,7 +93,7 @@
       href: offline-capabilities.md
     - name: ゲートウェイとしての IoT Edge デバイス
       href: iot-edge-as-gateway.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Azure IoT Edge のセキュリティ保護
           href: security.md
@@ -107,7 +107,7 @@
       href: production-checklist.md
     - name: IoT Edge の用語集
       href: iot-edge-glossary.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: IoT Edge デバイスを登録する
       href: how-to-register-device.md
@@ -125,6 +125,10 @@
           href: how-to-install-iot-edge-ubuntuvm.md
         - name: Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
+        - name: 運用環境の証明書をインストールする
+          href: how-to-install-production-certificates.md
+        - name: テスト証明書を作成する
+          href: how-to-create-test-certificates.md
         - name: ランタイム バージョンの更新
           href: how-to-update-iot-edge.md
     - name: DPS による自動プロビジョニング
@@ -145,7 +149,7 @@
           href: how-to-vs-code-develop-module.md
     - name: モジュールのデプロイ
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: how-to-deploy-modules-portal.md
         - name: Azure CLI
           href: how-to-deploy-modules-cli.md
@@ -153,7 +157,7 @@
           href: how-to-deploy-modules-vscode.md
     - name: 大規模なデプロイと監視
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: how-to-deploy-monitor.md
         - name: Azure CLI
           href: how-to-deploy-monitor-cli.md
@@ -185,11 +189,11 @@
           href: how-to-ci-cd.md
         - name: Jenkins 用の IoT Edge プラグイン
           href: how-to-devops-plugins.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       href: troubleshoot.md
 - name: 関連項目
   items:
-    - name: 解決方法
+    - name: ソリューション
       items:
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'

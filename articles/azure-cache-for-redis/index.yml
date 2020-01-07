@@ -1,0 +1,100 @@
+### YamlMime:Landing
+title: Azure Cache for Redis のドキュメント
+summary: アプリケーションに対してスループットが高く待機時間の短いデータ アクセスを提供する、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカー、Azure Cache for Redis の使用方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Azure 上の任意のアプリケーションから Azure Cache for Redis を使用する方法を紹介します。
+metadata:
+  title: Azure Cache for Redis のドキュメント
+  description: アプリケーションでのデータへの高速アクセスを可能にする、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカーである Azure Cache for Redis の使用方法について説明します。 チュートリアルや API リファレンスなどを提供します。
+  ms.service: cache
+  ms.topic: landing-page
+  author: yegu-ms
+  ms.author: yegu
+  ms.date: 12/16/2019
+  ms.openlocfilehash: fad78db361927a14f393066fb088354552d880a9
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75470034"
+landingContent:
+- title: Azure Cache for Redis について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Cache for Redis とは
+      url: cache-overview.md
+    - text: Azure Cache for Redis の Premium レベルについて
+      url: cache-premium-tier-intro.md
+  - linkListType: video
+    links:
+    - text: 管理オプション
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-administration-options/
+    - text: セキュリティ キャッシュ
+      url: https://azure.microsoft.com/resources/videos/azure-redis-security-cacheing/
+    - text: ベスト プラクティス
+      url: https://azure.microsoft.com/resources/videos/azure-redis-cache-best-practices/
+    - text: パフォーマンスを向上させる
+      url: https://azure.microsoft.com/resources/videos/increase-performance-through-redis-cluster-in-azure-redis-cache/
+  - linkListType: whats-new
+    links:
+    - text: よく寄せられる質問
+      url: cache-faq.md
+    - text: Azure Cache for Redis のベスト プラクティス
+      url: cache-best-practices.md
+    - text: Azure Cache for Redis の ASP.NET セッション状態プロバイダー
+      url: cache-aspnet-session-state-provider.md
+- title: クイック スタート:Azure Cache for Redis
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET Framework アプリをコーディングする
+      url: cache-dotnet-how-to-use-azure-redis-cache.md
+    - text: .NET Core アプリをコーディングする
+      url: cache-dotnet-core-quickstart.md
+    - text: ASP.NET Web アプリをコーディングする
+      url: cache-web-app-howto.md
+    - text: Java アプリをコーディングする
+      url: cache-java-get-started.md
+    - text: Node.js アプリをコーディングする
+      url: cache-nodejs-get-started.md
+    - text: Python アプリをコーディングする
+      url: cache-python-get-started.md
+  - linkListType: tutorial
+    links:
+    - text: ASP.NET でキャッシュ アサイド スコアボードを作成する
+      url: cache-web-app-cache-aside-leaderboard.md
+  - linkListType: get-started
+    links:
+    - text: サンプル
+      url: cache-redis-samples.md
+- title: SDK とコマンドライン
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.redis
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.redis.rediscache
+    - text: REST API
+      url: /rest/api/redis/
+    - text: Redis クライアント
+      url: https://redis.io/clients
+    - text: Redis コマンド
+      url: https://redis.io/commands
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.rediscache
+    - text: Azure CLI
+      url: /cli/azure/redis
+- title: '[トラブルシューティング]'
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: クライアント側の問題のトラブルシューティング
+      url: cache-troubleshoot-client.md
+    - text: サーバー側の問題のトラブルシューティング
+      url: cache-troubleshoot-server.md
+    - text: タイムアウトに関するトラブルシューティング
+      url: cache-troubleshoot-timeouts.md
+    - text: データ損失の問題のトラブルシューティング
+      url: cache-troubleshoot-data-loss.md

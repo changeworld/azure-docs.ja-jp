@@ -1,0 +1,125 @@
+### YamlMime:Landing
+title: Azure Resource Manager テンプレートのドキュメント
+summary: Resource Manager テンプレートは JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。
+metadata:
+  title: Azure Resource Manager のドキュメント
+  description: Azure Resource Manager テンプレートを開発し、それらを使用して Azure リソースをデプロイする方法について説明します
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: templates
+  ms.topic: landing-page
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 43cd4dadc33ddc498106084ee26ef0819c14b973
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75469932"
+landingContent:
+- title: Azure Resource Manager テンプレートについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: テンプレートとは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: ベスト プラクティス
+      url: template-best-practices.md
+    - text: デプロイ モード
+      url: deployment-modes.md
+    - text: リンク済みテンプレート
+      url: linked-templates.md
+    - text: サブスクリプション レベルのデプロイ
+      url: deploy-to-subscription.md
+  - linkListType: video
+    links:
+    - text: 新機能
+      url: https://youtu.be/3D-JIKShrws
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: テンプレートの作成 - ポータル
+      url: quickstart-create-templates-use-the-portal.md
+    - text: テンプレートの作成 - VS Code
+      url: quickstart-create-templates-use-visual-studio-code.md
+    - text: テンプレートの作成 - Visual Studio
+      url: create-visual-studio-deployment-project.md
+  - linkListType: tutorial
+    links:
+    - text: 初心者向けチュートリアル
+      url: template-tutorial-create-first-template.md
+    - text: 複数のインスタンスのデプロイ
+      url: template-tutorial-create-multiple-instances.md
+    - text: デプロイ順序の設定
+      url: template-tutorial-create-templates-with-dependent-resources.md
+    - text: キー コンテナーの統合
+      url: template-tutorial-use-key-vault.md
+- title: テンプレートの開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: VS Code を使用する
+      url: use-vs-code-to-create-template.md
+    - text: 関数を使用する
+      url: template-functions.md
+    - text: パラメーターを定義する
+      url: template-parameters.md
+    - text: 変数の定義
+      url: template-variables.md
+    - text: リソースを定義する
+      url: template-syntax.md#resources
+    - text: 出力を定義する
+      url: template-outputs.md
+  - linkListType: reference
+    links:
+    - text: テンプレート ファイルの構文
+      url: template-syntax.md
+    - text: Azure クイック スタート テンプレート
+      url: https://azure.microsoft.com/resources/templates/
+- title: テンプレートのデプロイ
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell を使用する方法
+      url: deploy-powershell.md
+    - text: CLI を使用する方法
+      url: deploy-cli.md
+    - text: ポータルを使用する方法
+      url: deploy-portal.md
+    - text: REST API を使用する方法
+      url: deploy-rest.md
+    - text: what-if のデプロイ
+      url: template-deploy-what-if.md
+    - text: デプロイ履歴を表示する
+      url: deployment-history.md
+- title: テンプレートの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: テンプレートのエクスポート
+      url: export-template-portal.md
+    - text: CI/CD
+      url: add-template-to-azure-pipelines.md
+- title: リファレンス コンテンツの確認
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: テンプレート リファレンス
+      url: /azure/templates/
+    - text: REST API
+      url: /rest/api/resources/
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python

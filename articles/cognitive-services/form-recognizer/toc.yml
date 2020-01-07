@@ -4,30 +4,60 @@
   items:
     - name: Form Recognizer とは
       href: overview.md
-- name: クイック スタート
+    - name: 新機能
+      href: whats-new.md
+- name: クイックスタート
   expaned: true
   items:
+    - name: サンプル ラベル付けツールの使用
+      items:
+        - name: ラベルを使用してカスタム モデルをトレーニングする
+          href: quickstarts/label-tool.md
     - name: REST API の使用
       items:
-        - name: カスタム モデルをトレーニングしてデータを抽出する
+        - name: ラベルを使用しないカスタム モデルのトレーニングと使用
           items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
+            - name: v2.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract.md
+                - name: Python
+                  href: quickstarts/python-train-extract.md
+            - name: v1.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-train-extract-v1.md
+                - name: Python
+                  href: quickstarts/python-train-extract-v1.md
+        - name: ラベルを使用したカスタム モデルのトレーニングと使用
+          items:
             - name: Python
-              href: quickstarts/python-train-extract.md
+              href: quickstarts/python-labeled-data.md
         - name: あらかじめ構築されたレシート モデルを使用する
           items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
+            - name: v2.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts.md
+                - name: Python
+                  href: quickstarts/python-receipts.md
+            - name: v1.0
+              items:
+                - name: cURL
+                  href: quickstarts/curl-receipts-v1.md
+                - name: Python
+                  href: quickstarts/python-receipts-v1.md
+        - name: テキスト レイアウト情報を取得する
+          items:
             - name: Python
-              href: quickstarts/python-receipts.md
+              href: quickstarts/python-layout.md
     - name: .NET SDK の使用
       href: quickstarts/dotnet-sdk.md
 - name: チュートリアル
   items:
     - name: Logic Apps で Form Recognizer を使用する
       href: tutorial-form-recognizer-with-logic-apps.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: トレーニング データ セットの作成
       href: build-training-data-set.md
@@ -43,8 +73,10 @@
           href: deploy-form-recognizer-on-container-instances.md
 - name: リファレンス
   items:
-    - name: Form Recognizer API
-      href: 'https://aka.ms/form-recognizer/api'
+    - name: Form Recognizer API v2.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm'
+    - name: Form Recognizer API v1.0
+      href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeWithCustomModel'
     - name: SDK
       items:
         - name: .NET
