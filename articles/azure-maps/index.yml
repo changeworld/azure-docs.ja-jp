@@ -1,59 +1,172 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Maps のドキュメント
+summary: Microsoft Azure Maps は、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するために使用できる最新のマッピング データが搭載された強力な地理空間機能を、あらゆる業界の開発者に提供します。 Azure Maps は、Azure One API に準拠した一連の REST API であり、マップ、検索、経路指定、交通状況、モビリティ、天気、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、空間演算に対応しています。Web SDK と Android SDK の両方が用意されており、開発を簡単かつ柔軟に行えるうえ、複数のプラットフォームの垣根を越えて移植が可能です。
 metadata:
-  document_id: null
   title: Azure Maps のドキュメント | Microsoft Docs
-  meta.description: Use Azure Maps to provide geospatial services to your web or mobile application.
-  author: philmea
-  manager: null
+  description: Azure Maps と、それを使用して地理空間サービスを Web またはモバイル アプリケーションに提供する方法について説明します。
   ms.service: azure-maps
-  services: azure-maps
   ms.topic: landing-page
-  ms.date: 02/14/2019
+  author: philmea
   ms.author: philmea
-abstract:
-  description: Azure Maps は、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するために使用できる最新のマッピング データが搭載された強力な地理空間機能を、あらゆる業界の開発者に提供します。 Azure Maps は、Azure One API に準拠した一連の REST API であり、マップ、検索、経路指定、交通状況、モビリティ、タイム ゾーン、位置情報、ジオフェンシング、マップ データ、空間演算に対応しています。Web SDK と Android SDK の両方が用意されており、開発を簡単かつ柔軟に行えるうえ、複数のプラットフォームの垣根を越えて移植が可能です。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Azure Maps を使用して地理空間アプリケーションを作成する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_js.svg'
-            text: Web アプリを作成する
-            href: /azure/azure-maps/quick-demo-map-app
-  - title: ステップバイステップのチュートリアル
-    items:
-      - html: <b>Web SDK のチュートリアル</b>
-      - type: paragraph
-        text: Azure Maps Web SDK を使用して、地理空間 Web アプリケーションを構築します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/azure-maps/tutorial-search-location">観光名所の検索</a>
-          - html: <a href="/azure/azure-maps/tutorial-route-location">観光名所までのルート設定</a>
-          - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">移動モード別のルート</a>
-          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">ストア ロケーターの作成</a>
-      - html: <b>REST API のチュートリアル</b>
-      - type: paragraph
-        text: Azure Maps REST サービスを呼び出す地理空間アプリケーションを構築します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/azure-maps/tutorial-geofence">ジオフェンスの設定</a>
-          - html: <a href="/azure/azure-maps/tutorial-iot-hub-maps">空間分析</a>
-          - html: <a href=/azure/azure-maps/tutorial-ev-routing">Azure Notebooks を使用した EV ルーティング (Python)</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsW
-        items:
-          - title: JavaScript
-            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">マップ コントロール</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/">描画ツール モジュール</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-rest/">サービス モジュール</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">データ サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">位置情報サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/mobility">モビリティ サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Render Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Route Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Search Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">空間サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">タイムゾーン サービス</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Traffic Service</a></p>'
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 66721caadce09816368d673c217c9bf97daf1b6c
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75408649"
+landingContent:
+- title: Azure Maps について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Maps とは
+      url: about-azure-maps.md
+  - linkListType: concept
+    links:
+    - text: Azure Maps のカバレッジ
+      url: render-coverage.md
+    - text: ローカライズ サポート
+      url: supported-languages.md
+    - text: サポートされているマップ スタイル
+      url: supported-map-styles.md
+  - linkListType: video
+    links:
+    - text: Azure Maps の概要
+      url: https://sec.ch9.ms/ch9/d498/3d435d2c-ac85-421b-b3a7-5e0c7630d498/IoT_AzureMaps_high.mp4
+- title: 開始するには
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Maps を使用して Web アプリケーションを作成する
+      url: quick-demo-map-app.md
+  - linkListType: concept
+    links:
+    - text: Maps アカウントの適切な価格レベルを選択する
+      url: choose-pricing-tier.md
+    - text: Azure Maps による認証
+      url: azure-maps-authentication.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Maps アカウントを管理する
+      url: how-to-manage-account-keys.md
+    - text: Azure Maps による認証を管理する
+      url: how-to-manage-authentication.md
+    - text: Azure Maps アカウントの価格レベルを管理する
+      url: how-to-manage-pricing-tier.md
+    - text: Azure Maps API の使用状況メトリックを表示する
+      url: how-to-view-api-usage.md
+- title: Web SDK を使用した開発
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Web マップ コントロールの概要
+      url: how-to-use-map-control.md
+    - text: Azure Maps Web SDK のコード サンプル
+      url: https://azuremapscodesamples.azurewebsites.net/
+    - text: Web SDK でサポートされているブラウザー
+      url: supported-browsers.md
+  - linkListType: tutorial
+    links:
+    - text: 目的地を検索する
+      url: tutorial-search-location.md
+    - text: 目的地へのルートを検索する
+      url: tutorial-route-location.md
+    - text: ストア ロケーターを作成する
+      url: tutorial-create-store-locator.md
+  - linkListType: reference
+    links:
+    - text: マップ コントロール
+      url: https://docs.microsoft.com/javascript/api/azure-maps-control/?view=azure-maps-typescript-latest
+    - text: 描画ツール モジュール
+      url: https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/?view=azure-maps-typescript-latest
+    - text: サービス モジュール
+      url: https://docs.microsoft.com/javascript/api/azure-maps-rest/?view=azure-maps-typescript-latest
+- title: Android SDK を使用した開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Android マップ コントロールの概要
+      url: how-to-use-android-map-control-library.md
+    - text: 機能のメタデータ情報を表示する
+      url: display-feature-information-android.md
+    - text: マップにタイル レイヤーを追加する
+      url: how-to-add-tile-layer-android-map.md
+    - text: マップに図形を追加する
+      url: how-to-add-shapes-to-android-map.md
+- title: Location Based Services を使用した開発
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ズーム レベルとタイル グリッド
+      url: zoom-levels-and-tile-grid.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Notebooks (Python) を使用した EV ルーティング
+      url: tutorial-ev-routing.md
+  - linkListType: how-to-guide
+    links:
+    - text: 住所を検索する (ジオコーディング)
+      url: how-to-search-for-address.md
+    - text: 検索のベスト プラクティス
+      url: how-to-use-best-practices-for-search.md
+    - text: 静的マップ上にカスタム データをレンダリングする
+      url: how-to-render-custom-data.md
+  - linkListType: reference
+    links:
+    - text: Search サービス
+      url: https://docs.microsoft.com/rest/api/maps/search
+    - text: Route サービス
+      url: https://docs.microsoft.com/rest/api/maps/route
+    - text: Traffic サービス
+      url: https://docs.microsoft.com/rest/api/maps/traffic
+    - text: Time Zones サービス
+      url: https://docs.microsoft.com/rest/api/maps/timezone
+- title: 空間分析
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Maps と Event Grid の統合
+      url: azure-maps-event-grid-integration.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Maps を使用してジオフェンスを設定する
+      url: tutorial-geofence.md
+    - text: Azure Maps を使用した IoT 空間分析の実装
+      url: tutorial-iot-hub-maps.md
+  - linkListType: reference
+    links:
+    - text: Data Service
+      url: https://docs.microsoft.com/rest/api/maps/data
+    - text: 空間サービス
+      url: https://docs.microsoft.com/rest/api/maps/spatial
+- title: モビリティ サービスを使用した開発
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: モビリティ サービスのデータ構造
+      url: mobility-service-data-structure.md
+  - linkListType: how-to-guide
+    links:
+    - text: 公共輸送機関のルートを要求する
+      url: how-to-request-transit-data.md
+    - text: 公共輸送機関のリアルタイム データを要求する
+      url: how-to-request-real-time-data.md
+  - linkListType: reference
+    links:
+    - text: モビリティ サービス
+      url: https://docs.microsoft.com/rest/api/maps/mobility
+- title: 天気サービスを使用した開発
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 天気サービスの概念
+      url: weather-services-concepts.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Notebooks (Python) を使用した気象データの分析
+      url: weather-service-tutorial.md
+  - linkListType: reference
+    links:
+    - text: 天気サービス
+      url: https://docs.microsoft.com/rest/api/maps/weather

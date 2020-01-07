@@ -3,21 +3,21 @@ title: Azure Portal のドキュメント
 summary: Azure portal は、コマンドライン ツールに代えて使用できる、Web ベースの統合コンソールです。 Azure portal を使用して、ご自分の Azure サブスクリプションを管理できます。 簡単な Web アプリから複雑なクラウド デプロイまで、すべてを構築、管理、監視することができます。 リソースを整理して表示するカスタム ダッシュボードを作成したり、最適なエクスペリエンスを提供するアクセシビリティ オプションを構成したりできます。
 metadata:
   title: Azure Portal のドキュメント
-  description: Azure portal の Web ベース コンソールを使用して、ご自分の Azure サブスクリプションとリソースを管理する方法について説明します。
+  description: Azure portal の Web ベース コンソールを使用して自分の Azure サブスクリプションとリソースを管理する方法について説明します。 Azure portal は、コマンドライン ツールの代わりに使用できます。
   services: Azure portal
   ms.service: azure-portal
   ms.subservice: 
   ms.topic: landing-page
   ms.collection: collection
-  author: kfollis
-  ms.author: kfollis
-  ms.date: 09/17/2019
-  ms.openlocfilehash: 7fdd6f95ee2f84abc151f5c6e6e7929df2bc57a1
-  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  author: mblythe
+  ms.author: mblythe
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 4c04ae88f69ab4e17ea70e94683ce0add4823040
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/17/2019
-  ms.locfileid: "71076649"
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75640042"
 landingContent:
 - title: Azure portal について
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: ポータルの基本設定を設定する
+      url: set-preferences.md
     - text: カスタム ダッシュボードの作成と共有
       url: azure-portal-dashboards.md
     - text: ご自分のお気に入りの管理
@@ -49,7 +51,7 @@ landingContent:
       url: /learn/paths/manage-resources-in-azure/
     - text: ロールベースのアクセス制御 (RBAC) を使用した Azure リソースのセキュリティ保護
       url: /learn//modules/secure-azure-resources-with-rbac/
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:

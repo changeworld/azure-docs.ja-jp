@@ -4,7 +4,7 @@
   items:
     - name: 概要
       href: stages-overview.md
-    - name: モバイル開発フレームワークの選択
+    - name: モバイル開発フレームワークを選択する
       href: front-end-development-platform.md
     - name: バックエンド サービスを使用したモバイル アプリの計画と設計
       items:
@@ -24,7 +24,7 @@
       items:
         - name: DevOps とは
           href: devops.md
-        - name: 継続的なビルドとインテグレーション
+        - name: 継続的なビルドと統合
           href: continuous-integration.md
         - name: 実際のデバイスでのテスト
           href: test.md
@@ -32,7 +32,7 @@
           href: continuous-delivery.md
     - name: 使用状況とユーザーの行動の分析
       href: analytics.md
-    - name: リアルタイムのクラッシュ レポート
+    - name: リアルタイムのエラー報告
       href: diagnostics.md
     - name: プッシュ通知
       href: push-notifications.md
@@ -42,7 +42,7 @@
       href: cognitive-services.md
     - name: Azure Maps
       href: azure-maps.md
-    - name: Azure CDN
+    - name: Azure Content Delivery Network
       href: azure-cdn.md
     - name: Azure Cognitive Search
       href: azure-search.md

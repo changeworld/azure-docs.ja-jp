@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: HDInsight クラスターの管理 - PowerShell
           href: ./hdinsight-administer-use-powershell.md
+        - name: Runbook を使用してクラスターを作成する
+          href: ./manage-clusters-runbooks.md
         - name: ETL パイプラインの作成
           href: ./hdinsight-sales-insights-etl.md
     - name: サンプル
@@ -73,14 +75,29 @@
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
             - name: .NET を使用してクラスターを作成する
               href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        - name: クラスター ストレージの使用
-          items:
-            - name: Azure Storage を使用する
-              href: hdinsight-hadoop-use-blob-storage.md
-            - name: Azure Data Lake Storage Gen2 の使用
-              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: Azure Data Lake Storage Gen1 の使用
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: クラスター作成時のエラー
+              href: ./create-cluster-error-dictionary.md
+              title: null
+              summary: null
+              abstract: null
+              achievement: null
+              iconUrl: null
+              levels:
+                - null
+              roles:
+                - null
+              products:
+                - null
+              units:
+                - null
+                - name: クラスター ストレージの使用
+                  items:
+                    - name: Azure Storage を使用する
+                      href: hdinsight-hadoop-use-blob-storage.md
+                    - name: Azure Data Lake Storage Gen2 の使用
+                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+                    - name: Azure Data Lake Storage Gen1 の使用
+                      href: hdinsight-hadoop-use-data-lake-store.md
         - name: クラスターを拡張する
           items:
             - name: HDInsight アプリをインストールする
@@ -105,7 +122,7 @@
                   href: 'https://msdn.microsoft.com/library/mt706515.aspx'
                 - name: HDInsight アプリを Azure Marketplace に発行する
                   href: hdinsight-apps-publish-applications.md
-        - name: セキュリティ保護
+        - name: セキュリティで保護
           items:
             - name: HDInsight で SSH を使用する
               href: hdinsight-hadoop-linux-use-ssh-unix.md
@@ -129,7 +146,7 @@
               href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-data-migration.md
             - name: ベスト プラクティス - セキュリティと DevOps
               href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-security-devops.md
-        - name: 管理
+        - name: 管理する
           items:
             - name: Apache Ambari Web UI を使用したクラスターの管理
               href: ./hdinsight-hadoop-manage-ambari.md
@@ -209,7 +226,7 @@
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet'
         - name: Python 用 SDK
           href: 'https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python'
-        - name: Java 用 SDK
+        - name: SDK for Java
           href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
         - name: Go 用 SDK
           href: ./hdinsight-go-sdk-overview.md
@@ -257,7 +274,7 @@
       items:
         - name: HDInsight での Apache Spark とは
           href: ./spark/apache-spark-overview.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: Apache Spark クラスターの作成 - ポータル
           href: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
@@ -333,7 +350,7 @@
                   href: ./hdinsight-using-spark-query-hbase.md
                 - name: Application Insights Telemetry ログを分析する
                   href: ./spark/apache-spark-analyze-application-insight-logs.md
-        - name: 管理
+        - name: 管理する
           items:
             - name: クラスター リソースの管理
               href: ./spark/apache-spark-resource-manager.md
@@ -363,7 +380,7 @@
                   href: ../cosmos-db/lambda-architecture.md
                 - name: AutoML を使用して Azure ML ワークロードを実行する
                   href: ./spark/apache-spark-run-machine-learning-automl.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: OutOfMemoryError 例外
               href: ./spark/apache-spark-troubleshoot-outofmemory.md
@@ -401,7 +418,7 @@
       items:
         - name: HDInsight の Apache Hadoop とは
           href: ./hadoop/apache-hadoop-introduction.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: Apache Hadoop クラスターの作成 - ポータル
           href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
@@ -466,11 +483,11 @@
                   href: ./hadoop/apache-hadoop-mahout-linux-mac.md
                 - name: HDInsight の高度な分析
                   href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
-        - name: 管理
+        - name: 管理する
           items:
             - name: 空のエッジ ノードを使用する
               href: ./hdinsight-apps-use-edge-node.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: 一般的な問題
               href: ./hdinsight-troubleshoot-guide.md
@@ -514,7 +531,7 @@
       items:
         - name: HDInsight での Apache Kafka とは
           href: ./kafka/apache-kafka-introduction.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: Apache Kafka クラスターの作成 - ポータル
           href: ./kafka/apache-kafka-get-started.md
@@ -533,6 +550,8 @@
           href: ./hdinsight-apache-kafka-spark-structured-streaming.md
     - name: 概念
       items:
+        - name: Kafka ワークロードを 4.0 に移行する
+          href: ./kafka/migrate-versions.md
         - name: ストレージとスケーラビリティ
           href: ./kafka/apache-kafka-scalability.md
         - name: データの高可用性
@@ -545,6 +564,8 @@
       items:
         - name: 開発
           items:
+            - name: Kafka REST プロキシを使用する
+              href: ./kafka/rest-proxy.md
             - name: トピックの自動作成を有効にする
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: IoT Hub と共に Apache Kafka を使用する
@@ -557,7 +578,7 @@
                   href: ./hdinsight-apache-spark-with-kafka.md
                 - name: Azure Container Service で Apache Kafka を使用する
                   href: ./kafka/apache-kafka-azure-container-services.md
-        - name: 管理
+        - name: 管理する
           items:
             - name: 仮想ネットワークで Apache Kafka を使用する
               href: ./kafka/apache-kafka-connect-vpn-gateway.md
@@ -569,7 +590,7 @@
               href: ./kafka/apache-kafka-byok.md
             - name: SSL 暗号化および認証
               href: ./kafka/apache-kafka-ssl-encryption-authentication.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: 障害ドメインの不足
               href: ./kafka/kafka-troubleshoot-insufficient-domains.md
@@ -579,7 +600,7 @@
       items:
         - name: HDInsight の Apache HBase とは
           href: ./hbase/apache-hbase-overview.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: Apache HBase のクエリ - Apache Phoenix
           href: ./hbase/apache-hbase-query-with-phoenix.md
@@ -605,7 +626,7 @@
               href: ./hbase/apache-hbase-using-phoenix-query-server-rest-sdk.md
             - name: psql を使用した Apache Phoenix へのデータの一括読み込み
               href: ./hbase/apache-hbase-phoenix-psql.md
-        - name: 管理
+        - name: 管理する
           items:
             - name: 高速書き込み
               href: ./hbase/apache-hbase-accelerated-writes.md
@@ -619,7 +640,7 @@
               href: ./hbase/apache-hbase-phoenix-performance.md
             - name: Azure VNet での Apache HBase クラスターの作成
               href: ./hbase/apache-hbase-provision-vnet.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: Apache HBase のパフォーマンスに関する問題のトラブルシューティング
               href: ./hbase/troubleshoot-hbase-performance-issues.md
@@ -651,7 +672,7 @@
       items:
         - name: HDInsight での対話型クエリとは
           href: ./interactive-query/apache-interactive-query-get-started.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: Apache Hive クエリの実行 - Apache Zeppelin
           href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
@@ -691,13 +712,13 @@
               href: ./hadoop/apache-hadoop-hive-java-udf.md
             - name: PowerShell と ODBC を使用して Hive に対してクエリを実行する
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
-        - name: 管理
+        - name: 管理する
           items:
             - name: Hive ワークロードを HDInsight 4.0 に移行する
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: Apache Hive クエリの最適化
               href: ./hdinsight-hadoop-optimize-hive-query.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: Apache Hive の設定によるメモリ不足エラーの解決
               href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
@@ -707,6 +728,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: レジューサーの速度が遅い
               href: ./interactive-query/interactive-query-troubleshoot-slow-reducer.md
+            - name: Apache Hive ゲートウェイのタイムアウト
+              href: ./interactive-query/troubleshoot-gateway-timeout.md
             - name: Apache Hive ビューのタイム アウト
               href: ./interactive-query/interactive-query-troubleshoot-view-time-out.md
             - name: テーブル作成中のアクセス許可エラー
@@ -729,7 +752,7 @@
       items:
         - name: HDInsight での ML Services とは
           href: ./r-server/r-server-overview.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: サンプル ジョブ - RStudio Server
           href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
@@ -749,7 +772,7 @@
               href: ./r-server/r-server-compute-contexts.md
             - name: ScaleR と SparkR
               href: ./hdinsight-hadoop-r-scaler-sparkr.md
-        - name: 管理
+        - name: 管理する
           items:
             - name: ML サービス クラスターの管理
               href: ./r-server/r-server-hdinsight-manage.md
@@ -763,7 +786,7 @@
       items:
         - name: HDInsight での Apache Storm とは
           href: ./storm/apache-storm-overview.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: HDInsight での Apache Storm トポロジの作成
           href: ./storm/apache-storm-quickstart.md
@@ -795,11 +818,11 @@
                   href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
                 - name: 'Event Hubs と Apache Storm (C# および Java)'
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
-        - name: 管理
+        - name: 管理する
           items:
             - name: トポロジの監視
               href: ./storm/apache-storm-deploy-monitor-topology-linux.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: Apache STORM のトラブルシューティング
               href: ./storm/apache-troubleshoot-storm.md
@@ -835,14 +858,14 @@
           href: ./hdinsight-service-tags.md
     - name: 方法
       items:
+        - name: 資格情報の管理に ID ブローカーを使用する
+          href: ./domain-joined/identity-broker.md
         - name: ESP クラスターの作成およびオンプレミスとの同期
           href: ./domain-joined/apache-domain-joined-create-configure-enterprise-security-cluster.md
         - name: HDInsight 用の VNET の作成
           href: ./hdinsight-create-virtual-network.md
         - name: HDInsight とオンプレミス ネットワークの接続
           href: ./connect-on-premises-network.md
-        - name: HDInsight でのエンタープライズ セキュリティの構成
-          href: ./domain-joined/apache-domain-joined-configure.md
         - name: Azure AD DS による ESP クラスターの構成
           href: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
         - name: HDInsight クラスターへの Azure AD ユーザーの同期
@@ -851,7 +874,7 @@
           href: ./domain-joined/apache-domain-joined-manage.md
         - name: データのセキュリティ保護
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: ESP 認証の問題
               href: ./domain-joined/domain-joined-authentication-issues.md

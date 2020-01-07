@@ -7,7 +7,7 @@
           href: what-is-b2b.md
         - name: B2B と B2C の比較
           href: compare-with-b2c.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: ポータルでゲスト ユーザーを追加する
           href: b2b-quickstart-add-guest-users-portal.md
@@ -28,6 +28,8 @@
     - name: 概念
       expanded: false
       items:
+        - name: B2B のベスト プラクティス
+          href: b2b-fundamentals.md
         - name: B2B ライセンス
           href: licensing-guidance.md
         - name: B2B と Office 365 の外部共有
@@ -46,9 +48,9 @@
           href: conditional-access.md
         - name: ハイブリッド組織向けの B2B
           href: hybrid-organizations.md
-        - name: 現時点での制限事項
+        - name: 現在の制限
           href: current-limitations.md
-    - name: ハウツー ガイド
+    - name: 操作方法ガイド
       expanded: true
       items:
         - name: B2B の共有の管理
@@ -101,7 +103,7 @@
           href: customize-invitation-api.md
     - name: リソース
       items:
-        - name: FAQ
+        - name: よく寄せられる質問
           href: faq.md
         - name: B2B のサポートの利用
           href: get-support.md

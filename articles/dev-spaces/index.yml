@@ -11,12 +11,12 @@ metadata:
   ms.author: zarhoads
   manager: gwallace
   ms.date: 09/30/2019
-  ms.openlocfilehash: 64d2d2e16c7a975584723af3326b52784fe6bd9e
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 96fe99c5eb2ef8600ee9cca1e63f9fc3451919c2
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73582723"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75438339"
 landingContent:
 - title: Azure Dev Spaces について
   linkLists:
@@ -56,6 +56,8 @@ landingContent:
       url: how-to/run-dev-spaces-windows-containers.md
     - text: カスタム イングレスと HTTPS に traefik を使用する
       url: how-to/ingress-https-traefik.md
+    - text: カスタムのイングレスと HTTPS に NGINX を使用する
+      url: how-to/ingress-https-nginx.md
 - title: プレビュー機能
   linkLists:
   - linkListType: how-to-guide

@@ -159,6 +159,8 @@
       href: troubleshoot-deploy-vm-linux.md
     - name: Windows
       href: troubleshoot-deploy-vm-windows.md
+    - name: サービスの再起動、シャットダウン、または停止
+      href: boot-error-troubleshoot-windows.md
 - name: デバイス名が変更されている
   href: troubleshoot-device-names-problems.md
 - name: VM の復旧方法
@@ -167,13 +169,13 @@
       items:
         - name: PowerShell
           href: troubleshoot-recovery-disks-windows.md
-        - name: Azure ポータル
+        - name: Azure portal
           href: troubleshoot-recovery-disks-portal-windows.md
     - name: Linux
       items:
         - name: CLI
           href: troubleshoot-recovery-disks-linux.md
-        - name: Azure ポータル
+        - name: Azure portal
           href: troubleshoot-recovery-disks-portal-linux.md
 - name: ブート エラー (Linux)
   href: boot-error-troubleshoot-linux.md

@@ -5,7 +5,7 @@
     - name: Azure Blueprint とは
       displayName: 'templates, policy, definition, assignment, rbac'
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: ブループリントの作成 - ポータル
@@ -27,7 +27,7 @@
       href: ./tutorials/protect-new-resources.md
 - name: サンプル
   items:
-    - name: Index
+    - name: インデックス
       displayName: 'list, examples'
       href: ./samples/index.md
     - name: カナダ連邦の PBMM
@@ -63,6 +63,17 @@
         - name: デプロイ手順
           displayName: 'standards, fedramp, moderate'
           href: ./samples/fedramp-m/deploy.md
+    - name: HIPAA HITRUST
+      items:
+        - name: 概要
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/index.md
+        - name: コントロール マッピング
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/control-mapping.md
+        - name: デプロイ手順
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/deploy.md
     - name: IRS 1075
       items:
         - name: 概要
@@ -184,7 +195,7 @@
     - name: Blueprints でのリソースのロック
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: PowerShell を使用した割り当ての管理
       displayName: 'create, update, remove'
@@ -200,7 +211,7 @@
       href: ./how-to/configure-for-blueprint-operator.md
     - name: ブループリントをコードとして管理する (コミュニティ)
       href: 'https://github.com/Azure/azure-blueprints/blob/master/README.md'
-- name: トラブルシューティング
+- name: '[トラブルシューティング]'
   displayName: 'errors, violation'
   href: ./troubleshoot/general.md
 - name: リファレンス

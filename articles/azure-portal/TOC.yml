@@ -14,8 +14,12 @@
       href: azure-portal-dashboard-share-access.md
     - name: プログラムによる Azure ダッシュボードの作成
       href: azure-portal-dashboards-create-programmatically.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
+    - name: Azure portal の基本設定を設定する
+      href: set-preferences.md
+    - name: すべてのユーザーの非アクティブ タイムアウト設定を設定する
+      href: admin-timeout.md
     - name: ハイコントラストの有効化またはテーマの変更
       href: azure-portal-change-theme-high-contrast.md
     - name: お気に入りの追加、削除、並べ替え

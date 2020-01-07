@@ -4,7 +4,7 @@
   items:
     - name: Azure Blockchain Service について
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: メンバーを作成する - ポータル
@@ -37,7 +37,7 @@
       href: limits.md
     - name: パッチ、更新、バージョン管理
       href: ledger-versions.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Azure AD アクセスを構成する
       href: configure-aad.md
@@ -61,23 +61,23 @@
       href: data-manager-cosmosdb.md
 - name: リソース
   items:
+    - name: Azure Blockchain 開発キット
+      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: Blockchain REST API
       href: 'https://docs.microsoft.com/rest/api/blockchain/'
-    - name: ブログ
-      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
-    - name: Azure Blockchain Service の Visual Studio Code 拡張機能
-      href: 'https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki'
     - name: コード サンプル
       href: 'https://github.com/Azure-Samples/blockchain'
-    - name: コミュニティ
-      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
-    - name: フォーラム
+    - name: ブログ
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: MSDN サポート フォーラム
       href: 'https://aka.ms/workbenchforum'
+    - name: コミュニティ サポート
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: Stack Overflow サポート
+      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'
     - name: 製品フィードバック
       href: 'https://feedback.azure.com/forums/921130-azure-blockchain-service'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/blockchain-service'
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=blockchainservice'
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/questions/tagged/AzureBlockchainService'
