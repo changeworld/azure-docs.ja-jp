@@ -245,7 +245,7 @@ ms.locfileid: "73824269"
 * <a id="expressroute-not-required"></a>
 **Azure Files に接続するためや、Azure File Sync をオンプレミスで使用するために、Azure ExpressRoute を使用する必要はありますか。**  
 
-    No. ExpressRoute から Azure ファイル共有にアクセスする必要はありません。 Azure ファイル共有を直接オンプレミスにマウントしている場合、必要なのは、インターネット アクセスのためにポート 445 (TCP 送信) が開放されていることだけです (これは SMB が通信に使用するポートです)。 Azure File Sync を使用している場合、必要なのは、HTTPS アクセスのためのポート 443 (TCP 送信) だけです (SMB は必要ありません)。 ただし、ExpressRoute は、これらのアクセス オプションのいずれでも使用 "*できます*"。
+    いいえ。ExpressRoute から Azure ファイル共有にアクセスする必要はありません。 Azure ファイル共有を直接オンプレミスにマウントしている場合、必要なのは、インターネット アクセスのためにポート 445 (TCP 送信) が開放されていることだけです (これは SMB が通信に使用するポートです)。 Azure File Sync を使用している場合、必要なのは、HTTPS アクセスのためのポート 443 (TCP 送信) だけです (SMB は必要ありません)。 ただし、ExpressRoute は、これらのアクセス オプションのいずれでも使用 "*できます*"。
 
 * <a id="mount-locally"></a>
 **ローカル マシンに Azure ファイル共有をマウントするにはどうすればよいですか。**  
@@ -349,7 +349,7 @@ ms.locfileid: "73824269"
 * <a id="lfs-performance-impact"></a>
 **ファイル共有のクォータを拡張すると、ワークロードや Azure File Sync に影響しますか。**
     
-    No. クォータを拡張しても、ワークロードや Azure File Sync には影響しません。
+    いいえ。クォータを拡張しても、ワークロードや Azure File Sync には影響しません。
 
 * <a id="open-handles-quota"></a>
 **同じファイルに同時にアクセスできるクライアントの数はどのくらいですか。**    
