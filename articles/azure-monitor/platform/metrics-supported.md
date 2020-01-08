@@ -1533,7 +1533,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|メトリックの表示名|単位|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|
 |BlobCapacity|Blob Capacity (BLOB 容量)|Bytes|平均|ストレージ アカウントの Blob service によって使われているストレージの量 (バイト単位)。|BlobType、Tier|
-|BlobCount|Blob Count (BLOB 数)|Count|合計|ストレージ アカウントの Blob service 内の BLOB の数。|BlobType|       |BlobCount|Blob Count (BLOB 数)|Count|平均|ストレージ アカウントの Blob service 内の BLOB の数。|BlobType、Tier|
+|BlobCount|Blob Count (BLOB 数)|Count|平均|ストレージ アカウントの Blob service 内の BLOB の数。|BlobType、Tier|
 |ContainerCount|Blob Container Count (BLOB コンテナー数)|Count|平均|ストレージ アカウントの Blob service 内のコンテナーの数。|ディメンションなし|
 |IndexCapacity|インデックスの容量|Bytes|平均|ADLS Gen2 (階層構造) インデックスで使用されるストレージの容量 (バイト単位)。|ディメンションなし|
 |トランザクション|トランザクション|Count|合計|ストレージ サービスまたは指定された API 操作に対して行われた要求の数。 この数には、成功した要求と失敗した要求およびエラーが発生した要求が含まれます。 別の種類の応答の数には ResponseType ディメンションを使います。|ResponseType、GeoType、ApiName、Authentication|
