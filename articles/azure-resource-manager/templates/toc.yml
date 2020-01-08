@@ -1,0 +1,261 @@
+- name: Azure Resource Manager テンプレートのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure Resource Manager テンプレートとは
+      href: overview.md
+- name: クイックスタート
+  items:
+    - name: テンプレートの作成 - ポータル
+      href: quickstart-create-templates-use-the-portal.md
+    - name: テンプレートの作成 - VS Code
+      href: quickstart-create-templates-use-visual-studio-code.md
+    - name: テンプレートの作成 - Visual Studio
+      href: create-visual-studio-deployment-project.md
+    - name: テンプレートの作成 - IntelliJ IDEA
+      href: create-templates-use-intellij.md
+- name: チュートリアル
+  items:
+    - name: 初級
+      items:
+        - name: 1 - 最初のテンプレートを作成する
+          href: template-tutorial-create-first-template.md
+        - name: 2 - リソースを追加する
+          href: template-tutorial-add-resource.md
+        - name: 3 - パラメーターを追加する
+          href: template-tutorial-add-parameters.md
+        - name: 4 - テンプレート関数を追加する
+          href: template-tutorial-add-functions.md
+        - name: 5 - 変数を追加する
+          href: template-tutorial-add-variables.md
+        - name: 6 - 出力を追加する
+          href: template-tutorial-add-outputs.md
+        - name: 7 - エクスポートしたテンプレートを使用する
+          href: template-tutorial-export-template.md
+        - name: 8 - クイックスタート テンプレートを使用する
+          href: template-tutorial-quickstart-template.md
+        - name: 9 - タグを追加する
+          href: template-tutorial-add-tags.md
+        - name: 10 - パラメーター ファイルを使用する
+          href: template-tutorial-use-parameter-file.md
+    - name: 詳細設定
+      items:
+        - name: テンプレート リファレンスの利用
+          href: template-tutorial-create-encrypted-storage-accounts.md
+        - name: 複数のインスタンスの作成
+          displayName: 'iteration,copy'
+          href: template-tutorial-create-multiple-instances.md
+        - name: リソースのデプロイ順序の設定
+          displayName: 'dependent resources, dependency'
+          href: template-tutorial-create-templates-with-dependent-resources.md
+        - name: 使用条件
+          href: template-tutorial-use-conditions.md
+        - name: Key Vault の統合
+          displayName: secrets
+          href: template-tutorial-use-key-vault.md
+        - name: リンク済みテンプレートの作成
+          href: template-tutorial-create-linked-templates.md
+        - name: VM 拡張機能のデプロイ
+          displayName: virtual machine extensions
+          href: template-tutorial-deploy-vm-extensions.md
+        - name: SQL 拡張機能のデプロイ
+          href: template-tutorial-deploy-sql-extensions-bacpac.md
+        - name: アーティファクトのセキュリティ保護
+          href: template-tutorial-secure-artifacts.md
+        - name: Azure Pipelines を使用した継続的インテグレーション
+          displayName: DevOps
+          href: template-tutorial-use-azure-pipelines.md
+        - name: VS デプロイ スクリプトを Az Powershell に更新する
+          href: update-visual-studio-deployment-script.md
+        - name: 安全なデプロイ プラクティスの使用
+          displayName: adm
+          href: deployment-manager-tutorial.md
+        - name: Deployment Manager の正常性チェックの使用
+          displayName: adm
+          href: deployment-manager-tutorial-health-check.md
+        - name: テンプレートのデプロイに関するトラブルシューティング
+          href: template-tutorial-troubleshoot.md
+- name: サンプル
+  items:
+    - name: Azure のクイック スタート テンプレート
+      href: 'https://azure.microsoft.com/resources/templates/'
+    - name: テンプレートのサンプル
+      href: template-samples.md
+- name: 概念
+  items:
+    - name: テンプレートのベスト プラクティス
+      href: template-best-practices.md
+    - name: クラウドの一貫性を実現するテンプレート
+      href: templates-cloud-consistency.md
+    - name: デプロイ モード
+      href: deployment-modes.md
+    - name: Deployment Manager
+      items:
+        - name: 概要
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-overview.md
+        - name: 正常性チェック
+          displayName: 'adm, deployment manager'
+          href: deployment-manager-health-check.md
+- name: 方法
+  items:
+    - name: テンプレートの作成
+      items:
+        - name: VS Code を使用する
+          href: use-vs-code-to-create-template.md
+        - name: テンプレート式を記述する
+          href: template-expressions.md
+        - name: パラメーター
+          href: template-parameters.md
+        - name: '変数:'
+          href: template-variables.md
+        - name: ユーザー定義関数
+          href: template-user-defined-functions.md
+        - name: リソース
+          items:
+            - name: 子リソースの名前と種類
+              href: child-resource-name-type.md
+            - name: 条件付きデプロイ
+              href: conditional-resource-deployment.md
+            - name: リソースの依存関係を設定する
+              href: define-resource-dependency.md
+            - name: リソースの場所を設定する
+              href: resource-location.md
+            - name: テンプレートの拡張機能を使用する
+              href: add-resource-extensions.md
+        - name: 出力
+          href: template-outputs.md
+        - name: テンプレートをモジュール化する
+          displayName: 'linked templates, nested templates'
+          href: linked-templates.md
+        - name: 複数のインスタンスの作成
+          href: create-multiple-instances.md
+        - name: サブスクリプション レベルのリソース
+          href: deploy-to-subscription.md
+        - name: 管理グループ レベルのリソース
+          href: deploy-to-management-group.md
+    - name: テンプレートのデプロイ
+      items:
+        - name: デプロイ - ポータル
+          displayName: deployment
+          href: deploy-portal.md
+        - name: デプロイ - CLI
+          displayName: deployment
+          href: deploy-cli.md
+        - name: デプロイ - PowerShell
+          displayName: deployment
+          href: deploy-powershell.md
+        - name: デプロイ - REST API
+          displayName: deployment
+          href: deploy-rest.md
+        - name: what-if のデプロイ
+          href: template-deploy-what-if.md
+        - name: エラー発生時の再デプロイ
+          displayName: rollback
+          href: rollback-on-error.md
+        - name: SAS トークンによるテンプレートのセキュリティ保護
+          href: secure-template-with-sas-token.md
+        - name: 複数のリソース グループまたはサブスクリプションへのデプロイ
+          href: cross-resource-group-deployment.md
+    - name: パラメーターを指定する
+      items:
+        - name: パラメーター ファイルを作成する
+          href: parameter-files.md
+        - name: 機密性の高い値を渡す
+          displayname: key vault
+          href: key-vault-parameter.md
+    - name: CI/CD
+      items:
+        - name: パイプラインを使用した VS プロジェクト
+          href: add-template-to-azure-pipelines.md
+    - name: テンプレートをエクスポートする
+      href: export-template-portal.md
+    - name: デプロイ履歴を表示する
+      href: deployment-history.md
+    - name: デプロイのトラブルシューティング
+      items:
+        - name: デプロイ エラーのトラブルシューティング
+          href: common-deployment-errors.md
+        - name: AccountNameInvalid
+          href: error-storage-account-name.md
+        - name: DeploymentQuotaExceeded
+          href: deployment-quota-exceeded.md
+        - name: InvalidTemplate
+          href: error-invalid-template.md
+        - name: Linux デプロイの問題
+          href: ../../virtual-machines/linux/troubleshoot-deploy-vm.md
+        - name: NoRegisteredProviderFound
+          href: error-register-resource-provider.md
+        - name: NotFound
+          href: error-not-found.md
+        - name: ParentResourceNotFound
+          href: error-parent-resource.md
+        - name: Linux のプロビジョニングと割り当ての問題
+          href: ../../virtual-machines/linux/troubleshoot-deployment-new-vm.md
+        - name: Windows のプロビジョニングと割り当ての問題
+          href: ../../virtual-machines/windows/troubleshoot-deployment-new-vm.md
+        - name: RequestDisallowedByPolicy
+          href: error-policy-requestdisallowedbypolicy.md
+        - name: ReservedResourceName
+          href: error-reserved-resource-name.md
+        - name: ResourceQuotaExceeded
+          href: error-resource-quota.md
+        - name: SkuNotAvailable
+          href: error-sku-not-available.md
+        - name: Windows デプロイの問題
+          href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
+- name: リファレンス
+  items:
+    - name: テンプレート ファイルの構造
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: template-syntax.md
+    - name: テンプレート リファレンス
+      href: /azure/templates/
+    - name: テンプレート関数
+      items:
+        - name: すべての関数
+          href: template-functions.md
+        - name: 配列とオブジェクトの関数
+          href: template-functions-array.md
+        - name: 比較関数
+          href: template-functions-comparison.md
+        - name: デプロイ関数
+          href: template-functions-deployment.md
+        - name: 論理関数
+          href: template-functions-logical.md
+        - name: 数値関数
+          href: template-functions-numeric.md
+        - name: リソース関数
+          href: template-functions-resource.md
+        - name: 文字列関数
+          href: template-functions-string.md
+    - name: リソースの機能
+      items:
+        - name: 完全モードの削除
+          href: complete-mode-deletion.md
+        - name: 拡張リソースの種類
+          href: extension-resource-types.md
+    - name: REST
+      href: /rest/api/resources/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure CLI
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources?view=azure-python
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

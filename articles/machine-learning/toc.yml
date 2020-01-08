@@ -1,6 +1,399 @@
-- name: Azure Machine Learning
-  href: service/overview-what-is-azure-ml.md
-- name: Azure Machine Learning Studio
-  href: studio/index.yml
-- name: Microsoft の ML 製品の比較
-  href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context
+- name: Azure Machine Learning のドキュメント
+  href: index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Azure Machine Learning とは
+      displayName: 'AML, services, overview, introduction'
+      href: overview-what-is-azure-ml.md
+    - name: Azure Machine Learning と Studio
+      displayName: 'AML, Studio, designer'
+      href: compare-azure-ml-to-studio-classic.md
+    - name: アーキテクチャと用語
+      displayName: 'architecture, concepts, definitions, glossary'
+      href: concept-azure-machine-learning-architecture.md
+- name: チュートリアル
+  items:
+    - name: Studio とデザイナー
+      items:
+        - name: 'デザイナー: 1. 回帰モデルをトレーニングする'
+          displayName: studio
+          href: tutorial-designer-automobile-price-train-score.md
+        - name: 'デザイナー: 2. そのモデルをデプロイする'
+          displayName: studio
+          href: tutorial-designer-automobile-price-deploy.md
+        - name: 自動 ML の実験を作成する
+          displayName: 'automl, automated, auto ml, portal, ui'
+          href: tutorial-first-experiment-automated-ml.md
+    - name: Python SDK
+      items:
+        - name: 初めての ML 実験を作成する
+          items:
+            - name: 1. ワークスペースと開発環境を設定する
+              href: tutorial-1st-experiment-sdk-setup.md
+            - name: 2. 最初のモデルをトレーニングする
+              href: tutorial-1st-experiment-sdk-train.md
+        - name: 画像の分類 (MNIST データ)
+          items:
+            - name: 1. モデルをトレーニングする
+              displayName: build modeling
+              href: tutorial-train-models-with-aml.md
+            - name: 2. モデルをデプロイする
+              href: tutorial-deploy-models-with-aml.md
+        - name: 自動 ML による回帰 (NYC タクシー データ)
+          items:
+            - name: ML モデルを自動トレーニングする
+              displayName: 'automl, automated, auto ml,'
+              href: tutorial-auto-train-models.md
+        - name: Machine Learning パイプライン (上級)
+          items:
+            - name: 分類モデルのバッチ スコアリング
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
+    - name: R SDK
+      items:
+        - name: 初めての ML 実験を作成する (R)
+          href: tutorial-1st-r-experiment.md
+    - name: Machine Learning CLI
+      href: tutorial-train-deploy-model-cli.md
+- name: サンプル
+  items:
+    - name: Jupyter Notebooks
+      displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
+      href: samples-notebooks.md
+    - name: Azure Open Datasets
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+    - name: エンドツーエンドの MLOps の例
+      href: 'https://github.com/microsoft/MLOps'
+- name: 概念
+  items:
+    - name: ワークスペース
+      href: concept-workspace.md
+    - name: 環境
+      href: concept-environments.md
+    - name: Data
+      href: concept-data.md
+    - name: モデル トレーニング
+      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      href: concept-train-machine-learning-model.md
+    - name: モデル管理 (MLOps)
+      displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
+      href: concept-model-management-and-deployment.md
+    - name: 解釈可能性
+      displayName: explainability
+      href: how-to-machine-learning-interpretability.md
+    - name: 'デザイナー: コード不要の ML'
+      displayName: studio
+      href: concept-designer.md
+    - name: アルゴリズム チート シート
+      href: /azure/machine-learning/algorithm-cheat-sheet?context=azure/machine-learning/service/context/ml-context
+    - name: 自動化された機械学習
+      displayName: 'automl, auto ml'
+      href: concept-automated-ml.md
+    - name: コンピューティング インスタンス
+      displayName: 'resource, dsvm, Data Science Virtual Machine'
+      href: concept-compute-instance.md
+    - name: コンピューティング ターゲット
+      displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
+      href: concept-compute-target.md
+    - name: ML パイプライン
+      href: concept-ml-pipelines.md
+    - name: ONNX
+      href: concept-onnx.md
+    - name: エンタープライズ対応とセキュリティ
+      items:
+        - name: エンタープライズ セキュリティ
+          items:
+            - name: エンタープライズ セキュリティの概要
+              displayName: authorization authentication encryption aad azure active directory
+              href: concept-enterprise-security.md
+            - name: ユーザーとロールを管理する
+              href: how-to-assign-roles.md
+            - name: 仮想ネットワークの使用
+              displayName: 'vnet, blob'
+              href: how-to-enable-virtual-network.md
+            - name: SSL を使用して Web サービスをセキュリティで保護する
+              href: how-to-secure-web-service.md
+            - name: ストレージ アクセス キーの再生成
+              href: how-to-change-storage-access-key.md
+        - name: 認証の設定
+          displayName: 'authentication, auth, oauth'
+          href: how-to-setup-authentication.md
+        - name: Azure Machine Learning の監視
+          href: monitor-azure-machine-learning.md
+        - name: イベント グリッドの統合
+          href: concept-event-grid-integration.md
+    - name: ディープ ラーニング
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
+- name: 操作方法ガイド
+  items:
+    - name: ワークスペースの作成と管理
+      items:
+        - name: Azure Portal の使用
+          href: how-to-manage-workspace.md
+        - name: Azure CLI の使用
+          href: how-to-manage-workspace-cli.md
+        - name: Resource Manager テンプレートの使用
+          displayName: arm
+          href: how-to-create-workspace-template.md
+    - name: 環境の設定方法
+      items:
+        - name: 開発環境をセットアップする
+          displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
+          href: how-to-configure-environment.md
+        - name: ソフトウェア環境をセットアップする
+          displayName: 'pip, Conda, anaconda'
+          href: how-to-use-environments.md
+        - name: ログの有効化
+          displayName: 'troubleshoot, log, files, tracing'
+          href: how-to-enable-logging.md
+        - name: 入力および出力ディレクトリを設定する
+          displayName: 'large data, write, experiment files, size limit'
+          href: how-to-save-write-experiment-files.md
+        - name: VS Code 拡張機能を使用する
+          displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
+          href: how-to-vscode-tools.md
+        - name: 対話型デバッグ
+          displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
+          href: how-to-set-up-vs-code-remote.md
+        - name: Git 統合
+          displayName: github gitlab
+          href: concept-train-model-git-integration.md
+    - name: データの処理
+      items:
+        - name: Azure Storage のデータに接続する
+          displayName: 'blob, get, fileshare, access storage, mount, download'
+          href: how-to-access-data.md
+        - name: データストアからデータを取得する
+          displayName: 'data, data set, register, access data'
+          href: how-to-create-register-datasets.md
+        - name: データセットを使用したトレーニング
+          displayName: 'data, dataset, mount'
+          href: how-to-train-with-datasets.md
+        - name: データセットのドリフトを検出する
+          displayName: 'data, dataset'
+          href: how-to-monitor-datasets.md
+        - name: データセットのバージョン管理と追跡
+          displayName: 'data, data set'
+          href: how-to-version-track-datasets.md
+        - name: ラベルの付いたデータの取得
+          displayName: 'data, dataset, labeling'
+          href: how-to-create-labeling-projects.md
+        - name: ラベル イメージ
+          displayName: 'data, dataset, labeling'
+          href: how-to-label-images.md
+    - name: モデルをトレーニングする
+      items:
+        - name: デザイナーを使用する
+          displayName: sample designer experiments
+          items:
+            - name: 価格を予測する
+              displayName: 'regression, studio'
+              href: how-to-designer-sample-regression-automobile-price-basic.md
+            - name: 価格を予測する (詳細設定)
+              displayName: 'regression, studio'
+              href: how-to-designer-sample-regression-automobile-price-compare-algorithms.md
+            - name: 所得を予測する
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-predict-income.md
+            - name: 信用リスクを予測する (詳細設定)
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-credit-risk-cost-sensitive.md
+            - name: 顧客離れを予測する
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-churn.md
+            - name: フライトの遅延を予測する
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-classification-flight-delay.md
+            - name: テキスト分類
+              displayName: 'classification, studio'
+              href: how-to-designer-sample-text-classification.md
+        - name: ML に Estimator を使用する
+          items:
+            - name: トレーニングでの推定器の作成
+              href: how-to-train-ml-models.md
+            - name: トレーニング環境をセットアップする
+              displayName: 'run config, compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+              href: how-to-set-up-training-targets.md
+            - name: ハイパーパラメーターを調整する
+              displayName: parameter
+              href: how-to-tune-hyperparameters.md
+            - name: トレーニング時に Key Vault を使用する
+              displayName: secrets keyvault
+              href: how-to-use-secrets-in-runs.md
+        - name: Scikit-learn
+          href: how-to-train-scikit-learn.md
+        - name: TensorFlow
+          href: how-to-train-tensorflow.md
+        - name: Keras
+          href: how-to-train-keras.md
+        - name: PyTorch
+          href: how-to-train-pytorch.md
+        - name: Chainer
+          href: how-to-train-chainer.md
+    - name: モデルを解釈する
+      displayName: interpretability
+      items:
+        - name: ローカル モデルとリモート モデルを解釈する
+          displayName: 'SDK, interpret'
+          href: how-to-machine-learning-interpretability-aml.md
+        - name: 自動 ML モデルを解釈する
+          displayName: 'SDK, interpret, automl'
+          href: how-to-machine-learning-interpretability-automl.md
+    - name: 機械学習の自動化
+      displayName: 'automl, auto ml'
+      items:
+        - name: 自動化された ML を使用する (Python)
+          displayName: SDK automl
+          href: how-to-configure-auto-train.md
+        - name: 自動 ML を使用する (インターフェイス)
+          href: how-to-create-portal-experiments.md
+        - name: リモート コンピューティング ターゲットを使用する
+          displayName: automl automated auto ml
+          href: how-to-auto-train-remote.md
+        - name: ML タスクを定義する
+          displayName: 'machine learning, task type'
+          href: how-to-define-task-type.md
+        - name: 予測モデルを自動トレーニングする
+          displayName: time series
+          href: how-to-auto-train-forecast.md
+        - name: グラフとメトリックを理解する
+          href: how-to-understand-automated-ml.md
+    - name: 実験を追跡および監視する
+      items:
+        - name: 実行の開始、監視、または取り消し
+          displayName: 'cancel, fail, status, child run'
+          href: how-to-manage-runs.md
+        - name: トレーニング実行のメトリックを記録する
+          href: how-to-track-experiments.md
+        - name: MLflow を使用して実験を追跡する
+          displayName: 'log, monitor, metrics'
+          href: how-to-use-mlflow.md
+        - name: TensorBoard を使用して実行を視覚化する
+          displayName: 'log, monitor, metrics'
+          href: how-to-monitor-tensorboard.md
+    - name: モデルをデプロイおよび提供する
+      items:
+        - name: デプロイする場所と方法
+          displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
+          href: how-to-deploy-and-where.md
+        - name: Azure Kubernetes Service
+          displayName: 'aks, aad, authentication, azure active directory'
+          href: how-to-deploy-azure-kubernetes-service.md
+        - name: Azure Container Instances
+          displayName: aci
+          href: how-to-deploy-azure-container-instance.md
+        - name: IoT Edge
+          href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: FPGA 推論
+          href: how-to-deploy-fpga-web-service.md
+        - name: GPU 推論
+          href: how-to-deploy-inferencing-gpus.md
+        - name: Azure App Service
+          displayName: web app
+          href: how-to-deploy-app-service.md
+        - name: Azure Functions
+          displayName: functions app
+          href: how-to-deploy-functions.md
+        - name: コンピューティング インスタンス
+          href: how-to-deploy-local-container-notebook-vm.md
+        - name: カスタム Docker イメージを使用する
+          href: how-to-deploy-custom-docker-image.md
+        - name: 既存のモデルを使用する
+          displayName: publish existing model
+          href: how-to-deploy-existing-model.md
+        - name: トラブルシューティングとデバッグ
+          href: how-to-troubleshoot-deployment.md
+    - name: Web サービスを使用する
+      items:
+        - name: リアルタイムで使用する
+          displayName: create client consume request response synchronous
+          href: how-to-consume-web-service.md
+        - name: バッチ予測を実行する
+          displayName: score scoring batch consume pipeline parallelrunstep inference
+          href: how-to-run-batch-predictions.md
+        - name: デザイナーによるバッチ予測
+          displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
+          href: how-to-run-batch-predictions-designer.md
+        - name: バッチ予測のデバッグとトラブルシューティング
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-batch-predictions.md
+    - name: モデルを監視する
+      items:
+        - name: モデルのデータを収集して評価する
+          displayName: track production
+          href: how-to-enable-data-collection.md
+        - name: データの誤差を検出する
+          href: how-to-monitor-data-drift.md
+        - name: Application Insights での監視
+          href: how-to-enable-app-insights.md
+    - name: ML パイプラインの作成と使用
+      displayName: pipelines
+      items:
+        - name: ML パイプラインを作成する (Python)
+          href: how-to-create-your-first-pipeline.md
+        - name: パイプラインのスケジュールを設定する (Python)
+          href: how-to-schedule-pipelines.md
+        - name: パイプラインのデバッグとトラブルシューティングを行う
+          href: how-to-debug-pipelines.md
+        - name: CI/CD 用の Azure Pipelines
+          displayName: 'continuous, integration, delivery'
+          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
+        - name: 'デザイナー: 公開済みパイプラインを使用して再トレーニングする'
+          displayName: 'retrain, designer, published pipeline'
+          href: how-to-retrain-designer.md
+    - name: リソース クォータを管理する
+      displayName: limits
+      href: how-to-manage-quotas.md
+    - name: データをエクスポートおよび削除する
+      displayName: GDPR
+      href: how-to-export-delete-data.md
+    - name: イベント ドリブン ワークフローを作成する
+      displayName: event grid
+      href: how-to-use-event-grid.md
+- name: リファレンス
+  items:
+    - name: Python SDK
+      displayName: 'api, core, package, python, class'
+      href: 'https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py'
+    - name: R SDK
+      displayName: 'api, core, package, R, class'
+      href: 'https://azure.github.io/azureml-sdk-for-r/reference/index.html'
+    - name: CLI
+      displayName: 'extension, command line, command-line, az, ci/cd, automate, automated'
+      href: reference-azure-machine-learning-cli.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azureml/'
+    - name: デザイナー モジュール リファレンス
+      displayName: 'module, reference, algorithm, studio'
+      href: algorithm-module-reference/module-reference.md
+    - name: 大規模な ML
+      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
+    - name: データ参照を監視する
+      href: monitor-resource-reference.md
+    - name: 機械学習パイプライン YAML のリファレンス
+      href: reference-pipeline-yaml.md
+- name: リソース
+  items:
+    - name: リリース ノート
+      displayName: 'what''s, new, issues, bugs'
+      href: azure-machine-learning-release-notes.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 既知の問題
+      displayName: 'bugs, errors, troubleshoot'
+      href: resource-known-issues.md
+    - name: ユーザー フォーラム
+      href: 'https://aka.ms/aml-forum-service'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
+    - name: Microsoft の ML 製品の比較
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
+    - name: Workbench の変更点
+      displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
+      href: overview-what-happened-to-workbench.md

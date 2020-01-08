@@ -1,133 +1,109 @@
-### YamlMime:Landing
+### YamlMime:Hub
 title: Azure Resource Manager のドキュメント
-summary: Resource Manager テンプレートは JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。
+summary: Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 Azure ソリューションを確実にデプロイおよび管理するために、コードとしてインフラストラクチャを使用します。
+brand: azure
 metadata:
   title: Azure Resource Manager のドキュメント
-  description: Azure Resource Manager テンプレートを開発し、それらを使用して Azure リソースをデプロイする方法について説明します
-  services: azure-resource-manager
+  description: Azure Resource Manager は、Azure のデプロイおよび管理サービスです。
   ms.service: azure-resource-manager
-  ms.subservice: na
-  ms.topic: landing-page
-  ms.collection: na
-  author: mumian
-  ms.author: jgao
-  ms.date: 09/25/2019
-  ms.openlocfilehash: 1d50556eb09a35857ed9db4ccbbba99397606f8b
-  ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+  ms.topic: hub-page
+  ms.collection: collection
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 12/19/2019
+  ms.openlocfilehash: 2910576517be35652d8e1ed1e82687a56a10467e
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/25/2019
-  ms.locfileid: "74483423"
-landingContent:
-- title: Resource Manager について
-  linkLists:
-  - linkListType: overview
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75642474"
+highlightedContent:
+  items:
+  - title: テンプレートとは
+    itemType: overview
+    url: templates/overview.md
+  - title: 最初のテンプレートを作成する
+    itemType: tutorial
+    url: templates/template-tutorial-create-first-template.md
+  - title: Azure Resource Manager とは
+    itemType: overview
+    url: management/overview.md
+conceptualContent:
+  items:
+  - title: Resource Manager テンプレートのデプロイ
     links:
-    - text: Azure Resource Manager とは
-      url: resource-group-overview.md
-    - text: Resource Manager テンプレートとは
-      url: template-deployment-overview.md
-  - linkListType: concept
+    - url: templates/overview.md
+      itemType: overview
+      text: 概要
+    - url: templates/template-tutorial-create-first-template.md
+      itemType: tutorial
+      text: 初心者向けチュートリアル シリーズ
+    - url: templates/template-syntax.md
+      itemType: reference
+      text: テンプレート ファイルの構造
+    - url: templates/template-functions.md
+      itemType: reference
+      text: テンプレート関数
+    - url: templates/deploy-powershell.md
+      itemType: how-to-guide
+      text: 配置
+    - url: templates/template-best-practices.md
+      itemType: concept
+      text: ベスト プラクティス
+    footerLink:
+      url: templates/index.yml
+      text: 詳細情報
+  - title: リソースの管理
     links:
-    - text: ベスト プラクティス
-      url: template-best-practices.md
-    - text: デプロイ モード
-      url: deployment-modes.md
-    - text: リンク済みテンプレート
-      url: resource-group-linked-templates.md
-    - text: サブスクリプション レベルのデプロイ
-      url: deploy-to-subscription.md
-    - text: Deployment Manager
-      url: deployment-manager-overview.md
-  - linkListType: video
+    - url: management/overview.md
+      itemType: overview
+      text: 概要
+    - url: management/tag-resources.md
+      itemType: how-to-guide
+      text: リソースへのタグ付け
+    - url: management/move-resource-group-and-subscription.md
+      itemType: concept
+      text: リソースの移動
+    - url: management/lock-resources.md
+      itemType: how-to-guide
+      text: リソースのロック
+    - url: management/resource-providers-and-types.md
+      itemType: concept
+      text: リソース プロバイダーと種類
+    footerLink:
+      url: management/index.yml
+      text: 詳細情報
+  - title: Managed Applications
     links:
-    - text: 新機能
-      url: https://youtu.be/3D-JIKShrws
-- title: 作業開始
-  linkLists:
-  - linkListType: quickstart
+    - url: managed-applications/overview.md
+      itemType: overview
+      text: 概要
+    - url: managed-applications/publish-service-catalog-app.md
+      itemType: tutorial
+      text: サービス カタログ アプリを発行する
+    - url: managed-applications/create-uidefinition-overview.md
+      itemType: how-to-guide
+      text: UI 定義を作成する
+    - url: managed-applications/publish-marketplace-app.md
+      itemType: tutorial
+      text: マーケットプレースに追加する
+    footerLink:
+      url: managed-applications/index.yml
+      text: 詳細情報
+  - title: Azure カスタム プロバイダー
     links:
-    - text: テンプレートの作成 - ポータル
-      url: resource-manager-quickstart-create-templates-use-the-portal.md
-    - text: テンプレートの作成 - VS Code
-      url: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-    - text: テンプレートの作成 - Visual Studio
-      url: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
-  - linkListType: tutorial
-    links:
-    - text: 初心者向けチュートリアル
-      url: template-tutorial-create-first-template.md
-    - text: 複数のインスタンスのデプロイ
-      url: resource-manager-tutorial-create-multiple-instances.md
-    - text: デプロイ順序の設定
-      url: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - text: キー コンテナーの統合
-      url: resource-manager-tutorial-use-key-vault.md
-- title: テンプレートの開発
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: VS Code を使用する
-      url: resource-manager-tools-vs-code.md
-    - text: 関数を使用する
-      url: resource-group-template-functions.md
-    - text: パラメーターを定義する
-      url: template-parameters.md
-    - text: 変数の定義
-      url: template-variables.md
-    - text: リソースを定義する
-      url: child-resource-name-type.md
-    - text: 出力を定義する
-      url: template-outputs.md
-  - linkListType: reference
-    links:
-    - text: Azure クイック スタート テンプレート
-      url: template-deployment-overview.md
-- title: テンプレートのデプロイ
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: PowerShell を使用する方法
-      url: resource-group-template-deploy.md
-    - text: CLI を使用する方法
-      url: resource-group-template-deploy-cli.md
-    - text: ポータルを使用する方法
-      url: resource-group-template-deploy-portal.md
-    - text: REST API を使用する方法
-      url: resource-group-template-deploy-rest.md
-- title: テンプレートの管理
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: テンプレートのエクスポート
-      url: export-template-portal.md
-    - text: CI/CD
-      url: vs-resource-groups-project-devops-pipelines.md
-- title: リソースの管理
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: リソースの移動
-      url: resource-group-move-resources.md
-    - text: リソースへのタグ付け
-      url: resource-group-using-tags.md
-    - text: リソースのロック
-      url: resource-group-lock-resources.md
-- title: 監視とトラブルシューティング
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: アクティビティ ログを表示する
-      url: resource-group-audit.md
-    - text: デプロイ操作を表示する
-      url: resource-manager-deployment-operations.md
-    - text: デプロイ エラーのトラブルシューティング
-      url: resource-manager-common-deployment-errors.md
-- title: リファレンス コンテンツの確認
-  linkLists:
-  - linkListType: reference
-    links:
-    - text: リソース プロバイダーと種類
-      url: resource-manager-supported-services.md
-    - text: テンプレート リファレンス
-      url: /azure/templates/
+    - url: custom-providers/overview.md
+      itemType: overview
+      text: 概要
+    - url: custom-providers/create-custom-provider.md
+      itemType: quickstart
+      text: カスタム プロバイダーを作成する
+    - url: custom-providers/tutorial-get-started-with-custom-providers.md
+      itemType: tutorial
+      text: カスタム アクションとリソースを作成する
+    - url: custom-providers/custom-providers-action-endpoint-how-to.md
+      itemType: how-to-guide
+      text: カスタム アクションを Azure REST API に追加する
+    footerLink:
+      url: custom-providers/index.yml
+      text: 詳細情報

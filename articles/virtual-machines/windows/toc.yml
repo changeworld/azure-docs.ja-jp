@@ -516,7 +516,7 @@
           href: ../workloads/sap/get-started.md
         - name: MATLAB クラスター
           href: matlab-mdcs-cluster.md
-        - name: Visual Studio
+        - name: "Visual\_Studio"
           href: using-visual-studio-vm.md
         - name: ハイ パフォーマンス コンピューティング (HPC)
           href: hpcpack-cluster-options.md

@@ -4,9 +4,9 @@
   items:
     - name: Azure App Configuration について
       href: overview.md
-    - name: FAQ
+    - name: よく寄せられる質問
       href: faq.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: 構成
@@ -67,7 +67,7 @@
       items:
         - name: 回復性とディザスター リカバリー
           href: concept-disaster-recovery.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Azure マネージド ID と統合する
       href: howto-integrate-azure-managed-service-identity.md
@@ -87,15 +87,15 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: .NET Framework ビルダー
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: .NET Azure SDK
+        - name: Azure SDK for .Net
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Java Spring プロバイダー
           href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
-        - name: Java Azure SDK
+        - name: Azure SDK for Java
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
-        - name: Python Azure SDK
+        - name: Azure SDK for Python
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
-        - name: JavaScript Azure SDK
+        - name: Azure SDK for JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
         - name: REST
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
@@ -111,7 +111,7 @@
       href: 'https://azure.microsoft.com/pricing/details/app-configuration/'
     - name: ビデオ
       items:
-        - name: 使用の開始
+        - name: 作業の開始
           href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
         - name: 機能の管理
           href: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'

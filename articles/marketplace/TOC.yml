@@ -51,6 +51,9 @@
           items:
             - name: オファーの掲載のベスト プラクティス
               href: ./gtm-offer-listing-best-practices.md
+              items:
+                - name: Categories
+                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: 取り上げられる方法
               href: ./gtm-how-to-get-featured.md
             - name: Marketplace コンテンツの検証
