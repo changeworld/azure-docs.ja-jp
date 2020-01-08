@@ -372,6 +372,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
     - name: Cookie の定義
       href: cookie-definitions.md
+    - name: エラー コード
+      href: error-codes.md
     - name: 利用可能なリージョンとデータの保存場所
       href: active-directory-b2c-reference-tenant-type.md
     - name: 課金の有効化
