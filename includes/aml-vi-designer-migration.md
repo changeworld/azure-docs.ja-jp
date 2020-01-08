@@ -8,12 +8,12 @@ ms.topic: include
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
-ms.openlocfilehash: 08833f869a7838fe893b8e941072078f89033c2b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511828"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75535715"
 ---
 1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。
 
@@ -38,5 +38,5 @@ ms.locfileid: "73511828"
 
 - **データのインポート** モジュールまたは**データのエクスポート** モジュール
         
-    実験に**データのインポート** モジュールまたは**データのエクスポート** モジュールがある場合は、データストアを使用するために、データ ソースを更新する必要があります。 データストアを作成する方法については、「[Azure ストレージ サービスのデータにアクセスする](../articles/machine-learning/service/how-to-access-data.md)」を参照してください。 クラウド ストレージ アカウントの情報は、使いやすいように **データのインポート**または**データのエクスポート**のコメントに追加されています。 
+    実験に**データのインポート** モジュールまたは**データのエクスポート** モジュールがある場合は、データストアを使用するために、データ ソースを更新する必要があります。 データストアを作成する方法については、「[Azure ストレージ サービスのデータにアクセスする](../articles/machine-learning/how-to-access-data.md)」を参照してください。 クラウド ストレージ アカウントの情報は、使いやすいように **データのインポート**または**データのエクスポート**のコメントに追加されています。 
       
