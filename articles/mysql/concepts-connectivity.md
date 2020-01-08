@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b598fafbbfce9a2c0a824dd6530d07a5933a2873
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 92e213a87796247128e7e3810db99fde8525e12a
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765208"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659221"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>一時的なエラーを処理して Azure Database for MySQL に効率的に接続する
 
@@ -52,7 +52,7 @@ ms.locfileid: "74765208"
 
 データベース接続の管理が、全体としてアプリケーションのパフォーマンスに大きな影響を与える場合があります。 アプリケーションのパフォーマンスを最適化するには、接続が確立される回数や、主要なコード パスで接続を確立するための時間を削減することを目標にする必要があります。 データベース接続プールまたは永続的な接続を使用して Azure Database for MySQL に接続することを強くお勧めします。 データベース接続プールは、データベース接続の作成、管理、および割り当てに対応します。 プログラムはデータベース接続を要求するときに、新しい接続の作成ではなく、既存のアイドル状態のデータベース接続の割り当てを優先します。 プログラムがデータベース接続の使用を完了すると、その接続は単純に閉じられるのではなく、それ以降の使用に備えて回復されます。
 
-わかりやすくするために、この記事では、例として JAVA を使用する [1 つのサンプル コード](./sample-scripts-java-connection-pooling.md)を示しています。 詳細については、[Apache の一般的な DBCP](http://commons.apache.org/proper/commons-dbcp/) に関するページを参照してください。
+わかりやすくするために、この記事では、例として JAVA を使用する [1 つのサンプル コード](./sample-scripts-java-connection-pooling.md)を示しています。 詳細については、[Apache の一般的な DBCP](https://commons.apache.org/proper/commons-dbcp/) に関するページを参照してください。
 
 > [!NOTE]
 > サーバーは、リソースを解放するために、一定の期間アイドル状態にあった接続を閉じるためのタイムアウト メカニズムを構成します。 永続的な接続を使用している場合は、それらの接続の効率を確認するための検証システムを設定するようにしてください。 詳細については、[永続的な接続の効率を確認するためのクライアント側での検証システムの構成](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections)に関するセクションを参照してください。
@@ -110,6 +110,6 @@ public class SimpleTestOnBorrowExample {
   }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Database for MySQL への接続に関する問題のトラブルシューティング](howto-troubleshoot-common-connection-issues.md)

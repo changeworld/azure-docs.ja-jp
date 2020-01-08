@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jeconnoc
-ms.openlocfilehash: b8bcbabe4b355e4e9cd617e9003902885b8edd88
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5c807397af3ee06b490017b7e14f7b64123b5075
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872445"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645227"
 ---
 # <a name="check-resource-usage-against-limits"></a>制限に照らしたリソース使用量の確認
 
-この記事では、ご使用のサブスクリプション内でデプロイした各ネットワーク リソースの種類の数値を表示する方法と、[サブスクリプションの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)の概要について説明します。 制限に照らしてリソース使用量を表示する機能は、現在の使用状況を追跡し、今後の使用方法を計画するうえで便利です。 使用量を追跡するには、[Azure Portal](#azure-portal)、[PowerShell](#powershell)、または [Azure CLI](#azure-cli) を使用できます。
+この記事では、ご使用のサブスクリプション内でデプロイした各ネットワーク リソースの種類の数値を表示する方法と、[サブスクリプションの制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)の概要について説明します。 制限に照らしてリソース使用量を表示する機能は、現在の使用状況を追跡し、今後の使用方法を計画するうえで便利です。 使用量を追跡するには、[Azure Portal](#azure-portal)、[PowerShell](#powershell)、または [Azure CLI](#azure-cli) を使用できます。
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Azure portal
 
 1. Azure [portal](https://portal.azure.com) にログインします。
 2. Azure portal の左上にある **[すべてのサービス]** を選択します。
@@ -43,7 +43,7 @@ ms.locfileid: "67872445"
 
        ![使用状況データを表示する](./media/check-usage-against-limits/view-usage.png)
 
-     列見出しを選択すると、列を並べ替えることができます。 表示されている制限は、ご使用のサブスクリプションに対する制限です。 既定の制限を増やす必要がある場合は、 **[引き上げを依頼する]** を選択し、サポート リクエストを作成して送信します。 Azure の[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)に関するページには、すべてのリソースの最大制限値が一覧表示されています。 現在の制限が既に最大値に達している場合、制限値を増やすことはできません。
+     列見出しを選択すると、列を並べ替えることができます。 表示されている制限は、ご使用のサブスクリプションに対する制限です。 既定の制限を増やす必要がある場合は、 **[引き上げを依頼する]** を選択し、サポート リクエストを作成して送信します。 Azure の[制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)に関するページには、すべてのリソースの最大制限値が一覧表示されています。 現在の制限が既に最大値に達している場合、制限値を増やすことはできません。
 
 ## <a name="powershell"></a>PowerShell
 

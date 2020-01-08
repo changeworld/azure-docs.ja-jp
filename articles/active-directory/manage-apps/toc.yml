@@ -9,7 +9,7 @@
       href: user-provisioning.md
     - name: オンプレミス アプリ用のアプリケーション プロキシとは
       href: what-is-application-proxy.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: ギャラリーからのクラウド アプリの追加
       href: add-application-portal.md
@@ -21,6 +21,10 @@
       href: /azure/active-directory/saas-apps/
     - name: アプリケーション プロキシを使用してオンプレミス アプリを追加する
       href: application-proxy-add-on-premises-application.md
+- name: サンプル
+  items:
+    - name: アプリケーション プロキシの Azure PowerShell サンプル
+      href: application-proxy-powershell-samples.md
 - name: 概念
   expanded: true
   items:
@@ -40,7 +44,7 @@
           items:
             - name: シングル サインオンとは
               href: what-is-single-sign-on.md
-            - name: マルチテナント アプリケーション用の SSO を有効にする
+            - name: マルチテナント アプリケーションの SSO を有効にする
               href: isv-sso-content.md
             - name: マルチテナント アプリケーション用に Azure テナントを作成する
               href: isv-tenant-multi-tenant-app.md
@@ -70,12 +74,10 @@
               href: end-user-experiences.md
     - name: アプリケーションのプロビジョニング (SCIM)
       items:
+        - name: プロビジョニングのしくみ
+          href: how-provisioning-works.md
         - name: 自動ユーザー プロビジョニングのデプロイを計画する
           href: plan-auto-user-provisioning.md
-        - name: SCIM 対応アプリに対する自動プロビジョニング
-          href: use-scim-to-provision-users-and-groups.md
-        - name: 手動プロビジョニングと自動プロビジョニングの比較
-          href: application-provisioning-config-how-to.md
     - name: クラウド HR のプロビジョニング
       items:
         - name: クラウド HR のユーザー プロビジョニングのデプロイを計画する
@@ -90,7 +92,7 @@
           href: application-proxy-connectors.md
         - name: コネクタ グループ
           href: application-proxy-connector-groups.md
-        - name: セキュリティ
+        - name: Security
           href: application-proxy-security.md
         - name: ネットワーク トポロジ
           href: application-proxy-network-topology.md
@@ -98,7 +100,7 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: リモート アクセス ソリューションの比較
           href: application-proxy-migration.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: クラウド アプリとシングル サインオン
@@ -139,6 +141,8 @@
           items:
             - name: ユーザーの同意の構成
               href: configure-user-consent.md
+            - name: テナント全体の管理者の同意を許可する
+              href: grant-admin-consent.md
             - name: 管理者の同意ワークフローの構成 (プレビュー)
               href: configure-admin-consent-workflow.md
             - name: ユーザーとグループをアプリに割り当てる方法
@@ -169,7 +173,7 @@
               href: migrate-adfs-apps-to-azure.md
             - name: AD FS アプリケーション アクティビティ レポートの使用 (プレビュー)
               href: migrate-adfs-application-activity.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: アプリの追加のトラブルシューティング
               items:
@@ -233,28 +237,32 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: アプリケーションのプロビジョニング (SCIM)
       items:
-        - name: アプリ プロビジョニングの構成
+        - name: ギャラリー アプリのプロビジョニングを構成する
+          href: configure-automatic-user-provisioning-portal.md
+        - name: SCIM エンドポイントの構築とプロビジョニングの構成
+          href: use-scim-to-provision-users-and-groups.md
+        - name: 属性マッピングを編集する
           items:
-            - name: 自動ユーザー プロビジョニングの構成
-              href: configure-automatic-user-provisioning-portal.md
-            - name: 自動プロビジョニングへの SCIM の使用
-              href: use-scim-to-provision-users-and-groups.md
             - name: 属性マッピングのカスタマイズ
               href: Customize-application-attributes.md
             - name: 属性マッピングの式の書き方
               href: functions-for-customizing-application-data.md
+        - name: ユーザーとグループをスコープに含める、または除外する
+          items:
             - name: プロビジョニングするユーザーまたはグループの範囲指定
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: スコープ外のユーザーの削除のスキップ
               href: skip-out-of-scope-deletions.md
+        - name: プロビジョニングの監視とレポート
+          items:
             - name: プロビジョニングの状態とパフォーマンスの監視
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: アプリ プロビジョニングのレポート
               href: check-status-user-account-provisioning.md
             - name: 構成のエクスポートとインポート
               href: export-import-provisioning-configuration.md
-            - name: MS Graph を使用した構成の自動化
-              href: application-provisioning-configure-api.md
+        - name: MS Graph を使用した構成の自動化
+          href: application-provisioning-configure-api.md
         - name: ユーザー プロビジョニングのトラブルシューティング
           items:
             - name: アプリ プロビジョニングのトラブルシューティング
@@ -315,7 +323,7 @@
                   href: application-proxy-configure-single-sign-on-with-kcd.md
                 - name: パスワード保管
                   href: application-proxy-configure-single-sign-on-password-vaulting.md
-                - name: headers
+                - name: ヘッダー
                   href: application-proxy-configure-single-sign-on-with-ping-access.md
                 - name: SAML SSO
                   href: application-proxy-configure-single-sign-on-on-premises-apps.md

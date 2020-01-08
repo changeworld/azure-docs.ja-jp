@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ae1d04043c740456368b0831bee84490778f0171
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3bbc2dcc86d50e0a88e2f3e96c426cb317f41dea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687207"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375034"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する 
 
@@ -126,7 +126,7 @@ WAF デバイスを使用して ILB ASE を構成する方法の詳細につい�
 
 2019 年 5 月より前に作成された ILB ASE では、ASE の作成中にドメイン サフィックスを設定する必要がありました。 また、そのドメイン サフィックスに基づいた既定の証明書をアップロードする必要もありました。 さらに、古い ILB ASE では、その ILB ASE 内のアプリを使用して Kudu コンソールにシングル サインオンすることはできませんでした。 古い ILB ASE 向けに DNS を構成するときは、ドメイン サフィックスと一致するゾーン内にワイルドカードの A レコードを設定する必要があります。 
 
-## <a name="get-started"></a>作業開始 ##
+## <a name="get-started"></a>はじめに ##
 
 * ASE の使用を開始するには、「[App Service 環境の概要][Intro]」をご覧ください。 
 
@@ -150,7 +150,7 @@ WAF デバイスを使用して ILB ASE を構成する方法の詳細につい�
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

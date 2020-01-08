@@ -1,17 +1,17 @@
 ---
 title: Azure Private Link を使用して Azure Cosmos アカウントに接続する
 description: プライベート エンドポイントを作成して、VM から Azure Cosmos アカウントに安全にアクセスする方法について説明します。
-author: asudbring
+author: malopMSFT
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: e54aa00df9efa60cce0fd6fa1da32720f2947b12
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 13b0f7bd37956b51c6dce780d0709abfb3546336
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851198"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430316"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Azure Private Link を使用して Azure Cosmos アカウントに非公開で接続する
 
@@ -33,9 +33,9 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
 
 1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「*MyVirtualNetwork*」と入力します。 |
+    | Name | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
@@ -52,7 +52,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
 
 1. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -65,7 +65,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
     | Size | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
-    | パスワード | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     | パスワードの確認 | パスワードを再入力します。 |
     | **受信ポートの規則** |  |
     | パブリック受信ポート | 既定値 **[なし]** のままにします。 |
@@ -77,9 +77,9 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
-1. **[Create a virtual machine - Networking]\(仮想マシンの作成 - ネットワーク\)** で次の情報を選択します。
+1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[MyVirtualNetwork]** のままにします。  |
     | アドレス空間 | 既定値 **[10.1.0.0/24]** のままにします。|
@@ -161,7 +161,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
 
 1.  *myVM* へのリモート デスクトップ接続を閉じます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 プライベート エンドポイント、Azure Cosmos アカウント、および VM の使用が完了したら、リソース グループとそこに含まれるすべてのリソースを削除します。 
 
@@ -171,7 +171,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
 
 1. **[リソース グループ名を入力してください]**  に「 *myResourceGroup*」と入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、仮想ネットワーク上に VM を作成し、Azure Cosmos アカウントとプライベート エンドポイントを作成しました。 インターネットから VM に接続し、Private Link を使用して Azure Cosmos アカウントと安全に通信を行いました。
 

@@ -6,15 +6,15 @@ description: Azure Monitor では、さまざまなソースをログ データ�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: hub-page
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/29/2019
-ms.openlocfilehash: 407e18008c947f95204ea073db31b5f2279a5a4c
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 903644b9e2f23e7bab4af2dbda0a07039ca3399a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597323"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406164"
 ---
 <div id="main" class="v2">
     <div class="container">

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 4/02/2019
-ms.author: rosh
-ms.openlocfilehash: 55bf189195cc2d9eca0700fd703840da38c71592
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: e19f582084bec6915f95cf16fd8571b8d99da6fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383134"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379642"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>クイック スタート:Bing Visual Search REST API と Ruby を使用して画像に関する分析情報を取得する
 
@@ -28,7 +28,7 @@ ms.locfileid: "74383134"
 * [Ruby 2.4 以降](https://www.ruby-lang.org/en/downloads/)のインストール
 * サブスクリプション キーを取得します。
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="project-and-required-modules"></a>プロジェクトと必須のモジュール
 
@@ -134,7 +134,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ```
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 次の JSON は出力のセグメントです。
 
@@ -281,7 +281,7 @@ JSON Response:
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Visual Search の概要](../overview.md)

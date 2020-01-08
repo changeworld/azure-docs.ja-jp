@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159761"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459169"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 Azure を使用すると、共有物理インフラストラクチャでアプリケーションと仮想マシン (VM) を実行できます。 クラウド環境でのアプリケーションの実行を促進する主要な経済的要因の 1 つは、共有リソースのコストを複数の顧客間で分散できることです。 このマルチテナント機能の実施では、さまざまな顧客間で低コストでリソースを多重化することによって効率が向上します。 残念ながら、機密性の高いアプリケーションや VM を実行するために、悪意のあるユーザーが存在する可能性がある物理サーバーやその他のインフラストラクチャ リソースを共有する危険も生じます。
@@ -75,7 +75,7 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 
 ![Azure ロールベースのアクセス制御](./media/isolation-choices/azure-isolation-fig3.png)
 
-残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの作成協力者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する Azure Virtual Network またはサブネットへのアクセス権は付与されません。
+残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの共同作成者ロールが割り当てられたユーザーには、仮想マシンの作成と管理が許可されます。 その一方で、仮想マシンが接続する Azure Virtual Network またはサブネットへのアクセス権は付与されません。
 
 「[RBAC: 組み込みのロール](../../role-based-access-control/built-in-roles.md)」に、Azure で使用できる RBAC ロールが記載されています。 各組み込みロールによってユーザーに付与される操作とスコープが説明されています。 制御を強化するために独自のロールを定義する場合は、 [Azure RBAC でカスタム ロール](../../role-based-access-control/custom-roles.md)を作成する方法を参照してください。
 
@@ -205,7 +205,7 @@ Azure では、データを保護するために次の種類の暗号化が提�
 
 -   [トランスポートレベルの暗号化](../../storage/common/storage-security-guide.md)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
 
--   [ワイヤ暗号化](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (Azure ファイル共有の SMB 3.0 暗号化など)。
+-   [ワイヤ暗号化](../../storage/common/storage-security-guide.md) (Azure ファイル共有の SMB 3.0 暗号化など)。
 
 -   [クライアント側の暗号化](../../storage/common/storage-security-guide.md)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f9b7ac97cb190073966f9be450e9f9e04014fbd7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cc2295f6151b3cde81c27c8ed1116013e1a3f9a9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078049"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647545"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP の高可用性向けの Azure インフラストラクチャを準備します
 
@@ -39,8 +39,8 @@ ms.locfileid: "70078049"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -203,7 +203,7 @@ ms.locfileid: "70078049"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -322,9 +322,9 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 
 Managed Disks を使用することをお勧めします。
 
-![図 1:マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8010]
+![図 1: マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8010]
 
-" _**図 1**: マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面_"
+_**図 1**: マネージド ディスクを備えたスケールアウト ファイル サーバー Resource Manager テンプレートの UI 画面_"
 
 このテンプレートで、次の操作を行います。
 1. **[VM 数]** ボックスに、最小数である「**2**」を入力します。
@@ -338,13 +338,13 @@ Managed Disks を使用することをお勧めします。
 
 ![図 2:マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面][sap-ha-guide-figure-8011]
 
-" _**図 2**: マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面_"
+_**図 2**: マネージド ディスクを備えていないスケールアウト ファイル サーバー Azure Resource Manager テンプレートの UI 画面_"
 
 **[ストレージ アカウントの種類]** ボックスで、 **[Premium Storage]** を選択します。 その他の設定は、マネージド ディスクと同じです。
 
 ## <a name="adjust-cluster-timeout-settings"></a>クラスターのタイムアウトの設定を調整する
 
-Windows スケールアウト ファイル サーバー クラスターのインストールが正常に終わったら、フェールオーバー検出のタイムアウトしきい値を Azure での条件に合わせて調整します。 変更するパラメーターについては、「[Tuning failover cluster network thresholds][tuning-failover-cluster-network-thresholds]」 (フェールオーバー クラスター ネットワークのしきい値の調整) をご覧ください。 クラスター化された VM が同じサブネット内にあるとすると、以下のパラメーターを次の値に変更します。
+Windows スケールアウト ファイル サーバー クラスターのインストールが正常に終わったら、フェールオーバー検出のタイムアウトしきい値を Azure での条件に合わせて調整します。 変更するパラメーターについては、「[Tuning failover cluster network thresholds][tuning-failover-cluster-network-thresholds]」(フェールオーバー クラスター ネットワークのしきい値の調整) をご覧ください。 クラスター化された VM が同じサブネット内にあるとすると、以下のパラメーターを次の値に変更します。
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
@@ -352,6 +352,6 @@ Windows スケールアウト ファイル サーバー クラスターのイン
 
 これらの設定はお客様とテストしたものであり、適切な妥協が提供されます。 十分な回復性がある一方で、実際のエラー状態や VM の障害において十分に高速なフェールオーバーも提供されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Windows フェールオーバー クラスターと SAP ASCS/SCS インスタンスのファイル共有を使用して SAP NetWeaver の高可用性をインストールする][sap-high-availability-installation-wsfc-file-share]

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/19/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 30234758761e06c65e621c7f512ed8cafa02e090
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8cab88b9d3a861c72d382534705ea5c087fe9ecb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382652"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>クイック スタート:Bing Video Search REST API と Java を使用して動画を検索する
 
@@ -59,7 +59,7 @@ ms.locfileid: "74378659"
     }
     ```
 
-3. `SearchVideos()` という名前の新しいメソッドを作成し、API エンドポイントのホストとパス、サブスクリプション キー、検索語句の各変数を宣言します。 戻り値は `SearchResults` オブジェクトです。 
+3. `SearchVideos()` という名前の新しいメソッドを作成し、API エンドポイントのホストとパス、サブスクリプション キー、検索語句の各変数を宣言します。 戻り値は `SearchResults` オブジェクトです。 `host` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {
@@ -243,11 +243,11 @@ ms.locfileid: "74378659"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>参照 
 
  [Bing Video Search API とは](../overview.md)

@@ -3,12 +3,12 @@ title: Azure Lighthouse とは
 description: サービス プロバイダーは Azure Lighthouse を通じて、自動化と効率を大規模に高めたマネージド サービスを顧客に提供することができます。
 ms.date: 11/11/2019
 ms.topic: overview
-ms.openlocfilehash: 0551bbcbc9609809b0b28eb56a0a3b848debcaae
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 0bec1f5b727ca3ecd604d2654358ca9a5507abe4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132199"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646196"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse とは
 
@@ -22,7 +22,7 @@ Azure Lighthouse を使用すると、収益面で有利に、かつ効率よく
 
 - **大規模な管理**: 顧客エンゲージメントとライフサイクル操作によって顧客リソースの管理が容易になり、スケーラビリティが向上します。
 - **顧客から見た可視性と精度の向上**: 貴社の知的財産権が損なわれることなく、管理対象リソースの所有者である顧客が、実行された操作をよりよく把握し、管理の委任範囲を細かく制御できるようになります。
-- **包括的で一元化されたプラットフォーム ツール**: Microsoft のツールエクスペリエンスは、EA、CSP、従量課金制などの複数のライセンス モデルを含む、サービス プロバイダーの主要なシナリオに対応しています。 その新しい機能は、既存のツールと API、ライセンスモデル、[クラウドソリューションプロバイダープログラム (CSP)](https://docs.microsoft.com/partner-center/csp-overview) などのパートナープログラムと連動します。 選択した Azure Lighthouse オプションは、既存のワークフローとアプリケーションに統合できます。また、[パートナー ID をリンク](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)することで、顧客エンゲージメントへの影響を追跡できます。
+- **包括的で一元化されたプラットフォーム ツール**: Microsoft のツールエクスペリエンスは、EA、CSP、従量課金制などの複数のライセンス モデルを含む、サービス プロバイダーの主要なシナリオに対応しています。 その新しい機能は、既存のツールと API、ライセンスモデル、[クラウドソリューションプロバイダープログラム (CSP)](https://docs.microsoft.com/partner-center/csp-overview) などのパートナープログラムと連動します。 選択した Azure Lighthouse オプションは、既存のワークフローとアプリケーションに統合できます。また、[パートナー ID をリンク](../billing/billing-partner-admin-link-started.md)することで、顧客エンゲージメントへの影響を追跡できます。
 
 Azure Lighthouse を使用して顧客の Azure リソースを管理することに関して、追加コストは発生しません。
 
@@ -30,13 +30,13 @@ Azure Lighthouse を使用して顧客の Azure リソースを管理するこ�
 
 Azure Lighthouse には、顧客エンゲージメントと顧客管理を効率化するさまざまな方法が用意されています。
 
-- **Azure の委任されたリソース管理**: コンテキストやコントロール プレーンを切り替えることなく、貴社独自のテナント内から顧客の Azure リソースを安全に管理できます。 詳細については、「[Azure の委任されたリソース管理](./concepts/azure-delegated-resource-management.md)」を参照してください。
-- **新しい Azure portal エクスペリエンス**: [Azure portal](https://portal.azure.com) の新しい **[マイ カスタマー]** ページで、テナント間の情報を確認できます。 それに対応する **[サービス プロバイダー]** ブレードで、顧客はサービス プロバイダーのアクセスを確認し、管理することができます。 詳細については、「[顧客を表示し、管理する](./how-to/view-manage-customers.md)」および「[サービス プロバイダーを表示し、管理する](./how-to/view-manage-service-providers.md)」を参照してください。
+- **Azure の委任されたリソース管理**: コンテキストやコントロール プレーンを切り替えることなく、貴社独自のテナント内から顧客の Azure リソースを安全に管理できます。 詳細については、「[Azure の委任されたリソース管理](concepts/azure-delegated-resource-management.md)」を参照してください。
+- **新しい Azure portal エクスペリエンス**: [Azure portal](https://portal.azure.com) の新しい **[マイ カスタマー]** ページで、テナント間の情報を確認できます。 それに対応する **[サービス プロバイダー]** ブレードで、顧客はサービス プロバイダーのアクセスを確認し、管理することができます。 詳細については、「[顧客を表示し、管理する](./how-to/view-manage-customers.md)」および「[サービス プロバイダーを表示し、管理する](how-to/view-manage-service-providers.md)」を参照してください。
 - **Azure Resource Manager テンプレート**: Azure の委任されたリソース管理への顧客のオンボーディングを含め、管理タスクを容易に行えます。 詳細については、Microsoft の[サンプル リポジトリ](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates)および「[Azure の委任されたリソース管理に顧客をオンボードする](how-to/onboard-customer.md)」を参照してください。
-- **Azure Marketplace のマネージド サービス オファー**: プライベート オファーまたはパブリック オファーを通じて貴社のサービスを顧客に提供できます。Azure Resource Manager テンプレートを使用したオンボードに代わる方法として、Azure の委任されたリソース管理に顧客を自動的にオンボードすることができます。 詳細については、「[Azure Marketplace のマネージド サービス オファー](./concepts/managed-services-offers.md)」を参照してください。
-- **Azure マネージド アプリケーション**: 顧客が自身のサブスクリプションに簡単にデプロイして使用できるアプリケーションをパッケージ化して出荷できます。 アプリケーションは、貴社がそのテナントからアクセスできるリソース グループにデプロイされるので、貴社が全体的な Azure Lighthouse エクスペリエンスの一部としてサービスを管理することができます。 詳細については、「[Azure マネージド アプリケーションの概要](https://docs.microsoft.com/azure/managed-applications/overview)」を参照してください。
+- **Azure Marketplace のマネージド サービス オファー**: プライベート オファーまたはパブリック オファーを通じて貴社のサービスを顧客に提供できます。Azure Resource Manager テンプレートを使用したオンボードに代わる方法として、Azure の委任されたリソース管理に顧客を自動的にオンボードすることができます。 詳細については、「[Azure Marketplace のマネージド サービス オファー](concepts/managed-services-offers.md)」を参照してください。
+- **Azure マネージド アプリケーション**: 顧客が自身のサブスクリプションに簡単にデプロイして使用できるアプリケーションをパッケージ化して出荷できます。 アプリケーションは、貴社がそのテナントからアクセスできるリソース グループにデプロイされるので、貴社が全体的な Azure Lighthouse エクスペリエンスの一部としてサービスを管理することができます。 詳細については、「[Azure マネージド アプリケーションの概要](../azure-resource-manager/managed-applications/overview.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure の委任されたリソース管理](concepts/azure-delegated-resource-management.md)について学習してください。
 - [テナント間の管理エクスペリエンス](concepts/cross-tenant-management-experience.md)について学習します。

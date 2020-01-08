@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e128daa82eca8142a636df0958ddca574e398713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423607"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383117"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>チュートリアル:単一ページの Web アプリの作成
 
@@ -55,13 +55,13 @@ Bing News Search API を使うと、Web を検索して、検索クエリに関�
 ```
 `onsubmit` ハンドラーは `false` を返すことで、フォームがサーバーに送信されないようにします。 JavaScript コードはフォームから必要な情報を収集し、検索を実行する処理を行います。
 
-HTML には、検索結果が表示されるブロック (HTML `<div>` タグ) も含まれます。
+HTML には、検索結果が表示される区分 (HTML `<div>` タグ) も含まれます。
 
 ## <a name="managing-subscription-key"></a>サブスクリプション キーの管理
 
 コードに Bing Search API サブスクリプション キーを含めなくてもよいように、ブラウザーの永続的ストレージを使用してキーを格納します。 キーを格納する前に、ユーザーにキーの入力を求めます。 後でキーが API によって拒否された場合は、格納されたキーを無効にし、ユーザーに再度操作を求めます。
 
-`localStorage` オブジェクト (サポートしていないブラウザーもあります) または Cookie のいずれかを使用する `storeValue` 関数と `retrieveValue` 関数を定義します。 `getSubscriptionKey()` 関数は、これらの関数を使用してユーザーのキーを格納、取得します。
+`localStorage` オブジェクト (サポートしていないブラウザーもあります) または Cookie のいずれかを使用する `storeValue` 関数と `retrieveValue` 関数を定義します。 `getSubscriptionKey()` 関数は、これらの関数を使用してユーザーのキーを格納、取得します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
 ``` javascript
 // Cookie names for data we store
@@ -101,7 +101,7 @@ HTML の `<form>` タグの `onsubmit` は、`bingWebSearch` 関数を呼び出�
 
 この HTML のフォームには、次の名前の付いた要素が含まれます。
 
-|要素|説明|
+|要素|[説明]|
 |-|-|
 | `where` | 検索で使用される市場 (場所と言語) を選択するドロップダウン メニュー。 |
 | `query` | 検索語句を入力するテキスト フィールド。 |
@@ -313,9 +313,9 @@ function renderResults(items) {
     return html.join("\n\n");
 }
 ```
-Bing News Search API は、関連する結果を最大で 4 種類返します。これらの各結果は、それ自体の最上位のオブジェクトに含まれます。 次に例を示します。
+Bing News Search API は、関連する結果を最大で 4 種類返します。これらの各結果は、それ自体の最上位のオブジェクトに含まれます。 これらは次のとおりです。
 
-|関係|説明|
+|関係|[説明]|
 |-|-|
 |`pivotSuggestions`|元の検索の軸語を別のものに置き換えるクエリです。 たとえば、"赤い花" を検索した場合、"赤" が軸語で、"黄色い花" が候補になる可能性があります。|
 |`queryExpansions`|複数の条件を追加することで、元の検索を絞り込むクエリです。 たとえば、"Microsoft Surface" を検索した場合、クエリが "Microsoft Surface Pro" に拡張される場合があります。|
@@ -338,7 +338,7 @@ searchItemRenderers = {
 ```
 レンダラー関数では、次のパラメーターを受け取ることができます。
 
-|パラメーター|説明|
+|パラメーター|[説明]|
 |-|-|
 |`item`| 項目のプロパティ (URL とその説明など) を含む JavaScript オブジェクト。|
 |`index`| コレクション内の結果項目のインデックス。|
@@ -413,6 +413,6 @@ CORS プロキシをインストールして、チュートリアル アプリ�
 
 チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [Bing News Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)

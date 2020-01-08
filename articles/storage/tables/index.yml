@@ -1,0 +1,58 @@
+### YamlMime:Landing
+title: Azure Table Storage のドキュメント
+summary: Azure Table Storage は、NoSQL の構造化データをクラウド内に格納するサービスです。スキーマレスのデザインでキー/属性ストアを実現します。
+metadata:
+  title: Azure Table Storage のドキュメント
+  description: Azure Table Storage は、NoSQL の構造化データをクラウド内に格納するサービスです。スキーマレスのデザインでキー/属性ストアを実現します。
+  ms.service: storage
+  ms.subservice: tables
+  ms.topic: landing-page
+  ms.collection: collection
+  author: tamram
+  ms.author: tamram
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 73dc70fb31508667ebcab4803a9263c716ce35c2
+  ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75551898"
+landingContent:
+- title: Table Storage について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Table Storage とは
+      url: table-storage-overview.md
+    - text: Table Storage またはテーブル API の選択
+      url: ../../cosmos-db/table-support.md?toc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fstorage%2Ftables%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fazure%2Fbread%2Ftoc.json
+- title: テーブルの設計ガイダンス
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 効率的な読み取りと書き込みのための設計
+      url: table-storage-design-guidelines.md
+    - text: クエリに対応した設計
+      url: table-storage-design-for-query.md
+    - text: データの変更に対応した設計
+      url: table-storage-design-for-modification.md
+    - text: テーブルの設計パターン
+      url: table-storage-design-patterns.md
+- title: パフォーマンス、スケーリング、コストの最適化
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Table Storage のパフォーマンス チェック リスト
+      url: storage-performance-checklist.md
+    - text: 最適なパフォーマンスのための設計
+      url: table-storage-design.md
+  - linkListType: reference
+    links:
+    - text: Table Storage のスケーラビリティ ターゲット
+      url: scalability-targets.md
+- title: はじめに
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal でテーブルを作成する
+      url: table-storage-quickstart-portal.md

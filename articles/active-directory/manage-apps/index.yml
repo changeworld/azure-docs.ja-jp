@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 2b83d09932aaa39e31d04f30bc660541efcbb50b
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 7ebb44ec1f3483b9bf3f29ddb6dc7a73266b8cea
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73882798"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443356"
 landingContent:
 - title: アプリケーション管理について
   linkLists:
@@ -53,22 +53,22 @@ landingContent:
     links:
     - text: 自動ユーザー プロビジョニングとは
       url: user-provisioning.md
-  - linkListType: concept
+    - text: プロビジョニングのしくみ
+      url: how-provisioning-works.md
+  - linkListType: tutorial
     links:
-    - text: SCIM を使用してユーザーとグループをプロビジョニングする
-      url: use-scim-to-provision-users-and-groups.md
+    - text: SaaS アプリのプロビジョニングに関するチュートリアル
+      url: /azure/active-directory/saas-apps/
   - linkListType: how-to-guide
     links:
-    - text: 自動ユーザー プロビジョニングの構成
+    - text: アプリの構築 自動プロビジョニングへの SCIM の使用
+      url: use-scim-to-provision-users-and-groups.md
+    - text: ギャラリー アプリを追加しますか? アプリへのプロビジョニングを構成する
       url: configure-automatic-user-provisioning-portal.md
     - text: 属性マッピングのカスタマイズ
       url: customize-application-attributes.md
-    - text: プロビジョニング状態の確認
-      url: application-provisioning-when-will-provisioning-finish-specific-user.md
-  - linkListType: reference
-    links:
-    - text: 属性マッピングの式の書き方
-      url: functions-for-customizing-application-data.md
+    - text: スコープ フィルターの使用
+      url: define-conditional-rules-for-provisioning-user-accounts.md
 - title: アプリケーション プロキシを使用してオンプレミス アプリを発行する
   linkLists:
   - linkListType: overview

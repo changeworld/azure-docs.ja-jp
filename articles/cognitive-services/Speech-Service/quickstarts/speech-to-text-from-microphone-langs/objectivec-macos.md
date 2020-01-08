@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 12/23/2019
 ms.author: chlandsi
-ms.openlocfilehash: be5f62a75d9a3998d843e9865768b46658b8386c
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: c2f0fbe66b26c6eca6e0c0b2530efacba9bae958
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815016"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380594"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-by-using-the-speech-sdk"></a>クイック スタート:macOS で Objective-C と Speech SDK を使用して音声を認識する
 
@@ -89,7 +89,7 @@ Xcode を起動し、 **[File]\(ファイル\)**  >  **[New]\(新規\)**  >  **[
 1. メニューから **[Product]\(製品\)**  >  **[Run]\(実行\)** の順に選択してコード例をビルドし、実行します。 **[Play]\(再生\)** を選択してもかまいません。
 1. ボタンを選択して何か話すと、発話した内容のテキストが画面の下部に表示されます。 アプリを初めて実行するときに、お使いのコンピューターのマイクの使用許可をアプリに与えるよう求められます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [GitHub で Objective-C のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)

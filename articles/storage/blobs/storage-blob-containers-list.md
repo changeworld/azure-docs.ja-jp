@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b7e5b0725049fa5de95f435c848502c36a3a1726
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4ac8fe2e5bf1c338fa67619a675225eb80256c3f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598121"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690988"
 ---
 # <a name="list-blob-containers-with-net"></a>.NET を使用して BLOB コンテナーを一覧表示する
 
@@ -49,7 +49,8 @@ Azure Storage アカウント内のコンテナーをコードから一覧表示
 次の例では、指定されたプレフィックスで始まるコンテナーがストレージ アカウント内から非同期的に一覧表示されます。 この例では、一度に 5 つの結果を単位としてコンテナーを一覧表示し、継続トークンを使用して次の結果セグメントを取得しています。 また、この例では、結果と共にコンテナーのメタデータも返されます。
 
 ```csharp
-private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)
+private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
+                                                        string prefix)
 {
     Console.WriteLine("List all containers beginning with prefix {0}, plus container metadata:", prefix);
 
@@ -97,7 +98,7 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 [コンテナーの一覧表示](/rest/api/storageservices/list-containers2)
 [Enumerating Blob Resources (Blob リソースの列挙)](/rest/api/storageservices/enumerating-blob-resources)

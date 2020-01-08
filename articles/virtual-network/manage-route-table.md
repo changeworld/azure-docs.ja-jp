@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: kumud
-ms.openlocfilehash: a39d9f9c5a138ece5d40cc5afe1d1dcdd8e7a41a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 809c0501c95b07f7c39a0885ea30c83507b90d53
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65849799"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646967"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>ルート テーブルの作成、変更、削除
 
@@ -38,7 +38,7 @@ Azure へのサインインまたは接続に使用するアカウントは、[�
 
 ## <a name="create-a-route-table"></a>ルート テーブルの作成
 
-Azure の場所およびサブスクリプションあたりの作成可能なルート テーブル数は、制限されています。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。
+Azure の場所およびサブスクリプションあたりの作成可能なルート テーブル数は、制限されています。 詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
 
 1. ポータルの左上隅にある **[+ リソースの作成]** を選択します。
 1. **[ネットワーク]** 、 **[ルート テーブル]** の順に選択します。
@@ -67,8 +67,8 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
     * [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)<br>
     * [アクセス制御 (IAM)](../role-based-access-control/overview.md)<br>
     * [タグ](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
-    * [ロック](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
-    * [Automation スクリプト](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)
+    * [Locks](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br>
+    * [Automation スクリプト](../azure-resource-manager/templates/export-template-portal.md)
 
 ### <a name="view-details-of-route-table---commands"></a>ルート テーブルの詳細の表示 - コマンド
 
@@ -132,7 +132,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ## <a name="create-a-route"></a>ルートの作成
 
-Azure の場所およびサブスクリプションあたりの作成可能なルート テーブルごとのルート数は、制限されています。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。
+Azure の場所およびサブスクリプションあたりの作成可能なルート テーブルごとのルート数は、制限されています。 詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
 
 1. ポータルの上部にある検索ボックスに、「*ルート テーブル*」と入力します。 検索結果に **[ルート テーブル]** が表示されたら、それを選択します。
 1. ルートを追加するルート テーブルを一覧から選択します。
@@ -236,7 +236,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ルート テーブルとルートに関するタスクを実行するには、使用するアカウントが[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表の適切なアクションが割り当てられた[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに、割り当てられている必要があります。
 
-| Action                                                          |   Name                                                  |
+| アクション                                                          |   Name                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft.Network/routeTables/read                              |   ルート テーブルの読み取り                                    |
 | Microsoft.Network/routeTables/write                             |   ルート テーブルの作成または更新                        |
@@ -248,7 +248,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 | Microsoft.Network/networkInterfaces/effectiveRouteTable/action  |   ネットワーク インターフェイスに対する有効なルート テーブルの取得 |
 | Microsoft.Network/networkWatchers/nextHop/action                |   VM から次ホップを取得する                           |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [PowerShell](powershell-samples.md) または [Azure CLI](cli-samples.md) のサンプル スクリプトを使って、または Azure [Resource Manager テンプレート](template-samples.md)を使って、ルート テーブルを作成します<br>
 * [Azure ポリシー](policy-samples.md)を作成して仮想ネットワークに適用します

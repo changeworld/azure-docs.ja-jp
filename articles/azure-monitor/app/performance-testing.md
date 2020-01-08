@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 9c86b69239bed1a15c754ce28232b97e8439942b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: db23fae6bb15e851d22e54b323428c061f55b34f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819112"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406547"
 ---
 # <a name="performance-testing"></a>パフォーマンス テスト
 
@@ -38,7 +38,7 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 
 基本的なパフォーマンス テストを作成するには、テストの種類として **[手動テスト]** を選択し、テストに必要な設定を入力します。
 
-|Setting| 最大値
+|設定| 最大値
 |----------|------------|
 | ユーザー ロード | 20,000 |
 | 期間 (分)  | 60 |  
@@ -53,9 +53,9 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 
 Application Insights の高度なパフォーマンス テスト機能は、Visual Studio のパフォーマンスとロード テスト プロジェクトの上に構築されています。
 
-![Visual Studio ](./media/performance-testing/visual-studio-test.png)
+![Visual Studio ](./media/performance-testing/visual-studio-test.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [複数ステップ Web テスト](availability-multistep.md)
 * [URL ping テスト](monitor-web-app-availability.md)

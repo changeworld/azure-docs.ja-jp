@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b671fe9a4ecd35cbe9d70f398f8d39664203fc58
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8d28566cb10ddd1637eb81dffd102df6bd7b6e7a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781887"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663128"
 ---
-スポット VM を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を排除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
+スポット VM を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を削除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
 
 利用可能な容量は、サイズ、リージョン、時刻などによって異なります。 スポット VM を展開すると、利用可能な容量がある場合は Azure は VM を割り当てますが、このような VM には SLA はありません。 スポット VM は、高可用性の保証を提供しません。 Azure インフラストラクチャは、Azure の容量が必要になった時点で、30 秒前通知の後スポット VM が削除されます。 
 
@@ -78,7 +78,7 @@ VM は、容量または設定した最大価格に基づいて削除できま�
 
 **質問:** スポット VM のクォータはどのように管理されますか?
 
-**A:** スポット VM には、個別のクォータ プールがあります。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits)」をご覧ください。
+**A:** スポット VM には、個別のクォータ プールがあります。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
 
 
 **質問:** スポットに追加のクォータを要求することはできますか。
@@ -97,9 +97,9 @@ VM は、容量または設定した最大価格に基づいて削除できま�
 | Enterprise Agreement         | はい                               |
 | 従量課金制                | はい                               |
 | クラウド サービス プロバイダー (CSP) | [パートナーにお問い合わせください](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| メリット                     | 使用できません。                     |
-| スポンサー                    | 使用できません。                     |
-| 無料試用版                   | 使用できません。                     |
+| メリット                     | 使用不可                     |
+| スポンサー                    | 使用不可                     |
+| 無料試用版                   | 使用不可                     |
 
 
 **質問:** どこで質問を投稿できますか。

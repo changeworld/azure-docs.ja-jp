@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: f87e7795416431305141de24497e9760eb03641e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4ee5f06a7256a2092cfed923cf40c6b74254c4a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484368"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647562"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 以下の手順では、Azure PowerShell コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する方法を説明します。
@@ -58,7 +58,7 @@ Azure PowerShell をインストールするための主なオプションは 2 
 ## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>手順 3:サブスクリプションの管理者であることを確認する
 この移行を実行するには、[Azure portal](https://portal.azure.com) で自分をサブスクリプションの共同管理者として追加する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. **[ハブ]** メニューで、 **[サブスクリプション]** を選択します。 表示されない場合は、 **[すべてのサービス]** を選択します。
 3. 適切なサブスクリプションのエントリを探し、 **[自分のロール]** フィールドを確認します。 共同管理者の場合、この値は _[アカウント管理者]_ です。
 
@@ -125,7 +125,7 @@ RegistrationState が `Registered` であることを確認してから続行し
 <br>
 
 ## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>手順 5:十分な数の Resource Manager VM vCPU を準備する
-現在のデプロイまたは仮想ネットワークの Azure リージョンで Azure Resource Manager 仮想マシンの vCPU 数が十分にあることを確認します。 Azure Resource Manager での現在の vCPU 数は、次の PowerShell コマンドを使用して確認できます。 vCPU クォータの詳細については、「[制限と Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager)」を参照してください。
+現在のデプロイまたは仮想ネットワークの Azure リージョンで Azure Resource Manager 仮想マシンの vCPU 数が十分にあることを確認します。 Azure Resource Manager での現在の vCPU 数は、次の PowerShell コマンドを使用して確認できます。 vCPU クォータの詳細については、「[制限と Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager)」を参照してください。
 
 この例は、**米国西部**リージョンでの可用性をチェックします。 例のリージョン名を対象のリージョン名に置き換えてください。
 
@@ -159,7 +159,7 @@ Get-AzVMUsage -Location "West US"
 
 移行に合わせてクラウド サービスの仮想マシンを準備します。 2 つのオプションから選択できます。
 
-* **オプション 1:プラットフォームで作成した仮想ネットワークに VM を移行する。**
+* **オプション 1: プラットフォームで作成した仮想ネットワークに VM を移行する。**
 
     最初に、次のコマンドを使用して、クラウド サービスを移行できるかどうかを検証します。
 
@@ -175,7 +175,7 @@ Get-AzVMUsage -Location "West US"
     Move-AzureService -Prepare -ServiceName $serviceName `
         -DeploymentName $deploymentName -CreateNewVirtualNetwork
     ```
-* **オプション 2:Resource Manager デプロイ モデルの既存の仮想ネットワークに移行する。**
+* **オプション 2: Resource Manager デプロイ モデルの既存の仮想ネットワークに移行する。**
 
     この例では、リソース グループ名を **myResourceGroup**、仮想ネットワーク名を **myVirtualNetwork**、サブネット名を **mySubNet** に設定します。 例の名前を対象のリソースの名前に置き換えてください。
 
@@ -342,7 +342,7 @@ Azure PowerShell または Azure Portal のどちらかを使用して、準備�
         Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [クラシックから Azure Resource Manager への IaaS リソースの移行計画](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

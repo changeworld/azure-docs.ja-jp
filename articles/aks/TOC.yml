@@ -4,7 +4,7 @@
   items:
     - name: AKS について
       href: intro-kubernetes.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: AKS クラスターの作成
@@ -55,12 +55,12 @@
       href: concepts-clusters-workloads.md
     - name: アクセスと ID
       href: concepts-identity.md
-    - name: セキュリティ
+    - name: Security
       href: concepts-security.md
       items: null
     - name: ネットワーク
       href: concepts-network.md
-    - name: Storage
+    - name: ストレージ
       href: concepts-storage.md
     - name: スケール
       href: concepts-scale.md
@@ -84,7 +84,7 @@
               href: operator-best-practices-container-image-management.md
             - name: ネットワーク
               href: operator-best-practices-network.md
-            - name: Storage
+            - name: ストレージ
               href: operator-best-practices-storage.md
             - name: 事業継続とディザスター リカバリー (BCDR)
               href: operator-best-practices-multi-region.md
@@ -104,11 +104,11 @@
       href: security-hardened-vm-host-image.md
     - name: Azure Kubernetes Service 診断の概要
       href: concepts-diagnostics.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: クラスターの操作
       items:
-        - name: AKS クラスターの作成
+        - name: AKS クラスターを作成する
           href: '/cli/azure/aks#az-aks-create'
           maintainContext: true
         - name: AKS クラスターのスケーリング
@@ -218,6 +218,8 @@
           maintainContext: true
         - name: 証明書のローテーション
           href: certificate-rotation.md
+        - name: プライベート クラスターを作成する
+          href: private-clusters.md
     - name: 監視およびログ記録
       items:
         - name: コンテナーに対する Azure Monitor
@@ -232,7 +234,7 @@
           maintainContext: true
     - name: Windows Server コンテナーの使用 (プレビュー)
       items:
-        - name: AKS クラスターの作成
+        - name: AKS クラスターを作成する
           href: windows-container-cli.md
         - name: リモート接続
           href: rdp.md
@@ -309,6 +311,9 @@
         - name: Azure Database for PostgreSQL の使用
           href: ../postgresql/concepts-aks.md
           maintainContext: true
+        - name: Azure API Management の使用
+          href: ../api-management/api-management-kubernetes.md
+          maintainContext: true
     - name: サービス メッシュの選択とデプロイ
       items:
         - name: サービス メッシュについて
@@ -317,7 +322,7 @@
           items:
             - name: Istio について
               href: servicemesh-istio-about.md
-            - name: インストールと構成
+            - name: '[インストールと構成]'
               href: servicemesh-istio-install.md
             - name: シナリオ - インテリジェントなルーティングとカナリア リリース
               href: servicemesh-istio-scenario-routing.md
@@ -325,13 +330,13 @@
           items:
             - name: Linkerd について
               href: servicemesh-linkerd-about.md
-            - name: インストールと構成
+            - name: '[インストールと構成]'
               href: servicemesh-linkerd-install.md
         - name: Consul の使用
           items:
             - name: Consul について
               href: servicemesh-consul-about.md
-            - name: インストールと構成
+            - name: '[インストールと構成]'
               href: servicemesh-consul-install.md
     - name: DevOps
       items:
@@ -347,7 +352,7 @@
           href: deployment-center-launcher.md
         - name: Kubernetes 向けの GitHub Actions
           href: ../aks/kubernetes-action.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: 一般的な問題
           href: troubleshooting.md
@@ -391,5 +396,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'
-    - name: FAQ
+    - name: よく寄せられる質問
       href: faq.md

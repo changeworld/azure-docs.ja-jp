@@ -2,19 +2,15 @@
 title: Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 description: Microsoft やコミュニティからの Runbook とモジュールを Azure Automation 環境にインストールして使用できます。  この記事では、これらのリソースにアクセスしたり、自分の Runbook をギャラリーに投稿したりする方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 94910d0f42ad6b208cac54dd2826cbd2d917504b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 52a0ab0a31600c1548283c7d899b17e497811b5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850722"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421485"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 
@@ -70,8 +66,8 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
 4. **[ギャラリーを参照]** ページで、次のフィールドで検索できます。
 
    * モジュール名
-   * タグ
-   * 作成者
+   * Tags
+   * Author
    * コマンドレット/DSC リソース名
 
 5. 目的のモジュールを探し、選択して詳細を表示します。
@@ -109,7 +105,7 @@ Python Runbook は、[スクリプト センター ギャラリー](https://gall
 * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemFromAzureVM/) - この Runbook では、Windows Azure 仮想マシンからリモート ファイルがコピーされます。
 * [Copy-ItemFromAzureVM](https://www.powershellgallery.com/packages/Copy-ItemToAzureVM/) - この Runbook では、ローカル ファイルを Azure 仮想マシンにコピーします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Runbook の使用を開始するには、「[Azure Automation で Runbook を管理する](manage-runbooks.md)」をご覧ください
 * Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「 [PowerShell ワークフローについて](automation-powershell-workflow.md)

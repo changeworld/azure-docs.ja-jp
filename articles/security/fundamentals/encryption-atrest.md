@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: fc3c7ea2f0060fc6ab20fa821c9e45d6e5173d4f
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: da8dfe61e92c4839deb1f7fbc289be0136087720
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795796"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497307"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 
@@ -59,7 +59,7 @@ Microsoft は、クラウド サービス全体にわたって保存時の暗号
 
 前述のように、保存時の暗号化の目的は、ディスクに保存されているデータを秘密暗号化キーで暗号化することです。 この目標を達成するためには、セキュリティ保護されたキーの作成、ストレージ、アクセス制御および暗号化キーの管理を提供する必要があります。 詳細情報が異なる場合がありますが、Azure services Encryption at Rest で実装されている暗号化サービスは、次の図に示す用語で説明できます。
 
-![コンポーネント](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
+![Components](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
 
 ### <a name="azure-key-vault"></a>Azure Key Vault
 
@@ -248,7 +248,7 @@ IaaS アプリケーションでは、可能な限り、Azure Disk Encryption �
 - サーバー側:すべての Azure Storage Services は、既定でサービス管理キーを使用してサーバー側の暗号化を有効にしています。この処理はアプリケーションに対して透過的です。 詳細については、「[保存データ向け Azure Storage Service Encryption](../../storage/common/storage-service-encryption.md)」をご覧ください。 Azure Blob Storage と Azure Files は、Azure Key Vault での RSA 2048 ビット ユーザー管理キーもサポートしています。 詳細については、「[ユーザーが管理する Azure Key Vault キーを Storage Service Encryption に使用する](../../storage/common/storage-encryption-keys-portal.md)」を参照してください。
 - クライアント側:Azure BLOB、Azure テーブル、および Azure キューは、クライアント側の暗号化をサポートしています。 クライアント側の暗号化を使用した場合、お客様は暗号化された BLOB としてデータをアップロードします。 キー管理は、ユーザーによって行われます。 詳しくは、「[Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault](../../storage/common/storage-client-side-encryption.md)」をご覧ください。
 
-#### <a name="azure-sql-database"></a>Azure SQL Database
+#### <a name="azure-sql-database"></a>Azure SQL データベース
 
 Azure SQL Database は現在、Microsoft が管理するサービス側とクライアント側の暗号化のシナリオで、保存時の暗号化をサポートしています。
 
@@ -284,7 +284,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | SAP HANA                         | はい                | はい、RSA 2048 ビット  | -                  |
 | **データベース**                    |                    |                    |                    |
 | Virtual Machines 上の SQL Server   | はい                | はい、RSA 2048 ビット  | はい                |
-| Azure SQL Database               | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure SQL データベース               | はい                | はい、RSA 2048 ビット  | はい                |
 | Azure SQL Database for MariaDB   | はい                | -                  | -                  |
 | Azure SQL Database for MySQL     | はい                | -                  | -                  |
 | Azure SQL Database for PostgreSQL | はい                | -                  | -                  |
@@ -295,7 +295,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | **DevOps**                       |                    |                    |                    |
 | Azure DevOps                     | はい                | -                  | はい                |
 | Azure Repos                      | はい                | -                  | はい                |
-| **ID**                     |                    |                    |                    |
+| **[ID]**                     |                    |                    |                    |
 | Azure Active Directory           | はい                | -                  | -                  |
 | Azure Active Directory Domain Services | はい          | はい、RSA 2048 ビット  | -                  |
 | **統合**                  |                    |                    |                    |
@@ -305,7 +305,7 @@ Azure SQL Database データのクライアント側の暗号化は、[Always En
 | **IoT サービス**                 |                    |                    |                    |
 | IoT Hub                          | はい                | -                  | はい                |
 | **管理とガバナンス**    |                    |                    |                    |
-| Azure Site Recovery              | はい                | はい、RSA 2048 ビット  | はい                |
+| Azure Site Recovery              | はい                | -                  | -                  |
 | **メディア**                        |                    |                    |                    |
 | Media Services                   | はい                | -                  | はい                |
 | **Storage**                      |                    |                    |                    |

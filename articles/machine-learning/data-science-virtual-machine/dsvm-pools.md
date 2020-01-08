@@ -10,18 +10,18 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: 2a74df3aaf70270353b10f757cf3a61e8f479d74
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: c5b7f4eaac91e79dde625ea00bfb6b1ea8782b31
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052993"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530614"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Data Science Virtual Machine の共有プールを作成する
 
 この記事では、チームで使用する Data Science Virtual Machine (DSVM) の共有プールを作成する方法について説明します。 共有プールの使用の利点には、リソースの使用率の向上、より簡単な共有とコラボレーション、DSVM リソースの管理の効率化があります。
 
-多くの方法とテクノロジを使って、DSVM のプールを作成することができます。 この記事では、対話型仮想マシン (VM) のプールに焦点を当てます。 代替のマネージド コンピューティング インフラストラクチャは Azure Machine Learning コンピューティングです。 詳細については、[コンピューティング ターゲットの設定](../service/how-to-set-up-training-targets.md#amlcompute)に関するページを参照してください。
+多くの方法とテクノロジを使って、DSVM のプールを作成することができます。 この記事では、対話型仮想マシン (VM) のプールに焦点を当てます。 代替のマネージド コンピューティング インフラストラクチャは Azure Machine Learning コンピューティングです。 詳細については、[コンピューティング ターゲットの設定](../how-to-set-up-training-targets.md#amlcompute)に関するページを参照してください。
 
 ## <a name="interactive-vm-pool"></a>対話型の VM プール
 
@@ -53,7 +53,7 @@ az group deployment create --resource-group  [[NAME OF RESOURCE GROUP ABOVE]]  -
 
 仮想マシン スケール セットは自動スケーリングをサポートします。 追加インスタンスを作成するとき、およびインスタンスをスケールダウンするときのルールを設定できます。 たとえば、VM がまったく使われていないときはゼロ インスタンスにスケールダウンしてクラウド ハードウェア使用コストを節約できます。 仮想マシン スケール セットのドキュメント ページには、[自動スケーリング](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview)に関する詳しい手順が記載されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [共通 ID を設定する](dsvm-common-identity.md)
 * [クラウド リソースにアクセスするための資格情報を安全に保存する](dsvm-secure-access-keys.md)

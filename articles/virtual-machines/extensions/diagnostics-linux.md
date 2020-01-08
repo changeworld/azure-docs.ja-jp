@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: b8a5a344f2f1d8280ca60169786e72a0e1dd291e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 046e61d82893bf1fcdb2d6697cfaaa9f5bde8c2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073168"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359364"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -127,7 +127,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 }
 ```
 
-名前 | 値
+Name | 値
 ---- | -----
 storageAccountName | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。
 storageAccountEndPoint | (省略可能) ストレージ アカウントが存在するクラウドを識別するエンドポイント。 この設定がない場合、LAD の既定値は Azure パブリック クラウド `https://core.windows.net` になります。 Azure Germany、Azure Government、Azure China でストレージ アカウントを使用するには、この値を適切に設定します。
@@ -135,7 +135,7 @@ storageAccountSasToken | BLOB および Table service (`ss='bt'`) の[アカウ�
 mdsdHttpProxy | (省略可能) 指定されたストレージ アカウントとエンドポイントに拡張機能が接続するために必要な HTTP プロキシ情報。
 sinksConfig | (省略可能) メトリックとイベントの配信が可能な代替宛先の詳細。 拡張機能でサポートされている各データ シンクの詳細については、以降のセクションで説明します。
 
-Resource Manager テンプレート内の SAS トークンを取得するには、 **listAccountSas** 関数を使用します。 テンプレートの例については、[List 関数の例](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example)を参照してください。
+Resource Manager テンプレート内の SAS トークンを取得するには、 **listAccountSas** 関数を使用します。 テンプレートの例については、[List 関数の例](../../azure-resource-manager/templates/template-functions-resource.md#list-example)を参照してください。
 
 必要な SAS トークンを Azure ポータルで簡単に構築できます。
 
@@ -167,8 +167,8 @@ Resource Manager テンプレート内の SAS トークンを取得するには�
 
 要素 | 値
 ------- | -----
-名前 | このシンクを拡張機能構成の他の場所で参照するために使用される文字列。
-type | 定義されているシンクの型。 この型のインスタンス内のその他の値 (存在する場合) を決定します。
+name | このシンクを拡張機能構成の他の場所で参照するために使用される文字列。
+型 | 定義されているシンクの型。 この型のインスタンス内のその他の値 (存在する場合) を決定します。
 
 Linux Diagnostic Extension のバージョン 3.0 では、EventHub と JsonBlob という 2 つのシンク型がサポートされています。
 
@@ -310,7 +310,7 @@ performanceCounters セクションで指定されたメトリックのサンプ
 要素 | 値
 ------- | -----
 sinks | (省略可能) LAD が集計したメトリック結果を送信するシンクの名前をコンマで区切ったリスト。 集計されたすべてのメトリックは、一覧表示された各シンクに発行されます。 [sinksConfig](#sinksconfig) を参照してください。 例: `"EHsink1, myjsonsink"`.
-type | メトリックの実際のプロバイダーを識別します。
+型 | メトリックの実際のプロバイダーを識別します。
 class | "counter" とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
 counter | "class" とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
 counterSpecifier | Azure Metrics 名前空間内で特定のメトリックを識別します。
@@ -386,7 +386,7 @@ minSeverity | Syslog の重大度レベル ("LOG\_ERR" や "LOG\_INFO" など)�
 ------- | -----
 namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](https://github.com/Microsoft/SCXcore)によって実装されます。
 query | 実行される OMI クエリ。
-table | (省略可能) 指定されたストレージ アカウントの Azure ストレージ テーブル ([保護された設定](#protected-settings)を参照してください)。
+テーブル | (省略可能) 指定されたストレージ アカウントの Azure ストレージ テーブル ([保護された設定](#protected-settings)を参照してください)。
 frequency | (省略可能) クエリの実行間隔 (秒) 。 既定値は 300 (5 分) です。最小値は 15 秒です。
 sinks | (省略可能) メトリック結果の生のサンプルが発行される追加のシンクの名前をコンマで区切ったリスト。 これらの生のサンプルの集計は、拡張機能または Azure メトリックスによって計算されません。
 
@@ -409,7 +409,7 @@ sinks | (省略可能) メトリック結果の生のサンプルが発行され
 要素 | 値
 ------- | -----
 file | 監視され、キャプチャされるログ ファイルの完全なパス名。 パス名は単一のファイルを指定する必要があります。ディレクトリを指定したり、ワイルドカードを含めたりすることはできません。
-table | (省略可能) 指定されたストレージ アカウント (保護された構成で指定) の Azure ストレージ テーブル。file の "末尾" から新しい行が書き込まれます。
+テーブル | (省略可能) 指定されたストレージ アカウント (保護された構成で指定) の Azure ストレージ テーブル。file の "末尾" から新しい行が書き込まれます。
 sinks | (省略可能) ログ行が送信される追加のシンクの名前をコンマで区切ったリスト。
 
 "table" または "sinks" のどちらか、またはその両方を指定する必要があります。
@@ -483,7 +483,7 @@ TotalCollisions | 起動後にネットワーク ポートによって報告さ�
 
 "ファイルシステム" クラスのメトリックは、ファイル システムの使用状況に関する情報を提供します。 絶対値と割合の値は、(root ではなく) 通常のユーザーに表示されるように報告されます。
 
-カウンター | 意味
+counter | 意味
 ------- | -------
 FreeSpace | 使用可能なディスク領域 (バイト単位)
 UsedSpace | 使用済みディスク領域 (バイト単位)
@@ -500,7 +500,7 @@ TransfersPerSecond | 1 秒あたりの読み取りまたは書き込み操作
 
 すべてのファイル システムの集計値は、`"condition": "IsAggregate=True"` のように設定すると取得できます。 "/mnt" のような特定のマウントされたファイル システムの値は、`"condition": 'Name="/mnt"'` のように設定すると取得できます。 
 
-**注**: JSON ではなく Azure Portal を使用する場合、正しい条件フィールド形式は Name='/mnt' になります。
+**注**:JSON ではなく Azure Portal を使用する場合、正しい条件フィールド形式は Name='/mnt' になります。
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>"ディスク" クラスの組み込みメトリック
 
@@ -703,7 +703,7 @@ JsonBlob シンクに送信されるデータは、[保護された設定](#prot
 
 EventHubs エンドポイントに発行されたメッセージを使用する方法については、関連する [EventHubs ドキュメント](../../event-hubs/event-hubs-what-is-event-hubs.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 収集するメトリックのメトリック アラートを [Azure Monitor](../../monitoring-and-diagnostics/insights-alerts-portal.md) で作成します。
 * メトリックの[監視グラフ](../../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)を作成します。

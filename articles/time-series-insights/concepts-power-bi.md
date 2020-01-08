@@ -7,13 +7,13 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: 8ca5dec833f3e726aed0d469525ca3d9735fc33c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 01/06/2020
+ms.openlocfilehash: bdf687437a278a125bcb6196f44dcaccff4cc3f1
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114714"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689389"
 ---
 # <a name="connect-time-series-insights-to-power-bi"></a>Power BI への Time Series Insights の接続  
  
@@ -51,7 +51,7 @@ Time Series Insights が [Power BI](https://powerbi.microsoft.com/) とシーム
 
 Power BI 内の高度なクエリおよび編集機能を利用するには、Power BI の詳細エディターを使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 「[Power BI への Time Series Insights の接続方法](./how-to-connect-power-bi.md)」を参照してください。
 

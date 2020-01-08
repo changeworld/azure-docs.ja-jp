@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 59854d7d46f533510bea97a6845554fc0ce83dbb
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328374"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646746"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -76,7 +76,7 @@ Azure では、次の種類のピアリングがサポートされています�
 
 1 つの Azure ExpressRoute 接続を共有する仮想ネットワークをピアリングする場合、間のトラフィックは、ピアリング関係を通過します。 トラフィックは、Azure のバックボーン ネットワークを使用します。 それでも、各仮想ネットワークのローカル ゲートウェイを使用してオンプレミス回線に接続できます。 また、共有ゲートウェイを使用して、オンプレミス接続用のトランジットを構成することもできます。
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 仮想ネットワークがピアリングされていることを確認するには、有効なルートを確認します。 仮想ネットワーク内の任意のサブネット内のネットワーク インターフェイスのルートを確認します。 仮想ネットワークのピアリングが存在する場合、仮想ネットワーク内のすべてのサブネットは、ピアリングされている各仮想ネットワークのアドレス空間ごとに、*VNet ピアリング*という種類の次ホップとのルートがあります。 詳しくは、「[仮想マシンのルーティングに関する問題を診断する](diagnose-network-routing-problem.md)」をご覧ください。
 
@@ -91,7 +91,7 @@ Azure Network Watcher を使って、ピアリングされた仮想ネットワ�
 * 仮想ネットワーク内のリソースは、グローバルにピアリングされた仮想ネットワークの Basic 内部ロード バランサー (ILB) のフロントエンド IP アドレスと通信することはできません。
 * Basic ロード バランサーを使用する一部のサービスは、グローバルな仮想ネットワーク ピアリングでは動作しません。 詳細については、「[グローバル VNet ピアリングとロード バランサーに関連する制約は何ですか?](virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)」を参照してください。
 
-詳細については、「[要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)」を参照してください。 サポートされているピアリングの数の詳細については、「[ネットワークの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)」を参照してください。
+詳細については、「[要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)」を参照してください。 サポートされているピアリングの数の詳細については、「[ネットワークの制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)」を参照してください。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -106,11 +106,11 @@ Azure Network Watcher を使って、ピアリングされた仮想ネットワ�
 >[!NOTE]
 > このドキュメントの以前のバージョンでは、仮想ネットワークのピアリングの料金はゲートウェイ転送には適用されないことが規定されていました。 価格のページごとの価格が正確に反映されるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 2 つの仮想ネットワーク間のピアリングを作成できます。 ネットワークは、同じサブスクリプション、同じサブスクリプション内の異なるデプロイメント モデル、または異なるサブスクリプションに属することができます。 次のいずれかのシナリオのチュートリアルを完了します。
 
-    |Azure デプロイメント モデル             | Subscription  |
+    |Azure デプロイメント モデル             | サブスクリプション  |
     |---------                          |---------|
     |両方が Resource Manager              |[同じ](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[異なる](create-peering-different-subscriptions.md)|

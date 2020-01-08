@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 33ad75337538c4695cb607d7251a5bd485381945
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f3e03a9b7a729d39438ec23a954687694d3bba2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467625"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で C# のサンプルを詳しく見てみる](https://aka.ms/speech/github-csharp)

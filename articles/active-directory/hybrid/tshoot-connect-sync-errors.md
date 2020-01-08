@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d824606b1b602d006e53be619d6d955ac2cfb71f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 745ddcc95bb91e61478307265aec1ac8a7ebba54
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213029"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609198"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -41,7 +41,7 @@ Azure AD へのエクスポート中のエラーは、Azure AD Connect \(同期�
 
 ## <a name="data-mismatch-errors"></a>データの不一致エラー
 ### <a name="invalidsoftmatch"></a>InvalidSoftMatch
-#### <a name="description"></a>説明
+#### <a name="description"></a>[説明]
 * Azure AD Connect \(同期エンジン\) がオブジェクトの追加または更新を Azure Active Directory に指示すると、Azure AD は、受け取るオブジェクトの **sourceAnchor** 属性を使用して、Azure AD 内のオブジェクトの **immutableId** 属性と照合します。 このように照合されたものは、**完全一致**と呼ばれます。
 * Azure AD で受け取るオブジェクトの **sourceAnchor** 属性と **immutableId** 属性が一致するオブジェクトが**見つからない**場合、新しいオブジェクトをプロビジョニングする前に、代替策として ProxyAddresses 属性と UserPrincipalName 属性を使用して一致するものを見つけようとします。 このように照合されたものは、**あいまい一致**と呼ばれます。 あいまい一致の目的は、既に Azure AD に存在するオブジェクト (Azure AD に元から存在する) と、同期中に追加または更新される新しいオブジェクト(オンプレミスで同じエンティティ (ユーザー、グループ) を表す) を一致させることです。
 * **InvalidSoftMatch** エラーが発生するのは、完全一致で一致するオブジェクトが見つからない場合**かつ**、あいまい一致によって一致するオブジェクトが見つかるが、そのオブジェクトの *immutableId* の値が受け取るオブジェクトの *SourceAnchor* と異なる場合です。このエラーは、一致するオブジェクトが、オンプレミス Active Directory の別のオブジェクトと同期されたことを示します。
@@ -109,7 +109,7 @@ Azure AD Connect Health for sync の同期エラーレポートは 30 分ごと�
 * [Office 365 でのディレクトリ同期を妨げる重複または無効な属性に関する記事](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch
-#### <a name="description"></a>説明
+#### <a name="description"></a>[説明]
 Azure AD が 2 つのオブジェクトのあいまい一致を試行するとき、"オブジェクトの種類" (ユーザー、グループ、連絡先など) が異なる 2 つのオブジェクトで、あいまい一致の実行に使用される属性の値が同一である場合があります。 これらの属性の重複は Azure AD では許可されないため、この操作は "ObjectTypeMismatch" 同期エラーで終了します。
 
 #### <a name="example-scenarios-for-objecttypemismatch-error"></a>ObjectTypeMismatch エラーのシナリオ例
@@ -130,7 +130,7 @@ ObjectTypeMismatch エラーの最も一般的な原因は、異なる種類 (�
 
 ## <a name="duplicate-attributes"></a>重複する属性
 ### <a name="attributevaluemustbeunique"></a>AttributeValueMustBeUnique
-#### <a name="description"></a>説明
+#### <a name="description"></a>[説明]
 Azure Active Directory スキーマでは、次の属性について複数のオブジェクトが同じ値を持つことはできません。 つまり、Azure AD の各オブジェクトはこれらの属性について常に一意の値を持つように強制されます。
 
 * ProxyAddresses
@@ -168,7 +168,7 @@ AttributeValueMustBeUnique エラーの最も一般的な理由は、2 つのオ
 
 ## <a name="data-validation-failures"></a>データ検証の失敗
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed
-#### <a name="description"></a>説明
+#### <a name="description"></a>[説明]
 Azure Active Directory は、データそのものにさまざまな制約を適用した上で、ディレクトリへのデータの書き込みを許可します。 これらの制限により、そのようなデータに依存するアプリケーションをエンド ユーザーが使用する際に、最適なエクスペリエンスを得ることができます。
 
 #### <a name="scenarios"></a>シナリオ
@@ -182,7 +182,7 @@ a. userPrincipalName 属性の文字がサポートされており、必要な�
 * [Office 365 へのディレクトリ同期を通してユーザーをプロビジョニングするための準備](https://support.office.com/article/Prepare-to-provision-users-through-directory-synchronization-to-Office-365-01920974-9e6f-4331-a370-13aea4e82b3e)
 
 ### <a name="federateddomainchangeerror"></a>FederatedDomainChangeError
-#### <a name="description"></a>説明
+#### <a name="description"></a>[説明]
 これにより、ユーザーの UserPrincipalName のサフィックスがあるフェデレーション ドメインから別のフェデレーション ドメインに変更された場合に **"FederatedDomainChangeError"** 同期エラーが発生することになります。
 
 #### <a name="scenarios"></a>シナリオ
@@ -204,7 +204,7 @@ a. userPrincipalName 属性の文字がサポートされており、必要な�
 * [異なるフェデレーション ドメインを使用するようにユーザー アカウントの UPN を変更した後、Azure Active Directory 同期ツールによって変更が同期されない](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
 
 ## <a name="largeobject"></a>LargeObject
-### <a name="description"></a>説明
+### <a name="description"></a>[説明]
 Azure Active Directory スキーマで設定されている、使用可能なサイズ制限、長さの制限、または個数制限を属性が超過すると、同期操作は **LargeObject** または **ExceededAllowedLength** 同期エラーで終了します。 通常、このエラーは次の属性について発生します。
 
 * userCertificate
@@ -223,7 +223,7 @@ Azure Active Directory スキーマで設定されている、使用可能なサ
 
 ## <a name="existing-admin-role-conflict"></a>既存の管理者ロールの競合
 
-### <a name="description"></a>説明
+### <a name="description"></a>[説明]
 **既存の管理者ロールの競合**は、ユーザー オブジェクトに次のものがある場合に、同期中にそのユーザー オブジェクトに対して発生します。
 
 - 管理権限、および
@@ -235,12 +235,12 @@ Azure AD Connect は、オンプレミスの AD からのユーザー オブジ�
 
 
 ### <a name="how-to-fix"></a>修正方法
-この問題を解決するには、次のいずれかの操作を行ってください。
+この問題を解決するには、次の操作を行ってください。
 
- - Azure AD アカウント (所有者) をすべての管理者ロールから削除する。 
- - 検疫済みオブジェクトをクラウドから**物理的に削除**する。 
- - クラウド アカウントに対するオンプレミス ユーザーのあいまい一致を次の同期サイクルで対処します。(クラウド ユーザーはグローバル GA ではなくなっているため)。 
- - 所有者のロールのメンバーシップを復元する。 
+1. Azure AD アカウント (所有者) をすべての管理者ロールから削除する。 
+2. 検疫済みオブジェクトをクラウドから**物理的に削除**する。 
+3. クラウド アカウントに対するオンプレミス ユーザーのあいまい一致を次の同期サイクルで対処します。(クラウド ユーザーはグローバル GA ではなくなっているため)。 
+4. 所有者のロールのメンバーシップを復元する。 
 
 >[!NOTE]
 >オンプレミスのユーザー オブジェクトと Azure AD ユーザー オブジェクトの間のあいまい一致が完了した後、管理ロールを既存のユーザー オブジェクトに再度割り当てることができます。

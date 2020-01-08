@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: 4b0dca1215cfecea5c9943bd27ee8a5c1de45311
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d88df0c7e17d297162a1921021b89f02077c2ac7
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893367"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560387"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -361,7 +361,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 [使用量と推定コスト] ページで、サンプリング レートを設定します。
 
-![アプリケーションの [概要] ブレードで、[設定]、[クォータ]、[サンプル] の順にクリックし、サンプリング レートを選択して、[更新] をクリックします。](./media/sampling/04.png)
+![アプリケーションの [概要] ブレードで、[設定]、[クォータ]、[サンプル] の順にクリックし、サンプリング レートを選択して、[更新] をクリックします。](./media/sampling/data-sampling.png)
 
 他のサンプリング種類と同様に、このアルゴリズムは関連するテレメトリ項目を維持します。 たとえば、検索でテレメトリを調べているときは、特定の例外に関連する要求を検索できます。 メトリックはそのような要求のレートをカウントし、例外レートを正しく維持します。
 
@@ -502,7 +502,7 @@ Azure Functions で実行されているアプリに対してサンプリング�
 
 *テレメトリを複数回サンプリングできますか*
 
-* No. ある項目が既にサンプリングされている場合、SamplingTelemetryProcessor はサンプリングの検討からその項目を無視します。 同じことがインジェスト サンプリングにも当てはまります。これにより、SDK 自体で既にサンプリングされている項目にはサンプリングが適用されません。
+* いいえ。 ある項目が既にサンプリングされている場合、SamplingTelemetryProcessor はサンプリングの検討からその項目を無視します。 同じことがインジェスト サンプリングにも当てはまります。これにより、SDK 自体で既にサンプリングされている項目にはサンプリングが適用されません。
 
 *サンプリングを、"各テレメトリ タイプの X% を収集" という単純な方法にしないのはなぜですか。*
 
@@ -543,13 +543,13 @@ Azure Functions で実行されているアプリに対してサンプリング�
         {
             if(somecondition)
             {
-                ((ISupportSampling)item).SamplingPercentage = 100;
+                ((ISupportSampling)telemetry).SamplingPercentage = 100;
             }
         }
       }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [フィルター](../../azure-monitor/app/api-filtering-sampling.md) を使用して、SDK から送信される情報についてさらに厳密に制御できます。
 * [Application Insights によるテレメトリの最適化](https://msdn.microsoft.com/magazine/mt808502.aspx)に関する Developer Network の記事を読みます。

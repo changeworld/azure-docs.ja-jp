@@ -1,18 +1,14 @@
 ---
 title: Azure Monitor for containers を有効にする方法 | Microsoft Docs
 description: この記事では、コンテナーがどのように動作し、パフォーマンスに関してどのような問題が特定されているかを把握できるように、Azure Monitor for containers を有効にして構成する方法について説明します。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/18/2019
-ms.openlocfilehash: 43016cfb72b90a74ce1313ad2d2316228d743f5f
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: fce2699c18f0fe426b85c165656100c097e69598
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195345"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404324"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Azure Monitor for containers を有効にする方法
 
@@ -73,9 +69,9 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 
 次の表の情報は、Azure China のプロキシとファイアウォールの構成情報をまとめたものです。
 
-|エージェントのリソース|Port |説明 | 
+|エージェントのリソース|Port |[説明] | 
 |--------------|------|-------------|
-| *.ods.opinsights.azure.cn | 443 | データの取り込み |
+| *.ods.opinsights.azure.cn | 443 | データ インジェスト |
 | *.oms.opinsights.azure.cn | 443 | OMS のオンボード |
 | *.blob.core.windows.net | 443 | 送信接続の監視に使用されます。 |
 | microsoft.com | 80 | ネットワーク接続に使用されます。 エージェント イメージのバージョンが ciprod09262019 以前の場合にのみ必要です。 |
@@ -83,15 +79,15 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 
 次の表の情報は、Azure US Government のプロキシとファイアウォールの構成情報をまとめたものです。
 
-|エージェントのリソース|Port |説明 | 
+|エージェントのリソース|Port |[説明] | 
 |--------------|------|-------------|
-| *.ods.opinsights.azure.us | 443 | データの取り込み |
+| *.ods.opinsights.azure.us | 443 | データ インジェスト |
 | *.oms.opinsights.azure.us | 443 | OMS のオンボード |
 | *.blob.core.windows.net | 443 | 送信接続の監視に使用されます。 |
 | microsoft.com | 80 | ネットワーク接続に使用されます。 エージェント イメージのバージョンが ciprod09262019 以前の場合にのみ必要です。 |
 | dc.services.visualstudio.com | 443 | Azure パブリック クラウド Application Insights を使用したエージェント テレメトリの場合。 |
 
-## <a name="components"></a>コンポーネント
+## <a name="components"></a>Components
 
 パフォーマンスを監視する能力は、コンテナーの Azure Monitor 用に特化して開発された、Linux 用のコンテナー化 Log Analytics エージェントに依存します。 この特殊なエージェントは、クラスター内のすべてのノードからパフォーマンスとイベント データを収集します。エージェントは自動的にデプロイされ、デプロイ時に指定した Log Analytics ワークスペースに登録されます。 このエージェントのバージョンは microsoft/oms:ciprod04202018 以降であり、*mmddyyyy* という形式の日付で表されます。
 
@@ -107,7 +103,7 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 
 以下の表で説明されている次の方法のいずれかを使用して、コンテナーの Azure Monitor を有効にします。
 
-| デプロイの状態 | 方法 | 説明 |
+| デプロイの状態 | 方法 | [説明] |
 |------------------|--------|-------------|
 | 新しい Kubernetes クラスター | [Azure CLI を使用して AKS クラスターを作成](../../aks/kubernetes-walkthrough.md#create-aks-cluster)| Azure CLI を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
 | | [Terraform を使用して AKS クラスターを作成](container-insights-enable-new-cluster.md#enable-using-terraform)| オープンソースのツールである Terraform を使用して作成する新しい AKS クラスターの監視を有効にできます。 |
@@ -121,6 +117,6 @@ Azure Monitor for containers では、以下が公式にサポートされてい
 | | [Azure Resource Manager テンプレートを使用して OpenShift クラスターを有効にする](container-insights-azure-redhat-setup.md#enable-using-an-azure-resource-manager-template) | 事前構成済みの Azure Resource Manager テンプレートを使用して既存の OpenShift クラスターの監視を有効にできます。 |
 | | [Azure Monitor から OpenShift クラスターを有効にする](container-insights-azure-redhat-setup.md#from-the-azure-portal) | Azure Monitor のマルチクラスター ページから既にデプロイされている 1 つまたは複数の OpenShift クラスターの監視を有効にできます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 監視を有効にすると、Azure Kubernetes Service (AKS)、Azure Stack、またはその他の環境でホストされている Kubernetes クラスターのパフォーマンスの分析を開始できます。 コンテナー用 Azure Monitor を使用する方法については、[Kubernetes クラスターのパフォーマンスの表示](container-insights-analyze.md)に関するページをご覧ください。

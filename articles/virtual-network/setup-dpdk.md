@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 876e64cd29aabe1fd4274872800a29cf1a83a0d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731602"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350503"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
 
@@ -36,7 +36,7 @@ DPDK は、複数のオペレーティング システムの配布をサポー�
 **1 秒あたりのパケット数 (PPS) の向上**: カーネルをバイパスしてユーザー空間でパケットを制御すると、コンテキスト切り替えが無くなることでサイクル数が減少します。 また、Azure Linux 仮想マシンで毎秒処理されるパケットのレートも向上します。
 
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 Azure ギャラリーの次のディストリビューションがサポートされています。
 
@@ -73,6 +73,7 @@ sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev lib
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
+sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
 sudo apt-get update
 sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
 ```
@@ -216,7 +217,7 @@ testpmd をルート モードで実行するには、*testpmd* コマンドの�
 
 仮想マシン上で上記のコマンドを実行する場合、コンパイルする前に仮想マシンの実際の IP アドレスと一致するように、`app/test-pmd/txonly.c` の *IP_SRC_ADDR* および *IP_DST_ADDR* を変更します。 これを行わない場合、受信者に到着する前に、パケットが削除されます。
 
-### <a name="advanced-single-sendersingle-forwarder"></a>高度: 単一の送信者/単一の転送者
+### <a name="advanced-single-sendersingle-forwarder"></a>詳細: 単一の送信者/単一の転送者
 次のコマンドは、毎秒のパケットの統計情報を定期的に出力します。
 
 1. TX 側で、次のコマンドを実行します。
@@ -252,7 +253,7 @@ testpmd をルート モードで実行するには、*testpmd* コマンドの�
 
 仮想マシン上で上記のコマンドを実行する場合、コンパイルする前に仮想マシンの実際の IP アドレスと一致するように、`app/test-pmd/txonly.c` の *IP_SRC_ADDR* および *IP_DST_ADDR* を変更します。 これを行わない場合、転送者に到着する前に、パケットが削除されます。 *testpmd* 転送者はレイヤー 3 のアドレスを変更しないため、コードに変更を加えない限り、第 3 のマシンで転送されたトラフィックを受信することはできません。
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 * [EAL オプション](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options)
 * [Testpmd コマンド](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options)

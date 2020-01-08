@@ -9,19 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 8da47899e2d3d2c1d04e9cf4768a968e7893ce96
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0ca6f2a67e01e4c604c2dcc8f8eaa9ffe8bad045
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852447"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381530"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>チュートリアル:発話から適切な形式のデータを取得する
 このチュートリアルでは、一貫した形式のデータを発話から抽出する正規表現エンティティを作成します。
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -46,7 +44,7 @@ LUIS アプリに正規表現エンティティを追加する場合には、テ
 
 ## <a name="import-example-json-to-begin-app"></a>サンプル .json をインポートしてアプリを開始する
 
-1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)をダウンロードして保存します。
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -195,7 +193,7 @@ LUIS アプリに正規表現エンティティを追加する場合には、テ
 * [正規表現エンティティの JSON リファレンス](reference-entity-regular-expression.md?tabs=V3)
 * [データを抽出するエンティティを追加する方法](luis-how-to-add-entities.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、新しい意図を作成し、発話例を追加し、正しい形式のデータを発話から抽出するための正規表現エンティティを作成しました。 トレーニングおよびアプリの発行後、エンドポイントのクエリによって意図を識別し、抽出されたデータを取得しました。
 
 > [!div class="nextstepaction"]

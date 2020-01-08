@@ -1,17 +1,15 @@
 ---
 title: OpsGenie で webhook を使用して Azure サービス正常性アラートを構成する
 description: OpsGenie インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
-author: stephbaron
-ms.author: stbaron
-ms.topic: article
 ms.service: service-health
+ms.topic: article
 ms.date: 06/10/2019
-ms.openlocfilehash: fab99b7093ac3f18f6313273d21905e0a3ed7e5b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1f0ddb506b915697335ec71eab341a7cdb73dd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465239"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>OpsGenie で webhook を使用して Azure サービス正常性アラートを構成する
 
@@ -46,7 +44,7 @@ ms.locfileid: "67067163"
 
     a. **[アクションの種類]:** *webhook*
 
-    b. **詳細:** 先ほど保存した OpsGenie の**統合 URL**。
+    b. **[詳細]:** 先ほど保存した OpsGenie の**統合 URL**。
 
     c. **[名前]:** Webhook の名前、別名、または識別子。
 
@@ -63,7 +61,7 @@ ms.locfileid: "67067163"
 
     a. **[アクションの種類]:** *webhook*
 
-    b. **詳細:** 先ほど保存した OpsGenie の**統合 URL**。
+    b. **[詳細]:** 先ほど保存した OpsGenie の**統合 URL**。
 
     c. **[名前]:** Webhook の名前、別名、または識別子。
 
@@ -85,7 +83,7 @@ ms.locfileid: "67067163"
 
 1. [OpsGenie](https://www.opsgenie.com/) に移動して、統合が正常に設定されたことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](../azure-monitor/platform/service-notifications.md)について学習します。

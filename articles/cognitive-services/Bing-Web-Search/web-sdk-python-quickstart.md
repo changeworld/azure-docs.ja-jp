@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 0f6dceac3e46f8e36d2da52c15c0b0696e026a0e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 64ef052478bed627c896cd0e0b5301961a8b6f21
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977218"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562869"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>クイック スタート:Python 用の Bing Web Search SDK を使用する
 
@@ -63,6 +63,12 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 ```console
 python -m venv mytestenv
+```
+
+環境をアクティブ化します。
+
+```console
+mytestenv\Scripts\activate.bat
 ```
 
 Bing Web Search SDK 依存関係をインストールします。
@@ -306,15 +312,15 @@ Bing Web Search API の最初の呼び出しを行ったので、関数をいく
 
 1. プログラムを実行します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このプロジェクトの使用を終了するときに、必ずプログラムのコードからサブスクリプション キーを削除し、仮想環境を非アクティブ化してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Cognitive Services の Python 向け SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure Python SDK リファレンス](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch)

@@ -4,15 +4,15 @@ description: Azure PowerShell で Log Analytics ワークスペースを作成�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: d9ac472c320767919301f5de634fd5158e824726
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 303f255057b414bc06cd7ae803fe368c2acc1a1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900523"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399444"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Azure PowerShell を使用して Log Analytics ワークスペースを作成する
 
@@ -121,7 +121,7 @@ PowerShell をローカル環境にインストールして使用する場合、
 
 ![デプロイ完了時の結果の例](media/quick-create-workspace-posh/template-output-01.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 使用できるワークスペースが用意されたので、管理テレメトリの収集の構成、ログ検索の実行によるデータの分析、管理ソリューションの追加による追加データと分析的な考察の提供を行うことができます。  
 
 * Microsoft Azure Diagnostics または Azure ストレージを使用して Azure リソースからデータを収集できるようにするには、[Azure Monitor で Azure サービスのログとメトリックを使用できるように収集する](../platform/collect-azure-metrics-logs.md)方法に関するページを参照してください。  

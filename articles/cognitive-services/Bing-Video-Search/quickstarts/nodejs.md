@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: e9d7aeabceb77597d826d6c76dbdddc625ad45cc
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6ae8afefae9a539812748c0ae5380ddaf1fb084c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382669"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>クイック スタート:Bing Video Search REST API と Node.js を使用して動画を検索する
 
@@ -23,7 +23,7 @@ ms.locfileid: "74383808"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Node.JS](https://nodejs.org/en/download/)
+* [Node.js](https://nodejs.org/en/download/)
 
 * JavaScript 用の要求モジュール
     * このモジュールは、`npm install request` を使用してインストールできます
@@ -39,7 +39,7 @@ ms.locfileid: "74383808"
     let https = require('https');
     ```
 
-2. API エンドポイント、サブスクリプション キー、検索語句を格納する変数を作成します。
+2. API エンドポイント、サブスクリプション キー、検索語句を格納する変数を作成します。 `host` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -205,11 +205,11 @@ ms.locfileid: "74383808"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>参照 
 
  [Bing Video Search API とは](../overview.md)

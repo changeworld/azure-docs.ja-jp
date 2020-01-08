@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 85c04b6ea3e40f1f1dcd12eb5d6f4a8f53836867
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4dcda65384190050e11f1bf9b15c706b0e38c6b3
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67876797"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561645"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec を使用したバックアップ ターゲットとしての StorSimple
 
 ## <a name="overview"></a>概要
 
-Azure StorSimple は、Microsoft が提供するハイブリッド クラウド ストレージ ソリューションです。 StorSimple では、Azure ストレージ アカウントをオンプレミス ソリューションの拡張機能として使用し、オンプレミス ストレージとクラウド ストレージにまたがって自動でデータを階層化することでデータ急増の難点に対応できます。
+Azure StorSimple は、Microsoft が提供するハイブリッド クラウド ストレージ ソリューションです。 StorSimple では、Azure ストレージ アカウントをオンプレミス ソリューションの拡張機能として使用し、オンプレミス ストレージとクラウド ストレージにまたがって自動的にデータを階層化することでデータ急増の難点に対応できます。
 
 この記事では、Veritas Backup Exec と StorSimple の統合について取り上げ、両方のソリューションを統合するためのベスト プラクティスについて説明します。 StorSimple との統合を最適化できるように Backup Exec をセットアップする方法についての推奨事項も紹介します。 個別のバックアップ要件とサービスレベル アグリーメント (SLA) に合わせて Backup Exec を最適にセットアップする方法については、Veritas のベスト プラクティス、バックアップ アーキテクト、および管理者に従います。
 
-構成手順と主要な概念についての説明は行いますが、この記事は構成またはインストールの方法をステップバイステップで説明するガイドではありません。 基本的なコンポーネントとインフラストラクチャが正常に動作しており、ここで説明する概念をサポートする準備が整っていることを前提としています。
+構成手順と主要な概念について説明しますが、この記事は構成またはインストールの方法を詳しく説明するガイドではありません。 基本的なコンポーネントとインフラストラクチャが正常に動作しており、ここで説明する概念をサポートする準備が整っていることを前提としています。
 
 ### <a name="who-should-read-this"></a>対象読者
 
@@ -37,7 +37,7 @@ Azure StorSimple は、Microsoft が提供するハイブリッド クラウド 
 
 ## <a name="supported-versions"></a>サポートされているバージョン
 
--   [Backup Exec 16 以降のバージョン](http://backupexec.com/compatibility)
+-   [Backup Exec 16 以降のバージョン](https://www.veritas.com/content/support/en_US/article.100040087)
 -   [StorSimple Update 3 以降のバージョン](storsimple-overview.md#storsimple-workload-summary)
 
 
@@ -73,7 +73,7 @@ StorSimple には次の利点があります。
 -   クラウドを使用してこれまでにない重複除去レベルを実現するための一意の重複除去と圧縮アルゴリズム
 -   高可用性
 -   Azure を使用した geo レプリケーション
--   Azure の統合
+-   Azure との統合
 -   クラウドのデータ暗号化
 -   ディザスター リカバリーとコンプライアンスの強化
 
@@ -129,7 +129,7 @@ StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブ
 
 このシナリオでの StorSimple ボリュームの主な用途は、長期間の保持またはアーカイブです。
 
-次の図は、初回のバックアップと復元のターゲットで高性能ボリュームにしているアーキテクチャを表しています。 これらのバックアップは、設定したスケジュールで StorSimple 階層化ボリュームにコピー、アーカイブされます。
+次の図は、初回のバックアップと復元のターゲットで高性能ボリュームにしているアーキテクチャを表しています。 これらのバックアップは、設定したスケジュールで StorSimple 階層化ボリュームにコピーおよびアーカイブされます。
 
 高性能ボリュームのサイズは、保持ポリシーの容量とパフォーマンスの要件に対応できるものにする必要があります。
 
@@ -153,7 +153,7 @@ StorSimple について詳しくは、「[StorSimple 8000 シリーズ:ハイブ
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
 ソリューションのデプロイでは、3 つの手順を行う必要があります。
-1. ネットワーク インフラストラクチャを計画する。
+1. ネットワーク インフラストラクチャを準備する。
 2. StorSimple デバイスをバックアップ ターゲットとしてデプロイする。
 3. Backup Exec をデプロイする。
 
@@ -193,7 +193,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 ### <a name="set-up-the-host-backup-server-storage"></a>ホスト バックアップ サーバー ストレージのセットアップ
 
-次のガイドラインに従って、ホスト バックアップ サーバーのストレージを用意します。  
+次のガイドラインに従って、ホスト バックアップ サーバー ストレージをセットアップします。  
 
 - (Windows Disk マネージャーで作成された) スパン ボリュームは使用しないでください。 スパン ディスクはサポートされていません。
 - アロケーション サイズ 64 KB の NTFS を使用してボリュームをフォーマットします。
@@ -287,7 +287,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
     ![Backup Exec 管理コンソール、同時書き込み操作の設定ページ](./media/storsimple-configure-backup-target-using-backup-exec/image10.png)
 
-6.  設定を確認し、 **[Finish] \(完了)** を選択します。
+6.  設定を確認し、 **[Finish (完了)]** を選択します。
 
     ![Backup Exec 管理コンソール、ストレージ構成の概要ページ](./media/storsimple-configure-backup-target-using-backup-exec/image11.png)
 
@@ -310,7 +310,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 4 週間、月単位、および年単位の GFS ローテーション スケジュールの例を以下に示します。
 
-| 頻度/バックアップ タイプ | 完全 | 増分 (1 - 5 日目)  |   
+| 頻度/バックアップ タイプ | [完全] | 増分 (1 - 5 日目)  |   
 |---|---|---|
 | 週単位 (第 1 - 4 週) | 土曜日 | 月曜日 - 金曜日 |
 | 月単位  | 土曜日  |   |
@@ -381,7 +381,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS スケジュールの例:週、月、年単位の GFS ローテーション スケジュール
 
-| 週 | 完全 | 増分 (1 日目) | 増分 (2 日目) | 増分 (3 日目) | 増分 (4 日目) | 増分 (5 日目) |
+| Week | [完全] | 増分 (1 日目) | 増分 (2 日目) | 増分 (3 日目) | 増分 (4 日目) | 増分 (5 日目) |
 |---|---|---|---|---|---|---|
 | 第 1 週 | ローカル RAID ボリューム  | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム | ローカル RAID ボリューム |
 | 第 2 週 | StorSimple 第 2 - 4 週 |   |   |   |   |   |
@@ -478,7 +478,7 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 | Backup Exec サーバーの不具合 | バックアップと復元のオペレーションが中断されます。 | 「[Backup Exec (BEDB) データベースの手動バックアップと復元方法](http://www.veritas.com/docs/000041083)」に従ってバックアップ サーバーを再構築し、データベースの復元を実行します。 | ディザスター リカバリー サイトの Backup Exec サーバーを再構築または復元する必要があります。 データベースを最新の時点に復元します。 復元した Backup Exec データベースと最新のバックアップ ジョブが同期されない場合、インデックスとカタログを作成する必要があります。 このインデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があります。 これにはさらに時間がかかります。 |
 | バックアップ サーバーと StorSimple 両方の損失を招くサイトの不具合 | バックアップと復元のオペレーションが中断されます。 | まず StorSimple を復旧し、次に Backup Exec を復旧します。 | まず StorSimple を復旧し、次に Backup Exec を復旧します。 デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 |
 
-## <a name="references"></a>参照
+## <a name="references"></a>References
 
 この記事では次のドキュメントを参考にしています。
 
@@ -487,7 +487,7 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 - [GPT ドライブを使用する (Using GPT drives)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [共有フォルダーのシャドウ コピーのセットアップ](https://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [バックアップ セットからの復元方法](storsimple-restore-from-backup-set-u2.md)について確認します。
 - [デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)の実行方法について確認します。

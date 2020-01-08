@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 11/07/2019
-ms.openlocfilehash: 470e9a9c36b6b4ec2e40db5dfc47ae03fb6b5aa8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 48eb9cfe16062ac587a12b845b2fb226ac5faf23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421375"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348868"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -32,8 +32,9 @@ ms.locfileid: "74421375"
 自動フェールオーバー グループ ポリシーで自動フェールオーバー グループを使用しているときに、SQL Database サーバーまたはマネージド インスタンス内のデータベースに影響する機能停止が発生すると、自動フェールオーバーが行われます。 自動フェールオーバー グループは、以下を使用して管理できます。
 
 - [Azure Portal](sql-database-implement-geo-distributed-database.md)
-- [PowerShell:フェールオーバー グループ](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- [REST API:フェールオーバー グループ](https://docs.microsoft.com/rest/api/sql/failovergroups)。
+- [Azure CLI: フェールオーバー グループ](scripts/sql-database-add-single-db-to-failover-group-cli.md)
+- [PowerShell: フェールオーバー グループ](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+- [REST API: フェールオーバー グループ](/rest/api/sql/failovergroups)。
 
 フェールオーバー後は、サーバーおよびデータベースの認証要件が新しいプライマリで構成されていることを確認してください。 詳細については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページを参照してください。
 
@@ -331,7 +332,7 @@ ms.locfileid: "74421375"
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>単一データベースとエラスティック プールを使用して SQL データベース フェールオーバーを管理する
 
-| コマンドレット | 説明 |
+| コマンドレット | [説明] |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
 | [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | サーバーからフェールオーバー グループを削除し、そのグループが含まれるすべてのセカンダリ データベースを削除します。 |
@@ -342,7 +343,7 @@ ms.locfileid: "74421375"
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>マネージド インスタンスで SQL データベースのフェールオーバー グループを管理する
 
-| コマンドレット | 説明 |
+| コマンドレット | [説明] |
 | --- | --- |
 | [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
 | [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |フェールオーバー グループの構成を変更します。|
@@ -354,7 +355,7 @@ ms.locfileid: "74421375"
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>単一データベースとエラスティック プールを使用して SQL データベース フェールオーバーを管理する
 
-| command | 説明 |
+| command | [説明] |
 | --- | --- |
 | [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
 | [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | サーバーからフェールオーバー グループを削除し、そのグループが含まれるすべてのセカンダリ データベースを削除します。 |
@@ -364,7 +365,7 @@ ms.locfileid: "74421375"
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>マネージド インスタンスで SQL データベースのフェールオーバー グループを管理する
 
-| command | 説明 |
+| command | [説明] |
 | --- | --- |
 | [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | このコマンドはフェールオーバー グループを作成し、それをプライマリとセカンダリの両方のサーバーに登録します。|
 | [az sql instance-failover-group update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | フェールオーバー グループの構成を変更します。|
@@ -379,7 +380,7 @@ ms.locfileid: "74421375"
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API:単一またはプールされたデータベースで SQL データベースのフェールオーバー グループを管理する
 
-| API | 説明 |
+| API | [説明] |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | フェールオーバー グループを作成または更新します |
 | [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | フェールオーバー グループをサーバーから削除します。 |
@@ -391,7 +392,7 @@ ms.locfileid: "74421375"
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API:マネージド インスタンスでフェールオーバー グループを管理する
 
-| API | 説明 |
+| API | [説明] |
 | --- | --- |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | フェールオーバー グループを作成または更新します |
 | [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | フェールオーバー グループをサーバーから削除します。 |
@@ -400,7 +401,7 @@ ms.locfileid: "74421375"
 | [フェールオーバー グループの取得](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | フェールオーバー グループを取得します。 |
 | [List Failover Groups - List By Location](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | 場所ごとにフェールオーバー グループをリストします。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 詳細なチュートリアルについては、以下を参照してください
     - [フェールオーバー グループへの単一データベースの追加](sql-database-single-database-failover-group-tutorial.md)

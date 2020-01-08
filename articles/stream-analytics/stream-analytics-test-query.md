@@ -1,36 +1,35 @@
 ---
 title: サンプル データを利用した Azure Stream Analytics ジョブのテスト
 description: この記事では､Azure ポータルからサンプル入力を利用して Azure Stream Analytics ジョブをテストし､サンプル データをアップロードする方法を説明しています｡
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891750"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369866"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>サンプル データを利用した Azure Stream Analytics ジョブのテスト
 
-Azure Stream Analytics では、ジョブを開始または停止せずに、クエリをテストできます。 入力シンクから受信したデータ、または Azure portal でローカル ファイルからアップロードしたサンプル データに対するクエリをテストできます。 [Visual Studio](stream-analytics-live-data-local-testing.md) と [Visual Studio Code](vscode-local-run.md) でローカル サンプル データまたはライブ データからクエリをローカルでテストすることもできます。 
+Azure Stream Analytics では、ジョブを開始または停止せずに、クエリをテストできます。 入力シンクから受信したデータ、または Azure portal でローカル ファイルからアップロードしたサンプル データに対するクエリをテストできます。 [Visual Studio](stream-analytics-live-data-local-testing.md) と [Visual Studio Code](visual-studio-code-local-run-live-input.md) でローカル サンプル データまたはライブ データからクエリをローカルでテストすることもできます。
 
 ## <a name="sample-incoming-data-from-input"></a>入力からの受信データのサンプル
 
 Azure Stream Analytics では、ストリーミング入力からイベントを自動的にフェッチします。 既定のサンプルに対してクエリを実行したり、サンプルの特定の期間を設定したりすることができます。
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 
 2. 既存の Stream Analytics ジョブを検索して選択します。
 
 3. [Stream Analytics ジョブ] ページの **ジョブ トポロジ** の見出しの部分から **クエリ** を選択し､クエリ エディター ウィンドウを開きます。 
 
-4. 受信イベントのサンプル一覧を表示するには、ファイルを含む入力アイコンを選択すると、サンプル イベントが**入力プレビュー**に自動的に表示されます。 
+4. 受信イベントのサンプル一覧を表示するには、ファイルを含む入力アイコンを選択すると、サンプル イベントが**入力プレビュー**に自動的に表示されます。
 
    a. ご利用のデータに対するシリアル化の種類では、JSON と CSV のいずれであるかが自動的に検出されます。 ドロップダウン メニューのオプションを変更することで、これを JSON、CSV、AVRO に手動で変更することもできます。
     
@@ -72,7 +71,7 @@ Azure Stream Analytics では、ストリーミング入力からイベントを
 
 ライブ データを使用する代わりに、ローカル ファイルのサンプル データを使用して、Azure Stream Analytics クエリをテストできます。
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
    
 2. Stream Analytics ジョブがある場所を探し､ジョブを選択します｡
 
@@ -98,7 +97,7 @@ Azure Stream Analytics では、ストリーミング入力からイベントを
 
 10. ブラウザに示された結果を確認したら、ジョブを**開始**できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 

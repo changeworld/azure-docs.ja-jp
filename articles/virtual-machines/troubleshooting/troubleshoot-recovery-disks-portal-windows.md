@@ -12,15 +12,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: 18bd531e122ed72aa1cc481d6cf76590412c73c6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e76fc2da8da2325a8bb0cda47c4405c9eb03c8f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088297"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374558"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Azure Portal で OS ディスクを復旧 VM に接続して Windows VM のトラブルシューティングを行う
-Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure Portal で仮想ハード ディスクを別の Windows VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。 
+Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でのトラブルシューティング手順の実行が必要な場合があります。 一般的な例として、VM の正常な起動を妨げる失敗したアプリケーション更新が挙げられます。 この記事では、Azure Portal で仮想ハード ディスクを別の Windows VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。 
 
 ## <a name="recovery-process-overview"></a>回復プロセスの概要
 トラブルシューティングのプロセスは次のとおりです。
@@ -36,7 +36,7 @@ Azure の Windows 仮想マシン (VM) で起動エラーまたはディスク �
 > [!NOTE]
 > この記事は、アンマネージド ディスクを使用する VM には適用されません。
 
-## <a name="take-a-snapshot-of-the-os-disk"></a>OS ディスクのスナップショットを取得する
+## <a name="take-a-snapshot-of-the-os-disk"></a>OS ディスクのスナップショットを作成する
 スナップショットは、仮想ハード ドライブ (VHD) の完全な読み取り専用コピーです。 進行中のプロセスをすべてクリアするために、スナップショットを取得する前に VM をクリーン シャットダウンすることをお勧めします。 OS ディスクのスナップショットを作成するには、次の手順を実行します。
 
 1. [Azure ポータル](https://portal.azure.com)に移動します。 サイドバーから **[仮想マシン]** を選択してから、問題が発生している VM を選択します。
@@ -136,9 +136,9 @@ Azure portal では、VM の OS ディスクの変更がサポートされるよ
 1. 修復した新しいディスクを選択してから、VM の名前を入力して変更を確認します。 そのディスクが一覧に表示されない場合は、トラブルシューティング用 VM からディスクを切断した後 10 から 15 分待ちます。 また、ディスクが VM と同じ場所にあることも確認してください。
 1. [OK] を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 VM への接続の問題が発生した場合は、[Azure VM への RDP 接続のトラブルシューティング](troubleshoot-rdp-connection.md)に関する記事をご覧ください。 VM で実行されているアプリケーションへのアクセスに関する問題については、[Windows VM でのアプリケーションの接続の問題のトラブルシューティング](troubleshoot-app-connection.md)に関する記事をご覧ください。
 
-Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」をご覧ください。
+Resource Manager の使用方法の詳細については、「[Azure Resource Manager の概要](../../azure-resource-manager/management/overview.md)」をご覧ください。
 
 

@@ -11,12 +11,12 @@ ms.date: 04/26/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5b33d8fc804d339d3808e5231998fbba41cd4ee9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8a7da1bf80025cfe9b59c42f3338254b86f2ff05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839857"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376343"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>チュートリアル:Azure SQL Data Warehouse へのてニューヨークのタクシー データの読み込み
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>空の SQL データ ウェアハウスを作成する
 
-Azure SQL データ ウェアハウスは、定義された一連のコンピューティング リソース (memory-concurrency-limits.md) を使用して作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
+Azure SQL データ ウェアハウスは、定義された一連のコンピューティング リソース (memory-concurrency-limits.md) を使用して作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-features.md)内に作成されます。 
 
 空の SQL データ ウェアハウスを作成するには、次の手順に従います。 
 
@@ -57,18 +57,18 @@ Azure SQL データ ウェアハウスは、定義された一連のコンピュ
 
 3. SQL Data Warehouse のフォームで、次の情報を入力します。   
 
-   | Setting | 推奨値 | 説明 | 
+   | 設定 | 推奨値 | [説明] | 
    | ------- | --------------- | ----------- | 
    | **データベース名** | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-   | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
-   | **[ソースの選択]** | 空のデータベース | 空のデータベースの作成を指定します。 データ ウェアハウスはデータベースの 1 つの種類であることに注意してください。|
+   | **リソース グループ** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
+   | **ソースの選択** | 空のデータベース | 空のデータベースの作成を指定します。 データ ウェアハウスはデータベースの一種です。|
 
     ![データ ウェアハウスを作成する](media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-    | Setting | 推奨値 | 説明 | 
+    | 設定 | 推奨値 | [説明] | 
     | ------- | --------------- | ----------- |
     | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 | 
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
@@ -94,7 +94,7 @@ Azure SQL データ ウェアハウスは、定義された一連のコンピュ
 
 12. ツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
     
-     ![通知](media/load-data-from-azure-blob-storage-using-polybase/notification.png)
+     ![通知 (notification)](media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
@@ -112,7 +112,7 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 
 3. サーバー名をクリックして、サーバーの設定を開きます。
 
-    ![サーバーの設定](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
+    ![サーバー設定](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
 
 5. **[ファイアウォール設定の表示]** をクリックします。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。 
 
@@ -120,7 +120,7 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 
 4. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスをファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-5. **[Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+5. **[保存]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
 6. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
 
@@ -147,17 +147,17 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-    | 設定      | 推奨値 | 説明 | 
+    | 設定      | 推奨値 | [説明] | 
     | ------------ | --------------- | ----------- | 
     | サーバーの種類 | データベース エンジン | この値は必須です |
     | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver-20180430.database.windows.net** のような形式で指定する必要があります。 |
     | 認証 | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
-    | ログイン | サーバー管理者アカウント | これは、サーバーの作成時に指定したアカウントです。 |
-    | パスワード | サーバー管理者アカウントのパスワード | これは、サーバーの作成時に指定したパスワードです。 |
+    | ログイン | サーバー管理者アカウント | これはサーバーを作成したときに指定したアカウントです。 |
+    | Password | サーバー管理者アカウントのパスワード | これはサーバーを作成したときに指定したパスワードです。 |
 
     ![[サーバーに接続]](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-4. **[接続]** をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
+4. **[接続]** をクリックします。 SSMS で [オブジェクト エクスプローラー] ウィンドウが開きます。 
 
 5. オブジェクト エクスプローラーで、 **[データベース]** を展開します。 **[システム データベース]** 、 **[master]** の順に展開し、マスター データベースのオブジェクトを表示します。  **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
 
@@ -202,7 +202,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 データを読み込むための最初のステップは、LoaderRC20 としてログインすることです。  
 
-1. オブジェクト エクスプローラーで **[接続]** ドロップダウン メニューをクリックして、 **[データベース エンジン]** を選びます。 **[サーバーへの接続]** ダイアログ ボックスが表示されます。
+1. オブジェクト エクスプローラーで **[接続]** ドロップダウン メニューをクリックして、 **[データベース エンジン]** を選びます。 **[サーバーに接続]** ダイアログ ボックスが表示されます。
 
     ![新しいログインで接続する](media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
 
@@ -606,7 +606,7 @@ PolyBase を使用して読み込み、マネージド ID を使用して認証�
 
 SQL Data Warehouse 用の仮想ネットワーク サービス エンドポイントを設定する場合は、次の[ドキュメント](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)を参照してください。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 コンピューティング リソースとデータ ウェアハウスに読み込んだデータには課金されています。 これらは別々に請求されます。 
 
@@ -617,7 +617,7 @@ SQL Data Warehouse 用の仮想ネットワーク サービス エンドポイ�
 
 1. [Azure Portal](https://portal.azure.com) にログインし、お使いのデータ ウェアハウスをクリックします。
 
-    ![リソースのクリーンアップ](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+    ![リソースをクリーンアップする](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンをクリックします。 データ ウェアハウスが一時停止すると、ボタンの表示が **[開始]** になります。  コンピューティング リソースを再開するには、 **[開始]** をクリックします。
 
@@ -627,7 +627,7 @@ SQL Data Warehouse 用の仮想ネットワーク サービス エンドポイ�
 
 5. リソース グループを削除するには、**myResourceGroup** をクリックして、 **[リソース グループの削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 このチュートリアルでは、データ ウェアハウスを作成し、データを読み込むためのユーザーを作成する方法について学習しました。 外部テーブルを作成して Azure Storage Blob に格納されているデータの構造を定義した後、PolyBase の CREATE TABLE AS SELECT ステートメントを使って、データ ウェアハウスにデータを読み込みました。 
 
 以下のことを行いました。

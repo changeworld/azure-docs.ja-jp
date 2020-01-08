@@ -3,12 +3,12 @@ title: Azure Event Grid への Durable Functions の発行 (プレビュー)
 description: Durable Functions の Azure Event Grid 自動発行を構成する方法を説明します。
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: f0fbb46320b896008b6a1343357f016a9f57b0fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d1960f0e8d249ac77f3c64e18b332a3d55d5180
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231441"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613127"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
 
@@ -37,7 +37,7 @@ Durable Functions からイベントを送信するためのイベント グリ�
 * [EventGrid Quickstarts: カスタム イベントの作成- PowerShell](../../event-grid/custom-event-quickstart-powershell.md)
 * [EventGrid Quickstarts: カスタム イベントの作成 - Azure portal](../../event-grid/custom-event-quickstart-portal.md)
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 `az group create` コマンドでリソース グループを作成します。 現時点では、Azure Event Grid ではすべてのリージョンをサポートしているわけではありません。 サポートされるリージョンについては、[Azure Event Grid の概要](../../event-grid/overview.md)に関する記事を参照してください。
 
@@ -86,7 +86,7 @@ Durable Functions プロジェクトで、`host.json` ファイルを検索し�
 
 使用できる Azure Event Grid の構成プロパティについては、[host.json のドキュメント](../functions-host-json.md#durabletask)を参照してください。 `host.json` ファイルを構成すると、関数アプリからイベント グリッド トピックにライフサイクル イベントが送信されます。 これは、ローカルと Azure のどちらで関数アプリを実行する場合にも機能します。
 
-Function App と `local.setting.json` で、トピック キーのアプリ設定を設定します。 次の JSON は、ローカル デバッグ用の `local.settings.json` のサンプルです。 `<topic_key>` はトピック キーで置き換えます。  
+Function App と `local.settings.json` で、トピック キーのアプリ設定を設定します。 次の JSON は、ローカル デバッグ用の `local.settings.json` のサンプルです。 `<topic_key>` はトピック キーで置き換えます。  
 
 ```json
 {
@@ -211,7 +211,7 @@ namespace LifeCycleEventSpike
 ```
 
 > [!NOTE]
-> 前記のコードは Durable Functions 2.x 用です。 Durable Functions 1.x では、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を、`DurableClient` 属性の代わりに `OrchestrationClient` 属性を使用する必要があります。また、`IDurableOrchestrationClient` ではなく `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
+> 前のコードは Durable Functions 2.x 用です。 Durable Functions 1.x では、`IDurableOrchestrationContext` の代わりに `DurableOrchestrationContext` を、`DurableClient` 属性の代わりに `OrchestrationClient` 属性を使用する必要があります。また、`IDurableOrchestrationClient` ではなく `DurableOrchestrationClient` パラメーター型を使用する必要があります。 バージョン間の相違点の詳細については、[Durable Functions のバージョン](durable-functions-versions.md)に関する記事を参照してください。
 
 Postman またはブラウザーで `Sample_HttpStart` を呼び出す場合、Durable Function はライフサイクル イベントの送信を開始します。 通常、ローカル デバッグのエンドポイントは `http://localhost:7071/api/Sample_HttpStart` です。
 
@@ -262,7 +262,7 @@ Azure Portal で作成した関数からのログをご覧ください。
 次の一覧では、ライフサイクル イベントのスキーマについて説明します。
 
 * **`id`** :イベント グリッド イベントの一意識別子。
-* **`subject`** :イベントの件名へのパス。 `durable/orchestrator/{orchestrationRuntimeStatus}` `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
+* **`subject`** :イベントの件名へのパス。 [https://login.microsoftonline.com/consumers/](`durable/orchestrator/{orchestrationRuntimeStatus}`) `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
 * **`data`** :Durable Functions 固有のパラメーター。
   * **`hubName`** :[TaskHub](durable-functions-task-hubs.md) の名前。
   * **`functionName`** :オーケストレーター関数の名前。
@@ -279,7 +279,7 @@ Azure Portal で作成した関数からのログをご覧ください。
 
 ローカルでテストするには、[ngrok](../functions-bindings-event-grid.md#local-testing-with-ngrok) を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Durable Functions でのインスタンスの管理について](durable-functions-instance-management.md)

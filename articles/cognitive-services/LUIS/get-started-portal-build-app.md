@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278596"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381989"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 このクイック スタートでは、LUIS ポータルで新しいアプリを構築します。 最初に、アプリ、**意図**、**エンティティ**の基本パーツを作成します。 その後インタラクティブ テスト パネルでユーザーの発話の例を入力し、予測意図を取得することにより、アプリをテストします。
 
@@ -37,8 +35,8 @@ ms.locfileid: "74278596"
 
    |設定名| 値 | 目的|
    |--|--|--|
-   |名前|`myEnglishApp`|LUIS アプリの一意の名前<br>必須|
-   |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>必須|
+   |Name|`myEnglishApp`|LUIS アプリの一意の名前<br>required|
+   |カルチャ|**英語**|ユーザーの発話の言語、**en-us**<br>required|
    |説明 (省略可能)|`App made with LUIS Portal`|アプリの説明<br>省略可能|
    |予測リソース (省略可能) |-  |選択しないでください。 作成と 1,000 件の予測エンドポイント要求に無料で使用できるスターター キーが LUIS から提供されます。 |
 
@@ -165,11 +163,11 @@ LUIS ポータル内のインタラクティブな **[テスト]** ウィンド�
 
    予測意図の上位は正しく **FindForm** になっており、信頼度は 90% を超えています (0.977)。 抽出された **Human Resources Form Number** エンティティの値は hrf-234098 です。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このクイック スタートが完了し、次のクイック スタートに進まない場合は、上部のナビゲーション メニューから **[マイ アプリ]** を選択します。 次に、一覧からアプリの左側にあるチェック ボックスをオンにし、一覧の上にあるコンテキスト ツール バーから **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [2.アプリのデプロイ](get-started-portal-deploy-app.md)

@@ -4,7 +4,7 @@
   items:
     - name: Azure Database Migration Service とは何ですか。
       href: dms-overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: サービスの作成 - ポータル
       href: quickstart-create-data-migration-service-portal.md
@@ -36,7 +36,7 @@
       href: tutorial-mongodb-cosmos-db-online.md
     - name: オンラインで Oracle を Azure Database for PostgreSQL 単一サーバーに移行する
       href: tutorial-oracle-azure-postgresql-online.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: PowerShell を使用して SQL Server から Azure SQL DB 単一データベースに移行する
       href: howto-sql-server-to-azure-sql-powershell.md
@@ -67,12 +67,16 @@
           href: known-issues-troubleshooting-dms.md
         - name: 既知の問題 - Azure SQL DB 単一データベースへのオンライン移行
           href: known-issues-azure-sql-online.md
+        - name: 既知の問題 - Azure SQL DB マネージド インスタンスへのオンライン移行
+          href: known-issues-azure-sql-db-managed-instance-online.md
         - name: 既知の問題 - Azure DB for MySQL へのオンライン移行
           href: known-issues-azure-mysql-online.md
         - name: 既知の問題 - PostgreSQL から Azure DB for PostgreSQL 単一サーバーへのオンライン移行
           href: known-issues-azure-postgresql-online.md
         - name: 既知の問題 - Oracle から Azure DB for PostgreSQL 単一サーバーへのオンライン移行
           href: known-issues-oracle-azure-postgresql-online.md
+        - name: 既知の問題 - ハイブリッド モードの使用
+          href: known-issues-dms-hybrid-mode.md
     - name: ビデオ
       items:
         - name: データベース移行ガイドを使用する
@@ -93,7 +97,7 @@
           href: 'https://azure.microsoft.com/resources/videos/how-to-migrate-mongodb-to-cosmos-db/'
     - name: ツールとガイダンス
       items:
-        - name: データ移行シナリオに利用できるサービスとツール
+        - name: データ移行のシナリオで利用できるサービスとツール
           href: dms-tools-matrix.md
         - name: Azure データベースの移行ガイド
           href: 'https://aka.ms/datamigration'

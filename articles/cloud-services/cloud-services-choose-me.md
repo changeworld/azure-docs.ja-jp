@@ -2,17 +2,17 @@
 title: Azure Cloud Services とは| Microsoft Docs
 description: Azure Cloud Services について説明します。
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: multiple
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: 61369d51056607d8176d301afa945c7c77895b12
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359708"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386852"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Azure Cloud Services の概要
 Azure Cloud Services は、[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) の 1 つの例です。 このテクノロジは、[Azure App Service](../app-service/overview.md) と同様に、スケーラブルで信頼性が高く、運用コストが低いアプリケーションをサポートするように設計されています。 App Service と同様に、Azure Cloud Services も仮想マシン (VM) 上でホストされます。 しかし、VM に対してより細かな制御を行うことができます。 Azure Cloud Services を使用する VM に独自のソフトウェアをインストールし、それらにリモートでアクセスできます。
@@ -43,11 +43,14 @@ Azure Cloud Services は監視も提供します。 Virtual Machines と同様�
 
 PaaS という Azure Cloud Services の本質には、他の含意もあります。 最も重要なことの 1 つは、このテクノロジを基盤に構築されるアプリケーションは、Web または Worker ロール インスタンスでエラーが発生したときに正しく実行するように記述することが必要です。 これを実現するには、Azure Cloud Services のアプリケーションがそれ自体の VM のファイル システムで状態を維持してはなりません。 Virtual Machines で作成された VM と異なり、Azure Cloud Services VM への書き込みは永続的ではありません。 Virtual Machines のデータ ディスクのようなものはありません。 Azure Cloud Services アプリケーションはすべての状態を Azure SQL Database、BLOB、テーブルか、その他の外部ストレージに明示的に書き込む必要があります。 この方法でアプリケーションを構築すると、スケーリングしやすく、耐障害性が備わります。この 2 つは Azure Cloud Services の重要なゴールです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [.NET でクラウド サービス アプリケーションを作成する](cloud-services-dotnet-get-started.md) 
 * [nodejs でクラウド サービス アプリケーションを作成する](cloud-services-nodejs-develop-deploy-app.md) 
 * [php でクラウド サービス アプリケーションを作成する](../cloud-services-php-create-web-role.md) 
 * [Python でのクラウド サービス アプリの作成](cloud-services-python-ptvs.md)
+
+
+
 
 
 

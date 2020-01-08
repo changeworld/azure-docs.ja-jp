@@ -4,16 +4,16 @@ description: この記事では、Azure エンタープライズ登録で使用�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: ea53ad91dcb411c43b367bfb43bc9dcea3d2bba7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 58f38cc3649c1d08187a4bb93be83422c8e7911b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841423"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644530"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
 
@@ -70,20 +70,20 @@ Microsoft Enterprise Azure のお客様は、REST API を使用して使用状�
 
 | 要求ヘッダー キー | 値 |
 | --- | --- |
-| Authorization | 次の形式で値を指定します: **bearer {API\_KEY}**
+| 承認 | 次の形式で値を指定します: **bearer {API\_KEY}**
 例: bearer \&lt;APIKey\&gt; |
 
 ### <a name="swagger"></a>Swagger
 
-次の API 用の Swagger エンドポイントは、[Enterprise Reporting v3 APIs](https://consumption.azure.com/swagger/ui/index) で入手できます。 Swagger は API の検査に役立ちます。 Swagger を使用して、[AutoRest](https://github.com/Azure/AutoRest) または [Swagger CodeGen](http://swagger.io/swagger-codegen/) を使用したクライアント SDK を生成します。 2014 年 5 月 1 日以降に利用可能なデータは、API を通じて入手できます。
+次の API 用の Swagger エンドポイントは、[Enterprise Reporting v3 APIs](https://consumption.azure.com/swagger/ui/index) で入手できます。 Swagger は API の検査に役立ちます。 Swagger を使用して、[AutoRest](https://github.com/Azure/AutoRest) または [Swagger CodeGen](https://swagger.io/swagger-codegen/) を使用したクライアント SDK を生成します。 2014 年 5 月 1 日以降に利用可能なデータは、API を通じて入手できます。
 
 ### <a name="api-response-codes"></a>API 応答コード
 
 API を使用しているときに、応答の状態コードが表示されます。 次の表ではこれらについて説明します。
 
-| 応答の状態コード | Message | 説明 |
+| 応答の状態コード | Message | [説明] |
 | --- | --- | --- |
-| 200 | OK | エラーなし |
+| 200 | [OK] | エラーなし |
 | 401 | 権限がありません | API キーが検出されない、正しくない、有効期限が切れている、など |
 | 404 | 使用不可 | レポートのエンドポイントが見つからない |
 | 400 | 正しくない要求 | 無効なパラメーター - 日付範囲、EA 番号など。 |
@@ -113,7 +113,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5
 
 JSON 形式は CSV レポートから生成されます。 そのため、形式は概要の CSV 形式と同じになります。 列名が使用されるため、JSON 概要データを使用するときはデータ テーブルに逆シリアル化する必要があります。
 
-| CSV の列名 | JSON の列名 | JSON の新しい列 | Comment (コメント) |
+| CSV の列名 | JSON の列名 | JSON の新しい列 | 解説 |
 | --- | --- | --- | --- |
 | AccountOwnerId | AccountOwnerLiveId | AccountOwnerLiveId |   |
 | アカウント名 | AccountName | AccountName |   |
@@ -122,12 +122,12 @@ JSON 形式は CSV レポートから生成されます。 そのため、形式
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
 | サブスクリプション名 | SubscriptionName | SubscriptionName |   |
 | Date | Date | Date | サービス カタログ レポートが実行された日付を示します。 形式は、タイム スタンプのない日付文字列です。 |
-| 月 | 月 | 月 |   |
+| Month | Month | Month |   |
 | 日 | 日 | 日 |   |
 | 年 | 年 | 年 |   |
 | Product | BillableItemName | Product |   |
 | 測定 ID | ResourceGUID | MeterId |   |
-| 測定カテゴリ | Service | MeterCategory | サービスを検索する際に役立ちます。 複数の ServiceType を持つサービスに関連します。 例: Virtual Machines。 |
+| 測定カテゴリ | サービス | MeterCategory | サービスを検索する際に役立ちます。 複数の ServiceType を持つサービスに関連します。 例: Virtual Machines。 |
 | 測定サブカテゴリ | ServiceType | MeterSubCategory | サービスの 2 番目の詳細レベルを提供します。 例: A1 VM (Windows 以外)。  |
 | 測定リージョン | ServiceRegion | MeterRegion | サービスに必要な 3 番目の詳細レベル。 ResourceGUID のリージョン コンテキストを検索する際に役立ちます。 |
 | 測定名 | ServiceResource | MeterName | サービスの名前。 |
@@ -157,7 +157,7 @@ JSON 形式は CSV レポートから生成されます。 そのため、形式
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
 | サブスクリプション名 | SubscriptionName |  SubscriptionName |
 | Date | BillingCycle |  日付 (日付文字列のみ。 タイム スタンプなし)
-| 月 | 月 |  月 |
+| Month | Month |  Month |
 | 日 | 日 |  日 |
 | 年 | 年 |  年 |
 | 測定 ID | MeterResourceId |  MeterId |
@@ -178,9 +178,9 @@ JSON 形式は CSV レポートから生成されます。 そのため、形式
 
 #### <a name="price-sheet"></a>Price Sheet
 
-| CSV の列名 | JSON の列名 | Comment (コメント) |
+| CSV の列名 | JSON の列名 | 解説 |
 | --- | --- | --- |
-| Service | Service |  価格に変更はありません |
+| サービス | サービス |  価格に変更はありません |
 | 計算単位 | UnitOfMeasure |   |
 | Overage Part Number | ConsumptionPartNumber |   |
 | Overage Unit Price | ConsumptionPrice |   |
@@ -208,7 +208,7 @@ API キーは 6 か月ごとに有効期限が切れます。 期限切れにな
 
 選択した日付範囲に使用できる最新データがない場合、API 呼び出しから 400 および 404 (利用不可) エラーが返されることがあります。 たとえば、登録の転送が最近開始されたために、このエラーが発生することがあります。 特定の日付以降のデータは、新しい登録に格納されます。 それ以外に、新しい登録番号を使用して古い登録に存在する情報を取得しようとすると、エラーが発生することがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- Azure EA Portal の管理者は「[Azure EA Portal の管理](billing-ea-portal-administration.md)」を読んで、一般的な管理タスクについて学習する必要があります。
+- Azure EA ポータルの管理者は「[Azure EA ポータルの管理](billing-ea-portal-administration.md)」を読んで、一般的な管理タスクについて学習する必要があります。
 - Azure EA Portal の問題のトラブルシューティングに関するヘルプが必要な場合は、「[Troubleshoot Azure EA portal access (Azure EA Portal へのアクセスのトラブルシューティング)](billing-ea-portal-troubleshoot.md)」を参照してください。

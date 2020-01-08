@@ -8,12 +8,12 @@ ms.author: b-majude
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: 5028ce3c71538e67b50a15abb6076871d5af7050
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: d88be50468f55a848b43613e1f7851621202052d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378230"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Azure Red Hat OpenShift クラスター内でプロジェクト、テンプレート、イメージ ストリームを管理する 
 
@@ -25,7 +25,7 @@ OpenShift Container Platform では、プロジェクトを使用して、関連
 
 プロジェクト要求が送信されると、API はテンプレート内の次のパラメーターを置き換えます。
 
-| パラメーター               | 説明                                    |
+| パラメーター               | [説明]                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | プロジェクトの名前です。 必須。             |
 | PROJECT_DISPLAYNAME     | プロジェクトの表示名です。 空の場合もあります。 |
@@ -66,7 +66,7 @@ API へのアクセスは、セルフプロビジョナー クラスター ロ�
 2. セルフプロビジョナー クラスター ロール バインドを編集します。
 
    ```
-   oc edit clusterrolebinding self-provisioners
+   oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
 3. 注釈 `openshift.io/reconcile-protect: "true"` を追加して、ARO の更新プロセスからロールを削除します。
@@ -82,7 +82,7 @@ API へのアクセスは、セルフプロビジョナー クラスター ロ�
 4. `system:authenticated:oauth` によってプロジェクトが作成されないように、クラスター ロール バインドを変更します。
 
    ```
-   apiVersion: authorization.openshift.io/v1
+   apiVersion: rbac.authorization.k8s.io/v1
    groupNames:
    - osa-customer-admins
    kind: ClusterRoleBinding
@@ -124,7 +124,7 @@ Azure Red Hat OpenShift では、`openshift` 名前空間内の既定のテン�
 
    `openshift` 名前空間内の個々のオブジェクトは、それに注釈 `openshift.io/reconcile-protect: "true"` を追加することで、更新プロセスから削除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のチュートリアルを試してください。
 > [!div class="nextstepaction"]

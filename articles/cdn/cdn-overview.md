@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6aaa98bea5e6cf1bdffc3dbe28e42e9545a626ea
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593608"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660632"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Azure 上のコンテンツ配信ネットワークとは
 コンテンツ配信ネットワーク (CDN) は、ユーザーに Web コンテンツを効率的に配信できるサーバーの分散ネットワークです。 CDN では、待ち時間を最小限に抑えるために、エンド ユーザーに近いポイントオブプレゼンス (POP) の場所のエッジ サーバーに、キャッシュされたコンテンツを格納します。 
@@ -35,7 +35,7 @@ Azure CDN を使用して Web サイト資産を配信すると、次のよう�
 
 現在の CDN ノードの場所の一覧については、[Azure CDN の POP の場所](cdn-pop-locations.md)に関するページを参照してください。
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 ![CDN の概要](./media/cdn-overview/cdn-overview.png)
 
 1. ユーザー (Alice) は、特殊なドメイン名 ( _&lt;endpoint name&gt;_ .azureedge.net など) の URL を使用して、ファイル (資産とも呼ばれます) を要求します。 この名前には、エンドポイント ホスト名またはカスタム ドメインを指定できます。 DNS は、パフォーマンスが最も高い POP に要求をルーティングします。通常、その場所は、ユーザーに地理的に最も近い位置にある POP になります。
@@ -59,7 +59,7 @@ Azure CDN を使用するには、少なくとも 1 つの Azure サブスクリ
  - CDN プロファイルに作成できるエンドポイントの数。 
  - エンドポイントにマッピングできるカスタム ドメインの数。
 
-CDN サブスクリプションの制限の詳細については、「[CDN の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits)」を参照してください。
+CDN サブスクリプションの制限の詳細については、「[CDN の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」を参照してください。
     
 ## <a name="azure-cdn-features"></a>Azure CDN の機能
 Azure CDN が提供する主要な機能は、次のとおりです。
@@ -73,7 +73,7 @@ Azure CDN が提供する主要な機能は、次のとおりです。
 
 各 Azure CDN 製品でサポートされる機能の完全な一覧については、「[Azure CDN 製品の機能](cdn-features.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - CDN の使用を開始するには、[Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)に関するページを参照してください。
 - [Microsoft Azure Portal](https://portal.azure.com) または [PowerShell](cdn-manage-powershell.md) を使用して、CDN エンドポイントを管理します。
 - [.NET](cdn-app-dev-net.md) または [Node.js](cdn-app-dev-node.md) を使用して Azure CDN を自動化する方法について学習します。

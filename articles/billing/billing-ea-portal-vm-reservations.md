@@ -4,16 +4,16 @@ description: この記事では、VM 予約インスタンスに対する Azure 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 3c3d95feed4f7cf47448c4fe62d8368fa5498dd7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 11cdf3ec03c125b98938847390c71eb12d1b4800
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841322"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644513"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 
@@ -81,7 +81,7 @@ Azure EA のお客様がお持ちの年額コミットメントが全額使用�
 
 予約の 30 日前および有効期限の 30 日前にメールで通知が送付されます。 予約の期限が切れても、デプロイされている VM は稼働し続け、従量課金制で課金されます。 詳細については、[予約仮想マシン インスタンス プラン](https://azure.microsoft.com/pricing/reserved-vm-instances/)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - Azure の予約の詳細については、「[Azure の予約とは](billing-save-compute-costs-reservations.md)」を参照してください。
 - エンタープライズ予約のコストと使用状況の詳細については、「[Enterprise Agreement の予約のコストと使用状況を取得する](billing-understand-reserved-instance-usage-ea.md)」を参照してください。
 - 価格の詳細については、「[Linux Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)」または「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」を参照してください。

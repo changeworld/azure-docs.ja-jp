@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: kumud
-ms.openlocfilehash: 1b201957a33acd609eed8a2373c8201bdefe9d7d
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 5acda69ce08bc493d5349b084d1cfafc8432145b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64691978"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647460"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>仮想マシンへのパブリック IP アドレスの関連付け
 
-この記事では、既存の仮想マシン (VM) にパブリック IP アドレスを関連付ける方法について説明します。 インターネットから VM に接続する場合、VM は、関連付けられたパブリック IP アドレスを備えている必要があります。 パブリック IP アドレスを備えた新しい VM を作成する場合は、[Azure portal](virtual-network-deploy-static-pip-arm-portal.md)、[Azure コマンド ライン インターフェイス (CLI)](virtual-network-deploy-static-pip-arm-cli.md)、または [PowerShell](virtual-network-deploy-static-pip-arm-ps.md) を使用して行うことができます。 パブリック IP アドレスには、わずかな費用がかかります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/ip-addresses/)のページを参照してください。 サブスクリプションごとに使用できるパブリック IP アドレスの数には制限があります。 詳しくは、[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#publicip-address)に関する記事をご覧ください。
+この記事では、既存の仮想マシン (VM) にパブリック IP アドレスを関連付ける方法について説明します。 インターネットから VM に接続する場合、VM は、関連付けられたパブリック IP アドレスを備えている必要があります。 パブリック IP アドレスを備えた新しい VM を作成する場合は、[Azure portal](virtual-network-deploy-static-pip-arm-portal.md)、[Azure コマンド ライン インターフェイス (CLI)](virtual-network-deploy-static-pip-arm-cli.md)、または [PowerShell](virtual-network-deploy-static-pip-arm-ps.md) を使用して行うことができます。 パブリック IP アドレスには、わずかな費用がかかります。 詳細については、[価格](https://azure.microsoft.com/pricing/details/ip-addresses/)のページを参照してください。 サブスクリプションごとに使用できるパブリック IP アドレスの数には制限があります。 詳しくは、[制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#publicip-address)に関する記事をご覧ください。
 
 パブリック IP アドレスを VM に関連付けるには、[Azure portal](#azure-portal)、Azure [コマンド ライン インターフェイス](#azure-cli) (CLI)、または [PowerShell](#powershell) を使用できます。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. パブリック IP アドレスを追加する仮想マシンを参照または検索して、選択します。
 3. 以下の画像に示すように、 **[設定]** 下にある **[ネットワーク]** を選択して、パブリック IP アドレスを追加するネットワーク インターフェイスを選択します。
 
@@ -211,6 +211,6 @@ ms.locfileid: "64691978"
 
 インターネットからパブリック IP アドレスに接続するには、事前に、ネットワーク インターフェイスまたはそのネットワーク インターフェイスが存在しているサブネット、あるいはその両方に関連付けたはずのネットワーク セキュリティ グループにおいて、必要なポートが開かれていることを確認してください。 セキュリティ グループでは、ネットワーク インターフェイスのプライベート IP アドレスへのトラフィックをフィルター処理しますが、受信したインターネット トラフィックがパブリック IP アドレスに到達すると、Azure によってパブリック アドレスがプライベート IP アドレスに変換されます。そのため、ネットワーク セキュリティ グループによってトラフィック フローが妨げられると、パブリック IP アドレスによる通信は失敗します。 [ポータル](diagnose-network-traffic-filter-problem.md#diagnose-using-azure-portal)、[CLI](diagnose-network-traffic-filter-problem.md#diagnose-using-azure-cli)、または [PowerShell](diagnose-network-traffic-filter-problem.md#diagnose-using-powershell) を使用して、ネットワーク インターフェイスとそのサブネットに対する有効なセキュリティ規則を確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ネットワーク セキュリティ グループを利用して、VM への受信インターネット トラフィックを許可します。 ネットワーク セキュリティ グループを作成する方法については、[ネットワーク セキュリティ グループの操作](manage-network-security-group.md#work-with-network-security-groups)に関するページをご覧ください。 ネットワーク セキュリティ グループの詳細については、[セキュリティ グループ](security-overview.md)に関するページをご覧ください。

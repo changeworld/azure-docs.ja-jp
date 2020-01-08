@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: banders
-ms.openlocfilehash: 62a16a6a96fbfdfbb4ed2d70b74470e29efaa844
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 03464fca6d7e0694d9492de698c70d5caac89358
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849855"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644479"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Azure の Azure Enterprise Agreement 管理者ロールを理解する
 
@@ -48,7 +48,7 @@ ms.locfileid: "74849855"
 
 ## <a name="organization-structure-and-permissions-by-role"></a>組織の構造とロール別のアクセス許可
 
-|タスク| エンタープライズ管理者|エンタープライズ管理者 (読み取り専用)|部門管理者|部門管理者 (読み取り専用)|アカウント所有者|
+|処理手順| エンタープライズ管理者|エンタープライズ管理者 (読み取り専用)|部門管理者|部門管理者 (読み取り専用)|アカウント所有者|
 |---|---|---|---|---|---|
 |エンタープライズ管理者を表示する|✔|✔|✘|✘|✘|
 |エンタープライズ管理者を追加または削除する|✔|✘|✘|✘|✘|
@@ -67,7 +67,7 @@ ms.locfileid: "74849855"
 
 ## <a name="usage-and-costs-access-by-role"></a>ロール別の使用量/コスト アクセス
 
-|タスク| エンタープライズ管理者|エンタープライズ管理者 (読み取り専用)|部門管理者|部門管理者 (読み取り専用) |アカウント所有者|
+|処理手順| エンタープライズ管理者|エンタープライズ管理者 (読み取り専用)|部門管理者|部門管理者 (読み取り専用) |アカウント所有者|
 |---|---|---|---|---|---|
 |年額コミットメントを含む、与信残高を表示する|✔|✔|✘|✘|✘|
 |部門の支出クォータを表示する|✔|✔|✘|✘|✘|
@@ -93,15 +93,15 @@ Azure portal に表示される価格は管理者ロールによって異なる�
 
 |Enterprise Agreement 管理者ロール|ロールの請求金額の表示ポリシー|RBAC ロール|価格ビュー|
 |---|---|---|---|
-|アカウント所有者または部門管理者|✔ 有効|Owner|組織の EA 価格|
-|アカウント所有者または部門管理者|✘ 無効|Owner|小売価格|
+|アカウント所有者または部門管理者|✔ 有効|所有者|組織の EA 価格|
+|アカウント所有者または部門管理者|✘ 無効|所有者|小売価格|
 |アカウント所有者または部門管理者|✔ 有効 |なし|価格設定なし|
 |アカウント所有者または部門管理者|✘ 無効 |なし|価格設定なし|
-|なし|適用不可 |Owner|小売価格|
+|なし|適用なし |所有者|小売価格|
 
 Enterprise portal でエンタープライズ管理者ロールと請求金額の表示ポリシーを設定します。 RBAC ロールは Azure portal で更新できます。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure の課金情報へのアクセスの管理](billing-manage-access.md)
 - [RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)

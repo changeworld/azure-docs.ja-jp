@@ -3,17 +3,17 @@ title: クイックスタート - シミュレートされたデバイスを Azu
 description: このクイックスタートでは、デバイス テンプレートを作成し、IoT Central アプリケーションにシミュレートされたデバイスを追加する方法を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/10/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 46d325fd609363a5425fc16845552e75b575c231
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 669bdcddc7e4bb0c63250d9b571ff7ef4343ef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706709"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434837"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application-preview-features"></a>クイック スタート:シミュレートされたデバイスを IoT Central アプリケーションに追加する (プレビュー機能)
 
@@ -73,7 +73,7 @@ IoT Central でデバイス機能モデルを作成する場合、選択肢は�
     | 表示名      | セマンティックの種類 | スキーマ |
     | ----------------- | ------------- | ------ |
     | Last Service Date | なし          | Date   |
-    | Customer Name     | なし          | string |
+    | Customer Name     | なし          | String |
 
 1. **[保存]** を選択して変更を保存します。
 
@@ -88,7 +88,7 @@ IoT Central でデバイス機能モデルを作成する場合、選択肢は�
 
 ### <a name="generate-default-views"></a>既定のビューを生成する
 
-重要なデバイス情報の視覚化をすぐに始める方法は、既定のビューを生成することです。 デバイス テンプレートごとに生成できる既定のビューは、最大で 3 つです。
+既定のビューを生成すると、重要なデバイス情報の視覚化をすばやく開始することができます。 デバイス テンプレートごとに生成できる既定のビューは、最大で 3 つです。
 
 * **[コマンド]** ビューでは、オペレーターがデバイスにコマンドを送信できます。
 * **[概要]** ビューでは、グラフとメトリックを利用してデバイスのテレメトリが表示されます。
@@ -166,7 +166,7 @@ IoT Central でデバイス機能モデルを作成する場合、選択肢は�
 
     ![プレビュー デバイスの構成](./media/quick-create-pnp-device/configure-preview.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、**環境センサー** デバイス テンプレートを作成し、シミュレートされたデバイスをアプリケーションに追加する方法について説明しました。
 

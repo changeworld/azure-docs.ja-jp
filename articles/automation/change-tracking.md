@@ -2,20 +2,16 @@
 title: Azure Automation で変更を追跡する
 description: Change Tracking ソリューションは、ユーザーの環境で起こるソフトウェアと Windows サービスの変更を特定するために役立ちます。
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
-manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1fd800062c4a8362919b1818550b2fca9fa3eb88
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7dce249a3e1e13fc9d7d2a962e7f056c803eb23e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850552"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418746"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -95,11 +91,11 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 2. **[変更の追跡]** ページで、 **[Linux ファイル]** を選択し、 **[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Linux ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
-|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
+|Group     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス。 例: "/etc/*.conf"       |
 |パスの種類     | 追跡する項目の種類。"ファイル" または "ディレクトリ" を指定できます。        |
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
@@ -118,11 +114,11 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 2. **[Change Tracking]\(変更の追跡\)** ページで、 **[Windows ファイル]** を選択し、 **[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
-|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
+|Group     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。       |
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
 |すべての設定のファイル コンテンツをアップロードする| 追跡した変更についてファイル コンテンツのアップロードをオンまたはオフにします。 使用できるオプションは **True** または **False** です。|
@@ -150,12 +146,12 @@ FIM が既に有効になっていて、完全な Change Tracking ソリュー�
 2. **[Change Tracking]\(変更の追跡\)** ページで、 **[Windows レジストリ]** を選択し、 **[+ 追加]** をクリックして、追跡する新しいレジストリ キーを追加します。
 3. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するレジストリ キーのフレンドリ名。        |
 |Group     | レジストリ キーを論理的にグループ化するためのグループ名。        |
-|Windows レジストリ キー   | レジストリ キーを確認するためのパス。 例: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+|Windows レジストリ キー   | レジストリ キーを確認するためのパス。 次に例を示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ## <a name="limitations"></a>制限事項
 
@@ -272,7 +268,7 @@ Change Tracking には次のアドレスが明示的に必要です。 このア
 
 次の表は、このソリューションによって収集された変更レコードを探すログ検索の例です。
 
-|クエリ  |説明  |
+|クエリ  |[説明]  |
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Windows サービスの最新のインベントリ レコードで、自動に設定されたが、停止中として報告されたものを表示します<br>結果はその SoftwareName と Computer の最新のレコードに限定されます      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|削除されたソフトウェアの変更レコードを表示します|
@@ -301,7 +297,7 @@ Change Tracking と Inventory の重要な機能は、構成の状態と、ハ�
 
 Hosts ファイルへの変更に関するアラートは、Change Tracking や Inventory のデータに関するアラートの 1 つの適切な利用ですが、以下のセクションでクエリの例と共に定義されているケースを含み、アラートにはその他多くのシナリオがあります。
 
-|クエリ  |説明  |
+|クエリ  |[説明]  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|システムの重要なファイルに対する変更を追跡するのに役立ちます|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|キー構成ファイルに対する変更を追跡するのに役立ちます|
@@ -312,7 +308,7 @@ Hosts ファイルへの変更に関するアラートは、Change Tracking や 
 |ConfigurationChange <br>&#124; where RegistryKey == @"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\QualityCompat"| 重要なウイルス対策キーに対する変更を追跡するのに役立ちます|
 |ConfigurationChange <br>&#124; where RegistryKey contains @"HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy"| ファイアウォール設定に対する変更を追跡するのに役立ちます|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ソリューションの使用方法の詳細については、Change Tracking のチュートリアルを参照してください。
 

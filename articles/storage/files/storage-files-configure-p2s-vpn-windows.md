@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 527ab905997d18433d1dba5c16ee67c8146f5afa
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 90995b1c9d10c7b589706f5abf37f92d76e4362b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73126458"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560353"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Windows 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する
 ポイント対サイト (P2S) VPN 接続を使用すると、ポート 445 を開くことなく、Azure の外部から SMB 経由で Azure ファイル共有をマウントできます。 ポイント対サイト VPN 接続は、Azure と個々のクライアントの間の VPN 接続です。 Azure Files で P2S VPN 接続を使用するには、接続したいクライアントごとに P2S VPN 接続を構成する必要があります。 オンプレミス ネットワークから Azure ファイル共有に接続する必要のある多数のクライアントが存在する場合は、クライアントごとのポイント対サイト接続の代わりにサイト間 (S2S) VPN 接続を使用できます。 詳細については、「[Azure Files で使用するサイト間 VPN を構成する](storage-files-configure-s2s-vpn.md)」を参照してください。
@@ -161,7 +161,7 @@ foreach($ipconfig in $internalNic.Properties.ipConfigurations) {
         $recordName = $fqdn.split('.', 2)[0]
         $dnsZone = $fqdn.split('.', 2)[1]
         New-AzPrivateDnsRecordSet `
-            -ResourceGroupName $resourceGroupName ` 
+            -ResourceGroupName $resourceGroupName `
             -Name $recordName `
             -RecordType A `
             -ZoneName $zone.Name `
@@ -219,7 +219,7 @@ foreach($line in $rawRootCertificate) {
 }
 ```
 
-## <a name="deploy-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイのデプロイ
+## <a name="deploy-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイをデプロイする
 Azure 仮想ネットワーク ゲートウェイは、オンプレミスの Windows マシンの接続先となるサービスです。 このサービスをデプロイするには、2 つの基本的なコンポーネントが必要です。クライアントが世界中のどこにあってもそのクライアントへのゲートウェイを識別するパブリック IP と、クライアントの認証に使用される先ほど作成したルート証明書です。
 
 `<desired-vpn-name-here>` は、これらのリソースに必要な名前に置き換えてください。
@@ -305,7 +305,7 @@ Export-PfxCertificate `
     -Cert $clientcert | Out-Null
 ```
 
-## <a name="configure-the-vpn-client"></a>VPN クライアントの構成
+## <a name="configure-the-vpn-client"></a>VPN クライアントを構成する
 Azure 仮想ネットワーク ゲートウェイは、オンプレミスの Windows マシンで VPN 接続を初期化するために必要な構成ファイルを含むダウンロード可能なパッケージを作成します。 Windows 10/Windows Server 2016 以降の [Always On VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) 機能を使用して VPN 接続を構成します。 このパッケージには、レガシ Windows VPN クライアントを構成する実行可能パッケージも含まれます (必要な場合)。 このガイドでは、レガシ Windows VPN クライアントではなく、Always On VPN を使用します。Always On VPN クライアントは、自分のマシンに対する管理者権限を持っていないエンドユーザーでも、Azure VPN に接続したり切断したりできるからです。 
 
 次のスクリプトでは、仮想ネットワーク ゲートウェイの認証に必要なクライアント証明書をインストールし、VPN パッケージをダウンロードしてインストールします。 `<computer1>`、`<computer2>` は、忘れずに希望するコンピューターに置き換えてください。 このスクリプトの `$sessions` 配列に PowerShell セッションを追加すると、必要な数のマシンで実行できます。 使用アカウントは、これらの各マシンの管理者である必要があります。 マシンのいずれかがスクリプトを実行しているローカル マシンである場合、昇格された PowerShell セッションからスクリプトを実行する必要があります。 
@@ -430,7 +430,7 @@ Invoke-Command `
     }
 ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 - [直接 Azure ファイル共有アクセスに関するネットワークの考慮事項](storage-files-networking-overview.md)
 - [Linux 上で Azure Files で使用するポイント対サイト (P2S) VPN を構成する](storage-files-configure-p2s-vpn-linux.md)
 - [Azure Files で使用するサイト間 (S2S) VPN を構成する](storage-files-configure-s2s-vpn.md)

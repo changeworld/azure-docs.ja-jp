@@ -1,25 +1,15 @@
 ---
-title: Azure Service Fabric のノードの種類と仮想マシン スケール セット | Microsoft Docs
+title: ノード タイプと仮想マシン スケール セット
 description: Azure Service Fabric のノードの種類を仮想マシン スケール セットに関連付ける方法のほか、スケール セット インスタンスまたはクラスター ノードにリモートで接続する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: ChackDan
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.openlocfilehash: cec134f9e71f86cd0ed17912f1a3c76adc9a4164
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d67a99be7b55cfa75980688ee30edc4fce7c0946
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167321"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610167"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric のノードの種類と仮想マシン スケール セット
 [仮想マシン スケール セット](/azure/virtual-machine-scale-sets)は、Azure コンピューティング リソースです。 スケール セットを使用すると、仮想マシンのコレクションをセットとしてデプロイおよび管理できます。 Azure Service Fabric クラスターで定義するノードの種類ごとに別個のスケールが設定されます。  Service Fabric ランタイムは、Microsoft.Azure.ServiceFabric 仮想マシン拡張機能により設定されたスケール セットでの各仮想マシンにインストールされます。 各ノードの種類を個別にスケールアップまたはスケールダウンしたり、各クラスター ノードで実行されている OS SKU を変更したり、異なるポートのセットを開いたり、別の容量メトリックを使用したりできます。
@@ -78,7 +68,7 @@ Service Fabric 仮想マシン拡張機能は、Service Fabric を　Azure 仮�
 | **Name** | **使用できる値** | ** --- ** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 | name | string | --- | 拡張機能の一意な名前 |
-| type | "ServiceFabricLinuxNode" または "ServiceFabricWindowsNode" | --- | OS の Service Fabric が次に対してブートストラップすることを識別します。 |
+| 型 | "ServiceFabricLinuxNode" または "ServiceFabricWindowsNode" | --- | OS の Service Fabric が次に対してブートストラップすることを識別します。 |
 | autoUpgradeMinorVersion | true または false | --- | SF ランタイムのマイナー バージョンの自動アップグレードを有効にします。 |
 | publisher | Microsoft.Azure.ServiceFabric | --- | Service Fabric 拡張機能のパブリッシャー名 |
 | clusterEndpont | string | --- | 管理エンドポイントへに対する URI:PORT |
@@ -91,11 +81,11 @@ Service Fabric 仮想マシン拡張機能は、Service Fabric を　Azure 仮�
 | typeHandlerVersion | 1.1 | --- | 拡張機能のバージョン。 拡張機能のクラシック バージョン 1.0 を 1.1 にアップグレードすることをお勧めします |
 | dataPath | string | --- | Service Fabric システムのサービスおよびアプリケーション データの状態を保存するために使用されるドライブへのパス。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * ["任意の場所にデプロイ" 機能の概要と Azure で管理されるクラスターとの比較](service-fabric-deploy-anywhere.md)に関するページを参照します。
 * [クラスター セキュリティ](service-fabric-cluster-security.md)について学習します。
 * 特定のスケール セット インスタンスに[リモート接続する](service-fabric-cluster-remote-connect-to-azure-cluster-node.md)
-* 展開後、クラスター VM の [RDP ポート範囲値を更新する](./scripts/service-fabric-powershell-change-rdp-port-range.md)
+* 展開後にクラスター VM で [RDP ポートの範囲値を更新する](./scripts/service-fabric-powershell-change-rdp-port-range.md)
 * クラスター VM の[管理者ユーザー名とパスワードを変更する](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md)
 
 <!--Image references-->

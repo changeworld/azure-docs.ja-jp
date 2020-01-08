@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c84277603420567485b5199cdd2fa63ee3a2654
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076855"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378383"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Azure Notification Hubs での欠落した通知の診断
 
@@ -103,7 +103,7 @@ Notification Hubs は、"最大 1 回" のメッセージ配信モデルに最�
 
 この場合、エラーが発生した登録はデータベースから削除されます。 その後、そのバッチで残りのデバイスに通知の配信が再試行されます。
 
-登録デバイスに対して試行された配信が失敗したときのエラー情報の詳細は、Azure Notification Hubs REST API を使用して取得できます。「[Per Message Telemetry: Get Notification Message Telemetry (メッセージごとのテレメトリ: 通知メッセージのテレメトリを取得する)](https://msdn.microsoft.com/library/azure/mt608135.aspx)」と「[PNS Feedback (PNS フィードバック)](https://msdn.microsoft.com/library/azure/mt705560.aspx)」をご覧ください。 サンプル コードについては、[REST の送信例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)に関する記事をご覧ください。
+登録デバイスに対して試行された配信が失敗したときのエラー情報の詳細は、Azure Notification Hubs REST API を使用して取得できます。「[Per Message Telemetry: Get Notification Message Telemetry (メッセージごとのテレメトリ: 通知メッセージのテレメトリを取得する)](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry)」と「[PNS Feedback (PNS フィードバック)](https://msdn.microsoft.com/library/azure/mt705560.aspx)」をご覧ください。 サンプル コードについては、[REST の送信例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)に関する記事をご覧ください。
 
 ## <a name="push-notification-service-issues"></a>プッシュ通知サービスの問題
 
@@ -125,9 +125,9 @@ Notification Hubs では、汎用 SendNotification API を使用することで�
 
 #### <a name="push-notification-service-developer-portal"></a>プッシュ通知サービス開発者ポータル ####
 
-各プッシュ通知サービス開発者ポータル (APNs、FCM, Windows Notification Service など) で資格情報を確認します。 詳細については、[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)」で作成したソリューションを開きます。
+各プッシュ通知サービス開発者ポータル (APNs、FCM, Windows Notification Service など) で資格情報を確認します。 詳細については、「[チュートリアル:Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification)」で作成したソリューションを開きます。
 
-#### <a name="azure-portal"></a>Azure ポータル ####
+#### <a name="azure-portal"></a>Azure portal ####
 
 資格情報を確認し、プッシュ通知サービス開発者ポータルから取得した資格情報とマッチングするには、Azure portal の **[アクセス ポリシー]** タブに移動します。
 
@@ -135,7 +135,7 @@ Notification Hubs では、汎用 SendNotification API を使用することで�
 
 ### <a name="verify-registrations"></a>登録の確認
 
-#### <a name="visual-studio"></a>Visual Studio ####
+#### <a name="visual-studio"></a>Visual Studio ####
 
 Visual Studio では、サーバー エクスプローラーから Azure に接続して、Notification Hubs を含む複数の Azure サービスを表示、管理できます。 このショートカットは、特に開発/テスト環境で便利です。
 
@@ -168,13 +168,13 @@ Visual Studio では、サーバー エクスプローラーから Azure に接�
 
 ### <a name="verify-message-notifications"></a>メッセージ通知の確認
 
-#### <a name="azure-portal"></a>Azure ポータル ####
+#### <a name="azure-portal"></a>Azure portal ####
 
 サービス バックエンドを稼働させずにクライアントにテスト通知を送信するには、 **[サポート + トラブルシューティング]** から **[テスト送信]** を選択します。
 
 ![Azure のテスト送信機能][7]
 
-#### <a name="visual-studio"></a>Visual Studio ####
+#### <a name="visual-studio"></a>Visual Studio ####
 
 Visual Studio からテスト通知を送信することもできます。
 
@@ -196,7 +196,7 @@ Notification Hubs 経由で通知を送信すると、その通知は最初は�
 
 プッシュ通知サービス エラーに関する情報を取得するには、[EnableTestSend] プロパティを使用できます。 このプロパティは、ポータルまたは Visual Studio クライアントからテスト メッセージを送信するときに自動的に有効にされます。 このプロパティは、詳細なデバッグ情報の参照に使用できます。また、API を介して使用することもできます。 現時点では、.NET SDK で使用できます。 最終的には、すべてのクライアント SDK に追加される予定です。
 
-`EnableTestSend` プロパティを REST 呼び出しで使用するには、送信呼び出しの最後に *test* というクエリ文字列パラメーターを追加します。 例:
+`EnableTestSend` プロパティを REST 呼び出しで使用するには、送信呼び出しの最後に *test* というクエリ文字列パラメーターを追加します。 次に例を示します。
 
 ```text
 https://mynamespace.servicebus.windows.net/mynotificationhub/messages?api-version=2013-10&test
@@ -245,7 +245,7 @@ The Token obtained from the Token Provider is wrong
 
 ### <a name="review-telemetry"></a>統計情報の確認 ###
 
-#### <a name="azure-portal"></a>Azure ポータル ####
+#### <a name="azure-portal"></a>Azure portal ####
 
 このポータルでは、Notification Hubs のすべてのアクティビティの概要を簡単に確認できます。
 

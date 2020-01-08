@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 11/15/2019
-ms.openlocfilehash: 7bccc75b4a70e98f069d1ffb86909368105b9a32
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.date: 01/06/2020
+ms.openlocfilehash: 21e9884ab4559b510b13691ac5cafccb753622d6
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167665"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690806"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>クイック スタート:Azure Time Series Insights の探索
 
@@ -82,14 +82,14 @@ Azure Time Series Insights は、数十億件の IoT イベントを同時に簡
 
 クイック スタートを完了したら、別の視覚化を作成するためにサンプル データ セットを試してみることができます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルを完了したので、作成したリソースをクリーンアップします。
 
 1. [Azure portal](https://portal.azure.com) の左側のメニューにある **[すべてのリソース]** を選択し、目的の Azure Time Series Insights リソース グループを見つけます。
 1. **[削除]** を選択してリソース グループ全体 (およびその中に含まれるすべてのリソース) を削除するか、各リソースを個別に削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 独自の Time Series Insights 環境を作成する準備ができました:
 > [!div class="nextstepaction"]

@@ -4,19 +4,19 @@ description: Service Map は、Windows および Linux システム上のアプ�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 00bb58c88b7dc535bf76e1a96e9748a2c366b338
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554003"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402594"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
-サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
+Service Map は自動的に Windows および Linux のシステム上のアプリケーション コンポーネントを検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
 
 この記事では、オンボードと、Service Map の使い方を詳しく説明します。 このソリューションの前提条件の構成の詳細については、[Azure Monitor for VMs の有効化の概要](vminsights-enable-overview.md#prerequisites)に関するページをご覧ください。 要約すると、以下が必要です。
 
@@ -155,7 +155,7 @@ Service Map は、システム更新評価の使用を強化します。他の�
 
 特定のプロセスは、マシンで特定のロール (Web サーバー、アプリケーション サーバー、データベースなど) を担います。 サービス マップでは、プロセスとマシン ボックスにロール アイコンで注釈を付け、プロセスまたはサーバーが担っているロールがひとめでわかるようにします。
 
-| ロール アイコン | Description |
+| ロール アイコン | [説明] |
 |:--|:--|
 | ![Web サーバー](media/service-map/role-web-server.png) | Web サーバー |
 | ![アプリ サーバー](media/service-map/role-application-server.png) | アプリケーション サーバー |
@@ -319,7 +319,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 指定の時間範囲にある指定のプロセスとコンピューターについては、複数のレコードが存在できるため、クエリは、同じコンピューターまたはプロセスに対して複数のレコードを返すことがあります。 最新のレコードのみが返されるようにするには、"| dedup ResourceId" をクエリに追加します。
 
-### <a name="connections"></a>Connections
+### <a name="connections"></a>接続
 
 接続メトリックは、Log Analytics 内の新しいテーブルに書き込まれます (VMConnection)。 このテーブルは、マシンの接続 (受信および送信) に関する情報を提供します。 接続メトリックは、時間枠の間に特定のメトリックを取得する手段を提供する API と共に公開されています。  リスニング ソケットで*受諾*することで得られる TCP 接続は受信ですが、所定の IP とポートに*接続*することで作成される接続は送信です。 接続の方向は Direction プロパティで表され、**受信**または**送信**のいずれかに設定できます。 
 
@@ -327,7 +327,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 コストと複雑さを管理するため、接続レコードは個々の物理ネットワーク接続を表すものではありません。 複数の物理ネットワーク接続は、論理接続にグループ化され、その後それぞれのテーブルに反映されます。  つまり、*VMConnection* テーブル内のレコードは、論理グルーピングを表しており、観察されている個々の物理接続を表していません。 所定の 1 分間隔で次の属性に同じ値を共有する物理ネットワーク接続は、*VMConnection* 内で 1 つの論理レコードに集約されます。 
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--|:--|
 | `Direction` |接続の方向であり、値は*受信*または*送信*です |
 | `Machine` |コンピューターの FQDN |
@@ -339,7 +339,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 グループ化の影響を考慮するため、グループ化された物理接続の数に関する情報は、レコードの次のプロパティに提示されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--|:--|
 | `LinksEstablished` |報告時間枠の間に確立された物理ネットワーク接続の数 |
 | `LinksTerminated` |報告時間枠の間に切断された物理ネットワーク接続の数 |
@@ -350,7 +350,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 接続数メトリックに加えて、所定の論理接続またはネット ワークポートで送受信されるデータ量に関する情報も、レコードの次のプロパティに加えられています。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--|:--|
 | `BytesSent` |報告時間枠の間に送信された合計バイト数 |
 | `BytesReceived` |報告時間枠の間に受信された合計バイト数 |
@@ -378,7 +378,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 *VMConnection*では、レコードの次のプロパティに、各接続レコードのリモート エンドの地理的位置情報も加えられています。 
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--|:--|
 | `RemoteCountry` |RemoteIp をホストしている国や地域の名前。  例: *United States* |
 | `RemoteLatitude` |地理的位置情報の緯度。  例: *47.68* |
@@ -388,7 +388,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 *VMConnection* テーブル内のすべての RemoteIp プロパティは、一連の IP に対して、知られている悪意のあるアクティビティがチェックされます。 RemoteIp が悪意のあると識別される場合、レコードの以下のプロパティに設定されます (IP が悪意のあるとみなされない場合、これらは空です)。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--|:--|
 | `MaliciousIp` |RemoteIp アドレス |
 | `IndicatorThreadType` |検出される脅威のインジケーターは、*Botnet*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*Malware*、*Phishing*、*Proxy*、*PUA*、*Watchlist* のいずれかの値です。   |
@@ -406,7 +406,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 *ServiceMapComputer_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーのインベントリ データが含まれます。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -432,7 +432,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 *ServiceMapProcess_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーの TCP 接続プロセスのインベントリ データが含まれています。 これらのレコードは、次の表に示したプロパティを持ちます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
@@ -549,7 +549,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 データの収集と使用の詳細については、「[Microsoft オンライン サービスのプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=512132)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Log Analytics の[ログ検索](../../azure-monitor/log-query/log-query-overview.md)の詳細を確認して、Service Map によって収集されたデータを取得します。
 
@@ -572,7 +572,7 @@ Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライ�
 
 次の表に、コード番号と推奨される解決策を示します。
 
-| コード | 説明 | 解決策 |
+| コード | [説明] | 解決策 |
 |:--|:--|:--|
 | 0x17 | ライブラリのインストーラーは、まだインストールされていない Windows Update を要求しています。 | 最新のライブラリ インストーラー ログを確認してください。<br><br>`Windows8.1-KB2999226-x64.msu` への参照の後に `Error 0x80240017: Failed to execute MSU package,` という行が続いている場合、KB2999226 をインストールするための前提条件が揃っていません。 [Windows での汎用の C ランタイム](https://support.microsoft.com/kb/2999226)に関する記事の前提条件セクションに記載の手順に従ってください。 前提条件をインストールするためには、Windows Update の実行と再起動が複数回必要になることがあります。<br><br>Microsoft Dependency Agent インストーラーをもう一度実行します。 |
 

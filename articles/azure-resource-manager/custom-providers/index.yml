@@ -1,0 +1,65 @@
+### YamlMime:Landing
+title: Azure カスタム プロバイダーのドキュメント
+summary: Azure のエクスペリエンスを拡張するカスタム API を定義する
+metadata:
+  title: Azure カスタム プロバイダーのドキュメント
+  description: Azure カスタム プロバイダーは、カスタム API を定義できるようになる Azure の拡張プラットフォームです
+  ms.service: azure-custom-providers
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: 4a778d56aa3d7440715cdd792827b9c4a2837e65
+  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 01/03/2020
+  ms.locfileid: "75648346"
+landingContent:
+- title: Azure カスタム プロバイダーについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure カスタム プロバイダーとは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: カスタム プロバイダーの関連付け用の Azure Policy
+      url: concepts-built-in-policy.md
+    - text: リソースのオンボードの概要
+      url: concepts-resource-onboarding.md
+- title: カスタム プロバイダーを作成する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: カスタム リソース プロバイダーの作成
+      url: create-custom-provider.md
+  - linkListType: tutorial
+    links:
+    - text: カスタム プロバイダーの概要
+      url: tutorial-get-started-with-custom-providers.md
+    - text: Azure Functions を設定する
+      url: tutorial-custom-providers-function-setup.md
+    - text: RESTful エンドポイントを作成する
+      url: tutorial-custom-providers-function-authoring.md
+    - text: カスタム プロバイダーを作成し、利用する
+      url: tutorial-custom-providers-create.md
+    - text: リソースを拡張する
+      url: tutorial-resource-onboarding.md
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム アクションを Azure に追加する
+      url: custom-providers-action-endpoint-how-to.md
+    - text: カスタム リソースを Azure に追加する
+      url: custom-providers-resources-endpoint-how-to.md
+- title: 例
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: カスタム リソースのプロキシのリファレンス
+      url: proxy-resource-endpoint-reference.md
+    - text: カスタム リソースのキャッシュのリファレンス
+      url: proxy-cache-resource-endpoint-reference.md
+    - text: カスタム プロバイダー RESTful エンドポイント参照
+      url: reference-custom-providers-csharp-endpoint.md

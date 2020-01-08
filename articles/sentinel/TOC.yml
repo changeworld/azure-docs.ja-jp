@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Azure Sentinel のオンボード
@@ -27,75 +27,83 @@
       href: roles.md
     - name: 高度なマルチステージ攻撃の検出
       href: fusion.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: データ ソースの接続
       href: connect-data-sources.md
       items:
-        - name: Microsoft サービスの接続
+        - name: サービス間の接続
           items:
-            - name: Azure AD の接続
+            - name: AWS
+              href: connect-aws.md
+            - name: Azure AD
               href: connect-azure-active-directory.md
-            - name: Office 365 の接続
+            - name: Office 365
               href: connect-office-365.md
-            - name: Cloud App Security の接続
+            - name: Cloud App Security
               href: connect-cloud-app-security.md
-            - name: Azure アクティビティ ログの接続
+            - name: '[Azure Activity Log (Azure アクティビティ ログ)]'
               href: connect-azure-activity.md
-            - name: Azure AD Identity Protection の接続
+            - name: Azure AD Identity Protection
               href: connect-azure-ad-identity-protection.md
-            - name: Azure Information Protection の接続
+            - name: Azure Information Protection
               href: connect-azure-information-protection.md
-            - name: Microsoft Defender ATP の接続
+            - name: Microsoft Defender ATP
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Azure ATP の接続
+            - name: Azure ATP
               href: connect-azure-atp.md
-            - name: Azure Security Center の接続
+            - name: Azure Security Center
               href: connect-azure-security-center.md
-            - name: ドメイン ネーム サーバーの接続
+            - name: ドメイン ネーム サーバー
               href: connect-dns.md
-            - name: Microsoft Web アプリケーション ファイアウォールの接続
+            - name: Microsoft Web アプリケーション ファイアウォール
               href: connect-microsoft-waf.md
-            - name: Windows ファイアウォールの接続
+            - name: Windows ファイアウォール
               href: connect-windows-firewall.md
-            - name: Windows セキュリティ イベントの接続
+            - name: Windows セキュリティ イベント
               href: connect-windows-security-events.md
         - name: 外部ソリューションの接続
           items:
-            - name: 汎用 CEF の接続
-              href: connect-common-event-format.md
-            - name: AWS の接続
-              href: connect-aws.md
-            - name: Barracuda の接続
+            - name: Barracuda
               href: connect-barracuda.md
-            - name: Check Point の接続
-              href: connect-checkpoint.md
-            - name: Palo Alto Networks の接続
-              href: connect-paloalto.md
-            - name: Fortinet の接続
-              href: connect-fortinet.md
-            - name: F5 の接続
-              href: connect-f5.md
-            - name: F5 BIG-IP の接続
+            - name: F5 BIG-IP
               href: connect-f5-big-ip.md
-            - name: Syslog の接続
+            - name: syslog
               href: connect-syslog.md
-            - name: Symantec ICDX の接続
+            - name: Symantec ICDX
               href: connect-symantec.md
-            - name: Cisco の接続
-              href: connect-cisco.md
-            - name: Barracuda CloudGen Firewall の接続
+            - name: Barracuda CloudGen Firewall
               href: connect-barracuda-cloudgen-firewall.md
-            - name: Citrix Analytics (セキュリティ) の接続
+            - name: Citrix Analytics (セキュリティ)
               href: connect-citrix-analytics.md
-            - name: ExtraHop Reveal(x) の接続
-              href: connect-extrahop.md
-            - name: One Identity Safeguard
-              href: connect-one-identity.md
-            - name: Trend Micro Deep Security
-              href: connect-trend-micro.md
-            - name: Zscaler の接続
-              href: connect-zscaler.md
+            - name: CEF ベースのソリューション
+              href: connect-common-event-format.md
+              items:
+                - name: 手順 1 エージェントをデプロイする
+                  href: connect-cef-agent.md
+                - name: 手順 2 セキュリティ ソリューションを構成する
+                  href: connect-cef-solution-config.md
+                  items:
+                    - name: Check Point
+                      href: connect-checkpoint.md
+                    - name: Cisco
+                      href: connect-cisco.md
+                    - name: ExtraHop Reveal(x)
+                      href: connect-extrahop.md
+                    - name: F5
+                      href: connect-f5.md
+                    - name: Fortinet
+                      href: connect-fortinet.md
+                    - name: One Identity Safeguard
+                      href: connect-one-identity.md
+                    - name: Palo Alto Networks
+                      href: connect-paloalto.md
+                    - name: Trend Micro Deep Security
+                      href: connect-trend-micro.md
+                    - name: Zscaler
+                      href: connect-zscaler.md
+                - name: 手順 3 接続を検証する
+                  href: connect-cef-verify.md
         - name: 脅威インテリジェンスの接続
           href: connect-threat-intelligence.md
         - name: Azure Stack VM の接続

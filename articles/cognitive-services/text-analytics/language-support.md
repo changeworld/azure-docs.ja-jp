@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 529568cf4f667e72b0b4fb7ba83d0b85c4a90341
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4927a26b78c8f68f1752abc76c30f143a361a912
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499991"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611119"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Text Analytics API の言語と地域のサポート
 
@@ -32,11 +32,11 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>感情分析、キー フレーズ抽出、および名前付きエンティティ認識
 
 感情分析、キー フレーズ抽出、エンティティ認識設定については、追加言語の言語規則に対応する目的でアナライザーの精度が上げられるため、サポートされる言語の一覧は対象がさらにしぼられます。 名前付きエンティティの認識 v2 では、[エンティティ型](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition-v2)の完全なセットのサポートは、現在のところ次の言語に限定されています。 
-* 英語
+* English
 * 簡体中国語
-* フランス語
-* ドイツ語
-* スペイン語
+* French
+* German
+* Spanish
 
 他の言語の場合は、`Person`、`Location`、および `Organization` の名前付きエンティティのみが返されます。
 
@@ -50,34 +50,34 @@ Text Analytics API では、広範囲の言語、異形、方言、およびい�
 | 言語              | 言語コード | センチメント | キー フレーズ | 名前付きエンティティの認識 | エンティティ リンク設定 |       メモ        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | アラビア語                |     `ar`      |           |             |           ✔ \*           |                |                    |
-| チェコ語                 |     `cs`      |           |             |           ✔ \*           |                |                    |
+| Czech                 |     `cs`      |           |             |           ✔ \*           |                |                    |
 | 簡体中国語    |   `zh-hans`   |  ✔ \*\*   |             |            ✔             |                |                    |
 | 繁体字中国語   |   `zh-hant`   |  ✔ \*\*   |             |                          |                |                    |
-| デンマーク語                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| オランダ語                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| 英語               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
-| フィンランド語               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| フランス語                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
-| ドイツ語                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
-| ギリシャ語                 |     `el`      |   ✔ \*    |             |                          |                |                    |
-| ハンガリー語             |     `hu`      |           |             |           ✔ \*           |                |                    |
-| イタリア語               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| 日本語              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
-| 韓国語                |     `ko`      |           |      ✔      |           ✔ \*           |                |                    |
+| Danish                |     `da`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Dutch                 |     `nl`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| English               |     `en`      |   ✔ \**   |      ✔      |          ✔ \*\*          |     ✔ \**      |                    |
+| Finnish               |     `fi`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| French                |     `fr`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
+| German                |     `de`      |   ✔ \**   |      ✔      |            ✔             |                |                    |
+| Greek                 |     `el`      |   ✔ \*    |             |                          |                |                    |
+| Hungarian             |     `hu`      |           |             |           ✔ \*           |                |                    |
+| Italian               |     `it`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| Japanese              |     `ja`      |   ✔ \**   |      ✔      |           ✔ \*           |                |                    |
+| Korean                |     `ko`      |           |      ✔      |           ✔ \*           |                |                    |
 | ノルウェー語 (ブークモール)   |     `no`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| ポーランド語                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Polish                |     `pl`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
 | ポルトガル語 (ポルトガル) |    `pt-PT`    |   ✔\**    |      ✔      |           ✔ \*           |                | `pt` も可能 |
 | ポルトガル語 (ブラジル)   |    `pt-BR`    |           |      ✔      |           ✔ \*           |                |                    |
-| ロシア語               |     `ru`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| スペイン語               |     `es`      |   ✔\**    |      ✔      |           ✔ \*           |     ✔ \**      |                    |
-| スウェーデン語               |     `sv`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
-| トルコ語               |     `tr`      |   ✔ \*    |             |           ✔ \*           |                |                    |
+| Russian               |     `ru`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Spanish               |     `es`      |   ✔\**    |      ✔      |           ✔ \*           |     ✔ \**      |                    |
+| Swedish               |     `sv`      |   ✔ \*    |      ✔      |           ✔ \*           |                |                    |
+| Turkish               |     `tr`      |   ✔ \*    |             |           ✔ \*           |                |                    |
 
 \* 言語サポートはプレビュー段階です
 
-\** [感情分析 v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) および[名前付きエンティティの認識 v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) パブリック プレビューでも使用できます。
+\** [感情分析 v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) および[名前付きエンティティの認識 v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) パブリック プレビューでも使用できます。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 [Cognitive Services のドキュメント ページ](https://docs.microsoft.com/azure/cognitive-services/)   
 [Cognitive Services の製品ページ](https://azure.microsoft.com/services/cognitive-services/)

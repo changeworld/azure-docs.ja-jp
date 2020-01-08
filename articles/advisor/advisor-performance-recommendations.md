@@ -1,19 +1,14 @@
 ---
-title: Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる | Microsoft Docs
+title: Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 description: Advisor を使用して、Azure のデプロイのパフォーマンスを最適化します。
-services: advisor
-documentationcenter: NA
-author: saket-ms
-ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: sagupt
-ms.openlocfilehash: 82c77568a2c62a0e02bf00c164f4600e221376da
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 405ec395feeb33b8511b9b915151b2ed9503c371
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183116"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443054"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -116,7 +111,7 @@ Azure Advisor は、100 のクエリ ページ サイズを使用している Az
 
 2.  Advisor ダッシュボードで、 **[パフォーマンス]** タブをクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Advisor の推奨事項の詳細については、以下を参照してください。
 
@@ -125,4 +120,4 @@ Advisor の推奨事項の詳細については、以下を参照してくださ
 * [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
-* [Advisor のオペレーショナル エクセレンスに関する推奨事項](advisor-operational-excellence-recommendations.md)
+* [Advisor の優れた運用の推奨事項](advisor-operational-excellence-recommendations.md)

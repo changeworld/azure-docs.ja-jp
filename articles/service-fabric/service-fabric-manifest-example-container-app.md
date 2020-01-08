@@ -1,32 +1,23 @@
 ---
 title: Azure Service Fabric コンテナー アプリケーション マニフェストの例
 description: 複数コンテナーの Service Fabric アプリケーションのアプリケーションとサービス マニフェストの設定を構成する方法について説明します。
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 2d79f7dbf492b9473bcff147891df308674a8cf0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e4050dedeb48b19b6848a95fc904f7f37fb5b04a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013245"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349384"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>複数コンテナーのアプリケーション マニフェストとサービス マニフェストの例
 複数コンテナーの Service Fabric アプリケーションのアプリケーションとサービス マニフェストの例を次に示します。 これらの例の目的は、利用できる設定とその使用方法を示すことです。 これらのアプリケーションとサービス マニフェストは、[Windows Server 2016 コンテナー サンプル](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) のマニフェストに基づいています。
 
 次の機能が示されます。
 
-|Manifest|機能|
+|Manifest|[機能]|
 |---|---|
 |[アプリケーション マニフェスト](#application-manifest)| [環境変数のオーバーライド](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[コンテナー ポートからホストへのマッピングの構成](service-fabric-get-started-containers.md#configure-container-port-to-host-port-mapping-and-container-to-container-discovery)、[コンテナー レジストリ認証の構成](service-fabric-get-started-containers.md#configure-container-repository-authentication)、[リソース ガバナンス](service-fabric-resource-governance.md)、[分離モードの設定](service-fabric-get-started-containers.md#configure-isolation-mode)、[OS ビルド固有のコンテナー イメージの指定](service-fabric-get-started-containers.md#specify-os-build-specific-container-images)| 
 |[FrontEndService サービス マニフェスト](#frontendservice-service-manifest)| [環境変数の設定](service-fabric-get-started-containers.md#configure-and-set-environment-variables)、[エンドポイントの構成](service-fabric-get-started-containers.md#configure-communication)、コマンドをコンテナーに渡す、[証明書のコンテナーへのインポート](service-fabric-securing-containers.md)| 
@@ -351,7 +342,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
  詳細については、「[ContainerHost 要素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)」を参照してください。
 
 ### <a name="imagename-element"></a>ImageName 要素
-[https://hub.docker.com](https://hub.docker.com ) または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
+https://hub.docker.com または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables 要素
 コンテナーまたは exe に環境変数を渡します。  詳細については、「[EnvironmentVariables 要素](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)」を参照してください。
@@ -395,7 +386,7 @@ EntryPoint によって指定された実行可能ファイルは通常は実行
 詳細については、「[ContainerHost 要素](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)」を参照してください。
 
 ### <a name="imagename-element"></a>ImageName 要素
-[https://hub.docker.com](https://hub.docker.com ) または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
+https://hub.docker.com または Azure Container Registry のリポジトリおよびイメージ。 詳細については、「[ImageName 要素](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。
 
 ### <a name="commands-element"></a>Commands 要素
 コマンドのコンマ区切りリストをコンテナーに渡します。 詳細については、「[Commands 要素](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)」を参照してください。

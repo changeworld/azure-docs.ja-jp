@@ -4,15 +4,15 @@ description: Azure Monitor の監視ソリューションには、特定の問�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
+author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 6012a74c00b64c818434ea1744d86c6cf67dd463
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9b0140b843d7da1b892463bff7d6014a3f9584ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931327"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402018"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Azure における監視ソリューションのインベントリとデータ収集の詳細
 [監視ソリューション](solutions.md)では、Azure のサービスを活用して、特定のアプリケーションまたはサービスの操作に対する詳細な分析情報を提供します。 通常、監視ソリューションではログ データが収集されます。また、収集されたデータを分析するクエリとビューが用意されています。 使用する任意のアプリケーションおよびサービスの Azure Monitor に監視ソリューションを追加できます。 管理ソリューションは通常、無料で使用できますが、データの収集に対して利用料金が発生する場合があります。
@@ -41,7 +41,7 @@ ms.locfileid: "72931327"
 | [アクティビティ ログ分析](../platform/activity-log-collect.md) | Azure | | | | | | 通知時 |
 | [AD 評価](ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 日 |
 | [AD レプリケーションの状態](ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 日 |
-| [Agent Health](solution-agenthealth.md) | Windows および Linux | &#8226; | &#8226; | | | &#8226; | 1 分 |
+| [Agent Health](solution-agenthealth.md) | Windows と Linux | &#8226; | &#8226; | | | &#8226; | 1 分 |
 | [アラート管理](../platform/alert-management-solution.md) (Nagios) |Linux |&#8226; | | | | |着信時 |
 | [アラート管理](../platform/alert-management-solution.md) (Zabbix) |Linux |&#8226; | | | | |1 分 |
 | [アラート管理](../platform/alert-management-solution.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 分 |
@@ -56,14 +56,14 @@ ms.locfileid: "72931327"
 | [Capacity and Performance (プレビュー)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |着信時 |
 | [変更の追跡](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[状況に応じて異なる](../../automation/change-tracking.md#change-tracking-data-collection-details) |
 | [変更の追跡](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[状況に応じて異なる](../../automation/change-tracking.md#change-tracking-data-collection-details) |
-| [Containers](containers.md) | Windows および Linux | &#8226; | &#8226; |  |  |  | 3 分 |
+| [Containers](containers.md) | Windows と Linux | &#8226; | &#8226; |  |  |  | 3 分 |
 | [Key Vault Analytics](azure-key-vault.md) |Windows | | | | | |通知時 |
 | [マルウェアの評価](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |1 時間に 1 回 |
 | [ネットワーク パフォーマンス監視](network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP ハンドシェイク (5 秒ごと)、データ送信 (3 分ごと) |
 | [Office 365 Analytics (プレビュー)](solution-office-365.md) |Windows | | | | | |通知時 |
 | **監視ソリューション** | **プラットフォーム** | **Microsoft Monitoring Agent** | **Operations Manager エージェント** | **Azure Storage** | **Operations Manager が必要か** | **管理グループ経由で送信される Operations Manager エージェント データ** | **収集の頻度** |
 | [Service Fabric 分析](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 分 |
-| [サービス マップ](service-map.md) | Windows および Linux | &#8226; | &#8226; |  |  |  | 15 秒 |
+| [サービス マップ](service-map.md) | Windows と Linux | &#8226; | &#8226; |  |  |  | 15 秒 |
 | [SQL の評価](sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 日 |
 | [SurfaceHub](surface-hubs.md) |Windows |&#8226; | | | | |着信時 |
 | [System Center Operations Manager Assessment (プレビュー)](scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | 7 日 |
@@ -75,6 +75,6 @@ ms.locfileid: "72931327"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [監視ソリューションをインストールして使用する](solutions.md)方法を確認してください。
 * 監視ソリューションで収集されたデータを分析するための[クエリを作成する](../log-query/log-query-overview.md)方法を確認します。

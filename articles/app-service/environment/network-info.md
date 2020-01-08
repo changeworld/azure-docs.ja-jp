@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687122"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75375017"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
@@ -109,10 +109,10 @@ Web アプリから DNS の解決をテストする場合は、コンソール �
 ASE の機能的な依存関係に加えて、ポータルのエクスペリエンスに関連したいくつかの追加項目があります。 Azure Portal の一部の機能は、_SCM サイト_ への直接アクセスに依存しています。 Azure App Service 内のどのアプリにも 2 つの URL が存在します。 1 つ目の URL はアプリにアクセスするためのものです。 2 つ目の URL は SCM サイト (_Kudu コンソール_ とも呼ばれます) にアクセスするためのものです。 SCM サイトを使用する機能には、次のものが含まれます。
 
 -   Web ジョブ
--   Functions
+-   関数
 -   ログ ストリーミング
 -   Kudu
--   Extensions
+-   拡張機能
 -   プロセス エクスプローラー
 -   コンソール
 
@@ -122,7 +122,7 @@ ILB ASE がドメイン名 *contoso.appserviceenvironment.net* であり、ア�
 
 ## <a name="ase-ip-addresses"></a>ASE IP アドレス ##
 
-ASE で認識されている必要のある IP アドレスがいくつかあります。 次に例を示します。
+ASE で認識されている必要のある IP アドレスがいくつかあります。 これらは次のとおりです。
 
 - **パブリック受信 IP アドレス**:外部 ASE でのアプリ トラフィック、および外部 ASE と ILB ASE の両方での管理トラフィックに使用されます。
 - **送信パブリック IP**:VPN 経由でルーティングされない、VNet を離れる ASE からの送信接続の "発信元" IP として使用されます。
@@ -187,7 +187,7 @@ DNS へのトラフィックは NSG 規則の影響を受けないので、DNS �
 
 NSG が定義されたら、それを ASE が存在するサブネットに割り当てます。 ASE VNet またはサブネットを覚えていない場合は、ASE ポータル ページから確認できます。 NSG をサブネットに割り当てるには、サブネット UI に移動して、NSG を選択します。
 
-## <a name="routes"></a>Routes ##
+## <a name="routes"></a>ルート ##
 
 VNet でルートを設定し、送信トラフィックがインターネットに直接送信されるのではなく、ExpressRoute ゲートウェイや仮想アプライアンスなどの他の場所に送信されるようにすることを強制トンネリングといいます。  ASE をこのように構成する必要がある場合には、「[強制トンネリングを使用した App Service Environment の構成][forcedtunnel]」のドキュメントを参照してください。  このドキュメントでは、ExpressRoute および強制トンネリングで使用できるオプションについて説明しています。
 
@@ -244,7 +244,7 @@ VNet でルートを設定し、送信トラフィックがインターネット
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ss-cert.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

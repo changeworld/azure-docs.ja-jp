@@ -1,18 +1,14 @@
 ---
 title: Azure Red Hat OpenShift クラスターに Azure Monitor for containers を構成する | Microsoft Docs
 description: この記事では、Azure Red Hat OpenShift でホストしている Kubernetes クラスターを監視することを目的として Azure Monitor for containers を構成する方法を説明します。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/21/2019
-ms.openlocfilehash: 07d84175325226af755712ec38ab93b901bbd361
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6922cb7b143989ba329df972a06825629c4c5020
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405569"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift クラスターに Azure Monitor for containers を構成する
 
@@ -50,7 +46,7 @@ Azure Monitor for containers では、次の機能を除き、[概要](container
 
 - Azure Red Hat OpenShift クラスター リソース ID 
 
-- クラスターが展開されているリソース グループ
+- クラスターが展開されているリソース グループ。
 
 - 作成手順を実行した後にメモされた、または既存の [Azure Active Directory テナント ID](../../openshift/howto-create-tenant.md#create-a-new-azure-ad-tenant)。
 
@@ -129,7 +125,7 @@ Azure にデプロイされた Azure Red Hat OpenShift クラスターの監視�
 
 ### <a name="from-the-azure-portal"></a>Azure portal から
  
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. Azure portal メニュー上または **[ホーム]** ページから、[Azure Monitor] を選択します。 **[分析情報]** セクションで **[コンテナー]** を選択します。 
 
@@ -207,7 +203,7 @@ Azure PowerShell または CLI を使用して監視を有効にするには、�
     provisioningState       : Succeeded
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - RedHat OpenShift クラスターと実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたうえで、Azure Monitor for containers を[使用する方法](container-insights-analyze.md)について学習します。
 

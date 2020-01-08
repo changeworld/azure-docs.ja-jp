@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: 10714e155bebdd7acc5d7febb345c17fa81bab13
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d8b381c1afdea05618d9ad5d791a7597092c8519
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511348"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530784"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーの機械学習アルゴリズム チート シート
 
@@ -22,7 +22,7 @@ ms.locfileid: "73511348"
 
 Azure Machine Learning には、***分類***、***レコメンダー システム***、***クラスタリング***、***異常検出***、***回帰***、***テキスト分析***の各ファミリのアルゴリズムの大きなライブラリが用意されています。 各アルゴリズムは、異なる種類の機械学習の問題に対処するために設計されています。
 
-## <a name="download-machine-learning-algorithm-cheat-sheet"></a>ダウンロード: 機械学習アルゴリズム チート シート
+## <a name="download-machine-learning-algorithm-cheat-sheet"></a>ダウンロード:機械学習アルゴリズム チート シート
 
 **チート シートをダウンロードする: [機械学習アルゴリズム チート シート (11 x 17 in.)](https://download.microsoft.com/download/3/5/b/35bb997f-a8c7-485d-8c56-19444dafd757/azure-machine-learning-algorithm-cheat-sheet-nov2019.pdf?WT.mc_id=docs-article-lazzeri)**
 
@@ -52,14 +52,14 @@ Azure Machine Learning のアルゴリズムの詳細については、[アル�
 
 ### <a name="reinforcement-learning"></a>強化学習
 
-強化学習では、アルゴリズムが各データ ポイントに応答してアクションを選択します。 これはロボット工学の一般的な手法です。ある時点での一連のセンサーの読み取りがデータ ポイントになり、アルゴリズムがロボットの次の動作を選択します。 モノのインターネット アプリケーションにも自然に適合します。 学習アルゴリズムでは、短時間で報酬信号を受信し、その決定がいかに優れていたかを示します。 アルゴリズムはこれを基に戦略を変更し、最大の報酬を実現しようとします。 
+強化学習では、アルゴリズムが各データ ポイントに応答してアクションを選択します。 これはロボット工学の一般的な手法です。ある時点での一連のセンサーの読み取りがデータ ポイントになり、アルゴリズムがロボットの次の動作を選択します。 モノのインターネット アプリケーションにも自然に適合します。 また、学習アルゴリズムはその決定がどの程度優れていたかを示す報酬信号をその後短時間で受信します。 アルゴリズムはこれを基に戦略を変更し、最大の報酬を実現しようとします。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Machine Learning と Azure portal での Studio について確認する](service/overview-what-is-azure-ml.md)。
+* [Azure Machine Learning と Azure portal での Studio について確認する](overview-what-is-azure-ml.md)。
 
 * [アルゴリズムとモジュールのリファレンス](algorithm-module-reference/module-reference.md)でアルゴリズムとモジュールの一覧を見る。
 
 * [チュートリアル:Azure Machine Learning デザイナーで予測モデルを構築する](service/ui-tutorial-automobile-price-train-score.md)。
 
-* [ディープ ラーニングと機械学習の比較について確認する](service/concept-deep-learning-vs-machine-learning.md)。
+* [ディープ ラーニングと機械学習の比較について確認する](concept-deep-learning-vs-machine-learning.md)。

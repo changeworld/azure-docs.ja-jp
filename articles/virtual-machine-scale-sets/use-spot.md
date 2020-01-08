@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 68315b1b0d290b107fe2d28a9e3b49be009b78b8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d2c8e599e44e48517920862e1fcf83e1a5e24910
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781927"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647630"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>プレビュー:仮想マシン スケール セット用の Azure スポット VM 
 
@@ -27,7 +27,7 @@ ms.locfileid: "74781927"
 > スポット インスタンスは現在、パブリック プレビューの段階にあります。
 > このプレビュー バージョンは運用環境のワークロードにはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 >
-> パブリック プレビューの初期段階では、スポット インスタンスに固定価格が設定されているため、価格ベースの排除は行われません。
+> パブリック プレビューの初期段階では、スポット インスタンスに固定価格が設定されているため、価格ベースの削除は行われません。
 
 ## <a name="pricing"></a>価格
 
@@ -36,7 +36,7 @@ ms.locfileid: "74781927"
 
 可変する価格に対して、最大 5 桁の小数点以下を使用して、最大価格を米ドル (USD) で設定することができます。 たとえば、`0.98765` の値は、1 時間あたり $0.98765 米ドルの最大価格になります。 最大価格を `-1` に設定した場合、インスタンスは価格に基づいて排除されません。 インスタンスの価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準インスタンスの価格のいずれか低い方になります。
 
-## <a name="eviction-policy"></a>排除ポリシー
+## <a name="eviction-policy"></a>削除ポリシー
 
 スポット スケール セットの作成では､この排除ポリシーを *[Deallocate]\(割り当て解除\)* (既定) または *[Delete]\(削除\)* のいずれかに設定できます｡ 
 
@@ -137,21 +137,21 @@ $vmssConfig = New-AzVmssConfig `
   }
 }
 ```
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 **質問:** 作成後、スポット インスタンスは標準のインスタンスと同じですか。
 
 **A:** はい。ただし、スポット VM に対する SLA はなく、いつでも排除される可能性があります。
 
 
-**質問:** 排除された後も容量が必要な場合はどうすればよいですか。
+**質問:** 排除された後も容量が必要な場合はどうすればよいですか?
 
 **A:** 容量がすぐに必要な場合は、スポット VM ではなく、標準の VM を使用することをお勧めします。
 
 
 **質問:** スポットのクォータはどのように管理されますか。
 
-**A:** スポット インスタンスと標準のインスタンスは、別々のクォータ プールを持ちます。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits)」をご覧ください。
+**A:** スポット インスタンスと標準のインスタンスは、別々のクォータ プールを持ちます。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
 
 
 **質問:** スポットに追加のクォータを要求することはできますか。
@@ -190,21 +190,21 @@ $vmssConfig = New-AzVmssConfig `
 
 <a name="channel"></a>
 
-| Azure チャネル               | Azure スポット VM の利用可否       |
+| Azure チャンネル               | Azure スポット VM の利用可否       |
 |------------------------------|-----------------------------------|
 | Enterprise Agreement         | はい                               |
 | 従量課金制                | はい                               |
 | クラウド サービス プロバイダー (CSP) | [パートナーにお問い合わせください](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
-| メリット                     | 使用できません。                     |
-| スポンサー                    | 使用できません。                     |
-| 無料試用版                   | 使用できません。                     |
+| メリット                     | 使用不可                     |
+| スポンサー                    | 使用不可                     |
+| 無料試用版                   | 使用不可                     |
 
 
 **質問:** どこで質問を投稿できますか。
 
 **A:** [Q&A](https://docs.microsoft.com/answers/topics/azure-spot.html) で質問を投稿し、`azure-spot` のタグを付けることができます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 スポット VM を使用してスケール セットを作成したので、[スポットを使用する自動スケール テンプレート](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri)をデプロイしてみてください。
 
 価格について詳しくは、[仮想マシン スケール セットの価格のページ](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)をご覧ください。

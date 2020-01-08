@@ -3,12 +3,12 @@ title: VM の設定から Azure VM をバックアップする
 description: この記事では、Azure Backup サービスを使用して単一の Azure VM または複数の Azure VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 02cdab727adc29be99f52b262cb94de4fc4fe8f8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1895f27370e6f928ce2183798dd892a2ff7225c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172508"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391431"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>VM の設定から Azure VM をバックアップする
 
@@ -31,7 +31,7 @@ Azure VM をバックアップするため、Azure Backup ではマシンで実�
 
 ## <a name="back-up-from-azure-vm-settings"></a>Azure VM の設定からバックアップする
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. **[すべてのサービス]** をクリックし、[フィルター] に「**Virtual machines**」と入力して、"**Virtual Machines**" をクリックします。
 3. VM の一覧から、バックアップする VM を選択します。
 4. VM のメニューで、 **[バックアップ]** をクリックします。
@@ -62,10 +62,6 @@ Azure VM をバックアップするため、Azure Backup ではマシンで実�
     - 初回バックアップが完了するまで、 **[前回のバックアップの状態]** には **[警告 (初回のバックアップが保留中)]** と表示されます。
     - 次のスケジュールされたバックアップがいつ実行されるかを確認するには、バックアップ ポリシー名をクリックします。
 
-> [!NOTE]
-> Azure Backup サービスでは、スナップショットを格納するために別のリソース グループ (VM のリソース グループ以外) が作成されます。名前の形式は **AzureBackupRG_geography_number** です (例: AzureBackupRG_northeurope_1)。 このリソース グループ内のデータは、Azure Virtual Machine Backup ポリシーの "インスタント リカバリ スナップショットの保存" セクションに指定されている日数の期間保持されます。 このリソース グループにロックを適用すると、バックアップが失敗する可能性があります。<br>
-制限ポリシーによってリソース ポイント コレクションの作成がブロックされ、この場合もバックアップが失敗するため、このリソース グループも名前/タグの制限から除外する必要があります。
-
 ## <a name="run-a-backup-immediately"></a>バックアップをすぐに実行する
 
 1. バックアップをすぐに実行するには、VM のメニューで、 **[バックアップ]**  >  **[今すぐバックアップ]** をクリックします。
@@ -82,7 +78,7 @@ Azure VM をバックアップするため、Azure Backup ではマシンで実�
 
 この記事の手順に従って、Azure Backup Recovery Services コンテナーを設定することによって Azure VM のバックアップを有効にし、コンテナーでバックアップを有効にします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - この記事のいずれかの手順で問題がある場合は、[トラブルシューティング ガイド](backup-azure-vms-troubleshoot.md)に関する記事をご覧ください。
 - バックアップの管理について[学習してください](backup-azure-manage-vms.md)。

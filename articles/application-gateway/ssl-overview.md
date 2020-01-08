@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 64b90afd598b96604fc9c3ddc4bc10586e714363
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883575"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75657983"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要
 
@@ -50,7 +50,7 @@ Application Gateway では、次の種類の証明書がサポートされてい
 詳細については、[Application Gateway での SSL ターミネーションの構成に関するページ](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal) を参照してください。
 
 ### <a name="size-of-the-certificate"></a>証明書のサイズ
-サポートされる SSL 証明書の最大サイズを把握するには、「[Application Gateway の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits)」セクションを確認してください。
+サポートされる SSL 証明書の最大サイズを把握するには、「[Application Gateway の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits)」セクションを確認してください。
 
 ## <a name="end-to-end-ssl-encryption"></a>エンド ツー エンド SSL 暗号化
 
@@ -107,7 +107,7 @@ Application Gateway は、既知のバックエンド インスタンスのみ�
 - バックエンドの HTTP 設定で [ホスト] フィールドではなく､ **[pick hostname from backend address]** が選択されている場合､SNI ヘッダーにはつねにバックエンド プールの FQDN が設定され､バックエンド サーバーの SSL 証明書の CN はその FDQN と一致している必要があります｡ このシナリオでは、IP アドレスを持つバックエンド プール メンバーはサポートされません。
 - このルート証明書は､バックエンド サーバーの証明書からの base64 でエンコードされたルート証明書になります｡
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 エンド ツー エンド SSL について学習したら、「[Application Gateway で PowerShell を使用してエンド ツー エンド SSL を構成する](application-gateway-end-to-end-ssl-powershell.md)」に進んで、エンド ツー エンド SSL を使用するアプリケーション ゲートウェイを作成します。
 

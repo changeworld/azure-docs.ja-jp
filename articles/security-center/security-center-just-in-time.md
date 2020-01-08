@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 51b4ef06806e2a6647975a373f1bc4bd58740b7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997192"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355565"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-In-Time を使用した仮想マシン アクセスの管理
 
@@ -106,9 +106,9 @@ Security Center から JIT ポリシーを構成し、JIT のポリシーを使�
     - **[Allowed source IP addresses] (許可されるソース IP アドレス)** - 要求が承認されたときにこのポートで許可される IP 範囲。
     - **[最大要求時間]** - 特定のポートを開放しておくことができる最大時間枠。
 
-     3. Click **OK**.
+     3. **[OK]** をクリックします。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 > [!NOTE]
 >VM に対して JIT VM アクセスが有効になっている場合、Azure Security Center では、関連付けられているネットワーク セキュリティ グループと Azure Firewall 内の選択されたポートについて、"すべての受信トラフィックを拒否" という規則が作成されます。 選択したポートに対して他の規則が作成されている場合は、既存の規則が新しい "すべての受信トラフィックを拒否" 規則よりも優先されます。 選択したポートに既存の規則がない場合は、新しい "すべての着信トラフィックを拒否する" 規則がネットワーク セキュリティ グループと Azure Firewall で最優先されます。
@@ -283,7 +283,7 @@ PowerShell で以下を実行します。
 
 詳細については、PowerShell コマンドレットのドキュメントをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、Security Center の Just-In-Time VM アクセスを活用して Azure 仮想マシンへのアクセスを制御する方法について説明しました。
 
 セキュリティ センターの詳細については、次を参照してください。

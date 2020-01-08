@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: b4029d49eeba53e7a502a7ac68081bb5a2d549f8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 12/12/2019
+ms.openlocfilehash: 05d4ecd58f6febff75212f1ad88b60be4f23c2a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971929"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454332"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>サポートされている Azure Database for MySQL サーバー バージョン
 
@@ -38,9 +38,6 @@ Azure Database for MySQL では現在、次のバージョンがサポートさ�
 
 ## <a name="mysql-version-80"></a>MySQL バージョン 8.0
 
-> [!IMPORTANT]
-> MySQL 8.0 は現在プレビューの段階です。
-
 バグ修正プログラムのリリース:8.0.15
 
 このバージョンの機能強化と修正については、MySQL の[リリース ノート](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html)をご覧ください。
@@ -50,6 +47,6 @@ Azure Database for MySQL では現在、次のバージョンがサポートさ�
 
 現在は、マイナー バージョンとメジャー バージョンのアップグレードはサポートされていません。 たとえば、MySQL 5.6 から MySQL 5.7 へのアップグレードはサポートされません。 5\.6 から 5.7 にアップグレードする場合は、新しいエンジンのバージョンで作成されたサーバーに[ダンプを復元](./concepts-migrate-dump-restore.md)します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-pricing-tiers.md)に関するページをご覧ください

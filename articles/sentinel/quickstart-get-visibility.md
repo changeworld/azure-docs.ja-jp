@@ -1,26 +1,21 @@
 ---
-title: Azure Sentinel クイックスタート - Azure Sentinel の概要 | Microsoft Docs
+title: クイック スタート:Azure Sentinel の概要
 description: Azure Sentinel クイック スタート - Azure Sentinel の概要
 services: sentinel
-documentationcenter: na
 author: rkarlin
 manager: rkarlin
-editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 676a41b64b79be6b11c3ef22b34d3de0e37e2a92
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: bf7ff356af343667133c0226b6b31df8fc9e32b8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023797"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563634"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>クイック スタート:Azure Sentinel の概要
 
@@ -128,7 +123,7 @@ ms.locfileid: "72023797"
 
 組み込みの検出を取得する方法の詳細については、[チュートリアルの組み込みの分析の取得](tutorial-detect-threats-built-in.md)に関する記事を参照してください。
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイック スタートでは、Azure Sentinel を使い始める方法について説明しました。 [脅威の検出方法](tutorial-detect-threats-built-in.md)のチュートリアルに進んでください。
 > [!div class="nextstepaction"]
 > [カスタムの脅威検出ルールを作成](tutorial-detect-threats-custom.md)して、脅威への対応を自動化します。

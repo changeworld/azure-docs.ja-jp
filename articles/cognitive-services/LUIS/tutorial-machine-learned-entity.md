@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 2d3bffd025d484ac928e21003b7cba9c63d2c514
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e1709a5e86c8fed8d7f724ad1b105bd02df9fa56
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381768"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>チュートリアル:Language Understanding (LUIS) で機械学習エンティティを使用して、ユーザーの発話から構造化データを抽出する
 
 このチュートリアルでは、機械学習エンティティを使用して発話から構造化データを抽出します。
 
 機械学習エンティティでは、サブコンポーネント エンティティとその記述子および制約を提供することにより、[モデルの分解の概念](luis-concept-model.md#v3-authoring-model-decomposition)がサポートされます。
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -66,7 +64,7 @@ ms.locfileid: "74885908"
 
 ## <a name="import-example-json-to-begin-app"></a>サンプル .json をインポートしてアプリを開始する
 
-1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json)をダウンロードして保存します。
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -307,7 +305,7 @@ ms.locfileid: "74885908"
 * [発行方法](luis-how-to-publish-app.md)
 * [LUIS ポータルでのテスト方法](luis-interactive-test.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、アプリで機械学習エンティティを使用して、ユーザーの発話の意図を見つけ、その発話から詳細を抽出します。 機械学習エンティティを使用すると、エンティティを詳細に分解できます。
 

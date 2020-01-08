@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 207e728d25df9192f8a600b13d86330af8311700
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 7b197e1acf696c2ae6e919ee2eddacfb82ac3802
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058922"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646780"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure における IP アドレスの種類と割り当て方法 (クラシック)
 Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
@@ -28,7 +28,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 プライベート IP アドレスは、Azure 仮想ネットワーク (VNet)、クラウド サービス、およびオンプレミス ネットワーク (VPN Gateway または ExpressRoute 回線を使用してネットワークを Azure に拡張する場合) 内での通信に使用します。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルが用意されています。[Resource Manager とクラシック](../resource-manager-deployment-model.md)です。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、Resource Manager を使用することをお勧めします。 Resource Manager の IP アドレスについて詳しくは、「[IP アドレス](virtual-network-ip-addresses-overview-arm.md)」の記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../resource-manager-deployment-model.md)です。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、Resource Manager を使用することをお勧めします。 Resource Manager の IP アドレスについて詳しくは、「[IP アドレス](virtual-network-ip-addresses-overview-arm.md)」の記事をご覧ください。
 
 ## <a name="public-ip-addresses"></a>パブリック IP アドレス
 パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Cache for Redis](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[SQL Database](../sql-database/sql-database-technical-overview.md)、[Azure Storage](../storage/common/storage-introduction.md) など、Azure の公開されたサービスと通信できます。
@@ -102,7 +102,7 @@ Azure クラシック デプロイ モデルでは、プライベート IP ア�
 
 * IaaS VM と PaaS ロール インスタンス
 * 内部ロード バランサー
-* Application Gateway
+* Application gateway
 
 ### <a name="iaas-vms-and-paas-role-instances"></a>IaaS VM と PaaS ロール インスタンス
 クラシック デプロイ モデルで作成された仮想マシン (VM) は、PaaS ロール インスタンスと同様に、常にクラウド サービス内に配置されます。 したがって、プライベート IP アドレスの動作はこれらのリソースに似てます。
@@ -155,10 +155,10 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 | デプロイあたりのパブリック VIP (クラウド サービス) |5 |サポートにお問い合わせください |
 | デプロイあたりのプライベート VIP (ILB) (クラウド サービス) |1 |1 |
 
-Azure における [ネットワークの制限](../azure-subscription-service-limits.md#networking-limits) に関する情報を必ずご確認ください。
+Azure における [ネットワークの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) に関する情報を必ずご確認ください。
 
 ## <a name="pricing"></a>価格
-ほとんどの場合、パブリック IP アドレスは無料です。 追加のパブリック IP アドレスまたは静的な IP アドレスを使用する場合は標準の料金が発生します。 [パブリック IP の料金体系](https://azure.microsoft.com/pricing/details/ip-addresses/)を必ずご確認ください。
+ほとんどの場合、パブリック IP アドレスは無料です。 追加のパブリック IP アドレスまたは静的 IP アドレスを使用する場合は標準の料金が発生します。 [パブリック IP の料金体系](https://azure.microsoft.com/pricing/details/ip-addresses/)を必ずご確認ください。
 
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>リソース マネージャーとクラシック デプロイの相違点
 リソース マネージャーの IP アドレス指定機能とクラシック デプロイ モデルとの比較を次に示します。
@@ -174,6 +174,6 @@ Azure における [ネットワークの制限](../azure-subscription-service-l
 |  ||IaaS VM や PaaS ロール インスタンスに割り当てられる |VM の NIC に割り当てられる |
 |  |***内部ロード バランサー (ILB)*** |ILB に割り当てられる (動的または静的) |ILB のフロントエンド構成に割り当てられる (動的または静的) |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure Portal を使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-classic-pportal.md)します。
 

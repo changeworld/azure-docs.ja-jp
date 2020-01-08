@@ -2,23 +2,25 @@
 title: Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する
 description: プライベート エンドポイントを使用して、Azure 内でストレージ アカウントに非公開で接続する方法について説明します。
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357568"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Azure プライベート エンドポイントを使用して非公開でストレージ アカウントに接続する
 Azure プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 仮想マシン (VM) などの Azure リソースとプライベート リンク リソースとの非公開での通信が可能になります。
 
 このクイックスタートでは、Azure portal を使って、Azure 仮想ネットワーク上の VM、プライベート エンドポイントを備えたストレージ アカウントを作成する方法について説明します。 その後は、VM からそのストレージ アカウントへ安全にアクセスできます。
 
+> [!NOTE]
+> プライベート エンドポイントとサービス エンドポイントを同じサブネット内で併用することはできません。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -34,9 +36,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
 1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「*MyVirtualNetwork*」と入力します。 |
+    | Name | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
@@ -53,7 +55,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -66,7 +68,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Size | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
-    | パスワード | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     | パスワードの確認 | パスワードを再入力します。 |
     | **受信ポートの規則** |  |
     | パブリック受信ポート | 既定値 **[なし]** のままにします。 |
@@ -78,9 +80,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
-1. **[Create a virtual machine - Networking]\(仮想マシンの作成 - ネットワーク\)** で次の情報を選択します。
+1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[MyVirtualNetwork]** のままにします。  |
     | アドレス空間 | 既定値 **[10.1.0.0/24]** のままにします。|
@@ -101,7 +103,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[ストレージ アカウントの作成 - 基本]** で、次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -119,13 +121,13 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 5. **[ストレージ アカウントの作成] - [ネットワーク]** で、 **[プライベート エンドポイントの追加]** を選択します。 
 6. **[プライベート エンドポイントの作成]** で、次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     |Location|**[WestCentralUS]** を選択します。|
-    |名前|「 *myPrivateEndpoint*」と入力します。  |
+    |Name|「 *myPrivateEndpoint*」と入力します。  |
     |ストレージ サブリソース|既定値の **[BLOB]** のままにします。 |
     | **ネットワーク** |  |
     | 仮想ネットワーク  | リソース グループの *[myResourceGroup]* から、 *[MyVirtualNetwork]* を選択します。 |
@@ -198,11 +200,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 - AzCopy ユーティリティは、Azure Storage 用のスクリプト可能な高性能データ転送のためのもう 1 つのオプションです。 AzCopy を使用して、Blob Storage、File Storage、および Table Storage との間でデータを転送します。 
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 プライベート エンドポイント、ストレージ アカウント、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。 
 1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。 
 2. **[リソース グループの削除]** を選択します。 
 3. **[リソース グループ名を入力してください]**  に「 *myResourceGroup*」と入力し、 **[削除]** を選択します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイックスタートでは、仮想ネットワーク上に VM を作成し、ストレージ アカウントとプライベート エンドポイントを作成しました。 インターネットから 1 つの VM に接続し、Private Link を使用してストレージ アカウントと安全に通信を行いました。 プライベート エンドポイントの詳細については、「 [Azure プライベート エンドポイントとは](private-endpoint-overview.md)」を参照してください。

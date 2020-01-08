@@ -2,19 +2,15 @@
 title: Azure Automation での Runbook の実行
 description: Azure Automation で Runbook が処理される方法の詳細について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ddeeaeccc0a10d19a070a91d7bd9bef2b31c0570
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850756"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658119"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -37,12 +33,12 @@ Azure Automation の Runbook は、Azure のサンドボックスまたは [Hybr
 |Azure リソースと統合する|Azure サンドボックス|Azure でホストされ、認証がより簡単です。 Azure VM で Hybrid Runbook Worker を使用している場合は、[Azure リソース用のマネージド ID](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) を使用できます|
 |最適なパフォーマンスで Azure リソースを管理する|Azure サンドボックス|スクリプトは同じ環境内で実行されます。それが、待ち時間がより短いことにつながります|
 |運用コストを最小限に抑える|Azure サンドボックス|コンピューティングのオーバーヘッドがなく、VM の必要がありません|
-|実行時間の長いスクリプト|Hybrid Runbook Worker|Azure のサンドボックスには[リソースの制限があります](../azure-subscription-service-limits.md#automation-limits)|
+|実行時間の長いスクリプト|Hybrid Runbook Worker|Azure のサンドボックスには[リソースの制限があります](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
 |ローカル サービスと相互作用する|Hybrid Runbook Worker|ホスト マシンに直接アクセスできます|
 |サード パーティ製ソフトウェアと実行可能ファイルが必要|Hybrid Runbook Worker|OS を管理し、ソフトウェアをインストールできます|
 |Runbook でファイルまたはフォルダーを監視する|Hybrid Runbook Worker|Hybrid Runbook Worker で [Watcher タスク](automation-watchers-tutorial.md)を使用します|
-|多量のリソースを消費するスクリプト|Hybrid Runbook Worker| Azure のサンドボックスには[リソースの制限があります](../azure-subscription-service-limits.md#automation-limits)|
-|特定の要件でのモジュールの使用| Hybrid Runbook Worker|次に例をいくつか示します。</br> **WinSCP** - winscp.exe への依存関係 </br> **IISAdministration** - IIS を有効にする必要がある|
+|多量のリソースを消費するスクリプト|Hybrid Runbook Worker| Azure のサンドボックスには[リソースの制限があります](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
+|特定の要件でのモジュールの使用| Hybrid Runbook Worker|いくつかの例を次に示します。</br> **WinSCP** - winscp.exe への依存関係 </br> **IISAdministration** - IIS を有効にする必要がある|
 |インストーラーが必要なモジュールをインストールする|Hybrid Runbook Worker|サンドボックス用のモジュールはコピー可能であることが必要です|
 |4\.7.2 以外の .NET Framework が必要な Runbook またはモジュールの使用|Hybrid Runbook Worker|Automation のサンドボックスには .NET Framework 4.7.2 が備わっており、それをアップグレードする方法がありません|
 |昇格が必要なスクリプト|Hybrid Runbook Worker|サンド ボックスでは、昇格は許可されません。 これを解決するには、Hybrid Runbook Worker を使用してください。UAC をオフにして、昇格が必要なコマンドを実行するときに `Invoke-Command` を使用できます|
@@ -201,9 +197,9 @@ Azure サンドボックスで実行される Runbook ジョブには、デバ�
 
 次の表には、ジョブが取り得るさまざまな状態を説明します。 PowerShell には、終了するエラーと終了しないエラーという、2 種類のエラーがあります。 終了するエラーは、発生した場合に Runbook の状態を **[失敗]** に設定します。 終了しないエラーの場合、エラー発生後もスクリプトを継続できます。 終了しないエラーの例では、実在しないパスで `Get-ChildItem` コマンドレットを使用しています。 PowerShell では、パスが存在しないことを確認して、エラーをスローし、次のフォルダーへと処理を継続します。 このエラーでは、Runbook の状態を **[失敗]** に設定せず、 **[完了]** とマークすることが可能です。 終了しないエラー時に Runbook を強制的に停止するには、コマンドレットで `-ErrorAction Stop` を使用できます。
 
-| Status | 説明 |
+| Status | [説明] |
 |:--- |:--- |
-| 完了 |ジョブは正常に完了しました。 |
+| [完了] |ジョブは正常に完了しました。 |
 | 失敗 |[グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md)では、Runbook のコンパイルが失敗しました。 [PowerShell スクリプト Runbook](automation-runbook-types.md) では、Runbook の開始に失敗したか、ジョブで例外が発生しました。 |
 | 失敗、リソースを待機中 |ジョブは [fair share](#fair-share) の限界に 3 回到達し、毎回、同じチェックポイントから、または Runbook の先頭から起動したために、失敗しました。 |
 | キューに登録済み |ジョブは Automation ワーカー上のリソースが使用できるようになるのを待機しています。そうなれば、ジョブを起動できます。 |
@@ -320,11 +316,11 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 クラウド内のすべての Runbook 間でリソースを共有するため、3 時間以上実行されているジョブがあると、Azure Automation はそれらのジョブを一時的にアンロードまたは停止します。 [PowerShell ベースの Runbook](automation-runbook-types.md#powershell-runbooks) および [Python の Runbook](automation-runbook-types.md#python-runbooks) に対するジョブは、停止されて再起動されずに、ジョブの状態には [停止済み] と表示されます。
 
-長時間実行されるタスクの場合は、[Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) の使用をお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限がありません。 その他のジョブの[制限](../azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。 Hybrid Runbook Worker は 3 時間のフェア シェア制限を受けませんが、Hybrid Runbook Worker で実行される Runbook は、予期しないローカル インフラストラクチャの問題からの再起動動作をサポートするように開発する必要があります。
+長時間実行されるタスクの場合は、[Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) の使用をお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限がありません。 その他のジョブの[制限](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。 Hybrid Runbook Worker は 3 時間のフェア シェア制限を受けませんが、Hybrid Runbook Worker で実行される Runbook は、予期しないローカル インフラストラクチャの問題からの再起動動作をサポートするように開発する必要があります。
 
 もう 1 つのオプションは、子 Runbook を使用して Runbook を最適化することです。 Runbook で、複数のリソースに対して同じ関数をループ処理する場合 (複数のデータベースに対するデータベース操作など)、その関数を[子 Runbook](automation-child-runbooks.md) に移動して、[Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) コマンドレットで呼び出すことができます。 これらの各子 Runbook は別々のプロセスで並列に実行されます。 この動作によって、親 Runbook の完了までにかかる合計時間は減ります。 お使いの Runbook で [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) コマンドレットを使用すると、子 Runbook の完了後に実行する操作がある場合、各子のジョブの状態を確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」で、Runbook を開始するさまざまな方法を確認します
 * PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/powershell/scripting/overview)に関するページを参照してください。

@@ -6,16 +6,16 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 753c239f4bf4d6a8f31d4dc5ca771f312cd34578
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: dc316e5bbb88359ff8b1e8a4fc35a56541a577f6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828996"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646712"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Azure PowerShell を使用して Azure 仮想ネットワークを別のリージョンに移動する
 
-既存の Azure 仮想ネットワークをリージョン間で移動する場合、さまざまなシナリオがあります。 たとえば、テストや可用性のために、既存の仮想ネットワークと同じ構成で仮想ネットワークを作成することが必要になる場合があります。 または、ディザスター リカバリー計画の一部として、運用仮想ネットワークを別のリージョンに移動する必要がある場合もあります。
+既存の Azure 仮想ネットワークをリージョン間で移動する場合、さまざまなシナリオがあります。 たとえば、テストや可用性のために、既存の仮想ネットワークと同じ構成で仮想ネットワークを作成することが必要になる場合があります。 または、ディザスター リカバリー計画の一環として、運用仮想ネットワークを別のリージョンに移動する必要がある場合もあります。
 
 Azure Resource Manager テンプレートを使用して、別のリージョンへの仮想ネットワークの移動を実行できます。 これを行うには、仮想ネットワークをテンプレートにエクスポートし、移動先リージョンに合わせてパラメーターを変更した後、新しいリージョンにテンプレートをデプロイします。 Resource Manager テンプレートの詳細については、「[リソース グループをテンプレートにエクスポートする](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)」を参照してください。
 
@@ -26,13 +26,13 @@ Azure Resource Manager テンプレートを使用して、別のリージョン
 
 - 仮想ネットワークをエクスポートし、テンプレートをデプロイして別のリージョンに仮想ネットワークを作成するには、ネットワーク共同作成者ロール以上が必要です。
 
-- 仮想ネットワーク ピアリングは再作成されず、テンプレートにまだ存在する場合は失敗します。 テンプレートをエクスポートする前に、仮想ネットワーク ピアをすべて削除する必要があります。 その後、仮想ネットワークを移動した後にそれらを再確立できます。
+- 仮想ネットワーク ピアリングは再作成されず、テンプレートにまだ存在する場合は失敗します。 テンプレートをエクスポートする前に、仮想ネットワーク ピアをすべて削除する必要があります。 それらは、仮想ネットワークを移動した後に再確立できます。
     
 - ソース ネットワーク レイアウトと現在使用しているすべてのリソースを特定します。 このレイアウトにはロード バランサー、ネットワーク セキュリティ グループ (NSG)、パブリック IP が含まれますが、それらに限定されません。
 
 - お使いの Azure サブスクリプションで、ターゲット リージョンに仮想ネットワークを作成できることを確認します。 必要なクォータを有効にするには、サポートに連絡してください。
 
-- お使いのサブスクリプションに、このプロセス用の仮想ネットワークの追加をサポートするための十分なリソースがあることを確認します。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- お使いのサブスクリプションに、このプロセス用の仮想ネットワークの追加をサポートするための十分なリソースがあることを確認します。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
 
 
 ## <a name="prepare-for-the-move"></a>移動を準備する
@@ -248,7 +248,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
     Remove-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、PowerShell を使用して仮想ネットワークをあるリージョンから別のリージョンに移動してから、不要なソース リソースをクリーンアップしました。 リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 

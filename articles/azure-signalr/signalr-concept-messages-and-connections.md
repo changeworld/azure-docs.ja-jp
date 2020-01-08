@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 2785d85db47ed3b214044e673566a2837b83e984
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392810"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Azure SignalR Service でのメッセージと接続
 
@@ -38,8 +38,6 @@ Azure SignalR Service では、メッセージのサイズに制限はありま�
 
 たとえば、3 つのクライアントと 1 つのアプリケーション サーバーがあるものとします。 1 つのクライアントが 4 KB のメッセージを 1 つ送信し、サーバーですべてのクライアントにブロードキャストします。 メッセージ数は 8 つになります。サービスからアプリケーション サーバーへの 1 つのメッセージと、サービスからクライアントへの 3 つのメッセージです。 各メッセージは、2 つの 2 KB のメッセージとしてカウントされます。
 
-Azure portal に表示されるメッセージ数は、累計 100 件を超えるまでは 0 のままです。
-
 ## <a name="how-connections-are-counted"></a>接続のカウント方法
 
 Azure SignalR Service にはサーバー接続とクライアント接続があります。 既定では、各アプリケーション サーバーの初期接続はハブあたり 5 個で、各クライアントのクライアント接続は 1 個です。
@@ -54,7 +52,7 @@ ASP.NET SignalR では、サーバー接続数の計算方法が異なります�
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>受信/送信トラフィックのカウント方法
 
-受信トラフィックと送信トラフィックの区別は、Azure SignalR Service の観点に基づいています。 トラフィックは、バイト単位で計算されます。 メッセージ数と同様に、トラフィックにもサンプリング レートがあります。 Azure portal の受信/送信グラフは、ハブあたり 100 KB ごとに更新されます。
+受信トラフィックと送信トラフィックの区別は、Azure SignalR Service の観点に基づいています。 トラフィックは、バイト単位で計算されます。
 
 ## <a name="related-resources"></a>関連リソース
 

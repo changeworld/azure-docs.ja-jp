@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 48bac68b518706cf3a23d2283da7cda49846e0a7
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795829"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531481"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -26,7 +26,7 @@ Cognitive Services は、一般的な問題を解決する機械学習機能を�
 |--|--|
 |[決定](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|情報に基づく、効率的な意思決定のためのレコメンデーションを提示するアプリを構築します。|
 |[Language](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|お使いのアプリが、構築済みスクリプトで自然言語を処理し、センチメントを評価し、ユーザーの求めるものを認識する方法を学習できるようにします。|
-|[Search](https://azure.microsoft.com/services/cognitive-services/directory/search/)|お使いのアプリに Bing Search API を組み込み、1 つの API 呼び出しで何十億もの Web ページ、画像、動画、ニュースをくまなく調べる機能を実装します。|
+|[検索](https://azure.microsoft.com/services/cognitive-services/directory/search/)|お使いのアプリに Bing Search API を組み込み、1 つの API 呼び出しで何十億もの Web ページ、画像、動画、ニュースをくまなく調べる機能を実装します。|
 |[Speech](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。|
 |[Vision](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|写真、動画、デジタル インク コンテンツの認識、識別、キャプションの追加、インデックスの作成、モデレートを行います。|
 ||||
@@ -134,9 +134,9 @@ Cognitive Services は次の場合に使用します。
 ## <a name="learn-more"></a>詳細情報
 
 * [アーキテクチャ ガイド - Microsoft の機械学習製品とは](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
-* [機械学習 - ディープ ラーニングと機械学習の比較の概要](../machine-learning/service/concept-deep-learning-vs-machine-learning.md)
+* [機械学習 - ディープ ラーニングと機械学習の比較の概要](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure portal](cognitive-services-apis-create-account.md) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) でコグニティブ サービスのアカウントを作成する。
 * コグニティブ サービスの[認証](authentication.md)方法を確認する。

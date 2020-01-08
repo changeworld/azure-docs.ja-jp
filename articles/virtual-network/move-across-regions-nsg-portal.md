@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 839e608aa4bba26712ae5b0c160da40db279bbc9
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: dce267178c3caf813ccdcac4bba86ccfde3f3421
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219192"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647188"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>Azure portal を使用して Azure ネットワーク セキュリティ グループ (NSG) を別のリージョンに移動する
 
@@ -32,7 +32,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
 
 - 自分の Azure サブスクリプションで、使用される移動先リージョンに NSG を作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
 
-- 使用するサブスクリプションに、このプロセスでの NSG の追加をサポートするのに十分なリソースがあることを確認します。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- 使用するサブスクリプションに、このプロセスでの NSG の追加をサポートするのに十分なリソースがあることを確認します。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
 
 
 ## <a name="prepare-and-move"></a>準備と移動
@@ -86,7 +86,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
 
 11. リージョンの場所コードを取得するには、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」を参照してください。  リージョンのコードは、スペースを含まないリージョン名です (**Central US** = **centralus**)。
 
-12. また、必要に応じて、テンプレート内の次のような他のパラメーターも変更できます。これらは要件に基づくオプションです。
+12. また、必要に応じて、テンプレート内の他のパラメーターも変更できます。これらは、実際の要件に応じて省略可能です。
 
     * **セキュリティ規則** - **template.json** ファイルの **securityRules** セクションで規則を追加または削除することで、移動先 NSG にデプロイされた規則を編集できます。
 
@@ -173,7 +173,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
 
 変更をコミットし、NSG の移動を完了するには、移動元の NSG またはリソース グループを削除します。 これを行うには、ポータルのダッシュボードでネットワーク セキュリティ グループまたはリソース グループを選択し、各ページの上部にある **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure ネットワーク セキュリティ グループをあるリージョンから別のリージョンに移動し、移動元リソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63a2a3a68adaa2e389cc2af173c8f75a18fbc36d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e4de954d55725f36d48d09ac46ef3700787d937b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078706"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647647"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -34,8 +34,8 @@ ms.locfileid: "70078706"
 [sap-installation-guides]:http://service.sap.com/instguides
 [tuning-failover-cluster-network-thresholds]:https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -154,7 +154,7 @@ ms.locfileid: "70078706"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -186,7 +186,7 @@ Architectural Template 1 のインフラストラクチャを準備するには
 
 - Azure Portal の **[パラメーター]** ウィンドウにある **[SYSTEMAVAILABILITY]\(システムの可用性\)** ボックスで、 **[HA]\(高可用性\)** を選びます。
 
-  ![図 1:SAP 高可用性 Azure Resource Manager パラメーターを設定する][sap-ha-guide-figure-3000]
+  ![図 1: SAP 高可用性 Azure Resource Manager パラメーターを設定する][sap-ha-guide-figure-3000]
 
 _**図 1:** SAP 高可用性 Azure Resource Manager パラメーターを設定する_
 
@@ -524,7 +524,7 @@ SAP ASCS または SCS インスタンスに別の番号を使う場合は、そ
 1. Azure Portal で、 **\<[\>** SID > -lb-ascs ロード バランサー] **[負荷分散規則]** の順に選びます。
 2. SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
-   * 名前
+   * Name
    * Port
    * バックエンド ポート
 
@@ -616,7 +616,7 @@ SAP ASCS/SCS インスタンス用の Windows Server フェールオーバー �
 
    ![図 13:[プロパティ] ダイアログ ボックスで IP アドレスを変更する][sap-ha-guide-figure-3012]
 
-   _**図 13:**  **[プロパティ]** ダイアログ ボックスで IP アドレスを変更する_
+   _**図 13:** **[プロパティ]** ダイアログ ボックスで IP アドレスを変更する_
 
    ![図 14:このクラスター用に予約された IP アドレスを割り当てる][sap-ha-guide-figure-3013]
 
@@ -694,7 +694,7 @@ SAP ASCS/SCS インスタンス用の Windows Server フェールオーバー �
 
    ![図 22:[コンピューター] チェック ボックスをオンにする][sap-ha-guide-figure-3021]
 
-   _**図 22:**  **[コンピューター]** チェック ボックスをオンにする_
+   _**図 22:** **[コンピューター]** チェック ボックスをオンにする_
 
 4. 図 21 に示すように、クラスター名オブジェクトを入力します。 レコードは既に作成されているので、図 20 に示すようにアクセス許可を変更できます。
 
@@ -874,7 +874,7 @@ SIOS DataKeeper をインストールするには
 
    ![図 43:[はい] を選択し、レプリケートされたボリュームをクラスター ボリュームとして設定する][sap-ha-guide-figure-3043]
 
-   _**図 43:**  **[はい]** を選択し、レプリケートされたボリュームをクラスター ボリュームとして設定する_
+   _**図 43:** **[はい]** を選択し、レプリケートされたボリュームをクラスター ボリュームとして設定する_
 
    ボリュームが作成された後、DataKeeper の管理および構成ツールではレプリケーション ジョブがアクティブであると表示されます。
 
@@ -888,6 +888,6 @@ SIOS DataKeeper をインストールするには
 
    _**図 45:** DataKeeper がレプリケートしたディスクがフェールオーバー クラスター マネージャーに表示される_
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP NetWeaver HA をインストールする][sap-high-availability-installation-wsfc-shared-disk]

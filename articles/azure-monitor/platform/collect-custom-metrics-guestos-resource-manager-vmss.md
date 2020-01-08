@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 691b2ae7e497c9292975083e3687d9240ce6f3e6
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: ec9f7ecf218b635588065c14bd4d11283d027c11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286136"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364086"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Azure Resource Manager テンプレートを使用して Windows 仮想マシン スケール セットのゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -23,7 +23,7 @@ Azure Monitor [Microsoft Azure Diagnostics (WAD) 拡張機能](diagnostics-exten
 
 この記事では、Windows 仮想マシン スケール セット用のゲスト OS のパフォーマンス メトリックを Azure Monitor データ ストアに送信するプロセスについて説明します。 Microsoft Azure Diagnostics 拡張機能バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 この場所にこれらを格納することで、プラットフォーム メトリックに対して使用できるのと同じアクションにアクセスできます。 アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能があります。 これまで、Microsoft Azure Diagnostics 拡張機能では、Azure Monitor データ ストアではなく Azure Storage に書き込んでいました。  
 
-Resource Manager テンプレートを初めて利用する場合は、[テンプレートのデプロイ](../../azure-resource-manager/resource-group-overview.md)とその構造および構文についてご確認ください。  
+Resource Manager テンプレートを初めて利用する場合は、[テンプレートのデプロイ](../../azure-resource-manager/management/overview.md)とその構造および構文についてご確認ください。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -272,7 +272,7 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 ## <a name="chart-your-metrics"></a>メトリックをグラフ化する 
 
-1. Azure ポータルにサインインします。 
+1. Azure portal にサインインします。 
 
 1. 左側のメニューで **[モニター]** を選択します。 
 
@@ -292,7 +292,7 @@ Resource Manager テンプレートをデプロイするために、Azure PowerS
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [カスタム メトリック](metrics-custom-overview.md)の詳細を確認します。
 
 

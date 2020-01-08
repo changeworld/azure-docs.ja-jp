@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: 19414a6f09f4bc61cd9b1b09ae98ea070e577d7f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9eebb181ed7aa1ac5898646c29e308f85dbe0f8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995883"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354885"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL Database と Data Warehouse の Transparent Data Encryption
 
@@ -57,7 +57,7 @@ Azure 内での操作のためにデータベースを暗号化解除する必�
 - geo リストア
 - セルフサービスのポイントインタイム リストア
 - 削除されたデータベースの復元
-- アクティブ geo レプリケーション
+- アクティブな地理的レプリケーション
 - データベース コピーの作成
 - Azure SQL Managed Instance にバックアップ ファイルを復元する
 
@@ -79,7 +79,7 @@ Azure portal を使用して Transparent Data Encryption を構成するには�
 
 Transparent Data Encryption のオン/オフはデータベース レベルで切り替えます。 データベースで Transparent Data Encryption を有効にするには、[Azure portal](https://portal.azure.com) に移動し、Azure 管理者または共同作成者アカウントでサインインします。 ユーザー データベースの Transparent Data Encryption 設定を見つけます。 既定では、サービスによって管理された Transparent Data Encryption が使用されます。 Transparent Data Encryption 証明書は、データベースを含むサーバーに対して自動的に生成されます。 Azure SQL Managed Instance の場合、T-SQL を使用し、データベースで Transparent Data Encryption のオン/オフを切り替えます。
 
-![サービスによって管理された Transparent Data Encryption](./media/transparent-data-encryption-azure-sql/service-managed-tde.png)  
+![サービスによって管理された Transparent Data Encryption](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)  
 
 Transparent Data Encryption マスター キー (Transparent Data Encryption 保護機能とも呼ばれます) は、サーバー レベルで設定します。 Bring Your Own Key をサポートする Transparent Data Encryption を使用し、Key Vault のキーでデータベースを保護するには、サーバーの Transparent Data Encryption 設定を開きます。
 
@@ -98,7 +98,7 @@ PowerShell を使用して Transparent Data Encryption を構成するには、A
 
 Azure SQL Database と Data Warehouse には次のコマンドレットを使用します。
 
-| コマンドレット | 説明 |
+| コマンドレット | [説明] |
 | --- | --- |
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |データベースの Transparent Data Encryption を有効または無効にします。|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |データベースの Transparent Data Encryption の状態を取得します。 |
@@ -118,7 +118,7 @@ Transact-SQL を使用して Transparent Data Encryption を管理します。
 
 master データベースの **dbmanager** ロールの管理者またはメンバーであるログインを使用してデータベースに接続します。
 
-| command | 説明 |
+| command | [説明] |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF によって、データベースを暗号化または暗号化解除します。 |
 | [sys.dm_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |データベースの暗号化の状態と、関連付けられているデータベース暗号化キーに関する情報を返します。 |
@@ -133,7 +133,7 @@ REST API を使用して Transparent Data Encryption を管理します。
 REST API を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。
 Azure SQL Database と Data Warehouse には次の一連のコマンドを使用します。
 
-| command | 説明 |
+| command | [説明] |
 | --- | --- |
 |[サーバーの作成または更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|SQL Server インスタンスに Azure Active Directory ID を追加します (Key Vault へのアクセスを許可するために使用)。|
 |[サーバー キーの作成または更新](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|SQL Server インスタンスに Key Vault キーを追加します。|
@@ -147,7 +147,7 @@ Azure SQL Database と Data Warehouse には次の一連のコマンドを使用
 |[Transparent Data Encryption 構成の取得](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|データベースの Transparent Data Encryption 構成を取得します。|
 |[Transparent Data Encryption 構成の結果リストの取得](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|データベースの暗号化の結果を取得します。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Transparent Data Encryption の概要については、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) に関する記事をご覧ください。
 - Azure SQL Database、Azure SQL Managed Instance、Data Warehouse の Bring Your Own Key をサポートする Transparent Data Encryption の詳細については、[Bring Your Own Key をサポートする Transparent Data Encryption](transparent-data-encryption-byok-azure-sql.md) に関する記事をご覧ください。

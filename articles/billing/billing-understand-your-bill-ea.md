@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: banders
-ms.openlocfilehash: cc4b552143917f5a9ca66ad402cca79956186d08
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 112bcf7f5cb33fec56cdc36c5fe8cfe92145705a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841271"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644496"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Enterprise Agreement 請求書を理解する
 
@@ -48,7 +48,7 @@ Enterprise Agreement による Azure カスタマーは、組織のクレジッ�
 ## <a name="review-charges-for-most-customers"></a>ほとんどのお客様の料金の確認
 このセクションは、オーストラリア、日本、またはシンガポールの Azure のお客様には適用されません。 これらの国のお客様は、「[その他のお客様の料金の確認](#review-charges-for-other-customers)」をご覧ください。
 
-請求書上の料金をレビューまたは承認するには、Enterprise Administrator である必要があります。 詳細については、[Azure の Azure Enterprise Agreement 管理者ロールを理解する](billing-understand-ea-roles.md)を参照してください。 お客様の組織の Enterprise Administraor が分からない場合、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+請求書上の料金をレビューまたは承認するには、Enterprise Administrator である必要があります。 詳細については、「[Understand Azure Enterprise Agreement administrative roles in Azure](billing-understand-ea-roles.md)」(Azure の Azure Enterprise Agreement 管理者ロールを理解する) を参照してください。 お客様の組織の Enterprise Administraor が分からない場合、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 請求書には、Azure のすべての使用量と Marketplace の料金 (ある場合) が示されます。 クレジットの残高がある場合は、Azure の使用量に適用されます。
 
@@ -89,7 +89,7 @@ Enterprise Portal の **[レポート]**  >  **[使用状況の要約]** に表�
 
 このセクションは、オーストラリア、日本、またはシンガポールのお客様のみに適用されます。
 
-請求書上の料金をレビューまたは承認するには、Enterprise Administrator である必要があります。 詳細については、[Azure の Azure Enterprise Agreement 管理者ロールを理解する](billing-understand-ea-roles.md)を参照してください。 お客様の組織の Enterprise Administraor が分からない場合、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+請求書上の料金をレビューまたは承認するには、Enterprise Administrator である必要があります。 詳細については、「[Understand Azure Enterprise Agreement administrative roles in Azure](billing-understand-ea-roles.md)」(Azure の Azure Enterprise Agreement 管理者ロールを理解する) を参照してください。 お客様の組織の Enterprise Administraor が分からない場合、[サポートにお問い合わせください](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 ### <a name="review-service-overage-invoice"></a>サービス超過分の請求書の確認
 
@@ -105,13 +105,13 @@ Enterprise Portal の **[レポート]**  >  **[使用状況の要約]** に表�
 
 次のテーブルに、請求書ならびに Enterprise portal 内の**使用状況の要約**に表示される用語および説明を示します。
 
-|請求書の用語|使用状況の要約の用語|説明|
+|請求書の用語|使用状況の要約の用語|[説明]|
 |---|---|---|
 |合計拡張料金|合計使用量|特定の期間中の、クレジット適用前の税抜き使用料金。|
 |コミットメント使用量|コミットメント使用量|その特定の期間中に適用されるクレジット。|
 |販売合計|超過分合計|クレジット額を超える使用量の合計料金。 この額には税は含まれません。|
-|税額|適用不可|特定の期間の販売合計に適用される税金。|
-|合計金額|適用不可|クレジットの適用後ならびに税の追加後の、請求書に記載される請求金額。|
+|税額|適用なし|特定の期間の販売合計に適用される税金。|
+|合計金額|適用なし|クレジットの適用後ならびに税の追加後の、請求書に記載される請求金額。|
 
 ### <a name="marketplace-invoice"></a>Marketplace の請求書
 
@@ -129,7 +129,7 @@ Enterprise Portal の **[レポート]**  >  **[使用状況の要約]** に表�
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 
-ご質問がある場合やヘルプが必要な場合は、[サポート リクエストを作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
+ご質問がある場合やヘルプが必要な場合は、[サポート要求を作成](https://go.microsoft.com/fwlink/?linkid=2083458)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure の使用量と料金の表示とダウンロード](billing-download-azure-daily-usage.md)

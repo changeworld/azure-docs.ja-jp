@@ -12,12 +12,12 @@ metadata:
   author: normesta
   ms.author: normesta
   ms.date: 08/20/2019
-  ms.openlocfilehash: f3e1abc46b79953d5a6d44abe4e7a5cecfa256be
-  ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+  ms.openlocfilehash: 8b08503be49c3052312d28bc1f65d1be5c775cd9
+  ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 11/06/2019
-  ms.locfileid: "73646816"
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75553054"
 landingContent:
 - title: Blob Storage について
   linkLists:
@@ -25,7 +25,7 @@ landingContent:
     links:
     - text: Azure Blob Storage とは
       url: storage-blobs-overview.md
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
@@ -91,10 +91,14 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: .NET の使用
+    - text: .NET 用 Azure Blob Storage
       url: storage-quickstart-blobs-dotnet.md
-    - text: Python の使用
+    - text: Java 用 Azure Blob Storage
+      url: storage-quickstart-blobs-java.md
+    - text: Python 用 Azure Blob Storage
       url: storage-quickstart-blobs-python.md
+    - text: JavaScript 用 Azure Blob Storage
+      url: storage-quickstart-blobs-nodejs.md
     - text: イベントを Web エンドポイントにルーティングする
       url: ../../event-grid/blob-event-quickstart-portal.md
     - text: 静的 Web サイトのホスト
@@ -144,9 +148,9 @@ landingContent:
   - linkListType: concept
     links:
     - text: スケーラビリティとパフォーマンス
-      url: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: scalability-targets.md
     - text: パフォーマンスとスケーラビリティのチェックリスト
-      url: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+      url: storage-performance-checklist.md
   - linkListType: tutorial
     links:
     - text: パフォーマンスとスケーラビリティに合わせて最適化する

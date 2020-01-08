@@ -1,0 +1,30 @@
+- name: Azure セキュリティ ベンチマーク
+  href: index.yml
+- name: はじめに
+  href: introduction.md
+- name: '[シングル サインオンの設定]'
+  items:
+    - name: 概要
+      href: overview.md
+    - name: ネットワークのセキュリティ
+      href: security-control-network-security.md
+    - name: ログ記録と監視
+      href: security-control-logging-monitoring.md
+    - name: ID およびアクセス制御
+      href: security-control-identity-access-control.md
+    - name: データ保護
+      href: security-control-data-protection.md
+    - name: 脆弱性の管理
+      href: security-control-vulnerability-management.md
+    - name: インベントリと資産の管理
+      href: security-control-inventory-asset-management.md
+    - name: セキュリティで保護された構成
+      href: security-control-secure-configuration.md
+    - name: マルウェアからの防御
+      href: security-control-malware-defense.md
+    - name: データの復旧
+      href: security-control-data-recovery.md
+    - name: インシデント対応
+      href: security-control-incident-response.md
+    - name: 侵入テストとレッド チーム演習
+      href: security-control-penetration-tests-red-team-exercises.md

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585404"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645091"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Azure Application Gateway の Web アプリケーション ファイアウォール v2 カスタム規則
 
@@ -29,7 +29,7 @@ Azure Application Gateway の Web アプリケーション ファイアウォー
 2 つの異なる条件を "**または**" で結合したい場合、2 つの条件が異なる規則に含まれている必要があります。 たとえば、特定の IP アドレスからのトラフィックをブロックするか、または特定のブラウザーが使用されている場合にブロックします。
 
 > [!NOTE]
-> WAF のカスタム規則数の上限は 100 です。 Application Gateway の制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md#application-gateway-limits)」を参照してください。
+> WAF のカスタム規則数の上限は 100 です。 Application Gateway の制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)」を参照してください。
 
 CRS 規則セットと同様に、カスタム規則でも正規表現がサポートされています。 これらの例については、[カスタム Web アプリケーション ファイアウォール規則の作成と使用](create-custom-waf-rules.md)に関するページの例 3 と 5 を参照してください。
 
@@ -202,7 +202,7 @@ Geomatch 演算子を使用する場合、セレクターは次の 2 桁の国�
 | BW | ボツワナ|
 | BY | ベラルーシ|
 | BZ | ベリーズ|
-| CA | カナダ|
+| CA | Canada|
 | CD | コンゴ民主共和国|
 | CF | 中央アフリカ共和国|
 | CH | スイス|
@@ -338,7 +338,7 @@ Geomatch 演算子を使用する場合、セレクターは次の 2 桁の国�
 | TZ | タンザニア|
 | UA | ウクライナ|
 | UG | ウガンダ|
-| US | 米国|
+| US | United States|
 | UY | ウルグアイ|
 | UZ | ウズベキスタン|
 | VC | セントビンセント及びグレナディーン諸島|
@@ -350,6 +350,6 @@ Geomatch 演算子を使用する場合、セレクターは次の 2 桁の国�
 | ZM | ザンビア|
 | ZW | ジンバブエ|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタム規則について理解したら、[独自のカスタム規則を作成](create-custom-waf-rules.md)します。

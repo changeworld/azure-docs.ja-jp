@@ -1,20 +1,18 @@
 ---
 title: Visual Studio の Azure Stream Analytics ツールの設定
 description: この記事では、Visual Studio の Azure Stream Analytics ツールのインストールの要件と設定方法について説明します。
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.openlocfilehash: 447fa07953c15fe67b8a2e313fe9534164f47bbd
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: fa3990d2239da71fb27f4c9a06699f758fcfe7a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130510"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354366"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Azure Stream Analytics ツールのインストール
 
@@ -22,7 +20,7 @@ Visual Studio 2019 および Visual Studio 2017 は Azure Data Lake and Stream A
 
 ツールの使用方法の詳細については、「[クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)」を参照してください。
 
-## <a name="install"></a>Install
+## <a name="install"></a>インストール
 
 Visual Studio Enterprise (Ultimate/Premium)、Professional、Community の各エディションでツールがサポートされています。 Express エディションおよび Visual Studio for Mac ではサポートされていません。
 

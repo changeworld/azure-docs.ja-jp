@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f34e71c4e15e3bb09676e366313e90a7261439e5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 882582191b5794e3978d955dfa9bded294064037
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900438"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398310"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリの高度な集計
 
@@ -67,7 +67,7 @@ Heartbeat
 | project Computer, Solutions
 ```
 
-| Computer | 解決方法 | 
+| Computer | ソリューション | 
 |--------------|----------------------|
 | computer1 | "security"、"updates"、"changeTracking" |
 | computer2 | "security"、"updates" |
@@ -83,7 +83,7 @@ Heartbeat
 | mvexpand Solutions
 ```
 
-| Computer | 解決方法 | 
+| Computer | ソリューション | 
 |--------------|----------------------|
 | computer1 | "security" |
 | computer1 | "updates" |
@@ -105,7 +105,7 @@ Heartbeat
 | summarize makelist(Computer) by tostring(Solutions) 
 ```
 
-|解決方法 | list_Computer |
+|ソリューション | list_Computer |
 |--------------|----------------------|
 | "security" | ["computer1", "computer2"] |
 | "updates" | ["computer1", "computer2"] |
@@ -122,7 +122,7 @@ Heartbeat
 | summarize count() by Category, bin(TimeGenerated, 1h)
 ```
 
-| Category | TimeGenerated | count_ |
+| カテゴリ | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接エージェント | 2017-06-06T17:00:00Z | 15 |
 | 直接エージェント | 2017-06-06T18:00:00Z | 60 |
@@ -138,7 +138,7 @@ Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
 
-| Category | count_ | TimeGenerated |
+| カテゴリ | count_ | TimeGenerated |
 |---|---|---|
 | 直接エージェント | [15,60,0,55,60,57,60,...] | ["2017-06-06T17:00:00.0000000Z","2017-06-06T18:00:00.0000000Z","2017-06-06T19:00:00.0000000Z","2017-06-06T20:00:00.0000000Z","2017-06-06T21:00:00.0000000Z",...] |
 | ... | ... | ... |
@@ -152,7 +152,7 @@ Heartbeat
 | project Category, TimeGenerated, count_
 ```
 
-| Category | TimeGenerated | count_ |
+| カテゴリ | TimeGenerated | count_ |
 |--------------|----------------------|--------|
 | 直接エージェント | 2017-06-06T17:00:00Z | 15 |
 | 直接エージェント | 2017-06-06T18:00:00Z | 60 |
@@ -178,7 +178,7 @@ WindowsFirewall
 | where Computer in (ComputersNeedingUpdate)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Monitor ログ データと共に [Kusto クエリ言語](/azure/kusto/query/)を使用することに関するその他のレッスンを参照してください。
 

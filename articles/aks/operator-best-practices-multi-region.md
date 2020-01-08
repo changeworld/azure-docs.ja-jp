@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5fdb189fcab3da4dad52642571ac42e669828fe3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ff55257891ff379bea9ff44aa5136195ced44354
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971657"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613110"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -114,7 +114,7 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 
 アプリケーションには、ポッドが削除された後も、永続的ストレージが必要な場合があります。 Kubernetes では、永続ボリュームを使用してデータ ストレージを保持することができます。 永続ボリュームはノード VM にマウントされてから、ポッドに公開されます。 永続ボリュームは、ポッドが同じクラスター内の別のノードに移動されても、ポッドに従います。
 
-使用するレプリケーションの方法は、お使いのストレージ ソリューションによって決まります。 [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/)、[Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[Rook](https://rook.io/docs/rook/master/disaster-recovery.html)、[Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) などの一般的なストレージ ソリューションには、ディザスター リカバリーとレプリケーションに関する独自のガイダンスがあります。
+使用するレプリケーションの方法は、お使いのストレージ ソリューションによって決まります。 [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/)、[Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[Rook](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)、[Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) などの一般的なストレージ ソリューションには、ディザスター リカバリーとレプリケーションに関する独自のガイダンスがあります。
 
 一般的な方法は、アプリケーションがデータを書き込める共通のストレージ ポイントを提供するというものです。 これらのデータは、その後リージョン間でレプリケートされ、ローカルにアクセスされます。
 
@@ -131,7 +131,7 @@ Azure Managed Disks を使用している場合は、次のようなレプリケ
 
 ![アプリケーションベースの非同期レプリケーション](media/operator-best-practices-bc-dr/aks-app-based-async-repl.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、AKS クラスターでのビジネス継続性とディザスター リカバリーに関する考慮事項に重点を置いて説明しました。 AKS でのクラスター操作の詳細については、ベスト プラクティスに関する次の記事を参照してください。
 

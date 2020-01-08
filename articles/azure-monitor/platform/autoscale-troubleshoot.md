@@ -1,19 +1,15 @@
 ---
 title: Azure 自動スケーリングのトラブルシューティング
 description: Service Fabric、Virtual Machines、Web Apps、クラウド サービスで使用される Azure 自動スケールに関する問題を追跡します。
-author: rboucher
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/4/2019
-ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: effef22bea0b4224f67737fe1c34c9758749c093
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893571"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364443"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Azure 自動スケーリングのトラブルシューティング
  
@@ -209,5 +205,5 @@ AutoscaleScaleActionsLog
 
 詳細については、[自動スケーリングのリソース ログ](autoscale-resource-log-schema.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [自動スケーリングのベストプラクティス](autoscale-best-practices.md)に関する情報を参照してください。 

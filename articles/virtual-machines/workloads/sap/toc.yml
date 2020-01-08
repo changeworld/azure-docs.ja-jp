@@ -1,6 +1,6 @@
 - name: 概要
   items:
-    - name: 作業開始
+    - name: はじめに
       href: get-started.md
     - name: 認定
       href: sap-certifications.md
@@ -24,7 +24,7 @@
           href: hana-data-tiering-extension-nodes.md
         - name: 運用モデルと責任
           href: hana-operations-model.md
-    - name: アーキテクチャ
+    - name: Architecture
       items:
         - name: 全般的なアーキテクチャ
           href: hana-architecture.md
@@ -50,7 +50,7 @@
           href: hana-installation.md
         - name: HANA のインストールの例
           href: hana-example-installation.md
-    - name: 高可用性と障害復旧
+    - name: 高可用性とディザスター リカバリー
       items:
         - name: オプションと考慮事項
           href: hana-overview-high-availability-disaster-recovery.md
@@ -104,6 +104,8 @@
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
         - name: SLES で Azure NetApp Files を使用したスタンバイ ノードでの SAP HANA スケールアウト
           href: sap-hana-scale-out-standby-netapp-files-suse.md
+        - name: RHEL で Azure NetApp Files を使用したスタンバイ ノードでの SAP HANA スケールアウト
+          href: sap-hana-scale-out-standby-netapp-files-rhel.md
     - name: SAP HANA のバックアップの概要
       href: sap-hana-backup-guide.md
     - name: SAP HANA のファイル レベルのバックアップ
@@ -214,6 +216,8 @@
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: (A)SCS インスタンス用の SOFS ファイル共有を使用した Windows
               href: sap-ascs-ha-multi-sid-wsfc-file-share.md
+            - name: (A)SCS インスタンス用の Pacemaker マルチ SID を使用した SLES
+              href: high-availability-guide-suse-multi-sid.md
     - name: SAP のディザスター リカバリーのための Azure Site Recovery
       href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
     - name: SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ

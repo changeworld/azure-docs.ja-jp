@@ -18,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: afa1d2ca59bacec2695aaff0cacb119a8fbf787b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f6740076600854f612cfdd6324d93325f0cd5c05
+ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766601"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75667509"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して仮想マシンへの送受信ネットワーク トラフィックをログに記録する
 
@@ -44,12 +44,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 2. **[Compute]** を選択し、 **[Windows Server 2016 Datacenter]** またはいずれかのバージョンの **Ubuntu Server** を選択します。
 3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
 
-    |Setting|値|
+    |設定|値|
     |---|---|
-    |名前|myVm|
+    |Name|myVm|
     |ユーザー名| 任意のユーザー名を入力します。|
-    |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |Subscription| サブスクリプションを選択します。|
+    |Password| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    |サブスクリプション| サブスクリプションを選択します。|
     |Resource group| **[新規作成]** を選択し、「**myResourceGroup**と入力します。|
     |Location| **[米国東部]** を選択します。|
 
@@ -87,17 +87,13 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 2. **[ストレージ]** 、 **[ストレージ アカウント - Blob、File、Table、Queue]** の順に選択します。
 3. 次の情報を入力するか選択し、それ以外の情報は既定値をそのまま使用して、 **[作成]** を選択します。
 
-    | Setting        | 値                                                        |
+    | 設定        | 値                                                        |
     | ---            | ---   |
-    | 名前           | 3 ～ 24 文字の長さで、小文字の英数字のみを含めることができ、すべての Azure Storage アカウントで一意である必要があります。                                                               |
+    | Name           | 3 ～ 24 文字の長さで、小文字の英数字のみを含めることができ、すべての Azure Storage アカウントで一意である必要があります。                                                               |
     | Location       | **[米国東部]** を選択します。                                           |
     | Resource group | **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します |
 
-    ストレージ アカウントの作成には、しばらくかかる場合があります。 ストレージ アカウントが作成されるまで、残りの手順を続行しないでください。 ストレージ アカウントを作成せずに、既存のものを使う場合は、ストレージ アカウントの **[設定]** の **[ファイアウォールと仮想ネットワーク]** で **[すべてのネットワーク]** (既定値) が選択されているストレージ アカウントを選択してください。 どのような場合でも、ストレージ アカウントは、NSG と同じリージョンに存在する必要があります。 
-    
-    > [!NOTE]
-    > Microsoft.Insight と Microsoft.Network のプロバイダーは、[Azure Storage 向けの信頼できる Microsoft サービス](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)として現在サポートされていますが、NSG フロー ログはまだ完全にオンボードされているわけではありません。 NSG フロー ログを有効にするには、前述のように **[すべてのネットワーク]** を選択する必要があります。
-    
+    ストレージ アカウントの作成には、しばらくかかる場合があります。 ストレージ アカウントが作成されるまで、残りの手順を続行しないでください。 ストレージ アカウントを作成せずに、既存のものを使う場合は、ストレージ アカウントの **[設定]** の **[ファイアウォールと仮想ネットワーク]** で **[すべてのネットワーク]** (既定値) が選択されているストレージ アカウントを選択してください。 どのような場合でも、ストレージ アカウントは、NSG と同じリージョンに存在する必要があります。     
 4. ポータルの左上隅の **[すべてのサービス]** を選択します。 *[フィルター]* ボックスに「**Network Watcher**」と入力します。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
 5. 次の図に示すように、 **[ログ]** の　 **[NSG フロー ログ]** を選択します。
 
@@ -116,8 +112,6 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
    > * ストレージ アカウントの[階層型名前空間](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)が有効になっている。
 1. ポータルの左上隅の **[すべてのサービス]** を選択します。 *[フィルター]* ボックスに「**Network Watcher**」と入力します。 検索結果に **[Network Watcher]** が表示されたら、それを選択します。
 10. **[リテンション期間 (日数)]** を 5 に設定し、 **[保存]** を選択します。
-    > [!IMPORTANT]
-    > 現在、Network Watcher の[ネットワーク セキュリティ グループ (NSG) フロー ログ](network-watcher-nsg-flow-logging-overview.md)がアイテム保持ポリシー設定に基づいて BLOB ストレージから自動的に削除されないという問題があります。 0 以外のアイテム保持ポリシーが存在する場合は、保持期間を過ぎているストレージ BLOB を定期的に削除して、課金が発生しないようにすることをお勧めします。 NSG フロー ログ ストレージ BLOB を削除する方法の詳細については、「[Delete NSG flow log storage blobs](network-watcher-delete-nsg-flow-log-blobs.md)」 (NSG フロー ログ ストレージ BLOB の削除) を参照してください。
 
 ## <a name="download-flow-log"></a>フロー ログのダウンロード
 
@@ -218,13 +212,13 @@ NSG フローのログ記録には、**Microsoft.Insights** プロバイダー�
 | 443         | 宛先ポート       | フローが送信された宛先ポート。 トラフィックの送信先はポート 443 であったため、ログ ファイルの **UserRule_default-allow-rdp** という規則によって、フローが処理されました。                                                |
 | T            | Protocol               | フローのプロトコルが TCP (T) かまたは UDP (U) か。                                  |
 | O            | Direction              | トラフィックが受信 (I) かまたは送信 (O) か。                                     |
-| A            | Action                 | トラフィックが許可された (A) かまたは拒否された (D) か。  
-| C            | フロー状態 (**バージョン 2 のみ**) | フローの状態をキャプチャします。 次の状態があります。**B**: 開始。フローが作成された時点です。 統計は提供されません。 **C**: 継続中。フローが進行中です。 5 分間隔で統計が提供されます。 **E**:終了。フローが終了した時点です。 統計が提供されます。 |
+| A            | アクション                 | トラフィックが許可された (A) かまたは拒否された (D) か。  
+| C            | フロー状態 (**バージョン 2 のみ**) | フローの状態をキャプチャします。 次の状態があります。**B**:開始。フローが作成された時点です。 統計は提供されません。 **C**: 継続中。フローが進行中です。 5 分間隔で統計が提供されます。 **E**:終了。フローが終了した時点です。 統計が提供されます。 |
 | 30 | 送信済みパケット数 - 送信元から宛先 (**バージョン 2 のみ**) | 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットの総数。 |
 | 16978 | 送信済みバイト数 - 送信元から宛先 (**バージョン 2 のみ**) | 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。 |
 | 24 | 送信済みパケット数 - 宛先から送信元 (**バージョン 2 のみ**) | 最後の更新以降に宛先から送信元に送信された TCP または UDP パケットの総数。 |
 | 14008| 送信済みバイト数 - 宛先から送信元 (**バージョン 2 のみ**) | 最後の更新以降に宛先から送信元に送信された TCP および UDP パケットのバイト数の合計。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、NSG の NSG フローのログ記録を有効にする方法について説明しました。 また、ファイルに記録されたデータをダウンロードし、表示する方法も説明しました。 Json ファイル内の生データは解釈が難しい場合があります。 データを視覚化するため、Network Watcher [トラフィック分析](traffic-analytics.md)、Microsoft [PowerBI](network-watcher-visualize-nsg-flow-logs-power-bi.md)、およびその他のツールを使用できます。

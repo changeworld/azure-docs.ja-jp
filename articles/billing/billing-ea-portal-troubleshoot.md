@@ -4,16 +4,16 @@ description: この記事では、Azure Enterprise Agreement (EA) に関して A
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: ff8408a098049d860a614900bdeea80da1bd95e4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f48aaee34dd35f065fd7e2d065316674b72db7c5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841389"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644428"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA Portal のアクセスのトラブルシューティング
 
@@ -41,7 +41,7 @@ Azure EA Portal を使用して、さまざまな認証レベルのユーザー�
 3. **[登録]** タブをクリックします。
 4. **[登録の詳細]** で、 **[認証レベル]** を選択します。
 5. 鉛筆アイコンをクリックします。
-6. **[Save]** をクリックします。
+6. **[保存]** をクリックします。
 
 ![認証レベルの表示例 ](./media/billing-ea-portal-troubleshoot/create-ea-authentication-level-types.png)
 
@@ -135,7 +135,7 @@ EA 登録には複数の EA 管理者を含めることができます。別の 
 - エラーを表示しているページの URL。  
 - エラーが発生した日付、時刻、タイム ゾーン。
 - さらに、ログ ファイルを取得しておくと役に立ちます。 以下の情報を使用してネットワーク トレースをキャプチャするステップは次のとおりです。
-  1. Internet Explorer を起動します。
+  1. Internet Explorer を開きます。
   1. F12 キーを押します。IE の下部にボックスが開きます。
   1. **[ネットワーク]** タブを選択します。
   1. **[キャプチャの開始]** をクリックします。
@@ -164,6 +164,6 @@ Microsoft Live ID のパスワードを忘れた場合は、[https://account.liv
 
 別のテナントに職場または学校アカウントがある場合は、登録の詳細ページで承認レベルを "テナント間の職場または学校アカウント" に変更すると、そのアカウントを追加できるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- Azure EA Portal の管理者は「[Azure EA Portal の管理](billing-ea-portal-administration.md)」を読んで、一般的な管理タスクについて学習する必要があります。
+- Azure EA ポータルの管理者は「[Azure EA ポータルの管理](billing-ea-portal-administration.md)」を読んで、一般的な管理タスクについて学習する必要があります。

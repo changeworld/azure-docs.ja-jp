@@ -3,17 +3,17 @@ title: Azure クラウド サービスの監視 | Microsoft Docs
 description: Azure クラウド サービスの監視に関する情報やいくつかのオプションについて説明します。
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: gwallace
-ms.openlocfilehash: ac0ea7557774f0e59cb6a6eca1fc739592ab971d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 096077550a426d7eb77ed0d71e720149dd103a55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359118"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386070"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>クラウド サービスの監視の概要
 
@@ -92,8 +92,11 @@ Visual Studio からクラウド サービスを発行するときに、診断�
 Application Insights を使用すると、Windows Azure Diagnostics 拡張機能で指定したパフォーマンス カウンター (および他の設定) を表示できますが、さらに高度な機能は worker ロールおよび Web ロールに Application Insights SDK を統合した場合のみ得られることに注意してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [クラウド サービスでの Application Insights について学ぶ](../azure-monitor/app/cloudservices.md)
 - [パフォーマンス カウンターをセットアップする](diagnostics-performance-counters.md)
+
+
+
 

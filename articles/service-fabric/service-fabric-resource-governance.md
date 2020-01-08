@@ -1,27 +1,16 @@
 ---
-title: Azure Service Fabric におけるコンテナーとサービスのリソース ガバナンス | Microsoft Docs
+title: コンテナーとサービスのリソース ガバナンス
 description: Azure Service Fabric では、内部または外部のコンテナーを実行するサービスのリソース制限を指定できます。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/9/2017
-ms.author: atsenthi
-ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 0a4cdc7dd7c2e81447201ca85843c9ba4c7e2af4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242928"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609454"
 ---
-# <a name="resource-governance"></a>リソース ガバナンス
+# <a name="resource-governance"></a>リソース管理
 
 同じノードまたはクラスター上の複数のサービスを実行するとき、あるサービスがリソースを余計に消費して、プロセスの他のサービスのリソースを枯渇させてしまうことがあります。 この問題は、"迷惑な隣人問題" と呼ばれます。 Service Fabric では、開発者はリソースを保証しリソースの使用量を制限するために、1 サービスあたりの予約数と制限を指定できます。
 
@@ -242,7 +231,7 @@ CPU とメモリに加え、コンテナー用の他のリソース制限を指�
     </ServiceManifestImport>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * クラスター リソース マネージャーの詳細については、「[Service Fabric クラスター リソース マネージャーの概要](service-fabric-cluster-resource-manager-introduction.md)」をご覧ください。
 * アプリケーション モデル、サービス パッケージ、コード パッケージ、およびこれらにレプリカをマップする方法の詳細については、「[Service Fabric でのアプリケーションのモデル化](service-fabric-application-model.md)」をご覧ください。

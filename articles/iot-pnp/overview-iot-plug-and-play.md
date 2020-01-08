@@ -3,22 +3,22 @@ title: IoT プラグ アンド プレイ プレビューの概要 | Microsoft Do
 description: IoT プラグ アンド プレイ プレビューについて説明します IoT プラグ アンド プレイは、IoT デバイスがその機能を宣言できるようにするオープン モデリング言語に基づいています。 IoT デバイスが Azure IoT Central やパートナー アプリケーションなどのクラウド ソリューションに接続するとき、IoT デバイスからはデバイス機能モデルと呼ばれる宣言が提示されます。 これで、クラウド ソリューションでは、デバイスを自動的に認識して、デバイスとのやりとりを開始できるようになります。すべてコードを記述することなく行うことができます。
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 06/21/2019
+ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935391"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531164"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューとは
 
-IoT プラグ アンド プレイ プレビューを使用することで、ソリューション開発者は埋め込みコードを記述することなく、ご自身のソリューションにデバイスを統合できます。 IoT プラグ アンド プレイの中核となるのは、デバイスの機能を記述する "_デバイス機能モデル_" スキーマです。 このスキーマは、次の定義を含む一連のインターフェイスとして構成された JSON ドキュメントです。
+IoT プラグ アンド プレイ プレビューを使用することで、ソリューション開発者は埋め込みコードを記述することなく、ご自身のソリューションにデバイスを統合できます。 IoT プラグ アンド プレイの中核となるのは、デバイスの機能を記述する_デバイス機能モデル_ スキーマです。 このスキーマは、次の定義を含む一連のインターフェイスとして構成された JSON ドキュメントです。
 
 - デバイスまたは他のエンティティの読み取り専用および読み取り/書き込みの状態を表す "_プロパティ_"。 たとえば、デバイスのシリアル番号は読み取り専用プロパティである可能性があり、サーモスタットでの目標温度は読み取り/書き込みプロパティである可能性があります。
 - デバイスによって出力されるデータである "_テレメトリ_"。このデータはセンサー読み取り値の通常のストリーム、偶発的なエラー、または情報メッセージのいずれかです。
@@ -82,10 +82,10 @@ IoT プラグ アンド プレイ デバイスに接続すると、そのデバ�
 ## <a name="message-quotas-in-iot-hub"></a>IoT Hub でのメッセージ クォータ
 パブリック プレビュー中、IoT プラグ アンド プレイ デバイスでは、インターフェイスごとに個別のメッセージが送信されます。これにより、ご利用の[メッセージ クォータ](../iot-hub/iot-hub-devguide-quotas-throttling.md)に対してカウントされるメッセージ数が増加する可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT プラグ アンド プレイの概要を説明したので、次の手順では、クイックスタートのいずれかを試してみましょう。
 
-- [デバイス機能モデルを使用して IoT プラグ アンド プレイ デバイスを作成する](./quickstart-create-pnp-device.md)
-- [デバイスを IoT Hub に接続する](./quickstart-connect-pnp-device.md)
-- [ソリューション内のデバイスに接続する](./quickstart-connect-pnp-device-solution.md)
+- [デバイス機能モデルを使用して IoT プラグ アンド プレイ デバイスを作成する](./quickstart-create-pnp-device-windows.md)
+- [デバイスを IoT Hub に接続する](./quickstart-connect-pnp-device-c-windows.md)
+- [ソリューション内のデバイスに接続する](./quickstart-connect-pnp-device-solution-node.md)

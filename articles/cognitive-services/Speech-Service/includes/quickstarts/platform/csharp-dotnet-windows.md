@@ -7,15 +7,15 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: a858a078f8e22a7176fc0eeb09ae0133e2ea11a4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: db00398efa638ac945bc188ad0c44f904059e689
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818565"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467538"
 ---
 このガイドでは、.NET Framework (Windows) 用の [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。
 
@@ -71,8 +71,8 @@ ms.locfileid: "74818565"
 
    パッケージがインストールされると、 **[パッケージマネージャー コンソール]** ウィンドウに確認が表示されます。
 
-これで[次の手順](#next-steps)に進むことができます。
+これで、下記の「[次の手順](#next-steps)」に進むことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [windows](../quickstart-list.md)]

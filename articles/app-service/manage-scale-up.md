@@ -5,12 +5,12 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 37120377f87bee53f73fe4d3dd7ced59551a491f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: dfd9297e80836978b8a185df3fc4659676383802
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672322"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659901"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Azure App Service でアプリをスケールアップする
 
@@ -71,7 +71,7 @@ Azure SQL Database や Azure Storage などの他のサービスにアプリが�
 
 各価格レベルの VM サイズなど、詳しくは、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service)」をご覧ください。
 
-サービスの制限、クォータ、および制約と、各レベルでサポートされている機能の表については、「[App Service の制限](../azure-subscription-service-limits.md#app-service-limits)」をご覧ください。
+サービスの制限、クォータ、および制約と、各レベルでサポートされている機能の表については、「[App Service の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)」をご覧ください。
 
 <a name="Next Steps"></a>
 

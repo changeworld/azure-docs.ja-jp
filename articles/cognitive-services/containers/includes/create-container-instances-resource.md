@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 1679862b1660d3c8b2505c6e0c54f203f5d4665d
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 18f4edf5cc63a448779423cc1b302130b4b80724
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383538"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75692540"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Azure コンテナー インスタンス リソースを作成する
 
@@ -22,9 +22,9 @@ ms.locfileid: "74383538"
 
 2. **[基本]** タブで、以下の詳細を入力します。
 
-    |Setting|値|
+    |設定|値|
     |--|--|
-    |Subscription|サブスクリプションを選択します。|
+    |サブスクリプション|サブスクリプションを選択します。|
     |Resource group|利用可能なリソース グループを選択するか、新しいリソース グループを作成します (`cognitive-services` など)。|
     |コンテナー名|`cognitive-container-instance` などの名前を入力します。 この名前は小文字である必要があります。|
     |Location|デプロイのためのリージョンを選択します。|
@@ -35,7 +35,7 @@ ms.locfileid: "74383538"
 
 3. **[ネットワーク]** タブで、以下の詳細を入力します。
 
-    |Setting|値|
+    |設定|値|
     |--|--|
     |Port|TCP ポートを `5000` に設定します。 ポート 5000 上でコンテナーを公開します。|
 
@@ -47,6 +47,6 @@ ms.locfileid: "74383538"
     |`billing`|リソースの **[概要]** ページからコピーされます。|
     |`eula`|`accept`|
 
-1. **[確認と作成]** をクリックします
-1. 検証に合格した後、 **[作成]** をクリックして作成プロセスを終了します
-1. リソースが正常にデプロイされると、準備完了です
+5. **[確認と作成]** をクリックします
+6. 検証に合格した後、 **[作成]** をクリックして作成プロセスを終了します
+7. リソースが正常にデプロイされると、準備完了です

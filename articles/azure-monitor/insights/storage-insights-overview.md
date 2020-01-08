@@ -4,15 +4,15 @@ description: この記事では、ストレージ管理者が Azure Storage ア�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: aaf7d1a38d4b809b904b6c607a4cfc23efd4dde5
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 790d6ad9fb26253697ea36b402799d3eb488ca47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401129"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Azure Monitor for Storage (プレビュー) でストレージ サービスを監視する
 
@@ -47,7 +47,7 @@ Azure Monitor では、ご利用のサブスクリプション内の複数のス
 
 所有するすべてのサブスクリプションのストレージ アカウントの使用状況と可用性を確認するには、次の手順のようにします。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. Azure portal の左側のウィンドウで **[モニター]** を選択し、 **[分析情報]** セクションの **[ストレージ アカウント (プレビュー)]** を選択します。
 
@@ -315,7 +315,7 @@ n 種類のエラーを表示する場合は、splitByLimit を n+1 として指
 ![ブック ステップの下部にある [編集] を選択して [設定] を開く](./media/storage-insights-overview/fqa-edit.png)
 ![[設定] の一番下にある歯車を選択すると、ステップ名を変更できる](./media/storage-insights-overview/fqa-change-name.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [メトリック アラート](../platform/alerts-metric.md)と[サービス正常性通知](../../service-health/alerts-activity-log-service-notifications.md)を構成して、問題の検出に役立つ自動アラートを設定します。
 

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 11/05/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: bc4ac68cb415a43ac34d36afc2adc30307e6d37c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6707e844948ac76d4cec29faf69d80b3c9cb3c0f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795294"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392363"
 ---
-| リソース | Basic | 標準 | Premium |
+| リソース | Basic | Standard | Premium |
 |---|---|---|---|
 | ストレージ<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
 | イメージ レイヤーの最大サイズ | 200 GiB | 200 GiB | 200 GiB |
@@ -23,7 +23,7 @@ ms.locfileid: "73795294"
 | 1 分あたりの WriteOps<sup>2、4</sup> | 100 | 500 | 2,000 |
 | ダウンロード帯域幅 MBps<sup>2</sup> | 30 | 60 | 100 |
 | アップロード帯域幅 MBps<sup>2</sup> | 10 | 20 | 50 |
-| Webhooks | 2 | 10 | 100 |
+| Webhooks | 2 | 10 | 500 |
 | geo レプリケーション | 該当なし | 該当なし | [サポートされています][geo-replication] |
 | コンテンツの信頼 | 該当なし | 該当なし | [サポートされています][content-trust] |
 | 仮想ネットワーク アクセス | 該当なし | 該当なし | [プレビュー][vnet] |
@@ -37,9 +37,9 @@ ms.locfileid: "73795294"
 
 <sup>2</sup>*ReadOps*、*WriteOps*、および "*帯域幅*" は最小推定値です。 Azure Container Registry は、使用状況で必要とするパフォーマンスの向上に努めます。
 
-<sup>3</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) は、イメージ内のレイヤー数とマニフェストの取得に基づいて、複数の読み取り操作に変換します。
+<sup>3</sup>[docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) は、イメージ内のレイヤー数とマニフェストの取得に基づいて、複数の読み取り操作に変換します。
 
-<sup>4</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) は、プッシュする必要があるレイヤーの数に基づいて、複数の書き込み操作に変換します。 `docker push` には、*ReadOps* が含まれ、既存のイメージのマニフェストを取得します。
+<sup>4</sup>[docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) は、プッシュする必要があるレイヤーの数に基づいて、複数の書き込み操作に変換します。 `docker push` には、*ReadOps* が含まれ、既存のイメージのマニフェストを取得します。
 
 <!-- LINKS - External -->
 [pricing]: https://azure.microsoft.com/pricing/details/container-registry/

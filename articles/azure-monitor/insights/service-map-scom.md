@@ -4,15 +4,15 @@ description: Azure Monitor for VMs は、Windows システムおよび Linux シ
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: f1acf3c1574fd94606d75c6250dedd40a9c7ea4d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a8d0e0980b0d3634626bc1332e8219bdca7fbe01
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849821"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402634"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>System Center Operations Manager と Azure Monitor for VMs マップ機能を統合する
 
@@ -122,12 +122,12 @@ Service Map フォルダーには 4 つのノードがあります。
 
 ![Operations Manager の [Overrides properties (プロパティのオーバーライド)] ウィンドウ](media/service-map-scom/scom-overrides.png)
 
-* **Enabled**:自動更新を有効または無効にします。
+* **有効**: 自動更新を有効または無効にします。
 * **IntervalMinutes**:更新間隔を指定します。 既定の間隔は 1 時間です。 マップの同期の頻度を上げるには、この値を変更できます。
 * **TimeoutSeconds**:要求がタイムアウトになるまでの時間を指定します。
 * **TimeWindowMinutes**:データに対するクエリの時間枠を指定します。 既定値は 60 分です。これは許容される最大間隔です。
 
-## <a name="known-issues-and-limitations"></a>既知の問題と制限
+## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
 現在の設計には次の問題と制限があります。
 

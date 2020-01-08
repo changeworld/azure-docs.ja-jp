@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 2cb07a94b2ae85cc0755e1e7069a76e1ef2a5252
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 233d8f345eceb188fcc849457c5243a3c64aaec2
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977337"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548855"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>チュートリアル:デバイス機能モデルを使用して IoT プラグ アンド プレイ デバイスを作成し、ご利用の IoT Central アプリケーションに接続する
 
@@ -38,7 +38,7 @@ _デバイス機能モデル_ (DCM) には、[IoT プラグ アンド プレイ]
 * [Git](https://git-scm.com/download/)。
 * [CMake](https://cmake.org/download/): **CMake** をインストールするときに、 **[Add CMake to the system PATH]\(CMake をシステム パスに追加する\)** オプションを選択します。
 * [Visual Studio Code](https://code.visualstudio.com/)。
-* [Node.JS](https://nodejs.org/)
+* [Node.js](https://nodejs.org/)
 * `dps-keygen` ユーティリティ:
 
     ```cmd/sh
@@ -166,10 +166,10 @@ VS Code で Azure IoT Tools 拡張機能パックをインストールするに�
     cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
     ```
 
-1. ビルドが正常に完了したら、同じコマンド プロンプトでご利用のアプリケーションを実行します。 `<scopeid>` と `<devicekey>` は、前に書き留めた値に置き換えてください。
+1. ビルドが正常に完了したら、同じコマンド プロンプトでご利用のアプリケーションを実行します。 `<scopeid>` と `<primarykey>` は、前に書き留めた値に置き換えてください。
 
     ```cmd
-    .\Release\devkit_device.exe mxchip-001 <scopeid> <devicekey>
+    .\Release\devkit_device.exe mxchip-001 <scopeid> <primarykey>
     ```
 
 1. そのデバイス アプリケーションによって IoT Hub へのデータの送信が開始されます。 前のコマンドを初めて実行したときに `Error registering device for DPS` エラーが表示されることがあります。 このエラーが表示された場合は、コマンドを再試行してください。
@@ -192,7 +192,7 @@ VS Code で Azure IoT Tools 拡張機能パックをインストールするに�
 
     ![[デバイス テンプレート] ページ](./media/tutorial-connect-pnp-device/device-template.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、パブリック モデル リポジトリ内の DCM から生成された IoT プラグ アンド プレイ デバイスを接続する方法を学習しました。
 

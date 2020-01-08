@@ -6,18 +6,18 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 1be4882af781f884313fbc7b8e2f04f843b60068
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71038889"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641470"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Azure PowerShell を使用して Azure ネットワーク セキュリティ グループ (NSG) を別のリージョンに移動する
 
 既存の NSG をリージョン間で移動することが必要になるさまざまなシナリオがあります。 たとえば、テスト用に同じ構成とセキュリティ規則で NSG を作成したい場合があります。 ディザスター リカバリー計画の一部として、NSG を別のリージョンに移動したい場合もあります。
 
-Azure セキュリティ グループは、あるリージョンから別のリージョンに移動することができません。 ただし、Azure Resource Manager テンプレートを使用して、NSG の既存の構成とセキュリティ規則をエクスポートすることはできます。  その後、NSG をテンプレートにエクスポートすることで別のリージョンにリソースを公開し、宛先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。  Resource Manager とテンプレートの詳細については、「[リソース グループをテンプレートにエクスポートする](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)」を参照してください
+Azure セキュリティ グループは、あるリージョンから別のリージョンに移動することができません。 ただし、Azure Resource Manager テンプレートを使用して、NSG の既存の構成とセキュリティ規則をエクスポートすることはできます。  その後、NSG をテンプレートにエクスポートすることで別のリージョンにリソースを公開し、宛先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。  Resource Manager とテンプレートの詳細については、「[リソース グループをテンプレートにエクスポートする](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
 
 - 自分の Azure サブスクリプションで、使用される移動先リージョンに NSG を作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
 
-- 使用するサブスクリプションに、このプロセスでの NSG の追加をサポートするのに十分なリソースがあることを確認します。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- 使用するサブスクリプションに、このプロセスでの NSG の追加をサポートするのに十分なリソースがあることを確認します。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
 
 
 ## <a name="prepare-and-move"></a>準備と移動
@@ -99,7 +99,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
             }
     ```
   
-7. リージョンの場所コードを取得するために、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
+7. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
 
     ```azurepowershell-interactive
 
@@ -179,7 +179,7 @@ Azure セキュリティ グループは、あるリージョンから別のリ�
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用し、前の手順で作成したリソース グループにデプロイします。
+11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、前の手順で作成したリソース グループにデプロイします。
 
     ```azurepowershell-interactive
 
@@ -227,7 +227,7 @@ Remove-AzNetworkSecurityGroup -Name <source-nsg-name> -ResourceGroupName <source
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure ネットワーク セキュリティ グループをあるリージョンから別のリージョンに移動し、移動元リソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 

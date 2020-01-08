@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Python SDK を使用して Bing Custom Search エンドポイントを呼び出す | Microsoft Docs
+title: クイック スタート:Python SDK を使用して Bing Custom Search エンドポイントを呼び出す
 titleSuffix: Azure Cognitive Services
 description: このクイックスタートでは、Python SDK を使用して、Bing Custom Search インスタンスに検索結果を要求します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 98070ab8f715305fe01c940026ecf5f49f8c28f9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ca0c1174abb80452f78766c3c4f49af73c790d3e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448679"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>クイック スタート:Python SDK を使用して Bing Custom Search エンドポイントを呼び出す 
 
@@ -79,7 +79,7 @@ else:
     print("Didn't see any web data..")
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Custom Search Web アプリの作成](./tutorials/custom-search-web-page.md)

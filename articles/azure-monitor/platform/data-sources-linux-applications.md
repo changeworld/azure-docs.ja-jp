@@ -4,15 +4,15 @@ description: この記事では、MySQL および Apache HTTP Server のパフ�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 60f09035f4aabcbd6348fb5608b812ca4b001b45
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932450"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395847"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Azure Monitor で Linux アプリケーションのパフォーマンス カウンターを収集する 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -42,7 +42,7 @@ MySQL OMI 認証ファイルの形式を次に示します
 
 認証ファイル内のエントリを次の表で説明します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--|:--|
 | Port | MySQL インスタンスがリッスンしている現在のポートを表します。 ポート 0 は、以降のプロパティが既定のインスタンスに使用されることを指定します。 |
 | Bind-Address| 現在の MySQL バインド アドレス。 |
@@ -55,7 +55,7 @@ MySQL OMI 認証ファイルは、1 つの Linux ホスト上での複数の MyS
 
 次の表に、インスタンス設定の例を示します 
 
-| 説明 | ファイル |
+| [説明] | ファイル |
 |:--|:--|
 | 既定のインスタンスとポート 3308 のインスタンス。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | 既定のインスタンスとポート 3308 のインスタンス、および異なるユーザー名とパスワード。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -71,7 +71,7 @@ MySQL OMI プロバイダーのインストールには、MySQL OMI 認証ファ
 
 次の表は、mycimprovauth を使用するための構文に関する詳細を示しています。
 
-| 操作 | 例 | 説明
+| 操作 | 例 | [説明]
 |:--|:--|:--|
 | autoupdate *false または true* | mycimprovauth autoupdate false | 再起動または更新で認証ファイルが自動的に更新されるかどうかを設定します。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | MySQL OMI 認証ファイル内の既定のインスタンスを設定します。<br>パスワード フィールドは、プレーンテキストで入力してください。MySQL OMI 認証ファイル内のパスワードは Base 64 でエンコードされます。 |
@@ -112,8 +112,8 @@ Azure Monitor にデータを送信するように Linux 用 Log Analytics エ�
 
 | オブジェクト名 | カウンター名 |
 |:--|:--|
-| MySQL Database | Disk Space in Bytes |
-| MySQL Database | テーブル |
+| MySQL データベース | Disk Space in Bytes |
+| MySQL データベース | テーブル |
 | MySQL サーバー | Aborted Connection Pct |
 | MySQL サーバー | Connection Use Pct |
 | MySQL サーバー | Disk Space Use in Bytes |

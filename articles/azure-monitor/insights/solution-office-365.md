@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: aff6be1a6abf2550013b752ba4f796ffe255499f
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.date: 12/27/2019
+ms.openlocfilehash: 1c482166ffe27bde900a102c39def400728c102f
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539046"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529713"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -51,7 +51,7 @@ Office 365 管理ソリューションでは、Azure Monitor で Office 365 環�
 このソリューションでは、[接続されている管理グループ](../platform/om-agents.md)に管理パックがインストールされることはありません。
   
 
-## <a name="install-and-configure"></a>インストールと構成
+## <a name="install-and-configure"></a>[インストールと構成]
 
 [サブスクリプションに Office 365 ソリューション](solutions.md#install-a-monitoring-solution)を追加することで開始します。 追加されたら、Office 365 サブスクリプションへのアクセス権を付与するため、このセクションの構成手順を実行する必要があります。
 
@@ -120,12 +120,12 @@ Azure Active Directory での Office 365 アプリケーションの作成と構
 
 1. **[Certificates & secrets]\(証明書とシークレット\)** を選択し、 **[New client secret]\(新しいクライアント シークレット\)** を選択します。
 
-    ![構成する](media/solution-office-365/secret.png)
+    ![[キー]](media/solution-office-365/secret.png)
  
 1. 新しいキーの **[説明]** と **[期間]** に入力します。
 1. **[追加]** をクリックして、クライアント シークレットとして生成された **[値]** を、前に収集した情報の残りの部分と共に保存します。
 
-    ![構成する](media/solution-office-365/keys.png)
+    ![[キー]](media/solution-office-365/keys.png)
 
 ### <a name="add-admin-consent"></a>管理者の同意の入力
 
@@ -367,7 +367,7 @@ Azure Active Directory での Office 365 アプリケーションの作成と構
     Office-Subscribe-Call -ErrorAction Stop
     ```
 
-2. 次のコマンドを実行して、スクリプトを実行します。
+2. 次のコマンドを使用してこのスクリプトを実行します。
 
     ```
     .\office365_subscription.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeUsername <OfficeUsername> -OfficeTennantID <Tenant ID> -OfficeClientId <Client ID> -OfficeClientSecret <Client secret>
@@ -495,7 +495,7 @@ At line:12 char:18
     Office-UnSubscribe-Call -ErrorAction Stop
     ```
 
-2. 次のコマンドを実行して、スクリプトを実行します。
+2. 次のコマンドを使用してこのスクリプトを実行します。
 
     ```
     .\office365_unsubscribe.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeTennantID <Tenant ID> 
@@ -509,7 +509,7 @@ At line:12 char:18
 
 資格情報を求めるメッセージが表示されます。 Log Analytics ワークスペースの資格情報を入力します。
 
-## <a name="data-collection"></a>データ収集
+## <a name="data-collection"></a>データ コレクション
 
 ### <a name="supported-agents"></a>サポートされているエージェント
 
@@ -532,9 +532,9 @@ Log Analytics ワークスペースに Office 365 ソリューションを追加
 
 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。 ログ検索を実行してアラート全件を取得するには、列の一番下にある [See all] \(すべて表示) をクリックするか、列ヘッダーをクリックします。
 
-| 列 | 説明 |
+| 列 | [説明] |
 |:--|:--|
-| Operations | すべての監視対象 Office 365 サブスクリプションから、アクティブ ユーザーに関する情報を提供します。 時間の経過と共に発生するアクティビティの数を見ることもできます。
+| 操作 | すべての監視対象 Office 365 サブスクリプションから、アクティブ ユーザーに関する情報を提供します。 時間の経過と共に発生するアクティビティの数を見ることもできます。
 | Exchange | Add-Mailbox Permission、または Set-Mailbox などの Exchange Server アクティビティの内訳を示します。 |
 | SharePoint | SharePoint ドキュメントに対してユーザーが実行する最上位のアクティビティを示します。 このタイルからドリル ダウンすると、ターゲット ドキュメントやこのアクティビティの場所など、これらのアクティビティの詳細が検索ページに表示されます。 たとえば、File Accessed イベントの場合、アクセスされているドキュメント、それと関連付けられたアカウント名、および IP アドレスを見ることができます。 |
 | Azure Active Directory | ユーザー パスワードのリセットやログイン試行など、最上位のユーザー アクティビティが含まれます。 ドリルダウンすると、結果の状態など、これらのアクティビティの詳細を見ることができます。 これは主に、Azure Active Directory 上の不審なアクティビティを監視する場合に便利です。 |
@@ -546,16 +546,16 @@ Log Analytics ワークスペースに Office 365 ソリューションを追加
 
 Azure Monitor の Log Analytics ワークスペースで Office 365 ソリューションによって作成されたすべてのレコードは、**型** が **OfficeActivity** です。  **OfficeWorkload**プロパティは、レコードが参照する Office 365 サービス (Exchange、AzureActiveDirectory、SharePoint、または OneDrive) を決定します。  **RecordType** プロパティは操作の種類を指定します。  プロパティは操作の種類ごとに異なり、次の表に示しています。
 
-### <a name="common-properties"></a>共通のプロパティ
+### <a name="common-properties"></a>共通プロパティ
 
 次のプロパティは、Office 365 のすべてのレコードに共通です。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | 種類 | *OfficeActivity* |
 | ClientIP | アクティビティが記録されたときに使用されたデバイスの IP アドレス。 IP アドレスは IPv4 または IPv6 アドレスの形式で表示されます。 |
 | OfficeWorkload | レコードが参照する Office 365 サービス。<br><br>AzureActiveDirectory<br>Exchange<br>SharePoint|
-| Operation | ユーザーまたは管理者アクティビティの名前。  |
+| 操作 | ユーザーまたは管理者アクティビティの名前。  |
 | OrganizationId | 組織の Office 365 テナントの GUID。 どの Office 365 サービスで発生するかにかかわらず、この値は組織に対して常に同じになります。 |
 | RecordType | 実行する操作の種類。 |
 | ResultStatus | (Operation プロパティで指定された) アクションが正常に終了したかどうかを示します。 値は Succeeded、PartiallySucceeded、Failed のいずれかです。 Exchange 管理者アクティビティの場合、値は True または False です。 |
@@ -568,7 +568,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 次のプロパティは、Azure Active Directory のすべてのレコードに共通です。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -580,7 +580,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、Active Directory のユーザーがログオンを試みたときに作成されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -594,7 +594,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、変更または追加が Azure Active Directory オブジェクトに行われたときに作成されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -612,7 +612,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、データ センター セキュリティの監査データから作成されます。  
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | EffectiveOrganization | 昇格/コマンドレットのターゲットだったテナントの名前。 |
 | ElevationApprovedTime | 昇格が承認されたときのタイムスタンプ。 |
@@ -628,7 +628,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、Exchange 構成が変更されたときに作成されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -636,14 +636,14 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 | ModifiedObjectResolvedName |  コマンドレットによって変更されたオブジェクトのユーザー フレンドリ名。 コマンドレットがオブジェクトを変更する場合にのみ記録されます。 |
 | OrganizationName | テナントの名前。 |
 | OriginatingServer | コマンドレットの実行元だったサーバーの名前。 |
-| parameters | Operations プロパティで識別されるコマンドレットと共に使用されたすべてのパラメーターの名前と値。 |
+| パラメーター | Operations プロパティで識別されるコマンドレットと共に使用されたすべてのパラメーターの名前と値。 |
 
 
 ### <a name="exchange-mailbox"></a>Exchange メールボックス
 
 これらのレコードは、変更または追加が Exchange メールボックスに行われたときに作成されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -666,11 +666,11 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、メールボックス監査エントリが作成されるときに作成されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| Item | 操作が実行された対象の項目を表します。 | 
+| アイテム | 操作が実行された対象の項目を表します。 | 
 | SendAsUserMailboxGuid | その名前で電子メールを送信するためにアクセスされたメールボックスの Exchange GUID。 |
 | SendAsUserSmtp | 偽装されているユーザーの SMTP アドレス。 |
 | SendonBehalfOfUserMailboxGuid | 代理でメールを送信するためにアクセスされたメールボックスの Exchange GUID。 |
@@ -681,7 +681,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、変更または追加が Exchange グループに行われたときに作成されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -700,7 +700,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのプロパティは、SharePoint のすべてのレコードに共通です。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -717,7 +717,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、SharePoint の構成変更が行われたときに作成されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -730,7 +730,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、SharePoint でのファイル操作に応答して作成されます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -751,7 +751,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
 
-| クエリ | 説明 |
+| クエリ | [説明] |
 | --- | --- |
 |Office 365 サブスクリプションでのすべての操作のカウント |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint サイトの使用率|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|
@@ -761,7 +761,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor でログ クエリ](../log-query/log-query-overview.md)を使用して、詳細な更新プログラムのデータを表示します。
 * [独自のダッシュボードを作成](../learn/tutorial-logs-dashboards.md)して、お気に入りの Office 365 検索クエリを表示します。

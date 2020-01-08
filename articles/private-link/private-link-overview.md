@@ -2,17 +2,17 @@
 title: Azure Private Link とは
 description: Azure Private Link を使用して、仮想ネットワーク内のプライベート エンドポイント経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客/パートナー サービスにアクセスする方法について説明します。
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 03fdd67adf5df440cafe4e7411064437b8ef89ac
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 127807a57598fcfe239db39cb9874bca955da44e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671557"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647358"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Azure Private Link とは (プレビュー)
 Azure Private Link を使用すると、仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、Azure Cosmos DB、SQL Database など) と Azure でホストされている顧客/パートナー サービスにアクセスできます。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 また、独自の [Private Link サービス](private-link-service-overview.md)を仮想ネットワーク (VNet) 内に作成し、そのサービスを顧客に非公開で配信することもできます。 Azure Private Link を使用した設定と消費のエクスペリエンスは、Azure PaaS サービス、顧客所有サービス、共有パートナー サービス間で一貫しています。
@@ -41,9 +41,9 @@ Azure Private Link には次のような利点があります。
 |シナリオ  |サポートされているサービス  |対応リージョン | Status  |
 |:---------|:-------------------|:-----------------|:--------|
 |顧客所有サービス用の Private Link|Standard Load Balancer の背後にある Private Link サービス | すべてのパブリック リージョン  | プレビュー  |
-|Azure PaaS サービス用の Private Link   | Azure Storage        |  すべてのパブリック リージョン      | プレビュー <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)。  |
-|  | Azure Data Lake Storage Gen2        |  すべてのパブリック リージョン      | プレビュー <br/> [詳細情報](/azure/storage/common/storage-private-endpoints)。  |
-|  |  Azure SQL Database         | すべてのパブリック リージョン      |   プレビュー      |
+|Azure PaaS サービス用の Private Link   | Azure Storage        |  すべてのパブリック リージョン      | プレビュー <br/> [詳細については、こちらを参照してください](/azure/storage/common/storage-private-endpoints)。  |
+|  | Azure Data Lake Storage Gen2        |  すべてのパブリック リージョン      | プレビュー <br/> [詳細については、こちらを参照してください](/azure/storage/common/storage-private-endpoints)。  |
+|  |  Azure SQL データベース         | すべてのパブリック リージョン      |   プレビュー      |
 ||Azure SQL Data Warehouse| すべてのパブリック リージョン |プレビュー|
 ||Azure Cosmos DB| 米国中西部、米国西部、米国中北部 |プレビュー|
 
@@ -65,9 +65,9 @@ Azure Private Link は Azure Monitor と統合されます。そのため、ロ�
 FAQ については、「[Azure Private Link のよくあるご質問](private-link-faq.md)」を参照してください。
  
 ## <a name="limits"></a>制限  
-制限については、[Azure Private Link の制限](../azure-subscription-service-limits.md#private-link-limits)に関するページを参照してください。
+制限については、[Azure Private Link の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [ポータルを使用して SQL Database サーバー用のプライベート エンドポイントを作成する](create-private-endpoint-portal.md)
 - [PowerShell を使用して SQL Database サーバー用のプライベート エンドポイントを作成する](create-private-endpoint-powershell.md)
 - [CLI を使用して SQL Database サーバー用のプライベート エンドポイントを作成する](create-private-endpoint-cli.md)

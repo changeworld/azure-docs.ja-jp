@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9748c0d04f958648f7919b7ac29dc58d5a137ac
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a6dddd13f31366e5a99d6c68ab82b048de4064b2
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279046"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681363"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>確認方法の情報を登録して自分のパスワードをリセットする
 
@@ -29,10 +29,10 @@ ms.locfileid: "74279046"
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>SSPR への認証データの登録または確認
 
-1. デバイスで Web ブラウザーを開き、[パスワードのリセット登録ページ](https://aka.ms/ssprsetup)に移動します。
+1. デバイスで Web ブラウザーを開き、[パスワードのリセット登録ページ](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup)に移動します。
 2. 管理者から提供されているユーザー名とパスワードを入力します。
 3. IT スタッフがどのように構成したかに応じて、次のオプションの 1 つ以上を構成および確認できます。 ユーザーの情報を使用するアクセス許可が管理者にある場合、管理者はユーザーのために一部の情報を設定できます。
-    * **[会社電話]** : このオプションは管理者のみが設定できます。
+    * **会社電話**:このオプションは管理者のみが設定できます。
     * **[認証用電話]** : このオプションは、ユーザーがアクセスできる別の電話番号に設定します。 たとえば、テキストまたはコールを受信できる携帯電話などです。
     * **[認証用電子メール]** : このオプションは、リセットしたいパスワードを使用しなくてもアクセスできる連絡用メール アドレスに設定します。
     * **[セキュリティの質問]** : ユーザーが回答する質問のリストは管理者が承認済みです。 同じ質問や回答を複数回使用することはできません。
@@ -56,7 +56,7 @@ ms.locfileid: "74279046"
 | ユーザー ID の入力後、「アカウントは、パスワード リセットが有効になっていません。」エラーが表示されます | アカウントは、パスワード リセットが有効になっていません。 <br> <br> 申し訳ありませんが、IT スタッフはこのサービスで使用できるアカウントを設定していません。 <br> <br> ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。 | これは IT スタッフが **[アカウントにアクセスできません]** というリンクからのパスワードのリセットを有効にしていないため、またはその機能を使用するライセンスを付与していないために表示されます。 <br> <br> パスワードをリセットするには、 **[contact an administrator]\(管理者に連絡\)** リンクを選択します。 会社の IT スタッフに電子メールが送信されます。 この電子メールでパスワードをリセットしたいことを知らせ、この機能を有効にしてもらいます。 |
 | ユーザー ID の入力後に「お客様のアカウントを確認できませんでした」エラーが表示されます | お客様のアカウントを確認できませんでした。 <br> <br> ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。 | このメッセージは、パスワードのリセットは有効になっていても、サービスを使用するための登録が行われていない場合に表示されます。 パスワードのリセットを登録するには、アカウントに再アクセスできるようになった後、[パスワードのリセット登録ページ](https://aka.ms/ssprsetup)に移動します。 <br> <br> パスワードをリセットするには、 **[contact an administrator]\(管理者に連絡\)** リンクを選択し、会社の IT スタッフにメールを送信します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [セルフサービスのパスワード リセットを使用したパスワードの変更](active-directory-passwords-update-your-own-password.md)
 * [パスワードのリセット登録ページ](https://aka.ms/ssprsetup)

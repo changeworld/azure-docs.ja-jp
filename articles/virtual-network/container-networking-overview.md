@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 2ebc678bffbbbe5d512d620b8f77ac0a245c0aff
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: bdd364c097552d3a1b52073af97d33db70d78556
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579123"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647443"
 ---
 # <a name="enable-containers-to-use-azure-virtual-network-capabilities"></a>コンテナーで Azure Virtual Network の機能を使用できるようにする
 
@@ -53,17 +53,17 @@ ms.locfileid: "59579123"
 
 ## <a name="limits"></a>制限
 
-プラグインは、仮想マシンごとに最大 250 個のポッド、1 つの仮想ネットワーク内で最大 16,000 個のポッドをサポートします。 これらの制限は、[Azure Kubernetes Service](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) の場合と異なります。
+プラグインは、仮想マシンごとに最大 250 個のポッド、1 つの仮想ネットワーク内で最大 16,000 個のポッドをサポートします。 これらの制限は、[Azure Kubernetes Service](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-kubernetes-service-limits) の場合と異なります。
 
 ## <a name="using-the-plug-in"></a>プラグインの使用
 
 プラグインを次の方法で使用して、ポッドまたは Docker コンテナーに基本的な仮想ネットワーク接続を提供できます。
 
-- **Azure Kubernetes Service**:プラグインは Azure Kubernetes Service (AKS) に統合されており、*[Advanced Networking]\(高度ネットワーク\)* オプションを選択することで使用できます。 高度ネットワークを使用すると、既存または新規の仮想ネットワークに Kubernetes クラスターを展開できます。 高度ネットワークの詳細とその設定手順については、[Azure Kubernetes Service (AKS) のネットワーク構成](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
+- **Azure Kubernetes Service**:プラグインは Azure Kubernetes Service (AKS) に統合されており、 *[Advanced Networking]\(高度ネットワーク\)* オプションを選択することで使用できます。 高度ネットワークを使用すると、既存または新規の仮想ネットワークに Kubernetes クラスターを展開できます。 高度ネットワークの詳細とその設定手順については、[Azure Kubernetes Service (AKS) のネットワーク構成](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
 - **AKS エンジン**:AKS エンジンは、Azure での Kubernetes クラスター デプロイ用 Azure Resource Manager テンプレートを生成するツールです。 詳しくは、[AKS エンジン Kubernetes クラスター用プラグインのデプロイ](deploy-container-networking.md#deploy-the-azure-virtual-network-container-network-interface-plug-in)に関する記事をご覧ください。
 - **Azure で独自の Kubernetes クラスターを作成する**:プラグインを使用すると、AKS や、AKS エンジンなどのツールに頼ることなく、ご自身でデプロイした Kubernetes クラスター内のポッドに対する基本ネットワークを提供できます。 この場合、プラグインはクラスター内のすべての仮想マシンにインストールされて有効にされます。 詳細については、[自身でデプロイした Kubernetes クラスター用プラグインのデプロイ](deploy-container-networking.md#deploy-plug-in-for-a-kubernetes-cluster)に関するページをご覧ください。
 - **Azure 内の Docker コンテナーに対する仮想ネットワークのアタッチ**:Kubernetes クラスターを作成したくなく、仮想マシン内に Docker コンテナーと仮想ネットワーク アタッチを作成したい場合は、プラグインを使用できます。 詳しくは、「[Docker コンテナー用プラグインのデプロイ](deploy-container-networking.md#deploy-plug-in-for-docker-containers)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Kubernetes クラスターまたは Docker コンテナー用の[プラグインをデプロイ](deploy-container-networking.md)します

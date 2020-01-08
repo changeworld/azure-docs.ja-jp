@@ -4,7 +4,7 @@
   items:
     - name: Azure Databricks とは
       href: what-is-azure-databricks.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Databricks ワークスペースの作成 - ポータル
@@ -27,9 +27,9 @@
       href: databricks-stream-from-eventhubs.md
     - name: Cognitive Services を使用した感情分析
       href: databricks-sentiment-analysis-cognitive-services.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
-    - name: 使用の開始
+    - name: 作業の開始
       items:
         - name: Azure Databricks を試す
           href: /azure/databricks/getting-started/try-databricks
@@ -123,6 +123,9 @@
         - name: クラスターの構成
           href: /azure/databricks/clusters/configure
           maintainContext: true
+        - name: カスタム コンテナー
+          href: /azure/databricks/clusters/custom-containers
+          maintainContext: true
         - name: クラスター ノードを初期化する
           href: /azure/databricks/clusters/init-scripts
           maintainContext: true
@@ -152,7 +155,7 @@
             - name: プールを使用する
               href: /azure/databricks/clusters/instance-pools/cluster-instance-pool
               maintainContext: true
-    - name: Notebooks
+    - name: ノートブック
       items:
         - name: Notebooks の概要
           href: /azure/databricks/notebooks/index
@@ -215,7 +218,7 @@
         - name: パッケージ セル
           href: /azure/databricks/notebooks/package-cells
           maintainContext: true
-    - name: '[ジョブ]'
+    - name: ジョブ
       href: /azure/databricks/jobs
       maintainContext: true
     - name: ライブラリ
@@ -561,7 +564,7 @@
             - name: FSCK REPAIR TABLE (Delta Lake on Azure Databricks)
               href: /azure/databricks/spark/latest/spark-sql/language-manual/fsck
               maintainContext: true
-            - name: Functions
+            - name: 関数
               href: /azure/databricks/spark/latest/spark-sql/language-manual/functions
               maintainContext: true
             - name: 挿入
@@ -585,7 +588,7 @@
             - name: 選択
               href: /azure/databricks/spark/latest/spark-sql/language-manual/select
               maintainContext: true
-            - name: Set
+            - name: オン
               href: /azure/databricks/spark/latest/spark-sql/language-manual/set
               maintainContext: true
             - name: SHOW COLUMNS
@@ -772,6 +775,14 @@
             - name: TensorFlow を使用して TFRecord ファイルにデータを保存する
               href: /azure/databricks/applications/deep-learning/data-prep/tensorflow-to-tfrecords
               maintainContext: true
+            - name: 特徴付け
+              items:
+                - name: 特徴付けの概要
+                  href: /azure/databricks/applications/deep-learning/featurization/index
+                  maintainContext: true
+                - name: 転移学習
+                  href: /azure/databricks/applications/deep-learning/featurization/transfer-learning-keras
+                  maintainContext: true
         - name: 単一ノード トレーニング
           items:
             - name: 単一ノード トレーニングの概要
@@ -826,15 +837,18 @@
             - name: TensorFlow を使用したモデル推論
               href: /azure/databricks/applications/deep-learning/inference/resnet-model-inference-tensorflow
               maintainContext: true
-            - name: 分散イメージ モデル推論のリファレンス ソリューション
-              href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
+            - name: モデル推論のパフォーマンス チューニング
+              href: /azure/databricks/applications/deep-learning/inference/model-inference-performance
               maintainContext: true
+        - name: 分散イメージ モデル推論のリファレンス ソリューション
+          href: /azure/databricks/applications/deep-learning/reference-solutions/images-etl-inference
+          maintainContext: true
     - name: MLflow
       items:
         - name: MLflow の概要
           href: /azure/databricks/applications/mlflow/index
           maintainContext: true
-        - name: 使用の開始
+        - name: 作業の開始
           items:
             - name: MLflow を使ってみる
               href: /azure/databricks/applications/mlflow/quick-start
@@ -1063,6 +1077,9 @@
             - name: クラスター構成の概要
               href: /azure/databricks/administration-guide/clusters/index
               maintainContext: true
+            - name: コンテナー サービスを有効にする
+              href: /azure/databricks/administration-guide/clusters/container-services
+              maintainContext: true
             - name: Databricks Runtime for Genomics を有効にする
               href: /azure/databricks/administration-guide/clusters/genomics-runtime
               maintainContext: true
@@ -1261,7 +1278,7 @@
             - name: シリアル化されたタスクが大きすぎる
               href: /azure/databricks/kb/execution/spark-serialized-task-is-too-large
               maintainContext: true
-        - name: '[ジョブ]'
+        - name: ジョブ
           items:
             - name: アクティブ ジョブと停止しているジョブ
               href: /azure/databricks/kb/jobs/active-vs-dead-jobs
@@ -1355,7 +1372,7 @@
             - name: Apache Spark メトリックを使用する
               href: /azure/databricks/kb/metrics/spark-metrics
               maintainContext: true
-        - name: Notebooks
+        - name: ノートブック
           items:
             - name: Spark プロパティを変更できるかどうかを確認する
               href: /azure/databricks/kb/notebooks/check-spark-property-modifiable
@@ -1460,6 +1477,9 @@
         - name: Databricks Connect
           href: /azure/databricks/dev-tools/databricks-connect
           maintainContext: true
+        - name: Jenkins での CI/CD
+          href: /azure/databricks/dev-tools/ci-cd
+          maintainContext: true
         - name: データ パイプラインの依存関係を管理する
           href: /azure/databricks/dev-tools/data-pipelines
           maintainContext: true
@@ -1487,7 +1507,7 @@
             - name: Instance Pools API
               href: /azure/databricks/dev-tools/api/latest/instance-pools
               maintainContext: true
-            - name: '[ジョブ]'
+            - name: ジョブ
               href: /azure/databricks/dev-tools/api/latest/jobs
               maintainContext: true
             - name: ライブラリ
@@ -1518,11 +1538,37 @@
       href: /azure/databricks/dev-tools/databricks-utils
       maintainContext: true
     - name: Databricks CLI
-      href: /azure/databricks/dev-tools/databricks-cli
-      maintainContext: true
-    - name: Stack CLI
-      href: /azure/databricks/dev-tools/stack
-      maintainContext: true
+      items:
+        - name: Databricks CLI の概要
+          href: /azure/databricks/dev-tools/cli/index
+          maintainContext: true
+        - name: クラスター
+          href: /azure/databricks/dev-tools/cli/clusters-cli
+          maintainContext: true
+        - name: DBFS
+          href: /azure/databricks/dev-tools/cli/dbfs-cli
+          maintainContext: true
+        - name: グループ
+          href: /azure/databricks/dev-tools/cli/groups-cli
+          maintainContext: true
+        - name: インスタンス プール
+          href: /azure/databricks/dev-tools/cli/instance-pools-cli
+          maintainContext: true
+        - name: ジョブ
+          href: /azure/databricks/dev-tools/cli/jobs-cli
+          maintainContext: true
+        - name: ライブラリ
+          href: /azure/databricks/dev-tools/cli/libraries-cli
+          maintainContext: true
+        - name: シークレット
+          href: /azure/databricks/dev-tools/cli/secrets-cli
+          maintainContext: true
+        - name: スタック
+          href: /azure/databricks/dev-tools/cli/stack-cli
+          maintainContext: true
+        - name: ワークスペース
+          href: /azure/databricks/dev-tools/cli/workspace-cli
+          maintainContext: true
     - name: Azure Databricks REST API
       href: /rest/api/databricks
     - name: Resource Manager テンプレート
@@ -1535,6 +1581,9 @@
           items:
             - name: プラットフォームのリリース ノート
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: 2020 年 1 月
+              href: /azure/databricks/release-notes/product/2020/january
               maintainContext: true
             - name: 2019 年 12 月
               href: /azure/databricks/release-notes/product/2019/december
@@ -1621,6 +1670,9 @@
                 - name: Databricks Runtime 6.2 ML
                   href: /azure/databricks/release-notes/runtime/6.2ml
                   maintainContext: true
+                - name: Databricks Runtime 6.2 Genomics
+                  href: /azure/databricks/release-notes/runtime/6.2genomics
+                  maintainContext: true
                 - name: Databricks Runtime 6.1
                   href: /azure/databricks/release-notes/runtime/6.1
                   maintainContext: true
@@ -1672,7 +1724,7 @@
                 - name: Databricks Runtime 3.5
                   href: /azure/databricks/release-notes/runtime/3.5
                   maintainContext: true
-            - name: サポートされていません
+            - name: サポートされていない
               items:
                 - name: サポートされていないランタイム リリース
                   href: /azure/databricks/release-notes/runtime/unsupported

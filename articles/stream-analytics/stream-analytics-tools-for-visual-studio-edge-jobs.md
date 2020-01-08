@@ -1,20 +1,19 @@
 ---
 title: Visual Studio における Azure Stream Analytics Edge ジョブ
 description: この記事では、Visual Studio の Stream Analytics ツールを使って、Stream Analytics on IoT Edge ジョブをオーサリング、デバッグ、および作成する方法について説明します。
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec4a4041378ce94ae70ba7a88b3fef80f7dcd193
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 07f109b3d5539f7cd87a12fb42a36803573c2bdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925027"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354563"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Visual Studio Tools を使用して Stream Analytics Edge ジョブを作成する
 
@@ -120,7 +119,7 @@ FROM EdgeInput
 
 ![Visual Studio でのジョブ ダイアグラムとその他のオプション](./media/stream-analytics-tools-for-visual-studio-edge-jobs/job-diagram-and-other-options.png) 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure IoT Edge の詳細](../iot-edge/about-iot-edge.md)
 * [ASA on IoT Edge チュートリアル](../iot-edge/tutorial-deploy-stream-analytics.md)

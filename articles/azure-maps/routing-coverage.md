@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 0991a0df8d34ddbcebf3d4097c0219b47793120b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ca837d871dc439cadd1ca5b69bf9c7a5d12fddc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408366"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps のルーティングの対象範囲
 
 この記事では、Azure Maps のルーティングの対象範囲情報を提供します。 場所 A から B への最適なルートを検索すると、Azure Maps が高度に正確な旅行時間、ライブの最新の旅行情報、ルートの指示を提示できます。 ルートでは、現在の交通量、車両の種類、避けるべき条件などの追加の検索用語が考慮されます。 Azure Maps では、リージョンごとに情報と精度のレベルが異なるため、ルートを最適化する機能はリージョンによって異なります。 次の表は、リージョンとそれらに要求できる情報の種類を示しています。
  
 ジオコーディングの対象範囲については[**こちら**](geocoding-coverage.md)を参照してください。       
-トラフィックの対象範囲は[**こちら**](traffic-coverage.md)をご覧ください。  
+トラフィックの対象範囲については[**こちら**](traffic-coverage.md)を参照してください。  
 レンダーの対象範囲は[**こちら**](render-coverage.md)をご覧ください。
 <br>  
 **凡例**
 
-| シンボル             | 意味                                |
+| Symbol             | 意味                                |
 |--------------------|----------------------------------------|
 | ✓                  | 詳細なデータが提供される国/リージョン。   |
 | Ø                  | 簡略化されたデータが提供される国/リージョン。 |
@@ -90,7 +90,7 @@ ms.locfileid: "65779935"
 | バルバドス                       |        ✓       |                      |             |
 | ベリーズ                         |        ✓       |                      |             |
 | ブラジル                         |        ✓       |         ✓            |     ✓       | 
-| カナダ                         |        ✓       |         ✓            |     ✓      |
+| Canada                         |        ✓       |         ✓            |     ✓      |
 | チリ                          |        ✓       |         ✓            |     ✓      |
 | コロンビア                       |        ✓       |         ✓            |             |
 | コスタリカ                     |        ✓       |                      |             |
@@ -116,7 +116,7 @@ ms.locfileid: "65779935"
 | セントビンセントおよびグレナディーン諸島       |        ✓       |                      |             |
 | スリナム                       |        ✓       |                      |             |
 | トリニダード・トバゴ              |        ✓       |                      |             |
-| 米国                  |        ✓       |         ✓            |     ✓      | 
+| United States                  |        ✓       |         ✓            |     ✓      | 
 | \+ 米領サモア                |        ✓       |                      |             |
 | \+ 北マリアナ諸島      |        ✓       |                      |             |
 | \+ プエルトリコ                   |        ✓       |                      |             |
@@ -138,6 +138,7 @@ ms.locfileid: "65779935"
 | 香港特別行政区                  |        ✓       |         ✓            |             |
 | インド                          |        ✓       |         ✓            |             |
 | インドネシア                      |        ✓       |         ✓            |             |
+| カザフスタン                |        ✓       |                     |             |
 | 韓国                          |        Ø       |                      |             |
 | ラオス                           |        ✓       |                      |             |
 | 中華人民共和国マカオ特別行政区                      |        ✓       |         ✓            |             |
@@ -243,6 +244,6 @@ ms.locfileid: "65779935"
 | イエメン                          |        ✓       |                      |             |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Maps のルーティングの詳細については、[ルーティング](https://docs.microsoft.com/rest/api/maps/route)のリファレンス ページを参照してください。

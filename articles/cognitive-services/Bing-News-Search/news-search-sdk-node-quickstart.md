@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9bbad7685cf7d562189871bb5fa4a56d69287db4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 832ce90db1d4eac0ef8db87c10a5bc2a1658216d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383899"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383194"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>クイック スタート:Bing News Search SDK for Node.js を使ってニュース検索を実行する
 
@@ -24,7 +24,7 @@ ms.locfileid: "74383899"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Node.JS](https://nodejs.org/en/)
+* [Node.js](https://nodejs.org/en/)
 
 Bing News Search SDK を使用してコンソール アプリケーションを設定するには:
 1. 開発環境で `npm install ms-rest-azure` を実行します。
@@ -69,7 +69,7 @@ Bing News Search SDK を使用してコンソール アプリケーションを�
 - `_type: 'VideoObject'`
 - `_type: 'ImageObject'`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

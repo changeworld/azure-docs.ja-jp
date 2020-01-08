@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832702"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608722"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で外部ユーザーのアクセスを管理する
 
@@ -105,7 +105,7 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 
 ### <a name="review-your-office-365-group-sharing-settings"></a>Office 365 グループの共有設定を確認する
 
-- 外部ユーザーのアクセス パッケージに Office 365 グループを含めるには、 **[ユーザーが組織に新しいゲストを追加できるようにします]** が **[オン]** に設定されていることを確認して、ゲスト アクセスを許可します。 詳細については、「[Office 365 グループへのゲスト アクセスの管理](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-guest-access-to-office-365-groups)」を参照してください。
+- 外部ユーザーのアクセス パッケージに Office 365 グループを含めるには、 **[ユーザーが組織に新しいゲストを追加できるようにします]** が **[オン]** に設定されていることを確認して、ゲスト アクセスを許可します。 詳細については、「[Office 365 グループへのゲスト アクセスの管理](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access)」を参照してください。
 
 - Office 365 グループに関連付けられている SharePoint Online サイトとリソースに外部ユーザーがアクセスできるようにするには、SharePoint Online の外部共有がオンになっていることを確認してください。 詳細については、「[外部共有を有効または無効にする](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting)」を参照してください。
 
@@ -143,10 +143,10 @@ Azure AD のエンタイトルメント管理では、[Azure AD 企業間 (B2B)]
 
 1. このディレクトリ内のゲスト ユーザー アカウントを削除する場合は、削除するまでの日数を設定できます。 アクセス パッケージへの最後の割り当てが失われた直後にゲスト ユーザー アカウントを削除する場合は、 **[Number of days before removing external user from this directory]\(このディレクトリから外部ユーザーを削除するまでの日数\)** を **0** に設定します。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [接続されている組織の追加](entitlement-management-organization.md)
+- [接続されている組織を追加する](entitlement-management-organization.md)
 - [自分のディレクトリ内以外のユーザーの場合](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
-- [トラブルシューティング](entitlement-management-troubleshoot.md)
+- [[トラブルシューティング]](entitlement-management-troubleshoot.md)

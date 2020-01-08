@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7616bcdaf2a2ae6f80b0c1e964f311ef5409a64f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707123"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442775"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -22,7 +22,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 
 |データ ソース  |メモリ内  |DirectQuery  |メモ |
 |---------|---------|---------|---------|
-|Azure SQL Database      |   はい      |    はい      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
+|Azure SQL データベース      |   はい      |    はい      |<sup>[2](#azprovider)</sup>、<sup>[3](#azsqlmanaged)</sup>|
 |Azure SQL Data Warehouse      |   はい      |   はい       |<sup>[2](#azprovider)</sup>|
 |Azure Blob Storage      |   はい       |    いいえ      | <sup>[1](#tab1400a)</sup> |
 |Azure Table Storage     |   はい       |    いいえ      | <sup>[1](#tab1400a)</sup>|
@@ -47,7 +47,7 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 |Access データベース     |  はい | いいえ |  |
 |Active Directory     |  はい | いいえ | <sup>[6](#tab1400b)</sup>  |
 |Analysis Services     |  はい | いいえ |  |
-|Analytics Platform System     |  はい | いいえ |  |
+|分析プラットフォーム システム     |  はい | いいえ |  |
 |CSV ファイル  |はい | いいえ |  |
 |Dynamics 365     |  はい | いいえ | <sup>[6](#tab1400b)</sup> |
 |Excel ブック     |  はい | いいえ |  |
@@ -56,12 +56,12 @@ Analysis Services プロジェクトを使用した Visual Studio の [データ
 |IBM Informix  |はい | いいえ |  |
 |JSON ドキュメント      |  はい | いいえ | <sup>[6](#tab1400b)</sup> |
 |バイナリからの行      | はい | いいえ | <sup>[6](#tab1400b)</sup> |
-|MySQL Database     | はい | いいえ |  |
+|MySQL データベース     | はい | いいえ |  |
 |OData フィード      |  はい | いいえ | <sup>[6](#tab1400b)</sup> |
 |ODBC クエリ     | はい | いいえ |  |
-|OLE DB     |   はい | いいえ |  |
+|OLE DB (OLE DB)     |   はい | いいえ |  |
 |Oracle  | はい  |はい  | <sup>[9](#oracle)</sup> |
-|PostgreSQL Database   | はい | いいえ | <sup>[6](#tab1400b)</sup> |
+|PostgreSQL データベース   | はい | いいえ | <sup>[6](#tab1400b)</sup> |
 |Salesforce オブジェクト|  はい | いいえ | <sup>[6](#tab1400b)</sup> |
 |Salesforce レポート |はい | いいえ | <sup>[6](#tab1400b)</sup> |
 |SAP HANA     |  はい | いいえ |  |
@@ -87,7 +87,7 @@ Azure Analysis Services サーバーからオンプレミスのデータ ソー�
 
 ## <a name="understanding-providers"></a>プロバイダーについて
 
-Visual Studio で表形式 1400 以上のモデル プロジェクトを作成する場合、既定では **[データの取得]** を使用してデータ ソースに接続するときにデータ プロバイダーを指定しません。 表形式 1400 以上のモデルでは、[Power Query](/power-query/power-query-what-is-power-query.md) コネクタを使用して、データ ソースと Analysis Services の間の接続、データ クエリ、およびマッシュアップを管理します。 これらは、接続プロパティの設定が自動で行われていることから、"*構造化*" データ ソース接続と呼ばれることもあります。 ただし、レガシ データ ソースを有効にすることはできます。 有効にすると、 **[テーブルのインポート ウィザード]** を使用して、"*レガシ*" または "*プロバイダー*" のデータ ソースとして、表形式 1200 以下のモデルで従来サポートされていた特定のデータ ソースに接続できます。 プロバイダー データ ソースとして指定した場合は、特定のデータ プロバイダーとその他の詳細な接続プロパティを指定できます。 たとえば、オンプレミスの SQL Server データ ウェアハウスに接続することも、レガシ データ ソースとして Azure SQL Database に接続することもできます。 その後、OLE DB Driver for SQL Server MSOLEDBSQL データ プロバイダーを選択できます。 この場合、OLE DB データ プロバイダーを選択すると、Power Query コネクタよりもパフォーマンスが向上する可能性があります。 
+Visual Studio で表形式 1400 以上のモデル プロジェクトを作成する場合、既定では **[データの取得]** を使用してデータ ソースに接続するときにデータ プロバイダーを指定しません。 表形式 1400 以上のモデルでは、[Power Query](/power-query/power-query-what-is-power-query) コネクタを使用して、データ ソースと Analysis Services の間の接続、データ クエリ、およびマッシュアップを管理します。 これらは、接続プロパティの設定が自動で行われていることから、"*構造化*" データ ソース接続と呼ばれることもあります。 ただし、レガシ データ ソースを有効にすることはできます。 有効にすると、 **[テーブルのインポート ウィザード]** を使用して、"*レガシ*" または "*プロバイダー*" のデータ ソースとして、表形式 1200 以下のモデルで従来サポートされていた特定のデータ ソースに接続できます。 プロバイダー データ ソースとして指定した場合は、特定のデータ プロバイダーとその他の詳細な接続プロパティを指定できます。 たとえば、オンプレミスの SQL Server データ ウェアハウスに接続することも、レガシ データ ソースとして Azure SQL Database に接続することもできます。 その後、OLE DB Driver for SQL Server MSOLEDBSQL データ プロバイダーを選択できます。 この場合、OLE DB データ プロバイダーを選択すると、Power Query コネクタよりもパフォーマンスが向上する可能性があります。 
 
 Visual Studio で [テーブルのインポート ウィザード] を使用する場合、任意のデータ ソースへの接続にはデータ プロバイダーが必要です。 既定のデータ プロバイダーが自動的に選択されます。 必要に応じて、データ プロバイダーは変更できます。 選択するプロバイダーの種類は、パフォーマンス、モデルがインメモリ ストレージまたは DirectQuery を使用しているかどうか、モデルをデプロイする Analysis Services プラットフォームによって異なる場合があります。
 
@@ -106,7 +106,7 @@ Visual Studio で [テーブルのインポート ウィザード] を使用す�
 ![レガシ データ ソースの詳細プロパティ](media/analysis-services-datasource/aas-import-legacy-advanced.png)
 
 
-## <a name="impersonation"></a>権限の借用
+## <a name="impersonation"></a>権限借用
 場合によっては、異なる権限借用アカウントの指定が必要になることがあります。 権限借用アカウントは、Visual Studio または SSMS で指定できます。
 
 オンプレミスのデータ ソースの場合:
@@ -122,7 +122,7 @@ Visual Studio で [テーブルのインポート ウィザード] を使用す�
 
 1400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure SQL Data Warehouse、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 有効なトークンを生成するには、SSMS を使用して資格情報を設定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [オンプレミス ゲートウェイ](analysis-services-gateway.md)   
 [サーバーの管理](analysis-services-manage.md)   
 

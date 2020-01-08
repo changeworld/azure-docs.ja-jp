@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 38655a9da103d1d669f87c6195be7f17702f9348
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0002e61827817af958007e1f789219e9291990d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056672"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647766"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>エンドポイント アクセス制御リストとは
 
@@ -39,7 +39,7 @@ ACL は、PowerShell または Azure Portal のいずれかを使用して構成
 * ルールの順序 (最低から最高) を使用して、特定の仮想マシン エンドポイントに適用される正しいルール セットを構成します。
 * 特定のリモート サブネットの IPv4 アドレスの ACL を指定します。
 
-ACL の制限については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)に関する記事を参照してください。
+ACL の制限については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)に関する記事を参照してください。
 
 ## <a name="how-acls-work"></a>ACL のしくみ
 ACL は、ルールの一覧が格納されたオブジェクトです。 ACL を作成し、仮想マシン エンドポイントに適用すると、VM のホスト ノードでパケットのフィルター処理が実行されます。 つまり、リモート IP アドレスのトラフィックは、VM ではなく、一致する ACL ルールのホスト ノードでフィルター処理されます。 そのため、VM のパケット フィルター処理に貴重な CPU サイクルが使用されることを回避できます。

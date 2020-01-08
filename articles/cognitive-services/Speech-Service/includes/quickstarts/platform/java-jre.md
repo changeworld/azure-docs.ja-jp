@@ -7,15 +7,15 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: 195d43739ff27a493b2f2923eac43df03313963b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5f6b994bce1d38872cffb1e6e389136742be6d48
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469634"
 ---
 このガイドでは、64 ビット Java 8 JRE 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。
 
@@ -24,12 +24,12 @@ ms.locfileid: "74816298"
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 - 以下のオペレーティング システム用の Java Speech SDK パッケージを入手できます。
-  - Windows:64 ビットのみ
+  - Windows: 64 ビットのみ
   - Mac: macOS X バージョン 10.13 以降
-  - Linux:64 ビットのみ (Ubuntu 16.04、Ubuntu 18.04、または Debian 9)
+  - Linux: 64 ビットのみ (Ubuntu 16.04、Ubuntu 18.04、または Debian 9)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,6 +58,6 @@ ms.locfileid: "74816298"
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [windows](../quickstart-list.md)]

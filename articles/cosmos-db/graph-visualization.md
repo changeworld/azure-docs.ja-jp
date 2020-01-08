@@ -7,16 +7,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 07/02/2019
-ms.openlocfilehash: efe47cc5453a7259da37dcb3c33edcdfbea6d8c8
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 1cabe57a0e7f2869a30973c8bbc8b4b38f664d81
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672628"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500028"
 ---
 # <a name="visualize-graph-data-stored-in-azure-cosmos-db-gremlin-api-with-data-visualization-solutions"></a>Azure Cosmos DB Gremlin API で保存されたグラフ データをデータ視覚化ソリューションを使用して視覚化する
 
-Azure Cosmos DB Gremlin API で保存されたデータを、さまざまなデータ視覚化ソリューションを使用して視覚化することができます。 以下のソリューションは、[Apache Tinkerpop コミュニティ](http://tinkerpop.apache.org/#poweredby)がグラフ データの視覚化用に推奨しているものです。
+Azure Cosmos DB Gremlin API で保存されたデータを、さまざまなデータ視覚化ソリューションを使用して視覚化することができます。 以下のソリューションは、[Apache Tinkerpop コミュニティ](https://tinkerpop.apache.org/#poweredby)がグラフ データの視覚化用に推奨しているものです。
 
 ## <a name="linkurious-enterprise"></a>Linkurious Enterprise
 
@@ -45,7 +45,7 @@ Linkurious Enterprise のインタラクティブなインターフェイスに�
 ![Cambridge Intelligence のデモ](./media/graph-visualization/ci-demo-1.gif)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
  
 - [ツールキットを試してみる](https://cambridge-intelligence.com/try/)
 - [KeyLines テクノロジの概要](https://cambridge-intelligence.com/keylines/technology/)

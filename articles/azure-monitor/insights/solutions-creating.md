@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97472a65af6eb2c5c2da93d93f38450cc021f680
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555297"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402042"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Azure での管理ソリューションの設計とビルド (プレビュー)
 > [!NOTE]
@@ -46,7 +46,7 @@ ms.locfileid: "72555297"
 
 ビューやアラートで使用されていない場合でも、ユーザーにとって便利だと思われるすべてのクエリを定義する必要があります。  こうしたクエリはポータルで保存された検索として利用でき、カスタム ビューの [[クエリのリスト] 視覚エフェクト パーツ](../../azure-monitor/platform/view-designer-parts.md#list-of-queries-part)に含めることもできます。
 
-### <a name="alerts"></a>アラート
+### <a name="alerts"></a>警告
 [Log Analytics のアラート](../../azure-monitor/platform/alerts-overview.md)では、リポジトリ内のデータに対する[ログ検索](#log-searches)によって問題を特定します。  アラートが発生した場合、ユーザーに通知するか、アクションを自動的に実行します。 アプリケーションのさまざまなアラートの状態を特定し、対応するアラート ルールをソリューション ファイルに含める必要があります。
 
 自動化されたプロセスで問題を修正できる可能性がある場合は、通常、その修復を実行する Azure Automation の Runbook を作成します。  ほとんどの Azure サービスは、[コマンドレット](/powershell/azure/overview)を使用して管理できます。Runbook では、コマンドレットを活用して、そうした機能を実行します。
@@ -60,7 +60,7 @@ Log Analytics のビューは、Log Analytics リポジトリのデータを視�
 
 
 ## <a name="create-solution-file"></a>ソリューション ファイルの作成
-ソリューションのコンポーネントを構成し、テストしたら、[ソリューション ファイルを作成]( solutions-solution-file.md)できます。  ファイル内の他のリソースとリレーションシップがある[ソリューション リソース]( solutions-solution-file.md#solution-resource)を含む [Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)にソリューションのコンポーネントを実装します。  
+ソリューションのコンポーネントを構成し、テストしたら、[ソリューション ファイルを作成]( solutions-solution-file.md)できます。  ファイル内の他のリソースとリレーションシップがある[ソリューション リソース]( solutions-solution-file.md#solution-resource)を含む [Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)にソリューションのコンポーネントを実装します。  
 
 
 ## <a name="test-your-solution"></a>ソリューションのテスト
@@ -74,7 +74,7 @@ Log Analytics のビューは、Log Analytics リポジトリのデータを視�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 管理ソリューションの[ソリューション ファイルの作成]( solutions-solution-file.md)方法について
-* [Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)の詳細について
+* [Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)の詳細について
 * Resource Manager テンプレートの様々なサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates) で検索できます。

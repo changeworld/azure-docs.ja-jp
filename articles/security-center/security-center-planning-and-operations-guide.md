@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: abcd6dc8c50b819dd02347b938602af7f2152d04
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996628"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462458"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure Security Center 計画および運用ガイド
 このガイドは、Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -41,7 +41,7 @@ ms.locfileid: "71996628"
 
 ![ロール](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Security Center を使用すると、上記のようなさまざまな責任を果たすことができます。 例:
+Security Center を使用すると、上記のようなさまざまな責任を果たすことができます。 次に例を示します。
 
 **Jeff (ワークロード所有者)**
 
@@ -82,6 +82,10 @@ Security Center では[ロールベースのアクセス制御 (RBAC)](../role-b
 **Jeff (ワークロード所有者)**
 
 * リソース グループの所有者/共同作成者
+
+**Ellen (CISO/CIO)**
+
+* サブスクリプションの所有者/共同作成者またはセキュリティ管理者
 
 **David (IT セキュリティ担当者)**
 
@@ -195,7 +199,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 また、セキュリティ上のリスクが生じる可能性がある構成の変更、推奨されるベースラインからの逸脱、およびセキュリティ アラートがないか、既存のリソースを定期的に監視する必要があります。 出発点となるのは、Security Center のダッシュボードです。 ここで、主に 3 つの領域を定期的に確認します。
 
-![Operations](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
+![操作](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
 
 1. **[防止]** セクション パネルでは、主要なリソースにすばやくアクセスできます。 コンピューティング、ネットワーク、ストレージとデータ、およびアプリケーションを監視するには、このオプションを使用します。
 2. **[推奨事項]** パネルでは、Security Center の推奨事項を確認できます。 継続的な監視の実施中、推奨事項は毎日表示されるわけではありません。これは、Security Center の初回の設定時にすべての推奨事項に対処したためです。 この理由から、このセクションには毎日新しい情報が表示されるとは限らず、必要に応じてアクセスするだけで十分です。
@@ -244,7 +248,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 >
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Security Center の導入を計画する方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)

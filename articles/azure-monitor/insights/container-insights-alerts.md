@@ -1,18 +1,14 @@
 ---
 title: コンテナー用 Azure Monitor におけるパフォーマンス アラートを作成する | Microsoft Docs
 description: この記事では、コンテナー用 Azure Monitor からのメモリおよび CPU の使用率に対するログ クエリに基づいてカスタム アラートを作成する方法について説明します。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: 66baa3095744c8b486430d587b992ba507d87733
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: efeb86dc0b71217cf566f7e6671e72601ec69371
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841627"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405606"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor でパフォーマンスの問題に関するアラートを設定する方法
 
@@ -287,7 +283,7 @@ InsightsMetrics
 >コンテナー リソースの使用率に関するアラート ルールを作成する次の手順では、「[ログ アラートの API の基本設定を切り替える](../platform/alerts-log-api-switch.md)」の説明に従って、新しいログ アラート API に切り替える必要があります。
 >
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側のウィンドウで、 **[モニター]** を選択します。 **[分析情報]** で **[コンテナー]** を選択します。
 3. **[監視対象クラスター]** タブで、一覧からクラスターを選択します。
 4. 左側のウィンドウの **[監視]** で **[ログ]** を選択して、Azure Monitor のログ ページを開きます。 このページを使用して、Azure Log Analytics クエリを記述し、実行することができます。
@@ -308,7 +304,7 @@ InsightsMetrics
 12. 既存の**アクション グループ**を選択するか、新しいグループを作成します。 この手順により、アラートがトリガーされるたびに同じアクションが実行されます。 お客様の IT または DevOps オペレーション チームでのインシデントの管理方法に基づいて構成してください。
 13. **[アラート ルールの作成]** を選択してアラート ルールを完成させます。 すぐに実行が開始されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、クラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。
 - Azure Monitor と、Kubernetes クラスターの他の側面を監視する方法の詳細については、[Kubernetes クラスターのパフォーマンスの表示](container-insights-analyze.md)および [Kubernetes クラスターの正常性の表示](container-insights-health.md)に関するページをご覧ください。

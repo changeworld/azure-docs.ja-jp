@@ -7,26 +7,26 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 095c591f63cb228b48681ffc67499820631bbaf5
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 37b0deba6531c8e714b8786f8c815cf323c310ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816449"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468327"
 ---
 このガイドでは、Python 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 - 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。
   - Windows: x64 および x86
   - Mac: macOS X バージョン 10.12 以降
-  - Linux:x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9
+  - Linux: x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -78,7 +78,7 @@ macOS を使用している場合は、次のコマンドを実行して、上�
 python3 -m pip install --upgrade pip
 ```
 
-`pip` を正常に使用して `azure-cognitiveservices-speech` をインストールしたら、その名前空間を Python プロジェクトにインポートすることで、Speech SDK を使用できます。 例:
+`pip` を正常に使用して `azure-cognitiveservices-speech` をインストールしたら、その名前空間を Python プロジェクトにインポートすることで、Speech SDK を使用できます。 次に例を示します。
 
 ```py
 import azure.cognitiveservices.speech as speechsdk
@@ -94,6 +94,6 @@ Speech SDK Python パッケージの更新プログラムは、PyPI を通じて
 
 問題があるか、機能が欠落している場合は、「[サポート オプションとヘルプ オプション](~/articles/cognitive-services/speech-service/support.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [windows](../quickstart-list.md)]

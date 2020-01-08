@@ -7,12 +7,12 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c4351afe7781f4340dfd943828d65e94efbdc0a7
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120970"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659306"
 ---
 # <a name="networking-limit-increase"></a>ネットワークの上限の引き上げ
 
@@ -66,11 +66,11 @@ Azure Portal で使用可能な Azure の [Usages + Quota] (使用量とクォ�
 
 1. [https://portal.azure.com](https://portal.azure.com ) から **[サブスクリプション]** を選択します。
 
-    ![Subscriptions](./media/resource-manager-core-quotas-request/subscriptions.png)
+    ![サブスクリプション](./media/resource-manager-core-quotas-request/subscriptions.png)
 
 2. クォータの追加が必要なサブスクリプションを選択します。
 
-    ![サブスクリプションを選択します。](./media/resource-manager-core-quotas-request/select-subscription.png)
+    ![サブスクリプションの選択](./media/resource-manager-core-quotas-request/select-subscription.png)
 
 3. **[使用量 + クォータ]** を選択します。
 
@@ -84,4 +84,4 @@ Azure Portal で使用可能な Azure の [Usages + Quota] (使用量とクォ�
 
 ## <a name="about-networking-limits"></a>ネットワークの制限について
 
-ネットワークの制限の詳細については、制限に関するページの[ネットワークの節](../azure-subscription-service-limits.md#networking-limits)、またはネットワークの制限に関する FAQ を参照してください
+ネットワークの制限の詳細については、制限に関するページの[ネットワークの節](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)、またはネットワークの制限に関する FAQ を参照してください

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 1c78336880d685090ae21c725becc90d689c1817
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 22a7ab7aa5d85e716d9b594ee3fb11aad3fa6a36
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581814"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75496558"
 ---
 # <a name="end-to-end-blob-ingestion-into-azure-data-explorer-through-python"></a>Python による Azure Data Explorer へのエンドツーエンドの BLOB の取り込み
 
@@ -38,13 +38,14 @@ pip install azure-common
 pip install azure-mgmt-resource
 pip install azure-mgmt-kusto
 pip install azure-mgmt-eventgrid
+pip install azure-kusto-data
 pip install azure-storage-blob
 ```
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
 [!INCLUDE [data-explorer-e2e-event-grid-resource-template](../../includes/data-explorer-e2e-event-grid-resource-template.md)]
 
-## <a name="code-example"></a>コード例 
+## <a name="code-example"></a>コードの例 
 
 次のコード例は、Azure Data Explorer へのデータ インジェストが実行されることになる段階ごとのプロセスを示しています。 
 
@@ -205,7 +206,7 @@ poller.wait()
     print(response.primary_results[0].rows_count)
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループを削除し、リソースをクリーンアップするには、次のコマンドを実行します。
 
@@ -215,7 +216,7 @@ poller = resource_client.resource_groups.delete(resource_group_name=resource_gro
 poller.wait()
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 *  クラスターとデータベースを作成するその他の方法については、[Azure Data Explorer クラスターとデータベースの作成](create-cluster-database-python.md)に関するページを参照してください。
 * 取り込み方法の詳細については、[Azure Data Explorer でのデータ インジェスト](ingest-data-overview.md)に関するページを参照してください。

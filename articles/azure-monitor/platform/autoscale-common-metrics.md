@@ -1,19 +1,15 @@
 ---
 title: 自動スケールの一般的なメトリック
 description: Cloud Services、Virtual Machines、Web Apps の自動スケールに一般的に使用されるメトリックについて説明します。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129744"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364596"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor の自動スケールの一般的なメトリック
 
@@ -51,7 +47,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 次のメトリックのアラートを作成できます。
 
-| メトリックの名前 | 単位 |
+| メトリックの名前 | ユニット |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |Percent |
 | \Processor(_Total)\% Privileged Time |Percent |
@@ -61,11 +57,11 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \Process(_Total)\Thread Count |Count |
 | \Process(_Total)\Handle Count |Count |
 | \Memory\% Committed Bytes In Use |Percent |
-| \Memory\Available Bytes |Bytes |
-| \Memory\Committed Bytes |Bytes |
-| \Memory\Commit Limit |Bytes |
-| \Memory\Pool Paged Bytes |Bytes |
-| \Memory\Pool Nonpaged Bytes |Bytes |
+| \Memory\Available Bytes |バイト |
+| \Memory\Committed Bytes |バイト |
+| \Memory\Commit Limit |バイト |
+| \Memory\Pool Paged Bytes |バイト |
+| \Memory\Pool Nonpaged Bytes |バイト |
 | \PhysicalDisk(_Total)\% Disk Time |Percent |
 | \PhysicalDisk(_Total)\% Disk Read Time |Percent |
 | \PhysicalDisk(_Total)\% Disk Write Time |Percent |
@@ -92,19 +88,19 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
  次のメトリックのアラートを作成できます。
 
-| メトリックの名前 | 単位 |
+| メトリックの名前 | ユニット |
 | --- | --- |
-| \Memory\AvailableMemory |Bytes |
+| \Memory\AvailableMemory |バイト |
 | \Memory\PercentAvailableMemory |Percent |
-| \Memory\UsedMemory |Bytes |
+| \Memory\UsedMemory |バイト |
 | \Memory\PercentUsedMemory |Percent |
 | \Memory\PercentUsedByCache |Percent |
 | \Memory\PagesPerSec |CountPerSecond |
 | \Memory\PagesReadPerSec |CountPerSecond |
 | \Memory\PagesWrittenPerSec |CountPerSecond |
-| \Memory\AvailableSwap |Bytes |
+| \Memory\AvailableSwap |バイト |
 | \Memory\PercentAvailableSwap |Percent |
-| \Memory\UsedSwap |Bytes |
+| \Memory\UsedSwap |バイト |
 | \Memory\PercentUsedSwap |Percent |
 | \Processor\PercentIdleTime |Percent |
 | \Processor\PercentUserTime |Percent |
@@ -124,11 +120,11 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageWriteTime |Seconds |
 | \PhysicalDisk\AverageTransferTime |Seconds |
 | \PhysicalDisk\AverageDiskQueueLength |Count |
-| \NetworkInterface\BytesTransmitted |Bytes |
-| \NetworkInterface\BytesReceived |Bytes |
+| \NetworkInterface\BytesTransmitted |バイト |
+| \NetworkInterface\BytesReceived |バイト |
 | \NetworkInterface\PacketsTransmitted |Count |
 | \NetworkInterface\PacketsReceived |Count |
-| \NetworkInterface\BytesTotal |Bytes |
+| \NetworkInterface\BytesTotal |バイト |
 | \NetworkInterface\TotalRxErrors |Count |
 | \NetworkInterface\TotalTxErrors |Count |
 | \NetworkInterface\TotalCollisions |Count |
@@ -145,14 +141,14 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 これらのメトリックに基づいてアラートしたり、スケールすることができます。
 
-| メトリックの名前 | 単位 |
+| メトリックの名前 | ユニット |
 | --- | --- |
 | CpuPercentage |Percent |
 | MemoryPercentage |Percent |
 | DiskQueueLength |Count |
 | HttpQueueLength |Count |
-| BytesReceived |Bytes |
-| BytesSent |Bytes |
+| BytesReceived |バイト |
+| BytesSent |バイト |
 
 ## <a name="commonly-used-storage-metrics"></a>一般的に使用される Storage のメトリック
 Storage キューの長さ (Storage キュー内のメッセージ数) に応じてスケールすることができます。 Storage キューの長さは特殊なメトリックであり、しきい値は、1 インスタンスあたりのメッセージ数です。 たとえば、2 つのインスタンスがあり、しきい値が 100 に設定されている場合、キュー内の合計メッセージ数が 200 になるとスケーリングが発生します。 インスタンスごとに 100 メッセージある場合や、120 と 80 メッセージ、またはその他の合計で最大 200 メッセージ以上となる組み合わせがあります。

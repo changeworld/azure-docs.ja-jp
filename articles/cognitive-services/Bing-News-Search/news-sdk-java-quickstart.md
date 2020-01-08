@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: def964dd932f8a41a877a3d9568a8ec4825874b8
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b8c2ca3bf919d70123b7b5b6d13c0301e0c1fd13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383580"
 ---
 # <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>クイック スタート:Bing News Search SDK for Java でニュースを検索する
 
@@ -57,7 +57,7 @@ import java.io.IOException;
 
 ## <a name="create-a-search-client-and-store-credentials"></a>検索クライアントの作成と資格情報の格納
 
-1. 新しい `NewsSearchAPIImpl` 検索クライアントを返す `getClient()` というメソッドを作成します。 新しい `NewsSearchAPIImpl` オブジェクトの第 1 パラメーターとしてエンドポイントを追加し、さらに資格情報を格納するための新しい `ServiceClientCredentials` オブジェクトを追加します。
+1. 新しい `NewsSearchAPIImpl` 検索クライアントを返す `getClient()` というメソッドを作成します。 新しい `NewsSearchAPIImpl` オブジェクトの第 1 パラメーターとしてエンドポイントを追加し、さらに資格情報を格納するための新しい `ServiceClientCredentials` オブジェクトを追加します。 
 
     ```java
     public static NewsSearchAPIImpl getClient(final String subscriptionKey) {
@@ -135,7 +135,7 @@ import java.io.IOException;
     }
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

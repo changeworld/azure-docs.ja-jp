@@ -1,5 +1,6 @@
 ---
-title: Azure Maps のマップ スタイル機能 | Microsoft Docs
+title: Azure Maps でマップ スタイルを選択する
+titleSuffix: Azure Maps
 description: Azure Maps のスタイル関連の機能について説明します。
 author: walsehgal
 ms.author: v-musehg
@@ -8,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: eb667c398be0bd51e05a6b65d416d5bce54e4386
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e1d3d1b5904eded9f35c5ba628bea6426e7afaf0
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881965"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531549"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Azure Maps でマップ スタイルを選択する
 
@@ -49,7 +50,7 @@ ms.locfileid: "68881965"
 > [!TIP]
 > 既定では、スタイルの選択ツール コントロールには、Azure Maps の S0 価格レベルを使用しているときに利用できるすべてのスタイルが一覧表示されます。 この一覧に表示されるスタイルの数を減らすには、一覧に表示するスタイルの配列をスタイルの選択ツールの `mapStyle` オプションに渡します。 S1 を使用していて、使用できるすべてのスタイルを表示する場合は、スタイル選択ツールの `mapStyles` オプションを `"all"` に設定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

@@ -4,15 +4,15 @@ description: Operations Manager とワークスペースを統合することで
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 79fcbb6f972eb022ce4d0e47a608e6f0d053a9ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5dc9412c7884eb62795fd04240f6cfa7d103e3be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162237"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363661"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -353,6 +353,6 @@ Microsoft.SystemCenter.Advisor.DataConnector と Advisor Connector の 2 つの�
 * System Center 2016 - Operations Manager 以降の場合､ソース メディアの `\ManagementPacks` フォルダー｡
 * 管理グループへの最新の更新プログラムのロールアップの適用以降｡ Operations Manager 2012 の場合、ソース フォルダーは `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` であり、2012 R2 の場合は `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` にあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 機能を追加し、データを収集するには、[Solutions Gallery から Azure Monitor ソリューションを追加する](../../azure-monitor/insights/solutions.md)方法に関するページを参照してください。

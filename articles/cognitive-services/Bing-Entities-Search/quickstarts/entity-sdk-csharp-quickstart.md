@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: f9036e78934ac14017a0437583109c91732ce4b3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 4c942040a36ae7b103f7dabac62376ea5a4e2890
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384538"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Bing Entity Search SDK for C# を使用して検索要求を送信する
 
@@ -55,7 +55,7 @@ Bing Entity Search SDK を Visual Studio プロジェクトに追加するには
 1. 新しい検索クライアントを作成します。 新しい `ApiKeyServiceClientCredentials` を作成して、サブスクリプション キーを追加します。
 
     ```csharp
-    var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+    var client = new EntitySearchClient(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
 1. クライアントの `Entities.Search()` 関数を使用して、クエリを検索します。
@@ -78,7 +78,7 @@ Bing Entity Search SDK を Visual Studio プロジェクトに追加するには
     Console.WriteLine(mainEntity.Description);
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)

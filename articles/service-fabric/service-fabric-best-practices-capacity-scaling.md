@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric の容量計画とスケーリング | Microsoft Docs
+title: Azure Service Fabric の容量計画とスケーリング
 description: Service Fabric クラスターとアプリケーションの計画とスケーリングに関するベスト プラクティス。
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d4daa7ae9c7e58c1949dfbe4427a154c389100d4
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: bf228e17ca24df9833f96f0c6fd3ef232cdf7ae6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348378"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377465"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric の容量計画とスケーリング
 
@@ -47,7 +38,7 @@ Azure Service Fabric クラスターの作成前、またはクラスターを�
 
 ## <a name="vertical-scaling-considerations"></a>垂直方向のスケーリングに関する考慮事項
 
-Azure Service Fabric で特定のノードの種類を[垂直方向にスケールする](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)には、いくつかの手順が必要であり、考慮すべきことがあります。 例:
+Azure Service Fabric で特定のノードの種類を[垂直方向にスケールする](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out)には、いくつかの手順が必要であり、考慮すべきことがあります。 次に例を示します。
 
 * クラスターは、スケーリングの前に正常になっている必要があります。 そうでない場合、クラスターがさらに不安定になってしまいます。
 * ステートフル サービスをホストするすべての Service Fabric クラスター ノードの種類は、持続性が Silver レベル以上であることが必要です。
@@ -110,7 +101,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 ### <a name="scaling-in"></a>スケールイン
 
-スケールインでは、スケールアウトよりも多くのことを考慮する必要があります。例:
+スケールインでは、スケールアウトよりも多くのことを考慮する必要があります。次に例を示します。
 
 * Service Fabric システム サービスは、クラスター内のプライマリ ノードの種類で実行されます。 信頼性レベルでの保証内容よりもインスタンス数が少なくならないように、シャットダウンしたり、そのノードの種類のインスタンス数をスケールダウンしたりしてはいけません。 
 * ステートフル サービスについては、可用性を保ち、サービスの状態を維持するために、一定数のノードが常に稼働している必要があります。 少なくとも、パーティションまたはサービスのターゲット レプリカ セットと同数のノードが必要です。
@@ -132,7 +123,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 }
 ```
 
-プログラムでのスケーリングのためには、シャット ダウンのためにノードを準備する必要があります。 削除するノード (最上位のインスタンス ノード) を見つけます。 例:
+プログラムでのスケーリングのためには、シャット ダウンのためにノードを準備する必要があります。 削除するノード (最上位のインスタンス ノード) を見つけます。 次に例を示します。
 
 ```csharp
 using (var client = new FabricClient())
@@ -233,7 +224,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Windows Server を実行している VM またはコンピューター上にクラスターを作成する:[Windows Server 用の Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)。
 * Linux を実行している VM またはコンピューター上にクラスターを作成する:[Linux クラスターの作成](service-fabric-cluster-creation-via-portal.md)。

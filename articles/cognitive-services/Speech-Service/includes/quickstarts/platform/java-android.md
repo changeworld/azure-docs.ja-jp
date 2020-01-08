@@ -7,15 +7,15 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/11/2019
 ms.author: erhopf
-ms.openlocfilehash: c3d7f265993a03c637577678cd9b3012776598c7
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: cd99d6227f32e1382f32f5fa3c7455475ebbbcda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816339"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468458"
 ---
 このガイドでは、Android 上の Java 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。 この設定は、Speech SDK Maven パッケージと Android Studio 3.3 が基になっています。
 
@@ -24,7 +24,7 @@ ms.locfileid: "74816339"
 
 [!INCLUDE [License Notice](~/includes/cognitive-services-speech-service-license-notice.md)]
 
-## <a name="supported-platforms"></a>サポートされるプラットフォーム
+## <a name="supported-platforms"></a>サポートされているプラットフォーム
 
 Speech SDK は、32/64 ビットの ARM プロセッサを搭載した Android デバイスおよび Intel x86/x64 互換のプロセッサを搭載した Android デバイスと互換性があります。
 
@@ -32,8 +32,8 @@ Speech SDK は、32/64 ビットの ARM プロセッサを搭載した Android �
 
 [!INCLUDE [](~/includes/cognitive-services-speech-service-quickstart-java-android-create-proj.md)]
 
-これで[次の手順](#next-steps)に進むことができます。
+これで、下記の「[次の手順](#next-steps)」に進むことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [windows](../quickstart-list.md)]

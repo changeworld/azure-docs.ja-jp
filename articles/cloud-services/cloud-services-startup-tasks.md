@@ -2,17 +2,17 @@
 title: Azure Cloud Services でのスタートアップ タスクの実行 | Microsoft Docs
 description: スタートアップ タスクを使用すると、アプリ用にクラウド サービス環境を準備できます。 スタートアップ タスクの動作のしくみおよびそれらを作成する方法について説明します
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: cea28aba4c57f69a030d05ac192f9578967cbc3f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359468"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360312"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>クラウド サービスのスタートアップ タスクを構成して実行する方法
 ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。
@@ -104,7 +104,7 @@ EXIT /B 0
 
 **taskType** -スタートアップ タスクを実行する方法を指定します。
 
-* **単純な**  
+* **simple**  
   タスクは、 [ServiceDefinition.csdef] ファイルで指定されている順序で、一度に 1 つずつ、同期的に実行されます。 ある **simple** スタートアップ タスクが 0 の **errorlevel** で終了すると、次の **simple** スタートアップ タスクが実行されます。 それ以上実行する **simple** スタートアップ タスクがない場合は、ロール自体が開始されます。   
   
   > [!NOTE]
@@ -148,7 +148,7 @@ RoleEnvironment クラスに基づく環境変数では、 **Variable** 要素�
 </Startup>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Cloud Service で [一般的なスタートアップ タスク](cloud-services-startup-tasks-common.md) を実行する方法を学習します。
 
 [パッケージ化](cloud-services-model-and-package.md) します。  
@@ -161,3 +161,6 @@ Cloud Service で [一般的なスタートアップ タスク](cloud-services-s
 [Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
+
+
+

@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951430"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659623"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>サーバー向け Azure Arc とは
 
@@ -30,7 +30,7 @@ Azure に接続するには、エージェント パッケージを各マシン�
 
 ## <a name="clients"></a>クライアント
 
-### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 パブリック プレビューでは、次がサポートされます。
 
@@ -41,7 +41,7 @@ Azure に接続するには、エージェント パッケージを各マシン�
 
 ## <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 
-Azure Resource Manager の制限事項を読み、[サブスクリプション](../../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)と[リソース グループ](../../azure-subscription-service-limits.md#resource-group-limits)について記載されているガイドラインに従って、接続するマシンの数を計画してください。 具体的には、リソース グループあたりのサーバー数は既定で 800 に制限されています。
+Azure Resource Manager の制限事項を読み、[サブスクリプション](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)と[リソース グループ](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)について記載されているガイドラインに従って、接続するマシンの数を計画してください。 具体的には、リソース グループあたりのサーバー数は既定で 800 に制限されています。
 
 ## <a name="networking-configuration"></a>ネットワーク構成
 
@@ -107,7 +107,7 @@ az provider register --namespace 'Microsoft.HybridCompute'
 az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-ポータルを使用してリソース プロバイダーを登録するには、[Azure portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) の手順に従ってください。
+ポータルを使用してリソース プロバイダーを登録するには、[Azure portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) の手順に従ってください。
 
 ## <a name="machine-changes-after-installing-the-agent"></a>エージェントのインストール後のマシンの変更
 

@@ -4,15 +4,15 @@ description: ワイヤー データは、Log Analytics エージェントを使�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/03/2018
-ms.openlocfilehash: 5e19c9bd47fe253f9a416b923ec0cb1748682842
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 031a09203ab2ab2bcfcdf4352e975c1374446c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900590"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365803"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -224,7 +224,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Dependency Agent のファイルは、次のディレクトリに保存されます。
 
-| **ファイル** | **Location** |
+| **[ファイル]** | **Location** |
 | --- | --- |
 | コア ファイル | /opt/microsoft/dependency-agent |
 | ログ ファイル | /var/opt/microsoft/dependency-agent/log |
@@ -256,7 +256,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-### <a name="desired-state-configuration"></a>Desired State Configuration
+### <a name="desired-state-configuration"></a>必要な状態の構成
 
 Desired State Configuration 経由で Dependency Agent をデプロイするには、次のように xPSDesiredStateConfiguration モジュールと簡単なコードを使用できます。
 
@@ -382,7 +382,7 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 
 入力データの種類ごとに、種類が _WireData_ であるレコードが作成されます。 WireData レコードには、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |---|---|
 | Computer | データが収集されたコンピューター名 |
 | TimeGenerated | レコードの時刻 |
@@ -393,7 +393,7 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 | IPVersion | IP バージョン |
 | Direction | 受信または送信 |
 | MaliciousIP | 既知の悪意のある発信元の IP アドレス |
-| Severity | 疑いのあるマルウェアの重大度 |
+| 重大度 | 疑いのあるマルウェアの重大度 |
 | RemoteIPCountry | リモート IP アドレスの国や地域 |
 | ManagementGroupName | Operations Manager 管理グループの名前 |
 | SourceSystem | データが収集されたソース |
@@ -412,6 +412,6 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 | RemoteIPLongitude | IP の経度の値 |
 | RemoteIPLatitude | IP の緯度の値 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ログを検索](../../azure-monitor/log-query/log-query-overview.md) して、詳細なワイヤ データ検索レコードを確認します。

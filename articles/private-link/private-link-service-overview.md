@@ -2,17 +2,17 @@
 title: Azure Private Link サービスとは
 description: Azure Private Link サービスについて学習します。
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f9bdc180bf0dfd6f35fb18f5c76176a68d8f1644
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912977"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647375"
 ---
 # <a name="what-is-azure-private-link-service"></a>Azure Private Link サービスとは
 
@@ -42,7 +42,7 @@ Azure Private Link サービスは、Azure Private Link を使用する独自の
 
 Private Link サービスが使用されなくなった場合は、削除できます。 ただし、サービスを削除する前に、それに関連付けられているプライベート エンドポイント接続がないことを確認してください。 すべての接続を拒否したうえで、サービスを削除することができます。
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>Properties
 
 Private Link サービスでは、次のプロパティを指定します。 
 
@@ -68,7 +68,7 @@ Private Link サービスでは、次のプロパティを指定します。
  
 - 単一の Private Link サービスに対して、異なる VNet、サブスクリプション、または Active Directory テナントに属する複数のプライベート エンドポイントからアクセスできます。 接続は、接続ワークフローを介して確立されます。 
  
-- 異なるフロントエンド IP 構成を使用して、同じ Standard Load Balancer 上に複数の Private Link サービスを作成できます。 Standard Load Balancer ごと、およびサブスクリプションごとに作成できる Private Link サービスの数には制限があります。 詳細については、 [Azure の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)に関する記事を参照してください。
+- 異なるフロントエンド IP 構成を使用して、同じ Standard Load Balancer 上に複数の Private Link サービスを作成できます。 Standard Load Balancer ごと、およびサブスクリプションごとに作成できる Private Link サービスの数には制限があります。 詳細については、 [Azure の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)に関する記事を参照してください。
  
 - Private Link サービスには、複数の NAT IP 構成をリンクすることができます。 複数の NAT IP 構成を選択すると、サービス プロバイダーをスケーリングするのに役立ちます。 現在、サービス プロバイダーは、Private Link サービスごとに最大 8 つの NAT IP アドレスを割り当てることができます。 各 NAT IP アドレスを使用して TCP 接続により多くのポートを割り当てることにより、スケールアウトすることができます。Private Link サービスに複数の NAT IP アドレスを追加した後で NAT IP アドレスを削除することはできません。 これは、NAT IP アドレスの削除時にアクティブな接続が影響を受けないようにするためです。
 
@@ -104,6 +104,6 @@ Private Link サービスを使用する場合の既知の制限事項は次の�
 - Azure portal からのエクスペリエンスの作成と管理はサポートされていない
 - プロキシ プロトコルを使用しているクライアント接続情報は、サービス プロバイダーには提供されない
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure PowerShell を使用してプライベート リンク サービスを作成する](create-private-link-service-powershell.md)
 - [Azure CLI を使用してプライベート リンク サービスを作成する](create-private-link-service-cli.md)

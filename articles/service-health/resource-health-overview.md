@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Health の概要 | Microsoft Docs
+title: Azure Resource Health の概要
 description: Azure Resource Health の概要
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 05/10/2019
-ms.openlocfilehash: 9c2096f94f38d13288c6ce3742252bc6d576835a
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854229"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356790"
 ---
 # <a name="resource-health-overview"></a>Resource Health の概要
  
@@ -29,7 +26,7 @@ Azure Resource Health は、Azure のリソースに影響を及ぼしている�
 
 リソースの正常性は、次のいずれかの状態として表示されます。
 
-### <a name="available"></a>使用可能
+### <a name="available"></a>利用可能
 
 *使用可能*は、リソースの正常性に影響を与えるイベントが検出されていないことを意味します。 リソースが過去 24 時間以内に予定外のダウンタイムから回復した場合は、"最近解決された" ことを示す通知が表示されます。
 
@@ -83,11 +80,11 @@ Resource Health の **[Health history]\(正常性の履歴\)** セクション�
 
 ![過去 2 週間の Resource Health イベントの一覧](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 1 つのリソースについて Resource Health を開くには
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 2. リソースを参照します。
 3. 左側のウィンドウのリソース メニューで、 **[リソース正常性]** を選択します。
 
@@ -97,7 +94,7 @@ Resource Health には、 **[すべてのサービス]** を選択し、フィ�
 
 ![[すべてのサービス] から Resource Health を開く様子](./media/resource-health-overview/FromOtherServices.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Resource Health について詳しくは、次のリファレンスをご覧ください。
 -  [Azure Resource Health で利用できるリソースの種類と正常性チェック](resource-health-checks-resource-types.md)

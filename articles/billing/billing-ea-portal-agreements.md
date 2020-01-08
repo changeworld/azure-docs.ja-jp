@@ -4,16 +4,16 @@ description: この記事では、Azure EA 契約と修正が Azure EA Portal �
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 78fda5785d85b728c897bf758bc2a3cdee768d02
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1f421abf1c9cff545c77a9fcbbb4acfd76d1e1d0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849906"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644411"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 契約と修正
 
@@ -138,14 +138,14 @@ LSP は、EA Portal で 1 つのパーセンテージ数を指定します。  
 
 **このシステムでは、サブスクリプションごとに次の既定のクォータが適用されます。**
 
-| **リソース** | **既定のクォータ** | **説明** |
+| **リソース** | **既定のクォータ** | **コメント** |
 | --- | --- | --- |
 | Microsoft Azure コンピューティング インスタンス | 20 個の同時実行 S コンピューティング インスタンス、またはこれと同等な他のサイズのコンピューティング インスタンス。 | 次の表に、同等な S インスタンスの数を計算する方法を示します。<ul><li> XS - S インスタンス 1 つと同等 </li><li> S - S インスタンス 1 つと同等 </li><li> M - S インスタンス 2 つと同等 </li><li> L - S インスタンス 4 つと同等 </li><li> XL - S インスタンス 8 個と同等 </li> </ul>|
 | Microsoft Azure コンピューティング インスタンス v2 VM | EA:350 コア | GA IaaS v2 VM:<ul><li> A0\_A7 ファミリ - 350 コア </li><li> B\_A0\_A4 ファミリ - 350 コア </li><li> A8\_A9 ファミリ - 350 コア </li><li> DF ファミリ - 350 コア</li><li> GF - 350 コア </li></ul>|
 | Microsoft Azure ホステッド サービス | 6 個のホステッド サービス | このホステッド サービスの制限は、個々のサブスクリプションで 6 個を超えて増やすことはできません。 追加のホステッド サービスが必要な場合は、サブスクリプションを追加してください。 |
 | Microsoft Azure Storage | 5 個のストレージ アカウント (それぞれの最大サイズは 100 TB)。 | ストレージ アカウントの数は、サブスクリプションごとに最大 20 個まで増やすことができます。 追加のストレージ アカウントが必要な場合は、サブスクリプションを追加してください。 |
 | SQL Azure | いずれかのタイプ (Web Edition または Business Edition) の 149 個のデータベース。 |   |
-| Access Control | アカウントあたり 50 個の名前空間。 月あたり 1 億件の Access Control トランザクション |   |
+| アクセス制御 | アカウントあたり 50 個の名前空間。 月あたり 1 億件の Access Control トランザクション |   |
 | Service Bus | アカウントあたり 50 個の名前空間。 40 個の Service Bus 接続 | 接続パックで Service Bus 接続を購入したお客様には、購入した接続パックとその次に高容量な接続パックの中間に相当するクォータが適用されます。 500 パックを選択したお客様には 750 のクォータが適用されます。 |
 
 ## <a name="resource-commitment"></a>リソースに対するコミットメント
@@ -269,7 +269,7 @@ Azure Compute Pre-Purchase プラン (CPP、旧称 Azure Compute Promo) は、�
 
 複数の登録があり、OMS プランがない誤った登録番号でサービスをデプロイしている場合は、Azure Enterprise Portal サポート ([https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport)) にご連絡ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure EA Portal の使用を開始するには、「[Get started with the Azure EA portal (Azure EA Portal の概要)](billing-ea-portal-get-started.md)」を参照してください。
-- Azure EA Portal の管理者は「[Azure EA Portal の管理](billing-ea-portal-administration.md)」を読んで、一般的な管理タスクについて学習する必要があります。
+- Azure EA ポータルの管理者は「[Azure EA ポータルの管理](billing-ea-portal-administration.md)」を読んで、一般的な管理タスクについて学習する必要があります。

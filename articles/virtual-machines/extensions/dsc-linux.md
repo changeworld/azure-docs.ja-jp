@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: b631a370c64522c201f1208819b5a76895d83b09
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d19b3d59c48cfc8fc91d4678c2f979b110575b1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457507"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359155"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -44,7 +44,7 @@ DSCForLinux 拡張機能は Microsoft によって公開され、サポートさ
 
 DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの Linux ディストリビューション](/azure/virtual-machines/linux/endorsed-distros)がすべてサポートされます。
 
-| ディストリビューション | Version |
+| Distribution | Version |
 |---|---|
 | Debian | すべてのバージョン |
 | Ubuntu| 18.04 |
@@ -281,7 +281,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 サンプルの Resource Manager テンプレートは、[201-dsc-linux-azure-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) と [201-dsc-linux-public-storage-on-ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu) です。
 
-Azure Resource Manager テンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)に関するページを参照してください。
+Azure Resource Manager テンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)に関するページを参照してください。
 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
@@ -407,7 +407,7 @@ Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure portal か Azure CLI を使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure CLI を使用して次のコマンドを実行します。
 
@@ -430,5 +430,5 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/community/)で Azure エキスパートに問い合わせてください。 または、Azure サポート インシデントを送信できます。 [Azure サポート サイト](https://azure.microsoft.com/support/options/)に移動して **[Get support]\(サポートを受ける\)** を選択します。 Azure サポートの使用方法の詳細については、「 [Azure Support FAQ (Microsoft Azure サポートに関する FAQ)](https://azure.microsoft.com/support/faq/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 拡張機能の詳細については、「[Linux 用の仮想マシンの拡張機能とその機能](features-linux.md)」を参照してください。

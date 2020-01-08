@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c303e2b691f8e7aa7ea3c8fcc69e39d7970ef54e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748450"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352884"
 ---
 # <a name="service-bus-faq"></a>Service Bus に関する FAQ
 
@@ -42,7 +42,7 @@ ms.locfileid: "73748450"
 
  パーティション分割されたエンティティは [Premium SKU](service-bus-premium-messaging.md) ではサポートされなくなりました。 
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか？ 
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか。 
 Azure Service Bus でメッセージを送受信する場合、次のプロトコルを使用できます。
 
 - Advanced Message Queuing Protocol (AMQP)
@@ -53,11 +53,11 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 
 | Protocol | Port | 詳細 | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 と 5672 | 「[AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)」を参照してください。 | 
+| AMQP | 5671 と 5672 | [AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)に関するページを参照してください | 
 | SBMP | 9350 から 9354 | 「[Connectivity mode](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet)」 (接続モード) を参照してください。 |
 | HTTP、HTTPS | 80、443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>どのような IP アドレスをホワイト リストに登録する必要がありますか。
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>どのような IP アドレスをホワイトリストに登録する必要がありますか。
 接続のためにホワイトリストに登録する必要がある適切な IP アドレスを検索するには、次の手順に従います。
 
 1. コマンド プロンプトで、次のコマンドを実行します。 
@@ -81,7 +81,7 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. サフィックスが s1、s2、および s3 であるそれぞれについて nslookup コマンドを実行し、 3 つの可用性ゾーンで実行されているすべての 3 つのインスタンスの IP アドレスを取得します。 
+3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
 
 
 ## <a name="best-practices"></a>ベスト プラクティス
@@ -91,7 +91,7 @@ Azure Service Bus でメッセージを送受信する場合、次のプロト�
 ### <a name="what-should-i-know-before-creating-entities"></a>エンティティを作成する前に知っておく必要があることは何ですか。
 キューとトピックの次のプロパティは変更できません。 エンティティをプロビジョニングするときはこの制限を考慮してください。代替の新しいエンティティを作成しない限り、これらのプロパティは変更できません。
 
-* パーティション分割
+* [パーティション分割]
 * セッション
 * 重複検出
 * Express エンティティ
@@ -150,7 +150,7 @@ Shared Access Signature は、SHA-256 セキュア ハッシュまたは URI に
 
 #### <a name="portal"></a>ポータル
 
-Azure Portal を使用して Service Bus 名前空間を別のサブスクリプションに移行するには、[こちら](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)の説明に従ってください。 
+Azure Portal を使用して Service Bus 名前空間を別のサブスクリプションに移行するには、[こちら](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)の説明に従ってください。 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -167,7 +167,7 @@ $res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsof
 Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Bus の詳細については、次の記事をご覧ください。
 
 * [Azure Service Bus Premium の概要 (ブログの投稿)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)

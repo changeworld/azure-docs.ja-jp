@@ -3,19 +3,15 @@ title: Azure Automation での初めてのグラフィカルな Runbook
 description: 簡単なグラフィカル Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。
 keywords: Runbook, Runbook テンプレート, Runbook Automation, Azure Runbook
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/13/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1cdd015d9f29c3fb672d626f32a485271e2757c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a93263cf968fc4804d7bbc59e15121d6061dd40a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850314"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366534"
 ---
 # <a name="my-first-graphical-runbook"></a>初めてのグラフィカルな Runbook
 
@@ -152,8 +148,8 @@ Runbook をテストして発行しましたが、これまでのところ役に
 2. **Start-AzureRmVM** をキャンバスに追加した後、それをクリックして **Specify Subscription Id** の下にドラッグします。
 1. **[Specify Subscription Id]** にポインターを合わせて、図形の下部に円を表示します。 円をクリックし、矢印を **Start-AzureRmVM**までドラッグします。
 1. **Start-AzureRmVM**を選択します。 **[パラメーター]** 、 **[パラメーター セット]** の順にクリックし、**Start-AzureRmVM** のセットを表示します。 **ResourceGroupNameParameterSetName** パラメーター セットを選択します。 **ResourceGroupName** と **Name** の横に感嘆符が付いています。 これは、必須のパラメーターであることを示します。 また、どちらのパラメーターも文字列値を受け取ることにも注意してください。
-1. 一覧から **Name**してください。 **[データ ソース]** には **[PowerShell 式]** を選択し、この Runbook で開始する仮想マシンの名前を二重引用符で囲んで入力します。 Click **OK**.
-1. 一覧から **ResourceGroupName**してください。 **[データ ソース]** には **[PowerShell expression (PowerShell 式)]** を選択し、リソース グループの名前を二重引用符で囲んで入力します。 Click **OK**.
+1. 一覧から **Name**してください。 **[データ ソース]** には **[PowerShell 式]** を選択し、この Runbook で開始する仮想マシンの名前を二重引用符で囲んで入力します。 **[OK]** をクリックします。
+1. 一覧から **ResourceGroupName**してください。 **[データ ソース]** には **[PowerShell expression (PowerShell 式)]** を選択し、リソース グループの名前を二重引用符で囲んで入力します。 **[OK]** をクリックします。
 1. テスト ウィンドウをクリックして、Runbook をテストできるようにします。
 1. **[開始]** をクリックしてテストを開始します。 完了したら、仮想マシンが開始されたことを確認します。
 
@@ -165,7 +161,7 @@ Runbook は、現時点では、**Start-AzureRmVM** コマンドレットで指�
 
 1. **MyFirstRunbook** ウィンドウで **[編集]** をクリックすると、グラフィカル エディターが開きます。
 1. **[入力と出力]** 、 **[入力の追加]** の順に選択して、Runbook 入力パラメーター ウィンドウを開きます。
-1. *[名前]* を「 **VMName**」と指定します。 Keep *string* for the **Type**, but change **Mandatory** to *Yes*. Click **OK**.
+1. *[名前]* を「 **VMName**」と指定します。 Keep *string* for the **Type**, but change **Mandatory** to *Yes*. **[OK]** をクリックします。
 1. *ResourceGroupName* という名前の 2 番目の必須入力パラメーターを作成し、 **[OK]** をクリックして **[入力と出力]** ウィンドウを閉じます。<br> ![Runbook の入力パラメーター](media/automation-first-runbook-graphical/start-azurermvm-params-outputs.png)
 1. **Start-AzureRmVM** アクティビティを選択し、 **[パラメーター]** をクリックします。
 1. **Name** の **[データ ソース]** を **[Runbook input (Runbook の入力)]** に変更し、**VMName** を選択します。
@@ -186,9 +182,9 @@ Runbook は、現時点では、**Start-AzureRmVM** コマンドレットで指�
 1. ライブラリ コントロールの検索ボックスに「 **Get-AzureRm** 」と入力します。
 1. **Get-AzureRmVM** をキャンバスに追加します。
 1. **Get-AzureRmVM**、 **[パラメーター セット]** の順にクリックし、**Get-AzureRmVM** のセットを表示します。 **GetVirtualMachineInResourceGroupNameParamSet** パラメーター セットを選択します。 **ResourceGroupName** と **Name** の横に感嘆符が付いています。 これは、必須のパラメーターであることを示します。 また、どちらのパラメーターも文字列値を受け取ることにも注意してください。
-1. **Name** の **[データ ソース]** で **[Runbook input (Runbook の入力)]** を選択した後、**VMName** を選択します。 Click **OK**.
-1. **ResourceGroupName** の **[データ ソース]** で、 **[Runbook input (Runbook の入力)]** を選択した後、**ResourceGroupName** を選択します。 Click **OK**.
-1. **Status** の **[データ ソース]** で、 **[定数値]** を選択した後、 **[True]** をクリックします。 Click **OK**.
+1. **Name** の **[データ ソース]** で **[Runbook input (Runbook の入力)]** を選択した後、**VMName** を選択します。 **[OK]** をクリックします。
+1. **ResourceGroupName** の **[データ ソース]** で、 **[Runbook input (Runbook の入力)]** を選択した後、**ResourceGroupName** を選択します。 **[OK]** をクリックします。
+1. **Status** の **[データ ソース]** で、 **[定数値]** を選択した後、 **[True]** をクリックします。 **[OK]** をクリックします。
 1. **Specify Subscription Id** から **Get-AzureRmVM** へのリンクを作成します。
 1. ライブラリ コントロールで **[Runbook の制御]** を展開し、**Code** をキャンバスに追加します。  
 1. **Get-AzureRmVM** から **Code** へのリンクを作成します。  
@@ -224,10 +220,10 @@ Runbook は、現時点では、**Start-AzureRmVM** コマンドレットで指�
 1. Runbook を保存してテスト ウィンドウを開きます。
 1. 仮想マシンが停止している状態で Runbook を開始すると、仮想マシンが開始します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* グラフィカル作成の詳細については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
-* PowerShell Runbook の使用を開始するには、「 [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
+* グラフィカル作成の詳細については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md) を参照してください。
+* PowerShell Runbook の使用を開始するには、「 [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md) を参照してください。
 * PowerShell ワークフロー Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
 
 

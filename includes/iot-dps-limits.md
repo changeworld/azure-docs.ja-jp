@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: fb77682bce0d9faef8f9ac8197afd8751560d515
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a306a05899a644f2ee8ea738789b84ee98221531
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224563"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392376"
 ---
 次の表は、Azure IoT Hub Device Provisioning Service のリソースに適用される制限の一覧です。
 
@@ -23,10 +23,6 @@ ms.locfileid: "74224563"
 | リンクされた IoT Hub の最大数 | 50 |
 | メッセージの最大サイズ | 96 KB|
 
-
-> [!NOTE]
-> お使いのサブスクリプションのインスタンス数を増やすには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
-
 > [!NOTE]
 > お使いのプロビジョニング サービスの加入数と登録数を増やすには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
@@ -34,6 +30,6 @@ Device Provisioning Service は、次のクォータを超えた場合に、要�
 
 | スロットル | ユニットあたりの値 |
 | --- | --- |
-| Operations | 200/分/サービス |
+| 操作 | 200/分/サービス |
 | デバイス登録 | 200/分/サービス |
 | デバイスのポーリング操作 | 5/10 秒/デバイス |

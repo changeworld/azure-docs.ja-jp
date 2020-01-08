@@ -2,19 +2,15 @@
 title: Orchestrator から Azure Automation への移行
 description: System Center Orchestrator の Runbook と統合パックを Azure Automation に移行する方法を説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: b34554798130d9741318e0f518c32a41f82a17e3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 528b961ca07ec86ad502ee1b589772e354564a3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421695"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Orchestrator から Azure Automation (ベータ版) へ移行する
 [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) の Runbook は特に Orchestrator 用として作成された統合パックの活動に基づいているのに対し、Azure Automation の Runbook は Windows PowerShell に基づいています。  [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) の外観は Orchestrator Runbook に似ており、アクティビティは PowerShell コマンドレット、子 Runbook、およびアセットで表されます。
@@ -42,7 +38,7 @@ Orchestrator の Runbook はデータベース サーバー上に格納され、
 
 統合パック コンバーターを実行すると、ウィザードが表示され、統合パック (.oip) ファイルを選択できます。  次に、ウィザードに、その統合パックに含まれる活動が一覧表示され、移行する活動を選択できます。  ウィザードを完了すると、元の統合パックの各活動に対応するコマンドレットを含む統合モジュールが作成されます。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 統合パック内の活動のプロパティは、その統合モジュールで対応するコマンドレットのパラメーターに変換されます。  Windows PowerShell コマンドレットには、すべてのコマンドレットで使用できる一連の [共通パラメーター](https://technet.microsoft.com/library/hh847884.aspx) が含まれています。  たとえば、-Verbose パラメーターを使用すると、対象操作についての詳細情報を出力するコマンドレットが実行されます。  コマンドレットに、共通パラメーターと同じ名前のパラメーターを含めることはできません。  活動に共通パラメーターと同じ名前を持つプロパティが含まれる場合、対象パラメーターに別の名前を指定するように求めるプロンプトがウィザードによって表示されます。
 
 ### <a name="monitor-activities"></a>モニター活動
@@ -96,7 +92,7 @@ ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module 
 ### <a name="log-files"></a>ログ ファイル
 Runbook コンバーターでは、変換後の Runbook と同じ場所に次のログ ファイルが作成されます。  ファイルが既に存在する場合は、最後に行われた変換の情報で上書きされます。
 
-| ファイル | 目次 |
+| ファイル | 内容 |
 |:--- |:--- |
 | Runbook Converter - Progress.log |変換が正常に完了した各活動の情報や、変換されなかった各活動の警告など、変換の詳細な手順。 |
 | Runbook Converter - Summary.log |警告や、実行が必要なフォローアップ タスク (例: 変換後の Runbook に必要な変数の作成) など、最後に行われた変換の概要。 |
