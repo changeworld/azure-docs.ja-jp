@@ -2,32 +2,26 @@
   href: index.yml
 - name: 概要
   items:
-    - name: IoT Device Provisioning Service について
+    - name: IoT Hub Device Provisioning Service の概要
       href: about-iot-dps.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
-    - name: 自動プロビジョニングの設定 - Azure CLI
-      href: quick-setup-auto-provision-cli.md
-    - name: 自動プロビジョニングの設定 - ポータル
-      href: quick-setup-auto-provision.md
-    - name: 自動プロビジョニングの設定 - テンプレート
-      href: quick-setup-auto-provision-rm.md
-    - name: シミュレートされたデバイスの自動プロビジョニング
+    - name: DPS を設定する
       items:
-        - name: TPM の構成証明
+        - name: Azure portal
+          href: quick-setup-auto-provision.md
+        - name: Azure CLI
+          href: quick-setup-auto-provision-cli.md
+        - name: Azure RM テンプレート
+          href: quick-setup-auto-provision-rm.md
+    - name: 1 台のシミュレートされたデバイスをプロビジョニングする
+      items:
+        - name: 対称キーの構成証明
           items:
             - name: C
-              href: quick-create-simulated-device.md
-            - name: Java
-              href: quick-create-simulated-device-tpm-java.md
-            - name: 'C#'
-              href: quick-create-simulated-device-tpm-csharp.md
-            - name: Node.js
-              href: quick-create-simulated-device-tpm-node.md
-            - name: Python
-              href: quick-create-simulated-device-tpm-python.md
-        - name: X.509 の構成証明
+              href: quick-create-simulated-device-symm-key.md
+        - name: X.509 証明書の構成証明
           items:
             - name: C
               href: quick-create-simulated-device-x509.md
@@ -39,23 +33,21 @@
               href: quick-create-simulated-device-x509-node.md
             - name: Python
               href: quick-create-simulated-device-x509-python.md
-        - name: 対称キーの構成証明
+        - name: シミュレートされた TPM デバイスの構成証明
           items:
             - name: C
-              href: quick-create-simulated-device-symm-key.md
-    - name: プロビジョニング サービス API を使用したデバイス登録
-      items:
-        - name: TPM の構成証明
-          items:
+              href: quick-create-simulated-device.md
             - name: Java
-              href: quick-enroll-device-tpm-java.md
+              href: quick-create-simulated-device-tpm-java.md
             - name: 'C#'
-              href: quick-enroll-device-tpm-csharp.md
+              href: quick-create-simulated-device-tpm-csharp.md
             - name: Node.js
-              href: quick-enroll-device-tpm-node.md
+              href: quick-create-simulated-device-tpm-node.md
             - name: Python
-              href: quick-enroll-device-tpm-python.md
-        - name: X.509 の構成証明
+              href: quick-create-simulated-device-tpm-python.md
+    - name: DPS API を使用してデバイス登録を作成する
+      items:
+        - name: X.509 証明書の構成証明を使用したグループ登録
           items:
             - name: Java
               href: quick-enroll-device-x509-java.md
@@ -65,6 +57,16 @@
               href: quick-enroll-device-x509-node.md
             - name: Python
               href: quick-enroll-device-x509-python.md
+        - name: TPM 構成証明を使用した個々のデバイスの登録
+          items:
+            - name: Java
+              href: quick-enroll-device-tpm-java.md
+            - name: 'C#'
+              href: quick-enroll-device-tpm-csharp.md
+            - name: Node.js
+              href: quick-enroll-device-tpm-node.md
+            - name: Python
+              href: quick-enroll-device-tpm-python.md
 - name: チュートリアル
   items:
     - name: 1 - クラウド リソースを設定する
@@ -79,7 +81,7 @@
           href: tutorial-net-provision-device-to-hub.md
     - name: 4 - デバイスを複数のハブにプロビジョニングする
       href: tutorial-provision-multiple-hubs.md
-    - name: 5 - グループ登録をプロビジョニングする
+    - name: 5 - グループ登録を設定する
       href: tutorial-group-enrollments.md
 - name: 概念
   items:
@@ -89,15 +91,15 @@
       href: concepts-device-reprovision.md
     - name: デバイス
       href: concepts-device.md
-    - name: セキュリティ
+    - name: Security
       href: concepts-security.md
-    - name: Service
+    - name: サービス
       href: concepts-service.md
     - name: TPM の構成証明
       href: concepts-tpm-attestation.md
     - name: 対称キーの構成証明
       href: concepts-symmetric-key-attestation.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: IoT Hub に対する MXChip IoT DevKit の接続
       href: how-to-connect-mxchip-iot-devkit.md
@@ -165,7 +167,7 @@
       href: 'https://github.com/Azure/azure-iot-sdk-csharp'
 - name: 関連項目
   items:
-    - name: 解決方法
+    - name: ソリューション
       items:
         - name: IoT Central
           href: 'https://docs.microsoft.com/microsoft-iot-central/'

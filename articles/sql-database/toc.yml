@@ -49,7 +49,7 @@
               href: sql-database-service-tier-hyperscale-faq.md
             - name: Premium RS から移行する
               href: sql-database-service-tiers-prs.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: SQL データベース
@@ -64,11 +64,13 @@
       href: sql-database-features.md
     - name: ハウツー ガイド
       href: sql-database-howto.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティの概要
           href: sql-database-security-overview.md
           displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
+        - name: セキュリティの運用方法
+          href: sql-database-security-best-practice.md
         - name: アクセス管理
           items:
             - name: アクセス制御
@@ -92,7 +94,7 @@
               href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
         - name: データ保護
           items:
-            - name: 透過的なデータ暗号化 (TDE)
+            - name: Transparent Data Encryption (TDE)
               items:
                 - name: Azure SQL での TDE
                   href: transparent-data-encryption-azure-sql.md
@@ -157,7 +159,7 @@
               href: 'https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json'
             - name: SSMS
               href: sql-database-connect-query-ssms.md
-            - name: Azure ポータル
+            - name: Azure portal
               href: sql-database-connect-query-portal.md
             - name: VS Code
               href: sql-database-connect-query-vscode.md
@@ -212,13 +214,13 @@
               href: sql-database-automated-backups.md
             - name: バックアップを使用した復元
               href: sql-database-recovery-using-backups.md
-            - name: 高速データベースの復旧
+            - name: 高速データベース復旧
               href: sql-database-accelerated-database-recovery.md
             - name: 長期のバックアップ リテンション期間
               href: sql-database-long-term-retention.md
         - name: フェールオーバー グループと geo レプリケーション
           items:
-            - name: アクティブ geo レプリケーション
+            - name: アクティブな地理的レプリケーション
               href: sql-database-active-geo-replication.md
             - name: 自動フェールオーバー グループ
               href: sql-database-auto-failover-group.md
@@ -242,7 +244,7 @@
               href: 'https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql'
             - name: 診断テレメトリのログ記録
               href: sql-database-metrics-diag-logging.md
-        - name: インテリジェント パフォーマンス
+        - name: インテリジェントなパフォーマンス
           items:
             - name: 自動チューニング
               href: sql-database-automatic-tuning.md
@@ -292,7 +294,7 @@
               href: sql-database-elastic-scale-introduction.md
             - name: 用語集
               href: sql-database-elastic-scale-glossary.md
-            - name: エラスティック クライアント ライブラリ - 統合
+            - name: エラスティック クライアント ライブラリ
               href: sql-database-elastic-database-client-library.md
             - name: シャード マップ
               href: sql-database-elastic-scale-shard-map-management.md
@@ -471,7 +473,7 @@
           href: sql-database-elastic-pool.md
         - name: データベース サーバー
           href: sql-database-servers.md
-    - name: クイック スタート
+    - name: クイックスタート
       items:
         - name: 作成
           items:
@@ -480,7 +482,7 @@
             - name: テンプレートの使用
               displayName: 'Azure Resource Manager template, ARM'
               href: sql-database-single-database-get-started-template.md
-        - name: 構成
+        - name: '[構成]'
           items:
             - name: サーバーレベルの IP ファイアウォール規則
               href: sql-database-server-level-firewall-rule.md
@@ -532,7 +534,7 @@
           items:
             - name: データ同期エージェント
               href: sql-database-data-sync-agent.md
-            - name: スキーマ変更のレプリケート
+            - name: '[スキーマ変更のレプリケート]'
               href: sql-database-update-sync-schema.md
             - name: OMS で監視する
               href: sql-database-sync-monitor-oms.md
@@ -546,7 +548,7 @@
               href: sql-database-query-performance.md
         - name: T-SQL の相違点
           href: sql-database-transact-sql-information.md
-        - name: 機能
+        - name: '[機能]'
           items:
             - name: SQL データ同期
               href: sql-database-sync-data.md
@@ -560,7 +562,7 @@
               href: sql-database-machine-learning-services-overview.md
             - name: 主な相違点
               href: sql-database-machine-learning-services-differences.md
-            - name: クイック スタート
+            - name: クイックスタート
               items:
                 - name: R スクリプトの作成
                   href: sql-database-quickstart-r-create-script.md
@@ -600,7 +602,7 @@
           href: sql-database-single-database-migrate.md
         - name: 移行後の SQL Database の管理
           href: sql-database-manage-after-migration.md
-        - name: レプリケーションの構成
+        - name: レプリケーションの設定
           href: replication-to-sql-database.md
         - name: 脅威検出の構成
           href: sql-database-threat-detection.md
@@ -683,16 +685,17 @@
         - name: コード サンプル
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL マネージド インスタンス
+  href: sql-database-managed-instance-index.yml
   items:
-    - name: マネージド インスタンスのドキュメント
-      href: sql-database-managed-instance-index.yml
     - name: 概要
-      href: sql-database-managed-instance.md
-    - name: インスタンス プール
-      href: sql-database-instance-pools.md
-    - name: FAQ
-      href: sql-database-managed-instance-faq.md
-    - name: クイック スタート
+      items:
+        - name: マネージド インスタンス
+          href: sql-database-managed-instance.md
+        - name: インスタンス プール
+          href: sql-database-instance-pools.md
+        - name: よく寄せられる質問
+          href: sql-database-managed-instance-faq.md
+    - name: クイックスタート
       items:
         - name: 作成
           items:
@@ -702,7 +705,7 @@
               href: scripts/sql-database-create-configure-managed-instance-powershell.md
             - name: インスタンス プールの作成
               href: sql-database-instance-pools-how-to.md
-        - name: 構成
+        - name: '[構成]'
           items:
             - name: パブリック エンドポイント
               href: sql-database-managed-instance-public-endpoint-configure.md
@@ -710,7 +713,7 @@
               href: sql-database-managed-instance-configure-vm.md
             - name: Point-to-site connection
               href: sql-database-managed-instance-configure-p2s.md
-        - name: データを読み込む
+        - name: データの読み込み
           items:
             - name: データベース バックアップの復元
               href: sql-database-managed-instance-get-started-restore.md
@@ -718,14 +721,18 @@
       items:
         - name: DMS を使用した移行
           href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-        - name: トランザクション レプリケーションの構成
-          href: replication-with-sql-database-managed-instance.md
         - name: セキュリティを構成する
           href: sql-database-managed-instance-aad-security-tutorial.md
         - name: マネージド インスタンスをフェールオーバー グループに追加する
           href: sql-database-managed-instance-failover-group-tutorial.md
         - name: オンプレミスのユーザーとグループの移行
           href: tutorial-managed-instance-azure-active-directory-migration.md
+        - name: トランザクション レプリケーション
+          items:
+            - name: MI パブリッシャーから MI サブスクライバー
+              href: replication-with-sql-database-managed-instance.md
+            - name: MI パブリッシャー、MI ディストリビューター、SQL サブスクライバー
+              href: sql-database-managed-instance-configure-replication-tutorial.md
     - name: 概念
       items:
         - name: Management API リファレンス
@@ -736,7 +743,7 @@
           href: sql-database-managed-instance-connectivity-architecture.md
         - name: T-SQL の相違点
           href: sql-database-managed-instance-transact-sql-information.md
-        - name: 機能
+        - name: '[機能]'
           items:
             - name: リンク サーバー
               href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/sql-database/toc.json'
@@ -813,7 +820,7 @@
       href: /sql/ssdt/download-sql-server-data-tools-ssdt
     - name: BCP
       href: /sql/tools/bcp-utility
-    - name: SQLCMD
+    - name: sqlcmd
       href: /sql/tools/sqlcmd-utility
     - name: SqlPackage
       href: 'https://docs.microsoft.com/sql/tools/sqlpackage?toc=/azure/sql-database/toc.json'
@@ -839,7 +846,7 @@
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: 接続に関する問題
           href: troubleshoot-connectivity-issues-microsoft-azure-sql-database.md

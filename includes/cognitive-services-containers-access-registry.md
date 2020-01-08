@@ -5,10 +5,10 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: b9d0d2b97472eb3264f5e4600fddbfc7d3250918
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
+ms.lasthandoff: 12/28/2019
 ms.locfileid: "67704296"
 ---
 ## <a name="use-the-docker-cli-to-authenticate-the-private-container-registry"></a>Docker CLI を使用してプライベート コンテナー レジストリを認証する

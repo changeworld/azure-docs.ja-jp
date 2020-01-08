@@ -5,7 +5,7 @@
     - name: Azure Policy とは
       displayName: 'rbac, assign, initiative, parameters, count'
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: ポリシーの割り当て - ポータル
@@ -28,7 +28,7 @@
     - name: カスタム ポリシー定義の作成
       displayName: 'disabled, parameters, rule, mode'
       href: ./tutorials/create-custom-policy-definition.md
-    - name: タグ ガバナンスの管理
+    - name: タグ ガバナンスを管理する
       displayName: 'modify, append, effects'
       href: ./tutorials/govern-tags.md
     - name: ハンズオン ラボ - Azure Policy の探索
@@ -36,7 +36,7 @@
       href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
 - name: サンプル
   items:
-    - name: Index
+    - name: インデックス
       displayName: 'list, examples'
       href: ./samples/index.md
     - name: 全般
@@ -232,7 +232,7 @@
             - name: SQL DB レベルの監査設定の監査
               displayName: auditIfNotExists
               href: samples/audit-sql-db-audit-setting.md
-    - name: Storage
+    - name: ストレージ
       items:
         - name: ストレージ アカウントと VM に対して許可された SKU
           displayName: 'initiative, vmSKUs, storageSKUs'
@@ -263,7 +263,7 @@
     - name: 新しいポリシーの影響の評価
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
-    - name: Policy as Code ワークフローの設計
+    - name: コードとしてのポリシー ワークフローの設計
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
     - name: Kubernetes 用の Azure Policy
@@ -277,7 +277,7 @@
     - name: ゲスト構成を使用した VM の監査
       displayName: 'provider, tools, definition'
       href: ./concepts/guest-configuration.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: VS Code 用 Azure Policy 拡張機能
       displayName: visual studio code
@@ -300,6 +300,11 @@
     - name: 準拠していないリソースを修復する
       displayName: 'managed identity, task, definition, roleDefinitionIds'
       href: ./how-to/remediate-resources.md
+    - name: Azure Key Vault の統合
+      items:
+        - name: Key Vault を Azure Policy と統合する
+          displayName: 'key vault, certificate, key'
+          href: ../../key-vault/azure-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
     - name: Azure Lighthouse の統合
       items:
         - name: 大規模なポリシーのデプロイ
@@ -327,7 +332,7 @@
           href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
     - name: Azure SDK for .NET
       items:
-        - name: 割り当て
+        - name: 代入
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: ポリシーの定義
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
@@ -343,9 +348,9 @@
       items:
         - name: events
           href: /rest/api/policy-insights/policyevents
-        - name: States
+        - name: 状態
           href: /rest/api/policy-insights/policystates
-        - name: 割り当て
+        - name: 代入
           href: /rest/api/resources/policyassignments
         - name: ポリシーの定義
           href: /rest/api/resources/policydefinitions
@@ -359,7 +364,7 @@
           href: /rest/api/guestconfiguration/
     - name: Resource Manager テンプレート
       items:
-        - name: 割り当て
+        - name: 代入
           href: /azure/templates/microsoft.authorization/policyassignments
         - name: ポリシーの定義
           href: /azure/templates/microsoft.authorization/policydefinitions
@@ -375,7 +380,7 @@
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: ゲスト構成のビデオ
       items:
-        - name: Getting Started (概要)
+        - name: 作業の開始
           href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
         - name: イニシアチブについて
           href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'

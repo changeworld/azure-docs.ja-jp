@@ -10,7 +10,7 @@
       href: geo-ai-dsvm-overview.md
     - name: DSVM に含まれているツール
       href: tools-included.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Windows DSVM の作成
@@ -24,24 +24,24 @@
 - name: 概念
   items:
     - name: ディープ ラーニングと AI のフレームワーク
-      href: dsvm-deep-learning-ai-frameworks.md
+      href: dsvm-tools-deep-learning-frameworks.md
     - name: プログラミング言語
-      href: dsvm-languages.md
+      href: dsvm-tools-languages.md
     - name: 開発ツール
       href: dsvm-tools-development.md
     - name: ML とデータ サイエンスのツール
-      href: dsvm-ml-data-science-tools.md
+      href: dsvm-tools-data-science.md
     - name: データ プラットフォーム
-      href: dsvm-data-platforms.md
+      href: dsvm-tools-data-platforms.md
     - name: データ取り込みツール
       href: dsvm-tools-ingestion.md
-    - name: データの探索と視覚化のツール
-      href: dsvm-tools-explore-and-visualize.md
+    - name: 生産性向上ツール
+      href: dsvm-tools-productivity.md
     - name: エンタープライズ セキュリティとガイダンス
       href: dsvm-enterprise-overview.md
 - name: サンプル
   href: dsvm-samples-and-walkthroughs.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Windows DSVM の使用
       href: vm-do-ten-things.md

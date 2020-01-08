@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure セキュリティ ベンチマークのドキュメント
+summary: ベスト プラクティスやガイダンスを使用して、Azure 上のクラウド ソリューションをセキュリティで保護する方法について説明します。
+metadata:
+  title: Azure セキュリティ ベンチマーク
+  description: Azure セキュリティ制御ベンチマークには、Azure 上のアプリケーションとデータのセキュリティを向上させるための推奨事項が含まれています。
+  services: security
+  ms.service: security
+  ms.subservice: fundamentals
+  ms.topic: landing-page
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 12/23/2019
+  ms.openlocfilehash: 97f5463ee4348f8e17b8cf571262c361908d7265
+  ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75563864"
+landingContent:
+- title: Azure セキュリティ ベンチマークについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 概要
+      url: overview.md
+    - text: セキュリティ制御の概要
+      url: introduction.md
+    - text: クラウドにおける共同責任
+      url: ../fundamentals/shared-responsibility.md
+- title: '[シングル サインオンの設定]'
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ネットワークのセキュリティ
+      url: security-control-network-security.md
+    - text: ログ記録と監視
+      url: security-control-logging-monitoring.md
+    - text: ID およびアクセス制御
+      url: security-control-identity-access-control.md
+    - text: データ保護
+      url: security-control-data-protection.md
+    - text: 脆弱性の管理
+      url: security-control-vulnerability-management.md
+    - text: 詳細情報
+      url: security-control-inventory-asset-management.md
+- title: Azure セキュリティのその他の情報
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure セキュリティの基礎
+      url: ../fundamentals/index.yml
+    - text: Azure Security Center
+      url: ../../security-center/index.yml
+    - text: Azure Key Vault
+      url: ../../key-vault/index.yml

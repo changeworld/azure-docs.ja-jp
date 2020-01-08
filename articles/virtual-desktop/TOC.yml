@@ -24,7 +24,7 @@
   items:
     - name: Windows Virtual Desktop リソースに接続する
       items:
-        - name: Windows デスクトップ クライアントに接続する
+        - name: Windows デスクトップ クライアントを使用して接続する
           href: connect-windows-7-and-10.md
         - name: Web クライアントに接続する
           href: connect-web.md
@@ -56,6 +56,8 @@
           href: customize-rdp-properties.md
         - name: プールされたホスト プールの負荷分散
           href: configure-host-pool-load-balancing.md
+        - name: 個人用デスクトップの割り当ての種類
+          href: configure-host-pool-personal-desktop-assignment-type.md
     - name: Windows Virtual Desktop ライセンスを使用する
       href: apply-windows-license.md
     - name: セッション ホスト イメージをカスタマイズする
@@ -68,8 +70,12 @@
       href: set-up-scaling-script.md
     - name: フィードをカスタマイズする
       href: customize-feed-for-virtual-desktop-users.md
-    - name: 診断ツールをデプロイする
-      href: deploy-diagnostics.md
+    - name: サービスの診断を使用する
+      items:
+        - name: 診断ツールをデプロイする
+          href: deploy-diagnostics.md
+        - name: Log Analytics で診断を使用する
+          href: diagnostics-log-analytics.md
     - name: 組み込みアプリの公開
       href: publish-apps.md
     - name: MSIX アプリのアタッチを設定する
@@ -78,8 +84,6 @@
   items:
     - name: Windows Virtual Desktop の環境
       href: environment-setup.md
-    - name: リモート セッションで推奨される帯域幅
-      href: bandwidth-recommendations.md
     - name: ユーザー接続の待ち時間の特定
       href: connection-latency.md
     - name: Windows Virtual Desktop における委任されたアクセス
@@ -96,7 +100,7 @@
       href: windows-10-multisession-faq.md
     - name: データの場所
       href: data-locations.md
-- name: トラブルシューティング
+- name: '[トラブルシューティング]'
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート
       href: troubleshoot-set-up-overview.md
@@ -110,8 +114,10 @@
       href: troubleshoot-windows-7-vm.md
     - name: Windows Virtual Desktop 管理ツールのトラブルシューティング
       href: troubleshoot-management-tool.md
-    - name: リモート デスクトップ クライアントの接続
-      href: troubleshoot-client-connection.md
+    - name: リモート デスクトップ サービスの接続
+      href: troubleshoot-service-connection.md
+    - name: リモート デスクトップ クライアントの問題
+      href: troubleshoot-client.md
     - name: Windows Virtual Desktop PowerShell
       href: troubleshoot-powershell.md
     - name: グラフィックスのパフォーマンスの問題の診断

@@ -7,7 +7,7 @@
       href: what-is-luis.md
     - name: 新機能
       href: whats-new.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: 事前構築済みのドメイン アプリの構築
       href: luis-get-started-create-app.md
@@ -66,13 +66,8 @@
           href: luis-tutorial-review-endpoint-utterances.md
         - name: バッチ テスト用のデータセット
           href: luis-tutorial-batch-testing.md
-        - name: 一般的な発話の形式を追加する
+        - name: 予測を向上させるためにパターンを追加する
           href: luis-tutorial-pattern.md
-        - name: 文脈的に関連するパターンを抽出する
-          href: luis-tutorial-pattern-roles.md
-          displayName: roles
-        - name: 自由形式のデータを抽出する
-          href: luis-tutorial-pattern-any.md
     - name: ボットで使用する
       items:
         - name: 'C# の場合'
@@ -106,7 +101,7 @@
           href: luis-concept-intent.md
         - name: 発話
           href: luis-concept-utterance.md
-        - name: エンティティ
+        - name: '[エンティティ]'
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
         - name: 事前構築済みのモデル
@@ -114,7 +109,7 @@
         - name: パターン
           href: luis-concept-patterns.md
           displayName: roles
-        - name: 機能
+        - name: '[機能]'
           href: luis-concept-feature.md
           displayName: 'descriptor, phrase list'
     - name: 予測スコア
@@ -154,7 +149,7 @@
         - name: 設計戦略
           href: luis-concept-enterprise.md
           displayName: import
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 新しいアプリの開始
       href: luis-how-to-start-new-app.md
@@ -173,6 +168,8 @@
         - name: 記述子の追加
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
+        - name: V3 Authoring に移行する
+          href: luis-migration-authoring-entities.md
         - name: REST API を使用
           items:
             - name: Node.js を使ってプログラムによりアプリをビルドする
@@ -210,7 +207,7 @@
       href: luis-how-to-publish-app.md
     - name: アプリの管理
       items:
-        - name: 作成キーとランタイム キー
+        - name: オーサリング キーとランタイム キー
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
         - name: 作成キーに移行する
@@ -265,14 +262,14 @@
       items:
         - name: カルチャごとのエンティティ
           href: luis-reference-prebuilt-entities.md
-        - name: 年齢エンティティ
+        - name: age エンティティ
           href: luis-reference-prebuilt-age.md
-        - name: 通貨エンティティ
+        - name: currency エンティティ
           href: luis-reference-prebuilt-currency.md
         - name: datetimeV2 エンティティ
           href: luis-reference-prebuilt-datetimev2.md
           displayName: timex
-        - name: ディメンション エンティティ
+        - name: dimension エンティティ
           href: luis-reference-prebuilt-dimension.md
         - name: 非推奨のエンティティ
           href: luis-reference-prebuilt-deprecated.md
@@ -294,7 +291,7 @@
           href: luis-reference-prebuilt-person.md
         - name: phonenumber エンティティ
           href: luis-reference-prebuilt-phonenumber.md
-        - name: 温度エンティティ
+        - name: temperature エンティティ
           href: luis-reference-prebuilt-temperature.md
         - name: url エンティティ
           href: luis-reference-prebuilt-url.md
@@ -319,7 +316,7 @@
       href: reference-pattern-syntax.md
     - name: センチメント
       href: luis-reference-prebuilt-sentiment.md
-    - name: 開発者リソース
+    - name: 開発者向けリソース
       href: developer-reference-resource.md
       displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
     - name: Azure CLI
@@ -427,7 +424,7 @@
       href: 'https://stackoverflow.com/questions/tagged/LUIS'
     - name: UserVoice
       href: 'https://go.microsoft.com/fwlink/?linkid=2092090'
-    - name: Search
+    - name: 検索
       href: 'https://docs.microsoft.com/search/index?search=LUIS'
     - name: ブログ
       href: 'https://blog.botframework.com/category/luis/'

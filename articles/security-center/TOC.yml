@@ -4,11 +4,11 @@
   items:
     - name: Security Center について
       href: security-center-intro.md
-    - name: サポートされるプラットフォーム
+    - name: サポートされているプラットフォーム
       href: security-center-os-coverage.md
-    - name: サポートされる機能
+    - name: サポートされている機能
       href: security-center-services.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Azure サブスクリプション
@@ -49,6 +49,8 @@
       items:
         - name: セキュリティ アラートの概要
           href: security-center-alerts-overview.md
+        - name: アラートの参照リスト
+          href: alerts-reference.md
         - name: セキュリティ アラートの管理
           href: security-center-managing-and-responding-alerts.md
         - name: セキュリティ インシデントを管理する
@@ -61,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Azure サービス レイヤーの脅威検出
           href: security-center-alerts-service-layer.md
-        - name: Azure のセキュリティ製品との統合
+        - name: Azure WAF と Azure DDoS Protection の脅威検出
           href: security-center-alerts-integration.md
         - name: クラウドのスマート アラートの関連付け (インシデント)
           href: security-center-alerts-cloud-smart.md
@@ -69,12 +71,20 @@
           href: security-center-threat-intel.md
         - name: アラートの検証 (EICAR テスト ファイル)
           href: security-center-alert-validation.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: セキュリティ スコアを向上させる
       href: security-center-secure-score.md
     - name: 高度なセキュリティへのアップグレード
       href: security-center-onboarding.md
+    - name: VM の脆弱性をスキャンする
+      items:
+        - name: 脆弱性スキャンの概要
+          href: security-center-vulnerability-assessment-recommendations.md
+        - name: VM 用の統合された脆弱性スキャナー
+          href: built-in-vulnerability-assessment.md
+        - name: 外部スキャナーの使用
+          href: partner-vulnerability-assessment.md
     - name: Microsoft Defender ATP を使用したサーバーの保護
       href: security-center-wdatp.md
     - name: Azure VM 上の SQL 向けの Advanced Data Security の使用
@@ -125,14 +135,12 @@
           href: security-center-remediate-recommendations.md
         - name: セキュリティ体制の強化
           href: security-center-monitoring.md
+        - name: 推奨事項のリファレンス一覧
+          href: recommendations-reference.md
         - name: マシンとアプリの保護
           href: security-center-virtual-machine-protection.md
-        - name: マシンとアプリに関する推奨事項のリファレンス
-          href: recommendations-compute-and-apps.md
         - name: ネットワーク リソースの保護
           href: security-center-network-recommendations.md
-        - name: ネットワークに関する推奨事項のリファレンス
-          href: recommendations-network.md
         - name: データおよびストレージ サービスの保護
           href: security-center-sql-service-recommendations.md
         - name: ID とアクセス権限の保護
@@ -155,8 +163,6 @@
           href: security-center-apply-system-updates.md
         - name: Endpoint Protection をインストールします
           href: security-center-install-endpoint-protection.md
-        - name: 脆弱性評価がインストールされていない
-          href: security-center-vulnerability-assessment-recommendations.md
         - name: 脅威レポート
           href: security-center-threat-report.md
         - name: アラート信頼度スコア
@@ -187,7 +193,7 @@
       href: security-center-privacy.md
     - name: Azure Security Center for IoT のドキュメント
       href: 'https://docs.microsoft.com/azure/asc-for-iot/'
-    - name: FAQ
+    - name: よく寄せられる質問
       href: security-center-faq.md
     - name: Azure のセキュリティのドキュメント
       href: /azure/security/

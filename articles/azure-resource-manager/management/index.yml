@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: リソースの管理に関するドキュメント
+summary: リソースの管理方法と使用方法について説明します。
+metadata:
+  title: Azure Resource Manager のドキュメント
+  description: Azure Resource Manager テンプレートを開発し、それらを使用して Azure リソースをデプロイする方法について説明します
+  ms.service: azure-resource-manager
+  ms.subservice: management
+  ms.topic: landing-page
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: ba00994808e50f10c7153535f442e03f85fe2202
+  ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 01/04/2020
+  ms.locfileid: "75657933"
+landingContent:
+- title: Azure Resource Manager について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Resource Manager とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Resource Manager デプロイとクラシック デプロイ
+      url: deployment-models.md
+- title: Azure サービスについて
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: サブスクリプションとサービスの制限
+      url: azure-subscription-service-limits.md
+    - text: リソース プロバイダーと種類
+      url: resource-providers-and-types.md
+    - text: 各 Azure サービスのリソース プロバイダー
+      url: azure-services-resource-providers.md
+- title: リソースの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: リソース グループとサブスクリプションをまたがる移動
+      url: move-resource-group-and-subscription.md
+    - text: リージョン間で移動する
+      url: move-region.md
+    - text: リソースへのタグ付け
+      url: tag-resources.md
+    - text: リソースのロック
+      url: lock-resources.md
+    - text: リソース グループを削除する
+      url: delete-resource-group.md
+  - linkListType: reference
+    links:
+    - text: 移動のサポート
+      url: move-support-resources.md
+    - text: タグのサポート
+      url: tag-support.md
+    - text: リソース インスタンスの制限
+      url: resources-without-resource-group-limit.md
+- title: SDK とツール
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python
+- title: 操作を追跡する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: アクティビティ ログを表示する
+      url: view-activity-logs.md
+    - text: 要求の制限と調整
+      url: request-limits-and-throttling.md
+    - text: 非同期操作
+      url: async-operations.md

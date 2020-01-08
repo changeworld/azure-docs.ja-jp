@@ -139,6 +139,10 @@
     - name: Azure Monitor
       tocHref: /azure/azure-monitor/
       topicHref: /azure/azure-monitor/
+      items:
+        - name: Application Insights
+          tocHref: /azure/azure-monitor/azure-monitor-app-hub
+          topicHref: /azure/azure-monitor/azure-monitor-app-hub
     - name: Azure Spatial Anchors
       tocHref: /azure/spatial-anchors/
       topicHref: /azure/spatial-anchors/
@@ -148,7 +152,7 @@
     - name: Cost Management
       tocHref: /azure/cost-management/
       topicHref: /azure/cost-management/
-    - name: Functions
+    - name: 関数
       tocHref: /azure/azure-functions/
       topicHref: /azure/azure-functions/
       items:
@@ -170,7 +174,7 @@
     - name: Azure VMware Solution by CloudSimple
       tocHref: /azure/vmware-cloudsimple/
       topicHref: /azure/vmware-cloudsimple/
-    - name: Azure portal のカスタマイズ
+    - name: Azure Portal のドキュメント
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/\
     - name: モノのインターネット (IoT)
@@ -226,6 +230,19 @@
     - name: リソース マネージャー
       tocHref: /azure/azure-resource-manager/
       topicHref: /azure/azure-resource-manager/
+      items:
+        - name: テンプレート
+          tocHref: /azure/azure-resource-manager/templates/
+          topicHref: /azure/azure-resource-manager/templates/
+        - name: 管理
+          tocHref: /azure/azure-resource-manager/management/
+          topicHref: /azure/azure-resource-manager/management/
+        - name: Managed Applications
+          tocHref: /azure/azure-resource-manager/managed-applications/
+          topicHref: /azure/azure-resource-manager/managed-applications/
+        - name: Azure カスタム プロバイダー
+          tocHref: /azure/azure-resource-manager/custom-providers/
+          topicHref: /azure/azure-resource-manager/custom-providers/
     - name: SignalR Service
       tocHref: /azure/azure-signalr/
       topicHref: /azure/azure-signalr/
@@ -607,7 +624,7 @@
     - name: ネットワーク
       tocHref: /azure/networking/
       topicHref: /azure/networking/networking-overview
-    - name: Notebooks
+    - name: ノートブック
       tocHref: /azure/notebooks/
       topicHref: /azure/notebooks/azure-notebooks-overview
     - name: Notification Hubs
@@ -649,7 +666,7 @@
     - name: Scheduler
       tocHref: /azure/scheduler/
       topicHref: /azure/scheduler/
-    - name: セキュリティ
+    - name: Security
       tocHref: /azure/security/
       topicHref: /azure/security/
       items:
@@ -659,6 +676,9 @@
         - name: 開発
           tocHref: /azure/security/develop/
           topicHref: /azure/security/develop/
+        - name: ベンチマーク
+          tocHref: /azure/security/benchmarks/
+          topicHref: /azure/security/benchmarks/
     - name: Security Center
       tocHref: /azure/security-center/
       topicHref: /azure/security-center/
@@ -695,7 +715,7 @@
     - name: SQL Server Stretch Database
       tocHref: /azure/sql-server-stretch-database/
       topicHref: /azure/sql-server-stretch-database/
-    - name: Storage
+    - name: ストレージ
       tocHref: /azure/storage/
       topicHref: /azure/storage/
       items:

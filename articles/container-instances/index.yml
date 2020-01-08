@@ -3,7 +3,7 @@ title: Azure Container Instances のドキュメント
 summary: サーバーレスなマネージド Azure 環境内で Docker コンテナーをオンデマンドで実行します。 Azure Container Instances は、オーケストレーションすることなく分離コンテナー内で運用できる、あらゆるシナリオ向けのソリューションです。 イベントドリブンなアプリケーションを実行し、コンテナー開発パイプラインから迅速にデプロイして、データ処理およびビルド ジョブを実行します。
 metadata:
   title: Azure Container Instances のドキュメント - サーバーレス コンテナー、オンデマンド
-  description: サーバーレスなマネージド Azure 環境内で Docker コンテナーを実行します。
+  description: Azure Container Instances (ACI) を使用すると、VM、クラスター、またはオーケストレーターを設定しなくても、マネージド サーバーレス クラウド環境で Docker コンテナーを実行できます。
   services: 
   ms.service: container-instances
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: dlepow
   ms.author: danlep
   ms.date: 09/25/2019
-  ms.openlocfilehash: a031f70cfaad9369f79a0e18f3527250eb82bfeb
-  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.openlocfilehash: 4e7be5b6da633d370a2ccdce7331788f2fbe0440
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71326950"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75445751"
 landingContent:
 - title: Azure Container Instances について
   linkLists:
@@ -26,9 +26,9 @@ landingContent:
       url: container-instances-overview.md
     - text: コンテナー グループ
       url: container-instances-container-groups.md
-    - text: FAQ
+    - text: よく寄せられる質問
       url: container-instances-faq.md
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:

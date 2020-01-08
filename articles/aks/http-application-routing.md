@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: f0975d0a60081b66d3d5a513954deb0c4fa1b978
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: cfd69ebf6408acaa2938271ba87f36768416de80
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851546"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442962"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
 
@@ -51,12 +51,13 @@ az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addo
 クラスターのデプロイまたは更新が完了したら、[az aks show][az-aks-show] コマンドを使用して DNS ゾーン名を取得します。 この名前は、アプリケーションを AKS クラスターにデプロイするのに必要です。
 
 ```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
-
-Result
------------------------------------------------------
-9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpapplicationrouting.config.HTTPApplicationRoutingZoneName -o table
 ```
+
+結果
+
+9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+
 
 ## <a name="deploy-http-routing-portal"></a>HTTP ルーティングをデプロイする:ポータル
 
@@ -207,7 +208,7 @@ kubectl delete configmaps addon-http-application-routing-nginx-configuration --n
 
 クラスターに残っているすべての *addon-http-application-routing* リソースに対して、前の `kubectl delete` の手順を繰り返します。
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 [kubectl logs][kubectl-logs] コマンドを使用して、外部 DNS アプリケーションのアプリケーション ログを表示します。 A および TXT DNS レコードが正常に作成されたことをログで確認してください。
 
@@ -273,7 +274,7 @@ service "party-clippy" deleted
 ingress "party-clippy" deleted
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 セキュリティ保護された HTTPS イングレス コントローラーを AKS にインストールする方法については、「[Azure Kubernetes Service (AKS) での HTTPS イングレス][ingress-https]」を参照してください。
 

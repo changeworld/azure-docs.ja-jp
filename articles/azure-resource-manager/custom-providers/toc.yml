@@ -1,0 +1,57 @@
+- name: Azure カスタム プロバイダーのドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: Azure カスタム プロバイダーとは
+      href: overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: カスタム リソース プロバイダーの作成
+      href: create-custom-provider.md
+- name: チュートリアル
+  items:
+    - name: カスタム プロバイダーの概要
+      href: tutorial-get-started-with-custom-providers.md
+    - name: Azure Functions を設定する
+      href: tutorial-custom-providers-function-setup.md
+    - name: RESTful エンドポイントを作成する
+      href: tutorial-custom-providers-function-authoring.md
+    - name: カスタム プロバイダーを作成し、利用する
+      href: tutorial-custom-providers-create.md
+    - name: リソースを拡張する
+      href: tutorial-resource-onboarding.md
+- name: 概念
+  items:
+    - name: 関連付け用の Azure Policy
+      href: concepts-built-in-policy.md
+    - name: デバイスのオンボード
+      href: concepts-resource-onboarding.md
+- name: 操作方法ガイド
+  items:
+    - name: カスタム アクションを Azure に追加する
+      href: custom-providers-action-endpoint-how-to.md
+    - name: カスタム リソースを Azure に追加する
+      href: custom-providers-resources-endpoint-how-to.md
+- name: リファレンス
+  items:
+    - name: カスタム リソースのプロキシのリファレンス
+      href: proxy-resource-endpoint-reference.md
+    - name: カスタム リソースのキャッシュのリファレンス
+      href: proxy-cache-resource-endpoint-reference.md
+    - name: カスタム プロバイダー RESTful エンドポイント参照
+      href: reference-custom-providers-csharp-endpoint.md
+    - name: REST
+      href: /rest/api/customproviders/
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Resource Manager テンプレートのベスト プラクティス
+      href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/azure-custom-providers'

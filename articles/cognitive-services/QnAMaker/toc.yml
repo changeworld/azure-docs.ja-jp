@@ -6,7 +6,7 @@
       href: Overview/overview.md
     - name: 新機能
       href: whats-new.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: 新しいナレッジ ベースの作成
       href: quickstarts/create-publish-knowledge-base.md
@@ -14,6 +14,8 @@
       href: quickstarts/add-question-metadata-portal.md
     - name: Postman または cURL を使用して回答を取得する
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: バッチ ファイルを使用したテスト
+      href: Quickstarts/batch-testing.md
     - name: REST API の使用
       items:
         - name: 新しいナレッジ ベースの作成
@@ -25,7 +27,7 @@
             - name: Java
               href: Quickstarts/create-new-kb-java.md
             - name: Node.js
-              href: Quickstarts/create-knowledge-rest-api-nodejs.md
+              href: Quickstarts/publish-kb-nodejs.md
             - name: Python
               href: Quickstarts/create-new-kb-python.md
         - name: ナレッジ ベースの公開
@@ -37,7 +39,7 @@
             - name: Java
               href: Quickstarts/publish-kb-java.md
             - name: Node.js
-              href: 'Quickstarts/create-knowledge-rest-api-nodejs.md##publish-a-knowledge-base'
+              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
             - name: Python
               href: Quickstarts/publish-kb-python.md
         - name: 回答の取得
@@ -71,7 +73,7 @@
       href: Tutorials/create-qna-bot.md
 - name: 概念
   items:
-    - name: ナレッジ ベース
+    - name: サポート技術情報
       href: Concepts/knowledge-base.md
       displayName: 'metadata, pair'
     - name: LUIS と QnA Maker の使用
@@ -88,7 +90,7 @@
     - name: サポートされるデータ ソース
       href: Concepts/data-sources-supported.md
       displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: ナレッジ ベースの編集
       items:
@@ -212,7 +214,7 @@
       href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/578689-qna-maker-api'
-    - name: Search
+    - name: 検索
       href: 'https://docs.microsoft.com/search/index?search=QnAMaker'
     - name: ブログ
       href: 'https://blog.botframework.com/category/QnAMaker/'

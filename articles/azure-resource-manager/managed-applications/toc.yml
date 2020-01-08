@@ -1,0 +1,136 @@
+- name: Azure Managed Applications のドキュメント
+  href: index.yml
+- name: 概要
+  items:
+    - name: マネージド アプリケーションについて
+      href: overview.md
+- name: クイックスタート
+  expanded: true
+  items:
+    - name: アプリケーション定義の発行
+      href: publish-managed-app-definition-quickstart.md
+    - name: サービス カタログ アプリのデプロイ
+      href: deploy-service-catalog-quickstart.md
+- name: チュートリアル
+  items:
+    - name: 定義ファイルの作成
+      href: publish-service-catalog-app.md
+    - name: マーケットプレース アプリケーションの発行
+      href: publish-marketplace-app.md
+    - name: カスタム プロバイダーを使用してマネージド アプリケーションを作成する
+      href: tutorial-create-managed-app-with-custom-provider.md
+- name: サンプル
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
+    - name: マネージド アプリケーション ソリューション
+      href: sample-projects.md
+- name: 概念
+  items:
+    - name: ビュー定義アーティファクト
+      href: concepts-view-definition.md
+    - name: 関連付け用の Azure Policy
+      href: concepts-built-in-policy.md
+    - name: ロール定義のアーティファクト
+      href: concepts-custom-role-definition.md
+- name: 操作方法ガイド
+  items:
+    - name: '[ディストリビューターのプロパティ]'
+      items:
+        - name: ポータルのインターフェイスを作成する
+          href: create-uidefinition-overview.md
+        - name: ポータルのインターフェイスをテストする
+          href: test-createuidefinition.md
+        - name: Just-In-Time アクセスを要求する
+          href: request-just-in-time-access.md
+        - name: マネージド リソースの更新
+          href: update-managed-resources.md
+        - name: ポータルを使用したアプリケーション定義の発行
+          href: publish-portal.md
+        - name: Key Vault のシークレットを使用する
+          href: key-vault-access.md
+        - name: マネージド ID を使用したデプロイ
+          href: publish-managed-identity.md
+        - name: 通知を使用してデプロイする
+          href: publish-notifications.md
+    - name: コンシューマー
+      items:
+        - name: マネージド アプリケーションの監視
+          href: monitor-managed-application-portal.md
+        - name: Just-In-Time アクセスを承認する
+          href: approve-just-in-time-access.md
+- name: リファレンス
+  items:
+    - name: アプリケーションの成果物
+      items:
+        - name: ユーザー インターフェイスの要素
+          href: reference-createuidefinition-artifact.md
+        - name: デプロイ テンプレート
+          href: reference-main-template-artifact.md
+        - name: 定義の表示
+          href: reference-view-definition-artifact.md
+    - name: Azure CLI
+      href: /cli/azure/managedapp
+    - name: PowerShell
+      href: /powershell/module/az.resources
+    - name: REST
+      href: /rest/api/resources/
+    - name: ユーザー インターフェイスの関数
+      href: create-uidefinition-functions.md
+    - name: ユーザー インターフェイスの要素
+      href: create-uidefinition-elements.md
+      items:
+        - name: 共通
+          items:
+            - name: DropDown
+              href: microsoft-common-dropdown.md
+            - name: FileUpload
+              href: microsoft-common-fileupload.md
+            - name: InfoBox
+              href: microsoft-common-infobox.md
+            - name: OptionsGroup
+              href: microsoft-common-optionsgroup.md
+            - name: PasswordBox
+              href: microsoft-common-passwordbox.md
+            - name: Section
+              href: microsoft-common-section.md
+            - name: TagsByResource
+              href: microsoft-common-tagsbyresource.md
+            - name: TextBlock
+              href: microsoft-common-textblock.md
+            - name: TextBox
+              href: microsoft-common-textbox.md
+        - name: Compute
+          items:
+            - name: CredentialsCombo
+              href: microsoft-compute-credentialscombo.md
+            - name: SizeSelector
+              href: microsoft-compute-sizeselector.md
+            - name: UserNameTextBox
+              href: microsoft-compute-usernametextbox.md
+        - name: ネットワーク
+          items:
+            - name: PublicIPAddressCombo
+              href: microsoft-network-publicipaddresscombo.md
+            - name: VirtualNetworkCombo
+              href: microsoft-network-virtualnetworkcombo.md
+        - name: ストレージ
+          items:
+            - name: MultiStorageAccountCombo
+              href: microsoft-storage-multistorageaccountcombo.md
+            - name: StorageAccountSelector
+              href: microsoft-storage-storageaccountselector.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Resource Manager テンプレートのベスト プラクティス
+      href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'

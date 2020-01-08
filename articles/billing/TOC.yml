@@ -3,6 +3,12 @@
 - name: Azure の課金の詳細
   expanded: true
   items:
+    - name: 課金アカウントとスコープ
+      href: billing-view-all-accounts.md
+    - name: Microsoft 顧客契約の請求先アカウント
+      href: billing-mca-overview.md
+    - name: Microsoft パートナー契約の課金アカウント
+      href: mpa-overview.md
     - name: 課金内容を確認する
       href: billing-understand-your-bill.md
     - name: 課金内容を確認する - Microsoft 顧客契約
@@ -29,10 +35,6 @@
       href: billing-mpa-invoice-terms-explained.md
     - name: 請求金額を支払う方法 - Microsoft 顧客契約
       href: billing-how-to-pay-bill.md
-    - name: Microsoft 顧客契約の請求先アカウント
-      href: billing-mca-overview.md
-    - name: Microsoft パートナー契約の課金アカウント
-      href: mpa-overview.md
 - name: コストを管理する
   items:
     - name: 予想外のコストを防ぐ
@@ -147,8 +149,6 @@
       href: billing-understand-mca-roles.md
     - name: パートナー ID をリンクする
       href: billing-partner-admin-link-started.md
-    - name: 請求先アカウントを表示する
-      href: billing-view-all-accounts.md
     - name: 請求書セクションによるコストの整理
       href: billing-mca-section-invoice.md
     - name: Microsoft 顧客契約における EA タスク
@@ -161,17 +161,17 @@
           href: billing-understand-your-bill-ea.md
         - name: Azure における EA のロール
           href: billing-understand-ea-roles.md
-        - name: Azure EA ポータルの管理
+        - name: Azure EA Portal の管理
           href: billing-ea-portal-administration.md
         - name: Azure EA 契約と修正
           href: billing-ea-portal-agreements.md
         - name: エンタープライズ加入契約請求書
           href: billing-ea-portal-enrollment-invoices.md
-        - name: Azure Enterprise REST API シリーズ
+        - name: Azure Enterprise REST API
           href: billing-ea-portal-rest-apis.md
         - name: Azure EA VM 予約インスタンス
           href: billing-ea-portal-vm-reservations.md
-        - name: Azure EA ポータルのアクセスのトラブルシューティング
+        - name: Azure EA Portal のアクセスのトラブルシューティング
           href: billing-ea-portal-troubleshoot.md
         - name: Microsoft 顧客契約における EA タスク
           href: billing-mca-enterprise-operations.md
@@ -216,8 +216,8 @@
     - name: Azure AD テナントをリンクさせる
       href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
     - name: 制限とクォータ
-      href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
-- name: トラブルシューティング
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
+- name: '[トラブルシューティング]'
   items:
     - name: サブスクリプションが見つからない
       href: billing-no-subscriptions-found.md
