@@ -32,7 +32,7 @@ ms.locfileid: "74671136"
 - 復元の実行中、App Service はターゲット アプリまたはターゲット スロットを停止します。
 - App Service は、プラットフォームのデータ復旧の目的で 3 か月分のスナップショットを保持しています。
 - 過去 30 日間のスナップショットのみを復元できます。
-- App Service 環境で実行される App Services は、スナップショットをサポートしていません。
+- App Service Environment で実行される App Services は、スナップショットをサポートしていません。
  
 
 ## <a name="restore-an-app-from-a-snapshot"></a>アプリをスナップショットから復元する
