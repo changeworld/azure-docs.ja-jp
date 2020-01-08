@@ -1,18 +1,14 @@
 ---
 title: Azure Site Recovery サービスに関する一般的な質問
 description: この記事では、Azure Site Recovery に関してよく寄せられる一般的な質問について説明します。
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078534"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497534"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -25,7 +21,7 @@ ms.locfileid: "74078534"
 ## <a name="general"></a>全般
 
 ### <a name="what-does-site-recovery-do"></a>Site Recovery は何をするものですか。
-Site Recovery は、リージョン間の Azure VM のレプリケーション、オンプレミスの仮想マシンと物理サーバーの Azure へのレプリケーション、およびオンプレミスのマシンのセカンダリ データセンターへのレプリケーションを調整および自動化することで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 [詳細情報](site-recovery-overview.md)。
+Site Recovery は、リージョン間の Azure VM のレプリケーション、オンプレミスの仮想マシンと物理サーバーの Azure へのレプリケーション、およびオンプレミスのマシンのセカンダリ データセンターへのレプリケーションを調整および自動化することで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 [詳細については、こちらを参照してください](site-recovery-overview.md)。
 
 ### <a name="can-i-protect-a-virtual-machine-that-has-a-docker-disk"></a>Docker ディスクを備えた仮想マシンを保護できますか?
 
@@ -37,7 +33,7 @@ Site Recovery は、リージョン間の Azure VM のレプリケーション�
 はい。Site Recovery は、専用および共有のインフラストラクチャ モデルの両方をサポートしています。
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>サービス プロバイダーの場合、テナントの ID は Site Recovery サービスと共有されますか。
-No. テナント ID は匿名のままです。 テナントは Site Recovery ポータルにアクセスする必要はありません。 ポータルを操作するのは、サービス プロバイダーの管理者だけです。
+いいえ。 テナント ID は匿名のままです。 テナントは Site Recovery ポータルにアクセスする必要はありません。 ポータルを操作するのは、サービス プロバイダーの管理者だけです。
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>テナントのアプリケーション データは Azure に送信されますか。
 サービス プロバイダーが所有するサイト間でレプリケートするときに、アプリケーション データが Azure に送信されることはありません。 データは転送中に暗号化され、サービス プロバイダーのサイト間で直接レプリケートされます。
@@ -45,7 +41,7 @@ No. テナント ID は匿名のままです。 テナントは Site Recovery �
 Azure にレプリケートする場合、アプリケーション データは Site Recovery サービスではなく、Azure ストレージに送信されます。 データは、転送中に暗号化され、暗号化された状態のまま Azure に残ります。
 
 ### <a name="will-my-tenants-receive-a-bill-for-any-azure-services"></a>テナントに Azure サービスの請求書が届きますか。
-No. Azure の請求関係は、サービス プロバイダーとの直接的な関係です。 サービス プロバイダーは、そのテナントに対して固有の請求書を生成する必要があります。
+いいえ。 Azure の請求関係は、サービス プロバイダーとの直接的な関係です。 サービス プロバイダーは、そのテナントに対して固有の請求書を生成する必要があります。
 
 ### <a name="if-im-replicating-to-azure-do-we-need-to-run-virtual-machines-in-azure-at-all-times"></a>Azure にレプリケートする場合、仮想マシンを Azure で常時実行する必要がありますか。
 いいえ、データはご使用のサブスクリプション内の Azure Storage にレプリケートされます。 テスト フェールオーバー (障害復旧訓練) または実際のフェールオーバーを実行すると、Site Recovery により、サブスクリプションで仮想マシンが自動的に作成されます。
@@ -91,7 +87,7 @@ DR ドリルに対しては、別個のコストはかかりません。 テス�
 
 
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Site Recovery サービスにレプリケーション データが送信されますか。
 いいえ。Site Recovery は、レプリケートされたデータをインターセプトすることも、仮想マシンまたは物理サーバーでの実行内容に関するどのような情報を持つこともありません。
@@ -158,7 +154,7 @@ Microsoft のパートナーである Riverbed は、Azure Site Recovery の使�
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>ExpressRoute を使用して Azure に仮想マシンをレプリケートできますか。
 はい。[ExpressRoute を使用して](concepts-expressroute-with-site-recovery.md)オンプレミスの仮想マシンを Azure にレプリケートできます。
 
-- Azure Site Recovery は、パブリック エンドポイント経由で Azure Storage にデータをレプリケートします。 Site Recovery レプリケーションに ExpressRoute を使用するには、[Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を設定するか、既存の[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering) (新しい回線では非推奨) を使用する必要があります。
+- Azure Site Recovery は、パブリック エンドポイント経由で Azure Storage にデータをレプリケートします。 Site Recovery レプリケーションに ExpressRoute を使用するには、[Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)を設定するか、既存の[パブリック ピアリング](../expressroute/about-public-peering.md) (新しい回線では非推奨) を使用する必要があります。
 - Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。
 - プライベート ピアリングを介したレプリケーションはサポートされていません。
 - VMware マシンまたは物理マシンを保護する場合は、構成サーバーの[ネットワーク要件](vmware-azure-configuration-server-requirements.md#network-requirements)も満たしている必要があります。 Site Recovery レプリケーションを調整する場合、構成サーバーが特定の URL に接続する必要があります。 この接続には ExpressRoute は使用できません。
@@ -194,10 +190,10 @@ Hyper-V 仮想マシンをレプリケートする場合、および Azure に V
 
 
 
-## <a name="failover"></a>フェールオーバー
+## <a name="failover"></a>[フェールオーバー]
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Azure にフェールオーバーする場合、フェールオーバー後に Azure VM にどうしたらアクセスできますか?
 
-Azure VM には、セキュリティで保護されたインターネット接続、サイト間 VPN、または Azure ExpressRoute 経由でアクセスできます。 接続するにはさまざまこと準備する必要があります。 [詳細情報](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
+Azure VM には、セキュリティで保護されたインターネット接続、サイト間 VPN、または Azure ExpressRoute 経由でアクセスできます。 接続するにはさまざまこと準備する必要があります。 [詳細については、こちらを参照してください](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。
 
 
 ### <a name="if-i-fail-over-to-azure-how-does-azure-make-sure-my-data-is-resilient"></a>Azure にフェールオーバーする場合、Azure はどのようにデータの回復力を確認しますか。
@@ -219,7 +215,7 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 はい。alternate location recovery (別の場所への復旧) を使用すると、Azure から別のホストにフェールバックできます。
 
 * [VMware 仮想マシン用](concepts-types-of-failback.md#alternate-location-recovery-alr)
-* [Hyper-V 仮想マシン用](hyper-v-azure-failback.md#perform-failback)
+* [Hyper-V 仮想マシン用](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
 ## <a name="automation"></a>Automation
 
@@ -234,8 +230,8 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 ### <a name="where-can-i-find-the-release-notesupdate-rollups-of-site-recovery-upgrades"></a>Site Recovery のリリース ノートや更新プログラムのロールアップはどこで入手できますか?
 
-新しい更新プログラムに関する[詳細](site-recovery-whats-new.md)を確認し、[ロールアップ情報を取得](service-updates-how-to.md)します。
+新しい更新プログラムに関する[詳細を確認](site-recovery-whats-new.md)し、[ロールアップ情報を取得](service-updates-how-to.md)してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Site Recovery の概要](site-recovery-overview.md)
 

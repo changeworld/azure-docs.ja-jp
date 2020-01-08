@@ -17,14 +17,14 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f78fa35096b7e17d3736190bfa49619c2c81520
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 76d5aabc30d0375185130b9781caeaf4d5457455
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423733"
 ---
-# <a name="protected-web-api-code-configuration"></a>保護された Web API:コード構成
+# <a name="protected-web-api-code-configuration"></a>保護された Web API: コード構成
 
 保護された Web API 用にコードを構成するには、API を保護対象として定義するもの、ベアラー トークンを構成する方法、およびトークンを確認する方法を理解する必要があります。
 
@@ -43,7 +43,7 @@ Web アプリと同じように、ASP.NET/ASP.NET Core Web API は、そのコ�
 
 以下は、.NET 用 Microsoft Authentication Library (MSAL.NET) を使用してトークンを取得した後、API を呼び出すクライアントを示す C# コードの例です。
 
-```CSharp
+```csharp
 var scopes = new[] {$"api://.../access_as_user}";
 var result = await app.AcquireToken(scopes)
                       .ExecuteAsync();
@@ -96,19 +96,19 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 
 ASP.NET Core では、このミドルウェアは Startup.cs ファイルで初期化されます。
 
-```CSharp
+```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```
 
 この命令によって、ミドルウェアが Web API に追加されます。
 
-```CSharp
+```csharp
  services.AddAzureAdBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
  現在、ASP.NET Core テンプレートでは、ご自分の組織または任意の組織内の (個人用アカウントを持っていない) ユーザーのサインインを行う、Azure Active Directory (Azure AD) Web API が作成されます。 しかし、これらは、このコードを Startup.cs ファイルに追加することで、Microsoft ID プラットフォーム エンドポイントを使用するように簡単に変更できます。
 
-```CSharp
+```csharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
 {
     // This is a Microsoft identity platform web API.
@@ -148,7 +148,7 @@ JwtBearer ミドルウェアは、Web アプリの OpenID Connect ミドルウ�
 
 検証コントロールについて、この表で説明します。
 
-| 検証コントロール | 説明 |
+| 検証コントロール | [説明] |
 |---------|---------|
 | `ValidateAudience` | トークンが、(自分の) トークンを確認するアプリケーション用であることを保証します。 |
 | `ValidateIssuer` | トークンが信頼できる STS によって (信頼する人から) 発行されたことを保証します。 |
@@ -163,7 +163,7 @@ JwtBearer ミドルウェアは、Web アプリの OpenID Connect ミドルウ�
 
 Azure Functions では、受信アクセス トークンを検証することもできます。 Azure Functions でのトークンの検証の例は、[Dotnet](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)、[NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)、[Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions) で見つかります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [コードでスコープとアプリのロールを検証する](scenario-protected-web-api-verification-scope-app-roles.md)

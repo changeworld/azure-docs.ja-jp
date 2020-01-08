@@ -1,7 +1,6 @@
 ---
 title: チュートリアル - Visual Studio で Azure Stream Analytics ジョブ用の C# ユーザー定義関数を作成する (プレビュー)
 description: このチュートリアルでは、Visual Studio で Stream Analytics ジョブ用の C# ユーザー定義関数を作成する方法について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d600c891f35a0719012707bdc2cb45101e14e090
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1d71f4c5616efb05efe2733c49507b085ca2dcf6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707355"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426293"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>チュートリアル:Azure Stream Analytics ジョブの C# ユーザー定義関数を記述する (プレビュー)
 
@@ -66,7 +65,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
    |グローバル ストレージ設定のストレージ アカウント| <お客様のストレージ アカウント>|
    |カスタム コード ストレージ設定のリソース|現在のアカウントからデータ ソースを選択します|
    |カスタム コード ストレージ設定のストレージ アカウント|<お客様のストレージ アカウント>|
-   |カスタム コード ストレージ設定のコンテナー|< お客様のストレージ コンテナー >|
+   |カスタム コード ストレージ設定のコンテナー|<お客様のストレージ コンテナー>|
 
 
 ## <a name="write-a-c-udf-with-codebehind"></a>分離コードを使用して C# の UDF を作成する
@@ -147,7 +146,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 ## <a name="deploy-to-iot-edge-devices"></a>IoT Edge デバイスにデプロイする
 Stream Analytics Edge ジョブを作成することを選択した場合に、これを IoT Edge モジュールとしてデプロイできるようになりました。 [IoT Edge クイック スタート](https://docs.microsoft.com/azure/iot-edge/quickstart)に従って、IoT ハブを作成し、IoT Edge デバイスを登録し、デバイスに IoT Edge ランタイムをインストールして開始します。 次に「[ジョブのデプロイ](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job)」チュートリアルに従って、Stream Analytics ジョブを IoT Edge モジュールとしてデプロイします。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、分離コードを使用して簡単な C# ユーザー定義関数を作成し、ジョブを Azure に発行し、Azure または IoT Edge デバイスにジョブをデプロイしました。 
 

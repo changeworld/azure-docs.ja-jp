@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0dccefa47789b4658a7bca828b5a820db0d448e5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ce51c6415389ee52cf0371dfbddb98cb48747b05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688654"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430463"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
 
@@ -69,7 +69,7 @@ SSL 証明書は、アプリへの SSL 接続を確立するために使用す�
 * **Subject**:この属性は、* *.your-root-domain-here.com* に設定する必要があります。
 * **Subject Alternative Name**:この属性には、* *.your-root-domain-here.com* と * *.scm.your-root-domain-here.com* の両方が含まれている必要があります。 各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続で、*your-app-name.scm.your-root-domain-here.com* 形式のアドレスが使用されます。
 
-有効な SSL 証明書を取得した後は、さらに 2 つの準備手順を実行する必要があります。 SSL 証明書を .pfx ファイルとして変換/保存します。 .pfx ファイルには、すべての中間証明書とルート証明書を忘れずに含めてください。 パスワードで保護してください。
+有効な SSL 証明書を取得した後は、さらに 2 つの準備手順を実行する必要があります。 SSL 証明書を .pfx ファイルとして変換、保存します。 .pfx ファイルには、すべての中間証明書とルート証明書を忘れずに含めてください。 パスワードで保護してください。
 
 .pfx ファイルは base64 文字列に変換する必要がありますが、これは SSL 証明書が Resource Manager テンプレートを使用してアップロードされるためです。 Resource Manager テンプレートはテキスト ファイルであるため、.pfx ファイルを base64 文字列に変換する必要があります。 この方法で、テンプレートのパラメーターとして含めることができます。
 
@@ -101,7 +101,7 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
 *azuredeploy.parameters.json* ファイル内の各パラメーターを以下に示します。
 
 * *appServiceEnvironmentName*:構成対象の ILB ASE の名前。
-* *existingAseLocation*:ILB ASE のデプロイ先の Azure リージョンを含むテキスト文字列。  例: "South Central US"。
+* *existingAseLocation*:ILB ASE のデプロイ先の Azure リージョンを含むテキスト文字列。  次に例を示します。"South Central US"。
 * *pfxBlobString*:based64 でエンコードされた .pfx ファイルの文字列表現。 前述のコード スニペットを使用し、"exportedcert.pfx.b64" に含まれる文字列をコピーします。 *pfxBlobString* 属性の値として貼り付けます。
 * *password*:pfx ファイルの保護に使用されるパスワード。
 * *certificateThumbprint*:証明書のサムプリント。 この値 (前述のコード スニペットにある *$certificate.Thumbprint* など) を PowerShell から取得した場合、値はそのまま使用できます。 この値を Windows 証明書のダイアログ ボックスからコピーした場合は、忘れずに余分なスペースを削除してください。 *certificateThumbprint* は、AF3143EB61D43F6727842115BB7F17BBCECAECAE のようになります。
@@ -152,9 +152,9 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 ただし、パブリックのマルチテナント サービスで実行されるアプリの場合と同じように、開発者は個々のアプリのカスタム ホスト名を構成できます。 個々のアプリに一意の SNI SSL 証明書バインドを構成することもできます。
 
 ## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
-App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 前述の情報は ASEv2 に基づいていました。 このセクションでは、ASEv1 と ASEv2 の違いについて説明します。
+App Service Environment には、ASEv1 と ASEv2 です。 前述の情報は ASEv2 に基づいていました。 このセクションでは、ASEv1 と ASEv2 の違いについて説明します。
 
-ASEv1 では、すべてのリソースを手動で管理します。 これには、フロントエンド、worker、IP ベースの SSL に使用する IP アドレスが含まれます。 App Service プランをスケールアウトするには、そのプランをホストする worker プールを先にスケールアウトしておく必要があります。
+ASEv1 では、すべてのリソースを手動で管理します。 これには、フロントエンド、ワーカー、IP ベースの SSL に使用する IP アドレスが含まれます。 App Service プランをスケールアウトするには、そのプランをホストする worker プールを先にスケールアウトしておく必要があります。
 
 ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 では、割り当てられた vCPU ごとに料金を支払います。 これには、フロントエンドまたはどのワークロードもホストしていない worker に使用される vCPU が含まれます。 ASEv1 では、ASE の既定の最大スケール サイズは合計で 55 ホストです。 これにはワーカーとフロントエンドが含まれます。 ASEv1 の利点の 1 つは、従来の仮想ネットワークと Resource Manager 仮想ネットワークにデプロイできることです。 ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]に関するページを参照してください。
 
@@ -181,7 +181,7 @@ Resource Manager テンプレートを使用して ASEv1 を作成するには�
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../../app-service/configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

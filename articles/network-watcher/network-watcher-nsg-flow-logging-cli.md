@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 950b014d7e08eeeeed40ba7b294e53e1c200474b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 21026a3de2b9feb11bc84cbdb60d4a363bd5a05c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454264"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Azure CLI を使用したネットワーク セキュリティ グループ フローのログの構成
 
@@ -74,8 +74,6 @@ az network watcher flow-log configure --resource-group resourceGroupName --enabl
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-> [!IMPORTANT]
-> 現在、Network Watcher の[ネットワーク セキュリティ グループ (NSG) フロー ログ](network-watcher-nsg-flow-logging-overview.md)がアイテム保持ポリシー設定に基づいて BLOB ストレージから自動的に削除されないという問題があります。 0 以外のアイテム保持ポリシーが存在する場合は、保持期間を過ぎているストレージ BLOB を定期的に削除して、課金が発生しないようにすることをお勧めします。 NSG フロー ログ ストレージ BLOB を削除する方法の詳細については、[NSG フロー ログ ストレージ BLOB の削除](network-watcher-delete-nsg-flow-log-blobs.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

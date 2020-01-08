@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: ccc6c2554576d91d2236fb84f81c8aeccdc07be7
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 2def0eaa2e1ee22498202228cf62257605d940e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815343"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75380322"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-android"></a>クイック スタート:Android 上で Speech Devices SDK サンプル アプリを実行する
 
@@ -165,7 +165,7 @@ Speech Device に接続できない場合。 コマンド プロンプト ウィ
 >
 > エラー `no devices/emulators found` が発生した場合は、USB ケーブルが接続されていること、および高品質のケーブルが使用されていることを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [リリース ノートを確認します](devices-sdk-release-notes.md)

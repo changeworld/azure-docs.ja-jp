@@ -9,12 +9,12 @@ metadata:
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: fe554b2e7a146ccb3c0b593ffc7e8bef66e55ef2
-  ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+  ms.openlocfilehash: da29ab1936d0979de125087f9ef737cfe8d87a43
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71349910"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75433044"
 landingContent:
 - title: Azure Functions について
   linkLists:
@@ -36,7 +36,7 @@ landingContent:
     links:
     - text: コードをホストするのに最適な場所
       url: https://azure.microsoft.com/resources/videos/build-2019-where-should-i-host-my-code-choosing-between-kubernetes-containers-and-serverless/
-- title: 作業開始
+- title: はじめに
   linkLists:
   - linkListType: quickstart
     links:
@@ -76,8 +76,10 @@ landingContent:
       url: functions-bindings-error-pages.md
   - linkListType: learn
     links:
-    - text: Visual Studio を使用した開発、テスト、デプロイ
+    - text: Visual Studio を使用して関数を開発する
       url: /learn/modules/develop-test-deploy-azure-functions-with-visual-studio/index
+    - text: コマンド ラインから関数を開発する
+      url: /learn/modules/develop-test-deploy-azure-functions-with-core-tools/index
   - linkListType: video
     links:
     - text: Visual Studio Code を使用した開発

@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: bf6efbdbe19be28c005e2081c99827734ef10174
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176993"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446470"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>チュートリアル:Azure Logic Apps で Form Recognizer を使用して請求書を分析する
 
@@ -81,13 +81,13 @@ Azure Logic Apps を使用すると、タスクとワークフローを自動化
 
 1. **[ロジック アプリの作成]** で、次に示すようにロジック アプリの詳細を入力します。 完了したら、 **[作成]** を選択します。
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | 値 | [説明] |
    |----------|-------|-------------|
    | **Name** | <*ロジック アプリ名*> | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"My-First-Logic-App" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプション名*> | お使いの Azure サブスクリプション名 |
-   | **リソース グループ** | <*Azure-resource-group-name*> | 関連するリソースの整理に使用する[Azure リソース グループ](./../../azure-resource-manager/resource-group-overview.md)の名前。 この例では、"My-First-LA-RG" を使用します。 |
+   | **リソース グループ** | <*Azure-resource-group-name*> | 関連するリソースの整理に使用する[Azure リソース グループ](./../../azure-resource-manager/management/overview.md)の名前。 この例では、"My-First-LA-RG" を使用します。 |
    | **Location** | <*Azure-region*> | ロジック アプリの情報の保存先となるリージョン。 この例では "米国西部" を使用します。 |
-   | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 |
+   | **Log Analytics** | Off | 診断ログの場合は、この設定を**オフ**のままにしてください。 |
    ||||
 
 1. Azure によってアプリがデプロイされた後、Azure ツール バーで、対象のデプロイされたロジック アプリに対して、 **[通知]**  >  **[リソースに移動]** の順に選択します。 または、検索ボックスに名前を入力して、目的のロジック アプリを見つけて選択することもできます。
@@ -175,7 +175,7 @@ Form Recognizer サービスを使用して請求書を分析する前に、モ�
     > [!div class="mx-imgBorder"]
     > ![請求書からテーブル情報を抽出する](media/tutorial-form-recognizer-with-logic-apps/select-tables.png)
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 ## <a name="test-your-logic-app"></a>ロジック アプリをテストする
 
@@ -383,7 +383,7 @@ Form Recognizer サービスを使用して請求書を分析する前に、モ�
     ```
     これで、このチュートリアルは終了です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Form Recognizer を使用してモデルをトレーニングし、請求書の内容を抽出するように Azure Logic Apps ワークフローを設定しました。 次に、独自のフォームを使用して同様のシナリオを作成できるように、トレーニング データ セットを作成する方法について説明します。
 

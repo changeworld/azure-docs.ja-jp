@@ -6,18 +6,18 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: c461b379629927e8f367fad9bfc70b87413f47b7
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 39c4d6a77121e0b52a1da827ebb9e1976f609b30
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255389"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415282"
 ---
-# <a name="mount-the-avere-vfxt-cluster"></a>Avere vFXT クラスターをマウントする  
+# <a name="mount-the-avere-vfxt-cluster"></a>Avere vFXT クラスターをマウントする
 
 クライアント マシンを vFXT クラスターに接続するには以下の手順のようにします。
 
-1. クラスター ノード間にクライアント トラフィックの負荷を分散させる方法を決定します。 詳細については、後の「[クライアントの負荷を分散させる](#balance-client-load)」をご覧ください。 
+1. クラスター ノード間にクライアント トラフィックの負荷を分散させる方法を決定します。 詳細については、後の「[クライアントの負荷を分散させる](#balance-client-load)」をご覧ください。
 1. マウントする IP アドレスとジャンクション パスを識別します。
 1. 適切な引数を指定して [mount コマンド](#mount-command-arguments)を発行します。
 
@@ -25,9 +25,9 @@ ms.locfileid: "72255389"
 
 クライアントの要求をクラスター内のすべてのノード間に分散させるには、クライアント側の IP アドレスの全範囲にクライアントをマウントする必要があります。 このタスクを自動化するには、いくつかの簡単な方法があります。
 
-> [!TIP] 
+> [!TIP]
 > 他の負荷分散方法は、さらに大規模なシステムまたは複雑なシステムに適しています (ヘルプが必要な場合は、[サポート チケットを開いて](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)ください)。
-> 
+>
 > サーバー側の自動負荷分散に DNS サーバーを使用したい場合は、Azure 内で独自の DNS サーバーを設定して管理する必要があります。 その場合は、vFXT クラスター用にラウンドロビン DNS を構成することができます。手順については、「[Avere クラスターの DNS 構成](avere-vfxt-configure-dns.md)」を参照してください。
 
 ### <a name="sample-balanced-client-mounting-script"></a>負荷分散されたクライアントのマウント スクリプトの例
@@ -36,7 +36,7 @@ ms.locfileid: "72255389"
 
 ```bash
 function mount_round_robin() {
-    # to ensure the nodes are spread out somewhat evenly the default 
+    # to ensure the nodes are spread out somewhat evenly the default
     # mount point is based on this node's IP octet4 % vFXT node count.
     declare -a AVEREVFXT_NODES="($(echo ${NFS_IP_CSV} | sed "s/,/ /g"))"
     OCTET4=$((`hostname -i | sed -e 's/^.*\.\([0-9]*\)/\1/'`))
@@ -53,23 +53,23 @@ function mount_round_robin() {
     fi
     if ! grep -qs "${DEFAULT_MOUNT_POINT} " /proc/mounts; then
         retrycmd_if_failure 12 20 mount "${DEFAULT_MOUNT_POINT}" || exit 1
-    fi   
-} 
+    fi
+}
 ```
 
 上記の関数は、[Avere vFXT の例](https://github.com/Azure/Avere#tutorials)のサイトから入手できる Batch の例の一部です。
 
-## <a name="create-the-mount-command"></a>mount コマンドを作成する 
+## <a name="create-the-mount-command"></a>mount コマンドを作成する
 
 > [!NOTE]
 > Avere vFXT クラスターを作成するときに新しい BLOB コンテナーを作成しなかった場合は、クライアントをマウントする前に、「[Configure storage](avere-vfxt-add-storage.md)」(ストレージの構成) の手順に従います。
 
 クライアントで ``mount`` コマンドを実行すると、vFXT クラスター上の仮想サーバー (vserver) が、ローカル ファイル システムのパスにマップされます。 形式は ``mount <vFXT path> <local path> {options}`` です
 
-mount コマンドには 3 つの要素があります。 
+mount コマンドには 3 つの要素があります。
 
 * vFXT パス - (後で説明する、IP アドレスと名前空間ジャンクション パスの組み合わせ)
-* ローカル パス - クライアント上のパス 
+* ローカル パス - クライアント上のパス
 * mount コマンドのオプション - (「[Mount command arguments](#mount-command-arguments)」(mount コマンドの引数) を参照)
 
 ### <a name="junction-and-ip"></a>ジャンクションと IP
@@ -84,14 +84,13 @@ vserver のパスは、その "*IP アドレス*" と、"*名前空間ジャン�
 
 ![[Namespace path]\(名前空間のパス\) フィールドに "/avere/files" が設定された [Add new junction]\(新しいジャンクションの追加\) ダイアログ](media/avere-vfxt-create-junction-example.png)
 
-
 IP アドレスは、vserver に対して定義されたクライアント側の IP アドレスの 1 つです。 クライアント側の IP アドレスの範囲は、Avere Control Panel の 2 つの場所で確認できます。
 
-* **[VServers]** テーブル ([Dashboard]\(ダッシュボード\) タブ) - 
+* **[VServers]** テーブル ([Dashboard]\(ダッシュボード\) タブ) -
 
   ![Avere Control Panel の [Dashboard]\(ダッシュボード\) タブで、グラフの下のデータ テーブルの [VServer] タブが選択され、IP アドレス セクションが囲まれている](media/avere-vfxt-ip-addresses-dashboard.png)
 
-* **[Client Facing Network]\(クライアント側ネットワーク\)** 設定ページ - 
+* **[Client Facing Network]\(クライアント側ネットワーク\)** 設定ページ -
 
   ![[Settings]\(設定\) > [VServer] > [Client Facing Network]\(クライアント側ネットワーク\) 構成ページで、特定の vserver のテーブルの [Address Range]\(アドレス範囲\) セクションが囲まれている](media/avere-vfxt-ip-addresses-settings.png)
 
@@ -99,24 +98,22 @@ IP アドレスは、vserver に対して定義されたクライアント側の
 
 ### <a name="mount-command-arguments"></a>mount コマンドの引数
 
-クライアントのマウントがシームレスに行われるように、mount コマンドで以下の設定と引数を渡します。 
+クライアントのマウントがシームレスに行われるように、mount コマンドで以下の設定と引数を渡します。
 
 ``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-
 | 必須の設定 | |
---- | --- 
-``hard`` | vFXT クラスターに対するソフト マウントは、アプリケーション エラーおよび可能性のあるデータ損失と関連付けられます。 
+--- | ---
+``hard`` | vFXT クラスターに対するソフト マウントは、アプリケーション エラーおよび可能性のあるデータ損失と関連付けられます。
 ``proto=netid`` | このオプションは、NFS ネットワーク エラーの適切な処理をサポートします。
 ``mountproto=netid`` | このオプションは、マウント操作に対するネットワーク エラーの適切な処理をサポートします。
 ``retry=n`` | 一時的なマウントの障害を回避するため、``retry=30`` を設定します。 (フォアグラウンド マウントの場合は、別の値が推奨されます。)
 
 | 推奨される設定  | |
---- | --- 
+--- | ---
 ``nointr``            | このオプションをサポートする従来のカーネル (2008 年 4 月より前) を使用するクライアントの場合は、オプション "nointr" が推奨されます。 オプション "intr" が既定値であることに注意してください。
 
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 クライアントをマウントした後は、クライアントを使用してバックエンド データ ストレージ (コア ファイラー) を設定できます。 他のセットアップ タスクの詳細については、以下のドキュメントをご覧ください。
 

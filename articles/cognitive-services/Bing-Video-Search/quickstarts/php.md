@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 481bc700f86dfd8a28c074134fd5dcc85bb748c4
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 357cc85991ac88aef4fd0958e2bc776373f56dc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448354"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>クイック スタート:Bing Video Search REST API と PHP を使用して動画を検索する
 
@@ -37,7 +37,7 @@ API の技術的な詳細については、[API リファレンス](https://docs
 1. コードのコメントで説明されているように、`php.ini` でセキュリティ保護された HTTP のサポートが有効になっていることを確認します。
 2. 適切な IDE またはエディターで新しい PHP プロジェクトを作成します。
 3. 次に示すコードを追加します。
-4. `accessKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+4. `$accessKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。 `$endpoint` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
 5. プログラムを実行します。
 
 ```php
@@ -210,11 +210,11 @@ echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>参照 
 
  [Bing Video Search API とは](../overview.md)

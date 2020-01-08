@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics の管理用 .NET SDK
 description: Stream Analytics 管理用 .NET SDK の使用 分析ジョブを設定および実行する方法について説明します。 プロジェクト、入力、出力、および変換を作成します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73b1392adb2beee9e60d078d865257889b3205f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612723"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426254"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK:.NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
 管理用 .NET SDK を使用する .NET 用 Stream Analytics API で、分析ジョブを設定して実行する方法について説明します。 プロジェクトの設定、入力と出力ソース、変換の作成、およびジョブの開始と停止を行います。 分析ジョブでは、BLOB ストレージまたはイベント ハブからデータをストリームできます。
@@ -288,8 +287,8 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
 ## <a name="get-support"></a>サポートを受ける
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
-## <a name="next-steps"></a>次の手順
-分析ジョブを作成して実行するために .NET SDK を使用する方法の基本を学習できました。 詳細については、次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+分析ジョブを作成して実行するために .NET SDK を使用する方法の基本を学習できました。 詳細については、以下の記事をお読みください。
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)

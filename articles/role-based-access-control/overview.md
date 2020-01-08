@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1b40f8e070606a4c21def592fb6104e42e25f9f6
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 2ef528438591006be6e4cdec508dd15a7fb0a143
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707930"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357683"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Azure リソースのロールベースのアクセス制御 (RBAC) の概要
 
 クラウド リソースに対するアクセスの管理は、クラウドが使用している組織にとって重要な機能です。 ロールベースのアクセス制御 (RBAC) は、Azure のリソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、そのユーザーがアクセスできる領域を管理するのに役立ちます。
 
-Azure RBAC は [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 上に構築された承認システムであり、Azure リソースに対するアクセスをきめ細かく管理できます。
+Azure RBAC は [Azure Resource Manager](../azure-resource-manager/management/overview.md) 上に構築された承認システムであり、Azure リソースに対するアクセスをきめ細かく管理できます。
 
 ## <a name="what-can-i-do-with-rbac"></a>RBAC でできること
 
@@ -76,7 +76,7 @@ Azure には複数の[組み込みロール](built-in-roles.md)があり、使�
 
 Azure には、オブジェクト内のデータへのアクセスを許可できるようにするデータ操作が用意されています。 たとえば、ユーザーがあるストレージ アカウントへのデータの読み取りアクセス許可を持っている場合、そのユーザーはそのストレージ アカウント内の BLOB またはメッセージを読み取ることができます。 詳しくは、[Azure リソースのロール定義](role-definitions.md)に関する記事をご覧ください。
 
-### <a name="scope"></a>Scope (スコープ)
+### <a name="scope"></a>スコープ
 
 "*スコープ*" は、アクセスが適用されるリソースのセットです。 ロールを割り当てるときに、スコープを定義することによって、許可される操作をさらに制限できます。 これは、1 つのリソース グループについてのみ、あるユーザーを [Web サイトの共同作業者](built-in-roles.md#website-contributor)として指定する場合に便利です。
 
@@ -84,7 +84,7 @@ Azure では、複数のレベル ([管理グループ](../governance/management
 
 ![ロール割り当てのスコープ](./media/overview/rbac-scope.png)
 
-親スコープでアクセス権を付与すると、それらのアクセス許可が子スコープに継承されます。 例:
+親スコープでアクセス権を付与すると、それらのアクセス許可が子スコープに継承されます。 次に例を示します。
 
 - 管理グループ スコープでユーザーに[所有者](built-in-roles.md#owner)ロールを割り当てた場合、そのユーザーは、その管理グループに存在する全サブスクリプションの内容をすべて管理することができます。
 - [閲覧者](built-in-roles.md#reader)ロールをサブスクリプション スコープでグループに割り当てた場合、そのグループのメンバーは、サブスクリプション内のすべてのリソース グループとリソースを見ることができます。
@@ -134,7 +134,7 @@ Azure では、複数のレベル ([管理グループ](../governance/management
 
 [!INCLUDE [Azure AD free license](../../includes/active-directory-free-license.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [クイック スタート:Azure portal を使用して Azure リソースに対するユーザーのアクセス権を表示する](check-access.md)
 - [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)

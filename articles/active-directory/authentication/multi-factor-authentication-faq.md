@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86cce0ee2a4966e2c2c8d74ad63a50976c199eb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2a622245a7431058582131d9ba224ddfb676d8aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425136"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication についてよく寄せられる質問
 
@@ -26,9 +26,12 @@ ms.locfileid: "74967304"
 
 > [!IMPORTANT]
 > 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+> 
+> 2018 年 9 月 1 日以降、新規のお客様は、使用量ベースのライセンスを利用できません。
+> 2018 年 9 月 1 日以降、新しい認証プロバイダーを作成できなくなります。 既存の認証プロバイダーは引き続き使用および更新できます。 多要素認証認証は、今後も Azure AD Premium ライセンスで利用できます。
+
 > [!NOTE]
 > Azure Multi-Factor Authentication Server に関して、以下で共有される情報は、MFAサーバーを既に実行しているユーザーにのみ適用されます。
-
 
 **Q:Azure Multi-Factor Authentication Server ではどのようにユーザー データが処理されますか。**
 
@@ -202,7 +205,7 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 - 組織で作成および有効化されている MFA 登録ポリシーが、そのユーザーに適用されている。
 - そのユーザーは事前に MFA への登録を行っているが、選択した認証方法が、その後管理者によって無効化されている。 このため、ユーザーはもう一度 MFA 登録を行い、新しい既定の認証方法を選択する必要があります。
 
-## <a name="errors"></a>Errors
+## <a name="errors"></a>エラー
 
 **Q:モバイル アプリ通知を使用して認証を行うときに、"認証しようとしているアカウントはアクティブ化されていません" というエラー メッセージが表示された場合、ユーザーはどうすればよいでしょうか。**
 
@@ -219,7 +222,7 @@ Windows Server 2012 R2 におけるセキュリティの変更により、Azure 
 
 このエラーを回避するには、管理関連の操作用と管理以外の操作用に異なるユーザー アカウントを使用します。 非管理アカウントを使用して Outlook にサインインできるように、後ほど、管理アカウントと非管理アカウントのメールボックスにリンクを作成することができます。 このソリューションの詳細については、「[管理者がユーザーのメールボックスの内容を開いたり表示したりできるようにする](https://help.outlook.com/141/gg709759.aspx?sl=1)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このページで質問の答えが見つからない場合は、ページ下部の該当欄にコメントをご記入ください。 または、次の操作でヘルプを取得できます。
 

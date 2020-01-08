@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics での参照に参照データを使用する
 description: この記事では、Azure Stream Analytics ジョブのクエリ デザインで参照データを使用してデータを参照または関連付ける方法について説明します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: d058fdd48b8a271c8a2db7d327267de053c02c44
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244853"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369566"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 
@@ -72,7 +71,7 @@ Azure Stream Analytics は、更新された参照データ BLOB を、1 分間�
 3. 参照データの BLOB の並び替えは、BLOB の "最終変更" 時刻では行われ**ません**。{date} および {time} の置換文字を使用して BLOB 名に指定されている時刻と日付によってのみ行われます。
 3. 多数の BLOB を列挙する必要がないように、今後処理を行う予定がない非常に古い BLOB は削除することを検討してください。 ASA では、再起動のような一部のシナリオで少量の再処理が必要になる可能性がある点に注意してください。
 
-## <a name="azure-sql-database"></a>Azure SQL Database
+## <a name="azure-sql-database"></a>Azure SQL データベース
 
 Azure SQL Database の参照データは、Stream Analytics ジョブによって取得され、処理のためにスナップショットとしてメモリに格納されます。 参照データのスナップショットも、構成設定で指定したストレージ アカウントのコンテナーに格納されます。 ジョブを開始すると、コンテナーは自動作成されます。 ジョブが停止するか失敗状態になると、自動作成されたコンテナーはジョブの再開時に削除されます。  
 
@@ -91,10 +90,10 @@ SQL Database 参照データを構成するには、まず**参照データ**入
 |**プロパティ名**|**説明**  |
 |---------|---------|
 |入力のエイリアス|この入力を参照するジョブ クエリで使用されるわかりやすい名前。|
-|Subscription|サブスクリプションの選択|
-|Database|参照データを含む Azure SQL Database。 Azure SQL Database Managed Instance の場合は、ポート 3342 を指定する必要があります。 たとえば、*sampleserver.public.database.windows.net,3342* のようになります|
+|サブスクリプション|サブスクリプションの選択|
+|データベース|参照データを含む Azure SQL Database。 Azure SQL Database Managed Instance の場合は、ポート 3342 を指定する必要があります。 たとえば、*sampleserver.public.database.windows.net,3342* のようになります|
 |ユーザー名|Azure SQL Database に関連付けられているユーザー名。|
-|パスワード|Azure SQL Database に関連付けられているパスワード。|
+|Password|Azure SQL Database に関連付けられているパスワード。|
 |定期的に更新|このオプションでは、リフレッシュ レートを選択できます。 "On"(オン) を選択すると、リフレッシュ レートを DD:HH:MM で指定できます。|
 |スナップショット クエリ|これは、SQL Database から参照データを取得する既定のクエリ オプションです。|
 |デルタ クエリ|データ セットが大きくリフレッシュ レートが短い高度なシナリオでは、デルタ クエリの追加を選択します。|
@@ -113,9 +112,9 @@ Stream Analytics は、**最大 300 MB のサイズ**の参照データをサポ
 
 参照データの圧縮はサポートされていません。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
+> [クイック スタート:Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

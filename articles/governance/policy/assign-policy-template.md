@@ -3,12 +3,12 @@ title: クイック スタート:テンプレートを使用した新しいポ�
 description: このクイックスタートでは、Resource Manager テンプレートを使用して、ポリシー割り当てを作成し、準拠していないリソースを特定します。
 ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 61bffcdeb5d562fe18df98fda091d5d6aa4b4051
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: e22c14768622408fb3afb0e491d4179b6113e4ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482332"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436460"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用して、準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -39,13 +39,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 次の値を選択または入力します。
 
-   | 名前 | 値 |
+   | Name | 値 |
    |------|-------|
-   | Subscription | Azure サブスクリプションを選択します。 |
+   | サブスクリプション | Azure サブスクリプションを選択します。 |
    | Resource group | **[新規作成]** を選択し、名前を指定して、 **[OK]** を選択します。 スクリーンショットでは、リソース グループ名は _mypolicyquickstart\<MMDD 形式の日付\>rg_ です。 |
    | Location | リージョンを選択します。 たとえば **[米国中部]** です。 |
    | ポリシーの割り当て名 | ポリシーの割り当て名を指定します。 必要に応じて、ポリシー定義の表示を使用できます。 たとえば、"**マネージド ディスクを使用していない VM の監査**" などです。 |
-   | Rg Name \(RG 名\) | ポリシーを割り当てるリソース グループ名を指定します。 このクイック スタートでは、既定値 **[resourceGroup().name]** を使用します。 **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** は、リソース グループを取得するテンプレート関数です。 |
+   | Rg Name \(RG 名\) | ポリシーを割り当てるリソース グループ名を指定します。 このクイック スタートでは、既定値 **[resourceGroup().name]** を使用します。 **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** は、リソース グループを取得するテンプレート関数です。 |
    | ポリシー定義 ID | **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a** を指定します。 |
    | 上記の使用条件に同意する | (選択) |
 
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - その他のサンプル テンプレートについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)」を参照してください。
 - テンプレート リファレンスを確認するには、[Azure テンプレート リファレンス](/azure/templates/microsoft.authorization/allversions)に関するページを参照してください。
-- Resource Manager テンプレートを開発する方法については、[Azure Resource Manager のドキュメント](../../azure-resource-manager/resource-group-overview.md)を参照してください。
+- Resource Manager テンプレートを開発する方法については、[Azure Resource Manager のドキュメント](../../azure-resource-manager/management/overview.md)を参照してください。
 - サブスクリプション レベルのデプロイについては、「[サブスクリプション レベルでリソース グループとリソースを作成する](../../azure-resource-manager/deploy-to-subscription.md)」を参照してください。
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する
@@ -68,7 +68,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 詳細については、「[コンプライアンスのしくみ](./how-to/get-compliance-data.md#how-compliance-works)」を参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 作成した割り当てを削除するには、次の手順のようにします。
 
@@ -78,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![コンプライアンスの概要ページから割り当てを削除する](./media/assign-policy-template/delete-assignment.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、組み込みのポリシー定義をスコープに割り当て、コンプライアンス レポートを評価しました。 ポリシー定義では、スコープ内のすべてのリソースが準拠していることが検証されて、準拠していないリソースが識別されます。
 

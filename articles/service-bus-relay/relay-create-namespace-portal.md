@@ -14,19 +14,19 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: a7bb26cdfec4042a1963f929f92e5505045124a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2f15008149de00ba232824280c69bcf4da978f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60749242"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459264"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Azure Portal を使用した Relay 名前空間の作成
 
 名前空間は、すべての Azure Relay コンポーネントを範囲とするコンテナーです。 複数のリレーを 1 つの名前空間に格納できます。多くの場合、名前空間はアプリケーション コンテナーとして機能します。 現在、リレー名前空間の作成には 2 つの方法があります。
 
 1. Azure Portal (この記事)。
-2. [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) のテンプレート。
+2. [Azure Resource Manager](../azure-resource-manager/management/overview.md) のテンプレート。
 
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Azure Portal での名前空間の作成
 
@@ -34,7 +34,7 @@ ms.locfileid: "60749242"
 
 お疲れさまでした。 これで、リレー名前空間を作成できました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Relay に関する FAQ](relay-faq.md)
 * [.NET を使って作業を開始する](relay-hybrid-connections-dotnet-get-started.md)

@@ -1,18 +1,14 @@
 ---
 title: Azure Advisor でのアクセス許可
 description: Advisor のアクセス許可と、それを利用してサブスクリプションを構成する機能、推奨事項を延期または無視する機能をブロックする方法。
-services: advisor
-author: kasparks
-ms.service: advisor
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: kasparks
-ms.openlocfilehash: cbd2e456c96dbf8ca01387f0c7c17a1541dbfe55
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c850d757044066d5c4a793e076436906d715833c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422317"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure Advisor でのアクセス許可
 
@@ -49,7 +45,7 @@ Advisor でサブスクリプションまたはリソース グループを構�
 
 推奨事項を延期または無視しようとしてエラーが発生する場合は、十分なアクセス許可を持っていない可能性があります。 延期または無視している推奨事項の影響を受けるリソースに対して、少なくとも共同作成者アクセス権を持っていることを確認してください。 この問題を解決するには、[ユーザーにアクセス権を付与する](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)方法を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Advisor が RBAC を使用してユーザー アクセス許可を制御する方法と一般的な問題を解決する方法の概要を説明しました。 Advisor の詳細については、次を参照してください。
 

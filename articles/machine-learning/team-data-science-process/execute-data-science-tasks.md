@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a6b463c4a1d0e640cc6c2a380ee978fcafa2877e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0bb928fe23fcfc3580b0c3951c48f2636ab86c81
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670340"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526704"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>データ サイエンス タスクの実行: 探索、モデリング、およびデプロイ
 
@@ -86,7 +86,7 @@ YAML ファイルを使用して以下を指定します。
 モデルを運用環境にデプロイするには、さまざまな方法とプラットフォームがあります。 いくつかの選択肢を次に示します。
 
 
-- [Azure Machine Learning でのモデルのデプロイ](../service/how-to-deploy-and-where.md)
+- [Azure Machine Learning でのモデルのデプロイ](../how-to-deploy-and-where.md)
 - [SQL server でのモデルのデプロイ](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
@@ -106,7 +106,7 @@ YAML ファイルを使用して以下を指定します。
 複数のモデルが運用環境にある場合、[A/B テスト](https://en.wikipedia.org/wiki/A/B_testing)を実行してモデルのパフォーマンスを比較することが役立つ可能性があります。 
 
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Track progress of data science projects (データ サイエンス プロジェクトの進行状況の追跡)](track-progress.md)」に、データ サイエンティストがデータ サイエンス プロジェクトの進行状況を追跡できる方法が示されています。
 

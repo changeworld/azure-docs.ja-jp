@@ -1,24 +1,17 @@
 ---
-title: Azure App Configuration とは | Microsoft Docs
+title: Azure App Configuration とは
 description: Azure App Configuration サービスの概要。
-services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
+ms.author: yegu
 ms.service: azure-app-configuration
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: 01644054868ffc08738e67654ba181c76e7aed39
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 40630bbbbcea344fb74d8ad971eb4c808bf0c142
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185080"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495236"
 ---
 # <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは
 
@@ -67,7 +60,7 @@ App Configuration ストアを自分のアプリケーションに追加する�
 | Java Spring | Spring Cloud 用 App Configuration クライアント |
 | その他 | App Configuration の REST API |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ASP.NET Core のクイック スタート](./quickstart-aspnet-core-app.md)
 * [.NET Core のクイック スタート](./quickstart-dotnet-core-app.md)

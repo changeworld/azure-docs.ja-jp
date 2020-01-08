@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: aahi
-ms.openlocfilehash: 54aadd22b8f2bbccaa4c5e4f1444aa08279a4773
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: eaaa6ea7c5986a71f298119b5074ae32504ab73b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125529"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446235"
 ---
 <a name="HOLTop"></a>
 
@@ -44,11 +44,14 @@ npm init
 
 [!code-javascript[Const statements](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=constStatements)]
 
-リソースの Azure エンドポイントとサブスクリプション キー用の変数を作成します。 これらの値を環境変数 `TEXT_ANALYTICS_SUBSCRIPTION_KEY` および `TEXT_ANALYTICS_ENDPOINT` から取得します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
+リソースの Azure エンドポイントとサブスクリプション キー用の変数を作成します。
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-[!code-javascript[Key and endpoint vars](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=keyVars)]
+```javascript
+const subscription_key = '<paste-your-text-analytics-key-here>';
+const endpoint = `<paste-your-text-analytics-endpoint-here>`;
+```
 
 ### <a name="install-the-client-library"></a>クライアント ライブラリをインストールする
 

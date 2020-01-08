@@ -2,19 +2,15 @@
 title: Azure Update Management と連携するように Windows Update の設定を構成する
 description: この記事では、Azure Update Management と連携するように構成する Windows Update の設定について説明します。
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/02/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 804f42121293e142cf77ad73c4aab36e62e3242d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f6377012a2afd0fb36486edf0af0ac3591b5d1f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850416"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366857"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Update Management 用に Windows Update の設定を構成する
 
@@ -64,6 +60,6 @@ Update Management は、Windows Server Update Services (WSUS) の設定に準拠
 
 「[イントラネットの Microsoft 更新サービスの場所を指定する](/windows/deployment/update/waas-wu-settings#specify-intranet-microsoft-update-service-location)」で、更新プログラムをスキャンおよびダウンロードするためのソースを指定できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Windows Update の設定を構成した後、「[Azure VM の更新プログラムとパッチの管理](automation-tutorial-update-management.md)」の手順に従って、更新プログラムのデプロイをスケジュールすることができます。

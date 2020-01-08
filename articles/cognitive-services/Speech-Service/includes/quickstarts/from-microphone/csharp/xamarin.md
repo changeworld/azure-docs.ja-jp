@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: ecfdc74c72284da97ebf3107140911e666a3a12d
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 66391f7b9282781902723b0153a5797a5f7ae82b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818846"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467796"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "74818846"
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=xamarin)
 > * オーディオ キャプチャ用のマイクにアクセスできることを確認する
 
-既にこれを行っている場合は、これで完了です。 続けましょう。
+既にこれを行っている場合は、これで完了です。 このまま続けましょう。
 
 ## <a name="add-sample-code-for-the-common-helloworld-project"></a>共通の helloworld プロジェクトのサンプル コードを追加する
 
@@ -145,6 +145,6 @@ ms.locfileid: "74818846"
 
 デバイスまたはシミュレーターで Android および iOS アプリケーションをビルドおよび実行する方法は、UWP の場合と同様です。 この記事の「前提条件」セクションで必須とされているすべての SDK が適切にインストールされていることを確認してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]

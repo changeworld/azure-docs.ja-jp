@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: c19d32f0be2eb817f9f7d73e6c6eaad8d90ce350
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1fdd68bd0f817e4749c759a8f844eeac34599f02
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607799"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552799"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>Azure Spring Cloud の CI/CD
 
@@ -37,7 +37,7 @@ steps:
     azureSubscription: <your service connection name>
     scriptLocation: inlineScript
     inlineScript: |
-      az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+      az extension add -y --name spring-cloud
       az spring-cloud app deploy --resource-group <your-resource-group> --service <your-spring-cloud-service> --name <app-name> --jar-path ./target/your-result-jar.jar
       # deploy other app
 ```
@@ -52,7 +52,7 @@ steps:
     azureSubscription: <your service connection name>
     scriptLocation: inlineScript
     inlineScript: |
-      az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
+      az extension add -y --name spring-cloud
       az spring-cloud app deploy --resource-group <your-resource-group> --service <your-spring-cloud-service> --name <app-name>
 
       # or if it is a multi-module project

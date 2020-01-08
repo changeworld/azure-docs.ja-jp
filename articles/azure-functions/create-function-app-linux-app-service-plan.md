@@ -3,12 +3,12 @@ title: Linux 上で Azure portal から関数アプリを作成する
 description: Azure Portal を使用して、サーバーレス実行のための最初の Azure 関数を作成する方法について説明します。
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.openlocfilehash: fdc2d9c7b5945e48cc87f3edd918498c3d45f55e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d48bfc8888afe6b7a46151d2030519f752169551
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233103"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410502"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Azure App Service プランで Linux 上に関数アプリを作成する
 
@@ -34,13 +34,13 @@ Linux での関数の実行をホストするための関数アプリが必要�
 
     ![新しい関数アプリの設定を定義する](./media/create-function-app-linux-app-service-plan/function-app-create-flow2.png)
 
-    | Setting      | 推奨値  | 説明                                        |
+    | 設定      | 推奨値  | [説明]                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **アプリ名** | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、`a-z`、`0-9`、および `-` です。  | 
     | **サブスクリプション** | 該当するサブスクリプション | この新しい Function App が作成されるサブスクリプション。 | 
-    | **[リソース グループ](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 |
+    | **[リソース グループ](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 |
     | **OS** | Linux | Linux 上で関数アプリを実行する |
-    | **[発行]** | コード | **ランタイム スタック**の既定の Linux コンテナーが使用されます。 用意する必要があるのは関数アプリ プロジェクトのコードのみです。 もう 1 つの選択肢は、カスタムの [Docker イメージ](functions-create-function-linux-custom-image.md)を公開することです。 |
+    | **公開** | コード | **ランタイム スタック**の既定の Linux コンテナーが使用されます。 用意する必要があるのは関数アプリ プロジェクトのコードのみです。 もう 1 つの選択肢は、カスタムの [Docker イメージ](functions-create-function-linux-custom-image.md)を公開することです。 |
     | **[ホスティング プラン](functions-scale.md)** | App Service プラン | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 App Service プランで実行する場合は、[関数アプリのスケーリング](functions-scale.md)を制御できます。  |
     | **App Service プラン/場所** | プランの作成 | **[新規作成]** を選択し、 **[App Service プラン]** の名前を指定します。 最寄りの[リージョン](https://azure.microsoft.com/regions/)または関数がアクセスする他のサービスの近くのリージョン内の **[場所]** を選択します。 目的の **[[価格レベル]](https://azure.microsoft.com/pricing/details/app-service/linux/)** を選択します。 <br/>同じ App Service プランで Linux と Windows の両方の関数アプリを実行することはできません。 |
     | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# および F# 関数用の **[.NET]** を選択します。 |
@@ -98,11 +98,11 @@ HTTP によってトリガーされる関数の言語固有のテンプレート
 
    ![Azure Portal の関数ログ ビューアー。](./media/create-function-app-linux-app-service-plan/function-view-logs.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HTTP によってトリガーされる単純な関数を含む Function App を作成しました。  
 

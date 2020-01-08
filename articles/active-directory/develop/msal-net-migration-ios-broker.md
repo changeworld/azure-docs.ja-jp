@@ -1,5 +1,5 @@
 ---
-title: Xamarin iOS ADAL を MSAL.NET に移行する
+title: ブローカーを使用する Xamarin アプリの MSAL.NET への移行
 titleSuffix: Microsoft identity platform
 description: Microsoft Authenticator を使用する Xamarin iOS アプリを ADAL.NET から MSAL.NET に移行する方法を説明します。
 author: jmprieur
@@ -13,12 +13,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e70865c897e408f1cebb7359d0890d27b11243b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c830b7f6d13d9b85eae34b6193ad2a10e7bfb410
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921823"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424211"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Microsoft Authenticator を使用する iOS アプリケーションを ADAL.NET から MSAL.NET に移行する
 
@@ -52,14 +52,14 @@ ADAL.NET では、ブローカーのサポートは認証ごとのコンテキ�
 
 `PlatformParameters` コンストラクターで `useBroker` フラグを true に設定する必要があります。
 
-```CSharp
+```csharp
 public PlatformParameters(
         UIViewController callerViewController, 
         bool useBroker)
 ```
 また、この例では、プラットフォーム固有の iOS 用のページ レンダラーのコードの `useBroker` フラグを 
 true に設定する必要があります。
-```CSharp
+```csharp
 page.BrokerParameters = new PlatformParameters(
           this, 
           true, 
@@ -67,7 +67,7 @@ page.BrokerParameters = new PlatformParameters(
 ```
 
 次に、トークンを取得する呼び出しで、次のパラメーターを含めます。
-```CSharp
+```csharp
  AuthenticationResult result =
                     await
                         AuthContext.AcquireTokenAsync(
@@ -83,7 +83,7 @@ MSAL.NET では、ブローカーのサポートは PublicClientApplication ご�
 
 (既定で true に設定されている) `WithBroker()` パラメーターを使用してブローカーを呼び出します。
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -91,7 +91,7 @@ var app = PublicClientApplicationBuilder
                 .Build();
 ```
 トークンの取得の呼び出しで、次のように記述します。
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
@@ -107,7 +107,7 @@ UIViewController は
 
 iOS 固有のプラットフォームで `PlatformParameters` に渡されます。
 
-```CSharp
+```csharp
 page.BrokerParameters = new PlatformParameters(
           this, 
           true, 
@@ -121,17 +121,17 @@ MSAL.NET で、iOS のオブジェクト ウィンドウを設定するには、
 
 **例:**
 
-`App.cs`で、次のように記述します。
-```CSharp
+`App.cs`:
+```csharp
    public static object RootViewController { get; set; }
 ```
-`AppDelegate.cs`で、次のように記述します。
-```CSharp
+`AppDelegate.cs`:
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 トークンの取得の呼び出しで、次のように記述します。
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
@@ -140,7 +140,7 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>手順 3:コールバックを処理するように AppDelegate を更新する
-ADAL と MSAL の両方からブローカーが呼び出され、ブローカーでは `AppDelegate` クラスの `OpenUrl` メソッドを使用してアプリケーションにコールバックされます。 詳しくは、[こちらのドキュメント](msal-net-use-brokers-with-xamarin-apps.md#step-2-update-appdelegate-to-handle-the-callback)をご覧ください。
+ADAL と MSAL の両方からブローカーが呼び出され、ブローカーでは `AppDelegate` クラスの `OpenUrl` メソッドを使用してアプリケーションにコールバックされます。 詳しくは、[こちらのドキュメント](msal-net-use-brokers-with-xamarin-apps.md#step-3-update-appdelegate-to-handle-the-callback)をご覧ください。
 
 ADAL.NET と MSAL.NET の間に変更はありません。
 
@@ -160,9 +160,9 @@ URL スキームは、お使いのアプリに対して一意です。
 
 がプレフィックスとして、お使いの `CFBundleURLName` の前に含まれている必要があります。
 
-次に例を示します。`$"msauth.(BundleId")`
+例: `$"msauth.(BundleId")`
 
-```CSharp
+```csharp
  <key>CFBundleURLTypes</key>
     <array>
       <dict>
@@ -195,7 +195,7 @@ ADAL.NET と MSAL.NET は、いずれも `-canOpenURL:` を使用してブロー
 `msauth`
 
 
-```CSharp
+```csharp
 <key>LSApplicationQueriesSchemes</key>
 <array>
      <string>msauth</string>
@@ -207,10 +207,11 @@ ADAL.NET と MSAL.NET は、いずれも `-canOpenURL:` を使用してブロー
 `msauthv2`
 
 
-```CSharp
+```csharp
 <key>LSApplicationQueriesSchemes</key>
 <array>
      <string>msauthv2</string>
+     <string>msauthv3</string>
 </array>
 ```
 </table>
@@ -237,8 +238,8 @@ ADAL.NET と MSAL.NET のいずれでも、ブローカーをターゲットと�
 
 </table>
 
-ポータルでリダイレクト URI を登録する方法の詳細については、[Xamarin. iOS アプリケーションでのブローカーの活用](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app)に関する記事を参照してください。
+ポータルでリダイレクト URI を登録する方法の詳細については、[Xamarin. iOS アプリケーションでのブローカーの活用](msal-net-use-brokers-with-xamarin-apps.md#step-8-make-sure-the-redirect-uri-is-registered-with-your-app)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[MSAL.NET を使用する Xamarin iOS に固有の考慮事項](msal-net-xamarin-ios-considerations.md)」を参照してください。 

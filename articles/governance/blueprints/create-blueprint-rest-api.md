@@ -3,12 +3,12 @@ title: クイック スタート:REST API を使用してブループリント�
 description: このクイックスタートでは、Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 13a6cce25b17fdfbfa5f62dbf16cd2cfbbdc4fe2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436593"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>クイック スタート:REST API で Azure Blueprint を定義して割り当てる
 
@@ -407,7 +407,9 @@ REST API を使用してブループリントを発行した後は、それを�
      > [!IMPORTANT]
      > ブループリントでは、ユーザー割り当てマネージド ID が管理されません。 ユーザーが各自で十分なロールとアクセス許可を割り当てる必要があります。そうしないと、ブループリントの割り当てに失敗します。
 
-## <a name="unassign-a-blueprint"></a>ブループリントを割り当て解除する
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+### <a name="unassign-a-blueprint"></a>ブループリントを割り当て解除する
 
 ブループリントは、サブスクリプションから削除することができます。 多くの場合、アーティファクトのリソースが不要になったときは削除するようにします。 ブループリントを削除しても、そのブループリントの一部として割り当てられている成果物は後に残されます。 ブループリントの割り当てを削除するには、次の REST API 操作を使用します。
 
@@ -417,7 +419,7 @@ REST API を使用してブループリントを発行した後は、それを�
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="delete-a-blueprint"></a>ブループリントを削除する
+### <a name="delete-a-blueprint"></a>ブループリントを削除する
 
 ブループリント自体を削除するには、次の REST API 操作を使用します。
 
@@ -427,7 +429,7 @@ REST API を使用してブループリントを発行した後は、それを�
   DELETE https://management.azure.com/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/MyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、REST API を使用して、ブループリントを作成、割り当て、削除しました。 Azure Blueprints の詳細については、ブループリントのライフサイクルに関する記事に進んでください。
 

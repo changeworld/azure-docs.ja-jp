@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics を使用したリアルタイムの不正行為の検出
 description: Stream Analytics を使用してリアルタイムの不正行為検出ソリューションを作成する方法について説明します。 リアルタイム イベント処理のためにイベント ハブを使用します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 19c9448b6a743302eb81bb208444336d6435f114
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947043"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458797"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用:リアルタイムでの不正検出
 
@@ -28,7 +27,7 @@ ms.locfileid: "68947043"
 
 このチュートリアルでは、電話データに基づくリアルタイムでの不正検出の例を使います。 ここで説明する技法は、クレジット カード詐欺やなりすましなど、他の種類の不正行為検出にも適しています。 
 
-## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>シナリオ: 通信および SIM におけるリアルタイムでの不正行為の検出
+## <a name="scenario-telecommunications-and-sim-fraud-detection-in-real-time"></a>シナリオ:通信および SIM におけるリアルタイムでの不正行為の検出
 
 ある通信会社は、膨大な量の着信データを扱っています。 この会社は、不正な呼び出しをリアルタイムに検出し、顧客に通知したり、特定の番号に対してサービスを停止したりすることを考えています。 SIM 不正行為の種類の 1 つとして、地理的に異なる場所からほぼ同時に同じ ID から行われる複数の呼び出しがあります。 この種の不正を検出するには、着信レコードを調べて特定のパターンを見つける必要があります。この場合は、ほぼ同時に異なる複数の国/地域で行われた発信です。 このカテゴリに分類される通話レコードは、後で分析できるようにストレージに書き込まれます。
 
@@ -148,7 +147,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 
 このリアルタイム不正行為検出アプリケーションで使う主要なフィールドは次のとおりです。
 
-|**レコード**|**定義**|
+|**レコード**|**[定義]**|
 |----------|--------------|
 |`CallrecTime`|通話開始時刻のタイムスタンプ。 |
 |`SwitchNum`|通話の接続に使われた電話交換機。 この例では、交換機は発信国/地域を表す文字列です (US、China、UK、Germany、Australia)。 |
@@ -188,7 +187,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |入力のエイリアス  |  CallStream   |  ジョブの入力を識別する名前を入力します。   |
-   |Subscription   |  \<該当するサブスクリプション\> |  作成したイベント ハブがある Azure サブスクリプションを選択します。   |
+   |サブスクリプション   |  \<該当するサブスクリプション\> |  作成したイベント ハブがある Azure サブスクリプションを選択します。   |
    |Event Hub 名前空間  |  asa-eh-ns-demo |  イベント ハブの名前空間の名前を入力します。   |
    |イベント ハブ名  | asa-eh-frauddetection-demo | イベント ハブの名前を選択します。   |
    |イベント ハブ ポリシー名  | asa-policy-manage-demo | 以前に作成したアクセス ポリシーを選択します。   |
@@ -358,14 +357,14 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |出力エイリアス  |  CallStream-FraudulentCalls   |  ジョブの出力を識別する名前を入力します。   |
-   |Subscription   |  \<該当するサブスクリプション\> |  作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。 |
+   |サブスクリプション   |  \<該当するサブスクリプション\> |  作成したストレージ アカウントを持っている Azure サブスクリプションを選択します。 ストレージ アカウントは、同じサブスクリプションにある場合も、別のサブスクリプションにある場合もあります。 この例では、同じサブスクリプションにストレージ アカウントを作成したと想定しています。 |
    |ストレージ アカウント  |  asaehstorage |  作成したストレージ アカウントの名前を入力します。 |
    |コンテナー  | asa-fraudulentcalls-demo | [新規作成] を選択し、コンテナー名を入力します。 |
 
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     
-5. **[Save]** をクリックします。 
+5. **[保存]** をクリックします。 
 
 
 ## <a name="start-the-streaming-analytics-job"></a>Stream Analytics ジョブを開始する
@@ -391,7 +390,7 @@ BLOB ストレージ内のファイルの内容を調べると、次のような
    ![Azure BLOB ストレージに格納される Streaming Analytics の出力](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-blob-storage-view.png)
  
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不正検出シナリオから続けて読むことができ、このチュートリアルで作成したリソースを使う他の記事があります。 続けて読む場合は、「**次のステップ**」をご覧ください。
 
@@ -408,7 +407,7 @@ BLOB ストレージ内のファイルの内容を調べると、次のような
 
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルに続けて、次の記事を読むことができます。
 

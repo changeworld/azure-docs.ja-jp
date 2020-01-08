@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/03/2019
+ms.date: 12/13/2019
 ms.author: diberry
-ms.openlocfilehash: 0e105d70ff7f590a84e0a82c15bcdd83052b63a8
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 7683a73fd1f403847089dc722e5f6382acd948cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74808005"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447691"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>チュートリアル:感情分析を発行設定として追加する
 
@@ -46,7 +46,7 @@ ms.locfileid: "74808005"
 
 ## <a name="import-example-json-to-begin-app"></a>サンプル .json をインポートしてアプリを開始する
 
-1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)をダウンロードして保存します。
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -122,19 +122,19 @@ ms.locfileid: "74808005"
 
     感情分析はポジティブで、スコアは 86% です。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="related-information"></a>関連情報
 
 * 感情分析は、Cognitive Service の [Text Analytics](../Text-Analytics/index.yml) によって提供されます。 この機能は、Text Analytics の[サポートされる言語](luis-language-support.md##languages-supported)に制限されています。
-* 「[How to train (トレーニング方法)](luis-how-to-train.md)」
+* [トレーニング方法](luis-how-to-train.md)
 * [発行方法](luis-how-to-publish-app.md)
 * [LUIS ポータルでのテスト方法](luis-interactive-test.md)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、感情分析を発行設定として追加し、発話全体から感情値を抽出します。
 
 > [!div class="nextstepaction"]

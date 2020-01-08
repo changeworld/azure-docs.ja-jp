@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2fc67cbfedccd69ff9063b0575ae51197eceb09d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 1c424c75a4df193ec412355607c68abeda0560a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423688"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448489"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>クイック スタート:Python と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -32,11 +32,9 @@ ms.locfileid: "68423688"
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
-
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. 任意の IDE またはエディターで新しい Python ファイルを作成し、request モジュールをインポートします。 サブスクリプション キー、エンドポイント、検索語句の変数を作成します。 エンドポイントは、Azure ダッシュボードで確認できます。
+1. 任意の IDE またはエディターで新しい Python ファイルを作成し、request モジュールをインポートします。 サブスクリプション キー、エンドポイント、検索語句の変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
 ```python
 import requests
@@ -82,7 +80,7 @@ rows = "\n".join(["<tr><td>{0}</td></tr>".format(desc)
 HTML("<table>"+rows+"</table>")
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](tutorial-bing-news-search-single-page-app.md)

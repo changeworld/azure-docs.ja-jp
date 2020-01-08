@@ -4,17 +4,17 @@ description: Azure Time Series Insights の顧客データ要求機能につい�
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 08/09/2019
+ms.date: 12/23/2019
 ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: d134c7cbe220e6aa6b1471b50aa23e17d09734d5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5f0f1cf4202eebd3639d3946cd4c800bc5c216a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007020"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460325"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
@@ -66,7 +66,7 @@ Time Series Insights 内に格納されているデータを表示およびエ�
 
 詳細については、「[Time Series Insights のリテンション期間の構成](time-series-insights-how-to-configure-retention.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Time Series Insights 環境に対するデータ アクセスの許可](./time-series-insights-data-access.md)の詳細を確認します。
 

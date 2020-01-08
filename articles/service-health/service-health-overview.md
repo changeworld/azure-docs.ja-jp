@@ -1,18 +1,14 @@
 ---
 title: Service Health の概要 | Microsoft Docs
 description: お使いの Azure アプリが現在および将来の Azure サービスの問題やメンテナンスの影響をどのように受けるかに関するカスタマイズした情報。
-author: stephbaron
-ms.author: stbaron
-services: service-health
-ms.service: service-health
 ms.topic: article
 ms.date: 05/10/2019
-ms.openlocfilehash: 3e3c83b7233ad4da263dec31c6012209ebaca0fe
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 6a06ae22493292e33c94cc83cba1f17361bce45f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451570"
 ---
 # <a name="service-health-overview"></a>Service Health の概要
 
@@ -69,6 +65,6 @@ Service Health は Azure Monitor と統合されており、ビジネスに不�
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、「[Best practices for setting up Azure Service Health Alerts](https://www.youtube.com/watch?v=k5d5ca8K6tc&list=PLLasX02E8BPBBSqygdRvlTnHfp1POwE8K&index=6&t=0s)」(Azure Service Health アラートの設定に関するベスト プラクティス) を参照してください。 

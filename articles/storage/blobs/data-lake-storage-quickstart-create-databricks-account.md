@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.reviewer: jeking
-ms.openlocfilehash: 5badd4aeabd8ec322ea5fb847cf134f302269c27
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a19a6e7e74fc645c891754e5afdbd2a6a1bdefd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331015"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443805"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>クイック スタート:Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
   ストレージ アカウントの名前をテキスト ファイルに貼り付ける。 この情報はすぐに必要になります。
 
-* サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+* サービス プリンシパルを作成する。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
 
   この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
@@ -46,19 +46,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure portal で、 **[リソースの作成]**  >  **[分析]**  >  **[Azure Databricks]** の順に選択します。
 
-    ![Azure Portal の Databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure Portal の Databricks")
+    ![Azure portal での Databricks](./media/data-lake-storage-quickstart-create-databricks-account/azure-databricks-on-portal.png "Azure portal での Databricks")
 
 2. **[Azure Databricks サービス]** で値を指定して、Databricks ワークスペースを作成します。
 
-    ![Azure Databricks ワークスペースを作成する](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-workspace.png "Azure Databricks ワークスペースを作成する")
+    ![Azure Databricks ワークスペースを作成します](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-workspace.png "Azure Databricks ワークスペースを作成する")
 
     次の値を指定します。
 
-    |プロパティ  |説明  |
+    |プロパティ  |[説明]  |
     |---------|---------|
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
-    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/management/overview.md)に関するページをご覧ください。 |
     |**Location**     | **[米国西部 2]** を選択します。 他のパブリック リージョンを選択してもかまいません。        |
     |**Pricing Tier**     |  **Standard** と **Premium** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
 
@@ -72,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[新規]**  >  **[クラスター]** を選択します。
 
-    ![Azure の Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-on-azure.png "Azure の Databricks")
+    ![Azure での Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-on-azure.png "Azure での Databricks")
 
 3. **[New cluster]\(新しいクラスター\)** ページで、クラスターを作成するための値を指定します。
 
@@ -173,17 +173,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. 次のスクリーンショットのような表形式の出力が表示されます (一部の列のみ示してあります)。
 
-    ![サンプルの JSON データ](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "サンプルの JSON データ")
+    ![サンプル JSON データ](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "サンプル JSON データ")
 
     サンプルには、ラジオ チャンネルの視聴者の性別 (列名: **gender**) および登録が無料か有料か (列名: **level**) に関するデータが含まれます。
 
 4. このデータのビジュアル表現を作成し、各性別について、無料アカウント ユーザーの数と有料登録者の数がわかるようにします。 表形式の出力の下部で、 **[Bar chart]\(棒グラフ\)** アイコンをクリックした後、 **[Plot Options]\(プロット オプション\)** をクリックします。
 
-    ![棒グラフを作成する](./media/data-lake-storage-quickstart-create-databricks-account/create-plots-databricks-notebook.png "棒グラフを作成する")
+    ![横棒グラフを作成する](./media/data-lake-storage-quickstart-create-databricks-account/create-plots-databricks-notebook.png "横棒グラフを作成する")
 
 5. **[Customize Plot]\(プロットのカスタマイズ\)** で、スクリーンショットに示すように値をドラッグ アンド ドロップします。
 
-    ![棒グラフをカスタマイズする](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "棒グラフをカスタマイズする")
+    ![横棒グラフをカスタマイズする](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "横棒グラフをカスタマイズする")
 
     - **[Keys]\(キー\)** を **gender** に設定します。
     - **[Series groupings]\(系列グループ\)** を **level** に設定します。
@@ -194,9 +194,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 7. 出力は、次のスクリーンショットのようなビジュアル表現になります。
 
-     ![棒グラフをカスタマイズする](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sql-query-output-bar-chart.png "棒グラフをカスタマイズする")
+     ![横棒グラフをカスタマイズする](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sql-query-output-bar-chart.png "横棒グラフをカスタマイズする")
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事を完了したら、クラスターを終了できます。 Azure Databricks ワークスペースから、 **[クラスター]** を選択し、終了するクラスターを見つけます。 **[アクション]** 列の下にある省略記号にマウス カーソルを合わせて、 **[終了]** アイコンを選択します。
 
@@ -204,7 +204,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 クラスター作成時に **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにした場合は、手動で終了しなくても、クラスターは自動的に停止します。 このオプションを設定した場合、クラスターは、指定した時間だけ非アクティブの状態が続いた後に停止します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Azure Databricks に Spark クラスターを作成し、Data Lake Storage Gen2 対応のストレージ アカウントにあるデータを使って Spark ジョブを実行しました。 [Spark のデータ ソース](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)を見て、他のデータ ソースから Azure Databricks にデータをインポートする方法を学習することもできます。 次の記事に進んで、Azure Databricks を使った ETL (データの抽出、変換、読み込み) 操作の実行方法について学びましょう。
 

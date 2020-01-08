@@ -1,18 +1,14 @@
 ---
-title: Azure Resource Health の FAQ | Microsoft Docs
+title: Azure Resource Health の FAQ
 description: Azure Resource Health の概要
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 01/29/2019
-ms.workload: Supportability
-ms.openlocfilehash: 03c5fb0f399e43af2584743655eeea8af4c5b2f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5a15ded1c279e700fb71e5ea7aa866e5afc29f8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924442"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426516"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
 Azure Resource Health についてよく寄せられる質問の回答を説明します。
@@ -88,7 +84,7 @@ Resource Health の方が、Azure の状態や Service Health ダッシュボー
 ## <a name="what-are-the-recommendations-that-resource-health-provides"></a>Resource Health で提示されている推奨事項とはどのようなものですか。
 Resource Health では、正常性状態に基づいて、トラブルシューティングに費やされる時間の削減を目標とする推奨事項を提示しています。 使用可能なリソースの場合は、顧客が直面する最も一般的な問題を解決する方法に絞り込んだ推奨事項を提示します。 Azure の計画外のイベントが原因でリソースを使用できない場合、回復プロセス中と回復プロセス終了後のサポートに対象が絞り込まれます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Resource Health に関する詳細情報を参照してください。
 -  [Azure Resource Health の概要](Resource-health-overview.md)

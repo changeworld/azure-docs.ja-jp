@@ -3,19 +3,19 @@ title: Ink Recognizer とは - Ink Recognizer API
 titleSuffix: Azure Cognitive Services
 description: Ink Recognizer をお使いのアプリケーション、Web サイト、ツール、またはその他のソリューションに統合すると、インク ストローク データが識別されるようになり、入力として使用することができます。
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 07/24/2019
-ms.author: erhopf
-ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478369"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448163"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Ink Recognizer API とは
 
@@ -24,11 +24,11 @@ Ink Recognizer Cognitive Service は、デジタルインク コンテンツ を
 
 ![API へのインク ストローク入力の送信を説明するフローチャート](media/ink-recognizer-pen-graph.svg)
 
-## <a name="features"></a>機能
+## <a name="features"></a>[機能]
 
 Ink Recognizer API を使用すると、アプリケーション内の手書きコンテンツを簡単に認識できます。 
 
-|機能  |説明  |
+|機能  |[説明]  |
 |---------|---------|
 | 手書き認識 | 63 の主要な[言語とロケール](language-support.md)の手書きコンテンツを認識します。 | 
 | レイアウト認識 | デジタル インク コンテンツに関する構造情報を取得します。 コンテンツを手書き領域、段落、行、単語、箇条書きに分割します。 これにより、お使いのアプリケーションでそのレイアウト情報を使用して、リストの自動書式設定や図形の配置などの追加機能を構築できます。 |
@@ -47,12 +47,12 @@ Ink Recognizer API は RESTful Web サービスです。HTTP 要求を作成し�
 1. ユーザーのデータとともに Ink Recognizer API に要求を送信します。
 1. 返された JSON メッセージを解析して API 応答を処理します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の言語でクイックスタートを実行して、Ink Recognizer API の呼び出しを開始してください。
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
 デジタル インキング アプリで Ink Recognition API がどのように動作するかを確認するには、GitHub 上の次のサンプル アプリケーションを参照してください。
 * [C# およびユニバーサル Windows プラットフォーム (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

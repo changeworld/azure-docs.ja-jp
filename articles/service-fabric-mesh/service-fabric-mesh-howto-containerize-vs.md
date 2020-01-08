@@ -1,20 +1,16 @@
 ---
-title: 既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する |Microsoft Docs
+title: 既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する
 description: 完全な .NET Framework を使用する ASP.NET および Console プロジェクトに、Service Fabric Mesh コンテナー オーケストレーションのサポートを追加します。
-services: service-fabric-mesh
-keywords: コンテナー化 service fabric mesh
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: 070d07316c0ff06a45e76936e75cb5345548e78f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686277"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462036"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>既存の .NET アプリを Service Fabric Mesh 用にコンテナー化する
 
@@ -69,6 +65,6 @@ Service Fabric Mesh のアプリケーション プロジェクトがソリュ�
 
 これで、Azure Service Fabric Mesh にアプリを発行できるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Fabric Mesh にアプリを発行する方法: [チュートリアル: Service Fabric Mesh アプリケーションをデプロイする](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

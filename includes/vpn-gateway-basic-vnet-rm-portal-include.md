@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5bf93980a8be86c77240ab981eb812a738a96204
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 02297a45c9560f867e97d7024862ea0de5d3f7b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829162"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467295"
 ---
 VNet は、Resource Manager デプロイ モデルと Azure portal を使用し、以下の手順に従って作成できます。 仮想ネットワークの詳細については、[Virtual Network の概要](../articles/virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
@@ -22,9 +22,9 @@ VNet は、Resource Manager デプロイ モデルと Azure portal を使用し�
 >
 >
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。  Azure portal メニューで、または **[ホーム]** ページから、 **[リソースの作成]** を選択します。 **[新規]** ページが開きます。
+1. [Azure portal](https://portal.azure.com) にサインインする  Azure portal メニューで、または **[ホーム]** ページから、 **[リソースの作成]** を選択します。 **[新規]** ページが開きます。
 
-2. **[マーケットプレースを検索]** に「*仮想ネットワーク*」と入力し、結果から **[仮想ネットワーク]** を選択します。
+2. **[マーケットプレースを検索]** に「*仮想ネットワーク*」と入力し、その結果から **[仮想ネットワーク]** を選択します。
 
    ![仮想ネットワークのリソース ページを探す](./media/vpn-gateway-basic-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "仮想ネットワークのリソース ページを探す")
 
@@ -36,16 +36,16 @@ VNet は、Resource Manager デプロイ モデルと Azure portal を使用し�
 
 4. **[仮想ネットワークの作成]** ページで、VNet の設定を構成します。 フィールドへの入力時、入力された文字の有効性が確認されれば、赤色の感嘆符が緑色のチェック マークに変わります。 いくつかの値は自動入力されます。実際の値に置き換えてください。
 
-   - **[名前]** : 仮想ネットワークの名前を入力します。
+   - **Name**:仮想ネットワークの名前を入力します。
 
    - **[アドレス空間]** : アドレス空間を入力します。 追加するアドレス空間が複数ある場合、ここには、1 つ目のアドレス空間を入力してください。 その他のアドレス空間は後で、VNet を作成した後に追加できます。
 
    - **サブスクリプション**:一覧表示されているサブスクリプションが正しいことを確認します。 ドロップダウンを使用して、サブスクリプションを変更できます。
 
-   - **[リソース グループ]** : 既存のリソース グループを選択するか、新しいリソース グループの名前を入力して新しく作成します。 新しいグループを作成する場合は、計画した構成値に基づいて、リソース グループに名前を付けます。 リソース グループの詳細については、「[Azure Resource Manager の概要](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)」を参照してください。
+   - **[リソース グループ]** :既存のリソース グループを選択するか、新しいリソース グループの名前を入力して新しく作成します。 新しいグループを作成する場合は、計画した構成値に基づいて、リソース グループに名前を付けます。 リソース グループの詳細については、「[Azure Resource Manager の概要](../articles/azure-resource-manager/management/overview.md#resource-groups)」を参照してください。
 
-   - **[場所]** : VNet の場所を選択します。 この場所の設定によって、この VNet にデプロイしたリソースの配置先が決まります。
+   - **[場所]** :VNet の場所を選択します。 この場所の設定によって、この VNet にデプロイしたリソースの配置先が決まります。
 
-   - **[サブネット]** : サブネットの**名前**と**アドレス範囲**を追加します。 その他のサブネットは後で、VNet を作成した後に追加できます。 
+   - **サブネット**:サブネットの**名前**と**アドレス範囲**を追加します。 その他のサブネットは後で、VNet を作成した後に追加できます。 
      
 5. **作成** を選択します。

@@ -2,19 +2,16 @@
 title: Azure クイックスタート - Azure Automation Runbook を作成する | Microsoft Docs
 description: Azure Automation Runbook の作成方法について説明します
 services: automation
-author: csand-msft
-ms.author: csand
 ms.date: 02/05/2019
 ms.topic: quickstart
-ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 2cbb37b4e93468a42335f40a19baf4c742cb6dbb
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 5a6dbda59495fccb6b9d53440f408fd4750925b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421669"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation Runbook を作成する
 
@@ -92,11 +89,11 @@ Runbook が公開されると、概要ページが表示されます。
 
    ![Runbook のテスト ジョブ](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、Runbook を削除します。 削除するには、Runbook 一覧で Runbook を選択し、 **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Runbook を作成、編集、テスト、および公開し、Runbook ジョブを開始しました。 Automation Runbook の詳細については、Automation で作成および使用できるさまざまな Runbook の種類に関する記事を参照してください。
 

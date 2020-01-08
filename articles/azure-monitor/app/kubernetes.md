@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 3056b6c56be32cf5c054c4526a88157650a3e30b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432518"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Kubernetes でホストされるアプリケーションに対するゼロ インストルメンテーション アプリケーション監視
 
@@ -24,7 +24,7 @@ ms.locfileid: "72820766"
 現在、Azure Monitor では、Kubernetes クラスターでのサービス メッシュ技術を利用して、Kubernetes でホストされているアプリに対する標準のアプリケーション監視が提供されています。 既定の Application Insight は、依存関係をモデル化するための[アプリケーション マップ](../../azure-monitor/app/app-map.md)、リアルタイムの監視のための [Live Metrics Stream](../../azure-monitor/app/live-stream.md)、[既定のダッシュボード](../../azure-monitor/app/overview-dashboard.md)での強力な視覚化、[メトリックス エクスプローラー](../../azure-monitor/platform/metrics-getting-started.md)、[Workbooks](../../azure-monitor/app/usage-workbooks.md) などの機能を備えています。 この機能は、選択した Kubernetes 名前空間内のすべての Kubernetes ワークロードでパフォーマンスのボトルネックや障害のホットスポットをユーザーが特定するのに役立ちます。 Istio などのテクノロジでの既存のサービス メッシュへの投資を利用することにより、Azure Monitor では、アプリケーションのコードを変更することなく、自動的にインストルメント化されたアプリ監視を実現できます。
 
 > [!NOTE]
-> これは、Kubernetes でアプリケーションの監視を実行するさまざまな方法の 1 つです。 [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.md) を使用することで、サービス メッシュの必要なしに、Kubernetes でホストされているアプリをインストルメント化することもできます。 SDK でアプリケーションをインストルメント化することなく Kubernetes を監視するには、以下の方法を使用できます。
+> これは、Kubernetes でアプリケーションの監視を実行するさまざまな方法の 1 つです。 [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.yml) を使用することで、サービス メッシュの必要なしに、Kubernetes でホストされているアプリをインストルメント化することもできます。 SDK でアプリケーションをインストルメント化することなく Kubernetes を監視するには、以下の方法を使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -129,7 +129,7 @@ kubectl label namespace <my-app-namespace> istio-injection=enabled
    ```
    エラーを探します (特に、*applicationinsightsadapter* アダプターとの通信に関連するもの)。
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 このプロジェクトの進行状況に関する最新情報については、[Istio Mixer 用 Application Insights アダプター プロジェクトの GitHub](https://github.com/Microsoft/Application-Insights-Istio-Adapter/blob/master/SETUP.md#faq) をご覧ください。
 
@@ -142,6 +142,6 @@ kubectl delete -f <filename.yaml>
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Monitor とコンテナーの連携方法について詳しくは、「[コンテナーに対する Azure Monitor の概要](../../azure-monitor/insights/container-insights-overview.md)」をご覧ください

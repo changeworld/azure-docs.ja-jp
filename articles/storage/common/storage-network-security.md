@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 71922a9da594de3402caf778b1e066da9d20505c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28ab1eaa860c0d684182f5f1660daed2751a9c6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465074"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -60,7 +60,7 @@ Azure Storage に対して、REST や SMB などのすべてのネットワー�
 
 Azure portal、PowerShell、または CLIv2 を使用して、ストレージ アカウントに対する既定のネットワーク アクセス ルールを管理できます。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 1. セキュリティで保護するストレージ アカウントに移動します。
 
@@ -144,7 +144,7 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
 
 ストレージ アカウントの仮想ネットワーク規則は、Azure portal、PowerShell、または CLIv2 で管理できます。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 1. セキュリティで保護するストレージ アカウントに移動します。
 
@@ -268,7 +268,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 ストレージ アカウントの IP ネットワーク ルールは、Azure portal、PowerShell、または CLIv2 で管理できます。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 1. セキュリティで保護するストレージ アカウントに移動します。
 
@@ -370,29 +370,29 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 **[信頼された Microsoft サービスを許可]** 設定を有効にすると、ストレージ アカウントと同じサブスクリプションに登録された次のサービスのリソースに対し、記載された一部の操作へのアクセスが許可されます。
 
-| Service                  | リソース プロバイダー名     | 許可される操作                 |
+| サービス                  | リソース プロバイダー名     | 許可される操作                 |
 |:------------------------ |:-------------------------- |:---------------------------------- |
-| Azure Backup             | Microsoft.RecoveryServices | IAAS 仮想マシンの管理対象外のディスクのバックアップとリストアを実行します。 (マネージド ディスクの場合は必須ではありません)。 [詳細情報](/azure/backup/backup-introduction-to-azure-backup)。 |
-| Azure Data Box           | Microsoft.DataBox          | Data Box を使用して Azure にデータをインポートできるようにします。 [詳細情報](/azure/databox/data-box-overview)。 |
-| Azure DevTest Labs       | Microsoft.DevTestLab       | カスタム イメージの作成とアーティファクトのインストール [詳細情報](/azure/devtest-lab/devtest-lab-overview)。 |
+| Azure Backup             | Microsoft.RecoveryServices | IAAS 仮想マシンの管理対象外のディスクのバックアップとリストアを実行します。 (マネージド ディスクの場合は必須ではありません)。 [詳細については、こちらを参照してください](/azure/backup/backup-introduction-to-azure-backup)。 |
+| Azure Data Box           | Microsoft.DataBox          | Data Box を使用して Azure にデータをインポートできるようにします。 [詳細については、こちらを参照してください](/azure/databox/data-box-overview)。 |
+| Azure DevTest Labs       | Microsoft.DevTestLab       | カスタム イメージの作成とアーティファクトのインストール [詳細については、こちらを参照してください](/azure/devtest-lab/devtest-lab-overview)。 |
 | Azure Event Grid         | Microsoft.EventGrid        | Blob Storage のイベント発行を有効にし、ストレージ キューへの発行を Event Grid に許可します。 [Blob Storage イベント](/azure/event-grid/event-sources)と[キューへの発行](/azure/event-grid/event-handlers)について確認してください。 |
-| Azure Event Hubs         | Microsoft.EventHub         | Event Hubs Capture を使用したアーカイブ データのキャプチャ [詳細情報](/azure/event-hubs/event-hubs-capture-overview) |
+| Azure Event Hubs         | Microsoft.EventHub         | Event Hubs Capture を使用したアーカイブ データのキャプチャ [詳細については、こちらを参照してください](/azure/event-hubs/event-hubs-capture-overview)。 |
 | Azure File Sync          | Microsoft.StorageSync      | オンプレミスのファイル サーバーを Azure ファイル共有のキャッシュに変換できます。 マルチサイト同期、迅速なディザスターリカバリー、クラウド側バックアップが可能となります。 [詳細情報](../files/storage-sync-files-planning.md) |
-| Azure HDInsight          | Microsoft.HDInsight        | 新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 [詳細情報](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
+| Azure HDInsight          | Microsoft.HDInsight        | 新しい HDInsight クラスターのための既定のファイル システムの初期コンテンツをプロビジョニングします。 [詳細については、こちらを参照してください](/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。 |
 | Azure Monitor            | Microsoft.Insights         | セキュリティで保護されたストレージ アカウントに監視データを書き込めるようにします。[詳細情報](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security)。 |
-| Azure のネットワーク         | Microsoft.Network          | ネットワーク トラフィック ログの保存および分析 [詳細情報](/azure/network-watcher/network-watcher-packet-capture-overview)。 |
-| Azure Site Recovery      | Microsoft.SiteRecovery     | ファイアウォールが有効なキャッシュ、ソース、またはターゲット ストレージ アカウントを使用している場合、Azure IaaS 仮想マシンのディザスター リカバリーのレプリケーションを有効にします。  [詳細情報](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
+| Azure のネットワーク         | Microsoft.Network          | ネットワーク トラフィック ログの保存および分析 [詳細については、こちらを参照してください](/azure/network-watcher/network-watcher-packet-capture-overview)。 |
+| Azure Site Recovery      | Microsoft.SiteRecovery     | ファイアウォールが有効なキャッシュ、ソース、またはターゲット ストレージ アカウントを使用している場合、Azure IaaS 仮想マシンのディザスター リカバリーのレプリケーションを有効にします。  [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication)。 |
 
 また、 **[信頼された Microsoft サービスを許可]** の設定を有効にすると、以下に示すサービスの特定のインスタンスからストレージ アカウントにアクセスできます (そのリソース インスタンスの[システム割り当てマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に明示的に [RBAC ロールを割り当てている](storage-auth-aad.md#assign-rbac-roles-for-access-rights)場合)。 この場合、インスタンスのアクセス範囲は、マネージド ID に割り当てられた RBAC ロールに対応します。
 
-| Service                        | リソース プロバイダー名          | 目的            |
+| サービス                        | リソース プロバイダー名          | 目的            |
 | :----------------------------- | :------------------------------------- | :---------- |
 | Azure Container Registry タスク | Microsoft.ContainerRegistry/registries | ACR タスクは、コンテナー イメージを作成するときにストレージアカウントにアクセスできます。 |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | ADF ランタイムを使用してストレージ アカウントへのアクセスを許可します。 |
-| Azure Logic Apps               | Microsoft.Logic/workflows              | ロジック アプリがストレージ アカウントにアクセスできるようにします。 [詳細情報](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md)。 |
-| Azure Machine Learning サービス | Microsoft.MachineLearningServices      | 承認された Azure Machine Learning ワークスペースは、BLOB ストレージに実験の出力、モデル、およびログを書き込みます。 [詳細情報](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
-| Azure SQL Data Warehouse       | Microsoft.Sql                          | PolyBase を使用した特定の SQL データベース インスタンスからのデータのインポートとエクスポートを許可します。 [詳細情報](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics             | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 現在、この機能はプレビュー段階にあります。 [詳細情報](/azure/stream-analytics/blob-output-managed-identity.md)。 |
+| Azure Logic Apps               | Microsoft.Logic/workflows              | ロジック アプリがストレージ アカウントにアクセスできるようにします。 [詳細については、こちらを参照してください](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity)。 |
+| Azure Machine Learning | Microsoft.MachineLearningServices      | 承認された Azure Machine Learning ワークスペースは、BLOB ストレージに実験の出力、モデル、およびログを書き込みます。 [詳細については、こちらを参照してください](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
+| Azure SQL Data Warehouse       | Microsoft.Sql                          | PolyBase を使用した特定の SQL データベース インスタンスからのデータのインポートとエクスポートを許可します。 [詳細については、こちらを参照してください](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics             | ストリーミング ジョブからのデータを Blob Storage に書き込むことができます。 現在、この機能はプレビュー段階にあります。 [詳細については、こちらを参照してください](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Microsoft.Synapse ワークスペース          | Synapse Analytics から Azure Storage のデータにアクセスできるようにします。 |
 
 
@@ -404,7 +404,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 ネットワーク ルールの例外は、Azure portal、PowerShell、または Azure CLI v2 を通じて管理できます。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 1. セキュリティで保護するストレージ アカウントに移動します。
 
@@ -466,7 +466,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 > [!IMPORTANT]
 > **拒否**するように[既定のルールを設定](#change-the-default-network-access-rule)していることを確認します。そうしないと、例外の削除は効力を発揮しません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)で Azure ネットワークのサービス エンドポイントについて確認してください。
 

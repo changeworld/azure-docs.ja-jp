@@ -2,17 +2,17 @@
 title: クイックスタート - Azure でプライベート エンドポイントを管理する
 description: このクイックスタートでは、Azure portal を使用してプライベート エンドポイントを作成する方法を説明します
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459942"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>クイック スタート:Azure portal を使用してプライベート エンドポイントを作成する
 
@@ -20,9 +20,6 @@ ms.locfileid: "74899864"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-
-> [!NOTE]
-> プライベート エンドポイントとサービス エンドポイントを同じサブネット内で併用することはできません。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -39,9 +36,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
 1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「*MyVirtualNetwork*」と入力します。 |
+    | Name | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
     | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
@@ -58,7 +55,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -71,7 +68,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Size | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
-    | パスワード | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     | パスワードの確認 | パスワードを再入力します。 |
     | **受信ポートの規則** |  |
     | パブリック受信ポート | 既定値 **[なし]** のままにします。 |
@@ -83,9 +80,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[仮想マシンの作成 - Disk]** で、既定値のままにし、 **[Next: Networking]\(次へ : ネットワーク\)** を選択します。
 
-1. **[Create a virtual machine - Networking]\(仮想マシンの作成 - ネットワーク\)** で次の情報を選択します。
+1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[MyVirtualNetwork]** のままにします。  |
     | アドレス空間 | 既定値 **[10.1.0.0/24]** のままにします。|
@@ -107,7 +104,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[SQL データベースの作成 - 基本]** で次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | **データベースの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
@@ -118,11 +115,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 5. **[サーバー]** の **[新規作成]** を選択します。 
 6. **[新しいサーバー]** で、次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     |サーバー名  | 「*myserver*」と入力します。 この名前を取得する場合は、一意の名前を作成します。|
     | サーバー管理者のログイン| 任意の管理者名を入力します。 |
-    | パスワード | 任意のパスワードを入力します。 パスワードは 8 文字以上で、定義された要件を満たす必要があります。 |
+    | Password | 任意のパスワードを入力します。 パスワードは 8 文字以上で、定義された要件を満たす必要があります。 |
     | Location | SQL サーバーを配置する Azure リージョンを選択します。 |
     
 7. **[OK]** を選択します。 
@@ -138,19 +135,19 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 2. **[プライベート リンク センター - 概要]** の**サービスへのプライベート接続を構築する**オプションで、 **[開始]** を選択します。
 1. **[Create a private endpoint (Preview) - Basics]\(プライベート エンドポイント (プレビュー) の作成 - 基本\)** で次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
     | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | **インスタンスの詳細** |  |
-    | 名前 | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
+    | Name | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
     |リージョン|**[WestCentralUS]** を選択します。|
     |||
 5. **[次へ:リソース]** を選択します。
 6. **[プライベート エンドポイントの作成 - リソース]** で、次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     |接続方法  | 自分のディレクトリ内の Azure リソースに接続するように選択します。|
     | サブスクリプション| サブスクリプションを選択します。 |
@@ -161,9 +158,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 7. **[次へ:構成]** を選択します。
 8. **[Create a private endpoint (Preview) - Configuration]\(プライベート エンドポイント (プレビュー) の作成 - 構成\)** で次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    |**ネットワーキング**| |
+    |**ネットワーク**| |
     | 仮想ネットワーク| *[MyVirtualNetwork]* を選択します。 |
     | Subnet |  *[mySubnet]* を選択します。 |
     |**プライベート DNS 統合**||
@@ -219,12 +216,12 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 4. **[サーバーに接続]** で、次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | サーバーの種類| **データベース エンジン**を選択します。|
     | サーバー名| *myserver.database.windows.net* を選択します。 |
     | ユーザー名 | SQL サーバーの作成時に指定したユーザー名を username@servername 形式で入力します。 |
-    |パスワード |SQL サーバーの作成時に指定したパスワードを入力します。 |
+    |Password |SQL サーバーの作成時に指定したパスワードを入力します。 |
     |パスワードを保存する|**[はい]** を選択します。|
     |||
 1. **[接続]** を選択します。
@@ -232,12 +229,12 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 3. (省略可能) 情報を作成するか、mydatabase に対して情報のクエリを実行します。
 4.  *myVm* へのリモート デスクトップ接続を閉じます。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 プライベート エンドポイント、SQL サーバー、VM を使い終えたら、リソース グループとそこに含まれるすべてのリソースを削除します。 
 1. ポータルの上部にある**検索**ボックスに「 *myResourceGroup*」と入力し、検索結果から  *myResourceGroup* を選択します。 
 2. **[リソース グループの削除]** を選択します。 
 3. **[TYPE THE RESOURCE GROUP NAME]\(リソース グループ名を入力してください\)** に「myResourceGroup」と入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、仮想ネットワーク上の VM と SQL データベース サーバー、プライベート アクセス用のプライベート エンドポイントを作成しました。 インターネットから 1 つの VM に接続し、Private Link を使用して SQL データベース サーバーと安全に通信を行いました。 プライベート エンドポイントの詳細については、「[Azure プライベート エンドポイントとは](private-endpoint-overview.md)」を参照してください。

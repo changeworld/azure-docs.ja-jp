@@ -1,25 +1,16 @@
 ---
-title: 'テスト容易性: サービス通信 | Microsoft Docs'
+title: 'テスト容易性: サービス通信'
 description: サービス間通信は、Service Fabric アプリケーションの重要な統合ポイントです。 この記事では、設計の考慮事項とテスト手法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 017557df-fb59-4e4a-a65d-2732f29255b8
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 529c8d74b6e0a63a7969f31d5b5e8073ecb79411
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543225"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465547"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric のテスト容易性シナリオ: サービス通信
 マイクロサービスおよびサービス指向アーキテクチャ スタイルは、Azure Service Fabric に無理なく適用できます。 このような種類の分散アーキテクチャでは、コンポーネント化されたマイクロサービス アプリケーションは、相互に通信する必要がある複数のサービスで構成されることが一般的です。 一般的に、最も単純な場合でも、相互に通信する必要があるステートレス Web サービスとステートフル データ ストレージ サービスが最低限必要です。
@@ -90,7 +81,7 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 この例では、`QuorumLossMode` を `QuorumReplicas` に設定して、すべてのレプリカを停止させることなくクォーラム損失を誘発させることを指示します。 これにより、読み取り操作は引き続き可能です。 パーティション全体が使用できない状況をテストする場合は、このスイッチを `AllReplicas`に設定することができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Testability アクションの詳細](service-fabric-testability-actions.md)
 
 [Testability シナリオの詳細](service-fabric-testability-scenarios.md)

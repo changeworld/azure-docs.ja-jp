@@ -17,12 +17,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81a5e57d0ef37a3a2e758e42f122c8e014c94958
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: fe727afcfdec204c92c82c3e695961707af90e65
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919985"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423820"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデスクトップ アプリ - 運用環境への移行
 
@@ -35,7 +35,7 @@ ms.locfileid: "74919985"
 ## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>複数のリソースでユーザーの同意を事前に取得する方法
 
 > [!NOTE]
-> 複数のリソースにおける同意の事前取得は、Microsoft ID プラットフォームでは機能しますが、Azure Active Directory (Azure AD) B2C では機能しません。 Azure AD B2C では、管理者の同意のみサポートされており、ユーザーの同意はサポートされていません。
+> 複数のリソースにおける同意の事前取得は、Microsoft ID プラットフォームでは機能しますが、Azure Active Directory (Azure AD) B2C では機能しません。 Azure AD B2C では、管理者による承認のみがサポートされており、ユーザーによる承認はサポートされていません。
 
 Microsoft ID プラットフォーム (v2.0) のエンドポイントでは、複数のリソースのトークンを一度に取得することはできません。 そのため、`scopes` パラメーターには、1 つのリソースのスコープのみを含めることができます。 `extraScopesToConsent` パラメーターを使用して、ユーザーが複数のリソースに事前に同意するようにできます。
 
@@ -50,7 +50,7 @@ Microsoft ID プラットフォーム (v2.0) のエンドポイントでは、�
 
 ### <a name="in-msalnet"></a>MSAL.NET の場合
 
-```CSharp
+```csharp
 string[] scopesForCustomerApi = new string[]
 {
   "https://mytenant.onmicrosoft.com/customerapi/customer.read",
@@ -103,7 +103,7 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 2 番目の Web API を呼び出す必要がある場合は、`AcquireTokenSilent` API を呼び出せます。
 
-```CSharp
+```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
@@ -111,6 +111,6 @@ AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync()
 
 Microsoft 個人アカウントのユーザーの場合、承認のためのネイティブ クライアント (デスクトップ/モバイル アプリ) の呼び出しごとに同意のプロンプトが再表示されますが、これは意図的な動作です。 ネイティブ クライアントの ID は本質的に安全ではありません (これは、Microsoft ID プラットフォームとシークレットを交換して身元を証明する機密クライアント アプリケーションとは対照的です)。 Microsoft ID プラットフォームは、アプリケーションが承認されるたびにユーザーに同意を求めることで、コンシューマー サービスにおけるこのような非安全性を軽減することを選択しました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]

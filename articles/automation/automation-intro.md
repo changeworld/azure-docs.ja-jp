@@ -2,20 +2,17 @@
 title: Azure Automation の概要
 description: Azure Automation を使用して、インフラストラクチャとアプリケーションのライフサイクルを自動化する方法を説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: b14550d0e03382a6709924ca5671cb26d09fcc35
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434055"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421938"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
 
@@ -61,7 +58,7 @@ Azure Automation には、Runbook または構成をソース管理システム�
 
 Azure Automation では、Automation アカウントとそのリソースへのアクセスを制御するロール ベースのアクセス制御がサポートされています。Automation アカウント、Runbook、およびジョブに関する RBAC の構成について詳しくは、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」をご覧ください。
 
-### <a name="windows-and-linux"></a>Windows および Linux
+### <a name="windows-and-linux"></a>Windows と Linux
 
 Azure Automation は、ハイブリッド クラウド環境で動作し、Windows と Linux でも動作するように設計されています。 展開されるワークロードと、それらが実行されるオペレーティング システムを、一貫性のある方法で自動化して構成します。
 
@@ -83,7 +80,7 @@ Azure Automation は、インフラストラクチャとアプリケーション
 
 Azure Automation の価格は、[価格](https://azure.microsoft.com/pricing/details/automation/)ページで確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Automation アカウントを作成する](automation-quickstart-create-account.md)

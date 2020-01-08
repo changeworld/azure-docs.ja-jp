@@ -1,5 +1,6 @@
 ---
-title: CloudSimple による Azure VMware ソリューション クイック スタート - Azure で VMware VM を使用する
+title: クイック スタート:Azure での VMware VM の使用
+titleSuffix: Azure VMware Solution by CloudSimple
 description: CloudSimple による Azure VMware ソリューションを使用して、Azure portal から VMware VM を構成して使用する方法を学習します
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 504550358bb56602093e58c90506c9140afccadb
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 4ab613c251bc43a025e0381046805ec998a04227
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574494"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452352"
 ---
 # <a name="quickstart---consume-vmware-vms-on-azure"></a>クイック スタート - Azure で VMware VM を使用する
 
@@ -37,9 +38,9 @@ vCenter UI からプライベート クラウド上に仮想マシンを作成�
 
     ![CloudSimple 仮想マシンを作成する - 基本](media/create-cloudsimple-virtual-machine-basic-info.png)
 
-    | フィールド | 説明 |
+    | フィールド | [説明] |
     | ------------ | ------------- |
-    | Subscription | プライベート クラウドに関連付けられている Azure サブスクリプション。  |
+    | サブスクリプション | プライベート クラウドに関連付けられている Azure サブスクリプション。  |
     | リソース グループ | VM が割り当てられるリソース グループ。 既存のグループを選択することも、新しいものを作成することもできます。 |
     | Name | VM を識別する名前。  |
     | Location | この VM がホストされている Azure リージョン。  |
@@ -47,8 +48,8 @@ vCenter UI からプライベート クラウド上に仮想マシンを作成�
     | リソース プール | VM のマップされたリソース プール。 使用可能なリソース プールから選択します。 |
     | vSphere テンプレート | VM の vSphere テンプレート。  |
     | ユーザー名 | VM 管理者のユーザー名 (Windows テンプレートの場合)。|
-    | パスワード |  VM 管理者のパスワード (Windows テンプレートの場合)。 |
-    | パスワードの確認 | パスワードを確認入力します。 |
+    | Password |  VM 管理者のパスワード (Windows テンプレートの場合)。 |
+    | [パスワードの確認入力] | パスワードを確認入力します。 |
 
 5. VM のコア数とメモリ容量を選択して、 **[次へ:構成]** をクリックします。 ゲスト オペレーティング システムに完全な CPU 仮想化を公開する場合は、チェックボックスをオンにします。 ハードウェアの仮想化を必要とするアプリケーションは、バイナリ変換や準仮想化をせずに、仮想マシン上で実行できます。 詳細については、VMware の記事「<a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html" target="_blank">Expose VMware Hardware Assisted Virtualization</a>」 (VMware ハードウェア アシストによる仮想化の公開) を参照してください。
 
@@ -60,7 +61,7 @@ vCenter UI からプライベート クラウド上に仮想マシンを作成�
 
     ネットワーク インターフェイスでは、 **[Add network interface]\(ネットワーク インターフェイスの追加\)** をクリックして、次の設定を構成します。
 
-    | コントロール | 説明 |
+    | コントロール | [説明] |
     | ------------ | ------------- |
     | Name | インターフェイスを識別する名前を入力します。  |
     | ネットワーク | プライベート クラウド vSphere で構成されている分散ポート グループのリストから選択します。  |
@@ -69,18 +70,18 @@ vCenter UI からプライベート クラウド上に仮想マシンを作成�
 
     ディスクでは、 **[ディスクの追加]** をクリックし、次の設定を構成します。
 
-    | Item | 説明 |
+    | アイテム | [説明] |
     | ------------ | ------------- |
     | Name | ディスクを識別する名前を入力します。  |
     | Size | 使用可能なサイズのいずれかを選択します。  |
     | SCSI コントローラー | ディスクの SCSI コントローラーを選択します。  |
-    | Mode | ディスクがスナップショットに参加する方法を決定します。 次のいずれかのオプションを選択します。 <br> - Independent persistent\(独立永続\):ディスクに書き込まれたすべてのデータが永続的に書き込まれます。<br> - Independent non-persistent\(独立非永続\):ディスクに書き込まれた変更は、仮想マシンの電源をオフにしたとき、またはリセットしたときに破棄されます。  独立非永続モードでは、常に同じ状態で VM を再起動できます。 詳細については、<a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware のドキュメント</a>を参照してください。
+    | モード | ディスクがスナップショットに参加する方法を決定します。 次のいずれかのオプションを選択します。 <br> - Independent persistent\(独立永続\):ディスクに書き込まれたすべてのデータが永続的に書き込まれます。<br> - Independent non-persistent\(独立非永続\):ディスクに書き込まれた変更は、仮想マシンの電源をオフにしたとき、またはリセットしたときに破棄されます。  独立非永続モードでは、常に同じ状態で VM を再起動できます。 詳細については、<a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html" target="_blank">VMware のドキュメント</a>を参照してください。
 
 7. 検証が完了したら、設定を確認し、 **[作成]** をクリックします。 変更を加えるには、上部にあるタブをクリックします。
 
     ![CloudSimple 仮想マシンを作成する - 確認](media/create-cloudsimple-virtual-machine-review.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [CloudSimple 仮想マシンのリストを表示する](azure-create-vm.md#view-list-of-cloudsimple-virtual-machines)
 * [Azure から CloudSimple 仮想マシンを管理する](azure-manage-vm.md)

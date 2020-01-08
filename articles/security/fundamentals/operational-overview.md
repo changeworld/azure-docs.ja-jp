@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: c5ab994ce7b4e3d195ec3a4c83094974c5767e66
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643785"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443880"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 
@@ -48,7 +48,7 @@ IT 運用チームは、データセンター インフラストラクチャ、�
 
 Azure Backup には複数のコンポーネントが用意されており、お客様はそれらを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Azure Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。
 
-詳しくは、[Azure Backup コンポーネントの表](/azure/backup/backup-introduction-to-azure-backup#which-backup-agent-should-i-use)をご覧ください。
+詳しくは、[Azure Backup コンポーネントの表](/azure/backup/backup-overview#what-can-i-back-up)をご覧ください。
 
 ### <a name="site-recovery"></a>Site Recovery
 
@@ -187,7 +187,7 @@ Microsoft Azure などのクラウド プラットフォームでは、従来の
 - [コードとしてのインフラストラクチャ (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) は、ネットワークや仮想マシンの作成と切断の自動化と妥当性確認を有効にして、セキュリティで保護された、安定したアプリケーション ホスティング プラットフォームの提供を支援するプラクティスです。
 - [マイクロサービス](https://www.visualstudio.com/learn/what-are-microservices/) アーキテクチャを使用して、ビジネス ユース ケースを小規模の再利用可能なサービスに分離します。  このアーキテクチャでは、スケーラビリティと効率性が実現されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 セキュリティおよび監査ソリューションの詳細については、次の記事をご覧ください。
 

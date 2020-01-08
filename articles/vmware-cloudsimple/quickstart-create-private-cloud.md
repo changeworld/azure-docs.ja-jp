@@ -1,5 +1,6 @@
 ---
-title: CloudSimple による Azure VMware ソリューション クイック スタート - プライベート クラウドを作成する
+title: クイック スタート:プライベート クラウドを作成する
+titleSuffix: Azure VMware Solution by CloudSimple
 description: CloudSimple による Azure VMware ソリューションでプライベート クラウドを作成して構成する方法を学習する
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c32045c6d68a813eaeb6e4e5de433160c2a30634
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e4890186022842179ef4b66c03db03dd9b58a3d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901456"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452389"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>クイックスタート - プライベート クラウドの環境を構成する
 
@@ -206,7 +207,7 @@ vSphere で分散ポート グループを作成するには:
 1. 「[vSphere Networking Guide](https://docs.vmware.com/en/VMware-vSphere/6.5/vsphere-esxi-vcenter-server-65-networking-guide.pdf)」 (vSphere ネットワーク ガイド) の「Add a distributed port group」 (分散ポート グループを追加する) の手順に従ってください。
 2. 分散ポート グループを設定するときは、「[ワークロード VM 用の VLAN を作成する](#create-a-vlan-for-your-workload-vms)」で作成した VLAN ID を指定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure での VMware VM の使用](quickstart-create-vmware-virtual-machine.md)
 * [Azure ExpressRoute を使用してオンプレミスのネットワークに接続する](on-premises-connection.md)

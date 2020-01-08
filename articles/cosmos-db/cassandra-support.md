@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能とコマンド
+title: Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能
 description: Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能について説明します
 author: kanshiG
 ms.author: govindk
@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8598be504f62089cf20123918779c310b2fb8ec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889221"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445639"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 
@@ -43,8 +43,8 @@ Azure Cosmos DB の Cassandra API では、次の CQL データ型がサポー�
 
 * ascii  
 * bigint  
-* BLOB  
-* ブール値  
+* blob (blob)  
+* boolean  
 * counter  
 * date  
 * decimal  
@@ -52,7 +52,7 @@ Azure Cosmos DB の Cassandra API では、次の CQL データ型がサポー�
 * float  
 * frozen  
 * inet  
-* int  
+* INT  
 * list  
 * set  
 * smallint  
@@ -198,7 +198,7 @@ ALTER TABLE gks1.t1 WITH cosmosdb_provisioned_throughput=10000 ;
 
 Azure Cosmos DB は、リソースによって管理されるシステムです。 これは、操作によって使用される要求単位に基づいて、1 秒間に特定の数の操作を実行できることを意味します。 アプリケーションが特定の秒においてその制限を超えると、要求はレート制限され、例外がスローされます。 Azure Cosmos DB の Cassandra API は、このような例外を Cassandra ネイティブ プロトコルの過負荷エラーに変換します。 レート制限時にアプリケーションが要求をインターセプトして再試行できるように、[spark](https://mvnrepository.com/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper) および [Java](https://github.com/Azure/azure-cosmos-cassandra-extensions) 拡張機能が提供されています。 他の SDK を使用して Azure Cosmos DB の Cassandra API にアクセスする場合は、これらの例外に対して再試行する接続ポリシーを作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Java アプリケーションを使用した[ Cassandra API アカウント、データベースおよびテーブルの作成](create-cassandra-api-account-java.md)の開始
 

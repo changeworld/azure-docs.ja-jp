@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8e29c632ff3920c77a757fe45475a12c212cf579
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74683999"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421959"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -84,7 +84,7 @@ static void Main(string[] args)
 バージョン 3.*x* では、標準の ASP.NET Core API が使用されます。 [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder) インスタンスで [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) メソッドを呼び出します。 次の例のように、`development` という名前の文字列を渡します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.UseEnvironment("development");
@@ -95,7 +95,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -236,7 +236,7 @@ static void Main(string[] args)
 バージョン 3.*x`Microsoft.Azure.WebJobs.Extensions.Storage` では、ストレージのバインドは*  パッケージに含まれています。 次に示すように、`ConfigureWebJobs` メソッドで `AddAzureStorage` 拡張メソッドを呼び出します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -247,7 +247,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -255,7 +255,7 @@ static void Main()
 他のトリガーやバインドの種類を使用するには、それらを含む NuGet パッケージをインストールして、拡張で実装されている `Add<binding>` 拡張メソッドを呼び出します。 たとえば、Azure Cosmos DB バインドを使用する場合は、次のように、`Microsoft.Azure.WebJobs.Extensions.CosmosDB` をインストールして `AddCosmosDB` を呼び出します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -266,7 +266,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -318,7 +318,7 @@ public class Functions
 次に示すように、`ConfigureWebJobs` メソッドで `AddExecutionContextBinding` 拡張メソッドを呼び出します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -329,7 +329,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -373,7 +373,7 @@ class Program
 次の例では、Azure Cosmos DB トリガーを構成する方法を示します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -390,8 +390,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -403,7 +402,7 @@ static void Main()
 次の例では、Event Hubs トリガーを構成する方法を示します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -419,8 +418,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -434,7 +432,7 @@ static void Main()
 #### <a name="version-3x"></a>バージョン 3.*x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -450,8 +448,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -480,7 +477,7 @@ static void Main(string[] args)
 次の例では、SendGrid 出力バインドを構成する方法を示します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -495,8 +492,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -508,7 +504,7 @@ static void Main()
 次の例では、Service Bus  トリガーを構成する方法を示します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -523,8 +519,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -538,7 +533,7 @@ static void Main()
 #### <a name="version-3x"></a>バージョン 3.*x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -549,8 +544,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -690,7 +684,7 @@ Azure Functions のドキュメントでは、各バインドの種類に関す�
 * [例](../azure-functions/functions-bindings-storage-queue.md#trigger---example)。 コード サンプルです。 C# クラス ライブラリの例は、WebJobs SDK に適用されます。 `FunctionName` 属性は単に省略します。
 * [属性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes)。 バインドの種類に使用する属性です。
 * [構成](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 属性のプロパティとコンストラクターのパラメーターの説明です。
-* [[使用状況]](../azure-functions/functions-bindings-storage-queue.md#trigger---usage): どの種類にバインドできるかとバインドの動作方法に関する情報です。 例: ポーリング アルゴリズム、有害キュー処理。
+* [使用方法](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 どの種類にバインドできるかとバインドの動作方法に関する情報です。 例: ポーリング アルゴリズム、有害キュー処理。
   
 バインドの参照記事の一覧については、Azure Functions の[トリガーとバインド](../azure-functions/functions-triggers-bindings.md#supported-bindings)に関する記事の「サポートされるバインディング」をご覧ください。 その一覧では、HTTP、Webhook、Event Grid のバインドは、Azure Functions でのみサポートされており、WebJobs SDK ではサポートされていません。
 
@@ -805,7 +799,7 @@ Async 関数のコードを書く方法については、[Azure Functions](../az
 
 キャンセル トークンを処理する方法については、Azure Functions ドキュメントの[キャンセル トークンと正常なシャットダウン](../azure-functions/functions-dotnet-class-library.md#cancellation-tokens)を参照してください。
 
-## <a name="multiple-instances"></a>複数のインスタンス
+## <a name="multiple-instances"></a>複数インスタンス
 
 Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各インスタンスで実行され、トリガーをリッスンして関数の呼び出しを行います。 各種のトリガー バインドは、インスタンス間で協調して作業を効率的に共有するよう設計されているので、より多くのインスタンスにスケール アウトすると、より多くの負荷を処理することができます。
 
@@ -833,8 +827,8 @@ ASP.NET 用に開発されたログ記録フレームワークをお勧めしま
 |デバッグ       | 1 |
 |Information | 2 |
 |警告     | 3 |
-|Error       | 4 |
-|重大    | 5 |
+|エラー       | 4 |
+|Critical    | 5 |
 |なし        | 6 |
 
 各カテゴリを特定の [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel) に個別にフィルター処理できます。 たとえば、BLOB トリガー処理のすべてのログを表示するが、それ以外に関しては `Error` 以降のみを表示するなどが可能です。
@@ -924,7 +918,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 ビルダーで [`ConfigureServices`] を呼び出して、カスタム [`ITelemetryInitializer`] をパイプラインに追加します。
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -951,8 +945,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```

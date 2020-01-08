@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a1e6dc3ed1c1f9af6f6b935cdd3a6ceaedbe7a4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 07845bb5b742b1bcfbb22d260457e9a8e16edab6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848257"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425255"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-factor Authentication によるユーザー設定の管理
 
@@ -30,9 +30,9 @@ ms.locfileid: "74848257"
 
 管理者が認証管理者ロールを割り当てると、パスワードのリセット、MFA の再登録、またはユーザー オブジェクトからの既存の MFA セッションの取り消しをユーザーに要求できます。
 
-![Azure portal から認証方法を管理する](./media/howto-mfa-userdevicesettings/manage-authentication-methods.png)
+![Azure portal から認証方法を管理する](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 左側の **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
 1. 操作の実行対象のユーザーを選択し、 **[認証方法]** を選択します。
    - **[パスワードのリセット]** では、ユーザーのパスワードがリセットされ、次のサインイン時に変更する必要がある一時パスワードが割り当てられます。
@@ -45,7 +45,7 @@ ms.locfileid: "74848257"
 
 ### <a name="how-to-delete-users-existing-app-passwords"></a>ユーザーの既存のアプリ パスワードを削除する方法
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側の **[Azure Active Directory]**  >  **[ユーザー]**  >  **[すべてのユーザー]** を選択します。
 3. 右側のツール バーで **[Multi-Factor Authentication]** を選択します。 多要素認証ページが開きます。
 4. ユーザーまたは管理するユーザーの横にあるチェック ボックスをオンにします。 クイック ステップのオプションの一覧が右側に表示されます。
@@ -55,7 +55,7 @@ ms.locfileid: "74848257"
 7. **[Save]** をクリックします。
 8. **[閉じる]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 詳細については、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」をご覧ください。
 - ヘルプが必要な場合、「[2 段階認証のユーザー ガイド](../user-help/multi-factor-authentication-end-user.md)」を参照してください。

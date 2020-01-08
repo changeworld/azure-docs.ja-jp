@@ -1,26 +1,15 @@
 ---
-title: Azure で API Management と Service Fabric を統合する | Microsoft Docs
+title: Azure で API Management と Service Fabric を統合する
 description: Azure API Management をすぐに使い始め、Service Fabric のバックエンド サービスにトラフィックをルーティングする方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 470eacee5c71742678497edf48169e14a4073829
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 201d617ce15216ba168bc484f644e165d5ae0e71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598831"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465344"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 
@@ -135,7 +124,7 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
 
 ### <a name="microsoftapimanagementserviceproducts"></a>Microsoft.ApiManagement/service/products
 
-[Microsoft.ApiManagement/service/products](/azure/templates/microsoft.apimanagement/service/products) は製品を作成します。 Azure API Management の成果物には、少なくとも 1 つの API に加え、使用量クォータや使用条件が含まれます。 成果物が発行されると、開発者は成果物をサブスクライブして、成果物の API の利用を開始できます。
+[Microsoft.ApiManagement/service/products](/azure/templates/microsoft.apimanagement/service/products) は製品を作成します。 Azure API Management の製品には、少なくとも 1 つの API に加え、使用量クォータや使用条件が含まれます。 製品が発行されると、開発者は成果物をサブスクライブして、成果物の API の利用を開始できます。
 
 製品のわかりやすい **displayName** と **description** を入力します。 この記事では、サブスクリプションは必須ですが、管理者によるサブスクリプションの承認は必須ではありません。  この製品の **state** が "公開" され、サブスクライバーに表示します。
 
@@ -201,7 +190,7 @@ Service Fabric バックエンド ポリシーの全属性については、[API
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
-|apimSku|開発者|
+|apimSku|Developer|
 |serviceFabricCertificateName|sfclustertutorialgroup320171031144217|
 |certificatePassword|q6D7nN%6ck@6|
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |
@@ -284,7 +273,7 @@ az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGr
     ["value1", "value2"]
     ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 クラスターは、クラスター リソース自体に加え、その他の Azure リソースで構成されます。 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。
 
@@ -300,7 +289,7 @@ ResourceGroupName="sfclustertutorialgroup"
 az group delete --name $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [API Management](/azure/api-management/import-and-publish) の使用方法の詳細を確認する
 

@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 276ff1e5e9f709aa5b38d1efa4055dfe3baf3cc5
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cc92fb7bc5ddf451279e6c157f9e93aa7fe9a12a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919785"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423616"
 ---
 # <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API を呼び出す Web API - アプリのトークンの取得
 
@@ -31,7 +31,7 @@ ms.locfileid: "74919785"
 
 ダウンストリーム API (todolist という名前) を呼び出す API コントローラーのアクションで呼び出されるコードの例を以下に示します。
 
-```CSharp
+```csharp
 private async Task GetTodoList(bool isAppStarting)
 {
  ...
@@ -54,7 +54,7 @@ private async Task GetTodoList(bool isAppStarting)
 
 `GetAccountIdentifier` メソッドは、Web API で JWT を受信したユーザーの ID に関連付けられた要求を使用します。
 
-```CSharp
+```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 {
  string userObjectId = GetObjectId(claimsPrincipal);
@@ -70,7 +70,7 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Web API の呼び出し](scenario-web-api-call-api-call-api.md)

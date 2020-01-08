@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: 1e993ec50694d8672fbe05f982d5dbc45a815abb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: d3c1070577ee57f18018e9b74be5e29998cc3e64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161467"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453661"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>クイック スタート:Resource Manager テンプレートを使用した Azure Key Vault からのシークレットの設定と取得
 
@@ -125,7 +125,7 @@ Write-Host "Press [ENTER] to continue..."
 ![Resource Manager テンプレート、Key Vault 統合、デプロイ ポータル検証の出力](./media/quick-create-template/resource-manager-template-portal-deployment-powershell-output.png)
 
 ---
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Key Vault に関する他のクイック スタートとチュートリアルは、このクイック スタートに基づいています。 後続のクイック スタートおよびチュートリアルを引き続き実行する場合は、これらのリソースをそのまま残しておくことをお勧めします。
 不要になったら、リソース グループを削除します。これにより、Key Vault と関連リソースが削除されます。 Azure CLI または Azure PowerShell を使用してリソース グループを削除するには次を実行します。
@@ -149,11 +149,11 @@ Write-Host "Press [ENTER] to continue..."
 
 ---
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Azure Resource Manager テンプレートを使用してキー コンテナーとシークレットを作成し、デプロイを検証しました。 Key Vault と Azure Resource Manager の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](key-vault-overview.md)を確認する
-- [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) の詳細を確認する
+- [Azure Resource Manager](../azure-resource-manager/management/overview.md) の詳細を確認する
 - [キー、シークレット、証明書](about-keys-secrets-and-certificates.md)についての詳しい情報を入手する
 - [Azure Key Vault のベスト プラクティス](key-vault-best-practices.md)を確認する

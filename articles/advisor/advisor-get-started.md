@@ -1,20 +1,14 @@
 ---
-title: Azure Advisor の使用を開始する| Microsoft Docs
+title: Azure Advisor の使用を開始する
 description: Azure Advisor の使用を開始します。
-services: advisor
-author: kasparks
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
-ms.author: kasparks
-ms.openlocfilehash: f91e48a532a278c95d50775e135ac6379e8d8070
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443139"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor の使用を開始する
 
@@ -25,7 +19,7 @@ Azure Portal を使用して Advisor にアクセスし、推奨事項を取得�
 
 ## <a name="get-recommendations"></a>推奨の取得
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 左側のウィンドウで、 **[Advisor]** をクリックします。  左側のウィンドウに Advisor が表示されていない場合は、 **[すべてのサービス]** をクリックします。  サービス メニュー ウィンドウで、 **[Monitoring and Management]\(監視と管理\)** の **[Advisor]** をクリックします。 Advisor ダッシュボードが表示されます。
 
@@ -88,7 +82,7 @@ Advisor の推奨事項を選択して、詳細 (推奨されるアクション�
 
     ![Advisor でのリソースの構成の例](./media/advisor-get-started/advisor-configure-resources.png)
 
-1. **[Apply]** ボタンをクリックします。
+1. **[適用]** をクリックします。
 
 ## <a name="configure-low-usage-vm-recommendation"></a>使用率が低い VM の推奨事項を構成する
 
@@ -125,7 +119,7 @@ Advisor では、推奨事項の概要をダウンロードできます。  推�
 
 ダウンロード オプションでは、Advisor ダッシュボードに適用したフィルターが考慮されます。  推奨事項の特定のカテゴリまたは特定の推奨事項を表示しているときにダウンロード オプションを選択すると、ダウンロードされた概要には、そのカテゴリまたは推奨事項の情報だけが含まれます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Advisor の詳細については、次を参照してください。
 

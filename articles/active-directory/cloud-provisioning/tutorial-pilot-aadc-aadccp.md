@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 812f9bc71cde26b6f32a1259984bb0859ba49d54
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868764"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425095"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>既存の同期済み AD フォレストに対してクラウド プロビジョニングのパイロットを実施する 
 
@@ -76,7 +76,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
     **[タグ]:** 空のままにします<br>
     ![カスタム規則](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
- 4. **[Scoping filter]\(スコープ フィルター\)** ページで、パイロットのベースとなる OU またはセキュリティ グループを入力します。  OU でフィルター処理するには、識別名の OU 部分を追加します。 この規則は、その OU に属しているすべてのユーザーに適用されます。  したがって、DN の末尾が "OU=CPUsers,DC=contoso,DC=com" である場合は、次のフィルターを追加することになります。  その後、 **[次へ]** をクリックします。 
+ 4. **[Scoping filter]\(スコープ フィルター\)** ページで、パイロットのベースとなる OU またはセキュリティ グループを入力します。  OU でフィルター処理するには、識別名の OU 部分を追加します。 この規則は、その OU に属しているすべてのユーザーに適用されます。  したがって、DN の末尾が "OU=CPUsers,DC=contoso,DC=com" である場合は、次のフィルターを追加することになります。  続けて、 **[次へ]** をクリックします。 
 
     |ルール|Attribute|演算子|値|
     |-----|----|----|-----|
@@ -109,7 +109,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
     
     ![カスタム規則](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
- 3. **[Scoping filter]\(スコープ フィルター\)** ページで、**cloudNoFlow** = **True** を選択します。 その後、 **[次へ]** をクリックします。
+ 3. **[Scoping filter]\(スコープ フィルター\)** ページで、**cloudNoFlow** = **True** を選択します。 続けて、 **[次へ]** をクリックします。
  ![カスタム規則](media/how-to-cloud-custom-user-rule/user7.png)</br>
  
  4. **[Join rules]\(結合規則\)** ページで、 **[次へ]** をクリックします。
@@ -133,21 +133,6 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 7. この操作が完了すると、"**Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)** " という通知が表示されます。  **[終了]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install5.png)</br>
-8. まだ最初のスプラッシュ スクリーンが表示されている場合は、 **[閉じる]** をクリックします。1. 使用するサーバーにエンタープライズ管理者のアクセス許可でサインインします。
-2. Azure AD Connect クラウド プロビジョニング エージェントを[こちら](https://go.microsoft.com/fwlink/?linkid=2109037)からダウンロードします。
-3. Azure AD Connect クラウドプロビジョニング (AADConnectProvisioningAgent.Installer) を実行します。
-3. スプラッシュ スクリーンでライセンス条項に**同意**し、 **[インストール]** をクリックします。</br>
-![[ようこそ] 画面](media/how-to-install/install1.png)</br>
-
-4. この操作が完了すると、構成ウィザードが起動します。  Azure AD 全体管理者アカウントでサインインします。
-5. **[Connect Active Directory]\(Active Directory の接続\)** 画面で **[ディレクトリの追加]** をクリックし、Active Directory 管理者アカウントを使用してサインインします。  この操作によってオンプレミス ディレクトリが追加されます。  **[次へ]** をクリックします。</br>
-![[ようこそ] 画面](media/how-to-install/install3.png)</br>
-
-6. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録されて再起動されます。</br>
-![[ようこそ] 画面](media/how-to-install/install4.png)</br>
-
-7. この操作が完了すると、"**Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)** " という通知が表示されます。  **[終了]** をクリックします。</br>
-![[ようこそ] 画面](media/how-to-install/install5.png)</br>
 8. まだ最初のスプラッシュ スクリーンが表示されている場合は、 **[閉じる]** をクリックします。
 
 ## <a name="verify-agent-installation"></a>エエージェントのインストールを確認する
@@ -156,7 +141,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 ### <a name="azure-portal-agent-verification"></a>Azure portal でのエージェントの確認
 エージェントが Azure で表示されていることを確認するには、次の手順を実行します。
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 2. 左側の **[Azure Active Directory]** を選択して **[Azure AD Connect]** をクリックし、中央の **[プロビジョニングの管理 (プレビュー)]** を選択します。</br>
 ![Azure Portal](media/how-to-install/install6.png)</br>
 
@@ -169,7 +154,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 エージェントが実行されていることを確認するには、次の手順に従います。
 
 1.  管理者アカウントでサーバーにログオンします。
-2.  **[サービス]** を開きます。これには、[サービス] に直接移動するか、スタート ボタンをクリックし、[ファイル名を指定して実行] で「Services.msc」と入力してください。
+2.  **[サービス]** を開きます。これには、そこに直接移動するか、スタート ボタンをクリックし、[ファイル名を指定して実行] で「Services.msc」と入力します。
 3.  **[サービス]** に **[Microsoft Azure AD Connect Agent Updater]** と **[Microsoft Azure AD Connect Provisioning Agent]** が存在することと、その状態が **[実行中]** になっていることを確認します。
 ![サービス](media/how-to-troubleshoot/troubleshoot1.png)
 
@@ -231,12 +216,12 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
  5. **[ディレクトリの接続]** 画面で、 **[次へ]** をクリックします。
  6. **[ドメインと OU のフィルタリング]** 画面で、 **[選択したドメインと OU の同期]** を選択します。
  7. 実際のドメインを展開し、**CPUsers** OU の**選択を解除**します。  **[次へ]** をクリックします。
-![scope](media/tutorial-existing-forest/scope1.png)</br>
+![スコープ (scope)](media/tutorial-existing-forest/scope1.png)</br>
  9. **[オプション機能]** 画面で、 **[次へ]** をクリックします。
  10. **[構成の準備完了]** 画面で、 **[構成]** をクリックします。
  11. 完了したら **[終了]** をクリックします。 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 - [プロビジョニングとは](what-is-provisioning.md)
 - [Azure AD Connect クラウド プロビジョニングとは](what-is-cloud-provisioning.md)

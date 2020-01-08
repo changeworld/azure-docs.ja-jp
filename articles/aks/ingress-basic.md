@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 7b1fb26adc49067c35745011414ada7b33d7e55e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83ba10dc0df68009666badcc8c673a6f504f80ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913577"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430794"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でイングレス コントローラーを作成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "74913577"
 
 この記事では、Azure Kubernetes Service (AKS) クラスターに [NGINX イングレス コントローラー][nginx-ingress]を展開する方法について説明します。 続いて、それぞれが 1 つの IP アドレスでアクセスできる、2 つのアプリケーションを AKS クラスターで実行します。
 
-さらに、以下を実行できます。
+次のこともできます。
 
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
 - [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]
@@ -52,6 +52,7 @@ kubectl create namespace ingress-basic
 # Use Helm to deploy an NGINX ingress controller
 helm install stable/nginx-ingress \
     --namespace ingress-basic \
+    --name nginx-ingress \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
@@ -144,7 +145,7 @@ ingress.extensions/hello-world-ingress created
 
 ![イングレス コント ローラーの背後で実行中の 2 番目のアプリ](media/ingress-basic/app-two.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 この記事では、Helm を使用して、イングレス コンポーネントおよびサンプル アプリをインストールしました。 Helm グラフをデプロイすると、多数の Kubernetes リソースが作成されます。 これらのリソースには、ポッド、デプロイ、およびサービスが含まれます。 これらのリソースをクリーンアップするには、サンプルの名前空間全体を削除するか、またはリソースを個々に削除します。
 
@@ -203,14 +204,14 @@ kubectl delete -f hello-world-ingress.yaml
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事には、AKS への外部コンポーネントが含まれています。 これらのコンポーネントの詳細については、次のプロジェクト ページを参照してください。
 
 - [Helm CLI][helm-cli]
 - [NGINX イングレス コントローラー][nginx-ingress]
 
-さらに、以下を実行できます。
+次のこともできます。
 
 - [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
 - [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]

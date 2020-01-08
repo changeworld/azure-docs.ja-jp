@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 6fa8e560dc50859fc0501dde8109ddc7cbd596b8
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: f341f5bbf7221664301ca53eea1edd6af7544950
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422049"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -38,9 +38,9 @@ ms.locfileid: "74688632"
 
 3. **[ID]** を選択します。
 
-4. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えます。 **[Save]** をクリックします。
+4. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えます。 **[保存]** をクリックします。
 
-    ![App Service のマネージド ID](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![App Service のマネージド ID](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用
 
@@ -169,7 +169,7 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 
 6. 先ほど作成した ID を検索して選択します。 **[追加]** をクリックします。
 
-    ![App Service のマネージド ID](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![App Service のマネージド ID](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
@@ -251,7 +251,7 @@ App Service と Azure Functions には、トークンを取得するための簡
 
 **MSI_ENDPOINT** は、アプリがトークンを要求できるローカル URL です。 リソースのトークンを取得するには、次のパラメーターを指定して、このエンドポイントに HTTP GET 要求を行います。
 
-> |パラメーター名|場所|説明|
+> |パラメーター名|場所|[説明]|
 > |-----|-----|-----|
 > |resource|クエリ|トークンを取得する必要のあるリソースの AAD リソース URI。 これは [Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の 1 つか、その他のリソース URI になります。|
 > |api-version|クエリ|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
@@ -263,7 +263,7 @@ App Service と Azure Functions には、トークンを取得するための簡
 
 正常終了の応答である 200 OK には、JSON 本文と次のプロパティが含まれています。
 
-> |プロパティ名|説明|
+> |プロパティ名|[説明]|
 > |-------------|----------|
 > |access_token|要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。|
 > |expires_on|アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。|
@@ -426,7 +426,7 @@ Java のアプリケーションと関数の場合、マネージド ID を利�
 > [!NOTE]
 > また、単純にローカル トークン サービスを無効にする、設定可能なアプリケーション設定 WEBSITE_DISABLE_MSI もあります。 ただし、ID はその場所に残り、ツールには引き続きマネージド ID が "オン" または "有効" と表示されます。 そのため、この設定の使用はお勧めしません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [マネージド ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)

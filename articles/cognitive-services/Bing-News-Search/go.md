@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/21/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: e08fe23f99cbf2fac7fc0528b04360f36d22b875
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a72859e378bc1f97ebaed6a11ea3b250a33651d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74222131"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448522"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>クイック スタート:Bing News Search REST API と Go を使用してニュースの結果を取得する
 
@@ -26,13 +26,13 @@ ms.locfileid: "74222131"
 * 結果を表示するためのプリティ プリンター用の go-spew ライブラリをインストールする
     * このライブラリをインストールします: `$ go get -u https://github.com/davecgh/go-spew`
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>プロジェクトの作成とライブラリのインポート
 
 お使いの IDE またはエディターで新しい Go プロジェクトを作成します。 次に、要求のための `net/http`、応答を読み取るための `ioutil`、結果の JSON テキストを処理するための `encoding/json` をインポートします。 go-spew ライブラリは JSON を解析するために必要です。 
 
-```
+```go
 package main
 
 import (
@@ -49,7 +49,7 @@ import (
 
 `NewsAnswer` 構造体は、応答で提供されるデータを書式設定します。 応答の JSON はマルチレベルであり、非常に複雑です。  次の実装は、基本事項を示しています。
 
-```
+```go
 // This struct formats the answer provided by the Bing News Search API.
 type NewsAnswer struct {
     ReadLink       string `json: "readLink"` 
@@ -87,9 +87,9 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>main 関数の宣言と変数の定義  
 
-次のコードは main 関数を宣言し、必要な変数を割り当てます。 エンドポイントが正しいことを確認し、`token` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。
+次のコードは main 関数を宣言し、必要な変数を割り当てます。 エンドポイントが正しいことを確認し、`token` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
-```
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.  
     const endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
@@ -110,7 +110,7 @@ func main() {
 
 クエリ文字列とアクセス キー ヘッダーを追加する
 
-```
+```go
 // Add the query to the request.  
 param := req.URL.Query()
 param.Add("q", searchTerm)
@@ -125,7 +125,7 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 クライアントを作成して Get 要求を送信する 
 
-```
+```go
 // Instantiate a client.  
 client := new(http.Client)
 
@@ -141,7 +141,7 @@ if err != nil {
 
 `ioutil` を使用して要求を送信して応答を読み取ります。
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -162,7 +162,7 @@ if err != nil {
 
 `Unmarshall` 関数は、News Search API から返された JSON テキストから情報を抽出します。  `go-spew` プリティ プリンターを使用して結果のノードを表示できます。
 
-```
+```go
 // Create a new answer object 
 ans := new(NewsAnswer)
 err = json.Unmarshal(body, &ans)
@@ -179,7 +179,7 @@ spew.Dump(result.Name, result.URL)
 
 ```
 
-## <a name="results"></a>結果
+## <a name="results"></a>[結果]
 
 結果には、各結果の名前と URL が含まれます。
 
@@ -203,7 +203,7 @@ spew.Dump(result.Name, result.URL)
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing News Search とは](search-the-web.md)

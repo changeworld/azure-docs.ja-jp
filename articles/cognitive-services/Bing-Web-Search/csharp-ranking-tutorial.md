@@ -9,14 +9,14 @@ ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: cfe198352cae95227a76535544d55a6be0c66abc
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203255"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382329"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C# でのコンソール アプリ検索クライアントのビルド
 
@@ -32,11 +32,11 @@ ms.locfileid: "67203255"
 チュートリアルを進めるには、次のものが必要です。
 
 - 見ることができます。 お持ちでない場合は、[無料版の Visual Studio 2017 Community Edition をダウンロードしインストールしてください](https://www.visualstudio.com/downloads/)。
-- Bing Web Search API のサブスクリプション キー。 お持ちでない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)にサインアップしてください。
+- Bing Web Search API のサブスクリプション キー。 ない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)にサインアップしてください。
 
 ## <a name="create-a-new-console-app-project"></a>新しいコンソール アプリ プロジェクトを作成する
 
-Visual Studio で、`Ctrl` + `Shift` + `N` キーを押してプロジェクトを作成します。
+Visual Studio で、`Ctrl`+`Shift`+`N` キーを押してプロジェクトを作成します。
 
 **[新しいプロジェクト]** ダイアログで、 **[Visual C#] > [Windows クラシック デスクトップ] > [コンソール アプリ (.NET Framework)]** をクリックします。
 
@@ -329,6 +329,6 @@ WebPage:
 ...
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [優先度付けを使用して結果を表示する](rank-results.md)に関するページをご覧ください。

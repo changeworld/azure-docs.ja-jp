@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: a8e189e8070de0fccf9428e26337e1091ba7f7b4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 34fcaef5416fe976c051317c0273d245f1ff8358
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225624"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449127"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure Billing API を使用して、Azure の使用状況に関する詳細なデータをプログラムによって取得する
 Azure Billing API を使用すると、使用状況やリソースに関するデータを、お使いのデータ分析ツールで取得できます。 Azure Resource Usage API と Azure Resource RateCard API は、コストを正確に予測して管理するうえで役立ちます。 これらの API は、Azure Resource Manager が公開している API ファミリに含まれ、リソース プロバイダーとして実装されています。  
@@ -63,7 +63,7 @@ Usage API と RateCard API を組み合わせて実現できるシナリオ例�
   * 別の Azure プラン タイプの方が Azure リソースの料金が安くなるかどうかについても判断できます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * GitHub でコード サンプルを確認します。
   * [Invoice API のコード サンプル](https://go.microsoft.com/fwlink/?linkid=845124)
 
@@ -71,4 +71,4 @@ Usage API と RateCard API を組み合わせて実現できるシナリオ例�
 
   * [RateCard API のコード サンプル](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
+* Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」を参照してください。

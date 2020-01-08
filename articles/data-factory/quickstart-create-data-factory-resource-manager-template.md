@@ -10,12 +10,12 @@ ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: d7cafa6ec385ed296a5341efdaec1b16f7742683
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7ad0367a89730c3aba37c5f75158cb42ae4ae668
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440072"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用した Azure データ ファクトリの作成
 
@@ -38,7 +38,7 @@ ms.locfileid: "74928807"
 
 ## <a name="resource-manager-templates"></a>Resource Manager テンプレート
 
-Azure Resource Manager テンプレート全般に関する情報については、[Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)に関するページを参照してください。
+Azure Resource Manager テンプレート全般に関する情報については、[Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/template-syntax.md)に関するページを参照してください。
 
 次のセクションでは、このチュートリアルを速やかに実行し、テンプレートをテストできるように、Data Factory エンティティを定義するための完全な Resource Manager テンプレートを提供します。 各 Data Factory エンティティを定義する方法については、「[テンプレートの Data Factory エンティティ](#data-factory-entities-in-the-template)」をご覧ください。
 
@@ -287,7 +287,7 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFTut
 
 > [!IMPORTANT]
 > - このパラメーター ファイルの **storageAccountName** パラメーターと **storageAccountKey** パラメーターに、Azure Storage アカウントの名前とキーを指定します。 adftutorial コンテナーを作成し、この Azure Blob Storage の入力フォルダーにサンプル ファイル (emp.txt) をアップロードしました。
-> - **dataFactoryName** パラメーターには、データ ファクトリのグローバルに一意の名前を指定します。 例: ARMTutorialFactoryJohnDoe11282017。
+> - **dataFactoryName** パラメーターには、データ ファクトリのグローバルに一意の名前を指定します。 次に例を示します。ARMTutorialFactoryJohnDoe11282017。
 > - **triggerStartTime** には、現在の日付を `2019-09-08T00:00:00` 形式で指定します。
 > - **triggerEndTime** には、翌日の日付を `2019-09-09T00:00:00` 形式で指定します。 また、現在の UTC 時刻を調べて、その 1 ～ 2 時間後を終了時刻として指定することもできます。 たとえば、現在の UTC 時刻が午前 1 時 32 分である場合、終了時刻として `2019-09-09:03:00:00` を指定します。 この場合、トリガーによってパイプラインが 2 回実行されます (午前 2 時と午前 3 時)。
 
@@ -468,7 +468,7 @@ JSON テンプレートには、次の Data Factory エンティティが定義�
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
 
-AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 前提条件の一部として、コンテナーを作成し、データをこのストレージ アカウントにアップロードしました。 このセクションで、Azure Storage アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)」をご覧ください。
+AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 前提条件の一部として、コンテナーを作成し、データをこのストレージ アカウントにアップロードしました。 このセクションで、Azure Storage アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](connector-azure-blob-storage.md#linked-service-properties)」を参照してください。
 
 ```json
 {  
@@ -695,6 +695,6 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
 
 テンプレートを再利用して、繰り返されるタスクを実行することもできます。 たとえば、1 つ以上のパイプラインを持つ多数のデータ ファクトリを作成するとします。各データ ファクトリは同じロジックを実装しますが、それぞれ異なる Azure ストレージ アカウントを使用します。 このシナリオでは、1 つの環境 (開発、テスト、または運用) で同じテンプレートと異なるパラメーター ファイルを使用してデータ ファクトリを作成します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 より多くのシナリオで Data Factory を使用する方法については、[チュートリアル](tutorial-copy-data-dot-net.md)を参照してください。

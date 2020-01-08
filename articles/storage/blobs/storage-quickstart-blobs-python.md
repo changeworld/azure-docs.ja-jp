@@ -7,19 +7,19 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: d589215cf79154bcc8aead1d6695bd4cf870fc0a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: faa73874d7e662eb23e85d46ecaf21a11d10ce73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443748"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-python"></a>クイック スタート:Python 用 Azure Blob Storage クライアント ライブラリ v12
 
 Python 用 Azure Blob Storage クライアント ライブラリ v12 を使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
 
 > [!NOTE]
-> 以前の SDK バージョンの使用を開始するには、「[クイックスタート: Python 用 Azure Blob Storage クライアント ライブラリ](storage-quickstart-blobs-python-legacy.md)」を参照してください。
+> 以前の SDK バージョンを使ってみるには、「[クイックスタート: Python 用 Azure Blob Storage クライアント ライブラリ](storage-quickstart-blobs-python-legacy.md)」を参照してください。
 
 Azure Blob Storage クライアント ライブラリを使用すると、以下のことができます。
 
@@ -36,7 +36,7 @@ Azure Blob Storage クライアント ライブラリを使用すると、以下
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントを作成する](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage アカウント - [ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 * [オペレーティング システムには Python](https://www.python.org/downloads/) - 2.7、3.5 以上
 
 ## <a name="setting-up"></a>設定
@@ -53,7 +53,7 @@ Azure Blob Storage クライアント ライブラリを使用すると、以下
     mkdir blob-quickstart-v12
     ```
 
-1. 新しく作成した *blob-quickstart-v12* ディレクトリに切り替えます。
+1. 新しく作成された *blob-quickstart-v12* ディレクトリに切り替えます。
 
     ```console
     cd blob-quickstart-v12
@@ -99,7 +99,7 @@ pip install azure-storage-blob
 
 1. *blob-quickstart-v12* ディレクトリに新しいファイルを *blob-quickstart-v12.py* として保存する
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>オブジェクト モデル
 
@@ -132,18 +132,18 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 ### <a name="get-the-connection-string"></a>接続文字列を取得する
 
-次のコードでは、「[ストレージ接続文字列の構成](#configure-your-storage-connection-string)」セクションで作成した環境変数から、ストレージ アカウントに対する接続文字列を取得します。
+以下のコードでは、「[ストレージ接続文字列の構成](#configure-your-storage-connection-string)」セクションで作成した環境変数から、ストレージ アカウントに対する接続文字列を取得します。
 
 このコードを `try` ブロック内に追加します。
 
 ```python
 # Retrieve the connection string for use with the application. The storage
 # connection string is stored in an environment variable on the machine
-# running the application called CONNECT_STR. If the environment variable is
+# running the application called AZURE_STORAGE_CONNECTION_STRING. If the environment variable is
 # created after the application is launched in a console or with Visual Studio,
 # the shell or application needs to be closed and reloaded to take the
 # environment variable into account.
-connect_str = os.getenv('CONNECT_STR')
+connect_str = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
 ```
 
 ### <a name="create-a-container"></a>コンテナーを作成する
@@ -234,7 +234,7 @@ with open(download_file_path, "wb") as download_file:
 
 次のコードでは、[delete_container](/python/api/azure-storage-blob/azure.storage.blob.containerclient#delete-container---kwargs-) メソッドを使用して、コンテナー全体を削除することによって、アプリが作成したリソースがクリーンアップされます。 必要に応じてローカル ファイルを削除することもできます。
 
-アプリでは、BLOB、コンテナー、ローカル ファイルを削除する前に、`input()` を呼び出すことによって、ユーザーの入力が一時停止されます。 リソースが実際に正しく作成されたことを確認してから、削除することをお勧めします。
+アプリでは、BLOB、コンテナー、およびローカル ファイルを削除する前に、`input()` を呼び出すことで、ユーザーの入力を一時停止します。 このとき、リソースが削除される前に、実際に正しく作成されたことを確認できます。
 
 `try` ブロックの末尾に、次のコードを追加します。
 
@@ -288,7 +288,7 @@ Done
 
 ファイルを確認した後、**Enter** キーを押してテスト ファイルを削除し、デモを終了します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Python を使用して BLOB をアップロード、ダウンロード、一覧表示する方法について説明しました。
 

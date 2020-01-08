@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/19/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ab16a54269c2afe820d9d17d1400152d078186ed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423676"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448546"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>クイック スタート:Ruby と Bing News Search REST API を使用してニュース検索を実行する
 
@@ -30,8 +30,6 @@ ms.locfileid: "68423676"
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
-
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
 1. 次のパッケージをコード ファイルにインポートします。
@@ -42,7 +40,7 @@ ms.locfileid: "68423676"
     require 'json'
     ```
 
-2. API エンドポイント、ニュース検索の URL、サブスクリプション キー、および検索語句の変数を作成します。
+2. API エンドポイント、ニュース検索の URL、サブスクリプション キー、および検索語句の変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```ruby
     accessKey = "enter key here"
@@ -176,7 +174,7 @@ puts JSON::pretty_generate(JSON(response.body))
 ```
 
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページのアプリを作成する](tutorial-bing-news-search-single-page-app.md)

@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 841041cb9fa20b034dd4522a5231813b71558bd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815805"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457815"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure SQL Data Warehouse を作成し、クエリを実行する
 
@@ -33,11 +33,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 ## <a name="create-a-data-warehouse"></a>データ ウェアハウスの作成
 
-Azure SQL Data Warehouse は、定義済みの一連の[コンピューティング リソース](memory-concurrency-limits.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-logical-servers.md)内に作成されます。 
+Azure SQL データ ウェアハウスは、定義された一連の[コンピューティング リソース](memory-concurrency-limits.md)を使用して作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内と [Azure SQL 論理サーバー](../sql-database/sql-database-logical-servers.md)内に作成されます。 
 
 以下の手順で AdventureWorksDW サンプル データを含む SQL Data Warehouse を作成します。 
 
@@ -49,10 +49,10 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 3. SQL Data Warehouse のフォームで、次の情報を入力します。
 
-    | Setting | 推奨値 | 説明 |
+    | 設定 | 推奨値 | [説明] |
     | :------ | :-------------- | :---------- |
     | **サブスクリプション** | 該当するサブスクリプション | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
-    | **[リソース グループ]** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
+    | **リソース グループ** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
     | **データ ウェアハウス名** | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 データ ウェアハウスはデータベースの一種です。|
     ||||
 
@@ -60,7 +60,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 4. 既存の**サーバー**を選択するか、 **[新規作成]** を選択して新しいデータベース用に新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-    | Setting | 推奨値 | 説明 |
+    | 設定 | 推奨値 | [説明] |
     | :------ | :-------------- | :---------- |
     | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
@@ -86,7 +86,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 10. ツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
     
-     ![通知](media/load-data-from-azure-blob-storage-using-polybase/notification.png)
+     ![通知 (notification)](media/load-data-from-azure-blob-storage-using-polybase/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
@@ -111,7 +111,7 @@ SQL Data Warehouse サービスでは、サーバーレベルでファイアウ�
 
 1. 現在の IP アドレスをファイアウォール規則に追加するには、ツール バーの **[クライアント IP の追加]** をクリックします。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-1. **[Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+1. **[保存]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
 1. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
 
@@ -124,7 +124,7 @@ SQL Data Warehouse サービスでは、サーバーレベルでファイアウ�
 
 Azure Portal で、SQL サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 2. 左側のメニューの **[SQL データ ウェアハウス]** を選択し、 **[SQL データ ウェアハウス]** ページで目的のデータベースをクリックします。
 3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20180430.database.windows.net です。
 
@@ -138,18 +138,18 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | 設定 | 推奨値 | 説明 |
+   | 設定 | 推奨値 | [説明] |
    | :------ | :-------------- | :---------- |
    | サーバーの種類 | データベース エンジン | この値は必須です |
    | サーバー名 | 完全修飾サーバー名 | 例: **mynewserver-20180430.database.windows.net** |
    | 認証 | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
    | ログイン | サーバー管理者アカウント | サーバーの作成時に指定したアカウントです。 |
-   | パスワード | サーバー管理者アカウントのパスワード | サーバーの作成時に指定したパスワードです。 |
+   | Password | サーバー管理者アカウントのパスワード | サーバーの作成時に指定したパスワードです。 |
    ||||
 
     ![[サーバーに接続]](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. **[接続]** をクリックします。 SSMS でオブジェクト エクスプローラー ウィンドウが開きます。 
+3. **[接続]** をクリックします。 SSMS で [オブジェクト エクスプローラー] ウィンドウが開きます。 
 
 4. オブジェクト エクスプローラーで、 **[データベース]** を展開します。 **mySampleDatabase** を展開して、新しいデータベースのオブジェクトを表示します。
 
@@ -179,7 +179,7 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
 
     ![クエリ dbo.dimCustomer](media/create-data-warehouse-portal/query-customer.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 データ ウェアハウス ユニットとデータ ウェアハウスの格納データに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。
 
@@ -190,7 +190,7 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
 
 1. [Azure Portal](https://portal.azure.com) にログインし、データ ウェアハウスをクリックします。
 
-    ![リソースのクリーンアップ](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+    ![リソースをクリーンアップする](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンをクリックします。 データ ウェアハウスが一時停止されると、 **[再開]** ボタンが表示されます。 コンピューティングを再開するには、 **[再開]** をクリックします。
 
@@ -200,7 +200,7 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
 
 5. リソース グループを削除するには、**myResourceGroup** をクリックして、 **[リソース グループの削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここではデータ ウェアハウスを作成し、ファイアウォール規則を作成し、データ ウェアハウスに接続していくつかのクエリを実行しました。 Azure SQL Data Warehouse の詳細については、データの読み込みに関するチュートリアルを参照してください。
 

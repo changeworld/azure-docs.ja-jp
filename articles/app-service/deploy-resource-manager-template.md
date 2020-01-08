@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 082ef9753f84aef3f867a9dee4b4e9fbf73dd379
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670109"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422094"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Web アプリのデプロイに関するガイダンス
 
@@ -94,7 +94,7 @@ Resource Manager テンプレートで MSDeploy が使用されている場合�
 
 ## <a name="choose-a-unique-web-app-name"></a>一意の Web アプリ名の選択
 
-Web アプリの名前は、グローバルに一意である必要があります。 一意になると思われる命名規則を使用するか、[uniqueString 関数](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring)を使用して一意の名前の生成を支援することができます。
+Web アプリの名前は、グローバルに一意である必要があります。 一意になると思われる命名規則を使用するか、[uniqueString 関数](../azure-resource-manager/templates/template-functions-string.md#uniquestring)を使用して一意の名前の生成を支援することができます。
 
 ```json
 {
@@ -131,7 +131,7 @@ Azure Government では、App Service サービス プリンシパルの ID は 
 
 テンプレートの例については、「[Deploy a Web App certificate from Key Vault secret and use it for creating SSL binding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)」(Key Vault シークレットから Web アプリ証明書を展開し、SSL バインディングの作成に使用する) をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * テンプレートを使用して Web アプリをデプロイするチュートリアルについては、「[Azure でマイクロサービスを予測どおりにデプロイする](deploy-complex-application-predictably.md)」を参照してください。
 * テンプレート内のリソースの種類用の JSON 構文とプロパティの詳細については、[Azure Resource Manager テンプレート リファレンス](/azure/templates/)を参照してください。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 56607de57939be769b1951f0eee9078c46d610c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035459"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561288"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>OpenShift Container Platform 3.11 を Azure へデプロイする
 
@@ -27,7 +27,7 @@ Azure で OpenShift Container Platform 3.11 をデプロイするには、次の
 
 - [OpenShift Container Platform のドキュメント](https://docs.openshift.com/container-platform)の手順を実行するには、事前に必要な Azure インフラストラクチャ コンポーネントを手動でデプロイする必要があります。
 - また、OpenShift Container Platform クラスターのデプロイを簡略化する既存の [Resource Manager テンプレート](https://github.com/Microsoft/openshift-container-platform/)を使用することもできます。
-- 別のオプションとして、[Azure Marketplace プラン](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)の使用があります。
+- 別のオプションとして、[Azure Marketplace プラン](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)の使用があります。
 
 どのオプションでも、Red Hat サブスクリプションが必要です。 デプロイ中に、Red Hat Enterprise Linux インスタンスは Red Hat サブスクリプションに登録され、OpenShift Container Platform の資格を含むプール ID に接続されます。
 有効な Red Hat Subscription Manager (RHSM) のユーザー名、パスワード、およびプール ID があることを確認してください。 アクティブ化キー、組織 ID、およびプール ID を使用できます。 これらの情報は、 https://access.redhat.com にサインインして確認できます。
@@ -248,7 +248,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 
 ### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy.Parameters.json ファイルの説明
 
-| プロパティ | 説明 | 有効なオプション | Default value |
+| プロパティ | [説明] | 有効なオプション | Default value |
 |----------|-------------|---------------|---------------|
 | `_artifactsLocation`  | 成果物 (json、スクリプトなど) への URL |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
 | `location` | リソースのデプロイ先となる Azure リージョン |  |  |
@@ -282,7 +282,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 | `enableAzure` | Azure Cloud Provider を有効にします | true <br> false | true |
 | `aadClientId` | Azure Active Directory のクライアント ID。サービス プリンシパル用のアプリケーション ID とも呼ばれます |  |  |
 | `domainName` | 使用するカスタム ドメインの名前 (該当する場合)。 完全なプライベート クラスターをデプロイしない場合は、"none" に設定します |  | なし |
-| `masterClusterDnsType` | OpenShift Web コンソールのドメインの種類。 'default' では、マスター インフラ パブリック IP の DNS ラベルが使用されます。 'custom' を使用して独自の名前を定義できます | default <br> custom | default |
+| `masterClusterDnsType` | OpenShift Web コンソールのドメインの種類。 'default' では、マスター インフラ パブリック IP の DNS ラベルが使用されます。 'custom' を使用して独自の名前を定義できます | 既定値 (default) <br> custom | 既定値 (default) |
 | `masterClusterDns` | `masterClusterDnsType` に 'custom' を選択した場合に、OpenShift Web コンソールへのアクセスに使用するカスタム DNS 名 |  | console.contoso.com |
 | `routingSubDomainType` | 'nipio' に設定した場合、`routingSubDomain` では nip.io が使用されます。  ルーティングに使用する独自のドメインがある場合は、'custom' を使用します | nipio <br> custom | nipio |
 | `routingSubDomain` | `routingSubDomainType` に 'custom' を選択した場合に、ルーティングに使用するワイルドカード DNS 名 |  | apps.contoso.com |
@@ -300,7 +300,7 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 | `existingInfraSubnetReference` | インフラ ノードに対する既存のサブネットの完全参照。 新しい vNet / サブネットを作成する場合には、必要なし |  |  |
 | `existingCnsSubnetReference` | CNS ノードに対する既存のサブネットの完全参照。 新しい vNet / サブネットを作成する場合には、必要なし |  |  |
 | `existingNodeSubnetReference` | コンピューティング ノードに対する既存のサブネットの完全参照。 新しい vNet / サブネットを作成する場合には、必要なし |  |  |
-| `masterClusterType` | クラスターがプライベートまたはパブリックのどちらのマスター ノードを使用するかを指定します。 プライベートを選択した場合、マスター ノードがパブリック IP 経由でインターネットに公開されることはありません。 代わりに、`masterPrivateClusterIp` に指定されたプライベート IP が使用されます | public <br> プライベート | public |
+| `masterClusterType` | クラスターがプライベートまたはパブリックのどちらのマスター ノードを使用するかを指定します。 プライベートを選択した場合、マスター ノードがパブリック IP 経由でインターネットに公開されることはありません。 代わりに、`masterPrivateClusterIp` に指定されたプライベート IP を使用します | public <br> プライベート | public |
 | `masterPrivateClusterIp` | プライベート マスター ノードが選択された場合、内部ロード バランサーによってマスター ノードに対して使用されるプライベート IP アドレスを指定する必要があります。 この静的 IP はマスター サブネット用の CIDR ブロック内にあり、既に使用されていないことが要件となります。 パブリック マスター ノードが選択された場合、この値は使用されないが、やはり指定しておく必要があります |  | 10.1.0.200 |
 | `routerClusterType` | クラスターがプライベートまたはパブリックのどちらのインフラ ノードを使用するかを指定します。 プライベートが選択された場合、インフラ ノードがパブリック IP 経由でインターネットに公開されることはありません。 代わりに、`routerPrivateClusterIp` に指定されたプライベート IP を使用します | public <br> プライベート | public |
 | `routerPrivateClusterIp` | プライベート インフラ ノードが選択された場合、内部ロード バランサーによってインフラ ノードに対して使用されるプライベート IP アドレスを指定する必要があります。 この静的 IP はマスター サブネット用の CIDR ブロック内にあり、既に使用されていないことが要件となります。 パブリック インフラ ノードが選択された場合、この値は使用されないが、やはり指定しておく必要があります |  | 10.2.0.200 |
@@ -341,7 +341,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、OpenShift クラスター、およびすべての関連リソースが不要になったら、[az group delete](/cli/azure/group) コマンドを使用して削除できます。
 
@@ -349,7 +349,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [デプロイ後タスク](./openshift-container-platform-3x-post-deployment.md)
 - [Azure での OpenShift デプロイのトラブルシューティング](./openshift-container-platform-3x-troubleshooting.md)

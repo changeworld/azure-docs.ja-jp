@@ -1,20 +1,15 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
-services: cost-management
 author: bandersmsft
-ms.service: cost-management
+ms.author: banders
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 09/17/2018
-ms.author: banders
-manager: dougeby
-ms.custom: include file
-ms.openlocfilehash: 1ffa56caebf16b588dffaba249a844915f9f44c7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: aa23e7f47517ea7cec76faa9ffec1a6456927aa5
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180917"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75500159"
 ---
 ## <a name="view-cost-data"></a>コスト データの表示
 

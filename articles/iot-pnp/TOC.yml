@@ -4,21 +4,37 @@
   items:
     - name: IoT プラグ アンド プレイとは
       href: overview-iot-plug-and-play.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
-    - name: デバイスの作成 - Windows
-      href: quickstart-create-pnp-device.md
-    - name: デバイスの作成 - Linux
-      href: quickstart-create-pnp-device-linux.md
-    - name: デバイスを IoT Hub に接続する - Windows
-      href: quickstart-connect-pnp-device.md
-    - name: デバイスを IoT Hub に接続する - Linux
-      href: quickstart-connect-pnp-device-linux.md
+    - name: デバイスを作成する
+      items:
+        - name: C Linux
+          href: quickstart-create-pnp-device-linux.md
+        - name: C Windows
+          href: quickstart-create-pnp-device-windows.md
+    - name: デバイスを IoT Hub に接続する
+      items:
+        - name: C Linux
+          href: quickstart-connect-pnp-device-c-linux.md
+        - name: C Windows
+          href: quickstart-connect-pnp-device-c-windows.md
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-node.md
     - name: デバイスを IoT Central に接続する
-      href: ../iot-central/preview/quick-create-pnp-device.md
+      href: ../iot-central/preview/tutorial-connect-pnp-device.md
     - name: ソリューション内のデバイスに接続する
-      href: quickstart-connect-pnp-device-solution.md
+      items:
+        - name: 'C#'
+          href: quickstart-connect-pnp-device-solution-csharp.md
+        - name: Java
+          href: quickstart-connect-pnp-device-solution-java.md
+        - name: Node.js
+          href: quickstart-connect-pnp-device-solution-node.md
 - name: チュートリアル
   items:
     - name: VS Code を使用してデバイスを作成する
@@ -35,11 +51,11 @@
       href: concepts-developer-guide.md
     - name: 共通インターフェイス
       href: concepts-common-interfaces.md
-    - name: モデルの検出
+    - name: モデル検出
       href: concepts-model-discovery.md
     - name: 制限とクォータ
       href: concepts-limits-quotas.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Visual Studio と Visual Studio Code を使用して開発する
       href: howto-develop-with-vs-vscode.md
@@ -61,7 +77,7 @@
       href: howto-generate-sas-token.md
 - name: 関連項目
   items:
-    - name: 解決方法
+    - name: ソリューション
       items:
         - name: IoT Central
           href: /azure/iot-central

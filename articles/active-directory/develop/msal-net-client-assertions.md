@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4731a7265265c48bed02e836de91d61971b9be14
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17f02d38c77fce6a256e3c42d887f2b7d560add9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921904"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424235"
 ---
 # <a name="confidential-client-assertions"></a>機密クライアント アサーション
 
@@ -42,7 +42,7 @@ MSAL.NET には、機密クライアント アプリに資格情報またはア�
 
 署名付きクライアント アサーションは、Base64 エンコードであり、Azure AD で必須とされる、必要な認証要求を含むペイロードがある署名付き JWT という形式です。 使用方法:
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -51,7 +51,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Azure AD で想定される要求は次のとおりです。
 
-要求の種類 | 値 | 説明
+要求の種類 | 値 | [説明]
 ---------- | ---------- | ----------
 aud | https://login.microsoftonline.com/{tenantId}/v2.0 | "aud" (対象ユーザー) 要求では、JWT が意図する受信者 (ここでは Azure AD) を指定します。[RFC 7519、セクション 4.1.3] を参照してください。
 exp | 2019 年 6 月 27 日木曜日 15:04:17 GMT + 0200 (ロマンス夏時間) | "exp" (有効期限) 要求は、JWT の処理を受け入れることができなくなる時刻を指定します。 [RFC 7519、セクション 4.1.4] を参照してください。
@@ -62,7 +62,7 @@ sub | {ClientID} | "sub" (主題) 要求では、JWT の件名を指定します
 
 これらの要求を作成する方法の例を次に示します。
 
-```CSharp
+```csharp
 private static IDictionary<string, string> GetClaims()
 {
       //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
@@ -88,7 +88,7 @@ private static IDictionary<string, string> GetClaims()
 
 署名付きクライアント アサーションを作成する方法は次のとおりです。
 
-```CSharp
+```csharp
 string Encode(byte[] arg)
 {
     char Base64PadCharacter = '=';
@@ -138,7 +138,7 @@ string GetSignedClientAssertion()
 
 また [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) を使用して、アサーションを作成することもできます。 コードは、次の例に示すように、より洗練されています。
 
-```CSharp
+```csharp
         string GetSignedClientAssertion()
         {
             var cert = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
@@ -171,7 +171,7 @@ string GetSignedClientAssertion()
 
 署名されたクライアント アサーションを取得したら、次に示すように、MSAL API で使用できます。
 
-```CSharp
+```csharp
             string signedClientAssertion = GetSignedClientAssertion();
 
             var confidentialApp = ConfidentialClientApplicationBuilder
@@ -184,7 +184,7 @@ string GetSignedClientAssertion()
 
 `WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` では、既定で、Azure AD で想定される要求と、送信する追加のクライアント要求を含む署名付きアサーションが生成されます。 これを行う方法を示すコード スニペットは次のとおりです。
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)

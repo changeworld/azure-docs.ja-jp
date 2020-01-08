@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 86b4b19ca80b7dfb2bd9a1a56069fe3d347377ec
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4a5ab0b0ae76f3c646df42953c1602c63a274824
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927850"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457395"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
@@ -151,7 +151,7 @@ Azure Files は、SMB だけでなく、REST もサポートしています。 R
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
-Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、「[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac)」をご覧ください。
+Azure ファイル共有が置かれたストレージ アカウントを参照して、 **[アクセス制御 (IAM)]** をクリックし、ユーザー アカウントにストレージ アカウントへのアクセス権があることを確認します。 詳しくは、「[ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントをセキュリティで保護する方法](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)」をご覧ください。
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>原因 2:ストレージ アカウントに対して仮想ネットワークまたはファイアウォール ルールが有効になっている
 
@@ -244,7 +244,7 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
 
 ### <a name="solution"></a>解決策
 
-次のいずれかの解決策を使用します。
+次のいずれかのソリューションを使用します。
 
 -   アプリケーションが属しているのと同じユーザー アカウントからドライブをマウントします。 PsExec などのツールを使用することができます。
 - net use コマンドのユーザー名とパスワードのパラメーターで、ストレージ アカウント名とキーを渡します。
@@ -265,8 +265,8 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
 ### <a name="cause"></a>原因
 この問題は、暗号化ファイル システム (EFS) を使用している場合に発生することがあります。 BitLocker で暗号化されたファイルは Azure Files にコピーできます。 ただし、Azure Files は、NTFS EFS をサポートしていません。
 
-### <a name="workaround"></a>対処法
-ネットワーク経由でファイルをコピーするには、まず、ファイルの暗号化を解除します。 次のいずれかの方法を使用します。
+### <a name="workaround"></a>回避策
+ネットワーク経由でファイルをコピーするには、まず、ファイルの暗号化を解除します。 以下のいずれかの方法を使用します。
 
 - **copy /d** コマンドを使用します。 この方法では、暗号化されたファイルを、暗号化を解除したファイルとしてコピー先に保存することができます。
 - 次のレジストリ キーを設定します。

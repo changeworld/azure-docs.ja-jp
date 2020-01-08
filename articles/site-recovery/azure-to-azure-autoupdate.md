@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 9479ccce534f9c9d48a0aa08d4ea887bc4f30acb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 3a9b0717368fa67f5a7dd477e018a68e048b6740
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451402"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -37,7 +37,7 @@ Runbook の既定のスケジュールは、レプリケートされる VM の�
 
 > Automation アカウントのジョブ料金は、1 か月のジョブ実行時間の分数に基づいて請求されます。 既定で、500 分が Automation アカウントの無料ユニットとして含まれています。 ジョブの実行に必要なのは毎日数秒から約 1 分ですので、無料ユニットでカバーできます。
 
-| 含まれる無料ユニット (毎月) | 料金 |
+| 含まれる無料ユニット (毎月) | Price |
 |---|---|
 | ジョブ実行時間 500 分 | ₹0.14/分
 
@@ -347,7 +347,7 @@ $JobsFailedToStart = 0
 $JobsTimedOut = 0
 $Header = @{}
 
-$AzureRMProfile = Get-Module -ListAvailable -Name Az.Accounts | Select Name, Version, Path
+$AzureRMProfile = Get-Module -ListAvailable -Name AzureRM.Profile | Select Name, Version, Path
 $AzureRmProfileModulePath = Split-Path -Parent $AzureRMProfile.Path
 Add-Type -Path (Join-Path $AzureRmProfileModulePath "Microsoft.IdentityModel.Clients.ActiveDirectory.dll")
 
@@ -521,7 +521,7 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 自動更新を有効にできない場合は、次の一般的なエラーと推奨される操作を参照してください。
 
-- **エラー**: Azure 実行アカウント (サービス プリンシパル) を作成し、サービス プリンシパルに共同作成者ロールを付与するためのアクセス許可がありません。
+- **Error**: Azure 実行アカウント (サービス プリンシパル) を作成し、サービス プリンシパルに共同作成者ロールを付与するためのアクセス許可がありません。
 
    **推奨される操作:** サインインしたアカウントが共同作成者に割り当てられていることを確認してから、再試行します。 アクセス許可の割り当ての詳細については、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)」の「必要なアクセス許可」セクションを参照してください。
  
@@ -529,15 +529,15 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
    ![拡張機能の更新設定に表示される Site Recovery サービスの [修復] ボタン](./media/azure-to-azure-autoupdate/repair.png)
 
-- **エラー**: 実行アカウントに Recovery Services リソースにアクセスするためのアクセス許可がありません。
+- **Error**: 実行アカウントに Recovery Services リソースにアクセスするためのアクセス許可がありません。
 
     **推奨される操作:** 実行アカウントを削除してから[再作成](https://docs.microsoft.com/azure/automation/automation-create-runas-account)します。 または、Automation 実行アカウントの Azure Active Directory アプリケーションが Recovery Services リソースにアクセスできることを確認します。
 
-- **エラー**: 実行アカウントが見つかりません。 Azure Active Directory アプリケーション、サービス プリンシパル、ロール、Automation 証明書資産、Automation 接続資産のいずれかが削除されたか、作成されていません。または、証明書と接続の拇印が一致しません。 
+- **Error**: 実行アカウントが見つかりません。 Azure Active Directory アプリケーション、サービス プリンシパル、ロール、Automation 証明書資産、Automation 接続資産のいずれかが削除されたか、作成されていません。または、証明書と接続の拇印が一致しません。 
 
     **推奨される操作:** 実行アカウントを削除してから[再作成](https://docs.microsoft.com/azure/automation/automation-create-runas-account)します。
 
--  **エラー**: Automation アカウントで使用されている Azure 実行証明書の有効期限がまもなく切れます。 
+-  **Error**: Automation アカウントで使用されている Azure 実行証明書の有効期限がまもなく切れます。 
 
     実行アカウント用に作成された自己署名証明書は、作成日から 1 年後に有効期限が切れます。 期限切れになる前に、いつでも書き換えることができます。 メール通知にサインアップしている場合は、あなたの側でのアクションが必要なときにもメールを受信します。 このエラーは、有効期限日の 2 か月前に表示され、証明書の有効期限が切れた場合は重大なエラーに変わります。 証明書の期限が切れると、それを更新するまで自動更新は機能しません。
 

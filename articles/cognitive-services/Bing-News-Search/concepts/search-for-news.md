@@ -7,15 +7,15 @@ author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
-ms.topic: overview
-ms.date: 06/19/2019
+ms.topic: conceptual
+ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: b70cf50bb33ca7962116586a347c508b15abcd0c
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423882"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448557"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Bing News Search API でニュースを検索する
 
@@ -261,7 +261,7 @@ Host: api.cognitive.microsoft.com
 
 [!INCLUDE [cognitive-services-bing-throttling-requests](../../../../includes/cognitive-services-bing-throttling-requests.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing News Search の結果をページングする方法](../paging-news.md)

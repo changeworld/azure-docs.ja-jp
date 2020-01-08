@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 07/18/2019
 ms.author: lbosq
-ms.openlocfilehash: 1f46eb1995e2e7cb098098ebd22eedbd194dc6a6
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 9151b54d7fa0b64a465aa8384cb4bfdb8e72c482
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310249"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500008"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB の概要: Gremlin API
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB の概要:Gremlin API
 
 [Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 これはマルチモデル データベースであり、ドキュメント、キー値、グラフ、列ファミリのデータ モデルがサポートされています。 Azure Cosmos DB Gremlin API は、あらゆるスケール向けに設計されたフル マネージド データベース サービスで、グラフ データを格納および操作するために使用されます。  
 
@@ -56,7 +56,7 @@ Azure Cosmos DB Gremlin API で提供される差別化された機能は、次�
 
 * **Apache TinkerPop との互換性**
 
-  Azure Cosmos DB では、[オープン ソースの Apache TinkerPop 標準](http://tinkerpop.apache.org/)がサポートされています。 Tinkerpop 標準には、Azure Cosmos DB の Gremlin API と簡単に統合できるアプリケーションおよびライブラリの豊富なエコシステムがあります。 
+  Azure Cosmos DB では、[オープン ソースの Apache TinkerPop 標準](https://tinkerpop.apache.org/)がサポートされています。 Tinkerpop 標準には、Azure Cosmos DB の Gremlin API と簡単に統合できるアプリケーションおよびライブラリの豊富なエコシステムがあります。 
 
 * **調整可能な整合性レベル**
 
@@ -142,7 +142,7 @@ Azure Cosmos DB のグラフ サポートが役立つ場合があるいくつか
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB のグラフ サポートの詳細については、以下をご覧ください。
 
 * [Azure Cosmos DB グラフ チュートリアル](create-graph-dotnet.md)を開始する

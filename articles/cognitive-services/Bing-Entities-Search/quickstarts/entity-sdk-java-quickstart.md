@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: f39355613382bd5d02b7ef6918598f38737e850f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b907b1ed945cd72d51d0b1acd037dbfc93be4873
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327151"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448654"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>クイック スタート:Bing Entity Search SDK for Java を使用して検索要求を送信する
 
@@ -67,7 +67,7 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
 
 ## <a name="create-a-search-client"></a>検索クライアントを作成する
 
-1. `dominantEntityLookup` クライアントを実装します。これには API エンドポイントと `ServiceClientCredentials` クラスのインスタンスが必要となります。
+1. `dominantEntityLookup` クライアントを実装します。これには API エンドポイントと `ServiceClientCredentials` クラスのインスタンスが必要となります。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -147,7 +147,7 @@ Maven、Gradle、または別の依存関係管理システムを使用して Bi
     }
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)

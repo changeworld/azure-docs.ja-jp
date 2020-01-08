@@ -3,19 +3,15 @@ title: Azure Automation State Configuration (DSC) で複合リソースを使用
 description: Azure Automation State Configuration (DSC) で複合リソースを使用して構成を作成する方法について説明します
 keywords: powershell dsc, Desired State Configuration, powershell dsc azure, 複合リソース
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/21/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: e9552adad1f15422eb60c34f2548324aeb03ee74
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2c6d9aa13c8c320dc46f6634f3a60e0c1730c710
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418726"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-dsc-using-composite-resources"></a>Azure Automation State Configuration (DSC) で複合リソースを使用して DSC 構成を作成する
 
@@ -28,7 +24,7 @@ Azure Automation により、[複合リソースのインポートとコンパ�
 
 Azure portal で複合リソースから作成された構成を割り当てるには、まずそれを作成する必要があります。 これを行うには、 **[状態の構成 (DSC)]** ページの **[構成]** または **[コンパイル済み構成]** のいずれかのタブで **[構成の作成]** を使用します。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 1. **[Automation アカウント]** ページで、 **[構成管理]** の **[状態の構成 (DSC)]** を選択します。
 1. **[状態の構成 (DSC)]** ページで、 **[構成]** または **[コンパイル済み構成]** のいずれかのタブをクリックしてから、ページ上部のメニューで **[構成の作成]** をクリックします。
@@ -43,7 +39,7 @@ Azure portal で複合リソースから作成された構成を割り当てる�
 
 コンパイルが正常に完了すると、新しい構成が **[コンパイル済み構成]** タブに表示されます。構成がこのタブに表示されたら、「[別のノード構成にノードを再割り当てする](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration)」の手順に従って、その構成をマネージド ノードに割り当てることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 使用を開始するには、「[Azure Automation State Configuration の使用](automation-dsc-getting-started.md)」をご覧ください。
 - ノードをオンボードにする方法は、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。

@@ -1,19 +1,16 @@
 ---
 title: Azure Service Fabric CLI の概要
 description: Azure Service Fabric CLI の使用方法について説明します。 クラスターに接続して、アプリケーションを管理する方法についても説明します。
-services: service-fabric
 author: jeffj6123
-manager: chackdan
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: e0146504bd06a3c56de8113cc59c9eedd375d06f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4c3a41fe4dba351c10ad8488d4d339bc797597ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463397"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -34,7 +31,7 @@ Service Fabric CLI は、Service Fabric SDK の最新のランタイム バー�
 | CLI のバージョン   | サポートされているランタイムのバージョン |
 |---------------|---------------------------|
 | 最新 (8 まで)  | 最新 (6.5 まで)            |
-| 7.1.0         | 6.4.                       |
+| 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
@@ -267,7 +264,7 @@ pip uninstall sfctl
 pip install sfctl
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Service Fabric CLI でアプリケーションをデプロイする](service-fabric-application-lifecycle-sfctl.md)
 * [Linux 上の Service Fabric の概要](service-fabric-get-started-linux.md)

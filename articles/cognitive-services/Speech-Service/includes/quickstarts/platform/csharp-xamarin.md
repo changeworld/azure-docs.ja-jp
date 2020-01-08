@@ -7,15 +7,15 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/10/2019
 ms.author: erhopf
-ms.openlocfilehash: 498aaa03544acc5a7c8399f1928129b70a7114e9
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 664dbd01ae3e9db7b765eec85e874267c32691e1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816513"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467430"
 ---
 このガイドでは、[Xamarin](https://docs.microsoft.com/xamarin/get-started/what-is-xamarin) 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します。これは、.NET を使用する iOS、Android、および Windows 用の最新の高パフォーマンス アプリケーションを構築するためのオープン ソース プラットフォームです。 
 
@@ -33,8 +33,8 @@ ms.locfileid: "74816513"
 
 これで Speech SDK がインストールされました。 前の手順で作成した "helloworld" プロジェクトを削除または再利用できるようになりました。
 
-これで[次の手順](#next-steps)に進むことができます。
+これで、下記の「[次の手順](#next-steps)」に進むことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [windows](../quickstart-list.md)]

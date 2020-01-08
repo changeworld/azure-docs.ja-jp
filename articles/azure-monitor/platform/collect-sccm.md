@@ -4,15 +4,15 @@ description: この記事では、Configuration Manager を Azure Monitor のワ
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: fee6f09ba8e290ae6599f07d4ed831fb89427f76
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932634"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364052"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager を Azure Monitor に接続する
 お使いの System Center Configuration Manager 環境を Azure Monitor に接続して、デバイス コレクション データを同期し、Azure Monitor と Azure Automation でこれらのコレクションを参照することができます。  
@@ -22,7 +22,7 @@ ms.locfileid: "72932634"
 Azure Monitor では、System Center Configuration Manager の現在のブランチ バージョン 1606 以降がサポートされます。
 
 >[!NOTE]
->Configuration Manager と Log Analytics ワークスペースを接続する機能は任意であり、既定では有効になっていません。 使用する前に、この機能を有効にする必要があります。 詳細については、「[更新プログラムのオプション機能の有効化](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options)」を参照してください。
+>Configuration Manager と Log Analytics ワークスペースを接続する機能は任意であり、既定では有効になっていません。 この機能は、使用する前に有効にする必要があります。 詳細については、「[Enable optional features from updates](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options)」 (更新プログラムのオプション機能の有効化) を参照してください。
 
 ## <a name="configuration-overview"></a>構成の概要
 
@@ -148,6 +148,6 @@ Log Analytics 接続を Configuration Manager に追加し、Configuration Manag
 
 いずれかをクリックすると、ログ クエリ エディターが開き、インポートされたすべてのグループか、各グループに属しているすべてのコンピューターが表示されます。 [ログ検索](../../azure-monitor/log-query/log-query-overview.md)を使用すると、コレクション メンバーシップ データをさらに詳しく分析できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ログの検索](../../azure-monitor/log-query/log-query-overview.md)を使用して、Configuration Manager のデータに関する詳細な情報を表示します。

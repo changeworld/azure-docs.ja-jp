@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics でのデータ主導型デバッグ
 description: この記事では、Azure Portal のジョブ ダイアグラムとメトリックを使って、Azure Stream Analytics ジョブのトラブルシューティングを行う方法について説明します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 472d7fcbca1a221b69d681ce33d39978b53a3204
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3c0c29e1793e56efae8d13cb01d57faf257d8805
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620942"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426073"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>ジョブ ダイアグラムを使用したデータ主導型デバッグ
 
@@ -80,10 +78,10 @@ Azure Event Hubs の入力をパーティション単位で確認するには、
 *   **Input Events Backlogged (Total)** では、Event Hubs と Azure IoT Hub の入力用に読み取る必要がある追加のメッセージの数がわかります。 この数値が 0 より大きい場合は、データの取得後すぐに、ジョブがデータを処理できないことを意味します。 この場合、必要に応じて、ストリーミング ユニット数を増やしたり、ジョブを並列処理できるようにしたりします。 この処理の詳細については、[クエリの並列化に関するページ](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization)を参照してください。 
 
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Stream Analytics の概要](stream-analytics-introduction.md)
 * [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)

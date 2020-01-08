@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820811"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432534"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java 用 Application Insights のトラブルシューティングおよび Q&A
 [Java 用 Azure Application Insights][java] について疑問または問題はありませんか。 ここでは、いくつかのヒントを紹介します。
@@ -22,7 +22,7 @@ ms.locfileid: "72820811"
 
 * 依存 `<version>` 要素にワイルドカード文字を含むパターン (例:(Maven) `<version>[2.0,)</version>`、または (Gradle) `version:'2.0.+'`) を使用している場合、代わりに特定のバージョン (`2.0.1` など) を指定してみてください。 最新のバージョンの [リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java/releases) を参照してください。
 
-## <a name="no-data"></a>データが表示されない
+## <a name="no-data"></a>データなし
 **Application Insights が正常に追加された後でアプリケーションを実行したところ、ポータルにデータが表示されません。**
 
 * 少し待ってから、[最新の情報に更新] をクリックします。 グラフは周期的に自動で更新されますが、手動で更新することもできます。 更新間隔は、グラフの時間範囲によって異なります。
@@ -52,7 +52,6 @@ ms.locfileid: "72820811"
 * [Java エージェントの構成](java-agent.md)に関するページに従って、Java エージェントを構成しましたか?
 * Java エージェント jar ファイルと AI Agent.xml ファイルの両方が同じフォルダーに配置されていることを確認してください。
 * 自動収集しようとしている依存関係が、自動収集でサポートされていることを確認します。 現在、MySQL、MsSQL、Oracle DB、Azure Cache for Redis の依存関係の収集のみがサポートされています。
-* JDK 1.7 または 1.8 を使用していませんか? 現在 JDK 9 の依存関係の収集はサポートされていません。
 
 ## <a name="no-usage-data"></a>使用状況データがない
 **要求と応答時間についてのデータは表示されますが、ページ ビュー、ブラウザー、またはユーザーについてのデータが表示されません。**
@@ -75,7 +74,7 @@ ms.locfileid: "72820811"
     config.setTrackingIsDisabled(true);
 ```
 
-**または**
+**Or**
 
 プロジェクトのリソース フォルダーにある ApplicationInsights.xml を更新します。 ルート ノードの下に次の内容を追加します。
 
@@ -184,7 +183,7 @@ Application Insights では `org.apache.http` が使用されます。 これは
 >アプリですべての名前空間についてデバッグ レベルのログ記録を有効にすると、名前が `com.microsoft.applicationinsights.core.dependencies.http` に変更された `org.apache.http` を含むすべての実行中のモジュールによってこれが適用されます。 ログ呼び出しは Apache のライブラリによって行われるため、Application Insights では、これらの呼び出しにフィルタリングを適用できません。 デバッグ レベルのログ記録では多量のログ データが生成されるため、実稼働インスタンスにはお勧めしません。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 **Java サーバー アプリ用に Application Insights を設定しました。他には何ができるか教えてください。**
 
 * [Web ページの可用性の監視][availability]
@@ -193,7 +192,7 @@ Application Insights では `org.apache.http` が使用されます。 これは
 * [アプリの使用状況を追跡するためのコードを記述する][track]
 * [診断ログのキャプチャ][javalogs]
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [GitHub に関する問題を報告する](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 

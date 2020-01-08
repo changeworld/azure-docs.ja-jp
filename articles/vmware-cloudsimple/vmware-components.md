@@ -1,5 +1,6 @@
 ---
-title: CloudSimple による Azure VMware ソリューション - プライベート クラウド VMware コンポーネント
+title: プライベート クラウド VMware コンポーネント
+titleSuffix: Azure VMware Solution by CloudSimple
 description: VMware コンポーネントをプライベート クラウド上にインストールする方法について説明します。
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814573"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452315"
 ---
 # <a name="private-cloud-vmware-components"></a>プライベート クラウド VMware コンポーネント
 
@@ -33,7 +34,7 @@ ms.locfileid: "70814573"
 | ESXi | 6.7U2 | Enterprise Plus |
 | vCenter | 6.7U2 | vCenter Standard |
 | vSAN | 6.7 | Enterprise |
-| NSX Data Center | 2.4.1 | 詳細 |
+| NSX Data Center | 2.4.1 | 詳細設定 |
 
 ## <a name="esxi"></a>ESXi
 
@@ -116,6 +117,6 @@ CloudSimple は、VMware から重要なセキュリティ パッチが利用で
 
 CloudSimple は、VMware ソフトウェア コンポーネントに四半期ごとのメンテナンス更新を提供します。 新しいメジャー バージョンの VMware ソフトウェアが利用できるようになると、CloudSimple は顧客と連携し、アップグレードに適したメンテナンス期間を調整します。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [CloudSimple のメンテナンスと更新](cloudsimple-maintenance-updates.md)

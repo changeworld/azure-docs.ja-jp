@@ -3,18 +3,18 @@ title: Azure IoT Central アプリケーションを作成する | Microsoft Doc
 description: 新しい Azure IoT Central アプリケーションを作成します。 アプリケーション テンプレートを使用して、試用版や従量課金制のアプリケーションを作成します。
 author: lmasieri
 ms.author: lmasieri
-ms.date: 10/24/2019
+ms.date: 12/18/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 1fcaf694e7a628232ea252585d6d9a507a9850da
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: bbb287805ac0351153778191d484bae2ef319705
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287049"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434798"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Azure IoT Central アプリケーションを作成する (プレビュー機能)
 
@@ -56,7 +56,7 @@ ms.locfileid: "74287049"
 
 1. 使用条件を確認し、ページの下部にある **[作成]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、IoT Central アプリケーションを作成しました。 推奨される次の手順は、以下のとおりです。
 

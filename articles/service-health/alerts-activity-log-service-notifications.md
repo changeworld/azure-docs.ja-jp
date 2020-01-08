@@ -1,18 +1,14 @@
 ---
 title: Azure サービスの通知でアクティビティ ログ アラートを受け取る
 description: Azure サービスが発生したときに、SMS、電子メール、または Webhook で通知を受け取ります。
-author: stephbaron
-ms.author: stbaron
-services: monitoring
-ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: bc8e935b9d44cb5236c7a1ef38da24e12b877e14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383156"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464025"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
@@ -76,11 +72,11 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
 1. 受信者についての次の情報を入力して、受信者の一覧を定義します。
 
-    a. **[名前]** :受信者の名前、エイリアス、または識別子を入力します。
+    a. **Name**:受信者の名前、エイリアス、または識別子を入力します。
 
     b. **アクションの種類**:SMS、メール、webhook、Azure アプリなどを選択します。
 
-    c. **詳細**:選択したアクションの種類に基づいて、電話番号、メール アドレス、Webhook の URI などを入力します。
+    c. **[詳細]** :選択したアクションの種類に基づいて、電話番号、メール アドレス、Webhook の URI などを入力します。
 
 1. **[OK]** を選択してアクション グループを選択し、 **[アラート ルールの作成]** を選択してアラートを完成させます。
 
@@ -200,7 +196,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 * 削除する。
 * 無効または有効にしてそのアラートの通知受信を一時的に停止または再開する。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Service Health アラートの設定に関するベスト プラクティス](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa)を学習します。
 - [Azure Service Health のモバイル プッシュ通知を設定](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)する方法について学習します。
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。

@@ -2,18 +2,14 @@
 title: メトリック アラートを使用して Azure Automation Runbook を監視する
 description: この記事では、メトリックに基づいて Azure Automation Runbook を監視する手順を説明します
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/01/2018
 ms.topic: article
-manager: carmonm
-ms.openlocfilehash: bea99820bee107b8329dd3c36ac3ceb84a042b86
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9bd028157b33817898ef69f9e47cb8b5d9b8f381
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367095"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>メトリック アラートによる Runbook の監視
 
@@ -71,7 +67,7 @@ Azure portal で、Automation アカウントに移動します。 **[監視]** 
 > [!NOTE]
 > メール アドレスをアクション グループに追加すると、アドレスがアクション グループに追加されたことを示す通知メールが送信されます。
 
-## <a name="notification"></a>通知
+## <a name="notification"></a>Notification
 
 アラートの条件が満たされると、アクション グループは定義されているアクションを実行します。 この記事の例では、メールが送信されます。 次の図は、アラートがトリガーされた後で受け取るメールの例です。
 
@@ -79,7 +75,7 @@ Azure portal で、Automation アカウントに移動します。 **[監視]** 
 
 メトリックが定義されているしきい値を超えなくなると、アラートは非アクティブ化されて、アクション グループは定義されているアクションを実行します。 メール アクションの種類を選択されていると、解消されたことを示す解消メールが送信されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Automation アカウントにアラートを統合する他の方法について学習する次の記事に進んでください。
 

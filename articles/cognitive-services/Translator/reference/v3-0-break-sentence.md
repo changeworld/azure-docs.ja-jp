@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835881"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446696"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
@@ -35,7 +35,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">Query parameter (クエリ パラメーター)</th>
-  <th>説明</th>
+  <th>[説明]</th>
   <tr>
     <td>api-version</td>
     <td>"*必須のクエリ パラメーター*" です。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
@@ -53,8 +53,8 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 要求ヘッダーには次のものがあります。
 
 <table width="100%">
-  <th width="20%">headers</th>
-  <th>説明</th>
+  <th width="20%">ヘッダー</th>
+  <th>[説明]</th>
   <tr>
     <td>認証ヘッダー</td>
     <td>"<em>必須の要求ヘッダー</em>" です。<br/><a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">認証に使用できるオプション</a>に関するページをご覧ください。</td>
@@ -69,7 +69,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*省略可能*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。</td>
+    <td>*オプション*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。</td>
   </tr>
 </table> 
 
@@ -109,7 +109,7 @@ JSON 応答の例を次に示します。
 ```json
 [
   {
-    "sentenceLengths": [ 13, 11, 22 ]
+    "sentLen": [ 13, 11, 22 ]
     "detectedLanguage": {
       "language": "en",
       "score": 401
@@ -121,8 +121,8 @@ JSON 応答の例を次に示します。
 ## <a name="response-headers"></a>応答ヘッダー
 
 <table width="100%">
-  <th width="20%">headers</th>
-  <th>説明</th>
+  <th width="20%">ヘッダー</th>
+  <th>[説明]</th>
   <tr>
     <td>X-RequestId</td>
     <td>要求を識別するためにサービスによって生成される値。 トラブルシューティングの目的で使用されます。</td>
@@ -135,10 +135,10 @@ JSON 応答の例を次に示します。
 
 <table width="100%">
   <th width="20%">状態コード</th>
-  <th>説明</th>
+  <th>[説明]</th>
   <tr>
     <td>200</td>
-    <td>成功。</td>
+    <td>正常終了しました。</td>
   </tr>
   <tr>
     <td>400</td>

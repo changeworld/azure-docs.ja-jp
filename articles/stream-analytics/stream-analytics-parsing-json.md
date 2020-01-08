@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics で JSON と AVRO を解析する
 description: この記事では、配列、JSON、CSV 形式のデータなどの複雑なデータ型を操作する方法について説明します。
-services: stream-analytics
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: daf5b97e4ac586f89e5964ee16ee73c86f59b01d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 1741510c7398ce74da81f006cb4109d9a33f8f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329351"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431603"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics で JSON データと Avro データを解析する
 
@@ -61,7 +60,7 @@ FROM input
 ```
 
 ### <a name="select-all-properties"></a>すべてのプロパティを選択する
-'*' ワイルドカードを使用すると、入れ子になったレコードのすべてのプロパティを選択できます。 次の例を考えてみます。
+'*' ワイルドカードを使用すると、入れ子になったレコードのすべてのプロパティを選択できます。 次の例を確認してください。
 
 ```SQL
 SELECT input.Location.*
@@ -153,5 +152,5 @@ CROSS APPLY GetArrayElements(event.arrayField) AS arrayElement
 ```
 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Azure Stream Analytics でのデータ型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

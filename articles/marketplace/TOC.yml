@@ -60,7 +60,7 @@
         - name: Marketplace のベネフィット
           href: ./gtm-your-marketplace-benefits.md
           items:
-            - name: 共同販売パートナー エンゲージメント
+            - name: 共同販売のパートナー エンゲージメント
               href: ./marketplace-co-sell.md
             - name: 推奨されるソリューション
               href: ./preferred-solutions.md
@@ -76,6 +76,8 @@
 - name: クラウド パートナー ポータル
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
+    - name: クラウド パートナー ポータルのパートナー センターへの移行
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
     - name: ポータル ツアー
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -128,7 +130,7 @@
               href: ./cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce.md
         - name: Seller Insights
           items:
-            - name: Getting Started (概要)
+            - name: 作業の開始
               href: ./cloud-partner-portal-orig/si-getting-started.md
             - name: 新機能
               href: ./cloud-partner-portal-orig/si-changes.md
@@ -449,6 +451,8 @@
               href: ./partner-center-portal/create-new-azure-apps-offer.md
             - name: レビュー フィードバックの処理
               href: ./partner-center-portal/azure-apps-review-feedback.md
+            - name: オンボード用の API
+              href: ./partner-center-portal/azure-app-apis.md
         - name: Dynamics 365 のオファー
           items:
             - name: Dynamics 365 for Customer Engagement & PowerApps オファーの作成
@@ -512,13 +516,33 @@
     - name: サポート オプション
       href: ./partner-center-portal/support.md
     - name: パートナー センターの分析
-      href: ./partner-center-portal/analytics.md
+      items:
+        - name: 商業マーケットプレースの分析
+          href: ./partner-center-portal/analytics.md
+        - name: '[Summary]\(概要\) ダッシュボード'
+          href: ./partner-center-portal/summary-dashboard.md
+        - name: '[注文] ダッシュボード'
+          href: ./partner-center-portal/orders-dashboard.md
+        - name: '[使用状況] ダッシュボード'
+          href: ./partner-center-portal/usage-dashboard.md
+        - name: 顧客ダッシュボード
+          href: ./partner-center-portal/customer-dashboard.md
+        - name: '[Marketplace の分析情報] ダッシュボード'
+          href: ./partner-center-portal/insights-dashboard.md
+        - name: '[ダウンロード] ダッシュボード'
+          href: ./partner-center-portal/downloads-dashboard.md
+        - name: '[評価とレビュー] ダッシュボード'
+          href: ./partner-center-portal/ratings-reviews.md
+        - name: よく寄せられる質問と用語
+          href: ./partner-center-portal/faq-terminology.md
     - name: 支払いを受ける
       items:
         - name: 支払いを受ける
           href: ./partner-center-portal/get-paid.md
         - name: 支払いアカウントと税フォームを設定する
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: 課金の詳細
+          href: ./partner-center-portal/billing-details.md
         - name: 支払いのしきい値、方法、期間
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
         - name: 支払いの概要

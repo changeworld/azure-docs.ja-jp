@@ -7,15 +7,15 @@ author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 03aafb133f1d4a18ffe2b46ae5ec36225865a239
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 6bb647273467a07786413ff4ea30cda836b7cb1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819039"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466916"
 ---
 このガイドでは、Linux 用 [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) をインストールする方法について説明します
 
@@ -82,8 +82,8 @@ SDK を次のようにダウンロードしてインストールします。
 
    [!INCLUDE [Linux Binary Archive Content](~/includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
-これで[次の手順](#next-steps)に進むことができます。
+これで、下記の「[次の手順](#next-steps)」に進むことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [windows](../quickstart-list.md)]

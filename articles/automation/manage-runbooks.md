@@ -2,19 +2,15 @@
 title: Azure Automation で Runbook を管理する
 description: この記事では、Azure Automation で Runbook を管理する方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/14/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 42b973ce8a25abff60211afb34ef719d42366175
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 42fbb224981123a7cb0f39f07c144b5d2ffbc587
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850501"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417880"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 
@@ -108,7 +104,7 @@ Runbook のテスト時には [ドラフト バージョン](#publish-a-runbook)
 
 新しい Runbook を作成またはインポートしたときは、実行する前に発行する必要があります。  Automation の各 Runbook には、ドラフト バージョンと発行バージョンがあります。 実行できるのは発行バージョンのみで、編集できるのはドラフト バージョンのみです。 ドラフト バージョンを変更しても発行バージョンに影響はありません。 ドラフト バージョンを使用できるようにする必要がある場合は、それを発行します。これにより、発行バージョンがドラフト バージョンで上書きされます。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 1. Azure ポータルで Runbook を開きます。
 2. **[編集]** をクリックします。
@@ -127,7 +123,7 @@ Publish-AzureRmAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Runbook と PowerShell モジュール ギャラリーの利点については、「[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)」を参照してください
 * テキスト エディターを使用した PowerShell および PowerShell ワークフロー Runbook の編集の詳細については、「 [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)

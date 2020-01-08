@@ -1,23 +1,14 @@
 ---
 title: Azure Monitor for containers を使用して Kubernetes クラスターの正常性を監視する | Microsoft Docs
 description: この記事では、Azure Monitor for containers を使用して、AKS クラスターと非 AKS クラスターの正常性を表示および分析する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/18/2019
-ms.author: magoedte
-ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 12/01/2019
+ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279654"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405090"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Azure Monitor for containers を使用して Kubernetes クラスターの正常性を把握する
 
@@ -72,7 +63,7 @@ Azure Monitor for containers の正常性機能をサポートする各モニタ
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com) にサインインします。 
+[Azure portal](https://portal.azure.com) にサインインする 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>AKS または非 AKS クラスターの正常性を表示する
 
@@ -109,6 +100,6 @@ Azure Monitor for containers の **[クラスター]** ページで、 **[正常
 
 このページのデータは、監視することで自動的に更新されることはありません。クラスターから受信した最新の正常性状態を表示するには、ページの上部にある **[更新]** を選択する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を表示して、事前定義されたクエリや例を確認し、実際のクラスターのアラート、視覚化、または分析のために評価やカスタマイズを行います。

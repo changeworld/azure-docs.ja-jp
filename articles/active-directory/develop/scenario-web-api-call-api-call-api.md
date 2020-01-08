@@ -15,16 +15,16 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6063d143e2f217426bdf1db217fde46f8542d314
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5829ca41aaa4bd61f8878657e5eedbf6351b5df4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965213"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423575"
 ---
 # <a name="web-api-that-calls-web-apis---call-an-api"></a>Web API を呼び出す Web API - API の呼び出し
 
-トークンを取得すると、保護された Web API を呼び出すことができます。 これは、ASP.NET/ASP.NET Core web API のコント ローラーから行われます。
+トークンを取得すると、保護された Web API を呼び出せます。 これは、ASP.NET/ASP.NET Core web API のコント ローラーから行われます。
 
 ## <a name="controller-code"></a>コントローラー コード
 
@@ -32,7 +32,7 @@ ms.locfileid: "74965213"
 
 トークンを取得したら、ダウン ストリーム API を呼び出すベアラー トークンとしてそれを使用します。
 
-```CSharp
+```csharp
 private async Task GetTodoList(bool isAppStarting)
 {
  ...
@@ -58,7 +58,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [運用環境への移行](scenario-web-api-call-api-production.md)

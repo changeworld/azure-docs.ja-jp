@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 83644ac7144adaa664b13b6e7d7993c50da0e779
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852471"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447782"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>チュートリアル:リスト エンティティを使って発話から完全一致のテキスト データを取得する
 
 このチュートリアルでは、事前に定義された項目の一覧に厳密に一致するデータを取得する方法について説明します。
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -51,7 +49,7 @@ ms.locfileid: "74852471"
 
 ## <a name="import-example-json-and-add-utterances"></a>.json サンプルをインポートして発話を追加する
 
-1.  [アプリの JSON ファイル](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)をダウンロードして保存します。
+1.  [アプリの JSON ファイル](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json)をダウンロードして保存します。
 
     [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -202,7 +200,7 @@ ms.locfileid: "74852471"
 * [正規表現エンティティの JSON リファレンス](reference-entity-regular-expression.md?tabs=V3)
 * [データを抽出するエンティティを追加する方法](luis-how-to-add-entities.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、発話の例を追加した後、発話からテキストの完全一致を抽出するためのリスト エンティティを作成しました。 トレーニングおよびアプリの発行後、エンドポイントのクエリによって意図を識別し、抽出されたデータを取得しました。
 
 > [!div class="nextstepaction"]

@@ -5,21 +5,18 @@ services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/13/2019
 ms.author: helohr
-ms.openlocfilehash: dc980d60c1db684a47c38b3b8efceb08dd618838
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a46be5dea8286194ccd2558b2e6e301e2624a5f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605804"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460213"
 ---
 # <a name="connect-with-the-macos-client"></a>macOS クライアントに接続する
 
 > 適用対象: macOS 10.12 以降
-
->[!NOTE]
-> macOS クライアントから Windows Virtual Desktop リソースにアクセスする機能は、現在プレビューで使用できます。
 
 ダウンロード可能なクライアントを使用して、ご使用の macOS デバイスから Windows Virtual Desktop リソースにアクセスできます。 このガイドでは、クライアントを設定する方法について説明します。
 
@@ -44,6 +41,6 @@ ms.locfileid: "73605804"
 
 フィードをサブスクライブすると、フィードのコンテンツが自動で定期的に更新されます。 管理者によって行われる変更に基づいて、リソースが追加、変更、または削除されることがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 macOS クライアントの詳細については、「[macOS クライアントの概要](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac)」のドキュメントで確認してください。

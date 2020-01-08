@@ -6,7 +6,7 @@
       href: oracle-vm-solutions.md
     - name: OCI を使用したソリューション - プレビュー
       href: oracle-oci-overview.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Oracle DB の作成
       href: oracle-database-quick-create.md
@@ -22,13 +22,15 @@
   items:
     - name: Oracle アプリケーションのアーキテクチャ
       href: oracle-oci-applications.md
+    - name: Oracle データベースのアーキテクチャ
+      href: oracle-reference-architecture.md
     - name: Oracle DB の構築
       href: oracle-design.md
     - name: Oracle DB のバックアップ戦略
       href: oracle-backup-recovery.md
     - name: Oracle のディザスター リカバリー オプション
       href: oracle-disaster-recovery.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Azure と OCI の相互接続 - プレビュー
       href: configure-azure-oci-networking.md

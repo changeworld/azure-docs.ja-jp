@@ -2,17 +2,17 @@
 title: Azure でプライベート エンドポイント接続を管理する
 description: Azure でプライベート エンドポイント接続を管理する方法について学習します
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 929dfedbbbbe58a30eaa186398c595eaaabeb0a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232529"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452962"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>プライベート エンドポイント接続を管理する
 Azure Private Link は、承認呼び出しフロー モデルで機能します。このモデルでは、Private Link サービスのコンシューマーがサービスを使用するためにサービス プロバイダーへの接続を要求できます。 次に、サービス プロバイダーは、コンシューマーに接続を許可するかどうかを決定できます。 サービス プロバイダーは、Azure Private Link を使用して、自分のリソース上のプライベート エンドポイント接続を管理できます。 この記事では、プライベート エンドポイント接続を管理する方法について説明します。
@@ -26,12 +26,12 @@ Private Link サービスのコンシューマーは、次の 2 つの接続承�
 次の表に、サービス プロバイダーのさまざまなアクションと、その結果であるプライベート エンドポイントの接続状態を示します。  サービス プロバイダーは、コンシューマーの介入なしに、プライベート エンドポイント接続の接続状態を後で変更することもできます。 このアクションにより、コンシューマー側のエンドポイントの状態が更新されます。 
 
 
-|サービス プロバイダーのアクション   |サービスのコンシューマーのプライベート エンドポイントの状態   |説明   |
+|サービス プロバイダーのアクション   |サービスのコンシューマーのプライベート エンドポイントの状態   |[説明]   |
 |---------|---------|---------|
 |なし    |    保留中     |    接続が手動で作成されており、Private Link リソースの所有者による承認を待っています。       |
 |承認    |  Approved       |  接続が自動または手動で承認され、使用する準備が整っています。     |
 |Reject     | 拒否        | プライベート リンク リソースの所有者によって接続が拒否されました。        |
-|Remove    |  [Disconnected]\(切断済み\)       | プライベート リンク リソースの所有者によって接続が削除されました。プライベート エンドポイントは情報が多くなり、クリーンアップのために削除する必要があります。        |
+|[削除]    |  [Disconnected]\(切断済み\)       | プライベート リンク リソースの所有者によって接続が削除されました。プライベート エンドポイントは情報が多くなり、クリーンアップのために削除する必要があります。        |
 |   |         |         |
    
 ## <a name="manage-private-endpoint-connections-on-azure-paas-resources"></a>Azure PaaS リソース上のプライベート エンドポイント接続を管理する
@@ -86,6 +86,6 @@ az network private-link-service connection update -g myResourceGroup -n myPrivat
 
    
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [プライベート エンドポイントについて学習します](private-endpoint-overview.md)
  

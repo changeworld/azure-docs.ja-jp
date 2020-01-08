@@ -7,15 +7,15 @@ author: chlandsi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: a417c2a269ce66c291eda3c4c76f8d48f0ebad95
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 086a77a9d7096870b8d381d301bfc0f31ab390f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818641"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469601"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -85,6 +85,6 @@ python quickstart.py
 
 これらの手順で問題が発生した場合は、より詳しい [Visual Studio Code Python チュートリアル](https://code.visualstudio.com/docs/python/python-tutorial)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]

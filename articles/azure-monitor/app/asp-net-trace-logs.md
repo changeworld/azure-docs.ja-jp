@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/08/2019
-ms.openlocfilehash: 352e31e2a2f1a88a33e82134460e6df0911dbd2e
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 33dc415e06b7f49f75697abb05248750444fea7c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677645"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432639"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights で .NET/.NET Core および Python のトレース ログを調べる
 
@@ -135,14 +135,14 @@ Application Insights にトレースとして送信される Event Tracing for W
 ## <a name="use-the-trace-api-directly"></a>トレース API を直接使用する
 Application Insights トレース API を直接呼び出すことができます。 ログ記録のアダプターはこの API を使用します。
 
-例:
+次に例を示します。
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
 TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、メッセージ中で POST データをエンコードできます。
 
-メッセージに重大度レベルを追加することもできます。 また、他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレース セットをフィルター処理したり、検索したりすることができます。 例:
+メッセージに重大度レベルを追加することもできます。 また、他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレース セットをフィルター処理したり、検索したりすることができます。 次に例を示します。
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",

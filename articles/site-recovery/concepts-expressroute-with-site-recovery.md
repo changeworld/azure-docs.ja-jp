@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: dcc5105fcf2ad7b6a9f0695b3086dc2956a76a50
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e4525bdc6165e8e736db5f539c764d25250cb248
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954065"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465222"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute と Azure Site Recovery
 
@@ -31,7 +31,7 @@ ExpressRoute 回線には、複数のルーティング ドメインが関連付
 
 Azure Site Recovery により、オンプレミスの [HYPER-V 仮想マシン](hyper-v-azure-architecture.md)、[VMware 仮想マシン](vmware-azure-architecture.md)、および[物理サーバー](physical-azure-architecture.md)のディザスター リカバリーと Azure への移行が可能になります。 オンプレミスから Azure へのすべてのシナリオで、レプリケーション データは Azure Storage アカウントに送信され、格納されます。 レプリケーション中に仮想マシンの料金は発生しません。 Azure へのフェールオーバーを実行すると、Site Recovery は Azure IaaS 仮想マシンを自動的に作成します。
 
-Site Recovery は、パブリック エンドポイント経由で、ターゲット Azure リージョンの Azure ストレージ アカウントまたはレプリカ マネージド ディスクにデータをレプリケートします。 Site Recovery のレプリケーション トラフィックに ExpressRoute を使用するために、[Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)または既存の[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#publicpeering) (新規作成では非推奨) を利用できます。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 プライベート ピアリングを介したレプリケーションはサポートされていません。
+Site Recovery は、パブリック エンドポイント経由で、ターゲット Azure リージョンの Azure ストレージ アカウントまたはレプリカ マネージド ディスクにデータをレプリケートします。 Site Recovery のレプリケーション トラフィックに ExpressRoute を使用するために、[Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoftpeering)または既存の[パブリック ピアリング](../expressroute/about-public-peering.md) (新規作成では非推奨) を利用できます。 Microsoft ピアリングは、レプリケーション用に推奨されるルーティング ドメインです。 プライベート ピアリングを介したレプリケーションはサポートされていません。
 
 構成サーバーの[ネットワークの要件](vmware-azure-configuration-server-requirements.md#network-requirements)も確実に満たされるようにします。 Site Recovery レプリケーションを調整する場合、構成サーバーが特定の URL に接続する必要があります。 この接続には ExpressRoute は使用できません。 
 
@@ -56,10 +56,10 @@ Azure VM のディザスター リカバリーの場合、既定では、レプ�
 
 既に ExpressRoute を使用してオンプレミスのデータ センターからソース リージョンの Azure VM に接続している場合は、フェールオーバーのターゲット リージョンで ExpressRoute 接続を再確立することを計画できます。 同じ ExpressRoute 回線を使用して新しい仮想ネットワーク接続経由でターゲット リージョンに接続することも、ディザスター リカバリー用の別個の ExpressRoute 回線と接続を利用することもできます。 考えられるさまざまなシナリオの説明については、[ここ](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute)をご覧ください。
 
-[ここ](../site-recovery/azure-to-azure-support-matrix.md#region-support)で説明しているように、同じ地理クラスター内で、Azure 仮想マシンを任意の Azure リージョンにレプリケートできます。 選択したターゲット Azure リージョンがソースと同じ地理的リージョン内にない場合は、ExpressRoute Premium を有効にすることが必要な場合があります。 詳しくは、「[ExpressRoute の場所](../expressroute/expressroute-locations.md)」と「[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)」をご覧ください。
+Azure 仮想マシンは、同じ地理クラスター内の任意の Azure リージョンにレプリケートできます (詳しくは[こちら](../site-recovery/azure-to-azure-support-matrix.md#region-support)をご覧ください)。 選択したターゲット Azure リージョンがソースと同じ地理的リージョン内にない場合は、ExpressRoute Premium を有効にすることが必要な場合があります。 詳しくは、「[ExpressRoute の場所](../expressroute/expressroute-locations.md)」と「[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [ExpressRoute 回線](../expressroute/expressroute-circuit-peerings.md)について詳しく学習する。
 - [ExpressRoute ルーティング ドメイン](../expressroute/expressroute-circuit-peerings.md#peeringcompare)について詳しく学習する。
 - [ExpressRoute の場所](../expressroute/expressroute-locations.md)について詳しく学習する。
-- [ExpressRoute を使用した Azure 仮想マシン](azure-vm-disaster-recovery-with-expressroute.md)のディザスター リカバリーについて詳しく学習する。
+- [ExpressRoute を使用した Azure 仮想マシン](azure-vm-disaster-recovery-with-expressroute.md)のディザスター リカバリーについて詳しく学習します。

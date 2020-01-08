@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: ac5599a38c3fcbc4a6c331d2b14c6b6c55c31d82
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8d13d5d93dba66fa0dce08ffbf569164fb03398d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850409"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466830"
 ---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>Azure ポータルで従来の VNet を作成する方法
 前述のシナリオに基づいて従来の VNet を作成するには、次の手順に従います。
 
 1. ブラウザーで https://portal.azure.com に移動し、必要に応じて Azure アカウントでサインインします。
-2. **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順にクリックします。 **[デプロイ モデルの選択]** の一覧に **[クラシック]** が既に表示されています。 手順 3. 次の図のように **[作成]** をクリックします。
+2. **[リソースの作成]**  >  **[ネットワーク]**  >  **[仮想ネットワーク]** の順にクリックします。 **[デプロイ モデルの選択]** の一覧に **[クラシック]** が既に表示されています。 3. 次の図のように **[作成]** をクリックします。
    
     ![Azure ポータルでの VNet の作成](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure1.gif)
 4. **[仮想ネットワーク]** ウィンドウで、VNet の **[名前]** を入力してから **[アドレス空間]** をクリックします。 VNet と最初のサブネットのアドレス空間の設定を構成してから **[OK]** をクリックします。 次の図では、このシナリオでの CIDR ブロック設定を示しています。
    
     ![[アドレス空間] ウィンドウ](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure2.png)
-5. **[リソース グループ]** をクリックし、VNet を追加するリソース グループを選択してから **[新しいリソース グループを作成する]** をクリックして VNet を新しいリソース グループに追加します。 次の図は、**TestRG**という新しいリソース グループのリソース グループ設定を示しています。 リソース グループの詳細については、「 [Azure リソース マネージャーの概要](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)」を参照してください。
+5. **[リソース グループ]** をクリックし、VNet を追加するリソース グループを選択してから **[新しいリソース グループを作成する]** をクリックして VNet を新しいリソース グループに追加します。 次の図は、**TestRG**という新しいリソース グループのリソース グループ設定を示しています。 リソース グループの詳細については、「 [Azure リソース マネージャーの概要](../articles/azure-resource-manager/management/overview.md#resource-groups)」を参照してください。
    
     ![[リソース グループの作成] ウィンドウ](./media/virtual-networks-create-vnet-classic-pportal-include/vnet-create-pportal-figure3.png)
 6. 必要に応じて、VNet の **[サブスクリプション]** と **[場所]** の設定を変更します。 

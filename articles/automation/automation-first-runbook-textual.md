@@ -3,19 +3,15 @@ title: Azure Automation での最初の PowerShell Workflow Runbook
 description: PowerShell Workflow を使用して簡単なテキスト形式の Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。
 keywords: PowerShell ワークフロー, PowerShell ワークフローの例, ワークフロー PowerShell
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/24/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: dea13d084d80ce787cb8d6cf6146325d8c556b37
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: cdaadcfa3108ca847443e100bc624c2458c34115
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850841"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365956"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>最初の PowerShell Workflow Runbook
 
@@ -117,7 +113,7 @@ Runbook を発行して運用環境で使用できるようにする前に、Run
 1. [ストリーム] ページと [ジョブ] ページを閉じて、MyFirstRunbook ページに戻ります。
 1. **[ジョブ]** をクリックして、この Runbook のジョブ ページを開きます。 このページには、この Runbook によって作成されたジョブの一覧が表示されます。 ジョブを 1 回実行しただけであるため、一覧に表示されるジョブは 1 つだけです。
 
-   ![[ジョブ]](media/automation-first-runbook-textual/runbook-control-job-tile.png)
+   ![ジョブ](media/automation-first-runbook-textual/runbook-control-job-tile.png)
 
 1. このジョブをクリックすると、Runbook を開始したときに表示されたのと同じジョブ ページが開きます。 このアクションにより、前に戻って、特定の Runbook に対して作成されたジョブの詳細を見ることができます。
 
@@ -150,7 +146,7 @@ Runbook をテストして発行しましたが、これまでのところ役に
 1. **テスト ウィンドウ**をクリックして、Runbook をテストできるようにします。
 1. **[開始]** をクリックしてテストを開始します。 テストが完了すると、次のような情報が出力され、アカウントの基本情報が表示されます。 このアクションにより、資格情報が有効であることを確認できます。
 
-   ![認証](media/automation-first-runbook-textual/runbook-auth-output.png)
+   ![Authenticate](media/automation-first-runbook-textual/runbook-auth-output.png)
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>手順 6 - 仮想マシンを開始するコードを追加する
 
@@ -208,10 +204,10 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 7. Runbook が完了したら、仮想マシンが開始されたことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * PowerShell (言語リファレンス、学習モジュールを含む) の詳細については、[PowerShell ドキュメント](https://docs.microsoft.com/powershell/scripting/overview)に関するページを参照してください。
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 * PowerShell Runbook の使用を開始するには、「 [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md) を参照してください。
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
-* PowerShell スクリプトのサポート機能の詳細については、 [Azure Automation でのネイティブ PowerShell スクリプトのサポート](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
+* PowerShell スクリプトのサポート機能の詳細については、「 [Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)

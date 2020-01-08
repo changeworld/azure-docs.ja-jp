@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics ジョブの監視アラートを設定する
 description: この記事では、Azure Portal を使って Azure Stream Analytics ジョブの監視とアラートを設定する方法について説明します。
-services: stream-analytics
 author: jseb225
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 0fd489d856a16953a5a450a347c9737fe440ad28
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 836b7a489e3c73d745b128cbbc0c3566220ac409
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621770"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458723"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブのアラートを設定する
 
@@ -65,7 +64,7 @@ Stream Analytics ジョブのパフォーマンス監視には、以下のアラ
 |透かしの遅延|より大きい|最大値|このメトリックの直近 15 分間の平均値が到着遅延許容期間 (秒単位) を超えたとき。 到着遅延許容期間を変更していない場合の既定値は 5 秒に設定されています。|SU 数を増やすか、クエリの並列処理を試してみてください。 SU の詳細については、「[ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md#how-many-sus-are-required-for-a-job)」を参照してください。 クエリの並列処理の詳細については、「[Azure Stream Analytics でのクエリの並列処理の活用](stream-analytics-parallelization.md)」を参照してください。|
 |逆シリアル化の入力エラー|より大きい|合計|0|アクティビティ ログまたは診断ログを観察して、入力を適宜変更してください。 診断ログの詳細については、[診断ログを使用した Azure Stream Analytics のトラブルシューティング](stream-analytics-job-diagnostic-logs.md)に関するページを参照してください。|
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 
 Azure Portal でのアラートの構成の詳細については、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」を参照してください。  
 

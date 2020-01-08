@@ -1,5 +1,5 @@
 ---
-title: Azure AD エンタイトルメント管理とは - Azure Active Directory
+title: エンタイトルメント管理とは - Azure AD
 description: Azure Active Directory のエンタイトルメント管理と、それを使用してグループ、アプリケーション、SharePoint Online サイトへの内部および外部ユーザーのアクセスを管理する方法の概要を説明します。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927316"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422571"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理とは
 
@@ -38,7 +38,7 @@ Azure AD エンタイトルメント管理を使用すれば、グループ、�
 - ユーザーが自分に必要なアクセス権を把握できなかったり、把握できたとしても、アクセス権をどの担当者に承認してもらえばよいかがわかりにくい
 - ユーザーがリソースへのアクセス権を見つけて取得した後、業務上の目的に必要な期間よりも長くアクセス権を持ち続ける場合がある
 
-これらの問題は、別の組織からアクセスするユーザーがいる場合、さらに複雑になります (サプライ チェーン組織やその他のビジネス パートナーに属する外部ユーザーなど)。 例:
+これらの問題は、別の組織からアクセスするユーザーがいる場合、さらに複雑になります (サプライ チェーン組織やその他のビジネス パートナーに属する外部ユーザーなど)。 次に例を示します。
 
 - 担当者が、他社のディレクトリ内のすべての個人を把握することができず、それらのユーザーを招待できない場合がある
 - 招待できたとしても、ユーザー全員のアクセス権を、担当者が一貫性を持って確実に管理できない場合がある
@@ -71,7 +71,7 @@ Azure AD のエンタイトルメント管理は、これらの課題への対�
 - Azure AD エンタープライズ アプリケーションへの割り当て (これには、SaaS アプリケーションのほか、フェデレーション/シングル サインオン、プロビジョニングをサポートしたカスタム統合アプリケーションも含まれます)
 - SharePoint Online サイトのメンバーシップ
 
-Azure AD セキュリティ グループまたは Office 365 グループに依存するその他のリソースへのアクセスを制御することもできます。  例:
+Azure AD セキュリティ グループまたは Office 365 グループに依存するその他のリソースへのアクセスを制御することもできます。  次に例を示します。
 
 - Microsoft Office 365 のライセンスをユーザーに付与するには、アクセス パッケージで Azure AD セキュリティ グループを使用し、そのグループの[グループ ベース ライセンス](../users-groups-roles/licensing-groups-assign.md)を構成します
 - Azure リソースを管理するアクセス権をユーザーに付与するには、アクセス パッケージで Azure AD セキュリティ グループを使用し、そのグループの [Azure ロール割り当て](../../role-based-access-control/role-assignments-portal.md)を作成します
@@ -114,7 +114,7 @@ Azure AD セキュリティ グループまたは Office 365 グループに依�
 
 エンタイトルメント管理とそのドキュメントについてより深く理解するために、次の用語一覧を確認してください。
 
-| 期間 | 説明 |
+| 期間 | [説明] |
 | --- | --- |
 | アクセス パッケージ | チームまたはプロジェクトが必要とし、ポリシーに準拠しているリソースのバンドル。 アクセス パッケージは常にカタログに含まれています。 新しいアクセス パッケージは、ユーザーがアクセス権を要求する必要がある場合に作成します。  |
 | アクセス要求 | アクセス パッケージのリソースへのアクセス要求。 要求は通常、承認ワークフローを通じて処理されます。  承認されると、要求元のユーザーにアクセス パッケージが割り当てられます。 |
@@ -146,7 +146,7 @@ Azure Government、Azure Germany、Azure China 21Vianet などの特殊なクラ
 
 ユーザーにライセンスを割り当てる方法については、「[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)」をご覧ください。 現在、エンタイトルメント管理では、ユーザーのライセンス割り当ては強制されないことに注意してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [チュートリアル:最初のアクセス パッケージを作成する](entitlement-management-access-package-first.md)
 - [一般的なシナリオ](entitlement-management-scenarios.md)

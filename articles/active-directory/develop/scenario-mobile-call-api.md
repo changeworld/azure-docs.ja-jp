@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db58f94501590eb3150700d282377ec1b2378cea
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3f56d55a08c46338fb7916664834b69005419e72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74962544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423751"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Web API を呼び出すモバイル アプリ - Web API の呼び出し
 
@@ -89,7 +89,7 @@ MSAL には次のような値があります。
         queue.add(request);
 ```
 
-### <a name="msal-for-ios-and-macos"></a>iOS と macOS での MSAL
+### <a name="msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL
 
 トークンを取得するメソッドは `MSALResult` オブジェクトを返します。 `MSALResult` により、Web API を呼び出すために使用できる `accessToken` プロパティが公開されます。 保護された Web API にアクセスするための呼び出しを行う前に、アクセス トークンを HTTP Authorization ヘッダーに追加する必要があります。
 
@@ -134,7 +134,7 @@ task.resume()
 
 同じユーザーに対して複数の API を呼び出す必要がある場合、ユーザーのトークンを取得した後、続けて `AcquireTokenSilent` を呼び出してトークンを取得すれば、ユーザーに何度も資格情報の入力を求める必要がなくなります。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 
@@ -147,7 +147,7 @@ result = await app.AcquireTokenSilent("scopeApi2")
 - ユーザーが最初の API については同意したが、より多くのスコープ (増分同意) について同意する必要が生じた。
 - 最初の API は多要素認証を必要としなかったが、次の API は多要素認証を必要とする。
 
-```CSharp
+```csharp
 var result = await app.AcquireTokenXX("scopeApi1")
                       .ExecuteAsync();
 
@@ -164,7 +164,7 @@ catch(MsalUiRequiredException ex)
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [運用環境への移行](scenario-mobile-production.md)

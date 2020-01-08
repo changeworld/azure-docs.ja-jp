@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: 99f26bb2b89ef9642a36aa2be2037d04aafcdcd4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819270"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432559"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Go から分散トレースを収集する (プレビュー)
 
@@ -26,9 +26,9 @@ Application Insights は、[OpenCensus](https://opencensus.io) と Microsoft の
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 ## <a name="create-application-insights-resource"></a>Application Insights リソースを作成する
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
 
-    | 設定        | 値           | 説明  |
+   | 設定        | 値           | [説明]  |
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループの名前 |
@@ -222,7 +222,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 OpenCensus for Go をローカル フォワーダーおよび Application Insights と統合する手順の基本についてのみ説明しました。 [公式の OpenCensus Go 使用ガイダンス](https://godoc.org/go.opencensus.io)では、より高度なトピックを扱っています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [アプリケーション マップ](./../../azure-monitor/app/app-map.md)
 * [エンドツーエンドのパフォーマンスの監視](./../../azure-monitor/learn/tutorial-performance.md)

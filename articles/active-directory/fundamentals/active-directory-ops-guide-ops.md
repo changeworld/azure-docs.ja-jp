@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 46e5af9d54cf818366bd2730de0da85dcbe6cade
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534767"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422939"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般的な運用ガイド リファレンス
 
@@ -25,13 +25,13 @@ ms.locfileid: "74534767"
 > [!NOTE]
 > これらの推奨事項は公開日の時点で最新ですが、時間の経過と共に変化する可能性があります。 Microsoft の製品とサービスは時間の経過と共に進化するため、継続的に運用プラクティスを評価する必要があります。
 
-## <a name="key-operational-processes"></a>運用プロセスを強化する
+## <a name="key-operational-processes"></a>主要な運用プロセス
 
 ### <a name="assign-owners-to-key-tasks"></a>主要タスクに所有者を割り当てる
 
 Azure Active Directory を管理するには、ロールアウト プロジェクトに含まれていない主要な運用タスクとプロセスを継続的に実行する必要があります。 環境を最適化するために、これらのタスクを設定することも重要です。 主なタスクと推奨される所有者は次のとおりです。
 
-| タスク | Owner |
+| タスク | 所有者 |
 | :- | :- |
 | ID セキュリティ スコアの向上を促進する | InfoSec 運用チーム |
 | Azure AD Connect サーバーの管理 | IAM 運用チーム |
@@ -107,7 +107,7 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 #### <a name="on-premises-agents-management-recommended-reading"></a>オンプレミスのエージェント管理に関する推奨資料
 
 - [Azure AD アプリケーション プロキシ コネクタについて](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
-- [Azure AD パススルー認証 - クイックスタート](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start#step-5-ensure-high-availability)
+- [Azure AD パススルー認証 - クイックスタート](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>大規模な管理
 
@@ -131,7 +131,7 @@ Azure AD によって使用される "差出人" アドレスは 2 つありま�
 
 - [Azure AD アクセス レビュー](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
+- [Azure AD Identity Protection](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [エンタープライズ アプリの証明書期限切れ通知](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
 - エンタープライズ アプリのサービス プロビジョニング通知
@@ -176,7 +176,7 @@ Active Directry 管理階層モデルは、環境のフル コントロール (�
 
 セキュリティで保護された ID インフラストラクチャには、7 つの側面があります。 この一覧は、Azure Active Directory (Azure AD) の運用を最適化するために実行する必要があるアクションを見つけるのに役立ちます。
 
-- 主要タスクに所有者を割り当てます。
+- 主要タスクに所有者を割り当てる。
 - オンプレミスのハイブリッド コンポーネントのアップグレード プロセスを自動化します。
 - Azure AD Connect および AD FS を監視するために Azure AD Connect Health をデプロイする必要があります。
 - System Center Operations Manager または SIEM ソリューションを使用して、コンポーネント エージェントのログをアーカイブおよび分析することで、オンプレミスのハイブリッド コンポーネントの正常性を監視します。
@@ -184,6 +184,6 @@ Active Directry 管理階層モデルは、環境のフル コントロール (�
 - AD FS をロックダウンします。
 - オンプレミスの ID コンポーネントでマシンへのアクセスをロックダウンします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デプロイされていない機能の実装の詳細については、[Azure AD のデプロイ計画](active-directory-deployment-plans.md)を参照してください。

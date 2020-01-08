@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e5e04716ae67df94428a678f6572738d4ad46232
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901457"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452842"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Time Series Insights リソースを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "74901457"
 
 Time Series Insights は、次のリソースをサポートしています。
 
-   | リソース | 説明 |
+   | リソース | [説明] |
    | --- | --- |
    | 環境 | Time Series Insights 環境とは、イベント ブローカーから読み取って保存したイベントを論理的にグループ化し、クエリで使用できるようにしたものです。 詳細については、「[Azure Time Series Insights 環境の計画](time-series-insights-environment-planning.md)」を参照してください。 |
    | イベント ソース | イベント ソースとは、イベント ブローカーへの接続を指します。Time Series Insights は、このイベント ブローカーからイベントを読み取って環境に取り込みます。 現在サポートされているイベント ソースは、IoT Hub とイベント ハブです。 |
@@ -59,7 +59,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
    * 必須のパラメーター
 
-     | パラメーター | 説明 |
+     | パラメーター | [説明] |
      | --- | --- |
      | eventHubNamespaceName | ソース イベント ハブの名前空間。 |
      | eventHubName | ソース イベント ハブの名前。 |
@@ -71,7 +71,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
    * 省略可能なパラメーター
 
-     | パラメーター | 説明 |
+     | パラメーター | [説明] |
      | --- | --- |
      | existingEventHubResourceId | イベント ソースを介して Time Series Insights 環境に接続する既存のイベント ハブの省略可能なリソース ID。 **注:** テンプレートを展開するユーザーには、イベント ハブに対して listkeys 操作を実行する特権が必要です。 値が渡されない場合、新しいイベント ハブがテンプレートによって作成されます。 |
      | environmentDisplayName | ツールやユーザー インターフェイスで環境名の代わりに表示される省略可能なフレンドリ名。 |
@@ -119,7 +119,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
      }
      ```
   
-    * 詳細については、「[パラメーター](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)」の記事を参照してください。
+    * 詳細については、「[パラメーター](../azure-resource-manager/templates/parameter-files.md)」の記事を参照してください。
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>PowerShell を使用してクイックスタート テンプレートをローカルにデプロイする
 
@@ -148,7 +148,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
 
 1. リソース グループが存在しない場合は、新しいリソース グループを作成します。
 
-   * 既存のリソース グループがない場合は、**New-AzResourceGroup** コマンドで新しいリソース グループを作成します。 使用するリソース グループの名前と場所を指定します。 例:
+   * 既存のリソース グループがない場合は、**New-AzResourceGroup** コマンドで新しいリソース グループを作成します。 使用するリソース グループの名前と場所を指定します。 次に例を示します。
 
      ```powershell
      New-AzResourceGroup -Name MyDemoRG -Location "West US"
@@ -172,7 +172,7 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
      Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
      ```
 
-1. デプロイを作成する
+1. 配置を作成する
 
     * 新しいデプロイを作成するには、`New-AzResourceGroupDeployment` コマンドレットを実行し、プロンプトに従って必要なパラメーターを指定します。 パラメーターには、デプロイの名前、リソース グループの名前、テンプレート ファイルのパスまたは URL が含まれます。 **Mode** パラメーターを指定しない場合、**Incremental** の既定値が使用されます。 詳細については、[「増分デプロイと完全デプロイ」](../azure-resource-manager/deployment-modes.md)を参照してください。
 
@@ -250,6 +250,6 @@ Resource Manager テンプレートは、リソース グループ内のリソ�
        <img src="https://azuredeploy.net/deploybutton.png"/>
     </a>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - REST API を使用して Time Series Insights リソースをプログラムによって 管理する方法の詳細については、「[Time Series Insights Management (Time Series Insights の管理)](https://docs.microsoft.com/rest/api/time-series-insights-management/)」を参照してください。

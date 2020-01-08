@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics での Machine Learning 関数のスケーリング
 description: この記事では、パーティション分割とストリーミング ユニットを構成することにより、Machine Learning 関数を使用する Stream Analytics ジョブをスケーリングする方法について説明します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 28734e5eaa693ca4ee31603863b69605a1d92c88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dedffab0b17515cedc54569d5debf6d29b273644
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458751"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Azure Machine Learning Studio (クラシック) 関数を使用した Stream Analytics ジョブのスケーリング
 
@@ -110,7 +109,7 @@ Machine Learning Web サービスで、"最大同時呼び出し数" を構成�
 | **12 SU** |5,000 |10,000 |40,000 |60,000 |100,000 |
 | **18 SU** |7,500 |15,000 |60,000 |90,000 |150,000 |
 | **24 SU** |10,000 |20,000 |80,000 |120,000 |200,000 |
-| **…** |… |... |... |... |... |
+| **…** |... |... |... |... |... |
 | **60 SU** |25,000 |50,000 |200,000 |300,000 |500,000 |
 
 ここまでの説明で、Stream Analytics の Machine Learning 関数のしくみを十分に理解できたと思います。 また、Stream Analytics ジョブがデータ ソースからデータを "プル" し、各 "プル" が Stream Analytics ジョブで処理されるイベントのバッチを返すことも理解されていることでしょう。 このプル モデルは Machine Learning Web サービス要求にどのような影響を与えるのでしょうか。
@@ -140,7 +139,7 @@ Machine Learning 関数で Stream Analytics ジョブをスケーリングする
 
 完全にパーティション分割された Stream Analytics クエリを例として使用しました。 もっと複雑なクエリが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を活用してください。Stream Analytics チームから追加のサポートを受けることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Stream Analytics の詳細については、以下を参照してください。
 
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)

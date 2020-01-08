@@ -6,20 +6,20 @@ author: ekpgh
 ms.author: rohogue
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.openlocfilehash: 257164a7417d4356c83cd1804939973b7029a4f1
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: a85b939eb222fa459d33ba4eb79b4937baf9056f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255329"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414276"
 ---
-# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure vFTX for Azure のホワイトペーパーとその他のリソース 
+# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure vFTX for Azure のホワイトペーパーとその他のリソース
 
-この表のリソースには、Avere vFXT for Azure をご自身のワークフローにどのように取り入れたらよいかを理解するのに役立つケース スタディ、技術ホワイトペーパー、インフォグラフィック、およびその他の記事が含まれています。 
+この表のリソースには、Avere vFXT for Azure をご自身のワークフローにどのように取り入れたらよいかを理解するのに役立つケース スタディ、技術ホワイトペーパー、インフォグラフィック、およびその他の記事が含まれています。
 
 ## <a name="deploy-agisoft-photoscan-on-azure"></a>Agisoft PhotoScan を Azure にデプロイする
 
-**リンク:** [Deploy Agisoft PhotoScan on Azure with Avere vFXT for Azure or BeeGFS (Avere vFXT for Azure または BeeGFS を使用して Agisoft PhotoScan を Azure にデプロイする)](https://azure.microsoft.com/mediahandler/files/resourcefiles/deploy-agisoft-photoscan-on-azure-with-azere-vfxt-for-azure-or-beegfs/AgiSoft%20PhotoScan%20on%20Azure%20using%20Avere%20vFXT%20or%20BeeGFS.pdf) 
+**リンク:** [Deploy Agisoft PhotoScan on Azure with Avere vFXT for Azure or BeeGFS (Avere vFXT for Azure または BeeGFS を使用して Agisoft PhotoScan を Azure にデプロイする)](https://azure.microsoft.com/mediahandler/files/resourcefiles/deploy-agisoft-photoscan-on-azure-with-azere-vfxt-for-azure-or-beegfs/AgiSoft%20PhotoScan%20on%20Azure%20using%20Avere%20vFXT%20or%20BeeGFS.pdf)
 
 このガイドでは、Avere vFXT ストレージまたは BeeGFS 並列ファイル システムのいずれかを利用して Agisoft PhotoScan 写真計測ソフトウェアをインストールするための手順を詳しく説明しています。 著者である AzureCAT の Paulo Marques da Costa が、Azure Virtual Machines (VM) に PhotoScan を設定する方法を示します。 高パフォーマンスのストレージで処理を迅速化し、ベンチマーク テストの結果を紹介します。 この環境は必要に応じてスケールアップとスケールダウンを行うことができ、パフォーマンスを損なわずに数 TB のストレージをサポートしています。
 
@@ -31,17 +31,17 @@ ms.locfileid: "72255329"
 
 ## <a name="hybrid-cloud-for-file-based-workloads"></a>ファイル ベースのワークロードのためのハイブリッド クラウド
 
-**リンク:** [インフォグラフィック:Building a hybrid cloud for file-based workloads (ファイル ベースのワークロード向けにハイブリッド クラウドを構築する)](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/) 
+**リンク:** [インフォグラフィック:Building a hybrid cloud for file-based workloads (ファイル ベースのワークロード向けにハイブリッド クラウドを構築する)](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/)
 
-この図は、Avere vFXT for Azure を使って既存のシステムにクラウド インフラストラクチャを追加するためのコンポーネントとレイアウトを示しています。 Avere vFXT for Azure を使って、既存のオンプレミス インフラストラクチャのコンピューティング容量を拡大するか、データとコンピューティングを一時的または永続的にクラウドに移動します。  
+この図は、Avere vFXT for Azure を使って既存のシステムにクラウド インフラストラクチャを追加するためのコンポーネントとレイアウトを示しています。 Avere vFXT for Azure を使って、既存のオンプレミス インフラストラクチャのコンピューティング容量を拡大するか、データとコンピューティングを一時的または永続的にクラウドに移動します。
 
-## <a name="cloud-bursting"></a>クラウド バースティング 
+## <a name="cloud-bursting"></a>クラウド バースティング
 
-**リンク:** [Cloud bursting for high performance, scalable NAS (高パフォーマンスでスケーラブルな NAS のためのクラウド バースティング)](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf) 
+**リンク:** [Cloud bursting for high performance, scalable NAS (高パフォーマンスでスケーラブルな NAS のためのクラウド バースティング)](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf)
 
  このクラウド バースティング ソリューションの概要では、Avere vFXT for Azure を使うことで、中断することなくクラウド コンピューティング リソースに対して迅速にデータを利用可能にする方法を示しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Avere vFXT for Azure デプロイの計画を続行するには、「[Avere vFXT システムの計画](avere-vfxt-deploy-plan.md)」をお読みください。
 * 特定の質問に対する回答については、「[Avere vFXT for Azure の FAQ](avere-vfxt-faq.md)」をご覧ください。

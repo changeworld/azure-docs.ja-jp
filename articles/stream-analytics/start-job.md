@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics ジョブを開始する方法
 description: この記事では、Azure portal、PowerShell、Visual Studio から Stream Analytics ジョブを開始する方法について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 1e4cb63accf7e89ac02451e9c25b9902a8a10812
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c393eb782c2ff16eb5b3e5967b39938dfe2f1534
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173271"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426460"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブを開始する方法
 
@@ -24,18 +23,18 @@ Azure portal、Visual Studio、PowerShell を使用して、Azure Stream Analyti
 * **[今すぐ]** :出力イベント ストリームの開始点をジョブの開始時刻と同じにします。 時間演算子 (時間枠、LAG、JOIN など) が使用された場合、Azure Stream Analytics では、入力ソース内のデータが自動的にルックバックされます。 たとえば、ジョブを [今すぐ] で開始したときに、クエリで 5 分間のタンブリング ウィンドウが使用される場合、Azure Stream Analytics では、入力内の 5 分前のデータがシークされます。
 起こり得る最初の出力イベントのタイムスタンプは現在時刻と同じであるかそれよりも後の時刻になり、論理的に出力を生成するために使用できる可能性があるすべての入力イベントが ASA によって確実に処理されます。 たとえば、部分的なウィンドウ集計は生成されません。 それは常に完全な集計値になります。
 
-* **カスタム**:出力の開始点を選択できます。 **[今すぐ]** オプションと同じように、Azure Stream Analytics では、時間演算子が使用された場合は、この時刻より前のデータが自動的に読み取られます。 
+* **Custom**:出力の開始点を選択できます。 **[今すぐ]** オプションと同じように、Azure Stream Analytics では、時間演算子が使用された場合は、この時刻より前のデータが自動的に読み取られます。 
 
 * **最終停止時刻**。 このオプションは、以前にジョブが開始されたが、手動で停止されたか失敗した場合に使用できます。 このオプションを選択すると、Azure Stream Analytics では、データが失われないように、最後の出力時刻を使用してジョブが再開されます。 前のオプションと同じように、Azure Stream Analytics では、時間演算子が使用された場合は、この時刻より前のデータが自動的に読み取られます。 複数の入力パーティションで時刻が異なっている可能性があるため、すべてのパーティションの中で最も早い停止時刻が使用され、その結果、出力内で多少の重複が発生する場合があります。 正確に 1 回のみの処理の詳細については、「[Event Delivery Guarantees (イベント配信の保証)](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)」を参照してください。
 
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
 Azure portal でジョブに移動し、概要ページで **[開始]** を選択します。 **ジョブ出力の開始時刻**を選択し、 **[開始]** を選択します。
 
 **[ジョブ出力の開始時刻]** のいずれかのオプションを選択します。 オプションは、 *[今すぐ]* 、 *[カスタム]* 、および *[最終停止時刻]* です。 これらのオプションの詳細については、上記を参照してください。
 
-## <a name="visual-studio"></a>Visual Studio
+## <a name="visual-studio"></a>Visual Studio
 
 ジョブ ビューで、緑色の矢印ボタンを選択してジョブを開始します。 **[ジョブ出力の開始モード]** を設定し、 **[開始]** を選択します。 ジョブの状態が **[実行中]** に変わります。
 
@@ -57,8 +56,8 @@ Start-AzStreamAnalyticsJob `
 
 `Start-AzStreamAnalyitcsJob` コマンドレットの詳細については、[Start-AzStreamAnalyticsJob リファレンス](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
+* [クイック スタート:Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 * [クイック スタート:Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
 * [クイック スタート:Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)

@@ -3,20 +3,16 @@ title: Azure Automation での認証の概要
 description: この記事では、Azure Automation の Automation アカウントで利用できる Automation のセキュリティとさまざまな認証方法の概要について説明します。
 keywords: Automation のセキュリティ, セキュリティで保護された Automation; Automation の認証
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2018
 ms.topic: conceptual
-manager: carmonm
 ROBOTS: NOINDEX
-ms.openlocfilehash: 0a05497c05051576868c1311857d58caa0d76055
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b2003469fa35de837c3a9214e40cfb333156b40c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850671"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420678"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure Automation での認証の概要  
 Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、Amazon Web Services (AWS) などの他のクラウド プロバイダーのリソースに対するタスクを自動化できます。  Runbook が必要な操作を実行するためには、操作対象のリソースに安全に、サブスクリプション内で必要な最低限の権限だけでアクセスするための、アクセス許可が必要です。
@@ -42,11 +38,11 @@ Azure Automation で Azure Resource Manager と Azure コマンドレットを�
 ## <a name="authentication-methods"></a>認証方法
 次の表は、Azure Automation によってサポートされる各環境のさまざまな認証方法と、Runbook 用の認証のセットアップ方法に関する記事をまとめたものです。
 
-| 方法 | 環境 | 記事 |
+| 方法 | 環境 | [アーティクル] |
 | --- | --- | --- |
 | Azure AD ユーザー アカウント |Azure Resource Manager と Azure クラシック |[Azure AD ユーザー アカウントを使用した Runbook の認証](automation-create-aduser-account.md) |
-| Azure 実行アカウント |Azure リソース マネージャー |[Azure 実行アカウントを使用した Runbook の認証](automation-sec-configure-azure-runas-account.md) |
+| Azure 実行アカウント |Azure Resource Manager |[Azure 実行アカウントを使用した Runbook の認証](automation-sec-configure-azure-runas-account.md) |
 | Azure クラシック実行アカウント |Azure クラシック |[Azure 実行アカウントを使用した Runbook の認証](automation-sec-configure-azure-runas-account.md) |
-| Windows 認証 |オンプレミスのデータセンター |[Hybrid Runbook Worker の Runbook の認証](automation-hybrid-runbook-worker.md) |
-| AWS 資格情報 |Amazon Web Services |[Amazon Web Services (AWS) での Runbook の認証](automation-config-aws-account.md) |
+| [Windows 認証] |オンプレミスのデータセンター |[Hybrid Runbook Worker の Runbook の認証](automation-hybrid-runbook-worker.md) |
+| AWS 資格情報 |アマゾン ウェブ サービス |[Amazon Web Services (AWS) での Runbook の認証](automation-config-aws-account.md) |
 

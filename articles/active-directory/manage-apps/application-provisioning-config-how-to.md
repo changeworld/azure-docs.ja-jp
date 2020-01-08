@@ -16,12 +16,13 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a2955a418aa0ce43c030afc588a2840bbb9b50f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8aa8265733128ed3b2ad5ddf16dcebb122b0f054
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275821"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443436"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングを構成する方法
 
@@ -52,6 +53,6 @@ Azure Portal では、左側のナビゲーション ウィンドウのエンタ
 
 プロビジョニングを設定するときに考慮すべき重要なことは、どのユーザー (またはグループ) プロパティが Azure AD からアプリケーションに提供されるかを定義する属性マッピングとワークフローを確認して構成することです。 これには、2 つのシステム間でユーザーまたはグループを一意に識別して照合するために使用される "照合プロパティ" の設定も含まれます。 属性マッピングの詳細については、*次の手順*のリンクを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 

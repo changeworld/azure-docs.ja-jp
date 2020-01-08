@@ -16,12 +16,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219724186e3fa69fec35e89435af495b662c871d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2082265b96388b4fbf860118efc3eefd4c5c67af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919751"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423587"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Web API を呼び出す Web API - コードの構成
 
@@ -33,7 +33,7 @@ Web API を登録した後は、アプリケーションのコードを構成す
 
 次のように、保護されている Web API のコード構成に加え、API が呼び出されたときに受け取るベアラー トークンの検証をサブスクライブする必要があります。
 
-```CSharp
+```csharp
 /// <summary>
 /// Protects the web API with Microsoft Identity Platform (a.k.k AAD v2.0)
 /// This supposes that the configuration files have a section named "AzureAD"
@@ -79,7 +79,7 @@ AddAccountToCacheFromJwt() メソッドは次を実行する必要がありま�
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
-```CSharp
+```csharp
 IConfidentialClientApplication app;
 
 #if !VariationWithCertificateCredentials
@@ -96,7 +96,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 ```
 
 最後に、機密クライアント アプリケーションでは、クライアント シークレットや証明書ではなく、クライアント アサーションを使用して ID を証明することもできます。
-この高度なシナリオの詳細については、[クライアント アサーション](msal-net-client-assertions.md)に関する記事を参照してください。
+この高度なシナリオの詳細については、[クライアント アサーション](msal-net-client-assertions.md)に関する記事を参照してください
 
 ### <a name="how-to-call-on-behalf-of"></a>On-behalf-of を呼び出す方法
 
@@ -108,7 +108,7 @@ on-behalf-of (OBO) 呼び出しは、`IConfidentialClientApplication` インタ�
 
 実際には、OBO フローは、ダウンストリーム API のトークンを取得して、それを MSAL.NET ユーザー トークン キャッシュに格納するためによく使用されます。それにより、Web API の他の部分は後で ``AcquireTokenOnSilent`` の[オーバーライド](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet)で呼び出してダウンストリーム API を呼び出すことができます。 この呼び出しには、必要な場合、トークンを最新の情報に更新する効果があります。
 
-```CSharp
+```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
 {
     try
@@ -148,7 +148,7 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 
 on-behalf-of プロトコルの詳細情報については、「[Microsoft ID プラットフォームと OAuth 2.0 On-Behalf-Of フロー](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [アプリのトークンの取得](scenario-web-api-call-api-acquire-token.md)

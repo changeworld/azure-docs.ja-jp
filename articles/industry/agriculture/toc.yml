@@ -1,42 +1,42 @@
 - name: 概要
   items:
-    - name: FarmBeats とは
-      href: overview.md
+    - name: Azure FarmBeats の概要
+      href: overview-azure-farmbeats.md
 - name: チュートリアル
   expanded: true
   items:
     - name: 土壌水分マップの生成
-      href: generate-soil-moisture-map.md
+      href: generate-soil-moisture-map-in-azure-farmbeats.md
     - name: 過去のテレメトリ データの取り込み
-      href: ingest-historical-telemetry-data.md
+      href: ingest-historical-telemetry-data-in-azure-farmbeats.md
 - name: 概念
   items:
     - name: 統合のパターン
-      href: integration-patterns.md
+      href: integration-patterns-in-azure-farmbeats.md
     - name: センサー パートナーの統合
-      href: sensor-partner-integration.md
+      href: sensor-partner-integration-in-azure-farmbeats.md
     - name: 画像パートナーの統合
-      href: imagery-partner-integration.md
+      href: imagery-partner-integration-in-azure-farmbeats.md
 - name: ハウツー ガイド
   items:
-    - name: FarmBeats のデプロイ
-      href: prepare-for-deployment.md
+    - name: Azure FarmBeats をインストールする
+      href: install-azure-farmbeats.md
     - name: ユーザーの管理
-      href: manage-users.md
+      href: manage-users-in-azure-farmbeats.md
     - name: ファームの管理
-      href: manage-farms.md
+      href: manage-farms-in-azure-farmbeats.md
     - name: センサー データの取得
       href: get-sensor-data-from-sensor-partner.md
     - name: マップの生成
-      href: generate-maps.md
+      href: generate-maps-in-azure-farmbeats.md
     - name: ルールの構成とアラートの管理
-      href: configure-rules-alerts.md
+      href: configure-rules-alerts-in-azure-farmbeats.md
     - name: ドローンの画像を取得する
-      href: get-drone-imagery.md
-- name: トラブルシューティング
+      href: get-drone-imagery-in-azure-farmbeats.md
+- name: '[トラブルシューティング]'
   items:
-    - name: FarmBeats のトラブルシューティング
-      href: troubleshoot-project-farmbeats.md
+    - name: Azure FarmBeats のトラブルシューティング
+      href: troubleshoot-azure-farmbeats.md
 - name: リファレンス
   items: null
-  href: references-for-farmbeats.md
+  href: references-for-azure-farmbeats.md

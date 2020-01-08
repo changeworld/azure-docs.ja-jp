@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: fffe71cb80be7795201ab672ca632788f4f18e5c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f057ec6424f72370c48599296452d607107f6c34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899443"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406264"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights による影響分析
 
@@ -80,7 +80,7 @@ _B_ = 選択する 2 つ目のページ ビュー/カスタム イベント (**�
 
 最終的に影響がどのように計算されるかは、メトリックにより分析しているのか、それともディメンションにより分析しているのかに基づいて異なります。 メトリックでは、サブセッション内のすべての _A_ は平均化されます。 一方ディメンションでは、各 _A_ の値は、_B_ に割り当てられた値への _1/N_ に貢献します。ここで、_N_ はサブセッション内の _A_ の数です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。

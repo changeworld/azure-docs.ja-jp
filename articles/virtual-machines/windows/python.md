@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 1686e86600fb28165ae44e7ca6c0c406dfa26d72
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a85a9c28acd2d50d95159883a01b27c8ed1d2f1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74065595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461097"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
@@ -125,7 +125,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="create-the-vm-and-supporting-resources"></a>VM とサポート リソースを作成する
 
-すべてのリソースは、[リソース グループ](../../azure-resource-manager/resource-group-overview.md)に含まれる必要があります。
+すべてのリソースは、[リソース グループ](../../azure-resource-manager/management/overview.md)に含まれる必要があります。
 
 1. リソース グループを作成するには、.py ファイルの変数の後に次の関数を追加します。
 
@@ -570,7 +570,7 @@ Azure で使用されるリソースに対して課金されるため、不要�
     このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。 アプリケーションが終了してから、すべてのリソースとリソース グループが削除されるまで、数分かかる場合があります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - デプロイに問題がある場合は、次の手順として、「[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../../resource-manager-troubleshoot-deployments-portal.md)」を参照してください。
 - [Azure Python ライブラリ](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)の詳細をご覧ください。

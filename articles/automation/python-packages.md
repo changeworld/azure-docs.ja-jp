@@ -2,19 +2,15 @@
 title: Azure Automation で Python 2 パッケージを管理する
 description: この記事では、Azure Automation での Python 2 パッケージの管理方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/25/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: f20865b92df2a197410f209cf921c5e573723286
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 05d892edf20cda228bc566b30b0b693ea7c4a184
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850195"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417643"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Azure Automation で Python 2 パッケージを管理する
 
@@ -32,7 +28,7 @@ Automation アカウントの **[共有リソース]** で **[Python 2 packages]
 
 パッケージがインポートされると、Automation アカウントの **[Python 2 packages]\(Python 2 パッケージ\)** ページに一覧表示されます。 パッケージを削除する必要がある場合は、そのパッケージを選択し、パッケージ ページの **[削除]** を選びます。
 
-![パッケージ リスト](media/python-packages/package-list.png)
+![パッケージ一覧](media/python-packages/package-list.png)
 
 ## <a name="import-packages-with-dependencies"></a>依存関係があるパッケージをインポートする
 
@@ -57,7 +53,7 @@ C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 * -a \<automationAccount\>
 * -m \<modulePackage\>
 
-![パッケージ リスト](media/python-packages/import-python-runbook.png)
+![パッケージ一覧](media/python-packages/import-python-runbook.png)
 
 Runbook では、ダウンロードするパッケージを指定できます。たとえば、`Azure` (4 番目のパラメーター) を指定すると、すべての Azure モジュールとそのすべての依存関係 (約 105 個) がダウンロードされます。
 
@@ -91,6 +87,6 @@ for group in groups:
 
 Python 2 Runbook をオフラインで開発してテストするには、GitHub の [Azure Automation Python のエミュレートされた資産](https://github.com/azureautomation/python_emulated_assets)モジュールを使用できます。 このモジュールを使用すると、資格情報、変数、接続、および証明書などの共有リソースを参照できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Python 2 Runbook の使用を開始する場合は、[初めての Python2 Runbook](automation-first-runbook-textual-python2.md) に関するページを参照してください。

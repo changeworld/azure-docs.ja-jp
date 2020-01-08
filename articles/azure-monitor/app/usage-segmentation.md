@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 88dccd3a33c4a6e64de30ef7e7df4723a17f0c44
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dbda6debe2412f1756bc707cf3b587c77f466fdc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930628"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432323"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights でのユーザー、セッション、およびイベントの分析
 
@@ -21,7 +21,7 @@ ms.locfileid: "74930628"
 
 ![Application Insights ユーザーのスクリーンショット](./media/usage-segmentation/0001-users.png)
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 Application Insights ポータルのユーザー、セッション、またはイベント ブレードにデータがまだ表示されていない場合は、[利用状況ツールの使用方法を確認](usage-overview.md)してください。
 
@@ -57,7 +57,7 @@ Application Insights ポータルのユーザー、セッション、または�
 
 **[Meet your users]\(ユーザーを確認する\)** セクションには、現在のクエリに一致する 5 人のサンプル ユーザーについての情報が表示されます。 個々の動作を集計と共に検討し調査することで、ユーザーの実際のアプリの使用方法に関する洞察を得ることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。

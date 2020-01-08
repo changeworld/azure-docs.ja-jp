@@ -1,25 +1,16 @@
 ---
-title: Service Fabric を使用して一般的なコード パッケージ エラーを診断する | Microsoft Docs
+title: Service Fabric を使用して一般的なコード パッケージ エラーを診断する
 description: Azure Service Fabric で一般的なコード パッケージ エラーのトラブルシューティングを行う方法について説明します
-services: service-fabric
-documentationcenter: .net
 author: grzuber
-manager: gkhanna
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 320a55e8b14648b1d7e256855582ab31846a63cf
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249216"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463101"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Service Fabric を使用して一般的なコード パッケージ エラーを診断する
 
@@ -50,7 +41,7 @@ The process/container terminated with exit code: XXXXXXXX. Please look at your a
 >[!NOTE]
 > 次の表に含まれていない終了コードでプロセスやコンテナーが終了した場合、終了の責任は Service Fabric にはありません。
 
-終了コード | 説明
+終了コード | [説明]
 --------- | -----------
 7147 | Ctrl + C シグナルの送信によって、プロセスまたはコンテナーが Service Fabric によってシャットダウンされたことを示します。
 7148 | Service Fabric によってプロセスまたはコンテナーが終了したことを示します。 場合によっては、このエラー コードは、Ctrl + C シグナルの送信後に、プロセスまたはコンテナーが適切なタイミングで応答しなかったために終了する必要があったことを示します。
@@ -58,12 +49,12 @@ The process/container terminated with exit code: XXXXXXXX. Please look at your a
 
 ## <a name="other-common-error-codes-and-their-potential-fixes"></a>その他の一般的なエラー コードと考えられる解決策
 
-終了コード | 16 進値 | 簡単な説明 | 根本原因 | 考えられる解決策
+終了コード | 16 進数値 | 簡単な説明 | 根本原因 | 考えられる解決策
 --------- | --------- | ----------------- | ---------- | -------------
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | このエラーは、場合によっては、コンピューターでデスクトップ ヒープ領域が不足していることを意味します。 これは、お使いのアプリケーションに属しているプロセスがノード上で多数実行されている場合に、特に起こりやすくなります。 | プログラムに Ctrl + C シグナルへの応答が組み込まれていない場合は、クラスター マニフェストで **EnableActivateNoWindow** 設定を有効にできます。 この設定を有効にすると、コード パッケージは GUI ウィンドウなしで実行され、Ctrl + C シグナルを受け取ることはありません。 この操作により、各プロセスが使用するデスクトップヒープ領域の量も少なくなります。 コード パッケージで Ctrl + C シグナルを受信する必要がある場合は、ノードのデスクトップ ヒープのサイズを増やすことができます。
 3762504530 | 0xe0434352 | 該当なし | この値は、マネージド コード (つまり .NET ) からのハンドルされない例外用のエラー コードを表します。 | この終了コードは、アプリケーションで発生した例外がハンドルされないままであり、それによってプロセスが終了したことを示唆しています。 このエラーの原因を特定するための最初の手順として、アプリケーションのログとダンプ ファイルをデバッグしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [他の一般的なシナリオの診断](service-fabric-diagnostics-common-scenarios.md)を確認します。
 * Azure Monitor ログとそれらが提供するサービスの詳しい概要について、「[Azure Monitor の概要](../operations-management-suite/operations-management-suite-overview.md)」で確認します。

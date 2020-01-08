@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 7ea7b48e1fc36399a0ca173f9068faf8b88849d5
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836588"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446779"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Microsoft Translator Hub ワークスペースとプロジェクトを移行する
 
@@ -27,7 +27,7 @@ ms.locfileid: "73836588"
 * Hub トレーニングから移行された BLEU スコアは、モデルの TrainingDetails ページ ([Bleu score in MT Hub]\(MT Hub におけるBLEU スコア\) という見出し) でいつでも確認できます。
 
 > [!Note] 
-> Custom Translator でトレーニングを正常に実行するには、一意の文が最低 10,000 個抽出されている必要があります。 [推奨される最小要件](sentence-alignment.md#suggested-minimum-number-of-sentences)に満たない場合、Custom Translator ではトレーニングを実行できません。
+> Custom Translator でトレーニングを正常に実行するには、一意の文が最低 10,000 個抽出されている必要があります。 [推奨される最小要件](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/sentence-alignment#suggested-minimum-number-of-sentences)に満たない場合、Custom Translator ではトレーニングを実行できません。
 
 ## <a name="find-custom-translator-workspace-id"></a>カスタム トランスレーターのワークスペース ID を見つける
 
@@ -143,7 +143,7 @@ Hub からワークスペース/プロジェクトの移行を要求すると、
 
 Microsoft Translator 用の新しい言語システムの作成に取り組んでいるコミュニティや組織のお客様は、[custommt@microsoft.com](mailto:custommt@microsoft.com) までご連絡いただき、詳細についてお問い合わせください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [モデルをトレーニングします](how-to-train-model.md)。
 - [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。

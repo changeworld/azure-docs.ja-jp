@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 1b619ca7bb3b095a5707077beb3e0750dee1c2b7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f7ad05402745f17ff60dbaab8d736acc8f92196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923478"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439401"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする 
 
@@ -169,7 +169,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
-        リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+        リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
 4. **バージョン**として **[V2 (プレビュー)]** を選択します。
 5. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
@@ -201,7 +201,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     1. **[名前]** に「**AzureStorageLinkedService**」と入力します。 
     2. **[ストレージ アカウント名]** で、使用する Azure ストレージ アカウントを選択します。 
-    3. **[Save]** をクリックします。 
+    3. **[保存]** をクリックします。 
     
    ![Azure Storage アカウントの設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png)
 
@@ -414,10 +414,10 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     2. **[Import parameter]\(インポート パラメーター\)** を選択します。 
     3. **[ストアド プロシージャのパラメーター]** セクションで、各パラメーターに次の値を指定します。 
 
-        | 名前 | 種類 | 値 | 
+        | Name | 種類 | 値 | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
-        | TableName | string | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
+        | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
     
         ![ストアド プロシージャ アクティビティ - パラメーター](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
 14. **コピー アクティビティをストアド プロシージャ アクティビティに接続します**。 コピー アクティビティにアタッチされている**緑**のボタンをストアド プロシージャ アクティビティにドラッグ アンド ドロップします。 
@@ -467,7 +467,7 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ```
 
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のチュートリアルに進んで、LastModifiedDate に基づいて新規ファイルおよび変更されたファイルのみをコピーする方法について学習してください。
 
 > [!div class="nextstepaction"]

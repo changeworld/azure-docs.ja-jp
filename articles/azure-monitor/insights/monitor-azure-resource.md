@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5a46de9fa17790cb93ce7d5a2af8008d34d4dc35
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0748047581945d513300d929c2d34d20099bf4d6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888786"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529696"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure Monitor を使用した Azure リソースの監視
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure リソースによって生成される監視データと、Azure Monitor の機能を使用してこのデータについての分析とアラートを行う方法について説明します。
@@ -30,7 +30,7 @@ Azure リソースを作成するとすぐに、Azure Monitor が有効にされ
 
 
 ## <a name="costs-associated-with-monitoring"></a>監視に関連するコスト
-既定で収集される監視データの分析にはコストはかかりません。 この製品には次のツールが含まれています。
+既定で収集される監視データの分析にはコストはかかりません。 これには、次の内容が含まれます。
 
 - メトリックス エクスプローラーによるプラットフォーム メトリックの収集と分析。
 - Azure portal でのアクティビティ ログの収集と分析。
@@ -127,7 +127,7 @@ Azure Monitor ログを使用すると、複数のサービスや他のデータ
 
 - ログ クエリの記述に使用されるクエリ言語の使用に関するチュートリアルについては、「[Azure Monitor でログ クエリの使用を開始する](../log-query/get-started-queries.md)」を参照してください。
 - Azure Monitor ログでのリソース ログの収集方法と、クエリでそれらにアクセスする方法の詳細については、「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](../platform/resource-logs-collect-workspace.md)」を参照してください。
-- Azure Monitor ログでのリソース ログ データの構造については、「[収集モード](../platform/resource-logs-collect-workspace.md#collection-mode)」を参照してください。
+- Azure Monitor ログでのリソース ログ データの構造については、「[収集モード](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode)」を参照してください。
 - Azure Monitor ログでのそのテーブルの詳細については、各 Azure サービスのドキュメントを参照してください。
 
 ![ログ](media/monitor-azure-resource/logs.png)
@@ -146,7 +146,7 @@ REST API を使用して、リソースから収集された監視データを�
 - Azure Monitor REST API からのメトリックへのアクセスの詳細については、「[Azure 監視 REST API のチュートリアル](../platform/rest-api-walkthrough.md)」を参照してください。
 - Azure PowerShell からログ クエリを使用して Azure Monitor のログ データにアクセスする方法については、「[Azure Log Analytics REST API](https://dev.loganalytics.io/)」を参照してください。
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 [アラート](../platform/alerts-overview.md)では、監視データで重要な状態が見つかったきに、事前に通知され、場合によっては対処されます。 アラートのターゲット、アラートを作成する条件、応答で実行するアクションを定義する、警告ルールを作成します。
 
 警告ルールの種類に応じて、異なる種類の監視データが使用されます。
@@ -162,6 +162,6 @@ REST API を使用して、リソースから収集された監視データを�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * さまざまな Azure サービスのリソース ログの詳細については、「[Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ](../platform/diagnostic-logs-schema.md)」を参照してください。  

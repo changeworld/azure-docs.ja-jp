@@ -1,18 +1,14 @@
 ---
-title: Service Fabric のシークレット ストア | Microsoft Docs
+title: Service Fabric のシークレット ストア
 description: この記事では、Service Fabric のシークレット ストアを使用する方法について説明します。
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5315a8806f45e40204e8500e97c3440bfa9ab8b2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457512"
 ---
 #  <a name="service-fabric-secrets-store"></a>Service Fabric のシークレット ストア
 この記事では、Service Fabric のシークレットストア (CSS) を使用して Service Fabric アプリケーションでシークレットを作成および使用する方法について説明します。 CSS は、パスワード、トークン、キーなどの機密データを暗号化してメモリに保持するために使用されるローカル シークレット ストア キャッシュです。
@@ -24,8 +20,8 @@ ms.locfileid: "74077337"
     [
         ...
     {
+        "name":  "CentralSecretService",
         "parameters":  [
-            "name":  "CentralSecretService"
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -46,6 +42,9 @@ ms.locfileid: "74077337"
                 ],
             },
             ]
+     }
+        ...
+     ]
 ```
 ## <a name="declare-secret-resource"></a>シークレット リソースを宣言する
 シークレット リソースを作成するには、Resource Manager テンプレートを使用するか、REST API を使用します。
@@ -180,5 +179,5 @@ Type="SecretsStoreRef" を指定することにより、プロセス環境変数
   <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
 </EnvironmentVariables>
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 アプリケーション マニフェストとサービス セキュリティの詳細については、[こちら](service-fabric-application-and-service-security.md)をご覧ください。

@@ -1,14 +1,14 @@
 ---
 title: Blueprints サンプルのインデックス
 description: Azure Blueprints を使用して環境、ポリシー、クラウド導入フレームワークの基礎をデプロイするためのコンプライアンスおよび標準サンプルのインデックス。
-ms.date: 11/22/2019
+ms.date: 12/05/2019
 ms.topic: sample
-ms.openlocfilehash: ea8759db0fde7d6686acd3c58006be3f59adf6fd
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: a0be956037f6b1ee5229ecde7b1491f552113866
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74404129"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436558"
 ---
 # <a name="azure-blueprints-samples"></a>Azure Blueprints サンプル
 
@@ -21,6 +21,7 @@ ms.locfileid: "74404129"
 | [カナダ連邦の PBMM](./canada-federal-pbmm/index.md) | カナダ連邦の Protected B、Medium Integrity、Medium Availability (PBMM) に準拠するための規定を提供します。 |
 | [CIS Microsoft Azure Foundations Benchmark](./cis-azure-1.1.0/index.md)| CIS Microsoft Azure Foundations Benchmark の推奨事項に準拠する際に役立つ一連のポリシーを提供します。 |
 | [FedRAMP (中)](./fedramp-m/index.md) | FedRAMP (中) への準拠に役立つ一連のポリシーを提供します。 |
+| [HIPAA HITRUST](./HIPAA-HITRUST/index.md) | HIPAA HITRUST への準拠に役立つ一連のポリシーを提供します。 |
 | [IRS 1075](./irs-1075/index.md) | IRS 1075 に準拠するための規定を提供します。|
 | [ISO 27001](./iso27001/index.md) | ISO 27001 に準拠するための規定を提供します。 |
 | [ISO 27001 共有サービス](./iso27001-shared/index.md) | ISO 27001 構成証明に役立つ一連の準拠インフラストラクチャ パターンおよびポリシー ガードレールを提供します。 |
@@ -43,7 +44,7 @@ CAF 基盤ブループリントと CAF 移行ランディング ゾーン ブル
 
 コンプライアンス要件が高く、アーキテクチャの複雑性も高い顧客シナリオに対応したサンプル ブループリントをご用意しています (上の図の領域 E)。 上の領域 F は、顧客およびパートナーがサンプル ブループリントをカスタマイズして活用し、独自のニーズに対応する領域を示しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ブループリントのライフサイクル](../concepts/lifecycle.md)を参照する。
 - [静的および動的パラメーター](../concepts/parameters.md)の使用方法を理解する。

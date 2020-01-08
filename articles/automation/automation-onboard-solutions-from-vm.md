@@ -2,19 +2,15 @@
 title: Azure VM から Update Management、Change Tracking、および Inventory ソリューションをオンボードする
 description: Azure 仮想マシンを Azure Automation の一部である Update Management、Change Tracking、および Inventory ソリューションでオンボードする方法について説明します。
 services: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.service: automation
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 8dd69b1cf4ac8874175cff84d3c2b9fc5e323922
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849685"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421818"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure 仮想マシンから Update Management、Change Tracking、および Inventory ソリューションをオンボードする
 
@@ -59,7 +55,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 ワークスペースに移動します。 **[全般]** の下の **[保存された検索]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
-|名前     |カテゴリ  |エイリアス  |
+|Name     |カテゴリ  |エイリアス  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新プログラム        | Updates__MicrosoftDefaultComputerGroup         |
@@ -103,18 +99,18 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 * VM の開始/停止の Runbook スケジュール
 * VM の開始/停止の Runbook
-* 変数
+* 変数:
 
 Automation アカウントの自分のワークスペースを Log Analytics ワークスペースからリンク解除することもできます。 自分のワークスペースで、 **[関連リソース]** の **[Automation アカウント]** を選択します。 [Automation アカウント] ページで **[アカウントのリンク解除]** を選択します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Update Management から VM を削除するには:
 
 * Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
 * [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) または [Linux 用 Log Analytics エージェント](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)を削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ソリューションを使用する方法を学習するためのチュートリアルに進みます。
 

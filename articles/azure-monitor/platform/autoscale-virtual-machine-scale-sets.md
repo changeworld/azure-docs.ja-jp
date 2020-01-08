@@ -1,19 +1,15 @@
 ---
 title: Azure Virtual Machines を使用した高度な自動スケール
 description: Resource Manager および VM Scale Sets を使用して、スケール アクション時に電子メール送信と webhook URL の呼び出しを行う複数のルールおよびプロファイルを利用します。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/22/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787780"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364222"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Scale Sets 向けの Resource Manager テンプレートを使用した高度な自動スケール構成
 Virtual Machine Scale Sets では、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールインおよびスケールアウトを行うことができます。 また、スケール アクションに対して電子メール通知や webhook 通知を構成することもできます。 このチュートリアルでは、これらすべてのオブジェクトを VM スケール セットで Resource Manager テンプレートを使用して構成する例を示します。
@@ -35,7 +31,7 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
 
 3. また、スケジュールや特定の要件に基づいてプロファイルとルールを追加することもできます。 ここでは、3 つのプロファイルを使用して自動スケール設定を作成します。 自動スケールのプロファイルとルールの詳細については、[自動スケールのベスト プラクティス](autoscale-best-practices.md)に関するページを参照してください。  
 
-    | プロファイルとルール | 説明 |
+    | プロファイルとルール | [説明] |
     |--- | --- |
     | **プロファイル** |**パフォーマンスまたはメトリック ベース** |
     | ルール |Service Bus キューのメッセージ数が x 以上 |

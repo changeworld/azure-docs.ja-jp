@@ -4,15 +4,15 @@ description: Azure Monitor では、Windows および Linux のエージェン�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363831"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Azure Monitor での Windows および Linux のパフォーマンス データ ソース
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Azure Monitor は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
@@ -26,7 +26,7 @@ Windows および Linux のパフォーマンス カウンターから、ハー�
 
 Windows のパフォーマンス カウンターの場合、パフォーマンス カウンターごとに特定のインスタンスを選択できます。 Linux のパフォーマンス カウンターの場合、各カウンターに対して選択したインスタンスが、そのすべての子カウンターに適用されます。 次の表は、Linux と Windows の両方のパフォーマンス カウンターで利用できる共通のインスタンスを示しています。
 
-| インスタンス名 | 説明 |
+| インスタンス名 | [説明] |
 | --- | --- |
 | \_Total |すべてのインスタンスの合計 |
 | \* |すべてのインスタンス |
@@ -74,7 +74,7 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
 
 この要素のパラメーターを次の表に示します。
 
-| parameters | 説明 |
+| パラメーター | [説明] |
 |:--|:--|
 | object\_name | コレクションのオブジェクト名。 |
 | instance\_regex |  収集するインスタンスを定義する*正規表現*。 すべてのインスタンスは、 `.*` という値で指定します。 \_Total インスタンスのみを対象にプロセッサ メトリックを収集するには、`_Total` を指定します。 crond または sshd のインスタンスのみを対象にプロセス メトリックを収集するには、「 `(crond\|sshd)`」と指定します。 |
@@ -175,13 +175,13 @@ Azure Portal を使用して Linux のパフォーマンス カウンターを�
       interval 30s
     </source>
 
-## <a name="data-collection"></a>データ収集
+## <a name="data-collection"></a>データ コレクション
 Azure Monitor は、カウンターがインストールされているすべてのエージェントについて、指定されたサンプル間隔ですべての指定されたパフォーマンス カウンターを収集します。  データは集計されず、サブスクリプションで指定した期間、すべてのログ クエリ ビューで生データを利用できます。
 
 ## <a name="performance-record-properties"></a>パフォーマンス レコードのプロパティ
 パフォーマンス レコードには、 **Perf** の型と、次の表に示すプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | Computer |イベントが収集されたコンピューター。 |
 | CounterName |パフォーマンス カウンターの名前 |
@@ -200,7 +200,7 @@ Azure Monitor は、カウンターがインストールされているすべて
 ## <a name="log-queries-with-performance-records"></a>パフォーマンス レコードに対するログ クエリ
 次の表は、パフォーマンス レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
-| クエリ | 説明 |
+| クエリ | [説明] |
 |:--- |:--- |
 | Perf |すべてのパフォーマンス データ |
 | Perf &#124; where Computer == "MyComputer" |特定のコンピューターからのすべてのパフォーマンス データ |
@@ -217,7 +217,7 @@ Azure Monitor は、カウンターがインストールされているすべて
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * MySQL および Apache HTTP Server を含む [Linux アプリケーションからパフォーマンス カウンターを収集します](data-sources-linux-applications.md)。
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * 詳細な視覚化および分析を行うために、収集されたデータを [Power BI](powerbi.md) にエクスポートします。

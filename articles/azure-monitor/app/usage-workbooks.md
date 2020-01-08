@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: bbbf511286c63acf4a939e0a0e7d9c3dc9efa75b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8e14b065132e648f9c800655cfe69e5a2ec80c41
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899386"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432268"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Azure Monitor ブックを使用した対話型レポートの作成
 
@@ -154,7 +154,7 @@ union customEvents, pageViews
 
   |         |          |
    | ---------------- |:-----|
-   | **Text**    | ユーザーはテキスト ボックスを編集します。必要に応じて、既定値を入力するためのクエリを提供できます。 |
+   | **[テキスト]**    | ユーザーはテキスト ボックスを編集します。必要に応じて、既定値を入力するためのクエリを提供できます。 |
    | **ドロップダウン** | ユーザーは一連の値の中から選択します。 |
    | **時間の範囲の選択**| ユーザーは、時間の範囲の値の定義済みセットから選択するか、カスタムの時間の範囲から選択します。|
    | **リソースの選択** | ユーザーは、そのブック用に選択されたリソースの中から選択します。|
@@ -252,7 +252,7 @@ Workbooks は Application Insights リソース内の、ユーザー個人の **
 
 優れたブック テンプレートを作成したら、コミュニティと共有できます。 詳細については、[GitHub リポジトリ](https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/README.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
     - [ユーザー、セッション、イベント](../../azure-monitor/app/usage-segmentation.md)

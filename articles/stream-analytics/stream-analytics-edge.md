@@ -4,16 +4,16 @@ description: Azure Stream Analytics でエッジ ジョブを作成し、Azure I
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 07fa43563ca9b6c9ae247df6eb28894331b004c1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ff2a7e571c771a73c46959f35e341d861533bb55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976436"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426330"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
  
@@ -225,10 +225,10 @@ IoT Edge の更新プログラム上の参照データは、デプロイによ�
       - OS: windows
       
       
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure IoT Edge の詳細](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [ASA on IoT Edge チュートリアル](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)

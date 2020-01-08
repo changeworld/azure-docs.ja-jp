@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d1e21827dda26f1c577f6cc70a5e34bb09a34d9c
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873728"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500062"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API のグラフ データのモデリング
 
@@ -23,7 +23,7 @@ ms.locfileid: "74873728"
 このガイドに記載されているプロセスは、次の前提条件に基づいています。
  * 問題空間内の**エンティティ**が特定されている。 これらのエンティティは各要求に対して_アトミックに_使用されます。 つまり、このデータベース システムは複数のクエリ要求で 1 つのエンティティのデータを取得するようには設計されていません。
  * このデータベース システムの**読み取りと書き込みの要件**を理解している。 これらの要件は、グラフ データ モデルに必要な最適化の指針となります。
- * [Apache Tinkerpop プロパティ グラフ標準](http://tinkerpop.apache.org/docs/current/reference/#graph-computing)の原則について十分に理解している。
+ * [Apache Tinkerpop プロパティ グラフ標準](https://tinkerpop.apache.org/docs/current/reference/#graph-computing)の原則について十分に理解している。
 
 ## <a name="when-do-i-need-a-graph-database"></a>グラフ データベースが必要になる場合
 
@@ -41,18 +41,18 @@ ms.locfileid: "74873728"
 
 ## <a name="how-to-use-graph-objects"></a>グラフ オブジェクトを使用する方法
 
-[Apache Tinkerpop プロパティ グラフ標準](http://tinkerpop.apache.org/docs/current/reference/#graph-computing)では、2 種類のオブジェクト **Vertex** と **Edge** を定義します。 
+[Apache Tinkerpop プロパティ グラフ標準](https://tinkerpop.apache.org/docs/current/reference/#graph-computing)では、2 種類のオブジェクト **Vertex** と **Edge** を定義します。 
 
 以下は、グラフ オブジェクトのプロパティのベスト プラクティスです。
 
 | Object | プロパティ | 種類 | メモ |
 | --- | --- | --- |  --- |
-| Vertex | id | string | パーティションごとに一意に適用されます。 挿入時に値の指定がなかった場合には、自動生成された GUID が格納されます。 |
-| Vertex | label | string | このプロパティは、頂点が表すエンティティの種類を定義するために使用されます。 値が指定されないと、既定値の "vertex" が使用されます。 |
+| Vertex | id | String | パーティションごとに一意に適用されます。 挿入時に値の指定がなかった場合には、自動生成された GUID が格納されます。 |
+| Vertex | ラベル●らべる○ | String | このプロパティは、頂点が表すエンティティの種類を定義するために使用されます。 値が指定されないと、既定値の "vertex" が使用されます。 |
 | Vertex | properties | 文字列、ブール値、数値 | 各頂点にキーと値のペアとして格納される個々のプロパティの一覧。 |
 | Vertex | パーティション キー | 文字列、ブール値、数値 | このプロパティでは、頂点とその外向きエッジを格納する場所を定義します。 [グラフのパーティション分割](graph-partitioning.md)の詳細をご覧ください。 |
-| Edge | id | string | パーティションごとに一意に適用されます。 既定で自動生成されます。 エッジは、通常、ID によって一意に取得する必要がありません。 |
-| Edge | label | string | このプロパティは、2 つの頂点のリレーションシップの種類を定義するために使用されます。 |
+| Edge | id | String | パーティションごとに一意に適用されます。 既定で自動生成されます。 エッジは、通常、ID によって一意に取得する必要がありません。 |
+| Edge | ラベル●らべる○ | String | このプロパティは、2 つの頂点のリレーションシップの種類を定義するために使用されます。 |
 | Edge | properties | 文字列、ブール値、数値 | 各エッジにキーと値のペアとして格納される個々のプロパティの一覧。 |
 
 > [!NOTE]

@@ -2,19 +2,15 @@
 title: Azure Automation でのソース管理の統合
 description: この記事では、Azure Automation での GitHub とのソース管理の統合について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/10/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 837ebd71886e9435a44080b06c079623c3936c69
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417065"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
@@ -45,7 +41,7 @@ Automation アカウント内で、 **[ソース管理]** を選択し、 **[+ �
 
 **[Source Control Summary] (ソース管理の概要)** ページで情報を入力し、 **[保存]** をクリックします。 次の表に、指定できるフィールドの説明を示します。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |ソース管理名     | ソース管理のためのフレンドリ名。 *この名前は、アルファベットと数字でのみ構成されている必要があります。*        |
 |ソース管理の種類     | ソース管理のソースの種類。 使用できるオプションは次のとおりです。</br> GitHub</br>Azure Repos (Git)</br> Azure Repos (TFVC)        |
@@ -54,7 +50,7 @@ Automation アカウント内で、 **[ソース管理]** を選択し、 **[+ �
 |フォルダー パス     | 同期する Runbook が含まれているフォルダー。例: /Runbooks </br>*指定されたフォルダー内の Runbook のみが同期されます。再帰はサポートされていません。*        |
 |自動同期<sup>1</sup>     | ソース管理リポジトリでコミットが行われたときに、自動同期をオンまたはオフにします         |
 |Runbook の発行     | **[オン]** に設定されている場合は、ソース管理から同期されたときに Runbook が自動的に発行されます。         |
-|説明     | 詳細情報を入力するテキスト フィールド        |
+|[説明]     | 詳細情報を入力するテキスト フィールド        |
 
 <sup>1</sup> Azure Repos でソース管理の統合を構成する際に自動同期を有効にするには、プロジェクト管理者でなければなりません。
 
@@ -93,7 +89,7 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 GitHub で個人用アクセス トークンを作成する方法について詳しくは、「[コマンドラインの個人用アクセス トークンの作成](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)」をご覧ください。
 
-|スコープ  |説明  |
+|スコープ  |[説明]  |
 |---------|---------|
 |**レポジトリ**     |         |
 |repo:status     | コミット状態へのアクセス         |
@@ -180,6 +176,6 @@ Source Control Sync Summary:
 * [REST API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update) を使用する。
 * [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol) コマンドレットを使用する。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)

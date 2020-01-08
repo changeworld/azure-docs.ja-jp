@@ -3,18 +3,18 @@ title: 'ツアー: Azure IoT Central の UI | Microsoft Docs'
 description: IoT ソリューションの作成、管理、および使用に使用する Azure IoT Central の UI の主要な領域を把握しておきましょう。
 author: lmasieri
 ms.author: lmasieri
-ms.date: 10/21/2019
+ms.date: 12/09/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: f8aa467f95bb97c42e726d1392deca53e15df624
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 23deb77b6fda0b3801057d2ae97a740301449e28
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896490"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434897"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Azure IoT Central の UI のツアーを見る (プレビュー機能)
 
@@ -153,7 +153,7 @@ UI 用に淡色テーマまたは濃色テーマを選ぶことができます�
 
 [Analytics] を使用すると、デバイス データに基づくカスタム ビューを作成して、アプリケーションから分析情報を取得することができます。 詳細については、[Azure IoT Central アプリケーションに使用する分析の作成](howto-create-analytics.md)に関するページを参照してください。
 
-### <a name="jobs"></a>[ジョブ]
+### <a name="jobs"></a>ジョブ
 
 > [!div class="mx-imgBorder"]
 > ![[ジョブ] ページ](media/overview-iot-central-tour/jobs-pnp.png)
@@ -168,8 +168,8 @@ UI 用に淡色テーマまたは濃色テーマを選ぶことができます�
 [デバイス テンプレート] ページでは、ビルダーがアプリケーションに含まれるデバイス テンプレートの作成と管理を行います。 デバイス テンプレートでは、次のようなデバイスの特性を指定します。
 
 * テレメトリ、状態、イベントの測定値
-* properties
-* command
+* Properties
+* コマンド
 * ビュー
 
 *ソリューション ビルダー*は、オペレーターがデバイスの管理に使用するフォームとダッシュボードを作成することもできます。
@@ -188,6 +188,6 @@ UI 用に淡色テーマまたは濃色テーマを選ぶことができます�
 
 [管理] ページでは、IoT Central アプリケーションの構成とカスタマイズを行うことができます。 ここでは、アプリケーション名、URL、テーマを変更したり、ユーザーとロールを管理したり、API トークンを作成したり、アプリケーションをエクスポートしたりできます。 詳細については、[Azure IoT Central アプリケーションの管理](howto-administer.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで Azure IoT Central の概要と UI のレイアウトに関する説明は終了です。推奨される次の手順として、「[Create an Azure IoT Central application (Azure IoT Central アプリケーションの作成)](quick-deploy-iot-central.md)」クイック スタートに進みましょう。

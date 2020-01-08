@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics のソリューション パターン
 description: ダッシュボード、イベント メッセージング、データ ストア、参照データ エンリッチメント、監視など、Azure Stream Analytics の一般的なソリューション パターンについて説明します。
-author: zhongc
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 2d936a538a54edce9e3f13ea7865d57b8243c4a5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 2a449c55a0998f1a114f6aa9d2c067e48cc0cdce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901670"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443679"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 
@@ -183,7 +183,7 @@ Azure Stream Analytics に SLA 保証があっても、また、エンド ツー
 
 その鍵は、コンポーザブルなパターンでシステムを設計し、それぞれのサブシステムを個別に構築、テスト、アップグレード、復旧できるようにすることです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Stream Analytics を使用したさまざまなソリューション パターンを見てきました。 次はさらに踏み込んで、初めての Stream Analytics ジョブを作成してみましょう。
 

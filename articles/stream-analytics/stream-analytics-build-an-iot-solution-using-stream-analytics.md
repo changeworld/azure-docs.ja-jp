@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics を使って IoT ソリューションをビルドする
 description: 料金所ブースを例に Stream Analytics を使った基本的な IoT ソリューションを紹介します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620524"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426455"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 
@@ -44,7 +43,7 @@ ms.locfileid: "67620524"
 ### <a name="entry-data-stream"></a>入口データ ストリーム
 入口データ ストリームは、料金所に入る車両の情報を含んでいます。 出口データ イベントは、サンプル アプリに含まれる Web アプリから Event Hub キューにライブでストリーミングされます。
 
-| TollID | EntryTime | LicensePlate | 状態 | Make | モデル | VehicleType | VehicleWeight | Toll | タグ |
+| TollID | EntryTime | LicensePlate | State | Make | モデル | VehicleType | VehicleWeight | Toll | タグ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -55,12 +54,12 @@ ms.locfileid: "67620524"
 
 次に、それぞれの列について簡単に説明します。
 
-| 列 | 説明 |
+| 列 | [説明] |
 | --- | --- |
 | TollID |料金所を一意に識別する料金所 ID |
 | EntryTime |車両が料金所ブースに入った日時 (UTC) |
 | LicensePlate |車両のナンバー プレートの番号 |
-| 状態 |米国の州 |
+| State |米国の州 |
 | Make |自動車の製造元 |
 | モデル |自動車の型式 |
 | VehicleType |1 (乗用車) または 2 (商用車) |
@@ -82,7 +81,7 @@ ms.locfileid: "67620524"
 
 次に、それぞれの列について簡単に説明します。
 
-| 列 | 説明 |
+| 列 | [説明] |
 | --- | --- |
 | TollID |料金所を一意に識別する料金所 ID |
 | ExitTime |車両が料金所ブースから出た日時 (UTC) |
@@ -102,7 +101,7 @@ ms.locfileid: "67620524"
 
 次に、それぞれの列について簡単に説明します。
 
-| 列 | 説明 |
+| 列 | [説明] |
 | --- | --- |
 | LicensePlate |車両のナンバー プレートの番号 |
 | RegistrationId |車両の登録 ID |
@@ -139,7 +138,7 @@ Azure クレジットを最適に利用できるよう、この記事の最後�
 
 ### <a name="review-the-azure-stream-analytics-tollapp-resources"></a>Azure Stream Analytics TollApp リソースの確認
 
-1. Azure portal にサインインします
+1. Azure portal にサインインする
 
 2. 前のセクションで名前を付けたリソース グループを見つけます。
 

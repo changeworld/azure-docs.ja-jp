@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7fe95a35a6b78bae66521a09d63d376ec8757479
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 43d19f5b3f291f69e7b6f765dcee230345421d1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699674"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431769"
 ---
 # <a name="what-is-azure-files"></a>Azure Files とは
 Azure Files はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにある Windows、macOS、および Linux に同時にマウントできます。 さらに、高速アクセスするため、Azure File Sync を使用して、データが使用されている場所の近くの Windows サーバーに Azure ファイル共有をキャッシュできます。
@@ -32,7 +32,7 @@ Azure ファイル共有は、以下の作業に使用できます。
     Azure Files を使用すると、ファイル アプリケーションやユーザー データをファイル共有に保存し、アプリケーションをクラウドに簡単に "リフト アンド シフト" できます。 Azure Files を使用すると、アプリケーションとそのデータの両方が Azure に移動される "従来の" リフト アンド シフト シナリオと、アプリケーション データは Azure Files に移動され、アプリケーションはオンプレミスで実行を継続する、"ハイブリッド" リフト アンド シフト シナリオの両方に対応できます。 
 
 * **クラウド開発の簡略化**:  
-    また、Azure Files は、新しいクラウド開発プロジェクトを簡素化するためにさまざまな方法で使用できます。 例:
+    また、Azure Files は、新しいクラウド開発プロジェクトを簡素化するためにさまざまな方法で使用できます。 次に例を示します。
     * **共有アプリケーションの設定**:  
         分散アプリケーションの一般的なパターンでは、複数のアプリケーション インスタンスからアクセスできる集中管理された場所に構成ファイルが配置されます。 アプリケーション インスタンスは File REST API を介してその構成を読み込むことができ、ユーザーは、必要に応じて、ローカルで SMB 共有をマウントすることでそれにアクセスできます。
 

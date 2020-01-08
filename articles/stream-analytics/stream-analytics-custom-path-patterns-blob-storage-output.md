@@ -1,7 +1,6 @@
 ---
 title: Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 description: この記事では、Azure Stream Analytics ジョブからの Blob Storage 出力のためのカスタム DateTime パス パターンおよびカスタム フィールドまたは属性機能について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e06313cf83768421bedc6c7baddd30c2ef2e4846
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789416"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426380"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure Stream Analytics でのカスタム BLOB 出力のパーティション分割
 
@@ -72,7 +71,7 @@ REST API を使用すると、その要求に使用される JSON ファイル�
 
 次の書式指定子トークンを単独でまたは組み合わせて使用して、カスタム DateTime 形式を指定できます。
 
-|書式指定子   |説明   |サンプル時間 2018-01-02T10:06:08 に対する結果|
+|書式指定子   |[説明]   |サンプル時間 2018-01-02T10:06:08 に対する結果|
 |----------|-----------|------------|
 |{datetime:yyyy}|4 桁の数値としての年|2018|
 |{datetime:MM}|月 (01 ～ 12)|01|
@@ -130,6 +129,6 @@ MSCK REPAIR TABLE while hive.exec.dynamic.partition true
 
 ![カスタム パス パターンでの Stream Analytics の BLOB 出力](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-output-folder-structure.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics からの出力を理解する](stream-analytics-define-outputs.md)

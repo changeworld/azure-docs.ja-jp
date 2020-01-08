@@ -1,19 +1,14 @@
 ---
 title: Azure Portal を使用したサービス正常性通知の表示
 description: サービス正常性通知を使用すると、Microsoft Azure によって発行されるサービスの正常性に関するメッセージを表示できます。
-author: stephbaron
-ms.author: stbaron
-services: monitoring
-ms.service: service-health
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.subservice: ''
-ms.openlocfilehash: d2e18ae28e79590cb04ee0045341ea817be4a3bc
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: c8017d23e0f7e3ab7bf48c9d7ba6b930fa80d0da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538143"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451415"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Azure Portal を使用したサービス正常性通知の表示
 
@@ -37,6 +32,6 @@ ms.locfileid: "67538143"
 
 1. **[+ アクティビティ ログ アラートの追加]** を選択し、今後サービスの通知を受け取るようにアラートを設定します。 詳細については、「[サービス通知のアクティビティ ログ アラートを作成する](../azure-monitor/platform/alerts-activity-log-service-notifications.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [アクティビティ ログのアラート](../azure-monitor/platform/activity-log-alerts.md)について詳しく学習します。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: c28ef627e9ef65f9985a520c8c4f3facc7a160da
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 18354881b7bf2899bdd109b47d6a10e29073cc36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575498"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432496"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>OpenCensus Python を使用した依存関係の追跡
 
@@ -166,10 +166,10 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['sqlalchemy'])
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [アプリケーション マップ](../../azure-monitor/app/app-map.md)
 * [可用性](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
+* [検索](../../azure-monitor/app/diagnostic-search.md)
 * [Log (Analytics) のクエリ](../../azure-monitor/log-query/log-query-overview.md)
 * [トランザクションの診断](../../azure-monitor/app/transaction-diagnostics.md)

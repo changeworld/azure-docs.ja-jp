@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f28f153eff11e2b4d705b874609a95a9def8d4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9aa2bf2bb2e77f5e543b53b583ddeeacd46de243
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915669"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424187"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -52,7 +52,7 @@ MSAL.NET を使用するには、[Microsoft.Identity.Client](https://www.nuget.o
 
 ### <a name="scopes-not-resources"></a>リソースではなくスコープ
 
-ADAL.NET では*リソース* のトークンが取得されますが、MSAL.NET では*スコープ* のトークンが取得されます。 多くの MSAL.NET AcquireToken オーバーライドでは、スコープ (`IEnumerable<string> scopes`) というパラメーターが必要になります。 このパラメーターは、要求された目的のアクセス許可とリソースを宣言する文字列のシンプルなリストです。 よく知られているスコープとして、[Microsoft Graph のスコープ](/graph/permissions-reference)があります。
+ADAL.NET では*リソース* のトークンが取得されますが、MSAL.NET では*スコープ* のトークンが取得されます。 多くの MSAL.NET AcquireToken オーバーライドでは、スコープ (`IEnumerable<string> scopes`) というパラメーターが必要になります。 このパラメーターは、要求される必要なアクセス許可とリソースを宣言する文字列のシンプルなリストです。 よく知られているスコープとして、[Microsoft Graph のスコープ](/graph/permissions-reference)があります。
 
 MSAL.NET で v1.0 リソースにアクセスすることもできます。 詳細については、[v1.0 アプリケーションのスコープ](#scopes-for-a-web-api-accepting-v10-tokens)に関する記述を参照してください。 
 
@@ -66,7 +66,7 @@ MSAL.NET で v1.0 リソースにアクセスすることもできます。 詳�
 
 ADAL.NET でユーザーが操作されていました。 ユーザーは人間またはソフトウェア エージェントですが、Microsoft ID システムで 1 つまたは複数のアカウント (いくつかの Azure AD アカウント、Azure AD B2C、Microsoft の個人用アカウント) を保有/所有/担当することができます。 
 
-MSAL.NET 2.x では、現在、(IAccount インターフェイス経由で) アカウントの概念が定義されます。 この破壊的変更によって、適切なセマンティクスが提供されます。つまり、同じユーザーが、異なる Azure AD ディレクトリで、いくつかのアカウントを持つことができます。 また、MSAL.NET では、ホーム アカウント情報が提供されるので、ゲスト シナリオより詳細な情報が提供されます。
+MSAL.NET 2.x では、現在、(IAccount インターフェイス経由で) アカウントの概念が定義されます。 この破壊的変更によって、適切なセマンティクスが提供されます。つまり、同じユーザーが、異なる Azure AD ディレクトリ内に複数のアカウントを持つことができます。 また、MSAL.NET では、ホーム アカウント情報が提供されるので、ゲスト シナリオより詳細な情報が提供されます。
 
 IUser と IAccount の違いの詳細については、[MSAL.NET 2.x](https://aka.ms/msal-net-2-released) に関するページを参照してください。
 
@@ -119,7 +119,7 @@ MSAL.NET および v2.0 エンドポイントではまだ、すべての許可�
 
 以下は、デスクトップおよびモバイル アプリケーション用の ADAL.NET と MSAL.NET でサポートされている許可です
 
-許可 | ADAL.NET | MSAL.NET
+Grant | ADAL.NET | MSAL.NET
 ----- |----- | -----
 Interactive | [対話型認証](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [MSAL.NET での対話型のトークンの取得](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
 統合 Windows 認証 | [Windows での統合認証 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [統合 Windows 認証](msal-authentication-flows.md#integrated-windows-authentication)
@@ -130,7 +130,7 @@ Interactive | [対話型認証](https://github.com/AzureAD/azure-activedirectory
 
 以下は、Web アプリケーション、Web API、デーモン アプリケーション用の ADAL.NET と MSAL.NET でサポートされている許可です。
 
-アプリの種類 | 許可 | ADAL.NET | MSAL.NET
+アプリの種類 | Grant | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Web アプリ、Web API、デーモン | クライアントの資格情報 | [ADAL.NET のクライアント資格情報フロー](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET のクライアント資格情報フロー](msal-authentication-flows.md#client-credentials))
 Web API | 次の代理 | [ADAL.NET でのユーザーの代わりのサービス間呼び出し](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [MSAL.NET での次の代理](msal-authentication-flows.md#on-behalf-of)
@@ -223,7 +223,7 @@ MSAL.NET では、セキュリティ上の理由により、更新トークン�
 
 さいわい、MSAL.NET では現在、API で以前の更新トークン (ADAL で取得) を `IConfidentialClientApplication` に移行することができます。
 
-```CSharp
+```csharp
 /// <summary>
 /// Acquires an access token from an existing refresh token and stores it and the refresh token into 
 /// the application user token cache, where it will be available for further AcquireTokenSilent calls.
@@ -264,6 +264,6 @@ AuthenticationResult result = await appRt.AcquireTokenByRefreshToken(null, rt)
 
 更新トークンが使用可能なさまざまな統合シナリオで、この方法を使用することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 スコープの詳細については、[Microsoft ID プラットフォーム エンドポイントでのスコープ、アクセス許可、および同意](v2-permissions-and-consent.md)に関するページを参照してください

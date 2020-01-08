@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2019
+ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 140361b7ba3a6a618d4c416447525f8a73690b81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 899f4cba31afed812fa1643b925a38812308042e
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748437"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552935"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Security Center での Endpoint Protection の評価と推奨事項
 
-Azure Security Center は、Endpoint Protection ソリューションの[サポートされる](https://docs.microsoft.com/azure/security-center/security-center-os-coverage)バージョンの正常性評価を提供します。 この記事では、Security Center で次の 2 つの推奨事項を生成するシナリオについて説明します。
+Azure Security Center は、Endpoint Protection ソリューションの[サポートされる](security-center-services.md#supported-endpoint-protection-solutions-)バージョンの正常性評価を提供します。 この記事では、Security Center で次の 2 つの推奨事項を生成するシナリオについて説明します。
 
 * **仮想マシンに Endpoint Protection ソリューションをインストールする**
 * **マシンの Endpoint Protection の正常性の問題を解決する**
@@ -175,7 +175,7 @@ Security Center は、次のいずれかのチェックが満たされていな�
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
 Microsoft Antimalware 拡張機能のログは、 **%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware(または PaaSAntimalware)\1.5.5.x(バージョン #)\CommandExecution.log** で入手できます
 

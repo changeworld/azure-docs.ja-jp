@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
 ms.date: 09/09/2019
-ms.openlocfilehash: 482fc3f08fb986908efcab83a82338ced36ee689
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5cfccd6e79b7289b6fd59abcabba05abab6ab09b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821008"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443851"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>クイック スタート:Azure portal、PowerShell、Azure CLI を使用して Azure SQL Database で単一データベースを作成します
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 - プロビジョニング済みコンピューティング レベルの単一データベースには、2 つの[購入モデル](sql-database-purchase-models.md)のうちの 1 つを使用して、一定量のコンピューティング リソース (CPU およびメモリを含む) が事前に割り当てられています。
 - サーバーレス コンピューティング レベルの単一データベースは、自動スケーリングされる一定範囲のコンピューティング リソース (CPU およびメモリを含む) を備え、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のみで使用できます。
 
-単一データベースを作成するときは、それを管理するための [SQL Database サーバー](sql-database-servers.md)も定義し、指定したリージョンの [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内にそれを配置します。
+単一データベースを作成するときは、それを管理するための [SQL Database サーバー](sql-database-servers.md)も定義し、指定したリージョンの [Azure リソース グループ](../azure-resource-manager/management/overview.md)内にそれを配置します。
 
 > [!NOTE]
 > このクイックスタートでは、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)を使用しますが、[DTU ベースの購入モデル](sql-database-service-tiers-DTU.md)も利用できます。
@@ -66,7 +66,7 @@ Adventure Works LT サンプル データを含む単一データベースを作
 
 5. **[クエリ エディター]** ページを閉じ、未保存の編集を破棄するかどうかを確認するプロンプトが表示されたら **[OK]** をクリックします。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 「[次の手順](#next-steps)」に進む場合は、このリソース グループ、データベース サーバー、単一データベースをそのままにしてください。 次のステップでは、データベースに接続してクエリを実行するさまざまな方法を紹介しています。
 
@@ -76,7 +76,7 @@ Adventure Works LT サンプル データを含む単一データベースを作
 2. リソース グループ ページで **[リソース グループの削除]** を選択します。
 3. フィールドに「*myResourceGroup*」と入力してから、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - オンプレミスまたはリモート ツールから単一データベースに接続するために、サーバー レベルのファイアウォール規則を作成します。 詳細については、「[サーバーレベルのファイアウォール規則を作成する](sql-database-server-level-firewall-rule.md)」を参照してください。
 - サーバーレベルのファイアウォール規則を作成した後に、いくつかの異なるツールと言語を使用して、データベースに[接続し、クエリを実行](sql-database-connect-query.md)します。

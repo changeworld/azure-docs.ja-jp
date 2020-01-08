@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 066ac1080f7ea378efe1665e7ebc70e57118191c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422963"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459108"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
 
@@ -79,10 +79,10 @@ Service Bus リレーへのメッセージ送信は、そのメッセージを�
 
 **netTCPRelay** WCF バインドを使って開いたリレーでは、メッセージは個別のメッセージではなく、システムを流れるデータ ストリームとして扱われます。 このバインドを使用すると、センダーとリスナーだけが、送受信された個々のメッセージを 1 つのまとまりとして認識できます。 **netTCPRelay** バインドを使ったリレーの場合、課金対象のメッセージ数を計算するために、すべてのデータがストリームとして扱われます。 この場合、Service Bus は、個々のリレーを介して送受信されたデータ量の合計を 5 分ごとに計算します。 次に、データ量の合計を 64 KB で除算して、その期間内でのリレーについて、課金対象のメッセージ数を決定します。
 
-## <a name="quotas"></a>クォータ
-| クォータ名 | Scope (スコープ) |  メモ | 値 |
+## <a name="quotas"></a>Quotas (クォータ)
+| クォータ名 | スコープ |  メモ | 値 |
 | --- | --- | --- | --- |
-| リレーの同時リスナー |エンティティ |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |25 |
+| リレーの同時リスナー |Entity |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |25 |
 | あるサービス名前空間に含まれるリレー エンドポイント全部の同時リレー接続 |名前空間 |- |5,000 |
 | サービス名前空間ごとのリレー エンドポイント |名前空間 |- |10,000 |
 | [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) と [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) リレーのメッセージ サイズ |名前空間 |これらのクォータを超える受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。 |64 KB |
@@ -104,9 +104,9 @@ Relay 名前空間名の長さは 6 ～ 50 文字である必要があります�
 
 ある Azure サブスクリプションから別のサブスクリプションに名前空間を移行する場合は、[Azure Portal](https://portal.azure.com) または PowerShell コマンドを使用することができます。 名前空間を別のサブスクリプションに移行するには、名前空間が既にアクティブになっている必要があります。 コマンドを実行するユーザーは、ソースとターゲットの両方のサブスクリプションの管理者ユーザーである必要があります。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
-Azure Portal を使用して、あるサブスクリプションから別のサブスクリプションに Azure Relay 名前空間を移行する方法については、[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)に関する記事を参照してください。 
+Azure Portal を使用して、あるサブスクリプションから別のサブスクリプションに Azure Relay 名前空間を移行する方法については、[新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)に関する記事を参照してください。 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -133,7 +133,7 @@ Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは U
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Relay エンドポイントをホワイトリストに登録することはできますか?
 はい。 リレー クライアントは、完全修飾ドメイン名を使用して Azure Relay サービスへの接続を確立します。 お客様は、DNS ホワイトリスト登録をサポートするファイアウォールで、`*.servicebus.windows.net` のエントリを追加できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [名前空間を作成する](relay-create-namespace-portal.md)
 * [.NET を使って作業を開始する](relay-hybrid-connections-dotnet-get-started.md)
 * [Node を使って作業を開始する](relay-hybrid-connections-node-get-started.md)

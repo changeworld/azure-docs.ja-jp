@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446741"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>クイック スタート:翻訳のためのカスタム モデルを構築、デプロイ、および使用する
 
@@ -37,7 +37,7 @@ Custom Translator ポータルのランディング ページで、[新しいプ
 
 ## <a name="upload-documents"></a>ドキュメントのアップロード
 
-次に、[トレーニング](training-and-model.md#training-dataset-for-custom-translator)、[チューニング](training-and-model.md#tuning-dataset-for-custom-translator)、および[テスト](training-and-model.md#testing-dataset-for-custom-translator)のドキュメント セットをアップロードします。 [並列](what-are-parallel-documents.md)ドキュメントと複合ドキュメントの両方をアップロードすることができます。 [辞書](what-is-dictionary.md)をアップロードすることもできます。
+次に、[トレーニング](training-and-model.md#training-document-type-for-custom-translator)、[チューニング](training-and-model.md#tuning-document-type-for-custom-translator)、および[テスト](training-and-model.md#testing-dataset-for-custom-translator)のドキュメント セットをアップロードします。 [並列](what-are-parallel-documents.md)ドキュメントと複合ドキュメントの両方をアップロードすることができます。 [辞書](what-is-dictionary.md)をアップロードすることもできます。
 
 ドキュメントのアップロードは、ドキュメント タブからも、特定のプロジェクトのページからも行うことができます。
 
@@ -45,13 +45,13 @@ Custom Translator ポータルのランディング ページで、[新しいプ
 
 ドキュメントをアップロードするときに、ドキュメントの種類 (トレーニング、チューニング、またはテスト) と言語ペアを選択します。 並列ドキュメントをアップロードする場合は、ドキュメント名をさらに指定する必要があります。 詳細については、[ドキュメントのアップロード](how-to-upload-document.md)に関するページを参照してください。
 
-## <a name="create-a-model"></a>モデルの作成
+## <a name="create-a-model"></a>モデルを作成する
 
 お客様にとって必要なドキュメントをすべてアップロードしたら、次の手順は、お客様のモデルの構築になります。
 
-作成したプロジェクトを選択します。 お客様がアップロードしたすべてのドキュメントが表示されます。これらでは、このプロジェクトと言語ペアが共有されます。 お客様のモデルに含めるドキュメントを選択します。 [トレーニング](training-and-model.md#training-dataset-for-custom-translator) データ、[チューニング](training-and-model.md#tuning-dataset-for-custom-translator) データ、および[テスト](training-and-model.md#testing-dataset-for-custom-translator) データを選択できます。または、トレーニング データだけを選択して、お客様のモデル用のチューニング セットおよびテスト セットが Custom Translator によって自動的に構築されるようにすることができます。
+作成したプロジェクトを選択します。 お客様がアップロードしたすべてのドキュメントが表示されます。これらでは、このプロジェクトと言語ペアが共有されます。 お客様のモデルに含めるドキュメントを選択します。 [トレーニング](training-and-model.md#training-document-type-for-custom-translator) データ、[チューニング](training-and-model.md#tuning-document-type-for-custom-translator) データ、および[テスト](training-and-model.md#testing-dataset-for-custom-translator) データを選択できます。または、トレーニング データだけを選択して、お客様のモデル用のチューニング セットおよびテスト セットが Custom Translator によって自動的に構築されるようにすることができます。
 
-![モデルの作成](media/quickstart/ct-how-to-train.png)
+![モデルを作成する](media/quickstart/ct-how-to-train.png)
 
 お客様が望むドキュメントを選択したら、[モデルの作成] ボタンをクリックして、お客様のモデルを作成し、トレーニングを開始します。 お客様のトレーニングの状態と、トレーニングしたすべてのモデルの詳細は、[モデル] タブで確認できます。
 
@@ -71,6 +71,6 @@ Custom Translator ポータルのランディング ページで、[新しいプ
 
 デプロイしたモデルには、Microsoft Translator [Text API V3 を通じて CategoryID を指定することによって](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)アクセスすることができます。 Translator Text API の詳細については、[API リファレンス](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) Web ページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Custom Translator ワークスペース内を移動し、お客様のプロジェクトを管理する](workspace-and-project.md)方法について学習します。

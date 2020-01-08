@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: a0917f2649f1b780429f78406900c599c5ac853e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: acfa10ea506e063bf6b230386ca0722f1c959d18
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472030"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442557"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Azure API Management サービスの新しいインスタンスの作成
 
@@ -31,13 +31,13 @@ API Management (APIM) が組織にもたらす利点は、外部、パートナ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
 ## <a name="create-a-new-service"></a>新しいサービスの作成
 
 1. Azure portal メニューから **[リソースの作成]** を選択します。 Azure の **[ホーム]** ページから **[リソースの作成]** を選択することもできます。 
    
-   ![[リソースの作成] を選択する](./media/get-started-create-service-instance/00-CreateResource-01.png)
+   ![[リソースの作成] を選択します](./media/get-started-create-service-instance/00-CreateResource-01.png)
    
 1. **[新規]** 画面で、 **[統合]** 、 **[API Management]** の順に選択します。
    
@@ -47,11 +47,11 @@ API Management (APIM) が組織にもたらす利点は、外部、パートナ�
    
    ![新しいインスタンス](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
    
-   | Setting                 | 推奨値                               | Description                                                                                                                                                                                                                                                                                                                         |
+   | 設定                 | 推奨値                               | [説明]                                                                                                                                                                                                                                                                                                                         |
 |-------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                | API Management サービスの一意の名前 | この名前を後から変更することはできません。 サービスの名前は、 *{name}.azure-api.net* の形式で既定のドメイン名を生成するために使用されます。 カスタム ドメイン名を使用する場合は、[カスタム ドメインの構成](configure-custom-domain.md)に関するページをご覧ください。 <br/> サービス名は、サービスおよび対応する Azure リソースへの参照に使用されます。 |
 | **サブスクリプション**        | 該当するサブスクリプション                             | この新しいサービス インスタンスが作成されるサブスクリプション。 アクセスできる各種の Azure サブスクリプションの中から、サブスクリプションを 1 つ選択できます。                                                                                                                                                            |
-| **リソース グループ**      | *apimResourceGroup*                           | 新規または既存のリソースを選択できます。 リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。 [こちら](../azure-resource-manager/resource-group-overview.md#resource-groups)をご覧ください。                                                                                                  |
+| **リソース グループ**      | *apimResourceGroup*                           | 新規または既存のリソースを選択できます。 リソース グループとは、ライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。 [こちら](../azure-resource-manager/management/overview.md#resource-groups)をご覧ください。                                                                                                  |
 | **Location**            | "*米国西部*"                                    | 近くの地理的リージョンを選択します。 ドロップダウン リストのボックスには、API Management サービスを利用できるリージョンのみが表示されます。                                                                                                                                                                                                          |
 | **組織名**   | 組織の名前                 | この名前は、開発者ポータルのタイトルや通知用電子メールの送信者など、さまざまな場所に使用されます。                                                                                                                                                                                                             |
 | **管理者のメール アドレス** | *admin\@org.com*                               | **API Management** からのすべての通知が送信されるメール アドレスを設定します。                                                                                                                                                                                                                                              |
@@ -64,7 +64,7 @@ API Management (APIM) が組織にもたらす利点は、外部、パートナ�
 
 [!INCLUDE [api-management-navigate-to-instance](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になった場合は、次の手順に従って、リソース グループと、関連するすべてのリソースを削除できます。
 
@@ -82,7 +82,7 @@ API Management (APIM) が組織にもたらす利点は、外部、パートナ�
 
    ![リソース グループの削除](./media/get-started-create-service-instance/00-DeleteResource-03.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [最初の API をインポートして発行する](import-and-publish.md)

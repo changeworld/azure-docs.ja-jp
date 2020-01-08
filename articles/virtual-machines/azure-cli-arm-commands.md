@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 1ec1856508588d07e55e60e251a1369ecc3fa985
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 7fd06a620c695b3be49a116c89f63507cee9c07c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174054"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355926"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager モードでの Azure CLI コマンド
-この記事では、Azure Resource Manager デプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。  
+この記事では、Azure Resource Manager デプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」を参照してください。  
 
 > [!NOTE]
 > この記事では、Azure CLI での Resource Manager モードのコマンドを示します。Azure CLI は Azure クラシック CLI と呼ばれることがあります。 Resource Manager モデルでの操作は、次世代のマルチプラットフォーム CLI である [Azure CLI](/cli/azure/install-az-cli2) で試すこともできます。

@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 07/15/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 494ef8b76f9767b43e5e1d739c47933ee0f3c40d
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 676427ca2985de51767939891b41f413446d4bb1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446583"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-nodejs"></a>クイック スタート:Bing Visual Search SDK for Node.js を使用して画像に関する分析情報を取得する
 
 このクイック スタートを使用すると、Node.js SDK を使用して、Bing Visual Search サービスから画像に関する分析情報を取得することができます。 Bing Visual Search には、ほとんどのプログラミング言語に対応した REST API がありますが、SDK を使用すれば、アプリケーションに対して簡単にサービスを統合することができます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) にあります。 
 
 ## <a name="prerequisites"></a>前提条件
-* [Node.JS](https://www.nodejs.org/)
+* [Node.js](https://www.nodejs.org/)
 * Bing Visual Search SDK for Node.js
     * Bing Visual Search SDK を使用してコンソール アプリケーションを設定するには、以下のコマンドを実行します。
         1. `npm install ms-rest-azure`
-        2. `npm install azure-cognitiveservices-search-visualSearch`
+        2. [https://login.microsoftonline.com/consumers/](`npm install azure-cognitiveservices-search-visualSearch`)
 
 
-[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 <a name="client"></a>
 
@@ -107,7 +107,7 @@ ms.locfileid: "74383566"
     
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](tutorial-bing-visual-search-single-page-app.md)

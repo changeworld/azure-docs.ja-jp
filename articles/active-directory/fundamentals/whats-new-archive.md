@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 12/10/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9aa129978201017c628da00e90190d93900d2de
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 2dc2a8d523b2aabd72348529561f7cfdac1b7a9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422810"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -31,6 +31,276 @@ Azure Active Directory の新着情報のリリース ノートでは、次の�
 - バグの修正
 - 非推奨の機能
 - 変更の計画
+
+---
+
+## <a name="june-2019"></a>2019 年 6 月
+
+### <a name="new-riskdetections-api-for-microsoft-graph-public-preview"></a>Microsoft Graph 用の新しい riskDetections API (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** Identity Protection  
+**製品の機能:** ID のセキュリティ & 保護
+
+Microsoft Graph 用の新しい riskDetections API のパブリック プレビューが開始されました。 この新しい API を使用すると、組織の Identity Protection に関連したユーザーおよびサインインのリスク検出の一覧を表示できます。 また、この API を使用して、検出の種類、状態、レベルなどの詳細を含むリスク検出のクエリをさらに効率良く行うことができます。
+
+詳細については、[リスク検出 API のリファレンス ドキュメント](https://docs.microsoft.com/graph/api/resources/riskdetection?view=graph-rest-beta)をご覧ください。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---june-2019"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2019 年 6 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+
+2019年 6 月に、フェデレーションを使用した以下の 22 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
+
+[Azure AD SAML Toolkit](https://docs.microsoft.com/azure/active-directory/saas-apps/saml-toolkit-tutorial)、[Otsuka Shokai](https://docs.microsoft.com/azure/active-directory/saas-apps/otsuka-shokai-tutorial)、[ANAQUA](https://docs.microsoft.com/azure/active-directory/saas-apps/anaqua-tutorial)、[Azure VPN Client](https://portal.azure.com/)、[ExpenseIn](https://docs.microsoft.com/azure/active-directory/saas-apps/expensein-tutorial)、[Helper Helper](https://docs.microsoft.com/azure/active-directory/saas-apps/helper-helper-tutorial)、[Costpoint](https://docs.microsoft.com/azure/active-directory/saas-apps/costpoint-tutorial)、[GlobalOne](https://docs.microsoft.com/azure/active-directory/saas-apps/globalone-tutorial)、[Mercedes-Benz In-Car Office](https://me.secure.mercedes-benz.com/)、[Skore](https://app.justskore.it/)、[Oracle Cloud Infrastructure Console](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial)、[CyberArk SAML Authentication](https://docs.microsoft.com/azure/active-directory/saas-apps/cyberark-saml-authentication-tutorial)、[Scrible Edu](https://www.scrible.com/sign-in/#/create-account)、[PandaDoc](https://docs.microsoft.com/azure/active-directory/saas-apps/pandadoc-tutorial)、[Perceptyx](https://apexdata.azurewebsites.net/docs.microsoft.com/azure/active-directory/saas-apps/perceptyx-tutorial)、[Proptimise OS](https://proptimise.co.uk/software/)、[Vtiger CRM (SAML)](https://docs.microsoft.com/azure/active-directory/saas-apps/vtiger-crm-saml-tutorial)、Oracle Access Manager for Oracle Retail Merchandising、Oracle Access Manager for Oracle E-Business Suite、Oracle IDCS for E-Business Suite、Oracle IDCS for PeopleSoft、Oracle IDCS for JD Edwards
+
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+
+---
+
+### <a name="automate-user-account-provisioning-for-these-newly-supported-saas-apps"></a>新しくサポートされた SaaS アプリに対するユーザー アカウントのプロビジョニングを自動化する
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** 監視とレポート
+
+新しく統合された次のアプリでのユーザー アカウントの作成、更新、および削除を自動化できるようになりました。
+
+- [[ズーム]](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)
+
+- [Envoy](https://docs.microsoft.com/azure/active-directory/saas-apps/envoy-provisioning-tutorial)
+
+- [Proxyclick](https://docs.microsoft.com/azure/active-directory/saas-apps/proxyclick-provisioning-tutorial)
+
+- [4me](https://docs.microsoft.com/azure/active-directory/saas-apps/4me-provisioning-tutorial)
+
+自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD による SaaS アプリケーションへのユーザー プロビジョニングの自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)に関するページを参照してください
+
+---
+
+### <a name="view-the-real-time-progress-of-the-azure-ad-provisioning-service"></a>Azure AD プロビジョニング サービスのリアルタイムの進行状況を表示する
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** アプリ プロビジョニング  
+**製品の機能:** ID ライフサイクル管理
+
+Azure AD プロビジョニング エクスペリエンスが更新されて、ユーザーのプロビジョニング プロセスがどのくらい進んでいるかを示す新しい進行状況バーが組み込まれました。 この更新されたエクスペリエンスでは、現在までにプロビジョニングされたユーザー数だけでなく、現在のサイクル中にプロビジョニングされたユーザー数に関する情報も提供されます。
+
+詳細については、「[ユーザー プロビジョニングの状態を確認する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)」を参照してください。
+
+---
+
+### <a name="company-branding-now-appears-on-sign-out-and-error-screens"></a>会社のブランドがサインアウト画面とエラー画面に表示される
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+
+Azure AD が更新されて、会社のブランドがサインイン ページだけでなくサインアウト画面やエラー画面にも表示されるようになりました。 この機能を有効にするための操作は一切不要で、Azure portal の **[会社のブランド]** 領域で既に設定した資産が Azure AD でそのまま使用されます。
+
+会社のブランドの設定について詳しくは、[組織の Azure Active Directory ページへのブランドの追加](https://docs.microsoft.com/azure/active-directory/fundamentals/customize-branding)に関する記事を参照してください。
+
+---
+
+### <a name="azure-multi-factor-authentication-mfa-server-is-no-longer-available-for-new-deployments"></a>新しいデプロイでの Azure Multi-Factor Authentication (MFA) Server の廃止
+
+**種類:** 非推奨  
+**サービス カテゴリ:** MFA  
+**製品の機能:** ID のセキュリティ & 保護
+
+2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 組織内で多要素認証が必要な新しいお客様は、今後はクラウドベースの Azure Multi-Factor Authentication を使用する必要があります。 7 月 1 日より前に MFA Server をアクティブ化したお客様には、変更が表示されません。 引き続き、最新バージョンをダウンロードしたり、今後の更新プログラムを取得したり、アクティブ化資格情報を生成したりすることができます。
+
+詳細については、「[Azure Multi-Factor Authentication Server の概要](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)」を参照してください。 クラウドベースの Azure Multi-factor Authentication の詳細については、「[クラウド ベースの Azure Multi-Factor Authentication のデプロイの計画](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)」を参照してください。
+
+---
+
+## <a name="may-2019"></a>2019 年 5 月
+
+### <a name="service-change-future-support-for-only-tls-12-protocols-on-the-application-proxy-service"></a>サービスの変更:アプリケーション プロキシ サービスでの TLS 1.2 プロトコルのみの今後のサポート
+
+**種類:** 変更の計画  
+**サービス カテゴリ:** アプリ プロキシ  
+**製品の機能:** アクセス制御
+
+お客様にクラス最高の暗号化を提供するために、Application Proxy サービスでは TLS 1.2 プロトコルのみにアクセスを制限しています。 この変更は、TLS 1.2 プロトコルのみを既に使用しているお客様に徐々に適用されているため、変更を意識することはありません。
+
+2019 年 8 月 31日で TLS 1.0 と TLS 1.1 が廃止されますが、改めて事前通知を行いますので、この変更に備える時間が与えられます。 この変更に備えるために、Application Proxy を通じて発行されたアプリへのアクセスにユーザーが使用するすべてのクライアントを含む、クライアントとサーバーおよびブラウザーとサーバーの組み合わせが、TLS 1.2 プロトコルを使用して Application Proxy サービスへの接続を維持するように更新されていることを確認してください。 詳しくは、「[Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#before-you-begin)」を参照してください。
+
+---
+
+### <a name="use-the-usage-and-insights-report-to-view-your-app-related-sign-in-data"></a>使用状況および分析情報レポートを使用して、アプリに関連するサインイン データを表示する
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** 監視とレポート
+
+これで、Azure portal の **[エンタープライズ アプリケーション]** 領域にある使用状況および分析情報レポートを使用して、以下に関する情報を含んだサインイン データをアプリケーションを中心にして表示できます。
+
+- 組織内で最もよく使われるアプリ
+
+- サインインの失敗が最も多いアプリ
+
+- アプリごとの上位のサインイン エラー
+
+この機能の詳細については、「[Azure Active Directory ポータルの使用状況と分析情報のレポート](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report)」を参照してください
+
+---
+
+### <a name="automate-your-user-provisioning-to-cloud-apps-using-azure-ad"></a>Azure AD を使用してクラウド アプリへのユーザー プロビジョニングを自動化する
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** 監視とレポート
+
+これらの新しいチュートリアルに従って、Azure AD プロビジョニング サービスを使用して、次のクラウド ベース アプリのユーザー アカウントの作成、削除、および更新を自動化します。
+
+- [Comeet](https://docs.microsoft.com/azure/active-directory/saas-apps/comeet-recruiting-software-provisioning-tutorial)
+
+- [DynamicSignal](https://docs.microsoft.com/azure/active-directory/saas-apps/dynamic-signal-provisioning-tutorial)
+
+- [KeeperSecurity](https://docs.microsoft.com/azure/active-directory/saas-apps/keeper-password-manager-digitalvault-provisioning-tutorial)
+
+グループ オブジェクトのプロビジョニング方法に関する情報が記載されている、この新しい [Dropbox チュートリアル](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial)に従うこともできます。
+
+自動化されたユーザー アカウント プロビジョニングを使用して組織をより適切にセキュリティ保護する方法の詳細については、[Azure AD での SaaS アプリケーションへのユーザー プロビジョニングの自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)に関するページを参照してください。
+
+---
+
+### <a name="identity-secure-score-is-now-available-in-azure-ad-general-availability"></a>Azure AD で ID セキュリティ スコアが利用可能 (一般提供)
+
+**種類:** 新機能  
+**サービス カテゴリ:** 該当なし  
+**製品の機能:** ID のセキュリティ & 保護
+
+これで、Azure AD で ID セキュリティ スコア機能を使用することにより、ID セキュリティ体制を監視し改善できます。 ID セキュリティ スコア機能では、次の操作に役立つ単一のダッシュボードを使用します。
+
+- 1 から 223 のスコアに基づいて ID セキュリティ体制を客観的に測定する。
+
+- ID セキュリティの強化を計画する
+
+- セキュリティの強化の成功を確認する
+
+ID セキュリティ スコア機能の詳細については、「[Azure Active Directory の ID セキュリティ スコアとは](https://docs.microsoft.com/azure/active-directory/fundamentals/identity-secure-score)」を参照してください。
+
+---
+
+### <a name="new-app-registrations-experience-is-now-available-general-availability"></a>新しいアプリの登録エクスペリエンスが利用可能 (一般提供)
+
+**種類:** 新機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** 開発者エクスペリエンス
+
+新しい[アプリの登録](https://aka.ms/appregistrations)エクスペリエンスが一般提供され利用可能になりました。 この新しいエクスペリエンスには、Azure portal とアプリケーション登録ポータルの使い慣れているすべての主要機能が含まれ、これらの機能は以下を通じて向上しています。
+
+- **アプリの管理の向上。** さまざまなポータルにわたってアプリを表示する代わりに、1 か所ですべてのアプリを表示できるようになりました。
+
+- **アプリの登録の簡略化。** 改善されたナビゲーション エクスペリエンスから、刷新されたアクセス許可選択エクスペリエンスまで、アプリの登録および管理が簡単になりました。
+
+- **詳細情報。** クイック スタート ガイドなど、アプリに関する詳細が表示されます。
+
+詳細については、[Microsoft ID プラットフォーム](https://docs.microsoft.com/azure/active-directory/develop/)と[新しいアプリの登録エクスペリエンスが一般に利用可能になった](https://developer.microsoft.com/identity/blogs/new-app-registrations-experience-is-now-generally-available/)ことに関するページを参照してください。 ブログでのお知らせ。
+
+---
+
+### <a name="new-capabilities-available-in-the-risky-users-api-for-identity-protection"></a>Identity Protection の Risky Users API で使用できる新機能
+
+**種類:** 新機能  
+**サービス カテゴリ:** Identity Protection  
+**製品の機能:** ID のセキュリティ & 保護
+
+Risky Users API を使用して、ユーザーのリスク履歴を取得し、危険なユーザーを無視し、ユーザーを侵害対象として確認できるようになったことをお知らせします。 この変更により、より効率的にユーザーのリスク状態を更新し、リスク履歴を理解できるようになりました。
+
+詳細については、[Risky Users API のリファレンス ドキュメント](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)を参照してください。
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2019"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2019 年 5 月
+
+**種類:** 新機能  
+**サービス カテゴリ:** エンタープライズ アプリケーション  
+**製品の機能:** サード パーティ統合
+
+2019年 5 月に、フェデレーションを使用した以下の 21 の新規アプリのサポートが、アプリ ギャラリーに追加されました。
+
+[Freedcamp](https://docs.microsoft.com/azure/active-directory/saas-apps/freedcamp-tutorial)、[Real Links](https://docs.microsoft.com/azure/active-directory/saas-apps/real-links-tutorial)、[Kianda](https://app.kianda.com/sso/OpenID/AzureAD/)、[Simple Sign](https://docs.microsoft.com/azure/active-directory/saas-apps/simple-sign-tutorial)、[Braze](https://docs.microsoft.com/azure/active-directory/saas-apps/braze-tutorial)、[Displayr](https://docs.microsoft.com/azure/active-directory/saas-apps/displayr-tutorial)、[Templafy](https://docs.microsoft.com/azure/active-directory/saas-apps/templafy-tutorial)、[Marketo Sales Engage](https://toutapp.com/login)、[ACLP](https://docs.microsoft.com/azure/active-directory/saas-apps/aclp-tutorial)、[OutSystems](https://docs.microsoft.com/azure/active-directory/saas-apps/outsystems-tutorial)、[Meta4 Global HR](https://docs.microsoft.com/azure/active-directory/saas-apps/meta4-global-hr-tutorial)、[Quantum Workplace](https://docs.microsoft.com/azure/active-directory/saas-apps/quantum-workplace-tutorial)、[Cobalt](https://docs.microsoft.com/azure/active-directory/saas-apps/cobalt-tutorial)、[webMethods API Cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/webmethods-integration-cloud-tutorial)、[RedFlag](https://pocketstop.com/redflag/)、[Whatfix](https://docs.microsoft.com/azure/active-directory/saas-apps/whatfix-tutorial)、[Control](https://docs.microsoft.com/azure/active-directory/saas-apps/control-tutorial)、[JOBHUB](https://docs.microsoft.com/azure/active-directory/saas-apps/jobhub-tutorial)、[NEOGOV](https://docs.microsoft.com/azure/active-directory/saas-apps/neogov-tutorial)、[Foodee](https://docs.microsoft.com/azure/active-directory/saas-apps/foodee-tutorial)、[MyVR](https://docs.microsoft.com/azure/active-directory/saas-apps/myvr-tutorial)
+
+アプリに関する詳細については、「[SaaS アプリケーションと Azure Active Directory の統合](https://aka.ms/appstutorial)」を参照してください。 アプリケーションの Azure AD アプリ ギャラリーでの公開に関する詳細については、「[アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する](https://aka.ms/azureadapprequest)」を参照してください。
+
+---
+
+### <a name="improved-groups-creation-and-management-experiences-in-the-azure-ad-portal"></a>Azure AD ポータルの強化されたグループ作成および管理エクスペリエンス
+
+**種類:** 新機能  
+**サービス カテゴリ:** グループ管理  
+**製品の機能:** コラボレーション
+
+Azure AD ポータルでグループに関連するエクスペリエンスの機能強化を行いました。 これらの機能強化により、管理者は、グループの一覧やメンバーの一覧をより適切に管理し、追加の作成オプションを提供できます。
+
+機能強化は次のとおりです。
+
+- メンバーシップの種類およびグループの種類による基本フィルター処理。
+
+- ソースやメール アドレスなどの新しい列の追加。
+
+- 簡単に選択解除するためのグループ、メンバー、および所有者の一覧を複数選択する機能。
+
+- グループの作成中にメール アドレスを選択し、所有者を追加する機能。
+
+詳細については、「[Azure Active Directory を使用して基本グループを作成してメンバーを追加する](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal)」を参照してください。
+
+---
+
+### <a name="configure-a-naming-policy-for-office-365-groups-in-azure-ad-portal-general-availability"></a>Azure AD ポータルで Office 365 グループの名前付けポリシーを構成する (一般提供)
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** グループ管理  
+**製品の機能:** コラボレーション
+
+管理者は、Azure AD ポータルを使用して、Office 365 グループの名前付けポリシーを構成できるようになりました。 この変更は、組織内のユーザーによって作成または編集される Office 365 グループに対して一貫性のある名前付け規則を適用するのに役立ちます。
+
+Office 365 グループの名前付けポリシーは、次の 2 通りの方法で構成できます。
+
+- グループ名に自動的に追加されるプレフィックスまたはサフィックスを定義します。
+
+- グループ名で許可されない、組織の禁止されている単語のカスタマイズ セットをアップロードします (たとえば、“CEO、Payroll、HR”)。
+
+詳細情報については、「[Azure Active Directory での Office 365 グループの名前付けポリシーの強制](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-naming-policy)」をご覧ください。
+
+---
+
+### <a name="microsoft-graph-api-endpoints-are-now-available-for-azure-ad-activity-logs-general-availability"></a>Microsoft Graph API エンドポイントが Azure AD アクティビティ ログで利用可能(一般提供)
+
+**種類:** 変更された機能  
+**サービス カテゴリ:** レポーティング  
+**製品の機能:** 監視とレポート
+
+Azure AD アクティビティ ログで Microsoft Graph API エンドポイントのサポートが一般的に利用できるようになったことをお知らせします。 このリリースでは、バージョン 1.0 の Azure AD 監査ログとサインイン ログ API を使用できるようになりました。
+
+詳細については、[Azure AD 監査ログ API の概要](https://docs.microsoft.com/graph/api/resources/azure-ad-auditlog-overview?view=graph-rest-1.0)に関するページを参照してください。
+
+---
+
+### <a name="administrators-can-now-use-conditional-access-for-the-combined-registration-process-public-preview"></a>管理者が統合登録プロセスに条件付きアクセスを使用可能 (パブリック プレビュー)
+
+**種類:** 新機能  
+**サービス カテゴリ:** 条件付きアクセス  
+**製品の機能:** ID のセキュリティ & 保護  
+
+管理者は、統合登録ページで使用する条件付きアクセス ポリシーを作成できるようになりました。 これには、次の場合に登録を許可するポリシーの適用が含まれます。
+
+- ユーザーが信頼できるネットワーク上にいる場合。
+
+- ユーザーのサインイン リスクが低い場合。
+
+- ユーザーがマネージド デバイス上にある場合。
+
+- ユーザーが組織の利用規約 (TOU) に同意した場合。
+
+条件付きアクセスとパスワードのリセットの詳細については、[「Azure AD の MFA とパスワードのリセットの統合登録エクスペリエンスの条件付きアクセス」のブログ記事](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Conditional-access-for-the-Azure-AD-combined-MFA-and-password/ba-p/566348)をご覧ください。 統合登録プロセスの条件付きアクセス ポリシーの詳細については、「[統合登録の条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/authentication/howto-registration-mfa-sspr-combined#conditional-access-policies-for-combined-registration)」を参照してください。 Azure AD Terms of Use 機能の詳細については、「[Azure Active Directory Terms of Use 機能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)」を参照してください。
 
 ---
 
@@ -79,7 +349,7 @@ Office 365 グループの名前付けポリシーは、次の 2 通りの方法
 ### <a name="azure-ad-activity-logs-are-now-available-in-azure-monitor-general-availability"></a>Azure AD アクティビティ ログを Azure Monitor で使用できるようになりました (一般提供)。
 
 **種類:** 新機能  
-**サービス カテゴリ:** レポート  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
 
 Azure AD アクティビティ ログの視覚化に関するフィードバックに対応するために、Log Analytics に新しい分析情報機能を導入します。 この機能により、Workbooks という対話型テンプレートを使用して Azure AD リソースに関する分析情報を得ることができます。 これらの既製の Workbooks は、アプリまたはユーザーの詳細情報を提供することができます。これには以下が含まれます。
@@ -248,7 +518,7 @@ Azure AD ポータルから削除された Office 365 グループを表示お�
 
 **種類:** 新機能  
 **サービス カテゴリ:** アプリ プロキシ  
-**製品の機能:** Access Control
+**製品の機能:** アクセス制御
 
 SAML で認証されたオンプレミス アプリで、これらのアプリへのリモート アクセスと共に、アプリケーション プロキシ経由でシングル サインオン (SSO) エクスペリエンスを使用できるようになりました。 オンプレミス アプリで SAML SSO を設定する方法の詳細については、「[アプリケーション プロキシ (プレビュー) を使用したオンプレミスのアプリケーションに対する SAML シングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-on-premises-apps)」を参照してください。
 
@@ -269,7 +539,7 @@ SAML で認証されたオンプレミス アプリで、これらのアプリ�
 ### <a name="new-audit-logs-user-experience-now-available"></a>[監査ログ] の新しいユーザー エクスペリエンスが使用可能になりました
 
 **種類:** 変更された機能  
-**サービス カテゴリ:** レポート  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
 
 読みやすさと情報の検索方法の両方を向上させるのに役立つ新しい Azure AD **[監査ログ]** ページが作成されました。 新しい **[監査ログ]** ページを表示するには、Azure AD の **[アクティビティ]** セクションで **[監査ログ]** を選択します。
@@ -303,7 +573,7 @@ SAML で認証されたオンプレミス アプリで、これらのアプリ�
 ### <a name="new-azure-ad-activity-logs-download-experience-available"></a>新しい Azure AD アクティビティ ログのダウンロード エクスペリエンスが使用可能になりました
 
 **種類:** 変更された機能  
-**サービス カテゴリ:** レポート  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
 
 大量のアクティビティ ログを Azure Portal から直接ダウンロードできるようになりました。 この更新プログラムでは、次のことが可能になります。
@@ -324,7 +594,7 @@ SAML で認証されたオンプレミス アプリで、これらのアプリ�
 
 **種類:** 変更の計画  
 **サービス カテゴリ:** 条件付きアクセス  
-**製品の機能:** Access Control
+**製品の機能:** アクセス制御
 
 現在、Exchange ActiveSync (EAS) が次の条件を評価する方法を更新しているところです。
 
@@ -472,7 +742,7 @@ Azure AD、Microsoft アカウント (MSA)、Google フェデレーションな�
 
 **種類:** 新機能  
 **サービス カテゴリ:** アプリ プロキシ  
-**製品の機能:** Access Control
+**製品の機能:** アクセス制御
 
 アプリケーション プロキシを使用して発行されたアプリで使用可能な、次の 3 つの新しい Cookie の設定を導入しました。
 
@@ -538,7 +808,7 @@ Azure AD Identity Protection のパブリック プレビュー オファリン�
 **サービス カテゴリ:** Privileged Identity Management  
 **製品の機能:** Privileged Identity Management
 
-Privileged Identity Management (PIM) の管理者が、すべての子リソースのロールの割り当てを含む、特定のリソースのすべてのアクティブで適格なロールの割り当てをエクスポートできるようになりました。 以前は、管理者がサブスクリプションに対するロールの割り当ての完全な一覧を取得するは困難で、特定のリソースごとにロールの割り当てをエクスポートする必要がありました。
+Privileged Identity Management (PIM) の管理者が、すべての子リソースのロールの割り当てを含む、特定のリソースのすべてのアクティブで適格なロールの割り当てをエクスポートできるようになりました。 以前は、管理者がサブスクリプションに対するロールの割り当ての完全な一覧を取得するのは困難で、特定のリソースごとにロールの割り当てをエクスポートする必要がありました。
 
 詳細については、[PIM での Azure リソース ロールのアクティビティおよび監査履歴の表示](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)に関するページを参照してください。
 
@@ -550,7 +820,7 @@ Privileged Identity Management (PIM) の管理者が、すべての子リソー�
 
 **種類:** 固定  
 **サービス カテゴリ:** [ユーザー管理]  
-**製品の機能:** Directory
+**製品の機能:** ディレクトリ
 
 >[!Important]
 >この修正についてご意見をいただき、ご迷惑をおかけしていることをよく理解しております。 このため、お客様の組織に変更を簡単に導入できるようになるまで、この変更は元に戻しました。
@@ -573,10 +843,10 @@ Active Directory Domain Services (AD DS) オブジェクトが同期範囲から
 
 - **オンプレミス ユーザーと Azure AD の既存ユーザーを再度組み合わせる** たとえば、AD DS でユーザーが再作成された場合、Azure AD の既存アカウントと再度組み合わされず、重複する Azure AD アカウントが生成されます (孤立オブジェクト)。 解決方法:Azure portal の Azure AD Connect Health を使用し、ソース アンカー/ImmutableID のマッピングをやり直します。 詳細については、「[孤立したオブジェクトのシナリオ](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario)」を参照してください。
 
-### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>重大な変更:Azure Monitor を通じた監査およびサインイン ログ スキーマの更新
+### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>重要な変更: Azure Monitor を通じた監査およびサインイン ログ スキーマの更新
 
 **種類:** 変更された機能  
-**サービス カテゴリ:** レポート  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
 
 現在、監査とサインインのログ ストリームはどちらも Azure Monitor を通じて公開していますので、お使いの SIEM ツールや Log Analytics とログ ファイルをシームレスに統合できます。 お客様のフィードバックに基づき、またこの機能の一般提供の発表に備えて、次の変更がスキーマに加えられます。 これらのスキーマ変更と関連ドキュメントの更新は 1 月の第 1 週までに行われる予定です。
@@ -589,10 +859,10 @@ Active Directory Domain Services (AD DS) オブジェクトが同期範囲から
 
 |フィールド名|変更箇所|古い値|新しい値|
 |----------|------------|----------|----------|
-|Category|以前は **[サービス名]** フィールドでした。 現在は **[監査カテゴリ]** フィールドです。 **[サービス名]** は **loggedByService** フィールドに名前が変更されました。|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービスのパスワード リセット</li></ul>|<ul><li>[ユーザー管理]</li><li>グループ管理</li><li>アプリの管理</li></ul>|
+|カテゴリ|以前は **[サービス名]** フィールドでした。 現在は **[監査カテゴリ]** フィールドです。 **[サービス名]** は **loggedByService** フィールドに名前が変更されました。|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービスのパスワード リセット</li></ul>|<ul><li>[ユーザー管理]</li><li>グループ管理</li><li>アプリの管理</li></ul>|
 |targetResources|**TargetResourceType** を最上位レベルに含みます。|&nbsp;|<ul><li>ポリシー</li><li>アプリ</li><li>User</li><li>Group</li></ul>|
-|loggedByService|監査ログを生成したサービスの名前を提供します。|Null|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービスのパスワード リセット</li></ul>|
-|結果|監査ログの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>失敗</li></ul>|
+|loggedByService|監査ログを生成したサービスの名前を提供します。|[Null]|<ul><li>アカウント プロビジョニング</li><li>Core Directory (コア ディレクトリ)</li><li>セルフサービスのパスワード リセット</li></ul>|
+|結果|監査ログの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li></ul>|<ul><li>Success</li><li>障害</li></ul>|
 
 #### <a name="changed-fields-in-the-sign-in-schema"></a>サインイン スキーマの変更されるフィールド
 サインイン スキーマの次のフィールドが変更されます:
@@ -600,8 +870,8 @@ Active Directory Domain Services (AD DS) オブジェクトが同期範囲から
 |フィールド名|変更箇所|古い値|新しい値|
 |----------|------------|----------|----------|
 |appliedConditionalAccessPolicies|これは **conditionalaccessPolicies** フィールドでした。 現在は **appliedConditionalAccessPolicies** フィールドです。|変更なし|変更なし|
-|conditionalAccessStatus|サインイン時点の条件付きアクセス ポリシー ステータスの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>失敗</li><li>未適用</li><li>無効</li></ul>|
-|appliedConditionalAccessPolicies: 結果|サインイン時点の個別の条件付きアクセス ポリシー ステータスの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>失敗</li><li>未適用</li><li>無効</li></ul>|
+|conditionalAccessStatus|サインイン時点の条件付きアクセス ポリシー ステータスの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>障害</li><li>未適用</li><li>無効</li></ul>|
+|appliedConditionalAccessPolicies: 結果|サインイン時点の個別の条件付きアクセス ポリシー ステータスの結果を提供します。 以前は、これは列挙されていましたが、実際の値を示すようになります。|<ul><li>0</li><li>1</li><li>2</li><li>3</li></ul>|<ul><li>Success</li><li>障害</li><li>未適用</li><li>無効</li></ul>|
 
 スキーマの詳細については、「[Azure Monitor の Azure AD 監査ログ スキーマを解釈する (プレビュー)](https://docs.microsoft.com/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema)」を参照してください。
 
@@ -728,7 +998,7 @@ PIM と利用可能な電子メール通知の詳細については、「[PIM �
 
 **種類:** 変更された機能  
 **サービス カテゴリ:** その他  
-**製品の機能:** Directory
+**製品の機能:** ディレクトリ
 
 グループベースのライセンスのパブリック プレビューが終了し、一般提供が開始されました。 この一般向けリリースの一環として、この機能のスケーラビリティの向上に加えて、単一ユーザーへのグループベースのライセンス割り当てを再処理できるようになり、Office 365 E3/A3 ライセンスでグループベースのライセンスが使用できるようになりました。
 
@@ -755,7 +1025,7 @@ PIM と利用可能な電子メール通知の詳細については、「[PIM �
 ### <a name="azure-ad-logs-now-work-with-azure-log-analytics-public-preview"></a>Azure AD のログを Azure Log Analytics (パブリック プレビュー) と連携させることが可能になりました
 
 **種類:** 新機能  
-**サービス カテゴリ:** レポート  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
 
 Azure AD のログを Azure Log Analytics に転送できるようになりました。 要望の特に多かったこの機能が追加されたことで、ビジネス、運営、セキュリティに関する分析データへのアクセスがこれまで以上に改善され、インフラストラクチャの監視機能も強化されました。 詳しくは、関連のブログ記事 (「[Azure Active Directory Activity logs in Azure Log Analytics now available (Azure Active Directory のアクティビティ ログが Azure Log Analytics で利用できるようになりました)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-Activity-logs-in-Azure-Log-Analytics-now/ba-p/274843)」) をご覧ください。
@@ -794,7 +1064,7 @@ Azure AD Domain Services では、マネージド ドメインの構成ミスや
 
 **種類:** 変更された機能  
 **サービス カテゴリ:** ディレクトリ管理  
-**製品の機能:** Directory
+**製品の機能:** ディレクトリ
 
 ForceDelete ドメイン API を使用して、ユーザー、グループ、アプリなどの参照を、カスタム ドメイン名 (contoso.com) から既定の初期ドメイン名 (contoso.onmicrosoft.com) へと非同期的に名前変更することにより、カスタム ドメイン名を削除できるようになりました。
 
@@ -872,7 +1142,7 @@ ForceDelete ドメイン API を使用して、ユーザー、グループ、ア
 ### <a name="new-troubleshooting-and-support-tab-on-the-sign-ins-logs-page-of-the-azure-portal"></a>Azure portal の [サインイン] ログ ページに [トラブルシューティングおよびサポート] タブを新設
 
 **種類:** 新機能  
-**サービス カテゴリ:** レポート  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
 
 Azure portal の **[サインイン]** ページの **[トラブルシューティングおよびサポート]** タブは、管理者やサポート エンジニアが、Azure AD のサインインに関連する問題のトラブルシューティングを行う助けとなるように設計されています。この新しいタブには、問題の解決に役立つように、エラー コード、エラー メッセージ、および修復の推奨事項 (ある場合) が表示されます。 問題を解決できない場合は、**クリップボードへのコピー**操作によってサポート チケットを作成する新しい方法も用意されています。この方法で、サポート チケット内のログ ファイルの**要求 ID** と**日付 (UTC)** のフィールドが設定されます。  
@@ -1039,7 +1309,7 @@ Microsoft では、Azure AD に対してより大規模な IP 範囲の導入を
 
 **種類:** 新機能  
 **サービス カテゴリ:** アプリ プロキシ  
-**製品の機能:** Access Control
+**製品の機能:** アクセス制御
 
 アプリケーション プロキシ アプリには、**HTTP 専用 Cookie** と呼ばれる新しい設定があります。 この設定では、アプリケーション プロキシ アクセス Cookie とセッション Cookie の両方に対する HTTP 応答ヘッダーに HTTPOnly フラグを追加して、クライアント側スクリプトから Cookie へのアクセスを停止し、さらに Cookie のコピーや変更などのアクションを防止することにより、セキュリティを強化します。 このフラグは以前は使用されていませんでしたが、Cookie は常に暗号化され、SSL 接続を使用して送信されることで、不適切な変更から保護されていました。
 
@@ -1091,7 +1361,7 @@ PIM と Azure リソースについて詳しくは、「[Privileged Identity Man
 
 **種類:** 変更された機能  
 **サービス カテゴリ:** アプリ プロキシ  
-**製品の機能:** Access Control
+**製品の機能:** アクセス制御
 
 事前認証プロトコルについての OpenID Connect から OAuth 2.0 Code Grant プロトコルへの更新により、アプリケーション プロキシで Tableau を使用するために追加構成を行う必要がなくなりました。 このプロトコルの変更により、JavaScript と HTML のタグで一般的にサポートされる HTTP のみのリダイレクトを使用することで、アプリケーション プロキシによる最新のアプリのサポートも向上しました。
 
@@ -1140,7 +1410,7 @@ Azure Active Directory (Azure AD) の設計が更新され、以下のサービ�
 ### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Azure AD アクティビティ ログは Azure Monitor から使用できるようになりました。
 
 **種類:** 新機能  
-**サービス カテゴリ:** レポート  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
 
 Azure AD アクティビティ ログは、Azure Monitor (Azure のプラットフォーム全体の監視サービス) のパブリック プレビューで利用可能になりました。 Azure Monitor は、これらの機能強化に加え、長期保有とシームレスな統合を提供します。
@@ -1158,8 +1428,8 @@ Azure AD アクティビティ ログは、Azure Monitor (Azure のプラット�
 ### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Azure AD サインイン レポートに条件付きアクセス情報を追加
 
 **種類:** 新機能  
-**サービス カテゴリ:** レポート  
-**製品の機能:** ID のセキュリティと保護
+**サービス カテゴリ:** レポーティング  
+**製品の機能:** ID のセキュリティ & 保護
  
 この更新により、ユーザーがサインインしたときにどのポリシーが評価されるか、また、そのポリシーの結果を確認できるようになりました。 さらに、ユーザーによって使用されるクライアント アプリの種類がレポートに含まれるようになったため、レガシ プロトコルのトラフィックを識別できます。 ユーザーに表示されるエラー メッセージに記載されている相関 ID を条件にレポート エントリ内を検索できるようにもなったため、対応するサインイン要求を特定してトラブルシューティングに利用できます。
 
@@ -1168,7 +1438,7 @@ Azure AD アクティビティ ログは、Azure Monitor (Azure のプラット�
 ### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>サインイン アクティビティ ログでレガシ認証を表示
 
 **種類:** 新機能  
-**サービス カテゴリ:** レポート  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
  
 サインイン アクティビティ ログに **[クライアント アプリ]** フィールドを導入することで、お客様がレガシ認証を使用しているユーザーを確認できるようになりました。 この情報にアクセスするには、Sign-ins MS Graph API を使用するか、Azure AD ポータルのサインイン アクティビティ ログで **[クライアント アプリ]** コントロールを使用してレガシー認証をフィルター処理します。 詳細については、ドキュメントをご覧ください。
@@ -1316,7 +1586,7 @@ TOU エンドユーザー UI の同意の文字列を更新しています。
 ### <a name="change-notice-security-fix-to-the-delegated-authorization-flow-for-apps-using-azure-ad-activity-logs-api"></a>変更通知:Azure AD アクティビティ ログ API を使用するアプリの委任された承認ワークフローに対するセキュリティの修正
 
 **種類:** 変更の計画  
-**サービス カテゴリ:** レポート  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
 
 セキュリティ強化のため、委任された承認ワークフローを使って [Azure AD アクティビティ ログ API](https://aka.ms/aadreportsapi) にアクセスするアプリのアクセス許可を変更する必要がありました。 この変更は、**2018 年 6 月 26日**までに行われます。
@@ -1437,7 +1707,7 @@ Azure AD Password Protection の詳細については、「[組織内の不適�
 
 **種類:** 新機能  
 **サービス カテゴリ:** その他  
-**製品の機能:** ID のセキュリティと保護
+**製品の機能:** ID のセキュリティ & 保護
  
 組織に Azure Multi-Factor Authentication (MFA) をデプロイする方法に関する新しいステップ バイ ステップ ガイドを公開しました。
 
@@ -1449,7 +1719,7 @@ MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deploy
 
 **種類:** 新機能  
 **サービス カテゴリ:** エンタープライズ アプリケーション  
-**製品の機能:** Access Control
+**製品の機能:** アクセス制御
 
 管理者は、グローバル管理者ロールを割り当てずに、アプリ管理タスクを委任できるようになりました。 新しいロールと機能は次のとおりです。
 
@@ -1475,7 +1745,7 @@ MFA のデプロイ ガイドを表示するには、GitHub の [Identity Deploy
 
 ### <a name="expressroute-support-changes"></a>ExpressRoute のサポートの変更
 
-**タイプ:** 変更の計画  
+**種類:** 変更の計画  
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** プラットフォーム  
 
@@ -1493,7 +1763,7 @@ Azure Active Directory (Azure AD) などのサービスとしてのソフトウ�
 
 ### <a name="microsoft-graph-apis-for-administrative-scenarios-for-tou"></a>TOU の管理シナリオ用の Microsoft Graph API
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** 開発者エクスペリエンス
  
@@ -1503,17 +1773,17 @@ Azure AD Terms of Use の管理操作のための Microsoft Graph API が追加�
 
 ### <a name="add-azure-ad-multi-tenant-endpoint-as-an-identity-provider-in-azure-ad-b2c"></a>Azure AD のマルチ テナント エンドポイントを Azure AD B2C の ID プロバイダーとして追加
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** B2C - コンシューマー ID 管理  
 **製品の機能:** B2B/B2C
  
-カスタム ポリシーを使用して、Azure AD の共通エンドポイントを ID プロバイダーとして Azure AD B2C に追加できるようになりました。 これにより、アプリケーションにサインインするすべての Azure AD ユーザー用のエントリ ポイントを 1 つにまとめることができます。 詳細については、[Azure Active Directory B2C: カスタム ポリシーを使用して、ユーザーがマルチテナント Azure AD ID プロバイダーにサインインできるようにする](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-commonaad-custom)に関するページを参照してください。
+カスタム ポリシーを使用して、Azure AD の共通エンドポイントを ID プロバイダーとして Azure AD B2C に追加できるようになりました。 これにより、アプリケーションにサインインするすべての Azure AD ユーザー用のエントリ ポイントを 1 つにまとめることができます。 詳細については、[Azure Active Directory B2C で カスタム ポリシーを使用して、ユーザーがマルチテナント Azure AD ID プロバイダーにサインインできるようにする](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-commonaad-custom)に関するページを参照してください。
 
 ---
 
 ### <a name="use-internal-urls-to-access-apps-from-anywhere-with-our-my-apps-sign-in-extension-and-the-azure-ad-application-proxy"></a>My Apps Sign-in Extension と Azure AD アプリケーション プロキシを使い、どこからでも内部 URL を使用してアプリにアクセス可能
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** SSO
  
@@ -1523,7 +1793,7 @@ Azure AD Terms of Use の管理操作のための Microsoft Graph API が追加�
  
 ### <a name="azure-active-directory---data-in-europe-for-europe-customers"></a>Azure Active Directory - ヨーロッパ内のデータ (ヨーロッパのお客様向け)
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** その他  
 **製品の機能:** GoLocal
 
@@ -1533,7 +1803,7 @@ Azure AD Terms of Use の管理操作のための Microsoft Graph API が追加�
  
 ### <a name="new-user-provisioning-saas-app-integrations---may-2018"></a>新しいユーザー プロビジョニング SaaS アプリの統合 - 2018 年 5 月
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** アプリ プロビジョニング  
 **製品の機能:** サード パーティ統合
  
@@ -1551,7 +1821,7 @@ Azure AD ギャラリーにある、ユーザー プロビジョニングをサ�
  
 ### <a name="azure-ad-access-reviews-of-groups-and-app-access-now-provides-recurring-reviews"></a>グループとアプリの Azure AD アクセス レビューで定期レビューが可能
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** アクセス レビュー  
 **製品の機能:** ガバナンス
  
@@ -1561,8 +1831,8 @@ Azure AD ギャラリーにある、ユーザー プロビジョニングをサ�
 
 ### <a name="azure-ad-activity-logs-sign-ins-and-audit-are-now-available-through-ms-graph"></a>Azure AD アクティビティ ログ (サインインと監査) を MS Graph から利用可能
 
-**タイプ:** 新機能  
-**サービス カテゴリ:** レポート  
+**種類:** 新機能  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
  
 Azure AD アクティビティ ログ (サインイン ログと監査ログを含みます) を MS Graph から利用できるようになりました。 これらのログにアクセスするための MS Graph 経由の 2 つのエンドポイントが公開されています。 Azure AD Reporting API を開始するためのプログラムによるアクセスについては、こちらの[ドキュメント](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)を参照してください。 
@@ -1571,7 +1841,7 @@ Azure AD アクティビティ ログ (サインイン ログと監査ログを�
  
 ### <a name="improvements-to-the-b2b-redemption-experience-and-leave-an-org"></a>B2B のredemption エクスペリエンスと組織からの離脱
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** B2B  
 **製品の機能:** B2B/B2C
 
@@ -1585,7 +1855,7 @@ Azure AD アクティビティ ログ (サインイン ログと監査ログを�
 
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery---may-2018"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ - 2018 年 5 月
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
  
@@ -1601,9 +1871,9 @@ Azure AD アクティビティ ログ (サインイン ログと監査ログを�
  
 ### <a name="new-step-by-step-deployment-guides-for-azure-active-directory"></a>Azure Active Directory のデプロイ手順に関する新しいガイダンス
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** その他  
-**製品の機能:** Directory
+**製品の機能:** ディレクトリ
  
 Azure Active Directory (Azure AD) のデプロイ方法に関する新しいステップ バイ ステップ ガイド。セルフサービスによるパスワードのリセット (SSPR)、シングル サインオン (SSO)、条件付きアクセス (CA)、アプリ プロキシ、ユーザー プロビジョニング、パススルー認証 (PTA) に対する Active Directory フェデレーション サービス (ADFS)、およびパスワード ハッシュの同期 (PHS) に対する ADFS が含まれます。
 
@@ -1613,7 +1883,7 @@ Azure Active Directory (Azure AD) のデプロイ方法に関する新しいス�
 
 ### <a name="enterprise-applications-search---load-more-apps"></a>エンタープライズ アプリケーション検索 - 読み込むアプリを増やす
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** SSO
  
@@ -1623,7 +1893,7 @@ Azure Active Directory (Azure AD) のデプロイ方法に関する新しいス�
  
 ### <a name="the-may-release-of-aadconnect-contains-a-public-preview-of-the-integration-with-pingfederate-important-security-updates-many-bug-fixes-and-new-great-new-troubleshooting-tools"></a>AADConnect の 5 月のリリースには、PingFederate との統合のパブリック プレビュー、重要なセキュリティ更新プログラム、多くのバグ修正、新しい優れたトラブルシューティング ツールが含まれています。 
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** AD Connect  
 **製品の機能:** ID ライフサイクル管理
  
@@ -1633,7 +1903,7 @@ AADConnect の 5 月のリリースには、PingFederate との統合のパブ�
 
 ### <a name="azure-ad-access-reviews-auto-apply"></a>Azure AD アクセス レビュー: 自動適用
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** アクセス レビュー  
 **製品の機能:** ガバナンス
 
@@ -1643,7 +1913,7 @@ AADConnect の 5 月のリリースには、PingFederate との統合のパブ�
 
 ### <a name="id-tokens-can-no-longer-be-returned-using-the-query-response_mode-for-new-apps"></a>新しいアプリでは query response_mode を使用して ID トークンを返すことはできません。 
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** ユーザー認証
  
@@ -1657,7 +1927,7 @@ AADConnect の 5 月のリリースには、PingFederate との統合のパブ�
 
 ### <a name="azure-ad-b2c-access-token-are-ga"></a>Azure AD B2C アクセス トークンが GA に
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** B2C - コンシューマー ID 管理  
 **製品の機能:** B2B/B2C 
 
@@ -1669,7 +1939,7 @@ Azure AD B2C によってセキュリティで保護されている Web API に�
 
 ### <a name="test-single-sign-on-configuration-for-saml-based-applications"></a>SAML ベース アプリケーションのシングル サインオン構成をテストする
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** SSO
 
@@ -1696,7 +1966,7 @@ SAML ベースの SSO アプリケーションを構成するときに、構成�
  
 ### <a name="azure-ad-connect-health-risky-ip-for-ad-fs-extranet-lockout-protection"></a>Azure AD Connect Health: AD FS エクストラネット ロックアウト保護の危険な IP 
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** その他  
 **製品の機能:** 監視とレポート
 
@@ -1712,7 +1982,7 @@ Connect Health で、U/P ログインの失敗のしきい値を超える IP ア
  
 ### <a name="easy-app-config-with-metadata-file-or-url"></a>メタデータ ファイルまたは URL を使用した簡単なアプリ構成
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** SSO
 
@@ -1726,7 +1996,7 @@ Connect Health で、U/P ログインの失敗のしきい値を超える IP ア
 
 ### <a name="azure-ad-terms-of-use-now-generally-available"></a>Azure AD Terms of Use が一般公開に
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** コンプライアンス
  
@@ -1739,7 +2009,7 @@ Azure AD Terms of Use がパブリック プレビューから一般公開に移
 
 ### <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>B2B ユーザーに対する特定組織からの招待を許可またはブロックする
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** B2B  
 **製品の機能:** B2B/B2C
  
@@ -1756,7 +2026,7 @@ Azure AD B2B コラボレーションで共有とコラボレーションを行�
  
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
 
@@ -1772,7 +2042,7 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
  
 ### <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications-public-preview"></a>オンプレミスのアプリケーションに対するアクセスを Azure AD の B2B ユーザーに付与する (パブリック プレビュー)
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** B2B  
 **製品の機能:** B2B/B2C
 
@@ -1784,7 +2054,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
  
 ### <a name="get-sso-integration-tutorials-from-the-azure-marketplace"></a>Azure Marketplace から SSO 統合チュートリアルを入手する
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** その他  
 **製品の機能:** サード パーティ統合
 
@@ -1794,7 +2064,7 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 ### <a name="faster-performance-of-azure-ad-automatic-user-provisioning-to-saas-applications"></a>SaaS アプリケーションへの Azure AD 自動ユーザー プロビジョニングのパフォーマンスが向上
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** アプリ プロビジョニング  
 **製品の機能:** サード パーティ統合
  
@@ -1804,13 +2074,13 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 
 その結果、これまではアプリの初期同期に多くの日数を要したり、完了に至らなかったりした多くのお客様が、わずか数分または数時間でこれを完了できるようになりました。
 
-詳細については、「[プロビジョニング中の動作](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning#what-happens-during-provisioning)」を参照してください。
+詳細については、「[プロビジョニング中の動作](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works)」を参照してください。
 
 ---
 
 ### <a name="self-service-password-reset-from-windows-10-lock-screen-for-hybrid-azure-ad-joined-machines"></a>ハイブリッド Azure AD 参加マシンの Windows 10 ロック画面からのセルフ サービスによるパスワードのリセット
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** セルフサービスによるパスワードのリセット  
 **製品の機能:** ユーザー認証
  
@@ -1824,7 +2094,7 @@ Windows 10 SSPR 機能が更新され、ハイブリッド Azure AD に参加し
  
 ### <a name="certificate-expire-notification"></a>証明書の期限切れ通知
 
-**タイプ:** 固定  
+**種類:** 固定  
 **サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** SSO
  
@@ -1841,7 +2111,7 @@ SAML ベースのシングル サインオン対応に構成されたエンタ�
  
 ### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Azure AD B2C での Twitter および GitHub の ID プロバイダー
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** B2C - コンシューマー ID 管理  
 **製品の機能:** B2B/B2C
  
@@ -1875,9 +2145,9 @@ Azure AD B2C の ID プロバイダーとして、Twitter または GitHub を�
  
 ### <a name="app-proxy-cmdlets-in-powershell-ga-module"></a>PowerShell GA モジュールでのアプリ プロキシ コマンドレット
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** アプリ プロキシ  
-**製品の機能:** Access Control
+**製品の機能:** アクセス制御
  
 アプリケーション プロキシ コマンドレットのサポートが、PowerShell GA モジュールに組み込まれました。 この機能を使うには、PowerShell モジュールを最新の状態にしておく必要があります。1 年以上古いモジュールでは、一部のコマンドレットが動作しない可能性があります。 
 
@@ -1887,7 +2157,7 @@ Azure AD B2C の ID プロバイダーとして、Twitter または GitHub を�
  
 ### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>Office 365 のネイティブ クライアントが、非対話型のプロトコルを使ってシームレス SSO によりサポートされる
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** ユーザー認証
  
@@ -1899,7 +2169,7 @@ Office 365 ネイティブ クライアント (バージョン 16.0.8730.xxxx �
 
 ### <a name="users-get-a-silent-sign-on-experience-with-seamless-sso-if-an-application-sends-sign-in-requests-to-azure-ads-tenant-endpoints"></a>アプリケーションがサインイン要求を Azure AD のテナント エンドポイントに送信する場合、シームレス SSO によるサイレント サインオン エクスペリエンスがユーザーに提供される
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** ユーザー認証
  
@@ -1911,7 +2181,7 @@ Office 365 ネイティブ クライアント (バージョン 16.0.8730.xxxx �
  
 ### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>シームレス SSO をロールアウトするには、以前のように 2 つの URL ではなく、1 つの Azure AD URL だけをユーザーのイントラネット ゾーンの設定に追加する必要がある
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** ユーザー認証
  
@@ -1923,7 +2193,7 @@ Office 365 ネイティブ クライアント (バージョン 16.0.8730.xxxx �
  
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
 
@@ -1939,7 +2209,7 @@ Office 365 ネイティブ クライアント (バージョン 16.0.8730.xxxx �
  
 ### <a name="pim-for-azure-resources-is-generally-available"></a>Azure リソース向け PIM の一般公開
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** Privileged Identity Management  
 **製品の機能:** Privileged Identity Management
  
@@ -1951,7 +2221,7 @@ Office 365 ネイティブ クライアント (バージョン 16.0.8730.xxxx �
  
 ### <a name="adding-optional-claims-to-your-apps-tokens-public-preview"></a>アプリ トークンへのオプション要求の追加 (パブリック プレビュー)
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** ユーザー認証
  
@@ -1963,7 +2233,7 @@ Azure AD アプリでは、JWT トークンまたは SAML トークンでカス�
  
 ### <a name="azure-ad-supports-pkce-for-more-secure-oauth-flows"></a>より安全な OAuth フローのための Azure AD による PKCE のサポート
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** ユーザー認証
  
@@ -1975,7 +2245,7 @@ Azure AD のドキュメントが更新されて、PKCE のサポートが記述
  
 ### <a name="support-for-provisioning-all-user-attribute-values-available-in-the-workday-get_workers-api"></a>Workday Get_Workers API で使用可能なすべてのユーザー属性値のプロビジョニングのサポート
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** アプリ プロビジョニング  
 **製品の機能:** サード パーティ統合
  
@@ -1987,7 +2257,7 @@ Workday から Active Directory と Azure AD への受信プロビジョニン�
 
 ### <a name="changing-group-membership-from-dynamic-to-static-and-vice-versa"></a>動的から静的または静的から動的への、グループ メンバーシップの変更
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** グループ管理  
 **製品の機能:** コラボレーション
  
@@ -2000,7 +2270,7 @@ Azure AD 管理センターが更新されて、この機能がサポートさ�
 
 ### <a name="improved-sign-out-behavior-with-seamless-sso"></a>シームレス SSO でのサインアウト動作の向上
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** ユーザー認証
  
@@ -2012,7 +2282,7 @@ Azure AD 管理センターが更新されて、この機能がサポートさ�
  
 ### <a name="application-proxy-connector-version-154020-released"></a>アプリケーション プロキシ コネクタと バージョン 1.5.402.0 のリリース
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** アプリ プロキシ  
 **製品の機能:** ID のセキュリティ & 保護
  
@@ -2031,9 +2301,9 @@ Azure AD 管理センターが更新されて、この機能がサポートさ�
  
 ### <a name="improved-navigation-for-managing-users-and-groups"></a>ユーザーとグループの管理に関するナビゲーションの改善
 
-**タイプ:** 変更の計画  
+**種類:** 変更の計画  
 **サービス カテゴリ:** ディレクトリ管理  
-**製品の機能:** Directory
+**製品の機能:** ディレクトリ
 
 ユーザーとグループを管理する際のナビゲーションの操作性が向上しています。 ディレクトリの概要から全ユーザーの一覧に直接移動できるようになりました。削除済みのユーザーの一覧にもアクセスしやすくなっています。 また、全グループの一覧にもディレクトリの概要から直接移動できるようになり、グループ管理の設定にアクセスしやすくなりました。 さらに、ディレクトリの概要ページから、ユーザーやグループ、エンタープライズ アプリケーション、アプリの登録を検索することもできます。 
 
@@ -2041,7 +2311,7 @@ Azure AD 管理センターが更新されて、この機能がサポートさ�
 
 ### <a name="availability-of-sign-ins-and-audit-reports-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>21Vianet (Azure China 21Vianet) が運用する Microsoft Azure でサインイン レポートと監査レポートが利用可能に
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** Azure Stack  
 **製品の機能:** 監視とレポート
 
@@ -2065,8 +2335,8 @@ Azure AD 管理センターが更新されて、この機能がサポートさ�
 
 ### <a name="use-report-reader-role-non-admin-role-to-view-azure-ad-activity-reports"></a>"レポート リーダー" ロール (非管理者ロール) を使用して Azure AD アクティビティ レポートを閲覧する
 
-**タイプ:** 新機能  
-**サービス カテゴリ:** レポート  
+**種類:** 新機能  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** 監視とレポート
 
 Azure AD のアクティビティ ログに非管理者ロールでアクセスできるようにするというカスタマー フィードバックの一環として、"レポート リーダー" ロールのユーザーを対象に、Azure Portal 内のサインイン アクティビティや監査アクティビティにアクセスしたり、Graph API を使用したりする機能を用意しました。 
@@ -2077,7 +2347,7 @@ Azure AD のアクティビティ ログに非管理者ロールでアクセス�
 
 ### <a name="employeeid-claim-available-as-user-attribute-and-user-identifier"></a>EmployeeID の信頼性情報がユーザー属性やユーザー ID として利用可能に
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** SSO
  
@@ -2089,7 +2359,7 @@ SAML ベースのサインオンを使用したアプリケーションでは、
 
 ### <a name="simplified-application-management-using-wildcards-in-azure-ad-application-proxy"></a>Azure Active Directory アプリケーション プロキシでワイルドカードを使用してアプリケーション管理を単純化
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** アプリ プロキシ  
 **製品の機能:** ユーザー認証
  
@@ -2101,7 +2371,7 @@ SAML ベースのサインオンを使用したアプリケーションでは、
 
 ### <a name="new-cmdlets-to-support-configuration-of-application-proxy"></a>アプリケーション プロキシの構成をサポートする新しいコマンドレット
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** アプリ プロキシ  
 **製品の機能:** プラットフォーム
 
@@ -2131,7 +2401,7 @@ AzureAD PowerShell Preview モジュールの最新リリースには、PowerShe
  
 ### <a name="new-cmdlets-to-support-configuration-of-groups"></a>グループの構成をサポートする新しいコマンドレット
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** アプリ プロキシ  
 **製品の機能:** プラットフォーム
 
@@ -2155,7 +2425,7 @@ AzureAD PowerShell モジュールの最新リリースには、Azure AD 内の�
  
 ### <a name="a-new-release-of-azure-ad-connect-is-available"></a>Azure AD Connect の新しいリリースが利用可能に
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** AD 同期  
 **製品の機能:** プラットフォーム
  
@@ -2245,7 +2515,7 @@ Azure AD とオンプレミス データ ソース (Windows Server Active Direct
  
 ### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ 
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
 
@@ -2261,7 +2531,7 @@ Azure AD とオンプレミス データ ソース (Windows Server Active Direct
  
 ### <a name="sign-in-with-additional-risk-detected"></a>追加のリスクが検出されたサインイン
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** Identity Protection  
 **製品の機能:** ID のセキュリティ & 保護
 
@@ -2275,7 +2545,7 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
 
 ### <a name="hide-office-365-applications-from-end-users-access-panels"></a>エンド ユーザーのアクセス パネルでの Office 365 アプリケーションの非表示
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** SSO
 
@@ -2287,7 +2557,7 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
  
 ### <a name="seamless-sign-into-apps-enabled-for-password-sso-directly-from-apps-url"></a>アプリ URL からの直接のパスワード SSO が有効なアプリへのシームレスなサインイン 
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** SSO
 
@@ -2304,9 +2574,9 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
 
 ### <a name="azure-ad-administration-experience-in-azure-classic-portal-has-been-retired"></a>Azure クラシック ポータルでの Azure AD 管理エクスペリエンスの廃止
 
-**タイプ:** 非推奨   
+**種類:** 非推奨   
 **サービス カテゴリ:** Azure AD  
-**製品の機能:** Directory
+**製品の機能:** ディレクトリ
 
 2018 年 1 月 8 日に、Azure クラシック ポータルでの Azure AD 管理エクスペリエンスは廃止されました。 これは Azure クラシック ポータル自体の廃止と合わせて行われました。 今後は、Azure AD のポータル ベースの管理についてはすべて [Azure AD 管理センター](https://aad.portal.azure.com)をご利用ください。
  
@@ -2314,9 +2584,9 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
 
 ### <a name="the-phonefactor-web-portal-has-been-retired"></a>PhoneFactor Web ポータルは廃止されました
 
-**タイプ:** 非推奨  
+**種類:** 非推奨  
 **サービス カテゴリ:** Azure AD  
-**製品の機能:** Directory
+**製品の機能:** ディレクトリ
  
 2018 年 1 月 8日に、PhoneFactor Web ポータルは廃止されました。 このポータルは、MFA サーバーの管理に使用されていましたが、これらの機能は portal.azure.com の Azure Portal に移行しました。 
 
@@ -2326,8 +2596,8 @@ MFA の構成は、 **[Azure Active Directory] \> [MFA サーバー]** にあり
  
 ### <a name="deprecate-azure-ad-reports"></a>Azure AD レポートの廃止
 
-**タイプ:** 非推奨  
-**サービス カテゴリ:** レポート  
+**種類:** 非推奨  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** ID ライフサイクル管理  
 
 
@@ -2349,7 +2619,7 @@ MFA の構成は、 **[Azure Active Directory] \> [MFA サーバー]** にあり
 
 ### <a name="terms-of-use-in-the-access-panel"></a>アクセス パネルでの使用条件
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** コンプライアンス
  
@@ -2371,7 +2641,7 @@ MFA の構成は、 **[Azure Active Directory] \> [MFA サーバー]** にあり
  
 ### <a name="new-azure-ad-sign-in-experience"></a>新しい Azure AD サインイン エクスペリエンス
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** Azure AD  
 **製品の機能:** ユーザー認証
  
@@ -2383,7 +2653,7 @@ Azure AD と Microsoft アカウント ID システムの UI は、外観と操�
  
 ### <a name="fewer-sign-in-prompts-a-new-keep-me-signed-in-experience-for-azure-ad-sign-in"></a>回数が減ったサインイン プロンプト: Azure AD サインインの新しい "サインインしたままにする" エクスペリエンス
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** Azure AD  
 **製品の機能:** ユーザー認証
  
@@ -2397,7 +2667,7 @@ Azure AD サインイン ページの **[サインインしたままにする]**
 
 ### <a name="add-configuration-to-require-the-terms-of-use-to-be-expanded-prior-to-accepting"></a>同意前に使用条件の展開を要求する構成の追加
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** コンプライアンス
  
@@ -2411,7 +2681,7 @@ Azure AD サインイン ページの **[サインインしたままにする]**
 
 ### <a name="scoped-activation-for-eligible-role-assignments"></a>対象となるロール割り当ての範囲指定されたアクティブ化
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** Privileged Identity Management  
 **製品の機能:** Privileged Identity Management
  
@@ -2423,7 +2693,7 @@ Azure AD サインイン ページの **[サインインしたままにする]**
  
 ### <a name="new-federated-apps-in-the-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーの新しいフェデレーション アプリ
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** エンタープライズ アプリケーション  
 **製品の機能:** サード パーティ統合
 
@@ -2439,7 +2709,7 @@ Azure AD サインイン ページの **[サインインしたままにする]**
 
 ### <a name="approval-workflows-for-azure-ad-directory-roles"></a>Azure AD ディレクトリ ロールに対する承認ワークフロー
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** Privileged Identity Management  
 **製品の機能:** Privileged Identity Management
  
@@ -2451,7 +2721,7 @@ Azure AD ディレクトリ ロールの承認ワークフローが一般公開�
  
 ### <a name="pass-through-authentication-skype-for-business-support"></a>パススルー認証: Skype for Business のサポート
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** 認証 (ログイン)  
 **製品の機能:** ユーザー認証
 
@@ -2463,7 +2733,7 @@ Azure AD ディレクトリ ロールの承認ワークフローが一般公開�
 
 ### <a name="updates-to-azure-ad-privileged-identity-management-for-azure-rbac-preview"></a>Azure RBAC 用の Azure AD Privileged Identity Management の更新 (プレビュー)
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** Privileged Identity Management  
 **製品の機能:** Privileged Identity Management
  
@@ -2481,7 +2751,7 @@ Azure ロールベースのアクセス制御 (RBAC) 用の Azure AD Privileged 
  
 ### <a name="access-control-service-retirement"></a>Access Control Service の廃止
 
-**タイプ:** 変更の計画  
+**種類:** 変更の計画  
 **サービス カテゴリ:** Access Control Service  
 **製品の機能:** Access Control Service 
 
@@ -2491,7 +2761,7 @@ Azure Active Directory Access Control (Access Control Service とも呼ばれま
 
 ### <a name="restrict-browser-access-to-the-intune-managed-browser"></a>ブラウザー アクセスを Intune Managed Browser に限定 
 
-**タイプ:** 変更の計画  
+**種類:** 変更の計画  
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
 
@@ -2531,7 +2801,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 ### <a name="terms-of-use-support-for-multiple-languages"></a>使用条件での多言語のサポート
 
-**タイプ:** 新機能    
+**種類:** 新機能    
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** コンプライアンス
 
@@ -2541,7 +2811,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
  
 ### <a name="real-time-password-writeback-client-status"></a>パスワード ライトバック クライアントのリアルタイムの状態
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** セルフサービスのパスワード リセット  
 **製品の機能:** ユーザー認証
 
@@ -2587,7 +2857,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 ### <a name="manage-azure-ad-devices-in-the-azure-portal"></a>Azure Portal での Azure AD デバイスの管理
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** デバイスの登録と管理  
 **製品の機能:** ID のセキュリティと保護
 
@@ -2623,7 +2893,7 @@ Azure AD 条件付きアクセス ポリシーのデバイス プラットフォ
 
 ### <a name="network-policy-server-extension-for-azure-multi-factor-authentication"></a>Azure Multi-factor Authentication の ネットワーク ポリシー サーバー拡張機能 
 
-**タイプ:** 新機能    
+**種類:** 新機能    
 **サービス カテゴリ:** 多要素認証  
 **製品の機能:** ユーザー認証
 
@@ -2637,9 +2907,9 @@ Azure Multi-Factor Authentication のネットワーク ポリシー サーバ�
 
 ### <a name="restore-or-permanently-remove-deleted-users"></a>削除済みユーザーの復元または完全な削除
 
-**タイプ:** 新機能    
+**種類:** 新機能    
 **サービス カテゴリ:** [ユーザー管理]  
-**製品の機能:** Directory 
+**製品の機能:** ディレクトリ 
 
 Azure AD 管理センターで以下の操作が可能になりました。
 
@@ -2702,8 +2972,8 @@ Azure AD Identity Protection では、特定の日に同一の IP アドレス�
 
 ### <a name="deprecate-azure-ad-reports"></a>Azure AD レポートの廃止
 
-**タイプ:** 変更の計画  
-**サービス カテゴリ:** レポート  
+**種類:** 変更の計画  
+**サービス カテゴリ:** レポーティング  
 **製品の機能:** ID ライフサイクル管理  
 
 Azure Portal では次の機能が提供されています。
@@ -2717,7 +2987,7 @@ Azure Portal では次の機能が提供されています。
 
 ### <a name="automatic-sign-in-field-detection"></a>サインイン フィールドの自動検出
 
-**タイプ:** 固定   
+**種類:** 固定   
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** シングル サインオン  
 
@@ -2729,7 +2999,7 @@ Azure AD は、HTML ユーザー名とパスワード フィールドをレン�
 
 ### <a name="new-multi-factor-authentication-features"></a>新しい多要素認証機能
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 多要素認証  
 **製品の機能:** ID のセキュリティと保護  
 
@@ -2746,7 +3016,7 @@ Azure AD は、HTML ユーザー名とパスワード フィールドをレン�
 
 ### <a name="terms-of-use"></a>使用条件
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** 使用条件  
 **製品の機能:** コンプライアンス  
 
@@ -2764,7 +3034,7 @@ Azure AD Terms of Use は、次のシナリオで使用できます。
 
 ### <a name="enhancements-to-privileged-identity-management"></a>Privileged Identity Management の機能強化
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** Privileged Identity Management  
 **製品の機能:** Privileged Identity Management  
 
@@ -2782,7 +3052,7 @@ Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで�
 
 ### <a name="access-reviews"></a>アクセス レビュー
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** アクセス レビュー  
 **製品の機能:** コンプライアンス  
 
@@ -2799,7 +3069,7 @@ Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで�
 
 ### <a name="hide-third-party-applications-from-my-apps-and-the-office-365-app-launcher"></a>マイ アプリおよび Office 365 アプリ ランチャーでのサード パーティ製アプリケーションの非表示
 
-**タイプ:** 新機能  
+**種類:** 新機能  
 **サービス カテゴリ:** マイ アプリ  
 **製品の機能:** シングル サインオン  
 
@@ -2817,7 +3087,7 @@ Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで�
 
 ### <a name="hotfix-for-identity-manager"></a>Identity Manager の修正プログラム
 
-**タイプ:** 変更された機能  
+**種類:** 変更された機能  
 **サービス カテゴリ:** Identity Manager  
 **製品の機能:** ID ライフサイクル管理  
 

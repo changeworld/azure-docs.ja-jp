@@ -1,26 +1,17 @@
 ---
 title: クイック スタート:Azure Service Fabric 上に Spring Boot アプリを作成する
 description: このクイック スタートでは、Spring Boot サンプル アプリケーションを使用して、Azure Service Fabric 用の Spring Boot アプリケーションをデプロイします。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 4ec6addb348b8c13f124ec225e056d2003a93c38
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: c12cd53b55cac48aae3d69506204c9d107e34aa6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464387"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>クイック スタート:Azure Service Fabric 上に Java Spring Boot アプリをデプロイする
 
@@ -214,7 +205,7 @@ Web フロントエンド サービスをスケーリングするには、以下
 
     ![Service Fabric Explorer でのノードの再起動の成功](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-service-moved.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、次の方法について説明しました。
 

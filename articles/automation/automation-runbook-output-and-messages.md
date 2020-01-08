@@ -2,19 +2,15 @@
 title: Azure Automation での Runbook の出力とメッセージ
 description: Azure Automation で Runbook から出力とエラー メッセージを作成および取得する方法を説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: af199439fedddaef5b1bd3b219a60db697fb25ab
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 34246d66a48baec160a83411511ed78948c5dd8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849651"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421038"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 
@@ -22,13 +18,13 @@ ms.locfileid: "74849651"
 
 以下の表に、公開された Runbook の実行時と [Runbook のテスト](automation-testing-runbook.md)時の、Azure portal での各ストリームとその動作の簡単な説明を示します。 各ストリームの詳細については、後のセクションで説明します。
 
-| ストリーム | 説明 | 公開先 | テスト |
+| ストリーム | [説明] | 公開済み | テスト |
 |:--- |:--- |:--- |:--- |
 | Output |他の Runbook によって使用されることを目的とするオブジェクト。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
 | 警告 |ユーザー向けの警告メッセージ。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
-| Error |ユーザー向けのエラー メッセージ 例外とは異なり、既定では Runbook はエラー メッセージ発行後に実行を継続します。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
-| 詳細 |一般情報またはデバッグ情報を提供するメッセージ。 |Runbook の詳細ログが有効な場合のみ、ジョブ履歴に書き込まれます。 |Runbook で $VerbosePreference が Continue に設定されている場合のみ、[テスト出力] ウィンドウに表示されます。 |
-| 進捗状況 |Runbook の各アクティビティの前後に自動的に生成されるレコード。 Runbook では、独自の進行状況レコードを作成しないでください。これらのレコードは対話型ユーザー向けです。 |Runbook の進行状況ログが有効な場合のみ、ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウには表示されません。 |
+| エラー |ユーザー向けのエラー メッセージ 例外とは異なり、既定では Runbook はエラー メッセージ発行後に実行を継続します。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
+| "詳細" |一般情報またはデバッグ情報を提供するメッセージ。 |Runbook の詳細ログが有効な場合のみ、ジョブ履歴に書き込まれます。 |Runbook で $VerbosePreference が Continue に設定されている場合のみ、[テスト出力] ウィンドウに表示されます。 |
+| 進行状況 |Runbook の各アクティビティの前後に自動的に生成されるレコード。 Runbook では、独自の進行状況レコードを作成しないでください。これらのレコードは対話型ユーザー向けです。 |Runbook の進行状況ログが有効な場合のみ、ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウには表示されません。 |
 | デバッグ |対話型ユーザー向けのメッセージ。 Runbook では使用しないでください。 |ジョブ履歴には書き込まれません。 |[テスト出力] ペインには書き込まれません。 |
 
 ## <a name="output-stream"></a>出力ストリーム
@@ -186,7 +182,7 @@ Windows PowerShell では [ユーザー設定変数](https://technet.microsoft.c
 
 ## <a name="runbook-output"></a>Runbook の出力とメッセージの取得
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Runbook ジョブの詳細は、Azure ポータルの Runbook の [ジョブ] タブで参照できます。 ジョブの [概要] には、ジョブと例外 (発生した場合) の一般情報だけでなく、入力パラメーターと[出力ストリーム](#output-stream)も表示されます。 詳細レコードおよび進捗状況レコードを記録するように Runbook が構成されている場合は、[履歴] に、[詳細ストリーム](#verbose-stream)と[進捗状況レコード](#progress-records)、および[出力ストリーム](#output-stream)と[警告およびエラー ストリーム](#warning-and-error-streams)からのメッセージが含まれます。
 
@@ -246,7 +242,7 @@ Automation からは、Runbook ジョブの状態とジョブ ストリームを
 
 Azure Monitor ログとの統合を構成して、ジョブ データを収集、操作、および関連付けする方法の詳細については、[Automation から Azure Monitor ログへのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、 [Runbook ジョブの追跡](automation-runbook-execution.md)
 * 子 Runbook を設計および使用する方法については、「 [Azure Automation での子 Runbook](automation-child-runbooks.md)

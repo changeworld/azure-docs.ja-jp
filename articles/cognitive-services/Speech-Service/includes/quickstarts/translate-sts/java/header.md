@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: ae25e0cb782caf5ca0d8d6004036d5fdc89307d4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ea782dc036518cbb28eca01436c186396c9f987f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981434"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466551"
 ---
 すぐに使用できるようにするには、GitHub ですべての <a href="https://aka.ms/speech/github-java">Speech SDK Java サンプル</a>を表示またはダウンロードします。 それ以外の場合は、始めましょう。

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 9a8c3fd6c591f25aadc696c3c71f8c4cdfca745f
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 013cf619edd998752265b8fa7e58e36869c830c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74157568"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450213"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service の FAQ
 
@@ -63,8 +63,8 @@ Azure SignalR Service SDK の場合、`HubConnectionContext context` は論理�
 
 ## <a name="can-i-configure-the-transports-available-in-signalr-service-as-configuring-it-on-server-side-with-aspnet-core-signalr-for-example-disable-websocket-transport"></a>ASP.NET Core SignalR を使用した場合のサーバー側での構成と同じように、SignalR Service で使用できる転送を構成できますか? たとえば、WebSocket 転送を無効にできますか?
 
-No.
+いいえ。
 
 Azure SignalR Service は、ASP.NET Core SignalR が既定でサポートする 3 つの転送をすべて提供します。 これは構成できません。 SignalR Service がすべてのクライアント接続の接続と転送を処理します。
 
-[こちら](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports)に記載されているように、クライアント側の転送は構成できます。
+[こちら](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2)に記載されているように、クライアント側の転送は構成できます。

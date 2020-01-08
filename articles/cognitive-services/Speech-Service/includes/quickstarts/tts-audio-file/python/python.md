@@ -7,15 +7,15 @@ author: chlandsi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 314a5302c76157810557036370a18ad6fb605033
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: d82b2904f16cc9816a22caadba598a7a44bfa007
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817945"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467429"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -24,7 +24,7 @@ ms.locfileid: "74817945"
 * 以下のオペレーティング システム用の Python Speech SDK パッケージを入手できます。
     * Windows: x64 および x86。
     * Mac: macOS X バージョン 10.12 以降。
-    * Linux:x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9。
+    * Linux: x64 上の Ubuntu 16.04、Ubuntu 18.04、Debian 9。
 * Linux では、以下のコマンドを実行して、必要なパッケージをインストールします。
 
   * Ubuntu の場合:
@@ -142,11 +142,11 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 
 これらの手順で問題が発生した場合は、より詳しい [Visual Studio Code Python チュートリアル](https://code.visualstudio.com/docs/python/python-tutorial)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [カスタム音声を作成する](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
 - [カスタム音声サンプルを録音する](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

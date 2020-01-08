@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5ec9a99f55c2c9a3cb487ad7d69610a512d5b8bd
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 6c4838e3226b91cbb5d6f86b83266a986418c120
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687241"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430506"
 ---
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成
 
@@ -33,7 +33,7 @@ App Service Environment (ASE) をデプロイするには、次の 2 つの方�
 ASE を作成した後は、次の変更は行えません。
 
 - Location
-- Subscription
+- サブスクリプション
 - Resource group
 - 使用する VNet
 - 使用するサブネット
@@ -199,4 +199,4 @@ ASEv1 について詳しくは、「[App Service Environment v1 の概要][ASEv1
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md

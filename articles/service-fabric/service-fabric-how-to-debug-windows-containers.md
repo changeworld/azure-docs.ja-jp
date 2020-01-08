@@ -1,24 +1,15 @@
 ---
-title: Service Fabric と VS での Windows コンテナーのデバッグ | Microsoft Docs
+title: Service Fabric と VS での Windows コンテナーのデバッグ
 description: Visual Studio 2019 を使用して Azure Service Fabric で Windows コンテナーをデバッグする方法を説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/14/2019
 ms.author: mikhegn
-ms.openlocfilehash: a5ccf527850e1c05c5d7e273ada905d65d64cee4
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073958"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464576"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>方法:Visual Studio 2019 を使用して Azure Service Fabric で Windows コンテナーをデバッグする
 
@@ -80,5 +71,5 @@ Service Fabric でコンテナーをデバッグする場合の既知の制限�
 
     Visual Studio では、.NET および .NET Core のコンソールと ASP.NET プロジェクト タイプがサポートされています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric とコンテナーの機能の詳細については、[Service Fabric コンテナーの概要](service-fabric-containers-overview.md)に関するページを参照してください。

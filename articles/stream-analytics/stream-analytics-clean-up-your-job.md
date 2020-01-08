@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics ジョブの削除
 description: この記事では、Azure Stream Analytics ジョブを削除するさまざまな方法を示します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 093ada2b2751540b986154be3a2f333784c1259f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d99920417f20034da1001a821c02376ac19274d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173300"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426481"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブを停止または削除する
 
@@ -27,7 +26,7 @@ Azure Stream Analytics ジョブは、Azure portal、Azure PowerShell、Azure SD
 
 ジョブを停止すると、リソースがプロビジョニング解除され、イベントの処理が停止します。 このジョブに関連する課金も停止します。 ただし、構成はすべて保持され、後でジョブを再開できます。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインする 
 
 2. 実行されている Stream Analytics ジョブを探し､選択します｡
 
@@ -41,7 +40,7 @@ Azure Stream Analytics ジョブは、Azure portal、Azure PowerShell、Azure SD
 >[!WARNING] 
 >削除した Stream Analytics ジョブは復旧できません。
 
-1. Azure ポータルにサインインします。 
+1. Azure portal にサインインします。 
 
 2. Stream Analytics ジョブがある場所を探し､ジョブを選択します｡
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Services の定義LoadBalancerProbe スキーマ | Microsoft Docs
+title: 'Azure Cloud Services の定義: LoadBalancerProbe スキーマ | Microsoft Docs'
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -7,13 +7,13 @@ ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 14
 author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: 6f82406772f650b4565f2c9240efe580545dcad9
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: bc2c0f5137ce78392a8df7c6c2fdd402ded5355a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449051"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services の定義: LoadBalancerProbe スキーマ
 ロード バランサー プローブは、ロール インスタンスのエンドポイントと UDP エンドポイントに対して利用者が定義する正常性プローブです。 `LoadBalancerProbe` はスタンドアロン要素ではなく、サービス定義ファイルで Web ロールまたは worker ロールと組み合わされます。 1 つの `LoadBalancerProbe` を複数のロールで使用することができます。
@@ -54,7 +54,7 @@ Azure Load Balancer の役割は、受信トラフィックを対象のロール
 
 以下の表に、`LoadBalancerProbe` 要素の属性を示します。
 
-|Attribute|Type|説明|
+|Attribute|種類|[説明]|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | 必須。 ロード バランサー プローブの名前です。 名前は一意である必要があります。|
 | `protocol`          | `string` | 必須。 エンド ポイントのプロトコルを指定します。 指定できる値は `http` または `tcp` です。 `tcp` を指定した場合、プローブが成功するためには ACK の受信が必要となります。 `http` を指定した場合、プローブが成功するためには、指定された URI から応答として 200 OK が返される必要があります。|
@@ -63,5 +63,5 @@ Azure Load Balancer の役割は、受信トラフィックを対象のロール
 | `intervalInSeconds` | `integer` | 省略可能。 どのぐらいの頻度でエンドポイントに正常性状態をプローブするかを表す間隔 (秒)。 この間隔は、割り当てられているタイムアウト期間 (秒) の 1/2 よりもわずかに短くするのが一般的です。そうすることで、2 回のプローブを完全に実施したうえで、インスタンスをローテーションから除外することができます。<br /><br /> 既定値は 15、最小値は 5 です。|
 | `timeoutInSeconds`  | `integer` | 省略可能。 プローブに適用されるタイムアウト期間 (秒)。この期間を過ぎると、応答がないと見なされ、そのエンドポイントへのトラフィックのルーティングが停止されます。 エンドポイントをローテーションから除外するタイミングは、この値を指定することで、Azure で使用される標準的な時間 (既定値) よりも早めたり遅らせたりすることができます。<br /><br /> 既定値は 31、最小値は 11 です。|
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Cloud Service (クラシック) 定義スキーマ](schema-csdef-file.md)

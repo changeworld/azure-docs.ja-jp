@@ -3,12 +3,12 @@ title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 2c33c71e579cc6fa5d01ba086fb1a9a4fc9c142c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 603bbc715176515afd21f286ea64e79e974266ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449867"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -31,7 +31,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 **サブスクリプション内のコンテナー数** | 1 つのサブスクリプションで、最大 500 個の Recovery Services コンテナー。
 **コンテナー内のマシン数** | 1 つのコンテナーで、最大 1,000 台の Azure VM。<br/><br/> 1 つのコンテナーに最大で 50 MABS を登録することができます。
 **コンテナー ストレージ内のデータ ソース量** | 最大 54,400 GB。 Azure VM のバックアップに関する制限はありません。
-**コンテナーへのバックアップ回数** | **Azure VM:** 1 日 1 回。<br/><br/>**DPM/MABS で保護されたマシン:** 1 日に 2 回。<br/><br/> **MARS エージェントを使用し直接バックアップされるマシン:** 1 日に 3 回。
+**コンテナーへのバックアップ回数** | **Azure VM:** 1 日あたり 1 回。<br/><br/>**DPM/MABS で保護されたマシン:** 1 日に 2 回。<br/><br/> **MARS エージェントを使用し直接バックアップされるマシン:** 1 日に 3 回。
 **コンテナー間のバックアップ** | バックアップは 1 つのリージョン内です。<br/><br/> バックアップする VM が含まれるすべての Azure リージョンにコンテナーが必要です。 異なるリージョンにバックアップすることはできません。
 **コンテナーの移動** | 異なるサブスクリプション間で、または同じサブスクリプション内のリソース グループ間で、[コンテナーを移動](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault)できます。
 **コンテナー間のデータの移動** | コンテナー間でのバックアップ データの移動はサポートされていません。
@@ -54,7 +54,7 @@ Azure Backup では、Recovery Services コンテナーを使用して、バッ�
 
 **制限** | **詳細**
 --- | ---
-**Azure VM のデータ ディスク数** | 最大 16 個
+**Azure VM のデータ ディスク数** | 最大 16 個 <br> 16 台以上のディスク (最大 32 ディスク) を搭載した VM のプライベート プレビューにサインアップするには、AskAzureBackupTeam@microsoft.com に記載されている連絡先にご連絡ください
 **Azure VM のデータ ディスク サイズ** | 個々のディスク サイズは最大 32 TB で、VM 内のすべてのディスクに対して最大 256 TB となります。
 
 ### <a name="azure-vm-backup-options"></a>Azure VM のバックアップ オプション
@@ -142,7 +142,7 @@ Backup では、次の表にまとめられているように、バックアッ�
 **最大保有期間** | バックアップ頻度次第
 **DPM または MABS ディスクの復旧ポイント数** | ファイル サーバーの場合 64 個、アプリ サーバーの場合 448 個。 <br/><br/>テープの復旧ポイント数は、オンプレミス DPM に対しては無制限。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure VM バックアップの[サポート マトリックスを確認します](backup-support-matrix-iaas.md)。
 

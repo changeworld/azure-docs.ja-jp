@@ -2,19 +2,15 @@
 title: OMS の更新プログラムの展開を Azure に移行する
 description: この記事では、既存の OMS の更新プログラムの展開を Azure に移行する方法について説明します
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 08b3f11f3e44c6580df9942aab2a890115c79ba3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2660e4a348d2ffd71f912ff80c36a5a9a3c9fe88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849498"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417781"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>OMS の更新プログラムの展開を Azure に移行する
 
@@ -57,7 +53,7 @@ OMS ポータルで作成されたすべての更新プログラムの展開に�
 
 更新するマシンには、既存の OMS の展開で使用された保存された検索条件を選択します。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 |Name |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| **Linux** か **Windows** を選択します。|
@@ -74,6 +70,6 @@ OMS ポータルで作成されたすべての更新プログラムの展開に�
 
 既に説明したように、Azure portal を通じて新しい展開が構成されると、OMS ポータルから既存の展開を削除できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Update Management の詳細については、[Update Management](automation-update-management.md) に関する記事を参照してください。

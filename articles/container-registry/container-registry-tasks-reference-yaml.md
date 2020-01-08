@@ -3,12 +3,12 @@ title: YAML リファレンス - ACR タスク
 description: YAML で ACR タスク用のタスクを定義するための参照 (タスクのプロパティ、ステップの種類、ステップのプロパティ、およびビルトイン変数など)。
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: a27f55d08a7ed5d7bf3360030eabefc4b7720b82
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: da1b1613d880b9edf6ec6d6018011f43a7ac69a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454634"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445689"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR タスクの参照:YAML
 
@@ -75,7 +75,7 @@ az configure --defaults acr=myregistry
 
 タスク プロパティは通常、`acr-task.yaml` ファイルの上部に表示されます。これらは、タスク ステップの完全な実行を通じて適用されるグローバル プロパティです。 これらのグローバル プロパティの一部は、個々のステップ内でオーバーライドできます。
 
-| プロパティ | 種類 | 省略可能 | 説明 | オーバーライドのサポート | 既定値 |
+| プロパティ | 種類 | 省略可能 | [説明] | オーバーライドのサポート | 既定値 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | string | はい | ACR タスク サービスによって解析される `acr-task.yaml` ファイルのバージョン。 ACR タスクは、下位互換性の維持に努めていますが、この値により ACR タスクが定義されたバージョン内で互換性を維持することが可能になります。 指定しない場合は、既定値の最新バージョンになります。 | いいえ | なし |
 | `stepTimeout` | int (秒) | はい | ステップが実行できる最大秒数。 プロパティがタスクで指定されている場合は、すべてのステップの既定の `timeout` プロパティが設定されます。 `timeout` プロパティがステップで指定されている場合は、タスクによって提供されたプロパティがオーバーライドされます。 | はい | 600 (10 分) |
@@ -88,7 +88,7 @@ az configure --defaults acr=myregistry
 
 シークレット オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 省略可能 | 説明 | 既定値 |
+| プロパティ | 種類 | 省略可能 | [説明] | 既定値 |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | string | いいえ | シークレットの識別子。 | なし |
 | `keyvault` | string | はい | Azure Key Vault のシークレット URL。 | なし |
@@ -98,19 +98,19 @@ az configure --defaults acr=myregistry
 
 ネットワーク オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 種類 | 省略可能 | 説明 | 既定値 |
+| プロパティ | 種類 | 省略可能 | [説明] | 既定値 |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | string | いいえ | ネットワークの名前。 | なし |
 | `driver` | string | はい | ネットワークを管理するドライバー。 | なし |
-| `ipv6` | bool | はい | IPv6 ネットワークが有効になっているかどうか。 | `false` |
-| `skipCreation` | bool | はい | ネットワークの作成をスキップするかどうか。 | `false` |
-| `isDefault` | bool | はい | ネットワークが Azure Container Registry で提供されている既定のネットワークかどうか | `false` |
+| `ipv6` | [bool] | はい | IPv6 ネットワークが有効になっているかどうか。 | `false` |
+| `skipCreation` | [bool] | はい | ネットワークの作成をスキップするかどうか。 | `false` |
+| `isDefault` | [bool] | はい | ネットワークが Azure Container Registry で提供されている既定のネットワークかどうか | `false` |
 
 ## <a name="task-step-types"></a>タスク ステップの種類
 
 ACR タスクでは、次の 3 種類のステップがサポートされています。 ステップの種類はそれぞれ複数のプロパティをサポートしており、各ステップの種類のセクションで詳しく説明されています。
 
-| ステップの種類 | 説明 |
+| ステップの種類 | [説明] |
 | --------- | ----------- |
 | [`build`](#build) | 使い慣れた `docker build` 構文を使用してコンテナー イメージをビルドします。 |
 | [`push`](#push) | 新しくビルドされたイメージ、またはタグが付け直されたイメージのコンテナー レジストリへの `docker push` を実行します。 Azure Container Registry、その他のプライベート レジストリ、およびパブリック Docker Hub がサポートされています。 |
@@ -131,7 +131,7 @@ steps:
 
 `build` ステップの種類では、次の表に示すパラメーターがサポートされています。 `build` ステップの種類では、[docker build](https://docs.docker.com/engine/reference/commandline/build/) コマンドのすべての build 操作 (build-time 変数などを設定する `--build-arg` など) もサポートされます。
 
-| パラメーター | 説明 | 省略可能 |
+| パラメーター | [説明] | 省略可能 |
 | --------- | ----------- | :-------: |
 | `-t` &#124; `--image` | ビルドされたイメージの完全修飾 `image:tag` を定義します。<br /><br />イメージは機能テストなどの内部タスクの検証に使用することができるため、すべてのイメージでレジストリへの `push` が必要なわけではありません。 ただし、タスクの実行内でイメージをインスタンス化するには、イメージに参照する名前が必要です。<br /><br />`az acr build` とは異なり、ACR タスクの実行では、既定のプッシュ動作は提供されません。 ACR タスクでは、既定のシナリオは、イメージをビルド、検証してからプッシュできることを前提としています。 必要に応じてビルドされたイメージをプッシュする方法については、「[push](#push)」を参照してください。 | はい |
 | `-f` &#124; `--file` | `docker build` に渡される Dockerfile を指定します。 指定しない場合、コンテキストのルートにある既定の Dockerfile が想定されます。 Dockerfile を指定するには、コンテキストのルートへの相対ファイル名を渡します。 | はい |
@@ -143,20 +143,20 @@ steps:
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | bool | 省略可能 |
-| `disableWorkingDirectoryOverride` | bool | 省略可能 |
+| `detach` | [bool] | 省略可能 |
+| `disableWorkingDirectoryOverride` | [bool] | 省略可能 |
 | `entryPoint` | string | 省略可能 |
 | `env` | [string, string, ...] | 省略可能 |
 | `expose` | [string, string, ...] | 省略可能 |
 | `id` | string | 省略可能 |
-| `ignoreErrors` | bool | 省略可能 |
+| `ignoreErrors` | [bool] | 省略可能 |
 | `isolation` | string | 省略可能 |
-| `keep` | bool | 省略可能 |
+| `keep` | [bool] | 省略可能 |
 | `network` | object | 省略可能 |
 | `ports` | [string, string, ...] | 省略可能 |
-| `pull` | bool | 省略可能 |
-| `repeat` | int | 省略可能 |
-| `retries` | int | 省略可能 |
+| `pull` | [bool] | 省略可能 |
+| `repeat` | INT | 省略可能 |
+| `retries` | INT | 省略可能 |
 | `retryDelay` | int (秒) | 省略可能 |
 | `secret` | object | 省略可能 |
 | `startDelay` | int (秒) | 省略可能 |
@@ -217,7 +217,7 @@ steps:
 | -------- | ---- | -------- |
 | `env` | [string, string, ...] | 省略可能 |
 | `id` | string | 省略可能 |
-| `ignoreErrors` | bool | 省略可能 |
+| `ignoreErrors` | [bool] | 省略可能 |
 | `startDelay` | int (秒) | 省略可能 |
 | `timeout` | int (秒) | 省略可能 |
 | `when` | [string, string, ...] | 省略可能 |
@@ -260,20 +260,20 @@ steps:
 
 | | | |
 | -------- | ---- | -------- |
-| `detach` | bool | 省略可能 |
-| `disableWorkingDirectoryOverride` | bool | 省略可能 |
+| `detach` | [bool] | 省略可能 |
+| `disableWorkingDirectoryOverride` | [bool] | 省略可能 |
 | `entryPoint` | string | 省略可能 |
 | `env` | [string, string, ...] | 省略可能 |
 | `expose` | [string, string, ...] | 省略可能 |
 | `id` | string | 省略可能 |
-| `ignoreErrors` | bool | 省略可能 |
+| `ignoreErrors` | [bool] | 省略可能 |
 | `isolation` | string | 省略可能 |
-| `keep` | bool | 省略可能 |
+| `keep` | [bool] | 省略可能 |
 | `network` | object | 省略可能 |
 | `ports` | [string, string, ...] | 省略可能 |
-| `pull` | bool | 省略可能 |
-| `repeat` | int | 省略可能 |
-| `retries` | int | 省略可能 |
+| `pull` | [bool] | 省略可能 |
+| `repeat` | INT | 省略可能 |
+| `retries` | INT | 省略可能 |
 | `retryDelay` | int (秒) | 省略可能 |
 | `secret` | object | 省略可能 |
 | `startDelay` | int (秒) | 省略可能 |
@@ -356,23 +356,23 @@ steps:
 
 各ステップの種類は、その種類に適した複数のプロパティをサポートしています。 次の表では、利用可能なすべてのステップのプロパティを定義します。 すべてのステップの種類が、すべてのプロパティをサポートしているわけではありません。 各ステップの種類でこれらのプロパティが利用可能かどうかを確認するには、「[cmd](#cmd)」、「[build](#build)」、「[push](#push)」 のステップの種類の参照セクションを参照してください。
 
-| プロパティ | 種類 | 省略可能 | 説明 | 既定値 |
+| プロパティ | 種類 | 省略可能 | [説明] | 既定値 |
 | -------- | ---- | -------- | ----------- | ------- |
-| `detach` | bool | はい | 実行時にコンテナーをデタッチする必要があるかどうか。 | `false` |
-| `disableWorkingDirectoryOverride` | bool | はい | `workingDirectory` オーバーライド機能を無効にするかどうか。 これを `workingDirectory` と組み合わせて使用して、コンテナーの作業ディレクトリを完全に制御します。 | `false` |
+| `detach` | [bool] | はい | 実行時にコンテナーをデタッチする必要があるかどうか。 | `false` |
+| `disableWorkingDirectoryOverride` | [bool] | はい | `workingDirectory` オーバーライド機能を無効にするかどうか。 これを `workingDirectory` と組み合わせて使用して、コンテナーの作業ディレクトリを完全に制御します。 | `false` |
 | `entryPoint` | string | はい | ステップのコンテナーの `[ENTRYPOINT]` をオーバーライドします。 | なし |
 | `env` | [string, string, ...] | はい | ステップの環境変数を定義する `key=value` 形式での文字列の配列。 | なし |
 | `expose` | [string, string, ...] | はい | コンテナーから公開されているポートの配列。 |  なし |
 | [`id`](#example-id) | string | はい | タスク内のステップを一意に識別します。 タスク内のその他のステップでは、`when` での依存関係のチェックなどのために、ステップの `id` を参照できます。<br /><br />`id` は実行中のコンテナーの名前でもあります。 タスク内のその他のコンテナーで実行されているプロセスは、その DNS ホスト名として、または docker ログ [id] などでアクセスするために `id` を参照できます。 | `acb_step_%d`。ここで、`%d` は、YAML ファイルのステップのトップダウンの 0 から始まるインデックスです |
-| `ignoreErrors` | bool | はい | コンテナーの実行中にエラーが発生したかどうかに関係なく、ステップを成功としてマークするかどうか。 | `false` |
+| `ignoreErrors` | [bool] | はい | コンテナーの実行中にエラーが発生したかどうかに関係なく、ステップを成功としてマークするかどうか。 | `false` |
 | `isolation` | string | はい | コンテナーの分離レベル。 | `default` |
-| `keep` | bool | はい | 実行後にステップのコンテナーを保持する必要があるかどうか。 | `false` |
+| `keep` | [bool] | はい | 実行後にステップのコンテナーを保持する必要があるかどうか。 | `false` |
 | `network` | object | はい | コンテナーが実行されるネットワークを識別します。 | なし |
 | `ports` | [string, string, ...] | はい | コンテナーからホストに公開されているポートの配列。 |  なし |
-| `pull` | bool | はい | キャッシュ動作を防ぐために、実行前にコンテナーを強制的にプルするかどうか。 | `false` |
-| `privileged` | bool | はい | コンテナーを特権モードで実行するかどうか。 | `false` |
-| `repeat` | int | はい | コンテナーの実行を繰り返すための再試行回数。 | 0 |
-| `retries` | int | はい | コンテナーの実行に失敗した場合の再試行回数。 再試行は、コンテナーの終了コードがゼロ以外の場合にのみ行われます。 | 0 |
+| `pull` | [bool] | はい | キャッシュ動作を防ぐために、実行前にコンテナーを強制的にプルするかどうか。 | `false` |
+| `privileged` | [bool] | はい | コンテナーを特権モードで実行するかどうか。 | `false` |
+| `repeat` | INT | はい | コンテナーの実行を繰り返すための再試行回数。 | 0 |
+| `retries` | INT | はい | コンテナーの実行に失敗した場合の再試行回数。 再試行は、コンテナーの終了コードがゼロ以外の場合にのみ行われます。 | 0 |
 | `retryDelay` | int (秒) | はい | コンテナーの実行の再試行間の遅延 (秒)。 | 0 |
 | `secret` | object | はい | Azure Key Vault シークレットまたは [Azure リソースのマネージド ID](container-registry-tasks-authentication-managed-identity.md) を識別します。 | なし |
 | `startDelay` | int (秒) | はい | コンテナーの実行を遅らせる秒数。 | 0 |
@@ -381,7 +381,7 @@ steps:
 | `user` | string | はい | ユーザー名またはコンテナーの UID | なし |
 | `workingDirectory` | string | はい | ステップ用の作業ディレクトリを設定します。 既定では、ACR タスクは作業ディレクトリとしてルート ディレクトリを作成します。 ただし、ビルドに複数のステップがある場合は、同じ作業ディレクトリを指定することで、前のステップは後のステップと成果物を共有することができます。 | `$HOME` |
 
-### <a name="examples-task-step-properties"></a>次に例を示します。タスク ステップ プロパティ
+### <a name="examples-task-step-properties"></a>例 :タスク ステップ プロパティ
 
 #### <a name="example-id"></a>例: id
 
@@ -541,9 +541,9 @@ steps:
 | エイリアス | Image |
 | ----- | ----- |
 | `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
-| `az` | `mcr.microsoft.com/acr/azure-cli:d0725bc` |
-| `bash` | `mcr.microsoft.com/acr/bash:d0725bc` |
-| `curl` | `mcr.microsoft.com/acr/curl:d0725bc` |
+| `az` | `mcr.microsoft.com/acr/azure-cli:a80af84` |
+| `bash` | `mcr.microsoft.com/acr/bash:a80af84` |
+| `curl` | `mcr.microsoft.com/acr/curl:a80af84` |
 
 次のタスクの例では、複数のエイリアスを使用して、実行レジストリのリポジトリ `samples/hello-world` 内にある 7 日以上経過したイメージ タグを[消去](container-registry-auto-purge.md)しています。
 
@@ -577,7 +577,7 @@ alias:
 [...]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 複数ステップのタスクの概要については、「[Run multi-step build, test, and patch tasks in ACR Tasks](container-registry-tasks-multi-step.md)」 (ACR タスクで複数ステップのビルド、テスト、修正プログラムの適用タスクを実行する) を参照してください。
 

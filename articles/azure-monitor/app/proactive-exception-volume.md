@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/08/2017
-ms.openlocfilehash: 02c4fca42f3d5d7494dc8fd6fe0e33161904ddbe
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b524000f78741b2ff8cf442d2daaef0c7945799a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432436"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>例外数の異常な上昇 (プレビュー)
 
@@ -20,7 +20,7 @@ Application Insights は、アプリケーションでスローされた例外�
 
 この機能を使うには、アプリの[例外レポートを構成する](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting)以外に、特別なセットアップは必要ありません。 この機能は、アプリが十分な例外のテレメトリを生成するとアクティブになります。
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>スマート検出によるこの種の通知が送信されるのはどのような場合ですか
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>この種類のスマート検出通知はどのような場合に取得されますか。
 アプリで 1 日に発生した特定の種類の例外の数が、過去 7 日間にわたって計算されたベースラインと比較して異常に上昇している場合、この種の通知を受け取ることがあります。
 例外数の上昇の検出には機械学習アルゴリズムが使われ、アプリケーションの使用状況における自然な増加が考慮されます。
 
@@ -29,6 +29,6 @@ Application Insights は、アプリケーションでスローされた例外�
 
 ## <a name="how-do-i-fix-it"></a>どのように修正すればよいですか
 通知には、診断プロセスでサポートされる診断情報が含まれています。
-1. **トリアージ**: 通知は、影響を受けるユーザーまたは要求の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
+1. **トリアージ**。 通知は、影響を受けるユーザーまたは要求の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
 2. **範囲**。 問題の影響を受けるのはすべてのトラフィックか、それとも一部の操作だけか。 この情報を通知から取得できます。
 3. **診断**。 検出には、例外がスローされたメソッドと、例外の種類に関する情報が含まれています。 サポート情報にリンクしている関連項目とレポートを使用して、問題の詳細な診断に役立てることもできます。

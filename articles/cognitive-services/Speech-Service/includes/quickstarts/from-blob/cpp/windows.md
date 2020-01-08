@@ -7,16 +7,16 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 54c6f920b581a0bbd00910a3b3ddeebecdbb595f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: b7ce80baa090ed87722397384b8e75c134eb26da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74954910"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466863"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,7 +25,7 @@ ms.locfileid: "74954910"
 > [!div class="checklist"]
 > * [Azure Speech リソースを作成する](../../../../get-started.md)
 > * [ソース ファイルを Azure BLOB にアップロードする](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=dotnet)
+> * [使用する開発環境を設定する](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [空のサンプル プロジェクトを作成する](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>Visual Studio でプロジェクトを開きます。
@@ -48,9 +48,9 @@ vcpkg install cpprestsdk cpprestsdk:x64-windows
 vcpkg install nlohmann-json
 ```
 
-## <a name="start-with-some-boilerplate-code"></a>スケルトン コードを使用して開始する
+## <a name="start-with-some-boilerplate-code"></a>定型コードを使用して開始する
 
-プロジェクトのスケルトンとして機能するコードを追加してみましょう。
+このプロジェクトのスケルトンとして機能するコードを追加しましょう。
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-32,187-190,300-309)]
 (`YourSubscriptionKey`、`YourServiceRegion`、および `YourFileUrl` の値を独自の値に置き換える必要があります。)
@@ -80,11 +80,11 @@ REST API は JSON 形式で要求を受け取り、結果も JSON で返すた�
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=204-216)]
 
 ## <a name="wait-for-the-transcription-to-complete"></a>文字起こしが完了するのを待つ
-サービスでは文字起こしが非同期的に処理されるため、その状態を頻繁にポーリングする必要があります。 5 秒ごとにチェックします。
+サービスでは文字起こしが非同期的に処理されるため、その状態を頻繁にポーリングする必要があります。 チェックは 5 秒ごとに実行します。
 
 状態を確認するには、要求が投稿されたときに取得した URL でコンテンツを取得します。 コンテンツを取得したら、それをヘルパー クラスの 1 つに逆シリアル化することで、やりとりがさらに容易になります。
 
-ここではポーリング コードと、すべての場合の状態の表示を示します。ただし、次に取り上げる正常な完了は除きます。
+ここでは、正常な完了を除くすべての状態が示されているポーリング コードを示します。正常な完了については次に取り上げます。
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=222-245,285-299)]
 
@@ -104,6 +104,6 @@ REST API は JSON 形式で要求を受け取り、結果も JSON で返すた�
 
 これで、アプリをビルドし、Speech サービスを使用して音声認識をテストする準備ができました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [footer](./footer.md)]

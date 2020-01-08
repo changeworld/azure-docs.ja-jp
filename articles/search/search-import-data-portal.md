@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534549"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460705"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Azure Cognitive Search のデータのインポート ウィザード
 
@@ -61,7 +61,7 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 
 ウィザードを実行する前に、この単一のテーブルまたはビューを作成し、内容を含める必要があります。 言うまでもなく、空のデータ ソースで**データのインポート** ウィザードを実行することは意味がありません。
 
-|  選択肢番号 | 説明 |
+|  [選択] | [説明] |
 | ---------- | ----------- |
 | **既存のデータ ソース** |検索サービスに定義済みのインデクサーが既にある場合は、再利用できるデータ ソース定義が既に存在することがあります。 Azure Cognitive Search では、データ ソース オブジェクトはインデクサーでのみ使用されます。 データ ソース オブジェクトは、プログラムで、または**データのインポート** ウィザードを使用して作成でき、必要に応じて再利用できます。|
 | **サンプル**| Azure Cognitive Search には、チュートリアルとクイックスタートで使用される 2 つの組み込みサンプル データ ソースが用意されています。これは、Cosmos DB でホストされている不動産 SQL データベースとホテル データベースです。 ホテル サンプルに基づくチュートリアルについては、クイックスタートの「[Azure portal でインデックスを作成する](search-get-started-portal.md)」を参照してください。 |
@@ -75,7 +75,7 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 
 ウィザードでは、バックグラウンドで次のオブジェクトの作成、構成、呼び出しを行います。 ウィザードが実行された後、ポータル ページにその出力が表示されます。 サービスの [概要] ページには、インデックス、インデクサー、データ ソース、およびスキルセットの一覧が表示されます。 インデックスの定義は、完全な JSON でポータルに表示できます。 その他の定義については、[REST API](https://docs.microsoft.com/rest/api/searchservice/) を使用して特定のオブジェクトを取得できます。
 
-| Object | 説明 | 
+| Object | [説明] | 
 |--------|-------------|
 | [データ ソース](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | ソース データに対する接続情報を資格情報を含めて保持します。 データ ソース オブジェクトは、インデクサーでのみ使用されます。 | 
 | [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | フルテキスト検索やその他のクエリに使用される物理データ構造です。 | 
@@ -109,7 +109,7 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 
 1. 属性を設定して、インデックスでのこのフィールドの使用方法を指定します。 
 
-   インデックス内のフィールドの物理的な表現が属性によって決定されるため、この手順に時間をかけてください。 後で属性を変更するときには、プログラムで行う場合も、ほとんどの場合にインデックスを削除して再構築する必要があります。 **Searchable** や **Retrievable** などのコア属性では、[ストレージへの影響は無視できる程度](search-what-is-an-index.md#storage-implications)です。 フィルターを有効にして suggester を使用すると、ストレージの要件が増えます。 
+   インデックス内のフィールドの物理的な表現が属性によって決定されるため、この手順に時間をかけてください。 後で属性を変更するときには、プログラムで行う場合も、ほとんどの場合にインデックスを削除して再構築する必要があります。 **Searchable** や **Retrievable** などのコア属性では、[ストレージへの影響は無視できる程度](search-what-is-an-index.md#index-size)です。 フィルターを有効にして suggester を使用すると、ストレージの要件が増えます。 
    
    + **Searchable** では、全文検索が有効になります。 自由形式のクエリまたはクエリ式で使用されるすべてのフィールドに、この属性が必要です。 **Searchable** としてマークしたフィールドごとに、逆インデックスが作成されます。
 
@@ -128,7 +128,7 @@ Azure portal では、インデックスのプロトタイプ作成および読�
 1. オートコンプリートまたは候補の結果の形式の先行入力機能が必要ですか。 **[Suggester]** チェックボックスを選択し、選択したフィールドで[先行入力クエリ候補とオートコンプリート](index-add-suggesters.md)を有効にします。 suggester は、インデックス内のトークン化された用語の数を増加させるため、より多くのストレージを消費します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ウィザードの利点と制限事項を理解する最善の方法は、これを段階を追って実行することです。 次のクイックスタートでは、各ステップについて説明します。
 

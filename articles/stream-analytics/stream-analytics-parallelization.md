@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics でのクエリの並列処理とスケールの使用
 description: この記事では、Stream Analytics ジョブをスケールするために入力パーティションの構成、クエリ定義のチューニング、およびジョブのストリーミング ユニットの設定を行う方法について説明します。
-services: stream-analytics
 author: JSeb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 985746989af39aa55d5d8af735edf62f4c4b77b7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: d1afb6037b5fc290de93faba405982ebd1fb68ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932284"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431579"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream Analytics でのクエリの並列処理の活用
 この記事では、Azure Stream Analytics で並列処理を活用する方法を示します。 入力パーティションの構成と分析クエリ定義のチューニングによって Stream Analytics ジョブをスケールする方法について説明します。
@@ -305,7 +303,7 @@ Stream Analytics から出力される [Cosmos DB](https://github.com/Azure-Samp
 
 Azure Stream Analytics ジョブの [メトリックス] ウィンドウを使用して、パイプラインのボトルネックを特定します。 スループットについての **[Input/Output Events]\(入出力イベント\)** および [[透かしの遅延]](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) または **[Backlogged Events]\(バックログされたイベント\)** を確認して、ジョブが入力速度に対応しているかどうかを確認します。 イベント ハブのメトリックスについては、 **[Throttled Requests] (スロットルされた要求数)** を検索し、必要に応じてしきい値ユニットを調整します。 Cosmos DB メトリックスについては、スループットの下の **[パーティション キーの範囲ごとの使用された最大 RU/秒]** を確認して、パーティション キーの範囲が均一に消費されていることを確認します。 Azure SQL DB については、 **[ログ IO]** および **[CPU]** を監視します。
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 

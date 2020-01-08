@@ -1,25 +1,15 @@
 ---
 title: Windows で Azure Service Fabric サービスをコンテナー化する
 description: Windows で Service Fabric Reliable Services と Reliable Actors サービスをコンテナー化する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: anmolah
-editor: roroutra
-ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 0cb48a2272ce854005f9f3db5b6a9abf62cc7015
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9fe5980c13f655f8f30cc42771971a5015460420
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599209"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466190"
 ---
 # <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows で Service Fabric Reliable Services と Reliable Actors をコンテナー化する
 
@@ -147,6 +137,6 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
 
 以上の手順で、クラスターを実行しているコンテナー化された Service Fabric アプリケーションが作成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Service Fabric でのコンテナー](service-fabric-get-started-containers.md)の実行について確認します。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。

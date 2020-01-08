@@ -1,24 +1,21 @@
 ---
-title: テキスト翻訳コグニティブ スキル (プレビュー)
+title: テキスト翻訳コグニティブ スキル
 titleSuffix: Azure Cognitive Search
-description: テキストが評価され、レコードごとに、Azure コグニティブ検索の AI エンリッチメント パイプラインで、指定した対象言語に翻訳されたテキストが返されます。 このスキルは現在、パブリック プレビューの段階です。
+description: テキストが評価され、レコードごとに、Azure コグニティブ検索の AI エンリッチメント パイプラインで、指定した対象言語に翻訳されたテキストが返されます。
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c42c9033fac057c12426726a96ae6079f3080da
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5089174fcfd5a97128c1f789b818243243a5282f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715399"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460762"
 ---
 #   <a name="text-translation-cognitive-skill"></a>テキスト翻訳コグニティブ スキル
-
-> [!IMPORTANT] 
-> このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 プレビュー機能は [REST API バージョン 2019-05-06-Preview](search-api-preview.md) で提供しています。 現時点でポータルによるサポートは一部のみにとどまります。また、.NET SDK によるサポートはありません。
 
 **テキスト翻訳**スキルでは、テキストが評価され、レコードごとに、指定した対象言語に翻訳されたテキストが返されます。 このスキルでは、Cognitive Services で使用可能な [Translator Text API v3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) が使用されます。
 
@@ -41,7 +38,7 @@ Microsoft.Skills.Text.TranslationSkill
 
 パラメーターの大文字と小文字は区別されます。
 
-| 入力                | 説明 |
+| 入力                | [説明] |
 |---------------------|-------------|
 | defaultToLanguageCode | (必須) 翻訳後の言語が明示的に指定されていないドキュメントに対する翻訳後の言語のコード。 <br/> [サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)を参照してください。 |
 | defaultFromLanguageCode | (省略可能) 翻訳前の言語が明示的に指定されていないドキュメントに対する翻訳前の言語のコード。  defaultFromLanguageCode が指定されていない場合は、Translator Text API によって提供される自動言語検出を使用して、翻訳前の言語が決定されます。 <br/> [サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)を参照してください。 |
@@ -49,7 +46,7 @@ Microsoft.Skills.Text.TranslationSkill
 
 ## <a name="skill-inputs"></a>スキルの入力
 
-| 入力名     | 説明 |
+| 入力名     | [説明] |
 |--------------------|-------------|
 | text | 翻訳対象のテキスト。|
 | toLanguageCode    | テキストの翻訳後の言語を示す文字列。 この入力を指定しない場合、defaultToLanguageCode を使ってテキストが翻訳されます。 <br/>[サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)を参照|
@@ -57,7 +54,7 @@ Microsoft.Skills.Text.TranslationSkill
 
 ## <a name="skill-outputs"></a>スキルの出力
 
-| 出力名    | 説明 |
+| 出力名    | [説明] |
 |--------------------|-------------|
 | translatedText | translatedFromLanguageCode から translatedToLanguageCode へのテキスト翻訳の文字列の結果。|
 | translatedToLanguageCode  | テキストが翻訳された後の言語コードを示す文字列。 複数の言語に翻訳していて、どのテキストがどの言語であるかを追跡できるようにしたい場合に便利です。|
@@ -151,7 +148,7 @@ Microsoft.Skills.Text.TranslationSkill
 テキストが空の場合、警告が生成されます。
 テキストが 50,000 文字を超えると、最初の 50,000 文字のみが翻訳され、警告が発行されます。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 + [組み込みのスキル](cognitive-search-predefined-skills.md)
 + [スキルセットの定義方法](cognitive-search-defining-skillset.md)

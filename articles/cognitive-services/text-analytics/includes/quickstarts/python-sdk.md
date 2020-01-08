@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 6d4076563ac803c72f3749399bed6aaa235a0343
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7f113a9f1cc13278b7949570fec394ccee7f7437
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795673"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446243"
 ---
 <a name="HOLTop"></a>
 
@@ -42,11 +42,15 @@ pip install --upgrade azure-cognitiveservices-language-textanalytics
 
 [!code-python[import statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
 
-リソースの Azure エンドポイントとサブスクリプション キー用の変数を作成します。 これらの値は、環境変数 TEXT_ANALYTICS_SUBSCRIPTION_KEY および TEXT_ANALYTICS_ENDPOINT から取得します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
+リソースの Azure エンドポイントとサブスクリプション キー用の変数を作成します。
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-[!code-python[endpoint and key variables](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=initialVars)]
+```python
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
+```
+
 
 ## <a name="object-model"></a>オブジェクト モデル
 

@@ -1,25 +1,14 @@
 ---
 title: Azure Service Fabric クラスターのアップグレード
 description: Azure Service Fabric クラスターのバージョンまたは構成のアップグレードについて説明します。  この記事では、クラスターの更新モードの設定、証明書のアップグレード、アプリケーション ポートの追加、OS 修正プログラムの実行、およびアップグレードの実行時に期待できる内容について説明します
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
-ms.author: atsenthi
-ms.openlocfilehash: 161c720fbcc9370aaf273b241e88a7184f47371b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 156693a9c9a3950c16a620a2a43b1f36718c4133
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434017"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターのアップグレードと更新
 
@@ -102,7 +91,7 @@ Service Fabric では、クラスターの作成時に指定した [X.509 server
 パッチ オーケストレーション アプリケーション (POA) は、ダウンタイムなしで、Service Fabric クラスターでのオペレーティング システムへのパッチの適用を自動化する Service Fabric アプリケーションです。 [Windows 用のパッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md)をクラスターにデプロイすることにより、常時サービスの稼働状態を維持しながら、調整された方法でパッチをインストールすることができます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Service Fabric クラスターのファブリック設定](service-fabric-cluster-fabric-settings.md)
 * [クラスターのスケールアップとスケールダウン](service-fabric-cluster-scale-up-down.md)
 * [アプリケーションのアップグレード](service-fabric-application-upgrade.md)

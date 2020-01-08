@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics の出力エラー ポリシー
 description: Azure Stream Analytics で利用できる出力エラー処理ポリシーについて説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b31530966d2c5ca9a3f82f3e74ba349e66053a83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478924"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431625"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Azure Stream Analytics の出力エラー ポリシー
 この記事では、Azure Stream Analytics で構成できる出力データ エラー処理ポリシーについて説明します。
@@ -24,15 +23,15 @@ ms.locfileid: "61478924"
 ![Azure Stream Analytics の出力エラー ポリシーの場所](./media/stream-analytics-output-error-policy/stream-analytics-error-policy-locate.png)
 
 
-## <a name="retry"></a>Retry
+## <a name="retry"></a>[再試行]
 エラーが発生すると、Azure Stream Analytics により、書き込みが成功するまで無期限でイベントの書き込みが試行されます。 再試行にはタイムアウトがありません。 最終的には、再試行しているイベントによって後続のすべてのイベントの処理が妨げられます。 このオプションは既定の出力エラー処理ポリシーです。
 
-## <a name="drop"></a>ドロップ
+## <a name="drop"></a>Drop
 Azure Stream Analytics により、データ変換エラーを起こした出力イベントがドロップされます。 ドロップされたイベントを後で復元し、再処理することはできません。
 
 
 (ネットワーク エラーなど) 一時的なエラーはすべて、出力エラー処理ポリシーの構成に関係なく、再試行されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [Azure Stream Analytics のトラブルシューティング ガイド](stream-analytics-troubleshooting-guide.md)

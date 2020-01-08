@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 7c7b0a0bb79f3f00d7a8dff64ec1b7143241a1f8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e7228556659a7a4a9f01ea31f61e75b5e870d50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892228"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457422"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 
-汎用 v2 ストレージ アカウントは、最新の Azure Storage 機能をサポートし、汎用 v1 および BLOB ストレージ アカウントのすべての機能を組み込んでいます。 ほとんどのストレージ シナリオに汎用 v2 アカウントをお勧めします。 汎用 v2 アカウントは、業界内の他社に引けを取らないトランザクション料金で、Azure Storage に対してギガバイトあたり容量の最低価格を提供しています。 汎用 v2 アカウントでは、ホットまたはクールの既定のアカウント アクセス層と、ホット、クール、またはアーカイブ間の BLOB レベル階層がサポートされます。
+汎用 v2 ストレージ アカウントは、最新の Azure Storage の機能をサポートし、汎用 v1 と BLOB ストレージ アカウントのすべての機能が組み込まれています。 ほとんどのストレージ シナリオに汎用 v2 アカウントをお勧めします。 汎用 v2 アカウントは、業界内の他社に引けを取らないトランザクション料金で、Azure Storage に対してギガバイトあたり容量の最低価格を提供しています。 汎用 v2 アカウントでは、ホットまたはクールの既定のアカウント アクセス層と、ホット、クール、またはアーカイブ間の BLOB レベル階層がサポートされます。
 
 汎用 v1 または BLOB ストレージ アカウントから汎用 v2 ストレージ アカウントにアップグレードする方法は簡単です。 Azure portal、PowerShell、または Azure CLI を使用してアップグレードできます。
 
@@ -26,7 +26,7 @@ ms.locfileid: "74892228"
 
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. ストレージ アカウントに移動します。
 3. **[設定]** セクションで **[構成]** をクリックします。
 4. **[アカウントの種類]** の **[アップグレード]** をクリックします。
@@ -165,7 +165,6 @@ BLOB ストレージ アカウントのデータ アクセス コストを見積
 > [!NOTE]
 > ホット ストレージ アクセス層またはクール ストレージ アクセス層を使用する場合のコストの計算に関する詳細な例については、「*Azure Storage の価格* 」というページにある、 ["ホットおよびクール アクセス層とはどのようなものですか? また、どちらを使用すればよいのでしょうか?"](https://azure.microsoft.com/pricing/details/storage/)にサインインします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ストレージ アカウントの作成](storage-quickstart-create-account.md)
-* [Azure Storage アカウントを管理する](storage-account-manage.md)

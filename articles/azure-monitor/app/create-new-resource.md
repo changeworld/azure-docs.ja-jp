@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/02/2019
-ms.openlocfilehash: 11b581649e6d7a048899394d69e574e8f9a4d22c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 1ba6d6e1774db4e9c95b107e1482a0c6ce532bb5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432629"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 
@@ -28,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![左上隅にある + 記号をクリックします。 開発者ツールを選択し、Application Insights を選択する](./media/create-new-resource/new-app-insights.png)
 
-   | 設定        |  値           | 説明  |
+   | 設定        |  値           | [説明]  |
    | ------------- |:-------------|:-----|
    | **Name**      | 一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | App Insights データをホストする新しいリソース グループまたは既存のリソース グループの名前。 |
@@ -73,7 +73,7 @@ New-AzApplicationInsights [-ResourceGroupName] <String> [-Name] <String> [-Locat
 ```powershell
 New-AzApplicationInsights -Kind java -ResourceGroupName testgroup -Name test1027 -location eastus
 ```
-#### <a name="results"></a>結果
+#### <a name="results"></a>[結果]
 
 ```powershell
 Id                 : /subscriptions/{subid}/resourceGroups/testgroup/providers/microsoft.insights/components/test1027
@@ -125,7 +125,7 @@ az monitor app-insights component create --app
 az monitor app-insights component create --app demoApp --location westus2 --kind web -g demoRg --application-type web
 ```
 
-#### <a name="results"></a>結果
+#### <a name="results"></a>[結果]
 
 ```azurecli
 az monitor app-insights component create --app demoApp --location eastus --kind web -g demoApp  --application-type web
@@ -155,7 +155,7 @@ az monitor app-insights component create --app demoApp --location eastus --kind 
 
 このコマンドの詳細な Azure CLI ドキュメントと、インストルメンテーション キーを取得する方法については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest#ext-application-insights-az-monitor-app-insights-component-create)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [診断検索](../../azure-monitor/app/diagnostic-search.md)
 * [メトリックを探索する](../../azure-monitor/app/metrics-explorer.md)
 * [Analytics クエリを作成する](../../azure-monitor/app/analytics.md)

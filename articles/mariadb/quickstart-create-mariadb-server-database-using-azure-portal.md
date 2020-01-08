@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 240329ba3dc50cef249716f951595fea0cdc67eb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9ba02f53ba5765d90e8bba80e4d99922d7eb7c46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769984"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432048"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Azure portal を使用した Azure Database for MariaDB サーバーの作成
 
@@ -26,7 +26,7 @@ Web ブラウザーで、[Azure portal](https://portal.azure.com/) に移動し�
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Azure Database for MariaDB サーバーを作成する
 
-Azure Database for MariaDB サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](concepts-pricing-tiers.md)を使って作成します。 サーバーは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内に作成します。
+Azure Database for MariaDB サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](concepts-pricing-tiers.md)を使って作成します。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成します。
 
 Azure Database for MariaDB サーバーを作成するには、次の手順に従います。
 
@@ -40,15 +40,15 @@ Azure Database for MariaDB サーバーを作成するには、次の手順に�
    
    ![サーバー フォームの作成](./media/quickstart-create-mariadb-server-database-using-azure-portal/4-create-form.png)
 
-    Setting | 推奨値 | 説明
+    設定 | 推奨値 | [説明]
     ---|---|---
     サーバー名 | *一意のサーバー名* | Azure Database for MariaDB サーバーを識別する一意の名前を選択します。 たとえば **mydemoserver** を選択します。 入力したサーバー名にドメイン名 *.mariadb.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 から 63 文字にする必要があります。
-    Subscription | *該当するサブスクリプション* | サーバーに使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
+    サブスクリプション | *該当するサブスクリプション* | サーバーに使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     Resource group | **myresourcegroup** | 新しいリソース グループ名を入力するか、既存のリソース グループを選択します。 
     ソースの選択 | "**空白**" | **[空白]** を選択し、最初から新しいサーバーを作成します (既存の Azure Database for MariaDB サーバーの geo バックアップからサーバーを作成する場合は、 **[バックアップ]** を選択します)。
     サーバー管理者のログイン | **myadmin** | サーバーに接続するときに使用するサインイン アカウント。 管理者のサインイン名に **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
-    パスワード | *任意* | サーバー管理者アカウントの新しいパスワードを入力します。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
-    パスワードの確認 | *任意*| 管理者アカウントのパスワードを確認します。
+    Password | *任意* | サーバー管理者アカウントの新しいパスワードを入力します。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
+    [パスワードの確認入力] | *任意*| 管理者アカウントのパスワードを確認します。
     Location | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
     Version | *最新バージョン*| 最新バージョン (別のバージョンを使用する特別な要件がある場合を除く)。
     Pricing tier | 説明を参照してください。 | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[価格レベル]**  >  **[General Purpose]** を選択します。 次の設定は既定値のままにしてください。<br><ul><li>**[コンピューティング世代]** (Gen 5)</li><li>**[仮想コア]** (4 仮想コア)</li><li>**ストレージ** (100 GB)</li><li>**[バックアップの保有期間]** (7 日間)</li></ul><br>サーバー バックアップを geo 冗長ストレージで有効にするには、 **[バックアップ冗長オプション]** で **[地理冗長]** を選択します。 <br><br>この価格レベルの選択を保存するには、 **[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
@@ -123,7 +123,7 @@ Azure Database for MariaDB サーバーには、さまざまなアプリケー�
     mysql --host mydemoserver.mariadb.database.azure.com --user myadmin@mydemoserver -p
     ```
 
-    mysql パラメーター |推奨値|説明
+    mysql パラメーター |推奨値|[説明]
     ---|---|---
     --host | *サーバー名* | Azure Database for MariaDB サーバーを作成するときに使用したサーバー名の値。 この例におけるサーバーは、**mydemoserver.mariadb.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 ( **\*.mariadb.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。
     --user | *サーバー管理者ログイン名* |Azure Database for MariaDB サーバーを作成するときに使用したサーバー管理者のログイン ユーザー名。 このユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username\@servername* です。
@@ -196,14 +196,14 @@ MySQL Workbench を使用してサーバーに接続するには、次の手順�
 
    ![新しい接続の設定](./media/quickstart-create-mariadb-server-database-using-azure-portal/setup-new-connection.png)
 
-    |Setting |推奨値|フィールドの説明|
+    |設定 |推奨値|フィールドの説明|
     |---|---|---|
-     接続名 | **Demo connection** | この接続のラベル。 |
+     [接続名] | **Demo connection** | この接続のラベル。 |
     接続方法 | **Standard (TCP/IP)** | Standard (TCP/IP) で十分です。 |
-    ホスト名 | *サーバー名* | Azure Database for MariaDB サーバーを作成するときに使用したサーバー名の値。 この例におけるサーバーは、**mydemoserver.mariadb.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 ( **\*.mariadb.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、この記事で説明した手順に従って接続情報を取得してください。|
+    hostname | *サーバー名* | Azure Database for MariaDB サーバーを作成するときに使用したサーバー名の値。 この例におけるサーバーは、**mydemoserver.mariadb.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 ( **\*.mariadb.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、この記事で説明した手順に従って接続情報を取得してください。|
      Port | 3306 | Azure Database for MariaDB サーバーに接続するときに使用するポート。 |
     ユーザー名 |  *サーバー管理者ログイン名* | Azure Database for MariaDB サーバーを作成するときに使用したサーバー管理者のサインイン情報。 この例のユーザー名は **myadmin\@mydemoserver** です。 ユーザー名を覚えていない場合は、この記事で説明した手順に従って接続情報を取得してください。 形式は *username\@servername* です。
-    パスワード | *<お使いのパスワード>* | パスワードを保存するには、 **[Store in Vault]\(コンテナーに保存\)** を選択します。 |
+    Password | *<お使いのパスワード>* | パスワードを保存するには、 **[Store in Vault]\(コンテナーに保存\)** を選択します。 |
 
 4. すべてのパラメーターが正しく構成されていることを確認するために、 **[Test Connection]\(接続のテスト\)** を選択します。 その後、 **[OK]** を選択して接続を保存します。 
 
@@ -211,9 +211,9 @@ MySQL Workbench を使用してサーバーに接続するには、次の手順�
     > ご使用のサーバーには SSL が既定で適用されます。 正常に接続するためには追加の構成が必要です。 詳細については、「[Azure Database for MariaDB に安全に接続するためにご利用のアプリケーション内で SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。 このクイック スタートに関して SSL を無効にするのであれば、Azure portal で、サーバーの概要ページにあるメニューから **[接続のセキュリティ]** を選択してください。 **[SSL 接続を強制する]** で **[無効]** を選択します。
     >
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイック スタートで作成したリソースは、2 とおりの方法でクリーンアップすることができます。 [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を削除することができます。 この方法では、リソース グループ内にあるすべてのリソースが削除されます。 他のリソースをそのまま維持する場合は、1 つのサーバー リソースだけを削除してください。
+このクイック スタートで作成したリソースは、2 とおりの方法でクリーンアップすることができます。 [Azure リソース グループ](../azure-resource-manager/management/overview.md)を削除することができます。 この方法では、リソース グループ内にあるすべてのリソースが削除されます。 他のリソースをそのまま維持する場合は、1 つのサーバー リソースだけを削除してください。
 
 > [!TIP]
 > このコレクションの他のクイック スタートは、このクイック スタートに基づいています。 引き続き Azure Database for MariaDB のクイック スタートの作業を行う場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、以下の手順に従い、このクイック スタートで作成したすべてのリソースを削除してください。
@@ -235,6 +235,6 @@ MySQL Workbench を使用してサーバーに接続するには、次の手順�
 
 3. 削除するサーバーの名前を確認します。 削除によって影響を受けるデータベースをその下に表示します。 削除の確認を行うために、目的のサーバー名 (この例では **mydemoserver**) を入力します。 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [最初の Azure Database for MariaDB データベースを設計する](./tutorial-design-database-using-portal.md)

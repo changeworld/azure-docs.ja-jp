@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics での時間の処理について
 description: 最適な開始時刻を選択する方法、遅延イベントと早期イベントを処理する方法、時間の処理のメトリックなどの、Azure Stream Analytics での時間の処理のしくみについて説明します。
-author: jasonwhowell
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: ae53663f78b684d41c36607760e30db9e48a6434
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 367b7c2e1ce1c8b3c0dbc02003218b76096b409d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901423"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354647"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Azure Stream Analytics での時間の処理について
 
@@ -128,7 +128,7 @@ Stream Analytics ジョブには、複数の**イベント順序**オプショ�
 
 [Stream Analytics ジョブのメトリック](stream-analytics-monitoring.md)を通じて、イベント順序時間許容値の複数の影響を監視することができます。 関係するメトリックを次に示します。
 
-|メトリック  | 説明  |
+|メトリック  | [説明]  |
 |---------|---------|
 | **順不同のイベント** | ドロップされた、または調整されたタイムスタンプが付与された、順不同で受信したイベントの数を示します。 このメトリックは、Azure portal でジョブの **[イベント順序]** ページで **[順不同のイベント]** 設定を構成することで直接の影響を受けます。 |
 | **遅延入力イベント** | ソースからの到着が遅延しているイベントの数を示します。 このメトリックには、ドロップされたか、タイムスタンプが調整されたイベントが含まれます。 このメトリックは、Azure portal でジョブの **[イベント順序]** ページで **[到着が遅れるイベント]** の設定を構成することで直接の影響を受けます。 |
@@ -220,7 +220,7 @@ Azure Stream Analytics では、基準値の進行状況を唯一のトリガー
 
    ![Azure Stream Analytics サブストリーム基準値の図](media/stream-analytics-time-handling/watermark-graph-3.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Stream Analytics のイベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)
 - [Stream Analytics ジョブのメトリック](stream-analytics-monitoring.md)

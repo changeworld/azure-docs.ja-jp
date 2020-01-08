@@ -6,12 +6,12 @@ author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: aa2e0e8be8805187ec1f5b8ea6498e90e2d5a7c4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5c0228feb88296e0c82efa52648ce38d70e5b921
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976878"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409896"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Azure for Students Starter を使用して関数を作成する
 
@@ -43,11 +43,11 @@ Azure アカウントで Azure Portal (<https://portal.azure.com>) にサイン�
 
     <img src="./media/functions-create-student-starter/Function-create-start.png" width="315">
 
-    | Setting      | 推奨値  | 説明                                        |
+    | 設定      | 推奨値  | [説明]                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **アプリ名** | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、`a-z`、`0-9`、および `-` です。  | 
     | **サブスクリプション** | 該当するサブスクリプション | この新しい Function App が作成されるサブスクリプション。 | 
-    | **[リソース グループ](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 |
+    | **[リソース グループ](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Function App を作成するための新しいリソース グループの名前。 |
    | **[App Service プラン/場所](./functions-scale.md)** | 新規 | 関数アプリのデプロイ先リージョン、リソースの密度を制御するホスティング プラン。 同じプランにデプロイされた複数の関数アプリは、すべて同じ単一の無料インスタンスを共有します。 これは Student Starter プランの制限です。 ホスティング オプションの詳細については、[こちら](./functions-scale.md)を参照してください。|
     | **ランタイム スタック** | 優先言語 | お気に入りの関数プログラミング言語をサポートするランタイムを選択します。 C# および F# 関数用の **[.NET]** を選択します。 |
     |**[Application Insights](./functions-monitoring.md)**| 有効 | Application Insights は、関数アプリのログを保存および分析するために使用されます。 Application Insights をサポートする場所を選択した場合は、既定で有効になります。 手動で近くのリージョンを選択して Application Insights をデプロイすることで、Application Insights を任意の関数に対して有効にすることができます。 Application Insights を使用しない場合、ライブ ストリーミング ログを確認できません。
@@ -104,7 +104,7 @@ HTTP によってトリガーされる関数の言語固有のテンプレート
 
    ![Azure Portal の関数ログ ビューアー。](./media/functions-create-student-starter/function-view-logs.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
@@ -124,7 +124,7 @@ Azure for Student Starter では、Azure Functions ランタイムのほとん�
 * サポートされるのは、Functions ランタイムの[バージョン 2.x 以降](functions-versions.md)のみです。
 * すべての開発者ツールは編集および公開関数に対してサポートされています。 これには、VS Code、Visual Studio、Azure CLI、および Azure portal が含まれます。 ポータル以外のものを使用する場合は、まずポータルでアプリを作成してから、そのアプリを好みのツールのデプロイ対象として選択する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HTTP によってトリガーされる単純な関数を含む Function App を作成しました。 これで、ローカル ツール、その他の言語、監視、統合を探索できるようになりました。
 

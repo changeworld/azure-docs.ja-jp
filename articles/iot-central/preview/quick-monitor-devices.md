@@ -3,18 +3,18 @@ title: クイックスタート - Azure IoT Central でデバイスを監視す�
 description: このクイックスタートでは、オペレーターとして Azure IoT Central アプリケーションを使用してデバイスを監視します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a6bc4b76dc00330e39526aec8bc5651b9abb590b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e0f0e765ba6bb8b0969fbf639c8427e8b65214fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706740"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434769"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices-preview-features"></a>クイック スタート:Azure IoT Central を使用してデバイスを監視する (プレビュー機能)
 
@@ -56,7 +56,7 @@ Azure IoT Central では、デバイスに関する通知を電子メール メ�
 
 ![設定の更新](media/quick-monitor-devices/change-settings.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、次の方法について説明しました。
 

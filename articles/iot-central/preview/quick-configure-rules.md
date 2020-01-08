@@ -3,18 +3,18 @@ title: クイックスタート - Azure IoT Central でルールとアクショ�
 description: このクイックスタートでは、作成者として Azure IoT Central アプリケーションでテレメトリベースのルールとアクションを構成する方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: f81171d0f545bbf7f903d54bee761817e9451d9d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 489a512ea5658aaeaccdba4b91eae7def14a589c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706717"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434814"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central-preview-features"></a>クイック スタート:Azure IoT Central でデバイスのルールとアクションを構成する (プレビュー機能)
 
@@ -43,7 +43,7 @@ ms.locfileid: "74706717"
     | フィールド                                        | 値                             |
     | -------------------------------------------- | ------------------------------    |
     | Measurement                                  | 気温                       |
-    | Operator                                     | が次の値より大きい                   |
+    | 演算子                                     | が次の値より大きい                   |
     | 値                                        | 90                                |
 
     さらに条件を追加するには、 **[+ 条件]** を選択します。
@@ -54,7 +54,7 @@ ms.locfileid: "74706717"
 
 1. 次の表の情報を使用して、アクションを定義します。
 
-    | Setting   | 値                                             |
+    | 設定   | 値                                             |
     | --------- | ------------------------------------------------- |
     | Display name | オペレーターの電子メール アクション                          |
     | ターゲット        | メール アドレス                                |
@@ -74,7 +74,7 @@ ms.locfileid: "74706717"
 > [!NOTE]
 > テストの完了後は、ルールを無効にして、受信トレイに届くアラートを停止してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、次の方法について説明しました。
 

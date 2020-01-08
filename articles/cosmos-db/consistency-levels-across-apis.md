@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 8bfff7790fa4984241e1c3dda19a20c8b13591fb
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 819929fb157444ae53df113c0318dd18146156c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872181"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442020"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>整合性レベルと Azure Cosmos DB API
 
@@ -21,7 +21,6 @@ Azure Cosmos DB は、一般的なデータベース用のワイヤ プロトコ
 SQL API、Gremlin API、および Table API を使用する場合、Azure Cosmos アカウントに構成されている既定の整合性レベルが使用されます。 
 
 Casandra API または Azure Cosmos DB の Mongo DB 用 API を使用すると、Apache Cassandra と MongoDB がそれぞれ提供しているものよりも強い整合性と耐久性が保証された、整合性レベルの完全なセットがアプリケーションで取得されます。 このドキュメントでは、Apache Cassandra と MongoDB の整合性レベルに対応する Azure Cosmos DB の整合性レベルを示します。
-
 
 ## <a id="cassandra-mapping"></a>Apache Cassandra と Azure Cosmos DB の間の整合性レベルのマッピング
 
@@ -53,9 +52,9 @@ MongoDB で Azure Cosmos DB の API を使用する場合:
 
 [![MongoDB の整合性モデル マッピング](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-Azure Cosmos DB API とオープン ソースの API の間の整合性レベルおよび互換性についての詳細を参照してください。 次の記事を参照してください。
+Azure Cosmos DB API とオープン ソースの API の間の整合性レベルおよび互換性についての詳細を参照してください。 次の記事をご覧ください。
 
 * [さまざまな整合性レベルでの可用性およびパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)
 * [Azure Cosmos DB の MongoDB 用 API でサポートされている MongoDB の機能](mongodb-feature-support.md)

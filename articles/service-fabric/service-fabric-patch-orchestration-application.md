@@ -1,9 +1,9 @@
 ---
-title: Service Fabric クラスターで Windows オペレーティング システムに修正プログラムを適用する | Microsoft Docs
+title: Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 description: この記事では、パッチ オーケストレーション アプリケーションを使用して、Service Fabric クラスターでのオペレーティング システムへの修正プログラムの適用を自動化する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: khandelwalbrijeshiitr
+author: athinanthny
 manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
-ms.author: brkhande
-ms.openlocfilehash: a02228593a9d8efc9fb363232da1cede3c80a8b3
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.author: atsenthi
+ms.openlocfilehash: 3115c65c7027f5624b7b60b9be702ee4192d8cb6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592527"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464451"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -157,9 +157,9 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 
 | パラメーター        | 種類                          | 詳細 |
 |:-|-|-|
-|MaxResultsToCache    |long                              | キャッシュする必要がある Windows Update の結果の最大数。 <br><br>既定値は 3000 で、以下が前提となります。 <br> &nbsp;&nbsp;- ノード数が 20 である。 <br> &nbsp;&nbsp;- 月あたりのノードの更新数が 5 である。 <br> &nbsp;&nbsp;- 操作あたりの結果の数を 10 にできる。 <br> &nbsp;&nbsp;- 過去 3 か月の結果を格納する必要がある。 |
+|MaxResultsToCache    |Long                              | キャッシュする必要がある Windows Update の結果の最大数。 <br><br>既定値は 3000 で、以下が前提となります。 <br> &nbsp;&nbsp;- ノード数が 20 である。 <br> &nbsp;&nbsp;- 月あたりのノードの更新数が 5 である。 <br> &nbsp;&nbsp;- 操作あたりの結果の数を 10 にできる。 <br> &nbsp;&nbsp;- 過去 3 か月の結果を格納する必要がある。 |
 |TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに Windows Update をインストールする際に使用するポリシーを示しています。<br><br>使用できる値は、次のとおりです。 <br>*NodeWise*:Windows 更新プログラムは、一度に 1 つのノードにインストールされます。 <br> *UpgradeDomainWise*:Windows 更新プログラムは、一度に 1 つの更新ドメインにインストールされます (最大で、更新ドメインに属するすべてのノードに Windows 更新プログラムを適用できます)。<br><br> [FAQ](#frequently-asked-questions) に関するセクションを参照してください。これは、クラスターに最適なポリシーを決定するのに役立ちます。
-|LogsDiskQuotaInMB   |long  <br> (既定値:*1024*)               | パッチ オーケストレーション アプリのログの最大サイズ (MB 単位)。このサイズまで、ノードでローカルに保存することができます。
+|LogsDiskQuotaInMB   |Long  <br> (既定値:*1024*)               | パッチ オーケストレーション アプリのログの最大サイズ (MB 単位)。このサイズまで、ノードでローカルに保存することができます。
 | WUQuery               | string<br>(既定値:*IsInstalled=0*)                | Windows 更新プログラムを取得するためのクエリ。 詳細については、[WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx) に関するページをご覧ください。
 | InstallWindowsOSOnlyUpdates | *Boolean* <br> (既定値: false)                 | このフラグを使用して、どの更新プログラムをダウンロードしてインストールするかを制御します。 次の値が許可されています <br>true - Windows オペレーティング システムの更新プログラムのみをインストールします。<br>false - マシンで使用可能なすべての更新プログラムをインストールします。          |
 | WUOperationTimeOutInMinutes | int <br>(既定値:*90*)                   | Windows Update 操作 (検索、ダウンロード、インストール) のタイムアウトを指定します。 指定したタイムアウト時間内に操作が完了しなかった場合は、操作が中止されます。       |
@@ -181,7 +181,7 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
     - 適切な `ApplicationParameter` 値を指定して、Deploy.ps1 PowerShell スクリプトを実行します。
 
 > [!NOTE]
-> スクリプトとアプリケーション フォルダー *PatchOrchestrationApplication* は同じディレクトリに保存しておいてください。
+> スクリプトとアプリケーション フォルダー *PatchOrchestrationApplication* は同じディレクトリに保存してください。
 
 ## <a name="upgrade-poa"></a>POA をアップグレードする
 
@@ -313,7 +313,7 @@ Windows Update の結果を照会するには、クラスターにサインイ�
 
    問題が解決しない場合は、ご利用の仮想マシン (VM) または複数の VM にサインインし、Windows イベント ログを使用して詳細を確認してください。 前述の修復タスクは、次の Executor の下位状態でのみ存在できます。
 
-      ExecutorSubState | 説明
+      ExecutorSubState | [説明]
     -- | -- 
       None=1 |  ノードに実行中の操作がなかったことを意味します。 状態が遷移中である可能性があります。
       DownloadCompleted=2 | ダウンロード操作が成功したか、一部失敗したか、失敗したかを示します。
@@ -401,7 +401,7 @@ A:クラスター全体に修正プログラムを適用するために必要な
 
 - コーディネーター サービスのポリシー。 既定のポリシーである "NodeWise" では、一度に 1 つのノードのみに修正プログラムが適用されます。この方法では、"UpgradeDomainWise" を使用するよりも低速になります。 
 
-   例: ノードに修正プログラムを適用するのに最大 1 時間かかる場合、5 個の更新ドメインがあり、それぞれに 4 個のノードが含まれている、20 個のノード (同じ種類のノード) のクラスターに修正プログラムを適用する場合は、以下が必要です。
+   次に例を示します。ノードに修正プログラムを適用するのに最大 1 時間かかる場合、5 個の更新ドメインがあり、それぞれに 4 個のノードが含まれている、20 個のノード (同じ種類のノード) のクラスターに修正プログラムを適用する場合は、以下が必要です。
     - "NodeWise" の場合: 最大 20 時間。
     - "UpgradeDomainWise" の場合: 最大 5 時間。
 

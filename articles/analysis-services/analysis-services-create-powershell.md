@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.date: 07/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 073193329950e1d7e6a812da4555ec8ba76f65e3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 071c44136d917874843bdf080de775ec6739937a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573193"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442870"
 ---
-# <a name="quickstart-create-a-server---powershell"></a>クイック スタート: サーバーの作成 - PowerShell
+# <a name="quickstart-create-a-server---powershell"></a>クイック スタート:サーバーの作成 - PowerShell
 
 このクイック スタートでは、コマンド ラインから PowerShell を使って、Azure サブスクリプション内に Azure Analysis Services サーバーを作成する方法について説明します。
 
@@ -22,7 +22,7 @@ ms.locfileid: "73573193"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure サブスクリプション**: [Azure 無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p/)にアクセスしてアカウントを作成します。
+- **Azure サブスクリプション**:[Azure 無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p/)にアクセスしてアカウントを作成します。
 - **Azure Active Directory**: サブスクリプションは、Azure Active Directory テナントに関連付けられている必要があります。また、そのディレクトリのアカウントが必要となります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
 - **Azure PowerShell**。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードするには、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。
 
@@ -42,9 +42,9 @@ Import-Module Az.AnalysisServices
 Connect-AzAccount
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)とは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 サーバーを作成するときは、自分のサブスクリプション内のリソース グループを指定する必要があります。 リソース グループがまだない場合は、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して新しく作成できます。 次の例は、米国西部リージョンに `myResourceGroup` という名前のリソース グループを作成します。
+[Azure リソース グループ](../azure-resource-manager/management/overview.md)とは、複数の Azure リソースをまとめてデプロイ、管理する際の論理コンテナーです。 サーバーを作成するときは、自分のサブスクリプション内のリソース グループを指定する必要があります。 リソース グループがまだない場合は、[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) コマンドを使用して新しく作成できます。 次の例は、米国西部リージョンに `myResourceGroup` という名前のリソース グループを作成します。
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
@@ -58,7 +58,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
 New-AzAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "myserver" -Location WestUS -Sku D1 -Administrator "philipc@adventure-works.com"
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 サブスクリプションからサーバーを削除するには、[New-AzAnalysisServicesServer](/powershell/module/az.analysisservices/new-azanalysisservicesserver) コマンドを使います。 続けてこのコレクション内の他のクイック スタートやチュートリアルに取り組む場合は、サーバーを削除しないでください。 次の例では、前の手順で作成したサーバーを削除します。
 
@@ -67,11 +67,11 @@ New-AzAnalysisServicesServer -ResourceGroupName "myResourceGroup" -Name "myserve
 Remove-AzAnalysisServicesServer -Name "myserver" -ResourceGroupName "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、PowerShell を使用して Azure サブスクリプションにサーバーを作成する方法について学習しました。 サーバーを作成したら、(必要に応じて) サーバー ファイアウォールを構成することによってサーバーをセキュリティで保護できます。 また、ポータルからサーバーにデータ モデルの基本的なサンプルを追加することもできます。 サンプル モデルがあると、モデル データベース ロールの構成とクライアント接続のテストについて理解するのに役立ちます。 詳しくは、サンプル モデルの追加のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [クイック スタート: サーバーのファイアウォールの構成 - ポータル](analysis-services-qs-firewall.md)      
+> [クイック スタート:サーバーのファイアウォールの構成 - ポータル](analysis-services-qs-firewall.md)      
 > [!div class="nextstepaction"]
-> [チュートリアル: サーバーにサンプル モデルを追加する](analysis-services-create-sample-model.md)
+> [チュートリアル:サーバーにサンプル モデルを追加する](analysis-services-create-sample-model.md)

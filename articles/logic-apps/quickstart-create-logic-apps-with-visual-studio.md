@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: f4d10f6b0934e7dea9779f45d0f05d7c28966965
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: bb284ad336e7110b0354450f3438fadb592370be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428646"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio
 
@@ -61,7 +61,7 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
 
 ## <a name="create-azure-resource-group-project"></a>Azure リソース グループ プロジェクトを作成する
 
-最初に、[Azure リソース グループ プロジェクト](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)を作成します。 Azure リソース グループとリソースについて詳しくは、[こちら](../azure-resource-manager/resource-group-overview.md)を参照してください。
+最初に、[Azure リソース グループ プロジェクト](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)を作成します。 Azure リソース グループとリソースについて詳しくは、[こちら](../azure-resource-manager/management/overview.md)を参照してください。
 
 1. Visual Studio を起動します。 Azure のアカウントを使用してサインインします。
 
@@ -109,12 +109,12 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
 
    ![Azure サブスクリプション、リソース グループ、リソースの場所を選択する](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
-   | Setting | 値の例 | 説明 |
+   | 設定 | 値の例 | [説明] |
    | ------- | ------------- | ----------- |
    | ユーザー アカウント | Fabrikam <br> sophia-owen@fabrikam.com | Visual Studio にサインインしたときに使用したアカウント |
    | **サブスクリプション** | 従量課金制 <br> (sophia-owen@fabrikam.com) | Azure サブスクリプションの名前および関連付けられたアカウント |
    | **リソース グループ** | MyLogicApp-RG <br> (米国西部) | ロジック アプリのリソースを格納およびデプロイするための Azure リソース グループと場所 |
-   | **Location** | **[Same as Resource Group]\(リソース グループと同じ\)** | ロジック アプリをデプロイする場所の種類と特定の場所。 場所の種類は、Azure リージョンまたは既存の[統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment.md) です。 <p>このクイックスタートでは、場所の種類を **[リージョン]** に設定し、場所を **[Same as Resource Group]\(リソース グループと同じ\)** に設定します。 <p>**メモ**:リソース グループ プロジェクトを作成した後で、[場所の種類と場所を変更する](manage-logic-apps-with-visual-studio.md#change-location)ことができますが、異なる場所の種類はロジック アプリにさまざまな影響を与えます。 |
+   | **Location** | **[Same as Resource Group]\(リソース グループと同じ\)** | ロジック アプリをデプロイする場所の種類と特定の場所。 場所の種類は、Azure リージョンまたは既存の[統合サービス環境 (ISE)](connect-virtual-network-vnet-isolated-environment.md) です。 <p>このクイックスタートでは、場所の種類を **[リージョン]** に設定し、場所を **[Same as Resource Group]\(リソース グループと同じ\)** に設定します。 <p>**注**:リソース グループ プロジェクトを作成した後で、[場所の種類と場所を変更する](manage-logic-apps-with-visual-studio.md#change-location)ことができますが、異なる場所の種類はロジック アプリにさまざまな影響を与えます。 |
    ||||
 
 1. Logic Apps デザイナーが開き、紹介ビデオやよく使用されるトリガーが含まれたページが表示されます。 ビデオやトリガーの後の **[テンプレート]** まで下へスクロールし、 **[空のロジック アプリ]** を選択します。
@@ -185,7 +185,7 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
 
    ![リソースの追加](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ロジック アプリの使用を完了したら、ロジック アプリと関連リソースが含まれているリソース グループを削除します。
 
@@ -199,7 +199,7 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
 
 1. ローカル コンピューターで Visual Studio ソリューションを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Visual Studio を使用してロジック アプリの構築、デプロイ、実行を行いました。 Visual Studio でロジック アプリの高度なデプロイを管理および実行する方法の詳細については、次の記事を参照してください。
 

@@ -2,19 +2,15 @@
 title: Azure Automation のデータの管理
 description: この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。  現在は、データの保持、Azure Automation のバックアップ、Azure Automation でのディザスター リカバリー が含まれています。
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: da1b151a150dfbf602593451d3d68043352b73eb
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: daa5bab7c8d4cbe98ffe9a8a8a4b66da029fef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850773"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421887"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation のデータの管理
 この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。
@@ -32,7 +28,7 @@ Azure Automation は、90 日を超えるジョブを自動的に削除した後
 | アセット |ユーザーによって資産が削除された日から 90 日後に、または資産を保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。 |
 | モジュール |ユーザーによってモジュールが削除された日から 90 日後に、またはモジュールを保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。 |
 | Runbooks |ユーザーによってリソースが削除された日から 90 日後に、またはリソースを保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。 |
-| [ジョブ] |最終更新日から 90 日後に削除された後、完全に消去されます。 これは、ジョブが完了、停止、または中断された後に実行されます。 |
+| ジョブ |最終更新日から 90 日後に削除された後、完全に消去されます。 これは、ジョブが完了、停止、または中断された後に実行されます。 |
 | ノード構成/MOF ファイル |古いノード構成は、新しいノード構成が生成された後、90 日間で完全に削除されます。 |
 | DSC ノード |Windows PowerShell で [Unregister-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) コマンドレットを使用するか、Azure ポータルを使用して、オートメーション アカウントから登録解除された後、90 日間で完全に削除されます。 また、ノードは、ユーザーによってノードを保持するアカウントが削除された後、90 日間で完全に削除されます。 |
 | ノード レポート |そのノードの新しいレポートが生成された後、90 日間で完全に削除削除されます。 |

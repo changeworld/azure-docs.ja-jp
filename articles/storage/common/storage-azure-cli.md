@@ -1,5 +1,5 @@
 ---
-title: Azure Storage での Azure CLI の使用 | Microsoft Docs
+title: Azure Storage での Azure CLI の使用
 description: Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。
 services: storage
 author: tamram
@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460455"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Azure Storage での Azure CLI の使用
 
@@ -534,7 +534,7 @@ az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 下記の資料で、Azure CLI の使用に関する詳細をさらにご覧いただけます。 
 
 * [Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: decfeb9c46c32c6388228de6597db0c840354c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930696"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448584"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する
 
@@ -316,7 +316,7 @@ function renderImageResults(items) {
 
 Bing Image Search API から、ユーザーの検索エクスペリエンスを支援する 4 種類の検索候補を、最上位のオブジェクトでそれぞれを返すことができます。
 
-| 推奨事項         | 説明                                                                                                                                                                                                         |
+| 推奨事項         | [説明]                                                                                                                                                                                                         |
 |--------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `pivotSuggestions` | 元の検索の軸語を別のものに置き換えるクエリです。 たとえば、"赤い花" を検索した場合、"赤" が軸語で、"黄色い花" が候補になる可能性があります。 |
 | `queryExpansions`  | 複数の条件を追加することで、元の検索を絞り込むクエリです。 たとえば、"Microsoft Surface" を検索した場合、クエリが "Microsoft Surface Pro" に拡張される場合があります。                                   |
@@ -338,7 +338,7 @@ searchItemRenderers = {
 
 これらのレンダラー関数では、次のパラメーターを受け取ることができます。
 
-| パラメーター         | 説明                                                                                              |
+| パラメーター         | [説明]                                                                                              |
 |---------|----------------------------------------------------------------------------------------------|
 | `item`  | 項目のプロパティ (URL とその説明など) を含む JavaScript オブジェクト。 |
 | `index` | コレクション内の結果項目のインデックス。                                          |
@@ -402,11 +402,11 @@ CORS プロキシをインストールして、チュートリアル アプリ�
 
 チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、各要求で同じであることを確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Image Search API を使用して画像の詳細情報を抽出する](tutorial-image-post.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Bing Image Search API リファレンス](//docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

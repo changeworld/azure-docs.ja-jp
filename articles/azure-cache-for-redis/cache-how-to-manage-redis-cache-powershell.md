@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 06d1895a807b4e618be3dc1f816da2c1b3faaf3b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122144"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530920"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cache for Redis の管理
 > [!div class="op_single_selector"]
@@ -95,7 +95,7 @@ Azure China Cloud でキャッシュを作成するには、次のいずれか�
 * 中国 (東部)
 * 中国 (北部)
 
-Azure China Cloud の詳細については、 [中国の 21Vianet が運営している AzureChinaCloud for Azure](http://www.windowsazure.cn/)に関するページをご覧ください。
+Azure China Cloud の詳細については、 [中国の 21Vianet が運営している AzureChinaCloud for Azure](https://www.windowsazure.cn/)に関するページをご覧ください。
 
 ### <a name="to-connect-to-microsoft-azure-germany"></a>Microsoft Azure Germany に接続するには
 Microsoft Azure Germany に接続するには、次のいずれかのコマンドを使用します。
@@ -103,7 +103,7 @@ Microsoft Azure Germany に接続するには、次のいずれかのコマン�
     Connect-AzAccount -EnvironmentName AzureGermanCloud
 
 
-または
+or
 
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureGermanCloud)
 
@@ -117,9 +117,9 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 ### <a name="properties-used-for-azure-cache-for-redis-powershell"></a>Azure Cache for Redis 用の PowerShell で使用されるプロパティ
 次の表は、Azure PowerShell を使用して Azure Cache for Redis インスタンスを作成し、管理するときに一般的に使用されるパラメーターのプロパティと説明を示しています。
 
-| パラメーター | 説明 | Default |
+| パラメーター | [説明] | Default |
 | --- | --- | --- |
-| 名前 |キャッシュの名前 | |
+| Name |キャッシュの名前 | |
 | Location |キャッシュの場所 | |
 | ResourceGroupName |キャッシュを作成するリソース グループの名前 | |
 | Size |キャッシュのサイズ。 有効な値は次のとおりです。P1、P2、P3、P4、C0、C1、C2、C3、C4、C5、C6、250MB、1GB、2.5GB、6GB、13GB、26GB、53GB |1GB |
@@ -134,7 +134,7 @@ Microsoft Azure Germany の詳細については、「[Microsoft Azure Germany](
 | KeyType |アクセス キーを更新するときに再生成するアクセス キーを指定します。 有効な値は次のとおりです。Primary、Secondary | |
 
 ### <a name="redisconfiguration-properties"></a>RedisConfiguration プロパティ
-| プロパティ | 説明 | 価格レベル |
+| プロパティ | [説明] | 価格レベル |
 | --- | --- | --- |
 | rdb-backup-enabled |[Redis データ永続化](cache-how-to-premium-persistence.md) が有効かどうか。 |Premium のみ |
 | rdb-storage-connection-string |[Redis データ永続化](cache-how-to-premium-persistence.md) |Premium のみ |
@@ -771,7 +771,7 @@ Azure Cache for Redis インスタンスを再起動するには、`Reset-AzRedi
         -Force
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure での Windows PowerShell の使用の詳細については、次のリソースをご覧ください。
 
 * [MSDN 上の Azure Cache for Redis コマンドレットのドキュメント](https://docs.microsoft.com/powershell/module/az.rediscache)

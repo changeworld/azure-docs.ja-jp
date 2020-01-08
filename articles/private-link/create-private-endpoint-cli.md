@@ -2,17 +2,17 @@
 title: クイックスタート - Azure CLI を使用して Azure プライベート エンドポイントを作成する
 description: このクイックスタートでは、Azure プライベート エンドポイントについて学習します
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 67513c2155e956e005b143c3049abe70a2f126f2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: dbcb833e6f8b90cebd3d013e58168558bcd96827
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419818"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459964"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>クイック スタート:Azure CLI を使用してプライベート エンドポイントを作成する
 プライベート エンドポイントは、Azure の Private Link の基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 このクイック スタートでは、Azure CLI を使用して、仮想ネットワーク上の VM と、プライベート エンドポイントを含む SQL Database サーバーを作成する方法を説明します。 その後、VM にアクセスし、Private Link リソース (この例ではプライベート Azure SQL Database サーバー) に安全にアクセスできます。 
@@ -21,7 +21,7 @@ ms.locfileid: "74419818"
 
 代わりに Azure CLI をローカルにインストールして使用する場合は、このクイック スタートには Azure CLI バージョン 2.0.28 以降を使用する必要があります。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードについては、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 リソースを作成するには、その前に、仮想ネットワークをホストするリソース グループを作成する必要があります。 [az group create](/cli/azure/group) を使用して、リソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループを場所 *westcentralus* に作成します。
 
@@ -170,12 +170,12 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
  7. (省略可能) 情報を作成するか、*mydatabase* に対して情報のクエリを実行します。
  8. *myVm* へのリモート デスクトップ接続を閉じます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 不要になったら、az group delete を使用して、リソース グループとそのすべてのリソースを削除できます。 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure Private Link](private-link-overview.md) の詳細

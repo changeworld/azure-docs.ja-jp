@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 0479918ad2afa99dcd9f18d3ba81f94a3e262e9e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479373"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530954"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -47,7 +47,7 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>統合された Azure セキュリティ ソリューションとその他のデータ ソースの管理
 
-1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
+1. [Azure portal](https://azure.microsoft.com/features/azure-portal/) にサインインする
 
 2. **[Microsoft Azure] メニュー**の **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
@@ -135,7 +135,7 @@ Azure Security Center からのすべてのイベントは、Azure Monitor の A
 
 Azure Monitor で監視データを Event Hub にルーティングすると、パートナー SIEM や監視ツールに簡単に統合することができます。
 
-[サポートされる SIEM](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub) の一覧に関する記事を参照してください
+[サポートされる SIEM](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub) の一覧に関する記事を参照してください
 
 ### <a name="example-for-querying-data"></a>データのクエリの例 
 
@@ -148,7 +148,7 @@ Azure Monitor で監視データを Event Hub にルーティングすると、�
 | 警告情報:日時、名前、状態、ID、サブスクリプション | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、Security Center でパートナー ソリューションを統合する方法について説明しました。 Security Center の詳細については、次の記事を参照してください。
 

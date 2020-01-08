@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 52695cca2fe49829705ac2283c9f083ada8ae0b0
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 07b563308e80055d699d1cefeb3b2db71ffa4cd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327103"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448615"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>クイック スタート:Python を使用して Bing Entity Search REST API に検索要求を送信する
 
@@ -31,7 +31,7 @@ ms.locfileid: "74327103"
 
 ## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-1. 好みの IDE またはエディターで新しい Python ファイルを作成し、次の import を追加します。 サブスクリプション キー、エンドポイント、市場、検索クエリのための変数を作成します。 エンドポイントは、Azure ダッシュボードで確認できます。
+1. 好みの IDE またはエディターで新しい Python ファイルを作成し、次の import を追加します。 サブスクリプション キー、エンドポイント、市場、検索クエリのための変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
     ```python
     import http.client, urllib.parse
@@ -138,7 +138,7 @@ ms.locfileid: "74327103"
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [シングルページ Web アプリの作成](../tutorial-bing-entities-search-single-page-app.md)

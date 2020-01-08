@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/22/2019
+ms.date: 12/10/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73a5d30761b25f6233e298cac2602fb701a2987f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c4e820867e22d23135f9c50255902447e6063ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917779"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424474"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>方法:すべての Azure Active Directory ユーザーがマルチテナント アプリケーション パターンを使用してサインインする
 
@@ -38,7 +38,7 @@ ms.locfileid: "74917779"
 3. [複数の issuer 値を処理するようにコードを更新する](#update-your-code-to-handle-multiple-issuer-values)
 4. [ユーザーおよび管理者の同意について理解し、コードに適切な変更を加える](#understand-user-and-admin-consent)
 
-それでは、各手順の詳細を見ていきましょう。 すぐに、[このマルチテナント サンプルのリスト][AAD-Samples-MT]を参照することもできます。
+それでは、各手順の詳細を見ていきましょう。 すぐに、[このマルチテナント サンプルのリスト](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)を参照することもできます。
 
 ## <a name="update-registration-to-be-multi-tenant"></a>登録をマルチテナントに更新する
 
@@ -135,7 +135,7 @@ Azure AD のアプリケーションにユーザーがサインインするに�
 
 #### <a name="multiple-tiers-in-a-single-tenant"></a>1 つのテナント内の複数の階層
 
-この処理は、論理アプリケーションが 2 つ以上のアプリケーション登録 (別々のクライアントとリソースなど) で構成されている場合に問題になる可能性があります。 まずユーザーのテナントにリソースを追加するにはどうすればいいのでしょうか。 Azure AD では、ワンステップでクライアントとリソースが同意されるようにすることによって、この状況に対応します。 ユーザーには、同意ページにクライアントとリソースの両方によって要求されたアクセス許可の合計が表示されます。 この動作を有効にするには、リソースのアプリケーション登録で、[アプリケーションのマニフェスト][AAD-App-Manifest]に `knownClientApplications` というクライアントのアプリ ID を含める必要があります。 例:
+この処理は、論理アプリケーションが 2 つ以上のアプリケーション登録 (別々のクライアントとリソースなど) で構成されている場合に問題になる可能性があります。 まずユーザーのテナントにリソースを追加するにはどうすればいいのでしょうか。 Azure AD では、ワンステップでクライアントとリソースが同意されるようにすることによって、この状況に対応します。 ユーザーには、同意ページにクライアントとリソースの両方によって要求されたアクセス許可の合計が表示されます。 この動作を有効にするには、リソースのアプリケーション登録で、[アプリケーションのマニフェスト][AAD-App-Manifest]に `knownClientApplications` というクライアントのアプリ ID を含める必要があります。 次に例を示します。
 
     knownClientApplications": ["94da0930-763f-45c7-8d26-04d5938baab2"]
 
@@ -171,13 +171,13 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 
 マルチテナント アプリケーションでは、Azure AD で保護されている API を呼び出すアクセス トークンを取得することもできます。 マルチテナント アプリケーションで Active Directory Authentication Library (ADAL) を使用する際によくあるエラーは、最初は /common を使用してユーザーのトークンを要求し、応答を受信してから、その後も /common を使用して同じユーザーのトークンを要求することです。 Azure AD からの応答は /common ではなくテナントから送信されるため、ADAL ではトークンがテナントから送信されたものとしてキャッシュされます。 ユーザーのアクセス トークンを取得するためのその後の /common への呼び出しでは、キャッシュ エントリが見つからないため、ユーザーはもう一度サインインするように求められます。 キャッシュが見つからない問題を回避するために、サインイン済みのユーザーに対する以降の呼び出しは、テナントのエンドポイントに向けて行われるようにしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、任意の Azure AD テナントからユーザーをサインインさせることのできるアプリケーションを構築する方法を説明しました。 アプリと Azure AD の間でのシングル サインオン (SSO) を有効にした後、Office 365 のように、アプリケーションを更新して Microsoft リソースによって公開される API にアクセスすることもできます。 そのため、パーソナライズされたエクスペリエンスをアプリケーションに提供できます。たとえば、プロファイル画像や次の予定などのコンテキスト情報をユーザーに表示できます。 Azure AD や、Exchange、SharePoint、OneDrive、OneNote などの Office 365 サービスへの API 呼び出しを行う方法の詳細については、[Microsoft Graph API][MSFT-Graph-overview] にアクセスしてください。
 
 ## <a name="related-content"></a>関連コンテンツ
 
-* [マルチテナント アプリケーションのサンプル][AAD-Samples-MT]
+* [マルチテナント アプリケーションのサンプル](https://docs.microsoft.com/samples/browse/?products=azure-active-directory)
 * [アプリケーションのブランド化ガイドライン][AAD-App-Branding]
 * [アプリケーション オブジェクトとサービス プリンシパル オブジェクト][AAD-App-SP-Objects]
 * [Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]
@@ -196,7 +196,7 @@ API が Microsoft 以外の組織によって作成されている場合、こ�
 [AAD-Graph-Overview]: https://azure.microsoft.com/documentation/articles/active-directory-graph-api/
 [AAD-Graph-Perm-Scopes]: https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes
 [AAD-Integrating-Apps]:quickstart-v1-integrate-apps-with-azure-ad.md
-[AAD-Samples-MT]: https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multitenant
+[AAD-Samples-MT]: https://docs.microsoft.com/samples/browse/?products=azure-active-directory
 [AAD-Why-To-Integrate]: ./active-directory-how-to-integrate.md
 [AZURE-portal]: https://portal.azure.com
 [MSFT-Graph-overview]: https://developer.microsoft.com/graph/docs/overview/overview

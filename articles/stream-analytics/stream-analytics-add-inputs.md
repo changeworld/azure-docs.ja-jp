@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics の入力について
 description: この記事では、Azure Stream Analytics ジョブでの入力の概念について説明し、参照データ入力へのストリーミングの入力と比較します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 87e260c97a748807929a0e7021e3efb2ae8f8e7b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 6b841d6b47e009c3b01d9925e11d352c00ed5c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329282"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426436"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics の入力について
 
@@ -41,6 +40,6 @@ Stream Analytics は、"*参照データ*" と呼ばれる入力もサポート�
 
 参照データ入力に関する詳細については、「[Stream Analytics での参照に参照データを使用する](stream-analytics-use-reference-data.md)」を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
-> [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
+> [クイック スタート:Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)

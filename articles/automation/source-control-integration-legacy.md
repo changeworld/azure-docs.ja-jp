@@ -2,19 +2,15 @@
 title: Azure Automation でのソース管理の統合 - 従来
 description: この記事では、Azure Automation での GitHub とのソース管理の統合について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 74d4cb80fbac41294b57bf13f23c2c63babb71ef
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 651b97dabfd3cce858ea1f905a39c10bd7d81c41
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849447"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417433"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Azure Automation でのソース管理の統合 - 従来
 
@@ -28,7 +24,7 @@ ms.locfileid: "74849447"
 > [!NOTE]
 > ソース管理では、[PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) および [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) のプル操作とプッシュ操作がサポートされていますが、 [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) はサポートされません。
 
-Automation アカウントのソース管理を構成するには、2 つの簡単な手順が必要です。ただし、既に GitHub アカウントを持っている場合、必要な手順は 1 つだけです。 次に例を示します。
+Automation アカウントのソース管理を構成するには、2 つの簡単な手順が必要です。ただし、既に GitHub アカウントを持っている場合、必要な手順は 1 つだけです。 これらは次のとおりです。
 
 ## <a name="step-1--create-a-github-repository"></a>手順 1. GitHub リポジトリを作成する
 
@@ -43,7 +39,7 @@ GitHub アカウントと、Azure Automation にリンクするリポジトリ�
    | **パラメーター** | **説明** |
    |:--- |:--- |
    | ソースの選択 |ソースを選択します。 現時点では、 **GitHub** のみがサポートされています。 |
-   | Authorization |**[承認する]** ボタンをクリックすると、GitHub リポジトリへのアクセスが Azure Automation に許可されます。 既に別のウィンドウで GitHub アカウントにログインしている場合は、そのアカウントの資格情報が使用されます。 承認が成功すると、ページの **[承認プロパティ]** の下に GitHub のユーザー名が表示されます。 |
+   | 承認 |**[承認する]** ボタンをクリックすると、GitHub リポジトリへのアクセスが Azure Automation に許可されます。 既に別のウィンドウで GitHub アカウントにログインしている場合は、そのアカウントの資格情報が使用されます。 承認が成功すると、ページの **[承認プロパティ]** の下に GitHub のユーザー名が表示されます。 |
    | リポジトリの選択 |使用可能なリポジトリの一覧から GitHub リポジトリを選択します。 |
    | ブランチの選択 |使用可能なブランチの一覧からブランチを選択します。 ブランチを作成したことがない場合は、 **master** ブランチのみが表示されます。 |
    | Runbook フォルダーのパス |Runbook フォルダーのパスは、コードをプッシュまたはプルする GitHub リポジトリのパスを指定します。 これは、 **/foldername/subfoldername**形式で指定する必要があります。 Runbook フォルダーのパスにある Runbook のみが Automation アカウントと同期されます。 Runbook フォルダーのパスのサブフォルダーにある Runbook は同期 **されません** 。 リポジトリですべての Runbook を同期するには、 **/** を使います。 |
@@ -62,15 +58,15 @@ GitHub アカウントと、Azure Automation にリンクするリポジトリ�
 
    * 次に示すように、 **Microsoft.Azure.Automation.SourceControl.Connection** 変数には、接続文字列の値が格納されます。  
 
-     | **パラメーター** | **値** |
+     | **パラメーター** | **Value** |
      |:--- |:--- |
      | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
-     | `Type`  |string |
+     | `Type`  |String |
      | `Value` |{"Branch":\<*ブランチ名*>,"RunbookFolderPath":\<*Runbookフォルダー パス*>,"ProviderType":\<*GitHub の場合は値 1*>,"Repository":\<*リポジトリ名*>,"Username":\<*Your GitHub ユーザー名*>} |
 
    * **Microsoft.Azure.Automation.SourceControl.OauthToken**変数には、OAuthToken のセキュリティで保護され暗号化された値が格納されます。  
 
-     |**パラメーター**            |**値** |
+     |**パラメーター**            |**Value** |
      |:---|:---|
      | `Name`  | Microsoft.Azure.Automation.SourceControl.OauthToken |
      | `Type`  | Unknown(Encrypted) |
@@ -134,7 +130,7 @@ GitHub アカウントから切断するには、[リポジトリの同期] ペ�
 
   ![ソース管理を切断するための [切断] ボタンを表示するウィンドウ](media/source-control-integration-legacy/automation-Disconnect.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ソース管理の統合の詳細については、次のリソースをご覧ください。  
 

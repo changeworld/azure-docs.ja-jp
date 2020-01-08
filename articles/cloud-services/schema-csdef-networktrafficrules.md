@@ -10,15 +10,14 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: 351b369f-365e-46c1-82ce-03fc3655cc88
 caps.latest.revision: 17
-author: georgewallace
-ms.author: gwallace
-manager: gwallace
-ms.openlocfilehash: e99b9f0f601841fe6ff32eba0a43bfafd652e941
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: e6d156810b9fdee69ddac122eec06db7267ddf36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449036"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure Cloud Services 定義 NetworkTrafficRules スキーマ
 `NetworkTrafficRules` ノードは、ロールが互いに通信する方法を指定する、サービス定義ファイル内の省略可能な要素です。 特定のロールの内部エンドポイントにアクセスできるロールを制限します。 `NetworkTrafficRules` はスタンドアロン要素ではなく、サービス定義ファイルで 2 つ以上のロールと組み合わされます。
@@ -76,7 +75,7 @@ AllowAllTraffic 要素
 ##  <a name="RoleEndpoint"></a> RoleEndpoint 要素
 `RoleEndpoint` 要素は、通信を許可するロール上のエンドポイントを記述します。 ロールに複数のエンドポイントがある場合は、複数の `RoleEndpoint` 要素を指定することができます。
 
-| Attribute      | Type     | 説明 |
+| Attribute      | 種類     | [説明] |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | 必須。 トラフィックの宛先として許可するエンドポイントの名前。|
 | `roleName`     | `string` | 必須。 通信の相手として許可する Web ロールの名前。|
@@ -87,16 +86,20 @@ AllowAllTraffic 要素
 ##  <a name="WhenSource"></a> WhenSource 要素
 `WhenSource` 要素は、`Destinations` ノードで定義されたエンドポイントと通信できるロールのコレクションを記述します。
 
-| Attribute | Type     | 説明 |
+| Attribute | 種類     | [説明] |
 | --------- | -------- | ----------- |
 | `matches` | `string` | 必須。 通信を許可するときに適用する規則を指定します。 有用な値は現在 `AnyRule` のみです。|
   
 ##  <a name="FromRole"></a> FromRole 要素
 `FromRole` 要素は、`Destinations` ノードで定義されたエンドポイントと通信できるロールを指定します。 エンドポイントと通信できるロールが複数ある場合、複数の `FromRole` 要素を指定することができます。
 
-| Attribute  | Type     | 説明 |
+| Attribute  | 種類     | [説明] |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | 必須。 通信の許可元のロールの名前。|
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Cloud Service (クラシック) 定義スキーマ](schema-csdef-file.md)
+
+
+
+
