@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: dd2c29632d70da64251c5e1736a9cb7d82f5d0dc
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667345"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440961"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>フォロワー データベースを使用して Azure Data Explorer にデータベースをアタッチする
 
@@ -32,7 +32,7 @@ ms.locfileid: "74667345"
 1. リーダーとフォロワー用の[クラスターと DB を作成](/azure/data-explorer/create-cluster-database-portal)します。
 1. 「[データ取り込みの概要](/azure/data-explorer/ingest-data-overview)」に記載されているさまざまな方法の 1 つを使用して、リーダー データベースに[データを取り込み](/azure/data-explorer/ingest-sample-data)ます。
 
-## <a name="attach-a-database"></a>データベースの接続
+## <a name="attach-a-database"></a>データベースのアタッチ
 
 データベースのアタッチにはさまざまな方法があります。 この記事では、C# または Azure Resource Manager テンプレートを使用してデータベースをアタッチする方法について説明します。 データベースをアタッチするには、リーダー クラスターとフォロワー クラスターに対するアクセス許可が必要です。 アクセス許可について詳しくは、「[アクセス許可の管理](#manage-permissions)」をご覧ください。
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用したデータベースのアタッチ
 
-このセクションでは、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)を使用してデータベースをアタッチする方法について説明します。 
+このセクションでは、[Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を使用してデータベースをアタッチする方法について説明します。 
 
 ```json
 {
@@ -236,7 +236,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 あるいは:
 
 1. リーダー クラスターに移動し、 **[データベース]** を選択します。
-2. 関連するデータベースの **[他のユーザーと共有]** が **[はい]** に設定されていることを確認します。
+2. 関連するデータベースの **[他のユーザーと共有]**  >  が **[はい]** に設定されていることを確認します。
 
     ![アタッチされたデータベースの読み取りと書き込み](media/follower/read-write-databases-shared.png)
 
@@ -398,6 +398,6 @@ poller = kusto_management_client.clusters.detach_follower_databases(resource_gro
 * 別のクラスターにアタッチされているデータベースを持つクラスターは、デタッチ前に削除することはできません。
 * フォロワー データベースまたはリーダー データベースがアタッチされているクラスターを停止することはできません。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * フォロワー クラスター構成の詳細については、「[フォロワー クラスターを管理するための管理コマンド](/azure/kusto/management/cluster-follower)」をご覧ください。
