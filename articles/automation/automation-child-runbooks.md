@@ -2,19 +2,15 @@
 title: Azure Automation での子 Runbook
 description: Azure Automation で別の Runbook から Runbook を開始し、それらの間で情報共有する異なる方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: e7341a8c270d16497430a70c2a1b21354a775787
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a35ee69e6a167f4907294c88710d0484353d4cb2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850450"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367011"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Automation での子 Runbook
 
@@ -115,13 +111,13 @@ Start-AzureRmAutomationRunbook `
 |  | インライン | コマンドレット |
 |:--- |:--- |:--- |
 | ジョブ |子 Runbook は、親と同じジョブで実行されます。 |子 Runbook 用に別のジョブが作成されます。 |
-| Execution |親 Runbook は、子 Runbook の完了を待ってから続行します。 |親 Runbook は、子 Runbook が開始されたらすぐに続行するか、 *または* 、子ジョブの完了を待ちます。 |
+| 実行 |親 Runbook は、子 Runbook の完了を待ってから続行します。 |親 Runbook は、子 Runbook が開始されたらすぐに続行するか、 *または* 、子ジョブの完了を待ちます。 |
 | Output |親 Runbook は、子 Runbook から出力を直接取得できます。 |親 Runbook は、子 Runbook ジョブから出力を取得する必要があるか、 *または* 、子 Runbook から出力を直接取得できます。 |
-| parameters |子 Runbook のパラメーター値は個別に指定され、任意のデータ型を使用できます。 |子 Runbook のパラメーターの値は、1 つのハッシュテーブルに結合する必要があります。 このハッシュテーブルには、JSON のシリアル化が使用される、単純、配列、オブジェクトの各データ型のみを含めることができます。 |
+| パラメーター |子 Runbook のパラメーター値は個別に指定され、任意のデータ型を使用できます。 |子 Runbook のパラメーターの値は、1 つのハッシュテーブルに結合する必要があります。 このハッシュテーブルには、JSON のシリアル化が使用される、単純、配列、オブジェクトの各データ型のみを含めることができます。 |
 | Automation アカウント |親 Runbook は、同じ Automation アカウントの子 Runbook のみを使用できます。 |親 Runbook では、同じ Azure サブスクリプションの Automation アカウントの子 Runbook のほか、接続されていれば別のサブスクリプションの Automation アカウントの子 Runbook も使用できます。 |
 | 発行 |親 Runbook を発行する前に、子 Runbook を発行する必要があります。 |親 Runbook が開始される前のある時点で、子 Runbook が発行される必要があります。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Automation での Runbook を開始する](start-runbooks.md)
 * [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)

@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics との Power BI ダッシュボードの統合
 description: この記事では、リアルタイムの Power BI ダッシュボードを使って、Azure Stream Analytics ジョブからデータを視覚化する方法について説明します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: c415bdecdaf55f3068dcd804ab34de402fe7a31f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612286"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431627"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI:ストリーミング データのリアルタイム分析ダッシュボード
 
@@ -100,7 +99,7 @@ Power BI データセットの詳細については、[Power BI REST API](https:
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 
 ## <a name="test-the-query"></a>クエリをテストする
@@ -121,7 +120,7 @@ Power BI データセットの詳細については、[Power BI REST API](https:
 
 4. **[テスト]** をクリックして結果を確認します。
 
-## <a name="run-the-job"></a>ジョブを実行する
+## <a name="run-the-job"></a>ジョブの実行
 
 1. TelcoStreaming アプリが実行されていることを確認します。
 
@@ -202,7 +201,7 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 
 ![必要な期間 (秒) の値を計算するための数式](./media/stream-analytics-power-bi-dashboard/compute-window-seconds-equation.png)  
 
-例:
+次に例を示します。
 
 * 1 秒間隔でデータを送信するデバイスが 1,000 台。
 * 1 時間あたり 1,000,000 行をサポートする Power BI Pro SKU を使用。
@@ -235,7 +234,7 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 
 Power BI で承認が更新されると、承認の領域に緑色のアラートが表示され、問題が解決されたことがわかります。
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ

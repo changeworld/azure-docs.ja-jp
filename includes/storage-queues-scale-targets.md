@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 781087023bf9783bc3a153578b60b4941dc75c0e
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 797ca4b76c62c62676772da3df21d26e096f0995
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67181385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392341"
 ---
-| リソース | ターゲット |
+| リソース | 移行先 |
 |----------|---------------|
 | 1 つのキューの最大サイズ | 500 TiB |
 | キュー内の最大メッセージ サイズ | 64 KiB |

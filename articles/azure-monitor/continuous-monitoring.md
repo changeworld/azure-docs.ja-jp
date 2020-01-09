@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 88934d469ddcca50d7dfc3f35b18ab332d4bd172
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7dc8001d74ea026625d7496fb84053b4e9109dce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596799"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406151"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -84,7 +84,7 @@ ms.locfileid: "72596799"
 - [影響分析](../azure-monitor/app/usage-impact.md)を使用して、重要な KPI を高めるためにどの分野に注力すべきかの優先度付けを行います。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor](overview.md) のさまざまなコンポーネントについて確認する。
 - お客様のリリース パイプラインに[継続的監視を追加](../azure-monitor/app/continuous-monitoring.md)する。

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: d0ccfb00c4b45a2a29ccab74362a4296cdcd7cae
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: c1d7c8cc4b50682a74ac88b2113f0d44ebc55199
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595712"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644717"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics のクォータと 制限を調整します
 
@@ -34,7 +34,7 @@ Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整�
 
 **アカウントあたりの分析ユニット (AU) の最大数:** 250 (既定では 32)
 
-これは、アカウントで同時に実行できる AU の最大数です。 すべてのジョブで実行されている AU の総数がこの制限を超えている場合は、新しいジョブが自動的にキューに挿入されます。 例:
+これは、アカウントで同時に実行できる AU の最大数です。 すべてのジョブで実行されている AU の総数がこの制限を超えている場合は、新しいジョブが自動的にキューに挿入されます。 次に例を示します。
 
 * 32 個の AU を使用する 1 つのジョブのみ実行されているときに 2 つ目のジョブを送信した場合、そのジョブは 1 つ目のジョブが完了するまでジョブ キューで待機します。
 * 実行しているジョブが既に 4 つあり、それぞれが 8 AU を使用している場合に、8 個の AU 必要とする 5 番目のジョブを送信すると、そのジョブは、8 個の AU が使用可能になるまでジョブ キューで待機します。
@@ -58,7 +58,7 @@ Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整�
 
 ## <a name="increase-maximum-quota-limits"></a>最大クォータ制限を増やす
 
-[Azure サービス固有の制限に関するドキュメント](../azure-subscription-service-limits.md#data-lake-analytics-limits)に、Azure 制限に関する詳細があります。
+[Azure サービス固有の制限に関するドキュメント](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-analytics-limits)に、Azure 制限に関する詳細があります。
 
 1. Azure Portal でサポート要求を開きます。
 
@@ -79,7 +79,7 @@ Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整�
 
 Microsoft で要求を確認し、お客様のビジネス ニーズにできるだけ早く対応できるよう努めます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)

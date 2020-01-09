@@ -2,14 +2,14 @@
 title: Azure VM のバックアップ エラーのトラブルシューティング
 description: この記事では、Azure 仮想マシンのバックアップと復元で発生したエラーをトラブルシューティングする方法について説明します。
 ms.reviewer: srinathv
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: e5ee0e06d444db809ce3e168f8883048eaf45e27
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172461"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664640"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
 
@@ -61,7 +61,6 @@ VM が [失敗] 状態にあるため、バックアップ操作に失敗しま�
 エラー コード:UserErrorFsFreezeFailed <br/>
 エラー メッセージ:ファイル システム整合性スナップショットの取得で VM の 1 つ以上のマウント ポイントの凍結に失敗しました。
 
-* **tune2fs** コマンド (たとえば、**tune2fs -l /dev/sdb1 \\** .\| grep **Filesystem state**) を使用して、マウントされているすべてのデバイスのファイル システム状態を確認します。
 * **umount** コマンドを使用して、ファイル システム状態がクリーニングされなかったデバイスをマウント解除します。
 * **fsck** コマンドを使用して、これらのデバイスに対してファイル システム整合性チェックを実行します。
 * これらのデバイスを再度マウントし、バックアップ操作を再試行します。</ol>
@@ -181,10 +180,9 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 ## <a name="common-vm-backup-errors"></a>一般的な VM バックアップのエラー
 
-| エラーの詳細 | 対処法 |
+| エラーの詳細 | 回避策 |
 | ------ | --- |
 | **エラー コード**:320001、ResourceNotFound <br/> **エラー メッセージ**:VM が存在しないため、操作を実行できませんでした。 <br/> <br/> **エラー コード**:400094、BCMV2VMNotFound <br/> **エラー メッセージ**:仮想マシンが存在しません <br/> <br/>  Azure 仮想マシンが見つかりませんでした。  |このエラーは、プライマリ VM が削除されているのに、バックアップ ポリシーによってバックアップする VM が引き続き検索される場合に発生します。 このエラーを解決するには、次の手順を実行します。 <ol><li> 同じ名前と同じリソース グループ名、**クラウド サービス名**を持つ仮想マシンを作成し直します。<br>**or**</li><li> バックアップ データを削除して、または削除しないで、仮想マシンの保護を停止します。 詳細については、「[仮想マシンの保護を停止する](backup-azure-manage-vms.md#stop-protecting-a-vm)」を参照してください。</li></ol>|
-| **エラー コード**:UserErrorVmProvisioningStateFailed<br/> **エラー メッセージ**:VM はプロビジョニングに失敗した状態です: <br>VM を再起動し、VM が実行中とシャットダウンのいずれかの状態になっていることを確認します。 | このエラーは、いずれかの拡張機能が失敗して、VM がプロビジョニングに失敗した状態になる場合に発生します。 拡張機能の一覧に移動し、失敗した拡張機能があるかどうかを確認して、それを削除し、仮想マシンを再起動してみます。 すべての拡張機能が実行状態になっている場合は、VM エージェント サービスが実行されているかどうかを確認してください。 されていない場合は、VM エージェント サービスを再起動します。 |
 |**エラー コード**:UserErrorBCMPremiumStorageQuotaError<br/> **エラー メッセージ**:ストレージ アカウント内の空き領域の不足のために、仮想マシンのスナップショットをコピーできませんでした | VM バックアップ スタック V1 の Premium VM の場合、スナップショットはストレージ アカウントにコピーされます。 この手順により、スナップショット上で動作するバックアップ管理トラフィックが、プレミアム ディスクを使用するアプリケーションで利用できる IOPS の数を制限しないようになります。 <br><br>ストレージ アカウントの合計領域の 50% (17.5 TB) のみを割り当てることをお勧めします。 これにより、Azure Backup サービスが、スナップショットをストレージ アカウントにコピーし、ストレージ アカウント内のこのコピーされた場所からコンテナーにデータを転送することができます。 |
 | **エラー コード**:380008、AzureVmOffline <br/> **エラー メッセージ**:仮想マシンが実行されていないため、Microsoft Recovery Services の拡張機能をインストールできませんでした | VM エージェントは、Azure Recovery Services 拡張機能の前提条件です。 Azure 仮想マシン エージェントをインストールしてから、登録操作をやり直してください。 <br> <ol> <li>VM エージェントが正しくインストールされていることを確認します。 <li>VM 構成のフラグが正しく設定されていることを確認します。</ol> VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法に関するセクションを参照してください。 |
 | **エラー コード**:ExtensionSnapshotBitlockerError <br/> **エラー メッセージ**:スナップショットの操作は、**このドライブは、BitLocker ドライブ暗号化でロックされています。コントロール パネルからドライブのロックを解除してください。** というボリューム シャドウ コピー サービス (VSS) 操作エラーで失敗しました。 |VM 上のすべてのドライブで BitLocker をオフにして、VSS の問題が解決されたかどうかを確認します。 |
@@ -193,18 +191,18 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 | **エラー コード**:ExtensionSnapshotFailedNoSecureNetwork <br/> **エラー メッセージ**:セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました。 | <ol><li> 管理者特権モードで **regedit.exe** を実行してレジストリ エディターを開きます。 <li> お使いのシステムに存在する .NET Framework のすべてのバージョンを識別します。 それらは、レジストリ キーの階層 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** の下にあります。 <li> レジストリ キー内に存在する各 .NET Framework に対して、次のキーを追加します。 <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>|
 | **エラー コード**:ExtensionVCRedistInstallationFailure <br/> **エラー メッセージ**:Visual Studio 2012 用の Visual C++ 再頒布可能パッケージをインストールできないため、スナップショット操作が失敗しました。 | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion に移動し、vcredist2013_x64 をインストールします。<br/>このサービスのインストールを許可するレジストリ キーの値が正しい値に設定されていることを確認します。 つまり、**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** の **Start** 値を **4** ではなく **3** に設定します。 <br><br>インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから **MSIEXEC /UNREGISTER** と **MSIEXEC /REGISTER** を続けて実行して、インストール サービスを再起動します。  |
 
-## <a name="jobs"></a>[ジョブ]
+## <a name="jobs"></a>ジョブ
 
-| エラーの詳細 | 対処法 |
+| エラーの詳細 | 回避策 |
 | --- | --- |
 | このジョブの種類では、取り消しはサポートされていません。 <br>ジョブが完了するまでお待ちください。 |なし |
 | ジョブは、取り消し可能な状態ではありません。 <br>ジョブが完了するまでお待ちください。 <br>**or**<br> 選択されたジョブは、取り消し可能な状態ではありません。 <br>ジョブが完了するまでお待ちください。 |ジョブは終了間近である可能性があります。 ジョブが完了するまでお待ちください。|
 | ジョブは実行中ではないため、Backup で取り消すことができません: <br>取り消しは実行中のジョブに対してのみサポートされています。 実行中のジョブを取り消してみてください。 |このエラーは一時的な状態が原因で発生します。 しばらく待ってから、取り消し操作をやり直してください。 |
 | Backup でジョブを取り消すことができませんでした: <br>ジョブが完了するまでお待ちください。 |なし |
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>[復元]
 
-| エラーの詳細 | 対処法 |
+| エラーの詳細 | 回避策 |
 | --- | --- |
 | クラウドの内部エラーで復元に失敗しました。 |<ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。 次のように入力して確認できます。 <br>**$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings**.<br>**[アドレス]** が構成済みの場合は、DNS 設定が構成済みです。<br> <li>復元を試みているクラウド サービスが **ReservedIP** で構成されていて、クラウド サービスの既存の VM が停止状態になっています。 次の PowerShell コマンドレットを使用して、クラウド サービスに IP が予約されていることを確認できます。 **$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName**。 <br><li>次の特殊なネットワーク構成の仮想マシンを同じクラウド サービスに復元しようとしています。 <ul><li>ロード バランサー構成 (内部および外部の) での仮想マシン。<li>複数の予約済み IP を持つ仮想マシン。 <li>複数の NIC を持つ仮想マシン。 </ul><li>UI で新しいクラウド サービスを選択するか、特殊なネットワーク構成の VM の[復元に関する考慮事項](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)を参照してください。</ol> |
 | 選択された DNS 名は既に登録されています: <br>別の DNS 名を指定してからやり直してください。 |この DNS 名はクラウド サービス名 (通常、末尾に **cloudapp.net** が付いています) を表します。 この名前は一意である必要があります。 このエラーが発生した場合は、復元中に別の VM の名前を選択する必要があります。 <br><br> このエラーは Azure Portal のユーザーのみに表示されます。 PowerShell による復元操作は、ディスクを復元するだけで VM を作成しないため、成功します。 ディスクの復元操作後に VM を明示的に作成すると、このエラーが発生します。 |

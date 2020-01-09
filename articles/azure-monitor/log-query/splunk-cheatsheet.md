@@ -1,18 +1,17 @@
 ---
 title: Splunk ユーザーのための Azure Monitor ログ クエリ | Microsoft Docs
 description: Splunk のことをよく知っているユーザーが Azure Monitor のログ クエリを学習するのを手助けします。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: e16bf152e739a6145bfabaf8546fa71199f8d732
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932943"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397741"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk ユーザーのための Azure Monitor ログ クエリ
 
@@ -22,23 +21,23 @@ ms.locfileid: "72932943"
 
 次の表では、Splunk と Azure Monitor ログの概念とデータ構造を比較します。
 
- | 概念  | Splunk | Azure Monitor |  Comment (コメント)
+ | 概念  | Splunk | Azure Monitor |  解説
  | --- | --- | --- | ---
  | 展開単位  | cluster |  cluster |  Azure Monitor では、任意のクロス クラスター クエリが可能です。 Splunk ではできません。 |
  | データ キャッシュ |  バケット  |  キャッシュおよび保持ポリシー |  データの期間とキャッシュ レベルを制御します。 この設定は、クエリのパフォーマンスと展開のコストに直接影響します。 |
- | データの論理パーティション  |  index  |  database  |  データの論理的な分離を可能にします。 どちらの実装でも、これらのパーティション間の和集合と結合が可能です。 |
- | 構造化されたイベント メタデータ | 該当なし | table |  Splunk には、イベント メタデータの検索言語に対して公開される概念はありません。 Azure Monitor ログには、列を含むテーブルの概念があります。 各イベント インスタンスは行にマップされます。 |
- | データ レコード | event | 行 |  用語の変更のみです。 |
- | データ レコード属性 | フィールド |  列 |  Azure Monitor では、テーブル構造の一部として事前に定義されます。 Splunk では、イベントごとに固有のフィールドのセットがあります。 |
+ | データの論理パーティション  |  インデックス (index)  |  [データベース]  |  データの論理的な分離を可能にします。 どちらの実装でも、これらのパーティション間の和集合と結合が可能です。 |
+ | 構造化されたイベント メタデータ | 該当なし | テーブル |  Splunk には、イベント メタデータの検索言語に対して公開される概念はありません。 Azure Monitor ログには、列を含むテーブルの概念があります。 各イベント インスタンスは行にマップされます。 |
+ | データ レコード | イベント | 行 |  用語の変更のみです。 |
+ | データ レコード属性 | フィールド |  column |  Azure Monitor では、テーブル構造の一部として事前に定義されます。 Splunk では、イベントごとに固有のフィールドのセットがあります。 |
  | 型 | データ型 |  データ型 |  Azure Monitor のデータ型は、列に設定されるので、より明示的です。 どちらにもデータ型を動的に操作する機能があり、JSON のサポートを含めて、データ型のセットはほぼ同等です。 |
  | クエリと検索  | 検索 | query |  概念は、Azure Monitor でも Splunk でも基本的に同じです。 |
  | イベント取り込み時刻 | システム時刻 | ingestion_time() |  Splunk では、イベントのインデックスが作成された時刻のシステム タイムスタンプが各イベントに設定されます。 Azure Monitor では、ingestion_time() 関数を通じて参照できるシステム列を公開する ingestion_time という名前のポリシーを定義できます。 |
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>関数
 
 次の表では、Splunk の関数と同等の Azure Monitor の関数を指定します。
 
-|Splunk | Azure Monitor |Comment (コメント)
+|Splunk | Azure Monitor |解説
 |---|---|---
 |strcat | strcat()| (1) |
 |split  | split() | (1) |
@@ -54,19 +53,19 @@ ms.locfileid: "72932943"
 | searchmatch | == | Splunk の `searchmatch` では、厳密な文字列を検索できます。
 | random | rand()<br>rand(n) | Splunk の関数は、0 から 2<sup>31</sup>-1 までの値を返します。 Azure Monitor の場合は、0.0 ～ 1.0 の数値、またはパラメーターが提供された場合は 0 ～ n-1 の数値を返します。
 | now | now() | (1)
-| relative_time | totimespan() | (1)<br>Azure Monitor の relative_time(datetimeVal, offsetVal) と同等の Splunk の式は datetimeVal + totimespan(offsetVal) です。<br>たとえば、<code>search &#124; eval n=relative_time(now(), "-1d@d")</code> は <code>...  &#124; extend myTime = now() - totimespan("1d")</code> になります。
+| relative_time | totimespan() | (1)<br>Azure Monitor の relative_time(datetimeVal, offsetVal) と同等の Splunk の式は datetimeVal + totimespan(offsetVal) です。<br>たとえば、<code>search &#124; eval n=relative_time(now(), "-1d@d")</code> を <code>...  &#124; extend myTime = now() - totimespan("1d")</code> にします。
 
 (1) Splunk では、関数は `eval` 演算子で呼び出されます。 Azure Monitor では、`extend` または `project` の一部として使用されます。<br>(2) Splunk では、関数は `eval` 演算子で呼び出されます。 Azure Monitor では、`where` 演算子で使用できます。
 
 
-## <a name="operators"></a>演算子
+## <a name="operators"></a>オペレーター
 
 以下のセクションでは、Splunk と Azure Monitor で異なる演算子を使用する例を示します。
 
 > [!NOTE]
 > 次の例で、Splunk のフィールド _rule_ は Azure Monitor のテーブルにマップし、Splunk の既定のタイムスタンプは Log Analytics の _ingestion_time()_ 列にマップします。
 
-### <a name="search"></a>Search
+### <a name="search"></a>検索
 Splunk では、`search` キーワードを省略し、引用符なしの文字列を指定することができます。 Azure Monitor では、各クエリを `find` で始める必要があります。また、引用符なしの文字列は列名であり、検索値は引用符で囲まれた文字列である必要があります。 
 
 | |  | |
@@ -75,7 +74,7 @@ Splunk では、`search` キーワードを省略し、引用符なしの文字�
 | Azure Monitor | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 | | |
 
-### <a name="filter"></a>filter
+### <a name="filter"></a>Assert
 Azure Monitor のクエリは、フィルターの表形式の結果セットから開始します。 Splunk では、フィルター処理は現在のインデックスに対する既定の操作です。 Splunk でも `where` 演算子を使用できますが、推奨されません。
 
 | |  | |
@@ -118,7 +117,7 @@ Splunk には `eval` 関数もありますが、`eval` 演算子と同等では�
 | | |
 
 
-### <a name="rename"></a>名前の変更 
+### <a name="rename"></a>[名前の変更] 
 Azure Monitor では、`project-rename` 演算子を使用してフィールドの名前を変更します。 `project-rename` によって、クエリでフィールドにあらかじめ構築されているインデックスを利用できるようにします。 Splunk では、同じことを行うために `rename` 演算子が用意されています。
 
 | |  | |
@@ -135,7 +134,7 @@ Splunk には、`project-away` と似た演算子はないようです。 UI を
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **table** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
+| Splunk | **テーブル** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
 | Azure Monitor | **project**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 | | |
 
@@ -210,6 +209,6 @@ Azure portal での Log Analytics では、最初の列のみが展開されま�
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor でのログ クエリの記述](get-started-queries.md)に関するレッスンをご覧ください。

@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: 28897ca6f80632210032b7f800404fc921143adf
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954537"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457104"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi の Azure IoT Hub への接続 (Node.js)
 
@@ -148,7 +148,7 @@ BME280 センサーでは、温度と湿度のデータを収集できます。 
 | LED VDD (ピン 18F)        | GPIO 24 (ピン 18)       | 白いケーブル   |
 | LED GND (ピン 17F)        | GND (ピン 20)           | 黒いケーブル   |
 
-[Raspberry Pi 2 & 3 Pin mappings](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) をクリックして参照します。
+[Raspberry Pi 2 & 3 Pin mappings](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) をクリックして参照します。
 
 BME280 が正常に Raspberry Pi に接続されると、下の図のようになります。
 
@@ -229,7 +229,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 
    **センサーがない**場合は、`simulatedData` 値を `true` に設定し、シミュレートされたセンサー データをサンプル アプリケーションで作成して使用します。
 
-   *注:このチュートリアルで使用する i2c アドレスは、既定では 0x77 です。構成によっては、0x76 になることもあります。 i2c エラーが発生した場合は、値を 118 に変更し、その動作が適切かどうかを確認してください。センサーによって使用されているアドレスを確認するには、raspberry pi 上のシェルで `sudo i2cdetect -y 1` を実行します*
+   *注意事項: このチュートリアルで使用する i2c アドレスは、既定では 0x77 です。構成によっては、0x76 になることもあります。 i2c エラーが発生した場合は、値を 118 に変更し、その動作が適切かどうかを確認してください。センサーによって使用されているアドレスを確認するには、raspberry pi 上のシェルで `sudo i2cdetect -y 1` を実行します*
 
 2. Ctrl + O キー、Enter キー、Ctrl + X キーの順に押し、保存して終了します。
 
@@ -254,7 +254,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 デバイスから送信されたデータを処理する詳しい方法については、次のセクションに進んでください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。
 

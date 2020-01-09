@@ -5,15 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: f9ed841d347d99a2208971d164bbd7b9044e3b09
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031601"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436849"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>パブリック ピアリングを Microsoft ピアリングに移行する
 
@@ -83,14 +82,13 @@ Microsoft ピアリングが有効になっており、アドバタイズされ�
 
 Microsoft ピアリングが構成されており、消費するプレフィックスが Microsoft ピアリングで正しくアドバタイズされることを確認したら、パブリック ピアリングを削除できます。 パブリック ピアリングを削除するには、次のいずれかの記事を使用します。
 
-* [Delete Azure public peering using Azure portal (Azure Portal を使用して Azure パブリック ピアリングを削除する)](expressroute-howto-routing-portal-resource-manager.md#deletepublic)<br>
-* [Delete Azure public peering using Azure PowerShell (Azure PowerShell を使用して Azure パブリック ピアリングを削除する)](expressroute-howto-routing-arm.md#deletepublic)<br>
-* [Delete Azure public peering using CLI (CLI を使用して Azure パブリック ピアリングを削除する)](howto-routing-cli.md#deletepublic)
+* [Delete Azure public peering using Azure PowerShell (Azure PowerShell を使用して Azure パブリック ピアリングを削除する)](about-public-peering.md#powershell)
+* [Delete Azure public peering using CLI (CLI を使用して Azure パブリック ピアリングを削除する)](about-public-peering.md#cli)
   
 ## <a name="view"></a>5.ピアリングの表示
   
 Azure Portal で、すべての ExpressRoute 回線とピアリングの一覧を表示できます。 詳細については、[Microsoft ピアリングの詳細表示](expressroute-howto-routing-portal-resource-manager.md#getmsft)に関するセクションをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

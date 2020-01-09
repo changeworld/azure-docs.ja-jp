@@ -3,12 +3,12 @@ title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0f69fc6b606f2f848b9a14d29addbbde11f07a3e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: df6866e93e19d79b34bbbe430c7466e5f6686325
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928003"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453607"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -19,7 +19,7 @@ ms.locfileid: "74928003"
 
 ## <a name="understanding-customer-tenants"></a>顧客のテナントについて
 
-Azure Active Directory (Azure AD) テナントは組織を表したものです。 これは、組織が、Azure、Microsoft 365、またはその他のサービスへのサインアップによって Microsoft との関係を築いたときに提供される Azure AD の専用インスタンスです。 各 Azure AD テナントは、他の Azure AD テナントと区別され分離されており、固有のテナント ID (GUID) があります。 詳細については、「[Azure Active Directory とは](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)」を参照してください。
+Azure Active Directory (Azure AD) テナントは組織を表したものです。 これは、組織が、Azure、Microsoft 365、またはその他のサービスへのサインアップによって Microsoft との関係を築いたときに提供される Azure AD の専用インスタンスです。 各 Azure AD テナントは、他の Azure AD テナントと区別され分離されており、固有のテナント ID (GUID) があります。 詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
 
 通常、顧客の Azure リソースを管理するために、サービス プロバイダーは、その顧客のテナントに関連付けられたアカウントを使用して Azure portal にサインインする必要があります。その際、顧客のテナントの管理者は、そのサービス プロバイダー用にユーザー アカウントを作成して管理する必要があります。
 
@@ -43,31 +43,31 @@ Azure の委任されたリソース管理を使用すると、許可されて�
 
 ほとんどのタスクとサービスは、委任されたリソースに対して、マネージド テナントをまたいで実行できます。 テナント間の管理を有効にできる重要なシナリオの一部を以下に示します。
 
-[サーバー向け Azure Arc (プレビュー)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
+[サーバー向け Azure Arc (プレビュー)](../../azure-arc/servers/overview.md):
 
-- Azure 内の委任されたサブスクリプションまたはリソース グループに [Azure外の Windows Server または Linux コンピューターを接続する](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal)
+- Azure 内の委任されたサブスクリプションまたはリソース グループに [Azure外の Windows Server または Linux コンピューターを接続する](../../azure-arc/servers/quickstart-onboard-portal.md)
 - Azure Policy やタグ付けなどの Azure コンストラクトを使用して接続されたコンピューターを管理する
 
-[Azure Automation](https://docs.microsoft.com/azure/automation/):
+[Azure Automation](../../automation/index.yml):
 
 - Automation アカウントを使用して、委任された顧客のリソースにアクセスして操作する
 
-[Azure Backup](https://docs.microsoft.com/azure/backup/):
+[Azure Backup](../../backup/index.yml):
 
 - 顧客のテナントにある顧客データをバックアップおよび復元する
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
+[Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
 - ホストされている Kubernetes 環境を管理し、顧客のテナント内でコンテナー化されたアプリケーションをデプロイして管理する
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/):
+[Azure Monitor](../../azure-monitor/index.yml):
 
 - すべてのサブスクリプションにわたるアラートを表示する機能を使って、委任されたサブスクリプションに対するアラートを表示する
 - 委任されたサブスクリプションのアクティビティ ログの詳細を表示する
 - ログ分析: 複数のテナントにあるリモートの顧客ワークスペースからデータを照会する
 - 顧客のテナント内に、サービス プロバイダー テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
 
-[Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
+[Azure Policy](../../governance/policy/index.yml):
 
 - コンプライアンスのスナップショットで、委任されたサブスクリプション内で割り当てられたポリシーの詳細を表示する
 - 委任されたサブスクリプション内でポリシー定義を作成および編集する
@@ -75,11 +75,11 @@ Azure の委任されたリソース管理を使用すると、許可されて�
 - 顧客には、サービス プロバイダーが作成したポリシーと顧客自身が作成したポリシーが並べて表示される
 - [顧客のテナント内で deployIfNotExists の修復または割り当ての変更を行う](../how-to/deploy-policy-remediation.md)ことができる
 
-[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/):
+[Azure Resource Graph](../../governance/resource-graph/index.yml):
 
 - 返されるクエリ結果にテナント ID が含まれるため、サブスクリプションが顧客のテナントとサービス プロバイダーのテナントのどちらに属しているかを特定できる
 
-[Azure Security Center](https://docs.microsoft.com/azure/security-center/):
+[Azure Security Center](../../security-center/index.yml):
 
 - テナント間の表示
   - セキュリティ ポリシーへの準拠を監視し、セキュリティの適用範囲がすべてのテナントのリソースになるようにする
@@ -96,27 +96,27 @@ Azure の委任されたリソース管理を使用すると、許可されて�
   - サーバーで、適応型アプリケーション制御の対象とすべきアプリケーションとプロセスのみが実行されるようにする
   - ファイルの整合性の監視 (FIM) を使用して、重要なファイルとレジストリ エントリに対する変更を監視する
 
-[Azure Sentinel](https://docs.microsoft.com/azure/sentinel/multiple-tenants-service-providers):
+[Azure Sentinel](../../sentinel/multiple-tenants-service-providers.md):
 
 - 顧客テナントで Azure Sentinel リソースを管理する
 
-[Azure Service Health](https://docs.microsoft.com/azure/service-health/):
+[Azure Service Health](../../service-health/index.yml):
 
 - Azure Resource Health を使用して、顧客のリソースの正常性を監視する
 - 顧客が使用している Azure サービスの正常性を追跡する
 
-[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/):
+[Azure Site Recovery](../../site-recovery/index.yml):
 
 - 顧客のテナント内にある Azure 仮想マシンのディザスター リカバリー オプションを管理する (VM 拡張機能のコピーには RunAs アカウントを使用できないことに注意してください)
 
-[Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/):
+[Azure Virtual Machines](../../virtual-machines/index.yml):
 
 - 仮想マシン拡張機能を使用して、顧客のテナント内にある Azure VM のデプロイ後の構成と自動タスクを提供する
 - ブート診断を使用して、顧客のテナント内にある Azure VM のトラブルシューティングを行う
 - 顧客のテナントでシリアルコンソールを使用して VM にアクセスする
 - VM へのリモート ログインには Azure Active Directory を使用できないことと、ディスク暗号化用のパスワード、シークレット、暗号化キーのキー コンテナーと VM を統合できないことに注意する
 
-[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/):
+[Azure Virtual Network](../../virtual-network/index.yml):
 
 - 顧客のテナント内で仮想ネットワークと仮想ネットワーク インターフェイス カード (vNIC) をデプロイして管理する
 
@@ -124,15 +124,15 @@ Azure の委任されたリソース管理を使用すると、許可されて�
 
 - Azure portal の **[ヘルプとサポート]** ブレードで、委任されたリソースに対するサポート リクエストを開く (委任されたスコープで利用可能なサポート プランを選択する)
 
-## <a name="current-limitations"></a>現時点での制限事項
+## <a name="current-limitations"></a>現在の制限
 すべてのシナリオで、次に示す現在の制限事項に注意してください。
 
 - Azure Resource Manager で処理される要求は、Azure の委任されたリソース管理を使用して実行できます。 これらの要求の操作 URI は、`https://management.azure.com` で始まります。 ただし、リソースの種類のインスタンス (KeyVault のシークレット アクセスやストレージのデータ アクセスなど) によって処理される要求は、Azure の委任されたリソース管理ではサポートされていません。 これらの要求の操作 URI は、通常、`https://myaccount.blob.core.windows.net` や `https://mykeyvault.vault.azure.net/` など、実際のインスタンスに固有のアドレスで始まります。 また、通常、後者は管理操作ではなくデータ操作です。 
-- ロールの割り当てでは、ロールベースのアクセス制御 (RBAC) の[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理によってサポートされています。ただし、所有者または [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) アクセス許可を持つ組み込みロールは除きます。 [マネージド ID へのロールの割り当て](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)において、ユーザー アクセス管理者ロールは、限定された用途のみに対してサポートされています。  カスタム ロールと[従来のサブスクリプション管理者ロール](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)はサポートされていません。
+- ロールの割り当てでは、ロールベースのアクセス制御 (RBAC) の[組み込みロール](../../role-based-access-control/built-in-roles.md)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理によってサポートされています。ただし、所有者または [DataActions](../../role-based-access-control/role-definitions.md#dataactions) アクセス許可を持つ組み込みロールは除きます。 [マネージド ID へのロールの割り当て](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)において、ユーザー アクセス管理者ロールは、限定された用途のみに対してサポートされています。  カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
 - 現在、サブスクリプションで Azure Databricks が使用されている場合、Azure の委任されたリソース管理用にそのサブスクリプション (またはサブスクリプション内のリソース グループ) をオンボードすることはできません。 同様に、サブスクリプションがオンボードのために **Microsoft.ManagedServices** リソースプロバイダーに登録されている場合、この時点ではそのサブスクリプション用に Databricks ワークスペースを作成することはできなくなります。
-- リソース ロックがある Azure の委任されたリソース管理のサブスクリプションとリソース グループをオンボードすることはできますが、このようなロックがあっても、管理テナントのユーザーによるアクションの実行は妨げられません。 Azure マネージド アプリケーションまたは Azure Blueprints (システム割り当ての拒否割り当て) によって作成されたものなど、システムの管理対象リソースを保護する[拒否割り当て](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments)がある場合、管理テナントのユーザーはそれらのリソースを操作できません。ただし、現時点では、顧客テナントのユーザーは自分の拒否割り当て (ユーザー割り当て拒否割り当て) を作成できません。
+- リソース ロックがある Azure の委任されたリソース管理のサブスクリプションとリソース グループをオンボードすることはできますが、このようなロックがあっても、管理テナントのユーザーによるアクションの実行は妨げられません。 Azure マネージド アプリケーションまたは Azure Blueprints (システム割り当ての拒否割り当て) によって作成されたものなど、システムの管理対象リソースを保護する[拒否割り当て](../../role-based-access-control/deny-assignments.md)がある場合、管理テナントのユーザーはそれらのリソースを操作できません。ただし、現時点では、顧客テナントのユーザーは自分の拒否割り当て (ユーザー割り当て拒否割り当て) を作成できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Resource Manager テンプレートを使用する](../how-to/onboard-customer.md)か[プライベートまたはパブリックのマネージド サービスのオファーを Azure Marketplace に公開する](../how-to/publish-managed-services-offers.md)ことで、Azure の委任されたリソース管理に顧客をオンボードします。
 - Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](../how-to/view-manage-customers.md)します。

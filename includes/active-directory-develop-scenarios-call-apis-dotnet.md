@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 0196d39f5b131bc54e00412beb7fdf10b7352336
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4e01dbb0036761215a9a05c464b20ead340a2e3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423750"
 ---
 ### <a name="authenticationresult-properties-in-msalnet"></a>MSAL.NET の AuthenticationResult プロパティ
 
@@ -27,7 +27,7 @@ ms.locfileid: "67181358"
 
 MSAL.NET では、`AuthenticationResult` は次を公開します。
 
-- Web API がリソースにアクセスするための `AccessToken`。 このパラメーターは文字列で、通常は base64 でエンコードされた JWT ですが、クライアントがアクセス トークン内を見ることはありません。 形式が変わらないことは保証されておらず、リソース用に暗号化することができます。 クライアント上のアクセス トークンのコンテンツに応じてコードを記述している人は、エラーとクライアント ロジックの中断の最大の原因の 1 つです。 [アクセス トークン](../articles/active-directory/develop/access-tokens.md)も参照してください。
+- Web API がリソースにアクセスするための `AccessToken`。 このパラメーターは文字列で、通常は base64 でエンコードされた JWT ですが、クライアントがアクセス トークン内を見ることはありません。 形式が変わらないことは保証されておらず、リソース用に暗号化できます。 クライアント上のアクセス トークンのコンテンツに応じてコードを記述している人は、エラーとクライアント ロジックの中断を起こす最大の原因の 1 つです。 [アクセス トークン](../articles/active-directory/develop/access-tokens.md)も参照してください。
 - ユーザーの `IdToken` (このパラメーターはエンコードされた JWT です)。 [ID トークン](../articles/active-directory/develop/id-tokens.md)を参照してください。
 - `ExpiresOn` は、トークンの有効期限が切れる日時を知らせます。
 - `TenantId` には、ユーザーが存在するテナントが含まれています。 ゲスト ユーザー (Azure AD B2B のシナリオ) の場合、テナント ID は一意のテナントではなく、ゲスト テナントです。
@@ -44,7 +44,7 @@ MSAL.NET は、(`IAccount` インターフェイスを通じて) アカウント
 
 `AccountId` クラスは、特定のテナント内のアカウントを識別します。 これは次のプロパティを持ちます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |----------|-------------|
 | `TenantId` | GUID (アカウントが存在するテナントの ID) の文字列表現。 |
 | `ObjectId` | GUID (テナント内でアカウントを所有するユーザーの ID) の文字列表現。 |
@@ -52,7 +52,7 @@ MSAL.NET は、(`IAccount` インターフェイスを通じて) アカウント
 
 `IAccount` インターフェイスは 1 つのアカウントに関する情報を表します。 同じユーザーが異なるテナントに存在することができます。つまり、1 人のユーザーが複数のアカウントを持つことができます。 そのメンバーを次に示します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |----------|-------------|
 | `Username` | UserPrincipalName (UPN) 形式で表示可能な値を含む文字列 (例: john.doe@contoso.com)。 この文字列は null にできますが、HomeAccountId と HomeAccountId.Identifier は null にすることはできません。 このプロパティは、MSAL.NET の以前のバージョンの `IUser` の `DisplayableId` プロパティを置き換えます。 |
 | `Environment` | このアカウントの ID プロバイダーを含む文字列 (例: `login.microsoftonline.com`)。 ここでは値はホストだけですが、`IdentityProvider` が (クラウド環境に加え) テナントに関する情報も持っていた場合を除き、このプロパティは、`IUser` の `IdentityProvider` プロパティを置き換えます。 |
@@ -62,7 +62,7 @@ MSAL.NET は、(`IAccount` インターフェイスを通じて) アカウント
 
 MSAL によって `AuthenticationResult` が (`result` で) 返されたら、保護された Web API にアクセスするための呼び出しを行う前に、それを HTTP Authorization ヘッダーに追加する必要があります。
 
-```CSharp
+```csharp
 httpClient = new HttpClient();
 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 

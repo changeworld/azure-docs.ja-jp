@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/03/2019
-ms.openlocfilehash: 218ae158512326bcad8efd6c598f68d296fe9370
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 45c04cc32733873061bd6ff44b2e5484b106a893
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819157"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406654"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights の概要ダッシュボード
 
@@ -28,7 +28,7 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 時間範囲の選択が、簡単な 1 クリックのインターフェイスに簡素化されました。
 
-![時間範囲](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
+![時間の範囲](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
 全体的なパフォーマンスが大幅に向上しました。 **検索**や **Analytics** のような人気のある機能に 1 回のクリックでアクセスできます。 既定の動的に更新される各 KPI タイルでは、Application Insights の対応する機能について把握できます。 失敗した要求の詳細については、 **[調査]** ヘッダーの下の **[失敗]** を選択します。
 
@@ -59,7 +59,7 @@ Application Insights では常に、アプリケーションの正常性とパ�
 
 **[タイル設定の構成]** を選択し、31 日を超えるカスタムの時間範囲を設定した場合、既定のデータ保有期間が 90 日であっても、ダッシュボードには 31 日を超えるデータは表示されません。 現時点では、この動作の回避策はありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ファネル](../../azure-monitor/app/usage-funnels.md)
 - [保持](../../azure-monitor/app/usage-retention.md)

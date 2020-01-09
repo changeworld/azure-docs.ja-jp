@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706257"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644598"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: よく寄せられる質問
 
@@ -114,7 +114,7 @@ Azure サポートの詳細については、「[Azure サポートに関する 
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Ambari のタイムゾーンは変更するにはどうすればよいですか。
 
-1. [https://CLUSTERNAME.azurehdinsight.net](https://CLUSTERNAME.azurehdinsight.net ) の Ambari Web UI を開きます。この CLUSTERNAME は実際のクラスターの名前です。
+1. [https://CLUSTERNAME.azurehdinsight.net](`https://CLUSTERNAME.azurehdinsight.net`) の Ambari Web UI を開きます。この CLUSTERNAME は実際のクラスターの名前です。
 2. 右上隅の [admin | Settings]\(管理者 | 設定\) を選択します。 
 
    ![Ambari の設定](media/hdinsight-faq/ambari-settings.png)
@@ -251,7 +251,7 @@ ESP Spark クラスターでは、パフォーマンスではなくセキュリ�
 これを実現する方法は 2 つあります。1 - クラスターを再作成して、新しいグループを追加することができます。 AAD-DS で範囲指定された同期を使用している場合は、グループ B が範囲指定された同期に含まれることを確認してください。
 2 - ESP クラスターの作成に使用された前のグループの入れ子になったサブグループとして、グループを追加します。 たとえば、グループ `A` で ESP クラスターを作成した場合、後でグループ `A` の入れ子になったサブグループとしてグループ `B` を追加できます。約 1 時間後に、クラスターで自動的に同期されて使用できるようになります。 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 ### <a name="can-i-add-an-azure-data-lake-storage-gen2-to-an-existing-hdinsight-cluster-as-an-additional-storage-account"></a>既存の HDInsight クラスターに追加のストレージ アカウントとして Azure Data Lake Storage Gen2 を追加することはできますか。
 
@@ -263,7 +263,7 @@ ESP Spark クラスターでは、パフォーマンスではなくセキュリ�
  
 ### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>HDInsight クラスターのストレージ アカウントと BLOB コンテナーの使用量を計算するにはどうすればよいですか。
 
-次のいずれかを実行します。
+次のいずれかの操作を行います。
 
 - [PowerShell の使用](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
 

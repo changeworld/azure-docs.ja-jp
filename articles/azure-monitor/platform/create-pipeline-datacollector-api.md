@@ -4,15 +4,15 @@ description: Azure Monitor HTTP Data Collector API を使用すると、REST API
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/09/2018
-ms.openlocfilehash: 8b739d86ec557ca8c7de7e0999c905b51d1d97a7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3074d8d9dfcb3dbca31821d73cfd6daee056edb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932626"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363967"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>データ コレクター API によるデータ パイプラインの作成
 
@@ -166,5 +166,5 @@ app("fabrikamprod").pageViews
 * 複数の異なる種類のデータをアップロードする場合は、それらを BLOB コンテナー内の個別のフォルダーに分け、データの種類に応じて分散するようにロジックを作成します。 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 REST API クライアントから [Data Collector API](data-collector-api.md) を使用して Log Analytics ワークスペースにデータを書き込む方法の詳細を確認します。

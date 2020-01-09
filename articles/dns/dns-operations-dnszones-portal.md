@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: allensu
-ms.openlocfilehash: 5d4cc57c4cb5db7f04d604c8ccbc408df1a3e707
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4e6b5dc200f49b34d8f808e5587b173197b9da8f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437327"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Azure Portal で DNS ゾーンを管理する方法
 
@@ -39,11 +39,11 @@ ms.locfileid: "74211908"
 4. **[DNS ゾーンの作成]** ブレードで次の値を入力してから、 **[作成]** をクリックします。
 
 
-   | **設定** | **値** | **詳細** |
+   | **設定** | **Value** | **詳細** |
    |---|---|---|
    |**Name**|contoso.com|DNS ゾーンの名前です。|
    |**サブスクリプション**|<該当するサブスクリプション>|DNS ゾーンを作成するサブスクリプションを選択します。|
-   |**リソース グループ**|**[新規作成]** : contosoDNSRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。 リソース グループについて詳しくは、[Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) の概要に関する記事をご覧ください。|
+   |**リソース グループ**|**[新規作成]** : contosoDNSRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。 リソース グループについて詳しくは、[Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) の概要に関する記事をご覧ください。|
    |**Location**|米国西部||
 
 > [!NOTE]
@@ -59,6 +59,6 @@ Azure Portal で、 **[その他のサービス]**  >  **[ネットワーク]** 
 
 Portal で DNS ゾーンに移動します。 **[DNS ゾーン]** ブレードで、 **[ゾーンを削除する]** をクリックします。 その後、DNS ゾーンを削除することを確認するよう求められます。 DNS ゾーンを削除すると、そのゾーンに含まれているレコードもすべて削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 「[Azure Portal で Azure DNS の使用を開始する](dns-getstarted-portal.md)」で、DNS ゾーンとレコードの使用方法を学習してください。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4b2dcf8f156f231041d7636d103eea59816ec65f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 09179ff0cf8275e96cb87e0c183eb4a384dcb37b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008445"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564724"
 ---
 Azure で仮想マシン (VM) がどこで、どのように運用されているかを理解するのは重要なことです。また、パフォーマンス、可用性、冗長性を最大化するためのオプションとしてどのようなものがあるかを知っておくことにも、大きな意義があります。 この記事では、可用性と冗長性に関する Azure の各種機能の概要を紹介します。
 
@@ -29,7 +29,7 @@ Azure には、コンプライアンスまたは法的な目的に合致した�
 * **米国政府バージニア**および **US Gov アイオワ**
   * 物理的および論理的にネットワークが分離された Azure インスタンス。米国の政府機関やパートナー (選別された米国の担当者が運営する) 向け。 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP)、[DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA) などのその他のコンプライアンス証明書が含まれます。 詳細については [Azure Government](https://azure.microsoft.com/features/gov/) に関するページをご覧ください。
 * **中国東部**および**中国北部**
-  * これらのリージョンは、Microsoft と 21Vianet 間の特異なパートナーシップを通じてご利用いただけます。この契約により、Microsoft はデータ センターを直接管理しません。 [Azure China 21Vianet](http://www.windowsazure.cn/) の詳細を参照してください。
+  * これらのリージョンは、Microsoft と 21Vianet 間の特異なパートナーシップを通じてご利用いただけます。この契約により、Microsoft はデータ センターを直接管理しません。 [Azure China 21Vianet](https://www.windowsazure.cn/) の詳細を参照してください。
 * **ドイツ中部**および**ドイツ北東部**
   * これらのリージョンは、データ トラスティ モデルを通してご利用いただけます。お客様のデータは、ドイツのデータ トラスティを務める Deutsche Telekom 傘下の T-Systems の管理の下、ドイツ国内で保管されます。
 
@@ -74,13 +74,13 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 
 | レプリケーションの方法 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| 複数施設にわたってのデータのレプリケート |いいえ |可能 |はい |はい |
+| 複数施設にわたってのデータのレプリケート |いいえ |はい |はい |はい |
 | 1 次拠点と 2 次拠点からデータの読み取りが可能 |いいえ |いいえ |いいえ |はい |
 | 個別のノードで保持されるデータ コピーの数 |3 |3 |6 |6 |
 
 詳細については、 [Azure ストレージのレプリケーション オプションのページ](../articles/storage/common/storage-redundancy.md)を参照してください。 マネージド ディスクの詳細については、「[Azure Managed Disks の概要](../articles/virtual-machines/windows/managed-disks-overview.md)」をご覧ください。
 
-### <a name="storage-costs"></a>ストレージのコスト
+### <a name="storage-costs"></a>ストレージ コスト
 価格は、ストレージの種類と選択した可用性によって異なります。
 
 **Azure Managed Disks**

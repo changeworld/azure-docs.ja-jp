@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics 診断ログ データ エラー
 description: この記事では、Azure Stream Analytics の使用時に発生することがあるさまざまな入力および出力データ エラーについて説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: ecc7077bf208adf1ac89adcce2f2e480ce34888e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 0546464b4d1bcc9eaa4fbffe265486985d9c58f3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329599"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465034"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics データ エラー
 
@@ -168,7 +167,7 @@ ms.locfileid: "67329599"
 
 * 原因: アプリケーション時間と到着時刻の差が到着遅延許容範期間を超えています。
 * ポータル通知提供:いいえ
-* 診断ログのレベル:情報
+* 診断ログのレベル:Information
 * 影響:遅延入力イベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
 * ログの詳細
    * アプリケーション時間と到着時刻 
@@ -184,7 +183,7 @@ ms.locfileid: "67329599"
 
 * 原因: アプリケーション時間と到着時刻の差が 5 分以上あります。
 * ポータル通知提供:いいえ
-* 診断ログのレベル:情報
+* 診断ログのレベル:Information
 * 影響:早期入力イベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
 * ログの詳細
    * アプリケーション時間と到着時刻 
@@ -200,7 +199,7 @@ ms.locfileid: "67329599"
 
 * 原因: 定義されている許容範囲が正しくないため、イベントが順序逸脱であると見なされます。
 * ポータル通知提供:いいえ
-* 診断ログのレベル:情報
+* 診断ログのレベル:Information
 * 影響:順不同のイベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
 * ログの詳細
    * 実際のペイロードは最大で数キロバイトです。
@@ -288,7 +287,7 @@ ms.locfileid: "67329599"
 "BriefMessage": "Column 'devicePartitionKey' is being mapped to multiple columns."
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [診断ログを使用した Azure Stream Analytics のトラブルシューティング](stream-analytics-job-diagnostic-logs.md)
 

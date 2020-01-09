@@ -2,19 +2,15 @@
 title: Azure Automation の Linux Hybrid Runbook Worker
 description: この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのコンピューターで Runbook を実行できるようにする方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 06/28/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 01dcb30fca2819bc4cf85ea624de5735cc84801b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 838c7450de1364588fb287c9d9804666a325cdf3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850824"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421935"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -114,7 +110,7 @@ Linux Hybrid Worker では、次の Runbook の種類は機能しません。
 * グラフィカル
 * グラフィカル PowerShell ワークフロー
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を学習するには、「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」をご覧ください。
 * Hybrid Runbook Worker を削除する方法については、「[Hybrid Runbook Worker の削除](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)」をご覧ください。

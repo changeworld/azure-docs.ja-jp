@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 95486208f52b2faa2fbb3db5bf1ef968c330dab6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 70fff041cd693a19269b11398947fb0c8ce56bb1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350679"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクから Linux VM を作成する
 
@@ -74,7 +74,7 @@ Azure で Linux イメージを準備する際のその他の一般的なヒン�
 > 
 > 
 
-## <a name="option-1-upload-a-vhd"></a>オプション 1:VHD のアップロード
+## <a name="option-1-upload-a-vhd"></a>オプション 1: VHD のアップロード
 
 VHD をマネージド ディスクに直接アップロードできるようになりました。 手順については、「[Azure CLI を使用して Azure に VHD をアップロードする](disks-upload-vhd-to-managed-disk-cli.md)」を参照してください。
 
@@ -133,5 +133,5 @@ az vm create \
 
 ソース VM の資格情報を使用して、SSH でその VM に接続できる必要があります。 
 
-## <a name="next-steps"></a>次の手順
-カスタム仮想ディスクを準備してアップロードしたら、 [Resource Manager とテンプレートの使用](../../azure-resource-manager/resource-group-overview.md)について学習しましょう。 必要であれば、新しい VM に [データ ディスクを追加](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) することもできます。 VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず [ポートとエンドポイント](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を開放してください。
+## <a name="next-steps"></a>次のステップ
+カスタム仮想ディスクを準備してアップロードしたら、 [Resource Manager とテンプレートの使用](../../azure-resource-manager/management/overview.md)について学習しましょう。 必要であれば、新しい VM に [データ ディスクを追加](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) することもできます。 VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず [ポートとエンドポイント](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を開放してください。

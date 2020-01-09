@@ -1,17 +1,17 @@
 ---
-title: Azure Active Directory 統合による Azure Cosmos DB のロールベースのアクセス制御
+title: Azure Cosmos DB のロールベースのアクセス制御
 description: Azure Cosmos DB が Active Directory 統合 (RBAC) を使用してデータベース保護を提供する方法について説明します。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: c7605bbc1824e2e859cc94296834daf4e4e0907b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0c7332a42751b35b6ad8ec3f88afb7bc78cc85e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072358"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445098"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB のロールベースのアクセス制御
 
@@ -63,7 +63,7 @@ Cosmos リソース プロバイダーをロック ダウンして、Cosmos ア�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure リソースのロールベースのアクセス制御 (RBAC) の概要](../role-based-access-control/overview.md)
 - [Azure リソースのカスタム ロール](../role-based-access-control/custom-roles.md)

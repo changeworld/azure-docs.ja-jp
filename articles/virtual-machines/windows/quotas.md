@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 29eaad9835b74e9867454dffb35799a01bbb03e1
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7721aca9187a0faee2254bc100bce03fe34232c4
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073433"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646916"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>仮想マシンの vCPU クォータ
 
@@ -83,6 +83,6 @@ Premium Storage Managed Disks                1 10000 Count
 
 単一サブスクリプション RI を購入するためにクォータの引き上げが必要な場合は、そのサブスクリプションの[クォータの引き上げを要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-課金とクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits?toc=/azure/billing/TOC.json)」を参照してください。
+課金とクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits?toc=/azure/billing/TOC.json)」を参照してください。

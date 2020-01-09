@@ -4,15 +4,15 @@ description: Azure Diagnostics は、Cloud Services、Virtual Machines、およ�
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: d1721411b57fc3542af48fc5f48eca7e4a2d06c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1bdefc6b61e4e5cc5b8648880c5fdd8662af1bc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552151"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395365"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Azure Diagnostics 拡張機能とは何か
 Azure Diagnostics 拡張機能は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内のエージェントです。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、Virtual Machines、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](../../azure-monitor/overview.md)」を参照してください。
@@ -23,7 +23,7 @@ Linux を実行する仮想マシンには、[Linux 版の拡張機能](../../vi
 ## <a name="data-you-can-collect"></a>収集可能なデータ
 Azure Diagnostics 拡張機能では、次の種類のデータを収集できます。
 
-| データ ソース | 説明 |
+| Data Source | [説明] |
 | --- | --- |
 | パフォーマンス カウンター メトリック |オペレーティング システムとカスタム パフォーマンス カウンター |
 | アプリケーション ログ |アプリケーションによって書き込まれたメッセージをトレースする |
@@ -58,7 +58,7 @@ Azure Monitor メトリック時系列データベースにデータを送信す
 [Azure Diagnostics のバージョン履歴とスキーマ](diagnostics-extension-schema.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 診断情報を収集するサービスを選択し、以下の記事の説明に従って操作を開始してください。 特定のタスクのリファレンスについては、一般的な Azure Diagnostics リンクを使用してください。
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Cloud Services で Azure Diagnostics を使用する

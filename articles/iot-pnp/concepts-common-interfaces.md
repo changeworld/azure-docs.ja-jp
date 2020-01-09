@@ -3,16 +3,16 @@ title: 共通インターフェイス - IoT プラグ アンド プレイ プレ
 description: IoT プラグ アンド プレイ開発者向けの共通インターフェイスの説明
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 09/08/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2eae778230fa5fce1be095106a02b2b643ff436e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f697a0d6aba4f137b75faa2a200424c72aa78c3b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935320"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531413"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT プラグ アンド プレイ プレビュー共通インターフェイス
 
@@ -20,7 +20,7 @@ ms.locfileid: "70935320"
 
 ## <a name="summary-of-common-interfaces"></a>共通インターフェイスの概要
 
-| 名前 | id | 説明 | Azure IoT SDK によって実装される | 機能モデルで宣言する必要がある |
+| Name | id | [説明] | Azure IoT SDK によって実装される | 機能モデルで宣言する必要がある |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | モデル情報 | urn:azureiot:ModelDiscovery:ModelInformation:1 | デバイスが機能モデル ID とインターフェイスを宣言するため。 すべての IoT プラグ アンド プレイ デバイスに必要です。 | はい | いいえ |
 | デジタル ツイン クライアント SDK 情報 | urn:azureiot:Client:SDKInformation:1 | デバイスを Azure に接続するためのクライアント SDK。 [認定資格](tutorial-build-device-certification.md)のために必要です | はい | いいえ |
@@ -55,7 +55,7 @@ az iot pnp capability-model show --model {ModelID}
 
 1. インターフェイスのローカル コピーを作成するために、検索結果でそれを選択し、 **[ダウンロード]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここまでで、共通インターフェイスについて学習しました。その他のリソースを次に示します。
 

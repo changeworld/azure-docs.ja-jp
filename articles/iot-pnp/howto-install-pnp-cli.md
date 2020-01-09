@@ -3,17 +3,17 @@ title: Azure CLI 用 Azure IoT 拡張機能を使用して、IoT プラグ ア�
 description: Azure CLI 用 Azure IoT 拡張機能をインストールし、IoT ハブに接続された IoT プラグ アンド プレイ デバイスとの対話に使用します。
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 09/08/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f4e255309d32026b7f2bb4de67fce7ec37c753f6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571012"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529577"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Azure CLI 用 Azure IoT 拡張機能をインストールして使用する
 
@@ -26,7 +26,7 @@ Azure CLI の Azure IoT 拡張機能は、IoT プラグ アンド プレイ プ�
 - デバイスのプロパティを操作する。
 - デバイスのコマンドを呼び出す。
 
-この記事では、その方法について説明します。
+この記事で取り上げるテクニック:
 
 - Azure CLI 用 Azure IoT 拡張機能をインストールして構成する。
 - 拡張機能を使用して、デバイスとの対話とテストを行う。
@@ -88,7 +88,7 @@ IoT プラグ アンド プレイ デバイスによって登録されたすべ�
 az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 ```
 
-#### <a name="properties"></a>properties
+#### <a name="properties"></a>Properties
 
 デバイス上のインターフェイスのすべてのプロパティとプロパティ値を一覧表示します。
 
@@ -118,7 +118,7 @@ az iot dt update-property --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 }
 ```
 
-#### <a name="commands"></a>command
+#### <a name="commands"></a>コマンド
 
 デバイス上のインターフェイスのすべてのコマンドを一覧表示します。
 
@@ -228,6 +228,6 @@ az iot pnp capability-model publish --model {YourModelID} --login {YourCompanyMo
 
 パブリック モデル リポジトリにモデルを発行できるのは Microsoft パートナーのみです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このハウツー記事では、Azure CLI 用 Azure IoT 拡張機能をインストールして使用し、プラグ アンド プレイ デバイスと対話する方法を学習しました。 次は、[モデルを管理する](./howto-manage-models.md)方法について学習することをお勧めします。

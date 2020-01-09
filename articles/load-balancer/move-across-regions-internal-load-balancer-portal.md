@@ -6,18 +6,18 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: allensu
-ms.openlocfilehash: 88aedb97f659725887026d0c83be88cbde27ae4f
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: f23923b9d847ef393ebd609eb5fbba530b1a07d6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219683"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638809"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-the-azure-portal"></a>Azure portal を使用して Azure 内部ロード バランサーを別のリージョンに移動する
 
-既存の内部ロード バランサーをリージョン間で移動するシナリオには、さまざまなケースがあります。 たとえば、テスト用に同じ構成で内部ロード バランサーを作成したい場合があります。 また、ディザスター リカバリー計画の一環として、内部ロード バランサーを別のリージョンに移動したい場合もあります。
+既存の内部ロード バランサーをリージョン間で移動することが必要になるさまざまなシナリオがあります。 たとえば、テスト用に同じ構成で内部ロード バランサーを作成したい場合があります。 また、ディザスター リカバリー計画の一環として、内部ロード バランサーを別のリージョンに移動したい場合もあります。
 
-Azure 内部ロード バランサーは、リージョン間で移動することはできません。 ただし、Azure Resource Manager テンプレートを使用すると、内部ロード バランサーの既存の構成と仮想ネットワークをエクスポートできます。  その後、ロード バランサーと仮想ネットワークをテンプレートにエクスポートすることで別のリージョンにリソースをステージし、宛先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイすることができます。  Resource Manager とテンプレートの詳細については、「[クイック スタート:Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)」を参照してください。
+Azure 内部ロード バランサーは、リージョン間で移動することはできません。 ただし、Azure Resource Manager テンプレートを使用すると、内部ロード バランサーの既存の構成と仮想ネットワークをエクスポートできます。  その後、そのロード バランサーと仮想ネットワークをテンプレートにエクスポートし、宛先リージョンに合わせてパラメーターを変更して、そのテンプレートを新しいリージョンにデプロイすることで、リソースを別のリージョンにステージングすることができます。  Resource Manager とテンプレートの詳細については、「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)」を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,11 +32,11 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
 - 自分の Azure サブスクリプションで、使用するターゲット リージョンに内部ロード バランサーを作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
 
-- 自分のサブスクリプションに、このプロセスでロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- 自分のサブスクリプションに、このプロセスでロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
 
 
 ## <a name="prepare-and-move"></a>準備と移動
-次の手順では、Resource Manager テンプレートを使用して、内部ロード バランサーの移動を準備し、Azure portal を使用して内部ロード バランサーの構成をターゲット リージョンに移動する方法を示します。  このプロセスでは、内部ロード バランサーの仮想ネットワークの構成を含める必要がありますが、これは内部ロード バランサーを移動する前に行う必要があります。
+次の手順では、Resource Manager テンプレートを使用して、内部ロード バランサーの移動を準備し、Azure portal を使用して内部ロード バランサーの構成をターゲット リージョンに移動する方法を示します。  このプロセスの一環として、内部ロード バランサーの仮想ネットワークの構成を含める必要があり、内部ロード バランサーを移動する前に、最初にこれを実行する必要があります。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -61,13 +61,13 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
         }
     }
     ```
-7. エディターで、ソース仮想ネットワーク名の値を、ターゲット VNET に対して選択した名前に変更します。 名前は必ず引用符で囲んでください。
+7. エディターで、ソース仮想ネットワーク名の値を、ターゲット VNET に対して選択した名前に変更します。 名前は確実に引用符で囲みます。
 
 8. エディターで **[保存]** をクリックします。
 
 9. **[テンプレート]**  >  **[テンプレートの編集]** をクリックして、オンライン エディターで **template.json** ファイルを開きます。
 
-10. VNET を移動するターゲット リージョンを編集するには、resources の下の **location** プロパティを変更します。
+10. VNET の移動先となるターゲット リージョンを編集するには、resources の下の **location** プロパティを変更します。
 
     ```json
     "resources": [
@@ -142,7 +142,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
                 ]
         ```
 
-         **template.json** ファイルでアドレス プレフィックスを変更するには、上で示したセクションと、後で示す **type** セクションの 2 箇所を変更する必要があります。  **addressPrefix** プロパティを上記のものと一致するように変更します。
+         **template.json** ファイルでアドレス プレフィックスを変更するには、上で示したセクションと、後で示す **type** セクションの 2 か所を変更する必要があります。  **addressPrefix** プロパティを上記と一致するように変更します。
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -186,13 +186,13 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
 16. **[基本]**  >  **[場所]** が VNET をデプロイするターゲットの場所に設定されていることを確認します。
 
-17. **[設定]** で、名前が上のパラメーター エディターで入力した名前と一致することを確認します。
+17. **[設定]** で、名前が上記のパラメーター エディターで入力した名前と一致することを確認します。
 
 18. **[使用条件]** のチェック ボックスをオンにします。
 
 19. **[購入]** ボタンをクリックして、ターゲット仮想ネットワークをデプロイします。
 
-### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>内部ロード バランサー テンプレートをエクスポートし、Azure PowerShell からデプロイする
+### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>内部ロード バランサー テンプレートをエクスポートして Azure PowerShell からデプロイする
 
 1. [Azure portal](https://portal.azure.com) >  **[リソース グループ]** にログインします。
 2. ソース内部ロード バランサーが含まれているリソース グループを探し、それをクリックします。
@@ -257,7 +257,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
 9.  リージョンの場所コードを取得するには、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」を参照してください。  リージョンのコードは、スペースを含まないリージョン名です (**Central US** = **centralus**)。
 
-10. また、必要に応じて、テンプレート内の他のパラメーターも変更できます。これは要件に基づくオプションです。
+10. また、必要に応じて、テンプレート内の他のパラメーターも変更できます。これらは、実際の要件に応じて省略可能です。
 
     * **SKU** - 構成の内部ロード バランサーの SKU を、Standard から Basic、または Basic から Standard に変更できます。そのためには、**template.json** ファイルの **sku** > **name** プロパティを変更します。
 
@@ -273,7 +273,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
                 "tier": "Regional"
             },
         ```
-      Basic SKU と Standard SKU のロード バランサーの違いについて詳しくは、「[Azure Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」を参照してください
+      Basic SKU と Standard SKU のロード バランサーの違いの詳細については、「[Azure Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」を参照してください。
 
     * **負荷分散規則** - 構成の負荷分散規則を追加または削除できます。そのためには、**template.json** ファイルの **loadBalancingRules** セクションでエントリを追加または削除します。
 
@@ -383,7 +383,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
 16. **[基本]**  >  **[場所]** が内部ロード バランサーをデプロイするターゲットの場所に設定されていることを確認します。
 
-17. **[設定]** で、名前が上のパラメーター エディターで入力した名前と一致することを確認します。  構成内のすべての仮想ネットワークにリソース ID が設定されていることを確認します。
+17. **[設定]** で、名前が上記のパラメーター エディターで入力した名前と一致することを確認します。  構成内のすべての仮想ネットワークにリソース ID が設定されていることを確認します。
 
 18. **[使用条件]** のチェック ボックスをオンにします。
 
@@ -397,7 +397,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
 変更をコミットし、仮想ネットワークと内部ロード バランサーの移動を完了するには、ソース仮想ネットワークと内部ロード バランサーまたはリソース グループを削除します。 これを行うには、ポータルのダッシュボードで仮想ネットワークと内部ロード バランサーまたはリソース グループを選択し、各ページの上部にある **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure 内部ロード バランサーをリージョン間で移動し、ソース リソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 

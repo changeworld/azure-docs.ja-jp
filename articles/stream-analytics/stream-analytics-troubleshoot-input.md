@@ -1,7 +1,6 @@
 ---
 title: Azure Stream Analytics の入力のトラブルシューティング
 description: この記事では、Azure Stream Analytics ジョブの入力接続のトラブルシューティングを行う方法について説明します。
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8357a53ee065812922b5df53fbdef7c14e5f0ff7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621025"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354278"
 ---
 # <a name="troubleshoot-input-connections"></a>入力接続のトラブルシューティング
 
@@ -69,7 +68,7 @@ Event Hubs を使用する際のベスト プラクティスは、複数のコ�
 ### <a name="add-a-consumer-group-in-event-hubs"></a>Event Hubs でコンシューマー グループを追加する
 Event Hubs インスタンスに新しいコンシューマー グループを追加するには、次の手順に従います。
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 
 2. Event Hubs のある場所を探します｡
 
@@ -136,7 +135,7 @@ FROM data
 
 3 つ以上の入力が同じ Event Hubs コンシューマー グループに接続されるクエリでは、別のコンシューマー グループを作成します。 そのためには、追加の Stream Analytics 入力を作成する必要があります。
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 

@@ -8,18 +8,18 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47ee691186da7f915ca8fcf87415784ab12ef1e0
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553847"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401596"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
 > 本記事は、現在プレビュー段階である Azure の管理ソリューションの作成に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。  
 
-Azure での管理ソリューションは、[Resource Manager テンプレート](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)として実装されます。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../../azure-resource-manager/resource-group-authoring-templates.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソースを構成する方法について、詳細を説明します。
+Azure での管理ソリューションは、[Resource Manager テンプレート](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)として実装されます。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../../azure-resource-manager/templates/template-syntax.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソースを構成する方法について、詳細を説明します。
 
 
 ## <a name="tools"></a>ツール
@@ -32,8 +32,8 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 
 
-## <a name="structure"></a>Structure
-管理ソリューション ファイルの基本的な構造は、次のような [Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md#template-format)と同じです。  以下の各セクションでは、最上位レベルの要素と、ソリューションにおけるその内容について説明します。  
+## <a name="structure"></a>構造体
+管理ソリューション ファイルの基本的な構造は、次のような [Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md#template-format)と同じです。  以下の各セクションでは、最上位レベルの要素と、ソリューションにおけるその内容について説明します。  
 
     {
        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -44,8 +44,8 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
        "outputs": {  }
     }
 
-## <a name="parameters"></a>parameters
-[パラメーター](../../azure-resource-manager/resource-group-authoring-templates.md#parameters)は、管理ソリューションをインストールするときに、ユーザーから必要とする値です。  すべてのソリューションが持つ標準のパラメーターがありますが、特定のソリューションに必要な追加のパラメーターを加えることができます。  ソリューションのインストール時にユーザーがパラメーター値を設定する方法は、特定のパラメーターおよびソリューションのインストール方法によって異なります。
+## <a name="parameters"></a>パラメーター
+[パラメーター](../../azure-resource-manager/templates/template-syntax.md#parameters)は、管理ソリューションをインストールするときに、ユーザーから必要とする値です。  すべてのソリューションが持つ標準のパラメーターがありますが、特定のソリューションに必要な追加のパラメーターを加えることができます。  ソリューションのインストール時にユーザーがパラメーター値を設定する方法は、特定のパラメーターおよびソリューションのインストール方法によって異なります。
 
 ユーザーが [Azure Marketplace](solutions.md#install-a-monitoring-solution) または Azure クイック スタート テンプレートから管理ソリューションをインストールすると、[Log Analytics ワークスペースと Automation アカウント](solutions.md#log-analytics-workspace-and-automation-account)を選択するよう求めるメッセージが表示されます。  これらは、各標準パラメーターの値の設定に使用されます。  ユーザーは、標準パラメーターに値を直接入力することは求められませんが、追加のパラメーターには値を入力することが求められます。
 
@@ -62,9 +62,9 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 次の表で、パラメーターの属性について説明します。
 
-| Attribute | 説明 |
+| Attribute | [説明] |
 |:--- |:--- |
-| type |パラメーターのデータ型。 ユーザーに表示される入力コントロールは、データ型によって異なります。<br><br>bool - ドロップダウン ボックス<br>string - テキスト ボックス<br>int - テキスト ボックス<br>securestring - パスワード フィールド<br> |
+| 型 |パラメーターのデータ型。 ユーザーに表示される入力コントロールは、データ型によって異なります。<br><br>bool - ドロップダウン ボックス<br>string - テキスト ボックス<br>int - テキスト ボックス<br>securestring - パスワード フィールド<br> |
 | category |パラメーターの任意のカテゴリ。  同じカテゴリのパラメーターはグループ化されます。 |
 | control |文字列パラメーターの追加の機能。<br><br>datetime - Datetime コントロールが表示されます。<br>guid - GUID 値が自動的に生成され、パラメーターは表示されません。 |
 | description |パラメーターの説明です (省略可能)。  パラメーターの横の情報バルーンに表示されます。 |
@@ -77,7 +77,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 >
 >
 
-| パラメーター | 種類 | 説明 |
+| パラメーター | 種類 | [説明] |
 |:--- |:--- |:--- |
 | accountName |string |Azure automation アカウント名。 |
 | pricingTier |string |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
@@ -125,8 +125,8 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 ソリューション内のその他の要素のパラメーター値は、 **parameters('parameter name')** の構文を使用して参照します。  たとえば、ワークスペース名にアクセスするには、**parameters('workspaceName')** を使用します。
 
-## <a name="variables"></a>変数
-[Variables](../../azure-resource-manager/resource-group-authoring-templates.md#variables) は、その他の管理ソリューションで使用する値です。  これらの値は、ソリューションをインストールするユーザーには公開されません。  これは、作成者に 1 つの場所を提供することを意図しており、それによって、ソリューション全体にわたって何度も使用する値を管理できるようにします。 **resources** 要素でハードコーディングするのとは異なり、ソリューション固有の値を変数で記述する必要があります。  これによってコードが読みやすくなるとともに、後のバージョンでこれらの値を簡単に変更することができます。
+## <a name="variables"></a>変数:
+[Variables](../../azure-resource-manager/templates/template-syntax.md#variables) は、その他の管理ソリューションで使用する値です。  これらの値は、ソリューションをインストールするユーザーには公開されません。  これは、作成者に 1 つの場所を提供することを意図しており、それによって、ソリューション全体にわたって何度も使用する値を管理できるようにします。 **resources** 要素でハードコーディングするのとは異なり、ソリューション固有の値を変数で記述する必要があります。  これによってコードが読みやすくなるとともに、後のバージョンでこれらの値を簡単に変更することができます。
 
 次の例は、ソリューションで使用される一般的なパラメーターを持つ**variables**要素です。
 
@@ -155,7 +155,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 この場合、構文**variables('variable name').property** を使用してソリューションの変数値を参照します。  たとえば、SolutionName 変数にアクセスするには、**variables('Solution').Name** を使います。
 
 ## <a name="resources"></a>リソース
-[Resources](../../azure-resource-manager/resource-group-authoring-templates.md#resources) は、管理ソリューションがインストールおよび構成するさまざまなリソースを定義します。  この部分が、テンプレートの大半を占め、最も複雑な部分です。  resource 要素の構造と詳細な説明については、[Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md#resources)に関するページを参照してください。  このドキュメントの他の記事では、通常定義するその他のリソースについて説明します。 
+[Resources](../../azure-resource-manager/templates/template-syntax.md#resources) は、管理ソリューションがインストールおよび構成するさまざまなリソースを定義します。  この部分が、テンプレートの大半を占め、最も複雑な部分です。  resource 要素の構造と詳細な説明については、[Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md#resources)に関するページを参照してください。  このドキュメントの他の記事では、通常定義するその他のリソースについて説明します。 
 
 
 ### <a name="dependencies"></a>依存関係
@@ -202,10 +202,10 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 ### <a name="dependencies"></a>依存関係
 ソリューション リソースは、ソリューションが作成される前に存在している必要があるため、ソリューションの別のリソースごとに[依存関係](../../azure-resource-manager/resource-group-define-dependencies.md)を持つ必要があります。  このために、**dependsOn** 要素にある各リソースにエントリを追加します。
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 このソリューション リソースには、次の表のプロパティがあります。  これには、ソリューションに含まれ参照されるリソースが含まれます。ソリューションをインストールした後に、どのようにリソースを管理するかを定義しています。  ソリューション内の各リソースは、**referencedResources** または **containedResources** プロパティのいずれかに表示される必要があります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | workspaceResourceId |*\<リソース グループ ID>/プロバイダー/Microsoft.OperationalInsights/ワークスペース/\<ワークスペース名\>* という形式の Log Analytics ワークスペースの ID。 |
 | referencedResources |ソリューション削除時に削除すべきではないソリューション内のリソースの一覧。 |
@@ -216,18 +216,18 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 ### <a name="plan"></a>プラン
 ソリューション リソースの**プラン** エンティティには、次の表のプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| 名前 |ソリューションの名前。 |
+| name |ソリューションの名前。 |
 | version |作成者によって決定されるソリューションのバージョン。 |
 | product |ソリューションを特定する一意の文字列。 |
 | publisher |ソリューションの発行者。 |
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 管理ソリューションに、[保存した検索とアラートを追加する](solutions-resources-searches-alerts.md)。
 * 管理ソリューションに[ビューを追加する](solutions-resources-views.md)。
 * 管理ソリューションに [Runbook とその他の Automation リソースを追加する](solutions-resources-automation.md)。
-* [Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)の詳細について
+* [Azure Resource Manager のテンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)の詳細について
 * Resource Manager テンプレートの様々なサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates) で検索できます。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b5c886625c944e2f5501859e78506ca89ec3d765
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71203682"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454191"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>OPC Vault 証明書管理サービスの使用
 
@@ -98,11 +98,11 @@ ms.locfileid: "71203682"
 
 これで新しい証明書の適用方法について、OPC UA デバイスに依存するようになりました。 通常、CA 証明書と CRL は `trusted` フォルダーにコピーされますが、アプリケーション証明書は証明書ストアの `own` フォルダーに適用されます。 一部のデバイスでは、証明書の更新にサーバー プッシュが既にサポートされている場合があります。 ご利用の OPC UA デバイスのドキュメントを参照してください。
 
-### <a name="step-4-device-secured"></a>手順 4:セキュリティで保護されたデバイス
+### <a name="step-3-device-secured"></a>手順 3:セキュリティで保護されたデバイス
 
 これで、OPC UA デバイスは、追加の構成なしで、CA 署名済み証明書によって保護されている他の OPC UA デバイスと通信できるようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、OPC UA デバイスをセキュリティで保護する方法を学習しました。次のことができます。
 

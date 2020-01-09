@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 0b977cb9fe2df1627ad9a2e07b00ffb0e749ed39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 39f22cc3cb026d4bed1dbe937e0e220b7bdceec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498259"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435555"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用してクラスターを設定する
 
@@ -51,13 +51,13 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 * [リソース グループ名](#resource-group-name)
 * [クラスターの種類と構成](#cluster-types)
-* [クラスター名](#cluster-name)
+* [[Cluster name]\(クラスター名\)](#cluster-name)
 * [クラスター ログインと SSH ユーザー名](#cluster-login-and-ssh-username)
 * [Location](#location)
 
 ## <a name="resource-group-name"></a>リソース グループ名
 
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用すると、アプリケーション内の複数のリソースを、Azure リソース グループと呼ばれる 1 つのグループとして使用できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) を使用すると、アプリケーション内の複数のリソースを、Azure リソース グループと呼ばれる 1 つのグループとして使用できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。
 
 ## <a name="cluster-types"></a> クラスターの種類と構成
 
@@ -241,7 +241,7 @@ HDInsight アプリケーションは、ユーザーが Linux ベースの HDIns
 
 HDInsight のアプリケーションのほとんどは、空のエッジ ノードにインストールされます。  空のエッジ ノードは、ヘッド ノードの場合と同じクライアント ツールがインストールされ、構成された Linux 仮想マシンです。 エッジ ノードは、クラスターへのアクセス、クライアント アプリケーションのテスト、およびクライアント アプリケーションのホストに使用できます。 詳細については、「 [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md)」(HDInsight で空のエッジ ノードを使用する) を参照してください。
 
-## <a name="advanced-settings-script-actions"></a>詳細設定:スクリプト操作
+## <a name="advanced-settings-script-actions"></a>詳細設定: スクリプト操作
 
 追加コンポーネントをインストールするか、作成中にスクリプトを使用してクラスターの構成をカスタマイズできます。 このようなスクリプトは、**スクリプト操作**を使用して実行します。これは Azure ポータル、HDInsight Windows PowerShell コマンドレット、HDInsight .NET SDK で使用できる構成オプションです。 詳しくは、「[Script Action を使って HDInsight をカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」をご覧ください。
 
@@ -272,7 +272,7 @@ Apache Mahout や Cascading などの一部のネイティブ Java コンポー�
 
 詳細については、「 [ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md) 」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure HDInsight のクラスター作成に失敗する問題のトラブルシューティング](./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md)
 * [HDInsight、Apache Hadoop エコシステム、Hadoop クラスターの概要](hadoop/apache-hadoop-introduction.md)

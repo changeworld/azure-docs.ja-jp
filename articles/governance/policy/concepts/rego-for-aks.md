@@ -3,12 +3,12 @@ title: Azure Kubernetes Service に対する Azure Policy について学習す�
 description: Azure Policy が Rego および Open Policy Agent を使用して、Azure Kubernetes Service 上でクラスターを管理する方法について説明します。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a4dd6bbc71c66c3ff37200ed57859b309909ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279393"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436387"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Azure Kubernetes Service に対する Azure Policy の理解
 
@@ -33,7 +33,7 @@ Azure Policy アドオンをインストールするか、いずれかのサー�
 
 - Azure portal:
 
-  1. **Microsoft.ContainerService** と **Microsoft.PolicyInsights** リソース プロバイダーに登録します。 手順については、「[リソース プロバイダーと種類](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)」を参照してください。
+  1. **Microsoft.ContainerService** と **Microsoft.PolicyInsights** リソース プロバイダーに登録します。 手順については、「[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。
 
   1. Azure portal 上で **[すべてのサービス]** をクリックし、 **[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。
 
@@ -80,7 +80,7 @@ Azure Policy アドオンをインストールするか、いずれかのサー�
 
 ## <a name="azure-policy-add-on"></a>Azure Policy アドオン
 
-Kubernetes 用の _Azure Policy アドオン_では、Azure Policy サービスを Gatekeeper アドミッション コントローラーに接続します。 _azure-policy_ 名前空間にインストールされるこのアドオンは、次の機能を実行します。
+Kubernetes 用の _Azure Policy アドオン_を使って、Azure Policy サービスを Gatekeeper アドミッション コントローラーに接続します。 _azure-policy_ 名前空間にインストールされるこのアドオンは、次の機能を実行します。
 
 - Azure Policy で AKS クラスターへの割り当てをチェックします
 - _rego_ ポリシー定義などのポリシー詳細をダウンロードし、**configmaps** としてキャッシュします
@@ -123,7 +123,7 @@ AKS クラスターにアドオンをインストールする前に、プレビ�
 
 前提条件が完了したら、管理する AKS クラスターに Azure Policy アドオンをインストールします。
 
-- Azure ポータル
+- Azure portal
 
   1. Azure portal で **[すべてのサービス]** をクリックし、 **[Kubernetes サービス]** を検索して選択することによって AKS サービスを起動します。
 
@@ -183,13 +183,13 @@ Azure portal を使用して AKS を管理するための組み込みのポリ�
 > [!IMPORTANT]
 > **Kubernetes サービス** カテゴリの組み込みポリシーは、AKS でのみ使用できます。
 
-## <a name="logging"></a>ログの記録
+## <a name="logging"></a>ログ記録
 
-### <a name="azure-policy-add-on-logs"></a>Azure Policy アドオン ログ
+### <a name="azure-policy-add-on-logs"></a>Azure Policy アドオンのログ
 
 Azure Policy アドオンは、Kubernetes のコント ローラー/コンテナーとして、AKS クラスター内にログを保持します。 このログは AKS クラスターの **[Insights]** ページに公開されます。 詳しくは、「[コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する](../../../azure-monitor/insights/container-insights-analyze.md)」をご覧ください。
 
-### <a name="gatekeeper-logs"></a>Gatekeeper ログ
+### <a name="gatekeeper-logs"></a>Gatekeeper のログ
 
 新規リソース要求についての Gatekeeper ログを有効にするには、「[Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー](../../../aks/view-master-logs.md)」の手順に従います。
 新規リソース要求に関して拒否されたイベントを表示するためのクエリの例を以下に示します。
@@ -206,7 +206,7 @@ Gatekeeper コンテナーからログを表示するには、「[Azure Kubernet
 
 AKS クラスターから Azure Policy アドオンを削除するには、Azure portal または Azure CLI のいずれかを使用します。
 
-- Azure ポータル
+- Azure portal
 
   1. Azure portal で **[すべてのサービス]** をクリックし、 **[Kubernetes サービス]** を検索して選択することによって AKS サービスを起動します。
 
@@ -228,9 +228,9 @@ AKS クラスターから Azure Policy アドオンを削除するには、Azure
   az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group MyResourceGroup
   ```
 
-## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Azure Policy アドオンによって収集された診断データ
+## <a name="diagnostic-data-collected-by-azure-policy-add-on"></a>Azure Policy アドオンによって収集される診断データ
 
-Kubernetes の Azure Policy アドオンを使うと、制限されたクラスター診断データが収集されます。 この診断データは、ソフトウェアとパフォーマンスに関連する重要な技術データです。 次のように使用されます。
+Kubernetes の Azure Policy アドオンを使うと、制限されたクラスター診断データが収集されます。 この診断データは、ソフトウェアとパフォーマンスに関連する重要な技術データです。 これは、次の方法で使用されます。
 
 - Azure Policy アドオンを最新の状態に維持する
 - Azure Policy アドオンをセキュリティで保護し、信頼性が高く、パフォーマンスに優れた状態に維持する
@@ -251,7 +251,7 @@ Kubernetes の Azure Policy アドオンを使うと、制限されたクラス�
 - ポリシー評価でのエージェントのインストール中に Azure Policy アドオンによって発生した例外/エラー
 - Azure Policy アドオンによってインストールされていない Gatekeeper ポリシーの数
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Policy のサンプル](../samples/index.md)を確認します。
 - [ポリシー定義の構造](definition-structure.md)を確認します。

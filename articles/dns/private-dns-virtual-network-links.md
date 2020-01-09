@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: c5675dea2676122d96276b7cdb90b4c3c5340c7a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963727"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646763"
 ---
 # <a name="what-is-a-virtual-network-link"></a>仮想ネットワーク リンクとは
 
@@ -33,7 +33,7 @@ Azure にプライベート DNS ゾーンを作成したら、どの仮想ネッ
 
 ## <a name="limits"></a>制限
 
-プライベート DNS ゾーンにリンクできる登録ネットワークと解決ネットワークの数を把握するには、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
+プライベート DNS ゾーンにリンクできる登録ネットワークと解決ネットワークの数を把握するには、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
 
 ## <a name="other-considerations"></a>その他の考慮事項
 
@@ -47,7 +47,7 @@ Azure にプライベート DNS ゾーンを作成したら、どの仮想ネッ
 
 * 仮想ネットワークを削除すると、さまざまなプライベート DNS ゾーンにある、それに関連付けられたすべての仮想ネットワーク リンクと自動登録された DNS レコードが自動的に削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure portal](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network) を使用して仮想ネットワークをプライベート DNS ゾーンにリンクする方法について確認します。
 

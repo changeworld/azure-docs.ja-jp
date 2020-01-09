@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932514"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450659"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Azure Monitor のカスタム ログ
 
@@ -75,7 +75,7 @@ Azure Monitor のカスタム ログ データ ソースでは、Windows コン�
 
 次の表は、異なるログ ファイルを指定する有効なパターンの例をまとめたものです。
 
-| 説明 | Path |
+| [説明] | Path |
 |:--- |:--- |
 | Windows エージェントの *C:\Logs* にあり、拡張子が .txt のすべてのファイル |C:\Logs\\\*.txt |
 | Windows エージェントの *C:\Logs* にあり、名前が log で始まり、拡張子が .txt のすべてのファイル |C:\Logs\log\*.txt |
@@ -110,7 +110,7 @@ Azure Portal で次のプロセスを使用して、これまでに定義した�
 1. ワークスペースの **[詳細設定]** 内の **[データ]** メニューから **[カスタム ログ]** を選択して、すべてのカスタム ログを一覧表示します。
 2. 削除するカスタム ログの横にある **[削除]** をクリックします。
 
-## <a name="data-collection"></a>データ収集
+## <a name="data-collection"></a>データ コレクション
 Azure Monitor は約 5 分おきに各カスタム ログから新しいエントリを収集します。  エージェントは、収集元の場所を各ログ ファイルに記録します。  エージェントが一定時間オフラインになった場合、Azure Monitor は中止した箇所からエントリを回収し、オンラインの間に作成されたエントリも回収されます。
 
 ログ エントリのコンテンツ全体は **RawData** という名前の 1 つのプロパティに書き込まれます。  インポートした各ログ エントリを解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
@@ -118,7 +118,7 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 ## <a name="custom-log-record-properties"></a>カスタム ログ レコードのプロパティ
 カスタム ログ レコードには、種類、ユーザーが指定するログ名、次の表にあるプロパティが与えられます。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | TimeGenerated |Azure Monitor がレコードを収集した日付と時刻。  ログが時間基準の区切り記号を使用する場合、これはエントリから収集された時間になります。 |
 | SourceSystem |レコードが収集されたエージェントの種類。 <br> OpsManager – Windows エージェント、直接接続または System Center Operations Manager <br> Linux – すべての Linux エージェント |
@@ -168,6 +168,6 @@ Azure Monitor は約 5 分おきに各カスタム ログから新しいエン�
 - カスタム スクリプトまたはその他の手法を使用し、Azure Monitor によって収集される [Windows イベント](data-sources-windows-events.md)または [Syslog](data-sources-syslog.md) にデータを書き込む。 
 - [HTTP Data Collector API](data-collector-api.md) を使用して Azure Monitor に直接データを送信する。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * インポートした各ログ エントリを解析して複数のプロパティに格納する方法については、[Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページを参照してください。
 * [ログ クエリ](../log-query/log-query-overview.md)について学習し、データ ソースとソリューションから収集されたデータを分析します。

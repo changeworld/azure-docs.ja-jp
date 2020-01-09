@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 69107052d84f28dfd08f59dec40ea66eca79ecaa
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1ebb1ee5056d3b1e6e85bea43473de5918ddba5c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035771"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645176"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 以下の手順では、Azure コマンド ライン インターフェイス (CLI) コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する方法を説明します。 この記事では、[Azure クラシック CLI](../../cli-install-nodejs.md) が必要です。 Azure CLI は、Azure Resource Manager リソースにのみ適用されるため、この移行には使用できません。
@@ -30,7 +30,7 @@ ms.locfileid: "74035771"
 > 
 
 <br>
-移行プロセス中に実行する必要のある手順を順番に示すフローチャートを以下に示します
+移行プロセス中に実行する必要のある手順を順番に示すフローチャートを以下に示します。
 
 ![Screenshot that shows the migration steps](../windows/media/migration-classic-resource-manager/migration-flow.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "74035771"
 azure config mode arm
 ```
 
-Azure Resource Manager での現在の vCPU 数は、次の CLI コマンドを使用して確認できます。 vCPU クォータの詳細については、「[制限と Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager)」を参照してください。
+Azure Resource Manager での現在の vCPU 数は、次の CLI コマンドを使用して確認できます。 vCPU クォータの詳細については、「[制限と Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager)」を参照してください。
 
 ```
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
@@ -180,7 +180,7 @@ CLI または Azure ポータルを使用して、準備したストレージ �
 
     azure storage account commit-migration <storageAccountName>
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

@@ -11,20 +11,20 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 896265311a67b74ccf9d0226a2969284ee491c9b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cd2b530375beb3e8fa1f79e004f4f1ac7fd4d0bb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443909"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 
-この記事では、Data Factory を使用して _Office 365 から Azure BLOB ストレージにデータを読み込む_方法を示します。 同様の手順に従って Azure Data Lake Gen1 または Gen2 にデータをコピーすることもできます。 Office 365 からデータをコピーすること全般については、[Office 365 コネクタに関する記事](connector-office-365.md)を参照してください。
+この記事では、Data Factory を使用して _Office 365 から Azure BLOB ストレージにデータを読み込む_ 方法を示します。 同様の手順に従って Azure Data Lake Gen1 または Gen2 にデータをコピーすることもできます。 Office 365 からデータをコピーすること全般については、[Office 365 コネクタに関する記事](connector-office-365.md)を参照してください。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[データ ファクトリ]** を選択します。 
+1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -32,11 +32,11 @@ ms.locfileid: "74931435"
       
    ![[新しいデータ ファクトリ] ページ](./media/load-office-365-data/new-azure-data-factory.png)
  
-    * **名前**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 *LoadFromOffice365Demo* は利用できません" というエラーを受信した場合は、データ ファクトリに別の名前を入力します。 たとえば、 _**yourname**_ **LoadFromOffice365Demo** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 *LoadFromOffice365Demo* は利用できません" というエラーを受信した場合は、データ ファクトリに別の名前を入力します。 たとえば、 _**yourname**_ **LoadFromOffice365Demo** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
-    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
     * **バージョン**: **[V2]** を選択します。
-    * **場所**:データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Store、Azure Storage、Azure SQL Database などがあります。
+    * **[場所]** :データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Store、Azure Storage、Azure SQL Database などがあります。
 
 3. **作成** を選択します。
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。
@@ -143,7 +143,7 @@ _データを抽出しているときの状態:_
 
 抽出先の Azure Blob Storage に移動して、Office 365 データがバイナリ形式で抽出されていることを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の資料に進んで、Azure SQL Data Warehouse のサポートを確認します。 
 

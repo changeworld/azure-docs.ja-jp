@@ -1,7 +1,6 @@
 ---
 title: Visual Studio 用の Azure Stream Analytics を使用してライブ データをテストする
 description: ライブ ストリーミング データを使用して Azure Stream Analytics ジョブをローカルにテストする方法について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: ea55d2f96a87503d43a69d288ce85dcff32a39ce
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cda02408f9e90cb9f19a4f7d806a34e5cff9c33c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426048"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Visual Studio の Azure Stream Analytics ツールを使用してライブ データをローカルにテストする (プレビュー)
 
@@ -24,7 +23,7 @@ Visual Studio の Azure Stream Analytics ツールを使用すると、Azure Eve
 
 次のローカル テスト オプションがサポートされています。
 
-|**Input (入力)**  |**Output**  |**ジョブの種類**  |
+|**入力**  |**出力**  |**ジョブの種類**  |
 |---------|---------|---------|
 |ローカル静的データ   |  ローカル静的データ   |   クラウド/エッジ |
 |ライブ入力データ   |  ローカル静的データ   |   クラウド |
@@ -63,7 +62,7 @@ Visual Studio の Azure Stream Analytics ツールを使用すると、Azure Eve
 
 * クラウド入力オプションのみが[日時ポリシー](stream-analytics-out-of-order-and-late-events.md)をサポートしており、ローカル入力オプションではサポートされていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Visual Studio の Azure Stream Analytics ツールを使用した Stream Analytics ジョブの作成](stream-analytics-quick-create-vs.md)
 * [Visual Studio の Azure Stream Analytics ツールのインストール](stream-analytics-tools-for-visual-studio-install.md)

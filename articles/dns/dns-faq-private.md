@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: de63799400a10afc1930cd373df0c8dd86320f78
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9bc0b32d3c94cabc1a772f02bf21f31e73f1306f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212004"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75642150"
 ---
 # <a name="azure-private-dns-faq"></a>Azure プライベート DNS に関する FAQ
 
@@ -30,11 +30,11 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 
 ## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>プライベート ゾーンでは、仮想ネットワークからインターネットに接続されている必要はありますか?
 
-No. プライベート ゾーンは、仮想ネットワークと共に動作します。 それらを使用して、仮想ネットワーク内またはそれらの間で、仮想マシンやその他のリソース用のドメインを管理します。 名前解決にインターネットへの接続は必要ありません。
+いいえ。 プライベート ゾーンは、仮想ネットワークと共に動作します。 それらを使用して、仮想ネットワーク内またはそれらの間で、仮想マシンやその他のリソース用のドメインを管理します。 名前解決にインターネットへの接続は必要ありません。
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>複数の仮想ネットワークの解決に同じプライベート ゾーンを使用できますか?
 
-はい。 プライベート DNS ゾーンは、数千の仮想ネットワークにリンクすることができます。 詳しくは、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
+はい。 プライベート DNS ゾーンは、数千の仮想ネットワークにリンクすることができます。 詳しくは、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>別のサブスクリプションに属している仮想ネットワークをプライベート ゾーンにリンクできますか。
 
@@ -58,7 +58,7 @@ No. プライベート ゾーンは、仮想ネットワークと共に動作し
 
 ## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>プライベート ゾーンにリンクされている、リンクされた仮想ネットワークを削除するとどうなりますか。 プライベート ゾーンを手動で更新して、リンクされた仮想ネットワークとしての仮想ネットワークをそのゾーンからリンク解除する必要がありますか。
 
-No. プライベート ゾーンとのリンクを解除せずに、リンクされた仮想ネットワークを削除しても、削除操作は成功し、DNS ゾーンへのリンクは自動的に消去されます。
+いいえ。 プライベート ゾーンとのリンクを解除せずに、リンクされた仮想ネットワークを削除しても、削除操作は成功し、DNS ゾーンへのリンクは自動的に消去されます。
 
 ## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>既定の FQDN (internal.cloudapp.net) を使用している DNS 解決は、プライベート ゾーン (例: private.contoso.com) が仮想ネットワークにリンクされている場合でも機能しますか。
 
@@ -66,12 +66,12 @@ No. プライベート ゾーンとのリンクを解除せずに、リンクさ
 
 ## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>リンクされた仮想ネットワーク内の仮想マシンの DNS サフィックスは、そのプライベート ゾーンの DNS サフィックスに変更されますか。
 
-No. リンクされた仮想ネットワーク内の仮想マシン上の DNS サフィックスは、Azure 提供の既定のサフィックス ("*.internal.cloudapp.net") のままです。 仮想マシン上のこの DNS サフィックスをプライベート ゾーンの DNS サフィックスに手動で変更できます。
+いいえ。 リンクされた仮想ネットワーク内の仮想マシン上の DNS サフィックスは、Azure 提供の既定のサフィックス ("*.internal.cloudapp.net") のままです。 仮想マシン上のこの DNS サフィックスをプライベート ゾーンの DNS サフィックスに手動で変更できます。
 このサフィックスを変更する方法のガイダンスについては、「[動的 DNS を使用して独自の DNS サーバーでホスト名を登録する](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)」を参照してください。
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Azure DNS プライベート ゾーンの使用制限とは何ですか。
 
-Azure DNS プライベート ゾーンの使用制限の詳細については、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
+Azure DNS プライベート ゾーンの使用制限の詳細については、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>既存のプライベート DNS ゾーンが新しいポータル エクスペリエンスに表示されないのはなぜですか。
 
@@ -81,6 +81,6 @@ Azure DNS プライベート ゾーンの使用制限の詳細については、
 
 できるだけ早く新しいリソース モデルに移行することを強くお勧めします。 従来のリソース モデルは今後、サポートはされますが、追加機能開発のベースになることはありません。 新しいリソース モデルを優先するために、将来的には廃止される予定です。 既存のプライベート DNS ゾーンを新しいリソース モデルに移行する方法については、[Azure DNS プライベート ゾーンの移行ガイド](private-dns-migration-guide.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure プライベート DNS の詳細](private-dns-overview.md)

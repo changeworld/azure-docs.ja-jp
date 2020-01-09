@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 4c02632c44d095a6d1d1c583a1ab201acad63bf9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229010"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435251"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 
-[R Tools for Visual Studio](https://www.visualstudio.com/vs/rtvs/) (RTVS) は、[Visual Studio 2017](https://www.visualstudio.com/downloads/) と [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 以降の両方の Community Edition (無料)、Professional Edition、Enterprise Edition 向けの無料のオープンソース拡張機能です。 RTVS は[Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019) では利用できません。
+[R Tools for Visual Studio](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) は、[Visual Studio 2017](https://www.visualstudio.com/downloads/) と [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 以降の両方の Community Edition (無料)、Professional Edition、Enterprise Edition 向けの無料のオープンソース拡張機能です。 RTVS は[Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019) では利用できません。
 
 RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、IntelliSense (コード補完)、ggplot2 や ggviz などの R ライブラリを介した[プロットの視覚化](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data)、[R コードのデバッグ](https://docs.microsoft.com/visualstudio/rtvs/debugging)などの多彩なツールを提供することにより、R ワークフローを強化します。
 
-## <a name="set-up-your-environment"></a>環境をセットアップする
+## <a name="set-up-your-environment"></a>環境の設定方法
 
 1. [R Tools for Visual Studio](/visualstudio/rtvs/installing-r-tools-for-visual-studio) をインストールします。
 
@@ -131,7 +131,7 @@ PuTTY が搭載された Windows コンピューターから Microsoft ML Server
     rxStopEngine(mySparkCluster)
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
 * 「[HDInsight で ScaleR と SparkR を組み合わせる](../hdinsight-hadoop-r-scaler-sparkr.md)」では、航空会社のフライトの遅延を予測する例が示されています。

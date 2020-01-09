@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 7f5fdd625eb49bfcac0bd58bca7a8415ac877517
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 643d4b918dd8677e8ed02a7def383efa77e71fce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036006"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430286"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Linux VM に MongoDB をインストールして構成する方法
 
@@ -210,12 +210,12 @@ az group deployment show \
     --output tsv
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事の例では、VM からローカルに MongoDB インスタンスに接続しました。 別の VM またはネットワークから MongoDB インスタンスに接続する場合は、適切な[ネットワーク セキュリティ グループ規則を作成する](nsg-quickstart.md)必要があります。
 
 これらの例では、開発用のコア MongoDB 環境をデプロイします。 環境に必要なセキュリティ構成オプションを適用します。 詳細については、[MongoDB のセキュリティ ドキュメント](https://docs.mongodb.com/manual/security/)を参照してください。
 
-テンプレートを使った作成の詳細については、「[Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)」をご覧ください。
+テンプレートを使った作成の詳細については、「[Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)」をご覧ください。
 
 Azure Resource Manager テンプレートは、カスタム スクリプト拡張機能を使って、スクリプトをダウンロードして VM で実行します。 詳しくは、「[Azure カスタム スクリプト拡張機能と Linux 仮想マシンの使用](extensions-customscript.md)」をご覧ください。
 

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 25a088686c739c53feadd6354baf75f3147bdc33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a48cef2210721bf7116b1c4ad1169779288f47d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60561491"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644836"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Azure DevTest Labs インフラストラクチャをスケールアップする
 エンタープライズ規模で DevTest Labs を実装する前には、いくつかの重要な意思決定ポイントがあります。 これらの意思決定ポイントを高いレベルで理解することは、将来の設計上の決定を抱えている組織に役立ちます。 ただし、これらのポイントが、組織の概念実証の開始を妨げないようにする必要があります。 初期のスケール アップ計画には、重要な領域が 3 つあります。
@@ -53,7 +53,7 @@ ms.locfileid: "60561491"
 ### <a name="subscription-per-user"></a>ユーザーごとのサブスクリプション
 ユーザーごとの個別のサブスクリプションでは、選択肢の範囲が限定されなくなります。 多くのサブスクリプションを利用する場合の利点は以下のとおりです。
 
-- **Azure でのスケーリングのクォータ**が採用の妨げにならなくなります。 たとえば、この記事の作成時点では、Azure においてサブスクリプションあたり 200 のストレージ アカウントを使用できます。 Azure では、ほとんどのサービスについて、運用上のクォータがあります (多くはカスタマイズ可能ですが一部はできません)。 ユーザーごとのサブスクリプションのこのモデルでは、ほとんどのクォータに関して、上限に達する可能性はごくわずかです。 Azure でのスケーリングのクォータに関する詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
+- **Azure でのスケーリングのクォータ**が採用の妨げにならなくなります。 たとえば、この記事の作成時点では、Azure においてサブスクリプションあたり 200 のストレージ アカウントを使用できます。 Azure では、ほとんどのサービスについて、運用上のクォータがあります (多くはカスタマイズ可能ですが一部はできません)。 ユーザーごとのサブスクリプションのこのモデルでは、ほとんどのクォータに関して、上限に達する可能性はごくわずかです。 Azure でのスケーリングのクォータに関する詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
 - グループまたは個人開発者への**チャージ バック**が大幅に容易になるので、組織は現在のモデルを使用してコストを計上できます。
 - DevTest Labs 環境の**所有権とアクセス許可**は単純です。 開発者にはサブスクリプション レベルのアクセスを与え、ネットワーク構成、ラボのポリシー、VM の管理を含むすべてのことを管理させます。
 
@@ -66,5 +66,5 @@ DevTest Labs での概念実証には、責任が定義されたプライマリ 
 - **DevTest Labs 所有者** – DevTest Labs 所有者は、ラボに対する完全な管理者アクセスを持っています。 このユーザーは、ユーザーの追加と削除、コスト設定の管理、一般的なラボの設定、およびその他の VM/成果物ベースのタスクを管理します。 ラボ所有者は、DevTest Labs ユーザーのすべての権利も持っています。
 - **DevTest Labs ユーザー** – DevTest Labs ユーザーは、ラボ内で仮想マシンを作成して使用することができます。 これらのユーザーは、自分が作成する VM に対して最小限の管理機能をいくつか持ってします (自分の VM の開始/停止/削除/構成)。 ユーザーは、他のユーザーの VM は管理できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このシリーズの次の記事をご覧ください。[Azure DevTest Labs の実装を調整する](devtest-lab-guidance-orchestrate-implementation.md)

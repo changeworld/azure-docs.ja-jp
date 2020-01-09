@@ -2,19 +2,15 @@
 title: アマゾン ウェブ サービスへの VM のデプロイの自動化
 description: この記事は、Azure Automation を使用して、Amazon Web Service VM の作成を自動化する方法を示します
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d2a58d3e79301f277143d8c4b6e810a377a211b9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b149a21ef60b22c2e549c91007265ce99babdbe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849634"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420920"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation シナリオ - AWS 仮想マシンのプロビジョニング
 この記事では、Azure Automation を利用して仮想マシンを Amazon Web Service (AWS) サブスクリプションにプロビジョニングし、その VM に特別な名前を付ける方法 (AWS では "タグ付け" と呼びます) について説明します。
@@ -87,7 +83,7 @@ AWS PowerShell モジュールのデプロイが終わったら、PowerShell ス
 9. **[発行]** をクリックして Runbook を発行し、確認を要求されたら **[はい]** をクリックします。
 
 ### <a name="testing-the-aws-vm-runbook"></a>AWS VM Runbook のテスト
-Runbook のテストに進む前に、確認する必要がある事柄がいくつかあります。 具体的には次の処理が行われます。  
+Runbook のテストに進む前に、確認する必要がある事柄がいくつかあります。 具体的な内容は次のとおりです。  
 
 * AWS に対して認証される **AWScred** という資産を作成したこと、または使用中の資格情報資産の名前を参照するようにスクリプトを更新したこと。    
 * AWS PowerShell モジュールを Azure Automation にインポートしたこと。  
@@ -100,9 +96,9 @@ Runbook のテストに進む前に、確認する必要がある事柄がいく
 4. Runbook ジョブ ページで **[すべてのログ]** タイルを選択することで、ジョブの進行状況と出力**ストリーム**を確認できます。<br><br> ![Stream output](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
 5. VM がプロビジョニングされたことを確認するために AWS Management Console にログインします (まだログインしていない場合)。<br><br> ![AWS console deployed VM](./media/automation-scenario-aws-deployment/aws-instances-status.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
-* PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
+* PowerShell ワークフロー Runbook の使用を開始するには、「[最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)」を参照してください。
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
 * PowerShell スクリプトのサポート機能の詳細については、「 [Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
 

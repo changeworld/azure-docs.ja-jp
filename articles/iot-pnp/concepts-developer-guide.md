@@ -3,16 +3,16 @@ title: 開発者ガイド - IoT プラグ アンド プレイ プレビュー | 
 description: IoT プラグ アンド プレイ開発者向けのデバイス モデリングの説明
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/05/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6d8e0e9e675b88c69b74cdad261280f5dcaf7161
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 21001a22be6297595658ff347e9f8a7b04bb6faf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581622"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531396"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>IoT プラグ アンド プレイ プレビュー モデリング開発者ガイド
 
@@ -67,9 +67,9 @@ implements セクションのインターフェイス一覧の各エントリに
 
 DTDL では、インターフェイスを使用してデバイスの機能を記述します。 インターフェイスは、"_プロパティ_"、"_テレメトリ_"、および "_コマンド_" をデバイスの実装の一部として記述します。
 
-- `Properties` プロパティは、デバイスの状態を表すデータ フィールドです。 プロパティは、冷却ポンプのオンオフ状態など、デバイスの持続的な状態を表すために使用します。 また、プロパティはデバイスのファームウェア バージョンなど、デバイスの基本的なプロパティも表すことができます。 プロパティは、読み取り専用または書き込み可能として宣言できます。
-- `Telemetry` テレメトリ フィールドは、センサーの測定値を表します。 デバイスがセンサーの測定値を取得するたびに、センサー データを含むテレメトリ イベントを送信する必要があります。
-- `Commands` コマンドは、デバイスのユーザーがデバイスで実行できるメソッドを表します。 たとえば、リセット コマンドや、ファンのオンとオフを切り替えるコマンドなどです。
+- [https://login.microsoftonline.com/consumers/](`Properties`) プロパティは、デバイスの状態を表すデータ フィールドです。 プロパティは、冷却ポンプのオンオフ状態など、デバイスの持続的な状態を表すために使用します。 また、プロパティはデバイスのファームウェア バージョンなど、デバイスの基本的なプロパティも表すことができます。 プロパティは、読み取り専用または書き込み可能として宣言できます。
+- [https://login.microsoftonline.com/consumers/](`Telemetry`) テレメトリ フィールドは、センサーの測定値を表します。 デバイスがセンサーの測定値を取得するたびに、センサー データを含むテレメトリ イベントを送信する必要があります。
+- [https://login.microsoftonline.com/consumers/](`Commands`) コマンドは、デバイスのユーザーがデバイスで実行できるメソッドを表します。 たとえば、リセット コマンドや、ファンのオンとオフを切り替えるコマンドなどです。
 
 次の例は、あるサーモスタット デバイスのインターフェイスを示します。
 
@@ -103,7 +103,7 @@ DTDL では、インターフェイスを使用してデバイスの機能を記
 
 表示名や説明などの他のオプション フィールドを使用すると、インターフェイスや機能に詳細を追加できます。
 
-### <a name="properties"></a>properties
+### <a name="properties"></a>Properties
 
 既定では、プロパティは読み取り専用です。 読み取り専用のプロパティは、デバイスがプロパティ値の更新を IoT ハブに報告することを意味します。 IoT ハブで読み取り専用のプロパティの値を設定することはできません。
 
@@ -121,7 +121,7 @@ DTDL では、インターフェイスを使用してデバイスの機能を記
 
 [IoT Hub のカスタム エンドポイントとルーティング規則](../iot-hub/iot-hub-devguide-messages-d2c.md)を使用して、BLOB ストレージや他のイベント ハブなどの他の送信先にテレメトリを送信できます。 ルーティング規則では、メッセージ プロパティを使用してメッセージを選択します。
 
-### <a name="commands"></a>command
+### <a name="commands"></a>コマンド
 
 コマンドは、同期または非同期のいずれかです。 同期コマンドは、既定で 30 秒以内に実行する必要があり、コマンドが到着したときにデバイスを接続する必要があります。 デバイスが時間内に応答しない場合、またはデバイスが接続されていない場合、コマンドは失敗します。
 
@@ -226,7 +226,7 @@ POST /digitalTwins/t-123/interfaces/thermostat/commands/restart
 /digitalTwins/{device-id}/interfaces/{interface-name}/commands/{command-name}
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここまでで、デバイスのモデリングについて学習しました。その他のリソースを次に示します。
 

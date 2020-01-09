@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: kumud
-ms.openlocfilehash: 3b00bbb5903156da625b7caaca9b1a2cff212421
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b99e5e6809a909184d775c70b56c249c11734cb9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699358"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646610"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -158,7 +158,7 @@ az vm create \
 - 1 つの Premium マネージド ディスク (既定)。ただし、作成するディスクの種類には別のオプションもあります。 詳細については、[Azure CLI を使用した Linux VM の作成](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をお読みください。
 - 1 つのサブネットと 2 つのパブリック IP アドレスを持つ仮想ネットワーク。 代わりに、*既存の*仮想ネットワーク、サブネット、NIC、またはパブリック IP アドレス リソースを使用することもできます。 リソースを別途作成するのではなく、既存のネットワーク リソースを使用する場合は、「`az vm create -h`」と入力します。
 
-パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
+パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
 
 VM の作成後、「`az network nic show --name MyNic1 --resource-group myResourceGroup`」コマンドを入力して NIC の構成を確認します。 NIC に関連付けられている IP 構成のリストを表示するには、「`az network nic ip-config list --nic-name MyNic1 --resource-group myResourceGroup --output table`」と入力します。
 
@@ -190,7 +190,7 @@ VM の作成後、「`az network nic show --name MyNic1 --resource-group myResou
     
     パブリック IP アドレスを追加するには、新しい IP 構成または既存の IP 構成にパブリック IP アドレスを関連付けます。 必要に応じて、以下のいずれかのセクションの手順を実行します。
 
-    パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
+    パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
 
     - **リソースを新しい IP 構成に関連付ける**
     

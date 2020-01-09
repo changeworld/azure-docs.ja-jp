@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics で Machine Learning のエンドポイントを使用する
 description: この記事では、Azure Stream Analytics で Machine Learning のユーザー定義関数を使う方法について説明します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 1adb7d58246ea37fd8322cb6fc6ffd53c5f19efb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 239955025f21d8679cbcf0bbfe68f9070f0217c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467819"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426194"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Stream Analytics (プレビュー) への Azure Machine Learning Studio (クラシック) の統合
 Stream Analytics では、Azure Machine Learning Studio (クラシック) のエンドポイントを呼び出す、ユーザー定義の関数をサポートしています。 この機能でサポートされている REST API の詳細については、「 [Stream Analytics の REST API ライブラリ](https://msdn.microsoft.com/library/azure/dn835031.aspx)」を参照してください。 この資料では、Stream Analytics にこの機能を正しく実装するために必要な補足的な情報を示します。 チュートリアルも用意しており、 [ここ](stream-analytics-machine-learning-integration-tutorial.md)から確認できます。
@@ -188,10 +187,10 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 ```
 
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)

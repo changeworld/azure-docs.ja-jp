@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 1fd59bd18947d2c7aaba787ff7ce286e76f4f890
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150042"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644955"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -24,7 +24,7 @@ Azure HDInsight クラスターは、Azure クラウドで実行される使い�
 このドキュメントの手順の多くでは次のユーティリティを使用するので、これらがシステムにインストールされている必要があります。
 
 * [cURL](https://curl.haxx.se/) - Web ベースのサービスとの通信に使用します。
-* **jq**。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/) をご覧ください。
+* **jq**。コマンド ライン JSON プロセッサです。  [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)に関するページを参照してください。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) - Azure サービスをリモート管理するために使用します。
 * **SSH クライアント**。 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -52,7 +52,7 @@ HDInsight は、[ドメイン参加済み](./domain-joined/hdinsight-security-ov
 
 ## <a name="remote-access-to-services"></a>サービスへのリモート アクセス
 
-* **Ambari (web)**  - https://CLUSTERNAME.azurehdinsight.net
+* **Ambari (web)**  - `https://CLUSTERNAME.azurehdinsight.net`
 
     クラスター管理者のユーザー名とパスワードを使用して認証した後、Ambari にサインインします。
 
@@ -63,14 +63,14 @@ HDInsight は、[ドメイン参加済み](./domain-joined/hdinsight-security-ov
     >
     > Ambari Web UI の全機能を使用するには、SSH トンネルを使用して、クラスター ヘッド ノードに対する Web トラフィックがプロキシ経由になるようにします。 「[SSH トンネリングを使用して Apache Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)」を参照してください
 
-* **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambari (REST)**  - `https://CLUSTERNAME.azurehdinsight.net/ambari`
 
     > [!NOTE]  
     > クラスター管理者のユーザー名とパスワードを使用して認証します。
     >
     > 認証はプレーンテキストです。接続をセキュリティで確実に保護するために、常に HTTPS を使用してください。
 
-* **WebHCat (Templeton)**  - https://CLUSTERNAME.azurehdinsight.net/templeton
+* **WebHCat (Templeton)**  - `https://CLUSTERNAME.azurehdinsight.net/templeton`
 
     > [!NOTE]  
     > クラスター管理者のユーザー名とパスワードを使用して認証します。
@@ -190,7 +190,7 @@ __Azure Storage__ を使用している場合は、次のリンクを参照し�
 * さまざまな SDK:
 
     * [Java](https://github.com/Azure/azure-sdk-for-java)
-    * [Node.JS](https://github.com/Azure/azure-sdk-for-node)
+    * [Node.js](https://github.com/Azure/azure-sdk-for-node)
     * [PHP](https://github.com/Azure/azure-sdk-for-php)
     * [Python](https://github.com/Azure/azure-sdk-for-python)
     * [Ruby](https://github.com/Azure/azure-sdk-for-ruby)
@@ -280,7 +280,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 >
 > カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [https://stackoverflow.com](https://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[https://apache.org](https://apache.org) に[Hadoop](https://hadoop.apache.org/)、[Spark](https://spark.apache.org/) などのプロジェクト サイトもあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Ambari REST API を使用した HDInsight クラスターの管理](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)

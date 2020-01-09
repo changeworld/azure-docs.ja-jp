@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 5ff3ade800b2a3474a68a34dc77d0c9b009e8822
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 05696ae2fed31c267aa37013fac32db0916e24bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923136"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439314"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>データのコピー ツールを使用し LastModifiedDate に基づいて新しいファイルおよび変更されたファイルを増分コピーする
 
@@ -38,7 +38,7 @@ ms.locfileid: "74923136"
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-* **Azure ストレージ アカウント**:Blob Storage を "_ソース_" および "_シンク_" データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」の手順をご覧ください。
+* **Azure ストレージ アカウント**:Blob ストレージを "_ソース_" および "_シンク_" データ ストアとして使用します。 Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」の手順をご覧ください。
 
 ### <a name="create-two-containers-in-blob-storage"></a>Blob ストレージに 2 つのコンテナーを作成する
 
@@ -68,7 +68,7 @@ ms.locfileid: "74923136"
 
     * **[新規作成]** を選択し、リソース グループの名前を入力します。 
          
-    リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
+    リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。
 
 5. **[バージョン]** で、 **[V2]** を選択します。
 6. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他の場所やリージョンに存在していてもかまいません。
@@ -136,7 +136,7 @@ ms.locfileid: "74923136"
     
      ![[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
      
-5. **[Destination data store]\(コピー先データ ストア\)** ページで **[AzureBlobStorage]** を選択します。 これは、コピー元データ ストアと同じストレージ アカウントです。 次に、 **[次へ]** を選択します。
+5. **[Destination data store]\(コピー先データ ストア\)** ページで **[AzureBlobStorage]** を選択します。 これは、コピー元データ ストアと同じストレージ アカウントです。 **[次へ]** を選択します。
 
     ![[Destination data store]\(コピー先データ ストア\) ページ](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/destination-data-store-page-select-linkedservice.png)
     
@@ -201,7 +201,7 @@ ms.locfileid: "74923136"
     ![Azure Storage Explorer を使用してファイルをスキャンします](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
 
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のチュートリアルに進み、Azure 上の Apache Spark クラスターを使ってデータを変換する方法を学習します。
 
 > [!div class="nextstepaction"]

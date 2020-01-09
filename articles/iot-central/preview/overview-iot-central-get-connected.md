@@ -3,17 +3,17 @@ title: Azure IoT Central のデバイス接続機能 | Microsoft Docs
 description: この記事では、Azure IoT Central のデバイス接続機能に関連する主な概念を紹介します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/09/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: ef0e4c9070733266349a37e863c48901eae90c16
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 412a678465589da87c713a55a7b67193b254bf96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894095"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434929"
 ---
 # <a name="get-connected-to-azure-iot-central-preview-features"></a>Azure IoT Central に接続する (プレビュー機能)
 
@@ -45,7 +45,7 @@ DPS を使用すると、次のことが可能になります。
 このアプローチは、IoT Central を使用した実験やデバイスのテストを行う場合に便利です。 Device Provisioning Service (DPS) を使ってデバイスを IoT Central アプリケーションに接続するには、IoT Central アプリケーションからのデバイス接続情報を使用できます。 次の言語のサンプル DPS デバイス クライアント コードがあります。
 
 - [C\#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device)
-- [Node.JS](https://github.com/Azure-Samples/azure-iot-samples-node/tree/master/provisioning/Samples/device)
+- [Node.js](https://github.com/Azure-Samples/azure-iot-samples-node/tree/master/provisioning/Samples/device)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>SAS を使用して大量のデバイスを接続する
 
@@ -147,7 +147,7 @@ IoT Central によって有効になる主要なシナリオは、最初に登�
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>デバイス接続に基づく個別加入
 
-お客様が接続するデバイスがデバイスごとの認証資格情報を持つ場合、個別加入は省略可能です。 個別加入は、接続できる単一のデバイス用のエントリです。 個々の登録では、構成証明メカニズムとして X.509 リーフ証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 個別加入のデバイス ID (登録 ID とも言う) には、英数字、小文字と、必要に応じてハイフンを含めます。個別加入の詳細については、[こちら](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)をご覧ください。
+お客様が接続するデバイスがデバイスごとの認証資格情報を持つ場合、個別加入は省略可能です。 個別加入は、接続できる単一のデバイス用のエントリです。 個々の登録では、構成証明メカニズムとして X.509 リーフ証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 個別加入のデバイス ID (登録 ID とも言う) には、英数字、小文字と、必要に応じてハイフンを含めます。個別加入の詳細については、[こちら](https://docs.microsoft.com/azure/iot-dps/concepts-service#individual-enrollment)を参照してください。
 
 > [!NOTE]
 > デバイスに対して個別加入を作成すると、お客様のアプリで、既定のグループ加入ベースの構成証明 (SAS、X509) よりもこちらが優先されます。
@@ -235,11 +235,11 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 
 デバイスでサポートされているプロトコルのいずれも使用できない場合は、Azure IoT Edge を使用して、プロトコルを変換します。 IoT Edge は、Azure IoT Central アプリケーションの処理負荷を軽減するための他のエッジ上のインテリジェンス シナリオをサポートします。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 デバイスと、Azure IoT Central 間で交換されるすべてのデータは暗号化されます。 IoT Hub は IoT Hub エンドポイントに接続するデバイスからのすべての要求を認証します。 有線上で資格情報を交換することを避けるため、デバイスでは、認証に署名入りトークンが使用されます。 詳細については、「[IoT Hub へのアクセスの制御](../../iot-hub/iot-hub-devguide-security.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、Azure IoT Central のデバイス接続機能について説明しました。推奨される次の手順は次のとおりです。
 

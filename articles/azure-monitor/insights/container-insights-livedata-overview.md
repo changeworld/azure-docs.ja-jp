@@ -1,24 +1,14 @@
 ---
 title: コンテナーに対する Azure Monitor を使用してライブ データ (プレビュー) を表示する | Microsoft Docs
 description: この記事では、コンテナー用 Azure Monitor による kubectl を使用せずに、Kubernetes ログ、イベント、およびポッド メトリックをリアルタイム ビューで表示する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 9c497c73d42e1fb8851c5293010098d843297250
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404754"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes ログ、イベント、ポッド メトリックをリアルタイムで表示する方法
 
@@ -27,7 +17,7 @@ ms.locfileid: "73510772"
 この記事では、この機能の使用方法について詳しく説明します。 
 
 >[!NOTE]
->[プライベート クラスター](https://azure.microsoft.com/updates/aks-private-cluster/)として有効になっている AKS クラスターは、この機能ではサポートされていません。 この機能は、ブラウザーからプロキシ サーバーを介して Kubernetes API に直接アクセスすることに依存しています。 このプロキシから Kubernetes API をブロックするようにネットワーク セキュリティを有効にすると、このトラフィックはブロックされます。 
+>[プライベート クラスター](https://azure.microsoft.com/updates/aks-private-cluster/)として有効にされた AKS クラスターは、この機能でサポートされていません。 この機能では、ブラウザーからプロキシ サーバーを介した Kubernetes API への直接アクセスを利用します。 このプロキシから Kubernetes API をブロックするようにネットワーク セキュリティを有効にすると、このトラフィックはブロックされます。 
 
 >[!NOTE]
 >この機能は、Azure 中国を含む、すべての Azure リージョンで利用できます。 現在、Azure 米国政府機関では利用できません。
@@ -36,7 +26,7 @@ ms.locfileid: "73510772"
 
 ## <a name="live-data-preview-functionality-overview"></a>ライブ データ (プレビュー) 機能の概要
 
-### <a name="search"></a>Search
+### <a name="search"></a>検索
 
 ![ライブ データ コンソール ウィンドウのフィルターの例](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
@@ -121,8 +111,8 @@ ms.locfileid: "73510772"
 
 ![ポッド メトリックの表示の例](./media/container-insights-livedata-overview/pod-properties-live-metrics.png)  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Monitor を使用して、AKS クラスターの他の側面を監視する方法を引き続き学習するには、[Azure Kubernetes Service の正常性の表示](container-insights-analyze.md)に関するページをご覧ください。
 
-- [ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を参照して、定義済みのクエリと例を確認し、アラートや視覚化を作成したり、クラスターの詳細な分析を実行したりします。
+- アラートの作成、視覚化の作成、またはクラスターの詳細な分析を行うために、定義済みのクエリや例を確認するには、[ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を参照してください。

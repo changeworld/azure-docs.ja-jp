@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: eefa17b699a0599d2d3323409cafddd1d0984c61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45908557ed40eb249bbac08cfca83bca7ff06ad1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61440320"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429132"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Azure Resource Manager テンプレートを使用した IoT ハブの作成 (PowerShell)
 
@@ -47,9 +47,9 @@ New-AzResourceGroupDeployment `
     -iotHubName $iotHubName
 ```
 
-PowerShell スクリプトを見るとわかるように、使うテンプレートは Azure クイック スタート テンプレートからのものです。 独自のものを使うには、最初に、テンプレート ファイルを Cloud Shell にアップロードしてから、`-TemplateFile` スイッチを使ってファイル名を指定する必要があります。  例については、「[テンプレートのデプロイ](../azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)」をご覧ください。
+PowerShell スクリプトを見るとわかるように、使うテンプレートは Azure クイック スタート テンプレートからのものです。 独自のものを使うには、最初に、テンプレート ファイルを Cloud Shell にアップロードしてから、`-TemplateFile` スイッチを使ってファイル名を指定する必要があります。  例については、「[テンプレートのデプロイ](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、Azure Resource Manager テンプレートを使って IoT ハブをデプロイしました。次の手順に進んでください。
 
@@ -72,7 +72,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-powershell-arm]: ../azure-resource-manager/manage-resources-powershell.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md

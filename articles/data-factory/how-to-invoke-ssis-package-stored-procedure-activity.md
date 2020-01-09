@@ -13,19 +13,19 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
-ms.openlocfilehash: f45c317e64f63fe6192f4e32507876841f4322de
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 063728c03c689c2eafec889bdee8276772ae685a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932110"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444029"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを実行する
 この記事では、ストアド プロシージャ アクティビティを使用して、SSIS パッケージを Azure Data Factory パイプラインで実行する方法を説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="azure-sql-database"></a>Azure SQL Database 
+### <a name="azure-sql-database"></a>Azure SQL データベース 
 この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL Database Managed Instance を使うこともできます。
 
 ## <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを作成します
@@ -55,7 +55,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
    - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
    - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
-     リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+     リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
 4. **バージョン**として **[V2]** を選択します。
 5. データ ファクトリの **場所** を選択します。 Data Factory でサポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他の場所に配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
@@ -154,7 +154,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 ### <a name="create-a-data-factory"></a>Data Factory の作成
 Azure-SSIS IR と同じデータ ファクトリを使用することも、別のデータ ファクトリを作成することもできます。 次の手順では、データ ファクトリを作成する方法を説明します。 このデータ ファクトリにストアド プロシージャ アクティビティを含むパイプラインを作成します。 ストアド プロシージャ アクティビティが SSISDB データベース内でストアド プロシージャを実行して、SSIS パッケージを実行します。 
 
-1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
+1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -190,7 +190,7 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。
-* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください (「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
 リンクされたサービスを作成して、SSIS カタログをホストする Azure SQL データベースをデータ ファクトリにリンクします。 このリンクされたサービスの情報をデータ ファクトリが使用して、SSISDB データベースに接続し、ストアド プロシージャを実行して SSIS パッケージを実行します。 
@@ -206,10 +206,7 @@ Azure-SSIS IR と同じデータ ファクトリを使用することも、別�
         "properties": {
             "type": "AzureSqlDatabase",
             "typeProperties": {
-                "connectionString": {
-                    "type": "SecureString",
-                    "value": "Server=tcp:<servername>.database.windows.net,1433;Database=SSISDB;User ID=<username>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-                }
+                "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=SSISDB;User ID=<username>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         }
     }
@@ -360,5 +357,5 @@ while ($True) {
     ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Portal を使用してパイプラインを監視することもできます。 具体的な手順については、「[パイプラインの監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)」を参照してください。

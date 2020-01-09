@@ -3,19 +3,15 @@ title: Azure Automation におけるロールベースのアクセス制御
 description: Azure のリソースに対するアクセスは、ロールベースのアクセス制御 (RBAC) で管理できます。 この記事では、Azure Automation における RBAC の設定方法について説明します。
 keywords: Automation RBAC, ロールベースのアクセス制御, Azure RBAC
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 0ee524768f46de965b1755f2cfffdf9e2034bec8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 122e1f69e952acc00aba3cad2d75cb87b8fd08ee
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850790"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421589"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 
@@ -27,7 +23,7 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
 | **ロール** | **説明** |
 |:--- |:--- |
-| Owner |Automation アカウント内のすべてのリソースおよびアクションへのアクセスは、所有者ロールによって許可されます。Automation アカウントを管理するためのアクセス権を他のユーザー、グループ、アプリケーションに付与することもできます。 |
+| 所有者 |Automation アカウント内のすべてのリソースおよびアクションへのアクセスは、所有者ロールによって許可されます。Automation アカウントを管理するためのアクセス権を他のユーザー、グループ、アプリケーションに付与することもできます。 |
 | Contributor |Automation アカウントに対する他のユーザーのアクセス許可に変更を加えることを除くすべての作業は共同作成者ロールで行うことができます。 |
 | Reader |閲覧者ロールでは、Automation アカウントのすべてのリソースを表示できますが、それらに変更を加えることはできません。 |
 | Automation Operator |Automation オペレーター ロールでは、Runbook の名前とプロパティの表示、Automation アカウント内のすべての Runbook のジョブの作成と管理を実行できます。 Automation アカウントのリソース (資格情報アセットや Runbook など) を閲覧したり改変したりできないよう保護したうえで、同じ組織のメンバーにのみ、それらの Runbook の実行を許可する必要がある場合、このロールを活用できます。 |
@@ -43,11 +39,11 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
 以降の表は、各ロールに割り当てられている具体的なアクセス許可の説明です。 アクセス許可を与える Actions のほか、それらを制限する NotActions が含まれている場合があります。
 
-### <a name="owner"></a>Owner
+### <a name="owner"></a>所有者
 
 所有者は、アクセス権を含めすべてを管理できます。 次の表は、このロールに付与されるアクセス許可を示しています。
 
-|Actions|説明|
+|アクション|[説明]|
 |---|---|
 |Microsoft.Automation/automationAccounts/|あらゆる種類のリソースの作成と管理。|
 
@@ -214,7 +210,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 ### <a name="onboarding-from-a-virtual-machine"></a>仮想マシンからのオンボード
 
-|**アクション**  |**アクセス許可**  |**最小スコープ**  |
+|**操作**  |**権限**  |**最小スコープ**  |
 |---------|---------|---------|
 |新しいデプロイを記述する      | Microsoft.Resources/deployments/*          |サブスクリプション          |
 |新しいリソース グループを記述する      | Microsoft.Resources/subscriptions/resourceGroups/write        | サブスクリプション          |
@@ -238,7 +234,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 
 ### <a name="onboarding-from-automation-account"></a>Automation アカウントからのオンボード
 
-|**アクション**  |**アクセス許可** |**最小スコープ**  |
+|**操作**  |**権限** |**最小スコープ**  |
 |---------|---------|---------|
 |新しいデプロイを作成する     | Microsoft.Resources/deployments/*        | サブスクリプション         |
 |新しいリソース グループの作成     | Microsoft.Resources/subscriptions/resourceGroups/write         | サブスクリプション        |
@@ -428,7 +424,7 @@ Runbook スコープ ビューで Automation オペレーター ロールに割�
 
 ![開始のみにアクセス](media/automation-role-based-access-control/automation-only-start.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Automation の RBAC を構成する各種の方法については、 [Azure PowerShell を使用した RBAC の管理](../role-based-access-control/role-assignments-powershell.md)に関する記事を参照してください。
 * Runbook を開始するさまざまな方法については、 [Runbook の開始](automation-starting-a-runbook.md)

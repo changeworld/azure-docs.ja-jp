@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 9005b2e01cdb17d6aa6c630ec8be3d702d5b138c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688103"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435869"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight 上に Hive ポリシーを構成する
 
@@ -40,11 +40,11 @@ Apache Hive 用 Apache Ranger ポリシーを構成する方法について説�
 
 ## <a name="create-domain-users"></a>ドメイン ユーザーの作成
 
-hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)」をご覧ください。 この記事では、その 2 つのユーザー アカウントを使用します。
+hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)」をご覧ください。 この記事では、その 2 つのユーザー アカウントを使用します。
 
 ## <a name="create-ranger-policies"></a>Ranger ポリシーの作成
 
-このセクションでは、hivesampletable にアクセスするための 2 つの Ranger ポリシーを作成します。 異なる列セットに対する select 権限を付与します。 両方のユーザーは、「[ESP の HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)」で作成されました。 次のセクションでは、2 つのポリシーを Excel でテストします。
+このセクションでは、hivesampletable にアクセスするための 2 つの Ranger ポリシーを作成します。 異なる列セットに対する select 権限を付与します。 両方のユーザーは、「[ESP の HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)」で作成されました。 次のセクションでは、2 つのポリシーを Excel でテストします。
 
 **Ranger ポリシーを作成するには**
 
@@ -55,8 +55,8 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
     |プロパティ |値 |
     |---|---|
     |ポリシー名|read-hivesampletable-all|
-    |Hive Database|default|
-    |table|hivesampletable|
+    |Hive Database|既定値 (default)|
+    |テーブル|hivesampletable|
     |Hive Column|*|
     |ユーザーの選択|hiveuser1|
     |アクセス許可|select|
@@ -73,8 +73,8 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
     |プロパティ |値 |
     |---|---|
     |ポリシー名|read-hivesampletable-devicemake|
-    |Hive Database|default|
-    |table|hivesampletable|
+    |Hive Database|既定値 (default)|
+    |テーブル|hivesampletable|
     |Hive column|clientid、devicemake|
     |ユーザーの選択|hiveuser2|
     |アクセス許可|select|
@@ -83,17 +83,17 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
 手順については、「[Hive ODBC データ ソースの作成](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)」をご覧ください。  
 
- | プロパティ  |説明 |
+ | プロパティ  |[説明] |
  | --- | --- |
  | データ ソース名 | データ ソースに名前を付けます。 |
  | Host | CLUSTERNAME.azurehdinsight.net を入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
  | Port | **443** を使用します。 (このポートは 563 から 443 に変更されました)。 |
- | Database | **既定値**を使用します。 |
+ | データベース | **既定値**を使用します。 |
  | Hive サーバーの種類 | **Hive Server 2** を選択します。 |
  | メカニズム | **Azure HDInsight サービス**を選択します。 |
  | HTTP パス | 空白のままにします。 |
- | ユーザー名 | 「 hiveuser1@contoso158.onmicrosoft.com 」を入力します。 ドメイン名が異なる場合は、ドメイン名を更新します。 |
- | パスワード | hiveuser1 のパスワードを入力します。 |
+ | [ユーザー名] | 「hiveuser1@contoso158.onmicrosoft.com」と入力します。 ドメイン名が異なる場合は、ドメイン名を更新します。 |
+ | Password | hiveuser1 のパスワードを入力します。 |
 
 データ ソースを保存する前に、必ず **[Test]** をクリックしてください。
 
@@ -148,7 +148,7 @@ hiveruser1 と hiveuser2 を作成する方法については、「[ESP の HDIn
 
     完了すると、インポートされた 2 列のデータが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
 * ESP での HDInsight クラスターの管理については、「[Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する](apache-domain-joined-manage.md)」をご覧ください。

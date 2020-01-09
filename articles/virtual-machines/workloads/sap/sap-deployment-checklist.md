@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ddba2b70bc9d9e01518cdc0f373fc31224e9c932
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891414"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425944"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -77,7 +77,7 @@ ms.locfileid: "73891414"
     - VM と他のインフラストラクチャ コンポーネントおよび論理名の名前付け規則。
 5.  Microsoft Premier サポート契約。 Microsoft テクニカル アカウント マネージャー (TAM) を特定します。 SAP のサポート要件については、[SAP サポート ノート #2015553](https://launchpad.support.sap.com/#/notes/2015553) を参照してください。
 6.  Azure サブスクリプションの数と、サブスクリプションのコア クォータ。 必要に応じて、[Azure サブスクリプションのクォータを増やすサポート リクエストを開きます](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)。
-7.  Azure への SAP データの移行に関するデータの削減とデータ移行計画。 SAP NetWeaver システムについては、大容量のデータ量を制限する方法についてのガイドラインが SAP にあります。 SAP ERP システムでのデータ管理に関する[こちらの SAP ガイド](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF)を参照してください。 一部のコンテンツは、一般に NetWeaver と S/4HANA システムにも適用されます。
+7.  Azure への SAP データの移行に関するデータの削減とデータ移行計画。 SAP NetWeaver システムについては、大容量のデータ量を制限する方法についてのガイドラインが SAP にあります。 SAP ERP システムでのデータ管理に関する[こちらの SAP ガイド](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2)を参照してください。 一部のコンテンツは、一般に NetWeaver と S/4HANA システムにも適用されます。
 8.  自動化されたデプロイのアプローチ。 Azure へのインフラストラクチャ デプロイの自動化の目的は、決定論的な方法でデプロイし、決定論的な結果を得ることです。 多くのお客様は、PowerShell または CLI ベースのスクリプトを使用します。 しかしながら、SAP 用に Azure インフラストラクチャをデプロイしたり、SAP ソフトウェアをインストールしたりすることに使用できるさまざまなオープン ソース テクノロジがあります。 GitHub で例を見つけることができます。
     - [Azure Cloud での SAP の自動デプロイ](https://github.com/Azure/sap-hana)
     - [SAP HANA のインストール](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
@@ -276,7 +276,7 @@ ms.locfileid: "73891414"
 3. システムをシャットダウンできる時間を最適化します。  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次の記事を参照してください。
 
 - [SAP NetWeaver のための Azure Virtual Machines の計画と実装](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)

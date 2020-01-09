@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f92226a76462289b9f26ae9d3bab22d780fb35db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792192"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464996"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Azure Virtual Machines で Premium ファイル共有を使用して SQL Server フェールオーバー クラスター インスタンスを構成する
 
@@ -84,7 +84,6 @@ Filestream は、Premium ファイル共有のフェールオーバー クラス
    - 各 FCI の IP アドレス。
 - Azure ネットワーク上で構成された、ドメイン コントローラーを指す DNS。
 - データ ファイル用のデータベースのストレージ クォータに基づいた [Premium ファイル共有](../../../storage/files/storage-how-to-create-premium-fileshare.md)。
-- データ ファイルに使用される Premium ファイル共有とは異なるバックアップ用のファイル共有。 このファイル共有は、Standard または Premium のいずれかになります。
 
 これらの前提条件が整ったら、フェールオーバー クラスターの構築を開始できます。 最初の手順で、仮想マシンを作成します。
 
@@ -334,7 +333,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
    - **[リソース グループ]** :仮想マシンが含まれているリソース グループ。
    - **Name**:ロード バランサーを識別する名前。
    - **[リージョン]** :仮想マシンが含まれている Azure の場所。
-   - **[タイプ]** :パブリックまたはプライベート。 プライベート ロード バランサーには、同じ仮想ネットワーク内からアクセスできます。 プライベート ロード バランサーは、ほとんどの Azure アプリケーションで使用できます。 アプリケーションがインターネット経由で直接 SQL Server にアクセスする必要がある場合は、パブリック ロード バランサーを使用します。
+   - **[種類]** :パブリックまたはプライベート。 プライベート ロード バランサーには、同じ仮想ネットワーク内からアクセスできます。 プライベート ロード バランサーは、ほとんどの Azure アプリケーションで使用できます。 アプリケーションがインターネット経由で直接 SQL Server にアクセスする必要がある場合は、パブリック ロード バランサーを使用します。
    - **SKU**:Standard。
    - **仮想ネットワーク**:仮想マシンと同じネットワーク。
    - **[IP アドレスの割り当て]** :静的。 
@@ -387,7 +386,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
    - **[バックエンド ポート]** : **[フローティング IP (ダイレクト サーバー リターン)]** を有効にしたときの **[ポート]** の値と同じポートを使用します。
    - **[バックエンド プール]** : 先ほど構成したバックエンド プール名。
    - **[正常性プローブ]** : 先ほど構成した正常性プローブ。
-   - **[セッション永続化]** : なし。
+   - **[セッション永続化]** : [なし] :
    - **[アイドル タイムアウト (分)]** : 4.
    - **[フローティング IP]\(ダイレクト サーバー リターン\)** : 有効。
 
@@ -429,7 +428,7 @@ PowerShell でクラスターのプローブ ポート パラメーターを設�
    Get-ClusterResource $IPResourceName | Get-ClusterParameter
   ```
 
-## <a name="step-8-test-fci-failover"></a>ステップ 8:FCI フェールオーバーをテストする
+## <a name="step-8-test-fci-failover"></a>手順 8:FCI フェールオーバーをテストする
 
 FCI のフェールオーバーをテストして、クラスターの機能を検証します。 次の手順を実行します。
 
@@ -459,7 +458,7 @@ Azure Virtual Machines では、次の理由から、MSDTC は Windows Server 20
 - クラスター化された MSDTC リソースは、共有ストレージを使用するように構成することはできません。 Windows Server 2016 では、MSDTC リソースを作成した場合、ストレージが使用可能であっても、使用可能な共有ストレージは 1 つも表示されません。 この問題は、Windows Server 2019 で修正済みです。
 - Basic Load Balance は、RPC ポートを処理しません。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Windows クラスター テクノロジ](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server フェールオーバー クラスター インスタンス](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

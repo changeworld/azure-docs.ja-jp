@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 562e84b4fe51603ae32884057578541f5536ebd4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ef63a159c132f5b565123eeb4824fb1ae5812ce1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679841"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444149"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory の If Condition アクティビティ
 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。 
@@ -63,10 +63,10 @@ If Condition アクティビティは、プログラミング言語における 
 
 ## <a name="type-properties"></a>型のプロパティ
 
-プロパティ | 説明 | 使用できる値 | 必須
+プロパティ | [説明] | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-名前 | if-condition アクティビティの名前。 | string | はい
-type | **IfCondition** に設定する必要があります。 | String | はい
+name | if-condition アクティビティの名前。 | String | はい
+型 | **IfCondition** に設定する必要があります。 | String | はい
 expression | true または false に評価される式であることが必要です | 結果の型がブール値の式 | はい
 ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | Array | はい
 ifFalseActivities | 式が `false` に評価されたときに実行される一連のアクティビティです。 | Array | はい
@@ -196,10 +196,7 @@ ifFalseActivities | 式が `false` に評価されたときに実行される一
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
@@ -288,11 +285,11 @@ Write-Host "\nActivity 'Error' section:" -foregroundcolor "Yellow"
 $result.Error -join "`r`n"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
 
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)
-- [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
+- [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)
 - [ルックアップ アクティビティ](control-flow-lookup-activity.md)
 - [Web アクティビティ](control-flow-web-activity.md)

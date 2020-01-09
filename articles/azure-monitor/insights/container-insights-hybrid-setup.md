@@ -1,18 +1,14 @@
 ---
 title: ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する | Microsoft Docs
 description: この記事では、Azure Stack などの環境でホストしている Kubernetes クラスターを監視することを目的として Azure Monitor for containers を構成する方法を説明します。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2019
-ms.openlocfilehash: 0d6615d832059a8b58c0d5d52533b8c8c962640d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c791477aeb27609cccda11b901eccaa2805be581
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841576"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404819"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する
 
@@ -302,6 +298,6 @@ Azure PowerShell を使用して実行するには、そのスクリプトを含
 .\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ハイブリッド Kubernetes クラスターとそこで実行中のワークロードの正常性とリソース使用率を収集するための監視を有効にしたので、Azure Monitor for containers の[使い方](container-insights-analyze.md)について学習します。

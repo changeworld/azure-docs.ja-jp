@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f4f0ac5d592a01b284a12e899b0aa5a9a62d122
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304936"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401763"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 
@@ -29,7 +29,7 @@ ms.locfileid: "74304936"
 > この記事のサンプルでは、「[Azure での管理ソリューションの設計とビルド](solutions-creating.md)」で説明されている、管理ソリューションにとって必須または一般的なパラメーターと変数を使用します。
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、[管理ソリューションの作成方法](solutions-creating.md)および [Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)とソリューション ファイルの構造を理解していることを前提としています。
+この記事では、[管理ソリューションの作成方法](solutions-creating.md)および [Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)とソリューション ファイルの構造を理解していることを前提としています。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
@@ -71,7 +71,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表は、保存された検索条件の各プロパティについて説明しています。
 
-| プロパティ | description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | category | 保存された検索条件のカテゴリです。  同じソリューション内の保存された検索条件は、1 つのカテゴリを共有することが多いため、コンソールではグループ化されています。 |
 | displayName | ポータルでの保存された検索条件の表示名です。 |
@@ -80,7 +80,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 > [!NOTE]
 > JSON として解釈される可能性のある文字が含まれる場合、クエリではエスケープ文字を使うことが必要になる場合があります。 たとえば、**AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"** というクエリの場合、ソリューション ファイルには **AzureActivity | OperationName:/\"Microsoft.Compute/virtualMachines/write\"** と書き込まれる必要があります。
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 [Azure Log のアラート](../../azure-monitor/platform/alerts-unified-log.md)は、指定されたログ クエリを一定の間隔で実行する Azure Alert ルールによって作成されます。 クエリの結果が指定されている条件と一致する場合、アラート レコードが作成されて、[アクション グループ](../../azure-monitor/platform/action-groups.md)を使用して 1 つまたは複数のアクションが実行されます。
 
 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)を使用してアクションを取得または追加できます。
@@ -112,7 +112,7 @@ Azure にアラートを拡張すると、アクションを Azure のアクシ�
     }
 次の表では、スケジュール リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | description |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
 | enabled       | はい | 作成時点でアラートが有効かどうかを指定します。 |
 | interval      | はい | クエリを実行する間隔です (分単位)。 |
@@ -122,7 +122,7 @@ Azure にアラートを拡張すると、アクションを Azure のアクシ�
 > [!NOTE]
 > スケジュール名は、特定のワークスペース内では一意である必要があります。2 つのスケジュールが同じ ID を持つことはできません。スケジュールに関連付けられている、保存した検索条件がそれぞれ異なるとしても同様です。 また、Log Analytics API で作成する、すべての保存した検索条件、スケジュール、およびアクションは、小文字にする必要があります。
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>アクション
 スケジュールでは複数のアクションを使用できます。 アクションでは、メールの送信や Runbook の開始など、実行する 1 つ以上のプロセスを定義するか、または検索結果が条件に一致するためのしきい値を定義できます。 一部のアクションはそれらの両方を定義し、しきい値に達したときにプロセスが実行されます。
 アクションは、アクション グループ リソースまたはアクション リソースを使って定義できます。
 
@@ -164,7 +164,7 @@ Azure にアラートを拡張すると、アクションを Azure のアクシ�
 
 次の表では、アラート アクション リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | 説明 |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
 | `type` | はい | アクションの種類。  これは、アラート アクションの**アラート**です。 |
 | `name` | はい | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
@@ -174,7 +174,7 @@ Azure にアラートを拡張すると、アクションを Azure のアクシ�
 #### <a name="threshold"></a>Threshold
 このセクションは必須です。 アラートのしきい値のプロパティを定義します。
 
-| 要素名 | 必須 | 説明 |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
 | `Operator` | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
 | `Value` | はい | 結果を比較する値です。 |
@@ -182,7 +182,7 @@ Azure にアラートを拡張すると、アクションを Azure のアクシ�
 ##### <a name="metricstrigger"></a>MetricsTrigger
 このセクションは省略可能です。 メトリック測定アラートの場合に指定します。
 
-| 要素名 | 必須 | 説明 |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
 | `TriggerCondition` | はい | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
 | `Operator` | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
@@ -192,7 +192,7 @@ Azure にアラートを拡張すると、アクションを Azure のアクシ�
 #### <a name="throttling"></a>Throttling
 このセクションは省略可能です。 同じルールからのアラートを、アラート作成後の一定期間にわたって抑制する場合に、このセクションを指定します。
 
-| 要素名 | 必須 | description |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
 | DurationInMinutes | Throttling 要素が含まれる場合は Yes です。 | アラートが作成された後、それと同じアラート ルールからにアラートを抑制する分数です。 |
 
@@ -201,7 +201,7 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 
 アラートを Azure に拡張しているユーザーの場合、スケジュールにアクション グループの詳細がしきい値とともに渡され、アラートを作成できるようになっています。 アラートを作成する前に、電子メールの詳細、Webhook の URL、Runbook Automation の詳細、およびその他のアクションをアクション グループ内に定義する必要があります。Portal の [Azure Monitor からアクション グループ](../../azure-monitor/platform/action-groups.md)を作成するか、[アクション グループ リソース テンプレート](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)を使用できます。
 
-| 要素名 | 必須 | description |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
 | AzNsNotification | はい | アラート条件が満たされたときに必要なアクションを実行するためにアラートに関連付ける Azure アクション グループのリソース ID です。 |
 | CustomEmailSubject | いいえ | 関連付けられたアクション グループで指定されているすべてのアドレスに送信されるメールのカスタム件名行です。 |
@@ -401,6 +401,6 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 管理ソリューションに[ビューを追加する](solutions-resources-views.md)。
 * 管理ソリューションに [Automation Runbook とその他のリソースを追加する](solutions-resources-automation.md)。

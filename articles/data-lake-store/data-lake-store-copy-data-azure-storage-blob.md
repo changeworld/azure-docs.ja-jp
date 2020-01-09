@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 0225405c5d3a511bbb2bbb08c1c13e5adedd5096
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ad408df140be49da2e50ef810285dd850e9da6a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903774"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638870"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Azure Storage BLOB から Azure Data Lake Storage Gen1 にデータをコピーする
 
@@ -49,12 +49,12 @@ AdlCopy ツールを操作するには、次の構文を使用します。
 
 構文のパラメーターを次に示します。
 
-| オプション | 説明 |
+| オプション | [説明] |
 | --- | --- |
 | source |Azure Storage Blob のソース データの場所を指定します。 ソースには、BLOB コンテナー、BLOB、または別の Data Lake Storage Gen1 アカウントを指定できます。 |
 | Dest |コピー先の Data Lake Storage Gen1 を指定します。 |
 | SourceKey |Azure Storage Blob ソースのストレージ アクセス キーを指定します。 これが必要なのは、ソースが BLOB コンテナーかBLOB の場合のみです。 |
-| Account |**省略可能**。 Azure Data Lake Analytics アカウントを使用してコピー ジョブを実行する場合に、このオプションを使用します。 構文に /Account オプションを使用して、Data Lake Analytics アカウントを指定しない場合、AdlCopy は既定のアカウントを使用してジョブを実行します。 また、このオプションを使用する場合は、Data Lake Analytics アカウントのデータ ソースとしてソース (Azure Storage BLOB) とコピー先 (Azure Data Lake Storage Gen1) も追加する必要があります。 |
+| Account |**オプション**。 Azure Data Lake Analytics アカウントを使用してコピー ジョブを実行する場合に、このオプションを使用します。 構文に /Account オプションを使用して、Data Lake Analytics アカウントを指定しない場合、AdlCopy は既定のアカウントを使用してジョブを実行します。 また、このオプションを使用する場合は、Data Lake Analytics アカウントのデータ ソースとしてソース (Azure Storage BLOB) とコピー先 (Azure Data Lake Storage Gen1) も追加する必要があります。 |
 | Units |コピー ジョブに使用する Data Lake Analytics ユニット数を指定します。 **/Account** オプションを使用して Data Lake Analytics アカウントを指定する場合、このオプションは必須です。 |
 | Pattern |コピーするBLOB やファイルを示す regex パターンを指定します。 AdlCopy は、大文字と小文字を区別する照合を使用します。 すべての項目のコピーにパターンが指定されていない場合は、既定のパターンが使用されます。 複数のファイル パターンを指定することはサポートされていません。 |
 
@@ -65,7 +65,7 @@ AdlCopy ツールを操作するには、次の構文を使用します。
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>
 
-    例:
+    次に例を示します。
 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
@@ -84,13 +84,13 @@ AdlCopy ツールを操作するには、次の構文を使用します。
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/ /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container>        
 
-    例:
+    次に例を示します。
 
         AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ==
 
 ### <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 
-Azure Blob Storage アカウントからコピーする場合は、Blob Storage 側でコピー中に調整されることがあります。 これにより、コピー ジョブのパフォーマンスが低下します。 Azure Blob Storage の制限の詳細については、[Azure サブスクリプションとサービスの制限事項](../azure-subscription-service-limits.md)に関するページをご覧ください。
+Azure Blob Storage アカウントからコピーする場合は、Blob Storage 側でコピー中に調整されることがあります。 これにより、コピー ジョブのパフォーマンスが低下します。 Azure Blob Storage の制限の詳細については、[Azure サブスクリプションとサービスの制限事項](../azure-resource-manager/management/azure-subscription-service-limits.md)に関するページをご覧ください。
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-another-data-lake-storage-gen1-account"></a>AdlCopy を (スタンドアロンとして) 使用して別の Data Lake Storage Gen1 アカウントからデータをコピーする
 
@@ -101,7 +101,7 @@ AdlCopy を使用して 2 つの Data Lake Storage Gen1 アカウント間でデ
 
         AdlCopy /Source adl://<source_adlsg1_account>.azuredatalakestore.net/<path_to_file> /dest adl://<dest_adlsg1_account>.azuredatalakestore.net/<path>/
 
-    例:
+    次に例を示します。
 
         AdlCopy /Source adl://mydatastorage.azuredatalakestore.net/mynewfolder/909f2b.log /dest adl://mynewdatalakestorage.azuredatalakestore.net/mynewfolder/
 
@@ -140,7 +140,7 @@ Data Lake Analytics アカウントと AdlCopy を使用して、Azure Storage B
 
     AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Account <data_lake_analytics_account> /Units <number_of_data_lake_analytics_units_to_be_used>
 
-例:
+次に例を示します。
 
     AdlCopy /Source https://mystorage.blob.core.windows.net/mycluster/example/data/gutenberg/ /dest swebhdfs://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Account mydatalakeanalyticaccount /Units 2
 
@@ -161,7 +161,7 @@ Data Lake Analytics アカウントと AdlCopy を使用して、Azure Storage B
 
         AdlCopy /source https://<source_account>.blob.core.windows.net/<source_container>/<blob name> /dest swebhdfs://<dest_adlsg1_account>.azuredatalakestore.net/<dest_folder>/ /sourcekey <storage_account_key_for_storage_container> /Pattern *.csv
 
-    例:
+    次に例を示します。
 
         AdlCopy /source https://mystorage.blob.core.windows.net/mycluster/HdiSamples/HdiSamples/FoodInspectionData/ /dest adl://mydatalakestorage.azuredatalakestore.net/mynewfolder/ /sourcekey uJUfvD6cEvhfLoBae2yyQf8t9/BpbWZ4XoYj4kAS5Jf40pZaMNf0q6a8yqTxktwVgRED4vPHeh/50iS9atS5LQ== /Pattern *.csv
 
@@ -182,7 +182,7 @@ AdlCopy では、数千ものファイルとフォルダーを含むデータの
 
 * 1.0.13 - 複数の adlcopy コマンドにまたがって同じ Azure Data Lake Storage Gen1 アカウントにデータをコピーしている場合、実行のたびに資格情報を再入力する必要はなくなりました。 Adlcopy は複数の実行にまたがる情報をキャッシュするようになりました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
 * [Data Lake Storage Gen1 で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

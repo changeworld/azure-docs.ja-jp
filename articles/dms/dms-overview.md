@@ -1,5 +1,5 @@
 ---
-title: Azure Database Migration Service の概要 | Microsoft Docs
+title: Azure Database Migration Service とは何ですか。
 description: 多数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を提供する、Azure Database Migration Service の概要です。
 services: database-migration
 author: pochiraju
@@ -10,12 +10,12 @@ ms.service: dms
 ms.workload: data-services
 ms.topic: article
 ms.date: 05/31/2019
-ms.openlocfilehash: 0b1c45fcb030ac31934a5fb7aad478ef08d66129
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 634f949daa4926f2707c0611b819800441e76610
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66478196"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438025"
 ---
 # <a name="what-is-azure-database-migration-service"></a>Azure Database Migration Service とは何ですか。
 
@@ -36,7 +36,7 @@ Azure Database Migration Service のリージョン別の提供状況に関す�
 
 Azure Database Migration Service の料金に関する最新情報については、「[Azure Database Migration Service の価格](https://azure.microsoft.com/pricing/details/database-migration/)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Database Migration Service によってサポートされる移行シナリオの状態](resource-scenario-status.md)。
 * [Azure portal を使用して Azure Database Migration Service のインスタンスを作成する](quickstart-create-data-migration-service-portal.md)。

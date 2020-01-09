@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C を使用して開発者アカウントを承認する - Azure API Management | Microsoft Docs
+title: Azure Active Directory B2C を使用して開発者アカウントを承認する
+titleSuffix: Azure API Management
 description: API Management で Azure Active Directory B2C を使用してユーザーを承認する方法について説明します。
 services: api-management
 documentationcenter: API Management
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: d6e7c04cbd5a7f1ed509b27cf87ac3f692c28d9f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 11dae2b6d771138503643c402ba4525df1f04a88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454477"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430744"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure API Management で Azure Active Directory B2C を使用して開発者アカウントを承認する方法
 
@@ -119,7 +120,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 
     ![登録の完了][api-management-registration-complete]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 *  [Azure Active Directory B2C の概要]
 *  [Azure Active Directory B2C: 拡張ポリシー フレームワーク]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: bf0f2928bd7cbac08a2a887481f19b3acb99f6fa
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 618d9a8d941202db05981566203bf96c02f415a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358311"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
 
@@ -188,7 +188,7 @@ ms.locfileid: "74039715"
 
 ### <a name="create-the-resource-group"></a>リソース グループの作成
 
-すべてのリソースは、[リソース グループ](../../azure-resource-manager/resource-group-overview.md)に含まれる必要があります。
+すべてのリソースは、[リソース グループ](../../azure-resource-manager/management/overview.md)に含まれる必要があります。
 
 アプリケーションに値を指定し、リソース グループを作成するには、次のコードを main メソッドの try ブロックに追加します。
 
@@ -470,6 +470,6 @@ Azure で使用されるリソースに対して課金されるため、不要�
 2. **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 デプロイに関する情報を参照するには、デプロイ状態をクリックします。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure の Java ライブラリ](https://docs.microsoft.com/java/azure/java-sdk-azure-overview)の使用方法について詳しく学習します。
 

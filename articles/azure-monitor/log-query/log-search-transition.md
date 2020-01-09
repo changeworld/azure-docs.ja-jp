@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: b738d532cb458506ca50a07dea11687040f99e02
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a8d0469d57901f53d8e615f800b5d804944163fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900343"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398159"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Log Analytics のログ検索から Azure Monitor のログに移行する
 最近、Log Analytics のログ検索の後継として、Azure Monitor のログを分析するための新しいエクスペリエンスが導入されました。 現在もログ検索ページには、Azure portal の **[Log Analytics ワークスペース]** ページにある **[ログ (クラシック)]** メニュー項目からアクセスできますが、このページは 2019 年 2 月 15 日をもって削除されます。 この記事では、ログ検索から円滑に移行できるよう、2 つのエクスペリエンスの違いについて説明しています。 
@@ -67,6 +67,6 @@ Azure Monitor のログでは、[ログ クエリからアラートを作成](..
 
 ![アクション グループ](media/log-search-transition/action-group.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 新しい [Azure Monitor のログ エクスペリエンス](get-started-portal.md)について詳しく学習します。

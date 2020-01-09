@@ -2,19 +2,15 @@
 title: Azure Automation での SCCM コレクションを使用したターゲットの更新 - Update Management
 description: この記事は、このソリューションを使用して System Center Configuration Manager を構成し、SCCM マネージド コンピューターの更新を管理するのに役立ちます。
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 345adeee37f5f9bc4c794eb9bb624e7797197f22
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b52db95b6a6ce21a5e5b68342ac123526d11ca62
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850212"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417620"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>System Center Configuration Manager と Update Management の統合
 
@@ -50,5 +46,5 @@ Configuration Manager クライアントである Windows Server VM の更新プ
 
 この構成変更を実行した後、「[更新プログラムの展開の作成](automation-tutorial-update-management.md#schedule-an-update-deployment)」で説明されている手順に従って新しいデプロイを作成し、 **[種類]** ドロップダウン リストから **[Imported groups]\(インポートされたグループ\)** を選択して適切な Configuration Manager コレクションを選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 

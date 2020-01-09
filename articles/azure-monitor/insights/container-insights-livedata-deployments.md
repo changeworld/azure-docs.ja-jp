@@ -1,19 +1,14 @@
 ---
 title: Azure Monitor for containers の Deployments (プレビュー) の表示 | Microsoft Docs
 description: この記事では、Azure Monitor for containers で kubectl を使用しない、Kubernetes Deployments のリアル タイム表示について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: c7135aec98936b5247b39ae659e21735168bd289
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510760"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404773"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>リアルタイムで Deployments (プレビュー) を表示する方法
 
@@ -27,7 +22,7 @@ Azure Monitor for containers の Deployments (プレビュー) の表示機能�
 
 詳細については、[Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) に関する Kubernetes のドキュメントを参照してください。 
 
-## <a name="how-it-works"></a>動作のしくみ
+## <a name="how-it-works"></a>しくみ
 
 Live Data (プレビュー) 機能は、Kubernetes API に直接アクセスします。認証モデルの詳細については、[こちら](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)を参照してください。 
 
@@ -45,9 +40,9 @@ Deployments (プレビュー) 機能では、デプロイ エンドポイント 
 
 デプロイの詳細説明を表示するには (`kubectl describe deployment` に相当する)、次の手順を行います。
 
-1. Azure portal で、AKS クラスター リソース グループを参照し、ご利用の AKS リソースを選択します。
+1. Azure portal で、AKS クラスター リソース グループを参照し、AKS リソースを選択します。
 
-2. AKS クラスター ダッシュボードで、左側の **[監視]** の下で、 **[Insights]** を選択します。 
+2. AKS クラスター ダッシュボードで、左側の **[監視]** の下で、 **[Insights]** を選択します 
 
 3. **[Deployments (プレビュー)]** タブを選択します。
 
@@ -67,7 +62,7 @@ Deployments (プレビュー) 機能では、デプロイ エンドポイント 
 
 ![コンソールでの Deployments ビューのライブ データ](./media/container-insights-livedata-deployments/deployments-console-view-events.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Monitor を使用して、AKS クラスターの他の側面を監視する方法を引き続き学習するには、[Azure Kubernetes Service の正常性の表示](container-insights-analyze.md)に関するページをご覧ください。
 

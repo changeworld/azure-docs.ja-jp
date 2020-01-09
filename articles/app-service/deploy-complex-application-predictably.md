@@ -5,17 +5,17 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9ec3a6b39a857f888514b0a3872ae411e1819f3a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 1168faa1f39546dc75af28b885c9095cfffa1135
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671823"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422127"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする
 このチュートリアルでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) の[マイクロサービス](https://en.wikipedia.org/wiki/Microservices)で構成されるアプリケーションを、JSON リソース グループ テンプレートと PowerShell スクリプトを使用して、1 つのユニットとして予測どおりにプロビジョニングしてデプロイする方法を示します。 
 
-高度に分離されたマイクロサービスで構成される拡張性の高いアプリケーションのプロビジョニングとデプロイを成功させるには、再現性と予測性が非常に重要です。 [Azure App Service](https://azure.microsoft.com/services/app-service/) を使用して、Web アプリ、モバイル バック エンド、および API アプリを含むマイクロサービスを作成できます。 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用して、すべてのマイクロサービスを、データベースやソース管理設定などのリソースの依存関係と共に 1 つのユニットとして管理できます。 さらに、このようなアプリケーションを、JSON テンプレートと単純な PowerShell スクリプトを使用してデプロイすることもできます。 
+高度に分離されたマイクロサービスで構成される拡張性の高いアプリケーションのプロビジョニングとデプロイを成功させるには、再現性と予測性が非常に重要です。 [Azure App Service](https://azure.microsoft.com/services/app-service/) を使用して、Web アプリ、モバイル バック エンド、および API アプリを含むマイクロサービスを作成できます。 [Azure Resource Manager](../azure-resource-manager/management/overview.md) を使用して、すべてのマイクロサービスを、データベースやソース管理設定などのリソースの依存関係と共に 1 つのユニットとして管理できます。 さらに、このようなアプリケーションを、JSON テンプレートと単純な PowerShell スクリプトを使用してデプロイすることもできます。 
 
 ## <a name="what-you-will-do"></a>学習内容
 このチュートリアルでは、次のものを含むアプリケーションをデプロイします。
@@ -29,7 +29,7 @@ ms.locfileid: "74671823"
 このチュートリアルでは、次のツールを使用します。 ここはツールについて包括的に説明するための場所ではないため、簡単な説明と詳細情報へのリンクを紹介するにとどめて、エンド ツー エンドのシナリオに準拠します。 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure リソース マネージャー テンプレート (JSON)
-たとえば、Azure App Service でアプリを作成するたびに、Azure Resource Manager では、JSON テンプレートを使用して、リソース グループ全体とコンポーネント リソースが作成されます。 [Azure Marketplace](/azure/marketplace) の複雑なテンプレートには、データベース、ストレージ アカウント、App Service プラン、アプリ自体、アラート ルール、アプリ設定、自動スケールの設定などを含めることができます。また、これらのすべてのテンプレートは、PowerShell を介して利用できます。 Azure リソース マネージャー テンプレートの詳細については、 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
+たとえば、Azure App Service でアプリを作成するたびに、Azure Resource Manager では、JSON テンプレートを使用して、リソース グループ全体とコンポーネント リソースが作成されます。 [Azure Marketplace](/azure/marketplace) の複雑なテンプレートには、データベース、ストレージ アカウント、App Service プラン、アプリ自体、アラート ルール、アプリ設定、自動スケールの設定などを含めることができます。また、これらのすべてのテンプレートは、PowerShell を介して利用できます。 Azure リソース マネージャー テンプレートの詳細については、 [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2.6 for Visual Studio
 最新の SDK では、JSON エディターにおけるリソース マネージャー テンプレートのサポートが強化されました。 これを使用すると、リソース グループ テンプレートを一からすばやく作成したり、既存の JSON テンプレート (ダウンロードしたギャラリー テンプレートなど) を開いて変更したりできます。また、パラメーター ファイルを設定したり、Azure リソース グループのソリューションから直接リソース グループをデプロイしたりすることもできます。
@@ -41,7 +41,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 
 詳細については、 [Azure リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)
 
-### <a name="azure-resource-explorer"></a>Azure リソース エクスプローラー
+### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 この[プレビュー ツール](https://resources.azure.com)を使用して、サブスクリプション内のすべてのリソース グループの JSON 定義と個々のリソースを調べることができます。 このツールでは、リソースの JSON 定義の編集、リソースの階層全体の削除、新しいリソースの作成を実行できます。  このツールですぐに利用できる情報は、特定の種類のリソースに設定する必要のあるプロパティ、適切な値などを示すため、テンプレートの作成に非常に役立ちます。[Azure Portal](https://portal.azure.com/) でリソース グループを作成し、エクスプローラー ツールで JSON 定義を調べてリソース グループのテンプレート化に利用できます。
 
 ### <a name="deploy-to-azure-button"></a>[Azure にデプロイ] ボタン
@@ -87,7 +87,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 
 JSON 形式について詳しく説明する予定はありませんが、「 [その他のリソース](#resources) 」セクションには、リソース グループ テンプレートの言語を習得するためのリンクが用意されています。 ここでは、アプリをデプロイするための独自のカスタム テンプレートを作成するのに役立つ、興味深い機能のみについて説明します。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 パラメーター セクションを見ると、そこにあるパラメーターのほとんどが、 **[Azure にデプロイ]** ボタンによって入力が求められる内容であることがわかります。 **[Azure にデプロイ]** ボタンで表示されるサイトでは、入力用の UI に、azuredeploy.json で定義されたパラメーターを使用して値が設定されます。 これらのパラメーターは、リソース名、プロパティの値など、リソースの定義全体で使用されます。
 
 ### <a name="resources"></a>リソース
@@ -117,7 +117,7 @@ JSON 形式について詳しく説明する予定はありませんが、「 [�
 * データベースとファイアウォール規則が定義されている、`“resources”: […]` 内で入れ子になったリソースには、ルート レベルの SQL Server リソースのリソース ID を指定する `dependsOn` 要素があります。 これは、Azure リソース マネージャーに対して、"このリソースを作成する前に、その他のリソースが既に存在する必要があり、その他のリソースがテンプレートで定義されている場合は、そのリソースを最初に作成すること" を指示します。
   
   > [!NOTE]
-  > `resourceId()`関数の使用方法の詳細については、「[Azure リソース マネージャーのテンプレートの関数](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid)」を参照してください。
+  > `resourceId()`関数の使用方法の詳細については、「[Azure リソース マネージャーのテンプレートの関数](../azure-resource-manager/templates/template-functions-resource.md#resourceid)」を参照してください。
   > 
   > 
 * `dependsOn` 要素のおかげで、Azure リソース マネージャーでは、並行して作成できるリソースと順番に作成する必要があるリソースを認識できます。 
@@ -250,14 +250,14 @@ DevOps では、反復性と予測可能性が、マイクロサービスで構�
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>その他のリソース
-* [Azure リソース マネージャー テンプレートの言語](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Azure リソース マネージャーのテンプレートの関数](../azure-resource-manager/resource-group-template-functions.md)
+* [Azure リソース マネージャー テンプレートの言語](../azure-resource-manager/templates/template-syntax.md)
+* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager テンプレートの関数](../azure-resource-manager/resource-group-template-functions.md)
 * [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure リソース マネージャーでの Windows PowerShell の使用](../azure-resource-manager/powershell-azure-resource-manager.md)
 * [Azure でのリソース グループのデプロイのトラブルシューティング](../azure-resource-manager/resource-manager-common-deployment-errors.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事でデプロイしたリソース タイプの JSON 構文およびプロパティについては、次をご覧ください。
 

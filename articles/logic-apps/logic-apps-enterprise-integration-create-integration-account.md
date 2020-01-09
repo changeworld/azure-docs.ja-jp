@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 650355bc79e786839377a9b3e574dfbfa08868d6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793067"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453406"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
@@ -55,13 +55,13 @@ ms.locfileid: "74793067"
 
    ![統合アカウントの詳細の指定](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | プロパティ | 必須 | 値 | 説明 |
+   | プロパティ | 必須 | 値 | [説明] |
    |----------|----------|-------|-------------|
    | **Name** | はい | <*integration-account-name*> | 統合アカウントの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"Fabrikam-Integration" を使用します。 |
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 |
-   | **リソース グループ** | はい | <*Azure-resource-group-name*> | 関連するリソースを整理するために使用する [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。 この例では、"FabrikamIntegration-RG" という名前の新しいリソース グループを作成します。 |
+   | **リソース グループ** | はい | <*Azure-resource-group-name*> | 関連するリソースを整理するために使用する [Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前。 この例では、"FabrikamIntegration-RG" という名前の新しいリソース グループを作成します。 |
    | **Pricing Tier** | はい | <*pricing-level*> | 統合アカウントの価格レベル。後で変更できます。 この例では **[Free]** を選択します。 詳細については、以下のトピックを参照してください。 <p>- [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **Location** | はい | <*Azure-region*> | 統合アカウント メタデータの保存先となるリージョン。 ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 この例では、[米国西部] を使用します。 <p>**メモ**:[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内で統合アカウントを作成するには、その ISE を場所として選択します。 詳細については、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。 |
+   | **Location** | はい | <*Azure-region*> | 統合アカウント メタデータの保存先となるリージョン。 ロジック アプリと同じ場所を選択するか、統合アカウントと同じ場所でロジック アプリを作成します。 この例では、[米国西部] を使用します。 <p>**注**:[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内で統合アカウントを作成するには、その ISE を場所として選択します。 詳細については、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。 |
    | **Log Analytics** | いいえ | Off、On | この例では、 **[Off]** の設定のままにします。 |
    |||||
 
@@ -112,7 +112,7 @@ ms.locfileid: "74793067"
 
 この変更を行うには、このセクションの手順に従って Azure portal を使用するか、[Azure CLI](#upgrade-tier-azure-cli) のいずれかを使用できます。
 
-#### <a name="azure-portal"></a>Azure ポータル
+#### <a name="azure-portal"></a>Azure portal
 
 1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -180,7 +180,7 @@ ms.locfileid: "74793067"
 
 1. ブラウザー ウィンドウを開き、[Azure Resource Explorer (https://resources.azure.com)](https://resources.azure.com) にアクセスします。 同じ Azure アカウントの資格情報でサインインします。
 
-   ![Azure リソース エクスプローラー](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer.png)
+   ![Azure Resource Explorer](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer.png)
 
 1. ロジック アプリを検索して選択できるように、検索ボックスにロジック アプリの名前を入力します。
 
@@ -206,7 +206,7 @@ ms.locfileid: "74793067"
    },
    ```
 
-   例:
+   次に例を示します。
 
    !["integrationAccount" オブジェクトの検索](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 
@@ -276,7 +276,7 @@ ms.locfileid: "74793067"
 
    ![削除を確定するために [はい] を選択](./media/logic-apps-enterprise-integration-create-integration-account/confirm-delete.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [統合アカウントで取引先を作成する](../logic-apps/logic-apps-enterprise-integration-partners.md)
 * [統合アカウントで取引先間の契約を作成する](../logic-apps/logic-apps-enterprise-integration-agreements.md)

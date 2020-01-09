@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: a206b63b03bcb3bb17e201487f0e00bcb3926151
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a5625341e3dd279d93a59c57cd3325245351723e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582241"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646729"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Azure Blob Storage にデータを移動する
 
@@ -21,7 +21,7 @@ Azure Blob Storage へのデータの移動がワークフローに含まれる�
 
 次の情報に留意してください。
 
-* Azure HPC Cache では、Blob Storage 内のデータを整理するために、専用のストレージ形式が使用されます。 Blob Storage ターゲットが、新しいコンテナーか空のコンテナー、またはそれまで Azure HPC Cache データに使用されていた BLOB コンテナーのいずれかでなければならないのは、そのためです。 (このクラウド ファイル システムは、[Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) でも使用されます。)
+* Azure HPC Cache では、Blob Storage 内のデータを整理するために、専用のストレージ形式が使用されます。 Blob Storage ターゲットが、新しいコンテナーか空のコンテナー、またはそれまで Azure HPC Cache データに使用されていた BLOB コンテナーのいずれかでなければならないのは、そのためです。 <!--([Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) also uses this cloud file system.)-->
 
 * バックエンドのストレージ ターゲットに Azure HPC Cache 経由でデータをコピーするのが最善の選択肢となるのは、複数のクライアントおよび並列操作を使用するときです。 1 つのクライアントからの単純なコピー コマンドでは、データの移動が低速になります。
 
@@ -79,11 +79,11 @@ Azure HPC Cache を使用した並列データ取り込みには、次の方法�
 
 * 手動コピー - クライアント上で、マルチスレッドのコピーを手動で作成できます。そのためには、定義済みのファイル セットまたはパスのセットに対して、一度に複数のコピー コマンドをバックグラウンドで実行します。 詳細については、[Azure HPC Cache のデータ取り込み (手動でコピーする方法)](hpc-cache-ingest-manual.md) に関するページを参照してください。
 
-* ``msrsync`` を使用して部分的に自動化されたコピー  -  ``msrsync`` は、複数の並列 ``rsync`` プロセスを実行するラッパー ユーティリティです。 詳細については、「[Azure HPC Cache のデータ取り込み - msrsync を使用した方法](hpc-cache-ingest-msrsync.md)」を参照してください。
+* ``msrsync`` を使用して部分的に自動化されたコピー  - ``msrsync`` は、複数の並列 ``rsync`` プロセスを実行するラッパー ユーティリティです。 詳細については、「[Azure HPC Cache のデータ取り込み - msrsync を使用した方法](hpc-cache-ingest-msrsync.md)」を参照してください。
 
 * コピー スクリプト (``parallelcp``) の使用 - 並列コピー スクリプトの作成と実行の方法については、「[Azure HPC Cache のデータ取り込み - 並列コピー スクリプトを使用した方法](hpc-cache-ingest-parallelcp.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ストレージのセットアップ後にクライアントからキャッシュをマウントする方法を確認しましょう。
 

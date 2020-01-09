@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707568"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368037"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内のリソースの名前解決
 
@@ -43,8 +43,8 @@ Azure を使用して IaaS、PaaS、ハイブリッド ソリューションを�
 | ある仮想ネットワーク内の App Service Web Apps から異なる仮想ネットワーク内の VM への名前解決。 |Azure で解決するために仮想ネットワーク間でクエリを転送する、ユーザーが管理する DNS サーバー (DNS プロキシ)。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
 | Azure 内の VM またはロール インスタンスからのオンプレミスのコンピューターとサービスの名前解決。 |ユーザーが管理する DNS サーバー (オンプレミスのドメイン コントローラー、ローカルの読み取り専用ドメイン コントローラー、ゾーン転送を使用して同期する DNS セカンダリなど)。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
 | オンプレミスのコンピューターからの Azure のホスト名の解決。 |対応する仮想ネットワーク内のユーザーが管理する DNS プロキシ サーバーにクエリを転送し、プロキシ サーバーが解決するために Azure にクエリを転送します。 「[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)」を参照してください。 |FQDN のみ |
-| 内部 IP 用の逆引き DNS。 |[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)。 |適用不可 |
-| 仮想ネットワークではなく、異なるクラウド サービスに配置された VM またはロール インスタンス間での名前解決。 |適用不可。 異なるクラウド サービス内にある VM とロール インスタンス間の接続は、仮想ネットワークの外側ではサポートされません。 |適用不可|
+| 内部 IP 用の逆引き DNS。 |[独自の DNS サーバーを使用する名前解決](#name-resolution-that-uses-your-own-dns-server)。 |適用なし |
+| 仮想ネットワークではなく、異なるクラウド サービスに配置された VM またはロール インスタンス間での名前解決。 |適用不可。 異なるクラウド サービス内にある VM とロール インスタンス間の接続は、仮想ネットワークの外側ではサポートされません。 |適用なし|
 
 ## <a name="azure-provided-name-resolution"></a>Azure で提供される名前解決
 
@@ -55,7 +55,7 @@ Azure では、パブリック DNS 名の解決と共に、同じ仮想ネット
 >
 >
 
-### <a name="features"></a>機能
+### <a name="features"></a>[機能]
 
 Azure で提供される名前解決の機能を次に示します。
 * 使いやすさ。 構成は必要ありません。
@@ -193,24 +193,18 @@ Azure へのクエリの転送がニーズに合わない場合は、独自の D
 
 > [!NOTE]
 > DNS サーバーの IP などのネットワーク接続プロパティは、VM 内で直接編集しないでください。 これは、仮想ネットワーク アダプターを交換したときのサービス回復時にネットワーク接続プロパティが消去される可能性があるためです。 これは、Windows VM と Linux VM の両方に適用されます。
->
->
 
 Azure Resource Manager デプロイ モデルを使用している場合は、仮想ネットワークとネットワーク インターフェイス用の DNS サーバーを指定できます。 詳細については、[仮想ネットワークの管理](manage-virtual-network.md)に関するページと[ネットワーク インターフェイスの管理](virtual-network-network-interface.md)に関するページを参照してください。
 
 > [!NOTE]
 > 仮想ネットワークのカスタムの DNS サーバーを選択する場合は、DNS サーバーの少なくとも 1 つの IP アドレスを指定する必要があります。そうしないと、仮想ネットワークは構成を無視し、代わりに Azure で提供される DNS を使用します。
->
->
 
 クラシック デプロイ モデルを使用している場合は、Azure Portal または[ネットワーク構成ファイル](https://msdn.microsoft.com/library/azure/jj157100)を使用して仮想ネットワークの DNS サーバーを指定できます。 クラウド サービスでは、DNS サーバーは、[サービス構成ファイル](https://msdn.microsoft.com/library/azure/ee758710)または PowerShell ([New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm)) を使用して指定できます。
 
 > [!NOTE]
-> 既にデプロイされている仮想ネットワークまたは仮想マシンの DNS 設定を変更した場合、新しい DNS 設定を有効にするには、仮想ネットワーク内の影響を受けるすべての VM で DHCP リースの更新を実行する必要があります。 Windows OS を実行している VM の場合は、その VM で直接 `ipconfig /renew` を入力することによってこれを行うことができます。 この手順は OS によって異なります。 ご使用の種類の OS の関連ドキュメントを参照してください。 
->
->
+> 既にデプロイされている仮想ネットワークまたは仮想マシンの DNS 設定を変更した場合、新しい DNS 設定を有効にするには、仮想ネットワーク内の影響を受けるすべての VM で DHCP リースの更新を実行する必要があります。 Windows OS を実行している VM の場合は、その VM で直接 `ipconfig /renew` を入力することによってこれを行うことができます。 この手順は OS によって異なります。 ご使用の種類の OS の関連ドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Resource Manager デプロイ モデル:
 

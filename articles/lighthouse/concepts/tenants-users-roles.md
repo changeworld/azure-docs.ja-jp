@@ -3,12 +3,12 @@ title: Azure Lighthouse のシナリオにおけるテナント、ロール、�
 description: Azure Active Directory のテナント、ユーザー、およびロールの概念と、それらを Azure Lighthouse のシナリオで使用する方法について説明します。
 ms.date: 11/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: a1ad004c79f90f4642640405da9e8876b9202e98
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 77a247c86765f25539833a6ba70f80e737c6846d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453567"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー
 
@@ -22,13 +22,13 @@ ms.locfileid: "74463932"
 
 ## <a name="role-support-for-azure-delegated-resource-management"></a>Azure の委任されたリソース管理でのロールのサポート
 
-承認を定義する場合、各ユーザー アカウントには、[ロールベースのアクセス制御 (RBAC) の組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)を 1 つ割り当てる必要があります。 カスタム ロールと[従来のサブスクリプション管理者ロール](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)はサポートされていません。
+承認を定義する場合、各ユーザー アカウントには、[ロールベースのアクセス制御 (RBAC) の組み込みロール](../../role-based-access-control/built-in-roles.md)を 1 つ割り当てる必要があります。 カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
 
-現在、Azure の委任されたリソース管理では、以下を除く、すべての[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)がサポートされています。
+現在、Azure の委任されたリソース管理では、以下を除く、すべての[組み込みロール](../../role-based-access-control/built-in-roles.md)がサポートされています。
 
-- [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)ロールはサポートされていません。
-- [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) 権限を持つすべての組み込みロールはサポートされていません。
-- 組み込みの[ユーザー アクセス管理者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator)ロールは、[顧客のテナント](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)のマネージド ID にロールを割り当てる目的限定でサポートされています。 このロールで通常付与されるその他の権限は適用されません。 ユーザーにこのロールを定義する場合は、このユーザーがマネージド ID に割り当てることができる組み込みロールも指定する必要があります。
+- [所有者](../../role-based-access-control/built-in-roles.md#owner)ロールはサポートされていません。
+- [DataActions](../../role-based-access-control/role-definitions.md#dataactions) 権限を持つすべての組み込みロールはサポートされていません。
+- 組み込みの[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールは、[顧客のテナント](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)のマネージド ID にロールを割り当てる目的限定でサポートされています。 このロールで通常付与されるその他の権限は適用されません。 ユーザーにこのロールを定義する場合は、このユーザーがマネージド ID に割り当てることができる組み込みロールも指定する必要があります。
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>ユーザーとロールを定義するためのベスト プラクティス
 
@@ -36,10 +36,10 @@ ms.locfileid: "74463932"
 
 - ほとんどの場合、一連の個々のユーザー アカウントではなく、Azure AD のユーザー グループまたはサービス プリンシパルにアクセス許可を割り当てます。 これにより、実際のアクセス要件が変更されたときに、プランを更新して再発行することなく、個々のユーザーのアクセス権を追加または削除できます。
 - ユーザーがジョブの完了に必要なアクセス許可のみを持ち、不注意によるエラーの可能性が低くなるように、必ず最小限の特権の原則に従ってください。 詳細については、「[推奨セキュリティ プラクティス](../concepts/recommended-security-practices.md)」を参照してください。
-- 必要に応じて後で[委任へのアクセスを削除](../how-to/onboard-customer.md#remove-access-to-a-delegation)できるように、[マネージド サービスの登録割り当ての削除ロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role)を持つユーザーを含めます。 このロールが割り当てられていない場合、委任されたリソースは顧客のテナントのユーザーのみが削除できます。
-- [Azure portal の [マイ カスタマー] ページを表示](../how-to/view-manage-customers.md)する必要があるすべてのユーザーには、必ず[閲覧者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader)ロール (または閲覧者アクセスを含む別の組み込みロール) を付与します。
+- 必要に応じて後で[委任へのアクセスを削除](../how-to/onboard-customer.md#remove-access-to-a-delegation)できるように、[マネージド サービスの登録割り当ての削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)を持つユーザーを含めます。 このロールが割り当てられていない場合、委任されたリソースは顧客のテナント内のユーザーによってのみ削除できます。
+- [Azure portal の [マイ カスタマー] ページを表示](../how-to/view-manage-customers.md)する必要があるすべてのユーザーには、必ず[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロール (または閲覧者アクセスを含む別の組み込みロール) を付与します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure の委任されたリソース管理で推奨されるセキュリティの運用方法](recommended-security-practices.md)を学習します。
 - [Azure Resource Manager テンプレートを使用する](../how-to/onboard-customer.md)か[プライベートまたはパブリックのマネージド サービスのオファーを Azure Marketplace に公開する](../how-to/publish-managed-services-offers.md)ことで、Azure の委任されたリソース管理に顧客をオンボードします。

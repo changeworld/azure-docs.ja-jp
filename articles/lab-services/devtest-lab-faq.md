@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565327"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644921"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -76,7 +76,7 @@ DevTest Labs は、開発環境やテスト環境が必要であり、これら�
 ### <a name="how-am-i-billed-for-devtest-labs"></a>DevTest Labs の課金方法を教えてください。
 DevTest Labs は無料サービスです。 DevTest Labs でのラボの作成や、ポリシー、テンプレート、アーティファクトの構成は無料です。 VM、ストレージ アカウント、仮想ネットワークなど、ラボ内で使用する Azure リソースに対してのみ課金されます。 ラボ リソースのコストの詳細については、「[Azure DevTest Labs の価格](https://azure.microsoft.com/pricing/details/devtest-lab/)」をご覧ください。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>DevTest Labs の各種セキュリティ レベルはどのようなものですか。
 セキュリティ アクセスは、ロールベースのアクセス制御 (RBAC) によって決定されます。 アクセスのしくみを理解するには、RBAC で定義されているアクセス許可、ロール、スコープの違いを理解することが有用です。
@@ -162,11 +162,11 @@ Microsoft では、そのままデプロイしたり、変更してラボ用の�
 現在の社内の名前付け規則を Azure の運用環境にまで拡張し、DevTest Labs 環境全体で一貫性を持たせたいことがあります。 DevTest Labs をデプロイするときは、開始時のポリシーを具体的に設けることをお勧めします。 一元化されたスクリプトと JSON テンプレートを使用してポリシーをデプロイすることで、一貫性を適用できます。 名前付けポリシーは、サブスクリプション レベルで適用される Azure のポリシーによって実装できます。 Azure Policy の JSON サンプルについては、「[Azure Policy のサンプル](../governance/policy/samples/index.md)」をご覧ください。
 
 ### <a name="how-many-labs-can-i-create-under-the-same-subscription"></a>同じサブスクリプションにラボをいくつ作成できますか。
-サブスクリプションごとに作成できるラボの数に特定の制限はありません。 ただし、サブスクリプションごとに使用できるリソースの量には制限があります。 [Azure サブスクリプションの制限とクォータ](../azure-subscription-service-limits.md)および[これらの制限を引き上げる方法](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)に関する記事をご覧ください。
+サブスクリプションごとに作成できるラボの数に特定の制限はありません。 ただし、サブスクリプションごとに使用できるリソースの量には制限があります。 [Azure サブスクリプションの制限とクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)および[これらの制限を引き上げる方法](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)に関する記事をご覧ください。
 
 
 ### <a name="how-many-vms-can-i-create-per-lab"></a>ラボごとにいくつの VM を作成できますか。
-ラボごとに作成できる VM の数に特定の制限はありません。 ただし、使用できるリソース (VM コア、パブリック IP など) はサブスクリプションごとに制限されています。 [Azure サブスクリプションの制限とクォータ](../azure-subscription-service-limits.md)および[これらの制限を引き上げる方法](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)に関する記事をご覧ください。
+ラボごとに作成できる VM の数に特定の制限はありません。 ただし、使用できるリソース (VM コア、パブリック IP など) はサブスクリプションごとに制限されています。 [Azure サブスクリプションの制限とクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)および[これらの制限を引き上げる方法](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests)に関する記事をご覧ください。
 
 ### <a name="how-do-i-determine-the-ratio-of-users-per-lab-and-the-overall-number-of-labs-that-are-needed-across-an-organization"></a>ラボあたりのユーザー数と組織全体で必要なラボの総数の比率を決める方法はありますか。
 同じ開発プロジェクトに関連付けられている部署と開発グループは、同じラボに関連付けることをお勧めします。 両方のグループに同じ種類のポリシー、イメージ、およびシャットダウン ポリシーを適用できます。
@@ -285,7 +285,7 @@ foreach($labVM in $labVMs)
 
 ラボに関連付けられているコピー先ストレージ アカウントを検索するには、次の手順に従います。
 
-1.  [Azure Portal](https://portal.azure.com) にサインインします。
+1.  [Azure portal](https://portal.azure.com) にサインインする
 2.  左側のメニューの **[リソース グループ]** を選択します。
 3.  ラボに関連付けられているリソース グループを見つけて選択します。
 4.  **[概要]** で、いずれかのストレージ アカウントを選択します。
@@ -352,7 +352,7 @@ Azure DevOps を使用している場合は、[DevTest Labs Tasks の拡張機�
 
 また、ここでは ([ハブ - スポーク モデル](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke))、VNET ピアリング パターンの使用も検討してください。 このアプローチでは、サブスクリプション間で vnet およびサブネットでの通信が可能になります。 それ以外の場合は、各 DevTest Labs 環境で専用の仮想ネットワークを使用できます。 
 
-サブスクリプションあたりの仮想ネットワークの数には[制限](../azure-subscription-service-limits.md)があります。 既定の数は 50 ですが、この制限は 100 まで増やすことができます。
+サブスクリプションあたりの仮想ネットワークの数には[制限](../azure-resource-manager/management/azure-subscription-service-limits.md)があります。 既定の数は 50 ですが、この制限は 100 まで増やすことができます。
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>共有 IP アドレス、パブリック IP アドレス、プライベート IP アドレスはどのように使い分ける必要がありますか。
  

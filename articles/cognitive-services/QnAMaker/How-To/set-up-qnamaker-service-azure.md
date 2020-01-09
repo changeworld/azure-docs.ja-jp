@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6d52062561e3f08a214f3e191706583edc844786
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ec19f4b4140fb6f4a1dc968f4e2cac3c3d7a1e76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794208"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447711"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker のリソースを管理する
 
@@ -28,10 +28,10 @@ QnA Maker サービスでは、**サブスクリプション キー**と**エン
 
 ![キー管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-|名前|Location|目的|
+|Name|Location|目的|
 |--|--|--|
 |Subscription key|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|これらのキーは、[QnA Maker 管理サービス API](https://go.microsoft.com/fwlink/?linkid=2092179) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
-|エンドポイント キー|[QnA Maker ポータル](http://www.qnamaker.ai)|これらのキーは、公開されたナレッジ ベースのエンドポイントにアクセスして、ユーザーの質問に対する回答を取得する目的で使用されます。 通常、このエンドポイントは、QnA Maker サービスに接続するチャット ボットまたはクライアント アプリケーション コードで使用されます。 これらのキーは、QnA Maker ナレッジ ベースを公開するときに作成されます。<br><br>これらのキーは、 **[サービスの設定]** ページで確認できます。 このページは、ページの右上にあるドロップダウン メニュー内のユーザーのメニューに含まれています。|
+|エンドポイント キー|[QnA Maker ポータル](https://www.qnamaker.ai)|これらのキーは、公開されたナレッジ ベースのエンドポイントにアクセスして、ユーザーの質問に対する回答を取得する目的で使用されます。 通常、このエンドポイントは、QnA Maker サービスに接続するチャット ボットまたはクライアント アプリケーション コードで使用されます。 これらのキーは、QnA Maker ナレッジ ベースを公開するときに作成されます。<br><br>これらのキーは、 **[サービスの設定]** ページで確認できます。 このページは、ページの右上にあるドロップダウン メニュー内のユーザーのメニューに含まれています。|
 
 ## <a name="create-a-new-qna-maker-service"></a>新しい QnA Maker サービスの作成
 
@@ -63,7 +63,7 @@ QnA Maker サービスでは、**サブスクリプション キー**と**エン
 
     * **Application Insights** を有効にするかどうかを選択します。 **Application Insights** を有効にした場合、トラフィック、チャットのログ、エラーに関するテレメトリが QnA Maker によって収集されます。
     * Application Insights リソースのデプロイ先となる **App Insights の場所**を選択します。
-    * コスト削減対策として、QnA Maker 用に作成する Azure リソースのすべてではなく、一部を[共有](#share-existing-services-with-qna-maker)することができます。 
+    * コスト削減対策として、QnA Maker 用に作成する Azure リソースのすべてではなく、一部を[共有](#share-existing-services-with-qna-maker)することができます。
 
 1. すべてのフィールドを確認した後、 **[作成]** を選択します。 プロセスが完了するまでに数分かかることがあります。
 
@@ -106,7 +106,7 @@ QnA Maker リソースを作成した Azure portal で、サブスクリプシ�
 
 QnA Maker はいくつかの Azure リソースを作成します。 管理を軽減し、コスト共有のメリットを得るために、次の表を使用して、共有できるものとできないものを理解してください。
 
-|Service|共有|理由|
+|サービス|共有|理由|
 |--|--|--|
 |Cognitive Services|X|仕様により不可能|
 |App Service プラン|✔|App Service プランに対して固定のディスク領域が割り当てられています。 同じ App Service プランを共有している他のアプリによって大量のディスク領域が使用された場合、QnA Maker App Service インスタンスで問題が発生します。|
@@ -205,7 +205,7 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 
 QnA Maker の管理サービスは、QnA Maker ポータルと初期データ処理でのみ使用されます。 このサービスは、米国西部リージョンでのみ利用できます。 この米国西部のサービスでは、顧客データは保存されません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [App Service](../../../app-service/index.yml) と [Search Service](../../../search/index.yml) の詳細をご覧ください。
 

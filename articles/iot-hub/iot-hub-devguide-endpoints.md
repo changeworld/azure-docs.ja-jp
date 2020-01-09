@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 689a702863dda53870f775bd8520d5dd406d242f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: da6d17e42407048b7ecbcacade67ef48046d7fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640602"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457125"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -31,7 +31,7 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
 
 次の一覧では、エンドポイントについて説明します。
 
-* **リソースプロバイダー**。 IoT Hub リソース プロバイダーでは、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) インターフェイスが公開されています。 Azure サブスクリプションの所有者は、IoT Hub の作成と削除や IoT Hub プロパティの更新などを、このインターフェイスで行うことができます。 IoT Hub のプロパティでは、[ハブレベルのセキュリティ ポリシー](iot-hub-devguide-security.md#access-control-and-permissions) (デバイスレベルのアクセス制御ではありません) と、Cloud-to-device (クラウドからデバイス) と Device-to-cloud (デバイスからクラウド) のメッセージング機能のオプションを管理します。 また、IoT Hub リソースプロバイダーにより、[デバイス ID をエクスポート](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)することもできます。
+* **リソースプロバイダー**。 IoT Hub リソース プロバイダーでは、[Azure Resource Manager](../azure-resource-manager/management/overview.md) インターフェイスが公開されています。 Azure サブスクリプションの所有者は、IoT Hub の作成と削除や IoT Hub プロパティの更新などを、このインターフェイスで行うことができます。 IoT Hub のプロパティでは、[ハブレベルのセキュリティ ポリシー](iot-hub-devguide-security.md#access-control-and-permissions) (デバイスレベルのアクセス制御ではありません) と、Cloud-to-device (クラウドからデバイス) と Device-to-cloud (デバイスからクラウド) のメッセージング機能のオプションを管理します。 また、IoT Hub リソースプロバイダーにより、[デバイス ID をエクスポート](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)することもできます。
 
 * **デバイス ID の管理**。 各 IoT Hub は、デバイス ID の管理 (作成、取得、更新、削除) を行うための、一連の HTTPS REST エンドポイントを公開します。 [デバイス ID](iot-hub-devguide-identity-registry.md)は、デバイスの認証とアクセス制御に使用されます。
 
@@ -84,7 +84,7 @@ IoT Hub エンドポイントはすべて [TLS](https://tools.ietf.org/html/rfc5
 
 REST API の [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用して、エンドポイントの正常性状態を取得できます。 エンドポイントの正常性が停止または異常である場合は、エンドポイントがこれらの状態にあるときは待機時間が長くなることが予測されるため、ルーティング メッセージ待機時間に関連した [IoT Hub メトリック](iot-hub-metrics.md)を使用してエラーを識別およびデバッグすることをお勧めします。
 
-|正常性状態|説明|
+|正常性状態|[説明]|
 |---|---|
 |healthy|エンドポイントは想定どおりにメッセージを受け付けています。|
 |unhealthy|エンドポイントは想定どおりにメッセージを受け付けておらず、IoT Hub はこのエンドポイントへのデータ送信を再試行しています。 IoT Hub が最終的に一貫して正常状態を確立すると、異常なエンドポイントの状態が "正常" に更新されます。|
@@ -97,7 +97,7 @@ IoT ソリューションでは、*フィールド ゲートウェイ*はデバ�
 
 [Azure IoT Edge](/azure/iot-edge/) を使用してフィールド ゲートウェイを実装できます。 IoT Edge には、同じ IoT Hub 接続上で複数のデバイスからの通信を多重化する機能などが用意されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 

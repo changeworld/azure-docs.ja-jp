@@ -1,24 +1,14 @@
 ---
 title: コンテナー用 Azure Monitor のライブ データ (プレビュー) の設定 | Microsoft Docs
 description: この記事では、コンテナー用 Azure Monitor で kubectl を使用せずに、コンテナーのログ (stdout/stderr) とイベントのリアルタイム ビューを設定する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/16/2019
-ms.author: magoedte
-ms.openlocfilehash: 596c5ad378d471c6c98616a48f44e96c365ee0bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404697"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>ライブ データ (プレビュー) 機能を設定する方法
 
@@ -38,7 +28,7 @@ Azure Kubernetes Service (AKS) クラスターから、コンテナー用 Azure 
 - Azure Active Directory と統合された AKS クラスター 
 
 >[!NOTE]
->[プライベート クラスター](https://azure.microsoft.com/updates/aks-private-cluster/)として有効化された AKS クラスターは、この機能でサポートされていません。 この機能では、ブラウザーからプロキシ サーバーを介した Kubernetes API への直接アクセスを利用します。 このプロキシからの Kubernetes API をブロックするネットワーク セキュリティを有効にすると、このトラフィックはブロックされます。 
+>[プライベート クラスター](https://azure.microsoft.com/updates/aks-private-cluster/)として有効にされた AKS クラスターは、この機能でサポートされていません。 この機能では、ブラウザーからプロキシ サーバーを介した Kubernetes API への直接アクセスを利用します。 このプロキシから Kubernetes API をブロックするようにネットワーク セキュリティを有効にすると、このトラフィックはブロックされます。 
 
 >[!NOTE]
 >この機能は、Azure 中国を含む、すべての Azure リージョンで利用できます。 現在、Azure 米国政府機関では利用できません。
@@ -141,6 +131,6 @@ Kubernetes での高度なセキュリティ設定の詳細については、[Ku
 
 AKS クラスターの **ClusterRoleBinding** の構成に関する追加のヘルプについては、「[RBAC のバインドを作成する](../../aks/azure-ad-integration-cli.md#create-rbac-binding)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 認証を設定したら、[メトリック](container-insights-livedata-metrics.md)、[デプロイ](container-insights-livedata-deployments.md)、[イベントとログ](container-insights-livedata-overview.md)をクラスターからリアルタイムで表示できます。

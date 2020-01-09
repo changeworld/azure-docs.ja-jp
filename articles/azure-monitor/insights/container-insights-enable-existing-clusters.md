@@ -1,18 +1,14 @@
 ---
 title: デプロイされている Azure Kubernetes Service (AKS) クラスターを監視する | Microsoft Docs
 description: Azure Monitor for containers を使用して、自分のサブスクリプションに既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする方法について説明します。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/12/2019
-ms.openlocfilehash: 5d68c343fee5807c430ce42777b988a48b9227f8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: eced371f7d44b486d671c2c22ca9fbb4c0b65fbb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405487"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
@@ -27,7 +23,7 @@ ms.locfileid: "73478605"
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com) にサインインします。 
+[Azure portal](https://portal.azure.com) にサインインする 
 
 ## <a name="enable-using-azure-cli"></a>Azure CLI を使用して有効にする
 
@@ -367,7 +363,7 @@ az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
   }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ソリューションのオンボードを試みた際に問題が発生した場合は、[トラブルシューティング ガイド](container-insights-troubleshoot.md)を確認してください。
 

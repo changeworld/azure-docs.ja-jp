@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
-ms.openlocfilehash: 03e5e1bc79702a979be352095bb4833a7f5fe1c6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dec81bfde160cd9913db07bb99629b8fbcc37364
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900231"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365208"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics のログ クエリのスコープと時間範囲
 [Azure portal の [Log Analytics]](get-started-portal.md) で[ログ クエリ](log-query-overview.md)を実行するとき、クエリによって評価されるデータのセットは、選択したスコープと時間範囲によって異なります。 この記事では、スコープと時間範囲、および要件に応じてそれぞれを設定する方法について説明します。 さまざまな種類のスコープの動作についても説明します。
@@ -23,7 +23,7 @@ ms.locfileid: "72900231"
 
 スコープは常に Log Analytics ウィンドウの左上に表示されます。 アイコンは、スコープが Log Analytics ワークスペースか、それとも Application Insights アプリケーションかを示します。 アイコンなしはその他の Azure リソースを示します。
 
-![Scope (スコープ)](media/scope/scope.png)
+![スコープ](media/scope/scope.png)
 
 スコープは Log Analytics の起動に使用する方法によって決まり、スコープをクリックして変更できる場合もあります。 次の表は、使用されるさまざまな種類のスコープとそれぞれの詳細の一覧です。
 
@@ -32,8 +32,8 @@ ms.locfileid: "72900231"
 | Log Analytics ワークスペース | Log Analytics ワークスペース内のすべてのレコード。 | **[Azure Monitor]** メニューまたは **[Log Analytics ワークスペース]** メニューの **[ログ]** を選択します。  | スコープを他のリソースの種類に変更できます。 |
 | Application Insights アプリケーション | Application Insights アプリケーション内のすべてのレコード。 | Application Insights の **[概要]** ページから **[分析]** を選択します。 | スコープを別の Application Insights アプリケーションにのみ変更できます。 |
 | Resource group | リソース グループ内のすべてのリソースによって作成されるレコード。 複数の Log Analytics ワークスペースからのデータを含めることができます。 | リソース グループ メニューから **[ログ]** を選択します。 | スコープは変更できません。|
-| Subscription | サブスクリプション内のすべてのリソースによって作成されたレコード。 複数の Log Analytics ワークスペースからのデータを含めることができます。 | サブスクリプション メニューから **[ログ]** を選択します。   | スコープは変更できません。 |
-| その他の Azure リソース | リソースによって作成されるレコード。 複数の Log Analytics ワークスペースからのデータを含めることができます。  | リソース メニューから **[ログ]** を選択します。<br>または<br>**[Azure Monitor]** メニューから **[ログ]** を選択し、新しいスコープを選択します。 | スコープを同じリソースの種類にのみ変更できます。 |
+| サブスクリプション | サブスクリプション内のすべてのリソースによって作成されたレコード。 複数の Log Analytics ワークスペースからのデータを含めることができます。 | サブスクリプション メニューから **[ログ]** を選択します。   | スコープは変更できません。 |
+| その他の Azure リソース | リソースによって作成されるレコード。 複数の Log Analytics ワークスペースからのデータを含めることができます。  | リソース メニューから **[ログ]** を選択します。<br>OR<br>**[Azure Monitor]** メニューから **[ログ]** を選択し、新しいスコープを選択します。 | スコープを同じリソースの種類にのみ変更できます。 |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>リソースをスコープにしたときの制限
 
@@ -63,7 +63,7 @@ Log Analytics は、特定の数のリージョンが使用されているとき
 ![クエリ失敗](media/scope/query-failed.png)
 
 
-## <a name="time-range"></a>時間範囲
+## <a name="time-range"></a>時間の範囲
 時間範囲は、レコードが作成された時期に基づいてクエリで評価されるレコード セットを指定します。 次の表で説明しているように、これはワークスペースまたはアプリケーション内のすべてのレコードの標準プロパティによって定義されます。
 
 | Location | プロパティ |
@@ -89,7 +89,7 @@ Log Analytics ウィンドウの上部にあるタイム ピッカーから選�
 
 ![アプリのクエリ](media/scope/query-app.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure portal 内での Log Analytics の使用に関するチュートリアル](get-started-portal.md)を進めます。
 - [クエリの作成に関するチュートリアル](get-started-queries.md)を進めます。

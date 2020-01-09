@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 462c873221a4bdc622a9b118b6699a9719a5f88d
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: a951bc07c4a8ed42b1c116332d13674656bbaafd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963735"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646797"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>プライベート Azure DNS ゾーンとは
 
@@ -25,14 +25,14 @@ Azure プライベート DNS は、信頼性が高くセキュリティで保護
 
 ## <a name="limits"></a>制限
 
-サブスクリプションで作成できるプライベート DNS ゾーンの数と、プライベート DNS ゾーンでサポートされるレコードセットの数については、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
+サブスクリプションで作成できるプライベート DNS ゾーンの数と、プライベート DNS ゾーンでサポートされるレコードセットの数については、「[Azure DNS の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)」を参照してください。
 
 ## <a name="restrictions"></a>制限
 
 * 単一ラベルのプライベート DNS ゾーンはサポートされていません。 プライベート DNS ゾーンには、2 つ以上のラベルが必要です。 たとえば、contoso.com にはドットで区切られた 2 つのラベルがあります。 プライベート DNS ゾーンは、最大 34 個のラベルを持つことができます。
 * プライベート DNS ゾーンにゾーンの委任 (NS レコード) を作成することはできません。 子ドメインを使用する場合は、ドメインをプライベート DNS ゾーンとして直接作成し、親ゾーンからネームサーバーの委任を設定せずに、仮想ネットワークにリンクすることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure PowerShell](./private-dns-getstarted-powershell.md) または [Azure CLI](./private-dns-getstarted-cli.md) を使用して Azure DNS のプライベート ゾーンを作成する方法を確認します。
 

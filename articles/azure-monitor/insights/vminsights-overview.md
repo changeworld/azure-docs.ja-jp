@@ -4,15 +4,15 @@ description: アプリケーション コンポーネントとその依存関係
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: e9a3df0172f276800a3049675f6e858db7f0370c
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 17aa81c626c1bfa8a8a344552b7a0fe61dd85a7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307293"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365786"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) とは?
 
@@ -25,7 +25,7 @@ Azure Monitor for VMs では、ご利用の Azure 仮想マシン (VM) および
 - **依存関係マップ**: さまざまなリソース グループおよびサブスクリプションから、該当する VM と相互接続されているコンポーネントが表示されます。  
 
 >[!NOTE]
->最近、当社のパブリック プレビューのお客様から受け取ったフィードバックに基づいて正常性機能に対して行っている[変更を発表](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
+>最近、Microsoft では、パブリック プレビューのお客様からのフィードバックに基づいて正常性機能に対して行っている[変更を発表](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
 )しました。 実施する変更の数を考慮して、新しいお客様への正常性機能の提供を停止する予定です。 既存のお客様は、引き続き正常性機能を使用できます。 詳細については、[一般提供の FAQ](vminsights-ga-release-faq.md) に関するページを参照してください。  
 
 Azure Monitor ログとの統合により、強力な集計とフィルター処理が実現されています。さらに、時間の経過に伴うデータの傾向を分析することができます。 そうした包括的なワークロード監視は、Azure Monitor または Service Map 単独では実現できません。  
@@ -46,6 +46,6 @@ Azure Monitor for VM をデプロイすると、ご利用の VM によって収�
 
 ログのサイズは、パフォーマンス カウンターの文字列の長さによって異なり、仮想マシンに割り当てられた論理ディスクおよびネットワーク アダプターの数に応じて大きくなる可能性があります。 ワークスペースを既にお持ちで、これらのカウンターを収集している場合、重複する課金は適用されません。 Service Map を既に使用している場合、確認できる変更点は、Azure Monitor に送信される追加の接続データだけです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ご利用の仮想マシンを監視する上で役立つ要件と方法については、[Azure Monitor for VMs のデプロイ](vminsights-enable-overview.md)に関するページをご覧ください。

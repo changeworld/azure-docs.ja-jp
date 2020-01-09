@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 02/06/2019
 ms.author: shvija
-ms.openlocfilehash: 5d980cefa5aa953a3fb9683adb589bf202e73250
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a71751ba8dde2152a00a1455a51d13a3dedb792a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437173"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>イベント ハブを含む名前空間を作成し、テンプレートを使用してキャプチャを有効にします
 
@@ -51,7 +51,7 @@ Event Hubs Capture を Azure Data Lake Store に対して有効にするには�
 
 [![Azure へのデプロイ](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 
 Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。 テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。 これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。 常に同じ値に対してはパラメーターを定義しないでください。 テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
@@ -427,7 +427,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Portal](https://portal.azure.com) を使用して Event Hubs Capture を構成することもできます。 詳細については、「[Azure Portal を使用して Event Hubs Capture を有効にする](event-hubs-capture-enable-through-portal.md)」を参照してください。
 
@@ -437,7 +437,7 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 * [イベント ハブの作成](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Azure Resources naming conventions]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Event hub and enable Capture to Storage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture

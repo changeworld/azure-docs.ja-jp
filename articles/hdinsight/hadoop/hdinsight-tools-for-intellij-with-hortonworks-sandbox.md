@@ -3,18 +3,18 @@ title: Hortonworks Sandbox と Azure Toolkit for IntelliJ の使用
 description: Hortonworks Sandbox と一緒に Azure Toolkit for IntelliJ の HDInsight ツールを使用する方法について説明します。
 keywords: Hadoop ツール, Hive クエリ, Intellij, Hortonworks Sandbox, Azure Toolkit for IntelliJ
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 783d7fc8bc26ce2c715c774e63ecf60c5b75a439
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076268"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647834"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する
 
@@ -63,7 +63,7 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
    1. **[Project name]\(プロジェクト名\)** ボックスにプロジェクト名を入力します。
    2. **[Project location]\(プロジェクトの場所\)** ボックスにプロジェクトの場所を入力します。
    3. **[Project SDK]\(プロジェクト SDK\)** ドロップダウン リストの横の **[New]\(新規\)** をクリックし、 **[JDK]** を選択して、Java JDK バージョン 1.7 以降のフォルダーを指定します。 Spark 2.x クラスターに **[Java 1.8]** を選択します。 Spark 1.x クラスターに **[Java 1.7]** を選択します。 既定の場所は、C:\Program Files\Java\jdk1.8.x_xxx です。
-   4. **[Spark version]\(Spark のバージョン\)** ボックスの一覧には、Scala プロジェクト作成ウィザードによって Spark SDK と Scala SDK の適切なバージョンが統合されています。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この例では、Spark 1.6.2 (Scala 2.10.5) を使用します。 **Scala 2.10.x** と示されているリポジトリを使用してください。 Scala 2.11.x と示されているレポジトリは使用しないでください。
+   4. **[Spark version]\(Spark のバージョン\)** ボックスの一覧には、Scala プロジェクト作成ウィザードによって Spark SDK と Scala SDK の適切なバージョンが統合されています。 Spark クラスターのバージョンが 2.0 より前の場合は、 **[Spark 1.x]** を選択します。 それ以外の場合は、 **[Spark2.x]** を選択します。 この例では、Spark 1.6.2 (Scala 2.10.5) を使用します。 **Scala 2.10.x** と示されているリポジトリを使用してください。 Scala 2.11.x と示されているレポジトリは使用しないでください。
     
       ![IntelliJ Scala プロジェクトのプロパティを作成する](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
@@ -139,14 +139,14 @@ IntelliJ IDEA をエミュレーターにリンクしたら、プロジェクト
 プロジェクトをエミュレーターに送信するには、次の手順を実行します。
 
 1. **Project Explorer** でプロジェクトを右クリックし、 **[Submit Spark application to HDInsight]\(HDInsight への Spark アプリケーションの送信\)** を選択します。
-2. 次の手順を完了します。
+2. 次の手順を実行します。
 
     1. **[Spark cluster (Linux only)]\(Spark クラスター (Linux のみ)\)** ドロップダウン リストで、ローカルの Hortonworks Sandbox を選択します。
     2. **[Main class name]\(メイン クラス名\)** ボックスで、メイン クラス名を選択するか入力します。 この記事では、名前は **GroupByTest** です。
 
 3. **[Submit]\(送信\)** をクリックします。 ジョブ送信のログは、Spark の送信ツール ウィンドウに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Toolkit for IntelliJ の HDInsight ツールを使用して HDInsight Spark Linux クラスター向けの Apache Spark アプリケーションを作成する](../spark/apache-spark-intellij-tool-plugin.md)方法を確認します。
 
@@ -158,4 +158,3 @@ IntelliJ IDEA をエミュレーターにリンクしたら、プロジェクト
 
 - [Azure Toolkit for Eclipse の HDInsight ツールを使用して Apache Spark アプリケーションを作成する](../spark/apache-spark-eclipse-tool-plugin.md)方法を確認します。
 
-- Eclipse 用 HDInsight ツールのビデオについては、「[Use HDInsight Tools for Eclipse to create Spark applications (Eclipse 用 HDInsight ツールを使用した Spark アプリケーションの作成)](https://mix.office.com/watch/1rau2mopb6fha)」をご覧ください。

@@ -6,18 +6,18 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 52a43dff5d2e740633675b71d5177d0df876d3cd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: f8e431124155fe23853fe61e985fe4db522c3f77
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092452"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644275"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>PowerShell を使用して Azure 内部ロード バランサーを別のリージョンに移動する
 
 既存の内部ロード バランサーをリージョン間で移動することが必要になるさまざまなシナリオがあります。 たとえば、テスト用に同じ構成で内部ロード バランサーを作成したい場合があります。 また、ディザスター リカバリー計画の一環として、内部ロード バランサーを別のリージョンに移動したい場合もあります。
 
-Azure 内部ロード バランサーは、リージョン間で移動することはできません。 ただし、Azure Resource Manager テンプレートを使用すると、内部ロード バランサーの既存の構成と仮想ネットワークをエクスポートできます。  その後、そのロード バランサーと仮想ネットワークをテンプレートにエクスポートし、宛先リージョンに合わせてパラメーターを変更して、そのテンプレートを新しいリージョンにデプロイすることで、リソースを別のリージョンにステージングすることができます。  Resource Manager とテンプレートの詳細については、「[リソース グループをテンプレートにエクスポートする](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)」を参照してください。
+Azure 内部ロード バランサーは、リージョン間で移動することはできません。 ただし、Azure Resource Manager テンプレートを使用すると、内部ロード バランサーの既存の構成と仮想ネットワークをエクスポートできます。  その後、そのロード バランサーと仮想ネットワークをテンプレートにエクスポートし、宛先リージョンに合わせてパラメーターを変更して、そのテンプレートを新しいリージョンにデプロイすることで、リソースを別のリージョンにステージングすることができます。  Resource Manager とテンプレートの詳細については、「[リソース グループをテンプレートにエクスポートする](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)」を参照してください
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
 - 自分の Azure サブスクリプションで、使用するターゲット リージョンに内部ロード バランサーを作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
 
-- 自分のサブスクリプションに、このプロセスでロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- 自分のサブスクリプションに、このプロセスでロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
 
 
 ## <a name="prepare-and-move"></a>準備と移動
@@ -43,7 +43,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-azure-powershell"></a>仮想ネットワーク テンプレートをエクスポートし、Azure PowerShell からデプロイする
 
-1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドを使用して Azure サブスクリプションにサインインし、画面上の指示に従います。
+1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
     
     ```azurepowershell-interactive
     Connect-AzAccount
@@ -60,7 +60,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. ダウンロードされるファイルの名前は、リソースのエクスポート元のリソース グループの名前に基づいて付けられます。  コマンドからエクスポートした **\<resource-group-name>.json** という名前のファイルを探し、任意のエディターで開きます。
+4. ダウンロードされるファイルの名前は、リソースのエクスポート元のリソース グループの名前に基づいて付けられます。  コマンドからエクスポートされた **\<resource-group-name>.json** という名前のファイルを探し、任意のエディターで開きます。
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -98,16 +98,16 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
     ```
   
-7. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用します。
+7. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
 
     ```azurepowershell-interactive
 
     Get-AzLocation | format-table
     
     ```
-8.  また、必要に応じて、 **\<resource-group-name>.json** ファイル内の他のパラメーターも変更できます。これらは、実際の要件に応じて省略可能です。
+8.  また、必要に応じて、 **\<resource-group-name>.json** ファイル内の次のような他のパラメーターも変更できます。これらは、要件に基づくオプションです。
 
-    * **アドレス空間** - VNET のアドレス空間は、保存する前に変更できます。これには、 **\<resource-group-name>.json** ファイルの **resources** > **addressSpace** セクションにある **addressPrefixes** プロパティを変更します。
+    * **アドレス空間** - VNET のアドレス空間は、保存する前に変更できます。変更は、 **\<resource-group-name>.json** ファイルの **resources** > **addressSpace** セクションにある **addressPrefixes** プロパティで行います。
 
         ```json
                 "resources": [
@@ -158,7 +158,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
                 ]
         ```
 
-         **\<resource-group-name>.json** ファイルでアドレス プレフィックスを変更するには、上で示したセクションと、後で示す **type** セクションの 2 か所で編集する必要があります。  **addressPrefix** プロパティを上記と一致するように変更します。
+         **\<resource-group-name>.json** ファイルでアドレス プレフィックスを変更するには、上で示したセクションと、後で示す **type** セクションの 2 か所を変更する必要があります。  **addressPrefix** プロパティを上記と一致するように変更します。
 
         ```json
          "type": "Microsoft.Network/virtualNetworks/subnets",
@@ -202,7 +202,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、編集済みの **\<resource-group-name>.json** ファイルを、前の手順で作成したリソース グループにデプロイします。
+11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、前の手順で作成したリソース グループにデプロイします。
 
     ```azurepowershell-interactive
 
@@ -224,7 +224,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
     ```
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>内部ロード バランサー テンプレートをエクスポートして Azure PowerShell からデプロイする
 
-1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドを使用して Azure サブスクリプションにサインインし、画面上の指示に従います。
+1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
     
     ```azurepowershell-interactive
     Connect-AzAccount
@@ -241,13 +241,13 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
    ```
-4. ダウンロードされるファイルの名前は、リソースのエクスポート元のリソース グループの名前に基づいて付けられます。  コマンドからエクスポートした **\<resource-group-name>.json** という名前のファイルを探し、任意のエディターで開きます。
+4. ダウンロードされるファイルの名前は、リソースのエクスポート元のリソース グループの名前に基づいて付けられます。  コマンドからエクスポートされた **\<resource-group-name>.json** という名前のファイルを探し、任意のエディターで開きます。
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
    ```
 
-5. 内部ロード バランサー名のパラメーターを編集するには、ソース内部ロード バランサー名の **defaultValue** プロパティをターゲット内部ロード バランサーの名前に変更します。名前は、引用符で囲みます。
+5. 内部ロード バランサー名のパラメーターを編集するには、ソース内部ロード バランサー名の **defaultValue** プロパティをターゲット内部ロード バランサーの名前に変更します。名前は必ず引用符で囲んでください。
 
     ```json
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -306,7 +306,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
                 },
     ```
 
-11. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用します。
+11. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
 
     ```azurepowershell-interactive
 
@@ -361,7 +361,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
                     }
                 ]
         ```
-       負荷分散規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください
+       負荷分散規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
 
     * **プローブ** - 構成のロード バランサーのプローブを追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **probes** セクションでエントリを追加または削除します。
 
@@ -429,7 +429,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
             }
         }
         ```
-        インバウンド NAT 規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください
+        インバウンド NAT 規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
     
 13. **\<resource-group-name>.json** ファイルを保存します。
     
@@ -438,7 +438,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、編集済みの **\<resource-group-name>.json** ファイルを、前の手順で作成したリソース グループにデプロイします。
+11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、前の手順で作成したリソース グループにデプロイします。
 
     ```azurepowershell-interactive
 
@@ -489,7 +489,7 @@ Remove-AzVirtualNetwork -Name <virtual-network-name> -ResourceGroupName <resourc
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure 内部ロード バランサーをリージョン間で移動し、ソース リソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 

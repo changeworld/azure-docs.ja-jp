@@ -17,12 +17,12 @@ ms.date: 04/19/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fbd658d610fba27bdaed2af4bc27ed40a138fac
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 05002c1b11ef31b61fb4036f09dc8edcdafca767
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008026"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608382"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Azure Monitor を使用して Azure Active Directory のログを ArcSight と統合する
 
@@ -36,7 +36,7 @@ ms.locfileid: "74008026"
 * Azure AD のアクティビティ ログを含む Azure イベント ハブ。 [アクティビティ ログをイベント ハブにストリーミングする](quickstart-azure-monitor-stream-logs-to-event-hub.md)方法を確認してください。 
 * ArcSight Syslog NG Daemon SmartConnector (SmartConnector) または ArcSight Load Balancer の構成済みインスタンス。 イベントが ArcSight Load Balancer に送信されると、その結果、Load Balancer によってイベントは SmartConnector に送信されます。
 
-[ArcSight SmartConnector for Azure Monitor Event Hub の構成ガイド](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)をダウンロードして開いてください。 このガイドには、ArcSight SmartConnector for Azure Monitor のインストールと構成に必要な手順が記載されています。 
+[ArcSight SmartConnector for Azure Monitor Event Hub の構成ガイド](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)をダウンロードして開いてください。 このガイドには、ArcSight SmartConnector for Azure Monitor のインストールと構成に必要な手順が記載されています。 
 
 ## <a name="integrate-azure-ad-logs-with-arcsight"></a>Azure AD ログと ArcSight の統合
 
@@ -57,6 +57,6 @@ ms.locfileid: "74008026"
 
 5. この構成ガイドには、Azure 上でコネクタのプロパティをカスタマイズする方法、およびコネクタをアップグレードおよびアンインストールする方法についても説明されています。 [Azure の従量課金プラン](https://azure.microsoft.com/pricing/details/functions)へのアップグレードや ArcSight Load Balancer の構成 (イベントの負荷が Syslog NG Daemon SmartConnector で処理できる量を超えている場合) など、パフォーマンスの改善に関するセクションもあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-[ArcSight SmartConnector for Azure Monitor Event Hub の構成ガイド](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[ArcSight SmartConnector for Azure Monitor Event Hub の構成ガイド](https://community.microfocus.com/t5/ArcSight-Connectors/SmartConnector-for-Microsoft-Azure-Monitor-Event-Hub/ta-p/1671292)

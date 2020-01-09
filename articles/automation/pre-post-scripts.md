@@ -2,19 +2,15 @@
 title: Azure での Update Management のデプロイで事前および事後スクリプトを構成する
 description: この記事では、更新プログラムの展開のための事前スクリプトおよび事後スクリプトを構成および管理する方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: a5d68b64fc24577621c82be62f833c356e8fb9c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850246"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417794"
 ---
 # <a name="manage-pre-and-post-scripts"></a>事前および事後スクリプトを管理する
 
@@ -72,7 +68,7 @@ Runbook が事前または事後スクリプトとして使用されるように
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext プロパティ
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |SoftwareUpdateConfigurationName     | ソフトウェア更新構成の名前。        |
 |SoftwareUpdateConfigurationRunId     | 実行の一意の ID。        |
@@ -249,7 +245,7 @@ if (<My custom error logic>)
 
 * 事前および事後スクリプトを使用している場合は、パラメーターにブール値、オブジェクト、または配列を渡すことができません。 行った場合、Runbook は失敗します。 サポートされている型の完全な一覧については、「[パラメーターを渡す](#passing-parameters)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 使用している Windows 仮想マシンの更新プログラムの管理方法を学習するには、以下のチュートリアルに進みます。
 

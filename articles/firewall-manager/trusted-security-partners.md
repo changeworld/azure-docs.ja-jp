@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: victorh
-ms.openlocfilehash: cb8a2fdd14cfa7d361e3d78a64f3aaf60ea7676d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510052"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436772"
 ---
 # <a name="what-are-trusted-security-partners-preview"></a>信頼されたセキュリティ パートナー (プレビュー) とは
 
@@ -41,7 +41,7 @@ Azure Firewall Manager の*信頼されたセキュリティ パートナー (�
 
    Azure の接続とグローバル分散を利用して、ブランチからインターネットへのシナリオにサードパーティの NSaaS フィルター処理を簡単に追加できます。 Azure Virtual WAN を使用して、グローバルな転送ネットワークとセキュリティ エッジを構築できます。
 
-次のシナリオがサポートされています。
+次のシナリオがサポートされます。
 -   サードパーティのパートナー オファリングを使用して VNet からインターネットに。
 -   サードパーティのパートナー オファリングを使用してブランチからインターネットに。
 -   サードパーティのパートナー オファリングを使用してブランチからインターネットに。Azure Firewall 経由の残りのプライベート トラフィック (スポークからスポーク、スポークからブランチ、ブランチからスポーク)。
@@ -50,7 +50,7 @@ Azure Firewall Manager の*信頼されたセキュリティ パートナー (�
 
 - パートナー オファリングを使用した VNet からインターネットは、プライベート トラフィック用の Azure Firewall と組み合わせることはできません。 次の制限事項を参照してください。
 
-## <a name="current-limitations"></a>現時点での制限事項
+## <a name="current-limitations"></a>現在の制限
 
 - VNet からインターネットでは、プライベート トラフィック用の Azure Firewall と、インターネット トラフィック用のパートナー オファリングを追加して混在させることはできません。 インターネット トラフィックは、セキュリティ保護付き仮想ハブでは、Azure Firewall またはサードパーティのセキュリティ パートナー オファリングの両方ではなく、いずれかに送信できます。 
 - 仮想ハブごとにセキュリティ パートナーを 1 つだけデプロイできます。 プロバイダーを変更する必要がある場合は、既存のパートナーを削除し、新しいものを追加する必要があります。
@@ -75,9 +75,9 @@ Office 365 では、ユーザー エクスペリエンスを成功させるた�
 
 [Office 365 ネットワーク接続の原則](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles)では、主な Office365 ネットワーク接続をユーザー ブランチまたはモバイル デバイスからローカルに、また、インターネットを介して最寄りの Microsoft ネットワーク POP (point of presence) に直接ルーティングすることが求められます。
 
-さらに、Office 365 接続はプライバシーを確保するために強力に暗号化されており、パフォーマンス上の理由から、効率的で専用のプロトコルが使用されます。 これにより、これらの接続を従来のネットワーク レベルのセキュリティ ソリューションの対象にすることが非現実的で影響力の強いものとなります。 これらの理由から、お客様には、Azure を介して残りのトラフィックを送信する前に、ブランチから直接 Office 365 トラフィックを送信することを強くお勧めします。 Microsoft では、Azure と Office 365 を統合し、お客様が Office 365 ダイレクトおよびローカルのインターネット ブレークアウトを簡単に有効にできるようにする、複数の SD-WAN ソリューション プロバイダーと提携しています。 詳細については、「[Virtual WAN を使用して O365 ポリシーを設定するにはどうすればよいですか?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview#how-do-i-set-my-o365-policies-via-virtual-wan)」を参照してください
+さらに、Office 365 接続はプライバシーを確保するために強力に暗号化されており、パフォーマンス上の理由から、効率的で専用のプロトコルが使用されます。 これにより、これらの接続を従来のネットワーク レベルのセキュリティ ソリューションの対象にすることが非現実的で影響力の強いものとなります。 これらの理由から、お客様には、Azure を介して残りのトラフィックを送信する前に、ブランチから直接 Office 365 トラフィックを送信することを強くお勧めします。 Microsoft では、Azure と Office 365 を統合し、お客様が Office 365 ダイレクトおよびローカルのインターネット ブレークアウトを簡単に有効にできるようにする、複数の SD-WAN ソリューション プロバイダーと提携しています。 詳細については、「[Virtual WAN を使用して O365 ポリシーを設定するにはどうすればよいですか?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview)」を参照してください
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Firewall Manager を使用して、セキュリティで保護されたハブに信頼されたセキュリティ オファリングをデプロイする](deploy-trusted-security-partner.md)。

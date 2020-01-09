@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 1bfd1b5b4b7febd98499e338fcb62e339867aef4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 059fd1eb5df09cd0f24763f18cbb02b34017793c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244711"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647902"
 ---
 # <a name="azure-devtest-labs-reference-architecture-for-enterprises"></a>Azure DevTest Labs の企業向け参照アーキテクチャ
 この記事では、企業内の Azure DevTest Labs に基づくソリューションをデプロイするための参照アーキテクチャを提供します。 含まれる内容は次のとおりです。
@@ -29,7 +29,7 @@ ms.locfileid: "66244711"
 
 ![参照アーキテクチャ図](./media/devtest-lab-reference-architecture/reference-architecture.png)
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 参照アーキテクチャの重要な要素は次のとおりです。
 
 - **Azure Active Directory (Azure AD)** :DevTest Labs では、[ID 管理用の Azure AD サービス](../active-directory/fundamentals/active-directory-whatis.md)を使用します。 DevTest ラボに基づく環境へのアクセスをユーザーに許可する場合は、次の 2 つの重要な側面を考慮します。
@@ -48,14 +48,14 @@ ms.locfileid: "66244711"
 - **仮想マシンとその他のリソース (SaaS、PaaS、IaaS)** :仮想マシンは、DevTest Labs で他の Azure リソースと共にサポートされている主要なワークロードです。 DevTest Labs によって、企業はより速く簡単に Azure のリソース (仮想マシンとその他の Azure リソースを含む) へのアクセス権を付与できます。 [開発者](devtest-lab-developer-lab.md)と[テスト担当者](devtest-lab-test-env.md)の Azure へのアクセス権の詳細をご確認ください。
 
 ## <a name="scalability-considerations"></a>スケーラビリティに関する考慮事項
-DevTest Labs には、組み込みのクォータや制限はありませんが、ラボの通常の運用で使用されるその他の Azure リソースには、[サブスクリプションレベルのクォータ](../azure-subscription-service-limits.md)があります。 そのため、一般的なエンタープライズ デプロイでは、DevTest Labs の大規模なデプロイに対応するための複数の Azure サブスクリプションが必要です。 企業が最もよく到達するクォータは次のとおりです。
+DevTest Labs には、組み込みのクォータや制限はありませんが、ラボの通常の運用で使用されるその他の Azure リソースには、[サブスクリプションレベルのクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)があります。 そのため、一般的なエンタープライズ デプロイでは、DevTest Labs の大規模なデプロイに対応するための複数の Azure サブスクリプションが必要です。 企業が最もよく到達するクォータは次のとおりです。
 
-- **リソース グループ**:既定の構成では、DevTest Labs により、すべての新しい仮想マシン用またはユーザーがサービスを使用して作成する環境用のリソース グループが作成されます。 サブスクリプションには、[最大 980 個のリソース グループ](../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)を含めることができます。 つまり、これがサブスクリプション内の仮想マシンと環境の制限です。 検討する必要がある構成は他に 2 つあります。
+- **リソース グループ**:既定の構成では、DevTest Labs により、すべての新しい仮想マシン用またはユーザーがサービスを使用して作成する環境用のリソース グループが作成されます。 サブスクリプションには、[最大 980 個のリソース グループ](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)を含めることができます。 つまり、これがサブスクリプション内の仮想マシンと環境の制限です。 検討する必要がある構成は他に 2 つあります。
     - **[すべての仮想マシンが同じリソース グループに入る](resource-group-control.md)** :この設定はリソース グループの制限を満たすために役立ちますが、リソース グループごとのリソースの種類の制限に影響します。
     - **共有パブリック IP を使用**:サイズとリージョンが同じすべての VM が同じリソース グループに入ります。 仮想マシンにパブリック IP アドレスを使用することが許可されている場合、この構成はリソース グループのクォータとリソース グループごとのリソースの種類のクォータの間の '妥協点' です。
-- **リソースの種類ごとのリソース グループあたりのリソース数**:[リソースの種類ごとの、リソース グループあたりのリソース数の既定の制限は 800](../azure-subscription-service-limits.md#resource-group-limits) です。  使用する*すべての VM を同じリソース グループ構成に入れる*場合、ユーザーがこのサブスクリプション制限に達するのがはるかに早くなります。VM に多くの追加ディスクがある場合には特に早くなります。
-- **[ストレージ アカウント]** :DevTest Labs の 1 つのラボには 1 つのストレージ アカウントが付属しています。 [サブスクリプションあたり/リージョンあたりのストレージ アカウント数の Azure のクォータは 250](../azure-subscription-service-limits.md#storage-limits) です。 同じリージョン内の DevTest Labs の最大数も 250 です。
-- **ロールの割り当て**:ロールの割り当ては、ユーザーまたはプリンシパルにリソースへのアクセス権を付与する方法です (所有者、リソース、アクセス許可レベル)。 Azure には、[サブスクリプションあたり 2,000 のロールの割り当て制限](../azure-subscription-service-limits.md#role-based-access-control-limits)があります。 既定で DevTest Labs サービスでは VM ごとに 1 つのリソース グループが作成されます。 所有者には、DevTest Labs VM に対する "*所有者*" アクセス許可と、リソース グループに対する "*閲覧者*" アクセス許可が付与されます。 このようにして、ユーザーにラボへのアクセス許可を付与するときに使用される割り当てに加え、作成する新しい VM ごとに 2 つのロールの割り当てが使用されます。
+- **リソースの種類ごとのリソース グループあたりのリソース数**:[リソースの種類ごとの、リソース グループあたりのリソース数の既定の制限は 800](../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) です。  使用する*すべての VM を同じリソース グループ構成に入れる*場合、ユーザーがこのサブスクリプション制限に達するのがはるかに早くなります。VM に多くの追加ディスクがある場合には特に早くなります。
+- **[ストレージ アカウント]** :DevTest Labs の 1 つのラボには 1 つのストレージ アカウントが付属しています。 [サブスクリプションあたり/リージョンあたりのストレージ アカウント数の Azure のクォータは 250](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits) です。 同じリージョン内の DevTest Labs の最大数も 250 です。
+- **ロールの割り当て**:ロールの割り当ては、ユーザーまたはプリンシパルにリソースへのアクセス権を付与する方法です (所有者、リソース、アクセス許可レベル)。 Azure には、[サブスクリプションあたり 2,000 のロールの割り当て制限](../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits)があります。 既定で DevTest Labs サービスでは VM ごとに 1 つのリソース グループが作成されます。 所有者には、DevTest Labs VM に対する "*所有者*" アクセス許可と、リソース グループに対する "*閲覧者*" アクセス許可が付与されます。 このようにして、ユーザーにラボへのアクセス許可を付与するときに使用される割り当てに加え、作成する新しい VM ごとに 2 つのロールの割り当てが使用されます。
 - **API 読み取り/書き込み**:REST API、PowerShell、Azure CLI、Azure SDK など、Azure と DevTest Labs を自動化するさまざまな方法があります。 自動化によって、API 要求に別の制限が課される可能性があります。各サブスクリプションでは、[1 時間あたり最大 12,000 の読み取り要求と 1,200 の書き込み要求](../azure-resource-manager/resource-manager-request-limits.md)が可能です。 DevTest Labs を自動化するときは、この制限に注意してください。
 
 ## <a name="manageability-considerations"></a>管理容易性に関する考慮事項
@@ -71,5 +71,5 @@ DevTest Labs には、ネットワーク、ディスク、コンピューティ�
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
 Azure DevTest Labs には、Azure の既存のリソース (コンピューティング、ネットワークなど) が使用されます。 そのため、プラットフォームに組み込まれているセキュリティ機能の恩恵を自動的に利用できます。 たとえば、受信リモート デスクトップ接続の発信元を企業ネットワークのみに制限するには、リモート デスクトップ ゲートウェイ上の仮想ネットワークにネットワーク セキュリティ グループを追加するだけなので簡単です。 その他のセキュリティの考慮事項は、日常的にラボを使用するチーム メンバーに付与するアクセス許可のレベルだけです。 最も一般的なアクセス許可は、[*所有者*と*ユーザー*](devtest-lab-add-devtest-user.md)です。 これらのロールについて詳しくは、「[Azure DevTest Labs での所有者とユーザーの追加](devtest-lab-add-devtest-user.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このシリーズの次の記事をご覧ください。[Azure DevTest Labs インフラストラクチャをスケールアップする](devtest-lab-guidance-scale.md)。

@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.openlocfilehash: 8fa4f3b7dfbebb65b1ae60791027eb5fd31a24fb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9c9064778f29e9f53f48d8be2f127fe51e936af4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931040"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444210"
 ---
 # <a name="copy-data-to-and-from-sql-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して SQL Server をコピー元またはコピー先としてデータをコピーする
 
-> [!div class="op_single_selector" title1="使用している Azure Data Factory のバージョンを選択してください。"]
+> [!div class="op_single_selector" title1="使用している Azure Data Factory のバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-sqlserver-connector.md)
 > * [現在のバージョン](connector-sql-server.md)
 
@@ -53,7 +53,7 @@ SQL Server データベースから、サポートされている任意のシン
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -63,18 +63,18 @@ SQL Server データベースから、サポートされている任意のシン
 
 SQL Server のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **SqlServer** に設定する必要があります。 | はい |
-| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な **connectionString** 情報を指定します。 以下のサンプルを参照してください。<br/>このフィールドは、Azure Data Factory で安全に格納するために **SecureString** としてマークします。 また、Azure Key Vault にパスワードを格納することもできます。 それが SQL 認証である場合は、接続文字列から `password` 構成を取得します。 詳細については、この表の後にある JSON の例および「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 |はい |
+| 型 | type プロパティを **SqlServer** に設定する必要があります。 | はい |
+| connectionString |SQL 認証または Windows 認証を使用して、SQL Server データベースに接続するために必要な **connectionString** 情報を指定します。 以下のサンプルを参照してください。<br/>また、Azure Key Vault にパスワードを格納することもできます。 それが SQL 認証である場合は、接続文字列から `password` 構成を取得します。 詳細については、この表の後にある JSON の例および「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 |はい |
 | userName |Windows 認証を使用しする場合は、ユーザー名を指定します。 例: **domainname\\username**。 |いいえ |
-| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドは、Azure Data Factory で安全に格納するために **SecureString** としてマークします。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 |いいえ |
+| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドは、Azure Data Factory で安全に格納するために **SecureString** としてマークします。 また、[Azure Key Vault に格納されているシークレットを参照する](store-credentials-in-key-vault.md)こともできます。 |いいえ |
 | connectVia | この[統合ランタイム](concepts-integration-runtime.md)は、データ ストアに接続するために使用されます。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
 >[!TIP]
 >エラー コード "UserErrorFailedToConnectToSqlServer" および "The session limit for the database is XXX and has been reached" (データベースのセッション制限 XXX に達しました) のようなメッセージのエラーが発生する場合は、`Pooling=false` を接続文字列に追加して、もう一度試してください。
 
-**例 1:SQL 認証を使用する**
+**例 1: SQL 認証を使用する**
 
 ```json
 {
@@ -82,10 +82,7 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
-            }
+            "connectionString": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -95,7 +92,7 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
 }
 ```
 
-**例 2:Azure Key Vault 内のパスワードで SQL 認証を使用する**
+**例 2: Azure Key Vault 内のパスワードで SQL 認証を使用する**
 
 ```json
 {
@@ -103,10 +100,7 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
-            },
+            "connectionString": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -132,10 +126,7 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;"
-            },
+            "connectionString": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=True;",
             "userName": "<domain\\username>",
             "password": {
                 "type": "SecureString",
@@ -156,11 +147,11 @@ SQL Server のリンクされたサービスでは、次のプロパティがサ
 
 SQL Server データベースをコピー元またはコピー先にしたデータ コピーについては、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **SqlServerTable** に設定する必要があります。 | はい |
+| 型 | データセットの type プロパティは **SqlServerTable** に設定する必要があります。 | はい |
 | schema | スキーマの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
-| table | テーブル/ビューの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
+| テーブル | テーブル/ビューの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
 | tableName | スキーマがあるテーブル/ビューの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | ソースの場合はいいえ、シンクの場合ははい |
 
 **例**
@@ -192,10 +183,10 @@ SQL Server データベースをコピー元またはコピー先にしたデー
 
 SQL Server からデータをコピーするには、コピー アクティビティのソースの種類を **SqlSource** に設定します。 コピー アクティビティの source セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **SqlSource** に設定する必要があります。 | はい |
-| sqlReaderQuery |カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`。 |いいえ |
+| 型 | コピー アクティビティのソースの type プロパティを **SqlSource** に設定する必要があります。 | はい |
+| sqlReaderQuery |カスタム SQL クエリを使用してデータを読み取ります。 たとえば `select * from MyTable` です。 |いいえ |
 | sqlReaderStoredProcedureName |このプロパティは、ソース テーブルからデータを読み取るストアド プロシージャの名前です。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ |
 | storedProcedureParameters |これらのパラメーターは、ストアド プロシージャ用です。<br/>使用可能な値は、名前または値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
 
@@ -298,9 +289,9 @@ GO
 
 SQL Server にデータをコピーするには、コピー アクティビティのシンクの種類を **SqlSink** に設定します。 コピー アクティビティの sink セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは、**SqlSink** に設定する必要があります。 | はい |
+| 型 | コピー アクティビティのシンクの type プロパティは、**SqlSink** に設定する必要があります。 | はい |
 | writeBatchSize |SQL テーブルに挿入する "*バッチあたりの*" 行数。<br/>使用可能な値は、行数の場合整数です。 既定では、Azure Data Factory により行のサイズに基づいて適切なバッチ サイズが動的に決定されます。 |いいえ |
 | writeBatchTimeout |このプロパティは、タイムアウトする前に一括挿入操作の完了を待つ時間を指定します。<br/>使用可能な値は期間に対する値です。 たとえば "00:30:00" (30 分) を指定できます。 値を指定しなかった場合、タイムアウトの既定値は "02:00:00" です。 |いいえ |
 | preCopyScript |このプロパティでは、コピー アクティビティで SQL Server にデータを書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ |
@@ -310,7 +301,7 @@ SQL Server にデータをコピーするには、コピー アクティビテ�
 | storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前と値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ |
 | tableOption | ソースのスキーマに基づいて、シンク テーブルが存在しない場合に自動的にシンク テーブルを作成するかどうかを指定します。 シンクでストアド プロシージャが指定されている場合、またはコピー アクティビティでステージング コピーが構成されている場合、テーブルの自動作成はサポートされません。 使用できる値は `none` (既定値)、`autoCreate` です。 |いいえ |
 
-**例 1:データを追加する**
+**例 1: データを追加する**
 
 ```json
 "activities":[
@@ -343,7 +334,7 @@ SQL Server にデータをコピーするには、コピー アクティビテ�
 ]
 ```
 
-**例 2:コピー中にストアド プロシージャを呼び出す**
+**例 2: コピー中にストアド プロシージャを呼び出す**
 
 詳しくは、「[SQL シンクからのストアド プロシージャの呼び出し](#invoke-a-stored-procedure-from-a-sql-sink)」をご覧ください。
 
@@ -505,15 +496,15 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 | binary |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |Datetime |
-| Datetime |Datetime |
-| datetime2 |Datetime |
+| date |DateTime |
+| Datetime |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
-| int |Int32 |
+| INT |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
@@ -521,7 +512,7 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |Datetime |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object |
@@ -529,7 +520,7 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Int16 |
-| uniqueidentifier |Guid |
+| UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |xml |
@@ -562,7 +553,7 @@ SQL Server との間でデータをコピーするとき、SQL Server のデー�
 3. 同じウィンドウで、 **[TCP/IP]** をダブルクリックして、 **[TCP/IP のプロパティ]** ウィンドウを起動します。
 4. **[IP アドレス]** タブに切り替えます。下へスクロールして **[IPAll]** セクションを表示します。 **[TCP ポート]** を書き留めます。 既定値は **1433** です。
 5. コンピューターに **Windows Firewall のルール** を作成し、このポート経由の受信トラフィックを許可します。 
-6. **接続の確認**: 完全修飾名を使って SQL Server に接続するには、別のコンピューターから SQL Server Management Studio を使用します。 例: `"<machine>.<domain>.corp.<company>.com,1433"`。
+6. **接続の確認**: 完全修飾名を使って SQL Server に接続するには、別のコンピューターから SQL Server Management Studio を使用します。 たとえば `"<machine>.<domain>.corp.<company>.com,1433"` です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)に関するページをご覧ください。

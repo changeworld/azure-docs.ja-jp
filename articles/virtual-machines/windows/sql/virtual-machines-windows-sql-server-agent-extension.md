@@ -17,12 +17,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9aae386e21df6711fc4984a7abfd34f418399f76
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6ccc04ccdaf92764da8f45af1e5dda98af822587
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034198"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690835"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Agent 拡張機能を使用して Azure 仮想マシン上で管理タスクを自動化する
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ SQL Server IaaS Agent 拡張機能 (SQLIaaSExtension) は、管理タスクを�
 ## <a name="supported-services"></a>サポートされているサービス
 SQL Server IaaS Agent 拡張機能は、次の管理タスクをサポートします。
 
-| 管理機能 | 説明 |
+| 管理機能 | [説明] |
 | --- | --- |
 | **SQL Server の自動バックアップ** |VM 上の SQL Server の既定のインスタンスまたは[適切にインストールされた](virtual-machines-windows-sql-server-iaas-faq.md#administration)名前付きインスタンスについて、すべてのデータベースのバックアップを自動的にスケジュールします。 詳細については、[Azure 仮想マシンでの SQL Server の自動バックアップ (Resource Manager)](virtual-machines-windows-sql-automated-backup.md) に関する記事を参照してください。 |
 | **SQL Server の自動修正** |VM で重要な更新プログラムを実行できるメンテナンス期間を構成します。これにより、ワークロードのピーク時の更新を回避できます。 詳細については、「[Azure Virtual Machines での SQL Server の自動修正 (Resource Manager)](virtual-machines-windows-sql-automated-patching.md)」をご覧ください。 |
@@ -69,6 +69,7 @@ VM で SQL Server IaaS Agent 拡張機能を使用するための要件を次に
 * SQL Server 2014
 * SQL Server 2016
 * SQL Server 2017
+* SQL Server 2019
 
 **Azure PowerShell**:
 
@@ -132,7 +133,7 @@ Azure portal で、仮想マシンのプロパティの **[拡張機能]** ウ�
     Remove-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmname" -Name "SqlIaasExtension"
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 拡張機能によってサポートされるいずれかのサービスの使用を開始します。 詳細については、この記事の「[サポートされているサービス](#supported-services)」セクションで参照されているトピックをご覧ください。
 
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。

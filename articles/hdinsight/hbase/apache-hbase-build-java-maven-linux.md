@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.openlocfilehash: c948d07bed99f1286e27d645fde7b96fdc699c02
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive,seodec18
+ms.date: 12/24/2019
+ms.openlocfilehash: 3e9b23ce450e45dfedcee8b20e09b1c2b52b6e68
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311692"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495787"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
@@ -31,11 +31,12 @@ Java で [Apache HBase](https://hbase.apache.org/) アプリケーションを�
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-* PowerShell を使用する場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要です。
+* PowerShell を使用している場合は、[AZ モジュール](https://docs.microsoft.com/powershell/azure/overview)が必要になります。
 
 * テキスト エディター。 この記事では、Microsoft Notepad を使用します。
 
 ## <a name="test-environment"></a>テスト環境
+
 この記事で使用された環境は、Windows 10 を実行しているコンピューターです。  コマンドはコマンド プロンプトで実行され、さまざまなファイルがメモ帳で編集されています。 ご使用の環境に応じて変更します。
 
 コマンド プロンプトで以下のコマンドを入力して、作業環境を作成を作成します。
@@ -84,7 +85,7 @@ notepad pom.xml
 ```xml
 <dependency>
     <groupId>org.apache.hbase</groupId>
-    <artifactId>hbase-client</artifactId>
+    <artifactId>hbase-shaded-client</artifactId>
     <version>1.1.2</version>
 </dependency>
 <dependency>
@@ -128,7 +129,7 @@ Maven プラグインでは、プロジェクトのビルド ステージをカ�
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
         <configuration>
             <source>1.8</source>
             <target>1.8</target>
@@ -408,7 +409,7 @@ public class DeleteTable {
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
- 3. Java アプリケーションを使用する HBase テーブルを作成するには、open ssh 接続で次のコマンドを使用します。
+3. Java アプリケーションを使用する HBase テーブルを作成するには、open ssh 接続で次のコマンドを使用します。
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable
@@ -702,6 +703,6 @@ public class DeleteTable {
 
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された標準エラー (STDERR) を表示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Apache HBase と SQLLine を使用する方法を確認する](apache-hbase-query-with-phoenix.md)

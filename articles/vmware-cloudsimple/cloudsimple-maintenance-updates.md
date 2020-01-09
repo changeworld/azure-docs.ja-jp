@@ -1,5 +1,6 @@
 ---
-title: Azure VMware Solution by CloudSimple - CloudSimple のメンテナンスと更新
+title: CloudSimple のメンテナンスと更新
+titleSuffix: Azure VMware Solution by CloudSimple
 description: 計画したメンテナンスと更新のための CloudSimple サービス プロセスについて説明します
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 92f02c0abef6755213d4c73189c7e0a593867ef6
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 826fae1123b355a4143118b53ba649f0939acaf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877929"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372825"
 ---
 # <a name="cloudsimple-maintenance-and-updates"></a>CloudSimple のメンテナンスと更新
 
@@ -38,7 +39,7 @@ CloudSimple は次の不具合も継続的に監視します。
 * 物理 NIC ポート
 * サーバー
 * ファン
-* 累乗
+* Power
 * スイッチ
 * スイッチ ポート
 
@@ -52,7 +53,7 @@ CloudSimple は、プライベート クラウドにある次の VMware 要素�
 * vSAN
 * NSX
 
-## <a name="back-up-and-restore"></a>バックアップおよび復元
+## <a name="back-up-and-restore"></a>バックアップと復元
 
 CloudSimple バックアップの内容:
 
@@ -80,7 +81,7 @@ CloudSimple のコントロール レベルまたはインフラストラクチ�
 * すべてのネットワークとストレージ
 * すべての Azure トラフィック
 
-### <a name="vmware-infrastructure-maintenance"></a>VMware インフラストラクチャ メンテナンス
+### <a name="vmware-infrastructure-maintenance"></a>VMware インフラストラクチャのメンテナンス
 
 VMware インフラストラクチャの構成変更が必要になることがあります。  現在のところ、この間隔は 1-2 か月に 1 回ですが、頻度は時間の経過と共に下がると予想されます。 この種類のメンテナンスは通常、CloudSimple サービスの通常利用を中断することなく実行できます。 VMware メンテナンスの期間中、次のサービスは影響なしで作動し続けます。
 
@@ -103,6 +104,6 @@ CloudSimple は、VMware から重要なセキュリティ パッチが利用で
 
 CloudSimple は、VMware ソフトウェア コンポーネントに四半期ごとのメンテナンス更新を提供します。 新しいメジャー バージョンの VMware ソフトウェアが利用できるようになると、CloudSimple は顧客と連携し、アップグレードに適したメンテナンス期間を調整します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Veeam を使用してワークロード VM をバックアップする](backup-workloads-veeam.md)

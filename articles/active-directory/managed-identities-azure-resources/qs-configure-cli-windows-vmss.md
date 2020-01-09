@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74d8faed0637b5b5b82e1ad450a3b1535bb063e4
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 2832a8c584c0fbe707f22501809d772c6ffb970b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547307"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430084"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Azure CLI を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -43,8 +43,8 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
     > Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
     - [仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor): 仮想マシン スケール セットを作成する、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を有効にする、および仮想マシン スケール セットから削除することができるロールです。
-    - [マネージド ID 共同作成者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor): ユーザー割り当てマネージド ID を作成することができるロールです。
-    - [マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator): ユーザー割り当てマネージド ID を仮想マシン スケール セットに割り当てる、および仮想マシン スケール セットから削除することができるロールです。
+    - [マネージド ID 共同作成者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)ロール。ユーザー割り当てマネージド ID を作成します。
+    - [マネージド ID オペレーター](/azure/role-based-access-control/built-in-roles#managed-identity-operator)ロール。ユーザー割り当てマネージド ID の仮想マシン スケール セットへの割り当ておよび仮想マシン スケール セットからの削除を実行します。
 - CLI スクリプトの例を実行するには、次の 3 つのオプションがあります。
     - Azure ポータルから [Azure Cloud Shell](../../cloud-shell/overview.md) を使用する (次のセクションを参照してください)。
     - 各コード ブロックの右上隅にある「試してみる」ボタンを利用して、埋め込まれた Azure Cloud Shell シェルを使用します。
@@ -69,7 +69,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    az login
    ```
 
-2. [az group create](/cli/azure/group/#az-group-create) を使用して、仮想マシン スケール セットとその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/resource-group-overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
+2. [az group create](/cli/azure/group/#az-group-create) を使用して、仮想マシン スケール セットとその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/management/overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -124,7 +124,7 @@ az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 
 このセクションでは、仮想マシン スケール セットを作成する方法と、ユーザー割り当てマネージド ID を仮想マシン スケール セットに割り当てる方法について説明します。 使用する仮想マシン スケール セットが既にある場合は、このセクションをスキップして次のセクションに進んでください。
 
-1. 使用するリソース グループが既にある場合は、この手順をスキップできます。 [az group create](/cli/azure/group/#az-group-create) を使用して、ユーザー割り当てマネージド ID の格納と配置を行う[リソース グループ](~/articles/azure-resource-manager/resource-group-overview.md#terminology)を作成します。 `<RESOURCE GROUP>` と `<LOCATION>` のパラメーターの値は、必ず実際の値に置き換えてください。 :
+1. 使用するリソース グループが既にある場合は、この手順をスキップできます。 [az group create](/cli/azure/group/#az-group-create) を使用して、ユーザー割り当てマネージド ID の格納と配置を行う[リソース グループ](~/articles/azure-resource-manager/management/overview.md#terminology)を作成します。 `<RESOURCE GROUP>` と `<LOCATION>` のパラメーターの値は、必ず実際の値に置き換えてください。 :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -198,7 +198,7 @@ az vmss update -n myVM -g myResourceGroup --set identity.type="none"
 az vmss identity remove -g <RESOURCE GROUP> -n <VIRTUAL MACHINE SCALE SET NAME> --identities <USER ASSIGNED IDENTITY>
 ```
 
-仮想マシン スケール セットにシステム割り当てマネージド ID がなく、そこからユーザー割り当てマネージド ID をすべて削除する場合は、次のコマンドを使用します。
+仮想マシン スケール セットにシステム割り当てマネージド ID がないときに、ユーザー割り当てマネージド ID をすべて削除する場合は、次のコマンドを使用します。
 
 > [!NOTE]
 > 値 `none` では、大文字と小文字が区別されます。 小文字にする必要があります。
@@ -213,7 +213,7 @@ az vmss update -n myVMSS -g myResourceGroup --set identity.type="none" identity.
 az vmss update -n myVMSS -g myResourceGroup --set identity.type='SystemAssigned' identity.userAssignedIdentities=null 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure リソースのマネージド ID の概要](overview.md)
 - Azure 仮想マシン スケール セットの全作成に関するクイック スタートについては、次を参照してください。 

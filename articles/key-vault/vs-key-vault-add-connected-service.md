@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 1df0ff3b6fea335dde5a3200f824adf14f924d9c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1c12cf4a7bd097c6d33d032065734b477920644b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452368"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457003"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -112,7 +112,7 @@ ms.locfileid: "74452368"
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-        private static string GetKeyVaultEndpoint() => "https://WebApplication4-3-kv.vault.azure.net";
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     ```
 
 1. 次に、いずれかのページ ファイル (*Index.cshtml.cs* など) を開き、次のコードを記述します。
@@ -174,7 +174,7 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
    ```
 1. デバッガーの下でアプリをローカルで実行し、 **[About]\(概要\)** タブに切り替えて、キー コンテナーの値が表示されていることを確認します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 不要になったら、リソース グループを削除します。 これにより、キー コンテナーと関連リソースが削除されます。 ポータルを使用してリソース グループを削除するには:
 
@@ -285,7 +285,7 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
 - リソース グループを作成します (または、既存のものを使用します)。
 - 指定したリソース グループにキー コンテナーが作成されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルに従っている場合、お使いのキー コンテナーへのアクセス許可は、ご自分の Azure サブスクリプションで実行するように設定されますが、これは運用環境のシナリオには適していない可能性があります。 マネージド ID を作成して、アプリの Key Vault へのアクセスを管理できます。 「[マネージド ID で Key Vault の認証を提供する](/azure/key-vault/managed-identity)」を参照してください。
 

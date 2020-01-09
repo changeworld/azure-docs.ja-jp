@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics のストリーミング ユニット
 description: この記事では、Azure Stream Analytics のパフォーマンスに影響するストリーミング ユニットの設定とその他の要因について説明します。
-services: stream-analytics
 author: JSeb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
-ms.openlocfilehash: 25105847b7134b7119252a66ac7e8502771ce5db
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d270d38bce45c45f9323a971ad69dc2b931a9169
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961273"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369849"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>ストリーミング ユニットの理解と調整
 
@@ -22,7 +20,7 @@ ms.locfileid: "73961273"
 
 待ち時間が短いストリーミング処理を実現するために、Azure Stream Analytics ジョブはすべての処理をメモリ内で実行します。 メモリが不足した場合は、ストリーミング ジョブが失敗します。 そのため、実稼働ジョブでは、ストリーミング ジョブのリソース使用状況を監視し、ジョブの稼働を 24 時間、週 7 日維持するのに十分なリソースが割り当てられていることを確認することが重要です。
 
-SU 使用率 (%) メトリックはワークロードのメモリ消費量を表し、その範囲は 0% から 100% となります。 最小フットプリントのストリーミング ジョブでは、このメトリックの範囲は、通常 10% から 20% です。 SU 使用率 (%) が低く、入力イベントにバックログが生じるようであれば、そのワークロードは、より多くのコンピューティング リソースが必要である可能性が高く、その場合は SU 数を増やす必要があります。 偶発的なスパイクを考慮して、SU メトリックを 80% 未満に維持することをお勧めします。 リソースの枯渇を防ぐために SU 使用率メトリックは 80% でアラートを設定することをお勧めします。 詳細については、[チュートリアル: Azure Stream Analytics ジョブのアラートを設定する](stream-analytics-set-up-alerts.md)」を参照してください。
+SU 使用率 (%) メトリックはワークロードのメモリ消費量を表し、その範囲は 0% から 100% となります。 最小フットプリントのストリーミング ジョブでは、このメトリックの範囲は、通常 10% から 20% です。 SU 使用率 (%) が低く、入力イベントにバックログが生じるようであれば、そのワークロードは、より多くのコンピューティング リソースが必要である可能性が高く、その場合は SU 数を増やす必要があります。 偶発的なスパイクを考慮して、SU メトリックを 80% 未満に維持することをお勧めします。 リソースの枯渇を防ぐために SU 使用率メトリックは 80% でアラートを設定することをお勧めします。 詳細については、「[チュートリアル:Azure Stream Analytics ジョブのアラートを設定する](stream-analytics-set-up-alerts.md)」を参照してください。
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Stream Analytics のストリーミング ユニット (SU) を構成する
 1. [Azure Portal](https://portal.azure.com/) にサインインします
@@ -145,7 +143,7 @@ ASA の参照データは、高速検索を行うためにメモリに読み込�
 ### <a name="use-of-udf-functions"></a>UDF 関数の使用
 UDF 関数を追加すると、Azure Stream Analytics は、JavaScript ランタイムをメモリに読み込みます。 これは SU% に影響します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics での並列化可能クエリの作成](stream-analytics-parallelization.md)
 * [スループット向上のための Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f5e0344cb1da86661ae87b5e45bd93dd181e7bb0
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60325427"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659561"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集:Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -29,7 +29,7 @@ Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウ�
 * [Microsoft Azure とアマゾン ウェブ サービス](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) - Azure サービスとそれに対応する AWS サービスの定義。<!-- I propose to link to https://azure.microsoft.com/services/ instead of this -->
 * [クラウド コンピューティング用語](https://azure.microsoft.com/overview/cloud-computing-dictionary/) - 業界における一般的なクラウド用語についての解説
 
-## <a name="account"></a>アカウント
+## <a name="account"></a>account
 Azure サブスクリプションへのアクセスおよび管理に使用するアカウント。 Azure アカウントと呼ばれることが多いですが、既存の職場アカウント、学校アカウント、個人用 Microsoft アカウント、Office 365 のユーザー名とパスワードのいずれかを指定できます。 [無料試用版](https://azure.microsoft.com)にサインアップする際に、Azure サブスクリプションを管理するためのアカウントを作成することもできます。  
 「[Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする](billing/billing-use-existing-office-365-account-azure-subscription.md)」、および「[サインインに使用できるアカウント](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
@@ -75,7 +75,7 @@ Microsoft Azure でリソースをデプロイするために使用される 2 �
 
 ## <a name="limits"></a>制限
 作成できるリソースの数または達成できるパフォーマンス ベンチマーク。 制限は通常、サブスクリプション、サービス、オファーによって変わります。  
-「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md)」をご覧ください。
+「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
 ## <a name="load-balancer"></a>ロード バランサー
 ネットワーク内のコンピューター間で着信トラフィックを分散させるリソースです。 Azure では、ロード バランサーは、ロード バランサー セットで定義されている仮想マシンにトラフィックを分散させます。 [ロード バランサー](load-balancer/load-balancer-overview.md) はインターネットに接続されることも、内部だけで使用されることもあります。  
@@ -110,7 +110,7 @@ Azure ソリューションの一部であるアイテム。 各 Azure サービ
 Resource Manager でデプロイおよび管理できるリソースを提供するサービス。 各リソース プロバイダーは、デプロイされたリソースを利用するための操作を提供します。 リソース プロバイダーには、Azure Portal、Azure PowerShell、プログラミング用のいくつかの SDK からアクセスできます。  
 「[Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
-## <a name="role"></a>role
+## <a name="role"></a>ロール (role)
 ユーザー、グループ、サービスに割り当てることのできるアクセスを制御する手段。 ロールは、Azure リソースの作成、管理、読み取りなどのアクションを実行できます。  
 [RBAC の組み込みのロール](role-based-access-control/built-in-roles.md)に関するページを参照してください。
 
@@ -125,7 +125,7 @@ Resource Manager でデプロイおよび管理できるリソースを提供す
 Azure Storage の Azure BLOB、Queue、Table、ファイルの各サービスにアクセスできるアカウント。 ストレージ アカウント名は、Azure Storage データ オブジェクトの一意の名前空間を定義します。  
 「[Azure ストレージ アカウントについて](storage/common/storage-create-storage-account.md)」をご覧ください。
 
-## <a name="subscription"></a>サブスクリプション
+## <a name="subscription"></a>subscription
 Azure サービスを入手する権利を与える、お客様と Microsoft の契約。 サブスクリプションの価格と関連条件は、サブスクリプションで選択されたオファーに応じて決まります。
 「[マイクロソフト オンライン サブスクリプション契約](https://azure.microsoft.com/support/legal/subscription-agreement/)」と「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
@@ -153,7 +153,7 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 ## <a name="web-app"></a>Web アプリ
 [App Service アプリ](#app-service-app)の別名。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 * [Azure を使ってみる](https://azure.microsoft.com/get-started/)
 * [クラウド リソース センター](https://azure.microsoft.com/resources/)  

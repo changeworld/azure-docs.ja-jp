@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 68c90f6c763fe7cd634aee886c5c8c6b8153253e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551826"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363508"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 
@@ -614,13 +614,13 @@ REST API を使用すると、使用可能なメトリック定義、粒度、�
 
 他にもリソース ID を取得する方法はあります。Azure リソース エクスプローラーを使用する、Azure ポータル、PowerShell、Azure CLI で目的のリソースを表示する、などの方法です。
 
-### <a name="azure-resource-explorer"></a>Azure リソース エクスプローラー
+### <a name="azure-resource-explorer"></a>Azure Resource Explorer
 
 目的のリソースのリソース ID を見つける 1 つの方法として便利なのは、 [Azure リソース エクスプローラー](https://resources.azure.com) ツールを使用することです。 目的のリソースに移動すると、次のスクリーンショットのように ID が表示されます。
 
 ![Alt "Azure リソース エクスプローラー"](./media/rest-api-walkthrough/azure_resource_explorer.png)
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Azure ポータルからリソース ID を取得することもできます。 これを行うには、目的のリソースに移動し、[プロパティ] を選択します。 リソース ID は、次のスクリーンショットのように [プロパティ] セクションに表示されます。
 
@@ -719,7 +719,7 @@ Invoke-RestMethod -Uri $request `
     -Verbose
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [監視の概要](../../azure-monitor/overview.md)に関するページを確認します。
 * [Azure Monitor のサポートされるメトリック](metrics-supported.md)を表示します。

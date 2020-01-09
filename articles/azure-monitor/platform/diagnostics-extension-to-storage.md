@@ -2,18 +2,18 @@
 title: Azure Storage への診断データを保存および表示する
 description: Azure Storage アカウントで Azure 診断データを収集して、使用可能なツールのいずれかで表示できるようにする方法について説明します。
 services: azure-monitor
-author: jpconnock
+author: bwren
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
-ms.author: jeconnoc
+ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 35e852a36ebc52edff338ed640419afe32297b81
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: c9d751a7e3d01860b3b5860f1e75fa3767cd4f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304969"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395010"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Azure Storage への診断データの保存と表示
 診断データは、Microsoft Azure ストレージ エミュレーターまたは Azure ストレージに転送しない限り、永続的に保存されません。 診断データは、いったんストレージに保存されると、用意されているいくつかのツールの 1 つを使用して確認することができます。
@@ -71,7 +71,7 @@ SDK 2.4 およびそれ以前のバージョンでは、構成ファイルを介
 * **"custom"** – 診断モニターによって監視されるディレクトリの構成に基づくカスタム コンテナーです。  この BLOB コンテナーの名前は WADDirectoriesTable で指定されます。
 
 ## <a name="tools-to-view-diagnostic-data"></a>診断データを表示するツール
-ストレージへの転送後にデータを表示するには、いくつかのツールを利用できます。 例:
+ストレージへの転送後にデータを表示するには、いくつかのツールを利用できます。 次に例を示します。
 
 * Visual Studio のサーバー エクスプローラー - Azure Tools for Microsoft Visual Studio がインストールされている場合、サーバー エクスプローラーの Azure Storage ノードを使用して、Azure ストレージ アカウントの読み取り専用の BLOB およびテーブル データを表示できます。 データは、ローカルのストレージ エミュレーター アカウントから表示できます。また、Azure 用に作成したストレージ アカウントから表示することもできます。 詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage)」を参照してください。
 * [Microsoft Azure ストレージ エクスプローラー](../../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、OSX、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。

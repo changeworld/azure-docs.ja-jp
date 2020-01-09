@@ -3,12 +3,12 @@ title: エンタープライズ シナリオにおける Azure Lighthouse
 description: Azure Lighthouse の機能を使用すると、複数の Azure AD テナントを使用するエンタープライズ内のクロステナント管理を簡略化できます。
 ms.date: 09/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: f610f943ed7faa0d2ad64ff2f1554cdd41d76ee8
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ae10ef2a18ace13d7b86347674c04f972e1ab8d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463919"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456904"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>エンタープライズ シナリオにおける Azure Lighthouse
 
@@ -38,7 +38,7 @@ ms.locfileid: "74463919"
 
 Azure Lighthouse と Azure の委任されたリソース管理では、データやリソースを物理的に移動するのではなく、管理側テナントと管理対象テナントの間に論理的なリンクのみを提供します。 さらに、アクセスは、常に管理側テナントから管理対象テナントへの一方向のみです。  管理対象テナントのリソースに対して管理操作を実行する場合は、管理側テナントのユーザーとグループが引き続き多要素認証を使用する必要があります。
 
-内部または外部のガバナンスとコンプライアンスのガードレールを持つ企業の場合、[Azure アクティビティ ログ](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview)を使用して透過性の要件を満たすことができます。 企業のテナントが管理側テナントと管理対象テナントのリレーションシップを確立すると、各テナントのユーザーは、ログに記録されたアクティビティを表示することで、他のテナントのユーザーが実行したアクションを監視し、把握することができます。
+内部または外部のガバナンスとコンプライアンスのガードレールを持つ企業の場合、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)を使用して透過性の要件を満たすことができます。 企業のテナントが管理側テナントと管理対象テナントのリレーションシップを確立すると、各テナントのユーザーは、ログに記録されたアクティビティを表示することで、他のテナントのユーザーが実行したアクションを監視し、把握することができます。
 
 ## <a name="onboarding-process-considerations"></a>オンボード プロセスに関する考慮事項
 
@@ -56,7 +56,7 @@ Azure Lighthouse と Azure の委任されたリソース管理では、デー�
 
 この例では、適切なアクセス許可を持つテナント A のユーザーは、Azure portal の **[マイ カスタマー]** ページで、[委任されたリソースを表示および管理](../how-to/view-manage-customers.md)できます。 同様に、適切なアクセス許可を持つテナント B とテナント C のユーザーは、Azure portal の **[サービス プロバイダー]** ページで、テナント A に[委任されたリソースを表示および管理](../how-to/view-manage-service-providers.md)できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)について学習します。
 - [Azure の委任されたリソース管理](azure-delegated-resource-management.md)について学習してください。

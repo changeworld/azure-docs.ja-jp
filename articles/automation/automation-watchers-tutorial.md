@@ -2,18 +2,15 @@
 title: Azure Automation アカウントで監視タスクを作成する
 description: Azure Automation アカウントで監視タスクを作成してフォルダーに作成された新しいファイルを監視する方法を説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5dc6145940883ff6f4446ad67c399cdf4931d38e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989247"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419749"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>ローカル マシンでのファイル変更を追跡する Azure Automation 監視タスクを作成する
 
@@ -154,7 +151,7 @@ Message is Process new file...
 Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

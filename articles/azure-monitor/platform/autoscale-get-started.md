@@ -1,19 +1,15 @@
 ---
 title: Azure での自動スケールの使用
 description: Azure でリソースの Web アプリ、クラウド サービス、仮想マシン、仮想マシン スケール セットをスケールする方法について説明します。
-author: rajram
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
-ms.author: rajram
 ms.subservice: autoscale
-ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0a40496e4d496d0062c6ee7a6ab935c1ad9b35a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60788596"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396348"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure での自動スケールの使用
 この記事では、Microsoft Azure Portal でリソースの自動スケール設定をセットアップする方法について説明します。
@@ -35,7 +31,7 @@ Azure Monitor で自動スケールを適用できるすべてのリソースを
 
 - **未構成**: このリソースの自動スケール設定はまだ有効になっていません。
 - **有効**: このリソースの自動スケール設定は有効になっています。
-- **無効**: このリソースの自動スケール設定は無効になっています。
+- **Disabled**: このリソースの自動スケール設定は無効になっています。
 
 ## <a name="create-your-first-autoscale-setting"></a>最初の自動スケール設定を作成する
 
@@ -46,7 +42,7 @@ Azure Monitor で自動スケールを適用できるすべてのリソースを
   ![新しい Web アプリのスケール設定][5]
 1. スケール設定の名前を指定し、 **[ルールの追加]** をクリックします。 右側にコンテキスト ペインとして表示されるスケール ルールのオプションに確認してください。 既定では、リソースの CPU 使用率が 70% を超えた場合にインスタンス数を 1 つずつ増やしてスケールするようにオプションが設定されています。 このオプションを既定値のままにし、 **[追加]** をクリックします。
   ![Web アプリのスケール設定の作成][6]
-1. これで最初のスケール ルールが作成されました。 UX では、ベスト プラクティスとして、ルール内に少なくとも 1 つのスケールを含めることが推奨されています。 そのためには、次の手順を実行します。
+1. これで最初のスケール ルールが作成されました。 UX では、ベスト プラクティスとして、ルール内に少なくとも 1 つのスケールを含めることが推奨されています。 そのためには次を行います。
 
     a. **[ルールの追加]** をクリックします。
 
@@ -58,7 +54,7 @@ Azure Monitor で自動スケールを適用できるすべてのリソースを
 
    これで、CPU 使用率に基づいてスケールアウト/スケールインするスケール設定が作成されます。
    ![CPU に基づくスケール][8]
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 お疲れさまでした。 これで、CPU 使用率に基づいて Web アプリを自動スケールする最初のスケール設定が作成されました。
 
@@ -114,7 +110,7 @@ CPU 使用率に基づいてだけでなく、特定の曜日に異なる方法�
 
 **[Enable autoscale]\(自動スケールを有効にする\)** をクリックし、 **[保存]** をクリックすることで、いつでも自動スケールに戻すことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
 - [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 

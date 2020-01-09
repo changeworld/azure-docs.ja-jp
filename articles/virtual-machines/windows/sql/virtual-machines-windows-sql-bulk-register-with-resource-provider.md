@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 015aa4c209a99921a930a51b15c3d0230722519a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353887"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Azure の SQL 仮想マシンを SQL VM リソース プロバイダーに一括登録する
 
@@ -39,7 +39,7 @@ SQL Server VM をリソースプロバイダーに登録するには、以下の
 - 最新バージョンの [Az PowerShell](/powershell/azure/new-azureps-module-az)。 
 - 最新バージョンの [Az. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0)。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 先に進む前に、スクリプトのローカル コピーを作成し、それを PowerShell モジュールとしてインポートして、Azure に接続する必要があります。 
 
@@ -57,7 +57,7 @@ SQL Server VM をリソースプロバイダーに登録するには、以下の
 Import-Module .\RegisterSqlVMs.psm1
 ```
 
-### <a name="connect-to-azure"></a>Azure への接続
+### <a name="connect-to-azure"></a>Azure に接続する
 
 次の PowerShell コマンドレットを使用して Azure に接続します。
 
@@ -233,9 +233,7 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
 
-
-
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次の記事を参照してください。 
 

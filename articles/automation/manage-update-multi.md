@@ -2,19 +2,15 @@
 title: 複数の Azure 仮想マシンの更新を管理する
 description: この記事では、Azure 仮想マシンと Azure 以外の仮想マシンの更新プログラムを管理する方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9a5a4330a90bd376114f836250e290944f03860
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806509"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417822"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -33,14 +29,14 @@ Update Management を使用するには、以下が必要です。
 
 - ソリューションにオンボードされている Linux VM の更新リポジトリへのアクセス。
 
-## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 Update Management は、次のオペレーティング システムでサポートされています。
 
 |オペレーティング システム  |メモ  |
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2008 R2 SP1 以降     |Windows PowerShell 4.0 以降が必要です ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。</br> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))         |
+|Windows Server 2008 R2 SP1 以降     |Windows PowerShell 4.0 以降が必要です ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。</br> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))。         |
 |CentOS 6 (x86/x64) および 7 (x64)      | |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | |
@@ -99,7 +95,7 @@ Update Management が有効になると、 **[更新の管理]** ウィンドウ
 
 次の表では、このソリューションでサポートされている接続先ソースについて説明します。
 
-| 接続先ソース | サポートされています | 説明 |
+| 接続先ソース | サポートされています | [説明] |
 | --- | --- | --- |
 | Windows エージェント |はい |Update Management は、Windows エージェントからシステムの更新プログラムに関する情報を収集した後、必要な更新プログラムのインストールを開始します。 |
 | Linux エージェント |はい |Update Management は、Linux エージェントからシステムの更新プログラムに関する情報を収集した後、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
@@ -128,7 +124,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 **[新しい更新プログラムの展開]** ウィンドウで、次の情報を指定します。
 
-- **[名前]** :更新プログラムの展開を識別する一意の名前を入力します。
+- **Name**:更新プログラムの展開を識別する一意の名前を入力します。
 - **[オペレーティング システム]** : **[Windows]** または **[Linux]** を選択します。
 - **[更新するグループ]** : サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 Azure 以外の VM の場合は、保存された検索条件が使用され、デプロイに含める動的グループが作成されます。 詳細については、[動的グループ](automation-update-management-groups.md)に関するページを参照してください。
 - **[更新するマシン]** :保存した検索条件、インポートしたグループを選択するか、[マシン] を選択し、更新するマシンを選択します。
@@ -163,7 +159,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 - **[Reboot control]\(再起動制御\)** - この設定は、更新デプロイでの再起動の処理方法を決定します。
 
-   |オプション|説明|
+   |オプション|[説明]|
    |---|---|
    |必要に応じて再起動| **(既定値)** 必要に応じて、メンテナンス ウィンドウで許可されている場合に再起動します。|
    |常に再起動|再起動は、必要かどうかに関係なく開始されます。 |
@@ -175,7 +171,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 > [!NOTE]
 > Update Management では、ファースト パーティの更新プログラムの展開と、修正プログラムの事前ダウンロードをサポートしています。 このためには、修正プログラムの適用対象システムでの変更が必要になります。お使いのシステムでこれらの設定を構成する方法については、[ファースト パーティと事前ダウンロードのサポート](automation-configure-windows-update.md#pre-download-updates)に関するセクションを参照してください。
 
-## <a name="view-results-of-an-update-deployment"></a>更新プログラムのデプロイの結果を表示する
+## <a name="view-results-of-an-update-deployment"></a>更新プログラムのデプロイの結果を確認する
 
 スケジュールされた展開の開始後、 **[更新の管理]** の **[更新プログラムの展開]** タブに、展開の状態が表示されます。
 
@@ -190,8 +186,8 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 **[更新プログラムを実行した結果]** ウィンドウには、仮想マシンに対する更新プログラムの合計数と展開結果が表示されます。 右側の表には、各更新プログラムとインストールの結果の詳細が示されます。 インストールの結果は、次のいずれかの値になります。
 
 - **試行されていません**:定義されたメンテナンス期間に基づき、時間が十分ではなかったため、更新プログラムがインストールされませんでした。
-- **成功**:更新できました。
-- **失敗**:更新できませんでした。
+- **[成功]** : 更新できました。
+- **[失敗]** : 更新できませんでした。
 
 展開によって作成されたログ エントリをすべて表示するには、 **[すべてのログ]** を選択します。
 
@@ -199,7 +195,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 
 展開で発生したエラーの詳細情報を確認するには、 **[エラー]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ログ、出力、エラーを含む Update Management の詳細については、「[Azure の Update Management ソリューション](../operations-management-suite/oms-solution-update-management.md)」をご覧ください。
 

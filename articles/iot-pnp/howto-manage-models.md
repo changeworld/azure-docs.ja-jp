@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 12/26/2019
 ms.author: philmea
-ms.openlocfilehash: 4320a975f74d000bd492d291f5e610f591536b0d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7e71c940d0c083642954114cf4fa1617b93335b9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979106"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531261"
 ---
 # <a name="manage-models-in-the-repository"></a>リポジトリ内のモデルを管理する
 
@@ -37,7 +37,7 @@ IoT プラグ アンド プレイ プレビューのモデル リポジトリに
 [Azure Certified for IoT ポータル](https://preview.catalog.azureiotsolutions.com)では、次のタスクを実行できます。
 
 - [IoT デバイスの認定プロセスを完了する](./tutorial-certification-test.md)。
-- IoT プラグ アンド プレイのデバイス機能モデルを検索する。 これらのモデルを使用すると、[IoT 対応デバイスをすばやく構築し、ソリューションに統合](./quickstart-connect-pnp-device-solution.md)できます。
+- IoT プラグ アンド プレイのデバイス機能モデルを検索する。 これらのモデルを使用すると、[IoT 対応デバイスをすばやく構築し、ソリューションに統合](./quickstart-connect-pnp-device-solution-node.md)できます。
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -60,6 +60,6 @@ Visual Studio Code で **[Model Repository]** \(モデル リポジトリ\) ビ�
 > [!NOTE]
 > VS Code では、パブリック モデル リポジトリは読み取り専用です。 Microsoft パートナーは、[Azure Certified for IoT ポータル](https://preview.catalog.azureiotsolutions.com)でパブリック リポジトリを更新できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 推奨される次の手順は、[IoT プラグ アンド プレイ デバイスを認定のために送信する](tutorial-certification-test.md)方法を学習することです。

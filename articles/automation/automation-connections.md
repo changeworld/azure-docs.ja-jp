@@ -2,19 +2,15 @@
 title: Azure Automation での接続資産
 description: Azure Automation の接続資産には、Runbook または DSC 構成から外部サービスまたはアプリケーションに接続するために必要な情報が含まれます。 この記事では、接続の詳細およびテキスト作成とグラフィカル作成の両方で接続を使用する方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/16/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 621441afaa9bef08a8ebf3b0af082c6a17c77b1b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0843277ce74bcc10865792367096aefa7591b244
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850433"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366792"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation での接続資産
 
@@ -39,7 +35,7 @@ Azure Automation では、3 種類の組み込み接続を使用できます。
 
 Windows PowerShell で Automation 接続を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [Azure PowerShell モジュール](/powershell/azure/overview) に付属しています。
 
-|コマンドレット|説明|
+|コマンドレット|[説明]|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|接続を取得します。 接続のフィールドの値のハッシュ テーブルが含まれます。|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|新しい接続を作成します。|
@@ -50,7 +46,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 
 次の表のアクティビティは、Runbook または DSC 構成で接続にアクセスするために使用されます。
 
-|Activities|説明|
+|Activities|[説明]|
 |---|---|
 |[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|使用する接続を取得します。 接続のプロパティのハッシュ テーブルを返します。|
 
@@ -61,7 +57,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 ## <a name="python2-functions"></a>Python2 関数
 次の表の関数を使用して、Python2 Runbook の接続にアクセスします。
 
-| Function | 説明 |
+| Function | [説明] |
 |:---|:---|
 | automationassets.get_automation_connection | 接続を取得します。 接続のプロパティでディクショナリを返します。 |
 
@@ -162,7 +158,7 @@ runas_connection = automationassets.get_automation_connection(
 azure_credential = get_automation_runas_credential(runas_connection)
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [グラフィカル オーサリング内のリンク](automation-graphical-authoring-intro.md#links-and-workflow)に関する記事を参照して、Runbook のロジック フローを制御する方法を理解します。
 

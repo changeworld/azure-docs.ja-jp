@@ -1,20 +1,18 @@
 ---
 title: Azure Stream Analytics ジョブでのスケールアップとスケールアウト
 description: この記事では、入力データのパーティション分割、クエリのチューニング、ジョブ ストリーミング ユニットの設定によって、Stream Analytics ジョブをスケーリングする方法について説明します。
-services: stream-analytics
 author: JSeb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: fe4d37563af159f566bc3fb03a3cfe136e7cb734
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 4f89fb07fbbff3beee66f80675bb5c3a32136807
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621728"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458763"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>スループット向上のために Azure Stream Analytics ジョブをスケーリングする
 この記事では、Stream Analytics クエリをチューニングして、Streaming Analytics ジョブのスループットを向上させる方法について説明します。 次のガイドを使用して、高い負荷を処理し、より多くのシステム リソース (より多くの帯域幅、より多くの CPU リソース、より多くのメモリなど) を利用するようにジョブをスケーリングできます。
@@ -79,7 +77,7 @@ ms.locfileid: "67621728"
 
 
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ

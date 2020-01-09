@@ -2,19 +2,15 @@
 title: Azure Automation でのグラフィカル作成
 description: グラフィカル作成では、コードを操作せずに Azure Automation の Runbook を作成することができます。 この記事では、グラフィカル作成の概要と、グラフィカル Runbook の作成を開始するうえで必要なすべての詳細情報を示します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 82a06510bd9d1e0de2b38260773cb4848156bf12
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8c1b864eb83a9ffb69c0cb532dc2061636010c60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850297"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450745"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Automation でのグラフィカル作成
 
@@ -44,7 +40,7 @@ Azure ポータルでグラフィカル Runbook を作成または編集する�
 
 ライブラリ コントロールは、Runbook に追加する [アクティビティ](#activities) を選択する場所です。 アクティビティをキャンバスに追加し、そこで他のアクティビティに接続します。 これには、以下の表で説明する次の 4 つのセクションが含まれます。
 
-| Section | Description |
+| Section | [説明] |
 |:--- |:--- |
 | コマンドレット |Runbook で使用できるすべてのコマンドレットが含まれています。 コマンドレットはモジュールごとに整理されます。 オートメーション アカウントにインストールしたモジュールをすべて使用できます。 |
 | Runbooks |お使いの Automation アカウントの Runbook が含まれています。 これらの Runbook は、子 Runbook として使用するためにキャンバスに追加できます。 表示されるのは、編集中の Runbook と同じコアの種類の Runbook のみです。つまり、グラフィカル Runbook の場合は、PowerShell ベースの Runbook のみが表示されるのに対し、グラフィカル PowerShell ワークフロー Runbook の場合は、PowerShell ワークフロー ベースの Runbook のみが表示されます。 |
@@ -109,7 +105,7 @@ Runbook がまだ発行されていない場合、状態は **[新規]** です�
 
 パラメーターの値を指定する場合は、データ ソースを選択して値の指定方法を決定します。 特定のパラメーターに使用できるデータ ソースは、そのパラメーターの有効な値によって異なります。 たとえば、null 値が許可されていないパラメーターに対するオプションとして Null を使用することはできません。
 
-| データ ソース | Description |
+| Data Source | [説明] |
 |:--- |:--- |
 | 定数値 |パラメーターの値を入力します。 これを使用できるのは、Int32、Int64、String、Boolean、DateTime、Switch というデータ型の場合のみです。 |
 | アクティビティの出力 |ワークフローの現在のアクティビティより前のアクティビティからの出力です。 有効なすべてのアクティビティが一覧表示されます。 パラメーター値にその出力を使用するアクティビティだけを選択します。 アクティビティが複数のプロパティを持つオブジェクトを出力する場合は、アクティビティを選択してからプロパティの名前を入力できます。 |
@@ -139,7 +135,7 @@ Runbook がまだ発行されていない場合、状態は **[新規]** です�
 
 再試行の条件は、アクティビティの再試行に関する情報にアクセスできる $RetryData という変数を使用できます。 この変数には、次の表のプロパティがあります。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | NumberOfAttempts |アクティビティが実行された回数。 |
 | Output |最後に実行されたアクティビティの出力。 |
@@ -191,10 +187,10 @@ $DateTimeStart
 
 リンクを選択して、構成ブレードでそのプロパティを構成します。 これには、次の表で説明されているリンクの種類が含まれます。
 
-| リンクの種類 | Description |
+| リンクの種類 | [説明] |
 |:--- |:--- |
 | パイプライン |ソース アクティビティからのオブジェクト出力ごとに 1 回、接続先アクティビティが実行されます。 ソース アクティビティからの出力がない場合、接続先アクティビティは実行されません。 ソース アクティビティからの出力はオブジェクトとして使用できます。 |
-| シーケンス |接続先アクティビティは 1 回だけ実行されます。 ソース アクティビティからのオブジェクトの配列を受け取ります。 ソース アクティビティからの出力は、オブジェクトの配列として使用できます。 |
+| Sequence |接続先アクティビティは 1 回だけ実行されます。 ソース アクティビティからのオブジェクトの配列を受け取ります。 ソース アクティビティからの出力は、オブジェクトの配列として使用できます。 |
 
 ### <a name="starting-activity"></a>アクティビティの開始
 
@@ -245,7 +241,7 @@ Both VMName and ResourceGroupName runbook input parameters have values
 
 ![ジャンクション](media/automation-graphical-authoring-intro/runbook-junction.png)
 
-### <a name="cycles"></a>サイクル
+### <a name="cycles"></a>Cycles
 
 サイクルとは、接続先アクティビティがリンクに従ってそのソース アクティビティ、または最終的にソースに戻る別のアクティビティに戻ることです。 現在、グラフィカル作成ではサイクルを使用することはできません。 Runbook にサイクルがある場合、保存は正常に行われますが、実行時にエラーが発生します。
 
@@ -272,7 +268,7 @@ $ActivityOutput['Activity Label'].PropertyName
 
 任意のアクティビティで [Runbook チェックポイント](automation-powershell-workflow.md#checkpoints) を選択することで、グラフィカル PowerShell ワークフロー Runbook の *チェックポイント* を設定できます。 この場合、アクティビティの実行後にチェックポイントが設定されます。
 
-![チェックポイント](media/automation-graphical-authoring-intro/set-checkpoint.png)
+![Checkpoint](media/automation-graphical-authoring-intro/set-checkpoint.png)
 
 チェックポイントは、グラフィカル PowerShell ワークフロー Runbook のみで有効で、グラフィカル Runbook では使用できません。 Runbook で Azure コマンドレットを使用する場合、Runbook が一時停止され、別のワーカーでこのチェックポイントから再起動するときは、Connect-AzureRmAccount を使用してチェックポイントを設定したアクティビティに従います。
 
@@ -322,10 +318,10 @@ Runbook の入力パラメーターには、Runbook ツールバーの **[入力
 
 各入力パラメーターは、次の表のプロパティで定義されます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | Name |パラメーターの一意の名前です。 これに含めることができるのは英数字のみです。スペースを含めることはできません。 |
-| Description |入力パラメーターのオプションの説明です。 |
+| [説明] |入力パラメーターのオプションの説明です。 |
 | 種類 |パラメーター値に必要なデータ型です。 Azure Portal では、入力を求められた場合に各パラメーターのデータ型に適したコントロールが提供されます。 |
 | Mandatory |パラメーターの値を指定する必要があるかどうかを示します。 既定値が定義されていない各必須パラメーターの値を指定しないと、Runbook を開始できません。 |
 | Default value |パラメーターに値が指定されていない場合は、使用する値を指定します。 Null または特定の値を指定できます。 |

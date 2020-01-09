@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 19496d88c1e77a6f6b18ae6f73c289f8617a3c29
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ac2426bbfa074e58aa5c4a213f3ecbee20052358
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929567"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444363"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Couchbase からデータをコピーする (プレビュー)
 
@@ -40,7 +40,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -50,10 +50,10 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 Couchbase のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります: **Couchbase** | はい |
-| connectionString | Couchbase に接続するための ODBC 接続文字列。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 資格証明文字列を Azure Key Vault に格納して、接続文字列から `credString` 構成をプルすることもできます。 詳細については、次のサンプルと「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
+| 型 | type プロパティは、次のように設定する必要があります:**Couchbase** | はい |
+| connectionString | Couchbase に接続するための ODBC 接続文字列。 <br/>資格証明文字列を Azure Key Vault に格納して、接続文字列から `credString` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
@@ -64,10 +64,7 @@ Couchbase のリンクされたサービスでは、次のプロパティがサ�
     "properties": {
         "type": "Couchbase",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>; Port=<port>;AuthMech=1;CredString=[{\"user\": \"JSmith\", \"pass\":\"access123\"}, {\"user\": \"Admin\", \"pass\":\"simba123\"}];"
-            }
+            "connectionString": "Server=<server>; Port=<port>;AuthMech=1;CredString=[{\"user\": \"JSmith\", \"pass\":\"access123\"}, {\"user\": \"Admin\", \"pass\":\"simba123\"}];"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -85,10 +82,7 @@ Couchbase のリンクされたサービスでは、次のプロパティがサ�
     "properties": {
         "type": "Couchbase",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>; Port=<port>;AuthMech=1;"
-            },
+            "connectionString": "Server=<server>; Port=<port>;AuthMech=1;",
             "credString": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -112,9 +106,9 @@ Couchbase のリンクされたサービスでは、次のプロパティがサ�
 
 Couchbase からデータをコピーするには、データセットの type プロパティを **CouchbaseTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります: **CouchbaseTable** | はい |
+| 型 | データセットの type プロパティは、次のように設定する必要があります:**CouchbaseTable** | はい |
 | tableName | テーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 
@@ -143,9 +137,9 @@ Couchbase からデータをコピーするには、データセットの type �
 
 Couchbase からデータをコピーするには、コピー アクティビティのソースの種類を **CouchbaseSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります: **CouchbaseSource** | はい |
+| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**CouchbaseSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -180,9 +174,9 @@ Couchbase からデータをコピーするには、コピー アクティビテ
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

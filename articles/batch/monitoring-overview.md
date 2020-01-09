@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
-ms.openlocfilehash: 3ac852b1d69c0e9fa224b449d6261eba6abaff32
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ef57e0f63f8cfad5bc5fa5710661657176171194
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260950"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530801"
 ---
 # <a name="monitor-batch-solutions"></a>Batch ソリューションの監視
 
@@ -25,7 +25,7 @@ Azure リソースの監視に使用できる Azure のコンポーネントと�
 
 ## <a name="subscription-level-monitoring"></a>サブスクリプション レベルの監視
 
-Batch アカウントを含むサブスクリプション レベルでは、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)によって[いくつかのカテゴリ](../azure-monitor/platform/activity-logs-overview.md#categories-in-the-activity-log)の運用イベント データが収集されます。
+Batch アカウントを含むサブスクリプション レベルでは、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)によって[いくつかのカテゴリ](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log)の運用イベント データが収集されます。
 
 具体的に Batch アカウントでは、アクティビティ ログによってアカウントの作成と削除やキー管理に関連するイベントが収集されます。
 
@@ -40,7 +40,7 @@ Batch アカウントを含むサブスクリプション レベルでは、[Azu
 
 ## <a name="batch-resource-monitoring"></a>Batch リソースの監視
 
-Batch アプリケーションでは、Batch API を使用して、ジョブ、タスク、ノード、プールなどのリソースの状態の監視またはクエリを実行します。 例:
+Batch アプリケーションでは、Batch API を使用して、ジョブ、タスク、ノード、プールなどのリソースの状態の監視またはクエリを実行します。 次に例を示します。
 
 * [状態ごとにタスクとコンピューティング ノードをカウントする](batch-get-resource-counts.md)
 * [効率的に Batch リソースを一覧表示するクエリを作成する](batch-efficient-list-queries.md)
@@ -65,7 +65,7 @@ Batch アプリケーションでは、Batch API を使用して、ジョブ、�
 * [Batch Explorer](https://github.com/Azure/BatchExplorer) は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 Mac、Linux、または Windows 用の[インストール パッケージ](https://azure.github.io/BatchExplorer/)をダウンロードしてください。 必要に応じて、Batch Explorer 内の VM パフォーマンス カウンターなどの [Application Insights データを表示](https://github.com/Azure/batch-insights)するように Batch ソリューションを構成します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
 * Batch での[診断ログ](batch-diagnostics.md)の詳細について学習します。

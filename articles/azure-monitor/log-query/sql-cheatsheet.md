@@ -1,18 +1,17 @@
 ---
 title: SQL から Azure Monitor ログ クエリへのチート シート | Microsoft Docs
 description: SQL を使い慣れているユーザーが Azure Monitor でログ クエリを記述する助けとなります。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: 4acf3c2f8cee3ca9e679915eec677b6dd92792bf
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c76ab145fd2fdd077075b345ecac9c6a473f2369
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365191"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL から Azure Monitor ログ クエリへのチート シート 
 
@@ -20,7 +19,7 @@ ms.locfileid: "72932909"
 
 ## <a name="sql-to-azure-monitor"></a>SQL から Azure Monitor へ
 
-説明                             |SQL クエリ                                                                                          |Azure Monitor ログ クエリ
+[説明]                             |SQL クエリ                                                                                          |Azure Monitor ログ クエリ
 ----------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------
 テーブルからすべてのデータを選択する            |`SELECT * FROM dependencies`                                                                       |<code>dependencies</code>
 テーブルから特定の列を選択する    |`SELECT name, resultCode FROM dependencies`                                                        |<code>dependencies <br>&#124; project name, resultCode</code>
@@ -33,15 +32,15 @@ null 値の評価                         |`SELECT * FROM dependencies WHERE res
 日付の比較: 日付範囲             |`SELECT * FROM dependencies WHERE timestamp BETWEEN '2016-10-01' AND '2016-11-01'`                 |<code>dependencies <br>&#124; where timestamp between (datetime(2016-10-01) .. datetime(2016-10-01))</code>
 ブール値の比較                      |`SELECT * FROM dependencies WHERE !(success)`                                                      |<code>dependencies <br>&#124; where success == "False" </code>
 並べ替え                                    |`SELECT name, timestamp FROM dependencies ORDER BY timestamp asc`                                  |<code>dependencies <br>&#124; order by timestamp asc </code>
-重複の除外                                |`SELECT DISTINCT name, type  FROM dependencies`                                                    |<code>dependencies <br>&#124; summarize by name, type </code>
+Distinct                                |`SELECT DISTINCT name, type  FROM dependencies`                                                    |<code>dependencies <br>&#124; summarize by name, type </code>
 グループ化、集計                   |`SELECT name, AVG(duration) FROM dependencies GROUP BY name`                                       |<code>dependencies <br>&#124; summarize avg(duration) by name </code>
 列の別名、拡張                  |`SELECT operation_Name as Name, AVG(duration) as AvgD FROM dependencies GROUP BY name`             |<code>dependencies <br>&#124; summarize AvgD=avg(duration) by operation_Name <br>&#124; project Name=operation_Name, AvgD</code>
 メジャーによる上位 n レコード                |`SELECT TOP 100 name, COUNT(*) as Count FROM dependencies GROUP BY name ORDER BY Count asc`        |<code>dependencies <br>&#124; summarize Count=count() by name <br>&#124; top 100 by Count asc</code>
-和集合                                   |`SELECT * FROM dependencies UNION SELECT * FROM exceptions`                                        |<code>union dependencies, exceptions</code>
+Union                                   |`SELECT * FROM dependencies UNION SELECT * FROM exceptions`                                        |<code>union dependencies, exceptions</code>
 和集合: 条件付き                  |`SELECT * FROM dependencies WHERE value > 4 UNION SELECT * FROM exceptions WHERE value < 5`                |<code>dependencies <br>&#124; where value > 4 <br>&#124; union (exceptions <br>&#124; where value < 5)</code>
 結合                                    |`SELECT * FROM dependencies JOIN exceptions ON dependencies.operation_Id = exceptions.operation_Id`|<code>dependencies <br>&#124; join (exceptions) on operation_Id == operation_Id</code>
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor でのログ クエリの記述](get-started-queries.md)に関するレッスンを行います。

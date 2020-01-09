@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/15/2019
-ms.openlocfilehash: 883e1007b35991c1f5d8f0c6e949efcb48c27a1d
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 437a0c95ea4b48baa74bf6a577dc06429833bc31
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327222"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644581"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Linux ベースの HDInsight で Apache Hadoop YARN アプリケーション ログにアクセスする
 
@@ -67,7 +67,7 @@ YARN CLI ツールを使用するには、まず SSH を使用して HDInsight �
 
 YARN ResourceManager UI はクラスターのヘッド ノードで実行されます。 Ambari Web UI を使ってアクセスします。 YARN ログを表示するには、次の手順を使用します。
 
-1. ご利用の Web ブラウザーで、 https://CLUSTERNAME.azurehdinsight.net に移動します。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
+1. ご利用の Web ブラウザーで、 `https://CLUSTERNAME.azurehdinsight.net` に移動します。 CLUSTERNAME を、使用する HDInsight クラスターの名前に置き換えます。
 2. 左側のサービスの一覧で、 **[YARN]** を選択します。
 
     ![選択された Apache Ambari Yarn サービス](./media/hdinsight-hadoop-access-yarn-app-logs-linux/yarn-service-selected.png)

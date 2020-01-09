@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 6ef23c03f01cd8e83d4327f358eaf12209659ce8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: f489c3f11800d3125c393188496ead3682b18e04
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286453"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378417"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
@@ -47,7 +47,7 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
 英語 (`en`)、日本語 (`ja`)、簡体中国語 (`zh-Hans`)、繁体中国語 (`zh-Hant`)、フランス語 (`fr`)、イタリア語 (`it`)、スペイン語 (`es`)、オランダ語 (`nl`)、ポルトガル語 (`pt`)、ドイツ語 (`de`) がサポートされており、次のリージョンで利用できます: `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe`、`West US 2`。 
 
 > [!div class="nextstepaction"]
-> [感情分析 v3 の詳細情報](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-v3-public-preview)
+> [感情分析 v3 の詳細情報](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
 ## <a name="next-steps"></a>次の手順
 

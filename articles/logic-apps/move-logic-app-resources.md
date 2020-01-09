@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: de646c790fc21ef17bf78789e0531503f2f32052
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2d09484fcb5211003aeec0ec10bfc9892b4e6f31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790793"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456541"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>ロジック アプリのリソースを別の Azure サブスクリプション、リソース グループ、またはリージョンに移動する
 
 ロジック アプリや関連リソースを別の Azure サブスクリプション、リソース グループ、またはリージョンに移動するタスクを完了する方法として、Azure portal、Azure PowerShell、Azure CLI、REST API など、さまざまな方法が用意されています。 リソースを移動する前に、次の考慮事項を確認してください。 
 
-* Azure のリソース グループまたはサブスクリプション間では、[特定の種類のロジック アプリのリソース](../azure-resource-manager/move-support-resources.md#microsoftlogic)のみを移動できます。
+* Azure のリソース グループまたはサブスクリプション間では、[特定の種類のロジック アプリのリソース](../azure-resource-manager/management/move-support-resources.md#microsoftlogic)のみを移動できます。
 
 * Azure サブスクリプションと各 Azure リージョンで使用できるロジック アプリのリソース数の[制限](../logic-apps/logic-apps-limits-and-config.md)を確認します。 これらの制限は、サブスクリプションまたはリソース グループ間でリージョンが同じままである場合に、特定のリソースの種類を移動できるかどうかに影響します。 たとえば、Free レベル統合アカウントは、各 Azure サブスクリプションの各 Azure リージョンに対して、1 つだけ設定できます。
 
@@ -53,7 +53,7 @@ ms.locfileid: "74790793"
 
 ロジック アプリや統合アカウントなどのリソースを別の Azure リソース グループに移動するには、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用します。 これらの手順では、リソースのリージョンが同じままの場合に使用できる Azure portal について説明します。 その他の手順や一般的な準備については、「[リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/resource-group-move-resources.md)」を参照してください。
 
-グループ間でリソースを実際に移動する前に、リソースを別のグループに正常に移動できるかどうかをテストできます。 詳細については、「[移動の検証](../azure-resource-manager/resource-group-move-resources.md#validate-move)」を参照してください。
+グループ間でリソースを実際に移動する前に、リソースを別のグループに正常に移動できるかどうかをテストできます。 詳細については、「[移動の検証](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)」を参照してください。
 
 1. [Azure portal](https://portal.azure.com)で、移動するロジック アプリのリソースを探して選択します。
 
@@ -104,6 +104,6 @@ Visual Studio から取得するテンプレートには、ロジック アプ�
 
 1. テンプレートを開いて編集し、デプロイに必要な値をパラメーター化します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure リソースを新しいリソース グループまたはサブスクリプションに移動する](../azure-resource-manager/resource-group-move-resources.md)

@@ -2,24 +2,24 @@
 title: ポータルでのクラウド サービスの自動スケール | Microsoft Docs
 description: ポータルを使用して、Azure でクラウド サービスの Web ロールおよび worker ロールの自動スケール ルールを構成する方法について説明します。
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359625"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360839"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>ポータルでクラウド サービスの自動スケールを構成する方法
 
 スケールインまたはスケールアウトをトリガーするクラウド サービス worker ロールに対して条件を設定することができます。 ロールの条件は、CPU、ディスク、またはロールのネットワークの負荷に基づいて設定できます。 条件はまた、メッセージ キューに基づいて、またはサブスクリプションに関連付けられているその他の Azure リソースのメトリックに基づいて設定することができます。
 
 > [!NOTE]
-> この記事では、クラウド サービスの Web ロールと worker ロールについて説明します。 仮想マシンを直接作成した場合 (クラシック)、仮想マシンはクラウド サービスでホストされます。 標準の仮想マシンは、[可用性セット](../virtual-machines/windows/classic/configure-availability-classic.md)に関連付けることでスケールを設定でき、手動でオンまたはオフにすることができます。
+> この記事では、クラウド サービスの Web ロールと worker ロールについて説明します。 仮想マシンを直接作成した場合 (クラシック)、その仮想マシンはクラウド サービスでホストされます。 標準の仮想マシンは、[可用性セット](../virtual-machines/windows/classic/configure-availability-classic.md)に関連付けることでスケールを設定でき、手動でオンまたはオフにすることができます。
 
 ## <a name="considerations"></a>考慮事項
 アプリケーションの規模の設定を構成する前に、以下に示す情報を考慮してください。
@@ -66,7 +66,7 @@ ms.locfileid: "68359625"
 #### <a name="profile"></a>プロファイル
 プロファイルでは、スケールにおけるインスタンスの最大数と最小数、ならびにこのスケール範囲を有効にするタイミングを設定します。
 
-* **Always (常に)**
+* **毎回**
 
     常に、この使用可能なインスタンスの範囲を保持します。  
 
@@ -105,3 +105,6 @@ ms.locfileid: "68359625"
 3. スケールするロールのインスタンス。
 
 スケール設定を構成したら、上部にある **[保存]** アイコンを選択します。
+
+
+

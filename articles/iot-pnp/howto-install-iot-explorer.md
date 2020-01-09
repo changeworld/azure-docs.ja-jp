@@ -3,23 +3,23 @@ title: Azure IoT エクスプローラーをインストールして使用する
 description: Azure IoT エクスプローラー ツールをインストールして、自分の IoT ハブに接続されている IoT プラグ アンド プレイ プレビュー デバイスとの対話に使用します。
 author: miagdp
 ms.author: miag
-ms.date: 07/02/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: fd180404ca18b5ea84c745a543ae7e87bf16c27d
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679862"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529628"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT エクスプローラーをインストールして使用する
 
 Azure IoT エクスプローラーは、お使いの IoT プラグ アンド プレイ プレビュー デバイスと対話し、テストを実施するためのグラフィカル ツールです。 ローカル マシンにツールをインストールしたら、それを使用してデバイスに接続できます。 このツールを使用すると、デバイスが送信しているテレメトリの表示、デバイスのプロパティの操作、コマンドの呼び出しを行うことができます。
 
-この記事では、その方法について説明します。
+この記事で取り上げるテクニック:
 
 - Azure IoT エクスプローラー ツールをインストールして構成する。
 - ツールを使用してデバイスと対話し、デバイスをテストする。
@@ -97,7 +97,7 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 **[インターフェイス]** ページで、インターフェイスの JSON 定義を表示できます。
 
-#### <a name="properties"></a>properties
+#### <a name="properties"></a>Properties
 
 **[Non-writeable properties]\(書き込み不可のプロパティ\)** ページでは、インターフェイスで定義されている読み取り専用プロパティを表示できます。 **[Writeable properties]\(書き込み可能なプロパティ\)** ページでは、インターフェイスで定義されている書き込み可能なプロパティを更新できます。
 
@@ -109,7 +109,7 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 変更を送信した後には、更新の状態を追跡できます ( **[synching]\(同期中\)** 、 **[成功]** 、または **[エラー]** )。 同期が完了すると、 **[Reported Property]\(reported プロパティ\)** 列にプロパティの新しい値が表示されます。 同期が完了する前に他のページに移動しても、更新が完了した時点で完了を知らせる通知がツールから届きます。 ツールの通知センターを使用して、通知履歴を確認することもできます。
 
-#### <a name="commands"></a>command
+#### <a name="commands"></a>コマンド
 
 デバイスにコマンドを送信するには、 **[コマンド]** ページに移動します。
 
@@ -122,6 +122,6 @@ IoT プラグ アンド プレイ デバイス用のモデル定義は、パブ�
 
 選択したインターフェイスのテレメトリを表示するには、その **[テレメトリ]** ページにアクセスします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このハウツー記事では、Azure IoT エクスプローラーをインストールして使用し、IoT プラグ アンド プレイ デバイスと対話する方法について学習しました。 次は、[Azure CLI 拡張機能をインストールして使用する](./howto-install-pnp-cli.md)方法について学習することをお勧めします。

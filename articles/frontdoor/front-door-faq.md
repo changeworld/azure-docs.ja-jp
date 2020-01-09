@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: fa9de74c89ba3f0351169f143146dc21b80ee666
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790532"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639856"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Azure Front Door Service についてよく寄せられる質問
 
@@ -132,7 +132,7 @@ Azure Front Door (AFD) には、トラフィックをルーティングするた
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door-service"></a>Azure Front Door Service のさまざまなタイムアウトおよび制限とは何ですか?
 
-[Azure Front Door Service のさまざまなタイムアウトおよび制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-front-door-service-limits)についてのすべてのドキュメントを参照してください。
+[Azure Front Door Service のさまざまなタイムアウトおよび制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)についてのすべてのドキュメントを参照してください。
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -213,7 +213,7 @@ Azure Front Door Service では監査ログを使用できます。 ポータル
 
 はい、Azure Front Door Service はアラートをサポートしません。 メトリックに関するアラートが構成されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
 - [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

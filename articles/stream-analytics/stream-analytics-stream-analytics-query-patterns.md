@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics での一般的なクエリ パターン
 description: この記事では、Azure Stream Analytics ジョブで役に立つさまざまな一般的クエリ パターンとデザインについて説明します。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: 729385a2ce9feb6e69f9be29c2175b403093be3f
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 61f9e128fa9299a743012e18882fe32591fdd3f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369951"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>一般的 Stream Analytics 使用状況パターンのクエリ例
 
@@ -190,7 +189,7 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
 
 また、共通テーブル式 (CTE) (**WITH** ステートメントなど) の結果を複数の出力ステートメントに再利用することもできます。 このオプションには、入力ソースに対して開くリーダーが少なくて済むという追加の利点があります。
 
-例: 
+次に例を示します。 
 
 ```SQL
     WITH AllRedCars AS (
@@ -226,7 +225,7 @@ JSON と Avro のどちらも、入れ子になったオブジェクト (レコ�
 | 2 |2015-01-01T00:00:02.000Z |
 | 1 |2015-01-01T00:00:04.000Z |
 
-**解決策:**
+**解決方法:**
 
 ```SQL
 SELECT
@@ -421,14 +420,14 @@ GROUP BY
 
 **入力**:  
 
-| User | Feature | Event | Time |
+| User | 機能 | Event | Time |
 | --- | --- | --- | --- |
-| user@location.com |RightMenu |開始 |2015-01-01T00:00:01.0000000Z |
+| user@location.com |RightMenu |[開始] |2015-01-01T00:00:01.0000000Z |
 | user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000Z |
 
 **出力**:  
 
-| User | Feature | 時間 |
+| User | 機能 | Duration |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -709,7 +708,7 @@ Azure Stream Ananlytics のクエリ言語は、JavaScript または C# 言語�
 * [Azure Stream Analytics の JavaScript ユーザー定義集計](stream-analytics-javascript-user-defined-aggregates.md)
 * [Azure Stream Analytics Edge ジョブの .NET Standard ユーザー定義関数の開発](stream-analytics-edge-csharp-udf-methods.md)
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a826bb01a906153b4ca2a3c854623c83b6192aec
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 5975f334eae543ea0f6ddc182170ae185ac5397a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828884"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468902"
 ---
 Azure Portal を使用して Resource Manager デプロイ モデルで VNet を作成するには、次の手順に従います。 スクリーンショットは例として示されています。 サンプルの値は必ず実際の値に変更してください。 仮想ネットワークの操作の詳細については、「 [仮想ネットワークの概要](../articles/virtual-network/virtual-networks-overview.md)」を参照してください。
 
@@ -22,7 +22,7 @@ Azure Portal を使用して Resource Manager デプロイ モデルで VNet を
 >
 >
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。  Azure portal メニューで、または **[ホーム]** ページから、 **[リソースの作成]** を選択します。 **[新規]** ページが開きます。
+1. [Azure portal](https://portal.azure.com) にサインインする  Azure portal メニューで、または **[ホーム]** ページから、 **[リソースの作成]** を選択します。 **[新規]** ページが開きます。
 
 2. **[マーケットプレースを検索]** に「*仮想ネットワーク*」と入力し、その結果から **[仮想ネットワーク]** を選択します。
 
@@ -37,7 +37,7 @@ Azure Portal を使用して Resource Manager デプロイ モデルで VNet を
 5. **Name**:仮想ネットワークの名前を入力します。
 6. **[アドレス空間]** : アドレス空間を入力します。 追加するアドレス空間が複数ある場合は、1 つ目のアドレス空間を追加してください。 その他のアドレス空間は後で、VNet を作成した後に追加できます。
 7. **サブスクリプション**:一覧表示されているサブスクリプションが正しいことを確認します。 ドロップダウンを使用して、サブスクリプションを変更できます。
-8. **[リソース グループ]** :既存のリソース グループを選択するか、新しいリソース グループの名前を入力して新しく作成します。 新しいグループを作成する場合は、計画した構成値に基づいて、リソース グループに名前を付けます。 リソース グループの詳細については、「 [Azure リソース マネージャーの概要](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)」を参照してください。
+8. **[リソース グループ]** :既存のリソース グループを選択するか、新しいリソース グループの名前を入力して新しく作成します。 新しいグループを作成する場合は、計画した構成値に基づいて、リソース グループに名前を付けます。 リソース グループの詳細については、「 [Azure リソース マネージャーの概要](../articles/azure-resource-manager/management/overview.md#resource-groups)」を参照してください。
 9. **[場所]** :VNet の場所を選択します。 この場所の設定によって、この VNet にデプロイしたリソースの配置先が決まります。
 10. **サブネット**:サブネットの名前とアドレス範囲を追加します。 その他のサブネットは後で、VNet を作成した後に追加できます。
 11. ダッシュボードで VNet を簡単に検索できるようにするには、 **[ダッシュボードにピン留めする]** を選択します。その後、 **[作成]** をクリックします。

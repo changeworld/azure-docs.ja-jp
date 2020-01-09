@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
-ms.openlocfilehash: f36a48e0cedc309deda8416face5549a54eb8c73
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975127"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453804"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のアクセスを制御する
 
@@ -24,7 +24,7 @@ ms.locfileid: "74975127"
 * プロビジョニング サービスへのアクセス用にバックエンド アプリに付与できるアクセス許可の種類。
 * アクセス許可の確認に使用する認証プロセスとトークン。
 
-### <a name="when-to-use"></a>いつ使用するか
+### <a name="when-to-use"></a>使用する場合
 
 プロビジョニング サービスのエンドポイントにアクセスするには、適切なアクセス許可が必要です。 たとえば、サービスに送信するすべてのメッセージと共に、バックエンド アプリにはセキュリティ資格情報が格納されているトークンを含める必要があります。
 
@@ -75,9 +75,9 @@ Device Provisioning Service では、サービスの認証にセキュリティ 
 
 考えられる値を次に示します。
 
-| 値 | 説明 |
+| 値 | [説明] |
 | --- | --- |
-| {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**: キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。|
+| {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**:キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。|
 | {expiry} |1970 年 1 月 1 日の 00 時 00 分 00 秒 UTC からのエポック秒で表される UTF8 文字列。 |
 | {URL-encoded-resourceURI} | 小文字のリソース URI の小文字の URL エンコード。 IoT Device Provisioning Service のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。 たとえば、「 `mydps.azure-devices-provisioning.net` 」のように入力します。 |
 | {policyName} |このトークンの参照先となる共有アクセス ポリシーの名前。 |
@@ -177,7 +177,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 次の表は、IoT Device Provisioning Service へのアクセス制御に使用できるアクセス許可の一覧です。
 
-| アクセス許可 | メモ |
+| 権限 | メモ |
 | --- | --- |
 | **ServiceConfig** |サービス構成を変更するためのアクセス権を付与します。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
 | **EnrollmentRead** |デバイスの登録および登録グループの読み取りアクセスを許可します。 <br/>このアクセス許可はバックエンドのクラウド サービスによって使用されます。 |
@@ -190,5 +190,5 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 [img-add-shared-access-policy]: ./media/how-to-control-access/how-to-add-shared-access-policy.PNG
 [lnk-sdks]: ../iot-hub/iot-hub-devguide-sdks.md
 [lnk-management-portal]: https://portal.azure.com
-[lnk-azure-resource-manager]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-resource-manager]: ../azure-resource-manager/management/overview.md
 [lnk-resource-provider-apis]: https://docs.microsoft.com/rest/api/iot-dps/

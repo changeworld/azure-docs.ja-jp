@@ -3,16 +3,16 @@ title: IoT プラグ アンド プレイ プレビューの制限とクォータ
 description: IoT プラグ アンド プレイ プレビューを使用する場合に適用される制限、クォータ、およびスロットルについて説明します。
 author: miagdp
 ms.author: miag
-ms.date: 08/01/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2df8a8820422a22b0512e24c4b052377cb0e61e0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 48ecaaba6d956efd9da75d0582fa06d231cb3f80
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878927"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531379"
 ---
 # <a name="iot-plug-and-play-preview-limits-quotas-and-throttles"></a>IoT プラグ アンド プレイ プレビューの制限、クォータ、およびスロットル
 
@@ -57,6 +57,6 @@ ms.locfileid: "69878927"
 
 パーサー ライブラリは、[デジタル ツイン定義言語](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)に適用される制限に従います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 推奨される次の手順は、[IoT プラグ アンド プレイ デバイスに接続してやり取りする](./howto-develop-solution.md)方法を学習することです。

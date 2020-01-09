@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 9426a66115513cf02af501eb6271cf1f1b9fdf76
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 0caad9488e4ab84c85ef27b559c34453ad6cad32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996342"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450175"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -26,7 +26,7 @@ Azure Backup は、VM を復元するためのさまざまな方法を提供し�
 **既存の以下のものを置き換えます** | ディスクを復元し、それを使用して既存の VM 上のディスクを置き換えることができます。<br/><br/> 現在の VM が存在する必要があります。 削除されている場合、このオプションは使用できません。<br/><br/> ディスクを交換する前に、Azure Backup によって既存の VM のスナップショットが取得され、指定したステージングの場所に格納されます。 VM に接続されている既存のディスクが、選択した復元ポイントを使用して置き換えられます。<br/><br/> スナップショットはコンテナーにコピーされ、アイテム保持ポリシーに従って保持されます。 <br/><br/> ディスクの交換操作の後、元のディスクはリソース グループに保持されます。 元のディスクが必要ない場合は、それを手動で削除することを選択できます。 <br/><br/>既存のものの置き換えは、暗号化されていないマネージド VM でサポートされています。 アンマネージド ディスク、[汎用化された VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource)、または[カスタム イメージを使用して作成された](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) VM では、サポートされていません。<br/><br/> 復元ポイントにあるディスクの数が現在の VM よりも多い (または少ない) 場合、復元ポイントのディスク数だけが VM 構成に反映されます。<br/><br/>
 
 > [!NOTE]
-> Azure VM 上の特定のファイルとフォルダーを復旧することもできます。 [詳細情報](backup-azure-restore-files-from-vm.md)。
+> Azure VM 上の特定のファイルとフォルダーを復旧することもできます。 [詳細については、こちらを参照してください](backup-azure-restore-files-from-vm.md)。
 >
 > Azure VM 用の Azure Backup の (インスタント リストアと呼ばれる) [最新バージョン](backup-instant-restore-capability.md)を実行している場合、スナップショットは最大 7 日間保持され、バックアップ データがコンテナーに送信される前にスナップショットから VM を復元できます。 過去 7 日間のバックアップから VM を復元する場合、コンテナーからではなくスナップショットから復元する方が高速です。
 
@@ -78,7 +78,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 2. **[仮想マシン名]** で、サブスクリプションに存在しない VM を指定します。
 3. **[リソース グループ]** で、新しい VM の既存のリソース グループを選択するか、グローバルに一意の名前を持つ新しいリソース グループを作成します。 既に存在している名前を割り当てると、Azure は VM と同じ名前をグループに割り当てます。
 4. **[仮想ネットワーク]** で、VM が配置される VNet を選択します。 サブスクリプションに関連付けられているすべての VNet が表示されます。 サブネットを選択します。 最初のサブネットが既定で選択されています。
-5. **[ストレージの場所]** で、VM のストレージ アカウントを指定します。 [詳細情報](#storage-accounts)。
+5. **[ストレージの場所]** で、VM のストレージ アカウントを指定します。 [詳細については、こちらを参照してください](#storage-accounts)。
 
     ![復元の構成ウィザード](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
@@ -94,7 +94,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 1. **[復元の構成]**  >  **[新規作成]**  >  **[復元の種類]** で、 **[ディスクの復元]** を選択します。
 2. **[リソース グループ]** で、復元されたディスクの既存のリソース グループを選択するか、グローバルに一意の名前を持つ新しいリソース グループを作成します。
-3. **[ストレージ アカウント]** で、VHD のコピー先のアカウントを指定します。 [詳細情報](#storage-accounts)。
+3. **[ストレージ アカウント]** で、VHD のコピー先のアカウントを指定します。 [詳細については、こちらを参照してください](#storage-accounts)。
 
     ![Recovery configuration completed](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
@@ -114,8 +114,8 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
     ![復元ジョブのドリルダウン](./media/backup-azure-arm-restore-vms/restore-job-drill-down1.png)
 
 3. テンプレートで提供されている VM 設定をカスタマイズするには、 **[テンプレートの編集]** をクリックします。 さらにカスタマイズを追加する場合は、 **[パラメーターの編集]** をクリックします。
-    - カスタム テンプレートからのリソースのデプロイに関する[詳細情報](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)。
-    - テンプレートの作成に関する[詳細情報](../azure-resource-manager/resource-group-authoring-templates.md)。
+    - カスタム テンプレートからのリソースのデプロイに関する[詳細情報](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
+    - テンプレートの作成に関する[詳細情報](../azure-resource-manager/templates/template-syntax.md)。
 
    ![テンプレート デプロイの読み込み](./media/backup-azure-arm-restore-vms/edit-template1.png)
 
@@ -129,7 +129,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 1. **[復元の構成]** で、 **[既存の以下のものを置き換えます]** をクリックします。
 2. **[リストアの種類]** で、 **[Replace disk/s]\(ディスクの交換\)** を選択します。 これは、既存の VM ディスクを置き換えるために使用される復元ポイントです。
-3. **[ステージングの場所]** で、復元プロセス中に現在のマネージド ディスクのスナップショットを保存する場所を指定します。 [詳細情報](#storage-accounts)。
+3. **[ステージングの場所]** で、復元プロセス中に現在のマネージド ディスクのスナップショットを保存する場所を指定します。 [詳細については、こちらを参照してください](#storage-accounts)。
 
    ![復元の構成ウィザードの [既存の以下のものを置き換えます]](./media/backup-azure-arm-restore-vms/restore-configuration-replace-existing.png)
 
@@ -203,7 +203,7 @@ VM を復元した後の注意点がいくつかあります:
 - 最初にバックアップされた VM と同じ名前で同じリソース グループに VM を復元した場合、復元後も VM に対するバックアップは引き続き行われます。
 - 別のリソース グループに VM を復元した場合、または復元された VM に別の名前を指定した場合、復元された VM のバックアップをセットアップする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 復元処理中に問題が発生した場合は、一般的な問題とエラーを[確認](backup-azure-vms-troubleshoot.md#restore)してください。
 - VM が復元されたら、[仮想マシンの管理](backup-azure-manage-vms.md)について理解します

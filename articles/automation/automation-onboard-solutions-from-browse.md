@@ -2,19 +2,15 @@
 title: Azure Automation の Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用する準備を行う方法について説明します
 description: Azure Automation に含まれる Update Management、Change Tracking、および Inventory ソリューションで、Azure Virtual Machine の使用準備を行う方法について説明します
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/11/2019
 ms.topic: article
-manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cc6e3f3aaa77d7691e0443ee74405058bde2dfa0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 188306ca02cee05f17514826ae6d973a17e6bb97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850807"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421854"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用できるようにする
 
@@ -22,7 +18,7 @@ Azure Automation には、オペレーティング システムのセキュリ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[https://portal.azure.com ](https://portal.azure.com) で Azure にサインインします
+[https://portal.azure.com](https://portal.azure.com ) で Azure にサインインします
 
 ## <a name="enable-solutions"></a>ソリューションの有効化
 
@@ -105,7 +101,7 @@ Log Analytics ワークスペースと Automation アカウントの選択を確
 
 * VM の開始/停止の Runbook スケジュール
 * VM の開始/停止の Runbook
-* 変数
+* 変数:
 
 Automation アカウントの自分のワークスペースを Log Analytics ワークスペースからリンク解除することもできます。 自分のワークスペースで、 **[関連リソース]** の **[Automation アカウント]** を選択します。 [Automation アカウント] ページで **[アカウントのリンク解除]** を選択します。
 
@@ -133,7 +129,7 @@ Automation アカウントの自分のワークスペースを Log Analytics ワ
 
 **原因:** このソリューションは、すべての Linux ディストリビューションまたはすべてのバージョンの Windows に対してサポートされているわけではありません。
 
-**解決策:** [サポート対象クライアントの一覧](automation-update-management.md#clients)を参照して解決してください。
+**解決方法:** [サポート対象クライアントの一覧](automation-update-management.md#clients)を参照して解決してください。
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Classic VMs cannot be enabled (クラシック VM を有効にできない)
 
@@ -147,14 +143,14 @@ Automation アカウントの自分のワークスペースを Log Analytics ワ
 
 **解決策**:VM がソリューションを使用できるようにするためには VM は実行中である必要があります。 **[VM の起動]** インライン リンクをクリックし、ページから移動せずに VM を起動します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Update Management から VM を削除するには:
 
 * Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
 * [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) または [Linux 用 Log Analytics エージェント](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)を削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 お使いの仮想マシンでソリューションを使用できるようになりました。Update Management の概要の記事にアクセスして、お使いのマシンに**更新プログラムの展開**を作成する方法を参照してください。
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 8c9258f099587ba4dbdfe3a7e46f72cd7a825024
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 63cd7cea65515488649507cb7d3c52877211ca04
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603837"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531447"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -24,7 +24,7 @@ ms.locfileid: "73603837"
 
 Azure サブスクリプションでのリソースの変更に対応するために、Azure サブスクリプションのイベントをサブスクライブします。
 
-|タイトル |説明  |
+|タイトル |[説明]  |
 |---------|---------|
 | [チュートリアル:Azure Automation と Event Grid および Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |イベントを送信する仮想マシンを作成します。 このイベントは、仮想マシンをタグ付けする Automation Runbook をトリガーし、Microsoft Teams チャネルに送信されるメッセージをトリガーします。 |
 | [方法: ポータルを使用したイベントのサブスクライブ](subscribe-through-portal.md) | ポータルを使用して Azure サブスクリプションのイベントにサブスクライブします。 |
@@ -36,7 +36,7 @@ Azure サブスクリプションでのリソースの変更に対応するた�
 
 イメージ内の変更に対応するために、Container Registry イベントにサブスクライブします。
 
-|タイトル |説明  |
+|タイトル |[説明]  |
 |---------|---------|
 | [クイック スタート: コンテナー レジストリ イベントを送信する](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Container Registry イベントを送信する方法を示します。 |
 | [イベント スキーマ](event-schema-container-registry.md) | Container Registry イベント内のフィールドを表示します。 |
@@ -45,7 +45,7 @@ Azure サブスクリプションでのリソースの変更に対応するた�
 
 アプリケーションのイベントに対応するために、カスタム トピックをサブスクライブします。
 
-|タイトル  |説明  |
+|タイトル  |[説明]  |
 |---------|---------|
 | [クイック スタート: Azure CLI を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md) | Azure CLI を使ってカスタム イベントを送信する方法を示します。 |
 | [クイック スタート: Azure PowerShell を使ったカスタム イベントの作成とルーティング](custom-event-quickstart-powershell.md) | Azure PowerShell を使ってカスタム イベントを送信する方法を示します。 |
@@ -65,7 +65,7 @@ Azure サブスクリプションでのリソースの変更に対応するた�
 
 Capture ファイル イベントに対応するために、Event Hubs のイベントをサブスクライブします。 Event Hubs は、イベント ソースまたはイベント ハンドラーとして動作させることができます。 以下の記事では、Event Hubs をソースとして使用する方法を示します。
 
-|タイトル  |説明  |
+|タイトル  |[説明]  |
 |---------|---------|
 | [チュートリアル: ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md) | Event Hubs によってキャプチャ ファイルが作成されると、Event Grid が関数アプリにイベントを送信します。 アプリは Capture ファイルを取得し、データ ウェアハウスにデータを移行します。 |
 | [イベント スキーマ](event-schema-event-hubs.md) | Event Hubs イベントのフィールドを示します。 |
@@ -76,7 +76,7 @@ Capture ファイル イベントに対応するために、Event Hubs のイベ
 
 デバイスの作成、削除、接続、切断、テレメトリのイベントに対応するために、IoT Hub のイベントをサブスクライブします。
 
-|タイトル  |説明  |
+|タイトル  |[説明]  |
 |---------|---------|
 | [Logic Apps を使用して Azure IoT Hub イベントに関する電子メール通知を送信する](publish-iot-hub-events-to-logic-apps.md) | ロジック アプリは、お使いの IoT Hub にデバイスが追加されるたびに、通知メールを送信します。 |
 | [Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md) | IoT Hub と Event Grid の統合の概要です。 |
@@ -89,7 +89,7 @@ Key Vault と Event Grid の統合は現在プレビュー段階です。
 
 シークレットの有効期限が切れる直前、シークレットの有効期限が切れたとき、またはシークレットの新しいバージョンが利用可能になときに通知を受けるには、Key Vault イベントをサブスクライブします。 
 
-|タイトル  |説明  |
+|タイトル  |[説明]  |
 |---------|---------|
 | [Azure Event Grid での Key Vault イベントの監視](../key-vault/event-grid-overview.md) | Key Vault と Event Grid の統合の概要です。 |
 | [チュートリアル:Event Grid を使用した Key Vault イベントの作成と監視](../key-vault/event-grid-tutorial.md) | Key Vault に関する Event Grid の通知を設定する方法について説明します。 |
@@ -99,7 +99,7 @@ Key Vault と Event Grid の統合は現在プレビュー段階です。
 
 ジョブ状態のイベントに対応するため、Media Services のイベントをサブスクライブします。
 
-|タイトル  |説明  |
+|タイトル  |[説明]  |
 |---------|---------|
 | [概要: Media Services イベントへの対応](../media-services/latest/reacting-to-media-services-events.md) | Media Services と Event Grid の統合の概要です。 |
 | [チュートリアル: CLI を使用して Azure Media Services のイベントをカスタム Web エンドポイントにルーティングする](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Media Services からイベントを送信する方法を示します。 |
@@ -109,7 +109,7 @@ Key Vault と Event Grid の統合は現在プレビュー段階です。
 
 リソース グループのリソースの変更に対応するため、リソース グループのイベントをサブスクライブします。
 
-|タイトル  |説明  |
+|タイトル  |[説明]  |
 |---------|---------|
 | [チュートリアル: Azure Event Grid と Logic Apps を使用して仮想マシンの変更を監視する](monitor-virtual-machine-changes-event-grid-logic-app.md) | ロジック アプリは仮想マシンへの変更を監視し、それらの変更に関する電子メールを送信します。 |
 | [Azure CLI: リソース グループのイベントのサブスクライブ](./scripts/event-grid-cli-resource-group.md)| リソース グループのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
@@ -123,17 +123,17 @@ Key Vault と Event Grid の統合は現在プレビュー段階です。
 
 アクティブなリスナーのいないメッセージに対応するため、Service Bus のイベントをサブスクライブします。
 
-|タイトル  |説明  |
+|タイトル  |[説明]  |
 |---------|---------|
 | [チュートリアル:Azure Service Bus の Azure Event Grid への統合の例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid は、Service Bus トピックから関数アプリとロジック アプリにメッセージを送信します。 |
 | [概要:Azure Service Bus の Event Grid への統合](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Service Bus と Event Grid の統合の概要です。 |
 | [イベント スキーマ](event-schema-service-bus.md) | Service Bus イベントのフィールドを示します。 |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 
 BLOB の作成および削除のイベントに対応するために、Blob Storage のイベントをサブスクライブします。
 
-|タイトル  |説明  |
+|タイトル  |[説明]  |
 |---------|---------|
 | [クイック スタート: Azure CLI で Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Blob Storage イベントを Webhook に送信する方法を示します。 |
 | [クイック スタート: PowerShell を使って Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure PowerShell を使って Blob Storage イベントを Webhook に送信する方法を示します。 |
@@ -147,7 +147,7 @@ BLOB の作成および削除のイベントに対応するために、Blob Stor
 ## <a name="maps"></a>マップ
 ジオフェンス イベントに応答するには、Azure Maps イベントをサブスクライブします。 たとえば、デバイスがジオフェンスに入ったり出たりするたびに、アプリケーションは電子メール通知を配信できます。
 
-|タイトル  |説明  |
+|タイトル  |[説明]  |
 |---------|---------|
 | [Event Grid を使用して Azure Maps イベントに反応する](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure Maps と Event Grid の統合の概要。 |
 | [チュートリアル:ジオフェンスを設定する](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | このチュートリアルでは、Azure Maps を使用してジオフェンスを設定するための基本的な手順について説明します。 Azure Event Grid を使用してジオフェンスの結果をストリーミングし、ジオフェンスの結果に基づいて通知を設定します。 |
@@ -156,7 +156,7 @@ BLOB の作成および削除のイベントに対応するために、Blob Stor
 ## <a name="app-configuration"></a>App Configuration
 Azure App Configuration イベントをサブスクライブして、キーと値の変更イベントに応答します。
 
-|タイトル | 説明 |
+|タイトル | [説明] |
 |---------|---------|
 | [Event Grid を使用して Azure App Configuration イベントに応答する](../azure-app-configuration/concept-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure App Configuration と Event Grid の統合の概要。 |
 | [クイック スタート: Azure CLI を使用して Azure App Configuration イベントをカスタム Web エンドポイントにルーティングする](../azure-app-configuration/howto-app-configuration-event.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Azure CLI を使って Azure App Configuration イベントを Webhook に送信する方法を示します。 |
@@ -165,7 +165,7 @@ Azure App Configuration イベントをサブスクライブして、キーと�
 ## <a name="azure-signalr"></a>Azure SignalR
 クライアント接続のイベントに応答するには、Azure SignalR Service のイベントをサブスクライブします。
 
-|タイトル | 説明 |
+|タイトル | [説明] |
 |---------|---------|
 | [Event Grid を使用して Azure SignalR Service のイベントに反応する](../azure-signalr/signalr-concept-event-grid-integration.md) | Azure SignalR Service と Event Grid の統合の概要。 |
 | [Azure SignalR Service のイベントを Event Grid に送信する方法](../azure-signalr/signalr-howto-event-grid-integration.md) | Event Grid を通して Azure SignalR Service のイベントをアプリケーションに送信する方法を示します。 |
@@ -175,12 +175,12 @@ Azure App Configuration イベントをサブスクライブして、キーと�
 
 モデル登録に応答するには、Azure Machine Learning ワークスペース イベントをサブスクライブします。
 
-| タイトル | 説明 |
+| タイトル | [説明] |
 | ----- | ----- |
-| [Azure Machine Learning イベントを使用する](../machine-learning/service/concept-event-grid-integration.md) | Azure Machine Learning と Event Grid の統合の概要です。 |
+| [Azure Machine Learning イベントを使用する](../machine-learning/concept-event-grid-integration.md) | Azure Machine Learning と Event Grid の統合の概要です。 |
 | [Azure Machine Learning 用の Azure Event Grid イベント スキーマ](event-schema-machine-learning.md) | Azure Machine Learning イベントのフィールドを示します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Event Grid の使用をすぐに開始するには、[Azure Event Grid でのカスタム イベントの作成とルーティング](custom-event-quickstart.md)に関する記事を参照してください。

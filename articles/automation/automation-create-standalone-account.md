@@ -2,19 +2,15 @@
 title: スタンドアロン Azure Automation アカウントを作成する
 description: この記事では、Azure Automation のセキュリティ プリンシパル認証のサンプルを作成、テスト、使用する手順をわかりやすく説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/15/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 0dcfcfe5bc6e59eeb4ccb7272ed3f68edc9c4172
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 22efb5e94049b975780c6f6ea69aa94a71cc9992
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850399"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366653"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 
@@ -88,7 +84,7 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
 
 Automation アカウントが正常に作成されると、いくつかのリソースが自動的に作成されます。 これらの作成後、Runbook を保持しない場合は安全に削除できます。 実行アカウントを使用して、Runbook でアカウントに対する認証を行うことができます。別の実行アカウントを作成する場合や実行アカウントを必要としない場合を除き、実行アカウントは残しておく必要があります。 実行アカウントのリソースを次の表に示します。
 
-| リソース | 説明 |
+| リソース | [説明] |
 | --- | --- |
 | AzureAutomationTutorial Runbook |実行アカウントを使用した認証の方法を示す、サンプルのグラフィカルな Runbook。 この Runbook は、すべての Resource Manager リソースを取得します。 |
 | AzureAutomationTutorialScript Runbook |実行アカウントを使用した認証の方法を示す、サンプルの PowerShell Runbook。 この Runbook は、すべての Resource Manager リソースを取得します。 |
@@ -104,7 +100,7 @@ Azure Automation アカウントを作成するとき、クラシック実行ア
 2. **[Azure クラシック実行アカウント]** を選択します。
 3. **[作成]** をクリックして、クラシック実行アカウントの作成に進みます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * グラフィカル作成の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください。
 * PowerShell Runbook の使用を開始するには、「[初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)」を参照してください。

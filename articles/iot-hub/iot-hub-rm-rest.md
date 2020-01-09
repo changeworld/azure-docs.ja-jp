@@ -8,12 +8,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 7d5e38e2ecfa2406ff0f58f73d828aa45d84c512
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c4cb230c9f0b56e3ff9d81e0d85134a7f192e6e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890475"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429174"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>リソース プロバイダー REST API を使用して IoT Hub を作成する (.NET)
 
@@ -170,13 +170,13 @@ ms.locfileid: "73890475"
 > [!NOTE]
 > このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。 完了したら、[Azure portal](https://portal.azure.com/) を使うか、終了時に **Remove-AzResource** PowerShell コマンドレットを使用して IoT ハブを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、リソース プロバイダー REST API を使用して IoT ハブをデプロイしました。次の手順に進んでください。
 
 * [IoT Hub リソース プロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) の機能の詳細をご確認ください。
 
-* Azure Resource Manager の機能の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
+* Azure Resource Manager の機能の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/management/overview.md)」を参照してください。
 
 IoT Hub の開発に関する詳細については、以下の記事をご覧ください。
 

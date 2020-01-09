@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 40025e2347fa80d2717ba292f6e3d74f5dda8e5c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ae71b71ad7c0425893391954f5ffe8b285370273
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931405"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531039"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する
 
@@ -47,7 +47,7 @@ ms.locfileid: "74931405"
     ![ワークスペースを接続する](media/activity-log-export/connect-workspace.png)
 
 ## <a name="analyze-in-log-analytics-workspace"></a>Log Analytics ワークスペースで分析する
-アクティビティ ログを Log Analytics ワークスペースに接続すると、ワークスペースにあり、[ログ クエリ](../log-query/log-query-overview.md)で取得できる **AzureActivity** という名前のテーブルにエントリが書き込まれるようになります。 このテーブルの構造は[ログ エントリのカテゴリ](activity-logs-overview.md#categories-in-the-activity-log)によって異なります。 各カテゴリの説明については、「[Azure アクティビティ ログのイベント スキーマ](activity-log-schema.md)」を参照してください。
+アクティビティ ログを Log Analytics ワークスペースに接続すると、ワークスペースにあり、[ログ クエリ](../log-query/log-query-overview.md)で取得できる **AzureActivity** という名前のテーブルにエントリが書き込まれるようになります。 このテーブルの構造は[ログ エントリのカテゴリ](activity-log-view.md#categories-in-the-activity-log)によって異なります。 各カテゴリの説明については、「[Azure アクティビティ ログのイベント スキーマ](activity-log-schema.md)」を参照してください。
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Activity Logs Analytics 監視ソリューション
 Azure Log Analytics 監視ソリューションには、Log Analytics ワークスペースのアクティビティ ログ レコードを分析するための、複数のログ クエリとビューが含まれています。
@@ -65,14 +65,14 @@ Azure Log Analytics 監視ソリューションには、Log Analytics ワーク�
 
 ![Azure のアクティビティ ログのダッシュボード](media/collect-activity-logs/activity-log-dash.png)
 
-| 視覚化パーツ | 説明 |
+| 視覚化パーツ | [説明] |
 | --- | --- |
 | [Azure Activity Log Entries] \(Azure のアクティビティ ログ エントリ) | 選択した日付範囲の Azure アクティビティ ログ エントリ レコード合計上位の棒グラフが表示され、アクティビティの呼び出し元上位 10 個のリストも表示されます。 棒グラフをクリックすると、`AzureActivity` のログ検索が実行されます。 呼び出し元の項目をクリックするとログ検索が実行され、その項目のアクティビティ ログ エントリがすべて返されます。 |
 | [Activity Logs by Status] \(状態ごとのアクティビティ ログ) | 選択した日付範囲の Azure アクティビティ ログ状態のドーナツ グラフと、上位 10 件の状態レコードの一覧を表示します。 `AzureActivity | summarize AggregatedValue = count() by ActivityStatus` のログ クエリを実行するには、グラフをクリックします。 状態の項目をクリックするとログ検索が実行され、その状態レコードのアクティビティ ログ エントリがすべて返されます。 |
 | [Activity Logs by Resource] \(リソースごとのアクティビティ ログ) | アクティビティ ログのあるリソースの合計数が表示され、上位 10 個のリソースと各リソースのレコード カウントも表示されます。 合計領域をクリックすると、`AzureActivity | summarize AggregatedValue = count() by Resource` のログ検索が実行され、ソリューションで使用可能なすべての Azure リソースが表示されます。 リソースをクリックするとログ クエリが実行され、そのリソースのアクティビティ レコードがすべて返されます。 |
 | [Activity Logs by Resource Provider] \(リソース プロバイダーごとのアクティビティ ログ) | アクティビティ ログを生成するリソース プロバイダーの合計数が表示され、上位 10 個も表示されます。 合計領域をクリックすると、`AzureActivity | summarize AggregatedValue = count() by ResourceProvider` のログ クエリが実行され、Azure のリソース プロバイダーがすべて表示されます。 リソース プロバイダーをクリックするとログ クエリが実行され、プロバイダーのアクティビティ レコードがすべて返されます。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アクティビティ ログ](activity-logs-overview.md)の詳細を確認します。
 - [Azure Monitor データ プラットフォーム](data-platform.md)の詳細を確認します。

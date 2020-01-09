@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674724"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644700"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事では、Azure Data Factory に関してよく寄せられる質問に対する回答を示します。  
@@ -46,7 +46,7 @@ Data Factory はデータ統合に必要な任意のフロー スタイルをモ
 - 差分フロー:
     - オンプレミスまたはクラウド内のリレーショナル ストアからディメンションまたは参照テーブルを移動する間の差分コピーの最大値をパラメーターを使用して定義し、レイク内にデータを読み込みことができます。 
 
-詳細については、[チュートリアル: 制御フロー](tutorial-control-flow.md)に関するページを参照してください。
+詳細については、「[チュートリアル:制御フロー](tutorial-control-flow.md)に関するページを参照してください。
 
 ### <a name="data-transformed-at-scale-with-code-free-pipelines"></a>コード不要のパイプラインを使用して大規模に変換されるデータ
 この新しいブラウザーベースのツール エクスペリエンスは、最新のインタラクティブな Web ベースのエクスペリエンスにより、コード不要のパイプラインのオーサリングとデプロイを提供します。
@@ -101,7 +101,7 @@ SSIS ワークロードを移動する場合は、データ ファクトリを�
 詳細については、「[Azure Data Factory の統合ランタイム](concepts-integration-runtime.md)」を参照してください。
 
 ## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Integration Runtime 数の制限
-1 つのデータ ファクトリに含めることができる統合ランタイム インスタンスの数に厳密な制限はありません。 ただし、SSIS パッケージの実行について、1 サブスクリプションにつき統合ランタイムが使用できる VM コア数には制限があります。 詳細については、「[Data Factory の制限](../azure-subscription-service-limits.md#data-factory-limits)」を参照してください。
+1 つのデータ ファクトリに含めることができる統合ランタイム インスタンスの数に厳密な制限はありません。 ただし、SSIS パッケージの実行について、1 サブスクリプションにつき統合ランタイムが使用できる VM コア数には制限があります。 詳細については、「[Data Factory の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits)」を参照してください。
 
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Azure Data Factory の最上位の概念とは
 1 つの Azure サブスクリプションで 1 つ以上の Azure Data Factory インスタンス (データ ファクトリ) を利用できます。 Azure Data Factory には、プラットフォームとして連携する 4 つの主要コンポーネントが含まれます。このプラットフォームを基盤とし、データ移動とデータ変換のステップを含んだデータ主導型のワークフローを作成することができます。
@@ -132,7 +132,7 @@ Data Factory では、リンクされたサービスは 2 つの目的に使用�
 ### <a name="pipeline-runs"></a>パイプライン実行
 パイプライン実行は、パイプラインを実行するインスタンスです。 通常は、パイプラインで定義されたパラメーターに引数を渡すことで、パイプライン実行をインスタンス化します。 引数は、手動で渡すことも、トリガー定義内で渡すこともできます。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 パラメーターは、読み取り専用構成のキーと値のペアです。 パラメーターはパイプラインで定義し、定義されたパラメーターの引数を実行時に実行コンテキストから渡します。 実行コンテキストは、トリガーによって、または手動で実行するパイプラインから作成されます。 パイプライン内のアクティビティは、パラメーターの値を使用します。
 
 データセットとは、厳密に型指定されたパラメーターと、再利用または参照可能なエンティティのことです。 アクティビティは、データセットを参照でき、データセットの定義で定義されたプロパティを使用できます。
@@ -252,26 +252,26 @@ Power Platform データフローを使用すると、ユーザーはさまざ�
 * nchar
 * varchar
 * nvarchar
-* integer
-* int
+* 整数 (integer)
+* INT
 * bit
-* ブール値
+* boolean
 * smallint
 * tinyint
 * bigint
 * long
 * text
 * date
-* datetime
+* DATETIME
 * datetime2
 * smalldatetime
 * timestamp
-* uniqueidentifier
+* UNIQUEIDENTIFIER
 * xml
 
 その他のデータ型も今後サポートされる予定です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 データ ファクトリを作成する手順については、次のチュートリアルをご覧ください。
 
 - [クイック スタート:データ ファクトリを作成する](quickstart-create-data-factory-dot-net.md)

@@ -3,19 +3,19 @@ title: Azure Cloud Services と ASP.NET を使ってみる | Microsoft Docs
 description: ASP.NET MVC と Azure を使用して多層アプリケーションを作成する方法について説明します。 ここで取り上げるアプリケーションは、クラウド サービス内で、Web ロールと worker ロールと連係して動作します。 Entity Framework、SQL Database、Azure Storage のキューと BLOB を使用しています。
 services: cloud-services, storage
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: gwallace
-ms.openlocfilehash: 3f2c60be29d679d0b0d30b6bf471f083c66ba93f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: tagore
+ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386733"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
@@ -388,7 +388,7 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 8. **[ContosoAdsWorker [Role]]** プロパティ ウィンドウで、もう 1 つ接続文字列を追加します。
 
    * 名前:ContosoAdsDbConnectionString
-   * 型: string
+   * 型: String
    * 値:Web ロール プロジェクトに使用したのと同じ接続文字列を貼り付けます (次の例は Visual Studio 2013 用です。 Visual Studio 2015 以降を使用していて、この例をコピーする場合は、忘れずにデータ ソースを変更してください)。
 
        ```
@@ -398,7 +398,7 @@ Contoso Ads アプリケーションを作成するには、次の手順を実�
 ### <a name="add-code-files"></a>コード ファイルの追加
 このセクションでは、ダウンロードしたソリューションから新しいソリューションにコード ファイルをコピーします。 以降のセクションでは、このコードの重要な部分について説明します。
 
-プロジェクトまたはフォルダーにファイルを追加するには、プロジェクトまたはフォルダーを右クリックし、 **[追加]**  -  **[既存の項目]** にデプロイする方法について説明します。 目的のファイルを選択してから **[追加]** をクリックします。 既存のファイルを置き換えるかどうかをたずねるメッセージが表示されたら、 **[はい]** をクリックします。
+プロジェクトまたはフォルダーにファイルを追加するには、プロジェクトまたはフォルダーを右クリックし、 **[追加]**  -  **[既存の項目]** を使用する簡単な多層 ASP.NET MVC 5 アプリケーションのコードを記述する方法を示します。 目的のファイルを選択してから **[追加]** をクリックします。 既存のファイルを置き換えるかどうかをたずねるメッセージが表示されたら、 **[はい]** をクリックします。
 
 1. ContosoAdsCommon プロジェクトで、*Class1.cs* ファイルを削除します。その場所に、ダウンロードしたプロジェクトから *Ad.cs* ファイルと *ContosoAdscontext.cs* ファイルを追加します。
 2. ContosoAdsWeb プロジェクトで、ダウンロードしたプロジェクトから次のファイルを追加します。
@@ -758,7 +758,7 @@ Web プロジェクトで使用するポート番号を変更してください�
 
 フル装備のエミュレーターを使用してアプリケーションを実行するには、管理者特権で Visual Studio を開く必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Contoso Ads アプリケーションは、入門用のチュートリアルという目的から意図的にシンプルに作られています。 たとえば、このアプリケーションには、[依存関係の挿入](https://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection)や[作業パターンのリポジトリと単位](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo)が実装されていません。さらに、[ログのためのインターフェイス](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log)、データ モデルの変更を管理するための [EF Code First Migrations](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application)、一時的なネットワーク エラーを管理するための [EF 接続の回復性](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application)なども省略されています。
 
 以下に、より現実的なコーディング手法を示すいくつかのクラウド サービス サンプル アプリケーションを、やさしいものから順に示します。
@@ -774,5 +774,8 @@ Azure Storage に関するベスト プラクティスおよびパターンを�
 
 * [Azure Cloud Services パート 1:概要](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)
-* [Azure Storage](https://docs.microsoft.com/azure/storage/)
+* [Azure ストレージ](https://docs.microsoft.com/azure/storage/)
 * [クラウド サービス プロバイダーの選び方](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
+
+
+

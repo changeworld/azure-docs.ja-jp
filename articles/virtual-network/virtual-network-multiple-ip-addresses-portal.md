@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: anavin
-ms.openlocfilehash: fcb9cc817128bce9498312d3fb016761b6382634
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 66cbb843369dee103f102c9c743da544a833ccf1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612754"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646393"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -44,7 +44,7 @@ ms.locfileid: "67612754"
 2. そのポータルで、 **[その他のサービス]** をクリックし、フィルター ボックスに「*virtual machines*」と入力して、 **[Virtual Machines]** をクリックします。
 3. **[Virtual Machines]** ウィンドウで、IP アドレスを追加する VM をクリックします。 表示された仮想マシン ウィンドウで **[ネットワーク インターフェイス]** をクリックして、IP アドレスを追加するネットワーク インターフェイスを選択します。 次の図に示す例では、「*myVM*」という名前の VM の「*myNIC*」という名前の NIC を選択しています。
 
-    ![Linux](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
+    ![ネットワーク インターフェイス](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
 4. 選択した NIC について表示されるウィンドウで、 **[IP 構成]** をクリックします。
 
@@ -69,7 +69,7 @@ ms.locfileid: "67612754"
 パブリック IP アドレスを追加するには、新しい IP 構成または既存の IP 構成にパブリック IP アドレス リソースを関連付けます。
 
 > [!NOTE]
-> パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
+> パブリック IP アドレスには、わずかな費用がかかります。 IP アドレスの料金の詳細については、「 [IP アドレスの料金](https://azure.microsoft.com/pricing/details/ip-addresses) 」ページをご覧ください。 サブスクリプション内で使用できるパブリック IP アドレスの数には制限があります。 制限の詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
 > 
 
 ### <a name="create-public-ip"></a>パブリック IP アドレス リソースの作成

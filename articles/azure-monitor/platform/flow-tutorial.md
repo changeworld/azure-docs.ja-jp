@@ -4,15 +4,15 @@ description: Azure Log Analytics コネクタを使用して、Microsoft Flow �
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
+author: bwren
 ms.author: bwren
 ms.date: 09/29/2017
-ms.openlocfilehash: c74ff0f4d23df8f906870c3810a699db254d70b4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3c1df04e96aff55ae5b9f7130b1593638e3ea1b3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932315"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395081"
 ---
 # <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow のコネクタを使用して Azure Monitor ログのプロセスを自動化する
 [Microsoft Flow](https://ms.flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 あるアクションの出力は別のアクションへの入力として使用できます。これにより、さまざまなサービス間の統合を作成できます。  Microsoft Flow 用の Azure Log Analytics コネクタを使用すると、Azure Monitor の Log Analytics ワークスペースから、ログ クエリによって取得されるデータを含むワークフローを構築できます。
@@ -54,7 +54,7 @@ ms.locfileid: "72932315"
 
 2. **[グラフの種類]** ボックスで、 **[HTML の表]** を選択します。<br><br>![Log Analytics のアクション](media/flow-tutorial/flow03.png)
 
-## <a name="step-5-configure-the-flow-to-send-email"></a>手順 5:電子メールを送信するフローを構成する
+## <a name="step-5-configure-the-flow-to-send-email"></a>手順 5:電子メールを送信するフローを設定する
 
 1. **[新しいステップ]** をクリックし、 **[アクションの追加]** をクリックします。
 2. **Office 365 Outlook** を検索します。
@@ -66,14 +66,14 @@ ms.locfileid: "72932315"
 6. **[詳細オプションを表示する]** をクリックします。
 7. **[Is HTML]\(HTML にする\)** ボックスで、 **[はい]** を選択します。<br><br>![Office 365 の電子メール設定ウィンドウ](media/flow-tutorial/flow05.png)
 
-## <a name="step-6-save-and-test-your-flow"></a>手順 6:自分のフローを保存してテストする
+## <a name="step-6-save-and-test-your-flow"></a>手順 6:フローを保存してテストする
 1. **[フロー名]** ボックスにフローの名前を追加し、 **[フローの作成]** をクリックします。<br><br>![フローを保存する](media/flow-tutorial/flow06.png)
 2. フローが作成され、指定したスケジュール通りに 1 日後に実行されます。 
 3. フローをすぐにテストするには、 **[今すぐ実行]** をクリックして **[フローの実行]** をクリックします。<br><br>![フローを実行する](media/flow-tutorial/flow07.png)
 3. フローが完了したら、指定した受信者のメールを確認します。  次のような本文のメールを受信します。<br><br>![電子メールのサンプル](media/flow-tutorial/flow08.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Monitor のログ クエリ](../log-query/log-query-overview.md)についての詳細を見る。
 - [Microsoft Flow](https://ms.flow.microsoft.com)についての詳細を見る

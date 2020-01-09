@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: 675e7a7b557a3f19ea4d8d4960316c3859cbb9c1
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: c1de86c1d12109853bb5d6d1aac4143caab9199f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058488"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638223"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>予約済み IP アドレス (クラシック デプロイ)
 
@@ -41,7 +41,7 @@ Azure における IP アドレスの詳細については、[IP アドレス](v
 - 予約済み IP はすべての Azure サービスに使用できますか。
     いいえ。 予約済み IP は、VIP を使用して公開される VM およびクラウド サービスのインスタンス ロールに対してのみ使用できます。
 - 予約済み IP は、いくつ使用できますか。
-    詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
+    詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
 - 予約済み IP に料金はかかりますか。
     場合によります。 料金の詳細については、[予約済み IP アドレスの料金の詳細](https://go.microsoft.com/fwlink/?LinkID=398482)に関するページをご覧ください。
 - どうやって IP アドレスを予約するのですか。
@@ -250,7 +250,7 @@ azure network reserved-ip associate MyReservedIP TestService asmtest8942
       </NetworkConfiguration>
     </ServiceConfiguration>
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * クラシック デプロイ モデルの [IP アドレス指定](virtual-network-ip-addresses-overview-classic.md) の仕組みを理解します。
 * [予約済みプライベート IP アドレス](virtual-networks-reserved-private-ip.md)について理解する。
 * [インスタンス レベル パブリック IP (ILPIP) アドレス](virtual-networks-instance-level-public-ip.md)について理解する。

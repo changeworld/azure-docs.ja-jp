@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5badcbe2a76c41bdc1431abae617e35b7555eb88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9544d086eb9535af779bf2febe0cc63c180f7fd3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497901"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529594"
 ---
 # <a name="export-data-module"></a>データのエクスポート モジュール
 
@@ -29,7 +29,7 @@ ms.locfileid: "73497901"
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-データをエクスポートする前に、まずは Azure Machine Learning ワークスペースにデータストアを登録する必要があります。 詳細については、[データのアクセス方法](../service/how-to-access-data.md)に関するページを参照してください。
+データをエクスポートする前に、まずは Azure Machine Learning ワークスペースにデータストアを登録する必要があります。 詳細については、[データのアクセス方法](../how-to-access-data.md)に関するページを参照してください。
 
 ## <a name="how-to-configure-export-data"></a>データのエクスポートを構成する方法
 
@@ -39,7 +39,7 @@ ms.locfileid: "73497901"
 
 1. **[データのエクスポート]** を選択して **[プロパティ]** ウィンドウを開きます。
 
-1. **[データストア]** では、ドロップダウン リストから既存のデータストアを選択します。 新しいデータストアを作成することもできます。 [データにアクセスする方法](../service/how-to-access-data.md)に関するページを参照して、方法を確認してください
+1. **[データストア]** では、ドロップダウン リストから既存のデータストアを選択します。 新しいデータストアを作成することもできます。 [データにアクセスする方法](../how-to-access-data.md)に関するページを参照して、方法を確認してください
 
 1. データを書き込むデータストア内のパスを定義します。 
 
@@ -48,6 +48,6 @@ ms.locfileid: "73497901"
  
 1. パイプラインを実行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Machine Learning で[使用できる一連のモジュール](module-reference.md)を参照してください。 

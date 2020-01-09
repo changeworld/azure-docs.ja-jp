@@ -4,15 +4,15 @@ description: この記事では、コンピューターに配置された Window
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932800"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364783"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -34,7 +34,7 @@ Windows VM 上のエージェントを、Log Analytics VM 拡張機能を使用�
 
 Windows エージェントの最新バージョンは、次の手順を実行することによって、Log Analytics ワークスペースからダウンロードできます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics ワークスペース]** を選択します。
 
@@ -292,7 +292,7 @@ System Center Operations Manager 管理グループに報告するように Linu
 
 3. `sudo /opt/omi/bin/service_control restart` で OMI サーバーを再起動します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Linux エージェントのインストールまたは管理中に問題が発生した場合は、[Linux エージェントのトラブルシューティング](agent-linux-troubleshoot.md)に関する記事を参照してください。
 

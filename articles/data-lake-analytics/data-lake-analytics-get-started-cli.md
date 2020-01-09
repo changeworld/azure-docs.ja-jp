@@ -7,12 +7,12 @@ ms.author: saveenr
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 94399490453c6a2774f71ef527fd24d543e2a7e2
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: c9781165affb1755e73919931d8d158ae9b535ac
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316571"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438778"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Azure CLI で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -49,7 +49,7 @@ az account set --subscription <subscription id>
 ## <a name="create-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
 ジョブを実行するには、Data Lake Analytics アカウントが必要です。 Data Lake Analytics アカウントを作成するには、以下の項目を指定する必要があります。
 
-* **Azure リソース グループ**。 Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用すると、アプリケーション内の複数リソースを 1 つのグループとして操作できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。  
+* **Azure リソース グループ**。 Data Lake Analytics アカウントは、Azure リソース グループ内に作成する必要があります。 [Azure Resource Manager](../azure-resource-manager/management/overview.md) を使用すると、アプリケーション内の複数リソースを 1 つのグループとして操作できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。  
 
 サブスクリプションの既存のリソース グループを一覧表示するには:
 
@@ -130,7 +130,7 @@ OUTPUT @a
 
 ソース ファイルを別の場所にコピーしない限り、2 つのパスを変更しないでください。  出力フォルダーがない場合は、Data Lake Analytics によって作成されます。
 
-既定の Data Lake Store アカウントに保存されたファイルの相対パスを使用する方が簡単です。 絶対パスを使用することもできます。  例:
+既定の Data Lake Store アカウントに保存されたファイルの相対パスを使用する方が簡単です。 絶対パスを使用することもできます。  次に例を示します。
 
 ```
 adl://<Data LakeStorageAccountName>.azuredatalakestore.net:443/Samples/Data/SearchLog.tsv
@@ -155,7 +155,7 @@ wasb://<BlobContainerName>@<StorageAccountName>.blob.core.windows.net/Samples/Da
 az dla job submit --account "<Data Lake Analytics Account Name>" --job-name "<Job Name>" --script "<Script Path and Name>"
 ```
 
-例:
+次に例を示します。
 
 ```
 az dla job submit --account "myadlaaccount" --job-name "myadlajob" --script @"C:\DLA\myscript.txt"
@@ -186,13 +186,13 @@ az dls fs preview --account "<Data Lake Store Account Name>" --path "/Output/Sea
 az dls fs download --account "<Data Lake Store Account Name>" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "<Destination Path and File Name>"
 ```
 
-例:
+次に例を示します。
 
 ```
 az dls fs download --account "myadlsaccount" --source-path "/Output/SearchLog-from-Data-Lake.csv" --destination-path "C:\DLA\myfile.csv"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Data Lake Analytics CLI のリファレンス ドキュメントについては、「[Data Lake Analytics](/cli/azure/dla)」を参照してください。
 * Data Lake Store CLI のリファレンス ドキュメントについては、「[Data Lake Store](/cli/azure/dls)」を参照してください。

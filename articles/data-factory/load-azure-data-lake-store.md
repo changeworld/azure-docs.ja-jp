@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
-ms.openlocfilehash: ca3c72ec35d8cf16671eb84cbee83dbfe1aa966f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1325910877d1e030b3bf4114e16d0f81ecea8cf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443974"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Data Lake Storage Gen1 へのデータの読み込み
 
@@ -44,7 +44,7 @@ Azure Data Factory には、Data Lake Storage Gen1 にデータを読み込む�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[データ ファクトリ]** を選択します。
+1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -52,11 +52,11 @@ Azure Data Factory には、Data Lake Storage Gen1 にデータを読み込む�
       
    ![[新しいデータ ファクトリ] ページ](./media/load-data-into-azure-data-lake-store//new-azure-data-factory.png)
  
-    * **名前**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSG1Demo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSG1Demo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
-    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
     * **バージョン**: **[V2]** を選択します。
-    * **場所**:データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Storage Gen1、Azure Storage、Azure SQL Database などがあります。
+    * **[場所]** :データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Storage Gen1、Azure Storage、Azure SQL Database などがあります。
 
 3. **作成** を選択します。
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。 
@@ -142,7 +142,7 @@ Azure Data Factory には、Data Lake Storage Gen1 にデータを読み込む�
 
     ![Data Lake Storage Gen1 出力の確認](./media/load-data-into-azure-data-lake-store/adls-copy-result.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の資料に進んで、Data Lake Storage Gen1 のサポートを確認します。 
 

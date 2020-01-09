@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2018
-ms.openlocfilehash: 9cc9c9db1438196190df38082f18d650eff38249
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7112f86ca123c66c5969236617f35fcb8d698030
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932694"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680666"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する
 Log Analytics のアラート REST API は、Log Analytics でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
@@ -29,7 +29,7 @@ Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager 
 保存した検索条件には、1 つ以上のスケジュールを設定できます。 スケジュールは、検索を実行する頻度と、条件を識別する時間間隔を定義します。
 スケジュールには、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | Interval |検索を実行する頻度。 分単位で指定します。 |
 | QueryTimeSpan |条件を評価する時間間隔。 [Interval] の値以上にする必要があります。 分単位で指定します。 |
@@ -84,12 +84,12 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>アクション
 スケジュールでは複数のアクションを使用できます。 アクションでは、メールの送信や Runbook の開始など、実行する 1 つ以上のプロセスを定義するか、または検索結果が条件に一致するためのしきい値を定義できます。  一部のアクションはそれらの両方を定義し、しきい値に達したときにプロセスが実行されます。
 
 すべてのアクションには、次の表に示したプロパティがあります。  後で説明するように、アラートの種類によって異なる追加のプロパティもあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | `Type` |アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
 | `Name` |アラートの表示名。 |
@@ -124,10 +124,10 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 ### <a name="alert-actions"></a>アラート アクション
 スケジュールには、アラート アクションを 1 つだけ指定する必要があります。  アラート アクションには、次の表に示したセクションが 1 つ以上含まれています。  それぞれについて、以下で詳しく説明します。
 
-| セクション | 説明 | 使用法 |
+| Section | [説明] | 使用法 |
 |:--- |:--- |:--- |
 | Threshold |アクションがいつ実行されるかの条件。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
-| Severity |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
+| 重大度 |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
 | Suppress |アラートからの通知を停止するオプション。 | Azure に拡張される前と後の両方の、すべてのアラートで省略可能です。 |
 | Action Groups |Azure ActionGroup の ID。電子メール、SMS、音声通話、Webhook、Automation Runbook、ITSM Connector など、必要なアクションが指定されています。| アラートが Azure に拡張されると必要|
 | Customize Actions|ActionGroup の選択したアクションの標準出力を変更します| すべてのアラートで省略可能で、アラートが Azure に拡張された後に使用できます。 |
@@ -137,7 +137,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 
 しきい値には、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | `Operator` |しきい値の比較演算子。 <br> gt = より大きい <br> lt = より小さい |
 | `Value` |しきい値の値。 |
@@ -159,15 +159,15 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 
 スケジュールの新しいしきい値アクションを作成するには、Put メソッドに一意のアクション ID を渡します。  
 
-    $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
 スケジュールのしきい値アクションを編集するには、既存のアクション ID を Put メソッドに渡します。  要求の本体には、アクションの etag が含まれている必要があります。
 
-    $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-#### <a name="severity"></a>Severity
+#### <a name="severity"></a>重大度
 Log Analytics を使用するとアラートをカテゴリに分類し、簡単に管理およびトリアージできます。 定義されているアラートの重大度は、情報、警告、重大です。 これらは次のように Azure Alerts の正規化された重大度スケールにマッピングされています。
 
 |Log Analytics の重大度レベル  |Azure Alerts の重大度レベル  |
@@ -191,12 +191,12 @@ Log Analytics を使用するとアラートをカテゴリに分類し、簡単
 
 スケジュールの新しいアクションを重大度で作成するには、Put メソッドに一意のアクション ID を渡します。  
 
-    $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
 スケジュールの重大度アクションを編集するには、既存のアクション ID を Put メソッドに渡します。  要求の本体には、アクションの etag が含まれている必要があります。
 
-    $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
 #### <a name="suppress"></a>Suppress
@@ -222,12 +222,12 @@ Log Analytics アラート ルールの抑制プロパティは、 *[スロッ�
 
 スケジュールの新しいアクションを重大度で作成するには、Put メソッドに一意のアクション ID を渡します。  
 
-    $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
 スケジュールの重大度アクションを編集するには、既存のアクション ID を Put メソッドに渡します。  要求の本体には、アクションの etag が含まれている必要があります。
 
-    $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
 #### <a name="action-groups"></a>Action Groups
@@ -257,12 +257,12 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 
 Put メソッドを一意のアクション ID とともに使用して、スケジュールの既存のアクション グループを関連付けます。  次に使用状況のサンプル図を示します。
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} }"
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 Put メソッドを既存のアクション ID とともに使用して、スケジュールに関連付けられているアクション グループを編集します。  要求の本体には、アクションの etag が含まれている必要があります。
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} }"
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': { 'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'] } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 #### <a name="customize-actions"></a>Customize Actions
@@ -292,12 +292,12 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 
 Put メソッドを一意のアクション ID とともに使用して、スケジュールの既存のアクション グループをカスタマイズとともに関連付けます。  次に使用状況のサンプル図を示します。
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} }"
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 Put メソッドを既存のアクション ID とともに使用して、スケジュールに関連付けられているアクション グループを編集します。  要求の本体には、アクションの etag が含まれている必要があります。
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' }"
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 ##### <a name="customize-webhook-payload-for-action-group"></a>アクション グループの Webhook のペイロードをカスタマイズする
@@ -327,16 +327,16 @@ Webhook の詳細のカスタマイズは、ActionGroup の詳細とともに送
 
 Put メソッドを一意のアクション ID とともに使用して、スケジュールの既存のアクション グループをカスタマイズとともに関連付けます。  次に使用状況のサンプル図を示します。
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} }"
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 Put メソッドを既存のアクション ID とともに使用して、スケジュールに関連付けられているアクション グループを編集します。  要求の本体には、アクションの etag が含まれている必要があります。
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' }"
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Log Analytics で [ログ検索を実行するための REST API](../../azure-monitor/log-query/log-query-overview.md) を使用します。
 * [Azure Monitor でのログ アラート](../../azure-monitor/platform/alerts-unified-log.md)について学習します

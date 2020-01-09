@@ -4,15 +4,15 @@ description: Azure Monitor for VMs のデプロイと構成の方法を説明し
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: 40282fdb192037d63bff8b0037f09b8b27cf3b1e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ce95223e9501ad7bec2bd260a8fe6f1537db5593
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109183"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400614"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs の有効化 (プレビュー) の概要
 
@@ -77,7 +77,7 @@ Azure Policy、Azure PowerShell、または Azure Resource Manager テンプレ�
 * [Azure PowerShell](vminsights-enable-at-scale-powershell.md#set-up-a-log-analytics-workspace) を使用します。
 * Azure Monitor for VMs の [ **[ポリシー対象範囲]** ](vminsights-enable-at-scale-policy.md#manage-policy-coverage-feature-overview) ページで、 **[ワークスペースの構成]** を選択します。 
 
-### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
 次の表は、Azure Monitor for VMs でサポートされている Windows および Linux オペレーティング システムの一覧です。 メジャーおよびマイナーの Linux OS リリースとサポートされているカーネルのバージョンの詳細な一覧は、このセクションの後の方にあります。
 
@@ -166,7 +166,7 @@ Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent か�
 
 次の表では、ハイブリッド環境でマップ機能がサポートしている接続先ソースについて説明します。
 
-| 接続先ソース | サポートされています | 説明 |
+| 接続先ソース | サポートされています | [説明] |
 |:--|:--|:--|
 | Windows エージェント | はい | Windows エージェントには、[Windows の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の他に、Dependency Agent が必要です。 詳細については、[サポートされているオペレーティング システム](#supported-operating-systems)のセクションを参照してください。 |
 | Linux エージェント | はい | Linux エージェントには、[Linux の Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の他に、Dependency Agent が必要です。 詳細については、[サポートされているオペレーティング システム](#supported-operating-systems)のセクションを参照してください。 |
@@ -189,7 +189,7 @@ Log Analytics ワークスペースへのアクセスを制御する方法の詳
 
 この表で説明されているいずれかの方法で、Azure Monitor for VMs を有効にします。
 
-| デプロイの状態 | 方法 | 説明 |
+| デプロイの状態 | 方法 | [説明] |
 |------------------|--------|-------------|
 | 単一の Azure VM または仮想マシン スケール セット | [VM から有効にする](vminsights-enable-single-vm.md) | 単一の Azure VM を有効にするには、VM または仮想マシン スケール セットから直接 **Insights (プレビュー)** を選択します。 |
 | 複数の Azure VM または仮想マシン スケール セット | [Azure Policy を介して有効にする](vminsights-enable-at-scale-policy.md) | Azure Policy と使用可能なポリシー定義を使用すると、複数の Azure VM を有効にできます。 |
@@ -258,6 +258,6 @@ Microsoft は、お客様による Azure Monitor サービスの使用を通し�
 
 VM の監視が有効になったので、Azure Monitor for VMs での分析に監視情報を使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 パフォーマンスの監視機能の使用方法については、[Azure Monitor for VMs のパフォーマンスの表示](vminsights-performance.md)に関する記事をご覧ください。 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。

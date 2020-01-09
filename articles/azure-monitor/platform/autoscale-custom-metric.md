@@ -1,19 +1,15 @@
 ---
 title: Azure でのカスタム メトリックを使用した自動スケール
 description: Azure でカスタム メトリックを使用してリソースをスケールする方法について説明します。
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/07/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: f83c68dd2f2ddbb73974a2ea4e91e746308945c6
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f8aaaf8890c3642884b72cc6c8fc2759fec357fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958111"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364545"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Azure でのカスタム メトリックによる自動スケールの概要
 この記事では、Azure Portal でカスタム メトリックを使用してリソースをスケールする方法について説明します。

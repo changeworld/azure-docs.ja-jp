@@ -1,24 +1,14 @@
 ---
 title: Azure Monitor for containers でメトリックをリアルタイムで表示する | Microsoft Docs
 description: この記事では、Azure Monitor for containers でメトリックを kubectl を使用せずにリアルタイムで表示する方法について説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 4608058d347888ab77bd4303600f00b270d6fed5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404943"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>メトリックをリアルタイムで表示する方法
 
@@ -34,7 +24,7 @@ Azure Monitor for containers のライブ データ (プレビュー) 機能を�
 
 ライブ データ (プレビュー) 機能の設定またはトラブルシューティングについては、[セットアップ ガイド](container-insights-livedata-setup.md)を参照してください。
 
-## <a name="how-it-works"></a>動作のしくみ 
+## <a name="how-it-works"></a>機能 
 
 Live Data (プレビュー) 機能は、Kubernetes API に直接アクセスします。認証モデルの詳細については、[こちら](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)を参照してください。 
 
@@ -92,6 +82,6 @@ Live Data (プレビュー) 機能は、Kubernetes API に直接アクセスし�
 >[!NOTE]
 >`kubectl` によって解釈される状態の名前は、グラフ内で正確に一致しない場合があります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 アラートの作成、視覚化の作成、またはクラスターの詳細な分析を行うために、定義済みのクエリや例を確認するには、[ログ クエリの例](container-insights-log-search.md#search-logs-to-analyze-data)を参照してください。

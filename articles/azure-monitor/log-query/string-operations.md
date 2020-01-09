@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor ログ クエリ内の文字列を操作する | Microsoft Docs
 description: この記事では、Azure Monitor ログ クエリの文字列に対して、編集、比較、検索、およびさまざまなその他の操作を実行する方法について説明します。
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 0d7bf025b414df819887192bb59f7fd8da64b5d9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932928"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397462"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリ内の文字列を操作する
 
@@ -47,7 +46,7 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>文字列の比較
 
-演算子       |説明                         |大文字と小文字の区別|例 (`true` になる)
+演算子       |[説明]                         |大文字と小文字の区別|例 (`true` になる)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |等しい                              |はい           |`"aBc" == "aBc"`
 `!=`           |等しくない                          |はい           |`"abc" != "ABC"`
@@ -362,7 +361,7 @@ print toupper("hello"); // result: "HELLO"
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 高度なチュートリアルに進みます。
 * [集計関数](aggregations.md)
 * [高度な集計](advanced-aggregations.md)

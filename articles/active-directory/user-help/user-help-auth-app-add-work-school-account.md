@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcd69fab269e39a8c78a56c08854262ca839d60f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d1d781ee16cd1c78f03b58288bf75e036e38cf00
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267138"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681227"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリに職場または学校アカウントを追加する
 
@@ -28,7 +28,7 @@ ms.locfileid: "74267138"
 
 ## <a name="add-your-work-or-school-account"></a>職場または学校のアカウントを追加する
 
-1. お使いのコンピューターで、[[追加のセキュリティ確認]](https://aka.ms/mfasetup) ページに移動します。
+1. お使いのコンピューターで、[[追加のセキュリティ確認]](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) ページに移動します。
 
     >[!Note]
     >**[追加のセキュリティ確認]** ページが表示されない場合は、管理者がセキュリティ情報 (プレビュー) エクスペリエンスをオンにしている可能性があります。 その場合は、[[認証アプリを使用するようにセキュリティ情報を設定する]](security-info-setup-auth-app.md) セクションの指示に従います。 そうでない場合は、組織のヘルプ デスクに問い合わせる必要があります。 セキュリティ情報の詳細については、「[セキュリティ情報 (プレビュー) の概要](user-help-security-info-overview.md)」を参照してください。
@@ -53,7 +53,7 @@ ms.locfileid: "74267138"
 
     ![[アカウント] 画面](./media/user-help-auth-app-download-install/auth-app-accounts.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - アプリにアカウントを追加すると、デバイスで Authenticator アプリを使用してサインインできます。 詳細については、[アプリを使用したサインイン](user-help-auth-app-sign-in.md)に関するページを参照してください。
 

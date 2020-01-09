@@ -2,19 +2,15 @@
 title: Azure Automation でファイル コンテンツの変更を表示する
 description: Change Tracking のファイル コンテンツの変更機能を使用して、変更されたファイルのコンテンツを表示できます。
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/03/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 4ab88aa2dc604172f00d875353dabba61fd101af
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418823"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Change Tracking で追跡されているファイルのコンテンツを表示する
 
@@ -34,7 +30,7 @@ ms.locfileid: "74850586"
 2. 上部のメニューで、 **[設定の編集]** を選択します。
 3. **[ファイル コンテンツ]** を選択し、 **[リンク]** をクリックします。 これにより **[Change Tracking の対象となるコンテンツの場所を追加]** ウィンドウが開きます。
 
-   ![enable](./media/change-tracking-file-contents/enable.png)
+   ![有効化 (enable)](./media/change-tracking-file-contents/enable.png)
 
 4. サブスクリプションと、ファイル コンテンツを格納するために使用するストレージ アカウントを選択します。 既存の追跡対象ファイルすべてに対してファイル コンテンツの追跡を有効にする場合は、 **[すべての設定のファイル コンテンツをアップロードする]** で **[オン]** を選択します。 これは後からファイル パスごとに変更することができます。
 
@@ -68,7 +64,7 @@ ms.locfileid: "74850586"
 
    ![ファイルの変更の表示](./media/change-tracking-file-contents/view-file-changes.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ソリューションの使用方法の詳細については、Change Tracking のチュートリアルを参照してください。
 

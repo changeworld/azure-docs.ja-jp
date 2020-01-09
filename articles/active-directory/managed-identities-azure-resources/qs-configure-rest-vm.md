@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d78ddaaae886a33b4d22e8724ade04ab63508f1
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 9f975595e935a5c0254450168aa295e6e7366a94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430000"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>REST API 呼び出しを使用して Azure VM 上に Azure リソースのマネージド ID を構成する
 
@@ -37,7 +37,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 - Azure リソースのマネージド ID の基本点な事柄については、[概要](overview.md)に関するセクションを参照してください。 **[システム割り当てマネージド ID とユーザー割り当てマネージド ID の違い](overview.md#how-does-the-managed-identities-for-azure-resources-work)を必ず確認してください**。
 - まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
-- Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) をインストールするか、Azure portal で [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
+- Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) をインストールするか、Azure Portal で [Azure Cloud Shell](../../cloud-shell/overview.md) を使用します。
 - [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) または [Linux ディストリビューション OS](/cli/azure/install-azure-cli-apt?view=azure-cli-latest) を使用する場合は、[Azure CLI ローカル コンソールをインストール](/cli/azure/install-azure-cli)します。
 - Azure CLI ローカル コンソールを使用している場合は、システム割り当てマネージド ID またはユーザー割り当てマネージド ID を管理する Azure サブスクリプションに関連付けられているアカウントで `az login` を使用して Azure にサインインします。
 
@@ -51,7 +51,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 
 システム割り当てマネージド ID を有効にして Azure VM を作成するには、お使いのアカウントに[仮想マシン共同作成者](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)ロールの割り当てが必要です。  Azure AD ディレクトリ ロールを追加で割り当てる必要はありません。
 
-1. [az group create](/cli/azure/group/#az-group-create) を使用して、VM とその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/resource-group-overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
+1. [az group create](/cli/azure/group/#az-group-create) を使用して、VM とその関連リソースの管理およびデプロイ用に[リソース グループ](../../azure-resource-manager/management/overview.md#terminology)を作成します。 代わりに使用するリソース グループが既にある場合は、この手順をスキップできます。
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -81,7 +81,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    
    **要求ヘッダー**
    
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -170,7 +170,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    ```
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -202,7 +202,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    ```
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -237,7 +237,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
     
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -280,7 +280,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    ```
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -339,7 +339,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -420,7 +420,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -511,7 +511,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    ```
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。
 
@@ -532,7 +532,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    ```
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        |
@@ -564,7 +564,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -600,7 +600,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
    
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -639,7 +639,7 @@ VM でシステム割り当てマネージド ID を無効にするには、お�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -680,7 +680,7 @@ VM からユーザー割り当ての ID を削除にするには、お使いの�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。
@@ -703,7 +703,7 @@ VM からユーザー割り当ての ID を削除にするには、お使いの�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -735,7 +735,7 @@ VM からユーザー割り当ての ID を削除にするには、お使いの�
 
    **要求ヘッダー**
 
-   |要求ヘッダー  |説明  |
+   |要求ヘッダー  |[説明]  |
    |---------|---------|
    |*Content-Type*     | 必須。 `application/json` を設定します。        |
    |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。        | 
@@ -765,7 +765,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **要求ヘッダー**
 
-|要求ヘッダー  |説明  |
+|要求ヘッダー  |[説明]  |
 |---------|---------|
 |*Content-Type*     | 必須。 `application/json` を設定します。        |
 |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。 | 
@@ -792,7 +792,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 **要求ヘッダー**
 
-|要求ヘッダー  |説明  |
+|要求ヘッダー  |[説明]  |
 |---------|---------|
 |*Content-Type*     | 必須。 `application/json` を設定します。        |
 |*承認*     | 必須。 有効な `Bearer` アクセス トークンを設定します。| 
@@ -807,7 +807,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 REST を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する方法については、以下を参照してください。
 

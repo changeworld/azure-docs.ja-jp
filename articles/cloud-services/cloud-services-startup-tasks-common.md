@@ -3,20 +3,20 @@ title: Cloud Services 共通のスタートアップ タスク | Microsoft Docs
 description: クラウド サービスの Web ロールや worker ロールで実行できる共通のスタートアップ タスクの例を示します。
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 2eb299ad841444a3100eac207b225d5377959f85
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 5c6173971ac5272c2c2d769551fc9caf3dfa2573
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358962"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385798"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク
-この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 スタートアップ タスクを使用して、ロールを開始する前の操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
+この記事では、クラウド サービスで実行できる共通のスタートアップ タスクの例を示します。 ロールが開始する前に、スタートアップ タスクを使用して操作を実行できます。 対象となる操作としては、コンポーネントのインストール、COM コンポーネントの登録、レジストリ キーの設定、実行時間の長いプロセスの開始などがあります。 
 
 スタートアップ タスクの仕組み、特にスタートアップ タスクを定義するエントリを作成する方法については、 [こちらの記事](cloud-services-startup-tasks.md) をご覧ください。
 
@@ -493,7 +493,7 @@ EXIT %ERRORLEVEL%
 ### <a name="use-local-storage-to-store-files-that-must-be-accessed-in-the-role"></a>ロールでアクセスする必要があるファイルをローカル ストレージに格納する
 スタートアップ タスクの実行時にファイルをコピーまたは作成し、後からお使いのロールでアクセスするには、そのファイルをローカル ストレージに配置する必要があります。 [前のセクション](#create-files-in-local-storage-from-a-startup-task)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 クラウドの [サービス モデルとパッケージ](cloud-services-model-and-package.md)
 
 [タスク](cloud-services-startup-tasks.md) の動作について説明します。
@@ -508,7 +508,10 @@ EXIT %ERRORLEVEL%
 [Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Endpoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[EndPoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+
+
+

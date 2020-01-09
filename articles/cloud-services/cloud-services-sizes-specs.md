@@ -3,23 +3,23 @@ title: Azure Cloud services の仮想マシンのサイズ | Microsoft Docs
 description: Azure のクラウド サービスの Web ロールと worker ロールのさまざまな仮想マシンのサイズ (および ID) の一覧を示します。
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 0df9ee859ae8e341537f5e832d9ff90e9736cb0c
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.author: tagore
+ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443008"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660428"
 ---
 # <a name="sizes-for-cloud-services"></a>Cloud Services のサイズ
 このトピックでは、クラウド サービスのロール インスタンス (Web ロールと worker ロール) で使用できるサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意するデプロイメントに関する考慮事項も示します。 それぞれのサイズには、[サービス定義ファイル](cloud-services-model-and-package.md#csdef)に配置する ID があります。 サイズごとの価格は「[Cloud Services の価格](https://azure.microsoft.com/pricing/details/cloud-services/)」ページで表示されています。
 
 > [!NOTE]
-> 関連する Azure の制限については、 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)
+> 関連する Azure の制限については、 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)
 >
 >
 
@@ -213,6 +213,9 @@ PowerShell または REST API を使用して、サイズの一覧を取得で�
 Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceSize, RoleSizeLabel
 ```
 
-## <a name="next-steps"></a>次の手順
-* [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)について学習してください。
+## <a name="next-steps"></a>次のステップ
+* [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)について学習してください。
 * HPC ワークロードのためのハイ パフォーマンス コンピューティング VM のサイズについては[こちら](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)をご覧ください。
+
+
+

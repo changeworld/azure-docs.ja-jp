@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 0f0e2b6164eab7afc39532b0d572d367e3d4ae64
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913077"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439543"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 
@@ -99,11 +99,11 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 
 次の表は、このアクティビティに固有のプロパティの名前と説明です。
 
-| プロパティ              | 説明                              | 必須 |
+| プロパティ              | [説明]                              | 必須 |
 | :-------------------- | :--------------------------------------- | :------- |
-| 名前                  | パイプラインのアクティビティの名前。     | はい      |
+| name                  | パイプラインのアクティビティの名前。     | はい      |
 | description           | アクティビティの動作を説明するテキスト。  | いいえ       |
-| type                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | はい      |
+| 型                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | はい      |
 | linkedServiceName     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | はい      |
 | command               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | はい      |
 | resourceLinkedService | カスタム アプリケーションが格納されているストレージ アカウントへの Azure Storage のリンクされたサービス。 | いいえ &#42;       |
@@ -174,7 +174,7 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
             "type": "LinkedServiceReference"
           }]
         },
-        "extendedProperties": {
+        "extendedProperties": {          
           "connectionString": {
             "type": "SecureString",
             "value": "aSampleSecureString"
@@ -309,7 +309,7 @@ Activity Error section:
 
 ## <a name="retrieve-securestring-outputs"></a>SecureString 出力の取得
 
-*SecureString* 型として指定された機密プロパティ値 (この記事の一部のサンプルに含まれています) は、Data Factory ユーザー インターフェイスの [監視] タブでマスクされます。  ただし、実際のパイプライン実行では、*SecureString* プロパティは `activity.json` ファイル内でプレーン テキストの JSON としてシリアル化されます。 例:
+*SecureString* 型として指定された機密プロパティ値 (この記事の一部のサンプルに含まれています) は、Data Factory ユーザー インターフェイスの [監視] タブでマスクされます。  ただし、実際のパイプライン実行では、*SecureString* プロパティは `activity.json` ファイル内でプレーン テキストの JSON としてシリアル化されます。 次に例を示します。
 
 ```json
 "extendedProperties": {
@@ -344,7 +344,7 @@ Data Factory V2 カスタム アクティビティに導入された変更によ
 |データセットは必要か      |省略可能      |アクティビティを連鎖して情報を渡すために必要      |
 |アクティビティからカスタム ロジックへの情報の受け渡し      |ReferenceObjects (LinkedServices と Datasets) および ExtendedProperties (カスタム プロパティ) を使用      |ExtendedProperties (カスタム プロパティ)、入力および出力データセットを使用      |
 |カスタム ロジックでの情報の取得      |実行可能ファイルと同じフォルダーに格納されている activity.json、linkedServices.json、および datasets.json を解析      |.NET SDK (.NET Frame 4.5.2) を使用      |
-|ログの記録      |STDOUT に直接書き込む      |.NET DLL でロガーを実装する      |
+|ログ記録      |STDOUT に直接書き込む      |.NET DLL でロガーを実装する      |
 
 バージョン 1 (カスタム) DotNet アクティビティ用に書かれた .NET コードが既にあり、これをカスタム アクティビティの現在のバージョンで使用するには、コードを変更する必要があります。 以下のガイドラインの概要に従って、コードを更新します。
 
@@ -377,7 +377,7 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 プールで既定の [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)を使用する場合、Batch サービスがカスタム アクティビティを実行する前に VM を準備するのに 15 ～ 30 分かかることがあります。 プールが異なる 　autoScaleEvaluationInterval を使用する場合、Batch サービスは autoScaleEvaluationInterval + 10 分を要することがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)

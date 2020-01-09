@@ -2,19 +2,15 @@
 title: Azure Update Management で更新プログラムの評価を表示する
 description: この記事では、更新プログラムの展開に関して、更新プログラムの評価を表示する方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d27df57e9371f16a15d3a18b7722598062377d88
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6f86c72bfc1a1d51ed509a70d786e67f11d8166
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850518"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419881"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Azure Update Management で更新プログラムの評価を表示する
 
@@ -38,7 +34,7 @@ Azure Automation アカウントで **[Update Management]** をクリックす�
 
 ### <a name="windows"></a>Windows
 
-|分類  |説明  |
+|分類  |[説明]  |
 |---------|---------|
 |緊急更新プログラム     | セキュリティに関連しない重大なバグを修正する、特定の問題に対する更新プログラムです。        |
 |セキュリティ更新プログラム     | 製品固有のセキュリティに関連する問題に対する更新プログラムです。        |
@@ -51,7 +47,7 @@ Azure Automation アカウントで **[Update Management]** をクリックす�
 
 ### <a name="linux-2"></a>Linux
 
-|分類  |説明  |
+|分類  |[説明]  |
 |---------|---------|
 |緊急更新プログラムとセキュリティ更新プログラム     | 特定の問題または製品固有のセキュリティに関連する問題に対する更新プログラムです。         |
 |他の更新プログラム     | 本質的に重要ではない、またはセキュリティ更新プログラムではない、他のすべての更新プログラムです。        |
@@ -64,6 +60,6 @@ sudo yum -q --security check-update
 
 CentOS 上でネイティブ分類データを使用できるようにするためのサポートされている方法は現在ありません。 現時点では、お客様がこの機能をご自身で有効にした場合には、できる範囲でのサポートのみを提供しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 更新プログラムの評価を閲覧した後、[Azure VM 用の更新プログラムと修正プログラムの管理](automation-tutorial-update-management.md)に関するページの手順に従って、更新プログラムの展開をスケジュールできます。

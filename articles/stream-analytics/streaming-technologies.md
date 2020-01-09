@@ -1,18 +1,18 @@
 ---
 title: Azure でリアルタイムおよびストリーム処理ソリューションを選択する
 description: Azure でアプリケーションを構築する目的で、正しいリアルタイム分析とストリーミング処理技術を選択する方法について説明します。
-author: zhongc
-ms.author: zhongc
+author: mamccrea
+ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 3bde2964c40553d02a56f57f9c459cc6afa3f660
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f3ecb3bedb8e0f55590aca1aa1c0e0c185f9acc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72924912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369254"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Azure でリアルタイム分析とストリーミング処理技術を選択する
 
@@ -54,7 +54,7 @@ Azure Stream Analytics では、クラウド ジョブの場合は JavaScript �
 
 Azure Stream Analytics は Microsoft の独占技術であり、Azure でのみ利用できます。 クラウドまたはオンプレミスをまたいでソリューションを移植する必要がある場合、Spark Structured Streaming や Storm など、オープンソース技術を検討してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
 * [Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)

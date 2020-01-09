@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: dac941b621c8df6b5c242bb5d0e0d5cdd1f864a9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9eb7a80599966345d90cc4a079b586e743ca37d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057950"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451218"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>リモート デスクトップを介して Azure VM に接続しようとするときに、内部エラーが発生する
 
 この記事では、Microsoft Azure で仮想マシン (VM) を接続しようとしたときに発生する可能性があるエラーについて説明します。
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、2 種類のデプロイ モデルがあります。[Resource Manager とクラシック](../../azure-resource-manager/resource-manager-deployment-model.md)です。 この記事では、Resource Manager デプロイ モデルの使用方法について説明しています。最新のデプロイでは、クラシック デプロイ モデルではなくこのモデルを使用することをお勧めします。
 
 ## <a name="symptoms"></a>現象
 
@@ -46,7 +46,7 @@ ms.locfileid: "71057950"
 
 これらの手順を実行する前に、バックアップとして、影響を受ける VM の OS ディスクのスナップショットを取得します。 詳細については、[ディスクのスナップショット](../windows/snapshot-copy-managed-disk.md)に関する記事を参照してください。
 
-この問題のトラブルシューティングを行うには、シリアル コンソールを使用するか、VM の OS ディスクを復旧 VM にアタッチして [VM をオフライン修復](#repair-the-vm-offline)します。
+この問題をトラブルシューティングするには、シリアル コンソールを使用するか、VM の OS ディスクを復旧 VM にアタッチして [VM をオフライン修復](#repair-the-vm-offline)します。
 
 
 ### <a name="use-serial-control"></a>シリアル コントロールを使用する
@@ -135,7 +135,7 @@ ms.locfileid: "71057950"
 
 4. VM を再起動し、VM へのリモート デスクトップ接続の開始を試行します。 エラーが引き続き発生する場合は、次の手順に移動します。
 
-手順 3:サポートされているすべての TLS バージョンを有効にする
+#### <a name="step-3-enable-all-supported-tls-versions"></a>手順 3:サポートされているすべての TLS バージョンを有効にする
 
 RDP クライアントでは、既定のプロトコルとして TLS 1.0 が使用されます。 ただし、これは新しい標準となっている TLS 1.1 に変更できます。 VM で TLS 1.1 が無効になっている場合、接続は失敗します。
 1.  CMD インスタンスで、TLS プロトコルを有効にします。

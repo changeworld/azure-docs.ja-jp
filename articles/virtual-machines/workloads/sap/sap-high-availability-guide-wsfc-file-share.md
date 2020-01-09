@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8db3baf9fa4c0d054e743d0b52964847b37ec281
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f42713eb579da34ad4b150eec2c89b9645315d0b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078291"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638070"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -37,8 +37,8 @@ ms.locfileid: "70078291"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -197,7 +197,7 @@ ms.locfileid: "70078291"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -234,7 +234,7 @@ Azure Load Balancer サービスは、Azure に "*内部ロード バランサ�
 
 クラスター ノードを含むリソース グループに、内部ロード バランサーをデプロイします。 その後、内部ロード バランサーのプローブ ポートを使って、必要なすべてのポート フォワーディング規則を構成します。 クライアントは仮想ホスト名を使用して接続できます。 DNS サーバーは、クラスターの IP アドレスを解決します。 内部ロード バランサーは、クラスターのアクティブ ノードへのポート フォワーディングを処理します。
 
-![図 1:共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1001]
+![図 1: 共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成][sap-ha-guide-figure-1001]
 
 _**図 1:** 共有ディスクを使用しない Azure の Windows Server フェールオーバー クラスタリング構成_
 
@@ -348,7 +348,7 @@ _**図 5:** 2 つのクラスターにデプロイされた SAP ASCS/SCS イン�
 
 この場合は、クラスター共有ディスクとして、サード パーティの SIOS ソリューションを使うことができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターとファイル共有を使用して SAP HA 向けに Azure インフラストラクチャを準備する][sap-high-availability-infrastructure-wsfc-file-share]
 * [SAP ASCS/SCS インスタンス用の Windows フェールオーバー クラスターとファイル共有に SAP NetWeaver HA をインストールする][sap-high-availability-installation-wsfc-shared-disk]

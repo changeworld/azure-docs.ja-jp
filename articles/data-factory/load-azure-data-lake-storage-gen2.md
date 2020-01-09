@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: ff43173823919f25f85d32996b77265a8a5864c3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 90573f77c77d614923f882053145d2f84598953d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440226"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータを読み込む
 
@@ -48,11 +48,11 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
       
    ![[新しいデータ ファクトリ] ページ](./media/load-azure-data-lake-storage-gen2//new-azure-data-factory.png)
  
-    * **名前**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
+    * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用できます。 データ ファクトリをもう一度作成してみます。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
-    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択するか、 **[新規作成]** オプションを選択し、リソース グループの名前を入力します。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
     * **バージョン**: **[V2]** を選択します。
-    * **場所**:データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 
+    * **[場所]** :データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 
 
 3. **作成** を選択します。
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。 
@@ -101,7 +101,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 8. **[Specify Azure Data Lake Storage connection]\(Azure Data Lake Storage の接続の指定\)** ページで、次の手順を実行します。
 
    1. [ストレージ アカウント名] ボックスの一覧から目的の Data Lake Storage Gen2 に対応するアカウント名を選択します。
-   2. **[完了]** を選択して、接続を作成します。 次に、 **[次へ]** を選択します。
+   2. **[完了]** を選択して、接続を作成します。 **[次へ]** を選択します。
    
    ![Azure Data Lake Storage Gen2 アカウントを指定する](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 
@@ -132,7 +132,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
 16. データが Data Lake Storage Gen2 アカウントにコピーされたことを確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [コピー アクティビティの概要](copy-activity-overview.md)
 * [Azure Data Lake Storage Gen2 コネクタ](connector-azure-data-lake-storage.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 9a36b46d11657ef52051f8bf8df1e4944051da23
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c166811bbfd27691f9a01a944d304d06560b0232
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454264"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445174"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Azure Cosmos DB の監視
 Azure リソースに依存するクリティカルなアプリケーションとビジネス プロセスがある場合は、それらのリソースの可用性、パフォーマンス、操作を監視する必要があります。 この記事では、Azure Cosmos データベースによって生成される監視データと、Azure Monitor の機能を使用してこのデータについての分析とアラートを行う方法について説明します。
@@ -37,46 +37,15 @@ Azure サービスの監視について理解が十分でない場合は、ま�
 ![Azure Monitor for Cosmos DB](media/monitor-cosmos-db/azure-monitor-cosmos-db.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>Azure Cosmos DB から収集したデータの監視
+
 Azure Cosmos DB は、他の Azure リソースと同じ種類の監視データを収集します。これについては、[Azure リソースの監視データ](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)に関する記事を参照してください。 Azure Cosmos DB によって作成されるログおよびメトリックの詳細なリファレンスについては、[Azure Cosmos DB 監視データ リファレンス](monitor-cosmos-db-reference.md)を参照してください。
 
 Azure portal で、各 Azure Cosmos データベースの **[概要]** ページでは、データベースの要求や時間ごとの課金使用量など、データベースの使用状況の要約を表示します。 これは有用な情報ですが、見ることのできる監視データはごくわずかです。 このデータの一部は自動的に収集され、データベースを作成するとすぐに分析に使用できるようになりますが、一部の構成では追加のデータ収集を有効にすることができます。
 
 ![[概要] ページ](media/monitor-cosmos-db/overview-page.png)
 
-
-
-## <a name="diagnostic-settings"></a>診断設定
-プラットフォーム メトリックとアクティビティ ログは自動的に収集されますが、リソース ログを収集したり、それらを Azure Monitor の外部に転送したりするには、診断設定を作成する必要があります。 Azure portal、CLI、または PowerShell を使用して診断設定を作成するプロセスの詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
-
-診断設定を作成するときは、収集するログのカテゴリを指定します。 以下、Azure Cosmos DB のカテゴリの一覧をサンプル データと共に示します。
-
- * **DataPlaneRequests**:SQL、Graph、MongoDB、Cassandra、および Azure Cosmos DB の Table API アカウントなど、すべての API へのバックエンド要求をログに記録するには、このオプションを選択します。 注意すべき重要なプロパティは、Requestcharge、statusCode、clientIPaddress、および partitionID です。
-
-    ```
-    { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
-    ```
-
-* **MongoRequests**:Azure Cosmos DB の MongoDB 用 API の要求にサービスを提供するために、ユーザーがフロントエンドから開始した要求をログに記録するには、このオプションを選択します。 MongoDB 要求は、DataPlaneRequests に加えて MongoRequests にも表示されます。 注意すべき重要なプロパティは、Requestcharge、opCode です。
-
-    ```
-    { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
-    ```
-
-* **QueryRuntimeStatistics**:実行されたクエリ テキストをログに記録するには、このオプションを選択します。 
-
-    ```
-    { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
-    ```
-
-* **PartitionKeyStatistics**: パーティション キーの統計をログに記録するには、このオプションを選択します。 これは現在、パーティション キーのストレージ サイズ (KB) で表されます。 ログは、ほとんどのデータ ストレージを占有する最初の 3 つのパーティション キーに対して出力されます。
-
-    ```
-    { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
-    ```
-
-* **[Metric Requests]\(メトリック要求\)** :Azure Cosmos DB からメトリック データを収集し、診断設定で指定した場所に送信するには、このオプションを選択します。 これは、Azure のメトリックで自動的に収集されるものと同じデータです。 リソース ログを使用してメトリック データを収集し、両方の種類のデータをまとめて分析し、Azure Monitor の外部にメトリック データを送信します。
-
 ## <a name="analyzing-metric-data"></a>メトリック データの分析
+
 Azure Cosmos DB は、メトリックを操作するためのカスタム エクスペリエンスを提供します。 このエクスペリエンスの使用と、さまざまな Azure Cosmos DB シナリオの分析の詳細については、[Azure Monitor からの Azure Cosmos DB メトリックの監視とデバッグ](cosmos-db-azure-monitor-metrics.md)に関するページを参照してください。
 
 **Azure Monitor** のメニューから **[Metrics]\(メトリック\)** を開き、メトリックス エクスプローラーを使用して、Azure Cosmos DB のメトリックを、他の Azure サービスからのメトリックと一緒に分析することができます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)」を参照してください。 Azure Cosmos DB のすべてのメトリックは、**Cosmos DB standard metrics** (Cosmos DB 標準メトリック) 名前空間に含まれています。 フィルターをグラフに追加するときは、次のディメンションをこれらのメトリックと共に使用できます。
@@ -91,7 +60,7 @@ Azure Cosmos DB は、メトリックを操作するためのカスタム エク
 ## <a name="analyzing-log-data"></a>ログ データの分析
 Azure Monitor のログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。 Azure Cosmos DB は、次のテーブルにデータを格納します。
 
-| テーブル | 説明 |
+| テーブル | [説明] |
 |:---|:---|
 | AzureDiagnostics | リソース ログを格納するために複数のサービスによって使用される共通テーブル。 Azure Cosmos DB のリソース ログは `MICROSOFT.DOCUMENTDB` で識別できます。   |
 | AzureActivity    | アクティビティ ログのすべてのレコードを格納する共通テーブル。 
@@ -211,7 +180,7 @@ Azure Monitor のログのデータはテーブルに格納され、各テーブ
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Cosmos DB によって作成されるログおよびメトリックのリファレンスについては、[Azure Cosmos DB 監視データ リファレンス](monitor-cosmos-db-reference.md)を参照してください。
 - Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。

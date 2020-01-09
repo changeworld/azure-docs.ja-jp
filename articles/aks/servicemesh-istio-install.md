@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 2768c2d4cef68dcf25e25c047aaa69653af5e0b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170886"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561740"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio をインストールして使用する
 
@@ -136,7 +136,7 @@ spec:
 次のように、`istioctl apply` コマンドと上記の `istio.aks.yaml` Istio コントロール プレーンの仕様ファイルを使用して、Istio をインストールします。
 
 ```console
-istioctl manifest apply -f istio.aks.yaml
+istioctl manifest apply -f istio.aks.yaml --logtostderr --set installPackagePath=./install/kubernetes/operator/charts
 ```
 
 インストーラーは、多数の [CRD][kubernetes-crd] をデプロイし、依存関係を管理して、この Istio の構成で定義されているすべての関連オブジェクトをインストールします。 次のような出力スニペットが表示されます。
@@ -361,7 +361,9 @@ istioctl dashboard envoy <pod-name>.<namespace>
 AKS クラスターから Istio を削除するには、`istio.aks.yaml` Istio コントロール プレーンの仕様ファイルと共に `istioctl manifest generate` コマンドを使用します。 これにより、展開したマニフェストが生成されます。これは、インストールされているすべてのコンポーネントと `istio-system` 名前空間を削除するために `kubectl delete` にパイプします。
 
 ```console
-istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
+istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 
+
+kubectl delete -f istio-components-aks -R
 ```
 
 ### <a name="remove-istio-crds-and-secrets"></a>Istio CRD とシークレットを削除する
@@ -386,7 +388,7 @@ istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
 
 ::: zone-end
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のドキュメントでは、カナリア リリースを展開するために Istio を使用してインテリジェント ルーティングを提供する方法を説明しています。
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 9c72bc9c0862820b72fbecee7966e946f4ba0001
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b6826fa53e9810bdd30af4faf9fbf6bc3c3492e8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928036"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439250"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>データのコピー ツールを使用することにより、パーティション分割されたファイル名に基づく新しいファイルを増分コピーする
 
@@ -64,7 +64,7 @@ ms.locfileid: "74928036"
    
    ![[新しいデータ ファクトリ] のエラー メッセージ](./media/doc-common-process/name-not-available-error.png)
    
-   データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
+   データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
 3. 新しいデータ ファクトリの作成先となる Azure **サブスクリプション**を選択します。 
 4. **[リソース グループ]** で、次の手順のいずれかを行います。
      
@@ -72,7 +72,7 @@ ms.locfileid: "74928036"
 
     b. **[新規作成]** を選択し、リソース グループの名前を入力します。 
          
-    リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
+    リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。
 
 5. **[バージョン]** で、バージョンとして **[V2]** を選択します。
 6. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他の場所やリージョンに存在していてもかまいません。
@@ -201,7 +201,7 @@ ms.locfileid: "74928036"
     ![パイプラインの実行を監視する](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
 
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のチュートリアルに進み、Azure 上の Spark クラスターを使ってデータを変換する方法について学習しましょう。
 
 > [!div class="nextstepaction"]

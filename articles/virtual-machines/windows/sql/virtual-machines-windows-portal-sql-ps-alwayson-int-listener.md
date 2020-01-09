@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 83910c2209b5d3d3d67578ae41afb902bc885171
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037453"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647885"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>1 つ以上の AlwaysOn 可用性グループ リスナーの構成 - Resource Manager
 このトピックでは、以下のことを行う方法を示します。
@@ -68,7 +68,7 @@ Azure ネットワーク セキュリティ グループを使用してアクセ
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 ```
 
-Basic Load Balancer を作成するには、ロード バランサーを作成する行から `-sku Standard` を削除します。 例:
+Basic Load Balancer を作成するには、ロード バランサーを作成する行から `-sku Standard` を削除します。 次に例を示します。
 
 ```powershell
 $ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
@@ -137,7 +137,7 @@ foreach($VMName in $VMNames)
 > [!NOTE]
 > SQL Server 可用性グループの場合は、各 IP アドレスに特定のプローブ ポートが必要です。 たとえば、ロード バランサー上の 1 つの IP アドレスでプローブ ポート 59999 が使用されている場合、そのロード バランサー上の他の IP アドレスではプローブ ポート 59999 を使用できません。
 
-* ロード バランサーの制限については、「**ネットワークの制限 - Azure Resource Manager**」にある「[ロード バランサーごとのプライベート フロント エンド IP](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」をご覧ください。
+* ロード バランサーの制限については、「**ネットワークの制限 - Azure Resource Manager**」にある「[ロード バランサーごとのプライベート フロント エンド IP](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」をご覧ください。
 * 可用性グループの制限については、「[制限 (可用性グループ)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG)」をご覧ください。
 
 次のスクリプトは、既存のロード バランサーに新しい IP アドレスを追加します。 ILB では、負荷分散フロントエンド ポート用のリスナー ポートが使用されます。 このポートには、SQL Server がリッスンしているポートを使用できます。 SQL Server の既定のインスタンスでは、このポートは 1433 です。 バックエンド ポートがフロントエンド ポートと同じになるように、可用性グループの負荷分散規則ではフローティング IP (Direct Server Return) が必要です。 環境に合わせて変数を更新してください。 
@@ -227,7 +227,7 @@ SQLCMD 接続では、プライマリ レプリカをホストしている SQL S
 
 * Azure ネットワーク セキュリティ グループを使用してアクセスを制限する場合は、バックエンド SQL Server VM の IP アドレス、AG リスナーのロード バランサー フローティング IP アドレス、および該当する場合はクラスター コア IP アドレスが許可ルールに含まれていることを確認します。
 
-## <a name="for-more-information"></a>BLOB の詳細
+## <a name="for-more-information"></a>詳細情報
 詳細については、「[Azure VM での AlwaysOn 可用性グループの手動構成](virtual-machines-windows-portal-sql-availability-group-tutorial.md)」をご覧ください。
 
 ## <a name="powershell-cmdlets"></a>PowerShell コマンドレット

@@ -6,14 +6,14 @@ services: cloud-services
 ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 28
-author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: c5a6501c71420ca5b43c4c08c2a29ae5f27b4af5
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: cacc8b1f2909965594fdf0d841963e792acf648c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385426"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure Cloud Services Config NetworkConfiguration スキーマ
 
@@ -61,7 +61,7 @@ ms.locfileid: "68945922"
 
 次の表は、`NetworkConfiguration` 要素の子要素の説明です。
 
-| 要素       | 説明 |
+| 要素       | [説明] |
 | ------------- | ----------- |
 | AccessControl | 省略可能。 クラウド サービス内のエンドポイントにアクセスするためのルールを指定します。 アクセス制御の名前は、`name` 属性の文字列で定義されます。 `AccessControl` 要素には、1 つ以上の `Rule` 要素が含まれています。 複数の `AccessControl` 要素を定義できます。|
 | ルール | 省略可能。 IP アドレスの指定されたサブネット範囲に対して実行されるアクションを指定します。 ルールの順序は `order` 属性の文字列値で定義されます。 ルール番号が小さいほど、優先度は高くなります。 たとえば、ルールは、100、200、および 300 の順序番号で指定できます。 100 の順序番号のルールは、200 の順序であるルールよりも優先されます。<br /><br /> ルールのアクションは `action` 属性の文字列で定義されます。 次のいずれかの値になります。<br /><br /> -   `permit`– 指定されたサブネット範囲からのパケットのみがエンドポイントと通信できることを指定します。<br />-   `deny`– 指定されたサブネット範囲内のエンドポイントへのアクセスが拒否されることを指定します。<br /><br /> ルールによって影響を受ける IP アドレスのサブネット範囲は、`remoteSubnet` 属性の文字列で定義されます。 ルールの説明は `description` 属性の文字列で定義されます。|
@@ -72,5 +72,5 @@ ms.locfileid: "68945922"
 | Subnet | 省略可能。 ネットワーク構成ファイル内のサブネット名に対応するサブネットを指定します。 サブネットの名前は、`name` 属性の文字列で定義されます。|
 | ReservedIP | 省略可能。 デプロイに関連付けられる予約済み IP アドレスを指定します。 予約済み IP アドレスの作成には、Create Reserved IP Address を使用する必要があります。 クラウド サービスの各々のデプロイは、1 つの予約済み IP アドレスに関連付けることができます。 予約済み IP アドレスの名前は、`name` 属性の文字列で定義されます。|
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 [Cloud Service (クラシック) 構成スキーマ](schema-cscfg-file.md)

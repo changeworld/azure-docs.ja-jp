@@ -2,19 +2,15 @@
 title: Azure Monitor ログに Azure Automation のジョブ データを転送する
 description: この記事では、ジョブの状態と Runbook ジョブ ストリームを Azure Monitor ログに送信して、追加の分析情報や補助的な管理を提供する方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/05/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d2433e8193026b8aaa3cbf29eb1411c7449a4953
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: beb69edc57b5a13db0f6d2e5e1536804f3472aff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849736"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421908"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Automation から Azure Monitor ログにジョブの状態とジョブ ストリームを転送する
 
@@ -33,7 +29,7 @@ Automation からは、Runbook ジョブの状態とジョブ ストリームを
 Azure Monitor ログへの Automation ログの送信を開始するには、次のものが必要です。
 
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) の最新リリース。
-* Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの概要](../log-analytics/log-analytics-get-started.md)に関するページを参照してください。
+* Log Analytics ワークスペース。 詳細については、[Azure Monitor ログの使用](../log-analytics/log-analytics-get-started.md)に関するページを参照してください
 * Azure Automation アカウントの ResourceId。
 
 Azure Automation アカウントの ResourceId を調べるには、次の PowerShell を実行します。
@@ -89,7 +85,7 @@ Azure Automation の診断から、Azure Monitor ログに 2 種類のレコー�
 
 ### <a name="job-logs"></a>ジョブ ログ
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | TimeGenerated |Runbook ジョブが実行された日付と時刻。 |
 | RunbookName_s |Runbook の名前。 |
@@ -97,9 +93,9 @@ Azure Automation の診断から、Azure Monitor ログに 2 種類のレコー�
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | JobId_g |GUID。Runbook ジョブの ID です。 |
 | ResultType |Runbook ジョブの状態。 次のいずれかの値になります。<br>- 新規<br>- 作成済み<br>- 開始済み<br>- 停止済み<br>- 中断<br>- 失敗<br>- 完了 |
-| Category | データの種類の分類。 Automation の場合、値は JobLogs です。 |
+| カテゴリ | データの種類の分類。 Automation の場合、値は JobLogs です。 |
 | OperationName | Azure で実行された操作の種類を指定します。 Automation の場合、値は Job です。 |
-| Resource | Automation アカウントの名前です。 |
+| リソース | Automation アカウントの名前です。 |
 | SourceSystem | Azure Monitor ログでのデータ収集方法。 Azure Diagnostics の場合、常に *Azure* です。 |
 | ResultDescription |Runbook ジョブの結果の状態について説明します。 次のいずれかの値になります。<br>- ジョブが開始されました<br>- ジョブが失敗しました<br>- ジョブが完了しました |
 | CorrelationId |GUID。Runbook ジョブの関連付け ID です。 |
@@ -111,7 +107,7 @@ Azure Automation の診断から、Azure Monitor ログに 2 種類のレコー�
 
 
 ### <a name="job-streams"></a>ジョブ ストリーム
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | TimeGenerated |Runbook ジョブが実行された日付と時刻。 |
 | RunbookName_s |Runbook の名前。 |
@@ -120,9 +116,9 @@ Azure Automation の診断から、Azure Monitor ログに 2 種類のレコー�
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | JobId_g |GUID。Runbook ジョブの ID です。 |
 | ResultType |Runbook ジョブの状態。 次のいずれかの値になります。<br>- In Progress |
-| Category | データの種類の分類。 Automation の場合、値は JobStreams です。 |
+| カテゴリ | データの種類の分類。 Automation の場合、値は JobStreams です。 |
 | OperationName | Azure で実行された操作の種類を指定します。 Automation の場合、値は Job です。 |
-| Resource | Automation アカウントの名前です。 |
+| リソース | Automation アカウントの名前です。 |
 | SourceSystem | Azure Monitor ログでのデータ収集方法。 Azure Diagnostics の場合、常に *Azure* です。 |
 | ResultDescription |Runbook からの出力ストリームが含まれます。 |
 | CorrelationId |GUID。Runbook ジョブの関連付け ID です。 |
@@ -184,7 +180,7 @@ Automation ジョブの状態とストリーム データを Azure Monitor ロ�
 
 Azure Monitor ログによって、Automation ジョブの状態をさらに詳しく把握でき、インシデントにより迅速に対処できるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Log Analytics のトラブルシューティングについては、[Log Analytics がデータを収集しなくなった場合のトラブルシューティング](../azure-monitor/platform/manage-cost-storage.md#troubleshooting-why-log-analytics-is-no-longer-collecting-data)に関する記事を参照してください。
 * 各種検索クエリの作成方法と、Azure Monitor ログでの Automation ジョブ ログの確認方法の詳細については、[Azure Monitor ログでのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。

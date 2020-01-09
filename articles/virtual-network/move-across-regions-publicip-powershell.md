@@ -6,18 +6,18 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: d18dfa7ebed3aefbf6fdb3ffdb6fdd2cf2160cb4
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: c55b6011381d385fed7c7b8175ff02ec9be66fdb
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71038881"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641555"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-azure-powershell"></a>Azure PowerShell を使用して Azure パブリック IP を別のリージョンに移動する
 
-既存の Azure パブリック IP を別のリージョンに移動することが必要になるさまざまなシナリオがあります。 たとえば、テスト用に同じ構成と SKU でパブリック IP を作成したいことがあります。 ディザスター リカバリー計画の一部として、パブリック IP を別のリージョンに移動したいこともあります。
+既存の Azure パブリック IP を別のリージョンに移動することが必要になるさまざまなシナリオがあります。 たとえば、テスト用に同じ構成と SKU を使用してパブリック IP を作成することが必要な場合があります。 ディザスター リカバリー計画の一部として、パブリック IP を別のリージョンに移動することが必要な場合もあります。
 
-Azure パブリック IP はリージョン固有であり、あるリージョンから別のリージョンに移動することはできません。 ただし、Azure Resource Manager テンプレートを使用して、既存のパブリック IP の構成をエクスポートすることはできます。  その後、パブリック IP をテンプレートにエクスポートすることで別のリージョンにリソースをステージし、移動先のリージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。  Resource Manager とテンプレートの詳細については、「[リソース グループをテンプレートにエクスポートする](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)」を参照してください
+Azure パブリック IP はリージョン固有であり、あるリージョンから別のリージョンに移動することはできません。 ただし、Azure Resource Manager テンプレートを使用して、パブリック IP の既存の構成をエクスポートすることはできます。  その後、パブリック IP をテンプレートにエクスポートすることで別のリージョンにリソースをステージし、移動先リージョンに合わせてパラメーターを変更してから、新しいリージョンにテンプレートをデプロイできます。  Resource Manager とテンプレートの詳細については、「[リソース グループをテンプレートにエクスポートする](https://docs.microsoft.com/azure/azure-resource-manager/manage-resource-groups-powershell#export-resource-groups-to-templates)」を参照してください
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -32,7 +32,7 @@ Azure パブリック IP はリージョン固有であり、あるリージョ�
 
 - 自分の Azure サブスクリプションで、使用される移動先リージョンにパブリック IP を作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
 
-- お使いのサブスクリプションに、このプロセスでのパブリック IP の追加をサポートするのに十分なリソースがあることを確認します。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- 使用するサブスクリプションに、このプロセスでのパブリック IP の追加をサポートするのに十分なリソースがあることを確認します。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
 
 
 ## <a name="prepare-and-move"></a>準備と移動
@@ -61,7 +61,7 @@ Azure パブリック IP はリージョン固有であり、あるリージョ�
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. ダウンロードされるファイルの名前は、リソースのエクスポート元のリソース グループの名前に基づいて付けられます。  コマンドからエクスポートした **\<リソース グループ名>.json** という名前のファイルを探し、任意のエディターで開きます。
+4. ダウンロードされるファイルの名前は、リソースのエクスポート元のリソース グループの名前に基づいて付けられます。  コマンドからエクスポートされた **\<resource-group-name>.json** という名前のファイルを探し、任意のエディターで開きます。
    
    ```azurepowershell
    notepad <source-resource-group-name>.json
@@ -108,14 +108,14 @@ Azure パブリック IP はリージョン固有であり、あるリージョ�
              ]             
     ```
   
-7. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用します。
+7. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
 
     ```azurepowershell-interactive
 
     Get-AzLocation | format-table
     
     ```
-8. また、必要に応じて、テンプレート内の次のような他のパラメーターも変更できます。これらは、要件に基づくオプションです。
+8. また、必要に応じて、テンプレート内の他のパラメーターも変更できます。これらは、実際の要件に応じて省略可能です。
 
     * **SKU** - 構成のパブリック IP の SKU を、Standard から Basic、または Basic から Standard に変更できます。そのためには、 **\<resource-group-name>.json** ファイルの **sku** > **name** プロパティを変更します。
 
@@ -216,9 +216,9 @@ Remove-AzPublicIpAddress -Name <source-publicip-name> -ResourceGroupName <resour
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure パブリック IP をあるリージョンから別のリージョンに移動し、ソース リソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
+このチュートリアルでは、Azure パブリック IP をあるリージョンから別のリージョンに移動し、移動元リソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 
 
 - [リソースを新しいリソース グループまたはサブスクリプションに移動する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

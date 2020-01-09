@@ -15,18 +15,18 @@ ms.author: curtand
 ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1191fb5c9aefb55896d5c44714f1061ff2674a8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b83f10cd021f54dc16e196cb7a9ccd7c46fd2ee
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64415226"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659646"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Azure AD サービスの制限と制約
-この記事では、Azure Active Directory (Azure AD) サービスの使用上の制約およびその他のサービスの制限を説明します。 Microsoft Azure サービスの制限すべてをご覧になりたい場合は、「 [Azure サブスクリプションとサービスの制限、クォータ、および制約](../../azure-subscription-service-limits.md)」を参照してください。
+この記事では、Azure Active Directory (Azure AD) サービスの使用上の制約およびその他のサービスの制限を説明します。 Microsoft Azure サービスの制限すべてをご覧になりたい場合は、「 [Azure サブスクリプションとサービスの制限、クォータ、および制約](../../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
 
 [!INCLUDE [AAD-service-limits](../../../includes/active-directory-service-limits-include.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure への組織としてのサインアップ](../fundamentals/sign-up-organization.md)
 * [Azure サブスクリプションを Azure AD に関連付ける方法](../fundamentals/active-directory-how-subscriptions-associated-directory.md)

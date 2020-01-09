@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: takamath
-ms.openlocfilehash: 13e3f6be851e81b1186d55bb313dd23f1920f007
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ca843213760cee60799568a6f33059c2bd91c835
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616345"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643289"
 ---
 # <a name="deliver-a-proof-of-concept"></a>概念実証を提供する 
 
@@ -33,7 +33,7 @@ Azure DevTest Labs の重要なシナリオの 1 つは、クラウドで開発�
 
 Azure DevTest Labs を企業の環境にうまく組み込むための要件は、企業によってさまざまです。 この記事では、企業が概念実証を成功させるために完了する必要がある最も一般的な手順について説明します。 概念実証は、エンドツーエンドのデプロイを成功させるための最初のステップです。 
 
-## <a name="getting-started"></a>使用の開始 
+## <a name="getting-started"></a>作業の開始 
 
 概念実証を提供するには、まず、 Azure と DevTest Labs について学習することが重要です。  出発点となるリソースには以下のものがあります。 
 
@@ -124,7 +124,7 @@ DevTest Labs でパイロットや概念実証を適切に遂行するには、�
 
 完全な DevTest Labs ソリューションをリリースする前に、計画と設計に関するいくつかの重要な決定を行う必要があります。 この意思決定には、概念実証での経験が役立ちます。 追加で検討が必要な事項は次のとおりです。 
 
-* **サブスクリプション トポロジ**:Azure のリソースに関するエンタープライズ レベルの要件が、[1 つのサブスクリプションで利用可能なクォータ](https://docs.microsoft.com/azure/azure-subscription-service-limits)を超えることがあります。 これにより、当初のサブスクリプションの制限を引き上げるために、複数の Azure サブスクリプションやサービス要求が必要となります。 サブスクリプション間でリソースを分配する方法を事前に決めておくことが重要です。 リソースを後から別のサブスクリプションに移動するのは難しいため、このときに役立つのは[サブスクリプション決定ガイド](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/)です。 たとえば、ラボを作成後に別のサブスクリプションに移動することはできません。  
+* **サブスクリプション トポロジ**:Azure のリソースに関するエンタープライズ レベルの要件が、[1 つのサブスクリプションで利用可能なクォータ](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)を超えることがあります。 これにより、当初のサブスクリプションの制限を引き上げるために、複数の Azure サブスクリプションやサービス要求が必要となります。 サブスクリプション間でリソースを分配する方法を事前に決めておくことが重要です。 リソースを後から別のサブスクリプションに移動するのは難しいため、このときに役立つのは[サブスクリプション決定ガイド](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/)です。 たとえば、ラボを作成後に別のサブスクリプションに移動することはできません。  
 * **ネットワーク トポロジ**: DevTest Labs によって自動的に作成される[既定のネットワーク インフラストラクチャ](../app-service/networking-features.md)では、エンタープライズ ユーザーの要件と制約が十分に満たされない可能性があります。 [Azure ExpressRoute が仮想ネットワークに接続](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)されていたり、サブスクリプション間の接続に[ハブ アンド スポーク](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)が使用されていたり、オンプレミスの接続を確保するためだけに[強制的なルーティング](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)が行われていたりすることがよくあります。 DevTest Labs では、既存の仮想ネットワークをラボに接続して、ラボで新しい仮想マシンを作成するときに使用することができます。 
 * **仮想マシンのリモート アクセス**: DevTest Labs 内の仮想マシンにリモートでアクセスする方法は多数あります。 最も簡単な方法は、パブリック IP または共有パブリック IP を使用することです。 これらは、[ラボで使用できる設定](devtest-lab-shared-ip.md)です。 これらのオプションでは十分でない場合は、リモート アクセス ゲートウェイを使用することもできます。 このオプションは [DevTest Labs の企業向け参照アーキテクチャ](devtest-lab-reference-architecture.md)で示されており、詳細については、「[リモート デスクトップ ゲートウェイを使用するように Azure DevTest Labs でラボを構成します](configure-lab-remote-desktop-gateway.md)」を参照してください。 企業で ExpressRoute またはサイト間 VPN を使用して、ラボをオンプレミス ネットワークに接続することもできます。 このオプションにより、インターネットに公開されていないプライベート IP アドレスに基づいて、仮想マシンにリモート デスクトップまたは SSH で直接接続することができます。 
 * **アクセス許可の処理**:DevTest Labs で一般に使用される 2 つの主要なアクセス許可は、[所有者とラボ ユーザー](devtest-lab-add-devtest-user.md)です。 DevTest Labs を広くロールアウトする前に、ラボの各アクセス レベルの管理を誰に託すかを決めることが重要です。 一般的なモデルでは、予算所有者 (チーム リーダーなど) がラボ所有者になり、チーム メンバーがラボ ユーザーとなります。 このモデルにより、予算の責任者である人物 (チーム リーダー) は、ポリシー設定を調整し、チームが予算を超過しないようにすることができます。  
@@ -133,7 +133,7 @@ DevTest Labs でパイロットや概念実証を適切に遂行するには、�
 
 期待される学習内容への対応が済んだら、パイロットを完了します。 この時点で、ユーザーからフィードバックを集め、パイロットが成功したかどうかを判断し、企業内で DevTest Labs のスケール ロールアウトを進めてよいかどうかを決定します。 同時に、スケール ロールアウト全体の一貫性を確保するために、DevTest Labs と関連リソースのデプロイの自動化を検討することもお勧めします。 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 * [企業内での DevTest Labs に関するドキュメント](devtest-lab-guidance-prescriptive-adoption.md)
 * [エンタープライズ向け参照アーキテクチャ](devtest-lab-reference-architecture.md)

@@ -1,24 +1,18 @@
 ---
-title: Azure マネージド ID との統合 | Microsoft Docs
+title: Azure マネージド ID と統合する
 description: Azure マネージド ID を使用して、Azure App Configuration に対して認証を行ってアクセスする方法について説明します
 services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
+ms.author: yegu
 ms.service: azure-app-configuration
-ms.workload: tbd
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: b0c6e39aebe7864ab132805b78aa7be2d61c5160
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3af13a3009886c88f1a30eab2e6cc9f498ad6e45
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185138"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665253"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Azure マネージド ID との統合
 
@@ -223,11 +217,11 @@ http://<app_name>.azurewebsites.net
     </appSettings>
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure マネージド ID を追加して、App Configuration へのアクセスを効率化し、アプリの資格情報管理を改善しました。 App Configuration の使用方法の詳細については、Azure CLI のサンプルに進んでください。
 
 > [!div class="nextstepaction"]

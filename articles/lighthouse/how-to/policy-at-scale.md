@@ -3,22 +3,22 @@ title: 委任されたサブスクリプションに Azure Policy を大規模�
 description: Azure の委任されたリソース管理によって、ポリシー定義とポリシー割り当てを複数のテナントにわたってデプロイする方法について説明します。
 ms.date: 11/8/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3853e8fc163dfc662adc675dd3df1d15958d329a
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463859"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456848"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>委任されたサブスクリプションに Azure Policy を大規模にデプロイする
 
 サービス プロバイダーは、Azure の委任されたリソース管理のために、複数の顧客テナントをオンボードしてきたかもしれません。 [Azure Lighthouse](../overview.md) を使用すると、サービス プロバイダーは一度に複数のテナントにわたって大規模に操作を実行できるため、管理タスクがより効率的になります。
 
-このトピックでは、PowerShell コマンドを介して [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) を使用し、複数のテナントにわたってポリシー定義とポリシー割り当てをデプロイする方法を示します。 この例では、ポリシー定義によって HTTPS トラフィックのみを許可することで、ストレージ アカウントが確実に保護されるようにしています。
+このトピックでは、PowerShell コマンドを介して [Azure Policy](../../governance/policy/index.yml) を使用し、複数のテナントにわたってポリシー定義とポリシー割り当てをデプロイする方法を示します。 この例では、ポリシー定義によって HTTPS トラフィックのみを許可することで、ストレージ アカウントが確実に保護されるようにしています。
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Azure Resource Graph を使用して複数の顧客テナントにわたるクエリを実行する
 
-[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/) を使用して、管理対象の顧客テナントに含まれるすべてのサブスクリプションにわたってクエリを実行できます。 この例では、現在 HTTPS トラフィックを必要としていないサブスクリプションに含まれるすべてのストレージ アカウントを特定します。  
+[Azure Resource Graph](../../governance/resource-graph/index.yml) を使用して、管理対象の顧客テナントに含まれるすべてのサブスクリプションにわたってクエリを実行できます。 この例では、現在 HTTPS トラフィックを必要としていないサブスクリプションに含まれるすべてのストレージ アカウントを特定します。  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -61,7 +61,7 @@ New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -
                      -Verbose                  
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 終了したら、このデプロイによって作成されたポリシー定義と割り当てを削除します。
 
@@ -88,7 +88,7 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) の詳細を確認する。
+- [Azure Policy](../../governance/policy/index.yml) の詳細を確認する。
 - [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。

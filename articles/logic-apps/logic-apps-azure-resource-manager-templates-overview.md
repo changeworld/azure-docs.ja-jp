@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 0f5216181efcd6593fc9f85de0792b98a5d7fd0a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792558"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428816"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
-ロジック アプリの作成とデプロイを自動化する準備ができたら、ロジック アプリの基になるワークフロー定義を [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)に展開することができます。 このテンプレートでは、ロジック アプリをプロビジョニングおよびデプロイするためのインフラストラクチャ、リソース、パラメーター、およびその他の情報を定義します。 デプロイ時に変動する値に対してパラメーターを定義する ("*パラメーター化*" とも呼ばれます) ことにより、さまざまなデプロイ ニーズに応じてロジック アプリを繰り返し一貫した方法でデプロイすることができます。
+ロジック アプリの作成とデプロイを自動化する準備ができたら、ロジック アプリの基になるワークフロー定義を [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)に展開することができます。 このテンプレートでは、ロジック アプリをプロビジョニングおよびデプロイするためのインフラストラクチャ、リソース、パラメーター、およびその他の情報を定義します。 デプロイ時に変動する値に対してパラメーターを定義する ("*パラメーター化*" とも呼ばれます) ことにより、さまざまなデプロイ ニーズに応じてロジック アプリを繰り返し一貫した方法でデプロイすることができます。
 
-たとえば、開発環境、テスト環境、運用環境にデプロイする場合、環境ごとに異なる接続文字列を使用すると効果的です。 異なる接続文字列を受け取るテンプレート パラメーターを宣言した後、それらの文字列を別々の[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)に格納することができます。 こうすることで、テンプレートを更新して再デプロイしなくても、これらの値を変更することができます。 パスワードやシークレットのような機密性の高いまたはセキュリティ保護が必要なパラメーター値を使用しているシナリオでは、これらの値を [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) に格納し、パラメーター ファイルによってこれらの値を取得することができます。 ただし、このようなシナリオでは、再デプロイを行って現在の値を取得することをお勧めします。
+たとえば、開発環境、テスト環境、運用環境にデプロイする場合、環境ごとに異なる接続文字列を使用すると効果的です。 異なる接続文字列を受け取るテンプレート パラメーターを宣言した後、それらの文字列を別々の[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納することができます。 こうすることで、テンプレートを更新して再デプロイしなくても、これらの値を変更することができます。 パスワードやシークレットのような機密性の高いまたはセキュリティ保護が必要なパラメーター値を使用しているシナリオでは、これらの値を [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) に格納し、パラメーター ファイルによってこれらの値を取得することができます。 ただし、このようなシナリオでは、再デプロイを行って現在の値を取得することをお勧めします。
 
 この概要では、ロジック アプリのワークフロー定義を含む Resource Manager テンプレートの属性について説明します。 テンプレートとワークフロー定義には、どちらも JSON 構文を使用しますが、ワークフロー定義は[ワークフロー定義言語スキーマ](../logic-apps/logic-apps-workflow-definition-language.md)にも従っているため、いくつか相違点があります。 たとえば、テンプレートの式とワークフロー定義の式では、[パラメーターを参照する](#parameter-references)方法および使用できる値に違いがあります。
 
@@ -30,7 +30,7 @@ ms.locfileid: "74792558"
 
 Resource Manager テンプレートの詳細については、次のトピックをご覧ください。
 
-* [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager テンプレートのベスト プラクティス](../azure-resource-manager/template-best-practices.md)
 * [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates-cloud-consistency.md)
 
@@ -45,7 +45,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ## <a name="template-structure"></a>テンプレートの構造
 
-最上位レベルでは、Resource Manager テンプレートの構造は次のようになっています。詳しくは、[Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/resource-group-authoring-templates.md)に関するトピックをご覧ください。
+最上位レベルでは、Resource Manager テンプレートの構造は次のようになっています。詳しくは、[Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/templates/template-syntax.md)に関するトピックをご覧ください。
 
 ```json
 {
@@ -61,10 +61,10 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ロジック アプリ テンプレートでは、主に次のテンプレート オブジェクトを使用します。
 
-| Attribute | 説明 |
+| Attribute | [説明] |
 |-----------|-------------|
-| `parameters` | Azure でデプロイするリソースを作成およびカスタマイズするときに使用する値を受け取る[テンプレート パラメーター](../azure-resource-manager/resource-group-authoring-templates.md#parameters)を宣言します。 たとえば、これらのパラメーターは、ロジック アプリの名前と場所、接続、およびデプロイに必要なその他のリソースの値を受け取ります。 これらのパラメーターの値は、このトピックで後述する[パラメーター ファイル](#template-parameter-files)に格納することができます。 一般的な詳細については、[Resource Manager テンプレートの構造と構文のパラメーター](../azure-resource-manager/resource-group-authoring-templates.md#parameters)に関する記事をご覧ください。 |
-| `resources` | ロジック アプリ、接続、Azure ストレージ アカウントなど、作成または更新して Azure リソース グループにデプロイする[リソース](../azure-resource-manager/resource-group-authoring-templates.md#resources)を定義します。 一般的な詳細については、[Resource Manager テンプレートの構造と構文のリソース](../azure-resource-manager/resource-group-authoring-templates.md#resources)に関する記事をご覧ください。 |
+| `parameters` | Azure でデプロイするリソースを作成およびカスタマイズするときに使用する値を受け取る[テンプレート パラメーター](../azure-resource-manager/templates/template-syntax.md#parameters)を宣言します。 たとえば、これらのパラメーターは、ロジック アプリの名前と場所、接続、およびデプロイに必要なその他のリソースの値を受け取ります。 これらのパラメーターの値は、このトピックで後述する[パラメーター ファイル](#template-parameter-files)に格納することができます。 一般的な詳細については、[Resource Manager テンプレートの構造と構文のパラメーター](../azure-resource-manager/templates/template-syntax.md#parameters)に関する記事をご覧ください。 |
+| `resources` | ロジック アプリ、接続、Azure ストレージ アカウントなど、作成または更新して Azure リソース グループにデプロイする[リソース](../azure-resource-manager/templates/template-syntax.md#resources)を定義します。 一般的な詳細については、[Resource Manager テンプレートの構造と構文のリソース](../azure-resource-manager/templates/template-syntax.md#resources)に関する記事をご覧ください。 |
 ||||
 
 ロジック アプリ テンプレートのファイル名には、次の形式を使用します。
@@ -78,7 +78,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ## <a name="template-parameters"></a>Template parameters
 
-ロジック アプリ テンプレートには、さまざまなレベルに存在し、さまざまな機能を実行する複数の `parameters` オブジェクトがあります。 たとえば、最上位レベルでは、Azure でリソースを作成およびデプロイするときに受け取って使用する値の[テンプレート パラメーター](../azure-resource-manager/resource-group-authoring-templates.md#parameters)を宣言できます。次に例を示します。
+ロジック アプリ テンプレートには、さまざまなレベルに存在し、さまざまな機能を実行する複数の `parameters` オブジェクトがあります。 たとえば、最上位レベルでは、Azure でリソースを作成およびデプロイするときに受け取って使用する値の[テンプレート パラメーター](../azure-resource-manager/templates/template-syntax.md#parameters)を宣言できます。次に例を示します。
 
 * ロジック アプリ
 * [マネージド コネクタ](../connectors/apis-list.md)を介して他のサービスやシステムにアクセスするためにロジック アプリが使用する接続
@@ -86,7 +86,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
   たとえば、ロジック アプリで企業間 (B2B) のシナリオに[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)を使用している場合、テンプレートの最上位レベルの `parameters` オブジェクトによって、その統合アカウントのリソース ID を受け取るパラメーターが宣言されます。
 
-パラメーター定義の一般的な構造と構文を次に示します。詳しくは、[Resource Manager テンプレートの構造と構文のパラメーター](../azure-resource-manager/resource-group-authoring-templates.md#parameters)に関する記事をご覧ください。
+パラメーター定義の一般的な構造と構文を次に示します。詳しくは、[Resource Manager テンプレートの構造と構文のパラメーター](../azure-resource-manager/templates/template-syntax.md#parameters)に関する記事をご覧ください。
 
 ```json
 "<parameter-name>": {
@@ -147,7 +147,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 テンプレート パラメーターをセキュリティで保護する方法については、次のトピックをご覧ください。
 
-* [テンプレート パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/template-best-practices.md#parameters)
+* [テンプレート パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [テンプレート パラメーターをセキュリティで保護する](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 * [Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)
 
@@ -169,7 +169,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 * 機密性の高い値やセキュリティ保護が必要な値を除き、すべてのパラメーターに `defaultValue` 属性を含めます。これには空の値を指定できます。 ユーザー名、パスワード、およびシークレットには、常にセキュリティで保護されたパラメーターを使用してください。 機密性の高いパラメーター値を非表示にしたり保護したりするには、次のトピックのガイダンスに従ってください。
 
-  * [テンプレート パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/template-best-practices.md#parameters)
+  * [テンプレート パラメーターに関するセキュリティの推奨事項](../azure-resource-manager/templates/template-best-practices.md#parameters)
 
   * [テンプレート パラメーターをセキュリティで保護する](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
@@ -177,13 +177,13 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 * テンプレート パラメーター名をワークフロー定義パラメーター名と区別するために、テンプレート パラメーターには `TemplateFabrikamPassword` のようなわかりやすい名を使用できます。
 
-テンプレートに関するその他のベスト プラクティスについては、[テンプレート パラメーターのベスト プラクティス](../azure-resource-manager/template-best-practices.md#parameters)に関する記事をご覧ください。
+テンプレートに関するその他のベスト プラクティスについては、[テンプレート パラメーターのベスト プラクティス](../azure-resource-manager/templates/template-best-practices.md#parameters)に関する記事をご覧ください。
 
 <a name="template-parameter-files"></a>
 
 ## <a name="template-parameters-file"></a>テンプレート パラメーター ファイル
 
-テンプレート パラメーターの値を指定するには、それらの値を[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)に格納します。 そうすることで、デプロイのニーズに応じてさまざまなパラメーター ファイルを使用できます。 使用するファイル名の形式は次のようになります。
+テンプレート パラメーターの値を指定するには、それらの値を[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)に格納します。 そうすることで、デプロイのニーズに応じてさまざまなパラメーター ファイルを使用できます。 使用するファイル名の形式は次のようになります。
 
 * ロジック アプリ テンプレート ファイルの名前: **<*logic-app-name*>.json**
 * パラメーター ファイルの名前: **<*logic-app-name*>.parameters.json**
@@ -267,8 +267,8 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 テンプレート リソースとその属性に関する一般的な情報については、次のトピックをご覧ください。
 
-* [Azure Resource Manager テンプレートの構造と構文のリソース](../azure-resource-manager/resource-group-authoring-templates.md#resources)
-* [テンプレート リソースのベスト プラクティス](../azure-resource-manager/template-best-practices.md#resources)
+* [Azure Resource Manager テンプレートの構造と構文のリソース](../azure-resource-manager/templates/template-syntax.md#resources)
+* [テンプレート リソースのベスト プラクティス](../azure-resource-manager/templates/template-best-practices.md#resources)
 
 <a name="logic-app-resource-definition"></a>
 
@@ -319,9 +319,9 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ロジック アプリのリソース定義に固有の属性は次のとおりです。
 
-| Attribute | 必須 | 種類 | 説明 |
+| Attribute | 必須 | 種類 | [説明] |
 |-----------|----------|------|-------------|
-| `state` | はい | string | デプロイ時のロジック アプリの状態。`Enabled` はロジック アプリがアクティブな状態であることを意味し、`Disabled` はロジック アプリが非アクティブな状態であることを意味します。 たとえば、ロジック アプリをアクティブにする準備ができておらず、ドラフト バージョンをデプロイする必要がある場合は、`Disabled` オプションを使用できます。 |
+| `state` | はい | String | デプロイ時のロジック アプリの状態。`Enabled` はロジック アプリがアクティブな状態であることを意味し、`Disabled` はロジック アプリが非アクティブな状態であることを意味します。 たとえば、ロジック アプリをアクティブにする準備ができておらず、ドラフト バージョンをデプロイする必要がある場合は、`Disabled` オプションを使用できます。 |
 | `integrationAccount` | いいえ | Object | 企業間 (B2B) のシナリオで成果物を格納する統合アカウントをロジック アプリで使用している場合、このオブジェクトには、統合アカウントの ID を指定する `id` 属性が含まれます。 |
 | `definition` | はい | Object | ロジック アプリの基になるワークフロー定義。コード ビューに表示されるのと同じオブジェクトであり、[ワークフロー定義言語のスキーマ参照](../logic-apps/logic-apps-workflow-definition-language.md)に関するトピックで詳しく説明されています。 このワークフロー定義では、`parameters` オブジェクトによって、ロジック アプリの実行時に使用される値のパラメーターが宣言されます。 詳しくは、「[ワークフロー定義とパラメーター](#workflow-definition-parameters)」をご覧ください。 <p><p>ロジック アプリのワークフロー定義内の属性を表示するには、Azure portal または Visual Studio で "デザイン ビュー" から "コード ビュー" に切り替えるか、[Azure Resource Explorer](https://resources.azure.com) などのツールを使用します。 |
 | `parameters` | いいえ | Object | ロジック アプリの実行時に使用される[ワークフロー定義のパラメーター値](#workflow-definition-parameters)。 これらの値のパラメーター定義は、[ワークフロー定義の parameters オブジェクト](#workflow-definition-parameters)内に表示されます。 また、ロジック アプリで[マネージド コネクタ](../connectors/apis-list.md)を使用して他のサービスやシステムにアクセスしている場合、このオブジェクトには、実行時に使用する接続値を設定する `$connections` オブジェクトが含まれます。 |
@@ -936,7 +936,7 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 }
 ```
 
-| Attribute | 説明 |
+| Attribute | [説明] |
 |-----------|-------------|
 | `token:clientId` | サービス プリンシパルに関連付けられているアプリケーションまたはクライアントの ID |
 | `token:clientSecret` | サービス プリンシパルに関連付けられているキー値 |
@@ -1027,7 +1027,7 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 
 1. ワークフロー定義で、実行時に受け取って使用する値のパラメーターを宣言します。 これにより、これらの値をワークフロー定義の全体および内部で参照できるようになります。
 
-1. ワークフロー定義の "*外側*"、かつロジック アプリのリソース定義の "*内側*" にある `parameters` オブジェクトで、対応するテンプレート パラメーターを参照してワークフロー定義のパラメーターの値を設定します。 こうすることで、テンプレート パラメーターの値をワークフロー定義のパラメーターに渡すことができます。
+1. ワークフロー定義の "*外側*"、かつロジック アプリのリソース定義の "*内側*" にある `parameters` オブジェクトで、対応するテンプレート パラメーターを参照してワークフロー定義のパラメーターの値を設定します。 それにより、テンプレート パラメーター値をワークフロー定義パラメーターに渡すことができます。
 
 1. パラメーター ファイルで、デプロイ時にテンプレートで使用する値を指定します。
 
@@ -1243,7 +1243,7 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ロジック アプリ テンプレートを作成する](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 06/25/2019
-ms.openlocfilehash: 6c133f99ce31d4994753aba11cee90cfc1b5afc9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 54122d784467bc090d82f4126e03ab688883ea7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552816"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364800"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -32,7 +32,7 @@ ms.locfileid: "72552816"
 - カテゴリが "管理" の場合、アラートに上記の条件を 1 つ以上指定する必要があります。 アクティビティ ログ内にイベントが作成されるたびにアクティブ化するアラートを作成することはできません。
 
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 
 Azure portal を使用して、アクティビティ ログ アラート ルールを作成および変更できます。 このエクスペリエンスは Azure アクティビティ ログに統合され、対象とする特定のイベントに対するシームレスなアラート作成が保証されます。
 
@@ -55,7 +55,7 @@ Azure portal を使用して、アクティビティ ログ アラート ルー�
 
      > [!NOTE]
      > 
-     > 選択できるのは、[Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) の追跡対象のリソース、リソース グループ、またはアクティビティ ログ シグナルのサブスクリプション全体のみになります。 
+     > 選択できるのは、[Azure Resource Manager](../../azure-resource-manager/management/overview.md) の追跡対象のリソース、リソース グループ、またはアクティビティ ログ シグナルのサブスクリプション全体のみになります。 
 
      **[アラートの対象] のサンプル ビュー**
 
@@ -76,7 +76,7 @@ Azure portal を使用して、アクティビティ ログ アラート ルー�
      - **[アラート ロジック]** :
 
        - **イベントのレベル**:イベントの重大度レベル: "_詳細_"、"_情報_"、"_警告_"、"_エラー_" または "_重大_"。
-       - **[状態]** :イベントの状態: "_開始済み_"、"_失敗_" または "_成功_"。
+       - **状態**: イベントの状態: "_開始済み_"、"_失敗_" または "_成功_"。
        - **[イベント開始者]** : "呼び出し元" とも呼ばれます。 操作を実行したユーザーの電子メール アドレスまたは Azure Active Directory 識別子。
 
        このサンプルのシグナル グラフには、アラート ロジックが適用されています。
@@ -242,7 +242,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActi
 ) を使用します。 リソースグループ内のすべてのアクティビティ ログ アラート ルールのリソースを表示するには、[az monitor activity-log alert list](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list) を使用します。
 アクティビティ ログ アラート ルールのリソースを削除するには、Azure CLI コマンド [az monitor activity-log alert delete](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete) を使用します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [アクティビティ ログの Webhook スキーマ](../../azure-monitor/platform/activity-log-alerts-webhook.md)について学習します。
 - [アクティビティ ログの概要](../../azure-monitor/platform/activity-log-alerts.md)をお読みください。

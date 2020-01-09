@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: d9b2dc7432ee1b847c8c7900a3e91daa71b5a771
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d45cf8d951eb542e248a3ff4fe714b4d2af90cc7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793209"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428723"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps でのデプロイを自動化するために Azure Resource Manager テンプレートを作成する
 
-この記事では、ロジック アプリの作成とデプロイを自動化するために、ロジック アプリ用の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)を作成する方法について説明します。 デプロイに必要なワークフロー定義やその他のリソースを含むテンプレートの構造と構文の概要については、「[Overview: Automate deployment for logic apps with Azure Resource Manager templates](logic-apps-azure-resource-manager-templates-overview.md)」 (概要: Azure Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する) を参照してください。
+この記事では、ロジック アプリの作成とデプロイを自動化するために、ロジック アプリ用の [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を作成する方法について説明します。 デプロイに必要なワークフロー定義やその他のリソースを含むテンプレートの構造と構文の概要については、「[Overview: Automate deployment for logic apps with Azure Resource Manager templates](logic-apps-azure-resource-manager-templates-overview.md)」 (概要: Azure Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する) を参照してください。
 
 Azure Logic Apps には、ロジック アプリの作成だけでなく、デプロイに使用するリソースとパラメーターの定義にも再利用できる[あらかじめ構築されたロジック アプリ Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)が用意されています。 このテンプレートを独自のビジネス シナリオで使用することも、要件に合わせてカスタマイズすることもできます。
 
@@ -24,8 +24,8 @@ Azure Logic Apps には、ロジック アプリの作成だけでなく、デ�
 
 Azure Resource Manager テンプレートの詳細については、これらのトピックを参照してください。
 
-* [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager テンプレートの構造と構文](../azure-resource-manager/templates/template-syntax.md)
+* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 * [クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](../azure-resource-manager/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>
@@ -49,10 +49,10 @@ Resource Manager テンプレートを作成するには、Azure PowerShell と 
 
 これらのサンプルでは、Azure Resource Manager テンプレート、Azure DevOps の Azure Pipelines、および Azure PowerShell を使用してロジック アプリを作成およびデプロイする方法が示されています。
 
-* [サンプル: Azure Logic Apps から Azure Service Bus キューへの接続](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [サンプル: Azure Logic Apps から Azure Storage アカウントへの接続](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [サンプル: Azure Logic Apps に対する関数アプリ アクションの設定](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
-* [サンプル: Azure Logic Apps から統合アカウントへの接続](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
+* [サンプル:Azure Logic Apps から Azure Service Bus キューへの接続](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル:Azure Logic Apps から Azure Storage アカウントへの接続](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル:Azure Logic Apps に対する関数アプリ アクションの設定](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
+* [サンプル:Azure Logic Apps から統合アカウントへの接続](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-an-integration-account-from-azure-logic-apps-and-deploy-by-using-azure-devops-pipelines/)
 
 ### <a name="install-powershell-modules"></a>PowerShell モジュールをインストールする
 
@@ -104,13 +104,13 @@ Azure Key Vault 参照 (静的のみ) を使用して抽出する場合は、次
 PS> Get-ParameterTemplate -TemplateFile $filename -KeyVault Static | Out-File $fileNameParameter
 ```
 
-| parameters | 必須 | 説明 |
+| パラメーター | 必須 | [説明] |
 |------------|----------|-------------|
 | TemplateFile | はい | テンプレート ファイルのファイル パス |
 | KeyVault | いいえ | 有効なキー コンテナー値の処理方法を記述する列挙。 既定では、 `None`です。 |
 ||||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [ロジック アプリ テンプレートのデプロイ](../logic-apps/logic-apps-deploy-azure-resource-manager-templates.md)

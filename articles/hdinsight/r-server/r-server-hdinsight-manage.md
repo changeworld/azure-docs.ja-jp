@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: e0ce8b97df6f2d6e95255d3f4dfc9f76fa08a594
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b2c16c27c0dfc0c30a99c52544cc4d2278eadfc7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123552"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647732"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight で ML Services クラスターを管理する
 
@@ -70,7 +70,7 @@ RStudio はクラスターのエッジ ノードで実行されているため�
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>手順 3:ユーザーが作成された RStudio Community バージョンを使用する
 
-[https://CLUSTERNAME.azurehdinsight.net/rstudio/](https://CLUSTERNAME.azurehdinsight.net/rstudio/ ) から RStudio にアクセスします。 クラスターの作成後、初めてログインする場合は、クラスター管理者の資格情報を入力してから、作成した SSH ユーザーの資格情報を入力します。 初めてのログインではない場合は、作成した SSH ユーザーの資格情報だけを入力します。
+[https://CLUSTERNAME.azurehdinsight.net/rstudio/](`https://CLUSTERNAME.azurehdinsight.net/rstudio/`) から RStudio にアクセスします。 クラスターの作成後、初めてログインする場合は、クラスター管理者の資格情報を入力してから、作成した SSH ユーザーの資格情報を入力します。 初めてのログインではない場合は、作成した SSH ユーザーの資格情報だけを入力します。
 
 同時に、別のブラウザー ウィンドウから元の資格情報 (既定では *sshuser*) を使用してサインインすることもできます。
 
@@ -78,7 +78,7 @@ RStudio はクラスターのエッジ ノードで実行されているため�
 
 ## <a name="connect-remotely-to-microsoft-ml-services"></a>Microsoft ML Services にリモート接続する
 
-ご自身のデスクトップで実行している ML Client のリモート インスタンスから HDInsight Spark コンピューティング コンテキストへのアクセスを設定できます。 それを行うには、デスクトップ上で RxSpark コンピューティング コンテキストを定義するときにオプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、および sshProfileScript) を指定する必要があります。例:
+ご自身のデスクトップで実行している ML Client のリモート インスタンスから HDInsight Spark コンピューティング コンテキストへのアクセスを設定できます。 それを行うには、デスクトップ上で RxSpark コンピューティング コンテキストを定義するときにオプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、および sshProfileScript) を指定する必要があります。次に例を示します。
 
     myNameNode <- "default"
     myPort <- 0
@@ -209,7 +209,7 @@ HDInsight ML Services を使うと、Hive および Parquet 内のデータに�
 
 4. **[作成]** を選択してスクリプトを実行します。 スクリプトが完了すると、R パッケージをすべてのワーカー ノードで使用できるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight 上の ML Services クラスターの運用化](r-server-operationalize.md)
 * [HDInsight 上の ML サービス クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)

@@ -4,15 +4,15 @@ description: Azure Monitor の DNS Analytics ソリューションをセット�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: a4123ed4633cbb8195639766e7b23e3ea9f14e71
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6500020d9d1c7c735206efe8ebb08fd908eee10d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899087"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403244"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -184,6 +184,6 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
 フィードバックを提供するには、[Log Analytics UserVoice ページ](https://aka.ms/dnsanalyticsuservoice)にアクセスして、使用している DNS Analytics 機能のアイデアを投稿してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ログをクエリ](../log-query/log-query-overview.md)して、詳細な DNS ログ レコードを確認します。

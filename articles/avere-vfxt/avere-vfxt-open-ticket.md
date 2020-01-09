@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 068747fd51779bd8a20636355a9ce2b032f6151d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8a371f902703287ed3105ed53a57d6341b9528d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255364"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415106"
 ---
 # <a name="get-help-with-your-system"></a>お使いのシステムでサポートを受ける
 
@@ -19,13 +19,13 @@ ms.locfileid: "72255364"
 
 * **Avere vFXT の問題** - Azure portal を使用し、Avere vFXT のサポート チケットを登録します。詳細は[こちらに](#open-a-support-ticket-for-your-avere-vfxt)あります。
 * **クォータ** - クォータ関連の問題があるとき、[クォータ増加を要求](#request-a-quota-increase)します。
-* **ドキュメントとサンプル** - このドキュメントまたはサンプルに問題が見つかった場合、問題があるページの一番下までスクロールし、 **[フィードバック]** セクションを利用して既存の問題を検索し、必要であれば、新しい問題を登録します。  
+* **ドキュメントとサンプル** - このドキュメントまたはサンプルに問題が見つかった場合、問題があるページの一番下までスクロールし、 **[フィードバック]** セクションを利用して既存の問題を検索し、必要であれば、新しい問題を登録します。
 
 ## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>Avere vFXT のサポート チケットを開く
 
-Avere vFXT のデプロイ中または使用中に問題が発生した場合、Azure portal からサポートを要請します。  
+Avere vFXT のデプロイ中または使用中に問題が発生した場合、Azure portal からサポートを要請します。
 
-以下の手順に従い、お使いのクラスターからのリソースでサポート チケットにタグを付けます。 チケットにタグを付けることで、適切なサポート リソースにチケットを送ることができます。 
+以下の手順に従い、お使いのクラスターからのリソースでサポート チケットにタグを付けます。 チケットにタグを付けることで、適切なサポート リソースにチケットを送ることができます。
 
 1. [https://portal.azure.com](https://portal.azure.com) から **[リソース グループ]** を選択します
 
@@ -43,7 +43,7 @@ Avere vFXT のデプロイ中または使用中に問題が発生した場合、
 
     ![Azure portal の新しいサポート要求画面のスクリーンショット。ヘッダーに "基本" が選択されており、"サービス" 項目が赤で囲まれています。 "すべてのサービス" ボタンが選択されており、ドロップダウン メニュー フィールドの値が "Avere vFXT" になっています。](media/avere-vfxt-ticket-service.png)
 
-1. ページ 2 で問題の種類と分類を選択します。発生した問題に最も近いものを選択してください。 簡単なタイトルと説明を追加します。問題が発生した日時を含めてください。 
+1. ページ 2 で問題の種類と分類を選択します。発生した問題に最も近いものを選択してください。 簡単なタイトルと説明を追加します。問題が発生した日時を含めてください。
 
    ![新しいサポート要求画面のスクリーンショット。ヘッダーに "問題" が選択されていますが、この領域に含まれているさまざまなフィールドに入力する必要があります。](media/avere-vfxt-ticket-problem.png)
 

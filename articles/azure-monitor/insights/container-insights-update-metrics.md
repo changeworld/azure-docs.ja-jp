@@ -1,18 +1,14 @@
 ---
 title: メトリックのためのコンテナーの Azure Monitor の更新方法 | Microsoft Docs
 description: この記事では、集計したメトリックの探索とアラートをサポートするカスタム メトリック機能を有効にするために、コンテナーの Azure Monitor を更新する方法について説明します。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/11/2019
-ms.openlocfilehash: 5a43d7e23c9d6550e8985599786ff968050f19c1
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0a2674df4a05d856b35dd51dbb33af0f407db29f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707482"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403237"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>メトリックを有効にするためのコンテナーの Azure Monitor の更新方法
 
@@ -24,7 +20,7 @@ ms.locfileid: "74707482"
 
 この機能の一部として、次のメトリックが有効にされています。
 
-| メトリック名前空間 | メトリック | 説明 |
+| メトリック名前空間 | メトリック | [説明] |
 |------------------|--------|-------------|
 | insights.container/nodes | cpuUsageMillicores、cpuUsagePercentage、memoryRssBytes、memoryRssPercentage、memoryWorkingSetBytes、memoryWorkingSetPercentage、nodesCount | これらは、*ノード* メトリックであり、*ホスト*をディメンションとして含みます。また、<br> *ホスト* ディメンションの値として、ノードの名前も含みます。 |
 | insights.container/pods | podCount | これらは、*ポッド* メトリックであり、ControllerName、Kubernetes 名前空間、名前、フェーズをディメンションとして含みます。 |

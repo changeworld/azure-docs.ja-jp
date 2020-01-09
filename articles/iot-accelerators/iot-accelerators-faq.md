@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: b448099dab0e79dca38310396896be46cf2e0ff6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7a2b167f90b4ec79f5fa515ded1c676ca7085e72
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826265"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647715"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -82,7 +82,7 @@ Azure サブスクリプションが確かにある場合は、サブスクリ�
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>サブスクリプションでプロビジョニングできる IoT Hub インスタンスはいくつですか?
 
-既定では、[サブスクリプションごとに 10 個の IoT Hub](../azure-subscription-service-limits.md#iot-hub-limits) をプロビジョニングできます。 この上限は、[Azure サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を作成して引き上げることができます。 このため、ソリューション アクセラレータごとに新しい IoT ハブをプロビジョニングするため、特定のサブスクリプションでプロビジョニングできるソリューション アクセラレータの数は最大 10 個になります。
+既定では、[サブスクリプションごとに 10 個の IoT Hub](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits) をプロビジョニングできます。 この上限は、[Azure サポート チケット](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)を作成して引き上げることができます。 このため、ソリューション アクセラレータごとに新しい IoT ハブをプロビジョニングするため、特定のサブスクリプションでプロビジョニングできるソリューション アクセラレータの数は最大 10 個になります。
 
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>サブスクリプションには何個の Azure Cosmos DB インスタンスをプロビジョニングできますか?
 
@@ -103,7 +103,7 @@ Azure サブスクリプションが確かにある場合は、サブスクリ�
 
 [Azure AD テナントの削除方法](https://blogs.msdn.com/b/ericgolpe/archive/2015/04/30/walkthrough-of-deleting-an-azure-ad-tenant.aspx)に関する Eric Golpe のブログ記事を参照してください。
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 IoT ソリューション アクセラレータの他の機能についても学習できます。
 

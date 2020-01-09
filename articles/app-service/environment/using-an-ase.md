@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e5c127673e4b0cb6c68aaf0a9790abbf78758670
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 806d6ddb09cbaf14c9c488e3d3b39909c22ef284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374932"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Environment の使用 #
 
@@ -21,10 +21,10 @@ Azure App Service Environment は、ユーザーの Azure 仮想ネットワー�
 - **フロントエンド:** App Service Environment (ASE) で HTTP または HTTPS が終了する場所です。
 - **ワーカー**:アプリのホストとなるリソースです。
 - **データベース**:環境を定義する情報が格納されます。
-- **ストレージ**:ユーザーによって発行されたアプリのホストとして使用されます。
+- **ストレージ**: ユーザーによって発行されたアプリのホストとして使用されます。
 
 > [!NOTE]
-> App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 ASEv1 では、使用するリソースを事前に管理する必要があります。 ASEv1 の構成と管理の方法については、「[App Service Environment v1 の構成][ConfigureASEv1]」を参照してください。 この記事の残りの部分では、ASEv2 について説明します。
+> App Service Environment には 2 つのバージョンがあります。ASEv1 と ASEv2 です。 ASEv1 では、使用するリソースを事前に管理する必要があります。 ASEv1 の構成と管理の方法については、「[App Service Environment v1 の構成][ConfigureASEv1]」を参照してください。 この記事の残りの部分では、ASEv2 について説明します。
 >
 >
 
@@ -172,7 +172,7 @@ ASE を削除するには、次の手順に従います。
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md

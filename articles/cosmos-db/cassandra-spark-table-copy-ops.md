@@ -1,5 +1,5 @@
 ---
-title: Spark からの Azure Cosmos DB Cassandra API でのテーブル コピー操作。
+title: Spark からの Azure Cosmos DB Cassandra API でのテーブル コピー操作
 description: この記事では、Azure Cosmos DB Cassandra API でのテーブル間のデータ コピー方法について説明します
 author: kanshiG
 ms.author: govindk
@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c98582d5fe11b87d2ba88d5fb247a87cc905e1dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32714e216e59565c787f92bf1e8da62957bc7233
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60895183"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445621"
 ---
 # <a name="table-copy-operations-on-azure-cosmos-db-cassandra-api-from-spark"></a>Spark からの Azure Cosmos DB Cassandra API でのテーブル コピー操作
 
@@ -144,7 +144,7 @@ readBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: str
 newBooksDF: org.apache.spark.sql.DataFrame = [book_id: string, book_author: string ... 3 more fields]
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
  * Java アプリケーションを使用した[ Cassandra API アカウント、データベースおよびテーブルの作成](create-cassandra-api-account-java.md)の開始
  * Java アプリケーションを使用して、[Cassandra API テーブルにサンプル データを読み込みます](cassandra-api-load-data.md)。

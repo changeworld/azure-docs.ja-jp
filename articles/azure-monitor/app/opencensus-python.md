@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83b4e1e10af8e398f6671f6b2561485bfdb6b7f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929004"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432484"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Python アプリケーション用に Azure Monitor をセットアップする (プレビュー)
 
@@ -26,7 +26,7 @@ Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Azure Monitor で Application Insights のリソースを作成する
 
@@ -38,7 +38,7 @@ Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、
 
 1. 構成ボックスが表示されます。 下の表を使用して、入力フィールドに入力します。
 
-   | Setting        | 値           | 説明  |
+   | 設定        | 値           | [説明]  |
    | ------------- |:-------------|:-----|
    | **Name**      | グローバルに一意の値 | 監視しているアプリを識別する名前。 |
    | **リソース グループ**     | myResourceGroup      | Application Insights データをホストする新しいリソース グループの名前 |
@@ -353,7 +353,7 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
     logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
     ```
 
-7. トレース コンテキスト データを使用してログを強化する方法の詳細については、OpenCensus Python [ログの統合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation)に関するページを参照してください。
+7. トレース コンテキスト データを使用してログを強化する方法の詳細については、OpenCensus Python [ログの統合](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation)に関するページを参照してください。
 
 ## <a name="view-your-data-with-queries"></a>クエリを使用してデータを表示する
 
@@ -378,12 +378,12 @@ SDK では 3 つの Azure Monitor エクスポーターを使用して、さま�
 * [MySQL の統合](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-mysql)
 * [PostgreSQL](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-postgresql)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [アプリケーション マップ](./../../azure-monitor/app/app-map.md)
 * [エンドツーエンドのパフォーマンスの監視](./../../azure-monitor/learn/tutorial-performance.md)
 
-### <a name="alerts"></a>アラート
+### <a name="alerts"></a>警告
 
 * [可用性テスト](../../azure-monitor/app/monitor-web-app-availability.md): サイトが Web で表示できることを確認するためのテストを作成します。
 * [スマート診断](../../azure-monitor/app/proactive-diagnostics.md): これらのテストは自動的に実行されます。セットアップするために何かをする必要はありません。 アプリの要求が失敗する割合が異常な場合に通知します。

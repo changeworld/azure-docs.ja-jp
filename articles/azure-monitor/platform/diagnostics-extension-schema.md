@@ -4,15 +4,15 @@ description: Azure Virtual Machines、VM Scale Sets、Service Fabric、および
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 09/04/2019
-ms.openlocfilehash: fe07c93ada2e8635d0f64caf8451ccdf530f6a22
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fe1c1018768c81248640521ae278bfb571934601
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552139"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395122"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure Diagnostics 拡張機能の構成スキーマのバージョンと履歴
 このページでは、Microsoft Azure SDK に付属する Azure Diagnostics 拡張機能のスキーマのバージョン一覧を示します。  

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 62a010480dc83561a11c6ee99c76f35b29e808c1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 8c703cc2fd93900e13d39021992bc11247881b47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932110"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394699"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Azure Monitor ログ データを Power BI にインポートする
 
@@ -79,6 +79,6 @@ Power BI で作成されたデータセットには、前に Power BI Desktop �
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ログ検索](../log-query/log-query-overview.md) について学習し、Power BI にエクスポートできるクエリを作成します。
 * [Power BI](https://powerbi.microsoft.com) について詳しく学習し、Azure Monitor ログのエクスポートに基づいて視覚エフェクトを作成します。

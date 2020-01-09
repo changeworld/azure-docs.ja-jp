@@ -3,12 +3,12 @@ title: AKS エンジン用 Azure Policy の概要
 description: Azure Policy に Gatekeeper v3 の CustomResourceDefinitions と Open Policy Agent と AKS エンジンを使用してクラスターを管理する方法について説明します。
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267250"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436434"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>AKS エンジン用 Azure Policy の概要
 
@@ -33,7 +33,7 @@ Azure 上のセルフマネージド Kubernetes クラスターで AKS エンジ
 
 Azure Policy アドオンをインストールするか、このサービスの機能のいずれかを有効にする前に、お客様のサブスクリプションで **Microsoft.PolicyInsights** リソース プロバイダーを有効にし、クラスター サービス プリンシパルのロール割り当てを作成する必要があります。 
 
-1. リソース プロバイダーを有効にするには、[リソース プロバイダーと種類](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)に関する記事の手順を実行するか、Azure CLI または Azure PowerShell コマンドを実行します。
+1. リソース プロバイダーを有効にするには、[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)に関する記事の手順を実行するか、Azure CLI または Azure PowerShell コマンドを実行します。
 
    - Azure CLI
 
@@ -184,7 +184,7 @@ Azure portal を使用して AKS エンジン クラスターを管理する組�
 > [!IMPORTANT]
 > **Kubernetes** カテゴリの組み込みポリシーは、AKS エンジンでのみ使用できます。
 
-## <a name="logging"></a>ログの記録
+## <a name="logging"></a>ログ記録
 
 ### <a name="azure-policy-add-on-logs"></a>Azure Policy アドオンのログ
 
@@ -276,7 +276,7 @@ Kubernetes の Azure Policy アドオンを使うと、制限されたクラス�
 - ポリシー評価でのエージェントのインストール中に Azure Policy アドオンによって発生した例外/エラー
 - Azure Policy アドオンによってインストールされていない Gatekeeper ポリシーの数
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Policy のサンプル](../samples/index.md)を確認します。
 - [ポリシー定義の構造](definition-structure.md)を確認します。

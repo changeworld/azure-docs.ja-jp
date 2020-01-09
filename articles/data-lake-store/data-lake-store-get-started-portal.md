@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: e5a3df82fae9d81a870d3dba929bc7e4cd4123d2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904692"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438755"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Storage Gen1 の使用を開始する
 
@@ -42,7 +42,7 @@ Azure portal を使用して、Data Lake Storage Gen1 アカウントを作成�
 
    * **名前**。 Data Lake Storage Gen1 アカウント用に一意の名前を入力します。
    * **サブスクリプション**。 新しい Data Lake Storage Gen1 アカウントを作成するサブスクリプションを選択します。
-   * **リソース グループ**。 既存のリソース グループを選択するか、 **[新規作成]** をクリックしてリソース グループを作成します。 リソース グループは、1 つのアプリケーションの関連リソースを保持するコンテナーです。 詳細については、[Azure のリソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)に関する記事をご覧ください。
+   * **リソース グループ**。 既存のリソース グループを選択するか、 **[新規作成]** をクリックしてリソース グループを作成します。 リソース グループは、1 つのアプリケーションの関連リソースを保持するコンテナーです。 詳細については、[Azure のリソース グループ](../azure-resource-manager/management/overview.md#resource-groups)に関する記事をご覧ください。
    * **[場所]** :Data Lake Storage Gen1 アカウントを作成する場所を選択します。
    * **暗号化設定**。 次の 3 つのオプションがあります。
 
@@ -123,7 +123,7 @@ Data Lake Storage Gen1 アカウントを削除するには、Data Lake Storage 
 
 ![Data Lake Storage Gen1 アカウントの削除](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Data Lake アカウントの削除")
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Data Lake Storage Gen1 を使用してビッグ データの要件に対応する](data-lake-store-data-scenarios.md)
 * [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)

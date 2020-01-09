@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: f7859dbef486d4afa825b289f3991464dacf702c
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 396652e3f8a0a8d9e18effb94a48a362054dde96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665646"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403141"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -37,17 +37,25 @@ Network Performance Monitor では、次の 3 つの広範な機能が提供さ�
  
 ## <a name="supported-regions"></a>サポートされているリージョン
 NPM は、次のリージョンのいずれかでホストされているワークスペースから、世界の任意の部分のネットワークまたはアプリケーション間の接続を監視できます。
+* 北ヨーロッパ
 * 西ヨーロッパ
+* フランス中部
+
 * 米国中西部
 * 米国中北部
+* 米国中南部
+* 米国中部
 * East US
 * 米国東部 2
+* 米国西部 2
 * 東日本
 * 東南アジア
 * オーストラリア南東部
 * オーストラリア中部
 * オーストラリア東部
 * 英国南部
+* 東アジア
+* 韓国中部
 * インド中部
 * 米国政府バージニア州
 * 中国東部 2
@@ -246,7 +254,7 @@ Network Performance Monitor では、送信元と宛先のエンドポイント�
 
 すべてのデータは、Network Performance Monitor ダッシュボードで視覚的に表示されます。さらに、[ログ クエリ](../log-query/log-query-overview.md)では、ドリルダウン ページもネイティブで使用できます。 リポジトリのデータの対話型分析を実行したり、さまざまなソースからのデータを関連付けたりすることができます。 カスタム アラートを作成し、データを表示して、Excel、Power BI、または共有可能なリンクにデータをエクスポートすることもできます。 ダッシュボードの **[共通クエリ]** 領域には、独自のクエリとレポートを作成するための出発点として利用できる便利なクエリがいくつかあります。 
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 
 Network Performance Monitor は、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) のアラート機能を使用します。
 
@@ -278,5 +286,5 @@ Azure portal を介してアラートを作成する NPM ユーザーの場合:
 
 * **コーホートへの参加:** Microsoft が実施しているコーホートにぜひご参加ください。 その一環として、新機能にいち早く触れることができます。ネットワーク パフォーマンス モニターの機能向上にぜひご協力ください。 参加にご興味がある方は、こちらの[簡単なアンケート](https://aka.ms/npmcohort)にご回答ください。 
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 [パフォーマンスの監視](network-performance-monitor-performance-monitor.md)、[サービス接続の監視](network-performance-monitor-performance-monitor.md)、および [ExpressRoute の監視](network-performance-monitor-expressroute.md)の詳細情報を確認します。 

@@ -3,17 +3,17 @@ title: Azure IoT Central エクスプローラーを使用してデバイスの�
 description: IoT Central エクスプローラー CLI を使用して、デバイスのメッセージを監視し、デバイス ツインの変更を観察します。
 author: viv-liu
 ms.author: viviali
-ms.date: 09/27/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 2b1c4c64fc02df67f38e36194072efd5db3b8e38
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 90cf83f86acb647b8194619bc1b572e5147cc0cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434949"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli-preview-features"></a>Azure CLI を使用してデバイスの接続性を監視する (プレビュー機能)
 
@@ -26,7 +26,7 @@ Azure CLI IoT 拡張機能を使用して、デバイスから IoT Central に�
 ## <a name="prerequisites"></a>前提条件
 
 + Azure CLI がインストールされており、バージョンが 2.0.7 以降であること。 `az --version` を実行し、Azure CLI のバージョンを確認してください。 インストールと更新の方法は [Azure CLI ドキュメント](https://docs.microsoft.com/cli/azure/install-azure-cli)でご確認いただけます。
-+ Azure の職場または学校のアカウント。IoT Central アプリケーションにユーザーとして追加されます。
++ Azure の職場または学校アカウント。IoT Central アプリケーションにユーザーとして追加されます。
 
 ## <a name="install-the-iot-central-extension"></a>IoT Central 拡張機能をインストールする
 
@@ -36,7 +36,7 @@ Azure CLI IoT 拡張機能を使用して、デバイスから IoT Central に�
 az extension add --name azure-cli-iot-ext
 ```
 
-次を実行してスクリプトのバージョンを確認します。 
+次を実行して拡張機能のバージョンを確認します。 
 ```cmd/sh
 az --version
 ```
@@ -58,7 +58,7 @@ az login
 ```
 
 ### <a name="get-the-application-id-of-your-iot-central-app"></a>IoT Central アプリのアプリケーション ID を取得する
-**[Administration/Application Settings]\(管理/アプリケーション設定\)** で **アプリケーション ID** をコピーします。 これは後の手順で使用します。
+**[Administration/Application Settings]\(管理/アプリケーション設定\)** で**アプリケーション ID** をコピーします。 これは後の手順で使用します。
 
 ### <a name="monitor-messages"></a>メッセージの監視
 デバイスから IoT Central アプリに送信されているメッセージを監視します。 これにはすべてのヘッダーと注釈が含まれます。
@@ -74,6 +74,6 @@ az iot central app monitor-events --app-id <app-id> --properties all
 az iot central device-twin show --app-id <app-id> --device-id <device-id>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで IoT Central エクスプローラーの使用方法についての学習が終わりました。推奨される次の手順は、[IoT Central でのデバイスの管理](howto-manage-devices.md)について確認することです。

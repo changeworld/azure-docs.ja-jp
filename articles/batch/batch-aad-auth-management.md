@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: lahugh
-ms.openlocfilehash: 3f7ba22fa8e2a8709fc37a891b3da64b6d83e654
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2fd5867d910d29533eb17a4660039cc7b9610290
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095644"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449840"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch 管理ソリューションの認証に Active Directory を使用する
 
@@ -122,7 +122,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
 
 資格情報を入力すると、サンプル アプリケーションは認証された要求を Batch 管理サービスに発行できるようになります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [AccountManagement サンプル アプリケーション][acct_mgmt_sample]の実行に関する詳細については、「[.NET 用の Batch 管理クライアント ライブラリを使用した Batch アカウントとクォータの管理](batch-management-dotnet.md)」を参照してください。
 
@@ -137,4 +137,4 @@ Azure AD を使用して Batch 管理アプリケーションを認証するに�
 [aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Azure Active Directory とアプリケーションの統合"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
 [azure_portal]: https://portal.azure.com
-[resman_overview]: ../azure-resource-manager/resource-group-overview.md
+[resman_overview]: ../azure-resource-manager/management/overview.md

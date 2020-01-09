@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63e09bacd1ce70f05f04798f092d3eb4b3e36ab5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555245"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401818"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>管理ソリューションへの Azure Automation リソースの追加 (プレビュー)
 > [!NOTE]
@@ -31,7 +31,7 @@ ms.locfileid: "72555245"
 
 - [管理ソリューションの作成]( solutions-creating.md)方法
 - [ソリューション ファイル]( solutions-solution-file.md)の構造
-- [Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)方法
+- [Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)方法
 
 ## <a name="automation-account"></a>Automation アカウント
 Azure Automation のリソースはすべて、[Automation アカウント](../../automation/automation-security-overview.md#automation-account-overview) に含まれています。  [Log Analytics ワークスペースと Automation アカウント]( solutions.md#log-analytics-workspace-and-automation-account)の説明にあるように、Automation アカウントは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
@@ -69,7 +69,7 @@ Azure Automation のリソースはすべて、[Automation アカウント](../.
 
 次の表では、Runbook のプロパティについて説明します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | runbookType |Runbook のタイプを指定します。 <br><br> Script - PowerShell スクリプト <br>PowerShell - PowerShell ワークフロー <br> GraphPowerShell - グラフィカル PowerShell スクリプト Runbook <br> GraphPowerShellWorkflow - グラフィカル PowerShell ワークフロー Runbook |
 | logProgress |Runbook の[進捗状況レコード](../../automation/automation-runbook-output-and-messages.md)を生成するかどうかを指定します。 |
@@ -105,7 +105,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、Automation ジョブのプロパティについて説明します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | runbook |起動する Runbook の名前を指定する単一の name エンティティです。 |
 | parameters |Runbook に必要な各パラメーター値のエンティティです。 |
@@ -136,14 +136,14 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、証明書リソースのプロパティについて説明します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | base64Value |証明書の Base 64 値です。 |
 | thumbprint |証明書の拇印です。 |
 
 
 
-## <a name="credentials"></a>資格情報
+## <a name="credentials"></a>[資格情報]
 [Azure Automation 資格情報](../../automation/automation-credentials.md)のタイプは **Microsoft.Automation/automationAccounts/credentials** であり、次のような構造をしています。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。 
 
 
@@ -163,10 +163,10 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、資格情報リソースのプロパティについて説明します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | userName |資格情報のユーザー名です。 |
-| password |資格情報のパスワードです。 |
+| パスワード |資格情報のパスワードです。 |
 
 
 ## <a name="schedules"></a>スケジュール
@@ -191,7 +191,7 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、スケジュール リソースのプロパティについて説明します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | description |スケジュールの説明です (省略可能)。 |
 | startTime |スケジュールの開始時刻を DateTime オブジェクトとして指定します。 有効な DateTime に変更可能な文字列を指定することもできます。 |
@@ -234,14 +234,14 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、ジョブ スケジュールのプロパティについて説明します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | schedule name |スケジュールの名前を指定する単一の **name** エンティティです。 |
 | runbook name  |Runbook の名前を指定する単一の **name** エンティティです。  |
 
 
 
-## <a name="variables"></a>変数
+## <a name="variables"></a>変数:
 [Azure Automation 変数](../../automation/automation-variables.md)のタイプは **Microsoft.Automation/automationAccounts/variables** であり、次のような構造をしています。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。
 
     {
@@ -261,11 +261,11 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 次の表では、変数リソースのプロパティについて説明します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | description | 変数の説明です (省略可能)。 |
 | isEncrypted | 変数を暗号化するかどうかを指定します。 |
-| type | 現在、このプロパティにはどのような効果もありません。  変数のデータ型は、初期値によって決定されます。 |
+| 型 | 現在、このプロパティにはどのような効果もありません。  変数のデータ型は、初期値によって決定されます。 |
 | value | 変数の値です。 |
 
 > [!NOTE]
@@ -273,12 +273,12 @@ Azure Automation で Runbook が起動する際、Automation ジョブが作成�
 
 変数の初期値を設定する場合、正しいデータ型として構成する必要があります。  次の表では、使用可能なさまざまなデータ型とその構文を示します。  JSON の値は常に引用符で囲まれ、特殊文字は引用符で囲まれているものと想定されていることに注意してください。  たとえば、文字列値は文字列を囲む (エスケープ文字 (\\) を使った) 引用符で指定され、数値は 1 組の引用符で指定されます。
 
-| データ型 | 説明 | 例 | 結果 |
+| データ型 | [説明] | 例 | 結果 |
 |:--|:--|:--|:--|
 | string   | 値を 2 組の引用符で囲みます。  | "\"Hello world\"" | "Hello world" |
 | numeric  | 数値を 1 組の引用符で囲みます。| "64" | 64 |
 | boolean  | 引用符で囲まれた **true** または **false**。  この値は小文字にする必要があることに注意してください。 | "true" | true |
-| datetime | シリアル化された日付の値。<br>PowerShell の ConvertTo-Json コマンドレットを使って、特定の日付に対するこの値を生成できます。<br>例: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| DATETIME | シリアル化された日付の値。<br>PowerShell の ConvertTo-Json コマンドレットを使って、特定の日付に対するこの値を生成できます。<br>例: get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>モジュール
 Runbook で使用する[グローバル モジュール](../../automation/automation-integration-modules.md)は Automation アカウントで常に利用可能であるため、管理ソリューションで定義する必要はありません。  ただし、Runbook で使用する他のモジュールのリソースを含める必要があります。
@@ -301,7 +301,7 @@ Runbook で使用する[グローバル モジュール](../../automation/automa
 
 次の表では、モジュール リソースのプロパティについて説明します。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | contentLink |モジュールのコンテンツを指定します。 <br><br>uri - モジュールのコンテンツへの URI です。  PowerShell Runbook およびスクリプト Runbook の場合は .ps1 ファイル、Graph Runbook の場合はエクスポート済みのグラフィカル Runbook ファイルになります。  <br> version - 追跡対象のモジュールのバージョンです。 |
 
@@ -643,5 +643,5 @@ Runbook で使用する[グローバル モジュール](../../automation/automa
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ビューをソリューションに追加]( solutions-resources-views.md)して、収集したデータを視覚化します。

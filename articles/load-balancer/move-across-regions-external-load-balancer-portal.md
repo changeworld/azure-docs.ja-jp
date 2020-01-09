@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9358d99c66b3b8e3d6988b1881e51c11848ad97b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5cd5ce2635ce05c4d5962f12ddc3945342897ecd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300629"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638529"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して外部ロード バランサーを別のリージョンに移動する
 
@@ -32,7 +32,7 @@ ms.locfileid: "71300629"
 
 - Azure サブスクリプションで、ターゲット リージョンに外部ロード バランサーを作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
 
-- 自分のサブスクリプションに、ロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。 「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- 自分のサブスクリプションに、ロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。 「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
 
 ## <a name="prepare-and-move"></a>準備と移動
 次の手順では、Resource Manager テンプレートを使って外部ロード バランサーの移動を準備し、Azure portal を使用して外部ロード バランサーの構成をターゲット リージョンに移動する方法を示します。 まず、外部ロード バランサーのパブリック IP 構成をエクスポートする必要があります。
@@ -409,7 +409,7 @@ ms.locfileid: "71300629"
 
 変更をコミットし、パブリック IP と外部ロード バランサーの移動を完了するには、ソースのパブリック IP と外部ロード バランサーまたはリソース グループを削除します。 そうするには、ポータルのダッシュボードでそのリソース グループを選択し、各ページの上部にある **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure 外部ロード バランサーをあるリージョンから別のリージョンに移動し、ソース リソースをクリーンアップしました。 リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 

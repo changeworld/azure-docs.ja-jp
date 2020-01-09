@@ -4,16 +4,16 @@ description: Azure Monitor PowerShell のサンプル
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/14/2017
 ms.custom: mvc
-ms.openlocfilehash: e971b0181c4dedc3b1415451c3ba4e360fcae717
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d4d77e15e24f738e946d083881e93a34200eb2d7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932097"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394359"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell のサンプル
 

@@ -3,18 +3,18 @@ title: Socket.io を使用する Node.js アプリケーション - Azure
 description: Azure でホストされる Node.js アプリケーションで Socket.IO を使用する方法を説明します。
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: bbeaacd4c7028905e279dd5dc421414f4eafae54
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.author: tagore
+ms.openlocfilehash: 0b515c630d8a3539cdab1df64b1925e9fcaf206e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306760"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360771"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Azure Cloud Services で Socket.IO を使用する Node.js チャット アプリケーションを構築する
 
@@ -116,7 +116,7 @@ Azure エミュレーターでアプリケーションをテストする前に�
 4. アプリケーションのテストが終了したら、次のコマンドを発行してエミュレーターを停止します。
    
        PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
-5. Azure にアプリケーションをデプロイするには、 **Publish-AzureServiceProject** コマンドレットを使用します。 例:
+5. Azure にアプリケーションをデプロイするには、 **Publish-AzureServiceProject** コマンドレットを使用します。 次に例を示します。
    
        PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
    
@@ -141,7 +141,7 @@ Azure エミュレーターでアプリケーションをテストする前に�
 > 
 > 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Cloud Services でホストされる基本的なチャット アプリケーションを作成する方法を説明しました。 Azure Web サイトでこのアプリケーションをホストする方法については、「[Azure Websites で Socket.IO を使用する Node.js チャット アプリケーションを構築する][chatwebsite]」を参照してください。
 
 詳細については、 [Node.js デベロッパー センター](https://docs.microsoft.com/azure/javascript/)を参照してください。
@@ -166,5 +166,8 @@ Azure エミュレーターでアプリケーションをテストする前に�
 [chat-contents]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-5.png
 [The-output-of-the-npm-install-command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-7.png
 [The output of the Publish-AzureService command]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-9.png
+
+
+
 
 

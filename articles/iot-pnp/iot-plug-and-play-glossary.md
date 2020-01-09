@@ -3,18 +3,18 @@ title: 用語集 - IoT プラグ アンド プレイ プレビュー | Microsoft
 description: 概念 - IoT プラグ アンド プレイ プレビューに関連する一般用語の用語集。
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 10/10/2019
+ms.date: 12/23/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 22b2cb8caa815b2ce8343a060a5f12133b763b83
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890339"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531203"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT プラグ アンド プレイ プレビューの用語集
 
@@ -79,7 +79,7 @@ IoT プラグ アンド プレイ デバイスのクライアント アプリケ
 
 [Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)には、[デバイス認定](#device-certification)テストに合格した [IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)が一覧表示されています。 カタログにある IoT プラグ アンド プレイ デバイスの[デバイス機能モデル](#device-capability-model)は、パブリック モデル リポジトリで公開されます。
 
-## <a name="commands"></a>command
+## <a name="commands"></a>コマンド
 
 [インターフェイス](#interface)で定義されたコマンドは、[デジタル ツイン](#digital-twin)で実行できるメソッドを表します。 たとえば、デバイスを再起動するコマンドがあります。
 
@@ -171,7 +171,7 @@ IoT プラグ アンド プレイ デバイスは、データの収集や他の�
 
 モデル リポジトリの管理と対話のための API です。 たとえば、この API を使用すると、[デバイス機能モデル](#device-capability-model)を追加したり、機能モデルを検索したりできます。
 
-## <a name="properties"></a>properties
+## <a name="properties"></a>Properties
 
 プロパティは、デジタル ツインの何らかの状態を表す[インターフェイス](#interface)で定義されたデータ フィールドです。 プロパティは、読み取り専用または書き込み可能として宣言できます。 シリアル番号などの読み取り専用プロパティは、[IoT プラグ アンド プレイ デバイス](#iot-plug-and-play-device)自体で実行されるコードによって設定されます。  アラームのしきい値などの書き込み可能なプロパティは、通常、クラウドベースの IoT ソリューションから設定されます。
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f693da11b5b850d8ebca637b426ac0748a4127ef
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6ca8dd08f3b6c1a7bc9a0b8c7ba853adb46fd30c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232421"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355976"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -103,11 +103,11 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 
 API | 既定のデータ形式 | その他の形式
 --------|---------------------|--------------
-/instance | json | テキスト
+/instance | json | text
 /scheduledevents | json | なし
 /attested | json | なし
 
-既定以外の応答形式にアクセスするには、要求のクエリ文字列パラメーターとして要求の形式を指定します。 例:
+既定以外の応答形式にアクセスするには、要求のクエリ文字列パラメーターとして要求の形式を指定します。 次に例を示します。
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -116,14 +116,14 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > [!NOTE]
 > リーフ ノードでは `format=json` は機能しません。 これらのクエリでは、既定の形式が json の場合は、`format=text` を明示的に指定する必要があります。
 
-### <a name="security"></a>セキュリティ
+### <a name="security"></a>Security
 
 Instance Metadata Service エンドポイントには、実行中の仮想マシン インスタンスからのみ、ルーティング不可能な IP アドレスでアクセスできます。 さらに、`X-Forwarded-For` ヘッダーがあるすべての要求は、サービスによって拒否されます。
 また、実際の要求が意図しないリダイレクトの一部として行われたのではなく、直接意図されたものであったことを明確に示すために、要求に `Metadata: true`ヘッダーを含める必要があります。
 
-### <a name="error"></a>Error
+### <a name="error"></a>エラー
 
-見つからないデータ要素または無効な形式の要求がある場合、Instance Metadata Service は標準 HTTP エラーを返します。 For example:
+見つからないデータ要素または無効な形式の要求がある場合、Instance Metadata Service は標準 HTTP エラーを返します。 次に例を示します。
 
 HTTP 状態コード | 理由
 ----------------|-------
@@ -341,7 +341,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 #### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>次の API は、メタデータ エンドポイントを介して使用できます。
 
-Data | Description | 導入されたバージョン
+Data | [説明] | 導入されたバージョン
 -----|-------------|-----------------------
 attested | 「[構成証明済みデータ](#attested-data)」をご覧ください | 2018-10-01
 identity | Azure リソースのマネージド ID。 「[アクセス トークンの取得](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md)」を参照してください | 2018-02-01
@@ -354,7 +354,7 @@ scheduledevents | [スケジュールされたイベント](scheduled-events.md)
 > [!NOTE]
 > 次のカテゴリは、メタデータ エンドポイントを通じて、インスタンス/コンピューティングを介してアクセスされます。
 
-Data | Description | 導入されたバージョン
+Data | [説明] | 導入されたバージョン
 -----|-------------|-----------------------
 azEnvironment | VM が実行されている Azure 環境 | 2018-10-01
 customData | 「[カスタム データ](#custom-data)」を参照してください | 2019-02-01
@@ -369,7 +369,7 @@ platformFaultDomain | VM を実行中の[障害ドメイン](manage-availability
 provider | VM のプロバイダー | 2018-10-01
 publicKeys | VM とパスに割り当てられた[公開キーのコレクション](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
 publisher | VM イメージの発行元 | 2017-04-02
-resourceGroupName | お使いの仮想マシンの[リソース グループ](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
+resourceGroupName | お使いの仮想マシンの[リソース グループ](../../azure-resource-manager/management/overview.md) | 2017-08-01
 resourceId | リソースの[完全修飾](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID | 2019-03-11
 sku | VM イメージの特定の SKU | 2017-04-02
 subscriptionId | 仮想マシンの Azure サブスクリプション | 2017-08-01
@@ -386,7 +386,7 @@ vmSize | [VM サイズ](sizes.md) | 2017-04-02
 > [!NOTE]
 > 次のカテゴリは、メタデータ エンドポイント経由で、インスタンス/ネットワーク/インターフェイスを介してアクセスされます。
 
-Data | Description | 導入されたバージョン
+Data | [説明] | 導入されたバージョン
 -----|-------------|-----------------------
 ipv4/privateIpAddress | VM のローカル IPv4 アドレス | 2017-04-02
 ipv4/publicIpAddress | VM のパブリック IPv4 アドレス | 2017-04-02
@@ -640,7 +640,7 @@ Verification successful
 }
 ```
 
-Data | 説明
+Data | [説明]
 -----|------------
 nonce | 要求でのユーザー提供の省略可能な文字列。 要求で nonce が提供されなかった場合は、現在の UTC タイムスタンプが返されます
 プラン | VM の Azure Marketplace イメージの[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています
@@ -656,7 +656,7 @@ subscriptionId | `2019-04-30` で導入された、仮想マシンの Azure サ�
 > [!NOTE]
 > パブリック クラウド用の証明書とソブリン クラウド用の証明書は異なります。
 
- クラウド | 証明書
+ クラウド | Certificate
 ---------|-----------------
 [一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
@@ -772,7 +772,7 @@ Java       | https://github.com/Microsoft/azureimds/blob/master/imdssample.java
 Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 Puppet | https://github.com/keirans/azuremetadata
 
-## <a name="faq"></a>FAQ
+## <a name="faq"></a>よく寄せられる質問
 
 1. `400 Bad Request, Required metadata header not specified` エラーが発生します。 これはどういう意味でしょうか。
    * Instance Metadata Service では、要求に `Metadata: true` ヘッダーを渡す必要があります。 このヘッダーを REST 呼び出しに渡すと、Instance Metadata Service へのアクセスが許可されます。
@@ -797,6 +797,6 @@ Puppet | https://github.com/keirans/azuremetadata
 
     ![Instance Metadata のサポート](./media/instance-metadata-service/InstanceMetadata-support.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 詳細については、「[スケジュール化されたイベント](scheduled-events.md)」を参照してください。

@@ -2,19 +2,15 @@
 title: 目的の状態へのサーバーの構成と Azure Automation での誤差の管理
 description: チュートリアル - サーバーの構成を Azure Automation State Configuration で管理する
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
-manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 0339796f028a0cc0b19533be06127544db396f92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9e2f04f59a56be6c516eb90de45fdf7327673086
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850093"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416586"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>目的の状態にサーバーを構成して誤差を管理する
 
@@ -29,7 +25,7 @@ Azure Automation State Configuration を使うと、サーバーの構成を指�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下が必要です。
+このチュートリアルを完了するには、次の要件があります。
 
 - Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、 [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)に関するページをご覧ください。
 - Windows Server 2008 R2 以降を実行している Azure Resource Manager VM (クラシックではない)。 VM の作成手順については、「 [Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
@@ -170,7 +166,7 @@ Azure Automation State Configuration にノードを追加すると、Local Conf
 > これは、現在ノードに適用されている構成には影響しません。
 > 現在の構成を削除するには、[PowerShell](https://docs.microsoft.com/powershell/module/psdesiredstateconfiguration/remove-dscconfigurationdocument?view=powershell-5.1) を使用するか、ローカル構成ファイルを削除します (これが Linux ノードの唯一のオプションです)。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 Azure Automation から、目次の **[State configuration (DSC)]\(状態の構成 (DSC)\)** をクリックします。
 次に **[ノード]** をクリックしてサービスに登録されているノードの一覧を表示します。
@@ -181,7 +177,7 @@ Azure Automation から、目次の **[State configuration (DSC)]\(状態の構�
 
 PowerShell を使用して Azure Automation State Configuration サービスからノードを登録解除するには、コマンドレット [Unregister-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-2.0.0) のドキュメントに従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 使用を開始するには、「[Azure Automation State Configuration の使用](automation-dsc-getting-started.md)」をご覧ください。
 - ノードをオンボードにする方法は、「[Azure Automation State Configuration による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」をご覧ください。

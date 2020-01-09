@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: fe9b0f590dbb728a54ac66fcaa49bf3d00417e41
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 130d3315b5a9a6f175bd3d67ed33a034ab5f8dda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371413"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンへのポートを開く方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -73,7 +73,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     そのサブネットに接続するすべての VM に、ポート 80 で到達できるようになりました。
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 [この記事の手順は、Azure PowerShell を使用して実行する](nsg-quickstart-powershell.md)こともできます。
 
@@ -81,9 +81,9 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 高可用性 Web アプリケーション用に、Azure Load Balancer の背後に VM を配置することを考慮してください。 ロード バランサーは、トラフィックをフィルターできるネットワーク セキュリティ グループとともに、VM のトラフィックを分散します。 詳細については、[Azure 内で Windows 仮想マシンの負荷分散を行って高可用性アプリケーションを作成する](tutorial-load-balancer.md)方法に関するチュートリアルをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事では、ネットワーク セキュリティ グループの作成、ポート 80 で HTTP トラフィックを許可する受信規則の作成、その規則とサブネットの関連付けを行いました。 
 
 より精密な環境の作成については、次の記事で確認できます。
-- [Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)
+- [Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)
 - [セキュリティ グループ](../../virtual-network/security-overview.md)

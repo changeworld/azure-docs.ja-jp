@@ -1,23 +1,18 @@
 ---
 title: Azure Monitor で複数の Application Insights リソースを統合する | Microsoft Docs
 description: この記事では、Azure Monitor のログで関数を使用して、複数の Application Insights リソースのクエリを実行し、そのデータを視覚化する方法について詳しく説明します。
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.service: azure-monitor
+author: bwren
+ms.author: bwren
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: magoedte
-ms.openlocfilehash: d441b72b34da6146eba523563a09c2908cdcbbf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 07dd4c96ba51b1ac1e0cb2807c9e26df87a6daa7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650129"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364970"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Azure Monitor で複数の Application Insights リソースを統合する 
 この記事では、非推奨になった Application Insights Connector を引き継ぐものとして、お使いのすべての Application Insights のログ データのクエリと表示を 1 か所で行う方法について説明します。Azure サブスクリプションは違っていてもかまいません。 1 回のクエリに含めることができる Application Insights リソースの数は 100 個に制限されています。
@@ -37,7 +32,7 @@ union 演算子とアプリケーションの一覧を使用して関数を作�
 アプリケーションの一覧は、ポータルでワークスペースのクエリ エクスプローラーに移動して、編集する関数を選択して保存するか、または `SavedSearch` PowerShell コマンドレットを使用することで、いつでも変更できます。 
 
 >[!NOTE]
->この方法は、ログ アラートには使用できません。アラート ルール リソース (ワークスペース、アプリケーションなど) のアクセス検証がアラートの作成時に実行されるためです。 アラートの作成後に新しいリソースを関数に追加することはサポートされません。 ログ アラートにおけるリソースの範囲指定に関数を使用したい場合は、ポータルまたは Resource Manager テンプレートでアラート ルールを編集して、リソースの範囲指定を更新する必要があります。 または、リソースのリストをログ アラート クエリに含めることもできます。
+>ログ アラートでは、アラートの作成時にアラート ルール リソース (ワークスペースやアプリケーションなど) のアクセス検証が実行されるため、この方法は使用できません。 アラートの作成後に新しいリソースを関数に追加することはサポートされません。 ログ アラートにおけるリソースの範囲指定に関数を使用する場合は、ポータルまたは Resource Manager テンプレートでアラート ルールを編集して、リソースの範囲指定を更新する必要があります。 または、リソースの一覧をログ アラート クエリに含めることもできます。
 
 `withsource= SourceApp` コマンドを使用すると、ログを送信したアプリケーションを示す列が結果に追加されます。 この例では、SourceApp プロパティからアプリケーション名を抽出する parse 演算子は省略できます。 
 
@@ -107,7 +102,7 @@ applicationsScoping //this brings data from Application Insights resources
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | 名前 |
+| AvailabilityTestName | name |
 | AvailabilityTimestamp | timestamp |
 | Browser | client_browser |
 | City | client_city |
@@ -116,34 +111,34 @@ applicationsScoping //this brings data from Application Insights resources
 | Country | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | 名前 | 
+| CustomEventName | name | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
 | ExceptionMessage | message | 
-| ExceptionType | type |
+| ExceptionType | 型 |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | OS | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
-| PageViewName | 名前 | 
+| PageViewName | name | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
 | RequestID | id | 
-| RequestName | 名前 | 
+| RequestName | name | 
 | RequestSuccess | success | 
 | ResponseCode | resultCode | 
 | Role | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |
-| TelemetryTYpe | type |
+| TelemetryTYpe | 型 |
 | URL | url |
 | UserAccountId | user_AccountId |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [ログ検索](../../azure-monitor/log-query/log-query-overview.md)を使用して Application Insights アプリの詳細情報を表示します。

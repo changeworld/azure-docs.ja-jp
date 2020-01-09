@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 02/14/2019
-ms.openlocfilehash: cdc534325fd693dd34f2dc25c9953cd40ca96163
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 28eb7e490890b46a4025a6cf62e13b364bd7b6dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162301"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432357"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
 
 Azure [Application Insights][start] では、[Microsoft Azure のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)を利用し、データを読み取りできる人と更新できる人を制御できます。
 
 > [!IMPORTANT]
-> リソース自体ではなく、アプリケーション リソースが属する **リソース グループまたはサブスクリプション** でユーザーにアクセスを割り当てます。 **Application Insights コンポーネントの共同作業者** ロールを割り当てます。 これにより、Web テストとアラート、アプリケーション リソースのアクセス制御が統一されます。 [詳細情報](#access)。
+> リソース自体ではなく、アプリケーション リソースが属する **リソース グループまたはサブスクリプション** でユーザーにアクセスを割り当てます。 **Application Insights コンポーネントの共同作業者** ロールを割り当てます。 これにより、Web テストとアラート、アプリケーション リソースのアクセス制御が統一されます。 [詳細については、こちらを参照してください](#access)。
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -78,7 +78,7 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 
 | Role | In the resource group |
 | --- | --- |
-| [Owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |ユーザー アクセスを含め、あらゆるものを変更できます。 |
+| [[所有者]](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |ユーザー アクセスを含め、あらゆるものを変更できます。 |
 | [Contributor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |すべてのリソースを含め、あらゆるものを編集できます。 |
 | [Application Insights コンポーネントの共同作成者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Application Insights のリソース、Web テスト、アラートを編集できます。 |
 | [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |表示はできますが、何も変更することはできません。 |
@@ -98,9 +98,9 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 
 'Editing' includes creating, deleting and updating:
 
-* Resources
-* Web tests
-* アラート
+* リソース
+* Web テスト
+* 警告
 * 連続エクスポート
 
 #### <a name="select-the-user"></a>ユーザーを選択する
@@ -141,6 +141,6 @@ $resourceGroup = "RGNAME"
 <!--Link references-->
 
 [account]: https://account.microsoft.com
-[group]: ../../azure-resource-manager/resource-group-overview.md
+[group]: ../../azure-resource-manager/management/overview.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md

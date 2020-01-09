@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815191"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456580"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
@@ -58,7 +58,7 @@ Azure Logic Apps では、データ ゲートウェイを介した読み取り�
 
 * ゲートウェイ インストールがまだ登録されておらず、別の Azure ゲートウェイ リソースによって要求されていない。
 
-  Azure portal でゲートウェイ リソースを作成する場合は、唯一のゲートウェイ リソースにリンクする、ゲートウェイのインストールを選択します。 Azure Logic Apps では、その後、オンプレミスのトリガーとアクションで、オンプレミスのデータ ソースへの接続にゲートウェイ リソースが使用されます。 これらのトリガーとアクションでは、使用する Azure サブスクリプションと関連付けられているゲートウェイ リソースを選択します。 各ゲートウェイ リソースは、1 つの Azure アカウントにのみリンクする、1 つのゲートウェイ インストールにのみリンクします。
+  Azure portal でゲートウェイ リソースを作成する場合は、唯一のゲートウェイ リソースにリンクする、ゲートウェイのインストールを選択します。 Azure Logic Apps では、オンプレミスのトリガーとアクションにおいて、オンプレミスのデータ ソースへの接続にゲートウェイ リソースが使用されます。 これらのトリガーとアクションでは、使用する Azure サブスクリプションと関連付けられているゲートウェイ リソースを選択します。 各ゲートウェイ リソースは、1 つの Azure アカウントにのみリンクする、1 つのゲートウェイ インストールにのみリンクします。
 
 <a name="create-gateway-resource"></a>
 
@@ -78,11 +78,11 @@ Azure Logic Apps では、データ ゲートウェイを介した読み取り�
 
 1. **[接続ゲートウェイの作成]** で、ゲートウェイ リソースに関する情報を指定します。 完了したら **[作成]** を選択します。
 
-   | プロパティ | 説明 |
+   | プロパティ | [説明] |
    |----------|-------------|
    | **リソース名** | アルファベット、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、またはピリオド (`.`) のみを含む、ゲートウェイ リソースの名前を指定します。 |
    | **サブスクリプション** | ゲートウェイのインストールに使用された、Azure アカウントの Azure サブスクリプションを選択します。 既定のサブスクリプションは、サインインするために使用した Azure アカウントに基づきます。 |
-   | **リソース グループ** | 使用する [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md) |
+   | **リソース グループ** | 使用する [Azure リソース グループ](../azure-resource-manager/management/overview.md) |
    | **Location** | [ゲートウェイのインストール](../logic-apps/logic-apps-gateway-install.md)中にゲートウェイ クラウド サービス用に選択されたのと同じリージョンまたは場所。 それ以外の場合、ゲートウェイのインストールは、 **[インストール名]** の一覧に表示されません。 ロジック アプリの場所は、ゲートウェイ リソースの場所とは異なる場合があります。 |
    | **インストール名** | これらの条件が満たされた場合にのみ一覧に表示される、ゲートウェイのインストールを選択します。 <p><p>- ゲートウェイのインストールが、作成するゲートウェイ リソースと同じリージョンを使用する。 <br>- ゲートウェイのインストールが、別の Azure ゲートウェイ リソースにリンクされていない。 <br>- ゲートウェイのインストールが、ゲートウェイ リソースの作成に使用しているものと同じ Azure アカウントにリンクされている。 <br>- Azure アカウントが、1 つの [Azure Active Directory (Azure AD) テナントまたはディレクトリ](../active-directory/fundamentals/active-directory-whatis.md#terminology)に属しており、ゲートウェイのインストールに使用されたものと同じアカウントである。 <p><p>詳細については、「[よく寄せられる質問](#faq)」セクションを参照してください。 |
    |||
@@ -150,7 +150,7 @@ Azure サブスクリプションに関連付けられているすべての API 
 
 1. まだ選択していない場合は、ゲートウェイ リソースのメニューで **[オンプレミスのデータ ゲートウェイ]** を選択します。 ゲートウェイ リソース ツールバーで、 **[削除]** を選択します。
 
-   例:
+   次に例を示します。
 
    ![Azure でゲートウェイ リソースを削除する](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 
@@ -169,7 +169,7 @@ Azure サブスクリプションに関連付けられているすべての API 
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ロジック アプリをセキュリティで保護する](./logic-apps-securing-a-logic-app.md)
 * [ロジック アプリの接続の例とシナリオ](./logic-apps-examples-and-scenarios.md)

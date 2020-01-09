@@ -2,19 +2,15 @@
 title: Azure Automation Grpahical Runbook SDK の概要
 description: この記事では、Azure Automation Graphical Runbook SDK の使用方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/20/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: a06c190931fdd0f49132f815b153c08ece68c9f3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d4dcf6681ade977847c204dd1237f7cd7a67775e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849549"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418262"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>Azure Automation Grpahical Runbook SDK を使用する
 
@@ -143,7 +139,7 @@ var serialized = RunbookSerializer.Serialize(runbook);
 この文字列は、拡張子が **.graphRunbook** のファイルに保存できます。このファイルは Azure Automation にインポートできます。
 シリアル化された形式は、`Orchestrator.GraphRunbook.Model.dll` の今後のバージョンで変更される可能性がありますが、 下位互換性は保証されます。つまり、旧バージョンの `Orchestrator.GraphRunbook.Model.dll` でシリアル化された Runbook は、新しいバージョンで逆シリアル化できます。 上位互換性は保証されません。つまり、新しいバージョンでシリアル化された Runbook は、旧バージョンで逆シリアル化できません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Automation のグラフィック Runbook の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)」を参照してください
 

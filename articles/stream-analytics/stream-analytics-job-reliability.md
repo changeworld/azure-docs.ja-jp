@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics ジョブでのサービスの中断の回避
 description: この記事では、Stream Analytics ジョブのアップグレード時の障害耐性を高めるためのガイダンスについて説明します。
-services: stream-analytics
 author: jseb225
 ms.author: sidram
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: e38f8a923daa210d8aa5b56631e5f8157d4b3f70
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d2d21e081b274bd985c48dac91fff5203a6b5b8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620876"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425987"
 ---
 # <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a>サービス更新中におけるStream Analytics ジョブの信頼性を保証する
 
@@ -30,7 +29,7 @@ _インド中部の例外を除き_ (ペア リージョンであるインド南
 
 両方のペア リージョンに同じジョブをデプロイすることが推奨されます。 その後、[これらのジョブを監視](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor)して、何らかの予期しない事柄が発生した場合に通知を受け取るようにします。 これらのジョブのいずれかが Stream Analytics サービスの更新後に[失敗状態](https://docs.microsoft.com/azure/stream-analytics/job-states)になった場合は、カスタマー サポートに連絡して、根本原因を識別するための支援を受けることができます。 また、下流のコンシューマーを正常なジョブ出力にフェールオーバーする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Stream Analytics の概要](stream-analytics-introduction.md)
 * [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)

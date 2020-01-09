@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 433a813fe3dd9e829a6e1c92d80590806a22732e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8e721b3dc2f2dca12ae7983676c7a090cf053893
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926864"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440604"
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Azure Data Factory を使用して MariaDB のデータをコピーする
 
@@ -39,7 +39,7 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -49,10 +49,10 @@ Azure Data Factory では接続を有効にする組み込みのドライバー�
 
 MariaDB のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります。**MariaDB** | はい |
-| connectionString | MariaDB に接続するための ODBC 接続文字列。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワードを Azure Key Vault に格納して、接続文字列から `pwd` 構成をプルすることもできます。 詳細については、次のサンプルと「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
+| 型 | type プロパティは、次のように設定する必要があります:**MariaDB** | はい |
+| connectionString | MariaDB に接続するための ODBC 接続文字列。 <br/>パスワードを Azure Key Vault に格納して、接続文字列から `pwd` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
@@ -63,10 +63,7 @@ MariaDB のリンクされたサービスでは、次のプロパティがサポ
     "properties": {
         "type": "MariaDB",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
-            }
+            "connectionString": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -84,10 +81,7 @@ MariaDB のリンクされたサービスでは、次のプロパティがサポ
     "properties": {
         "type": "MariaDB",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;"
-            },
+            "connectionString": "Server=<host>;Port=<port>;Database=<database>;UID=<user name>;",
             "pwd": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -136,9 +130,9 @@ MariaDB からデータをコピーするには、データセットの type プ
 
 MariaDB からデータをコピーするには、コピー アクティビティのソースの種類を **MariaDBSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります。**MariaDBSource** | はい |
+| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**MariaDBSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -173,10 +167,10 @@ MariaDB からデータをコピーするには、コピー アクティビテ�
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

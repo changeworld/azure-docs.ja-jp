@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 40697925d399962399da499e0469198a0e997f66
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038640"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461161"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
 ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure ハイブリッド特典を使用して、Windows OS 搭載の新しい仮想マシンをデプロイすることができます。 この記事では、Windows Server 向け Azure ハイブリッド特典での新しい VM のデプロイ方法と、既存の稼働中 VM を更新する方法について説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。
@@ -195,10 +195,10 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 [仮想マシン スケール セットの変更](../../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md)方法の詳細を確認し、スケール セットの更新方法をさらに調べることもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure ハイブリッド特典でコストを削減する方法](https://azure.microsoft.com/pricing/hybrid-use-benefit/)について詳しく読みます
 - [Azure ハイブリッド特典についてよく寄せられる質問](https://azure.microsoft.com/pricing/hybrid-use-benefit/faq/)について詳しく読みます
 - [Windows Server 向け Azure ハイブリッド特典のライセンスの詳しいガイダンス](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit)を確認します。
 - [Windows Server 向け Azure ハイブリッド特典と Azure Site Recovery によって、Azure へのアプリケーションの移行のコスト効率を高める方法](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)の詳細を確認します
 - [マルチテナント ホスティング権限を使用した Azure 上の Windows 10](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) について確認します
-- [Resource Manager テンプレートの使用方法](../../azure-resource-manager/resource-group-overview.md)の詳細を確認します
+- [Resource Manager テンプレートの使用方法](../../azure-resource-manager/management/overview.md)の詳細を確認します

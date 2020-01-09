@@ -4,21 +4,21 @@ description: Azure Resource Manager テンプレートを使用して、Log Anal
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 5410d6ef11c3f95bb4f02dbd914a1aacbd068a1b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4ec542609d8984d1d03c326854590c834840b33f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363372"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Azure Monitor の Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
+[Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使用して、Azure Monitor の Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
 
 * 価格レベルの設定を含むワークスペースの作成 
 * ソリューションの追加
@@ -41,7 +41,7 @@ ms.locfileid: "73176382"
 | リソース | リソースの種類 | API バージョン |
 |:---|:---|:---|
 | ワークスペース   | workspaces    | 2017-03-15-preview |
-| Search      | savedSearches | 2015-03-20 |
+| 検索      | savedSearches | 2015-03-20 |
 | データ ソース | datasources   | 2015-11-01-preview |
 | 解決策    | solutions     | 2015-11-01-preview |
 
@@ -617,7 +617,7 @@ Azure クイックスタート テンプレート ギャラリーに、Log Analy
 * [Azure Web Apps を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
 * [既存のストレージ アカウントの Log Analytics への追加](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Resource Manager テンプレートを使用して Windows エージェントを Azure VM にデプロイします](../../virtual-machines/extensions/oms-windows.md)。
 

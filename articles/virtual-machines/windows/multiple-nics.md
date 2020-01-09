@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 0e826442c816f83c875b907bbf3054793ebb382a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033143"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358277"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>複数の NIC を持つ Windows 仮想マシンの作成と管理
 Azure の仮想マシン (VM) は、複数の仮想ネットワーク インターフェイス カード (NIC) を持つことができます。 一般的なシナリオは、フロントエンドとバックエンドの接続に異なるサブネットを使用する場合です。 VM 上の複数の NIC を複数のサブネットに関連付けることはできますが、それらのサブネットはすべて同じ仮想ネットワーク (vNet) 内に存在する必要があります。 この記事では、複数の NIC を持つ VM を作成する方法について説明します。 既存の VM に NIC を追加するまたはそこから NIC を削除する方法についても説明します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
@@ -218,7 +218,7 @@ $myNic2 = New-AzNetworkInterface -ResourceGroupName "myResourceGroup" `
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>テンプレートを使用した複数の NIC の作成
-Azure Resource Manager テンプレートでは、複数の NIC の作成など、デプロイ時にリソースの複数のインスタンスを作成することができます。 Resource Manager テンプレートで宣言型の JSON ファイルを使用して環境を定義します。 詳細については、「[Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)」を参照してください。 *copy* を使用して、作成するインスタンスの数を指定できます。
+Azure Resource Manager テンプレートでは、複数の NIC の作成など、デプロイ時にリソースの複数のインスタンスを作成することができます。 Resource Manager テンプレートで宣言型の JSON ファイルを使用して環境を定義します。 詳細については、「[Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)」を参照してください。 *copy* を使用して、作成するインスタンスの数を指定できます。
 
 ```json
 "copy": {
@@ -293,7 +293,7 @@ Azure では、既定のゲートウェイが、仮想マシンにアタッチ�
 
     リストされたルートのうち、**Gateway** の値が *192.168.1.1* になっているルートは、プライマリ ネットワーク インターフェイスの既定のルートです。 **Gateway** の値が *192.168.2.1* になっているルートは、追加したルートです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 複数の NIC を持つ VM を作成する場合、「[Windows VM のサイズ](sizes.md)」を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。 
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: a06ea59af0776fe3decb0b56a3ef886f08b2dfda
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d7c88e500886453fbfb53655748ccf7025ab7d3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100710"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374259"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure Virtual Machines の Always On 可用性グループを自動的に構成するリソース マネージャー
 
@@ -76,14 +76,14 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 * **[管理者ユーザー名]** は、ドメインの管理者権限を持つユーザー アカウントであり、また SQL Server の両方のインスタンスの SQL Server sysadmin 固定サーバー ロールのメンバーです。 このチュートリアルでは **DomainAdmin** を使用します。
 * **[パスワード]** は、ドメイン管理者アカウントのパスワードです。 複雑なパスワードを使用します。 パスワードを確認入力します。
 * **[サブスクリプション]** は、可用性グループ用にデプロイされたすべてのリソースの実行に対して課金されるサブスクリプションです。 アカウントに複数のサブスクリプションがある場合は、別のサブスクリプションを指定できます。
-* **[リソース グループ]** は、このテンプレートで作成されたすべての Azure リソースが属するグループの名前です。 このチュートリアルでは **SQL-HA-RG** を使用します。 詳細については、「[Azure Resource Manager の概要](../../../azure-resource-manager/resource-group-overview.md#resource-groups)」を参照してください。
+* **[リソース グループ]** は、このテンプレートで作成されたすべての Azure リソースが属するグループの名前です。 このチュートリアルでは **SQL-HA-RG** を使用します。 詳細については、「[Azure Resource Manager の概要](../../../azure-resource-manager/management/overview.md#resource-groups)」を参照してください。
 * **[場所]** は、このチュートリアルでリソースを作成する Azure リージョンです。 Azure リージョンを選択します。
 
 次のスクリーンショットは、設定が完了した **[基本]** ブレードを示しています。
 
 ![基本](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
 
-Click **OK**.
+**[OK]** をクリックします。
 
 ### <a name="domain-and-network-settings"></a>ドメインおよびネットワークの設定
 この Azure ギャラリー テンプレートでは、ドメインとドメイン コントローラーを作成します。 また、ネットワークと 2 つのサブネットも作成します。 このテンプレートでは、既存のドメインまたは仮想ネットワークには、サーバーを作成できません。 次の手順では、ドメインおよびネットワーク設定を構成します。
@@ -116,7 +116,7 @@ Azure の仮想ネットワークの詳細については、[仮想ネットワ�
 
 ![可用性グループの設定](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
 
-Click **OK**.
+**[OK]** をクリックします。
 
 ### <a name="virtual-machine-size-storage-settings"></a>VM サイズおよび記憶域の設定
 **[VM size, storage settings] \(VM サイズおよび記憶域の設定)** では、SQL Server 仮想マシンのサイズを選択し、その他の設定を確認します。
@@ -185,7 +185,7 @@ SQL Server の構成のベスト プラクティスについては、「[Azure V
 設定を確認し、 **[OK]** をクリックします。
 
 ### <a name="summary"></a>まとめ
-[概要] ページでは Azure によって設定が検証されます。 テンプレートをダウンロードすることもできます。 概要を確認します。 Click **OK**.
+[概要] ページでは Azure によって設定が検証されます。 テンプレートをダウンロードすることもできます。 概要を確認します。 **[OK]** をクリックします。
 
 ### <a name="buy"></a>購入
 この最後のブレードには **[使用条件]** と **[プライバシー ポリシー]** が掲載されています。 この情報を確認します。 Azure で仮想マシンと可用性グループに必要な他のすべてのリソースの作成を開始する準備ができたら、 **[作成]** をクリックします。

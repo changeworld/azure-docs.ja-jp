@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: c8ab954471e597cfea5c6f56cd45b2191aa73242
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 92ff08d460e9bf11b49700570a156a101811a533
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424071"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436004"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -64,7 +64,7 @@ App Service は DevOps を念頭に置いて設計されています。 発行�
 
 > **いつ使用するか**: App Service を使用するのは、既存の Web アプリケーションを Azure に移行する場合、および Web アプリ用にフル マネージドのホスティング プラットフォームが必要な場合です。 また、モバイル クライアントをサポートする必要がある場合、またはアプリと共に REST API を公開する必要がある場合にも App Service を使用できます。
 > 
-> **作業開始**:App Service を使用すると、初めての [Web アプリ](../../app-service/app-service-web-get-started-dotnet.md)、[モバイル アプリ](../../app-service-mobile/app-service-mobile-ios-get-started.md)、[API アプリ](../../app-service/app-service-web-tutorial-rest-api.md)でも簡単に作成、デプロイできます。
+> **作業開始**: App Service を使用すると、初めての [Web アプリ](../../app-service/app-service-web-get-started-dotnet.md)、[モバイル アプリ](../../app-service-mobile/app-service-mobile-ios-get-started.md)、[API アプリ](../../app-service/app-service-web-tutorial-rest-api.md)でも簡単に作成、デプロイできます。
 > 
 > **今すぐ試す**:App Service なら、Azure アカウントを新規登録することなく、一時的なアプリをプロビジョニングしてプラットフォームを試すことができます。 プラットフォームと [Azure App Service アプリの作成](https://tryappservice.azure.com/)を試してみましょう。
 
@@ -74,17 +74,17 @@ App Service は DevOps を念頭に置いて設計されています。 発行�
 
 VM の場合は細かいレベルで制御できるため、Azure 上で PaaS モデルに合わない幅広いサーバー ワークロードを実行できます。 たとえば、データベース サーバー、Windows Server Active Directory、Microsoft SharePoint などのワークロードが含まれます。 詳細については、[Linux](/azure/virtual-machines/linux/) または [Windows](/azure/virtual-machines/windows/) の Virtual Machines のドキュメントを参照してください。
 
-> **使用する場合**:アプリケーション インフラストラクチャを完全に制御したい場合、またはオンプレミス アプリケーション ワークロードを変更せずに Azure に移行したい場合は、Virtual Machines を使用します。
+> **いつ使用するか**: アプリケーション インフラストラクチャを完全に制御したい場合、またはオンプレミス アプリケーション ワークロードを変更せずに Azure に移行したい場合は、Virtual Machines を使用します。
 > 
-> **作業開始**:[Linux VM](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) または [Windows VM](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) を Azure portal から作成します。
+> **作業開始**: [Linux VM](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) または [Windows VM](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) を Azure portal から作成します。
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (サーバーレス)
 
 コードを実行するためにアプリケーション全体やインフラストラクチャを構築して管理する必要がなく、コードを記述するだけで、それをイベントやスケジュールに応じて実行できたとしたら、どうでしょうか。  [Azure Functions](../../azure-functions/functions-overview.md) は、必要なコードを作成するだけで済む "サーバーレス" スタイルのサービスです。 Functions を使用すると、コードの実行を HTTP 要求、Webhook、クラウド サービス イベント、またはスケジュールに応じてトリガーすることができます。 C\#、F\#、Node.js、Python、PHP など、好きな言語でコードを開発することもできます。 使用量ベースの課金の場合、コードの実行時にのみ課金されます。また、必要に応じて Azure は拡大縮小されます。
 
-> **使用する場合**:他の Azure サービス、Web ベースのイベント、またはスケジュールに応じてトリガーされるコードがある場合に、Azure Functions を使用します。 また、完全なホスト型プロジェクトのオーバーヘッドが必要ない場合、またはコードの実行時にのみ料金を支払いたい場合にも Functions を使用できます。 詳細については、「[Azure Functions の作業開始](../../azure-functions/functions-overview.md)」を参照してください。
+> **いつ使用するか**: 他の Azure サービス、Web ベースのイベント、またはスケジュールに応じてトリガーされるコードがある場合に、Azure Functions を使用します。 また、完全なホスト型プロジェクトのオーバーヘッドが必要ない場合、またはコードの実行時にのみ料金を支払いたい場合にも Functions を使用できます。 詳細については、「[Azure Functions の作業開始](../../azure-functions/functions-overview.md)」を参照してください。
 > 
-> **作業開始**:ポータルから[初めて関数を作成する](../../azure-functions/functions-create-first-azure-function.md)には、Functions のクイックスタート チュートリアルに従います。
+> **作業開始**: ポータルから[初めて関数を作成する](../../azure-functions/functions-create-first-azure-function.md)には、Functions のクイックスタート チュートリアルに従います。
 > 
 > **今すぐ試す**:Azure Functions を使用すると、Azure アカウントを新規登録することなくコードを実行できます。 今すぐ試して[初めての Azure 関数を作成](https://tryappservice.azure.com/)しましょう。
 
@@ -118,24 +118,24 @@ Azure には、アプリケーションのホスティングと共に、機能�
   
   > **使用する場合:** アプリケーションに、明確に定義された複数の整合性モデルのドキュメント、テーブル、またはグラフ データベース (MongoDB データベースを含む) が必要な場合。 
   > 
-  > **作業開始**:[Azure Cosmos DB Web アプリをビルドします](../../cosmos-db/create-sql-api-dotnet.md)。 MongoDB 開発者でない場合は、[Azure Cosmos DB を使用した MongoDB Web アプリのビルド](../../cosmos-db/create-mongodb-dotnet.md)に関する記事をご覧ください。
+  > **作業開始**: [Azure Cosmos DB Web アプリをビルドします](../../cosmos-db/create-sql-api-dotnet.md)。 MongoDB 開発者でない場合は、[Azure Cosmos DB を使用した MongoDB Web アプリのビルド](../../cosmos-db/create-mongodb-dotnet.md)に関する記事をご覧ください。
 
 - **Azure Storage**:BLOB、クエリ、ファイルなどの非リレーショナル データに対して、耐久性があり、高可用な記憶域を提供します。 Storage は、VM 向けに記憶域の基盤を提供します。
 
-  > **使用する場合**:キーと値のペア (テーブル)、BLOB、ファイル共有、メッセージ (キュー) など、非リレーショナル データを格納するアプリケーションの場合。
+  > **いつ使用するか**: キーと値のペア (テーブル)、BLOB、ファイル共有、メッセージ (キュー) など、非リレーショナル データを格納するアプリケーションの場合。
   > 
-  > **作業開始**:[BLOB](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[テーブル](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[クエリ](../../storage/queues/storage-dotnet-how-to-use-queues.md)、または[ファイル](../../storage/files/storage-dotnet-how-to-use-files.md)のいずれかの記憶域から選択します。
+  > **作業開始**: [BLOB](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[テーブル](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[クエリ](../../storage/queues/storage-dotnet-how-to-use-queues.md)、または[ファイル](../../storage/files/storage-dotnet-how-to-use-files.md)のいずれかの記憶域から選択します。
 
 - **Azure SQL Database**:クラウドにリレーショナル表形式データを格納する Azure ベース バージョンの Microsoft SQL Server エンジンです。 SQL Database は、予測可能なパフォーマンス、ダウンタイムなしのスケーラビリティ、ビジネス継続性、データ保護を提供しています。
 
-  > **使用する場合**:参照整合性、トランザクションのサポート、および TSQL クエリのサポートがあるデータ記憶域が必要なアプリケーションの場合。
+  > **いつ使用するか**: 参照整合性、トランザクションのサポート、および TSQL クエリのサポートがあるデータ記憶域が必要なアプリケーションの場合。
   > 
-  > **作業開始**:[Azure portal を使用して数分で SQL データベースを作成できます](../../sql-database/sql-database-get-started.md)。
+  > **作業開始**: [Azure portal を使用して数分で SQL データベースを作成できます](../../sql-database/sql-database-get-started.md)。
 
 
 [Azure Data Factory](../../data-factory/introduction.md) を使用して既存のオンプレミス データを Azure に移行することができます。 データをクラウドに移行する準備ができていない場合は、BizTalk Services の[ハイブリッド接続](../../biztalk-services/integration-hybrid-connection-overview.md)を使用して、App Service でホストされるアプリをオンプレミス リソースに接続できます。 また、オンプレミス アプリケーションから Azure データと記憶域サービスに接続することもできます。
 
-#### <a name="docker-support"></a>Docker のサポート
+#### <a name="docker-support"></a>Docker サポート
 
 OS 仮想化の形式の 1 つである Docker コンテナーを使用すると、より効率的で予測可能な方法でアプリケーションをデプロイできます。 コンテナー化されたアプリケーションは、開発およびテスト システム上と同様に実稼働環境でも動作します。 コンテナーは、標準の Docker ツールを使用して管理できます。 コンテナーベースのアプリケーションは、既存のスキルと人気のあるオープンソース ツールを使用して Azure でデプロイおよび管理できます。
 
@@ -143,25 +143,25 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
 - **Azure Docker VM 拡張機能**:Docker ツールを使用して、Docker ホストとして動作するように VM を構成できます。
 
-  > **使用する場合**:VM 上のアプリケーション用に一貫性のあるコンテナー デプロイを生成する場合、または [Docker Compose](https://docs.docker.com/compose/overview/) を使用する場合。
+  > **いつ使用するか**: VM 上のアプリケーション用に一貫性のあるコンテナー デプロイを生成する場合、または [Docker Compose](https://docs.docker.com/compose/overview/) を使用する場合。
   > 
-  > **作業開始**:[Docker VM 拡張機能を使用して Azure に Docker 環境を作成します](../../virtual-machines/virtual-machines-linux-dockerextension.md)。
+  > **作業開始**: [Docker VM 拡張機能を使用して Azure に Docker 環境を作成します](../../virtual-machines/virtual-machines-linux-dockerextension.md)。
 
 - **Azure Container Service**:コンテナー化されたアプリケーションを実行するように事前構成されている仮想マシンのクラスターを簡単に作成、構成および管理できます。 Container Service の詳細については、「[Azure Container Service を使用した Docker コンテナー ホスティング ソリューションの概要](../../container-service/container-service-intro.md)」を参照してください。
 
-  > **使用する場合**:追加のスケジュール設定および管理ツールを提供する実稼働レベルのスケーラブルな環境を作成する場合、または Docker Swarm クラスターをデプロイする場合。
+  > **いつ使用するか**: 追加のスケジュール設定および管理ツールを提供する実稼働レベルのスケーラブルな環境を作成する場合、または Docker Swarm クラスターをデプロイする場合。
   > 
-  > **作業開始**:[Container Service クラスターをデプロイします](../../container-service/dcos-swarm/container-service-deployment.md)。
+  > **作業開始**: [Container Service クラスターをデプロイします](../../container-service/dcos-swarm/container-service-deployment.md)。
 
 - **Docker Machine**:docker-machine コマンドを使用して、仮想ホスト上で Docker Engine をインストールおよび管理できます。
 
-  >**使用する場合**:1 つの Docker ホストを作成して、アプリのプロトタイプを短時間で作成する必要がある場合。
+  >**いつ使用するか**: 1 つの Docker ホストを作成して、アプリのプロトタイプを短時間で作成する必要がある場合。
 
 - **App Service 用のカスタム Docker イメージ**:Linux 上に Web アプリをデプロイするときに、コンテナー レジストリまたは顧客のコンテナーから Docker コンテナーを使用できます。
 
-  > **使用する場合**:Linux 上の Web アプリを Docker イメージにデプロイする場合。
+  > **いつ使用するか**: Linux 上の Web アプリを Docker イメージにデプロイする場合。
   > 
-  > **作業開始**:[Linux で App Service 用のカスタム Docker イメージを使用します](../../app-service/containers/quickstart-docker-go.md)。
+  > **作業開始**: [Linux で App Service 用のカスタム Docker イメージを使用します](../../app-service/containers/quickstart-docker-go.md)。
 
 ### <a name="authentication"></a>認証
 
@@ -169,15 +169,15 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
 - **Azure Active Directory (Azure AD)** :Microsoft のマルチテナントでクラウドベースの ID およびアクセス管理サービスです。 Azure AD と統合することで、シングル サインオン (SSO) 機能をアプリケーションに追加できます。 ディレクトリのプロパティには、Azure AD Graph API から直接、または Microsoft Graph API からアクセスできます。 OAuth 2.0 認証フレームワークと Open ID Connect の場合、ネイティブ HTTP/REST エンドポイントとマルチプラットフォーム Azure AD Authentication ライブラリを使用して、Azure AD のサポートと統合できます。
 
-  > **使用する場合**:SSO エクスペリエンスを提供する場合、Graph ベースのデータを使用する場合、またはドメインベースのユーザーを認証する場合。
+  > **いつ使用するか**: SSO エクスペリエンスを提供する場合、Graph ベースのデータを使用する場合、またはドメインベースのユーザーを認証する場合。
   > 
-  > **作業開始**:詳細については、「[開発者のための Azure Active Directory](../../active-directory/develop/v1-overview.md)」を参照してください。
+  > **作業開始**: 詳細については、「[開発者のための Azure Active Directory](../../active-directory/develop/v1-overview.md)」を参照してください。
 
 - **App Service 認証**:App Service を選択してアプリをホストする場合、Azure AD の組み込みの認証サポートと共に、ソーシャル ID プロバイダー (Facebook、Google、Microsoft、Twitter など) も利用できます。
 
-  > **使用する場合**:Azure AD、ソーシャル ID プロバイダー、またはその両方を使用して App Service アプリで認証を有効にする場合。
+  > **いつ使用するか**: Azure AD、ソーシャル ID プロバイダー、またはその両方を使用して App Service アプリで認証を有効にする場合。
   > 
-  > **作業開始**:App Service の認証の詳細については、「[Azure App Service での認証および承認](../../app-service/overview-authentication-authorization.md)」を参照してください。
+  > **作業開始**: App Service の認証の詳細については、「[Azure App Service での認証および承認](../../app-service/overview-authentication-authorization.md)」を参照してください。
 
 Azure でのセキュリティのベスト プラクティスについては、「[Azure セキュリティのベスト プラクティスとパターン](../../security/fundamentals/best-practices-and-patterns.md)」を参照してください。
 
@@ -224,7 +224,7 @@ Azure を使用する利点の 1 つは、世界中のさまざまなデータ�
 
 Virtual Machine や App Service など、一部のサービスでは、[Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) を使用してリージョン間のフェールオーバーによるマルチリージョン サポートを可能にして、可用性の高いエンタープライズ アプリケーションをサポートできます。 例については、「[Azure 参照アーキテクチャ:高可用性を得るために複数の Azure リージョンで Web アプリケーションを実行する](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region)」を参照してください。
 
->**使用する場合**:フェールオーバーとレプリケーションを利用するエンタープライズおよび高可用性アプリケーションがある場合。
+>**いつ使用するか**: フェールオーバーとレプリケーションを利用するエンタープライズおよび高可用性アプリケーションがある場合。
 
 ## <a name="how-do-i-manage-my-applications-and-projects"></a>アプリケーションとプロジェクトを管理する方法
 
@@ -238,7 +238,7 @@ Azure には、コマンドラインからアプリケーションとサービ�
 
 -   [Azure PowerShell](../../powershell-install-configure.md):Windows PowerShell を使用して Azure リソースを管理できるモジュールとコマンドレットのセットを提供します。
 
-### <a name="azure-portal"></a>Azure ポータル
+### <a name="azure-portal"></a>Azure portal
 
 [Azure portal](https://portal.azure.com) は、Web ベースのアプリケーションです。 Azure portal を使用して Azure のリソースやサービスの作成、管理、削除ができます。 次の情報が含まれます。
 
@@ -255,7 +255,7 @@ Azure は、Azure Portal UI をサポートする REST API のセットに基づ
 REST API だけでなく、多くの Azure サービスでも、次の開発プラットフォーム用 SDK を含め、プラットフォーム固有の Azure SDK を使用して、アプリケーションのリソースをプログラムで管理できます。
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.JS](https://docs.microsoft.com/azure/javascript/)
+-   [Node.js](https://docs.microsoft.com/azure/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)
@@ -266,7 +266,7 @@ REST API だけでなく、多くの Azure サービスでも、次の開発プ�
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
-Azure でのアプリの実行には、複数の Azure サービスの使用を伴う可能性があります。 これらのサービスは同じライフサイクルに従うため、論理ユニットと考えることができます。 たとえば、Web アプリでは、Web Apps、SQL Database、Storage、Azure Cache for Redis、Azure Content Delivery Network サービスを使用する可能性があります。 [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) を使用すると、アプリケーション内の複数リソースを 1 つのグループとして操作できます。 これらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。
+Azure でのアプリの実行には、複数の Azure サービスの使用を伴う可能性があります。 これらのサービスは同じライフサイクルに従うため、論理ユニットと考えることができます。 たとえば、Web アプリでは、Web Apps、SQL Database、Storage、Azure Cache for Redis、Azure Content Delivery Network サービスを使用する可能性があります。 [Azure Resource Manager](../../azure-resource-manager/management/overview.md) を使用すると、アプリケーション内の複数リソースを 1 つのグループとして操作できます。 これらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。
 
 Azure Resource Manager では、関連するリソースを論理的にグループ化して管理できるだけでなく、関連するリソースのデプロイと構成をカスタマイズできるデプロイ機能があります。 たとえば、Resource Manager を使用してアプリケーションをデプロイし、構成することができます。 このアプリケーションでは、複数の仮想マシン、ロードバランサー、Azure SQL データベースを、1 つのユニットとして構成できます。
 
@@ -274,7 +274,7 @@ Azure Resource Manager では、関連するリソースを論理的にグルー
 
 > **いつ使用するか**: REST API、Azure CLI、Azure PowerShell を使用してプログラムで管理できるテンプレートベースのデプロイがアプリに必要な場合は、Resource Manager テンプレートを使用します。
 > 
-> **作業開始**:テンプレートを初めて使用する場合は、「[Azure Resource Manager テンプレートの構造と構文の詳細](../../resource-group-authoring-templates.md)」を参照してください。
+> **作業開始**: テンプレートを初めて使用する場合は、「[Azure Resource Manager テンプレートの構造と構文の詳細](../../resource-group-authoring-templates.md)」を参照してください。
 
 ## <a name="understanding-accounts-subscriptions-and-billing"></a>アカウント、サブスクリプション、課金の概要
 
@@ -304,9 +304,9 @@ Azure リソースへのアクセス権を許可する場合、そのタスク�
 
 - **ロールベースのアクセス制御 (RBAC)** :Azure では、指定したスコープ (サブスクリプション、リソース グループ、または個々のリソース) でユーザー アカウント (プリンシパル) にアクセス権を付与することができます。 RBAC を使用すると、リソースをリソース グループにデプロイし、特定のユーザーまたはグループにアクセス許可を付与できます。 また、対象のリソース グループに属するリソースにのみアクセスを制限することもできます。 仮想マシンや仮想ネットワークなど、1 つのリソースにアクセス権を付与することもできます。 アクセス権を付与するには、ロールをユーザー、グループ、またはサービス プリンシパルに割り当てます。 定義済みのロールが多数ありますが、独自のカスタム ロールを定義することもできます。 詳細については、「[ロールベースのアクセス制御 (RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 
-  > **使用する場合**:ユーザーやグループに対する詳細なアクセス管理が必要な場合、またはユーザーをサブスクリプションの所有者にする必要がある場合に使用します。
+  > **いつ使用するか**: ユーザーやグループに対する詳細なアクセス管理が必要な場合、またはユーザーをサブスクリプションの所有者にする必要がある場合に使用します。
   > 
-  > **作業開始**:詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+  > **作業開始**: 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 - **サービス プリンシパル オブジェクト**:ユーザー プリンシパルとグループへのアクセス権を付与するだけでなく、サービス プリンシパルに同じアクセス権を付与することができます。
 

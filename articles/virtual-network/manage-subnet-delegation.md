@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 340c9192b43cbcf2daacfb791d85135518dd970c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6eab9ac7cf4547cb7fe3e736c16c3c0bd5f5bd9d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747883"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425881"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>サブネットの委任を追加または削除する
 
@@ -36,11 +36,11 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーキング]**  >  **[仮想ネットワーク]** の順に選択します。
 1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「*MyVirtualNetwork*」と入力します。 |
+    | Name | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.0.0.0/16*」と入力します。 |
-    | Subscription | サブスクリプションを選択します。|
+    | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
     | Location | **[EastUS]** を選択します。|
     | サブネット - 名前 | 「*mySubnet*」と入力します。 |
@@ -76,7 +76,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 
 代わりに Azure CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.28 以降を使用する必要があります。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードについては、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」をご覧ください。
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 [az group create](https://docs.microsoft.com/cli/azure/group) を使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、**myResourceGroup** という名前のリソース グループを **eastus** に作成します。
@@ -124,7 +124,7 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 委任が適用されたことを確認するには、[az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show) を使用します。 サービスが、**serviceName** プロパティの下のサブネットに委任されていることを確認します。
 
 ```azurecli-interactive
-  az network vnet show \
+  az network vnet subnet show \
   --resource-group myResourceGroup \
   --name mySubnet \
   --vnet-name myVnet
@@ -177,13 +177,13 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-### <a name="connect-to-azure"></a>Azure への接続
+### <a name="connect-to-azure"></a>Azure に接続する
 
 ```azurepowershell-interactive
   Connect-AzAccount
 ```
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 [New-AzResourceGroup](https://docs.microsoft.com/cli/azure/group) を使用して Azure リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
@@ -252,5 +252,5 @@ Azure サービスに委任するサブネットを作成しなかった場合�
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure でサブネットを管理する](virtual-network-manage-subnet.md)方法を確認します。

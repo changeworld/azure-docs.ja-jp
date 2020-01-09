@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792648"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428876"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Power Automate からフローをエクスポートして Azure Logic Apps にデプロイする
 
@@ -81,7 +81,7 @@ ms.locfileid: "74792648"
 
       承認が必要な接続ごとに、警告アイコンが表示されます。
 
-      ![警告のアイコン](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
+      ![警告アイコン](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
 
    1. 承認された接続が必要な手順ごとに、その手順を展開して **[Add new]\(新規追加\)** を選択します。
 
@@ -133,7 +133,7 @@ ms.locfileid: "74792648"
 
 1. ソリューション エクスプローラーで、プロジェクトのショートカット メニューを開き、 **[デプロイ]**  >  **[新規作成]** の順に選択します。 メッセージに従って Azure アカウントでサインインします。
 
-1. メッセージが表示されたら、Azure サブスクリプション、Azure リソース グループ、および、デプロイに使用するその他の設定 (テンプレートのパラメーター値を渡すために使用する[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)など) を確認して、 **[デプロイ]** を選択します。
+1. メッセージが表示されたら、Azure サブスクリプション、Azure リソース グループ、および、デプロイに使用するその他の設定 (テンプレートのパラメーター値を渡すために使用する[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)など) を確認して、 **[デプロイ]** を選択します。
 
    ![デプロイの設定を確認する](./media/export-from-microsoft-flow-logic-app-template/confirm-azure-subscription-resource-group-deployment.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "74792648"
 
    ![デプロイのパラメーターを編集する](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   デプロイが開始されると、Visual Studio の **[出力]** ウィンドウにアプリのデプロイ状態が表示されます。 状態が表示されない場合、 **[Show output from]\(出力元の表示\)** の一覧を開いて、Azure リソース グループを選択します。 例:
+   デプロイが開始されると、Visual Studio の **[出力]** ウィンドウにアプリのデプロイ状態が表示されます。 状態が表示されない場合、 **[Show output from]\(出力元の表示\)** の一覧を開いて、Azure リソース グループを選択します。 次に例を示します。
 
    ![[出力] ウィンドウ](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 
@@ -157,7 +157,7 @@ ms.locfileid: "74792648"
 
 これらのデプロイ手順の詳細については、次を参照してください: [クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-to-Azure)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Logic Apps のコネクタ](../connectors/apis-list.md)の詳細について学習します。
 * [Azure Logic Apps](../logic-apps/logic-apps-overview.md) について学習します

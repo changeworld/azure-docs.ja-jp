@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 208cff3c816b8243bc31b3db819f13dafe58c1d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e278172bc1c3ec4e81860c3f6d6a4b644731e2c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683205"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647783"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>PowerShell を使用して静的パブリック IP アドレスを持つ仮想マシンを作成する
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-静的パブリック IP アドレスを持つ仮想マシンを作成できます。 パブリック IP アドレスを使用して、インターネットから仮想マシンへの通信を行うことができます。 動的アドレスではなく静的パブリック IP アドレスを割り当てることで、アドレスの変更がないことが保証されます。 [静的パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#allocation-method)の詳細を参照してください。 既存の仮想マシンに割り当てられたパブリック IP アドレスの動的から静的への変更、またはプライベート IP アドレスの操作については、[IP アドレスの追加、変更、または削除](virtual-network-network-interface-addresses.md)に関する記事を参照してください。 パブリック IP アドレスには[ごくわずかな料金](https://azure.microsoft.com/pricing/details/ip-addresses)がかかり、サブスクリプションごとに使用できるパブリック IP アドレスの数には[制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)があります。
+静的パブリック IP アドレスを持つ仮想マシンを作成できます。 パブリック IP アドレスを使用して、インターネットから仮想マシンへの通信を行うことができます。 動的アドレスではなく静的パブリック IP アドレスを割り当てることで、アドレスの変更がないことが保証されます。 [静的パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#allocation-method)の詳細を参照してください。 既存の仮想マシンに割り当てられたパブリック IP アドレスの動的から静的への変更、またはプライベート IP アドレスの操作については、[IP アドレスの追加、変更、または削除](virtual-network-network-interface-addresses.md)に関する記事を参照してください。 パブリック IP アドレスには[ごくわずかな料金](https://azure.microsoft.com/pricing/details/ip-addresses)がかかり、サブスクリプションごとに使用できるパブリック IP アドレスの数には[制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)があります。
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
@@ -67,7 +67,7 @@ ms.locfileid: "64683205"
 > [!WARNING]
 > 仮想マシンのオペレーティング システム内の IP アドレス設定は変更しないでください。 オペレーティング システムは、Azure のパブリック IP アドレスを認識しません。 プライベート IP アドレスの設定をオペレーティング システムに追加できますが、必要でない限り、この操作は行わないことをお勧めします。必要な場合は、[オペレーティング システムへのプライベート IP アドレスの追加](virtual-network-network-interface-addresses.md#private)に関する記事を読んだ後で行うことをお勧めします。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要なくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
 
@@ -75,7 +75,7 @@ ms.locfileid: "64683205"
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure の[パブリック IP アドレス](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)の詳細を確認する
 - [パブリック IP アドレスの設定](virtual-network-public-ip-address.md#create-a-public-ip-address)の詳細を確認する

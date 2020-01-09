@@ -4,15 +4,15 @@ description: この記事では、1 つまたは複数の仮想マシンを含�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: e9e5504125920cedaf383f8fa4299a4b1b1d60ed
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 40d89dd675e063283d1ed90cf145575b8164e4e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400702"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>ハイブリッド環境での Azure Monitor for VMs (プレビュー) の有効化
 
@@ -49,7 +49,7 @@ ms.locfileid: "72553875"
 
 次の表に、コマンド ラインからのエージェントのセットアップでサポートされているパラメーターを示します。
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 |:--|:--|
 | /? | コマンド ライン オプションの一覧を返します。 |
 | /S | ユーザーの操作を必要とせずに、サイレント インストールを実行します。 |
@@ -66,10 +66,10 @@ Dependency Agent は、*InstallDependencyAgent-Linux64.bin* (自己解凍バイ�
 > エージェントをインストールまたは構成するには、ルート アクセスが必要です。
 >
 
-| パラメーター | 説明 |
+| パラメーター | [説明] |
 |:--|:--|
 | -help | コマンド ライン オプションの一覧を取得します。 |
-| -s | ユーザー プロンプトを表示せずにサイレント インストールを実行します。 |
+| -S | ユーザー プロンプトを表示せずにサイレント インストールを実行します。 |
 | --check | アクセス許可とオペレーティング システムを確認しますが、エージェントはインストールしません。 |
 
 たとえば、`-help` パラメーターを使用してインストール プログラムを実行するには、「**InstallDependencyAgent-Linux64.bin -help**」と入力します。
@@ -107,7 +107,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sudo sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-## <a name="desired-state-configuration"></a>Desired State Configuration
+## <a name="desired-state-configuration"></a>必要な状態の構成
 
 Desired State Configuration (DSC) を使用して Dependency Agent をデプロイするには、xPSDesiredStateConfiguration モジュールと次に示すコード例を使用できます。
 
@@ -253,7 +253,7 @@ Dependency Agent のインストールに成功しても、マップにご利用
 C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log ファイル (Windows) または /var/opt/microsoft/dependency-agent/log/service.log ファイル (Linux) を確認します。 ファイルの最後の行に、カーネルがロードされなかった原因が示されています。 たとえば、カーネルを更新した場合にそのカーネルが Linux でサポートされないことがあります。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、仮想マシンに対する監視が有効になったので、この情報を Azure Monitor for VMs での分析に使用できます。
  

@@ -3,18 +3,18 @@ title: IoT プラグ アンド プレイ プレビュー モデル検出を実�
 description: ソリューション開発者として、IoT プラグ アンド プレイ モデル検出をソリューションに実装する方法について説明します。
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 07/17/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: c37446fd5a0cdc986044405a9aa3da32462d9c04
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 66da0321930ac38217a336380c9889963a433e67
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114270"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531362"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>IoT プラグ アンド プレイ プレビュー モデル検出を IoT ソリューションに実装する
 
@@ -75,6 +75,6 @@ IoT プラグ アンド プレイ デバイスがデバイス プロビジョニ
 1. デバイスによって実装された各インターフェイスの JSON ファイルが見つかった場合は、デバイスの機能を列挙できます。 前に記述したロジックを使用して、ユーザーがデバイスと対話できるようにします。
 1. デジタル ツイン API はいつでも呼び出して、デバイスの機能モデル ID とインターフェイス ID を取得できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここまでで IoT ソリューションのモデル検出について学びました。次は [Azure IoT プラットフォーム](overview-iot-plug-and-play.md)の詳細について学び、別の機能をソリューションに活用してみてください。

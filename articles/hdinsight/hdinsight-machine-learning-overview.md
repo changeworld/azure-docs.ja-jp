@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 4a1e621570f3bf5fdb78a2fd7b29ce0d1b51187f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 679b59ac786f863c8a5f34aec71f51c5dc75a167
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951787"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608705"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight での機械学習
 
@@ -49,7 +49,7 @@ Azure Machine Learning には、予測分析をモデル化するためのツー
 
 ディープ ラーニングにおける独自の機能の進歩に役立つように、Microsoft は無料で、使いやすい、オープンソースの [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) を開発しました。 このツールキットは、ディープ ラーニングを大規模に展開する必要がある世界中の企業や、最新のアルゴリズムと手法に関心がある学生によって、さまざまな Microsoft 製品で使用されています。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 ### <a name="scenarios"></a>シナリオ
 
@@ -64,4 +64,4 @@ Azure Machine Learning には、予測分析をモデル化するためのツー
 
 * [Azure HDInsight Spark クラスターで Microsoft Cognitive Toolkit ディープ ラーニング モデルを使用する](spark/apache-spark-microsoft-cognitive-toolkit.md)
 * [分散型深層学習用に Azure HDInsight Spark で Caffe を使用する](spark/apache-spark-deep-learning-caffe.md)
-* [Data Science Virtual Machine (DSVM) でのディープ ラーニングおよび AI フレームワーク](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)
+* [Data Science Virtual Machine (DSVM) でのディープ ラーニングおよび AI フレームワーク](../machine-learning/data-science-virtual-machine/dsvm-tools-deep-learning-frameworks.md)

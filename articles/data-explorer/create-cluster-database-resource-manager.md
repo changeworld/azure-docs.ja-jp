@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 4a95804bcff3653df42186907f03d0bc27a603ea
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9a91f81c9d28f1b3c8d553a2a8a26d53ff1b2b3e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444486"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -26,7 +26,7 @@ ms.locfileid: "74869716"
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 
 
-この記事では、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)を使用して Azure Data Explorer クラスターとデータベースを作成します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、[Azure Resource Manager テンプレートのオーサリング](/azure/azure-resource-manager/resource-group-authoring-templates)に関する記事をご覧ください。 テンプレートで使用する JSON の構文とプロパティについては、「[Microsoft.Kusto のリソースの種類](/azure/templates/microsoft.kusto/allversions)」を参照してください。
+この記事では、[Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を使用して Azure Data Explorer クラスターとデータベースを作成します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。 テンプレートの作成の詳細については、[Azure Resource Manager テンプレートのオーサリング](/azure/azure-resource-manager/resource-group-authoring-templates)に関する記事をご覧ください。 テンプレートで使用する JSON の構文とプロパティについては、「[Microsoft.Kusto のリソースの種類](/azure/templates/microsoft.kusto/allversions)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -157,6 +157,6 @@ Write-Host "Press [ENTER] to continue ..."
 
 [!INCLUDE [data-explorer-clean-resources](../../includes/data-explorer-clean-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Data Explorer クラスターとデータベースへのデータの取り込み](ingest-data-overview.md)

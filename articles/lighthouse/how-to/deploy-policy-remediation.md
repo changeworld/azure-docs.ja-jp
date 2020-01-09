@@ -3,20 +3,20 @@ title: 修復できるポリシーをデプロイする
 description: Azure の委任されたリソース管理に顧客をオンボードする方法について説明します。これにより、自分のテナントからそれらのリソースにアクセスして管理できるようになります。
 ms.date: 10/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4522c9ebad741f5ec0cb7e56e68467312ef8f037
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463881"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456863"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>委任されたサブスクリプション内で修復が可能なポリシーをデプロイする
 
-[Azure Lighthouse](../overview.md) では、サービス プロバイダーが委任されたサブスクリプション内にポリシー定義を作成したり、その編集をしたりすることができます。 ただし、[修復タスク](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources)を使用しているポリシー (つまり、効果が [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists) または [modify](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify) のポリシー) をデプロイする場合には、顧客のテナントに[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を作成する必要があります。 このマネージド ID は、ポリシー内にテンプレートをデプロイする際に Azure Policy が使用するものです。 このシナリオを実現するにあたっては、顧客を Azure の委任されたリソース管理にオンボードする場合とポリシーそのものをデプロイする場合のどちらにも必要な手順があります。
+[Azure Lighthouse](../overview.md) では、サービス プロバイダーが委任されたサブスクリプション内にポリシー定義を作成したり、その編集をしたりすることができます。 ただし、[修復タスク](../../governance/policy/how-to/remediate-resources.md)を使用しているポリシー (つまり、効果が [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists) または [modify](../../governance/policy/concepts/effects.md#modify) のポリシー) をデプロイする場合には、顧客のテナントに[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を作成する必要があります。 このマネージド ID は、ポリシー内にテンプレートをデプロイする際に Azure Policy が使用するものです。 このシナリオを実現するにあたっては、顧客を Azure の委任されたリソース管理にオンボードする場合とポリシーそのものをデプロイする場合のどちらにも必要な手順があります。
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>顧客のテナント内でマネージド ID にロールを割り当てることができるユーザーを作成する
 
-Azure の委任されたリソースの管理に顧客をオンボードする際には、[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer#create-an-azure-resource-manager-template)のほかに、パラメーター ファイルを使用します。このパラメーター ファイルには、管理主体となるテナント内のユーザー、ユーザー グループ、サービス プリンシパルのうち、顧客テナント内の委任されたリソースにアクセスできるようにするものを定義します。 パラメーター ファイルでは、ファイルに定義した各ユーザー (**principalId**) に対して、アクセス権のレベルを定めた[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (**roleDefinitionId**) が割り当てられます。
+Azure の委任されたリソースの管理に顧客をオンボードする際には、[Azure Resource Manager テンプレート](onboard-customer.md#create-an-azure-resource-manager-template)のほかに、パラメーター ファイルを使用します。このパラメーター ファイルには、管理主体となるテナント内のユーザー、ユーザー グループ、サービス プリンシパルのうち、顧客テナント内の委任されたリソースにアクセスできるようにするものを定義します。 パラメーター ファイルでは、ファイルに定義した各ユーザー (**principalId**) に対して、アクセス権のレベルを定めた[組み込みロール](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**) が割り当てられます。
 
 ある **principalId** に顧客テナント内でのマネージド ID の作成を許可するには、**roleDefinitionId** を**ユーザー アクセス管理者**に設定する必要があります。 このロールは一般にサポートされているものではありませんが、今回のように、このアクセス許可が設定されているユーザーがマネージド ID に対していくつかの組み込みロールを割り当てられるようにするシナリオでは利用が可能です。 これらのロールは、**delegatedRoleDefinitionIds** プロパティで定義します。 そこには、ユーザー アクセス管理者または所有者を除き、あらゆる組み込みロールを指定できます。
 
@@ -64,7 +64,7 @@ Azure の委任されたリソースの管理に顧客をオンボードする�
 > [!TIP]
 > 委任されたサブスクリプションに (modify の効果を使って) タグを追加または削除するポリシーのデプロイ方法は、[別のよく似たサンプル](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates/policy-add-or-replace-tag)でも確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) の詳細を確認する。
-- [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) の詳細を確認する。
+- [Azure Policy](../../governance/policy/index.yml) の詳細を確認する。
+- [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の詳細を確認する。

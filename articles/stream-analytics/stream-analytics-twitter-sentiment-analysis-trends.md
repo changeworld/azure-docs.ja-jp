@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics でのリアルタイム Twitter 感情分析
 description: この記事では、リアルタイム Twitter 感情分析に Stream Analytics を使う方法について説明します。 イベントの生成からライブ ダッシュボード上でのデータ操作までの手順。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 8561789d53c3c1b00ac1477909bcbe356fe6a85d
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: f3ab21d55b7d59bb58760bfba452b4ea2d103496
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173193"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369900"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
@@ -23,7 +22,7 @@ Azure Event Hubs に Twitter イベントをリアルタイム入力すること
 
 リアルタイム Twitter 傾向分析は、分析ツールの好例です。ハッシュタグ サブスクリプション モデルにより、特定のキーワード (ハッシュタグ) をリッスンし、フィードの感情分析を展開できます。
 
-## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>シナリオ: リアルタイムのソーシャル メディア感情分析
+## <a name="scenario-social-media-sentiment-analysis-in-real-time"></a>シナリオ:リアルタイムのソーシャル メディア感情分析
 
 ニュース メディア Web サイトを運営している会社は、その閲覧者に直接関係するサイト コンテンツを際立たせることで、競合他社より優位に立つことに着目しています。 そのため、会社は、Twitter データのリアルタイム感情分析を実行することで、閲覧者に関連するトピックのソーシャル メディア分析を使用します。
 
@@ -235,7 +234,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 3. TwitterWpfClient アプリケーションが実行されていることを確認します。 
 
-3. **[クエリ]** ブレードで、`TwitterStream` 入力の横の点をクリックし、 **[入力からのサンプル データ]** を選択します。
+3. **[クエリ]** ブレードで、`TwitterStream` 入力の横の点をクリックし、 **[入力からのサンプル データ]** を選びます。
 
     ![Stream Analytics ジョブ エントリにサンプル データを使用するためのメニュー オプション - [入力からのサンプル データ] を選択](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-sample-data-from-input.png)
 
@@ -265,7 +264,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 5. **[Test]** をクリックします。 サンプリングされたデータに対してクエリが実行されます。
     
-6. **[Save]** をクリックします。 クエリが Stream Analytics ジョブの一部として保存されます (サンプル データは保存されません)。
+6. **[保存]** をクリックします。 クエリが Stream Analytics ジョブの一部として保存されます (サンプル データは保存されません)。
 
 
 ## <a name="experiment-using-different-fields-from-the-stream"></a>ストリームのさまざまなフィールドを使用した実験 
@@ -298,7 +297,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
    * **[インポート オプション]** : **[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
    * **[ストレージ アカウント]** 。 **[新しいストレージ アカウントを作成する]** を選択します。
    * **[ストレージ アカウント]** (2 つ目のボックス): 「`YOURNAMEsa`」と入力します。`YOURNAME` は、自分の名前または別の一意の文字列です。 名前には小文字と数字だけを使用できます。名前は Azure 全体で一意である必要があります。 
-   * **[コンテナー]** : 「 `socialtwitter` 」を入力します。
+   * **[コンテナー]** 。 「`socialtwitter`」と入力します。
      ストレージ アカウント名とコンテナー名は、BLOB ストレージの URI を指定するときに次のように組み合わせて使われます。 
 
      `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`
@@ -358,7 +357,7 @@ Twitter のセンチメントを理解するために使用できるもう 1 つ
     HAVING COUNT(*) > 20
     ```
 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 5. TwitterWpfClient アプリケーションが実行されていることを確認します。 
 

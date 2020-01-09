@@ -3,17 +3,17 @@ title: クラウド サービス向けの SSL の構成 | Microsoft Docs
 description: Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。 これらの例では、Azure ポータルを使用します。
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
-ms.author: gwallace
-ms.openlocfilehash: cc5b142558a21d1364254e555f3cf8f64bba0e58
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: tagore
+ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469022"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386767"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Azure でアプリケーションの SSL を構成する
 
@@ -76,7 +76,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
    アクセス許可 (`permissionLevel` 属性) は、次の値のいずれかに設定できます。
 
-   | アクセス許可の値 | 説明 |
+   | アクセス許可の値 | [説明] |
    | --- | --- |
    | limitedOrElevated |**(既定)** すべてのロール プロセスが秘密キーにアクセスできます。 |
    | elevated |引き上げられたプロセスだけが秘密キーにアクセスできます。 |
@@ -171,8 +171,11 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
    > GUID ベースの URL と同じ共通名 (CN) で証明書を作成します (たとえば **328187776e774ceda8fc57609d404462.cloudapp.net**)。 ポータルを使用して、この証明書をステージングされたクラウド サービスに追加します。 次に、証明書情報を CSDEF ファイルと CSCFG ファイルに追加し、アプリケーションを再パッケージ化し、新しいパッケージを使用するようにステージング デプロイを更新します。
    >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [クラウド サービスの一般的な構成](cloud-services-how-to-configure-portal.md)
 * 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
+
+
+

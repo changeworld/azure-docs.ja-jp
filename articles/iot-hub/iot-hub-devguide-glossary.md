@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: 6c4215933b3816b445c55282bae9a36e88c0311f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d73dcb89739395e4dd52b1ef4d39c41ad6125666
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890526"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457148"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
@@ -43,14 +43,14 @@ Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団の
 ## <a name="azure-iot-tools"></a>Azure IoT Tools
 [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) は、VS Code で Azure IoT Hub やデバイスを管理するのに役立つ、クロスプラットフォームでかつオープンソースの Visual Studio Code 拡張機能です。 Azure IoT Tools を使用すると、IoT 開発者は VS Code で IoT プロジェクトを容易に開発できます。
 
-## <a name="azure-portal"></a>Azure ポータル
+## <a name="azure-portal"></a>Azure portal
 Azure リソースのプロビジョニングと管理は、[Microsoft Azure Portal](https://portal.azure.com) を使って 1 か所で行うことができます。 Azure Portal は、_ブレード_ を使用してそのコンテンツを整理します。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 [Azure PowerShell](/powershell/azure/overview) は、Windows PowerShell で Azure を管理するために使用できるコマンドレットのコレクションです。 このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。
 
 ## <a name="azure-service-bus"></a>Azure Service Bus
 [Service Bus](../service-bus/index.md) は、エンタープライズ メッセージングと中継通信の機能を持つクラウド対応通信で、オンプレミスのソリューションをクラウドに接続するのに役立ちます。 一部の IoT Hub チュートリアルでは、Service Bus [キュー](../service-bus-messaging/service-bus-messaging-overview.md)を利用します。
@@ -241,7 +241,7 @@ Shared Access Signature (SAS) は、SHA-256 セキュア ハッシュまたは U
 ## <a name="solution"></a>解決策
 _ソリューション_ は、1 つまたは複数のプロジェクトを含む Visual Studio ソリューションを指す場合があります。 _ソリューション_ は、デバイス、[デバイス アプリ](#device-app)、IoT Hub、他の Azure サービス、[バックエンド アプリ](#back-end-app)などの要素を含む IoT ソリューションを指す場合もあります。
 
-## <a name="subscription"></a>Subscription
+## <a name="subscription"></a>サブスクリプション
 Azure サブスクリプションでは、課金が発生します。 作成する各 Azure リソース、または使用する各 Azure サービスは、1 つのサブスクリプションと関連付けられています。 多くのクォータは、サブスクリプションのレベルで適用されます。
 
 ## <a name="system-properties"></a>システム プロパティ

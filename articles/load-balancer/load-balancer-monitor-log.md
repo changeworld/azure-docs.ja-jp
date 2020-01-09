@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 23a3a2629c6f2f89c4b8f6d5af57bcf3b6bb67dd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428846"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>パブリック Basic ロード バランサーの Azure Monitor ログ
 
@@ -38,7 +38,7 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 
 アクティビティ ログは、Resource Manager のすべてのリソースで自動的に有効になります。 イベント ログと正常性プローブ ログでデータの収集を開始するには、これらのログを有効にします。 ログ記録を有効にするには、次の手順に従います。
 
-[Azure Portal](https://portal.azure.com) にサインインします。 ロード バランサーをまだ作成していない場合は、先に進む前に [ロード バランサーを作成](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) します。
+[Azure portal](https://portal.azure.com) にサインインする ロード バランサーをまだ作成していない場合は、先に進む前に [ロード バランサーを作成](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) します。
 
 1. ポータルで、 **[リソース グループ]** をクリックします。
 2. ロード バランサーがある **\<resource-group-name>** を選択します。
@@ -171,11 +171,11 @@ JSON 形式の出力でプロパティ フィールドを見れば、プロー�
 > Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、GitHub から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
 
 ## <a name="stream-to-an-event-hub"></a>イベント ハブへのストリーミング
-診断情報がイベント ハブにストリーム配信されたら、Azure Monitor 統合を使用して、サードパーティ製の SIEM ツールで集中ログ分析に使用できます。 詳しくは、「[イベント ハブへの Azure 監視データのストリーム配信](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration)」を参照してください
+診断情報がイベント ハブにストリーム配信されたら、Azure Monitor 統合を使用して、サードパーティ製の SIEM ツールで集中ログ分析に使用できます。 詳しくは、「[イベント ハブへの Azure 監視データのストリーム配信](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)」を参照してください
 
 ## <a name="send-to-log-analytics"></a>Log Analytics への送信
 Azure 内のリソースは、Log Analytics ワークスペースに直接送信される診断情報を持つことができます。このワークスペースでは、トラブルシューティングと分析のために情報に対して複雑なクエリを実行できます。  詳しくは、「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)」を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Load Balancer プローブを理解する](load-balancer-custom-probe-overview.md)

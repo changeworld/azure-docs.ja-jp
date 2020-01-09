@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: c391aa157e35bdc389bd30efe48fa380d06c193e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ff410d3767e90f92a946b72354b39f87e4f37b9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429012"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs でラボにアーティファクト リポジトリを追加する
 DevTest Labs では、VM の作成時または VM が作成された後に VM に追加されるアーティファクトを指定できます。 このアーティファクトには、VM にインストールするツールやアプリケーションがあります。 アーティファクトは、GitHub または Azure DevOps リポジトリから読み込まれた JSON ファイルで定義されます。 
@@ -65,7 +65,7 @@ DevTest Labs によって維持されている[パブリック アーティフ�
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 このセクションでは、Azure Portal でラボにアーティファクト リポジトリを追加する手順を示します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. **[その他のサービス]** を選択し、サービスの一覧で **[DevTest Labs]** を選択します。
 3. ラボの一覧でラボを選択します。 
 4. 左側のメニューで **[構成とポリシー]** を選択します。
@@ -84,7 +84,7 @@ DevTest Labs によって維持されている[パブリック アーティフ�
 6. **[保存]** を選択します。
 
 ## <a name="use-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
-Azure Resource Management (Azure Resource Manager) テンプレートは、作成する Azure 内のリソースが記載された JSON ファイルです。 これらのテンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)に関するページを参照してください。
+Azure Resource Management (Azure Resource Manager) テンプレートは、作成する Azure 内のリソースが記載された JSON ファイルです。 これらのテンプレートの詳細については、[Azure Resource Manager テンプレートの作成](../azure-resource-manager/templates/template-syntax.md)に関するページを参照してください。
 
 このセクションでは、Azure Resource Manager テンプレートを使用してラボにアーティファクト リポジトリを追加する手順を示します。  このテンプレートでは、ラボがまだ存在しない場合は作成されます。 
 
@@ -165,7 +165,7 @@ Azure Resource Management (Azure Resource Manager) テンプレートは、作�
 
 
 ### <a name="deploy-the-template"></a>テンプレートのデプロイ
-Azure にテンプレートをデプロイし、リソースが存在しない場合は作成され、存在する場合は更新されるようにする方法にはいくつかあります。 詳細については、次の記事を参照してください。
+Azure にテンプレートをデプロイし、リソースが存在しない場合は作成され、存在する場合は更新されるようにする方法にはいくつかあります。 詳しくは、次の記事を参照してください。
 
 - [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
 - [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-cli.md)
@@ -345,10 +345,10 @@ Set-AzContext -SubscriptionId <Your Azure subscription ID>
 ```
 
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 この記事にあるサンプルの PowerShell スクリプトは、次のパラメーターを取ります。
 
-| パラメーター | 説明 | 
+| パラメーター | [説明] | 
 | --------- | ----------- | 
 | LabName | ラボの名前。 |
 | ArtifactRepositoryName | 新しいアーティファクト リポジトリの名前。 リポジトリの名前が指定されていない場合、このスクリプトはランダムな名前を作成します。 |
@@ -391,7 +391,7 @@ $resourceName = $LabName + '/' + $ArtifactRepositoryName
 ```
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [Azure DevTest Labs のラボに対する必須成果物を指定する](devtest-lab-mandatory-artifacts.md)
 - [DevTest Labs 仮想マシンのカスタム アーティファクトの作成](devtest-lab-artifact-author.md)
 - [ラボでアーティファクトの失敗を診断する](devtest-lab-troubleshoot-artifact-failure.md)

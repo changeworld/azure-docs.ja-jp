@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: d9d0ef37c247107a902b1083e77541711f18e7b2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ea86c4670a8eb6dc5e2133ed01045e8aada0f707
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438783"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す
 この記事では、ストアド プロシージャ アクティビティを使用して SSIS パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。 
@@ -28,7 +28,7 @@ ms.locfileid: "74927914"
 
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="azure-sql-database"></a>Azure SQL Database 
+### <a name="azure-sql-database"></a>Azure SQL データベース 
 この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL Database Managed Instance を使うこともできます。
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを作成します
@@ -44,7 +44,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 ### <a name="create-a-data-factory"></a>Data Factory の作成
 次の手順では、データ ファクトリを作成する方法を説明します。 このデータ ファクトリにストアド プロシージャ アクティビティを含むパイプラインを作成します。 ストアド プロシージャ アクティビティが SSISDB データベース内でストアド プロシージャを実行して、SSIS パッケージを実行します。
 
-1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
+1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../../azure-resource-manager/management/overview.md)の名前を二重引用符で囲んで指定し、コマンドを実行します。 (例: `"adfrg"`)。 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -107,7 +107,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
-### <a name="create-an-output-dataset"></a>出力データセットの作成
+### <a name="create-an-output-dataset"></a>出力データセットを作成する
 この出力データセットは、パイプラインのスケジュールを開始するダミーのデータセットです。 頻度は [時間] に設定され、間隔は 1 に設定されています。 したがって、パイプラインは、パイプラインの開始時刻から終了時刻までの間に 1 時間に 1 回実行されます。 
 
 1. 次のような内容の OutputDataset.json ファイルを作成します。 
@@ -196,6 +196,6 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
     select * from catalog.executions
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ストアド プロシージャ アクティビティの詳細については、[ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)に関する記事をご覧ンください。
 

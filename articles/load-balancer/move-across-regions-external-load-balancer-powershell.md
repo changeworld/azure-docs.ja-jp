@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: d8dfbf3f86a2233571a99c4ad832ef7bd3c3ed48
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a24eb4608e7630d5b613751fa2120361eccd7672
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077931"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644819"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Azure PowerShell を使用して Azure 外部ロード バランサーを別のリージョンに移動する
 
@@ -32,7 +32,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
 
 - Azure サブスクリプションで、使用するターゲット リージョンに外部ロード バランサーを作成できることを確認します。 サポートに連絡して、必要なクォータを有効にしてください。
 
-- サブスクリプションに、このプロセス用のロード バランサーの追加をサポートするための十分なリソースがあることを確認してください。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)」をご覧ください。
+- 自分のサブスクリプションに、このプロセスでロード バランサーの追加をサポートするのに十分なリソースがあることを確認してください。  「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)」をご覧ください。
 
 
 ## <a name="prepare-and-move"></a>準備と移動
@@ -114,7 +114,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
     Get-AzLocation | format-table
     
     ```
-8. また、必要に応じて、テンプレート内の次のような他のパラメーターも変更できます。これらは、要件に基づくオプションです。
+8. また、必要に応じて、テンプレート内の他のパラメーターも変更できます。これらは、実際の要件に応じて省略可能です。
 
     * **SKU** - 構成のパブリック IP の SKU を、Standard から Basic、または Basic から Standard に変更できます。そのためには、 **\<resource-group-name>.json** ファイルの **sku** > **name** プロパティを変更します。
 
@@ -237,7 +237,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
     ```azurepowershell-interactive
     $targetPubIPID = (Get-AzPublicIPaddress -Name <target-public-ip-name> -ResourceGroupName <target-resource-group-name>).Id
     ```
-    リソース ID を表示するには、変数を入力し、Enter キーを押します。  ID パスを強調表示して、クリップボードにコピーします。
+    リソース ID を表示するには、変数を入力し、Enter キーを押します。  ID パスを強調表示してクリップボードにコピーします。
 
     ```powershell
     PS C:\> $targetPubIPID
@@ -304,7 +304,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
     Get-AzLocation | format-table
     
     ```
-12. また、必要に応じて、テンプレート内の次のような他のパラメーターも変更できます。これらは、要件に基づくオプションです。
+12. また、必要に応じて、テンプレート内の他のパラメーターも変更できます。これらは、実際の要件に応じて省略可能です。
     
     * **SKU** - 構成の外部ロード バランサーの SKU を、Standard から Basic または Basic から Standard に変更できます。そのためには、 **\<resource-group-name>.json** ファイルの **sku** > **name** プロパティを変更します。
 
@@ -320,7 +320,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                 "tier": "Regional"
             },
         ```
-      Basic SKU と Standard SKU のロード バランサーの違いについて詳しくは、「[Azure Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」を参照してください
+      Basic SKU と Standard SKU のロード バランサーの違いの詳細については、「[Azure Standard Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」を参照してください。
 
     * **負荷分散規則** - 構成の負荷分散規則を追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **loadBalancingRules** セクションでエントリを追加または削除します。
 
@@ -352,7 +352,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                     }
                 ]
         ```
-       負荷分散規則の詳細については、「[Azure Load Balancer の概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください
+       負荷分散規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
 
     * **プローブ** - 構成のロード バランサーのプローブを追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **probes** セクションでエントリを追加または削除します。
 
@@ -372,7 +372,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                     }
                 ],
         ```
-       Azure Load Balancer の正常性プローブの詳細については、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください
+       Azure Load Balancer の正常性プローブの詳細については、「[Load Balancer の正常性プローブ](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)」を参照してください。
 
     * **インバウンド NAT 規則** - ロード バランサーのインバウンド NAT 規則を追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **inboundNatRules** セクションでエントリを追加または削除します。
 
@@ -396,7 +396,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
                     }
                 ]
         ```
-        インバウンド NAT 規則の追加または削除を完了するには、 **\<resource-group-name>.json** ファイルの末尾の **type** プロパティとして、規則が存在するか削除されている必要があります。
+        インバウンド NAT 規則の追加または削除を完了するには、 **\<resource-group-name>.json** ファイルの末尾で **type** プロパティとして、規則が存在するか削除されている必要があります。
 
         ```json
         {
@@ -420,7 +420,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
             }
         }
         ```
-        インバウンド NAT 規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください
+        インバウンド NAT 規則の詳細については、「[Azure Load Balancer とは](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)」を参照してください。
 
     * **アウトバウンド規則** - 構成のアウトバウンド規則を追加または削除できます。そのためには、 **\<resource-group-name>.json** ファイルの **outboundRules** プロパティを編集します。
 
@@ -452,7 +452,7 @@ Azure 外部ロード バランサーをリージョン間で移動すること�
 
 13. **\<resource-group-name>.json** ファイルを保存します。
     
-10. [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) を使用して、デプロイするターゲット外部ロード バランサーのターゲット リージョンにリソース グループを作成します。 このプロセスの一部として、上の既存のリソース グループを再利用することもできます。
+10. [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) を使用して、デプロイするターゲット外部ロード バランサーのターゲット リージョンにリソース グループを作成します。 このプロセスの一環として、上記の既存のリソース グループを再利用することもできます。
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
@@ -508,9 +508,9 @@ Remove-AzPublicIpAddress -Name <public-ip> -ResourceGroupName <resource-group-na
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure ネットワーク セキュリティ グループをあるリージョンから別のリージョンに移動し、ソース リソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
+このチュートリアルでは、Azure ネットワーク セキュリティ グループをあるリージョンから別のリージョンに移動し、移動元リソースをクリーンアップしました。  リージョン間でのリソースの移動と Azure でのディザスター リカバリーの詳細については、以下を参照してください。
 
 
 - [リソースを新しいリソース グループまたはサブスクリプションに移動する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)

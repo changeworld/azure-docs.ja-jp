@@ -3,18 +3,18 @@ title: Python と Azure Cloud Services を使ってみる | Microsoft Docs
 description: Azure クラウド サービス (Web ロール、worker ロールを含む) を Python Tools for Visual Studio で作成する方法の概要
 services: cloud-services
 documentationcenter: python
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 981b1cc4a7adb98ba68ebf3a7673b7116479e704
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: tagore
+ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68359563"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360720"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python Tools for Visual Studio による Python Web ロールと Python worker ロール
 
@@ -325,7 +325,7 @@ Web ロールまたは worker ロールをデバッグするには、対象と�
 ### <a name="investigate-logs"></a>ログを調査する
 クラウド サービスの仮想マシンが起動され、Python がインストールされた後、ログにエラー メッセージが含まれているかどうかを確認します。 これらのログは、**C:\Resources\Directory\\{role}\LogFiles** フォルダーに格納されます。 **PrepPython.err.txt** には、Python がインストールされているかどうかを検出しようとしたとき以降のエラーが少なくとも 1 つ含まれます。**PipInstaller.err.txt** には、pip のバージョンが古いことに関するエラーが含まれる場合があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Python Tools for Visual Studio で Web ロールまたは worker ロールを扱う方法の詳細については、次の PTVS 関連ドキュメントを参照してください。
 
 * [クラウド サービス プロジェクト][Cloud Service Projects]
@@ -363,3 +363,6 @@ Web ロールまたは worker ロールから Azure Storage や Service Bus な�
 [Azure SDK Tools for VS 2017]: https://go.microsoft.com/fwlink/?LinkId=746483
 [Python 2.7 32-bit]: https://www.python.org/downloads/
 [Python 3.5 32-bit]: https://www.python.org/downloads/
+
+
+

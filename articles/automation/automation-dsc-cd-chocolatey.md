@@ -2,19 +2,15 @@
 title: Chocolatey を使用した Azure Automation State Configuration の継続的なデプロイ
 description: Azure Automation State Configuration と Chocolatey パッケージ マネージャーを使用した DevOps の継続的なデプロイメント。  完全な JSON の Resource Manager テンプレートと PowerShell ソースの例です。
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/08/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ddbf652c35c4f1504e3253838a983fd0f6039401
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850365"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366432"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用例: Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ
 
@@ -201,7 +197,7 @@ VM でこの手法を使用する際に、Resource Manager テンプレートや
 * [Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
 * [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 概要については、[Azure Automation State Configuration](automation-dsc-overview.md) に関するページをご覧ください。
 - 使用を開始するには、「[Azure Automation State Configuration の使用](automation-dsc-getting-started.md)」をご覧ください。

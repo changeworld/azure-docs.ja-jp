@@ -4,15 +4,15 @@ description: 共通シナリオのガイダンスを含む、Event Hubs で Azur
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 2b24618e4d7c12366db5e72226c6f94924d4d3a5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 2b84f752467d630142f1920aac08bf5321b13acb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363729"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Event Hubs を利用してホット パスの Azure Diagnostics データをストリーム配信する
 Azure Diagnostics では柔軟な方法でクラウド サービスの仮想マシン (VM) からメトリックとログを収集し、その結果を Azure Storage に転送できます。 2016 年 3 月 (SDK 2.9) の期間から、診断をカスタムのデータ ソースに送信し、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) を利用してホット パス データを数秒で転送できるようになりました。
@@ -43,7 +43,7 @@ Azure Diagnostics からデータを受け取る Event Hubs は、Azure SDK 2.9 
 * 「[Event Hubs の使用](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)」に従ってプロビジョニングされた Event Hubs 名前空間
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Azure Diagnostics を Event Hubs シンクに接続する
-既定では、Azure Diagnostics では常に、ログとメトリックが Azure Storage アカウントに送信されます。 *.wadcfgx* ファイルの **PublicConfig**  / セクションの **WadCfg** 要素に新しい **Sinks** セクションを追加することで、アプリケーションでデータを Event Hubs に送信することもできます。 Visual Studio で、 *.wadcfgx*ファイルは次のパスに格納されます。 **[Cloud Service Project (クラウド サービス プロジェクト)]**  >  **[ロール]**  >  **[(ロール名)]**  > **diagnostics.wadcfgx** ファイル。
+既定では、Azure Diagnostics では常に、ログとメトリックが Azure Storage アカウントに送信されます。 *.wadcfgx* ファイルの **PublicConfig** / セクションの **WadCfg** 要素に新しい **Sinks** セクションを追加することで、アプリケーションでデータを Event Hubs に送信することもできます。 Visual Studio で、 *.wadcfgx*ファイルは次のパスに格納されます。 **[Cloud Service Project (クラウド サービス プロジェクト)]**  >  **[ロール]**  >  **[(ロール名)]**  > **diagnostics.wadcfgx** ファイル。
 
 ```xml
 <SinksConfig>
@@ -316,10 +316,10 @@ namespace EventHubListener
 
     Azure Diagnostics 自体のログとエラーが含まれる Azure Storage テーブルを確認してください。**WADDiagnosticInfrastructureLogsTable** です。 1 つの方法は、 [Azure ストレージ エクスプローラー](https://www.storageexplorer.com) などのツールを利用してこのストレージ アカウントに接続して、このテーブルを表示し、過去 24 時間の TimeStamp のクエリを追加することです。 ツールを使用して .csv ファイルをエクスポートし、Microsoft Excel などのアプリケーションで開くことができます。 Excel を使用すると、 **EventHubs**のようなコーリングカード文字列を簡単に検索して、報告されたエラーを確認できます。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 •    [Event Hubs の詳細を確認します。](https://azure.microsoft.com/services/event-hubs/)
 
-## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>付録:完全な Azure Diagnostics 構成ファイル (.wadcfgx) の例
+## <a name="appendix-complete-azure-diagnostics-configuration-file-wadcfgx-example"></a>付録: 完全な Azure Diagnostics 構成ファイル (.wadcfgx) の例
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <DiagnosticsConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -503,7 +503,7 @@ Public 設定:
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](../../event-hubs/event-hubs-about.md)

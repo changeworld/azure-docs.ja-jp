@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: bcc60c0f934111f779e3fdedc399881acb16f208
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: f3f8f377ac8e65d375f8f78c803db5427fd31007
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872793"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75394484"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor ブックの視覚化
 
@@ -51,7 +51,7 @@ Azure Monitor のブックでは、レポートのニーズに合わせてさま
 
 1. **[編集]** ツール バー項目をクリックして、ブックを編集モードに切り替えます。
 2. **[クエリの追加]** リンクを使用して、ログ クエリ コントロールをブックに追加します。
-3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) とターゲットのリソースを選択します。
+3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) と、ターゲットにするリソースを選択します。
 4. クエリ エディターを使用して、分析用の [KQL](https://docs.microsoft.com/azure/kusto/query/) (たとえば、要求の傾向など) を入力します。
 5. 視覚化を次のいずれかに設定します:**面**、**横棒**、**横棒 (カテゴリ別)** 、**折れ線**、**円**、**散布図**、**時間**。
 6. 必要に応じて他のパラメーターを設定します (時間範囲、視覚化、サイズ、カラー パレット、凡例など)。
@@ -108,7 +108,7 @@ Azure Monitor のブックでは、レポートのニーズに合わせてさま
 
 1. **[編集]** ツール バー項目をクリックして、ブックを編集モードに切り替えます。
 2. **[クエリの追加]** リンクを使用して、ログ クエリ コントロールをブックに追加します。
-3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) とターゲットのリソースを選択します。
+3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) と、ターゲットにするリソースを選択します。
 4. クエリ エディターを使用して、分析用の KQL (たとえば、メモリがしきい値を下回った VM など) を入力します。
 5. 視覚化を **[グリッド]** に設定します
 6. 必要に応じて他のパラメーターを設定します (時間範囲、サイズ、カラー パレット、凡例など)。
@@ -190,7 +190,7 @@ Azure Monitor のブックでは、レポートのニーズに合わせてさま
 
 ### <a name="tree-settings"></a>ツリー設定
 
-| Setting | 説明 |
+| 設定 | 説明 |
 |:------------- |:-------------|
 | `Id Field` | グリッド内のすべての行の一意 ID |
 | `Parent Id Field` | 現在の行の親の ID |
@@ -251,7 +251,7 @@ Azure Monitor のブックでは、レポートのニーズに合わせてさま
 
 ![タイルの概要ビューのスクリーンショット](./media/workbooks-visualizations/graph-settings.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Azure Resource Manager を使用してブックを[デプロイ](workbooks-automate.md)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。

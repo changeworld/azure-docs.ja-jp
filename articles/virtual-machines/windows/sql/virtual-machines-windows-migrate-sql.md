@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5a8b66c181505a617b002d1a45675d4677588b1c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c8314b04c05e2ecba2715b807171b5c1a2fa988a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102197"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646865"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Azure VM の SQL Server への SQL Server データベースの移行
 
@@ -58,15 +58,15 @@ ms.locfileid: "70102197"
 
 次の表に、主な移行方法の一覧を示します。ここでは、それぞれの方法を使用するタイミングとして最適な状況についても説明します。
 
-| Method | 移行元データベースのバージョン | 移行先データベースのバージョン | 移行元データベースのバックアップ サイズ制限 | メモ |
+| 方法 | 移行元データベースのバージョン | 移行先データベースのバージョン | 移行元データベースのバックアップ サイズ制限 | メモ |
 | --- | --- | --- | --- | --- |
-| [圧縮機能を使用してオンプレミスのバックアップの実行し、そのバックアップ ファイルを Azure 仮想マシンに手動でコピーする](#backup-and-restore) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | これは、マシン間でデータベースを移動する際の、十分にテストされた非常にシンプルな手法です。 |
+| [圧縮機能を使用してオンプレミスのバックアップの実行し、そのバックアップ ファイルを Azure 仮想マシンに手動でコピーする](#backup-and-restore) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | これは、マシン間でデータベースを移動する際の、十分にテストされた非常にシンプルな手法です。 |
 | [URL へのバックアップを実行し、その URL から Azure 仮想マシンに復元する](#backup-to-url-and-restore) |SQL Server 2012 SP1 CU2 以上 |SQL Server 2012 SP1 CU2 以上 |SQL Server 2016 の場合は 12.8 TBまで、それ以外の場合は 1 TB まで | これは、Azure Storage を使用してバックアップ ファイルを VM に移動するもう 1 つの方法です。 |
-| [データとログ ファイルをデタッチしてから、Azure BLOB ストレージにコピーし、その後、URL から Azure 仮想マシンの SQL Server にアタッチする](#detach-and-attach-from-url) |SQL Server 2005 以降 |SQL Server 2014 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |この方法は、特にデータベースのサイズが非常に大きい場合に、 [Azure BLOB ストレージ サービスを使用してこれらのファイルを格納](https://msdn.microsoft.com/library/dn385720.aspx) し、Azure VM で実行されている SQL Server にファイルをアタッチするときに使用します。 |
-| [オンプレミスのマシンを HYPER-V VHD に変換して Azure BLOB ストレージにアップロードし、アップロードしたその VHD を使用して、新しい仮想マシンをデプロイする](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |[ご自身の SQL Server ライセンスを使用する](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)場合、古いバージョンの SQL Server で実行するデータベースを移行する場合、または他のユーザー データベースやシステム データベースに応じて、データベースの移行の一環として、データベース システムとユーザー データベースを一緒に移行する場合に使用します。 |
-| [Windows の Import/Export サービスを使用して、ハード ドライブを発送する](#ship-hard-drive) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |[Windows の Import/Export サービス](../../../storage/common/storage-import-export-service.md) は、データベースのサイズが非常に大きい場合など、手動でのコピーが遅すぎるときに使用します。 |
-| [Azure レプリカの追加ウィザードを使用する](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) |SQL Server 2012 以降 |SQL Server 2012 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |ダウンタイムが最小限になります。AlwaysOn のオンプレミスのデプロイがあるときに使います。 |
-| [SQL Server のトランザクション レプリケーションを使用する](https://msdn.microsoft.com/library/ms151176.aspx) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |ダウンタイムを最小限にする必要があり、AlwaysOn のオンプレミスのデプロイがないときに使います。 |
+| [データとログ ファイルをデタッチしてから、Azure BLOB ストレージにコピーし、その後、URL から Azure 仮想マシンの SQL Server にアタッチする](#detach-and-attach-from-url) |SQL Server 2005 以降 |SQL Server 2014 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |この方法は、特にデータベースのサイズが非常に大きい場合に、 [Azure BLOB ストレージ サービスを使用してこれらのファイルを格納](https://msdn.microsoft.com/library/dn385720.aspx) し、Azure VM で実行されている SQL Server にファイルをアタッチするときに使用します。 |
+| [オンプレミスのマシンを HYPER-V VHD に変換して Azure BLOB ストレージにアップロードし、アップロードしたその VHD を使用して、新しい仮想マシンをデプロイする](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |[ご自身の SQL Server ライセンスを使用する](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)場合、古いバージョンの SQL Server で実行するデータベースを移行する場合、または他のユーザー データベースやシステム データベースに応じて、データベースの移行の一環として、データベース システムとユーザー データベースを一緒に移行する場合に使用します。 |
+| [Windows の Import/Export サービスを使用して、ハード ドライブを発送する](#ship-hard-drive) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |[Windows の Import/Export サービス](../../../storage/common/storage-import-export-service.md) は、データベースのサイズが非常に大きい場合など、手動でのコピーが遅すぎるときに使用します。 |
+| [Azure のレプリカ追加ウィザードの使用](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) |SQL Server 2012 以降 |SQL Server 2012 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |ダウンタイムが最小限になります。AlwaysOn のオンプレミスのデプロイがあるときに使います。 |
+| [SQL Server のトランザクション レプリケーションを使用する](https://msdn.microsoft.com/library/ms151176.aspx) |SQL Server 2005 以降 |SQL Server 2005 以降 |[Azure VM ストレージの制限](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |ダウンタイムを最小限にする必要があり、AlwaysOn のオンプレミスのデプロイがないときに使います。 |
 
 ## <a name="backup-and-restore"></a>バックアップと復元
 圧縮機能を使用してデータベースをバックアップし、バックアップを VM にコピーした後、データベースを復元します。 VM ディスクの最大サイズは 1 TB であるため、バックアップ ファイルが 1 TB を超える場合、そのファイルはストライプする必要があります。 この手動による方法を使用してユーザー データベースを移行するには、次の一般的な手順を実行します。
@@ -99,7 +99,7 @@ ms.locfileid: "70102197"
 ## <a name="ship-hard-drive"></a>ハード ドライブの発送
 ネットワーク経由のアップロードが実現不可能であるか、非常にコストがかかる場合には、[Windows の Import/Export サービス方法](../../../storage/common/storage-import-export-service.md)を使用して、ファイルの大量のデータを Azure BLOB ストレージに転送します。 このサービスでは、そのデータを含む 1 台以上のハード ドライブを Azure データ センターに発送します。このデータ センターでデータがストレージ アカウントにアップロードされます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Virtual Machines で SQL Server を実行する方法の詳細については、「 [Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
 > [!TIP]

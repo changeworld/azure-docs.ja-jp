@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 9ba9be7b4761e6633ffe3063b6bdba53c56b93bd
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561649"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644870"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs インフラストラクチャのガバナンス - リソース
 この記事では、組織内での DevTest Labs 用リソースの調整と管理について説明します。 
@@ -44,7 +44,7 @@ Azure サブスクリプション内に DevTest Labs リソースをどのよう
 
 このモデルでは、組織は大規模な Azure DevTest Labs を柔軟にデプロイできます。 組織は、100 から 1000 台の仮想マシンを使用するさまざまな部署で何百ものラボを並列で実行することをサポートできます。 構成管理とセキュリティ制御の同じ原則を共有できる一元的なエンタープライズ ラボ ソリューションの概念を促進します。
 
-また、このモデルでは、組織が Azure サブスクリプションに関連付けられているリソースの制限を使い果たすことがないことも保証されます。 サブスクリプションとサービス制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。 DevTest Labs のプロビジョニング プロセスでは、多数のリソース グループを使用する可能性があります。 Azure DevTest サブスクリプションのサポート要求を通じて制限を増やすことを要求できます。 開発サブスクリプションの使用が増えても、運用サブスクリプション内のリソースは影響を受けません。 DevTest Labs のスケーリングの詳細については、「[DevTest Labs でのクォータと制限のスケール](devtest-lab-scale-lab.md)」をご覧ください。
+また、このモデルでは、組織が Azure サブスクリプションに関連付けられているリソースの制限を使い果たすことがないことも保証されます。 サブスクリプションとサービス制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。 DevTest Labs のプロビジョニング プロセスでは、多数のリソース グループを使用する可能性があります。 Azure DevTest サブスクリプションのサポート要求を通じて制限を増やすことを要求できます。 開発サブスクリプションの使用が増えても、運用サブスクリプション内のリソースは影響を受けません。 DevTest Labs のスケーリングの詳細については、「[DevTest Labs でのクォータと制限のスケール](devtest-lab-scale-lab.md)」をご覧ください。
 
 考慮する必要がある一般的なサブスクリプション レベル制限は、運用サブスクリプションと開発サブスクリプションの両方をサポートするためにネットワークの IP 範囲を割り当てる方法です。 これらの割り当てでは、時間経過による増加を考慮する必要があります (Azure の実装を既定にするのではなく、企業がネットワーク スタックを管理する必要があるオンプレミスの接続または別のネットワーク トポロジを想定)。 推奨される方法は、小さいサブネットを含む複数の仮想ネットワークを使用するのではなく、大きい IP アドレス プレフィックスを割り当てられ、多数の大きいサブネットで分割された、いくつかの仮想ネットワークを使用することです。 たとえば、10 個のサブスクリプションで、10 個の仮想ネットワーク (サブスクリプションごとに 1 つ) を定義できます。 分離を必要としないすべてのラボでは、サブスクリプションの VNET 上の同じサブネットを共有できます。
 
@@ -86,5 +86,5 @@ DevTest Labs をデプロイするときは、開始時のポリシーを具体�
 ### <a name="answer"></a>Answer
 はい。 ラボのホーム ページから [リソース グループ] ページに移動します。 次に、ツール バーの **[移動]** を選択し、別のリソース グループに移動するラボを選択します。 ラボを作成すると、リソース グループが自動的に作成されます。 ただし、企業の名前付け規則に従う別のリソース グループにラボを移動することもできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 「[Manage cost and ownership](devtest-lab-guidance-governance-cost-ownership.md)」(コストと所有権の管理) をご覧ください。

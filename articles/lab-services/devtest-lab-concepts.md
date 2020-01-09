@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 08cae51da20b6093b284618de92c61aab4bf5b55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22fd78ccd58be1790fcd167da396600e8b876564
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65508382"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428912"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest ラボの概念
 ## <a name="overview"></a>概要
@@ -51,12 +51,12 @@ DevTest ラボでは、環境とは、ラボ内の Azure リソースのコレ�
 * VM 上で実行するアクション (リポジトリの複製など)。
 * テスト対象のアプリケーション。
 
-アーティファクトは、デプロイメントの実行と構成の適用の指示が含まれる [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) の JSON ファイルです。
+アーティファクトは、デプロイメントの実行と構成の適用の指示が含まれる [Azure Resource Manager](../azure-resource-manager/management/overview.md) の JSON ファイルです。
 
 ## <a name="artifact-repositories"></a>アーティファクト リポジトリ
 アーティファクト リポジトリは、アーティファクトがチェックインされる git リポジトリです。 アーティファクト リポジトリを組織内の複数のラボに追加することで、再利用と共有を有効にできます。
 
-## <a name="formulas"></a>数式
+## <a name="formulas"></a>フォーミュラ
 式は、基本イメージに加え、VM を短時間でプロビジョニングするための手法です。 DevTestラボにおける式とは、ラボ VM の作成に使用できる既定のプロパティ値の一覧です。
 式を使用することで、ベース イメージ、VM サイズ、仮想ネットワーク、およびアーティファクトなど、同じ一連のプロパティで VM を作成できるため、作成するたびにプロパティを指定する必要がありません。 数式から VM を作成する際に、この既定値をそのまま使用することも変更することもできます。
 
@@ -89,5 +89,5 @@ DevTest Labs にカスタム ロールを作成する方法については、記
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [DevTest Labs でラボを作成します。](devtest-lab-create-lab.md)

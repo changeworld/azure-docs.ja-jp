@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics と Azure Machine Learning の統合
 description: この記事では、Azure Machine Learning を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。ここではユーザーが定義した関数を使用します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: b078c92d02c55080cb84c386b7bbdabf3e1f85bf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c683cfeadcc13e5112a4687e18db9338d3574cd3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467884"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459587"
 ---
 # <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic-preview"></a>Azure Stream Analytics と Azure Machine Learning Studio (クラシック) を使用して感情分析を実行する (プレビュー)
 この記事では、Azure Machine Learning Studio (クラシック) を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。 ここでは、Cortana Intelligence ギャラリーの Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。 Cortana Intelligence Suite を使用すると、感情分析モデルを構築する複雑な作業を心配することなくこのタスクを実行できます。
@@ -145,7 +144,7 @@ ms.locfileid: "73467884"
 
    ![新しい Stream Analytics ジョブ入力用の設定](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 ### <a name="configure-the-job-output"></a>ジョブの出力を構成する
 このジョブは、入力を取得したのと同じ BLOB ストレージに結果を送信します。 
@@ -165,7 +164,7 @@ ms.locfileid: "73467884"
 
    ![新しい Stream Analytics ジョブ出力用の設定](./media/stream-analytics-machine-learning-integration-tutorial/create-stream-analytics-output.png) 
 
-4. **[Save]** をクリックします。   
+4. **[保存]** をクリックします。   
 
 
 ### <a name="add-the-machine-learning-function"></a>Machine Learning 関数を追加する 
@@ -182,12 +181,12 @@ ms.locfileid: "73467884"
    |フィールド  |値  |
    |---------|---------|
    | **関数のエイリアス** | 名前 `sentiment` を使用して、URL とキーを入力するためのオプションを提示する **[手動で Azure Machine Learning 関数設定を指定します]** を選択します。      |
-   | **URL**| Web サービス URL を貼り付けます。|
-   |**キー** | API キーを貼り付けます。 |
+   | **[URL]**| Web サービス URL を貼り付けます。|
+   |**[キー]** | API キーを貼り付けます。 |
   
    ![Machine Learning 関数を Stream Analytics ジョブに追加するための設定](./media/stream-analytics-machine-learning-integration-tutorial/add-machine-learning-function.png)  
     
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 ### <a name="create-a-query-to-transform-the-data"></a>データを変換するためのクエリを作成する
 
@@ -249,7 +248,7 @@ Azure Machine Learning 関数に関連するメトリックも表示できます
 * **[関数イベント]** は、要求内のイベントの数を示します。 既定では、Machine Learning Web サービスへの各要求には、最大 1,000 件のイベントが含まれています。  
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

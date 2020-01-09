@@ -7,7 +7,7 @@
       href: scenarios-and-availability.md
     - name: 概念
       href: media-services-concepts.md
-- name: 作業開始
+- name: はじめに
   items:
     - name: アカウントを作成して管理する
       href: media-services-portal-create-account.md
@@ -33,7 +33,7 @@
           href: media-services-powershell-create-and-configure-aad-app.md
     - name: ビデオ オン デマンドの配信
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: media-services-portal-vod-get-started.md
         - name: .NET SDK
           href: media-services-dotnet-get-started.md
@@ -43,13 +43,14 @@
           href: media-services-rest-get-started.md
     - name: ライブ ストリーミングの実行
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: media-services-portal-live-passthrough-get-started.md
         - name: .NET
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
-- name: 方法
+- name: 操作方法
   items:
     - name: レガシ コンポーネント
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
       href: legacy-components.md
       items:
         - name: Azure Media Encoder から移行する
@@ -60,12 +61,12 @@
           displayName: WAME
         - name: インデクサー v1 および v2 から移行する
           href: migrate-indexer-v1-v2.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: アカウント
           displayName: subscription
           href: media-services-account-concept.md
-        - name: エンティティ
+        - name: '[エンティティ]'
           items:
             - name: .NET
               href: media-services-dotnet-manage-entities.md
@@ -74,11 +75,11 @@
         - name: ストリーミング エンドポイント
           href: media-services-streaming-endpoints-overview.md
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: media-services-portal-manage-streaming-endpoints.md
             - name: .NET
               href: media-services-dotnet-manage-streaming-endpoints.md
-        - name: Storage
+        - name: ストレージ
           items:
             - name: ストレージ アクセス キーをローリングした後に Media Services を更新する
               href: media-services-roll-storage-access-keys.md
@@ -99,7 +100,7 @@
       items:
         - name: ファイルをアカウントにアップロードする
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: media-services-portal-upload-files.md
             - name: .NET
               href: media-services-dotnet-upload-files.md
@@ -126,7 +127,7 @@
               href: media-services-autogen-bitrate-ladder-with-mes.md
             - name: Media Encoder Standard を使用したエンコード
               items:
-                - name: Azure ポータル
+                - name: Azure portal
                   href: media-services-portal-encode.md
                 - name: .NET
                   href: media-services-dotnet-encode-with-media-encoder-standard.md
@@ -240,14 +241,14 @@
           items:
             - name: 推奨のオンプレミス エンコーダー
               href: media-services-recommended-encoders.md
-            - name: Azure ポータル
+            - name: Azure portal
               href: media-services-portal-live-passthrough-get-started.md
             - name: .NET
               href: media-services-dotnet-live-encode-with-onpremises-encoders.md
         - name: クラウド エンコーダーを使用したライブ ストリーミング
           href: media-services-manage-live-encoder-enabled-channels.md
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: media-services-portal-creating-live-encoder-enabled-channel.md
             - name: .NET
               href: media-services-dotnet-creating-live-encoder-enabled-channel.md
@@ -307,7 +308,7 @@
               href: media-services-rest-configure-asset-delivery-policy.md
         - name: コンテンツ キー承認ポリシーを構成する
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: media-services-portal-configure-content-key-auth-policy.md
             - name: .NET
               href: media-services-dotnet-configure-content-key-auth-policy.md
@@ -360,13 +361,13 @@
         - name: メディア処理
           href: media-services-scale-media-processing-overview.md
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: media-services-portal-scale-media-processing.md
             - name: .NET
               href: media-services-dotnet-encoding-units.md
         - name: ストリーミング エンドポイント
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: media-services-portal-scale-streaming-endpoints.md
     - name: コンテンツを配信する
       href: media-services-deliver-content-overview.md
@@ -384,7 +385,7 @@
           href: ../../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json
         - name: コンテンツを発行する
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: media-services-portal-publish.md
             - name: .NET
               href: media-services-deliver-streaming-content.md
@@ -418,13 +419,13 @@
           href: media-services-dotnet-how-to-use-azure-functions.md
         - name: Media Services と Azure Functions の併用の例
           href: 'https://github.com/Azure-Samples/media-services-dotnet-functions-integration'
-    - name: 監視
+    - name: モニター
       items:
         - name: ジョブの進行状況をチェックする
           items:
             - name: REST
               href: media-services-rest-check-job-progress.md
-            - name: Azure ポータル
+            - name: Azure portal
               href: media-services-portal-check-job-progress.md
             - name: .NET
               href: media-services-check-job-progress.md
@@ -432,7 +433,7 @@
           href: media-services-dotnet-check-job-progress-with-queues.md
         - name: Webhook を使用したジョブ通知の監視
           href: media-services-dotnet-check-job-progress-with-webhooks.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: よく寄せられる質問
           href: media-services-frequently-asked-questions.md
@@ -462,6 +463,9 @@
           href: ../media-services-specifications-live-timed-metadata.md
         - name: スムーズ ストリーミング HEVC
           href: ../media-services-specifications-ms-sstr-amendment-hevc.md
+    - name: レガシ コンポーネント
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
 - name: リソース
   items:
     - name: Azure Media Services コミュニティ

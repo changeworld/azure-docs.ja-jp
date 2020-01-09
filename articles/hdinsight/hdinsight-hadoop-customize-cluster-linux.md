@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 16b0fdcbae51b30e14fbf7ea4d98699dfaf19804
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6df7eebae0f0e7cfab790a4fca12dbb6ee5a5acf
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035739"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638988"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする
 
@@ -144,12 +144,12 @@ HDInsight クラスターを作成する場合は、Azure サブスクリプシ�
 
 HDInsight は、HDInsight クラスターで次のコンポーネントをインストールするためのスクリプトを提供します。
 
-| 名前 | スクリプト |
+| Name | スクリプト |
 | --- | --- |
-| Azure Storage アカウントの追加 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh` 「[HDInsight にストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」をご覧ください。 |
-| Hue のインストール |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh` 「[HDInsight Hadoop クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)」をご覧ください。 |
-| Giraph のインストール |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh` [HDInsight Hadoop クラスターへの Apache Giraph のインストール](hdinsight-hadoop-giraph-install-linux.md)に関する記事をご覧ください。 |
-| Hive ライブラリの事前読み込み |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh` 「[HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する](hdinsight-hadoop-add-hive-libraries.md)」をご覧ください。 |
+| Azure Storage アカウントの追加 |[https://login.microsoftonline.com/consumers/](`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`) 「[HDInsight にストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」をご覧ください。 |
+| Hue のインストール |[https://login.microsoftonline.com/consumers/](`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`) 「[HDInsight Hadoop クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)」をご覧ください。 |
+| Giraph のインストール |[https://login.microsoftonline.com/consumers/](`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`) [HDInsight Hadoop クラスターへの Apache Giraph のインストール](hdinsight-hadoop-giraph-install-linux.md)に関する記事をご覧ください。 |
+| Hive ライブラリの事前読み込み |[https://login.microsoftonline.com/consumers/](`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`) 「[HDInsight クラスターを作成するときにカスタム Apache Hive ライブラリを追加する](hdinsight-hadoop-add-hive-libraries.md)」をご覧ください。 |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>クラスターの作成時にスクリプト アクションを使用する
 
@@ -170,10 +170,10 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
     | プロパティ | 値 |
     | --- | --- |
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合は、用意されているスクリプトのいずれかを選択します。 |
-    | 名前 |スクリプト アクションの名前を指定します。 |
+    | Name |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |スクリプトの URI を指定します。 |
     | Head/Worker/ZooKeeper |スクリプトを実行するノードを指定します: **[ヘッド]** 、 **[ワーカー]** 、または **[ZooKeeper]** 。 |
-    | parameters |スクリプトで必要な場合は、パラメーターを指定します。 |
+    | パラメーター |スクリプトで必要な場合は、パラメーターを指定します。 |
 
     スケーリング操作中にスクリプトが確実に適用されるようにするには、 __[スクリプト操作を保持する]__ エントリを使用します。
 
@@ -250,10 +250,10 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
     | プロパティ | 値 |
     | --- | --- |
     | スクリプトの選択 | 独自のスクリプトを使用するには、 __[カスタム]__ を選択します。 それ以外の場合、提供されているスクリプトを選択します。 |
-    | 名前 |スクリプト アクションの名前を指定します。 |
+    | Name |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |スクリプトの URI を指定します。 |
     | ヘッド/ワーカー/Zookeeper |スクリプトを実行するノードを指定します: **[ヘッド]** 、 **[ワーカー]** 、または **[ZooKeeper]** 。 |
-    | parameters |スクリプトで必要な場合は、パラメーターを指定します。 |
+    | パラメーター |スクリプトで必要な場合は、パラメーターを指定します。 |
 
     スケーリング操作中にスクリプトが確実に適用されるようにするには、 __[スクリプト操作を保持する]__ エントリを使用します。
 
@@ -328,7 +328,7 @@ HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡
 
 ### <a name="the-azure-portal"></a>Azure ポータル
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. 左側のメニューで、 **[すべてのサービス]**  >  **[分析]**  >  **[HDInsight クラスター]** に移動します。
 
@@ -422,7 +422,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 ### <a name="the-apache-ambari-web-ui"></a>Apache Ambari Web UI
 
-1. ブラウザーで https://CLUSTERNAME.azurehdinsight.net に移動します。 **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。
+1. ブラウザーで `https://CLUSTERNAME.azurehdinsight.net` に移動します。 **CLUSTERNAME** を、使用する HDInsight クラスターの名前に置き換えます。
 
     プロンプトが表示されたら、クラスターの管理者アカウント名 **admin** とパスワードを入力します。 Web フォームで管理者の資格情報の再入力が必要な場合があります。
 
@@ -504,7 +504,7 @@ SSH を使用してクラスターに接続する方法については、「[SSH
 
     既存のスクリプトでスクリプト名が競合するため、このクラスターでは新しいスクリプト アクションを実行できません。 クラスターの作成時に指定されるスクリプト名はすべて一意である必要があります。 既存のスクリプトは、サイズ変更時に実行されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight 用のスクリプト アクションのスクリプトを開発する](hdinsight-hadoop-script-actions-linux.md)
 * [HDInsight クラスターに Apache Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)

@@ -5,14 +5,14 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 12/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: f6673e114c249cb86c648155b889e925554e9458
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083630"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647137"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 回線とピアリング
 
@@ -36,7 +36,7 @@ ExpressRoute 回線は物理エンティティにはマップされません。 
 
 ### <a name="quotas"></a>クォータ、制限、および制限事項
 
-既定のクォータと制限は、すべての ExpressRoute 回線に適用されます。 クォータに関する最新情報については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md) 」ページをご覧ください。
+既定のクォータと制限は、すべての ExpressRoute 回線に適用されます。 クォータに関する最新情報については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md) 」ページをご覧ください。
 
 ## <a name="routingdomains"></a>ExpressRoute ピアリング
 
@@ -48,7 +48,7 @@ ExpressRoute 回線には、複数のルーティング ドメイン/ピアリ�
 
 Azure Compute Services、つまり、仮想ネットワーク内にデプロイされる仮想マシン (IaaS) とクラウド サービス (PaaS) には、プライベート ピアリング ドメイン経由で接続できます。 プライベート ピアリング ドメインは、お客様のコア ネットワークを Microsoft Azure に信頼できる方法で拡張したものと言えます。 コア ネットワークと Azure Virtual Network (VNET) の間に双方向接続を設定できます。 このピアリングにより、仮想マシンとクラウド サービスにプライベート IP アドレスで直接接続できます。  
 
-プライベート ピアリング ドメインには複数の仮想ネットワークを接続できます。 上限と制限事項については、 [FAQ のページ](expressroute-faqs.md) を参照してください。 制限に関する最新情報については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md) 」ページをご覧ください。  ルーティング構成の詳細については、 [ルーティング](expressroute-routing.md) に関するページを参照してください。
+プライベート ピアリング ドメインには複数の仮想ネットワークを接続できます。 上限と制限事項については、 [FAQ のページ](expressroute-faqs.md) を参照してください。 制限に関する最新情報については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md) 」ページをご覧ください。  ルーティング構成の詳細については、 [ルーティング](expressroute-routing.md) に関するページを参照してください。
 
 ### <a name="microsoftpeering"></a>Microsoft ピアリング
 
@@ -58,32 +58,11 @@ Microsoft オンライン サービス (Office 365 および Azure PaaS サー�
 
 サポートされるサービス、料金、および構成の詳細については、 [FAQ のページ](expressroute-faqs.md) を参照してください。 Microsoft ピアリングのサポートを提供している接続プロバイダーの一覧については、 [ExpressRoute の場所](expressroute-locations.md) に関するページを参照してください。
 
-### <a name="publicpeering"></a>Azure パブリック ピアリング (新しい回線では非推奨)
-
-> [!Note]
-> Azure パブリック ピアリングでは、各 BGP セッションに 1 つの NAT IP アドレスが関連付けられます。 NAT IP アドレスが 2 つより多い場合には、Microsoft ピアリングに移行します。 Microsoft ピアリングを使用すると、独自の NAT 割り当てを構成したり、選択的なプレフィックス アドバタイズのルート フィルターを使用したりできます。 詳細については、「[Microsoft ピアリングに移行する](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)」を参照してください。
->
-
-Azure Storage、SQL Database、Websites などのサービスは、パブリック IP アドレスで提供されます。 パブリック ピアリング ルーティング ドメインを経由して、(クラウド サービスの VIP などの) パブリック IP アドレスでホストされているサービスにプライベート接続できます。 パブリック ピアリング ドメインをご使用の DMZ に接続すれば、インターネット経由で接続しなくても WAN からパブリック IP アドレス上のすべての Azure サービスに接続できます。
-
-接続は、常に WAN から Microsoft Azure サービスへ開始されます。 このルーティング ドメインを経由して Microsoft Azure サービスからお客様のネットワークに接続を開始することはできません。 パブリック ピアリングが有効になると、すべての Azure サービスに接続できます。 ルートをアドバタイズするサービスを選択することはできません。
-
-ネットワーク内でカスタム ルート フィルターを定義して、必要なルートのみを使用することができます。 ルーティング構成の詳細については、 [ルーティング](expressroute-routing.md) に関するページを参照してください。
-
-パブリック ピアリング ルーティング ドメインでサポートされるサービスの詳細については、[FAQ](expressroute-faqs.md) のページを参照してください。
-
 ## <a name="peeringcompare"></a>ピアリングの比較
 
 次の表では、3 つのピアリングを比較しています。
 
-|  | **プライベート ピアリング** | **Microsoft ピアリング** |  **パブリック ピアリング** (新しい回線では非推奨) |
-| --- | --- | --- | --- |
-| **各ピアリングでサポートされるプレフィックスの最大数** |既定 4,000、ExpressRoute Premium 10,000 |200 |200 |
-| **サポートされる IP アドレス範囲** |お客様の WAN 内の任意の有効な IP アドレス。 |お客様または接続プロバイダーが所有するパブリック IP アドレス。 |お客様または接続プロバイダーが所有するパブリック IP アドレス。 |
-| **AS 番号の要件** |プライベートおよびパブリックの AS 番号。 いずれかを使用する場合はパブリックの AS 番号を所有している必要があります。 |プライベートおよびパブリックの AS 番号。 ただし、パブリック IP アドレスの所有権を証明する必要があります。 |プライベートおよびパブリックの AS 番号。 ただし、パブリック IP アドレスの所有権を証明する必要があります。 |
-| **サポート対象 IP プロトコル**| IPv4 |  IPv4、IPv6 | IPv4 |
-| **ルーティング インターフェイスの IP アドレス** |RFC1918 およびパブリック IP アドレス |ルーティング レジストリに登録されているパブリック IP アドレス。 |ルーティング レジストリに登録されているパブリック IP アドレス。 |
-| **MD5 ハッシュのサポート** |はい |はい |はい |
+[!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
 ExpressRoute 回線の一部として 1 つ以上のルーティング ドメインを有効にすることができます。 すべてのルーティング ドメインを 1 つのルーティング ドメインに取り込みたい場合は、同じ VPN 上に配置するように選択できます。 また、上図に似た別のルーティング ドメイン上に配置することもできます。 推奨構成は、プライベート ピアリングをコア ネットワークに直接接続し、パブリック ピアリングと Microsoft ピアリングのリンクを DMZ に接続する構成です。
 
@@ -95,7 +74,7 @@ ExpressRoute 回線の一部として 1 つ以上のルーティング ドメイ
 
 NPM は、Azure プライベート ピアリングと Microsoft ピアリングの正常性を監視します。 詳細については、こちらの[ブログ](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/)を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * サービス プロバイダーを検索します。 [ExpressRoute のサービス プロバイダーと提供地域](expressroute-locations.md)に関するページをご覧ください。
 * すべての前提条件を満たしていることを確認します。 「 [Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。

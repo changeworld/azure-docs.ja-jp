@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 32219eeaee7980b685ac3453c6af3beff716abe2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824081"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457012"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 
@@ -99,7 +99,7 @@ X.509 デバイスを認証するには、最初に CA 証明書を使用して�
 
 1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
-    ```CSharp
+    ```csharp
         using Microsoft.Azure.Devices.Client;
         using Microsoft.Azure.Devices.Shared;
         using System.Security.Cryptography.X509Certificates;
@@ -107,7 +107,7 @@ X.509 デバイスを認証するには、最初に CA 証明書を使用して�
 
 1. **Program** クラスに以下のフィールドを追加します。
 
-    ```CSharp
+    ```csharp
         private static int MESSAGE_COUNT = 5;
         private const int TEMPERATURE_THRESHOLD = 30;
         private static String deviceId = "<your-device-id>";
@@ -120,7 +120,7 @@ X.509 デバイスを認証するには、最初に CA 証明書を使用して�
 
 1. 次の関数を使用して、温度と湿度のランダムな数値を生成してそれらの値をハブに送信します。
 
-    ```CSharp
+    ```csharp
     static async Task SendEvent(DeviceClient deviceClient)
     {
         string dataBuffer;
@@ -142,7 +142,7 @@ X.509 デバイスを認証するには、最初に CA 証明書を使用して�
 
 1. 最後に、**Main** 関数に次のコード行を追加します。このとき、_device-id_、_your-iot-hub-name_、_absolute-path-to-your-device-pfx-file_ の各プレースホルダーを、設定に必要な値に置き換えます。
 
-    ```CSharp
+    ```csharp
     try
     {
         var cert = new X509Certificate2(@"<absolute-path-to-your-device-pfx-file>", "1234");
@@ -183,7 +183,7 @@ X.509 デバイスを認証するには、最初に CA 証明書を使用して�
 
    ![デバイス アプリを実行する](./media/iot-hub-security-x509-get-started/device-app-success.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT ソリューションのセキュリティ保護の詳細については、次のリンク先をご覧ください。
 

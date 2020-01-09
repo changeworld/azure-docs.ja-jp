@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 8d7d4c8d7e01c6a4bfa644b84f03f8a2ea5bfd06
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928848"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440316"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 この記事では、Azure Data Factory (ADF) を使用して、Azure-SSIS Integration Runtime (IR) の開始と停止のスケジュールを設定する方法を説明します。 Azure-SSIS IR は、SQL Server Integration Services (SSIS) パッケージの実行専用の ADF コンピューティング リソースです。 Azure-SSIS IR を実行するには、それに関連するコストがあります。 このため一般には、SSIS パッケージを Azure で実行する必要がある場合にのみ IR を実行し、必要ないときには IR を停止する必要があります。 ADF のユーザー インターフェイス (UI)/アプリまたは Azure PowerShell を使用して、[IR を手動で開始または停止する](manage-azure-ssis-integration-runtime.md)ことができます。
@@ -64,7 +64,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
    - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
    - **[新規作成]** を選択し、新しいリソース グループの名前を入力します。   
          
-   リソース グループについて詳しくは、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関する記事をご覧ください。
+   リソース グループについて詳しくは、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関する記事をご覧ください。
    
 6. **[バージョン]** で、 **[V2]** を選択します。
 7. **[場所]** で、ドロップダウン リストから ADF の作成がサポートされている場所のいずれかを選択します。
@@ -114,7 +114,7 @@ Azure-SSIS IR をまだプロビジョニングしていない場合は、[チ�
     1. **[ロール]** で、 **[共同作成者]** を選択します。 
     2. **[アクセスの割り当て先]** で **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。 
     3. **[選択]** で、ADF 名を検索して選択します。 
-    4. **[Save]** をクリックします。
+    4. **[保存]** をクリックします。
     
    ![ADF マネージド ID のロールの割り当て](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
@@ -380,13 +380,13 @@ Azure Automation アカウントをまだ持っていない場合は、この手
     
 6. テストが完了したら、編集してスケジュールを無効にします。 左側のメニューで **[スケジュール]** を選択し、 **"毎日 IR を開始" または "毎日 IR を停止"** を選択して、 **[有効]** で **[いいえ]** を選択します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のブログ記事を参照してください。
 -   [ADF パイプラインでの SSIS アクティビティを含む ETL/ELT ワークフローの最新化と拡張](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
 
 SSIS ドキュメントの次の記事をご覧ください。 
 
-- [Azure での SSIS パッケージのデプロイ、実行、監視](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   
+- [Azure で SSIS パッケージを配置、実行、および監視する](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   
 - [Azure での SSIS カタログへの接続](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database)
 - [Azure でのパッケージ実行のスケジュール設定](/sql/integration-services/lift-shift/ssis-azure-schedule-packages)
 - [Windows 認証を使用したオンプレミス データ ソースへの接続](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth)

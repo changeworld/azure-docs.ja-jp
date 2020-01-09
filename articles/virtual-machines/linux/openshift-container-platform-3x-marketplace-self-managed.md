@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 235efd746562ea4bd52b9cb57da0d8165d60de02
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035515"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561322"
 ---
 # <a name="configure-prerequisites"></a>構成の前提条件
 
@@ -28,7 +28,7 @@ Marketplace オファーを使用して自己管理型 OpenShift Container Platf
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Marketplace オファーを使用してデプロイする
 
-自己管理型 OpenShift Container Platform 3.11 クラスターを Azure にデプロイする最も簡単な方法は、[Azure Marketplace オファー](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview)を使用することです。
+自己管理型 OpenShift Container Platform 3.11 クラスターを Azure にデプロイする最も簡単な方法は、[Azure Marketplace オファー](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)を使用することです。
 
 この方法が最も簡単ですが、カスタマイズ機能が制限されます。 Marketplace オファーでは、OpenShift Container Platform 3.11.82 がデプロイされ、次の構成オプションが含まれます。
 
@@ -57,7 +57,7 @@ Azure portal の左上で、 **[リソースの作成]** をクリックして�
    ![オファーのタイトル ページ](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
 
-**基本**
+**基本操作**
 
 いずれかの入力パラメーターのヘルプを表示するには、パラメーター名の横にある ***i*** にカーソルを置きます。
 
@@ -67,7 +67,7 @@ Azure portal の左上で、 **[リソースの作成]** をクリックして�
 |-----------------------|-----------------|
 | [VM Admin User Name]\(VM 管理者ユーザー名\) | すべての VM インスタンスで作成される管理者ユーザー |
 | [SSH Public Key for Admin User]\(管理者ユーザー用の SSH 公開キー\) | VM にログインするために使用される SSH 公開キー - パスフレーズを設定することはできません |
-| Subscription | クラスターをデプロイする対象の Azure サブスクリプション |
+| サブスクリプション | クラスターをデプロイする対象の Azure サブスクリプション |
 | リソース グループ | 新しいリソース グループを作成するか、クラスター リソースの既存の空のリソース グループを選択します |
 | Location | クラスターをデプロイする対象の Azure リージョン |
 
@@ -88,7 +88,7 @@ Azure portal の左上で、 **[リソースの作成]** をクリックして�
 | [Bastion Host Size]\(踏み台ホスト サイズ\) | 既定の VM サイズを受け入れるか、 **[サイズの変更]** をクリックして異なる VM サイズを選択します。  ワークロードに適した VM サイズを選択します |
 | [New or Existing Virtual Network]\(新規または既存の仮想ネットワーク) | 新しい vNet を作成する (既定) か、既存の vNet を使用します |
 | 既定の CIDR 設定を選択するか IP 範囲 (CIDR) をカスタマイズする | 既定の CIDR 範囲を受け入れるか、 **[Custom IP Range]\(カスタムの IP 範囲\)** を選択してカスタムの CIDR 情報を入力します。  既定の設定では、10.0.0.0/14 の CIDR で vNet が作成され、10.1.0.0/16 でマスター サブネット、10.2.0.0/16 でインフラストラクチャ サブネット、10.3.0.0/16 でコンピューティングおよび CNS サブネットがそれぞれ作成されます |
-| [Key Vault Resource Group Name]\(Key Vault リソース グループ名\) | Key Vault を含むリソース グループの名前 |
+| [Key Vault Resource Group Name]\(Key Vault リソース グループ名\) | キー コンテナーを含むリソース グループの名前 |
 | Key Vault 名 | シークレットと SSH 秘密キーを含む Key Vault の名前。  英数字とダッシュのみが使用できます。3 ～ 24 文字の長さにします |
 | [Secret Name]\(シークレット名\) | SSH 秘密キーを含むシークレットの名前。  英数字とダッシュのみが使用できます |
 
@@ -189,13 +189,13 @@ Azure portal の左上で、 **[リソースの作成]** をクリックして�
 
 ## <a name="connect-to-the-openshift-cluster"></a>OpenShift クラスターへの接続
 
-デプロイが完了したら、デプロイの出力セクションから接続を取得します。 **OpenShift コンソール URL** を使用して、ブラウザーで OpenShift コンソールに接続します。 踏み台ホストに SSH 接続することもできます。 管理者のユーザー名は clusteradmin で、踏み台のパブリック IP DNS FQDN は bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com である例を次に示します。
+デプロイが完了したら、デプロイの出力セクションから接続を取得します。 **OpenShift コンソール URL** を使用して、ブラウザーから OpenShift コンソールに接続します。 踏み台ホストに SSH 接続することもできます。 管理者のユーザー名は clusteradmin で、踏み台のパブリック IP DNS FQDN は bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com である例を次に示します。
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、OpenShift クラスター、およびすべての関連リソースが不要になったら、[az group delete](/cli/azure/group) コマンドを使用して削除できます。
 
@@ -203,7 +203,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 az group delete --name openshiftrg
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [デプロイ後タスク](./openshift-container-platform-3x-post-deployment.md)
 - [Azure での OpenShift デプロイのトラブルシューティング](./openshift-container-platform-3x-troubleshooting.md)

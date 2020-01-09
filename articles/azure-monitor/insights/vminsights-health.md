@@ -4,15 +4,15 @@ description: この記事では、Azure Monitor for VMs を使用して、仮想
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: 5fd5295e52f0fef5e1432fdb2f81d2ba0e1717e8
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e01223783130ea6b276db26bab709e2b51a8f76d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399786"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure 仮想マシンの正常性を把握する
 
@@ -34,45 +34,45 @@ Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有�
 
 このセクションでは、Azure の Windows および Linux VM を監視するための既定の正常性基準の概要について説明します。 すべての正常性基準は、異常な状態を検出した場合はアラートを送信するように事前に構成されています。
 
-| 監視名 | 頻度 (分) | ルックバック期間 (分) | Operator | Threshold | アラート対象状態 | 重大度 | ワークロード カテゴリ | 
+| 監視名 | 頻度 (分) | ルックバック期間 (分) | 演算子 | Threshold | アラート対象状態 | 重大度 | ワークロード カテゴリ | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
-| Logical Disk Online (論理ディスク オンライン) | 5 | 15 | <> | 1 (true) | 重大 | Sev1 | Linux | 
+| Logical Disk Online (論理ディスク オンライン) | 5 | 15 | <> | 1 (true) | Critical | Sev1 | Linux | 
 | Logical Disk Free Space (論理ディスクの空き領域) | 5 | 15 | < | 200 MB (警告)<br> 100 MB (重大) | 警告 | Sev1<br> Sev2 | Linux | 
-| Logical Disk % Free Inodes (論理ディスクの空き inode (%)) | 5 | 15 | < | 5% | 重大 | Sev1 | Linux | 
-| Logical Disk % Free Space (論理ディスクの空き領域 (%)) | 5 | 15 | < | 5% | 重大 | Sev1 | Linux | 
+| Logical Disk % Free Inodes (論理ディスクの空き inode (%)) | 5 | 15 | < | 5% | Critical | Sev1 | Linux | 
+| Logical Disk % Free Space (論理ディスクの空き領域 (%)) | 5 | 15 | < | 5% | Critical | Sev1 | Linux | 
 | Network Adapter Status (ネットワーク アダプターの状態) | 5 | 15 | <> | 1 (true) | 警告 | Sev2 | Linux | 
-| Operating System Available Megabytes Memory (オペレーティング システムの使用可能なメモリ メガバイト数) | 5 | 10 | < | 2.5 MB | 重大 | Sev1 | Linux | 
-| Disk Avg.Disk sec/Read | 5 | 25 | > | 0.05 秒 | 重大 | Sev1 | Linux | 
-| Disk Avg.Disk sec/Transfer | 5 | 25 | > | 0.05 秒 | 重大 | Sev1 | Linux | 
-| Disk Avg.Disk sec/Write | 5 | 25 | > | 0.05 秒 | 重大 | Sev1 | Linux | 
-| ディスクの状態 | 5 | 25 | <> | 1 (true) | 重大 | Sev1 | Linux | 
-| Operating System Total Percent Processor Time (オペレーティング システムの合計プロセッサ時間 (%)) | 5 | 10 | >= | 95% | 重大 | Sev1 | Linux | 
-| Total CPU Utilization Percentage (合計 CPU 使用率の割合) | 5 | 10 | >= | 95% | 重大 | Sev1 | Windows | 
-| File system error or corruption (ファイル システム エラーまたは破損) | 60 | 60 | <> | 4 | 重大 | Sev1 | Windows | 
+| Operating System Available Megabytes Memory (オペレーティング システムの使用可能なメモリ メガバイト数) | 5 | 10 | < | 2.5 MB | Critical | Sev1 | Linux | 
+| Disk Avg.Disk sec/Read | 5 | 25 | > | 0.05 秒 | Critical | Sev1 | Linux | 
+| Disk Avg.Disk sec/Transfer | 5 | 25 | > | 0.05 秒 | Critical | Sev1 | Linux | 
+| Disk Avg.Disk sec/Write | 5 | 25 | > | 0.05 秒 | Critical | Sev1 | Linux | 
+| ディスクの状態 | 5 | 25 | <> | 1 (true) | Critical | Sev1 | Linux | 
+| Operating System Total Percent Processor Time (オペレーティング システムの合計プロセッサ時間 (%)) | 5 | 10 | >= | 95% | Critical | Sev1 | Linux | 
+| Total CPU Utilization Percentage (合計 CPU 使用率の割合) | 5 | 10 | >= | 95% | Critical | Sev1 | Windows | 
+| File system error or corruption (ファイル システム エラーまたは破損) | 60 | 60 | <> | 4 | Critical | Sev1 | Windows | 
 | Average Logical Disk Seconds Per Read (論理ディスクの平均読み取り秒数) | 1 | 15 | > | 0.04 秒 | 警告 | Sev2 | Windows | 
 | Average Logical Disk Seconds Per Transfer (論理ディスクの平均転送秒数) | 1 | 15 | > | 0.04 秒 | 警告 | Sev2 | Windows | 
 | Average Logical Disk Seconds Per Write (Logical Disk) (論理ディスクの平均書き込み秒数 (論理ディスク)) | 1 | 15 | > | 0.04 秒 | 警告 | Sev2 | Windows | 
 | Current Disk Queue Length (Logical Disk) (現在のディスク キューの長さ (論理ディスク)) | 5 | 60 | >= | 32 | 警告 | Sev2 | Windows | 
-| Logical Disk Free Space (MB) (論理ディスクの空き領域 (MB)) | 15 | 60 | > | 500 MB (警告)<br> 300 MB (重大) | 重大 | Sev1<br> Sev2 | Windows | 
-| Logical Disk Free Space (%) (論理ディスクの空き領域 (%)) | 15 | 60 | > | 10% (警告)<br> 5% (重大) | 重大 | Sev1<br> Sev2 | Windows |
+| Logical Disk Free Space (MB) (論理ディスクの空き領域 (MB)) | 15 | 60 | > | 500 MB (警告)<br> 300 MB (重大) | Critical | Sev1<br> Sev2 | Windows | 
+| Logical Disk Free Space (%) (論理ディスクの空き領域 (%)) | 15 | 60 | > | 10% (警告)<br> 5% (重大) | Critical | Sev1<br> Sev2 | Windows |
 | Logical Disk Percent Idle Time (論理ディスク アイドル時間の割合) | 15 | 360 | <= | 20% | 警告 | Sev2 | Windows | 
 | Percent Bandwidth Used Read (使用された帯域幅の割合 (読み取り)) | 5 | 60 | >= | 60% | 警告 | Sev2 | Windows | 
 | Percent Bandwidth Used Total (使用された帯域幅の割合 (合計)) | 5 | 60 | >= | 75% | 警告 | Sev2 | Windows | 
 | Percent Bandwidth Used Write (使用された帯域幅の割合 (書き込み)) | 5 | 60 | >= | 60% | 警告 | Sev2 | Windows | 
-| DHCP Client Service Health (DHCP クライアント サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
-| DNS Client Service Health (DNS クライアント サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
-| Windows Event Log Service Health (Windows イベント ログ サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
-| Windows Firewall Service Health (Windows ファイアウォール サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
-| RPC Service Health (RPC サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
-| Server Service Health (サーバー サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
-| Windows Remote Management Service Health (Windows リモート管理サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
-| Available Megabytes of Memory (メモリの使用可能なメガバイト数) | 5 | 10 | < | 100 MB | 重大 | Sev1 | Windows | 
-| Free System Page Table Entries (空きシステム ページ テーブル エントリ) | 5 | 10 | <= | 5000 | 重大 | Sev1 | Windows | 
+| DHCP Client Service Health (DHCP クライアント サービスの正常性) | 5 | 12 | <> | 4 (実行中) | Critical | Sev1 | Windows | 
+| DNS Client Service Health (DNS クライアント サービスの正常性) | 5 | 12 | <> | 4 (実行中) | Critical | Sev1 | Windows | 
+| Windows Event Log Service Health (Windows イベント ログ サービスの正常性) | 5 | 12 | <> | 4 (実行中) | Critical | Sev1 | Windows | 
+| Windows Firewall Service Health (Windows ファイアウォール サービスの正常性) | 5 | 12 | <> | 4 (実行中) | Critical | Sev1 | Windows | 
+| RPC Service Health (RPC サービスの正常性) | 5 | 12 | <> | 4 (実行中) | Critical | Sev1 | Windows | 
+| Server Service Health (サーバー サービスの正常性) | 5 | 12 | <> | 4 (実行中) | Critical | Sev1 | Windows | 
+| Windows Remote Management Service Health (Windows リモート管理サービスの正常性) | 5 | 12 | <> | 4 (実行中) | Critical | Sev1 | Windows | 
+| Available Megabytes of Memory (メモリの使用可能なメガバイト数) | 5 | 10 | < | 100 MB | Critical | Sev1 | Windows | 
+| Free System Page Table Entries (空きシステム ページ テーブル エントリ) | 5 | 10 | <= | 5000 | Critical | Sev1 | Windows | 
 | Memory Pages Per Second (1 秒あたりのメモリ ページ数) | 5 | 10 | >= | 5,000/秒 | 警告 | Sev1 | Windows | 
-| Percentage of Committed Memory in Use (使用されているコミット済みメモリの割合) | 5 | 10 | > | 80% | 重大 | Sev1 | Windows | 
+| Percentage of Committed Memory in Use (使用されているコミット済みメモリの割合) | 5 | 10 | > | 80% | Critical | Sev1 | Windows | 
 | Average Disk Seconds Per Transfer (ディスクの平均転送秒数) | 1 | 15 | > | 0.04 秒 | 警告 | Sev2 | Windows | 
 | Average Disk Seconds Per Write (ディスクの平均書き込み秒数) | 1 | 15 | > | 0.04 秒 | 警告 | Sev2 | Windows | 
-| 現在のディスク キューの長さ | 5 | 60 | >= | 32 | 警告 | Sev2 | Windows | 
+| Current Disk Queue Length | 5 | 60 | >= | 32 | 警告 | Sev2 | Windows | 
 | Disk Percent Idle Time (ディスク アイドル時間の割合) | 5 | 60 | >= | 20% | 警告 | Sev2 | Windows | 
 
 >[!NOTE]
@@ -106,7 +106,7 @@ VM に対して定義されている正常性状態の説明をまとめたも�
 |アイコン |正常性の状態 |意味 |
 |-----|-------------|---------------|
 | |Healthy |VM は、定義された正常性状態の範囲内にあります。 この状態は、問題が検出されておらず、VM が正常に機能していることを示します。 親ロールアップ モニターでは、正常性がロールアップされ、子の最高の条件または最悪の条件の状態が反映されます。|
-| |重大 |この状態は、定義された正常性状態の範囲内にはなく、1 つ以上の重大な問題が検出されたことを示します。 正常な機能を復元するには、これらの問題に対処する必要があります。 親ロールアップ モニターでは、正常性状態がロールアップされ、子の最高の条件または最悪の条件の状態が反映されます。|
+| |Critical |この状態は、定義された正常性状態の範囲内にはなく、1 つ以上の重大な問題が検出されたことを示します。 正常な機能を復元するには、これらの問題に対処する必要があります。 親ロールアップ モニターでは、正常性状態がロールアップされ、子の最高の条件または最悪の条件の状態が反映されます。|
 | |警告 |この状態は、定義された正常性状態の 2 つのしきい値の間にあります。ここで、1 つは警告状態を示し、もう 1 つは重大な状態を示します (正常性状態のしきい値は 3 つ構成できます)。または、重大ではない問題が未解決のときに、それにより重大な問題が発生する可能性がある場合です。 親ロールアップ モニターでは、1 つ以上の子が警告状態にある場合、親には警告状態が反映されます。 1 つの子が重大な状態にあり、もう 1 つの子が警告状態にある場合、親ロールアップには正常性状態が重大として表示されます。|
 | |Unknown |いくつかの理由で、状態を計算できません。 次のセクションでは、追加の詳細と考えられる解決策について説明します。 |
 
@@ -282,7 +282,7 @@ Azure Monitor for VMs の正常性に含まれているすべてのナレッジ�
 
 更新された正常性状態を確認するには、 **[更新]** リンクを選択することによって [正常性の診断] ページを更新できます。 定義済みのポーリング間隔に基づいて、正常性基準の正常性状態に更新がある場合、このタスクにより待機を避けて最新の正常性状態を反映できます。 **[正常性基準の状態]** は、[正常]、[警告]、[重大]、[不明]、および [すべて] の選択された正常性状態に基づいて結果のスコープを設定できるフィルターです。 右上隅にある **[最終更新日時]** の時間は、[正常性の診断] ページが最後に更新された時間を表します。
 
-## <a name="alerts"></a>アラート
+## <a name="alerts"></a>警告
 
 Azure Monitor for VMs の正常性は、[Azure アラート](../../azure-monitor/platform/alerts-overview.md)と統合されています。 定義済みの基準に達した場合や、正常な状態から異常な状態への変化が検出された場合にアラートを発生させます。 アラートは、重大度 0 から重大度 4 までの重大度で分類され、重大度 0 が最も高いレベルです。
 
@@ -300,9 +300,9 @@ Azure Monitor for VMs の正常性は、[Azure アラート](../../azure-monitor
 
 ページの上部にあるドロップダウン メニューで値を選択することによって、このビューをフィルター処理できます。
 
-|列 |説明 |
+|列 |[説明] |
 |-------|------------|
-|Subscription |Azure サブスクリプションを選択します。 このビューには、選択したサブスクリプション内のアラートのみが含まれます。 |
+|サブスクリプション |Azure サブスクリプションを選択します。 このビューには、選択したサブスクリプション内のアラートのみが含まれます。 |
 |リソース グループ |1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 |
 |リソースの種類 |1 つ以上のリソースの種類を選択します。 既定では、ターゲットが**仮想マシン**のアラートのみが選択されて、このビューに表示されます。 この列は、リソース グループを指定した後でのみ使用できます。 |
 |リソース |リソースを選択します。 このビューには、そのリソースをターゲットとして含むアラートのみが含まれます。 この列は、リソースの種類が指定された後でのみ使用できます。 |
@@ -310,7 +310,7 @@ Azure Monitor for VMs の正常性は、[Azure アラート](../../azure-monitor
 |[Monitor Condition] (監視条件) |アラートをフィルター処理するための監視条件として、アラートが発生したかどうか、または状態がアクティブでなくなった場合はシステムによって解決されたかどうかを選択します。 または、 **[すべて]** を選択してすべての状態のアラートを含めます。 |
 |アラートの状態 |アラートの状態として、 **[新規]** 、 **[確認済み]** 、 **[解決済み]** を選択するか、または **[すべて]** を選択してすべての状態のアラートを含めます。 |
 |サービスの監視 |サービスを選択するか、または **[すべて]** を選択してすべてのサービスを含めます。 この機能では、VM Insights からのアラートのみがサポートされます。|
-|時間範囲| このビューには、選択された時間枠内に発生したアラートのみが含まれます。 サポートされる値は、過去 1 時間、過去 24 時間、過去 7 日間、および過去 30 日間です。 |
+|時間の範囲| このビューには、選択された時間枠内に発生したアラートのみが含まれます。 サポートされる値は、過去 1 時間、過去 24 時間、過去 7 日間、および過去 30 日間です。 |
 
 アラートを選択すると、 **[アラートの詳細]** ページが表示されます。 このページにはアラートの詳細が表示され、その状態を変更できるようになります。
 
@@ -325,7 +325,7 @@ Azure Monitor for VMs の正常性は、[Azure アラート](../../azure-monitor
 1 つまたは複数のアラートで、アラートの状態を変更するには、 **[すべてのアラート]** ページでそれらを選択してから、左上隅にある **[状態の変更]** を選択します。 **[アラートの状態の変更]** ウィンドウでいずれかの状態を選択し、 **[コメント]** フィールドに変更の説明を追加してから、 **[OK]** を選択して変更内容をコミットします。 情報が検証され、変更が適用されたら、メニューの **[通知]** で進行状況を追跡します。
 
 ### <a name="configure-alerts"></a>アラートを構成する
-Azure portal から特定のアラート管理タスクを管理することはできません。 これらのタスクは、[Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) を使用して実行する必要があります。 具体的には次の処理が行われます。
+Azure portal から特定のアラート管理タスクを管理することはできません。 これらのタスクは、[Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) を使用して実行する必要があります。 具体的な内容は次のとおりです。
 
 - 正常性基準のアラートを有効または無効にする
 - 正常性基準アラートのための通知を設定する
@@ -436,7 +436,7 @@ Azure Monitor for VMs の正常性では、異常な正常性基準からアラ�
     }
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 制限および全体的な VM のパフォーマンスを識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関するページを参照してください。
 

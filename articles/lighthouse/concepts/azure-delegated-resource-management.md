@@ -3,12 +3,12 @@ title: Azure の委任されたリソース管理
 description: マネージド サービス オファーにより、サービス プロバイダーは、Azure Marketplace で顧客にリソース管理オファーを販売することができます。
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: ccbd09cd51216f9076e3b5bd462ee2180ac8f3ab
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464010"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453642"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure の委任されたリソース管理
 
@@ -33,7 +33,7 @@ Azure の委任されたリソース管理を使用すると、承認された�
 
 大まかに言えば、Azure の委任されたリソース管理のしくみは次のとおりです。
 
-1. サービス プロバイダーは、顧客の Azure リソースを管理するためにグループ、サービス プリンシパル、またはユーザーが必要とするアクセス権 (ロール) を明らかにします。 アクセスの定義には、サービス プロバイダーのテナント ID と、オファーに必要なアクセスが含まれます。これは、[組み込みの **roleDefinition** の値](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (共同作成者、VM 共同作成者、閲覧者など) にマップされるテナントの **principalId** id を使用して定義されます。
+1. サービス プロバイダーは、顧客の Azure リソースを管理するためにグループ、サービス プリンシパル、またはユーザーが必要とするアクセス権 (ロール) を明らかにします。 アクセスの定義には、サービス プロバイダーのテナント ID と、オファーに必要なアクセスが含まれます。これは、[組み込みの **roleDefinition** の値](../../role-based-access-control/built-in-roles.md) (共同作成者、VM 共同作成者、閲覧者など) にマップされるテナントの **principalId** id を使用して定義されます。
 2. このアクセスを指定し、次の 2 つの方法のいずれかで Azure の委任されたリソース管理に顧客をオンボードします。
    - 顧客が受け入れる [Azure Marketplace の管理されたサービス オファーを発行する](../how-to/publish-managed-services-offers.md) (プライベートまたはパブリック)
    - 1 つ以上の特定のサブスクリプションまたはリソース グループについて、[顧客のテナントに Azure Resource Manager テンプレートをデプロイする](../how-to/onboard-customer.md)
@@ -43,7 +43,7 @@ Azure の委任されたリソース管理を使用すると、承認された�
 
 Azure の委任されたリソース管理に関するヘルプが必要な場合は、Azure portal でサポート リクエストを開くことができます。 **[問題の種類]** では、 **[技術]** を選択します。 サブスクリプションを選択し、 **[Delegated Resource Management]\(委任されたリソース管理\)** ( **[管理と監視]** の下) を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テナント間の管理エクスペリエンス](cross-tenant-management-experience.md)について学習します。
 - [Azure Marketplace でのマネージド サービス オファー](managed-services-offers.md)について学習します。

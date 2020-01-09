@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
-ms.openlocfilehash: f232e1e8a1f7121b047a846fc2c614b48e757f76
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076640"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645907"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行
 この記事では、Azure ExpressRoute 回線をクラシック デプロイ モデルから Azure Resource Manager デプロイ モデルに移行する意味について概説します。
@@ -39,7 +39,7 @@ Resource Manager デプロイ モデルで作成された ExpressRoute 回線を
 * クラシック デプロイ モデルへのアクセスは、ExpressRoute 回線の **allowClassicOperations** パラメーターを使用して制御します。
 
 > [!IMPORTANT]
-> [サービスの制限](../azure-subscription-service-limits.md) に関するページに記載されているすべてのクォータが適用されます。 たとえば、Standard の回線は、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方にわたって最大で 10 個の仮想ネットワーク リンク/接続を持つことができます。
+> [サービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md) に関するページに記載されているすべてのクォータが適用されます。 たとえば、Standard の回線は、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方にわたって最大で 10 個の仮想ネットワーク リンク/接続を持つことができます。
 > 
 > 
 
@@ -90,7 +90,7 @@ ExpressRoute 回線は、クラシック デプロイ モデルと Resource Mana
 ## <a name="configuration"></a>構成
 「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」に説明されている手順を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [ExpressRoute 回線にリンクされている仮想ネットワークをクラシック モデルから Azure Resource Manager モデルに移行します](expressroute-migration-classic-resource-manager.md)
 * ワークフロー情報については、「 [ExpressRoute 回線のプロビジョニング ワークフローと回線の状態](expressroute-workflows.md)」を参照してください。
 * ExpressRoute 接続を構成します。

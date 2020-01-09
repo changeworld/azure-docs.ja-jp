@@ -1,5 +1,6 @@
 ---
-title: データベース移行シナリオの状態 | Microsoft Docs
+title: データベース移行シナリオの状態
+titleSuffix: Azure Database Migration Service
 description: Azure Database Migration Service によってサポートされる移行シナリオの状態について学習します。
 services: database-migration
 author: HJToland3
@@ -11,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 9ea070ea86a4d0d5e7101e82450235a59c936d2d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 03fb6a1aff62df878417da55a7da7b42186b3462
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376401"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437671"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 
@@ -44,7 +45,7 @@ Azure Database Migration Service によってサポートされる移行シナ�
 
 次の表では、オフライン移行に対する Azure Database Migration Service のサポートを示します。
 
-| ターゲット  | source | サポート | Status |
+| 移行先  | source | サポート | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
@@ -64,7 +65,7 @@ Azure Database Migration Service によってサポートされる移行シナ�
 
 次の表では、オンライン移行に対する Azure Database Migration Service のサポートを示します。
 
-| ターゲット  | source | サポート | Status |
+| 移行先  | source | サポート | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
@@ -81,6 +82,6 @@ Azure Database Migration Service によってサポートされる移行シナ�
 |   | RDS PostgreSQL | ✔ | GA |
 |   | Oracle | ✔ | パブリック プレビュー |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Database Migration Service の概要と、リージョンごとの利用可能性については、「[Azure Database Migration Service とは](dms-overview.md)」という記事を参照してください。

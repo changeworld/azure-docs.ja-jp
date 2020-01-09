@@ -3,18 +3,18 @@ title: Node.js ファースト ステップ ガイド
 description: 簡単な Node.js Web アプリケーションを作成して、Azure のクラウド サービスにデプロイする方法について説明します。
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: 81ad3bce6c7e331fd67fba60b35de6b8a37c5da9
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359535"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386189"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ
 
@@ -154,7 +154,7 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
    > [!NOTE]
    > サービスを削除しても、サービスが最初に発行されたときに作成されたストレージ アカウントは削除されず、使用したストレージに対して引き続き課金されます。 他の用途に使用しているのでなければ、ストレージを削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 詳細については、 [Node.js デベロッパー センター]を参照してください。
 
 <!-- URL List -->
@@ -177,3 +177,6 @@ Node.js アプリは **server.js** ファイルで定義されます。このフ
 [A browser window displaying the hello world page; the URL indicates the page is hosted on Azure.]: ./media/cloud-services-nodejs-develop-deploy-app/node21.png
 [The status of the Stop-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node48.png
 [The status of the Remove-AzureService command]: ./media/cloud-services-nodejs-develop-deploy-app/node49.png
+
+
+

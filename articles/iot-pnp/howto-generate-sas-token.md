@@ -3,17 +3,17 @@ title: IoT プラグ アンド プレイ プレビュー リポジトリにア�
 description: プログラムによって IoT プラグ アンド プレイ プレビュー モデル リポジトリにアクセスするときに使用する Shared Access Signature トークンを生成します。
 author: Philmea
 ms.author: philmea
-ms.date: 08/06/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f6c4f5b9784eeff9d03b6e93953674736fb78c6c
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2530c5b3561ad90eac0556770a8a356cfaa6a52c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976028"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531289"
 ---
 # <a name="generate-sas-token"></a>SAS トークンの生成
 
@@ -74,7 +74,7 @@ public static string generateSasToken(string hostName, string repoId, string key
 
 ## <a name="use-the-sas-token"></a>SAS トークンを使用する
 
-SAS トークンを生成したら、それを使用して HTTP POST 要求を行うことができます。 例:
+SAS トークンを生成したら、それを使用して HTTP POST 要求を行うことができます。 次に例を示します。
 
 ```text
 POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-01-preview
@@ -82,6 +82,6 @@ POST https:///models/{modelId}?repositoryId={repositoryId}&api-version=2019-07-0
 
 クライアントに SAS トークンを渡した場合、そのクライアントにはリソースの主キーがないため、ハッシュを逆にしてそれを取得することはできません。 SAS トークンを使用すると、クライアントがアクセスできる対象と、その期間を制御できます。 ポリシーで主キーを変更すると、それから作成された SAS トークンはすべて無効になります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、モデル IoT ププラグ アンド プレイ プレビュー モデル リポジトリへのアクセスに使用するセキュリティ トークンの生成について学習しました。次の手順として、「[IoT プラグ アンド プレイ プレビュー モデリング開発者ガイド](concepts-developer-guide.md)」でさらに学習することをお勧めします。

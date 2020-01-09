@@ -4,15 +4,15 @@ description: この記事では、コマンドライン、設定ウィザード�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: f062dead8d479fe4da5de46b76b82cee9207bd83
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 548a578365b03162396fb8618718ab1e7ce5b081
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933712"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400794"
 ---
 # <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Azure Monitor for VMs Dependency Agent をアップグレードする方法
 
@@ -76,6 +76,6 @@ Linux 上の以前のバージョンの Dependency Agent からのアップグ�
 
 Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Linux エージェントのログ ディレクトリは、 */var/opt/microsoft/dependency-agent/log* にあります。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 VM の監視を一定期間停止する場合、または Azure Monitor for VMs を完全に削除する場合は、[Azure Monitor for VMs で VM の監視を無効にする方法](vminsights-optout.md)のページを参照してください。

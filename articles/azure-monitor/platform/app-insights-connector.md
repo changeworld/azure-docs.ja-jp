@@ -4,15 +4,15 @@ description: Application Insights Connector ソリューションを使用する
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: b956c3bc7d04908db1cc45092cf5926ecfcc305c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0cfca44878130e870c633040afcfbdd55ba8b7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932738"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396547"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理ソリューション (非推奨)
 
@@ -43,7 +43,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 他のほとんどの Log Analytics ソリューションとは異なり、Application Insights Connector 用のデータはエージェントによって収集されません。 ソリューションで使用されるデータはすべて、Azure から直接収集されます。
 
-| 接続先ソース | サポートされています | 説明 |
+| 接続先ソース | サポートされています | [説明] |
 | --- | --- | --- |
 | [Windows エージェント](../../azure-monitor/platform/agent-windows.md) | いいえ | ソリューションでは、Windows エージェントの情報は収集しません。 |
 | [Linux エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md) | いいえ | ソリューションでは、Linux エージェントの情報は収集しません。 |
@@ -61,7 +61,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](../../azure-monitor/insights/solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
 2. [Azure ポータル](https://portal.azure.com)にアクセスします。 **[すべてのサービス]** を選択して、Application Insights を開きます。 次に、"Application Insights" を検索します。 
 3. **[サブスクリプション]** で、Application Insights リソースを所有するサブスクリプションを選択し、 **[名前]** で、1 つまたは複数のアプリケーションを選択します。
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 約 30 分でデータが使用可能となり、次の図のように、[Application Insights] タイルがデータで更新されます。
 
@@ -97,8 +97,8 @@ Application Insights Connector ソリューションを使用すると、[Applic
 | データ ボリューム: データを送信中のホスト | データを送信しているコンピューター ホストの数を示します。 コンピューター ホストと各ホストのレコード数も示されます。 数値をクリックすると、ログ検索 (<code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code>) が実行されます。 <br><br> コンピューター名をクリックすると、ホストのログ検索が実行され、ホストごとのアプリケーションのレコード数、テレメトリの種類別のレコード数、および種類別のすべてのデータが表示されます (各データは最終日に基づきます)。 |
 | 可用性: Web テストの結果 | Web テストの結果 (合格または不合格) を示すドーナツ グラフを表示します。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code>) が実行されます。 <br><br> 結果は、すべてのテストの合格数と不合格数を示します。 直前の 1 分間にトラフィックが発生した Web Apps がすべて表示されます。 アプリケーション名をクリックすると、不合格だった Web テストの詳細を示すログ検索が表示されます。 |
 | サーバー要求: 1 時間あたりの要求の数 | さまざまなアプリケーションの 1 時間あたりのサーバー要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点での要求の受信数が多い上位 3 つのアプリケーションが表示されます。 要求を受信しているアプリケーションの一覧と、選択した期間中の要求の数も示されます。 <br><br>グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、さまざまなアプリケーションの 1 時間あたりのサーバー要求の数を示す詳細な折れ線グラフが表示されます。 <br><br> 一覧のアプリケーションをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>) が実行され、要求の一覧、時間を追った要求数のグラフ、要求の実行時間別の要求数のグラフ、および要求応答コードの一覧が表示されます。   |
-| 失敗: 1 時間あたりの失敗した要求数 | 1 時間あたりの失敗したアプリケーション要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点での失敗した要求の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの失敗した要求の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、失敗したアプリケーション要求の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>) が実行され、失敗した要求の数、時間を追った要求数のグラフ、要求の実行時間別の要求数のグラフ、および失敗した要求の応答コードの一覧が表示されます。 |
-| 例外: 1 時間あたりの例外の数 | 1 時間あたりの例外の数を示す折れ線グラフを表示します。 グラフ内の線上にポインターを置くと、ある時点での例外の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの例外の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、例外の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code>) が実行され、例外、時間を追った例外のグラフ、失敗した要求の数のグラフ、および例外の種類別の一覧が表示されます。  |
+| 失敗: 1 時間あたりの失敗した要求数 | 1 時間あたりの失敗したアプリケーション要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点での失敗した要求の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの失敗した要求の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、失敗したアプリケーション要求の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code>) が実行され、失敗した要求の数、時間を追った失敗要求数のグラフ、要求の実行時間別の失敗要求数のグラフ、および失敗した要求の応答コードの一覧が表示されます。 |
+| 例外: 1 時間あたりの例外の数 | 1 時間あたりの例外の数を示す折れ線グラフを表示します。 グラフ内の線上にポインターを置くと、ある時点での例外の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの例外の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code>) が実行され、例外の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code>) が実行され、例外の一覧、時間を追った例外のグラフ、失敗した要求の数のグラフ、および例外の種類別の一覧が表示されます。  |
 
 ### <a name="view-the-application-insights-perspective-with-log-search"></a>ログ検索で Application Insights のパースペクティブを表示する
 
@@ -175,9 +175,9 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="generic-fields"></a>一般的なフィールド
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
-| Type | ApplicationInsights |
+| 種類 | ApplicationInsights |
 | ClientIP |   |
 | TimeGenerated | レコードの時刻 |
 | ApplicationId | Application Insights アプリのインストルメンテーション キー |
@@ -201,7 +201,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="availability-specific-fields"></a>可用性に固有のフィールド
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web テストの名前 |
@@ -243,9 +243,9 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 
 ### <a name="request-specific-fields"></a>要求に固有のフィールド
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
-| Type | ApplicationInsights |
+| 種類 | ApplicationInsights |
 | TelemetryType | Request |
 | ResponseCode | クライアントに送信された HTTP 応答 |
 | RequestSuccess | 成功または失敗を示します。 true または false |
@@ -317,6 +317,6 @@ $ConnectionsJson = $Connections | ConvertTo-Json
 ApplicationInsights | summarize by ApplicationName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [ログ検索](../../azure-monitor/log-query/log-query-overview.md)を使用して Application Insights アプリの詳細情報を表示します。

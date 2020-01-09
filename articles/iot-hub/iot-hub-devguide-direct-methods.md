@@ -6,13 +6,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: nberdy
-ms.openlocfilehash: d7c63ffe5a318507053f59bf3a18242ee8c327a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rezas
+ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61327756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429264"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 
@@ -194,7 +194,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 * [IoT Hub の MQTT サポート](iot-hub-mqtt-support.md): IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ダイレクト メソッドの使用方法を理解できたら、次の IoT Hub 開発者ガイドの記事も参考にしてください。
 

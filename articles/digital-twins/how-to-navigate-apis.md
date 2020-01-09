@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/27/2019
-ms.openlocfilehash: 135c760919f094f7b2d242ad37cc1cadb614e36e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/27/2019
+ms.openlocfilehash: 86ade45cd00e82e8787a117c23003d2a74750cf0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009998"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552170"
 ---
 # <a name="how-to-use-azure-digital-twins-management-apis"></a>Azure Digital Twins 管理 API の使用方法
 
@@ -110,7 +110,7 @@ Digital Twins API では、以下のパラメーターを使用して、空間�
 - `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,'k')&$orderby=LastName`
 - `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor',Name)`
  
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 API のいくつかの一般的なクエリ パターンについては、「[一般的なタスクについて Azure Digital Twins API をクエリする方法](./how-to-query-common-apis.md)」を参照してください。
 

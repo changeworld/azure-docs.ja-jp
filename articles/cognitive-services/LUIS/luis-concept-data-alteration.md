@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: a199821c4db7fd8131ec54700b8c999dfe604a6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1bde70dadbe1e5b8ba9bf90bd9ca2f48a4c65491
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74222018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381802"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>予測前または予測中に発話データに変更を加える
 LUIS では、予測前または予測中に発話を操作する方法が用意されています。 これらには、[スペルの修正](luis-tutorial-bing-spellcheck.md)や、事前構築済み [datetimeV2](luis-reference-prebuilt-datetimev2.md) でのタイム ゾーンの問題の修正が含まれます。 
@@ -39,7 +39,7 @@ Usage of the key in the test panel and at the endpoint count toward the [key usa
 
 |Param|値|
 |--|--|
-|`spellCheck`|ブール値|
+|`spellCheck`|boolean|
 |`bing-spell-check-subscription-key`|[Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) エンドポイント キー|
 
 [Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) でエラーが検出されると、元の発話と修正された発話が、予測と共にエンドポイントから返されます。
@@ -114,14 +114,14 @@ https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slot
 
 https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}
 
-V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 * * * 
 
 ## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C# コードによって timezoneOffset の正しい値を決定する
 次の C# コードでは、[TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) クラスの [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) メソッドを使用して、システム時刻に基づいて正しい `timezoneOffset` を決定します。
 
-```CSharp
+```csharp
 // Get CST zone id
 TimeZoneInfo targetZone = TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time");
 
@@ -135,7 +135,7 @@ DateTime cstDatetime = TimeZoneInfo.ConvertTimeFromUtc(utcDatetime, targetZone);
 int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [このチュートリアルを使用してスペル ミスを修正します。](luis-tutorial-bing-spellcheck.md)

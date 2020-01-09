@@ -1,5 +1,5 @@
 ---
-title: Bulk Executor ライブラリを使った Azure Cosmos DB での一括インポートとデータ更新
+title: Azure Cosmos DB Bulk Executor ライブラリの概要
 description: Bulk Executor ライブラリによって提供される一括インポート API と一括更新 API を通じて、Azure Cosmos DB で一括操作を実行します。
 author: tknandu
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 8d2cb30e0f18485d500344e571b3ac5f2cde008f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 9d335bcf6daf0b38e7a68ca2d40894dd64c93e40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615709"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442155"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB Bulk Executor ライブラリの概要
  
@@ -48,7 +48,7 @@ Bulk Executor ライブラリは、コレクションに割り当てられてい
 
 ## <a name="next-steps"></a>次の手順 
   
-* [.NET](bulk-executor-dot-net.md) と [Java](bulk-executor-java.md) で Bulk Executor ライブラリを使用するサンプル アプリケーションを試して、さらに詳しく学習してください。  
+* [.NET](bulk-executor-dot-net.md) と [Java](bulk-executor-java.md) で Bulk Executor ライブラリを使用するサンプル アプリケーションを試して、さらに詳しく学習します。  
 * [.NET](sql-api-sdk-bulk-executor-dot-net.md) と [Java](sql-api-sdk-bulk-executor-java.md) の Bulk Executor SDK 情報とリリース ノートを確認してください。
-* Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳しくは、[Azure Cosmos DB Spark コネクタ](spark-connector.md)に関する記事をご覧ください。  
+* Bulk Executor ライブラリは Cosmos DB Spark コネクタに統合されています。詳細については、[Azure Cosmos DB Spark コネクタ](spark-connector.md)に関する記事をご覧ください。  
 * Bulk Executor ライブラリは、データをコピーするために Azure Data Factory の [Azure Cosmos DB コネクタ](https://aka.ms/bulkexecutor-adf-v2)の新しいバージョンにも統合されています。

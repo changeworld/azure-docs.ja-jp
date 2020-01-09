@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB での自動オンライン バックアップとオンデマンドのデータ復元
+title: Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元
 description: この記事では、Azure Cosmos DB での自動オンライン バックアップとオンデマンドのデータ復元が動作するしくみを説明します。
 author: kanshiG
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 066549f1343eaceb9a47fccc3b5d4508f226a89b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ca4fa8699d9bd4b35f26983f2f7004c63da180f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967479"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441537"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB でのオンライン バックアップとオンデマンドのデータ復元
 
@@ -85,12 +85,12 @@ Azure Cosmos データベースが削除されたときに、データベース�
 
 復元したアカウントには引き続き料金が発生するため、移行が完了したらすぐに削除してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次に、Azure Cosmos アカウントからデータを復元する方法、またはデータを Azure Cosmos アカウントに移行する方法について学習します。
 
-* 復元要求を行う場合は、Azure サポートに連絡し、[Azure portal からチケットを登録](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* 復元の要請を行うために、Azure サポートに連絡して [Azure portal からチケットを申請](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)する。
 * [Azure Cosmos アカウントからデータを復元する方法](how-to-backup-and-restore.md)
-* [Cosmos DB 変更フィードを使用](change-feed.md)してデータを Azure Cosmos DB に移動
+* [Cosmos DB 変更フィードを使用](change-feed.md)してデータを Azure Cosmos DB に移動する。
 * [Azure Data Factory を使用](../data-factory/connector-azure-cosmos-db.md)してデータを Azure Cosmos DB に移動する。
 

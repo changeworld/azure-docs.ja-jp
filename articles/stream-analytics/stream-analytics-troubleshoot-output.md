@@ -1,7 +1,6 @@
 ---
 title: Azure Stream Analytics の出力のトラブルシューティング
 description: この記事では、Azure Stream Analytics ジョブの出力接続のトラブルシューティングを行う方法について説明します。
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a07ac40ad3adda486b5216e83d683e00ec93265d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 65d01c5c4dd852cb424c75f170ce52156f1633cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354104"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics の出力のトラブルシューティング
 
@@ -95,7 +94,7 @@ IGNORE_DUP_KEY を構成する際には、一部のインデックスに関す�
 元の互換性レベル (1.0) を使用していたとき、Azure Stream Analytics は列名を小文字に変更するために使用していました。 この動作は、以降の互換性レベルで修正されました。 大文字と小文字を保持するためには、お客様が互換性レベル 1.1 以降に移行することをお勧めします。 詳細については、「[Azure Stream Analytics ジョブの互換性レベル](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)」を参照してください。
 
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)を参照してください。
 

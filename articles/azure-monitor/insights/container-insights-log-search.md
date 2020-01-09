@@ -1,18 +1,14 @@
 ---
 title: Azure Monitor for containers からログを照会する方法 |Microsoft Docs
 description: Azure Monitor for containers は、メトリックとログ データを収集します。この記事では、レコードについて説明し、サンプル クエリを紹介します。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 787e9e6d0ae86568e1af74b4d67fb716841a02df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dcd1656673e549b583de26bca897d0055f389d0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477084"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404533"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログを照会する方法
 
@@ -36,7 +32,7 @@ Azure Monitor for containers では、コンテナー ホストおよびコン�
 | Kubernetes クラスターのコンテナー部分のパフォーマンス メトリック | Perf &#124; where ObjectName == “K8SContainer” | CounterName &#40;cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryWorkingSetBytes、restartTimeEpoch、cpuUsageNanoCores、memoryRssBytes&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
 | カスタム メトリック |`InsightsMetrics` | Computer、Name、Namespace、Origin、SourceSystem、Tags<sup>1</sup>、TimeGenerated、Type、Va、_ResourceId | 
 
-<sup>1</sup> *Tags* プロパティは、対応するメトリックの[複数のディメンション](../platform/data-platform-metrics.md#multi-dimensional-metrics)を表します。 `InsightsMetrics` テーブルに収集して格納されているメトリックの詳細とレコードのプロパティの説明については、[InsightsMetrics の概要](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)に関するページを参照してください。
+<sup>1</sup>*Tags* プロパティは、対応するメトリックの[複数のディメンション](../platform/data-platform-metrics.md#multi-dimensional-metrics)を表します。 `InsightsMetrics` テーブルに収集して格納されているメトリックの詳細とレコードのプロパティの説明については、[InsightsMetrics の概要](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)に関するページを参照してください。
 
 >[!NOTE]
 >現時点では、Prometheus のサポートはパブリック プレビューの機能です。
@@ -56,7 +52,7 @@ Azure Monitor ログを使用することにより、傾向の特定、ボトル
 
 多くの場合、1、2 個の例を使ってクエリを作成し、その後、要件に合わせて変更するとうまくいきます。 より高度なクエリを作成できるように、次のサンプル クエリを試すことができます。
 
-| Query | 説明 | 
+| クエリ | [説明] | 
 |-------|-------------|
 | ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | コンテナーのライフ サイクル情報をすべて一覧表示します| 
 | KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes イベント|
@@ -117,6 +113,6 @@ KubeMonAgentEvents | where Level != "Info"
 
 ![エージェントからの情報イベントのクエリ結果をログに記録する](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Monitor for containers には、定義済みの一連のアラートは含まれません。 [Azure Monitor for containers を使用したパフォーマンス アラートの作成](container-insights-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合に推奨アラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。 

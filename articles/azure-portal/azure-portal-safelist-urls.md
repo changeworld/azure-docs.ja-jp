@@ -3,18 +3,18 @@ title: Azure portal の URL をセーフリストに追加する | Microsoft Doc
 description: これらの URL をプロキシ サーバー バイパスに追加して、Azure portal やそのサービスと通信を行います
 services: azure-portal
 keywords: ''
-author: kfollis
-ms.author: kfollis
+author: mblythe
+ms.author: mblythe
 ms.date: 09/13/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 9618d99495e65231de22eb719355e2ca75a17600
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 4f4badbd923b10cf2cd66f7df9742a6bc657a01c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218042"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637544"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する
 
@@ -75,7 +75,7 @@ Azure portal 用にセーフリストに追加する URL エンドポイント�
 > これらのエンドポイントへのトラフィックには、標準的な TCP ポートが使用されます (HTTP では 80、HTTPS では 443)。
 >
 >
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IP アドレスをセーフリストに追加するには、 ご利用のクラウドの Microsoft Azure データセンターの IP 範囲のリストをダウンロードします。
 

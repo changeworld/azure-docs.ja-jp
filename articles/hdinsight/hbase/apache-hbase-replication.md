@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995917"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435660"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
 
@@ -51,7 +51,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 この記事では、geo レプリケーション シナリオについて説明します。
 
-環境を設定しやすくするために、複数の [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-overview.md)が用意されています。 他の方法で環境を設定する場合は、次の記事を参照してください。
+環境を設定しやすくするために、複数の [Azure Resource Manager テンプレート](../../azure-resource-manager/management/overview.md)が用意されています。 他の方法で環境を設定する場合は、次の記事を参照してください。
 
 - [HDInsight で Apache Hadoop クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)
 - [Azure Virtual Network での Apache HBase クラスターの作成](apache-hbase-provision-vnet.md)
@@ -262,8 +262,8 @@ sudo service bind9 status
 - **リソース グループ名**: 仮想ネットワークの作成時と同じリソース グループ名を使用します。
 - **クラスターの種類**:hbase
 - **バージョン**:HBase 1.1.2 (HDI 3.6)
-- **場所**:仮想ネットワークと同じ場所を使います。  既定では、vnet1 は *[米国西部]* 、vnet2 は *[米国東部]* です。
-- **ストレージ**:クラスター用の新しいストレージ アカウントを作成します。
+- **[場所]** :仮想ネットワークと同じ場所を使います。  既定では、vnet1 は *[米国西部]* 、vnet2 は *[米国東部]* です。
+- **ストレージ**: クラスター用の新しいストレージ アカウントを作成します。
 - **仮想ネットワーク**(ポータルの [詳細設定]):最後の手順で作成した vnet1 を選択します。
 - **サブネット**:テンプレートで使われる既定の名前は **subnet1** です。
 
@@ -285,16 +285,16 @@ sudo service bind9 status
 
 **Azure Portal から HBase レプリケーションを有効にするには**
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. ソース HBase クラスターを開きます。
 3. クラスター メニューの **[スクリプト アクション]** を選択します。
 4. ページの上部にある **[新規で送信]** を選択します。
 5. 次の情報を選択するか入力します。
 
-   1. **名前**:「**Enable replication**」と入力します。
+   1. **Name**:「**Enable replication**」と入力します。
    2. **バッシュ スクリプト URI**: **https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh** を入力します。
    3. **ヘッド**:これが選択されていることを確認します。 他のノード タイプをオフにします。
-   4. **パラメーター**:次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
+   4. **パラメーター**: 次のサンプル パラメーターは、すべての既存のテーブルに対するレプリケーションを有効にし、ソース クラスターからデスティネーション クラスターにすべてのデータをコピーします。
 
           -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -copydata
     
@@ -307,7 +307,7 @@ sudo service bind9 status
 
 必須の引数:
 
-|名前|説明|
+|Name|[説明]|
 |----|-----------|
 |-s, --src-cluster | ソース HBase クラスターの DNS 名を指定します。 例: -s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | デスティネーション (レプリカ) HBase クラスターの DNS 名を指定します。 例: -s dsthbcluster, --src-cluster=dsthbcluster |
@@ -316,7 +316,7 @@ sudo service bind9 status
 
 省略可能な引数:
 
-|名前|説明|
+|Name|[説明]|
 |----|-----------|
 |-su, --src-ambari-user | ソース HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-du, --dst-ambari-user | デスティネーション HBase クラスターでの Ambari の管理者ユーザー名を指定します。 既定値は **admin** です。 |
@@ -369,7 +369,7 @@ sudo service bind9 status
 - **特定のテーブル (test1、test2、および test3) の現在のタイムスタンプまでに編集されたすべての行をコピーする**:
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-  または
+  または:
 
         -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
 
@@ -404,7 +404,7 @@ sudo service bind9 status
 > 宛先クラスターを削除しようとしている場合は、ソース クラスターのピアの一覧から削除するようにしてください。 これを行うには、ソース クラスターの hbase シェルでコマンド remove_peer '1' を実行します。 これが失敗する場合は、ソース クラスターが正しく機能していない可能性があります。
 >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、1 つの仮想ネットワーク内または 2 つの仮想ネットワーク間で Apache HBase レプリケーションを設定する方法を説明しました。 HDInsight と Apache HBase の詳細については、以下の記事を参照してください。
 

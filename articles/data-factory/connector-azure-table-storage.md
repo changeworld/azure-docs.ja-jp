@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.openlocfilehash: e23bf7b3e111d9945ac3eaab942fa77ddba9d9ed
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b64b0f32b7e8d94115facf43646a5a030697d80f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444408"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー
 
@@ -39,7 +39,7 @@ Table Storage には、サポートされているソース データ ストア�
 
 具体的には、この Azure Table コネクタは、アカウント キーとサービスの Shared Access Signature 認証を使用して、データのコピーをサポートします。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -51,10 +51,10 @@ Table Storage には、サポートされているソース データ ストア�
 
 Azure Storage のリンクされたサービスは、アカウント キーを使用して作成できます。 これによりデータ ファクトリは、Storage にグローバルにアクセスすることができます。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **AzureTableStorage** に設定する必要があります。 |はい |
-| connectionString | connectionString プロパティのために Storage に接続するために必要な情報を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
+| 型 | type プロパティを **AzureTableStorage** に設定する必要があります。 |はい |
+| connectionString | connectionString プロパティのために Storage に接続するために必要な情報を指定します。 <br/>アカウント キーを Azure Key Vault に格納して、接続文字列から `accountKey` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 |はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 >[!NOTE]
@@ -68,10 +68,7 @@ Azure Storage のリンクされたサービスは、アカウント キーを�
     "properties": {
         "type": "AzureTableStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -89,10 +86,7 @@ Azure Storage のリンクされたサービスは、アカウント キーを�
     "properties": {
         "type": "AzureTableStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;"
-            },
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
             "accountKey": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -126,9 +120,9 @@ Shared Access Signature を使用すると、ストレージ アカウント内�
 
 Shared Access Signature 認証を使用するために、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **AzureTableStorage** に設定する必要があります。 |はい |
+| 型 | type プロパティを **AzureTableStorage** に設定する必要があります。 |はい |
 | sasUri | テーブルへの共有アクセス署名 URI の SAS URI を指定します。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 自動ローテーションを活用してトークン部分を削除するために、SAS トークンを Azure Key Vault に配置することもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
@@ -197,9 +191,9 @@ Shared Access Signature の URI を作成する際は、次の点に注意して
 
 Azure Table をコピー先またはコピー元としてデータをコピーするには、データセットの type プロパティを **AzureTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**AzureTable** に設定する必要があります。 |はい |
+| 型 | データセットの type プロパティは、**AzureTable** に設定する必要があります。 |はい |
 | tableName |リンクされたサービスが参照する Table Storage データベース インスタンスのテーブルの名前です。 |はい |
 
 **例:**
@@ -237,9 +231,9 @@ Azure Table などのスキーマのないデータ ストアの場合、Data Fa
 
 Azure Table からデータをコピーする場合は、コピー アクティビティのソースの種類を **AzureTableSource** を設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |はい |
+| 型 | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |はい |
 | azureTableSourceQuery |カスタム Table Storage クエリを使用してデータを読み取ります。 次のセクションの例を参照してください。 |いいえ |
 | azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。<br/>使用可能な値: **True**、および **False** (既定値)。 |いいえ |
 
@@ -263,9 +257,9 @@ Azure Table の列が string 型の場合:
 
 Azure Table にデータをコピーする場合は、コピー アクティビティのシンクの種類を **AzureTableSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティを **AzureTableSink** に設定する必要があります。 |はい |
+| 型 | コピー アクティビティのシンクの type プロパティを **AzureTableSink** に設定する必要があります。 |はい |
 | azureTableDefaultPartitionKeyValue |シンクで使用できる既定のパーティション キー値です。 |いいえ |
 | azureTablePartitionKeyName |値をパーティション キーとして使用する列の名前を指定します。 指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 |いいえ |
 | azureTableRowKeyName |値を行キーとして使用する列の名前を指定します。 指定しない場合、各行に GUID を使用します。 |いいえ |
@@ -337,17 +331,17 @@ Azure テーブル間でデータの移動時に、次の [Azure Table により
 | Azure Table のデータ型 | Data Factory の中間データ型 | 詳細 |
 |:--- |:--- |:--- |
 | Edm.Binary |byte[] |バイトの配列 (最大 64 KB)。 |
-| Edm.Boolean |bool |ブール値。 |
+| Edm.Boolean |[bool] |ブール値です。 |
 | Edm.DateTime |DateTime |世界協定時刻 (UTC) を表す 64 ビット値。 サポートされている DateTime 範囲は西暦 1601 年 1 月 1 日 UTC 深夜 12:00 から 始まります。 この範囲は 9999 年 12 月 31 日に終了します。 |
 | Edm.Double |double |64 ビットの浮動小数点値。 |
 | Edm.Guid |Guid |グローバルで一意となる 128 ビットの識別子。 |
 | Edm.Int32 |Int32 |32 ビットの整数。 |
 | Edm.Int64 |Int64 |64 ビットの整数。 |
-| Edm.String |string |UTF-16 エンコードの値。 文字列値は最大 64 KB になります。 |
+| Edm.String |String |UTF-16 エンコードの値。 文字列値は最大 64 KB になります。 |
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

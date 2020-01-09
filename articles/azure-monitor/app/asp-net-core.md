@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 823527af81e0cb22fb59421b84983684d4cdfffd
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 52314f0802acd6a296177d53ee9babb133172761
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286256"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407509"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -66,7 +66,7 @@ ms.locfileid: "74286256"
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.8.0" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.12.0" />
         </ItemGroup>
     ```
 
@@ -107,7 +107,7 @@ ms.locfileid: "74286256"
 
     * `ApplicationInsights:InstrumentationKey`
 
-    例:
+    次に例を示します。
 
     * `SET ApplicationInsights:InstrumentationKey=putinstrumentationkeyhere`
 
@@ -195,7 +195,7 @@ public void ConfigureServices(IServiceCollection services)
 
 `ApplicationInsightsServiceOptions` の設定の完全な一覧
 
-|Setting | 説明 | Default
+|設定 | [説明] | Default
 |---------------|-------|-------
 |EnableQuickPulseMetricStream | LiveMetrics 機能を有効または無効にします | true
 |EnableAdaptiveSampling | アダプティブ サンプリングを有効または無効にします | true
@@ -406,7 +406,7 @@ Application Insights でのカスタム データ レポートについては、
 
 ### <a name="can-i-enable-application-insights-monitoring-by-using-tools-like-status-monitor"></a>Status Monitor などのツールを利用して Application Insights 監視を有効にできますか?
 
-No. 現在、[Status Monitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) と [Status Monitor v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) では、ASP.NET 4.x のみがサポートされます。
+いいえ。 現在、[Status Monitor](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now) と [Status Monitor v2](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview) では、ASP.NET 4.x のみがサポートされます。
 
 ### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>ASP.NET Core 2.0 アプリケーションでは、Application Insights が自動的に有効になりますか?
 
@@ -441,14 +441,14 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>オープンソース SDK
 
-[コードを読んで協力してください。](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
+[コードを読んで協力してください。](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)
 
 ## <a name="video"></a>ビデオ
 
 - 最初から [.NET Core と Visual Studio を使って Application Insights を構成する](https://www.youtube.com/watch?v=NoS9UhcR4gA&t)には、この手順に関するステップ バイ ステップの外部ビデオをご覧ください。
 - 最初から [.NET Core と Visual Studio Code を使って Application Insights を構成する](https://youtu.be/ygGt84GDync)には、この手順に関するステップ バイ ステップの外部ビデオをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ユーザー フローの探索](../../azure-monitor/app/usage-flows.md): ユーザーがアプリ内をどのように移動しているかを把握します。
 * [スナップショット コレクションを構成](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)して、例外がスローされたときのソース コードと変数の状態を確認します。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: fab3b919ee3ecb1f8e76b70bada57a5380aaeab8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 20df41ce6fe2bd6e18445877da4cb4de3c9c3d5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927812"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444199"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -42,7 +42,7 @@ PostgreSQL データベースのデータを、サポートされているシン
 
 バージョン 3.7 より前のセルフホステッド IR では、Integration Runtime コンピューターに、[PostgreSQL 用の Ngpsql データ プロバイダー](https://go.microsoft.com/fwlink/?linkid=282716)のバージョン 2.0.12 から 3.1.9 までをインストールする必要があります。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -52,15 +52,15 @@ PostgreSQL データベースのデータを、サポートされているシン
 
 PostgreSQL のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは、次のように設定する必要があります:**PostgreSql** | はい |
-| connectionString | Azure Database for PostgreSQL に接続するための ODBC 接続文字列。 <br/>Data Factory に安全に格納するには、このフィールドを SecureString として指定します。 パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、次のサンプルと「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
+| 型 | type プロパティは、次のように設定する必要があります:**PostgreSql** | はい |
+| connectionString | Azure Database for PostgreSQL に接続するための ODBC 接続文字列。 <br/>パスワードを Azure Key Vault に格納して、接続文字列から `password` 構成をプルすることもできます。 詳細については、下記の例と、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」の記事を参照してください。 | はい |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 一般的な接続文字列は `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>` です。 ケースごとにさらに多くのプロパティを設定できます。
 
-| プロパティ | 説明 | オプション | 必須 |
+| プロパティ | [説明] | オプション | 必須 |
 |:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| ドライバーとデータベース サーバー間で送信されるデータを暗号化するためにドライバーが使用するメソッド。 例: `EncryptionMethod=<0/1/6>;`| 0 (暗号化なし) **(既定)** /1 (SSL)/6 (RequestSSL) | いいえ |
 | ValidateServerCertificate (VSC) | SSL 暗号化が有効 (Encryption Method=1) になっているときに、データベース サーバーによって送信される証明書をドライバーが検証するかどうかを決定します。 例: `ValidateServerCertificate=<0/1>;`| 0 (無効) **(既定)** / 1 (有効) | いいえ |
@@ -73,10 +73,7 @@ PostgreSQL のリンクされたサービスでは、次のプロパティがサ
     "properties": {
         "type": "PostgreSql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
-            }
+            "connectionString": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -94,10 +91,7 @@ PostgreSQL のリンクされたサービスでは、次のプロパティがサ
     "properties": {
         "type": "PostgreSql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;"
-            },
+            "connectionString": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -147,11 +141,11 @@ PostgreSQL のリンクされたサービスでは、次のプロパティがサ
 
 PostgreSQL からのデータ コピーについては、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、次のように設定する必要があります:**PostgreSqlTable** | はい |
+| 型 | データセットの type プロパティは、次のように設定する必要があります:**PostgreSqlTable** | はい |
 | schema | スキーマの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
-| table | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
+| テーブル | テーブルの名前。 |いいえ (アクティビティ ソースの "query" が指定されている場合)  |
 | tableName | スキーマがあるテーブルの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -182,9 +176,9 @@ PostgreSQL からのデータ コピーについては、次のプロパティ�
 
 PostgreSQL からデータをコピーするために、コピー アクティビティの **source** セクションでは次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**PostgreSqlSource** | はい |
+| 型 | コピー アクティビティのソースの type プロパティは、次のように設定する必要があります:**PostgreSqlSource** | はい |
 | query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 > [!NOTE]
@@ -224,10 +218,10 @@ PostgreSQL からデータをコピーするために、コピー アクティ�
 
 `RelationalSource` 型のソースを使用していた場合は現状のまま引き続きサポートされますが、今後は新しいものを使用することをお勧めします。
 
-## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
 
-プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

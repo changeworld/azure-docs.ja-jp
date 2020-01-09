@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013978"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438056"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure Digital Twins 内でのロールの割り当ての作成と管理
 
@@ -36,13 +36,13 @@ Azure Digital Twins は、ロールベースのアクセス制御 ([RBAC](./secu
 
 次の表は、各属性を示しています。
 
-| Attribute | 名前 | 必須 | 種類 | 説明 |
+| Attribute | Name | 必須 | 種類 | [説明] |
 | --- | --- | --- | --- | --- |
-| roleId | ロール定義識別子 | はい | string | 必要なロールの割り当ての一意 ID。 ロールの定義とその識別子は、システム API のクエリを実行するか次の表を確認して見つけます。 |
-| objectId | オブジェクト識別子 | はい | string | Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名。 ロールの割り当ての割り当て先。 ロールの割り当ては、関連付けられている型に従って書式設定する必要があります。 `DomainName` objectIdType の場合、objectId は `“@”` 文字で始まる必要があります。 |
-| objectIdType | オブジェクト識別子の型 | はい | string | 使用するオブジェクト識別子の種類。 下の「**サポートされているオブジェクト識別子の型**」をご覧ください。 |
-| path | スペース パス | はい | string | `Space` オブジェクトへの完全アクセス パス。 例: `/{Guid}/{Guid}`。 識別子がグラフ全体のロールの割り当てを必要とする場合は、`"/"` を指定します。 この文字はルートの指定ですが、これを使用することはお勧めできません。 常に最小限の特権の原則に従ってください。 |
-| tenantId | テナント識別子 | 多様 | string | ほとんどの場合、Azure Active Directory テナント ID。 `DeviceId` および `TenantId` ObjectIdTypes では許可されません。 `UserId` および `ServicePrincipalId` ObjectIdTypes では必須です。 DomainName ObjectIdType では省略可能です。 |
+| roleId | ロール定義識別子 | はい | String | 必要なロールの割り当ての一意 ID。 ロールの定義とその識別子は、システム API のクエリを実行するか次の表を確認して見つけます。 |
+| objectId | オブジェクト識別子 | はい | String | Azure Active Directory ID、サービス プリンシパル オブジェクト ID、またはドメイン名。 ロールの割り当ての割り当て先。 ロールの割り当ては、関連付けられている型に従って書式設定する必要があります。 `DomainName` objectIdType の場合、objectId は `“@”` 文字で始まる必要があります。 |
+| objectIdType | オブジェクト識別子の型 | はい | String | 使用するオブジェクト識別子の種類。 下の「**サポートされているオブジェクト識別子の型**」をご覧ください。 |
+| path | スペース パス | はい | String | `Space` オブジェクトへの完全アクセス パス。 たとえば `/{Guid}/{Guid}` です。 識別子がグラフ全体のロールの割り当てを必要とする場合は、`"/"` を指定します。 この文字はルートの指定ですが、これを使用することはお勧めできません。 常に最小限の特権の原則に従ってください。 |
+| tenantId | テナント識別子 | 場合により異なる | String | ほとんどの場合、Azure Active Directory テナント ID。 `DeviceId` および `TenantId` ObjectIdTypes では許可されません。 `UserId` および `ServicePrincipalId` ObjectIdTypes では必須です。 DomainName ObjectIdType では省略可能です。 |
 
 ### <a name="supported-role-definition-identifiers"></a>サポートされているロール定義識別子
 
@@ -163,10 +163,10 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **パラメーター値** | **必須** |  **Type** |  **説明** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | string |   UserId objectIdType の objectId。 |
-| YOUR_PATH | True | string |   アクセスを確認する選択済みパス。 |
-| YOUR_ACCESS_TYPE |  True | string |   *Read*、*Create*、*Update*、または *Delete* |
-| YOUR_RESOURCE_TYPE | True | string |  *Device*、*DeviceBlobMetadata*、*DeviceExtendedProperty*、*ExtendedPropertyKey*、*ExtendedType*、*Endpoint*、*KeyStore*、*Matcher*、*Ontology*、*Report*、*RoleDefinition*、*Sensor*、*SensorExtendedProperty*、*Space*、*SpaceBlobMetadata*、*SpaceExtendedProperty*、*SpaceResource*、*SpaceRoleAssignment*、*System*、*UerDefinedFunction*、*User*、*UserBlobMetadata*、または *UserExtendedProperty* |
+| YOUR_USER_ID |  True | String |   UserId objectIdType の objectId。 |
+| YOUR_PATH | True | String |   アクセスを確認する選択済みパス。 |
+| YOUR_ACCESS_TYPE |  True | String |   *Read*、*Create*、*Update*、または *Delete* |
+| YOUR_RESOURCE_TYPE | True | String |  *Device*、*DeviceBlobMetadata*、*DeviceExtendedProperty*、*ExtendedPropertyKey*、*ExtendedType*、*Endpoint*、*KeyStore*、*Matcher*、*Ontology*、*Report*、*RoleDefinition*、*Sensor*、*SensorExtendedProperty*、*Space*、*SpaceBlobMetadata*、*SpaceExtendedProperty*、*SpaceResource*、*SpaceRoleAssignment*、*System*、*UerDefinedFunction*、*User*、*UserBlobMetadata*、または *UserExtendedProperty* |
 
 要求が成功すると、指定されたパスとリソースについてアクセスの種類がユーザーに割り当てられているかどうかを示すブール値 `true` または `false` が返されます。
 
@@ -275,7 +275,7 @@ JSON 本文が次のスキーマに準拠していることを確認します。
    }
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure Digital Twins のロール ベースのアクセス制御を確認するには、[ロール ベースのアクセス制御](./security-authenticating-apis.md)に関するページをご覧ください。
 

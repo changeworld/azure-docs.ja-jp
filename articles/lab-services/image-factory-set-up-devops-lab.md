@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: abb85d568e26e4b6f85b960a2560aae570daf201
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 101ed792f091a5074b42e3d06eed27d606d3d2a7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61320617"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638954"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Azure DevOps からイメージ ファクトリを実行する
 この記事では、Azure DevOps (旧称 Visual Studio Team Services) からイメージ ファクトリを実行するために必要な、すべての準備について説明します。
@@ -87,11 +87,11 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 | MachineUserName | ImageFactoryUser | 仮想マシンの組み込み管理者アカウント ユーザー名。 これは一時的なアカウントです。 |
 | StandardTimeoutMinutes | 30 | 通常の Azure 操作を待つ必要があるタイムアウト。 |
 | SubscriptionId |  0000000000-0000-0000-0000-0000000000000 | ラボが存在し、サービス エンドポイントがアクセスできるサブスクリプションの ID。 |
-| VMSize | Standard_A3 | **作成**手順に使用する仮想マシンのサイズ。 作成された VM は一時的なものです。 サイズは、[ラボに有効](devtest-lab-set-lab-policy.md)なものでなければなりません。 十分な[サブスクリプション コア クォータ](../azure-subscription-service-limits.md)があることを確認します。
+| VMSize | Standard_A3 | **作成**手順に使用する仮想マシンのサイズ。 作成された VM は一時的なものです。 サイズは、[ラボに有効](devtest-lab-set-lab-policy.md)なものでなければなりません。 十分な[サブスクリプション コア クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)があることを確認します。
 
 ![ビルド変数](./media/set-up-devops-lab/configure-build-variables.png)
 
-## <a name="connect-to-azure"></a>Azure への接続
+## <a name="connect-to-azure"></a>Azure に接続する
 次の手順では、サービス プリンシパルを設定します。 これは、Azure Active Directory 内の ID であり、これによりユーザーの代わりに Azure で DevOps ビルド エージェントが動作します。 設定するには、まず Azure PowerShell のビルド ステップを追加することから始めます。
 
 1. **[タスクの追加]** を選択します。
@@ -126,5 +126,5 @@ Azure DevOps では、ソース コードを格納し、1 つの場所で Azure 
 
 ![ラボの VM](./media/set-up-devops-lab/vms-in-lab.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure DevTest Labs に基づいてイメージ ファクトリを設定する最初の手順が完了しました。 シリーズの次の記事では、一般化されてカスタム イメージに保存される VM について説明します。 次に、それらを他のすべてのラボに配布します。 シリーズの次の記事をご覧ください。「[カスタム イメージを保存して複数のラボに配布する](image-factory-save-distribute-custom-images.md)」。

@@ -4,15 +4,15 @@ description: マップは、Azure Monitor for VMs の機能です。 Windows お
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 7ca79b0df55dbfea6a0e2c016773f9f32bf29667
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199081"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450719"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Azure Monitor for VMs (プレビュー) のマップ機能を使用してアプリケーション コンポーネントを把握する
 Azure Monitor for VMs では、Azure またはお客様の環境で実行する Windows および Linux 仮想マシン (VM) で検出されたアプリケーション コンポーネントを確認できます。 VM を確認する方法は 2 つあります。 VM から直接マップを表示するか、または Azure Monitor から、VM グループのコンポーネントを表すマップを表示します。 この記事は、これら 2 つの表示方法とマップ機能の使用方法を理解するうえで役立ちます。 
@@ -20,7 +20,7 @@ Azure Monitor for VMs では、Azure またはお客様の環境で実行する 
 Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有効化](vminsights-enable-overview.md)に関する記事をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
 ## <a name="introduction-to-the-map-experience"></a>マップ エクスペリエンスの概要
 マップ エクスペリエンスについて学習する前に、マップの表示方法と、マップでどのように情報が視覚化されるかについて理解する必要があります。 マップ機能を VM から直接選択しても、Azure Monitor から選択しても、マップの表示に関して一貫したエクスペリエンスが得られます。 唯一の違いは、Azure Monitor から選択すると、多層アプリケーションまたはクラスターのすべてのメンバーが 1 つのマップに表示されることです。
@@ -133,6 +133,6 @@ Azure Monitor では、マップ機能で VM とその依存関係の全体像�
 
 既定では、マップには過去 30 分間の情報が表示されます。 過去の依存関係を表示する場合は、過去の時間範囲 (最大 1 時間) のクエリを実行できます。 クエリを実行するには、**時間範囲**セレクターを使用します。 たとえば、インシデントの発生中、または変更が行われる前の状態を確認するために、クエリを実行することがあります。  
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ボトルネックの特定、パフォーマンスの確認、VM の全体的な使用率の理解については、[Azure Monitor for VMs のパフォーマンス状態の表示](vminsights-performance.md)に関する記事をご覧ください。 

@@ -2,16 +2,16 @@
 title: Azure Cache for Redis に関する FAQ
 description: Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.author: yegu
-ms.openlocfilehash: e497a5c54a80dbed2ea94f8251d198c1c8bc5043
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122780"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433446"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis に関する FAQ
 Azure Cache for Redis についてよく寄せられる質問に対する回答、パターン、ベスト プラクティスについて説明します。
@@ -101,7 +101,7 @@ Cache のオプションを選択するときの考慮事項を次に示しま�
 * **スループット**:Premium レベルでは、提供されているうちで最大のスループットが提供されます。 キャッシュ サーバーまたはクライアントが帯域幅の限界に達した場合、クライアント側でタイムアウトが発生する場合があります。 詳細については、後の表を参照してください。
 * **高可用性/SLA**:Azure Cache for Redis では、Standard/Premium キャッシュについて、少なくとも 99.9% の可用性を保証しています。 SLA の詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)についてのページを参照してください。 SLA は、Cache エンドポイントへの接続のみをカバーします。 SLA は、データ損失からの保護には対応していません。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。
 * **Redis データの永続化**:Premium レベルでは、Azure Storage アカウント内のキャッシュ データを永続化できます。 Basic/Standard のキャッシュでは、データはすべてメモリ内にのみ格納されます。 基になるインフラストラクチャで問題が発生すると、データが失われる可能性があります。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。 Azure Cache for Redis では、Redis 永続化の RDB オプションと AOF オプション (近日提供予定) が用意されています。 詳細については、[Premium Azure Cache for Redis の永続化の構成方法](cache-how-to-premium-persistence.md)についてのページを参照してください。
-* **Redis クラスター**:Premium サービス レベルで利用可能な Redis クラスタリングを使用すると、120 GB を超えるキャッシュを作成したり、複数の Redis ノード間でデータをシャード化したりできます。 各ノードは、高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。 詳細については、[Premium Azure Cache for Redis のクラスタリングの構成方法](cache-how-to-premium-clustering.md)に関するページを参照してください。
+* **Redis クラスター**:Premium サービス レベルで利用可能な Redis クラスタリングを使用すると、120 GB を超えるキャッシュを作成したり、複数の Redis ノード間でデータをシャード化したりできます。 各ノードは、高可用性対応のプライマリ/レプリカ キャッシュのペアで構成されています。 詳細については、「[How to configure clustering for a Premium Azure Cache for Redis](cache-how-to-premium-clustering.md)」 (Premium Azure Cache for Redis のクラスタリングの構成方法) を参照してください。
 * **セキュリティとネットワークの分離の強化**:Azure Virtual Network (VNET) のデプロイにより、Azure Cache for Redis のセキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシー、アクセスをさらに制限する他の機能も提供されます。 詳細については、[Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法](cache-how-to-premium-vnet.md)に関するページを参照してください。
 * **Redis の構成**:Standard レベルと Premium レベルのどちらでも、キースペース通知のために Redis を構成できます。
 * **最大クライアント接続数**:Premium レベルでは、Redis に接続できる最大数のクライアントが提供されます。キャッシュのサイズが大きいほど、接続の数は多くなります。 クラスタリングでは、クラスター化されたキャッシュで使用できる接続の数は増加しません。 詳細については、[Azure Cache for Redis の価格](https://azure.microsoft.com/pricing/details/cache/)に関するページを参照してください。
@@ -177,7 +177,7 @@ Azure Government Cloud、Azure China 21Vianet Cloud、Microsoft Azure Germany �
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange.Redis 構成オプションについて
 StackExchange.Redis には多くのオプションが用意されています。 ここでは、いくつかの一般的な設定について説明します。 StackExchange.Redis オプションの詳細については、 [StackExchange.Redis の構成](https://stackexchange.github.io/StackExchange.Redis/Configuration)に関するページを参照してください。
 
-| 構成オプション | 説明 | 推奨 |
+| 構成オプション | [説明] | 推奨 |
 | --- | --- | --- |
 | AbortOnConnectFail |true の場合、ネットワーク障害の後に再接続が行われません。 |StackExchange.Redis が自動的に再接続するように、false に設定します。 |
 | ConnectRetry |初期接続中に接続試行を繰り返す回数。 |次の注意事項を参考にしてください。 |
@@ -196,7 +196,7 @@ StackExchange.Redis には多くのオプションが用意されています。
   * アプリケーションに対して ConnectionMultiplexer インスタンスを 1 つ使用します。 「 [ConnectionMultiplexer クラスを使用してキャッシュに接続する](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)」に示されているように、LazyConnection を使用して、Connection プロパティから返される単一のインスタンスを作成できます。
   * 診断用には、 `ConnectionMultiplexer.ClientName` プロパティを、アプリ インスタンスの一意な名前に設定します。
   * カスタム ワークロードに対しては複数の `ConnectionMultiplexer` インスタンスを使用します。
-      * アプリケーションの負荷が変化する場合は、このモデルに従うことができます。 例:
+      * アプリケーションの負荷が変化する場合は、このモデルに従うことができます。 次に例を示します。
       * 1 つのマルチプレクサーを使用して、サイズの大きなキーを処理できます。
       * 1 つのマルチプレクサーを使用して、サイズの小さなキーを処理できます。
       * 使用する ConnectionMultiplexer ごとに、異なる接続タイムアウト値と再試行ロジックを設定できます。
@@ -381,7 +381,7 @@ IOCP スレッドまたは WORKER スレッドの拡大がスロットルされ�
 
 この設定を構成する方法
 
-* この設定は、`global.asax.cs` 内の [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) メソッドを使用してプログラムによって変更することをお勧めします。 例:
+* この設定は、`global.asax.cs` 内の [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) メソッドを使用してプログラムによって変更することをお勧めします。 次に例を示します。
 
 ```cs
 private readonly int minThreads = 200;
@@ -431,7 +431,7 @@ Azure Cache for Redis の **[リソース] メニュー**にも、キャッシ�
 * **[リソース正常性]** ではリソースが監視され、そのリソースが意図したとおりに動いているかどうかが示されます。 Azure Resource Health サービスの詳細については、「 [Azure Resource Health の概要](../resource-health/resource-health-overview.md)」を参照してください。
 * **[新しいサポート要求]** には、キャッシュのサポート要求を開くためのオプションが用意されています。
 
-これらのツールによって、Azure Cache for Redis インスタンスの正常性を監視し、キャッシュ アプリケーションを管理できます。 「[Azure Redis Cache の構成方法](cache-configure.md)」の「サポートおよびトラブルシューティング設定」を参照してください。
+これらのツールによって、Azure Cache for Redis インスタンスの正常性を監視でき、キャッシュ アプリケーションの管理が容易になります。 「[Azure Redis Cache の構成方法](cache-configure.md)」の「サポートおよびトラブルシューティング設定」を参照してください。
 
 <a name="cache-timeouts"></a>
 
@@ -471,7 +471,7 @@ Azure Cache for Redis により、お客様は Microsoft によって管理さ�
 
 Redis を成功させているもう 1 つの重要な側面は、その周りに構築される健全で活発なオープン ソース エコシステムです。 また、その環境を複数の言語で使用できる多様な Redis クライアントに反映します。 このエコシステムと幅広いクライアントにより、Azure 内部に構築するほぼすべてのワークロードで Azure Cache for Redis を使用できます。
 
-Azure Cache for Redis の使用を開始することの詳細については、「[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と、[Azure Cache for Redis のドキュメント](index.md)に関するページを参照してください。
+Azure Cache for Redis の使用を開始することの詳細については、「[Azure Cache for Redis の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と、[Azure Cache for Redis のドキュメント](index.yml)に関するページを参照してください。
 
 ### <a name="managed-cache-service"></a>Managed Cache Service
 [Managed Cache Service は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)

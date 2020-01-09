@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 89c7e398e24fb48c1829dbaa2811f440c5485a60
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038098"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436810"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>ExpressRoute Microsoft ピアリング経由のサイト間 VPN を構成する
 
@@ -130,7 +130,7 @@ IPsec トンネル ペア経由で、eBGP セッションが確立され、プ�
 
 ### <a name="about-the-azure-resource-manager-template-examples"></a>Azure Resource Manager テンプレートの例について
 
-例では、VPN ゲートウェイと IPsec トンネルの終了が、Azure Resource Manager テンプレートを使用して構成されます。 Resource Manager テンプレートを初めて使用する場合、または Resource Manager テンプレートの基本を理解する必要がある場合は、「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。 このセクションのテンプレートでは、未開発の Azure 環境 (VNet) が作成されます。 ただし、既存の VNet がある場合は、それをテンプレートで参照できます。 VPN ゲートウェイ IPsec/IKE サイト間の構成に慣れていない場合は、[サイト間接続の作成](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)に関するページをご覧ください。
+例では、VPN ゲートウェイと IPsec トンネルの終了が、Azure Resource Manager テンプレートを使用して構成されます。 Resource Manager テンプレートを初めて使用する場合、または Resource Manager テンプレートの基本を理解する必要がある場合は、「[Azure Resource Manager テンプレートの構造と構文の詳細](../azure-resource-manager/templates/template-syntax.md)」を参照してください。 このセクションのテンプレートでは、未開発の Azure 環境 (VNet) が作成されます。 ただし、既存の VNet がある場合は、それをテンプレートで参照できます。 VPN ゲートウェイ IPsec/IKE サイト間の構成に慣れていない場合は、[サイト間接続の作成](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)に関するページをご覧ください。
 
 >[!NOTE]
 >この構成を作成するために Azure Resource Manager テンプレートを使用する必要はありません。 この構成は、Azure Portal または PowerShell を使用して作成できます。
@@ -707,7 +707,7 @@ RPKI validation codes: V valid, I invalid, N Not found
 Total number of prefixes 2
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [ExpressRoute に使用する Network Performance Monitor の構成](how-to-npm.md)
 

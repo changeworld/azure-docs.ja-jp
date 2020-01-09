@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: jeffya
-ms.openlocfilehash: 32dd3fa1fc137d786174e47d842f762c2a479d64
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9ba68e90b5ac64c7bdb08af2b567f00c1a076808
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848984"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453928"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application-preview-features"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する (プレビュー機能)
 
@@ -52,7 +52,7 @@ ms.locfileid: "74848984"
 
 ## <a name="prepare-the-device"></a>デバイスの準備
 
-1. GitHub から DevKit デバイス用の最新の[事前構築済み Azure IoT Central プラグ アンド プレイ ファームウェア](https://github.com/MXCHIP/IoTDevKit/raw/master/pnp/iotc_devkit/bin/iotc_devkit.bin)をダウンロードします。
+1. GitHub から DevKit デバイス用の最新の[事前構築済み Azure IoT Central プラグ アンド プレイ ファームウェア](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin)をダウンロードします。
 
 1. USB ケーブルを使用して、DevKit デバイスを開発用コンピューターに接続します。 Windows では、DevKit デバイス上のストレージにマッピングされたドライブでファイル エクスプローラー ウィンドウが開きます。 たとえば、このドライブは **AZ3166 (D:)** と呼ばれることがあります。
 
@@ -100,6 +100,6 @@ IoT Central アプリケーションで、 **[Devices]\(デバイス\)** タブ�
 
 コードを確認したり、コードを変更してコンパイルしたりするには、[コード サンプル](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)にアクセスします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、DevKit デバイスを Azure IoT Central アプリケーションに接続する方法について説明しました。次の手順として、独自の IoT デバイス用に[カスタム デバイス テンプレートを設定する](./howto-set-up-template.md)方法を学習することをお勧めします。

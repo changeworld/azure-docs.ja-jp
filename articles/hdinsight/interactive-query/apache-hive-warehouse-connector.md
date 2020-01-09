@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 2448550cf35f92bc8d91bc6ad9d5b22cc90b5ae0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 47bcc9a4f906fa1e0cc0560cdbd2e0cebec481ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494305"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435371"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -77,8 +77,8 @@ Spark Ambari Web UI から、 **[Spark2]**  >  **[CONFIGS]**  >  **[Custom spark
 | Key | 値 |
 |----|----|
 |`spark.hadoop.hive.llap.daemon.service.hosts`|**hive.llap.daemon.service.hosts** から先ほど取得した値。|
-|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2` JDBC 接続文字列に設定します。これにより、対話型クエリ クラスター上の Hiveserver2 に接続されます。 `LLAPCLUSTERNAME` を対話型クエリ クラスターの名前に置き換えます。 `PWD` を実際のパスワードで置き換えます。|
-|`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` HDFS と互換性のある適切なステージング ディレクトリに設定します。 2 つの異なるクラスターがある場合、ステージング ディレクトリは、HiveServer2 がそこにアクセスできるよう、LLAP クラスターのストレージ アカウントのステージング ディレクトリにあるフォルダーである必要があります。  `STORAGE_ACCOUNT_NAME` をクラスターによって使用されているストレージ アカウントの名前に置き換え、`STORAGE_CONTAINER_NAME` をストレージ コンテナーの名前に置き換えます。|
+|`spark.sql.hive.hiveserver2.jdbc.url`|[https://login.microsoftonline.com/consumers/](`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`) JDBC 接続文字列に設定します。これにより、対話型クエリ クラスター上の Hiveserver2 に接続されます。 `LLAPCLUSTERNAME` を対話型クエリ クラスターの名前に置き換えます。 `PWD` を実際のパスワードで置き換えます。|
+|`spark.datasource.hive.warehouse.load.staging.dir`|[https://login.microsoftonline.com/consumers/](`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`) HDFS と互換性のある適切なステージング ディレクトリに設定します。 2 つの異なるクラスターがある場合、ステージング ディレクトリは、HiveServer2 がそこにアクセスできるよう、LLAP クラスターのストレージ アカウントのステージング ディレクトリにあるフォルダーである必要があります。  `STORAGE_ACCOUNT_NAME` をクラスターによって使用されているストレージ アカウントの名前に置き換え、`STORAGE_CONTAINER_NAME` をストレージ コンテナーの名前に置き換えます。|
 |`spark.datasource.hive.warehouse.metastoreUri`|**hive.metastore.uris** から先ほど取得した値。|
 |`spark.security.credentials.hiveserver2.enabled`|YARN クライアント デプロイ モードの場合は `false` に設定します。|
 |`spark.hadoop.hive.zookeeper.quorum`|**hive.zookeeper.quorum** から先ほど取得した値。|
@@ -107,7 +107,7 @@ spark-shell セッションを開始するには、次の手順を実行しま�
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.2.1-8.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
@@ -132,7 +132,7 @@ Enterprise セキュリティ パッケージ (ESP) を使用すると、Active 
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/3.0.1.0-183/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.1.0-183.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     --conf spark.hadoop.hive.llap.daemon.service.hosts='<LLAP_APP_NAME>'
     --conf spark.sql.hive.hiveserver2.jdbc.url='jdbc:hive2://<ZOOKEEPER_QUORUM>;serviceDiscoveryMode=zookeeper;zookeeperNamespace=hiveserver2-interactive'
@@ -193,7 +193,7 @@ Hive Warehouse Connector を使用すると、Spark ストリーミングを使�
 
 1. 次の手順を実行して、作成した Spark ストリームのためのデータを生成します。
     1. 同じ Spark クラスターで2番目の SSH セッションを開きます。
-    1. コマンド プロンプトで「 `nc -lk 9999`」と入力します。 このコマンドでは、netcat ユーティリティを使用して、コマンド ラインから指定のポートにデータを送信します。
+    1. コマンド プロンプトで、「`nc -lk 9999`」と入力します。 このコマンドでは、netcat ユーティリティを使用して、コマンド ラインから指定のポートにデータを送信します。
 
 1. 最初の SSH セッションに戻り、ストリーミング データを保持する新しい Hive テーブルを作成します。 spark-shell で、次のコマンドを入力します。
 
@@ -259,7 +259,7 @@ Hive Warehouse Connector を使用すると、Spark ストリーミングを使�
 
     ![Ranger ポリシーを適用した後のデモ テーブル](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight での対話型クエリの使用](https://docs.microsoft.com/azure/hdinsight/interactive-query/apache-interactive-query-get-started)
 * [Zeppelin、Livy、spark-submit、pyspark を使用した Hive Warehouse Connector の操作の例](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)

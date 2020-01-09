@@ -10,12 +10,12 @@ ms.date: 01/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 1a9a88f975ca10a63741818dcb88874a8f1bf436
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 87633abaaae1f6034709c6e552be6647533115ec
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440310"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure 統合ランタイムを作成して構成する方法
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、「[Integration runtime (統合ランタイム)](concepts-integration-runtime.md)」を参照してください。
@@ -49,10 +49,7 @@ Azure IR が作成されたら、リンクされたサービスの定義でそ�
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=myaccountname;AccountKey=...",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=myaccountname;AccountKey=..."
       },
       "connectVia": {
         "referenceName": "MySampleAzureIR",
@@ -63,9 +60,9 @@ Azure IR が作成されたら、リンクされたサービスの定義でそ�
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 その他のタイプの統合ランタイムの作成方法については、以下の記事を参照してください。
 
-- [Create self-hosted integration runtime (自己ホスト型統合ランタイムの作成)](create-self-hosted-integration-runtime.md)
-- [Create Azure-SSIS integration runtime (Azure-SSIS 統合ランタイムの作成)](create-azure-ssis-integration-runtime.md)
+- [Create self-hosted integration runtime (セルフホステッド統合ランタイムの作成)](create-self-hosted-integration-runtime.md)
+- [Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)
  

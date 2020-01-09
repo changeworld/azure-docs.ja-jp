@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: ca6ed58cfabb5027830828812c4820c1b586875c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0778759958e70c564779f5493d7cf8b646f6ced0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61322876"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644649"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Azure DevTest Labs で別のラボから仮想マシンをインポートする
 この記事では、別のラボから自分のラボに仮想マシンをインポートする方法について説明します。
@@ -26,7 +26,7 @@ ms.locfileid: "61322876"
 一部のシナリオでは、あるラボから別のラボに VM をインポートする必要があります。
 
 - チームにいた人が企業内の別のグループに移動するので、新しいチームの DevTest Labs に開発者のデスクトップを持ち込むことを希望しています。
-- そのグループは[サブスクリプションレベルのクォータ](../azure-subscription-service-limits.md)に達しており、いくつかのサブスクリプションに分割したいと考えています。
+- そのグループは[サブスクリプションレベルのクォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)に達しており、いくつかのサブスクリプションに分割したいと考えています。
 - 会社は Express Route (またはいくつかその他の新しいネットワーク トポロジ) に移行しており、チームはこの新しいインフラストラクチャへの仮想マシンの移動を希望しています。
 
 ## <a name="solution-and-constraints"></a>ソリューションと制約
@@ -62,7 +62,7 @@ VM をラボ間でインポートする際に注意する 2 つの重要な制�
 ```
 
 ### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>PowerShell を使用し、インポート元のラボのすべての VM をインポートする
-インポート元の仮想マシンが指定されていない場合、このスクリプトでは、DevTest Labs. のすべての VM が自動的にインポートされます。  例:
+インポート元の仮想マシンが指定されていない場合、このスクリプトでは、DevTest Labs. のすべての VM が自動的にインポートされます。  次に例を示します。
 
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
@@ -82,8 +82,8 @@ POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/reso
 }
 ```
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。
 
 - [ラボのポリシーを設定する](devtest-lab-get-started-with-lab-policies.md)
 - [よく寄せられる質問](devtest-lab-faq.md)

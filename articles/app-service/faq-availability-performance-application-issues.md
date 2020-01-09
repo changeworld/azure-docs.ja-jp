@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: a5af98aae420193b8316a48aa60550cef70a9c4a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: c12e14b8b842e3ccf9f2bf9e0ab783d8852ee69b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671702"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659715"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -85,7 +85,7 @@ Web アプリのプロセス レベルの情報を表示するには、次の 2 
 
 ## <a name="where-can-i-learn-more-about-quotas-and-limits-for-various-app-service-plans"></a>各種 App Service プランのクォータと制限に関する詳細情報はどこで得られますか?
 
-クォータと制限については、「[App Service の制限](../azure-subscription-service-limits.md#app-service-limits)」を参照してください。 
+クォータと制限については、「[App Service の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits)」を参照してください。 
 
 ## <a name="how-do-i-decrease-the-response-time-for-the-first-request-after-idle-time"></a>アイドル時間の後の最初の要求の応答時間を短縮するにはどうすればよいですか?
 

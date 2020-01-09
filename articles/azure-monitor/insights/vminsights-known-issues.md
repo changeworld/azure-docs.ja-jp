@@ -4,15 +4,15 @@ description: この記事では Azure Monitor for VMs の既知の問題につ�
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 04/02/2019
-ms.openlocfilehash: f6719a8c28571faceb6ebad0567d13a4edc60fe6
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: b59e2d1897557b47bcfeafbc17141f869e2f192e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450675"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Azure Monitor for VMs (プレビュー) の既知の問題
 
@@ -28,5 +28,5 @@ ms.locfileid: "72553766"
 - サポートされている方法の 1 つを使用して VM の監視を無効にした後、それを再びデプロイする場合は、前と同じワークスペースにデプロイする必要があります。 異なるワークスペースを選択した場合、その VM の正常性状態を表示する際に、一貫性のない動作が見られる場合があります。
 - ソリューション コンポーネントをワークスペースから削除した後で、引き続きヘルス状態を Azure VM から見ることができます。たとえばパフォーマンス データやマップ データは、ポータルでそれぞれのビューに移動すると見ることができます。 データはしばらくするといずれはパフォーマンスおよびマップのビューに表示されなくなります。しかし、ヘルス ビューには引き続き VM のヘルス状態が表示されます。 **[今すぐ試す]** オプションは、パフォーマンス ビューとマップ ビューからの再オンボードのみに使用できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 仮想マシンの監視を有効にするための要件と方法については、[Azure Monitor for VMs の有効化](vminsights-enable-overview.md)に関するページを確認してください。

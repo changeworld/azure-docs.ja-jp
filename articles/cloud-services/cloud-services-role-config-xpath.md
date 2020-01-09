@@ -2,17 +2,17 @@
 title: Cloud Services ロール構成の XPath チート シート |Microsoft Docs
 description: クラウド サービス ロール構成で設定を環境変数として公開するために使用できるさまざまな XPath 設定。
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: cd2bdc4fc4b2a135907851ca4d3034430618e0cd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 380b0be4e4e4b19d16cb611b0b472294339f2199
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359008"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386087"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>XPath で環境変数としてロール構成設定を公開する
 クラウド サービス worker ロールまたは Web ロールのサービス定義ファイルで、ランタイム構成値を環境変数として公開できます。 次の XPath 値がサポートされています (これは API 値に対応します)。
@@ -22,7 +22,7 @@ ms.locfileid: "68359008"
 ## <a name="app-running-in-emulator"></a>エミュレーターで実行中のアプリ
 アプリがエミュレーターで実行されていることを示します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/Deployment/@emulated" |
 | コード |var x = RoleEnvironment.IsEmulated; |
@@ -30,7 +30,7 @@ ms.locfileid: "68359008"
 ## <a name="deployment-id"></a>デプロイ ID
 インスタンスのデプロイ ID を取得します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/Deployment/@id" |
 | コード |var deploymentId = RoleEnvironment.DeploymentId; |
@@ -38,7 +38,7 @@ ms.locfileid: "68359008"
 ## <a name="role-id"></a>ロール ID
 インスタンスの現在のロール ID を取得します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@id" |
 | コード |var id = RoleEnvironment.CurrentRoleInstance.Id; |
@@ -46,7 +46,7 @@ ms.locfileid: "68359008"
 ## <a name="update-domain"></a>ドメインの更新
 インスタンスの更新ドメインを取得します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@updateDomain" |
 | コード |var ud = RoleEnvironment.CurrentRoleInstance.UpdateDomain; |
@@ -54,7 +54,7 @@ ms.locfileid: "68359008"
 ## <a name="fault-domain"></a>障害ドメイン
 インスタンスの障害ドメインを取得します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@faultDomain" |
 | コード |var fd = RoleEnvironment.CurrentRoleInstance.FaultDomain; |
@@ -62,7 +62,7 @@ ms.locfileid: "68359008"
 ## <a name="role-name"></a>ロール名
 インスタンスのロール名を取得します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/@roleName" |
 | コード |var rname = RoleEnvironment.CurrentRoleInstance.Role.Name; |
@@ -70,7 +70,7 @@ ms.locfileid: "68359008"
 ## <a name="config-setting"></a>構成設定
 指定した構成設定の値を取得します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/ConfigurationSettings/ConfigurationSetting[@name='Setting1']/@value" |
 | コード |var setting = RoleEnvironment.GetConfigurationSettingValue("Setting1"); |
@@ -78,7 +78,7 @@ ms.locfileid: "68359008"
 ## <a name="local-storage-path"></a>ローカル ストレージ パス
 インスタンスのローカル ストレージ パスを取得します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@path" |
 | コード |var localResourcePath = RoleEnvironment.GetLocalResource("LocalStore1").RootPath; |
@@ -86,7 +86,7 @@ ms.locfileid: "68359008"
 ## <a name="local-storage-size"></a>ローカル ストレージ サイズ
 インスタンスのローカル ストレージのサイズを取得します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/LocalResources/LocalResource[@name='LocalStore1']/@sizeInMB" |
 | コード |var localResourceSizeInMB = RoleEnvironment.GetLocalResource("LocalStore1").MaximumSizeInMegabytes; |
@@ -94,7 +94,7 @@ ms.locfileid: "68359008"
 ## <a name="endpoint-protocol"></a>エンドポイント プロトコル
 インスタンスのエンドポイント プロトコルを取得します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@protocol" |
 | コード |var prot = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].Protocol; |
@@ -102,7 +102,7 @@ ms.locfileid: "68359008"
 ## <a name="endpoint-ip"></a>エンドポイント IP
 指定したエンドポイントの IP アドレスを取得します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@address" |
 | コード |var address = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Address |
@@ -110,7 +110,7 @@ ms.locfileid: "68359008"
 ## <a name="endpoint-port"></a>エンドポイント ポート
 インスタンスのエンドポイント ポートを取得します。
 
-| Type | 例 |
+| 種類 | 例 |
 | --- | --- |
 | XPath |xpath="/RoleEnvironment/CurrentInstance/Endpoints/Endpoint[@name='Endpoint1']/@port" |
 | コード |var port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Endpoint1"].IPEndpoint.Port; |
@@ -155,10 +155,13 @@ ms.locfileid: "68359008"
 </WorkerRole>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) ファイルの詳細を理解します。
 
 [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) パッケージを作成します。
 
 ロールの [リモート デスクトップ](cloud-services-role-enable-remote-desktop-new-portal.md) を有効にします。
+
+
+
 

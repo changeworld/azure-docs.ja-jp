@@ -3,17 +3,17 @@ title: クラウド サービスの構成方法 (ポータル) | Microsoft Docs
 description: Azure のクラウド サービスの構成方法について説明します。 クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。 これらの例では、Azure ポータルを使用します。
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
-ms.author: gwallace
-ms.openlocfilehash: 8b60a81e06b95c69a02f88ff3275743b056c191d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 554d3e465b42ca889ba03565e87193f80e89ed1d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359658"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361009"
 ---
 # <a name="how-to-configure-cloud-services"></a>Cloud Services の構成方法
 
@@ -92,15 +92,18 @@ Azure で構成の更新中に 99.95% の可用性を保証できるのは、各
     ![[構成] ブレード](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 3. **[ダウンロード]** ボタンをクリックします。
 
-    ![[ダウンロード]](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+    ![ダウンロード](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. サービス構成ファイルを更新した後、次のステップでファイルをアップロードして構成の更新内容を適用します。
 
     ![アップロード](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. .cscfg ファイルを選択し、 **[OK]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
 * [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
+
+
+

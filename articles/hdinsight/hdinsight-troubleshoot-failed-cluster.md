@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 69711f7ac20882617de175b1b90d8df4f2858c4d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22bf4dcd472cf2d7804b571e09093535f30b053f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498080"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647426"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight クラスターでジョブが遅いか失敗する場合のトラブルシューティング
 
@@ -65,7 +65,7 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 もう 1 つのオプションは、PowerShell を使うことです。 詳細については、[Azure PowerShell を使用した HDInsight での Apache Hadoop クラスターの管理](hdinsight-administer-use-powershell.md)に関するページを参照してください。
 
-## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>ステップ 2:HDInsight クラスターの環境を検証する
+## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>手順 2:HDInsight クラスターの環境を検証する
 
 各 HDInsight クラスターは、さまざまな Azure サービスと、Apache HBase や Apache Spark などのオープン ソース ソフトウェアに依存しています。 また、HDInsight クラスターは、Azure Virtual Network などの他の Azure サービスを呼び出すこともできます。  クラスターの障害は、お使いのクラスターで実行しているいずれかのサービスまたは外部サービスが原因で発生している可能性があります。  クラスター サービスの構成の変更により、クラスターで障害が発生することもあります。
 
@@ -90,7 +90,7 @@ HDInsight は複数の Azure サービスに依存しています。 Azure HDIns
 
 #### <a name="check-azure-service-usage-limits"></a>Azure サービスの使用制限を確認する
 
-大きなクラスターを起動している場合、または同時に多数のクラスターを起動した場合、Azure サービスの制限を超えるとクラスターが失敗します。 サービスの制限は、Azure サブスクリプションによって異なります。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits)」をご覧ください。
+大きなクラスターを起動している場合、または同時に多数のクラスターを起動した場合、Azure サービスの制限を超えるとクラスターが失敗します。 サービスの制限は、Azure サブスクリプションによって異なります。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)」をご覧ください。
 [Resource Manager のコア クォータ増加要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)を使って、利用可能な HDInsight リソース (VM コアや VM インスタンスなど) の数を増やすことを Microsoft に要求できます。
 
 #### <a name="check-the-release-version"></a>リリース バージョンを確認する
@@ -101,7 +101,7 @@ HDInsight は複数の Azure サービスに依存しています。 Azure HDIns
 
 クラスターのパフォーマンスが低下している場合は、Ambari UI または Azure クラシック CLI を使ってサービスを再起動することを検討します。 クラスターで一時的なエラーが発生している場合、再起動は環境を安定させる最も簡単な方法であり、パフォーマンスが向上する可能性があります。
 
-## <a name="step-3-view-your-clusters-health"></a>ステップ 3:クラスターの正常性を表示する
+## <a name="step-3-view-your-clusters-health"></a>手順 3:クラスターの正常性を表示する
 
 HDInsight クラスターは、仮想マシンのインスタンスで稼働するさまざまな種類のノードで構成されます。 各ノードで、リソースの枯渇、ネットワーク接続の問題、およびクラスターを遅くする他の問題を監視できます。 すべてのクラスターには 2 つのヘッド ノードが含まれ、ほとんどのクラスターの種類にはワーカー ノードとエッジ ノードの組み合わせが含まれます。 
 
@@ -204,7 +204,7 @@ YARN レベルでは、2 種類のタイムアウトがあります。
 
     Templeton はジョブ コンソールの出力を `statusdir` に `stderr` として収集しており、トラブルシューティングに役立つことがよくあります。 `stderr` には、実際のクエリの YARN アプリケーション識別子が含まれます。
 
-## <a name="step-4-review-the-environment-stack-and-versions"></a>ステップ 4:環境のスタックとバージョンを確認する
+## <a name="step-4-review-the-environment-stack-and-versions"></a>手順 4:環境のスタックとバージョンを確認する
 
 Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ページには、クラスター サービスの構成とサービスのバージョン履歴に関する情報が表示されます。  Hadoop サービス ライブラリのバージョンが正しくないと、クラスターの障害の原因になる可能性があります。  Ambari UI で **[Admin]\(管理\)** メニューを選び、 **[Stacks and Versions]\(スタックとバージョン\)** を選びます。  ページの上部で **[Versions]\(バージョン\)** タブを選び、サービスのバージョン情報を確認します。
 
@@ -242,13 +242,13 @@ HDInsight クラスターは、Azure テーブルおよび Azure Blob Storage �
 
 ヒープ ダンプにはアプリケーションのメモリのスナップショット (その時点での変数の値など) が含まれており、実行時に発生する問題の診断に役立ちます。 詳細については、「[Linux ベースの HDInsight で Hadoop サービスのヒープ ダンプを有効にする](hdinsight-hadoop-collect-debug-heap-dump-linux.md)」を参照してください。
 
-## <a name="step-6-check-configuration-settings"></a>ステップ 6:構成設定を確認する
+## <a name="step-6-check-configuration-settings"></a>手順 6:構成設定を確認する
 
 HDInsight クラスターは、Hadoop、Hive、HBase などの関連サービスに対する既定の設定であらかじめ構成されています。 クラスターの種類、ハードウェアの構成、ノードの数、実行しているジョブの種類、使っているデータ (および、そのデータの処理方法) によっては、構成の最適化が必要になる場合があります。
 
 多くのシナリオを対象にパフォーマンスの構成を最適化することについての詳細な手順については、[Apache Ambari を使用したクラスター構成の最適化](hdinsight-changing-configs-via-ambari.md)に関するページを参照してください。 Spark を使用している場合は、[Apache Spark ジョブの最適化によるパフォーマンス向上](spark/apache-spark-perf.md)に関するページを参照してください。 
 
-## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>ステップ 7:別のクラスターで障害を再現する
+## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>手順 7:別のクラスターで障害を再現する
 
 クラスター エラーの原因の診断に役立てるため、同じ構成で新しいクラスターを起動し、失敗したジョブのステップを 1 つずつ再送信します。 先のステップの結果を確認してから、次のステップを処理します。 この方法では、障害が発生した 1 つのステップを修正して再実行できます。 また、この方法には、そのジョブの入力データだけを読み込むという利点もあります。
 
@@ -259,7 +259,7 @@ HDInsight クラスターは、Hadoop、Hive、HBase などの関連サービス
 5. すべてのステップがエラーなしで実行されるようになるまで続けます。
 6. テスト クラスターのデバッグが完了したら、クラスターを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)
 * [HDInsight ログの分析](hdinsight-debug-jobs.md)

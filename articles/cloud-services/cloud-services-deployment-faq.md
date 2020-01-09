@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 2ffa6d7b1cf0550c97a60614f3f00ddc4b955218
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: f935e8fc1e5d6d64bffaeb582e8b248317f49687
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154801"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660598"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のデプロイの問題:よく寄せられる質問 (FAQ)
 
@@ -52,7 +52,7 @@ ms.locfileid: "71154801"
 お住まいの地域で使用できるサイズについては、[Microsoft Azure のリージョン別の利用可能な製品](https://azure.microsoft.com/regions/services)に関するページを参照してください。
 
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>サブスクリプションまたはサービスの制限/クォータ/制約が原因でクラウド サービスのデプロイが失敗することがあるのはなぜですか。
-クラウド サービスのデプロイは、割り振る必要のあるリソースが、リージョン/データセンター レベルでサービスに提供できる既定または最大のクォータを超えた場合に、失敗することがあります。 詳細については、「[Cloud Services の制限](../azure-subscription-service-limits.md#azure-cloud-services-limits)」を参照してください。
+クラウド サービスのデプロイは、割り振る必要のあるリソースが、リージョン/データセンター レベルでサービスに提供できる既定または最大のクォータを超えた場合に、失敗することがあります。 詳細については、「[Cloud Services の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits)」を参照してください。
 
 ポータルでサブスクリプションの現在の使用量/クォータを追跡することもできます:Azure portal > [サブスクリプション] > \<該当するサブスクリプション> > [使用量 + クォータ]。
 

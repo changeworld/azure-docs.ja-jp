@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: amsriva
-ms.openlocfilehash: b65b47389611bcc0e5acb3c7ebff672f72a87581
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 966df2a01d0178c19c2ae6e698a6610bf0e321c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425817"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>VPN Gateway クラシックから Resource Manager への移行
-VPN Gateway は クラシック モデル から Resource Manager デプロイ モデルに移行できるようになりました。 詳細については、Azure Resource Manager の[機能と利点](../azure-resource-manager/resource-group-overview.md)をご覧ください。 この記事では、従来のデプロイメントから新しい Resource Manager ベースモデルへの移行方法について説明します。 
+VPN Gateway は クラシック モデル から Resource Manager デプロイ モデルに移行できるようになりました。 詳細については、Azure Resource Manager の[機能と利点](../azure-resource-manager/management/overview.md)をご覧ください。 この記事では、従来のデプロイメントから新しい Resource Manager ベースモデルへの移行方法について説明します。 
 
 VPN Gateway は、クラシックから Resource Manager への VNet の移行の一部として移行されます。 この移行では、一度に 1つの VNet が移行されます。 移行に必要な追加のツールや前提条件はありません。 移行手順は既存の VNet の移行と同じで、詳細は[IaaS リソースの移行](../virtual-machines/windows/migration-classic-resource-manager-ps.md)に関するページに記載されています。 移行中にデータ パスのダウンタイムはないため、既存のワークロードは引き続き動作し、移行中にオンプレミスの接続が失われることはありません。 VPN Gateway に関連付けられているパブリック IP アドレスは、移行プロセス中も変更されません。 そのため、移行後にオンプレミスのルーターを再構成する必要はありません。  
 
@@ -65,6 +65,6 @@ VNet の移行中、現在の VNet の VPN Gateway に接続しているエン�
 * 互いに接続されていて、オンプレミスに接続している VPN Gateway で BGP を有効にします。 BGP を有効にすると、VNet ゲートウェイ間でお互いにルートを学習し、通知し合うため、他の構成変更なしに接続が復元されます。 BGP のオプションは、Standard 以上の SKU でのみ利用できます。
 * 影響を受けるVNet からオンプレミスの場所を表すローカル ネットワーク ゲートウェイへの明示的な接続を確立します。 これには、オンプレミスのルーターの構成を変更して、IPsec トンネルを作成、構成する必要もあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 VPN Gateway の移行サポートについて学習した後は、[プラットフォームでサポートされる、クラシックから Azure Resource Manager への IaaS リソースの移行](../virtual-machines/windows/migration-classic-resource-manager-ps.md)に関する記事をご覧ください。
 

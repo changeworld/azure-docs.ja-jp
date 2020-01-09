@@ -1,18 +1,14 @@
 ---
 title: コンテナー用 Azure Monitor のトラブルシューティング方法 | Microsoft Docs
 description: この記事では、コンテナー用 Azure Monitor に関する問題をトラブルシューティングして解決する方法について説明します。
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 3d6ed3b13c134d8e9c1df72ae2cb880a477a803a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 17a2817b320599b2aa2c331c354d316b9d864a32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403373"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor のトラブルシューティング
 
@@ -25,7 +21,7 @@ ms.locfileid: "73477045"
 
 また、次の手順を実行することによって、Azure Portal からこのロールを手動で付与することもできます。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. [Azure portal](https://portal.azure.com) にサインインする 
 2. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Kubernetes**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Azure Kubernetes]** を選択します。
 3. Kubernetes クラスターの一覧から選択します。
 2. 左側のメニューから、 **[アクセス制御 (IAM)]** をクリックします。
@@ -103,7 +99,7 @@ ms.locfileid: "73477045"
 
 次の表は、コンテナー用 Azure Monitor の使用中に発生する可能性のある既知のエラーをまとめたものです。
 
-| エラー メッセージ  | Action |  
+| エラー メッセージ  | アクション |  
 | ---- | --- |  
 | エラー メッセージ: `No data for selected filters`  | 新しく作成したクラスターの監視データ フローの確立に時間がかかる場合があります。 クラスターのデータが表示されるまで、少なくとも 10 ～ 15 分お待ちください。 |   
 | エラー メッセージ: `Error retrieving data` | Azure Kubernetes Service クラスターが正常性とパフォーマンスの監視用に設定される間に、クラスターと Azure Log Analytics ワークスペースの間に接続が確立されます。 Log Analytics ワークスペースは、クラスターのすべての監視データを格納するために使用されます。 Log Analytics ワークスペースが削除されると、このエラーが発生する可能性があります。 ワークスペースが削除されたかどうかを確認します。削除されている場合は、コンテナーの Azure Monitor によるクラスターの監視を再度有効にして、既存のワークスペースを指定するか、新しいワークスペースを作成する必要があります。 再有効化するには、クラスターに対する監視を[無効](container-insights-optout.md)にしてから、コンテナーの Azure Monitor を再び[有効](container-insights-enable-new-cluster.md)にする必要があります。 |  
@@ -131,6 +127,6 @@ nodeSelector:
 
 コンテナーの Azure Monitor で非 Azure Kubernetes クラスターを表示するには、この分析情報をサポートする Log Analytics ワークスペースと、コンテナーの分析情報ソリューション リソース **ContainerInsights (*ワークスペース*)** で読み取りアクセスが必要です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 AKS クラスター ノードとポッドの両方について正常性メトリックを取得するための監視が有効になったので、これらの正常性メトリックを Azure portal で利用できます。 コンテナー用 Azure Monitor を使用する方法については、[Azure Kubernetes Service の正常性の表示](container-insights-analyze.md)に関するページをご覧ください。

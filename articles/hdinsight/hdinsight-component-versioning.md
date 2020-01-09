@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/21/2019
-ms.openlocfilehash: b5687d659103eed0fcba70319aa37030bd85165a
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 475b784f4d25e28289536e6c70200fe86dd806f5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539116"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435596"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは
 
@@ -48,7 +48,7 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 | Apache Livy            | 0.5           | 0.4、0.4、0.3               |
 | Apache Kafka           | 1.1.1、2.1    | 1.1、1.0 * (下記の「注」を参照) |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
-| Apache Zeppelin        | 0.8.0         | 0.7.0                       |
+| Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
@@ -176,7 +176,7 @@ _提供終了日_ とは、その日を過ぎると HDInsight でクラスター
 
 クラスター用に選択する仮想マシンの SKU の詳細については、[Azure HDInsight のクラスター構成の詳細](hdinsight-supported-node-configuration.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [HDInsight で Apache Hadoop、Spark、その他のクラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)
 - [Windows PC から HDInsight の Apache Hadoop で作業する](hdinsight-hadoop-windows-tools.md)

@@ -1,19 +1,19 @@
 ---
 title: Apache Kafka による高可用性 - Azure HDInsight
 description: Azure HDInsight 上の Apache Kafka で高可用性を確保する方法を説明します。 Kafka でパーティションのレプリカを再調整し、HDInsight が含まれている Azure リージョン内のさまざまな障害ドメインに配置されるようにする方法を説明します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/01/2018
-ms.openlocfilehash: d570cdf32ccf0f7037fd772f71a4296904ba7921
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.custom: hdinsightactive
+ms.date: 12/09/2019
+ms.openlocfilehash: a90be471ca068869ee26fb02bba77dfdd476a44e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435288"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka によるデータの高可用性
 
@@ -51,7 +51,7 @@ Kafka データの最高レベルの可用性を確保するには、次のタ�
 
 SSH を使用した HDInsight への接続の詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するドキュメントを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [HDInsight 上の Apache Kafka の拡張性](apache-kafka-scalability.md)
 * [HDInsight 上の Apache Kafka でのミラーリング](apache-kafka-mirroring.md)

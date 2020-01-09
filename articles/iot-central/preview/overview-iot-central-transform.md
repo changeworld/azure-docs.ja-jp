@@ -3,17 +3,17 @@ title: 変換の概要
 description: 変換する方法について説明します
 author: viv-liu
 ms.author: viviali
-ms.date: 10/11/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 270017e23bef4be439dbe70bf1845f75333c5311
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 3df839738aaf28de3b32eee6e30f15376a00cc0d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894387"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434881"
 ---
 # <a name="transform-your-iot-data-preview-features"></a>IoT データを変換する (プレビュー機能)
 

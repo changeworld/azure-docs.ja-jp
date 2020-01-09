@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: rohogue
-ms.openlocfilehash: 7839530463ea834ed5f8ae2ae06854985a77c673
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 5340952d6d30ae80d53234530a7e2ca6c067cf1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415355"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure の FAQ
 
@@ -25,7 +25,7 @@ Avere vFXT for Azure は、重要なワークロードの効率的な処理の�
 
 ### <a name="is-avere-vfxt-a-storage-solution"></a>Avere vFXT はストレージ ソリューションですか?
 
-No. Avere vFXT は、EMC や NetApp の NAS または Azure Blob コンテナーといったストレージ環境に接続するファイル システム*キャッシュ*です。 Avere vFXT は、クライアントからのデータ要求を効率化し、提供するデータをキャッシュすることによって大規模な環境のパフォーマンスを徐々に向上させます。 Avere vFXT 自体にはデータは保存されません。 その背後に保存されているデータの量に関する情報は保持されません。
+いいえ。 Avere vFXT は、EMC や NetApp の NAS または Azure Blob コンテナーといったストレージ環境に接続するファイル システム*キャッシュ*です。 Avere vFXT は、クライアントからのデータ要求を効率化し、提供するデータをキャッシュすることによって大規模な環境のパフォーマンスを徐々に向上させます。 Avere vFXT 自体にはデータは保存されません。 その背後に保存されているデータの量に関する情報は保持されません。
 
 ### <a name="is-avere-vfxt-a-tiering-solution"></a>Avere vFXT は階層化ソリューションですか?
 
@@ -77,10 +77,10 @@ Avere vFXT for Azure は、ソブリン リージョン (中国、ドイツ) を
 
 はい、お客様は Avere vFXT クラスターで複数のクラウド プロバイダーを使用できます。 AWS S3 標準バケットと Google Cloud Services 標準バケットおよび Azure BLOB コンテナーがサポートされています。
 
-> [!NOTE] 
+> [!NOTE]
 > AWS または Google Cloud での Avere vFXT の使用にはソフトウェア料金がかかりますが、Azure ではかかりません。
 
-## <a name="technical-compute"></a>技術的:Compute
+## <a name="technical-compute"></a>技術: Compute
 
 ### <a name="can-you-describe-what-an-avere-vfxt-environment-looks-like"></a>Avere vFXT 環境とは "どのようなもの" ですか?
 
@@ -97,7 +97,6 @@ No, you must choose one virtual machine type or the other.
 ### Can I move between virtual machine types?
 
 Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
-
 -->
 
 ### <a name="does-the-avere-vfxt-environment-scale"></a>Avere vFXT 環境はスケーリングできますか?
@@ -106,7 +105,7 @@ Avere vFXT クラスターは、最小 3 ノードから最大 24 ノードま�
 
 ### <a name="does-the-avere-vfxt-environment-autoscale"></a>Avere vFXT 環境は "自動スケーリング" ですか?
 
-No. クラスターのサイズをスケールアップ/ダウンできますが、クラスター ノードの追加または削除は手動のステップです。
+いいえ。 クラスターのサイズをスケールアップ/ダウンできますが、クラスター ノードの追加または削除は手動のステップです。
 
 ### <a name="can-i-run-the-avere-vfxt-cluster-as-a-virtual-machine-scale-set"></a>Avere vFXT クラスターを仮想マシン スケール セットとして実行できますか?
 
@@ -126,17 +125,17 @@ Avere vFXT では、仮想マシン スケール セットのデプロイはサ�
 
 ### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>Avere vFXT クラスターのマシンを別の可用性ゾーン内で実行できますか?
 
-No. 現在、Avere vFXT で使用されている高可用性モデルでは、Avere vFXT クラスターの個々のメンバーが異なる可用性ゾーンに存在することはサポートされていません。
+いいえ。 現在、Avere vFXT で使用されている高可用性モデルでは、Avere vFXT クラスターの個々のメンバーが異なる可用性ゾーンに存在することはサポートされていません。
 
 ### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Avere vFXT の仮想マシンを複製できますか?
 
-いいえ、Avere vFXT クラスター内のノードを追加または削除するには、サポートされている Python スクリプトを使用する必要があります。 詳しくは、「[Avere vFXT クラスターの管理](avere-vfxt-manage-cluster.md)」をご覧ください。  
+いいえ、Avere vFXT クラスター内のノードを追加または削除するには、サポートされている Python スクリプトを使用する必要があります。 詳しくは、「[Avere vFXT クラスターの管理](avere-vfxt-manage-cluster.md)」をご覧ください。
 
 ### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>自分のローカル環境で実行できるソフトウェアの "VM" バージョンはありますか?
 
 いいえ、システムはクラスター化されたアプライアンスとして提供され、特定の仮想マシンの種類でテストされています。 この制限により、一般的な Avere vFXT ワークフローの高パフォーマンス要件をサポートできないシステムが作成されるのを防ぐことができます。
 
-## <a name="technical-disks"></a>技術的:ディスク
+## <a name="technical-disks"></a>技術: ディスク
 
 ### <a name="what-types-of-disks-are-supported-for-the-azure-vms"></a>Azure VM に対してサポートされているディスクの種類は何ですか?
 
@@ -162,7 +161,7 @@ SSD のデタッチと再アタッチはサポートされていません。 そ
 
 データはディスク間にストライピングされますが、暗号化はされません。 ただし、ディスク自体を暗号化することはできます。 詳細については、[Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption)に関するページをご覧ください。
 
-## <a name="technical-networking"></a>技術的:ネットワーク
+## <a name="technical-networking"></a>技術: ネットワーク
 
 ### <a name="what-network-is-recommended"></a>どのようなネットワークが推奨されますか?
 
@@ -254,7 +253,7 @@ Avere vFXT では、プライベート オブジェクト ストレージはサ�
 
 ### <a name="can-i-use-archive-blob-storage"></a>アーカイブ BLOB ストレージを使用できますか?
 
-No. アーカイブ ストレージのサービス レベル アグリーメント (SLA) は、Avere vFXT システムで必要なリアルタイムのディレクトリおよびファイル アクセスと互換性がありません。
+いいえ。 アーカイブ ストレージのサービス レベル アグリーメント (SLA) は、Avere vFXT システムで必要なリアルタイムのディレクトリおよびファイル アクセスと互換性がありません。
 
 ### <a name="can-i-use-cool-blob-storage"></a>クール BLOB ストレージを使用できますか?
 
@@ -284,7 +283,7 @@ Azure では、Avere vFXT クラスターを使用するための追加ライセ
 
 いいえ、Avere vFXT クラスターには "Always On" サービスが必要です。 クラスターは必要ないときはオフにできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Avere vFXT for Azure を使い始めるには、以下の記事を参照して独自のシステムを計画して展開する方法を理解してください。
 

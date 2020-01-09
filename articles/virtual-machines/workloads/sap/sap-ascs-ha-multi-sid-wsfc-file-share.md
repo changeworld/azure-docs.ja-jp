@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 00c38c5c8140bffe0767ebe69470285bb15f5fc6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5638d71748c485c593dde8d9876400a40821ca28
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098714"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643153"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -39,9 +39,9 @@ ms.locfileid: "70098714"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 [sap-installation-guides-file-share]:https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 [load-balancer-multivip-overview]:../../../load-balancer/load-balancer-multivip-overview.md
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -189,7 +189,7 @@ ms.locfileid: "70098714"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -221,7 +221,7 @@ SAP がデプロイされている場合は、内部ロード バランサーを
 
 次の図に示すように、**ファイル共有**を使って 1 つの SAP ASCS/SCS インスタンスに使う WSFC クラスターを構成済みであることが必要です。
 
-![図 1:2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスと SOFS][sap-ha-guide-figure-8007]
+![図 1: 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスと SOFS][sap-ha-guide-figure-8007]
 
 _**図 1:** 2 つのクラスターにデプロイされた SAP ASCS/SCS インスタンスと SOFS_
 
@@ -458,7 +458,7 @@ _**図 13:** sapglobal2 ホストと Volume2 にバインドされた 2 つ目�
 ### <a name="install-dbms-and-sap-application-servers"></a>DBMS および SAP アプリケーション サーバーをインストールする
 DBMS と SAP アプリケーション サーバーを、既に説明したとおりにインストールします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [共有ディスクなしでフェールオーバー クラスターに ASCS/SCS インスタンスをインストールする][sap-official-ha-file-share-document]:HA ファイル共有向け公式 SAP ガイドライン
 

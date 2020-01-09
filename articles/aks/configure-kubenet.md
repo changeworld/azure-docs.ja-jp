@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: b233c5dd639bb6652f201727748a081f6a8a4c64
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 382895c1b5a4cb2bc88ff2371cec59267ea4e176
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950328"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442935"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -22,6 +22,15 @@ ms.locfileid: "71950328"
 [Azure Container Networking Interface (CNI)][cni-networking] では、すべてのポッドにサブネットから IP アドレスが割り当てられ、すべてのポッドに直接アクセスできます。 これらの IP アドレスは、ネットワーク空間全体で一意である必要があり、事前に計画する必要があります。 各ノードには、サポートされるポッドの最大数に対する構成パラメーターがあります。 ノードごとにそれと同じ数の IP アドレスが、そのノードに対して事前に予約されます。 この方法では詳細な計画が必要であり、多くの場合、IP アドレスが不足するか、アプリケーション需要の拡大に伴い、より大きなサブネットでのクラスターの再構築が必要になります。
 
 この記事では、 *kubenet* ネットワークを使用して、AKS クラスター用の仮想ネットワーク サブネットを作成して使用する方法を示します。 ネットワークのオプションと考慮事項について詳しくは、[Kubernetes および AKS のネットワークの概念][aks-network-concepts]に関する記事をご覧ください。
+
+## <a name="prerequisites"></a>前提条件
+
+* AKS クラスターの仮想ネットワークでは、送信インターネット接続を許可する必要があります。
+* 同じサブネット内に複数の AKS クラスターを作成しないでください。
+* AKS クラスターでは、Kubernetes サービスのアドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`、`192.0.2.0/24` は使用できません。
+* AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)アクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
+  * `Microsoft.Network/virtualNetworks/subnets/join/action`
+  * `Microsoft.Network/virtualNetworks/subnets/read`
 
 > [!WARNING]
 > Windows Server ノード プール (現在は AKS でプレビュー段階) を使用するには、Azure CNI を使用する必要があります。 Windows Server コンテナーには、ネットワーク モデルとして kubenet を使用できません。
@@ -189,7 +198,7 @@ az aks create \
 
 AKS クラスターを作成すると、ネットワーク セキュリティ グループとルート テーブルが作成されます。 これらのネットワーク リソースは、AKS コントロール プレーンによって管理されます。 ネットワーク セキュリティ グループは、ノードの仮想 NIC と自動的に関連付けられます。 ルート テーブルは、仮想ネットワーク サブネットと自動的に関連付けられます。 サービスを作成して公開すると、ネットワーク セキュリティ グループ規則とルート テーブルが自動的に更新されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 既存の仮想ネットワーク サブネットに AKS クラスターをデプロイしたので、通常どおりクラスターを使用できます。 [Azure Dev Spaces を使用したアプリの構築][dev-spaces]や [Draft の使用][use-draft]を始めたり、[Helm を使用してアプリをデプロイ][use-helm]したりできます。
 

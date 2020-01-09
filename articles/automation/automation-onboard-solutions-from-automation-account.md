@@ -1,20 +1,16 @@
 ---
 title: Azure Automation で Update Management、Change Tracking、および Inventory ソリューションの配布準備を行う方法について説明します
-description: Azure Automation に含まれる Update Management、Change Tracking、および Inventory ソリューションで、Azure Virtual Machine の配布準備を行う方法について説明します
+description: Azure Automation に含まれる Update Management、Change Tracking、および Inventory ソリューションで、Azure Virtual Machine の使用準備を行う方法について説明します
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 4/11/2019
 ms.topic: conceptual
-manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ab934db026b598e80541f98d74df70c893692120
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a63202fd5f29c3c2eee4ecaaae9a940078c15edc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849702"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421873"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -22,7 +18,7 @@ Azure Automation には、オペレーティング システムのセキュリ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[https://portal.azure.com ](https://portal.azure.com) で Azure にサインインします
+[https://portal.azure.com](https://portal.azure.com ) で Azure にサインインします
 
 ## <a name="enable-solutions"></a>ソリューションの有効化
 
@@ -49,7 +45,7 @@ Update Management ソリューションでは、Azure Windows VM の更新プロ
 
 ## <a name="scope-configuration"></a>スコープ構成
 
-各ソリューションは、ワークスペース内のスコープ構成を使用して、ソリューションの対象となるコンピューターを決定します。 スコープ構成は、1 つ以上の保存された検索条件のグループで、ソリューションのスコープを特定のコンピューターに限定するために使用されます。 スコープ構成にアクセスするには、 **[関連リソース]** の Automation アカウントで、 **[ワークスペース]** を選択します。 次に、 **[ワークスペースのデータ ソース]** のワークスペースで、 **[スコープ構成]** を選択します。
+各ソリューションは、ワークスペース内のスコープ構成を使用して、ソリューションの対象となるコンピューターを決定します。 スコープ構成は、ソリューションのスコープを特定のコンピューターに限定するために使用される、1 つ以上の保存された検索条件のグループです。 スコープ構成にアクセスするには、 **[関連リソース]** の Automation アカウントで、 **[ワークスペース]** を選択します。 次に、 **[ワークスペースのデータ ソース]** のワークスペースで、 **[スコープ構成]** を選択します。
 
 選択したワークスペースに Update Management や Change Tracking のソリューションがまだない場合、次のスコープ構成が作成されます。
 
@@ -65,12 +61,12 @@ Update Management ソリューションでは、Azure Windows VM の更新プロ
 
 使用している Automation アカウントに移動し、 **[全般]** の **[保存した検索条件]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
-|名前     |カテゴリ  |エイリアス  |
+|Name     |カテゴリ  |エイリアス  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新プログラム        | Updates__MicrosoftDefaultComputerGroup         |
 
-いずれかの保存した検索条件を選択して、グループの設定に使用されるクエリを表示します。 次の図は、クエリとその結果を示しています。
+いずれかの保存された検索条件を選択して、グループの設定に使用されるクエリを表示します。 次の図は、クエリとその結果を示しています。
 
 ![保存した検索条件](media/automation-onboard-solutions-from-automation-account/savedsearch.png)
 
@@ -78,7 +74,7 @@ Update Management ソリューションでは、Azure Windows VM の更新プロ
 
 Automation アカウントの **[構成管理]** で **[インベントリ]** または **[Change Tracking]\(変更の追跡\)** を選択するか、 **[更新の管理]** で **[更新プログラムの管理]** を選択します。
 
-**[+ Azure VM の追加]** をクリックし、リストから 1 つ以上の VM を選択します。 有効にできない仮想マシンは灰色で表示され、選択できません。 Azure VM は、Automation アカウントの場所に関係なく任意のリージョンに存在できます。 **[Update Management の有効化]** ページで、 **[有効化]** をクリックします。 このアクションにより、選択された VM が、ソリューションのコンピューター グループの保存された検索条件に追加されます。
+**[+ Azure VM の追加]** をクリックし、リストから 1 つ以上の VM を選択します。 有効にできない仮想マシンは灰色で表示され、選択できません。 Azure VM は、ご使用の Automation アカウントの場所に関係なく任意のリージョンに存在できます。 **[Update Management の有効化]** ページで、 **[有効化]** をクリックします。 このアクションにより、選択された VM が、ソリューションのコンピューター グループの保存された検索条件に追加されます。
 
 ![Azure VM の有効化](media/automation-onboard-solutions-from-automation-account/enable-azure-vms.png)
 
@@ -118,7 +114,7 @@ Azure に存在しないマシンは手動で追加する必要があります�
 * [変更の追跡](automation-change-tracking.md)
 * [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
 
-Automation アカウントを Log Analytics ワークスペースと統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。  続行する前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを進めることはできません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
+ご使用の Automation アカウントを Log Analytics ワークスペースと統合する必要がなくなった場合は、Azure portal から直接、そのアカウントのリンクを解除できます。  続行する前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを進めることはできません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
 
 これらのソリューションを削除したら、以下の手順を完了して、Automation アカウントのリンクを解除できます。
 
@@ -145,18 +141,18 @@ Automation アカウントを Log Analytics ワークスペースと統合する
 
 * VM の開始/停止の Runbook スケジュール
 * VM の開始/停止の Runbook
-* 変数
+* 変数:
 
 Automation アカウントの自分のワークスペースを Log Analytics ワークスペースからリンク解除することもできます。 自分のワークスペースで、 **[関連リソース]** の **[Automation アカウント]** を選択します。 [Automation アカウント] ページで **[アカウントのリンク解除]** を選択します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Update Management から VM を削除するには:
 
 * Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
 * [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) または [Linux 用 Log Analytics エージェント](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)を削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ソリューションを使用する方法を学習するためのチュートリアルに進みます。
 

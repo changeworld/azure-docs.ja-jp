@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 582e0c6b9f6a51f97e8d4990634ceac61c6d9f23
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679415"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440394"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Azure Data Factory の Switch アクティビティ
 
@@ -65,10 +65,10 @@ Switch アクティビティは、プログラミング言語における switch
 
 ## <a name="type-properties"></a>型のプロパティ
 
-プロパティ | 説明 | 使用できる値 | 必須
+プロパティ | [説明] | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-名前 | switch アクティビティの名前。 | string | はい
-type | *Switch** に設定する必要があります | string | はい
+name | switch アクティビティの名前。 | String | はい
+型 | *Switch** に設定する必要があります | String | はい
 expression | 文字列値に評価される式であることが必要です | 結果の型が文字列の式 | はい
 cases | 値と値が式の評価に一致するときに実行される一連のアクティビティが含まれるケースのセット。 ケースを少なくとも 1 つ指定する必要があります。 ケースには 25 件という上限があります。 | ケース オブジェクトの配列 | はい
 defaultActivities | 式の評価が満たされなかったときに実行される一連のアクティビティ。 | アクティビティの配列 | はい
@@ -236,10 +236,7 @@ defaultActivities | 式の評価が満たされなかったときに実行され
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }
@@ -330,13 +327,13 @@ Write-Host "\nActivity 'Error' section:" -foregroundcolor "Yellow"
 $result.Error -join "`r`n"
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
 
 - [If Condition アクティビティ](control-flow-if-condition-activity.md)
 - [ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md)
 - [ForEach アクティビティ](control-flow-for-each-activity.md)
-- [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
+- [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)
 - [ルックアップ アクティビティ](control-flow-lookup-activity.md)
 - [Web アクティビティ](control-flow-web-activity.md)

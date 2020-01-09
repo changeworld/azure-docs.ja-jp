@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: fa400d875a8f39d54d10820c603e12e97f0cd854
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452223"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451299"
 ---
 # <a name="enable-and-disable-the-azure-serial-console"></a>Azure シリアル コンソールを有効または無効にする
 
@@ -32,6 +32,9 @@ ms.locfileid: "74452223"
 
 
 ## <a name="subscription-level-enabledisable"></a>サブスクリプション レベルの有効/無効
+
+> [!NOTE]
+> このコマンドを実行する前に、適切なクラウド (Azure パブリック クラウド、Azure US Government クラウド) を使用していることを確認してください。 `az cloud list` で確認し、`az cloud set -n <Name of cloud>` でクラウドを設定できます。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -58,9 +61,6 @@ subscriptionId=$(az account show --output=json | jq -r .id)
 az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --output=json --api-version="2018-05-01" | jq .properties
 ```
 
-> [!NOTE]
-> このコマンドを実行する前に、適切なクラウド (Azure パブリック クラウド、Azure US Government クラウド) を使用していることを確認してください。 `az cloud list` で確認し、`az cloud set -n <Name of cloud>` でクラウドを設定できます。
-
 ### <a name="powershell"></a>PowerShell
 
 PowerShell を使用して、シリアル コンソールを有効または無効にすることもできます。
@@ -79,7 +79,7 @@ $subscription=(Get-AzContext).Subscription.Id
 Invoke-AzResourceAction -Action enableConsole -ResourceId /subscriptions/$subscription/providers/Microsoft.SerialConsole/consoleServices/default -ApiVersion 2018-05-01
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Linux VM 用 Azure シリアル コンソール](./serial-console-linux.md)についての詳細を参照する
 * [Windows VM 用 Azure シリアル コンソール](./serial-console-windows.md)についての詳細を参照する
 * [Azure シリアル コンソール内の電源管理オプション](./serial-console-power-options.md)について参照する

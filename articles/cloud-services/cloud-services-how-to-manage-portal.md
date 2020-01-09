@@ -3,17 +3,17 @@ title: 一般的なクラウド サービス管理タスク | Microsoft Docs
 description: Azure Portal で Cloud Services を管理する方法について説明します。 これらの例では、Azure ポータルを使用します。
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 8ec7784fb51d0fa4de2563f76444b0b5e5f34902
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 185bb9d03bec042a5c8e9223616b40eba6629e36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360907"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Azure Portal で Cloud Services を管理する
 Azure Portal の **[Cloud Services]** 領域では、次の操作を行うことができます。
@@ -119,8 +119,11 @@ Azure Portal の **[Cloud Services]** 領域では、次の操作を行うこと
 
 [Azure portal]: https://portal.azure.com
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [クラウド サービスの一般的な構成](cloud-services-how-to-configure-portal.md)
 * 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
 * [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
 * [SSL 証明書](cloud-services-configure-ssl-certificate-portal.md)を構成する。
+
+
+

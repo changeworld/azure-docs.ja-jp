@@ -1,20 +1,19 @@
 ---
 title: Azure Stream Analytics ジョブでログイン資格情報を交換する
 description: この記事では、Azure Stream Analytics ジョブの入力および出力シンクの資格情報を更新する方法について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aad6f237a37ce4782e2c103a7a14e0a3951093de
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612363"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425970"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Stream Analytics ジョブの入力と出力のログイン資格情報の交換
 
@@ -81,7 +80,7 @@ Stream Analytics ジョブの入力または出力のための資格情報を再
 2. **[最終停止時刻]** を選び、 **[開始]** をクリックします。 [最終停止時刻] オプションは、以前にジョブを実行して何らかの出力が生成された場合にのみ表示されることに注意してください。 最後の出力値の時刻に基づいてジョブが再び開始されます。
    ![Stream Analytics ジョブの開始](media/stream-analytics-login-credentials-inputs-outputs/start-stream-analytics-job.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)

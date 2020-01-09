@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.openlocfilehash: dba64d432231873676c49a1f4f2fac579c3f4be9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c840cf452f047177c1244caedf09d976f0514961
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279273"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435548"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して HDInsight で Apache Hadoop クラスターを作成する
 
@@ -40,18 +40,18 @@ HDInsight テンプレートのサンプルは、「[Azure クイック スタ�
 
 Resource Manager テンプレートの詳細については、次の記事と例を参照してください。
 
-* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure リソース マネージャーのテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
 * [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) テンプレート リファレンス
 * [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>テンプレートを生成する
 
-Resource Manager を使用すると、サブスクリプション内の既存のリソースから Resource Manager テンプレートをさまざまなツールでエクスポートできます。 この生成されたテンプレートを使用すると、テンプレートの構文を学習したり、必要に応じてソリューションの再デプロイを自動化したりすることができます。 詳細については、[テンプレートのエクスポート](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)に関する記事を参照してください。
+Resource Manager を使用すると、サブスクリプション内の既存のリソースから Resource Manager テンプレートをさまざまなツールでエクスポートできます。 この生成されたテンプレートを使用すると、テンプレートの構文を学習したり、必要に応じてソリューションの再デプロイを自動化したりすることができます。 詳細については、[テンプレートのエクスポート](../azure-resource-manager/templates/export-template-portal.md)に関する記事を参照してください。
 
 ## <a name="deploy-using-the-portal"></a>ポータルを使用したデプロイ
 
-Resource Manager テンプレートは、Azure Portal を使用してデプロイすることができます。 詳細については、「[カスタム テンプレートからリソースをデプロイする](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)」を参照してください。
+Resource Manager テンプレートは、Azure Portal を使用してデプロイすることができます。 詳細については、「[カスタム テンプレートからリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)」を参照してください。
 
 ## <a name="deploy-using-powershell"></a>PowerShell を使用したデプロイ
 
@@ -71,17 +71,17 @@ Resource Manager テンプレートは、REST API を使用してデプロイす
 
 Visual Studio とリソース グループの使用の概要については、「 [Visual Studio での Azure リソース グループの作成とデプロイ](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
 
-## <a name="troubleshoot"></a>トラブルシューティング
+## <a name="troubleshoot"></a>[トラブルシューティング]
 
 HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-hadoop-customize-cluster-linux.md#access-control)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。 詳細については、次の記事を参照してください。
+この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。 詳細については、以下の記事をお読みください。
 
 * HDInsight 関連のその他のテンプレートについては、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=hdinsight)」を参照してください。
 * .NET クライアント ライブラリを使用したリソースのデプロイの例については、[.NET ライブラリとテンプレートを使用したリソースのデプロイ](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 * アプリケーションのデプロイの詳細な例については、「 [Azure でマイクロサービスを予測どおりにデプロイする](../app-service/deploy-complex-application-predictably.md)」を参照してください。
 * ソリューションを別の環境にデプロイする方法については、「 [Microsoft Azure の開発環境とテスト環境](../solution-dev-test-environments.md)」を参照してください。
-* Azure Resource Manager のテンプレートのセクションについては、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
+* Azure Resource Manager のテンプレートのセクションについては、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/templates/template-syntax.md)」を参照してください。
 * Azure Resource Manager のテンプレートで使用できる関数の一覧については、「 [Azure Resource Manager のテンプレートの関数](../azure-resource-manager/resource-group-template-functions.md)」を参照してください。

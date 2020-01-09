@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: a836c6b47e0e1346b5e8de9ba5fbe94f88961cbd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965484"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615044"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Linux または Windows での Azure 仮想マシンのパフォーマンスのトラブルシューティング
 
@@ -30,7 +30,7 @@ ms.locfileid: "72965484"
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IaaS 仮想マシンの監視
 
-ゲスト VM を監視するには、Azure VM 監視を使用します。これにより、特定のリソースの状態の概要が通知されます。 VM 診断が有効になっているかどうかを確認するには、[Azure リソース ログの概要](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs)に関する記事を参照してください。 次のように表示される場合は、診断が有効になっていない可能性が高いです。
+ゲスト VM を監視するには、Azure VM 監視を使用します。これにより、特定のリソースの状態の概要が通知されます。 VM 診断が有効になっているかどうかを確認するには、[Azure リソース ログの概要](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)に関する記事を参照してください。 次のように表示される場合は、診断が有効になっていない可能性が高いです。
 
 ![監視が有効になっていない](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -210,7 +210,7 @@ Standard ストレージの新しいディスク オファリングでは、IOPS
 
 * [Windows 上の VM ディスクのスケーラビリティおよびパフォーマンスの目標](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets)
 
-#### <a name="references"></a>参照
+#### <a name="references"></a>References
 
 * [仮想マシンのディスクのスケーラビリティ ターゲット](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
 
@@ -248,7 +248,7 @@ Standard ストレージの新しいディスク オファリングには、さ�
 
 * [Azure Premium Storage と SQL Server の使用](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-use-premium-storage/)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事についてさらにヘルプが必要な場合は、[MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートにお問い合わせください。
 

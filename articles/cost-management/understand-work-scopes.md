@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 91a71f914cff25dcdf4a85f3baafcfd9bc96b104
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63b778379dda39a795cccdcfa0c1443870d50365
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218872"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440974"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -45,7 +45,7 @@ Azure では、リソース管理用の 3 つのスコープがサポートさ�
 
     リソースの種類:[Microsoft.Resources/subscriptions](/rest/api/resources/subscriptions)
 
-- [**リソース グループ**](../azure-resource-manager/resource-group-overview.md#resource-groups) -同じライフサイクルを共有する Azure ソリューションの関連するリソースを論理的にグループ化したもの。 たとえば、一緒にデプロイおよび削除されるリソースなどです。
+- [**リソース グループ**](../azure-resource-manager/management/overview.md#resource-groups) -同じライフサイクルを共有する Azure ソリューションの関連するリソースを論理的にグループ化したもの。 たとえば、一緒にデプロイおよび削除されるリソースなどです。
 
     リソースの種類:[Microsoft.Resources/subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
 
@@ -63,7 +63,7 @@ Cost Management の各スコープでは、次の組み込みロールがサポ�
 - [**Cost Management 共同作成者**](../role-based-access-control/built-in-roles.md#cost-management-contributor) – コストの表示、コストの構成の管理、および推奨事項の表示を実行できます。
 - [**Cost Management 閲覧者**](../role-based-access-control/built-in-roles.md#cost-management-reader) – コスト データの表示、コストの構成、および推奨事項の表示を実行できます。
 
-Cost Management 共同作成者は、最低限の特権を持つ推奨ロールです。 予算を作成および管理し、コストをより効果的に監視してレポートできるようにエクスポートすることができます。 Cost Management 共同作成者は、エンド ツー エンドのコスト管理シナリオをサポートする追加のロールが必要になることがあります。 次のシナリオで考えてみましょう。
+Cost Management 共同作成者は、最低限の特権を持つ推奨ロールです。 予算を作成および管理し、コストをより効果的に監視してレポートできるようにエクスポートすることができます。 Cost Management 共同作成者は、エンド ツー エンドのコスト管理シナリオをサポートする追加のロールが必要になることがあります。 以下のようなシナリオが考えられます。
 
 - **予算を超過したときに対応する** – Cost Management 共同作成者は、予算超過に自動的に対応するために、アクション グループを作成および管理するアクセス権も必要です。 予算のしきい値を超えたときに使用するアクション グループを含むリソース グループに対して、[監視の共同作成者](../role-based-access-control/built-in-roles.md#monitoring-contributor)を付与することを検討してください。 特定のアクションを自動化するには、使用する特定のサービス (Automation や Azure Functions など) の追加のロールが必要です。
 - **コスト データのエクスポートをスケジュールする** – Cost Management 共同作成者は、ストレージ アカウントにデータをコピーするエクスポートをスケジュールするために、ストレージ アカウントを管理するアクセス権も必要です。 コスト データのエクスポート先となるストレージ アカウントを含むリソース グループに対して、[ストレージ アカウントの共同作成者](../role-based-access-control/built-in-roles.md#storage-account-contributor)を付与することを検討してください。
@@ -106,7 +106,7 @@ Azure サブスクリプションは、加入契約アカウントの下に入�
 
 - [**課金アカウント**](../billing/billing-view-all-accounts.md) - 1 つまたは複数の Azure サブスクリプションの 1 人のアカウント所有者を表します。 現在、複数のユーザーにアクセス権を付与することや、集計されたコスト ビューにアクセスすることはできません。
 
-    リソースの種類:適用不可
+    リソースの種類:適用なし
 
 個々の Azure サブスクリプションのアカウント管理者は、[Azure アカウント センター](https://account.azure.com/subscriptions)から、請求や支払いなどの課金データを表示し、管理することができます。 しかし、Azure portal でコスト データを表示したり、リソースを管理したりすることはできません。 アカウント管理者にアクセス権を付与するには、前述の Cost Management のロールを使用します。
 
@@ -234,7 +234,7 @@ Cost Management API を使用するときは、スコープを特定すること
 3. 管理グループ ID を表からコピーします。
 4. スコープは次のようになります。`"/providers/Microsoft.Management/managementGroups/{id}"`
 
-### <a name="subscription"></a>Subscription
+### <a name="subscription"></a>サブスクリプション
 
 1. Azure portal を開き、サービスの一覧にある **[サブスクリプション]** に移動します。
 2. サブスクリプション ID を表からコピーします。
@@ -250,6 +250,6 @@ Cost Management API を使用するときは、スコープを特定すること
 
 Cost Management は現在 [Azure Global](https://management.azure.com) と [Azure Government](https://management.usgovcloudapi.net) でサポートされています。 Azure Government の詳細については、[Azure Global および Government API のエンドポイント](../azure-government/documentation-government-developer-guide.md#endpoint-mapping)_に関する記事をご覧ください。_
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Cost Management の最初のクイック スタートをまだ完了していない場合は、[コスト分析の開始](quick-acm-cost-analysis.md)に関する記事をご覧ください。

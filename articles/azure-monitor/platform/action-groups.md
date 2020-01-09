@@ -2,18 +2,16 @@
 title: Azure Portal でのアクション グループの作成および管理
 description: Azure Portal でアクション グループを作成および管理する方法について説明します。
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6b3d1ff76d4f7611da8e08dd4ce42293c805978e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423854"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659833"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -24,7 +22,7 @@ ms.locfileid: "74423854"
 
 各アクションは次のプロパティで構成されます。
 
-* **名前**: アクション グループ内の一意識別子。  
+* **Name**:アクション グループ内の一意識別子。  
 * **アクションの種類**: 実行されるアクション。 たとえば、音声通話、SMS、電子メールの送信やさまざまな種類の自動化されたアクションのトリガーなどです。 この記事の後半の種類を参照してください。
 * **[詳細]** :"*アクションの種類*" によって異なる対応する詳細。
 
@@ -72,10 +70,10 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 ## <a name="action-specific-information"></a>アクション固有の情報
 
 > [!NOTE]
-> 次の各項目の数値の制限については、[監視のためのサブスクリプション サービスの制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits)に関するセクションを参照してください。  
+> 次の各項目の数値の制限については、[監視のためのサブスクリプション サービスの制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits)に関するセクションを参照してください。  
 
 ### <a name="automation-runbook"></a>Automation Runbook
-Runbook ペイロードの制限については、[Azure サブスクリプション サービスの制限](../../azure-subscription-service-limits.md)に関するページを参照してください。
+Runbook ペイロードの制限については、[Azure サブスクリプション サービスの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md)に関するページを参照してください。
 
 アクション グループには、限られた数の Runbook アクションを保持できます。 
 
@@ -235,7 +233,7 @@ Webhook は、次のルールを使用して再試行されます。 Webhook の
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 詳細については、「[SMS アラート動作](../../azure-monitor/platform/alerts-sms-behavior.md)」を参照してください。  
 * [アクティビティ ログ アラートに対する webhook スキーマについて理解](../../azure-monitor/platform/activity-log-alerts-webhook.md)します。  
 * [ITSM コネクタ](../../azure-monitor/platform/itsmc-overview.md)について学習します。

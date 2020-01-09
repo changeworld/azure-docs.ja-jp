@@ -4,15 +4,15 @@ description: アプリケーション コンポーネントとその依存関係
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 01/09/2018
-ms.openlocfilehash: 579538996e934c7068c397a284d819f5ddb92f08
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fa47606112c562402a42bd5ca503ed2d9a311268
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305455"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400377"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Azure Monitor for VMs (プレビュー) についてよく寄せられる質問
 この Microsoft FAQ では、Azure Monitor for VMs についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -134,5 +134,5 @@ Azure VM の概要ページには、ゲスト VM でのアクティビティの�
 
 この条件下では、VM を開いて左側のウィンドウから **[Insights (プレビュー)]** を選択すると、機能が既に VM にインストール済みであっても、 **[今すぐ試す]** オプションが表示されます。  ただし、その VM が Azure Monitor for VMs にオンボードされていない場合には、オプションは表示されません。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 仮想マシンの監視を有効にするための要件と方法を理解するために、[Azure Monitor for VMs の有効化](vminsights-enable-overview.md)に関する記事を確認してください。

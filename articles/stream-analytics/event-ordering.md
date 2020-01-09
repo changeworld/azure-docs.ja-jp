@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics 用のイベント順序ポリシーの構成
 description: この記事では、Stream Analytics でイベント順序設定を構成する方法について説明します。
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 47a8ee2c03e67d4fd9b34888430ed0cc702205f6
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: c0a108565a6a0f62c6252113f984e8b10967c5db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273182"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461196"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Azure Stream Analytics 用のイベント順序ポリシーの構成
 
@@ -77,6 +76,6 @@ Stream Analytics ジョブは、*イベント時間*または*到着時間*の�
 1. イベント ハブ/IoT ハブのすべてのパーティションが入力を受け取るようにする。 
 2. クエリで Partition by PartitionId 句を使用する。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [時間の処理に関する考慮事項](stream-analytics-time-handling.md)
 * [Stream Analytics で使用できるメトリック](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-monitoring#metrics-available-for-stream-analytics)

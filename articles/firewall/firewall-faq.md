@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 418fafdec9bd44fa3682e33cc53bbca9c716dcf2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: ac8ec9a86c388f41493d60d79a21db28fbf2aa95
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167037"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646213"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -40,7 +40,7 @@ Azure Firewall は任意の仮想ネットワークにデプロイできます�
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>Azure Firewall のインストール方法を教えてください
 
-Azure portal、PowerShell、REST API、またはテンプレートを使用して、Azure Firewall を設定できます。 手順については、「[チュートリアル: Azure portal を使用して Azure Firewall をデプロイして構成する](tutorial-firewall-deploy-portal.md)」を参照してください。
+Azure portal、PowerShell、REST API、またはテンプレートを使用して、Azure Firewall を設定できます。 「[チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する](tutorial-firewall-deploy-portal.md)」を参照してください。
 
 ## <a name="what-are-some-azure-firewall-concepts"></a>Azure Firewall の概念をいくつか教えてください。
 
@@ -58,7 +58,7 @@ Azure Firewall は受信と送信のフィルター処理をサポートして�
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure Firewall では、どのログ記録および分析サービスがサポートされていますか?
 
-Azure Firewall は、ファイアウォール ログの表示と分析について Azure Monitor と統合されています。 Log Analytics、Azure Storage、または Event Hubs にログを送信できます。 Log Analytics や、Excel や Power BI などのさまざまなツールで分析できます。 詳細については、[Azure Firewall のログを監視する方法に関するチュートリアル](tutorial-diagnostics.md)を参照してください。
+Azure Firewall は、ファイアウォール ログの表示と分析について Azure Monitor と統合されています。 Log Analytics、Azure Storage、または Event Hubs にログを送信できます。 Log Analytics や、Excel や Power BI などのさまざまなツールで分析できます。 詳細については、「[チュートリアル:Azure Firewall のログを監視する方法に関するチュートリアル](tutorial-diagnostics.md)を参照してください。
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure Firewall の動作は、マーケットプレースの NVA などの既存のサービスとどのように異なりますか?
 
@@ -88,7 +88,7 @@ PaaS サービスへのアクセスをセキュリティで保護するには、
 
 Azure PowerShell の *deallocate* メソッドと *allocate* メソッドを使用できます。
 
-例:
+次に例を示します。
 
 ```azurepowershell
 # Stop an existing firewall
@@ -113,7 +113,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="what-are-the-known-service-limits"></a>既知のサービスの制限には何がありますか?
 
-Azure Firewall サービスの制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#azure-firewall-limits)」を参照してください。
+Azure Firewall サービスの制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)」を参照してください。
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Azure Firewall では、ハブ仮想ネットワークで 2 つのスポーク仮想ネットワーク間のネットワーク トラフィックを転送したりフィルター処理したりできますか?
 
@@ -139,7 +139,7 @@ Azure Firewall サービスの制限については、「[Azure サブスクリ�
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>インバウンド ネットワーク トラフィックの DNAT を構成する際、そのトラフィックを許可するための、対応するネットワーク ルールも構成しなければならないのでしょうか。
 
-No. NAT ルールは、変換されたトラフィックを許可するための対応するネットワーク ルールを暗黙的に追加します。 この動作は、変換されたトラフィックに一致する拒否ルールを使用してネットワーク ルール コレクションを明示的に追加することで、オーバーライドすることができます。 Azure Firewall ルール処理ロジックの詳細については、「[Azure Firewall ルール処理ロジック](rule-processing.md)」を参照してください。
+いいえ。 NAT ルールは、変換されたトラフィックを許可するための対応するネットワーク ルールを暗黙的に追加します。 この動作は、変換されたトラフィックに一致する拒否ルールを使用してネットワーク ルール コレクションを明示的に追加することで、オーバーライドすることができます。 Azure Firewall ルール処理ロジックの詳細については、「[Azure Firewall ルール処理ロジック](rule-processing.md)」を参照してください。
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>アプリケーション ルールのターゲット FQDN でワイルドカードはどのように機能しますか。
 
@@ -162,7 +162,7 @@ Azure Firewall では、スケールの際により多くの仮想マシン イ�
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>サービスのスケールに応じてファイアウォール サブネットのサイズを変更する必要はありますか。
 
-No. Azure Firewall には、/26 よりも大きなサブネットは必要ありません。
+いいえ。 Azure Firewall には、/26 よりも大きなサブネットは必要ありません。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>ファイアウォールのスループットを増やすにはどうすればよいですか。
 
@@ -174,4 +174,4 @@ Azure Firewall の初期スループット容量は 2.5 から 3 Gbps です。 
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>Azure Firewall では Active Directory へのアクセスが既定で許可されますか。
 
-No. Azure Firewall では、Active Directory へのアクセスは既定でブロックされます。 アクセスを許可するには、AzureActiveDirectory サービス タグを構成します。 詳しくは、「[Azure Firewall サービス タグ](service-tags.md)」をご覧ください。
+いいえ。 Azure Firewall では、Active Directory へのアクセスは既定でブロックされます。 アクセスを許可するには、AzureActiveDirectory サービス タグを構成します。 詳しくは、「[Azure Firewall サービス タグ](service-tags.md)」をご覧ください。

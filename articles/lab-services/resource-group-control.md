@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: 574cc0c41ce645c71302178afcf6e7deaec69d8e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476088"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647341"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボの仮想マシンのリソース グループを指定する
 
@@ -31,12 +31,12 @@ ms.locfileid: "66476088"
 この機能では、スクリプトを使用して、すべてのラボ VM に対して、Azure サブスクリプション内の新規または既存のリソース グループを指定できます。 現在、Azure DevTest Labs では、この機能は API を使用することによってサポートされています。
 
 > [!NOTE]
-> DevTest Labs でラボを作成する場合、すべてのサブスクリプション制限が適用されます。 ラボは、お使いのサブスクリプション内の他のリソースと考えてください。 リソース グループの場合、制限は、[1 つのサブスクリプションにつき 980 個のリソース グループ](../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)になります。 
+> DevTest Labs でラボを作成する場合、すべてのサブスクリプション制限が適用されます。 ラボは、お使いのサブスクリプション内の他のリソースと考えてください。 リソース グループの場合、制限は、[1 つのサブスクリプションにつき 980 個のリソース グループ](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)になります。 
 
 ## <a name="use-azure-portal"></a>Azure Portal の使用
 次の手順に従って、ラボで作成されたすべての VM のリソース グループを指定します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 左側のナビゲーション メニューで、 **[すべてのサービス]** を選択します。 
 3. 一覧で **[DevTest Labs]** を選択します。
 4. ラボの一覧で、目的の**ラボ**を選択します。  
@@ -117,8 +117,8 @@ Azure Resource Manager テンプレートを使用してラボを作成する場
 - API を使用するときは、**完全なリソース グループ ID** を渡します。 (例: `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`)。 リソース グループがラボと同じサブスクリプションに含まれていることを確認します。 
 
 
-## <a name="next-steps"></a>次の手順
-次の記事を参照してください。 
+## <a name="next-steps"></a>次のステップ
+次の記事をご覧ください。 
 
 - [ラボのポリシーを設定する](devtest-lab-get-started-with-lab-policies.md)
 - [よく寄せられる質問](devtest-lab-faq.md)

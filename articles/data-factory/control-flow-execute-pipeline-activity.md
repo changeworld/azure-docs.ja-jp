@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 093050952ed826a540c35b2b73acd107fafc45ab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440435"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行アクティビティ
 パイプラインの実行アクティビティを使用すると、Data Factory のパイプラインが別のパイプラインを呼び出すことができます。
@@ -59,10 +59,10 @@ ms.locfileid: "73679932"
 
 ## <a name="type-properties"></a>型のプロパティ
 
-プロパティ | 説明 | 使用できる値 | 必須
+プロパティ | [説明] | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-名前 | パイプラインの実行アクティビティの名前。 | string | はい
-type | 次のように設定する必要があります。**ExecutePipeline**。 | string | はい
+name | パイプラインの実行アクティビティの名前。 | String | はい
+型 | 次のように設定する必要があります。**ExecutePipeline**。 | String | はい
 pipeline | このパイプラインが呼び出す依存パイプラインへのパイプライン参照。 パイプライン参照オブジェクトには、**referenceName** と **type** の 2 つのプロパティがあります。 ReferenceName プロパティは、参照パイプラインの名前を指定します。 type プロパティを PipelineReference に設定する必要があります。 | PipelineReference | はい
 parameters | 呼び出されたパイプラインに渡されるパラメーター | パラメーター名を引数値にマップする JSON オブジェクト | いいえ
 waitOnCompletion | 依存パイプラインの実行が終了するまでアクティビティの実行を待機するかどうかを定義します。 既定値は false です。 | Boolean | いいえ
@@ -168,10 +168,7 @@ waitOnCompletion | 依存パイプラインの実行が終了するまでアク�
     "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": {
-        "value": "DefaultEndpointsProtocol=https;AccountName=*****",
-        "type": "SecureString"
-      }
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=*****;AccountKey=*****"
     }
   }
 }
@@ -254,10 +251,10 @@ waitOnCompletion | 依存パイプラインの実行が終了するまでアク�
 }
 
 ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Data Factory でサポートされている他の制御フロー アクティビティを参照してください。 
 
 - [ForEach アクティビティ](control-flow-for-each-activity.md)
-- [GetMetadata アクティビティ](control-flow-get-metadata-activity.md)
+- [メタデータの取得アクティビティ](control-flow-get-metadata-activity.md)
 - [ルックアップ アクティビティ](control-flow-lookup-activity.md)
 - [Web アクティビティ](control-flow-web-activity.md)

@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: ffe20ff80e26bc5564b9379ea21ca99e2890b519
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974821"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646474"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のトラブルシューティング
 
@@ -23,7 +23,7 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 
 次の手順では、IoT Hub Device Provisioning Service のメトリックを確認したり、メトリックに対してアラートを設定したりする方法について説明します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. IoT Hub Device Provisioning Service に移動します。
 
@@ -32,7 +32,7 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 4. 目的のメトリックを選択します。 
    <br />現在、DPS には、次の 3 つのメトリックがあります。
 
-    | メトリックの名前 | 説明 |
+    | メトリックの名前 | [説明] |
     |-------|------------|
     | Attestation attempts (構成証明試行回数) | Device Provisioning Service に対して認証を試みたデバイスの数|
     | Registration attempts (登録試行回数) | 認証に成功した後、IoT Hub への登録を試みたデバイスの数|
@@ -48,7 +48,7 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Log Analytics を使用してエラーを確認、解決する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 2. IoT ハブに移動します。
 
@@ -58,7 +58,7 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 
 5. 収集したいログを有効にします。
 
-    | ログ名 | 説明 |
+    | ログ名 | [説明] |
     |-------|------------|
     | DeviceOperations | デバイスの接続イベントに関連したログ |
     | ServiceOperations | サービス SDK に関連したイベント ログ (登録グループの作成や更新など)|
@@ -75,11 +75,11 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 ## <a name="common-error-codes"></a>一般的なエラー コード
 この表を参照して、一般的なエラーを理解し、解決してください。
 
-| エラー コード| 説明 | HTTP 状態コード |
+| エラー コード| [説明] | HTTP 状態コード |
 |-------|------------|------------|
 | 400 | 要求の本文が有効ではありません (解析できない、オブジェクトを検証できない、など)。| 400 形式が正しくありません |
 | 401 | 承認トークンを検証できません (有効期限が切れている、要求の URI に該当しない、など)。 また、このエラー コードは、TPM 構成証明フローの過程でデバイスに返されます。 | 401 権限がありません|
 | 404 | Device Provisioning Service インスタンスまたはリソース (登録など) が存在しません。 |404 見つかりません |
 | 412 | 要求の ETag が、RFC7232 のとおりに、既存のリソースの ETag と一致しません。 | 412 前提条件が満たされていません |
-| 429 | サービスによって操作がスロットルされています。 サービスの具体的な制限については、「[IoT Hub Device Provisioning Service の制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)」を参照してください。 | 429 要求が多すぎます |
+| 429 | サービスによって操作がスロットルされています。 サービスの具体的な制限については、「[IoT Hub Device Provisioning Service の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits)」を参照してください。 | 429 要求が多すぎます |
 | 500 | An internal error occurred. | 500 内部サーバー エラー|

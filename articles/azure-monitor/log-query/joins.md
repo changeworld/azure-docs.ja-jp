@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 526c359367271c69ccd461e4421c3223b00fbc36
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f2880044e48e59d0d5f005f9772cdd0f807f7f29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900282"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397822"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの結合
 
@@ -80,7 +80,7 @@ SecurityEvent
 ## <a name="join-kinds"></a>結合の種類
 _kind_ 引数で結合の種類を指定します。 次の表で説明するように、指定されたテーブルのレコード間で、種類ごとに異なる照合が実行されます。
 
-| 結合の種類 | 説明 |
+| 結合の種類 | [説明] |
 |:---|:---|
 | innerunique | これは既定の結合モードです。 最初に左側のテーブルで一致する列の値が検索され、重複する値が削除されます。  次に一意の値のセットが、右側のテーブルと照合されます。 |
 | 内部 (inner) | 結果には、両方のテーブルの一致するレコードのみが含まれます。 |
@@ -98,7 +98,7 @@ _kind_ 引数で結合の種類を指定します。 次の表で説明するよ
 - 一方のテーブルがもう一方よりも常に小さい場合は、それを結合の左側として使用します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Monitor ログ クエリの使用に関するその他のレッスンを参照してください。
 
 - [文字列操作](string-operations.md)

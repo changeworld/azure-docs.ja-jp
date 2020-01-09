@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/15/2019
 ms.author: dapine
 ms.openlocfilehash: 2d96385f2d2d34d161739c55228220cf28871048
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
+ms.lasthandoff: 12/28/2019
 ms.locfileid: "74132602"
 ---
 ### <a name="speech-to-text-or-custom-speech-to-text"></a>音声変換またはカスタム音声変換

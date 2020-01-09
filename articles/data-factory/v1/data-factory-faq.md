@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 7c0b5cbfe77a39cbc8ac660178a1c573d1fe8f7d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1b042c0279e458cf83bd5c81147f4b1f25d7687d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139816"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645142"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
 > [!NOTE]
@@ -44,7 +44,7 @@ Azure Data Factory の価格の詳細については、[Data Factory の価格�
 Data Factory は、**米国西部**と**北ヨーロッパ**で使用できます。 Data Factory で使用されるコンピューティング サービスとストレージ サービスは、その他のリージョンでも利用できます。 「 [サポートされているリージョン](data-factory-introduction.md#supported-regions)」を参照してください。
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Data Factory/パイプライン/アクティビティ/データセットの数の制限値はいくつですか。
-詳細については、記事「 **Azure サブスクリプションとサービスの制限、クォータ、制約** 」の [Azure Data Factory の制限](../../azure-subscription-service-limits.md#data-factory-limits) に関するセクションを参照してください。
+詳細については、記事「 **Azure サブスクリプションとサービスの制限、クォータ、制約** 」の [Azure Data Factory の制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) に関するセクションを参照してください。
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Azure Data Factory サービスではどのような作成エクスペリエンスまたは開発者エクスペリエンスが提供されますか。
 データ ファクトリの生成または作成は、次のツール/SDK を使用して行う事ができます。

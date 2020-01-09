@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/09/2019
-ms.openlocfilehash: e8029b957fedc07ba571b61f1211c020b706bea3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f1eb8644faf6693a2a33ded489830cf4106df222
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444396"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Database Managed Instance をコピー先またはコピー元としてデータをコピーする
 
@@ -50,7 +50,7 @@ Azure SQL Database Managed Instance の[パブリック エンドポイント](.
 
 Azure SQL Database Managed Instance のプライベート エンドポイントにアクセスするには、そのデータベースにアクセスできる[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)を設定します。 セルフホステッド統合ランタイムをマネージド インスタンスと同じ仮想ネットワーク内でプロビジョニングする場合は、統合ランタイム コンピューターがマネージド インスタンスとは別のサブネットにあることを確認してください。 セルフホステッド統合ランタイムをマネージド インスタンスとは別の仮想ネットワークにプロビジョニングする場合は、仮想ネットワーク ピアリングまたは仮想ネットワーク間接続のどちらかを使用できます。 詳細については、「[Azure SQL Database Managed Instance にアプリケーションを接続する](../sql-database/sql-database-managed-instance-connect-app.md)」を参照してください。
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -60,14 +60,14 @@ Azure SQL Database Managed Instance のプライベート エンドポイント�
 
 Azure SQL Database Managed Instance のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **AzureSqlMI** に設定する必要があります。 | はい |
-| connectionString |このプロパティは、SQL 認証を使用してマネージド インスタンスに接続するために必要な **connectionString** 情報を指定します。 詳細については、次の例を参照してください。 <br/>既定のポートは 1433 です。 パブリック エンドポイントを持つ Azure SQL Database Managed Instance を使用している場合は、ポート 3342 を明示的に指定します。<br>このフィールドは、Azure Data Factory で安全に格納するために **SecureString** としてマークします。 また、Azure Key Vault にパスワードを格納することもできます。 それが SQL 認証である場合は、接続文字列から `password` 構成を取得します。 詳細については、この表の後にある JSON の例および「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 |はい |
+| 型 | type プロパティを **AzureSqlMI** に設定する必要があります。 | はい |
+| connectionString |このプロパティは、SQL 認証を使用してマネージド インスタンスに接続するために必要な **connectionString** 情報を指定します。 詳細については、次の例を参照してください。 <br/>既定のポートは 1433 です。 パブリック エンドポイントを持つ Azure SQL Database Managed Instance を使用している場合は、ポート 3342 を明示的に指定します。<br> また、Azure Key Vault にパスワードを格納することもできます。 それが SQL 認証である場合は、接続文字列から `password` 構成を取得します。 詳細については、この表の後にある JSON の例および「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。 |はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを **SecureString** としてマークして Azure Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
 | tenant | ドメイン名やテナント ID など、アプリケーションが存在するテナントの情報を指定します。 これは、Azure portal の右上隅をマウスでポイントすることで取得できます。 | サービス プリンシパルで Azure AD 認証を使う場合は、はい。 |
-| connectVia | この[統合ランタイム](concepts-integration-runtime.md)は、データ ストアに接続するために使用されます。 マネージド インスタンスにパブリック エンドポイントがあり、Azure Data Factory からそれにアクセスできるようにする場合は、セルフホステッド統合ランタイムまたは Azure 統合ランタイムを使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |はい |
+| connectVia | この[統合ランタイム](concepts-integration-runtime.md)は、データ ストアに接続するために使用されます。 マネージド インスタンスにパブリック エンドポイントがあり、Azure Data Factory からそれにアクセスできるようにする場合は、セルフホステッド統合ランタイムまたは Azure 統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |はい |
 
 さまざまな認証の種類の前提条件と JSON サンプルについては、以下のセクションをご覧ください。
 
@@ -85,10 +85,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
-            }
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -106,10 +103,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
-            },
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -167,10 +161,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
-            },
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
                 "type": "SecureString",
@@ -188,7 +179,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
 
 ### <a name="managed-identity"></a> Azure リソースのマネージド ID 認証
 
-データ ファクトリは、特定のデータ ファクトリを表す [Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 このマネージド ID を Azure SQL Database Managed Instance の認証に使用できます。 指定されたファクトリは、この ID を使用してデータベースにアクセスし、データを双方向にコピーできます。
+データ ファクトリは、特定のデータ ファクトリを表す [Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 このマネージド ID を Azure SQL Database Managed Instance の認証に使用できます。 この ID を使用して指定したファクトリからデータベースにアクセスし、データベースに、またはデータベースからデータをコピーできます。
 
 マネージド ID 認証を使用するには、次の手順に従います。
 
@@ -222,10 +213,7 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
-            }
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -241,11 +229,11 @@ Azure SQL Database Managed Instance のリンクされたサービスでは、�
 
 Azure SQL Database Managed Instance をコピー元またはコピー先にしたデータ コピーについては、次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティを **AzureSqlMITable** に設定する必要があります。 | はい |
+| 型 | データセットの type プロパティを **AzureSqlMITable** に設定する必要があります。 | はい |
 | schema | スキーマの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
-| table | テーブル/ビューの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
+| テーブル | テーブル/ビューの名前。 |ソースの場合はいいえ、シンクの場合ははい  |
 | tableName | スキーマがあるテーブル/ビューの名前。 このプロパティは下位互換性のためにサポートされています。 新しいワークロードでは、`schema` と `table` を使用します。 | ソースの場合はいいえ、シンクの場合ははい |
 
 **例**
@@ -277,10 +265,10 @@ Azure SQL Database Managed Instance をコピー元またはコピー先にし�
 
 Azure SQL Database Managed Instance からデータをコピーするために、コピー アクティビティ ソース セクションでは次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティを **SqlMISource** に設定する必要があります。 | はい |
-| sqlReaderQuery |このプロパティは、カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`。 |いいえ |
+| 型 | コピー アクティビティのソースの type プロパティを **SqlMISource** に設定する必要があります。 | はい |
+| sqlReaderQuery |このプロパティは、カスタム SQL クエリを使用してデータを読み取ります。 たとえば `select * from MyTable` です。 |いいえ |
 | sqlReaderStoredProcedureName |このプロパティは、ソース テーブルからデータを読み取るストアド プロシージャの名前です。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ |
 | storedProcedureParameters |これらのパラメーターは、ストアド プロシージャ用です。<br/>使用可能な値は、名前または値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
 
@@ -383,9 +371,9 @@ GO
 
 データを Azure SQL Database Managed Instance にコピーするために、コピー アクティビティ シンク セクションで次のプロパティがサポートされています。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのシンクの type プロパティは、**SqlMISink** に設定する必要があります。 | はい |
+| 型 | コピー アクティビティのシンクの type プロパティは、**SqlMISink** に設定する必要があります。 | はい |
 | writeBatchSize |SQL テーブルに挿入する "*バッチあたりの*" 行数。<br/>使用可能な値は、行数の場合整数です。 既定では、Azure Data Factory により行のサイズに基づいて適切なバッチ サイズが動的に決定されます。  |いいえ |
 | writeBatchTimeout |このプロパティは、タイムアウトする前に一括挿入操作の完了を待つ時間を指定します。<br/>使用可能な値は期間に対する値です。 たとえば "00:30:00" (30 分) を指定できます。 |いいえ |
 | preCopyScript |このプロパティは、コピー アクティビティでマネージド インスタンスにデータを書き込む前に実行する SQL クエリを指定します。 これは、コピー実行ごとに 1 回だけ呼び出されます。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ |
@@ -395,7 +383,7 @@ GO
 | storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値は、名前と値のペアです。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 | いいえ |
 | tableOption | ソースのスキーマに基づいて、シンク テーブルが存在しない場合に自動的にシンク テーブルを作成するかどうかを指定します。 シンクでストアド プロシージャが指定されている場合、またはコピー アクティビティでステージング コピーが構成されている場合、テーブルの自動作成はサポートされません。 使用できる値は `none` (既定値)、`autoCreate` です。 |いいえ |
 
-**例 1:データを追加する**
+**例 1: データを追加する**
 
 ```json
 "activities":[
@@ -428,7 +416,7 @@ GO
 ]
 ```
 
-**例 2:コピー中にストアド プロシージャを呼び出す**
+**例 2: コピー中にストアド プロシージャを呼び出す**
 
 詳細については、[SQL MI シンクからのストアド プロシージャの呼び出し](#invoke-a-stored-procedure-from-a-sql-sink)に関するセクションを参照してください。
 
@@ -481,7 +469,7 @@ Azure Data Factory で構成する方法およびベスト プラクティスに
 
 ### <a name="append-data"></a>データを追加する
 
-データの追加は、この Azure SQL Database Managed Instance シンク コネクタの既定の動作です。 Azure Data Factory は、テーブルに効率的に書き込むために一括挿入を実行します。 コピー アクティビティで、それに応じてソースとシンクを構成できます。
+データの追加は、この Azure SQL Database Managed Instance シンク コネクタの既定の動作です。 Azure Data Factory では、テーブルに効率的に書き込むために一括挿入が実行されます。 コピー アクティビティで、それに応じてソースとシンクを構成できます。
 
 ### <a name="upsert-data"></a>データをアップサートする
 
@@ -490,7 +478,7 @@ Azure Data Factory で構成する方法およびベスト プラクティスに
 - 最初に、[一時テーブル](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql?view=sql-server-2017#temporary-tables)を使用して、コピー アクティビティですべてのレコードを一括で読み込みます。 一時テーブルに対する操作はログに記録されないため、数百万のレコードを数秒で読み込むことができます。
 - Azure Data Factory でストアド プロシージャ アクティビティを実行して [MERGE](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=azuresqldb-current) または INSERT/UPDATE ステートメントを適用します。 一時テーブルをソースとして使用して、すべての更新または挿入を 1 つのトランザクションとして実行します。 この方法により、ラウンド トリップやログ操作の数が削減されます。 ストアド プロシージャ アクティビティの最後に、次のアップサート サイクルの準備のために一時テーブルを切り捨てることができます。
 
-例として、Azure Data Factory で、**コピー アクティビティ**と**ストアド プロシージャ アクティビティ**を連結させたパイプラインを作成できます。 前者は、ソース ストアから一時テーブル (たとえば、データセット内のテーブル名 **##UpsertTempTable**) にデータをコピーします。 次に、後者がストアド プロシージャを呼び出して、一時テーブルのソース データをターゲット テーブルにマージし、一時テーブルをクリーンアップします。
+例として、Azure Data Factory で、**コピー アクティビティ**と**ストアド プロシージャ アクティビティ**を連結させたパイプラインを作成できます。 前者は、ソース ストアから一時テーブル (たとえば、データセット内のテーブル名 **##UpsertTempTable**) にデータをコピーします。 次に、後者によってストアド プロシージャが呼び出され、一時テーブルのソース データがターゲット テーブルにマージされて、一時テーブルがクリーンアップされます。
 
 ![Upsert](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
@@ -590,15 +578,15 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 | binary |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |Datetime |
-| Datetime |Datetime |
-| datetime2 |Datetime |
+| date |DateTime |
+| Datetime |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
-| int |Int32 |
+| INT |Int32 |
 | money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
@@ -606,7 +594,7 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |Datetime |
+| smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object |
@@ -614,7 +602,7 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Int16 |
-| uniqueidentifier |Guid |
+| UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | xml |xml |
@@ -630,5 +618,5 @@ Azure SQL Database Managed Instance をコピー元またはコピー先とし�
 
 プロパティの詳細については、[GetMetadata アクティビティ](control-flow-get-metadata-activity.md)に関するページを参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)に関するページをご覧ください。
