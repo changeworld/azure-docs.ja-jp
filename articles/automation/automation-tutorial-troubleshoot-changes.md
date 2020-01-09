@@ -2,21 +2,17 @@
 title: Azure 仮想マシンの変更に関する問題を解決する | Microsoft Docs
 description: 変更履歴を使用して、Azure 仮想マシンの変更に関する問題を解決します。
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
 keywords: 変更, 追跡, オートメーション
-author: jennyhunter-msft
-ms.author: jehunte
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 92f25d956bc8f1f930ae6ebbf7ee48c144bf8a30
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420630"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
 
@@ -99,9 +95,9 @@ Azure Monitor ログでのログ ファイルの実行と検索については�
 
 1. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
-|Enabled     | 設定が適用されるかどうかを決定します。        |
+|有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |Group     | ファイルを論理的にグループ化するためのグループ名。        |
 |Windows レジストリ キー   | ファイル確認のためのパス。その例を次に示します。"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
@@ -112,9 +108,9 @@ Azure Monitor ログでのログ ファイルの実行と検索については�
 
 1. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
-|Enabled     | 設定が適用されるかどうかを決定します。        |
+|有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |Group     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。         |
@@ -127,9 +123,9 @@ Azure Monitor ログでのログ ファイルの実行と検索については�
 
 1. **[変更履歴用の Linux ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、 **[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
-|Enabled     | 設定が適用されるかどうかを決定します。        |
+|有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |Group     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "/etc/*.conf")。       |
@@ -213,7 +209,7 @@ ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName ==
 
 ![email](./media/automation-tutorial-troubleshoot-changes/email.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで学習した内容は次のとおりです。
 

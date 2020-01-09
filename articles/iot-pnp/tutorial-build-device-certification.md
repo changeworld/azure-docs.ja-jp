@@ -3,18 +3,18 @@ title: 認定の準備が整った IoT プラグ アンド プレイ プレビ�
 description: デバイス開発者として、認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスを構築する方法について学習します。
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 06/28/2019
+ms.date: 12/28/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569634"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550268"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスの構築
 
@@ -35,7 +35,7 @@ ms.locfileid: "73569634"
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 拡張機能パック
 
-また、[デバイス機能モデルを使用してデバイスを作成する方法のクイックスタート](quickstart-create-pnp-device.md)で作成した IoT プラグ アンド プレイ デバイスも必要です。
+また、[デバイス機能モデルを使用してデバイスを作成する方法のクイックスタート](quickstart-create-pnp-device-windows.md)で作成した IoT プラグ アンド プレイ デバイスも必要です。
 
 ## <a name="store-a-capability-model-and-interfaces"></a>機能モデルとインターフェイスの格納
 
@@ -58,7 +58,7 @@ IoT プラグ アンド プレイ デバイスの場合、デバイスの機能�
 ```
 
 > [!NOTE]
-> [デバイス機能モデルを使用してデバイスを作成する方法のクイックスタート](quickstart-create-pnp-device.md)を完了している場合は、**デバイス情報**インターフェイスが既に対象のモデルに組み込まれています。
+> [デバイス機能モデルを使用してデバイスを作成する方法のクイックスタート](quickstart-create-pnp-device-windows.md)を完了している場合は、**デバイス情報**インターフェイスが既に対象のモデルに組み込まれています。
 
 **デバイス情報**インターフェイスを対象のデバイス モデルに組み込むには、機能モデルの `implements` プロパティにインターフェイス ID を追加します。
 
@@ -141,7 +141,7 @@ Azure IoT device SDK を使用しないことを選択した場合は、SDK の�
 
 認定中、プログラムによって対象のデバイスがテストされ、インターフェイスに定義されている機能が実装されていることが確認されます。 対象のデバイスにこれらが実装されていない場合は、HTTP 状態コード 501 を使用して、読み取りおよび書き込みプロパティとコマンド要求に応答します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、認定の準備が整った IoT プラグ アンド プレイ デバイスを構築できました。推奨される次の手順は次のとおりです。
 

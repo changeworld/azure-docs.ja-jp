@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: b0e4fcf771f2441d9e1061ee57e83e26b6b1a241
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 389125b1ce3ed43e16f2c9c481e26f1297785a6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922967"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439345"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>チュートリアル:オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 
@@ -135,7 +135,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンドを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで (`"adfrg"` のように) 指定し、コマンドを実行します。 
+1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンドを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前を二重引用符で囲んで (`"adfrg"` のように) 指定し、コマンドを実行します。 
    
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -382,7 +382,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     }
    ```    
 
-    **Windows 認証を使用する場合:**
+    **Windows 認証を使用する:**
 
     ```json
     {  
@@ -528,7 +528,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
     Properties        : Microsoft.Azure.Management.DataFactory.Models.DelimitedTextDataset
     ```
 
-## <a name="create-a-pipeline"></a>パイプラインを作成する。
+## <a name="create-a-pipeline"></a>パイプラインを作成する
 このチュートリアルでは、コピー アクティビティのあるパイプラインを作成します。 コピー アクティビティは、入力データセットとして SqlServerDataset を使用し、出力データセットとして AzureBlobDataset を使用します。 ソースの種類が *SqlSource* に設定され、シンクの種類が *BlobSink* に設定されています。
 
 1. 以下のコードを記述した *SqlServerToBlobPipeline.json* という名前の JSON ファイルを *C:\ADFv2Tutorial* フォルダー内に作成します。
@@ -714,8 +714,8 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
     ![出力ファイル](media/tutorial-hybrid-copy-powershell/fromonprem-file.png)
 
 
-## <a name="next-steps"></a>次の手順
-このサンプルのパイプラインは、Azure Blob Storage 内のある場所から別の場所にデータをコピーするものです。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このサンプルのパイプラインは、Azure Blob Storage 内のある場所から別の場所にデータをコピーするものです。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。

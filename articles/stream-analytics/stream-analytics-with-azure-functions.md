@@ -1,21 +1,19 @@
 ---
 title: チュートリアル - Azure Stream Analytics ジョブで Azure Functions を実行する
 description: このチュートリアルでは、Stream Analytics ジョブへの出力シンクとして Azure Functions を構成する方法を説明します。
-services: stream-analytics
 author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.workload: data-services
 ms.date: 06/05/2019
 ms.author: mamccrea
-ms.reviewer: jasonh
-ms.openlocfilehash: 189f38c075c5faa91295633d1e4cbde1f7e573a2
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.reviewer: mamccrea
+ms.openlocfilehash: 84df3edcebb1ca9f14a68125ae9793f004e56c4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707302"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369322"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>チュートリアル:Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -182,7 +180,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. Azure portal を参照し、Azure Cache for Redis を見つけます。 **[コンソール]** を説明します。  
 
-2. [Azure Cache for Redis コマンド](https://redis.io/commands)を使用して、Azure Cache for Redis にデータがあることを確認します (コマンドの形式は Get {key} となります)。例:
+2. [Azure Cache for Redis コマンド](https://redis.io/commands)を使用して、Azure Cache for Redis にデータがあることを確認します (コマンドの形式は Get {key} となります)。次に例を示します。
 
    **Get "12/19/2017 21:32:24 - 123414732"**
 
@@ -203,14 +201,14 @@ Azure Portal では、最大バッチ サイズ/最大バッチ カウントの�
 
 Azure Functions での [HTTP ルーティング](https://docs.microsoft.com/sandbox/functions-recipes/routes?tabs=csharp)の使用は、現在、Stream Analytics ではサポートされていません。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
 
 1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。  
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure 関数を実行する単純な Stream Analytics ジョブを作成しました。Stream Analytics ジョブについてさらに学習するには、次のチュートリアルに進んでください。
 

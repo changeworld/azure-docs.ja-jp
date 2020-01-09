@@ -1,26 +1,17 @@
 ---
-title: Azure 内で Service Fabric クラスターを監視する | Microsoft Docs
+title: Azure 内で Service Fabric クラスターを監視する
 description: このチュートリアルでは、クラスターの監視方法を学習するために、Service Fabric イベントの表示、EventStore API シリーズのクエリの実行、パフォーマンス カウンターの監視、および正常性レポートの表示を行います。
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 63069dcdebf19c64d7bcde298fa234622a6d9a2b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385282"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376632"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure 内で Service Fabric クラスターを監視する
 
@@ -58,7 +49,7 @@ ms.locfileid: "68385282"
 
 ## <a name="view-service-fabric-events-using-azure-monitor-logs"></a>Azure Monitor ログを使用して Service Fabric イベントを表示する
 
-Azure Monitor ログでは、クラウド内でホストされているアプリケーションとサービスからテレメトリが収集および分析され、可用性とパフォーマンスを最大限に高めることができるように分析ツールが提供されます。 Azure Monitor ログ内でクエリを実行して、分析情報を取得したり、クラスター内の処理のトラブルシューティングを行ったりできます。
+Azure Monitor ログでは、クラウド内でホストされているアプリケーションとサービスからテレメトリが収集および分析され、それらの可用性とパフォーマンスを最大限に高めるために役立つ分析ツールが提供されます。 Azure Monitor ログ内でクエリを実行して、分析情報を取得したり、クラスター内の処理のトラブルシューティングを行ったりできます。
 
 Service Fabric Analytics ソリューションにアクセスするには、[Azure portal](https://portal.azure.com) に移動し、Service Fabric Analytics ソリューションを作成したリソース グループを選択します。
 
@@ -83,7 +74,7 @@ Service Fabric Analytics ソリューションにアクセスするには、[Azu
 
 ### <a name="view-service-fabric-events-including-actions-on-nodes"></a>ノードに対する操作を含む Service Fabric イベントを表示する
 
-Service Fabric Analytics ページで、**クラスター イベント**のグラフをクリックします。  収集済みのすべてのシステム イベントのログが表示されます。 参考までに、これらは Azure ストレージ アカウント内の **WADServiceFabricSystemEventsTable** に由来し、次に確認する Reliable Services イベントや Reliable Actors イベントも同様に、それぞれのテーブルに由来します。
+Service Fabric Analytics ページで、**クラスター イベント**のグラフをクリックします。  収集済みのすべてのシステム イベントのログが表示されます。 参考までに、これらは Azure Storage アカウント内の **WADServiceFabricSystemEventsTable** に由来し、次に確認する Reliable Services イベントや Reliable Actors イベントも同様に、それぞれのテーブルに由来します。
     
 ![クエリの操作チャネル](media/service-fabric-tutorial-monitor-cluster/oms-service-fabric-events.png)
 
@@ -482,7 +473,7 @@ Get-ServiceFabricNode | Get-ServiceFabricNodeHealth | select NodeName, Aggregate
 Get-ServiceFabricService -ApplicationName fabric:/System | Get-ServiceFabricServiceHealth | select ServiceName, AggregatedHealthState | ft -AutoSize
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

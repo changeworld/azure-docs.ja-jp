@@ -2,7 +2,6 @@
 documentType: LandingData
 title: 'Azure SQL Database:単一データベース'
 metadata:
-  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: ドキュメント - 単一データベース
   meta.description: Learn how to use Azure SQL databases.
   services: sql-database
@@ -72,7 +71,7 @@ sections:
         columns:
           - image:
               src: media/index/portal.svg
-            title: Azure ポータル
+            title: Azure portal
           - image:
               src: media/index/cli.svg
             title: Azure CLI

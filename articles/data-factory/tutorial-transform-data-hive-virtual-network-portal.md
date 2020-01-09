@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: d52aed98549478898cb3bd263d52eeae2a69ccfd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dd0de5415dc001f107221add7ea223450290b3f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925550"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439262"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 
@@ -88,7 +88,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
    - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
-     リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+     リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
 4. **バージョン**として **[V2]** を選択します。
 5. データ ファクトリの **場所** を選択します。 データ ファクトリの作成がサポートされている場所のみが一覧に表示されます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
@@ -166,7 +166,7 @@ Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮�
     2. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[MySelfHostedIR]** を選択します。
     3. **[ストレージ アカウント名]** で、使用する Azure ストレージ アカウントを選択します。 
     4. ストレージ アカウントへの接続をテストするために、 **[テスト接続]** をクリックします。
-    5. **[Save]** をクリックします。
+    5. **[保存]** をクリックします。
    
         ![Azure Blob Storage アカウントを指定する](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-storage-account.png)
 
@@ -200,8 +200,8 @@ Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮�
 
 以下の点に注意してください。
 
-- **scriptPath** は、MyStorageLinkedService に使用した Azure ストレージ アカウントの Hive スクリプトへのパスを示します。 パスでは大文字と小文字が区別されます。
-- **Output** は、Hive スクリプトで使用される引数です。 `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` の形式で、Azure ストレージ上の既存のフォルダーを指定します。 パスでは大文字と小文字が区別されます。 
+- **scriptPath** は、MyStorageLinkedService に使用した Azure ストレージ アカウントの Hive スクリプトへのパスを示します。 パスの大文字と小文字は区別されます。
+- **Output** は、Hive スクリプトで使用される引数です。 `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` の形式で、Azure ストレージ上の既存のフォルダーを指定します。 パスの大文字と小文字は区別されます。 
 
 1. Data Factory UI で、左側のウィンドウの **[+] (プラス記号)** をクリックし、 **[パイプライン]** をクリックします。 
 
@@ -258,7 +258,7 @@ Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮�
 
     ![出力ファイル](./media/tutorial-transform-data-using-hive-in-vnet-portal/output-file.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の手順を実行しました。 
 
 > [!div class="checklist"]

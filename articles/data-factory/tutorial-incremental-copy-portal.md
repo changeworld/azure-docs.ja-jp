@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 5d82971cbd7781a298f3f3aeeba47e4be471e248
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c8df388bcd3956746edba9a721b0598025b827e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927993"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439174"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL データベースから Azure Blob Storage にデータを増分読み込みする
 
@@ -150,7 +150,7 @@ END
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[データ ファクトリ]** を選択します。 
+2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -165,7 +165,7 @@ END
       - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
-        リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+        リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
 6. **バージョン**として **[V2]** を選択します。
 7. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 8. **Create** をクリックしてください。      
@@ -253,10 +253,10 @@ END
     2. **[ストレージ アカウント名]** で、使用する Azure ストレージ アカウントを選択します。
     3. 接続をテストし、 **[完了]** をクリックします。 
 
-27. **[プロパティの設定]** ウィンドウで、 **[リンクされたサービス]** に **[AzureStorageLinkedService]** が選択されていることを確認します。 続けて、 **[完了]** を選択します。
+27. **[プロパティの設定]** ウィンドウで、 **[リンクされたサービス]** に **[AzureStorageLinkedService]** が選択されていることを確認します。 **[完了]** を選択します。
 28. SinkDataset の **[接続]** タブに移動して、次の手順を実行します。
     1. **[ファイル パス]** フィールドに「**adftutorial/incrementalcopy**」と入力します。 **adftutorial** は BLOB コンテナー名であり、**incrementalcopy** はフォルダー名です。 このスニペットは、BLOB ストレージに adftutorial という名前の BLOB コンテナーがあることを前提としています。 このコンテナーが存在しない場合は作成するか、既存のコンテナーの名前を設定してください。 Azure Data Factory は、出力フォルダー **incrementalcopy** が存在しない場合は、自動的に作成します。 **[ファイル パス]** の **[参照]** ボタンを使用して、BLOB コンテナー内のフォルダーに移動することもできます。
-    2. **[ファイル パス]** フィールドの**ファイル**部分で **[動的なコンテンツの追加 [Alt+P]]** を選択し、表示されたウィンドウで「`@CONCAT('Incremental-', pipeline().RunId, '.txt')`」と入力します。 続けて、 **[完了]** を選択します。 ファイル名は、式を使用して動的に生成されます。 各パイプラインの実行には、一意の ID があります。 コピー アクティビティは、実行 ID を使用して、ファイル名を生成します。 
+    2. **[ファイル パス]** フィールドの**ファイル**部分で **[動的なコンテンツの追加 [Alt+P]]** を選択し、表示されたウィンドウで「`@CONCAT('Incremental-', pipeline().RunId, '.txt')`」と入力します。 **[完了]** を選択します。 ファイル名は、式を使用して動的に生成されます。 各パイプラインの実行には、一意の ID があります。 コピー アクティビティは、実行 ID を使用して、ファイル名を生成します。 
 
 28. 上部のパイプライン タブをクリックするか、左側のツリー ビューでパイプラインの名前をクリックして、**パイプライン** エディターに切り替えます。 
 29. **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、 **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **[コピー]** アクティビティの緑 (成功) の出力を **[ストアド プロシージャ]** アクティビティに**接続**します。 
@@ -270,10 +270,10 @@ END
     1. **[ストアド プロシージャ名]** に **[usp_write_watermark]** を選択します。 
     2. ストアド プロシージャのパラメーターの値を指定するには、 **[Import parameter]\(インポート パラメーター\)** をクリックし、各パラメーターに次の値を入力します。 
 
-        | 名前 | 種類 | 値 | 
+        | Name | 種類 | 値 | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
-        | TableName | string | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
+        | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![ストアド プロシージャ アクティビティ - ストアド プロシージャの設定](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. パイプライン設定を検証するには、ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 [>>] をクリックして、 **[Pipeline Validation Report]\(パイプライン検証レポート\)** ウィンドウを閉じます。   
@@ -379,7 +379,7 @@ PersonID | Name | LastModifytime
 
 
      
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の手順を実行しました。 
 
 > [!div class="checklist"]

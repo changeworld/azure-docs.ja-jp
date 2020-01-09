@@ -10,12 +10,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 34c2a27d047888d1e763a0a99461e7eb4b9fb203
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ddc5032da415ebee9920556d3168d30bdae4a158
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925098"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439209"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 このチュートリアルでは、Azure Portal を使用して Azure Data Factory パイプラインを作成します。 このパイプラインは、Spark アクティビティとオンデマンドの Azure HDInsight のリンクされたサービスを使用して、データを変換します。 
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
    - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
-   このクイックスタートの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+   このクイックスタートの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
 1. **[バージョン]** で、 **[V2]** を選択します。
 1. **[場所]** で、データ ファクトリの場所を選択します。 
 
@@ -230,7 +230,7 @@ adftutorial コンテナーの spark/otuputfiles/wordcount フォルダーに出
 
 ![出力ファイルの場所](./media/tutorial-transform-data-spark-portal/verity-output.png)
 
-このファイルには、入力テキスト ファイルに含まれている単語と、各単語がファイル内に出現する回数が含まれています。 例: 
+このファイルには、入力テキスト ファイルに含まれている単語と、各単語がファイル内に出現する回数が含まれています。 次に例を示します。 
 
 ```
 (u'This', 1)
@@ -240,8 +240,8 @@ adftutorial コンテナーの spark/otuputfiles/wordcount フォルダーに出
 (u'file', 1)
 ```
 
-## <a name="next-steps"></a>次の手順
-このサンプルのパイプラインでは、Spark アクティビティとオンデマンドの HDInsight のリンクされたサービスを使用して、データを変換します。 以下の方法について学習しました。 
+## <a name="next-steps"></a>次のステップ
+このサンプルのパイプラインでは、Spark アクティビティとオンデマンドの HDInsight のリンクされたサービスを使用して、データを変換します。 以下の方法を学習しました。 
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。 

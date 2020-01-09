@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: cb99b747cb5de01c616c4cab0ac6c14823f7d4db
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044629"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435850"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)
 
@@ -52,7 +52,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
 3. **[Add New Policy]\(新しいポリシーの追加\)** を選択し、次の値を入力します。
 
-   |Setting  |推奨値  |
+   |設定  |推奨値  |
    |---------|---------|
    |ポリシー名  |  hdi sales* policy   |
    |トピック   |  sales* |
@@ -72,7 +72,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
 5. **[Add New Policy]\(新しいポリシーの追加\)** を選択し、次の値を入力します。
 
-   |Setting  |推奨値  |
+   |設定  |推奨値  |
    |---------|---------|
    |ポリシー名  |  hdi marketing policy   |
    |トピック   |  marketingspend |
@@ -93,7 +93,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   `DOMAINADMIN` は、[クラスターの作成](./apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)時に構成したクラスターの管理者ユーザーに置き換えます。また、`CLUSTERNAME` はクラスターの名前に置き換えます。 メッセージが表示されたら、管理者ユーザー アカウントのパスワードを入力します。 HDInsight での `SSH` の使用の詳細については、「[HDInsight で SSH を使用する](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+   `DOMAINADMIN` は、[クラスターの作成](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)時に構成したクラスターの管理者ユーザーに置き換えます。また、`CLUSTERNAME` はクラスターの名前に置き換えます。 メッセージが表示されたら、管理者ユーザー アカウントのパスワードを入力します。 HDInsight での `SSH` の使用の詳細については、「[HDInsight で SSH を使用する](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
 2. 次のコマンドを使用して、クラスター名を変数に保存して、JSON 解析ユーティリティ `jq` をインストールします。 プロンプトが表示されたら、Kafka クラスター名を入力します。
 
@@ -131,7 +131,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
    ssh sales_user1@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-2. 次のコマンドを実行します。
+2. たとえば、次のコマンドを実行します。
 
    ```bash
    export KAFKA_OPTS="-Djava.security.auth.login.config=/usr/hdp/current/kafka-broker/config/kafka_client_jaas.conf"
@@ -185,17 +185,17 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
    ![Ranger UI ポリシーの監査アクセス イベント ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このアプリケーションを引き続き使用しない場合は、次の手順で作成した Kafka クラスターを削除します。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 1. 上部の**検索**ボックスに「**HDInsight**」と入力します。
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** をクリックします。 
 1. **[削除]** をクリックします。 **[はい]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Apache Kafka に自分のキーを持ち込む](../kafka/apache-kafka-byok.md)

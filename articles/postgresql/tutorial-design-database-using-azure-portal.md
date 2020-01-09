@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 11276d532f0f978b127f48924e383b7aeb7f4ad5
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d7ddb286285de9be089c0a5176e33b7108021c77
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770103"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459952"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Database for PostgreSQL - 単一サーバーを設計する
 
@@ -23,8 +23,8 @@ Azure Database for PostgreSQL は、高可用性 PostgreSQL データベース�
 > * Azure Database for PostgreSQL サーバーの作成
 > * サーバーのファイアウォールの構成
 > * [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) ユーティリティを使用したデータベースの作成
-> * サンプル データの読み込み
-> * データのクエリを実行する
+> * サンプル データを読み込む
+> * クエリ データ
 > * データの更新
 > * データの復元
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の作成
 
-Azure Database for PostgreSQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-compute-unit-and-storage.md)を使って作成されます。 サーバーは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内に作成されます。
+Azure Database for PostgreSQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-compute-unit-and-storage.md)を使って作成されます。 サーバーは、[Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成されます。
 
 Azure Database for PostgreSQL サーバーを作成するには、次の手順に従います。
 1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
@@ -48,14 +48,14 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
     ![サーバーの作成](./media/tutorial-design-database-using-azure-portal/create-basics.png)
 
-    Setting|推奨値|説明
+    設定|推奨値|[説明]
     ---|---|---
-    Subscription|お使いのサブスクリプション名|サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
+    サブスクリプション|お使いのサブスクリプション名|サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     Resource group|*myresourcegroup*| 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。
     サーバー名 |*mydemoserver*|Azure Database for PostgreSQL サーバーを識別する一意の名前。 指定したサーバー名にドメイン名 *postgres.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 3 文字以上 63 文字以内にする必要があります。
     データ ソース | *なし* | *[なし]* を選択し、最初から新しいサーバーを作成します (既存の Azure Database for PostgreSQL サーバーの geo バックアップからサーバーを作成している場合は、 *[Backup]* を選択します)。
     管理者ユーザー名 |*myadmin*| サーバーに接続するときに使用する独自のログイン アカウント。 管理者のログイン名に **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest**、または **public** は使用できません。 **pg_** で始めることはできません。
-    パスワード |お使いのパスワード| サーバー管理者アカウントの新しいパスワード。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
+    Password |お使いのパスワード| サーバー管理者アカウントの新しいパスワード。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
     Location|ユーザーに最も近いリージョン| ユーザーに最も近い場所。
     Version|最新のメジャー バージョン| 他の特定の要件がない場合は、最新の PostgreSQL メジャー バージョン。
     コンピューティングとストレージ | **汎用**、**Gen 5**、**2 仮想コア**、**5 GB**、**7 日**、**地理冗長** | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[サーバーの構成]** を選択します。 次に、 **[汎用]** タブを選択します。*Gen 5*、"*4 仮想コア*"、*100 GB*、および "*7 日*" は、それぞれ **[コンピューティング世代]** 、 **[仮想コア]** 、 **[ストレージ]** 、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにすることも、調整することもできます。 サーバー バックアップを geo 冗長ストレージで有効にするには、 **[バックアップ冗長オプション]** から **[地理冗長]** を選択します。 この価格レベルの選択を保存するには、 **[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
@@ -88,7 +88,7 @@ Azure Database for PostgreSQL サービスは、サーバーレベルでファ�
 
 2. サーバーのページで、 **[接続のセキュリティ]** を選択します。 
 
-3. **[規則名]** の下のテキスト ボックス内をクリックし、接続を許可する IP の範囲を指定する新しいファイアウォール規則を追加します。 IP 範囲を入力します。 **[Save]** をクリックします。
+3. **[規則名]** の下のテキスト ボックス内をクリックし、接続を許可する IP の範囲を指定する新しいファイアウォール規則を追加します。 IP 範囲を入力します。 **[保存]** をクリックします。
 
    ![Azure Database for PostgreSQL - ファイアウォール規則の作成](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 
@@ -202,14 +202,14 @@ SELECT * FROM inventory;
    - **価格レベル**:サーバーを復元するときは、この値を変更することはできません。 ソース サーバーと同じレベルになります。 
 3. **[OK]** をクリックして、テーブルが削除される前の[状態にサーバーを復元](./howto-restore-server-portal.md)します。 異なる時点にサーバーを復元すると、[価格レベル](./concepts-pricing-tiers.md)のリテンション期間内であれば、指定した時点の元サーバーと同じサーバー内に、新しいサーバーが複製されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Portal とその他のユーティリティを使用して、次のことを行う方法を説明しました。
 > [!div class="checklist"]
 > * Azure Database for PostgreSQL サーバーの作成
 > * サーバーのファイアウォールの構成
 > * [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) ユーティリティを使用したデータベースの作成
-> * サンプル データの読み込み
-> * データのクエリを実行する
+> * サンプル データを読み込む
+> * クエリ データ
 > * データの更新
 > * データの復元
 

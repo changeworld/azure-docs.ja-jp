@@ -1,7 +1,6 @@
 ---
 title: CI/CD と Azure DevOps を使用して Azure Stream Analytics ジョブをデプロイする
 description: この記事では、Azure DevOps Services を使用して CI/CD で Stream Analytics ジョブをデプロイする方法について説明します。
-services: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7810cf9950d919469c4b47053a878518726f4393
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925080"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354430"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする
 このチュートリアルでは、Azure Pipelines を使用して、Azure Stream Analytics ジョブの継続的インテグレーションと継続的配置を設定する方法について説明します。 
@@ -117,8 +116,8 @@ Web ブラウザーを開き、[Azure DevOps](https://app.vsaex.visualstudio.com
     
     |**設定**  |**推奨値**  |
     |---------|---------|
-    |Subscription  |  サブスクリプションを選択します。   |
-    |Action  |  リソース グループを作成または更新します。   |
+    |サブスクリプション  |  サブスクリプションを選択します。   |
+    |アクション  |  リソース グループを作成または更新します。   |
     |リソース グループ  |  リソース グループ名を入力します。   |
     |Template  | <実際のソリューション パス>\bin\Debug\Deploy\\<実際のプロジェクト名>.JobTemplate.json   |
     |Template parameters  | <実際のソリューション パス>\bin\Debug\Deploy\\<実際のプロジェクト名>.JobTemplate.parameters.json   |
@@ -150,14 +149,14 @@ Azure DevOps へのコード変更をチェックインして、継続的イン�
 
 Azure DevOps Services へ変更をプッシュすると、ビルドが自動的にトリガーされます。  ビルド パイプラインが正常に完了すると、リリースは自動的に作成され、クラスター上のジョブの更新が開始されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このチュートリアルで作成したすべてのリソースを削除してください。
 
 1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。  
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Visual Studio 用の Azure Stream Analytics ツールを使用して継続的インテグレーションと継続的配置のプロセスを設定する方法について確認するには、CI/CD パイプラインの設定に関する記事に進みます。
 

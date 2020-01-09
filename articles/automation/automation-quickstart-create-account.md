@@ -2,19 +2,16 @@
 title: Azure クイックスタート - Azure Automation アカウントを作成する | Microsoft Docs
 description: Azure Automation アカウントを作成し、Runbook を実行する方法について説明します
 services: automation
-author: csand-msft
-ms.author: csand
 ms.date: 04/04/2019
 ms.topic: quickstart
-ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 80a175aad3c692a5dfd04c7399211c58134c5164
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: a2d15dd520db16012f530d2ac6188a4642c89795
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937159"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421654"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Automation アカウントを作成する
 
@@ -32,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[IT & Management Tools]\(IT & 管理ツール\)** 、 **[Automation]** の順に選択します。
 
-1. アカウント情報を入力します。 **[Azure 実行アカウントの作成]** で **[はい]** を選択し、Azure に対する認証が簡単になるアーティファクトが自動的に有効になるようにします。 Automation アカウントの作成時には、選択後に名前を変更できないことに注意してください。 "*Automation アカウント名は、リージョンおよびリソース グループごとに一意です。削除された Automation アカウントの名前はすぐには使用できない場合があります。* " 1 つの Automation アカウントで、特定のテナントのすべてのリージョンおよびサブスクリプションにわたってリソースを管理できます。 完了したら、 **[作成]** をクリックして、Automation アカウントの展開を開始します。
+1. アカウント情報を入力します。 **[Azure 実行アカウントの作成]** で **[はい]** を選択し、Azure に対する認証が簡単になるアーティファクトが自動的に有効になるようにします。 Automation アカウントの作成時には、選択後に名前を変更できないことに注意してください。 *Automation アカウント名は、リージョンおよびリソース グループごとに一意です。削除された Automation アカウントの名前はすぐには使用できない場合があります。* 1 つの Automation アカウントで、特定のテナントのすべてのリージョンおよびサブスクリプションにわたってリソースを管理できます。 完了したら、 **[作成]** をクリックして、Automation アカウントの展開を開始します。
 
     ![このページに Automation アカウントに関する情報を入力します](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
@@ -61,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[ジョブの状態]** が "**実行中**" に変わったら、 **[出力]** または **[すべてのログ]** をクリックして Runbook ジョブの出力を確認します。 このチュートリアル Runbook では、Azure リソースの一覧が出力されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイックスタートでは、Automation アカウントを展開し、Runbook ジョブを開始し、ジョブ結果を表示しました。 Azure Automation の詳細については、最初の Runbook を作成するクイックスタートに進みます。
 

@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: d3fecd54e36c8a3dd43c88f5aa4e4233057c3f91
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9764c4bc794eb8d133270b762fa2bca30a056fea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459630"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>チュートリアル:SSMS を使用して Azure SQL Database 内の単一データベースでリレーショナル データベースを設計する
 
@@ -48,27 +48,27 @@ Azure SQL データベースは、Microsoft Cloud (Azure) のリレーショナ�
 
 ## <a name="create-a-blank-single-database"></a>空の単一データベースを作成する
 
-Azure SQL Database の単一データベースは、定義済みの一連のコンピューティング リソースとストレージ リソースを使用して作成されます。 データベースは [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内に作成され、[データベース サーバー](sql-database-servers.md)を使用して管理されます。
+Azure SQL Database の単一データベースは、定義済みの一連のコンピューティング リソースとストレージ リソースを使用して作成されます。 データベースは [Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成され、[データベース サーバー](sql-database-servers.md)を使用して管理されます。
 
 空の単一データベースを作成するには、次の手順に従います。
 
-1. Azure portal メニューまたは **[ホーム]** ページから、 **[リソースの作成]** を選択します。
+1. Azure portal メニュー上または **[ホーム]** ページから **[リソースの作成]** を選択します。
 2. **[新規]** ページで、[Azure Marketplace] セクションで **[データベース]** を、 **[おすすめ]** セクションで **[SQL Database]** をクリックします。
 
    ![空のデータベースを作成](./media/sql-database-design-first-database/create-empty-database.png)
 
 3. 前の画像で示されているように、 **[SQL Database]** のフォームに次の情報を入力します。
 
-    | 設定       | 推奨値 | 説明 |
+    | 設定       | 推奨値 | [説明] |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **データベース名** | *yourDatabase* | 有効なデータベース名については、「[データベース識別子](/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
     | **サブスクリプション** | *yourSubscription*  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
     | **リソース グループ** | *yourResourceGroup* | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
-    | **[ソースの選択]** | 空のデータベース | 空のデータベースを作成するように指定します。 |
+    | **ソースの選択** | 空のデータベース | 空のデータベースを作成するように指定します。 |
 
 4. **[サーバー]** をクリックして既存のデータベース サーバーを使用するか、新しいデータベース サーバーを作成して構成します。 既存のサーバーを選択するか、 **[新しいサーバーの作成]** をクリックして **[新しいサーバー]** フォームに次の情報を入力します。
 
-    | 設定       | 推奨値 | 説明 |
+    | 設定       | 推奨値 | [説明] |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[データベース識別子](/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
@@ -88,7 +88,7 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
 
 9. ツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
 
-   ![通知](./media/sql-database-design-first-database/notification.png)
+   ![通知 (notification)](./media/sql-database-design-first-database/notification.png)
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>サーバーレベルの IP ファイアウォール規則を作成する
 
@@ -111,7 +111,7 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 
 1. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスを新しい IP ファイアウォール規則に追加します。 IP ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-1. **[Save]** をクリックします。 SQL Database サーバー上のポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルの IP ファイアウォール規則が作成されます。
+1. **[保存]** をクリックします。 SQL Database サーバー上のポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルの IP ファイアウォール規則が作成されます。
 
 1. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
 
@@ -120,19 +120,19 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 > [!IMPORTANT]
 > 既定では、すべての Azure サービスで、SQL Database IP ファイアウォール経由のアクセスが有効になります。 すべての Azure サービスに対して無効にするには、このページの **[オフ]** をクリックします。
 
-## <a name="connect-to-the-database"></a>データベースへの接続
+## <a name="connect-to-the-database"></a>データベースに接続する
 
 [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) を使用して、単一データベースへの接続を確立します。
 
 1. SQL Server Management Studio を開きます。
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | 設定       | 推奨値 | 説明 |
+   | 設定       | 推奨値 | [説明] |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **サーバーの種類** | データベース エンジン | この値は必須です。 |
    | **サーバー名** | 完全修飾サーバー名 | たとえば、*yourserver.database.windows.net* などです。 |
    | **認証** | SQL Server 認証 | このチュートリアルで構成した認証の種類は "SQL 認証" のみです。 |
-   | **ログイン** | サーバー管理者アカウント | サーバーの作成時に指定したアカウントです。 |
+   | **Login** | サーバー管理者アカウント | サーバーの作成時に指定したアカウントです。 |
    | **パスワード** | サーバー管理者アカウントのパスワード | お客様がサーバーを作成したときに指定したパスワードです。 |
 
    ![[サーバーに接続]](./media/sql-database-design-first-database/connect.png)
@@ -238,7 +238,7 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 
 これで、先ほど作成したテーブルにサンプル データが読み込まれました。
 
-## <a name="query-data"></a>データのクエリを実行する
+## <a name="query-data"></a>クエリ データ
 
 データベース テーブルから情報を取得するには、次のクエリを実行します。 SQL クエリの記述の詳細は、[SQL クエリの記述](https://technet.microsoft.com/library/bb264565.aspx)に関するページを参照してください。 最初のクエリでは 4 つのテーブルをすべて結合し、"Dominick Pope" の指導を受けた生徒のうち、成績が 75% を超えている生徒を検索します。 次のクエリでは 4 つのテーブルをすべて結合し、"Noe Coleman" がこれまでに登録したコースを検索します。
 
@@ -268,9 +268,9 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
        AND person.LastName = 'Coleman'
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、多数の基本的なデータベース タスクについて学習しました。 以下の方法について学習しました。
+このチュートリアルでは、多数の基本的なデータベース タスクについて学習しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > - 単一データベースを作成する

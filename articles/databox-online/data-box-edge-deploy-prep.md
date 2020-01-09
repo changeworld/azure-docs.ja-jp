@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 364ceabc3c9e7a577bd126b81bcd5256d947bbe3
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: d9778544fd9e20dc3244a37c644117d1cd505a96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438664"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-edge"></a>チュートリアル:Edge のデプロイを準備する  
 
@@ -30,7 +30,7 @@ ms.locfileid: "66476781"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-### <a name="get-started"></a>作業開始
+### <a name="get-started"></a>はじめに
 
 Edge をデプロイするには、以下の順序どおりにチュートリアルを参照してください。
 
@@ -105,14 +105,14 @@ Edge リソースを作成するには、Azure portal で次の手順を実行�
 
 3. **[基本]** タブで、次の**プロジェクト情報**を入力または選択します。
     
-    |Setting  |値  |
+    |設定  |値  |
     |---------|---------|
     |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
-    |リソース グループ  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/resource-group-overview.md)をご覧ください。     |
+    |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
 4. 次の**インスタンス情報**を入力または選択します。
 
-    |Setting  |値  |
+    |設定  |値  |
     |---------|---------|
     |Name   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |
     |リージョン     |このリリースでは、リソースのデプロイ先として、米国東部、東南アジア、西ヨーロッパを選択できます。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
@@ -158,7 +158,7 @@ Edge リソースが起動して実行中になったら、アクティブ化キ
 > - アクティブ化キーは生成後 3 日間で有効期限が切れます。
 > - キーの有効期限が切れた場合は、新しいキーを生成してください。 古いキーは無効です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Edge に関する以下のトピックについて説明しました。
 

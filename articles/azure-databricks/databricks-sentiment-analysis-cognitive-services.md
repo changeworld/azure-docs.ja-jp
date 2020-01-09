@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 13afdf4d6c45927c60e8de9fd228f70b7c0a3c68
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: ff16458bb853323181ad8006e378a061572db463
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411129"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用した、ストリーミング データに対する感情分析
 
@@ -57,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall) にサインインします。
+[Azure portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall) にサインインする
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
@@ -73,13 +73,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     次の値を指定します。
 
-    |プロパティ  |説明  |
+    |プロパティ  |[説明]  |
     |---------|---------|
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
-    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
-    |**場所**     | **[米国東部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/?WT.mc_id=sparkeventhubs-docs-alehall)」をご覧ください。        |
-    |**価格レベル**     |  **Standard** と **Premium** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall)を参照してください。       |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/management/overview.md)に関するページをご覧ください。 |
+    |**Location**     | **[米国東部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/?WT.mc_id=sparkeventhubs-docs-alehall)」をご覧ください。        |
+    |**Pricing Tier**     |  **Standard** と **Premium** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall)を参照してください。       |
 
     **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、 **[作成]** を選択します。
 
@@ -160,7 +160,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 このチュートリアルでは、[Azure Cognitive Services Text Analytics API](../cognitive-services/text-analytics/overview.md) を使用して、ツイートのストリームに対して、ほぼリアルタイムで感情分析を実行します。 API を使用する前に、Azure 上で Azure Cognitive Services アカウントを作成し、Text Analytics API を使用するためのアクセス キーを取得する必要があります。
 
-1. [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall) にサインインします。
+1. [Azure portal](https://portal.azure.com/?WT.mc_id=sparkeventhubs-docs-alehall) にサインインする
 
 2. **[+ リソースの作成]** を選択します。
 
@@ -616,7 +616,7 @@ streamingDataFrame.writeStream.outputMode("append").format("console").option("tr
 
 これで完了です。 Azure Databricks を使用して、Azure Event Hubs にデータをストリーム配信し、Event Hubs コネクタによってデータ ストリームを読み取り、ストリーミング データに対し、ほぼリアルタイムで感情分析を実行することができました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルの実行が完了したら、クラスターを終了できます。 そのためには、Azure Databricks ワークスペースの左側のウィンドウで、 **[クラスター]** を選択します。 終了するクラスターで、 **[アクション]** 列の下にある省略記号をポイントし、 **[終了]** アイコンを選択します。
 
@@ -624,8 +624,8 @@ streamingDataFrame.writeStream.outputMode("append").format("console").option("tr
 
 クラスター作成時に **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 
-## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure Databricks を使用して、データを Azure Event Hubs にストリーム配信し、Event Hubs からストリーミング データをリアルタイムで読み取る方法について説明しました。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、Azure Databricks を使用して、データを Azure Event Hubs にストリーム配信し、Event Hubs からストリーミング データをリアルタイムで読み取る方法について説明しました。 以下の方法を学習しました。
 > [!div class="checklist"]
 > * Azure Databricks ワークスペースを作成する
 > * Azure Databricks で Spark クラスターを作成する

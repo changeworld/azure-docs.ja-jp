@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 428b42e62f44d182de109740359544135561e54b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fdb4b7c370d5edadf3e0e5bc0d1ae548da6bcaa9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441489"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438658"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway のデプロイを準備する
 
@@ -29,7 +29,7 @@ ms.locfileid: "67441489"
 > * 仮想デバイスのイメージのダウンロード
 > * アクティブ化キーの取得
 
-## <a name="get-started"></a>作業開始
+## <a name="get-started"></a>はじめに
 
 Data Box Gateway をデプロイするには、以下の順序どおりにチュートリアルを参照してください。
 
@@ -100,14 +100,14 @@ Data Box Gateway リソースを作成するには、Azure portal で次の手�
 
 4. **[基本]** タブで、次の**プロジェクト情報**を入力または選択します。
     
-    |Setting  |値  |
+    |設定  |値  |
     |---------|---------|
     |サブスクリプション    |事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
-    |リソース グループ  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/resource-group-overview.md)をご覧ください。     |
+    |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
 5. 次の**インスタンス情報**を入力または選択します。
 
-    |Setting  |値  |
+    |設定  |値  |
     |---------|---------|
     |Name   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 - 50 文字で、英字、数字、ハイフンを使用します。<br> 名前の最初と最後には、英字か数字を使用します。        |   
     |リージョン     |このリリースでは、リソースのデプロイ先として、米国東部、東南アジア、西ヨーロッパを選択できます。 Azure Government の場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。 <br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
@@ -163,7 +163,7 @@ Data Box Gateway リソースが起動して稼働中になったら、アクテ
 > - アクティブ化キーは生成後 3 日間で有効期限が切れます。
 > - キーの有効期限が切れた場合は、新しいキーを生成してください。 古いキーは無効です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Data Box Gateway に関する次のようなトピックについて説明しました。
 
@@ -177,7 +177,7 @@ Data Box Gateway リソースが起動して稼働中になったら、アクテ
 > [!div class="nextstepaction"]
 > [Hyper-V で Data Box Gateway をプロビジョニングする](./data-box-gateway-deploy-provision-hyperv.md)
 
-または
+OR
 
 > [!div class="nextstepaction"]
 > [VMware で Data Box Gateway をプロビジョニングする](./data-box-gateway-deploy-provision-vmware.md)

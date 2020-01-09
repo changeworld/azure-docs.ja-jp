@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 12/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b3b7ea34d48c37a4e07ab073e611d5a60399a9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c8a8f3895f41ac987b934b86f8d646b281c37c93
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706917"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561986"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ServiceNow の統合
 
@@ -192,7 +191,7 @@ ServiceNow で Azure AD SSO を構成してテストするには、次の構成�
 
      ![[Activate/Upgrade]\(アクティブ化/アップグレード\) が強調表示されたプラグインの右クリック メニューのスクリーンショット](./media/servicenow-tutorial/tutorial_activate.png "プラグインのアクティブ化")
 
-    d. **[アクティブ化]** を選択します。
+    d. **[アクティブ化]** を選びます。
 
      ![[Activate]\(アクティブ化\) が強調表示された [Activate Plugin]\(プラグインのアクティブ化\) ダイアログ ボックスのスクリーンショット](./media/servicenow-tutorial/tutorial_activate1.png "プラグインのアクティブ化")
 

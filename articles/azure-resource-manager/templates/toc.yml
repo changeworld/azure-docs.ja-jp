@@ -10,10 +10,6 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: テンプレートの作成 - VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: テンプレートの作成 - Visual Studio
-      href: create-visual-studio-deployment-project.md
-    - name: テンプレートの作成 - IntelliJ IDEA
-      href: create-templates-use-intellij.md
 - name: チュートリアル
   items:
     - name: 初級
@@ -101,8 +97,9 @@
   items:
     - name: テンプレートの作成
       items:
-        - name: VS Code を使用する
-          href: use-vs-code-to-create-template.md
+        - name: テンプレート ファイルの構造
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: template-syntax.md
         - name: テンプレート式を記述する
           href: template-expressions.md
         - name: パラメーター
@@ -134,6 +131,14 @@
           href: deploy-to-subscription.md
         - name: 管理グループ レベルのリソース
           href: deploy-to-management-group.md
+    - name: オーサリング ツールを使用する
+      items:
+        - name: VS Code
+          href: use-vs-code-to-create-template.md
+        - name: "Visual\_Studio"
+          href: create-visual-studio-deployment-project.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: テンプレートのデプロイ
       items:
         - name: デプロイ - ポータル
@@ -206,9 +211,6 @@
           href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
 - name: リファレンス
   items:
-    - name: テンプレート ファイルの構造
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: template-syntax.md
     - name: テンプレート リファレンス
       href: /azure/templates/
     - name: テンプレート関数

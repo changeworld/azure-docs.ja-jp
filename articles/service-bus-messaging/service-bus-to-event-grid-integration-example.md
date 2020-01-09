@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d3f523bbc0236536734f21870474492a61532ada
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3fb2f4a4969e8df94a60ac20c761f073b6a9d030
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719026"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462087"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>チュートリアル:Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する
 このチュートリアルでは、Azure Functions と Azure Logic Apps を使用して、Azure Event Grid 経由で受信した Azure Service Bus イベントに応答する方法について説明します。 次の手順を実行します。
@@ -50,7 +50,7 @@ Service Bus、Event Grid、Azure Functions、および Logic Apps の成果物�
 3. **MessageSender** プロジェクトに移動し、 **[Program.cs]** を選択します。
 4. Service Bus トピック名と、前の手順で取得した接続文字列を入力します。
 
-    ```CSharp
+    ```csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     const string TopicName = "YOUR TOPIC NAME";
     ```
@@ -69,7 +69,7 @@ Service Bus、Event Grid、Azure Functions、および Logic Apps の成果物�
 
 1. ツリー ビューで **[関数]** を展開し、関数を選択します。 関数のコードを次のコードに置き換えます。 
 
-    ```CSharp
+    ```csharp
     #r "Newtonsoft.Json"
     
     using System.Net;
@@ -131,7 +131,7 @@ Service Bus、Event Grid、Azure Functions、および Logic Apps の成果物�
     2. **[ランタイム バージョン]** には、 **[~1]** を選択します。 
 2. ツリー ビューで **[関数]** を展開し、関数を選択します。 関数のコードを次のコードに置き換えます。 
 
-    ```CSharp
+    ```csharp
     #r "Newtonsoft.Json"
     using System.Net;
     using Newtonsoft.Json;
@@ -288,7 +288,7 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
     4. **[トピック サブスクリプションからメッセージを取得する (ピークロック)]** を選択します。 
 
         ![Logic Apps デザイナー - メッセージの取得アクション](./media/service-bus-to-event-grid-integration-example/service-bus-get-messages-step.png)
-    5. **接続名**を入力します。 例: 「**Get messages from the topic subscription**」。そして、Service Bus 名前空間を選択します。 
+    5. **接続名**を入力します。 次に例を示します。「**Get messages from the topic subscription**」。そして、Service Bus 名前空間を選択します。 
 
         ![Logic Apps デザイナー - Service Bus 名前空間の選択](./media/service-bus-to-event-grid-integration-example/logic-apps-select-namespace.png) 
     6. **[RootManageSharedAccessKey]** を選択します。
@@ -312,7 +312,7 @@ Azure Event Grid サブスクリプションを作成するには、次の手順
 
     ![Logic Apps デザイナー - ロジック アプリの実行](./media/service-bus-to-event-grid-integration-example/logic-app-runs.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) について学習します。
 * [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) について学習します。

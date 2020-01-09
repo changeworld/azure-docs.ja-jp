@@ -7,13 +7,13 @@ services: iot-pnp
 ms.topic: tutorial
 ms.author: koichih
 author: konichi3
-ms.date: 06/21/2019
-ms.openlocfilehash: 1516a132372a81d06d82de2409c48220f27b8d87
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 12/27/2019
+ms.openlocfilehash: dc2c33659f3f3a3df0f11fcc6ab36a9fc993da43
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878733"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550164"
 ---
 # <a name="tutorial-certify-your-iot-plug-and-play-preview-device"></a>チュートリアル:IoT プラグ アンド プレイ プレビュー デバイスの認定
 
@@ -99,7 +99,7 @@ IoT プラグ アンド プレイ デバイスを認定するには、デバイ�
 1. 認定された IoT プラグ アンド プレイ デバイスをカタログに公開します。 認定されたデバイスをカタログに追加するには、ツール バーの **[Add to catalog]\(カタログに追加\)** を選択します。 **[Add to catalog]\(カタログに追加\)** がグレーで表示されている場合は、製品情報が不完全であるか、テストが失敗したことを意味します。 
 1. [CERTIFIED AND IN THE CATALOG]\(認定およびカタログへの登録済み\) リンクを選択して、デバイス カタログに公開されているデバイスを表示します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ここでは、IoT プラグ アンド プレイ デバイスの認定について学習しました。次に推奨される手順は、機能モデルの管理についてさらに学習することです。
 

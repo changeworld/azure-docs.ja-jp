@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: a42d796010368ec24cc6cfde8a704c4b7608963d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4c6b96f4b8b3a0a90c136967578bfb56c83b7e3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926622"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439482"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から SQL データベースにデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から SQL データベースにデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
@@ -77,7 +77,7 @@ ms.locfileid: "74926622"
 この手順では、データ ファクトリを作成するほか、Data Factory UI を起動してそのデータ ファクトリにパイプラインを作成します。 
 
 1. **Microsoft Edge** または **Google Chrome** を開きます。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[データ ファクトリ]** を選択します。 
+2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。 
   
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "74926622"
 
     b. **[新規作成]** を選択し、リソース グループの名前を入力します。 
          
-    リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。 
+    リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。 
 6. **[バージョン]** で、 **[V2]** を選択します。
 7. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
 8. **作成** を選択します。 
@@ -167,7 +167,7 @@ ms.locfileid: "74926622"
     
     ![新しいリンクされたサービスの保存](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. **[プロパティの設定]** ダイアログ ボックスに自動的に移動します。 **[テーブル]** で **[dbo].[emp]** を選択します。 続けて、 **[完了]** を選択します。
+1. **[プロパティの設定]** ダイアログ ボックスに自動的に移動します。 **[テーブル]** で **[dbo].[emp]** を選択します。 **[完了]** を選択します。
 
 1. パイプラインがあるタブに移動し、 **[Sink Dataset]\(シンク データセット\)** で **OutputSqlDataset** が選択されていることを確認します。
 
@@ -249,8 +249,8 @@ Data Factory または独自の Azure Repos Git リポジトリにアーティ�
 
 1. 指定された終了日時まで、(各パイプライン実行について) 1 分ごとに 2 つの行が **emp** テーブルに挿入されていることを確認します。 
 
-## <a name="next-steps"></a>次の手順
-このサンプルのパイプラインは、Blob Storage 内のある場所から別の場所にデータをコピーします。 以下の方法について学習しました。 
+## <a name="next-steps"></a>次のステップ
+このサンプルのパイプラインは、Blob Storage 内のある場所から別の場所にデータをコピーします。 以下の方法を学習しました。 
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。

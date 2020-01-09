@@ -11,23 +11,23 @@ metadata:
   author: tfitzmac
   ms.author: tomfitz
   ms.date: 12/19/2019
-  ms.openlocfilehash: 2910576517be35652d8e1ed1e82687a56a10467e
-  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.openlocfilehash: d094dce17f9f79b37bc5a226d756713f6e57be6a
+  ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/03/2020
-  ms.locfileid: "75642474"
+  ms.lasthandoff: 01/06/2020
+  ms.locfileid: "75680649"
 highlightedContent:
   items:
+  - title: Azure Resource Manager とは
+    itemType: overview
+    url: management/overview.md
   - title: テンプレートとは
     itemType: overview
     url: templates/overview.md
   - title: 最初のテンプレートを作成する
     itemType: tutorial
     url: templates/template-tutorial-create-first-template.md
-  - title: Azure Resource Manager とは
-    itemType: overview
-    url: management/overview.md
 conceptualContent:
   items:
   - title: Resource Manager テンプレートのデプロイ
@@ -40,10 +40,13 @@ conceptualContent:
       text: 初心者向けチュートリアル シリーズ
     - url: templates/template-syntax.md
       itemType: reference
-      text: テンプレート ファイルの構造
+      text: テンプレート構文
     - url: templates/template-functions.md
       itemType: reference
       text: テンプレート関数
+    - url: /azure/templates/
+      itemType: reference
+      text: テンプレート リファレンス
     - url: templates/deploy-powershell.md
       itemType: how-to-guide
       text: 配置
@@ -70,6 +73,9 @@ conceptualContent:
     - url: management/resource-providers-and-types.md
       itemType: concept
       text: リソース プロバイダーと種類
+    - url: management/azure-subscription-service-limits.md
+      itemType: concept
+      text: サブスクリプションとサービスの制限
     footerLink:
       url: management/index.yml
       text: 詳細情報
@@ -80,13 +86,13 @@ conceptualContent:
       text: 概要
     - url: managed-applications/publish-service-catalog-app.md
       itemType: tutorial
-      text: サービス カタログ アプリを発行する
+      text: アプリをサービス カタログに発行する
     - url: managed-applications/create-uidefinition-overview.md
       itemType: how-to-guide
-      text: UI 定義を作成する
+      text: アプリを作成するためのポータル ウィンドウを定義する
     - url: managed-applications/publish-marketplace-app.md
       itemType: tutorial
-      text: マーケットプレースに追加する
+      text: アプリを Marketplace に追加する
     footerLink:
       url: managed-applications/index.yml
       text: 詳細情報

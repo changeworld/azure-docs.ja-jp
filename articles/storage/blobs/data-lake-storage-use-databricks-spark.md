@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: bbe936fd572a8e23fb6e7c5da4a4bffef1c8bf7e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e26ae4d384b1718b1cdb12abbda82aad22afde4d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327531"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462580"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>チュートリアル:Azure Data Lake Storage Gen2、Azure Databricks、および Spark
 
@@ -38,7 +38,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * AzCopy v10 をインストールします。 [AzCopy v10 を使用したデータ転送](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
 
-* サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+* サービス プリンシパルを作成する。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
 
   この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
@@ -71,11 +71,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 2. **[Azure Databricks サービス]** で次の値を指定して、Databricks サービスを作成します。
 
-    |プロパティ  |説明  |
+    |プロパティ  |[説明]  |
     |---------|---------|
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します。  |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
-    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/management/overview.md)に関するページをご覧ください。 |
     |**Location**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。       |
     |**Pricing Tier**     |  **[Standard]** を選択します。     |
 
@@ -196,7 +196,7 @@ flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
 print("Done")
 ```
 
-## <a name="explore-data"></a>データを調査する
+## <a name="explore-data"></a>データの探索
 
 AzCopy 経由でアップロードされた CSV ファイルの一覧を取得するために、次のコードを新しいセルに貼り付けます。
 
@@ -216,7 +216,7 @@ dbutils.fs.ls("/mnt/flightdata/parquet/flights")
 
 上記のコード サンプルでは、Data Lake Storage Gen2 対応のストレージ アカウントに格納されたデータを使って HDFS の階層的な性質を調査しました。
 
-## <a name="query-the-data"></a>データを照会する
+## <a name="query-the-data"></a>データにクエリを実行する
 
 これで、ストレージ アカウントにアップロードしたデータの照会を開始できます。 次のコード ブロックをそれぞれ **[Cmd 1]** に入力し、**Cmd を押しながら Enter** キーを押して Python スクリプトを実行します。
 
@@ -283,11 +283,11 @@ out1 = spark.sql(
 print('Airlines that fly to/from Texas: ', out1.show(100, False))
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループおよび関連するすべてのリソースは、不要になったら削除します。 これを行うには、ストレージ アカウントのリソース グループを選択し、 **[削除]** を選択してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure HDInsight の Apache Hive を使用してデータの抽出、変換、読み込みを行う](data-lake-storage-tutorial-extract-transform-load-hive.md)

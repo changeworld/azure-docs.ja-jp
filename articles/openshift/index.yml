@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure Red Hat OpenShift サービス
 metadata:
-  document_id: null
   title: Azure Red Hat OpenShift サービスのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   meta.description: Microsoft Azure Red Hat OpenShift allows you to quickly deploy a production ready Red Hat OpenShift cluster in Azure. Learn how to use Azure Red Hat OpenShift with these tutorials and how-to guides.
   services: container-service
@@ -16,7 +15,7 @@ metadata:
 abstract:
   description: Azure Red Hat OpenShift では、Red Hat と Microsoft によってサポートされる、Azure 上のシングルテナントの高可用性 Kubernetes クラスターを提供します。
 sections:
-  - title: ステップバイステップのチュートリアル
+  - title: ステップバイステップ チュートリアル
     items:
       - type: paragraph
         text: Azure Red Hat OpenShift クラスターを作成および管理する方法について説明します。

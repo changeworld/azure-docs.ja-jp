@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.openlocfilehash: 11e5aac559370c478b774f2a503bde590dfeedf4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e0805a9827474e4f52a5a10e019f7dedd1ab45fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707453"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411047"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>チュートリアル:Azure Databricks を使用してデータの抽出、変換、読み込みを行う
 
@@ -55,7 +55,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * Azure Data Lake Storage Gen2 ストレージ アカウントを作成します。 「[クイック スタート:Azure Data Lake Storage Gen2 ストレージ アカウントを作成する](../storage/blobs/data-lake-storage-quickstart-create-account.md)」を参照してください。
 
-* サービス プリンシパルを作成する。 「[方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
+* サービス プリンシパルを作成する。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)」のガイダンスに従って、サービス プリンシパルを作成します。
 
    この記事の手順を実行する際に、いくつかの特定の作業を行う必要があります。
 
@@ -65,7 +65,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
    * 記事の「[サインインするための値を取得する](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)」セクションの手順を行うときは、テナント ID、アプリ ID、およびパスワードの値をテキスト ファイルに貼り付けてください。 これらはすぐに必要になります。
 
-* [Azure Portal](https://portal.azure.com/) にサインインします。
+* [Azure portal](https://portal.azure.com/) にサインインする
 
 ## <a name="gather-the-information-that-you-need"></a>必要な情報を収集する
 
@@ -101,11 +101,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 2. **[Azure Databricks サービス]** で次の値を指定して、Databricks サービスを作成します。
 
-    |プロパティ  |説明  |
+    |プロパティ  |[説明]  |
     |---------|---------|
     |**ワークスペース名**     | Databricks ワークスペースの名前を指定します。        |
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
-    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
+    |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/management/overview.md)に関するページをご覧ください。 |
     |**Location**     | **[米国西部 2]** を選択します。  使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。      |
     |**Pricing Tier**     |  **[Standard]** を選択します。     |
 
@@ -380,7 +380,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     ![サンプル テーブルの内容を確認する](./media/databricks-extract-load-sql-data-warehouse/verify-sample-table-content.png "サンプル テーブルの内容を確認する")
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルが完了したら、クラスターを終了できます。 Azure Databricks ワークスペースで、左側の **[クラスター]** を選択します。 クラスターが終了するように、 **[アクション]** の下にある省略記号 (...) をポイントし、**終了**アイコンを選択します。
 
@@ -388,7 +388,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 クラスター作成時に **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスをオンにした場合は、手動で終了しなくても、クラスターは自動的に停止します。 このような場合、クラスターは、非アクティブな状態が一定の時間続くと自動的に停止します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

@@ -10,12 +10,12 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c37d778fe9ad7d21943ed92452fae34b4b8771e7
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 8f937bcfb1bd03c970f21263c1cd09a1c3baba0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429419"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Python IoT Edge モジュールを開発およびデプロイする
 
@@ -33,9 +33,6 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 このチュートリアルで作成する IoT Edge モジュールは、デバイスによって生成される温度データをフィルター処理します。 これは、指定されたしきい値を温度が上回っているときにのみ、メッセージを上流に送信します。 エッジでのこの種の分析は、クラウドに送信および保存されるデータ量を削減するうえで役に立ちます。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-> [!NOTE]
-> 以下のガイドは V1 Python SDK 向けに書かれたものですが、その後 V1 Python SDK は非推奨となりました。 現在、このガイドを V2 に対応させるための取り組みが進んでいます。 最新情報はこのページでお伝えしますのでしばらくお待ちください。
 
 ## <a name="solution-scope"></a>ソリューション スコープ
 
@@ -80,7 +77,7 @@ VS Code を使用して、ソリューションのベースにする Python ソ�
 
 1. コマンド パレットで、**Azure: Sign in** コマンドを入力して実行し、手順に従って Azure アカウントにサインインします。 既にサインインしている場合、この手順は省略できます。
 
-1. コマンド パレットで、**Azure IoT Edge: New IoT Edge solution** コマンドを入力して実行します。 プロンプトに従って、次の情報を指定してソリューションを作成します。
+1. コマンド パレットで、**Azure IoT Edge:New IoT Edge solution** コマンドを入力して実行します。 プロンプトに従って、次の情報を指定してソリューションを作成します。
 
    | フィールド | 値 |
    | ----- | ----- |
@@ -212,7 +209,7 @@ VS Code を使用して、ソリューションのベースにする Python ソ�
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   `--password-stdin` の使用を推奨するセキュリティ警告が表示される場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスを参照してください。
+   `--password-stdin` の使用を推奨するセキュリティ警告が表示される場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスをご覧ください。
 
 2. VS Code エクスプローラーで、**deployment.template.json** ファイルを右クリックし、 **[Build and Push IoT Edge solution]\(IoT Edge ソリューションのビルドとプッシュ\)** を選択します。
 
@@ -221,7 +218,7 @@ VS Code を使用して、ソリューションのベースにする Python ソ�
 
 ## <a name="deploy-modules-to-device"></a>モジュールをデバイスにデプロイする
 
-IoT Edge デバイスにモジュール プロジェクトをデプロイするには、Visual Studio Code エクスプローラーと Azure IoT Tools 拡張機能を使用します。 シナリオ用の配置マニフェストである **deployment.json** ファイルは、config フォルダーに既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
+Visual Studio Code エクスプローラーと Azure IoT Tools 拡張機能を使用して、モジュール プロジェクトを自分の IoT Edge デバイスにデプロイします。 シナリオ用の配置マニフェストである **deployment.json** ファイルは、config フォルダーに既に用意されています。 ここで行う必要があるのは、デプロイを受け取るデバイスの選択だけです。
 
 お使いの IoT Edge デバイスが稼働していることを確認します。
 
@@ -241,7 +238,7 @@ IoT Edge デバイスのステータスは、Visual Studio Code エクスプロ�
 
 1. Visual Studio Code のエクスプローラーで、IoT Edge デバイスの名前を右クリックし、 **[Start Monitoring Built-in Event Endpoint]\(組み込みイベント エンドポイントの監視を開始する\)** を選択します。
 
-2. 自分の IoT ハブに到着するメッセージを表示します。 IoT Edge デバイスは、新しいデプロイを受け取ってすべてのモジュールを開始する必要があるため、メッセージの到着にはしばらく時間がかかる場合があります。 次に、PythonModule コードに加えられた変更により、マシンの温度が 25 度に達するまで待機してから、メッセージが送信されます。 また、その温度しきい値に達したすべてのメッセージにメッセージ型 **Alert** も追加されます。 
+2. 自分の IoT ハブに到着するメッセージを表示します。 IoT Edge デバイスは、新しいデプロイを受け取って、すべてのモジュールを開始する必要があるため、メッセージの到着にはしばらく時間がかかる場合があります。 次に、PythonModule コードに加えられた変更により、マシンの温度が 25 度に達するまで待機してから、メッセージが送信されます。 また、その温度しきい値に達するどのメッセージにも、メッセージ型 **Alert** が追加されます。 
 
 ## <a name="edit-the-module-twin"></a>モジュール ツインを編集する
 
@@ -259,7 +256,7 @@ IoT Edge デバイスのステータスは、Visual Studio Code エクスプロ�
 
 6. 到着する device-to-cloud メッセージを監視します。 新しい温度しきい値に達するまでメッセージが停止するのを確認できるはずです。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする 
 
 次の推奨記事に進む場合は、作成したリソースおよび構成を維持して、再利用することができます。 また、同じ IoT Edge デバイスをテスト デバイスとして使用し続けることもできます。 
 
@@ -267,7 +264,7 @@ IoT Edge デバイスのステータスは、Visual Studio Code エクスプロ�
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、IoT Edge デバイスによって生成された生データをフィルター処理するコードを含む IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[独自の IoT Edge モジュールの開発](module-development.md)または [Visual Studio Code を使用してモジュールを開発](how-to-vs-code-develop-module.md)する方法の詳細をご確認ください。 シミュレート済み温度モジュールを含む IoT Edge モジュールの例については、[IoT Edge モジュールのサンプル](https://github.com/Azure/iotedge/tree/master/edge-modules)および [IoT Python SDK のサンプル](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios)を参照してください。 
 

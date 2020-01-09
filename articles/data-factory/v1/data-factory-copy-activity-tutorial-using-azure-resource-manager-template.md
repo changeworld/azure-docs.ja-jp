@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a4f1c2d128e41e13a6e57732e8f97ff4c250d0a1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: dd559a8dd0bd59b50f4a3fa663f57874d948bf71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682905"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438856"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル:Azure Resource Manager テンプレートを使用して、データをコピーする Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "73682905"
 
 このチュートリアルでは、Azure Resource Manager テンプレートを使用して Azure データ ファクトリを作成する方法を説明します。 このチュートリアルのデータ パイプラインでは、ソース データ ストアからターゲット データ ストアにデータをコピーします。 入力データを変換して出力データを生成するのではありません。 Azure Data Factory を使用してデータを変換する方法のチュートリアルについては、[Hadoop クラスターを使用してデータを変換するパイプラインを作成する方法のチュートリアル](data-factory-build-your-first-pipeline.md)を参照してください。
 
-このチュートリアルでは、1 つのアクティビティ (コピー アクティビティ) が含まれたパイプラインを作成します。 コピー アクティビティは、サポートされているデータ ストアからサポートされているシンク データ ストアにデータをコピーします。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。
+このチュートリアルでは、1 つのアクティビティ (コピー アクティビティという 1 つのアクティビティしかありません。 コピー アクティビティは、サポートされているデータ ストアからサポートされているシンク データ ストアにデータをコピーします。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](data-factory-data-movement-activities.md#supported-data-stores-and-formats)に関するセクションを参照してください。 このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。 コピー アクティビティの詳細については、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事を参照してください。
 
 1 つのパイプラインには複数のアクティビティを含めることができます。 また、1 つのアクティビティの出力データセットを別のアクティビティの入力データセットとして指定することで、2 つのアクティビティを連鎖させる (アクティビティを連続的に実行する) ことができます。 詳細については、「[パイプライン内の複数アクティビティ](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)」を参照してください。 
 
@@ -49,12 +49,12 @@ ms.locfileid: "73682905"
 
 * [チュートリアルの概要と前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に目を通し、**前提条件**の手順を完了します。
 * 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。 このチュートリアルでは、PowerShell を使用して Data Factory エンティティをデプロイします。 
-* (省略可能)「[Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)」を参照して、Azure Resource Manager テンプレートについて学びます。
+* (省略可能)「[Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)」を参照して、Azure Resource Manager テンプレートについて学びます。
 
 ## <a name="in-this-tutorial"></a>このチュートリアルの内容
 このチュートリアルでは、次の Data Factory エンティティを含むデータ ファクトリを作成します。
 
-| エンティティ | 説明 |
+| Entity | [説明] |
 | --- | --- |
 | Azure Storage のリンクされたサービス |Azure Storage アカウントをデータ ファクトリにリンクします。 このチュートリアルのコピー アクティビティでは、Azure Storage がソース データ ストアであり、Azure SQL データベースがシンク データ ストアです。 コピー アクティビティの入力データを格納するストレージ アカウントを指定します。 |
 | Azure SQL Database のリンクされたサービス |Azure SQL データベースをデータ ファクトリにリンクします。 コピー アクティビティの出力データを保持する Azure SQL データベースを指定します。 |
@@ -390,7 +390,7 @@ JSON テンプレートには、次の Data Factory エンティティが定義�
 5. [コピー アクティビティを含むデータ パイプライン](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
-AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、コンテナーを作成し、データをこのストレージ アカウントにアップロードしました。 このセクションで、Azure Storage アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)」をご覧ください。 
+AzureStorageLinkedService は、Azure ストレージ アカウントをデータ ファクトリにリンクします。 [前提条件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)の一部として、コンテナーを作成し、データをこのストレージ アカウントにアップロードしました。 このセクションで、Azure Storage アカウントの名前とキーを指定します。 Azure Storage のリンクされたサービスの定義に使用する JSON プロパティの詳細については、「[Azure Storage のリンクされたサービス](data-factory-azure-blob-connector.md#azure-storage-linked-service)」を参照してください。 
 
 ```json
 {
@@ -514,7 +514,7 @@ Azure Blob Storage からコピーしたデータを保持する、Azure SQL デ
 ```
 
 #### <a name="data-pipeline"></a>データ パイプライン
-Azure BLOB データセットから Azure SQL データセットにデータをコピーするパイプラインを定義します。 この例のパイプラインの定義に使用されている JSON 要素については、「[パイプライン JSON](data-factory-create-pipelines.md#pipeline-json)」をご覧ください。 
+Azure BLOB データセットから Azure SQL データセットにデータをコピーするパイプラインを定義します。 この例のパイプラインの定義に使用されている JSON 要素については、「[パイプライン JSON](data-factory-create-pipelines.md#pipeline-json)」を参照してください。 
 
 ```json
 {
@@ -590,7 +590,7 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
 
 テンプレートを再利用して、繰り返されるタスクを実行することもできます。 たとえば、1 つ以上のパイプラインを持つ多数のデータ ファクトリを作成する必要があるとします。各データ ファクトリは同じロジックを実装しますが、それぞれ異なる Storage アカウントと SQL Database アカウントを使用します。 このシナリオでは、1 つの環境 (開発、テスト、または運用) で同じテンプレートと異なるパラメーター ファイルを使用してデータ ファクトリを作成します。   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL データベースをターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]

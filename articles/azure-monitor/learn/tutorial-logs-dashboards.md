@@ -4,16 +4,16 @@ description: このチュートリアルでは、保存されているすべて�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/19/2019
 ms.custom: mvc
-ms.openlocfilehash: baa510e060a3bca46110842600262345072b1a18
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d06ead285321b780490c816dc3d902dac1b6916f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894796"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365567"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
@@ -79,7 +79,7 @@ Perf
 
 ![構成が完了したサンプル ダッシュボード](media/tutorial-logs-dashboards/log-analytics-modify-dashboard-02.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure portal でダッシュボードを作成して、ログ クエリを追加する方法について学習しました。  次のチュートリアルに進んで、ログ クエリの結果に基づいて実装できる異なる応答について学習します。  
 
 > [!div class="nextstepaction"]

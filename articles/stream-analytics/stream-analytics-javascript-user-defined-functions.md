@@ -1,7 +1,6 @@
 ---
 title: Azure Stream Analytics の JavaScript ユーザー定義関数
 description: このチュートリアルでは、JavaScript ユーザー定義関数を使用して高度なクエリ機構を実行します
-services: stream-analytics
 author: rodrigoamicrosoft
 ms.author: rodrigoa
 ms.service: stream-analytics
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: 9ddf8a2a11cb863a0016726074c5279bfde96959
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f82add78eef418e3644a5961d984708d3721a8dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990237"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426057"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>チュートリアル:Azure Stream Analytics の JavaScript ユーザー定義関数
  
@@ -105,10 +104,10 @@ Stream Analytics | JavaScript
 bigint | Number (JavaScript では最大 2^53 の精度の整数しか表現できません)
 DateTime | Date (JavaScript ではミリ秒のみサポートされています)
 double | Number
-nvarchar(MAX) | string
+nvarchar(MAX) | String
 Record | Object
 Array | Array
-NULL | Null
+NULL | [Null]
 
 
 JavaScript から Stream Analytics への変換を以下に示します。
@@ -118,7 +117,7 @@ JavaScript | Stream Analytics
 --- | ---
 Number | Bigint (値が四捨五入され、long.MinValue と long.MaxValue の間の場合。それ以外の場合は double)
 Date | DateTime
-string | nvarchar(MAX)
+String | nvarchar(MAX)
 Object | Record
 Array | Array
 Null, Undefined | NULL
@@ -155,17 +154,17 @@ FROM
     input PARTITION BY PARTITIONID
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このクイック スタートで作成したすべてのリソースを削除してください。
 
 1. Azure Portal の左側のメニューで、 **[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。  
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、単純な JavaScript ユーザー定義関数を実行する Stream Analytics ジョブを作成しました。 Stream Analytics についてさらに学習するには、以下のリアルタイム シナリオの記事に進んでください。
 

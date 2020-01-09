@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 46e0815ea341b732e20ebe7ffa9af355e1f35e87
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f9d426562f4403776e3926564857b4cdbf0d4390
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926474"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439227"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 
@@ -230,7 +230,7 @@ END
 「[Azure PowerShell のインストールおよび構成](/powershell/azure/azurerm/install-azurerm-ps)」の手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
-1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定してコマンドを実行します。 例: `"adfrg"`。 
+1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/management/overview.md)の名前を二重引用符で囲んで指定してコマンドを実行します。 たとえば `"adfrg"` です。 
    
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
@@ -272,7 +272,7 @@ END
     The specified Data Factory name 'ADFIncMultiCopyTutorialFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、共同作成者または所有者ロールのメンバーであるか、Azure サブスクリプションの管理者である必要があります。
-* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
@@ -337,7 +337,7 @@ END
     > - SQL Server への接続に使用する認証に基づいて、右側のセクションを選択します。
     > - &lt;integration runtime name> は、実際の統合ランタイムの名前に置き換えます。
     > - &lt;servername>、&lt;databasename>、&lt;username>、および &lt;password> を実際の SQL Server インスタンスの値に置き換えてからファイルを保存してください。
-    > - ユーザー アカウントまたはサーバー名にスラッシュ文字 (`\`) を使用する必要がある場合は、エスケープ文字 (`\`) を使用します。 例: `mydomain\\myuser`。
+    > - ユーザー アカウントまたはサーバー名にスラッシュ文字 (`\`) を使用する必要がある場合は、エスケープ文字 (`\`) を使用します。 たとえば `mydomain\\myuser` です。
 
 1. PowerShell で次のコマンドを実行して、C:\ADFTutorials\IncCopyMultiTableTutorial フォルダーに切り替えます。
 
@@ -795,7 +795,7 @@ END
 
 ## <a name="monitor-the-pipeline"></a>パイプラインの監視
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 
 1. **[すべてのサービス]** を選択し、キーワード "*データ ファクトリ*" で検索して、 **[データ ファクトリ]** を選択します。 
 
@@ -821,7 +821,7 @@ SQL Server Management Studio からターゲット SQL データベースに対�
 select * from customer_table
 ```
 
-**Output**
+**出力**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -839,7 +839,7 @@ PersonID    Name    LastModifytime
 select * from project_table
 ```
 
-**Output**
+**出力**
 
 ```
 ===================================
@@ -856,7 +856,7 @@ project3    2017-03-04 05:16:00.000
 select * from watermarktable
 ```
 
-**Output**
+**出力**
 
 ```
 ======================================
@@ -903,7 +903,7 @@ SQL Server Management Studio からターゲット データベースに対し�
 select * from customer_table
 ```
 
-**Output**
+**出力**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -923,7 +923,7 @@ PersonID    Name    LastModifytime
 select * from project_table
 ```
 
-**Output**
+**出力**
 
 ```
 ===================================
@@ -943,7 +943,7 @@ project_table に **NewProject** というエントリが追加されている�
 select * from watermarktable
 ```
 
-**Output**
+**出力**
 
 ```
 ======================================
@@ -955,7 +955,7 @@ project_table   2017-10-01 00:00:00.000
 
 2 つのテーブルの基準値が更新されたことがわかります。
      
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の手順を実行しました。 
 
 > [!div class="checklist"]

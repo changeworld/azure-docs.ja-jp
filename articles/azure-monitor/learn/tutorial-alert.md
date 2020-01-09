@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 370d86ae28e49bba9681c6bdc81cc05b4e12a97b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e45e6fb38296c5f3337f9edfb50cd9548ca5e210
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398441"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Azure Application Insights でアプリケーションの正常性を監視してアラートを送信する
 
@@ -69,7 +69,7 @@ Application Insights の可用性テストを使用して、世界中のさま�
 
     ![テスト結果](media/tutorial-alert/test-result-001.png)
   
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで問題が生じた場合のアラートの送信方法について学習できました。次のチュートリアルでは、ユーザーがどのようにアプリケーションを使用しているかを分析する方法を説明します。
 

@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure for Containers
 metadata:
-  document_id: null
   title: Azure for Containers - クイック スタート、チュートリアル、API リファレンス
   description: コンテナーのクイック スタート、チュートリアル、およびツールを使用して Azure でコンテナー アプリのデプロイや管理を開始します。
   keywords: Azure、Containers、Docker、API、Kubernetes
@@ -51,7 +50,7 @@ sections:
             title: Azure Container Instances でコンテナー アプリをオンデマンドで実行する
             image:
               src: /azure/media/index/containerinstances.svg
-  - title: ステップバイステップのチュートリアル
+  - title: ステップバイステップ チュートリアル
     items:
       - type: paragraph
         text: Azure サービスを使用してコンテナー アプリをデプロイ、管理、および更新する方法について説明します

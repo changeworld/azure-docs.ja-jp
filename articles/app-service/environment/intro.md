@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 35b667056698fdb2563ad9b1be9af19bcc98c1cc
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ca172e16fc13d2b8e10d0797f5b57b5b48136349
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688604"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430446"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
  
@@ -24,7 +24,7 @@ Azure App Service Environment は、App Service アプリを大規模かつ安�
 * Linux Web アプリ 
 * Docker コンテナー
 * モバイル アプリ
-* Functions
+* 関数
 
 App Service Environment (ASE) は、以下を必要とするアプリケーション ワークロードに最適です。
 
@@ -74,7 +74,7 @@ ASE と仮想ネットワークおよびオンプレミス ネットワークと
 
 ## <a name="app-service-environment-v1"></a>App Service Environment v1 ##
 
-App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 前述の情報は ASEv2 に基づいていました。 このセクションでは、ASEv1 と ASEv2 の違いについて説明します。 
+App Service Environment には、ASEv1 と ASEv2 です。 前述の情報は ASEv2 に基づいていました。 このセクションでは、ASEv1 と ASEv2 の違いについて説明します。 
 
 ASEv1 では、すべてのリソースを手動で管理する必要があります。 これには、フロントエンド、ワーカー、IP ベースの SSL に使用する IP アドレスが含まれます。 App Service プランをスケールアウトするには、そのプランをホストするワーカー プールを先にスケールアウトしておく必要があります。
 
@@ -97,7 +97,7 @@ ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 �
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

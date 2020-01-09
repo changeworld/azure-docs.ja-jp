@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure SignalR サービスのドキュメント
 metadata:
-  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
   title: ドキュメント - Azure SignalR Service
   description: サーバーレスまたはサーバー モードで、リアルタイム Web アプリを簡単に構築してスケーリングできます。 さまざまな言語やフレームワークをサポートする WebSocket に基づいています。
   services: azure-signalr

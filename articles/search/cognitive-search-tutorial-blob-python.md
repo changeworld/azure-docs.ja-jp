@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: d7b4755bb2e69c4a852901b71d917c6baa5d63ae
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: c7c4da97101ae1277474e62466d78ffbc66b1ce0
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406429"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563277"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>チュートリアル:REST および Python を使用して AI エンリッチメント パイプラインを作成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "74406429"
 > [!NOTE]
 > 処理の頻度を増やす、ドキュメントを追加する、または AI アルゴリズムを追加することによってスコープを拡大する場合は、[課金対象の Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)必要があります。 Cognitive Services の API を呼び出すとき、および Azure コグニティブ検索のドキュメント解析段階の一部として画像抽出するときに、料金が発生します。 ドキュメントからのテキストの抽出には、料金はかかりません。
 >
-> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure Cognitive Search の価格ページ](https://go.microsoft.com/fwlink/?linkid=2042400)で説明されています。
+> 組み込みスキルの実行は、既存の [Cognitive Services の従量課金制の価格](https://azure.microsoft.com/pricing/details/cognitive-services/)で課金されます。 画像抽出の価格は、[Azure コグニティブ検索の価格](https://go.microsoft.com/fwlink/?linkid=2042400)に関するページで説明されています。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -58,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure portal にサインイン](https://portal.azure.com/)し、ご使用の検索サービスの **[概要]** ページで、URL を入手します。 たとえば、エンドポイントは `https://mydemo.search.windows.net` のようになります。
 
-1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理者キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
+1. **[設定]**  >  **[キー]** で、サービスに対する完全な権限の管理キーを取得します。 管理キーをロールオーバーする必要がある場合に備えて、2 つの交換可能な管理キーがビジネス継続性のために提供されています。 オブジェクトの追加、変更、および削除の要求には、主キーまたはセカンダリ キーのどちらかを使用できます。
 
 ![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
@@ -87,7 +87,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-jupyter-notebook"></a>Jupyter Notebook の作成
 
 > [!Note]
-> この記事では、一連の Python スクリプトを使用して、データ ソース、インデックス、インデクサー、およびスキルセットを構築する方法を示します。 ノートブックの完全な例をダウンロードするには、[Azure-Search-python-samples リポジトリ](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment-Jupyter-Notebook)に移動してください。
+> この記事では、一連の Python スクリプトを使用して、データ ソース、インデックス、インデクサー、およびスキルセットを構築する方法を示します。 ノートブックの完全な例をダウンロードするには、[Azure-Search-python-samples リポジトリ](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)に移動してください。
 
 Jupyter Notebook を起動して新しい Python 3 ノートブックを作成するには、Anaconda Navigator を使用します。
 
@@ -498,9 +498,9 @@ r = requests.delete(endpoint + "/skillsets/" + skillset_name,
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-コードが成熟したら、リビルド戦略を改善することもできます。 詳細については、[インデックスをリビルドする方法](search-howto-reindex.md)に関するページをご覧ください。
+コードが成熟したら、リビルド戦略を改善することもできます。 詳細については、「[インデックスの再構成と再構築](search-howto-reindex.md)」をご覧ください。
 
-## <a name="takeaways"></a>ここまでのポイント
+## <a name="takeaways"></a>重要なポイント
 
 このチュートリアルでは、構成要素 (データ ソース、スキルセット、インデックス、およびインデクサー) の作成によってエンリッチされたインデックス作成パイプラインを作成するための、基本的な手順を示します。
 
@@ -508,11 +508,11 @@ pprint(json.dumps(r.json(), indent=1))
 
 最後に、結果をテストし、今後のイテレーションのためにシステムをリセットする方法について学習しました。 インデックスに対するクエリを発行すると、エンリッチされたインデックス作成パイプラインによって作成された出力が返されることを学習しました。 このリリースには、内部構造 (システムによって作成されるエンリッチされたドキュメント) を表示するためのメカニズムがあります。 また、インデクサーの状態を確認する方法と、パイプラインを再実行する前に削除すべきオブジェクトについても学習しました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 チュートリアルの後に最も短時間でクリーンアップする方法は、Azure Cognitive Search サービスと Azure Blob service が含まれているリソース グループを削除することです。 両方のサービスを同じグループに配置している場合は、リソース グループを削除すると、このチュートリアル用に作成したサービスと保存されたコンテンツを含めた、そのリソース グループ内のすべてのものが完全に削除されます。 Portal では、リソース グループ名は各サービスの [概要] ページに表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 カスタム スキルを使ってパイプラインをカスタマイズまたは拡張します。 カスタム スキルを作成してスキルセットに追加すると、自分で作成したテキストまたは画像分析をオンボードできます。
 

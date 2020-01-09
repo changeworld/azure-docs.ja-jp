@@ -1,8 +1,7 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: 機能
+title: '[機能]'
 metadata:
-  document_id: 36d89c48-3646-380e-34a0-ae3ac62e2641
   title: Azure SQL Database - 機能
   meta.description: Learn about the features in Azure SQL Database.
   services: sql-database

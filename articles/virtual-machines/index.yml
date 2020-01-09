@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Virtual Machines のドキュメント
 metadata:
-  document_id: na
   title: Azure 仮想マシンのドキュメント - チュートリアル、API リファレンス
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
@@ -44,7 +43,7 @@ sections:
             href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
           - image:
               src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
-            text: Azure ポータル
+            text: Azure portal
             href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
           - image:
               src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg'
@@ -63,7 +62,7 @@ sections:
             href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=/azure/virtual-machines/windows/toc.json'
           - image:
               src: 'https://docs.microsoft.com/azure/virtual-machines/windows/media/index/portal.svg'
-            text: Azure ポータル
+            text: Azure portal
             href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=/azure/virtual-machines/windows/toc.json'
           - image:
               src: 'https://docs.microsoft.com/azure/virtual-machines/windows/media/index/cli.svg'

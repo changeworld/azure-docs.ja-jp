@@ -2,7 +2,6 @@
 documentType: LandingData
 title: App Service のドキュメント
 metadata:
-  document_id: 6c8db72a-cdb7-8fb7-ed57-ed75afcca4d0
   title: Azure App Service のドキュメント
   meta.description: 'Host websites, web apps, RESTful APIs, and mobile back ends in Azure App Service. Find quickstarts, tutorials, and samples to help you succeed with App Service.'
   ms.topic: landing-page
@@ -91,7 +90,7 @@ sections:
               src: media/index/onedrive.svg
             text: OneDrive の同期
             href: deploy-content-sync.md
-  - title: ステップバイステップのチュートリアル
+  - title: ステップバイステップ チュートリアル
     items:
       - type: paragraph
         text: Azure でセキュリティ保護された Web アプリケーションをデプロイ、管理、監視する方法について説明します
@@ -100,7 +99,7 @@ sections:
         items:
           - html: <a href="/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase">.NET と Azure SQL DB</a> または <a href="/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app">Node.js と MongoDB</a> を使用してアプリケーションを作成する
           - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">既存のカスタム ドメインをアプリケーションにマップする</a>
-          - html: <a href="/azure/app-service/configure-ssl-certificate">Azure App Service で SSL バインディングを使用してカスタム DNS 名のセキュリティを確保する</a>
+          - html: <a href="/azure/app-service/configure-ssl-certificate">Azure App Service で SSL バインドを使用してカスタム DNS 名をセキュリティで保護する</a>
           - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">CDN をアプリケーションに追加する</a>
   - title: Microsoft Learn でスキルを身に付ける
     items:

@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: f90933dea5421d68116d29df6b9429d298bb0d88
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ab8df188027ada2119334e058ffc5a10cca23914
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925078"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439161"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 
@@ -91,7 +91,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```powershell
     $selfHostedIntegrationRuntimeName = "MySelfHostedIR09142017" 
     ```
-2. **PowerShell**を起動します。 Azure PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+2. **PowerShell**を起動します。 Azure PowerShell は、このクイックスタートが終わるまで開いたままにしておいてください。 Azure PowerShell を閉じて再度開いた場合は、これらのコマンドをもう一度実行する必要があります。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     次のコマンドを実行して、Azure Portal へのサインインに使用するユーザー名とパスワードを入力します。
         
@@ -174,10 +174,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=<storageAccountName>;AccountKey=<storageAccountKey>"
       },
       "connectVia": {
         "referenceName": "MySelfhostedIR",
@@ -221,7 +218,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 リンクされたサービスの定義で、以下のプロパティの値を更新します。
 
 - **userName**。 クラスターの作成時に指定したクラスター ログイン ユーザーの名前。 
-- **password**。 ユーザーのパスワード。
+- **password**。 ユーザーのパスワードです。
 - **clusterUri**。 HDInsight クラスターの URL を次の形式で指定します: `https://<clustername>.azurehdinsight.net`。  この記事では、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、`https://clustername.azurehdinsight.net` でクラスターに接続できます。 このアドレスではパブリック ゲートウェイが使用されていますが、ネットワーク セキュリティ グループ (NSG) またはユーザー定義ルート (UDR) を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。 Data Factory が Azure Virtual Network の HDInsight クラスターにジョブを送信するには、HDInsight によって使用されるゲートウェイのプライベート IP アドレスに URL を解決できるように、Azure Virtual Network を構成する必要があります。
 
   1. Azure Portal で、HDInsight がある仮想ネットワークを開きます。 名前が `nic-gateway-0` で始まるネットワーク インターフェイスを開きます。 そのプライベート IP アドレスをメモしておきます。 たとえば、10.6.0.15 です。 
@@ -280,8 +277,8 @@ PowerShell で、JSON ファイルを作成したフォルダーに移動し、�
 
 以下の点に注意してください。
 
-- **scriptPath** は、MyStorageLinkedService に使用した Azure ストレージ アカウントの Hive スクリプトへのパスを示します。 パスでは大文字と小文字が区別されます。
-- **Output** は、Hive スクリプトで使用される引数です。 `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` の形式で、Azure ストレージ上の既存のフォルダーを指定します。 パスでは大文字と小文字が区別されます。 
+- **scriptPath** は、MyStorageLinkedService に使用した Azure ストレージ アカウントの Hive スクリプトへのパスを示します。 パスの大文字と小文字は区別されます。
+- **Output** は、Hive スクリプトで使用される引数です。 `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` の形式で、Azure ストレージ上の既存のフォルダーを指定します。 パスの大文字と小文字は区別されます。 
 
 JSON ファイルを作成したフォルダーに移動し、次のコマンドを実行して、パイプラインをデプロイします。 
 
@@ -393,7 +390,7 @@ Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName
    246 en-US SCH-i500 District Of Columbia
    ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の手順を実行しました。 
 
 > [!div class="checklist"]

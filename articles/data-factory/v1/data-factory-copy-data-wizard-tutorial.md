@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 22fcf75ace672b1481228996d6e7efe9c73013e0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 8bbe32a202af3b8684c16cc2e56d5a111511bef5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927273"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438916"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>チュートリアル:コピー アクティビティがあるパイプラインを Data Factory コピー ウィザードで作成する
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
       - **[既存のものを使用]** を選択し、既存のリソース グループを選択します。
       - **[新規作成]** を選択し、リソース グループの名前を入力します。
           
-        このチュートリアルの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
+        このチュートリアルの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../../azure-resource-manager/management/overview.md)に関するページを参照してください。
    4. データ ファクトリの**場所**を選択します。
    5. ブレードの一番下にある **[ダッシュボードにピン留めする]** チェック ボックスをオンにします。  
    6. **Create** をクリックしてください。
@@ -149,7 +149,7 @@ Azure Data Factory の**コピー ウィザード**を使用すると、サポ�
 
     このアプリケーションの使用に関する詳細については、[監視アプリを使用したパイプラインの監視および管理](data-factory-monitor-manage-app.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、Azure Blob Storage をコピー操作のソース データ ストア、Azure SQL データベースをターゲット データ ストアとして使用しました。 次の表は、コピー アクティビティによってソースおよびターゲットとしてサポートされているデータ ストアの一覧です。 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]

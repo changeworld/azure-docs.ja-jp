@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 906ac3b28a512a866e712cefda4355ad901c258d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: aca1f8ce2c125cd90f2e61a7829be09bc81c3938
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74064713"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464968"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Azure VM のカスタム イメージを作成する
 
@@ -155,9 +155,9 @@ Remove-AzImage `
     -ResourceGroupName myResourceGroup
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、カスタム VM イメージを作成しました。 以下の方法について学習しました。
+このチュートリアルでは、カスタム VM イメージを作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * VM を sysprep して汎用化する

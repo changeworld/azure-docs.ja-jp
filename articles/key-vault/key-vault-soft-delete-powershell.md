@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6a24f2dd52c3ac3c51df54bf5c01c7b31ca16147
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f026957b5f9fceab8a0df1f339e7cb459ec1078d
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985749"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562138"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
 
@@ -39,7 +39,7 @@ PowerShell における Key Vault の具体的な参照情報については、[
 
 Key Vault の操作は、次のようにロールベースのアクセス制御 (RBAC) のアクセス許可で別個に管理されます。
 
-| Operation | 説明 | ユーザーのアクセス許可 |
+| 操作 | [説明] | ユーザーのアクセス許可 |
 |:--|:--|:--|
 |List|削除されたキー コンテナーの一覧を示します。|Microsoft.KeyVault/deletedVaults/read|
 |復旧|削除されたキー コンテナーを復元します。|Microsoft.KeyVault/vaults/write|
@@ -143,7 +143,7 @@ Get-AzKeyVaultKey -VaultName ContosoVault -InRemovedState
 
 キー コンテナーと同様に、削除されたキー、シークレット、証明書は、復旧または消去しない限り、最大で 90 日間、削除済みの状態で維持されます。 
 
-#### <a name="keys"></a>構成する
+#### <a name="keys"></a>[キー]
 
 論理的に削除されたキーを復旧するには:
 
@@ -160,7 +160,7 @@ Undo-AzKeyVaultKeyRemoval -VaultName ContosoVault -Name ContosoFirstKey
 Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
 ```
 
-**recover** アクションと **purge** アクションには、キー コンテナーのアクセス ポリシーに独自のアクセス許可が関連付けられています。 ユーザーまたはサービス プリンシパルが **recover** アクションまたは **purge** アクションを実行するには、そのキーまたはシークレットに対する適切なアクセス許可が必要です。 既定では、'all' ショートカットを使用してすべてのアクセス許可を付与するときに、**purge** はキー コンテナーのアクセス ポリシーには追加されません。 **purge** のアクセス許可は明示的に付与する必要があります。 
+**復旧**と**消去**アクションには、キー コンテナーのアクセス ポリシーに関連付けられた独自のアクセス許可があります。 ユーザーまたはサービス プリンシパルが **recover** アクションまたは **purge** アクションを実行するには、そのキーまたはシークレットに対する適切なアクセス許可が必要です。 既定では、'all' ショートカットを使用してすべてのアクセス許可を付与するときに、**purge** はキー コンテナーのアクセス ポリシーには追加されません。 **purge** のアクセス許可は明示的に付与する必要があります。 
 
 #### <a name="set-a-key-vault-access-policy"></a>キー コンテナーのアクセス ポリシーを設定する
 

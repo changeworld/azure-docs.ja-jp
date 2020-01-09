@@ -1,5 +1,5 @@
 ---
-title: Azure Notification Hubs を使用して特定の Android アプリにプッシュ通知を送信する | Microsoft Docs
+title: Azure Notification Hubs を使用して特定の Android アプリにプッシュ通知を送信する
 description: Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する方法について説明します。
 documentationcenter: android
 services: notification-hubs
@@ -17,18 +17,18 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: 5bd709236667dd43e623047ad995b0a7b981e9cb
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c2d3789082130cbbc42021a0706249dd3966b9ef
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387417"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531124"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の Android アプリにプッシュ通知を送信する
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
-このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。 ASP.NET WebAPI バックエンドは、[アプリ バックエンドからの登録](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)に関するガイダンス記事に示すように、クライアントを認証したり、通知を生成したりするために使用されます。 このチュートリアルは、「[チュートリアル: Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」で作成した通知ハブに基づいて作成されています。
+このチュートリアルでは、Azure Notification Hubs を使用して特定のデバイスで特定のアプリケーション ユーザーにプッシュ通知を送信する方法について説明します。 ASP.NET WebAPI バックエンドは、[アプリ バックエンドからの登録](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)に関するガイダンス記事に示すように、クライアントを認証したり、通知を生成したりするために使用されます。 このチュートリアルは、「[チュートリアル: Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を完了しておきます。
 
 このチュートリアルでは、次の手順を実行します。
 
@@ -45,7 +45,7 @@ ms.locfileid: "72387417"
 
 ## <a name="create-the-android-project"></a>Android プロジェクトを作成する
 
-次の手順では、「[チュートリアル: Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」で作成した通知ハブに基づいて作成されています。
+次の手順では、「[チュートリアル: Azure Notification Hubs と Google Firebase Cloud Messaging を使用して Android デバイスにプッシュ通知を送信する](notification-hubs-android-push-notification-google-fcm-get-started.md)」を完了しておきます。
 
 1. `res/layout/activity_main.xml` ファイルを開いて、その内容を次の定義に置き換えます。
 
@@ -493,7 +493,7 @@ ms.locfileid: "72387417"
 6. プッシュ通知メッセージとしてユーザーが受信するメッセージを入力します。
 7. **[Send Notification (通知の送信)]** をクリックします。  一致するユーザー名のタグで登録されている各デバイスがプッシュ通知を受信します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、タグが登録に関連付けられている特定のユーザーにプッシュ通知を送信する方法を学習しました。 場所に基づいたプッシュ通知を送信する方法を学習するには、次のチュートリアルに進んでください。
 

@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure Media Services のドキュメント
 metadata:
-  document_id: null
   title: Azure Media Services のドキュメント | Microsoft Docs
   description: クラウドベースのプラットフォームである Azure Media Services では、ブロードキャスト品質のビデオ ストリーミングを実現し、アクセス性と配信を強化し、コンテンツを分析するソリューションを構築できます。
   services: media-services

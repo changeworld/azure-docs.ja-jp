@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: bc433fbd6117a6aded28e19d2f8b48d594ff5ad6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: db767a8d2f0452a9bedeaf8495152ef337255111
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683044"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439032"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル:Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成
 > [!div class="op_single_selector"]
@@ -45,11 +45,11 @@ ms.locfileid: "73683044"
 
 * 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
 * 「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」に記載されている手順に従って、コンピューターに Azure PowerShell の最新バージョンをインストールします。
-* Azure Resource Manager テンプレートについては、「 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md) 」を参照してください。 
+* Azure Resource Manager テンプレートについては、「 [Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md) 」を参照してください。 
 
 ## <a name="in-this-tutorial"></a>このチュートリアルの内容
 
-| エンティティ | 説明 |
+| Entity | [説明] |
 | --- | --- |
 | Azure Storage のリンクされたサービス |Azure Storage アカウントをデータ ファクトリにリンクします。 Azure ストレージ アカウントには、このサンプルのパイプラインの入力データと出力データが保持されます。 |
 | HDInsight のオンデマンドのリンクされたサービス |オンデマンド HDInsight クラスターをデータ ファクトリにリンクします。 クラスターは、データ処理のために自動的に作成され、処理が終了すると削除されます。 |
@@ -343,10 +343,10 @@ Azure Resource Manager テンプレートのパラメーターを含む **ADFTut
    ![Diagram view](./media/data-factory-build-your-first-pipeline-using-arm/DiagramView.png) 
 5. ダイアグラム ビューで、 **AzureBlobOutput**データセットをダブルクリックします。 現在処理中のスライスが表示されます。
    
-    ![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
+    ![データセット](./media/data-factory-build-your-first-pipeline-using-arm/AzureBlobOutput.png)
 6. 処理が完了すると、スライスの状態に **[準備完了]** が表示されます。 オンデマンド HDInsight クラスターの作成には通常しばらく時間がかかります (約 20 分)。 そのため、パイプラインによるスライスの処理に **約 30 分** かかると想定してください。
    
-    ![Dataset](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    
+    ![データセット](./media/data-factory-build-your-first-pipeline-using-arm/SliceReady.png)    
 7. スライスが**準備完了**状態になったら、Blob Storage の **adfgetstarted** コンテナーの **partitioneddata** フォルダーで出力データを調べます。  
 
 Azure ポータル ブレードを使用して、このチュートリアルで作成したパイプラインとデータセットを監視する方法については、 [データセットとパイプラインの監視](data-factory-monitor-manage-pipelines.md) に関するページを参照してください。
@@ -617,9 +617,9 @@ New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutori
 ```
 このテンプレートでは、GatewayUsingArmDF という名前のデータ ファクトリと GatewayUsingARM という名前のゲートウェイを作成します。 
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
-| トピック | 説明 |
+| トピック | [説明] |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |

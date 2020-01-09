@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 09/11/2018
-ms.openlocfilehash: 4e71fc869a08192b756c37e5106568bdd36361bd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 537f57249065a6b47c2ce4d679205ac21a75fe4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926574"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439426"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーする
 
@@ -77,7 +77,7 @@ ms.locfileid: "74926574"
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[データ ファクトリ]** を選択します。
+1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
     
     ![新しいデータ ファクトリの作成](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
@@ -86,7 +86,7 @@ ms.locfileid: "74926574"
     
     ![[新しいデータ ファクトリ] のエラー メッセージ](./media/doc-common-process/name-not-available-error.png)
 
-    データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関するページを参照してください。
+    データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
 1. 新しいデータ ファクトリの作成先となる Azure **サブスクリプション**を選択します。
 1. **[リソース グループ]** で、次の手順のいずれかを行います。
     
@@ -94,7 +94,7 @@ ms.locfileid: "74926574"
 
     b. **[新規作成]** を選択し、リソース グループの名前を入力します。
     
-    リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
+    リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。
 
 1. **[バージョン]** で、バージョンとして **[V2]** を選択します。
 1. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他の場所やリージョンに存在していてもかまいません。
@@ -110,7 +110,7 @@ ms.locfileid: "74926574"
 1. **[Let's get started]\(始めましょう\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。
 
     ![データのコピー ツールのタイル](./media/doc-common-process/get-started-page.png)
-1. **[プロパティ]** ページの **[タスク名]** に「**CopyFromBlobToSqlPipeline**」と入力します。 次に、 **[次へ]** を選択します。 指定したタスク名のパイプラインが Data Factory UI によって作成されます。
+1. **[プロパティ]** ページの **[タスク名]** に「**CopyFromBlobToSqlPipeline**」と入力します。 **[次へ]** を選択します。 指定したタスク名のパイプラインが Data Factory UI によって作成されます。
 
 1. **[ソース データ ストア]** ページで、次の手順を実行します。
 
@@ -167,8 +167,8 @@ ms.locfileid: "74926574"
 
 1. 左側の **[作成者]** タブを選択して、編集モードに切り替えます。 ツールによって作成されたリンクされたサービス、データセット、パイプラインをエディターで更新できます。 Data Factory UI におけるこれらのエンティティの編集について詳しくは、[このチュートリアルの Azure Portal バージョン](tutorial-copy-data-portal.md)を参照してください。
 
-## <a name="next-steps"></a>次の手順
-このサンプルのパイプラインでは、Blob Storage から SQL データベースにデータがコピーされます。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このサンプルのパイプラインでは、Blob Storage から SQL データベースにデータがコピーされます。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。

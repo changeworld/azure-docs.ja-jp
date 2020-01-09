@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 6c4a99367c7fc6a864f6a16bc614e4c10663d0ff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f1140bbefc7508666e763fcd4f1a04ba48cdfdd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837174"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354954"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>チュートリアル:C&#x23; と ADO.NET を使用して Azure SQL Database 内の単一データベースでリレーショナル データベースを設計する
 
@@ -40,7 +40,7 @@ Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサ�
 
 ## <a name="create-a-blank-single-database"></a>空の単一データベースを作成する
 
-Azure SQL Database の単一データベースは、定義済みの一連のコンピューティング リソースとストレージ リソースを使用して作成されます。 データベースは [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内に作成され、[データベース サーバー](sql-database-servers.md)を使用して管理されます。
+Azure SQL Database の単一データベースは、定義済みの一連のコンピューティング リソースとストレージ リソースを使用して作成されます。 データベースは [Azure リソース グループ](../azure-resource-manager/management/overview.md)内に作成され、[データベース サーバー](sql-database-servers.md)を使用して管理されます。
 
 空の単一データベースを作成するには、次の手順に従います。
 
@@ -51,16 +51,16 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
 
 3. 前の画像で示されているように、 **[SQL Database]** のフォームに次の情報を入力します。
 
-    | 設定       | 推奨値 | 説明 |
+    | 設定       | 推奨値 | [説明] |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **データベース名** | *yourDatabase* | 有効なデータベース名については、「[データベース識別子](/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
     | **サブスクリプション** | *yourSubscription*  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
     | **リソース グループ** | *yourResourceGroup* | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
-    | **[ソースの選択]** | 空のデータベース | 空のデータベースを作成するように指定します。 |
+    | **ソースの選択** | 空のデータベース | 空のデータベースを作成するように指定します。 |
 
 4. **[サーバー]** をクリックして既存のデータベース サーバーを使用するか、新しいデータベース サーバーを作成して構成します。 既存のサーバーを選択するか、 **[新しいサーバーの作成]** をクリックして **[新しいサーバー]** フォームに次の情報を入力します。
 
-    | 設定       | 推奨値 | 説明 |
+    | 設定       | 推奨値 | [説明] |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming)に関するページを参照してください。 |
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[データベース識別子](/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
@@ -80,7 +80,7 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
 
 9. ツール バーの **[通知]** をクリックして、デプロイ プロセスを監視します。
 
-   ![通知](./media/sql-database-design-first-database/notification.png)
+   ![通知 (notification)](./media/sql-database-design-first-database/notification.png)
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>サーバーレベルの IP ファイアウォール規則を作成する
 
@@ -101,7 +101,7 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 
 4. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスを新しい IP ファイアウォール規則に追加します。 IP ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-5. **[Save]** をクリックします。 SQL Database サーバー上のポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルの IP ファイアウォール規則が作成されます。
+5. **[保存]** をクリックします。 SQL Database サーバー上のポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルの IP ファイアウォール規則が作成されます。
 
 6. **[OK]** をクリックし、 **[ファイアウォール設定]** ページを閉じます。
 
@@ -112,9 +112,9 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../includes/sql-database-csharp-adonet-create-query-2.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、データベースとテーブルの作成、データベースへの接続、データの読み込み、クエリの実行など、基本的なデータベース タスクについて学習しました。 以下の方法について学習しました。
+このチュートリアルでは、データベースとテーブルの作成、データベースへの接続、データの読み込み、クエリの実行など、基本的なデータベース タスクについて学習しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * データベースを作成する

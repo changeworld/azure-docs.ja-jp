@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 0a0fb1e8f79587223ae1f25ca8a7e0d6dc7cc5bb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1593d4079cf7f50d5473f24ecf57351c9d7786e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565839"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384919"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>クイック スタート:Bing Autosuggest REST API と Java で検索クエリの候補を表示する
 
 
-このクイック スタートでは、Bing Autosuggest API を呼び出して JSON 応答を取得するための基礎を学ぶことができます。 このシンプルな Java アプリケーションは、検索クエリの一部を API に送信して検索の候補を返します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java) で入手できます。
+このクイック スタートでは、Bing Autosuggest API を呼び出して JSON 応答を取得するための基礎を学ぶことができます。 このシンプルな Java アプリケーションは、検索クエリの一部を API に送信して検索の候補を返します。 このアプリケーションは Java で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。 このサンプルのソース コードは、[GitHub 上で](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java)入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,7 +44,7 @@ ms.locfileid: "68565839"
     import com.google.gson.JsonParser;
     ```
 
-2. サブスクリプション キー、API のホストとパス、該当する[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)、検索クエリに使用する変数を作成します。
+2. サブスクリプション キー、API のホストとパス、該当する[市場コード](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes)、検索クエリに使用する変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -73,7 +73,7 @@ public static String prettify(String json_text) {
 
 1. `get_suggestions()` という名前の新しいメソッドを作成して次の手順を実行します。
 
-   1. API のホストとパス、検索クエリのエンコーディングを組み合わせて要求の URL を作成します。 クエリは必ず URL エンコードしたうえで追加してください。 `mkt=` パラメーターに市場コードを、`q=` パラメーターに目的のクエリを追加して、クエリのパラメーター文字列を作成します。
+   1. API のホストとパス、検索クエリのエンコーディングを組み合わせて要求の URL を作成します。 クエリは必ず URL エンコードしたうえで追加してください。 `mkt=` パラメーターに市場コードを、`q=` パラメーターに目的のクエリを付加して、クエリのパラメーター文字列を作成します。
     
       ```java
   
@@ -201,7 +201,7 @@ public static String prettify(String json_text) {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [単一ページの Web アプリの作成](../tutorials/autosuggest.md)

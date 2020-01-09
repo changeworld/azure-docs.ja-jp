@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/09/2018
-ms.openlocfilehash: e248c7f37c062fc69e5e42ae7d33e275c4b0aa19
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: db069571258bce8b79d223ce3115737061685b78
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439367"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>データのコピー ツールを使用してオンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -123,7 +123,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
    - **[新規作成]** を選択し、リソース グループの名前を入力します。 
         
-     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
+     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。
 1. **[バージョン]** で、 **[V2]** を選択します。
 1. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 Data Factory によって使用されるデータ ストア (Azure Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他の場所やリージョンに存在していてもかまいません。
 1. **作成** を選択します。
@@ -139,7 +139,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
    ![開始ページ](./media/doc-common-process/get-started-page.png)
 
-1. データのコピー ツールの **[プロパティ]** ページで、 **[タスク名]** に「**CopyFromOnPremSqlToAzureBlobPipeline**」と指定します。 次に、 **[次へ]** を選択します。 このフィールドで指定した名前のパイプラインが、データのコピー ツールによって作成されます。 
+1. データのコピー ツールの **[プロパティ]** ページで、 **[タスク名]** に「**CopyFromOnPremSqlToAzureBlobPipeline**」と指定します。 **[次へ]** を選択します。 このフィールドで指定した名前のパイプラインが、データのコピー ツールによって作成されます。 
   ![タスク名](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
 1. **[ソース データ ストア]** ページで、 **[新しい接続の作成]** タイルをクリックします。 
@@ -150,11 +150,11 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 1. **[New Linked Service (SQL Server)]\(新しいリンクされたサービス (SQL Server)\)** ダイアログ ボックスの **[名前]** に「**SqlServerLinkedService**」と入力します。 **[Connect via integration runtime]\(統合ランタイム経由で接続\)** で **[+新規]** を選択します。 セルフホステッド統合ランタイムを作成してマシンにダウンロードし、それを Data Factory に登録する必要があります。 セルフホステッド統合ランタイムによって、オンプレミスの環境とクラウドとの間でデータがコピーされます。
 
 
-1. **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ダイアログ ボックスで、 **[Self-Hosted]\(セルフホスト\)** を選択します。 次に、 **[次へ]** を選択します。 
+1. **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ダイアログ ボックスで、 **[Self-Hosted]\(セルフホスト\)** を選択します。 **[次へ]** を選択します。 
 
    ![統合ランタイムの作成](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog0.png)
 
-1. **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ダイアログ ボックスの **[名前]** に「**TutorialIntegrationRuntime**」と入力します。 次に、 **[次へ]** を選択します。 
+1. **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ダイアログ ボックスの **[名前]** に「**TutorialIntegrationRuntime**」と入力します。 **[次へ]** を選択します。 
 
 
 1. **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ダイアログ ボックスで、 **[Click here to launch the express setup for this computer]\(このコンピューターで高速セットアップを起動するにはここをクリック\)** を選択します。 この操作により、統合ランタイムがマシンにインストールされ、Data Factory に登録されます。 別の方法として、手動セットアップのオプションを使用できます。インストール ファイルをダウンロードして実行し、キーを使用して統合ランタイムを登録します。 
@@ -163,7 +163,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
     ![高速セットアップの状態](./media/tutorial-hybrid-copy-data-tool/express-setup-status.png)
 
-1. **[New Linked Service (SQL Server)]\(新しいリンクされたサービス (SQL Server)\)** ダイアログ ボックスの [統合ランタイム] フィールドで **TutorialIntegrationRuntime** が選択されていることを確認します。 その後、次の手順を実行します。
+1. **[New Linked Service (SQL Server)]\(新しいリンクされたサービス (SQL Server)\)** ダイアログ ボックスの [統合ランタイム] フィールドで **TutorialIntegrationRuntime** が選択されていることを確認します。 その後、次の手順を行います。
 
     a. **[名前]** に「**SqlServerLinkedService**」と入力します。
 
@@ -202,7 +202,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
    d. **[完了]** を選択します。
 
-1. **[配布先データ ストア]** ダイアログで、 **[Azure Blob Storage]** が選択されていることを確認します。 次に、 **[次へ]** を選択します。 
+1. **[配布先データ ストア]** ダイアログで、 **[Azure Blob Storage]** が選択されていることを確認します。 **[次へ]** を選択します。 
 
 1. **[Choose the output file or folder]\(出力ファイルまたはフォルダーの選択\)** ダイアログで、 **[フォルダーのパス]** に「**adftutorial/fromonprem**」と入力します。 前提条件の 1 つとして **adftutorial** コンテナーを作成しました。 output フォルダーが存在しない場合は (この場合は **fromonprem**)、Data Factory によって自動的に作成されます。 また、 **[参照]** ボタンを使用して、Blob Storage とそのコンテナー (フォルダー) に移動することもできます。 **[ファイル名]** で値を指定しない場合は、既定でソースの名前 (この場合は **dbo.emp**) が使用されます。
            
@@ -230,8 +230,8 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
    ![[編集] タブ](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
 
-## <a name="next-steps"></a>次の手順
-このサンプルのパイプラインでは、オンプレミスの SQL Server データベースから Blob Storage にデータがコピーされます。 以下の方法について学習しました。 
+## <a name="next-steps"></a>次のステップ
+このサンプルのパイプラインでは、オンプレミスの SQL Server データベースから Blob Storage にデータがコピーされます。 以下の方法を学習しました。 
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。

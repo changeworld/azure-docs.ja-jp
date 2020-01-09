@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 0503ebc7a585210f95eb58b0f11ae1dd0a835264
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: b3b176a6027b0f03c3802867df7be1e339286df2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278608"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365327"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Azure Monitor でログ クエリの使用を開始する
 
@@ -105,7 +105,7 @@ SecurityEvent
 
 フィルター条件を記述する場合は、次の式を使用できます。
 
-| 式 | 説明 | 例 |
+| 式 | [説明] | 例 |
 |:---|:---|:---|
 | == | 等価性をチェックします<br>(大文字と小文字を区別します) | `Level == 8` |
 | =~ | 等価性をチェックします<br>(大文字と小文字は区別されません) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
@@ -237,7 +237,7 @@ Perf
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - ログ クエリでの文字列データの使用の詳細について、「[Azure Monitor ログ クエリ内の文字列を操作する](string-operations.md)」で学習します。
 - ログ クエリでのデータの集計の詳細について、「[Azure Monitor ログ クエリの高度な集計](advanced-aggregations.md)」で学習します。

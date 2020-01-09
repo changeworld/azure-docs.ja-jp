@@ -3,12 +3,12 @@ title: チュートリアル - Terraform を使用して Azure 仮想マシン �
 description: Terraform を使用して Azure 仮想マシン スケール セットを構成し、バージョンを管理する方法について説明します。
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: ef2ce0a3ea8c50123cd51ab60a6b98894739d859
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 6dcdad21eef003fe773a2c6ea3cb8a69b9175ecb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159081"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369475"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>チュートリアル:Terraform を使用して Azure 仮想マシン スケール セットを作成する
 
@@ -424,7 +424,7 @@ SSH "*ジャンプボックス*" は、ネットワーク上の他のサーバ�
     resource_group_name          = azurerm_resource_group.vmss.name
     allocation_method = "Static"
     domain_name_label            = "${random_string.fqdn.result}-ssh"
-    tags                         = var.tags}
+    tags                         = var.tags
    }
 
    resource "azurerm_network_interface" "jumpbox" {
@@ -518,7 +518,7 @@ terraform destroy
 
 この削除プロセスが完了するまでに数分かかることがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure での Terraform の使用について詳細を参照](/azure/terraform)

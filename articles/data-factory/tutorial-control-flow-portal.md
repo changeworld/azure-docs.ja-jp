@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 08f9310c2ffdb2e7b8d4249495c2ee90b522d694
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 609b1c4500e1602c38f3383df6cbe176a3333bff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926778"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439550"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -144,7 +144,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
       - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
       - **[新規作成]** を選択し、リソース グループの名前を入力します。   
          
-        リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+        リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
 4. **バージョン**として **[V2]** を選択します。
 5. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
@@ -195,7 +195,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
     1. **[名前]** に「**AzureStorageLinkedService**」と入力します。
     2. **[ストレージ アカウント名]** で Azure ストレージ アカウントを選択します。
-    3. **[Save]** をクリックします。
+    3. **[保存]** をクリックします。
 
    ![新しい Azure Storage のリンクされたサービス](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. フォルダーには「`@pipeline().parameters.sourceBlobContainer`」、ファイル名には「`emp.txt`」と入力します。 sourceBlobContainer パイプライン パラメーターを使用して、データセットのフォルダー パスを設定します。 
@@ -282,7 +282,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ## <a name="trigger-a-pipeline-run-that-succeeds"></a>成功するパイプラインの実行をトリガーする
 1. パイプラインの実行を**トリガー**するために、ツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。 
 
-    ![パイプラインの実行のトリガー](./media/tutorial-control-flow-portal/trigger-now-menu.png)
+    ![パイプラインの実行をトリガーする](./media/tutorial-control-flow-portal/trigger-now-menu.png)
 2. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで、次の手順を実行します。 
 
     1. **sourceBlobContainer** パラメーターに「**adftutorial/adfv2branch/input**」を入力します。 
@@ -326,7 +326,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
     ![アクティビティの実行エラー](./media/tutorial-control-flow-portal/activity-run-error.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の手順を実行しました。 
 
 > [!div class="checklist"]

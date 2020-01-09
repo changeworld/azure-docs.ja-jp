@@ -2,19 +2,15 @@
 title: Azure Automation Runbook からメールを送信する
 description: SendGrid を使用して Runbook 内からメールを送信する方法について説明します。
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/15/2019
 ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 8550635b581eb944719c39cc8c195859a2c9e868
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6acb68b7bbaa54db2e4143a42e43aede2caed35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420704"
 ---
 # <a name="tutorial-send-an-email-from-an-azure-automation-runbook"></a>チュートリアル:Azure Automation Runbook からメールを送信する
 
@@ -168,7 +164,7 @@ $ResourceGroupName = "<your ResourceGroup name>"
 Remove-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Runbook の作成または開始に関する問題については、「[Runbook に関するエラーのトラブルシューティング](./troubleshoot/runbooks.md)」を参照してください。
 * Automation アカウント内のモジュールを更新するには、「[Azure Automation 内の Azure PowerShell モジュールを更新する方法](automation-update-azure-modules.md)]」を参照してください。

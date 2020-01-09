@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure Spatial Anchors のドキュメント
 metadata:
-  document_id: 8ba93ac8-1984-48d5-8944-329e6653e39d
   title: Azure Spatial Anchors のドキュメント
   meta.description: Learn how to use Azure Spatial Anchors to build apps with durable spatial anchors.
   services: azure-spatial-anchors
@@ -75,7 +74,7 @@ sections:
               alt: null
             text: Xamarin iOS
             href: quickstarts/get-started-xamarin-ios.md
-  - title: ステップバイステップのチュートリアル
+  - title: ステップバイステップ チュートリアル
     items:
       - type: paragraph
         text: Azure Spatial Anchors を使用してアプリを設定、管理、ビルド、デプロイする方法を学習します。

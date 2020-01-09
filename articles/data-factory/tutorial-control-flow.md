@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 277616d9fcd15affc7ddc8ede5d9af3ff68c62f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 31ae3483ca7cefbb65726f976244d582f1587aaf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926611"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439452"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -364,7 +364,7 @@ Visual Studio でプロジェクトに戻ります。 ここで、コピー ア�
 
 このパイプラインでは、次の機能を使用します。
 
-* parameters
+* パラメーター
 * Web アクティビティ
 * アクティビティの依存関係
 * あるアクティビティからの出力を別のアクティビティへの入力として使用する
@@ -449,13 +449,13 @@ Visual Studio でプロジェクトに戻ります。 ここで、コピー ア�
    client.Pipelines.CreateOrUpdate(resourceGroup, dataFactoryName, pipelineName, PipelineDefinition(client));
    ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 
 パイプライン コードの最初のセクションでは、パラメーターを定義します。
 
-* `sourceBlobContainer` ソース BLOB データセットは、パイプラインでこのパラメーターを使用します。
-* `sinkBlobContainer` シンク BLOB データセットは、パイプラインでこのパラメーターを使用します。
-* `receiver` 成功または失敗のメールを受信者に送信する、パイプライン内の 2 つの Web アクティビティがこのパラメーターを使用します。
+* [https://login.microsoftonline.com/consumers/](`sourceBlobContainer`) ソース BLOB データセットは、パイプラインでこのパラメーターを使用します。
+* [https://login.microsoftonline.com/consumers/](`sinkBlobContainer`) シンク BLOB データセットは、パイプラインでこのパラメーターを使用します。
+* [https://login.microsoftonline.com/consumers/](`receiver`) 成功または失敗のメールを受信者に送信する、パイプライン内の 2 つの Web アクティビティがこのパラメーターを使用します。
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>
@@ -608,10 +608,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": {
-      "type": "SecureString",
-      "value": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
-    }
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
   }
 }
 Creating dataset SourceStorageDataset...
@@ -749,7 +746,7 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次のタスクを実行しました。
 

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 70ecc5dc95aced3eb901f24910339eb059ba0c17
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d56b81dbe8c78b9b48f122d79f4567d0b0f42e27
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900470"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398531"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
@@ -109,7 +109,7 @@ Application Insights を Azure DevOps や GitHub などの追跡システムに�
 
     ![新しい作業項目](media/tutorial-runtime-exceptions/new-work-item.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、ランタイムの例外を特定する方法を学習しました。次のチュートリアルに進んで、パフォーマンスの問題を特定して診断する方法をご覧ください。
 
 > [!div class="nextstepaction"]

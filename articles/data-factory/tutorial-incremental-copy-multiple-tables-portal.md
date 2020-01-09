@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: e3ccc5a48251af181983624f0c8d0eed68c241da
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439306"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 
@@ -231,7 +231,7 @@ END
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[データ ファクトリ]** を選択します。 
+2. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -246,7 +246,7 @@ END
      
     - **[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のリソース グループを選択します。 
     - **[新規作成]** を選択し、リソース グループの名前を入力します。   
-    リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。  
+    リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。  
 6. **バージョン**として **[V2]** を選択します。
 7. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 8. **Create** をクリックしてください。      
@@ -295,7 +295,7 @@ END
     1. **[サーバー名]** に、SQL Server データベースを保持するサーバーの名前を入力します。
     1. **[データベース名]** に、SQL Server にソース データを含むデータベースの名前を入力します。 テーブルを作成してこのデータベースにデータを挿入する作業は、既に前提条件の一部として行っています。 
     1. **[認証の種類]** で、データベースへの接続に使用する**認証の種類**を選択します。 
-    1. **[ユーザー名]** に、SQL Server データベースにアクセスできるユーザーの名前を入力します。 ユーザー アカウントまたはサーバー名にスラッシュ文字 (`\`) を使用する必要がある場合は、エスケープ文字 (`\`) を使用します。 例: `mydomain\\myuser`。
+    1. **[ユーザー名]** に、SQL Server データベースにアクセスできるユーザーの名前を入力します。 ユーザー アカウントまたはサーバー名にスラッシュ文字 (`\`) を使用する必要がある場合は、エスケープ文字 (`\`) を使用します。 たとえば `mydomain\\myuser` です。
     1. **[パスワード]** に、ユーザーの**パスワード**を入力します。 
     1. Data Factory が SQL Server データベースに接続できるかどうかをテストするために、 **[Test connection]\(テスト接続\)** をクリックします。 エラーがあれば修正して、正常に接続できるようにします。 
     1. リンクされたサービスを保存するために、 **[完了]** をクリックします。
@@ -446,7 +446,7 @@ END
         ![コピー アクティビティ - ソースの設定](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. **[シンク]** タブに切り替えて、 **[Sink Dataset]\(シンク データセット\)** で **[SinkDataset]** を選択します。 
         
-1. 次の手順を実行します。
+1. 手順は次のとおりです。
 
     1. **[データセットのプロパティ]** で、 **[SinkTableName]** パラメーターに「`@{item().TABLE_NAME}`」と入力します。
     1. **[ストアド プロシージャ名]** プロパティに「`@{item().StoredProcedureNameForMergeOperation}`」と入力します。
@@ -467,10 +467,10 @@ END
     1. **[Import parameter]\(インポート パラメーター\)** を選択します。 
     1. 各パラメーターの値を次のように指定します。 
 
-        | 名前 | 種類 | 値 | 
+        | Name | 種類 | 値 | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | string | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![ストアド プロシージャ アクティビティ - ストアド プロシージャの設定](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. 作成したエンティティを Data Factory サービスに発行するには、 **[すべて発行]** を選択します。 
@@ -518,7 +518,7 @@ SQL Server Management Studio からターゲット SQL データベースに対�
 select * from customer_table
 ```
 
-**Output**
+**出力**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -536,7 +536,7 @@ PersonID    Name    LastModifytime
 select * from project_table
 ```
 
-**Output**
+**出力**
 
 ```
 ===================================
@@ -553,7 +553,7 @@ project3    2017-03-04 05:16:00.000
 select * from watermarktable
 ```
 
-**Output**
+**出力**
 
 ```
 ======================================
@@ -615,7 +615,7 @@ SQL Server Management Studio からターゲット SQL データベースに対�
 select * from customer_table
 ```
 
-**Output**
+**出力**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -635,7 +635,7 @@ PersonID    Name    LastModifytime
 select * from project_table
 ```
 
-**Output**
+**出力**
 
 ```
 ===================================
@@ -655,7 +655,7 @@ project_table に **NewProject** というエントリが追加されている�
 select * from watermarktable
 ```
 
-**Output**
+**出力**
 
 ```
 ======================================
@@ -667,7 +667,7 @@ project_table   2017-10-01 00:00:00.000
 
 2 つのテーブルの基準値が更新されたことがわかります。
      
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、以下の手順を実行しました。 
 
 > [!div class="checklist"]

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 7c9c12cd1097ab4a2b7138efd169e4e7a7f03720
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 64874791be62ec1ed5c1c5874fb055efa4b44dc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565799"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384723"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-php"></a>クイック スタート:Bing Autosuggest REST API と PHP で検索クエリの候補を表示する
 
@@ -29,10 +29,11 @@ ms.locfileid: "68565799"
 
 ## <a name="get-autosuggest-results"></a>Autosuggest の結果を取得する
 
-1. 好みの IDE で新しい PHP プロジェクトを作成します。
-2. 下記のコードを追加します。
+1. 適切な IDE で新しい PHP プロジェクトを作成します。
+2. 次に示すコードを追加します。
 3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+4. 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
+5. プログラムを実行します。
 
 ```php
 <?php
@@ -147,12 +148,12 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Bing Autosuggest チュートリアル](../tutorials/autosuggest.md)
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 - [Bing Autosuggest とは](../get-suggested-search-terms.md)
 - [Bing Autosuggest API v7 リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

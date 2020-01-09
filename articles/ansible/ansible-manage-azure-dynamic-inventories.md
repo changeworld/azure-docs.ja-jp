@@ -4,12 +4,12 @@ description: Ansible を使用して Azure の動的インベントリを管理�
 keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, 動的インベントリ
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: dea6b47e5e263fdd2e048a0435efbebfa90fe69e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156181"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442782"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>チュートリアル:Ansible を使用して Azure リソースの動的インベントリを構成する
 
@@ -32,7 +32,7 @@ Ansible を使用して、(Azure などのクラウド ソースを含む) さ�
 
 ## <a name="create-the-test-vms"></a>テスト VM を作成する
 
-1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインする
 
 1. [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を開きます。
 
@@ -228,7 +228,7 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
           become: yes
           tasks:
           - name: install nginx
-            apt: pkg=nginx state=installed
+            apt: pkg=nginx state=present
             notify:
             - start nginx
     
@@ -313,7 +313,7 @@ Ansible 2.8 以降、Ansible では [Azure 動的インベントリ プラグイ
     tom@ansible-inventory-test-vm2:~$
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [クイック スタート:Ansible を使用して Azure で Linux 仮想マシンを構成する](/azure/virtual-machines/linux/ansible-create-vm)

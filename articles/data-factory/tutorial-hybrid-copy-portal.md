@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 5b9bed971ff239c0c4b0d1cb923e845bd76957da
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 099ff9b8d8a55456908748bee5779e4471d4bec6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439339"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。
@@ -107,7 +107,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 この手順では、データ ファクトリを作成するほか、Data Factory UI を起動してそのデータ ファクトリにパイプラインを作成します。 
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を開きます。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[データ ファクトリ]** を選択します。
+1. 左側のメニューで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -124,7 +124,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
    - **[新規作成]** を選択し、リソース グループの名前を入力します。
         
-     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。
+     リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。
 1. **[バージョン]** で、 **[V2]** を選択します。
 1. **[場所]** で、データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 Data Factory によって使用されるデータ ストア (Storage、SQL Database など) やコンピューティング (Azure HDInsight など) は、他のリージョンに存在していてもかまいません。
 1. **作成** を選択します。
@@ -157,7 +157,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 1. **[Integration Runtime セットアップ]** ダイアログ ボックスで **[Self-Hosted]\(セルフホステッド\)** を選択し、 **[次へ]** を選択します。 
 
-1. [名前] に「**TutorialIntegrationRuntime**」と入力します。 次に、 **[次へ]** を選択します。
+1. [名前] に「**TutorialIntegrationRuntime**」と入力します。 **[次へ]** を選択します。
 
 1. [設定] には、 **[Click here to launch the express setup for this computer]\(ここをクリックしてこのコンピューターの高速セットアップを起動する\)** を選択します。この操作により、統合ランタイムがコンピューターにインストールされ、Data Factory に登録されます。 別の方法として、手動セットアップのオプションを使用できます。インストール ファイルをダウンロードして実行し、キーを使用して統合ランタイムを登録します。 
 
@@ -236,8 +236,8 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 このパイプラインは、`adftutorial` BLOB コンテナーに対して *fromonprem* という名前の出力フォルダーを自動的に作成します。 出力フォルダーに *[pipeline().RunId].txt* ファイルがあることを確認してください。 
 
 
-## <a name="next-steps"></a>次の手順
-このサンプルのパイプラインは、Blob Storage 内のある場所から別の場所にデータをコピーするものです。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このサンプルのパイプラインは、Blob Storage 内のある場所から別の場所にデータをコピーするものです。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。

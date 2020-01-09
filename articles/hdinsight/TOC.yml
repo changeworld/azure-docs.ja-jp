@@ -82,22 +82,14 @@
               abstract: null
               achievement: null
               iconUrl: null
-              levels:
-                - null
-              roles:
-                - null
-              products:
-                - null
-              units:
-                - null
-                - name: クラスター ストレージの使用
-                  items:
-                    - name: Azure Storage を使用する
-                      href: hdinsight-hadoop-use-blob-storage.md
-                    - name: Azure Data Lake Storage Gen2 の使用
-                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-                    - name: Azure Data Lake Storage Gen1 の使用
-                      href: hdinsight-hadoop-use-data-lake-store.md
+        - name: クラスター ストレージの使用
+          items:
+            - name: Azure Storage を使用する
+              href: hdinsight-hadoop-use-blob-storage.md
+            - name: Azure Data Lake Storage Gen2 の使用
+              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+            - name: Azure Data Lake Storage Gen1 の使用
+              href: hdinsight-hadoop-use-data-lake-store.md
         - name: クラスターを拡張する
           items:
             - name: HDInsight アプリをインストールする
