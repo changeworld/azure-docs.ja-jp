@@ -47,6 +47,8 @@
       href: manage-feature-flags.md
     - name: ASP.NET Core で Key Vault 参照を使用する
       href: use-key-vault-references-dotnet-core.md
+    - name: Spring Boot で Key Vault 参照を使用する
+      href: use-key-vault-references-spring-boot.md
     - name: CI/CD パイプラインとの統合
       href: integrate-ci-cd-pipeline.md
 - name: サンプル

@@ -26,8 +26,10 @@
       items:
         - name: クラスを実施するためのラボの使用
           href: classroom-labs-scenarios.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
+    - name: 管理者ガイド
+      href: administrator-guide.md
     - name: クラスルーム ラボ - クラスの種類
       items:
         - name: クラスの種類の概要
@@ -52,6 +54,10 @@
           href: how-to-connect-peer-virtual-network.md
         - name: 共有イメージ ギャラリーをアタッチまたはデタッチする
           href: how-to-attach-detach-shared-image-gallery.md
+        - name: ユーザーを所有者としてクラスルーム ラボに追加する
+          href: how-to-add-user-lab-owner.md
+        - name: Azure Lab Services のファイアウォール設定
+          href: how-to-configure-firewall-settings.md
     - name: クラスルーム ラボを作成して構成する (講師)
       items:
         - name: クラスルーム ラボを作成して管理する
@@ -70,6 +76,8 @@
           href: how-to-use-shared-image-gallery.md
         - name: Linux のリモート デスクトップ接続を有効にする
           href: how-to-enable-remote-desktop-linux.md
+        - name: 切断時の自動シャットダウンを有効にする
+          href: how-to-enable-shutdown-disconnect.md
         - name: テンプレート VM で入れ子になった仮想化を有効にする
           href: how-to-enable-nested-virtualization-template-vm.md
         - name: Windows テンプレート VM の準備

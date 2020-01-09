@@ -62,12 +62,12 @@
           href: migrate-support-matrix-hyper-v.md
         - name: 物理サーバーの評価と移行のサポート マトリックス
           href: migrate-support-matrix-physical.md
+        - name: Azure Migrate アプライアンスのサポート マトリックス
+          href: migrate-appliance.md
     - name: Hyper-V 移行アーキテクチャ
       href: hyper-v-migration-architecture.md
     - name: エージェントベースの移行アーキテクチャ
       href: agent-based-migration-architecture.md
-    - name: Azure Migrate アプライアンス
-      href: migrate-appliance.md
     - name: Azure Migrate レプリケーション アプライアンス
       href: migrate-replication-appliance.md
     - name: 評価のベスト プラクティス
@@ -80,6 +80,8 @@
   items:
     - name: 以前のバージョンの使用
       href: migrate-v1.md
+    - name: Azure Migrate プロジェクトの作成と管理
+      href: create-manage-projects.md
     - name: VMware アプライアンスのデプロイ
       href: how-to-set-up-appliance-vmware.md
     - name: Hyper-V アプライアンスのデプロイ
@@ -123,7 +125,13 @@
 - name: '[トラブルシューティング]'
   items:
     - name: Azure Migrate のトラブルシューティング
-      href: troubleshooting-general.md
+      href: troubleshoot-general.md
+    - name: Azure Migrate プロジェクトのトラブルシューティング
+      href: troubleshoot-project.md
+    - name: Azure Migrate アプライアンスと検出のトラブルシューティング
+      href: troubleshoot-appliance-discovery.md
+    - name: 評価と依存関係の視覚化のトラブルシューティング
+      href: troubleshoot-assessment.md
 - name: リソース
   items:
     - name: クラウド導入フレームワークにおける移行

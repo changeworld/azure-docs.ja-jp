@@ -4,7 +4,7 @@
   items:
     - name: Key Vault について
       href: key-vault-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: CLI
@@ -68,7 +68,7 @@
   items:
     - name: 基本的な概念
       href: basic-concepts.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティの概要
           href: overview-security.md
@@ -100,13 +100,13 @@
           href: create-certificate.md
         - name: 証明書作成の監視と管理
           href: create-certificate-scenarios.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
-    - name: セキュリティ
+    - name: Security
       items:
         - name: Recommendations
           href: security-recommendations.md
-    - name: 認証
+    - name: Authenticate
       items:
         - name: App Service のマネージド ID を使用する
           href: managed-identity.md
@@ -140,6 +140,8 @@
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-key-vault
 - name: リファレンス
   items:
+    - name: Key Vault REST のエラー コード
+      href: rest-error-codes.md
     - name: Azure PowerShell
       href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
     - name: Azure CLI

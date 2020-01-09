@@ -5,7 +5,7 @@
   items:
     - name: Azure Spring Cloud とは
       href: spring-cloud-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: ポータルを使用して Spring Cloud アプリを起動する
@@ -22,7 +22,7 @@
       href: spring-cloud-tutorial-prepare-app-deployment.md
     - name: 構成サーバーを設定する
       href: spring-cloud-tutorial-config-server.md
-    - name: アプリケーションを手動でスケールする
+    - name: アプリケーションを手動でスケーリングする
       href: spring-cloud-tutorial-scale-manual.md
     - name: 分散トレースと App Insights を使用してアプリケーションを監視する
       href: spring-cloud-tutorial-distributed-tracing.md
@@ -34,6 +34,8 @@
       href: spring-cloud-tutorial-bind-redis.md
     - name: アプリケーションを Azure MySQL にバインドする
       href: spring-cloud-tutorial-bind-mysql.md
+    - name: Jenkins と Azure CLI を使用して Azure Spring Cloud にアプリをデプロイする
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: 概念
   items:
     - name: Azure Spring Cloud のクォータと制限について
@@ -42,7 +44,7 @@
       href: spring-cloud-concept-metrics.md
     - name: ディザスター リカバリーを計画する
       href: disaster-recovery.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Azure Spring Cloud アプリケーションを開始、停止、削除する方法
       href: spring-cloud-howto-start-stop-delete.md

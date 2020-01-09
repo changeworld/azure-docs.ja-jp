@@ -84,6 +84,8 @@
       items:
         - name: マッピング データ フローを使用してデータを変換する
           href: tutorial-data-flow.md
+        - name: マッピング データ フローのビデオ チュートリアル
+          href: data-flow-tutorials.md
         - name: ラングリング データ フローを使用してデータを準備する
           href: wrangling-data-flow-tutorial.md
     - name: 外部での変換

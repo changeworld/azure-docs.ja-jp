@@ -7,17 +7,19 @@
       href: active-directory-whatis.md
     - name: Azure Active Directory の新着情報
       href: whats-new.md
-- name: クイック スタート
+- name: クイックスタート
+  expanded: true
   items:
     - name: ポータルにアクセスしてテナントを作成する
       href: active-directory-access-create-new-tenant.md
     - name: グループと割り当てられたメンバーを表示する
       href: active-directory-groups-view-azure-portal.md
 - name: 概念
+  expanded: true
   items:
     - name: ID セキュリティ スコア
       href: identity-secure-score.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: MFA の有効化
           href: concept-fundamentals-mfa-get-started.md
@@ -37,6 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: EU の ID データ ストレージ
       href: active-directory-data-storage-eu.md
+    - name: オーストラリアの ID データ ストレージ
+      href: active-directory-data-storage-australia.md
     - name: Microsoft 365 Government の最新情報
       href: whats-new-microsoft-365-government.md
     - name: Azure AD 操作のリファレンス
@@ -49,9 +53,9 @@
           href: active-directory-ops-guide-auth.md
         - name: Identity Governance
           href: active-directory-ops-guide-govern.md
-        - name: Operations
+        - name: 操作
           href: active-directory-ops-guide-ops.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: Organization
@@ -97,6 +101,7 @@
         - name: 削除済みユーザーの復元
           href: active-directory-users-restore.md
 - name: リソース
+  expanded: true
   items:
     - name: Azure Active Directory のサポートを利用する
       href: active-directory-troubleshooting-support-howto.md

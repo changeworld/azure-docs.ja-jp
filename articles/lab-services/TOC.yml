@@ -44,7 +44,7 @@
           href: devtest-lab-training-lab.md
         - name: クレーム可能 VM を使用するシナリオ
           href: devtest-lab-use-claim-capabilities.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: ラボの構成
       items:
@@ -72,6 +72,8 @@
           href: devtest-lab-auto-startup-vm.md
         - name: ラボのスケーリング
           href: devtest-lab-scale-lab.md
+        - name: ラボ VM のマネージド ID の有効化
+          href: enable-managed-identities-lab-vms.md
         - name: 仮想マシンのベースの管理
           items:
             - name: Azure Marketplace イメージの構成
@@ -235,7 +237,7 @@
               href: devtest-lab-guidance-governance-application-migration-integration.md
     - name: Azure でアプリをテストする
       href: test-app-azure.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: VM および環境の作成の失敗に関するトラブルシューティング
           href: troubleshoot-vm-environment-creation-failures.md

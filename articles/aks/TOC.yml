@@ -21,18 +21,27 @@
       items:
         - name: Draft の使用
           href: kubernetes-draft.md
-        - name: Visual Studio Code と Azure Dev Spaces を使用する
-          href: ../dev-spaces/quickstart-netcore.md
-          maintainContext: true
-        - name: Visual Studio と Azure Dev Spaces を使用する
-          href: ../dev-spaces/quickstart-netcore-visualstudio.md
-          maintainContext: true
-        - name: CLI と Azure Dev Spaces を使用する
-          href: ../dev-spaces/quickstart-cli.md
-          maintainContext: true
-        - name: チーム開発に Azure Dev Spaces を使用する
-          href: ../dev-spaces/quickstart-team-development.md
-          maintainContext: true
+        - name: Azure Dev Spaces
+          expanded: true
+          items:
+            - name: チーム開発に Azure Dev Spaces を使用する
+              href: ../dev-spaces/quickstart-team-development.md
+              maintainContext: true
+            - name: Visual Studio Code の使用
+              href: ../dev-spaces/quickstart-netcore.md
+              maintainContext: true
+            - name: Visual Studio を使用する
+              href: ../dev-spaces/quickstart-netcore-visualstudio.md
+              maintainContext: true
+            - name: CLI の使用
+              href: ../dev-spaces/quickstart-cli.md
+              maintainContext: true
+            - name: Azure Dev Spaces で Java を使用する
+              href: ../dev-spaces/quickstart-java.md
+              maintainContext: true
+            - name: Azure Dev Spaces で Node.js を使用する
+              href: ../dev-spaces/quickstart-nodejs.md
+              maintainContext: true
 - name: チュートリアル
   items:
     - name: 1 - AKS 用にアプリケーションを準備する

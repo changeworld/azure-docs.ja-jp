@@ -4,7 +4,7 @@
   items:
     - name: Azure Data Explorerとは
       href: data-explorer-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: クラスターとデータベースの作成 - Azure portal
@@ -32,7 +32,9 @@
       href: ingest-data-overview.md
     - name: データ視覚化の概要
       href: viz-overview.md
-- name: ハウツー ガイド
+    - name: セキュリティの概要
+      href: security.md
+- name: 操作方法ガイド
   items:
     - name: クラスターとデータベースの作成
       items:
@@ -50,7 +52,7 @@
       items:
         - name: イベント ハブ
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: ingest-data-event-hub.md
             - name: Python
               href: data-connection-event-hub-python.md
@@ -60,7 +62,7 @@
               href: data-connection-event-hub-resource-manager.md
         - name: Event Grid
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: ingest-data-event-grid.md
             - name: Python
               href: data-connection-event-grid-python.md
@@ -70,7 +72,7 @@
               href: data-connection-event-grid-resource-manager.md
         - name: IoT Hub
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: ingest-data-iot-hub.md
             - name: Python
               href: data-connection-iot-hub-python.md
@@ -94,7 +96,7 @@
           href: ingest-data-logstash.md
         - name: Azure Data Factory を使用してデータをコピーする
           href: data-factory-load-data.md
-    - name: データのクエリを実行する
+    - name: クエリ データ
       items:
         - name: クエリを作成する
           href: write-queries.md
@@ -126,7 +128,7 @@
               href: power-bi-connector.md
             - name: インポートされたクエリ
               href: power-bi-imported-query.md
-            - name: SQL クエリ
+            - name: SQL クエリ (SQL query)
               href: power-bi-sql-query.md
         - name: Excel
           items:
@@ -144,7 +146,19 @@
           href: sisense.md
         - name: Redash
           href: redash.md
-    - name: 管理
+    - name: セキュリティで保護
+      items:
+        - name: クラスターのセキュリティを管理する
+          href: manage-cluster-security.md
+        - name: マネージド ID の構成
+          href: managed-identities.md
+        - name: 顧客管理キーの構成
+          items:
+            - name: 'C#'
+              href: customer-managed-keys-csharp.md
+            - name: Azure Resource Manager テンプレート
+              href: customer-managed-keys-resource-manager.md
+    - name: 管理する
       items:
         - name: クラスター
           items:
@@ -154,11 +168,9 @@
               href: manage-cluster-horizontal-scaling.md
             - name: クラスターの垂直スケーリングを管理する
               href: manage-cluster-vertical-scaling.md
-            - name: クラスターのセキュリティを管理する
-              href: manage-cluster-security.md
             - name: クラスターの正常性を確認する
               href: check-cluster-health.md
-        - name: Database
+        - name: データベース
           items:
             - name: フォロワー データベース
               href: follower.md
@@ -176,11 +188,11 @@
               href: delete-data.md
             - name: 重複したデータを処理する
               href: dealing-with-duplicates.md
-    - name: デプロイ
+    - name: 配置
       items:
         - name: 仮想ネットワークにクラスターをデプロイする
           href: vnet-deployment.md
-    - name: 監視
+    - name: モニター
       items:
         - name: 診断ログを使用してインジェストを監視する
           href: using-diagnostic-logs.md
@@ -204,7 +216,7 @@
           href: kqlmagic.md
         - name: Azure Pipelines
           href: devops.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: クラスターを作成する
           href: troubleshoot-create-cluster.md

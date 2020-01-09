@@ -4,18 +4,18 @@
   items:
     - name: Azure 上の Jenkins について
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Jenkins サーバーを作成する
       href: install-jenkins-solution-template.md
 - name: チュートリアル
   items:
-    - name: 1. Install
+    - name: 1. インストール
       items:
         - name: Jenkins サーバーを作成する
           href: install-jenkins-solution-template.md
-    - name: 2. 構成
+    - name: '2. [構成]'
       items:
         - name: Azure Container Instances でのスケーリング
           href: /azure/container-instances/container-instances-jenkins
@@ -24,6 +24,10 @@
           href: jenkins-azure-vm-agents.md
     - name: 3. CI/CD の実装
       items:
+        - name: Azure Spring Cloud
+          items:
+            - name: Azure CLI を使用した Azure Spring Cloud へのデプロイ
+              href: tutorial-jenkins-deploy-cli-spring-cloud-service.md
         - name: AKS
           items:
             - name: Kubernetes への CI/CD
