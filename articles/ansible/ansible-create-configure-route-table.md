@@ -4,12 +4,12 @@ description: Ansible を使用して Azure ルート テーブルを作成、管
 keywords: ansible, azure, devops, bash, プレイブック, ネットワーク, ルート, ルート テーブル
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d1e44a98405bc1009f6f3d56d90fc1fd655d77d5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1f08aebe7e9dcc1c5687f50ac91c7cb8cc8a62eb
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156495"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659799"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>チュートリアル:Ansible を使用して Azure ルート テーブルを構成する
 
@@ -30,7 +30,7 @@ Azure では、Azure のサブネット、仮想ネットワーク、および�
 
 ## <a name="create-a-route-table"></a>ルート テーブルの作成
 
-このセクションのプレイブック コードはルート テーブルを作成します。 ルート テーブルの制限については、[Azure の制限](/azure/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits)に関する記事を参照してください。 
+このセクションのプレイブック コードはルート テーブルを作成します。 ルート テーブルの制限については、[Azure の制限](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits)に関する記事を参照してください。 
 
 次のプレイブックを `route_table_create.yml` という名前で保存します。
 
@@ -255,6 +255,6 @@ ansible-playbook route_table_facts.yml
 ansible-playbook route_table_delete.yml
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"] 
 > [Azure 上の Ansible](/azure/ansible/)
