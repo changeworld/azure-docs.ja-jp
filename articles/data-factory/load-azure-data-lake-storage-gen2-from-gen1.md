@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: 19b1b345c72361ae1fcdad5221dcd0e877b32fe7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5809307ff8e047ebc6120cb5ebf36590f2a2a51a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926301"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444018"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 にデータをコピーする
 
@@ -49,9 +49,9 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
  
     * **Name**:Azure Data Factory のグローバルに一意の名前を入力します。 "データ ファクトリ名 \"LoadADLSDemo\" は利用できません" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 たとえば、 _**yourname**_ **ADFTutorialDataFactory** という名前を使用します。 データ ファクトリをもう一度作成します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
     * **サブスクリプション**:データ ファクトリを作成する Azure サブスクリプションを選択します。 
-    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択します。 **[新規作成]** オプションを選択し、リソース グループの名前を入力することもできます。 リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。 
+    * **リソース グループ**:ドロップダウン リストから既存のリソース グループを選択します。 **[新規作成]** オプションを選択し、リソース グループの名前を入力することもできます。 リソース グループの詳細については、[リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。 
     * **バージョン**: **[V2]** を選択します。
-    * **場所**:データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 
+    * **[場所]** :データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 
 
 3. **作成** を選択します。
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。 
@@ -80,7 +80,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
    a. アカウント名に対してお使いの Data Lake Storage Gen1 を選択し、 **[テナント]** を指定または確認します。
   
-   b. **[接続のテスト]** を選択して設定を検証します。 続けて、 **[完了]** を選択します。
+   b. **[接続のテスト]** を選択して設定を検証します。 **[完了]** を選択します。
   
    c. 新しい接続が作成されたことがわかります。 **[次へ]** を選択します。
    
@@ -105,7 +105,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 
    a. **[ストレージ アカウント名]** ドロップダウン リストから目的の Data Lake Storage Gen2 に対応するアカウントを選択します。
    
-   b. **[完了]** を選択して、接続を作成します。 次に、 **[次へ]** を選択します。
+   b. **[完了]** を選択して、接続を作成します。 **[次へ]** を選択します。
    
    ![Azure Data Lake Storage Gen2 アカウントを指定する](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 
@@ -175,7 +175,7 @@ Data Lake Storage Gen1 から新規ファイルまたは更新されたファイ
 
 増分読み込みを行う適切な頻度は、Azure Data Lake Storage Gen1 内のファイルの合計数と、毎回読み込まれる新しいファイルまたは更新されたファイルのボリュームに依存します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [コピー アクティビティの概要](copy-activity-overview.md)

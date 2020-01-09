@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: adc9855d30a3b286cfbc3489ec639ab8b460e314
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 02456d6e690c2ef96b578a00f8e71ae2515ec089
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872810"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363117"
 ---
 # <a name="workbook-resource-parameters"></a>ブックのリソース パラメーター
 
@@ -30,9 +30,9 @@ ms.locfileid: "74872810"
 4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `Applications` (パラメーター名: {2})
     2. [パラメーターの種類]\: [`Resource picker`ドロップ ダウン]
-    3. [必須ですか?]\: `checked`
+    3. [必須ですか?]\: `checked`オン
     4. [Allow multiple selections]\(複数選択を許可する\): `checked`
-5. [データの取得元]\: [`Workbook Resources`]
+5. [データの取得元]\: [クエリ]
 6. [リソースの種類のみを含める]\: `Application Insights`
 7. ツール バーの [保存] を選択して、パラメーターを作成します。
 
@@ -45,9 +45,9 @@ ms.locfileid: "74872810"
 4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `Applications` (パラメーター名: {2})
     2. [パラメーターの種類]\: [`Resource picker`ドロップ ダウン]
-    3. [必須ですか?]\: `checked`
+    3. [必須ですか?]\: `checked`オン
     4. [Allow multiple selections]\(複数選択を許可する\): `checked`
-5. [データの取得元]\: [`Query`]
+5. [データの取得元]\: [クエリ]
     1. [クエリの種類]\: [`Azure Resource Graph`]
     2. [サブスクリプション]\: [`Use default subscriptions`]
     3. クエリ コントロールで、次のスニペットを追加します。
@@ -71,9 +71,9 @@ ms.locfileid: "74872810"
 4. ポップアップ表示される新しいパラメーター ペインで、次のように入力します。
     1. Parameter name: `Applications` (パラメーター名: {2})
     2. [パラメーターの種類]\: [`Resource picker`ドロップ ダウン]
-    3. [必須ですか?]\: `checked`
+    3. [必須ですか?]\: `checked`オン
     4. [Allow multiple selections]\(複数選択を許可する\): `checked`
-5. [データの取得元]\: [`JSON`]
+5. [データの取得元]\: [クエリ]
     1. コンテンツ コントロールで、次の JSON スニペットを追加します。
     ```json
     [
@@ -112,7 +112,7 @@ ms.locfileid: "74872810"
 | `{Applications:subscription}` | 選択されたリソースのサブスクリプション |  |
 | `{Applications:grid}` | リソースのプロパティを示すグリッド。 デバッグ中にテキスト ブロックでレンダリングする場合に便利です。  |  |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * ブックの豊富な視覚化オプションの学習を[開始](workbooks-visualizations.md)します。
 * ブック リソースへのアクセスを[制御](workbooks-access-control.md)し、共有します。
