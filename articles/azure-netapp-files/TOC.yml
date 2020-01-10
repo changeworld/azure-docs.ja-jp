@@ -6,7 +6,7 @@
       href: azure-netapp-files-introduction.md
     - name: ストレージ階層の理解
       href: azure-netapp-files-understand-storage-hierarchy.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: Azure NetApp Files を設定し、NFS ボリュームを作成する
@@ -35,7 +35,7 @@
       href: azure-netapp-files-solution-architectures.md
     - name: Azure NetApp Files についての FAQ
       href: azure-netapp-files-faqs.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: Azure NetApp Files に登録する
       href: azure-netapp-files-register.md
@@ -81,5 +81,7 @@
       href: 'https://azure.microsoft.com/pricing/details/netapp/'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'
+    - name: SLA
+      href: 'https://azure.microsoft.com/support/legal/sla/netapp/'
     - name: ビデオ
       href: azure-netapp-files-videos.md
