@@ -673,18 +673,18 @@
       href: /python/api/overview/azure/datafactory?view=azure-python
 - name: リソース
   items:
+    - name: ホワイトペーパー
+      href: whitepapers.md
+    - name: よく寄せられる質問
+      href: frequently-asked-questions.md
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=data-factory'
     - name: 質問をする - MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc'
     - name: 質問をする - Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-data-factory'
     - name: 機能をリクエストする
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
-    - name: よく寄せられる質問
-      href: frequently-asked-questions.md
-    - name: ホワイトペーパー
-      href: whitepapers.md
-    - name: ロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?tag=data-factory'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: リージョンごとの可用性
