@@ -66,6 +66,8 @@
     - name: Personalizer の作成と構成
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: 学習ポリシーの管理
+      href: how-to-learning-policy.md
     - name: 分析
       items:
         - name: オフライン評価

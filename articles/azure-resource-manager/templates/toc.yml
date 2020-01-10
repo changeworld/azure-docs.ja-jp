@@ -44,6 +44,9 @@
         - name: リソースのデプロイ順序の設定
           displayName: 'dependent resources, dependency'
           href: template-tutorial-create-templates-with-dependent-resources.md
+        - name: デプロイ スクリプトの使用
+          displayName: custom script
+          href: template-tutorial-deployment-script.md
         - name: 使用条件
           href: template-tutorial-use-conditions.md
         - name: Key Vault の統合
@@ -122,6 +125,9 @@
               href: add-resource-extensions.md
         - name: 出力
           href: template-outputs.md
+        - name: デプロイ スクリプト
+          displayName: custom script
+          href: deployment-script-template.md
         - name: テンプレートをモジュール化する
           displayName: 'linked templates, nested templates'
           href: linked-templates.md

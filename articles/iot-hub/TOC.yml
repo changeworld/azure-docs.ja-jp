@@ -83,7 +83,9 @@
       href: tutorial-connectivity.md
 - name: 概念
   items:
-    - name: TLS 1.2 の適用
+    - name: TLS サポート
+      href: iot-hub-tls.md
+    - name: TLS 1.0 および 1.1 の廃止
       href: tls-1.2-everywhere.md
     - name: メッセージ エンリッチメントの概要
       href: iot-hub-message-enrichments-overview.md

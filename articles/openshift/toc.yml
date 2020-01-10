@@ -22,7 +22,7 @@
           href: cluster-administration-cluster-admin-role.md
         - name: 2 - セキュリティ コンテキスト制約の管理
           href: cluster-administration-security-context-constraints.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: Azure Red Hat OpenShift 開発環境の設定
@@ -37,6 +37,16 @@
       href: howto-deploy-prometheus.md
     - name: Azure Red Hat OpenShift クラスター内でプロジェクトを管理する
       href: howto-manage-projects.md
+    - name: 監視およびログ記録
+      items:
+        - name: Azure Monitor for containers (プレビュー)
+          items:
+            - name: Azure Monitor for containers を構成する
+              href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+              maintainContext: true
+            - name: Azure Monitor for containers を有効にする
+              href: ../azure-monitor/insights/container-insights-optout-openshift.md
+              maintainContext: true
 - name: リファレンス
   items:
     - name: Azure Red Hat OpenShift CLI

@@ -4,7 +4,7 @@
   href: introduction.md
 - name: '[シングル サインオンの設定]'
   items:
-    - name: 概要
+    - name: Azure セキュリティ制御の概要
       href: overview.md
     - name: ネットワークのセキュリティ
       href: security-control-network-security.md
