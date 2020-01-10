@@ -113,6 +113,8 @@
       items:
         - name: セキュリティの概要
           href: search-security-overview.md
+        - name: プライベート エンドポイントの作成
+          href: service-create-private-endpoint.md
         - name: サービス キーの管理
           href: search-security-api-keys.md
         - name: ロール ベースの管理者アクセス

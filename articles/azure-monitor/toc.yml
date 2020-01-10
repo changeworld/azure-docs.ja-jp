@@ -91,6 +91,8 @@
       items:
         - name: ログ データ
           href: platform/data-security.md
+        - name: カスタマー マネージド キー
+          href: platform/customer-managed-keys.md
         - name: 個人のログ データの処理
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
