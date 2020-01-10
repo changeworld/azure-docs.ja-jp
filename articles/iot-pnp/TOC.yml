@@ -71,14 +71,18 @@
       href: howto-develop-solution.md
 - name: リファレンス
   items:
-    - name: デジタル ツイン
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
-    - name: デジタル ツインのサービス
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
-    - name: デジタル ツインのモデル リポジトリ
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
-    - name: REST セキュリティ トークンを生成する
-      href: howto-generate-sas-token.md
+    - name: ライブラリと SDK
+      href: libraries-sdks.md
+    - name: REST API
+      items:
+        - name: デジタル ツイン
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
+        - name: デジタル ツインのサービス
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
+        - name: デジタル ツインのモデル リポジトリ
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
+        - name: REST セキュリティ トークンを生成する
+          href: howto-generate-sas-token.md
 - name: 関連項目
   items:
     - name: ソリューション

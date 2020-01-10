@@ -29,84 +29,98 @@
       href: data-flow-create.md
 - name: チュートリアル
   items:
-    - name: クラウドのデータをコピーする
+    - name: データのコピーと取り込み
       items:
-        - name: データのコピー ツール
-          href: tutorial-copy-data-tool.md
-        - name: ユーザー インターフェイス (UI)
-          href: tutorial-copy-data-portal.md
-        - name: .NET
-          href: tutorial-copy-data-dot-net.md
-    - name: オンプレミスのデータをクラウドにコピーする
-      items:
-        - name: データのコピー ツール
-          href: tutorial-hybrid-copy-data-tool.md
-        - name: ユーザー インターフェイス (UI)
-          href: tutorial-hybrid-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-hybrid-copy-powershell.md
-    - name: データを一括コピーする
-      items:
-        - name: ユーザー インターフェイス (UI)
-          href: tutorial-bulk-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-bulk-copy.md
-    - name: データを増分コピーする
-      href: tutorial-incremental-copy-overview.md
-      items:
-        - name: 1 - 1 つのテーブルからコピーする
-          items:
-            - name: ユーザー インターフェイス (UI)
-              href: tutorial-incremental-copy-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-powershell.md
-        - name: 2 - 複数のテーブルからコピーする
-          items:
-            - name: ユーザー インターフェイス (UI)
-              href: tutorial-incremental-copy-multiple-tables-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-multiple-tables-powershell.md
-        - name: 3 - 変更追跡機能を使用する
-          items:
-            - name: ユーザー インターフェイス (UI)
-              href: tutorial-incremental-copy-change-tracking-feature-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-change-tracking-feature-powershell.md
-        - name: 4 - lastmodifieddate を基準に新しいファイルをコピーする
+        - name: Azure Blob Storage から Azure SQL Database
           items:
             - name: データのコピー ツール
+              href: tutorial-copy-data-tool.md
+            - name: ユーザー インターフェイス (UI)
+              href: tutorial-copy-data-portal.md
+            - name: .NET
+              href: tutorial-copy-data-dot-net.md
+        - name: オンプレミスの SQL Server データベースから Azure Blob Storage
+          items:
+            - name: データのコピー ツール
+              href: tutorial-hybrid-copy-data-tool.md
+            - name: ユーザー インターフェイス (UI)
+              href: tutorial-hybrid-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-hybrid-copy-powershell.md
+        - name: アマゾン ウェブ サービス S3 から Azure Data Lake Storage
+          items:
+            - name: Azure Data Lake Storage Gen2
+              href: load-azure-data-lake-storage-gen2.md
+            - name: Azure Data Lake Storage Gen1
+              href: load-azure-data-lake-store.md
+        - name: Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2
+          href: load-azure-data-lake-storage-gen2-from-gen1.md
+        - name: Azure SQL Database から Azure Synapse Analytics
+          href: load-azure-sql-data-warehouse.md
+        - name: SAP BW から Azure Data Lake Storage Gen2
+          href: load-sap-bw-data.md
+        - name: Office 365 から Azure Blob Storage
+          href: load-office-365-data.md
+        - name: 複数のテーブルを一括で
+          items:
+            - name: ユーザー インターフェイス (UI)
+              href: tutorial-bulk-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-bulk-copy.md
+        - name: データの増分読み込み
+          href: tutorial-incremental-copy-overview.md
+          items:
+            - name: 1 つの Azure SQL Database テーブルから
+              items:
+                - name: ユーザー インターフェイス (UI)
+                  href: tutorial-incremental-copy-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-powershell.md
+            - name: 複数のオンプレミス SQL Server テーブルから
+              items:
+                - name: ユーザー インターフェイス (UI)
+                  href: tutorial-incremental-copy-multiple-tables-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-multiple-tables-powershell.md
+            - name: SQL Server で変更追跡情報を使用する
+              items:
+                - name: ユーザー インターフェイス (UI)
+                  href: tutorial-incremental-copy-change-tracking-feature-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: 最後に変更されたデータによる新しいファイル
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
-        - name: 5 - 時間でパーティション分割されたファイル名を基準に新しいファイルをコピーする
-          items:
-            - name: データのコピー ツール
+            - name: 時間でパーティション分割されたファイル名による新しいファイル
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: データ フローを使用してデータを変換、準備する
+    - name: データを変換する
       items:
         - name: マッピング データ フローを使用してデータを変換する
-          href: tutorial-data-flow.md
-        - name: マッピング データ フローのビデオ チュートリアル
-          href: data-flow-tutorials.md
+          items:
+            - name: マッピング データ フローを使用してデータを変換する
+              href: tutorial-data-flow.md
+            - name: マッピング データ フローのビデオ チュートリアル
+              href: data-flow-tutorials.md
         - name: ラングリング データ フローを使用してデータを準備する
           href: wrangling-data-flow-tutorial.md
-    - name: 外部での変換
-      items:
-        - name: HDInsight Spark
+        - name: 外部サービスの使用
           items:
-            - name: ユーザー インターフェイス (UI)
-              href: tutorial-transform-data-spark-portal.md
-            - name: Azure PowerShell
-              href: tutorial-transform-data-spark-powershell.md
-        - name: Databricks Notebook
-          items:
-            - name: ユーザー インターフェイス (UI)
-              href: transform-data-using-databricks-notebook.md
-    - name: 仮想ネットワークでの Hive 変換
-      items:
-        - name: ユーザー インターフェイス (UI)
-          href: tutorial-transform-data-hive-virtual-network-portal.md
-        - name: Azure PowerShell
-          href: tutorial-transform-data-hive-virtual-network.md
-    - name: 分岐とチェーンを追加する
+            - name: HDInsight Spark
+              items:
+                - name: ユーザー インターフェイス (UI)
+                  href: tutorial-transform-data-spark-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-spark-powershell.md
+            - name: Databricks Notebook
+              items:
+                - name: ユーザー インターフェイス (UI)
+                  href: transform-data-using-databricks-notebook.md
+            - name: 仮想ネットワークでの Hive 変換
+              items:
+                - name: ユーザー インターフェイス (UI)
+                  href: tutorial-transform-data-hive-virtual-network-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-hive-virtual-network.md
+    - name: 制御フロー
       items:
         - name: ユーザー インターフェイス (UI)
           href: tutorial-control-flow-portal.md
@@ -118,19 +132,6 @@
           href: tutorial-deploy-ssis-packages-azure.md
         - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
-    - name: Data Lake Storage Gen2 の読み込み
-      href: load-azure-data-lake-storage-gen2.md
-      items:
-        - name: Data Lake Storage Gen1 からのコピー
-          href: load-azure-data-lake-storage-gen2-from-gen1.md
-    - name: Synapse Analytics (旧称 SQL Data Warehouse) を読み込む
-      href: load-azure-sql-data-warehouse.md
-    - name: Data Lake Storage Gen1 の読み込み
-      href: load-azure-data-lake-store.md
-    - name: SAP BW データの読み込み
-      href: load-sap-bw-data.md
-    - name: Office 365 データの読み込み
-      href: load-office-365-data.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -518,12 +519,14 @@
           href: control-flow-expression-language-functions.md
         - name: システム変数
           href: control-flow-system-variables.md
-        - name: データ フローのパラメーター
+        - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
     - name: Security
       items:
         - name: データ移動のセキュリティに関する考慮事項
           href: data-movement-security-considerations.md
+        - name: Azure Integration Runtime の IP アドレス
+          href: azure-integration-runtime-ip-addresses.md
         - name: Azure Key Vault への資格情報の格納
           href: store-credentials-in-key-vault.md
         - name: パイプライン アクティビティでの Azure Key Vault シークレットの使用
@@ -618,18 +621,18 @@
           href: solution-template-databricks-notebook.md
     - name: トラブルシューティング ガイド
       items:
-        - name: アクティビティのトラブルシューティング
+        - name: Activities
           href: data-factory-troubleshoot-guide.md
-        - name: コネクタのトラブルシューティング
+        - name: Connectors
           href: connector-troubleshoot-guide.md
-        - name: Azure SSIS IR の管理に関するトラブルシューティング
-          href: ssis-integration-runtime-management-troubleshoot.md
-        - name: セルフホステッド IR のトラブルシューティング
-          href: self-hosted-integration-runtime-troubleshoot-guide.md
-        - name: Azure-SSIS IR でのパッケージ実行に関するトラブルシューティング
-          href: ssis-integration-runtime-ssis-activity-faq.md
-        - name: データ フローのトラブルシューティング
+        - name: データ フロー
           href: data-flow-troubleshoot-guide.md
+        - name: セルフホステッド統合ランタイム
+          href: self-hosted-integration-runtime-troubleshoot-guide.md
+        - name: Azure-SSIS 統合ランタイム
+          href: ssis-integration-runtime-management-troubleshoot.md
+        - name: Azure-SSIS IR でのパッケージ実行
+          href: ssis-integration-runtime-ssis-activity-faq.md
 - name: シナリオ
   items:
     - name: データ レイクおよび EDW のデータ移行

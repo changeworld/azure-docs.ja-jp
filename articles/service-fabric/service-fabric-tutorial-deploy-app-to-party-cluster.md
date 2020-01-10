@@ -1,26 +1,17 @@
 ---
-title: Azure で Service Fabric アプリをクラスターにデプロイする | Microsoft Docs
-description: Visual Studio でアプリケーションをクラスターにデプロイする方法を説明します。
-services: service-fabric
-documentationcenter: .net
+title: Azure で Service Fabric アプリをクラスターにデプロイする
+description: Visual Studio から新しく作成された Azure Service Fabric クラスターに既存のアプリケーションをデプロイする方法について説明します。
 author: athinanthny
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 37c27ae71eddcb5a35b9baeae250bee232c7acb7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213199"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646009"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric アプリケーションをクラスターにデプロイする
 
@@ -93,7 +84,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ![クラスターの作成](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-**[VM の詳細]** タブで、クラスター管理者アカウントの**ユーザー名**と**パスワード**を入力します。  クラスター ノードの**仮想マシン イメージ**を選択し、各クラスター ノードの**仮想マシン サイズ**を選択します。  **[詳細]** タブをクリックします。
+**[VM の詳細]** タブで、クラスター管理者アカウントの**ユーザー名**と**パスワード**を入力します。  クラスター ノードの**仮想マシン イメージ**を選択し、各クラスター ノードの**仮想マシン サイズ**を選択します。  **[詳細設定]** タブをクリックします。
 
 ![クラスターの作成](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
@@ -112,12 +103,12 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 **[発行]** を選択します。
 
-アプリケーションがデプロイされたら、ブラウザーを開き、クラスター アドレスとそれに続けて「 **:8080**」を入力します。 他のポートが構成されている場合は、そのポートを入力します。 例: `http://mytestcluster.southcentral.cloudapp.azure.com:8080`。 Azure のクラスターでアプリケーションが実行されていることがわかります。 投票 Web ページで、投票オプションの追加や削除を試します。さらに、これらのオプションの 1 つ以上に投票してみます。
+アプリケーションがデプロイされたら、ブラウザーを開き、クラスター アドレスとそれに続けて「 **:8080**」を入力します。 他のポートが構成されている場合は、そのポートを入力します。 たとえば `http://mytestcluster.southcentral.cloudapp.azure.com:8080` です。 Azure のクラスターでアプリケーションが実行されていることがわかります。 投票 Web ページで、投票オプションの追加や削除を試します。さらに、これらのオプションの 1 つ以上に投票してみます。
 
 ![Service Fabric の投票サンプル](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 チュートリアルのこの部分で学習した内容は次のとおりです。
 
 > [!div class="checklist"]

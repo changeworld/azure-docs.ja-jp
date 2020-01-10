@@ -1,26 +1,17 @@
 ---
-title: チュートリアル - Azure Service Fabric Mesh で実行されているアプリをアップグレードする | Microsoft Docs
+title: チュートリアル - Azure Service Fabric Mesh で実行されているアプリをアップグレードする
 description: このチュートリアルでは、Service Fabric Mesh で実行されている Service Fabric アプリケーションをアップグレードする方法について説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3567ede82f2eebf602e95dcd012f5c88a40af796
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 42db17fa6474d3230bc523d0cf65b375cf01276e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351739"
 ---
 # <a name="tutorial-upgrade-a-service-fabric-application-running-in-service-fabric-mesh"></a>チュートリアル:Service Fabric Mesh で実行されている Service Fabric アプリケーションをアップグレードする
 
@@ -59,7 +50,7 @@ Service Fabric Mesh にアプリケーションをデプロイすることの主
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-アプリケーション リソースのデプロイ テンプレートでは、各サービスに *cpu* プロパティがあり、それを使用して、要求された CPU リソースを設定できます。 1 つのアプリケーションを、それぞれが固有の *cpu* 設定を持ち、まとめてデプロイおよび管理される、複数のサービスで構成することができます。 Web フロントエンド サービスの CPU リソースを増やすには、デプロイ テンプレートまたはパラメーター ファイルで *cpu* の値を変更します。  その後、アプリケーションをアップグレードします。
+アプリケーション リソースのデプロイ テンプレートでは、各サービスに *cpu* プロパティがあり、それを使用して、要求された CPU リソースを設定できます。 1 つのアプリケーションを、それぞれが固有の *cpu* 設定を持ち、まとめてデプロイおよび管理される、複数のサービスで構成することができます。 Web フロントエンド サービスの CPU リソースを増やすには、デプロイ テンプレートまたはパラメーター ファイルで *cpu* の値を変更します。  次に、アプリケーションをアップグレードします。
 
 ### <a name="modify-the-deployment-template-parameters"></a>デプロイ テンプレートのパラメーターを変更する
 
@@ -133,7 +124,7 @@ az mesh deployment create --resource-group myResourceGroup --template-file c:\te
 az mesh service show --resource-group myResourceGroup --name WebFrontEnd --app-name todolistapp
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 

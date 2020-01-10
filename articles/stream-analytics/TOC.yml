@@ -61,6 +61,16 @@
           href: stream-analytics-sql-output-perf.md
         - name: BLOB のカスタム パス パターン
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Stream Analytics のジョブを最適化する
+      items:
+        - name: ストリーミング ユニットの理解と調整
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: クエリ パフォーマンスの向上
+          href: stream-analytics-parallelization.md
+        - name: 入力の再パーティション
+          href: repartition.md
+        - name: ジョブのスループットを高くする
+          href: stream-analytics-scale-jobs.md
     - name: ジョブの状態
       href: job-states.md
     - name: ウィンドウ関数
@@ -148,20 +158,6 @@
           href: stream-analytics-monitor-jobs.md
         - name: ジョブの監視 - Visual Studio
           href: stream-analytics-monitor-jobs-use-vs.md
-    - name: スケール
-      items:
-        - name: ストリーミング ユニットを利用したスケーリング
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: 並列処理を使用したスケーリング
-          items:
-            - name: クエリの並列処理
-              href: stream-analytics-parallelization.md
-            - name: スループットの向上
-              href: stream-analytics-scale-jobs.md
-        - name: ML 関数を利用したスケーリング
-          href: stream-analytics-scale-with-machine-learning-functions.md
-        - name: 再パーティション分割によるスケーリング
-          href: repartition.md
     - name: 自動化
       items:
         - name: .NET SDK の使用
@@ -170,7 +166,7 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: IoT Edge ジョブへの API の使用
           href: stream-analytics-cicd-api.md
-    - name: Visual Studio
+    - name: "Visual\_Studio"
       items:
         - name: ツールをインストールする
           href: stream-analytics-tools-for-visual-studio-install.md
@@ -218,6 +214,8 @@
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: ジョブ ダイアグラムを使用したデバッグ
       href: stream-analytics-job-diagram-with-metrics.md
+    - name: ML 関数を利用したスケーリング
+      href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Stream Analytics クエリ言語
   items:
     - name: 組み込み関数

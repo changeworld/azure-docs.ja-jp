@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: インターネット ピアリングのドキュメント
+summary: Microsoft とのインターネット ピアリングについて説明します。
+metadata:
+  title: インターネット ピアリングのドキュメント
+  titleSuffix: Azure
+  description: Microsoft とのピアリングについて説明します。
+  services: internet-peering
+  ms.service: internet-peering
+  ms.topic: landing-page
+  author: prmitiki
+  ms.author: prmitiki
+  ms.date: 11/27/2019
+  ms.openlocfilehash: 83549a56b3fb81c66827d1e9f87718467fb1098a
+  ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 01/09/2020
+  ms.locfileid: "75773521"
+landingContent:
+- title: インターネット ピアリングについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: インターネット ピアリングについて
+      url: overview.md
+    - text: インターネット ピアリングとPeering Service
+      url: overview-peering-service.md
+  - linkListType: concept
+    links:
+    - text: ピアリング ポリシー
+      url: policy.md
+    - text: Microsoft とのピアリングを設定するための前提条件
+      url: prerequisites.md
+    - text: インターネット ピアリングのよくあるご質問
+      url: faqs.md
+- title: はじめに
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ポータルを使用してピア ASN を Azure サブスクリプションに関連付ける
+      url: howto-subscription-association-portal.md
+- title: Exchange ピアリング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Exchange ピアリングのチュートリアル
+      url: walkthrough-exchange-all.md
+    - text: ポータルを使用して Exchange ピアリングを作成または変更する
+      url: howto-exchange-portal.md
+    - text: ポータルを使用して従来の Exchange ピアリングを Azure リソースに変換する
+      url: howto-legacy-exchange-portal.md
+- title: Direct ピアリング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Direct ピアリングのチュートリアル
+      url: walkthrough-direct-all.md
+    - text: ポータルを使用して Direct ピアリングを作成または変更する
+      url: howto-direct-portal.md
+    - text: ポータルを使用して従来の Direct ピアリングを Azure リソースに変換する
+      url: howto-legacy-direct-portal.md
+- title: Peering Service
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Peering Service のよくあるご質問
+      url: service-faqs.md
+  - linkListType: how-to-guide
+    links:
+    - text: Peering Service パートナーのチュートリアル
+      url: walkthrough-peering-service-all.md
+    - text: ポータルを使用して Direct ピアリングで Peering Service を有効にする
+      url: howto-peering-service-portal.md

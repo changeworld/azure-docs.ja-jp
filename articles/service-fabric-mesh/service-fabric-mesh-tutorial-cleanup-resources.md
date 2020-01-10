@@ -1,26 +1,17 @@
 ---
-title: チュートリアル - Azure Service Fabric Mesh のリソースをクリーンアップする | Microsoft Docs
+title: チュートリアル - Azure Service Fabric Mesh のリソースをクリーンアップする
 description: 使わなくなったリソースに対して課金されないように、Azure Service Fabric Mesh のリソースを削除する方法を説明します。
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a60c42310f0698b8290e7ba6195eeed44fe0b95e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d5e33099d58c9cb4c110a78f2576d6eac83a7932
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56815792"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351869"
 ---
 # <a name="tutorial-remove-azure-resources"></a>チュートリアル:Azure のリソースを削除する
 
@@ -46,7 +37,7 @@ ms.locfileid: "56815792"
 
 * To Do アプリをデプロイしていない場合は、[Service Fabric Mesh Web アプリケーションの発行](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)に関するページの指示に従ってください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 これは、チュートリアルの最後です。 作成したリソースの作業が終わったら、使用しなくなったリソースに課金されないように削除します。 Mesh は 1 秒単位で課金されるサーバーレス サービスのため、これは特に重要です。 Mesh の価格について詳しくは、 https://aka.ms/sfmeshpricing をご覧ください。
 
@@ -62,9 +53,9 @@ az group delete --resource-group sfmeshTutorial1RG
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
-**sfmeshTutorial1RG** リソース グループは、[ポータルから](../azure-resource-manager/manage-resource-groups-portal.md#delete-resource-groups)削除することもできます。 
+**sfmeshTutorial1RG** リソース グループは、[ポータルから](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups)削除することもできます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Fabric Mesh アプリケーションを Azure に発行したら、次のことを行ってみてください。
 

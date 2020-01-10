@@ -1,17 +1,17 @@
 ---
-title: Azure Functions で Python と TensorFlow を使用して機械学習の推論を行う
+title: Azure で機械学習に Python と TensorFlow を使用する
 description: このチュートリアルでは、Azure Functions での TensorFlow 機械学習モデルの適用方法について説明します
 author: anthonychu
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: e7c4e1bbd23d43d5e11ab8b26c3d4e1215b4946b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f8122a828f19c3daf6c23a866a99a214ee2c4427
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230501"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409770"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>チュートリアル:Python および TensorFlow を使用して Azure Functions で機械学習モデルを適用する
 
@@ -170,7 +170,7 @@ copy ..\resources\predict.py classify
 
 *classify* に *predict.py* という名前のファイルが含まれていることを確認します。
 
-### <a name="install-dependencies"></a>依存関係をインストールする
+### <a name="install-dependencies"></a>依存関係のインストール
 
 ヘルパー ライブラリには、インストールされる必要があるいくつかの依存関係があります。 エディターで *start/requirements.txt* を開き、次の依存関係をファイルに追加します。
 
@@ -271,10 +271,10 @@ py -3.6  -m http.server
 
 [送信] をクリックすると、関数アプリが呼び出され、結果がページに表示されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 このチュートリアルの全体は、お使いのコンピューター上でローカルに実行されるため、クリーンアップする Azure リソースやサービスはありません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Functions を使用して HTTP API をビルドしてカスタマイズし、TensorFlow モデルを使用して予測を行う方法について学習しました。 また、Web アプリケーションから API を呼び出す方法についても学習しました。
 

@@ -93,7 +93,7 @@
       href: knowledge-store-concept-intro.md
     - name: プロジェクション
       href: knowledge-store-projection-overview.md
-    - name: 増分インデックスの作成
+    - name: インクリメンタル エンリッチメント
       href: cognitive-search-incremental-indexing-conceptual.md
 - name: 操作方法ガイド
   items:
@@ -237,9 +237,9 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: インデックスのフィールドにマップする
               href: cognitive-search-output-field-mapping.md
-            - name: 画像の情報を処理し、抽出する
+            - name: 画像から情報を抽出する
               href: cognitive-search-concept-image-scenarios.md
-            - name: 増分インデックス作成を設定する
+            - name: キャッシュ (インクリメンタル) エンリッチメント
               href: search-howto-incremental-index.md
         - name: カスタム スキル
           items:
@@ -330,7 +330,11 @@
     - name: REST (管理)
       href: /rest/api/searchmanagement
     - name: REST (プレビュー)
-      href: search-api-preview.md
+      items:
+        - name: API バージョン 2019-05-06-Preview
+          href: search-api-preview.md
+        - name: ResetSkills API
+          href: preview-api-resetskills.md
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.search/searchservices
     - name: OData 言語のリファレンス

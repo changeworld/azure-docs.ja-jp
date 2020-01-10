@@ -8,26 +8,34 @@
       href: load-balancer-standard-overview.md
 - name: クイック スタート
   items:
-    - name: Standard Load Balancer を作成する - ポータル
-      href: quickstart-load-balancer-standard-public-portal.md
-    - name: Standard Load Balancer を作成する - Azure CLI
-      href: quickstart-load-balancer-standard-public-cli.md
-    - name: Standard Load Balancer を作成する - Azure PowerShell
-      href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Standard Load Balancer を作成する - テンプレート
-      href: quickstart-load-balancer-standard-public-template.md
-    - name: Basic Load Balancer を作成する - ポータル
-      href: quickstart-create-basic-load-balancer-portal.md
-    - name: Basic Load Balancer を作成する - Azure CLI
-      href: quickstart-create-basic-load-balancer-cli.md
-    - name: Basic Load Balancer を作成する - Azure PowerShell
-      href: quickstart-create-basic-load-balancer-powershell.md
+    - name: Standard Load Balancer を作成する
+      items:
+        - name: ポータル
+          href: quickstart-load-balancer-standard-public-portal.md
+        - name: Azure CLI
+          href: quickstart-load-balancer-standard-public-cli.md
+        - name: Azure PowerShell
+          href: quickstart-create-standard-load-balancer-powershell.md
+        - name: Template
+          href: quickstart-load-balancer-standard-public-template.md
+    - name: Basic Load Balancer を作成する
+      items:
+        - name: ポータル
+          href: quickstart-create-basic-load-balancer-portal.md
+        - name: Azure CLI
+          href: quickstart-create-basic-load-balancer-cli.md
+        - name: Azure PowerShell
+          href: quickstart-create-basic-load-balancer-powershell.md
+        - name: Template
+          href: load-balancer-get-started-internet-arm-template.md
+        - name: REST API
+          href: create-load-balancer-rest-api.md
 - name: チュートリアル
   items:
     - name: VM へのインターネット トラフィックの負荷分散を行う
       href: tutorial-load-balancer-standard-manage-portal.md
     - name: VM への内部トラフィックの負荷分散を行う
-      href: tutorial-load-balancer-basic-internal-portal.md
+      href: tutorial-load-balancer-standard-internal-portal.md
     - name: 可用性ゾーン間で VM の負荷分散を行う
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: 特定の可用性ゾーン内で VM の負荷分散を行う
@@ -42,8 +50,16 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: 正常性プローブ
-      href: load-balancer-custom-probe-overview.md
+    - name: 正常性の監視
+      items:
+        - name: 正常性プローブ
+          href: load-balancer-custom-probe-overview.md
+        - name: Standard Load Balancer のメトリックと診断
+          href: load-balancer-standard-diagnostics.md
+        - name: Basic Load Balancer の Azure Monitor ログ
+          href: load-balancer-monitor-log.md
+        - name: REST を使用して Load Balancer のメトリックを取得する
+          href: load-balancer-query-metrics-rest-api.md
     - name: 高可用性ポート
       href: load-balancer-ha-ports-overview.md
     - name: IPv6 サポート
@@ -58,72 +74,63 @@
       href: load-balancer-tcp-reset.md
     - name: Standard Load Balancer と可用性ゾーン
       href: load-balancer-standard-availability-zones.md
-    - name: Standard Load Balancer のメトリックと診断
-      href: load-balancer-standard-diagnostics.md
     - name: 組み込みのセキュリティ制御
       href: load-balancer-security-controls.md
 - name: 方法
   items:
     - name: ゾーン冗長パブリック Standard Load Balancer を作成する
-      href: load-balancer-get-started-internet-az-portal.md
       items:
-        - name: ゾーン冗長パブリック Standard Load Balancer を作成する (PowerShell)
-          href: load-balancer-get-started-internet-az-powershell.md
-        - name: ゾーン冗長パブリック Standard Load Balancer を作成する (CLI)
+        - name: ポータル
+          href: load-balancer-get-started-internet-az-portal.md
+        - name: Azure CLI
           href: load-balancer-get-started-internet-az-cli.md
+        - name: Azure PowerShell
+          href: load-balancer-get-started-internet-az-powershell.md
     - name: ゾーン パブリック Standard Load Balancer を作成する
-      href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
       items:
-        - name: ゾーン パブリック Standard Load Balancer を作成する (PowerShell)
-          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
-        - name: ゾーン冗長パブリック Standard Load Balancer を作成する (CLI)
+        - name: ポータル
+          href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+        - name: Azure CLI
           href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
+        - name: Azure PowerShell
+          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
     - name: 可用性ゾーン間で VM の負荷分散を行う (CLI)
       href: load-balancer-standard-public-zone-redundant-cli.md
     - name: ゾーン内で VM の負荷分散を行う (CLI)
       href: load-balancer-standard-public-zonal-cli.md
     - name: 送信の規則を構成する
       items:
-        - name: アウトバウンド規則を構成する - CLI
+        - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
-        - name: アウトバウンド規則を構成する - PowerShell
+        - name: Azure PowerShell
           href: configure-load-balancer-outbound-powershell.md
-    - name: REST API を使用して Azure Load Balancer を作成する
-      href: create-load-balancer-rest-api.md
-    - name: Basic Load Balancer を作成する (テンプレート)
-      href: load-balancer-get-started-internet-arm-template.md
     - name: IPv6 を使用してパブリック ロード バランサーを作成する
-      href: load-balancer-ipv6-internet-ps.md
       items:
-        - name: IPv6 を使用してパブリック ロード バランサーを作成する (CLI)
+        - name: Azure CLI
           href: load-balancer-ipv6-internet-cli.md
-        - name: IPv6 を使用してパブリック ロード バランサーを作成する (テンプレート)
+        - name: Azure PowerShell
+          href: load-balancer-ipv6-internet-ps.md
+        - name: Template
           href: load-balancer-ipv6-internet-template.md
     - name: 内部ロード バランサーを構成する
       items:
-        - name: 内部ロード バランサーを構成する (PowerShell)
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: 内部ロード バランサーを構成する (CLI)
+        - name: Azure CLI
           href: load-balancer-get-started-ilb-arm-cli.md
-        - name: 内部ロード バランサーを構成する (テンプレート)
+        - name: Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: Template
           href: load-balancer-get-started-ilb-arm-template.md
     - name: Load Balancer の TCP アイドル タイムアウトを構成する
       href: load-balancer-tcp-idle-timeout.md
     - name: Load Balancer の分散モードを構成する
       href: load-balancer-distribution-mode.md
-    - name: 負荷分散サービスの結合
-      href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json
     - name: 複数の IP 構成の使用
       href: load-balancer-multiple-ip.md
       items:
-        - name: 複数の IP 構成の使用 (CLI)
+        - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
-        - name: 複数の IP 構成の使用 (PowerShell)
+        - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
-    - name: Azure Load Balancer 用の Azure Monitor のログ
-      href: load-balancer-monitor-log.md
-    - name: REST を使用して Load Balancer のメトリックを取得する
-      href: load-balancer-query-metrics-rest-api.md
     - name: 内部ロード バランサー用の高可用性ポートを構成する
       href: load-balancer-configure-ha-ports.md
     - name: リージョン間で移動する
@@ -160,22 +167,6 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
     - name: REST
       href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
-- name: 関連項目
-  items:
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: ExpressRoute
-      href: /azure/expressroute/
-    - name: Virtual Network
-      href: /azure/virtual-network/
-    - name: VPN Gateway
-      href: /azure/vpn-gateway/
-    - name: 仮想マシン
-      href: /azure/virtual-machines/
-    - name: Traffic Manager
-      href: /azure/traffic-manager/
-    - name: DNS
-      href: /azure/dns/
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける
@@ -188,5 +179,5 @@
       href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: サービスの更新情報
+    - name: 製品の更新
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'

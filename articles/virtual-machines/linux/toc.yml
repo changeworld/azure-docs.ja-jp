@@ -41,11 +41,11 @@
       href: tutorial-monitor.md
     - name: 13 - VM のセキュリティの管理
       href: tutorial-azure-security.md
-    - name: 14 - Jenkins のデプロイ
+    - name: 14a - Jenkins でビルドする
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 15a - Azure Pipelines を使用したデプロイ
+    - name: 14b - Azure Pipelines を使用したデプロイ (クラシック)
       href: tutorial-build-deploy-jenkins.md
-    - name: 15b - Azure Pipelines を使用した CI/CD
+    - name: 15 - Azure Pipelines を使用した CI/CD (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - LAMP スタックの作成
       href: tutorial-lamp-stack.md

@@ -130,6 +130,10 @@
       href: /rest/api/virtual-desktop/
     - name: サポートされる RDP ファイルの設定
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
+    - name: ネットワーク ガイダンス
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context'
+    - name: 仮想マシンのサイズ指定ガイダンス
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
 - name: リソース
   items:
     - name: エクスペリエンス見積もりツール

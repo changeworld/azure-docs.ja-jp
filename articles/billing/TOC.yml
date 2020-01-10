@@ -149,7 +149,7 @@
       href: billing-understand-mca-roles.md
     - name: パートナー ID をリンクする
       href: billing-partner-admin-link-started.md
-    - name: 請求書セクションによるコストの整理
+    - name: 請求先アカウントをカスタマイズしてコストを整理する - Microsoft 顧客契約
       href: billing-mca-section-invoice.md
     - name: Microsoft 顧客契約における EA タスク
       href: billing-mca-enterprise-operations.md

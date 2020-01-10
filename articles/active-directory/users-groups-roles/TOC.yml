@@ -4,7 +4,7 @@
   items:
     - name: Azure AD のユーザー、グループ、ライセンス、およびロール
       href: directory-overview-user-model.md
-- name: クイック スタート
+- name: クイックスタート
   items:
     - name: Azure AD へのユーザーの追加
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -31,7 +31,9 @@
       href: /azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: グループベースのライセンスの基礎
       href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-- name: ハウツー ガイド
+    - name: グループでのアクセスの管理
+      href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+- name: 操作方法ガイド
   expanded: true
   items:
     - name: ユーザーの管理
@@ -80,8 +82,6 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: グループの管理
       items:
-        - name: グループでのアクセスの管理
-          href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: グループとメンバーの一覧の検索 (プレビュー)
           href: groups-members-owners-search.md
         - name: グループの作成 (Azure portal)
@@ -122,9 +122,7 @@
           items:
             - name: 動的グループの作成
               href: groups-create-rule.md
-            - name: メンバーシップ ルールの更新
-              href: groups-update-rule.md
-            - name: 動的グループの規則と構文
+            - name: 動的グループの規則の構文
               href: groups-dynamic-membership.md
             - name: グループ メンバーシップの種類の変更
               href: groups-change-type.md
@@ -192,7 +190,7 @@
           href: linkedin-integration.md
         - name: LinkedIn データの共有
           href: linkedin-user-consent.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: Azure AD のサポートを受ける
           href: /azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto?context=azure/active-directory/users-groups-roles/context/ugr-context

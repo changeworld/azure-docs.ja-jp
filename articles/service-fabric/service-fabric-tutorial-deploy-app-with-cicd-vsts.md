@@ -1,28 +1,17 @@
 ---
-title: Azure で継続的インテグレーションと Azure Pipelines を使用して Service Fabric アプリをデプロイする | Microsoft Docs
+title: CI と Azure Pipelines を使用してアプリをデプロイする
 description: このチュートリアルでは、Azure Pipelines を使用して、Service Fabric アプリケーションの継続的インテグレーションと継続的デプロイを設定する方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 13411e813e96a1548b912c024f75404dd856fee1
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 11485d22abcf0b8e1eb13d8123ff21c7fe0079f8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838966"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614147"
 ---
-# <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
+# <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル:CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
 
 このチュートリアルはシリーズの第 4 部です。Azure Pipelines を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションと継続的デプロイを設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
 
@@ -150,7 +139,7 @@ Azure Active Directory の資格情報の場合は、クラスターの作成に
 
 Azure DevOps へのコード変更をチェックインして、継続的インテグレーション パイプラインが機能していることを確認します。
 
-コードを記述すると、変更内容は Visual Studio によって自動的に追跡されます。 右下のステータス バーから [保留中の変更] アイコン (![Pending][pending]) を選択して、ローカル Git リポジトリへ変更をコミットします。
+コードを記述すると、変更内容は Visual Studio によって自動的に追跡されます。 右下のステータス バーから [保留中の変更] アイコン (![保留中][pending]) を選択して、ローカル Git リポジトリへ変更をコミットします。
 
 チーム エクスプローラーの **[変更]** ビューで、更新内容を説明するメッセージを追加し、変更をコミットします。
 
@@ -180,7 +169,7 @@ Azure Pipelines へ変更をプッシュすると、ビルドが自動的にト�
 
 ![Service Fabric Explorer][sfx3]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

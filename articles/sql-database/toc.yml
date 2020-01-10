@@ -504,6 +504,8 @@
           href: sql-database-security-tutorial.md
         - name: Stream Analytics でデータをストリーム配信する
           href: sql-database-stream-analytics.md
+        - name: SQLite データベースを Azure SQL Database サーバーレスに移行する
+          href: tutorial-sqlite-db-to-azure-sql-serverless-offline.md
     - name: 概念
       items:
         - name: 単一データベースのリソース

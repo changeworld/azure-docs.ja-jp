@@ -1,26 +1,15 @@
 ---
-title: CI/CD を使用して Azure Service Fabric クラスターへコンテナー アプリケーションをデプロイする
+title: CI/CD を使用したコンテナー アプリケーションのデプロイ
 description: このチュートリアルでは、Visual Studio Azure DevOps を使用して、Azure Service Fabric コンテナー アプリケーションの継続的インテグレーションと継続的配置をセットアップする方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/29/2018
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: a2dc6aeb7dc2a62c543a58c322c23c9661c6940a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9cf619eddd07bbe55cd7aea5f27051a7d0415c24
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832741"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614131"
 ---
 # <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル:CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする
 
@@ -153,7 +142,7 @@ Azure Active Directory の資格情報の場合は、クラスターの作成に
 
 Azure DevOps へのコード変更をチェックインして、継続的インテグレーション パイプラインが機能していることを確認します。
 
-コードを記述すると、変更内容は Visual Studio によって自動的に追跡されます。 右下のステータス バーから [保留中の変更] アイコン (![Pending][pending]) を選択して、ローカル Git リポジトリへ変更をコミットします。
+コードを記述すると、変更内容は Visual Studio によって自動的に追跡されます。 右下のステータス バーから [保留中の変更] アイコン (![保留中][pending]) を選択して、ローカル Git リポジトリへ変更をコミットします。
 
 チーム エクスプローラーの **[変更]** ビューで、更新内容を説明するメッセージを追加し、変更をコミットします。
 
@@ -183,7 +172,7 @@ Azure DevOps へ変更をプッシュすると、ビルドが自動的にトリ�
 
 ![Service Fabric Explorer][sfx3]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

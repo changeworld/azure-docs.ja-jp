@@ -1,20 +1,31 @@
 ---
-title: チュートリアル - Azure で Jupyter ノートブックを作成して実行する
-description: データ サイエンスの線形回帰のプロセスを示す Jupyter ノートブックを Azure Notebook で作成して実行する方法です。
+title: チュートリアル - Jupyter ノートブックを作成して実行する - Azure Notebooks プレビュー
+description: データ サイエンスの線形回帰のプロセスを示す Jupyter ノートブックを Azure Notebooks で作成して実行する方法を説明します。
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.openlocfilehash: 2c151cb0de2855856e92d9de07ad7dabfda2f55b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277424"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660819"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>チュートリアル: Python で Jupyter ノートブックを作成して実行する
 
 このチュートリアルでは、Azure Notebooks を使用して単純な線形回帰を示す完全な Jupyter ノートブックを作成するプロセスについて説明します。 このチュートリアルでは、異なるセルの作成、セルの実行、スライド ショーとしてのノートブックの提示など、Jupyter Notebook の UI について理解します。
 
 完成したノートブックは、[GitHub の Azure Notebook サンプル](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)にありあます。 ただし、このチュートリアルでは、新しいプロジェクトと空のノートブックで始めるので、作成する手順を経験できます。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+このチュートリアルでは、以下の内容を学習します。
+
+> [!div class="checklist"]
+> * いくつかのサンプル データを含むプロジェクト ノートブックを作成する
+> * ノートブック インターフェイスを使用してさまざまな種類のセルを作成する
+> * ノートブックを実行する
+> * ノートブックを保存する
+> * Visual Studio Code でノートブックをデバッグする
 
 ## <a name="create-the-project"></a>プロジェクトを作成する
 
@@ -30,10 +41,10 @@ ms.locfileid: "74277424"
 
 1. 表示される **[新しいプロジェクトの作成]** ポップアップで、次の詳細を入力または設定した後、 **[作成]** を選択します。
 
-    - **[プロジェクト名]** :Linear Regression Example - Cricket Chirps
-    - **[プロジェクト ID]** : linear-regression-example
-    - **[Public project]\(パブリック プロジェクト\)** : (オフ)
-    - **[Create a README.md]\(README.md を作成する\)** : (オフ)
+   - **[プロジェクト名]** :Linear Regression Example - Cricket Chirps
+   - **[プロジェクト ID]** : linear-regression-example
+   - **[Public project]\(パブリック プロジェクト\)** : (オフ)
+   - **[Create a README.md]\(README.md を作成する\)** : (オフ)
 
 1. しばらくすると、Azure Notebooks は新しいプロジェクトに移動します。
 
@@ -140,17 +151,17 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
 メニュー コマンドのグループは次のとおりです。
 
-| メニュー | 説明 |
+| メニュー | [説明] |
 | --- | --- |
 | ファイル | ノートブック ファイルを管理するコマンドです。ノートブックの作成とコピー、印刷プレビューの表示、さまざまな形式でのノートブックのダウンロードなどのコマンドが含まれます。 |
-| Edit | セルの切り取り、コピー、貼り付け、値の検索と置換、セルの添付の管理、イメージの挿入など、一般的なコマンドです。  |
+| [編集] | セルの切り取り、コピー、貼り付け、値の検索と置換、セルの添付の管理、イメージの挿入など、一般的なコマンドです。  |
 | 表示 | Jupyter UI のさまざまな部分の表示を制御するコマンドです。 |
 | 挿入 | 現在のセルの上または下に新しいセルを挿入するコマンドです。 ノートブックを作成するときは、これらのコマンドを頻繁に使用します。 |
 | Cell (セル) | さまざまな **[Run]\(実行\)** コマンドでは、1 つまたは複数のセルをさまざまな組み合わせで実行します。 **[Cell Type]\(セルの種類\)** コマンドでは、セルの種類を **[Code]\(コード\)** 、 **[Markdown]** 、 **[Raw NBConvert]\(生 NBConvert\)** (プレーン テキスト) の間で変更します。 **[Current Outputs]\(現在の出力\)** と **[All Outputs]\(すべて出力\)** コマンドでは実行コードからの出力の表示方法を制御し、すべての出力をクリアするコマンドが含まれます。 |
-| Kernel (カーネル) | カーネルでのコードの実行方法を管理するコマンドです。 **[Change kernel]\(カーネルの変更\)** では、ノートブックの実行に使用される言語または Python バージョンを変更します。 |
+| カーネル | カーネルでのコードの実行方法を管理するコマンドです。 **[Change kernel]\(カーネルの変更\)** では、ノートブックの実行に使用される言語または Python バージョンを変更します。 |
 | Data | プロジェクトまたはセッションからファイルをアップロードおよびダウンロードするコマンドです。 [プロジェクト データ ファイルの操作](work-with-project-data-files.md)に関する記事をご覧ください |
 | Widgets (ウィジェット) | [Jupyter のウィジェット](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html)を管理するコマンドです。視覚化、マッピング、プロットに関する追加機能が提供されます。|
-| [Help] | Jupyter インターフェイスのヘルプとドキュメントを提供するコマンドです。 |
+| ヘルプ | Jupyter インターフェイスのヘルプとドキュメントを提供するコマンドです。 |
 
 ツール バーのほとんどのコマンドには、対応するメニュー コマンドがあります。 1 つの例外は **[Enter/Edit RISE Slideshow]\(RISE スライドショーの入力/編集\)** で、[ノートブックの共有と提供](present-jupyter-notebooks-slideshow.md)に関するページで説明されています。
 
@@ -409,7 +420,7 @@ Jupyter では、主な UI 要素の組み込みツアーが提供されてい�
 
 また、[Visual Studio Code の Jupyter サポート](https://code.visualstudio.com/docs/python/jupyter-support)に関するページで、Jupyter ノートブック用の Visual Studio Code の追加機能についてもご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [サンプル ノートブックの調査](azure-notebooks-samples.md)
 

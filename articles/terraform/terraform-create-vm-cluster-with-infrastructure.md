@@ -3,12 +3,12 @@ title: チュートリアル - Terraform と HCL を使用した Azure VM クラ
 description: Azure で Terraform と HCL を使用してロード バランサ―を備えた Linux 仮想マシン クラスターを作成する
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: f28cbbf13015d07c9d789ed258a9e2b0582ba1da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159268"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665368"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>チュートリアル:Terraform と HCL を使用した Azure VM クラスターの作成
 
@@ -208,7 +208,7 @@ ms.locfileid: "74159268"
       disable_password_authentication = false
     }
 
-    tags {
+    tags = {
       environment = "staging"
     }
    }
@@ -260,10 +260,10 @@ Dev 1 が出力ファイルを指定すると、Dev 2 が Dev 1 に影響を及�
 - `terraform.tfvars` という名前のファイル
 - `*.auto.tfvars` のパターンを使用した名前のファイル
 
-ただし、変数ファイルは、上記の 2 つの規則のいずれにも従う必要はありません。 その場合は、`-var-file` パラメーターを使用して、変数ファイル名を指定します。 この点について次の例で説明します。
+ただし、変数ファイルは、上記の 2 つの規則のいずれにも従う必要はありません。 その場合、変数ファイル名に拡張子が含まれていない `-var-file` パラメーターを使用して、変数ファイル名を指定します。 この点について次の例で説明します。
 
 ```hcl
-terraform plan -var-file <my-variables-file.tf>
+terraform plan -var-file <my-variables-file>
 ```
 
 Terraform は、構成ファイルに指定された状態を実現するために必要なアクションを決定します。
@@ -288,7 +288,7 @@ Terraform は、構成ファイルに指定された状態を実現するため�
 
 ![Terraform 実行プランの適用](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Terraform を使用して Azure 仮想マシン スケール セットを作成する](terraform-create-vm-scaleset-network-disks-hcl.md)
