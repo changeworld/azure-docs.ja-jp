@@ -121,8 +121,8 @@
           href: how-to-setup-authentication.md
         - name: Azure Machine Learning の監視
           href: monitor-azure-machine-learning.md
-        - name: イベント グリッドの統合
-          href: concept-event-grid-integration.md
+    - name: イベント グリッドの統合
+      href: concept-event-grid-integration.md
     - name: ディープ ラーニング
       displayName: 'deep learning vs machine learning, deep learning, vs, versus'
       href: concept-deep-learning-vs-machine-learning.md

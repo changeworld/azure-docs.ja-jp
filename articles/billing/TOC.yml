@@ -232,7 +232,7 @@
     - name: エンタープライズ コスト ビューが無効になっている
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: サポートにお問い合せください
-      href: ../azure-supportability/how-to-create-azure-support-request.md
+      href: ../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: サンプル
   items:
     - name: REST API

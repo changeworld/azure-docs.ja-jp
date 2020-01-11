@@ -4,7 +4,7 @@
   items:
     - name: Azure DB for PostgreSQL とは
       href: overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: 単一サーバー
@@ -41,7 +41,7 @@
       items:
         - name: 1 - データベースの設計
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: tutorial-design-database-using-azure-portal.md
             - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
@@ -98,6 +98,8 @@
               href: concepts-data-access-and-security-threat-protection.md
             - name: Azure AD 認証
               href: concepts-aad-authentication.md
+            - name: Private Link
+              href: concepts-data-access-and-security-private-link.md
         - name: ビジネス継続性
           items:
             - name: ビジネス継続性の概要
@@ -171,13 +173,13 @@
           items:
             - name: 構成オプション
               href: concepts-hyperscale-configuration-options.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 単一サーバー
       items:
         - name: サーバーを管理する
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-create-manage-server-portal.md
         - name: 認証
           items:
@@ -197,13 +199,13 @@
               href: howto-optimize-query-time-with-toast-table-storage-strategy.md
         - name: ファイアウォールの管理
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-manage-firewall-using-portal.md
             - name: Azure CLI
               href: howto-manage-firewall-using-cli.md
         - name: サーバーの復元
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-restore-server-portal.md
             - name: Azure CLI
               href: howto-restore-server-cli.md
@@ -217,43 +219,49 @@
               href: howto-migrate-online.md
         - name: サーバー パラメーターの構成
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-configure-server-parameters-using-portal.md
             - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
         - name: ストレージの自動拡張
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-auto-grow-storage-portal.md
             - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
         - name: アクセス ログ
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-configure-server-logs-in-portal.md
             - name: Azure CLI
               href: howto-configure-server-logs-using-cli.md
-        - name: 監視
+        - name: モニター
           items:
             - name: メトリックに基づいたアラートの作成
               href: howto-alert-on-metric.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: 接続エラーのトラブルシューティング
               href: howto-troubleshoot-common-connection-issues.md
         - name: 高度な脅威保護
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-database-threat-protection-portal.md
         - name: Virtual Network
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-manage-vnet-using-portal.md
             - name: Azure CLI
               href: howto-manage-vnet-using-cli.md
+        - name: Private Link
+          items:
+            - name: Azure portal
+              href: howto-configure-privatelink-portal.md
+            - name: Azure CLI
+              href: howto-configure-privatelink-cli.md
         - name: サーバーの再起動
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
@@ -269,15 +277,15 @@
           href: howto-hyperscale-scaling.md
         - name: ファイアウォールの管理
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-hyperscale-manage-firewall-using-portal.md
         - name: 高可用性
           href: howto-hyperscale-high-availability.md
-        - name: 監視
+        - name: モニター
           items:
             - name: メトリックに基づいたアラートの作成
               href: howto-hyperscale-alert-on-metric.md
-        - name: トラブルシューティング
+        - name: '[トラブルシューティング]'
           items:
             - name: 接続エラーのトラブルシューティング
               href: howto-hyperscale-troubleshoot-common-connection-issues.md

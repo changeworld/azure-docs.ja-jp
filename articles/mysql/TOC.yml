@@ -6,7 +6,7 @@
       href: overview.md
     - name: 適切な MySQL オプションの選択
       href: select-right-deployment-type.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: DB の作成 - ポータル
@@ -39,7 +39,7 @@
   items:
     - name: 1 - データベースの設計
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-using-cli.md
@@ -91,6 +91,8 @@
           href: concepts-data-access-and-security-vnet.md
         - name: 高度な脅威保護
           href: concepts-data-access-and-security-threat-protection.md
+        - name: Private Link
+          href: concepts-data-access-security-private-link.md
     - name: ビジネス継続性
       items:
         - name: ビジネス継続性の概要
@@ -134,21 +136,21 @@
           href: concepts-data-in-replication.md
         - name: 読み取りレプリカ
           href: concepts-read-replicas.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: サーバーを管理する
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: howto-create-manage-server-portal.md
     - name: ファイアウォール規則
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: howto-manage-firewall-using-portal.md
         - name: Azure CLI
           href: howto-manage-firewall-using-cli.md
     - name: サーバーの復元
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
@@ -172,13 +174,13 @@
           href: howto-connect-webapp.md
     - name: サーバー パラメーターの構成
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
     - name: ストレージの自動拡張
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
@@ -186,15 +188,15 @@
       items:
         - name: 低速クエリ ログ
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-configure-server-logs-in-portal.md
             - name: Azure CLI
               href: howto-configure-server-logs-in-cli.md
         - name: 監査ログ
           items:
-            - name: Azure ポータル
+            - name: Azure portal
               href: howto-configure-audit-logs-portal.md
-    - name: 監視
+    - name: モニター
       items:
         - name: メトリックに基づいたアラートの作成
           href: howto-alert-on-metric.md
@@ -206,7 +208,7 @@
           href: howto-read-replicas-portal.md
         - name: 読み取りレプリカ Azure CLI の作成、REST API
           href: howto-read-replicas-cli.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: 接続エラーのトラブルシューティング
           href: howto-troubleshoot-common-connection-issues.md
@@ -216,17 +218,23 @@
           href: howto-troubleshoot-sys-schema.md
     - name: 高度な脅威保護
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: howto-database-threat-protection-portal.md
     - name: Virtual Network
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: howto-manage-vnet-using-portal.md
         - name: Azure CLI
           href: howto-manage-vnet-using-cli.md
+    - name: Private Link
+      items:
+        - name: Azure portal
+          href: howto-configure-privatelink-portal.md
+        - name: Azure CLI
+          href: howto-configure-privatelink-cli.md
     - name: サーバーの再起動
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: howto-restart-server-portal.md
         - name: Azure CLI
           href: howto-restart-server-cli.md
