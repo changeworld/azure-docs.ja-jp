@@ -93,6 +93,8 @@
           href: concepts-data-access-and-security-threat-protection.md
         - name: Private Link
           href: concepts-data-access-security-private-link.md
+        - name: データの暗号化
+          href: concepts-data-encryption-mysql.md
     - name: ビジネス継続性
       items:
         - name: ビジネス継続性の概要
@@ -232,6 +234,10 @@
           href: howto-configure-privatelink-portal.md
         - name: Azure CLI
           href: howto-configure-privatelink-cli.md
+    - name: データの暗号化
+      items:
+        - name: Azure portal
+          href: howto-data-encryption-portal.md
     - name: サーバーの再起動
       items:
         - name: Azure portal

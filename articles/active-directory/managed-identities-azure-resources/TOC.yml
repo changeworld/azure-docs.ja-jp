@@ -20,8 +20,6 @@
           href: tutorial-windows-vm-access-datalake.md
         - name: Azure Storage へのアクセス
           href: tutorial-vm-windows-access-storage.md
-        - name: アクセス キーを使用した Azure Storage へのアクセス
-          href: tutorial-windows-vm-access-storage.md
         - name: Azure SQL へのアクセス
           href: tutorial-windows-vm-access-sql.md
         - name: Azure Key Vault へのアクセス
