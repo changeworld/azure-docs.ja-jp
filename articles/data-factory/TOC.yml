@@ -132,6 +132,12 @@
           href: tutorial-deploy-ssis-packages-azure.md
         - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
+        - name: 仮想ネットワークに参加する
+          href: tutorial-deploy-ssis-virtual-network.md
+    - name: エンド ツー エンドのラボ
+      items:
+        - name: データ ファクトリとデータ共有を使用したデータ統合
+          href: lab-data-flow-data-share.md
 - name: サンプル
   items:
     - name: コード サンプル
