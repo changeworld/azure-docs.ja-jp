@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ASE/SQL ワークロード ブループリント サンプルの概要
 description: ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルの概要とアーキテクチャ
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 749304f332bc5c65a9a1cd18aae3131f024b4f53
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: d77029b93b1e77bdba85c5dd5608cbdc5d6543a5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546737"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920767"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルの概要。
 
@@ -20,13 +20,13 @@ ISO 27001 App Service Environment/SQL Database ワークロード ブループ�
 > [!IMPORTANT]
 > このサンプルは、[ISO 27001 共有サービス](../iso27001-shared/index.md) ブループリント サンプルによってデプロイされるインフラストラクチャに依存します。 これは、最初にデプロイする必要があります。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルにより、サービスとしてのプラットフォーム ベースの Web 環境がデプロイされます。 環境は、複数の Web アプリケーション、Web API、および ISO 27001 標準に準拠した SQL Database インスタンスをホストするために使用できます。 このブルー プリントのサンプルは、[ISO 27001 共有サービス](../iso27001-shared/index.md) ブルー プリント サンプルに依存します。
 
 ![ISO 27001 ASE/SQL ワークロード ブループリント サンプルの設計](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
 
-この環境は、ISO 27001 標準に基づいたセキュリティで保護された、完全に監視されたエンタープライズ対応のワークロード インフラストラクチャを提供するために使用される複数の Azure サービスで構成されます。 この環境は、以下で構成されています。
+この環境は、ISO 27001 標準に基づいたセキュリティで保護された、完全に監視されたエンタープライズ対応のワークロード インフラストラクチャを提供するために使用される複数の Azure サービスで構成されます。 この環境は、以下で構成されます。
 
 - ブループリント サンプルによってデプロイされる [Azure App Service Environment](../../../../app-service/environment/intro.md) 内でリソースをデプロイおよび管理する権限を持つ DevOps という名前の[ロールベースのアクセス制御](../../../../role-based-access-control/overview.md) (RBAC) ロール
 - 環境にデプロイできるサービスをロックダウンする [Azure ポリシー](../../../policy/overview.md)。任意のパブリック IP アドレス (PIP) リソースの作成を拒否します。
@@ -35,7 +35,7 @@ ISO 27001 App Service Environment/SQL Database ワークロード ブループ�
   - VNet サービス エンドポイントを使用する [Azure Key Vault](../../../../key-vault/key-vault-overview.md) インスタンス。ワークロード環境で実行されるアプリケーションによって使用されるシークレットを格納します。
   - VNet サービス エンドポイントを使用する [Azure SQL Database](../../../../sql-database/sql-database-technical-overview.md) サーバー インスタンス。ワークロード環境内のアプリケーション用に使用されるデータベースをホストします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルの概要とアーキテクチャを確認しました。 次に、コントロール マッピングと、このサンプルをデプロイする方法を確認するには、次の記事を参照してください。
 

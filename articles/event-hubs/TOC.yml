@@ -10,12 +10,12 @@
       href: event-hubs-capture-overview.md
     - name: Event Hubs Dedicated
       href: event-hubs-dedicated-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: イベント ハブの作成
       items:
-        - name: Azure ポータル
+        - name: Azure portal
           href: event-hubs-create.md
         - name: Azure CLI
           href: event-hubs-quickstart-cli.md
@@ -81,9 +81,9 @@
       items:
         - name: geo ディザスター リカバリーと geo レプリケーション
           href: event-hubs-geo-dr.md
-    - name: セキュリティ
+    - name: Security
       items:
-        - name: Authorization
+        - name: 承認
           items:
             - name: Azure Event Hubs へのアクセスを承認する
               href: authorize-access-event-hubs.md
@@ -106,7 +106,7 @@
     - name: AMQP 1.0 プロトコル ガイド
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 開発
       items:
@@ -156,7 +156,7 @@
           href: event-hubs-auto-inflate.md
         - name: Event Hubs 管理ライブラリ
           href: event-hubs-management-libraries.md
-    - name: セキュリティ保護
+    - name: セキュリティで保護
       items:
         - name: ファイアウォールの使用
           href: event-hubs-ip-filtering.md
@@ -164,9 +164,9 @@
           href: event-hubs-service-endpoints.md
         - name: Event Hubs 名前空間での仮想ネットワークの統合とファイアウォールの有効化
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: 保存データの暗号化のために顧客管理キーを構成する (プレビュー)
+        - name: 保存データの暗号化のために顧客管理キーを構成する
           href: configure-customer-managed-key.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: トラブルシューティング ガイド
           href: event-hubs-messaging-exceptions.md
@@ -204,7 +204,7 @@
   items:
     - name: Microsoft Learn でスキルを身に付ける
       href: /learn/browse/?products=azure-event-hubs
-    - name: FAQ
+    - name: よく寄せられる質問
       href: event-hubs-faq.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=iot'

@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ブループリント サンプルの概要
 description: ISO 27001 ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の ISO 27001 コントロールを評価するのに役立ちます。
-ms.date: 07/22/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: bc7403e668d27413427afeff7879eb851a884ac1
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: e61ccaea9903eb2aa050b0b49ea9cfe9b8c52d72
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546636"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920578"
 ---
 # <a name="overview-of-the-iso-27001-blueprint-sample"></a>ISO 27001 ブループリント サンプルの概要
 
@@ -18,7 +18,7 @@ ISO 27001 ブループリント サンプルでは、特定の ISO 27001 コン�
 
 コントロール マッピングのセクションでは、このブループリント内に含まれるポリシーについてと、それらのポリシーが ISO 27001 のさまざまなコントロールにどのように対応するかについて詳しく説明します。 リソースはアーキテクチャに割り当てられると、割り当て済みのポリシーに違反していないかどうかを Azure Policy によって評価されます。 詳細については、[Azure Policy](../../../policy/overview.md) に関するページをご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ISO 27001 ブループリント サンプルの概要とアーキテクチャを確認しました。
 次に、コントロール マッピングと、このサンプルをデプロイする方法を確認するには、次の記事を参照してください。
