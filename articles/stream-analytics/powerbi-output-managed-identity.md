@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0c5f64e08446698bbd8d1ee4af5454e3aa1dd5ff
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 264c434849d5d5afb5934873c75d172a3783ac86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693792"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459672"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi-preview"></a>マネージド ID を使用して、Power BI に対して Azure Stream Analytics ジョブを認証する (プレビュー)
 
@@ -170,6 +170,29 @@ Stream Analytics ジョブが作成されたので、Power BI ワークスペー
 
    ![Power BI ワークスペースに Stream Analytics ジョブを追加する](./media/stream-analytics-powerbi-output-managed-identity/stream-analytics-add-job-to-powerbi-workspace.png)
 
+### <a name="use-the-power-bi-powershell-cmdlets"></a>Power BI PowerShell コマンドレットを使用する
+
+1. Power BI `MicrosoftPowerBIMgmt` PowerShell コマンドレットをインストールします。
+
+   > [!Important]
+   > バージョン 1.0.821 以降のコマンドレットを使用していることを確認してください。
+
+```powershell
+Install-Module -Name MicrosoftPowerBIMgmt
+```
+
+2. Power BI にログインします。
+
+```powershell
+Login-PowerBI
+```
+
+3. 共同作成者として Stream Analytics ジョブをワークスペースに追加します。
+
+```powershell
+Add-PowerBIWorkspaceUser -WorkspaceId <group-id> -PrincipalId <principal-id> -PrincipalType App -AccessRight Contributor
+```
+
 ### <a name="use-the-power-bi-rest-api"></a>Power BI REST API を使用する
 
 "グループ ユーザーの追加" REST API を直接使用して、Stream Analytics ジョブを共同作成者としてワークスペースに追加することもできます。 この API の完全なドキュメントは次の場所にあります。[グループ - グループ ユーザーの追加](https://docs.microsoft.com/rest/api/power-bi/groups/addgroupuser)。
@@ -198,7 +221,7 @@ POST https://api.powerbi.com/v1.0/myorg/groups/{groupId}/users
 
 - [ユーザー割り当て ID](../active-directory/managed-identities-azure-resources/overview.md) はサポートされていません。 つまり、Stream Analytics ジョブで使用される、独自のサービス プリンシパルを入力することはできません。 サービス プリンシパルは、Azure Stream Analytics で生成する必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics との Power BI ダッシュボードの統合](./stream-analytics-power-bi-dashboard.md)
 * [Azure Stream Analytics からの出力を理解する](./stream-analytics-define-outputs.md)

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: rohogue
-ms.openlocfilehash: 07aba1b1536635e414fc5fab4ece148683909188
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 793a80e7019e72c1cb3087da02d5642639cb8d5e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168613"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647158"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -36,7 +36,7 @@ Azure portal を使用してキャッシュを作成します。
 
 **[キャッシュ]** ページで、キャッシュの容量を設定する必要があります。 ご自分のキャッシュで保持できるデータの量とクライアント要求の処理の迅速さは、ここで設定する値によって決まります。
 
-パブリック プレビュー期間後は、容量もキャッシュのコストに影響します。
+また、容量はキャッシュのコストにも影響します。
 
 これらの 2 つの値を設定して容量を選択してください。
 
@@ -68,7 +68,7 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 
 ![Azure portal における Azure HPC Cache インスタンスのスクリーンショット](media/hpc-cache-new-overview.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 キャッシュが **[リソース]** リストに表示されたら、ストレージ ターゲットを定義して、キャッシュがデータ ソースにアクセスできるようにします。
 

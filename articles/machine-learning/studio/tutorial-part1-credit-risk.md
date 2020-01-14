@@ -1,7 +1,7 @@
 ---
 title: チュートリアル 1:信用リスクの予測
 titleSuffix: ML Studio (classic) - Azure
-description: クラシック バージョンの Azure Machine Learning Studio で、信用リスク評価のための予測分析ソリューションを作成する方法を詳しく紹介しているチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズの第 1 部です。  ワークスペースの作成方法、データのアップロード方法、実験の作成方法について説明しています。
+description: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning Studio (クラシック) で作成する方法を詳しく紹介したチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズの第 1 部です。  ワークスペースの作成方法、データのアップロード方法、実験の作成方法について説明しています。
 keywords: 信用リスク, 予測分析ソリューション,リスク評価
 author: sdgilley
 ms.author: sgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838867"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432239"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>チュートリアル 1:信用リスクの予測 - Azure Machine Learning Studio (クラシック)
 
@@ -25,7 +25,7 @@ ms.locfileid: "73838867"
 
 クレジットの申請書に記入する情報に基づいて個人のクレジット リスクを予測する必要があるとします。  
 
-信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning Studio (クラシック) を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションでは、クラシック バージョンの Azure Machine Learning Studio と Machine Learning Web サービスを使用します。  
+信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning Studio (クラシック) を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションでは、Azure Machine Learning Studio (クラシック) と Machine Learning Web サービスを使用します。  
 
 この 3 部構成のチュートリアルでは、まず、公表されている信用リスク データを使用します。  その後、予測モデルを開発してトレーニングします。  最後にそのモデルを Web サービスとしてデプロイします。
 
@@ -95,7 +95,7 @@ UCI Web サイト上のデータセットの説明では、個人の信用リス
 
 ### <a name="convert-the-dataset-format"></a>データセットの形式の変換
 
-元のデータセットは、空白で区切られた形式を使用しています。 クラシック バージョンの Machine Learning Studio で使用するにはコンマ区切り値 (CSV) ファイルの方が適しているため、空白をコンマに置き換えてデータセットを変換します。  
+元のデータセットは、空白で区切られた形式を使用しています。 Machine Learning Studio (クラシック) で使用するにはコンマ区切り値 (CSV) ファイルの方が適しているため、空白をコンマに置き換えてデータセットを変換します。  
 
 このデータを変換する方法は多数存在します。 1 つは、次の Windows PowerShell コマンドを使用する方法です。   
 
@@ -109,7 +109,7 @@ UCI Web サイト上のデータセットの説明では、個人の信用リス
 
 ### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Machine Learning Studio (クラシック) にデータセットをアップロードする
 
-データを CSV 形式に変換したら、それをクラシック バージョンの Machine Learning Studio にアップロードする必要があります。 
+データを CSV 形式に変換したら、それを Machine Learning Studio (クラシック) にアップロードする必要があります。 
 
 1. Machine Learning Studio (クラシック) のホーム ページ ([https://studio.azureml.net](https://studio.azureml.net)) を開きます。 
 
@@ -145,7 +145,7 @@ Studio (クラシック) にアップロードしたデータセットは、Stud
 
 ## <a name="create-an-experiment"></a>実験の作成
 
-このチュートリアルでの次の手順では、アップロードしたデータセットを使用する実験をクラシック バージョンの Machine Learning Studio で作成します。  
+このチュートリアルでの次の手順では、アップロードしたデータセットを使用する実験を Machine Learning Studio (クラシック) で作成します。  
 
 1. Studio (クラシック) で、ウィンドウの下部にある **[+新規]** をクリックします。
 1. **[実験]** を選択して、[空の実験] を選択します。 
@@ -173,7 +173,7 @@ Studio (クラシック) にアップロードしたデータセットは、Stud
 
 データの最初の 100 行とデータセット全体の統計情報を表示できます。データセットの出力ポート (下部の小さな円) をクリックし、 **[視覚化]** を選択します。  
 
-データ ファイルには列見出しがないため、クラシック バージョンの Studio では汎用の見出し (Col1、Col2 "*など*") が付けられます。 適切な見出しはモデルを作成するために絶対に必要なものではありませんが、実験のデータを操作する際に便利です。 また、最終的にこのモデルを Web サービスに発行する際に、見出しは、サービスのユーザーが列を特定するのに役立ちます。  
+データ ファイルには列見出しがないため、Studio (クラシック) では汎用の見出し (Col1、Col2 "*など*") が付けられます。 適切な見出しはモデルを作成するために絶対に必要なものではありませんが、実験のデータを操作する際に便利です。 また、最終的にこのモデルを Web サービスに発行する際に、見出しは、サービスのユーザーが列を特定するのに役立ちます。  
 
 [メタデータの編集][edit-metadata]モジュールを使用して、列見出しを追加できます。
 
@@ -286,11 +286,11 @@ Studio (クラシック) にアップロードしたデータセットは、Stud
 実験での R スクリプトの使用に関する詳細については、「[R を使用した実験の拡張](extend-your-experiment-with-r.md)」をご覧ください。
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の手順を完了しました。 
  

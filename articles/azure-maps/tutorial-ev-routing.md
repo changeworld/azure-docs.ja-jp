@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0f5964472b738bd3868bbf361b85fa4ad1f13b5c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 7039cd73263388f206075a53d7898e0d15da6b03
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109612"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613688"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks を使用して電気自動車のルートを案内する (Python)
 
@@ -39,9 +39,11 @@ Azure Maps REST API シリーズを Python や R などの言語で呼び出し�
 
 このチュートリアルを完了するには、まず Azure Maps アカウントを作成して、プライマリ キー (サブスクリプション キー) を取得する必要があります。 
 
-S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成するには、「[Azure Maps アカウントを管理する](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)」の手順に従います。 
+Azure Maps アカウントのサブスクリプションを S1 価格レベルで作成するには、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。 
 
-アカウントのプライマリ サブスクリプション キーを取得するには、「[アカウントを作成し、キーを取得する](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-account-and-get-your-key)」の手順に従います。
+アカウントの主サブスクリプション キーを取得するには、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従います。
+
+Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="create-an-azure-notebook"></a>Azure ノートブックを作成する
 
@@ -111,7 +113,7 @@ from IPython.display import Image, display
 電気自動車の到達可能範囲の境界を特定するには、次のセルのスクリプトを実行します。
 
 ```python
-subscriptionKey = "Your Azure Maps primary subscription key"
+subscriptionKey = "Your Azure Maps key"
 currentLocation = [34.028115,-118.5184279]
 session = aiohttp.ClientSession()
 
@@ -385,7 +387,7 @@ display(Image(staticMapImage))
 
 ![ルートを示すマップ](./media/tutorial-ev-routing/route.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Python を使用して Azure Maps REST API シリーズを直接呼び出し、Azure Maps のデータを視覚化する方法について説明しました。
 
@@ -398,6 +400,6 @@ display(Image(staticMapImage))
 * [Post Route Matrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)
 * [Get Route Directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 
-Azure Maps REST API シリーズの完全な一覧については、[Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference) に関する記事を参照してください。
+Azure Maps REST API シリーズの完全な一覧については、[Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model) に関する記事を参照してください。
 
 Azure Notebooks の詳細については、[Azure Notebooks](https://docs.microsoft.com/azure/notebooks) に関する記事を参照してください。

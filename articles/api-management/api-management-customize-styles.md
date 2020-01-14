@@ -1,5 +1,6 @@
 ---
-title: Azure API Management の従来の開発者ポータルでページのスタイルをカスタマイズする方法 | Microsoft Docs
+title: API Management の従来の開発者ポータルでページのスタイルをカスタマイズする方法
+titleSuffix: Azure API Management
 description: クイック スタートの手順に従って Azure API Management 開発者ポータルで要素のスタイルをカスタマイズします。
 services: api-management
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 779d1228393cdc88f88820d8a335cb2e32424c14
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 664686511df8f310295a9f6ed6bc689b3a999544
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176865"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430730"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>開発者ポータル ページのスタイルをカスタマイズする
 
@@ -74,6 +75,6 @@ Azure API Management で開発者ポータルをカスタマイズする最も�
 1. 開発者ポータルに移動します。
 2. 行った変更内容を確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](api-management-developer-portal-templates.md)についての説明も参照してください。

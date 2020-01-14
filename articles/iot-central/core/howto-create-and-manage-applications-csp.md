@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0e49a5c8edd074c71d5972ee8d9c2e81f9c512ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851334"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453963"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Azure IoT Central アプリケーションを CSP ポータルから作成して管理する
 
@@ -33,7 +33,7 @@ Azure IoT Central の [Application Manager]\(アプリケーション マネー�
 
 ![CSP のマネージャーの作成](media/howto-create-application-csp/image3.png)
 
-Azure IoT Central アプリケーションを作成するには、左側のメニューの **[Build]\(ビルド\)** を選択します。 いずれかの業界テンプレートを選択するか、 **[カスタム アプリ]** を選択して最初からアプリケーションを作成します。 これによって、[Application Creation]\(アプリケーションの作成\) ページが読み込まれます。 このページのすべてのフィールドに入力してから、 **[作成]** を選択する必要があります。 詳しくは、以下の各フィールドを参照してください。
+Azure IoT Central アプリケーションを作成するには、左側のメニューの **[Build]\(ビルド\)** を選択します。 いずれかの業界テンプレートを選択するか、 **[レガシ アプリケーション]** を選択して最初からアプリケーションを作成します。 これによって、[Application Creation]\(アプリケーションの作成\) ページが読み込まれます。 このページのすべてのフィールドに入力してから、 **[作成]** を選択する必要があります。 詳しくは、以下の各フィールドを参照してください。
 
 ![CSP 用のアプリケーションの作成ページ](media/howto-create-application-csp/image4.png)
 
@@ -53,7 +53,7 @@ CSP として作成できるのは、従量課金制のアプリケーション�
 
 アプリケーションの名前を入力すると、アプリケーションの URL が自動生成されます。 必要に応じて、アプリケーションの別の URL を選択できます。 各 Azure IoT Central URL は、Azure IoT Central 内で一意である必要があります。 選択した URL が既に取得されている場合は、エラー メッセージが表示されます。
 
-## <a name="directory"></a>Directory
+## <a name="directory"></a>ディレクトリ
 
 Azure IoT Central では、ユーザーが Microsoft パートナー ポータルで選択した顧客を管理することになったというコンテキストが維持されるため、ユーザーは単に ディレクトリ フィールド内にその顧客の Azure Active Directory テナントを確認するだけです。 
 
@@ -85,15 +85,14 @@ Azure IoT Central を使用できるリージョンは、[[リージョン別の
 
 ## <a name="application-template"></a>アプリケーション テンプレート
 
-新しい Azure IoT Central アプリケーションには、使用可能なアプリケーション テンプレートのずれかを選択できます。 アプリケーション テンプレートには、使用開始に役立つデバイス テンプレートやダッシュボードなどの事前に定義された項目を含めることができます。
+新しい Azure IoT Central アプリケーションには、以下のアプリケーション テンプレートを選択できます。
 
-| アプリケーション テンプレート | 説明 |
+| アプリケーション テンプレート | [説明] |
 | -------------------- | ----------- |
-| カスタム アプリケーション   | 独自のデバイス テンプレートおよびデバイスにデータを入力するための空のアプリケーションを作成します。 |
-| サンプル Contoso       | 単純な接続デバイス用のデバイス テンプレートを含むアプリケーションを作成します。 このテンプレートは、Azure IoT Central の調査を開始するために使用します。 |
-| サンプル Devkit       | MXChip または Raspberry Pi デバイスを接続するための準備ができたデバイス テンプレートを含むアプリケーションを作成します。 このテンプレートは、これらのいずれかのデバイスでのコードを経験しているデバイス開発者である場合に使用します。 |
+| レガシ アプリケーション   | 独自のデバイス テンプレートおよびデバイスにデータを入力するための空のアプリケーションを作成します。 |
 
-## <a name="next-steps"></a>次の手順
+
+## <a name="next-steps"></a>次のステップ
 
 ここでは、CSP として Azure IoT Central アプリケーションを作成する方法について説明しました。推奨される次の手順は以下のとおりです。
 

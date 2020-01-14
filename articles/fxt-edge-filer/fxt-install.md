@@ -1,18 +1,17 @@
 ---
-title: Azure FXT Edge Filer 物理デバイスの設置に関するチュートリアル | Microsoft Docs
+title: チュートリアル:Azure FXT Edge Filer の物理デバイスを設置する
 description: Microsoft Azure FXT Edge Filer ハイブリッド ストレージ キャッシュ物理デバイス コンポーネントの開梱、ラックへの取り付け、およびケーブル接続を行う方法
-services: ''
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 0f3c7b01ee9d4a62ec0d563af55f2086894081be
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256054"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551031"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>チュートリアル:Azure FXT Edge Filer を設置する 
 
@@ -220,7 +219,7 @@ FXT Edge Filer には、オプションでケーブル管理アーム (CMA) が�
    
    ![カバーの左側にあるリリース ボタンと、左から外側に向けて引っ張ってカバーを取り外す方法を示したイメージ](media/fxt-install/remove-bezel-edited-600.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 デバイスを開梱してラックに取り付けたら、セットアップを継続し、Azure FXT Edge Filer にネットワーク ケーブルと AC 電源を接続します。
 

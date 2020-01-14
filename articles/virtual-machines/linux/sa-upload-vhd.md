@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: ef2db7f13ea5192634855b69a0d355e0f1e11ecb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d1dd8f749f6c3e991413628bd1e08baf76a02f8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035079"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458680"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する
 
@@ -121,8 +121,8 @@ Azure で Linux イメージを準備する際のその他のヒントについ�
 > 
 > 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
-リソース グループは、仮想ネットワークやストレージ記憶域など、仮想マシンをサポートするすべての Azure リソースを論理的にまとめます。 リソース グループの詳細については、[リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページを参照してください。 カスタム ディスクをアップロードして VM を作成する前に、まず [az group create](/cli/azure/group) を使用してリソース グループを作成する必要があります。
+## <a name="create-a-resource-group"></a>リソース グループを作成する
+リソース グループは、仮想ネットワークやストレージ記憶域など、仮想マシンをサポートするすべての Azure リソースを論理的にまとめます。 リソース グループの詳細については、[リソース グループの概要](../../azure-resource-manager/management/overview.md)に関するページを参照してください。 カスタム ディスクをアップロードして VM を作成する前に、まず [az group create](/cli/azure/group) を使用してリソース グループを作成する必要があります。
 
 次の例では、`myResourceGroup` という名前のリソース グループを `westus` の場所に作成します。
 
@@ -142,7 +142,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>ストレージ アカウント キーの一覧表示
-Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/common/storage-account-manage.md#access-keys)をご覧ください。 アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys) を使用します。
+Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージ アカウントのアクセス キーの詳細については、「[ストレージ アカウントのアクセス キーを管理する](../../storage/common/storage-account-keys-manage.md)」を参照してください。 アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys) を使用します。
 
 作成したストレージ アカウントのアクセス キーは次のようにして表示します。
 
@@ -204,7 +204,7 @@ az vm create --resource-group myResourceGroup --location westus \
 
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート
-Azure Resource Manager のテンプレートは、ビルドする環境を定義する JavaScript Object Notation (JSON) ファイルです。 このテンプレートは、コンピューティングやネットワークなどのさまざまなリソース プロバイダーに分類されます。 既存のテンプレートを使用することも独自に作成することもできます。 詳細については、 [Resource Manager とテンプレートの使用方法](../../azure-resource-manager/resource-group-overview.md)に関する記事をご覧ください。
+Azure Resource Manager のテンプレートは、ビルドする環境を定義する JavaScript Object Notation (JSON) ファイルです。 このテンプレートは、コンピューティングやネットワークなどのさまざまなリソース プロバイダーに分類されます。 既存のテンプレートを使用することも独自に作成することもできます。 詳細については、 [Resource Manager とテンプレートの使用方法](../../azure-resource-manager/management/overview.md)に関する記事をご覧ください。
 
 テンプレートの `Microsoft.Compute/virtualMachines` プロバイダー内に、VM の構成の詳細を格納する `storageProfile` ノードが作成されます。 編集が必要な 2 つの主なパラメーターが `image` URI と `vhd` URI です。これらでそれぞれカスタム ディスクと新しい VM の仮想ディスクをポイントします。 以下に、カスタム ディスクを使用する場合の JSON の例を示します。
 
@@ -224,7 +224,7 @@ Azure Resource Manager のテンプレートは、ビルドする環境を定義
           }
 ```
 
-[この既存のテンプレートを使用してカスタム イメージから VM を作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)するか、[独自の Azure Resource Manager テンプレートの作成](../../azure-resource-manager/resource-group-authoring-templates.md)に関するページを確認できます。 
+[この既存のテンプレートを使用してカスタム イメージから VM を作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)するか、[独自の Azure Resource Manager テンプレートの作成](../../azure-resource-manager/templates/template-syntax.md)に関するページを確認できます。 
 
 テンプレートを構成したら、[az group deployment create](/cli/azure/group/deployment) を使用して VM を作成します。 `--template-uri` パラメーターを使用して JSON テンプレートの URI を指定します。
 
@@ -241,6 +241,6 @@ az group deployment create --resource-group myNewResourceGroup \
 ```
 
 
-## <a name="next-steps"></a>次の手順
-カスタム仮想ディスクを準備してアップロードしたら、 [Resource Manager とテンプレートの使用](../../azure-resource-manager/resource-group-overview.md)について学習しましょう。 必要であれば、新しい VM に [データ ディスクを追加](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) することもできます。 VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず [ポートとエンドポイント](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を開放してください。
+## <a name="next-steps"></a>次のステップ
+カスタム仮想ディスクを準備してアップロードしたら、 [Resource Manager とテンプレートの使用](../../azure-resource-manager/management/overview.md)について学習しましょう。 必要であれば、新しい VM に [データ ディスクを追加](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) することもできます。 VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず [ポートとエンドポイント](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を開放してください。
 

@@ -5,12 +5,12 @@ author: stevelasker
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455002"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445748"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>コンテナー イメージのタグ付けとバージョン管理に関する推奨事項
 
@@ -38,6 +38,10 @@ ms.locfileid: "74455002"
 
 この場合、メジャーおよびマイナー タグはいずれも引き続きサービスの提供を受けます。 基本イメージのシナリオから、これによってイメージ所有者は処理済みのイメージを提供できます。
 
+### <a name="delete-untagged-manifests"></a>タグの付いていないマニフェストを削除する
+
+安定したタグが付いているイメージが更新されると、以前タグが付けられたイメージのタグが解除され、孤立したイメージになります。 以前のイメージのマニフェストと一意のレイヤー データは、レジストリに残ります。 レジストリ サイズを維持するには、安定したイメージの更新によって生成された、タグの付いていないマニフェストを定期的に削除します。 たとえば、指定した期間より古い、タグの付いていないマニフェストを[自動消去](container-registry-auto-purge.md)したり、タグの付いていないマニフェストの[保持ポリシー](container-registry-retention-policy.md)を設定したりします。
+
 ## <a name="unique-tags"></a>一意のタグ
 
 **推奨事項**:複数のノードでスケーリングできる環境では特に、**デプロイ**に一意のタグを使用します。 コンポーネントのバージョンに一貫性が維持されるように、慎重にデプロイを行いたいと思うことでしょう。 コンテナーが再起動したり、オーケストレーターがより多くのインスタンスにスケールアウトしたりした場合でも、ホストは他のノードと整合しない新しいバージョンを誤ってプルすることがありません。
@@ -51,7 +55,13 @@ ms.locfileid: "74455002"
 
   組織に複数のビルド システムがある場合は、このオプションのバリエーションとして、`<build-system>-<build-id>` のように、ビルド システムの名前をタグの前に付けます。 たとえば、API チームの Jenkins ビルド システムのビルドと Web チームの Azure Pipelines ビルド システムのビルドを区別できます。
 
-## <a name="next-steps"></a>次の手順
+### <a name="lock-deployed-image-tags"></a>デプロイ済みイメージ タグをロックする
+
+ベスト プラクティスとして、デプロイ済みイメージ タグの `write-enabled` 属性を `false` に設定して、そのタグを[ロック](container-registry-image-lock.md)することをお勧めします。 このプラクティスによりイメージが誤ってレジストリから削除されないようにして、デプロイが中断される可能性を防ぐことができます。 ロック手順はリリース パイプラインに含めることができます。
+
+デプロイ済みイメージをロックしても、デプロイされていない他のイメージについては、レジストリを維持するために、Azure Container Registry 機能を使用して引き続きレジストリから削除できます。 たとえば、指定した期間より古い、タグの付いていないマニフェストやロック解除されたイメージを[自動消去](container-registry-auto-purge.md)したり、タグの付いていないマニフェストの[保持ポリシー](container-registry-retention-policy.md)を設定したりします。
+
+## <a name="next-steps"></a>次のステップ
 
 この記事の概念の詳しい説明については、ブログ記事「[Docker Tagging: Best practices for tagging and versioning docker images (Docker のタグ付け: Docker イメージのタグ付けとバージョン管理のベスト プラクティス)](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)」を参照してください。
 

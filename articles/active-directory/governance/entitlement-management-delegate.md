@@ -1,5 +1,5 @@
 ---
-title: Azure AD エンタイトルメント管理の委任とロール - Azure Active Directory
+title: エンタイトルメント管理の委任とロール - Azure AD
 description: 部門マネージャーとプロジェクト マネージャーが自分でアクセスを管理できるよう、IT 管理者からアクセス ガバナンスを委任する方法について説明します。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d68728c4ca4f9fe511faedcf2ca177b7160f112
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174258"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422598"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD エンタイトルメント管理の委任とロール
 
@@ -76,7 +76,7 @@ IT 管理者の Hana には、各部署に連絡先担当者がいます。マ�
 
 エンタイトルメント管理には、エンタイトルメント管理に固有の次のロールがあります。
 
-| エンタイトルメント管理ロール | 説明 |
+| エンタイトルメント管理ロール | [説明] |
 | --- | --- |
 | カタログ作成者 | カタログを作成および管理します。 通常は、グローバル管理者ではない IT 管理者、またはリソース コレクションのリソース所有者です。 カタログを作成した人物が、自動的にカタログの最初のカタログ所有者になります。カタログ所有者はさらに追加することができます。 カタログ作成者は、自分が所有していないカタログを管理したり表示したりすることはできず、所有していないリソースをカタログに追加することはできません。 カタログ作成者が別のカタログを管理したり、所有していないリソースを追加したりする必要がある場合は、そのカタログまたはリソースの共同所有者になることを要求できます。 |
 | カタログ所有者 | 既存のカタログを編集および管理します。 通常は、IT 管理者かリソース所有者、またはカタログ所有者が指定したユーザーです。 |
@@ -84,7 +84,7 @@ IT 管理者の Hana には、各部署に連絡先担当者がいます。マ�
 
 また、アクセス パッケージの指定された承認者と申請者も、ロールではありませんが権限を持ちます。
 
-| Right | 説明 |
+| Right | [説明] |
 | --- | --- |
 | 承認者 | アクセス パッケージへの要求を承認または拒否することがポリシーによって許可されています。ただし、アクセス パッケージの定義を変更することはできません。 |
 | 要求元 | アクセス パッケージのポリシーによって、そのアクセス パッケージへの要求が許可されています。 |
@@ -134,7 +134,7 @@ IT 管理者の Hana には、各部署に連絡先担当者がいます。マ�
 
 タスクの最小限の特権ロールを決定するには、「[Azure Active Directory における管理タスク別の管理者ロール](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)」を参照することもできます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [カタログ作成者にアクセス ガバナンスを委任する](entitlement-management-delegate-catalog.md)
 - [リソースのカタログを作成および管理する](entitlement-management-catalog-create.md)

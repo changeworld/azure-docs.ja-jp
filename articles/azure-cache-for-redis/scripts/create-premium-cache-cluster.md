@@ -1,19 +1,19 @@
 ---
-title: Azure CLI スクリプト サンプル - クラスタリングを使用して Premium Azure Cache for Redis を作成する
-description: Azure CLI スクリプト サンプル - クラスタリングを使用して Premium レベルの Azure Cache for Redis を作成します
+title: クラスタリングを使用する Premium Azure Cache for Redis を作成する - Azure CLI
+description: この Azure CLI のコード サンプルでは、クラスタリングが有効でシャードが 2 つある、6 GB の Premium レベルの Azure Cache for Redis を作成する方法を説明します。
 author: yegu-ms
+ms.author: yegu
 tags: azure-service-management
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: 1813bf7112969436012627147b94f656537029d5
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 68203fe2e054f32ce5764fe4f1b07013b0806104
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122494"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411139"
 ---
 # <a name="create-a-premium-azure-cache-for-redis-with-clustering"></a>クラスタリングを使用する Premium Azure Cache for Redis の作成
 
@@ -37,7 +37,7 @@ ms.locfileid: "74122494"
 | [az redis create](https://docs.microsoft.com/cli/azure/redis) | Azure Cache for Redis インスタンスを作成します。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

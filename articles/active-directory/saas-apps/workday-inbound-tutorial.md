@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 94fc50bf238a74b7d8b45625d88b2d23d7dd1a13
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849338"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613766"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -120,7 +120,7 @@ Workday と Active Directory の間のワークフローのプロビジョニン
 > 通常の "Workday" アプリケーションは、Workday と Azure Active Directory の間でシングル サインオンを設定するために使用されます。
 
 以下の決定フロー チャートを使用して、お客様のシナリオに関連している Workday プロビジョニング アプリを特定します。
-    ![決定フローチャート](./media/workday-inbound-tutorial/wday_app_flowchart.png "Decisイオンフローチャート")
+    ![決定フローチャート](./media/workday-inbound-tutorial/wday_app_flowchart.png "決定フローチャート")
 
 目次を使用して、このチュートリアルの関連するセクションに移動してください。
 
@@ -153,8 +153,8 @@ Active Directory のトポロジに応じて、構成するユーザー プロ�
 
 |   |   |
 | - | - |
-| No. デプロイするプロビジョニング エージェントの数 | 3 (高可用とフェールオーバー向け) |
-| No. 構成する Workday to AD User Provisioning アプリの数 | 1 |
+| いいえ。 デプロイするプロビジョニング エージェントの数 | 3 (高可用とフェールオーバー向け) |
+| いいえ。 構成する Workday to AD User Provisioning アプリの数 | 1 |
 
   ![シナリオ 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -164,8 +164,8 @@ Active Directory のトポロジに応じて、構成するユーザー プロ�
 
 |   |   |
 | - | - |
-| No. デプロイするプロビジョニング エージェントの数 | 3 (高可用とフェールオーバー向け) |
-| No. 構成する Workday to AD User Provisioning アプリの数 | 1 つの子ドメインあたり 1 つのアプリ |
+| いいえ。 デプロイするプロビジョニング エージェントの数 | 3 (高可用とフェールオーバー向け) |
+| いいえ。 構成する Workday to AD User Provisioning アプリの数 | 1 つの子ドメインあたり 1 つのアプリ |
 
   ![シナリオ 2](./media/workday-inbound-tutorial/dep_scenario2.png)
 
@@ -175,8 +175,8 @@ Active Directory のトポロジに応じて、構成するユーザー プロ�
 
 |   |   |
 | - | - |
-| No. デプロイするプロビジョニング エージェントの数 | 1 つの分離された AD フォレストあたり 3 |
-| No. 構成する Workday to AD User Provisioning アプリの数 | 1 つの子ドメインあたり 1 つのアプリ |
+| いいえ。 デプロイするプロビジョニング エージェントの数 | 1 つの分離された AD フォレストあたり 3 |
+| いいえ。 構成する Workday to AD User Provisioning アプリの数 | 1 つの子ドメインあたり 1 つのアプリ |
 
   ![シナリオ 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 
@@ -292,7 +292,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
      ![ドメインのセキュリティ ポリシー](./media/workday-inbound-tutorial/wd_isu_08.png "ドメイン セキュリティ ポリシー") 
 
-     Click **OK**.
+     **[OK]** をクリックします。
 
 3. 表示されるレポートで、 **[External Account Provisioning]** の横に表示される省略記号 (...) を選択し、メニュー オプション **[ドメイン] -> [セキュリティ ポリシー アクセス許可の編集]** をクリックします
 
@@ -308,7 +308,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 6. 以下の残りのセキュリティ ポリシーごとに、上記の手順 3 ～ 5 を繰り返します。
 
-   | Operation | ドメイン セキュリティ ポリシー |
+   | 操作 | ドメイン セキュリティ ポリシー |
    | ---------- | ---------- |
    | Get と Put | Worker Data:Public Worker Reports |
    | Get と Put | Person Data:Work Contact Information |
@@ -362,13 +362,13 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 * [属性マッピングの構成](#part-4-configure-attribute-mappings)
 * [ユーザー プロビジョニングの有効化と起動](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>パート 1:プロビジョニング コネクタ アプリを追加し、プロビジョニング エージェントをダウンロードする
+### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>パート 1: プロビジョニング コネクタ アプリを追加し、プロビジョニング エージェントをダウンロードする
 
 **Workday を Active Directory プロビジョニングに構成するには、**
 
-1. <https://portal.azure.com> に移動します
+1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](<https://portal.azure.com>) にアクセスします。
 
-2. 左のナビゲーション バーで、 **[Azure Active Directory]** を選択します
+2. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
 
 3. **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** の順に選択します。
 
@@ -376,16 +376,16 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 5. 「**Workday Provisioning to Active Directory**」を検索し、ギャラリーからそのアプリを追加します。
 
-6. アプリが追加され、アプリの詳細画面が表示されたら、 **[プロビジョニング]** を選択します
+6. アプリが追加され、アプリの詳細画面が表示されたら、 **[プロビジョニング]** を選択します。
 
-7. **[プロビジョニング** **モード]** を **[自動]** に設定します
+7. **[プロビジョニング** **モード]** を **[自動]** に変更します。
 
 8. 表示された情報バナーをクリックして、プロビジョニング エージェントをダウンロードします。 
 
    ![エージェントのダウンロード](./media/workday-inbound-tutorial/pa-download-agent.png "[エージェントのダウンロード] 画面")
 
 
-### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>パート 2:オンプレミス プロビジョニング エージェントのインストールと構成
+### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>パート 2: オンプレミス プロビジョニング エージェントのインストールと構成
 
 オンプレミスの Active Directory にプロビジョニングするには、.NET 4.7.1 以降の Framework と目的の Active Directory ドメインへのネットワーク アクセスを備えたサーバーに、プロビジョニング エージェントがインストールされている必要があります。
 
@@ -444,7 +444,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
   
    ![サービス](./media/workday-inbound-tutorial/services.png)
 
-### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>パート 3:プロビジョニング アプリで Workday と Active Directory への接続を構成する
+### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>パート 3: プロビジョニング アプリで Workday と Active Directory への接続を構成する
 この手順では、Azure portal で Workday および Active Directory との接続を確立します。 
 
 1. Azure portal で、[パート 1](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent) で作成した Active Directory User Provisioning アプリに戻ります。
@@ -468,11 +468,11 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
    * **メール通知** - メール アドレスを入力し、[send email if failure occurs]\(失敗した場合にメールを送信する\) チェックボックスをオンにします。
 
      > [!NOTE]
-     > Azure AD プロビジョニング サービスは、プロビジョニング ジョブが[検査](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#quarantine)状態になった場合にメール通知を送信します。
+     > Azure AD プロビジョニング サービスは、プロビジョニング ジョブが[検査](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)状態になった場合にメール通知を送信します。
 
    * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗する場合は、エージェントのセットアップで構成された Workday 資格情報と AD 資格情報が有効であることを再確認します。
 
-     ![Azure ポータル](./media/workday-inbound-tutorial/wd_1.png)
+     ![Azure portal](./media/workday-inbound-tutorial/wd_1.png)
 
    * 資格情報が正常に保存されると、 **[マッピング]** セクションに既定のマッピング **[Synchronize Workday Workers to On Premises Active Directory]\(Workday の社員をオンプレミスの Active Directory に同期する\)** が表示されます
 
@@ -537,7 +537,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 1. マッピングを保存するには、[属性マッピング] セクションの上部にある **[保存]** をクリックします。
 
-   ![Azure ポータル](./media/workday-inbound-tutorial/wd_2.png)
+   ![Azure portal](./media/workday-inbound-tutorial/wd_2.png)
 
 #### <a name="below-are-some-example-attribute-mappings-between-workday-and-active-directory-with-some-common-expressions"></a>Workday と Active Directory との間の属性マッピングの例と、一般的に使用される式を次に示します
 
@@ -587,13 +587,13 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 > [!IMPORTANT]
 > Azure AD にプロビジョニングする必要があり、オンプレミスの Active Directory にはその必要がないクラウドのみのユーザーが存在する場合は、以下の手順にのみ従ってください。
 
-### <a name="part-1-adding-the-azure-ad-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 1:Azure AD プロビジョニング コネクタ アプリケーションの追加と Workday への接続の作成
+### <a name="part-1-adding-the-azure-ad-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 1: Azure AD プロビジョニング コネクタ アプリケーションの追加と Workday への接続の作成
 
 **Workday を構成して、クラウドのみのユーザーを Azure Active Directory にプロビジョニングするには、**
 
-1. <https://portal.azure.com> にアクセスします。
+1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](<https://portal.azure.com>) にアクセスします。
 
-2. 左のナビゲーション バーで、 **[Azure Active Directory]** を選択します
+2. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
 
 3. **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** の順に選択します。
 
@@ -601,9 +601,9 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 5. **Workday to Azure AD provisioning** を検索し、ギャラリーからそのアプリを追加します。
 
-6. アプリが追加され、アプリの詳細画面が表示されたら、 **[プロビジョニング]** を選択します
+6. アプリが追加され、アプリの詳細画面が表示されたら、 **[プロビジョニング]** を選択します。
 
-7. **[プロビジョニング** **モード]** を **[自動]** に設定します
+7. **[プロビジョニング** **モード]** を **[自動]** に変更します。
 
 8. 以下のように **[管理者の資格情報]** セクションを完了します。
 
@@ -619,7 +619,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
    * 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗した場合は、Workday URL と資格情報が Workday で有効であることを再度確認します。
 
-### <a name="part-2-configure-workday-and-azure-ad-attribute-mappings"></a>パート 2:Workday と Azure AD の属性マッピングを構成する
+### <a name="part-2-configure-workday-and-azure-ad-attribute-mappings"></a>パート 2: Workday と Azure AD の属性マッピングを構成する
 
 このセクションでは、クラウドのみのユーザー データが Workday から Azure Active Directory に移動する方法を構成します。
 
@@ -684,13 +684,13 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 * [書き戻し属性マッピングの構成](#part-2-configure-writeback-attribute-mappings)
 * [ユーザー プロビジョニングの有効化と起動](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday"></a>パート 1:Writeback コネクタ アプリの追加と Workday への接続の作成
+### <a name="part-1-adding-the-writeback-connector-app-and-creating-the-connection-to-workday"></a>パート 1: Writeback コネクタ アプリの追加と Workday への接続の作成
 
 **Workday Writeback コネクタを構成するには:**
 
-1. <https://portal.azure.com> に移動します
+1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](<https://portal.azure.com>) にアクセスします。
 
-2. 左のナビゲーション バーで、 **[Azure Active Directory]** を選択します
+2. Azure portal で、 **[Azure Active Directory]** を検索して選択します。
 
 3. **[エンタープライズ アプリケーション]** 、 **[すべてのアプリケーション]** の順に選択します。
 
@@ -698,9 +698,9 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
 5. **Workday Writeback** を検索し、ギャラリーからそのアプリを追加します。
 
-6. アプリが追加され、アプリの詳細画面が表示されたら、 **[プロビジョニング]** を選択します
+6. アプリが追加され、アプリの詳細画面が表示されたら、 **[プロビジョニング]** を選択します。
 
-7. **[プロビジョニング** **モード]** を **[自動]** に設定します
+7. **[プロビジョニング** **モード]** を **[自動]** に変更します。
 
 8. 以下のように **[管理者の資格情報]** セクションを完了します。
 
@@ -714,7 +714,7 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
 
    * **[接続のテスト]** ボタンをクリックします。 接続テストが成功した場合、上部の **[保存]** ボタンをクリックします。 失敗した場合は、Workday URL と資格情報が Workday で有効であることを再度確認します。
 
-### <a name="part-2-configure-writeback-attribute-mappings"></a>パート 2:書き戻し属性マッピングの構成
+### <a name="part-2-configure-writeback-attribute-mappings"></a>パート 2: 書き戻し属性マッピングの構成
 
 このセクションでは、Azure AD から Workday への書き戻し属性の流れを構成します。 現時点では、コネクタは、メール アドレスとユーザー名の Workday への書き戻しのみをサポートします。
 
@@ -737,7 +737,7 @@ Workday プロビジョニング アプリの構成が完了したら、Azure po
 
 1. **[プロビジョニング]** タブで、 **[プロビジョニングの状態]** を **[ON]** に設定します。
 
-2. **[Save]** をクリックします。
+2. **[保存]** をクリックします。
 
 3. この操作により初期同期が開始されます。これに要する時間は Workday テナントのユーザー数に応じて変わります。 
 
@@ -745,7 +745,7 @@ Workday プロビジョニング アプリの構成が完了したら、Azure po
 
 5. 最初の同期が完了すると、次に示すように、 **[プロビジョニング]** タブに監査概要レポートが書き込まれます。
 
-   ![Azure ポータル](./media/workday-inbound-tutorial/wd_3.png)
+   ![Azure portal](./media/workday-inbound-tutorial/wd_3.png)
 
 ## <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -848,7 +848,7 @@ Azure AD をハイブリッド モード (クラウドとオンプレミスの�
 * **[コントロール パネル]**  ->  **[プログラムのアンインストールまたは変更]** メニューに移動します
 * エントリ **Microsoft Azure AD Connect プロビジョニング エージェント**に対応するバージョンを探します
 
-  ![Azure ポータル](./media/workday-inbound-tutorial/pa_version.png)
+  ![Azure portal](./media/workday-inbound-tutorial/pa_version.png)
 
 #### <a name="does-microsoft-automatically-push-provisioning-agent-updates"></a>Microsoft からプロビジョニング エージェントの更新プログラムは自動的にプッシュされますか。
 
@@ -905,7 +905,7 @@ Azure AD をハイブリッド モード (クラウドとオンプレミスの�
   Get-PublishedResources -TenantId "[tenant ID]"
   ```
 
-* 表示されるエージェントの一覧から *resourceName* がお客様の AD ドメイン名と同じリソースから "id" フィールドの値をコピーします。
+* 表示されるエージェントの一覧から *resourceName* がお客様の AD ドメイン名と同じリソースから `id` フィールドの値をコピーします。
 * このコマンドに ID 値を貼り付けて、PowerShell でコマンドを実行します。
 
   ```powershell
@@ -1191,7 +1191,7 @@ manager 属性は AD の参照属性です。 プロビジョニング サービ
 |#|エラーのシナリオ |考えられる原因|推奨される解決方法|
 |--|---|---|---|
 |1.| 次のエラー メッセージを伴うプロビジョニング エージェントのインストール時のエラー:"*Service 'Microsoft Azure AD Connect Provisioning Agent' (AADConnectProvisioningAgent) failed to start.Verify that you have sufficient privileges to start the system. (サービス 'Microsoft Azure AD Connect Provisioning Agent' (AADConnectProvisioningAgent) を開始できませんでした。システムを起動するために十分な特権を持っていることを確認してください。)* " | 通常、このエラーはプロビジョニング エージェントをドメイン コントローラーにインストールしようとして、グループ ポリシーによってサービスが開始されない場合に発生します。  また、以前のバージョンのエージェントが実行されていて、新規インストールを開始する前にアンインストールが完了していない場合にも表示されます。| DC 以外のサーバーにプロビジョニング エージェントをインストールします。 新しいエージェントをインストールする前に、必ず以前のバージョンのエージェントをアンインストールします。|
-|2.| Windows サービス 'Microsoft Azure AD Connect Provisioning Agent' が "*開始中*" の状態で、"*実行中*" の状態に切り替わりません。 | インストールの一環で、エージェント ウィザードによってサーバー上にローカル アカウント (**NT サービス\\AADConnectProvisioningAgent**) が作成されます。これは、サービスの開始に使用される **[ログオン]** アカウントです。 Windows サーバー上のセキュリティ ポリシーにより、ローカル アカウントでサービスを実行できない場合は、このエラーが発生します。 | "*サービス*" コンソールを開きます。 Windows サービスの 'Microsoft Azure AD Connect Provisioning Agent' を右クリックし、[ログオン] タブでサービスを実行するドメイン管理者のアカウントを指定します。 サービスを再起動します。 |
+|2.| Windows サービス 'Microsoft Azure AD Connect Provisioning Agent' が "*開始中*" の状態で、"*実行中*" の状態に切り替わりません。 | インストールの一環で、エージェント ウィザードによってサーバー上にローカル アカウント (**NT サービス\\AADConnectProvisioningAgent**) が作成されます。これは、サービスの開始に使用されるログオン アカウントです。 Windows サーバー上のセキュリティ ポリシーにより、ローカル アカウントでサービスを実行できない場合は、このエラーが発生します。 | "*サービス*" コンソールを開きます。 Windows サービスの 'Microsoft Azure AD Connect Provisioning Agent' を右クリックし、ログオン タブでサービスを実行するドメイン管理者のアカウントを指定します。 サービスを再起動します。 |
 |3.| "*Active Directory の接続*" 手順で AD ドメインを使用してプロビジョニング エージェントを構成するときに、ウィザードによる AD スキーマの読み込み時間が長くかかり、最終的にタイムアウトします。 | 通常、このエラーは、ファイアウォールの問題のためにウィザードから AD ドメイン コントローラー サーバーに接続できない場合に表示されます。 | "*Active Directory の接続*" ウィザード画面で、AD ドメインの資格情報を入力するときに、"*ドメイン コントローラーの優先順位の選択*" というオプションがあります。 このオプションは、エージェント サーバーと同じサイト内にあるドメイン コントローラーを選択し、通信をブロックするファイアウォール規則がないようにするために使用します。 |
 
 #### <a name="connectivity-errors"></a>接続エラー
@@ -1360,7 +1360,7 @@ Azure AD プロビジョニング サービスは、GDPR 分類の**データ �
 
 データ保持に関しては、Azure AD プロビジョニング サービスでは 30 日を超えてレポートの生成、分析の実行、または分析情報の提供を行いません。 そのため Azure AD プロビジョニング サービスでは、いかなるデータも 30 日間を超えて格納、処理、保持されることはありません。 この設計は、GDPR の規制、Microsoft のプライバシー コンプライアンス規則、および Azure AD のデータ リテンション ポリシーに準拠したものです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](../manage-apps/check-status-user-account-provisioning.md)
 * [Workday と Azure Active Directory の間でシングル サインオンを構成する方法](workday-tutorial.md)

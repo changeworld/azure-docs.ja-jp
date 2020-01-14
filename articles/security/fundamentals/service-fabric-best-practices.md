@@ -1,26 +1,18 @@
 ---
-title: Azure Service Fabric のセキュリティに関するベスト プラクティス | Microsoft Docs
+title: Azure Service Fabric のセキュリティに関するベスト プラクティス
 description: この記事は、Azure Service Fabric のセキュリティに関するベスト プラクティスを提供します。
-services: security
-documentationcenter: na
 author: unifycloud
-manager: barbkess
-editor: tomsh
-ms.assetid: ''
+ms.author: tomsh
 ms.service: security
 ms.subservice: security-fundamentals
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/16/2019
-ms.author: tomsh
-ms.openlocfilehash: dc063621e6b3e1d0d3e1a51d744ca9d9a6ef8c8d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934618"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548821"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric セキュリティに関するベスト プラクティス
 Azure では、アプリケーションをすばやく簡単に、高いコスト効率でデプロイできます。 運用環境にクラウド アプリケーションをデプロイする前に、アプリケーションに実装するクラスターのセキュリティ確保に関して推奨される重要なベスト プラクティスを確認しましょう。
@@ -152,7 +144,7 @@ HTTP は安全なプロトコルではないため、傍受される可能性が
 SSL 証明書の使用に関する詳細については、[Azure アプリケーションの SSL 構成](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)に関するページを参照してください。
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Azure Service Fabric にネットワークの分離とセキュリティを使用する
-サンプルとしての [Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-authoring-templates.md)を使って、3 ノードタイプ セキュア クラスターを設定します。 ネットワーク トラフィックは受信と送信のどちらも、テンプレートとネットワーク セキュリティ グループ (NSG) を使って制御します。
+サンプルとしての [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)を使って、3 ノードタイプ セキュア クラスターを設定します。 ネットワーク トラフィックは受信と送信のどちらも、テンプレートとネットワーク セキュリティ グループ (NSG) を使って制御します。
 
 テンプレートには、仮想マシン スケール セットごとに NSG が設定されており、セットの受信トラフィックと送信トラフィックの制御に使用されます。 ルールの既定の構成では、システム サービスとテンプレートで指定されているアプリケーション ポートで必要なすべてのトラフィックが許可されます。 既定のルールを確認し、アプリケーション用に新しいルールを追加するなど、ニーズに応じて変更します。
 
@@ -184,7 +176,7 @@ Service Fabric では認証と暗号化に証明書を使用し、クラスタ�
 
 Azure Service Fabric では、[Service Fabric クラスター](../../service-fabric/service-fabric-cluster-creation-via-arm.md)に接続されるクライアントのために、管理者用とユーザー用の 2 種類のアクセス制御がサポートされています。 クラスターの管理者はアクセス制御を使用して、さまざまなグループのユーザーに対して特定のクラスター操作へのアクセスを制限することができます。 このため、アクセス制御を使えばクラスターのセキュリティを高めることができます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Service Fabric セキュリティのチェックリスト](service-fabric-checklist.md)
 - Service Fabric [開発環境](../../service-fabric/service-fabric-get-started.md)を設定します。

@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure FXT Edge Filer クラスター構成 - ノードの追加
+title: チュートリアル:Azure FXT Edge Filer クラスターにノードを追加する
 description: Azure FXT Edge Filer ストレージ キャッシュにノードを追加する方法
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 85ab9aaa3e184af7aa71a31eb3d8de1a20639c2a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 6251fe8f88b7db25e3c09898540e07754d72fb0d
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254929"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551949"
 ---
-# <a name="tutorial-add-cluster-nodes"></a>チュートリアル:クラスター ノードの追加 
+# <a name="tutorial-add-cluster-nodes-to-an-azure-fxt-edge-filer-cluster"></a>チュートリアル:Azure FXT Edge Filer クラスターにクラスター ノードを追加する
 
 新しい Azure FXT Edge Filer クラスターは、ノードが 1 つだけの状態で作成されます。 他の構成を行う前に、少なくとも 2 つ以上のノードを追加して高可用性を有効にする必要があります。 
 
@@ -108,7 +108,7 @@ HA が有効であることを確認するための警告が **[ダッシュボ�
 ![ダッシュボードのテーブルに表示された "HA is now fully configured" (HA が完全に構成されました) というメッセージ](media/fxt-cluster-config/ha-configured-alert.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 すべてのノードをクラスターに追加した後、セットアップの続きとして、クラスターの長期的な記憶域を構成します。
 

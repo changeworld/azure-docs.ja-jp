@@ -1,19 +1,19 @@
 ---
-title: Azure CLI スクリプト サンプル - Azure Cache for Redis の詳細を取得します
-description: Azure CLI スクリプト サンプル - Azure Cache for Redis の詳細を取得します
+title: Azure Cache for Redis の詳細を取得する - Azure CLI
+description: この Azure CLI のコード サンプルでは、プロビジョニング状態など、Azure Cache for Redis インスタンスの詳細を取得する方法を示します。
 author: yegu-ms
+ms.author: yegu
 tags: azure-service-management
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: f3e6c6dab95722eebdc4a175379444ef5840cad1
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 54920017f4a0598a74a54114e3d1e0a5392d7d2a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122489"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411066"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>Azure Cache for Redis の詳細を取得する
 
@@ -34,7 +34,7 @@ ms.locfileid: "74122489"
 | [az redis の表示](https://docs.microsoft.com/cli/azure/redis) | Azure Cache for Redis インスタンスの詳細を取得します。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

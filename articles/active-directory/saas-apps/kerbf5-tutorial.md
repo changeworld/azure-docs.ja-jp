@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a1f06b0b5aa59328d2fe39d501cfdf3ad7524427
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786488"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431473"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と F5 の統合
 
@@ -273,7 +273,7 @@ F5 に対する Azure AD SSO を構成してテストするには、次の構成
 
     ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure13.png)
 
-## <a name="advanced-configuration"></a>詳細な構成
+## <a name="advanced-configuration"></a>高度な構成
 
 >[!NOTE]
 >参考情報については、[こちら](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html)をクリックしてください。
@@ -330,7 +330,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
 
     ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure18.png)
 
-2. SAML IDP を設定するために、 **[Access]\(アクセス\) > [Federation]\(フェデレーション\) > [SAML: Service Provider]\(SAML: サービス プロバイダー\) > [External Idp Connectors]\(外部 Idp コネクタ\)** の順に移動して、 **[Create]\(作成\) > [From Metadata]\(メタデータから\)** の順にクリックします。
+2. SAML IDP を設定するには、 **[アクセス] > [フェデレーション] > [SAML: サービス プロバイダー] > [外部 Idp コネクタ]** の順に移動し、 **[作成] > [メタデータから]** をクリックします。
 
     ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure19.png)
 
@@ -370,7 +370,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     >[!Note]
     > Kerberos 委任アカウントを作成し、指定する必要があります。 KCD セクションを参照してください (変数リファレンスについては、付録を参照してください)
 
-    * **[Username Source]\(ユーザー名ソース\)** : session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+    * **ユーザー名ソース**: session.saml.last.attr.name.http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
 
     * **[User Realm Source]\(ユーザー領域のソース\)** : session.logon.last.domain
 
@@ -381,7 +381,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     * 名前:KerbApp200
     * [Profile Type]\(プロファイルの種類\): All
     * [Profile Scope]\(プロファイルのスコープ\): プロファイル
-    * 言語:英語
+    * 言語:English
 
         ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure30.png)
 
@@ -469,7 +469,7 @@ Access Policy Manager (APM) がユーザーの認証に使用するドメイン 
     * setspn –A **host/big-ipuser.superdemo.live** big-ipuser
 
 * **手順 3:** (App Service アカウントに対する) SPN 委任で F5 委任アカウントに適切な委任を設定する。
-    次の例では、FRP-App1.superdemo.live アプリの KCD に対して APM 委任アカウントが構成されています。 live app.
+    次の例では、FRP-App1.superdemo.live の KCD に対して APM 委任アカウントが構成されています。 live アプリの KCD に対して APM 委任アカウントが構成されています。
 
     ![F5 (Kerberos) の構成](./media/kerbf5-tutorial/configure43.png)
 

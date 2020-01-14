@@ -1,7 +1,7 @@
 ---
 title: Speech SDK を使用してクライアントでカスタム コマンドを実行する方法
 titleSuffix: Azure Cognitive Services
-description: この記事では、Speech SDK を使用して、クライアントでのカスタム コマンド アクティビティを処理します
+description: この記事では、Speech SDK を使用して、クライアントでカスタム コマンド アクティビティを処理する方法について説明します。
 services: cognitive-services
 author: donkim
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d17ccc67f8254f05461012a9ae443d96ffd58fa5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806152"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446924"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>方法:Speech SDK を使用してクライアントでコマンドを実行する (プレビュー)
 
@@ -49,11 +49,11 @@ ms.locfileid: "74806152"
    > [!div class="mx-imgBorder"]
    > ![アクティビティの送信の完了規則](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | Setting | 推奨値 | 説明 |
+   | 設定 | 推奨値 | [説明] |
    | ------- | --------------- | ----------- |
-   | 規則の名前 | UpdateDeviceState | 規則の目的を説明する名前 |
-   | 条件 | 必須のパラメーター - `OnOff` および `SubjectDevice` | 規則を実行できるタイミングを決定する条件 |
-   | Actions | `SendActivity` (下記参照) | 規則条件が真のときに実行するアクション |
+   | 規則の名前 | UpdateDeviceState | ルールの目的を説明する名前 |
+   | 条件 | 必須のパラメーター - `OnOff` および `SubjectDevice` | ルールを実行できるタイミングを決定する条件 |
+   | アクション | `SendActivity` (下記参照) | ルール条件が真のときに実行するアクション |
 
    > [!div class="mx-imgBorder"]
    > ![アクティビティの送信のペイロード](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
@@ -139,7 +139,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. `turn on the tv` と言います
 1. TV の表示状態が "オン" に変わるはずです
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [方法: カスタム コマンド パラメーターに検証を追加する (プレビュー)](./how-to-custom-speech-commands-validations.md)

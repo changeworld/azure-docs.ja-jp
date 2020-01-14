@@ -7,17 +7,17 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: 0d279781cdc27dbf2140c0100d84de5128c6a3d5
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: f76134ffc6a7becb9b5719dcb3d826130b7cfa86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279421"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453275"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Azure への移行のために多数の VMware VM を評価する
 
 
-この記事では、Azure Migrate Server Assessment ツールを使用して、Azure に移行するために多数 (1000 - 35,000) のオンプレミス VMware VM を評価する方法について説明します
+この記事では、Azure Migrate Server Assessment ツールを使用して、Azure に移行するために多数 (1000 - 35,000) のオンプレミス VMware VM を評価する方法について説明します。
 
 [Azure Migrate](migrate-services-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "70279421"
 これらの制限事項を考慮して、デプロイの例をいくつか示します。
 
 
-**vCenter サーバー** | **サーバー上の VM** | **推奨事項** | **アクション**
+**vCenter サーバー** | **サーバー上の VM** | **推奨** | **操作**
 ---|---|---
 1 つ | < 10,000 | 1 つの Azure Migrate プロジェクト。<br/> 1 つのアプライアンス。<br/> 検出用に 1 つの vCenter アカウント。 | アプライアンスを設定し、アカウントを使って vCenter Server に接続します。
 1 つ | > 10,000 | 1 つの Azure Migrate プロジェクト。<br/> 複数のアプライアンス。<br/> 複数の vCenter アカウント。 | 10,000 VM ごとにアプライアンスを設定します。<br/><br/> vCenter アカウントを設定し、1 つのアカウントでのアクセスが 10,000 VM 未満に制限されるように、インベントリを分割します。<br/> アカウントを使って、各アプライアンスを vCenter Server に接続します。<br/> 異なるアプライアンスで検出されたマシン間の依存関係を分析できます。
@@ -69,7 +69,7 @@ ms.locfileid: "70279421"
 
 - vCenter Server のデータセンター、クラスター、クラスターのフォルダー、ホスト、ホストのフォルダー、または個々の VM に、アプライアンスの検出のスコープを設定できます。
 - 環境が複数のテナント間で共有されていて、各テナントを個別に検出する必要がある場合は、アクセスのスコープを、アプライアンスで検出に使われる vCenter アカウントに設定できます。 
-    - テナントでホストが共有されている場合は、VM フォルダーごとにスコープを設定することができます。 vCenter アカウントに VM フォルダー レベルでアクセス権を付与した場合、Azure Migrate で VM を検出することはできません。 VM フォルダーで検出のスコープを指定する場合は、vCenter アカウントに VM レベルで読み取り専用アクセス権を割り当てることにより実現できます。 検出のスコープ設定について詳しくは、[こちら](tutorial-assess-vmware.md#scoping-discovery)をご覧ください。
+    - テナントでホストが共有されている場合は、VM フォルダーごとにスコープを設定することができます。 vCenter アカウントに VM フォルダー レベルでアクセス権を付与した場合、Azure Migrate で VM を検出することはできません。 VM フォルダーで検出のスコープを指定する場合は、vCenter アカウントに VM レベルで読み取り専用アクセス権を割り当てることにより実現できます。 検出のスコープ設定について詳しくは、[こちら](tutorial-assess-vmware.md#set-the-scope-of-discovery)をご覧ください。
 
 ## <a name="prepare-for-assessment"></a>評価の準備
 
@@ -100,7 +100,7 @@ ms.locfileid: "70279421"
 [このチュートリアル](tutorial-assess-vmware.md)の手順に従って、これらの設定を構成します。
     
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事では、次の内容について説明します。
  

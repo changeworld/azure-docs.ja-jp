@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
-ms.openlocfilehash: 5d55aafc29b3b022d1023077d2d8f459b0608ae7
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 6f72371077aab813cc22c9bbbe755fdfaa9ac00a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74556072"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433835"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -53,7 +53,7 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 - クラウド人事アプリで検出された変更情報のみに基づいて、ユーザーの入社、異動、退職を 1 つ以上の AD フォレスト、ドメイン、または OU と同期する必要がある
 - メールに Office 365 を使用している
 
-## <a name="learn"></a>詳細情報
+## <a name="learn"></a>学習する
 
 ユーザー プロビジョニングによって、継続的な ID ガバナンスの基盤が作成され、信頼性の高い ID データに依存するビジネス プロセスの品質が向上します。
 
@@ -96,7 +96,7 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 | | [Azure Active Directory でユーザー プロビジョニングをデプロイする方法](https://youtu.be/pKzyts6kfrw) |
 | チュートリアル | [SaaS アプリと Azure AD を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)を参照します |
 | | [チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
-| FAQ | [自動化されたユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#frequently-asked-questions) |
+| よく寄せられる質問 | [自動化されたユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
 | | [Workday から Azure AD へのプロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>ソリューションのアーキテクチャ
@@ -319,14 +319,14 @@ SSPR は、パスワードのリセットやアカウントのロック解除を
 
 ## <a name="plan-for-initial-cycle"></a>初期サイクルの計画
 
-Azure AD プロビジョニング サービスを初めて実行すると、クラウド人事アプリに対して[初期サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-happens-during-provisioning)が実行され、クラウド人事アプリ内のすべてのユーザー オブジェクトのスナップショットが作成されます。 初期サイクルにかかる時間は、ソース システムに存在するユーザーの数に正比例します。 ユーザーが 10 万人を超えるようなクラウド人事アプリのテナントでは、初期サイクルに長い時間がかかることがあります。
+Azure AD プロビジョニング サービスを初めて実行すると、クラウド人事アプリに対して[初期サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle)が実行され、クラウド人事アプリ内のすべてのユーザー オブジェクトのスナップショットが作成されます。 初期サイクルにかかる時間は、ソース システムに存在するユーザーの数に正比例します。 ユーザーが 10 万人を超えるようなクラウド人事アプリのテナントでは、初期サイクルに長い時間がかかることがあります。
 
 **(3 万ユーザーを超える) 大規模なクラウド人事アプリのテナント**では、AD で正しい属性が設定されていることを、さまざまなユーザー プロビジョニングのシナリオで検証した後ではじめて、初期サイクルを段階的に実行して増分更新を開始することをお勧めします。 次の順序に従ってください。
 
 1. [スコープ フィルター](#plan-scoping-filters-and-attribute-mapping)を設定して、限られたユーザーのセットのみを対象に初期サイクルを実行します。
 2. 最初の実行のために選択したユーザーについて、AD アカウントのプロビジョニングと属性値の設定を確認します。 結果が期待どおりである場合、スコープ フィルターを拡張してユーザーを徐々に増やし、2 回目の実行の結果を確認します。
 
-テスト用のユーザーに対する初期サイクルの結果に問題がなければ、[増分更新](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#incremental-cycles)を開始できます。
+テスト用のユーザーに対する初期サイクルの結果に問題がなければ、[増分更新](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#incremental-cycles)を開始できます。
 
 ## <a name="plan-testing-and-security"></a>テストとセキュリティを計画する
 
@@ -358,7 +358,7 @@ Azure AD プロビジョニング サービスを初めて実行すると、ク�
 
 クラウド人事のユーザー プロビジョニングの実装が運用環境で希望どおりに機能しない場合は、次のロールバック手順を実行して、以前の既知の正常な状態に戻すことができます。
 
-1. [プロビジョニングの概要レポート](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting#getting-provisioning-reports-from-the-azure-management-portal)と[プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting#provisioning-audit-logs)を確認して ([クラウド人事アプリのユーザー プロビジョニングの管理](#manage-your-configuration)に関するページを参照)、影響を受けたユーザーやグループに対して実行された誤った操作を判別します。
+1. [プロビジョニングの概要レポート](check-status-user-account-provisioning.md#getting-provisioning-reports-from-the-azure-portal)と[プロビジョニング ログ](check-status-user-account-provisioning.md#provisioning-logs-preview)を確認して ([クラウド人事アプリのユーザー プロビジョニングの管理](#manage-your-configuration)に関するページを参照)、影響を受けたユーザーやグループに対して実行された誤った操作を判別します。
 2. 影響を受けるユーザーやグループの最後の既知の良好な状態は、プロビジョニング監査ログを調べるか、ターゲット システム (Azure AD または AD) を確認することで判別できます。
 3. アプリの所有者と協力し、最新の既知の正常な状態の値を使用して、アプリで直接影響を受けたユーザーやグループを更新します。
 
@@ -374,7 +374,7 @@ Azure AD は、監査ログとレポートによって組織のユーザーの�
 
 ### <a name="gain-insights-from-reports-and-logs"></a>レポートとログから分析情報を得る
 
-[初期サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning#what-happens-during-provisioning)が正常に完了すると、Azure AD プロビジョニング サービスは、次のいずれかのイベントが発生するまで、チュートリアルで定義された各アプリに固有の間隔で、連続の増分更新を無期限に実行し続けます。
+[初期サイクル](https://docs.microsoft.com/azure/active-directory/manage-apps/how-provisioning-works#initial-cycle)が正常に完了すると、Azure AD プロビジョニング サービスは、次のいずれかのイベントが発生するまで、チュートリアルで定義された各アプリに固有の間隔で、連続の増分更新を無期限に実行し続けます。
 
 - サービスが手動で停止され、[Azure portal](https://portal.azure.com/) を使用するか、適切な [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) コマンドを使用して、新しい初期サイクルがトリガーされる。
 - 属性マッピングまたはスコープ フィルターの変更によって、新しい初期サイクルがトリガーされる。
@@ -396,7 +396,7 @@ Windows サーバーにインストールされた Azure AD Connect プロビジ
 
 Azure AD プロビジョニング サービスでは、レポートの生成、分析の実行、またはインサイトの提供を、30 日間を超えて行うことはありません。 そのため Azure AD プロビジョニング サービスでは、いかなるデータも 30 日間を超えて格納、処理、保持されることはありません。 
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
 プロビジョニング中に発生する可能性がある問題のトラブルシューティングについては、次のリンクを参照してください。
 
@@ -412,7 +412,7 @@ Azure AD プロビジョニング サービスでは、レポートの生成、�
 - [マネージャーの更新操作のログの概要](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#understanding-logs-for-manager-update-operations)
 - [よく発生するエラーの解決](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#resolving-commonly-encountered-errors)
 
-### <a name="next-steps"></a>次の手順
+### <a name="next-steps"></a>次のステップ
 
 - [属性マッピングの式の書き方](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
 - [Azure AD 同期 API の概要](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)

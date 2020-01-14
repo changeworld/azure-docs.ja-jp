@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/23/2019
+ms.date: 12/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0085db3f38fb8af014434f36893182e1682b05a7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9f67a5b5513ad5d8a07551b2a9f5605fc32a9bf6
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972150"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561849"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Slack の統合
 
@@ -45,7 +44,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Slack では、**SP** によって開始される SSO がサポートされます
-* Slack では、[**自動化された**ユーザー プロビジョニングとプロビジョニング解除](slack-provisioning-tutorial.md) (推奨) がサポートされます
+* Slack では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Slack では、[**自動化された**ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial)がサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -68,10 +68,10 @@ Azure AD への Slack の統合を構成するには、ギャラリーから管�
 Slack で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Slack の SSO の構成](#configure-slack-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[Slack のテスト ユーザーの作成](#create-slack-test-user)** - Slack で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクします。
+    * **[Slack のテスト ユーザーの作成](#create-slack-test-user)** - Slack で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクします。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -86,12 +86,23 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<your Slack company>.slack.com`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.slack.com`
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`https://slack.com` という URL を入力します。
 
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 実際のサインオン URL で値を更新する必要があります。 値を取得するには、[Slack クライアント サポート チーム](https://slack.com/help/contact)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+
+1. Slack アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+
+    ![image](common/edit-attribute.png)
+
+1. その他に、Slack アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。 ユーザーがメール アドレスを持っていない場合は、**emailaddress** を **user.userprincipalname** にマップします。
+
+    | Name | ソース属性 |
+    | -----|---------|
+    | emailaddress | user.userprincipalname |
+    | | |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -135,7 +146,7 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 
 1. 別の Web ブラウザー ウィンドウで、Slack 社のサイトに管理者としてサインインします。
 
-2. 左側に表示される、Slack で利用している会社名 (ここでは **Microsoft Azure AD** として設定されています) に移動し、 **[Team Settings]\(チームの設定\)** に移動します。次のスクリーンショットを参照してください。
+2. **[Microsoft Azure AD]** 、 **[Team Settings]** の順に選択します。
 
      ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial_slack_001.png)
 

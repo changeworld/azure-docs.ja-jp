@@ -1,5 +1,5 @@
 ---
-title: スコープとアプリのロールを検証する | Azure
+title: 保護された Web API を使用してスコープとアプリのロールを検証する | Azure
 titleSuffix: Microsoft identity platform
 description: 保護された Web API をビルドして、アプリケーションのコードを構成する方法について学習します。
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a20a7a5a0df87910d2093bfee47e46c9c1a06530
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2eb9cdf68bf5103776d50db28e9e6facc89c9278
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965383"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423700"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>保護された Web API: スコープとアプリのロールを検証する
 
@@ -42,7 +42,7 @@ ASP.NET および ASP.NET Core Web API を保護するには、以下のいず�
 - コントローラーのすべてのアクションを保護したい場合は、コントローラー自体
 - API の個々のコントローラー アクション
 
-```CSharp
+```csharp
     [Authorize]
     public class TodoListController : Controller
     {
@@ -59,7 +59,7 @@ ASP.NET および ASP.NET Core Web API を保護するには、以下のいず�
 
 API がユーザーに代わってクライアント アプリによって呼び出される場合は、API 用の特定のスコープを持つベアラー トークンを要求する必要があります ([コードの構成のベアラー トークン](scenario-protected-web-api-app-configuration.md#bearer-token)に関するページを参照してください)。
 
-```CSharp
+```csharp
 [Authorize]
 public class TodoListController : Controller
 {
@@ -86,7 +86,7 @@ public class TodoListController : Controller
 - `http://schemas.microsoft.com/identity/claims/scope` または `scp` という名前の要求があることを確認してください。
 - 要求が、API で想定されているスコープを含む値を持っていることを確認します。
 
-```CSharp
+```csharp
     /// <summary>
     /// When applied to a <see cref="HttpContext"/>, verifies that the user authenticated in the 
     /// web API has any of the accepted scopes.
@@ -121,7 +121,7 @@ public class TodoListController : Controller
 Web API が [デーモン アプリ](scenario-daemon-overview.md)によって呼び出された場合、そのアプリには Web API に対するアプリケーションのアクセス許可が必要です。 「[アプリケーションのアクセス許可 (アプリ ロール) の公開](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles)」で、API がそのようなアクセス許可 (たとえば `access_as_application` アプリ ロール) を公開していることを確認しました。
 ここでは、API に、受け取ったトークンに `roles` 要求が含まれていることと、この要求に想定されている値が含まれていることを検証させる必要があります。 この検証を行うコードは、委任されたアクセス許可を検証するコードと似ています。異なるのは、`scopes` をテストする代わりに、コントローラーのアクションが `roles` をテストすることです。
 
-```CSharp
+```csharp
 [Authorize]
 public class TodoListController : ApiController
 {
@@ -134,7 +134,7 @@ public class TodoListController : ApiController
 
 `ValidateAppRole()` メソッドは、次のようなものになります。
 
-```CSharp
+```csharp
 private void ValidateAppRole(string appRole)
 {
     //
@@ -161,7 +161,7 @@ private void ValidateAppRole(string appRole)
 
 デーモン アプリのみに Web API の呼び出しを許可する場合は、アプリ ロールを検証するときに、トークンがアプリ専用トークンであるという条件を追加します。
 
-```CSharp
+```csharp
 string oid = ClaimsPrincipal.Current.FindFirst("oid")?.Value;
 string sub = ClaimsPrincipal.Current.FindFirst("sub")?.Value;
 bool isAppOnlyToken = oid == sub;
@@ -169,7 +169,7 @@ bool isAppOnlyToken = oid == sub;
 
 逆の条件を確認するようにすると、ユーザーがサインインするアプリのみに API の呼び出しが許可されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [運用環境への移行](scenario-protected-web-api-production.md)

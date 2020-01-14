@@ -1,5 +1,5 @@
 ---
-title: Application Insights Profiler を使用して Azure VM で実行されている Web アプリをプロファイルする | Microsoft Docs
+title: Azure VM 上の Web アプリをプロファイルする - Application Insights Profiler
 description: Application Insights Profiler を使用して Azure VM 上の Web アプリをプロファイルします。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: fa1179e55a4826450d30351be0a905efb059780b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 046128fda385486f5a92d215e349760483c5dfa4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031013"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432360"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Application Insights Profiler を使用して、Azure 仮想マシンまたは仮想マシン スケール セットで実行されている Web アプリをプロファイルする
 
@@ -109,7 +109,7 @@ portal から Application Insights Profiler シンクを設定する方法はま
 ## <a name="can-profiler-run-on-on-premises-servers"></a>オンプレミスのサーバーで Profiler を実行できますか。
 オンプレミス サーバーで Application Insights Profiler をサポートすることは予定されていません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - アプリケーションへのトラフィックを生成します (たとえば、[可用性テスト](monitor-web-app-availability.md)を起動します)。 その後、Application Insights インスタンスへのトレースの送信が開始されるまで 10 ～ 15 分待機します。
 - Azure ポータルで [Profiler トレース](profiler-overview.md?toc=/azure/azure-monitor/toc.json)を表示します。

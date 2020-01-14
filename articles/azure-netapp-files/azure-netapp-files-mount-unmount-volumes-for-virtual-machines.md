@@ -1,25 +1,18 @@
 ---
-title: Windows または Linux 仮想マシンの Azure NetApp Files ボリュームをマウントまたはマウント解除する | Microsoft Docs
-description: 仮想マシンまたは Linux 仮想マシンのボリュームをマウントまたはマウント解除する方法について説明します。
-services: azure-netapp-files
-documentationcenter: ''
+title: 仮想マシンの Azure NetApp Files ボリュームをマウントする
+description: Azure で Windows 仮想マシンまたは Linux 仮想マシンのボリュームをマウントまたはマウント解除する方法について説明します。
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/05/2019
-ms.author: b-juche
-ms.openlocfilehash: 7f1e9500a9268e0fba054f7065e858cd801aca7b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3457adf67fa067a154eef008b08d8cfcc1d9eaa0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894098"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551541"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する 
 
@@ -48,7 +41,7 @@ ms.locfileid: "74894098"
     b. ボリュームに対して `chmod 777` または `chmod 775` コマンドを実行します。  
     c. Windows 上の NFS クライアントを使用してボリュームをマウントします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFS に関する FAQ](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)

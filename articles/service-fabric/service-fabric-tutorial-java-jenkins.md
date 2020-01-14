@@ -1,26 +1,17 @@
 ---
-title: Azure で Service Fabric 上の Java アプリ用に Jenkins を構成する | Microsoft Docs
+title: Azure で Service Fabric 上の Java アプリ用に Jenkins を構成する
 description: このチュートリアルでは、Jenkins を使用して Java Service Fabric アプリケーションをデプロイするための継続的インテグレーションをセットアップする方法について説明します。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 0a0f7cc8e3810a28fdbec914a9f37808c33ab878
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376655"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>チュートリアル:Service Fabric 上の Java アプリケーションに対して CI/CD を有効にするように Jenkins 環境を構成する
 
@@ -88,19 +79,19 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
 1. Jenkins ダッシュボード (``http://<HOST-IP>:8080``) で**新しい項目**を作成します。
 
-1. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト**を選択し、**[OK]** をクリックします。
+1. 項目の名前を入力します (例: **MyJob**)。 **フリースタイル プロジェクト**を選択し、 **[OK]** をクリックします。
 
-1. ジョブ ページに移動し、**[Configure (構成)]** をクリックします。
+1. ジョブ ページに移動し、 **[Configure (構成)]** をクリックします。
 
    a. 全般セクションで **[GitHub project]\(GitHub プロジェクト\)** を選択し、GitHub プロジェクトの URL を指定します。 この URL では、Jenkins の継続的インテグレーション/継続的デプロイ (CI/CD) フローと統合する Service Fabric Java アプリケーションがホストされます (例: ``https://github.com/testaccount/dev_test``)。
 
-   b. **[Source Code Management (ソース コードの管理)]** セクションで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: *https://github.com/testaccount/dev_test.git*)。 ここで、ビルドする分岐を指定することもできます (例: **/master**)。
+   b. **[Source Code Management (ソース コードの管理)]** セクションで **[Git]** を選択します。 Jenkins CI/CD フローと統合する Service Fabric Java アプリケーションをホストするリポジトリの URL を指定します (例: *https://github.com/testaccount/dev_test.git* )。 ここで、ビルドする分岐を指定することもできます (例: **/master**)。
 
 1. Jenkins と対話できるように (リポジトリをホストする) *GitHub* を構成します。 次の手順に従います。
 
-   a. GitHub リポジトリ ページに移動します。 次に、**[Settings (設定)]** > **[Integrations and Services (統合とサービス)]** の順に移動します。
+   a. GitHub リポジトリ ページに移動します。 次に、 **[Settings (設定)]**  >  **[Integrations and Services (統合とサービス)]** の順に移動します。
 
-   b. **[Add Service (サービスの追加)]** を選択して「**Jenkins**」と入力し、**[Jenkins-GitHub plugin (Jenkins-GitHub プラグイン)]** を選択します。
+   b. **[Add Service (サービスの追加)]** を選択して「**Jenkins**」と入力し、 **[Jenkins-GitHub plugin (Jenkins-GitHub プラグイン)]** を選択します。
 
    c. Jenkins webhook の URL を入力します (既定では、``http://<PublicIPorFQDN>:8081/github-webhook/`` です)。 **[Add service (サービスの追加)] または [Update service (サービスの更新)]** をクリックします。
 
@@ -108,9 +99,9 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
    ![Service Fabric Jenkins の構成](./media/service-fabric-tutorial-java-jenkins/jenkinsconfiguration.png)
 
-1. **[Build Triggers (ビルド トリガー)]** セクションで、目的のビルド オプションを選択します。 この例では、リポジトリにプッシュが行われるたびにビルドがトリガーされるようにします。 そのため、**[GitHub hook trigger for GITScm polling (GITScm ポーリングの GitHub フック トリガー)]** を選択します 
+1. **[Build Triggers (ビルド トリガー)]** セクションで、目的のビルド オプションを選択します。 この例では、リポジトリにプッシュが行われるたびにビルドがトリガーされるようにします。 そのため、 **[GitHub hook trigger for GITScm polling (GITScm ポーリングの GitHub フック トリガー)]** を選択します
 
-1. **[Build (ビルド)]** セクションで、**[Add build step (ビルド手順の追加)]** ボックスの一覧の **[Invoke Gradle Script (Gradle スクリプトの呼び出し)]** オプションを選択します。 表示されたウィジェットで詳細メニューを開き、**[Root build script]\(ルート ビルド スクリプト\)** にアプリケーションのパスを指定します。 ウィジェットは、指定されたパスから build.gradle を取得し、適切に動作します。
+1. **[Build (ビルド)]** セクションで、 **[Add build step (ビルド手順の追加)]** ボックスの一覧の **[Invoke Gradle Script (Gradle スクリプトの呼び出し)]** オプションを選択します。 表示されたウィジェットで詳細メニューを開き、 **[Root build script]\(ルート ビルド スクリプト\)** にアプリケーションのパスを指定します。 ウィジェットは、指定されたパスから build.gradle を取得し、適切に動作します。
 
     ![Service Fabric Jenkins のビルド アクション](./media/service-fabric-tutorial-java-jenkins/jenkinsbuildscreenshot.png)
 
@@ -124,7 +115,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
     > このクラスターは、Service Fabric を使用して Jenkins コンテナー イメージをデプロイする場合に、Jenkins コンテナー アプリケーションをホストするクラスターと同じにすることもできます。
     >
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 ## <a name="update-your-existing-application"></a>既存のアプリケーションを更新する
 
@@ -183,7 +174,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
 1. アプリケーションのアップグレードを実行する Jenkins ジョブを初期化するには、新しい変更を GitHub リポジトリにプッシュします。
 
-1. Service Fabric Explorer で、**[アプリケーション]** ドロップダウンをクリックします。 アップグレードの状態を確認するには、**[アップグレードの進行中]** タブをクリックします。
+1. Service Fabric Explorer で、 **[アプリケーション]** ドロップダウンをクリックします。 アップグレードの状態を確認するには、 **[アップグレードの進行中]** タブをクリックします。
 
     ![アップグレードの進行中](./media/service-fabric-tutorial-create-java-app/upgradejava.png)
 
@@ -191,7 +182,7 @@ Jenkins は、Service Fabric クラスター内外でセットアップできま
 
     ![ローカルの投票アプリ](./media/service-fabric-tutorial-java-jenkins/votingv2.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

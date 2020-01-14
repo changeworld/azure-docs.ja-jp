@@ -1,5 +1,5 @@
 ---
-title: Enterprise Agreement から Microsoft 顧客契約 API に移行する - Azure | Microsoft Docs
+title: EA から Microsoft 顧客契約の API に移行する - Azure
 description: この記事では、Microsoft Enterprise Agreement (EA) から Microsoft 顧客契約への移行とその結果について説明します。
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 20d83c48fb4ad60b091dc87b224a053690251a48
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7fef417a7b19d463a98d32b7cf3cce515d1137a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481717"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440996"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Enterprise Agreement から Microsoft 顧客契約 API に移行する
 
@@ -130,7 +130,7 @@ Usage Details API は、すべての Cost Management API と同様に複数の�
 | --- | --- |
 | 請求先アカウント | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | 請求プロファイル | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
-| Subscription | `/subscriptions/{subscriptionId}` |
+| サブスクリプション | `/subscriptions/{subscriptionId}` |
 | Resource group | `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}` |
 
 任意のプログラミング コードを更新するには、次のクエリ文字列パラメーターを使用します。
@@ -174,7 +174,7 @@ Usage Details API は、すべての Cost Management API と同様に複数の�
 | --- | --- | --- |
 | AccountId | 該当なし | サブスクリプションの作成者は追跡されません。 invoiceSectionId (departmentId と同じ) を使用します。 |
 | AccountNameAccountOwnerId および AccountOwnerEmail | 該当なし | サブスクリプションの作成者は追跡されません。 invoiceSectionName (departmentName と同じ) を使用します。 |
-| AdditionalInfo | additionalInfo | &nbsp;  |
+| AdditionalInfo: | additionalInfo | &nbsp;  |
 | ChargesBilledSeparately | isAzureCreditEligible | これらのプロパティは正反対であることに注意してください。 isAzureCreditEnabled が true の場合、ChargesBilledSeparately は false になります。 |
 | ConsumedQuantity | 数量 | &nbsp; |
 | ConsumedService | consumedService | 正確な文字列値は異なる場合があります。 |
@@ -193,9 +193,9 @@ Usage Details API は、すべての Cost Management API と同様に複数の�
 | MeterName | meterName | 正確な文字列値は異なる場合があります。 |
 | MeterRegion | meterRegion | 正確な文字列値は異なる場合があります。 |
 | MeterSubCategory | meterSubCategory | 正確な文字列値は異なる場合があります。 |
-| 月 | なし | 日付から月を解析します。 |
+| Month | なし | 日付から月を解析します。 |
 | プラン名 | なし | publisherName と productOrderName を使用します。 |
-| OfferId | なし | &nbsp;  |
+| OfferID | なし | &nbsp;  |
 | Order Number | なし | &nbsp;  |
 | PartNumber | なし | 価格を一意に識別するには、meterId と productOrderName を使用します。 |
 | Plan Name | productOrderName | &nbsp;  |
@@ -224,7 +224,7 @@ Usage Details API は、すべての Cost Management API と同様に複数の�
 | (新規) | billingProfileId | 課金プロファイルの一意の ID (登録と同じ)。 |
 | (新規) | billingProfileName | 課金プロファイルの名前 (登録と同じ)。 |
 | (新規) | chargeType | Azure サービスの使用状況、Marketplace の使用状況および購入を区別するために使用します。 |
-| (新規) | invoiceId | 請求書の一意の ID。 現在開いている月については空白です。 |
+| (新規) | invoiceld | 請求書の一意の ID。 現在開いている月については空白です。 |
 | (新規) | publisherType | 購入に関するパブリッシャーの種類。 使用状況については空白です。 |
 | (新規) | serviceFamily | 購入のタイプ。 使用状況については空白です。 |
 | (新規) | servicePeriodEndDate | 購入済みのサービスの終了日。 |
@@ -373,10 +373,10 @@ HTTP Status 200
 | meterId  | meterId | &nbsp;  |
 | unitOfMeasure  | unitOfMeasure | 正確な文字列値は異なる場合があります。 |
 | includedQuantity  | includedQuantity | Microsoft 顧客契約のサービスには適用されません。 |
-| partNumber  | _適用不可_ | 代わりに、productOrderName (offerId と同じ) と meterid の組み合わせを使用します。 |
+| partNumber  | _適用不可_ | 代わりに、productOrderName (offerID と同じ) と meterID の組み合わせを使用します。 |
 | unitPrice  | unitPrice | 単価は、Microsoft 顧客契約で利用されるサービスに適用されます。 |
 | currencyCode  | pricingCurrency | Microsoft 顧客契約では、価格通貨と請求通貨で価格が表現されます。 currencyCode は、Microsoft 顧客契約での pricingCurrency に対応します。 |
-| offerId | productOrderName | OfferId の代わりに、productOrderName を使用できますが、OfferId と同じではありません。 ただし、productOrderName と meter は、従来の登録の meterId と Offerid に関連して Microsoft 顧客契約の価格を決定します。 |
+| offerID | productOrderName | OfferID の代わりに、productOrderName を使用できますが、OfferID と同じではありません。 ただし、productOrderName と meter によって、従来の登録の meterId と OfferID に関連する Microsoft 顧客契約の価格が決定されます。 |
 
 ## <a name="consumption-price-sheet-api-operations"></a>Consumption Price Sheet API の操作
 
@@ -428,26 +428,26 @@ EA の登録スコープでは、API の応答およびプロパティは同じ�
 
 [Azure Resource Manager Price Sheet API](/rest/api/consumption/pricesheet) の以前のプロパティと新しい同じプロパティは、次の表に示されています。
 
-| 古い Azure Resource Manager Price Sheet API プロパティ  | 新しい Microsoft 顧客契約 Price Sheet API プロパティ   | 説明 |
+| 古い Azure Resource Manager Price Sheet API プロパティ  | 新しい Microsoft 顧客契約 Price Sheet API プロパティ   | [説明] |
 | --- | --- | --- |
-| 測定 ID | _meterId_ | メーターの一意の識別子。 meterId と同じです。 |
+| 測定 ID | _meterId_ | メーターの一意の識別子。 meterID と同じです。 |
 | Meter name | meterName | メーターの名前。 メーターは、Azure サービスのデプロイ可能なリソースを表します。 |
-| Meter category  | service | メーターの分類カテゴリの名前。 Microsoft 顧客契約価格シートのサービスと同じです。 正確な文字列値は異なります。 |
+| Meter category  | サービス (service) | メーターの分類カテゴリの名前。 Microsoft 顧客契約価格シートのサービスと同じです。 正確な文字列値は異なります。 |
 | Meter subcategory | meterSubCategory | メーターのサブ分類カテゴリの名前。 サービスの高レベル機能セット比較の分類に基づきます。 たとえば、Basic SQL DB と Standard SQL DB。 |
 | Meter region | meterRegion | &nbsp;  |
-| 単位 | _適用不可_ | unitOfMeasure から解析できます。 |
+| ユニット | _適用不可_ | unitOfMeasure から解析できます。 |
 | Unit of measure | unitOfMeasure | &nbsp;  |
-| Part number | _適用不可_ | partNumber ではなく、productOrderName と MeterId を使用して、課金プロファイルの価格を一意に識別します。 フィールドは、MCA 請求書の partNumber ではなく MCA 請求書に一覧表示されます。 |
+| Part number | _適用不可_ | 部品番号の代わりに、productOrderName と MeterID を使用して、課金プロファイルの価格を一意に識別します。 フィールドは、MCA 請求書の部品番号ではなく、MCA 請求書に一覧表示されます。 |
 | Unit price | unitPrice | Microsoft 顧客契約の単価。 |
 | Currency code | pricingCurrency | Microsoft 顧客契約では、価格通貨と請求通貨で価格を表します。 Currency code は、Microsoft 顧客契約での pricingCurrency と同じです。 |
 | Included quantity | includedQuantity | Microsoft 顧客契約のサービスには適用されません。 ゼロの値を表示します。 |
-|  Offer Id  | productOrderName | OfferId ではなく productOrderName を使用します。 ただし、OfferId とは同じではなく、productOrderName と meter が、Microsoft 顧客契約の価格を決定します。 従来の登録では、meterId と Offerid に関連していました。 |
+|  プラン ID  | productOrderName | OfferID の代わりに、productOrderName を使用します。 ただし、OfferID と同じではなく、productOrderName と meter によって、Microsoft 顧客契約の価格が決定されます。 従来の登録では、meterId と OfferID に関連していました。 |
 
-Microsoft 顧客契約の価格は、エンタープライズ契約とは異なって定義されます。 エンタープライズ加入契約のサービスの価格は、製品、PartNumber、メーター、およびオファーで一意です。 PartNumber は、Microsoft 顧客契約で使用されていません。
+Microsoft 顧客契約の価格は、エンタープライズ契約とは異なって定義されます。 エンタープライズ加入契約のサービスの価格は、製品、部品番号、メーター、オファーで一意です。 Microsoft 顧客契約では部品番号は使用されません。
 
-Microsoft 顧客契約の一部である Azure 従量課金サービスの価格は、productOrderName と meterId で一意です。 これらは、サービス メーターと製品プランを表します。
+Microsoft 顧客契約の一部である Azure 従量課金サービスの価格は、productOrderName と meterID で一意です。 これらは、サービス メーターと製品プランを表します。
 
-価格シートと、Usage Details API での使用状況の間の調整をするために、productOrderName と meterId を使用できます。
+価格シートと、Usage Details API での使用状況の間の調整をするために、productOrderName と meterID を使用できます。
 
 課金プロファイル所有者、共同作成者、閲覧者、および請求書管理者の権限を持つユーザーには、価格シートをダウンロードできます。
 
@@ -457,15 +457,15 @@ Microsoft 顧客契約の一部である Azure 従量課金サービスの価格
 
 次のフィールドは、Microsoft 顧客契約 Price Sheet API で使用されなくなったか、同じフィールドがあります。
 
-|廃止されたフィールド| 説明|
+|廃止されたフィールド| [説明]|
 |---|---|
 | billingPeriodId | 適用不可。 MCA の InvoiceId に対応しています。 |
-| offerId | 適用不可。 MCA の productOrderName に対応しています。 |
+| offerID | 適用不可。 MCA の productOrderName に対応しています。 |
 | meterCategory  | 適用不可。 MCA の Service に対応しています。 |
 | unit | 適用不可。 unitOfMeasure から解析できます。 |
 | currencyCode | MCA の pricingCurrency と同じです。 |
 | meterLocation | MCA の meterRegion と同じです。 |
-| partNumber partnumber | 部品番号が MCA 請求書に一覧表示されていないため、適用できません。 partnumber の代わりに meterId と productOrderName の組み合わせを使用して、価格を一意に識別します。 |
+| partNumber partnumber | 部品番号が MCA 請求書に一覧表示されていないため、適用できません。 部品番号の代わりに、meterId と productOrderName の組み合わせを使用して、価格を一意に識別します。 |
 | totalIncludedQuantity | 適用不可。 |
 | pretaxStandardRate  | 適用不可。 |
 
@@ -481,7 +481,7 @@ Transactions API を使用して予約購入トランザクションを取得す
 
 ## <a name="recommendations-apis-replaced"></a>置き換えられた推奨の API
 
-Reserved Instance Purchase Recommendations API は、過去 7 日、30 日、または 60 日にわたる仮想マシンの使用状況を示します。 API は、予約購入の推奨事項も提供します。 以下が含まれます。
+Reserved Instance Purchase Recommendations API は、過去 7 日、30 日、または 60 日にわたる仮想マシンの使用状況を示します。 API は、予約購入の推奨事項も提供します。 具体的な内容を次に示します。
 
 - [Shared Reserved Instance Recommendation API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)
 - [Single Reserved Instance Recommendations API](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)
@@ -498,7 +498,7 @@ Reservation Recommendations API を使用して予約推奨事項を取得する
 
 Reserved Instance Usage API を使用して、加入契約での予約の使用状況を取得できます。 加入契約に複数の予約済みインスタンスがある場合は、この API を使用して、すべての予約済みインスタンス購入の使用状況も取得できます。
 
-以下が含まれます。
+具体的な内容を次に示します。
 
 - [Reserved Instance 使用量の詳細](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)
 - [Reserved Instance 使用量の概要](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)
@@ -534,6 +534,6 @@ Azure Cost Management では、次の操作が可能になります。
 
 コストの報告には、Power BI を使用することもできます。 Power BI Desktop の [Azure Cost Management コネクタ](/power-bi/desktop-connect-azure-cost-management) を使用すると、Azure のコストをより深く理解するのに役立つ、カスタマイズされた高性能レポートを作成できます。 Azure Cost Management コネクタは現在のところ、Microsoft 顧客契約またはマイクロソフト エンタープライズ契約 (EA) をお持ちのお客様がご利用いただけます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Azure の支出を監視し制御する方法については、[Cost Management のドキュメント](index.yml)を参照してください。 または、Cost Management でリソースの使用を最適化したい場合。

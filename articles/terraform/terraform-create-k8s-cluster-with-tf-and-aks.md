@@ -3,12 +3,12 @@ title: チュートリアル - Terraform を使用して Azure Kubernetes Servic
 description: Azure Kubernetes Service と Terraform を使用して Kubernetes クラスターを作成する方法を示すチュートリアル
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 792c075cfb40eb4904a30b63e9902a59ceda9bc1
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: cea9d93ed418a4f2e90fa3f2dfd3441f4b296316
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374966"
 ---
 # <a name="tutorial-create-a-kubernetes-cluster-with-azure-kubernetes-service-using-terraform"></a>チュートリアル:Terraform を使用して Azure Kubernetes Service で Kubernetes クラスターを作成する
 
@@ -138,7 +138,7 @@ Kubernetes クラスターのリソースを宣言する Terraform 構成ファ�
             }
         }
 
-        agent_pool_profile {
+        default_node_pool {
             name            = "agentpool"
             count           = var.agent_count
             vm_size         = "Standard_DS1_v2"
@@ -168,7 +168,7 @@ Kubernetes クラスターのリソースを宣言する Terraform 構成ファ�
 
     `linux_profile` レコードを使用すると、SSH を使用してワーカー ノードにサインインできる設定を構成できます。
 
-    AKS では、ワーカー ノードのみについて課金されます。 `agent_pool_profile` レコードでは、これらのワーカー ノードの詳細を構成します。 `agent_pool_profile record` には、作成するワーカー ノードの数とワーカー ノードの種類が含まれます。 将来、クラスターをスケールアップまたはスケールダウンする必要がある場合は、このレコードの `count` 値を変更します。
+    AKS では、ワーカー ノードのみについて課金されます。 `default_node_pool` レコードでは、これらのワーカー ノードの詳細を構成します。 `default_node_pool record` には、作成するワーカー ノードの数とワーカー ノードの種類が含まれます。 将来、クラスターをスケールアップまたはスケールダウンする必要がある場合は、このレコードの `count` 値を変更します。
 
 1. ファイルを保存し ( **&lt;Ctrl> + S** キー)、エディターを終了します ( **&lt;Ctrl> + Q** キー)。
 
@@ -309,7 +309,7 @@ Terraform は `terraform.tfstate` ファイルを介して状態をローカル�
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
     
-    `terraform init` コマンドによって、バックエンドおよびプロバイダー プラグインの初期化が成功したことが表示されます。
+    `terraform init` コマンドによって、バックエンドおよびプロバイダー プラグインの初期化が成功したことが示されます。
 
     !["terraform init" の結果例](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
@@ -392,7 +392,7 @@ Kubernetes ツールを使用して、新しく作成したクラスターを確
 
 AKS クラスターが作成されたとき、クラスター ノードとポッドの両方の正常性メトリックを取得するための監視が有効になりました。 これらの正常性メトリックは、Azure portal で利用できます。 コンテナーの正常性の監視の詳細については、[Azure Kubernetes Service の正常性の監視](/azure/azure-monitor/insights/container-insights-overview)に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"] 
 > [Azure での Terraform の使用について詳細を参照](/azure/terraform)

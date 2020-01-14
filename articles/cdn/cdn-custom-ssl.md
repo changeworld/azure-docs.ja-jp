@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: bacd26cdba24e7ad503a3ae58d5c77d5a3311537
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f1af388d1f8b9542d196a53cc6c143f9b48e6d5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177759"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361665"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -50,7 +50,7 @@ ms.locfileid: "72177759"
 
 このチュートリアルの手順を完了するには、最初に CDN プロファイルと少なくとも 1 つの CDN エンドポイントを作成する必要があります。 詳細については、「[クイック スタート: Azure CDN プロファイルとエンドポイントの作成](cdn-create-new-endpoint.md)」を参照してください。
 
-さらに、Azure CDN カスタム ドメインを CDN エンドポイントに関連付ける必要があります。 詳細については、[チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md) 
+さらに、Azure CDN カスタム ドメインを CDN エンドポイントに関連付ける必要があります。 詳細については、「[チュートリアル:カスタム ドメインを Azure CDN エンドポイントに追加します](cdn-map-content-to-custom-domain.md)。
 
 > [!IMPORTANT]
 > CDN マネージド証明書は、ルートまたは頂点のドメインには使用できません。 Azure CDN カスタム ドメインがルートまたは頂点のドメインの場合、独自の証明書の持ち込み機能を使用する必要があります。 
@@ -68,30 +68,32 @@ CDN で管理された証明書を使用する場合、HTTPS 機能は、数回�
 
 カスタム ドメインで HTTPS を有効にするには、次の手順のようにします。
 
-1. [Azure portal](https://portal.azure.com) で、お使いの **Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** のいずれかのプロファイルを参照します。
+1. [Azure portal](https://portal.azure.com) に移動し、Azure CDN によって管理されている証明書を検索します。 **CDN のプロファイル**を検索して選択します。 
 
-2. CDN エンドポイントの一覧で、カスタム ドメインが含まれているエンドポイントを選択します。
+2. お使いの **Azure CDN Standard from Microsoft**、**Azure CDN Standard from Akamai**、**Azure CDN Standard from Verizon**、**Azure CDN Premium from Verizon** のいずれかのプロファイルを選択します。
+
+3. CDN エンドポイントの一覧で、カスタム ドメインが含まれているエンドポイントを選択します。
 
     ![エンドポイントの一覧](./media/cdn-custom-ssl/cdn-select-custom-domain-endpoint.png)
 
     **[エンドポイント]** ページが表示されます。
 
-3. カスタム ドメインの一覧で、HTTPS を有効にするカスタム ドメインを選択します。
+4. カスタム ドメインの一覧で、HTTPS を有効にするカスタム ドメインを選択します。
 
     ![カスタム ドメイン リスト](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
     **[カスタム ドメイン]** ページが表示されます。
 
-4. [証明書の管理の種類] で、 **[CDN 管理]** を選択します。
+5. [証明書の管理の種類] で、 **[CDN 管理]** を選択します。
 
-5. **[オン]** を選択して HTTPS を有効にします。
+6. **[オン]** を選択して HTTPS を有効にします。
 
     ![カスタム ドメイン HTTPS ステータス](./media/cdn-custom-ssl/cdn-select-cdn-managed-certificate.png)
 
-6. [ドメインの検証](#validate-the-domain)に進みます。
+7. [ドメインの検証](#validate-the-domain)に進みます。
 
 
-# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[オプション 2:独自の証明書を使用して HTTPS を有効にする](#tab/option-2-enable-https-with-your-own-certificate)
+# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[オプション 2: 独自の証明書を使用して HTTPS を有効にする](#tab/option-2-enable-https-with-your-own-certificate)
 
 > [!IMPORTANT]
 > このオプションは、**Azure CDN from Microsoft** および **Azure CDN from Verizon** プロファイルでのみ利用できます。 
@@ -176,7 +178,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* がカスタム ドメイン名で、*Value* が CDN エンドポイントのホスト名です。
 
-| 名前            | 種類  | 値                 |
+| Name            | 種類  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -204,7 +206,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;your-domain-name.com&gt;  
 
-数分以内に、要求の承認を求める次の例のようなメールを受け取ります。 スパム フィルターを使っている場合は、verification@digicert.com をホワイトリストに追加してください。 24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。
+数分以内に、要求の承認を求める次の例のようなメールを受け取ります。 スパム フィルターを使っている場合は、verification@digicert.com を許可リストに追加してください。 24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。
     
 ![ドメイン検証メール](./media/cdn-custom-ssl/domain-validation-email.png)
 
@@ -260,15 +262,17 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ### <a name="disable-the-https-feature"></a>HTTPS 機能を無効にする 
 
-1. [Azure Portal](https://portal.azure.com) で、お使いの **Azure CDN Standard from Microsoft**、**Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon** プロファイルを参照します。
+1. [Azure portal](https://portal.azure.com) で、**CDN のプロファイル**を検索して選択します。 
 
-2. エンドポイントの一覧で、カスタム ドメインを含むエンドポイントをクリックします。
+2. お使いの **Azure CDN Standard from Microsoft**、**Azure CDN Standard from Verizon**、または **Azure CDN Premium from Verizon** プロファイルを選択します。
 
-3. HTTPS を無効にするカスタム ドメインをクリックします。
+3. エンドポイントの一覧で、カスタム ドメインを含むエンドポイントをクリックします。
+
+4. HTTPS を無効にするカスタム ドメインを選択します。
 
     ![カスタム ドメイン リスト](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
 
-4. **[オフ]** をクリックして HTTPS を無効にした後、 **[適用]** をクリックします。
+5. **[オフ]** を選択して HTTPS を無効にした後、 **[適用]** を選択します。
 
     ![カスタム HTTPS ダイアログ](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
 
@@ -316,9 +320,9 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 7. *証明書の更新では、独自の証明書の持ち込みをどのように処理しますか。*
 
-    より新しい証明書が PoP インフラストラクチャにデプロイされるようにするには、単に新しい証明書を Azure KeyVault にアップロードします。その後、Azure CDN の SSL 設定で最新の証明書バージョンを選択し、保存します。 そのようにすると、Azure CDN によって、新しい更新された証明書が反映されます。 
+    より新しい証明書が PoP インフラストラクチャにデプロイされるようにするには、単に新しい証明書を Azure KeyVault にアップロードします。その後、Azure CDN の SSL 設定で最新の証明書バージョンを選択し、保存します。 Azure CDN によって、新しい更新された証明書が反映されます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

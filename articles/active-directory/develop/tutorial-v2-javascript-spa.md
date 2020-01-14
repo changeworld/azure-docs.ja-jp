@@ -1,5 +1,5 @@
 ---
-title: Microsoft ID プラットフォーム JavaScript シングルページ アプリケーション ガイド | Azure
+title: JavaScript シングルページ アプリのチュートリアル- Microsoft ID プラットフォーム | Azure
 description: JavaScript SPA アプリケーションで、Azure Active Directory v2.0 エンドポイントからのアクセス トークンを必要とする API を呼び出す方法
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3576c015fcca7eb9c390f38c6527d76353efe06
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 995210e720040448927b2aaac2c2eb590e3de981
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919394"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423371"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>ユーザーをサインインして、JavaScript シングルページ アプリケーション (SPA) から Microsoft Graph API を呼び出す
 
@@ -46,7 +46,7 @@ ms.locfileid: "74919394"
 
 このガイドでは、次のライブラリを使用します。
 
-|ライブラリ|説明|
+|ライブラリ|[説明]|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript プレビュー用の Microsoft Authentication Library|
 
@@ -58,7 +58,7 @@ ms.locfileid: "74919394"
 
 ## <a name="set-up-your-web-server-or-project"></a>Web サーバーまたはプロジェクトの設定
 
-> 代わりにこのサンプルのプロジェクトをダウンロードすることもできます。 次のいずれかを実行します。
+> 代わりにこのサンプルのプロジェクトをダウンロードすることもできます。 以下のいずれかを実行します。
 > 
 > - Node.js などのローカル Web サーバーを使用してプロジェクトを実行するには、[プロジェクト ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)します。
 >
@@ -76,10 +76,10 @@ ms.locfileid: "74919394"
 
 ## <a name="create-your-project"></a>プロジェクトを作成する
 
-> ### <a name="option-1-nodejs-or-other-web-servers"></a>オプション 1:Node.js またはその他の Web サーバー
+> ### <a name="option-1-nodejs-or-other-web-servers"></a>オプション 1: Node.js またはその他の Web サーバー
 > [Node.js](https://nodejs.org/en/download/) がインストールされていることを確認し、アプリケーションをホストするフォルダーを作成します。
 >
-> ### <a name="option-2-visual-studio"></a>オプション 2:Visual Studio
+> ### <a name="option-2-visual-studio"></a>オプション 2:Visual Studio
 > Visual Studio を使用していて、新しいプロジェクトを作成する場合は、次の手順に従います。
 > 1. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。
 > 1. **[Visual C#\Web]** で **[ASP.NET Web アプリケーション (.NET Framework)]** を選択します。
@@ -326,7 +326,7 @@ function callMSGraph(theUrl, accessToken, callback) {
 
 ## <a name="register-your-application"></a>アプリケーションの登録
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. お使いのアカウントで複数のテナントにアクセスできる場合は、右上でそのアカウントを選択した後、使用する Azure AD テナントにポータル セッションを設定します。
 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://go.microsoft.com/fwlink/?linkid=2083908) ページに移動します。

@@ -3,19 +3,19 @@ title: Azure Cosmos DB の Advanced Threat Protection
 description: Azure Cosmos DB で保存データが暗号化される方法と、その実装方法について説明します。
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/21/2019
+ms.date: 12/13/2019
 ms.custom: seodec18
 ms.author: memildin
 author: memildin
 manager: rkarlin
-ms.openlocfilehash: c816c9877a9c796ee76310f2452f3505531c3018
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 5cea2f1dac50744c974917347b4428bc39aa737d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555026"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445544"
 ---
-# <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB の Advanced Threat Protection
+# <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>Azure Cosmos DB の Advanced Threat Protection (プレビュー)
 
 Azure Cosmos DB の Advanced Threat Protection は、通常と異なる潜在的に有害なアクセスまたはエクスプロイトが Azure Cosmos DB アカウントに対して試行されたことを検出するセキュリティ インテリジェンスを強化します。 この保護レイヤーにより、セキュリティの専門家でなくても脅威に対処でき、中央のセキュリティ監視システムでそれらを統合管理できます。
 
@@ -27,6 +27,14 @@ Azure Cosmos DB の Advanced Threat Protection は、通常と異なる潜在的
 > * Azure Cosmos DB の Advanced Threat Protection は、現在、Azure Government およびソブリン クラウド リージョンで使用できません。
 
 セキュリティ アラートの完全な調査エクスペリエンスでは、[Azure Cosmos DB の診断ログ](https://docs.microsoft.com/azure/cosmos-db/logging)を有効にすることをお勧めします。これにより、データベース自体に対する操作 (すべてのドキュメント、コンテナー、データベースに対する CRUD 操作を含む) がログに記録されます。
+
+## <a name="threat-types"></a>脅威の種類
+
+Azure Cosmos DB の Advanced Threat Protection では、データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティが検出されます。 現在、これにより次のアラートがトリガーされる場合があります。
+
+- **通常と異なる場所からのアクセス**:このアラートは、だれかが通常とは異なる地理的な場所から Azure Cosmos DB エンドポイントに接続したことで Azure Cosmos アカウントへのアクセス パターンに変化が生じたときにトリガーされます。 このアラートによって、正当なアクション、つまり新しいアプリケーションや開発者によるメンテナンス操作が検出されることがあります。 また、元従業員、外部の攻撃者などからの悪意のあるアクションが検出されることもあります。
+
+- **通常と異なるデータの抽出**: このアラートは、クライアントが Azure Cosmos DB アカウントから通常とは異なる量のデータを抽出しているときにトリガーされます。 これは、データ流出が発生し、アカウントに格納されているすべてのデータが外部データ ストアに転送されている可能性があることを示します。
 
 ## <a name="set-up-advanced-threat-protection"></a>Advanced Threat Protection の設定
 
@@ -99,7 +107,7 @@ Azure Cosmos DB のアクティビティで異常が発生すると、セキュ�
 
  Azure Cosmos DB アカウントの監視中に生成されるアラートの一覧については、Security Center のドキュメントで [Cosmos DB のアラート](../security-center/security-center-alerts-data-services.md#cosmos-db)に関するセクションを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Cosmos DB の診断ログ](monitor-cosmos-db.md#diagnostic-settings)の詳細を確認します
+* [Azure Cosmos DB の診断ログ](cosmosdb-monitor-resource-logs.md)の詳細を確認します
 * [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について参照してください

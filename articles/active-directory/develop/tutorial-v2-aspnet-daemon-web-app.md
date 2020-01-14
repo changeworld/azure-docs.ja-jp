@@ -13,20 +13,28 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d130a962c14415c417eedecd6ae26af1131b2e86
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: d884987ed5fb00d4078a38aa37d463a81630ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997022"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423390"
 ---
-# <a name="build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントを使用してマルチテナント デーモンを作成する
+# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>チュートリアル:Microsoft ID プラットフォーム エンドポイントを使用してマルチテナント デーモンを作成する
 
 このチュートリアルでは、Microsoft ID プラットフォームを使用して、Microsoft の企業顧客のデータに非対話型の長期プロセスでアクセスする方法について説明します。 サンプル デーモンでは、[OAuth2 のクライアント資格情報の付与](v2-oauth2-client-creds-grant-flow.md)を使用してアクセス トークンを取得します。 デーモンはその後、そのトークンを使用して [Microsoft Graph](https://graph.microsoft.io) を呼び出して、組織のデータにアクセスします。
+
+> [!div class="checklist"]
+> * Microsoft ID プラットフォームにデーモン アプリを統合する
+> * 管理者がアプリケーションへのアクセス許可をアプリに直接付与する
+> * アクセス トークンを取得して Microsoft Graph API を呼び出す
+> * Microsoft Graph API を呼び出す。
+
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 アプリは、ASP.NET MVC アプリケーションとしてビルドされています。 ユーザーのサインインには OWIN OpenID Connect ミドルウェアを使用します。  
 
@@ -60,11 +68,11 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 または、[サンプルを ZIP ファイルとしてダウンロード](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip)します。
 
-## <a name="register-the-sample-application-with-your-azure-ad-tenant"></a>サンプル アプリケーションを Azure AD テナントに登録する
+## <a name="register-your-application"></a>アプリケーションの登録
 
-このサンプルには 1 つのプロジェクトがあります。 その登録方法は、次のどちらかを選べます。
+このサンプルには 1 つのプロジェクトがあります。 アプリケーションを Azure AD テナントに登録するには:
 
-- [Azure Active Directory テナントにサンプルを登録する](#register-the-sample-application-with-your-azure-ad-tenant)手順と [Azure AD テナントを使用するようサンプルを構成する](#choose-the-azure-ad-tenant)手順に従う。
+- [Azure Active Directory テナントにサンプルを登録する](#register-your-application)手順と [Azure AD テナントを使用するようサンプルを構成する](#choose-the-azure-ad-tenant)手順に従う。
 - 以下を実行する PowerShell スクリプトを使用する。
   - Azure AD アプリケーションとその関連オブジェクト (パスワード、アクセス許可、依存関係) を "*自動的*" に作成します。
   - Visual Studio プロジェクトの構成ファイルに変更を加えます。
@@ -124,7 +132,7 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
    1. **[アクセス許可の追加]** ボタンを選択します。
    1. **[Microsoft API]** タブが選択されていることを確認します。
    1. **[よく使用される Microsoft API]** セクションで、 **[Microsoft Graph]** を選択します。
-   1. **[アプリケーションのアクセス許可]** セクションで、適切なアクセス許可 **[User.Read.All]** を選択していることを確認します。
+   1. **[アプリケーションのアクセス許可]** セクションで、適切なアクセス許可 (**User.Read.All**) が選択されていることを確認します。
    1. **[アクセス許可の追加]** ボタンを選択します
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>Azure AD テナントを使用するようサンプルを構成する
@@ -172,7 +180,7 @@ Visual Studio でソリューションを開いて、プロジェクトを構成
 ## <a name="re-create-the-sample-app"></a>サンプル アプリを再作成する
 
 1. Visual Studio で、新しい **Visual C#** **ASP.NET Web アプリケーション (.NET Framework)** プロジェクトを作成します。 
-1. 次の画面で、**MVC** プロジェクト テンプレートを選択します。 後で Web API コントローラーを追加するので、**Web API** 用のフォルダーと主要な参照も追加します。 プロジェクトの認証モードの選択は既定値 (**No Authentication**) のままにします。
+1. 次の画面で、**MVC** プロジェクト テンプレートを選択します。 後で Web API コントローラーを追加するので、**Web API** 用のフォルダーと主要な参照も追加します。 プロジェクトで選択される認証モードは既定値 ( **[認証なし]** ) のままにします。
 1. **ソリューション エクスプローラー** ウィンドウでプロジェクトを選択し、**F4** キーを押します。 
 1. プロジェクトのプロパティで、 **[SSL 有効]** を  **True** に設定します。 **[SSL URL]** に表示される情報を書き留めておきます。 これは、このアプリケーションの登録を Azure portal で構成する際に必要になります。
 1. 次の ASP.NET OWIN ミドルウェア NuGet パッケージを追加します。 
@@ -208,7 +216,7 @@ Visual Studio でソリューションを開いて、プロジェクトを構成
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>dotnet-web-daemon-v2 を作成し、Azure Web サイトに発行する
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 左上隅にある **[リソースの作成]** を選びます。
 1. **[Web]**  >  **[Web アプリ]** の順に選択し、Web サイトに名前を付けます。 たとえば、**dotnet-web-daemon-v2-contoso.azurewebsites.net** という名前を付けます。
 1. **サブスクリプション**、**リソース グループ**、**アプリ サービスのプランと場所**に関する情報を選択します。 **[OS]** は **[Windows]** 、 **[発行]** は **[コード]** とします。
@@ -237,7 +245,10 @@ Visual Studio によってプロジェクトが発行され、ブラウザーで
 1. 構成を保存します。
 1. 同じ URL を、 **[認証]**  >  **[リダイレクト URI]** メニューの値のリストに追加します。 複数のリダイレクト URL がある場合には、リダイレクト URL ごとにそのアプリ サービスの URI を使用している新しいエントリを用意する必要があります。
 
-## <a name="community-help-and-support"></a>コミュニティのヘルプとサポート
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+必要がなくなったら、「[アプリケーションの登録](#register-your-application)」の手順で作成したアプリ オブジェクトを削除します。  アプリケーションを削除するには、「[自分または自分の組織が作成したアプリケーションを削除する](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)」の手順に従います。
+
+## <a name="get-help"></a>ヘルプの参照
 
 [Stack Overflow](http://stackoverflow.com/questions/tagged/msal) を利用すれば、コミュニティからサポートを受けることができます。
 質問がある場合にはまず Stack Overflow に投稿してください。また、既存の問題を参照し、以前に同じ質問が挙がっていないかどうかを確認してください。
@@ -249,7 +260,7 @@ MSAL.NET にバグを見つけた場合は、[MSAL.NET GitHub の Issues](https:
 
 ご提案をお寄せいただく場合は、[ユーザーの声の投稿ページ](https://feedback.azure.com/forums/169401-azure-active-directory)にアクセスしてください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Microsoft ID プラットフォームでサポートされるさまざまな[認証フローとアプリケーション シナリオ](authentication-flows-app-scenarios.md)について学習します。
 
 詳細については、概念を説明した次のドキュメントを参照してください。

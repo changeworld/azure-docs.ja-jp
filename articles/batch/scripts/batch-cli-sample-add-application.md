@@ -1,6 +1,6 @@
 ---
-title: Azure CLI のサンプル スクリプト - Batch へのアプリケーションの追加 | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - Batch へのアプリケーションの追加
+title: Azure CLI のサンプル スクリプト - Batch へのアプリケーションの追加
+description: このサンプルでは、Azure Batch プールまたはタスクで使用するアプリケーションを追加する方法について説明します。
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: ba7f64910e033751df7d158a6fddf36371f2933f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9c580fa7ed4834ca516d373b3c7bb47f4cfd1b38
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322238"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390458"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI の例:Azure Batch アカウントへのアプリケーションの追加
 
@@ -57,6 +57,6 @@ az group delete --name myResourceGroup
 | [az batch application set](/cli/azure/batch/application#az-batch-application-set) | アプリケーションのプロパティを更新します。  |
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。

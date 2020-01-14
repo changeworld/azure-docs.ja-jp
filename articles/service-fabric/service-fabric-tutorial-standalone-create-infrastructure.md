@@ -1,26 +1,17 @@
 ---
-title: AWS 上の Service Fabric クラスターのインフラストラクチャを作成するチュートリアル - Azure Service Fabric | Microsoft Docs
+title: AWS にクラスター用のインフラストラクチャを作成する
 description: このチュートリアルでは、Service Fabric クラスターを実行するための AWS インフラストラクチャをセットアップする方法を学習します。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 69508628356a5f33073311e4d062d66875509192
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "73177829"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613977"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>チュートリアル:Service Fabric クラスターをホストする AWS インフラストラクチャを作成する
 
@@ -144,7 +135,7 @@ netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=
 New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 シリーズのパート 1 では、3 つの EC2 インスタンスを起動し、Service Fabric インストール用に構成する方法について学習しました。
 

@@ -1,26 +1,15 @@
 ---
-title: Azure VM 上の Service Fabric クラスターのインフラストラクチャを作成するチュートリアル - Azure Service Fabric | Microsoft Docs
+title: Azure VM にクラスター用のインフラストラクチャを作成する
 description: このチュートリアルでは、Service Fabric クラスターを実行するための Azure VM インフラストラクチャを設定する方法を学習します。
-services: service-fabric
-documentationcenter: .net
-author: jpconnock
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: jeconnoc
 ms.custom: mvc
-ms.openlocfilehash: b24b4d95827dbd398c0eba43dcbad9fbfeb51469
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 93a7e2507ab3a467ef83924479872694cae2dd5b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166282"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614011"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>チュートリアル:Service Fabric クラスターをホストする Azure VM インフラストラクチャを作成する
 
@@ -129,7 +118,7 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
 
    これで、お客様のインスタンスは Service Fabric 用に正しく準備されました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 シリーズのパート 1 では、3 つの Azure VM インスタンスを起動し、Service Fabric インストール用に構成する方法について学習しました。
 

@@ -1,5 +1,6 @@
 ---
-title: Azure App Configuration の動的な構成を ASP.NET Core アプリで使用するためのチュートリアル | Microsoft Docs
+title: チュートリアル:ASP.NET Core で App Configuration の動的な構成を有効にする
+titleSuffix: Azure App Configuration
 description: このチュートリアルでは、ASP.NET Core アプリの構成データを動的に更新する方法を学習します。
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: f49161531753c217e31d0681bcd19043cb47de75
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 608368daa17246f2512d243b2656dd7702d84f50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185262"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433707"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
@@ -195,7 +196,7 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
     ![クイック スタートのアプリ (ローカルで起動)](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-4. [Azure Portal](https://portal.azure.com) にサインインします。 **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
+4. [Azure portal](https://portal.azure.com) にサインインする **[すべてのリソース]** を選択し、クイック スタートで作成した App Configuration ストア インスタンスを選択します。
 
 5. **[Configuration Explorer]\(構成エクスプローラー)** を選択して次のキーの値を更新します。
 
@@ -212,11 +213,11 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
     > [!NOTE]
     > 構成設定は既定の有効期限 30 秒でキャッシュされるので、App Configuration ストアの設定に対する変更は、キャッシュの有効期限が切れたときにのみ、Web アプリに反映されます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、App Configuration から動的に構成設定を更新できるように ASP.NET Core Web アプリを設定しました。 App Configuration へのアクセスを効率化する Azure マネージド ID を使用する方法については、次のチュートリアルに進んでください。
 

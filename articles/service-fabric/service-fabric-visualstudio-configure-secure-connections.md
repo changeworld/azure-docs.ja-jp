@@ -1,25 +1,16 @@
 ---
-title: セキュリティ保護された Azure Service Fabric クラスター接続を構成する | Microsoft Docs
+title: セキュリティ保護された Azure Service Fabric クラスター接続を構成する
 description: Visual Studio を使用して、Azure Service Fabric クラスターでサポートされているセキュリティで保護された接続を構成する方法について説明します。
-services: service-fabric
-documentationcenter: na
 author: cawaMS
-manager: paulyuk
-editor: tglee
-ms.assetid: 80501867-dd7a-4648-8bd6-d4f26b68402d
-ms.service: multiple
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 8d76a2144234591792359ed8dd4a0779e6a2fc5c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11f76153726d3fc92118fb46cc61b4627ab6a1b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628298"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464101"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Visual Studio から Service Fabric クラスターにセキュリティ保護された接続を構成する
 アクセス制御ポリシーが構成されている Azure Service Fabric クラスターに Visual Studio を使用して安全にアクセスする方法について説明します。
@@ -44,7 +35,7 @@ Visual Studio から Service Fabric プロジェクトを発行するには、 *
 3. プロジェクトのショートカット メニューで **[発行]** を選択し、 **[Azure アプリケーションの公開]** ダイアログ ボックスを開いて、対象のクラスターを選択します。 自動的に接続が解決され、発行プロファイルにセキュリティ保護された接続パラメーターが保存されます。
 4. 省略可能:発行プロファイルを編集して、セキュリティで保護されたクラスター接続を指定できます。
    
-   発行プロファイルの XML ファイルを手動で編集して証明書の情報を指定するため、証明書ストアの名前、ストアの場所、および証明書の拇印をメモしておいてください。 後で、証明書ストアの名前とストアの場所に対して値の指定が必要になります。 「[方法:証明書のサムプリントを取得する](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx)」を参照して詳細を確認してください。
+   発行プロファイルの XML ファイルを手動で編集して証明書の情報を指定するため、証明書ストアの名前、ストアの場所、および証明書の拇印をメモしておいてください。 後で、証明書ストアの名前とストアの場所に対して値の指定が必要になります。 UnitTesting.Conditions.ExportTestConditionAttribute について詳しくは、「[証明書のサムプリントを取得する](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx)」を参照して詳細を確認してください。
    
    *ClusterConnectionParameters* パラメーターを使用して、Service Fabric クラスターに接続するときに使用する PowerShell のパラメーターを指定できます。 Connect-ServiceFabricCluster コマンドレットが受け取るパラメーターをすべて使用できます。 使用可能なパラメーターの一覧については、「 [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) 」を参照してください。
    
@@ -66,7 +57,7 @@ Visual Studio から Service Fabric プロジェクトを発行するには、 *
    ```
 5. アップグレード パラメーターやアプリケーション パラメーター ファイルの場所など、他の必要な設定を編集してから、Visual Studio の **[Service Fabric アプリケーションの発行]** ダイアログ ボックスからアプリケーションを発行します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Service Fabric クラスターにアクセスする方法の詳細については、「 [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
 
 <!--Image references-->

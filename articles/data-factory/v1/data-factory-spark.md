@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d5f5da4811a9551f687fed6ab317bb3d33041622
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d30b2001889a2555f736de0685fe23de1ea0e055
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438835"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
 
@@ -63,7 +63,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 ### <a name="create-a-data-factory"></a>Data Factory の作成
 データ ファクトリを作成するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
+1. [Azure portal](https://portal.azure.com/) にサインインする
 
 1. **[新規]**  >  **[データ + 分析]**  >  **[データ ファクトリ]** を選択します。
 
@@ -105,7 +105,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
    ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. **accountname** と **accountkey** をストレージ アカウントの名前とアクセス キーで置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../../storage/common/storage-account-manage.md#access-keys)」のストレージ アクセス キーを表示、コピー、および再生成する方法を参照してください。
+1. **accountname** と **accountkey** をストレージ アカウントの名前とアクセス キーで置き換えます。 ストレージ アクセス キーを取得する方法については、「[Manage storage account access keys (ストレージ アカウントのアクセス キーの管理)](../../storage/common/storage-account-keys-manage.md)」をご覧ください。
 
 1. リンクされたサービスをデプロイするには、コマンド バーの **[デプロイ]** を選択します。 リンクされたサービスが正常にデプロイされると、[Draft-1] ウィンドウが消えます。 **AzureStorageLinkedService** が左側のツリー ビューに表示されます。
 
@@ -180,7 +180,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 1. データセットをデプロイするには、コマンド バーの **[デプロイ]** を選択します。
 
 
-### <a name="create-a-pipeline"></a>パイプラインを作成する。
+### <a name="create-a-pipeline"></a>パイプラインを作成する
 この手順で、HDInsightSpark アクティビティのあるパイプラインを作成します。 現在、スケジュールは出力データセットによって開始されるため、アクティビティが出力を生成しない場合でも、出力データセットを作成する必要があります。 アクティビティが入力を受け取らない場合は、入力データセットの作成を省略できます。 そのため、この例では入力データセットを指定しません。
 
 1. Data Factory エディターで、 **[詳細]**  >  **[新しいパイプライン]** を選択します。
@@ -273,7 +273,7 @@ getDebugInfo を **Always** に設定しているため、BLOB コンテナー�
 詳細なトラブルシューティングを行う場合は、次の手順を実行します。
 
 
-1. `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster` にアクセスします。
+1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](`https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`) にアクセスします。
 
     ![YARN UI アプリケーション](media/data-factory-spark/yarnui-application.png)
 
@@ -324,16 +324,16 @@ Spark アクティビティを使用するパイプラインのサンプル JSON
 
 次の表で、JSON 定義で使用される JSON プロパティについて説明します。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | -------- | ----------- | -------- |
-| 名前 | パイプラインのアクティビティの名前。 | はい |
+| name | パイプラインのアクティビティの名前。 | はい |
 | description | アクティビティの動作を説明するテキスト。 | いいえ |
-| type | このプロパティは HDInsightSpark に設定する必要があります。 | はい |
+| 型 | このプロパティは HDInsightSpark に設定する必要があります。 | はい |
 | linkedServiceName | Spark プログラムが実行されている HDInsight のリンクされたサービスの名前。 | はい |
 | rootPath | BLOB コンテナーと Spark ファイルを含むフォルダー。 ファイル名の大文字と小文字は区別されます。 | はい |
 | entryFilePath | Spark コード/パッケージのルート フォルダーへの相対パス。 | はい |
 | className | アプリケーションの Java/Spark のメイン クラス。 | いいえ |
-| arguments | Spark プログラムのコマンドライン引数の一覧です。 | いいえ |
+| 引数 | Spark プログラムのコマンドライン引数の一覧です。 | いいえ |
 | proxyUser | Spark プログラムの実行を偽装するユーザー アカウント。 | いいえ |
 | sparkConfig | [Spark 構成のアプリケーション プロパティ](https://spark.apache.org/docs/latest/configuration.html#available-properties)に関するトピックに示されている Spark 構成プロパティの値を指定します。 | いいえ |
 | getDebugInfo | HDInsight クラスターで使用されているストレージまたは sparkJobLinkedService で指定されたストレージに Spark ログ ファイルがコピーされるタイミングを指定します。 使用できる値は None、Always、または Failure です。 既定値は None です。 | いいえ |
@@ -344,7 +344,7 @@ Spark アクティビティでは、Pig および Hive アクティビティが�
 
 HDInsight のリンクされたサービスによって参照される Blob Storage に、次のフォルダー構造を作成します。 その後、依存ファイルを、**entryFilePath** で表されるルート フォルダー内の適切なサブフォルダーにアップロードします。 たとえば、Python ファイルはルート フォルダーの pyFiles サブフォルダーに、jar ファイルはルート フォルダーの jar サブフォルダーにアップロードします。 実行時、Data Factory サービスに必要な Blob Storage のフォルダー構造を次に示します。 
 
-| Path | 説明 | 必須 | 種類 |
+| Path | [説明] | 必須 | 種類 |
 | ---- | ----------- | -------- | ---- |
 | 。 | ストレージのリンクされたサービスにおける Spark ジョブのルート パス。 | はい | Folder |
 | &lt;user defined &gt; | Spark ジョブの入力ファイルを指定するパス。 | はい | ファイル |

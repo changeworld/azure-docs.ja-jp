@@ -1,6 +1,6 @@
 ---
-title: Azure CLI スクリプト サンプル - Azure Cache for Redis を作成します
-description: Azure CLI スクリプト サンプル - Azure Cache for Redis を作成します
+title: Azure Cache for Redis を作成する - Azure CLI
+description: この Azure CLI のコード サンプルでは、az redis create コマンドを使用して Azure Cache for Redis インスタンスを作成する方法を示します。
 author: yegu-ms
 tags: azure-service-management
 ms.service: cache
@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
-ms.openlocfilehash: e0ca7131a4ea9a512ac31231754f86d218c35025
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 79b749c0d02a21c1225ee0d046d73ed3fdd98904
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121306"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411316"
 ---
 # <a name="create-an-azure-cache-for-redis"></a>Azure Cache for Redis を作成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "74121306"
 | [az redis create](https://docs.microsoft.com/cli/azure/redis) | Azure Cache for Redis インスタンスを作成します。 |
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

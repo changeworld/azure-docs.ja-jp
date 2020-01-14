@@ -1,5 +1,5 @@
 ---
-title: Azure Storage に大量のランダム データを並行でアップロードする | Microsoft Docs
+title: Azure Storage に大量のランダム データを並列でアップロードする
 description: Azure Storage クライアント ライブラリを使用して Azure Storage アカウントに大量のランダム データを並列でアップロードする方法を説明します。
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/08/2019
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 5b20686399db9537e5db8622a433b5e506939d19
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: dd87e1a9bcff55813dff420976df58351386fb34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302982"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371940"
 ---
 # <a name="upload-large-amounts-of-random-data-in-parallel-to-azure-storage"></a>Azure Storage に大量のランダム データを並行でアップロードする
 
@@ -26,7 +26,7 @@ ms.locfileid: "72302982"
 > * アプリケーションの実行
 > * 接続数の検証
 
-Azure BLOB Storage では、データを格納するためのスケーラブルなサービスを提供しています。 アプリケーションのパフォーマンスをできる限り高められるように、Blob ストレージの仕組みを理解することをお勧めします。 Azure BLOB の制限事項に関する知識が重要です。これらの制限事項の詳細については、[Blob Storage のスケーラビリティ ターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets)に関する記述をご覧ください。
+Azure BLOB Storage では、データを格納するためのスケーラブルなサービスを提供しています。 アプリケーションのパフォーマンスをできる限り高められるように、Blob ストレージの仕組みを理解することをお勧めします。 Azure BLOB の制限事項に関する知識が重要です。これらの制限事項の詳細については、[Blob ストレージのスケーラビリティおよびパフォーマンスのターゲット](../blobs/scalability-targets.md)に関する記事を参照してください。
 
 [パーティションの名前付け](../blobs/storage-performance-checklist.md#partitioning)は、BLOB を使用して高パフォーマンスのアプリケーションを設計するときに、もう 1 つの重要な要素になる場合があります。 4 MiB 以上のブロック サイズの場合、[高スループット ブロック BLOB](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) が使用され、パーティションの名前付けはパフォーマンスに影響しません。 4 MiB 未満のブロック サイズの場合、Azure Storage では、範囲を基にしたパーティション構成を使用して、拡大縮小および負荷分散を行います。 この構成は、類似の名前付け規則またはプレフィックスを持つファイルが同じパーティションに含まれることを意味します。 このロジックには、ファイルのアップロード先となるコンテナーの名前が含まれます。 このチュートリアルでは、ランダムに生成されたコンテンツと名前に対して GUID を保持するファイルを使用します。 その後、それらのファイルは、ランダムな名前の異なる 5 つのコンテナーにアップロードされます。
 
@@ -66,12 +66,12 @@ dotnet run
 
 スレッドの設定と接続制限設定に加えて、[UploadFromStreamAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.uploadfromstreamasync) メソッドの [BlobRequestOptions](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions) が、並行処理を使用し MD5 ハッシュ検証が無効になるように構成されます。 ファイルは 100 MB のブロック単位でアップロードされます。この構成によってパフォーマンスは向上しますが、パフォーマンスが低いネットワークを使用している場合は、100 MB ブロック全体が再試行されるエラーが発生している場合と同然に、負荷が高くなる恐れがあります。
 
-|プロパティ|値|説明|
+|プロパティ|値|[説明]|
 |---|---|---|
 |[ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount)| 8| アップロード時に、設定によって BLOB がブロックに分割されます。 最高のパフォーマンスを得るために、この値はコア数の 8 倍にしておく必要があります。 |
 |[DisableContentMD5Validation](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.disablecontentmd5validation)| true| このプロパティは、アップロードされたコンテンツの MD5 ハッシュのチェックを無効にします。 MD5 の検証を無効にすると、転送が高速になります。 ただし、転送されるファイルの有効性や整合性は確認されません。   |
 |[StoreBlobContentMD5](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.storeblobcontentmd5)| false| このプロパティは、MD5 ハッシュが計算されてファイルと共に格納されるかどうかを示します。   |
-| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 再試行が最大 10 回行われる 2 秒バックオフ |要求の再試行ポリシーを決定します。 接続エラーが再試行されます。この例では、[ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) ポリシーが 2 秒バックオフを利用して構成され、再試行回数は最大で 10 回になります。 お使いのアプリケーションが [BLOB ストレージのスケーラビリティ ターゲット](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets)にもう少しで到達する場合は、この設定が重要になります。  |
+| [RetryPolicy](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.retrypolicy)| 再試行が最大 10 回行われる 2 秒バックオフ |要求の再試行ポリシーを決定します。 接続エラーが再試行されます。この例では、[ExponentialRetry](/dotnet/api/microsoft.azure.batch.common.exponentialretry) ポリシーが 2 秒バックオフを利用して構成され、再試行回数は最大で 10 回になります。 この設定は、お使いのアプリケーションが BLOB ストレージのスケーラビリティ ターゲットにもう少しで到達するときに重要になります。 詳細については、[Blob ストレージのスケーラビリティおよびパフォーマンスのターゲット](../blobs/scalability-targets.md)に関する記事を参照してください。  |
 
 次の例に、`UploadFilesAsync` タスクを示します。
 
@@ -180,7 +180,7 @@ C:\>netstat -a | find /c "blob:https"
 C:\>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 シリーズの第 2 部では、次の手順をはじめ、ストレージ アカウントに大量のランダム データを並行でアップロードする方法について学びました。
 

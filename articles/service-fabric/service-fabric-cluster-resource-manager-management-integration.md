@@ -1,25 +1,16 @@
 ---
-title: Service Fabric クラスター リソース マネージャー - 管理の統合 | Microsoft Docs
+title: Cluster Resource Manager - 管理の統合
 description: クラスター リソース マネージャーと Service Fabric 管理の統合ポイントの概要
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2b3ccf16aca04ebd398e2f97007b817cc0a6ef8d
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 50751c7d23797a597dc5e2d209c1e3eecf6f7a40
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196497"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614623"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Service Fabric クラスター管理とクラスター リソース マネージャーの統合
 Service Fabric クラスター リソース マネージャーは Service Fabric でのアップグレードを推進していませんが、関係しています。 クラスター リソース マネージャーが管理に役立つ第 1 の点は、クラスターとクラスター内のサービスの望ましい状態を追跡できることです。 クラスター リソース マネージャーは、クラスターを望ましい構成に設定できない場合に正常性レポートを送信します。 たとえば、容量が不十分な場合、クラスター リソース マネージャーから問題を示す正常性の計画とエラーが送信されます。 統合のもう 1 つの利点は、アップグレードのしくみに関係があります。 クラスター リソース マネージャーは、アップグレード中、動作を若干変更します。  
@@ -77,7 +68,7 @@ HealthEvents          :
 2. アップグレード ドメインの分散の制約に現在違反していること。 これは、特定のアップグレード ドメインのレプリカ数が、そのパーティションの限度よりも多いことを示します。
 3. 違反を起こしているレプリカを含むノード。 この例では、"Node.8" という名前のノードです。
 4. このパーティションでアップグレードが現在実行されているかどうか ("Currently Upgrading -- false")
-5. このサービスの分散ポリシー:"Distribution Policy -- Packing"。 これは `RequireDomainDistribution` の[配置ポリシー](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)で制御されます。 "パッキング" は、この例では DomainDistribution が_必須ではなかった_ことを示しています。その結果、このサービスに配置ポリシーが指定されていなかったことがわかります。 
+5. このサービスの分散ポリシー:"Distribution Policy -- Packing"。 これは `RequireDomainDistribution` の[配置ポリシー](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)で制御されます。 "パッキング" は、この例では DomainDistribution が _必須ではなかった_ ことを示しています。その結果、このサービスに配置ポリシーが指定されていなかったことがわかります。 
 6. レポートの生成日時 (2015 年 8 月 10 日午後 7 時 13 分 2 秒)
 
 このような情報から運用環境で発生するアラートが生成され、問題点が明らかになります。また、この情報は、正しくないアップグレードを検出し、停止するためにも使用されます。 このケースでは、リソース マネージャーがアップグレード ドメインにレプリカをまとめる必要があったのはなぜなのか、理由を探ることができます。 通常、他のアップグレード ドメインのノードがダウンしていたためなどの理由で、パッキングは一時的なものです。
@@ -208,5 +199,5 @@ PreferredLocation 制約は、2 つの用途があるため、少し異なりま
 ### <a name="buffered-capacity--upgrade"></a>バッファーの容量とアップグレード
 一般に、クラスターが制約を受けたりいっぱいに近づいたりするとしても、ユーザーはアップグレードを完了したいと考えます。 アップグレード中は、クラスターの容量を管理できることが通常よりもいっそう重要になります。 ポリシーアップグレード ドメイン数に応じて、容量の 5% から 20% は、クラスター経由でアップグレード ロールとして移行する必要があります。 この作業は、どこかの場所で実行される必要があります。 このような場合、[バッファーの容量](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity)の概念が役立ちます。 通常の操作では、バッファーの容量が遵守されます。 クラスター リソース マネージャーは、アップグレード中に必要に応じて合計容量までノードを使用する (バッファーを消費する) 可能性があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 最初から開始して、 [Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)

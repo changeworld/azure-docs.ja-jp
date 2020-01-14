@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6a1dcd2d8734d7701dab6d913beb8af0ad4e35ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926449"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371396"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -22,7 +22,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 > [!NOTE]
 > AzCopy で作業を始める際に役立つコンテンツを探している場合は、以下のいずれかの記事を参照してください。
 > - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
-> - [AzCopy と BLOB ストレージでデータを転送する](storage-use-azcopy-blobs.md)
+> - [AzCopy と Blob Storage でデータを転送する](storage-use-azcopy-blobs.md)
 > - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 > - [AzCopy と Amazon S3 バケットでデータを転送する](storage-use-azcopy-s3.md)
 
@@ -56,16 +56,21 @@ AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変�
 | **構文** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **例** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
+> [!TIP]
+> この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
+
 このコマンドは、指定したコピー先にテスト データをアップロードすることで、パフォーマンス ベンチマークを実行します。 テスト データはメモリ内に生成され、コピー先にアップロードされた後、テストの完了後にコピー先から削除されます。 オプションのコマンド パラメーターを使用して、生成するファイルの数と、必要なサイズを指定できます。
+
+詳細なリファレンス ドキュメントについては、「[azcopy bench](storage-ref-azcopy-bench.md)」をご覧ください。
 
 このコマンドの詳細なヘルプ ガイダンスを表示するには、「`azcopy bench -h`」と入力して Enter キーを押してください。
 
 ### <a name="optimize-throughput"></a>スループットを最適化する
 
-`cap-mbps` フラグを使用して、スループット データ速度の上限を設定できます。 たとえば、次のコマンドはスループットを 1 秒あたり `10` メガビット (MB) に制限します。
+コマンドで `cap-mbps` フラグを使用して、スループット データ速度の上限を設定できます。 たとえば、次のコマンドでは、ジョブを再開し、スループットを 1 秒あたり `10` メガビット (MB) に制限します。 
 
 ```azcopy
-azcopy --cap-mbps 10
+azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
 小さいファイルを転送すると、スループットが低下することがあります。 `AZCOPY_CONCURRENCY_VALUE` 環境変数を設定することにより、スループットを向上させることができます。 この変数は、同時に発生することができる要求の数を指定します。  
@@ -146,6 +151,9 @@ azcopy jobs show <job-id> --with-status=Failed
 azcopy jobs resume <job-id> --source-sas="<sas-token>"
 azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
+
+> [!TIP]
+> SAS トークンなどのパス引数は単一引用符 ('') で囲みます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
 ジョブを再開すると、AzCopy がジョブ プラン ファイルを確認します。 プラン ファイルには、ジョブが最初に作成されたときに処理対象として識別されたすべてのファイルの一覧が表示されます。 ジョブを再開すると、AzCopy は、プラン ファイルの一覧に表示されているファイルのうち、まだ転送されていないファイルをすべて転送しようとします。
 

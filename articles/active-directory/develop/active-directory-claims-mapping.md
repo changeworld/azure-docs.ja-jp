@@ -1,5 +1,5 @@
 ---
-title: Azure AD テナントのアプリに対する要求のカスタマイズ
+title: Azure AD テナントのアプリ要求をカスタマイズする (PowerShell)
 titleSuffix: Microsoft identity platform
 description: このページでは、Azure Active Directory の要求のマッピングについて説明します。
 services: active-directory
@@ -14,12 +14,12 @@ ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8d15631c30566d7588b562f1bb0d6ba5280e699
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6ad2d6ec7a98a82917916bba2930149705ebfd87
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74918425"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531073"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>方法:テナントの特定のアプリケーションに対するトークンに出力された要求のカスタマイズ (プレビュー)
 
@@ -45,7 +45,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 
 トークンで使用する方法とタイミングを定義する要求のセットがあります。
 
-| 要求セット | 説明 |
+| 要求セット | [説明] |
 |---|---|
 | コア要求セット | ポリシーに関係なく、すべてのトークンに提示されます。 また、この要求は制限付きと見なされ、変更できません。 |
 | 基本要求セット | コア要求セットの他にトークンに対して既定で出力される要求が含まれます。 要求のマッピング ポリシーを使用して基本要求を省略したり変更したりできます。 |
@@ -88,7 +88,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | cloud_graph_host_name |
 | cloud_instance_name |
 | cnf |
-| code |
+| コード |
 | controls |
 | credential_keys |
 | csr |
@@ -99,7 +99,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | domain_netbios_name |
 | e_exp |
 | email |
-| endpoint |
+| エンドポイント (endpoint) |
 | enfpolids |
 | exp |
 | expires_on |
@@ -143,7 +143,7 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | onprem_sam_account_name |
 | onprem_sid |
 | openid2_id |
-| password |
+| パスワード |
 | platf |
 | polids |
 | pop_jwk |
@@ -158,12 +158,12 @@ Azure AD では、**ポリシー** オブジェクトは、組織の個々のア
 | refreshtoken |
 | request_nonce |
 | resource |
-| role |
+| ロール (role) |
 | roles |
 | scope |
 | scp |
 | sid |
-| signature |
+| 署名 |
 | signin_state |
 | src1 |
 | src2 |
@@ -285,11 +285,11 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3:ソースごとに有効な ID 値
 
-| source | id | 説明 |
+| source | id | [説明] |
 |-----|-----|-----|
-| User | surname | 姓 |
+| User | 姓 | 姓 |
 | User | givenname | 名 |
-| User | displayname | 表示名 |
+| User | displayName | 表示名 |
 | User | objectid | ObjectID |
 | User | mail | 電子メール アドレス |
 | User | userprincipalname | ユーザー プリンシパル名 |
@@ -322,7 +322,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 | User | othermail | その他のメール |
 | User | country | Country |
 | User | city | City |
-| User | state | State |
+| User | 状態 | State |
 | User | jobtitle | 役職 |
 | User | employeeid | 従業員 ID |
 | User | facsimiletelephonenumber | ファックスの電話番号 |
@@ -359,7 +359,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4:変換方法と想定される入出力
 
-|TransformationMethod|想定される入力|想定される出力|説明|
+|TransformationMethod|想定される入力|想定される出力|[説明]|
 |-----|-----|-----|-----|
 |結合|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
 |ExtractMailPrefix|mail|outputClaim|メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 \@ 記号がない場合、元の入力文字列がそのまま返されます。|
@@ -385,7 +385,7 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5:SAML NameID のデータ ソースとして許可されている属性
 
-|source|id|説明|
+|source|id|[説明]|
 |-----|-----|-----|
 | User | mail|電子メール アドレス|
 | User | userprincipalname|ユーザー プリンシパル名|
@@ -416,7 +416,13 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 ### <a name="custom-signing-key"></a>カスタム署名キー
 
-要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。  要求のマッピングが有効なアプリは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーの特殊な URI を確認する必要があります。  
+要求のマッピング ポリシーを有効にするには、カスタム署名キーをサービス プリンシパル オブジェクトに割り当てる必要があります。 これにより、要求のマッピング ポリシーの作成者によってトークンが変更されたことを示す受信確認が確実にアプリケーションに届くため、アプリケーションは悪意のあるアクターによって作成された要求のマッピング ポリシーから保護されます。 カスタム署名キーを追加するには、Azure Powershell コマンドレット `new-azureadapplicationkeycredential` を使用して、ご自身のアプリケーション オブジェクトの対称キー資格情報を作成します。 この Azure PowerShell コマンドレットの詳細については、[こちら](https://docs.microsoft.com/powershell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)をクリックしてください。
+
+要求のマッピングが有効なアプリでは、[OpenID Connect メタデータ要求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)に `appid={client_id}` を追加して、トークン署名キーを検証する必要があります。 使用する必要がある OpenID Connect メタデータ ドキュメントのフォーマットは次のとおりです。 
+
+```
+https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
+```
 
 ### <a name="cross-tenant-scenarios"></a>テナント間のシナリオ
 
@@ -519,6 +525,6 @@ Azure AD では、特定のサービス プリンシパルに対するトーク�
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
 SAML トークンで発行された要求を Azure portal でカスタマイズする方法については、「[方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md)」を参照してください。

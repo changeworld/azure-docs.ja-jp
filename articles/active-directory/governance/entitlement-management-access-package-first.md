@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure AD エンタイトルメント管理で最初のアクセス パッケージを作成する - Azure Active Directory
+title: チュートリアル - アクセス パッケージを作成する - Azure AD エンタイトルメント管理
 description: Azure Active Directory エンタイトルメント管理で最初のアクセス パッケージを作成する方法に関するステップ バイ ステップのチュートリアル。
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/22/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de4d4a1825149a512d7abdb192d8fb9d49e85a20
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cd4feeb83acc3842874e7a2e4bbd32dacabcc00d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174879"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422652"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>チュートリアル:Azure AD エンタイトルメント管理で最初のアクセス パッケージを作成する
 
@@ -55,7 +55,7 @@ Azure AD エンタイトルメント管理を使用するには、次のいず�
 
 リソース ディレクトリには、共有する 1 つ以上のリソースがあります。 この手順では、Woodgrove Bank ディレクトリ内に、エンタイトルメント管理のターゲット リソースである **Marketing resources** という名前のグループを作成します。 また、内部要求者も設定します。
 
-**必須のロール:** グローバル管理者またはユーザー管理者
+**事前に必要なロール:** グローバル管理者またはユーザー管理者
 
 ![ユーザーとグループを作成する](./media/entitlement-management-access-package-first/elm-users-groups.png)
 
@@ -65,7 +65,7 @@ Azure AD エンタイトルメント管理を使用するには、次のいず�
 
 1. 次の 2 人のユーザーを作成または構成します。 以下の名前を使用することも、別の名前を使用することもできます。 **Admin1** は、現在サインイン済みのユーザーで構いません。
 
-    | 名前 | ディレクトリ ロール |
+    | Name | ディレクトリ ロール |
     | --- | --- |
     | **Admin1** | 全体管理者<br/>または<br/>ユーザー管理者 |
     | **Requestor1** | User |
@@ -166,7 +166,7 @@ Azure AD エンタイトルメント管理を使用するには、次のいず�
 
 この手順では、**内部要求者**として手順を実行し、アクセス パッケージへのアクセスを要求します。 要求者は、マイ アクセス ポータルと呼ばれるサイトを使用して要求を送信します。 マイ アクセス ポータルを使用すると、要求者は、アクセス パッケージの要求の送信、既にアクセス権を持つアクセス パッケージの参照、要求の履歴の表示ができます。
 
-**必須のロール:** 内部要求者
+**事前に必要なロール:** 内部要求者
 
 1. Azure portal からサインアウトします。
 
@@ -228,7 +228,7 @@ Azure AD エンタイトルメント管理を使用するには、次のいず�
 
     ![Marketing resources のメンバー](./media/entitlement-management-access-package-first/group-members.png)
 
-## <a name="step-5-clean-up-resources"></a>手順 5:リソースのクリーンアップ
+## <a name="step-5-clean-up-resources"></a>手順 5:リソースをクリーンアップする
 
 この手順では、行った変更を削除し、**Marketing Campaign** アクセス パッケージを削除します。
 
@@ -256,7 +256,7 @@ Azure AD エンタイトルメント管理を使用するには、次のいず�
 
 1. **Marketing resources** グループを削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次の記事に進み、エンタイトルメント管理の一般的なシナリオの手順を確認してください。
 > [!div class="nextstepaction"]

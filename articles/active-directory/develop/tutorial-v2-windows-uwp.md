@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2019
+ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0cafc439a24c10c4c5a678219a0e0dce84476ff
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: e2a243b11c2789afe0b2eb7ffd8de032dc10d8d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290852"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423330"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
 
@@ -44,7 +44,7 @@ ms.locfileid: "71290852"
 
 このガイドでは、次の NuGet パッケージを使用します。
 
-|ライブラリ|説明|
+|ライブラリ|[説明]|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
 
@@ -55,7 +55,7 @@ ms.locfileid: "71290852"
 このガイドでは、Graph API に対してクエリを実行するボタンとサインアウトするボタンを表示するアプリケーションを作成します。また、呼び出しの結果を含むテキスト ボックスも表示します。
 
 > [!NOTE]
-> これを作成する代わりに、このサンプルの Visual Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)し、[アプリケーション登録](#register-your-application "aアプリケーションの登録手順")の手順までスキップして、実行前にコード サンプルを構成します。
+> これを作成する代わりに、このサンプルの Visual Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)し、[アプリケーション登録](#register-your-application "アプリケーションの登録手順")の手順までスキップして、実行前にコード サンプルを構成します。
 
 ### <a name="create-your-application"></a>アプリケーションの作成
 
@@ -344,7 +344,7 @@ Visual Studio では、プロジェクト テンプレートの一部として *
 
 ここで、アプリケーションを登録する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. **[Azure Active Directory]**  >  **[アプリの登録]** の順に選択します。
 1. **[新規登録]** を選択します。 アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: *UWP-App-calling-MSGraph*)。
 1. **[サポートされているアカウントの種類]** で、 **[任意の組織のディレクトリ内のアカウントと、個人用の Microsoft アカウント (Skype、Xbox など)]** を選択した後、 **[登録]** を選択して続行します。
@@ -353,7 +353,7 @@ Visual Studio では、プロジェクト テンプレートの一部として *
 アプリケーションの認証を構成します。
 
 1. [Azure portal](https://portal.azure.com) に戻り、 **[管理]** の下にある **[認証]** を選択します。
-1. **[リダイレクト URI]** 一覧の **[種類]** で **[パブリック クライアント (モバイルとデスクトップ)]** を選択し、 **[リダイレクト URI]** に「`urn:ietf:wg:oauth:2.0:oob`」と入力します。
+1. **[リダイレクト URI]**  |  **[パブリック クライアント (モバイル、デスクトップ) に推奨されるリダイレクト URI]** セクションで、 **https://login.microsoftonline.com/common/oauth2/nativeclient** を確認します。
 1. **[保存]** を選択します。
 
 アプリケーション用に API アクセス許可を構成します。
@@ -400,7 +400,7 @@ Windows 統合認証を、フェデレーション Azure AD ドメインと共�
 
 `AcquireTokenInteractive` または `AcquireTokenSilent` によって取得したトークンに関する以下の基本的な情報も、 **[Token Info]\(トークン情報\)** ボックスに表示されます。
 
-|プロパティ  |形式  |説明 |
+|プロパティ  |Format  |[説明] |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |ユーザーを識別するユーザー名。|
 |`Token Expires` |`DateTime` |トークンの有効期限が切れる日時。 MSAL は、必要に応じてトークンを更新することで、有効期限日を延長します。|

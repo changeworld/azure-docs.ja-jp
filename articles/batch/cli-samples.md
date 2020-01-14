@@ -1,6 +1,6 @@
 ---
-title: Azure CLI の例 - Batch | Microsoft Docs
-description: Batch サービスに関する Azure CLI の例
+title: Azure CLI の例 - Batch
+description: Azure Batch サービスでの Azure CLI の例。 Batch アカウントを作成してアプリケーションを追加する方法について説明します。
 services: batch
 documentationcenter: batch
 author: laurenhughes
@@ -15,12 +15,12 @@ ms.workload: ''
 ms.date: 01/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 026e6be7dec90da86e602ff23df2f7efdd067238
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ae16fc3dc8c273b201d7266f5afc252da3676ce3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094072"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390282"
 ---
 # <a name="azure-cli-examples-for-azure-batch"></a>Azure Batch に関する Azure CLI の例
 

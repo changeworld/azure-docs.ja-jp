@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 37ff89f6b837aaf0de5c195a89bb827464534d11
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a8028cf4ece79fc31969532a358cca993c7ab948
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703709"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549450"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -40,14 +40,14 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
-* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services マネージド ドメイン。
+* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]してください。
 * ご利用のコンピューターにインストールされた *LDP.exe* ツール。
     * 必要に応じて、*Active Directory Domain Services と LDAP* 用に[リモート サーバー管理ツール (RSAT)][rsat] をインストールしてください。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-このチュートリアルでは、Azure AD DS のマネージド ドメイン用に Secure LDAP を Azure portal を使用して構成します。 最初に、[Azure portal](https://portal.azure.com) にサインインしてください。
+このチュートリアルでは、Azure AD DS のマネージド ドメイン用に Secure LDAP を Azure portal を使用して構成します。 最初に、[Azure portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-a-certificate-for-secure-ldap"></a>Secure LDAP 用の証明書を作成する
 
@@ -63,7 +63,7 @@ Secure LDAP を使用するには、デジタル証明書を使用して通信�
 
 * **信頼された発行者** - 証明書は、セキュリティで保護された LDAP を使用してマネージド ドメインに接続するコンピューターによって信頼された機関から発行される必要があります。 この機関は、これらのコンピューターによって信頼された公的 CA またはエンタープライズ CA が該当します。
 * **有効期間** - 証明書は少なくとも、今後 3 ～ 6 か月間有効である必要があります。 証明書の有効期限が切れると、マネージド ドメインへのセキュリティで保護された LDAP のアクセスが切断されます。
-* **サブジェクト名** - 証明書のサブジェクト名は、マネージド ドメインである必要があります。 たとえば、ドメインが *aadds.contoso.com* という名前である場合、証明書のサブジェクト名は **aadds.contoso.com* である必要があります。
+* **サブジェクト名** - 証明書のサブジェクト名は、マネージド ドメインである必要があります。 たとえば、ドメインが *aadds.contoso.com* という名前である場合、証明書のサブジェクト名は * *.aadds.contoso.com* である必要があります。
     * Secure LDAP が Azure AD Domain Services で正常に動作するように、証明書の DNS 名またはサブジェクト代替名がワイルドカード証明書であることが必要です。 ドメイン コントローラーにはランダムな名前が使用されます。サービスの可用性を確保するために、ドメイン コントローラーは追加したり削除したりすることができます。
 * **キー使用法** - 証明書は、"*デジタル署名*" および "*キーの暗号化*" に対して構成される必要があります。
 * **証明書の目的** - 証明書は、SSL サーバー認証に対して有効である必要があります。
@@ -211,17 +211,17 @@ Azure AD DS のマネージド ドメインに対するインターネット経�
 1. インバウンドとアウトバウンドの既存のセキュリティ規則が一覧表示されます。 ネットワーク セキュリティ グループ ウィンドウの左側で、 **[設定] > [受信セキュリティ規則]** の順に選択します。
 1. **[追加]** を選択し、*TCP* ポート *636* を許可する規則を作成します。 セキュリティを強化するためには、"*IP アドレス*" をソースに選択したうえで、貴社の有効な IP アドレスまたはその範囲を指定します。
 
-    | Setting                           | 値        |
+    | 設定                           | 値        |
     |-----------------------------------|--------------|
     | source                            | IP アドレス |
     | ソース IP アドレス/CIDR 範囲 | 実際の環境の有効な IP アドレスまたはその範囲 |
     | Source port ranges                | *            |
-    | Destination                       | Any          |
+    | 宛先                       | Any          |
     | 宛先ポート範囲           | 636          |
     | Protocol                          | TCP          |
-    | Action                            | Allow        |
+    | アクション                            | Allow        |
     | Priority                          | 401          |
-    | 名前                              | AllowLDAPS   |
+    | Name                              | AllowLDAPS   |
 
 1. 準備ができたら、 **[追加]** を選択して規則を保存し、適用します。
 
@@ -267,7 +267,7 @@ Azure AD DS のマネージド ドメインに格納されているオブジェ�
 
 特定のコンテナーに対して直接クエリを実行するには、 **[表示] > [ツリー]** メニューから、*OU=AADDC Users,DC=CONTOSO,DC=COM* や *OU=AADDC Computers,DC=CONTOSO,DC=COM* などの **BaseDN** を指定します。 クエリの書式設定と作成の方法の詳細については、[LDAP クエリの基礎][ldap-query-basics]に関するページを参照してください。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 このチュートリアルで、接続をテストするために、お使いのコンピューターのローカル hosts ファイルに DNS エントリを追加した場合、そのエントリを削除して、実際の DNS ゾーンの正規のレコードを追加してください。 ローカル hosts ファイルのエントリを削除するには、次の手順を実行します。
 
@@ -275,7 +275,7 @@ Azure AD DS のマネージド ドメインに格納されているオブジェ�
 1. ファイルの保存先 (*C:\Windows\System32\drivers\etc*) を参照してファイルを開きます。
 1. 追加したレコードの行 (例: `40.121.19.239    ldaps.aadds.contoso.com`) を削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

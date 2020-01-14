@@ -1,22 +1,23 @@
 ---
 title: 非対話型認証 .NET アプリケーション - Azure HDInsight
 description: Azure HDInsight で非対話型認証 Microsoft .NET アプリケーションを作成する方法について説明します。
-ms.reviewer: jasonh
 author: hrasheed-msft
-ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0781d9fd58e079517b3f3dc8fba06fb448a8fa19
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: conceptual
+ms.custom: hdinsightactive
+ms.date: 12/23/2019
+ms.openlocfilehash: 1fbb4ef2341148de4026f47fc06a54bbfa60fff6
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494920"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500128"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>非対話型認証 .NET HDInsight アプリケーションを作成する
-アプリケーション独自の ID (非対話型) またはアプリケーションのサインイン ユーザーの ID (対話型) のいずれかで、Microsoft .NET Azure HDInsight アプリケーションを実行できます。 この記事では、Azure に接続して HDInsight を管理する非対話型認証 .NET アプリケーションを作成する方法について説明します。 対話型アプリケーションのサンプルについては、「[Azure HDInsight への接続](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)」をご覧ください。 
+
+アプリケーション独自の ID (非対話型) またはアプリケーションのサインイン ユーザーの ID (対話型) のいずれかで、Microsoft .NET Azure HDInsight アプリケーションを実行します。 この記事では、Azure に接続して HDInsight を管理する非対話型認証 .NET アプリケーションを作成する方法について説明します。 対話型アプリケーションのサンプルについては、「[Azure HDInsight への接続](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)」をご覧ください。
 
 非対話型 .NET アプリケーションでは、以下が必要です。
 
@@ -25,20 +26,21 @@ ms.locfileid: "73494920"
 * Azure AD アプリケーションの秘密鍵。 「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
-* HDInsight クラスター。 [使用に関するチュートリアル](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)をご覧ください。
+
+HDInsight クラスター。 [使用に関するチュートリアル](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)をご覧ください。
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>Azure AD アプリケーションにロールを割り当てる
-Azure AD アプリケーションに[ロール](../role-based-access-control/built-in-roles.md)を割り当てて、アクションを実行するためのアクセス許可を付与します。 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションはリソース グループとその中のリソースを読み取ることができます)。この記事では、リソース グループ レベルでスコープを設定します。 詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+
+Azure AD アプリケーションに[ロール](../role-based-access-control/built-in-roles.md)を割り当てて、アクションを実行するためのアクセス許可を付与します。 スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。 アクセス許可は、スコープの下位レベルに継承されます たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションはリソース グループとその中のリソースを読み取ることができます。 この記事では、リソース グループ レベルでスコープを設定します。 詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 **Azure AD アプリケーションに所有者ロールを追加するには**
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューの **[リソース グループ]** を選択します。
-3. この記事の後半で Hive クエリを実行する HDInsight クラスターを含むリソース グループを選択します。 多数のリソース グループがある場合は、フィルターを使って目的のものを見つけることができます。
-4. リソース グループ メニューで **[アクセス制御 (IAM)]** を選択します。
-5. **[ロールの割り当て]** タブを選択して、現在のロールの割り当てを表示します。
-6. ページの上部で、 **[ロールの割り当ての追加]** を選択します。
-7. 説明に従って、所有者ロールを Azure AD アプリケーションに追加します。 ロールが正常に追加されると、アプリケーションが所有者ロールに一覧表示されます。 
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. この記事の後半で Hive クエリを実行する HDInsight クラスターを含むリソース グループに移動します。 多数のリソース グループがある場合は、フィルターを使って目的のものを見つけることができます。
+1. リソース グループ メニューで **[アクセス制御 (IAM)]** を選択します。
+1. **[ロールの割り当て]** タブを選択して、現在のロールの割り当てを表示します。
+1. ページの最上部で **[追加]** を選択します。
+1. 説明に従って、所有者ロールを Azure AD アプリケーションに追加します。 ロールが正常に追加されると、アプリケーションが所有者ロールに一覧表示されます。
 
 ## <a name="develop-an-hdinsight-client-application"></a>HDInsight クライアント アプリケーションを開発する
 
@@ -117,8 +119,8 @@ Azure AD アプリケーションに[ロール](../role-based-access-control/bui
     }
     ```
 
+## <a name="next-steps"></a>次のステップ
 
-## <a name="next-steps"></a>次の手順
 * [Azure Portal で Azure Active Directory アプリケーションとサービス プリンシパルを作成する](../active-directory/develop/howto-create-service-principal-portal.md)。
 * [Azure Resource Manager でサービス プリンシパルを認証する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)方法を学習する。
 * [Azure のロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) について学習する。

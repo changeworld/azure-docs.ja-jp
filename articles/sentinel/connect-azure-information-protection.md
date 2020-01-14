@@ -1,25 +1,21 @@
 ---
-title: Azure Sentinel に Azure Information Protection データを接続する | Microsoft Docs
+title: Azure Information Protection を Azure Sentinel に接続する
 description: Azure Sentinel で Azure Information Protection データを接続する方法について説明します。
 services: sentinel
-documentationcenter: na
 author: cabailey
 manager: rkarlin
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/24/2019
 ms.author: cabailey
-ms.openlocfilehash: a2760b53dbb9776501cb5e58c681045743471166
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: ef97ad601436faf44b0f49bd48d78c4c9420c7c8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261816"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563685"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Azure Information Protection からデータを接続する
 
@@ -73,7 +69,7 @@ Azure Information Protection 用に Log Analytics ワークスペースを構成
     
     このレポート データに関連するスキーマを Azure Monitor で使用するには、**InformationProtectionEvents** を検索します。 これらのイベント関数については、Azure Information Protection のドキュメントの「[イベント関数のフレンドリ スキーマ リファレンス](https://docs.microsoft.com/azure/information-protection/reports-aip#friendly-schema-reference-for-event-functions)」セクションを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、Azure Information Protection を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。

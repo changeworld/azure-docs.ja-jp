@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef0bfcb8c82d3f3caf90500e8852ca9e02c725aa
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7547608e227ca6b8d57bc1d4384ccdee181d9970
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382969"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430854"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
@@ -36,7 +36,7 @@ Office365 グループの設定は、Settings オブジェクトおよび Settin
 
 ## <a name="install-powershell-cmdlets"></a>PowerShell コマンドレットのインストール
 
-PowerShell コマンドを実行する前に、古いバージョンの Windows PowerShell 用 Azure Active Directory PowerShell for Graph モジュールをアンインストールし、[Azure Active Directory PowerShell for Graph - パブリック プレビュー リリース 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) をインストールする必要があります。
+PowerShell コマンドを実行する前に、古いバージョンの Windows PowerShell 用 Azure Active Directory PowerShell for Graph モジュールをアンインストールし、[Azure Active Directory PowerShell for Graph - パブリック プレビュー リリース (2.0.0.137 以降)](https://www.powershellgallery.com/packages/AzureADPreview) をインストールする必要があります。
 
 1. 管理者として Windows PowerShell アプリを開きます。
 2. 以前のバージョンの AzureADPreview をアンインストールします。
@@ -53,7 +53,7 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の作成
-次の手順では、ディレクトリ内のすべての Office 365 グループに適用される設定をディレクトリ レベルで作成します。 Get-AzureADDirectorySettingTemplate コマンドレットは、[グラフ用の Azure AD PowerShell プレビュー モジュール](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)でのみ使用できます。
+次の手順では、ディレクトリ内のすべての Office 365 グループに適用される設定をディレクトリ レベルで作成します。 Get-AzureADDirectorySettingTemplate コマンドレットは、[グラフ用の Azure AD PowerShell プレビュー モジュール](https://www.powershellgallery.com/packages/AzureADPreview)でのみ使用できます。
 
 1. DirectorySettings コマンドレットでは、使用する SettingsTemplate の ID を指定する必要があります。 使用する ID を把握していない場合、このコマンドレットでは、すべての Settings テンプレートの一覧が返されます。
   
@@ -76,12 +76,13 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
 2. 使用ガイドラインの URL を追加するには、まず使用ガイドラインの URL 値を定義する SettingsTemplate オブジェクト、つまり、Group.Unified テンプレートを取得する必要があります。
   
    ```powershell
-   $Template = Get-AzureADDirectorySettingTemplate -Id 62375ab9-6b52-47ed-826b-58e47e0e304b
+   $TemplateId = (Get-AzureADDirectorySettingTemplate | where { $_.DisplayName -eq "Group.Unified" }).Id
+   $Template = Get-AzureADDirectorySettingTemplate -Id $TemplateId
    ```
 3. 次に、そのテンプレートに基づいて新しい Settings オブジェクトを作成します。
   
    ```powershell
-   $Setting = $template.CreateDirectorySetting()
+   $Setting = $Template.CreateDirectorySetting()
    ```  
 4. その後、使用ガイドラインの値を更新します。
   
@@ -91,22 +92,57 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
 5. 次に設定を適用します。
   
    ```powershell
-   Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
+   New-AzureADDirectorySetting -DirectorySetting $Setting
    ```
 6. 以下を使用して値を読み取ることができます。
 
    ```powershell
    $Setting.Values
-   ```  
+   ```
+   
 ## <a name="update-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の更新
-設定テンプレートの UsageGuideLinesUrl の値を更新するには、上記の手順 4 を使用して URL を編集してから、手順 5 を実行して新しい値を設定します。
+設定テンプレートの UsageGuideLinesUrl の値を更新するには、Azure AD から現在の設定を読み取ります。そうしないと、UsageGuideLinesUrl 以外の既存の設定が上書きされる可能性があります。
 
-UsageGuideLinesUrl の値を削除するには、上記の手順 4 を使用して URL が空の文字列になるように編集します。
-
+1. Group.Unified SettingsTemplate から現在の設定を取得します。
+   
+   ```powershell
+   $Setting = Get-AzureADDirectorySetting | ? { $_.DisplayName -eq "Group.Unified"}
+   ```  
+2. 現在の設定を確認します。
+   
+   ```powershell
+   $Setting.Values
+   ```
+   
+   出力:
+   ```powershell
+    Name                          Value
+    ----                          -----
+    EnableMIPLabels               false
+    CustomBlockedWordsList
+    EnableMSStandardBlockedWords  False
+    ClassificationDescriptions
+    DefaultClassification
+    PrefixSuffixNamingRequirement
+    AllowGuestsToBeGroupOwner     False
+    AllowGuestsToAccessGroups     True
+    GuestUsageGuidelinesUrl
+    GroupCreationAllowedGroupId
+    AllowToAddGuests              True
+    UsageGuidelinesUrl            https://guideline.example.com
+    ClassificationList
+    EnableGroupCreation           True
+    ```
+3. UsageGuideLinesUrl の値を削除するには、URL を編集して空の文字列にします。
+   
    ```powershell
    $Setting["UsageGuidelinesUrl"] = ""
    ```  
-次に、手順 5 を実行して新しい値を設定します。
+4. 更新をディレクトリに保存します。
+   
+   ```powershell
+   Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
+   ```  
 
 ## <a name="template-settings"></a>テンプレート設定
 Group.Unified SettingsTemplate で定義される設定は次のとおりです。 特に記載のない限り、これらの機能には、Azure Active Directory Premium P1 ライセンスが必要です。 
@@ -114,18 +150,18 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 | **設定** | **説明** |
 | --- | --- |
 |  <ul><li>EnableGroupCreation<li>型: Boolean<li>既定値はTrue |ディレクトリで管理者以外のユーザーによる Office 365 グループの作成を許可するかどうかを示すフラグ。 この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
-|  <ul><li>GroupCreationAllowedGroupId<li>型: string<li>既定値: “” |EnableGroupCreation == false の場合でも Office 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
-|  <ul><li>UsageGuidelinesUrl<li>型: string<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
-|  <ul><li>ClassificationDescriptions<li>型: string<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、Classification は ClassificationList 内の文字列と一致します。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
-|  <ul><li>DefaultClassification<li>型: string<li>既定値: “” | 何も指定されていない場合にグループの既定の分類として使用される分類。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
-|  <ul><li>PrefixSuffixNamingRequirement<li>型: string<li>既定値: “” | Office 365 グループ用に構成された名前付け規則を定義する文字列。最大文字数は 64 文字です。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
-| <ul><li>CustomBlockedWordsList<li>型: string<li>既定値: “” | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
-| <ul><li>EnableMSStandardBlockedWords<li>型: Boolean<li>既定値は"False" | 使用しないでください
+|  <ul><li>GroupCreationAllowedGroupId<li>型: String<li>既定値: “” |EnableGroupCreation == false の場合でも Office 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
+|  <ul><li>UsageGuidelinesUrl<li>型: String<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
+|  <ul><li>ClassificationDescriptions<li>型: String<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 ClassificationDescriptions の値は、次の形式でのみ有効です。<br>$setting["ClassificationDescriptions"] ="Classification:Description,Classification:Description"<br>ここで、Classification は ClassificationList 内の文字列と一致します。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
+|  <ul><li>DefaultClassification<li>型: String<li>既定値: “” | 何も指定されていない場合にグループの既定の分類として使用される分類。<br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
+|  <ul><li>PrefixSuffixNamingRequirement<li>型: String<li>既定値: “” | Office 365 グループ用に構成された名前付け規則を定義する文字列。最大文字数は 64 文字です。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
+| <ul><li>CustomBlockedWordsList<li>型: String<li>既定値: “” | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Office 365 グループへの名前付けポリシーの適用](groups-naming-policy.md)に関するページを参照してください。 |
+| <ul><li>EnableMSStandardBlockedWords<li>型: Boolean<li>既定値は"False" | 使用しない
 |  <ul><li>AllowGuestsToBeGroupOwner<li>型: Boolean<li>既定値はFalse | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>型: Boolean<li>既定値はTrue | ゲスト ユーザーが Office 365 グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
-|  <ul><li>GuestUsageGuidelinesUrl<li>型: string<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
+|  <ul><li>GuestUsageGuidelinesUrl<li>型: String<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
 |  <ul><li>AllowToAddGuests<li>型: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。 <br>*EnableMIPLabels* が *True* に設定されていて、グループに割り当てられている機密ラベルにゲスト ポリシーが関連付けられている場合は、この設定は上書きされ読み取り専用になります。 |
-|  <ul><li>ClassificationList<li>型: string<li>既定値: “” |Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 <br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
+|  <ul><li>ClassificationList<li>型: String<li>既定値: “” |Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 <br>EnableMIPLabels == True の場合、この設定は当てはまりません。|
 |  <ul><li>EnableMIPLabels<li>型: Boolean<li>既定値は"False" |Microsoft 365 コンプライアンス センターで公開されている機密ラベルを Office 365 グループに適用できるかどうかを示すフラグ。 詳細については、[Office 365 グループへの機密ラベルの割り当て](groups-assign-sensitivity-labels.md)に関するページを参照してください。 |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>例:ディレクトリ レベルでグループのゲスト ポリシーを構成する

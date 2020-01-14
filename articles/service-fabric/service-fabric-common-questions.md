@@ -1,25 +1,15 @@
 ---
-title: Microsoft Azure Service Fabric に関するよく寄せられる質問 |Microsoft ドキュメント
-description: Service Fabric に関してよく寄せられる質問とその回答
-services: service-fabric
-documentationcenter: .net
-author: chackdan
-manager: chackdan
-editor: ''
-ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Microsoft Azure Service Fabric に関する一般的な質問
+description: Service Fabric についてよく寄せられる質問 (機能、ユースケース、一般的なシナリオなど)。
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481638"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614640"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
@@ -107,7 +97,7 @@ Microsoft はエクスペリエンスの改善に取り組んでいますが、�
 はい。  詳細については、[データ ディスクをアタッチしたクラスターの作成](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)に関するページおよび[仮想マシン スケール セット用の Azure Disk Encryption](../virtual-machine-scale-sets/disk-encryption-overview.md) に関するページを参照してください。
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>クラスター ノード タイプ (仮想マシン スケール セット) で、優先度の低い VM を使用することはできますか?
-No. 優先度の低い VM はサポートされていません。 
+いいえ。 優先度の低い VM はサポートされていません。 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>クラスターでウイルス対策プログラムを実行するときに除外する必要があるディレクトリとプロセス
 
@@ -177,7 +167,7 @@ Reliable Services は通常はパーティション分割されるため、格�
 
 Reliable Services と同じように、アクター サービスに格納できるデータの量は、ディスク領域の合計とクラスター内のノードで使用できるメモリによってのみ制限されます。 ただし、個々のアクターは、小さな分量の状態とそれに関連付けられたビジネス ロジックをカプセル化するために使用すると、最も効果があります。 原則として、個々のアクターには、キロバイト単位で測定される状態を格納してください。
 
-## <a name="other-questions"></a>どの他の質問
+## <a name="other-questions"></a>その他の質問
 
 ### <a name="how-does-service-fabric-relate-to-containers"></a>Service Fabric はコンテナーとどのように関連していますか?
 
@@ -191,6 +181,6 @@ Service Fabric ラインタイムをオープン ソース化する予定であ�
 
 詳しくは、[Service Fabric ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)での発表をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [コア Service Fabric の概念](service-fabric-technical-overview.md)および[ベスト プラクティス](service-fabric-best-practices-overview.md) Service Fabric の概念](service-fabric-technical-overview.md) および[ベスト プラクティス](service-fabric-best-practices-overview.md)

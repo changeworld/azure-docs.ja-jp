@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a09a0fe4aa1f04e665aeb71ebece17a8b368090
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b8ab4362945b84b4337859a1dad03906cc289c99
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582391"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378247"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>チュートリアル:Azure Red Hat OpenShift クラスターを作成する
 
@@ -71,7 +71,7 @@ CLUSTER_NAME=<cluster name in lowercase>
 LOCATION=<location>
 ```
 
-`APPID` を、「[Create an Azure AD app registration (Azure AD アプリ登録を作成する)](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)」の手順 5 で保存した値に設定します。  
+`APPID` を、「[Create an Azure AD app registration (Azure AD アプリ登録を作成する)](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)」の手順 5 で保存した値に設定します。
 
 ```bash
 APPID=<app ID value>
@@ -83,13 +83,13 @@ APPID=<app ID value>
 GROUPID=<group ID value>
 ```
 
-`SECRET` を、「[Create a client secret (クライアント シークレットを作成する)](howto-aad-app-configuration.md#create-a-client-secret)」の手順 8 で保存した値に設定します。  
+`SECRET` を、「[Create a client secret (クライアント シークレットを作成する)](howto-aad-app-configuration.md#create-a-client-secret)」の手順 8 で保存した値に設定します。
 
 ```bash
 SECRET=<secret value>
 ```
 
-`TENANT` を、「[Create a new tenant](howto-create-tenant.md#create-a-new-azure-ad-tenant)」(新しいテナントの作成) の手順 7 で保存したテナント ID 値に設定します。  
+`TENANT` を、「[Create a new tenant](howto-create-tenant.md#create-a-new-azure-ad-tenant)」(新しいテナントの作成) の手順 7 で保存したテナント ID 値に設定します。
 
 ```bash
 TENANT=<tenant ID>
@@ -105,7 +105,7 @@ az group create --name $CLUSTER_NAME --location $LOCATION
 
 作成したクラスターの仮想ネットワーク (VNET) をピアリングによって既存の VNET に接続する必要がない場合は、この手順をスキップします。
 
-ネットワークへのピアリングを既定のサブスクリプション以外で行ってからそのサブスクリプションで行う場合は、Microsoft.ContainerService プロバイダーの登録も必要になります。 これを行うには、そのサブスクリプションで以下のコマンドを実行します。 それ以外に、ピアリング対象の VNET が同じサブスクリプションにある場合は、登録手順をスキップできます。 
+ネットワークへのピアリングを既定のサブスクリプション以外で行ってからそのサブスクリプションで行う場合は、Microsoft.ContainerService プロバイダーの登録も必要になります。 これを行うには、そのサブスクリプションで以下のコマンドを実行します。 それ以外に、ピアリング対象の VNET が同じサブスクリプションにある場合は、登録手順をスキップできます。
 
 `az provider register -n Microsoft.ContainerService --wait`
 
@@ -119,7 +119,23 @@ BASH シェルで次の CLI コマンドを使用して、VNET_ID 変数を定�
 VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query id -o tsv)
 ```
 
-次に例を示します。`VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup --query id -o tsv`
+例: `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup --query id -o tsv`
+
+### <a name="optional-connect-the-cluster-to-azure-monitoring"></a>省略可能:クラスターを Azure Monitoring に接続する
+
+最初に、**既存の**ログ分析ワークスペースの識別子を取得します。 この識別子は次の形式になります。
+
+[https://login.microsoftonline.com/consumers/](`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`)
+
+ログ分析ワークスペースの名前、または既存のログ分析ワークスペースが属しているリソース グループがわからない場合は、[ログ分析ワークスペース](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces)にアクセスし、お使いのログ分析ワークスペースをクリックします。 ログ分析ワークスペース ページが表示され、ワークスペースの名前と所属しているリソース グループが表示されます。
+
+_ログ分析ワークスペースを作成するには、[ログ分析ワークスペースの作成](../azure-monitor/learn/quick-create-workspace-cli.md)_ に関する記事を参照してください
+
+BASH シェルで次の CLI コマンドを使用して、WORKSPACE_ID 変数を定義します。
+
+```bash
+WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {NAME} --query id -o tsv)
+```
 
 ### <a name="create-the-cluster"></a>クラスターを作成する
 
@@ -128,20 +144,29 @@ VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query i
 > [!IMPORTANT]
 > クラスターを作成する前に、[ここで詳しく説明](howto-aad-app-configuration.md#add-api-permissions)されているように、Azure AD アプリに対する適切なアクセス許可が正しく追加されていることを確認してください
 
-クラスターと仮想ネットワークの間でピアリングを実行**しない**場合は、次のコマンドを使用します。
+クラスターと仮想ネットワークの間でピアリングを実行**しない**、または Azure Monitoring を使用**しない**場合は、次のコマンドを使用します。
 
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
 ```
 
 クラスターと仮想ネットワークの間でピアリングを実行**する**場合は、`--vnet-peer` フラグを追加する次のコマンドを使用します。
- 
+
 ```bash
 az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
 ```
 
+クラスターで Azure Monitoring を使用**する**場合は、次のコマンドを使用して `--workspace-id` フラグを追加します。
+
+```bash
+az openshift create --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
+```
+
 > [!NOTE]
 > ホスト名が使用できないというエラーが発生する場合は、クラスター名が一意でない可能性があります。 元のアプリ登録を削除し、別のクラスター名を使用して、[新しいアプリ登録の作成](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)に関するページの手順をもう一度行ってみてください。新しいユーザーとセキュリティ グループの作成手順は省略します。
+
+
+
 
 数分後、`az openshift create` が完了します。
 
@@ -164,7 +189,7 @@ az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
 1. [[アプリの登録] ブレード](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)を開きます。
 2. アプリ登録オブジェクトをクリックします。
 3. **[リダイレクト URI を追加する]** をクリックします。
-4. **[種類]** が **[Web]** であることを確認し、`https://<public host name>/oauth2callback/Azure%20AD` のパターンを使用して **[リダイレクト URI]** を設定します。 次に例を示します。`https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
+4. **[種類]** が **[Web]** であることを確認し、`https://<public host name>/oauth2callback/Azure%20AD` のパターンを使用して **[リダイレクト URI]** を設定します。 例: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
 5. **[保存]**
 
 ## <a name="step-4-sign-in-to-the-openshift-console"></a>手順 4:OpenShift コンソールにサインインする
@@ -201,7 +226,7 @@ OpenShift コンソールで、右上隅のサインイン名の横にある疑�
 
 上記の手順を使用してトークン値を取得できなかった場合は、`https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request` からトークン値を取得します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 

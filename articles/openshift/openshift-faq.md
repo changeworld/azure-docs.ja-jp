@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 11/04/2019
-ms.openlocfilehash: d8707e2edccf144cbe58a530bcfe2c176e656915
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2b4e78db9f3aa3a8f678212c7fcd1b97ed4834b1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582399"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378213"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
@@ -25,7 +25,7 @@ Azure Red Hat OpenShift がサポートされている世界中のリージョ�
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>既存の仮想ネットワークにクラスターをデプロイできますか?
 
-No. もっとも、ピアリングを使って Azure Red Hat OpenShift クラスターを既存の VNET に接続することはできます。 詳細については、[クラスターの仮想ネットワークを既存の仮想ネットワークに接続する方法](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)に関するセクションを参照してください。
+いいえ。 もっとも、ピアリングを使って Azure Red Hat OpenShift クラスターを既存の VNET に接続することはできます。 詳細については、[クラスターの仮想ネットワークを既存の仮想ネットワークに接続する方法](tutorial-create-cluster.md#optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network)に関するセクションを参照してください。
 
 ## <a name="what-cluster-operations-are-available"></a>どのクラスター操作を使用できますか?
 
@@ -61,15 +61,15 @@ Docker レジストリは `https://docker-registry.apps.<clustername>.<region>.a
 
 ## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>クラスターを特定の Azure AD ユーザーに制限できますか?
 
-はい。 Azure AD アプリケーションを構成することで、クラスターにサインインできる Azure AD ユーザーを制限できます。 詳細については、「[方法: ご利用のアプリを特定のユーザー セットに制限する](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)」を参照してください。
+はい。 Azure AD アプリケーションを構成することで、クラスターにサインインできる Azure AD ユーザーを制限できます。 詳細については、[ご利用のアプリを特定のユーザー セットに制限する](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)」を参照してください。
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>クラスターは複数の Azure リージョンにわたってコンピューティング ノードを持つことができますか?
 
-No. Azure Red Hat OpenShift クラスターのすべてのノードは、同じ Azure リージョンに基づく必要があります。
+いいえ。 Azure Red Hat OpenShift クラスターのすべてのノードは、同じ Azure リージョンに基づく必要があります。
 
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>マスターおよびインフラストラクチャ ノードは、Azure Kubernetes Service (AKS) の場合と同様に無視されますか?
 
-No. クラスター マスターを含めすべてのリソースは、顧客サブスクリプションで実行します。 これらの種類のリソースは、読み取り専用のリソース グループに置かれます。
+いいえ。 クラスター マスターを含めすべてのリソースは、顧客サブスクリプションで実行します。 これらの種類のリソースは、読み取り専用のリソース グループに置かれます。
 
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>Open Service Broker for Azure (OSBA) はサポートされていますか?
 
@@ -121,7 +121,7 @@ Syslog、Docker のログ、ジャーナル、dmesg は、マネージド サー
 
 ## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>顧客はどのようにしてノード レベルで CPU やメモリなどのメトリックにアクセスし、スケーリングや問題のデバッグなどを実行できますか。ARO クラスターでは `kubectl top` を実行できないようです。
 
-`kubectl top` は Red Hat OpenShift で使用できません。 これには、Heapster (非推奨) またはメトリック サーバー (incubating またはアルファ) のいずれかのバッキング メトリック ソースが必要です。どちらも OpenShift 監視スタックには含まれていません。
+顧客管理者クラスター ロールで `oc adm top nodes` または `kubectl top nodes` コマンドを使用することで、ノード レベルで CPU/メモリ メトリックにアクセスできます。  また、`oc adm top pods` または `kubectl top pods` コマンドを使用して、`pods` の CPU/メモリ メトリックにアクセスすることもできます。
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>ARO の既定のポッド スケジューラ構成とは何ですか?
 
@@ -137,7 +137,7 @@ Azure で仮想マシン スケール セットを使用すると、既定で 5 
 
 ## <a name="is-there-a-way-to-manage-pod-placement"></a>ポッドの配置を管理する方法はありますか?
 
-近い将来の顧客管理者の更新プログラムで、顧客がノードを取得したり、ラベルを表示したりすることができるようになります。  これにより、スケール セット内の任意の VM を対象にする方法が提供されます。
+顧客は、顧客管理者としてノードを取得したり、ラベルを表示したりできます。これにより、スケール セット内の任意の VM を対象にする方法が提供されます。
 
 特定のラベルを使用する場合は、次の点に注意してください。
 
@@ -147,7 +147,7 @@ Azure で仮想マシン スケール セットを使用すると、既定で 5 
 
 ## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>ARO クラスター内のポッドの最大数とは何ですか?  ARO のノードごとの最大ポッド数とは何ですか?
 
-詳細については、[アップストリームの OpenShift ドキュメント](https://docs.openshift.com/container-platform/3.11/scaling_performance/cluster_limits.html#scaling-performance-current-cluster-limits)を参照してください。 Red Hat OpenShift 3.11 には 250 個のポッドまたはノードの制限があり、一方、[ARO には 20 個のコンピューティング ノードの制限がある](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)ため、ARO クラスターでサポートされるポッドの最大数は 250*20 = 5000 になります。
+ Azure Red Hat OpenShift 3.11 ではノードあたりのポッド数が 50 個に制限されており、[ARO ではコンピューティング ノードが 20 個に制限されている](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available)ため、ARO クラスターでサポートされるポッドの最大数は 50*20 = 1000 になります。
 
 ## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>プライベート VNET にデプロイする IP 範囲を指定して、ピアリングされた他の企業 VNET との競合を回避することはできますか?
 

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f816091e3e8682069a950ff6f6eb839e285bb2f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: c29a06496bb1303849250f049e4e7444a5a5ddf3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512449"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423355"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Windows デスクトップ アプリから Microsoft Graph API を呼び出す
 
@@ -50,7 +50,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 
 このガイドでは、次の NuGet パッケージを使用します。
 
-|ライブラリ|説明|
+|ライブラリ|[説明]|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 
@@ -87,7 +87,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 
 2 つのどちらかの方法でアプリケーションを登録できます。
 
-### <a name="option-1-express-mode"></a>オプション 1:簡易モード
+### <a name="option-1-express-mode"></a>オプション 1: 簡易モード
 
 次の手順を実行すると、アプリケーションをすばやく登録できます。
 1. [Azure portal の [アプリケーションの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs) に移動します。
@@ -106,9 +106,9 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
    - **[登録]** を選択して、アプリケーションを作成します。
 1. アプリのページの一覧から **[認証]** を選択します。
    1. **[リダイレクト URI]** セクションの、リダイレクト URI の一覧で:
-   1. **[種類]** 列で、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択します。
-   1. **[リダイレクト URI]** 列に「`urn:ietf:wg:oauth:2.0:oob`」と入力します。
-1. **[保存]** を選択します。
+   1. **[種類]** 列で、 **[パブリック クライアント/ネイティブ (モバイルとデスクトップ)]** を選択します。
+   1. **[リダイレクト URI]** 列に「`https://login.microsoftonline.com/common/oauth2/nativeclient`」と入力します。
+1. **[登録]** を選択します。
 1. Visual Studio に移動し、*App.xaml.cs* ファイルを開き、以下のコード スニペットの `Enter_the_Application_Id_here` を、登録してコピーしたアプリケーション ID に置き換えます。
 
     ```csharp
@@ -260,7 +260,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-`AcquireTokenInteractive` メソッドを呼び出すと、ユーザーにサインインを求めるウィンドウが表示されます。 アプリケーションは通常、ユーザーが保護されたリソースに初めてアクセスするときに、対話形式でユーザーにサインインを求めます。 また、自動でのトークンの取得に失敗した場合 (ユーザーのパスワードが期限切れになっている場合など) にも、ユーザーはサインインする必要があります。
+`AcquireTokenInteractive` メソッドを呼び出すと、ユーザーにサインインを求めるウィンドウが表示されます。 通常、アプリケーションは、ユーザーが保護されたリソースに初めてアクセスするときに、対話形式でユーザーにサインインを求めます。 また、自動でのトークンの取得に失敗した場合 (ユーザーのパスワードが期限切れになっている場合など) にも、ユーザーはサインインする必要があります。
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
@@ -348,7 +348,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 
 `SignOutButton_Click` メソッドは、MSAL ユーザー キャッシュからユーザーを削除します。これは実質的に MSAL に現在のユーザーを忘れさせることになり、以降の要求が対話形式で行われる場合のみトークンの取得が成功します。
 
-このサンプルのアプリケーションは単一ユーザーに対応していますが、MSAL は複数のアカウントを使用して同時にサインインするケースに対応しています。 たとえば、メール アプリケーションで 1 人のユーザーが複数のアカウントを持っているケースです。
+このサンプルのアプリケーションは単一ユーザーに対応していますが、MSAL は複数のアカウントで同時にサインインするシナリオをサポートしています。 例として、電子メール アプリケーションで 1 人のユーザーが複数のアカウントを持っている場合が挙げられます。
 <!--end-collapse-->
 
 ## <a name="display-basic-token-information"></a>基本的なトークン情報を表示する

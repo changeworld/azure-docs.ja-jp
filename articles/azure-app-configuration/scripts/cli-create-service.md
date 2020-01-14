@@ -1,5 +1,6 @@
 ---
-title: Azure CLI のサンプル スクリプト - Azure App Configuration ストアの作成 | Microsoft Docs
+title: Azure CLI のサンプル スクリプト - Azure App Configuration ストアの作成
+titleSuffix: Azure App Configuration
 description: Azure CLI のサンプル スクリプト - Azure App Configuration ストアの作成
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: cd150368898b3f02b4366debbe775ece76b23043
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: d57de8219cb73864ed722c6906a1bd75fec51a50
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184907"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433582"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure App Configuration ストアの作成
 
@@ -79,7 +80,7 @@ echo "$connstring"
 | [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | App Configuration ストア リソースを作成します。 |
 | [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | App Configuration ストアに格納されているキーを一覧表示します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 

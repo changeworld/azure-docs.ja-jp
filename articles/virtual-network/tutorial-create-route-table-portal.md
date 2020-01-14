@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7e7a01b7fdc1a508fa19397900f8fd4f52d49c53
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164007"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350288"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>チュートリアル:Azure Portal を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+[Azure portal](https://portal.azure.com) にサインインする
 
 ## <a name="create-a-route-table"></a>ルート テーブルの作成
 
@@ -52,13 +52,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[ルート テーブルの作成]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「*myRouteTablePublic*」と入力します。 |
-    | Subscription | サブスクリプションを選択します。 |
+    | Name | 「*myRouteTablePublic*」と入力します。 |
+    | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 *[OK]* を選択します。 |
     | Location | 既定値 **[米国東部]** のままにします。
-    | BGP ルート伝達 | 既定値 **[有効]** のままにします。 |
+    | 仮想ネットワーク ゲートウェイのルート伝達 | 既定値 **[有効]** のままにします。 |
 
 1. **作成** を選択します。
 
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[ルートの追加]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | ルート名 | 「*ToPrivateSubnet*」と入力します。 |
     | アドレス プレフィックス | 「*10.0.1.0/24*」と入力します。 |
@@ -93,11 +93,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[仮想ネットワークの作成]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「*myVirtualNetwork*」と入力します。 |
+    | Name | 「*myVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.0.0.0/16*」と入力します。 |
-    | Subscription | サブスクリプションを選択します。 |
+    | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | ***[既存項目の選択]*** >  **[myResourceGroup]** を選択します。 |
     | Location | 既定値 **[米国東部]** のままにします。 |
     | サブネット - 名前 | 「*Public*」と入力します。 |
@@ -117,18 +117,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[サブネットの追加]** に次の情報を入力します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「*Private*」と入力します。 |
+    | Name | 「*Private*」と入力します。 |
     | アドレス空間 | 「*10.0.1.0/24*」と入力します。 |
 
 1. 残りの部分は既定値のままにし、 **[OK]** を選択します。
 
 1. **[+ サブネット]** をもう一度選択します。 今回は次の情報を入力します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「*DMZ*」と入力します。 |
+    | Name | 「*DMZ*」と入力します。 |
     | アドレス空間 | 「*10.0.2.0/24*」と入力します。 |
 
 1. 前回と同様に、残りの部分は既定値のままにし、 **[OK]** を選択します。
@@ -151,10 +151,10 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
 
 1. **[仮想マシンの作成 - 基本]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
-    | Subscription | サブスクリプションを選択します。 |
+    | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 |
     | **インスタンスの詳細** |  |
     | 仮想マシン名 | 「*myVmNva*」と入力します。 |
@@ -164,7 +164,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
     | Size | 既定値 **[Standard DS1 v2]** をそのまま使用します。 |
     | **管理者アカウント** |  |
     | ユーザー名 | 任意のユーザー名を入力します。 |
-    | パスワード | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
+    | Password | 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
     | パスワードの確認 | パスワードを再入力します。 |
     | **受信ポートの規則** |  |
     | パブリック受信ポート | 既定値 **[なし]** のままにします。
@@ -179,7 +179,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
 
 1. **[仮想マシンの作成 - ネットワーク]** で次の情報を選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
     | 仮想ネットワーク | 既定値 **[myVirtualNetwork]** のままにします。 |
     | Subnet | **[DMZ (10.0.2.0/24)]** を選択します。 |
@@ -191,9 +191,9 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
 
 1. **[ストレージ アカウントの作成]** に次の情報を入力または選択します。
 
-    | Setting | 値 |
+    | 設定 | 値 |
     | ------- | ----- |
-    | 名前 | 「*mynvastorageaccount*」と入力します。 |
+    | Name | 「*mynvastorageaccount*」と入力します。 |
     | アカウントの種類 | 既定値 **[ストレージ (汎用 v1)]** のままにします。 |
     | パフォーマンス | 既定値 **[標準]** のままにします。 |
     | レプリケーション | 既定値 **[ローカル冗長ストレージ (LRS)]** のままにします。
@@ -230,7 +230,7 @@ NVA は、ルーティングやファイアウォールの最適化などのネ�
 
 [NVA の作成](#create-an-nva)手順の 1 から 12 を実行します。 ほとんどは同じ設定を使用します。 次の値は、変更する必要があります。
 
-| Setting | 値 |
+| 設定 | 値 |
 | ------- | ----- |
 | **Public VM** | |
 | 基本 |  |
@@ -375,7 +375,7 @@ Azure を使用して VM のネットワーク インターフェイスの [IP �
 
 1. *myVmPrivate* VM へのリモート デスクトップ セッションを閉じます。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループとそれに含まれるすべてのリソースが不要になったら削除します。
 
@@ -387,7 +387,7 @@ Azure を使用して VM のネットワーク インターフェイスの [IP �
 
 1. **[TYPE THE RESOURCE GROUP NAME:]\(リソース グループ名を入力してください:\)** に「*myResourceGroup*」と入力し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ルート テーブルを作成し、それをサブネットに関連付けました。 トラフィックをパブリック サブネットからプライベート サブネットにルーティングする単純な NVA を作成しました。 その手順を理解したので、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking) の別の事前構成された NVA をデプロイすることができます。 役に立つ数多くのネットワーク機能を備えたものがあります。 ルーティングの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md)と[ルート テーブルの管理](manage-route-table.md)に関する記事をご覧ください。
 

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 25e11ae1311df9d0392340b32e0691298f78ee1c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c265e03cfea2ebe8bbe55a63ade04bffd06360e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74709891"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462270"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Azure RBAC と Azure portal を使用してロールの割り当てを一覧表示する
 
@@ -81,7 +81,33 @@ ms.locfileid: "74709891"
 
     このウィンドウでは、選択したセキュリティ プリンシパルに割り当てられているロールとスコープを確認できます。 このスコープに拒否割り当てがある場合、またはこのスコープに継承されている場合は、それが表示されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>システム割り当てマネージド ID のロールの割り当てを一覧表示する
+
+1. Azure portal で、システム割り当てマネージド ID を開きます。
+
+1. 左側のメニューで、 **[ID]** をクリックします。
+
+    ![システム割り当てマネージド ID](./media/role-assignments-list-portal/identity-system-assigned.png)
+
+1. **[ロールの割り当て]** で、 **[このマネージド ID に割り当てられた Azure RBAC ロールを表示します]** をクリックします。
+
+    管理グループ、サブスクリプション、リソース グループ、リソースなどのさまざまなスコープで、選択したシステム割り当てマネージド ID に割り当てられているロールの一覧が表示されます。 この一覧では、自分が読み取りアクセス許可を認められているすべてのロールの割り当てが表示されます。
+
+    ![システム割り当てマネージド ID のロールの割り当て](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
+
+## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID のロールの割り当てを一覧表示する
+
+1. Azure portal で、システム割り当てマネージド ID を開きます。
+
+1. **[Azure リソース]** をクリックします。
+
+    管理グループ、サブスクリプション、リソース グループ、リソースなどのさまざまなスコープで、選択したユーザー割り当てマネージド ID に割り当てられているロールの一覧が表示されます。 この一覧では、自分が読み取りアクセス許可を認められているすべてのロールの割り当てが表示されます。
+
+    ![システム割り当てマネージド ID のロールの割り当て](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
+
+1. サブスクリプションを変更するには、 **[サブスクリプション]** の一覧をクリックします。
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure RBAC と Azure Portal を使用してロールの割り当てを追加または削除する](role-assignments-portal.md)
 - [Azure リソースの RBAC のトラブルシューティング](troubleshooting.md)

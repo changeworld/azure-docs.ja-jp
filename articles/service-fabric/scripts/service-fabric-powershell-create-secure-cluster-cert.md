@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - Service Fabric クラスターの作成 | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - Service Fabric クラスターを作成します。
+title: PowerShell で Service Fabric クラスターを作成する
+description: Azure PowerShell スクリプト サンプル - X.509 証明書でセキュリティ保護された Service Fabric クラスターを作成します。
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: ac57778f83a9e7c07360e6ff496186ae78a95dbd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f8e1a0ca86f9346cf07c87a738d48cb56f6d7d57
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035567"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614776"
 ---
 # <a name="create-a-service-fabric-cluster"></a>Service Fabric クラスターの作成
 
@@ -50,7 +50,7 @@ Remove-AzResourceGroup -Name $groupname -Force
 |---|---|
 | [New-AzServiceFabricCluster](/powershell/module/az.servicefabric/New-azServiceFabricCluster) | 新しい Service Fabric クラスターを作成します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

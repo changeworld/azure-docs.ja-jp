@@ -1,5 +1,5 @@
 ---
-title: Azure AD ASP.NET Web アプリにサインインを追加する
+title: Microsoft ID プラットフォームへのサインインを ASP.NET Web アプリに追加する
 titleSuffix: Microsoft identity platform
 description: 従来の Web ブラウザーベースのアプリケーションと OpenID Connect 標準を使用して、ASP.NET ソリューション上で Microsoft のサインインを実装します
 services: active-directory
@@ -17,18 +17,18 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff89d3c11ca88db14d2efd772be44aef7165a8a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf1abc42fd3639bf76f752e5fe6a8f62c7d9e66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964737"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423468"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリに Microsoft へのサインインを追加する
 
 このガイドでは、従来の Web ブラウザーベースのアプリケーションと OpenID Connect を使用して、ASP.NET MVC ソリューションを通じて Microsoft へのサインインを実装する方法を示します。
 
-このガイドを完了すると、ご自分のアプリケーションが outlook.com や live.com などの個人用アカウントのサインインを受け入れることができるようになります。 また、Azure Active Directory (Azure AD) と統合されている会社や組織の職場または学校アカウントでも、アプリにサインインできるようになります。
+このガイドを完了すると、ご自分のアプリケーションが outlook.com や live.com などの個人用アカウントのサインインを受け入れることができるようになります。 また、Microsoft ID プラットフォームと統合されている会社や組織の職場または学校アカウントでも、アプリにサインインできるようになります。
 
 > このガイドでは、Microsoft Visual Studio 2019 が必要です。  お持ちでない場合は、  [Visual Studio 2019 を無料でダウンロードできます](https://www.visualstudio.com/downloads/)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "74964737"
 
 このガイドでは、次のライブラリを使用します。
 
-|ライブラリ|説明|
+|ライブラリ|[説明]|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|アプリケーションで認証に OpenIDConnect を使用できるようにするためのミドルウェア|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|アプリケーションで Cookie を使用してユーザー セッションを維持できるようにするためのミドルウェア|
@@ -106,7 +106,7 @@ OWIN ミドルウェアの Startup クラスを作成し、OpenID Connect の認
     ```csharp
     public class Startup
     {
-        // The Client ID is used by the application to uniquely identify itself to Azure AD.
+        // The Client ID is used by the application to uniquely identify itself to Microsoft identity platform.
         string clientId = System.Configuration.ConfigurationManager.AppSettings["ClientId"];
 
         // RedirectUri is the URL where the user will be redirected to after they sign in.
@@ -115,7 +115,7 @@ OWIN ミドルウェアの Startup クラスを作成し、OpenID Connect の認
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Azure Active Directory v2.0 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -175,7 +175,7 @@ OWIN ミドルウェアの Startup クラスを作成し、OpenID Connect の認
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>詳細情報
-> *OpenIDConnectAuthenticationOptions* で指定したパラメーターは、アプリケーションが Azure AD と通信するための調整役として機能します。 OpenID Connect のミドルウェアはバックグラウンドで Cookie を使用するため、前のコードで示したように、Cookie 認証も設定する必要があります。 *ValidateIssuer* 値によって、OpenIdConnect はアクセスを 1 つの特定の組織に制限しないように設定されます。
+> *OpenIDConnectAuthenticationOptions* に指定したパラメーターは、アプリケーションが Microsoft ID プラットフォームと通信するための調整役として機能します。 OpenID Connect のミドルウェアはバックグラウンドで Cookie を使用するため、前のコードで示したように、Cookie 認証も設定する必要があります。 *ValidateIssuer* 値によって、OpenIdConnect はアクセスを 1 つの特定の組織に制限しないように設定されます。
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>サインインとサインアウト要求を処理するコントローラーを追加する
@@ -270,7 +270,7 @@ Visual Studio で、サインイン ボタンを追加し、認証後にユー�
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>詳細情報
-> このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Bブランド化ガイドライン)をご覧ください。
+> このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Microsoft アカウントでのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[ブランド化ガイドライン](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "ブランド化ガイドライン")をご覧ください。
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>ユーザー要求を表示するコントローラーを追加する
@@ -358,7 +358,7 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
 
 アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加する場合、2 つのオプションがあります。
 
-### <a name="option-1-express-mode"></a>オプション 1:簡易モード
+### <a name="option-1-express-mode"></a>オプション 1: 簡易モード
 
 アプリケーションをすばやく登録するには、次の手順に従います。
 
@@ -407,7 +407,7 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 
 <!--start-collapse-->
 > ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft ID プラットフォーム エンドポイントでのアクセス許可と同意
->  Microsoft ID プラットフォームと統合するアプリケーションは、データにアクセスする方法をユーザーと管理者が制御できるようにする承認モデルに従います。 このアプリケーションにアクセスするために Azure AD で認証されたユーザーは、アプリケーションによって要求されるアクセス許可 ("基本プロファイルの表示" と "自分がアクセス権を付与したデータへのアクセスの管理") に同意するように求められます。 これらのアクセス許可を受け入れると、ユーザーはアプリケーションの結果に進むこととなります。 ただし、次のいずれかの場合は、ユーザーに **[Need admin consent]\(管理者の同意が必要\)** ページが表示され、対応を求められることがあります。
+>  Microsoft ID プラットフォームと統合するアプリケーションは、データにアクセスする方法をユーザーと管理者が制御できるようにする承認モデルに従います。 このアプリケーションにアクセスするために Microsoft ID プラットフォームで認証されたユーザーは、アプリケーションによって要求されるアクセス許可 ("基本プロファイルの表示" と "自分がアクセス権を付与したデータへのアクセスの管理") に同意するように求められます。 これらのアクセス許可を受け入れると、ユーザーはアプリケーションの結果に進むこととなります。 ただし、次のいずれかの場合は、ユーザーに **[Need admin consent]\(管理者の同意が必要\)** ページが表示され、対応を求められることがあります。
 >  > - アプリケーション開発者が、**管理者の同意**を必要とするその他の任意のアクセス許可を追加している。
 >  > - または、( **[エンタープライズ アプリケーション] -> [ユーザー設定]** で) テナントが構成されていて、ユーザーが、自分の代わりにアプリが会社のデータにアクセスすることに同意できなくなっている。
 >
@@ -426,14 +426,14 @@ Visual Studio でアプリケーションをテストするには、F5 キーを
 
 コントローラー ビューを参照した後は、ユーザーの基本プロパティを示す次の表を確認する必要があります。
 
-|プロパティ |値 |説明 |
+|プロパティ |値 |[説明] |
 |---|---|---|
 |**Name** |ユーザーのフルネーム | ユーザーの姓と名
 |**ユーザー名** |user<span>@domain.com</span> | ユーザーの識別に使用されるユーザー名|
 |**[件名]** |サブジェクト |Web 全体でユーザーを一意に識別する文字列|
 |**テナント ID** |Guid | ユーザーの Azure AD 組織を一意に表す **guid**|
 
-さらに、認証要求内にあるすべての要求を示した表を確認する必要があります。 詳細については、[Azure AD ID トークン内にある要求の一覧](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)を参照してください。
+さらに、認証要求内にあるすべての要求を示した表を確認する必要があります。 詳細については、[ID トークンに含まれる要求の一覧](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)を参照してください。
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Authorize 属性を持つメソッドへのアクセスをテストする (省略可能)
 
@@ -459,11 +459,11 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>アプリケーションにサインインできるユーザーを制限する
 
-このガイドに従ってアプリケーションを構築すると、既定では、個人アカウント (outlook.com、live.com などを含む) だけでなく、Azure AD と統合されたすべての会社や組織の職場と学校アカウントのサインインを受け入れることになります。 これは、SaaS アプリケーションに推奨されるオプションです。
+このガイドに従ってアプリケーションを構築すると、既定では、個人アカウント (outlook.com、live.com などを含む) だけでなく、Microsoft ID プラットフォームと統合されたすべての会社や組織の職場と学校アカウントのサインインを受け入れることになります。 これは、SaaS アプリケーションに推奨されるオプションです。
 
 アプリケーションへのユーザーのサインイン アクセスを制限するために、複数のオプションを使用できます。
 
-#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>オプション 1:アプリケーションへのサインインを 1 つの組織の Active Directory インスタンスのユーザーのみに制限する (シングルテナント)
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>オプション 1: アプリケーションへのサインインを 1 つの組織の Active Directory インスタンスのユーザーのみに制限する (シングルテナント)
 
 このオプションは、"*LOB アプリケーション*" でよく使用されます。アプリケーションが特定の Azure AD インスタンスに属するアカウント (そのインスタンスの *ゲスト アカウント* を含む) からのサインインのみを受け入れるようにする場合は、以下の手順を実行します。
 
@@ -476,11 +476,11 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 1. [OWIN Startup クラス](#configure-the-authentication-pipeline)の `ValidateIssuer` 引数を `true` に設定します。
 2. `ValidIssuers` パラメーターの値を、許可される組織の一覧に設定します。
 
-#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>オプション 3: カスタム メソッドを使用して発行者を検証する
+#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>オプション 3:カスタム メソッドを使用して発行者を検証する
 
 **IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、[TokenValidationParameters クラス](/previous-versions/visualstudio/dn464192(v=vs.114))に関するページを参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Web アプリが Web API を呼び出す方法について学習します。
 

@@ -1,26 +1,17 @@
 ---
-title: Azure で Service Fabric 上の ASP.NET Core サービスを監視および診断する | Microsoft Docs
+title: ASP.NET Core のサービスを監視および診断する
 description: このチュートリアルでは、Azure Service Fabric の ASP.NET Core アプリケーションの監視と診断をセットアップする方法を説明します。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 1f18aef12978b3df1ba1fd654ea4a0e9548a4b46
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: b226c37c36da033862377860be4c413229651fb6
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228090"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614045"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>チュートリアル:Application Insights を使用して Service Fabric 上の ASP.NET Core アプリケーションを監視および診断する
 
@@ -202,13 +193,13 @@ Azure Portal で、Application Insights リソースのページに移動しま�
 
 ![AI トレースの詳細](./media/service-fabric-tutorial-monitoring-aspnet/app-map-new.png)
 
-アプリ マップを利用すると、アプリケーションのトポロジをより深く理解できます。特に、連携して動く複数の異なるサービスを追加し始めるときには有用です。 また、これによって要求の成功率に関する基本的なデータを取得し、失敗した要求を診断して、問題が起きた可能性のある場所を把握するのに役立てることもできます。 アプリケーション マップの使用方法について詳しくは、「[Application Insights のアプリケーション マップ](../azure-monitor/app/app-map.md)」をご覧ください。
+アプリ マップを利用すると、アプリケーションのトポロジをより深く理解できます。特に、連携して動く複数の異なるサービスを追加し始めるときには有用です。 また、これによって要求の成功率に関する基本的なデータを取得し、失敗した要求を診断して、問題が起きた可能性のある場所を把握するのに役立てることもできます。 アプリ マップの使用方法について詳しくは、「[Application Insights のアプリケーション マップ](../azure-monitor/app/app-map.md)」をご覧ください。
 
 ## <a name="add-custom-instrumentation-to-your-application"></a>カスタム インストルメンテーションをアプリケーションに追加する
 
 Application Insights では多くのテレメトリをすぐに利用できますが、さらにカスタム インストルメンテーションを追加することもできます。 これは、ビジネス ニーズに基づいて行うことも、またはアプリケーションでの問題発生時に診断を改善するために行うこともできます。 Application Insights にはカスタム イベントとメトリックを取り込める API があります。詳細については[こちら](../azure-monitor/app/api-custom-events-metrics.md)をご覧ください。
 
-*VoteDataController.cs* (*VotingData*  >  *Controllers* の下) にカスタム イベントを追加して、基礎となる *votesDictionary* に対していつ投票が追加され、削除されるかを追跡します。
+*VoteDataController.cs* (*VotingData* > *Controllers* の下) にカスタム イベントを追加して、基礎となる *votesDictionary* に対していつ投票が追加され、削除されるかを追跡します。
 
 1. 他の using ステートメントの最後に `using Microsoft.ApplicationInsights;` を追加します。
 2. クラスの最初の *IReliableStateManager* の作成の下で、新しい *TelemetryClient* を次のように宣言します。`private TelemetryClient telemetry = new TelemetryClient();`
@@ -264,7 +255,7 @@ public async Task<IActionResult> Delete(string name)
 
 ![カスタム イベント](./media/service-fabric-tutorial-monitoring-aspnet/custom-events.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 > [!div class="checklist"]

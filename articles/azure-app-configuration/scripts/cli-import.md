@@ -1,5 +1,6 @@
 ---
-title: Azure CLI のサンプル スクリプト - Azure App Configuration ストアへのインポート | Microsoft Docs
+title: Azure CLI のサンプル スクリプト - Azure App Configuration ストアにインポートする
+titleSuffix: Azure App Configuration
 description: Azure App Configuration ストアへのインポートを行うサンプル スクリプトについて取り上げます。
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 6399039a68279a5b734fb3d7cb5bfad60e2c35e1
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 28c04859f23b3a560166aa62ac903e1204fc5d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185013"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75413285"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Azure App Configuration ストアへのインポート
 
@@ -54,7 +55,7 @@ az appconfig kv import --name myTestAppConfigStore --source file --path ~/Import
 |---|---|
 | [az appconfig kv import](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-import) | App Configuration ストア リソースへのインポートを行います。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページを参照してください。
 

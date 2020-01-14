@@ -1,17 +1,17 @@
 ---
-title: バックエンド ストレージを Microsoft Azure FXT Edge Filer クラスターに追加する
+title: チュートリアル:Azure FXT Edge Filer クラスターにストレージを追加する
 description: バックエンド ストレージとクライアント側の擬似名前空間を Azure FXT Edge Filer 用に構成する方法
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: ecc246368cae74440ada782940931b3588193975
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256068"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551966"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>チュートリアル:バックエンド ストレージを追加して仮想名前空間を構成する 
 
@@ -156,7 +156,7 @@ VServer とコア ファイラーの両方が揃ったら、コア ファイラ�
 詳細については、クラスター構成ガイドにある、[コア ファイラーのエクスポートのアクセス制御](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html)に関するページをお読みください。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ストレージを追加し、クライアント側の名前空間を構成した後、クラスターの初期セットアップを完了します。 
 

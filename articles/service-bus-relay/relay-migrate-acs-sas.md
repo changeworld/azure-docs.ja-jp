@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Access Control Service から Shared Access Signature 承認への移行 | Microsoft Docs
+title: Azure Relay - Shared Access Signature 承認への移行
 description: Access Control Service から SAS へのアプリケーションの移行
 services: service-bus-relay
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 12/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 7f71b6884413309e6806658f25313c22e074a71b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8aec2483f39f698a62be60f6da6018f8981df423
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686393"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355046"
 ---
-# <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Active Directory Access Control Service から Shared Access Signature 承認への移行
+# <a name="azure-relay---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Relay - Azure Active Directory Access Control Service から Shared Access Signature 承認への移行
 
 Azure Relay アプリケーションではこれまで 2 つの承認モデルが存在していました。リレー サービスにより直接提供される [Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md) トークン モデルと、承認規則の管理が [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS) によって内部で管理されるフェデレーション モデルです。このモデルでは、ACS から取得したトークンが、目的の機能へのアクセスを承認するためにリレーに渡されます。
 
@@ -30,7 +30,7 @@ SAS は、別のサービスに即時依存することはなく、SAS ルール
 
 ACS に依存しているすべての既存アプリケーションに対して、代わりとして SAS に依存するようにアプリケーションを移行することをお勧めします。
 
-## <a name="migration-scenarios"></a>移行のシナリオ
+## <a name="migration-scenarios"></a>移行シナリオ
 
 ACS とリレーは、共に認識している*署名キー*を利用して統合されます。 署名キーは、ACS 名前空間では認証トークンの署名に使用され、Azure Relay ではペアの ACS 名前空間によってトークンが発行されていることの確認に使用されます。 ACS 名前空間は、サービス ID と承認規則を保持します。 承認規則では、外部 ID プロバイダーによって発行されたサービス ID またはトークンが、リレー名前空間のグラフの一部に対して、どの種類のアクセスを許可されるかを定義します。定義には最長プレフィックス一致の形式が使用されます。
 
@@ -60,7 +60,7 @@ ACS とリレーは、共に認識している*署名キー*を利用して統�
 
 SAS ルールをアカウントにすることは想定されていませんが、権限に関連付けられた署名キーの名前が付けられています。 アプリケーションにより多くのサービス ID が作成され、複数のエンティティや名前空間全体に対してアクセス権限が付与されるようなシナリオでは、引き続きトークンを発行する仲介役が必要となります。 このような仲介機能のガイダンスを入手するには、[サポートにお問い合わせください](https://azure.microsoft.com/support/options/)。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Relay 認証の詳細については、次のトピックをご覧ください。
 

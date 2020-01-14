@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a7d4a400681113736c52046fb6aa5c04098ddda
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: fe08f1523b4b61653d89a9b3472355dd3eeaf69f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893231"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640093"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smartdraw"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SmartDraw の統合
 
@@ -44,13 +43,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-
-
 * SmartDraw では、**SP と IDP** によって開始される SSO がサポートされます
 * SmartDraw では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-
-> [!NOTE]
-> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
 
 ## <a name="adding-smartdraw-from-the-gallery"></a>ギャラリーから SmartDraw を追加する
 
@@ -63,7 +57,6 @@ Azure AD への SmartDraw の統合を構成するには、ギャラリーから
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SmartDraw**」と入力します。
 1. 結果のパネルから **[SmartDraw]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-smartdraw"></a>SmartDraw の Azure AD シングル サインオンの構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、SmartDraw に対する Azure AD SSO を構成してテストします。 SSO が機能するために、Azure AD ユーザーと SmartDraw の関連ユーザーの間で、リンク関係が確立されている必要があります。
@@ -71,10 +64,10 @@ Azure AD への SmartDraw の統合を構成するには、ギャラリーから
 SmartDraw で Azure AD SSO を構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[SmartDraw の SSO の構成](#configure-smartdraw-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    1. **[SmartDraw のテスト ユーザーの作成](#create-smartdraw-test-user)** - SmartDraw で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+    * **[SmartDraw のテスト ユーザーの作成](#create-smartdraw-test-user)** - SmartDraw で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
@@ -87,7 +80,7 @@ SmartDraw で Azure AD SSO を構成してテストするには、次の構成�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1.  **[基本的な SAML 構成]**  セクションでは、アプリケーションは **IDP** Initiated モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]**  ボタンをクリックして構成を保存する必要があります。
+1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -96,13 +89,15 @@ SmartDraw で Azure AD SSO を構成してテストするには、次の構成�
     > [!NOTE]
     > サインオン URL は実際の値ではありません。 サインオン URL の値は、後で実際のサインオン URL に置き換えることになります。実際の値については後で説明します。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
+1. **[保存]** をクリックします。
+
 1. SmartDraw アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
 1. その他に、SmartDraw アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | 名前 | ソース属性|
+    | Name | ソース属性|
     | ---------------| --------------- |
     | FirstName | User.givenname |
     | LastName | User.surname |
@@ -116,7 +111,6 @@ SmartDraw で Azure AD SSO を構成してテストするには、次の構成�
 1. **[SmartDraw の設定]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
-
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -150,20 +144,28 @@ SmartDraw で Azure AD SSO を構成してテストするには、次の構成�
 
 ## <a name="configure-smartdraw-sso"></a>SmartDraw の SSO を構成する
 
-1. 別の Web ブラウザー ウィンドウで、SmartDraw に管理者としてサインインします。
+1. SmartDraw 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
 
-2. [Manage your SmartDraw License]\(SmartDraw ライセンスの管理\) の下にある **[シングルサインオン]** をクリックします。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[SmartDraw のセットアップ]** をクリックすると、SmartDraw アプリケーションに移動します。 そこから、管理者の資格情報を入力して SmartDraw にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 5 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. SmartDraw を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として SmartDraw 企業サイトにサインインして、次の手順を実行します。
+
+1. [Manage your SmartDraw License]\(SmartDraw ライセンスの管理\) の下にある **[シングルサインオン]** をクリックします。
 
     ![SmartDraw 構成](./media/smartdraw-tutorial/configure01.png)
 
-3. [Configuration]\(構成\) ページで、次の手順を実行します。
+1. [Configuration]\(構成\) ページで、次の手順を実行します。
 
     ![SmartDraw 構成](./media/smartdraw-tutorial/configure02.png)
 
     a. **[Your Domain (like acme.com)]\(ご使用のドメイン (acme.com など)\)** ボックスに、ご使用のドメインを入力します。
 
     b. インスタンスの **[Your SP Initiated Login Url will be]\(SP 開始ログイン URL\)** をコピーし、Azure portal の **[基本的な SAML 構成]** の [サインオン URL] ボックスに貼り付けます。
-    
+
     c. **[Security Groups to Allow SmartDraw Access]\(SmartDraw アクセスを許可するセキュリティ グループ\)** ボックスに、「**Everyone**」と入力します。
 
     d. **[Your SAML Issuer Url]\(SAML 発行者の URL\)** ボックスに、Azure portal からコピーした **Azure AD 識別子**の値を貼り付けます。
@@ -174,9 +176,9 @@ SmartDraw で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="create-smartdraw-test-user"></a>SmartDraw テスト ユーザーを作成する
 
-このセクションでは、Britta Simon というユーザーを SmartDraw に作成します。 SmartDraw では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 SmartDraw にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、B.Simon というユーザーを SmartDraw に作成します。 SmartDraw では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 SmartDraw にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
-## <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -191,4 +193,3 @@ SmartDraw で Azure AD SSO を構成してテストするには、次の構成�
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で SmartDraw を試す](https://aad.portal.azure.com/)
-

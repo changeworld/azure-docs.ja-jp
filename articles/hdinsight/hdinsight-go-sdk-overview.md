@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight SDK for Go
 description: Azure HDInsight SDK for Go および Apache Hadoop クラスターを使用するための参考資料
-author: tylerfox
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/8/2019
-ms.author: tyfox
-ms.reviewer: jasonh
 ms.custom: seodec18
-ms.openlocfilehash: 60ac0509aed1fc83bc7f660783d4bdbd6cb7d976
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 01/03/2020
+ms.openlocfilehash: 065165ddb629f0629e9b895dbad5ee33605f8bc1
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077128"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658884"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for Go (プレビュー)
 
@@ -23,9 +23,11 @@ HDInsight SDK for Go に用意されているクラスと関数を使用して H
 > [!NOTE]  
 >この SDK の GoDoc 参考資料は[こちらでも入手できます](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)。
 
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+
 ## <a name="prerequisites"></a>前提条件
 
-* Azure アカウント。 所有していない場合は、[無料試用版を入手](https://azure.microsoft.com/free/)してください。
+* [`go get` ツール](https://github.com/golang/go/wiki/GoGetTools)。
 * [Go](https://golang.org/dl/)。
 
 ## <a name="sdk-installation"></a>SDK のインストール
@@ -34,14 +36,14 @@ GOPATH の場所から `go get github.com/Azure/azure-sdk-for-go/tree/master/ser
 
 ## <a name="authentication"></a>認証
 
-SDK は最初に Azure サブスクリプションで認証する必要があります。  以下の例に従って、サービス プリンシパルを作成し、これを使用して認証します。 その後、`ClustersClient` のインスタンスが生成されます。これには、管理操作の実行に使用できる関数が多数含まれています (以下のセクションで説明します)。
+SDK は最初に Azure サブスクリプションで認証する必要があります。  以下の例に従って、サービス プリンシパルを作成し、これを使用して認証します。 その後、`ClustersClient` のインスタンスを生成します。これには、管理操作の実行に使用できる関数が多数含まれています (以下のセクションで説明します)。
 
 > [!NOTE]  
 > 認証方法は以下の例の他にもあり、そちらの方がご自身のニーズに適している可能性もあります。 すべての関数の概要については、[Azure SDK for Go における認証関数](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)に関する記事を参照してください
 
 ### <a name="authentication-example-using-a-service-principal"></a>サービス プリンシパルを使用した認証の例
 
-まず、[Azure Cloud Shell](https://shell.azure.com/bash) にログインします。 現在、サービス プリンシパル作成対象のサブスクリプションを使用していることを確認します。 
+まず、[Azure Cloud Shell](https://shell.azure.com/bash) にログインします。 現在、サービス プリンシパル作成対象のサブスクリプションを使用していることを確認します。
 
 ```azurecli-interactive
 az account show
@@ -98,6 +100,7 @@ az ad sp create-for-rbac --name <Service Principal Name> --sdk-auth
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
+
 次のスニペットをコピーし、コマンド実行後に返された JSON の文字列を `TENANT_ID`、`CLIENT_ID`、`CLIENT_SECRET`、および `SUBSCRIPTION_ID` に入力して、サービス プリンシパルを作成します。
 
 ```golang
@@ -142,7 +145,7 @@ func main() {
 
 #### <a name="example"></a>例
 
-この例は、2 つのヘッド ノードと 1 つの worker ノードを含む [Apache Spark](https://spark.apache.org/) クラスターを作成する方法を示しています。
+この例は、2 つのヘッド ノードと 1 つのワーカー ノードを含む [Apache Spark](https://spark.apache.org/) クラスターを作成する方法を示しています。
 
 > [!NOTE]  
 > 次に示すように、最初にリソース グループとストレージ アカウントを作成する必要があります。 これらが既に作成済みの場合、この手順はスキップできます。
@@ -150,21 +153,27 @@ func main() {
 ##### <a name="creating-a-resource-group"></a>リソース グループの作成
 
 [Azure Cloud Shell](https://shell.azure.com/bash) を使用して次を実行することで、リソース グループを作成できます
+
 ```azurecli-interactive
 az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
 ```
+
 ##### <a name="creating-a-storage-account"></a>ストレージ アカウントの作成
 
 [Azure Cloud Shell](https://shell.azure.com/bash) を使用して次を実行することで、ストレージ アカウントを作成できます。
+
 ```azurecli-interactive
 az storage account create -n <Storage Account Name> -g <Existing Resource Group Name> -l <Region Name (i.e. eastus)> --sku <SKU i.e. Standard_LRS>
 ```
+
 ここで、次のコマンドを実行して、ストレージ アカウントに対するキーを取得します (これはクラスターを作成するときに必要になります)。
+
 ```azurecli-interactive
 az storage account keys list -n <Storage Account Name>
 ```
+
 ---
-以下の Go スニペットでは、2 つのヘッド ノードと 1 つの worker ノードを含む Spark クラスターが作成されます。 コメントの説明に従って空白の変数を入力します。また、ご自身のニーズに合わせて他のパラメーターを変更します。
+以下の Go スニペットでは、2 つのヘッド ノードと 1 つのワーカー ノードを含む Spark クラスターが作成されます。 コメントの説明に従って空白の変数を入力します。また、ご自身のニーズに合わせて他のパラメーターを変更します。
 
 ```golang
 // The name for the cluster you are creating
@@ -273,13 +282,16 @@ fmt.Println(*cluster.ID
 /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<Resource Group Name>/providers/Microsoft.HDInsight/clusters/<Cluster Name>
 ```
 
-### <a name="list-clusters"></a>クラスターの一覧表示
+### <a name="list-clusters"></a>クラスターを一覧表示する
 
 #### <a name="list-clusters-under-the-subscription"></a>サブスクリプションのクラスターの一覧表示
+
 ```golang
 client.List()
 ```
+
 #### <a name="list-clusters-by-resource-group"></a>リソース グループ別のクラスターの一覧表示
+
 ```golang
 client.ListByResourceGroup("<Resource Group Name>")
 ```
@@ -288,6 +300,7 @@ client.ListByResourceGroup("<Resource Group Name>")
 > `List()` と `ListByResourceGroup()` の両方が `ClusterListResultPage` 構造体を返します。 次のページを取得するには、`Next()` を呼び出します。 以下の例に示すように、`ClusterListResultPage.NotDone()` で `false` が返されるまでこれを繰り返すことができます。
 
 #### <a name="example"></a>例
+
 次の例では、現在のサブスクリプションのすべてのクラスターのプロパティが出力されます。
 
 ```golang
@@ -321,6 +334,7 @@ client.Delete(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 ```golang
 client.Update(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ClusterPatchParameters{<map[string]*string} of Tags>)
 ```
+
 #### <a name="example"></a>例
 
 ```golang
@@ -476,6 +490,6 @@ for (page.NotDone()) {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [GoDoc 参考資料](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)を読みます。 GoDoc では、SDK のすべての関数のために参照文書を用意しています。
+[GoDoc 参考資料](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)を読みます。 GoDoc では、SDK のすべての関数のために参照文書を用意しています。

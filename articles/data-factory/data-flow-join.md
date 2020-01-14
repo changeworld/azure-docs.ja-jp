@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/17/2019
-ms.openlocfilehash: 09d2c1d063c542583dc11fab0805a9392661426f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/02/2020
+ms.openlocfilehash: 10149c6eb06e6d2994233aa365f237e6d9330c48
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930338"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644760"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>マッピング データ フローの結合変換
 
@@ -31,6 +31,9 @@ ms.locfileid: "74930338"
 
 左外部結合では、左側ストリームのすべての行と、右側ストリームで一致するレコードが返されます。 左側ストリームの行に一致するものがない場合、右側ストリームの出力列は NULL に設定されます。 出力は、内部結合で返される行と、左側ストリームの一致のない行になります。
 
+> [!NOTE]
+> Data Flow で使用される Spark エンジンでは、結合条件でデカルト積が生成されることがあります。 この場合、カスタム クロス結合に切り替えて、結合条件を手動で入力できます。 これによりデータ フローのパフォーマンスが低下する場合があります。これは、実行エンジンが、リレーションシップの両側からすべての行を計算し、行をフィルター処理する必要があるためです。
+
 ### <a name="right-outer"></a>右外部結合
 
 右外部結合では、右側ストリームのすべての行と、左側ストリームで一致するレコードが返されます。 右側ストリームの行に一致するものがない場合、左側ストリームの出力列は NULL に設定されます。 出力は、内部結合で返される行と、右側ストリームの一致のない行になります。
@@ -39,9 +42,16 @@ ms.locfileid: "74930338"
 
 完全外部結合では、両方の側のすべての列と行が、一致しない列には NULL 値を使用して出力されます。
 
-### <a name="cross-join"></a>クロス結合
+### <a name="custom-cross-join"></a>カスタム クロス結合
 
-クロス結合では、条件に基づいて 2 つのストリームのクロス積が出力されます。 同等性以外の条件を使用する場合は、クロス結合条件にカスタム式を指定します。 出力ストリームは、結合条件を満たすすべての行になります。 すべての行の組み合わせを出力するデカルト積を作成するには、結合条件として `true()` を指定します。
+クロス結合では、条件に基づいて 2 つのストリームのクロス積が出力されます。 同等性以外の条件を使用する場合は、クロス結合条件にカスタム式を指定します。 出力ストリームは、結合条件を満たすすべての行になります。
+
+この結合の種類は、非等結合および ```OR``` 条件に使用できます。
+
+完全なデカルト積を明示的に生成する場合は、結合の前に 2 つの独立したストリームの派生列変換を使用して、一致する合成キーを作成します。 たとえば、```SyntheticKey``` と呼ばれる各ストリームで派生列に新しい列を作成し、それを ```1``` と等しい値に設定します。 次に、```a.SyntheticKey == b.SyntheticKey``` をカスタム結合式として使用します。
+
+> [!NOTE]
+> カスタム クロス結合で、左右のリレーションシップの各側に少なくとも 1 つの列が含まれていることを確認してください。 各側の列ではなく、静的な値を使用してクロス結合を実行すると、データセット全体が完全にスキャンされるため、データフローのパフォーマンスが低下します。
 
 ## <a name="configuration"></a>構成
 
@@ -104,9 +114,9 @@ TripData, TripFare
     )~> JoinMatchedData
 ```
 
-### <a name="cross-join-example"></a>クロス結合の例
+### <a name="custom-cross-join-example"></a>カスタム クロス結合の例
 
-以下の例は、左側ストリーム `TripData` と右側ストリーム `TripFare` を受け取る `CartesianProduct` という名前の結合変換です。 この結合では 2 つのストリームを受け取り、各行のデカルト積を返します。 デカルト積すべてを出力するので、結合条件には `true()` を指定しています。 `joinType` は `cross` です。 左側ストリームでのみブロードキャストを有効にするため、`broadcast` の値を `'left'` に設定しています。
+以下の例は、左側ストリーム `LeftStream` と右側ストリーム `RightStream` を受け取る `JoiningColumns` という名前の結合変換です。 この変換は 2 つのストリームを取り込んで、列 `leftstreamcolumn` が列 `rightstreamcolumn` よりも大きいすべての行を結合します。 `joinType` は `cross` です。 ブロードキャストが有効になっていません。`broadcast` の値は `'none'` です。
 
 Data Factory UX では、この変換は次の図のようになります。
 
@@ -115,14 +125,14 @@ Data Factory UX では、この変換は次の図のようになります。
 この変換のデータ フロー スクリプトは、次のスニペットに含まれています。
 
 ```
-TripData, TripFare
+LeftStream, RightStream
     join(
-        true(),
+        leftstreamcolumn > rightstreamcolumn,
         joinType:'cross',
-        broadcast: 'left'
-    )~> CartesianProduct
+        broadcast: 'none'
+    )~> JoiningColumns
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 データの結合後は、[派生列の作成](data-flow-derived-column.md)や、配布先データ ストアへのデータの[シンク](data-flow-sink.md)を行います。

@@ -1,17 +1,17 @@
 ---
-title: ハードウェアの初期化 - Microsoft Azure FXT Edge Filer
+title: チュートリアル:ハードウェアの初期化 - Azure FXT Edge Filer
 description: Azure FXT Edge Filer ノードに初期パスワードを設定する方法
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: 080aa05af77b996bc0eb71287a3dfef25c24629a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8cb5f639deb0630575c46db30efe70ad967324a8
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256017"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550893"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>チュートリアル:ハードウェア パスワードを設定する
 
@@ -23,7 +23,7 @@ Azure FXT Edge Filer ノードに初めて電源を入れたときに、ルー�
 
 このチュートリアルでは、ハードウェア ノードに接続してパスワードを設定する方法について説明します。 
 
-このチュートリアルで学習する内容は次のとおりです。 
+このチュートリアルでは、次の内容を学習します。 
 
 > [!div class="checklist"]
 > * キーボードとモニターをノードに接続して電源を入れる
@@ -107,7 +107,7 @@ Password:**********
 
 root としてサインインすると、ネットワーク ポートがアクティブになり、DHCP サーバーに接続して IP アドレスを要求します。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ノードがクラスターの一部になる準備ができました。 これを使用して Azure FXT Edge Filer クラスターを作成したり、[これを既存のクラスターに追加](fxt-add-nodes.md)したりできます。 
 

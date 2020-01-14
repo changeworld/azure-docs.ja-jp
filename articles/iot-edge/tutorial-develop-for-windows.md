@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4a56a79798acf4948739b26062ab770fcbb47f7b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 55ae542ed0490248d501cd7c4f50c0a7ba32091a
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707082"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665196"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
 
@@ -158,7 +158,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
 1. モジュール ソリューション内の **deployment.template.json** ファイルを開きます。
 
-1. $edgeAgent の必要なプロパティで、**registryCredentials** プロパティを見つけ、正しい情報が格納されていることを確認します。
+1. $edgeAgent の必要なプロパティで、**registryCredentials** プロパティを見つけます。 プロジェクトの作成時に指定した情報からレジストリ アドレスが自動的に設定され、ユーザー名とパスワードのフィールドには変数名が含まれているはずです。 次に例を示します。 
 
    ```json
    "registryCredentials": {
@@ -227,7 +227,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   `--password-stdin` の使用を推奨するセキュリティ警告を受け取る場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスを参照してください。
+   `--password-stdin` の使用を推奨するセキュリティ警告が表示される場合があります。 このベスト プラクティスは、運用環境のシナリオを対象に推奨されていますが、それはこのチュートリアルの範囲外になります。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) のリファレンスをご覧ください。
 
 ### <a name="build-and-push"></a>ビルドとプッシュ
 
@@ -237,7 +237,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
    ![IoT Edge モジュールをビルドしてプッシュする](./media/tutorial-develop-for-windows/build-and-push-modules.png)
 
-   ビルドおよびプッシュ コマンドは、3 つの操作を開始します。 最初に、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持する、**config** という新しいフォルダーをソリューション内に作成します。 次に、`docker build` を実行して、お使いのターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 次に、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。 
+   ビルドおよびプッシュ コマンドでは、3 つの操作を開始します。 最初に、デプロイ テンプレートと他のソリューション ファイルの情報からビルドされた完全な配置マニフェストを保持する、**config** という新しいフォルダーをソリューション内に作成します。 次に、`docker build` を実行して、お使いのターゲット アーキテクチャ用の適切な Dockerfile に基づいてコンテナー イメージをビルドします。 そして、`docker push` を実行して、イメージ リポジトリをコンテナー レジストリにプッシュします。 
 
    このプロセスは、初回は数分間かかる可能性がありますが、次回これらのコマンドを実行するときは、それより速くなります。 
 
@@ -264,7 +264,7 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
     ![コンテナー レジストリ内の両方のイメージのバージョンを表示する](./media/tutorial-develop-for-windows/view-repository-versions.png)
 
-### <a name="troubleshoot"></a>トラブルシューティング
+### <a name="troubleshoot"></a>[トラブルシューティング]
 
 モジュール イメージをビルドおよびプッシュしているときにエラーが発生する場合は、開発マシン上の Docker 構成に関連していることがよくあります。 次のチェックを使用して構成を確認してください。 
 
@@ -333,7 +333,7 @@ IotEdgeModule1 コードは、入力キューを介してメッセージを受�
 
    SimulatedTemperatureSensor と IotEdgeModule1 のログには、処理しているメッセージが表示されるはずです。 edgeAgent モジュールには、他のモジュールを開始する責任があります。そのため、そのログには、配置マニフェストの実装に関する情報が含まれます。 いずれかのモジュールが一覧に表示されていない、または実行されていない場合は、おそらく edgeAgent のログにエラーが書き込まれます。 edgeHub モジュールは、モジュールと IoT Hub 間の通信を担当します。 モジュールは稼働しているが、メッセージが IoT ハブに到着していない場合は、おそらく edgeHub のログにエラーが書き込まれます。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、開発マシンに Visual Studio 2019 を設定し、そこから最初の IoT Edge モジュールをデプロイしました。 これで基本的な概念が理解できたので、モジュールを通過するデータを分析できるように、モジュールに機能を追加してみます。 使用したい言語を選択。 
 

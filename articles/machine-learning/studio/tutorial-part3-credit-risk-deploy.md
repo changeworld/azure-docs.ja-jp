@@ -1,7 +1,7 @@
 ---
 title: チュートリアル 3:信用リスク モデルをデプロイする
-titleSuffix: ML Studio (classic) - Azure
-description: クラシック バージョンの Azure Machine Learning Studio で、信用リスク評価のための予測分析ソリューションを作成する方法を詳しく紹介しているチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズのパート 3 です。 モデルを Web サービスとしてデプロイする方法を示します。
+titleSuffix: Azure Machine Learning Studio (classic)
+description: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning Studio (クラシック) で作成する方法を詳しく紹介したチュートリアルです。 このチュートリアルは、3 部構成のチュートリアル シリーズのパート 3 です。 モデルを Web サービスとしてデプロイする方法を示します。
 keywords: 信用リスク, 予測分析ソリューション, リスク評価, デプロイ, Web サービス
 author: sdgilley
 ms.author: sgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 4e8e8a114a06029ef9a81d92b60afd575bc9661f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9353e5749906aca1f0c91b622c93ba6028cd3bef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839487"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432197"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>チュートリアル 3:信用リスク モデルをデプロイする - Azure Machine Learning Studio (クラシック)
 
@@ -23,7 +23,7 @@ ms.locfileid: "73839487"
 
 クレジットの申請書に記入する情報に基づいて個人のクレジット リスクを予測する必要があるとします。  
 
-信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning Studio (クラシック) を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションでは、クラシック バージョンの Azure Machine Learning Studio と Machine Learning Web サービスを使用します。 
+信用リスクの評価は複雑な問題ですが、このチュートリアルでは、それを少し簡略化してみます。 Microsoft Azure Machine Learning Studio (クラシック) を使用して予測分析ソリューションを作成する方法の例として使用してください。 このソリューションでは、Azure Machine Learning Studio (クラシック) と Machine Learning Web サービスを使用します。 
 
 この 3 部構成のチュートリアルでは、まず、公表されている信用リスク データを使用します。  その後、予測モデルを開発してトレーニングします。  最後にそのモデルを Web サービスとしてデプロイします。
 
@@ -34,7 +34,7 @@ ms.locfileid: "73839487"
 チュートリアルのこのパートでは、次のことを行います。
 
 > [!div class="checklist"]
-> * デプロイの準備をする
+> * 展開を準備する
 > * Web サービスをデプロイする
 > * Web サービスをテストする
 > * Web サービスを管理する
@@ -44,7 +44,7 @@ ms.locfileid: "73839487"
 
 [チュートリアルのパート 2](tutorial-part2-credit-risk-train.md) を完了していること。
 
-## <a name="prepare-for-deployment"></a>デプロイの準備をする
+## <a name="prepare-for-deployment"></a>展開を準備する
 このチュートリアルで作成した予測モデルを他のユーザーが使用できるように、Web サービスとして Azure にデプロイできます。
 
 これまでは、モデルのトレーニングを実験してきました。 ただし、デプロイするサービスのトレーニングはこれ以上行われません。サービスは、モデルに基づいてユーザーの入力をスコア付けすることで新しい予測を生成します。 このため、この実験を "***トレーニング***" 実験から "***予測***" 実験に変換するための準備をします。 
@@ -235,16 +235,16 @@ Web アプリ テンプレートの使用方法の詳細については、「[We
 
 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次の手順を完了しました。
 
 > [!div class="checklist"]
-> * デプロイの準備をする
+> * 展開を準備する
 > * Web サービスをデプロイする
 > * Web サービスをテストする
 > * Web サービスを管理する

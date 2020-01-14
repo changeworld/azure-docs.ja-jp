@@ -4,15 +4,15 @@ description: この記事では、Windows 用 Log Analytics エージェント�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 42183ca7b02ba75b241ee1a83b5a0dc936a8c1c8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420425"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689989"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows コンピューターを Azure Monitor に接続する
 
@@ -38,7 +38,7 @@ Azure Monitor を使用して、ローカル データ センターやその他�
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
 Windows 用 Log Analytics エージェントをインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Azure Monitor と正常に通信できるようにするために必要です。 
 
-1. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+1. Azure portal で、 **[Log Analytics ワークスペース]** を検索して選択します。
 2. Log Analytics ワークスペースの一覧で、エージェントのレポート送信先にするワークスペースを選択します。
 3. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. **[接続されたソース]** 、 **[Windows サーバー]** の順に選択します。   
@@ -188,9 +188,9 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 また、Azure portal で簡単なログ クエリを実行することもできます。  
 
-1. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で「**Azure Monitor**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Azure Monitor]** を選択します。  
-2. メニューの **[ログ]** を選択します。 
-2. [ログ] ペインのクエリ フィールドに次のように入力します。  
+1. Azure portal で、 **[モニター]** を検索して選択します。
+1. メニューの **[ログ]** を選択します。
+1. **[ログ]** ウィンドウのクエリ フィールドに次のように入力します。  
 
     ```
     Heartbeat 
@@ -200,7 +200,7 @@ Windows エージェントと Log Analytics サービス間の通信で [TLS 1.2
 
 検索結果には、コンピューターのハートビート レコードが表示されます。これにより、エージェントがサービスに接続され、レポートが送信されていることが示されます。   
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 仮想マシンからのエージェントの再構成、アップグレード、または削除方法については、「[Windows および Linux での Log Analytics エージェントの管理とメンテナンス](agent-manage.md)」をご覧ください。
 

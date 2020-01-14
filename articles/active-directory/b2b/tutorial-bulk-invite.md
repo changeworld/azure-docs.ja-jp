@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ffcdad43195ce49ef3cd8b695f9ad5009af82fb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 493c60e8148b666ba1f514d303229b7a11c2e43e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272347"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425039"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する (プレビュー)
 
@@ -25,6 +25,8 @@ ms.locfileid: "74272347"
 | この記事では、Azure Active Directory のパブリック プレビュー機能について説明します。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
 |     |
 
+> [!NOTE]
+> 2019 年 12 月 22 日の時点では、一括招待ユーザー (プレビュー) 機能は一時的に無効になっています。
 
 Azure Active Directory (Azure AD) B2B コラボレーションを使用して外部パートナーと協力する場合は、複数のゲスト ユーザーを組織に同時に招待できます。 このチュートリアルでは、Azure portal を使用して、外部ユーザーに招待状を一括送信する方法について説明します。 具体的には、以下を実行します。
 
@@ -90,7 +92,7 @@ Azure Active Directory をお持ちでない場合は、開始する前に[無�
 
 招待したユーザーが表示されていることを確認します。*emailaddress*#EXT#\@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。 たとえば、*lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待状を送信した組織になります。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 ディレクトリ内のテスト用ユーザー アカウントは、不要になったら、Azure portal の [ユーザー] ページで削除できます。それには、ゲスト ユーザーの横のチェック ボックスをオンにし、 **[削除]** を選択してください。 
 
@@ -100,9 +102,9 @@ Azure Active Directory をお持ちでない場合は、開始する前に[無�
  Remove-AzureADUser -ObjectId "<UPN>"
 ```
 
-次に例を示します。`Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
+例: `Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、組織の外部のゲスト ユーザーに招待状を一括送信しました。 次に、招待の受諾プロセスを理解します。
 

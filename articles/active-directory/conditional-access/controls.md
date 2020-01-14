@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 12/20/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cac92da744b3d5b7aeaa325c7cc564a3d7e2abdd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 342ec46aabafec975d780aa03fe75d7e3cf50497
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74380808"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424964"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスによるアクセス制御の概要
 
@@ -76,7 +76,7 @@ ms.locfileid: "74380808"
 
 ### <a name="hybrid-azure-ad-joined-device"></a>ハイブリッド Azure AD 参加済みデバイス
 
-デバイスベースの条件付きアクセス ポリシーを構成するための別のオプションとして、ハイブリッド Azure AD 参加済みデバイスの要求があります。 この要件では、Windows デスクトップ、ノート PC、エンタープライズ タブレットのうち、オンプレミスの Active Directory に参加しているデバイスが必要になります。 このオプションを選ぶと、条件付きアクセス ポリシーは、オンプレミスの Active Directory とユーザーの Azure Active Directory に参加しているデバイスで行われるアクセスの試行にアクセスを許可します。  
+デバイスベースの条件付きアクセス ポリシーを構成するための別のオプションとして、ハイブリッド Azure AD 参加済みデバイスの要求があります。 この要件では、Windows デスクトップ、ノート PC、エンタープライズ タブレットのうち、オンプレミスの Active Directory に参加しているデバイスが必要になります。 このオプションを選ぶと、条件付きアクセス ポリシーは、オンプレミスの Active Directory とユーザーの Azure Active Directory に参加しているデバイスで行われるアクセスの試行にアクセスを許可します。 Mac デバイスでは、ハイブリッド Azure AD 参加はサポートされていません。
 
 詳細については、[Azure Active Directory のデバイスベースの条件付きアクセス ポリシーの設定](require-managed-devices.md)に関するページを参照してください。
 
@@ -114,7 +114,7 @@ ms.locfileid: "74380808"
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
 - [GSMA](https://mobileconnect.io/azure/)
 - [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
-- RSA
+- [RSA](https://community.rsa.com/docs/DOC-81278)
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
 - [Symantec VIP](https://help.symantec.com/home/VIP_Integrate_with_Azure_AD)
@@ -166,7 +166,7 @@ ms.locfileid: "74380808"
 - [SharePoint Online での制限付きアクセスの有効化](https://aka.ms/spolimitedaccessdocs)
 - [Exchange Online での制限付きアクセスの有効化](https://aka.ms/owalimitedaccess)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - 条件付きアクセス ポリシーの構成方法を把握するには、「[Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](app-based-mfa.md)」を参照してください。
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](best-practices.md)」を参照してください。

@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - Service Fabric アプリケーションのアップグレード | Microsoft Docs
-description: Azure PowerShell のサンプル スクリプト - Service Fabric アプリケーションのアップグレード
+title: PowerShell で Service Fabric アプリケーションをアップグレードする
+description: Azure PowerShell スクリプト サンプル - PowerShell を使用して Azure Service Fabric アプリケーションをアップグレードおよび監視します。
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 45186f497371b533451ff374e68b38f9a7eebe51
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3a4ef9fad8567eb145d51c6fef61773cc3a00b11
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035481"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614742"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>Service Fabric アプリケーションのアップグレード
 
@@ -47,7 +47,7 @@ ms.locfileid: "69035481"
 | [Remove-ServiceFabricApplicationPackage](/powershell/module/servicefabric/remove-servicefabricapplicationpackage?view=azureservicefabricps) | Service Fabric アプリケーション パッケージをイメージ ストアから削除します。|
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Service Fabric PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/service-fabric/?view=azureservicefabricps)を参照してください。
 

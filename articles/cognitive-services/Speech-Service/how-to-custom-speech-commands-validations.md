@@ -1,7 +1,7 @@
 ---
 title: 方法:カスタム コマンド パラメーターに検証を追加する (プレビュー)
 titleSuffix: Azure Cognitive Services
-description: この記事では、カスタム コマンド パラメーターに検証を追加します。
+description: この記事では、カスタム コマンドで検証をパラメーターに追加する方法について説明します。
 services: cognitive-services
 author: donkim
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 64e092405686caca7baeaf58f19d577a3f80e169
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c89c388f919ca95a331d1d406f5b1776c127ebad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506478"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446912"
 ---
 # <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>方法:カスタム コマンド パラメーターに検証を追加する (プレビュー)
 
@@ -39,14 +39,14 @@ ms.locfileid: "73506478"
    > [!div class="mx-imgBorder"]
    > ![範囲検証を追加する](media/custom-speech-commands/validations-add-temperature.png)
 
-   | Setting           | 推奨値                                          | 説明                                                                                      |
+   | 設定           | 推奨値                                          | [説明]                                                                                      |
    | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-   | 名前              | 気温                                              | コマンド パラメーターのわかりやすい名前                                                    |
+   | Name              | 気温                                              | コマンド パラメーターのわかりやすい名前                                                    |
    | 必須          | true                                                     | コマンドを完了する前にこのパラメーターの値を必須とするかどうかを示すチェックボックス |
-   | 応答テンプレート | "What temperature would you like?" (何度にしますか。)                       | 理解されていないとき、このパラメーターの値を問うプロンプト                              |
+   | 応答テンプレート | "- What temperature would you like?" (何度にしますか。)                     | 理解されていないとき、このパラメーターの値を問うプロンプト                              |
    | 種類              | Number                                                   | Number、String、Date Time など、パラメーターの型                                      |
-   | 検証        | 最小値:60、最大値:80                             | Number パラメーターの場合、パラメーターに許容される値の範囲                              |
-   | 応答テンプレート | "Sorry, I can only set between 60 and 80 degrees" (申し訳ありません、設定できる範囲は 60 から 80 度までです)        | 検証が失敗した場合、別の値を要求するプロンプト                                       |
+   | 検証        | 最小値:60、最大値:80                             | Number パラメーターの場合、パラメーターに許容される値の範囲                             |
+   | 応答テンプレート | "- Sorry, I can only set between 60 and 80 degrees" (申し訳ありません、設定できる範囲は 60 から 80 度までです)      | 検証が失敗した場合、別の値を要求するプロンプト                                       |
 
 1. 例文をいくつか追加する
 
@@ -59,14 +59,14 @@ ms.locfileid: "73506478"
 
 1. 結果を確定する完了ルールを追加する
 
-   | Setting    | 推奨値                                         | 説明                                        |
-   | ---------- | ------------------------------------------------------- | -------------------------------------------------- |
-   | 規則の名前  | 確認メッセージ                                    | ルールの目的を説明する名前          |
-   | 条件 | 必須のパラメーター - Temperature                        | ルールを実行できるタイミングを決定する条件    |
-   | Actions    | SpeechResponse - "Ok, setting to {Temperature} degrees" (了解です。{Temperature} 度に設定します) | ルール条件が真のときに実行するアクション |
+   | 設定    | 推奨値                                           | [説明]                                        |
+   | ---------- | --------------------------------------------------------- | -------------------------------------------------- |
+   | 規則の名前  | 確認メッセージ                                      | ルールの目的を説明する名前          |
+   | 条件 | 必須のパラメーター - Temperature                          | ルールを実行できるタイミングを決定する条件    |
+   | アクション    | SpeechResponse - "- Ok, setting to {Temperature} degrees" (了解です。{Temperature} 度に設定します) | ルール条件が真のときに実行するアクション |
 
 > [!TIP]
-> この例では、音声応答を利用して結果を確定します。 クライアント アクションでコマンドを完了する例については、「[方法:Speech SDK を使用し、クライアントでコマンドを実行する (プレビュー)](./how-to-custom-speech-commands-fulfill-sdk.md)」をご覧ください
+> この例では、音声応答を利用して結果を確定します。 クライアント アクションでコマンドを完了する例については、「[方法: Speech SDK を使用し、クライアントでコマンドを実行する (プレビュー)](./how-to-custom-speech-commands-fulfill-sdk.md)」をご覧ください
 
 ## <a name="try-it-out"></a>試してみる
 
@@ -79,3 +79,8 @@ ms.locfileid: "73506478"
 - 出力:"Sorry, I can only set between 60 and 80 degrees" (申し訳ありません、設定できる範囲は 60 から 80 度までです)
 - 入力: make it 72 degrees instead (それでは、72 度にして)
 - 出力:"Ok, setting to 72 degrees" (了解です。72 度に設定します)
+
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [方法: カスタム コマンドに確認を追加する (プレビュー)](./how-to-custom-speech-commands-confirmations.md)

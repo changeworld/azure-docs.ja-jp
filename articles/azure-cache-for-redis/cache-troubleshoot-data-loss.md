@@ -1,17 +1,17 @@
 ---
 title: Azure Cache for Redis でのデータ損失のトラブルシューティング
-description: Azure Cache for Redis でのデータ損失の問題を解決する方法について説明します
+description: 部分的なキーの損失、キーの有効期限、完全なキーの損失など、Azure Cache for Redis のデータ損失に関する問題を解決する方法について説明します。
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.author: yegu
-ms.openlocfilehash: 77493675de0a654d3bb510f7cda22a2abbca0aa2
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d54506b94f076f0a3d967f88bd4e2960a1ca6396
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121502"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530903"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Azure Cache for Redis でのデータ損失のトラブルシューティング
 
@@ -27,7 +27,7 @@ Azure Cache for Redis では、キーがメモリに格納された後でラン�
 
 キャッシュからキーが消失していることに気付いた場合は、次の考えられる原因を確認してください。
 
-| 原因 | 説明 |
+| 原因 | [説明] |
 |---|---|
 | [キーの有効期限](#key-expiration) | 設定されているタイムアウトが原因でキーが削除されます。 |
 | [キーの強制削除](#key-eviction) | メモリ不足のためにキーが削除されます。 |
@@ -36,9 +36,9 @@ Azure Cache for Redis では、キーがメモリに格納された後でラン�
 
 ### <a name="key-expiration"></a>キーの有効期限
 
-Azure Cache for Redis では、キーにタイムアウトが割り当てられ、その期間が経過するとキーは自動的に削除されます。 Redis キーの有効期限の詳細については、[EXPIRE](http://redis.io/commands/expire) コマンドのドキュメントを参照してください。 タイムアウト値は、[SET](http://redis.io/commands/set)、[SETEX](https://redis.io/commands/setex)、[GETSET](https://redis.io/commands/getset)、およびその他の **\*STORE** コマンドを使用して設定することもできます。
+Azure Cache for Redis では、キーにタイムアウトが割り当てられ、その期間が経過するとキーは自動的に削除されます。 Redis キーの有効期限の詳細については、[EXPIRE](https://redis.io/commands/expire) コマンドのドキュメントを参照してください。 タイムアウト値は、[SET](https://redis.io/commands/set)、[SETEX](https://redis.io/commands/setex)、[GETSET](https://redis.io/commands/getset)、およびその他の **\*STORE** コマンドを使用して設定することもできます。
 
-有効期限が切れたキーの数に関する統計を取得するには、[INFO](http://redis.io/commands/info) コマンドを使用します。 `Stats` セクションに、有効期限が切れたキーの総数が示されます。 `Keyspace` セクションには、タイムアウトが設定されているキーの数と、平均タイムアウト値に関する追加情報が提供されます。
+有効期限が切れたキーの数に関する統計を取得するには、[INFO](https://redis.io/commands/info) コマンドを使用します。 `Stats` セクションに、有効期限が切れたキーの総数が示されます。 `Keyspace` セクションには、タイムアウトが設定されているキーの数と、平均タイムアウト値に関する追加情報が提供されます。
 
 ```
 # Stats
@@ -54,9 +54,9 @@ db0:keys=3450,expires=2,avg_ttl=91861015336
 
 ### <a name="key-eviction"></a>キーの強制削除
 
-Azure Cache for Redis には、データを格納するためのメモリ領域が必要です。 必要に応じて、使用可能なメモリを解放するためにキーが消去されます。 [INFO](http://redis.io/commands/info) コマンドの **used_memory** または **used_memory_rss** の値が、構成されている **maxmemory** 設定に近づくと、Azure Cache for Redis は [キャッシュ ポリシー](http://redis.io/topics/lru-cache)に基づいて、メモリからのキーの強制削除を開始します。
+Azure Cache for Redis には、データを格納するためのメモリ領域が必要です。 必要に応じて、使用可能なメモリを解放するためにキーが消去されます。 [INFO](https://redis.io/commands/info) コマンドの **used_memory** または **used_memory_rss** の値が、構成されている **maxmemory** 設定に近づくと、Azure Cache for Redis は [キャッシュ ポリシー](https://redis.io/topics/lru-cache)に基づいて、メモリからのキーの強制削除を開始します。
 
-[INFO](http://redis.io/commands/info) コマンドを使用して、強制削除されたキーの数を監視できます。
+[INFO](https://redis.io/commands/info) コマンドを使用して、強制削除されたキーの数を監視できます。
 
 ```
 # Stats
@@ -68,7 +68,7 @@ evicted_keys:13224
 
 ### <a name="key-deletion"></a>キーの削除
 
-Redis クライアントは、[DEL](http://redis.io/commands/del) コマンドまたは [HDEL](http://redis.io/commands/hdel) コマンドを発行して、Azure Cache for Redis から明示的にキーを削除することができます。 [INFO](http://redis.io/commands/info) コマンドを使用して、削除操作の回数を追跡できます。 **DEL** コマンドまたは **HDEL** コマンドが呼び出された場合は、`Commandstats` セクションに一覧表示されます。
+Redis クライアントは、[DEL](https://redis.io/commands/del) コマンドまたは [HDEL](https://redis.io/commands/hdel) コマンドを発行して、Azure Cache for Redis から明示的にキーを削除することができます。 [INFO](https://redis.io/commands/info) コマンドを使用して、削除操作の回数を追跡できます。 **DEL** コマンドまたは **HDEL** コマンドが呼び出された場合は、`Commandstats` セクションに一覧表示されます。
 
 ```
 # Commandstats
@@ -80,13 +80,13 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>非同期レプリケーション
 
-Standard レベルまたは Premium レベルの Azure Cache for Redis インスタンスは、マスター ノードと少なくとも 1 つのレプリカを使用して構成されます。 バックグラウンド プロセスを使用して、データがマスターからレプリカに非同期的にコピーされます。 [redis.io](http://redis.io/topics/replication) Web サイトでは、Redis データ レプリケーションの一般的な動作について説明しています。 クライアントが Redis に頻繁に書き込みを行うシナリオでは、このレプリケーションが瞬時に行われることが保証されているために、部分的なデータ損失が発生する可能性があります。 たとえば、クライアントがキーをマスターに書き込んだ*後*、バックグラウンド プロセスがそのキーをレプリカに送信する*前*にマスターがダウンした場合、キーは、レプリカが新しいマスターとして引き継いだときに消失します。
+Standard レベルまたは Premium レベルの Azure Cache for Redis インスタンスは、マスター ノードと少なくとも 1 つのレプリカを使用して構成されます。 バックグラウンド プロセスを使用して、データがマスターからレプリカに非同期的にコピーされます。 [redis.io](https://redis.io/topics/replication) Web サイトでは、Redis データ レプリケーションの一般的な動作について説明しています。 クライアントが Redis に頻繁に書き込みを行うシナリオでは、このレプリケーションが瞬時に行われることが保証されているために、部分的なデータ損失が発生する可能性があります。 たとえば、クライアントがキーをマスターに書き込んだ*後*、バックグラウンド プロセスがそのキーをレプリカに送信する*前*にマスターがダウンした場合、キーは、レプリカが新しいマスターとして引き継いだときに消失します。
 
 ## <a name="major-or-complete-loss-of-keys"></a>大部分または完全なキーの損失
 
 ほとんどまたはすべてのキーがキャッシュから消失している場合は、次の考えられる原因を確認してください。
 
-| 原因 | 説明 |
+| 原因 | [説明] |
 |---|---|
 | [キーのフラッシュ](#key-flushing) | キーは手動で削除されました。 |
 | [データベースの選択が正しくない](#incorrect-database-selection) | Azure Cache for Redis が既定以外のデータベースを使用するように設定されています。 |
@@ -94,7 +94,7 @@ Standard レベルまたは Premium レベルの Azure Cache for Redis インス
 
 ### <a name="key-flushing"></a>キーのフラッシュ
 
-クライアントは、[FLUSHDB](http://redis.io/commands/flushdb) コマンドを呼び出して、*1 つの*データベース内のすべてのキーを削除することも、[FLUSHALL](http://redis.io/commands/flushall) を呼び出して Redis キャッシュ内の*すべての*データベースからすべてのキーを削除することもできます。 キーがフラッシュされているかどうかを確認するには、[INFO](http://redis.io/commands/info) コマンドを使用します。 `Commandstats` セクションには、**FLUSH** コマンドが呼び出されたかどうかが示されます。
+クライアントは、[FLUSHDB](https://redis.io/commands/flushdb) コマンドを呼び出して、*1 つの*データベース内のすべてのキーを削除することも、[FLUSHALL](https://redis.io/commands/flushall) を呼び出して Redis キャッシュ内の*すべての*データベースからすべてのキーを削除することもできます。 キーがフラッシュされているかどうかを確認するには、[INFO](https://redis.io/commands/info) コマンドを使用します。 `Commandstats` セクションには、**FLUSH** コマンドが呼び出されたかどうかが示されます。
 
 ```
 # Commandstats
@@ -106,7 +106,7 @@ cmdstat_flushdb:calls=1,usec=110,usec_per_call=52.00
 
 ### <a name="incorrect-database-selection"></a>データベースの選択が正しくない
 
-Azure Cache for Redis では、既定で **db0** データベースが使用されます。 別のデータベース (たとえば、**db1**) に切り替えて、そこからキーを読み取ろうとした場合、Azure Cache for Redis ではそれらは検出されません。 各データベースは論理的に独立したユニットであり、異なるデータセットを保持しています。 [SELECT](http://redis.io/commands/select) コマンドを使用して、他の使用可能なデータベースを使用し、そのそれぞれでキーを検索してください。
+Azure Cache for Redis では、既定で **db0** データベースが使用されます。 別のデータベース (たとえば、**db1**) に切り替えて、そこからキーを読み取ろうとした場合、Azure Cache for Redis ではそれらは検出されません。 各データベースは論理的に独立したユニットであり、異なるデータセットを保持しています。 [SELECT](https://redis.io/commands/select) コマンドを使用して、他の使用可能なデータベースを使用し、そのそれぞれでキーを検索してください。
 
 ### <a name="redis-instance-failure"></a>Redis インスタンスのエラー
 
@@ -114,9 +114,9 @@ Redis は、インメモリ データ ストアです。 データは、Redis �
 
 Standard レベルと Premium レベルのキャッシュでは、レプリケートされた構成で 2 つの VM を使用することにより、データ損失に対してより高い回復性が提供されます。 そのようなキャッシュのマスター ノードで障害が発生すると、レプリカ ノードが自動的に引き継いでデータを提供します。 これらの VM は、障害用と更新用の別々のドメインに配置され、両方が同時に使用できなくなる可能性を最小限に抑えます。 ただし、それでも大規模なデータセンターの停止が発生した場合は、それらの VM が同時にダウンする可能性があります。 これらのまれなケースでは、データが失われます。
 
-これらのインフラストラクチャ障害に対するデータの保護を強化するには、[Redis のデータ永続化](http://redis.io/topics/persistence)と [geo レプリケーション](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication)を使用することを検討してください。
+これらのインフラストラクチャ障害に対するデータの保護を強化するには、[Redis のデータ永続化](https://redis.io/topics/persistence)と [geo レプリケーション](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-geo-replication)を使用することを検討してください。
 
-## <a name="additional-information"></a>追加情報
+## <a name="additional-information"></a>関連情報
 
 - [Azure Cache for Redis のサーバー側の問題に関するトラブルシューティング](cache-troubleshoot-server.md)
 - [Azure Cache for Redis のサービス内容と適切なサイズの選択](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)

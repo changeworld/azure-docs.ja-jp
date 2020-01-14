@@ -1,21 +1,21 @@
 ---
 title: Azure ポータルでハイ コントラストを有効にする | Microsoft Docs
-description: Azure ポータルでハイ コントラストを有効にするかテーマを変更する方法を説明します。
+description: Azure portal のテーマを変更して、表示される背景とフォントの色を選択します。 ハイ コントラストに設定すると、Azure portal での読み取りをさらに迅速かつ簡単に行います。
 services: azure-portal
 keywords: ''
-author: kfollis
-ms.author: kfollis
-ms.date: 04/08/2019
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
-ms.openlocfilehash: 59824c4a10c50265ea0a15be69755748b87d4a3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db0b010d1adcf4f5178390913bedf773580dbb80
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60690386"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640382"
 ---
 # <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Azure ポータルでハイ コントラストを有効にするかテーマを変更する
 
@@ -50,7 +50,7 @@ Azure ポータルのコントラストを上げる必要があったり、カ�
 
 1. **[適用]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure ポータルのキーボード ショートカット](azure-portal-keyboard-shortcuts.md)
 - [サポートされているブラウザーとデバイス](../azure-preview-portal-supported-browsers-devices.md)

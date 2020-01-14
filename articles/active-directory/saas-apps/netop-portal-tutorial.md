@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 715e9b4f3baace39cfe8bebe011ae284fc4c6b2b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: c2e456114d186e548cede656da8e8d227efa09aa
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893265"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550113"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Netop Portal の統合
 
@@ -84,7 +84,7 @@ Netop Portal で Azure AD SSO を構成してテストするには、次の構�
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1.  **[基本的な SAML 構成]**  セクションでは、アプリケーションは  **IDP** Initiated モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]**  ボタンをクリックして構成を保存する必要があります。
+1. **[基本的な SAML 構成]** セクションでは、アプリケーションは **IDP** 開始モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
 1. Netop Portal アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
@@ -92,7 +92,7 @@ Netop Portal で Azure AD SSO を構成してテストするには、次の構�
 
 1. その他に、Netop Portal アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | 名前 |  ソース属性|
+    | Name |  ソース属性|
     | ---------------| --------- |
     | NRC-ACCOUNT-ID | "adfs-demo" |
     | NRC-EMAIL | user.userprincipalname |
@@ -146,7 +146,7 @@ Netop Portal で Azure AD SSO を構成してテストするには、次の構�
 
 ### <a name="create-netop-portal-test-user"></a>Netop Portal のテスト ユーザーの作成
 
-このセクションでは、Netop Portal で Britta Simon というユーザーを作成します。  [Netop Portal サポート チーム](mailto:casemanager@netop.com)と連携して、Netop Portal プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Netop Portal で Britta Simon というユーザーを作成します。 [Netop Portal サポート チーム](mailto:casemanager@netop.com)と連携して、Netop Portal プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

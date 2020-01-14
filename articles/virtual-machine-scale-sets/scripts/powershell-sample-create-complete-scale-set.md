@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell のサンプル - 完全な仮想マシン スケール セットを作成する | Microsoft Docs
-description: Azure PowerShell のサンプル
+title: Azure PowerShell のサンプル - 完全な仮想マシン スケール セットを作成する
+description: このスクリプトでは、Windows Server 2016 を実行する仮想マシン スケール セットを作成します。ここでは、個々のリソースが構成されて作成されます。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ebbc47739b2be72d0dd98c0659bfcaba512e79e9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b116a6cb4266b5ec05abd2b3210ebc772bac9868
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350931"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>PowerShell を使用して完全な仮想マシン スケール セットを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "57448927"
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -67,7 +67,7 @@ Remove-AzResourceGroup -Name $resourceGroupName
 | [New-AzVmss](/powershell/module/az.Compute/New-azVmss) | スケール セットの構成に指定された情報に基づいてスケール セットを作成します。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
 その他の仮想マシン スケール セット用の PowerShell サンプル スクリプトは、[Azure 仮想マシン スケール セットのドキュメント](../powershell-samples.md)にあります。

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 00ab92effbc5167d8bca3242e55d566c71209ac4
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e5aa41023e1d7f84e8de095d13835d5ebdf66f57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979089"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434873"
 ---
 # <a name="tutorial-define-a-new-azure-iot-edge-device-type-in-your-azure-iot-central-application-preview-features"></a>チュートリアル:Azure IoT Central アプリケーションで新しい Azure IoT Edge デバイスの種類を定義する (プレビュー機能)
 
@@ -294,7 +294,7 @@ IoT Edge デバイスをゲートウェイ デバイスにするよう選択し�
     | Display name      | セマンティックの種類 | スキーマ |
     | ----------------- | ------------- | ------ |
     | Last Service Date | なし          | Date   |
-    | お客様名     | なし          | string |
+    | お客様名     | なし          | String |
 
 2. **[保存]** を選択します。
 
@@ -303,7 +303,7 @@ IoT Edge デバイスをゲートウェイ デバイスにするよう選択し�
 
 ### <a name="add-customizations"></a>カスタマイズを追加する
 
-インターフェイスを変更する場合や、デバイス機能モデルのバージョン管理が不要な機能に IoT Central 固有の機能を追加する場合は、カスタマイズを利用します。 機能モデルがドラフト状態か公開済み状態であるときに、フィールドをカスタマイズできます。 カスタマイズできるのは、インターフェイスの互換性を損なうことのないフィールドのみです。 たとえば、次のようなことができます。
+インターフェイスを変更する場合や、デバイス機能モデルのバージョン管理が不要な機能に IoT Central 固有の機能を追加する場合は、カスタマイズを利用します。 機能モデルがドラフト状態か公開済み状態であるときに、フィールドをカスタマイズできます。 カスタマイズできるのは、インターフェイスの互換性を損なうことのないフィールドのみです。 たとえば、次のように操作できます。
 
 - 機能の表示名や単位をカスタマイズする。
 - グラフに値が表示されるときに使用する既定の色を追加する。
@@ -385,7 +385,7 @@ Ambient テレメトリと Machine テレメトリは複合型オブジェクト
   
 ![発行済みテンプレートのデバイス テンプレート一覧のスクリーンショット](./media/tutorial-define-edge-device-type/publishedtemplate.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 
@@ -400,4 +400,4 @@ Ambient テレメトリと Machine テレメトリは複合型オブジェクト
 Azure IoT Central アプリケーションでデバイス テンプレートを作成したので、次の手順に進むことができます。
 
 > [!div class="nextstepaction"]
-> [デバイスの接続](./tutorial-connect-pnp-device.md)
+> [Edge デバイスを接続する](./tutorial-add-edge-as-leaf-device.md)

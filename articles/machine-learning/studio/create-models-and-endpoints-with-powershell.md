@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: d7999488302098980ff9306836ec9d54aceac3be
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ae9550e797ad13f78f222cb6120f040721914964
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837852"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454775"
 ---
 # <a name="use-powershell-to-create-studio-classic-models-and-web-service-endpoints-from-one-experiment"></a>PowerShell を使用して 1 つの実験から Studio (クラシック) モデルと Web サービス エンドポイントを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "73837852"
 
 全拠点のすべてのデータセットをマージして 1 回だけモデルをトレーニングすることは可能です。 しかし、環境は拠点ごとに異なります。 このため、手法としては、拠点ごとのデータセットを使用して回帰モデルを個別にトレーニングした方が適切と考えられます。 そうすれば、トレーニング済みのモデルごとに異なる店舗サイズ、ボリューム、地勢、人口、自転車に配慮した交通環境などを反映することができます。
 
-ただ最良の手法であったとしても、それぞれ固有の拠点を表す 1,000 件ものトレーニング実験をクラシック バージョンの Azure Machine Learning Studio で作成するのは非現実的です。 個々の実験の構成要素が、トレーニング データセットを除いてすべて同じであることを考えると、膨大な手間のかかる作業であるだけでなく非効率な方法でもあります。
+ただ最良の手法であったとしても、それぞれ固有の拠点を表す 1,000 件ものトレーニング実験を Azure Machine Learning Studio (クラシック) で作成するのは非現実的です。 個々の実験の構成要素が、トレーニング データセットを除いてすべて同じであることを考えると、膨大な手間のかかる作業であるだけでなく非効率な方法でもあります。
 
 さいわい、この処理には [Azure Machine Learning Studio (クラシック) の再トレーニング API](/azure/machine-learning/studio/retrain-machine-learning-model) を使用でき、[Azure Machine Learning Studio (クラシック) PowerShell](powershell-module.md) でタスクを自動化することができます。
 

@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Robin の統合 | Microsoft Docs
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Robin の統合 | Microsoft Docs
 description: Azure Active Directory と Robin の間にシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -11,25 +11,24 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/17/2019
+ms.date: 01/02/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f8278f9c0b478d940a629d3308fd73ea474a4aa
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 964ba7ba9ebac84e2895e5a50f3fa31f1dbdd874
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081656"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659697"
 ---
-# <a name="tutorial-integrate-robin-with-azure-active-directory"></a>チュートリアル:Robin と Azure Active Directory の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-robin"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Robin の統合
 
 このチュートリアルでは、Robin と Azure Active Directory (Azure AD) を統合する方法について説明します。 Azure AD と Robin を統合すると、次のことができます。
 
 * Robin にアクセスできるユーザーを Azure AD 内で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Robin に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -47,6 +46,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 * Robin では、**SP と IDP** Initiated SSO がサポートされます
 * Robin では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+
 ## <a name="adding-robin-from-the-gallery"></a>ギャラリーからの Robin の追加
 
 Azure AD への Robin の統合を構成するには、ギャラリーからご自分のマネージド SaaS アプリの一覧に Robin を追加する必要があります。
@@ -58,32 +60,30 @@ Azure AD への Robin の統合を構成するには、ギャラリーからご�
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Robin**」と入力します。
 1. 結果ウィンドウで **[Robin]** を選択し、アプリケーションを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-single-sign-on-for-robin"></a>Robin の Azure AD シングル サインオンの構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Robin に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Robin の関連ユーザーとの間にリンク関係を確立する必要があります。
 
 Robin に対する Azure AD SSO を構成してテストするには、次の構成ブロックを完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
-    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[Robin SSO の構成](#configure-robin-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[Robin のテスト ユーザーの作成](#create-robin-test-user)** - Robin で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+    1. **[Robin のテスト ユーザーの作成](#create-robin-test-user)** - Robin で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. [Azure portal](https://portal.azure.com/) の **Robin** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションでは、アプリケーションは **IDP** 開始モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
-
-    ![[Robin のドメインと URL] のシングル サインオン情報](common/preintegrated.png)
+1.  **[基本的な SAML 構成]**  セクションでは、アプリケーションは **IDP** Initiated モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 ユーザーは、 **[保存]**  ボタンをクリックして構成を保存する必要があります。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -95,12 +95,11 @@ Robin に対する Azure AD SSO を構成してテストするには、次の構
 
 1. その他に、Robin アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
-    | 名前 | ソース属性|
-    | ---------------|  --------- |
-    | Email | user.userprincipalname |
-    | FirstName |  User.givenname |
-    | LastName |  User.surname |
-
+    | Name | ソース属性|
+    | ---------------| --------- |
+    | FirstName | User.givenname |
+    | LastName | User.surname |
+    | Email | User.mail |
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (未加工)]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -146,9 +145,9 @@ Robin に対する Azure AD SSO を構成してテストするには、次の構
 
 ### <a name="create-robin-test-user"></a>Robin のテスト ユーザーの作成
 
-このセクションでは、B. Simon というユーザーを Robin に作成します。 Robin では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Robin にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
+このセクションでは、Britta Simon というユーザーを Robin に作成します。 Robin では、Just-In-Time ユーザー プロビジョニングがサポートされており、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Robin にユーザーがまだ存在していない場合は、認証後に新しく作成されます。
 
-### <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -163,3 +162,4 @@ Robin に対する Azure AD SSO を構成してテストするには、次の構
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で Robin を試す](https://aad.portal.azure.com/)
+

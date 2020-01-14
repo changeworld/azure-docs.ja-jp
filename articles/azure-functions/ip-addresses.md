@@ -3,12 +3,12 @@ title: Azure Functions の IP アドレス
 description: 関数アプリの着信 IP アドレスと送信 IP アドレスを確認する方法、およびこれらのアドレスが変更される理由について説明します。
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 327d616c36bcbbb1562349afffd529efb2b5d27f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a1c4174b8f1f2349cbd35c32cbee468ee5b4cd4a
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230338"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612889"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -25,7 +25,7 @@ IP アドレスは、個々の関数ではなく、関数アプリに関連付�
 
 各関数アプリには、1 つの着信 IP アドレスがあります。 この IP アドレスを確認するには、次のようにします。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 関数アプリに移動します。
 3. **[プラットフォーム機能]** を選択します。
 4. **[プロパティ]** を選択すると、 **[仮想 IP アドレス]** の下に着信 IP アドレスが表示されます。
@@ -88,7 +88,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 - リソース グループとリージョンの組み合わせに含まれる最後の関数アプリを削除した後、再作成する。
 - [証明書の更新](../app-service/configure-ssl-certificate.md#renew-certificate)時などに SSL バインドを削除する。
 
-関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、着信 IP アドレスは、上記のようなアクションを実行しなくても、変更される場合があります。
+関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、着信 IP アドレスは、[上記](#inbound-ip-address-changes)のようなアクションを実行しなくても、変更される場合があります。
 
 ## <a name="outbound-ip-address-changes"></a>送信 IP アドレスの変更
 
@@ -97,7 +97,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 * 着信 IP アドレスが変更される可能性のあるアクションを実行する。
 * App Service プランの価格レベルを変更する。 すべての価格レベルについて、アプリで使用可能なすべての送信 IP アドレスのリストが `possibleOutboundIPAddresses` プロパティに含まれています。 「[IP アドレスを見つける](#find-outbound-ip-addresses)」を参照してください。
 
-関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、送信 IP アドレスは、上記のようなアクションを実行しなくても、変更される場合があります。
+関数アプリが[従量課金プラン](functions-scale.md#consumption-plan)で実行される場合、送信 IP アドレスは、[上記](#inbound-ip-address-changes)のようなアクションを実行しなくても、変更される場合があります。
 
 送信 IP アドレスを意図的に変更するには、次のようにします。
 
@@ -115,7 +115,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 関数アプリが App Service 環境内で実行されるかどうかを確認するには、次のようにします。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 2. 関数アプリに移動します。
 3. **[概要]** タブを選択します。
 4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、 **[Isolated]** です。
@@ -128,6 +128,6 @@ az webapp show --resource-group <group_name> --name <app_name> --query sku --out
 
 App Service 環境 `sku` は `Isolated` です。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 多くの場合、IP が変更されるのは、関数アプリのスケールが変更されるためです。 [関数アプリのスケーリングの詳細](functions-scale.md)を参照してください。

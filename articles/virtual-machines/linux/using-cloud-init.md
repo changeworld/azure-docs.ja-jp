@@ -1,6 +1,6 @@
 ---
-title: Azure での Linux 仮想マシンに対する cloud-init のサポートの概要
-description: Microsoft Azure での cloud-init 機能の概要
+title: Azure での Linux VM に対する cloud-init のサポートの概要
+description: Azure でのプロビジョニング時に VM を構成する cloud-init 機能の概要。
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: 6c522af44be51eb89ee9f64bae2dc4e9e7b24123
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7b3f64d0629ba5d7aaf85b854e1ee8e5a1410f94
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458603"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セットを構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
@@ -37,7 +37,7 @@ Microsoft は、動作保証済み Linux ディストリビューションのパ
 |Canonical |UbuntuServer |18.04-LTS |latest |はい | 
 |Canonical |UbuntuServer |16.04 LTS |latest |はい | 
 |Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
-|CoreOS |CoreOS |安定版 |latest |はい |
+|CoreOS |CoreOS |Stable |latest |はい |
 |OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |preview |
 |Oracle 7.7 |Oracle-Linux |77-ci |7.7.01|preview |
 |RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |はい |
@@ -100,7 +100,7 @@ VM のプロビジョニングが済むと、cloud-init は `--custom-data` で�
 
 cloud-init のログについて詳しくは、[cloud-init のドキュメント](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)をご覧ください 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 構成変更の cloud-init の例については、以下のドキュメントをご覧ください。
  
 - [VM に他の Linux ユーザーを追加する](cloudinit-add-user.md)

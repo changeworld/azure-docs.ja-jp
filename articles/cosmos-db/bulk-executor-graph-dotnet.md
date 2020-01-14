@@ -1,5 +1,5 @@
 ---
-title: Graph Bulk Executor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する
+title: Azure Cosmos DB Gremlin API を使って Graph Bulk Executor .NET ライブラリを使用する
 description: Bulk Executor ライブラリを使って、Azure Cosmos DB Gremlin API コンテナーにグラフ データを大量にインポートする方法を説明します。
 author: luisbosquez
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 35f42f3e222767d9d201d9948581151ae3cb5127
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: cf51d418a008d332bfcea01a7a9dc1a265116e29
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72327189"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442164"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Graph Bulk Executor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する
 
@@ -128,7 +128,7 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 このリポジトリにある GraphBulkExecutor サンプルには、次のファイルが付属しています。
 
-ファイル|説明
+ファイル|[説明]
 ---|---
 `App.config`|ここには、アプリケーションとデータベースに固有のパラメーターが指定されます。 出力先のデータベースとコレクションに接続するには、あらかじめこのファイルを編集しておく必要があります。
 `Program.cs`| このファイルには、`DocumentClient` コレクションの作成、クリーンアップの処理、Bulk Executor 要求の送信に必要なロジックが格納されています。
@@ -136,11 +136,11 @@ git clone https://github.com/Azure-Samples/azure-cosmosdb-graph-bulkexecutor-dot
 
 `App.config` ファイルで指定できる構成値は次のとおりです。
 
-Setting|説明
+設定|[説明]
 ---|---
 `EndPointUrl`|Azure Cosmos DB Gremlin API データベース アカウントの [概要] ブレードに表示される **.NET SDK エンドポイント**です。 `https://your-graph-database-account.documents.azure.com:443/` という形式が使用されます。
 `AuthorizationKey`|Azure Cosmos DB アカウントに表示されるプライマリ キーまたはセカンダリ キーです。 詳細については、[Azure Cosmos DB データへのアクセスのセキュリティ保護](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#master-keys)に関するページを参照してください。
-`DatabaseName`、`CollectionName`|**ターゲットとなるデータベースとコレクションの名前**です。 `ShouldCleanupOnStart` が `true` に設定されている場合、これらの値と `CollectionThroughput` を使用してデータベースとコレクションがドロップされ、新たに作成されます。 同様に、`ShouldCleanupOnFinish` が `true` に設定されている場合は、インジェストが完了するとすぐに、これらを使用してデータベースが削除されます。 ターゲット コレクションは、**無制限のコレクション**であることが必要です。
+`DatabaseName`, `CollectionName`|**ターゲットとなるデータベースとコレクションの名前**です。 `ShouldCleanupOnStart` が `true` に設定されている場合、これらの値と `CollectionThroughput` を使用してデータベースとコレクションがドロップされ、新たに作成されます。 同様に、`ShouldCleanupOnFinish` が `true` に設定されている場合は、インジェストが完了するとすぐに、これらを使用してデータベースが削除されます。 ターゲット コレクションは、**無制限のコレクション**であることが必要です。
 `CollectionThroughput`|`ShouldCleanupOnStart` オプションが `true` に設定されている場合に、新しいコレクションを作成する目的で使用されます。
 `ShouldCleanupOnStart`|プログラムの実行前にデータベース アカウントとコレクションをドロップした後、`DatabaseName`、`CollectionName`、`CollectionThroughput` の各値を使って新たに作成します。
 `ShouldCleanupOnFinish`|プログラムの実行後、指定された `DatabaseName` と `CollectionName` を使って、データベース アカウントとコレクションをドロップします。
@@ -154,7 +154,7 @@ Setting|説明
 2. アプリケーションを実行します。 これにより、頂点をインポートするときとエッジをインポートするときの合わせて 2 回、`BulkImportAsync` が呼び出されます。 挿入時にエラーが発生したオブジェクトは、`.\BadVertices.txt` または `.\BadEdges.txt` に追加されます。
 3. グラフ データベースにクエリを実行して結果を評価します。 `ShouldCleanupOnFinish` オプションが true に設定されている場合、データベースは自動的に削除されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Nuget パッケージの詳細と Bulk Executor .NET ライブラリのリリース ノートについては、[Bulk Executor SDK の詳細](sql-api-sdk-bulk-executor-dot-net.md)に関するページを参照してください。 
 * Bulk Executor の使用をさらに最適化するためには、「[パフォーマンスに関するヒント](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips)」を参照してください。
 * この名前空間に定義されているクラスとメソッドの詳細については、[BulkExecutor.Graph のリファレンス記事](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet)を参照してください。

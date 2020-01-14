@@ -1,17 +1,17 @@
 ---
-title: Microsoft Azure FXT Edge Filer のネットワーク接続と電源装置
+title: チュートリアル:Azure FXT Edge Filer にケーブルを接続する
 description: Azure FXT Edge Filer ハードウェアにネットワーク ポートにケーブルを接続し、電源を供給する方法
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
-ms.author: rohogue
-ms.openlocfilehash: 474172284383bc9ba0e5b5c11c66e1b990010184
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 1e3c60fd955bd899955c46b7670acd3f088d0f86
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254861"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550946"
 ---
 # <a name="tutorial-make-network-connections-and-supply-power-to-the-azure-fxt-edge-filer-node"></a>チュートリアル:Azure FXT Edge Filer ノードをネットワークに接続し、電源を供給する
 
@@ -161,7 +161,7 @@ IP アドレスの範囲を構成するには、ノードを設置した後に�
 
 電源ボタンは、テスト中やクラスターに追加する前にシステムをシャットダウンするために使用できます。 ただし、Azure FXT Edge Filer ノードがクラスターの一部として使用された後は、クラスターのコントロール パネル ソフトウェアを使用して、ハードウェアをシャットダウンする必要があります。 詳細については、[安全に Azure FXT Edge Filer ハードウェアの電源を切る方法](fxt-power-off.md)が記載されたページを参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 ハードウェアの配線が終わったら、各ノードの電源を入れ、ルート パスワードを設定して初期化します。 
 > [!div class="nextstepaction"]

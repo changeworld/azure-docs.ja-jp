@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 62005546c653796773083eaf625820ab532a8a2c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107101"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407827"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
 
-このチュートリアルでは、Azure Maps を使用してジオフェンスを設定する基本的な手順について説明します。 建設現場の管理者は、危険を伴うおそれのある機材が、指定された建設領域から出ないよう監視します。このチュートリアルでは、そうした管理者を支援するシナリオについて取り上げます。 建設現場には高価な機材が存在し、規制も伴います。 そのような機材は通常、建設現場内に留め、許可なく持ち出されることのないようにする必要があります。
+このチュートリアルでは、Azure Maps を使用してジオフェンスを設定するための基本的な手順について説明します。 建設現場の管理者は、危険を伴うおそれのある機材が、指定された建設領域から出ないよう監視します。このチュートリアルでは、そうした管理者を支援するシナリオについて取り上げます。 建設現場には高価な機材が存在し、規制も伴います。 そのような機材は通常、建設現場内に留め、許可なく持ち出されることのないようにする必要があります。
 
 Azure Maps Data Upload API を使用してジオフェンスを保存し、Azure Maps の Geofence API を使用して、ジオフェンスを基準とした機材の位置をチェックします。 Azure Event Grid を使用してジオフェンスの結果をストリーム配信し、ジオフェンスの結果に基づく通知を設定します。
 Event Grid の詳細については、[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) に関するページを参照してください。
@@ -36,7 +36,7 @@ Event Grid の詳細については、[Azure Event Grid](https://docs.microsoft.
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する 
 
-このチュートリアルの手順を完了するには、[アカウントの管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)に関するページの手順に従って、S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](./tutorial-search-location.md#getkey)に関するページの手順に従って、お使いのアカウントのプライマリ サブスクリプション キーを取得します。
+このチュートリアルの手順を完了するには、[アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを S1 価格レベルで作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 ## <a name="upload-geofences"></a>ジオフェンスのアップロード
 
@@ -56,7 +56,7 @@ Azure Maps の Data Upload API を使用して建設現場のジオフェンス�
     
     URL パス内の GEOJSON パラメーターは、アップロードするデータの形式を表します。
 
-3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key の値は、実際の Azure Maps のプライマリ サブスクリプション キーに置き換えてください。
+3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key 値を自分の Azure Maps キーに変更します。
    
     ![Postman のキーと値のペアから成るパラメーター](./media/tutorial-geofence/postman-key-vals.png)
 
@@ -270,7 +270,7 @@ Postman アプリで、先ほど作成したコレクションの新しいタブ
 
    建設現場のメイン ジオフェンスから機材が移動されたことが確認できます。 これによってイベントが発行されます。これは重大な違反であるため、Operations Manager には、重要なアラート メールが送信されます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Data Upload API を使用して Azure Maps のデータ サービスにジオフェンスをアップロードすることで、ジオフェンスを設定する方法を学習しました。 また、Azure Maps の Event Grid を使用してジオフェンス イベントをサブスクライブし、処理する方法も学習しました。 
 

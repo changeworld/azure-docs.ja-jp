@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4305e9b3cfdb5e05ce76ee1811dc0d2dcc265b7
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 6fa0379f2f8194356ed122e86b5a225f72adfe7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950202"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367605"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して Web アプリケーションで認証を有効にする
 
@@ -46,7 +46,7 @@ ms.locfileid: "74950202"
 
 #### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリケーション]** を選択し、*webapp1* アプリケーションを選択します。
@@ -56,7 +56,7 @@ ms.locfileid: "74950202"
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録 (プレビュー)]** 、 **[所有しているアプリケーション]** タブ、 *[webapp1]* アプリケーションの順に選択します。
@@ -94,7 +94,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 1. **TaskWebApp** プロジェクトの **Web.config** ファイルを開きます。
     1. `ida:Tenant` および `ida:AadInstance` の値は、作成した Azure AD B2C テナントの名前に置き換えます。 たとえば、`fabrikamb2c` を `contoso` に置き換えます。
     1. `ida:ClientId` の値は、あなたが記録したアプリケーション ID に置き換えます。
-    1. `ida:ClientSecret` の値は、実際に記録したキーに置き換えます。 クライアント シークレットは、Web.config に追加する前に、XML エンコードする必要があります。
+    1. `ida:ClientSecret` の値は、実際に記録したキーに置き換えます。 クライアント シークレットに定義済みの XML エンティティ (たとえば、より小さい (`<`)、より大きい (`>`)、アンパサンド (`&`)、二重引用符 (`"`)) が含まれている場合は、Web.config に追加する前に、クライアント シークレットを XML エンコードすることでそれらの文字をエスケープする必要があります。
     1. `ida:SignUpSignInPolicyId` の値は `b2c_1_signupsignin1` に置き換えます。
     1. `ida:EditProfilePolicyId` の値は `b2c_1_profileediting1` に置き換えます。
     1. `ida:ResetPasswordPolicyId` の値は `b2c_1_passwordreset1` に置き換えます。
@@ -118,7 +118,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 ただし、**To Do リスト**機能は、このシリーズの次の [Azure Active Directory B2C を使用した ASP.NET Web API の保護に関するチュートリアル](active-directory-b2c-tutorials-web-api.md)を終了するまで正しく動作しません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

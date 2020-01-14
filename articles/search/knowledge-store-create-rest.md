@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 107dcfa9ea312774e679c301ea934255c7b836c0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 12/30/2019
+ms.openlocfilehash: 4d9810b9075bc3049758e03ba8376621661b79ba
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720066"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563226"
 ---
 # <a name="create-an-azure-cognitive-search-knowledge-store-by-using-rest"></a>REST を使用して Azure Cognitive Search のナレッジ ストアを作成する
 
@@ -26,35 +26,36 @@ ms.locfileid: "73720066"
 
 ナレッジ ストアを作成したら、[Storage Explorer](knowledge-store-view-storage-explorer.md) または [Power BI](knowledge-store-connect-power-bi.md) を使用してそのナレッジ ストアにアクセスする方法を学習します。
 
-## <a name="create-services"></a>サービスを作成する
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-次のサービスを作成します。
+> [!TIP]
+> この記事では、[Postman デスクトップ アプリ](https://www.getpostman.com/)をお勧めします。 この記事の[ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store)には、すべての要求が収められた Postman コレクションが含まれています。 
 
-- [Azure Cognitive Search サービスを作成](search-create-service-portal.md)するか、現在のサブスクリプションから[既存のサービスを見つけます](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 このチュートリアル用には、無料のサービスを使用できます。
+## <a name="create-services-and-load-data"></a>サービスを作成してデータを読み込む
 
-- サンプル データとナレッジ ストアを格納するための [Azure ストレージ アカウント](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)を作成します。 ストレージ アカウントには、自分の Azure Cognitive Search サービスと同じ場所 (米国西部など) を使用する必要があります。 "**アカウントの種類**" の値は、"**StorageV2 (汎用 V2)** " (既定) または "**Storage (汎用 V1)** " にする必要があります。
+このクイックスタートでは、Azure Cognitive Search、Azure Blob Storage、[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を AI に使用します。 
 
-- 推奨:Azure Cognitive Search に要求を送信するための [Postman デスクトップ アプリ](https://www.getpostman.com/)を入手します。 REST API は、HTTP 要求および応答を操作できる任意のツールで使用できます。 Postman は、REST API を調べる場合に適しています。 この記事では Postman を使用します。 また、この記事の[ソース コード](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/knowledge-store)には、Postman の要求のコレクションが含まれています。 
+ワークロードは非常に小さいので、1 日に最大 20 トランザクションの処理を無料で Azure Cognitive Search から呼び出して使うことができる Cognitive Services を内部で利用しています。 提供されるサンプル データを使用する限り、Cognitive Services リソースの作成とアタッチはスキップしてかまいません。
 
-## <a name="store-the-data"></a>データを格納する
+1. [HotelReviews_Free.csv をダウンロードします](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?sp=r&st=2019-11-04T01:23:53Z&se=2025-11-04T16:00:00Z&spr=https&sv=2019-02-02&sr=b&sig=siQgWOnI%2FDamhwOgxmj11qwBqqtKMaztQKFNqWx00AY%3D)。 このデータは CSV ファイルに保存されたホテル レビュー データ (ソースは Kaggle.com) であり、1 つのホテルに関する 19 個の顧客フィードバックが含まれています。 
 
-Azure Cognitive Search のインデクサーからホテルのレビューにアクセスして AI エンリッチメント パイプラインを通じて取り込むことができるよう、その CSV ファイルを Azure Blob Storage に読み込みます。
+1. [Azure Storage アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)するか、ご自分の現在のサブスクリプションから[既存のアカウントを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/)してください。 インポートされる生のコンテンツと最終的な結果であるナレッジ ストアの両方に Azure ストレージを使用します。
 
-### <a name="create-a-blob-container-by-using-the-data"></a>データを使用して BLOB コンテナーを作成する
+   **[StorageV2 (汎用 v2)]** のアカウントの種類を選択します。
 
-1. CSV ファイルに保存された[ホテルのレビュー データ](https://knowledgestoredemo.blob.core.windows.net/hotel-reviews/HotelReviews_Free.csv?st=2019-07-29T17%3A51%3A30Z&se=2021-07-30T17%3A51%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=LnWLXqFkPNeuuMgnohiz3jfW4ijePeT5m2SiQDdwDaQ%3D) (HotelReviews_Free.csv) をダウンロードします。 このデータはホテルに関する顧客のフィードバックを含んでおり、出典は Kaggle.com です。
-1. [Azure portal](https://portal.azure.com) にサインインし、お使いの Azure ストレージ アカウントに移動します。
-1. [BLOB コンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)を作成します。 コンテナーを作成するには、ストレージ アカウントの左側のメニューで **[BLOB]** を選択し、 **[コンテナー]** を選択します。
-1. 新しいコンテナーの **[名前]** に「**hotel-reviews**」と入力します。
-1. **[パブリック アクセス レベル]** では任意の値を選択します。 今回使用したのは既定値です。
-1. **[OK]** を選択して BLOB コンテナーを作成します。
-1. 新しい **hotels-review** コンテナーを開き、 **[アップロード]** を選択し、最初の手順でダウンロードした HotelReviews-Free.csv ファイルを選択します。
+1. Blob service ページを開き、*hotel-reviews* という名前のコンテナーを作成します。
+
+1. **[アップロード]** をクリックします。
 
     ![データをアップロードする](media/knowledge-store-create-portal/upload-command-bar.png "ホテルのレビューをアップロードする")
 
-1. **[アップロード]** を選択して CSV ファイルを Azure Blob Storage にインポートします。 新しいコンテナーが表示されます。
+1. 最初の手順でダウンロードした **HotelReviews-Free.csv** ファイルを選択します。
 
-    ![BLOB コンテナーを作成する](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "BLOB コンテナーを作成する")
+    ![Azure Blob コンテナーを作成する](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "Azure Blob コンテナーを作成する")
+
+1. このリソースはほぼ完成ですが、これらのページから離れる前に、左側のナビゲーション ウィンドウのリンクを使用して **[アクセス キー]** ページを開きます。 Blob ストレージからデータを取得するために接続文字列を取得します。 接続文字列は次の例のようになります。`DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
+
+1. 引き続きポータルで、Azure Cognitive Search に切り替えます。 [新しいサービスを作成](search-create-service-portal.md)するか、[既存のサービスを検索](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)します。 この演習では、無料のサービスを使用できます。
 
 ## <a name="configure-postman"></a>Postman を構成する
 
@@ -72,7 +73,7 @@ Postman をインストールして設定します。
 
 **[Variables]\(変数\)** タブには、二重中かっこ内で特定の変数が出現するたびに、Postman でスワップされる値を追加できます。 たとえば、Postman によって、記号 `{{admin-key}}` は `admin-key` に設定した現在の値に置き換えられます。 Postman では、URL、ヘッダー、要求本文などの置き換えが行われます。 
 
-`admin-key` の値を取得するには、Azure Cognitive Search サービスに移動し、 **[キー]** タブを選択します。`search-service-name` および `storage-account-name` を「[サービスを作成する](#create-services)」で選択した値に変更します。 ストレージ アカウントの **[アクセス キー]** タブの値を使用して `storage-connection-string` を設定します。その他の値は既定値のままにしておくことができます。
+`admin-key` の値を取得するには、Azure Cognitive Search サービスに移動し、 **[キー]** タブを選択します。`search-service-name` および `storage-account-name` を「[サービスを作成する](#create-services-and-load-data)」で選択した値に変更します。 ストレージ アカウントの **[アクセス キー]** タブの値を使用して `storage-connection-string` を設定します。その他の値は既定値のままにしておくことができます。
 
 ![Postman アプリの [variables]\(変数\) タブ](media/knowledge-store-create-rest/postman-variables-window.png "Postman の [variables]\(変数\) ウィンドウ")
 
@@ -152,7 +153,7 @@ Postman をインストールして設定します。
 
 ## <a name="create-the-datasource"></a>データソースを作成する
 
-次に、「[データを格納する](#store-the-data)」で格納したホテル データに Azure Cognitive Search 接続します。 データソースを作成するには、POST 要求を `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` に送信します。 前述のように、`api-key` および `Content-Type` ヘッダーを設定する必要があります。 
+次に、Blob Storage に格納したホテル データに Azure Cognitive Search を接続します。 データソースを作成するには、POST 要求を `https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}` に送信します。 前述のように、`api-key` および `Content-Type` ヘッダーを設定する必要があります。 
 
 Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 **[Body]\(本文\)** ウィンドウの順に移動します。 次のコードが表示されます。
 
@@ -345,7 +346,7 @@ Postman で、 **[Create Datasource]\(データソースの作成\)** 要求、 
 
 Azure portal で、Azure Cognitive Search サービスの **[概要]** ページに移動します。 **[インデクサー]** タブを選択し、 **[hotels-reviews-ixr]** を選択します。 インデクサーがまだ実行されていない場合は、 **[実行]** を選択します。 インデックス作成タスクによって、言語認識に関連する警告が発生する場合があります。 このデータには、コグニティブ スキルでまだサポートされていない言語で記述されたレビューがいくつか含まれています。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Cognitive Services を使用してデータをエンリッチし、その結果をナレッジ ストアに投影したら、エンリッチ済みのデータ セットを Storage Explorer または Power BI を使用して探索することができます。
 

@@ -1,18 +1,20 @@
 ---
-title: Azure Notebooks 用のサンプル Jupyter ノートブック
+title: Azure Notebooks プレビュー用のサンプル Jupyter ノートブック
 description: サンプルは、無料の Azure Notebooks クラウド サービスで実行される Jupyter ノートブックを体験するための優れた方法です。
-ms.topic: article
+ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: cd615777adb28af6528afd2b95bc853372e799e8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f67c37d0ffe0e90e13e05bb50ed6c523e0b3a14e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277661"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646315"
 ---
-# <a name="discover-and-use-sample-notebooks"></a>サンプル ノートブックを検索して使用する
+# <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Azure Notebooks プレビューでサンプル ノートブックを検出して使用する
 
 インターネットには、Azure Notebooks に簡単に取り込むことができて、人々の関心が高い便利な Jupyter ノートブックのコレクションが多数あります。 この記事では、注目すべきサンプルの一覧を示します。
+
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
 検索する対象のノートブックを特定したら、次に示すいくつかの詳細情報を把握しておきます。
 
@@ -29,7 +31,7 @@ ms.locfileid: "74277661"
 - [インペリアル カレッジ ロンドンの物理学部](https://notebooks.azure.com/cvanbreu/libraries)による物理の手引き
 - [Azure Machine Learning の入門サンプル](https://notebooks.azure.com/azureml/projects/azureml-getting-started)
 
-## <a name="next-steps"></a>次の手順  
+## <a name="next-steps"></a>次のステップ  
 
 - [方法: プロジェクトの構成と管理](configure-manage-azure-notebooks-projects.md)
 - [方法: データ ファイルの操作](work-with-project-data-files.md)

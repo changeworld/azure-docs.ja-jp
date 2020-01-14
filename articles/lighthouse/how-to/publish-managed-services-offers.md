@@ -1,25 +1,25 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure の委任されたリソース管理に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-ms.date: 11/15/2019
+ms.date: 12/16/2019
 ms.topic: conceptual
-ms.openlocfilehash: be9d93c2b71bb3db7df86ddd44e0171bec522294
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d1eb06794551be498e05e2b9c3b893013b718ce9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483171"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453529"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
 この記事では、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)を使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行し、そのオファーを購入した顧客が Azure の委任されたリソース管理のリソースをオンボードできるようにする方法について説明します。
 
 > [!NOTE]
-> これらのオファーを作成して発行するには、[パートナー センターの有効なアカウント](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)が必要です。 まだアカウントをお持ちでない場合は、[サインアップ プロセス](https://aka.ms/joinmarketplace)に従って、パートナー センターのアカウントを作成し、商業マーケットプレース プログラムに登録する手順を進めてください。 顧客エンゲージメント全体に対するお客様の影響を追跡するために、ご使用の Microsoft Partner Network (MPN) ID はお客様が発行したオファーに[自動的に関連付けられます](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)。
+> これらのオファーを作成して発行するには、[パートナー センターの有効なアカウント](../../marketplace/partner-center-portal/create-account.md)が必要です。 まだアカウントをお持ちでない場合は、[サインアップ プロセス](https://aka.ms/joinmarketplace)に従って、パートナー センターのアカウントを作成し、商業マーケットプレース プログラムに登録する手順を進めてください。 顧客エンゲージメント全体に対するお客様の影響を追跡するために、ご使用の Microsoft Partner Network (MPN) ID はお客様が発行したオファーに[自動的に関連付けられます](../../billing/billing-partner-admin-link-started.md)。
 >
 > オファーを Azure Marketplace に発行しない場合は、Azure Resource Manager テンプレートを使用して、顧客を手動でオンボードできます。 詳細については、「[Azure の委任されたリソース管理に顧客をオンボードする](onboard-customer.md)」を参照してください。
 
-マネージド サービス オファーの発行は、他の種類のオファーを Azure Marketplace に発行する場合と同様です。 そのプロセスについては、「[Azure Marketplace と AppSource の公開ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)」および「[Azure Marketplace と AppSource Marketplace のオファーを管理する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers)」を参照してください。 さらに、「[商業マーケットプレースの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies)」(特に「[マネージド サービス](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)」セクション) も確認してください。
+マネージド サービス オファーの発行は、他の種類のオファーを Azure Marketplace に発行する場合と同様です。 そのプロセスについては、「[Azure Marketplace と AppSource の公開ガイド](../../marketplace/marketplace-publishers-guide.md)」および「[Azure Marketplace と AppSource Marketplace のオファーを管理する](../../marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers.md)」を参照してください。 さらに、「[商業マーケットプレースの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies)」(特に「[マネージド サービス](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)」セクション) も確認してください。
 
 顧客がオファーを追加すると、1 つまたは複数の特定のサブスクリプションまたはリソース グループを委任できるようになります。これらは、[Azure の委任されたリソース管理のためにオンボード](#the-customer-onboarding-process)されます。 サブスクリプション (またはサブスクリプション内のリソース グループ) をオンボードできるようにするには、先に **Microsoft.ManagedServices** リソース プロバイダーを手動で登録して、サブスクリプションのオンボードを承認する必要があることに注意してください。
 
@@ -36,7 +36,7 @@ ms.locfileid: "74483171"
 
 **[プランの設定]** セクションでは、次を指定します。
 
-|フィールド  |説明  |
+|フィールド  |[説明]  |
 |---------|---------|
 |**[プラン ID]**     | (お客様の発行元プロファイル内の) 実際のオファーの一意識別子。 この ID には、最長 50 文字で、小文字の英数字、ダッシュ、アンダースコアのみを含めることができます。 オファー ID は、製品 URL や請求レポートなどの場所で顧客に表示されることがあります。 オファーの発行後は、この値を変更することはできません。        |
 |**[発行元 ID]**     | オファーに関連付けられる発行元 ID。 複数の発行元 ID がある場合は、このオファーに使用するものを選択できます。       |
@@ -54,13 +54,16 @@ ms.locfileid: "74483171"
 
 **[プランの詳細]** セクションで、次のセクションに入力します。
 
-|フィールド  |説明  |
+|フィールド  |[説明]  |
 |---------|---------|
 |**Title**     | 表示されるプランのフレンドリ名。 最大長は 50 文字です。        |
 |**まとめ**     | タイトルの下に表示されるプランの簡潔な説明。 最大長は 100 文字です。        |
 |**説明**     | プランについてのより詳しい説明を提供する説明テキスト。         |
 |**課金モデル**     | ここには課金モデルが 2 つ表示されますが、マネージド サービス オファーの場合は **[ライセンス持ち込み]** を選択する必要があります。 これは、このオファーに関連するコストはお客様が顧客に直接請求し、Microsoft はお客様に料金を一切請求しないことを意味します。   |
-|**Is this a private plan? (プライベート プランか)**     | SKU がプライベートかパブリックかどうかを示します。 既定値は **[いいえ]** です。 この選択のままにした場合、実際のプランは特定の顧客 (または特定の数の顧客) に制限されません。パブリック プランを発行後にプライベートに変更することはできません。 このプランを特定の顧客だけが利用できるようにするには、 **[はい]** を選択します。 その場合は、顧客のサブスクリプション ID を指定して顧客を特定する必要があります。 これらは、1 つずつ (最大 10 件のサブスクリプション)、または .csv ファイルのアップロード (最大 20,000 件のサブスクリプション) によって入力できます。 オファーをテストして検証できるように、ここではお客様自身のサブスクリプションを必ず含めてください。 詳細については、「[プライベート SKU とプラン](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus)」を参照してください。  |
+|**Is this a private plan? (プライベート プランか)**     | SKU がプライベートかパブリックかどうかを示します。 既定値は **[いいえ]** です。 この選択のままにした場合、実際のプランは特定の顧客 (または特定の数の顧客) に制限されません。パブリック プランを発行後にプライベートに変更することはできません。 このプランを特定の顧客だけが利用できるようにするには、 **[はい]** を選択します。 その場合は、顧客のサブスクリプション ID を指定して顧客を特定する必要があります。 これらは、1 つずつ (最大 10 件のサブスクリプション)、または .csv ファイルのアップロード (最大 20,000 件のサブスクリプション) によって入力できます。 オファーをテストして検証できるように、ここではお客様自身のサブスクリプションを必ず含めてください。 詳細については、「[プライベート SKU とプラン](../../marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)」を参照してください。  |
+
+> [!IMPORTANT]
+> プランをパブリックとして公開した後でプライベートに変更することはできません。 どの顧客がプランを受け入れて、リソースを委任できるようにするかを制御するには、プライベート プランを使用します。 パブリック プランの場合、対象範囲を特定の顧客に制限したり、対象となる顧客数を限定したりできません (ただし、必要に応じてプランの販売を完全に中止することはできます)。 顧客がプランを受け入れたときに、委任を拒否または削除するメカニズムは現時点ではありません。ただし、いつでも顧客に連絡して、[アクセスを削除](view-manage-service-providers.md#add-or-remove-service-provider-offers)するように依頼することはできます。
 
 ### <a name="manifest-details"></a>マニフェストの詳細
 
@@ -79,8 +82,8 @@ ms.locfileid: "74483171"
 
 - **Azure AD Object ID (Azure AD オブジェクト ID)** :実際の顧客のリソースに対する特定のアクセス許可を付与される (ロールの定義で表される) ユーザー、ユーザー グループ、またはアプリケーションの Azure AD 識別子です。
 - **Azure AD Object Display Name (Azure AD オブジェクトの表示名)** :顧客がこの承認の目的を理解するのに役立つフレンドリ名。 この名前は、顧客がリソースを委任するときに表示されます。
-- **ロール定義**: 一覧から、使用可能な Azure AD の組み込みロールのいずれかを選択します。 このロールにより、 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーに与えられる、実際の顧客のリソースに対するアクセス許可が決定されます。 これらのロールについて詳しくは、[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)に関する記事と、「[Azure の委任されたリソース管理でのロールのサポート](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)」をご覧ください
-- **Assignable Roles (割り当て可能なロール)** :この承認の **[ロール定義]** で [ユーザー アクセス管理者] を選択した場合は、これは必須です。 その場合、割り当て可能なロールをここで 1 つ以上追加する必要があります。 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーは、これらの**割り当て可能なロール**を[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ために必要です。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可はこのユーザーに適用されないことに注意してください。 ここで 1 つ以上のロールを選択しない場合、送信の認定は成功しません。 (このユーザーの [ロール定義] に対して [ユーザーアクセス管理者] を選択しなかった場合、このフィールドは無効になります)。
+- **ロール定義**: 一覧から、使用可能な Azure AD の組み込みロールのいずれかを選択します。 このロールにより、 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーに与えられる、実際の顧客のリソースに対するアクセス許可が決定されます。 これらのロールについては、[組み込みロール](../../role-based-access-control/built-in-roles.md)に関する記事と、「[Azure の委任されたリソース管理でのロールのサポート](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)」をご覧ください。
+- **Assignable Roles (割り当て可能なロール)** :この承認の **[ロール定義]** で [ユーザー アクセス管理者] を選択した場合は、これは必須です。 その場合、割り当て可能なロールをここで 1 つ以上追加する必要があります。 **[Azure AD Object ID]\(Azure AD オブジェクト ID\)** フィールド内のユーザーは、これらの**割り当て可能なロール**を[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に割り当てることができます。これは、[修復可能なポリシーをデプロイする](deploy-policy-remediation.md)ために必要です。 ユーザー アクセス管理者ロールに通常関連付けられている他のアクセス許可はこのユーザーに適用されないことに注意してください。 ここで 1 つ以上のロールを選択しない場合、送信の認定は成功しません。 (このユーザーの [ロール定義] に対して [ユーザーアクセス管理者] を選択しなかった場合、このフィールドは無効になります)。
 
 > [!TIP]
 > ほとんどの場合、一連の個々のユーザー アカウントではなく、Azure AD のユーザー グループまたはサービス プリンシパルにアクセス許可を割り当てます。 これにより、実際のアクセス要件が変更されたときに、プランを更新して再発行することなく、個々のユーザーのアクセス権を追加または削除できます。 その他の推奨事項については、「[Azure Lighthouse のシナリオにおけるテナント、ロール、ユーザー](../concepts/tenants-users-roles.md)」をご覧ください。
@@ -93,7 +96,7 @@ ms.locfileid: "74483171"
 
 **[概要]** セクションで、次のフィールドを設定します。
 
-|フィールド  |説明  |
+|フィールド  |[説明]  |
 |---------|---------|
 |**Title**     |  プランのタイトル。通常は長い正式な名前。 このタイトルは、マーケットプレースで目立つように表示されます。 最大長は 50 文字です。 ほとんどの場合、これは **[プランの設定]** セクションで入力した**名前**と同じにします。       |
 |**まとめ**     | 実際のオファーの簡潔な目的または機能。 通常、これはタイトルの下に表示されます。 最大長は 100 文字です。        |
@@ -123,7 +126,7 @@ ms.locfileid: "74483171"
 
 **[Lead Management]\(リード管理\)** セクションでは、お客様のリードを保存する CRM システムを選択できます。 [マネージド サービスの認定ポリシー](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)上、 **[Lead Destination]\(リードのターゲット\)** は必須であることに注意してください。
 
-最後に、 **[Legal]\(リーガル\)** セクションにお客様の**プライバシー ポリシーの URL** と**利用規約**を入力します。 また、このオファーに[標準契約](https://docs.microsoft.com/azure/marketplace/standard-contract)を使用するかどうかを指定することもできます。
+最後に、 **[Legal]\(リーガル\)** セクションにお客様の**プライバシー ポリシーの URL** と**利用規約**を入力します。 また、このオファーに[標準契約](../../marketplace/standard-contract.md)を使用するかどうかを指定することもできます。
 
 **[サポート]** セクションに進む前に、必ず変更内容を保存してください。
 
@@ -135,23 +138,23 @@ ms.locfileid: "74483171"
 
 ## <a name="publish-your-offer"></a>実際のオファーを発行する
 
-すべてのセクションの指定が済んだら、Azure Marketplace にオファーを発行します。 **[発行]** ボタンを選択して、お客様のオファーを一般公開するプロセスを始めます。 このプロセスの詳細については、「[Azure Marketplace および AppSource のオファーを発行する](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer)」を参照してください。
+すべてのセクションの指定が済んだら、Azure Marketplace にオファーを発行します。 **[発行]** ボタンを選択して、お客様のオファーを一般公開するプロセスを始めます。 このプロセスの詳細については、「[Azure Marketplace および AppSource のオファーを発行する](../../marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer.md)」を参照してください。
 
-いつでも[更新済みバージョンのオファー](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer)を公開できます。 たとえば、以前に公開されたオファーに新しいロールの定義を追加したい場合があります。 そうすると、オファーを既に追加している顧客には、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページに、更新が利用可能であることを知らせるアイコンが表示されます。 各顧客は、[変更を確認](view-manage-service-providers.md#update-service-provider-offers)して、新しいバージョンに更新するかどうかを決定できます。 
+いつでも[更新済みバージョンのオファー](../../marketplace/cloud-partner-portal/manage-offers/cpp-update-offer.md)を公開できます。 たとえば、以前に公開されたオファーに新しいロールの定義を追加したい場合があります。 そうすると、オファーを既に追加している顧客には、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページに、更新が利用可能であることを知らせるアイコンが表示されます。 各顧客は、[変更を確認](view-manage-service-providers.md#update-service-provider-offers)して、新しいバージョンに更新するかどうかを決定できます。 
 
 ## <a name="the-customer-onboarding-process"></a>顧客オンボーディング プロセス
 
 顧客がオファーを追加すると、[1 つまたは複数の特定のサブスクリプションまたはリソース グループを委任](view-manage-service-providers.md#delegate-resources)できるようになります。これらは、Azure の委任されたリソース管理のためにオンボードされます。 顧客がオファーを承諾しても、まだリソースを委任していなければ、Azure portal の [ **[サービス プロバイダー]** ](view-manage-service-providers.md) ページの **[プロバイダーのオファー]** セクションの上部に注意書きが表示されます。
 
 > [!IMPORTANT]
-> 委任は、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みコール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開くと、[所有者ロールを持つすべてのユーザーを表示](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions)することができます。
+> 委任は、ゲスト以外のアカウントが、オンボード対象のサブスクリプションで[所有者の組み込みコール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner)を持っている (またはオンボード対象のリソース グループを含む) 顧客のテナントで実行する必要があります。 サブスクリプションを委任できるすべてのユーザーを表示するには、顧客のテナントのユーザーが Azure portal でサブスクリプションを選択し、 **[アクセス制御 (IAM)]** を開いて[すべてのロールを表示](../../role-based-access-control/role-definitions-list.md#list-all-roles)し、 **[所有者]** を選択します。これにより、そのロールを持つすべてのユーザーが表示されます。
 
 顧客がサブスクリプション (またはサブスクリプション内の 1 つまたは複数のリソース グループ) を委任すると、そのサブスクリプションに **Microsoft. ManagedServices** リソースプロバイダーが登録され、テナント内のユーザーは、オファー内の承認に従って、委任されたリソースにアクセスできるようになります。
 
 > [!NOTE]
 > 現在のところ、サブスクリプションで Azure Databricks が使用されている場合、そのサブスクリプション (またはサブスクリプション内のリソース グループ) は委任できません。 同様に、サブスクリプション (またはサブスクリプション内のリソース グループ) が既に委任されている場合、現在のところ、そのサブスクリプションで Databricks ワークスペースを作成することはできません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [テナント間の管理エクスペリエンス](../concepts/cross-tenant-management-experience.md)について学習します。
 - Azure portal の **[マイ カスタマー]** に移動して、[顧客を表示および管理](view-manage-customers.md)します。

@@ -1,26 +1,17 @@
 ---
-title: Service Fabric スタンドアロン クラスターをクリーンアップするチュートリアル - Azure Service Fabric | Microsoft Docs
-description: このチュートリアルでは、スタンドアロンのクラスターをクリーンアップする方法について説明します
-services: service-fabric
-documentationcenter: .net
+title: スタンドアロン クラスターをクリーンアップする
+description: このチュートリアルでは、スタンドアロンの Service Fabric クラスターで AWS または Azure のリソースをクリーンアップする方法について説明します。
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bebe3a2dc83b651e713ee80d7b11068b13096e04
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385163"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639022"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>チュートリアル:スタンドアロン クラスターのクリーンアップ
 
@@ -67,12 +58,12 @@ Service Fabric で採用されている "すべての OS、すべてのクラウ
 
 ## <a name="clean-up-azure-resources"></a>Azure リソースをクリーンアップする
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 2. **[仮想マシン]** セクションに移動します。
 3. このチュートリアルの第 1 部で作成した 3 つのノードのチェック ボックスをオンにします。
 4. **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 シリーズの第 4 部では、前の手順で作成したリソースをクリーンアップする方法について説明しました。
 

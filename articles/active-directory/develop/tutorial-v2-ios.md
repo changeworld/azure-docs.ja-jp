@@ -1,6 +1,6 @@
 ---
-title: iOS と macOS の基本 - Microsoft ID プラットフォーム | Azure
-description: iOS と macOS (Swift) アプリケーションで Microsoft ID プラットフォームを使用してアクセス トークンを必要とする API を呼び出す方法
+title: MSAL for iOS & macOS のチュートリアル - Microsoft ID プラットフォーム | Azure
+description: iOS と macOS (Swift) アプリで Microsoft ID プラットフォームを使用してアクセス トークンを必要とする API を呼び出す方法について説明します
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f161d94d622ae76932e88be52df6f068bfc945
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a0aa97f2cb54295d9403ec332eb9c0ada684df12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964670"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423400"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph を呼び出す
 
@@ -36,7 +36,7 @@ ms.locfileid: "74964670"
 具体的には次のとおりです。
 
 * アプリがブラウザーまたは Microsoft Authenticator を介してユーザーをサインインします。
-* エンド ユーザーがアプリケーションから要求されたアクセス許可を受け入れます。
+* エンド ユーザーが、アプリケーションから要求されたアクセス許可を受け入れます。
 * アプリケーションには、Microsoft Graph API 用のアクセス トークンが発行されます。
 * アクセス トークンは、Web API への HTTP 要求に含められます。
 * Microsoft Graph の応答を処理します。
@@ -500,7 +500,7 @@ func acquireTokenInteractively() {
 
 | ヘッダー キー    | value                 |
 | ------------- | --------------------- |
-| Authorization | Bearer \<access-token> |
+| 承認 | Bearer \<access-token> |
 
 以下のコードを `ViewController` クラスに追加します。
 
@@ -649,7 +649,7 @@ func updateSignOutButton(enabled : Bool) {
 
 サインインした後、Microsoft Graph の `/me` エンドポイントから返されたデータがアプリに表示されます。
 
-## <a name="get-help"></a>問い合わせ
+## <a name="get-help"></a>ヘルプの参照
 
 このチュートリアルまたは Microsoft ID プラットフォームで問題が発生した場合は、[ヘルプとサポート](https://docs.microsoft.com/azure/active-directory/develop/developer-support-help-options)に関する記事をご覧ください。
 

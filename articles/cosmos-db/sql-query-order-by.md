@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 14f61d14b59dca4bcf2e0f4b93e918f101a61833
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326850"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444787"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での ORDER BY 句
 
@@ -45,11 +45,14 @@ ORDER BY <sort_specification>
   
 - `ASC | DESC`  
   
-   指定された列の値を昇順または降順で並べ替える必要があることを指定します。 ASC は、最小値から最大値に並べ替えられます。 DESC は、最大値から最小値に並べ替えられます。 既定の並べ替え順は ASC です。 NULL 値は、有効な最小値として扱われます。  
+   指定した列の値を昇順と降順のどちらで並べ替えるかを指定します。 ASC を指定した場合、最小値から最大値の順序で並べ替えられます。 DESC を指定した場合、最大値から最小値の順序で並べ替えられます。 ASC が既定の並べ替え順序です。 NULL 値は最小値として扱われます。  
   
 ## <a name="remarks"></a>解説  
   
    ORDER BY 句では、並べ替えるフィールドのインデックスがインデックス作成ポリシーに含まれている必要があります。 Azure Cosmos DB のクエリ ランタイムでは、計算されたプロパティに対してではなく、プロパティ名に対する並べ替えがサポートされています。 Azure Cosmos DB では、複数の ORDER BY プロパティがサポートされています。 複数の ORDER BY プロパティを使ったクエリを実行するには、並べ替えるフィールドに対する[複合インデックス](index-policy.md#composite-indexes)を定義する必要があります。
+   
+> [!Note] 
+> .NET SDK 3.4.0 以上を使用しているとき、一部のドキュメントについて並べ替えの基準となっているプロパティが定義されていない可能性がある場合は、そのプロパティにインデックスを明示的に作成する必要があります。 既定のインデックス作成ポリシーでは、並べ替えプロパティが定義されていないドキュメントを取得することができません。
 
 ## <a name="examples"></a>例
 
@@ -99,7 +102,7 @@ ORDER BY <sort_specification>
     ]
 ```
 
-さらに、複数のプロパティで並べ替えることができます。 複数のプロパティで並べ替えるクエリには、[複合インデックス](index-policy.md#composite-indexes)が必要です。 次のクエリについて考えてみましょう。
+さらに、複数のプロパティで並べ替えることができます。 複数のプロパティで並べ替えるクエリには、[複合インデックス](index-policy.md#composite-indexes)が必要です。 次のクエリを考えてみます。
 
 ```sql
     SELECT f.id, f.creationDate
@@ -109,8 +112,8 @@ ORDER BY <sort_specification>
 
 このクエリでは、都市名の昇順で家族の `id` が取得されます。 複数の項目に同じ都市名がある場合、クエリが `creationDate` の降順で並べ替えます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-- [使用の開始](sql-query-getting-started.md)
+- [作業の開始](sql-query-getting-started.md)
 - [SELECT 句](sql-query-select.md)
 - [OFFSET LIMIT 句](sql-query-offset-limit.md)

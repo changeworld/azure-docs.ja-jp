@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1a58d2170ec1107222f0e37e432063af23743e42
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 12ecca5873ac7c2c3bfa30d4c73c7d8e268aabfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74709895"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355715"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>Azure RBAC と Azure CLI を使用してロールの割り当てを一覧表示する
 
@@ -37,7 +37,7 @@ ms.locfileid: "74709895"
 az role assignment list --assignee <assignee>
 ```
 
-既定では、サブスクリプションをスコープとする直接割り当てのみが表示されます。 リソースまたはグループをスコープとする割り当てを表示する場合は `--all` を使用し、継承された割り当てを表示する場合は `--include-inherited` を使用します。
+既定では、現在のサブスクリプションのロールの割り当てのみが表示されます。 現在のサブスクリプションとその下のロールの割り当てを表示するには、`--all` パラメーターを追加します。 継承されたロールの割り当てを表示するには、`--include-inherited` パラメーターを追加します。
 
 次の例では、*patlong\@contoso.com* ユーザーに直接割り当てられているロールの割り当てを一覧表示します。
 
@@ -111,6 +111,30 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="list-role-assignments-for-a-managed-identity"></a>マネージド ID のロールの割り当ての一覧表示
+
+1. システム割り当てまたはユーザー割り当てのマネージド ID のオブジェクト ID を取得します。 
+
+    ユーザー割り当てのマネージド ID のオブジェクト ID を取得するには、[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) または [az identity list](/cli/azure/identity#az-identity-list) を使用します。
+
+    ```azurecli
+    az ad sp list --display-name "<name>" --query [].objectId --output tsv
+    ```
+
+    システム割り当てのマネージド ID のオブジェクト ID を取得するには、[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) を使用します。
+
+    ```azurecli
+    az ad sp list --display-name "<vmname>" --query [].objectId --output tsv
+    ```
+
+1. ロールの割り当てを一覧表示するには、[az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) を使用します。
+
+    既定では、現在のサブスクリプションのロールの割り当てのみが表示されます。 現在のサブスクリプションとその下のロールの割り当てを表示するには、`--all` パラメーターを追加します。 継承されたロールの割り当てを表示するには、`--include-inherited` パラメーターを追加します。
+
+    ```azurecli
+    az role assignment list --assignee <objectid>
+    ```
+
+## <a name="next-steps"></a>次のステップ
 
 - [Azure RBAC と Azure CLI を使用してロールの割り当てを追加または削除する](role-assignments-cli.md)

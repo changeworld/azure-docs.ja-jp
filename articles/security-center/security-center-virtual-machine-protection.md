@@ -13,23 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 4a6d733b490edd892136f6febcc90c29a5a865e1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b7e5b0286cdd15834b84e4fd3e619c6555054823
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766805"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553003"
 ---
 # <a name="protect-your-machines-and-applications"></a>マシンとアプリケーションを保護する
-Security Center は、潜在的なセキュリティの脆弱性を識別すると、必要な制御を構成するためのプロセスを案内する推奨事項を作成します。 
+Azure Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
 
-この記事では、Azure Security Center のリソース セキュリティ セクションの **[計算とアプリ]** ページについて説明します。 また、そこに記載されているいくつかの推奨事項についても説明します。
+この記事では、Security Center のリソース セキュリティ セクションの **[計算とアプリ]** ページについて説明します。
 
-計算と App Service の推奨事項の完全な一覧については、「[計算とアプリの推奨事項](recommendations-compute-and-apps.md)」を参照してください。
+このページに表示される可能性のある推奨事項の完全な一覧については、「[データとストレージに関する推奨事項](recommendations-reference.md#recs-computeapp)」を参照してください。
+
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>計算とアプリ リソースのセキュリティを表示する
 
-![Security Center ダッシュボード](./media/security-center-virtual-machine-recommendations/overview.png)
+[![Security Center ダッシュボード](./media/security-center-virtual-machine-recommendations/overview.png)](./media/security-center-virtual-machine-recommendations/overview.png#lightbox)
 
 計算とアプリ リソースの状態を表示するには、Security Center のサイドバーの **[リソース]** で **[計算とアプリ]** を選択します。 次のタブを使用できます。
 
@@ -74,7 +75,8 @@ Security Center は、潜在的なセキュリティの脆弱性を識別する�
 
 各 VM のセキュリティの推奨事項をドリルダウンするには、[VM] をクリックします。
 ここには VM またはコンピューターのセキュリティに関する詳細が表示されます。 一番下には、推奨されるアクションと、各問題の重大度が表示されます。
-![クラウド サービス](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
+
+[![クラウド サービス](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
 ### <a name="cloud-services"></a>クラウド サービス
 クラウド サービスについては、オペレーティング システムのバージョンが最新でないときに、推奨事項が作成されます。
@@ -138,9 +140,10 @@ Microsoft Monitoring Agent をインストールするには
 既存のスケール セットをすべて設定して Microsoft Monitoring Agent をインストールする場合は、Azure Policy で、 **[修復]** に移動し、既存のポリシーを既存のスケール セットに適用します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次の記事をご覧ください。
 
+* [Azure Security Center のセキュリティに関する詳細な参照リスト](recommendations-reference.md)
 * [Azure Security Center での ID とアクセスの監視](security-center-identity-access.md)
 * [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
 * [Azure Security Center での Azure SQL サービスの保護](security-center-sql-service-recommendations.md)

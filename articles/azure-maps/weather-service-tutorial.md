@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f641640ff6cf4174e2e1374404d47fc0760f79f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 809c188dc37aba64de27e89e38acd8692c7de032
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979578"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613569"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>チュートリアル:Azure Notebooks (Python) を使用して天気予報データにセンサー データを結合する
 
@@ -35,8 +35,11 @@ ms.locfileid: "74979578"
 
 このチュートリアルを完了するには、まず以下を実行する必要があります。
 
-1. [Azure Maps アカウントの管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)に関するページの手順に従い、S0 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。
-2. [アカウントのプライマリ キーの取得](./tutorial-search-location.md#getkey)に関するページの手順に従い、アカウントのプライマリ サブスクリプション キーを取得します。
+1. [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従い、S0 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。
+2. [主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従い、アカウントの主サブスクリプション キーを取得します。
+
+
+Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](./how-to-manage-authentication.md)」を参照してください。
 
 Azure Notebooks の概要と基本的な使用方法については、「[Azure ノートブックを作成する](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook)」の手順に従ってください。
 
@@ -68,7 +71,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 
 ```python
-subscription_key = "Your Azure Maps primary subscription key"
+subscription_key = "Your Azure Maps key"
 
 # Get a lists of unique station IDs and their coordinates 
 station_ids = pd.unique(df[['StationID']].values.ravel())
@@ -172,14 +175,14 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-次のグラフは、風速 (左側のグラフ) と風向 (右側のグラフ) の変化についての予測データを現在の日付から 15 日間にわたって視覚化したものです。
+次のグラフは、風速 (左側のグラフ) と風向 (右側のグラフ) の変化についての予測データを、データが要求された日から 15 日間にわたって視覚化したものです。
 
 <center>
 
 ![風速のプロット](./media/weather-service-tutorial/speed-date-plot.png) ![風向のプロット](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Maps の REST API を呼び出して天気予報データを取得し、そのデータをグラフで視覚化する方法について説明しました。
 
@@ -190,6 +193,6 @@ Azure Maps の REST API を Azure Notebooks 内で呼び出す方法について
 * [毎日の予報](https://aka.ms/AzureMapsWeatherDailyForecast)
 * [レンダリング - Get Map Image](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 
-Azure Maps REST API シリーズの完全な一覧については、[Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/#reference) に関する記事を参照してください。
+Azure Maps REST API シリーズの完全な一覧については、[Azure Maps REST API](https://docs.microsoft.com/azure/azure-maps/consumption-model) に関する記事を参照してください。
 
 Azure Notebooks の詳細については、[Azure Notebooks](https://docs.microsoft.com/azure/notebooks) に関する記事を参照してください。

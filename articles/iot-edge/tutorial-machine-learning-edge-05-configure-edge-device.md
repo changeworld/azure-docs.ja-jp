@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5be7b66a51113121ed755d8ad9cea3518577f2e7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706950"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612872"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>チュートリアル:IoT Edge デバイスの構成
 
@@ -28,7 +28,7 @@ ms.locfileid: "74706950"
 
 ゲートウェイとして機能するデバイスでは、ダウンストリーム デバイスに安全に接続できる必要があります。 Azure IoT Edge では、公開キー基盤 (PKI) を使用して、これらのデバイス間にセキュリティで保護された接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edge デバイスにダウンストリーム デバイスが接続できるようにします。 妥当なセキュリティを維持するには、ダウン ストリーム デバイスで IoT Edge デバイスの ID を確認してください。 IoT Edge デバイスで証明書を使用するしくみの詳細については、[Azure IoT Edge 証明書の使用の詳細](iot-edge-certs.md)に関するページを参照してください。
 
-このセクションでは、Docker イメージを使用して自己署名証明書を作成した後、そのイメージをビルドして実行します。 Docker イメージを使用してこのステップを完了することを選択した理由は、それによって、Windows 開発用コンピューターで証明書を作成するために必要なステップ数が大幅に削減されたからです。 コンテナーを使用せずに証明書を生成する方法の詳細については、[Windows での証明書の生成](how-to-create-transparent-gateway.md#generate-certificates-with-windows)に関する項目を参照してください。 [Linux での証明書の生成](how-to-create-transparent-gateway.md#generate-certificates-with-linux)に関する項目には、Docker イメージを使用して自動化された一連の指示があります。
+このセクションでは、Docker イメージを使用して自己署名証明書を作成した後、そのイメージをビルドして実行します。 Docker イメージを使用してこのステップを完了することを選択した理由は、それによって、Windows 開発用コンピューターで証明書を作成するために必要なステップ数が大幅に削減されたからです。 Docker イメージで自動化した機能については、「[IoT Edge デバイスの機能テスト用のデモ証明書を作成する](how-to-create-test-certificates.md)」を参照してください。
 
 1. 開発用の仮想マシンにサインインします。
 
@@ -119,7 +119,7 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
 スクリプト化されたデプロイでマーケットプレースからのイメージを使用するには、そのイメージに対してプログラムによるデプロイを有効にする必要があります。
 
-1. Azure ポータルにサインインします。
+1. Azure portal にサインインします。
 
 1. **[すべてのサービス]** を選択します。
 
@@ -155,15 +155,15 @@ Azure Marketplace にある [[Azure IoT Edge on Ubuntu]](https://azuremarketplac
 
     * **[Azure サブスクリプション ID]** : Azure portal で確認できます
     * **[リソース グループ名]** : このチュートリアル用のリソースをグループ化するための覚えやすい名前
-    * **[場所]** :仮想マシンの作成先となる Azure の場所 たとえば、westus2 または northeurope などです。 詳細については、すべての [Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)を参照してください。
+    * **[場所]** :仮想マシンの作成先となる Azure の場所 westus2 や northeurope などです。 詳細については、すべての [Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)を参照してください。
     * **[AdminUsername]** : 仮想マシンへのサインインに使用する管理者アカウントの名前
     * **[AdminPassword]** : 仮想マシン上の AdminUsername に対して設定するパスワード
 
 4. スクリプトで VM を設定できるようにするには、使用している Azure サブスクリプションに関連付けられた資格情報で Azure にサインインする必要があります。
 
-5. スクリプトにより、VM を作成するために必要な情報が確認されます。 **y** を選択するか、**Enter** キーを押して続行します。
+5. スクリプトにより、VM を作成するための情報が確認されます。 **y** を選択するか、**Enter** キーを押して続行します。
 
-6. スクリプトが数分間実行され、次のステップが実行されます。
+6. スクリプトが数分間実行され、その間に次のステップが実行されます。
 
     * まだ存在しない場合、リソース グループを作成する
     * 仮想マシンの作成
@@ -294,7 +294,7 @@ IoT Edge VM の作成に使用した *[Azure IoT Edge on Ubuntu]* イメージ�
     journalctl -u iotedge --no-pager --no-full
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure IoT Edge の透過的なゲートウェイとして Azure VM を構成する作業が完了しました。 まず、テスト証明書を生成して Azure Key Vault にアップロードしました。 次に、スクリプトと Resource Manager テンプレート、さらに Azure Marketplace の "Ubuntu Server 16.04 LTS + Azure IoT Edge runtime" イメージを使用して VM をデプロイしました。 スクリプトは Azure CLI をインストールする追加のステップを実行しました ([apt による Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli-apt))。 VM を起動して実行し、SSH 経由で接続し、Azure にサインインし、Key Vault から証明書をダウンロードし、config.yaml ファイルを更新して IoT Edge ランタイムの構成をいくつか更新しました。 ゲートウェイとしての IoT Edge の使用について、詳しくは「[IoT Edge デバイスをゲートウェイとして使用する方法](iot-edge-as-gateway.md)」を参照してください。 透過的なゲートウェイとして IoT Edge デバイスを構成する方法の詳細については、「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」を参照してください。
 

@@ -4,16 +4,16 @@ description: このチュートリアルでは、ワークスペース内の重�
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: tutorial
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
-ms.openlocfilehash: a30b7569c14aaccb40b357cc5acb82b0e32d2895
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 11ce572cdb8a04dac07689b37eef76f354475df3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894656"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365624"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Azure Monitor のアラートを使用してイベントに応答する
 Azure Monitor のアラートは、Log Analytics リポジトリ内の重要な情報を特定できます。 アラートは定期的にログ検索を自動的に実行するアラート ルールによって作成され、ログ検索の結果が特定の条件と一致している場合はアラート レコードが作成され、自動化された応答を実行するように構成できます。  このチュートリアルは、「[Log Analytics データのダッシュボードを作成して共有する](tutorial-logs-dashboards.md)」チュートリアルの続きです。   
@@ -36,7 +36,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 1. Azure Portal で、 **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. 左側のウィンドウで、 **[アラート]** を選択し、ページの上部の **[新しいアラート ルール]** をクリックして新しいアラートを作成します。<br><br> ![新しいアラート ルールの作成](./media/tutorial-response/alert-rule-02.png)<br>
-3. 最初の手順では、 **[アラートの作成]** セクションで、リソースとして Log Analytics ワークスペースを選択します。これがログ ベースのアラート シグナルであるためです。  複数のサブスクリプションがある場合は、ドロップダウン リストから、先ほど作成した VM および Log Analytics ワークスペースが含まれている特定の**サブスクリプション**を選択して結果をフィルターします。  ドロップダウン リストから **[Log Analytics]** を選択して **[リソースの種類]** をフィルターします。  最後に、 **[リソース]** **[DefaultLAWorkspace]** を選択し、 **[完了]** をクリックします。<br><br> ![アラートの作成手順 1 のタスク](./media/tutorial-response/alert-rule-03.png)<br>
+3. 最初の手順では、 **[アラートの作成]** セクションで、リソースとして Log Analytics ワークスペースを選択します。これがログ ベースのアラート シグナルであるためです。  複数のサブスクリプションがある場合は、ドロップダウン リストから、先ほど作成した VM および Log Analytics ワークスペースが含まれている特定の**サブスクリプション**を選択して結果をフィルターします。  ドロップダウン リストから **[Log Analytics]** を選択して **[リソースの種類]** をフィルターします。  最後に、 **[リソース**  **DefaultLAWorkspace]** を選択し、 **[完了]** をクリックします。<br><br> ![アラートの作成手順 1 のタスク](./media/tutorial-response/alert-rule-03.png)<br>
 4. **[アラートの条件]** セクションで、 **[条件の追加]** をクリックして保存済みのクエリを選択し、アラート ルールが従うロジックを指定します。  **[シグナル ロジックの構成]** ウィンドウで、一覧から *[Azure VM - プロセッサ使用率]* を選択します。  ウィンドウが更新されてアラートの構成設定が表示されます。  一番上に、選択したシグナルの過去 30 分の結果と検索クエリ自体が表示されます。  
 5. 次の情報を指定して、アラートを構成します。  
    a. **[基準]** ドロップダウン リストで **[メトリック測定]** を選択します。  メトリック測定では、クエリの対象となったオブジェクトのうち、値が指定されたしきい値を上回っているオブジェクトについて、それぞれ別個にアラートが生成されます。  
@@ -64,7 +64,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 アラートがトリガーされると、条件、および選択した時間範囲 (既定値は最後の 6 時間) 内に発生した回数がテーブルに反映されます。  受信トレイに、次の例のような対応する電子メールが表示されます。この場合は、問題が発生している仮想マシンと、検索クエリに一致した最上位の結果が表示されています。<br><br> ![アラート電子メール アクションの例](./media/tutorial-response/azure-alert-email-notification-01.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、ログ検索をスケジュールした間隔で実行しているときに、特定の条件に一致した場合は、アラート ルールを使用して、問題を事前に識別して対応する方法を学習しました。
 
 あらかじめ用意されている Log Analytics のサンプル スクリプトを確認するには、次のリンクをクリックしてください。  

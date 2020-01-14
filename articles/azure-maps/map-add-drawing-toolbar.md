@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6bc754c9a4f333da85e57c5ad9780da8df93e895
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ed16d8797e541ee474b4f52f3d4379721922a734
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309739"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432884"
 ---
 # <a name="add-a-drawing-tools-toolbar-to-a-map"></a>描画ツールのツールバーをマップに追加する
 
@@ -98,7 +98,18 @@ var layers = drawingManager.getLayers();
 </iframe>
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
+
+描画ツール モジュールのその他の機能の使用方法を確認します。
+
+> [!div class="nextstepaction"]
+> [図形データを取得する](map-get-shape-data.md)
+
+> [!div class="nextstepaction"]
+> [描画イベントに応答する](drawing-tools-events.md)
+
+> [!div class="nextstepaction"]
+> [対話式操作の種類とキーボード ショートカット](drawing-tools-interactions-keyboard-shortcuts.md)
 
 この記事で使われているクラスとメソッドの詳細については、次を参照してください。
 

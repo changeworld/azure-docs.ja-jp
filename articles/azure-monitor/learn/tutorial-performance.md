@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
-ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f9074a004683393df18d621a679fbb7378dc6704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398632"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 
@@ -42,7 +42,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 ## <a name="identify-slow-server-operations"></a>低速のサーバー操作を識別する
 Application Insights は、アプリケーションのさまざまな操作に対するパフォーマンスの詳細を収集します。 最も実行時間が長い操作を識別することで、潜在的な問題を診断したり、アプリケーションの全体的なパフォーマンスを向上させるための継続的な開発にとって最善のターゲットを診断したりできます。
 
-1. **[Application Insights]** を選択し、サブスクリプションを選択します。  
+1. **[Application Insights]** を選択してから、ご利用のサブスクリプションを選択します。  
 1. **[パフォーマンス]** パネルを開くには、 **[調査]** メニューの **[パフォーマンス]** を選択するか、 **[サーバー応答時間]** グラフをクリックします。
 
     ![パフォーマンス](media/tutorial-performance/1-overview.png)
@@ -72,7 +72,7 @@ Application Insights は、アプリケーションのさまざまな操作に�
 
     ![パフォーマンスのヒント](media/tutorial-performance/6-perf-tip.png)
 
-8.  さらに分析するために、 **[トレースのダウンロード]** をクリックして、トレースを Visual Studio にダウンロードできます。
+8.   さらに分析するために、 **[トレースのダウンロード]** をクリックして、トレースをダウンロードできます。 [PerfView](https://github.com/Microsoft/perfview#perfview-overview) を使用してこのデータを表示できます。
 
 ## <a name="use-logs-data-for-server"></a>サーバーのログ データを使用する
  Logs には、Application Insights によって収集されたすべてのデータを分析するために使用できる高度なクエリ言語が用意されています。 これを使用して、要求とパフォーマンスのデータに対して、詳細な分析を実行できます。
@@ -98,7 +98,7 @@ Application Insights は、最適化するためのサーバー プロセスを�
 ## <a name="use-logs-data-for-client"></a>クライアントのログ データを使用する
 Application Insights では、サーバーのパフォーマンスのために収集されたデータと同様に、すべてのクライアント データを、Logs を使用した詳細な分析で使用できます。
 
-1. ブラウザーの概要に戻り、![Logs アイコン](media/tutorial-performance/app-viewinlogs-icon.png) **[ログに表示 (Analytics)]** をクリックします
+1. ブラウザーの概要に戻り、![Logs アイコン](media/tutorial-performance/app-viewinlogs-icon.png) **[ログに表示 (Analytics)]** をクリックします。
 
 2. Logs が開き、それぞれのビューのクエリがパネルに表示されます。 最初のクエリは、一定期間のさまざまなページ ビューの実行時間を示します。
 
@@ -109,7 +109,7 @@ Application Insights では、サーバーのパフォーマンスのために�
     ![スマート診断を備える Logs](media/tutorial-performance/11-page-view-logs-dsmart.png)
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 ここでは、ランタイムの例外を識別する方法を学習しました。次のチュートリアルに進んで、エラーに応答してアラートを作成する方法を学習してください。
 
 > [!div class="nextstepaction"]

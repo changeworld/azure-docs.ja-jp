@@ -1,5 +1,6 @@
 ---
-title: Azure App Configuration を使用して機能フラグを管理するためのチュートリアル |Microsoft Docs
+title: チュートリアル:Azure App Configuration を使用して機能フラグを管理する
+titleSuffix: Azure App Configuration
 description: このチュートリアルでは、Azure App Configuration を使用して、お使いのアプリケーションとは別に機能フラグを管理する方法について説明します。
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/19/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: b7fbf9add67a45c0db89fc11cee5c10bc537ab63
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 620cd6e1712a89e13bf876310c0d3248c4a4d1e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393569"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414002"
 ---
 # <a name="tutorial-manage-feature-flags-in-azure-app-configuration"></a>チュートリアル:Azure App Configuration で機能フラグを管理する
 
@@ -51,7 +52,7 @@ Azure portal 内の App Configuration 用の機能マネージャーは、お使
 
 1. 状態が *[オン]* の場合は、 **[+フィルターの追加]** を選択して、状態を限定する追加条件を指定します。 組み込みまたはカスタムのフィルター キーを入力し、次に **[+パラメーターの追加]** を選択して、1 つ以上のパラメーターをフィルターに関連付けます。 組み込みフィルターには次のものがあります。
 
-    | キー | JSON パラメーター |
+    | Key | JSON パラメーター |
     |---|---|
     | Microsoft.Percentage | {"Value":0 - 100 パーセント} |
     | Microsoft.TimeWindow | {"Start":UTC 時間, "End":UTC 時間} |
@@ -72,7 +73,7 @@ Azure portal 内の App Configuration 用の機能マネージャーは、お使
 
 機能マネージャーで作成された機能フラグは、通常のキー値として格納および取得されます。 それらは、特別な名前空間プレフィックス `.appconfig.featureflag` の下に保持されます。 基のキー値を表示するには、Configuration Explorer を使用します。 お使いのアプリケーションは、App Configuration の構成プロバイダー、SDK、コマンドライン拡張機能、および REST API を使用してこれらの値を取得できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、App Configuration を使用して機能フラグとその状態を管理する方法について説明しました。 App Configuration と ASP.NET Core での機能管理サポートの詳細については、次の記事をご覧ください。
 

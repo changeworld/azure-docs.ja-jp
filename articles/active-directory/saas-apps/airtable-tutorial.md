@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 12/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f43d965e2c1d706097c9cc2c432ca77e16f162c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b4c8e254b2ceb040b487de1cfaac6e4d8670d8b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74187266"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430961"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-airtable"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Airtable の統合
 
@@ -92,7 +92,7 @@ Airtable に対する Azure AD SSO を構成してテストするには、次の
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://airtable.com/sso/login`」と入力します。
 
-1. **[Save]** をクリックします。
+1. **[保存]** をクリックします。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -134,7 +134,7 @@ Airtable に対する Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-airtable-sso"></a>Airtable の SSO の構成
 
-**Airtable** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Airtable サポート チーム](mailto:azure-ad-marketplace@airtable.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+[リンク](https://support.airtable.com/hc/articles/360037475234) に記載されている手順に従って、**Airtable** 側でシングル サインオンを構成します。
 
 ### <a name="create-airtable-test-user"></a>Airtable のテスト ユーザーの作成
 

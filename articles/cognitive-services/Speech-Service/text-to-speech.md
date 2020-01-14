@@ -8,48 +8,57 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 12/10/2019
 ms.author: erhopf
-ms.openlocfilehash: f5929be58c5e2159e832005b0e0f8d01e014427e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d076d2520bda4d6209fbdd991df57c4eedaa3938
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923752"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379880"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
-音声サービスのテキスト読み上げを使用すると、アプリケーション、ツール、またはデバイスでテキストを人間のような自然な合成音声に変換できます。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。 詳細については、[サポートされる言語](language-support.md#text-to-speech)に関するページを参照してください。
+音声サービスのテキスト読み上げを使用すると、アプリケーション、ツール、またはデバイスで、テキストを人間のような合成音声に変換できます。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を作成することもできます。 標準音声は、45 を超える言語とロケールで 75 種類以上が用意されています。ニューラル音声は、一部の言語とロケールで 5 種類が用意されています。 サポートされている音声、言語、ロケールの一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
 
-テキスト読み上げテクノロジを使用すると、コンテンツ作成者は、ユーザーとさまざまな方法で対話できます。 テキスト読み上げでは、ユーザーが音声を使ってコンテンツと対話できるため、アクセシビリティが向上します。 視覚障碍や学習障碍をお持ちの方も、車の運転中にナビゲーション情報が必要な方も、テキスト読み上げを使用することにより、これまでのエクスペリエンスを向上させることができます。 テキスト読み上げは、音声ボットや音声アシスタントにも役立つアドオンです。
+> [!NOTE]
+> Bing Speech は、2019 年 10 月 15 日に使用が停止されました。 アプリケーション、ツール、または製品で Bing Speech API または Custom Speech をご使用の方に向けて、Speech Service への移行に役立つガイドを作成しました。
+> - [Bing Speech から Speech Service に移行する](how-to-migrate-from-bing-speech.md)
 
-音声合成マークアップ言語 (SSML) (XML ベースのマークアップ言語) を活用することにより、テキスト読み上げサービスを使用する開発者は、入力テキストを合成音声に変換する方法を指定できます。 SSML では、ピッチ、読み方、読み上げ速度、音量などを調整できます。 詳細については、[SSML](#speech-synthesis-markup-language-ssml) に関する記事を参照してください。
+## <a name="core-features"></a>コア機能 
 
-### <a name="standard-voices"></a>標準音声
+* 音声合成 - [Speech SDK](quickstarts/text-to-speech-audio-file.md) または [REST API](rest-text-to-speech.md) を使用して、標準音声、ニューラル音声、またはカスタム音声を使ってテキストを音声に変換します。
 
-標準音声は、統計的パラメトリック音声合成手法や連結音声合成手法を使用して作成されます。 このような音声は非常にわかりやすく、自然に聞こえます。 さまざまな音声オプションを使用して、アプリケーションが 45 を超える言語で簡単に話せるようにすることができます。 これらの音声は、略語、頭字語の展開、日付/時刻の解釈、多音字などのサポートを含め、高度な発音精度を実現しています。 標準音声を使用して、ユーザーが音声でコンテンツとやり取りできるようにすることで、アプリケーションとサービスのアクセシビリティを向上できます。
+* 長い音声の非同期合成 - [Long Audio API](long-audio-api.md) を使用して、10 分以上のテキスト読み上げファイル (オーディオ ブックや講義など) を非同期に合成します。 Speech SDK または Speech-to-Text REST API を使用して実行される合成とは異なり、応答はリアルタイムで返されません。 要求が非同期に送信され、応答がポーリングされること、および合成音声がサービスから利用可能になったときにダウンロードされることを想定しています。 ニューラル音声のみがサポートされています。
 
-### <a name="neural-voices"></a>ニューラル音声
+* 標準音声 - 統計的パラメトリック音声合成手法や連結音声合成手法を使用して作成されます。 このような音声は非常にわかりやすく、自然に聞こえます。 さまざまな音声オプションを使用して、アプリケーションが 45 を超える言語で簡単に話せるようにすることができます。 これらの音声は、略語、頭字語の展開、日付/時刻の解釈、多音字などのサポートを含め、高度な発音精度を実現しています。 標準音声の一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
 
-ニューラル音声は、話し言葉のアクセントとイントネーションのパターンを照合し、音声の単位をコンピューターの音声に合成する際に、ディープ ニューラル ネットワークを使用して従来のテキスト読み上げシステムの限界を克服しています。 標準のテキスト読み上げでは、独立したモデルによって管理される別々の言語分析と音響予測の手順に韻律が分解されます。これにより、こもった音声合成になることがあります。 ニューラル機能では韻律予測と音声合成が同時に行われ、その結果、より滑らかで自然に聞こえる音声になります。
+* ニューラル音声 - ディープ ニューラル ネットワークを使用して、話し言葉のアクセントとイントネーションに関する従来の音声合成の限界を克服します。 韻律予測と音声合成が同時に行われるため、より滑らかで自然な音声出力が得られます。 ニューラル音声を使用すると、チャットボットや音声アシスタントとの対話をより自然で魅力的なものにすることができます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 ニューラル音声では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムとやりとりする際のリスニング疲労が大幅に軽減されます。 ニューラル音声の一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
 
-ニューラル音声を使用すると、チャットボットや音声アシスタントとの対話をより自然で魅力的なものにできます。また、電子書籍などのデジタル テキストをオーディオブックに変換したり、カーナビゲーション システムを強化したりすることもできます。 ニューラル音声では、人間のような自然な韻律と明瞭な発音により、ユーザーが AI システムとやりとりする際のリスニング疲労が大幅に軽減されます。
+* 音声合成マークアップ言語 (SSML) - 音声テキスト変換の出力をカスタマイズする際に使用される XML ベースのマークアップ言語です。 SSML を使用して、ピッチの調整、一時停止の追加、発音の改善、読み上げ速度の調整、音量の上げ下げ、単一のドキュメントへの複数の音声の割り当てを行うことができます。 [SSML](speech-synthesis-markup.md) に関する記事をご覧ください。
 
-ニューラル音声は、ニュートラルや陽気な雰囲気など、さまざまなスタイルをサポートしています。 たとえば、Jessa (en-US) の声は陽気な雰囲気を表現でき、温かみのある楽しい会話に最適化されています。 トーン、ピッチ、速度などの音声出力は、[音声合成マークアップ言語](speech-synthesis-markup.md)を使用して調整できます。 利用可能なすべての音声の一覧については、[サポートされている言語](language-support.md#text-to-speech)に関するページを参照してください。
+## <a name="get-started"></a>はじめに
 
-ニューラル音声の利点の詳細については、「[Microsoft's new neural text-to-speech service helps machines speak like people (Microsoft の新しいニューラル テキスト読み上げサービスを利用してマシンが人間のように話せるようにする)](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/)」を参照してください。
+テキスト読み上げサービスは、[Speech SDK](speech-sdk.md) を介して利用できます。 さまざまな言語とプラットフォームで、いくつかの一般的なシナリオがクイックスタートとして用意されています。
 
-### <a name="custom-voices"></a>カスタム音声
+* [オーディオ ファイルに音声を合成する](quickstarts/text-to-speech-audio-file.md)
+* [スピーカーに音声を合成する](quickstarts/text-to-speech.md)
+* [長い形式の音声を非同期に合成する](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 
-音声をカスタマイズすることで、ブランド独自の認識性の高い音声を作成できます。 カスタム音声フォントを作成するには、スタジオで録音を行い、関連するスクリプトをトレーニング データとしてアップロードします。 サービスは、録音に合わせて調整された一意の音声モデルを作成します。 このカスタム音声フォントを使用して、音声を合成できます。 詳細については、[カスタム音声](how-to-customize-voice-font.md)に関するページを参照してください。
+必要であれば、[REST](rest-text-to-speech.md) を介してテキスト読み上げサービスにアクセスすることもできます。
 
-## <a name="speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML)
+## <a name="sample-code"></a>サンプル コード
 
-音声合成マークアップ言語 (SSML) は、XML ベースのマークアップ言語であり、これにより、開発者はテキスト読み上げサービスを使用して、入力テキストを合成音声に変換する方法を指定することができます。 プレーンテキストと比較して、SSML では、開発者が音声合成出力のピッチ、読み方、読み上げ速度、音量などを微調整できます。 通常の句読点は、ピリオドの後の一時停止、または文が疑問符で終わるときの正しいイントネーションの使用など、自動的に処理されます。
+テキスト読み上げのサンプル コードは、GitHub 上で入手できます。 これらのサンプルに含まれるテキスト読み上げ会話は、人気の高いプログラミング言語で作成されています。
 
-テキスト読み上げサービスに送信されたテキスト入力はすべて、SSML として構造化される必要があります。 詳細については、「[音声合成マークアップ言語 (SSML)](speech-synthesis-markup.md)」を参照してください。
+- [テキスト読み上げのサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [テキスト読み上げのサンプル (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
-### <a name="pricing-note"></a>価格に関する注意
+## <a name="customization"></a>カスタマイズ 
+
+標準音声とニューラル音声に加え、製品またはブランドに固有のカスタム音声を作成し、微調整できます。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。 詳細については、「[Get started with Custom Voice (カスタム音声の概要)](how-to-custom-voice.md)」をご覧ください。
+
+## <a name="pricing-note"></a>価格に関する注意
 
 テキスト読み上げサービスを使用している場合、句読点を含めて、文字が音声に変換されるごとに課金されます。 SSML ドキュメント自体は課金対象外ですが、テキストが音声に変換される方法を調整するために使用される省略可能な要素 (音素やピッチなど) は、課金対象の文字としてカウントされます。 課金対象の一覧を次に示します。
 
@@ -63,67 +72,12 @@ ms.locfileid: "74923752"
 > [!IMPORTANT]
 > 中国語、日本語、韓国語の言語文字はそれぞれ、2 文字としてカウントされ課金されます。
 
-## <a name="core-features"></a>コア機能
-
-以下の表は、テキスト読み上げのコア機能を示しています。
-
-| ユース ケース                                  | SDK | REST  |
-| ----------------------------------------- | --- | ----- |
-| テキストを音声に変換する。                   | はい | はい   |
-| 音声適応のためのデータセットをアップロードする。     | いいえ  | はい\* |
-| 音声フォント モデルを作成および管理する。      | いいえ  | はい\* |
-| デプロイする音声フォントを作成および管理する。 | いいえ  | はい\* |
-| 音声フォント テストを作成および管理する。       | いいえ  | はい\* |
-| サブスクリプションを管理する。                     | いいえ  | はい\* |
-
-\*_これらのサービスは、cris.ai エンドポイントを使用して提供されます。[Swagger リファレンス](https://westus.cris.ai/swagger/ui/index)に関するページを参照してください。このようなカスタム音声トレーニングおよび管理の API では、要求を 5 秒間あたり 25 個に制限する調整が実装されます。一方、音声合成 API 自体では、最高値として 1 秒あたり 200 個の要求を許容する調整が実装されます。スロットリングが実行されると、その旨がメッセージ ヘッダーを介して通知されます。_
-
-## <a name="get-started-with-text-to-speech"></a>テキスト読み上げを使ってみる
-
-10 分もかからずにコードを実行できるように設計されたクイック スタートが用意されています。 以下の表は、テキスト読み上げのクイック スタートを言語別に整理して示したものです。
-
-### <a name="sdk-quickstarts"></a>SDK のクイック スタート
-
-| クイック スタート (SDK) | プラットフォーム | API リファレンス |
-| ---------------- | -------- | ------------- |
-| [C#、.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、.NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#、Unity](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows、Android | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=windows) | Windows | [Browse](https://aka.ms/csspeech/cppref) |
-| [C++](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-cpp&tabs=linux) | Linux | [Browse](https://aka.ms/csspeech/cppref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=jre) | Windows、Linux、macOS | [Browse](https://aka.ms/csspeech/javaref) |
-| [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Browse](https://aka.ms/csspeech/javaref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md) | macOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Window、Linux、macOS | [Browse](https://aka.ms/csspeech/pythonref) |
-
-### <a name="rest-quickstarts"></a>REST クイック スタート
-
-| クイック スタート (REST) | プラットフォーム | API リファレンス |
-| ----------------- | -------- | ------------- |
-| [C#、.NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.JS](quickstart-nodejs-text-to-speech.md) | Window、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Window、macOS、Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-
-## <a name="sample-code"></a>サンプル コード
-
-テキスト読み上げのサンプル コードは、GitHub 上で入手できます。 これらのサンプルに含まれるテキスト読み上げ会話は、人気の高いプログラミング言語で作成されています。
-
-- [テキスト読み上げのサンプル (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-- [テキスト読み上げのサンプル (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
-
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-- [Speech SDK](speech-sdk-reference.md)
-- [Speech Devices SDK](speech-devices-sdk.md)
-- [REST API: 音声テキスト変換](rest-speech-to-text.md)
+- [Speech SDK](speech-sdk.md)
 - [REST API: テキスト読み上げ](rest-text-to-speech.md)
-- [REST API: 一括文字起こしとカスタマイズ](https://westus.cris.ai/swagger/ui/index)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [無料の音声サービス サブスクリプションを取得する](get-started.md)
-- [カスタム音声フォントを作成する](how-to-customize-voice-font.md)
+- [Speech SDK を取得する](speech-sdk.md)

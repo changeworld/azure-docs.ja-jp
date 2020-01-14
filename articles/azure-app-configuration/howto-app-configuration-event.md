@@ -1,5 +1,6 @@
 ---
-title: Web エンドポイントにイベントを送信するように Azure App Configuration を設定するためのチュートリアル | Microsoft Docs
+title: チュートリアル:Azure App Configuration を使用してイベントを Web エンドポイントに送信する
+titleSuffix: Azure App Configuration
 description: このチュートリアルでは、Web エンドポイントにキーと値の変更イベントを送信するように Azure App Configuration のイベント サブスクリプションを設定する方法について説明します。
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4943a64f72191981fc1b655c431cab00f180e503
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185171"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433686"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure App Configuration イベントを Web エンドポイントにルーティングする
 
@@ -34,11 +35,11 @@ CLI をローカルにインストールして使用することを選択した�
 
 Cloud Shell を使用していない場合は、先に `az login` でサインインする必要があります。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create](/cli/azure/group) コマンドでリソース グループを作成します。 
+[az group create](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 
 
 次の例では、`<resource_group_name>` という名前のリソース グループを *westus* の場所に作成します。  `<resource_group_name>` を、リソース グループの一意の名前に置き換えます。
 
@@ -125,7 +126,7 @@ az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
 
 ```
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 引き続きこの App Configuration とイベント サブスクリプションを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 `<resource_group_name>` は、先ほど作成したリソース グループに置き換えます。
@@ -134,7 +135,7 @@ az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes
 az group delete --name <resource_group_name>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これで、トピックを作成し、イベントをサブスクライブする方法がわかったので、キーと値のイベントについて、また Event Grid でできることについて、さらに情報を収集しましょう。
 

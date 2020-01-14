@@ -2,19 +2,15 @@
 title: Update と Change Tracking ソリューションの Azure Automation への配布準備をする
 description: Update と Change Tracking ソリューションの Azure Automation への配布準備をする方法について説明します。
 services: automation
-ms.service: automation
-author: eamonoreilly
-ms.author: eamono
-manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372827"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421841"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Update と Change Tracking ソリューションの Azure Automation への配布準備をする
 
@@ -37,7 +33,7 @@ ms.locfileid: "72372827"
 
 ## <a name="onboard-an-azure-vm"></a>Azure VM の配布準備
 
-マシンの使用準備を行う方法は複数あります。[仮想マシンから](automation-onboard-solutions-from-vm.md)、[Automation アカウントから](automation-onboard-solutions-from-automation-account.md)[複数のマシンから参照することから](automation-onboard-solutions-from-browse.md)、または Runbook によって、ソリューションの使用準備を行うことができます。 このチュートリアルでは、Runbook を使用して Update Management を有効にする方法について説明します。 さらに大きな規模で Azure Virtual Machines の配布準備を行うには、Change Tracking または Update Management ソリューションで既存の VM の配布準備をする必要があります。 この手順では、Update Management および Change Tracking で仮想マシンの配布準備を行います。
+マシンをオンボードする方法は複数あり、[仮想マシンから](automation-onboard-solutions-from-vm.md)、[複数のマシンの参照から](automation-onboard-solutions-from-browse.md)、[お使いの Automation アカウントから](automation-onboard-solutions-from-automation-account.md)、または Runbook を使用してソリューションをオンボードできます。 このチュートリアルでは、Runbook を使用して Update Management を有効にする方法について説明します。 さらに大きな規模で Azure Virtual Machines の配布準備を行うには、Change Tracking または Update Management ソリューションで既存の VM の配布準備をする必要があります。 この手順では、Update Management および Change Tracking で仮想マシンの配布準備を行います。
 
 ### <a name="enable-change-tracking-and-inventory"></a>Change Tracking と Inventory の有効化
 
@@ -131,14 +127,14 @@ Automation アカウントから、 **[共有リソース]** で **[モジュー
 1. **[OK]** を選択して、Runbook ジョブを開始します。
 1. Runbook ジョブ ページで進行状況とエラーを監視します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Update Management から VM を削除するには:
 
 * Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
 * [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) または [Linux 用 Log Analytics エージェント](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)を削除します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

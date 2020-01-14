@@ -1,26 +1,17 @@
 ---
-title: Service Fabric スタンドアロン クライアントをインストールするチュートリアル - Azure Service Fabric | Microsoft Docs
+title: Service Fabric スタンドアロン クライアントをインストールする
 description: このチュートリアルでは、前のチュートリアル記事で作成したクラスターに Service Fabric スタンドアロン クライアントをインストールする方法について説明します。
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385010"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613943"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>チュートリアル:Service Fabric クラスターのインストールと作成
 
@@ -135,7 +126,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 
 ビジネス ニーズの変化に応じて、スタンドアロン Service Fabric クラスターでノードを追加または削除できます。 詳細の手順については、[「Service Fabric スタンドアロン クラスターでノードを追加または削除する」](service-fabric-cluster-windows-server-add-remove-nodes.md) をお読みください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 シリーズの第 2 部では、次の手順をはじめ、ストレージ アカウントに大量のランダム データを並行でアップロードする方法について学びました。
 

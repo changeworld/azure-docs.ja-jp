@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b876b27d0eb24a9eabcffe0d131ea0ef5bb79bad
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 6c35b52149e3c0117c727771d38d0f010180fc63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107045"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432804"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-using-azure-maps"></a>チュートリアル:Azure Maps を使用した IoT 空間分析の実装
 
@@ -32,7 +32,7 @@ ms.locfileid: "74107045"
 > * 車載 IoT デバイスをシミュレートします。
     
 
-## <a name="use-case"></a>ユース ケース
+## <a name="use-case"></a>使用事例
 
 ここでは、レンタカー会社が貸し出した車両に関するイベントの監視と記録を計画しているというシナリオについて、ソリューションを例示します。 多くの場合、レンタカー会社は、特定の地域向けに車両を貸し出し、貸し出し中に車両の行方を追跡する必要があります。 指定された地域を離れる車両を含むすべてのインスタンスをログに記録して、ポリシー、料金、およびその他のビジネスの側面を適切に処理できるようにする必要があります。
 
@@ -79,7 +79,7 @@ ms.locfileid: "74107045"
 
 ## <a name="prerequisites"></a>前提条件 
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-resource-group"></a>リソース グループを作成する
 
 このチュートリアルの手順を完了するには、最初に Azure portal でリソース グループを作成する必要があります。 リソース グループを作成するには、以下の手順に従います。
 
@@ -104,7 +104,8 @@ ms.locfileid: "74107045"
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する 
 
-Azure Maps 空間分析に基づいてビジネス ロジックを実装するには、作成したリソース グループに Azure Maps アカウントを作成する必要があります。 [アカウントの管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)に関するページの手順に従って、S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](./tutorial-search-location.md#getkey)に関するページの手順に従って、お使いのアカウントのプライマリ サブスクリプション キーを取得します。
+Azure Maps 空間分析に基づいてビジネス ロジックを実装するには、作成したリソース グループに Azure Maps アカウントを作成する必要があります。 [アカウントの作成](quick-demo-map-app.md#create-an-account-with-azure-maps)に関するページの手順に従って、Azure Maps アカウントのサブスクリプションを S1 価格レベルで 作成します。さらに、[主キーの取得](quick-demo-map-app.md#get-the-primary-key-for-your-account)に関するページの手順に従って、お使いのアカウントの主キーを取得します。 Azure Maps での認証の詳細については、「[Azure Maps での認証の管理](how-to-manage-authentication.md)」を参照してください。
+
 
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
@@ -167,7 +168,7 @@ Azure Maps の Data Upload API を使用してジオフェンスをアップロ�
     
     URL パス内の `dataFormat` パラメーターに対する "geojson" 値は、アップロードされるデータの形式を表します。
 
-3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key の値は、実際の Azure Maps のプライマリ サブスクリプション キーに置き換えてください。
+3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key 値を自分の Azure Maps キーに置き換えます。
    
     ![Postman のキーと値のペアから成るパラメーター](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
@@ -280,7 +281,7 @@ Azure 関数が起動したら、テレメトリ データを IoT Hub に送信�
 
 ![違反マップ](./media/tutorial-iot-hub-maps/violation-map.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルで使用した Azure Maps API シリーズの詳細については、以下を参照してください。
 

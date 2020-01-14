@@ -1,26 +1,17 @@
 ---
-title: Azure で ELK を使用して Service Fabric 内のアプリを監視する | Microsoft Docs
+title: Azure で ELK を使用して Service Fabric 内のアプリを監視する
 description: このチュートリアルでは、ELK を設定して Service Fabric アプリケーションを監視する方法について説明します。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313007"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376661"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>チュートリアル:ELK を使用して Service Fabric アプリケーションを監視する
 
@@ -63,7 +54,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 1. Azure で ELK Certified by [Bitnami](https://ms.portal.azure.com/#create/bitnami.elk4-6) を作成します。 チュートリアルの目的上、このサーバーを作成するために従わなければならない仕様は特にありません。
 
-2. Azure Portal でリソースに移動し、**[サポート + トラブルシューティング]** セクションの **[ブート診断]** を押します。 次に、**[シリアル ログ]** タブをクリックします。
+2. Azure Portal でリソースに移動し、 **[サポート + トラブルシューティング]** セクションの **[ブート診断]** を押します。 次に、 **[シリアル ログ]** タブをクリックします。
 
     ![ブート診断](./media/service-fabric-tutorial-java-elk/bootdiagnostics.png)
 3. Kibana インスタンスへのアクセスに必要なパスワードをログで検索します。 これは次のようなスニペットです。
@@ -153,7 +144,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

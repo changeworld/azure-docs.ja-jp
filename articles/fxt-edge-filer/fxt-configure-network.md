@@ -1,19 +1,19 @@
 ---
-title: Microsoft Azure FXT Edge Filer クラスターのネットワーク設定を調整する
+title: チュートリアル:Azure FXT Edge Filer クラスターでネットワークを構成する
 description: Azure FXT Edge Filer クラスターを作成した後にネットワーク設定をカスタマイズする方法
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: d250e566d884760244ee25e4c43d30fbe5323a7c
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: a40ff50dcb0934cbf1ea5222675bd75948ac1d03
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72254898"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551065"
 ---
-# <a name="tutorial-configure-the-clusters-network-settings"></a>チュートリアル:クラスターのネットワーク設定を構成する 
+# <a name="tutorial-configure-the-clusters-network-settings"></a>チュートリアル:クラスターのネットワーク設定を構成する
 
 新しく作成した Azure FXT Edge Filer クラスターを使用する前に、いくつかのネットワーク設定を確認し、実際のワークフローに合わせてカスタマイズする必要があります。 
 
@@ -146,7 +146,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 詳細については、クラスター構成ガイドの [DNS 設定](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>)に関する項目をお読みください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 これは、Azure FXT Edge Filer クラスターの基本的な構成の最後の手順です。 
 
