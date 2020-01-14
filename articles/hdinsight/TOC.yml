@@ -73,8 +73,6 @@
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md
             - name: REST API を使用してクラスターを作成する
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
-            - name: .NET を使用してクラスターを作成する
-              href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
             - name: クラスター作成時のエラー
               href: ./create-cluster-error-dictionary.md
               title: null
@@ -102,8 +100,6 @@
               href: hdinsight-hadoop-script-actions-linux.md
             - name: Apache Hive ライブラリを追加する
               href: hdinsight-hadoop-add-hive-libraries.md
-            - name: Apache Giraph を使用する
-              href: hdinsight-hadoop-giraph-install-linux.md
             - name: Hue を使用する
               href: hdinsight-hadoop-hue-linux.md
             - name: HDInsight アプリケーションの構築
@@ -330,8 +326,6 @@
                   href: ./spark/apache-spark-machine-learning-mllib-ipython.md
                 - name: Web サイトのログを分析する
                   href: ./spark/apache-spark-custom-library-website-log-analysis.md
-                - name: ディープ ラーニングに Caffe を使用する
-                  href: ./spark/apache-spark-deep-learning-caffe.md
                 - name: Microsoft Cognitive Toolkit を使用する
                   href: ./spark/apache-spark-microsoft-cognitive-toolkit.md
                 - name: Apache Spark 機械学習パイプラインを作成する

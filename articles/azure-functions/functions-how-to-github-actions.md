@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 18ba99077592a7d03e19fda86bc61e5839b82b5e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f30211b2b5863294976420d3f903a36abe76deba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433159"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>GitHub Actions を使用した継続的デリバリー
 
@@ -22,7 +22,7 @@ GitHub Actions の[ワークフロー](https://help.github.com/articles/about-gi
 
 Azure Functions のワークフロー ファイルには、次の 3 つのセクションがあります。 
 
-| Section | タスク |
+| Section | 処理手順 |
 | ------- | ----- |
 | **認証** | <ol><li>サービス プリンシパルを定義します。</li><li>発行プロファイルをダウンロードします。</li><li>GitHub シークレットを作成します。</li></ol>|
 | **ビルド** | <ol><li>環境を設定します。</li><li>関数アプリを構築します。</li></ol> |
@@ -64,18 +64,11 @@ functionapp の発行プロファイルをダウンロードするには、ア�
 
 ## <a name="set-up-the-environment"></a>環境をセットアップする 
 
-環境を設定するには、発行設定操作のいずれかを使用します。
+環境のセットアップは、言語固有の発行セットアップアクションを使用して行います。
 
-|言語 | 設定操作 |
-|---------|---------|
-|**.NET**     | `actions/setup-dotnet` |
-|**Java**    | `actions/setup-java` |
-|**JavaScript**     | `actions/setup-node` |
-|**Python**   | `actions/setup-python` |
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-次の例は、サポートされているさまざまな言語の環境を設定するワークフローの一部です。
-
-**JavaScript**
+次の例は、`actions/setup-node` アクションを使用して環境をセットアップするワークフローの一部を示しています：
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -88,7 +81,9 @@ functionapp の発行プロファイルをダウンロードするには、ア�
         node-version: '10.x'
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+次の例は、`actions/setup-python` アクションを使用して環境をセットアップするワークフローの一部を示しています：
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -101,7 +96,9 @@ functionapp の発行プロファイルをダウンロードするには、ア�
         python-version: 3.6
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+次の例は、`actions/setup-dotnet` アクションを使用して環境をセットアップするワークフローの一部を示しています：
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -114,7 +111,9 @@ functionapp の発行プロファイルをダウンロードするには、ア�
         dotnet-version: '2.2.300'
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+次の例は、`actions/setup-java` アクションを使用して環境をセットアップするワークフローの一部を示しています：
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -128,14 +127,15 @@ functionapp の発行プロファイルをダウンロードするには、ア�
         # Please change the Java version to match the version in pom.xml <maven.compiler.source>
         java-version: '1.8.x'
 ```
+---
 
 ## <a name="build-the-function-app"></a>関数アプリのビルド
 
 これは、言語および Azure Functions でサポートされる言語によって異なります。このセクションは、各言語の標準的なビルド手順です。
 
-次の例は、サポートされているさまざまな言語で関数アプリをビルドするワークフローの一部です。
+次の例は、言語固有の関数 アプリを構築するワークフローの一部を示しています：
 
-**JavaScript**
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -150,7 +150,7 @@ functionapp の発行プロファイルをダウンロードするには、ア�
         popd
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -164,7 +164,7 @@ functionapp の発行プロファイルをダウンロードするには、ア�
         popd
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -177,7 +177,7 @@ functionapp の発行プロファイルをダウンロードするには、ア�
         popd
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'
@@ -190,6 +190,7 @@ functionapp の発行プロファイルをダウンロードするには、ア�
         mvn azure-functions:package
         popd
 ```
+---
 
 ## <a name="deploy-the-function-app"></a>関数アプリをデプロイする
 
@@ -211,7 +212,7 @@ functionapp の発行プロファイルをダウンロードするには、ア�
         app-name: PLEASE_REPLACE_THIS_WITH_YOUR_FUNCTION_APP_NAME
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 .yaml の完全なワークフローを確認するには、[Azure GitHub Actions ワークフローのサンプルのリポジトリ](https://aka.ms/functions-actions-samples) 名前に `functionapp` があるファイルのうち 1 つを参照してください。 これらのサンプルは、ご自分のワークフローの出発点として使用できます。
 

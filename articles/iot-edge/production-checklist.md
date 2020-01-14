@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a19fdfaf70dffb7f0bcb8001475fee89b2d05086
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 1213ab4c623cb1d475dff1d71e65439b1d08f5c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665816"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429450"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -39,7 +39,7 @@ IoT Edge デバイスとして、Raspberry Pi から、ノート PC、サーバ�
 
 デバイス CA 証明書のロールの詳細については、[Azure IoT Edge での証明書の使用方法](iot-edge-certs.md)に関するページを参照してください。
 
-IoT Edge デバイスに証明書をインストールし、config.yaml ファイルから参照する方法の詳細については、「[Configure an IoT Edge device to act as a transparent gateway](how-to-create-transparent-gateway.md)」 (透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する) を参照してください。 証明書を構成する手順は、デバイスがゲートウェイとして使用される予定であるかどうかに関係なく同じです。 この記事では、テスト専用のサンプル証明書を生成するためのスクリプトを提供します。 運用環境ではこれらのサンプル証明書を使用しないでください。 
+IoT Edge デバイスに証明書をインストールし、config.yaml ファイルからそれらを参照する方法の詳細については、[「IoT Edgeデバイスに運用証明書をインストールする」](how-to-create-transparent-gateway.md)を参照してください。 
 
 ### <a name="have-a-device-management-plan"></a>デバイスの管理を計画する
 
@@ -72,7 +72,7 @@ IoT Hub へのアップストリーム通信用のプロトコル (そのため�
 
 IoT Edge デバイスが接続されたら、必ず、以降のデプロイでも引き続き両方のランタイム モジュールに対して UpstreamProtocol 変数を構成してください。 このプロセスの例については、「[IoT Edge デバイスを構成してプロキシ サーバー経由で通信する](how-to-configure-proxy-support.md)」を参照してください。
 
-## <a name="deployment"></a>Deployment
+## <a name="deployment"></a>デプロイ
 
 * **有用**
     * アップストリーム プロトコルに合わせる
@@ -233,7 +233,7 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 
 **オプション:各コンテナー モジュールのログ設定を調整する**
 
-これは、各モジュールの **createOptions** で行うことができます。 例:
+これは、各モジュールの **createOptions** で行うことができます。 次に例を示します。
 
 ```yml
 "createOptions": {
@@ -251,7 +251,7 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 
 **Linux システムにおけるその他のオプション**
 
-* 既定のロギング ドライバーとして `journald` を設定することで、`systemd` [ジャーナル](https://docs.docker.com/config/containers/logging/journald/)にログを送信するようにコンテナー エンジンを構成します。 
+* コンテナーエンジンを構成して、既定のログ ドライバーとして `journald` を設定することによって、`systemd`[ジャーナル](https://docs.docker.com/config/containers/logging/journald/) にログを送信します。 
 
 * logrotate ツールをインストールすることで、デバイスから古いログを定期的に削除します。 次のファイルの指定を使用します。 
 
@@ -271,7 +271,7 @@ IoT Edge のデプロイをテストする場合、通常はデバイスにア�
 
 最も効率的な IoT Edge のデプロイ シナリオの場合は、運用環境のデプロイをテストおよび CI/CD パイプラインに統合することを検討してください。 Azure IoT Edge では、Azure DevOps を含む、複数の CI/CD プラットフォームがサポートされます。 詳細については、「[Azure IoT Edge に対する継続的インテグレーションと継続的配置](how-to-ci-cd.md)」を参照してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * 詳細については、[IoT Edge の自動デプロイ](module-deployment-monitoring.md)に関するページをご覧ください。
 * IoT Edge で[継続的インテグレーションと継続的配置](how-to-ci-cd.md)がどのようにサポートされるのかを確認します。

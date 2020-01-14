@@ -1,5 +1,5 @@
 ---
-title: Node での Azure Relay ハイブリッド接続 Websocket の概要 | Microsoft Docs
+title: Azure Relay ハイブリッド接続 - ノードの WebSocket
 description: Azure Relay ハイブリッド接続 Websocket 用の Node.js コンソール アプリケーションを作成します
 services: service-bus-relay
 documentationcenter: node
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: b4864673e25ba4f5a1f2e8629e0889863051bc07
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 818db4db082a441877b573fd52361e63becce374
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60553883"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352670"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>Node.js での Relay ハイブリッド接続 WebSocket の概要
 
@@ -66,7 +66,7 @@ Relay にメッセージを送信するために、Node.js コンソール ア�
 
 これで、Node.js を使用してエンドツーエンドのハイブリッド接続アプリケーションを作成できました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 このクイック スタートでは、WebSocket を使用してメッセージを送受信する Node.js のクライアント アプリケーションとサーバー アプリケーションを作成しました。 Azure Relay のハイブリッド接続機能は、HTTP を使用したメッセージの送受信もサポートしています。 Azure Relay のハイブリッド接続で HTTP を使用する方法については、[Node.js の HTTP のクイック スタート](relay-hybrid-connections-http-requests-node-get-started.md)を参照してください。
 
 このクイック スタートでは、Node.js を使用してクライアント アプリケーションとサーバー アプリケーションを作成しました。 .NET Framework を使用してクライアント アプリケーションとサーバー アプリケーションを作成する方法については、[.NET WebSocket のクイック スタート](relay-hybrid-connections-dotnet-get-started.md)または [.NET HTTP のクイック スタート](relay-hybrid-connections-http-requests-dotnet-get-started.md)を参照してください。

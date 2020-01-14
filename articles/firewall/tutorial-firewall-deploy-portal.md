@@ -40,7 +40,7 @@ Azure サブネットから外に向かうアウトバウンド ネットワー�
 > * テスト ネットワーク環境を設定する
 > * ファイアウォールをデプロイする
 > * 既定のルートを作成する
-> * www.google.com へのアクセスを許可するようにアプリケーションを構成する
+> * [www.google.com]\(www.google.com) へのアクセスを許可するようにアプリケーションを構成する
 > * 外部 DNS サーバーへのアクセスを許可するようにネットワーク ルールを構成する
 > * ファイアウォールをテストする
 
@@ -183,7 +183,7 @@ VNet にファイアウォールをデプロイします。
 
 ## <a name="configure-an-application-rule"></a>アプリケーション ルールを構成する
 
-これは、www.google.com へのアウトバウンド アクセスを許可するアプリケーション ルールです。
+これは、 [www.google.com]\(www.google.com) へのアウトバウンド アクセスを許可するアプリケーション ルールです。
 
 1. **Test-FW-RG** を開き、 **[Test-FW01]** ファイアウォールを選択します。
 2. **Test-FW01** ページの **[設定]** で、 **[ルール]** を選択します。
@@ -195,7 +195,7 @@ VNet にファイアウォールをデプロイします。
 8. **[ルール]** の **[ターゲットの FQDN]** で、 **[名前]** に「**Allow-Google**」と入力します。
 9. **[ソース アドレス]** に「**10.0.2.0/24**」と入力します。
 10. **[プロトコル:ポート]** に「**http, https**」と入力します。
-11. **[ターゲットの FQDN]** に「**www.google.com**」と入力します
+11. **[ターゲットの FQDN]** に「 **(www.google.com)[www.google.com]** 」と入力します
 12. **[追加]** を選択します。
 
 Azure Firewall には、既定で許可されるインフラストラクチャ FQDN 用の組み込みのルール コレクションが含まれています。 これらの FQDN はプラットフォームに固有であり、他の目的には使用できません。 詳細については、[インフラストラクチャ FQDN](infrastructure-fqdns.md) に関する記事を参照してください。
@@ -236,12 +236,12 @@ Azure Firewall には、既定で許可されるインフラストラクチャ F
 
 1. Azure portal で、**Srv-Work** 仮想マシンのネットワーク設定を確認し、プライベート IP アドレスをメモします。
 2. リモート デスクトップを **Srv-Jump** 仮想マシンに接続し、サインインします。 そこから **Srv-Work** のプライベート IP アドレスへのリモート デスクトップ接続を開きます。
-3. Internet Explorer を開き、 [https://www.google.com](https://www.google.com ) を参照します。
+3. Internet Explorer を開き、 [https://www.google.com]\(https://www.google.com ) を参照します。
 4. Internet Explorer のセキュリティ アラートで、 **[OK]**  >  **[閉じる]** の順に選択します。
 
    Google のホーム ページが表示されます。
 
-5. [https://www.microsoft.com](https://www.microsoft.com ) を参照します。
+5. [https://www.microsoft.com]\(https://www.microsoft.com ) を参照します。
 
    ファイアウォールによってブロックされます。
 

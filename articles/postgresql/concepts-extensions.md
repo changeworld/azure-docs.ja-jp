@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 7a55cc9398cc511ced0a43f0d7a0c1aa6e37f155
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/20/2019
+ms.openlocfilehash: 069fc83e773c00be41e21e23fc01c589c13d687d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790403"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372705"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
@@ -26,7 +26,7 @@ Azure Database for PostgreSQL でサポートされる主要な拡張機能の�
 Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。 
 
 > [!div class="mx-tableFixed"]
-> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> | **拡張子**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US データセットの例|
@@ -71,7 +71,7 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サー
 Postgres バージョン 10 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
 
 > [!div class="mx-tableFixed"]
-> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> | **拡張子**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US データセットの例|
@@ -117,7 +117,7 @@ Postgres バージョン 10 を搭載した Azure Database for PostgreSQL サー
 Postgres バージョン 9.6 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
 
 > [!div class="mx-tableFixed"]
-> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> | **拡張子**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Address Standardizer US データセットの例|
@@ -163,7 +163,7 @@ Postgres バージョン 9.6 を搭載した Azure Database for PostgreSQL サ�
 Postgres バージョン 9.5 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
 
 > [!div class="mx-tableFixed"]
-> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> | **拡張子**| **拡張機能のバージョン** | **説明** |
 > |---|---|---|
 > |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | 構成要素へのアドレスの解析に使用されます。 |
 > |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Address Standardizer US データセットの例|
@@ -253,6 +253,26 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 
 次に、[一から](https://docs.timescale.com/getting-started/creating-hypertables) TimescaleDB ハイパーテーブルを作成するか、[PostgreSQL 内の既存の時系列データ](https://docs.timescale.com/getting-started/migrating-data)を移行することができます。
 
+### <a name="restoring-a-timescale-database"></a>タイムスケールデータベースを復元する
+Pg_dump と pg_restore を使用してタイムスケールデータベースを復元するには、次の2つのヘルパープロシージャをデータベースで実行する必要があります：`timescaledb_pre_restore()` と `timescaledb_post restore()`。
 
-## <a name="next-steps"></a>次の手順
+まず、コピー先データベースを指定します：
+
+```SQL
+--create the new database where you'll perform the restore
+CREATE DATABASE tutorial;
+\c tutorial --connect to the database 
+CREATE EXTENSION timescaledb;
+
+SELECT timescaledb_pre_restore();
+```
+
+これで、元のデータベースで pg_dump を実行し、pg_restore を実行することができます。 復元後、復元されたデータベースで、必ず次のコマンドを実行します：
+
+```SQL
+SELECT timescaledb_post_restore();
+```
+
+
+## <a name="next-steps"></a>次のステップ
 使用する拡張機能が見つからない場合は、お知らせください。 [フィードバック フォーラム](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)で、既存のリクエストに投票することや、新しいフィードバック リクエストを作成することができます。

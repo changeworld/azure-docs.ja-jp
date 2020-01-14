@@ -1,5 +1,6 @@
 ---
-title: CloudSimple による Azure VMware ソリューションのクイック スタート - サービスの作成
+title: クイック スタート:VMware CloudSimple サービスを作成する
+titleSuffix: Azure VMware Solution by CloudSimple
 description: CloudSimple サービスの作成方法、ノードの購入方法、ノードの予約法について説明します。
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 228ca0f43322c271b1a6db55a37c852ca1f66799
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 8ca8c5cacd2b1a1a7b4f70615831d2901510045e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828903"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452376"
 ---
 # <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>クイック スタート - CloudSimple サービスによる Azure VMware ソリューションの作成
 
@@ -21,7 +22,7 @@ ms.locfileid: "71828903"
 
 ## <a name="vmware-solution-by-cloudsimple---service-overview"></a>CloudSimple による VMware ソリューション - サービス概要
 
-Azure VMware Solution by CloudSimple は、CloudSimple サービスを通じて利用できます。  このサービスを作成すると、ノードをプロビジョニングしたり、ノードを予約したり、プライベート クラウドを作成したりできます。  CloudSimple サービスが使用可能な各 Azure 領域に、CloudSimple サービスを追加します。  サービスは、CloudSimple による Azure VMware ソリューションのエッジ ネットワーク を定義します。  このエッジ ネットワークは、VPN、ExpressRoute、およびプライベート クラウドへのインターネット接続性などのサービスに使用されます。
+Azure VMware Solution by CloudSimple は、CloudSimple サービスを通じて利用できます。  このサービスを作成すると、ノードをプロビジョニングしたり、ノードを予約したり、プライベート クラウドを作成したりできます。  CloudSimple サービスが使用可能な各 Azure 領域に、CloudSimple サービスを追加します。  このサービスでは、Azure VMware Solution by CloudSimple のエッジ ネットワークが定義されます。  このエッジ ネットワークは、VPN、ExpressRoute、およびプライベート クラウドへのインターネット接続性などのサービスに使用されます。
 
 CloudSimple サービスを追加するには、ゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サブネットはエッジ ネットワークを作成するときに使用し、/28 CIDR ブロックを必要とします。 ゲートウェイ サブネットのアドレス空間は一意である必要があります。 これは、オンプレミス ネットワークのアドレス空間や Azure の仮想ネットワーク アドレス空間と重複できません。
 
@@ -54,7 +55,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     ![CloudSimple サービスの作成](media/create-cloudsimple-service.png)
 
-9. Click **OK**.
+9. **[OK]** をクリックします。
 
 サービスが作成され、サービスの一覧に追加されます。
 
@@ -83,7 +84,7 @@ CloudSimple プライベート クラウド環境に従量課金制の容量を�
 13. 設定を確認します。 設定を変更素ウルには、 **[前へ]** をクリックします。
 14. **作成** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [プライベート クラウドを作成し、環境を構成します。](quickstart-create-private-cloud.md)
 * [CloudSimple サービス](https://docs.azure.cloudsimple.com/cloudsimple-service)について説明します。

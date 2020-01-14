@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 056dd4331d30335078ea68350f711e37a7b42070
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74976623"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446858"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>クイック スタート:カスタム コマンドを作成する (プレビュー)
 
@@ -24,10 +24,15 @@ ms.locfileid: "74976623"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Speech サブスクリプション [Speech Service を無料で試してください](~/articles/cognitive-services/speech-service/get-started.md)。
+- Speech サブスクリプション 
+
+Speech サブスクリプションがない場合は、[Speech Studio](https://speech.microsoft.com/) に移動し、 **[Speech リソースを作成する]** を選択して作成できます。
+
+  > [!div class="mx-imgBorder"]
+  > [ ![プロジェクトを作成する](media/custom-speech-commands/create-new-subscription.png) ](media/custom-speech-commands/create-new-subscription.png#lightbox)
 
   > [!NOTE]
-  > プレビュー期間中は、サブスクリプション キーに対して westus2 リージョンのみがサポートされています。
+  > プレビュー期間中は、westus2 リージョンのみがサポートされます。
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>カスタム コマンドを使用するため Speech Studio にアクセスする
 
@@ -66,6 +71,20 @@ ms.locfileid: "74976623"
 
 これで、カスタム コマンド アプリケーションの概要が表示されます。
 
+## <a name="update-luis-resources-optional"></a>LUIS リソースを更新する (省略可能)
+
+[新しいプロジェクト] ウィンドウにセットされた作成リソースを更新し、実行時に入力を認識するために使用される予測リソースをセットできます。 
+
+> [!NOTE]
+> アプリケーションが、オーサリング リソースが提供する 1,000 件の要求を超えた予測を要求する前に、予測リソースをセットする必要があります。
+
+> [!div class="mx-imgBorder"]
+> ![LUIS のリソースをセットする](media/custom-speech-commands/set-luis-resources.png)
+
+1. 左側のペインで **[設定]** を選択し、中央のペインから **[LUIS リソース]** を選択して、[LUIS リソース] ペインに移動します。
+1. 予測リソースを選択するか、 **[新しいリソースの作成]** を選択して作成します
+1. **[保存]** を選びます。
+
 ## <a name="create-a-new-command"></a>新しいコマンドを作成する
 
 これで、コマンドを作成できるようになりました。 1つの発話 `turn on the tv` を取得して、メッセージ `Ok, turning on the TV`で応答する例を使用してみましょう。
@@ -78,10 +97,10 @@ ms.locfileid: "74976623"
 
 コマンドは、次のセットです。
 
-| Group            | 説明                                                                                                                 |
+| Group            | [説明]                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | 例文 | 発話の例では、ユーザーはこのコマンドを言ってトリガーすることができます。                                                                 |
-| parameters       | コマンドを完了するために必要な情報                                                                                |
+| パラメーター       | コマンドを完了するために必要な情報                                                                                |
 | 完了ルール | コマンドを完了するために実行されるアクション。 たとえば、ユーザーへの応答や、別の web サービスとの通信などです。 |
 | 高度なルール   | より具体的または複雑な状況に対処するための追加ルールです。                                                              |
 
@@ -116,12 +135,11 @@ turn on the tv
 > [!div class="mx-imgBorder"]
 > ![完了ルールの作成](media/custom-speech-commands/create-basic-completion-response-rule.png)
 
-
-| Setting    | 推奨値                        | 説明                                        |
-| ---------- | -------------------------------------- | -------------------------------------------------- |
-| 規則の名前  | "ConfirmationResponse"                 | ルールの目的を説明する名前          |
-| 条件 | なし                                   | ルールを実行できるタイミングを決定する条件    |
-| Actions    | SpeechResponse "- Ok, turning on the TV" (了解です。テレビをつけます) | ルール条件が真のときに実行するアクション |
+| 設定    | 推奨値                          | [説明]                                        |
+| ---------- | ---------------------------------------- | -------------------------------------------------- |
+| 規則の名前  | "ConfirmationResponse"                   | ルールの目的を説明する名前          |
+| 条件 | なし                                     | ルールを実行できるタイミングを決定する条件    |
+| アクション    | SpeechResponse "- Ok, turning on the TV" (了解です。テレビをつけます) | ルール条件が真のときに実行するアクション |
 
 ## <a name="try-it-out"></a>試してみる
 
@@ -133,7 +151,7 @@ turn on the tv
 - 「turn on the tv」と入力します。
 - 予期される応答:Ok, turning on the tv (了解です。テレビをつけます)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [クイック スタート:パラメーターを使用してカスタム コマンドを作成する (プレビュー)](./quickstart-custom-speech-commands-create-parameters.md)

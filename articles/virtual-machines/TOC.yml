@@ -7,7 +7,17 @@
 - name: VM 拡張機能のドキュメント
   href: ./extensions/overview.md
 - name: ワークロード
-  href: ./workloads/workloads.md
+  items:
+    - name: Red Hat
+      href: /redhat/redhat-overview.md
+    - name: ハイ パフォーマンス コンピューティング
+      href: /hpc/overview.md
+    - name: SAP
+      href: /sap/get-started.md
+    - name: Oracle
+      href: /oracle/oracle-considerations.md
+    - name: メインフレームのホスト変更
+      href: /mainframe-rehosting/overview.md
 - name: クラシック デプロイ
   items:
     - name: クラシック デプロイメントを使用した Linux VM

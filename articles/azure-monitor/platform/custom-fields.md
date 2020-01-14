@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor のカスタム フィールド | Microsoft Docs
+title: Azure Monitor (プレビュー) のカスタムフィールド | Microsoft Docs
 description: Azure Monitor のカスタム フィールド機能を使用すると、収集済みレコードのプロパティに追加される Log Analytics ワークスペース内のレコードから独自の検索可能なフィールドを作成できます。  この記事では、カスタム フィールドを作成するプロセスと、サンプル イベントの詳細なチュートリアルについて説明します。
 ms.service: azure-monitor
 ms.subservice: logs
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/23/2019
-ms.openlocfilehash: 1fa8fb8ee944103626966839def358e68a55d8ac
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 880d3ffa9914a8fc6f27edce06c5d353d7903db4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396879"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースにカスタム フィールドを作成する
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor-preview"></a>Azure Monitor (プレビュー) の Log Analytics ワークスペースでカスタム フィールドを作成する
 
 > [!NOTE]
 > この記事では、Log Analytics ワークスペースでテキスト データの収集時に解析する方法について説明します。 「[Azure Monitor ログのテキスト データの解析](../log-query/parse-text.md)」で説明されているガイダンスに従って、収集後に、クエリ フィルターのテキスト データを解析することをお勧めします。 カスタム フィールドを使用するよりもすぐれた点がいくつかあります。
@@ -125,7 +125,7 @@ Service Control Manager からイベント ID が 7036 のすべてのイベン�
 
 ![クエリによるグループ化](media/custom-fields/query-group.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * 基準となるカスタム フィールドを使用してクエリを作成するための[ログ クエリ](../log-query/log-query-overview.md)について学習します。
 * カスタム フィールドを使用して解析対象の[カスタム ログ ファイル](data-sources-custom-logs.md)を監視します。
 

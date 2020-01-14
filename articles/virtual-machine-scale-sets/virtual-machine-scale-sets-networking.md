@@ -1,6 +1,6 @@
 ---
-title: Azure 仮想マシン スケール セットのネットワーク | Microsoft Docs
-description: Azure 仮想マシン スケール セットのネットワーク プロパティの構成。
+title: Azure 仮想マシン スケール セットのネットワーク
+description: Azure 仮想マシンスケールセットに対して、より高度なネットワークプロパティを構成する方法。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: 5be64ad2b3141791d5612aba84324278ea812875
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 390da9179280a1ab8898d1ccea4df81e3b98805a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244838"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647579"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -29,7 +29,7 @@ ms.locfileid: "72244838"
 この記事で説明されているすべての機能は、Azure Resource Manager テンプレートを使用して構成することができます。 一部の機能については、Azure CLI と PowerShell の例も含まれています。
 
 ## <a name="accelerated-networking"></a>高速ネットワーク
-Azure 高速ネットワークでは、仮想マシンでシングルルート I/O 仮想化 (SR-IOV) が可能になることにより、ネットワークのパフォーマンスが向上します。 高速ネットワークの使用方法について詳しくは、[Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) または [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 仮想マシンの高速ネットワークに関する記事をご覧ください。 スケール セットで高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を **true** に設定します。 例:
+Azure 高速ネットワークでは、仮想マシンでシングルルート I/O 仮想化 (SR-IOV) が可能になることにより、ネットワークのパフォーマンスが向上します。 高速ネットワークの使用方法について詳しくは、[Windows](../virtual-network/create-vm-accelerated-networking-powershell.md) または [Linux](../virtual-network/create-vm-accelerated-networking-cli.md) 仮想マシンの高速ネットワークに関する記事をご覧ください。 スケール セットで高速ネットワークを使用するには、スケール セットの networkInterfaceConfigurations 設定で enableAcceleratedNetworking を **true** に設定します。 次に例を示します。
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -95,11 +95,11 @@ az vmss create \
 スケール セットは、それが作成された VNET とサブネットの特定の DNS 設定を既定で引き継ぎます。 しかし、スケール セットの DNS 設定は直接構成することができます。
 
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>構成可能な DNS サーバーによるスケール セットの作成
-Azure CLI を使用してカスタム DNS 構成を備えたスケール セットを作成するには、 **--dns-servers** 引数とその後に続けたスペース区切りのサーバー IP アドレスを **vmss create** コマンドに追加します。 例:
+Azure CLI を使用してカスタム DNS 構成を備えたスケール セットを作成するには、 **--dns-servers** 引数とその後に続けたスペース区切りのサーバー IP アドレスを **vmss create** コマンドに追加します。 次に例を示します。
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
-Azure テンプレート内でカスタム DNS サーバーを構成するには、スケール セットの networkInterfaceConfigurations セクションに dnsSettings プロパティを追加します。 例:
+Azure テンプレート内でカスタム DNS サーバーを構成するには、スケール セットの networkInterfaceConfigurations セクションに dnsSettings プロパティを追加します。 次に例を示します。
 ```json
 "dnsSettings":{
     "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -109,7 +109,7 @@ Azure テンプレート内でカスタム DNS サーバーを構成するには
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>構成可能な仮想マシン ドメイン名を備えたスケール セットの作成
 CLI を使用して、仮想マシンのカスタム DNS 名が付いたスケール セットを作成するには、**virtual machine scale set create** コマンドに **--vm-domain-name** 引数を追加し、その後にドメイン名を表す文字列を追加します。
 
-Azure テンプレート内でドメイン名を設定するには、スケール セットの **networkInterfaceConfigurations** セクションに **dnsSettings** プロパティを追加します。 例:
+Azure テンプレート内でドメイン名を設定するには、スケール セットの **networkInterfaceConfigurations** セクションに **dnsSettings** プロパティを追加します。 次に例を示します。
 
 ```json
 "networkProfile": {
@@ -154,7 +154,7 @@ Azure テンプレート内でドメイン名を設定するには、スケー�
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>仮想マシンごとにパブリック IP アドレスがあるスケール セットの作成
 CLI を使用して、各仮想マシンにパブリック IP アドレスを割り当てるスケール セットを作成するには、**vmss create** コマンドに **--public-ip-per-vm** パラメーターを追加します。 
 
-Azure テンプレートを使用してスケール セットを作成するには、Microsoft.Compute/virtualMachineScaleSets リソースの API バージョンが少なくとも **2017-03-30** であることを確認し、スケール セットの ipConfigurations セクションに **publicIpAddressConfiguration** JSON プロパティを追加します。 例:
+Azure テンプレートを使用してスケール セットを作成するには、Microsoft.Compute/virtualMachineScaleSets リソースの API バージョンが少なくとも **2017-03-30** であることを確認し、スケール セットの ipConfigurations セクションに **publicIpAddressConfiguration** JSON プロパティを追加します。 次に例を示します。
 
 ```json
 "publicIpAddressConfiguration": {
@@ -169,12 +169,12 @@ Azure テンプレートを使用してスケール セットを作成するに�
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>スケール セットに含まれた仮想マシンのパブリック IP アドレスの照会
 CLI を使用して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを一覧表示するには、**az vmss list-instance-public-ips** コマンドを使用します。
 
-PowerShell を使用して、スケール セットのパブリック IP アドレスを一覧表示するには、_Get-AzPublicIpAddress_ コマンドを使用します。 例:
+PowerShell を使用して、スケール セットのパブリック IP アドレスを一覧表示するには、_Get-AzPublicIpAddress_ コマンドを使用します。 次に例を示します。
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
-また、パブリック IP アドレス構成のリソース ID を直接参照して、パブリック IP アドレスを照会することもできます。 例:
+また、パブリック IP アドレス構成のリソース ID を直接参照して、パブリック IP アドレスを照会することもできます。 次に例を示します。
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
@@ -238,7 +238,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 ```
 
 ## <a name="multiple-ip-addresses-per-nic"></a>NIC ごとの複数の IP アドレス
-スケール セット内の VM に接続されたすべての NIC には、1 つ以上の IP 構成を関連付けることができます。 各構成には、1 つのプライベート IP アドレスが割り当てられます。 また、1 つのパブリック IP アドレス リソースが関連付けられる場合もあります。 いくつの IP アドレスを NIC に割り当てることができるかと、Azure サブスクリプションでいくつのパブリック IP アドレスを使用できるかを理解するには、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページを参照してください。
+スケール セット内の VM に接続されたすべての NIC には、1 つ以上の IP 構成を関連付けることができます。 各構成には、1 つのプライベート IP アドレスが割り当てられます。 また、1 つのパブリック IP アドレス リソースが関連付けられる場合もあります。 いくつの IP アドレスを NIC に割り当てることができるかと、Azure サブスクリプションでいくつのパブリック IP アドレスを使用できるかを理解するには、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページを参照してください。
 
 ## <a name="multiple-nics-per-virtual-machine"></a>仮想マシンごとの複数の NIC
 マシンのサイズに応じて、仮想マシンごとに最大 8 個の NIC を使用することができます。 マシンごとの NIC の最大数については、[VM サイズの記事](../virtual-machines/windows/sizes.md)を参照してください。 VM インスタンスに接続されているすべての NIC は、同じ仮想ネットワークに接続する必要があります。 NIC は異なるサブネットに接続できますが、すべてのサブネットは同じ仮想ネットワークに属している必要があります。
@@ -323,7 +323,7 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 
 アプリケーション セキュリティ グループもスケール セットに直接指定できます。そのためには、スケール セット仮想マシン プロパティのネットワーク インターフェイス IP 構成セクションに参照を追加します。
 
-例: 
+次に例を示します。 
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -401,5 +401,5 @@ az vmss show \
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 Azure 仮想ネットワークの詳細については、「[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。

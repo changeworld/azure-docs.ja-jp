@@ -9,18 +9,18 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 4b07150ac9f35085763786c505d3d746428a542b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e397cfaa9ce521ebe3c2f46ef6cc015bff3112f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839674"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454817"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でのデプロイのためにモデルを準備する方法
 
 Azure Machine Learning Studio (クラシック) が提供するツールは、予測分析モデルを作成し、Azure Web サービスとしてデプロイすることでそのモデルを操作できるようにするために必要です。
 
-これを実行するには、クラシック バージョンの Studio を使用して*トレーニング実験*と呼ばれる実験を作成します。トレーニング実験では、モデルのトレーニング、スコア付け、編集を行います。 満足したら、トレーニング実験をユーザー データがスコア付けされるように構成した*予測実験*に変換することによって、モデルをデプロイする準備を行います。
+これを実行するには、Studio (クラシック) を使用して*トレーニング実験*と呼ばれる実験を作成します。トレーニング実験では、モデルのトレーニング、スコア付け、編集を行います。 満足したら、トレーニング実験をユーザー データがスコア付けされるように構成した*予測実験*に変換することによって、モデルをデプロイする準備を行います。
 
 このプロセスの例は、[チュートリアル 1: 信用リスクの予測](tutorial-part1-credit-risk.md)から開始してください。
 

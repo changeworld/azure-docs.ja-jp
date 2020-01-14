@@ -453,9 +453,9 @@ Visual Studio でプロジェクトに戻ります。 ここで、コピー ア�
 
 パイプライン コードの最初のセクションでは、パラメーターを定義します。
 
-* [https://login.microsoftonline.com/consumers/](`sourceBlobContainer`) ソース BLOB データセットは、パイプラインでこのパラメーターを使用します。
-* [https://login.microsoftonline.com/consumers/](`sinkBlobContainer`) シンク BLOB データセットは、パイプラインでこのパラメーターを使用します。
-* [https://login.microsoftonline.com/consumers/](`receiver`) 成功または失敗のメールを受信者に送信する、パイプライン内の 2 つの Web アクティビティがこのパラメーターを使用します。
+* `sourceBlobContainer`. ソース BLOB データセットは、パイプラインでこのパラメーターを使用します。
+* `sinkBlobContainer`. シンク BLOB データセットは、パイプラインでこのパラメーターを使用します。
+* `receiver`. 成功または失敗のメールを受信者に送信する、パイプライン内の 2 つの Web アクティビティがこのパラメーターを使用します。
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>

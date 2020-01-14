@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 840e8b3bc86281a8c42689b1cb68917741ef2bd9
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: feb7fa0b3f820c3f918fc8a5c817e7fe5fb15fc9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240621"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610405"
 ---
 # <a name="connect-windows-firewall"></a>Windows ファイアウォールの接続
 
@@ -30,7 +30,8 @@ Windows ファイアウォールのログが Azure Sentinel ワークスペー�
 
 
 > [!NOTE]
-> データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
+> - データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
+> - Azure Sentinel と Azure Security Center が同じワークスペースに収集される場合、このコネクタを介して Windows ファイアウォールソリューションを有効にする必要はありません。 この設定を有効にすると、重複したデータは発生しません。 
 
 ## <a name="enable-the-connector"></a>コネクタを有効にする 
 
@@ -56,8 +57,8 @@ Windows ファイアウォールのログが Azure Sentinel ワークスペー�
 
 
 
-## <a name="next-steps"></a>次の手順
-このドキュメントでは、Windows ファイアウォールを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
+## <a name="next-steps"></a>次のステップ
+このドキュメントでは、Windows ファイアウォールを Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 

@@ -1,5 +1,5 @@
 - name: 概要
-  href: redhat-overview.md
+  href: overview.md
 - name: Red Hat Enterprise Linux イメージ
   items:
     - name: Red Hat Enterprise Linux イメージの概要
@@ -9,4 +9,4 @@
 - name: Azure の Red Hat Update Infrastructure
   href: redhat-rhui.md
 - name: Red Hat Enterprise Linux BYOS イメージ プラン
-  href: redhat-byos.md
+  href: byos.md

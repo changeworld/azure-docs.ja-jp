@@ -1,18 +1,15 @@
 ---
 title: REST API を使用して Azure リソースの正常性イベントを取得する |Microsoft Docs
 description: Azure REST API を使用して、Azure リソースの正常性イベントを取得します。
-author: stephbaron
-ms.author: stbaron
-ms.service: service-health
 ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
-ms.openlocfilehash: 6d83aed6910127ceb34b9a694f48ca9c19ab6d18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 353bd65b0466902e450e38677a350a177a1d602c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451384"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>REST API を使用して Resource Health を取得する 
 
@@ -32,14 +29,14 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft
 
 次のヘッダーは必須です｡ 
 
-|要求ヘッダー|説明|  
+|要求ヘッダー|[説明]|  
 |--------------------|-----------------|  
 |*Content-Type:*|必須。 `application/json` を設定します。|  
-|*Authorization:*|必須。 有効な `Bearer` [ アクセス トークン](/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します｡ |  
+|*Authorization:*|必須。 有効な `Bearer` [アクセス トークン](/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します。 |  
 
 ### <a name="uri-parameters"></a>URI パラメーター
 
-| Name | 説明 |
+| Name | [説明] |
 | :--- | :---------- |
 | subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
 | api-version | 要求で使用する API のバージョン。<br /><br /> このドキュメントでは、api-version `2015-04-01` を使用し、上記の URL に含まれています。  |

@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric のセキュリティに関するベスト プラクティス | Microsoft Docs
-description: Azure Service Fabric のセキュリティに関するベスト プラクティスです。
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric セキュリティに関するベスト プラクティス
+description: Azure Service Fabric クラスターとアプリケーションを安全に保つためのベストプラクティスと設計上の考慮事項。
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: fec81e843753656d651c6d5d0b73077a964be9d4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807444"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551762"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric のセキュリティ 
 
@@ -274,7 +265,7 @@ Windows Server 2016 には、Windows Defender ウイルス対策が既定でイ�
 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * Windows Server を実行している VM またはコンピューター上にクラスターを作成する:[Windows Server 用の Service Fabric クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)。
 * Linux を実行している VM またはコンピューター上にクラスターを作成する:[Linux クラスターの作成](service-fabric-cluster-creation-via-portal.md)。

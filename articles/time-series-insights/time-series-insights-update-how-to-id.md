@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 12/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf826c47c61e3714a05dd81fe3eea4e6ee0b03f4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6fd8d6187c86306840c33b3aaf334e71086b20a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012505"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452740"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>タイム シリーズ ID の選択に関するベスト プラクティス
 
@@ -23,23 +23,28 @@ ms.locfileid: "74012505"
 
 ## <a name="choose-a-time-series-id"></a>タイム シリーズ ID の選択
 
-タイム シリーズ ID の選択は、データベースでのパーティション キーの選択のようなものです。 これは、Time Series Insights プレビュー環境を作成しているときに選択されている必要があります。 これは*不変*プロパティです。 つまり、時系列 ID を持つ Time Series Insights プレビュー環境を作成した後は、その環境に合わせて変更することはできません。 
+適切な時系列 ID を選択することが重要です。 タイム シリーズ ID の選択は、データベースでのパーティション キーの選択のようなものです。 これは、Time Series Insights プレビュー環境を作成するときに必要です。 
 
 > [!IMPORTANT]
-> 時系列 ID では大文字と小文字が区別されます。
+> 時系列 ID：
+> * *大文字と小文字を区別する* プロパティ： 大文字と小文字の区別は、検索、比較、更新、およびパーティション化で使用されます。
+> * *変更できません* プロパティ： 一度作成した後は変更できません。
 
-適切な時系列 ID を選択することが重要です。 ここに、実行可能なベスト プラクティスをいくつか示します。
+> [!TIP]
+> イベント ソースが IoT ハブの場合、時系列 ID は、***iothub-connection-device-id*** になる可能性があります。
+
+従うべき主なベストプラクティスは、次のとおりです：
 
 * 多数 (たとえば数百から数千) の個別の値を備えたパーティション キーを選択します。 多くの場合、これは JSON のデバイス ID、センサー ID、またはタグ ID である可能性があります。
 * タイム シリーズ ID は、[タイム シリーズ モデル](./time-series-insights-update-tsm.md)のリーフ ノード レベルで一意である必要があります。
-* イベント ソースが IoT ハブの場合、時系列 ID は、通常、*iothub-connection-device-id* になります。
 * 時系列 ID のプロパティ名文字列の文字制限は、128 です。 時系列 ID のプロパティ値の場合、文字数の制限は 1024 です。
 * 時系列 ID の一意のプロパティ値がない場合は、null 値として扱われ、一意性制約と同じルールに従います。
 * 時系列 ID として最大 *3* 個のキー プロパティも選択できます。 これらの組み合わせは、時系列 ID を表す複合キーになります。  
-
   > [!NOTE]
   > 3 個のキー プロパティは文字列である必要があります。
   > 一度に 1 つのプロパティではなく、この複合キーに対してクエリを実行する必要があります。
+
+## <a name="select-more-than-one-key-property"></a>複数のキープロパティを選択する
 
 次のシナリオでは、時系列 ID として複数のキー プロパティを選択する場合について説明します。  
 
@@ -67,11 +72,13 @@ ms.locfileid: "74012505"
 }
 ```
 
-Azure portal では、次のようにこの複合キーを入力できます。 
+Azure portal では、次のようにして、複合キーを入力できます： 
 
-`[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]`
+```JSON
+[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]
+```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [データ モデリング](./time-series-insights-update-tsm.md)の詳細を確認します。
 

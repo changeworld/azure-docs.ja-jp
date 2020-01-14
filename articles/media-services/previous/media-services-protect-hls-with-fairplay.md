@@ -65,7 +65,7 @@ Media Services キーの配信側で次の設定が必要です。
 
       次の手順では、FairPlay 用の .pfx 証明書ファイルを生成する方法について説明します。
 
-    1. https://slproweb.com/products/Win32OpenSSL.html から OpenSSL をインストールします。
+    1. [https://slproweb.com/products/Win32OpenSSL.html](https://slproweb.com/products/Win32OpenSSL.html ) から OpenSSL をインストールします。
 
         Apple によって提供される FairPlay 証明書とその他のファイルが含まれるフォルダーに移動します。
     2. コマンド ラインから次のコマンドを実行します。 このコマンドにより、.cer ファイルが .pem ファイルに変換されます。

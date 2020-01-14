@@ -1,5 +1,5 @@
 ---
-title: アプリケーションの登録ポータルから Azure portal の新しいアプリの登録エクスペリエンスへの移行
+title: 新しい Azure portal アプリの登録エクスペリエンス
 titleSuffix: Microsoft identity platform
 description: Azure portal の新しいアプリの登録エクスペリエンスの概要
 services: active-directory
@@ -14,27 +14,27 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f7ed8902da40dc7b5783ebb116a6c993bbbba5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844518"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424651"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>アプリケーションの登録ポータルから Azure portal の新しいアプリの登録エクスペリエンスへの移行
+# <a name="the-new-azure-portal-app-registration-experience"></a>新しい Azure portal アプリの登録エクスペリエンス
 
 Azure portal の新しい[アプリの登録](https://go.microsoft.com/fwlink/?linkid=2083908)エクスペリエンスには、多くの機能強化があります。 以前のエクスペリエンスと呼ばれる、集中型アプリケーションの登録や管理のためのアプリケーション登録ポータル (apps.dev.microsoft.com) エクスペリエンスに慣れている場合は、このトレーニング ガイドを利用して新しいエクスペリエンスの使用を開始できます。
 
 ## <a name="whats-not-changing"></a>変更のない事項
 
--   お使いのアプリケーションや関連する構成は、新しいエクスペリエンス内でそのまま見つかります。 アプリケーションを再度登録する必要はなく、アプリケーションのユーザーは再度サインインする必要はありません。
+- お使いのアプリケーションや関連する構成は、新しいエクスペリエンス内でそのまま見つかります。 アプリケーションを再度登録する必要はなく、アプリケーションのユーザーは再度サインインする必要はありません。
 
     > [!NOTE]
     > Azure portal でそれらを見つけるには、アプリケーションの登録に使用したアカウントでサインインする必要があります。 プロファイルのメール アドレスを比較することで、Azure portal にサインインしたユーザーが、アプリケーション登録ポータルにサインインしたユーザーと一致しているかチェックすることをお勧めします。
     > 
     > 場合によって、個人用の Microsoft アカウント (Outlook、Live、Xbox など) を使用し、Azure AD のメール アドレスでサインインすると、以前のエクスペリエンスから Azure portal にアクセスしたときに、Azure AD テナント内で同じメールを使用する異なるアカウントにサインインする事例が見つかりました。 引き続きアプリケーションがないと思われる場合は、サインアウトして、適切なアカウントでサインインしてください。
 
--   個人用の Microsoft アカウントを使用して作成された Live SDK アプリは、Azure portal ではまだサポートされておらず、近い将来については引き続き以前のエクスペリエンスに残されます。
+- 個人用の Microsoft アカウントを使用して作成された Live SDK アプリは、Azure portal ではまだサポートされておらず、近い将来については引き続き以前のエクスペリエンスに残されます。
 
 ## <a name="key-changes"></a>主な変更点
 

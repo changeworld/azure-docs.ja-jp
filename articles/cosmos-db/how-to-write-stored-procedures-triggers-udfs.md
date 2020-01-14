@@ -1,17 +1,17 @@
 ---
-title: Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
+title: ストアドプロシージャ、トリガー、および UDF を Azure Cosmos DB に記述する
 description: Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を定義する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: ffe002e4dced5b5020eb1436ca6d7d577402b077
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533166"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441730"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述する方法
 
@@ -317,7 +317,7 @@ function tax(income) {
 
 ユーザー定義関数を登録して使用する方法の例については、 [Azure Cosmos DB でユーザー定義関数を使用する方法](how-to-use-stored-procedures-triggers-udfs.md#udfs)に関する記事を参照してください。
 
-## <a name="logging"></a>ログの記録 
+## <a name="logging"></a>ログ記録 
 
 ストアド プロシージャ、トリガー、またはユーザー定義関数を使用する場合は、`console.log()` コマンドを使用してステップをログに記録できます。 このコマンドは、次の例に示すように `EnableScriptLogging` が true に設定されている場合に、デバッグ用の文字列をまとめます。
 
@@ -328,7 +328,7 @@ new RequestOptions { EnableScriptLogging = true } );
 Console.WriteLine(response.ScriptLog);
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を記述または作成する方法および概念について説明します。
 

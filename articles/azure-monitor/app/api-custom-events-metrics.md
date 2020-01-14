@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/27/2019
-ms.openlocfilehash: afe2ac60d7b945dd1bb3b8841ae0a7605865f29f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2136ab9a6d0cef7ad5650c8414f9a17b78498abc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432667"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -22,7 +22,7 @@ ms.locfileid: "74893384"
 
 コア API は、`GetMetric` (.NET のみ) のようないくつかの違いは別として、すべてのプラットフォームにわたって同一です。
 
-| 方法 | 使用対象 |
+| 方法 | 使用目的 |
 | --- | --- |
 | [`TrackPageView`](#page-views) |ページ、画面、ブレード、フォーム |
 | [`TrackEvent`](#trackevent) |ユーザー アクションとその他のイベント。 ユーザーの行動を追跡するために、またはパフォーマンスを監視するために使用されます。 |
@@ -80,7 +80,7 @@ Private Dim telemetry As New TelemetryClient
 private TelemetryClient telemetry = new TelemetryClient();
 ``` 
 
-*Node.JS*
+*Node.js*
 
 ```javascript
 var telemetry = applicationInsights.defaultClient;
@@ -138,7 +138,7 @@ telemetry.TrackEvent("WinGame")
 telemetry.trackEvent("WinGame");
 ```
 
-*Node.JS*
+*Node.js*
 
 ```javascript
 telemetry.trackEvent({name: "WinGame"});
@@ -279,7 +279,7 @@ telemetryClient.TrackMetric(sample);
 telemetry.trackMetric("queueLength", 42.0);
 ```
 
-*Node.JS*
+*Node.js*
 
  ```javascript
 telemetry.trackMetric({name: "queueLength", value: 42.0});
@@ -485,7 +485,7 @@ catch (ex)
 }
 ```
 
-*Node.JS*
+*Node.js*
 
 ```javascript
 try
@@ -522,7 +522,7 @@ exceptions
 | summarize sum(itemCount) by type
 ```
 
-重要なスタック情報の大部分は既に個別の変数に抽出されていますが、`details` 構造を分析してさらに詳細な情報を取得できます。 この構造は動的なので、期待する型に結果をキャストする必要があります。 例:
+重要なスタック情報の大部分は既に個別の変数に抽出されていますが、`details` 構造を分析してさらに詳細な情報を取得できます。 この構造は動的なので、期待する型に結果をキャストする必要があります。 次に例を示します。
 
 ```kusto
 exceptions
@@ -556,7 +556,7 @@ telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
 telemetry.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-*Node.JS*
+*Node.js*
 
 ```javascript
 telemetry.trackTrace({
@@ -574,7 +574,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 
 メソッドの出入りなどの診断イベントをログに記録します。
 
- パラメーター | 説明
+ パラメーター | [説明]
 ---|---
 `message` | 診断データ。 名前よりはるかに長くなることがあります。
 `properties` | 文字列と文字列のマップ:ポータルで、[例外のフィルター](https://azure.microsoft.com/documentation/articles/app-insights-api-custom-events-metrics/#properties)に使用される追加のデータ。 既定値は空です。
@@ -585,7 +585,7 @@ trackTrace(message: string, properties?: {[string]:string}, severityLevel?: Seve
 `message` のサイズ制限は、プロパティの制限よりも非常に高くなっています。
 TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、メッセージ中で POST データをエンコードできます。  
 
-加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタリングしたり検索したりすることができます。 例:
+加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタリングしたり検索したりすることができます。 次に例を示します。
 
 *C#*
 
@@ -656,7 +656,7 @@ finally {
 }
 ```
 
-*JavaScript*
+*Node.js*
 
 ```javascript
 var success = false;
@@ -723,7 +723,7 @@ telemetry.flush();
 Thread.sleep(5000);
 ```
 
-*Node.JS*
+*Node.js*
 
 ```javascript
 telemetry.flush();
@@ -826,7 +826,7 @@ var metrics = new Dictionary <string, double>
 telemetry.TrackEvent("WinGame", properties, metrics);
 ```
 
-*Node.JS*
+*Node.js*
 
 ```javascript
 // Set up some properties and metrics:
@@ -992,7 +992,7 @@ context.getProperties().put("Game", currentGame.Name);
 gameTelemetry.TrackEvent("WinGame");
 ```
 
-*Node.JS*
+*Node.js*
 
 ```javascript
 var gameTelemetry = new applicationInsights.TelemetryClient();
@@ -1017,7 +1017,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 [サンプリング](../../azure-monitor/app/api-filtering-sampling.md)は、アプリからポータルに送信されるデータの量を減らすためのパッケージ化ソリューションです。 これにより、表示されるメトリックに影響をあたえることなくデータ量を削減できます。 また、サンプリングを行った場合でも、変わらずに例外、要求、ページ ビューなどの関連する項目間を移動して問題を診断できます。
 
-[詳細情報](../../azure-monitor/app/api-filtering-sampling.md)。
+[詳細については、こちらを参照してください](../../azure-monitor/app/api-filtering-sampling.md)。
 
 ## <a name="disabling-telemetry"></a>テレメトリの無効化
 
@@ -1039,7 +1039,7 @@ telemetry.getConfiguration().setTrackingDisabled(true);
 
 *選択されている標準のコレクターを無効にする*には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) 内の該当する行を削除するか、コメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
-*Node.JS*
+*Node.js*
 
 ```javascript
 telemetry.config.disableAppInsights = true;
@@ -1075,7 +1075,7 @@ TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = True
 ```
 
-*Node.JS*
+*Node.js*
 
 Node.js の場合は、`setInternalLogging` 経由で内部ログを有効にし、`maxBatchSize` を 0 に設定することによって開発者モードを有効にすることができます。これにより、テレメトリは、収集されるとすぐに送信されます。
 
@@ -1148,7 +1148,7 @@ var appInsights = window.appInsights || function(config){ ...
 
 ## <a name="telemetrycontext"></a>TelemetryContext
 
-TelemetryClient には、すべてのテレメトリ データとともに送信される値が含まれる Context プロパティが備わっています。 通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。 例:
+TelemetryClient には、すべてのテレメトリ データとともに送信される値が含まれる Context プロパティが備わっています。 通常、標準のテレメトリ モジュールによって設定されますが、自分で設定することもできます。 次に例を示します。
 
 ```csharp
 telemetry.Context.Operation.Name = "MyOperationName";
@@ -1159,14 +1159,14 @@ telemetry.Context.Operation.Name = "MyOperationName";
 * **Component**:アプリそのバージョン。
 * **Device**:アプリが実行されているデバイスに関するデータ (Web アプリでは、テレメトリを送信するサーバーまたはクライアント デバイスのデータ)。
 * **InstrumentationKey**:テレメトリが表示される Azure 内の Application Insights リソース。 通常、ApplicationInsights.config から取得されます。
-* **Location**:デバイスの地理的な場所。
+* **[場所]** :デバイスの地理的な場所。
 * **Operation**:Web アプリでは現在の HTTP 要求。 他の種類のアプリケーションでは、イベントをグループ化するために、これを設定できます。
-  * **ID**:診断検索でイベントを調べるときに関連項目を見つけることができるように、さまざまなイベントを関連付けるために生成される値。
+  * **[ID]** :診断検索でイベントを調べるときに関連項目を見つけることができるように、さまざまなイベントを関連付けるために生成される値。
   * **Name**:識別子。通常は HTTP 要求の URL です。
   * **SyntheticSource**:null 値または空ではない場合に、要求元がロボットまたは Web テストとして識別されたことを示す文字列。 既定で、メトリックス エクスプローラーの計算から除外されます。
-* **Properties**:すべてのテレメトリ データとともに送信されるプロパティ。 個々 の Track* 呼び出しでオーバーライドできます。
+* **[プロパティ]** :すべてのテレメトリ データとともに送信されるプロパティ。 個々 の Track* 呼び出しでオーバーライドできます。
 * **セッション**:ユーザーのセッション。 ID は生成された値に設定されますが、ユーザーがしばらくの間アクティブでない場合には変更されます。
-* **User**:ユーザー情報。
+* **[ユーザー]** :ユーザー情報。
 
 ## <a name="limits"></a>制限
 
@@ -1197,7 +1197,7 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 * *Track_() の呼び出しでは、どのような例外がスローされることがありますか。*
 
-    なし。 try catch 句で例外をラップする必要はありません。 SDK で問題が発生すると、デバッグ コンソール出力のメッセージが記録されます。メッセージがスルーされる場合は、診断検索にも記録されます。
+    [なし] : try catch 句で例外をラップする必要はありません。 SDK で問題が発生すると、デバッグ コンソール出力のメッセージが記録されます。メッセージがスルーされる場合は、診断検索にも記録されます。
 * *ポータルからデータを取得する REST API はありますか。*
 
     はい、[データ アクセス API](https://dev.applicationinsights.io/) があります。 データを抽出する別の方法としては、[Analytics から Power BI へのエクスポート](../../azure-monitor/app/export-power-bi.md )や[連続エクスポート](../../azure-monitor/app/export-telemetry.md)などがあります。

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: b53bf80774a0715c7a02d837975284e985958635
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 925894aea267e4f100f7bcdb817424b5cdfe6c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459441"
 ---
 # <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
 
@@ -59,7 +59,7 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Windows Virtual Desktop セッション ホスト VM の作成
 
-セッション ホスト VM はいくつかの方法で作成できますが、リモートデスクトップサービス/Windows Virtual Desktop チームは、Azure Resource Manager テンプレートに関連する VM プロビジョニングの問題のみをサポートします。 Azure Resource Manager テンプレートは [Azure Marketplace](https://azuremarketplace.microsoft.com/) および [GitHub](https://github.com/) で入手できます。
+セッションホスト VM はいくつかの方法で作成できますが、Windows Virtual Desktop チームでサポートするのは、[Azure Marketplace](https://azuremarketplace.microsoft.com/) オファリングに関連する VM プロビジョニングの問題のみです。 詳細については、「[Windows Virtual Desktop を使用に関する問題 - Azure Marketplace でのホストプールのプロビジョニング](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering)」 を参照してください。
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Azure Marketplace の "Windows Virtual Desktop – Provision a host pool" オファリング使用時の問題
 
@@ -87,6 +87,27 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
     #create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%
     2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
     ```
+
+### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>エラー:"テンプレートのデプロイが有効ではありません"というエラーが表示される
+
+!["テンプレートのデプロイ... が有効ではありません"というエラーのスクリーンショットが表示される](media/troubleshooting-marketplace-validation-error-generic.png)
+
+特定のアクションを実行する前に、アクティビティ ログを確認して、失敗したデプロイの検証に関する詳細なエラーを確認する必要があります。
+
+アクティビティ ログのエラーを表示するには、次のようにします:
+
+1. 現在の Azure Marketplace デプロイ オファリングを終了します。
+2. 上部の検索バーで、**アクティビティ ログ** を検索して選択します。
+3. **デプロイの検証** という名前の **[失敗]** の状態を示すアクティビティを検索して、アクティビティを選択します。
+   ![ **失敗** 状態での各々の "デプロイの検証" 操作スクリーンショット](media/troubleshooting-marketplace-validation-error-activity-summary.png)
+
+4. [JSON] を選択し、"statusMessage" フィールドが表示されるまで、画面の一番下までスクロールします。
+   ![失敗したアクティビティのスクリーンショット。JSON テキストの statusMessage メッセージプロパティを囲む赤いボックスがあります。](media/troubleshooting-marketplace-validation-error-json-boxed.png)
+
+操作テンプレートがクォータ制限を超えた場合は、次のいずれかの方法で修正できます:
+
+ - 最初に使用したパラメーターで Azure Marketplace を実行しますが、今回は、使用する VM と VM コアの数を減らすことができます。
+ - ブラウザーで **[statusMessage]** フィールドに表示されているリンクを開き、指定した VM SKU の Azure サブスクリプションのクォータを増やす要求を送信します。
 
 ## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Azure Resource Manager テンプレートと PowerShell Desired State Configuration (DSC) エラー
 
@@ -342,13 +363,14 @@ GitHub の Azure Resource Manager テンプレートを実行している場合�
 - IsServicePrincipal: **true**
 - AadTenantId:作成したサービス プリンシパルの Azure AD テナント ID
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - Windows Virtual Desktop トラブルシューティングの概要とエスカレーション トラックについては、「[トラブルシューティングの概要、フィードバック、サポート](troubleshoot-set-up-overview.md)」を参照してください。
-- Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、「[セッション ホスト仮想マシンの構成](troubleshoot-vm-configuration.md)」を参照してください。
-- Windows Virtual Desktop クライアント接続の問題を解決するには、「[リモート デスクトップ クライアントの接続](troubleshoot-client-connection.md)」を参照してください。
+- Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
+- Windows Virtual Desktop クライアント接続の問題をトラブルシューティングするには、[Windows Virtual Desktop サービス接続](troubleshoot-service-connection.md) に関するページを参照してください。
+- リモート デスクトップ クライアントの問題をトラブルシューティングするには、[リモート デスクトップ クライアントのトラブルシューティング](troubleshoot-client.md) に関するページを参照してください
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
-- サービスの詳細については、[Windows Virtual Desktop 環境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)に関するページを参照してください。
-- トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)」を参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」をご覧ください。
-- デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)に関するページを参照してください。
+- サービスの詳細については、[Windows Virtual Desktop 環境](environment-setup.md)に関するページを参照してください。
+- トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md)」を参照してください。
+- 監査アクションについては、「 [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)」をご覧ください。
+- デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](../azure-resource-manager/resource-manager-deployment-operations.md)に関するページを参照してください。

@@ -4,16 +4,16 @@ description: ダウンストリーム デバイスまたはリーフ デバイ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/08/2019
+ms.date: 12/08/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 719ec736fd2f28f8d8b3b226109bc988c872d10f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 20de7bc55a62a44d1fa852d86705e7596e1776d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457129"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434432"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -23,7 +23,7 @@ ms.locfileid: "74457129"
 
 1. ゲートウェイ デバイスは、ダウンストリーム デバイスに安全に接続し、ダウンストリーム デバイスからの通信を受信し、正しい宛先にメッセージをルーティングできる必要があります。 詳細については、「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」を参照してください。
 2. ダウンストリーム デバイスは、IoT Hub で認証を行うためにデバイス ID が必要であり、そのゲートウェイ デバイス経由で通信することを認識している必要があります。 詳細については、「[Azure IoT Hub に対するダウンストリーム デバイスの認証を行う](how-to-authenticate-downstream-device.md)」を参照してください。
-3. **ダウンストリーム デバイスは、そのゲートウェイ デバイスに安全に接続できる必要があります。**
+3. **ダウンストリームデバイスは、ゲートウェイデバイスに安全に接続される必要があります。**
 
 この記事では、ダウンストリーム デバイスの接続に関する一般的な問題を示し、ダウンストリーム デバイスを設定するための次のような手順を説明します。 
 
@@ -35,7 +35,8 @@ ms.locfileid: "74457129"
 
 ## <a name="prerequisites"></a>前提条件 
 
-「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」で生成された **azure-iot-test-only.root.ca.cert.pem** 証明書ファイルを、ダウンストリーム デバイスで利用できるようにします。 ダウンストリーム デバイスは、この証明書を使用してゲートウェイ デバイスの ID を検証します。 
+* 「[透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する](how-to-create-transparent-gateway.md)」で生成された **azure-iot-test-only.root.ca.cert.pem** 証明書ファイルを、ダウンストリーム デバイスで利用できるようにします。 ダウンストリーム デバイスは、この証明書を使用してゲートウェイ デバイスの ID を検証します。 
+* 「[Azure IoT Hub に対するダウンストリームデバイスの認証を行う](how-to-authenticate-downstream-device.md)」の説明に従って、ゲートウェイデバイスを指すように変更された接続文字列を取得します。
 
 ## <a name="prepare-a-downstream-device"></a>ダウンストリーム デバイスを準備する
 
@@ -194,7 +195,7 @@ Windows ホストで OpenSSL または別の TLS ライブラリを使用して�
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
 
-このコマンドは、MQTTS (ポート 8883) 経由の接続をテストします。 別のプロトコルを使用している場合は、AMQPS (5671) または HTTPS (433) に合わせて必要に応じてコマンドを調整します。
+このコマンドは、MQTTS (ポート 8883) 経由の接続をテストします。 別のプロトコルを使用している場合は、AMQPS (5671) または HTTPS (433) の必要に応じてコマンドを調整する
 
 このコマンドの出力は、チェーン内のすべての証明書に関する情報を含む、長い出力になる場合があります。 接続に成功すると、`Verification: OK` または `Verify return code: 0 (ok)` のような行が表示されます。
 
@@ -208,6 +209,6 @@ openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azu
 2. そのゲートウェイ ホスト名は IP アドレスに解決できますか? DNS を使用するか、またはリーフ デバイスの host ファイル エントリを追加することによって、断続的な接続を解決できます。
 3. ファイアウォールの通信ポートは開いていますか? 使用されるプロトコル (MQTTS:8883/AMQPS:5671/HTTPS:433) に基づく通信を、ダウンストリーム デバイスと透過的な IoT Edge の間で可能にする必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 IoT Edge を使用して、どのような方法でダウンストリーム デバイスに[オフライン機能](offline-capabilities.md)を拡張できるかについて学びます。 

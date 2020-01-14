@@ -1,25 +1,16 @@
 ---
-title: Service Fabric クラスター リソース マネージャーの概要 | Microsoft Docs
-description: Service Fabric クラスター リソース マネージャーについての概要。
-services: service-fabric
-documentationcenter: .net
+title: Service Fabric Cluster Resource Manager の概要
+description: アプリケーションのサービスのオーケストレーションを管理する方法である Service Fabric Cluster Resource Manager について説明します。
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: cfab735b-923d-4246-a2a8-220d4f4e0c64
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e9b1cc8b66be36a0a77118f4de672c9411433ba5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da9205f5d95eaf1b4dc655ee727ab8a4fe90893d
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743661"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563328"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Service Fabric クラスター リソース マネージャーの概要
 従来、IT システムまたはオンライン サービスの管理とは、特定の物理コンピューターまたは仮想マシンを特定のサービスまたはシステム専用にすることを意味していました。 サービスは階層として設計されていました。 "Web" 階層と、"データ" または "ストレージ" 階層があります。 アプリケーションには、要求が出入りするメッセージング階層と、キャッシュ専用の一連のコンピューターがあります。 ワークロードの階層または種類にはそれぞれ専用のコンピューターが使用されていました。データベースには 2 個の専用コンピューターが、Web サーバーには数個が使用されました。 特定の種類のワークロードがそのワークロード用のコンピューターの能力を超えた場合は、そのワークロード用に構成されたコンピューターの数をその階層に増やしていました。 ただし、すべてのワークロードを簡単にスケール アウトできる訳ではありません。通常はコンピューターを大きなコンピューターで置き換えるデータ層では特にそうですが、 簡単です。 マシンで障害が発生した場合、マシンが復元されるまで、アプリケーションのその部分の処理能力が低下します。 まだ (楽しくはないにしても) 十分に簡単です。
@@ -53,7 +44,7 @@ Microsoft では、この環境に対応している開発者およびオペレ�
 
 クラスター リソース マネージャーはサービスを移動させる役割を担うため、ネットワーク ロード バランサーにあるものとは違った機能セットを持っています。 これは、ネットワーク ロード バランサーは、その場所がサービス自体の実行に最適ではない場合でも、サービスが既に配置されている場所にネットワーク トラフィックを配信するためです。 クラスター内のリソースが効率的に活用されるようにするため、Service Fabric クラスター リソース マネージャーは、根本的に異なる方法を採用しています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - クラスター リソース マネージャー内のアーキテクチャと情報フローについては、[こちらの記事](service-fabric-cluster-resource-manager-architecture.md)をご確認ください
 - Cluster Resource Manager には、クラスターを記述するためのさまざまなオプションがあります。 メトリックの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関するこの記事を参照してください。
 - サービスの構成の詳細については、[サービスの構成についての学習](service-fabric-cluster-resource-manager-configure-services.md)に関する記事を参照してください。

@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8025228275afeb3f23268db759eb7659b9887132
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: cdddf284028c6fc9749082e1991e5b9dee4acf99
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670793"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560370"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -35,22 +35,24 @@ Azure Storage では、巡回冗長検査 (CRCs) を使用して、格納デー�
 | シナリオ                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (プレビュー)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | データ センター内でノードを使用できない                                                                 | はい                             | はい                              | はい                                  | はい                                  |
-| データ センター全体 (ゾーンまたは非ゾーン) が使用できなくなる                                           | いいえ                              | 可能                              | はい                                  | はい                                  |
-| リージョン全体の停止                                                                                     | いいえ                              | いいえ                               | 可能                                  | はい                                  |
+| データ センター全体 (ゾーンまたは非ゾーン) が使用できなくなる                                           | いいえ                              | はい                              | はい                                  | はい                                  |
+| リージョン全体の停止                                                                                     | いいえ                              | いいえ                               | はい                                  | はい                                  |
 | リージョン全体が使用できなくなった場合に (リモートの geo 冗長化されたリージョンの) データへの読み取りアクセス | いいえ                              | いいえ                               | はい (RA-GRS を使用)                                   | はい (RA-GZRS を使用)                                 |
-| 指定された 1 年間にわたって \_\_ オブジェクトの持続性を提供するように設計                                          | 99.999999999% (イレブン ナイン) 以上 | 99.9999999999% (トゥエルブ ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 |
-| サポートされるストレージ アカウントの種類                                                                   | GPv2、GPv1、BLOB                | GPv2                             | GPv2、GPv1、BLOB                     | GPv2                     |
-| 読み取り要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | GRS の場合、99.9% 以上 (クール アクセス層の場合、99%)<br /><br />RA-GRS の場合、99.99% 以上 (クール アクセス層の場合、99.9%) | GZRS の場合、99.9% 以上 (クール アクセス層の場合、99%)<br /><br />RA-GZRS の場合、99.99% 以上 (クール アクセス層の場合、99.9%) |
-| 書き込み要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) |
+| 指定された <sup>1</sup> 年間にわたって、\_\_ オブジェクトの持続性を提供するように設計                                          | 99.999999999% (イレブン ナイン) 以上 | 99.9999999999% (トゥエルブ ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 |
+| サポートされるストレージ アカウントの種類 <sup>2</sup>                                                                   | GPv2、GPv1、BlockBlobStorage、BlobStorage、FileStorage                | GPv2、BlockBlobStorage、FileStorage                             | GPv2、GPv1、BLOB                     | GPv2                     |
+| 読み取り要求の可用性 SLA <sup>1</sup>  | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | GRS の場合、99.9% 以上 (クール アクセス層の場合、99%)<br /><br />RA-GRS の場合、99.99% 以上 (クール アクセス層の場合、99.9%) | GZRS の場合、99.9% 以上 (クール アクセス層の場合、99%)<br /><br />RA-GZRS の場合、99.99% 以上 (クール アクセス層の場合、99.9%) |
+| 書き込み要求の可用性 SLA <sup>1</sup>  | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) |
 
-ブロック BLOB、追加 BLOB、ページ BLOB、キュー、テーブル、およびファイルを含むストレージ アカウント内のすべてのデータがレプリケートされます。 ZRS に必要なのは汎用 v2 ストレージ アカウントですが、すべての種類のストレージ アカウントがレプリケートされます。
+<sup>1</sup> Azure Storage の持続性と可用性の保証については、[Azure Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/) に関するページを参照してください。   
 
-さまざまな冗長オプションの料金情報については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページをご覧ください。 
+<sup>2</sup> ストレージ アカウントの種類については、「[Azure ストレージ アカウントの概要](storage-account-overview.md)」　を参照してください。
 
-Azure Storage の持続性と可用性の保証については、[Azure Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/) に関するページをご覧ください。
+ブロック BLOB、追加 BLOB、ページ BLOB、キュー、テーブル、およびファイルを含むあらゆる種類のストレージ アカウントのすべてのデータがレプリケートされます。
+
+さまざまな冗長オプションの料金情報については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページをご覧ください。
 
 > [!NOTE]
-> 現在、Azure Premium Storage でサポートされているのは、ローカル冗長ストレージ (LRS) だけです。
+> 現在、Azure Premium Disk Storage は、ローカル冗長ストレージ (LRS) のみをサポートしています。 Azure Premium ブロック Blob ストレージは、特定のリージョンで、ローカル redudant ストレージ (LRS) とゾーン redudant ストレージ (ZRS) をサポートしています。
 
 ## <a name="changing-replication-strategy"></a>レプリケーション戦略の変更
 
@@ -67,8 +69,9 @@ Azure Storage の持続性と可用性の保証については、[Azure Storage 
 
 ストレージ アカウントを RA-GRS から GRS または LRS に移行した場合、そのアカウントは変換日からさらに 30 日間、RA-GRS として課金されることにご注意ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>参照
 
+- [ストレージ アカウントの概要](storage-account-overview.md)
 - [ローカル冗長ストレージ (LRS):Azure Storage の低コストのデータ冗長性](storage-redundancy-lrs.md)
 - [ゾーン冗長ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)
 - [geo 冗長ストレージ (GRS):Azure Storage のリージョン間レプリケーション](storage-redundancy-grs.md)

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 1abfd8af7e0ef18d4e7bcf05b4726c5d0bcb0a84
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 57351ccf0c6155a1a3532ec9e6481a724e3219aa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151698"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462448"
 ---
 # <a name="workflow-automation-preview"></a>ワークフローの自動化 (プレビュー)
 
@@ -87,14 +87,18 @@ ms.locfileid: "74151698"
 
 [![ロジック アプリを手動でトリガーする](media/workflow-automation/manually-trigger-logic-app.png)](media/workflow-automation/manually-trigger-logic-app.png#lightbox)
 
+## <a name="data-types-schemas"></a>データ型のスキーマ
 
-## <a name="next-steps"></a>次の手順
+ロジック アプリ インスタンスに渡されたセキュリティアラートまたはおすすめ候補イベントの未加工イベントスキーマを表示するには、[ワークフロー オートメーション データ型スキーマ](https://aka.ms/ASCAutomationSchemas) を参照してください。 これは、上記で説明した、 Security Center の組み込みロジック アプリ コネクタを使用していない場合に便利です。この場合には、ロジックアプリの汎用 HTTP コネクタを使用します。すなわち、イベントの JSON スキーマを使用して、必要に応じて手動で解析することができます。
+
+## <a name="next-steps"></a>次のステップ
 
 この記事では、ロジック アプリの作成、Security Center での手動実行、およびそれらの実行の自動化について学習しました。 
 
-その他の関連資料については、次の記事をご覧ください。 
+その他の関連資料については、次の記事を参照してください。 
 
 - [Azure Security Center でのセキュリティに関する推奨事項](security-center-recommendations.md)
 - [Security alerts in Azure Security Center](security-center-alerts-overview.md)
 - [Azure Logic Apps の概要](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)
 - [Logic Apps コネクタ](https://docs.microsoft.com/connectors/)
+- [ワークフロー オートメーション データ型スキーマ](https://aka.ms/ASCAutomationSchemas)

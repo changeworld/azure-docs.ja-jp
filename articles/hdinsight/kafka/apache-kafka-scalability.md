@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.openlocfilehash: ef32a5d3a1439cded6cd092f076e7b26c178cb7a
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/09/2019
+ms.openlocfilehash: 5ce8414376862b66314f754252aba3ab6afdaf25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122105"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435320"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する
 
@@ -25,16 +25,16 @@ HDInsight 上の Kafka は、HDInsight クラスターの仮想マシンのロ�
 
 ![Kafka とマネージド ディスクのアーキテクチャ](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
-## <a name="configure-managed-disks-azure-portal"></a>マネージド ディスクを構成する:Azure ポータル
+## <a name="configure-managed-disks-azure-portal"></a>マネージド ディスクを構成する:Azure portal
 
-1. 「[HDInsight クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)」の手順に従って、Portal を使ってクラスターを作成する一般的な手順を理解します。 Portal の作成プロセスは実行しないでください。
+1. 「[HDInsight クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)」の手順に従って、Portal を使ってクラスターを作成する一般的な手順を理解します。 ポータルの作成プロセスを完了しないでください。
 
-2. __[クラスター サイズ]__ セクションの __[Disks per worker node\(ワーカー ノードごとのディスク数\)]__ フィールドを使って、ディスクの数を構成します。
+2. **[構成と価格]** セクションで、 __[ノード数]__  フィールドを使用して、ディスクの数を構成します。
 
     > [!NOTE]  
     > マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 Premium ディスクは、DS および GS シリーズの VM で使われます。 他の種類の VM はすべて Standard を使います。
 
-    ![ワーカー ノードごとのディスク数が強調表示されている [クラスター サイズ] セクション](./media/apache-kafka-scalability/set-managed-disks-portal.png)
+    ![ワーカー ノードごとのディスク数が強調表示されている [クラスター サイズ] セクション](./media/apache-kafka-scalability/azure-portal-cluster-configuration-pricing-kafka.png)
 
 ## <a name="configure-managed-disks-resource-manager-template"></a>マネージド ディスクを構成する:Resource Manager テンプレート
 
@@ -50,7 +50,7 @@ Kafka クラスターのワーカー ノードによって使われるディス�
 
 [https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json](https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-mirror-cluster-in-vnet-v2.1.json) に、マネージド ディスクを構成する方法を示す完全なテンプレートがあります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 HDInsight 上の Apache Kafka の操作の詳細については、次のドキュメントを参照してください。
 

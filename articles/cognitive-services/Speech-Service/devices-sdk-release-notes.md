@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: wellsi
-ms.openlocfilehash: 3a74f3eb9aece3535f5505d69833a074c2dd0ed2
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 4d5d3cc6159a4601f0a398e87b89eea9b8d3aba6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091197"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446957"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>リリース ノート:Speech Devices SDK
 
@@ -23,14 +23,14 @@ ms.locfileid: "74091197"
 
 ## <a name="speech-devices-sdk-170"></a>Speech Devices SDK 1.7.0:
 
-*   Linux ARM がサポートされるようになりました。
-*   Roobov2 の初期バイナリが提供されます (Linux ARM64)。
-*   Windows ユーザーは、AudioConfig.fromDefaultMicrophoneInput() または AudioConfig.fromMicrophoneInput(deviceName) を使用して、使用するマイクを指定できます。
-*   ライブラリのサイズが最適化されました。
-*   同じ音声/意図認識オブジェクトを使用したマルチターン認識のサポート。
-*   認識の停止中に発生する可能性のある不定期なハングを修正。
-*   サンプル アプリに、ファイルの形式を示す participants.properties サンプル ファイルが追加されました。
-*   [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.7.0 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。
+- Linux ARM がサポートされるようになりました。
+- Roobo ｖ2 対応の初期バイナリが提供されています (Linux ARM64)。
+- Windows ユーザーは、`AudioConfig.fromDefaultMicrophoneInput()` または`AudioConfig.fromMicrophoneInput(deviceName)` を使用して、使用するマイクを指定できます。
+- ライブラリのサイズが最適化されました。
+- 同じ音声/意図認識オブジェクトを使用したマルチターン認識のサポート。
+- 認識の停止中に発生する可能性のある不定期なハングを修正。
+- サンプル アプリに、ファイルの形式を示す participants.properties サンプル ファイルが追加されました。
+- [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) コンポーネントがバージョン 1.7.0 に更新されました。 詳しくは、[リリース ノート](https://aka.ms/csspeech/whatsnew)をご覧ください。
 
 ## <a name="speech-devices-sdk-160"></a>Speech Devices SDK 1.6.0:
 
@@ -68,8 +68,8 @@ ms.locfileid: "74091197"
 
 - [キーワードのインストール](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)が簡素化され、アプリに含まれるようになったため、デバイス上に個別にインストールする必要がなくなりました。
 - キーワードの認識が変更され、2 つのイベントがサポートされるようになりました。
-  - RecognizingKeyword は、音声認識の結果に (未確認の) キーワード テキストが含まれていることを示します。
-  - RecognizedKeyword は、キーワード認識が完了し、特定のキーワードが認識されたことを示します。
+  - `RecognizingKeyword,` は、音声認識の結果に (未確認の) キーワード テキストが含まれていることを示します。
+  - `RecognizedKeyword` は、キーワード認識が完了し、特定のキーワードが認識されたことを示します。
 
 ## <a name="speech-devices-sdk-110-2018-nov-release"></a>Speech Devices SDK 1.1.0:2018-Nov リリース
 

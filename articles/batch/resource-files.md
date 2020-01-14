@@ -1,6 +1,6 @@
 ---
-title: リソース ファイルを作成して使用する - Azure Batch | Microsoft Docs
-description: さまざまな入力ソースから Azure Batch リソース ファイルを作成する方法について説明します。
+title: リソースファイルの作成と使用 - Azure Batch
+description: さまざまな入力ソースから Batch リソースファイルを作成する方法について説明します。 この記事では、VM 上に作成して配置する方法について、いくつかの一般的な方法について説明します。
 services: batch
 author: laurenhughes
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: 9c55b22d1cb85fb645087cf48b54f9d5ac12d58f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e890bce378327fe5b1f4068d6719e6b905404f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322181"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390047"
 ---
 # <a name="creating-and-using-resource-files"></a>リソース ファイルを作成して使用する
 
@@ -106,7 +106,7 @@ Batch ジョブには、すべてが同じ共通ファイルを使用する複�
 
 タスクが必要とするファイル数を最小限に抑える方法がない場合、リソース ファイルのストレージ コンテナーを参照する 1 つのリソース ファイルを作成することで、タスクを最適化できます。 これを実行するには、Azure ストレージ コンテナーにリソース ファイルを配置して、リソース ファイルのさまざまな「コンテナー」モードを使用します。 BLOB プレフィックス オプションを使用して、タスク用にダウンロードされるファイルのコレクションを指定します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - リソース ファイルの代替としての[アプリケーション パッケージ](batch-application-packages.md)について説明します。
 - リソース ファイルにコンテナーを使用することの詳細については、「[Container workloads](batch-docker-container-workloads.md)」(コンテナー ワークロード) を参照してください。

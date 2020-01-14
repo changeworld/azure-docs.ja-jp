@@ -1,24 +1,20 @@
 ---
-title: Site Recovery を使用した Azure へのディザスター リカバリー時の VMware VM と物理サーバーのフェールオーバーとフェールバック | Microsoft Docs
-description: Site Recovery を使用した Azure へのディザスター リカバリー時に、VMware VM と物理サーバーを Azure にフェールオーバーする方法と、オンプレミス サイトにフェールバックする方法について学習します。
-author: rayne-wiselman
-manager: carmonm
+title: Site Recovery を使用して VMware VM を Azure にフェールオーバーする
+description: Azure Site Recovery で VMware VM を Azure にフェールオーバーする方法について説明します
 ms.service: site-recovery
-services: site-recovery
 ms.topic: tutorial
-ms.date: 08/22/2019
-ms.author: raynew
+ms.date: 12/16/2019
 ms.custom: MVC
-ms.openlocfilehash: 852193e137eab10d1e46c5ba6ae6636d530095be
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 8501bb1a998eb08984a118bfa5d52d1e3f3e4f84
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972191"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498088"
 ---
-# <a name="fail-over-and-fail-back-vmware-vms"></a>VMware VM のフェールオーバーとフェールバック
+# <a name="fail-over--vmware-vms"></a>VMware VM をフェールオーバーする
 
-この記事では、オンプレミスの VMware 仮想マシン (VM) を [Azure Site Recovery](site-recovery-overview.md) にフェールオーバーする方法について説明します。
+この記事では、オンプレミスの VMware 仮想マシン (VM) を [Azure Site Recovery](site-recovery-overview.md) を使用して Azure にフェールオーバーする方法について説明します。
 
 これは、オンプレミスのマシンを対象に Azure へのディザスター リカバリーを設定する方法について説明するシリーズの 5 番目のチュートリアルです。
 
@@ -26,28 +22,21 @@ ms.locfileid: "69972191"
 
 > [!div class="checklist"]
 > * VMware VM のプロパティが Azure の要件に準拠していることを確認する。
-> * Azure へのフェールオーバーを実行する。
+> * 特定の VM を Azure にフェールオーバーする。
 
 > [!NOTE]
 > チュートリアルでは、シナリオの最も簡単なデプロイ パスを示します。 可能であれば既定のオプションが使用されます。可能な設定とパスがすべて示されているわけではありません。 フェールオーバーについて詳しく学習する場合は、「[Fail over VMs and physical servers](site-recovery-failover.md)」 (VM と物理サーバーをフェールオーバーする) を参照してください。
+
+さまざまな種類のフェールオーバーの[詳細を参照してください](failover-failback-overview.md#types-of-failover)。 1 つの復旧計画で複数の VM をフェールオーバーする場合は、[この記事](site-recovery-failover.md)を参照してください。
 
 ## <a name="before-you-start"></a>開始する前に
 
 前のチュートリアルを完了します。
 
 1. VMware VM、Hyper-V VM、および物理マシンから Azure へのオンプレミス ディザスター リカバリー用に [Azure を設定](tutorial-prepare-azure.md)したことを確認します。
-2. オンプレミスの [VMware](vmware-azure-tutorial-prepare-on-premises.md) または [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) 環境をディザスター リカバリー用に準備します。 物理サーバーのディザスター リカバリーを設定している場合は、[サポート マトリックス](vmware-physical-secondary-support-matrix.md)を確認してください。
-3. [VMware VM](vmware-azure-tutorial.md)、[Hyper-V VM](hyper-v-azure-tutorial.md)、または[物理マシン](physical-azure-disaster-recovery.md)のディザスター リカバリーを設定します。
+2. ディザスター リカバリーのためにオンプレミスの [VMware](vmware-azure-tutorial-prepare-on-premises.md) 環境を準備します。 
+3. [VMware VM](vmware-azure-tutorial.md) のディザスター リカバリーを設定します。
 4. [ディザスター リカバリー訓練](tutorial-dr-drill-azure.md)を実行して、すべてが予想どおりに動作することを確認します。
-
-## <a name="failover-and-failback"></a>フェールオーバーとフェールバック
-
-フェールオーバーとフェールバックには 4 つの段階があります。
-
-1. **Azure にフェールオーバーする:** オンプレミスのプライマリ サイトがダウンしたときに、マシンを Azure にフェールオーバーします。 フェールオーバー後、レプリケートされたデータから Azure VM が作成されます。
-2. **Azure VM を再保護する:** Azure で Azure VM を再保護します。これにより、それらでオンプレミスの VMware VM へのレプリケートが開始されます。 再保護中は、データ一貫性を保証できるようにオンプレミス VM を無効にします。
-3. **オンプレミスにフェールオーバーする:** オンプレミス サイトが稼働を開始したら、フェールオーバーを実行して Azure からフェールバックします。
-4. **オンプレミス VM を再保護する:** データがフェールバックされたら、フェールバック先のオンプレミスの VM を再保護します。これにより、それらで Azure へのレプリケートが開始されます。
 
 ## <a name="verify-vm-properties"></a>VM のプロパティを確認する
 
@@ -77,10 +66,10 @@ ms.locfileid: "69972191"
 
 1. **[設定]**  >  **[レプリケートされたアイテム]** で、フェールオーバーする VM を選択してから、 **[フェールオーバー]** を選びます。
 2. **[フェールオーバー]** で、フェールオーバー先の**復旧ポイント**を選択します。 次のいずれかのオプションを使うことができます。
-   * **[最新]** : 最初に、Site Recovery に送信されるすべてのデータを処理します。 フェールオーバー後に作成された Azure VM では、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータが保持されているため、最も低い復旧ポイントの目標 (RPO) が提供されます。
+   * **Latest**:最初に、Site Recovery に送信されるすべてのデータを処理します。 フェールオーバー後に作成された Azure VM では、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータが保持されているため、最も低い復旧ポイントの目標 (RPO) が提供されます。
    * **最後に処理があった時点**:Site Recovery によって処理された最新の復旧ポイントに VM をフェールオーバーします。 このオプションでは、未処理のデータの処理に時間がかからないため、低い RTO (回復ポイントの目標) が提供されます。
    * **最新のアプリ整合性**:このオプションでは、Site Recovery によって処理されたアプリ整合性の最新の復旧ポイントに VM をフェールオーバーします。
-   * **カスタム**:このオプションを使用して、復旧ポイントを指定することができます。
+   * **Custom**:このオプションを使用して、復旧ポイントを指定することができます。
 
 3. フェールオーバーをトリガーする前にソース VM のシャットダウンを試行するには、 **[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 シャットダウンが失敗した場合でも、フェールオーバーは続行されます。 フェールオーバーの進行状況は **[ジョブ]** ページで確認できます。
 
@@ -98,7 +87,7 @@ ms.locfileid: "69972191"
 
 ## <a name="connect-to-failed-over-vm"></a>フェールオーバーされた VM に接続する
 
-1. リモート デスクトップ プロトコル (RDP) と Secure Shell (SSH) を使用して、フェールオーバー後の Azure VM に接続する場合は、[要件が満たされていることを確認](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)します。
+1. リモート デスクトップ プロトコル (RDP) および Secure Shell (SSH) を使用してフェールオーバー後に Azure VM に接続する場合は、[要件が満たされていることを確認します]((ailover-failback-overview.md#connect-to-azure-after-failover)。
 2. フェールオーバー後は、VM に移動し、それに[接続する](../virtual-machines/windows/connect-logon.md)ことで検証します。
 3. フェールオーバー後に別の復旧ポイントを使用する場合は、 **[復旧ポイントの変更]** を使用します。 次の手順でフェールオーバーをコミットした後、このオプションは使用できなくなります。
 4. 検証後に、 **[コミット]** を選択して、フェールオーバー後の VM の復旧ポイントを最終処理します。
@@ -107,7 +96,7 @@ ms.locfileid: "69972191"
 >[!TIP]
 > フェールオーバー後に接続の問題が発生した場合は、[トラブルシューティング ガイド](site-recovery-failover-to-azure-troubleshoot.md)に従ってください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 フェールオーバー後、Azure VM をオンプレミスに再保護します。 次に、VM を再保護してオンプレミス サイトにレプリケートした後、準備が整ったら Azure からフェールバックします。
 

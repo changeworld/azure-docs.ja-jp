@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: a57d1c85384204c26e75f7138b9514f2b3297bef
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823310"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75691017"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Azure SQL Database での単一データベース、プールされたデータベース、インスタンス データベースを使用したトランザクション レプリケーション
 
@@ -80,13 +80,14 @@ ms.locfileid: "73823310"
   ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>インスタンス データベースとオンプレミス システムのサポート性マトリックス
   インスタンス データベースのレプリケーション サポータビリティ マトリックスは、SQL Server オンプレミスのものと同じです。 
   
-  | **発行元**   | **ディストリビューター** | **サブスクライバー** |
+| **発行元**   | **ディストリビューター** | **サブスクライバー** |
 | :------------   | :-------------- | :------------- |
-| SQL Server 2017 | SQL Server 2017 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
-| SQL Server 2016 | SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
-| SQL Server 2014 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
-| SQL Server 2012 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
-| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
+| SQL Server 2019 | SQL Server 2019 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/>  |
+| SQL Server 2017 | SQL Server 2019 <br/>SQL Server 2017 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 |
+| SQL Server 2016 | SQL Server 2019 <br/>SQL Server 2017 <br/> SQL Server 2016 | SQL Server 2019 <br/> SQL Server 2017 <br/>SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 |
+| SQL Server 2014 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>| SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |
+| SQL Server 2012 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> | SQL Server 2016 <br/> SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 | 
+| SQL Server 2008 R2 <br/> SQL Server 2008 | SQL Server 2019 <br/> SQL Server 2017 <br/> SQL Server 2016 <br/> SQL Server 2014 <br/>SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 |  SQL Server 2014 <br/> SQL Server 2012 <br/> SQL Server 2008 R2 <br/> SQL Server 2008 <br/>  |
 | &nbsp; | &nbsp; | &nbsp; |
 
 ## <a name="requirements"></a>必要条件
@@ -95,11 +96,13 @@ ms.locfileid: "73823310"
 - レプリケーションで使用される作業ディレクトリの Azure ストレージ アカウント共有。 
 - Azure ファイル共有にアクセスするために、マネージド インスタンス サブネットのセキュリティ規則でポート 445 (TCP アウトバウンド) を開く必要があります。 
 - ポート 1433 (TCP アウトバウンド) は、パブリッシャーおよびディストリビューターがマネージド インスタンス上にあり、サブスクライバーがオンプレミスにある場合は、開かれている必要があります。
+- すべての種類のレプリケーション参加者 (パブリッシャー、ディストリビューター、プル サブスクライバー、プッシュ サブスクライバー) をマネージド インスタンスに配置できますが、パブリッシャーとディストリビューターは両者ともクラウドに配置するか、または両者ともオンプレミスに配置する必要があります。
+- パブリッシャー、ディストリビューター、および/またはサブスクライバーが異なる仮想ネットワークに存在する場合、パブリッシャーとディストリビューターの間にVPNピアリングがあり、かつ/またはディストリビューターとサブスクライバーの間にVPNピアリングがあるように、各エンティティ間にVPNピアリングを確立する必要があります。 
 
 
 >[!NOTE]
 > - ディストリビューターがインスタンス データベースでサブスクライバーがオンプレミスであるときに発信ネットワーク セキュリティ グループ (NSG) ポート 445 がブロックされている場合、Azure Storage ファイルに接続するときは、エラー 53 が発生する可能性があります。 [vNet NSG を更新して](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)、この問題を解決します。 
-> - マネージド インスタンス上のパブリッシャーおよびディストリビューター データベースが[自動フェールオーバー グループ](sql-database-auto-failover-group.md)を使用する場合、マネージド インスタンス管理者は、[フェールオーバーの発生後、古いプライマリ上のすべてのパブリケーションを削除し、新しいプライマリ上で再構成する](sql-database-managed-instance-transact-sql-information.md#replication)必要があります。
+
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>データ同期とトランザクション レプリケーションの比較
 
@@ -137,17 +140,57 @@ ms.locfileid: "73823310"
  
 この構成では、Azure SQL Database (単一データベース、プールされたデータベース、インスタンス データベース) がサブスクライバーです。 この構成では、オンプレミスから Azure への移行がサポートされます。 サブスクライバーが単一データベースまたはプールされたデータベース上にある場合は、プッシュ モードにする必要があります。  
 
+## <a name="with-failover-groups"></a>フェイルオーバーグループを使う
 
-## <a name="next-steps"></a>次の手順
+Geo レプリケーションが、[フェールオーバーグループ](sql-database-auto-failover-group.md) の**パブリッシャー** または **ディストリビューター** 上で有効化されている場合、マネージドインスタンス管理者は、フェイルオーバー発生後、古いプライマリ上のすべてのアプリケーションをクリーンアップして、新しいプライマリ上でそれらを再構成する必要があります。 このシナリオでは、次のアクティビティが必要です。
 
-1. [2 つのマネージド インスタンス間のレプリケーションを構成します](replication-with-sql-database-managed-instance.md)。 
-1. [パブリケーションを作成します](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
-1. Azure SQL Database サーバー名をサブスクライバーとして (`N'azuresqldbdns.database.windows.net` など)、Azure SQL Database 名を宛先データベースとして (**AdventureWorks** など) 使用して、[プッシュ サブスクリプションを作成します](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
-1. [マネージド インスタンスのトランザクション レプリケーションの制限](sql-database-managed-instance-transact-sql-information.md#replication)について学習します
+1. データベース上で実行されているレプリケーション ジョブがある場合は、すべて停止します。
+2. パブリッシャーからサブスクリプションのメタデータを削除するには、パブリッシャー データベース上で次のスクリプトを実行します。
+
+   ```sql
+   EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
+   ```             
+ 
+1. サブスクライバーからサブスクリプションのメタデータを削除します。 サブスクライバー インスタンス上のサブスクリプション データベースで、次のスクリプトを実行します：
+
+   ```sql
+   EXEC sp_subscription_cleanup
+      @publisher = N'<full DNS of publisher, e.g. example.ac2d23028af5.database.windows.net>', 
+      @publisher_db = N'<publisher database>', 
+      @publication = N'<name of publication>'; 
+   ```                
+
+1. パブリッシャーからすべてのレプリケーション オブジェクトを強制的に削除するには、発行されたデータベースで次のスクリプトを実行します。
+
+   ```sql
+   EXEC sp_removedbreplication
+   ```
+
+1. 元のプライマリ インスタンスから以前のディストリビューターを強制的に削除します (ディストリビューターを持つために使用されていた以前のプライマリにフェールバックする場合)。 以前のディストリビューター マネージド インスタンスのマスター データベース上で次のスクリプトを実行します。
+
+   ```sql
+   EXEC sp_dropdistributor 1,1
+   ```
+
+Geo レプリケーションが、フェイルオーバーの **サブスクライバー** インスタンスで有効になっている場合、パブリケーションは、サブスクライバーマネージド インスタンスのフェールオーバーグループのリスナーエンドポイントに接続するように構成されている必要があります。 フェールオーバーが発生した場合、マネージド インスタンス管理者による以降のアクションは、発生したフェールオーバーの種類によって異なります： 
+
+- データ損失のないフェールオーバーの場合、フェールオーバー後もレプリケーションは機能し続けます。 
+- データ損失を伴うフェイルオーバーの場合、レプリケーションも機能します。 失われた変更を再度レプリケートします。 
+- データ損失のあるフェールオーバーでは、データ損失がディストリビューションデータベースの保有期間外の場合、マネージド インスタンス管理者はサブスクリプションデータベースを再初期化する必要があります。 
+
+## <a name="next-steps"></a>次のステップ
+
+- [MI パブリッシャーとサブスクライバーの間でのレプリケーションを構成する](replication-with-sql-database-managed-instance.md)
+- [MI パブリッシャーと MI ディストリビューター、および SQL Server サブスクライバーの間のレプリケーションを構成する](sql-database-managed-instance-configure-replication-tutorial.md)
+- [パブリケーションを作成します](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
+- Azure SQL Database サーバー名をサブスクライバーとして (`N'azuresqldbdns.database.windows.net` など)、Azure SQL Database 名を宛先データベースとして (**AdventureWorks** など) 使用して、[プッシュ サブスクリプションを作成します](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)。 )
+
+
+トランザクションレプリケーションの構成の詳細については、次のチュートリアルを参照してください：
 
 
 
-## <a name="see-also"></a>関連項目  
+## <a name="see-also"></a>参照  
 
 - [MI およびフェールオーバー グループを使用したレプリケーション](sql-database-managed-instance-transact-sql-information.md#replication)
 - [SQL Database へのレプリケーション](replication-to-sql-database.md)

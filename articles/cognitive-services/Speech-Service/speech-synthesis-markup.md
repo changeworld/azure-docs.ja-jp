@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6ffa17010f874eeb82fe8f4c367f0a0ac429979b
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: d97073666a18a3ffb7a88e1d2350f213ef589e6a
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815520"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562529"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML)
 
@@ -55,7 +55,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 **属性**
 
-| Attribute | 説明 | 必須/省略可能 |
+| Attribute | [説明] | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | version | ドキュメント マークアップの解釈に使用される SSML 仕様のバージョンを指定します。 現行バージョンは 1.0 です。 | 必須 |
 | xml:lang | ルート ドキュメントの言語を指定します。 この値には、小文字、2 文字の言語コード (たとえば、**en**)、または言語コードと大文字の国/地域 (たとえば、**EN-US**) を含めることができます。 | 必須 |
@@ -75,9 +75,9 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 **属性**
 
-| Attribute | 説明 | 必須/省略可能 |
+| Attribute | [説明] | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| 名前 | テキスト読み上げの出力に使用される音声を識別します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。 | 必須 |
+| name | テキスト読み上げの出力に使用される音声を識別します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。 | 必須 |
 
 **例**
 
@@ -98,9 +98,9 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 **属性**
 
-| Attribute | 説明 | 必須/省略可能 |
+| Attribute | [説明] | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| 名前 | テキスト読み上げの出力に使用される音声を識別します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。 | 必須 |
+| name | テキスト読み上げの出力に使用される音声を識別します。 サポートされている声の全一覧については、[言語のサポート](language-support.md#text-to-speech)に関するページを参照してください。 | 必須 |
 
 **例**
 
@@ -136,17 +136,19 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 **属性**
 
-| Attribute | 説明 | 必須/省略可能 |
+| Attribute | [説明] | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| type | 話し方を指定します。 現在のところ、話し方は音声に固有です。 | ニューラル音声の話し方を調整する場合は、必須です。 `mstts:express-as` を使用する場合は、型を指定する必要があります。 無効な値を指定すると、この要素は無視されます。 |
+| 型 | 話し方を指定します。 現在のところ、話し方は音声に固有です。 | ニューラル音声の話し方を調整する場合は、必須です。 `mstts:express-as` を使用する場合は、型を指定する必要があります。 無効な値を指定すると、この要素は無視されます。 |
 
 各ニューラル音声でサポートされている話し方を確認するには、次の表を使用してください。
 
-| 音声 | 種類 | 説明 |
+| 音声 | 種類 | [説明] |
 |-------|------|-------------|
 | `en-US-JessaNeural` | type=`cheerful` | ポジティブで幸せな感情を示します |
 | | type=`empathy` | 思いやりと理解を示します |
 | | type=`chat` | カジュアルで緩やかな語調で話します |
+| | type=`newscast` | ニュース放送に似たフォーマルなトーンを示します |
+| | type=`customerservice` | 顧客サービスとして友好的で忍耐強く話します |
 | `zh-CN-XiaoxiaoNeural` | type=`newscast` | ニュース放送に似たフォーマルなトーンを示します |
 | | type=`sentiment` | 感動的なメッセージやストーリーを伝えます |
 
@@ -180,12 +182,12 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 **属性**
 
-| Attribute | 説明 | 必須/省略可能 |
+| Attribute | [説明] | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | strength | 次のいずれかの値を使用して、一時停止の相対的な時間を指定します。<ul><li>なし</li><li>x-weak</li><li>weak</li><li>medium (既定値)</li><li>strong</li><li>x-strong</li></ul> | 省略可能 |
 | time | 一時停止の絶対時間を秒またはミリ秒で指定します。 有効な値の例は、2s および 500 です | 省略可能 |
 
-| Strength | 説明 |
+| Strength | [説明] |
 |----------|-------------|
 | なし、または値が指定されていない場合 | 0 ミリ秒 |
 | x-weak | 250 ミリ秒 |
@@ -251,12 +253,12 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 **属性**
 
-| Attribute | 説明 | 必須/省略可能 |
+| Attribute | [説明] | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | alphabet | `ph` 属性の文字列の発音を合成するときに使用する音標文字を指定します。 アルファベット順を指定する文字列は、小文字で指定する必要があります。 指定できる可能性のあるアルファベットは次のとおりです。<ul><li>ipa &ndash; 国際音標文字</li><li>sapi &ndash; Speech API 音素セット</li><li>ups &ndash; 汎用音素セット</li></ul>アルファベットは、要素内の音素にのみ適用されます。 詳細については、[音標文字リファレンス](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)に関するページを参照してください。 | 省略可能 |
 | ph | `phoneme` 要素内の単語の発音を指定する音素を含む文字列。 指定した文字列に認識されない音素が含まれている場合、テキスト読み上げ (TTS) サービスは SSML ドキュメント全体を拒否し、ドキュメントに指定されている音声出力を生成しません。 | 音素を使用する場合は必須です。 |
 
-**例**
+**使用例**
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -288,14 +290,14 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 **属性**
 
-| Attribute | 説明 | 必須/省略可能 |
+| Attribute | [説明] | 必須/省略可能 |
 |-----------|-------------|---------------------|
-| pitch | テキストのベースラインのピッチを示します。 ピッチは次のように表されます。<ul><li>絶対値。数字の後に "Hz" (ヘルツ) が付いて表されます。 たとえば、600Hz です。</li><li>相対値。前に "+" または "-" が付き、後にピッチの変更量を指定する "Hz" または "st" が付いた数字として表されます。 たとえば、+80Hz または -2st です。 "st" は、変更単位が半音 (標準の全音階での全音の半分) であることを示します。</li><li>定数値:<ul><li>x-low</li><li>低</li><li>中</li><li>高</li><li>x-high</li><li>default</li></ul></li></ul>。 | 省略可能 |
-| contour | ニューラル音声では、音調はサポートされていません。 音調は、音声コンテンツのピッチの変更を、音声出力の指定された時間位置にあるターゲットの配列として表します。 各ターゲットは、パラメーターのペアのセットによって定義されます。 例: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>パラメーターの各セットの最初の値は、ピッチの変更位置をテキストの継続時間の割合として指定します。 2 番目の値は、ピッチの相対値または列挙値を使用して、ピッチを増減する量を指定します (`pitch` を参照)。 | 省略可能 |
+| pitch | テキストのベースラインのピッチを示します。 ピッチは次のように表されます。<ul><li>絶対値。数字の後に "Hz" (ヘルツ) が付いて表されます。 たとえば、600Hz です。</li><li>相対値。前に "+" または "-" が付き、後にピッチの変更量を指定する "Hz" または "st" が付いた数字として表されます。 たとえば、+80Hz または -2st です。 "st" は、変更単位が半音 (標準の全音階での全音の半分) であることを示します。</li><li>定数値:<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>既定値 (default)</li></ul></li></ul>。 | 省略可能 |
+| contour | ニューラル音声では、音調はサポートされていません。 音調は、音声コンテンツのピッチの変更を、音声出力の指定された時間位置にあるターゲットの配列として表します。 各ターゲットは、パラメーターのペアのセットによって定義されます。 次に例を示します。 <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>パラメーターの各セットの最初の値は、ピッチの変更位置をテキストの継続時間の割合として指定します。 2 番目の値は、ピッチの相対値または列挙値を使用して、ピッチを増減する量を指定します (`pitch` を参照)。 | 省略可能 |
 | range  | テキストのピッチの範囲を表す値。 `range` は、`pitch` の記述に使用されるものと同じ絶対値、相対値、または列挙値を使用して表すことができます。 | 省略可能 |
-| rate  | テキストの読み上げ速度を示します。 `rate` は次のように表されます。<ul><li>相対値。既定値の乗数として機能する数字で表されます。 たとえば、値 *1* では速度は変更されません。 値 *.5* では、速度が半分になります。 値 *3* では、速度が 3 倍になります。</li><li>定数値:<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>default</li></ul></li></ul> | 省略可能 |
+| rate  | テキストの読み上げ速度を示します。 `rate` は次のように表されます。<ul><li>相対値。既定値の乗数として機能する数字で表されます。 たとえば、値 *1* では速度は変更されません。 値 *.5* では、速度が半分になります。 値 *3* では、速度が 3 倍になります。</li><li>定数値:<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>既定値 (default)</li></ul></li></ul> | 省略可能 |
 | duration  | 音声合成 (TTS) サービスがテキストを読んでいる間に経過する時間 (秒またはミリ秒)。 たとえば、*2s* または *1800ms* です。 | 省略可能 |
-| ボリューム  | 読み上げている音声の音量レベルを示します。 音量は次のように表されます。<ul><li>絶対値。0.0 から 100.0 (*quietest* から *loudest* まで) の範囲の数字として表されます。 たとえば、75 です。 既定値は 100.0 です。</li><li>相対値。音量の変更量を指定する、前に "+" または "-" が付いた数字として表されます。 たとえば、+10 または -5.5 です。</li><li>定数値:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>default</li></ul></li></ul> | 省略可能 |
+| ボリューム  | 読み上げている音声の音量レベルを示します。 音量は次のように表されます。<ul><li>絶対値。0.0 から 100.0 (*quietest* から *loudest* まで) の範囲の数字として表されます。 たとえば、75 です。 既定値は 100.0 です。</li><li>相対値。音量の変更量を指定する、前に "+" または "-" が付いた数字として表されます。 たとえば、+10 または -5.5 です。</li><li>定数値:<ul><li>silent</li><li>x-soft</li><li>soft</li><li>中</li><li>loud</li><li>x-loud</li><li>既定値 (default)</li></ul></li></ul> | 省略可能 |
 
 ### <a name="change-speaking-rate"></a>読み上げ速度を変更する
 
@@ -371,7 +373,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 **属性**
 
-| Attribute | 説明 | 必須/省略可能 |
+| Attribute | [説明] | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | interpret-as | 要素のテキストのコンテンツの種類を示します。 種類の一覧については、次の表を参照してください。 | 必須 |
 | format | あいまいな形式を持つ可能性のあるコンテンツの種類に対して、要素のテキストの正確な書式設定に関する追加情報を提供します。 SSML では、それらを使用するコンテンツの種類の形式が定義されます (次の表を参照)。 | 省略可能 |
@@ -383,13 +385,13 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 | interpret-as | format | 解釈 |
 |--------------|--------|----------------|
-| address | | テキストはアドレスとして読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />"I'm at 150th court north east redmond washington" (私はワシントン州レドモンド 150th コート ノースイーストにいます)。 |
-| cardinal、number | | テキストは基数として読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />"There are three alternatives" (代替手段は 3 つあります)。 |
-| characters、spell-out | | テキストは、個別の文字 (綴り) として読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />"T E S T"。 |
-| date  | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | テキストは日付として読み上げられます。 `format` 属性では、日付の形式を指定します (*d=日、m=月、y=年*)。 音声合成エンジンで次のように発音されます。<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Today is October nineteenth two thousand sixteen" (今日は 2016 年 10 月 19 日です)。 |
-| digits、number_digit | | テキストは、個別の数字のシーケンスとして読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9"。 |
-| fraction | | テキストは分数として読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />"three eighths of an inch" (1 インチの 8 分の 3)。 |
-| ordinal  | | テキストは序数として読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />"3 つ目のオプションを選択します"。 |
+| address | | テキストはアドレスとして読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />"I'm at 150th court north east redmond washington" (私はワシントン州レドモンド 150th コート ノースイーストにいます)。 |
+| cardinal、number | | テキストは基数として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />"There are three alternatives" (代替手段は 3 つあります)。 |
+| characters、spell-out | | テキストは、個別の文字 (綴り) として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />"T E S T"。 |
+| date  | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | テキストは日付として読み上げられます。 `format` 属性では、日付の形式を指定します (*d=日、m=月、y=年*)。 音声合成エンジンでは次のように発音されます。<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Today is October nineteenth two thousand sixteen" (今日は 2016 年 10 月 19 日です)。 |
+| digits、number_digit | | テキストは、個別の数字のシーケンスとして読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9"。 |
+| fraction | | テキストは分数として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />"three eighths of an inch" (1 インチの 8 分の 3)。 |
+| ordinal  | | テキストは序数として読み上げられます。 音声合成エンジンでは次のように発音されます。<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />"3 つ目のオプションを選択します"。 |
 | telephone  | | テキストは電話番号として読み上げられます。 `format` 属性には、国番号を表す数字を含めることができます。 たとえば、米国の場合は "1"、イタリアの場合は "39" になります。 音声合成エンジンでは、この情報を使用して、電話番号の発音するガイドにすることができます。 電話番号には、国番号を含めることもできます。その場合は、`format` の国番号よりも優先されます。 音声合成エンジンでは次のように発音されます。<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />"My number is area code eight eight eight five five five one two one two" (私の番号は市外局番 888 555 1212 です)。 |
 | time | hms12、hms24 | テキストは時刻として読み上げられます。 `format` 属性では、時刻が 12 時間形式 (hms12) または 24 時間形式 (hms24) のいずれを使用するかを指定します。 時間、分、秒を表す数字を区切るには、コロンを使用します。 有効な時刻の例を次に示します。12:35、1:14:32、08:15、02:50:45。 音声合成エンジンでは次のように発音されます。<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />"The train departs at four A M" (この電車は午前 4 時に発車します)。 |
 
@@ -433,7 +435,7 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 
 **属性**
 
-| Attribute | 説明 | 必須/省略可能 |
+| Attribute | [説明] | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | src | オーディオ ファイルの場所/URL を指定します。 | SSML ドキュメントで audio 要素を使用している場合は必須です。 |
 
@@ -466,7 +468,7 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 
 **属性**
 
-| Attribute | 説明 | 必須/省略可能 |
+| Attribute | [説明] | 必須/省略可能 |
 |-----------|-------------|---------------------|
 | src | バックグラウンド オーディオ ファイルの場所/URL を指定します。 | SSML ドキュメントでバックグラウンド オーディオを使用している場合は必須です。 |
 | ボリューム | バックグラウンド オーディオ ファイルのボリュームを指定します。 **指定可能な値**: `0` から `100`。 既定値は `1` です。 | 省略可能 |
@@ -484,6 +486,6 @@ SSML ドキュメントに含まれるオーディオは、次の要件を満た
 </speak>
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [言語サポート: 音声、ロケール、言語](language-support.md)

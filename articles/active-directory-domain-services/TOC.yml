@@ -49,8 +49,6 @@
       href: ../active-directory/fundamentals/active-directory-whatis.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
     - name: Azure Active Directory のアーキテクチャ
       href: ../active-directory/fundamentals/active-directory-architecture.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
-    - name: 最小特権管理モデルの実装
-      href: /windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
 - name: 方法
   items:
     - name: 共通設定の構成
@@ -107,7 +105,7 @@
           href: deploy-azure-app-proxy.md
         - name: SharePoint Server のプロファイルの同期を有効にする
           href: deploy-sp-profile-sync.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: 一般的なエラー
           href: troubleshoot.md

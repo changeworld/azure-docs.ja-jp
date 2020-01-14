@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 使用時のクエリの問題を診断し、トラブルシューティングする
+title: Azure Cosmos DB を使用する場合のクエリの問題のトラブルシューティング
 description: Azure Cosmos DB の SQL クエリに関する問題を特定、診断、およびトラブルシューティングする方法について説明します。
 author: ginamr
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.date: 07/10/2019
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: fd8e80c7cd7cb71e4e0418d970cf2f328f1a3d79
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 1859fa8f71b5c4c44d6e5da1b6a36ca9d9399516
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184712"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444723"
 ---
 # <a name="troubleshoot-query-performance-for-azure-cosmos-db"></a>Azure Cosmos DB のクエリのパフォーマンスをトラブルシューティングする
 この記事では、Azure Cosmos DB の SQL クエリに関する問題を特定、診断、およびトラブルシューティングする方法について説明します。 Azure Cosmos DB のクエリのパフォーマンスを最適化するには、次のトラブルシューティング手順に従います。 
@@ -26,7 +26,7 @@ ms.locfileid: "74184712"
 
 ## <a name="log-the-executed-sql-query"></a>実行された SQL クエリをログに記録する 
 
-実行された SQL クエリを、ストレージ アカウントまたは診断ログ テーブルに記録できます。 [診断ログを使用した SQL クエリ ログ](monitor-cosmos-db.md#diagnostic-settings)を使用すると、難読化されたクエリを任意のストレージ アカウントに記録できます。 これにより、ログを調べて、より高い RU を使用しているクエリを見つけることができます。 後で、アクティビティ ID を使用して、QueryRuntimeStatistics の実際のクエリと一致させることができます。 クエリは、セキュリティ上の目的で難読化されています。クエリ パラメーター名と where 句の値は、実際の名前と値とは異なります。 ストレージ アカウントへのログ記録を使用すると、実行されたクエリの長期保存を維持できます。  
+実行された SQL クエリを、ストレージ アカウントまたは診断ログ テーブルに記録できます。 [診断ログを使用した SQL クエリ ログ](cosmosdb-monitor-resource-logs.md)を使用すると、難読化されたクエリを任意のストレージ アカウントに記録できます。 これにより、ログを調べて、より高い RU を使用しているクエリを見つけることができます。 後で、アクティビティ ID を使用して、QueryRuntimeStatistics の実際のクエリと一致させることができます。 クエリは、セキュリティ上の目的で難読化されています。クエリ パラメーター名と where 句の値は、実際の名前と値とは異なります。 ストレージ アカウントへのログ記録を使用すると、実行されたクエリの長期保存を維持できます。  
 
 ## <a name="log-query-metrics"></a>ログ クエリ メトリック
 
@@ -117,7 +117,7 @@ ms.locfileid: "74184712"
   * 可能な場合は、パーティション キーでフィルターを使用するクエリを記述します。
   * クエリのパフォーマンスを向上させるために、フィルターで UPPER/LOWER を呼び出さないようにします。 代わりに、挿入時に値の大文字と小文字を正規化します。 それぞれの値について、必要な大文字と小文字を使用した値を挿入するか、元の値と、必要な大文字と小文字を使用した値の両方を挿入します。 
 
-    例:
+    次に例を示します。
     
     ```sql
 
@@ -140,7 +140,7 @@ ms.locfileid: "74184712"
 システム関数の詳細については、記事「[システム関数](sql-query-system-functions.md)」をご覧ください。
 
 ## <a name="check-indexing-policy"></a>インデックス作成ポリシーを確認する
-現在の[インデックス作成ポリシー](index-policy.md)が最適であるか確認するには、次のようにします。
+現在の[インデックス作成ポリシー](index-policy.md)が最適であることを確認するには、次のようにします。
 
   * 読み取りを高速にするために、クエリで使用されるすべての JSON パスがインデックス作成ポリシーに含まれていることを確認します。
   * 書き込みのパフォーマンスを向上させるために、クエリで使用されないパスは除外します。
@@ -171,7 +171,7 @@ Polygon 内のポイントは、反時計回りに指定する必要がありま
 ## <a name="try-upgrading-to-the-latest-sdk-version"></a>最新の SDK バージョンにアップグレードする
 最新の SDK を確認するには、[SDK のダウンロードとリリース ノート](sql-api-sdk-dotnet.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 次のドキュメントを参照して、クエリあたりの RU 数を測定する方法を確認し、実行の統計を取得してクエリの調整などを行います。
 
 * [.NET SDK を使用して SQL クエリの実行メトリックを取得する](profile-sql-api-query.md)

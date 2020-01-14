@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 76d38e4b35111cd2c09685653fb4948f98387132
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2a9e4828428a91c1d1b75fb9d1b9004e52988084
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950784"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425479"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C にアプリケーションを登録する
 
@@ -40,8 +40,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 #### <a name="applicationstabapplications"></a>[アプリケーション](#tab/applications/)
 
-1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
-1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. ポータルツールバーの **[Directory + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 1. アプリケーションの名前を入力します。 たとえば、*webapp1* とします。
 1. **[Include web app/ web API]\(Web アプリ/Web API を含める\)** と **[暗黙的フローを許可する]** には、 **[はい]** を選択します。
@@ -54,16 +55,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     * 応答 URL は、スキーム `https` で始まる必要があります。
     * 応答 URL では大文字と小文字が区別されます。 大文字と小文字の区別は、実行中のアプリケーションの URL パスの場合と一致している必要があります。 たとえば、ご利用のアプリケーションがそのパス `.../abc/response-oidc` の一部として含まれている場合は、応答 URL 内では `.../ABC/response-oidc` と指定しないでください。 Web ブラウザーでは大文字と小文字を区別を区別するものとしてパスが処理されるため、`.../abc/response-oidc` に関連付けられている cookie は、大文字と小文字が一致しない `.../ABC/response-oidc` URL にリダイレクトされた場合に除外される可能性があります。
 
-1. **[作成]** をクリックして、アプリケーションの登録を完了します。
+1. **[作成]** を選択して、アプリケーションの登録を完了します。
 
 #### <a name="app-registrations-previewtabapp-reg-preview"></a>[アプリの登録 (プレビュー)](#tab/app-reg-preview/)
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
-1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. ポータルツールバーの **[Directory + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントが含まれているディレクトリを選択します。
+1. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
 1. アプリケーションの**名前**を入力します。 たとえば、*webapp1* とします。
-1. **任意の組織のディレクトリまたは任意の ID プロバイダーのアカウント**を選択します。
+1. **[任意の組織のディレクトリまたは任意の ID プロバイダーのアカウント]** を選択します。
 1. **[リダイレクト URI]** で、 **[Web]** を選択し、URL テキスト ボックスに「`https://jwt.ms`」と入力します。
 
     リダイレクト URI とは、ユーザーが承認サーバー (この場合は Azure AD B2C) とのやり取りが完了したときにユーザーが送信される、また承認が成功したときにアクセス トークンまたは認証コードが送信されるエンドポイントです。 実稼働アプリケーションでは、通常は `https://contoso.com/auth-response` などの、お使いのアプリが実行されているパブリック アクセスが可能なエンドポイントです。 このチュートリアルの場合のようなテスト目的では、トークンのデコードされたコンテンツを表示する Microsoft が所有する Web アプリケーションである `https://jwt.ms` に設定できます (トークンのコンテンツがお使いのブラウザー外に出ることはありません)。 アプリの開発時には、お使いのアプリケーションがローカルでリッスンする `https://localhost:5000` などのエンドポイントを追加する場合があります。 お使いの登録済みアプリケーションでは、いつでもリダイレクト URI を追加したり、変更したりすることができます。
@@ -106,7 +107,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * * *
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 この記事で学習した内容は次のとおりです。
 

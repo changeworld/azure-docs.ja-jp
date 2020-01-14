@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 87e1d94fe9f86f5916219feac732bf80af1f3121
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: a197f95963e5a4138136f5d336e276ec1c7f7af7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769032"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407626"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps の天気の対象範囲
 
@@ -23,7 +23,7 @@ Azure Maps の情報と精度は、すべての国と地域に対して同じレ
 
 次の表は、国/地域ごとにどのような種類の気象情報を要求できるかを示しています。
 
-| シンボル | 意味 |
+| Symbol | 意味 |
 |--------|---------|
 |*       |ルートに沿った天気、現在の状態、60 分予測、6 時間予測、および 24 時間予測 API が提供されます |
 
@@ -45,7 +45,7 @@ Azure Maps の情報と精度は、すべての国と地域に対して同じレ
 | ボネール島                                  | ✓ |   |  ✓| 
 | ブラジル                                   | ✓ |   |  ✓| 
 | 英領バージン諸島                   | ✓ |   |  ✓| 
-| カナダ                                   | ✓ | ✓ |  ✓| 
+| Canada                                   | ✓ | ✓ |  ✓| 
 | ケイマン諸島                           | ✓ |   |  ✓| 
 | チリ                                    | ✓ |   |  ✓| 
 | コロンビア                                 | ✓ |   |  ✓| 
@@ -88,7 +88,7 @@ Azure Maps の情報と精度は、すべての国と地域に対して同じレ
 | タークス・カイコス諸島                 | ✓ |   |  ✓| 
 | 米国領有小離島                    | ✓ |   |  ✓| 
 | 米国バージン諸島                      | ✓ |   |  ✓| 
-| 米国                            | ✓ | ✓ |  ✓| 
+| United States                            | ✓ | ✓ |  ✓| 
 | ウルグアイ                                  | ✓ |   |  ✓| 
 | ベネズエラ                                | ✓ |   |  ✓| 
 

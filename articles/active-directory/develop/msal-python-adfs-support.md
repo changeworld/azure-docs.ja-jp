@@ -1,5 +1,5 @@
 ---
-title: Python 用 Microsoft Authentication Library での Azure AD FS サポート
+title: Azure AD FS のサポート (MSAL Python)
 titleSuffix: Microsoft identity platform
 description: Python 用 Microsoft Authentication Library での Active Directory フェデレーション サービス (AD FS) サポートについて説明します。
 services: active-directory
@@ -14,12 +14,12 @@ ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d83148f6bfff038f7310ff6fa1f3e1f5a4f8f066
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9a5cbc64883dca66809cfa06dc28a312ce9fedd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921434"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424130"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>MSAL for Python での Active Directory フェデレーション サービスのサポート
 
@@ -60,6 +60,6 @@ MSAL Python は、ADFS 2019 をサポートしています。
 
 ADFS 2016 または ADFS v2 への直接接続はサポートされていません。 AD FS 2016 への直接接続が必要なシナリオをサポートする必要がある場合は、最新バージョンの ADAL Python を使用してください。 オンプレミスのシステムを ADFS 2019 にアップグレードすると、MSAL Python を使用できるようになります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - フェデレーション シナリオについては、「[ホーム領域検出ポリシーを使用して、アプリケーションの Azure Active Directory サインイン動作を構成する](../manage-apps/configure-authentication-for-federated-users-portal.md)」を参照してください。

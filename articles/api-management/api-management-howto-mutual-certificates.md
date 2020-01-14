@@ -1,5 +1,6 @@
 ---
-title: クライアント証明書認証を使用してバックエンド サービスを保護する - Azure API Management | Microsoft Docs
+title: クライアント証明書認証を使用してバックエンド サービスを保護する
+titleSuffix: Azure API Management
 description: Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法を説明します。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: be6441b1fea81f5b947e8deacd8de7b17814aab5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 70c1e22fc7f1fb1cda3fd4af1c2d3aa2cd257201
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073499"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442651"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
 
@@ -31,14 +32,14 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 このガイドは、クライアント証明書認証を使用して API のバックエンド サービスにアクセスするように、API Management サービス インスタンスを構成する方法を示しています。 この記事の手順を行う前に、クライアント証明書の認証用にバックエンド サービスを構成する必要があります ([Azure WebSites で証明書の認証を構成するには、こちらの記事を参照してください][to configure certificate authentication in Azure WebSites refer to this article])。 証明書へのアクセスと、API Management サービスに証明書をアップロードするためのパスワードが必要です。
 
-## <a name="step1"> </a>クライアント証明書のアップロード
+## <a name="step1"> </a>証明書のアップロード
 
-![クライアント証明書を追加する](media/api-management-howto-mutual-certificates/apim-client-cert.png)
+![クライアント証明書を追加する](media/api-management-howto-mutual-certificates/apim-client-cert-new.png)
 
 新しいクライアント証明書をアップロードするには、次の手順を実行します。 API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成][Create an API Management service instance]に関するチュートリアルを参照してください。
 
 1. Azure portal で Azure API Management サービス インスタンスに移動します。
-2. メニューから **[クライアント証明書]** を選択します。
+2. 一覧から **証明書** を選択します。
 3. **[+ 追加]** ボタンをクリックします。  
     ![クライアント証明書を追加する](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
 4. 証明書を参照し、ID とパスワードを入力します。  
@@ -47,22 +48,22 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 > [!NOTE]
 > 証明書は、 **.pfx** 形式でなければなりません。 自己署名証明書も許可されます。
 
-証明書がアップロードされると、 **[クライアント証明書]** に表示されます。  証明書が多数ある場合は、[ゲートウェイ認証にクライアント証明書を使用するように API を構成する][Configure an API to use a client certificate for gateway authentication]ために、必要な証明書の拇印をメモします。
+証明書がアップロードされると、 **[証明書]** に表示されます。  証明書が多数ある場合は、[ゲートウェイ認証にクライアント証明書を使用するように API を構成する][Configure an API to use a client certificate for gateway authentication]ために、必要な証明書の拇印をメモします。
 
 > [!NOTE]
 > 自己署名証明書などを使用するときに証明書チェーンの検証をオフにするには、この FAQ の[項目](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)に記載されている手順に従ってください。
 
-## <a name="step1a"> </a>クライアント証明書の削除
+## <a name="step1a">クライアント証明書の削除</a>
 
 証明書を削除するには、コンテキスト メニューの **[...]** をクリックし、証明書の横にある **[削除]** を選択します。
 
-![クライアント証明書を削除する](media/api-management-howto-mutual-certificates/apim-client-cert-delete.png)
+![クライアント証明書を削除する](media/api-management-howto-mutual-certificates/apim-client-cert-delete-new.png)
 
 証明書が API によって使用されている場合、警告画面が表示されます。 証明書を削除するには、最初に、証明書を使用するように構成されたすべての API からそれを削除する必要があります。
 
 ![クライアント証明書の削除のエラー](media/api-management-howto-mutual-certificates/apim-client-cert-delete-failure.png)
 
-## <a name="step2"> </a>ゲートウェイ認証にクライアント証明書を使用するように API を構成する
+## <a name="step2">API を構成して、ゲートウェイ認証にクライアント証明書を使用する</a>
 
 1. 左側の **[API Management]** メニューの **[API]** をクリックし、API に移動します。  
     ![クライアント証明書を有効にする](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
@@ -71,7 +72,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 3. **[ゲートウェイ サーバーの資格情報]** を **[クライアント証明書]** に変更し、ドロップダウンから証明書を選択します。  
     ![クライアント証明書を有効にする](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. **[Save]** をクリックします。 
+4. **[保存]** をクリックします。 
 
 > [!WARNING]
 > この変更は即時に有効になり、その API の操作の呼び出しは、証明書を使用してバックエンド サーバーを認証するようになります。

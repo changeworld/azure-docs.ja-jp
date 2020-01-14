@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a0dbd28dc798342a24180af430187ac69f61b8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848138"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608756"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
@@ -27,12 +27,9 @@ ms.locfileid: "74848138"
 このページでは、新しいサーバーのインストールや、オンプレミスの Active Directory を使用したそのサーバーのセットアップについて説明します。 MFA サーバーを既にインストールしており、アップグレードを検討している場合、「[Upgrade to the latest Azure Multi-Factor Authentication Server (最新の Azure Multi-factor Authentication Server へのアップグレード)](howto-mfaserver-deploy-upgrade.md)」を参照してください。 Web サービスをインストールする方法については、[Azure Multi-Factor Authentication Server モバイル アプリ Web サービスのデプロイ](howto-mfaserver-deploy-mobileapp.md)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイの MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイに対して MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 ## <a name="plan-your-deployment"></a>デプロイを計画する
-
-> [!WARNING]
-> 2019 年 3 月以降、MFA Server をダウンロードできるのは有料のテナントだけです。 無料/試用版テナントが、アクティブ化資格情報をダウンロードまたは生成することはできません。
 
 Azure Multi-Factor Authentication Server をダウンロードする前に、負荷と高可用性の要件の内容について検討してください。 デプロイの方法と場所を決める際にこの情報を使用します。
 
@@ -54,7 +51,7 @@ Azure Multi-Factor Authentication Server をダウンロードする前に、負
 
 Azure Multi-factor Authentication に使用しているサーバーが次の要件を満たしていることを確認します。
 
-| Azure Multi-Factor Authentication Server の要件 | 説明 |
+| Azure Multi-Factor Authentication Server の要件 | [説明] |
 |:--- |:--- |
 | ハードウェア |<li>200 MB のハード ディスク容量</li><li>x32 または x64 対応のプロセッサ</li><li>1 GB 以上の RAM</li> |
 | ソフトウェア |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008、SP1、SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003、SP1、SP2</li><li>Windows 10</li><li>Windows 8.1 全エディション</li><li>Windows 8 全エディション</li><li>Windows 7 全エディション</li><li>Windows Vista 全エディション、SP1、SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 以上 (ユーザー ポータルまたは Web サービス SDK をインストールする場合)</li> |
@@ -96,9 +93,6 @@ Azure MFA Server は、次の 3 つの Web コンポーネントで構成され�
 
 ## <a name="download-the-mfa-server"></a>MFA Server のダウンロード
 
-> [!WARNING]
-> 2019 年 3 月以降、MFA Server をダウンロードできるのは有料のテナントだけです。 無料/試用版テナントが、アクティブ化資格情報をダウンロードまたは生成することはできません。
-
 Azure Portal から Azure Multi-Factor Authentication Server をダウンロードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
@@ -122,6 +116,9 @@ Azure Portal から Azure Multi-Factor Authentication Server をダウンロー�
    ![認証構成ウィザードの使用をスキップする](./media/howto-mfaserver-deploy/skip2.png)
 
 5. サーバーをダウンロードしたページに戻り、 **[アクティブ化資格情報の生成]** ボタンをクリックします。 この情報を提供されたボックスの Azure MFA Server にコピーし、 **[アクティブ化]** をクリックします。
+
+> [!NOTE]
+> Azure portal でアクティブ化資格情報を生成できるのは、全体管理者のみです。
 
 ## <a name="send-users-an-email"></a>ユーザーへの電子メールの送信
 
@@ -202,7 +199,7 @@ Azure MFA Server をバックアップするには、**PhoneFactor.pfdata** フ�
 
 MFA Server バージョン 8.x 以降にアップグレードした後またはこのバージョンをインストールした後は、組織で求められない限り、以前の強度の低い暗号スイートを無効にするか、削除することをお勧めします。 このタスクを完了する方法については、「[Managing SSL/TLS Protocols and Cipher Suites for AD FS (AD FS の SSL/TLS プロトコルおよび暗号スイートの管理)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)」を参照してください
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - セルフ サービス アクセス用の[ユーザー ポータル](howto-mfaserver-deploy-userportal.md)のセットアップと構成。
 - [Active Directory フェデレーション サービス](multi-factor-authentication-get-started-adfs.md)、[RADIUS 認証](howto-mfaserver-dir-radius.md)、または [LDAP 認証](howto-mfaserver-dir-ldap.md)を使用した Azure MFA サーバーのセットアップと構成。

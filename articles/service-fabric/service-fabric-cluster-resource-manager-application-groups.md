@@ -1,25 +1,16 @@
 ---
-title: Service Fabric クラスター リソース マネージャー - アプリケーション グループ | Microsoft Docs
+title: Service Fabric Cluster Resource Manager - アプリケーション グループ
 description: Service Fabric クラスター リソース マネージャーのアプリケーション グループ機能の概要
-services: service-fabric
-documentationcenter: .net
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7e90dc00a8e042e48d8016e25dda04c15ce9f619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62114075"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452150"
 ---
 # <a name="introduction-to-application-groups"></a>アプリケーション グループの概要
 通常、Service Fabric のクラスター リソース マネージャーは、クラスター全体で ([メトリック](service-fabric-cluster-resource-manager-metrics.md)で表される) 負荷を均等に分散することによって、クラスター リソースを管理します。 Service Fabric では、クラスター内のノードの容量が管理され、[容量](service-fabric-cluster-resource-manager-cluster-description.md)によってクラスター全体が管理されます。 メトリックと容量は、非常に多くの種類のワークロードに適していますが、複数の Service Fabric アプリケーションのインスタンスを頻繁に使用するパターンの場合、追加の要件が生じることがあります。 たとえば、次のような場合があります。
@@ -180,13 +171,13 @@ foreach (ApplicationLoadMetricInformation metric in metrics)
 
 ApplicationLoad クエリでは、アプリケーションで指定されたアプリケーション容量に関する基本的な情報を返します。 この情報には、最小ノード数と最大ノード数の情報と、アプリケーションが現在使用している数が含まれます。 各アプリケーションの負荷メトリックに関する情報も含まれています。以下の内容が含まれます。
 
-* Metric Name: メトリックの名前。
+* Metric Name:メトリックの名前。
 * Reservation Capacity: このアプリケーションで予約されているクラスター容量。
 * Application Load: このアプリケーションの子レプリカの負荷合計。
 * Application Capacity: アプリケーションの負荷の最大許容値。
 
 ## <a name="removing-application-capacity"></a>アプリケーション容量の削除
-アプリケーション容量の各パラメーターは、アプリケーションに対して設定した後で、アプリケーション更新 API または PowerShell コマンドレットを使用して削除できます。 例:
+アプリケーション容量の各パラメーターは、アプリケーションに対して設定した後で、アプリケーション更新 API または PowerShell コマンドレットを使用して削除できます。 次に例を示します。
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicationCapacity
@@ -207,10 +198,10 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 この制限は、アプリケーションの作成中と更新中の両方に適用されます。
 
 ## <a name="how-not-to-use-application-capacity"></a>アプリケーション容量を使用すべきでない場合
-- アプリケーションを_特定_のノードのサブセットに制限するためにアプリケーション グループの機能を使用しないでください。 言い換えれば、アプリケーションを最大で 5 つのノードで実行するように指定できますが、クラスター内の 5 つの特定のノードを指定することはできません。 サービスの配置の制約を使用すれば、特定のノードにアプリケーションを制限できます。
+- アプリケーションを _特定_ のノードのサブセットに制限するためにアプリケーション グループの機能を使用しないでください。 言い換えれば、アプリケーションを最大で 5 つのノードで実行するように指定できますが、クラスター内の 5 つの特定のノードを指定することはできません。 サービスの配置の制約を使用すれば、特定のノードにアプリケーションを制限できます。
 - 同じアプリケーションの 2 つのサービスを同じノードに配置する目的では、アプリケーション容量を使用しないでください。 この場合は、[アフィニティ](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)または[配置](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)の制約を使用してください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - サービスの構成の詳細については、[サービスの構成についての学習](service-fabric-cluster-resource-manager-configure-services.md)に関する記事を参照してください。
 - クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、 [負荷分散](service-fabric-cluster-resource-manager-balancing.md)
 - 最初から開始して、 [Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)

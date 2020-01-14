@@ -1,5 +1,5 @@
 ---
-title: Logic Apps を使って Azure Application Insights のプロセスを自動化する
+title: Logic Apps を使用して Azure Application Insights プロセスを自動化する
 description: Application Insights コネクタをお使いのロジック アプリに追加することで、反復可能なプロセスを迅速に自動化する方法を説明します。
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/11/2019
-ms.openlocfilehash: 8211598071d0835a32f9e25cfcf4e34576702770
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 95a3577d352b6bc4b56d36b5b79658571a6be1ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407534"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する
 
@@ -26,13 +26,13 @@ ms.locfileid: "72677610"
 
 このチュートリアルでは、Analytics 自動クラスター アルゴリズムを使うロジック アプリを作成して、Web アプリケーションのデータの属性をグループ化する方法を説明します。 このフローは結果を自動的にメールで送信しますが、これは、Application Insights Analytics と Logic Apps を共に利用する方法の一例にすぎません。 
 
-### <a name="step-1-create-a-logic-app"></a>手順 1: ロジック アプリを作成します
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+### <a name="step-1-create-a-logic-app"></a>手順 1:ロジック アプリを作成します
+1. [Azure portal](https://portal.azure.com) にサインインする
 1. **[リソースの作成]** をクリックし、 **[Web + モバイル]** 、 **[ロジック アプリ]** の順に選択します。
 
     ![新しいロジック アプリのウィンドウ](./media/automate-with-logic-apps/1createlogicapp.png)
 
-### <a name="step-2-create-a-trigger-for-your-logic-app"></a>手順 2: ロジック アプリのトリガーを作成する
+### <a name="step-2-create-a-trigger-for-your-logic-app"></a>手順 2:ロジック アプリのトリガーを作成する
 1. **ロジック アプリ デザイナー** ウィンドウで、 **[一般的なトリガーで開始する]** の下の **[繰り返し]** を選択します。
 
     ![ロジック アプリ デザイナー ウィンドウ](./media/automate-with-logic-apps/2logicappdesigner.png)
@@ -41,7 +41,7 @@ ms.locfileid: "72677610"
 
     ![ロジック アプリ デザイナーの [繰り返し] ウィンドウ](./media/automate-with-logic-apps/3recurrence.png)
 
-### <a name="step-3-add-an-application-insights-action"></a>手順 3: Application Insights のアクションを追加する
+### <a name="step-3-add-an-application-insights-action"></a>手順 3:Application Insights のアクションを追加する
 1. **[新しいステップ]** をクリックします。
 
 1. **[アクションの選択]** 検索ボックスで、「**Azure Application Insights**」と入力します。
@@ -50,7 +50,7 @@ ms.locfileid: "72677610"
 
     ![ロジック アプリ デザイナーの [アクションの選択] ウィンドウ](./media/automate-with-logic-apps/4visualize.png)
 
-### <a name="step-4-connect-to-an-application-insights-resource"></a>手順 4: Application Insights リソースに接続する
+### <a name="step-4-connect-to-an-application-insights-resource"></a>手順 4:Application Insights リソースに接続する
 
 この手順を完了するには、お使いのリソースのアプリケーション ID と API キーが必要です。 以下の図に示すように、Azure ポータルから ID と キーを取得できます。
 
@@ -62,7 +62,7 @@ ms.locfileid: "72677610"
 
 ![ロジック アプリ デザイナーのフロー接続ウィンドウ](./media/automate-with-logic-apps/7connection.png)
 
-### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>手順 5: Analytics クエリとグラフの種類を指定する
+### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>手順 5:Analytics クエリとグラフの種類を指定する
 次の例のクエリでは、前日に失敗したリクエストを選択して、処理の一環として発生した例外と関連付けています。 失敗したクエリは、operation_Id 識別子に基づいて、Analytics によって関連付けられます。 その後、自動クラスター アルゴリズムを使って、クエリによる結果のセグメント化が行われます。 
 
 独自のクエリを作成するときは、クエリをフローに追加する前に、必ず Analytics で正常に動作していることを確認してください。
@@ -129,7 +129,7 @@ ms.locfileid: "72677610"
 
 ![ロジック アプリの電子メール メッセージ](./media/automate-with-logic-apps/flow9.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Analytics クエリ](../../azure-monitor/log-query/get-started-queries.md)の作成についての詳細を見る
 - [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) の詳細を見る

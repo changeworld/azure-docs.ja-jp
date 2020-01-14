@@ -3,13 +3,13 @@ title: Azure Functions 用 JavaScript 開発者向けリファレンス
 description: JavaScript を使用して関数を開発する方法について説明します。
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
-ms.date: 02/24/2019
-ms.openlocfilehash: b6b7db4c5f13a264b76dcab02dba51c464297307
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/17/2019
+ms.openlocfilehash: 506f71664616686a66227af7e55fe3f4046376f2
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226721"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561917"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 
@@ -242,7 +242,7 @@ context.done([err],[propertyBag])
 
 ランタイムにコードが完了したことを知らせます。 関数で [`async function`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) 宣言を使用する場合、`context.done()` を使用する必要はありません。 `context.done` コールバックは暗黙的に呼び出されます。 非同期関数は Node 8 以降のバージョンで使用できますが、それにはバージョン 2.x の Functions ランタイムが必要です。
 
-関数が async function でない場合は、関数が完了したことをランタイムに通知するために、`context.done` を**呼び出す必要があります**。 これがない場合、実行はタイムアウトします。
+関数が非同期関数ではない場合、関数が完了したことをランタイムに通知するために**呼び出す必要があります** `context.done`。 これがない場合、実行はタイムアウトします。
 
 `context.done` メソッドを使用すると、ランタイムに対するユーザー定義のエラーと、出力バインド データを含む JSON オブジェクトの両方を、戻すことができます。 `context.done` に渡されるプロパティは、`context.bindings` オブジェクトで設定されているすべてのものを上書きします。
 
@@ -265,7 +265,7 @@ context.log(message)
 既定のトレース レベルでストリーミング関数ログに書き込むことができます。 `context.log` には、他のトレース レベルで関数のログを書き込むことができる追加のログ記録メソッドがあります。
 
 
-| 方法                 | 説明                                |
+| 方法                 | [説明]                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | エラー レベルのログ、またはそれ以下に書き込みます。   |
 | **warn(_message_)**    | 警告レベルのログ、またはそれ以下に書き込みます。 |
@@ -342,7 +342,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `context.req` (要求) オブジェクトには、次のプロパティがあります。
 
-| プロパティ      | 説明                                                    |
+| プロパティ      | [説明]                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 要求の本文を格納するオブジェクト。               |
 | _headers_     | 要求ヘッダーを格納するオブジェクト。                   |
@@ -357,7 +357,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `context.res` (応答) オブジェクトには、次のプロパティがあります。
 
-| プロパティ  | 説明                                               |
+| プロパティ  | [説明]                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 応答の本文を格納するオブジェクト。         |
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
@@ -406,6 +406,16 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
     context.done(null, res);   
     ```  
 
+## <a name="scaling-and-concurrency"></a>スケーリングと同時性
+
+既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて node.js 用の追加のホストインスタンスを作成します。 関数は、さまざまなトリガー型の組み込み（ユーザー設定不可）しきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 詳細については、[「従量課金プランと Premium プランのしくみ」](functions-scale.md#how-the-consumption-and-premium-plans-work) をご覧ください。
+
+ほとんどの Node.js アプリケーションでは、このスケーリング動作で十分です。 CPUにバインドされたアプリケーションの場合、複数の言語ワーカープロセスを使用して、パフォーマンスをさらに向上させることができます。
+
+既定では、すべての Functions ホスト インスタンスに 1 つの言語ワーカー プロセスがあります。 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) アプリケーション設定を使用して、ホストごとのワーカープロセスの数を増やすことができます（最大10）。 次に、Azure Functions は、これらのワーカー間で同時関数呼び出しを均等に分散しようとします。 
+
+FUNCTIONS_WORKER_PROCESS_COUNT は、要求に応じてアプリケーションをスケールアウトするときに、関数作成する各ホストに適用されます。 
+
 ## <a name="node-version"></a>Node バージョン
 
 次の表は、使用される Node.js バージョンを、Functions ランタイムのメジャー バージョンごとに示しています。
@@ -445,7 +455,7 @@ module.exports = function(context) {
 
 
 ### <a name="using-kudu"></a>Kudu を使用する
-1. `https://<function_app_name>.scm.azurewebsites.net` にアクセスします。
+1. [https://tsiclientsample.azurewebsites.net/windFarmGen.html](`https://<function_app_name>.scm.azurewebsites.net`) にアクセスします。
 
 2. **[デバッグ コンソール]**  >  **[CMD]** をクリックします。
 
@@ -477,7 +487,7 @@ module.exports = async function (context, myTimer) {
 
 `function.json` のプロパティ `scriptFile` と `entryPoint` を使用して、エクスポートされた関数の名前と場所を構成できます。 これらのプロパティは、JavaScript がトランスパイルされる場合に重要になることがあります。
 
-### <a name="using-scriptfile"></a>`scriptFile` を使用する
+### <a name="using-scriptfile"></a>`scriptFile` の使用
 
 既定では、JavaScript 関数は `index.js` から実行されます。これは、対応する `function.json` と同じ親ディレクトリを共有するファイルです。
 
@@ -506,7 +516,7 @@ FunctionApp
 }
 ```
 
-### <a name="using-entrypoint"></a>`entryPoint` を使用する
+### <a name="using-entrypoint"></a>`entryPoint` の使用
 
 `scriptFile` (または `index.js`) では、関数が発見されて実行されるためには、`module.exports` を使用して関数をエクスポートする必要があります。 既定では、トリガーされたときに実行される関数は、そのファイルからの唯一のエクスポートです (`run` という名前のエクスポート、または `index` という名前のエクスポート)。
 
@@ -681,7 +691,7 @@ module.exports = async function (context) {
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 詳細については、次のリソースを参照してください。
 

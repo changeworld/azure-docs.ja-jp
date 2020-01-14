@@ -1,23 +1,16 @@
 ---
-title: Azure Service Fabric でパラメーターを使用してサービスのポート番号を指定する方法 | Microsoft Docs
+title: パラメーターを使用してサービスのポート番号を指定する
 description: Service Fabric でパラメーターを使ってアプリケーションのポートを指定する方法を説明します
-documentationcenter: .net
 author: mikkelhegn
-manager: markfuss
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: d69e02126564388bf045693b9960e6e574307641
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720248"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609861"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Service Fabric でパラメーターを使用してサービスのポート番号を指定する方法
 
@@ -88,7 +81,7 @@ ms.locfileid: "60720248"
 
 Cloud.xml 発行プロファイルを使って Visual Studio からアプリケーションを発行すると、サービスはポート 80 を使うように構成されます。 MyWebAPI_PortNumber パラメーターを指定しないでアプリケーションを展開すると、サービスはポート 8080 を使います。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 この記事で説明されている主要な概念の一部について詳しくは、「[複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)」をご覧ください。
 
 Visual Studio で使用可能なその他のアプリケーション管理機能については、 [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)に関する記事をご覧ください。

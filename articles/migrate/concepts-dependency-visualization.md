@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 828f3078c992bed4fa556a374468e69dd58ebc04
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489208"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494508"
 ---
 # <a name="dependency-visualization"></a>依存関係の視覚化
 
@@ -32,15 +32,15 @@ ms.locfileid: "73489208"
 
 依存関係の視覚化をデプロイするには、次の 2 つのオプションがあります。
 
-- **エージェントレスの依存関係の視覚化**: このオプションは現在プレビューの段階です。 マシンにエージェントをインストールする必要はありません。 
-    - これは、エージェントレスの視覚化が有効になっているマシンから TCP 接続データをキャプチャすることで機能します。 [詳細情報](how-to-create-group-machine-dependencies-agentless.md)。
-依存関係の検出が開始された後、アプライアンスは 5 分間のポーリング間隔でマシンからデータを収集します。
+- **エージェントレスの依存関係の視覚化**:このオプションは現在プレビュー段階であり、VMware VM でのみ使用できます。 マシンにエージェントをインストールする必要はありません。 
+    - これは、エージェントレスの視覚化が有効になっているマシンから TCP 接続データをキャプチャすることで機能します。 [詳細については、こちらを参照してください](how-to-create-group-machine-dependencies-agentless.md)。
+依存関係の検出が開始された後、アプライアンスでは 5 分間のポーリング間隔でマシンからデータが収集されます。
     - 収集されるデータは次のとおりです。
         - TCP 接続
         - アクティブな接続を含むプロセスの名前
         - 上記のプロセスを実行するインストール済みのアプリケーションの名前
-        - No. ポーリング間隔ごとに検出される接続の数
-- **エージェントベースの依存関係の視覚化**: エージェントベースの依存関係の視覚化を使用するには、分析するオンプレミスの各マシンに次のエージェントをダウンロードしてインストールする必要があります。  
+        - いいえ。 ポーリング間隔ごとに検出される接続の数
+- **エージェントベースの依存関係の視覚化**:エージェントベースの依存関係の視覚化を使用するには、分析するオンプレミスの各マシンに次のエージェントをダウンロードしてインストールする必要があります。  
     - 各コンピューターに [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) をインストールする必要があります。 MMA エージェントのインストール方法の詳細については、[こちら](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma)をご覧ください。
     - 各マシンに [Dependency Agent](../azure-monitor/platform/agents-overview.md#dependency-agent) をインストールする必要があります。 依存関係エージェントのインストール方法の詳細については、[こちら](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent)をご覧ください。
     - また、インターネットに接続されていないマシンの場合、それらに Log Analytics ゲートウェイをダウンロードしてインストールする必要があります。
@@ -91,7 +91,7 @@ Azure Migrate の価格については、[こちら](https://azure.microsoft.com
 - 関連付けられた Azure Migrate プロジェクトを削除しても、ワークスペースは自動的に削除されません。 そのため、[手動で削除する](../azure-monitor/platform/manage-access.md)必要があります。
 - Azure Migrate プロジェクトを削除しない場合は、Azure Migrate で作成されたワークスペースは削除しないでください。 削除した場合は、依存関係可視化機能は、期待どおりに機能しません。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 - [マシンの依存関係マッピングを使用したマシンのグループ化](how-to-create-group-machine-dependencies.md)
 - [依存関係の可視化の詳細については](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization)、よく寄せられる質問を確認します。
 

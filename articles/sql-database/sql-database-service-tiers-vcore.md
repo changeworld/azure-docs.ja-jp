@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: c5c7883295a30aa217e722abd905f54b982761d3
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: d57f1e87c503a86a522fdb3004b021fbcb5c6ff1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547549"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351398"
 ---
 # <a name="vcore-model-overview"></a>仮想コア モデルの概要
 
@@ -32,7 +32,7 @@ ms.locfileid: "74547549"
 ||**汎用**|**Business Critical**|**Hyperscale**|
 |---|---|---|---|
 |最適な用途|ほとんどのビジネス ワークロード。 予算重視で、バランスのとれた、スケーラブルなコンピューティングおよびストレージ オプションを提供します。 |複数の分離されたレプリカを使用して、障害に対する最大の回復性をビジネス アプリケーションに提供し、データベース レプリカあたりの最大の I/O パフォーマンスを実現します。|高度にスケーラブルなストレージと読み取りスケールの要件を持つほとんどのビジネス ワークロード。  複数の分離されたデータベース レプリカを構成できるようにして、障害に対するより高い回復性を提供します。 |
-|Storage|リモート ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング**:<br/>5 GB - 3 TB<br/>**マネージド インスタンス**:32 GB ～ 8 TB |ローカル SSD ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB – 4 TB<br/>**マネージド インスタンス**:<br/>32 GB ～ 4 TB |必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
+|ストレージ|リモート ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB – 4 TB<br/>**サーバーレス コンピューティング**:<br/>5 GB - 3 TB<br/>**マネージド インスタンス**:32 GB ～ 8 TB |ローカル SSD ストレージを使用します。<br/>**単一データベースとエラスティック プールにプロビジョニングされるコンピューティング**:<br/>5 GB – 4 TB<br/>**マネージド インスタンス**:<br/>32 GB ～ 4 TB |必要に応じた、ストレージの柔軟な自動拡張。 最大 100 TB のストレージをサポートします。 ローカル バッファー プール キャッシュとローカル データ ストレージにローカル SSD ストレージを使用します。 最終的な長期間のデータ ストアとして Azure リモート ストレージを使用します。 |
 |I/O スループット (概算)|**単一データベースとエラスティック プール**:仮想コアあたり 500 IOPS (最大 40000 IOPS)。<br/>**マネージド インスタンス**:[ファイルのサイズ](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)に依存します。|仮想コアあたり 5000 IOPS (最大 320,000 IOPS)|Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS はワークロードによって異なります。|
 |可用性|1 レプリカ、読み取りスケール レプリカなし|3 レプリカ、1 [読み取りスケール レプリカ](sql-database-read-scale-out.md)、<br/>ゾーン冗長高可用性 (HA)|1 読み取り/書き込みレプリカ、および 0 ～ 4 [ 読み取りスケール レプリカ ](sql-database-read-scale-out.md)|
 |バックアップ|[ 読み取りアクセス geo 冗長ストレージ (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)、7 ～ 35 日 (既定では 7 日)|Azure リモート ストレージでのスナップショット ベースのバックアップ。 このようなスナップショットを使用して復元することで、高速復元が可能になります。 バックアップは瞬時であり、コンピューティング I/O パフォーマンスには影響を与えません。 復元は高速であり、データ サイズに左右される操作ではありません (数時間または数日ではなく、数分で完了)。|
@@ -132,6 +132,52 @@ Azure portal では、作成時に SQL データベースまたはプールの�
 
 手順に従って構成を変更し、前の手順で説明したようにハードウェアの世代を選択します。
 
+**マネージドインスタンスの作成時にハードウェア世代を選択するには**
+
+詳細については、[マネージドインスタンスを作成する](sql-database-managed-instance-get-started.md) に関するページを参照してください。
+
+**[基本]** タブで、 **[Compute + storage]** セクションの **[データベースの構成]** リンクを選択し、使用するハードウェア世代を選択します：
+
+  ![マネージドインスタンスを構成する](media/sql-database-service-tiers-vcore/configure-managed-instance.png)
+  
+**既存のマネージドインスタンスのハードウェア世代を変更するには**
+
+次の PowerShell スクリプトを使用します：
+
+```powershell-interactive
+$subscriptionId = "**************"
+Select-AzSubscription -Subscription $subscriptionId
+
+$instanceName = "********"
+$resourceGroup = "****"
+
+# THIS IS IMPORTANT PARAMETER:
+$sku = @{name = "GP_Gen5" }
+
+# NOTE: These properties are not necessary, but it would be good to set them to the current values:
+# You might want to change vCores or storage with hardware generation
+# $admin_login = "******"
+# $admin_pass = "******"
+# $location = "***** # for example: ""northeurope"
+# $vCores = 8
+# $maxStorage = 1024
+# $license = "BasePrice"
+# $subnetId = "/subscriptions/****/subnets/*******"
+
+## NOTE: Uncomment some of the properties below if you have set them.
+$properties = New-Object System.Object
+# $properties | Add-Member -type NoteProperty -name subnetId -Value $subnetId
+# $properties | Add-Member -type NoteProperty -name administratorLogin -Value $admin_login
+# $properties | Add-Member -type NoteProperty -name administratorLoginPassword -Value $admin_pass
+# $properties | Add-Member -type NoteProperty -name vCores -Value $vCores
+# $properties | Add-Member -type NoteProperty -name storageSizeInGB -Value $maxStorage
+# $properties | Add-Member -type NoteProperty -name licenseType -Value $license
+
+Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
+```
+
+必ず、マネージドインスタンスのサブスクリプション ＩＤ、名前、およびリソースグループを入力してください。
+
 ### <a name="hardware-availability"></a>ハードウェアの可用性
 
 #### <a name="gen4gen5-1"></a>Gen4/Gen5
@@ -175,7 +221,7 @@ M シリーズは、次のリージョンで使用できます: 米国東部、�
 承認されたサポート リクエストは、通常、5 営業日以内に完了します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - SQL データベースを作成するには、[Azure portal を使用して SQL データベースを作成する方法](sql-database-single-database-get-started.md)に関するページを参照してください。
 - 単一データベースに対して使用できる特定のコンピューティング サイズとストレージ サイズの選択については、[単一データベースに対する SQL Database の仮想コア ベースのリソース制限](sql-database-vcore-resource-limits-single-databases.md)に関するページを参照してください。

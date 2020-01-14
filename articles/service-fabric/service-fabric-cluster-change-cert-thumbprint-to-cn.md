@@ -1,24 +1,14 @@
 ---
-title: 証明書共通名を使用するように Azure Service Fabric クラスターを更新する | Microsoft Docs
+title: 証明書の共通名を使用するようにクラスターを更新する
 description: 証明書の拇印の使用から証明書共通名の使用へと Service Fabric クラスターを切り替える方法について説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
-ms.author: atsenthi
-ms.openlocfilehash: a9e2a2c20a8de4bed3876f431566b293cbfa4ef5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109664"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610201"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>証明書の拇印から共通名へとクラスターを変更する
 2 つの証明書が同じ拇印を持つことはできず、そのことがクラスター証明書のロール オーバーや管理を困難にしています。 ただし、複数の証明書で同じ共通名や件名を持つことはできます。  デプロイされたクラスターで使用するのを、証明書の拇印から証明書共通名に切り替えることで、証明書の管理が大幅に単純化します。 この記事では、実行中の Service Fabric クラスターを、証明書の拇印ではなく証明書共通名を使用するように更新する方法について説明します。
@@ -201,7 +191,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
     -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" 
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [クラスター セキュリティ](service-fabric-cluster-security.md)について学習します。
 * [クラスター証明書のロールオーバー](service-fabric-cluster-rollover-cert-cn.md)について学習します
 * [クラスター証明書の更新と管理を行います](service-fabric-cluster-security-update-certs-azure.md)

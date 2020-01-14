@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 1da1bc330af9d2b652c44114e44dc6d6c9f0d575
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 2530c9b2f366bd64013c7125b4d7984ca2a69248
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559182"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454286"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -36,7 +36,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 ```
 [トラフィック分析](traffic-analytics.md)を使用してフロー ログを分析し、ネットワーク トラフィックに関する分析情報を得ることができます。
 
-その他のログで見られる同様のリテンション期間ポリシーが、フロー ログに適用されます。 ログの保持ポリシーの期間は、1 日から 2,147,483,647 日まで設定できます。 リテンション期間ポリシーが設定されていない場合、ログは無期限に保持されます。
+その他のログで見られる同様のリテンション期間ポリシーが、フロー ログに適用されます。 ログの保持ポリシーの期間は、1 日から 365 日まで設定できます。 リテンション期間ポリシーが設定されていない場合、ログは無期限に保持されます。
 
 > [!NOTE] 
 > NSG フロー ログ記録と共にアイテム保持ポリシー機能を使用すると、大量のストレージ操作とそれに関連するコストが発生する可能性があります。 アイテム保持ポリシー機能が不要な場合は、この値を 0 に設定することをお勧めします。
@@ -93,16 +93,15 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 1. 場所:使用するストレージ アカウントは、NSG と同じリージョンに存在する必要があります。
 2. ファイアウォールなし: NSG フロー ログは、[信頼性の高い Azure Storage 向け Microsoft サービス](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services)としては、オンボードされません。 ファイアウォールを無効にするには、「[ストレージ アカウント上でファイアウォールを無効にする方法](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account)」を参照してください。 
 3. サービス エンドポイントなし: 現在の制限により、ログは、サービス エンドポイント経由ではなく、ストレージ アカウントへの直接出力のみが可能です。 既存のサービス エンドポイントの削除に関するヘルプについては、「[サービス エンドポイントによって NSG フローログを使用する方法](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints)」を参照してください。
-4. キー ローテーションの自己管理: アクセス キーをストレージ アカウントに変更/ローテーションすると、NSG フローログの動作が停止します。 これを修正するには、NSG フロー ログを無効にしてから再度有効にする必要があります。
+4. キー ローテーションの自己管理: アクセス キーをストレージ アカウントに変更/ローテーションすると、NSG フローログの動作が停止します。 この問題を修正するには、NSG フロー ログを無効にしてから再度有効にする必要があります。
 
-**リソースに接続されているすべての NSG 上で NSG フロー ログ記録を有効にする**:Azure のフロー ログ記録は NSG リソースに対して構成されています。 1 つのフローは 1 つの NSG ルールにのみ関連付けられます。 複数の NSG が利用されるシナリオでは、リソースのサブネットまたはネットワーク インターフェイスが適用されたすべての NSG で NSG フロー ログ記録を有効にして、すべてのトラフィックを確実に記録することをお勧めします。 ネットワーク セキュリティ グループの詳細については、[トラフィックの評価方法](../virtual-network/security-overview.md#how-traffic-is-evaluated)に関するページを参照してください。 
+**リソースに接続されているすべての NSG 上で NSG フロー ログ記録を有効にする**:Azure のフロー ログ記録は NSG リソースに対して構成されています。 1 つのフローは 1 つの NSG ルールにのみ関連付けられます。 複数の NSG が利用されるシナリオでは、リソースのサブネットまたはネットワーク インターフェイスが適用されたすべての NSG で NSG フロー ログ記録を有効にして、すべてのトラフィックを確実に記録することをお勧めします。 詳細については、ネットワーク セキュリティ グループの 「[トラフィックの評価方法](../virtual-network/security-overview.md#how-traffic-is-evaluated)」 に関するページを参照してください。
 
-**フロー ログ記録のコスト**:NSG フロー ログ記録は、生成されたログの量に対して課金されます。 トラフィック量が多いと、フロー ログの量が大きくなり、それに関連してコストがかかる可能性があります。 NSG フロー ログの価格には、基礎となるストレージのコストは含まれていません。 NSG フロー ログ記録と共にアイテム保持ポリシー機能を使用すると、大量のストレージ操作とそれに関連するコストが発生する可能性があります。 アイテム保持ポリシー機能が不要な場合は、この値を 0 に設定することをお勧めします。 詳細については、「[Network Watcher の価格](https://azure.microsoft.com/pricing/details/network-watcher/)」と「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
-
-> [!IMPORTANT]
-> 現在、Network Watcher の[ネットワーク セキュリティ グループ (NSG) フロー ログ](network-watcher-nsg-flow-logging-overview.md)がアイテム保持ポリシー設定に基づいて BLOB ストレージから自動的に削除されないという問題があります。 0 以外のアイテム保持ポリシーが存在する場合は、保持期間を過ぎているストレージ BLOB を定期的に削除して、課金が発生しないようにすることをお勧めします。 NSG フロー ログ ストレージ BLOB を削除する方法の詳細については、[NSG フロー ログ ストレージ BLOB の削除](network-watcher-delete-nsg-flow-log-blobs.md)に関する記事を参照してください。
+**フロー ログ記録のコスト**:NSG フロー ログ記録は、生成されたログの量に対して課金されます。 トラフィック量が多いと、フロー ログの量が大きくなり、それに関連してコストがかかる可能性があります。 NSG フロー ログの価格には、基礎となるストレージのコストは含まれていません。 NSG フロー ログ記録と共にアイテム保持ポリシー機能を使用すると、大量のストレージ操作とそれに関連するコストが発生する可能性があります。 アイテム保持ポリシー機能が不要な場合は、この値を 0 に設定することをお勧めします。 詳細については、「[Network Watcher の価格](https://azure.microsoft.com/pricing/details/network-watcher/)」 と 「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」 を参照してください。
 
 **インターネット IP からパブリック IP のない VM へのインバウンド フローのログ記録**:インスタンスレベル パブリック IP として NIC に関連付けられているパブリック IP アドレス経由で割り当てられたパブリック IP アドレスがない VM、または基本的なロード バランサー バックエンド プールの一部である VM では、[既定の SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) が使用され、アウトバウンド接続を容易にするために Azure によって割り当てられた IP アドレスがあります。 その結果、フローが SNAT に割り当てられたポート範囲内のポートに向かう場合、インターネット IP アドレスからのフローのフロー ログ エントリが表示されることがあります。 Azure では VM へのこれらのフローは許可されませんが、試行はログに記録され、設計上、Network Watcher の NSG フロー ログに表示されます。 不要なインバウンド インターネット トラフィックは、NSG で明示的にブロックすることをお勧めします。
+
+**ステートレスフローのバイト数とパケット数が正しくありません**:[ネットワークセキュリティグループ (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview) は [ ステートフルファイアウォール](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) として実装されます。 ただし、トラフィックのフローをコントロールする既定/内部ルールの多くは、ステートレスな方法で実装されます。 プラットフォームの制限により、バイト数とパケット数は、ステートレスフロー (つまり、ステートレスなルールを通過するトラフィックフロー) については記録されません。 これらはステートフルフローに対してのみ記録されます。 結果として、NSG フローログ (および Traffic Analytics) で報告されるバイト数とパケット数は、実際のフローとは異なる可能性があります。 この制限は、2020年6月までに修正される予定です。
 
 ## <a name="sample-log-records"></a>サンプル ログ レコード
 
@@ -293,7 +292,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
         ...
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - フロー ログを有効にする方法については、[フロー ログ記録の有効化](network-watcher-nsg-flow-logging-portal.md)に関するページをご覧ください。
 - フロー ログを読み取る方法については、「[NSG フロー ログの読み取り](network-watcher-read-nsg-flow-logs.md)」をご覧ください。

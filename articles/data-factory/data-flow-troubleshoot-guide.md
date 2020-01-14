@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
 ms.custom: seo-lt-2019
-ms.date: 12/06/2019
-ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 06746cfc3b39a242c16a6b4f4c95b3c212a9abd5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930168"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443947"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Azure Data Factory データ フローのトラブルシューティング
 
@@ -92,8 +92,18 @@ ms.locfileid: "74930168"
 
 - **原因**:結合される予定のストリームに、共通の列名があります
 
-- **解決方法**:結合後に Select 変換を追加し、入力と出力の両方に対して [Remove duplicate columns]\(重複する列の削除\) を選択します。
+- **解決方法**:結合の後に Select 変換を追加し、入力と出力の両方に対して [重複する列の削除] を選択します。
 
+### <a name="error-message-possible-cartesian-product"></a>エラー メッセージ:発生する可能性のあるデカルト積
+
+- **現象**:結合または参照変換により、データフローの実行時に発生する可能性のあるデカルト積が検出されました
+
+- **原因**:クロス結合を使用するように ADF を明示的に指示していない場合、データフローが失敗することがあります
+
+- **解決方法**:カスタム クロス結合を使用して参照または結合変換を結合に変更し、式エディターで参照または結合条件を入力します。 完全なデカルト積を明示的に作成する場合は、結合の前に2つの独立したストリームの派生列変換を使用して、一致する合成キーを作成します。 たとえば、 ```SyntheticKey``` を呼び出した各ストリームの派生列に新しい列を作成し、それをに ```1``` を設定します。 次に、カスタム結合式として ```a.SyntheticKey == b.SyntheticKey``` を使用します。
+
+> [!NOTE]
+> カスタム クロス結合では、左右のリレーションシップの各側に少なくとも 1 つの列が含まれていることを確認してください。 各側の列ではなく、静的な値を使用してクロス結合を実行すると、データセット全体が完全にスキャンされるため、データフローのパフォーマンスが低下します。
 
 ## <a name="general-troubleshooting-guidance"></a>一般的なトラブルシューティング ガイダンス
 
@@ -101,7 +111,7 @@ ms.locfileid: "74930168"
 2. データ フロー デザイナーからファイルとテーブルの接続の状態を確認します。 デバッグをオンに切り替え、ソース変換のデータ プレビューをクリックし、データにアクセスできることを確認します。
 3. データ プレビューに問題がなければ、パイプライン デザイナーに進み、パイプライン アクティビティにデータ フローを配置します。 エンドツーエンド テストとしてパイプラインをデバッグします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングのその他のヘルプについては、次のリソースを参照してください。
 

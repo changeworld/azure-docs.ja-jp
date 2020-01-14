@@ -10,18 +10,23 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/14/2019
+ms.date: 12/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: d47f846f77d3552288dfea43b417d8c60856f41a
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: b54034dc8828fb8a96f488197e517ef07ed55ab5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327883"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460404"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
 このドキュメントでは、新しい Azure Active Directory ブレードを使用して Azure Active Directory にアプリを登録する方法について説明します。 Azure Active Directory に登録されたアプリを使用すると、ユーザーは、Time Series Insights 環境に関連付けられた Azure Time Series Insight API を使用する認証と承認を受けることができます。
+
+> [!IMPORTANT]
+> Azure Time Series Insights は、次の認証ライブラリの両方をサポートしています:
+> * より新しい [Microsoft 認証ライブラリ (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * [Azure Active Directory 認証ライブラリ (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="service-principal"></a>サービス プリンシパル
 
@@ -76,81 +81,90 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
 
 ### <a name="client-app-initialization"></a>クライアント アプリの初期化
 
-1. アプリケーションに代わってトークンを取得するには、Azure Active Directory のアプリ登録セクションの **[申請 ID]** と **[クライアント シークレット]** (アプリケーション キー) を使用します。
+* 開発者は、[Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) または [Azure Active Directory Authentication Library (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) を使用して Azure Time Series Insights で認証することができます。
 
-    C# では、次のコードでアプリケーションに代わってトークンを取得できます。 サンプルの詳細については、[C# を使用したデータの照会](time-series-insights-query-data-csharp.md)に関する記事をご覧ください。
+* たとえば、ADAL を使用して認証するには、次のようにします:
 
-    ```csharp
-    // Enter your Active Directory tenant domain name
-    var tenant = "YOUR_AD_TENANT.onmicrosoft.com";
-    var authenticationContext = new AuthenticationContext(
-        $"https://login.microsoftonline.com/{tenant}",
-        TokenCache.DefaultShared);
+   1. アプリケーションに代わってトークンを取得するには、Azure Active Directory のアプリ登録セクションの **[申請 ID]** と **[クライアント シークレット]** (アプリケーション キー) を使用します。
 
-    AuthenticationResult token = await authenticationContext.AcquireTokenAsync(
-        // Set the resource URI to the Azure Time Series Insights API
-        resource: "https://api.timeseries.azure.com/",
-        clientCredential: new ClientCredential(
-            // Application ID of application registered in Azure Active Directory
-            clientId: "YOUR_APPLICATION_ID",
-            // Application key of the application that's registered in Azure Active Directory
-            clientSecret: "YOUR_CLIENT_APPLICATION_KEY"));
+   1. C# では、次のコードでアプリケーションに代わってトークンを取得できます。 サンプルの詳細については、[C# を使用したデータの照会](time-series-insights-query-data-csharp.md)に関する記事をご覧ください。
 
-    string accessToken = token.AccessToken;
-    ```
+        [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
-1. トークンは、アプリケーションが Time Series Insights API を呼び出すときに、`Authorization` ヘッダーで渡すことができます。
+   1. トークンは、アプリケーションが Time Series Insights API を呼び出すときに、`Authorization` ヘッダーで渡すことができます。
+
+* また、開発者は MSAL を使用して認証を選択することができます。 詳細については、[MSAL への移行](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) に関するページを参照してください。 
 
 ## <a name="common-headers-and-parameters"></a>一般的なヘッダーとパラメーター
 
 このセクションでは、Time Series Insights GA や Preview API に対するクエリの作成に使用される、一般的な HTTP 要求ヘッダーとパラメーターについて説明します。 API 固有の要件は、[Time Series Insights REST API リファレンス ドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/)に詳しく記載されています。
 
+> [!TIP]
+> REST Api の使用方法、HTTP 要求の作成方法、および HTTP 応答の処理方法の詳細については、[Azure REST API リファレンス](https://docs.microsoft.com/rest/api/azure/) を参照してください。
+
 ### <a name="authentication"></a>認証
 
 [Time Series Insights REST APIs](https://docs.microsoft.com/rest/api/time-series-insights/) に対して認証されたクエリを実行するには、任意の REST クライアント (Postman、JavaScript、C#) を使用して、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate)内で渡す必要があります。 
-
-> [!IMPORTANT]
-> そのトークンは、まさしくその `https://api.timeseries.azure.com/` リソース (トークンの "audience" とも呼ばれます) に向けて発行される必要があります。
-> * したがって、[Postman](https://www.getpostman.com/) **AuthURL** は次に準拠します。`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
 
 > [!TIP]
 > チャートやグラフと共に [JavaScript クライアント SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) を使用して、プログラムによって Time Series Insights API で認証を行う方法を確認するには、Azure Time Series Insights の[クライアント SDK のサンプルの視覚化](https://tsiclientsample.azurewebsites.net/)に関する記事を参照してください。
 
 ### <a name="http-headers"></a>HTTP ヘッダー
 
-必須の要求ヘッダー:
+必要な要求ヘッダーを以下に示します。
 
-- 認証と承認に向けた `Authorization`、有効な OAuth 2.0 ベアラートークンを Authorization ヘッダー内で渡す必要があります。 そのトークンは、まさしくその `https://api.timeseries.azure.com/` リソース (トークンの "audience" とも呼ばれます) に向けて発行される必要があります。
+| 必要な要求ヘッダー | [説明] |
+| --- | --- |
+| 承認 | Time Series Insights で認証するには、有効な OAuth 2.0 ベアラートークンを **Authorization** ヘッダーに渡す必要があります。 | 
 
-省略可能な要求ヘッダー:
+> [!IMPORTANT]
+> そのトークンは、まさしくその `https://api.timeseries.azure.com/` リソース (トークンの "audience" とも呼ばれます) に向けて発行される必要があります。
+> * したがって、[Postman](https://www.getpostman.com/) **AuthURL** は`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/` のようになります
+> * `https://api.timeseries.azure.com/` は有効ですが、`https://api.timeseries.azure.com` は有効ではありません。
 
-- `Content-type` - `application/json` のみがサポートされています。
-- `x-ms-client-request-id` - クライアント要求 ID。 サービスでは、この値が記録されます。 これにより、サービスでは、サービス間の操作を追跡できるようになります。
-- `x-ms-client-session-id` - クライアント セッション ID。 サービスでは、この値が記録されます。 これにより、サービスでは、サービス間の関連する操作のグループを追跡できるようになります。
-- `x-ms-client-application-name` -この要求を生成したアプリケーションの名前。 サービスでは、この値が記録されます。
+省略可能な要求ヘッダーを以下に示します。
 
-応答ヘッダー:
+| 省略可能な要求ヘッダー | [説明] |
+| --- | --- |
+| Content-type | `application/json` のみがサポートされています。 |
+| x-ms-client-request-id | クライアント要求 ID。 サービスでは、この値です。 これにより、サービスでは、サービス間の操作を追跡できるようになります。 |
+| x-ms-client-session-id | クライアントセッション ID。 サービスでは、この値です。 これにより、サービスでは、サービス間の関連する操作のグループを追跡できるようになります。 |
+| x-ms-client-application-name | この要求を生成したアプリケーションの名前。 サービスでは、この値です。 |
 
-- `Content-type` - `application/json` のみがサポートされています。
-- `x-ms-request-id` -サーバーによって生成された要求 ID。 要求の調査についての Microsoft への問い合わせに使用できます。
+省略可能ですが、推奨される応答ヘッダーを以下に示します。
+
+| 応答ヘッダー | [説明] |
+| --- | --- |
+| Content-type | サポートされるのは `application/json` のみです。 |
+| x-ms-request-id | サーバーで生成された要求 ID。 要求の調査についての Microsoft への問い合わせに使用できます。 |
+| x-ms-property-not-found-behavior | GA API オプションの応答ヘッダー。 指定できる値は、`ThrowError` (既定値) または `UseNull`です。 |
 
 ### <a name="http-parameters"></a>HTTP パラメーター
 
-必須の URL クエリ文字列パラメーター:
+> [!TIP]
+> 必須および省略可能なクエリの情報の詳細については、[参照ドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/)を参照してください。
 
-- `api-version=2016-12-12`
-- `api-version=2018-11-01-preview`
+必須の URL クエリ文字列パラメーターは、API バージョンによって異なります。
 
-省略可能な URL クエリ文字列パラメーター:
+| Release | 使用可能な API バージョンの値 |
+| --- |  --- |
+| 一般公開 | `api-version=2016-12-12`|
+| プレビュー | `api-version=2018-11-01-preview` |
+| プレビュー | `api-version=2018-08-15-preview` |
 
-- `timeout=<timeout>` –要求実行に対するサーバー側のタイムアウト。 [環境イベントの取得](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) API と[環境集計の取得](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API にのみ適用できます。 タイムアウト値は、`"PT20S"` など、ISO 8601 の期間の形式で指定され、その範囲は `1-30 s` である必要があります。 既定値は `30 s` です。
+省略可能な URL クエリ文字列パラメーターには、HTTP 要求の実行時間のタイムアウト設定が含まれます。
 
-## <a name="next-steps"></a>次の手順
+| 省略可能なクエリパラメーター | [説明] | Version |
+| --- |  --- | --- |
+| `timeout=<timeout>` | HTTP 要求実行のサーバー側のタイムアウト。 [環境イベントの取得](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) API と[環境集計の取得](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API にのみ適用できます。 タイムアウト値は、`"PT20S"` など、ISO 8601 の期間の形式で指定され、その範囲は `1-30 s` である必要があります。 既定値は `30 s` です。 | GA |
+| `storeType=<storeType>` | ウォームストアが有効になっているプレビュー環境では、`WarmStore` または `ColdStore`のいずれかでクエリを実行できます。 クエリ内のこのパラメーターは、クエリを実行する必要があるストアを定義します。 定義されていない場合は、コールドストアでクエリが実行されます。 ウォームストアに対してクエリを実行するには、**storeType** を `WarmStore`に設定する必要があります。 定義されていない場合は、コールドストアに対してクエリが実行されます。 | プレビュー |
+
+## <a name="next-steps"></a>次のステップ
 
 - GA Time Series Insights API を呼び出すサンプル コードについては、[C# を使用したデータの照会](./time-series-insights-query-data-csharp.md)に関する記事を参照してください。
 
 - プレビュー Time Series Insights API コード サンプルについては、[C# を使用したプレビュー データの照会](./time-series-insights-update-query-data-csharp.md)に関する記事を参照してください。
 
-- API リファレンスについては、[API リファレンスのクエリ](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)に関するページをご覧ください。
+- API リファレンスについては、[クエリ API リファレンス](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) のドキュメントを参照してください。
 
 - [サービス プリンシパルを作成する](../active-directory/develop/howto-create-service-principal-portal.md)方法について学習します。

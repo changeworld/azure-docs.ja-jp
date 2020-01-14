@@ -3,15 +3,15 @@ title: GitHub のアクションと Azure Kubernetes Service
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
-description: GitHub のアクションと Azure Dev Spaces を使用して、プル要求からの変更を Azure Kubernetes Service で直接確認およびテストします。
+description: GitHub アクションと Azure Dev Spaces を使用して、Azure Kubernetes Service で直接プル要求からの変更を確認およびテストする
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, GitHub アクション, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: e20efc6b109eeef234dcd621374d25b812cdc0ce
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ace94bdeccf3063f6a3b72ea208f437a14332694
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483937"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438507"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub のアクションと Azure Kubernetes Service (プレビュー)
 
@@ -31,7 +31,7 @@ Azure Dev Spaces は、プル要求がリポジトリのメイン ブランチ�
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント](https://azure.microsoft.com/free)を作成できます。
 * [Azure CLI がインストールされていること][azure-cli-installed]。
-* [Helm 2.13 から 2.16 がインストールされていること][helm-installed]。
+* [Helm 3 がインストールされていること][helm-installed]。
 * [GitHub アクションが有効になっている][github-actions-beta-signup] GitHub アカウント。
 * AKS クラスターで実行されている [Azure Dev Spaces 自転車共有サンプル アプリケーション](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md)。
 
@@ -50,7 +50,7 @@ az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 
 ## <a name="create-a-service-principal-for-authentication"></a>認証用のサービス プリンシパルを作成する
 
-[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] を使用してサービス プリンシパルを作成します。 例:
+[az ad sp create-for-rbac][az-ad-sp-create-for-rbac] を使用してサービス プリンシパルを作成します。 次に例を示します。
 
 ```cmd
 az ad sp create-for-rbac --sdk-auth --skip-assignment
@@ -162,7 +162,7 @@ git push origin bike-images
 az group delete --name MyResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Dev Spaces を使用して複数のコンテナーにまたがるより複雑なアプリケーションを開発する方法と、別の空間で別のバージョンまたは分岐を使用して作業することによって共同開発を簡略化する方法について学習します。
 
@@ -180,8 +180,7 @@ Azure Dev Spaces を使用して複数のコンテナーにまたがるより複
 [github-actions-beta-signup]: https://github.com/features/actions
 [github-action-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikes.yml
 [github-action-bikesharing-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikesharing.yml
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
-[tiller-rbac]: https://helm.sh/docs/using_helm/#role-based-access-control
+[helm-installed]: https://helm.sh/docs/intro/install/
 [supported-regions]: ../about.md#supported-regions-and-configurations
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md
 [sp-aks]: ../../aks/kubernetes-service-principal.md
