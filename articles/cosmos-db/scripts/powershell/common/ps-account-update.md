@@ -1,17 +1,17 @@
 ---
-title: Azure PowerShell スクリプト - Azure Cosmos アカウントを更新する
+title: Azure Cosmos アカウントを更新する PowerShell スクリプト
 description: Azure PowerShell サンプル スクリプト - Azure Cosmos アカウントを更新したりリージョンを変更したりする
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: ec160f03fa5a8b9415dc33885fca512d4289f37b
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 075c33b0818aa3ec8b16158f538ae302446ff5f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71969687"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445035"
 ---
 # <a name="update-an-azure-cosmos-account-or-modify-regions-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントを更新したりリージョンを変更したりする
 
@@ -50,7 +50,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

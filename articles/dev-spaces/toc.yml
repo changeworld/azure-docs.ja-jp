@@ -61,6 +61,8 @@
           href: how-dev-spaces-works.md
         - name: VS Code と Dev Spaces を連携させるしくみ
           href: how-vs-code-works-with-dev-spaces.md
+        - name: さまざまなネットワーク トポロジでのネットワーク構成
+          href: configure-networking.md
     - name: 方法
       items:
         - name: Azure Dev Spaces をインストールする

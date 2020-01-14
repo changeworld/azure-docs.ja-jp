@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 529c2a453bade8745a596b5cd2e374907a66f613
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1c308243e3dfebb3622ebbe346771fe781b97cc5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893724"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443305"
 ---
 # <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>チュートリアル:productboard と Azure Active Directory の統合
 
@@ -68,7 +68,7 @@ productboard で Azure AD SSO を構成してテストするには、次の構�
     * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
 1. **[productboard の SSO の構成](#configure-productboard-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-    * **[productboard のテスト ユーザーの作成](#create-productboard-test-user)** - EZOfficeInventory で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+    * **[productboard のテスト ユーザーの作成](#create-productboard-test-user)** - productboard で B.Simon に対応するユーザーを作成し、Azure AD のこのユーザーにリンクさせます。
 1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成

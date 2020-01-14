@@ -1,26 +1,15 @@
 ---
-title: Azure で Service Fabric 上に .NET アプリを作成する | Microsoft Docs
+title: Azure で Service Fabric 上に .NET アプリを作成する
 description: このチュートリアルでは、ASP.NET Core のフロントエンドとリライアブル サービスのステートフルなバックエンドを含むアプリケーションを作成し、クラスターにアプリケーションをデプロイする方法を説明します。
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: b5acee47a13e0faa538c5d8464835297088d03e8
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cbfae89ffa446ca3915129fd9add2701ac21d837
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598917"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465478"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル:ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 
@@ -180,7 +169,7 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
 </div>
 ```
 
-### <a name="update-the-layoutcshtml-file"></a>_Layout.cshtml ファイルを更新する
+### <a name="update-the-_layoutcshtml-file"></a>_Layout.cshtml ファイルを更新する
 
 ASP.NET アプリの既定のレイアウトである **Views/Shared/_Layout.cshtml** を開きます。  その内容を次のように置き換え、変更を保存します。
 
@@ -641,7 +630,7 @@ Visual Studio でアプリケーションをデバッグするときは、ロー
 
 デバッグ セッションを停止するには、**Shift + F5** キーを押します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 

@@ -6,35 +6,35 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: e112fdc9e6f518e2ea3c72161e8978118cf19335
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6e35430713a3dbc8317944fed1180432a2083676
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890316"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461605"
 ---
-# <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>チュートリアル:Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
+# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
 
-このクイックスタートでは、既存の Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に準備する方法について説明します。  適切な構成により、Azure Spring Cloud は Spring Cloud アプリケーションの監視、スケーリング、更新を行う堅牢なサービスを実現します。 
+このクイックスタートでは、既存の Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に準備する方法について説明します。 適切に構成すると、Azure Spring Cloud によって Java Spring Cloud アプリケーションの監視、スケーリング、更新を行う堅牢なサービスが実現します。
 
 ## <a name="java-runtime-version"></a>Java ランタイム バージョン
 
 Azure Spring Cloud で稼働できるのは、Spring または Java アプリケーションのみです。
 
-Java 8 と Java 11 のどちらもサポートされます。 ホスティング環境には最新の Azure 用 Azul Zulu OpenJDK が含まれます。 Azure 用 Azul Zulu OpenJDK の詳細については、[こちらの記事](https://docs.microsoft.com/azure/java/jdk/java-jdk-install)を参照してください。 
+Azure Spring Cloud は、Java 8 と Java 11 の両方をサポートしています。 ホスティング環境には最新バージョンの Azure 用 Azul Zulu OpenJDK が含まれます。 Azure 用 Azul Zulu OpenJDK の詳細については、[JDK のインストール](https://docs.microsoft.com/azure/java/jdk/java-jdk-install)に関するページを参照してください。
 
 ## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot と Spring Cloud のバージョン
 
-Azure Spring Cloud でサポートされるのは Spring Boot アプリのみです。 Spring Boot 2.0 と 2.1 の両方がサポートされます。 サポートされる Spring Boot と Spring Cloud の組み合わせを下の表に示します。
+Azure Spring Cloud では、Spring Boot アプリのみがサポートされています。 Spring Boot バージョン 2.0 とバージョン 2.1 の両方がサポートされています。 サポートされている Spring Boot と Spring Cloud の組み合わせを次の表に示します。
 
 Spring Boot のバージョン | Spring Cloud のバージョン
 ---|---
-2.0.x | Finchley.RELEASE
-2.1.x | Greenwich.RELEASE
+2.0 | Finchley.RELEASE
+2.1 | Greenwich.RELEASE
 
-ご利用のバージョンに応じて、`pom.xml` ファイルに Spring Boot と Spring Cloud の依存関係が含まれていることを確認してください。
+お使いの Spring Boot バージョンに基づいて正しい Spring Boot および Spring Cloud の依存関係が pom.xml ファイルにあることを確認します。
 
-### <a name="version-20"></a>バージョン 2.0:
+### <a name="dependencies-for-spring-boot-version-20"></a>Spring Boot バージョン 2.0 の依存関係
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -58,7 +58,7 @@ Spring Boot のバージョン | Spring Cloud のバージョン
     </dependencyManagement>
 ```
 
-### <a name="version-21"></a>バージョン 2.1:
+### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot バージョン 2.1 の依存関係
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -84,18 +84,19 @@ Spring Boot のバージョン | Spring Cloud のバージョン
 
 ## <a name="azure-spring-cloud-client-dependency"></a>Azure Spring Cloud クライアントの依存関係
 
-Azure Spring Cloud によって、Spring Cloud コンポーネント (Spring Cloud サービス レジストリや Spring Cloud 構成サーバーなど) がホストされ、自動的に管理されます。 自分の Azure Spring Cloud サービス インスタンスと通信できるよう、Azure Spring Cloud のクライアント ライブラリを依存関係に含めます。
+Spring Cloud のコンポーネントは、Azure Spring Cloud によって自動的にホストおよび管理されます。 たとえば、Spring Cloud Service Registry や Spring Cloud Config Server などのコンポーネントです。 自分の Azure Spring Cloud サービス インスタンスと通信できるよう、Azure Spring Cloud クライアント ライブラリを依存関係に含めます。
 
-以下の表に、Spring Boot および Spring Cloud アプリの適切なバージョンを示します。
+Spring Boot と Spring Cloud を使用するアプリの正しい Azure Spring Cloud バージョンを次の表に示します。
 
 Spring Boot のバージョン | Spring Cloud のバージョン | Azure Spring Cloud のバージョン
 ---|---|---
-2.0.x | Finchley.RELEASE | 2.0.x
-2.1.x | Greenwich.RELEASE | 2.1.x
+2.0 | Finchley.RELEASE | 2.0
+2.1 | Greenwich.RELEASE | 2.1
 
-`pom.xml` に、次のいずれかのスニペットを含めます。  ご自身のものとバージョンが一致するスニペットを選択します。
+次のいずれかの依存関係を pom.xml ファイルに含めます。 Azure Spring Cloud バージョンがお使いのものと一致する依存関係を選択します。
 
-### <a name="version-20x"></a>バージョン 2.0.x:
+### <a name="dependency-for-azure-spring-cloud-version-20"></a>Azure Spring Cloud バージョン 2.0 の依存関係
+
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -104,7 +105,8 @@ Spring Boot のバージョン | Spring Cloud のバージョン | Azure Spring 
 </dependency>
 ```
 
-### <a name="version-21x"></a>バージョン 2.1.x:
+### <a name="dependency-for-azure-spring-cloud-version-21"></a>Azure Spring Cloud バージョン 2.1 の依存関係
+
 ```xml
 <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -115,13 +117,11 @@ Spring Boot のバージョン | Spring Cloud のバージョン | Azure Spring 
 
 ## <a name="other-required-dependencies"></a>その他の必要な依存関係
 
-Azure Spring Cloud の組み込み機能を有効にするには、アプリケーションに次の依存関係が含まれている必要があります。 これにより、アプリケーションで自動的に各コンポーネントとの構成が正常に行われます。  
+Azure Spring Cloud の組み込み機能を有効にするには、アプリケーションに次の依存関係が含まれている必要があります。 これにより、アプリケーションが各コンポーネントと共に正しく構成されます。  
 
-### <a name="service-registry"></a>サービス レジストリ
+### <a name="service-registry-dependency"></a>サービス レジストリの依存関係
 
-マネージド Azure サービス レジストリ サービスを使用するには、以下に示すように `spring-cloud-starter-netflix-eureka-client` を `POM.xml` に含めます。
-
-サービス レジストリ サーバーのエンドポイントは、アプリで環境変数として自動的に挿入されます。 アプリケーションはサービス レジストリ サーバーに自動的に登録され、他の依存マイクロサービスを検出できるようになります。
+マネージド Azure Service Registry サービスを使用するには、次に示すように、pom.xml ファイルに `spring-cloud-starter-netflix-eureka-client` 依存関係を含めます。
 
 ```xml
     <dependency>
@@ -130,9 +130,11 @@ Azure Spring Cloud の組み込み機能を有効にするには、アプリケ�
     </dependency>
 ```
 
-### <a name="distributed-configuration"></a>分散構成
+サービス レジストリ サーバーのエンドポイントは、アプリで環境変数として自動的に挿入されます。 その後、アプリケーションによって、アプリケーション自体がサービス レジストリ サーバーに登録され、他の依存マイクロサービスが検出されます。
 
-分散構成を有効にするには、`pom.xml` の依存関係セクションに `spring-cloud-config-client` を含めます。
+### <a name="distributed-configuration-dependency"></a>分散構成の依存関係
+
+分散構成を有効にするには、pom.xml ファイルの依存関係セクションに次の `spring-cloud-config-client` の依存関係を含めます。
 
 ```xml
 <dependency>
@@ -142,11 +144,11 @@ Azure Spring Cloud の組み込み機能を有効にするには、アプリケ�
 ```
 
 > [!WARNING]
-> アプリケーションと構成サーバーの連携が停止するため、ブートストラップ構成で `spring.cloud.config.enabled=false` を指定しないでください。
+> ブートストラップ構成で `spring.cloud.config.enabled=false` を指定しないでください。 そうしないと、アプリケーションと Config Server の連携が停止します。
 
-### <a name="metrics"></a>メトリック
+### <a name="metrics-dependency"></a>メトリックの依存関係
 
-pom.xml の依存関係セクションに `spring-boot-starter-actuator` を含めます。 メトリックは JMX エンドポイントから定期的にプルされます。これは Azure portal を使用して視覚化できます。
+次に示すように、pom.xml ファイルの依存関係セクションに `spring-boot-starter-actuator` の依存関係を含めます。
 
 ```xml
 <dependency>
@@ -155,9 +157,11 @@ pom.xml の依存関係セクションに `spring-boot-starter-actuator` を含�
 </dependency>
 ```
 
-### <a name="distributed-tracing"></a>分散トレース
+ メトリックは JMX エンドポイントから定期的に取得されます。 メトリックを視覚化するには、Azure portal を使用します。
 
-以下のとおり、pom.xml の依存関係セクションに `spring-cloud-starter-sleuth` と `spring-cloud-starter-zipkin` を含めます。 さらに、自分の Azure Spring Cloud サービス インスタンスと連携できるよう、Azure App Insights インスタンスを有効にする必要があります。 Azure Spring Cloud を使用して App Insights を有効にする方法については、[こちら](spring-cloud-tutorial-distributed-tracing.md)をお読みください
+### <a name="distributed-tracing-dependency"></a>分散トレースの依存関係
+
+pom.xml ファイルの依存関係セクションに次の `spring-cloud-starter-sleuth` および `spring-cloud-starter-zipkin` の依存関係を含めます。
 
 ```xml
 <dependency>
@@ -170,11 +174,13 @@ pom.xml の依存関係セクションに `spring-boot-starter-actuator` を含�
 </dependency>
 ```
 
-## <a name="next-steps"></a>次の手順
+ さらに、自分の Azure Spring Cloud サービス インスタンスと連携できるよう、Azure Application Insights インスタンスを有効にする必要があります。 Application Insights と Azure Spring Cloud を使用する方法については、[分散トレースに関するチュートリアル](spring-cloud-tutorial-distributed-tracing.md)を参照してください。
 
-このチュートリアルでは、Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に構成する方法について学習しました。  構成サーバーを有効にする方法を学習する場合は、次のチュートリアルに進んでください。
+## <a name="next-steps"></a>次のステップ
+
+このチュートリアルでは、Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に構成する方法について学習しました。 Config Server インスタンスを設定する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [構成サーバーの設定方法を学習する](spring-cloud-tutorial-config-server.md)。
+> [Config Server インスタンスを設定する方法を確認する](spring-cloud-tutorial-config-server.md)
 
 その他のサンプルを GitHub で入手できます ([Azure Spring Cloud のサンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql))。

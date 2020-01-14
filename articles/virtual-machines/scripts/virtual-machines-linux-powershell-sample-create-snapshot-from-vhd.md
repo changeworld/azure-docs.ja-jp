@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell サンプル スクリプト - VHD からスナップショットを作成してまったく同じ複数のマネージド ディスクを短時間で作成する
+title: VHD からスナップショットを作成して、同一のマネージド ディスクを複数作成する - PowerShell サンプル
 description: Azure PowerShell サンプル スクリプト - VHD からスナップショットを作成してまったく同じ複数のマネージド ディスクを短時間で作成する
 services: virtual-machines-linux
 documentationcenter: storage
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 2cbb50ee7dcea75b1fb215a1cf32a75bd7caeb55
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 28c97e1cb5dd329269a822be6b0b1f6f120a6b13
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033778"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463727"
 ---
 # <a name="create-a-snapshot-from-a-vhd-to-create-multiple-identical-managed-disks-in-small-amount-of-time-with-powershell"></a>PowerShell で VHD からスナップショットを作成してまったく同じ複数のマネージド ディスクを短時間で作成する
 
@@ -43,7 +43,7 @@ ms.locfileid: "74033778"
 | [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | ディスクの作成に使用するディスク構成を作成します。 この構成には、ストレージの種類、場所、親 VHD が格納されているストレージ アカウントのリソース ID、親 VHD の URI が含まれます。 |
 | [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | パラメーターとして渡されたディスク構成、ディスク名、リソース グループ名を使ってディスクを作成します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [スナップショットからマネージド ディスクを作成する](virtual-machines-linux-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI サンプル スクリプト - 内部 NSG と外部 NSG が設定された 2 つの VM の作成
-description: Azure CLI サンプル スクリプト - 内部 NSG と外部 NSG が設定された 2 つの VM の作成
+title: 'CLI サンプル: 内部と外部の NSG を使用して 2 つの VM を作成する'
+description: 内部と外部の NSG を使用して 2 つの VM を作成し、Azure CLI を使用してネットワーク トラフィックをセキュリティで保護します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 857a2862a7ddf515567f96b2e688e54a957cd3d9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3e3d1fe3bf464892934198d06b602a5b8bcafb67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458394"
 ---
-# <a name="secure-network-traffic-between-virtual-machines"></a>仮想マシン間のネットワーク トラフィックのセキュリティ保護
+# <a name="secure-network-traffic-between-virtual-machines-using-an-nsg"></a>NSG を使用して仮想マシン間のネットワーク トラフィックをセキュリティで保護する
 
 このスクリプトでは、2 つの仮想マシンを作成し、両マシンへの受信トラフィックをセキュリティで保護します。 1 つ目の仮想マシンはインターネット上でアクセス可能にし、ポート 22 とポート 80 のトラフィックを許可するようにネットワーク セキュリティ グループ (NSG) を構成します。 2 つ目の仮想マシンはインターネット上でアクセスできないようにし、1 つ目の仮想マシンからのトラフィックのみを許可するように NSG を構成します。
 
@@ -57,7 +57,7 @@ az group delete --name myResourceGroup
 | [az network nsg rule update](https://docs.microsoft.com/cli/azure/network/nsg/rule) | NSG 規則を更新します。 このサンプルでは、フロントエンド サブネットからのトラフィックのみを通すようにバックエンド規則を更新します。 |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 

@@ -337,6 +337,8 @@
               href: sql-database-design-first-database-csharp.md
         - name: データの読み込みと移動
           items:
+            - name: Azure VM からのインポートまたはエクスポート
+              href: import-export-from-vm.md
             - name: BACPAC ファイルからのデータベースのインポート
               href: sql-database-import.md
             - name: BACPAC ファイルへのデータベースのエクスポート

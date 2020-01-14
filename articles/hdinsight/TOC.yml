@@ -848,6 +848,8 @@
           href: ./hdinsight-management-ip-addresses.md
         - name: Azure Firewall のサービス タグ
           href: ./hdinsight-service-tags.md
+        - name: お客様が管理するキー ディスクの暗号化
+          href: ./disk-encryption.md
     - name: 方法
       items:
         - name: 資格情報の管理に ID ブローカーを使用する

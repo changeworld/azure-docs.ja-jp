@@ -6,103 +6,103 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 9c049ecbea3c630e0f7d08e4a42bd441ba3f5cfa
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 7241287e0438d6da5efb517a89b984bff72848c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708772"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461480"
 ---
-# <a name="tutorial-using-distributed-tracing-with-azure-spring-cloud"></a>チュートリアル:Azure Spring Cloud で分散トレースを使用する
+# <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する
 
-Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud は、[Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と Azure の [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) を統合して、Azure portal から強力な分散トレース機能を提供します。
+Azure Spring Cloud の分散トレース ツールを使用すると、複雑な問題を簡単にデバッグおよび監視できます。 Azure Spring Cloud によって [Azure Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) と [Azure の Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) が統合されています。 この統合により、Azure portal から強力な分散トレース機能を利用できます。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
-> * Azure portal で分散トレースを有効にする
-> * Spring Cloud Sleuth をアプリケーションに追加する
-> * マイクロサービス アプリケーションの依存関係マップを表示する
-> * さまざまなフィルターを使用してトレース データを検索する
+> * Azure portal で分散トレースを有効にする。
+> * Azure Spring Cloud Sleuth をアプリケーションに追加する。
+> * マイクロサービス アプリケーションの依存関係マップを表示する。
+> * さまざまなフィルターを使用してトレース データを検索する。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、以下が必要です。
-
-* 既にプロビジョニングされ、実行されている Azure Spring Cloud サービス。  Azure Spring Cloud サービスをプロビジョニングし、起動するには、[このクイックスタート](spring-cloud-quickstart-launch-app-cli.md)を完了します。
+このチュートリアルを完了するには、既にプロビジョニングされ、実行されている Azure Spring Cloud サービスが必要です。 Azure Spring Cloud サービスをプロビジョニングし、実行するには、[Azure CLI を使用したアプリのデプロイのクイックスタート](spring-cloud-quickstart-launch-app-cli.md)を完了してください。
     
 ## <a name="add-dependencies"></a>依存関係を追加する
 
-次の行を application.properties ファイルに追加して、zipkin 送信者が Web に送信できるようにします。
+1. application.properties ファイルに次の行を追加します。
 
-```xml
-spring.zipkin.sender.type = web
-```
+   ```xml
+   spring.zipkin.sender.type = web
+   ```
 
-[Azure Spring Cloud アプリケーションを準備するためのガイド](spring-cloud-tutorial-prepare-app-deployment.md)に従った場合は、次の手順をスキップできます。 そうでない場合は、ローカルの開発環境に移動して、Spring Cloud Sleuth の依存関係を含むように `pom.xml` ファイルを編集します。
+   この変更が完了すると、Zipkin センダーは Web に送信できるようになります。
 
-```xml
-<dependencyManagement>
+1. [Azure Spring Cloud アプリケーションの準備ガイド](spring-cloud-tutorial-prepare-app-deployment.md)に従っている場合は、この手順をスキップします。 それ以外の場合は、ローカルの開発環境にアクセスし、次の Azure Spring Cloud Sleuth 依存関係を含むように pom.xml ファイルを編集します。
+
+    ```xml
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-sleuth</artifactId>
+                <version>${spring-cloud-sleuth.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth</artifactId>
-            <version>${spring-cloud-sleuth.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
+            <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
     </dependencies>
-</dependencyManagement>
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-sleuth</artifactId>
-    </dependency>
-</dependencies>
-```
+    ```
 
-* これらの変更を反映するために、Azure Spring Cloud サービスをもう一度ビルドしてデプロイします。 
+1. これらの変更を反映するために、Azure Spring Cloud サービスをもう一度ビルドしてデプロイします。
 
 ## <a name="modify-the-sample-rate"></a>サンプル レートを変更する
-サンプル レートを変更すると、テレメトリが収集される頻度を変更できます。 たとえば、サンプリングの頻度を半分にする場合は、`application.properties` ファイルに移動して、次の行を変更します。
+
+サンプル レートを変更すると、テレメトリが収集される頻度を変更できます。 たとえば、半分の頻度でサンプリングする場合は、application.properties ファイルを開き、次の行を変更します。
 
 ```xml
 spring.sleuth.sampler.probability=0.5
 ```
 
-アプリケーションを既にビルドおよびデプロイしてある場合は、Azure CLI またはポータルで上の行を環境変数として追加することで、サンプル レートを変更できます。 
+アプリケーションの構築とデプロイが既に完了している場合は、サンプル レートを変更できます。 これを行うには、Azure CLI または Azure portal で前の行を環境変数として追加します。
 
 ## <a name="enable-application-insights"></a>Application Insights を有効にする
 
 1. Azure portal で、自分のAzure Spring Cloud サービスのページに移動します。
-1. [監視] セクションで **[分散トレース]** を選択します。
+1. **[監視]** ページで、 **[分散トレース]** を選択します。
 1. **[設定の編集]** を選択して、新しい設定を編集または追加します。
-1. 新しい Application Insights クエリを作成します。既存の Application Insights クエリを選択することもできます。
+1. 新しい Application Insights クエリを作成するか、既存のものを選択します。
 1. 監視するログ カテゴリを選択し、保持期間 (日数) を指定します。
 1. **[適用]** を選択し、新しいトレースを適用します。
 
-## <a name="view-application-map"></a>アプリケーション マップを表示する
+## <a name="view-the-application-map"></a>アプリケーション マップを表示する
 
-[分散トレース] ページに戻り、 **[View application map]\(アプリケーション マップの表示\)** を選択します。 アプリケーションの視覚的表現と監視設定を確認します。 アプリケーション マップを使用する方法については、[この記事](https://docs.microsoft.com/azure/azure-monitor/app/app-map)を参照してください。
+**[分散トレース]** ページに戻り、 **[View application map]\(アプリケーション マップの表示\)** を選択します。 アプリケーションの視覚的表現と監視設定を確認します。 アプリケーション マップの使用方法については、「[アプリケーション マップ: 分散アプリケーションのトリアージ](https://docs.microsoft.com/azure/azure-monitor/app/app-map)」を参照してください。
 
-## <a name="search"></a>Search
+## <a name="use-search"></a>検索を使用する
 
-他の特定のテレメトリ項目に対するクエリを行うには、検索機能を使用します。 **[分散トレース]** ページで、 **[検索]** を選択します。 検索機能を使用する方法の詳細については、[この記事](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search)を参照してください。
+他の特定のテレメトリ項目に対するクエリを行うには、検索機能を使用します。 **[分散トレース]** ページで、 **[検索]** を選択します。 検索機能の使用方法の詳細については、「[Application Insights の検索の使用](https://docs.microsoft.com/azure/azure-monitor/app/diagnostic-search)」を参照してください。
 
-## <a name="application-insights-page"></a>Application Insights ページ
+## <a name="use-application-insights"></a>Application Insights を使用する
 
-Application Insights では、アプリケーション マップと検索の他に、監視機能が提供されます。 その他の機能を見つけるには、Azure portal でアプリケーション名を検索し、Application Insights ページを起動してください。 これらのツールの使用方法のガイダンスについては、[ドキュメントを参照](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)してください。
-
+Application Insights では、アプリケーション マップと検索機能の他に、監視機能が提供されます。 Azure portal でアプリケーションの名前を検索し、Application Insights ページを開いて監視情報を確認します。 これらのツールの使用方法の詳細については、「[Azure Monitor ログ クエリ](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)」を参照してください。
 
 ## <a name="disable-application-insights"></a>Application Insights を無効にする
 
 1. Azure portal で、自分のAzure Spring Cloud サービスのページに移動します。
-1. [監視] セクションで **[分散トレース]** をクリックします。
-1. Application Insights を無効にするには、 **[使用不可]** をクリックします
+1. **[監視]** で **[分散トレース]** を選択します。
+1. **[使用不可]** を選択して Application Insights を無効にします。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Spring Cloud で分散トレースを有効にして理解する方法を学習しました。 アプリケーションを Azure CosmosDB にバインドする方法について学習するには、次のチュートリアルに進んでください。
+このチュートリアルでは、Azure Spring Cloud で分散トレースを有効にして理解する方法を学習しました。 アプリケーションを Azure Cosmos DB データベースにバインドする方法について学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [アプリケーションを Azure CosmosDB にバインドする方法を学習](spring-cloud-tutorial-bind-cosmos.md)します。
+> [Azure Cosmos DB データベースにバインドする方法を確認する](spring-cloud-tutorial-bind-cosmos.md)

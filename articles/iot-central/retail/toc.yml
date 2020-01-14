@@ -36,11 +36,13 @@
       href: architecture-smart-inventory-management-pnp.md
     - name: ストア分析のアーキテクチャ
       href: store-analytics-architecture.md
+    - name: マイクロフルフィルメント センター アプリ テンプレートのアーキテクチャ
+      href: architecture-micro-fulfillment-center-pnp.md
     - name: 接続
       href: ../preview/overview-iot-central-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: アプリケーション テンプレートとは
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: デバイスの接続
       items:

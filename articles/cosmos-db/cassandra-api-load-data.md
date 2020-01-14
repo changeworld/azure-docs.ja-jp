@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Java アプリケーションを使用して Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む
+title: チュートリアル:Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む Java アプリ
 description: このチュートリアルでは、Java アプリケーションを使用して Azure Cosmos DB 内の Cassandra API テーブルにサンプル ユーザー データを読み込む方法を示します。
 author: kanshiG
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.date: 05/20/2019
 ms.author: govindk
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: e9fc96b9f26344045aa7e45fe7bdbe389e329377
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 66c292bcb02e3b2b215cabe4968fa30a45422cef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66472681"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445663"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>チュートリアル:Azure Cosmos DB 内の Cassandra API テーブルにサンプル データを読み込む
 
@@ -24,7 +24,7 @@ ms.locfileid: "66472681"
 
 > [!div class="checklist"]
 > * Cassandra テーブルへのデータの読み込み
-> * アプリの実行
+> * アプリを実行する
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -74,7 +74,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
      repository.insertUser(preparedStatement, 5, "PeterS", "Everett");
    ```
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 コマンド プロンプトまたはターミナル ウィンドウを開いて、フォルダーのパスをプロジェクトを作成した場所に変更します。 "mvn clean install" コマンドを実行してターゲット フォルダー内に cassandra-examples.jar ファイルを生成し、アプリケーションを実行します。 
 
@@ -88,7 +88,7 @@ java -cp target/cosmosdb-cassandra-examples.jar com.azure.cosmosdb.cassandra.exa
 
 これで､Azure portal でデータ エクスプローラーを開きユーザー情報がテーブルに追加されていることを確認できます｡
     
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Cosmos DB の Cassandra API アカウントにサンプル データを読み込む方法を学習しました。 次の記事に進むことができます。
 

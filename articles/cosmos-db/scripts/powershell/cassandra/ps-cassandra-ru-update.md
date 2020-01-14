@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell スクリプト - Cassandra API 向けの Azure Cosmos DB 更新プログラムの毎秒 RU
+title: Azure Cosmos DB Cassandra API リソースの RU/秒を更新する PowerShell スクリプト
 description: Azure Cosmos DB Cassandra API におけるキースペースまたはテーブルのスループットを、PowerShell スクリプトを使用して更新する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 12/05/2019
 ms.author: mjbrown
-ms.openlocfilehash: 417ee8d839e65a7625b8ba8daa84cc0dcc41abf5
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 4f81f278c87b096b2dae844252229fb1dee45599
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74871977"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445061"
 ---
 # <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB のキースペースまたはテーブル向けの更新プログラムの毎秒 RU - Cassandra API
 
@@ -44,7 +44,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

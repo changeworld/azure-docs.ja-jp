@@ -1,5 +1,5 @@
 ---
-title: Azure CLI サンプル スクリプト - スナップショットからマネージド ディスクを作成する
+title: スナップショットからマネージド ディスクを作成する - CLI サンプル
 description: Azure CLI サンプル スクリプト - スナップショットからマネージド ディスクを作成する
 services: virtual-machines-linux
 documentationcenter: storage
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 8a219b24c4d4b82363094ccba74db22e3b4018c4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd50d14ef004007b2c13d295dcb9911b318dd448
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74023317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458469"
 ---
 # <a name="create-a-managed-disk-from-a-snapshot-with-cli"></a>CLIでスナップショットからマネージド ディスクを作成する
 
@@ -46,7 +46,7 @@ ms.locfileid: "74023317"
 | [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | スナップショットの名前とリソース グループのプロパティを使用して、そのスナップショットのすべてのプロパティを取得します。 Id プロパティはマネージド ディスクを作成するために使用されます。  |
 | [az disk create](https://docs.microsoft.com/cli/azure/disk) | 管理対象スナップショット Id を使用してマネージド ディスクを作成します |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [マネージド ディスクを OS ディスクとして接続することで仮想マシンを作成する](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fcli%2fmodule%2ftoc.json)
 

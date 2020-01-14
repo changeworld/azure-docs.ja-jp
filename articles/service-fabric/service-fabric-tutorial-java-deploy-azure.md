@@ -1,26 +1,17 @@
 ---
-title: Azure で Service Fabric クラスターに Java アプリをデプロイする | Microsoft Docs
+title: Azure の Service Fabric クラスターに Java アプリをデプロイする
 description: このチュートリアルでは、Azure Service Fabric クラスターに Java Service Fabric アプリケーションをデプロイする方法について説明します。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c836fd122d9dba0cd7eb20fe405e63c3ca3f59eb
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 354f7db2a634ae2adee2f2fa0e2a6055c1c20613
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306790"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465286"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
 
@@ -240,7 +231,7 @@ ms.locfileid: "66306790"
     ./uninstall.sh
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下の内容を学習しました。
 

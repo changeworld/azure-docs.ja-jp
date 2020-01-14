@@ -229,6 +229,8 @@
           href: certificate-rotation.md
         - name: プライベート クラスターを作成する
           href: private-clusters.md
+        - name: ディスクの BYOK
+          href: azure-disk-customer-managed-keys.md
     - name: 監視およびログ記録
       items:
         - name: コンテナーに対する Azure Monitor

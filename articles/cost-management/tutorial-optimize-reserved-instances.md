@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure で Cloudyn を使って予約インスタンスのコストを最適化する | Microsoft Docs
+title: チュートリアル - Cloudyn を使用して予約インスタンスのコストを最適化する - Azure
 description: このチュートリアルでは、Azure およびアマゾン ウェブ サービス (AWS) の予約インスタンスのコストを最適化する方法について説明します。
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: ade3b63116337ae7b4678b459b1a0c388092f409
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c1afad7cb36916777b2f6cefa40b9bd1ddc465a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444567"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
@@ -216,7 +216,7 @@ AWS は、特定の可用性ゾーンおよびリージョンを対象に予約�
 
 この予約に関して未使用になっていたインスタンスをすべて使い切ることができました。今後、51 インスタンスがオンデマンドで実行されることはありません。 この例では、オンデマンドの使用を大幅に削減し、支払い済みの予約を使用することで、所属する組織のコストを削減することができました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、以下のタスクを完了しました。
 

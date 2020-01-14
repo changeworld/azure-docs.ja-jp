@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: a7511b8026cb3f53a23eed0f0c057632314320c4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459511"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>チュートリアル:Windows Virtual Desktop でテナントを作成する
 
@@ -25,7 +25,9 @@ Windows Virtual Desktop でのテナントの作成は、デスクトップ仮�
 > * Azure Active Directory テナント内のユーザーに TenantCreator アプリケーション ロールを割り当てる。
 > * Windows Virtual Desktop テナントを作成する。
 
-以下に、Windows Virtual Desktop テナントの設定に必要なものを示します。
+## <a name="what-you-need-to-set-up-a-tenant"></a>テナントを設定するために必要なこと
+
+Windows Virtual Desktop テナントの設定を開始する前に、次の点を確認してください。
 
 * Windows Virtual Desktop ユーザー用の [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) テナント ID。
 * Azure Active Directory テナント内のグローバル管理者アカウント。
@@ -33,6 +35,8 @@ Windows Virtual Desktop でのテナントの作成は、デスクトップ仮�
    * 管理者アカウントは、Windows Virtual Desktop テナントを作成する Azure Active Directory テナントから提供する必要があります。 このプロセスは、Azure Active Directory B2B (ゲスト) アカウントをサポートしません。
    * 管理者アカウントは、職場または学校アカウントである必要があります。
 * Azure サブスクリプション。
+
+このチュートリアルで説明されているプロセスが正常に機能するには、テナント ID、グローバル管理者アカウント、Azure サブスクリプションを用意できている必要があります。
 
 ## <a name="grant-permissions-to-windows-virtual-desktop"></a>Windows Virtual Desktop へのアクセス許可を付与する
 
@@ -137,7 +141,13 @@ New-RdsTenant -Name <TenantName> -AadTenantId <DirectoryID> -AzureSubscriptionId
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
 ```
 
-## <a name="next-steps"></a>次の手順
+アカウントからロックアウトされた場合や、自分が休暇を取るときに誰かに不在時のテナント管理者としての操作を誰かに実行してもらう必要がある場合に備えて、2 人目のユーザーに管理者アクセス権を割り当てることをお勧めします。 2 人目のユーザーに管理者アクセス権を割り当てるには、`<TenantName>` と `<Upn>` を実際のテナント名と 2 人目のユーザーの UPN に置き換えて次のコマンドレットを実行します。
+
+```powershell
+New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinitionName "RDS Owner"
+```
+
+## <a name="next-steps"></a>次のステップ
 
 テナントを作成した後、Azure Active Directory でサービス プリンシパルを作成し、Windows Virtual Desktop 内でそれにロールを割り当てる必要があります。 サービス プリンシパルを使用することで、Azure Marketplace オファリングである Windows Virtual Desktop を正常にデプロイしてホスト プールを作成できます。 ホスト プールについて詳しく確認するために、Windows Virtual Desktop でホスト プールを作成するためのチュートリアルに進んでください。
 

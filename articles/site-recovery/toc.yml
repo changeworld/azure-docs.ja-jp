@@ -177,6 +177,8 @@
               href: azure-to-azure-how-to-enable-replication.md
             - name: 暗号化された VM の Azure から Azure へのレプリケーションを有効にする
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
+            - name: CMK 対応ディスクを使用する VM に対して Azure から Azure へのレプリケーションを有効にする
+              href: azure-to-azure-how-to-enable-replication-cmk-disks.md
             - name: S2D VM の Azure から Azure へのレプリケーションを有効にする
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: 追加したディスクのレプリケーションを有効にする

@@ -32,6 +32,30 @@
       href: azure-portal-export-delete-settings.md
     - name: Azure portal の使い方に関するビデオ シリーズ
       href: azure-portal-video-series.md
+    - name: サポート リクエストの作成と管理
+      items:
+        - name: Azure サポート要求を作成する
+          href: supportability/how-to-create-azure-support-request.md
+        - name: サポート リクエストのファイルのアップロード
+          href: supportability/how-to-use-file-uploader.md
+        - name: クォータの増加を要求
+          items:
+            - name: コンピューティング vCPU の上限を引き上げる
+              items:
+                - name: Resource Manager デプロイ モデル
+                  items:
+                    - name: VM シリーズ vCPU の上限を引き上げる
+                      href: supportability/per-vm-quota-requests.md
+                    - name: リージョンにおける合計 vCPU の上限を引き上げる
+                      href: supportability/regional-quota-requests.md
+                    - name: スポットのクォータの上限を引き上げる
+                      href: supportability/low-priority-quota.md
+                - name: クラシック デプロイ モデル
+                  href: supportability/classic-deployment-model-quota-increase-requests.md
+            - name: ネットワークの上限を引き上げる
+              href: supportability/networking-quota-requests.md
+        - name: リージョンまたは SKU のサブスクリプションに関する問題のトラブルシューティング
+          href: supportability/sku-series-unavailable.md
 - name: リファレンス
   items:
     - name: キーボード ショートカット

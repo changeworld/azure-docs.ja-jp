@@ -1,17 +1,17 @@
 ---
-title: Azure PowerShell スクリプト - IP ファイアウォールを使用した Azure Cosmos アカウントを作成する
+title: IP ファイアウォールを使用した Azure Cosmos アカウントを作成する PowerShell スクリプト
 description: Azure PowerShell スクリプト サンプル - IP ファイアウォールを使用した Azure Cosmos アカウントを作成する
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
 ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: c0e7d2b4fe1e63b468a4ef8c88310c5d7e115ebe
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 6f018815bb8afd50bd9f21f8c088fd688ace1174
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71156517"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445086"
 ---
 # <a name="create-an-azure-cosmos-account-with-ip-firewall"></a>IP ファイアウォールを使用した Azure Cosmos アカウントを作成する
 
@@ -47,7 +47,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
 

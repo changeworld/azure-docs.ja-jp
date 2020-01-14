@@ -1,6 +1,5 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Mongoose を使用して Cosmos DB に接続する
-titleSuffix: Azure Cosmos DB
+title: Mongoose を使用して Angular アプリ を Azure Cosmos DB の MongoDB 用 API に接続する
 description: このチュートリアルでは、Express と Angular を使用して Cosmos DB に格納されているデータを管理するための Node.js アプリケーションを構築する方法について説明します。 このパートでは、Mongoose を使用して Azure Cosmos DB に接続します。
 author: johnpapa
 ms.service: cosmos-db
@@ -12,12 +11,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 626015e2aac5eb09dfd271a139dbc5eb49a088fc
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: ba893eeb8c2560397f3524d1042566dbafee7d1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69616421"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444702"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Azure Cosmos DB の MongoDB 用 API で Angular アプリを作成する - Mongoose を使用して Cosmos DB に接続する
 
@@ -228,7 +227,7 @@ Mongoose は、MongoDB および Node.js のためのオブジェクト デー�
 
 ここで、前のコードを振り返ってみましょう。 最初の index.js ファイルでは、ノード サーバーをセットアップしています。 ルートを設定して定義していることに注意してください。 次に、routes.js ファイルでは、ヒーロー サービスと対話し、関数 (**getHeroes** など) を取得して要求と応答を渡すよう命令します。 hero.service.js ファイルでは、モデルを取得し、Mongo に接続します。 その後、呼び出すと **getHeroes** が実行されて、200 の応答が返されます。 
 
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-app"></a>アプリを実行する
 
 次に、以下の手順を使用してアプリを実行します。
 
@@ -240,7 +239,7 @@ Mongoose は、MongoDB および Node.js のためのオブジェクト デー�
 
 アプリにはヒーローがまだ格納されていません。 このチュートリアルの次のパートでは、プット、プッシュ、削除の機能を追加します。 そうすれば、Azure Cosmos データベースへの Mongoose 接続を使用して、UI からヒーローを追加、更新、削除することができます。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソースが必要なくなったら、リソース グループ、Azure Cosmos DB アカウント、およびすべての関連リソースを削除できます。 リソース グループを削除するには次のようにします。
 
@@ -248,7 +247,7 @@ Mongoose は、MongoDB および Node.js のためのオブジェクト デー�
  1. **[リソース グループの削除]** を選択します。
  1. 削除するリソース グループの名前を確認し、 **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 続いてチュートリアルのパート 6 に進み、Post、Put、Delete の各関数をアプリに追加します。
 

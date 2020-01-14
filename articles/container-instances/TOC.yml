@@ -4,7 +4,7 @@
   items:
     - name: Azure Container Instances について
       href: container-instances-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: コンテナー インスタンスのデプロイ - CLI
@@ -51,14 +51,18 @@
       href: container-instances-orchestrator-relationship.md
     - name: セキュリティに関する考慮事項
       href: container-instances-image-security.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
-    - name: デプロイ
+    - name: 配置
       items:
-        - name: 仮想ネットワークでのデプロイ (プレビュー)
+        - name: 仮想ネットワークでのデプロイ
           href: container-instances-vnet.md
         - name: Azure Container Registry からのデプロイ
           href: container-instances-using-azure-container-registry.md
+        - name: デプロイ データの暗号化
+          href: container-instances-encrypt-data.md
+        - name: 専用ホストへのデプロイ
+          href: container-instances-dedicated-hosts.md
     - name: コンテナーのシナリオ
       items:
         - name: 一度だけ実行されるタスクの再起動ポリシーの設定
@@ -105,7 +109,7 @@
           href: container-instances-get-logs.md
         - name: Azure Monitor ログでのログ記録
           href: container-instances-log-analytics.md
-    - name: トラブルシューティング
+    - name: '[トラブルシューティング]'
       items:
         - name: 一般的な問題のトラブルシューティング
           href: container-instances-troubleshooting.md
@@ -147,5 +151,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: ビデオ
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
-    - name: FAQ
+    - name: よく寄せられる質問
       href: container-instances-faq.md

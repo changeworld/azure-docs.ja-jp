@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: チュートリアル: Azure Cosmos DB の Cassandra API アカウントにデータを移行する'
-description: このチュートリアルでは、CQL Copy コマンドと Spark を使用して、Apache Cassandra から Azure Cosmos DB の Cassandra API アカウントにデータをコピーする方法について説明します。
+title: Azure Cosmos DB の Cassandra API アカウントにデータを移行する - チュートリアル
+description: このチュートリアルでは、CQL Copy コマンドと Spark を使用して、Apache Cassandra から Azure Cosmos DB の Cassandra API アカウントにデータをコピーする方法について説明します
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: cc312a707f5ab74967b9d3bc050fec7bfcad9dbc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c754740369da6d0a8084b9b60ef178fb28e32f1b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58851074"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445669"
 ---
-# <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>チュートリアル: Azure Cosmos DB の Cassandra API アカウントにデータを移行する
+# <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>チュートリアル:Azure Cosmos DB の Cassandra API アカウントにデータを移行する
 
 開発者は、所有しているオンプレミスまたはクラウドで実行される既存の Cassandra のワークロードを Azure に移行したいと考えることがあります。 そのようなワークロードを、Azure Cosmos DB の Cassandra API アカウントに移行できます。 このチュートリアルでは、Apache Cassandra のデータを Azure Cosmos DB の Cassandra API アカウントに移行するために利用できる複数のオプションについて、その手順を説明します。
 
@@ -104,11 +104,11 @@ Spark を使用して Cassandra API アカウントにデータを移行する�
 
 Azure 仮想マシンまたは他のクラウド上の既存のクラスターにデータが存在する場合は、Spark ジョブを使用したデータの移行が推奨されるオプションです。 このオプションでは、Spark を 1 回の取り込みまたは定期的な取り込みの仲介者として設定する必要があります。 オンプレミスと Azure の間で Azure ExpressRoute 接続を使用することで、この移行を加速できます。 
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要がなくなったら、リソース グループ、Azure Cosmos アカウント、およびすべての関連リソースを削除できます。 これを行うには、仮想マシン用のリソース グループを選択し、**[削除]** を選択した後、削除するリソース グループの名前を確認します。
+必要がなくなったら、リソース グループ、Azure Cosmos アカウント、およびすべての関連リソースを削除できます。 これを行うには、仮想マシン用のリソース グループを選択し、 **[削除]** を選択した後、削除するリソース グループの名前を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Azure Cosmos DB の Cassandra API アカウントにデータを移行する方法を説明しました。 次の記事に進んで、Azure Cosmos DB のその他の概念の詳細を確認できます。
 

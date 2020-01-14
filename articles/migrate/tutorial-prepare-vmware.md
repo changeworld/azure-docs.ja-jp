@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cc1eb4c4fce1398365145b2f3d63db984635d667
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454551"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>評価および Azure への移行のために VMware VM を準備する
 
@@ -70,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 テナントおよびグローバル管理者は、次のようにアクセス許可を付与できます
 
 1. テナント/グローバル管理者は Azure AD で **[Azure Active Directory]**  >  **[ユーザー]**  >  **[ユーザー設定]** の順に移動します。
-2. 管理者は、 **[アプリの登録]** を **[はい]** に設定する必要があります。 これは、重要ではない既定の設定です。 [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+2. 管理者は、 **[アプリの登録]** を **[はい]** に設定する必要があります。 これは、重要ではない既定の設定です。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
     ![Azure AD のアクセス許可](./media/tutorial-prepare-vmware/aad.png)
 
@@ -78,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 #### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て
 
-テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細情報](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
 ### <a name="assign-role-assignment-permissions"></a>ロール割り当てのアクセス許可の割り当て
 
@@ -154,7 +154,7 @@ VMware VM の[エージェントベース移行](server-migrate-overview.md)の�
 4. [URL アクセス](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements)に注意します。
 5. Azure Migrate コンポーネントがエージェントベースのアクセスに必要とする[ポート アクセス](migrate-support-matrix-vmware.md#agent-based-migration-port-requirements)を確認します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次のことを行いました。
 

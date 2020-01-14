@@ -1,6 +1,6 @@
 ---
-title: Azure CLI のサンプル | Microsoft Docs
-description: Azure CLI のサンプル
+title: Azure CLI のサンプル
+description: スケール セットの作成や管理などで Azure CLI を使用してビルドされた bash スクリプト サンプルへのリンクが含まれるテーブル。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1ea397616c7909283128118f66fc36218ff36d53
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 540941bd2d54c5d3c8d26186e700727e8d75f501
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882576"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459359"
 ---
 # <a name="azure-cli-samples-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure CLI サンプル
 

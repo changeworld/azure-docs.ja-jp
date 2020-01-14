@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - Azure で Linux 用の仮想マシン スケール セットを作成する
-description: このチュートリアルでは、Azure CLI で仮想マシン スケール セットを使用して、Linux VM 上に高可用性アプリケーションを作成してデプロイする方法について説明します
+title: チュートリアル:Windows 仮想マシン スケール セットを作成する
+description: Azure CLI で仮想マシン スケール セットを使用して、Linux VM 上に高可用性アプリケーションを作成してデプロイする方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b9368da24af3b0fe08045ed869c752eefe3912fd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 94e7bac3cbf3842375278a23bc39245425cda4b6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458660"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用して仮想マシン スケール セットを作成して Linux 上に高可用性アプリをデプロイする
 
@@ -250,8 +250,8 @@ az vmss disk detach \
 ```
 
 
-## <a name="next-steps"></a>次の手順
-このチュートリアルでは、仮想マシン スケール セットを作成しました。 以下の方法について学習しました。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、仮想マシン スケール セットを作成しました。 以下の方法を学習しました。
 
 > [!div class="checklist"]
 > * cloud-init を使用して、スケーリングするアプリを作成する

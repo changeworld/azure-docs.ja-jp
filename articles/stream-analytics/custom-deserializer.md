@@ -1,23 +1,22 @@
 ---
 title: チュートリアル - Azure Stream Analytics クラウド ジョブ用のカスタム .NET 逆シリアライザー
 description: このチュートリアルでは、Visual Studio を使用して Azure Stream Analytics クラウド ジョブ用のカスタム .NET 逆シリアライザーを作成する方法について説明します。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 05/06/2019
-ms.openlocfilehash: f5fa0a4398c904113dbce5d80844b42b6e775df0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702435"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443687"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>チュートリアル:Azure Stream Analytics 用のカスタム .NET 逆シリアライザー
 
-Azure Stream Analytics には、JSON、CSV、および Avro の [3 つのデータ形式に対する組み込みサポート](stream-analytics-parsing-json.md)があります。 カスタム .NET 逆シリアライザーを使用すると、クラウド ジョブとエッジ ジョブの両方について、その他の形式 ([プロトコル バッファー](https://developers.google.com/protocol-buffers/)、[Bond](https://github.com/Microsoft/bond)、およびその他のユーザー定義形式など) からデータを読み取ることができます。
+Azure Stream Analytics では、[3 つのデータ形式が組み込みでサポートされています](stream-analytics-parsing-json.md)。JSON、CSV、Avro です。 カスタム .NET 逆シリアライザーを使用すると、クラウド ジョブとエッジ ジョブの両方について、その他の形式 ([プロトコル バッファー](https://developers.google.com/protocol-buffers/)、[Bond](https://github.com/Microsoft/bond)、およびその他のユーザー定義形式など) からデータを読み取ることができます。
 
 このチュートリアルでは、Visual Studio を使用して Azure Stream Analytics クラウド ジョブ用のカスタム .NET 逆シリアライザーを作成する方法について説明します。 
 
@@ -66,28 +65,28 @@ Azure Stream Analytics には、JSON、CSV、および Avro の [3 つのデー�
 
 1. **JobConfig.json** をダブルクリックします。 次の設定を除き、既定の構成を使用します。
 
-   |Setting|推奨値|
+   |設定|推奨値|
    |-------|---------------|
    |グローバル ストレージ設定のリソース|現在のアカウントからデータ ソースを選択します|
    |グローバル ストレージ設定のサブスクリプション| <お客様のサブスクリプション>|
    |グローバル ストレージ設定のストレージ アカウント| <お客様のストレージ アカウント>|
    |カスタム コード ストレージ設定のリソース|現在のアカウントからデータ ソースを選択します|
    |カスタム コード ストレージ設定のストレージ アカウント|<お客様のストレージ アカウント>|
-   |カスタム コード ストレージ設定のコンテナー|< お客様のストレージ コンテナー >|
+   |カスタム コード ストレージ設定のコンテナー|<お客様のストレージ コンテナー>|
 
 2. **[入力]** の下で、 **[Input.json]** をダブルクリックします。 次の設定を除き、既定の構成を使用します。
 
-   |Setting|推奨値|
+   |設定|推奨値|
    |-------|---------------|
    |source|Blob Storage|
    |リソース|現在のアカウントからデータ ソースを選択します|
-   |Subscription|<お客様のサブスクリプション>|
-   |ストレージ アカウント|< お客様のストレージ アカウント >|
-   |コンテナー|< お客様のストレージ コンテナー >|
+   |サブスクリプション|<お客様のサブスクリプション>|
+   |ストレージ アカウント|<お客様のストレージ アカウント>|
+   |コンテナー|<お客様のストレージ コンテナー>|
    |イベントのシリアル化の形式|その他 (Protobuf、XML、専用...)|
    |リソース|ASA プロジェクト参照または分離コードから読み込みます|
    |CSharp アセンブリ名|ProtobufDeserializer.dll|
-   |クラス名|MessageBodyProto.MessageBodyDeserializer|
+   |Class Name (クラス名)|MessageBodyProto.MessageBodyDeserializer|
    |イベントの圧縮タイプ|なし|
 
 3. 次のクエリを **Script.asaql** ファイルに追加します。
@@ -98,13 +97,13 @@ Azure Stream Analytics には、JSON、CSV、および Avro の [3 つのデー�
 
 4. [サンプルの protobuf 入力ファイル](https://github.com/Azure/azure-stream-analytics/blob/master/CustomDeserializers/Protobuf/SimulatedTemperatureEvents.protobuf)をダウンロードします。 **[入力]** フォルダーで **[Input.json]** を右クリックし、 **[ローカル入力の追加]** を選択します。 次に、 **[local_Input.json]** をダブルクリックし、次の設定を構成します。
 
-   |Setting|推奨値|
+   |設定|推奨値|
    |-------|---------------|
    |入力のエイリアス|入力|
    |ソースの種類|データ ストリーム|
    |イベントのシリアル化の形式|その他 (Protobuf、XML、専用...)|
    |CSharp アセンブリ名|ProtobufDeserializer.dll|
-   |クラス名|MessageBodyProto.MessageBodyDeserializer|
+   |Class Name (クラス名)|MessageBodyProto.MessageBodyDeserializer|
    |ローカル入力ファイルのパス|<ダウンロードしたサンプル protobuf 入力ファイルのファイル パス>|
 
 ## <a name="execute-the-stream-analytics-job"></a>Stream Analytics ジョブを実行する
@@ -123,7 +122,7 @@ Stream Analytics ジョブのカスタム逆シリアライザーが正常に実
 
 2. **F5** キーを押してデバッグを開始します。 期待どおりに、プログラムはブレークポイントで停止します。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 リソース グループ、ストリーミング ジョブ、および関連するすべてのリソースは、不要になったら削除します。 ジョブを削除すると、ジョブによって消費されるストリーミング ユニットに対する課金を回避することができます。 ジョブを後で使用する計画がある場合は、ジョブを停止し、必要なときに再起動することができます。 このジョブの使用を続けない場合は、以下の手順に従って、このチュートリアルで作成したすべてのリソースを削除してください。
 
@@ -131,7 +130,7 @@ Stream Analytics ジョブのカスタム逆シリアライザーが正常に実
 
 2. リソース グループのページで **[削除]** を選択し、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** を選択します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、プロトコル バッファー入力のシリアル化に対して、カスタム .NET 逆シリアライザーを実装する方法について学習しました。 カスタム逆シリアライザーの作成の詳細については、次の記事を参照してください。
 

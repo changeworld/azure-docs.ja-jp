@@ -1,5 +1,5 @@
 ---
-title: Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
+title: Java から Azure Table Storage または Azure Cosmos DB Table API を使用する
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
-ms.openlocfilehash: 6b8b2d2d035183861f367c9425ec54d1c9babf34
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 9e5f9d3fbd7fcf12271329ec324b38b03b4dcd7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286552"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444819"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java から Azure Table Storage または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "58286552"
 この記事では、Azure Table Storage サービスと Azure Cosmos DB を使用する一般的なシナリオの実行方法について説明します。 サンプルは Java で記述され、 [Azure Storage SDK for Java][Azure Storage SDK for Java]を利用しています。 テーブルの**作成**、**一覧表示**、および**削除**と、テーブル内のエンティティの**挿入**、**照会**、**変更**、および**削除**の各シナリオについて説明します。 テーブルの詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。
 
 > [!NOTE]
-> SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。 詳細については、「[Azure Storage SDK for Android に関するページ][Azure Storage SDK for Android]｣をご覧ください。
+> SDK は、Android デバイスで Azure Storage を使用する開発者向けに用意されています。 詳細については、 [Azure Storage SDK for Android に関するページ][Azure Storage SDK for Android]を参照してください。
 >
 
 ## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
@@ -590,12 +590,12 @@ catch (Exception e)
 ```
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started)
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * [Azure Storage SDK for Java][Azure Storage SDK for Java]
-* [Azure ストレージ クライアント SDK リファレンス][Azure ストレージ クライアント SDK リファレンス]
+* [Azure ストレージ クライアント SDK リファレンス][Azure Storage Client SDK Reference]
 * [Azure Storage REST API][Azure Storage REST API]
 * [Azure Storage チームのブログ][Azure Storage チームのブログ]
 

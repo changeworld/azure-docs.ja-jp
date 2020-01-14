@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 06/20/2019
-ms.openlocfilehash: eb73551c4226df8bc20428558720c0ebbfff96d9
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: e14ee617aca20fc18226651acfadab6ab2bdd939
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873592"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445304"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator - リリース ノートとダウンロード情報
 
@@ -22,9 +22,13 @@ ms.locfileid: "74873592"
 | | |
 |---------|---------|
 |**MSI ダウンロード**|[Microsoft ダウンロード センター](https://aka.ms/cosmosdb-emulator)|
-|**作業開始**|[Azure Cosmos Emulator を使用してローカルで開発する](local-emulator.md)|
+|**開始するには**|[Azure Cosmos Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="272"></a>2.7.2
+
+- このリリースでは、MongoDB バージョン 3.6 サーバーのサポートが Cosmos Emulator に追加されました。 サービスのバージョン 3.6 を対象とする MongoDB エンドポイントを起動するには、管理者用のコマンド ラインで "/EnableMongoDBEndpoint=3.6" オプションを使用してエミュレーターを起動します。
 
 ### <a name="270"></a>2.7.0
 

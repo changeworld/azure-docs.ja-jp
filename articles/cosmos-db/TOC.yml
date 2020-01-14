@@ -82,6 +82,8 @@
       href: resource-manager-samples.md
 - name: 概念
   items:
+    - name: NoSQL 対リレーショナル データベース
+      href: relational-nosql.md
     - name: グローバル配信
       items:
         - name: 概要
@@ -976,6 +978,8 @@
           href: certificate-based-authentication.md
         - name: ユーザー アクセスをデータ操作のみに制限する
           href: how-to-restrict-user-data.md
+        - name: 顧客が管理するキーを構成する
+          href: how-to-setup-cmk.md
     - name: エンタープライズ対応
       items:
         - name: バックアップからデータを復元する
@@ -1058,6 +1062,8 @@
           href: cassandra-migrate-cosmos-db-blitzz.md
         - name: 数百テラバイトのデータを Azure Cosmos DB に移行する
           href: migrate-cosmosdb-data.md
+        - name: 1 対多のリレーショナル データを移行する
+          href: migrate-relational-to-cosmos-db-sql-api.md
     - name: Bulk Executor ライブラリ
       items:
         - name: Bulk Executor ライブラリについて

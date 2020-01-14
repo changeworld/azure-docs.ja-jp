@@ -1,26 +1,17 @@
 ---
-title: ローカルの Service Fabric クラスターで Java アプリをデバッグする | Microsoft Docs
+title: ローカルの Service Fabric クラスター上で Java アプリをデバッグする
 description: このチュートリアルでは、ローカル クラスターで実行されている Service Fabric Java アプリケーションをデバッグする方法と、そのアプリケーションのログを取得する方法について説明します。
-services: service-fabric
-documentationcenter: java
 author: suhuruli
-manager: mfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c5ff1a0373fcce339bea2b235d86f20dc861a15c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c664b586260957138249028e4d521c29b411d56d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444261"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465390"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>チュートリアル:ローカルの Service Fabric クラスター上にデプロイされた Java アプリケーションをデバッグする
 
@@ -59,11 +50,11 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 ## <a name="debug-java-application-using-eclipse"></a>Eclipse を使用して Java アプリケーションをデバッグする
 
-1. マシンで Eclipse IDE を開き、**[File]\(ファイル\)、[Import...]\(インポート...\)** の順にクリックします。
+1. マシンで Eclipse IDE を開き、 **[File]\(ファイル\)、[Import...]\(インポート...\)** の順にクリックします。
 
-2. ポップアップ ウィンドウで、**[General]\(一般\)、[Existing Projects into Workspace]\(既存のプロジェクトをワークスペースへ\)** オプションの順に選択し、[Next]\(次へ\) をクリックします。
+2. ポップアップ ウィンドウで、 **[General]\(一般\)、[Existing Projects into Workspace]\(既存のプロジェクトをワークスペースへ\)** オプションの順に選択し、[Next]\(次へ\) をクリックします。
 
-3. [Import Projects]\(プロジェクトのインポート\) ウィンドウで、**[Select root directory]\(ルート ディレクトリの選択\)** オプションを選択し、**Voting** ディレクトリを選択します。 チュートリアル シリーズの第 1 部を完了している場合、**Voting** ディレクトリは **Eclipse-workspace** ディレクトリ内にあります。
+3. [Import Projects]\(プロジェクトのインポート\) ウィンドウで、 **[Select root directory]\(ルート ディレクトリの選択\)** オプションを選択し、**Voting** ディレクトリを選択します。 チュートリアル シリーズの第 1 部を完了している場合、**Voting** ディレクトリは **Eclipse-workspace** ディレクトリ内にあります。
 
 4. デバッグするサービスの entryPoint.sh を更新して、リモートのデバッグ パラメーターで Java プロセスを開始するようにします。 このチュートリアルでは、次のステートレス フロント エンドが使用されます。*Voting/VotingApplication/VotingWebPkg/Code/entryPoint.sh*。この例では、デバッグ用にポート 8001 が設定されています。
 
@@ -73,7 +64,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 5. アプリケーション マニフェストを更新して、デバッグするサービスのインスタンス数またはレプリカ数を 1 に設定します。 この設定により、デバッグに使用されるポートの競合を回避できます。 たとえば、ステートレス サービスについては、``InstanceCount="1"`` と設定し、ステートフル サービスについては、``TargetReplicaSetSize="1" MinReplicaSetSize="1"`` のように設定して、レプリカ セット サイズのターゲット値と最小値を 1 にします。
 
-6. Eclipse IDE で、**[Run]\(実行\)、[Debug Configurations]\(デバッグ構成\)、[Remote Java Application]\(リモート Java アプリケーション\)** の順に選択し、**[New]\(新規\)** ボタンを押します。次に、以下のとおりプロパティを設定して、**[Apply]\(適用\)** をクリックします。
+6. Eclipse IDE で、 **[Run]\(実行\)、[Debug Configurations]\(デバッグ構成\)、[Remote Java Application]\(リモート Java アプリケーション\)** の順に選択し、 **[New]\(新規\)** ボタンを押します。次に、以下のとおりプロパティを設定して、 **[Apply]\(適用\)** をクリックします。
 
     ```
     Name: Voting
@@ -85,11 +76,11 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 7. *Voting/VotingWeb/src/statelessservice/HttpCommunicationListener.java* ファイルの 109 行にブレークポイントを設定します。
 
-8. パッケージ エクスプローラーで、**Voting** プロジェクトを右クリックし、**[Service Fabric]、[Publish Application...]\(アプリケーションの発行...\)** の順にクリックします
+8. パッケージ エクスプローラーで、**Voting** プロジェクトを右クリックし、 **[Service Fabric]、[Publish Application...]\(アプリケーションの発行...\)** の順にクリックします
 
-9. **[Publish Application]\(アプリケーションの発行\)** ウィンドウで、ドロップダウンから **[Local.json]** を選択し、**[Publish]\(発行\)** をクリックします。
+9. **[Publish Application]\(アプリケーションの発行\)** ウィンドウで、ドロップダウンから **[Local.json]** を選択し、 **[Publish]\(発行\)** をクリックします。
 
-10. Eclipse IDE で、**[Run]\(実行\)、[Debug Configurations]\(デバッグ構成\)、[Remote Java Application]\(リモート Java アプリケーション\)** の順に選択し、作成した**投票**の構成をクリックしてから、**[Debug]\(デバッグ\)** をクリックします。
+10. Eclipse IDE で、 **[Run]\(実行\)、[Debug Configurations]\(デバッグ構成\)、[Remote Java Application]\(リモート Java アプリケーション\)** の順に選択し、作成した**投票**の構成をクリックしてから、 **[Debug]\(デバッグ\)** をクリックします。
 
 11. Web ブラウザーに移動し、**localhost:8080** にアクセスします。 これにより、ブレークポイントに自動的にヒットし、Eclipse が**デバッグ パースペクティブ**に入ります。
 
@@ -126,7 +117,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 
 これで、Service Fabric Java アプリケーションの開発中にデバッグを行う方法とアプリケーション ログにアクセスする方法について確認できました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 

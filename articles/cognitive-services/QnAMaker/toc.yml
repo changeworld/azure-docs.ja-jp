@@ -147,6 +147,8 @@
       href: troubleshooting.md
     - name: ファイル形式
       items:
+        - name: Markdown リファレンス
+          href: reference-markdown-format.md
         - name: TSV のバッチ テスト
           href: reference-tsv-format-batch-testing.md
     - name: REST API リファレンス

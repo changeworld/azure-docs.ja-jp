@@ -1,6 +1,6 @@
 ---
-title: Azure CLI のサンプル スクリプト - Batch アカウントの作成 - Batch サービス | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - Batch サービス モードでの Batch アカウントの作成
+title: Azure CLI スクリプトの例 - Batch アカウントの作成 - Batch サービス
+description: このスクリプトは、Batch サービス モードで Azure Batch アカウントを作成し、アカウントのさまざまなプロパティを照会および更新する方法を示します。
 services: batch
 documentationcenter: ''
 author: laurenhughes
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: lahugh
-ms.openlocfilehash: 038cea1aa8d72d46d028873fb4be19887b83d787
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ee733b492e1d89c58336003bcb4be72f79b9e403
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322224"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449733"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI の例:Batch サービス モードでの Batch アカウントの作成
 
@@ -56,6 +56,6 @@ az group delete --name myResourceGroup
 | [az batch account login](/cli/azure/batch/account#az-batch-account-login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
 | [az group delete](/cli/azure/group#az-group-delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。

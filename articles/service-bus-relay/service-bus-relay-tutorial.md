@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する
+title: Azure Relay を使用してオンプレミスの WCF REST サービスをクライアントに公開する
 description: チュートリアル:WCF Relay を使用してクライアントとサービス アプリケーションを構築します。
 services: service-bus-relay
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: e2dd0448dfed55450a6319936f49831e5d6d77f3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ee090ca0d7bbdad70147b85644952143c086d336
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718849"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452290"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>チュートリアル:Azure WCF Relay を使用してオンプレミスの WCF REST サービスを外部クライアントに公開する
 
@@ -343,7 +343,7 @@ Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "Ec
 
 ### <a name="open-the-service-host"></a>サービス ホストを開く
 
-1. `Main()` のままで、次の行を追加してサービスを開きます。
+1. 引き続き `Main()` で、次の行を追加してサービスを開きます。
 
     ```csharp
     host.Open();
@@ -544,7 +544,7 @@ namespace Microsoft.ServiceBus.Samples
 
     このコードでは、エンドポイントの名前を定義します。 また、サービスで定義されたコントラクトと、クライアント アプリケーションが Azure Relay との通信に TCP を使用するという事実を定義します。 エンドポイント名は、次の手順でこのエンドポイント構成をサービス URI とリンクするために使用されます。
 
-1. **[ファイル]**  >  **[すべて保存]** の順に選択します。
+1. **[ファイル]**  >  **[すべて保存]** を選択します。
 
 ### <a name="example-of-the-appconfig-file"></a>App.config ファイルの例
 
@@ -776,7 +776,7 @@ namespace Microsoft.ServiceBus.Samples
 
 1. この方法で、クライアントからサービスにテキスト メッセージの送信を続けることができます。 終了したら、クライアント コンソール ウィンドウとサービス コンソール ウィンドウで Enter キーを押して両方のアプリケーションを終了します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のチュートリアルに進みます。
 

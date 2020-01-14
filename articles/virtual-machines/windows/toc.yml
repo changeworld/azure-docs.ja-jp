@@ -184,7 +184,7 @@
           items:
             - name: GPU 最適化
               href: sizes-gpu.md
-            - name: GPU ドライバーの設定
+            - name: NVIDIA GPU ドライバーの設定
               href: n-series-driver-setup.md
             - name: AMD GPU ドライバーの設定
               href: n-series-amd-driver-setup.md

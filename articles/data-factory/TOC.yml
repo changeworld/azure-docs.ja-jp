@@ -617,6 +617,8 @@
           href: solution-template-copy-new-files-lastmodifieddate.md
         - name: データベースからの一括コピー
           href: solution-template-bulk-copy-with-control-table.md
+        - name: ファイルからデータベースへの一括コピー
+          href: solution-template-bulk-copy-from-files-to-database.md
         - name: データベースからの差分コピー
           href: solution-template-delta-copy-with-control-table.md
         - name: Amazon S3 から Azure Storage にデータを移行する

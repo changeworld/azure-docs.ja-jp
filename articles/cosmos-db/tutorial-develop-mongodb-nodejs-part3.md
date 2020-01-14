@@ -1,6 +1,5 @@
 ---
-title: Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Angular を使用して UI を構築する
-titleSuffix: Azure Cosmos DB
+title: Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリ UI を作成する (パート 3)
 description: Angular と Node で MongoDB に使われる API をそのまま使用して、Azure Cosmos DB を対象とした MongoDB アプリを作成するチュートリアル シリーズのパート 3 です。
 author: johnpapa
 ms.service: cosmos-db
@@ -11,16 +10,16 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 286ccfe84f511ffccdc8919b2e717cd21f124c2b
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c9467aef1dd7d28b41c2e05b5f157a158d7377ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444741"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Angular を使用して UI を構築する
 
-複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Azure Cosmos DB の MongoDB 用 API で構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。
+複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Cosmos DB の MongoDB 用 API を使用して構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。
 
 本チュートリアルのパート 3 では、[パート 2](tutorial-develop-mongodb-nodejs-part2.md) の内容をベースとして、次のタスクについて取り上げます。
 
@@ -189,7 +188,7 @@ ms.locfileid: "54158705"
     import { FormsModule } from '@angular/forms';
     ```
 
-## <a name="use-css-to-set-the-look-and-feel"></a>CSS を使った外観の設定
+## <a name="use-css-to-set-the-look-and-feel"></a>CSS を使って外観を設定する
 
 1. [エクスプローラー] ウィンドウで **src/styles.scss** ファイルを開きます。
 
@@ -397,7 +396,7 @@ ms.locfileid: "54158705"
 
     ![Visual Studio Code の電球アイコン](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
 
-6. 電球をクリックして **[Import Hero from "/app/hero".]\(Hero を "/app/hero" からインポートします。\)**  または **[Import Hero from "./hero".]\(Hero を "./hero" からインポートします。\)** をクリックします (メッセージは実際の設定によって異なります)。
+6. 電球をクリックして **[Import Hero from "/app/hero".]\(Hero を "/app/hero" からインポートします。\)** または **[Import Hero from "./hero".]\(Hero を "./hero" からインポートします。\)** をクリックします (メッセージは実際の設定によって異なります)。
 
     新しいコード行が 2 行目に表示されます。 2 行目で /app/hero が参照されている場合は、ローカル フォルダーの hero ファイル (./hero) を参照するように変更してください。 変更後の 2 行目は、次のようになります。
 
@@ -415,7 +414,7 @@ ms.locfileid: "54158705"
     ng g s hero -m app.module
     ```
 
-2. Visual Studio Code で **heroes.components.ts** に戻ります。 `constructor(private heroService: HeroService) {}` という行 (13 行目) の `HeroService` に表示されている赤色の下線に注目してください。 `HeroService` をクリックすると、コード ブロックの左側に電球アイコンが表示されます。 電球をクリックして **[Import HeroService from "./hero.service ".]\(HeroService を "./hero.service " からインポートします。\)**  または **[Import HeroService from "/app/hero.service ".]\(HeroService を "/app/hero.service " からインポートします。\)** をクリックします。
+2. Visual Studio Code で **heroes.components.ts** に戻ります。 `constructor(private heroService: HeroService) {}` という行 (13 行目) の `HeroService` に表示されている赤色の下線に注目してください。 `HeroService` をクリックすると、コード ブロックの左側に電球アイコンが表示されます。 電球をクリックして **[Import HeroService from "./hero.service ".]\(HeroService を "./hero.service " からインポートします。\)** または **[Import HeroService from "/app/hero.service ".]\(HeroService を "/app/hero.service " からインポートします。\)** をクリックします。
 
     電球をクリックすると、2 行目に新しいコード行が挿入されます。 2 行目で /app/hero.service フォルダーが参照されている場合は、ローカル フォルダーの hero ファイル (./hero.service) を参照するように変更してください。 変更後の 2 行目は、次のようになります。
     
@@ -487,13 +486,13 @@ ms.locfileid: "54158705"
 
     ここで、アプリを実行してみましょう。
 
-2. Visual Studio Code の左側にある **[デバッグ]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)) をクリックし、**[デバッグ開始]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png)) をクリックします。
+2. Visual Studio Code の左側にある **[デバッグ]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png)) をクリックし、 **[デバッグ開始]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png)) をクリックします。
 
 3. インターネット ブラウザーを開いて **localhost:3000** に移動すると、アプリがローカルで実行されているようすを確認できます。
 
      ![ローカルで実行中のヒーロー アプリケーション](./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 本チュートリアルのこのパートでは、次の手順を行いました。
 

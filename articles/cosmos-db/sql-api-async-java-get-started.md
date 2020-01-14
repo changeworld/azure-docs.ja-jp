@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Async Java SDK を使って Java アプリを構築し Azure Cosmos DB の SQL API アカウントを管理する'
+title: チュートリアル:Azure Cosmos DB Async Java SDK を使用して Java アプリを構築し SQL API アカウントのデータを管理する
 description: このチュートリアルでは、Async Java アプリケーションを使用して、Azure Cosmos DB の SQL API アカウント内にデータを格納し、そのデータにアクセスする方法を示します。
 author: SnehaGunda
 ms.service: cosmos-db
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Java application with the Async Java SDK to access and manage Azure Cosmos DB resources so that customers can utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 972328ec5052f5089994efbb940ff00c889ae78f
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 8704e399156b9cfc6b04ff47af49b956b597a539
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720873"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444886"
 ---
 # <a name="tutorial-build-a-java-app-with-the-async-java-sdk-to-manage-data-stored-in-a-sql-api-account"></a>チュートリアル:Async Java SDK を使って Java アプリを構築し SQL API アカウントに格納されているデータを管理する
 
@@ -22,7 +22,7 @@ ms.locfileid: "73720873"
 > * [.NET](sql-api-get-started.md)
 > * [Java](sql-api-java-get-started.md)
 > * [Async Java](sql-api-async-java-get-started.md)
-> * [Node.JS](sql-api-nodejs-get-started.md)
+> * [Node.js](sql-api-nodejs-get-started.md)
 > 
 
 開発者は、NoSQL ドキュメント データを使用するアプリケーションを持っていることがあります。 Azure Cosmos DB の SQL API アカウントを使用して、このドキュメント データを格納し、そのデータにアクセスすることができます。 このチュートリアルでは、Async Java SDK を使用して Java アプリケーションを構築し、ドキュメント データを格納し、そのデータにアクセスする方法について説明します。 
@@ -270,12 +270,12 @@ mvn exec:java -DACCOUNT_HOST=<YOUR_COSMOS_DB_HOSTNAME> -DACCOUNT_KEY= <YOUR_COSM
 
 これで、この NoSQL チュートリアルが完了し、実用的な Java コンソール アプリケーションが完成しました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 必要がなくなったら、リソース グループ、Azure Cosmos アカウント、およびすべての関連リソースを削除できます。 これを行うには、仮想マシン用のリソース グループを選択し、 **[削除]** を選択した後、削除するリソース グループの名前を確認します。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、Async Java SDK を使用して Java アプリを構築し、Azure Cosmos DB の SQL API データを管理する方法について説明しました。 次の記事に進むことができます。
 

@@ -4,7 +4,7 @@
   items:
     - name: Azure Logic Apps とは
       href: logic-apps-overview.md
-- name: クイック スタート
+- name: クイックスタート
   expanded: true
   items:
     - name: ロジック アプリの作成 - Azure Portal
@@ -39,7 +39,7 @@
       href: logic-apps-enterprise-integration-overview.md
     - name: Azure Virtual Network にアクセスする
       href: connect-virtual-network-vnet-isolated-environment-overview.md
-- name: ハウツー ガイド
+- name: 操作方法ガイド
   items:
     - name: 開発
       items:
@@ -85,7 +85,7 @@
           href: logic-apps-exception-handling.md
         - name: 大きいメッセージを処理する
           href: logic-apps-handle-large-messages.md
-        - name: セキュリティ保護
+        - name: セキュリティで保護
           items:
             - name: ロジック アプリをセキュリティで保護する
               href: logic-apps-securing-a-logic-app.md
@@ -111,6 +111,8 @@
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: 成果物を統合サービス環境に追加する
           href: add-artifacts-integration-service-environment-ise.md
+        - name: 統合サービス環境用に顧客が管理する暗号化キーを設定する
+          href: customer-managed-keys-integration-service-environment.md
     - name: オンプレミスのデータへのアクセス
       items:
         - name: データ ゲートウェイをインストールする
@@ -187,11 +189,11 @@
           href: logic-apps-http-endpoint.md
         - name: Azure Service Bus
           href: ../connectors/connectors-create-api-servicebus.md
-        - name: Azure SQL Database
+        - name: Azure SQL データベース
           href: ../connectors/connectors-create-api-sqlazure.md
         - name: Bing Search
           href: ../connectors/connectors-create-api-bingsearch.md
-        - name: Box
+        - name: ボックス
           href: ../connectors/connectors-create-api-box.md
         - name: カスタム API と Web アプリ
           href: logic-apps-create-api-app.md
@@ -299,7 +301,7 @@
           href: logic-apps-enterprise-integration-xml-validation.md
         - name: Yammer
           href: ../connectors/connectors-create-api-yammer.md
-    - name: 管理
+    - name: 管理する
       items:
         - name: ロジック アプリを管理する - Visual Studio
           href: manage-logic-apps-with-visual-studio.md
@@ -315,7 +317,7 @@
       items:
         - name: モック データを使用してロジック アプリをテストする
           href: test-logic-apps-mock-data-static-results.md
-    - name: デプロイ
+    - name: 配置
       items:
         - name: 概要 - ロジック アプリ デプロイの自動化
           href: logic-apps-azure-resource-manager-templates-overview.md
@@ -323,7 +325,7 @@
           href: logic-apps-create-azure-resource-manager-templates.md
         - name: ロジック アプリ テンプレートのデプロイ
           href: logic-apps-deploy-azure-resource-manager-templates.md
-    - name: 監視
+    - name: モニター
       items:
         - name: ロジック アプリの監視
           href: logic-apps-monitor-your-logic-apps.md

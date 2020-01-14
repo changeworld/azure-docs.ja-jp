@@ -1,21 +1,21 @@
 ---
-title: チュートリアル - Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする方法
+title: チュートリアル - Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする
 description: このチュートリアルでは、Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする方法について説明します。
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 1653db3619fd569238872ca1fcfd6d0c439e84c9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 662d36f8a25f2f0a21d800b7b1a25e94b13908a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461496"
 ---
-# <a name="tutorial-bind-azure-services-to-your-azure-spring-cloud-application-azure-cache-for-redis"></a>チュートリアル:Azure サービスを Azure Spring Cloud アプリケーションにバインドする: Azure Cache for Redis
+# <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする 
 
-Azure Spring Cloud では、Spring Boot アプリケーションを手動で構成するのではなく、選択した Azure サービスをアプリケーションに自動的にバインドすることができます。 この記事では、アプリケーションを Azure Cache for Redis にバインドする方法を示します。
+Spring Boot アプリケーションを手動で構成するのではなく、Azure Spring Cloud を使用して、選択した Azure サービスをアプリケーションに自動的にバインドすることができます。 この記事では、アプリケーションを Azure Cache for Redis にバインドする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -23,11 +23,11 @@ Azure Spring Cloud では、Spring Boot アプリケーションを手動で構�
 * Azure Cache for Redis サービス インスタンス
 * Azure CLI 用の Azure Spring Cloud 拡張機能
 
-Azure Spring Cloud インスタンスをデプロイしていない場合は、この[クイックスタート](spring-cloud-quickstart-launch-app-portal.md)の手順に従って最初の Spring Cloud アプリをデプロイします。
+Azure Spring Cloud インスタンスをデプロイしていない場合は、[Azure Spring Cloud アプリのデプロイに関するクイックスタート](spring-cloud-quickstart-launch-app-portal.md)の手順を実行してください。
 
 ## <a name="bind-azure-cache-for-redis"></a>Azure Cache for Redis をバインドする
 
-1. 次の依存関係を自分のプロジェクトの `pom.xml` に追加します
+1. プロジェクトの pom.xml ファイルに次の依存関係を追加します。
 
     ```xml
     <dependency>
@@ -35,13 +35,15 @@ Azure Spring Cloud インスタンスをデプロイしていない場合は、�
         <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
     </dependency>
     ```
-1. もしあれば、`application.properties` ファイルで `spring.redis.*` プロパティを削除します
+1. `application.properties` ファイルからすべての `spring.redis.*` プロパティを削除します
 
 1. `az spring-cloud app update` を使用して現在のデプロイを更新するか、`az spring-cloud app deployment create` を使用して新しいデプロイを作成します。
 
-1. Azure portal で、自分のAzure Spring Cloud サービスのページに移動します。 **アプリケーション ダッシュボード**を探し、Azure Cache for Redis にバインドするアプリケーションを選択します。  これは、前の手順で更新またはデプロイしたのと同じアプリケーションです。 次に、[`Service binding`]\(サービスのバインド\) を選択し、[`Create service binding`]\(サービス バインドの作成\) ボタンを選択します。 **バインドの種類** `Azure Cache for Redis`、自分の Redis サーバー、主キーのオプションを必ず選択するようにして、フォームに入力します。 
+1. Azure portal で、自分のAzure Spring Cloud サービスのページに移動します。 **アプリケーション ダッシュボード**に移動し、Azure Cache for Redis にバインドするアプリケーションを選択します。 このアプリケーションは、前の手順で更新またはデプロイしたものと同じです。
 
-1. アプリを再起動すると、このバインドが機能するようになります。
+1. **[サービス バインド]** を選択し、 **[サービス バインドの作成]** を選択します。 フォームに入力します。このとき、必ず **[バインドの種類]** 値に **[Azure Cache for Redis]** 、実際の Azure Cache for Redis サーバー、 **[主]** キー オプションを選択します。
+
+1. アプリを再起動します。 これでバインドが機能するようになります。
 
 1. サービスのバインドが正常であることを確認するには、バインド名を選択し、その詳細を確認します。 `property` フィールドはこのようになります。
     ```
@@ -51,9 +53,9 @@ Azure Spring Cloud インスタンスをデプロイしていない場合は、�
     spring.redis.ssl=true
     ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Spring Cloud アプリケーションを Azure Redis キャッシュにバインドする方法について学習しました。  アプリケーションへのバインド サービスについて詳しく学習するには、MySQL DB へのアプリケーションのバインドに関するチュートリアルに進んでください。
+このチュートリアルでは、Azure Spring Cloud アプリケーションを Azure Cache for Redis にバインドする方法について学習しました。 アプリケーションへのサービスのバインドについて学習するには、アプリケーションを Azure Database for MySQL インスタンスにバインドする方法のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure MySql サービスを Azure Spring Cloud サービスにバインドする方法について学習する](spring-cloud-tutorial-bind-mysql.md)。
+> [Azure Database for MySQL インスタンスにバインドする方法を確認する](spring-cloud-tutorial-bind-mysql.md)

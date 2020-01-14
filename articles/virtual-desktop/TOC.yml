@@ -16,9 +16,7 @@
       href: manage-app-groups.md
     - name: 5. サービスの更新プログラムを検証するためのホスト プールを作成する
       href: create-validation-host-pool.md
-    - name: 6. 管理ツールをデプロイする
-      href: manage-resources-using-ui.md
-    - name: 7. サービス アラートを設定する
+    - name: 6. サービス アラートを設定する
       href: set-up-service-alerts.md
 - name: 操作方法
   items:
@@ -70,6 +68,12 @@
       href: set-up-scaling-script.md
     - name: フィードをカスタマイズする
       href: customize-feed-for-virtual-desktop-users.md
+    - name: 管理ツールをデプロイする
+      items:
+        - name: Azure Resource Manager テンプレート
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
     - name: サービスの診断を使用する
       items:
         - name: 診断ツールをデプロイする

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI サンプル スクリプト - CLI を使用してマネージド ディスクのスナップショットを同じまたは別のサブスクリプションにコピー (移動) する
-description: Azure CLI サンプル スクリプト - CLI を使用してマネージド ディスクのスナップショットを同じまたは別のサブスクリプションにコピー (移動) する
+title: マネージド ディスクのスナップショットをサブスクリプションにコピーする - CLI サンプル
+description: Azure CLI サンプル スクリプト - CLI を使用してマネージド ディスクのスナップショットを同じまたは別のサブスクリプションにコピー (または移動) する
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 23886256e405f57c5a581356b4212498779ae6e5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 19c791cf1f394f5aab6ad2fcd7f98c4b30497286
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038237"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458543"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>CLI を使用してマネージド ディスクのスナップショットを同じまたは別のサブスクリプションにコピーする
 
@@ -49,7 +49,7 @@ ms.locfileid: "74038237"
 | [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | スナップショットの名前とリソース グループのプロパティを使用して、そのスナップショットのすべてのプロパティを取得します。 ID プロパティを使用して、別のサブスクリプションにそのスナップショットをコピーします。  |
 | [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot) | 親スナップショットの名前と ID を使用して別のサブスクリプションにスナップショットを作成することで、スナップショットをコピーします。  |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [スナップショットから仮想マシンを作成する](./virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

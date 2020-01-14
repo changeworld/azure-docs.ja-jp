@@ -12,12 +12,12 @@ metadata:
   author: mblythe
   ms.author: mblythe
   ms.date: 12/19/2019
-  ms.openlocfilehash: 4c04ae88f69ab4e17ea70e94683ce0add4823040
-  ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+  ms.openlocfilehash: 277326eb6b120c4cc1b456a17c6f58791c66dd16
+  ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/03/2020
-  ms.locfileid: "75640042"
+  ms.lasthandoff: 01/11/2020
+  ms.locfileid: "75890771"
 landingContent:
 - title: Azure portal について
   linkLists:
@@ -77,3 +77,11 @@ landingContent:
     links:
     - text: ハイ コントラストを有効にする
       url: azure-portal-change-theme-high-contrast.md
+- title: サポート リクエストの作成と管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure サポート要求を作成する
+      url: ../azure-portal/supportability/how-to-create-azure-support-request.md
+    - text: リージョンまたは SKU のサブスクリプションに関する問題のトラブルシューティング
+      url: ../azure-portal/supportability/sku-series-unavailable.md

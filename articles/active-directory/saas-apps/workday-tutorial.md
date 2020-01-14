@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/20/2019
+ms.date: 11/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fe63ba810724216b1b356896b621f1e5b021bbf
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69891979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443327"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Workday の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "69891979"
 
 * Workday にアクセスする Azure AD を制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Workday に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure portal) でアカウントを管理する。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -70,7 +70,7 @@ Workday で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-Azure portal で Azure AD SSO を有効にするには、次の手順に従います。
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
 1. [Azure portal](https://portal.azure.com/) の **Workday** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
@@ -167,7 +167,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
    > [!NOTE]
    > [環境] 属性の値が、テナント URL の値に関連付けられます。  
-   > \- Workday テナント URL のドメイン名が impl で始まる場合 (例: *https:\//impl.workday.com/\<テナント\>/login-saml2.flex*)、 **[Environment]\(環境\)** 属性を [Implementation]\(実装\) に設定する必要があります。  
+   > \- Workday テナント URL のドメイン名が impl で始まる場合 (例: *https://www.myworkday.com/"tenant"/login-saml2.htmld*)、 **[Environment]\(環境\)** 属性を [Implementation]\(実装\) に設定する必要があります。  
    > \- ドメイン名が impl 以外で始まる場合は、[Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)に問い合わせて、対応する **[Environment]\(環境\)** の値を取得してください。
 
 4. **[SAML 設定]** セクションで、次の手順を実行します。
@@ -221,7 +221,7 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
     e.  **[証明書]** テキスト ボックスに、クリップボードの内容を貼り付けます。
 
-    f.  Click **OK**.
+    f.  **[OK]** をクリックします。
 
 7. 次の手順に従います。
 
@@ -233,11 +233,11 @@ Azure portal で Azure AD SSO を有効にするには、次の手順に従い�
 
     c. **[認証要求署名方法]** として **[SHA256]** を選択します。
 
-    ![認証要求署名方法](./media/workday-tutorial/WorkdaySSOConfiguration.png "認証要求署名方法") 
+    ![認証要求署名方法](./media/workday-tutorial/WorkdaySSOConfiguration.png "認証要求署名方法")
 
-    d. Click **OK**.
+    d. **[OK]** をクリックします。
 
-    ![OK](./media/workday-tutorial/IC782933.png "OK")
+    ![[OK]](./media/workday-tutorial/IC782933.png "[OK]")
 
     > [!NOTE]
     > シングル サインオンが正しく設定されていることを確認してください。 誤った設定のシングル サインオンを有効にした場合、資格情報を使用してアプリケーションに入ることができず、ロックアウトされてしまいます。このような状況に備えて、Workday には、ユーザーが [Workday URL]/login.flex?redirect=n 形式で通常のユーザー名とパスワードを使用してサインインできる、バックアップ用ログイン URL が用意されています

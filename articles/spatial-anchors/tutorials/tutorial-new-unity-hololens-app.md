@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0d63f2df17804d5cc171f94a34ebc5831be384fb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e1abb759c80e770f1e650c232b6b2e21232b7e6f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276919"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457728"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい HoloLens Unity アプリを作成する詳細な手順
 
@@ -27,7 +27,7 @@ ms.locfileid: "74276919"
 2. [Visual Studio Marketplace](https://marketplace.visualstudio.com/) から Visual Studio 用の [C++/WinRT Visual Studio 拡張機能 (VSIX)](https://aka.ms/cppwinrt/vsix) をインストールする必要があります。
 3. [開発者モード](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio)が有効になっている HoloLens デバイス。 この記事では、[Windows 10 October 2018 Update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018 ) (別名 RS5) が適用された HoloLens デバイスが必要です。 HoloLens を最新のリリースに更新するには、 **[設定]** アプリを開き、 **[更新とセキュリティ]** を選択し、 **[更新プログラムの確認]** ボタンをクリックします。
 
-## <a name="getting-started"></a>使用の開始
+## <a name="getting-started"></a>作業の開始
 
 最初に、プロジェクトと Unity シーンを設定します。
 1. Unity を起動します。
@@ -141,17 +141,27 @@ Unity を使用する際には、Unity API (UI を更新するために使用す
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Azure Spatial Anchors SDK の取得
 
-次に Azure Spatial Anchors SDK をダウンロードします。 [GitHub の Azure Spatial Anchors リリース ページ](https://github.com/Azure/azure-spatial-anchors-samples/releases)に移動します。 [Assets]\(アセット\) で、**AzureSpatialAnchors.unitypackage** ファイルをダウンロードします。
+## <a name="via-unity-packagetabunitypackage"></a>[Unity パッケージ経由](#tab/UnityPackage)
 
-Unity で **[Assets]\(アセット\)** に移動し、 **[Import Package]\(パッケージのインポート\)**  >  **[Custom Package...]\(カスタム パッケージ\)** の順にクリックします。パッケージに移動して、 **[Open]\(開く\)** を選択します。
+次に Azure Spatial Anchors SDK をダウンロードします。 [GitHub の Azure Spatial Anchors リリース ページ](https://github.com/Azure/azure-spatial-anchors-samples/releases)に移動します。 [Assets]\(アセット\) で、**AzureSpatialAnchors.unitypackage** をダウンロードします。 Unity で **[Assets]\(アセット\)** に移動し、 **[Import Package]\(パッケージのインポート\)**  >  **[Custom Package...]\(カスタム パッケージ\)** の順にクリックします。パッケージに移動して、 **[Open]\(開く\)** を選択します。
 
-表示される新しい **[Import Unity Package]\(Unity パッケージのインポート\)** ウィンドウで、左下にある **[None]\(なし\)** を選択します。 次に、 **[AzureSpatialAnchorsPlugin]**  >  **[Plugins]\(プラグイン\)** で、 **[Common]\(共通\)** 、 **[Editor]\(エディター\)** 、 **[HoloLens]** を選択します。 右下隅にある **[Import]\(インポート\)** をクリックします。
+表示される新しい **[Import Unity Package]\(Unity パッケージのインポート\)** ウィンドウで、 **[Plugins]\(プラグイン\)** の選択を解除し、右下隅の **[Import]\(インポート\)** をクリックします。
 
 Azure Spatial Anchors SDK を取得するために、ここで Nuget パッケージを復元する必要があります。 **Unity** でビルドし、その結果生成された **Visual Studio** ソリューションを開いてもう一度ビルドします (詳細は「[試してみる](#trying-it-out)」を参照)。
 
+## <a name="via-nugetforunitytabnugetforunity"></a>[NuGetForUnity 経由](#tab/NuGetForUnity)
+
+まず NuGetForUnity をインストールする必要があります。 [GitHub の NuGetForUnity リリース ページ](https://github.com/GlitchEnzo/NuGetForUnity/releases)に移動します。 [Assets]\(資産\) で、最新の **NuGetForUnity.unitypackage** をダウンロードします。 Unity で **[Assets]\(アセット\)** に移動し、 **[Import Package]\(パッケージのインポート\)**  >  **[Custom Package...]\(カスタム パッケージ\)** の順にクリックします。パッケージに移動して、 **[Open]\(開く\)** を選択します。 Unity によって NugetForUnity がインストールされます。 Unity に新しい **NuGet** ドロップダウンが表示されない場合は、必要に応じて **[Projects]\(プロジェクト\)**  >  **[Assets]\(資産\)** を右クリックします。 次に、 **[Reimport All]\(すべてを再インポート\)** を選択します。
+
+NuGetForUnity をインストールしたら、 **[NuGet]**  >  **[Manage NuGet Packages]\(NuGet パッケージの管理\)** を選択します。 Microsoft.Azure.SpatialAnchors.Unity を検索し、 **[Install]\(インストール\)** を選択します。
+
+ダウンロードしたばかりの NuGet パッケージにはヘルパー スクリプトが含まれているだけなので、実際の Azure Spatial Anchors SDK を取得するにはビルドする必要があります。 **Unity** でビルドし、その結果生成された **Visual Studio** ソリューションを開いてもう一度ビルドします (詳細は「[試してみる](#trying-it-out)」を参照)。
+
+---
+
 自分の **Visual Studio** ソリューションで、次のインポートを `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs` に追加します。
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=23-26&highlight=1)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]
 
 続いて、以下のメンバー変数を `AzureSpatialAnchorsScript` クラスに追加します。
 

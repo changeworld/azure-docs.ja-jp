@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: alzam
-ms.openlocfilehash: 394ca0c244db751645eb56f50e7023fcee229876
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 02c8bf24d4ddb6408160da7a4c517d6c8c82de5f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807461"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450896"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してユーザー VPN 接続を作成する
 
@@ -135,7 +135,7 @@ VPN プロファイルを使用してクライアントを構成します。
 2. ゲートウェイの VPN プロファイルをダウンロードします。 この操作は、Azure portal の [User VPN configurations]\(ユーザー VPN の構成\) タブまたは PowerShell の New-AzureRmVpnClientConfiguration で実行できます。
 3. プロファイルを展開します。 メモ帳で OpenVPN フォルダーの vpnconfig.ovpn 構成ファイルを開きます。
 4. P2S クライアント証明書セクションに、base64 の P2S クライアント証明書の公開キーを指定します。 PEM 形式の証明書の場合、.cer ファイルを開き、証明書ヘッダー間にある base64 キーを上書きしてコピーします。 こちらの[証明書をエクスポートしてエンコードされた公開キーを取得する方法](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site)に関するページを参照してください。
-5. 秘密キー セクションに、base64 の P2S クライアント証明書の秘密キーを指定します。 秘密キーを抽出する方法については、こちらを参照してください。
+5. 秘密キー セクションに、base64 の P2S クライアント証明書の秘密キーを指定します。 [秘密キーを抽出する方法については、こちら](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-openvpn-clients#windows)を参照してください。
 6. その他のフィールドは変更しないでください。 クライアント入力に入力された構成を使用して VPN に接続します。
 7. vpnconfig.ovpn ファイルを C:\Program Files\OpenVPN\config フォルダーにコピーします。
 8. システム トレイの OpenVPN アイコンを右クリックし、[接続] をクリックします。
@@ -167,6 +167,6 @@ VPN プロファイルを使用してクライアントを構成します。
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください。

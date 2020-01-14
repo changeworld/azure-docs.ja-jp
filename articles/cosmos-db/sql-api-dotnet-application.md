@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 向けの ASP.NET Core MVC チュートリアル:Web アプリケーション開発
+title: Azure Cosmos DB を使用した ASP.NET Core MVC Web アプリのチュートリアル
 description: Azure Cosmos DB を使用して MVC Web アプリケーションを作成するための ASP.NET Core MVC チュートリアル。 JSON を格納し、Azure App Service 上でホストされている ToDo アプリからデータにアクセスします - ASP.NET Core MVC チュートリアル ステップ バイ ステップ。
 author: SnehaGunda
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
-ms.openlocfilehash: 1cfb7718c55920d817e1f87407fa1af590e9f006
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b0da9f2f2d14c0487e61c1927b5456d09052cff3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720911"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444926"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>チュートリアル:Azure Cosmos DB で .NET SDK を使用して ASP.NET Core MVC Web アプリケーションを開発する
 
@@ -187,7 +187,7 @@ Azure Cosmos DB では、データの移動と格納に JSON が使用されま�
 
 **ValidateAntiForgeryToken** 属性は、クロスサイト リクエスト フォージェリ攻撃に対してこのアプリケーションを保護するためにここで使用されます。 ビューもまた、この偽造防止トークンで使用されます。 詳細と例については、「[ASP.NET MVC アプリケーションでのクロスサイト リクエスト フォージェリ (CSRF) 攻撃の防止][Preventing Cross-Site Request Forgery]」をご覧ください。 [GitHub][GitHub] で提供されるソース コードには、完全な実装が組み込まれています。
 
-メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、[チュートリアル: ASP.NET MVC の Entity Framework を使用して CRUD 機能を実装する][Basic CRUD Operations in ASP.NET MVC]」を参照してください。
+メソッド パラメーターの **Bind** 属性も使用して、オーバーポスティング攻撃から保護します。 詳細については、「[チュートリアル:ASP.NET MVC の Entity Framework を使用して CRUD 機能を実装する][Basic CRUD Operations in ASP.NET MVC]」を参照してください。
 
 ## <a name="connect-to-cosmosdb"></a>手順 5: Azure Cosmos DB への接続
 
@@ -260,7 +260,7 @@ MVC の標準的な構成要素を準備できたので、次は Azure Cosmos DB
 
 1. アプリケーションのテストが完了したら、Ctrl キーを押しながら F5 キーを押してアプリケーションのデバッグを中止します。 これで、アプリケーションをデプロイする準備が整いました。
 
-## <a name="deploy-the-application-to-azure"></a>手順 7: アプリケーションのデプロイ
+## <a name="deploy-the-application-to-azure"></a>手順 7: アプリケーションの配置
 
 以上で、Azure Cosmos DB と連携するアプリケーションが完成しました。今度は、この Web アプリを Azure App Service にデプロイします。  
 
@@ -290,7 +290,7 @@ MVC の標準的な構成要素を準備できたので、次は Azure Cosmos DB
 
 数秒すると、Visual Studio で Web アプリケーションが発行され、ブラウザーが起動されます。ここで、プロジェクトが Azure で実行されている様子を確認できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、ASP.NET Core MVC Web アプリケーションを構築する方法について説明しました。 このアプリケーションから Azure Cosmos DB に格納されているデータにアクセスできます。 これで、次のリソースに進めるようになりました。
 

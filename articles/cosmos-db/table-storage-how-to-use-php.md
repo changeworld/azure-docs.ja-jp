@@ -1,5 +1,5 @@
 ---
-title: PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する方法
+title: PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 author: wmengmsft
 ms.author: wmeng
@@ -8,19 +8,19 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
-ms.openlocfilehash: aac6755ed90c795b8fff09d9ffde33878ad21a32
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1dbf5b02c99c8baca7c0b4f918cb392ddaf37c96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58111499"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444779"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>概要
-このガイドでは、Azure Storage Table service API および Azure Cosmos DB Table API を使って一般的なシナリオを実行する方法を説明します。 サンプルは PHP で記述されており、[Azure Storage Table PHP Client Library][download] を使います。 紹介するシナリオは、**テーブルの作成と削除**、**テーブルのエンティティの挿入、削除、および照会**などです。 Azure Table service の詳細については、「[次のステップ](#next-steps)」を参照してください。
+このガイドでは、Azure Storage Table service API および Azure Cosmos DB Table API を使って一般的なシナリオを実行する方法を説明します。 サンプルは PHP で記述されており、[Azure Storage Table PHP クライアント ライブラリ][download]を使います。 紹介するシナリオは、**テーブルの作成と削除**、**テーブルのエンティティの挿入、削除、および照会**などです。 Azure Table service の詳細については、「[次のステップ](#next-steps)」を参照してください。
 
 
 ## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
@@ -113,7 +113,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>テーブルを作成する
-**TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。 テーブルの作成時、Table service のタイムアウトを設定できます (Table service のタイムアウトの詳細については、「[Table service 操作のタイムアウトの設定][table-service-timeouts]」を参照)。
+**TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。 テーブルの作成時、Table service のタイムアウトを設定できます (Table service のタイムアウトの詳細については、「[Table service 操作のタイムアウトの設定][table-service-timeouts]」を参照してください)。
 
 ```php
 require_once 'vendor\autoload.php';
@@ -137,7 +137,7 @@ catch(ServiceException $e){
 }
 ```
 
-テーブル名の制限については、「[Table サービス データ モデルについて][table-data-model]」をご覧ください。
+テーブル名の制限については、「[Table サービス データ モデルについて][table-data-model]」を参照してください。
 
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
 エンティティをテーブルに追加するには、新しい **Entity** オブジェクトを作成し、**TableRestProxy->insertEntity** に渡します。 エンティティの作成時には `PartitionKey` と `RowKey` を指定する必要があることに注意してください。 これらにはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。 システムは `PartitionKey` を使って多くのストレージ ノードにテーブルのエンティティを自動的に配布します。 `PartitionKey` が同じエンティティは同じノードで格納されています (同じノードで格納されている複数のエンティティに対する処理は、異なるノードにまたがって格納されているエンティティに対する処理よりもパフォーマンスは高くなります)。`RowKey` は特定のパーティション内のエンティティの一意の ID です。
@@ -174,7 +174,7 @@ catch(ServiceException $e){
 }
 ```
 
-テーブルのプロパティと型については、「[Table サービス データ モデルについて][table-data-model]」をご覧ください。
+テーブルのプロパティと型については、「[Table サービス データ モデルについて][table-data-model]」を参照してください。
 
 **TableRestProxy** クラスには、ほかにもエンティティを挿入する 2 つのメソッド、**insertOrMergeEntity** と **insertOrReplaceEntity** が用意されています。 これらのメソッドを使用するには、新しい **Entity** を作成し、いずれかのメソッドにパラメーターとして渡します。 各メソッドは、渡されたエンティティが存在しない場合に、そのエンティティを挿入します。 エンティティが既に存在する場合、**insertOrMergeEntity** はプロパティ値が既に存在するなら更新し、存在しないなら新しいプロパティを追加します。一方、**insertOrReplaceEntity** は既存のエンティティを完全に置き換えます。 次の例は、**insertOrMergeEntity** を使用する方法を示しています。 `PartitionKey` が "tasksSeattle" で `RowKey` が "1" であるエンティティがまだ存在しない場合は挿入されます。 ただし、既に挿入されている場合 (前の例を参照)、`DueDate` プロパティが更新され、`Status` プロパティが追加されます。 `Description` プロパティと `Location` プロパティも更新されますが、値は実際には変更されないままになります。 これら後者の 2 つのプロパティは例に示しているように追加されますが、ターゲット エンティティに存在しているため、それらの既存の値は変更されないままになります。
 
@@ -248,7 +248,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>パーティション内のすべてのエンティティを取得する
-エンティティのクエリはフィルターを使用して作成します (詳細については「[テーブルとエンティティのクエリ][filters]」を参照)。 パーティション内のすべてのエンティティを取得するには、フィルター "PartitionKey eq *partition_name*" を使用します。 次の例では、フィルターを **queryEntities** メソッドに渡すことで、`tasksSeattle` パーティション内のすべてのエンティティを取得する方法を示しています。
+エンティティのクエリはフィルターを使用して作成します (詳細については「[テーブルとエンティティのクエリ][filters]」を参照してください)。 パーティション内のすべてのエンティティを取得するには、フィルター "PartitionKey eq *partition_name*" を使用します。 次の例では、フィルターを **queryEntities** メソッドに渡すことで、`tasksSeattle` パーティション内のすべてのエンティティを取得する方法を示しています。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -281,7 +281,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>パーティション内のエンティティのサブセットを取得する
-前の例で示している同じパターンを使用してパーティション内のエンティティのサブセットを取得できます。 取得するエンティティのサブセットは、使用するフィルターによって決まります (詳細については、「[テーブルとエンティティのクエリ][filters]」を参照)。次の例では、フィルターを使用して、`Location` で指定した場所で、`DueDate` で指定した日付より前のエンティティをすべて取得する方法を示しています。
+前の例で示している同じパターンを使用してパーティション内のエンティティのサブセットを取得できます。 取得するエンティティのサブセットは、使用するフィルターによって決まります (詳細については、「[テーブルとエンティティのクエリ][filters]」を参照してください)。次の例では、フィルターを使用して、`Location` で指定した場所で、`DueDate` で指定した日付より前のエンティティをすべて取得する方法を示しています。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -472,7 +472,7 @@ catch(ServiceException $e){
 }
 ```
 
-テーブル バッチ処理の詳細については、「[エンティティ グループ トランザクションの実行][entity-group-transactions]」をご覧ください。
+テーブル バッチ処理の詳細については、「[エンティティ グループ トランザクションの実行][entity-group-transactions]」を参照してください。
 
 ## <a name="delete-a-table"></a>テーブルを削除する
 最後に、テーブルを削除するには、テーブル名を **TableRestProxy->deleteTable** メソッドに渡します。
@@ -500,7 +500,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 これで、Azure Table service と Azure Cosmos DB の基本を学習できました。さらに詳しく学習するには、次のリンク先をご覧ください。
 
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f93528e2a35661f8a233aea476a958a079d7cd59
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 78e8a42c4f1e101f8d083c8d58bb452aadfa3a87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196255"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454578"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM の評価および Azure への移行を準備する
 
@@ -83,13 +83,13 @@ Azure Migrate プロジェクトを作成するためのアクセス許可があ
     ![Azure AD のアクセス許可](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> これは、重要ではない既定の設定です。 [詳細情報](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
+> これは、重要ではない既定の設定です。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance)。
 
 
 
 #### <a name="assign-application-developer-role"></a>アプリケーション開発者ロールの割り当て
 
-テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細情報](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
+テナントおよびグローバル管理者は、アプリケーション開発者ロールをアカウントに割り当てることができます。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)。
 
 
 ## <a name="prepare-for-hyper-v-assessment"></a>Hyper-V の評価の準備
@@ -148,7 +148,7 @@ Hyper-V の評価を準備するには、次の手順を実行します。
 
 ハッシュ値は次のとおりです。
 
-| **ハッシュ** | **値** |
+| **ハッシュ** | **Value** |
 | --- | --- |
 | **MD5** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
@@ -223,7 +223,7 @@ Azure Migrate が VM 上のオペレーティング システム情報をキャ�
 2. Azure に移行する Hyper-V VM の要件を[確認](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements)します。
 3. VM 移行のために Hyper-V ホストおよびクラスターがアクセスする必要がある Azure URL を[メモ](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access)します。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、次のことを行いました。
 

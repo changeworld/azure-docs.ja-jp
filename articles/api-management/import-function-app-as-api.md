@@ -1,5 +1,6 @@
 ---
-title: Azure API Management で Azure Function App を API としてインポートする | Microsoft Docs
+title: Azure 関数アプリを API として API Management にインポートする
+titleSuffix: Azure API Management
 description: このチュートリアルでは、Azure Function App を API として Azure API Management にインポートする方法について説明します。
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: 0c4a95669eea1b98baea5f9a866598e000c0923c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 97e4863294a32e7c11cd0c4bfa987b4e5764c0d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107847"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442574"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 
@@ -117,7 +118,7 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 * apim-{<*お使いの Azure API Management サービス インスタンス名*>} という名前の、Function App 内のホスト キー。
 * {<*お使いの Azure Function App のインスタンス名*>}-key という名前の、Azure API Management インスタンス内の名前付きの値。作成されたホスト キーが含まれます。
 
-2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization)として渡されます。 Function App に関連付けられている *Backend* エンティティの`PATCH Backend` [REST API 呼び出し](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract)では、この動作が変わる可能性があります。
+2019 年 4 月 4 日より後に作成された API では、ホスト キーが HTTP 要求のヘッダーで API Management から Function App に渡されます。 以前の API では、ホスト キーが[クエリ パラメーター](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization)として渡されます。 関数アプリに関連付けられている *Backend* エンティティの `PATCH Backend` [REST API 呼び出し](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract)では、この動作が変わる可能性があります。
 
 > [!WARNING]
 > Azure Function App のホスト キーまたは Azure API Management の名前付きの値のいずれかの値を削除または変更すると、サービス間の通信が失われます。 値は自動的に同期されません。
@@ -160,7 +161,7 @@ Azure Function App のインポートによって、次が自動的に生成さ�
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [公開された API の変換と保護](transform-api.md)
